@@ -3287,15 +3287,15 @@ msgstr ""
 msgid "The URL shortening library file for \"%s\" is missing and required."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:186 lib/pro/util/wpseo-meta.php:129
+#: gettext/gettext-lib-pro.php:186 lib/pro/util/wpseo-meta.php:132
 msgid "Imported Yoast SEO \"%1$s\" metadata from post ID %2$d."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:187 lib/pro/util/wpseo-meta.php:263
+#: gettext/gettext-lib-pro.php:187 lib/pro/util/wpseo-meta.php:271
 msgid "Imported Yoast SEO \"%1$s\" metadata from term ID %2$d."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:188 lib/pro/util/wpseo-meta.php:363
+#: gettext/gettext-lib-pro.php:188 lib/pro/util/wpseo-meta.php:375
 msgid "Imported Yoast SEO \"%1$s\" metadata from user ID %2$d."
 msgstr ""
 
@@ -3311,75 +3311,75 @@ msgctxt "option value"
 msgid "[%s Organizer]"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:191 lib/pro/form/gravityview.php:50
+#: gettext/gettext-lib-pro.php:191 lib/pro/form/gravityview.php:54
 msgctxt "metabox title"
 msgid "Single Entry Integration"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:192 lib/pro/form/gravityview.php:77
+#: gettext/gettext-lib-pro.php:192 lib/pro/form/gravityview.php:82
 msgctxt "option label"
 msgid "Title Field ID"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:193 lib/pro/form/gravityview.php:81
+#: gettext/gettext-lib-pro.php:193 lib/pro/form/gravityview.php:86
 msgctxt "option label"
 msgid "Description Field ID"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:194 lib/pro/form/gravityview.php:85
+#: gettext/gettext-lib-pro.php:194 lib/pro/form/gravityview.php:90
 msgctxt "option label"
 msgid "Post Image Field ID"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:195 gettext/gettext-lib-pro.php:205
-#: lib/conflict.php:233 lib/pro/rating/rate-my-post.php:53
-#: lib/pro/rating/wppostratings.php:51
+#: lib/conflict.php:233 lib/pro/rating/rate-my-post.php:57
+#: lib/pro/rating/wppostratings.php:55
 msgid "Plugin conflict detected"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:197 lib/pro/rating/wppostratings.php:58
+#: gettext/gettext-lib-pro.php:197 lib/pro/rating/wppostratings.php:62
 msgid "Enable Google Rich Snippets?"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:199 lib/pro/rating/wppostratings.php:64
+#: gettext/gettext-lib-pro.php:199 lib/pro/rating/wppostratings.php:68
 msgid "WP-PostRatings"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:201 lib/pro/rating/wppostratings.php:66
+#: gettext/gettext-lib-pro.php:201 lib/pro/rating/wppostratings.php:70
 msgid "Ratings"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:203 lib/pro/rating/wppostratings.php:68
+#: gettext/gettext-lib-pro.php:203 lib/pro/rating/wppostratings.php:72
 msgid "Ratings Options"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:204 gettext/gettext-lib-pro.php:214
-#: lib/pro/rating/rate-my-post.php:76 lib/pro/rating/wppostratings.php:74
+#: lib/pro/rating/rate-my-post.php:81 lib/pro/rating/wppostratings.php:79
 msgid "please disable the %1$s option in the %2$s settings page."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:207 lib/pro/rating/rate-my-post.php:60
+#: gettext/gettext-lib-pro.php:207 lib/pro/rating/rate-my-post.php:64
 msgid "Type of structured data for rich snippets"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:209 lib/pro/rating/rate-my-post.php:66
+#: gettext/gettext-lib-pro.php:209 lib/pro/rating/rate-my-post.php:70
 msgid "Rate my Post"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
 #: gettext/gettext-lib-pro.php:211 lib/conflict.php:495
-#: lib/pro/rating/rate-my-post.php:68
+#: lib/pro/rating/rate-my-post.php:72
 msgid "Settings"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:213 lib/pro/rating/rate-my-post.php:70
+#: gettext/gettext-lib-pro.php:213 lib/pro/rating/rate-my-post.php:74
 msgid "Rating Widget Settings"
 msgstr ""
 
@@ -8110,32 +8110,32 @@ msgstr ""
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:102 lib/pro/forum/bbpress.php:193
+#: lib/pro/forum/bbpress.php:114 lib/pro/forum/bbpress.php:211
 msgctxt "bbpress single user description"
 msgid "%s's Profile"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:202
+#: lib/pro/forum/bbpress.php:222
 msgctxt "bbpress single user description"
 msgid "%s's Topics Started"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:208
+#: lib/pro/forum/bbpress.php:228
 msgctxt "bbpress single user description"
 msgid "%s's Replies Created"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:214
+#: lib/pro/forum/bbpress.php:234
 msgctxt "bbpress single user description"
 msgid "%s's Favorites"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:220
+#: lib/pro/forum/bbpress.php:240
 msgctxt "bbpress single user description"
 msgid "%s's Subscriptions"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:226
+#: lib/pro/forum/bbpress.php:246
 msgctxt "bbpress single user description"
 msgid "Edit %s's Profile"
 msgstr ""

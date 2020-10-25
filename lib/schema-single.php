@@ -1849,9 +1849,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$postal_address = array();
 
 			if ( WpssoSchema::add_data_itemprop_from_assoc( $postal_address, $place_opts, array(
-				'name'                => 'place_name', 
-				'streetAddress'       => 'place_street_address', 
-				'postOfficeBoxNumber' => 'place_po_box_number', 
+				'name'                => 'place_name',
+				'streetAddress'       => 'place_street_address',
+				'postOfficeBoxNumber' => 'place_po_box_number',
 				'addressLocality'     => 'place_city',
 				'addressRegion'       => 'place_region',
 				'postalCode'          => 'place_postal_code',
@@ -1868,7 +1868,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$geo = array();
 
 			if ( WpssoSchema::add_data_itemprop_from_assoc( $geo, $place_opts, array(
-				'elevation' => 'place_altitude', 
+				'elevation' => 'place_altitude',
 				'latitude'  => 'place_latitude',
 				'longitude' => 'place_longitude',
 			) ) ) {

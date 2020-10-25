@@ -198,9 +198,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_args( array( 
-					'user_id'     => $user_id, 
-					'md_key'      => $md_key, 
-					'filter_opts' => $filter_opts, 
+					'user_id'     => $user_id,
+					'md_key'      => $md_key,
+					'filter_opts' => $filter_opts,
 					'pad_opts'    => $pad_opts,	// Fallback to value in meta defaults.
 				) );
 			}
@@ -1011,8 +1011,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_args( array( 
-					'user_id'  => $user_id, 
-					'meta_key' => $meta_key, 
+					'user_id'  => $user_id,
+					'meta_key' => $meta_key,
 				) );
 			}
 
@@ -1406,8 +1406,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_args( array( 
-					'user_id'  => $user_id, 
-					'meta_key' => $meta_key, 
+					'user_id'  => $user_id,
+					'meta_key' => $meta_key,
 				) );
 			}
 

@@ -364,7 +364,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					$col_span = empty( $val[ 'col_span' ] ) ? '' : ' colspan="' . $val[ 'col_span' ] .'"';
 
-					$table_rows[ $key ] .= $tr_html . $this->get_th_html( $val[ 'label' ], 
+					$table_rows[ $key ] .= $tr_html . $this->get_th_html( $val[ 'label' ],
 						( empty( $val[ 'th_class' ] ) ? '' : $val[ 'th_class' ] ),
 						( empty( $val[ 'tooltip' ] ) ? '' : $val[ 'tooltip' ] )
 					) . "\n";
@@ -591,8 +591,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				}
 
 				/**
-				 * If the array is not associative (so a regular numbered array), 
-				 * then the label / description is used as the saved value.
+				 * If the array is not associative (so a regular numbered array), then the label / description is
+				 * used as the saved value.
 				 */
 				if ( ! $is_assoc ) {
 
@@ -2003,7 +2003,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 								$html .= '<!-- ' . $select_opt_added . ' select options added -->' . "\n";
 								$html .= '</select>' . "\n";
 
-								foreach ( $event_names as $event_name ) { 
+								foreach ( $event_names as $event_name ) {
 
 									$html .= '<!-- event name: ' . $event_name . ' -->' . "\n";
 

@@ -266,7 +266,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			 * Admin toolbar notices.
 			 */
 			$custom_style_css .= '
-				#wpadminbar #wp-toolbar #' . $lca . '-toolbar-notices-icon.ab-icon::before { 
+				#wpadminbar #wp-toolbar #' . $lca . '-toolbar-notices-icon.ab-icon::before {
 					content:"' . $this->p->cf[ 'notice' ][ 'icon-code' ] . '";
 					font-family:'. $this->p->cf[ 'notice' ][ 'icon-font' ] . ';
 				}
@@ -559,7 +559,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			if ( isset( $sortable_cols[ 'og_img' ][ 'width' ] ) ) {
 
 				$custom_style_css .= '
-					.column-' . $lca . '_og_img { 
+					.column-' . $lca . '_og_img {
 						width:' . $sortable_cols[ 'og_img' ][ 'width' ] . ' !important;
 						max-width:' . $sortable_cols[ 'og_img' ][ 'width' ] . ' !important;
 					}
@@ -568,7 +568,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				if ( isset( $sortable_cols[ 'og_img' ][ 'height' ] ) ) {	// Just in case.
 
 					$custom_style_css .= '
-						.column-' . $lca . '_og_img div.wp-thumb-bg-img { 
+						.column-' . $lca . '_og_img div.wp-thumb-bg-img {
 							max-width:' . $sortable_cols[ 'og_img' ][ 'width' ] . ' !important;
 							height:' . $sortable_cols[ 'og_img' ][ 'height' ] . ';
 							min-height:' . $sortable_cols[ 'og_img' ][ 'height' ] . ';

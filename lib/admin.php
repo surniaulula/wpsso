@@ -748,7 +748,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$action_links[] = $this->p->msgs->get( 'pro-purchase-link', array(
 					'ext'      => $ext,
-					'url'      => $url, 
+					'url'      => $url,
 					'tabindex' => false !== $tabindex ? ++$tabindex : false,
 				) );
 			}
@@ -1753,7 +1753,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 * The $this->p->cf is filtered and may have been modified by add-ons, so make sure the "All Transients"
 			 * count is last.
 			 */
-			if ( isset( $this->p->cf[ 'wp' ][ 'transient' ][ $all_transients_pre ] ) ) {	
+			if ( isset( $this->p->cf[ 'wp' ][ 'transient' ][ $all_transients_pre ] ) ) {
 
 				SucomUtil::move_to_end( $this->p->cf[ 'wp' ][ 'transient' ], $all_transients_pre );
 			}
@@ -2400,7 +2400,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					'option label', 'wpsso' ), $info[ 'short' ] ), 'medium nowrap' );
 
 				$table_rows[ 'plugin_tid' ] .= '<td width="100%">' .
-					$this->form->get_input( 'plugin_' . $ext . '_tid', 'tid mono', '', 0, 
+					$this->form->get_input( 'plugin_' . $ext . '_tid', 'tid mono', '', 0,
 						'', false, ++$tabindex ) . '</td>';
 
 				if ( $network ) {

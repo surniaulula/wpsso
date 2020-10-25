@@ -143,7 +143,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						$len = 0, $def_site_desc ) . '</td>';
 
 					$table_rows[ 'og_def_article_section' ] = '' . 
-					$this->form->get_th_html( _x( 'Default Article Section', 'option label', 'wpsso' ), 
+					$this->form->get_th_html( _x( 'Default Article Section', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'og_def_article_section' ) . 
 					'<td>' .
 					$this->form->get_select( 'og_def_article_section', $article_sections, $css_class = '', $css_id = '',

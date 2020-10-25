@@ -230,8 +230,8 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_args( array( 
-					'mod_id'      => $mod_id, 
-					'md_key'       => $md_key, 
+					'mod_id' => $mod_id,
+					'md_key' => $md_key,
 				) );
 			}
 
@@ -466,12 +466,12 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		protected function upgrade_options( array &$md_opts, $mod_id ) {
 
 			if ( empty( $md_opts ) ) {
-			
+
 				return false;
 			}
-			
+
 			if ( isset( $md_opts[ 'options_version' ] ) && $md_opts[ 'options_version' ] === $this->p->cf[ 'opt' ][ 'version' ] ) {
-				
+
 				return false;
 			}
 
@@ -530,7 +530,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					}
 				}
 			}
-		
+
 			$md_opts = apply_filters( $upgraded_filter_name, $md_opts );
 
 			/**
@@ -791,9 +791,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_args( array( 
-					'mod_id'      => $mod_id, 
-					'md_key'      => $md_key, 
-					'filter_opts' => $filter_opts, 
+					'mod_id'      => $mod_id,
+					'md_key'      => $md_key,
+					'filter_opts' => $filter_opts,
 				) );
 			}
 
@@ -1201,7 +1201,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		 *
 		 * Called by add_column_headings(), WpssoStdAdminAdvanced->filter_edit_table_columns_rows(), and WpssoProAdminAdvanced->filter_edit_table_columns_rows().
 		 */
-		public static function get_column_headers() { 
+		public static function get_column_headers() {
 
 			$headers = array();
 
@@ -1221,7 +1221,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		/**
 		 * Return sortable column keys and their query sort info.
 		 */
-		public static function get_sortable_columns( $col_key = false ) { 
+		public static function get_sortable_columns( $col_key = false ) {
 
 			static $local_cache = null;
 
@@ -1251,7 +1251,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $local_cache;
 		}
 
-		public static function get_column_meta_keys() { 
+		public static function get_column_meta_keys() {
 
 			$meta_keys = array();
 
@@ -1384,7 +1384,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $value;	// Return null.
 		}
 
-		public function update_sortable_meta( $mod_id, $col_key, $content ) { 
+		public function update_sortable_meta( $mod_id, $col_key, $content ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1403,7 +1403,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			}
 		}
 
-		public function add_sortable_columns( $columns ) { 
+		public function add_sortable_columns( $columns ) {
 
 			foreach ( self::get_sortable_columns() as $col_key => $col_info ) {
 
@@ -1416,7 +1416,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $columns;
 		}
 
-		public function set_column_orderby( $query ) { 
+		public function set_column_orderby( $query ) {
 
 			$col_name = $query->get( 'orderby' );
 
@@ -1441,7 +1441,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		 * Called by WpssoPost->add_post_column_headings(), WpssoPost->add_media_column_headings(),
 		 * WpssoTerm->add_term_column_headings(), and WpssoUser->add_user_column_headings().
 		 */
-		protected function add_column_headings( $columns, $list_type = '' ) { 
+		protected function add_column_headings( $columns, $list_type = '' ) {
 
 			if ( ! empty( $list_type ) ) {
 

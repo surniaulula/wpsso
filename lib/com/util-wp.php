@@ -601,7 +601,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $success;
 		}
 
-		public static function raw_delete_transient( $transient ) { 
+		public static function raw_delete_transient( $transient ) {
 
 			if ( wp_using_ext_object_cache() ) {
 
@@ -869,7 +869,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			}
 		}
 
-		public static function doing_rest() { 
+		public static function doing_rest() {
 
 			if ( empty( $_SERVER[ 'REQUEST_URI' ] ) ) {
 

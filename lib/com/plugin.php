@@ -292,7 +292,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 
 					$plugin_name = empty( $plugin_info->name ) ? $plugin_slug : $plugin_info->name;
 
-					return new WP_Error( 'invalid_download_link', 
+					return new WP_Error( 'invalid_download_link',
 						sprintf( __( 'The plugin information for "%s" contains an invalid download link.' ),
 							$plugin_name ) );
 				}
@@ -303,7 +303,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 
 				$plugin_name = empty( $plugin_info->name ) ? $plugin_slug : $plugin_info->name;
 
-				return new WP_Error( 'missing_download_link', 
+				return new WP_Error( 'missing_download_link',
 					sprintf( __( 'The plugin information for "%s" does not contain a download link.' ),
 						$plugin_name ) );
 			}

@@ -154,7 +154,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Default Description', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-og_desc',
-					'content'  => $form->get_textarea( 'og_desc', $css_class = '', $css_id = '', 
+					'content'  => $form->get_textarea( 'og_desc', $css_class = '', $css_id = '',
 						array( 'max' => $og_desc_max_len, 'warn' => $og_desc_warn_len ), $def_og_desc ),
 				),
 				'p_img_desc' => array(

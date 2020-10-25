@@ -217,7 +217,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 							$cleared_count++;
 
-						} else {	
+						} else {
 
 							if ( $this->p->debug->enabled ) {
 
@@ -407,7 +407,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			 */
 			if ( class_exists( 'Cache_Enabler' ) ) {
 
-				if ( method_exists('Cache_Enabler', 'clear_total_cache') ) { 
+				if ( method_exists('Cache_Enabler', 'clear_total_cache') ) {
 
 					Cache_Enabler::clear_total_cache();
 

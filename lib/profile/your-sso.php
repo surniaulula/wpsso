@@ -40,7 +40,7 @@ if ( ! class_exists( 'WpssoProfileYourSSO' ) && class_exists( 'WpssoAdmin' ) ) {
 			$callback_args   = array(	// Second argument passed to the callback function / method.
 			);
 
-			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title, 
+			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
 				array( $this, 'show_metabox_document_meta' ), $this->pagehook,
 					$metabox_context, $metabox_prio, $callback_args );
 		}

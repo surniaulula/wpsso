@@ -483,7 +483,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		 *
 		 * If $http_success is empty, save the data regardless of the HTTP return code.
 		 */
-		public function get( $url, $format = 'url', $cache_type = 'file', $exp_secs = null, $cache_ext = '', 
+		public function get( $url, $format = 'url', $cache_type = 'file', $exp_secs = null, $cache_ext = '',
 			array $curl_opts = array(), array $http_success = array( 200 ) ) {
 
 			if ( $this->p->debug->enabled ) {

@@ -314,9 +314,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_args( array( 
-					'post_id'     => $post_id, 
-					'md_key'      => $md_key, 
-					'filter_opts' => $filter_opts, 
+					'post_id'     => $post_id,
+					'md_key'      => $md_key,
+					'filter_opts' => $filter_opts,
 					'pad_opts'    => $pad_opts,
 				) );
 			}

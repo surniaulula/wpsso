@@ -1642,7 +1642,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 						$hm_tz_midday_c = self::get_hm_tz( $opts[ $key_midday_c ], $tz_offset );
 						$hm_tz_midday_o = self::get_hm_tz( $opts[ $key_midday_o ], $tz_offset );
-	
+
 						$oc_pairs[ $hm_tz_o ]        = $hm_tz_midday_c;
 						$oc_pairs[ $hm_tz_midday_o ] = $hm_tz_c;
 
@@ -1659,7 +1659,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		private static function get_hm_tz( $hm, $tz_offset ) {
 
 			if ( false !== ( $pos = strpos( $hm, 'Z' ) ) ) {
-			
+
 				$hm = substr( $hm, 0, $pos );
 			}
 

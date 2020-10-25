@@ -1463,11 +1463,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					background:inherit;
 				}
 				#wpadminbar #wp-toolbar .has-toolbar-notices .ab-item:hover,
-				#wpadminbar #wp-toolbar .has-toolbar-notices.hover .ab-item { 
+				#wpadminbar #wp-toolbar .has-toolbar-notices.hover .ab-item {
 					color:inherit;
 					background:inherit;
 				}
-				#wpadminbar #wp-toolbar .has-toolbar-notices #' . $this->lca . '-toolbar-notices-icon.ab-icon::before { 
+				#wpadminbar #wp-toolbar .has-toolbar-notices #' . $this->lca . '-toolbar-notices-icon.ab-icon::before {
 					color:#fff;			/* White on background color. */
 					background-color:inherit;
 				}
@@ -1487,10 +1487,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				#wpadminbar .has-toolbar-notices.toolbar-notices-success {
 					background-color:#46b450;	/* Green. */
 				}
-				#wpadminbar .has-toolbar-notices #wp-admin-bar-' . $this->lca . '-toolbar-notices-default { 
+				#wpadminbar .has-toolbar-notices #wp-admin-bar-' . $this->lca . '-toolbar-notices-default {
 					padding:0;
 				}
-				#wpadminbar .has-toolbar-notices #wp-admin-bar-' . $this->lca . '-toolbar-notices-container { 
+				#wpadminbar .has-toolbar-notices #wp-admin-bar-' . $this->lca . '-toolbar-notices-container {
 					min-width:70vw;			/* 70% of the viewing window width. */
 					max-height:90vh;		/* 90% of the viewing window height. */
 					overflow-y:scroll;

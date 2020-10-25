@@ -72,7 +72,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			 * to work around a bug in the NextGEN Gallery featured image picker. If the script is loaded in the
 			 * header, with a dependency on 'wp-edit-post', the NextGEN Gallery featured image picker does not load.
 			 */
-			wp_register_script( 'sucom-block-editor-admin', WPSSO_URLPATH . 'js/block-editor-admin.' . $this->file_ext, 
+			wp_register_script( 'sucom-block-editor-admin', WPSSO_URLPATH . 'js/block-editor-admin.' . $this->file_ext,
 				array( 'wp-data', 'wp-editor', 'wp-edit-post' ), $this->version, $in_footer = true );
 
 			wp_enqueue_script( 'sucom-block-editor-admin' );
@@ -80,7 +80,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			/**
 			 * Work in progress for WPSSO Core v9.0.0.
 			 *
-			 * wp_register_script( 'wpsso-block-editor', WPSSO_URLPATH . 'js/dist/block-editor.' . $this->file_ext, 
+			 * wp_register_script( 'wpsso-block-editor', WPSSO_URLPATH . 'js/dist/block-editor.' . $this->file_ext,
 			 * 	array( 'wp-data', 'wp-components', 'wp-editor', 'wp-edit-post', 'wp-i18n' ), $this->version, $in_footer = true );
 			 *
 			 * wp_enqueue_script( 'wpsso-block-editor' );
@@ -98,16 +98,16 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			/**
 			 * See http://qtip2.com/download.
 			 */
-			wp_register_script( 'jquery-qtip', WPSSO_URLPATH . 'js/ext/jquery-qtip.' . $this->file_ext, 
+			wp_register_script( 'jquery-qtip', WPSSO_URLPATH . 'js/ext/jquery-qtip.' . $this->file_ext,
 				array( 'jquery' ), $this->p->cf[ 'jquery-qtip' ][ 'version' ], $in_footer = true );
 
-			wp_register_script( 'sucom-metabox', WPSSO_URLPATH . 'js/com/jquery-metabox.' . $this->file_ext, 
+			wp_register_script( 'sucom-metabox', WPSSO_URLPATH . 'js/com/jquery-metabox.' . $this->file_ext,
 				array( 'jquery', 'jquery-ui-datepicker', 'wp-color-picker' ), $this->version, $in_footer = true );
 
-			wp_register_script( 'sucom-tooltips', WPSSO_URLPATH . 'js/com/jquery-tooltips.' . $this->file_ext, 
+			wp_register_script( 'sucom-tooltips', WPSSO_URLPATH . 'js/com/jquery-tooltips.' . $this->file_ext,
 				array( 'jquery', 'jquery-qtip' ), $this->version, $in_footer = true );
 
-			wp_register_script( 'sucom-admin-media', WPSSO_URLPATH . 'js/com/jquery-admin-media.' . $this->file_ext, 
+			wp_register_script( 'sucom-admin-media', WPSSO_URLPATH . 'js/com/jquery-admin-media.' . $this->file_ext,
 				array( 'jquery', 'jquery-ui-core' ), $this->version, $in_footer = true );
 
 			/**
@@ -330,7 +330,7 @@ jQuery( document ).ready( function(){
 			}
 
 			wp_register_script( 'sucom-admin-page',
-				WPSSO_URLPATH . 'js/com/jquery-admin-page.' . $this->file_ext, 
+				WPSSO_URLPATH . 'js/com/jquery-admin-page.' . $this->file_ext,
 					array( 'jquery' ), $this->version, $in_footer = true );
 
 			wp_localize_script( 'sucom-admin-page', 'sucomAdminPageL10n', $this->get_admin_page_script_data() );

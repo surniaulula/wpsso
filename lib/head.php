@@ -332,7 +332,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				case 'preg':
 
 					/**
-					 * Some HTML optimization plugins/services may remove the double-quotes from the name attribute, 
+					 * Some HTML optimization plugins/services may remove the double-quotes from the name attribute,
 					 * along with the trailing space and slash characters, so make these optional in the regex.
 					 */
 					$prefix = '<(!--[\s\n\r]+|meta[\s\n\r]+name="?' . $this->p->lca . ':mark:(begin|end)"?[\s\n\r]+content=")';

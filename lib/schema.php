@@ -2744,7 +2744,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$wpsso->debug->log( 'promoting location property array' );
 				}
 
-				$prop_added = self::add_data_itemprop_from_assoc( $json_data, $json_data[ 'location' ], 
+				$prop_added = self::add_data_itemprop_from_assoc( $json_data, $json_data[ 'location' ],
 					array_keys( $json_data[ 'location' ] ), $overwrite = false );
 
 				if ( $wpsso->debug->enabled ) {

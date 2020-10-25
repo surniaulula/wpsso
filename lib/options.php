@@ -368,8 +368,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_args( array( 
-					'opt_key'      => $opt_key, 
-					'force_filter' => $force_filter, 
+					'opt_key'      => $opt_key,
+					'force_filter' => $force_filter,
 				) );
 			}
 
@@ -512,8 +512,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_args( array( 
-					'opt_key'      => $opt_key, 
-					'force_filter' => $force_filter, 
+					'opt_key'      => $opt_key,
+					'force_filter' => $force_filter,
 				) );
 			}
 
@@ -749,7 +749,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 * Hard-code fixed options.
 				 */
 				foreach ( array( 'og:image', 'og:video' ) as $mt_name ) {
-	
+
 					$opts[ 'add_meta_property_' . $mt_name . ':secure_url' ]    = 0;		// Always unchecked.
 					$opts[ 'add_meta_property_' . $mt_name . ':secure_url:is' ] = 'disabled';	// Prevent changes in settings page.
 					$opts[ 'add_meta_property_' . $mt_name . ':url' ]           = 0;		// Always unchecked.
