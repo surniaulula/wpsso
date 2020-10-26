@@ -8819,7 +8819,7 @@ msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
 #: lib/user.php:1607 lib/user.php:1710 lib/util-cache.php:158
-#: lib/util-cache.php:684
+#: lib/util-cache.php:682
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
@@ -8967,7 +8967,7 @@ msgstr ""
 msgid "A task to refresh the transient cache was started at %s."
 msgstr ""
 
-#: lib/util-cache.php:681
+#: lib/util-cache.php:679
 msgid ""
 "The transient cache for %1$d posts, %2$d terms and %3$d users has been "
 "refreshed."

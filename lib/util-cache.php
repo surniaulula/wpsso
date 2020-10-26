@@ -628,9 +628,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				do_action( $this->p->lca . '_scheduled_task_started', $user_id );
 			}
 
-			$size_names = $this->p->util->get_image_size_names();
-
-			$size_names[] = 'thumbnail';	// Add thumbnail for SSO Image column.
+			$size_names = array( 'thumbnail', $this->p->lca . '-opengraph' );
 
 			$post_ids = call_user_func( array( $this->p->lca . 'post', 'get_public_ids' ) );	// Call static method.
 

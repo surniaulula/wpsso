@@ -35,7 +35,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			) );
 		}
 
-		public function filter_plugin_image_sizes( $sizes ) {
+		public function filter_plugin_image_sizes( array $sizes ) {
 
 			$sizes[ 'tc_sum' ] = array(	// Option prefix.
 				'name'         => 'tc-summary',

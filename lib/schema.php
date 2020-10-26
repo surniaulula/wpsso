@@ -64,7 +64,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			add_action( 'wp_ajax_' . $this->p->lca . '_schema_type_og_type', array( $this, 'ajax_schema_type_og_type' ) );
 		}
 
-		public function filter_plugin_image_sizes( $sizes ) {
+		public function filter_plugin_image_sizes( array $sizes ) {
 
 			$sizes[ 'schema_1_1' ] = array(		// Option prefix.
 				'name'         => 'schema-1-1',

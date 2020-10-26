@@ -53,7 +53,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			), $max_int );
 		}
 
-		public function filter_plugin_image_sizes( $sizes ) {
+		public function filter_plugin_image_sizes( array $sizes ) {
 
 			$sizes[ 'og' ] = array(		// Option prefix.
 				'name'         => 'opengraph',

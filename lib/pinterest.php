@@ -118,7 +118,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 			return $html;
 		}
 
-		public function filter_plugin_image_sizes( $sizes ) {
+		public function filter_plugin_image_sizes( array $sizes ) {
 
 			if ( ! empty( $this->p->options[ 'p_add_img_html' ] ) ) {	// Just in case.
 
