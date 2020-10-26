@@ -310,7 +310,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.10.0-dev.6 (2020/10/26)**
+**Version 8.10.0-dev.8 (2020/10/26)**
 
 * **New Features**
 	* None.
@@ -319,7 +319,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Removed arguments from the `WpssoUtil->add_plugin_image_sizes()` method as they are not required.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.4.
@@ -627,7 +627,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.10.0-dev.6 =
+= 8.10.0-dev.8 =
 
 (2020/10/26) None.
 
