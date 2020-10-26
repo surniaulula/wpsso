@@ -223,11 +223,13 @@
 
 'wpsso_schema_meta_itemprop' ( $mt_schema, $mod, $mt_og, $page_type_id )
 
-'wpsso_schema_type_for_default' ( 'webpage', $mod )
+'wpsso_schema_type_for_default' ( $type_id = 'webpage', $mod )
 
 'wpsso_schema_type_for_home_page' ( $type_id, $mod )
 
 'wpsso_schema_type_for_home_posts' ( $type_id, $mod )
+
+'wpsso_schema_type_for_post_type_{post_type}' ( $type_id, $mod )
 
 'wpsso_schema_type_for_post_type_archive_page' ( $type_id, $mod )
 
