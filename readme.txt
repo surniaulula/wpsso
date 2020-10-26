@@ -319,6 +319,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
+	* Added a new 'wpsso_schema_type_for_post_type_{post_type}' filter.
 	* Removed arguments from the `WpssoUtil->add_plugin_image_sizes()` method as they are not required.
 * **Requires At Least**
 	* PHP v5.6.
