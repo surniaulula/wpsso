@@ -214,13 +214,13 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 <h3>Plugin Setup</h3>
 
 * [Setup Guide](https://wpsso.com/docs/plugins/wpsso/installation/setup-guide/)
-* [Developer Special: Buy one, Get one Free](https://wpsso.com/docs/plugins/wpsso/installation/developer-special-buy-one-get-one-free/)
 * [Much Better Schema Markup for WooCommerce Products](https://wpsso.com/docs/plugins/wpsso/installation/better-schema-for-woocommerce/)
 * [Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/)
 	* [BuddyPress Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/buddypress-integration/)
 	* [WooCommerce Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/)
 	* [WP eCommerce Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/wp-ecommerce-integration/)
 * [Troubleshooting Guide](https://wpsso.com/docs/plugins/wpsso/installation/troubleshooting-guide/)
+* [Developer Special: Buy one, Get one Free](https://wpsso.com/docs/plugins/wpsso/installation/developer-special-buy-one-get-one-free/)
 
 == Frequently Asked Questions ==
 
