@@ -844,29 +844,21 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$this->p->debug->log( 'using plugin settings to determine schema type' );
 				}
 
+				$filter_name = '';
+
 				if ( $mod[ 'is_home' ] ) {	// Static or index page.
 
 					if ( $mod[ 'is_home_page' ] ) {
 
 						$type_id = $this->get_schema_type_id_for_name( 'home_page' );
 
-						$type_id = apply_filters( $this->p->lca . '_schema_type_for_home_page', $type_id, $mod );
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'using schema type id "' . $type_id . '" for home page' );
-						}
+						$filter_name = SucomUtil::sanitize_hookname( $this->p->lca . '_schema_type_for_home_page' );
 
 					} else {
 
 						$type_id = $this->get_schema_type_id_for_name( 'home_posts' );
 
-						$type_id = apply_filters( $this->p->lca . '_schema_type_for_home_posts', $type_id, $mod );
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'using schema type id "' . $type_id . '" for home posts' );
-						}
+						$filter_name = SucomUtil::sanitize_hookname( $this->p->lca . '_schema_type_for_home_posts' );
 					}
 
 				} elseif ( $mod[ 'is_post' ] ) {
@@ -875,55 +867,34 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 						if ( $mod[ 'is_post_type_archive' ] ) {
 
-							$$type_id = $this->get_schema_type_id_for_name( 'post_archive' );
+							$type_id = $this->get_schema_type_id_for_name( 'post_archive' );
 
-							$type_id = apply_filters( $this->p->lca . '_schema_type_for_post_type_archive_page', $type_id, $mod );
-
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'using schema type id "' . $type_id . '" for post_type_archive page' );
-							}
+							$filter_name = SucomUtil::sanitize_hookname( $this->p->lca . '_schema_type_for_post_type_archive_page' );
 
 						} elseif ( isset( $this->p->options[ 'schema_type_for_' . $mod[ 'post_type' ] ] ) ) {
 
 							$type_id = $this->get_schema_type_id_for_name( $mod[ 'post_type' ] );
 
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'using schema type id "' . $type_id . '" from post type option value' );
-							}
+							$filter_name = SucomUtil::sanitize_hookname( $this->p->lca . '_schema_type_for_post_type_' . $mod[ 'post_type' ] );
 
 						} elseif ( ! empty( $schema_types[ $mod[ 'post_type' ] ] ) ) {
 
 							$type_id = $mod[ 'post_type' ];
 
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'using schema type id "' . $type_id . '" from post type name' );
-							}
+							$filter_name = SucomUtil::sanitize_hookname( $this->p->lca . '_schema_type_for_post_type_' . $mod[ 'post_type' ] );
 
 						} else {	// Unknown post type.
 
 							$type_id = $this->get_schema_type_id_for_name( 'page' );
 
-							$type_id = apply_filters( $this->p->lca . '_schema_type_for_post_type_unknown_type', $type_id, $mod );
-
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'using "page" schema type for unknown post type ' . $mod[ 'post_type' ] );
-							}
+							$filter_name = SucomUtil::sanitize_hookname( $this->p->lca . '_schema_type_for_post_type_unknown_type' );
 						}
 
 					} else {	// Post objects without a post_type property.
 
 						$type_id = $this->get_schema_type_id_for_name( 'page' );
 
-						$type_id = apply_filters( $this->p->lca . '_schema_type_for_post_type_empty_type', $type_id, $mod );
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'using "page" schema type for empty post type' );
-						}
+						$filter_name = SucomUtil::sanitize_hookname( $this->p->lca . '_schema_type_for_post_type_empty_type' );
 					}
 
 				} elseif ( $mod[ 'is_term' ] ) {
@@ -931,11 +902,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					if ( ! empty( $mod[ 'tax_slug' ] ) ) {
 
 						$type_id = $this->get_schema_type_id_for_name( 'tax_' . $mod[ 'tax_slug' ] );
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'using schema type id "' . $type_id . '" from term option value' );
-						}
 					}
 
 					if ( empty( $type_id ) ) {	// Just in case.
@@ -958,25 +924,29 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				} else {	// Everything else.
 
 					$type_id = $default_key;
+				}
+
+				if ( $filter_name ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'using default schema type id "' . $default_key . '"' );
+						$this->p->debug->log( 'applying ' . $filter_name . ' filters for type id "' . $type_id . '"' );
 					}
+
+					$type_id = apply_filters( $filter_name, $type_id, $mod );
 				}
+
+				unset( $filter_name );
 			}
+
+			$filter_name = SucomUtil::sanitize_hookname( $this->p->lca . '_schema_type_id' );
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'schema type id before filter is "' . $type_id . '"' );
+				$this->p->debug->log( 'applying ' . $filter_name . ' filters for type id "' . $type_id . '"' );
 			}
 
 			$type_id = apply_filters( $this->p->lca . '_schema_type_id', $type_id, $mod, $is_custom );
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'schema type id after filter is "' . $type_id . '"' );
-			}
 
 			$get_value = false;
 
@@ -987,7 +957,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$this->p->debug->log( 'returning false: schema type id is empty' );
 				}
 
-			} elseif ( $type_id === 'none' ) {
+			} elseif ( 'none' === $type_id ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -1371,10 +1341,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$schema_types = $this->get_schema_types_array( $flatten = true );
 
-			$type_id = isset( $this->p->options[ 'schema_type_for_' . $type_name ] ) ?	// Just in case.
-				$this->p->options[ 'schema_type_for_' . $type_name ] : $default_id;
+			$opt_key = 'schema_type_for_' . $type_name;
 
-			if ( empty( $type_id ) || $type_id === 'none' ) {
+			$type_id = isset( $this->p->options[ $opt_key ] ) ? $this->p->options[ $opt_key ] : $default_id;
+
+			if ( empty( $type_id ) || 'none' === $type_id ) {
 
 				if ( $this->p->debug->enabled ) {
 
