@@ -273,13 +273,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * Can be called directly and from the "wp", "rest_api_init", and "current_screen" actions. The $wp_obj variable
-		 * can be false or a WP object (WP_Post, WP_Term, WP_User, WP_REST_Server, etc.). The $mod variable can be false,
-		 * and if so, it will be set using get_page_mod().
+		 * Can be called directly and from the "wp", "rest_api_init", and "current_screen" actions.
 		 *
 		 * This method does not return a value, so do not use it as a filter. ;-)
 		 */
-		public function add_plugin_image_sizes( $wp_obj = false, $image_sizes = array(), $filter_sizes = true ) {
+		public function add_plugin_image_sizes() {
 
 			/**
 			 * Allow various plugin add-ons to provide their image names, labels, etc. The first dimension array key is
@@ -295,14 +293,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 */
 			if ( $this->p->debug->enabled ) {
 
-				$doing_ajax = SucomUtil::get_const( 'DOING_AJAX' );
-
-				$wp_obj_type = gettype( $wp_obj ) === 'object' ? get_class( $wp_obj ) . ' object' : gettype( $wp_obj );
-
-				$this->p->debug->log( 'DOING_AJAX is ' . ( $doing_ajax ? 'true' : 'false' ) );
-
-				$this->p->debug->log( '$wp_obj type is ' . $wp_obj_type );
-
 				$this->p->debug->mark( 'define image sizes' );	// Begin timer.
 			}
 
@@ -311,10 +301,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 */
 			static $def_opts = null;
 
-			if ( $filter_sizes ) {
-
-				$image_sizes = apply_filters( $this->p->lca . '_plugin_image_sizes', $image_sizes );
-			}
+			$image_sizes = apply_filters( $this->p->lca . '_plugin_image_sizes', array() );
 
 			foreach( $image_sizes as $opt_pre => $size_info ) {
 
@@ -424,6 +411,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
+				$doing_ajax = SucomUtil::get_const( 'DOING_AJAX' );
+
 				if ( ! $doing_ajax ) {
 
 					$this->p->debug->log_arr( 'get_image_sizes', $this->get_image_sizes() );
@@ -434,164 +423,203 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * Disable transient cache for debug mode. This method is also called for non-WordPress sharing / canonical URLs
-		 * with query arguments.
+		 * Get the width, height and crop value for all image sizes.
+		 *
+		 * Returns an associative array with the image size name as the array key.
 		 */
-		public function disable_cache_filters( array $add_filters = array() ) {
+		public function get_image_sizes( $attachment_id = false ) {
 
-			if ( $this->p->debug->enabled ) {
+			$image_sizes = array();
 
-				$this->p->debug->mark();
+			foreach ( get_intermediate_image_sizes() as $size_name ) {
+
+				$image_sizes[ $size_name ] = $this->get_size_info( $size_name, $attachment_id );
 			}
 
-			static $do_once = array();
+			return $image_sizes;
+		}
 
-			$default_filters = array(
-				'cache_expire_head_markup'      => '__return_zero',
-				'cache_expire_setup_html'       => '__return_zero',
-				'cache_expire_shortcode_html'   => '__return_zero',
-				'cache_expire_sharing_buttons'  => '__return_zero',
+		/**
+		 * Get the width, height and crop value for a specific image size.
+		 */
+		public function get_size_info( $size_name = 'thumbnail', $attachment_id = false ) {
+
+			if ( ! is_string( $size_name ) ) {	// Just in case.
+
+				return false;
+			}
+
+			static $local_cache = array();
+
+			if ( isset( $local_cache[ $size_name ][ $attachment_id ] ) ) {
+
+				return $local_cache[ $size_name ][ $attachment_id ];
+			}
+
+			global $_wp_additional_image_sizes;
+
+			if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'width' ] ) ) {
+
+				$width = intval( $_wp_additional_image_sizes[ $size_name ][ 'width' ] );
+
+			} else {
+
+				$width = get_option( $size_name . '_size_w' );
+			}
+
+			if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'height' ] ) ) {
+
+				$height = intval( $_wp_additional_image_sizes[ $size_name ][ 'height' ] );
+
+			} else {
+
+				$height = get_option( $size_name . '_size_h' );
+			}
+
+			if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'crop' ] ) ) {
+
+				$crop = $_wp_additional_image_sizes[ $size_name ][ 'crop' ];
+
+			} else {
+
+				$crop = get_option( $size_name . '_crop' );
+			}
+
+			/**
+			 * Standardize to true, false, or non-empty array.
+			 */
+			if ( empty( $crop ) ) {	// 0, false, null, or empty array.
+
+				$crop = false;
+
+			} elseif ( ! is_array( $crop ) ) {	// 1, or true.
+
+				$crop = true;
+			}
+
+			/**
+			 * If the image size is cropped, then check the image metadata for a custom crop area.
+			 */
+			if ( $crop && $attachment_id && is_numeric( $attachment_id ) ) {
+
+				$new_crop = is_array( $crop ) ? $crop : array( 'center', 'center' );
+
+				foreach ( array( 'attach_img_crop_x', 'attach_img_crop_y' ) as $crop_key => $md_key ) {
+
+					$value = $this->p->post->get_options( $attachment_id, $md_key );
+
+					if ( $value && $value !== 'none' ) {		// Custom crop value found.
+
+						$new_crop[ $crop_key ] = $value;	// Adjust the crop value.
+
+						$crop = $new_crop;			// Update the crop array.
+					}
+				}
+			}
+
+			if ( $crop === array( 'center', 'center' ) ) {
+
+				$crop = true;
+			}
+
+			$is_cropped = empty( $crop ) ? false : true;
+
+			/**
+			 * Crop can be true, false, or an array.
+			 */
+			return $local_cache[ $size_name ][ $attachment_id ] = array(
+				'width'        => $width,
+				'height'       => $height,
+				'crop'         => $crop,
+				'is_cropped'   => $is_cropped,
+				'dimensions'   => $width . 'x' . $height . ' ' . ( $is_cropped ? __( 'cropped', 'wpsso' ) : __( 'uncropped', 'wpsso' ) ),
+				'label_transl' => $this->get_image_size_label( $size_name ),
+				'opt_prefix'   => $this->get_image_size_opt( $size_name ),
 			);
-
-			$disable_filters = array();
-
-			foreach ( array_merge( $default_filters, $add_filters ) as $filter_name => $callback ) {
-
-				if ( ! isset( $do_once[ $filter_name ] ) ) {
-
-					$do_once[ $filter_name ] = true;
-
-					$disable_filters[ $filter_name ] = $callback;
-				}
-			}
-
-			if ( ! empty( $disable_filters ) ) {
-
-				$this->add_plugin_filters( $this, $disable_filters );
-			}
 		}
 
 		/**
-		 * Called from several class __construct() methods to hook their filters.
+		 * Example $size_name = 'wpsso-opengraph' returns 'Open Graph' pre-translated.
 		 */
-		public function add_plugin_filters( $class, $filters, $prio = 10, $ext = '' ) {
+		public function get_image_size_label( $size_name ) {
 
-			$this->add_plugin_hooks( 'filter', $class, $filters, $prio, $ext );
+			if ( ! empty( $this->cache_size_labels[ $size_name ] ) ) {
+
+				return $this->cache_size_labels[ $size_name ];
+
+			}
+
+			return $size_name;
 		}
 
 		/**
-		 * Called from several class __construct() methods to hook their actions.
+		 * Example $size_name = 'wpsso-opengraph' returns 'og'.
 		 */
-		public function add_plugin_actions( $class, $actions, $prio = 10, $ext = '' ) {
+		public function get_image_size_opt( $size_name ) {
 
-			$this->add_plugin_hooks( 'action', $class, $actions, $prio, $ext );
+			if ( isset( $this->cache_size_opts[ $size_name ] ) ) {
+
+				return $this->cache_size_opts[ $size_name ];
+
+			}
+
+			return '';
 		}
 
-		private function add_plugin_hooks( $type, $class, $hook_list, $prio, $ext = '' ) {
+		public function get_image_size_names( $mixed = null ) {
 
-			$ext = $ext === '' ? $this->p->lca : $ext;
+			$size_names = array_keys( $this->cache_size_labels );
 
-			foreach ( $hook_list as $name => $val ) {
+			if ( null === $mixed ) {
 
-				if ( ! is_string( $name ) ) {
+				return $size_names;
 
-					if ( $this->p->debug->enabled ) {
+			} elseif ( is_array( $mixed ) ) {
 
-						$this->p->debug->log( $name . ' => ' . $val . ' ' . $type . ' skipped: filter name must be a string' );
-					}
+				return array_intersect( $size_names, $mixed );	// Sanitize and return.
 
-					continue;
-				}
+			} elseif ( is_string( $mixed ) ) {
 
-				/**
-				 * Example:
-				 * 	'json_data_https_schema_org_website' => 5
-				 */
-				if ( is_int( $val ) ) {
+				switch ( $mixed ) {
 
-					$arg_nums    = $val;
-					$hook_name   = self::sanitize_hookname( $ext . '_' . $name );
-					$method_name = self::sanitize_hookname( $type . '_' . $name );
+					case 'opengraph':
+					case 'pinterest':
+					case 'thumbnail':
 
-					if ( is_callable( array( &$class, $method_name ) ) ) {
+						return array( $this->p->lca . '-' . $mixed );
 
-						call_user_func( 'add_' . $type, $hook_name, array( &$class, $method_name ), $prio, $arg_nums );
+					case 'schema':
 
-						if ( $this->p->debug->enabled ) {
+						return array(
+							$this->p->lca . '-schema-1-1',
+							$this->p->lca . '-schema-4-3',
+							$this->p->lca . '-schema-16-9',
+						);
 
-							$this->p->debug->log( 'added ' . $method_name . ' method ' . $type, 3 );
-						}
+					case $this->p->lca . '-schema':			// Deprecated on 2020/08/12.
+					case $this->p->lca . '-schema-article':		// Deprecated on 2020/08/12.
 
-					} else {
+						return array( $this->p->lca . '-schema-1-1' );
 
-						if ( $this->p->debug->enabled ) {
+					case $this->p->lca . '-schema-article-1-1':	// Deprecated on 2020/08/12.
 
-							$this->p->debug->log( $method_name . ' method ' . $type . ' is not callable' );
-						}
-					}
+						return array( $this->p->lca . '-schema-1-1' );
 
-				/**
-				 * Example:
-				 * 	'add_schema_meta_array' => '__return_false'
-				 */
-				} elseif ( is_string( $val ) ) {
+					case $this->p->lca . '-schema-article-4-3':	// Deprecated on 2020/08/12.
 
-					$arg_nums      = 1;
-					$hook_name     = self::sanitize_hookname( $ext . '_' . $name );
-					$function_name = self::sanitize_hookname( $val );
+						return array( $this->p->lca . '-schema-4-3' );
 
-					if ( is_callable( $function_name ) ) {
+					case $this->p->lca . '-schema-article-16-9':	// Deprecated on 2020/08/12.
 
-						call_user_func( 'add_' . $type, $hook_name, $function_name, $prio, $arg_nums );
+						return array( $this->p->lca . '-schema-16-9' );
 
-						if ( $this->p->debug->enabled ) {
+					default:
 
-							$this->p->debug->log( 'added ' . $function_name . ' function ' . $type . ' for ' . $hook_name, 3 );
-						}
-
-					} else {
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( $method_name . ' function ' . $type . ' for ' . $hook_name . ' is not callable' );
-						}
-					}
-
-				/**
-				 * Example:
-				 * 	'json_data_https_schema_org_article' => array(
-				 *		'json_data_https_schema_org_article'     => 5,
-				 *		'json_data_https_schema_org_newsarticle' => 5,
-				 *		'json_data_https_schema_org_techarticle' => 5,
-				 *	)
-				 */
-				} elseif ( is_array( $val ) ) {
-
-					$method_name = self::sanitize_hookname( $type . '_' . $name );
-
-					foreach ( $val as $hook_name => $arg_nums ) {
-
-						$hook_name = self::sanitize_hookname( $ext . '_' . $hook_name );
-
-						if ( is_callable( array( &$class, $method_name ) ) ) {
-
-							call_user_func( 'add_' . $type, $hook_name, array( &$class, $method_name ), $prio, $arg_nums );
-
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'added ' . $method_name . ' method ' . $type . ' for ' . $hook_name, 3 );
-							}
-
-						} else {
-
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( $method_name . ' method ' . $type . ' for ' . $hook_name . ' is not callable' );
-							}
-						}
-					}
+						return array_intersect( $size_names, array( $mixed ) );
 				}
 			}
+
+			return array();
 		}
 
 		/**
@@ -854,202 +882,164 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * Example $size_name = 'wpsso-opengraph' returns 'Open Graph' pre-translated.
+		 * Disable transient cache for debug mode. This method is also called for non-WordPress sharing / canonical URLs
+		 * with query arguments.
 		 */
-		public function get_image_size_label( $size_name ) {
+		public function disable_cache_filters( array $add_filters = array() ) {
 
-			if ( ! empty( $this->cache_size_labels[ $size_name ] ) ) {
+			if ( $this->p->debug->enabled ) {
 
-				return $this->cache_size_labels[ $size_name ];
-
+				$this->p->debug->mark();
 			}
 
-			return $size_name;
-		}
+			static $do_once = array();
 
-		/**
-		 * Example $size_name = 'wpsso-opengraph' returns 'og'.
-		 */
-		public function get_image_size_opt( $size_name ) {
+			$default_filters = array(
+				'cache_expire_head_markup'      => '__return_zero',
+				'cache_expire_setup_html'       => '__return_zero',
+				'cache_expire_shortcode_html'   => '__return_zero',
+				'cache_expire_sharing_buttons'  => '__return_zero',
+			);
 
-			if ( isset( $this->cache_size_opts[ $size_name ] ) ) {
+			$disable_filters = array();
 
-				return $this->cache_size_opts[ $size_name ];
+			foreach ( array_merge( $default_filters, $add_filters ) as $filter_name => $callback ) {
 
-			}
+				if ( ! isset( $do_once[ $filter_name ] ) ) {
 
-			return '';
-		}
+					$do_once[ $filter_name ] = true;
 
-		public function get_image_size_names( $mixed = null ) {
-
-			$size_names = array_keys( $this->cache_size_labels );
-
-			if ( null === $mixed ) {
-
-				return $size_names;
-
-			} elseif ( is_array( $mixed ) ) {
-
-				return array_intersect( $size_names, $mixed );	// Sanitize and return.
-
-			} elseif ( is_string( $mixed ) ) {
-
-				switch ( $mixed ) {
-
-					case 'opengraph':
-					case 'pinterest':
-					case 'thumbnail':
-
-						return array( $this->p->lca . '-' . $mixed );
-
-					case 'schema':
-
-						return array(
-							$this->p->lca . '-schema-1-1',
-							$this->p->lca . '-schema-4-3',
-							$this->p->lca . '-schema-16-9',
-						);
-
-					case $this->p->lca . '-schema':			// Deprecated on 2020/08/12.
-					case $this->p->lca . '-schema-article':		// Deprecated on 2020/08/12.
-
-						return array( $this->p->lca . '-schema-1-1' );
-
-					case $this->p->lca . '-schema-article-1-1':	// Deprecated on 2020/08/12.
-
-						return array( $this->p->lca . '-schema-1-1' );
-
-					case $this->p->lca . '-schema-article-4-3':	// Deprecated on 2020/08/12.
-
-						return array( $this->p->lca . '-schema-4-3' );
-
-					case $this->p->lca . '-schema-article-16-9':	// Deprecated on 2020/08/12.
-
-						return array( $this->p->lca . '-schema-16-9' );
-
-					default:
-
-						return array_intersect( $size_names, array( $mixed ) );
+					$disable_filters[ $filter_name ] = $callback;
 				}
 			}
 
-			return array();
+			if ( ! empty( $disable_filters ) ) {
+
+				$this->add_plugin_filters( $this, $disable_filters );
+			}
 		}
 
 		/**
-		 * Get the width, height and crop value for all image sizes. Returns an associative array with the image size name
-		 * as the array key value.
+		 * Called from several class __construct() methods to hook their filters.
 		 */
-		public function get_image_sizes( $attachment_id = false ) {
+		public function add_plugin_filters( $class, $filters, $prio = 10, $ext = '' ) {
 
-			$image_sizes = array();
-
-			foreach ( get_intermediate_image_sizes() as $size_name ) {
-
-				$image_sizes[ $size_name ] = $this->get_size_info( $size_name, $attachment_id );
-			}
-
-			return $image_sizes;
+			$this->add_plugin_hooks( 'filter', $class, $filters, $prio, $ext );
 		}
 
 		/**
-		 * Get the width, height and crop value for a specific image size.
+		 * Called from several class __construct() methods to hook their actions.
 		 */
-		public function get_size_info( $size_name = 'thumbnail', $attachment_id = false ) {
+		public function add_plugin_actions( $class, $actions, $prio = 10, $ext = '' ) {
 
-			if ( ! is_string( $size_name ) ) {	// Just in case.
+			$this->add_plugin_hooks( 'action', $class, $actions, $prio, $ext );
+		}
 
-				return false;
-			}
+		private function add_plugin_hooks( $type, $class, $hook_list, $prio, $ext = '' ) {
 
-			static $local_cache = array();
+			$ext = $ext === '' ? $this->p->lca : $ext;
 
-			if ( isset( $local_cache[ $size_name ][ $attachment_id ] ) ) {
+			foreach ( $hook_list as $name => $val ) {
 
-				return $local_cache[ $size_name ][ $attachment_id ];
-			}
+				if ( ! is_string( $name ) ) {
 
-			global $_wp_additional_image_sizes;
+					if ( $this->p->debug->enabled ) {
 
-			if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'width' ] ) ) {
+						$this->p->debug->log( $name . ' => ' . $val . ' ' . $type . ' skipped: filter name must be a string' );
+					}
 
-				$width = intval( $_wp_additional_image_sizes[ $size_name ][ 'width' ] );
+					continue;
+				}
 
-			} else {
+				/**
+				 * Example:
+				 * 	'json_data_https_schema_org_website' => 5
+				 */
+				if ( is_int( $val ) ) {
 
-				$width = get_option( $size_name . '_size_w' );
-			}
+					$arg_nums    = $val;
+					$hook_name   = self::sanitize_hookname( $ext . '_' . $name );
+					$method_name = self::sanitize_hookname( $type . '_' . $name );
 
-			if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'height' ] ) ) {
+					if ( is_callable( array( &$class, $method_name ) ) ) {
 
-				$height = intval( $_wp_additional_image_sizes[ $size_name ][ 'height' ] );
+						call_user_func( 'add_' . $type, $hook_name, array( &$class, $method_name ), $prio, $arg_nums );
 
-			} else {
+						if ( $this->p->debug->enabled ) {
 
-				$height = get_option( $size_name . '_size_h' );
-			}
+							$this->p->debug->log( 'added ' . $method_name . ' method ' . $type, 3 );
+						}
 
-			if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'crop' ] ) ) {
+					} else {
 
-				$crop = $_wp_additional_image_sizes[ $size_name ][ 'crop' ];
+						if ( $this->p->debug->enabled ) {
 
-			} else {
+							$this->p->debug->log( $method_name . ' method ' . $type . ' is not callable' );
+						}
+					}
 
-				$crop = get_option( $size_name . '_crop' );
-			}
+				/**
+				 * Example:
+				 * 	'add_schema_meta_array' => '__return_false'
+				 */
+				} elseif ( is_string( $val ) ) {
 
-			/**
-			 * Standardize to true, false, or non-empty array.
-			 */
-			if ( empty( $crop ) ) {	// 0, false, null, or empty array.
+					$arg_nums      = 1;
+					$hook_name     = self::sanitize_hookname( $ext . '_' . $name );
+					$function_name = self::sanitize_hookname( $val );
 
-				$crop = false;
+					if ( is_callable( $function_name ) ) {
 
-			} elseif ( ! is_array( $crop ) ) {	// 1, or true.
+						call_user_func( 'add_' . $type, $hook_name, $function_name, $prio, $arg_nums );
 
-				$crop = true;
-			}
+						if ( $this->p->debug->enabled ) {
 
-			/**
-			 * If the image size is cropped, then check the image metadata for a custom crop area.
-			 */
-			if ( $crop && $attachment_id && is_numeric( $attachment_id ) ) {
+							$this->p->debug->log( 'added ' . $function_name . ' function ' . $type . ' for ' . $hook_name, 3 );
+						}
 
-				$new_crop = is_array( $crop ) ? $crop : array( 'center', 'center' );
+					} else {
 
-				foreach ( array( 'attach_img_crop_x', 'attach_img_crop_y' ) as $crop_key => $md_key ) {
+						if ( $this->p->debug->enabled ) {
 
-					$value = $this->p->post->get_options( $attachment_id, $md_key );
+							$this->p->debug->log( $method_name . ' function ' . $type . ' for ' . $hook_name . ' is not callable' );
+						}
+					}
 
-					if ( $value && $value !== 'none' ) {		// Custom crop value found.
+				/**
+				 * Example:
+				 * 	'json_data_https_schema_org_article' => array(
+				 *		'json_data_https_schema_org_article'     => 5,
+				 *		'json_data_https_schema_org_newsarticle' => 5,
+				 *		'json_data_https_schema_org_techarticle' => 5,
+				 *	)
+				 */
+				} elseif ( is_array( $val ) ) {
 
-						$new_crop[ $crop_key ] = $value;	// Adjust the crop value.
+					$method_name = self::sanitize_hookname( $type . '_' . $name );
 
-						$crop = $new_crop;			// Update the crop array.
+					foreach ( $val as $hook_name => $arg_nums ) {
+
+						$hook_name = self::sanitize_hookname( $ext . '_' . $hook_name );
+
+						if ( is_callable( array( &$class, $method_name ) ) ) {
+
+							call_user_func( 'add_' . $type, $hook_name, array( &$class, $method_name ), $prio, $arg_nums );
+
+							if ( $this->p->debug->enabled ) {
+
+								$this->p->debug->log( 'added ' . $method_name . ' method ' . $type . ' for ' . $hook_name, 3 );
+							}
+
+						} else {
+
+							if ( $this->p->debug->enabled ) {
+
+								$this->p->debug->log( $method_name . ' method ' . $type . ' for ' . $hook_name . ' is not callable' );
+							}
+						}
 					}
 				}
 			}
-
-			if ( $crop === array( 'center', 'center' ) ) {
-
-				$crop = true;
-			}
-
-			$is_cropped = empty( $crop ) ? false : true;
-
-			/**
-			 * Crop can be true, false, or an array.
-			 */
-			return $local_cache[ $size_name ][ $attachment_id ] = array(
-				'width'        => $width,
-				'height'       => $height,
-				'crop'         => $crop,
-				'is_cropped'   => $is_cropped,
-				'dimensions'   => $width . 'x' . $height . ' ' . ( $is_cropped ? __( 'cropped', 'wpsso' ) : __( 'uncropped', 'wpsso' ) ),
-				'label_transl' => $this->get_image_size_label( $size_name ),
-				'opt_prefix'   => $this->get_image_size_opt( $size_name ),
-			);
 		}
 
 		/**
