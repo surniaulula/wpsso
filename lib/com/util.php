@@ -1608,35 +1608,35 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		/**
 		 * Deprecated on 2020/10/20.
 		 */
-		public static function get_open_close( array $opts, $key_o, $key_midday_close, $key_midday_o, $key_c ) {
+		public static function get_open_close( array $opts, $key_day_o, $key_midday_close, $key_midday_o, $key_day_c ) {
 
-			return self::get_open_close_hours_tz( $opts, $key_o, $key_midday_close, $key_midday_o, $key_c );
+			return self::get_open_close_hours_tz( $opts, $key_day_o, $key_midday_close, $key_midday_o, $key_day_c );
 		}
 
 		/**
 		 * Returns an empty array or an associative array of open => close hours with timezone offset.
 		 */
-		public static function get_open_close_hours_tz( array $opts, $key_o, $key_midday_c, $key_midday_o, $key_c, $key_tz = '' ) {
+		public static function get_open_close_hours_tz( array $opts, $key_day_o, $key_midday_c, $key_midday_o, $key_day_c, $key_tz = '' ) {
 
 			$oc_pairs        = array();
 			$is_valid_day    = false;
 			$is_valid_midday = false;
 
-			if ( ! empty( $opts[ $key_o ] ) && ! empty( $opts[ $key_c ] ) ) {
+			if ( ! empty( $opts[ $key_day_o ] ) && ! empty( $opts[ $key_day_c ] ) ) {
 
-				$is_valid_day = self::is_valid_day( $opts[ $key_o ], $opts[ $key_c ] );
+				$is_valid_day = self::is_valid_day( $opts[ $key_day_o ], $opts[ $key_day_c ] );
 
 				if ( ! empty( $opts[ $key_midday_c ] ) && ! empty( $opts[ $key_midday_o ] ) ) {
 
-					$is_valid_midday = self::is_valid_midday( $opts[ $key_o ], $opts[ $key_midday_c ], $opts[ $key_midday_o ], $opts[ $key_c ] );
+					$is_valid_midday = self::is_valid_midday( $opts[ $key_day_o ], $opts[ $key_midday_c ], $opts[ $key_midday_o ], $opts[ $key_day_c ] );
 				}
 
 				if ( $is_valid_day ) {
 
 					$timezone  = empty( $key_tz ) || empty( $opts[ $key_tz ] ) ? SucomUtilWP::get_default_timezone() : $opts[ $key_tz ];
 					$tz_offset = self::get_timezone_offset_hours( $timezone );
-					$hm_tz_o   = self::get_hm_tz( $opts[ $key_o ], $tz_offset );
-					$hm_tz_c   = self::get_hm_tz( $opts[ $key_c ], $tz_offset );
+					$hm_tz_o   = self::get_hm_tz( $opts[ $key_day_o ], $tz_offset );
+					$hm_tz_c   = self::get_hm_tz( $opts[ $key_day_c ], $tz_offset );
 
 					if ( $is_valid_midday ) {
 
@@ -1687,25 +1687,44 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
+		 * The $key_pattern value must be a string.
+		 *
+		 * The $replace value can be an associative array of $pattern => $replacement.
+		 *
 		 * Use reference for $input argument to allow unset of keys if $remove is true.
 		 */
-		public static function preg_grep_keys( $pattern, array &$input, $invert = false, $replace = false, $remove = false ) {
+		public static function preg_grep_keys( $key_pattern, array &$input, $invert = false, $replace = false, $remove = false ) {
 
 			$invert = $invert ? PREG_GREP_INVERT : null;
-			$match  = preg_grep( $pattern, array_keys( $input ), $invert );
-			$found  = array();
 
-			foreach ( $match as $key ) {
+			$matched_keys = preg_grep( $key_pattern, array_keys( $input ), $invert );
+
+			if ( is_array( $replace ) ) {
+
+				$preg_patterns = array_keys( $replace );
+
+				$preg_replacements = array_values( $replace );
+
+			} else {
+
+				$preg_patterns = $key_pattern;
+
+				$preg_replacements = $replace;
+			}
+
+			$new_array  = array();
+
+			foreach ( $matched_keys as $key ) {
 
 				if ( false !== $replace ) {	// Can be an empty string.
 
-					$fixed = preg_replace( $pattern, $replace, $key );
+					$fixed = preg_replace( $preg_patterns, $preg_replacements, $key );
 
-					$found[ $fixed ] = $input[ $key ];
+					$new_array[ $fixed ] = $input[ $key ];
 
 				} else {
 
-					$found[ $key ] = $input[ $key ];
+					$new_array[ $key ] = $input[ $key ];
 				}
 
 				if ( $remove ) {
@@ -1714,7 +1733,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
-			return $found;
+			return $new_array;
 		}
 
 		public static function rename_keys( &$opts = array(), $key_names = array(), $modifiers = true ) {

@@ -1241,7 +1241,19 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			if ( isset( $shipping_opts[ 'delivery_time' ] ) ) {
 
 				$delivery_opts =& $shipping_opts[ 'delivery_time' ];
+
 				$delivery_time = array();
+
+				/**
+				 * Property:
+				 *	businessDays as https://schema.org/OpeningHoursSpecification
+				 */
+				$opening_hours_spec = self::get_opening_hours_data( $delivery_opts, $shipdept = 'shipdept' );
+
+				if ( ! empty( $opening_hours_spec ) ) {
+
+					$delivery_time[ 'businessDays' ] = $opening_hours_spec;
+				}
 
 				foreach ( array(
 					'handling' => 'handlingTime',
@@ -1327,6 +1339,99 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$shipping_offer = apply_filters( $wpsso->lca . '_json_data_single_shipping_offer', $shipping_offer, $mod );
 
 			return $shipping_offer;
+		}
+
+		/**
+		 * Example $opts = Array (
+		 * 	[shipdept_rel] => http://adm.surniaulula.com/produit/a-variable-product/
+		 * 	[shipdept_timezone] => America/Vancouver
+		 * 	[shipdept_midday_close] => 12:00
+		 * 	[shipdept_midday_open] => 13:00
+		 * 	[shipdept_cutoff] => 16:00
+		 * 	[shipdept_day_sunday_open] => none
+		 * 	[shipdept_day_sunday_close] => none
+		 * 	[shipdept_day_monday_open] => 09:00
+		 * 	[shipdept_day_monday_close] => 17:00
+		 * 	[shipdept_day_tuesday_open] => 09:00
+		 * 	[shipdept_day_tuesday_close] => 17:00
+		 * 	[shipdept_day_wednesday_open] => 09:00
+		 * 	[shipdept_day_wednesday_close] => 17:00
+		 * 	[shipdept_day_thursday_open] => 09:00
+		 * 	[shipdept_day_thursday_close] => 17:00
+		 * 	[shipdept_day_friday_open] => 09:00
+		 * 	[shipdept_day_friday_close] => 17:00
+		 * 	[shipdept_day_saturday_open] => none
+		 * 	[shipdept_day_saturday_close] => none
+		 * 	[shipdept_day_publicholidays_open] => 09:00
+		 * 	[shipdept_day_publicholidays_close] => 12:00
+		 * )
+		 */
+		public static function get_opening_hours_data( array $opts, $opt_prefix = 'place' ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			$weekdays =& $wpsso->cf[ 'form' ][ 'weekdays' ];
+
+			$place_id = empty( $opts[ $opt_prefix . '_id' ] ) ? false : $opts[ $opt_prefix . '_id' ];
+
+			$hours_rel = empty( $opts[ $opt_prefix . '_rel' ] ) ? false : $opts[ $opt_prefix . '_rel' ];
+
+			$opening_hours_spec = array();
+
+			foreach ( $weekdays as $day_name => $day_label ) {
+
+				/**
+				 * Returns an empty array or an associative array of open => close hours with timezone offset.
+				 */
+				$open_close = SucomUtil::get_open_close_hours_tz(
+					$opts,
+					$opt_prefix . '_day_' . $day_name . '_open',
+					$opt_prefix . '_midday_close',
+					$opt_prefix . '_midday_open',
+					$opt_prefix . '_day_' . $day_name . '_close',
+					$opt_prefix . '_timezone'
+				);
+
+				if ( ! empty( $open_close ) ) {
+
+					$num = 0;
+
+					foreach ( $open_close as $open => $close ) {
+
+						$weekday_spec = array(
+							'@context'  => 'https://schema.org',
+							'@type'     => 'OpeningHoursSpecification',
+							'dayOfWeek' => $day_label,
+							'opens'     => $open,
+							'closes'    => $close,
+						);
+
+						foreach ( array(
+							'validFrom'    => $opt_prefix . '_season_from_date',
+							'validThrough' => $opt_prefix . '_season_to_date',
+						) as $prop_name => $opt_key ) {
+
+							if ( isset( $opts[ $opt_key ] ) && '' !== $opts[ $opt_key ] ) {
+
+								$weekday_spec[ $prop_name ] = $opts[ $opt_key ];
+							}
+						}
+
+						if ( ! empty( $hours_rel ) ) {
+
+							$hours_id = $opt_prefix . '-' . ( false !== $place_id ? $place_id . '-' : '' ) . $day_name . '-' . $num;
+
+							WpssoSchema::update_data_id( $weekday_spec, $hours_id, $hours_rel );
+						}
+
+						$opening_hours_spec[] = $weekday_spec;
+
+						$num++;
+					}
+				}
+			}
+
+			return $opening_hours_spec;
 		}
 
 		/**
@@ -1559,7 +1664,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						}
 					}
 
-					self::add_place_data( $json_ret[ 'location' ], $mod, $place_id, false );	// $list_element is false.
+					self::add_place_data( $json_ret[ 'location' ], $mod, $place_id, $list_element = false );
 				}
 			}
 
@@ -1849,8 +1954,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
-			list( $place_type_id, $place_type_url ) = self::get_type_id_url( $json_data, $place_opts,
-				$opt_key = 'place_schema_type', $def_type_id = 'place', $list_element );
+			list( $place_type_id, $place_type_url ) = self::get_type_id_url( $json_data, $place_opts, $opt_key = 'place_schema_type',
+				$def_type_id = 'place', $list_element );
 
 			$json_ret = WpssoSchema::get_schema_type_context( $place_type_url );
 
@@ -1916,51 +2021,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Property:
 			 *	openingHoursSpecification as https://schema.org/OpeningHoursSpecification
 			 */
-			$weekdays =& $wpsso->cf[ 'form' ][ 'weekdays' ];
-
-			$opening_hours_spec = array();
-
-			foreach ( $weekdays as $day_name => $day_label ) {
-
-				/**
-				 * Returns an empty array or an associative array of open => close hours with timezone offset.
-				 */
-				$open_close = SucomUtil::get_open_close_hours_tz(
-					$place_opts,
-					'place_day_' . $day_name . '_open',
-					'place_midday_close',
-					'place_midday_open',
-					'place_day_' . $day_name . '_close',
-					'place_timezone'
-				);
-
-				if ( ! empty( $open_close ) ) {
-
-					foreach ( $open_close as $open => $close ) {
-
-						$weekday_spec = array(
-							'@context'  => 'https://schema.org',
-							'@type'     => 'OpeningHoursSpecification',
-							'dayOfWeek' => $day_label,
-							'opens'     => $open,
-							'closes'    => $close,
-						);
-
-						foreach ( array(
-							'validFrom'    => 'place_season_from_date',
-							'validThrough' => 'place_season_to_date',
-						) as $prop_name => $opt_key ) {
-
-							if ( isset( $place_opts[ $opt_key ] ) && $place_opts[ $opt_key ] !== '' ) {
-
-								$weekday_spec[ $prop_name ] = $place_opts[ $opt_key ];
-							}
-						}
-
-						$opening_hours_spec[] = $weekday_spec;
-					}
-				}
-			}
+			$opening_hours_spec = self::get_opening_hours_data( $place_opts, $opt_prefix = 'place' );
 
 			if ( ! empty( $opening_hours_spec ) ) {
 
