@@ -1202,6 +1202,42 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
+			/**
+			 * Example $shipping_opts[ 'delivery_time' ] = Array (
+			 * 	[shipdept_rel] => http://adm.surniaulula.com/produit/a-variable-product/
+			 * 	[shipdept_timezone] => America/Vancouver
+			 * 	[shipdept_midday_close] => 12:00
+			 * 	[shipdept_midday_open] => 13:00
+			 * 	[shipdept_cutoff] => 16:00
+			 * 	[shipdept_day_sunday_open] => none
+			 * 	[shipdept_day_sunday_close] => none
+			 * 	[shipdept_day_monday_open] => 09:00
+			 * 	[shipdept_day_monday_close] => 17:00
+			 * 	[shipdept_day_tuesday_open] => 09:00
+			 * 	[shipdept_day_tuesday_close] => 17:00
+			 * 	[shipdept_day_wednesday_open] => 09:00
+			 * 	[shipdept_day_wednesday_close] => 17:00
+			 * 	[shipdept_day_thursday_open] => 09:00
+			 * 	[shipdept_day_thursday_close] => 17:00
+			 * 	[shipdept_day_friday_open] => 09:00
+			 * 	[shipdept_day_friday_close] => 17:00
+			 * 	[shipdept_day_saturday_open] => none
+			 * 	[shipdept_day_saturday_close] => none
+			 * 	[shipdept_day_publicholidays_open] => 09:00
+			 * 	[shipdept_day_publicholidays_close] => 12:00
+			 *  	[handling_rel] => http://adm.surniaulula.com/produit/a-variable-product/
+			 * 	[handling_maximum] => 1.5
+			 * 	[handling_unit_code] => DAY
+			 * 	[handling_unit_text] => d
+			 * 	[handling_name] => Days
+			 * 	[transit_rel] => http://adm.surniaulula.com/produit/a-variable-product/
+			 * 	[transit_minimum] => 5
+			 * 	[transit_maximum] => 7
+			 * 	[transit_unit_code] => DAY
+			 * 	[transit_unit_text] => d
+			 * 	[transit_name] => Days
+			 * )
+			 */
 			if ( isset( $shipping_opts[ 'delivery_time' ] ) ) {
 
 				$delivery_opts =& $shipping_opts[ 'delivery_time' ];
