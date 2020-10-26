@@ -1738,7 +1738,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( in_array( $role, $user_obj->roles ) ) {
 
-				$user_obj->remove_role( $person );	// Method does not return anything - assume it worked.
+				$user_obj->remove_role( $role );	// Method does not return anything - assume it worked.
 
 				return 1;
 			}
