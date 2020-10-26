@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.9.0\n"
+"Project-Id-Version: WPSSO Core 8.10.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-10-25 10:17-0700\n"
-"PO-Revision-Date: 2020-10-25 10:18-0700\n"
+"POT-Creation-Date: 2020-10-26 07:38-0700\n"
+"PO-Revision-Date: 2020-10-26 07:38-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -6821,12 +6821,12 @@ msgid "post"
 msgstr "article"
 
 #: lib/post.php:562 lib/register.php:347 lib/term.php:488 lib/user.php:461
-#: lib/util.php:808 lib/util.php:3388
+#: lib/util.php:836 lib/util.php:3378
 msgid "%s warning:"
 msgstr "Alerte %s:"
 
-#: lib/post.php:563 lib/term.php:489 lib/user.php:463 lib/util.php:810
-#: lib/util.php:3390
+#: lib/post.php:563 lib/term.php:489 lib/user.php:463 lib/util.php:838
+#: lib/util.php:3380
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr "supérieur au max recommandé de %1$0.3f secs"
 
@@ -7634,7 +7634,7 @@ msgid "The %1$s role has been added to %2$d content creators."
 msgstr "Le rôle %1$s a été ajouté à %2$d créateurs de contenu."
 
 #: lib/user.php:1607 lib/user.php:1710 lib/util-cache.php:158
-#: lib/util-cache.php:684
+#: lib/util-cache.php:682
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr "Le temps d'exécution total pour cette tâche était %0.3f secondes."
 
@@ -7769,7 +7769,7 @@ msgstr "Abandon de la tâche pour actualiser le cache transitoire - une autre t�
 msgid "A task to refresh the transient cache was started at %s."
 msgstr "Une tâche pour actualiser le cache transitoire a démarré à %s."
 
-#: lib/util-cache.php:681
+#: lib/util-cache.php:679
 msgid "The transient cache for %1$d posts, %2$d terms and %3$d users has been refreshed."
 msgstr "Le cache transitoires pour %1$d articles, %2$d termes et %3$d utilisateurs a été actualisé."
 
@@ -7882,67 +7882,67 @@ msgstr "once"
 msgid "lbs"
 msgstr "livre"
 
-#: lib/util.php:812
-msgid "Slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s (%3$s)."
-msgstr "Fonction PHP lente détectée - getimagesize() a pris %1$0.3f secs pour %2$s (%3$s)."
-
-#: lib/util.php:1049
+#: lib/util.php:535
 msgid "cropped"
 msgstr "recadrée"
 
-#: lib/util.php:1049
+#: lib/util.php:535
 msgid "uncropped"
 msgstr "non recadrée"
 
-#: lib/util.php:1396
+#: lib/util.php:840
+msgid "Slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s (%3$s)."
+msgstr "Fonction PHP lente détectée - getimagesize() a pris %1$0.3f secs pour %2$s (%3$s)."
+
+#: lib/util.php:1386
 msgid "Error reading the %s file for the article sections list."
 msgstr "Erreur de lecture du fichier %s pour la liste des rubriques d'article."
 
-#: lib/util.php:1500
+#: lib/util.php:1490
 msgid "Error reading the %s file for the product categories list."
 msgstr "Erreur de lecture du fichier %s pour de la liste des catégories de produit."
 
-#: lib/util.php:1623
+#: lib/util.php:1613
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr "L'argument de demande à %1$s n'est pas du HTML ou un URL valide."
 
-#: lib/util.php:1647
+#: lib/util.php:1637
 msgid "Error getting HTML from <a href=\"%1$s\">%1$s</a>."
 msgstr "Erreur lors de l'obtention du code HTML de <a href=\"%1$s\">%1$s</a>."
 
-#: lib/util.php:1676
+#: lib/util.php:1666
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr "La page Web récupéré de <a href=\"%1$s\">%1$s</a> est vide."
 
 #. translators: %1$s is the class name.
-#: lib/util.php:1871
+#: lib/util.php:1861
 msgid "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting provider to have the missing class installed."
 msgstr "La classe PHP <code>%1$s</code> est manquante &ndash; contactez votre fournisseur d'hébergement pour installer la classe manquante."
 
 #. translators: %1$s is the function name.
-#: lib/util.php:1885
+#: lib/util.php:1875
 msgid "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting provider to have the missing function installed."
 msgstr "La fonction PHP <code>%1$s</code> est manquante &ndash; contactez votre fournisseur d'hébergement pour installer la fonction manquante."
 
-#: lib/util.php:3392
+#: lib/util.php:3382
 msgid "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the \"%2$s\" filter (%3$s)."
 msgstr "Crochet(s) de filtre lent détecté - WordPress a pris %1$0.3f secs pour exécuter le filtre \"%2$s\" (%3$s)."
 
-#: lib/util.php:3407
+#: lib/util.php:3397
 msgid "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f seconds to execute. This is longer than the recommended maximum of %3$0.3f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr "Crochet(s) de filtre lent détecté &mdash le filtre WordPress %1$s a pris %2$0.3f secondes pour exécuter. Ceci est plus long que le maximum recommandé de %3$0.3f secondes et peut affecter le temps de chargement de la page. S'il vous plaît, envisagez d'examiner les fonctions d'extensions de tiers partie et de thème accrochées au filtre WordPress %1$s pour du code PHP lent et/ou sous-optimal."
 
-#: lib/util.php:3409
+#: lib/util.php:3399
 msgid "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the filter) may provide more information on the specific hook(s) or PHP code affecting performance."
 msgstr "Si vous activez l'extension %1$s et effacez le cache de %2$s (pour ré-appliquer le filtre), vous obtiendrez peut-être plus d'informations sur les crochets spécifiques ou le code PHP affectant les performances."
 
 #. translators: %1$s is an action message, %2$s is the module or post type name.
-#: lib/util.php:3921
+#: lib/util.php:3911
 msgid "%1$s for this %2$s"
 msgstr "%1$s pour cet %2$s"
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3931
+#: lib/util.php:3921
 msgid "%1$s for %2$s ID %3$d"
 msgstr "%1$s pour %2$s ID %3$d"
 

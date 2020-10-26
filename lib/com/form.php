@@ -2588,10 +2588,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			/**
 			 * The 'mouseenter' event is required for Firefox to render the option list correctly.
+			 *
+			 * sucomSelectLoadJson() is loaded in the footer, so test to make sure the function is available.
 			 */
 			$html .= '<script type="text/javascript">' . "\n";
 			$html .= 'jQuery( \'select#' . $select_id_esc . ':not( .json_loaded )\' ).on( \'mouseenter focus load_json\', function(){';
+			$html .= 'if ( typeof sucomSelectLoadJson === "function" ) {' ;
 			$html .= 'sucomSelectLoadJson( \'select#' . $select_id_esc . '\', \'' . $event_json_var . '\' );';
+			$html .= '}';
 			$html .= '});' . "\n";
 			$html .= '</script>' . "\n";
 

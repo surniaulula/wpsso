@@ -12,6 +12,7 @@ function sucomInitMetabox( container_id, doing_ajax ) {
 	var table_id = 'table.sucom-settings';
 
 	if ( 'undefined' !== typeof container_id && container_id ) {
+
 		table_id = container_id + ' ' + table_id;
 	}
 
@@ -53,8 +54,11 @@ function sucomInitMetabox( container_id, doing_ajax ) {
 	 * If we're refreshing a metabox via ajax, trigger a 'show' event for each table row displayed.
 	 */
 	if ( doing_ajax ) {
+
 		jQuery( table_id + ' tr' ).each( function() {
+
 			if ( jQuery( this ).css( 'display' ) !== 'none' ) {
+
 				jQuery( this ).show();
 			}
 		} );
@@ -69,6 +73,7 @@ function sucomSelectLoadJson( select_id, json_name ) {
 	 * Example: "select_schema_type_for_home_posts"
 	 */
 	if ( ! select_id ) {
+
 		return false;
 	}
 
@@ -78,12 +83,14 @@ function sucomSelectLoadJson( select_id, json_name ) {
 	 * Example: "sucom_form_select_schema_item_types_json"
 	 */
 	if ( ! window[ json_name + '_array_keys' ] || ! window[ json_name + '_array_values' ] ) {
+
 		return false;
 	}
 
 	var container = jQuery( select_id + ':not( .json_loaded )' );
 
 	if ( ! container.length ) {
+
 		return false;
 	}
 
@@ -110,10 +117,12 @@ function sucomSelectLoadJson( select_id, json_name ) {
 		select_opt_html += '<option value="' + option_value + '"';
 
 		if ( option_value == pre_selected ) {	/* Allow numeric string/integer comparison. */
+
 			select_opt_html += ' selected="selected"';
 		}
 
 		if ( default_value == option_value ) {	/* Allow numeric string/integer comparison. */
+
 			label_transl += ' ' + default_text;
 		}
 
@@ -141,6 +150,7 @@ function sucomEscAttr ( string ) {
 	};
 
 	return String( string ).replace( /[&<>"']/g, function ( s ) {
+
 		return entity_map[ s ];
 	} );
 }
@@ -168,6 +178,7 @@ function sucomSchemaTypeOgType() {
 		var def_og_type_id = select_og_type.attr( 'data-default-value' );
 
 		if ( og_type_linked.length ) {
+
 			jQuery( og_type_linked ).remove();
 		}
 
@@ -181,10 +192,13 @@ function sucomSchemaTypeOgType() {
 			var linked_to_label   = sucomAdminPageL10n._linked_to_msg.replace( /%s/, schema_type_label );
 
 			select_og_type.after( '<div id="og_type_linked" class="dashicons dashicons-admin-links linked_to_msg" title="' + linked_to_label + '"></div>' );
+
 			select_og_type.prop( 'disabled', true );
 
 			if ( schema_og_type_id !== og_type_id ) {
+
 				og_type_option.removeAttr( 'selected' ).filter( '[value=' + schema_og_type_id + ']' ).attr( 'selected', true )
+
 				select_og_type.trigger( 'load_json' ).val( schema_og_type_id ).trigger( 'change' );
 			}
 
@@ -220,6 +234,7 @@ function sucomTextLen( css_id ) {
 	 * If we have a max length, make sure it's larger than the minimum.
 	 */
 	if ( min_len && max_len && max_len < min_len ) {
+
 		max_len = min_len;
 	}
 
@@ -234,18 +249,21 @@ function sucomTextLen( css_id ) {
 			msg_transl = '{0} of {1} characters minimum';
 
 			if ( ! sucomAdminPageL10n._min_len_msg ) {
+
 				msg_transl = sucomAdminPageL10n._min_len_msg;
 			}
 
 		} else {
 
 			if ( max_len > min_len ) {
+
 				limit_html = String( min_len ) + '-' + String( max_len );
 			}
 
 			msg_transl = '{0} of {1} characters required';
 
 			if ( ! sucomAdminPageL10n._req_len_msg ) {
+
 				msg_transl = sucomAdminPageL10n._req_len_msg;
 			}
 		}
@@ -255,10 +273,12 @@ function sucomTextLen( css_id ) {
 		msg_transl = '{0} of {1} characters maximum';
 
 		if ( ! sucomAdminPageL10n._max_len_msg ) {
+
 			msg_transl = sucomAdminPageL10n._max_len_msg;
 		}
 
 	} else if ( ! sucomAdminPageL10n._len_msg ) {
+
 		msg_transl = sucomAdminPageL10n._len_msg;
 	}
 
@@ -268,17 +288,23 @@ function sucomTextLen( css_id ) {
 function sucomLenSpan( text_len, max_len, warn_len, min_len ) {
 
 	if ( ! min_len ) {
+
 		min_len = 0;
 	}
 
 	if ( ! max_len ) {
+
 		max_len = 0;
 	}
 
 	if ( ! warn_len ) {
+
 		if ( max_len ) {
+
 			warn_len = max_len - 20;
+
 		} else {
+
 			warn_len = 0;
 		}
 	}
@@ -286,14 +312,23 @@ function sucomLenSpan( text_len, max_len, warn_len, min_len ) {
 	var css_class = '';
 
 	if ( min_len && text_len < min_len ) {
+
 		css_class = 'bad';
+
 	} else if ( min_len && text_len >= min_len ) {
+
 		css_class = 'good';
+
 	} else if ( max_len && text_len >= ( max_len - 5 ) ) {
+
 		css_class = 'bad';
+
 	} else if ( warn_len && text_len >= warn_len ) {
+
 		css_class = 'warn';
+
 	} else {
+
 		css_class = 'good';
 	}
 
@@ -303,6 +338,7 @@ function sucomLenSpan( text_len, max_len, warn_len, min_len ) {
 function sucomClean( str ) {
 
 	if ( 'undefined' === typeof str || ! str.length ) {
+
 		return '';
 	}
 
@@ -324,10 +360,15 @@ function sucomTabs( metabox, tab, scroll_to ) {
 	var hash        = window.location.hash;
 
 	if ( hash === '' ) {
+
 		hash = default_tab;
+
 	} else if ( hash.search( 'sucom-tabset' + metabox + '-tab_' ) === -1 ) {
+
 		hash = default_tab;
+
 	} else {
+
 		hash = hash.replace( '#', '' );
 	}
 
@@ -474,6 +515,7 @@ String.prototype.formatUnicorn = String.prototype.formatUnicorn || function () {
 		var args = ( "string" === t || "number" === t ) ? Array.prototype.slice.call( arguments ) : arguments[ 0 ];
 
 		for ( key in args ) {
+
 			str = str.replace( new RegExp( "\\{" + key + "\\}", "gi" ), args[ key ] );
 		}
 	}
