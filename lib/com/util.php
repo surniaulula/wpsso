@@ -873,11 +873,18 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_formatted_timezone( $tz_name, $format ) {
 
+			static $local_cache = array();
+
+			if ( isset( $local_cache[ $tz_name ][ $format ] ) ) {
+
+				return $local_cache[ $tz_name ][ $format ];
+			}
+
 			$dt = new DateTime();
 
 			$dt->setTimeZone( new DateTimeZone( $tz_name ) );
 
-			return $dt->format( $format );
+			return $local_cache[ $tz_name ][ $format ] = $dt->format( $format );
 		}
 
 		private static function maybe_get_array( $arr, $key = false, $add_none = false ) {
@@ -1610,13 +1617,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function get_open_close( array $opts, $key_day_o, $key_midday_close, $key_midday_o, $key_day_c ) {
 
-			return self::get_open_close_hours_tz( $opts, $key_day_o, $key_midday_close, $key_midday_o, $key_day_c );
+			return self::get_opts_open_close_hm_tz( $opts, $key_day_o, $key_midday_close, $key_midday_o, $key_day_c );
 		}
 
 		/**
 		 * Returns an empty array or an associative array of open => close hours with timezone offset.
 		 */
-		public static function get_open_close_hours_tz( array $opts, $key_day_o, $key_midday_c, $key_midday_o, $key_day_c, $key_tz = '' ) {
+		public static function get_opts_open_close_hm_tz( array $opts, $key_day_o, $key_midday_c, $key_midday_o, $key_day_c, $key_tz = '' ) {
 
 			$oc_pairs        = array();
 			$is_valid_day    = false;
@@ -1635,13 +1642,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 					$timezone  = empty( $key_tz ) || empty( $opts[ $key_tz ] ) ? SucomUtilWP::get_default_timezone() : $opts[ $key_tz ];
 					$tz_offset = self::get_timezone_offset_hours( $timezone );
-					$hm_tz_o   = self::get_hm_tz( $opts[ $key_day_o ], $tz_offset );
-					$hm_tz_c   = self::get_hm_tz( $opts[ $key_day_c ], $tz_offset );
+					$hm_tz_o   = self::hm_tz( $opts[ $key_day_o ], $tz_offset );
+					$hm_tz_c   = self::hm_tz( $opts[ $key_day_c ], $tz_offset );
 
 					if ( $is_valid_midday ) {
 
-						$hm_tz_midday_c = self::get_hm_tz( $opts[ $key_midday_c ], $tz_offset );
-						$hm_tz_midday_o = self::get_hm_tz( $opts[ $key_midday_o ], $tz_offset );
+						$hm_tz_midday_c = self::hm_tz( $opts[ $key_midday_c ], $tz_offset );
+						$hm_tz_midday_o = self::hm_tz( $opts[ $key_midday_o ], $tz_offset );
 
 						$oc_pairs[ $hm_tz_o ]        = $hm_tz_midday_c;
 						$oc_pairs[ $hm_tz_midday_o ] = $hm_tz_c;
@@ -1656,7 +1663,21 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $oc_pairs;
 		}
 
-		private static function get_hm_tz( $hm, $tz_offset ) {
+		public static function get_opts_hm_tz( array $opts, $key_hm, $key_tz = '' ) {
+
+			if ( ! empty( $opts[ $key_hm ] ) ) {
+
+				$timezone  = empty( $key_tz ) || empty( $opts[ $key_tz ] ) ? SucomUtilWP::get_default_timezone() : $opts[ $key_tz ];
+				$tz_offset = self::get_timezone_offset_hours( $timezone );
+				$hm_tz     = self::hm_tz( $opts[ $key_hm ], $tz_offset );
+
+				return $hm_tz;
+			}
+
+			return false;
+		}
+
+		private static function hm_tz( $hm, $tz_offset ) {
 
 			if ( false !== ( $pos = strpos( $hm, 'Z' ) ) ) {
 
@@ -2672,16 +2693,21 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return apply_filters( 'sucom_available_locales', $available_locales );
 		}
 
-		public static function complete_type_options( $type_opts, array $mod, array $opts_md_pre ) {
+		/**
+		 * Add metadata defaults and custom values to the $type_opts array.
+		 */
+		public static function add_type_opts_md_pad( array &$type_opts, array $mod, array $opts_md_pre ) {
 
 			if ( is_object( $mod[ 'obj' ] ) ) {	// Just in case.
 
 				$md_defs = (array) $mod[ 'obj' ]->get_defaults( $mod[ 'id' ] );
+
 				$md_opts = (array) $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
 
 				foreach ( $opts_md_pre as $opt_key => $md_pre ) {
 
 					$md_defs = SucomUtil::preg_grep_keys( '/^' . $md_pre . '_/', $md_defs, false, $opt_key . '_' );
+
 					$md_opts = SucomUtil::preg_grep_keys( '/^' . $md_pre . '_/', $md_opts, false, $opt_key . '_' );
 
 					if ( is_array( $type_opts ) ) {
@@ -2694,8 +2720,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					}
 				}
 			}
-
-			return $type_opts;
 		}
 
 		public static function get_mod_anchor( array $mod ) {

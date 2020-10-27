@@ -326,7 +326,7 @@ if ( ! function_exists( 'wpsso_get_post_event_options' ) ) {
 
 	function wpsso_get_post_event_options( $post_id, $type_id = false ) {
 
-		return WpssoSchema::get_post_type_options( $post_id, 'event', $type_id );
+		return WpssoSchema::get_post_type_options( $post_id, $type = 'event', $type_id );
 	}
 }
 
@@ -334,7 +334,7 @@ if ( ! function_exists( 'wpsso_get_post_job_options' ) ) {
 
 	function wpsso_get_post_job_options( $post_id, $type_id = false ) {
 
-		return WpssoSchema::get_post_type_options( $post_id, 'job', $type_id );
+		return WpssoSchema::get_post_type_options( $post_id, $type = 'job', $type_id );
 	}
 }
 

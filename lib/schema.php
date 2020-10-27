@@ -2760,7 +2760,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * 
 		 * function wpsso_get_post_event_options( $post_id, $event_id = false ) {
 		 *
-		 * 	WpssoSchema::get_post_type_options( $post_id, 'event', $event_id );
+		 * 	WpssoSchema::get_post_type_options( $post_id, $type = 'event', $event_id );
 		 * }
 		 */
 		public static function get_post_type_options( $post_id, $type, $type_id = false ) {
@@ -2799,7 +2799,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			$type_opts = WpssoUtil::complete_type_options( $type_opts, $mod, array( $type => 'schema_' . $type ) );
+			/**
+			 * Add metadata defaults and custom values to the $type_opts array.
+			 */
+			SucomUtil::add_type_opts_md_pad( $type_opts, $mod, array( $type => 'schema_' . $type ) );
 
 			return $type_opts;
 		}

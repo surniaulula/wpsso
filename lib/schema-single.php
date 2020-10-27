@@ -416,7 +416,10 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			$event_opts = apply_filters( $wpsso->lca . '_get_event_options', false, $mod, $event_id );
 
-			$event_opts = SucomUtil::complete_type_options( $event_opts, $mod, array( 'event' => 'schema_event' ) );
+			/**
+			 * Add metadata defaults and custom values to the $type_opts array.
+			 */
+			SucomUtil::add_type_opts_md_pad( $event_opts, $mod, array( 'event' => 'schema_event' ) );
 
 			if ( empty( $event_opts ) ) {
 
@@ -711,13 +714,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/**
-			 * Begin creation of $job_opts array.
-			 *
 			 * Maybe get options from integration modules.
 			 */
 			$job_opts = apply_filters( $wpsso->lca . '_get_job_options', false, $mod, $job_id );
 
-			$job_opts = WpssoUtil::complete_type_options( $job_opts, $mod, array( 'job' => 'schema_job' ) );
+			/**
+			 * Add metadata defaults and custom values to the $type_opts array.
+			 */
+			SucomUtil::add_type_opts_md_pad( $job_opts, $mod, array( 'job' => 'schema_job' ) );
 
 			if ( empty( $job_opts ) ) {
 
@@ -745,7 +749,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * Get dates from the meta data options and add ISO formatted dates to the array (passed by reference).
 			 *
-			 * {job option name} => {meta data option name}.
+			 * {job option} => {meta data option} (ie. the option name from the document SSO metabox).
 			 */
 			WpssoSchema::add_mod_opts_date_iso( $mod, $job_opts, $opts_md_pre = array(
 				'job_expire' => 'schema_job_expire',	// Prefix for date, time, timezone, iso.
@@ -1242,17 +1246,27 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				$delivery_opts =& $shipping_opts[ 'delivery_time' ];
 
+				/**
+				 * See https://schema.org/ShippingDeliveryTime.
+				 */
 				$delivery_time = array();
 
 				/**
 				 * Property:
 				 *	businessDays as https://schema.org/OpeningHoursSpecification
 				 */
-				$opening_hours_spec = self::get_opening_hours_data( $delivery_opts, $shipdept = 'shipdept' );
+				$opening_hours_spec = self::get_opening_hours_data( $delivery_opts, $opt_prefix = 'shipdept' );
 
 				if ( ! empty( $opening_hours_spec ) ) {
 
 					$delivery_time[ 'businessDays' ] = $opening_hours_spec;
+				}
+
+				$cutoff_tz = SucomUtil::get_opts_hm_tz( $delivery_opts, $key_hm = 'shipdept_cutoff', $key_tz = 'shipdept_timezone' );
+
+				if ( ! empty( $cutoff_tz ) ) {
+
+					$delivery_time[ 'cutoffTime' ] = $cutoff_tz;
 				}
 
 				foreach ( array(
@@ -1383,7 +1397,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				/**
 				 * Returns an empty array or an associative array of open => close hours with timezone offset.
 				 */
-				$open_close = SucomUtil::get_open_close_hours_tz(
+				$open_close = SucomUtil::get_opts_open_close_hm_tz(
 					$opts,
 					$opt_prefix . '_day_' . $day_name . '_open',
 					$opt_prefix . '_midday_close',
@@ -1751,7 +1765,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			if ( empty( $person_opts ) ) {
 
-				if ( empty( $person_id ) || $person_id === 'none' ) {
+				if ( empty( $person_id ) || 'none' === $person_id ) {	// 0, an empty string, or a 'none' string.
 
 					if ( $wpsso->debug->enabled ) {
 
@@ -1939,7 +1953,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			$place_opts = apply_filters( $wpsso->lca . '_get_place_options', false, $mod, $place_id );
 
-			$place_opts = WpssoUtil::complete_type_options( $place_opts, $mod, array( 'place' => 'schema_place' ) );
+			/**
+			 * Add metadata defaults and custom values to the $type_opts array.
+			 *
+			 * SucomUtil::add_type_opts_md_pad() is not required here as we do not have any default or custom
+			 * 'schema_place' options in the Document SSO metabox.
+			 *
+			 * SucomUtil::add_type_opts_md_pad( $place_opts, $mod, array( 'place' => 'schema_place' ) );
+			 */
 
 			if ( empty( $place_opts ) ) {
 

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.10.0-dev.10\n"
+"Project-Id-Version: WPSSO Core 8.10.0-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -7982,7 +7982,7 @@ msgid ""
 "post ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/post.php:845 lib/post.php:1462 lib/schema.php:3281 lib/term.php:642
+#: lib/post.php:845 lib/post.php:1462 lib/schema.php:3284 lib/term.php:642
 #: lib/user.php:634
 msgid "checking meta tags"
 msgstr ""
@@ -8161,41 +8161,41 @@ msgstr ""
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
-#: lib/schema-single.php:1510
+#: lib/schema-single.php:1524
 msgid "adding schema organization"
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1574
+#: lib/schema-single.php:1588
 msgid ""
 "An organization logo image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1577
+#: lib/schema-single.php:1591
 msgid ""
 "An organization banner image (600x60px) is missing and required for the "
 "\"%1$s\" organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s is 'site' (translated) or 'ID #'.
-#: lib/schema-single.php:1580
+#: lib/schema-single.php:1594
 msgid ""
 "Please enter the missing image URL in the \"%1$s\" %2$s organization "
 "settings."
 msgstr ""
 
 #. translators: site, as in the "site organization settings".
-#: lib/schema-single.php:1602
+#: lib/schema-single.php:1616
 msgid "site"
 msgstr ""
 
-#: lib/schema-single.php:1783
+#: lib/schema-single.php:1797
 msgid "adding schema person"
 msgstr ""
 
-#: lib/schema-single.php:1969
+#: lib/schema-single.php:1990
 msgid "adding schema place"
 msgstr ""
 
