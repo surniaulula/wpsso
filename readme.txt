@@ -310,12 +310,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.10.0-dev.10 (2020/10/26)**
+**Version 8.10.0-b.1 (2020/10/27)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added 'businessDays' and 'cutoffTime' to Schema ShippingDeliveryTime markup for the WPSSO Shipping Delivery Time for WooCommerce add-on.
+	* Added 'businessDays' and 'cutoffTime' to Schema ShippingDeliveryTime markup for the [WPSSO Shipping Delivery Time for WooCommerce add-on](https://wordpress.org/plugins/wpsso-wc-shipping-delivery-time/).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -630,9 +630,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.10.0-dev.10 =
+= 8.10.0-b.1 =
 
-(2020/10/26) Added 'businessDays' and 'cutoffTime' to Schema ShippingDeliveryTime markup for the WPSSO Shipping Delivery Time for WooCommerce add-on.
+(2020/10/27) Added 'businessDays' and 'cutoffTime' to Schema ShippingDeliveryTime markup for the WPSSO Shipping Delivery Time for WooCommerce add-on.
 
 = 8.9.0 =
 
