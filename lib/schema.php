@@ -497,8 +497,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$this->p->debug->log( 'existing @type property is ' . print_r( $single_graph[ '@type' ], true ) );
 					}
 
-					$single_graph = apply_filters( $this->p->lca . '_json_data_graph_element',
-						$single_graph, $mod, $mt_og, $page_type_id, $is_main );
+					$single_graph = apply_filters( $this->p->lca . '_json_data_graph_element', $single_graph, $mod, $mt_og, $page_type_id, $is_main );
 
 					WpssoSchemaGraph::add_data( $single_graph );
 				}

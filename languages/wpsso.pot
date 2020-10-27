@@ -7982,7 +7982,7 @@ msgid ""
 "post ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/post.php:845 lib/post.php:1462 lib/schema.php:3284 lib/term.php:642
+#: lib/post.php:845 lib/post.php:1462 lib/schema.php:3283 lib/term.php:642
 #: lib/user.php:634
 msgid "checking meta tags"
 msgstr ""
@@ -8219,7 +8219,7 @@ msgctxt "option label"
 msgid "Schema Thumbnail"
 msgstr ""
 
-#: lib/schema.php:680
+#: lib/schema.php:679
 msgid "adding schema"
 msgstr ""
 

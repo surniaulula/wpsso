@@ -273,7 +273,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			if ( ! empty( $mt_single[ $media_pre . ':has_image' ] ) ) {
 
-				self::add_image_data_mt( $json_ret[ 'thumbnail' ], $mt_single, null, false );	// $list_element is false.
+				self::add_image_data_mt( $json_ret[ 'thumbnail' ], $mt_single, null, $image_list_el = false );
 			}
 
 			if ( ! empty( $mt_single[ $media_pre . ':tag' ] ) ) {
@@ -1043,7 +1043,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * Add the seller organization data.
 			 */
-			self::add_organization_data( $offer[ 'seller' ], $mod, 'site', 'org_logo_url', false );
+			self::add_organization_data( $offer[ 'seller' ], $mod, $org_id = 'site', $org_logo_key = 'org_logo_url', $org_list_el = false );
 
 			$offer = apply_filters( $wpsso->lca . '_json_data_single_offer', $offer, $mod );
 
@@ -1567,7 +1567,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				if ( ! empty( $org_opts[ $org_logo_key ] ) ) {
 
-					self::add_image_data_mt( $json_ret[ 'logo' ], $org_opts, $org_logo_key, false );	// $list_element is false.
+					self::add_image_data_mt( $json_ret[ 'logo' ], $org_opts, $org_logo_key, $image_list_el = false );
 				}
 
 				if ( ! $mod[ 'is_post' ] || 'publish' === $mod[ 'post_status' ] ) {
@@ -1678,7 +1678,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						}
 					}
 
-					self::add_place_data( $json_ret[ 'location' ], $mod, $place_id, $list_element = false );
+					self::add_place_data( $json_ret[ 'location' ], $mod, $place_id, $place_list_el = false );
 				}
 			}
 

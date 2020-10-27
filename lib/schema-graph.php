@@ -32,19 +32,36 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 
 		public static function add_data( $data ) {
 
+			static $local_home_url  = null;
+
+			if ( null === $local_home_url ) {
+
+				$local_home_url = untrailingslashit( get_home_url() );
+			}
+
 			if ( empty( $data[ '@id' ] ) ) {
 
 				self::$graph_data[] = $data;
 
 				return true;
 
-			} elseif ( ! isset( self::$graph_data[ $data[ '@id' ] ] ) ) {
+			} else {
 
-				if ( count( $data ) > 1 ) {	// Ignore arrays with only an @id.
+				$val =& $data[ '@id' ];
 
-					self::$graph_data[ $data[ '@id' ] ] = $data;
+				if ( 0 === strpos( $val, $local_home_url ) ) {
 
-					return true;
+					$val = str_replace( $local_home_url, '', $val );	// Shorten the @id value, if possible.
+				}
+
+				if ( ! isset( self::$graph_data[ $val ] ) ) {	// If not already added.
+
+					if ( count( $data ) > 1 ) {	// Ignore arrays with only an @id.
+
+						self::$graph_data[ $val ] = $data;
+
+						return true;
+					}
 				}
 			}
 
@@ -108,6 +125,7 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 			static $local_new_data  = array();
 			static $local_recursion = null;
 			static $local_id_anchor = null;
+			static $local_home_url  = null;
 
 			if ( isset( $json_data[ '@graph' ] ) ) {	// Top level of json.
 
@@ -128,6 +146,11 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 				$local_id_anchor = WpssoSchema::get_id_anchor();
 			}
 
+			if ( null === $local_home_url ) {
+
+				$local_home_url = untrailingslashit( get_home_url() );
+			}
+
 			foreach ( $json_data as $key => &$val ) {
 
 				if ( is_array( $val ) ) {
@@ -136,9 +159,14 @@ if ( ! class_exists( 'WpssoSchemaGraph' ) ) {
 
 				} elseif ( '@id' === $key ) {
 
+					if ( 0 === strpos( $val, $local_home_url ) ) {
+
+						$val = str_replace( $local_home_url, '', $val );	// Shorten the @id value, if possible.
+					}
+
 					if ( count( $json_data ) > 1 ) {	// Ignore arrays with a single element (ie. the @id property).
 
-						if ( strpos( $val, $local_id_anchor ) ) {	// Only optimize our own @ids.
+						if ( false !== strpos( $val, $local_id_anchor ) ) {	// Only optimize our own @ids.
 
 							if ( empty( $local_new_data[ $val ] ) ) {
 
