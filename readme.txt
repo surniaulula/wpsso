@@ -310,7 +310,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.10.0-rc.1 (2020/10/28)**
+**Version 8.10.0 (2020/10/28)**
 
 * **New Features**
 	* None.
@@ -631,7 +631,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.10.0-rc.1 =
+= 8.10.0 =
 
 (2020/10/28) Added 'businessDays' and 'cutoffTime' to Schema ShippingDeliveryTime markup for the WPSSO Shipping Delivery Time for WooCommerce add-on.
 
