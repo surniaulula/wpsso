@@ -10,7 +10,7 @@ Tags: twitter, pinterest, linkedin, facebook, open graph, google, rich pins, met
 Contributors: jsmoriss
 Requires PHP: 5.6
 Requires At Least: 4.4
-Tested Up To: 5.5.1
+Tested Up To: 5.5.2
 WC Tested Up To: 4.6.1
 Stable Tag: 8.9.0
 
