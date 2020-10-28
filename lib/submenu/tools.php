@@ -50,6 +50,9 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			), $min_int );
 		}
 
+		/**
+		 * Called from WpssoAdmin->show_setting_page().
+		 */
 		protected function show_post_body_setting_form() {
 
 			$role_label = _x( 'Person', 'user role', 'wpsso' );

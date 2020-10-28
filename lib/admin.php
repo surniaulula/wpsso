@@ -94,12 +94,28 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			/**
 			 * Provide plugin data / information from the readme.txt for additional add-ons. Don't hook the
-			 * 'plugins_api_result' filter if the update manager is active as it provides more complete plugin
-			 * data than what's available from the readme.txt.
+			 * 'plugins_api_result' filter if the update manager is active as it provides more complete plugin data
+			 * than what's available from the readme.txt.
 			 */
 			if ( empty( $this->p->avail[ 'p_ext' ][ 'um' ] ) ) {	// Since WPSSO UM v1.6.0.
 
 				add_filter( 'plugins_api_result', array( $this, 'external_plugin_data' ), 1000, 3 );	// Since WP v2.7.
+			}
+
+			/**
+			 * Add plugin / add-on settings links to the WordPress Plugins page. Hook this filter even when doing ajax
+			 * since the WordPress plugin search results are created using an ajax call.
+			 *
+			 * The 5th argument is $menu_lib = 'submenu', so always limit the method arguments to 4.
+			 */
+			add_filter( 'plugin_action_links', array( $this, 'add_plugin_action_links' ), 1000, 4 );
+
+			if ( is_multisite() ) {
+
+					/**
+					 * The 5th argument is $menu_lib = 'sitesubmenu', so always limit the method arguments to 4.
+					 */
+					add_filter( 'network_admin_plugin_action_links', array( $this, 'add_site_plugin_action_links' ), 1000, 4 );
 			}
 
 			if ( ! $doing_ajax ) {
@@ -121,17 +137,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					add_action( 'network_admin_menu', array( $this, 'load_network_menu_objects' ), -1000 );
 					add_action( 'network_admin_menu', array( $this, 'add_network_admin_menus' ), WPSSO_ADD_MENU_PRIORITY );
 					add_action( 'network_admin_edit_' . WPSSO_SITE_OPTIONS_NAME, array( $this, 'save_site_options' ) );
-
-					/**
-					 * Argument 5 is $menu_lib = 'sitesubmenu', so limit method arguments to 4.
-					 */
-					add_filter( 'network_admin_plugin_action_links', array( $this, 'add_site_plugin_action_links' ), 10, 4 );
 				}
-
-				/**
-				 * Argument 5 is $menu_lib = 'submenu', so limit method arguments to 4.
-				 */
-				add_filter( 'plugin_action_links', array( $this, 'add_plugin_action_links' ), 10, 4 );
 
 				add_filter( 'install_plugin_complete_actions', array( $this, 'plugin_complete_actions' ), 1000, 1 );
 				add_filter( 'update_plugin_complete_actions', array( $this, 'plugin_complete_actions' ), 1000, 1 );
@@ -591,6 +597,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$menu_title = $dashicon_html . '<div class="' . $css_class . ' menu-item-label">' . $menu_name . '</div>';
 
 			} else {
+
 				$menu_title = $menu_name;
 			}
 
@@ -614,7 +621,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/**
-		 * Plugin links for the WordPress network plugins page.
+		 * Add plugin links for the WordPress network plugins page.
 		 */
 		public function add_site_plugin_action_links( $action_links, $plugin_base, $plugin_data, $context, $menu_lib = 'sitesubmenu' ) {
 
@@ -622,7 +629,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/**
-		 * Plugin links for the WordPress plugins page.
+		 * Add plugin links for the WordPress plugins page.
+		 *
+		 * $plugin_data is an array of plugin data. See get_plugin_data().
+		 * $context can be 'all', 'active', 'inactive', 'recently_activated', 'upgrade', 'mustuse', 'dropins', or 'search'.
 		 */
 		public function add_plugin_action_links( $action_links, $plugin_base, $plugin_data, $context, $menu_lib = 'submenu'  ) {
 
@@ -2048,30 +2058,27 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( ! empty( $info[ 'url' ][ 'faqs' ] ) ) {
 
-					$action_links[] = sprintf( __( '<a href="%s">Frequently Asked Questions</a>',
-						'wpsso' ), $info[ 'url' ][ 'faqs' ] );
+					$action_links[] = sprintf( __( '<a href="%s">Frequently Asked Questions</a>', 'wpsso' ), $info[ 'url' ][ 'faqs' ] );
 				}
 
 				if ( ! empty( $info[ 'url' ][ 'notes' ] ) ) {
 
-					$action_links[] = sprintf( __( '<a href="%s">Notes and Documentation</a>',
-						'wpsso' ), $info[ 'url' ][ 'notes' ] );
+					$action_links[] = sprintf( __( '<a href="%s">Notes and Documentation</a>', 'wpsso' ), $info[ 'url' ][ 'notes' ] );
 				}
 
 				if ( ! empty( $info[ 'url' ][ 'support' ] ) && self::$pkg[ $ext ][ 'pp' ] ) {
 
-					$action_links[] = sprintf( __( '<a href="%s">Priority Support Ticket</a>',
-						'wpsso' ), $info[ 'url' ][ 'support' ] );
+					$action_links[] = sprintf( __( '<a href="%s">Priority Support Ticket</a>', 'wpsso' ), $info[ 'url' ][ 'support' ] );
 
 				} elseif ( ! empty( $info[ 'url' ][ 'forum' ] ) ) {
 
-					$action_links[] = sprintf( __( '<a href="%s">Community Support Forum</a>',
-						'wpsso' ), $info[ 'url' ][ 'forum' ] );
+					$action_links[] = sprintf( __( '<a href="%s">Community Support Forum</a>', 'wpsso' ), $info[ 'url' ][ 'forum' ] );
 				}
 
 				if ( ! empty( $action_links ) ) {
 
 					echo '<h4>' . $info[ 'name' ] . '</h4>' . "\n";
+
 					echo '<ul><li>' . implode( '</li><li>', $action_links ) . '</li></ul>' . "\n";
 				}
 			}
