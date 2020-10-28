@@ -25,13 +25,13 @@
 
 <p>WooCommerce is a popular e-commerce plugin that offers a lot of flexibility, with a solid and well designed codebase, but <strong>WooCommerce is not an SEO plugin</strong>, so its Schema markup for search engines is very basic, and its social meta tags for Facebook, Twitter, and other social sites are non-existent.</p>
 
-<p>You may have found your way here after sharing a WooCommerce product URL on Facebook, Pinterest, Twitter or another social site, or testing a product page using the <a href="https://search.google.com/test/rich-results">Google Rich Results Test Tool</a> or the <a href="https://search.google.com/structured-data/testing-tool/u/0/">Google Structured Data Test Tool</a>, and being unimpressed with the default Schema markup from WooCommerce. The following guide provides a quick and easy way to improve your WooCommerce product meta tags and Schema markup, which will improve your search ranking, the product information shown in search results and on social sites, and your click-through-rates from search results and social sites.</p>
+<p>You may have found your way here after sharing a WooCommerce product URL on Facebook, Pinterest, Twitter or another social site, or testing a product page using the <a href="https://search.google.com/test/rich-results">Google Rich Results Test Tool</a> or the <a href="https://search.google.com/structured-data/testing-tool/u/0/">Google Structured Data Test Tool</a>, and being unimpressed with the minimal Schema markup provided by the WooCommerce plugin. The following guide provides a quick and easy way to improve your WooCommerce product meta tags and Schema markup, which will improve your search ranking, the product information shown in search results and on social sites, and your click-through-rates from search results and social sites.</p>
 
 <p>Having better Schema markup will definitely improve your Google search ranking -- significantly in most cases. :)</p>
 
 <h3>Common Warnings for WooCommerce Markup</h3>
 
-<p>The <a href="https://search.google.com/test/rich-results">Google Rich Results Test Tool</a>, the <a href="https://search.google.com/structured-data/testing-tool/u/0/">Google Structured Data Test Tool</a>, or the <a href="https://search.google.com/search-console">Google Search Console</a> for site owners, may report one or more of the following errors <u>for the default Schema markup offered by WooCommerce</u>:</p>
+<p>The <a href="https://search.google.com/test/rich-results">Google Rich Results Test Tool</a>, the <a href="https://search.google.com/structured-data/testing-tool/u/0/">Google Structured Data Test Tool</a>, or the <a href="https://search.google.com/search-console">Google Search Console</a> for site owners, may report one or more of the following errors <u>for the minimal Schema markup offered by WooCommerce</u>:</p>
 
 <ul>
 	<li><strong>The aggregateRating field is recommended.</strong></li>
@@ -56,7 +56,7 @@
 	<li><strong>MPN</strong> (aka Manufacturer Part Number)</li>
 </ul>
 
-<p>Although Google does not warn about the lack of a <em>mainEntity</em> or <em>mainEntityOfPage</em> value in the default Schema markup from WooCommerce, <u>this property should be included to make sure Google recognizes the Schema Product markup as the main content of the webpage</u>.</p>
+<p>Although Google does not warn about the lack of a <em>mainEntity</em> or <em>mainEntityOfPage</em> value in the default Schema markup from WooCommerce, <u>this property should be included so Google can recognize the Schema Product markup as the main subject of the webpage</u>.</p>
 
 <h3>WPSSO - The Best Solution for Better Schema</h3>
 
@@ -92,7 +92,7 @@
 
 <p>See the <a href="https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/">WooCommerce integration notes</a> for details on different ways you can include this product information in your WooCommerce shop (ie. using an add-on for WPSSO Core, a supported 3rd party plugin, WooCommerce Product Attributes, WordPress Custom Fields, or customized values in a Document SSO metabox).</p>
 
-<h4>Do you ship your products?</h4>
+<h4>Do you ship products?</h4>
 
 <p><a href="https://webmasters.googleblog.com/2020/09/new-schemaorg-support-for-retailer.html">In September 2020, Google announced support for shipping details in Schema markup</a>. Adding shipping details to your Schema markup is especially important if you offer free or low-cost shipping, as this will make your products more appealing in search results. <a href="https://wpsso.com/extend/plugins/wpsso/">WPSSO Core Premium plugin</a> can retrieve shipping information for WooCommerce products, including shipping zones, methods, rates, and locations (continents, countries, states, and postal / zip codes). Using <a href="https://wordpress.org/plugins/wpsso-wc-shipping-delivery-time/">the WPSSO Shipping Delivery Time for WooCommerce add-on</a> is also recommended to include shipping delivery time estimates for WooCommerce shipping zones, methods, and classes.</p>
 
