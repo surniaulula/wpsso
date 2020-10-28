@@ -310,7 +310,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.10.0-b.1 (2020/10/27)**
+**Version 8.10.0-rc.1 (2020/10/28)**
 
 * **New Features**
 	* None.
@@ -323,6 +323,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new `WpssoSchemaSingle::get_opening_hours_data()` method.
 	* Removed arguments from the `WpssoUtil->add_plugin_image_sizes()` method as they are not required.
 	* Updated the `SucomUtil::preg_grep_keys()` method to handle a replacement string or array.
+	* Shortened Schema '@id' property values by removing the home URL prefix.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.4.
@@ -630,9 +631,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.10.0-b.1 =
+= 8.10.0-rc.1 =
 
-(2020/10/27) Added 'businessDays' and 'cutoffTime' to Schema ShippingDeliveryTime markup for the WPSSO Shipping Delivery Time for WooCommerce add-on.
+(2020/10/28) Added 'businessDays' and 'cutoffTime' to Schema ShippingDeliveryTime markup for the WPSSO Shipping Delivery Time for WooCommerce add-on.
 
 = 8.9.0 =
 
