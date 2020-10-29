@@ -4464,8 +4464,8 @@ msgstr ""
 msgid "Activate Twitter Card"
 msgstr ""
 
-#: lib/conflict.php:367 lib/conflict.php:530 lib/conflict.php:607
-#: lib/conflict.php:658
+#: lib/conflict.php:367 lib/conflict.php:530 lib/conflict.php:638
+#: lib/conflict.php:665 lib/conflict.php:692
 msgid "please disable the %1$s option in the %2$s settings."
 msgstr ""
 
@@ -4549,16 +4549,16 @@ msgid "Facebook profile URL"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:503 lib/conflict.php:614
+#: lib/conflict.php:503 lib/conflict.php:594
 msgid "Facebook App ID"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:505 lib/conflict.php:559
+#: lib/conflict.php:505 lib/conflict.php:561
 msgid "Twitter Username"
 msgstr ""
 
-#: lib/conflict.php:515 lib/conflict.php:579 lib/conflict.php:631
+#: lib/conflict.php:515 lib/conflict.php:583 lib/conflict.php:611
 msgid "please remove the %1$s option value in the %2$s settings."
 msgstr ""
 
@@ -4568,89 +4568,109 @@ msgid "Social sharing block"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:549 lib/conflict.php:596 lib/conflict.php:620
-#: lib/conflict.php:647
+#: lib/conflict.php:551 lib/conflict.php:600 lib/conflict.php:627
+#: lib/conflict.php:654 lib/conflict.php:681
 msgid "Yoast SEO"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:551 lib/conflict.php:598 lib/conflict.php:622
-#: lib/conflict.php:649
+#: lib/conflict.php:553 lib/conflict.php:602 lib/conflict.php:629
+#: lib/conflict.php:656
 msgid "Social"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:553
+#: lib/conflict.php:555
 msgid "Accounts"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:557
+#: lib/conflict.php:559
 msgid "Facebook Page URL"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:561
+#: lib/conflict.php:563
 msgid "Instagram URL"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:563
+#: lib/conflict.php:565
 msgid "LinkedIn URL"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:565
+#: lib/conflict.php:567
 msgid "MySpace URL"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:567
+#: lib/conflict.php:569
 msgid "Pinterest URL"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:569
+#: lib/conflict.php:571
 msgid "YouTube URL"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:590
-msgid "Add Open Graph meta data"
+#: lib/conflict.php:573
+msgid "Wikipedia URL"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:600 lib/conflict.php:624
+#: lib/conflict.php:604 lib/conflict.php:631
 msgid "Facebook"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:641
+#: lib/conflict.php:621
+msgid "Add Open Graph meta data"
+msgstr ""
+
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/conflict.php:648
 msgid "Add Twitter Card meta data"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:651
+#: lib/conflict.php:658
 msgid "Twitter"
 msgstr ""
 
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/conflict.php:675
+msgid "Enhanced Slack sharing"
+msgstr ""
+
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/conflict.php:683
+msgid "General"
+msgstr ""
+
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/conflict.php:685
+msgid "Features"
+msgstr ""
+
+#: lib/conflict.php:719
 msgid "An issue with WPBakery Visual Composer has been detected."
 msgstr ""
 
-#: lib/conflict.php:687
+#: lib/conflict.php:721
 msgid ""
 "WPBakery Visual Composer version %s and older are known to have a bug in "
 "their jQuery event handling code."
 msgstr ""
 
-#: lib/conflict.php:689
+#: lib/conflict.php:723
 msgid ""
 "To avoid jQuery crashing on show / hide jQuery events, please update your "
 "version of WPBakery Visual Composer immediately."
 msgstr ""
 
-#: lib/conflict.php:714
+#: lib/conflict.php:748
 msgid ""
 "The WordPress <a href=\"%s\">Search Engine Visibility</a> option is set to "
 "discourage search engines and social sites from indexing this site. This is "

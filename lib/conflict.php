@@ -537,10 +537,12 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 			 */
 			if ( $this->p->avail[ 'seo' ][ 'wpseo' ] ) {
 
-				$opts = get_option( 'wpseo_social' );
+				$opts = get_option( 'wpseo' );
+
+				$opts_social = get_option( 'wpseo_social' );
 
 				/**
-				 * Check for Social Pages.
+				 * Check for Social Page URLs.
 				 */
 				$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=wpseo_social#top#accounts' );
 
@@ -567,9 +569,11 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 					'pinterest_url' => '<strong>' . __( 'Pinterest URL', 'wordpress-seo' ) . '</strong>',
 					// translators: Please ignore - translation uses a different text domain.
 					'youtube_url'   => '<strong>' . __( 'YouTube URL', 'wordpress-seo' ) . '</strong>',
+					// translators: Please ignore - translation uses a different text domain.
+					'wikipedia_url' => '<strong>' . __( 'Wikipedia URL', 'wordpress-seo' ) . '</strong>',
 				) as $opt_key => $label_transl ) {
 
-					if ( ! empty( $opts[ $opt_key ] ) ) {
+					if ( ! empty( $opts_social[ $opt_key ] ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
@@ -582,33 +586,9 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				}
 
 				/**
-				 * Check for Open Graph.
+				 * Check for Facebook App ID.
 				 */
-				if ( ! empty( $opts[ 'opengraph' ] ) ) {
-
-					// translators: Please ignore - translation uses a different text domain.
-					$label_transl = '<strong>' . __( 'Add Open Graph meta data', 'wordpress-seo' ) . '</strong>';
-
-					$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=wpseo_social#top#facebook' );
-
-					$settings_link = '<a href="' . $settings_url . '">' .
-						// translators: Please ignore - translation uses a different text domain.
-						__( 'Yoast SEO', 'wordpress-seo' ) . ' &gt; ' .
-						// translators: Please ignore - translation uses a different text domain.
-						__( 'Social', 'wordpress-seo' ) . ' &gt; ' .
-						// translators: Please ignore - translation uses a different text domain.
-						__( 'Facebook', 'wordpress-seo' ) . '</a>';
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( $log_pre . 'wpseo opengraph option is enabled' );
-					}
-
-					$this->p->notice->err( $notice_pre . sprintf( __( 'please disable the %1$s option in the %2$s settings.',
-						'wpsso' ), $label_transl, $settings_link ) );
-				}
-
-				if ( ! empty( $opts[ 'fbadminapp' ] ) ) {
+				if ( ! empty( $opts_social[ 'fbadminapp' ] ) ) {
 
 					// translators: Please ignore - translation uses a different text domain.
 					$label_transl = '<strong>' . __( 'Facebook App ID', 'wordpress-seo' ) . '</strong>';
@@ -633,9 +613,36 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				}
 
 				/**
+				 * Check for Open Graph.
+				 */
+				if ( ! empty( $opts_social[ 'opengraph' ] ) ) {
+
+					// translators: Please ignore - translation uses a different text domain.
+					$label_transl = '<strong>' . __( 'Add Open Graph meta data', 'wordpress-seo' ) . '</strong>';
+
+					$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=wpseo_social#top#facebook' );
+
+					$settings_link = '<a href="' . $settings_url . '">' .
+						// translators: Please ignore - translation uses a different text domain.
+						__( 'Yoast SEO', 'wordpress-seo' ) . ' &gt; ' .
+						// translators: Please ignore - translation uses a different text domain.
+						__( 'Social', 'wordpress-seo' ) . ' &gt; ' .
+						// translators: Please ignore - translation uses a different text domain.
+						__( 'Facebook', 'wordpress-seo' ) . '</a>';
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( $log_pre . 'wpseo opengraph option is enabled' );
+					}
+
+					$this->p->notice->err( $notice_pre . sprintf( __( 'please disable the %1$s option in the %2$s settings.',
+						'wpsso' ), $label_transl, $settings_link ) );
+				}
+
+				/**
 				 * Check for Twitter Cards.
 				 */
-				if ( ! empty( $opts[ 'twitter' ] ) ) {
+				if ( ! empty( $opts_social[ 'twitter' ] ) ) {
 
 					// translators: Please ignore - translation uses a different text domain.
 					$label_transl = '<strong>' . __( 'Add Twitter Card meta data', 'wordpress-seo' ) . '</strong>';
@@ -653,6 +660,33 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 					if ( $this->p->debug->enabled ) {
 
 						$this->p->debug->log( $log_pre . 'wpseo twitter option is enabled' );
+					}
+
+					$this->p->notice->err( $notice_pre . sprintf( __( 'please disable the %1$s option in the %2$s settings.',
+						'wpsso' ), $label_transl, $settings_link ) );
+				}
+
+				/**
+				 * Check for Slack.
+				 */
+				if ( ! empty( $opts[ 'enable_enhanced_slack_sharing' ] ) ) {
+
+					// translators: Please ignore - translation uses a different text domain.
+					$label_transl = '<strong>' . __( 'Enhanced Slack sharing', 'wordpress-seo' ) . '</strong>';
+
+					$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=wpseo_dashboard#top#features' );
+
+					$settings_link = '<a href="' . $settings_url . '">' .
+						// translators: Please ignore - translation uses a different text domain.
+						__( 'Yoast SEO', 'wordpress-seo' ) . ' &gt; ' .
+						// translators: Please ignore - translation uses a different text domain.
+						__( 'General', 'wordpress-seo' ) . ' &gt; ' .
+						// translators: Please ignore - translation uses a different text domain.
+						__( 'Features', 'wordpress-seo' ) . '</a>';
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( $log_pre . 'wpseo slack option is enabled' );
 					}
 
 					$this->p->notice->err( $notice_pre . sprintf( __( 'please disable the %1$s option in the %2$s settings.',
