@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.10.1\n"
+"Project-Id-Version: WPSSO Core 8.11.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-10-29 07:24-0700\n"
-"PO-Revision-Date: 2020-10-29 07:25-0700\n"
+"POT-Creation-Date: 2020-10-29 14:01-0700\n"
+"PO-Revision-Date: 2020-10-29 14:02-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -377,13 +377,13 @@ msgid "The %1$s add-on requires %2$s version %3$s or newer (version %4$s is curr
 msgstr "L'ajout %1$s nécessite %2$s version %3$s ou plus récente (la version %4$s est actuellement installée)."
 
 #: gettext/gettext-lib-com.php:6 gettext/gettext-lib-com.php:30
-#: gettext/gettext-lib-com.php:38 lib/com/bfo.php:267 lib/com/cache.php:95
+#: gettext/gettext-lib-com.php:37 lib/com/bfo.php:267 lib/com/cache.php:95
 #: lib/com/notice.php:110
 msgid "%s Notice"
 msgstr "Avis %s"
 
 #: gettext/gettext-lib-com.php:7 gettext/gettext-lib-com.php:31
-#: gettext/gettext-lib-com.php:39 lib/com/bfo.php:272 lib/com/cache.php:100
+#: gettext/gettext-lib-com.php:38 lib/com/bfo.php:272 lib/com/cache.php:100
 #: lib/com/notice.php:115
 msgid "Notice"
 msgstr "Avis"
@@ -492,44 +492,37 @@ msgstr "Modifier"
 msgid "Reference: %s"
 msgstr "Référence: %s"
 
-#. translators: %s is duration in minutes.
-#: gettext/gettext-lib-com.php:37 lib/com/util.php:4604
-msgid "%s minute"
-msgid_plural "%s minutes"
-msgstr[0] "%s minute"
-msgstr[1] "%s minutes"
-
-#: gettext/gettext-lib-com.php:40 lib/com/bfo.php:288
+#: gettext/gettext-lib-com.php:39 lib/com/bfo.php:288
 msgid "The \"%1$s\" hook with priority %2$d in the \"%3$s\" filter has incorrectly sent output to the webpage."
 msgstr "Le crochet de filtre \"%1$s\" avec la priorité %2$d dans le filtre \"%3$s\" a envoyé une valeur à la sortie de page Web incorrectement."
 
-#: gettext/gettext-lib-com.php:41 lib/com/bfo.php:291
+#: gettext/gettext-lib-com.php:40 lib/com/bfo.php:291
 msgid "Unlike WordPress actions, WordPress filters must always return their text, not echo it to the webpage output."
 msgstr "Contrairement aux actions WordPress, les filtres WordPress doivent toujours renvoyer leur texte, et non faire l'écho (c'est-à-dire l'imprimer) à la page Web."
 
-#: gettext/gettext-lib-com.php:42 lib/com/bfo.php:294
+#: gettext/gettext-lib-com.php:41 lib/com/bfo.php:294
 msgid "Please contact the author of that filter and report this issue as a coding error."
 msgstr "Veuillez contacter l'auteur de ce filtre et signaler ce problème comme une erreur de codage."
 
-#: gettext/gettext-lib-com.php:43 lib/com/bfo.php:337
+#: gettext/gettext-lib-com.php:42 lib/com/bfo.php:337
 msgid "Incorrect webpage output:"
 msgstr "Sortie incorrecte à la page Web:"
 
-#: gettext/gettext-lib-com.php:44 lib/com/bfo.php:338
+#: gettext/gettext-lib-com.php:43 lib/com/bfo.php:338
 msgid "BEGIN OUTPUT"
 msgstr "DÉBUT DE SORTIE"
 
-#: gettext/gettext-lib-com.php:45 lib/com/bfo.php:339
+#: gettext/gettext-lib-com.php:44 lib/com/bfo.php:339
 msgid "END OUTPUT"
 msgstr "FIN DE SORTIE"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:47 lib/com/plugin.php:296
+#: gettext/gettext-lib-com.php:46 lib/com/plugin.php:296
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr "Les informations pour l'extension \"%s\" contiennent un lien de téléchargement invalide."
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:49 lib/com/plugin.php:307
+#: gettext/gettext-lib-com.php:48 lib/com/plugin.php:307
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr "L'information pour l'extension \"%s\" ne contient pas de lien de téléchargement."
 
@@ -6817,6 +6810,12 @@ msgstr "Archive %s"
 msgid "Search Results %1$s %2$s"
 msgstr "Résultat de recherche %1$s %2$s"
 
+#: lib/page.php:1251
+msgid "%s minute"
+msgid_plural "%s minutes"
+msgstr[0] "%s minute"
+msgstr[1] "%s minutes"
+
 #: lib/pinterest.php:127 lib/submenu/image-sizes.php:103
 msgctxt "option label"
 msgid "Pinterest Pin It"
@@ -7579,25 +7578,41 @@ msgstr "Requête lente détectée - get_posts() a pris %1$0.3f secs pour obtenir
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr "Privilèges insuffisants pour enregistrer les réglages pour le terme ID %1$s."
 
-#: lib/twittercard.php:532
+#: lib/twittercard.php:197
 msgctxt "metabox title"
 msgid "Twitter App Card"
 msgstr "Carte app de Twitter"
 
-#: lib/twittercard.php:540
+#: lib/twittercard.php:205
 msgctxt "metabox title"
 msgid "Twitter Player Card"
 msgstr "Carte joueur de Twitter"
 
-#: lib/twittercard.php:548
+#: lib/twittercard.php:213
 msgctxt "metabox title"
 msgid "Twitter Summary Card"
 msgstr "Carte sommaire de Twitter"
 
-#: lib/twittercard.php:556
+#: lib/twittercard.php:221
 msgctxt "metabox title"
 msgid "Twitter Large Image Summary Card"
 msgstr "Carte Twitter sommaire grande image"
+
+#: lib/twittercard.php:643
+msgid "Written by"
+msgstr "Écrit par"
+
+#: lib/twittercard.php:647
+msgid "Est. reading time"
+msgstr "Temps de lecture est."
+
+#: lib/twittercard.php:656
+msgid "Price"
+msgstr "Prix"
+
+#: lib/twittercard.php:673
+msgid "Availability"
+msgstr "Disponibilité"
 
 #: lib/user.php:177
 msgctxt "module name"
