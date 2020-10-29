@@ -246,7 +246,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 		}
 
 		/**
-		 * Player card.
+		 * Player video card.
 		 *
 		 * The twitter:player:stream meta tags are used for self-hosted MP4 videos. The videos provided by
 		 * YouTube, Vimeo, Wistia, etc. are application/x-shockwave-flash or text/html.
@@ -448,6 +448,9 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			}
 		}
 
+		/**
+		 * Post summary or large image summary card.
+		 */
 		private function maybe_add_post_card( &$mt_tc, $mod, $mt_og, $author_id ) {	// Pass by reference is OK.
 
 			if ( $this->p->debug->enabled ) {
@@ -564,6 +567,9 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			}
 		}
 
+		/**
+		 * Default card.
+		 */
 		private function maybe_add_default_card( &$mt_tc, $mod, $mt_og, $author_id ) {	// Pass by reference is OK.
 
 			if ( $this->p->debug->enabled ) {
@@ -616,6 +622,9 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			}
 		}
 
+		/**
+		 * Additional article and product data.
+		 */
 		private function maybe_add_extra_data( &$mt_tc, $mod, $mt_og, $author_id ) {	// Pass by reference is OK.
 
 			if ( $this->p->debug->enabled ) {

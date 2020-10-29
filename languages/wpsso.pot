@@ -8779,19 +8779,19 @@ msgctxt "metabox title"
 msgid "Twitter Large Image Summary Card"
 msgstr ""
 
-#: lib/twittercard.php:634
+#: lib/twittercard.php:643
 msgid "Written by"
 msgstr ""
 
-#: lib/twittercard.php:638
+#: lib/twittercard.php:647
 msgid "Est. reading time"
 msgstr ""
 
-#: lib/twittercard.php:647
+#: lib/twittercard.php:656
 msgid "Price"
 msgstr ""
 
-#: lib/twittercard.php:664
+#: lib/twittercard.php:673
 msgid "Availability"
 msgstr ""
 
