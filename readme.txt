@@ -310,12 +310,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.10.1-dev.1 (2020/10/29)**
+**Version 8.11.0-dev.2 (2020/10/29)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added extra article and product Twitter Card meta tags for Slack.
 * **Bugfixes**
 	* Fixed formatting of the Schema 'cutoffTime', 'opens', and 'closes' property values.
 * **Developer Notes**
@@ -645,9 +645,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.10.1-dev.1 =
+= 8.11.0-dev.2 =
 
-(2020/10/29) Fixed formatting of the Schema 'cutoffTime', 'opens', and 'closes' property values.
+(2020/10/29) Added extra article and product Twitter Card meta tags for Slack. Fixed formatting of the Schema 'cutoffTime', 'opens', and 'closes' property values.
 
 = 8.10.0 =
 
