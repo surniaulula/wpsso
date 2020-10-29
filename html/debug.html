@@ -9,7 +9,7 @@
 
 </blockquote>
 
-<h3>JavaScript and jQuery errors</h3>
+<h3>JavaScript and jQuery Errors</h3>
 
 <p>Since the advent of "page builders" and the new block editor in WordPress v5, JavaScript and jQuery errors have become more common and not easily diagnosed using standard WordPress debugging methods, like defining the WordPress WP_DEBUG constant (see below) and using the Query Monitor plugin.</p>
 
@@ -25,7 +25,7 @@
 
 <p>Some older versions of PHP are known to have bugs in their ImageMagick library or PHP may have timed-out when trying to create several thumbnail images in a row (<a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-an-http-error-when-uploading-images/">see this FAQ for details</a>), or PHP may have run out of memory (<a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-a-php-fatal-out-of-memory-error/">see this FAQ for details</a>), or WPSSO Core may be triggering a bug in your theme or another plugin (try disabling WPSSO Core's use of the WordPress content filter as suggested below).</p>
 
-<h3>WordPress Content Filters</h3>
+<h3>Timeout or Layout Issues</h3>
 
 <blockquote>
 	<p>Related FAQ: <a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-are-some-html-elements-missing-misaligned-different/">Why are some HTML elements missing / misaligned / different?</a></p>
@@ -37,9 +37,9 @@
 	<p>See the "<a href="https://make.wordpress.org/plugins/2017/10/03/is-your-filter-going-to-break-the-layout/">Is your filter going to break the layout?</a>" post on the Make WordPress Plugins blog for additional information on the use (and common misuse) of 'the_content' filter by developers.</p>
 </blockquote>
 
-<p>Under the <em>SSO &gt; Advanced Settings &gt; Content and Text</em> tab, you can uncheck the "Use WordPress Content Filters" and "Use WordPress Excerpt Filters" to see if your problem is related to a WordPress filter hook. If unchecking these options fixes your problem, <strong>you should determine which plugin/theme is at fault and report the issue with the plugin/theme author</strong>. Using the WordPress <code><span class="spanvar">apply_filters()</span></code> function should not break a theme and/or plugin.</p>
+<p>Under the <em>SSO &gt; Advanced Settings &gt; Content and Text</em> tab, you can uncheck the "Use WordPress Content Filters" and "Use WordPress Excerpt Filters" to see if your problem is related to a WordPress filter hook. If unchecking these options fixes your problem, <strong>you should determine which plugin or theme is at fault and report the issue with the plugin or theme author</strong>. Using the WordPress <code>apply_filters()</code> function should create timeout or HTML page layout issues.</p>
 
-<p>If you disable the content filter, <em>and your Post / Page content relies upon shortcodes for its text</em>, then you may find that WPSSO Core cannot create accurate description meta tags (or any description text at all). WPSSO Core looks for a custom description and excerpt before falling back to using the content text. In the case where content filters are disabled, and the content uses shortcodes for its text, then you may have to enter an excerpt and/or custom description for those Posts / Pages.</p>
+<p>If you disable the content filter, <em>and your Post / Page content relies upon shortcodes for its text</em>, then you may find that WPSSO Core cannot create accurate description meta tags. WPSSO Core looks for a custom description and excerpt before falling back to using the content text. In the case where content filters are disabled, and the content uses shortcodes for its text, then you may have to enter an excerpt and/or custom description for those Posts / Pages.</p>
 
 <p>Since WPSSO Core uses the custom description and/or post excerpt <em>before</em> falling back the content, using a custom description and/or excerpt for a few Posts / Pages could be another alternative to disabling the content filter for the whole website.</p>
 

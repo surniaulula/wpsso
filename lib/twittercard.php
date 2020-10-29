@@ -66,6 +66,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			 * Read and unset pre-defined twitter card values in the open graph meta tag array.
 			 */
 			$mt_tc = SucomUtil::preg_grep_keys( '/^twitter:/', $mt_og, false, false, true );
+
 			$mt_tc = apply_filters( $this->p->lca . '_tc_seed', $mt_tc, $mod );
 
 			/**
@@ -88,11 +89,6 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			}
 
 			if ( ! isset( $mt_tc[ 'twitter:description' ] ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'getting description for twitter:description meta tag' );
-				}
 
 				$mt_tc[ 'twitter:description' ] = $this->p->page->get_description( $this->p->options[ 'tc_desc_max_len' ],
 					$dots = '...', $mod, $read_cache = true, $this->p->options[ 'og_desc_hashtags' ], $do_encode = true,
@@ -131,173 +127,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			 */
 			if ( ! isset( $mt_tc[ 'twitter:card' ] ) ) {
 
-				if ( isset( $mt_og[ 'og:video' ] ) && count( $mt_og[ 'og:video' ] ) > 0 ) {
-
-					foreach ( $mt_og[ 'og:video' ] as $mt_single_video ) {
-
-						$player_embed_url  = '';
-						$player_stream_url = '';
-
-						/**
-						 * Check for internal meta tag values.
-						 */
-						if ( ! empty( $mt_single_video[ 'og:video:embed_url' ] ) ) {
-
-							$player_embed_url = $mt_single_video[ 'og:video:embed_url' ];
-
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'player card: embed url = ' . $player_embed_url );
-							}
-						}
-
-						if ( ! empty( $mt_single_video[ 'og:video:stream_url' ] ) ) {
-
-							$player_stream_url = $mt_single_video[ 'og:video:stream_url' ];
-
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'player card: stream url = ' . $player_stream_url );
-							}
-						}
-
-						/**
-						 * Check for mime-type meta tag values.
-						 */
-						if ( isset( $mt_single_video[ 'og:video:type' ] ) ) {
-
-							switch ( $mt_single_video[ 'og:video:type' ] ) {
-
-								/**
-								 * twitter:player
-								 *
-								 * HTTPS URL to iFrame player. This must be a HTTPS URL which does not generate active 
-								 * mixed content warnings in a web browser. The audio or video player must not require
-								 * plugins such as Adobe Flash.
-								 */
-								case 'text/html':
-
-									if ( empty( $player_embed_url ) ) {
-
-										$player_embed_url = SucomUtil::get_first_mt_media_url( $mt_single_video, $media_pre = 'og:video' );
-
-										if ( $this->p->debug->enabled ) {
-
-											$this->p->debug->log( 'player card: ' . $mt_single_video[ 'og:video:type' ] .
-												' url = ' . $player_embed_url );
-										}
-									}
-
-									break;
-
-								/**
-								 * twitter:player:stream
-								 */
-								case 'video/mp4':
-
-									if ( empty( $player_stream_url ) ) {
-
-										$player_stream_url = SucomUtil::get_first_mt_media_url( $mt_single_video, $media_pre = 'og:video' );
-
-										if ( $this->p->debug->enabled ) {
-
-											$this->p->debug->log( 'player card: ' . $mt_single_video[ 'og:video:type' ] .
-												' url = ' . $player_stream_url );
-										}
-									}
-
-									break;
-
-								default:
-
-									if ( $this->p->debug->enabled ) {
-
-										$this->p->debug->log( 'player card: video type "' .
-											$mt_single_video[ 'og:video:type' ] . '" is unknown' );
-									}
-
-									break;
-							}
-						}
-
-						/**
-						 * Set the twitter:player meta tag value(s).
-						 */
-						if ( ! empty( $player_embed_url ) ) {
-
-							$mt_tc[ 'twitter:card' ]   = 'player';
-							$mt_tc[ 'twitter:player' ] = $player_embed_url;
-						}
-
-						if ( ! empty( $player_stream_url ) ) {
-
-							$mt_tc[ 'twitter:card' ] = 'player';
-
-							if ( empty( $mt_tc[ 'twitter:player' ] ) ) {
-
-								$mt_tc[ 'twitter:player' ] = $player_stream_url;	// Fallback to video/mp4.
-							}
-
-							$mt_tc[ 'twitter:player:stream' ]              = $player_stream_url;
-							$mt_tc[ 'twitter:player:stream:content_type' ] = $mt_single_video[ 'og:video:type' ];
-						}
-
-						/**
-						 * Set twitter:player related values (player width, height, mobile apps, etc.)
-						 */
-						if ( ! empty( $mt_tc[ 'twitter:card' ] ) ) {
-
-							foreach ( array(
-								'og:video:width'           => 'twitter:player:width',
-								'og:video:height'          => 'twitter:player:height',
-								'og:video:iphone_name'     => 'twitter:app:name:iphone',
-								'og:video:iphone_id'       => 'twitter:app:id:iphone',
-								'og:video:iphone_url'      => 'twitter:app:url:iphone',
-								'og:video:ipad_name'       => 'twitter:app:name:ipad',
-								'og:video:ipad_id'         => 'twitter:app:id:ipad',
-								'og:video:ipad_url'        => 'twitter:app:url:ipad',
-								'og:video:googleplay_name' => 'twitter:app:name:googleplay',
-								'og:video:googleplay_id'   => 'twitter:app:id:googleplay',
-								'og:video:googleplay_url'  => 'twitter:app:url:googleplay',
-							) as $og_name => $tc_name ) {
-
-								if ( ! empty( $mt_single_video[ $og_name ] ) ) {
-
-									$mt_tc[ $tc_name ] = $mt_single_video[ $og_name ];
-								}
-							}
-
-							/**
-							 * Get the video preview image (if one is available).
-							 */
-							$mt_tc[ 'twitter:image' ] = SucomUtil::get_first_mt_media_url( $mt_single_video );
-
-							if ( ! empty( $mt_single_video[ 'og:image:alt' ] ) ) {
-
-								$mt_tc[ 'twitter:image:alt' ] = $mt_single_video[ 'og:image:alt' ];
-							}
-
-							/**
-							 * Fallback to the open graph image.
-							 */
-							if ( empty( $mt_tc[ 'twitter:image' ] ) && ! empty( $mt_og[ 'og:image' ] ) ) {
-
-								if ( $this->p->debug->enabled ) {
-
-									$this->p->debug->log( 'player card: no video image - using og:image instead' );
-								}
-
-								$mt_tc[ 'twitter:image' ] = SucomUtil::get_first_mt_media_url( $mt_og[ 'og:image' ] );
-							}
-						}
-
-						break;	// Use only the first video.
-					}
-
-				} elseif ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'player card: no videos found' );
-				}
+				$this->maybe_add_player_card( $mt_tc, $mod, $mt_og );
 			}
 
 			/**
@@ -458,6 +288,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 					}
 
 				} else {
+
 					$this->p->debug->log( 'no twitter card type defined' );
 				}
 			}
@@ -493,15 +324,18 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 				$card_type = $head[ 'twitter:card' ];
 
-			} elseif ( is_string( $mixed ) ) {	// Aka 'singular' or 'default'.
+			} elseif ( is_string( $mixed ) ) {	// $mixed is 'singular' or 'default'.
 
 				if ( ! empty( $this->p->options[ 'tc_type_' . $mixed ] ) ) {
 
 					$card_type = $this->p->options[ 'tc_type_' . $mixed ];
 				}
 
-			} elseif ( is_array( $mixed ) ) {	// Aka $mod.
+			} elseif ( is_array( $mixed ) ) {	// $mixed is $mod.
 
+				/**
+				 * Get the default card type for this post type.
+				 */
 				if ( ! empty( $mixed[ 'is_post' ] ) ) {
 
 					if ( ! empty( $mixed[ 'post_type' ] ) && ! empty( $this->p->options[ 'tc_type_for_' . $mixed[ 'post_type' ] ] ) ) {
@@ -514,6 +348,9 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 					}
 				}
 
+				/**
+				 * Maybe get a custom card type.
+				 */
 				if ( ! empty( $mixed[ 'obj' ] ) ) {
 
 					$md_card_type = $mixed[ 'obj' ]->get_options( $mixed[ 'id' ], 'tc_type' );	// Returns null if index key not found.
@@ -578,6 +415,177 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			}
 
 			return $card_info;
+		}
+
+		private function maybe_add_player_card( &$mt_tc, $mod, $mt_og ) {
+
+			if ( isset( $mt_og[ 'og:video' ] ) && count( $mt_og[ 'og:video' ] ) > 0 ) {
+
+				foreach ( $mt_og[ 'og:video' ] as $mt_single_video ) {
+
+					$player_embed_url  = '';
+					$player_stream_url = '';
+
+					/**
+					 * Check for internal meta tag embed_url or stream_url.
+					 */
+					if ( ! empty( $mt_single_video[ 'og:video:embed_url' ] ) ) {
+
+						$player_embed_url = $mt_single_video[ 'og:video:embed_url' ];
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'player card: embed url = ' . $player_embed_url );
+						}
+					}
+
+					if ( ! empty( $mt_single_video[ 'og:video:stream_url' ] ) ) {
+
+						$player_stream_url = $mt_single_video[ 'og:video:stream_url' ];
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'player card: stream url = ' . $player_stream_url );
+						}
+					}
+
+					/**
+					 * Check for a video mime-type meta tag.
+					 */
+					if ( isset( $mt_single_video[ 'og:video:type' ] ) ) {
+
+						switch ( $mt_single_video[ 'og:video:type' ] ) {
+
+							/**
+							 * twitter:player
+							 *
+							 * HTTPS URL to iFrame player. This must be a HTTPS URL which does not generate active 
+							 * mixed content warnings in a web browser. The audio or video player must not require
+							 * plugins such as Adobe Flash.
+							 */
+							case 'text/html':
+
+								if ( empty( $player_embed_url ) ) {
+
+									$player_embed_url = SucomUtil::get_first_mt_media_url( $mt_single_video, $media_pre = 'og:video' );
+
+									if ( $this->p->debug->enabled ) {
+
+										$this->p->debug->log( 'player card: ' . $mt_single_video[ 'og:video:type' ] .
+											' url = ' . $player_embed_url );
+									}
+								}
+
+								break;
+
+							/**
+							 * twitter:player:stream
+							 */
+							case 'video/mp4':
+
+								if ( empty( $player_stream_url ) ) {
+
+									$player_stream_url = SucomUtil::get_first_mt_media_url( $mt_single_video, $media_pre = 'og:video' );
+
+									if ( $this->p->debug->enabled ) {
+
+										$this->p->debug->log( 'player card: ' . $mt_single_video[ 'og:video:type' ] .
+											' url = ' . $player_stream_url );
+									}
+								}
+
+								break;
+
+							default:
+
+								if ( $this->p->debug->enabled ) {
+
+									$this->p->debug->log( 'player card: video type "' .
+										$mt_single_video[ 'og:video:type' ] . '" is unknown' );
+								}
+
+								break;
+						}
+					}
+
+					/**
+					 * Set the twitter:player meta tag value(s).
+					 */
+					if ( ! empty( $player_embed_url ) ) {
+
+						$mt_tc[ 'twitter:card' ]   = 'player';
+						$mt_tc[ 'twitter:player' ] = $player_embed_url;
+					}
+
+					if ( ! empty( $player_stream_url ) ) {
+
+						$mt_tc[ 'twitter:card' ] = 'player';
+
+						if ( empty( $mt_tc[ 'twitter:player' ] ) ) {
+
+							$mt_tc[ 'twitter:player' ] = $player_stream_url;	// Fallback to video/mp4.
+						}
+
+						$mt_tc[ 'twitter:player:stream' ]              = $player_stream_url;
+						$mt_tc[ 'twitter:player:stream:content_type' ] = $mt_single_video[ 'og:video:type' ];
+					}
+
+					/**
+					 * Set twitter:player related values (player width, height, mobile apps, etc.)
+					 */
+					if ( ! empty( $mt_tc[ 'twitter:card' ] ) ) {
+
+						foreach ( array(
+							'og:video:width'           => 'twitter:player:width',
+							'og:video:height'          => 'twitter:player:height',
+							'og:video:iphone_name'     => 'twitter:app:name:iphone',
+							'og:video:iphone_id'       => 'twitter:app:id:iphone',
+							'og:video:iphone_url'      => 'twitter:app:url:iphone',
+							'og:video:ipad_name'       => 'twitter:app:name:ipad',
+							'og:video:ipad_id'         => 'twitter:app:id:ipad',
+							'og:video:ipad_url'        => 'twitter:app:url:ipad',
+							'og:video:googleplay_name' => 'twitter:app:name:googleplay',
+							'og:video:googleplay_id'   => 'twitter:app:id:googleplay',
+							'og:video:googleplay_url'  => 'twitter:app:url:googleplay',
+						) as $og_name => $tc_name ) {
+
+							if ( ! empty( $mt_single_video[ $og_name ] ) ) {
+
+								$mt_tc[ $tc_name ] = $mt_single_video[ $og_name ];
+							}
+						}
+
+						/**
+						 * Get the video preview image (if one is available).
+						 */
+						$mt_tc[ 'twitter:image' ] = SucomUtil::get_first_mt_media_url( $mt_single_video );
+
+						if ( ! empty( $mt_single_video[ 'og:image:alt' ] ) ) {
+
+							$mt_tc[ 'twitter:image:alt' ] = $mt_single_video[ 'og:image:alt' ];
+						}
+
+						/**
+						 * Fallback to the open graph image.
+						 */
+						if ( empty( $mt_tc[ 'twitter:image' ] ) && ! empty( $mt_og[ 'og:image' ] ) ) {
+
+							if ( $this->p->debug->enabled ) {
+
+								$this->p->debug->log( 'player card: no video image - using og:image instead' );
+							}
+
+							$mt_tc[ 'twitter:image' ] = SucomUtil::get_first_mt_media_url( $mt_og[ 'og:image' ] );
+						}
+					}
+
+					break;	// Use only the first video.
+				}
+
+			} elseif ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'player card: no videos found' );
+			}
 		}
 	}
 }

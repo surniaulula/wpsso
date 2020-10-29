@@ -8759,22 +8759,22 @@ msgstr ""
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
-#: lib/twittercard.php:532
+#: lib/twittercard.php:369
 msgctxt "metabox title"
 msgid "Twitter App Card"
 msgstr ""
 
-#: lib/twittercard.php:540
+#: lib/twittercard.php:377
 msgctxt "metabox title"
 msgid "Twitter Player Card"
 msgstr ""
 
-#: lib/twittercard.php:548
+#: lib/twittercard.php:385
 msgctxt "metabox title"
 msgid "Twitter Summary Card"
 msgstr ""
 
-#: lib/twittercard.php:556
+#: lib/twittercard.php:393
 msgctxt "metabox title"
 msgid "Twitter Large Image Summary Card"
 msgstr ""
