@@ -3,7 +3,7 @@
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
 <tr><th align="right" valign="top" nowrap>Summary</th><td>Make sure your content looks great on social sites and in search results, no matter how your URLs are crawled, shared, re-shared, posted, or embedded.</td></tr>
-<tr><th align="right" valign="top" nowrap>Stable Version</th><td>8.10.0</td></tr>
+<tr><th align="right" valign="top" nowrap>Stable Version</th><td>8.11.0</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires PHP</th><td>5.6 or newer</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires WordPress</th><td>4.4 or newer</td></tr>
 <tr><th align="right" valign="top" nowrap>Tested Up To WordPress</th><td>5.5.2</td></tr>

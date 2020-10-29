@@ -12,7 +12,7 @@ Requires PHP: 5.6
 Requires At Least: 4.4
 Tested Up To: 5.5.2
 WC Tested Up To: 4.6.1
-Stable Tag: 8.10.0
+Stable Tag: 8.11.0
 
 Make sure your content looks great on social sites and in search results, no matter how your URLs are crawled, shared, re-shared, posted, or embedded.
 
