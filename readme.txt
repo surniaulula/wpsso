@@ -310,6 +310,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.10.1-dev.1 (2020/10/29)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed formatting of the Schema 'cutoffTime', 'opens', and 'closes' property values.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v5.6.
+	* WordPress v4.4.
+
 **Version 8.10.0 (2020/10/28)**
 
 * **New Features**
@@ -630,6 +644,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.10.1-dev.1 =
+
+(2020/10/29) Fixed formatting of the Schema 'cutoffTime', 'opens', and 'closes' property values.
 
 = 8.10.0 =
 
