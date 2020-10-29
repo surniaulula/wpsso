@@ -50,7 +50,7 @@ WPSSO makes full use of all available caching methods &mdash; along with offerin
 
 <h3>WPSSO Core Standard Features</h3>
 
-* Complete and accurate meta tags for ALL social sites, search engines, web browser extensions, mail and messaging apps, and embedded object / iframe content.
+* Complete and accurate meta tags for all social sites, search engines, web browser extensions, mail and messaging apps, and embedded object / iframe content.
 
 * Updates WordPress oEmbed data with the Open Graph title, description, and image for posts, pages, and custom post types.
 
@@ -64,6 +64,8 @@ WPSSO makes full use of all available caching methods &mdash; along with offerin
 	* Schema Thumbnail Image
 	* Twitter Summary Card
 	* Twitter Large Image Summary Card
+
+* Includes additional Twitter article and product meta tags for Slack.
 
 * Locates images from numerous sources, including featured, attached, gallery shortcode, content images, or a custom fallback image.
 
@@ -310,7 +312,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.11.0-dev.2 (2020/10/29)**
+**Version 8.11.0-b.1 (2020/10/29)**
 
 * **New Features**
 	* None.
@@ -645,7 +647,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.11.0-dev.2 =
+= 8.11.0-b.1 =
 
 (2020/10/29) Added extra article and product Twitter Card meta tags for Slack. Fixed formatting of the Schema 'cutoffTime', 'opens', and 'closes' property values.
 
