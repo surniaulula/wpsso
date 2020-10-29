@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.10.1-dev.1\n"
+"Project-Id-Version: WPSSO Core 8.11.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -644,13 +644,13 @@ msgid ""
 msgstr ""
 
 #: gettext/gettext-lib-com.php:6 gettext/gettext-lib-com.php:30
-#: gettext/gettext-lib-com.php:38 lib/com/bfo.php:267 lib/com/cache.php:95
+#: gettext/gettext-lib-com.php:37 lib/com/bfo.php:267 lib/com/cache.php:95
 #: lib/com/notice.php:110
 msgid "%s Notice"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:7 gettext/gettext-lib-com.php:31
-#: gettext/gettext-lib-com.php:39 lib/com/bfo.php:272 lib/com/cache.php:100
+#: gettext/gettext-lib-com.php:38 lib/com/bfo.php:272 lib/com/cache.php:100
 #: lib/com/notice.php:115
 msgid "Notice"
 msgstr ""
@@ -770,49 +770,43 @@ msgstr ""
 msgid "Reference: %s"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:37 lib/com/util.php:4603
-msgid "%s minute"
-msgid_plural "%s minutes"
-msgstr[0] ""
-msgstr[1] ""
-
-#: gettext/gettext-lib-com.php:40 lib/com/bfo.php:288
+#: gettext/gettext-lib-com.php:39 lib/com/bfo.php:288
 msgid ""
 "The \"%1$s\" hook with priority %2$d in the \"%3$s\" filter has incorrectly "
 "sent output to the webpage."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:41 lib/com/bfo.php:291
+#: gettext/gettext-lib-com.php:40 lib/com/bfo.php:291
 msgid ""
 "Unlike WordPress actions, WordPress filters must always return their text, "
 "not echo it to the webpage output."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:42 lib/com/bfo.php:294
+#: gettext/gettext-lib-com.php:41 lib/com/bfo.php:294
 msgid ""
 "Please contact the author of that filter and report this issue as a coding "
 "error."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:43 lib/com/bfo.php:337
+#: gettext/gettext-lib-com.php:42 lib/com/bfo.php:337
 msgid "Incorrect webpage output:"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:44 lib/com/bfo.php:338
+#: gettext/gettext-lib-com.php:43 lib/com/bfo.php:338
 msgid "BEGIN OUTPUT"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:45 lib/com/bfo.php:339
+#: gettext/gettext-lib-com.php:44 lib/com/bfo.php:339
 msgid "END OUTPUT"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:47 lib/com/plugin.php:296
+#: gettext/gettext-lib-com.php:46 lib/com/plugin.php:296
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:49 lib/com/plugin.php:307
+#: gettext/gettext-lib-com.php:48 lib/com/plugin.php:307
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr ""
 
@@ -7962,6 +7956,12 @@ msgstr ""
 msgid "Search Results %1$s %2$s"
 msgstr ""
 
+#: lib/page.php:1251
+msgid "%s minute"
+msgid_plural "%s minutes"
+msgstr[0] ""
+msgstr[1] ""
+
 #: lib/pinterest.php:127 lib/submenu/image-sizes.php:103
 msgctxt "option label"
 msgid "Pinterest Pin It"
@@ -8759,24 +8759,40 @@ msgstr ""
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
-#: lib/twittercard.php:199
+#: lib/twittercard.php:197
 msgctxt "metabox title"
 msgid "Twitter App Card"
 msgstr ""
 
-#: lib/twittercard.php:207
+#: lib/twittercard.php:205
 msgctxt "metabox title"
 msgid "Twitter Player Card"
 msgstr ""
 
-#: lib/twittercard.php:215
+#: lib/twittercard.php:213
 msgctxt "metabox title"
 msgid "Twitter Summary Card"
 msgstr ""
 
-#: lib/twittercard.php:223
+#: lib/twittercard.php:221
 msgctxt "metabox title"
 msgid "Twitter Large Image Summary Card"
+msgstr ""
+
+#: lib/twittercard.php:634
+msgid "Written by"
+msgstr ""
+
+#: lib/twittercard.php:638
+msgid "Est. reading time"
+msgstr ""
+
+#: lib/twittercard.php:647
+msgid "Price"
+msgstr ""
+
+#: lib/twittercard.php:664
+msgid "Availability"
 msgstr ""
 
 #: lib/user.php:177

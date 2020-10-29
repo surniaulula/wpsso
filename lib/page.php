@@ -1242,6 +1242,15 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return $excerpt_text;
 		}
 
+		public function get_reading_time( array $mod ) {
+
+			$content = $this->get_the_content( $mod );
+
+			$minutes = SucomUtil::get_reading_mins( $content );
+
+			return sprintf( _n( '%s minute', '%s minutes', $minutes, 'wpsso' ), $minutes );
+		}
+
 		public function get_the_content( array $mod, $read_cache = true, $md_key = '', $flatten = true ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -1261,10 +1270,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 			$cache_index    = 'locale:' . SucomUtil::get_locale( $mod ) . '_filter:' . ( $filter_content ? 'true' : 'false' );
 			$cache_array    = array();
-
-			/************************
-			 * Retrieve the Content *
-			 ************************/
 
 			if ( $this->p->debug->enabled ) {
 

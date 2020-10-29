@@ -53,7 +53,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 		/**
 		 * Use reference for $mt_og argument to allow unset of existing twitter meta tags.
 		 */
-		public function get_array( array $mod, array $mt_og = array() ) {
+		public function get_array( array $mod, array &$mt_og = array(), $author_id = false ) {	// Pass by reference is OK.
 
 			if ( $this->p->debug->enabled ) {
 
@@ -63,7 +63,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			/**
 			 * Read and unset pre-defined twitter card values in the open graph meta tag array.
 			 */
-			$mt_tc = SucomUtil::preg_grep_keys( '/^twitter:/', $mt_og, false, false, true );
+			$mt_tc = SucomUtil::preg_grep_keys( '/^twitter:/', $mt_og, $invert = false, $replace = false, $remove = true );
 
 			$mt_tc = apply_filters( $this->p->lca . '_tc_seed', $mt_tc, $mod );
 
@@ -95,33 +95,31 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 			if ( ! isset( $mt_tc[ 'twitter:creator' ] ) ) {
 
-				if ( $mod[ 'is_post' ] ) {
+				if ( $author_id ) {
 
-					if ( $mod[ 'post_author' ] ) {
-
-						$mt_tc[ 'twitter:creator' ] = get_the_author_meta( $this->p->options[ 'plugin_cm_twitter_name' ], $mod[ 'post_author' ] );
-					}
-
-				} elseif ( $mod[ 'is_user' ] ) {
-
-					$mt_tc[ 'twitter:creator' ] = get_the_author_meta( $this->p->options[ 'plugin_cm_twitter_name' ], $mod[ 'id' ] );
+					$mt_tc[ 'twitter:creator' ] = get_the_author_meta( $this->p->options[ 'plugin_cm_twitter_name' ], $author_id );
 				}
 			}
 
 			/**
 			 * Player video card.
 			 */
-			$this->maybe_add_player_card( $mt_tc, $mod, $mt_og );
+			$this->maybe_add_player_card( $mt_tc, $mod, $mt_og, $author_id );
 
 			/**
 			 * Post summary or large image summary card.
 			 */
-			$this->maybe_add_post_card( $mt_tc, $mod, $mt_og );
+			$this->maybe_add_post_card( $mt_tc, $mod, $mt_og, $author_id );
 
 			/**
 			 * Default card.
 			 */
-			$this->maybe_add_default_card( $mt_tc, $mod, $mt_og );
+			$this->maybe_add_default_card( $mt_tc, $mod, $mt_og, $author_id );
+
+			/**
+			 * Additional article and product data.
+			 */
+			$this->maybe_add_extra_data( $mt_tc, $mod, $mt_og, $author_id );
 
 			return (array) apply_filters( $this->p->lca . '_tc', $mt_tc, $mod );
 		}
@@ -262,7 +260,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 		 *	The MIME type for your video file (video/mp4). This property is only required if you have set a
 		 *	twitter:player:stream meta tag.
 		 */
-		private function maybe_add_player_card( &$mt_tc, $mod, $mt_og ) {
+		private function maybe_add_player_card( &$mt_tc, $mod, $mt_og, $author_id ) {	// Pass by reference is OK.
 
 			if ( $this->p->debug->enabled ) {
 
@@ -450,7 +448,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			}
 		}
 
-		private function maybe_add_post_card( &$mt_tc, $mod, $mt_og ) {
+		private function maybe_add_post_card( &$mt_tc, $mod, $mt_og, $author_id ) {	// Pass by reference is OK.
 
 			if ( $this->p->debug->enabled ) {
 
@@ -566,7 +564,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			}
 		}
 
-		private function maybe_add_default_card( &$mt_tc, $mod, $mt_og ) {
+		private function maybe_add_default_card( &$mt_tc, $mod, $mt_og, $author_id ) {	// Pass by reference is OK.
 
 			if ( $this->p->debug->enabled ) {
 
@@ -615,6 +613,60 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			} elseif ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'no other images found' );
+			}
+		}
+
+		private function maybe_add_extra_data( &$mt_tc, $mod, $mt_og, $author_id ) {	// Pass by reference is OK.
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			if ( isset( $mt_og[ 'og:type' ] ) ) {
+			
+				switch ( $mt_og[ 'og:type' ] ) {
+
+					case 'article':
+
+						if ( isset( $mt_og[ 'article:author:name' ] ) ) {
+
+							$mt_tc[ 'twitter:label1' ] = __( 'Written by', 'wpsso' );
+							$mt_tc[ 'twitter:data1' ]  = $mt_og[ 'article:author:name' ];
+						}
+
+						$mt_tc[ 'twitter:label2' ] = __( 'Est. reading time', 'wpsso' );
+						$mt_tc[ 'twitter:data2' ]  = $this->p->page->get_reading_time( $mod );
+
+						break;
+
+					case 'product':
+
+						if ( isset( $mt_og[ 'product:price:amount' ] ) && isset( $mt_og[ 'product:price:currency' ] ) ) {
+						
+							$mt_tc[ 'twitter:label1' ] = __( 'Price', 'wpsso' );
+							$mt_tc[ 'twitter:data1' ]  = $mt_og[ 'product:price:amount' ] . ' ' . $mt_og[ 'product:price:currency' ];
+						}
+
+						if ( isset( $mt_og[ 'product:availability' ] ) ) {
+
+							$mt_name = 'product:availability';
+							$avail   = $mt_og[ $mt_name ];
+
+							/**
+							 * Map 'https://schema.org/InStock' to 'in stock', for example.
+							 */
+							if ( ! empty( $this->p->cf[ 'head' ][ 'og_content_map' ][ $mt_name ][ $avail ] ) ) {
+
+								$avail = $this->p->cf[ 'head' ][ 'og_content_map' ][ $mt_name ][ $avail ];
+							}
+
+							$mt_tc[ 'twitter:label2' ] = __( 'Availability', 'wpsso' );
+							$mt_tc[ 'twitter:data2' ]  = ucwords( $avail );
+						}
+
+						break;
+				}
 			}
 		}
 	}

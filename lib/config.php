@@ -22,8 +22,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.10.1-dev.1',	// Plugin version.
-					'opt_version' => '766',		// Increment when changing default option values.
+					'version'     => '8.11.0-dev.2',	// Plugin version.
+					'opt_version' => '767',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Make sure your content looks great on social sites and in search results, no matter how your URLs are crawled, shared, re-shared, posted, or embedded.',
@@ -1580,6 +1580,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_name_twitter:app:name:googleplay'         => 1,
 					'add_meta_name_twitter:app:id:googleplay'           => 1,
 					'add_meta_name_twitter:app:url:googleplay'          => 1,
+					'add_meta_name_twitter:label1'                      => 1,
+					'add_meta_name_twitter:data1'                       => 1,
+					'add_meta_name_twitter:label2'                      => 1,
+					'add_meta_name_twitter:data2'                       => 1,
 
 					/**
 					 * Link itemprop.

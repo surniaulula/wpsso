@@ -4581,26 +4581,17 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Calculate the estimated reading time.
+		 * Calculate the estimated reading time in minutes.
 		 *
-		 * @param string $content The post content.
+		 * 250 is the default reading words per minute.
 		 *
-		 * @return string Human-readable est. reading time.
+		 * See https://en.wikipedia.org/wiki/Speed_reading.
 		 */
-		public static function get_reading_time( $content, $text_domain ) {
+		public static function get_reading_mins( $content, $words_per_minute = 250 ) {
 
-			/**
-			 * 250 is the estimated reading words per minute.
-			 *
-			 * See https://en.wikipedia.org/wiki/Speed_reading.
-			 */
-			$words_per_minute = 250;
-	
 			$word_count = str_word_count( wp_strip_all_tags( $content ) );
 
-			$minutes = round( $word_count / $words_per_minute );
-
-			return sprintf( _n( '%s minute', '%s minutes', $minutes, $text_domain ), $minutes );
+			return round( $word_count / $words_per_minute );
 		}
 	}
 }

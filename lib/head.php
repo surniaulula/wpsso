@@ -565,7 +565,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 */
 			$this->p->util->maybe_set_ref( $sharing_url, $mod, __( 'adding twitter card meta tags', 'wpsso' ) );
 
-			$mt_tc = $this->p->tc->get_array( $mod, $mt_og );
+			$mt_tc = $this->p->tc->get_array( $mod, $mt_og, $author_id );
 
 			$this->p->util->maybe_unset_ref( $sharing_url );
 

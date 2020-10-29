@@ -34,7 +34,6 @@ __( 'This notice can be dismissed permanently.', 'wpsso' );
 __( 'This notice can be dismissed for %s.', 'wpsso' );
 __( 'Edit', 'wpsso' );
 __( 'Reference: %s', 'wpsso' );
-_n( '%s minute', '%s minutes', $minutes, 'wpsso' );
 __( '%s Notice', 'wpsso' );
 __( 'Notice', 'wpsso' );
 __( 'The "%1$s" hook with priority %2$d in the "%3$s" filter has incorrectly sent output to the webpage.', 'wpsso' );

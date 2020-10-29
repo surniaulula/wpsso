@@ -41,7 +41,7 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 			}
 		}
 
-		public function get_array( array $mod, array $mt_og = array(), $author_id = 0 ) {
+		public function get_array( array $mod, array $mt_og = array(), $author_id = false ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -55,7 +55,7 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 			 */
 			if ( ! empty( $this->p->options[ 'add_meta_name_author' ] ) ) {
 
-				if ( isset( $mt_og[ 'og:type' ] ) && $mt_og[ 'og:type' ] === 'article' ) {
+				if ( isset( $mt_og[ 'og:type' ] ) && 'article' === $mt_og[ 'og:type' ] ) {
 
 					$mt_name[ 'author' ] = $this->p->user->get_author_meta( $author_id, $this->p->options[ 'seo_author_name' ] );
 

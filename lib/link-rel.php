@@ -93,7 +93,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 			}
 		}
 
-		public function get_array( array $mod, array $mt_og = array(), $author_id = 0, $sharing_url = '' ) {
+		public function get_array( array $mod, array $mt_og = array(), $author_id = false, $sharing_url = '' ) {
 
 			if ( $this->p->debug->enabled ) {
 

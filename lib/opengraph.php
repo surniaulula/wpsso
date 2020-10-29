@@ -702,6 +702,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				if ( ! isset( $mt_og[ 'article:author' ] ) ) {
 
 					if ( $this->p->debug->enabled ) {
+
 						$this->p->debug->log( 'getting names / urls for article:author meta tags' );
 					}
 
