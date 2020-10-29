@@ -770,8 +770,7 @@ msgstr ""
 msgid "Reference: %s"
 msgstr ""
 
-#. translators: %s is duration in minutes.
-#: gettext/gettext-lib-com.php:37 lib/com/util.php:4604
+#: gettext/gettext-lib-com.php:37 lib/com/util.php:4603
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] ""
