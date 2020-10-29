@@ -1642,13 +1642,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 					$timezone  = empty( $key_tz ) || empty( $opts[ $key_tz ] ) ? SucomUtilWP::get_default_timezone() : $opts[ $key_tz ];
 					$tz_offset = self::get_timezone_offset_hours( $timezone );
-					$hm_tz_o   = self::hm_tz( $opts[ $key_day_o ], $tz_offset );
-					$hm_tz_c   = self::hm_tz( $opts[ $key_day_c ], $tz_offset );
+					$hm_tz_o   = $opts[ $key_day_o ] . $tz_offset;
+					$hm_tz_c   = $opts[ $key_day_c ] . $tz_offset;
 
 					if ( $is_valid_midday ) {
 
-						$hm_tz_midday_c = self::hm_tz( $opts[ $key_midday_c ], $tz_offset );
-						$hm_tz_midday_o = self::hm_tz( $opts[ $key_midday_o ], $tz_offset );
+						$hm_tz_midday_c = $opts[ $key_midday_c ] . $tz_offset;
+						$hm_tz_midday_o = $opts[ $key_midday_o ] . $tz_offset;
 
 						$oc_pairs[ $hm_tz_o ]        = $hm_tz_midday_c;
 						$oc_pairs[ $hm_tz_midday_o ] = $hm_tz_c;
@@ -1669,22 +1669,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				$timezone  = empty( $key_tz ) || empty( $opts[ $key_tz ] ) ? SucomUtilWP::get_default_timezone() : $opts[ $key_tz ];
 				$tz_offset = self::get_timezone_offset_hours( $timezone );
-				$hm_tz     = self::hm_tz( $opts[ $key_hm ], $tz_offset );
+				$hm_tz     = $opts[ $key_hm ] . $tz_offset;
 
 				return $hm_tz;
 			}
 
 			return false;
-		}
-
-		private static function hm_tz( $hm, $tz_offset ) {
-
-			if ( false !== ( $pos = strpos( $hm, 'Z' ) ) ) {
-
-				$hm = substr( $hm, 0, $pos );
-			}
-
-			return $hm . 'Z' . $tz_offset;
 		}
 
 		public static function get_opts_begin( $str, array $opts ) {
