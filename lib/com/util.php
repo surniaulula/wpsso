@@ -4579,5 +4579,29 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			return array( $lib_id, false, false );
 		}
+
+		/**
+		 * Calculate the estimated reading time.
+		 *
+		 * @param string $post_content The post content.
+		 *
+		 * @return string Human-readable est. reading time.
+		 */
+		public static function get_reading_time( $post_content, $text_domain ) {
+
+			/**
+			 * 250 is the estimated reading words per minute.
+			 *
+			 * See https://en.wikipedia.org/wiki/Speed_reading.
+			 */
+			$words_per_minute = 250;
+	
+			$word_count = str_word_count( wp_strip_all_tags( $post_content ) );
+
+			$minutes = round( $word_count / $words_per_minute );
+
+			// translators: %s is duration in minutes.
+			return sprintf( _n( '%s minute', '%s minutes', $minutes, $text_domain ), $minutes );
+		}
 	}
 }
