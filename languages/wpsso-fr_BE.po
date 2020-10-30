@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.11.0\n"
+"Project-Id-Version: WPSSO Core 8.11.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-10-29 14:01-0700\n"
-"PO-Revision-Date: 2020-10-29 14:02-0700\n"
+"POT-Creation-Date: 2020-10-30 11:11-0700\n"
+"PO-Revision-Date: 2020-10-30 11:14-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -4039,8 +4039,8 @@ msgstr "Activer Open Graph"
 msgid "Activate Twitter Card"
 msgstr "Activer carte Twitter"
 
-#: lib/conflict.php:367 lib/conflict.php:530 lib/conflict.php:607
-#: lib/conflict.php:658
+#: lib/conflict.php:367 lib/conflict.php:530 lib/conflict.php:638
+#: lib/conflict.php:665 lib/conflict.php:692
 msgid "please disable the %1$s option in the %2$s settings."
 msgstr "SVP désactiver l'option %1$s dans les réglages %2$s."
 
@@ -4124,16 +4124,16 @@ msgid "Facebook profile URL"
 msgstr "Facebook profile URL"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:503 lib/conflict.php:614
+#: lib/conflict.php:503 lib/conflict.php:594
 msgid "Facebook App ID"
 msgstr "ID d'application Facebook"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:505 lib/conflict.php:559
+#: lib/conflict.php:505 lib/conflict.php:561
 msgid "Twitter Username"
 msgstr "Twitter Username"
 
-#: lib/conflict.php:515 lib/conflict.php:579 lib/conflict.php:631
+#: lib/conflict.php:515 lib/conflict.php:583 lib/conflict.php:611
 msgid "please remove the %1$s option value in the %2$s settings."
 msgstr "SVP supprimez la valeur de l'option %1$s dans les réglages %2$s."
 
@@ -4143,85 +4143,105 @@ msgid "Social sharing block"
 msgstr "Social sharing block"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:549 lib/conflict.php:596 lib/conflict.php:620
-#: lib/conflict.php:647
+#: lib/conflict.php:551 lib/conflict.php:600 lib/conflict.php:627
+#: lib/conflict.php:654 lib/conflict.php:681
 msgid "Yoast SEO"
 msgstr "Yoast SEO"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:551 lib/conflict.php:598 lib/conflict.php:622
-#: lib/conflict.php:649
+#: lib/conflict.php:553 lib/conflict.php:602 lib/conflict.php:629
+#: lib/conflict.php:656
 msgid "Social"
 msgstr "Social"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:553
+#: lib/conflict.php:555
 msgid "Accounts"
 msgstr "Comptes"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:557
+#: lib/conflict.php:559
 msgid "Facebook Page URL"
 msgstr "Facebook Page URL"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:561
+#: lib/conflict.php:563
 msgid "Instagram URL"
 msgstr "Instagram URL"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:563
+#: lib/conflict.php:565
 msgid "LinkedIn URL"
 msgstr "LinkedIn URL"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:565
+#: lib/conflict.php:567
 msgid "MySpace URL"
 msgstr "MySpace URL"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:567
+#: lib/conflict.php:569
 msgid "Pinterest URL"
 msgstr "URL Pinterest"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:569
+#: lib/conflict.php:571
 msgid "YouTube URL"
 msgstr "YouTube URL"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:590
-msgid "Add Open Graph meta data"
-msgstr "Add Open Graph meta data"
+#: lib/conflict.php:573
+msgid "Wikipedia URL"
+msgstr "URL Wikipédia"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:600 lib/conflict.php:624
+#: lib/conflict.php:604 lib/conflict.php:631
 msgid "Facebook"
 msgstr "Facebook"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:641
+#: lib/conflict.php:621
+msgid "Add Open Graph meta data"
+msgstr "Add Open Graph meta data"
+
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/conflict.php:648
 msgid "Add Twitter Card meta data"
 msgstr "Add Twitter Card meta data"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/conflict.php:651
+#: lib/conflict.php:658
 msgid "Twitter"
 msgstr "Twitter"
 
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/conflict.php:675
+msgid "Enhanced Slack sharing"
+msgstr "Partage amélioré sur Slack"
+
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/conflict.php:683
+msgid "General"
+msgstr "Réglages généraux"
+
+#. translators: Please ignore - translation uses a different text domain.
 #: lib/conflict.php:685
+msgid "Features"
+msgstr "Fonctionnalités"
+
+#: lib/conflict.php:719
 msgid "An issue with WPBakery Visual Composer has been detected."
 msgstr "Un problème avec WPBakery Visual Composer a été détecté."
 
-#: lib/conflict.php:687
+#: lib/conflict.php:721
 msgid "WPBakery Visual Composer version %s and older are known to have a bug in their jQuery event handling code."
 msgstr "WPBakery Visual Composer version %s et versions antérieures sont connus pour avoir un bogue dans leur code de gestion des événements jQuery."
 
-#: lib/conflict.php:689
+#: lib/conflict.php:723
 msgid "To avoid jQuery crashing on show / hide jQuery events, please update your version of WPBakery Visual Composer immediately."
 msgstr "Pour éviter le plantage de jQuery lors de l'affichage / masquage des événements jQuery, veuillez mettre à jour votre version de WPBakery Visual Composer immédiatement."
 
-#: lib/conflict.php:714
+#: lib/conflict.php:748
 msgid "The WordPress <a href=\"%s\">Search Engine Visibility</a> option is set to discourage search engines and social sites from indexing this site. This is not compatible with the purpose of optimizing your content for social and search engines &mdash; please uncheck the option to allow search engines and social sites to access your site."
 msgstr "L'option de WordPress <a href=\"%s\">Visibilité pour les moteurs de recherche</a> est définie afin de demander aux moteurs de recherche et robots sociaux de ne pas indexer ce site. Cela n'est pas compatible avec le but d'optimiser votre contenu pour les moteurs de recherche et les réseaux sociaux &mdash; veuillez décocher cette option pour autoriser les moteurs de recherche et robots sociaux d'accéder votre site."
 
@@ -6840,7 +6860,7 @@ msgstr "supérieur au max recommandé de %1$0.3f secs"
 msgid "Slow query detected - get_posts() took %1$0.3f secs to get the children of post ID %2$d (%3$s)."
 msgstr "Requête lente détectée - get_posts() a pris %1$0.3f secs pour obtenir les enfants de l'article ID %2$d (%3$s)."
 
-#: lib/post.php:845 lib/post.php:1462 lib/schema.php:3283 lib/term.php:642
+#: lib/post.php:845 lib/post.php:1462 lib/schema.php:3285 lib/term.php:642
 #: lib/user.php:634
 msgid "checking meta tags"
 msgstr "vérification des balises méta"
@@ -6996,35 +7016,35 @@ msgstr "%1$s nécessite %2$s version %3$s ou supérieure et a été désactivé.
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr "SVP mettre à jour %1$s avant d'essayer de réactiver l'extension %2$s."
 
-#: lib/schema-single.php:1524
+#: lib/schema-single.php:1528
 msgid "adding schema organization"
 msgstr "ajout de schéma d'organisation"
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1588
+#: lib/schema-single.php:1592
 msgid "An organization logo image is missing and required for the \"%1$s\" organization Schema %2$s markup."
 msgstr "Une image de logo d'organisation est manquante et requise pour le balisage de Schéma %2$s de l'organisation \"%1$s\"."
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1591
+#: lib/schema-single.php:1595
 msgid "An organization banner image (600x60px) is missing and required for the \"%1$s\" organization Schema %2$s markup."
 msgstr "Une image de bannière d'organisation (600x60px) est manquante et requise pour le balisage de Schéma %2$s de l'organisation \"%1$s\"."
 
 #. translators: %1$s is the organization name, %2$s is 'site' (translated) or 'ID #'.
-#: lib/schema-single.php:1594
+#: lib/schema-single.php:1598
 msgid "Please enter the missing image URL in the \"%1$s\" %2$s organization settings."
 msgstr "Veuillez fournir l'URL de l'image manquante dans les paramètres de l'organisation %2$s \"%1$s\"."
 
 #. translators: site, as in the "site organization settings".
-#: lib/schema-single.php:1616
+#: lib/schema-single.php:1620
 msgid "site"
 msgstr "site"
 
-#: lib/schema-single.php:1797
+#: lib/schema-single.php:1801
 msgid "adding schema person"
 msgstr "ajout de schéma de personne"
 
-#: lib/schema-single.php:1990
+#: lib/schema-single.php:1995
 msgid "adding schema place"
 msgstr "ajout de schéma d'endroit"
 
