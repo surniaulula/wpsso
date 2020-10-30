@@ -418,6 +418,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			/**
 			 * Add metadata defaults and custom values to the $type_opts array.
+			 *
+			 * $type_opts can be false, an empty array, or an array of one or more options.
 			 */
 			SucomUtil::add_type_opts_md_pad( $event_opts, $mod, array( 'event' => 'schema_event' ) );
 
@@ -720,6 +722,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			/**
 			 * Add metadata defaults and custom values to the $type_opts array.
+			 *
+			 * $type_opts can be false, an empty array, or an array of one or more options.
 			 */
 			SucomUtil::add_type_opts_md_pad( $job_opts, $mod, array( 'job' => 'schema_job' ) );
 
@@ -1956,8 +1960,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * Add metadata defaults and custom values to the $type_opts array.
 			 *
-			 * SucomUtil::add_type_opts_md_pad() is not required here as we do not have any default or custom
-			 * 'schema_place' options in the Document SSO metabox.
+			 * $type_opts can be false, an empty array, or an array of one or more options.
+			 *
+			 * Skip this method as we do not have any default or custom 'schema_place' options in the Document SSO metabox.
 			 *
 			 * SucomUtil::add_type_opts_md_pad( $place_opts, $mod, array( 'place' => 'schema_place' ) );
 			 */

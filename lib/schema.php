@@ -2800,6 +2800,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			/**
 			 * Add metadata defaults and custom values to the $type_opts array.
+			 *
+			 * $type_opts can be false, an empty array, or an array of one or more options.
 			 */
 			SucomUtil::add_type_opts_md_pad( $type_opts, $mod, array( $type => 'schema_' . $type ) );
 

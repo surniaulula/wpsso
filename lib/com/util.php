@@ -2691,8 +2691,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		/**
 		 * Add metadata defaults and custom values to the $type_opts array.
+		 *
+		 * $type_opts can be false, an empty array, or an array of one or more options.
 		 */
-		public static function add_type_opts_md_pad( array &$type_opts, array $mod, array $opts_md_pre ) {
+		public static function add_type_opts_md_pad( &$type_opts, array $mod, array $opts_md_pre ) {
 
 			if ( is_object( $mod[ 'obj' ] ) ) {	// Just in case.
 
