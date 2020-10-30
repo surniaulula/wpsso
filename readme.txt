@@ -312,7 +312,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.11.1-rc.1 (2020/10/31)**
+**Version 8.11.1 (2020/10/31)**
 
 * **New Features**
 	* None.
@@ -661,7 +661,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.11.1-rc.1 =
+= 8.11.1 =
 
 (2020/10/31) Fixed incorrect array type casting when retrieving custom event or job options.
 
