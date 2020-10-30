@@ -312,6 +312,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.11.1-dev.1 (2020/10/30)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed incorrect array type casting when retrieving custom event or job options.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v5.6.
+	* WordPress v4.4.
+
 **Version 8.11.0 (2020/10/29)**
 
 * **New Features**
@@ -646,6 +660,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.11.1-dev.1 =
+
+(2020/10/30) Fixed incorrect array type casting when retrieving custom event or job options.
 
 = 8.11.0 =
 
