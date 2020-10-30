@@ -62,7 +62,7 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 			extract( array_merge( array(
 				'layout'        => 'horizontal',	// 'horizontal', 'vertical', or 'responsive'.
 				'is_auto_draft' => false,
-				'scroll_to'     => isset( $_GET[ 'scroll_to' ] ) ? '#' . self::sanitize_key( $_GET[ 'scroll_to' ] ) : '',
+				'scroll_to'     => isset( $_GET[ 'scroll_to' ] ) ? '#' . SucomUtil::sanitize_key( $_GET[ 'scroll_to' ] ) : '',
 			), $args ) );
 
 			$class_metabox_tabs .= ' ' . $layout . ( $is_auto_draft ? ' auto-draft' : '' );

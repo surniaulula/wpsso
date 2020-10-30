@@ -1263,14 +1263,10 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			}
 
 			$type_column = sanitize_key( $meta_type . '_id' );
-
-			$id_column = 'user' == $meta_type ? 'umeta_id' : 'meta_id';
-
-			$meta_key = wp_unslash( $meta_key );
-
- 			$query = $wpdb->prepare( "SELECT COUNT( $id_column ) FROM $table WHERE meta_key = %s", $meta_key );
-
- 			$result = $wpdb->get_col( $query );
+			$id_column   = 'user' == $meta_type ? 'umeta_id' : 'meta_id';
+			$meta_key    = wp_unslash( $meta_key );
+ 			$query       = $wpdb->prepare( "SELECT COUNT( $id_column ) FROM $table WHERE meta_key = %s", $meta_key );
+ 			$result      = $wpdb->get_col( $query );
 
 			if ( isset( $result[ 0 ] ) && is_numeric( $result[ 0 ] ) ) {	// Just in case;
 

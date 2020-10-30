@@ -1458,9 +1458,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return self::sanitize_key( $name );
 		}
 
-		public static function sanitize_key( $key ) {
+		/**
+		 * Unlike the WordPress sanitize_key() function, this method allows for a colon and (optionally) upper case
+		 * characters.
+		 */
+		public static function sanitize_key( $key, $allow_upper = false ) {
 
-			return preg_replace( '/[^a-z0-9\-_:]/', '', strtolower( $key ) );
+			$key = preg_replace( '/[^a-zA-Z0-9\-_:]/', '', $key );
+
+			return $allow_upper ? $key : strtolower( $key );
 		}
 
 		public static function sanitize_anchor( $anchor ) {
