@@ -7993,12 +7993,12 @@ msgid "post"
 msgstr ""
 
 #: lib/post.php:562 lib/register.php:347 lib/term.php:488 lib/user.php:461
-#: lib/util.php:836 lib/util.php:3378
+#: lib/util.php:838 lib/util.php:3380
 msgid "%s warning:"
 msgstr ""
 
-#: lib/post.php:563 lib/term.php:489 lib/user.php:463 lib/util.php:838
-#: lib/util.php:3380
+#: lib/post.php:563 lib/term.php:489 lib/user.php:463 lib/util.php:840
+#: lib/util.php:3382
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -9132,53 +9132,53 @@ msgstr ""
 msgid "uncropped"
 msgstr ""
 
-#: lib/util.php:840
+#: lib/util.php:842
 msgid ""
 "Slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s "
 "(%3$s)."
 msgstr ""
 
-#: lib/util.php:1386
+#: lib/util.php:1388
 msgid "Error reading the %s file for the article sections list."
 msgstr ""
 
-#: lib/util.php:1490
+#: lib/util.php:1492
 msgid "Error reading the %s file for the product categories list."
 msgstr ""
 
-#: lib/util.php:1613
+#: lib/util.php:1615
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1637
+#: lib/util.php:1639
 msgid "Error getting HTML from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/util.php:1666
+#: lib/util.php:1668
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
 #. translators: %1$s is the class name.
-#: lib/util.php:1861
+#: lib/util.php:1863
 msgid ""
 "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting "
 "provider to have the missing class installed."
 msgstr ""
 
 #. translators: %1$s is the function name.
-#: lib/util.php:1875
+#: lib/util.php:1877
 msgid ""
 "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting "
 "provider to have the missing function installed."
 msgstr ""
 
-#: lib/util.php:3382
+#: lib/util.php:3384
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3397
+#: lib/util.php:3399
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -9187,7 +9187,7 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3399
+#: lib/util.php:3401
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
@@ -9195,12 +9195,12 @@ msgid ""
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name.
-#: lib/util.php:3911
+#: lib/util.php:3913
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3921
+#: lib/util.php:3923
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 
