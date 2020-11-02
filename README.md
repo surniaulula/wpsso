@@ -1,4 +1,4 @@
-<h1>WPSSO Core</h1><h3>The Complete Meta Tag and Schema Markup Solution</h3>
+<h1>WPSSO Core</h1><h3>WordPress Social and Search Optimization</h3>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
@@ -16,6 +16,8 @@
 <h2>Description</h2>
 
 <p style="margin:0;"><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"></p>
+
+<h3>The Complete Meta Tag and Schema Markup Solution</h3>
 
 <p><strong>Make sure your content looks great on social sites and in search results, no matter how your URLs are crawled, shared, re-shared, posted, or embedded:</strong></p>
 
