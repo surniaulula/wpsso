@@ -131,13 +131,13 @@
 <li><a href="https://wordpress.org/plugins/wpsso-am/">WPSSO Mobile App Meta Tags</a> to manage mobile App information.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-organization/">WPSSO Organization Markup</a> to manage multiple Organizations.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-plm/">WPSSO Place and Local SEO Markup</a> to manage multiple locations.</li>
-<li><a href="https://wordpress.org/plugins/wpsso-wc-metadata/">WPSSO Product Metadata for WooCommerce</a> to manage GTIN, GTIN-8, GTIN-12 (UPC), GTIN-13 (EAN), GTIN-14, ISBN, MPN, depth, and volume for WooCommerce products and variations.</li>
+<li><a href="https://wordpress.org/plugins/wpsso-wc-metadata/">WPSSO Product Metadata for WooCommerce</a> to add GTIN, GTIN-8, GTIN-12 (UPC), GTIN-13 (EAN), GTIN-14, ISBN, MPN, depth, and volume for WooCommerce products and variations.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-ratings-and-reviews/">WPSSO Ratings and Reviews</a> to add ratings in WordPress comments.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-rest-api/">WPSSO REST API</a> to add meta tags and Schema markup in REST API queries.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-rrssb/">WPSSO Ridiculously Responsive Social Sharing Buttons</a> to add responsive share buttons.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-breadcrumbs/">WPSSO Schema Breadcrumbs Markup</a> to add Breadcrumbs markup for Google.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> to provide Google with Schema markup in its preferred format.</li>
-<li><a href="https://wordpress.org/plugins/wpsso-wc-shipping-delivery-time/">WPSSO Shipping Delivery Time for WooCommerce</a> to provide shipping delivery time estimates for WooCommerce shipping zones, methods, and classes.</li>
+<li><a href="https://wordpress.org/plugins/wpsso-wc-shipping-delivery-time/">WPSSO Shipping Delivery Time for WooCommerce</a> to provide Google with shipping rates and delivery time estimates.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-strip-schema-microdata/">WPSSO Strip Schema Microdata</a> to strip incorrect markup from templates.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-tune-image-editors/">WPSSO Tune WP Image Editors</a> for better looking WordPress thumbnails.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-user-locale/">WPSSO User Locale Selector</a> to switch languages quickly and easily.</li>
