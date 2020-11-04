@@ -2079,7 +2079,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					echo '<h4>' . $info[ 'name' ] . '</h4>' . "\n";
 
-					echo '<ul><li>' . implode( '</li><li>', $action_links ) . '</li></ul>' . "\n";
+					echo '<ul><li>' . implode( $glue = '</li><li>', $action_links ) . '</li></ul>' . "\n";
 				}
 			}
 
@@ -2111,7 +2111,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( ! empty( $action_links ) ) {
 
-				echo '<ul><li>' . implode( '</li><li>', $action_links ) . '</li></ul>' . "\n";
+				echo '<ul><li>' . implode( $glue = '</li><li>', $action_links ) . '</li></ul>' . "\n";
 			}
 
 			echo '</td></tr></table>';
@@ -2323,7 +2323,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$table_rows[ 'plugin_name' ] = '<td class="ext-info-plugin-name" id="ext-info-plugin-name-' . $ext . '">' .
 				$plugin_name_html . $plugin_desc_html . ( empty( $ext_links ) ? '' : '<div class="row-actions visible">' .
-					implode( ' | ', $ext_links ) . '</div>' ) . '</td>';
+					implode( $glue = ' | ', $ext_links ) . '</div>' ) . '</td>';
 
 				/**
 				 * Plugin separator.
@@ -2398,7 +2398,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$table_rows[ 'plugin_name' ] = '<td colspan="2" class="ext-info-plugin-name" id="ext-info-plugin-name-' . $ext . '">' .
 				$plugin_name_html . ( empty( $ext_links ) ? '' : '<div class="row-actions visible">' .
-					implode( ' | ', $ext_links ) . '</div>' ) . '</td>';
+					implode( $glue = ' | ', $ext_links ) . '</div>' ) . '</td>';
 
 				/**
 				 * Plugin authentication ID and license information.

@@ -263,7 +263,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			/**
 			 * If $msg_text is an array of text strings, implode the array into a single text string.
 			 */
-			$msg_text = is_array( $msg_text ) ? implode( ' ', $msg_text ) : (string) $msg_text;
+			$msg_text = is_array( $msg_text ) ? implode( $glue = ' ', $msg_text ) : (string) $msg_text;
 
 			$msg_text = trim( $msg_text );
 

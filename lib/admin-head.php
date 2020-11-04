@@ -380,7 +380,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 				$notice_msg .= __( 'The WPSSO Core Premium plugin (required for WooCommerce integration) and its WPSSO Schema JSON-LD Markup add-on provide a much better solution by offering complete product meta tags for Facebook / Pinterest, and complete Schema product markup for Google Rich Results &mdash; including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, and much, much more.', 'wpsso' );
 
-				$notice_msg .= '<ul><li>' . implode( '</li><li>', $action_links ) . '</li></ul>' . ' ';
+				$notice_msg .= '<ul><li>' . implode( $glue = '</li><li>', $action_links ) . '</li></ul>' . ' ';
 
 				$notice_msg .= sprintf( __( 'As suggested in the %1$s, you can (and should) submit a few product URLs to the %2$s and make sure your Schema Product markup is complete.', 'wpsso' ), $settings_page_link, $google_tool_link ) . ' ';
 

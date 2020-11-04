@@ -1376,7 +1376,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return false;
 			}
 
-			$file_path = implode( '/', array_map( array( __CLASS__, 'sanitize_file_name' ), explode( '/', $file_path ) ) );
+			$file_path = implode( $glue = '/', array_map( array( __CLASS__, 'sanitize_file_name' ), explode( '/', $file_path ) ) );
 
 			return $file_path;
 		}
@@ -1478,7 +1478,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$keywords = array_map( 'sanitize_text_field', $tags );
 
-			$keywords = trim( implode( ', ', $keywords ) );
+			$keywords = trim( implode( $glue = ', ', $keywords ) );
 
 			return $keywords;
 		}
@@ -1489,7 +1489,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$hashtags = array_filter( $hashtags );	// Removes empty array elements.
 
-			$hashtags = trim( implode( ' ', $hashtags ) );
+			$hashtags = trim( implode( $glue = ' ', $hashtags ) );
 
 			return $hashtags;
 		}

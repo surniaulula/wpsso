@@ -24,6 +24,16 @@ if ( ! class_exists( 'SucomAddOn' ) ) {
 
 		public function __construct() {}
 
+		public function get_ext() {
+
+			return $this->ext;
+		}
+
+		public function get_p_ext() {
+
+			return $this->p_ext;
+		}
+
 		public function get_config( array $config ) {
 
 			if ( $this->get_missing_requirements() ) {	// Returns false or an array of missing requirements.

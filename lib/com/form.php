@@ -501,7 +501,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				if ( is_array( $label ) ) {	// Just in case.
 
-					$label = implode( ', ', $label );
+					$label = implode( $glue = ', ', $label );
 				}
 
 				/**
@@ -587,7 +587,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				if ( is_array( $label ) ) {	// Just in case.
 
-					$label = implode( ', ', $label );
+					$label = implode( $glue = ', ', $label );
 				}
 
 				/**
@@ -692,7 +692,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				if ( is_array( $label ) ) {	// Just in case.
 
-					$label = implode( ', ', $label );
+					$label = implode( $glue = ', ', $label );
 				}
 
 				/**
@@ -832,7 +832,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html .= empty( $default_value ) ? '' : ' data-default-value="' . esc_attr( $default_value ) . '"';
 			$html .= empty( $default_text ) ? '' : ' data-default-text="' . esc_attr( $default_text ) . '"';
 			$html .= '>' . "\n";
-			$html .= implode( "\n", $select_opt_arr );
+			$html .= implode( $glue = "\n", $select_opt_arr );
 			$html .= '<!-- ' . $select_opt_added . ' select options added -->' . "\n";
 			$html .= '</select>' . "\n";
 
@@ -1035,7 +1035,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					if ( is_array( $label ) ) {	// Just in case.
 
-						$label = implode( ', ', $label );
+						$label = implode( $glue = ', ', $label );
 					}
 
 					$new_values[ (string) $label ] = $label;
@@ -1890,7 +1890,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 									if ( is_array( $label ) ) {	// Just in case.
 
-										$label = implode( ', ', $label );
+										$label = implode( $glue = ', ', $label );
 									}
 
 									/**
@@ -1999,7 +1999,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 								$html .= empty( $default_value ) ? '' : ' data-default-value="' . esc_attr( $default_value ) . '"';
 								$html .= empty( $default_text ) ? '' : ' data-default-text="' . esc_attr( $default_text ) . '"';
 								$html .= ' ' . $elmt_attr . '>' . "\n";
-								$html .= implode( "\n", $select_opt_arr );
+								$html .= implode( $glue = "\n", $select_opt_arr );
 								$html .= '<!-- ' . $select_opt_added . ' select options added -->' . "\n";
 								$html .= '</select>' . "\n";
 

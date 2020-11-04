@@ -862,7 +862,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					$mod = $this->get_mod( $mod_id );
 
 					$this->p->debug->log( 'custom ' . $mod[ 'name' ] . ' ' . ( false === $md_key ? 'options' : 
-						( is_array( $md_key ) ? implode( ', ', $md_key ) : $md_key ) ) . ' = ' . 
+						( is_array( $md_key ) ? implode( $glue = ', ', $md_key ) : $md_key ) ) . ' = ' . 
 						( is_array( $md_val ) ? print_r( $md_val, true ) : '"' . $md_val . '"' ) );
 				}
 			}
