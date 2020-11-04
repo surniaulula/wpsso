@@ -153,7 +153,7 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 
 * URL shortening with Bitly, DLMY.App, Google, Ow.ly, TinyURL, or YOURLS.
 
-* Integrates with 3rd party plugins and service APIs for additional image, video, eCommerce product details, SEO settings, etc. The following modules are included with the Premium version, and are automatically loaded if/when the supported plugins and/or services are required.
+* Integrates with 3rd party plugins and service APIs for additional image, video, e-Commerce product details, SEO settings, etc. The following modules are included with the Premium version, and are automatically loaded if/when the supported plugins and/or services are required.
 
 	* **Integration with 3rd Party Plugins:** 
 
@@ -222,7 +222,6 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 * [Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/)
 	* [BuddyPress Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/buddypress-integration/)
 	* [WooCommerce Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/)
-	* [WP eCommerce Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/wp-ecommerce-integration/)
 * [Troubleshooting Guide](https://wpsso.com/docs/plugins/wpsso/installation/troubleshooting-guide/)
 * [Developer Special: Buy one, Get one Free](https://wpsso.com/docs/plugins/wpsso/installation/developer-special-buy-one-get-one-free/)
 
