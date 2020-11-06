@@ -237,6 +237,7 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 * [How can I fix an HTTP error when uploading images?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-an-http-error-when-uploading-images/)
 * [How can I have smaller dimensions for the default image?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-have-smaller-dimensions-for-the-default-image/)
 * [How can I see what the Facebook crawler sees?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-see-what-the-facebook-crawler-sees/)
+* [How do I enable WordPress WP_DEBUG?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-enable-wordpress-wp_debug/)
 * [How do I fix Google Structured Data &gt; hatom errors?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-fix-google-structured-data-hatom-errors/)
 * [How do I fix my theme's front page pagination?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-fix-my-themes-front-page-pagination/)
 * [How do I install the WPSSO Core Premium plugin?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-install-the-wpsso-pro-version/)

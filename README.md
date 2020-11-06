@@ -251,6 +251,7 @@
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-an-http-error-when-uploading-images/">How can I fix an HTTP error when uploading images?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-have-smaller-dimensions-for-the-default-image/">How can I have smaller dimensions for the default image?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-see-what-the-facebook-crawler-sees/">How can I see what the Facebook crawler sees?</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-enable-wordpress-wp_debug/">How do I enable WordPress WP_DEBUG?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-fix-google-structured-data-hatom-errors/">How do I fix Google Structured Data &gt; hatom errors?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-fix-my-themes-front-page-pagination/">How do I fix my theme's front page pagination?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-install-the-wpsso-pro-version/">How do I install the WPSSO Core Premium plugin?</a></li>
