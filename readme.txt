@@ -314,6 +314,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.11.2-dev.2 (2020/11/06)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed an undefined index streamingData error in cases where YouTube video details could not be retrieved.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v5.6.
+	* WordPress v4.4.
+
 **Version 8.11.1 (2020/10/31)**
 
 * **New Features**
@@ -662,6 +676,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.11.2-dev.2 =
+
+(2020/11/06) Fixed an undefined index streamingData error in cases where YouTube video details could not be retrieved.
 
 = 8.11.1 =
 
