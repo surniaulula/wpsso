@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.11.2-b.1\n"
+"Project-Id-Version: WPSSO Core 8.11.2-rc.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -631,13 +631,13 @@ msgid ""
 "the Media library?</a>"
 msgstr ""
 
-#: gettext/gettext-lib-abstracts-com.php:6 lib/abstracts/com/add-on.php:172
+#: gettext/gettext-lib-abstracts-com.php:6 lib/abstracts/com/add-on.php:178
 msgid ""
 "The %1$s add-on requires the %2$s plugin &mdash; please activate the missing "
 "plugin."
 msgstr ""
 
-#: gettext/gettext-lib-abstracts-com.php:7 lib/abstracts/com/add-on.php:190
+#: gettext/gettext-lib-abstracts-com.php:7 lib/abstracts/com/add-on.php:196
 msgid ""
 "The %1$s add-on requires %2$s version %3$s or newer (version %4$s is "
 "currently installed)."
