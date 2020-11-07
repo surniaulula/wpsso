@@ -40,6 +40,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$max_int = SucomUtil::get_max_int();
 
+			/**
+			 * Add filters when the "Enforce Image Dimension Checks" option is enabled.
+			 */
 			if ( ! empty( $this->p->options[ 'plugin_check_img_dims' ] ) ) {
 
 				$this->p->util->add_plugin_filters( $this, array(

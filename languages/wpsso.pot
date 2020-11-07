@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.11.2-dev.2\n"
+"Project-Id-Version: WPSSO Core 8.11.2-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2624,8 +2624,8 @@ msgstr ""
 msgid "Posts, Pages, and Custom Post Types"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:38 lib/media.php:122 lib/media.php:1094
-#: lib/media.php:1226 lib/media.php:2187 lib/pro/admin/advanced.php:223
+#: gettext/gettext-lib-pro.php:38 lib/media.php:125 lib/media.php:1097
+#: lib/media.php:1229 lib/media.php:2190 lib/pro/admin/advanced.php:223
 #: lib/std/admin/advanced.php:228
 msgid "Media Library"
 msgstr ""
@@ -3228,15 +3228,15 @@ msgid ""
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:167 gettext/gettext-lib-pro.php:170
-#: lib/pro/media/ngg.php:137 lib/pro/media/ngg.php:1542
+#: lib/pro/media/ngg.php:140 lib/pro/media/ngg.php:1545
 msgid "NextGEN Gallery"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:168 lib/pro/media/ngg.php:138
+#: gettext/gettext-lib-pro.php:168 lib/pro/media/ngg.php:141
 msgid "image ID %s"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:169 lib/media.php:128 lib/pro/media/ngg.php:140
+#: gettext/gettext-lib-pro.php:169 lib/media.php:131 lib/pro/media/ngg.php:143
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is too small for the "
 "required %4$s image dimensions."
@@ -5056,21 +5056,21 @@ msgid ""
 "required library file."
 msgstr ""
 
-#: lib/media.php:104
+#: lib/media.php:107
 msgid "full size original"
 msgstr ""
 
-#: lib/media.php:125 lib/media.php:2197
+#: lib/media.php:128 lib/media.php:2200
 msgid "image ID %1$s (%2$s)"
 msgstr ""
 
-#: lib/media.php:191
+#: lib/media.php:194
 msgid ""
 "Image %1$s in content ignored &mdash; the image width and height is too "
 "small for the required %2$s image dimensions."
 msgstr ""
 
-#: lib/media.php:193
+#: lib/media.php:196
 msgid ""
 "%1$s includes an additional 'data-wp-pid' attribute for WordPress Media "
 "Library images &mdash; if this image was selected from the Media Library "
@@ -5078,66 +5078,66 @@ msgid ""
 "content."
 msgstr ""
 
-#: lib/media.php:212
+#: lib/media.php:215
 msgid ""
 "<strong>Suggested minimum dimension for uploaded images</strong> (to satisfy "
 "all %1$d image sizes): %2$d by %3$d pixels."
 msgstr ""
 
-#: lib/media.php:817
+#: lib/media.php:820
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1097
+#: lib/media.php:1100
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:1099 lib/media.php:1275
+#: lib/media.php:1102 lib/media.php:1278
 msgid ""
 "You may consider regenerating the thumbnails of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
 "org</a>."
 msgstr ""
 
-#: lib/media.php:1116
+#: lib/media.php:1119
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image dimensions for "
 "<a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:1138
+#: lib/media.php:1141
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image file path for "
 "<a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:1227
+#: lib/media.php:1230
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1273
+#: lib/media.php:1276
 msgid ""
 "Possible %1$s corruption detected &mdash; the <a href=\"%2$s\">WordPress "
 "%3$s function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr ""
 
-#: lib/media.php:2213
+#: lib/media.php:2216
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:2264
+#: lib/media.php:2267
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect "
 "ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr ""
 
-#: lib/media.php:2297
+#: lib/media.php:2300
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."

@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.11.2-dev.2',	// Plugin version.
+					'version'     => '8.11.2-b.1',	// Plugin version.
 					'opt_version' => '767',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1648,7 +1648,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_page_excerpt'          => 0,				// Enable WP Excerpt for Pages.
 					'plugin_page_tags'             => 0,				// Enable WP Tags for Pages.
 					'plugin_check_head'            => 1,				// Check for Duplicate Meta Tags.
-					'plugin_check_img_dims'        => 1,				// Enforce Image Dimension Checks.
+					'plugin_check_img_dims'        => 0,				// Enforce Image Dimension Checks.
 					'plugin_upscale_images'        => 0,				// Upscale Media Library Images.
 					'plugin_upscale_img_max'       => 33,				// Maximum Image Upscale Percent.
 

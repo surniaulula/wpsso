@@ -2626,8 +2626,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								}
 
 								/**
-								 * WpssoMedia->is_image_within_config_limits() sets
-								 * 'show_adjust_img_size_opts' = false for images that are too
+								 * Note that WpssoMedia->is_image_within_config_limits() sets
+								 * 'show_adjust_img_size_opts' to false for images that are too
 								 * small for the hard-coded config limits.
 								 */
 								if ( ! isset( $info[ 'show_adjust_img_size_opts' ] ) ||
