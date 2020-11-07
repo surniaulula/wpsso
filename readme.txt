@@ -679,7 +679,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 8.11.2-b.1 =
 
-(2020/11/07) Fixed an undefined index streamingData error in cases where YouTube video details could not be retrieved.
+(2020/11/07) Fixed an undefined index streamingData error in cases where YouTube video details are incomplete or could not be retrieved.
 
 = 8.11.1 =
 
