@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.11.1\n"
+"Project-Id-Version: WPSSO Core 8.11.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-10-30 11:11-0700\n"
-"PO-Revision-Date: 2020-10-30 11:14-0700\n"
+"POT-Creation-Date: 2020-11-07 08:44-0800\n"
+"PO-Revision-Date: 2020-11-07 08:46-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -368,11 +368,11 @@ msgctxt "html list item"
 msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/\">Why shouldn't I upload small images to the Media library?</a>"
 msgstr "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/\">Pourquoi ne devrais-je pas télécharger de petites images dans la Médiathèque?</a>"
 
-#: gettext/gettext-lib-abstracts-com.php:6 lib/abstracts/com/add-on.php:162
+#: gettext/gettext-lib-abstracts-com.php:6 lib/abstracts/com/add-on.php:178
 msgid "The %1$s add-on requires the %2$s plugin &mdash; please activate the missing plugin."
 msgstr "L'ajout %1$s nécessite l'extension %2$s &mdash; veuillez activer l'extension manquante."
 
-#: gettext/gettext-lib-abstracts-com.php:7 lib/abstracts/com/add-on.php:180
+#: gettext/gettext-lib-abstracts-com.php:7 lib/abstracts/com/add-on.php:196
 msgid "The %1$s add-on requires %2$s version %3$s or newer (version %4$s is currently installed)."
 msgstr "L'ajout %1$s nécessite %2$s version %3$s ou plus récente (la version %4$s est actuellement installée)."
 
@@ -822,8 +822,8 @@ msgstr "WPSSO Core"
 
 #: gettext/gettext-lib-config.php:68
 msgctxt "plugin description"
-msgid "Make sure your content looks great on social sites and in search results, no matter how your URLs are crawled, shared, re-shared, posted, or embedded."
-msgstr "Assurez-vous que votre contenu a fière allure sur les sites sociaux et dans les résultats de recherche, quelle que soit la manière dont vos URLs sont explorées, partagées, re-partagées, publiées ou intégrées."
+msgid "Make sure your content looks best on social sites and in search results, no matter how your webpages are shared, re-shared, messaged, posted, embedded, or crawled."
+msgstr "Assurez-vous que votre contenu a fière allure sur les sites sociaux et dans les résultats de recherche, quelle que soit la façon dont vos pages Web sont partagées, re-partagées, envoyées, publiées, intégrées ou explorées."
 
 #: gettext/gettext-lib-config.php:69
 msgctxt "plugin name"
@@ -2304,8 +2304,8 @@ msgstr "Devise par défaut"
 msgid "Posts, Pages, and Custom Post Types"
 msgstr "Articles, pages et types d'articles personnalisés"
 
-#: gettext/gettext-lib-pro.php:38 lib/media.php:122 lib/media.php:1094
-#: lib/media.php:1226 lib/media.php:2187 lib/pro/admin/advanced.php:223
+#: gettext/gettext-lib-pro.php:38 lib/media.php:125 lib/media.php:1097
+#: lib/media.php:1229 lib/media.php:2190 lib/pro/admin/advanced.php:223
 #: lib/std/admin/advanced.php:228
 msgid "Media Library"
 msgstr "la médiathèque"
@@ -2892,15 +2892,15 @@ msgid "Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the
 msgstr "L'image avec l'ID %1$s de %2$s a été agrandie par %3$s de %4$s à %5$s pour les dimensions de %6$s."
 
 #: gettext/gettext-lib-pro.php:167 gettext/gettext-lib-pro.php:170
-#: lib/pro/media/ngg.php:137 lib/pro/media/ngg.php:1542
+#: lib/pro/media/ngg.php:140 lib/pro/media/ngg.php:1545
 msgid "NextGEN Gallery"
 msgstr "NextGEN Gallery"
 
-#: gettext/gettext-lib-pro.php:168 lib/pro/media/ngg.php:138
+#: gettext/gettext-lib-pro.php:168 lib/pro/media/ngg.php:141
 msgid "image ID %s"
 msgstr "ID d'image %s"
 
-#: gettext/gettext-lib-pro.php:169 lib/media.php:128 lib/pro/media/ngg.php:140
+#: gettext/gettext-lib-pro.php:169 lib/media.php:131 lib/pro/media/ngg.php:143
 msgid "%1$s %2$s ignored &mdash; the resulting image of %3$s is too small for the required %4$s image dimensions."
 msgstr "L'%2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s est trop petite pour les dimensions requis par %4$s."
 
@@ -4619,63 +4619,63 @@ msgstr "Impossible de déterminer le nom de classe de bibliothèque pour \"%s\".
 msgid "The installed plugin is incomplete or the web server cannot access the required library file."
 msgstr "Le plugin installé est incomplet ou le serveur Web ne peut pas accéder au fichier de bibliothèque."
 
-#: lib/media.php:104
+#: lib/media.php:107
 msgid "full size original"
 msgstr "originale pleine grandeur"
 
-#: lib/media.php:125 lib/media.php:2197
+#: lib/media.php:128 lib/media.php:2200
 msgid "image ID %1$s (%2$s)"
 msgstr "ID d'image %1$s (%2$s)"
 
-#: lib/media.php:191
+#: lib/media.php:194
 msgid "Image %1$s in content ignored &mdash; the image width and height is too small for the required %2$s image dimensions."
 msgstr "L'image %1$s du contenu ignorée &mdash; la largeur et la hauteur de l'image sont insuffisante pour les dimensions requises par %2$s."
 
-#: lib/media.php:193
+#: lib/media.php:196
 msgid "%1$s includes an additional 'data-wp-pid' attribute for WordPress Media Library images &mdash; if this image was selected from the Media Library before %1$s was activated, try removing and adding the image back to your content."
 msgstr "%1$s inclut un attribut supplémentaire 'data-wp-pid' pour les images de la médiathèque WordPress &mdash si cette image a été sélectionnée dans la médiathèque avant l'activation de %1$s, essayez de supprimer et de rajouter l'image à votre contenu."
 
-#: lib/media.php:212
+#: lib/media.php:215
 msgid "<strong>Suggested minimum dimension for uploaded images</strong> (to satisfy all %1$d image sizes): %2$d by %3$d pixels."
 msgstr "<strong>Dimension minimale suggérée pour les images téléchargées</strong> (pour satisfaire toutes les %1$d tailles d'image): %2$d par %3$d pixels."
 
-#: lib/media.php:817
+#: lib/media.php:820
 msgid "Content"
 msgstr "Contenu"
 
-#: lib/media.php:1097
+#: lib/media.php:1100
 msgid "https://developer.wordpress.org/reference/functions/wp_get_attachment_metadata/"
 msgstr "https://developer.wordpress.org/reference/functions/wp_get_attachment_metadata/"
 
-#: lib/media.php:1099 lib/media.php:1275
+#: lib/media.php:1102 lib/media.php:1278
 msgid "You may consider regenerating the thumbnails of all WordPress Media Library images using one of <a href=\"%s\">several available plugins from WordPress.org</a>."
 msgstr "Vous pouvez régénérer les miniatures de toutes les images de la bibliothèque Médias WordPress en utilisant l'une <a href=\"%s\">des extensions disponibles sur WordPress.org</a>."
 
-#: lib/media.php:1116
+#: lib/media.php:1119
 msgid "Possible %1$s corruption detected &mdash; the full size image dimensions for <a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr "Corruption possible de %1$s détecté &mdash; les dimensions de l'image pleine grandeur pour <a href=\"%2$s\">l'ID d'image %3$s</a> sont manquantes dans les métadonnées d'image retourné par la <a href=\"%4$s\">fonction WordPress %5$s</a>."
 
-#: lib/media.php:1138
+#: lib/media.php:1141
 msgid "Possible %1$s corruption detected &mdash; the full size image file path for <a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr "Corruption possible de %1$s détecté &mdash; le chemin du fichier d'image pleine grandeur pour <a href=\"%2$s\">l'ID d'image %3$s</a> est manquant dans les métadonnées d'image retourné par la <a href=\"%4$s\">fonction WordPress %5$s</a>."
 
-#: lib/media.php:1227
+#: lib/media.php:1230
 msgid "https://developer.wordpress.org/reference/functions/image_make_intermediate_size/"
 msgstr "https://developer.wordpress.org/reference/functions/image_make_intermediate_size/"
 
-#: lib/media.php:1273
+#: lib/media.php:1276
 msgid "Possible %1$s corruption detected &mdash; the <a href=\"%2$s\">WordPress %3$s function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr "Corruption possible de %1$s détecté &mdash; la <a href=\"%2$s\">fonction WordPress %3$s</a> n'a pas pu créer la taille d'image \"%4$s\" (%5$s) à partir de %6$s."
 
-#: lib/media.php:2213
+#: lib/media.php:2216
 msgid "image URL %s"
 msgstr "URL d'image %s"
 
-#: lib/media.php:2264
+#: lib/media.php:2267
 msgid "%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr "L'%2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s a une <strong>proportion égale ou supérieur a %4$d:1 permise par la norme %5$s</strong>."
 
-#: lib/media.php:2297
+#: lib/media.php:2300
 msgid "%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>."
 msgstr "L'%2$s de %1$s a été ignoré &mdash; l'image résultante de %3$s est <strong>plus petite que le minimum %4$s permise par la norme %5$s</strong>."
 
@@ -6847,12 +6847,12 @@ msgid "post"
 msgstr "article"
 
 #: lib/post.php:562 lib/register.php:347 lib/term.php:488 lib/user.php:461
-#: lib/util.php:836 lib/util.php:3378
+#: lib/util.php:838 lib/util.php:3380
 msgid "%s warning:"
 msgstr "Alerte %s:"
 
-#: lib/post.php:563 lib/term.php:489 lib/user.php:463 lib/util.php:838
-#: lib/util.php:3380
+#: lib/post.php:563 lib/term.php:489 lib/user.php:463 lib/util.php:840
+#: lib/util.php:3382
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr "supérieur au max recommandé de %1$0.3f secs"
 
@@ -7932,59 +7932,59 @@ msgstr "recadrée"
 msgid "uncropped"
 msgstr "non recadrée"
 
-#: lib/util.php:840
+#: lib/util.php:842
 msgid "Slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s (%3$s)."
 msgstr "Fonction PHP lente détectée - getimagesize() a pris %1$0.3f secs pour %2$s (%3$s)."
 
-#: lib/util.php:1386
+#: lib/util.php:1388
 msgid "Error reading the %s file for the article sections list."
 msgstr "Erreur de lecture du fichier %s pour la liste des rubriques d'article."
 
-#: lib/util.php:1490
+#: lib/util.php:1492
 msgid "Error reading the %s file for the product categories list."
 msgstr "Erreur de lecture du fichier %s pour de la liste des catégories de produit."
 
-#: lib/util.php:1613
+#: lib/util.php:1615
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr "L'argument de demande à %1$s n'est pas du HTML ou un URL valide."
 
-#: lib/util.php:1637
+#: lib/util.php:1639
 msgid "Error getting HTML from <a href=\"%1$s\">%1$s</a>."
 msgstr "Erreur lors de l'obtention du code HTML de <a href=\"%1$s\">%1$s</a>."
 
-#: lib/util.php:1666
+#: lib/util.php:1668
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr "La page Web récupéré de <a href=\"%1$s\">%1$s</a> est vide."
 
 #. translators: %1$s is the class name.
-#: lib/util.php:1861
+#: lib/util.php:1863
 msgid "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting provider to have the missing class installed."
 msgstr "La classe PHP <code>%1$s</code> est manquante &ndash; contactez votre fournisseur d'hébergement pour installer la classe manquante."
 
 #. translators: %1$s is the function name.
-#: lib/util.php:1875
+#: lib/util.php:1877
 msgid "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting provider to have the missing function installed."
 msgstr "La fonction PHP <code>%1$s</code> est manquante &ndash; contactez votre fournisseur d'hébergement pour installer la fonction manquante."
 
-#: lib/util.php:3382
+#: lib/util.php:3384
 msgid "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the \"%2$s\" filter (%3$s)."
 msgstr "Crochet(s) de filtre lent détecté - WordPress a pris %1$0.3f secs pour exécuter le filtre \"%2$s\" (%3$s)."
 
-#: lib/util.php:3397
+#: lib/util.php:3399
 msgid "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f seconds to execute. This is longer than the recommended maximum of %3$0.3f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr "Crochet(s) de filtre lent détecté &mdash le filtre WordPress %1$s a pris %2$0.3f secondes pour exécuter. Ceci est plus long que le maximum recommandé de %3$0.3f secondes et peut affecter le temps de chargement de la page. S'il vous plaît, envisagez d'examiner les fonctions d'extensions de tiers partie et de thème accrochées au filtre WordPress %1$s pour du code PHP lent et/ou sous-optimal."
 
-#: lib/util.php:3399
+#: lib/util.php:3401
 msgid "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the filter) may provide more information on the specific hook(s) or PHP code affecting performance."
 msgstr "Si vous activez l'extension %1$s et effacez le cache de %2$s (pour ré-appliquer le filtre), vous obtiendrez peut-être plus d'informations sur les crochets spécifiques ou le code PHP affectant les performances."
 
 #. translators: %1$s is an action message, %2$s is the module or post type name.
-#: lib/util.php:3911
+#: lib/util.php:3913
 msgid "%1$s for this %2$s"
 msgstr "%1$s pour cet %2$s"
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3921
+#: lib/util.php:3923
 msgid "%1$s for %2$s ID %3$d"
 msgstr "%1$s pour %2$s ID %3$d"
 
@@ -8014,8 +8014,8 @@ msgid "https://wpsso.com/extend/plugins/wpsso/"
 msgstr "https://wpsso.com/extend/plugins/wpsso/"
 
 #. Description of the plugin/theme
-msgid "Make sure your content looks great on social sites and in search results, no matter how your URLs are crawled, shared, re-shared, posted, or embedded."
-msgstr "Assurez-vous que votre contenu a fière allure sur les sites sociaux et dans les résultats de recherche, quelle que soit la manière dont vos URLs sont explorées, partagées, re-partagées, publiées ou intégrées."
+msgid "Make sure your content looks best on social sites and in search results, no matter how your webpages are shared, re-shared, messaged, posted, embedded, or crawled."
+msgstr "Assurez-vous que votre contenu a fière allure sur les sites sociaux et dans les résultats de recherche, quelle que soit la façon dont vos pages Web sont partagées, re-partagées, envoyées, publiées, intégrées ou explorées."
 
 #. Author of the plugin/theme
 msgid "JS Morisset"
