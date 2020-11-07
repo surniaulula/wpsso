@@ -314,7 +314,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.11.2-b.1 (2020/11/07)**
+**Version 8.11.2-rc.1 (2020/11/07)**
 
 * **New Features**
 	* None.
@@ -677,7 +677,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.11.2-b.1 =
+= 8.11.2-rc.1 =
 
 (2020/11/07) Fixed an undefined index streamingData error in cases where YouTube video details are incomplete or could not be retrieved.
 
