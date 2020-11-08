@@ -4124,7 +4124,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_SCHEMA_METADATA_OFFERS_MAX' ]       = 5;
 			$var_const[ 'WPSSO_SCHEMA_MOVIE_ACTORS_MAX' ]          = 15;
 			$var_const[ 'WPSSO_SCHEMA_MOVIE_DIRECTORS_MAX' ]       = 5;
-			$var_const[ 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME' ]    = MONTH_IN_SECONDS;	// Used for Schema 'priceValidUntil' property default.
+			$var_const[ 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME' ]    = 3 * MONTH_IN_SECONDS;	// Used for Schema 'priceValidUntil' property default.
 			$var_const[ 'WPSSO_SCHEMA_QUESTIONS_PER_FAQPAGE_MAX' ] = 50;
 			$var_const[ 'WPSSO_SCHEMA_RECIPE_INGREDIENTS_MAX' ]    = 40;
 			$var_const[ 'WPSSO_SCHEMA_RECIPE_INSTRUCTIONS_MAX' ]   = 40;

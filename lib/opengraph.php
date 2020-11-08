@@ -569,7 +569,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				if ( $mod[ 'is_post' ] && $mod[ 'id' ] ) {
 
-					$mt_og[ 'og:updated_time' ] = trim( get_post_modified_time( 'c', true, $mod[ 'id' ] ) );	// $gmt is true.
+					$mt_og[ 'og:updated_time' ] = trim( get_post_modified_time( 'c', $gmt = true, $mod[ 'id' ] ) );
 				}
 			}
 
