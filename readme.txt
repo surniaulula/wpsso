@@ -153,6 +153,8 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 
 * URL shortening with Bitly, DLMY.App, Google, Ow.ly, TinyURL, or YOURLS.
 
+* Most complete Schema JSON-LD markup for WooCommerce products ([WPSSO JSON add-on required](https://wordpress.org/plugins/wpsso-schema-json-ld/)).
+
 * Integrates with 3rd party plugins and service APIs for additional image, video, e-Commerce product details, SEO settings, etc. The following modules are included with the Premium version, and are automatically loaded if/when the supported plugins and/or services are required.
 
 	* **Integration with 3rd Party Plugins:** 
