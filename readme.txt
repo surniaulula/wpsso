@@ -246,6 +246,7 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 * [How do I remove duplicate meta tags?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-remove-duplicate-meta-tags/)
 * [How does WPSSO Core find / detect / select images?](https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-images/)
 * [How does WPSSO Core find / detect / select videos?](https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-videos/)
+* [Is WPSSO the Best Alternative to Yoast SEO?](https://wpsso.com/docs/plugins/wpsso/faqs/is-wpsso-the-best-alternative-to-yoast-seo/)
 * [W3C says "there is no attribute 'property'"](https://wpsso.com/docs/plugins/wpsso/faqs/w3c-says-there-is-no-attribute-property/)
 * [Why are some HTML elements missing / misaligned / different?](https://wpsso.com/docs/plugins/wpsso/faqs/why-are-some-html-elements-missing-misaligned-different/)
 * [Why does Facebook show the wrong image / text?](https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/)
