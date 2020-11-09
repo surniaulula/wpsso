@@ -321,6 +321,10 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 								case 'schema':
 
+									/**
+									 * If WPSSO_SCHEMA_MARKUP_DISABLE is true, then schema
+									 * markup is not available (ie. false).
+									 */
 									$get_avail[ $sub ][ $id ] = SucomUtil::get_const( 'WPSSO_SCHEMA_MARKUP_DISABLE' ) ? false : true;
 
 									break;

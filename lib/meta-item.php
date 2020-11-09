@@ -322,7 +322,8 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 					$this->p->debug->log( 'getting images for ' . $page_type_url );
 				}
 
-				$max_nums  = $this->p->util->get_max_nums( $mod, 'schema' );
+				$max_nums = $this->p->util->get_max_nums( $mod, 'schema' );
+
 				$mt_images = $this->p->og->get_all_images( $max_nums[ 'schema_img_max' ], $size_names = 'schema', $mod, true, $md_pre = 'schema' );
 
 				foreach ( $mt_images as $mt_single_image ) {

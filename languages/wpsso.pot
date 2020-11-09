@@ -1036,7 +1036,7 @@ msgid "Your SSO"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:51 gettext/gettext-lib-config.php:62
-#: lib/admin-head.php:261 lib/messages.php:3351
+#: lib/admin-head.php:261 lib/messages.php:3356
 msgctxt "lib file description"
 msgid "Advanced Settings"
 msgstr ""
@@ -1306,7 +1306,7 @@ msgid ""
 msgstr ""
 
 #: gettext/gettext-lib-config.php:101 lib/admin-head.php:260
-#: lib/messages.php:3350
+#: lib/messages.php:3355
 msgctxt "menu title"
 msgid "SSO"
 msgstr ""
@@ -3542,12 +3542,12 @@ msgid_plural "Please install these updates at your earliest convenience."
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/admin-head.php:262 lib/messages.php:3352 lib/submenu/advanced.php:86
+#: lib/admin-head.php:262 lib/messages.php:3357 lib/submenu/advanced.php:86
 msgctxt "metabox title"
 msgid "HTML Tags"
 msgstr ""
 
-#: lib/admin-head.php:263 lib/messages.php:3353 lib/submenu/advanced.php:189
+#: lib/admin-head.php:263 lib/messages.php:3358 lib/submenu/advanced.php:189
 msgctxt "metabox tab"
 msgid "SEO / Other"
 msgstr ""
@@ -5766,7 +5766,7 @@ msgstr ""
 msgid "Your theme does not support <a href=\"%s\">the WordPress Title Tag</a>."
 msgstr ""
 
-#: lib/messages.php:817 lib/messages.php:3327
+#: lib/messages.php:817 lib/messages.php:3332
 msgid "https://codex.wordpress.org/Title_Tag"
 msgstr ""
 
@@ -7741,24 +7741,24 @@ msgstr ""
 msgid "No options available."
 msgstr ""
 
-#: lib/messages.php:3326
+#: lib/messages.php:3331
 msgid "theme does not support <a href=\"%s\">the WordPress Title Tag</a>"
 msgstr ""
 
-#: lib/messages.php:3355
+#: lib/messages.php:3360
 msgid "Note that the <code>%s</code> HTML tag is currently disabled."
 msgstr ""
 
-#: lib/messages.php:3358
+#: lib/messages.php:3363
 msgid "You can re-enable this option under the %s tab."
 msgstr ""
 
-#: lib/messages.php:3394
+#: lib/messages.php:3399
 msgctxt "option value"
 msgid "uncropped"
 msgstr ""
 
-#: lib/messages.php:3394
+#: lib/messages.php:3399
 msgctxt "option value"
 msgid "cropped"
 msgstr ""

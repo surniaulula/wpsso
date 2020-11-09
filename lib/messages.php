@@ -3281,7 +3281,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 		public function more_schema_options() {
 
-			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {	// Since WPSSO Core v6.23.3.
+			if ( isset( $this->p->avail[ 'p' ][ 'schema' ] ) && empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {	// Since WPSSO Core v6.23.3.
 
 				return $this->schema_disabled();
 
@@ -3306,7 +3306,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			return $html;
 		}
 
-		public function get_schema_disabled_rows( array &$table_rows, $col_span = 1 ) {
+		public function get_schema_disabled_rows( $table_rows = array(), $col_span = 1 ) {
+
+			if ( ! is_array( $table_rows ) ) {	// Just in case.
+
+				$table_rows = array();
+			}
 
 			$table_rows[ 'schema_disabled' ] = '<tr><td align="center" colspan="' . $col_span . '">' . $this->schema_disabled() . '</td></tr>';
 
