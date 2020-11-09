@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 8.11.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-11-07 08:44-0800\n"
-"PO-Revision-Date: 2020-11-07 08:46-0800\n"
+"POT-Creation-Date: 2020-11-09 10:14-0800\n"
+"PO-Revision-Date: 2020-11-09 10:15-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -235,8 +235,8 @@ msgstr "Les <a href=\"https://wpsso.com/docs/plugins/wpsso/installation/integrat
 
 #: gettext/gettext-html-setup.php:50
 msgctxt "html paragraph"
-msgid "<strong>The WooCommerce plugin is known to offer incomplete Schema markup for Google.</strong> The <a href=\"https://wpsso.com/extend/plugins/wpsso/\">WPSSO Core Premium plugin</a> and its <a href=\"https://wordpress.org/plugins/wpsso-schema-json-ld/\">WPSSO Schema JSON-LD Markup add-on</a> provide a much better solution by offering complete product meta tags for Facebook / Pinterest, and complete Schema product markup for Google Rich Results &mdash; including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, and much, much more."
-msgstr "<strong>L'extension WooCommerce est réputé pour offrir un balisage de Schéma incomplet pour Google.</strong> L'<a href=\"https://wpsso.com/extend/plugins/wpsso/\">extension WPSSO Core Premium</a> et son <a href=\"https://wordpress.org/plugins/wpsso-schema-json-ld/\">ajout WPSSO balisage JSON-LD de Schéma</a> fournissent une bien meilleure solution en offrant des balises méta de produit complètes pour Facebook / Pinterest et un balisage de produit de Schéma complet pour les résultats enrichis Google &mdash; y compris des images de produit supplémentaires, des variantes de produit, des informations additionnelles sur le produit (marque, couleur, état, EAN, dimensions, GTIN-8/12/13/14, ISBN, matériel, MPN, taille, SKU, poids, etc.), critiques de produits, évaluations de produits, dates de début / fin de vente, prix de vente, prix hors taxes, prix avec TVA, et bien plus encore."
+msgid "<strong>The WooCommerce plugin is known to offer incomplete Schema markup for Google.</strong> The <a href=\"https://wpsso.com/extend/plugins/wpsso/\">WPSSO Core Premium plugin</a> and its <a href=\"https://wordpress.org/plugins/wpsso-schema-json-ld/\">WPSSO Schema JSON-LD Markup add-on</a> provide a much better solution by offering complete product meta tags for Facebook / Pinterest, and complete Schema product markup for Google Rich Results &mdash; including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more."
+msgstr "<strong>L'extension WooCommerce est réputé pour offrir un balisage de Schéma incomplet pour Google.</strong> L'<a href=\"https://wpsso.com/extend/plugins/wpsso/\">extension WPSSO Core Premium</a> et son <a href=\"https://wordpress.org/plugins/wpsso-schema-json-ld/\">ajout WPSSO balisage JSON-LD de Schéma</a> fournissent une bien meilleure solution en offrant des balises méta de produit complètes pour Facebook / Pinterest et un balisage de produit de Schéma complet pour les résultats enrichis Google &mdash; y compris des images de produit supplémentaires, des variantes de produit, des informations additionnelles sur le produit (marque, couleur, état, EAN, dimensions, GTIN-8/12/13/14, ISBN, matériel, MPN, taille, SKU, volume, poids, etc.), critiques de produits, évaluations de produits, dates de début / fin de vente, prix de vente, prix hors taxes, prix avec TVA, tarifs d'expédition, délais d'expédition, et bien plus encore."
 
 #: gettext/gettext-html-setup.php:51
 msgctxt "html paragraph"
@@ -752,7 +752,7 @@ msgid "Your SSO"
 msgstr "Votre SSO"
 
 #: gettext/gettext-lib-config.php:51 gettext/gettext-lib-config.php:62
-#: lib/admin-head.php:261 lib/messages.php:3351
+#: lib/admin-head.php:261 lib/messages.php:3356
 msgctxt "lib file description"
 msgid "Advanced Settings"
 msgstr "Réglages avancés"
@@ -986,7 +986,7 @@ msgid "Shipping delivery time estimates for WooCommerce shipping zones, methods,
 msgstr "Estimations du délai de livraison pour les zones, méthodes et classes d'expédition WooCommerce."
 
 #: gettext/gettext-lib-config.php:101 lib/admin-head.php:260
-#: lib/messages.php:3350
+#: lib/messages.php:3355
 msgctxt "menu title"
 msgid "SSO"
 msgstr "SSO"
@@ -3193,12 +3193,12 @@ msgid_plural "Please install these updates at your earliest convenience."
 msgstr[0] "SVP installer cette mise à jour dès que possible."
 msgstr[1] "SVP installer ces mises à jour dès que possible."
 
-#: lib/admin-head.php:262 lib/messages.php:3352 lib/submenu/advanced.php:86
+#: lib/admin-head.php:262 lib/messages.php:3357 lib/submenu/advanced.php:86
 msgctxt "metabox title"
 msgid "HTML Tags"
 msgstr "Balises HTML"
 
-#: lib/admin-head.php:263 lib/messages.php:3353 lib/submenu/advanced.php:189
+#: lib/admin-head.php:263 lib/messages.php:3358 lib/submenu/advanced.php:189
 msgctxt "metabox tab"
 msgid "SEO / Other"
 msgstr "SEO / autre"
@@ -3236,8 +3236,8 @@ msgid "The WooCommerce v%s plugin is known to offer incomplete Schema markup for
 msgstr "L'extension WooCommerce v%s est connue pour offrir un balisage de schéma incomplet pour Google."
 
 #: lib/admin-head.php:381
-msgid "The WPSSO Core Premium plugin (required for WooCommerce integration) and its WPSSO Schema JSON-LD Markup add-on provide a much better solution by offering complete product meta tags for Facebook / Pinterest, and complete Schema product markup for Google Rich Results &mdash; including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, and much, much more."
-msgstr "L'extension WPSSO Core Premium (requis pour l'intégration de WooCommerce) et son ajout WPSSO balisage JSON-LD de Schéma fournissent une bien meilleure solution en offrant des balises méta de produit complètes pour Facebook / Pinterest et un balisage de produit de Schéma complet pour les résultats enrichis Google &mdash; y compris des images de produit supplémentaires, des variantes de produit, des informations additionnelles sur le produit (marque, couleur, état, EAN, dimensions, GTIN-8/12/13/14, ISBN, matériel, MPN, taille, SKU, poids, etc.), critiques de produits, évaluations de produits, dates de début / fin de vente, prix de vente, prix hors taxes, prix avec TVA, et bien plus encore."
+msgid "The WPSSO Core Premium plugin (required for WooCommerce integration) and its WPSSO Schema JSON-LD Markup add-on provide a much better solution by offering complete product meta tags for Facebook / Pinterest, and complete Schema product markup for Google Rich Results &mdash; including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more."
+msgstr "L'extension WPSSO Core Premium (requis pour l'intégration de WooCommerce) et son ajout WPSSO balisage JSON-LD de Schéma fournissent une bien meilleure solution en offrant des balises méta de produit complètes pour Facebook / Pinterest et un balisage de produit de Schéma complet pour les résultats enrichis Google &mdash; y compris des images de produit supplémentaires, des variantes de produit, des informations additionnelles sur le produit (marque, couleur, état, EAN, dimensions, GTIN-8/12/13/14, ISBN, matériel, MPN, taille, SKU, volume, poids, etc.), critiques de produits, évaluations de produits, dates de début / fin de vente, prix de vente, prix hors taxes, prix avec TVA, tarifs d'expédition, délais d'expédition, et bien plus encore."
 
 #: lib/admin-head.php:385
 msgid "As suggested in the %1$s, you can (and should) submit a few product URLs to the %2$s and make sure your Schema Product markup is complete."
@@ -5142,7 +5142,7 @@ msgstr "Vous pouvez également sélectionner le système de notification WordPre
 msgid "Your theme does not support <a href=\"%s\">the WordPress Title Tag</a>."
 msgstr "Votre thème ne prend pas en charge <a href=\"%s\">la balise de titre WordPress</a>."
 
-#: lib/messages.php:817 lib/messages.php:3327
+#: lib/messages.php:817 lib/messages.php:3332
 msgid "https://codex.wordpress.org/Title_Tag"
 msgstr "https://codex.wordpress.org/Title_Tag"
 
@@ -6637,24 +6637,24 @@ msgstr "Activer l'ajout %s<br/>si vous avez besoin d'options supplémentaires po
 msgid "No options available."
 msgstr "Aucune options disponibles."
 
-#: lib/messages.php:3326
+#: lib/messages.php:3331
 msgid "theme does not support <a href=\"%s\">the WordPress Title Tag</a>"
 msgstr "le thème ne prend pas en charge <a href=\"%s\">la balise de titre WordPress</a>"
 
-#: lib/messages.php:3355
+#: lib/messages.php:3360
 msgid "Note that the <code>%s</code> HTML tag is currently disabled."
 msgstr "Notez que la balise HTML <code>%s</code> est actuellement désactivée."
 
-#: lib/messages.php:3358
+#: lib/messages.php:3363
 msgid "You can re-enable this option under the %s tab."
 msgstr "Vous pouvez réactiver cette option sous l'onglet %s."
 
-#: lib/messages.php:3394
+#: lib/messages.php:3399
 msgctxt "option value"
 msgid "uncropped"
 msgstr "non recadrée"
 
-#: lib/messages.php:3394
+#: lib/messages.php:3399
 msgctxt "option value"
 msgid "cropped"
 msgstr "recadrée"
