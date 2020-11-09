@@ -33,7 +33,7 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 			/**
 			 * If Schema markup is disabled, do not add the itemtype to the <head> HTML tag.
 			 */
-			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {	// Since WPSSO Core v6.23.3.
+			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 

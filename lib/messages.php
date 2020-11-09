@@ -2093,7 +2093,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 */
 						case 'info-meta-validate-info':
 
-							if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {	// Since WPSSO Core v6.23.3.
+							if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
 
 								$text .= '<p class="status-msg left">* ';
 
@@ -3281,7 +3281,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 		public function more_schema_options() {
 
-			if ( isset( $this->p->avail[ 'p' ][ 'schema' ] ) && empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {	// Since WPSSO Core v6.23.3.
+			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
 
 				return $this->schema_disabled();
 

@@ -587,7 +587,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$this->p->util->maybe_unset_ref( $sharing_url );
 
-			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {	// Since WPSSO Core v6.23.3.
+			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
