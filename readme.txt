@@ -317,6 +317,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.12.0-dev.1 (2020/11/10)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added a conflict check for SEOPress.
+	* Added a new SSO &gt; Features Status page.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new lib/conflict-seo.php library file.
+* **Requires At Least**
+	* PHP v5.6.
+	* WordPress v4.4.
+
 **Version 8.11.2 (2020/11/07)**
 
 * **New Features**
@@ -679,6 +694,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.12.0-dev.1 =
+
+(2020/11/10) Added a conflict check for SEOPress. Added a new SSO &gt; Features Status page.
 
 = 8.11.2 =
 
