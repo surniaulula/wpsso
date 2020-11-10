@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.11.2',	// Plugin version.
+					'version'     => '8.12.0-dev.1',	// Plugin version.
 					'opt_version' => '767',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -150,18 +150,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'yotpowc'         => '(plugin) Yotpo Social Reviews for WooCommerce',
 							),
 							'seo' => array(
-								'aioseop'         => '(plugin) All in One SEO Pack',
-								'autodescription' => '(plugin) The SEO Framework',
-								'wpmetaseo'       => '(plugin) WP Meta SEO',
-								'wpseo'           => '(plugin) Yoast SEO',
+								'aioseop'      => '(plugin) All in One SEO Pack',
+								'seoframework' => '(plugin) The SEO Framework',
+								'wpmetaseo'    => '(plugin) WP Meta SEO',
+								'wpseo'        => '(plugin) Yoast SEO',
 							),
 							'social' => array(
 								'buddypress' => '(plugin) BuddyPress',
 							),
 							'util' => array(
-								'coauthors'     => '(plugin) Co-Authors Plus',
-								'shorten'       => '(feature) URL Shortening Service',
-								'wpseo-meta'    => '(feature) Import Yoast SEO Social Meta',
+								'coauthors'  => '(plugin) Co-Authors Plus',
+								'shorten'    => '(feature) URL Shortening Service',
+								'wpseo-meta' => '(feature) Import Yoast SEO Social Meta',
 							),
 						),
 						'profile' => array(
@@ -186,6 +186,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'essential'      => 'Essential Settings',
 							'setup'          => 'Setup Guide',
 							'dashboard'      => 'Dashboard',
+							'features'       => 'Features Status',
 							'general'        => 'General Settings',
 							'social-pages'   => 'Social Pages',
 							'image-sizes'    => 'Image Sizes',
@@ -2269,6 +2270,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add-person'    => 'admin-users',
 					'addons'        => 'admin-plugins',
 					'essential'     => 'star-filled',
+					'features'      => 'yes-alt',
 					'licenses'      => 'admin-network',
 					'dashboard'     => 'dashboard',
 					'setup'         => 'welcome-learn-more',

@@ -511,19 +511,32 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 				$notice_msg .= sprintf( __( 'You\'ve been using %s for a while now, which is awesome!', 'wpsso' ), $wp_plugin_link_desc );
 
-				$notice_msg .= '</p><p>';
+				$notice_msg .= '</p>' . "\n";
+
+				$notice_msg .= '<p>';
 
 				$notice_msg .= sprintf( __( 'We\'ve put many years of time and effort into making %s and its add-ons the best possible.', 'wpsso' ), $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'name' ] ) . ' ';
 
-				$notice_msg .= sprintf( __( 'It\'s great that %s is a valued addition to your site.', 'wpsso' ), $wp_plugin_link ) . ' ';
+				$notice_msg .= '</p>' . "\n";
+				
+				/**
+				 * See the 'column-rate-review' message.
+				 */
+				$notice_msg .= '<p><b>';
 
-				$notice_msg .= '</p><p>';
+				$notice_msg .= sprintf( __( 'Now that you\'ve been using %s for a while, it would help tremendously if you could rate it on WordPress.org.', 'wpsso' ), $wp_plugin_link ) . ' ';
 
-				$notice_msg .= sprintf( __( 'Now that you\'ve been using %s for a while, could you quickly rate it on WordPress.org?', 'wpsso' ), $wp_plugin_link ) . ' ';
+				$notice_msg .= __( 'Great ratings are an excellent way to ensure the continued development of your favorite plugins.', 'wpsso' ) . ' ';
 
-				$notice_msg .= '<b>' . __( 'Great ratings are an excellent way to encourage your plugin developers and support the continued development of your favorite plugins!', 'wpsso' ) . '</b>';
+				$notice_msg .= '</b></p>' . "\n";
 
-				$notice_msg .= '</p>';
+				$notice_msg .= '<p>';
+
+				$notice_msg .= __( 'Without your feedback, a plugin you value and depend on could be deprecated prematurely.', 'wpsso' ) . ' ';
+
+				$notice_msg .= sprintf( __( 'Don\'t let that happen - rate %s now!', 'wpsso' ), $wp_plugin_link ) . ' ';
+						
+				$notice_msg .= '</p>' . "\n";
 
 				$notice_msg .= '<div class="notice-actions">';
 

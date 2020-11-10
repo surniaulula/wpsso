@@ -41,7 +41,7 @@ if ( ! class_exists( 'WpssoSubmenuAddons' ) && class_exists( 'WpssoAdmin' ) ) {
 		protected function add_plugin_hooks() {
 
 			/**
-			 * Make sure this filter runs last as it removed all form buttons.
+			 * Make sure this filter runs last as it removes all form buttons.
 			 */
 			$max_int = SucomUtil::get_max_int();
 

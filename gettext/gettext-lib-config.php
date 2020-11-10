@@ -55,6 +55,7 @@ _x( '(plugin) BuddyPress', 'lib file description', 'wpsso' );
 _x( 'Essential Settings', 'lib file description', 'wpsso' );
 _x( 'Setup Guide', 'lib file description', 'wpsso' );
 _x( 'Dashboard', 'lib file description', 'wpsso' );
+_x( 'Features Status', 'lib file description', 'wpsso' );
 _x( 'General Settings', 'lib file description', 'wpsso' );
 _x( 'Social Pages', 'lib file description', 'wpsso' );
 _x( 'Image Sizes', 'lib file description', 'wpsso' );

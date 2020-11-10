@@ -2956,19 +2956,21 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'column-rate-review':
 
-						$text = '<p style="text-align:center;">';
+						$text = '<p style="text-align:center;"><strong>';
 
-						$text .= __( 'Great ratings are an excellent way to encourage your plugin developers.', 'wpsso' );
+						$text .= __( 'It would help tremendously if you could rate the following plugins on WordPress.org.', 'wpsso' ) . ' ';
 
-						$text .= '</p> <p style="text-align:center;">';
+						$text .= __( 'Great ratings are an excellent way to ensure the continued development of your favorite plugins.', 'wpsso' ) . ' ';
 
-						$text .= '<span class="' . $lca . '-rate-heart"></span> ';
+						$text .= '</strong></p>' . "\n";
 
-						$text .= '</p> <p style="text-align:center;">';
+						$text .= '<p style="text-align:center;">';
 
-						$text .= __( 'Please take a moment to support the continued development of your favorite plugins by quickly rating those you value.', 'wpsso' );
+						$text .= __( 'Without your feedback, a plugin you value and depend on could be deprecated prematurely.', 'wpsso' ) . ' ';
 
-						$text .= '</p>';
+						$text .= __( 'Don\'t let that happen - rate your active plugins now!', 'wpsso' ) . ' ';
+						
+						$text .= '</p>' . "\n";
 
 						break;
 

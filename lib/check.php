@@ -35,9 +35,10 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			'seo' => array(
 				'jetpack-seo' => 'Jetpack SEO Tools',
 				'rankmath'    => 'Rank Math',
-				'seou'        => 'SEO Ultimate',
+				'seopress'    => 'SEOPress',
+				'seoultimate' => 'SEO Ultimate',
 				'slim-seo'    => 'Slim SEO',
-				'sq'          => 'Squirrly SEO',
+				'squirrlyseo' => 'Squirrly SEO',
 				'wpseo-wc'    => 'Yoast WooCommerce SEO',
 			),
 			'util' => array(
@@ -418,12 +419,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								case 'autodescription':
-
-									$chk[ 'function' ] = 'the_seo_framework';
-
-									break;
-
 								case 'jetpack-seo':
 
 									$jetpack_modules = method_exists( 'Jetpack', 'get_active_modules' ) ?
@@ -445,7 +440,19 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								case 'seou':
+								case 'seoframework':
+
+									$chk[ 'function' ] = 'the_seo_framework';
+
+									break;
+
+								case 'seopress':
+
+									$chk[ 'function' ] = 'seopress_init';
+
+									break;
+
+								case 'seoultimate':
 
 									$chk[ 'plugin' ] = 'seo-ultimate/seo-ultimate.php';
 
@@ -457,7 +464,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								case 'sq':
+								case 'squirrlyseo':
 
 									$chk[ 'plugin' ] = 'squirrly-seo/squirrly.php';
 

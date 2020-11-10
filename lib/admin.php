@@ -2092,7 +2092,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			echo $this->p->msgs->get( 'column-rate-review' );
 
-			echo '<h4>' . __( 'Rate your favorite plugins', 'option label', 'wpsso' ) . ':</h4>' . "\n";
+			echo '<h4>' . __( 'Active plugins', 'option label', 'wpsso' ) . ':</h4>' . "\n";
 
 			$action_links = array();
 
@@ -3670,10 +3670,26 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		/**
 		 * Called from the network settings pages.
+		 *
+		 * Add a class to set a minimum width for the network postboxes.
 		 */
 		public function add_class_postbox_network( $classes ) {
 
 			$classes[] = 'postbox-network';
+
+			return $classes;
+		}
+
+		public function add_class_postbox_menu_id( $classes ) {
+
+			global $wp_current_filter;
+
+			$filter_name = end( $wp_current_filter );
+
+			$postbox_name = preg_replace( '/^.*-(' . $this->menu_id . '_.*)$/u', '$1', $filter_name );
+
+			$classes[] = 'postbox-' . $this->menu_id;
+			$classes[] = 'postbox-' . $postbox_name;
 
 			return $classes;
 		}

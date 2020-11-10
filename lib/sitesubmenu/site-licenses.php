@@ -65,8 +65,7 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteLicenses' ) && class_exists( 'WpssoAdm
 			/**
 			 * Add a class to set a minimum width for the network postboxes.
 			 */
-			add_filter( 'postbox_classes_' . $this->pagehook . '_' . $this->pagehook . '_licenses',
-				array( $this, 'add_class_postbox_network' ) );
+			add_filter( 'postbox_classes_' . $this->pagehook . '_' . $this->pagehook . '_licenses', array( $this, 'add_class_postbox_network' ) );
 		}
 
 		public function show_metabox_licenses() {

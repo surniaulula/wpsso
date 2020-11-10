@@ -42,7 +42,7 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteAddons' ) && class_exists( 'WpssoAdmin
 		protected function add_plugin_hooks() {
 
 			/**
-			 * Make sure this filter runs last as it removed all form buttons.
+			 * Make sure this filter runs last as it removes all form buttons.
 			 */
 			$max_int = SucomUtil::get_max_int();
 
@@ -93,8 +93,7 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteAddons' ) && class_exists( 'WpssoAdmin
 			/**
 			 * Add a class to set a minimum width for the network postboxes.
 			 */
-			add_filter( 'postbox_classes_' . $this->pagehook . '_' . $this->pagehook . '_addons',
-				array( $this, 'add_class_postbox_network' ) );
+			add_filter( 'postbox_classes_' . $this->pagehook . '_' . $this->pagehook . '_addons', array( $this, 'add_class_postbox_network' ) );
 		}
 
 		public function show_metabox_addons() {
