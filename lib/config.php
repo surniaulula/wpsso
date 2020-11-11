@@ -1225,11 +1225,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'opt' => array(
 				'defaults' => array(
-					'options_version'              => '',		// Example: -wpsso512pro-wpssoum3gpl
+					'options_version'              => '',			// Example: -wpsso512pro-wpssoum3gpl
 					'options_filtered'             => 0,
-					'site_name'                    => '',		// (localized)
-					'site_name_alt'                => '',		// (localized)
-					'site_desc'                    => '',		// (localized)
+
+					/**
+					 * Site options.
+					 */
+					'site_name'                    => '',			// (localized)
+					'site_name_alt'                => '',			// (localized)
+					'site_desc'                    => '',			// (localized)
 					'site_url'                     => '',
 					'site_org_banner_url'          => '',
 					'site_org_logo_url'            => '',
@@ -1237,29 +1241,107 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'site_org_schema_type'         => 'organization',	// Organization Schema Type.
 					'site_pub_schema_type'         => 'organization',	// WebSite Publisher Type.
 					'site_pub_person_id'           => 'none',		// WebSite Publisher (Person).
-					'schema_img_max'               => 1,
-					'schema_desc_max_len'          => 250,		// Schema Description Max. Length (hard limit).
 
 					/**
-					 * Open Graph image size.
+					 * Facebook options.
 					 */
-					'og_img_width'  => 1200,
-					'og_img_height' => 630,
-					'og_img_crop'   => 1,
-					'og_img_crop_x' => 'center',
-					'og_img_crop_y' => 'center',
+					'fb_publisher_url' => '',				// Facebook Business Page URL (localized).
+					'fb_app_id'        => '',				// Facebook Application ID.
+					'fb_admins'        => '',				// or Facebook Admin Username(s).
+					'fb_locale'        => 'en_US',				// Alternate Facebook Locale.
 
 					/**
-					 * Pinterest PinIt image size.
+					 * Google options.
 					 */
-					'p_img_width'  => 1200,
-					'p_img_height' => 1800,
-					'p_img_crop'   => 0,
-					'p_img_crop_x' => 'center',
-					'p_img_crop_y' => 'center',
+					'g_site_verify' => '',					// Google Website Verification ID.
 
 					/**
-					 * Schema image sizes.
+					 * Open Graph options.
+					 */
+					'og_author_field'         => 'facebook',		// Author Profile URL Field.
+					'og_def_article_section'  => 'none',			// Default Article Section.
+					'og_def_img_id'           => '',			// Default / Fallback Image ID.
+					'og_def_img_id_pre'       => 'wp',
+					'og_def_img_url'          => '',			// or Default / Fallback Image URL.
+					'og_def_product_category' => 'none',			// Default Product Category.
+					'og_img_width'            => 1200,
+					'og_img_height'           => 630,
+					'og_img_crop'             => 1,
+					'og_img_crop_x'           => 'center',
+					'og_img_crop_y'           => 'center',
+					'og_img_max'              => 1,
+					'og_title_sep'            => '-',
+					'og_title_max_len'        => 70,
+					'og_title_warn_len'       => 40,
+					'og_desc_max_len'         => 300,
+					'og_desc_warn_len'        => 200,
+					'og_desc_hashtags'        => 0,
+					'og_vid_max'              => 1,
+					'og_vid_autoplay'         => 1,
+					'og_vid_prev_img'         => 1,				// Include Video Preview Images.
+
+					/**
+					 * Open Graph options for default taxonomy and post types.
+					 */
+					'og_type_for_archive_page'      => 'website',
+					'og_type_for_attachment'        => 'website',
+					'og_type_for_home_page'         => 'website',
+					'og_type_for_home_posts'        => 'website',
+					'og_type_for_page'              => 'article',
+					'og_type_for_post'              => 'article',
+					'og_type_for_post_archive'      => 'website',
+					'og_type_for_question'          => 'article',
+					'og_type_for_search_page'       => 'website',
+					'og_type_for_tax_category'      => 'website',
+					'og_type_for_tax_link_category' => 'website',
+					'og_type_for_tax_post_tag'      => 'website',
+					'og_type_for_user_page'         => 'profile',
+
+					/**
+					 * Open Graph options for custom taxonomy and post types.
+					 */
+					'og_type_for_article'                => 'article',
+					'og_type_for_book'                   => 'book',
+					'og_type_for_download'               => 'product',	// For Easy Digital Downloads.
+					'og_type_for_organization'           => 'website',
+					'og_type_for_place'                  => 'place',
+					'og_type_for_product'                => 'product', 	// For WooCommerce etc.
+					'og_type_for_question'               => 'article',
+					'og_type_for_tax_faq_category'       => 'website',
+					'og_type_for_tax_product_brand'      => 'website',	// For WooCommerce Brands.
+					'og_type_for_tax_product_cat'        => 'website',	// For WooCommerce.
+					'og_type_for_tax_product_tag'        => 'website',	// For WooCommerce.
+					'og_type_for_tax_pwb-brand'          => 'website',	// For Perfect WooCommerce Brands Add-on.
+					'og_type_for_tax_yith_product_brand' => 'website',	// For YITH WooCommerce Brands Add-on.
+					'og_type_for_tc_events'              => 'article',	// For Tickera.
+					'og_type_for_tribe_events'           => 'article',	// For The Events Calendar.
+					'og_type_for_website'                => 'website',
+
+					/**
+					 * Pinterest options.
+					 */
+					'p_site_verify'              => '',			// Pinterest Website Verification ID.
+					'p_publisher_url'            => '',
+					'p_add_nopin_header_img_tag' => 1,			// Add "nopin" to Site Header Image.
+					'p_add_nopin_media_img_tag'  => 0,			// Add "nopin" to WordPress Media.
+					'p_add_img_html'             => 0,			// Add Hidden Image for Pinterest.
+					'p_img_width'                => 1200,
+					'p_img_height'               => 1800,
+					'p_img_crop'                 => 0,
+					'p_img_crop_x'               => 'center',
+					'p_img_crop_y'               => 'center',
+					'p_img_desc_max_len'         => 300,			// Image Description Max. Length (hard limit).
+					'p_img_desc_warn_len'        => 100,			// Image Description Max. Length (soft limit).
+
+					/**
+					 * Robots options.
+					 */
+					'robots_max_snippet'       => -1,
+					'robots_max_image_preview' => 'large',
+					'robots_max_video_preview' => -1,
+
+					/**
+					 * Schema options.
 					 */
 					'schema_1_1_img_width'   => 1200,
 					'schema_1_1_img_height'  => 1200,
@@ -1276,18 +1358,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_16_9_img_crop'   => 1,
 					'schema_16_9_img_crop_x' => 'center',
 					'schema_16_9_img_crop_y' => 'center',
+					'schema_desc_max_len'    => 300,			// Schema Description Max. Length (hard limit).
+					'schema_img_max'         => 1,
 
 					/**
-					 * Schema thumbnail image size.
-					 */
-					'thumb_img_width'  => 1200,
-					'thumb_img_height' => 630,
-					'thumb_img_crop'   => 1,
-					'thumb_img_crop_x' => 'center',
-					'thumb_img_crop_y' => 'center',
-
-					/**
-					 * Standard WordPress types.
+					 * Schema options for default taxonomy and post types.
 					 */
 					'schema_type_for_archive_page'      => 'item.list',
 					'schema_type_for_attachment'        => 'webpage',
@@ -1303,7 +1378,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_user_page'         => 'webpage.profile',
 
 					/**
-					 * Other taxonomy and post types.
+					 * Schema options for custom taxonomy and post types.
 					 */
 					'schema_type_for_article'                => 'article',
 					'schema_type_for_book'                   => 'book',
@@ -1335,93 +1410,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_website'                => 'website',
 
 					/**
-					 * Facebook options.
+					 * SEO options.
 					 */
-					'fb_publisher_url' => '',		// Facebook Business Page URL (localized).
-					'fb_app_id'        => '',		// Facebook Application ID.
-					'fb_admins'        => '',		// or Facebook Admin Username(s).
-					'fb_locale'        => 'en_US',		// Alternate Facebook Locale.
-
-					/**
-					 * Other publisher page URLs.
-					 */
-					'instagram_publisher_url' => '',	// Instagram Business Page URL (localized).
-					'linkedin_publisher_url'  => '',	// LinkedIn Company Page URL (localized).
-					'myspace_publisher_url'   => '',	// Myspace Business Page URL (localized).
-					'sc_publisher_url'        => '',	// Soundcloud Business Page URL (localized).
-					'tumblr_publisher_url'    => '',	// Tumblr Business Page URL (localized).
-					'wikipedia_publisher_url' => '',	// Wikipedia Organization Page URL (localized).
-					'yt_publisher_url'        => '',	// YouTube Business Channel URL (localized).
-
-					/**
-					 * Standard WordPress types.
-					 */
-					'og_type_for_archive_page'      => 'website',
-					'og_type_for_attachment'        => 'website',
-					'og_type_for_home_page'         => 'website',
-					'og_type_for_home_posts'        => 'website',
-					'og_type_for_page'              => 'article',
-					'og_type_for_post'              => 'article',
-					'og_type_for_post_archive'      => 'website',
-					'og_type_for_question'          => 'article',
-					'og_type_for_search_page'       => 'website',
-					'og_type_for_tax_category'      => 'website',
-					'og_type_for_tax_link_category' => 'website',
-					'og_type_for_tax_post_tag'      => 'website',
-					'og_type_for_user_page'         => 'profile',
-
-					/**
-					 * Other taxonomy and post types.
-					 */
-					'og_type_for_article'                => 'article',
-					'og_type_for_book'                   => 'book',
-					'og_type_for_download'               => 'product',	// For Easy Digital Downloads.
-					'og_type_for_organization'           => 'website',
-					'og_type_for_place'                  => 'place',
-					'og_type_for_product'                => 'product', 	// For WooCommerce etc.
-					'og_type_for_question'               => 'article',
-					'og_type_for_tax_faq_category'       => 'website',
-					'og_type_for_tax_product_brand'      => 'website',	// For WooCommerce Brands.
-					'og_type_for_tax_product_cat'        => 'website',	// For WooCommerce.
-					'og_type_for_tax_product_tag'        => 'website',	// For WooCommerce.
-					'og_type_for_tax_pwb-brand'          => 'website',	// For Perfect WooCommerce Brands Add-on.
-					'og_type_for_tax_yith_product_brand' => 'website',	// For YITH WooCommerce Brands Add-on.
-					'og_type_for_tc_events'              => 'article',	// For Tickera.
-					'og_type_for_tribe_events'           => 'article',	// For The Events Calendar.
-					'og_type_for_website'                => 'website',
-
-					'og_author_field'              => 'facebook',		// Author Profile URL Field.
-					'og_def_article_section'       => 'none',			// Default Article Section.
-					'og_def_img_id'                => '',			// Default / Fallback Image ID.
-					'og_def_img_id_pre'            => 'wp',
-					'og_def_img_url'               => '',			// or Default / Fallback Image URL.
-					'og_def_product_category'      => 'none',			// Default Product Category.
-					'og_img_max'                   => 1,
-					'og_vid_max'                   => 1,
-					'og_vid_autoplay'              => 1,
-					'og_vid_prev_img'              => 1,			// Include Video Preview Images.
-					'og_title_sep'                 => '-',
-					'og_title_max_len'             => 70,
-					'og_title_warn_len'            => 40,
-					'og_desc_max_len'              => 300,
-					'og_desc_warn_len'             => 200,
-					'og_desc_hashtags'             => 0,
-					'g_site_verify'                => '',			// Google Website Verification ID.
-					'p_site_verify'                => '',			// Pinterest Website Verification ID.
-					'p_publisher_url'              => '',
-					'p_add_nopin_header_img_tag'   => 1,			// Add "nopin" to Site Header Image.
-					'p_add_nopin_media_img_tag'    => 0,			// Add "nopin" to WordPress Media.
-					'p_add_img_html'               => 0,			// Add Hidden Image for Pinterest.
-					'p_img_desc_max_len'           => 300,			// Image Description Max. Length (hard limit).
-					'p_img_desc_warn_len'          => 100,			// Image Description Max. Length (soft limit).
-					'robots_max_snippet'           => -1,
-					'robots_max_image_preview'     => 'large',
-					'robots_max_video_preview'     => -1,
-					'sc_publisher_url'             => '',
-					'seo_author_name'              => 'display_name',	// Author / Person Name Format.
-					'seo_desc_max_len'             => 220,			// Description Meta Tag Max. Length (hard limit).
-					'tumblr_publisher_url'         => '',
-					'yt_publisher_url'             => '',
+					'seo_author_name'  => 'display_name',			// Author / Person Name Format.
+					'seo_desc_max_len' => 200,				// Description Meta Tag Max. Length (hard limit).
 
 					/**
 					 * Twitter Card options.
@@ -1440,6 +1432,26 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'tc_lrg_img_crop'   => 0,
 					'tc_lrg_img_crop_x' => 'center',
 					'tc_lrg_img_crop_y' => 'center',
+
+					/**
+					 * Schema thumbnail image size.
+					 */
+					'thumb_img_width'  => 1200,
+					'thumb_img_height' => 630,
+					'thumb_img_crop'   => 1,
+					'thumb_img_crop_x' => 'center',
+					'thumb_img_crop_y' => 'center',
+
+					/**
+					 * Other publisher page URLs.
+					 */
+					'instagram_publisher_url' => '',	// Instagram Business Page URL (localized).
+					'linkedin_publisher_url'  => '',	// LinkedIn Company Page URL (localized).
+					'myspace_publisher_url'   => '',	// Myspace Business Page URL (localized).
+					'sc_publisher_url'        => '',	// Soundcloud Business Page URL (localized).
+					'tumblr_publisher_url'    => '',	// Tumblr Business Page URL (localized).
+					'wikipedia_publisher_url' => '',	// Wikipedia Organization Page URL (localized).
+					'yt_publisher_url'        => '',	// YouTube Business Channel URL (localized).
 
 					/**
 					 * Enable / disable individual head HTML tags.
@@ -1730,7 +1742,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_def_currency'             => 'USD',		// Default Currency.
 
 					/**
-					 * Other taxonomy and post types.
+					 * Advanced Settings - Document Meta tab (custom taxonomy and post types).
 					 */
 					'plugin_add_to_article'                => 1,
 					'plugin_add_to_download'               => 1,		// For Easy Digital Downloads.
