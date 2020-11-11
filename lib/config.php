@@ -1413,7 +1413,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * SEO options.
 					 */
 					'seo_author_name'  => 'display_name',			// Author / Person Name Format.
-					'seo_desc_max_len' => 200,				// Description Meta Tag Max. Length (hard limit).
+					'seo_desc_max_len' => 180,				// Description Meta Tag Max. Length (hard limit).
 
 					/**
 					 * Twitter Card options.
