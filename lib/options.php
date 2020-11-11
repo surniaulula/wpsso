@@ -442,11 +442,23 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				/**
 				 * Import Yoast SEO Social Meta.
 				 *
-				 * Enabled by default if the Yoast SEO plugin is active or Yoast SEO settings are found.
+				 * Enabled by default if the Yoast SEO plugin is active, or no SEO plugin is active and Yoast SEO
+				 * settings are found in the database.
 				 */
-				if ( ! empty( $this->p->avail[ 'seo' ][ 'wpseo' ] ) || get_option( 'wpseo' ) ) {
+				if ( ! empty( $this->p->avail[ 'seo' ][ 'wpseo' ] ) ) {	// Yoast SEO is active.
 
 					$this->defaults_cache[ 'plugin_wpseo_social_meta' ] = 1;
+
+				} elseif ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) && get_option( 'wpseo' ) ) {
+					
+					$this->defaults_cache[ 'plugin_wpseo_social_meta' ] = 1;
+
+				} else {
+
+					$this->defaults_cache[ 'plugin_wpseo_social_meta' ] = 0;
+
+					$this->p->options[ 'plugin_wpseo_social_meta' ]    = 0;
+					$this->p->options[ 'plugin_wpseo_social_meta:is' ] = 'disabled';
 				}
 
 				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {

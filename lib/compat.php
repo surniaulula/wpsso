@@ -72,8 +72,18 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				if ( ! empty( $this->p->avail[ 'seo' ][ 'rankmath' ] ) ) {
 
 					$this->p->util->add_plugin_filters( $this, array( 
-						'admin_page_style_css_rank_math' => array( 'admin_page_style_css' => 1 ),
+						'admin_page_style_css_rank_math' => array(	// Class method.
+							'admin_page_style_css' => 1,		// Filter name.
+						),
 					) );
+				}
+
+				/**
+				 * SEOPress.
+				 */
+				if ( ! empty( $this->p->avail[ 'seo' ][ 'seopress' ] ) ) {
+
+					add_filter( 'seopress_metabox_seo_tabs', array( $this, 'cleanup_seopress_tabs' ), 1000 );
 				}
 
 				/**
@@ -84,7 +94,9 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 					add_action( 'admin_init', array( $this, 'cleanup_wpseo_notifications' ), 15 );
 
 					$this->p->util->add_plugin_filters( $this, array( 
-						'admin_page_style_css_wpseo' => array( 'admin_page_style_css' => 1 ),
+						'admin_page_style_css_wpseo' => array(		// Class method.
+							'admin_page_style_css' => 1,		// Filter name.
+						),
 					) );
 				}
 
@@ -205,6 +217,13 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				'sucom-tooltips',
 				'wp-color-picker',
 			) );
+		}
+
+		public function cleanup_seopress_tabs( $tabs ) {
+
+			unset( $tabs[ 'social-tab' ] );
+
+			return $tabs;
 		}
 
 		/**

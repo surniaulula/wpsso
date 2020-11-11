@@ -183,6 +183,39 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return self::must_be_extended( self::$mod_defaults );
 		}
 
+		public static function get_mod_meta( $mod, $key = '', $single = false, $default = null ) {
+
+			if ( null === $default ) {	// No default value provided.
+
+				$default = $single ? '' : array();
+			}
+
+			if ( $key ) {	// Just in case.
+
+				if ( ! empty( $mod[ 'id' ] ) ) {	// Just in case.
+
+					$ret_val = $no_meta = $single ? '' : array();
+
+					if ( ! empty( $mod[ 'is_post' ] ) ) {
+
+						$ret_val = get_post_meta( $mod[ 'id' ], $key, $single );
+	
+					} elseif ( ! empty( $mod[ 'is_term' ] ) ) {
+	
+						$ret_val = get_term_meta( $mod[ 'id' ], $key, $single );
+	
+					} elseif ( ! empty( $mod[ 'is_user' ] ) ) {
+	
+						$ret_val = get_user_meta( $mod[ 'id' ], $key, $single );
+					}
+			
+					return $ret_val === $no_meta ? $default : $ret_val;
+				}
+			}
+
+			return $default;
+		}
+
 		/**
 		 * Get the $mod object for the home page.
 		 */
@@ -1374,7 +1407,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			$local_no_recurs[ $mod_id ][ $meta_key ] = true;	// Prevent recursion.
 
-			if ( '' === static::get_meta( $mod_id, $meta_key, $single = true ) ) {	// Use static method from child.
+			if ( '' === static::get_meta( $mod_id, $meta_key, $force_single = true ) ) {	// Use static method from child.
 
 				$this->get_head_info( $mod_id, $read_cache = true );
 			}
