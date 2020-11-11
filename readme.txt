@@ -30,7 +30,7 @@ WPSSO creates meta tags, Schema markup, and structured data for Facebook / Open 
 
 There's no need to manually re-enter descriptions, titles, product information, re-select images / videos, etc. like other meta tag, SEO and Schema markup plugins.
 
-WPSSO can be used as your one and only *social and search optimization* plugin, or in combination with your favorite SEO plugin to improve its meta tags and Schema markup (including, All In One SEO Pack, Jetpack SEO Tools, Rank Math SEO, SEO Ultimate, The SEO Framework, WP Meta SEO, Yoast SEO, and more).
+WPSSO can be used as your one and only *social and search optimization* plugin, or in combination with your favorite SEO plugin to improve its meta tags and Schema markup (including, All in One SEO Pack, Jetpack SEO Tools, Rank Math SEO, SEO Ultimate, SEOPress, The SEO Framework, WP Meta SEO, Yoast SEO, and more).
 
 **Customize the plugin settings for different languages:**
 
@@ -172,6 +172,7 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 		* [Product GTIN (EAN, UPC, ISBN) for WooCommerce](https://wordpress.org/plugins/product-gtin-ean-upc-isbn-for-woocommerce/)
 		* [Rate my Post](https://wordpress.org/plugins/rate-my-post/)
 		* [rtMedia for WordPress, BuddyPress and bbPress](https://wordpress.org/plugins/buddypress-media/)
+		* [SEOPress](https://wordpress.org/plugins/wp-seopress/)
 		* [Simple Job Board](https://wordpress.org/plugins/simple-job-board/)
 		* [The Events Calendar](https://wordpress.org/plugins/the-events-calendar/)
 		* [The SEO Framework](https://wordpress.org/plugins/autodescription/)
@@ -494,7 +495,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* https://schema.org/Recommendation
 		* https://schema.org/UserReview
 * **Bugfixes**
-	* Fixed All In One SEO Pack plugin detection by using the "AIOSEOP_Core" class name.
+	* Fixed All in One SEO Pack plugin detection by using the "AIOSEOP_Core" class name.
 	* Fixed Squirrly SEO conflict notification texts and links for the latest version of Squirrly SEO.
 * **Developer Notes**
 	* Added enqueue recursion to work around the Squirrly SEO `fixEnqueueErrors()` and `clearStyles()` methods that break toolbar notifications.
