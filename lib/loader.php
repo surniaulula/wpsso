@@ -121,7 +121,16 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 							if ( is_string( $classname ) ) {
 
-								if ( class_exists( $classname ) ) {
+								if ( 'none' === $classname ) {
+
+									if ( $this->p->debug->enabled ) {
+
+										$this->p->debug->log( $log_prefix . 'skipped' );
+									}
+
+									continue;
+
+								} elseif ( class_exists( $classname ) ) {
 
 									/**
 									 * Loaded module objects from core plugin.

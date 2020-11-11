@@ -152,6 +152,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'seo' => array(
 								'aioseop'      => '(plugin) All in One SEO Pack',
 								'seoframework' => '(plugin) The SEO Framework',
+								'seopress'     => '(plugin) SEOPress',
 								'wpmetaseo'    => '(plugin) WP Meta SEO',
 								'wpseo'        => '(plugin) Yoast SEO',
 							),
