@@ -452,13 +452,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				} elseif ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) && get_option( 'wpseo' ) ) {
 					
 					$this->defaults_cache[ 'plugin_wpseo_social_meta' ] = 1;
-
-				} else {
-
-					$this->defaults_cache[ 'plugin_wpseo_social_meta' ] = 0;
-
-					$this->p->options[ 'plugin_wpseo_social_meta' ]    = 0;
-					$this->p->options[ 'plugin_wpseo_social_meta:is' ] = 'disabled';
 				}
 
 				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
