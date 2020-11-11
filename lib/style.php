@@ -515,7 +515,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				table.wp-list-table > thead > tr > th.column-seotitle,
 				table.wp-list-table > tbody > tr > td.column-seotitle,
 				table.wp-list-table > thead > tr > th.column-seodesc,
-				table.wp-list-table > tbody > tr > td.column-seodesc {		/* All In One SEO. */
+				table.wp-list-table > tbody > tr > td.column-seodesc {		/* All in One SEO. */
 					width:20%;
 				}
 				table.wp-list-table > thead > tr > th.column-term-id,
