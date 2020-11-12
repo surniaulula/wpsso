@@ -54,7 +54,7 @@ _x( 'Video API Info Cache Expiry', 'option label', 'wpsso' );
 _x( 'seconds (0 to disable)', 'option comment', 'wpsso' );
 _x( 'Shortened URL Cache Expiry', 'option label', 'wpsso' );
 _x( 'seconds (0 to disable)', 'option comment', 'wpsso' );
-_x( 'Schema Types Cache Expiry', 'option label', 'wpsso' );
+_x( 'Schema Index Cache Expiry', 'option label', 'wpsso' );
 _x( 'seconds (0 to disable)', 'option comment', 'wpsso' );
 _x( 'Form Selects Cache Expiry', 'option label', 'wpsso' );
 _x( 'seconds (0 to disable)', 'option comment', 'wpsso' );

@@ -312,7 +312,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			WpssoAdmin::get_option_site_use( 'plugin_short_url_cache_exp', $form, $network );
 
 			$table_rows[ 'plugin_types_cache_exp' ] = $form->get_tr_hide( 'basic', 'plugin_types_cache_exp' ) . 
-			$form->get_th_html( _x( 'Schema Types Cache Expiry', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_types_cache_exp' ) . 
+			$form->get_th_html( _x( 'Schema Index Cache Expiry', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_types_cache_exp' ) . 
 			'<td nowrap class="blank">' . $form->get_no_input( 'plugin_types_cache_exp', $css_class = 'medium' ) . ' ' . 
 			_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
 			WpssoAdmin::get_option_site_use( 'plugin_types_cache_exp', $form, $network );

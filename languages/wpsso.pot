@@ -1423,7 +1423,7 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:124
 msgctxt "option label"
-msgid "Schema Types"
+msgid "Schema Indexes"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:125
@@ -2724,7 +2724,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:57 lib/pro/admin/advanced.php:308
 #: lib/std/admin/advanced.php:315
 msgctxt "option label"
-msgid "Schema Types Cache Expiry"
+msgid "Schema Index Cache Expiry"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:59 lib/pro/admin/advanced.php:314
@@ -6108,8 +6108,8 @@ msgstr ""
 
 #: lib/messages.php:1089
 msgid ""
-"The filtered Schema types array is saved to the WordPress transient cache to "
-"optimize performance."
+"The filtered Schema type index arrays are saved to the WordPress transient "
+"cache to optimize performance."
 msgstr ""
 
 #: lib/messages.php:1102

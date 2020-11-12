@@ -1674,7 +1674,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_imgsize_cache_exp'   => DAY_IN_SECONDS,		// Image URL Info Cache Expiry (1 day).
 					'plugin_vidinfo_cache_exp'   => DAY_IN_SECONDS,		// Video API Info Cache Expiry (1 day).
 					'plugin_short_url_cache_exp' => 7776000,		// Shortened URL Cache Expiry (90 days / 3 months).
-					'plugin_types_cache_exp'     => MONTH_IN_SECONDS,	// Schema Types Cache Expiry (1 month).
+					'plugin_types_cache_exp'     => MONTH_IN_SECONDS,	// Schema Index Cache Expiry (1 month).
 					'plugin_select_cache_exp'    => MONTH_IN_SECONDS,	// Form Selects Cache Expiry (1 month).
 					'plugin_clear_on_activate'   => 1,			// Clear All Caches on Activate.
 					'plugin_clear_on_deactivate' => 0,			// Clear All Caches on Deactivate.
@@ -1925,7 +1925,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_vidinfo_cache_exp:use'   => 'default',
 					'plugin_short_url_cache_exp'     => 7776000,		// Shortened URL Cache Expiry (90 days / 3 months).
 					'plugin_short_url_cache_exp:use' => 'default',
-					'plugin_types_cache_exp'         => MONTH_IN_SECONDS,	// Schema Types Cache Expiry (1 month).
+					'plugin_types_cache_exp'         => MONTH_IN_SECONDS,	// Schema Index Cache Expiry (1 month).
 					'plugin_types_cache_exp:use'     => 'default',
 					'plugin_select_cache_exp'        => MONTH_IN_SECONDS,	// Form Selects Cache Expiry (1 month).
 					'plugin_select_cache_exp:use'    => 'default',
@@ -2243,7 +2243,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'filter'  => 'wpsso_cache_expire_short_url',
 					),
 					'wpsso_t_' => array(	// Default is month in seconds.
-						'label'   => 'Schema Types',
+						'label'   => 'Schema Indexes',
 						'opt_key' => 'plugin_types_cache_exp',
 						'filter'  => 'wpsso_cache_expire_schema_types',
 					),

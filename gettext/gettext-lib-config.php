@@ -121,7 +121,7 @@ _x( 'Form Selects', 'option label', 'wpsso' );
 _x( 'Head Markup', 'option label', 'wpsso' );
 _x( 'Image URL Info', 'option label', 'wpsso' );
 _x( 'Shortened URLs', 'option label', 'wpsso' );
-_x( 'Schema Types', 'option label', 'wpsso' );
+_x( 'Schema Indexes', 'option label', 'wpsso' );
 _x( 'Video API Info', 'option label', 'wpsso' );
 _x( 'All Transients', 'option label', 'wpsso' );
 _x( 'Filtered Content', 'option label', 'wpsso' );
