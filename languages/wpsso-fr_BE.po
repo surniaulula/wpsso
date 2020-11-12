@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 8.12.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-11-12 09:35-0800\n"
-"PO-Revision-Date: 2020-11-12 09:49-0800\n"
+"POT-Creation-Date: 2020-11-12 10:14-0800\n"
+"PO-Revision-Date: 2020-11-12 10:14-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3293,7 +3293,7 @@ msgid "Great ratings are an excellent way to ensure the continued development of
 msgstr "De bonnes notes sont un excellent moyen d'assurer le développement continu de vos extensions préférées."
 
 #: lib/admin-head.php:535 lib/messages.php:2969
-msgid "Without your feedback, a plugin you value and depend on could be deprecated prematurely."
+msgid "Without your rating, a plugin you value and depend on could be deprecated prematurely."
 msgstr "Sans votre note, une extension que vous appréciez et dont vous dépendez pourrait être abandonnée prématurément."
 
 #: lib/admin-head.php:537
