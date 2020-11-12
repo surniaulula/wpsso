@@ -318,17 +318,18 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.12.0-dev.4 (2020/11/12)**
+**Version 8.12.0-b.1 (2020/11/12)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added an integration module for SEOPress (Premium version).
 	* Added a new SSO &gt; Features Status page.
+	* Added an integration module for SEOPress (Premium version).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
 	* Added a new lib/conflict-seo.php library file.
+	* Added a new `WpssoWpMeta::get_mod_meta()` method for SEO integration modules.
 	* Re-ordered the default options in lib/config.php.
 * **Requires At Least**
 	* PHP v5.6.
@@ -697,9 +698,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.12.0-dev.4 =
+= 8.12.0-b.1 =
 
-(2020/11/12) Added an integration module for SEOPress (Premium version). Added a new SSO &gt; Features Status page.
+(2020/11/12) Added a new SSO &gt; Features Status page. Added an integration module for SEOPress (Premium version).
 
 = 8.11.2 =
 
