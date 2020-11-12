@@ -288,7 +288,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 						$this->p->debug->log( 'applying get_md_options filters' );
 					}
 
-					$md_opts = apply_filters( $this->p->lca . '_get_md_options', $md_opts, $mod );
+					$md_opts = (array) apply_filters( $this->p->lca . '_get_md_options', $md_opts, $mod );
 
 					/**
 					 * Since WPSSO Core v4.31.0.
@@ -298,7 +298,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 						$this->p->debug->log( 'applying get_term_options filters for term_id ' . $term_id . ' meta' );
 					}
 
-					$md_opts = apply_filters( $this->p->lca . '_get_term_options', $md_opts, $term_id, $mod );
+					$md_opts = (array) apply_filters( $this->p->lca . '_get_term_options', $md_opts, $term_id, $mod );
 
 					/**
 					 * Since WPSSO Core v8.2.0.

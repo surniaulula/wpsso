@@ -305,7 +305,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 						$this->p->debug->log( 'applying get_md_options filters' );
 					}
 
-					$md_opts = apply_filters( $this->p->lca . '_get_md_options', $md_opts, $mod );
+					$md_opts = (array) apply_filters( $this->p->lca . '_get_md_options', $md_opts, $mod );
 
 					/**
 					 * Since WPSSO Core v4.31.0.
@@ -315,7 +315,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 						$this->p->debug->log( 'applying get_user_options filters for user_id ' . $user_id . ' meta' );
 					}
 
-					$md_opts = apply_filters( $this->p->lca . '_get_user_options', $md_opts, $user_id, $mod );
+					$md_opts = (array) apply_filters( $this->p->lca . '_get_user_options', $md_opts, $user_id, $mod );
 
 					/**
 					 * Since WPSSO Core v8.2.0.

@@ -183,39 +183,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return self::must_be_extended( self::$mod_defaults );
 		}
 
-		public static function get_mod_meta( $mod, $key = '', $single = false, $default = null ) {
-
-			if ( null === $default ) {	// No default value provided.
-
-				$default = $single ? '' : array();
-			}
-
-			if ( $key ) {	// Just in case.
-
-				if ( ! empty( $mod[ 'id' ] ) ) {	// Just in case.
-
-					$ret_val = $no_meta = $single ? '' : array();
-
-					if ( ! empty( $mod[ 'is_post' ] ) ) {
-
-						$ret_val = get_post_meta( $mod[ 'id' ], $key, $single );
-	
-					} elseif ( ! empty( $mod[ 'is_term' ] ) ) {
-	
-						$ret_val = get_term_meta( $mod[ 'id' ], $key, $single );
-	
-					} elseif ( ! empty( $mod[ 'is_user' ] ) ) {
-	
-						$ret_val = get_user_meta( $mod[ 'id' ], $key, $single );
-					}
-			
-					return $ret_val === $no_meta ? $default : $ret_val;
-				}
-			}
-
-			return $default;
-		}
-
 		/**
 		 * Get the $mod object for the home page.
 		 */
@@ -1959,7 +1926,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		 */
 		public static function get_meta( $mod_id, $meta_key, $single = false ) {
 
-			$ret_val = false === $single ? array() : '';
+			$ret_val = $single ? '' : array();
 
 			return self::must_be_extended( $ret_val );
 		}
@@ -1978,6 +1945,52 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		public static function delete_meta( $mod_id, $meta_key ) {
 
 			return self::must_be_extended( $ret_val = false ); // No delete.
+		}
+
+		/**
+		 * Since WPSSO Core v8.12.0.
+		 */
+		public static function get_mod_meta( $mod, $meta_key, $single = false, $delete = false ) {
+
+			$ret_val = $not_found = $single ? '' : array();	// Default if no metadata found.
+
+			if ( $meta_key ) {	// Just in case.
+
+				if ( ! empty( $mod[ 'id' ] ) ) {	// Just in case.
+
+					if ( ! empty( $mod[ 'is_post' ] ) ) {
+
+						$ret_val = get_post_meta( $mod[ 'id' ], $meta_key, $single );
+
+						if ( $delete && $ret_val !== $not_found ) {	// Only delete if we have something to delete.
+
+							delete_post_meta( $mod[ 'id' ], $meta_key );
+						}
+
+					} elseif ( ! empty( $mod[ 'is_term' ] ) ) {
+	
+						$ret_val = get_term_meta( $mod[ 'id' ], $meta_key, $single );
+	
+						if ( $delete && $ret_val !== $not_found ) {	// Only delete if we have something to delete.
+
+							delete_term_meta( $mod[ 'id' ], $meta_key );
+						}
+
+					} elseif ( ! empty( $mod[ 'is_user' ] ) ) {
+	
+						$ret_val = get_user_meta( $mod[ 'id' ], $meta_key, $single );
+
+						if ( $delete && $ret_val !== $not_found ) {	// Only delete if we have something to delete.
+
+							delete_user_meta( $mod[ 'id' ], $meta_key );
+						}
+					}
+			
+					return $ret_val;
+				}
+			}
+
+			return $ret_val;
 		}
 
 		protected static function must_be_extended( $method, $ret_val = null ) {

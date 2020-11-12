@@ -85,17 +85,17 @@
 
 'wpsso_get_defaults' ( $defaults )
 
-'wpsso_get_md_options' ( $options, $mod )
+'wpsso_get_md_options' ( array $options, array $mod )
 
-'wpsso_get_post_options' ( $options, $post_id, $mod )
+'wpsso_get_post_options' ( array $options, $post_id, array $mod )
 
 'wpsso_get_short_url' ( $long_url, $service_id, $mod, $is_main = false )
 
 'wpsso_get_site_defaults' ( $defaults )
 
-'wpsso_get_term_options' ( $options, $term_id, $mod )
+'wpsso_get_term_options' ( array $options, $term_id, array $mod )
 
-'wpsso_get_user_options' ( $options, $user_id, $mod )
+'wpsso_get_user_options' ( array $options, $user_id, array $mod )
 
 'wpsso_google_product_categories' ( array $categories )
 

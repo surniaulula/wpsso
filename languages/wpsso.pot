@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.12.0-dev.3\n"
+"Project-Id-Version: WPSSO Core 8.12.0-dev.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3298,15 +3298,15 @@ msgstr ""
 msgid "The URL shortening library file for \"%s\" is missing and required."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:186 lib/pro/util/wpseo-meta.php:132
+#: gettext/gettext-lib-pro.php:186 lib/pro/util/wpseo-meta.php:149
 msgid "Imported Yoast SEO \"%1$s\" metadata from post ID %2$d."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:187 lib/pro/util/wpseo-meta.php:271
+#: gettext/gettext-lib-pro.php:187 lib/pro/util/wpseo-meta.php:293
 msgid "Imported Yoast SEO \"%1$s\" metadata from term ID %2$d."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:188 lib/pro/util/wpseo-meta.php:375
+#: gettext/gettext-lib-pro.php:188 lib/pro/util/wpseo-meta.php:400
 msgid "Imported Yoast SEO \"%1$s\" metadata from user ID %2$d."
 msgstr ""
 
@@ -3451,42 +3451,42 @@ msgctxt "option value"
 msgid "[%s Location]"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:735
+#: lib/abstracts/wp-meta.php:702
 msgctxt "metabox tab"
 msgid "Customize"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:736 lib/messages.php:2567
+#: lib/abstracts/wp-meta.php:703 lib/messages.php:2567
 msgctxt "metabox tab"
 msgid "Priority Media"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:742
+#: lib/abstracts/wp-meta.php:709
 msgctxt "metabox tab"
 msgid "Robots Meta"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:745
+#: lib/abstracts/wp-meta.php:712
 msgctxt "metabox tab"
 msgid "Preview"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:746
+#: lib/abstracts/wp-meta.php:713
 msgctxt "metabox tab"
 msgid "oEmbed"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:747
+#: lib/abstracts/wp-meta.php:714
 msgctxt "metabox tab"
 msgid "Head Markup"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:748
+#: lib/abstracts/wp-meta.php:715
 msgctxt "metabox tab"
 msgid "Validate"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1052
+#: lib/abstracts/wp-meta.php:1019
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
