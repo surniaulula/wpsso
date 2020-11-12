@@ -478,14 +478,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			/**
 			 * Save / create the current options version number for version checks to follow.
 			 */
-			$version_key = 'plugin_' . $this->p->lca . '_opt_version';
-
-			$prev_version = empty( $md_opts[ $version_key ] ) ? 0 : $md_opts[ $version_key ];
-
-			$rename_filter_name = $this->p->lca . '_rename_md_options_keys';
+			$version_key          = 'plugin_' . $this->p->lca . '_opt_version';
+			$prev_version         = empty( $md_opts[ $version_key ] ) ? 0 : $md_opts[ $version_key ];
+			$rename_filter_name   = $this->p->lca . '_rename_md_options_keys';
 			$upgraded_filter_name = $this->p->lca . '_upgraded_md_options';
-
-			$rename_options_keys = apply_filters( $rename_filter_name, self::$rename_md_options_keys );
+			$rename_options_keys  = apply_filters( $rename_filter_name, self::$rename_md_options_keys );
 
 			$this->p->util->rename_opts_by_ext( $md_opts, $rename_options_keys );
 
@@ -1862,7 +1859,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		 */
 		public static function get_attached( $mod_id, $attach_type ) {
 
-			$opts = static::get_meta( $mod_id, WPSSO_META_ATTACHED_NAME, $single = true );	// Use static method from child.
+			$opts = static::get_meta( $mod_id, WPSSO_META_ATTACHED_NAME, $single = true );		// Use static method from child.
 
 			if ( isset( $opts[ $attach_type ] ) ) {
 
@@ -1882,7 +1879,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		 */
 		public static function add_attached( $mod_id, $attach_type, $attachment_id ) {
 
-			$opts = static::get_meta( $mod_id, WPSSO_META_ATTACHED_NAME, $single = true );	// Use static method from child.
+			$opts = static::get_meta( $mod_id, WPSSO_META_ATTACHED_NAME, $single = true );		// Use static method from child.
 
 			if ( ! isset( $opts[ $attach_type ][ $attachment_id ] ) ) {
 
@@ -1893,7 +1890,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				$opts[ $attach_type ][ $attachment_id ] = true;
 
-				return static::update_meta( $mod_id, WPSSO_META_ATTACHED_NAME, $opts );	// Use static method from child.
+				return static::update_meta( $mod_id, WPSSO_META_ATTACHED_NAME, $opts );		// Use static method from child.
 			}
 
 			return false;	// No addition.
@@ -1904,7 +1901,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		 */
 		public static function delete_attached( $mod_id, $attach_type, $attachment_id ) {
 
-			$opts = static::get_meta( $mod_id, WPSSO_META_ATTACHED_NAME, $single = true );	// Use static method from child.
+			$opts = static::get_meta( $mod_id, WPSSO_META_ATTACHED_NAME, $single = true );		// Use static method from child.
 
 			if ( isset( $opts[ $attach_type ][ $attachment_id ] ) ) {
 
@@ -1912,10 +1909,10 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				if ( empty( $opts ) ) {	// Cleanup.
 
-					return static::delete_meta( $mod_id, WPSSO_META_ATTACHED_NAME );	// // Use static method from child.
+					return static::delete_meta( $mod_id, WPSSO_META_ATTACHED_NAME );	// Use static method from child.
 				}
 
-				return static::update_meta( $mod_id, WPSSO_META_ATTACHED_NAME, $opts );	// // Use static method from child.
+				return static::update_meta( $mod_id, WPSSO_META_ATTACHED_NAME, $opts );		// Use static method from child.
 			}
 
 			return false;	// No delete.
@@ -1923,6 +1920,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 		/**
 		 * Since WPSSO Core v8.4.0.
+		 *
+		 * Always call this method as static::get_meta(), and not self::get_meta(), to execute the method via the child
+		 * class instead of the parent class. This method can also be called via $mod[ 'obj' ]::get_meta().
 		 */
 		public static function get_meta( $mod_id, $meta_key, $single = false ) {
 
@@ -1933,6 +1933,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 		/**
 		 * Since WPSSO Core v8.4.0.
+		 *
+		 * Always call this method as static::update_meta(), and not self::update_meta(), to execute the method via the
+		 * child class instead of the parent class. This method can also be called via $mod[ 'obj' ]::update_meta().
 		 */
 		public static function update_meta( $mod_id, $meta_key, $value ) {
 
@@ -1941,6 +1944,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 		/**
 		 * Since WPSSO Core v8.4.0.
+		 *
+		 * Always call this method as staticdelete_meta(), and not selfdelete_meta(), to execute the method via the child
+		 * class instead of the parent class. This method can also be called via $mod[ 'obj' ]delete_meta().
 		 */
 		public static function delete_meta( $mod_id, $meta_key ) {
 
@@ -1949,6 +1955,8 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 		/**
 		 * Since WPSSO Core v8.12.0.
+		 *
+		 * Used by several SEO integration modules.
 		 */
 		public static function get_mod_meta( $mod, $meta_key, $single = false, $delete = false ) {
 

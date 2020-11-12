@@ -532,7 +532,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 				$notice_msg .= '<p>';
 
-				$notice_msg .= __( 'Without your feedback, a plugin you value and depend on could be deprecated prematurely.', 'wpsso' ) . ' ';
+				$notice_msg .= __( 'Without your rating, a plugin you value and depend on could be deprecated prematurely.', 'wpsso' ) . ' ';
 
 				$notice_msg .= sprintf( __( 'Don\'t let that happen - rate %s now!', 'wpsso' ), $wp_plugin_link ) . ' ';
 						

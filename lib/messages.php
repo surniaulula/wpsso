@@ -2966,7 +2966,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= '<p style="text-align:center;">';
 
-						$text .= __( 'Without your feedback, a plugin you value and depend on could be deprecated prematurely.', 'wpsso' ) . ' ';
+						$text .= __( 'Without your rating, a plugin you value and depend on could be deprecated prematurely.', 'wpsso' ) . ' ';
 
 						$text .= __( 'Don\'t let that happen - rate your active plugins now!', 'wpsso' ) . ' ';
 						

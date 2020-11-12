@@ -3451,42 +3451,42 @@ msgctxt "option value"
 msgid "[%s Location]"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:702
+#: lib/abstracts/wp-meta.php:699
 msgctxt "metabox tab"
 msgid "Customize"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:703 lib/messages.php:2567
+#: lib/abstracts/wp-meta.php:700 lib/messages.php:2567
 msgctxt "metabox tab"
 msgid "Priority Media"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:709
+#: lib/abstracts/wp-meta.php:706
 msgctxt "metabox tab"
 msgid "Robots Meta"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:712
+#: lib/abstracts/wp-meta.php:709
 msgctxt "metabox tab"
 msgid "Preview"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:713
+#: lib/abstracts/wp-meta.php:710
 msgctxt "metabox tab"
 msgid "oEmbed"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:714
+#: lib/abstracts/wp-meta.php:711
 msgctxt "metabox tab"
 msgid "Head Markup"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:715
+#: lib/abstracts/wp-meta.php:712
 msgctxt "metabox tab"
 msgid "Validate"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1019
+#: lib/abstracts/wp-meta.php:1016
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
@@ -3667,7 +3667,7 @@ msgstr ""
 
 #: lib/admin-head.php:535 lib/messages.php:2969
 msgid ""
-"Without your feedback, a plugin you value and depend on could be deprecated "
+"Without your rating, a plugin you value and depend on could be deprecated "
 "prematurely."
 msgstr ""
 
