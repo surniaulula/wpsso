@@ -13,7 +13,7 @@
  * Description: Make sure your content looks best on social sites and in search results, no matter how your webpages are shared, re-shared, messaged, posted, embedded, or crawled.
  * Requires PHP: 5.6
  * Requires At Least: 4.4
- * Tested Up To: 5.5.3
+ * Tested Up To: 5.5.4
  * WC Tested Up To: 4.6.2
  * Version: 8.12.0-b.1
  *
