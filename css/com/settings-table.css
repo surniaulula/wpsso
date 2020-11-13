@@ -1124,15 +1124,11 @@ div.sucom-tabset_sso-tab_validate table.sucom-settings {
 }
 
 /**
- * SSO > Dashboard settings page.
+ * SSO > Dashboard and Features Status pages.
  */
 table.sucom-settings.column-metabox {
 	border-spacing:2px;
 	padding:25px 30px;
-}
-
-table.sucom-settings.column-metabox.module-status td {
-	padding:2px;
 }
 
 table.sucom-settings.column-metabox .column-metabox-buttons {
@@ -1216,7 +1212,39 @@ table.sucom-settings.column-metabox td.latest-notice p {
 }
 
 /**
- * SSO > Setup Guide settings page.
+ * SSO > Features Status pages.
+ */
+table.sucom-settings.column-metabox.feature-status td {
+	padding:2px;
+	vertical-align:middle;
+}
+
+table.sucom-settings td.module-is-off,
+table.sucom-settings td.module-is-rec {
+	color:#999;
+}
+
+table.sucom-settings td .status-light {
+	width:1em;
+	height:1em;
+	border-radius:50%;
+	margin-left:5px;
+}
+
+table.sucom-settings td.module-is-on .status-light {
+	background-color:#00e500;
+}
+
+table.sucom-settings td.module-is-off .status-light {
+	background-color:#ccc;
+}
+
+table.sucom-settings td.module-is-rec .status-light {
+	background-color:#e50000;
+}
+
+/**
+ * SSO > Setup Guide page.
  */
 table.sucom-settings.html-content-metabox {
 	padding:10px 40px;
@@ -1269,28 +1297,12 @@ table.sucom-settings.html-content-metabox td dd {	/* Definition description. */
 }
 
 /**
- * SSO > Complementary Add-ons settings page.
+ * SSO > Complementary Add-ons page.
  *
- * SSO > Premium Licenses settings page.
+ * SSO > Premium Licenses page.
  */
 table.sucom-settings.addons-metabox,
 table.sucom-settings.licenses-metabox {
 	padding:20px 30px;
-}
-
-/**
- * SSO > Social Buttons settings page.
- */
-div.metabox-ssb_share table.sucom-settings .img_crop_from {
-	display:block;
-	margin-top:8px;
-}
-
-div.metabox-ssb_share table.sucom-settings td select {
-	width:230px;
-}
-
-div.metabox-ssb_share table.sucom-settings td select.short {
-	width:110px;
 }
 

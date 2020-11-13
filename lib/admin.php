@@ -1947,7 +1947,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function show_metabox_status_pro() {
 
-			echo '<table class="sucom-settings ' . $this->p->lca . ' column-metabox module-status">';
+			echo '<table class="sucom-settings ' . $this->p->lca . ' column-metabox feature-status">';
 
 			/**
 			 * Premium version features.
@@ -1976,13 +1976,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						foreach ( $libs as $id => $label ) {
 
-							$td_class = self::$pkg[ $ext ][ 'pp' ] ? '' : 'blank';
-
-							$classname = SucomUtil::sanitize_classname( $ext . 'pro' . $sub . $id, $allow_underscore = false );
-
+							$td_class   = self::$pkg[ $ext ][ 'pp' ] ? '' : 'blank';
+							$classname  = SucomUtil::sanitize_classname( $ext . 'pro' . $sub . $id, $allow_underscore = false );
 							$status_off = empty( $this->p->avail[ $sub ][ $id ] ) ? 'off' : 'rec';
-
-							$status_on = self::$pkg[ $ext ][ 'pp' ] ? 'on' : $status_off;
+							$status_on  = self::$pkg[ $ext ][ 'pp' ] ? 'on' : $status_off;
 
 							$features[ $label ] = array(
 								'sub'          => $sub,
@@ -2016,7 +2013,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function show_metabox_status_std() {
 
-			echo '<table class="sucom-settings ' . $this->p->lca . ' column-metabox module-status">';
+			echo '<table class="sucom-settings ' . $this->p->lca . ' column-metabox feature-status">';
 
 			/**
 			 * GPL version features
@@ -2144,19 +2141,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		private function show_features_status( &$ext = '', &$info = array(), &$features = array() ) {
 
-			$status_info = array(
-				'on' => array(
-					'img'   => 'green-circle.png',
-					'title' => __( 'Feature is enabled.', 'wpsso' ),
-				),
-				'off' => array(
-					'img'   => 'gray-circle.png',
-					'title' => __( 'Feature is disabled.', 'wpsso' ),
-				),
-				'rec' => array(
-					'img'   => 'red-circle.png',
-					'title' => __( 'Feature is recommended but disabled.', 'wpsso' ),
-				),
+			$status_titles = array(
+				'on'  => __( 'Feature is active.', 'wpsso' ),
+				'off' => __( 'Feature is not active.', 'wpsso' ),
+				'rec' => __( 'Feature is recommended but not active.', 'wpsso' ),
 			);
 
 			foreach ( $features as $label => $arr ) {
@@ -2198,8 +2186,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$icon_type    = preg_match( '/^\(([a-z\-]+)\) (.*)/', $label_transl, $match ) ? $match[ 1 ] : 'admin-generic';
 					$label_transl = empty( $match[ 2 ] ) ? $label_transl : $match[ 2 ];
 					$label_url    = empty( $arr[ 'label_url' ] ) ? '' : $arr[ 'label_url' ];
-					$purchase_url = $status_key === 'rec' && ! empty( $arr[ 'purchase_url' ] ) ? $arr[ 'purchase_url' ] : '';
 					$td_class     = empty( $arr[ 'td_class' ] ) ? '' : ' ' . $arr[ 'td_class' ];
+					$td_class_is  = ' ' . SucomUtil::sanitize_key( 'module-is-' . $status_key );
 
 					switch ( $icon_type ) {
 
@@ -2254,19 +2242,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					echo '<tr>';
 
-					echo '<td><div class="dashicons-before dashicons-' . $icon_type . '" title="' . $icon_title . '"></div></td>';
+					echo '<td class="module-icon' . $td_class_is . '">';
+					echo '<div class="dashicons-before dashicons-' . $icon_type . '" title="' . $icon_title . '"></div>';
+					echo '</td>';
 
-					echo '<td class="' . trim( $td_class ) . '">';
+					echo '<td class="' . trim( 'module-label ' . $td_class . $td_class_is ) . '">';
 					echo $label_url ? '<a href="' . $label_url . '">' : '';
 					echo $label_transl;
 					echo $label_url ? '</a>' : '';
 					echo '</td>';
 
-					echo '<td>';
-					echo $purchase_url ? '<a href="' . $purchase_url . '">' : '';
-					echo '<img src="' . WPSSO_URLPATH . 'images/' . $status_info[ $status_key ][ 'img' ] . '"';
-					echo 'width="12" height="12" title="' . $status_info[ $status_key ][ 'title' ] . '"/>';
-					echo $purchase_url ? '</a>' : '';
+					echo '<td class="module-status' . $td_class_is .'">';
+					echo '<div class="status-light" title="' . $status_titles[ $status_key ] . '"></div>';
 					echo '</td>';
 
 					echo '</tr>' . "\n";
