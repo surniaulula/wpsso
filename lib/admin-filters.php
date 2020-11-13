@@ -53,7 +53,6 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 		public function filter_status_pro_features( $features, $ext, $info ) {
 
 			$pkg             = $this->p->admin->plugin_pkg_info();
-			$td_class        = $pkg[ $ext ][ 'pp' ] ? '' : 'blank';
 			$status_on       = $pkg[ $ext ][ 'pp' ] ? 'on' : 'rec';
 			$apikeys_tab_url = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_apikeys' );
 			$content_tab_url = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content' );
@@ -63,21 +62,18 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 			$features[ '(feature) URL Shortening Service' ][ 'label_url' ] = $apikeys_tab_url;
 
 			$features[ '(feature) Use WordPress Title Filters' ] = array(
-				'td_class'     => $td_class,
 				'label_transl' => _x( '(feature) Use WordPress Title Filters', 'lib file description', 'wpsso' ),
 				'label_url'    => $content_tab_url,
 				'status'       => $this->p->options[ 'plugin_filter_title' ] ? $status_on : 'off',
 			);
 
 			$features[ '(feature) Use WordPress Content Filters' ] = array(
-				'td_class'     => $td_class,
 				'label_transl' => _x( '(feature) Use WordPress Content Filters', 'lib file description', 'wpsso' ),
 				'label_url'    => $content_tab_url,
-				'status'       => $this->p->options[ 'plugin_filter_content' ] ? $status_on : 'off',
+				'status'       => $this->p->options[ 'plugin_filter_content' ] ? $status_on : 'rec',
 			);
 
 			$features[ '(feature) Use WordPress Excerpt Filters' ] = array(
-				'td_class'     => $td_class,
 				'label_transl' => _x( '(feature) Use WordPress Excerpt Filters', 'lib file description', 'wpsso' ),
 				'label_url'    => $content_tab_url,
 				'status'       => $this->p->options[ 'plugin_filter_excerpt' ] ? $status_on : 'off',
@@ -90,30 +86,27 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 					continue;
 				}
 
-				$name_transl = _x( $name, 'option value', 'wpsso' );
-
+				$name_transl  = _x( $name, 'option value', 'wpsso' );
 				$label_transl = sprintf( _x( '(api) %s Shortener API', 'lib file description', 'wpsso' ), $name_transl );
-
-				$status = 'off';
+				$svc_status   = 'off';
 
 				if ( isset( $this->p->m[ 'util' ][ 'shorten' ] ) ) {	// URL shortening service is enabled.
 
 					if ( $svc_id === $this->p->options[ 'plugin_shortener' ] ) {	// Shortener API service ID is selected.
 
-						$status = 'rec';
+						$svc_status = 'rec';
 
 						if ( $this->p->m[ 'util' ][ 'shorten' ]->get_svc_instance( $svc_id ) ) {	// False or object.
 
-							$status = 'on';
+							$svc_status = 'on';
 						}
 					}
 				}
 
 				$features[ '(api) ' . $name . ' Shortener API' ] = array(
-					'td_class'     => $td_class,
 					'label_transl' => $label_transl,
 					'label_url'    => $apikeys_tab_url,
-					'status'       => $status,
+					'status'       => $svc_status,
 				);
 			}
 
