@@ -318,7 +318,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.12.0-b.1 (2020/11/12)**
+**Version 8.12.0-rc.1 (2020/11/13)**
 
 * **New Features**
 	* None.
@@ -698,9 +698,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.12.0-b.1 =
+= 8.12.0-rc.1 =
 
-(2020/11/12) Added a new SSO &gt; Features Status page. Added an integration module for SEOPress (Premium version).
+(2020/11/13) Added a new SSO &gt; Features Status page. Added an integration module for SEOPress (Premium version).
 
 = 8.11.2 =
 
