@@ -734,4 +734,3 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 = 8.7.0 =
 
 (2020/10/02) Fixed a bug that prevented abbreviated Schema enumerations from being detected. Added support for the new Schema shippingDetails property in Schema Product offers for WooCommerce products.
-
