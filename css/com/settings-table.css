@@ -1219,15 +1219,6 @@ table.sucom-settings.column-metabox.feature-status td {
 	vertical-align:middle;
 }
 
-table.sucom-settings td.module-label.module-is-off,
-table.sucom-settings td.module-label.module-is-off a {
-	color:#ccc;
-}
-
-table.sucom-settings td.module-label.blank.module-is-rec,
-table.sucom-settings td.module-label.blank.module-is-rec a {
-	color:inherit;
-}
 table.sucom-settings td .status-light {
 	width:1em;
 	height:1em;

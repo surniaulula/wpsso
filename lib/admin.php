@@ -1969,6 +1969,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						foreach ( $libs as $id => $label ) {
 
+							$td_class   = self::$pkg[ $ext ][ 'pp' ] ? '' : 'blank';
 							$classname  = SucomUtil::sanitize_classname( $ext . 'pro' . $sub . $id, $allow_underscore = false );
 							$status_off = empty( $this->p->avail[ $sub ][ $id ] ) ? 'off' : 'rec';
 							$status_on  = self::$pkg[ $ext ][ 'pp' ] ? 'on' : $status_off;
@@ -1976,6 +1977,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							$features[ $label ] = array(
 								'sub'          => $sub,
 								'lib'          => $id,
+								'td_class'     => $td_class,
 								'label_transl' => _x( $label, 'lib file description', $info[ 'text_domain' ] ),
 								'status'       => class_exists( $classname ) ? $status_on : $status_off,
 							);

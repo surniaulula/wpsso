@@ -53,6 +53,7 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 		public function filter_status_pro_features( $features, $ext, $info ) {
 
 			$pkg             = $this->p->admin->plugin_pkg_info();
+			$td_class        = $pkg[ $ext ][ 'pp' ] ? '' : 'blank';
 			$status_on       = $pkg[ $ext ][ 'pp' ] ? 'on' : 'rec';
 			$apikeys_tab_url = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_apikeys' );
 			$content_tab_url = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content' );
@@ -62,18 +63,21 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 			$features[ '(feature) URL Shortening Service' ][ 'label_url' ] = $apikeys_tab_url;
 
 			$features[ '(feature) Use WordPress Title Filters' ] = array(
+				'td_class'     => $td_class,
 				'label_transl' => _x( '(feature) Use WordPress Title Filters', 'lib file description', 'wpsso' ),
 				'label_url'    => $content_tab_url,
 				'status'       => $this->p->options[ 'plugin_filter_title' ] ? $status_on : 'off',
 			);
 
 			$features[ '(feature) Use WordPress Content Filters' ] = array(
+				'td_class'     => $td_class,
 				'label_transl' => _x( '(feature) Use WordPress Content Filters', 'lib file description', 'wpsso' ),
 				'label_url'    => $content_tab_url,
 				'status'       => $this->p->options[ 'plugin_filter_content' ] ? $status_on : 'rec',
 			);
 
 			$features[ '(feature) Use WordPress Excerpt Filters' ] = array(
+				'td_class'     => $td_class,
 				'label_transl' => _x( '(feature) Use WordPress Excerpt Filters', 'lib file description', 'wpsso' ),
 				'label_url'    => $content_tab_url,
 				'status'       => $this->p->options[ 'plugin_filter_excerpt' ] ? $status_on : 'off',
@@ -104,6 +108,7 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 				}
 
 				$features[ '(api) ' . $name . ' Shortener API' ] = array(
+					'td_class'     => $td_class,
 					'label_transl' => $label_transl,
 					'label_url'    => $apikeys_tab_url,
 					'status'       => $svc_status,
