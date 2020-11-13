@@ -12,7 +12,7 @@ Requires PHP: 5.6
 Requires At Least: 4.4
 Tested Up To: 5.5.4
 WC Tested Up To: 4.6.2
-Stable Tag: 8.12.1
+Stable Tag: 8.12.0
 
 Make sure your content looks best on social sites and in search results, no matter how your webpages are shared, re-shared, messaged, posted, embedded, or crawled.
 
@@ -318,7 +318,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.12.1 (2020/11/13)**
+**Version 8.12.0 (2020/11/13)**
 
 * **New Features**
 	* None.
@@ -699,7 +699,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.12.1 =
+= 8.12.0 =
 
 (2020/11/13) Added a new SSO &gt; Features Status page. Added an integration module for SEOPress (Premium version).
 
