@@ -645,7 +645,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 */
 						case 'tooltip-og_title_sep':		// Title Separator.
 
-							$text = sprintf( __( 'One or more characters used to separate values (category parent names, page numbers, etc.) within the Facebook / Open Graph title string (the default is the hyphen "%s" character).', 'wpsso' ), $this->p->opt->get_defaults( 'og_title_sep' ) );
+							$text = sprintf( __( 'One or more characters used to separate values (category parent names, page numbers, etc.) within the Facebook / Open Graph title string (the default is a hyphen "%s" character).', 'wpsso' ), $this->p->opt->get_defaults( 'og_title_sep' ) );
 
 							break;
 
@@ -678,9 +678,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 */
 						case 'tooltip-og_author_field':		// Author Profile URL Field.
 
-							$text = sprintf( __( 'Select the contact field to use from the author\'s WordPress profile page for the Facebook / Open Graph %s meta tag value.', 'wpsso' ), '<code>article:author</code>' ) . ' ';
+							$cm_label_key   = 'plugin_cm_fb_label';
+							$cm_label_value = SucomUtil::get_key_value( $cm_label_key, $this->p->options );
 
-							$text .= __( 'The suggested setting is the "Facebook URL" user profile contact field (default value).', 'wpsso' ) . ' ';
+							$text = sprintf( __( 'Choose a contact field from the WordPress profile page to use for the Facebook / Open Graph %s meta tag value.', 'wpsso' ), '<code>article:author</code>' ) . ' ';
+
+							$text .= sprintf( __( 'The suggested setting is the "%s" user profile contact field (default value).', 'wpsso' ), $cm_label_value ) . ' ';
 
 							$text .= sprintf( __( 'Select "[None]" if you prefer to exclude the %s meta tag and prevent Facebook from showing author attribution in shared links.', 'wpsso' ), '<code>article:author</code>' );
 
@@ -709,17 +712,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-og_def_img_id':		// Default / Fallback Image ID.
+						case 'tooltip-og_def_img_id':		// Default Image ID.
 
-							$text = __( 'An image ID and media library selection for your default / fallback website image.', 'wpsso' ) . ' ';
+							$text = __( 'An image ID for your site\'s default image (ie. when an image is required, and no other image is available).', 'wpsso' ) . ' ';
 
-							$text .= __( 'The default image is used for index / archive pages, and as a fallback for Posts and Pages that do not have a suitable image featured, attached, or in their content.', 'wpsso' );
+							$text .= __( 'The default image is used for archive pages and as a fallback for posts and pages that do not have a suitable image featured, attached, or in their content.', 'wpsso' ) . ' ';
+
+							$text .= '<em>' . __( 'This field is disabled if a custom image URL is entered.', 'wpsso' ) . '</em>';
 
 							break;
 
-						case 'tooltip-og_def_img_url':		// or Default / Fallback Image URL.
+						case 'tooltip-og_def_img_url':		// or Default Image URL.
 
-							$text = __( 'You can enter a default image URL instead of choosing an image ID &mdash; if a default image ID is specified, it has precedence and the image URL option is disabled.', 'wpsso' ) . ' ';
+							$text = __( 'You can enter a default image URL instead of choosing an image ID.', 'wpsso' ) . ' ';
 
 							$text .= __( 'The image URL option allows you to use an image outside of a managed collection (WordPress Media Library or NextGEN Gallery), and/or a smaller logo style image.', 'wpsso' ) . ' ';
 
@@ -727,7 +732,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								$this->p->cf[ 'head' ][ 'limit_min' ][ 'og_img_width' ] . 'x' .
 									$this->p->cf[ 'head' ][ 'limit_min' ][ 'og_img_height' ] . 'px' ) . ' ';
 
-							$text .= __( 'The default image is used for index / archive pages, and as a fallback for Posts and Pages that do not have a suitable image featured, attached, or in their content.', 'wpsso' );
+							$text .= __( 'The default image is used for archive pages and as a fallback for posts and pages that do not have a suitable image featured, attached, or in their content.', 'wpsso' ) . ' ';
+
+							$text .= '<em>' . __( 'This field is disabled if a custom image ID is selected.', 'wpsso' ) . '</em>';
 
 							break;
 
@@ -951,7 +958,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_upscale_images':	// Upscale Media Library Images.
 
-							$text = __( 'WordPress does not upscale (enlarge) images &mdash; WordPress can only create smaller images from larger full size originals.', 'wpsso' ) . ' ';
+							$text = __( 'WordPress does not upscale (enlarge) images - WordPress can only create smaller images from larger full size originals.', 'wpsso' ) . ' ';
 
 							$text .= __( 'Upscaled images do not look as sharp or clear, and if upscaled too much, will look fuzzy and unappealing - not something you want to promote on social and search sites.', 'wpsso' ) . ' ';
 
@@ -1150,9 +1157,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
-							$text = __( 'If no custom image has been defined for an author, fallback to using their Gravatar image in author related meta tags and Schema markup.', 'wpsso' ) . ' ';
+							$text = __( 'If a custom author image has not been selected, fallback to using their Gravatar image in author related meta tags and Schema markup.', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( 'A customized image can be selected in the WordPress user profile %s metabox.', 'wpsso' ), $mb_title );
+							$text .= sprintf( __( 'A customized image for each author can be selected in the WordPress user profile %s metabox.', 'wpsso' ), $mb_title );
 
 							break;
 

@@ -126,6 +126,16 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 					'<td>' . $this->form->get_textarea_locale( 'site_desc', $css_class = '', $css_id = '',
 						$len = 0, $def_site_desc ) . '</td>';
 
+					$table_rows[ 'og_def_img_id' ] = '' . 
+					$this->form->get_th_html( _x( 'Default Image ID', 'option label', 'wpsso' ),
+						$css_class = '', $css_id = 'og_def_img_id' ) . 
+					'<td>' . $this->form->get_input_image_upload( 'og_def_img' ) . '</td>';
+
+					$table_rows[ 'og_def_img_url' ] = '' . 
+					$this->form->get_th_html( _x( 'or Default Image URL', 'option label', 'wpsso' ),
+						$css_class = '', $css_id = 'og_def_img_url' ) . 
+					'<td>' . $this->form->get_input_image_url( 'og_def_img' ) . '</td>';
+
 					$table_rows[ 'og_def_article_section' ] = '' . 
 					$this->form->get_th_html( _x( 'Default Article Section', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'og_def_article_section' ) . 
@@ -154,16 +164,6 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 					$this->form->get_th_html( _x( 'Facebook Application ID', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'fb_app_id' ) . 
 					'<td>' . $this->form->get_input( 'fb_app_id', $css_class = 'is_required' ) . '</td>';
-
-					$table_rows[ 'og_def_img_id' ] = '' . 
-					$this->form->get_th_html( _x( 'Default / Fallback Image ID', 'option label', 'wpsso' ),
-						$css_class = '', $css_id = 'og_def_img_id' ) . 
-					'<td>' . $this->form->get_input_image_upload( 'og_def_img' ) . '</td>';
-
-					$table_rows[ 'og_def_img_url' ] = '' . 
-					$this->form->get_th_html( _x( 'or Default / Fallback Image URL', 'option label', 'wpsso' ),
-						$css_class = '', $css_id = 'og_def_img_url' ) . 
-					'<td>' . $this->form->get_input_image_url( 'og_def_img' ) . '</td>';
 
 					break;
 

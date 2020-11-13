@@ -848,6 +848,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 							}
 
 						} else {
+
 							unset( $fields[ $id ] );
 						}
 					}

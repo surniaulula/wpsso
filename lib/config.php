@@ -1261,9 +1261,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'og_author_field'         => 'facebook',		// Author Profile URL Field.
 					'og_def_article_section'  => 'none',			// Default Article Section.
-					'og_def_img_id'           => '',			// Default / Fallback Image ID.
+					'og_def_img_id'           => '',			// Default Image ID.
 					'og_def_img_id_pre'       => 'wp',
-					'og_def_img_url'          => '',			// or Default / Fallback Image URL.
+					'og_def_img_url'          => '',			// or Default Image URL.
 					'og_def_product_category' => 'none',			// Default Product Category.
 					'og_img_width'            => 1200,
 					'og_img_height'           => 630,

@@ -236,12 +236,12 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'<td>' . $this->form->get_input_image_dimensions( 'og_img' ) . '</td>';
 
 					$table_rows[ 'og_def_img_id' ] = '' . 
-					$this->form->get_th_html( _x( 'Default / Fallback Image ID', 'option label', 'wpsso' ),
+					$this->form->get_th_html( _x( 'Default Image ID', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'og_def_img_id' ) . 
 					'<td>' . $this->form->get_input_image_upload( 'og_def_img' ) . '</td>';
 
 					$table_rows[ 'og_def_img_url' ] = '' . 
-					$this->form->get_th_html( _x( 'or Default / Fallback Image URL', 'option label', 'wpsso' ),
+					$this->form->get_th_html( _x( 'or Default Image URL', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'og_def_img_url' ) . 
 					'<td>' . $this->form->get_input_image_url( 'og_def_img' ) . '</td>';
 
