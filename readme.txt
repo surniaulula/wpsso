@@ -318,13 +318,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.12.0-rc.2 (2020/11/13)**
+**Version 8.12.0 (2020/11/13)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added a new SSO &gt; Features Status page.
 	* Added an integration module for SEOPress (Premium version).
+	* Replaced the status light images in the SSO &gt; Features Status page by CSS background colors.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -698,7 +699,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.12.0-rc.2 =
+= 8.12.0 =
 
 (2020/11/13) Added a new SSO &gt; Features Status page. Added an integration module for SEOPress (Premium version).
 
