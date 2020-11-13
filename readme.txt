@@ -12,7 +12,7 @@ Requires PHP: 5.6
 Requires At Least: 4.4
 Tested Up To: 5.5.4
 WC Tested Up To: 4.6.2
-Stable Tag: 8.12.1
+Stable Tag: 8.12.0
 
 Make sure your content looks best on social sites and in search results, no matter how your webpages are shared, re-shared, messaged, posted, embedded, or crawled.
 
@@ -734,3 +734,4 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 = 8.7.0 =
 
 (2020/10/02) Fixed a bug that prevented abbreviated Schema enumerations from being detected. Added support for the new Schema shippingDetails property in Schema Product offers for WooCommerce products.
+
