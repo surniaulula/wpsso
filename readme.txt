@@ -318,7 +318,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.13.0-dev.1 (2020/11/17)**
+**Version 8.13.0-dev.2 (2020/11/17)**
 
 * **New Features**
 	* None.
@@ -718,7 +718,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.13.0-dev.1 =
+= 8.13.0-dev.2 =
 
 (2020/11/17) Moved the "Default Currency" option to the SSO &gt; General Settings &gt; Site Information tab.
 
