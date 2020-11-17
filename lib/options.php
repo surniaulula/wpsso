@@ -151,9 +151,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					return 'blank_int';
 
 				case 'robots_max_snippet':		// Snippet Max. Length.
-				case 'robots_max_video_preview':	// Video Max. Previews
+				case 'robots_max_video_preview':	// Video Max. Previews.
 
-					if ( empty( $mod[ 'name' ] ) ) {	// Must be an interger in plugin settings.
+					if ( empty( $mod[ 'name' ] ) ) {	// Must be an interger for plugin settings (ie. no module).
 
 						return 'integer';
 					}
@@ -176,10 +176,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				/**
 				 * Numeric options that must be positive (1 or more).
 				 */
-				case 'plugin_min_shorten':
-				case 'plugin_shopperapproved_num_max':
-				case 'plugin_shopperapproved_age_max':
-				case 'plugin_upscale_img_max':
+				case 'plugin_gravatar_size':		// Gravatar Image Size.
+				case 'plugin_min_shorten':		// Minimum URL Length to Shorten.
+				case 'plugin_shopperapproved_num_max':	// Maximum Number of Reviews.
+				case 'plugin_shopperapproved_age_max':	// Maximum Age of Reviews.
+				case 'plugin_upscale_img_max':		// Maximum Image Upscale Percent.
 				case ( preg_match( '/_(len|warn)$/', $base_key ) ? true : false ):
 
 					return 'pos_integer';	// Ala 'pos_int'.

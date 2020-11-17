@@ -1675,11 +1675,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_wistia_api'                   => 1,		// Check for Embedded Media: Wistia Videos.
 					'plugin_wpvideo_api'                  => 1,		// Check for Embedded Media: WordPress Video Shortcode.
 					'plugin_youtube_api'                  => 1,		// Check for Embedded Media: Youtube Videos and Playlists.
-					'plugin_gravatar_api'                 => 1,		// Gravatar is Default Author Image
-					'plugin_gravatar_size'                => 1200,		// Gravatar Image Size
+					'plugin_gravatar_api'                 => 1,		// Gravatar is Default Author Image.
+					'plugin_gravatar_size'                => 1200,		// Gravatar Image Size.
 					'plugin_shortener'                    => 'none',	// URL Shortening Service.
 					'plugin_wp_shortlink'                 => 1,		// Use Shortened URL for WP Shortlink.
-					'plugin_min_shorten'                  => 23,
+					'plugin_min_shorten'                  => 23,		// Minimum URL Length to Shorten.
 					'plugin_bitly_access_token'           => '',		// Bitly Generic Access Token.
 					'plugin_bitly_domain'                 => '',		// Bitly Short Domain (Optional).
 					'plugin_bitly_group_name'             => '',		// Bitly Group Name (Optional).
