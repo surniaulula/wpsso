@@ -277,11 +277,11 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			'<td nowrap class="blank">' . $form->get_no_input( 'plugin_min_shorten', $css_class = 'short' ) . ' ' .
 				_x( 'characters', 'option comment', 'wpsso' ) . '</td>';
 
-			$table_rows[ 'plugin_wp_shortlink' ] = '' . 
+			$table_rows[ 'plugin_wp_shortlink' ] = $form->get_tr_hide( 'basic', 'plugin_wp_shortlink' ) .
 			$form->get_th_html( _x( 'Use Shortened URL for WP Shortlink', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_wp_shortlink' ) . 
 			$form->get_no_td_checkbox( 'plugin_wp_shortlink' );
 
-			$table_rows[ 'plugin_add_link_rel_shortlink' ] = '' . 
+			$table_rows[ 'plugin_add_link_rel_shortlink' ] = $form->get_tr_hide( 'basic', 'add_link_rel_shortlink' ) .
 			$form->get_th_html( sprintf( _x( 'Add "%s" HTML Tag', 'option label', 'wpsso' ),
 				'link&nbsp;rel&nbsp;shortlink' ), $css_class = '', $css_id = 'plugin_add_link_rel_shortlink' ) . 
 			'<td class="blank">' . $form->get_no_checkbox( 'add_link_rel_shortlink', $css_class = '', $css_id = 'add_link_rel_shortlink_html_tag',
