@@ -318,6 +318,25 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.13.0-dev.1 (2020/11/17)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Moved all options from the SSO &gt; Advanced Settings &gt; Content and Text tab to the Integration tab.
+	* Moved the "Default Currency" option to the SSO &gt; General Settings &gt; Site Information tab.
+	* Moved the "Check for Embedded Media" options to the SSO &gt; Advanced Settings &gt; Service APIs tab.
+	* Removed the "Notification System" option.
+	* Removed the "&lt;head&gt; Attributes Filter Hook" option.
+	* Removed the "&lt;html&gt; Attributes Filter Hook" option.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v5.6.
+	* WordPress v4.4.
+
 **Version 8.12.1 (2020/11/13)**
 
 * **New Features**
@@ -698,6 +717,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.13.0-dev.1 =
+
+(2020/11/17) Moved the "Default Currency" option to the SSO &gt; General Settings &gt; Site Information tab.
 
 = 8.12.1 =
 
