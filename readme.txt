@@ -323,7 +323,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Moved all options from the SSO &gt; Advanced Settings &gt; Content and Text tab to the Integration tab.
+	* Moved all options from the SSO &gt; Advanced Settings &gt; Content and Text tab to the Integration tab (removing the Content and Text tab).
 	* Moved the "Default Currency" option to the SSO &gt; General Settings &gt; Site Information tab.
 	* Moved the "Check for Embedded Media" options to the SSO &gt; Advanced Settings &gt; Service APIs tab.
 	* Removed the "Notification System" option.
