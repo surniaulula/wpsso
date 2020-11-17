@@ -2637,13 +2637,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
-			 * Only check if using the default filter name.
-			 */
-			$opt_key = 'plugin_head_attr_filter_name';	// Hard-coded value - no sanitation required.
-			$def_val = 'head_attributes';
+			$filter_name = SucomUtil::get_const( 'WPSSO_HEAD_ATTR_FILTER_NAME', 'head_attributes' );
 
-			if ( empty( $this->p->options[ $opt_key ] ) || $this->p->options[ $opt_key ] !== $def_val ) {
+			/**
+			 * Skip if not using the default filter name.
+			 */
+			if ( 'head_attributes' !== $filter_name ) {
 
 				return;
 			}
@@ -3181,11 +3180,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$form->get_th_html( _x( 'Options to Show by Default', 'option label', 'wpsso' ), '', 'plugin_show_opts' ) .
 			'<td>' . $form->get_select( 'plugin_show_opts', $this->p->cf[ 'form' ][ 'show_options' ] ) . '</td>' .
 			self::get_option_site_use( 'plugin_show_opts', $form, $network, true );
-
-			$table_rows[ 'plugin_notice_system' ] = $form->get_tr_hide( 'basic', 'plugin_notice_system' ) .
-			$form->get_th_html( _x( 'Notification System', 'option label', 'wpsso' ), '', 'plugin_notice_system' ) .
-			'<td>' . $form->get_select( 'plugin_notice_system', $this->p->cf[ 'form' ][ 'notice_systems' ] ) . '</td>' .
-			self::get_option_site_use( 'plugin_notice_system', $form, $network, true );
 		}
 
 		/**

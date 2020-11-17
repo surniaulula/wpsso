@@ -432,12 +432,9 @@ table.sucom-settings th.short p {
 }
 
 table.sucom-settings th.site-use {
-	width:90px;
-	min-width:60px;
+	width:65px;
+	min-width:55px;
 	white-space:nowrap;
-}
-
-table.sucom-settings td.site-use {
 }
 
 table.sucom-settings td.nowrap,

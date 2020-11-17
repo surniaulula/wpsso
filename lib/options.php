@@ -269,8 +269,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'plugin_col_title_width_max':
 				case 'plugin_col_def_width':
 				case 'plugin_col_def_width_max':
-				case 'plugin_head_attr_filter_name':
-				case 'plugin_html_attr_filter_name':
 				case 'plugin_img_alt_prefix':		// Content Image Alt Prefix.
 				case 'plugin_p_cap_prefix':		// WP Caption Text Prefix.
 				case 'plugin_bitly_access_token':	// Bitly Generic Access Token.
@@ -798,7 +796,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							'plugin_clean_on_uninstall',
 							'plugin_debug',
 							'plugin_show_opts',
-							'plugin_notice_system',
 						) as $opt_key ) {
 
 							unset( $advanced_opts[ $opt_key ] );
@@ -855,15 +852,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				'og_type_for_tax'     => 'website',
 				'schema_type_for_tax' => 'item.list',
 			) );
-
-			/**
-			 * Enable or disable the toolbar notification system dynamically.
-			 */
-			if ( SucomUtil::get_const( 'WPSSO_TOOLBAR_NOTICES' ) ) {
-
-				$opts[ 'plugin_notice_system' ]    = 'toolbar_notices';
-				$opts[ 'plugin_notice_system:is' ] = 'disabled';	// Prevent changes in settings page.
-			}
 
 			/**
 			 * Note that generator meta tags are required for plugin support. If you disable the generator meta

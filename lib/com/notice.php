@@ -125,22 +125,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			/**
 			 * Set the notification system.
 			 */
-			if ( ! is_admin_bar_showing() ) {	// Just in case.
-
-				$this->tb_notices = false;
-
-			} if ( empty( $this->p->options[ 'plugin_notice_system' ] ) ) {	// Just in case.
-
-				$this->tb_notices = true;
-
-			} elseif ( 'toolbar_notices' === $this->p->options[ 'plugin_notice_system' ] ) {
-
-				$this->tb_notices = true;
-
-			} else {
-
-				$this->tb_notices = false;
-			}
+			$this->tb_notices = is_admin_bar_showing() ? true : false;
 
 			if ( defined( $this->uca . '_TOOLBAR_NOTICES' ) ) {
 
@@ -152,7 +137,14 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$this->tb_notices = constant( $this->uca . '_TOOLBAR_NOTICES' );
 			}
 
-			if ( true === $this->tb_notices ) {
+			if ( false === $this->tb_notices ) {
+
+				if ( ! empty( $this->p->debug->enabled ) ) {
+
+					$this->p->debug->log( 'tb_notices is false' );
+				}
+
+			} elseif ( true === $this->tb_notices ) {
 
 				if ( ! empty( $this->p->debug->enabled ) ) {
 
@@ -160,13 +152,12 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				}
 
 				$this->tb_notices = array( 'err', 'warn', 'inf' );
-			}
 
-			if ( empty( $this->tb_notices ) || ! is_array( $this->tb_notices ) ) {
+			} elseif ( ! is_array( $this->tb_notices ) ) {	// Empty string, null, etc.
 
 				if ( ! empty( $this->p->debug->enabled ) ) {
 
-					$this->p->debug->log( 'tb_notices is empty or not an array' );
+					$this->p->debug->log( 'tb_notices is not an array' );
 				}
 
 				$this->tb_notices = false;

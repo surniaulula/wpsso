@@ -172,6 +172,13 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						) .
 					'</td>';
 
+					/**
+					 * Default currency.
+					 */
+					$table_rows[ 'og_def_currency' ] = '' .
+					$this->form->get_th_html( _x( 'Default Currency', 'option label', 'wpsso' ), $css_class = '', $css_id = 'og_def_currency' ) .
+					'<td>' . $this->form->get_select( 'og_def_currency', SucomUtil::get_currencies() ) . '</td>';
+
 					break;
 
 				case 'og-content':
@@ -203,7 +210,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					_x( 'characters (soft limit)', 'option comment', 'wpsso' ) . 
 					'</td>';
 
-					$table_rows[ 'og_desc_hashtags' ] = $this->form->get_tr_hide( 'basic', 'og_desc_hashtags' ) . 
+					$table_rows[ 'og_desc_hashtags' ] = '' .
 					$this->form->get_th_html( _x( 'Add Hashtags to Descriptions', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'og_desc_hashtags' ) . 
 					'<td>' . $this->form->get_select( 'og_desc_hashtags', range( 0, $this->p->cf[ 'form' ][ 'max_hashtags' ] ), 'short', '', true ) . ' ' . 

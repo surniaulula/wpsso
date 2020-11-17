@@ -42,18 +42,36 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 
 			} else {
 
+				/**
+				 * Template action hook.
+				 */
 				add_action( 'add_head_attributes', array( $this, 'add_head_attributes' ), -1000 );
 
-				if ( ! empty( $this->p->options[ 'plugin_head_attr_filter_name' ] ) ) {
+				$filter_name = SucomUtil::get_const( 'WPSSO_HEAD_ATTR_FILTER_NAME', 'head_attributes' );
+				$filter_prio = SucomUtil::get_const( 'WPSSO_HEAD_ATTR_FILTER_PRIO', 1000 );
 
-					$filter_name = $this->p->options[ 'plugin_head_attr_filter_name' ];
-					$filter_prio = $this->p->options[ 'plugin_head_attr_filter_prio' ];
+				if ( empty( $filter_name ) || 'none' === $filter_name ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'skipped filter_head_attributes - filter name is empty or disabled' );
+					}
+
+				} else {
 
 					add_filter( $filter_name, array( $this, 'filter_head_attributes' ), $filter_prio, 1 );
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'added filter_head_attributes filter for ' . $filter_name );
+					}
 				}
 			}
 		}
 
+		/**
+		 * Template action hook.
+		 */
 		public function add_head_attributes() {
 
 			if ( $this->p->debug->enabled ) {
@@ -61,28 +79,15 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( ! $this->is_head_attributes_enabled() ) {
+			$filter_name = SucomUtil::get_const( 'WPSSO_HEAD_ATTR_FILTER_NAME', 'head_attributes' );
 
-				if ( $this->p->debug->enabled ) {
+			if ( empty( $filter_name ) || 'none' === $filter_name ) {
 
-					$this->p->debug->log( 'exiting early: head attributes disabled' );
-				}
+				// Nothing to do.
 
-				return;
-			}
+			} else {
 
-			if ( ! empty( $this->p->options[ 'plugin_head_attr_filter_name' ] ) ) {	// Just in case.
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'calling filter ' . $this->p->options[ 'plugin_head_attr_filter_name' ] );
-				}
-
-				echo apply_filters( $this->p->options[ 'plugin_head_attr_filter_name' ], '' );
-
-			} elseif ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'plugin_head_attr_filter_name is empty' );
+				echo apply_filters( $filter_name, '' );
 			}
 		}
 
@@ -91,16 +96,6 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
-			}
-
-			if ( ! $this->is_head_attributes_enabled() ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: head attributes disabled' );
-				}
-
-				return $head_attr;
 			}
 
 			$use_post = apply_filters( $this->p->lca . '_use_post', false );
@@ -156,32 +151,6 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 			}
 
 			return $head_attr;
-		}
-
-		public function is_head_attributes_enabled() {
-
-			if ( empty( $this->p->options[ 'plugin_head_attr_filter_name' ] ) ||
-				$this->p->options[ 'plugin_head_attr_filter_name' ] === 'none' ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'head attributes disabled for empty option name' );
-				}
-
-				return false;
-			}
-
-			if ( ! apply_filters( $this->p->lca . '_add_schema_head_attributes', true ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'head attributes disabled by filters' );
-				}
-
-				return false;
-			}
-
-			return true;
 		}
 
 		public function get_array( array $mod, array $mt_og = array() ) {

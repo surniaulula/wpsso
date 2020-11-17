@@ -2116,7 +2116,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 						if ( empty( $mt_og[ $currency_key ] ) ) {
 
-							$mt_og[ $currency_key ] = $wpsso->options[ 'plugin_def_currency' ];
+							$mt_og[ $currency_key ] = $wpsso->options[ 'og_def_currency' ];
 						}
 
 					} else {

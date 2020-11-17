@@ -140,7 +140,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'og_def_vid_on_search'   => '',
 				),
 				559 => array(
-					'plugin_product_currency' => 'plugin_def_currency',
+					'plugin_product_currency' => 'og_def_currency',	// Default Currency.
 				),
 				561 => array(
 					'plugin_shortlink' => 'plugin_wp_shortlink',
@@ -394,6 +394,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				752 => array(
 					'plugin_clear_on_save' => '',
 				),
+				768 => array(
+					'plugin_def_currency' => 'og_def_currency',	// Default Currency.
+				),
 			),
 		);
 
@@ -544,14 +547,6 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					if ( empty( $opts[ 'plugin_min_shorten' ] ) || $opts[ 'plugin_min_shorten' ] < 22 ) {
 
 						$opts[ 'plugin_min_shorten' ] = 22;
-					}
-				}
-
-				if ( $prev_version > 0 && $prev_version <= 373 ) {
-
-					if ( ! empty( $opts[ 'plugin_head_attr_filter_name' ] ) && $opts[ 'plugin_head_attr_filter_name' ] === 'language_attributes' ) {
-
-						$opts[ 'plugin_head_attr_filter_name' ] = 'head_attributes';
 					}
 				}
 

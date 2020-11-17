@@ -1863,8 +1863,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				/**
 				 * Make sure we have a price currency value.
 				 */
-				$price_currency = isset( $single_offer[ 'priceCurrency' ] ) ?
-					$single_offer[ 'priceCurrency' ] : $wpsso->options[ 'plugin_def_currency' ];
+				$price_currency = isset( $single_offer[ 'priceCurrency' ] ) ? $single_offer[ 'priceCurrency' ] : $wpsso->options[ 'og_def_currency' ];
 
 				/**
 				 * Keep track of the lowest and highest price by currency.

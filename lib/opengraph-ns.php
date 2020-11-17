@@ -30,29 +30,23 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
-			 * Hook the first available filter name (example: 'language_attributes').
-			 */
-			foreach ( array( 'plugin_html_attr_filter', 'plugin_head_attr_filter' ) as $opt_pre ) {
+			$filter_name = SucomUtil::get_const( 'WPSSO_HTML_ATTR_FILTER_NAME', 'language_attributes' );
+			$filter_prio = SucomUtil::get_const( 'WPSSO_HTML_ATTR_FILTER_PRIO', 1000 );
 
-				if ( ! empty( $this->p->options[ $opt_pre . '_name' ] ) && $this->p->options[ $opt_pre . '_name' ] !== 'none' ) {
+			if ( empty( $filter_name ) || 'none' === $filter_name ) {
 
-					$wp_filter_name = $this->p->options[ $opt_pre . '_name' ];
+				if ( $this->p->debug->enabled ) {
 
-					$wp_filter_prio = isset( $this->p->options[ $opt_pre . '_prio' ] ) ? (int) $this->p->options[ $opt_pre . '_prio' ] : 100;
+					$this->p->debug->log( 'skipped filter_html_attributes - filter name is empty or disabled' );
+				}
 
-					add_filter( $wp_filter_name, array( $this, 'add_og_ns_attributes' ), $wp_filter_prio, 1 );
+			} else {
 
-					if ( $this->p->debug->enabled ) {
+				add_filter( $filter_name, array( $this, 'filter_html_attributes' ), $filter_prio, 1 );
 
-						$this->p->debug->log( 'added add_og_ns_attributes filter for ' . $wp_filter_name );
-					}
+				if ( $this->p->debug->enabled ) {
 
-					break;	// Stop here.
-
-				} elseif ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'skipping add_og_ns_attributes for ' . $opt_pre . ' - filter name is empty or disabled' );
+					$this->p->debug->log( 'added filter_html_attributes filter for ' . $filter_name );
 				}
 			}
 
@@ -63,7 +57,7 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 			) );
 		}
 
-		public function add_og_ns_attributes( $html_attr ) {
+		public function filter_html_attributes( $html_attr ) {
 
 			if ( $this->p->debug->enabled ) {
 

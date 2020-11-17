@@ -576,6 +576,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
+						case 'tooltip-og_def_currency':		// Default Currency.
+
+							$text = __( 'The default currency used for money related options (product price, job salary, etc.).', 'wpsso' );
+
+							break;
+
 						case 'tooltip-og_type_for_home_page':	// Type for Page Homepage.
 
 							$def_type = $this->p->opt->get_defaults( 'og_type_for_home_page' );
@@ -778,7 +784,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					switch ( $msg_key ) {
 
 						/**
-						 * Standard Settings settings.
+						 * Admin settings.
 						 */
 						case 'tooltip-plugin_clean_on_uninstall': // Remove Settings on Uninstall.
 
@@ -804,18 +810,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_notice_system': 	// Notification System.
-
-							$text .= __( 'Select the notification system for SSO notices.', 'wpsso' ) . ' ';
-
-							$text .= __( 'Toolbar notices are available under a single notification icon in the top toolbar, which changes color based on the severity of notices.', 'wpsso' ) . ' ';
-
-							$text .= __( 'Alternatively, you can select the standard WordPress notification system, but note that the WordPress notification system is not compatible with the block editor in WordPress v5.', 'wpsso' );
-
-							break;
-
 						/**
-						 * Content settings.
+						 * Integration settings.
 						 */
 						case 'tooltip-plugin_document_title':	// Webpage Document Title.
 
@@ -860,7 +856,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_p_strip':	// Content Starts at 1st Paragraph.
+						case 'tooltip-plugin_p_strip':		// Content Starts at 1st Paragraph.
 
 							$text = sprintf( __( 'If a post, page, or custom post type does not have an excerpt, %s will use the content text to create a description value.', 'wpsso' ), $info[ 'short' ] ) . ' ';
 
@@ -904,23 +900,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_embed_media_apis':
-
-							$text = __( 'Check the content for embedded media URLs from supported media providers (Vimeo, Wistia, YouTube, etc.). If a supported media URL is found, an API connection to the provider will be made to retrieve information about the media (preview image URL, flash player URL, oembed player URL, the video width / height, etc.).', 'wpsso' );
-
-							break;
-
-						/**
-						 * Integration settings
-						 */
-						case 'tooltip-plugin_new_user_is_person':	// Add Person Role for New Users.
-
-							$text = sprintf( __( 'Automatically add the "%s" role when a new user is created.', 'wpsso' ), _x( 'Person', 'user role', 'wpsso' ) ) . ' ';
-
-							$text .= sprintf( __( 'You may also consider activating <a href="%s">a plugin from WordPress.org to manage user roles and their members</a>.', 'wpsso' ), 'https://wordpress.org/plugins/search/user+role/' );
-
-							break;
-
 						case 'tooltip-plugin_page_excerpt':	// Enable WP Excerpt for Pages.
 
 							$text = __( 'Enable the WordPress excerpt metabox for Pages.', 'wpsso' ) . ' ';
@@ -936,6 +915,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text .= __( 'WordPress tags are optional keywords about the content subject, often used for searches and "tag clouds".', 'wpsso' ) . ' ';
 
 							$text .= sprintf( __( '%s can convert WordPress tags into hashtags for some social sites.', 'wpsso' ), $info[ 'short' ] );
+
+							break;
+
+						case 'tooltip-plugin_new_user_is_person':	// Add Person Role for New Users.
+
+							$text = sprintf( __( 'Automatically add the "%s" role when a new user is created.', 'wpsso' ), _x( 'Person', 'user role', 'wpsso' ) ) . ' ';
+
+							$text .= sprintf( __( 'You may also consider activating <a href="%s">a plugin from WordPress.org to manage user roles and their members</a>.', 'wpsso' ), 'https://wordpress.org/plugins/search/user+role/' );
 
 							break;
 
@@ -978,48 +965,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_html_attr_filter':	// <html> Attributes Filter Hook.
-
-							$func_name = 'language_attributes()';
-
-							$func_url = __( 'https://developer.wordpress.org/reference/functions/language_attributes/', 'wpsso' );
-
-							$filter_name = 'language_attributes';
-
-							$tag_code = '<code>&amp;lt;html&amp;gt;</code>';
-
-							$php_code = '<pre><code>&amp;lt;html &amp;lt;?php language_attributes(); ?&amp;gt;&amp;gt;</code></pre>';
-
-							$text = sprintf( __( '%1$s hooks the "%2$s" filter (by default) to add / modify the %3$s HTML tag attributes for Open Graph namespace prefix values.', 'wpsso' ), $info[ 'short' ], $filter_name, $tag_code ) . ' ';
-
-							$text .= sprintf( __( 'The <a href="%1$s">WordPress %2$s function</a> and its "%3$s" filter are used by most themes &mdash; if the namespace prefix values are missing from your %4$s HTML tag attributes, make sure your header template(s) use the %2$s function.', 'wpsso' ), $func_url, '<code>' . $func_name . '</code>', $filter_name, $tag_code ) . ' ';
-
-							$text .= __( 'Leaving this option empty disables the addition of Open Graph namespace values.', 'wpsso' ) . ' ';
-
-							$text .= sprintf( __( 'Example code for header templates: %1$s', 'wpsso' ), $php_code );
-
-							break;
-
-						case 'tooltip-plugin_head_attr_filter':	// <head> Attributes Filter Hook.
-
-							$filter_name = 'head_attributes';
-
-							$tag_code = '<code>&amp;lt;head&amp;gt;</code>';
-
-							$php_code = '<pre><code>&amp;lt;head &amp;lt;?php do_action( &#39;add_head_attributes&#39; ); ?&amp;gt;&amp;gt;</code></pre>';
-
-							$text = sprintf( __( '%1$s hooks the "%2$s" filter (by default) to add / modify the %3$s HTML tag attributes for Schema itemscope / itemtype markup.', 'wpsso' ), $info[ 'short' ], $filter_name, $tag_code ) . ' ';
-
-							$text .= sprintf( __( 'If your theme already offers a filter for the %1$s HTML tag attributes, enter its name here (most themes do not offer this filter).', 'wpsso' ), $tag_code ) . ' ';
-
-							$text .= sprintf( __( 'Alternatively, you can edit your your theme header templates and add an action to call the "%1$s" filter.', 'wpsso' ), $filter_name ) . ' ';
-
-							$text .= sprintf( __( 'Example code for header templates: %1$s', 'wpsso' ), $php_code );
-
-							break;
-
 						/**
-						 * Cache settings.
+						 * Caching settings.
 						 */
 						case 'tooltip-plugin_head_cache_exp':		// Head Markup Cache Expiry.
 
@@ -1153,6 +1100,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						/**
 						 * Service APIs settings.
 						 */
+						case 'tooltip-plugin_embed_media_apis':
+
+							$text = __( 'Check the content for embedded media URLs from supported media providers (Vimeo, Wistia, YouTube, etc.). If a supported media URL is found, an API connection to the provider will be made to retrieve information about the media (preview image URL, flash player URL, oembed player URL, the video width / height, etc.).', 'wpsso' );
+
+							break;
+
 						case 'tooltip-plugin_gravatar_api':	// Gravatar is Default Author Image.
 
 							$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
@@ -1331,12 +1284,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_wpseo_show_import':	// Show Yoast SEO Import Details.
 
 							$text = __( 'Show notification messages for imported Yoast SEO custom social meta text for Posts, Terms, and Users.', 'wpsso' ) . ' ';
-
-							break;
-
-						case 'tooltip-plugin_def_currency':
-
-							$text = __( 'The default currency used for money related options (product price, job salary, etc.).', 'wpsso' );
 
 							break;
 

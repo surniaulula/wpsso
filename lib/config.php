@@ -22,8 +22,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.12.1',	// Plugin version.
-					'opt_version' => '768',		// Increment when changing default option values.
+					'version'     => '8.13.0-dev.1',	// Plugin version.
+					'opt_version' => '769',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Make sure your content looks best on social sites and in search results, no matter how your webpages are shared, re-shared, messaged, posted, embedded, or crawled.',
@@ -1265,6 +1265,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_def_img_id_pre'       => 'wp',
 					'og_def_img_url'          => '',			// or Default Image URL.
 					'og_def_product_category' => 'none',			// Default Product Category.
+					'og_def_currency'         => 'USD',			// Default Currency.
 					'og_img_width'            => 1200,
 					'og_img_height'           => 630,
 					'og_img_crop'             => 1,
@@ -1621,59 +1622,41 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_itemprop_aggregaterating.reviewcount' => 1,
 
 					/**
-					 * Advanced Settings - Standard Settings tab.
+					 * Advanced Settings - Plugin Admin tab.
 					 */
 					'plugin_clean_on_uninstall' => 0,			// Remove Settings on Uninstall.
 					'plugin_debug'              => 0,			// Add Hidden Debug Messages.
 					'plugin_show_opts'          => 'basic',			// Options to Show by Default.
-					'plugin_notice_system'      => 'toolbar_notices',	// Notification System.
-
-					/**
-					 * Advanced Settings - Content tab.
-					 */
-					'plugin_document_title' => 'wp_title',			// Webpage Document Title.
-					'plugin_filter_title'   => 0,				// Use WordPress Title Filters.
-					'plugin_filter_content' => 0,				// Use WordPress Content Filters.
-					'plugin_filter_excerpt' => 0,				// Use WordPress Excerpt Filters.
-					'plugin_p_strip'        => 1,				// Content Starts at 1st Paragraph.
-					'plugin_use_img_alt'    => 1,				// Use Image Alt if No Content.
-					'plugin_img_alt_prefix' => 'Image:',			// Content Image Alt Prefix.
-					'plugin_p_cap_prefix'   => 'Caption:',			// WP Caption Text Prefix.
-					'plugin_no_title_text'  => 'No Title',			// No Title Text.
-					'plugin_no_desc_text'   => 'No Description.',		// No Description Text.
-					'plugin_gravatar_api'   => 1,				// Gravatar is Default Author Image
-					'plugin_gravatar_size'  => 1200,			// Gravatar Image Size
-					'plugin_facebook_api'   => 1,				// Check for Embedded Media: Facebook Videos.
-					'plugin_slideshare_api' => 1,				// Check for Embedded Media: Slideshare Presentations.
-					'plugin_soundcloud_api' => 1,				// Check for Embedded Media: Soundcloud Tracks.
-					'plugin_vimeo_api'      => 1,				// Check for Embedded Media: Vimeo Videos.
-					'plugin_wistia_api'     => 1,				// Check for Embedded Media: Wistia Videos.
-					'plugin_wpvideo_api'    => 1,				// Check for Embedded Media: WordPress Video Shortcode.
-					'plugin_youtube_api'    => 1,				// Check for Embedded Media: Youtube Videos and Playlists.
 
 					/**
 					 * Advanced Settings - Integration tab.
 					 */
-					'plugin_html_attr_filter_name' => 'language_attributes',	// <html> Attributes Filter Hook.
-					'plugin_html_attr_filter_prio' => 1000,
-					'plugin_head_attr_filter_name' => 'head_attributes',		// <head> Attributes Filter Hook.
-					'plugin_head_attr_filter_prio' => 1000,
-					'plugin_new_user_is_person'    => 0,				// Add Person Role for New Users.
-					'plugin_page_excerpt'          => 0,				// Enable WP Excerpt for Pages.
-					'plugin_page_tags'             => 0,				// Enable WP Tags for Pages.
-					'plugin_check_head'            => 1,				// Check for Duplicate Meta Tags.
-					'plugin_check_img_dims'        => 0,				// Enforce Image Dimension Checks.
-					'plugin_upscale_images'        => 0,				// Upscale Media Library Images.
-					'plugin_upscale_img_max'       => 33,				// Maximum Image Upscale Percent.
+					'plugin_document_title'     => 'wp_title',		// Webpage Document Title.
+					'plugin_filter_title'       => 0,			// Use WordPress Title Filters.
+					'plugin_filter_content'     => 0,			// Use WordPress Content Filters.
+					'plugin_filter_excerpt'     => 0,			// Use WordPress Excerpt Filters.
+					'plugin_p_strip'            => 1,			// Content Starts at 1st Paragraph.
+					'plugin_use_img_alt'        => 1,			// Use Image Alt if No Content.
+					'plugin_img_alt_prefix'     => 'Image:',		// Content Image Alt Prefix.
+					'plugin_p_cap_prefix'       => 'Caption:',		// WP Caption Text Prefix.
+					'plugin_no_title_text'      => 'No Title',		// No Title Text.
+					'plugin_no_desc_text'       => 'No Description.',	// No Description Text.
+					'plugin_page_excerpt'       => 0,			// Enable WP Excerpt for Pages.
+					'plugin_page_tags'          => 0,			// Enable WP Tags for Pages.
+					'plugin_new_user_is_person' => 0,			// Add Person Role for New Users.
+					'plugin_check_head'         => 1,			// Check for Duplicate Meta Tags.
+					'plugin_check_img_dims'     => 0,			// Enforce Image Dimension Checks.
+					'plugin_upscale_images'     => 0,			// Upscale Media Library Images.
+					'plugin_upscale_img_max'    => 33,			// Maximum Image Upscale Percent.
 
 					/**
-					 * Advanced Settings - Cache tab.
+					 * Advanced Settings - Caching tab.
 					 */
 					'plugin_head_cache_exp'      => WEEK_IN_SECONDS,	// Head Markup Cache Expiry (1 week).
-					'plugin_content_cache_exp'   => HOUR_IN_SECONDS,	// Filtered Content Cache Expiry (1 hour).
+					'plugin_content_cache_exp'   => 43200,			// Filtered Content Cache Expiry (12 hours).
 					'plugin_imgsize_cache_exp'   => DAY_IN_SECONDS,		// Image URL Info Cache Expiry (1 day).
 					'plugin_vidinfo_cache_exp'   => DAY_IN_SECONDS,		// Video API Info Cache Expiry (1 day).
-					'plugin_short_url_cache_exp' => 7776000,		// Shortened URL Cache Expiry (90 days / 3 months).
+					'plugin_short_url_cache_exp' => 7776000,		// Shortened URL Cache Expiry (90 days).
 					'plugin_types_cache_exp'     => MONTH_IN_SECONDS,	// Schema Index Cache Expiry (1 month).
 					'plugin_select_cache_exp'    => MONTH_IN_SECONDS,	// Form Selects Cache Expiry (1 month).
 					'plugin_clear_on_activate'   => 1,			// Clear All Caches on Activate.
@@ -1685,6 +1668,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings - Service APIs tab.
 					 */
+					'plugin_facebook_api'                 => 1,		// Check for Embedded Media: Facebook Videos.
+					'plugin_slideshare_api'               => 1,		// Check for Embedded Media: Slideshare Presentations.
+					'plugin_soundcloud_api'               => 1,		// Check for Embedded Media: Soundcloud Tracks.
+					'plugin_vimeo_api'                    => 1,		// Check for Embedded Media: Vimeo Videos.
+					'plugin_wistia_api'                   => 1,		// Check for Embedded Media: Wistia Videos.
+					'plugin_wpvideo_api'                  => 1,		// Check for Embedded Media: WordPress Video Shortcode.
+					'plugin_youtube_api'                  => 1,		// Check for Embedded Media: Youtube Videos and Playlists.
+					'plugin_gravatar_api'                 => 1,		// Gravatar is Default Author Image
+					'plugin_gravatar_size'                => 1200,		// Gravatar Image Size
 					'plugin_shortener'                    => 'none',	// URL Shortening Service.
 					'plugin_wp_shortlink'                 => 1,		// Use Shortened URL for WP Shortlink.
 					'plugin_min_shorten'                  => 23,
@@ -1740,7 +1732,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_add_to_user_page'         => 1,
 					'plugin_wpseo_social_meta'        => 0,			// Import Yoast SEO Social Meta.
 					'plugin_wpseo_show_import'        => 1,			// Show Yoast SEO Import Details.
-					'plugin_def_currency'             => 'USD',		// Default Currency.
 
 					/**
 					 * Advanced Settings - Document Meta tab (custom taxonomy and post types).
@@ -1875,7 +1866,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'options_filtered' => 0,
 
 					/**
-					 * Advanced Settings - Standard Settings tab.
+					 * Advanced Settings - Plugin Admin tab.
 					 */
 					'plugin_clean_on_uninstall'     => 0,			// Remove Settings on Uninstall
 					'plugin_clean_on_uninstall:use' => 'default',
@@ -1883,47 +1874,19 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_debug:use'              => 'default',
 					'plugin_show_opts'              => 'basic',		// Options to Show by Default
 					'plugin_show_opts:use'          => 'default',
-					'plugin_notice_system'          => 'toolbar_notices',	// Notification System.
-					'plugin_notice_system:use'      => 'default',
 
 					/**
-					 * Advanced Settings - Integration tab.
-					 */
-					'plugin_new_user_is_person'        => 0,			// Add Person Role for New Users.
-					'plugin_new_user_is_person:use'    => 'default',
-					'plugin_page_excerpt'              => 0,			// Enable WP Excerpt for Pages.
-					'plugin_page_excerpt:use'          => 'default',
-					'plugin_page_tags'                 => 0,			// Enable WP Tags for Pages.
-					'plugin_page_tags:use'             => 'default',
-					'plugin_check_head'                => 1,			// Check for Duplicate Meta Tags.
-					'plugin_check_head:use'            => 'default',
-					'plugin_check_img_dims'            => 1,			// Enforce Image Dimension Checks.
-					'plugin_check_img_dims:use'        => 'default',
-					'plugin_upscale_images'            => 0,			// Upscale Media Library Images.
-					'plugin_upscale_images:use'        => 'default',
-					'plugin_upscale_img_max'           => 33,			// Maximum Image Upscale Percent.
-					'plugin_upscale_img_max:use'       => 'default',
-					'plugin_html_attr_filter_name'     => 'language_attributes',	// <html> Attributes Filter Hook.
-					'plugin_html_attr_filter_name:use' => 'default',
-					'plugin_html_attr_filter_prio'     => 1000,
-					'plugin_html_attr_filter_prio:use' => 'default',
-					'plugin_head_attr_filter_name'     => 'head_attributes',	// <head> Attributes Filter Hook.
-					'plugin_head_attr_filter_name:use' => 'default',
-					'plugin_head_attr_filter_prio'     => 1000,
-					'plugin_head_attr_filter_prio:use' => 'default',
-
-					/**
-					 * Advanced Settings - Cache tab.
+					 * Advanced Settings - Caching tab.
 					 */
 					'plugin_head_cache_exp'          => WEEK_IN_SECONDS,	// Head Markup Cache Expiry (1 week).
 					'plugin_head_cache_exp:use'      => 'default',
-					'plugin_content_cache_exp'       => HOUR_IN_SECONDS,	// Filtered Content Cache Expiry (1 hour).
+					'plugin_content_cache_exp'       => 43200,		// Filtered Content Cache Expiry (12 hours).
 					'plugin_content_cache_exp:use'   => 'default',
 					'plugin_imgsize_cache_exp'       => DAY_IN_SECONDS,	// Image URL Info Cache Expiry (1 day).
 					'plugin_imgsize_cache_exp:use'   => 'default',
 					'plugin_vidinfo_cache_exp'       => DAY_IN_SECONDS,	// Video API Info Cache Expiry (1 day).
 					'plugin_vidinfo_cache_exp:use'   => 'default',
-					'plugin_short_url_cache_exp'     => 7776000,		// Shortened URL Cache Expiry (90 days / 3 months).
+					'plugin_short_url_cache_exp'     => 7776000,		// Shortened URL Cache Expiry (90 days).
 					'plugin_short_url_cache_exp:use' => 'default',
 					'plugin_types_cache_exp'         => MONTH_IN_SECONDS,	// Schema Index Cache Expiry (1 month).
 					'plugin_types_cache_exp:use'     => 'default',
@@ -4096,8 +4059,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			/**
 			 * Create a unique md5 query name from the config array and the local wp nonce key.
 			 */
-			$var_const[ 'WPSSO_NONCE_NAME' ] = md5( var_export( self::$cf, true ) . 
-				( defined( 'NONCE_KEY' ) ? NONCE_KEY : '' ) );
+			$var_const[ 'WPSSO_NONCE_NAME' ] = md5( var_export( self::$cf, true ) . ( defined( 'NONCE_KEY' ) ? NONCE_KEY : '' ) );
 
 			if ( defined( 'WPSSO_PLUGINDIR' ) ) {
 
@@ -4145,11 +4107,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_SCHEMA_RECIPE_INSTRUCTIONS_MAX' ]   = 40;
 			$var_const[ 'WPSSO_SCHEMA_REVIEWS_PER_PAGE_MAX' ]      = 30;
 			$var_const[ 'WPSSO_SCHEMA_SAMEAS_URL_MAX' ]            = 5;
-
-			/**
-			 * Site organization ID. 
-			 */
-			$var_const[ 'WPSSO_SCHEMA_ORGANIZATION_TYPE_ID' ] = 'organization';
 
 			/**
 			 * Setting and meta array names.

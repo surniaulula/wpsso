@@ -298,12 +298,8 @@ div.auto-draft div.sucom-show_basic.sucom-tabset_sso.active {		/* Document SSO m
 	content:"\e807";	/* .icon-export */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_cache::before {			/* SSO > Advanced Settings > Advanced Settings > Cache tab. */
+.sucom-tablink-icon.sucom-tablink-href_cache::before {			/* SSO > Advanced Settings > Advanced Settings > Caching tab. */
 	content:"\f1c0";	/* .icon-database */
-}
-
-.sucom-tablink-icon.sucom-tablink-href_content::before {		/* SSO > Advanced Settings > Advanced Settings > Content and Text tab. */
-	content:"\e809";	/* .icon-edit */
 }
 
 .sucom-tablink-icon.sucom-tablink-href_custom_fields::before {		/* SSO > Advanced Settings > Editing and Metadata > Custom Fields tab. */
@@ -434,7 +430,7 @@ div.auto-draft div.sucom-show_basic.sucom-tabset_sso.active {		/* Document SSO m
 	content:"\e804";	/* .icon-search */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_settings::before {		/* SSO > Advanced Settings > Advanced Settings > Standard Settings tab. */
+.sucom-tablink-icon.sucom-tablink-href_settings::before {		/* SSO > Advanced Settings > Advanced Settings > Plugin Admin tab. */
 	content:"\f1de";	/* .icon-sliders */
 }
 
