@@ -3,6 +3,17 @@
 /**
  * Extract of translatable strings from lib/pro/.
  */
+_x( 'Options to Show by Default', 'option label', 'wpsso' );
+__( 'Posts, Pages, and Custom Post Types', 'wpsso' );
+__( 'Media Library', 'wpsso' );
+__( 'Categories, Tags, and Custom Taxonomies', 'wpsso' );
+// translators: Please ignore - translation uses a different text domain.
+__( 'Users' );
+_x( 'Additional Item List Columns', 'option label', 'wpsso' );
+_x( 'Title / Name Column Width', 'option label', 'wpsso' );
+_x( 'and max width', 'option comment', 'wpsso' );
+_x( 'Default Width for Posts / Pages', 'option label', 'wpsso' );
+_x( 'and max width', 'option comment', 'wpsso' );
 _x( 'Webpage Document Title', 'option label', 'wpsso' );
 _x( 'Use WordPress Title Filters', 'option label', 'wpsso' );
 _x( 'not recommended', 'option comment', 'wpsso' );
@@ -73,16 +84,6 @@ _x( 'YOURLS API URL', 'option label', 'wpsso' );
 _x( 'YOURLS Username', 'option label', 'wpsso' );
 _x( 'YOURLS Password', 'option label', 'wpsso' );
 _x( 'YOURLS Token', 'option label', 'wpsso' );
-__( 'Posts, Pages, and Custom Post Types', 'wpsso' );
-__( 'Media Library', 'wpsso' );
-__( 'Categories, Tags, and Custom Taxonomies', 'wpsso' );
-// translators: Please ignore - translation uses a different text domain.
-__( 'Users' );
-_x( 'Additional List Table Columns', 'option label', 'wpsso' );
-_x( 'Title / Name Column Width', 'option label', 'wpsso' );
-_x( 'and max width', 'option comment', 'wpsso' );
-_x( 'Default Width for Posts / Pages', 'option label', 'wpsso' );
-_x( 'and max width', 'option comment', 'wpsso' );
 _x( 'User Profile', 'option label', 'wpsso' );
 _x( 'Post Type', 'option label', 'wpsso' );
 _x( 'Taxonomy', 'option label', 'wpsso' );

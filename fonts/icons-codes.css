@@ -1,4 +1,6 @@
+@charset "UTF-8";
 
+ 
 .icon-videocam:before { content: '\e800'; } /* '' */
 .icon-doc:before { content: '\e801'; } /* '' */
 .icon-list:before { content: '\e802'; } /* '' */
@@ -37,7 +39,6 @@
 .icon-star-half:before { content: '\e823'; } /* '' */
 .icon-eye-off:before { content: '\e824'; } /* '' */
 .icon-cog:before { content: '\e825'; } /* '' */
-.icon-wrench:before { content: '\e826'; } /* '' */
 .icon-tasks:before { content: '\f0ae'; } /* '' */
 .icon-filter:before { content: '\f0b0'; } /* '' */
 .icon-table:before { content: '\f0ce'; } /* '' */
@@ -49,6 +50,7 @@
 .icon-doc-text:before { content: '\f0f6'; } /* '' */
 .icon-building:before { content: '\f0f7'; } /* '' */
 .icon-plus-squared:before { content: '\f0fe'; } /* '' */
+.icon-desktop:before { content: '\f108'; } /* '' */
 .icon-mobile:before { content: '\f10b'; } /* '' */
 .icon-flag-empty:before { content: '\f11d'; } /* '' */
 .icon-code:before { content: '\f121'; } /* '' */
@@ -82,3 +84,4 @@
 .icon-twitter-squared:before { content: '\f304'; } /* '' */
 .icon-facebook-squared:before { content: '\f308'; } /* '' */
 .icon-spinner2:before { content: '\f529'; } /* '' */
+.icon-wrench:before { content: '🔧'; } /* '\1f527' */

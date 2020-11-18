@@ -670,84 +670,19 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$sharing_url = $this->p->util->get_sharing_url( $mod, $add_page = false );
+			$validators = $this->p->util->get_validators( $mod );
 
-			$sharing_url_encoded = urlencode( $sharing_url );
+			foreach ( $validators as $key => $el ) {
 
-			$have_schema = empty( $this->p->avail[ 'p' ][ 'schema' ] ) || empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ?  false : true;
+				if ( ! empty( $el[ 'title' ] ) ) {
 
-			$have_amp = function_exists( 'amp_get_permalink' ) ? true : false;
+					$table_rows[ 'validate_' . $key ] = $form->get_th_html( $el[ 'title' ], $css_class = 'medium' );
 
-			$amp_url_encoded = $have_amp ? urlencode( amp_get_permalink( $mod[ 'id' ] ) ) : '';
+					$table_rows[ 'validate_' . $key ] .= '<td class="validate">' . ( isset( $el[ 'msg' ] ) ?
+						$el[ 'msg' ] : $this->p->msgs->get( 'info-meta-validate-' . $key ) ) . '</td>';
 
-			$buttons = array(
-				'facebook-debugger' => array(
-					'title' => _x( 'Facebook Sharing Debugger', 'option label', 'wpsso' ),
-					'label' => _x( 'Validate Open Graph', 'submit button', 'wpsso' ),
-					'url'   => 'https://developers.facebook.com/tools/debug/?q=' . $sharing_url_encoded,
-				),
-				'facebook-microdata' => array(
-					'title' => _x( 'Facebook Microdata Debug Tool', 'option label', 'wpsso' ),
-					'label' => _x( 'Validate Microdata', 'submit button', 'wpsso' ),
-					'url'   => 'https://business.facebook.com/ads/microdata/debug',
-					'msg'   => $this->p->msgs->get( 'info-meta-validate-facebook-microdata' ) .
-						SucomForm::get_no_input_clipboard( $sharing_url ),
-				),
-				'google-page-speed' => array(
-					'title' => _x( 'Google PageSpeed Insights', 'option label', 'wpsso' ),
-					'label' => _x( 'Validate PageSpeed', 'submit button', 'wpsso' ),
-					'url'   => 'https://developers.google.com/speed/pagespeed/insights/?url=' . $sharing_url_encoded,
-				),
-				'google-rich-results' => array(
-					'title' => _x( 'Google Rich Results Test', 'option label', 'wpsso' ),
-					'label' => _x( 'Validate Rich Results', 'submit button', 'wpsso' ) . ( $have_schema ? '' : ' *' ),
-					'url'   => $have_schema ? 'https://search.google.com/test/rich-results?url=' . $sharing_url_encoded : '',
-				),
-				'google-testing-tool' => array(
-					'title' => _x( 'Google Structured Data Test (Deprecated)', 'option label', 'wpsso' ),
-					'label' => _x( 'Validate Structured Data', 'submit button', 'wpsso' ) . ( $have_schema ? '' : ' *' ),
-					'url'   => $have_schema ? 'https://search.google.com/structured-data/testing-tool/u/0/#url=' . $sharing_url_encoded : '',
-				),
-				'linkedin' => array(
-					'title' => _x( 'LinkedIn Post Inspector', 'option label', 'wpsso' ),
-					'label' => _x( 'Validate Metadata', 'submit button', 'wpsso' ),
-					'url'   => 'https://www.linkedin.com/post-inspector/inspect/' . $sharing_url_encoded,
-				),
-				'pinterest' => array(
-					'title' => _x( 'Pinterest Rich Pins Validator', 'option label', 'wpsso' ),
-					'label' => _x( 'Validate Rich Pins', 'submit button', 'wpsso' ),
-					'url'   => 'https://developers.pinterest.com/tools/url-debugger/?link=' . $sharing_url_encoded,
-				),
-				'twitter' => array(
-					'title' => _x( 'Twitter Card Validator', 'option label', 'wpsso' ),
-					'label' => _x( 'Validate Twitter Card', 'submit button', 'wpsso' ),
-					'url'   => 'https://cards-dev.twitter.com/validator',
-					'msg'   => $this->p->msgs->get( 'info-meta-validate-twitter' ) .
-						SucomForm::get_no_input_clipboard( $sharing_url ),
-				),
-				'amp' => array(
-					'title' => $mod[ 'is_post' ] ? _x( 'The AMP Project Validator', 'option label', 'wpsso' ) : '',
-					'label' => $mod[ 'is_post' ] ? _x( 'Validate AMP Markup', 'submit button', 'wpsso' ) . ( $have_amp ? '' : ' **' ) : '',
-					'url'   => $mod[ 'is_post' ] && $have_amp ? 'https://validator.ampproject.org/#url=' . $amp_url_encoded : '',
-				),
-				'w3c' => array(
-					'title' => _x( 'W3C Markup Validator', 'option label', 'wpsso' ),
-					'label' => _x( 'Validate HTML Markup', 'submit button', 'wpsso' ),
-					'url'   => 'https://validator.w3.org/nu/?doc=' . $sharing_url_encoded,
-				),
-			);
-
-			foreach ( $buttons as $key => $button ) {
-
-				if ( ! empty( $button[ 'title' ] ) ) {
-
-					$table_rows[ 'validate_' . $key ] = $form->get_th_html( $button[ 'title' ], $css_class = 'medium' );
-
-					$table_rows[ 'validate_' . $key ] .= '<td class="validate">' . ( isset( $button[ 'msg' ] ) ?
-						$button[ 'msg' ] : $this->p->msgs->get( 'info-meta-validate-' . $key ) ) . '</td>';
-
-					$table_rows[ 'validate_' . $key ] .= '<td class="validate">' . $form->get_button( $button[ 'label' ],
-						'button-secondary', '', $button[ 'url' ], $newtab = true, ( $button[ 'url' ] ? false : true ) ) . '</td>';
+					$table_rows[ 'validate_' . $key ] .= '<td class="validate">' . $form->get_button( $el[ 'label' ],
+						'button-secondary', '', $el[ 'url' ], $newtab = true, ( $el[ 'url' ] ? false : true ) ) . '</td>';
 				}
 			}
 

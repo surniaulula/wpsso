@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.13.0-rc.1',	// Plugin version.
+					'version'     => '8.13.0-rc.2',	// Plugin version.
 					'opt_version' => '769',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1626,7 +1626,31 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'plugin_clean_on_uninstall' => 0,			// Remove Settings on Uninstall.
 					'plugin_debug'              => 0,			// Add Hidden Debug Messages.
-					'plugin_show_opts'          => 'basic',			// Options to Show by Default.
+
+					/**
+					 * Advanced Settings - Interface tab.
+					 */
+					'plugin_show_opts'             => 'basic',		// Options to Show by Default.
+					'plugin_schema_type_col_media' => 0,
+					'plugin_schema_type_col_post'  => 1,
+					'plugin_schema_type_col_term'  => 0,
+					'plugin_schema_type_col_user'  => 0,
+					'plugin_og_type_col_media'     => 0,
+					'plugin_og_type_col_post'      => 0,
+					'plugin_og_type_col_term'      => 0,
+					'plugin_og_type_col_user'      => 0,
+					'plugin_og_img_col_media'      => 0,
+					'plugin_og_img_col_post'       => 1,
+					'plugin_og_img_col_term'       => 1,
+					'plugin_og_img_col_user'       => 1,
+					'plugin_og_desc_col_media'     => 1,
+					'plugin_og_desc_col_post'      => 0,
+					'plugin_og_desc_col_term'      => 0,
+					'plugin_og_desc_col_user'      => 1,
+					'plugin_col_title_width'       => '30%',
+					'plugin_col_title_width_max'   => '15vw',
+					'plugin_col_def_width'         => '15%',
+					'plugin_col_def_width_max'     => '15vw',
 
 					/**
 					 * Advanced Settings - Integration tab.
@@ -1695,30 +1719,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_yourls_username'              => '',		// YOURLS Username.
 					'plugin_yourls_password'              => '',		// YOURLS Password.
 					'plugin_yourls_token'                 => '',		// YOURLS Token.
-
-					/**
-					 * Advanced Settings - Table Columns tab.
-					 */
-					'plugin_schema_type_col_media'  => 0,
-					'plugin_schema_type_col_post'   => 1,
-					'plugin_schema_type_col_term'   => 0,
-					'plugin_schema_type_col_user'   => 0,
-					'plugin_og_type_col_media'      => 0,
-					'plugin_og_type_col_post'       => 0,
-					'plugin_og_type_col_term'       => 0,
-					'plugin_og_type_col_user'       => 0,
-					'plugin_og_img_col_media'       => 0,
-					'plugin_og_img_col_post'        => 1,
-					'plugin_og_img_col_term'        => 1,
-					'plugin_og_img_col_user'        => 1,
-					'plugin_og_desc_col_media'      => 1,
-					'plugin_og_desc_col_post'       => 0,
-					'plugin_og_desc_col_term'       => 0,
-					'plugin_og_desc_col_user'       => 1,
-					'plugin_col_title_width'        => '30%',
-					'plugin_col_title_width_max'    => '15vw',
-					'plugin_col_def_width'          => '15%',
-					'plugin_col_def_width_max'      => '15vw',
 
 					/**
 					 * Advanced Settings - Document Meta tab.
@@ -1872,8 +1872,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_clean_on_uninstall:use' => 'default',
 					'plugin_debug'                  => 0,			// Add Hidden Debug Messages
 					'plugin_debug:use'              => 'default',
-					'plugin_show_opts'              => 'basic',		// Options to Show by Default
-					'plugin_show_opts:use'          => 'default',
 
 					/**
 					 * Advanced Settings - Caching tab.
@@ -4073,6 +4071,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_MENU_ORDER' ]                  = '80.0';	// Position of the SSO settings menu item.
 			$var_const[ 'WPSSO_TB_NOTICE_MENU_ORDER' ]        = '55';	// Position of the SSO notices toolbar menu item.
 			$var_const[ 'WPSSO_TB_LOCALE_MENU_ORDER' ]        = '60';	// Position of the user locale toolbar menu item.
+			$var_const[ 'WPSSO_TB_VALIDATE_MENU_ORDER' ]      = '65';	// Position of the validate menu item.
 			$var_const[ 'WPSSO_JSON_PRETTY_PRINT' ]           = true;	// Allows for better visual cues in the Google validator.
 			$var_const[ 'WPSSO_CONTENT_BLOCK_FILTER_OUTPUT' ] = true;	// Monitor and fix incorrectly coded filter hooks.
 			$var_const[ 'WPSSO_CONTENT_FILTERS_MAX_TIME' ]    = 1.00;	// Issue a warning if the content filter takes longer than 1 second.

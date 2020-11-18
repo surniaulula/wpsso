@@ -107,6 +107,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 
 			$tabs = apply_filters( $this->p->lca . '_advanced_' . $metabox_id . '_tabs', array(
 				'settings'     => _x( 'Plugin Admin', 'metabox tab', 'wpsso' ),
+				'interface'    => _x( 'Interface', 'metabox tab', 'wpsso' ),
 				'integration'  => _x( 'Integration', 'metabox tab', 'wpsso' ),
 				'cache'        => _x( 'Caching', 'metabox tab', 'wpsso' ),
 				'apikeys'      => _x( 'Service APIs', 'metabox tab', 'wpsso' ),
@@ -131,7 +132,6 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			$table_rows = array();
 
 			$tabs = apply_filters( $this->p->lca . '_advanced_' . $metabox_id . '_tabs', array(
-				'table_columns' => _x( 'Table Columns', 'metabox tab', 'wpsso' ),
 				'document_meta' => _x( 'Document Meta', 'metabox tab', 'wpsso' ),
 				'product_attrs' => _x( 'Product Attributes', 'metabox tab', 'wpsso' ),
 				'custom_fields' => _x( 'Custom Fields', 'metabox tab', 'wpsso' ),

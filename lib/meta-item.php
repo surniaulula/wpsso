@@ -79,15 +79,21 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$filter_name = SucomUtil::get_const( 'WPSSO_HEAD_ATTR_FILTER_NAME', 'head_attributes' );
+			/**
+			 * Hooked by the WPSSO JSON add-on to disable the Schema head attributes.
+			 */
+			if ( apply_filters( $this->p->lca . '_add_schema_head_attributes', true ) ) {
 
-			if ( empty( $filter_name ) || 'none' === $filter_name ) {
+				$filter_name = SucomUtil::get_const( 'WPSSO_HEAD_ATTR_FILTER_NAME', 'head_attributes' );
 
-				// Nothing to do.
+				if ( empty( $filter_name ) || 'none' === $filter_name ) {
 
-			} else {
+					// Nothing to do.
 
-				echo apply_filters( $filter_name, '' );
+				} else {
+
+					echo apply_filters( $filter_name, '' );
+				}
 			}
 		}
 

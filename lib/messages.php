@@ -784,7 +784,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					switch ( $msg_key ) {
 
 						/**
-						 * Admin settings.
+						 * Plugin Admin settings.
 						 */
 						case 'tooltip-plugin_clean_on_uninstall': // Remove Settings on Uninstall.
 
@@ -798,6 +798,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
+						/**
+						 * Interface settings.
+						 */
 						case 'tooltip-plugin_show_opts': 	// Options to Show by Default.
 
 							$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
@@ -807,6 +810,32 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text .= __( 'The basic view shows the most commonly used options, and includes a link to temporarily show all options when desired.', 'wpsso' ) . ' ';
 
 							$text .= __( 'Note that showing all options by default could be a bit overwhelming for new users.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-plugin_show_columns':	// Additional Item List Columns.
+
+							$text = __( 'Additional columns can be included in admin list tables to show the Schema type ID, Open Graph image, etc.', 'wpsso' ) . ' ';
+
+							$text .= __( 'When a column is enabled, <strong>each user can still hide that column</strong> by using the <em>Screen Options</em> tab on the list table page.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-plugin_col_title_width':	// Title / Name Column Width.
+
+							$text .= __( 'WordPress does not define a column width for its Title column, which can create display issues when showing list tables with additional columns.', 'wpsso' ) . ' ';
+
+							$text .= __( 'This option allows you to define a custom width for the Title column, to prevent these kinds of issues.', 'wpsso' ) . ' ';
+
+							break;
+
+						case 'tooltip-plugin_col_def_width':	// Default Width for Posts / Pages.
+
+							$text .= __( 'A default column width for the admin Posts and Pages list table.', 'wpsso' ) . ' ';
+
+							$text .= __( 'All columns should have a width defined, but some 3rd party plugins do not provide width information for their columns.', 'wpsso' ) . ' ';
+
+							$text .= __( 'This option offers a way to set a generic width for all Posts and Pages list table columns.', 'wpsso' ) . ' ';
 
 							break;
 
@@ -1230,35 +1259,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_yourls_token':
 
 							$text = sprintf( __( 'If <a href="%1$s">Your Own URL Shortener</a> (YOURLS) shortening service is private, you can use a token string for authentication instead of a username / password combination.', 'wpsso' ), 'http://yourls.org/' );
-
-							break;
-
-						/**
-						 * Table Columns settings
-						 */
-						case 'tooltip-plugin_show_columns':	// Additional List Table Columns.
-
-							$text = __( 'Additional columns can be included in admin list tables to show the Schema type ID, Open Graph image, etc.', 'wpsso' ) . ' ';
-
-							$text .= __( 'When a column is enabled, <strong>each user can still hide that column</strong> by using the <em>Screen Options</em> tab on the list table page.', 'wpsso' );
-
-							break;
-
-						case 'tooltip-plugin_col_title_width':	// Title / Name Column Width.
-
-							$text .= __( 'WordPress does not define a column width for its Title column, which can create display issues when showing list tables with additional columns.', 'wpsso' ) . ' ';
-
-							$text .= __( 'This option allows you to define a custom width for the Title column, to prevent these kinds of issues.', 'wpsso' ) . ' ';
-
-							break;
-
-						case 'tooltip-plugin_col_def_width':	// Default Width for Posts / Pages.
-
-							$text .= __( 'A default column width for the admin Posts and Pages list table.', 'wpsso' ) . ' ';
-
-							$text .= __( 'All columns should have a width defined, but some 3rd party plugins do not provide width information for their columns.', 'wpsso' ) . ' ';
-
-							$text .= __( 'This option offers a way to set a generic width for all Posts and Pages list table columns.', 'wpsso' ) . ' ';
 
 							break;
 

@@ -354,16 +354,16 @@ div.auto-draft div.sucom-show_basic.sucom-tabset_sso.active {		/* Document SSO m
 	content:"\f2b5";	/* .icon-handshake-o */
 }
 
+.sucom-tablink-icon.sucom-tablink-href_interface::before {		/* SSO > Advanced Settings > Advanced Settings > Interface tab. */
+	content:"\f108";	/* .icon-desktop */
+}
+
 .sucom-tablink-icon.sucom-tablink-href_itunes::before {			/* Apple Store App tab. */
 	content:"\f179";	/* .icon-apple */
 }
 
 .sucom-tablink-icon.sucom-tablink-href_knowledge_graph::before {	/* Knowledge Graph tab. */
 	content:"\f1a0";	/* .icon-google */
-}
-
-.sucom-tablink-icon.sucom-tablink-href_table_columns::before {		/* SSO > Advanced Settings > Editing Pages > Table Columns tab. */
-	content:"\f0db";	/* .icon-columns */
 }
 
 .sucom-tablink-icon.sucom-tablink-href_media::before {			/* Priority Media tab. */
@@ -431,7 +431,7 @@ div.auto-draft div.sucom-show_basic.sucom-tabset_sso.active {		/* Document SSO m
 }
 
 .sucom-tablink-icon.sucom-tablink-href_settings::before {		/* SSO > Advanced Settings > Advanced Settings > Plugin Admin tab. */
-	content:"\f1de";	/* .icon-sliders */
+	content:"\e80e";	/* .icon-cog-alt */
 }
 
 .sucom-tablink-icon.sucom-tablink-href_shortcodes::before {		/* Shortcode Defaults tab. */

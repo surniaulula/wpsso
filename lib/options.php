@@ -796,7 +796,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						foreach ( array(
 							'plugin_clean_on_uninstall',
 							'plugin_debug',
-							'plugin_show_opts',
 						) as $opt_key ) {
 
 							unset( $advanced_opts[ $opt_key ] );

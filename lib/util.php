@@ -3768,6 +3768,81 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return apply_filters( $this->p->lca . '_robots_content', $content, $mod, $directives );
 		}
 
+		public function get_validators( array $mod, $clipboard = true ) {
+
+			$sharing_url = $this->p->util->get_sharing_url( $mod, $add_page = true );
+
+			if ( empty( $sharing_url ) ) {	// Just in case.
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: get_sharing_url() returned an empty string' );
+				}
+
+				return array();
+			}
+
+			$have_schema     = empty( $this->p->avail[ 'p' ][ 'schema' ] ) || empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ?  false : true;
+			$amp_url_enc     = $mod[ 'is_post' ] && $mod[ 'id' ] && function_exists( 'amp_get_permalink' ) ? urlencode( amp_get_permalink( $mod[ 'id' ] ) ) : '';
+			$sharing_url_enc = urlencode( $sharing_url );
+
+			$validators = array(
+				'facebook-debugger' => array(
+					'title' => _x( 'Facebook Sharing Debugger', 'option label', 'wpsso' ),
+					'label' => _x( 'Validate Open Graph', 'submit button', 'wpsso' ),
+					'url'   => 'https://developers.facebook.com/tools/debug/?q=' . $sharing_url_enc,
+				),
+				'facebook-microdata' => array(
+					'title' => _x( 'Facebook Microdata Debug Tool', 'option label', 'wpsso' ),
+					'label' => _x( 'Validate Microdata', 'submit button', 'wpsso' ),
+					'url'   => 'https://business.facebook.com/ads/microdata/debug?url=' . $sharing_url_enc,
+				),
+				'google-page-speed' => array(
+					'title' => _x( 'Google PageSpeed Insights', 'option label', 'wpsso' ),
+					'label' => _x( 'Validate PageSpeed', 'submit button', 'wpsso' ),
+					'url'   => 'https://developers.google.com/speed/pagespeed/insights/?url=' . $sharing_url_enc,
+				),
+				'google-rich-results' => array(
+					'title' => _x( 'Google Rich Results Test', 'option label', 'wpsso' ),
+					'label' => _x( 'Validate Rich Results', 'submit button', 'wpsso' ) . ( $have_schema ? '' : ' *' ),
+					'url'   => $have_schema ? 'https://search.google.com/test/rich-results?url=' . $sharing_url_enc : '',
+				),
+				'google-testing-tool' => array(
+					'title' => _x( 'Google Structured Data Test (Deprecated)', 'option label', 'wpsso' ),
+					'label' => _x( 'Validate Structured Data', 'submit button', 'wpsso' ) . ( $have_schema ? '' : ' *' ),
+					'url'   => $have_schema ? 'https://search.google.com/structured-data/testing-tool/u/0/#url=' . $sharing_url_enc : '',
+				),
+				'linkedin' => array(
+					'title' => _x( 'LinkedIn Post Inspector', 'option label', 'wpsso' ),
+					'label' => _x( 'Validate oEmbed Data', 'submit button', 'wpsso' ),
+					'url'   => 'https://www.linkedin.com/post-inspector/inspect/' . $sharing_url_enc,
+				),
+				'pinterest' => array(
+					'title' => _x( 'Pinterest Rich Pins Validator', 'option label', 'wpsso' ),
+					'label' => _x( 'Validate Rich Pins', 'submit button', 'wpsso' ),
+					'url'   => 'https://developers.pinterest.com/tools/url-debugger/?link=' . $sharing_url_enc,
+				),
+				'twitter' => $clipboard ? array(
+					'title' => _x( 'Twitter Card Validator', 'option label', 'wpsso' ),
+					'label' => _x( 'Validate Twitter Card', 'submit button', 'wpsso' ),
+					'url'   => 'https://cards-dev.twitter.com/validator',
+					'msg'   => $this->p->msgs->get( 'info-meta-validate-twitter' ) . SucomForm::get_no_input_clipboard( $sharing_url ),
+				) : array(),
+				'amp' => $mod[ 'is_post' ] ? array(
+					'title' => _x( 'The AMP Project Validator', 'option label', 'wpsso' ),
+					'label' => _x( 'Validate AMP Markup', 'submit button', 'wpsso' ) . ( $amp_url_enc ? '' : ' **' ),
+					'url'   => $amp_url_enc ? 'https://validator.ampproject.org/#url=' . $amp_url_enc : '',
+				) : array(),
+				'w3c' => array(
+					'title' => _x( 'W3C Markup Validator', 'option label', 'wpsso' ),
+					'label' => _x( 'Validate HTML Markup', 'submit button', 'wpsso' ),
+					'url'   => 'https://validator.w3.org/nu/?doc=' . $sharing_url_enc,
+				),
+			);
+
+			return $validators;
+		}
+
 		/**
 		 * Returns an array of product attribute names, indexed by meta tag name ($sep = ":") or option name ($sep = "_").
 		 *
