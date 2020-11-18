@@ -62,7 +62,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$menu_title = _x( 'Validators', 'toolbar menu title', 'wpsso' );
 
 			$table_rows[ 'plugin_show_validate_toolbar' ] = '' .
-				$form->get_th_html( sprintf( _x( 'Show the %s Toolbar Menu', 'option label', 'wpsso' ), $menu_title ),
+				$form->get_th_html( sprintf( _x( 'Show %s Toolbar Menu', 'option label', 'wpsso' ), $menu_title ),
 					$css_class = '', $css_id = 'plugin_show_validate_toolbar' ) .
 				$form->get_no_td_checkbox( 'plugin_show_validate_toolbar' );
 

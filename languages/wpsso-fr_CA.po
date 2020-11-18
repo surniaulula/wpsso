@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 8.13.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-11-18 10:32-0800\n"
-"PO-Revision-Date: 2020-11-18 10:34-0800\n"
+"POT-Creation-Date: 2020-11-18 12:31-0800\n"
+"PO-Revision-Date: 2020-11-18 12:31-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2129,7 +2129,7 @@ msgstr "Validateurs"
 #: gettext/gettext-lib-pro.php:8 lib/pro/admin/advanced.php:65
 #: lib/std/admin/advanced.php:65
 msgctxt "option label"
-msgid "Show the %s Toolbar Menu"
+msgid "Show %s Toolbar Menu"
 msgstr "Afficher le menu %s"
 
 #: gettext/gettext-lib-pro.php:9 lib/pro/admin/advanced.php:79

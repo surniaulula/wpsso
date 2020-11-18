@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.13.0-rc.2\n"
+"Project-Id-Version: WPSSO Core 8.13.0-rc.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2448,7 +2448,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:8 lib/pro/admin/advanced.php:65
 #: lib/std/admin/advanced.php:65
 msgctxt "option label"
-msgid "Show the %s Toolbar Menu"
+msgid "Show %s Toolbar Menu"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:9 lib/pro/admin/advanced.php:79
