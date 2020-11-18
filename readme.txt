@@ -318,14 +318,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.13.0-rc.1 (2020/11/17)**
+**Version 8.13.0-rc.2 (2020/11/18)**
 
 * **New Features**
 	* None.
 * **Improvements**
+	* Moved all options from the SSO &gt; Advanced Settings &gt; Table Columns tab to the new Interface tab (removing the Table Columns tab).
 	* Moved all options from the SSO &gt; Advanced Settings &gt; Content and Text tab to the Integration tab (removing the Content and Text tab).
 	* Moved the "Default Currency" option to the SSO &gt; General Settings &gt; Site Information tab.
 	* Moved the "Check for Embedded Media" options to the SSO &gt; Advanced Settings &gt; Service APIs tab.
+	* Moved the "Options to Show by Default" options to the new SSO &gt; Advanced Settings &gt; Interface tab.
 	* Removed the "Notification System" option.
 	* Removed the "&lt;head&gt; Attributes Filter Hook" option.
 	* Removed the "&lt;html&gt; Attributes Filter Hook" option.
@@ -718,9 +720,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.13.0-rc.1 =
+= 8.13.0-rc.2 =
 
-(2020/11/17) Moved the "Default Currency" option to the SSO &gt; General Settings &gt; Site Information tab.
+(2020/11/18) Moved several options, added a new Interface tab, and merged the Content and Text tab with the Integration tab.
 
 = 8.12.1 =
 
