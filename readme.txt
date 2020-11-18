@@ -318,7 +318,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.13.0-rc.2 (2020/11/18)**
+**Version 8.13.0-rc.3 (2020/11/18)**
 
 * **New Features**
 	* Added a "Validators" menu in the top toolbar.
@@ -721,7 +721,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 8.13.0-rc.2 =
+= 8.13.0-rc.3 =
 
 (2020/11/18) Moved several options, added a new Interface tab, and merged the Content and Text tab with the Integration tab.
 
