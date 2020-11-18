@@ -3716,9 +3716,36 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 */
 		public function get_robots_content( array $mod = array() ) {
 
+			$directives = $this->get_robots_directives();
+
+			$content = '';
+
+			foreach ( $directives as $directive_key => $directive_value ) {
+
+				if ( false === $directive_value ) {		// Nothing to do.
+
+					continue;
+
+				} elseif ( true === $directive_value ) {	// Add the directive.
+
+					$content .= $directive_key . ', ';	// index, follow, etc.
+
+				} else {					// Add the directive and its value.
+
+					$content .= $directive_key . ':' . $directive_value . ', ';
+				}
+			}
+
+			$content = trim( $content, ', ' );
+
+			return apply_filters( $this->p->lca . '_robots_content', $content, $mod, $directives );
+		}
+
+		public function get_robots_directives( array $mod = array() ) {
+
 			$directives = self::get_robots_default_directives();
 
-			$md_opts = $mod[ 'id' ] && is_object( $mod[ 'obj' ] ) ? $mod[ 'obj' ]->get_options( $mod[ 'id' ] ) : array();
+			$md_opts = is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ? $mod[ 'obj' ]->get_options( $mod[ 'id' ] ) : array();
 
 			foreach ( $directives as $directive_key => $directive_value ) {
 
@@ -3744,28 +3771,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 * Sanity check - make sure inverse directives are removed.
 			 */
 			self::sanitize_robots_directives( $directives );
-
-			$content = '';
-
-			foreach ( $directives as $directive_key => $directive_value ) {
-
-				if ( false === $directive_value ) {		// Nothing to do.
-
-					continue;
-
-				} elseif ( true === $directive_value ) {	// Add the directive.
-
-					$content .= $directive_key . ', ';	// index, follow, etc.
-
-				} else {					// Add the directive and its value.
-
-					$content .= $directive_key . ':' . $directive_value . ', ';
-				}
-			}
-
-			$content = trim( $content, ', ' );
-
-			return apply_filters( $this->p->lca . '_robots_content', $content, $mod, $directives );
+		
+			return $directives;
 		}
 
 		public function get_validators( array $mod, $allow_clipboard = true ) {
