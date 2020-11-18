@@ -327,7 +327,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Moved all options from the SSO &gt; Advanced Settings &gt; Content and Text tab to the Integration tab (removing the Content and Text tab).
 	* Moved the "Default Currency" option to the SSO &gt; General Settings &gt; Site Information tab.
 	* Moved the "Check for Embedded Media" options to the SSO &gt; Advanced Settings &gt; Service APIs tab.
-	* Moved the "Options to Show by Default" options to the new SSO &gt; Advanced Settings &gt; Interface tab.
+	* Moved the "Plugin Options to Show by Default" options to the new SSO &gt; Advanced Settings &gt; Interface tab.
 	* Removed the "Notification System" option.
 	* Removed the "&lt;head&gt; Attributes Filter Hook" option.
 	* Removed the "&lt;html&gt; Attributes Filter Hook" option.
