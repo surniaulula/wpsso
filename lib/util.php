@@ -3716,7 +3716,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 */
 		public function get_robots_content( array $mod = array() ) {
 
-			$directives = $this->get_robots_directives();
+			$directives = $this->get_robots_directives( $mod );
 
 			$content = '';
 
