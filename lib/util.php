@@ -3768,7 +3768,16 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return apply_filters( $this->p->lca . '_robots_content', $content, $mod, $directives );
 		}
 
-		public function get_validators( array $mod, $clipboard = true ) {
+		public function get_validators( array $mod ) {
+
+			/**
+			 * We do not want to validate settings pages in the back-end, so only provide validators for known objects
+			 * (post, term, and user). If we're on the front-end, then allow validating any current webpage URL.
+			 */
+			if ( empty( $mod[ 'obj' ] ) && is_admin() ) {
+
+				return array();
+			}
 
 			$sharing_url = $this->p->util->get_sharing_url( $mod, $add_page = true );
 
@@ -3782,60 +3791,62 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				return array();
 			}
 
+			$have_amp        = $mod[ 'is_post' ] && $mod[ 'id' ] && function_exists( 'amp_get_permalink' ) ? true : false;
+			$have_clipboard  = method_exists( 'SucomForm', 'get_no_input_clipboard' ) ? true : false;
 			$have_schema     = empty( $this->p->avail[ 'p' ][ 'schema' ] ) || empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ?  false : true;
-			$amp_url_enc     = $mod[ 'is_post' ] && $mod[ 'id' ] && function_exists( 'amp_get_permalink' ) ? urlencode( amp_get_permalink( $mod[ 'id' ] ) ) : '';
+			$amp_url_enc     = $have_amp ? urlencode( amp_get_permalink( $mod[ 'id' ] ) ) : '';
 			$sharing_url_enc = urlencode( $sharing_url );
 
 			$validators = array(
 				'facebook-debugger' => array(
 					'title' => _x( 'Facebook Sharing Debugger', 'option label', 'wpsso' ),
-					'label' => _x( 'Validate Open Graph', 'submit button', 'wpsso' ),
+					'type'  => _x( 'Open Graph', 'validator type', 'wpsso' ),
 					'url'   => 'https://developers.facebook.com/tools/debug/?q=' . $sharing_url_enc,
 				),
 				'facebook-microdata' => array(
 					'title' => _x( 'Facebook Microdata Debug Tool', 'option label', 'wpsso' ),
-					'label' => _x( 'Validate Microdata', 'submit button', 'wpsso' ),
+					'type'  => _x( 'Microdata', 'validator type', 'wpsso' ),
 					'url'   => 'https://business.facebook.com/ads/microdata/debug?url=' . $sharing_url_enc,
 				),
 				'google-page-speed' => array(
 					'title' => _x( 'Google PageSpeed Insights', 'option label', 'wpsso' ),
-					'label' => _x( 'Validate PageSpeed', 'submit button', 'wpsso' ),
+					'type'  => _x( 'PageSpeed', 'validator type', 'wpsso' ),
 					'url'   => 'https://developers.google.com/speed/pagespeed/insights/?url=' . $sharing_url_enc,
 				),
 				'google-rich-results' => array(
 					'title' => _x( 'Google Rich Results Test', 'option label', 'wpsso' ),
-					'label' => _x( 'Validate Rich Results', 'submit button', 'wpsso' ) . ( $have_schema ? '' : ' *' ),
+					'type'  => _x( 'Rich Results', 'validator type', 'wpsso' ) . ( $have_schema ? '' : ' *' ),
 					'url'   => $have_schema ? 'https://search.google.com/test/rich-results?url=' . $sharing_url_enc : '',
 				),
 				'google-testing-tool' => array(
 					'title' => _x( 'Google Structured Data Test (Deprecated)', 'option label', 'wpsso' ),
-					'label' => _x( 'Validate Structured Data', 'submit button', 'wpsso' ) . ( $have_schema ? '' : ' *' ),
+					'type'  => _x( 'Structured Data', 'validator type', 'wpsso' ) . ( $have_schema ? '' : ' *' ),
 					'url'   => $have_schema ? 'https://search.google.com/structured-data/testing-tool/u/0/#url=' . $sharing_url_enc : '',
 				),
 				'linkedin' => array(
 					'title' => _x( 'LinkedIn Post Inspector', 'option label', 'wpsso' ),
-					'label' => _x( 'Validate oEmbed Data', 'submit button', 'wpsso' ),
+					'type'  => _x( 'oEmbed Data', 'validator type', 'wpsso' ),
 					'url'   => 'https://www.linkedin.com/post-inspector/inspect/' . $sharing_url_enc,
 				),
 				'pinterest' => array(
 					'title' => _x( 'Pinterest Rich Pins Validator', 'option label', 'wpsso' ),
-					'label' => _x( 'Validate Rich Pins', 'submit button', 'wpsso' ),
+					'type'  => _x( 'Rich Pins', 'validator type', 'wpsso' ),
 					'url'   => 'https://developers.pinterest.com/tools/url-debugger/?link=' . $sharing_url_enc,
 				),
-				'twitter' => $clipboard ? array(
-					'title' => _x( 'Twitter Card Validator', 'option label', 'wpsso' ),
-					'label' => _x( 'Validate Twitter Card', 'submit button', 'wpsso' ),
-					'url'   => 'https://cards-dev.twitter.com/validator',
-					'msg'   => $this->p->msgs->get( 'info-meta-validate-twitter' ) . SucomForm::get_no_input_clipboard( $sharing_url ),
+				'twitter' => $have_clipboard ? array(
+					'title'     => _x( 'Twitter Card Validator', 'option label', 'wpsso' ),
+					'type'      => _x( 'Twitter Card', 'validator type', 'wpsso' ),
+					'url'       => 'https://cards-dev.twitter.com/validator',
+					'extra_msg' => SucomForm::get_no_input_clipboard( $sharing_url ),
 				) : array(),
-				'amp' => $mod[ 'is_post' ] ? array(
+				'amp' => $mod[ 'is_post' ] ? array(	// Only show AMP validator for post objects.
 					'title' => _x( 'The AMP Project Validator', 'option label', 'wpsso' ),
-					'label' => _x( 'Validate AMP Markup', 'submit button', 'wpsso' ) . ( $amp_url_enc ? '' : ' **' ),
-					'url'   => $amp_url_enc ? 'https://validator.ampproject.org/#url=' . $amp_url_enc : '',
+					'type'  => _x( 'AMP Markup', 'validator type', 'wpsso' ) . ( $have_amp ? '' : ' **' ),
+					'url'   => $have_amp ? 'https://validator.ampproject.org/#url=' . $amp_url_enc : '',
 				) : array(),
 				'w3c' => array(
 					'title' => _x( 'W3C Markup Validator', 'option label', 'wpsso' ),
-					'label' => _x( 'Validate HTML Markup', 'submit button', 'wpsso' ),
+					'type'  => _x( 'HTML Markup', 'validator type', 'wpsso' ),
 					'url'   => 'https://validator.w3.org/nu/?doc=' . $sharing_url_enc,
 				),
 			);

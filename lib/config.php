@@ -23,7 +23,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'     => '8.13.0-rc.2',	// Plugin version.
-					'opt_version' => '769',		// Increment when changing default option values.
+					'opt_version' => '770',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Make sure your content looks best on social sites and in search results, no matter how your webpages are shared, re-shared, messaged, posted, embedded, or crawled.',
@@ -1630,8 +1630,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings - Interface tab.
 					 */
-					'plugin_show_opts'             => 'basic',		// Options to Show by Default.
-					'plugin_schema_type_col_media' => 0,
+					'plugin_show_opts'             => 'basic',		// Plugin Options to Show by Default.
+					'plugin_show_validate_toolbar' => 1,			// Show the Validate Toolbar Menu.
+					'plugin_schema_type_col_media' => 0,			// Additional Item List Columns.
 					'plugin_schema_type_col_post'  => 1,
 					'plugin_schema_type_col_term'  => 0,
 					'plugin_schema_type_col_user'  => 0,
@@ -1647,9 +1648,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_og_desc_col_post'      => 0,
 					'plugin_og_desc_col_term'      => 0,
 					'plugin_og_desc_col_user'      => 1,
-					'plugin_col_title_width'       => '30%',
+					'plugin_col_title_width'       => '30%',		// Title / Name Column Width.
 					'plugin_col_title_width_max'   => '15vw',
-					'plugin_col_def_width'         => '15%',
+					'plugin_col_def_width'         => '15%',		// Default for Posts / Pages List.
 					'plugin_col_def_width_max'     => '15vw',
 
 					/**
@@ -4070,8 +4071,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 			$var_const[ 'WPSSO_MENU_ORDER' ]                  = '80.0';	// Position of the SSO settings menu item.
 			$var_const[ 'WPSSO_TB_NOTICE_MENU_ORDER' ]        = '55';	// Position of the SSO notices toolbar menu item.
-			$var_const[ 'WPSSO_TB_LOCALE_MENU_ORDER' ]        = '60';	// Position of the user locale toolbar menu item.
-			$var_const[ 'WPSSO_TB_VALIDATE_MENU_ORDER' ]      = '65';	// Position of the validate menu item.
+			$var_const[ 'WPSSO_TB_LOCALE_MENU_ORDER' ]        = '56';	// Position of the user locale toolbar menu item.
+			$var_const[ 'WPSSO_TB_VALIDATE_MENU_ORDER' ]      = '57';	// Position of the validate menu item.
 			$var_const[ 'WPSSO_JSON_PRETTY_PRINT' ]           = true;	// Allows for better visual cues in the Google validator.
 			$var_const[ 'WPSSO_CONTENT_BLOCK_FILTER_OUTPUT' ] = true;	// Monitor and fix incorrectly coded filter hooks.
 			$var_const[ 'WPSSO_CONTENT_FILTERS_MAX_TIME' ]    = 1.00;	// Issue a warning if the content filter takes longer than 1 second.

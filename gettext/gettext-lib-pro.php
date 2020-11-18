@@ -3,7 +3,8 @@
 /**
  * Extract of translatable strings from lib/pro/.
  */
-_x( 'Options to Show by Default', 'option label', 'wpsso' );
+_x( 'Plugin Options to Show by Default', 'option label', 'wpsso' );
+_x( 'Show the Validate Toolbar Menu', 'option label', 'wpsso' );
 __( 'Posts, Pages, and Custom Post Types', 'wpsso' );
 __( 'Media Library', 'wpsso' );
 __( 'Categories, Tags, and Custom Taxonomies', 'wpsso' );
@@ -12,7 +13,7 @@ __( 'Users' );
 _x( 'Additional Item List Columns', 'option label', 'wpsso' );
 _x( 'Title / Name Column Width', 'option label', 'wpsso' );
 _x( 'and max width', 'option comment', 'wpsso' );
-_x( 'Default Width for Posts / Pages', 'option label', 'wpsso' );
+_x( 'Default for Posts / Pages List', 'option label', 'wpsso' );
 _x( 'and max width', 'option comment', 'wpsso' );
 _x( 'Webpage Document Title', 'option label', 'wpsso' );
 _x( 'Use WordPress Title Filters', 'option label', 'wpsso' );

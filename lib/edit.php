@@ -674,16 +674,18 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 
 			foreach ( $validators as $key => $el ) {
 
-				if ( ! empty( $el[ 'title' ] ) ) {
+				if ( empty( $el[ 'type' ] ) ) {
 
-					$table_rows[ 'validate_' . $key ] = $form->get_th_html( $el[ 'title' ], $css_class = 'medium' );
-
-					$table_rows[ 'validate_' . $key ] .= '<td class="validate">' . ( isset( $el[ 'msg' ] ) ?
-						$el[ 'msg' ] : $this->p->msgs->get( 'info-meta-validate-' . $key ) ) . '</td>';
-
-					$table_rows[ 'validate_' . $key ] .= '<td class="validate">' . $form->get_button( $el[ 'label' ],
-						'button-secondary', '', $el[ 'url' ], $newtab = true, ( $el[ 'url' ] ? false : true ) ) . '</td>';
+					continue;
 				}
+
+				$button_label = sprintf( _x( 'Validate %s', 'submit button', 'wpsso' ), $el[ 'type' ] );
+
+				$table_rows[ 'validate_' . $key ] = $form->get_th_html( $el[ 'title' ], $css_class = 'medium' ) .
+					'<td class="validate">' . $this->p->msgs->get( 'info-meta-validate-' . $key ) . 
+						( isset( $el[ 'extra_msg' ] ) ? $el[ 'extra_msg' ] : '' ) . '</td>' .
+					'<td class="validate">' . $form->get_button( $button_label, $css_class = 'button-secondary', $css_id = '',
+						$el[ 'url' ], $newtab = true, $is_disabled = empty( $el[ 'url' ] ) ? true : false ) . '</td>';
 			}
 
 			$table_rows[ 'validate_info' ] = '<td class="validate" colspan="3">' . $this->p->msgs->get( 'info-meta-validate-info' ) . '</td>';

@@ -30,15 +30,18 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/* if ( ! is_admin() ) {
+			$show_validate = empty( $this->p->options[ 'plugin_show_validate_toolbar' ] ) ? false : true;
+			$show_validate = (bool) apply_filters( 'wpsso_show_validate_toolbar', $show_validate );
+
+			if ( $show_validate ) {
 
 				add_action( 'admin_bar_menu', array( $this, 'add_validate_toolbar' ), WPSSO_TB_VALIDATE_MENU_ORDER, 1 );
-			} */
+			}
 
 			add_action( 'pre_get_document_title', array( $this, 'pre_get_document_title' ), 1000 );	// Since WP v4.4.
 		}
 
-		/* public function add_validate_toolbar( $wp_admin_bar ) {
+		public function add_validate_toolbar( $wp_admin_bar ) {
 
 			if ( ! $user_id = get_current_user_id() ) {	// Just in case.
 
@@ -56,18 +59,50 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$validators = $this->p->util->get_validators( $mod );
 
-			$menu_icon  = '<span class="ab-icon dashicons-shield-alt"></span>';
-			$menu_title = __( 'Validate', 'wpsso' );
+			if ( ! empty( $validators ) ) {
 
-			$wp_admin_bar->add_node( array(
-				'id'     => 'wpsso-validate',
-				'title'  => $menu_icon . $menu_title,
-				'parent' => false,
-				'href'   => false,
-				'group'  => false,
-				'meta'   => array(),
-			) );
-		} */
+				$menu_icon  = '<span class="ab-icon dashicons-code-standards"></span>';
+				$menu_title = _x( 'Validators', 'toolbar menu title', 'wpsso' );
+				$menu_items = array();
+
+				foreach ( $validators as $key => $el ) {
+
+					if ( empty( $el[ 'type' ] ) ) {
+
+						continue;
+					}
+
+					$menu_items[] = array(
+						'id'     => 'wpsso-validate-' . $key,
+						'title'  => $el[ 'type' ],
+						'parent' => 'wpsso-validate',
+						'href'   => $el[ 'url' ],
+						'group'  => false,
+						'meta'   => array(
+							'class'  => empty( $el[ 'url' ] ) ? 'disabled' : '',
+							'target' => '_blank',
+							'title'  => $el[ 'title' ],
+						),
+					);
+				}
+
+				$wp_admin_bar->add_node( array(
+					'id'     => 'wpsso-validate',
+					'title'  => $menu_icon . $menu_title,
+					'parent' => false,
+					'href'   => false,
+					'group'  => false,
+					'meta'   => array(
+						'html' => '<style>#wp-admin-bar-wpsso-validate .disabled { opacity:0.5; filter:alpha(opacity=50); }</style>',
+					),
+				) );
+			
+				foreach ( $menu_items as $menu_item ) {
+
+					$wp_admin_bar->add_node( $menu_item );
+				}
+			}
+		}
 
 		/**
 		 * Filters the WordPress document title before it is generated.

@@ -801,7 +801,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						/**
 						 * Interface settings.
 						 */
-						case 'tooltip-plugin_show_opts': 	// Options to Show by Default.
+						case 'tooltip-plugin_show_opts': 	// Plugin Options to Show by Default.
 
 							$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
@@ -810,6 +810,16 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text .= __( 'The basic view shows the most commonly used options, and includes a link to temporarily show all options when desired.', 'wpsso' ) . ' ';
 
 							$text .= __( 'Note that showing all options by default could be a bit overwhelming for new users.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-plugin_show_validate_toolbar':	// Show the Validate Toolbar Menu.
+
+							$menu_title = _x( 'Validators', 'toolbar menu title', 'wpsso' );
+
+							$text = sprintf( __( 'Show a "%s" menu in the top toolbar.', 'wpsso' ), $menu_title ) . ' ';
+
+							$text .= sprintf( __( 'Please note that the Twitter Card validator does not (currently) accept query arguments, so this validator cannot be included in the "%s" menu.', 'wpsso' ), $menu_title ) . ' ';
 
 							break;
 
@@ -829,7 +839,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_col_def_width':	// Default Width for Posts / Pages.
+						case 'tooltip-plugin_col_def_width':	// Default for Posts / Pages List.
 
 							$text .= __( 'A default column width for the admin Posts and Pages list table.', 'wpsso' ) . ' ';
 
@@ -2012,7 +2022,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = '<p class="top">';
 
-							$text .= __( 'The Twitter Card validator does not currently accept query arguments &mdash; paste the following URL in the Twitter Card validator "Card URL" input field:', 'wpsso' );
+							$text .= __( 'The Twitter Card validator does not (currently) accept query arguments &mdash; paste the following URL in the Twitter Card validator "Card URL" input field:', 'wpsso' );
 
 							$text .= '</p>';
 

@@ -573,8 +573,8 @@ table.sucom-settings td.xshort {
 
 table.sucom-settings td.validate input.button-primary[type="button"],
 table.sucom-settings td.validate input.button-secondary[type="button"] {
-	width:200px;
-	min-width:200px;
+	width:215px;
+	min-width:215px;
 	margin:5px 0 10px 5px;
 }
 

@@ -253,6 +253,8 @@
 
 'wpsso_shopperapproved_for_{post_type}' ( $bool, $mod )
 
+'wpsso_show_validate_toolbar' ( $bool )
+
 'wpsso_social_accounts' ( (array) $social_accounts )
 
 'wpsso_tags' ( $tags, $post_id )

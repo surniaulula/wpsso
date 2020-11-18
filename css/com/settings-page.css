@@ -254,8 +254,8 @@ div.submit-buttons .button-alt:hover {
 .admin-footer-host {
 	display:block;
 	font-size:0.9em;
-	filter:alpha(opacity=50);	/* IE8 and earlier. */
 	opacity:0.5;
+	filter:alpha(opacity=50);	/* IE8 and earlier. */
 }
 
 .admin-footer-ext {

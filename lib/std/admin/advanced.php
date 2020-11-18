@@ -56,8 +56,13 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
 			$table_rows[ 'plugin_show_opts' ] = '' .
-				$form->get_th_html( _x( 'Options to Show by Default', 'option label', 'wpsso' ), '', 'plugin_show_opts' ) .
+				$form->get_th_html( _x( 'Plugin Options to Show by Default', 'option label', 'wpsso' ), '', 'plugin_show_opts' ) .
 				'<td>' . $form->get_no_select( 'plugin_show_opts', $this->p->cf[ 'form' ][ 'show_options' ] ) . '</td>';
+
+			$table_rows[ 'plugin_show_validate_toolbar' ] = '' .
+				$form->get_th_html( _x( 'Show the Validate Toolbar Menu', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_show_validate_toolbar' ) .
+				$form->get_no_td_checkbox( 'plugin_show_validate_toolbar' );
 
 			$list_cols = '<table class="plugin-list-columns">' . "\n" . '<tr>';
 
@@ -112,7 +117,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				_x( 'and max width', 'option comment', 'wpsso' ) . ' ' . $form->get_no_input( 'plugin_col_title_width_max', 'short' ) . '</td>';
 
 			$table_rows[ 'plugin_col_def_width' ] = $form->get_tr_hide( 'basic', 'plugin_col_def_width' ) . 
-				$form->get_th_html( _x( 'Default Width for Posts / Pages', 'option label', 'wpsso' ),
+				$form->get_th_html( _x( 'Default for Posts / Pages List', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_col_def_width' ) . 
 				'<td>' . $form->get_no_input( 'plugin_col_def_width', 'short' ) .
 				_x( 'and max width', 'option comment', 'wpsso' ) . ' ' . $form->get_no_input( 'plugin_col_def_width_max', 'short' ) . '</td>';

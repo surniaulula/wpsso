@@ -272,8 +272,6 @@ div.auto-draft div.sucom-show_basic.sucom-tabset_sso.active {		/* Document SSO m
 	display:inline-block;
 	content:"\f1de";	/* .icon-sliders */
 	font-family:"WpssoIcons";
-	font-size:13px;
-	min-width:13px;
 	text-align:center;
 	margin:0 8px 0 0;
 }
@@ -447,7 +445,7 @@ div.auto-draft div.sucom-show_basic.sucom-tabset_sso.active {		/* Document SSO m
 }
 
 .sucom-tablink-icon.sucom-tablink-href_validate::before {		/* Validate tab. */
-	content:"\f132";	/* .icon-shield */
+	content:"\e814";	/* .icon-dashicons-code-standards */
 }
 
 .sucom-tablink-icon.sucom-tablink-href_videos::before {			/* Videos tab. */
