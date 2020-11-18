@@ -2442,7 +2442,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:7 lib/pro/admin/advanced.php:63
 #: lib/std/admin/advanced.php:63
 msgctxt "option label"
-msgid "Show the Validate Toolbar Menu"
+msgid "Show the Validators Toolbar Menu"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:8 lib/pro/admin/advanced.php:77

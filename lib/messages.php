@@ -813,7 +813,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_show_validate_toolbar':	// Show the Validate Toolbar Menu.
+						case 'tooltip-plugin_show_validate_toolbar':	// Show the Validators Toolbar Menu.
 
 							$menu_title = _x( 'Validators', 'toolbar menu title', 'wpsso' );
 

@@ -60,7 +60,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'<td>' . $form->get_no_select( 'plugin_show_opts', $this->p->cf[ 'form' ][ 'show_options' ] ) . '</td>';
 
 			$table_rows[ 'plugin_show_validate_toolbar' ] = '' .
-				$form->get_th_html( _x( 'Show the Validate Toolbar Menu', 'option label', 'wpsso' ),
+				$form->get_th_html( _x( 'Show the Validators Toolbar Menu', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_show_validate_toolbar' ) .
 				$form->get_no_td_checkbox( 'plugin_show_validate_toolbar' );
 

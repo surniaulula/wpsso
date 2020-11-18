@@ -1631,7 +1631,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Advanced Settings - Interface tab.
 					 */
 					'plugin_show_opts'             => 'basic',		// Plugin Options to Show by Default.
-					'plugin_show_validate_toolbar' => 1,			// Show the Validate Toolbar Menu.
+					'plugin_show_validate_toolbar' => 1,			// Show the Validators Toolbar Menu.
 					'plugin_schema_type_col_media' => 0,			// Additional Item List Columns.
 					'plugin_schema_type_col_post'  => 1,
 					'plugin_schema_type_col_term'  => 0,
