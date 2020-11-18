@@ -59,8 +59,10 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$form->get_th_html( _x( 'Plugin Options to Show by Default', 'option label', 'wpsso' ), '', 'plugin_show_opts' ) .
 				'<td>' . $form->get_no_select( 'plugin_show_opts', $this->p->cf[ 'form' ][ 'show_options' ] ) . '</td>';
 
+			$menu_title = _x( 'Validators', 'toolbar menu title', 'wpsso' );
+
 			$table_rows[ 'plugin_show_validate_toolbar' ] = '' .
-				$form->get_th_html( _x( 'Show the Validators Toolbar Menu', 'option label', 'wpsso' ),
+				$form->get_th_html( sprintf( _x( 'Show the %s Toolbar Menu', 'option label', 'wpsso' ), $menu_title ),
 					$css_class = '', $css_id = 'plugin_show_validate_toolbar' ) .
 				$form->get_no_td_checkbox( 'plugin_show_validate_toolbar' );
 

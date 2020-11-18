@@ -4,7 +4,8 @@
  * Extract of translatable strings from lib/pro/.
  */
 _x( 'Plugin Options to Show by Default', 'option label', 'wpsso' );
-_x( 'Show the Validators Toolbar Menu', 'option label', 'wpsso' );
+_x( 'Validators', 'toolbar menu title', 'wpsso' );
+_x( 'Show the %s Toolbar Menu', 'option label', 'wpsso' );
 __( 'Posts, Pages, and Custom Post Types', 'wpsso' );
 __( 'Media Library', 'wpsso' );
 __( 'Categories, Tags, and Custom Taxonomies', 'wpsso' );
