@@ -321,8 +321,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 8.13.0-rc.2 (2020/11/18)**
 
 * **New Features**
-	* None.
+	* Added a "Validators" menu in the top toolbar.
 * **Improvements**
+	* Added a "Show the Validators Toolbar Menu" option under the new SSO &gt; Advanced Settings &gt; Interface tab.
 	* Moved all options from the SSO &gt; Advanced Settings &gt; Table Columns tab to the new Interface tab (removing the Table Columns tab).
 	* Moved all options from the SSO &gt; Advanced Settings &gt; Content and Text tab to the Integration tab (removing the Content and Text tab).
 	* Moved the "Default Currency" option to the SSO &gt; General Settings &gt; Site Information tab.
