@@ -3768,7 +3768,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return apply_filters( $this->p->lca . '_robots_content', $content, $mod, $directives );
 		}
 
-		public function get_validators( array $mod ) {
+		public function get_validators( array $mod, $allow_clipboard = true ) {
 
 			/**
 			 * We do not want to validate settings pages in the back-end, so only provide validators for known objects
@@ -3792,7 +3792,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$have_amp        = $mod[ 'is_post' ] && $mod[ 'id' ] && function_exists( 'amp_get_permalink' ) ? true : false;
-			$have_clipboard  = method_exists( 'SucomForm', 'get_no_input_clipboard' ) ? true : false;
+			$have_clipboard  = $allow_clipboard && method_exists( 'SucomForm', 'get_no_input_clipboard' ) ? true : false;
 			$have_schema     = empty( $this->p->avail[ 'p' ][ 'schema' ] ) || empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ?  false : true;
 			$amp_url_enc     = $have_amp ? urlencode( amp_get_permalink( $mod[ 'id' ] ) ) : '';
 			$sharing_url_enc = urlencode( $sharing_url );
