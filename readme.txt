@@ -320,6 +320,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 **Version 8.13.0-rc.4 (2020/11/19)**
 
+This release includes a new "Validators" toolbar menu and several changes to the Advanced Settings page.
+
 * **New Features**
 	* Added a "Validators" menu in the top toolbar.
 * **Improvements**
@@ -343,6 +345,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v4.4.
 
 **Version 8.12.1 (2020/11/13)**
+
+This release adds a new SSO &gt; Features Status page and integration module for SEOPress (Premium version).
 
 * **New Features**
 	* None.
@@ -725,11 +729,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 8.13.0-rc.4 =
 
-(2020/11/19) Moved several options, added a new Interface tab, and merged the Content and Text tab with the Integration tab.
+(2020/11/19) This release includes a new "Validators" toolbar menu and several changes to the Advanced Settings page.
 
 = 8.12.1 =
 
-(2020/11/13) Added a new SSO &gt; Features Status page. Added an integration module for SEOPress (Premium version).
+(2020/11/13) This release adds a new SSO &gt; Features Status page and integration module for SEOPress (Premium version).
 
 = 8.11.2 =
 
