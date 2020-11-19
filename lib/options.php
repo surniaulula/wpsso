@@ -954,19 +954,29 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				$base_key = preg_replace( '/(_[0-9]+)?(#.*|:[0-9]+)?$/', '', $opt_key );
 
-				if ( preg_match( '/:is$/', $base_key ) ) {
-
-					unset( $opts[ $opt_key ] );
-
-					continue;
-				}
-
 				/**
 				 * Multi-options and localized options will default to an empty string.
 				 */
 				$def_val = isset( $defs[ $opt_key ] ) ? $defs[ $opt_key ] : '';
 
-				$opts[ $opt_key ] = $this->check_value( $opt_key, $base_key, $opt_val, $def_val, $network, $mod );
+				/**
+				 * Ignore option qualifiers.
+				 */
+				if ( preg_match( '/:is$/', $base_key ) ) {
+
+					unset( $opts[ $opt_key ] );
+
+				/**
+				 * Ignore localized options with an empty string value and no default.
+				 */
+				} elseif ( strpos( $opt_key, '#' ) && ! isset( $defs[ $opt_key ] ) && '' === $opt_val ) {
+
+					unset( $opts[ $opt_key ] );
+
+				} else {
+
+					$opts[ $opt_key ] = $this->check_value( $opt_key, $base_key, $opt_val, $def_val, $network, $mod );
+				}
 			}
 
 			/**
@@ -1375,16 +1385,16 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			/**
 			 * Translate error messages only once.
 			 */
-			static $error_messages = null;
+			static $errors_transl = null;
 
-			if ( null === $error_messages ) {
+			if ( null === $errors_transl ) {
 
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'translating error messages' );
 				}
 
-				$error_messages = array(
+				$errors_transl = array(
 					'api_key'   => __( 'The value of option "%s" must be alpha-numeric - resetting this option to its default value.', 'wpsso' ),
 					'blank_num' => __( 'The value of option "%s" must be blank or numeric - resetting this option to its default value.', 'wpsso' ),
 					'color'     => __( 'The value of option "%s" must be a CSS color code - resetting this option to its default value.', 'wpsso' ),
@@ -1453,7 +1463,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					if ( '' !== $opt_val && preg_match( '/[^a-zA-Z0-9_\-]/', $opt_val ) ) {
 
-						$this->p->notice->err( sprintf( $error_messages[ 'api_key' ], $opt_key ) );
+						$this->p->notice->err( sprintf( $errors_transl[ 'api_key' ], $opt_key ) );
 
 						$opt_val = $def_val;
 					}
@@ -1501,7 +1511,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					} elseif ( ! is_numeric( $opt_val ) ) {
 
-						$this->p->notice->err( sprintf( $error_messages[ 'blank_num' ], $opt_key ) );
+						$this->p->notice->err( sprintf( $errors_transl[ 'blank_num' ], $opt_key ) );
 
 						$opt_val = $def_val;
 
@@ -1524,7 +1534,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 						if ( false === strpos( $option_type, '_quiet' ) ) {
 
-							$this->p->notice->err( sprintf( $error_messages[ 'not_blank' ], $opt_key ) );
+							$this->p->notice->err( sprintf( $errors_transl[ 'not_blank' ], $opt_key ) );
 						}
 
 						$opt_val = $def_val;
@@ -1553,7 +1563,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 							if ( filter_var( $part, FILTER_VALIDATE_URL ) === false ) {
 
-								$this->p->notice->err( sprintf( $error_messages[ 'csv_urls' ], $opt_key ) );
+								$this->p->notice->err( sprintf( $errors_transl[ 'csv_urls' ], $opt_key ) );
 
 								$opt_val = $def_val;
 
@@ -1592,7 +1602,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					if ( ! is_numeric( $opt_val ) ) {
 
-						$this->p->notice->err( sprintf( $error_messages[ 'numeric' ], $opt_key ) );
+						$this->p->notice->err( sprintf( $errors_transl[ 'numeric' ], $opt_key ) );
 
 						$opt_val = $def_val;
 					}
@@ -1610,7 +1620,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 						if ( ! preg_match( '/<.*>/', $opt_val ) ) {
 
-							$this->p->notice->err( sprintf( $error_messages[ 'html' ], $opt_key ) );
+							$this->p->notice->err( sprintf( $errors_transl[ 'html' ], $opt_key ) );
 
 							$opt_val = $def_val;
 						}
@@ -1627,7 +1637,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 						if ( ! preg_match( '/^[0-9]+$/', $opt_val ) ) {
 
-							$this->p->notice->err( sprintf( $error_messages[ 'img_id' ], $opt_key ) );
+							$this->p->notice->err( sprintf( $errors_transl[ 'img_id' ], $opt_key ) );
 
 							$opt_val = $def_val;
 						}
@@ -1649,7 +1659,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					if ( ! is_numeric( $opt_val ) ) {
 
-						$this->p->notice->err( sprintf( $error_messages[ 'numeric' ], $opt_key ) );
+						$this->p->notice->err( sprintf( $errors_transl[ 'numeric' ], $opt_key ) );
 
 						$opt_val = $def_val;
 					}
@@ -1689,7 +1699,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					} elseif ( ! is_numeric( $opt_val ) || $opt_val < $min_int ) {
 
-						$this->p->notice->err( sprintf( $error_messages[ 'pos_num' ], $opt_key, $min_int ) );
+						$this->p->notice->err( sprintf( $errors_transl[ 'pos_num' ], $opt_key, $min_int ) );
 
 						$opt_val = $def_val;
 					}
@@ -1717,7 +1727,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					if ( '' !== $opt_val && 'none' !== $opt_val && $fmt && ! preg_match( $fmt, $opt_val ) ) {
 
-						$this->p->notice->err( sprintf( $error_messages[ $option_type ], $opt_key ) );
+						$this->p->notice->err( sprintf( $errors_transl[ $option_type ], $opt_key ) );
 
 						$opt_val = $def_val;
 					}
@@ -1756,7 +1766,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 						if ( ! $this->p->util->is_image_url( $opt_val ) ) {
 
-							$this->p->notice->err( sprintf( $error_messages[ 'img_url' ], $opt_key ) );
+							$this->p->notice->err( sprintf( $errors_transl[ 'img_url' ], $opt_key ) );
 
 							$opt_val = $def_val;
 						}
@@ -1770,7 +1780,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 						if ( false === filter_var( $opt_val, FILTER_VALIDATE_URL ) ) {
 
-							$this->p->notice->err( sprintf( $error_messages[ 'url' ], $opt_key ) );
+							$this->p->notice->err( sprintf( $errors_transl[ 'url' ], $opt_key ) );
 
 							$opt_val = $def_val;
 						}

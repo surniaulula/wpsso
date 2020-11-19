@@ -175,6 +175,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$tooltip_text = $this->p->msgs->get( $tooltip_index, $atts );	// Text is esc_attr().
 
 			} else {
+
 				$tooltip_text = '';
 			}
 
@@ -280,7 +281,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 						if ( isset( $this->options[ $opt_locale_key ] ) ) {
 
-							if ( $this->options[ $opt_locale_key ] !== $this->defaults[ $opt_key ] ) {
+							if ( '' !== $this->options[ $opt_locale_key ] &&
+								$this->options[ $opt_locale_key ] !== $this->defaults[ $opt_key ] ) {
 
 								return '';	// Show option.
 							}

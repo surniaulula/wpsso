@@ -116,10 +116,14 @@ ul.sucom-metabox-tabs > li > a.nav-tab-active {
 	display:none;
 }
 
+.sucom-no_tabset {
+	min-height:265px;
+}
+
 .sucom-tabset.active {
 	display:block;
 	overflow:auto;
-	min-height:240px;
+	min-height:300px;
 	background-color:#fff;
 }
 
@@ -181,89 +185,6 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 }
 
 /**
- * All options view.
- */
-.sucom-tabset_essential.active {	/* SSO > Essential Settings > General metabox tabs. */
-	min-height:320px;
-}
-
-.sucom-tabset_og.active {		/* SSO > General Settings > Open Graph metabox tabs. */
-	min-height:300px;
-}
-
-.sucom-tabset_pub.active {		/* SSO > General Settings > Publisher metabox tabs. */
-	min-height:300px;
-}
-
-.sucom-tabset_plugin.active {		/* SSO > Advanced Settings > Advanced Settings metabox tabs. */
-	min-height:300px;
-}
-
-.sucom-tabset_cm.active {		/* SSO > Advanced Settings > Contact Fields metabox tabs. */
-	min-height:240px;
-}
-
-.sucom-tabset_head.active {		/* SSO > Advanced Settings > HTML Tags metabox tabs. */
-	min-height:240px;
-}
-
-.sucom-tabset_ssb_styles.active,	/* SSO > Sharing Styles metabox tabs. */
-.sucom-tabset_rrssb_styles.active {	/* SSO > Responsive Styles metabox tabs. */
-	min-height:240px;
-}
-
-.sucom-tabset_ssb_buttons.active {	/* SSO > Sharing Buttons metabox tabs. */
-	min-height:280px;
-}
-
-.sucom-tabset_rrssb_buttons.active {	/* SSO > Responsive Buttons metabox tabs. */
-	min-height:240px;
-}
-
-.sucom-tabset_json_general.active {	/* SSO > Schema Markup metabox tabs. */
-	min-height:440px;
-}
-
-div.sucom-tabset_sso.active {		/* Document SSO metabox tabs. */
-	min-height:600px;
-}
-
-div.auto-draft div.sucom-tabset_sso.active {		/* Document SSO metabox tabs. */
-	min-height:400px;
-}
-
-/**
- * Basic options view.
- */
-.sucom-show_basic.sucom-tabset_og.active {		/* SSO > General > Open Graph metabox tabs. */
-	min-height:260px;
-}
-
-.sucom-show_basic.sucom-tabset_pub.active {		/* SSO > General > Publisher metabox tabs. */
-	min-height:260px;
-}
-
-.sucom-show_basic.sucom-tabset_ssb_buttons.active {	/* SSO > Sharing Buttons metabox tabs. */
-	min-height:280px;
-}
-
-.sucom-show_basic.sucom-tabset_rrssb_buttons.active {	/* SSO > Responsive Buttons metabox tabs. */
-	min-height:240px;
-}
-
-.sucom-show_basic.sucom-tabset_json_general.active {	/* SSO > Schema Markup metabox tabs. */
-	min-height:280px;
-}
-
-div.sucom-show_basic.sucom-tabset_sso.active {		/* Document SSO metabox tabs. */
-	min-height:480px;
-}
-
-div.auto-draft div.sucom-show_basic.sucom-tabset_sso.active {		/* Document SSO metabox tabs. */
-	min-height:400px;
-}
-
-/**
  * Tab icons.
  *
  * See http://fontello.com.
@@ -300,7 +221,7 @@ div.auto-draft div.sucom-show_basic.sucom-tabset_sso.active {		/* Document SSO m
 	content:"\f1c0";	/* .icon-database */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_custom_fields::before {		/* SSO > Advanced Settings > Editing and Metadata > Custom Fields tab. */
+.sucom-tablink-icon.sucom-tablink-href_custom_fields::before {		/* SSO > Advanced Settings > Metadata > Custom Fields tab. */
 	content:"\e80c";	/* .icon-key */
 }
 
@@ -396,7 +317,7 @@ div.auto-draft div.sucom-show_basic.sucom-tabset_sso.active {		/* Document SSO m
 	content:"\e805";	/* .icon-eye */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_product_attrs::before {		/* SSO > Advanced Settings > Editing Pages > Product Attributes tab. */
+.sucom-tablink-icon.sucom-tablink-href_product_attrs::before {		/* SSO > Advanced Settings > Metadata > Product Attributes tab. */
 	content:"\e80f";	/* .icon-barcode */
 }
 

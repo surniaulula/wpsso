@@ -50,10 +50,10 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 					$metabox_context, $metabox_prio, $callback_args );
 
 			/**
-			 * Editing and Metadata metabox.
+			 * Contact Fields metabox.
 			 */
-			$metabox_id      = 'edit';
-			$metabox_title   = _x( 'Editing and Metadata', 'metabox title', 'wpsso' );
+			$metabox_id      = 'contact_fields';
+			$metabox_title   = _x( 'Contact Fields', 'metabox title', 'wpsso' );
 			$metabox_screen  = $this->pagehook;
 			$metabox_context = 'normal';
 			$metabox_prio    = 'default';
@@ -65,10 +65,10 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 					$metabox_context, $metabox_prio, $callback_args );
 
 			/**
-			 * Contact Fields metabox.
+			 * Metadata metabox.
 			 */
-			$metabox_id      = 'contact_fields';
-			$metabox_title   = _x( 'Contact Fields', 'metabox title', 'wpsso' );
+			$metabox_id      = 'edit';
+			$metabox_title   = _x( 'Metadata', 'metabox title', 'wpsso' );
 			$metabox_screen  = $this->pagehook;
 			$metabox_context = 'normal';
 			$metabox_prio    = 'default';
@@ -221,7 +221,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 					break;
 
 				/**
-				 * Editing and Metadata metabox.
+				 * Metadata metabox.
 				 */
 				case 'edit-product_attrs':
 

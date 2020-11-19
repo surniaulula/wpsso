@@ -56,7 +56,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$table_rows[ 'plugin_show_opts' ] = '' .
 				$form->get_th_html( _x( 'Plugin Options to Show by Default', 'option label', 'wpsso' ), '', 'plugin_show_opts' ) .
-				'<td>' . $form->get_no_select( 'plugin_show_opts', $this->p->cf[ 'form' ][ 'show_options' ] ) . '</td>';
+				'<td class="blank">' . $form->get_no_select( 'plugin_show_opts', $this->p->cf[ 'form' ][ 'show_options' ] ) . '</td>';
 
 			$menu_title = _x( 'Validators', 'toolbar menu title', 'wpsso' );
 
@@ -116,7 +116,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					}
 				}
 
-				$list_cols .= '<td><p>' . $mod_label . '</p></td></tr>' . "\n";
+				$list_cols .= '<td class="blank"><p>' . $mod_label . '</p></td></tr>' . "\n";
 			}
 
 			$list_cols .= '</table>' . "\n";
@@ -499,12 +499,12 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$table_rows[ 'plugin_shopperapproved_num_max' ] = '' .
 				$form->get_th_html( _x( 'Maximum Number of Reviews', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_shopperapproved_num_max' ) .
-				'<td>' . $form->get_no_input( 'plugin_shopperapproved_num_max', $css_class = 'short' ) . '</td>';
+				'<td class="blank">' . $form->get_no_input( 'plugin_shopperapproved_num_max', $css_class = 'short' ) . '</td>';
 
 			$table_rows[ 'plugin_shopperapproved_age_max' ] = '' .
 				$form->get_th_html( _x( 'Maximum Age of Reviews', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_shopperapproved_age_max' ) .
-				'<td>' . $form->get_no_input( 'plugin_shopperapproved_age_max', $css_class = 'short' ) . ' ' .
+				'td class="blank"td>' . $form->get_no_input( 'plugin_shopperapproved_age_max', $css_class = 'short' ) . ' ' .
 					_x( 'months', 'option comment', 'wpsso' ) . '</td>';
 
 			$sa_for_values = SucomUtilWP::get_post_type_labels( array(), $val_prefix = '', _x( 'Post Type', 'option label', 'wpsso' ) );
@@ -588,24 +588,11 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$opt_label = empty( $this->p->cf[ '*' ][ 'lib' ][ 'share' ][ $cm_id ] ) ?
 					ucfirst( $cm_id ) : $this->p->cf[ '*' ][ 'lib' ][ 'share' ][ $cm_id ];
 
-				switch ( $cm_id ) {
-
-					case 'facebook':
-					case 'twitter':
-
-						$tr_html = '';
-
-						break;
-
-					default:
-
-						/**
-						 * Hide all other contact methods if their values have not been customized.
-						 */
-						$tr_html = $form->get_tr_hide( 'basic', array( $cm_enabled_key, $cm_name_key, $cm_label_key ) );
-
-						break;
-				}
+				/**
+				 * Hide by default if the contact method is not enabled by default.
+				 */
+				$tr_html = empty( $form->defaults[ $cm_enabled_key ] ) ?
+					$form->get_tr_hide( 'basic', array( $cm_enabled_key, $cm_name_key, $cm_label_key ) ) : '';
 
 				$table_rows[] = $tr_html .
 					$form->get_th_html( $opt_label, $css_class = 'medium' ) . 

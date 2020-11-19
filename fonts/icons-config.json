@@ -533,7 +533,7 @@
     {
       "uid": "5bb103cd29de77e0e06a52638527b575",
       "css": "wrench",
-      "code": 128295,
+      "code": 59409,
       "src": "fontawesome"
     },
     {
@@ -545,7 +545,7 @@
     {
       "uid": "d07722fcb20002869d11ee6f950f5477",
       "css": "dashicons-shield",
-      "code": 59409,
+      "code": 59410,
       "src": "custom_icons",
       "selected": true,
       "svg": {
@@ -575,7 +575,7 @@
     {
       "uid": "ece12e6bf2554ef5157fb2710849fbc1",
       "css": "dashicons-shield-alt",
-      "code": 59410,
+      "code": 59430,
       "src": "custom_icons",
       "selected": true,
       "svg": {
@@ -601,6 +601,18 @@
         "dashicons",
         "code-standards"
       ]
+    },
+    {
+      "uid": "186dec7a13156bbe2550790c158fb85d",
+      "css": "crown",
+      "code": 59460,
+      "src": "fontelico"
+    },
+    {
+      "uid": "3212f42c65d41ed91cb435d0490e29ed",
+      "css": "flash",
+      "code": 9889,
+      "src": "fontawesome"
     },
     {
       "uid": "e78e20d53b7a6dbdffd81eb1736cb8a0",
