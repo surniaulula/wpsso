@@ -1,4 +1,4 @@
-<h1>WPSSO Core</h1><h3>WordPress Social and Search Optimization</h3>
+<h1>WPSSO Core</h1><h3>Social and Search Optimization</h3>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
