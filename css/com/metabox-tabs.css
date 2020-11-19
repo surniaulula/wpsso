@@ -308,10 +308,6 @@ div.auto-draft div.sucom-show_basic.sucom-tabset_sso.active {		/* Document SSO m
 	content:"\f2c3";	/* .icon-id-card-o */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_document_meta::before {		/* SSO > Advanced Settings > Editing and Metadata > Document Meta tab. */
-	content:"\e809";	/* .icon-edit */
-}
-
 .sucom-tablink-icon.sucom-tablink-href_default_contacts::before {	/* SSO > Advanced Settings > Contact Fields > Default Contacts tab. */
 	content:"\f2c2";	/* .icon-id-card */
 }

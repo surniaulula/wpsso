@@ -257,8 +257,6 @@ table.sucom-settings th span.option_locale {
 
 table.sucom-settings table.plugin-list-columns {
 	width:100%;
-	margin:0 0 2px 0;
-	border:1px dotted #ddd;
 }
 
 table.sucom-settings table.plugin-list-columns th {

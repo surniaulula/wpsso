@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.13.0-rc.3',	// Plugin version.
+					'version'     => '8.13.0-rc.4',	// Plugin version.
 					'opt_version' => '770',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1630,28 +1630,35 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings - Interface tab.
 					 */
-					'plugin_show_opts'             => 'basic',		// Plugin Options to Show by Default.
-					'plugin_show_validate_toolbar' => 1,			// Show the Validators Toolbar Menu.
-					'plugin_schema_type_col_media' => 0,			// Additional Item List Columns.
-					'plugin_schema_type_col_post'  => 1,
-					'plugin_schema_type_col_term'  => 0,
-					'plugin_schema_type_col_user'  => 0,
-					'plugin_og_type_col_media'     => 0,
-					'plugin_og_type_col_post'      => 0,
-					'plugin_og_type_col_term'      => 0,
-					'plugin_og_type_col_user'      => 0,
-					'plugin_og_img_col_media'      => 0,
-					'plugin_og_img_col_post'       => 1,
-					'plugin_og_img_col_term'       => 1,
-					'plugin_og_img_col_user'       => 1,
-					'plugin_og_desc_col_media'     => 1,
-					'plugin_og_desc_col_post'      => 0,
-					'plugin_og_desc_col_term'      => 0,
-					'plugin_og_desc_col_user'      => 1,
-					'plugin_col_title_width'       => '30%',		// Title / Name Column Width.
-					'plugin_col_title_width_max'   => '15vw',
-					'plugin_col_def_width'         => '15%',		// Default for Posts / Pages List.
-					'plugin_col_def_width_max'     => '15vw',
+					'plugin_show_opts'                => 'basic',		// Plugin Options to Show by Default.
+					'plugin_show_validate_toolbar'    => 1,			// Show Validators Toolbar Menu.
+					'plugin_add_to_attachment'        => 1,			// Show Document SSO Metabox.
+					'plugin_add_to_page'              => 1,
+					'plugin_add_to_post'              => 1,
+					'plugin_add_to_tax_category'      => 1,
+					'plugin_add_to_tax_link_category' => 1,
+					'plugin_add_to_tax_post_tag'      => 1,
+					'plugin_add_to_user_page'         => 1,
+					'plugin_schema_type_col_media'    => 0,			// Additional Item List Columns.
+					'plugin_schema_type_col_post'     => 1,
+					'plugin_schema_type_col_term'     => 0,
+					'plugin_schema_type_col_user'     => 0,
+					'plugin_og_type_col_media'        => 0,
+					'plugin_og_type_col_post'         => 0,
+					'plugin_og_type_col_term'         => 0,
+					'plugin_og_type_col_user'         => 0,
+					'plugin_og_img_col_media'         => 0,
+					'plugin_og_img_col_post'          => 1,
+					'plugin_og_img_col_term'          => 1,
+					'plugin_og_img_col_user'          => 1,
+					'plugin_og_desc_col_media'        => 1,
+					'plugin_og_desc_col_post'         => 0,
+					'plugin_og_desc_col_term'         => 0,
+					'plugin_og_desc_col_user'         => 1,
+					'plugin_col_title_width'          => '30%',		// Title / Name Column Width.
+					'plugin_col_title_width_max'      => '15vw',
+					'plugin_col_def_width'            => '15%',		// Default for Posts / Pages List.
+					'plugin_col_def_width_max'        => '15vw',
 
 					/**
 					 * Advanced Settings - Integration tab.
@@ -1673,6 +1680,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_check_img_dims'     => 0,			// Enforce Image Dimension Checks.
 					'plugin_upscale_images'     => 0,			// Upscale Media Library Images.
 					'plugin_upscale_img_max'    => 33,			// Maximum Image Upscale Percent.
+					'plugin_wpseo_social_meta'  => 0,			// Import Yoast SEO Social Meta.
+					'plugin_wpseo_show_import'  => 1,			// Show Yoast SEO Import Details.
 
 					/**
 					 * Advanced Settings - Caching tab.
@@ -1720,19 +1729,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_yourls_username'              => '',		// YOURLS Username.
 					'plugin_yourls_password'              => '',		// YOURLS Password.
 					'plugin_yourls_token'                 => '',		// YOURLS Token.
-
-					/**
-					 * Advanced Settings - Document Meta tab.
-					 */
-					'plugin_add_to_attachment'        => 1,
-					'plugin_add_to_page'              => 1,
-					'plugin_add_to_post'              => 1,
-					'plugin_add_to_tax_category'      => 1,
-					'plugin_add_to_tax_link_category' => 1,
-					'plugin_add_to_tax_post_tag'      => 1,
-					'plugin_add_to_user_page'         => 1,
-					'plugin_wpseo_social_meta'        => 0,			// Import Yoast SEO Social Meta.
-					'plugin_wpseo_show_import'        => 1,			// Show Yoast SEO Import Details.
 
 					/**
 					 * Advanced Settings - Document Meta tab (custom taxonomy and post types).

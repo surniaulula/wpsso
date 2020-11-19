@@ -3714,7 +3714,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		/**
 		 * See https://developers.google.com/search/reference/robots_meta_tag.
 		 */
-		public function get_robots_content( array $mod = array() ) {
+		public function get_robots_content( array $mod ) {
 
 			$directives = $this->get_robots_directives( $mod );
 
@@ -3741,7 +3741,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return apply_filters( $this->p->lca . '_robots_content', $content, $mod, $directives );
 		}
 
-		public function get_robots_directives( array $mod = array() ) {
+		public function get_robots_directives( array $mod ) {
 
 			$directives = self::get_robots_default_directives();
 

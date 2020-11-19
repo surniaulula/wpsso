@@ -32,7 +32,6 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'plugin_integration_rows'   => 2,	// Integration tab.
 				'plugin_cache_rows'         => 3,	// Caching tab.
 				'plugin_apikeys_rows'       => 2,	// Service APIs tab.
-				'edit_document_meta_rows'   => 2,	// Document Meta tab.
 				'cm_custom_contacts_rows'   => 2,	// Custom Contacts tab.
 				'cm_default_contacts_rows'  => 2,	// Default Contacts tab.
 				'head_tags_facebook_rows'   => 3,
@@ -61,11 +60,29 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$menu_title = _x( 'Validators', 'toolbar menu title', 'wpsso' );
 
-			$table_rows[ 'plugin_show_validate_toolbar' ] = '' .
+			$table_rows[ 'plugin_show_validate_toolbar' ] = '' .	// Show Validators Toolbar Menu.
 				$form->get_th_html( sprintf( _x( 'Show %s Toolbar Menu', 'option label', 'wpsso' ), $menu_title ),
 					$css_class = '', $css_id = 'plugin_show_validate_toolbar' ) .
 				$form->get_no_td_checkbox( 'plugin_show_validate_toolbar' );
 
+			/**
+			 * Show custom meta metaboxes.
+			 */
+			$add_to_metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+
+			$add_to_values = array( 'user_page' => _x( 'User Profile', 'option label', 'wpsso' ) );
+			$add_to_values = SucomUtilWP::get_post_type_labels( $add_to_values, $val_prefix = '', _x( 'Post Type', 'option label', 'wpsso' ) );
+			$add_to_values = SucomUtilWP::get_taxonomy_labels( $add_to_values, $val_prefix = 'tax_', _x( 'Taxonomy', 'option label', 'wpsso' ) );
+
+			$table_rows[ 'plugin_add_to' ] = '' .	// Show Document SSO Metabox.
+				$form->get_th_html( sprintf( _x( 'Show %s Metabox', 'option label', 'wpsso' ), $add_to_metabox_title ),
+					$css_class = '', $css_id = 'plugin_add_to' ) . 
+				'<td class="blank">' . $form->get_no_checklist( 'plugin_add_to', $add_to_values,
+					$css_class = 'input_vertical_list', $css_id = '', $is_assoc = true ) . '</td>';
+
+			/**
+			 * Additional item list columns.
+			 */
 			$list_cols = '<table class="plugin-list-columns">' . "\n" . '<tr>';
 
 			foreach ( WpssoWpMeta::get_column_headers() as $col_key => $col_header ) {
@@ -198,7 +215,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					$css_class = '', $css_id = 'plugin_page_excerpt' ) . 
 				$form->get_no_td_checkbox( 'plugin_page_excerpt' );
 
-			$table_rows[ 'plugin_page_tags' ] = '' . 
+			$table_rows[ 'plugin_page_tags' ] = $form->get_tr_hide( 'basic', 'plugin_page_tags' ) .
 				$form->get_th_html( _x( 'Enable WP Tags for Pages', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_page_tags' ) . 
 				$form->get_no_td_checkbox( 'plugin_page_tags' );
@@ -208,7 +225,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					$css_class = '', $css_id = 'plugin_new_user_is_person' ) . 
 				$form->get_no_td_checkbox( 'plugin_new_user_is_person' );
 
-			$table_rows[ 'plugin_check_head' ] = '' . 
+			$table_rows[ 'plugin_check_head' ] = $form->get_tr_hide( 'basic', 'plugin_check_head' ) .
 				$form->get_th_html( _x( 'Check for Duplicate Meta Tags', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_check_head' ) . 
 				$form->get_no_td_checkbox( 'plugin_check_head' );
@@ -227,6 +244,19 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$form->get_th_html( _x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_upscale_img_max' ) . 
 				'<td class="blank">' . $form->get_no_input( 'plugin_upscale_img_max', $css_class = 'short' ) . ' %</td>';
+
+			/**
+			 * Read Yoast SEO social meta.
+			 */
+			$table_rows[ 'plugin_wpseo_social_meta' ] = '' .
+				$form->get_th_html( _x( 'Import Yoast SEO Social Meta', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_wpseo_social_meta' ) . 
+				$form->get_no_td_checkbox( 'plugin_wpseo_social_meta' );
+
+			$table_rows[ 'plugin_wpseo_show_import' ] = $form->get_tr_hide( 'basic', 'plugin_wpseo_show_import' ) .
+				$form->get_th_html( _x( 'Show Yoast SEO Import Details', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_wpseo_show_import' ) .
+				$form->get_no_td_checkbox( 'plugin_wpseo_show_import' );
 
 			return $table_rows;
 		}
@@ -510,49 +540,6 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$form->get_th_html( _x( 'YOURLS Token', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_yourls_token' ) . 
 				'<td class="blank mono"></td>';
-
-			return $table_rows;
-		}
-
-		/**
-		 * Document Meta tab.
-		 */
-		public function filter_edit_document_meta_rows( $table_rows, $form ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
-
-			/**
-			 * Add custom meta metaboxes.
-			 */
-			$add_to_metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
-
-			$add_to_values = array( 'user_page' => _x( 'User Profile', 'option label', 'wpsso' ) );
-			$add_to_values = SucomUtilWP::get_post_type_labels( $add_to_values, $val_prefix = '', _x( 'Post Type', 'option label', 'wpsso' ) );
-			$add_to_values = SucomUtilWP::get_taxonomy_labels( $add_to_values, $val_prefix = 'tax_', _x( 'Taxonomy', 'option label', 'wpsso' ) );
-
-			$table_rows[ 'plugin_add_to' ] = '' .
-				$form->get_th_html( sprintf( _x( 'Add %s Metabox', 'option label', 'wpsso' ), $add_to_metabox_title ),
-					$css_class = '', $css_id = 'plugin_add_to' ) . 
-				'<td class="blank">' . $form->get_no_checklist( 'plugin_add_to', $add_to_values,
-					$css_class = 'input_vertical_list', $css_id = '', $is_assoc = true ) . '</td>';
-
-			/**
-			 * Read Yoast SEO social meta.
-			 */
-			$table_rows[ 'plugin_wpseo_social_meta' ] = '' .
-				$form->get_th_html( _x( 'Import Yoast SEO Social Meta', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_wpseo_social_meta' ) . 
-				$form->get_no_td_checkbox( 'plugin_wpseo_social_meta' );
-
-			$table_rows[ 'plugin_wpseo_show_import' ] = '' .
-				$form->get_th_html( _x( 'Show Yoast SEO Import Details', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_wpseo_show_import' ) .
-				$form->get_no_td_checkbox( 'plugin_wpseo_show_import' );
 
 			return $table_rows;
 		}

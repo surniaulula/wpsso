@@ -813,13 +813,21 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_show_validate_toolbar':	// Show the Validators Toolbar Menu.
+						case 'tooltip-plugin_show_validate_toolbar':	// Show Validators Toolbar Menu.
 
 							$menu_title = _x( 'Validators', 'toolbar menu title', 'wpsso' );
 
 							$text = sprintf( __( 'Show a "%s" menu in the top toolbar.', 'wpsso' ), $menu_title ) . ' ';
 
 							$text .= __( 'Please note that the Twitter Card validator does not (currently) accept query arguments, so it cannot be included in this menu.', 'wpsso' ) . ' ';
+
+							break;
+
+						case 'tooltip-plugin_add_to':		// Show Document SSO Metabox.
+
+							$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+
+							$text = sprintf( __( 'Add or remove the %s metabox from admin editing pages for posts, pages, custom post types, terms (categories and tags), and user profile pages.', 'wpsso' ), $mb_title );
 
 							break;
 
@@ -1001,6 +1009,20 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = sprintf( __( 'When upscaling of %1$s image sizes is allowed, %2$s can make sure smaller images are not upscaled beyond reason, which would publish very low quality / fuzzy images on social and search sites (the default maximum is %3$s%%).', 'wpsso' ), $info[ 'short' ], $info[ 'name_pro' ], $upscale_max ) . ' ';
 
 							$text .= __( 'If an image needs to be upscaled beyond this maximum, in either width or height, the image will not be upscaled.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-plugin_wpseo_social_meta':	// Import Yoast SEO Social Meta.
+
+							$text = __( 'Import the Yoast SEO custom social meta text for Posts, Terms, and Users.', 'wpsso' ) . ' ';
+
+							$text .= __( 'This option is checked by default if the Yoast SEO plugin is active, or no SEO plugin is active and Yoast SEO settings are found in the database.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-plugin_wpseo_show_import':	// Show Yoast SEO Import Details.
+
+							$text = __( 'Show notification messages for imported Yoast SEO custom social meta text for Posts, Terms, and Users.', 'wpsso' ) . ' ';
 
 							break;
 
@@ -1269,31 +1291,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_yourls_token':
 
 							$text = sprintf( __( 'If <a href="%1$s">Your Own URL Shortener</a> (YOURLS) shortening service is private, you can use a token string for authentication instead of a username / password combination.', 'wpsso' ), 'http://yourls.org/' );
-
-							break;
-
-						/**
-						 * Document Meta settings
-						 */
-						case 'tooltip-plugin_add_to':
-
-							$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
-
-							$text = sprintf( __( 'Add or remove the %s metabox from admin editing pages for posts, pages, custom post types, terms (categories and tags), and user profile pages.', 'wpsso' ), $mb_title );
-
-							break;
-
-						case 'tooltip-plugin_wpseo_social_meta':	// Import Yoast SEO Social Meta.
-
-							$text = __( 'Import the Yoast SEO custom social meta text for Posts, Terms, and Users.', 'wpsso' ) . ' ';
-
-							$text .= __( 'This option is checked by default if the Yoast SEO plugin is active, or no SEO plugin is active and Yoast SEO settings are found in the database.', 'wpsso' );
-
-							break;
-
-						case 'tooltip-plugin_wpseo_show_import':	// Show Yoast SEO Import Details.
-
-							$text = __( 'Show notification messages for imported Yoast SEO custom social meta text for Posts, Terms, and Users.', 'wpsso' ) . ' ';
 
 							break;
 

@@ -132,7 +132,6 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			$table_rows = array();
 
 			$tabs = apply_filters( $this->p->lca . '_advanced_' . $metabox_id . '_tabs', array(
-				'document_meta' => _x( 'Document Meta', 'metabox tab', 'wpsso' ),
 				'product_attrs' => _x( 'Product Attributes', 'metabox tab', 'wpsso' ),
 				'custom_fields' => _x( 'Custom Fields', 'metabox tab', 'wpsso' ),
 			) );
