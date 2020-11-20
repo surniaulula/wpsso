@@ -5911,16 +5911,16 @@ msgstr ""
 #: lib/messages.php:991 lib/messages.php:2689
 msgid ""
 "Content authors often upload small featured images, without knowing that "
-"WordPress creates resized images based on defined image sizes, so this "
+"WordPress creates resized images based on predefined image sizes, so this "
 "option is disabled by default."
 msgstr ""
 
 #: lib/messages.php:993
 msgid ""
-"When enabled, full size images used for meta tags and Schema markup must be "
-"equal to (or larger) than the image dimensions you've selected in the %s "
-"settings page &mdash; images that do not meet or exceed the minimum "
-"requirements are ignored."
+"When this option is enabled, full size images used for meta tags and Schema "
+"markup must be equal to (or larger) than the image dimensions you've "
+"selected in the %s settings page &mdash; images that do not meet or exceed "
+"the minimum requirements are ignored."
 msgstr ""
 
 #: lib/messages.php:995 lib/messages.php:2546 lib/messages.php:2691
