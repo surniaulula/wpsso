@@ -318,7 +318,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.13.0-rc.5 (2020/11/20)**
+**Version 8.13.0 (2020/11/20)**
 
 This release includes a new "Validators" toolbar menu and several changes to the Advanced Settings page.
 
@@ -727,7 +727,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.13.0-rc.5 =
+= 8.13.0 =
 
 (2020/11/20) This release includes a new "Validators" toolbar menu and several changes to the Advanced Settings page.
 
