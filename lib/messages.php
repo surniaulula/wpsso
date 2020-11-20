@@ -2670,6 +2670,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= '</p>';
 
+						if ( ! empty( WpssoAdmin::$pkg[ $this->p->lca ][ 'pp' ] ) ) {
+
+							$text .= '<p>' . sprintf( __( 'Note that the %1$s option is an advanced %2$s feature.', 'wpsso' ),
+								$option_link, $info[ 'name_pro' ] ) . '</p>';
+						}
+
 						break;
 
 					/**
@@ -2691,6 +2697,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text .= sprintf( __( 'See <a href="%s">Why shouldn\'t I upload small images to the Media library?</a> for more information on WordPress image sizes.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/' ). ' ';
 
 						$text .= '</p>';
+
+						if ( ! empty( WpssoAdmin::$pkg[ $this->p->lca ][ 'pp' ] ) ) {
+
+							$text .= '<p>' . sprintf( __( 'Note that the %1$s option is an advanced %2$s feature.', 'wpsso' ),
+								$option_link, $info[ 'name_pro' ] ) . '</p>';
+						}
 
 						break;
 
