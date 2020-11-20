@@ -32,7 +32,7 @@ There's no need to manually re-enter descriptions, titles, product information, 
 
 WPSSO can be used as your one and only *social and search optimization* plugin, or in combination with your favorite SEO plugin to improve its meta tags and Schema markup (including, All in One SEO Pack, Jetpack SEO Tools, Rank Math SEO, SEO Ultimate, SEOPress, The SEO Framework, WP Meta SEO, Yoast SEO, and more).
 
-**Customize the plugin settings for different languages:**
+**You can customize the plugin settings for different languages:**
 
 Text, image, and video related options are WordPress language / locale aware, which means you can easily switch languages and customize these options for different front-end webpage languages.
 
