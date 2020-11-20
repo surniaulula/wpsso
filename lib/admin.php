@@ -2156,11 +2156,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $features as $label => $arr ) {
 
-				if ( preg_match( '/ API$/', $label ) ) {
+				if ( ! isset( $arr[ 'label_url' ] ) ) {
 
-					$arr[ 'label_url' ] = $apis_tab_url;
+					/**
+					 * By default, all API related features should have their options located under the
+					 * Advanced Settings > Service APIs tab.
+					 */
+					if ( preg_match( '/ API$/', $label ) ) {
 
-					$features[ $label ] = $arr;
+						$arr[ 'label_url' ] = $apis_tab_url;
+
+						$features[ $label ] = $arr;
+					}
 				}
 
 				if ( ! empty( $arr[ 'label_transl' ] ) ) {
