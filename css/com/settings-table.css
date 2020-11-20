@@ -137,7 +137,7 @@ table.sucom-settings td.subsection.top h5,
 }
 
 table.sucom-settings p {
-	line-height:2em;
+	line-height:1.8em;
 }
 
 table.sucom-settings.html-content-metabox p {
@@ -225,11 +225,16 @@ table.sucom-settings ol > li > ol > li {
 	margin:15px 0 15px 10px;
 }
 
+table.sucom-settings table.plugin-list-columns {
+	width:100%;
+}
+
 table.sucom-settings th {
 	color:#333;
 	font-weight:600;
 	text-align:right;
 	vertical-align:top;
+	line-height:1.8em;
 	max-width:270px;
 	width:270px;
 }
@@ -255,10 +260,6 @@ table.sucom-settings th span.option_locale {
 	font-weight:normal;
 }
 
-table.sucom-settings table.plugin-list-columns {
-	width:100%;
-}
-
 table.sucom-settings table.plugin-list-columns th {
 	word-wrap:normal;
 	text-align:center;
@@ -270,20 +271,8 @@ table.sucom-settings table.plugin-list-columns th {
 	border-bottom:1px dotted #ddd;
 }
 
-table.sucom-settings table.plugin-list-columns td {
-	vertical-align:middle;
-	padding:4px 6px;
-}
-
-table.sucom-settings table.plugin-list-columns td.underline {
-	border-bottom:1px dotted #ddd;
-}
-
-table.sucom-settings table.plugin-list-columns td p {
-	margin:0;
-}
-
 table.sucom-settings td {
+	line-height:1.8em;
 	vertical-align:top;
 }
 
@@ -310,9 +299,22 @@ table.sucom-settings td.ext-info-plugin-separator {
 	border-bottom:1px dotted #ddd;
 }
 
+table.sucom-settings table.plugin-list-columns td {
+	vertical-align:middle;
+	padding:4px 6px;
+}
+
+table.sucom-settings table.plugin-list-columns td.underline {
+	border-bottom:1px dotted #ddd;
+}
+
 table.sucom-settings td p {
 	color:#555;
 	margin:0 0 10px 0;
+}
+
+table.sucom-settings table.plugin-list-columns td p {
+	margin:0;
 }
 
 table.sucom-settings td p.status-msg,
@@ -342,6 +344,7 @@ table.sucom-settings td p.centered {
 	margin:0;
 }
 
+table.sucom-settings th p.left,
 table.sucom-settings td p.left {
 	text-align:left;
 }
@@ -405,7 +408,6 @@ table.sucom-settings th.head_tags {
 	text-align:left;
 	vertical-align:middle;
 	min-width:120px;
-	padding:2px 6px;
 }
 
 table.sucom-settings td.weekday {
@@ -451,6 +453,7 @@ table.sucom-settings th.xshort {
 	max-width:60px;
 }
 
+table.sucom-settings th.left,
 table.sucom-settings th.left p {
 	text-align:left;
 	margin:0;
@@ -469,7 +472,7 @@ table.sucom-settings td .text_len_msg {
 	font-size:0.9em;
 	color:#999;
 	text-align:right;
-	margin:4px 0 4px 0;
+	margin:4px 0;
 	padding:0;
 }
 
@@ -552,14 +555,8 @@ table.sucom-settings td.html.noscript pre {
 	margin:2px;
 }
 
-table.sucom-settings td.xshort,
 table.sucom-settings td.head_tags {
-	text-align:right;
-	vertical-align:middle;
-	padding:2px;
-}
-
-table.sucom-settings td.head_tags {
+	text-align:left;
 	width:50px;
 	max-width:50px;
 }
@@ -635,7 +632,7 @@ table.sucom-settings td div.multi_container.mixed_multi.single_line {
 table.sucom-settings td div.multi_number {
 	display:table-cell;
 	width:20px;
-	min-width:20px;
+	vertical-align:top;
 }
 
 table.sucom-settings td div.multi_input {
@@ -666,7 +663,9 @@ table.sucom-settings td textarea {
 }
 
 table.sucom-settings td input.width,
-table.sucom-settings td input.height { margin:0 2px 0 2px; }
+table.sucom-settings td input.height {
+	margin:0 2px;
+}
 
 table.sucom-settings td textarea { width:100%; }
 
@@ -708,11 +707,17 @@ table.sucom-settings td select.site-use { width:14em; }
 
 table.sucom-settings td select.wide { width:100%; }
 
-table.sucom-settings td input[type="hidden"] { padding:0; margin:0; }
+table.sucom-settings td input[type="hidden"] {
+	padding:0;
+	margin:0;
+}
 
 table.sucom-settings td input[type="text"] { width:255px; }	/* Default width. */
 
-table.sucom-settings td input[type="text"].datepicker { width:120px; text-align:center; }
+table.sucom-settings td input[type="text"].datepicker {
+	width:120px;
+	text-align:center;
+}
 
 table.sucom-settings td.mono,
 table.sucom-settings td input[type=text].mono {
@@ -755,7 +760,9 @@ table.sucom-settings td input[type="text"].api_key { width:400px; font-family:"C
 
 table.sucom-settings td input[type="text"].wide { width:100%; }
 
-table.sucom-settings td input[type="checkbox"] { margin:4px 4px 0 0; }
+table.sucom-settings td input[type="checkbox"] {
+	margin:0 4px 0 0;
+}
 
 table.sucom-settings td.blank input[type="checkbox"] { margin:2px 8px 2px 2px; }
 
@@ -840,7 +847,6 @@ table.sucom-settings td.checkbox,
 table.sucom-settings th.checkbox,
 table.sucom-settings td.checkbox.blank {
 	text-align:center;
-	vertical-align:middle;
 	padding:0 2px;
 }
 
@@ -1158,10 +1164,6 @@ table.sucom-settings.column-metabox ol > li {
 	margin:10px 0;
 }
 
-table.sucom-settings.column-metabox div.dashicons-before::before {
-	font-size:1.2em;
-}
-
 table.sucom-settings.column-metabox.cache-status .cache-count,
 table.sucom-settings.column-metabox.cache-status .cache-size,
 table.sucom-settings.column-metabox.cache-status .cache-expiration {
@@ -1188,12 +1190,12 @@ table.sucom-settings.column-metabox.cache-status .cache-expiration {
 table.sucom-settings.column-metabox th.version-label {
 	color:#555;
 	font-weight:600;
-	padding:2px;
+	padding:2px 4px;
 }
 
 table.sucom-settings.column-metabox td.version-number {
 	color:#555;
-	padding:2px;
+	padding:2px 4px;
 }
 
 table.sucom-settings.column-metabox td.latest-notice {
@@ -1210,7 +1212,13 @@ table.sucom-settings.column-metabox td.latest-notice p {
  * SSO > Features Status pages.
  */
 table.sucom-settings.column-metabox.feature-status td {
-	padding:2px;
+	padding:2px 4px;
+	vertical-align:middle;
+}
+
+table.sucom-settings.column-metabox.feature-status .dashicons-before::before {
+	font-size:1.2em;
+	line-height:1.2em;
 	vertical-align:middle;
 }
 

@@ -90,7 +90,8 @@
 .sucom-tooltip-icon::before {
 	font-family:"WpssoIcons";
 	font-weight:normal;
-	font-size:1.1em;
+	font-size:1.2em;
+	vertical-align:middle;
 	content:"\f29c";	/* .icon-help-circled-alt */
 }
 

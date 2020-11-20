@@ -167,7 +167,7 @@ __( 'Failed to upscale image ID %1$s of %2$s by %3$s from %4$s to %5$s for the %
 __( 'Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the %6$s image size.', 'wpsso' );
 __( 'NextGEN Gallery', 'wpsso' );
 __( 'image ID %s', 'wpsso' );
-__( '%1$s %2$s ignored &mdash; the resulting image of %3$s is too small for the required %4$s image dimensions.', 'wpsso' );
+__( '%1$s %2$s ignored &mdash; the resulting resized image of %3$s is too small for the required %4$s image dimensions.', 'wpsso' );
 __( 'NextGEN Gallery', 'wpsso' );
 _x( 'BuddyPress Member Bio Field Name', 'option label', 'wpsso' );
 __( 'The BuddyPress member profile page does not include the <em>Biographical Info</em> text from the WordPress user profile. If you\'ve created an additional BuddyPress Profile Field for members to enter their profile description, enter the field name here (example: Biographical Info, About Me, etc.).', 'wpsso' );

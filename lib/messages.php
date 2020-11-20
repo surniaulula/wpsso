@@ -238,11 +238,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-meta-article_section':	// Article Section.
 
-							$article_section_option_link = $this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_site',
+							$option_link = $this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_site',
 								_x( 'Default Article Section', 'option label', 'wpsso' ) );
 
 							$text = sprintf( __( 'A customized section for this article, which may be different than the %s option value.',
-								'wpsso' ), $article_section_option_link ) . ' ';
+								'wpsso' ), $option_link ) . ' ';
 
 							$text .= sprintf( __( 'Select "[None]" if you prefer to exclude the %s meta tag.', 'wpsso' ),
 								'<code>article:section</code>' );
@@ -259,11 +259,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-meta-product_category':	// Product Category.
 
-							$product_cat_option_link = $this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_site',
+							$option_link = $this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_site',
 								_x( 'Default Product Category', 'option label', 'wpsso' ) );
 
 							$text = sprintf( __( 'A customized category for this product, which may be different than the %s option value.',
-								'wpsso' ), $product_cat_option_link ) . ' ';
+								'wpsso' ), $option_link ) . ' ';
 
 							$text .= sprintf( __( 'Select "[None]" if you prefer to exclude the %s meta tag.',
 								'wpsso' ), '<code>product:category</code>' );
@@ -986,7 +986,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$img_sizes_page_link = $this->p->util->get_admin_url( 'image-sizes',
 								_x( 'Image Sizes', 'lib file description', 'wpsso' ) );
 
-							$text = sprintf( __( 'When this option is enabled, full size images used for meta tags and Schema markup must be equal to (or larger) than the image dimensions you\'ve defined in the %s settings &mdash; images that do not meet or exceed the minimum requirements will be ignored.', 'wpsso' ), $img_sizes_page_link );
+							$text .= __( 'Providing social and search sites with perfectly resized images is highly recommended, so this option should be enabled if possible.', 'wpsso' ) . ' ';
+
+							$text .= __( 'Content authors often upload small featured images, without knowing that WordPress creates resized images based on defined image sizes, so this option is disabled by default.', 'wpsso' ) . ' ';
+
+							$text = sprintf( __( 'When enabled, full size images used for meta tags and Schema markup must be equal to (or larger) than the image dimensions you\'ve selected in the %s settings page &mdash; images that do not meet or exceed the minimum requirements are ignored.', 'wpsso' ), $img_sizes_page_link ) . ' ';
+
+							$text .= sprintf( __( 'See <a href="%s">Why shouldn\'t I upload small images to the Media library?</a> for more information on WordPress image sizes.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/' ). ' ';
 
 							break;
 
@@ -2533,14 +2539,18 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= sprintf( __( 'A larger custom image can be selected in the %1$s metabox under the %2$s tab.',
 								'wpsso' ), $mb_title, $media_tab );
+						} else {
+
+							$text .= __( 'Consider replacing the original image with a higher resolution version.', 'wpsso' ) . ' ';
+
+							$text .= sprintf( __( 'See <a href="%s">Why shouldn\'t I upload small images to the Media library?</a> for more information on WordPress image sizes.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/' ). ' ';
 						}
 
 						/**
 						 * WpssoMedia->is_image_within_config_limits() sets 'show_adjust_img_opts' = false
 						 * for images with an aspect ratio that exceeds the hard-coded config limits.
 						 */
-						if ( ! isset( $info[ 'show_adjust_img_opts' ] ) ||
-							! empty( $info[ 'show_adjust_img_opts' ] ) ) {
+						if ( ! isset( $info[ 'show_adjust_img_opts' ] ) || ! empty( $info[ 'show_adjust_img_opts' ] ) ) {
 
 							if ( current_user_can( 'manage_options' ) ) {
 
@@ -2569,15 +2579,18 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 								$text .= '<ul>';
 
+								$text .= ' <li>' . __( 'Replace the original image with a higher resolution version.',
+									'wpsso' ) . '</li>';
+
 								if ( $is_meta_page ) {
 
-									$text .= '<li>' . sprintf( __( 'Select a larger image under the %1$s &gt; %2$s tab.',
+									$text .= ' <li>' . sprintf( __( 'Select a larger image under the %1$s &gt; %2$s tab.',
 										'wpsso' ), $mb_title, $media_tab ) . '</li>';
 								}
 
 								if ( empty( $this->p->options[ 'plugin_upscale_images' ] ) ) {
 
-									$text .= '<li>' . sprintf( __( 'Enable the %s option.',
+									$text .= ' <li>' . sprintf( __( 'Enable the %s option.',
 										'wpsso' ), $upscale_option_link ) . '</li>';
 
 								} else {
@@ -2591,8 +2604,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								 * 'show_adjust_img_size_opts' to false for images that are too
 								 * small for the hard-coded config limits.
 								 */
-								if ( ! isset( $info[ 'show_adjust_img_size_opts' ] ) ||
-									! empty( $info[ 'show_adjust_img_size_opts' ] ) ) {
+								if ( ! isset( $info[ 'show_adjust_img_size_opts' ] ) || ! empty( $info[ 'show_adjust_img_size_opts' ] ) ) {
 
 									$text .= ' <li>' . sprintf( __( 'Update image size dimensions in the %s settings page.',
 										'wpsso' ), $img_sizes_page_link ) . '</li>';
@@ -2636,15 +2648,17 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						break;
 
+					/**
+					 * Notice shown when saving settings if the "Use WordPress Content Filters" option is unchecked.
+					 */
 					case 'notice-content-filters-disabled':
 
-						$content_filters_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_content',
+						$option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
 							_x( 'Use WordPress Content Filters', 'option label', 'wpsso' ) );
 
 						$text = '<p class="top">';
 
-						$text .= '<b>' . sprintf( __( 'The %1$s advanced option is currently disabled.',
-							'wpsso' ), $content_filters_option_link ) . '</b> ';
+						$text .= '<b>' . sprintf( __( 'The %1$s advanced option is currently disabled.', 'wpsso' ), $option_link ) . '</b> ';
 
 						$text .= sprintf( __( 'The use of WordPress content filters allows %s to fully render your content text for meta tag descriptions and detect additional images and/or embedded videos provided by shortcodes.', 'wpsso' ), $info[ 'name' ] );
 
@@ -2653,6 +2667,28 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text .= '<b>' . __( 'Many themes and plugins have badly coded content filters, so this option is disabled by default.', 'wpsso' ) . '</b> ';
 
 						$text .= __( 'If you use shortcodes in your content text, this option should be enabled &mdash; IF YOU EXPERIENCE WEBPAGE LAYOUT OR PERFORMANCE ISSUES AFTER ENABLING THIS OPTION, determine which theme or plugin is filtering the content incorrectly and report the problem to its author(s).', 'wpsso' );
+
+						$text .= '</p>';
+
+						break;
+
+					/**
+					 * Notice shown when saving settings if the "Enforce Image Dimension Checks" option is unchecked.
+					 */
+					case 'notice-check-img-dims-disabled':
+
+						$option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
+							_x( 'Enforce Image Dimension Checks', 'option label', 'wpsso' ) );
+
+						$text = '<p class="top">';
+
+						$text .= '<b>' . sprintf( __( 'The %1$s advanced option is currently disabled.', 'wpsso' ), $option_link ) . '</b> ';
+
+						$text .= __( 'Providing social and search sites with perfectly resized images is highly recommended, so this option should be enabled if possible.', 'wpsso' ) . ' ';
+
+						$text .= __( 'Content authors often upload small featured images, without knowing that WordPress creates resized images based on defined image sizes, so this option is disabled by default.', 'wpsso' ) . ' ';
+
+						$text .= sprintf( __( 'See <a href="%s">Why shouldn\'t I upload small images to the Media library?</a> for more information on WordPress image sizes.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/' ). ' ';
 
 						$text .= '</p>';
 
@@ -3215,11 +3251,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 		 */
 		public function p_img_disabled( $extra_css_class = '' ) {
 
-			$pin_option_link = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_pinterest',
+			$option_link = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_pinterest',
 				_x( 'Add Hidden Image for Pinterest', 'option label', 'wpsso' ) );
 
 			// translators: %s is the option name, linked to its settings page.
-			$text = sprintf( __( 'Modifications disabled (%s option is unchecked).', 'wpsso' ), $pin_option_link );
+			$text = sprintf( __( 'Modifications disabled (%s option is unchecked).', 'wpsso' ), $option_link );
 
 			return '<p class="status-msg smaller disabled ' . $extra_css_class . '">' . $text . '</p>';
 		}

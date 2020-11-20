@@ -188,8 +188,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				( empty( $atts[ 'th_colspan' ] ) ? '' : ' colspan="' . $atts[ 'th_colspan' ] . '"' ) .
 				( empty( $atts[ 'th_rowspan' ] ) ? '' : ' rowspan="' . $atts[ 'th_rowspan' ] . '"' ) .
 				( empty( $css_class ) ? '' : ' class="' . $css_class . '"' ) .
-				( empty( $css_id ) ? '' : ' id="th_' . $css_id . '"' ) . '><p>' . $label .
-				( empty( $tooltip_text ) ? '' : $tooltip_text ) . '</p></th>';
+				( empty( $css_id ) ? '' : ' id="th_' . $css_id . '"' ) . '>' . $label .
+				( empty( $tooltip_text ) ? '' : $tooltip_text ) . '</th>';
 		}
 
 		public function get_th_html_locale( $label = '', $css_class = '', $css_id = '', $atts = array() ) {
@@ -988,7 +988,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= $display ? '' : ' style="display:none;"';
 				$html .= '>' . "\n";
 
-				$html .= '<div class="multi_number"><p>' . ( $key_num + 1 ) . '.</p></div>' . "\n";
+				$html .= '<div class="multi_number">' . ( $key_num + 1 ) . '.</div>' . "\n";
 
 				$html .= '<div class="multi_input">' . "\n";
 
@@ -1475,7 +1475,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= $display ? '' : ' style="display:none;"';
 				$html .= '>' . "\n";
 
-				$html .= '<div class="multi_number"><p>' . ( $key_num + 1 ) . '.</p></div>' . "\n";
+				$html .= '<div class="multi_number">' . ( $key_num + 1 ) . '.</div>' . "\n";
 
 				$html .= '<div class="multi_input">' . "\n";
 
@@ -1713,7 +1713,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= $display ? '' : ' style="display:none;"';
 				$html .= '>' . "\n";
 
-				$html .= '<div class="multi_number"><p>' . ( $key_num + 1 ) . '.</p></div>' . "\n";
+				$html .= '<div class="multi_number">' . ( $key_num + 1 ) . '.</div>' . "\n";
 
 				$html .= '<div class="multi_input">' . "\n";
 
@@ -2211,7 +2211,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					$html .= '<div class="multi_container">' . "\n";
 
-					$html .= '<div class="multi_number"><p>' . ( $key_num + 1 ) . '.</p></div>' . "\n";
+					$html .= '<div class="multi_number">' . ( $key_num + 1 ) . '.</div>' . "\n";
 
 					$html .= '<div class="multi_input">' . "\n";
 				}

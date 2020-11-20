@@ -308,7 +308,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			$pkg  = $this->p->admin->plugin_pkg_info();
 
 			/**
-			 * All good - nothing to suggest.
+			 * Nothing to suggest.
 			 */
 			if ( ! empty( $pkg[ $this->p->lca ][ 'pp' ] ) && ! empty( $pkg[ $ext ][ 'pp' ] ) ) {
 
@@ -334,19 +334,19 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 				if ( SucomPlugin::is_plugin_installed( $info[ 'base' ], $use_cache = true ) ) {
 
-					$url = is_multisite() ? network_admin_url( 'plugins.php', null ) :
+					$search_url = is_multisite() ? network_admin_url( 'plugins.php', null ) :
 						get_admin_url( $blog_id = null, 'plugins.php' );
 
-					$url = add_query_arg( array( 's' => $info[ 'base' ] ), $url );
+					$search_url = add_query_arg( array( 's' => $info[ 'base' ] ), $search_url );
 
-					$action_links[] = '<a href="' . $url . '">' . sprintf( __( 'Activate the %s add-on.',
+					$action_links[] = '<a href="' . $search_url . '">' . sprintf( __( 'Activate the %s add-on.',
 						'wpsso' ), $pkg[ $ext ][ 'short' ] ) . '</a>';
 
 				} else {
 
-					$url = $this->p->util->get_admin_url( 'addons#' . $ext );
+					$addons_url = $this->p->util->get_admin_url( 'addons#' . $ext );
 
-					$action_links[] = '<a href="' . $url . '">' . sprintf( __( 'Install and activate the %s add-on.',
+					$action_links[] = '<a href="' . $addons_url . '">' . sprintf( __( 'Install and activate the %s add-on.',
 						'wpsso' ), $pkg[ $ext ][ 'short' ] ) . '</a>';
 				}
 			}
@@ -356,13 +356,9 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			 */
 			if ( empty( $pkg[ $this->p->lca ][ 'pp' ] ) ) {
 
-				$url = add_query_arg( array( 
-					'utm_source'  => $this->p->lca,
-					'utm_medium'  => 'plugin',
-					'utm_content' => $notice_key,
-				), $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'url' ][ 'purchase' ] );
+				$purchase_url = $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'url' ][ 'purchase' ];
 
-				$action_links[] = '<a href="' . $url . '">' . sprintf( __( 'Purchase the %s plugin.', 'wpsso' ),
+				$action_links[] = '<a href="' . $purchase_url . '">' . sprintf( __( 'Purchase the %s plugin.', 'wpsso' ),
 					$pkg[ $this->p->lca ][ 'short_pro' ] ) . '</a>';
 			}
 

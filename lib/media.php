@@ -113,8 +113,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'image id ' . $pid . ' rejected - ' . $size_text .
-					' too small for the ' . $size_name . ' (' . $size_info[ 'dimensions' ] . ') image size' );
+				$this->p->debug->log( 'image id ' . $pid . ' rejected - ' . $size_text . ' too small for the ' . $size_name .
+					' (' . $size_info[ 'dimensions' ] . ') image size' );
 			}
 
 			/**
@@ -128,9 +128,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$img_label    = sprintf( __( 'image ID %1$s (%2$s)', 'wpsso' ), $pid, $img_title );
 				$img_label    = empty( $img_edit_url ) ? $img_label : '<a href="' . $img_edit_url . '">' . $img_label . '</a>';
 
-				$notice_msg = sprintf( __( '%1$s %2$s ignored &mdash; the resulting image of %3$s is too small for the required %4$s image dimensions.',
-					'wpsso' ), $img_lib, $img_label, $size_text, '<b>' . $size_info[ 'label_transl' ] . '</b> (' . $size_info[ 'dimensions' ] . ')' ) .
-						' ' . $this->p->msgs->get( 'notice-image-rejected' );
+				$notice_msg = sprintf( __( '%1$s %2$s ignored &mdash; the resulting resized image of %3$s is too small for the required %4$s image dimensions.', 'wpsso' ), $img_lib, $img_label, $size_text, '<b>' . $size_info[ 'label_transl' ] . '</b> (' . $size_info[ 'dimensions' ] . ')' ) . ' ' . $this->p->msgs->get( 'notice-image-rejected' );
 
 				$notice_key = 'wp_' . $pid . '_' . $size_text . '_' . $size_name . '_' . $size_info[ 'dimensions' ] . '_rejected';
 
@@ -1099,7 +1097,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$img_title     = get_the_title( $pid );
 				$img_func_url  = __( 'https://developer.wordpress.org/reference/functions/wp_get_attachment_metadata/', 'wpsso' );
 				$img_func_name = 'wp_get_attachment_metadata()';
-				$img_regen_msg = sprintf( __( 'You may consider regenerating the thumbnails of all WordPress Media Library images using one of <a href="%s">several available plugins from WordPress.org</a>.', 'wpsso' ), 'https://wordpress.org/plugins/search/regenerate+thumbnails/' );
+				$img_regen_msg = sprintf( __( 'You may consider regenerating the sizes of all WordPress Media Library images using one of <a href="%s">several available plugins from WordPress.org</a>.', 'wpsso' ), 'https://wordpress.org/plugins/search/regenerate+thumbnails/' );
 
 				if ( isset( $img_meta[ 'file' ] ) ) {
 
@@ -1275,7 +1273,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 									$notice_msg = sprintf( __( 'Possible %1$s corruption detected &mdash; the <a href="%2$s">WordPress %3$s function</a> failed to create the "%4$s" image size (%5$s) from %6$s.', 'wpsso' ), $img_lib, $img_func_url, '<code>' . $img_func_name . '</code>', $size_name, $size_info[ 'dimensions' ], $fullsizepath ) . ' ';
 
-									$notice_msg .= sprintf( __( 'You may consider regenerating the thumbnails of all WordPress Media Library images using one of <a href="%s">several available plugins from WordPress.org</a>.', 'wpsso' ), 'https://wordpress.org/plugins/search/regenerate+thumbnails/' );
+									$notice_msg .= sprintf( __( 'You may consider regenerating the sizes of all WordPress Media Library images using one of <a href="%s">several available plugins from WordPress.org</a>.', 'wpsso' ), 'https://wordpress.org/plugins/search/regenerate+thumbnails/' );
 
 									$notice_key = 'image-make-intermediate-size-' . $fullsizepath . '-failure';
 
@@ -2264,7 +2262,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 			/**
 					 * $img_lib can be 'Media Library', 'NextGEN Gallery', 'Content', etc.
 					 */
-					$notice_msg = sprintf( __( '%1$s %2$s ignored &mdash; the resulting image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>.', 'wpsso' ), $img_lib, $img_label, $img_width . 'x' . $img_height, $max_ratio, $size_label ). ' ';
+					$notice_msg = sprintf( __( '%1$s %2$s ignored &mdash; the resulting resized image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>.', 'wpsso' ), $img_lib, $img_label, $img_width . 'x' . $img_height, $max_ratio, $size_label ). ' ';
 
 					$notice_msg .= $this->p->msgs->get( 'notice-image-rejected', array( 'show_adjust_img_opts' => false ) );
 
@@ -2297,7 +2295,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 			/**
 					 * $img_lib can be 'Media Library', 'NextGEN Gallery', 'Content', etc.
 					 */
-					$notice_msg = sprintf( __( '%1$s %2$s ignored &mdash; the resulting image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>.', 'wpsso' ), $img_lib, $img_label, $img_width . 'x' . $img_height, $min_width . 'x' . $min_height, $size_label ) . ' ';
+					$notice_msg = sprintf( __( '%1$s %2$s ignored &mdash; the resulting resized image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>.', 'wpsso' ), $img_lib, $img_label, $img_width . 'x' . $img_height, $min_width . 'x' . $min_height, $size_label ) . ' ';
 
 					$notice_msg .= $this->p->msgs->get( 'notice-image-rejected', array( 'show_adjust_img_size_opts' => false ) );
 

@@ -1008,9 +1008,20 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$notice_key = 'notice-content-filters-disabled';
 
-				$notice_msg = $this->p->msgs->get( $notice_key );
+				if ( $notice_msg = $this->p->msgs->get( $notice_key ) ) {
 
-				$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
+					$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
+				}
+			}
+
+			if ( empty( $opts[ 'plugin_check_img_dims' ] ) ) {
+
+				$notice_key = 'notice-check-img-dims-disabled';
+
+				if ( $notice_msg = $this->p->msgs->get( $notice_key ) ) {
+
+					$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
+				}
 			}
 
 			return $opts;
@@ -2141,7 +2152,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				'rec' => __( 'Feature is recommended but not active.', 'wpsso' ),
 			);
 
+			$apis_tab_url = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_apikeys' );
+
 			foreach ( $features as $label => $arr ) {
+
+				if ( preg_match( '/ API$/', $label ) ) {
+
+					$arr[ 'label_url' ] = $apis_tab_url;
+
+					$features[ $label ] = $arr;
+				}
 
 				if ( ! empty( $arr[ 'label_transl' ] ) ) {
 
@@ -2237,7 +2257,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					echo '<tr>';
 
 					echo '<td class="module-icon' . $td_class_is . '">';
-					echo '<div class="dashicons-before dashicons-' . $icon_type . '" title="' . $icon_title . '"></div>';
+					echo '<span class="dashicons-before dashicons-' . $icon_type . '" title="' . $icon_title . '"></span>';
 					echo '</td>';
 
 					echo '<td class="' . trim( 'module-label ' . $td_class . $td_class_is ) . '">';

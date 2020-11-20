@@ -120,6 +120,10 @@ ul.sucom-metabox-tabs > li > a.nav-tab-active {
 	min-height:265px;
 }
 
+.sucom-no_tabset.metabox-info {	/* A non-tabbed metabox above another tabbed metabox. */
+	min-height:0;
+}
+
 .sucom-tabset.active {
 	display:block;
 	overflow:auto;
