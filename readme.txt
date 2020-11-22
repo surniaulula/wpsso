@@ -323,7 +323,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added a 'disabled' status light (Yellow) to the SSO &gt; Features Status page.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -740,6 +740,10 @@ This release adds a new SSO &gt; Features Status page and integration module for
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.14.0-dev.1 =
+
+(TBD) Added a 'disabled' status light (Yellow) to the SSO &gt; Features Status page.
 
 = 8.13.0 =
 
