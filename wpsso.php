@@ -15,7 +15,7 @@
  * Requires At Least: 4.4
  * Tested Up To: 5.6
  * WC Tested Up To: 4.7.0
- * Version: 8.13.0
+ * Version: 8.14.0-dev.1
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -80,7 +80,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $m            = array();	// Loaded module objects from core plugin.
 		public $m_ext        = array();	// Loaded module objects from extensions / add-ons.
 		public $cf           = array();	// Config array defined in construct method.
-		public $avail        = array();	// Assoc array for other plugin checks.
+		public $avail        = array();	// Assoc array for 3rd party plugin checks.
 		public $options      = array();	// Individual blog/site options.
 		public $site_options = array();	// Multisite options.
 		public $sc           = array();	// Shortcodes.

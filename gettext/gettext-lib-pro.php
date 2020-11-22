@@ -187,6 +187,12 @@ __( 'The URL shortening library file for "%s" is missing and required.', 'wpsso'
 __( 'Imported Yoast SEO "%1$s" metadata from post ID %2$d.', 'wpsso' );
 __( 'Imported Yoast SEO "%1$s" metadata from term ID %2$d.', 'wpsso' );
 __( 'Imported Yoast SEO "%1$s" metadata from user ID %2$d.', 'wpsso' );
+__( 'full size original', 'wpsso' );
+__( 'Media Library', 'wpsso' );
+__( 'image ID %1$s (%2$s)', 'wpsso' );
+__( '%1$s %2$s ignored &mdash; the resulting resized image of %3$s is too small for the required %4$s image dimensions.', 'wpsso' );
+__( 'Image %1$s in content ignored &mdash; the image width and height is too small for the required %2$s image dimensions.', 'wpsso' );
+__( '%1$s includes an additional \'data-wp-pid\' attribute for WordPress Media Library images &mdash; if this image was selected from the Media Library before %1$s was activated, try removing and adding the image back to your content.', 'wpsso' );
 _x( '[%s Venue]', 'option value', 'wpsso' );
 _x( '[%s Organizer]', 'option value', 'wpsso' );
 _x( 'Single Entry Integration', 'metabox title', 'wpsso' );

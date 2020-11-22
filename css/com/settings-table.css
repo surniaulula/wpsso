@@ -1230,15 +1230,20 @@ table.sucom-settings td .status-light {
 }
 
 table.sucom-settings td.module-is-on .status-light {
-	background-color:#00e500;
+	background-color:#46b450;	/* Green. */
 }
 
 table.sucom-settings td.module-is-off .status-light {
-	background-color:#eee;
+	background-color:#eee;		/* Grey. */
 }
 
-table.sucom-settings td.module-is-rec .status-light {
-	background-color:#e50000;
+table.sucom-settings td.module-is-disabled .status-light {
+	background-color:#ffb900;	/* Yellow. */
+}
+
+table.sucom-settings td.module-is-rec .status-light,
+table.sucom-settings td.module-is-recommended .status-light {
+	background-color:#dc3232;	/* Red. */
 }
 
 /**

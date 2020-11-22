@@ -2147,9 +2147,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		private function show_features_status( &$ext = '', &$info = array(), &$features = array() ) {
 
 			$status_titles = array(
-				'on'  => __( 'Feature is active.', 'wpsso' ),
-				'off' => __( 'Feature is not active.', 'wpsso' ),
-				'rec' => __( 'Feature is recommended but not active.', 'wpsso' ),
+				'disabled'    => __( 'Feature is disabled.', 'wpsso' ),
+				'off'         => __( 'Feature is not active.', 'wpsso' ),
+				'on'          => __( 'Feature is active.', 'wpsso' ),
+				'rec'         => __( 'Feature is recommended but not active.', 'wpsso' ),
+				'recommended' => __( 'Feature is recommended but not active.', 'wpsso' ),
 			);
 
 			$apis_tab_url = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_apikeys' );
@@ -2184,17 +2186,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $features as $label_transl => $arr ) {
 
-				if ( isset( $arr[ 'classname' ] ) ) {
+				if ( isset( $arr[ 'status' ] ) ) {	// Use provided status before class or constant check.
+
+					$status_key = $arr[ 'status' ];
+
+				} elseif ( isset( $arr[ 'classname' ] ) ) {
 
 					$status_key = class_exists( $arr[ 'classname' ] ) ? 'on' : 'off';
 
 				} elseif ( isset( $arr[ 'constant' ] ) ) {
 
 					$status_key = SucomUtil::get_const( $arr[ 'constant' ] ) ? 'on' : 'off';
-
-				} elseif ( isset( $arr[ 'status' ] ) ) {
-
-					$status_key = $arr[ 'status' ];
 
 				} else {
 
@@ -2274,7 +2276,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					echo '</td>';
 
 					echo '<td class="module-status' . $td_class_is .'">';
-					echo '<div class="status-light" title="' . $status_titles[ $status_key ] . '"></div>';
+					echo '<div class="status-light" title="';
+					echo isset( $status_titles[ $status_key ] ) ? $status_titles[ $status_key ] : '';
+					echo '"></div>';
 					echo '</td>';
 
 					echo '</tr>' . "\n";

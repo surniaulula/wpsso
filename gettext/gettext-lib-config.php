@@ -45,6 +45,7 @@ _x( '(plugin) SEOPress', 'lib file description', 'wpsso' );
 _x( '(plugin) WP Meta SEO', 'lib file description', 'wpsso' );
 _x( '(plugin) Yoast SEO', 'lib file description', 'wpsso' );
 _x( '(plugin) BuddyPress', 'lib file description', 'wpsso' );
+_x( '(feature) Enforce Image Dimension Checks', 'lib file description', 'wpsso' );
 _x( '(plugin) Co-Authors Plus', 'lib file description', 'wpsso' );
 _x( '(feature) URL Shortening Service', 'lib file description', 'wpsso' );
 _x( '(feature) Import Yoast SEO Social Meta', 'lib file description', 'wpsso' );

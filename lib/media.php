@@ -40,17 +40,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$max_int = SucomUtil::get_max_int();
 
-			/**
-			 * Add filters when the "Enforce Image Dimension Checks" option is enabled.
-			 */
-			if ( ! empty( $this->p->options[ 'plugin_check_img_dims' ] ) ) {
-
-				$this->p->util->add_plugin_filters( $this, array(
-					'attached_accept_img_dims' => 6,
-					'content_accept_img_dims'  => 6,
-				) );
-			}
-
 			add_action( 'init', array( $this, 'allow_img_data_attributes' ) );
 			add_action( 'post-upload-ui', array( $this, 'show_post_upload_ui_message' ) );
 
@@ -59,146 +48,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			add_filter( 'wp_image_resize_identical_dimensions', array( $this, 'maybe_resize_fuzzy_dimensions' ), $max_int, 1 );
 			add_filter( 'wp_get_attachment_image_attributes', array( $this, 'add_attachment_image_attributes' ), 10, 2 );
 			add_filter( 'get_image_tag', array( $this, 'get_image_tag' ), 10, 6 );
-		}
-
-		/**
-		 * $size_name must be a string.
-		 */
-		public function filter_attached_accept_img_dims( $accept, $img_url, $img_width, $img_height, $size_name, $pid ) {
-
-			/**
-			 * Don't re-check already rejected images.
-			 */
-			if ( ! $accept ) {	// Value is false.
-
-				return false;
-			}
-
-			if ( 0 !== strpos( $size_name, $this->p->lca . '-' ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: ' . $size_name . ' not a ' . $this->p->lca . ' custom image size' );
-				}
-
-				return $accept;
-			}
-
-			$size_info       = $this->p->util->get_size_info( $size_name, $pid );
-			$is_sufficient_w = $img_width >= $size_info[ 'width' ] ? true : false;
-			$is_sufficient_h = $img_height >= $size_info[ 'height' ] ? true : false;
-
-			if ( ( ! $size_info[ 'is_cropped' ] && ( $is_sufficient_w || $is_sufficient_h ) ) ||
-				( $size_info[ 'is_cropped' ] && ( $is_sufficient_w && $is_sufficient_h ) ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'image id ' . $pid . ' dimensions (' . $img_width . 'x' . $img_height . ') are sufficient' );
-				}
-
-				return true;	// Image dimensions are sufficient.
-			}
-
-			$img_meta = wp_get_attachment_metadata( $pid );
-
-			if ( isset( $img_meta[ 'width' ] ) && isset( $img_meta[ 'height' ] ) &&
-				$img_meta[ 'width' ] < $size_info[ 'width' ] && $img_meta[ 'height' ] < $size_info[ 'height' ] ) {
-
-				$size_text = $img_meta[ 'width' ] . 'x' . $img_meta[ 'height' ] . ' (' . __( 'full size original', 'wpsso' ) . ')';
-
-			} else {
-
-				$size_text = $img_width . 'x' . $img_height;
-			}
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'image id ' . $pid . ' rejected - ' . $size_text . ' too small for the ' . $size_name .
-					' (' . $size_info[ 'dimensions' ] . ') image size' );
-			}
-
-			/**
-			 * Add notice only if the admin notices have not already been shown.
-			 */
-			if ( $this->p->notice->is_admin_pre_notices() ) {
-
-				$img_lib      = __( 'Media Library', 'wpsso' );
-				$img_edit_url = get_edit_post_link( $pid );
-				$img_title    = get_the_title( $pid );
-				$img_label    = sprintf( __( 'image ID %1$s (%2$s)', 'wpsso' ), $pid, $img_title );
-				$img_label    = empty( $img_edit_url ) ? $img_label : '<a href="' . $img_edit_url . '">' . $img_label . '</a>';
-
-				$notice_msg = sprintf( __( '%1$s %2$s ignored &mdash; the resulting resized image of %3$s is too small for the required %4$s image dimensions.', 'wpsso' ), $img_lib, $img_label, $size_text, '<b>' . $size_info[ 'label_transl' ] . '</b> (' . $size_info[ 'dimensions' ] . ')' ) . ' ' . $this->p->msgs->get( 'notice-image-rejected' );
-
-				$notice_key = 'wp_' . $pid . '_' . $size_text . '_' . $size_name . '_' . $size_info[ 'dimensions' ] . '_rejected';
-
-				$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
-			}
-
-			return false;
-		}
-
-		/**
-		 * $size_name must be a string.
-		 */
-		public function filter_content_accept_img_dims( $accept, $og_image, $size_name, $attr_name, $content_passed ) {
-
-			/**
-			 * Don't re-check already rejected images.
-			 */
-			if ( ! $accept ) {	// Value is false.
-
-				return false;
-			}
-
-			if ( 0 !== strpos( $size_name, $this->p->lca . '-' ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: ' . $size_name . ' not a ' . $this->p->lca . ' custom image size' );
-				}
-
-				return $accept;
-			}
-
-			$size_info       = $this->p->util->get_size_info( $size_name );
-			$is_sufficient_w = $og_image[ 'og:image:width' ] >= $size_info[ 'width' ] ? true : false;
-			$is_sufficient_h = $og_image[ 'og:image:height' ] >= $size_info[ 'height' ] ? true : false;
-			$image_url       = SucomUtil::get_first_mt_media_url( $og_image );
-
-			if ( ( $attr_name == 'src' && ! $size_info[ 'is_cropped' ] && ( $is_sufficient_w || $is_sufficient_h ) ) ||
-				( $attr_name == 'src' && $size_info[ 'is_cropped' ] && ( $is_sufficient_w && $is_sufficient_h ) ) ||
-					$attr_name == 'data-share-src' ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( $image_url . ' dimensions (' . $og_image[ 'og:image:width' ] . 'x' .
-						$og_image[ 'og:image:height' ] . ') are sufficient' );
-				}
-
-				return true;	// Image dimensions are sufficient.
-			}
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'content image rejected: width / height missing or too small for ' . $size_name );
-			}
-
-			/**
-			 * Add notice only if the admin notices have not already been shown.
-			 */
-			if ( $this->p->notice->is_admin_pre_notices() ) {
-
-				$notice_msg = sprintf( __( 'Image %1$s in content ignored &mdash; the image width and height is too small for the required %2$s image dimensions.', 'wpsso' ), $image_url, '<b>' . $size_info[ 'label_transl' ] . '</b> (' . $size_info[ 'dimensions' ] . ')' );
-
-				$notice_msg .= $content_passed ? '' : ' ' . sprintf( __( '%1$s includes an additional \'data-wp-pid\' attribute for WordPress Media Library images &mdash; if this image was selected from the Media Library before %1$s was activated, try removing and adding the image back to your content.', 'wpsso' ), $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'short' ] );
-
-				$notice_key = 'content_' . $image_url . '_' . $size_name . '_rejected';
-
-				$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
-			}
-
-			return false;
 		}
 
 		public function allow_img_data_attributes() {
@@ -823,8 +672,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 									' (' . $mt_single_image[ 'og:image:width' ] . 'x' . $mt_single_image[ 'og:image:height' ] . ')' );
 							}
 
-							if ( ! apply_filters( $this->p->lca . '_content_accept_img_dims', $img_within_limits,
-								$mt_single_image, $size_name, $attr_name, $content_passed ) ) {
+							if ( ! apply_filters( $this->p->lca . '_content_accept_img_dims', $img_within_limits, $mt_single_image,
+								$size_name, $attr_name, $content_passed ) ) {
 
 								$mt_single_image = array();
 							}

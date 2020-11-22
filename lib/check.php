@@ -290,14 +290,13 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 								/**
 								 * Premium version feature / option.
 								 */
-								case 'facebook':
-								case 'gravatar':
-								case 'slideshare':
-								case 'soundcloud':
-								case 'vimeo':
-								case 'wistia':
-								case 'wpvideo':
-								case 'youtube':
+								case 'facebook':	// Check for Embedded Media: Facebook Videos.
+								case 'slideshare':	// Check for Embedded Media: Slideshare Presentations.
+								case 'soundcloud':	// Check for Embedded Media: Soundcloud Tracks.
+								case 'vimeo':		// Check for Embedded Media: Vimeo Videos.
+								case 'wistia':		// Check for Embedded Media: Wistia Videos.
+								case 'wpvideo':		// Check for Embedded Media: WordPress Video Shortcode.
+								case 'youtube':		// Check for Embedded Media: Youtube Videos and Playlists.
 
 									$chk[ 'opt_key' ] = 'plugin_' . $id . '_api';
 
@@ -306,7 +305,16 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 								/**
 								 * Premium version feature / option.
 								 */
-								case 'upscale':
+								case 'gravatar':	// Gravatar is Default Author Image.
+
+									$chk[ 'opt_key' ] = 'plugin_' . $id . '_api';
+
+									break;
+
+								/**
+								 * Premium version feature / option.
+								 */
+								case 'upscale':	// Upscale Media Library Images.
 
 									$chk[ 'opt_key' ] = 'plugin_upscale_images';
 
@@ -513,6 +521,15 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							switch ( $id ) {
 
+								/**
+								 * Premium version feature / option.
+								 */
+								case 'check-img-dims':	// Enforce Image Dimension Checks.
+
+									$chk[ 'opt_key' ] = 'plugin_check_img_dims';
+
+									break;
+
 								case 'coauthors':
 
 									$chk[ 'plugin' ] = 'co-authors-plus/co-authors-plus.php';
@@ -525,13 +542,19 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								case 'shorten':
+								/**
+								 * Premium version feature / option.
+								 */
+								case 'shorten':	// URL Shortening Service.
 
 									$chk[ 'opt_key' ] = 'plugin_shortener';
 
 									break;
 
-								case 'wpseo-meta':
+								/**
+								 * Premium version feature / option.
+								 */
+								case 'wpseo-meta':	// Import Yoast SEO Social Meta.
 
 									$chk[ 'opt_key' ] = 'plugin_wpseo_social_meta';
 

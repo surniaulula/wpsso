@@ -54,16 +54,13 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 
 			$pkg           = $this->p->admin->plugin_pkg_info();
 			$td_class      = $pkg[ $ext ][ 'pp' ] ? '' : 'blank';
-			$status_on     = $pkg[ $ext ][ 'pp' ] ? 'on' : 'rec';
+			$status_on     = $pkg[ $ext ][ 'pp' ] ? 'on' : 'recommended';
 			$apis_tab_url  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_apikeys' );
 			$integ_tab_url = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration' );
 
-			$features[ '(feature) Enforce Image Dimension Checks' ] = array(
-				'td_class'     => $td_class,
-				'label_transl' => _x( '(feature) Enforce Image Dimension Checks', 'lib file description', 'wpsso' ),
-				'label_url'    => $integ_tab_url,
-				'status'       => $this->p->options[ 'plugin_check_img_dims' ] ? $status_on : 'rec',
-			);
+			$features[ '(feature) Enforce Image Dimension Checks' ][ 'label_url' ] = $integ_tab_url;
+
+			$features[ '(feature) Enforce Image Dimension Checks' ][ 'status' ] = $this->p->options[ 'plugin_check_img_dims' ] ? $status_on : 'recommended';
 
 			$features[ '(feature) Import Yoast SEO Social Meta' ][ 'label_url' ] = $integ_tab_url;
 
@@ -82,7 +79,7 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 				'td_class'     => $td_class,
 				'label_transl' => _x( '(feature) Use WordPress Content Filters', 'lib file description', 'wpsso' ),
 				'label_url'    => $integ_tab_url,
-				'status'       => $this->p->options[ 'plugin_filter_content' ] ? $status_on : 'rec',
+				'status'       => $this->p->options[ 'plugin_filter_content' ] ? $status_on : 'recommended',
 			);
 
 			$features[ '(feature) Use WordPress Excerpt Filters' ] = array(
@@ -101,17 +98,17 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 
 				$name_transl  = _x( $name, 'option value', 'wpsso' );
 				$label_transl = sprintf( _x( '(api) %s Shortener API', 'lib file description', 'wpsso' ), $name_transl );
-				$svc_status   = 'off';
+				$svc_status   = 'off';	// Off unless selected or configured.
 
 				if ( isset( $this->p->m[ 'util' ][ 'shorten' ] ) ) {	// URL shortening service is enabled.
 
 					if ( $svc_id === $this->p->options[ 'plugin_shortener' ] ) {	// Shortener API service ID is selected.
 
-						$svc_status = 'rec';
+						$svc_status = 'recommended';	// Recommended if selected.
 
 						if ( $this->p->m[ 'util' ][ 'shorten' ]->get_svc_instance( $svc_id ) ) {	// False or object.
 
-							$svc_status = 'on';
+							$svc_status = 'on';	// On if configured.
 						}
 					}
 				}
@@ -119,6 +116,7 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 				$features[ '(api) ' . $name . ' Shortener API' ] = array(
 					'td_class'     => $td_class,
 					'label_transl' => $label_transl,
+					'label_url'    => $apis_tab_url,
 					'status'       => $svc_status,
 				);
 			}
@@ -136,29 +134,42 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 				$this->p->debug->mark();
 			}
 
+			if ( $this->p->avail[ 'p' ][ 'schema' ] ) {
+
+				$org_status    = 'organization' === $this->p->options[ 'site_pub_schema_type' ] ? 'on' : 'off';
+				$person_status = 'person' === $this->p->options[ 'site_pub_schema_type' ] ? 'on' : 'off';
+				$knowl_status  = 'on';
+
+			} else {
+
+				$org_status    = 'organization' === $this->p->options[ 'site_pub_schema_type' ] ? 'disabled' : 'off';
+				$person_status = 'person' === $this->p->options[ 'site_pub_schema_type' ] ? 'disabled' : 'off';
+				$knowl_status  = 'disabled';
+			}
+
 			$features[ '(code) Facebook / Open Graph Meta Tags' ] = array(
 				'label_transl' => _x( '(code) Facebook / Open Graph Meta Tags', 'lib file description', 'wpsso' ),
-				'status'       => class_exists( $this->p->lca . 'opengraph' ) ? 'on' : 'rec',
+				'status'       => class_exists( $this->p->lca . 'opengraph' ) ? 'on' : 'recommended',
 			);
 
 			$features[ '(code) Knowledge Graph Organization Markup' ] = array(
 				'label_transl' => _x( '(code) Knowledge Graph Organization Markup', 'lib file description', 'wpsso' ),
-				'status'       => 'organization' === $this->p->options[ 'site_pub_schema_type' ] ? 'on' : 'off',
+				'status'       => $org_status,
 			);
 
 			$features[ '(code) Knowledge Graph Person Markup' ] = array(
 				'label_transl' => _x( '(code) Knowledge Graph Person Markup', 'lib file description', 'wpsso' ),
-				'status'       => 'person' === $this->p->options[ 'site_pub_schema_type' ] ? 'on' : 'off',
+				'status'       => $person_status,
 			);
 
 			$features[ '(code) Knowledge Graph WebSite Markup' ] = array(
 				'label_transl' => _x( '(code) Knowledge Graph WebSite Markup', 'lib file description', 'wpsso' ),
-				'status'       => 'on',
+				'status'       => $knowl_status,
 			);
 
 			$features[ '(code) Twitter Card Meta Tags' ] = array(
 				'label_transl' => _x( '(code) Twitter Card Meta Tags', 'lib file description', 'wpsso' ),
-				'status'       => class_exists( $this->p->lca . 'twittercard' ) ? 'on' : 'rec',
+				'status'       => class_exists( $this->p->lca . 'twittercard' ) ? 'on' : 'recommended',
 			);
 
 			return $features;
