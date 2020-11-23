@@ -301,7 +301,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 */
 			static $def_opts = null;
 
-			$image_sizes = apply_filters( $this->p->id . '_plugin_image_sizes', array() );
+			$image_sizes = apply_filters( 'wpsso_plugin_image_sizes', array() );
 
 			foreach( $image_sizes as $opt_pre => $size_info ) {
 
@@ -391,18 +391,18 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						$size_label = $size_info[ 'name' ];
 					}
 
-					$this->cache_size_labels[ $this->p->id . '-' . $size_info[ 'name' ] ] = $size_label;
+					$this->cache_size_labels[ 'wpsso-' . $size_info[ 'name' ] ] = $size_label;
 
-					$this->cache_size_opts[ $this->p->id . '-' . $size_info[ 'name' ] ] = $opt_pre;
+					$this->cache_size_opts[ 'wpsso-' . $size_info[ 'name' ] ] = $opt_pre;
 
 					/**
 					 * Add the image size.
 					 */
-					add_image_size( $this->p->id . '-' . $size_info[ 'name' ], $size_info[ 'width' ], $size_info[ 'height' ], $size_info[ 'crop' ] );
+					add_image_size( 'wpsso-' . $size_info[ 'name' ], $size_info[ 'width' ], $size_info[ 'height' ], $size_info[ 'crop' ] );
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'added image size ' . $this->p->id . '-' . $size_info[ 'name' ] . ' ' . 
+						$this->p->debug->log( 'added image size wpsso-' . $size_info[ 'name' ] . ' ' . 
 							$size_info[ 'width' ] . 'x' . $size_info[ 'height' ] .  ' ' . ( empty( $size_info[ 'crop' ] ) ?
 								'uncropped' : 'cropped ' . $size_info[ 'crop_x' ] . '/' . $size_info[ 'crop_y' ] ) );
 					}
@@ -586,32 +586,32 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					case 'pinterest':
 					case 'thumbnail':
 
-						return array( $this->p->id . '-' . $mixed );
+						return array( 'wpsso-' . $mixed );
 
 					case 'schema':
 
 						return array(
-							$this->p->id . '-schema-1-1',
-							$this->p->id . '-schema-4-3',
-							$this->p->id . '-schema-16-9',
+							'wpsso-schema-1-1',
+							'wpsso-schema-4-3',
+							'wpsso-schema-16-9',
 						);
 
-					case $this->p->id . '-schema':			// Deprecated on 2020/08/12.
-					case $this->p->id . '-schema-article':		// Deprecated on 2020/08/12.
+					case 'wpsso-schema':			// Deprecated on 2020/08/12.
+					case 'wpsso-schema-article':		// Deprecated on 2020/08/12.
 
-						return array( $this->p->id . '-schema-1-1' );
+						return array( 'wpsso-schema-1-1' );
 
-					case $this->p->id . '-schema-article-1-1':	// Deprecated on 2020/08/12.
+					case 'wpsso-schema-article-1-1':	// Deprecated on 2020/08/12.
 
-						return array( $this->p->id . '-schema-1-1' );
+						return array( 'wpsso-schema-1-1' );
 
-					case $this->p->id . '-schema-article-4-3':	// Deprecated on 2020/08/12.
+					case 'wpsso-schema-article-4-3':	// Deprecated on 2020/08/12.
 
-						return array( $this->p->id . '-schema-4-3' );
+						return array( 'wpsso-schema-4-3' );
 
-					case $this->p->id . '-schema-article-16-9':	// Deprecated on 2020/08/12.
+					case 'wpsso-schema-article-16-9':	// Deprecated on 2020/08/12.
 
-						return array( $this->p->id . '-schema-16-9' );
+						return array( 'wpsso-schema-16-9' );
 
 					default:
 
@@ -768,7 +768,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				return $local_cache[ $image_url ] = $def_image_info;	// Stop here.
 			}
 
-			$cache_md5_pre  = $this->p->id . '_i_';
+			$cache_md5_pre  = 'wpsso_i_';
 			$cache_exp_secs = $this->get_cache_exp_secs( $cache_md5_pre );	// Default is day in seconds.
 
 			if ( $cache_exp_secs > 0 ) {
@@ -1249,7 +1249,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						self::$form_cache[ $key ] = array( 'site' => '[WebSite Organization]' );
 
-						self::$form_cache[ $key ] = apply_filters( $this->p->id . '_form_cache_' . $key, self::$form_cache[ $key ] );
+						self::$form_cache[ $key ] = apply_filters( 'wpsso_form_cache_' . $key, self::$form_cache[ $key ] );
 
 						break;
 
@@ -1281,7 +1281,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					default:
 
-						self::$form_cache[ $key ] = apply_filters( $this->p->id . '_form_cache_' . $key,
+						self::$form_cache[ $key ] = apply_filters( 'wpsso_form_cache_' . $key,
 							self::$form_cache[ $key ] );
 
 						break;
@@ -1341,7 +1341,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$cache_md5_pre  = $this->p->id . '_f_';
+			$cache_md5_pre  = 'wpsso_f_';
 			$cache_exp_secs = $this->get_cache_exp_secs( $cache_md5_pre );	// Default is month in seconds.
 			$text_list_file = self::get_file_path_locale( WPSSO_ARTICLE_SECTIONS_LIST );
 
@@ -1414,7 +1414,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			unset( $raw_sections );
 
-			$sections = apply_filters( $this->p->id . '_article_sections', $sections );
+			$sections = apply_filters( 'wpsso_article_sections', $sections );
 
 			asort( $sections, SORT_NATURAL );
 
@@ -1445,7 +1445,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$cache_md5_pre  = $this->p->id . '_f_';
+			$cache_md5_pre  = 'wpsso_f_';
 			$cache_exp_secs = $this->get_cache_exp_secs( $cache_md5_pre );	// Default is month in seconds.
 			$text_list_file = self::get_file_path_locale( WPSSO_PRODUCT_CATEGORIES_LIST );
 
@@ -1521,7 +1521,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			unset( $raw_categories );
 
-			$categories = apply_filters( $this->p->id . '_google_product_categories', $categories );
+			$categories = apply_filters( 'wpsso_google_product_categories', $categories );
 
 			asort( $categories, SORT_NATURAL );
 
@@ -1896,7 +1896,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$function_info = array();
 
-			foreach ( apply_filters( $this->p->id . '_is_functions', $this->is_functions )  as $function ) {
+			foreach ( apply_filters( 'wpsso_is_functions', $this->is_functions )  as $function ) {
 
 				if ( function_exists( $function ) ) {
 
@@ -2040,7 +2040,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				$shortener = $this->p->options[ 'plugin_shortener' ];
 
-				$short_url = apply_filters( $this->p->id . '_get_short_url', $sharing_url, $shortener, $mod, $is_main = true );
+				$short_url = apply_filters( 'wpsso_get_short_url', $sharing_url, $shortener, $mod, $is_main = true );
 			} else {
 				$short_url = $atts[ 'short_url' ];
 			}
@@ -2386,7 +2386,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$url = get_oembed_endpoint_url( $url, $format );	// Since WP v4.4.
 			}
 
-			return apply_filters( $this->p->id . '_oembed_url', $url, $mod, $format );
+			return apply_filters( 'wpsso_oembed_url', $url, $mod, $format );
 		}
 
 		public function get_oembed_data( $mod = false, $width = '600' ) {
@@ -2451,7 +2451,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				}
 			}
 
-			return apply_filters( $this->p->id . '_oembed_data', $data, $mod, $width );
+			return apply_filters( 'wpsso_oembed_data', $data, $mod, $width );
 		}
 
 		/**
@@ -2630,7 +2630,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					}
 				}
 
-				$url = apply_filters( $this->p->id . '_post_url', $url, $mod, $add_page );
+				$url = apply_filters( 'wpsso_post_url', $url, $mod, $add_page );
 
 			} elseif ( $mod[ 'is_home' ] ) {
 
@@ -2640,7 +2640,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				} else {
 
-					$url = apply_filters( $this->p->id . '_home_url', home_url( '/' ), $mod, $add_page );
+					$url = apply_filters( 'wpsso_home_url', home_url( '/' ), $mod, $add_page );
 
 					if ( $this->p->debug->enabled ) {
 
@@ -2670,7 +2670,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					}
 				}
 
-				$url = apply_filters( $this->p->id . '_term_url', $url, $mod, $add_page );
+				$url = apply_filters( 'wpsso_term_url', $url, $mod, $add_page );
 
 			} elseif ( $mod[ 'is_user' ] ) {
 
@@ -2696,7 +2696,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					}
 				}
 
-				$url = apply_filters( $this->p->id . '_user_url', $url, $mod, $add_page );
+				$url = apply_filters( 'wpsso_user_url', $url, $mod, $add_page );
 
 			/**
 			 * $mod[ 'is_search' ] = true will return the search page URL.
@@ -2707,7 +2707,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				$url = $this->check_url_string( get_search_link(), 'search link' );
 
-				$url = apply_filters( $this->p->id . '_search_url', $url, $mod, $add_page );
+				$url = apply_filters( 'wpsso_search_url', $url, $mod, $add_page );
 
 			} elseif ( ! empty( $mod[ 'is_archive' ] ) || ( ! isset( $mod[ 'is_archive' ] ) && self::is_archive_page() ) ) {
 
@@ -2729,7 +2729,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					}
 				}
 
-				$url = apply_filters( $this->p->id . '_archive_page_url', $url, $mod, $add_page );
+				$url = apply_filters( 'wpsso_archive_page_url', $url, $mod, $add_page );
 
 			} else {
 
@@ -2767,7 +2767,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				}
 			}
 
-			$url = apply_filters( $this->p->id . '_' . $type . '_url', $url, $mod, $add_page );
+			$url = apply_filters( 'wpsso_' . $type . '_url', $url, $mod, $add_page );
 
 			if ( ! empty( $cache_salt ) ) {
 
@@ -2795,7 +2795,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				'gclid|pk_campaign|pk_kwd' .
 				')=[^&]*&?/i', '$1', $url );
 
-			$url = apply_filters( $this->p->id . '_server_request_url', $url, $mod, $add_page );
+			$url = apply_filters( 'wpsso_server_request_url', $url, $mod, $add_page );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -2814,7 +2814,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$cache_disabled = false;
 			}
 
-			if ( apply_filters( $this->p->id . '_server_request_url_cache_disabled', $cache_disabled, $url, $mod, $add_page ) ) {
+			if ( apply_filters( 'wpsso_server_request_url_cache_disabled', $cache_disabled, $url, $mod, $add_page ) ) {
 
 				$this->disable_cache_filters( array( 'shorten_url_disabled' => '__return_true' ) );
 			}
@@ -3232,12 +3232,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			/**
 			 * Prevent recursive loops - the global variable is defined before applying the filters.
 			 */
-			if ( ! empty( $GLOBALS[ $this->p->id . '_doing_filter_' . $filter_name ] ) ) {
+			if ( ! empty( $GLOBALS[ 'wpsso_doing_filter_' . $filter_name ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: global variable ' . 
-						$this->p->id . '_doing_filter_' . $filter_name . ' is true' );
+					$this->p->debug->log( 'exiting early: global variable wpsso_doing_filter_' . $filter_name . ' is true' );
 				}
 
 				return $filter_value;
@@ -3247,14 +3246,14 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 * Hooked by some modules, like bbPress and social sharing buttons, to perform actions before/after
 			 * filtering the content.
 			 */
-			do_action( $this->p->id . '_pre_apply_filters_text', $filter_name );
+			do_action( 'wpsso_pre_apply_filters_text', $filter_name );
 
 			/**
 			 * Load the Block Filter Output (BFO) filters to block and show an error for incorrectly coded filters.
 			 */
 			if ( $use_bfo ) {
 
-				$classname = apply_filters( $this->p->id . '_load_lib', false, 'com/bfo', 'SucomBFO' );
+				$classname = apply_filters( 'wpsso_load_lib', false, 'com/bfo', 'SucomBFO' );
 
 				if ( is_string( $classname ) && class_exists( $classname ) ) {
 
@@ -3314,10 +3313,10 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 */
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'setting global ' . $this->p->id . '_doing_filter_' . $filter_name );
+				$this->p->debug->log( 'setting global wpsso_doing_filter_' . $filter_name );
 			}
 
-			$GLOBALS[ $this->p->id . '_doing_filter_' . $filter_name ] = true;	// Prevent recursive loops.
+			$GLOBALS[ 'wpsso_doing_filter_' . $filter_name ] = true;	// Prevent recursive loops.
 
 			/**
 			 * Apply the filters.
@@ -3341,10 +3340,10 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 */
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'unsetting global ' . $this->p->id . '_doing_filter_' . $filter_name );
+				$this->p->debug->log( 'unsetting global wpsso_doing_filter_' . $filter_name );
 			}
 
-			unset( $GLOBALS[ $this->p->id . '_doing_filter_' . $filter_name ] );	// Un-prevent recursive loops.
+			unset( $GLOBALS[ 'wpsso_doing_filter_' . $filter_name ] );	// Un-prevent recursive loops.
 
 			/**
 			 * Issue warning for slow filter performance.
@@ -3444,7 +3443,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 * Hooked by some modules, like bbPress and social sharing buttons, to perform actions before/after
 			 * filtering the content.
 			 */
-			do_action( $this->p->id . '_after_apply_filters_text', $filter_name );
+			do_action( 'wpsso_after_apply_filters_text', $filter_name );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -3477,7 +3476,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				$current = $_SERVER[ 'REQUEST_URI' ];
 
-				if ( preg_match( '/^.*\?page=' . $this->p->id . '-([^&]*).*$/', $current, $match ) ) {
+				if ( preg_match( '/^.*\?page=wpsso-([^&]*).*$/', $current, $match ) ) {
 
 					$menu_id = $match[ 1 ];
 
@@ -3510,7 +3509,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				return;
 			}
 
-			$parent_slug = $this->p->cf[ 'wp' ][ 'admin' ][ $menu_lib ][ 'page' ] . '?page=' . $this->p->id . '-' . $menu_id;
+			$parent_slug = $this->p->cf[ 'wp' ][ 'admin' ][ $menu_lib ][ 'page' ] . '?page=wpsso-' . $menu_id;
 
 			switch ( $menu_lib ) {
 
@@ -3642,9 +3641,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			/**
 			 * Maybe remove text between ignore markers.
 			 */
-			if ( false !== strpos( $text, $this->p->id . '-ignore' ) ) {
+			if ( false !== strpos( $text, 'wpsso-ignore' ) ) {
 
-				$text = preg_replace( '/<!-- *' . $this->p->id . '-ignore *-->.*<!-- *\/' . $this->p->id . '-ignore *-->/U', ' ', $text );
+				$text = preg_replace( '/<!-- *wpsso-ignore *-->.*<!-- *\/wpsso-ignore *-->/U', ' ', $text );
 			}
 
 			/**
@@ -3738,7 +3737,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$content = trim( $content, ', ' );
 
-			return apply_filters( $this->p->id . '_robots_content', $content, $mod, $directives );
+			return apply_filters( 'wpsso_robots_content', $content, $mod, $directives );
 		}
 
 		public function get_robots_directives( array $mod ) {
@@ -3923,7 +3922,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					}
 				}
 
-				$local_cache = apply_filters( $this->p->id . '_product_attribute_names', $local_cache );
+				$local_cache = apply_filters( 'wpsso_product_attribute_names', $local_cache );
 			}
 
 			/**
