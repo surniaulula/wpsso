@@ -329,6 +329,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Added a new WpssoProUtilCheckImgDims class (Premium version).
 	* Added an update option 'active_plugins' filter to sort the WPSSO Core plugin before its add-ons.
+	* Added a new `Wpsso->id` variable to replace `Wpsso->lca`.
+	* Removed the `WpssoConfig::$cf[ 'lca' ]` array element (deprecated in 2017).
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.4.
