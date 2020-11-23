@@ -79,7 +79,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$cache_index = trim( $cache_index, '_' );	// Cleanup leading underscores.
 
-			$cache_index = apply_filters( $this->p->lca . '_head_cache_index', $cache_index, $mixed, $sharing_url );
+			$cache_index = apply_filters( $this->p->id . '_head_cache_index', $cache_index, $mixed, $sharing_url );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -108,7 +108,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$current  = current_filter();
 			}
 
-			$use_post = apply_filters( $this->p->lca . '_use_post', false );
+			$use_post = apply_filters( $this->p->id . '_use_post', false );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -117,7 +117,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$mod = $this->p->util->get_page_mod( $use_post );	// Get post/user/term id, module name, and module object reference.
 
-			$add_head_html = apply_filters( $this->p->lca . '_add_head_html', true, $mod );
+			$add_head_html = apply_filters( $this->p->id . '_add_head_html', true, $mod );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -137,7 +137,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			} else {
 
-				echo "\n" . '<!-- ' . $this->p->lca . ' head html is disabled -->' . "\n";
+				echo "\n" . '<!-- ' . $this->p->id . ' head html is disabled -->' . "\n";
 			}
 		}
 
@@ -263,7 +263,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 */
 			foreach ( WpssoWpMeta::get_sortable_columns() as $col_key => $col_info ) {
 
-				if ( empty( $col_info[ 'meta_key' ] ) || strpos( $col_info[ 'meta_key' ], '_' . $this->p->lca . '_head_info_' ) !== 0 ) {
+				if ( empty( $col_info[ 'meta_key' ] ) || strpos( $col_info[ 'meta_key' ], '_' . $this->p->id . '_head_info_' ) !== 0 ) {
 
 					continue;
 				}
@@ -310,13 +310,13 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				case 'begin':
 				case 'end':
 
-					$add_meta_name = apply_filters( $this->p->lca . '_add_meta_name_' . $this->p->lca . ':mark',
+					$add_meta_name = apply_filters( $this->p->id . '_add_meta_name_' . $this->p->id . ':mark',
 						( empty( $this->p->options[ 'plugin_check_head' ] ) ? false : true ) );
 
-					$html_comment = '<!-- ' . $this->p->lca . ' meta tags ' . $type . ' -->';
+					$html_comment = '<!-- ' . $this->p->id . ' meta tags ' . $type . ' -->';
 
-					$mt_name = $add_meta_name ? '<meta name="' . $this->p->lca . ':mark:' . $type . '" ' . 
-						'content="' . $this->p->lca . ' meta tags ' . $type . '"/>' . "\n" : '';
+					$mt_name = $add_meta_name ? '<meta name="' . $this->p->id . ':mark:' . $type . '" ' . 
+						'content="' . $this->p->id . ' meta tags ' . $type . '"/>' . "\n" : '';
 
 					if ( $type === 'begin' ) {
 
@@ -335,11 +335,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					 * Some HTML optimization plugins/services may remove the double-quotes from the name attribute,
 					 * along with the trailing space and slash characters, so make these optional in the regex.
 					 */
-					$prefix = '<(!--[\s\n\r]+|meta[\s\n\r]+name="?' . $this->p->lca . ':mark:(begin|end)"?[\s\n\r]+content=")';
+					$prefix = '<(!--[\s\n\r]+|meta[\s\n\r]+name="?' . $this->p->id . ':mark:(begin|end)"?[\s\n\r]+content=")';
 					$suffix = '([\s\n\r]+--|"[\s\n\r]*\/?)>';
 
-					$mt_mark = '/' . $prefix . $this->p->lca . ' meta tags begin' . $suffix . '.*' . 
-						$prefix . $this->p->lca . ' meta tags end' . $suffix . '/ums';	// Enable utf8 support.
+					$mt_mark = '/' . $prefix . $this->p->id . ' meta tags begin' . $suffix . '.*' . 
+						$prefix . $this->p->id . ' meta tags end' . $suffix . '/ums';	// Enable utf8 support.
 
 					break;
 			}
@@ -357,7 +357,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$mtime_start   = microtime( true );
 			$indent_num    = 0;
 			$home_url      = SucomUtilWP::raw_home_url();
-			$info          = $this->p->cf[ 'plugin' ][ $this->p->lca ];
+			$info          = $this->p->cf[ 'plugin' ][ $this->p->id ];
 			$short_version = $info[ 'short' ] . ' v' . $info[ 'version' ];
 
 			/**
@@ -448,7 +448,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/**
 			 * Setup variables for transient cache.
 			 */
-			$cache_md5_pre  = $this->p->lca . '_h_';
+			$cache_md5_pre  = $this->p->id . '_h_';
 			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre );
 			$cache_salt     = __METHOD__ . '(' . SucomUtil::get_mod_salt( $mod, $sharing_url ) . ')';
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );

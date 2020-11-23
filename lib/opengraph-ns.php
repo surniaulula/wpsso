@@ -66,7 +66,7 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 				) );
 			}
 
-			$use_post = apply_filters( $this->p->lca . '_use_post', false );
+			$use_post = apply_filters( $this->p->id . '_use_post', false );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -92,7 +92,7 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 				$og_ns[ $type_id ] = $this->p->cf[ 'head' ][ 'og_type_ns' ][ $type_id ];
 			}
 
-			$og_ns = apply_filters( $this->p->lca . '_og_ns', $og_ns, $mod );
+			$og_ns = apply_filters( $this->p->id . '_og_ns', $og_ns, $mod );
 
 			if ( SucomUtil::is_amp() ) {	// Returns null, true, or false.
 

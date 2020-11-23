@@ -603,15 +603,15 @@
       ]
     },
     {
-      "uid": "186dec7a13156bbe2550790c158fb85d",
-      "css": "crown",
-      "code": 59460,
-      "src": "fontelico"
-    },
-    {
       "uid": "3212f42c65d41ed91cb435d0490e29ed",
       "css": "flash",
       "code": 9889,
+      "src": "fontawesome"
+    },
+    {
+      "uid": "178053298e3e5b03551d754d4b9acd8b",
+      "css": "doc-inv",
+      "code": 61787,
       "src": "fontawesome"
     },
     {

@@ -82,7 +82,7 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 			/**
 			 * Hooked by the WPSSO JSON add-on to disable the Schema head attributes.
 			 */
-			if ( apply_filters( $this->p->lca . '_add_schema_head_attributes', true ) ) {
+			if ( apply_filters( $this->p->id . '_add_schema_head_attributes', true ) ) {
 
 				$filter_name = SucomUtil::get_const( 'WPSSO_HEAD_ATTR_FILTER_NAME', 'head_attributes' );
 
@@ -104,7 +104,7 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$use_post = apply_filters( $this->p->lca . '_use_post', false );
+			$use_post = apply_filters( $this->p->id . '_use_post', false );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -169,7 +169,7 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 			/**
 			 * Returns false when the wpsso-schema-json-ld add-on is active.
 			 */
-			if ( ! apply_filters( $this->p->lca . '_add_schema_meta_array', true ) ) {
+			if ( ! apply_filters( $this->p->id . '_add_schema_meta_array', true ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -325,7 +325,7 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 					$this->p->debug->log( 'getting thumbnailurl for ' . $page_type_url );
 				}
 
-				$mt_item[ 'thumbnailurl' ] = $this->p->og->get_thumbnail_url( $this->p->lca . '-thumbnail', $mod, $md_pre = 'schema' );
+				$mt_item[ 'thumbnailurl' ] = $this->p->og->get_thumbnail_url( $this->p->id . '-thumbnail', $mod, $md_pre = 'schema' );
 
 				if ( empty( $mt_item[ 'thumbnailurl' ] ) ) {
 
@@ -333,7 +333,7 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 				}
 			}
 
-			return (array) apply_filters( $this->p->lca . '_schema_meta_itemprop', $mt_item, $mod, $mt_og, $page_type_id );
+			return (array) apply_filters( $this->p->id . '_schema_meta_itemprop', $mt_item, $mod, $mt_og, $page_type_id );
 		}
 	}
 }

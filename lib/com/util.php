@@ -4113,11 +4113,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return is_string( $mixed ) ? filter_var( $mixed, FILTER_VALIDATE_BOOLEAN ) : (bool) $mixed;
 		}
 
-		public static function minify_css( $css_data, $lca ) {
+		public static function minify_css( $css_data, $ext ) {
 
 			if ( ! empty( $css_data ) ) {
 
-				$classname = apply_filters( $lca . '_load_lib', false, 'ext/compressor', 'SuextMinifyCssCompressor' );
+				$classname = apply_filters( $ext . '_load_lib', false, 'ext/compressor', 'SuextMinifyCssCompressor' );
 
 				if ( false !== $classname && class_exists( $classname ) ) {
 

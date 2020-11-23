@@ -58,7 +58,7 @@ if ( ! class_exists( 'WpssoSubmenuSocialPages' ) && class_exists( 'WpssoAdmin' )
 
 				case 'social_pages-social_accounts':
 
-					$social_accounts = apply_filters( $this->p->lca . '_social_accounts', $this->p->cf[ 'form' ][ 'social_accounts' ] );
+					$social_accounts = apply_filters( $this->p->id . '_social_accounts', $this->p->cf[ 'form' ][ 'social_accounts' ] );
 
 					asort( $social_accounts );	// Sort by label (after translation) and maintain key association.
 

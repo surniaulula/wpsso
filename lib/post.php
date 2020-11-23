@@ -68,7 +68,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				$metabox_id   = $this->p->cf[ 'meta' ][ 'id' ];
 
-				$mb_container_id = $this->p->lca . '_metabox_' . $metabox_id . '_inside';
+				$mb_container_id = $this->p->id . '_metabox_' . $metabox_id . '_inside';
 
 				add_action( 'wp_ajax_get_container_id_' . $mb_container_id, array( $this, 'ajax_get_metabox_document_meta' ) );
 
@@ -266,7 +266,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * Hooked by the 'coauthors' pro module.
 			 */
-			return $local_cache[ $post_id ] = apply_filters( $this->p->lca . '_get_post_mod', $mod, $post_id );
+			return $local_cache[ $post_id ] = apply_filters( $this->p->id . '_get_post_mod', $mod, $post_id );
 		}
 
 		/**
@@ -395,7 +395,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$this->p->debug->log( 'applying import_custom_fields filters for post id ' . $post_id . ' metadata' );
 					}
 
-					$md_opts = apply_filters( $this->p->lca . '_import_custom_fields', $md_opts, get_post_meta( $post_id ) );
+					$md_opts = apply_filters( $this->p->id . '_import_custom_fields', $md_opts, get_post_meta( $post_id ) );
 
 					/**
 					 * Since WPSSO Core v7.1.0.
@@ -405,7 +405,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$this->p->debug->log( 'applying get_md_options filters' );
 					}
 
-					$md_opts = (array) apply_filters( $this->p->lca . '_get_md_options', $md_opts, $mod );
+					$md_opts = (array) apply_filters( $this->p->id . '_get_md_options', $md_opts, $mod );
 
 					/**
 					 * Since WPSSO Core v4.31.0.
@@ -419,7 +419,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$this->p->debug->log( 'applying get_post_options filters for post id ' . $post_id . ' metadata' );
 					}
 
-					$md_opts = (array) apply_filters( $this->p->lca . '_get_post_options', $md_opts, $post_id, $mod );
+					$md_opts = (array) apply_filters( $this->p->id . '_get_post_options', $md_opts, $post_id, $mod );
 
 					/**
 					 * Since WPSSO Core v8.2.0.
@@ -429,7 +429,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$this->p->debug->log( 'applying sanitize_md_options filters' );
 					}
 
-					$md_opts = apply_filters( $this->p->lca . '_sanitize_md_options', $md_opts, $mod );
+					$md_opts = apply_filters( $this->p->id . '_sanitize_md_options', $md_opts, $mod );
 				}
 			}
 
@@ -462,9 +462,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				unset( $opts[ 'seo_desc' ] );
 			}
 
-			$opts = apply_filters( $this->p->lca . '_save_md_options', $opts, $mod );
+			$opts = apply_filters( $this->p->id . '_save_md_options', $opts, $mod );
 
-			$opts = apply_filters( $this->p->lca . '_save_post_options', $opts, $post_id, $rel_id, $mod );
+			$opts = apply_filters( $this->p->id . '_save_post_options', $opts, $post_id, $rel_id, $mod );
 
 			if ( empty( $opts ) ) {
 
@@ -513,7 +513,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( null === $ppp ) {
 
-				$ppp = apply_filters( $this->p->lca . '_posts_per_page', get_option( 'posts_per_page' ), $mod );
+				$ppp = apply_filters( $this->p->id . '_posts_per_page', get_option( 'posts_per_page' ), $mod );
 			}
 
 			if ( null === $paged ) {
@@ -551,7 +551,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $mtime_max > 0 && $mtime_total > $mtime_max ) {
 
-				$info = $this->p->cf[ 'plugin' ][ $this->p->lca ];
+				$info = $this->p->cf[ 'plugin' ][ $this->p->id ];
 
 				if ( $this->p->debug->enabled ) {
 
@@ -615,9 +615,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		public function get_column_content( $value, $column_name, $post_id ) {
 
-			if ( ! empty( $post_id ) && 0 === strpos( $column_name, $this->p->lca . '_' ) ) {	// Just in case.
+			if ( ! empty( $post_id ) && 0 === strpos( $column_name, $this->p->id . '_' ) ) {	// Just in case.
 
-				$col_key = str_replace( $this->p->lca . '_', '', $column_name );
+				$col_key = str_replace( $this->p->id . '_', '', $column_name );
 
 				if ( $this->p->debug->enabled ) {
 
@@ -821,7 +821,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				/**
 				 * Hooked by woocommerce module to load front-end libraries and start a session.
 				 */
-				do_action( $this->p->lca . '_admin_post_head', $mod );
+				do_action( $this->p->id . '_admin_post_head', $mod );
 
 				if ( $this->p->debug->enabled ) {
 
@@ -873,7 +873,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 						$check_head = empty( $this->p->options[ 'plugin_check_head' ] ) ? false : true;
 
-						if ( apply_filters( $this->p->lca . '_check_post_head', $check_head, $post_id, $post_obj ) ) {
+						if ( apply_filters( $this->p->id . '_check_post_head', $check_head, $post_id, $post_obj ) ) {
 
 							if ( $this->p->debug->enabled ) {
 
@@ -886,7 +886,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 			}
 
-			$action_query = $this->p->lca . '-action';
+			$action_query = $this->p->id . '-action';
 
 			if ( ! empty( $_GET[ $action_query ] ) ) {
 
@@ -916,7 +916,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 						default:
 
-							do_action( $this->p->lca . '_load_meta_page_post_' . $action_name, $post_id, $post_obj );
+							do_action( $this->p->id . '_load_meta_page_post_' . $action_name, $post_id, $post_obj );
 
 							break;
 					}
@@ -931,11 +931,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( ! apply_filters( $this->p->lca . '_add_meta_name_' . $this->p->lca . ':mark', true ) ) {
+			if ( ! apply_filters( $this->p->id . '_add_meta_name_' . $this->p->id . ':mark', true ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: ' . $this->p->lca . ':mark meta tags are disabled');
+					$this->p->debug->log( 'exiting early: ' . $this->p->id . ':mark meta tags are disabled');
 				}
 
 				return;	// Stop here.
@@ -1171,16 +1171,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				return;	// Stop here.
 
-			} elseif ( false === strpos( $webpage_html, $this->p->lca . ' meta tags begin' ) ) {	// Webpage should include our own meta tags.
+			} elseif ( false === strpos( $webpage_html, $this->p->id . ' meta tags begin' ) ) {	// Webpage should include our own meta tags.
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: ' . $this->p->lca . ' meta tag section not found in ' . $check_url );
+					$this->p->debug->log( 'exiting early: ' . $this->p->id . ' meta tag section not found in ' . $check_url );
 				}
 
 				if ( $is_admin ) {
 
-					$short_name = $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'short' ];
+					$short_name = $this->p->cf[ 'plugin' ][ $this->p->id ][ 'short' ];
 
 					$this->p->notice->err( sprintf( __( 'A %2$s meta tag section was not found in <a href="%1$s">%1$s</a> &mdash; perhaps a webpage caching plugin or service needs to be refreshed?', 'wpsso' ), $check_url, $short_name ) );
 				}
@@ -1193,7 +1193,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 */
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'removing the ' . $this->p->lca . ' meta tag section from the webpage html' );
+				$this->p->debug->log( 'removing the ' . $this->p->id . ' meta tag section from the webpage html' );
 			}
 
 			$html_stripped = preg_replace( $this->p->head->get_mt_mark( 'preg' ), '', $webpage_html, -1, $mark_count );
@@ -1207,7 +1207,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				if ( $is_admin ) {
 
-					$short_name = $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'short' ];
+					$short_name = $this->p->cf[ 'plugin' ][ $this->p->id ][ 'short' ];
 
 					$this->p->notice->err( sprintf( __( 'The PHP preg_replace() function failed to remove the %1$s meta tag section &mdash; this could be an indication of a problem with PHP\'s PCRE library or a webpage filter corrupting the %1$s meta tags.', 'wpsso' ), $short_name ) );
 				}
@@ -1393,7 +1393,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				'__block_editor_compatible_meta_box' => true,
 			);
 
-			add_meta_box( $this->p->lca . '_' . $metabox_id, $metabox_title,
+			add_meta_box( $this->p->id . '_' . $metabox_id, $metabox_title,
 				array( $this, 'show_metabox_document_meta' ), $metabox_screen,
 					$metabox_context, $metabox_prio, $callback_args );
 		}
@@ -1496,7 +1496,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$this->p->admin->plugin_pkg_info();
 
-			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts, $this->p->lca );
+			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts, $this->p->id );
 
 			wp_nonce_field( WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 
@@ -1516,8 +1516,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				} else {
 
-					$mb_filter_name  = $this->p->lca . '_metabox_' . $metabox_id . '_' . $tab_key . '_rows';
-					$mod_filter_name = $this->p->lca . '_' . $mod[ 'name' ] . '_' . $tab_key . '_rows';
+					$mb_filter_name  = $this->p->id . '_metabox_' . $metabox_id . '_' . $tab_key . '_rows';
+					$mod_filter_name = $this->p->id . '_' . $mod[ 'name' ] . '_' . $tab_key . '_rows';
 
 					$table_rows[ $tab_key ] = (array) apply_filters( $mb_filter_name,
 						array(), $this->form, parent::$head_info, $mod );
@@ -1532,7 +1532,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				'is_auto_draft' => $is_auto_draft,
 			);
 
-			$mb_container_id = $this->p->lca . '_metabox_' . $metabox_id . '_inside';
+			$mb_container_id = $this->p->id . '_metabox_' . $metabox_id . '_inside';
 
 			$metabox_html = "\n" . '<div id="' . $mb_container_id . '">';
 
@@ -2022,7 +2022,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$sharing_url = $this->p->util->get_sharing_url( $mod, $add_page = false );
 
-			$short_url = apply_filters( $this->p->lca . '_get_short_url', $sharing_url, $this->p->options[ 'plugin_shortener' ], $mod );
+			$short_url = apply_filters( $this->p->id . '_get_short_url', $sharing_url, $this->p->options[ 'plugin_shortener' ], $mod );
 
 			if ( filter_var( $short_url, FILTER_VALIDATE_URL ) === false ) {	// Invalid url.
 

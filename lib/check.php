@@ -644,7 +644,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 			$mtime_total = microtime( true ) - $mtime_start;
 
-			return apply_filters( $this->p->lca . '_get_avail', $get_avail );
+			return apply_filters( $this->p->id . '_get_avail', $get_avail );
 		}
 
 		public function is_pp( $ext = null, $rc = true ) {
@@ -656,7 +656,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 			static $lc = array();
 
-			$ext = null === $ext ? $this->p->lca : $ext;
+			$ext = null === $ext ? $this->p->id : $ext;
 			$id  = '|' . $ext . '-' . $li . '-' . $rv . '-' . $mx . '|';
 			$rv  = null === $mx ? $rv : $rv * $mx;
 

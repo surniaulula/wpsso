@@ -26,7 +26,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		private $p;	// Plugin class object.
 
-		private $lca                = null;
+		private $plugin_id          = null;
 		private $opts_name          = null;
 		private $menu_ext           = null;	// Lowercase acronyn for plugin or add-on.
 		private $text_domain        = false;	// Text domain for plugin or add-on.
@@ -48,15 +48,15 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$this->p->debug->log( 'form options name is ' . $opts_name );
 			}
 
-			$this->lca       = $this->p->lca;
+			$this->plugin_id = $this->p->id;
 			$this->opts_name =& $opts_name;
 			$this->options   =& $opts;
 			$this->defaults  =& $def_opts;
-			$this->menu_ext  = empty( $menu_ext ) ? $this->lca : $menu_ext;	// Lowercase acronyn for plugin or add-on.
+			$this->menu_ext  = empty( $menu_ext ) ? $this->plugin_id : $menu_ext;	// Lowercase acronyn for plugin or add-on.
 
 			$this->set_text_domain( $this->menu_ext );
 
-			$this->set_default_text_domain( $this->lca );
+			$this->set_default_text_domain( $this->plugin_id );
 		}
 
 		public function get_options_name() {
@@ -630,7 +630,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				return '';
 			}
 
-			$filter_name = SucomUtil::sanitize_hookname( $this->lca . '_form_select_' . $name );
+			$filter_name = SucomUtil::sanitize_hookname( $this->plugin_id . '_form_select_' . $name );
 
 			$values = apply_filters( $filter_name, $values );
 
@@ -662,12 +662,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					if ( is_string( $event_args ) ) {
 
 						$event_json_var = preg_replace( '/:.$/', '', $event_args );
-						$event_json_var = SucomUtil::sanitize_hookname( $this->lca . '_form_select_' .
+						$event_json_var = SucomUtil::sanitize_hookname( $this->plugin_id . '_form_select_' .
 							$event_json_var . '_json' );
 
 					} elseif ( ! empty( $event_args[ 'json_var' ] ) ) {
 
-						$event_json_var = SucomUtil::sanitize_hookname( $this->lca . '_form_select_' .
+						$event_json_var = SucomUtil::sanitize_hookname( $this->plugin_id . '_form_select_' .
 							$event_args[ 'json_var' ] . '_json' );
 					}
 				}
@@ -1761,12 +1761,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 							if ( is_string( $event_args ) ) {
 
 								$event_json_var = preg_replace( '/:.$/', '', $event_args );
-								$event_json_var = SucomUtil::sanitize_hookname( $this->lca . '_form_select_' .
+								$event_json_var = SucomUtil::sanitize_hookname( $this->plugin_id . '_form_select_' .
 									$event_json_var . '_json' );
 
 							} elseif ( ! empty( $event_args[ 'json_var' ] ) ) {
 
-								$event_json_var = SucomUtil::sanitize_hookname( $this->lca . '_form_select_' .
+								$event_json_var = SucomUtil::sanitize_hookname( $this->plugin_id . '_form_select_' .
 									$event_args[ 'json_var' ] . '_json' );
 							}
 						}

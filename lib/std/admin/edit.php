@@ -272,7 +272,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			/**
 			 * Get the default Pinterest image pid and URL.
 			 */
-			$size_name     = $this->p->lca . '-pinterest';
+			$size_name     = $this->p->id . '-pinterest';
 			$media_request = array( 'pid', 'img_url' );
 			$media_info    = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = array( 'schema', 'og' ) );
 

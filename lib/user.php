@@ -70,9 +70,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			add_filter( 'user_' . $cm_fb_name . '_label', array( $this, 'modify_fb_contact_label' ), 20, 1 );
 
-			add_action( $this->p->lca . '_add_person_role', array( $this, 'add_person_role' ), 10, 1 );	// For single scheduled task.
+			add_action( $this->p->id . '_add_person_role', array( $this, 'add_person_role' ), 10, 1 );	// For single scheduled task.
 
-			add_action( $this->p->lca . '_remove_person_role', array( $this, 'remove_person_role' ), 10, 1 );	// For single scheduled task.
+			add_action( $this->p->id . '_remove_person_role', array( $this, 'remove_person_role' ), 10, 1 );	// For single scheduled task.
 
 			/**
 			 * Hook a minimum number of admin actions to maximize performance. The user_id argument is 
@@ -182,7 +182,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			 */
 			$mod[ 'is_user' ] = true;
 
-			return $local_cache[ $user_id ] = apply_filters( $this->p->lca . '_get_user_mod', $mod, $user_id );
+			return $local_cache[ $user_id ] = apply_filters( $this->p->id . '_get_user_mod', $mod, $user_id );
 		}
 
 		/**
@@ -252,7 +252,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 					$user_exists_id = 0;
 
-					$md_opts = apply_filters( $this->p->lca . '_get_other_user_meta', false, $user_id );
+					$md_opts = apply_filters( $this->p->id . '_get_other_user_meta', false, $user_id );
 				}
 
 				if ( ! is_array( $md_opts ) ) {
@@ -274,7 +274,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 					} else {
 
-						apply_filters( $this->p->lca . '_update_other_user_meta', $md_opts, $user_id );
+						apply_filters( $this->p->id . '_update_other_user_meta', $md_opts, $user_id );
 					}
 
 					if ( $this->p->debug->enabled ) {
@@ -305,7 +305,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 						$this->p->debug->log( 'applying get_md_options filters' );
 					}
 
-					$md_opts = (array) apply_filters( $this->p->lca . '_get_md_options', $md_opts, $mod );
+					$md_opts = (array) apply_filters( $this->p->id . '_get_md_options', $md_opts, $mod );
 
 					/**
 					 * Since WPSSO Core v4.31.0.
@@ -315,7 +315,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 						$this->p->debug->log( 'applying get_user_options filters for user_id ' . $user_id . ' meta' );
 					}
 
-					$md_opts = (array) apply_filters( $this->p->lca . '_get_user_options', $md_opts, $user_id, $mod );
+					$md_opts = (array) apply_filters( $this->p->id . '_get_user_options', $md_opts, $user_id, $mod );
 
 					/**
 					 * Since WPSSO Core v8.2.0.
@@ -325,7 +325,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 						$this->p->debug->log( 'applying sanitize_md_options filters' );
 					}
 
-					$md_opts = apply_filters( $this->p->lca . '_sanitize_md_options', $md_opts, $mod );
+					$md_opts = apply_filters( $this->p->id . '_sanitize_md_options', $md_opts, $mod );
 				}
 			}
 
@@ -358,9 +358,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				unset( $opts[ 'seo_desc' ] );
 			}
 
-			$opts = apply_filters( $this->p->lca . '_save_md_options', $opts, $mod );
+			$opts = apply_filters( $this->p->id . '_save_md_options', $opts, $mod );
 
-			$opts = apply_filters( $this->p->lca . '_save_user_options', $opts, $user_id, $rel_id, $mod );
+			$opts = apply_filters( $this->p->id . '_save_user_options', $opts, $user_id, $rel_id, $mod );
 
 			if ( empty( $opts ) ) {
 
@@ -413,7 +413,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( null === $ppp ) {
 
-				$ppp = apply_filters( $this->p->lca . '_posts_per_page', get_option( 'posts_per_page' ), $mod );
+				$ppp = apply_filters( $this->p->id . '_posts_per_page', get_option( 'posts_per_page' ), $mod );
 			}
 
 			if ( null === $paged ) {
@@ -450,7 +450,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $mtime_max > 0 && $mtime_total > $mtime_max ) {
 
-				$info = $this->p->cf[ 'plugin' ][ $this->p->lca ];
+				$info = $this->p->cf[ 'plugin' ][ $this->p->id ];
 
 				if ( $this->p->debug->enabled ) {
 
@@ -562,7 +562,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			switch ( $screen->id ) {
 
-				case ( 0 === strpos( $screen->id, 'users_page_' . $this->p->lca . '-add-' ) ? true : false ):	// Add user page.
+				case ( 0 === strpos( $screen->id, 'users_page_' . $this->p->id . '-add-' ) ? true : false ):	// Add user page.
 
 					$user_id = null;
 
@@ -573,7 +573,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				case 'profile':		// User profile page.
 				case 'user-edit':	// User editing page.
 				case ( 0 === strpos( $screen->id, 'profile_page_' ) ? true : false ):			// Your profile page.
-				case ( 0 === strpos( $screen->id, 'users_page_' . $this->p->lca ) ? true : false ):	// Users settings page.
+				case ( 0 === strpos( $screen->id, 'users_page_' . $this->p->id ) ? true : false ):	// Users settings page.
 
 					/**
 					 * Get the user id.
@@ -610,7 +610,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $user_id && ! empty( $this->p->options[ 'plugin_add_to_user_page' ] ) ) {
 
-				do_action( $this->p->lca . '_admin_user_head', $mod, $screen->id );
+				do_action( $this->p->id . '_admin_user_head', $mod, $screen->id );
 
 				if ( $this->p->debug->enabled ) {
 
@@ -657,7 +657,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				}
 			}
 
-			$action_query = $this->p->lca . '-action';
+			$action_query = $this->p->id . '-action';
 
 			if ( ! empty( $_GET[ $action_query ] ) ) {
 
@@ -688,7 +688,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 						default:
 
-							do_action( $this->p->lca . '_load_meta_page_user_' . $action_name, $user_id, $screen->id );
+							do_action( $this->p->id . '_load_meta_page_user_' . $action_name, $user_id, $screen->id );
 
 							break;
 					}
@@ -712,14 +712,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$metabox_id      = $this->p->cf[ 'meta' ][ 'id' ];
 			$metabox_title   = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
-			$metabox_screen  = $this->p->lca . '-user';
+			$metabox_screen  = $this->p->id . '-user';
 			$metabox_context = 'normal';
 			$metabox_prio    = 'default';
 			$callback_args   = array(	// Second argument passed to the callback.
 				'__block_editor_compatible_meta_box' => true,
 			);
 
-			add_meta_box( $this->p->lca . '_' . $metabox_id, $metabox_title,
+			add_meta_box( $this->p->id . '_' . $metabox_id, $metabox_title,
 				array( $this, 'show_metabox_document_meta' ), $metabox_screen,
 					$metabox_context, $metabox_prio, $callback_args );
 		}
@@ -741,17 +741,17 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				return;
 			}
 
-			$metabox_screen  = $this->p->lca . '-user';
+			$metabox_screen  = $this->p->id . '-user';
 			$metabox_context = 'normal';
 
-			echo "\n" . '<!-- ' . $this->p->lca . ' user metabox section begin -->' . "\n";
-			echo '<h3>' . WpssoAdmin::$pkg[ $this->p->lca ][ 'short' ] . '</h3>' . "\n";
-			echo '<div id="poststuff" class="' . $this->p->lca . '-metaboxes metabox-holder">' . "\n";
+			echo "\n" . '<!-- ' . $this->p->id . ' user metabox section begin -->' . "\n";
+			echo '<h3>' . WpssoAdmin::$pkg[ $this->p->id ][ 'short' ] . '</h3>' . "\n";
+			echo '<div id="poststuff" class="' . $this->p->id . '-metaboxes metabox-holder">' . "\n";
 
 			do_meta_boxes( $metabox_screen, $metabox_context, $user_obj );
 
 			echo "\n" . '</div><!-- #poststuff -->' . "\n";
-			echo '<!-- ' . $this->p->lca . ' user metabox section end -->' . "\n";
+			echo '<!-- ' . $this->p->id . ' user metabox section end -->' . "\n";
 		}
 
 		public function ajax_get_metabox_document_meta() {
@@ -769,7 +769,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$this->p->admin->plugin_pkg_info();
 
-			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts, $this->p->lca );
+			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts, $this->p->id );
 
 			wp_nonce_field( WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 
@@ -782,8 +782,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			foreach ( $tabs as $tab_key => $title ) {
 
-				$mb_filter_name  = $this->p->lca . '_metabox_' . $metabox_id . '_' . $tab_key . '_rows';
-				$mod_filter_name = $this->p->lca . '_' . $mod[ 'name' ] . '_' . $tab_key . '_rows';
+				$mb_filter_name  = $this->p->id . '_metabox_' . $metabox_id . '_' . $tab_key . '_rows';
+				$mod_filter_name = $this->p->id . '_' . $mod[ 'name' ] . '_' . $tab_key . '_rows';
 
 				$table_rows[ $tab_key ] = (array) apply_filters( $mb_filter_name,
 					array(), $this->form, parent::$head_info, $mod );
@@ -796,7 +796,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				'layout' => 'vertical',
 			);
 
-			$mb_container_id = $this->p->lca . '_metabox_' . $metabox_id . '_inside';
+			$mb_container_id = $this->p->id . '_metabox_' . $metabox_id . '_inside';
 
 			$metabox_html = "\n" . '<div id="' . $mb_container_id . '">';
 
@@ -1069,7 +1069,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->log( 'user id ' . $user_id . ' is not a WordPress user' );
 			}
 
-			$author_meta = apply_filters( $this->p->lca . '_get_author_meta', $author_meta, $user_id, $meta_key, $user_exists );
+			$author_meta = apply_filters( $this->p->id . '_get_author_meta', $author_meta, $user_id, $meta_key, $user_exists );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1178,7 +1178,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				self::$cache_user_prefs[ $user_id ][ 'prefs_filtered' ] = true;	// Set before calling filter to prevent recursion.
 
-				self::$cache_user_prefs[ $user_id ] = apply_filters( $wpsso->lca . '_get_user_pref',
+				self::$cache_user_prefs[ $user_id ] = apply_filters( $wpsso->id . '_get_user_pref',
 					self::$cache_user_prefs[ $user_id ], $user_id );
 
 				if ( ! isset( self::$cache_user_prefs[ $user_id ][ 'show_opts' ] ) ) {
@@ -1354,7 +1354,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				return $this->get_md_images( $num, $size_names, $mod, $check_dupes, $md_pre, $mt_pre );
 			}
 
-			return apply_filters( $this->p->lca . '_get_other_user_images', array(), $num, $size_names, $user_id, $check_dupes, $md_pre );
+			return apply_filters( $this->p->id . '_get_other_user_images', array(), $num, $size_names, $user_id, $check_dupes, $md_pre );
 		}
 
 		/**
@@ -1479,7 +1479,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				}
 			}
 
-			$website_url = apply_filters( $this->p->lca . '_get_author_website', $website_url, $user_id, $meta_key, $user_exists );
+			$website_url = apply_filters( $this->p->id . '_get_author_website', $website_url, $user_id, $meta_key, $user_exists );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1496,7 +1496,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
 			$event_time = time() + 5;	// Add a 5 second event buffer.
-			$event_hook = $this->p->lca . '_add_person_role';
+			$event_hook = $this->p->id . '_add_person_role';
 			$event_args = array( $user_id );
 
 			$this->stop_add_person_role();	// Just in case.
@@ -1506,7 +1506,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public function stop_add_person_role() {
 
-			$cache_md5_pre  = $this->p->lca . '_!_';		// Protect transient from being cleared.
+			$cache_md5_pre  = $this->p->id . '_!_';		// Protect transient from being cleared.
 			$cache_exp_secs = HOUR_IN_SECONDS;			// Prevent duplicate runs for max 1 hour.
 			$cache_salt     = __CLASS__ . '::add_person_role';	// Use a common cache salt for start / stop.
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
@@ -1532,7 +1532,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			/**
 			 * A transient is set and checked to limit the runtime and allow this process to be terminated early.
 			 */
-			$cache_md5_pre  = $this->p->lca . '_!_';		// Protect transient from being cleared.
+			$cache_md5_pre  = $this->p->id . '_!_';		// Protect transient from being cleared.
 			$cache_exp_secs = HOUR_IN_SECONDS;			// Prevent duplicate runs for max 1 hour.
 			$cache_salt     = __CLASS__ . '::add_person_role';	// Use a common cache salt for start / stop.
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
@@ -1577,7 +1577,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				/**
 				 * Register image sizes and include WooCommerce front-end libs.
 				 */
-				do_action( $this->p->lca . '_scheduled_task_started', $user_id );
+				do_action( $this->p->id . '_scheduled_task_started', $user_id );
 			}
 
 			$public_user_ids = self::get_public_ids();	// Aka 'administrator', 'editor', 'author', and 'contributor'.
@@ -1620,7 +1620,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
 			$event_time = time() + 5;	// Add a 5 second event buffer.
-			$event_hook = $this->p->lca . '_remove_person_role';
+			$event_hook = $this->p->id . '_remove_person_role';
 			$event_args = array( $user_id );
 
 			wp_schedule_single_event( $event_time, $event_hook, $event_args );
@@ -1640,7 +1640,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			/**
 			 * A transient is set and checked to limit the runtime and allow this process to be terminated early.
 			 */
-			$cache_md5_pre  = $this->p->lca . '_!_';		// Protect transient from being cleared.
+			$cache_md5_pre  = $this->p->id . '_!_';		// Protect transient from being cleared.
 			$cache_exp_secs = HOUR_IN_SECONDS;			// Prevent duplicate runs for max 1 hour.
 			$cache_salt     = __CLASS__ . '::remove_person_role';	// Use a common cache salt for start / stop.
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
@@ -1687,7 +1687,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				/**
 				 * Register image sizes and include WooCommerce front-end libs.
 				 */
-				do_action( $this->p->lca . '_scheduled_task_started', $user_id );
+				do_action( $this->p->id . '_scheduled_task_started', $user_id );
 			}
 
 			$blog_id = get_current_blog_id();

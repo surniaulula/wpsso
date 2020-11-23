@@ -2,7 +2,7 @@
 /**
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
- * Copyright 2017-2020 Jean-Sebastien Morisset (https://wpsso.com/)
+ * Copyright 2017-2020 Jean-Sebastien Morisset (https://surniaulula.com/)
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -16,7 +16,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 
 		private $p;	// Plugin class object.
 
-		private $lca          = 'sucom';
+		private $plugin_id    = 'sucom';
 		private $text_domain  = 'sucom';
 		private $label_transl = '';
 		private $bfo_check_id = 'check_output_buffer';	// String id to detect our check callback using __call().
@@ -29,9 +29,9 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 		 */
 		private static $filter_hooked = array();
 
-		public function __construct( $plugin = null, $lca = null, $text_domain = null, $label_transl = null ) {
+		public function __construct( $plugin = null, $plugin_id = null, $text_domain = null, $label_transl = null ) {
 
-			$this->set_config( $plugin, $lca, $text_domain, $label_transl );
+			$this->set_config( $plugin, $plugin_id, $text_domain, $label_transl );
 		}
 
 		/**
@@ -228,7 +228,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 		/**
 		 * Set property values for text domain, notice label, etc.
 		 */
-		private function set_config( $plugin = null, $lca = null, $text_domain = null, $label_transl = null ) {
+		private function set_config( $plugin = null, $plugin_id = null, $text_domain = null, $label_transl = null ) {
 
 			if ( $plugin !== null ) {
 
@@ -240,22 +240,22 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 				}
 			}
 
-			if ( $lca !== null ) {
+			if ( $plugin_id !== null ) {
 
-				$this->lca = $lca;
+				$this->plugin_id = $plugin_id;
 
-			} elseif ( ! empty( $this->p->lca ) ) {
+			} elseif ( ! empty( $this->p->id ) ) {
 
-				$this->lca = $this->p->lca;
+				$this->plugin_id = $this->p->id;
 			}
 
 			if ( $text_domain !== null ) {
 
 				$this->text_domain = $text_domain;
 
-			} elseif ( ! empty( $this->p->cf[ 'plugin' ][ $this->lca ][ 'text_domain' ] ) ) {
+			} elseif ( ! empty( $this->p->cf[ 'plugin' ][ $this->plugin_id ][ 'text_domain' ] ) ) {
 
-				$this->text_domain = $this->p->cf[ 'plugin' ][ $this->lca ][ 'text_domain' ];
+				$this->text_domain = $this->p->cf[ 'plugin' ][ $this->plugin_id ][ 'text_domain' ];
 			}
 
 			if ( $label_transl !== null ) {
@@ -322,7 +322,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 
 							require_once $lib_dir . 'com/notice.php';	// Load the SucomNotice class.
 
-							$notice = new SucomNotice( $this->p, $this->lca, $this->text_domain, $this->label_transl );
+							$notice = new SucomNotice( $this->p, $this->plugin_id, $this->text_domain, $this->label_transl );
 
 							/**
 							 * Add notice only if the admin notices have not already been shown.

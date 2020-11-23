@@ -76,7 +76,8 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		/**
 		 * Reference variables (config, options, modules, etc.).
 		 */
-		public $lca          = 'wpsso';	// Main plugin lowercase acronym.
+		public $lca          = 'wpsso';	// Plugin lowercase acronym (deprecated).
+		public $id           = 'wpsso';	// Plugin ID (since WPSSO Core v8.14.0).
 		public $m            = array();	// Loaded module objects from core plugin.
 		public $m_ext        = array();	// Loaded module objects from extensions / add-ons.
 		public $cf           = array();	// Config array defined in construct method.

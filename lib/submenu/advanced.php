@@ -105,7 +105,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			$metabox_id = 'plugin';
 			$table_rows = array();
 
-			$tabs = apply_filters( $this->p->lca . '_advanced_' . $metabox_id . '_tabs', array(
+			$tabs = apply_filters( $this->p->id . '_advanced_' . $metabox_id . '_tabs', array(
 				'settings'     => _x( 'Plugin Admin', 'metabox tab', 'wpsso' ),
 				'interface'    => _x( 'Interface', 'metabox tab', 'wpsso' ),
 				'integration'  => _x( 'Integration', 'metabox tab', 'wpsso' ),
@@ -115,7 +115,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 
 			foreach ( $tabs as $tab_key => $title ) {
 
-				$filter_name = $this->p->lca . '_' . $metabox_id . '_' . $tab_key . '_rows';
+				$filter_name = $this->p->id . '_' . $metabox_id . '_' . $tab_key . '_rows';
 
 				$table_rows[ $tab_key ] = array_merge(
 					$this->get_table_rows( $metabox_id, $tab_key ),
@@ -131,14 +131,14 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			$metabox_id = 'edit';
 			$table_rows = array();
 
-			$tabs = apply_filters( $this->p->lca . '_advanced_' . $metabox_id . '_tabs', array(
+			$tabs = apply_filters( $this->p->id . '_advanced_' . $metabox_id . '_tabs', array(
 				'product_attrs' => _x( 'Product Attributes', 'metabox tab', 'wpsso' ),
 				'custom_fields' => _x( 'Custom Fields', 'metabox tab', 'wpsso' ),
 			) );
 
 			foreach ( $tabs as $tab_key => $title ) {
 
-				$filter_name = $this->p->lca . '_' . $metabox_id . '_' . $tab_key . '_rows';
+				$filter_name = $this->p->id . '_' . $metabox_id . '_' . $tab_key . '_rows';
 
 				$table_rows[ $tab_key ] = array_merge(
 					$this->get_table_rows( $metabox_id, $tab_key ),
@@ -155,14 +155,14 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			$table_rows = array();
 			$info_msg   = $this->p->msgs->get( 'info-' . $metabox_id );
 
-			$tabs = apply_filters( $this->p->lca . '_advanced_' . $metabox_id . '_tabs', array(
+			$tabs = apply_filters( $this->p->id . '_advanced_' . $metabox_id . '_tabs', array(
 				'custom_contacts'  => _x( 'Custom Contacts', 'metabox tab', 'wpsso' ),
 				'default_contacts' => _x( 'Default Contacts', 'metabox tab', 'wpsso' ),
 			) );
 
 			foreach ( $tabs as $tab_key => $title ) {
 
-				$filter_name = $this->p->lca . '_' . $metabox_id . '_' . $tab_key . '_rows';
+				$filter_name = $this->p->id . '_' . $metabox_id . '_' . $tab_key . '_rows';
 
 				$table_rows[ $tab_key ] = array_merge(
 					$this->get_table_rows( $metabox_id, $tab_key ),
@@ -180,7 +180,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 
 			$metabox_id = 'head_tags';
 
-			$tabs = apply_filters( $this->p->lca . '_advanced_' . $metabox_id . '_tabs', array(
+			$tabs = apply_filters( $this->p->id . '_advanced_' . $metabox_id . '_tabs', array(
 				'facebook'   => _x( 'Facebook', 'metabox tab', 'wpsso' ),
 				'open_graph' => _x( 'Open Graph', 'metabox tab', 'wpsso' ),
 				'twitter'    => _x( 'Twitter', 'metabox tab', 'wpsso' ),
@@ -193,7 +193,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 
 			foreach ( $tabs as $tab_key => $title ) {
 
-				$filter_name = $this->p->lca . '_' . $metabox_id . '_' . $tab_key . '_rows';
+				$filter_name = $this->p->id . '_' . $metabox_id . '_' . $tab_key . '_rows';
 
 				$table_rows[ $tab_key ] = array_merge(
 					$this->get_table_rows( $metabox_id, $tab_key ),

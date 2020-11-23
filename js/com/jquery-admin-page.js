@@ -1,11 +1,37 @@
 
-function sucomCopyById( css_id ) {
+/**
+ * Convert some HTML tags to spaces first, strip everything else, then convert multiple spaces to a single space.
+ */
+function sucomStripHtml( html ) {
+
+	html = html.replace( /<(p|pre|ul|li|br\/?)( [^<>]*>|>)/gi, ' ' );
+
+	html = html.replace( /<[^<>]*>/gi, '' );
+
+	html = html.replace( /\s\s+/gi, ' ' );
+
+	return html;
+}
+
+function sucomCopyById( cssId, cfgName ) {
+
+	if ( ! cssId ) {	// Just in case.
+		
+		return false;
+	}
+
+	if ( ! cfgName ) {
+
+		cfgName = 'sucomAdminPageL10n';
+	}
+
+	var cfg = window[ cfgName ];
 
 	try {
 
-		var copyClipboardMsg = sucomAdminPageL10n._copy_clipboard_msg;
+		var copyClipboardMsg = cfg._copy_clipboard_msg;
 
-		var elem = document.getElementById( css_id );
+		var elem = document.getElementById( cssId );
 
 		/**
 		 * Check for input field value first, then container content.
@@ -19,7 +45,7 @@ function sucomCopyById( css_id ) {
 
 		var target = document.createElement( 'textarea' );
 
-		target.id             = 'copy_target_' + css_id;
+		target.id             = 'copy_target_' + cssId;
 		target.style.position = 'absolute';
 		target.style.top      = '0';
 		target.style.left     = '-9999px';
@@ -46,29 +72,27 @@ function sucomCopyById( css_id ) {
 	return false;
 }
 
-/**
- * Convert some HTML tags to spaces first, strip everything else, then convert multiple spaces to a single space.
- */
-function sucomStripHtml( html ) {
+function sucomUpdateContainers( pluginId, cfgName ) {
 
-	html = html.replace( /<(p|pre|ul|li|br\/?)( [^<>]*>|>)/gi, ' ' );
+	if ( ! pluginId ) {
 
-	html = html.replace( /<[^<>]*>/gi, '' );
+		pluginId = 'sucom';	// Lowercase acronym.
+	}
 
-	html = html.replace( /\s\s+/gi, ' ' );
+	if ( ! cfgName ) {
 
-	return html;
-}
+		cfgName = 'sucomAdminPageL10n';
+	}
 
-function sucomUpdateContainers() {
+	var cfg = window[ cfgName ];
 
-	if ( jQuery.isArray( sucomAdminPageL10n._mb_container_ids ) ) {
+	if ( jQuery.isArray( cfg._mb_container_ids ) ) {
 
 		var post_id = getCurrentPostId();
 
-		for ( var container_key in sucomAdminPageL10n._mb_container_ids ) {
+		for ( var container_key in cfg._mb_container_ids ) {
 
-			var container_id = sucomAdminPageL10n._mb_container_ids[ container_key ];
+			var container_id = cfg._mb_container_ids[ container_key ];
 
 			var ajax_action_update_container = 'get_container_id_' + container_id;
 
@@ -82,7 +106,7 @@ function sucomUpdateContainers() {
 			var ajaxData = {
 				action: ajax_action_update_container,
 				post_id: post_id,
-				_ajax_nonce: sucomAdminPageL10n._ajax_nonce,
+				_ajax_nonce: cfg._ajax_nonce,
 			}
 
 			jQuery.post( ajaxurl, ajaxData, function( html ) {
@@ -99,37 +123,156 @@ function sucomUpdateContainers() {
 	}
 }
 
-function sucomUpdateToolbar( lca ) {
+/**
+ * Create block-editor notices first, excluding any toolbar notice types, then update toolbar notices.
+ */
+function sucomBlockNotices( pluginId, cfgName ) {
+
+	if ( ! pluginId ) {
+
+		pluginId = 'sucom';	// Lowercase acronym.
+	}
+
+	if ( ! cfgName ) {
+
+		cfgName = 'sucomAdminPageL10n';
+	}
+
+	var cfg = window[ cfgName ];
+
+	var ajaxData = {
+		action: cfg._ajax_actions[ 'get_notices_json' ],
+		context: 'block_editor',
+		_ajax_nonce: cfg._ajax_nonce,
+		_exclude_types: cfg._tb_notices,	// Exclude the toolbar notice types.
+	}
+
+	jQuery.getJSON( ajaxurl, ajaxData, function( data ) {
+
+		/**
+		 * Example data:
+		 *
+		 * Array (
+		 *	[err] => Array (
+		 *		[post-1086-notice-missing-og-image] => Array (
+		 *			[notice_key]   => post-1086-notice-missing-og-image
+		 *			[dismiss_time] =>
+		 *			[dismiss_diff] =>
+		 *			[msg_text]     => <p>Text.</p>
+		 *			[msg_spoken]   => Text.
+		 *			[msg_html]     => <div class="sucom-notice notice notice-alt notice-error error" id="err-post-1086-notice-missing-og-image" style="display:block;"><div class="notice-label">SSO Notice</div><div class="notice-message">Text.</div></div>
+		 *		)
+		 *	)
+		 * )
+		 */
+		jQuery.each( data, function( noticeType ) {
+
+			jQuery.each( data[ noticeType ], function( noticeKey ) {
+
+				var noticeObj     = false;
+				var noticeStatus  = false;
+				var noticeSpoken  = data[ noticeType ][ noticeKey ][ 'msg_spoken' ];
+
+				/**
+				 * The current version of the block editor casts the notice message as a string, so we
+				 * cannot give createNotice() an html message or RawHTML element.
+				 *
+				 * var noticeHtml    = data[ noticeType ][ noticeKey ][ 'msg_html' ];
+				 * var noticeElement = createElement( RawHTML, {}, noticeHtml );
+				 */
+
+				var noticeOptions = {
+					id: noticeKey,
+					spokenMessage: data[ noticeType ][ noticeKey ][ 'msg_spoken' ],
+					isDismissible: data[ noticeType ][ noticeKey ][ 'dismiss_time' ] ? false : true,
+				};
+
+				if ( noticeType == 'err' ) {
+
+					noticeStatus = 'error';
+
+				} else if ( noticeType == 'warn' ) {
+
+					noticeStatus = 'warning';
+
+				} else if ( noticeType == 'inf' ) {
+
+					noticeStatus = 'info';
+
+				} else if ( noticeType == 'upd' ) {
+
+					noticeStatus = 'success';
+				}
+
+				if ( noticeStatus ) {
+
+					removeNotice( noticeKey );
+
+					/**
+					 * The current version of the block editor casts the notice message as a string, so we
+					 * cannot give createNotice() an html message or RawHTML element. Until such time as the
+					 * block editor can handle an html notice message, we must give it the "spoken" notice
+					 * message string instead, which is a plain text string.
+					 *
+					 * noticeObj = createNotice( noticeStatus, noticeElement, noticeOptions );
+					 */
+					noticeObj = createNotice( noticeStatus, noticeSpoken, noticeOptions );
+
+					/**
+					 * Remove the notices class to fix notice-in-notice padding issues.
+					 */
+					jQuery( 'div.' + pluginId + '-notice' ).parents( 'div.components-notice' ).removeClass( 'components-notice' );
+				}
+			} );
+		} );
+
+		sucomToolbarNotices( pluginId, cfgName );
+	} );
+}
+
+function sucomToolbarNotices( pluginId, cfgName ) {
+
+	if ( ! pluginId ) {
+
+		pluginId = 'sucom';
+	}
+
+	if ( ! cfgName ) {
+
+		cfgName = 'sucomAdminPageL10n';
+	}
+
+	var cfg = window[ cfgName ];
 
 	/**
 	 * Just in case - no use getting notices if there's nothing to get.
 	 */
-	if ( ! sucomAdminPageL10n._tb_notices ) {
+	if ( ! cfg._tb_notices ) {
 
 		return;
 	}
 
-	var menuId    = '#wp-admin-bar-' + lca + '-toolbar-notices';
-	var subMenuId = '#wp-admin-bar-' + lca + '-toolbar-notices-container';
-	var counterId = '#' + lca + '-toolbar-notices-count';
+	var menuId    = '#wp-admin-bar-' + pluginId + '-toolbar-notices';
+	var subMenuId = '#wp-admin-bar-' + pluginId + '-toolbar-notices-container';
+	var counterId = '#' + pluginId + '-toolbar-notices-count';
 
 	var ajaxData = {
-		action: sucomAdminPageL10n._ajax_actions[ 'get_notices_json' ],
+		action: cfg._ajax_actions[ 'get_notices_json' ],
 		context: 'toolbar_notices',
-		_ajax_nonce: sucomAdminPageL10n._ajax_nonce,
-		_notice_types: sucomAdminPageL10n._tb_notices,
+		_ajax_nonce: cfg._ajax_nonce,
+		_notice_types: cfg._tb_notices,
 	}
 
 	jQuery.getJSON( ajaxurl, ajaxData, function( data ) {
 
 		var noticeHtml       = '';
 		var noticeText       = '';
-		var noticeTextId     = sucomAdminPageL10n._notice_text_id;
+		var noticeTextId     = cfg._notice_text_id;
 		var noticeStatus     = '';
 		var noticeTotalCount = 0;
 		var noticeTypeCount  = {};
-		var noNoticesHtml    = sucomAdminPageL10n._no_notices_html;
-		var copyNoticesHtml  = sucomAdminPageL10n._copy_notices_html;
+		var noNoticesHtml    = cfg._no_notices_html;
+		var copyNoticesHtml  = cfg._copy_notices_html;
 
 		jQuery.each( data, function( noticeType ) {
 

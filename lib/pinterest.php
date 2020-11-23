@@ -159,7 +159,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 			/**
 			 * Check if the content filter is being applied to create a description text.
 			 */
-			if ( ! empty( $GLOBALS[ $this->p->lca . '_doing_filter_the_content' ] ) ) {
+			if ( ! empty( $GLOBALS[ $this->p->id . '_doing_filter_the_content' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -173,7 +173,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 
 			$use_post = in_the_loop() ? true : false;		// Use the $post object inside the loop.
 
-			$use_post = apply_filters( $this->p->lca . '_use_post', $use_post );
+			$use_post = apply_filters( $this->p->id . '_use_post', $use_post );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -197,15 +197,15 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 
 			$local_recursion[ $cache_salt ] = true;
 
-			$size_name = $this->p->lca . '-pinterest';
+			$size_name = $this->p->id . '-pinterest';
 
 			$mt_images = $this->p->og->get_all_images( 1, $size_name, $mod, false, $md_pre = array( 'p', 'schema', 'og' ) );
 
 			$image_url = SucomUtil::get_first_mt_media_url( $mt_images );
 
-			$image_html = "\n" . '<!-- ' . $this->p->lca . ' pinterest pin it image added on ' . date( 'c' ) . ' -->' . "\n";
+			$image_html = "\n" . '<!-- ' . $this->p->id . ' pinterest pin it image added on ' . date( 'c' ) . ' -->' . "\n";
 
-			$image_html .= '<div class="' . $this->p->lca . '-pinterest-pin-it-image" style="display:none !important;">' . "\n";
+			$image_html .= '<div class="' . $this->p->id . '-pinterest-pin-it-image" style="display:none !important;">' . "\n";
 
 			if ( empty( $image_url ) ) {
 
@@ -242,7 +242,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 					'data-pin-description="' . esc_attr( $data_pin_desc ) . '" />' . "\n";
 			}
 
-			$image_html .= '</div><!-- .' . $this->p->lca . '-pinterest-pin-it-image -->' . "\n\n";
+			$image_html .= '</div><!-- .' . $this->p->id . '-pinterest-pin-it-image -->' . "\n\n";
 
 			if ( $this->p->debug->enabled ) {
 

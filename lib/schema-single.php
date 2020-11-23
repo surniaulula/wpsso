@@ -414,7 +414,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * Maybe get options from integration modules.
 			 */
-			$event_opts = apply_filters( $wpsso->lca . '_get_event_options', false, $mod, $event_id );
+			$event_opts = apply_filters( $wpsso->id . '_get_event_options', false, $mod, $event_id );
 
 			/**
 			 * Add metadata defaults and custom values to the $type_opts array.
@@ -470,7 +470,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			foreach ( range( 0, $metadata_offers_max - 1, 1 ) as $key_num ) {
 
-				$offer_opts = apply_filters( $wpsso->lca . '_get_event_offer_options', false, $mod, $event_id, $key_num );
+				$offer_opts = apply_filters( $wpsso->id . '_get_event_offer_options', false, $mod, $event_id, $key_num );
 
 				if ( ! empty( $offer_opts ) ) {
 
@@ -678,7 +678,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
-			$json_ret = apply_filters( $wpsso->lca . '_json_data_single_event', $json_ret, $mod, $event_id );
+			$json_ret = apply_filters( $wpsso->id . '_json_data_single_event', $json_ret, $mod, $event_id );
 
 			/**
 			 * Update the @id string based on $json_ret[ 'url' ], $event_type_id, and $event_id values.
@@ -718,7 +718,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * Maybe get options from integration modules.
 			 */
-			$job_opts = apply_filters( $wpsso->lca . '_get_job_options', false, $mod, $job_id );
+			$job_opts = apply_filters( $wpsso->id . '_get_job_options', false, $mod, $job_id );
 
 			/**
 			 * Add metadata defaults and custom values to the $type_opts array.
@@ -847,7 +847,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
-			$json_ret = apply_filters( $wpsso->lca . '_json_data_single_job', $json_ret, $mod, $job_id );
+			$json_ret = apply_filters( $wpsso->id . '_json_data_single_job', $json_ret, $mod, $job_id );
 
 			/**
 			 * Update the @id string based on $json_ret[ 'url' ], $job_type_id, and $job_id values.
@@ -1049,7 +1049,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			self::add_organization_data( $offer[ 'seller' ], $mod, $org_id = 'site', $org_logo_key = 'org_logo_url', $org_list_el = false );
 
-			$offer = apply_filters( $wpsso->lca . '_json_data_single_offer', $offer, $mod );
+			$offer = apply_filters( $wpsso->id . '_json_data_single_offer', $offer, $mod );
 
 			return $offer;
 		}
@@ -1354,7 +1354,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
-			$shipping_offer = apply_filters( $wpsso->lca . '_json_data_single_shipping_offer', $shipping_offer, $mod );
+			$shipping_offer = apply_filters( $wpsso->id . '_json_data_single_shipping_offer', $shipping_offer, $mod );
 
 			return $shipping_offer;
 		}
@@ -1486,7 +1486,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 *
 			 * Example: 'org_banner_url' is a valid option key, but 'org_banner_url#fr_FR' is not.
 			 */
-			$org_opts = apply_filters( $wpsso->lca . '_get_organization_options', false, $mod, $org_id );
+			$org_opts = apply_filters( $wpsso->id . '_get_organization_options', false, $mod, $org_id );
 
 			if ( empty( $org_opts ) ) {
 
@@ -1691,7 +1691,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			$org_opts[ 'org_sameas' ] = isset( $org_opts[ 'org_sameas' ] ) ? $org_opts[ 'org_sameas' ] : array();
 
-			$org_opts[ 'org_sameas' ] = apply_filters( $wpsso->lca . '_json_data_single_organization_sameas', $org_opts[ 'org_sameas' ], $mod, $org_id );
+			$org_opts[ 'org_sameas' ] = apply_filters( $wpsso->id . '_json_data_single_organization_sameas', $org_opts[ 'org_sameas' ], $mod, $org_id );
 
 			if ( ! empty( $org_opts[ 'org_sameas' ] ) && is_array( $org_opts[ 'org_sameas' ] ) ) {	// Just in case.
 
@@ -1713,7 +1713,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				WpssoSchema::organization_to_localbusiness( $json_ret );
 			}
 
-			$json_ret = apply_filters( $wpsso->lca . '_json_data_single_organization', $json_ret, $mod, $org_id );
+			$json_ret = apply_filters( $wpsso->id . '_json_data_single_organization', $json_ret, $mod, $org_id );
 
 			/**
 			 * Update the @id string based on $json_ret[ 'url' ], $org_type_id, and $org_id values.
@@ -1764,7 +1764,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * Maybe get options from integration modules (example: WpssoProEventTheEventsCalendar).
 			 */
-			$person_opts = apply_filters( $wpsso->lca . '_get_person_options', false, $mod, $person_id );
+			$person_opts = apply_filters( $wpsso->id . '_get_person_options', false, $mod, $person_id );
 			$sharing_url = '';
 
 			if ( empty( $person_opts ) ) {
@@ -1892,7 +1892,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			$person_opts[ 'person_sameas' ] = isset( $person_opts[ 'person_sameas' ] ) ? $person_opts[ 'person_sameas' ] : array();
 
-			$person_opts[ 'person_sameas' ] = apply_filters( $wpsso->lca . '_json_data_single_person_sameas', $person_opts[ 'person_sameas' ], $mod, $person_id );
+			$person_opts[ 'person_sameas' ] = apply_filters( $wpsso->id . '_json_data_single_person_sameas', $person_opts[ 'person_sameas' ], $mod, $person_id );
 
 			if ( ! empty( $person_opts[ 'person_sameas' ] ) && is_array( $person_opts[ 'person_sameas' ] ) ) {	// Just in case.
 
@@ -1905,7 +1905,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
-			$json_ret = apply_filters( $wpsso->lca . '_json_data_single_person', $json_ret, $mod, $person_id );
+			$json_ret = apply_filters( $wpsso->id . '_json_data_single_person', $json_ret, $mod, $person_id );
 
 			/**
 			 * Update the '@id' string based on the $sharing_url and the $person_type_id.
@@ -1955,7 +1955,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * Maybe get options from integration modules.
 			 */
-			$place_opts = apply_filters( $wpsso->lca . '_get_place_options', false, $mod, $place_id );
+			$place_opts = apply_filters( $wpsso->id . '_get_place_options', false, $mod, $place_id );
 
 			/**
 			 * Add metadata defaults and custom values to the $type_opts array.
@@ -2101,7 +2101,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				WpssoSchema::add_images_data_mt( $json_ret[ 'image' ], $mt_images );
 			}
 
-			$json_ret = apply_filters( $wpsso->lca . '_json_data_single_place', $json_ret, $mod, $place_id );
+			$json_ret = apply_filters( $wpsso->id . '_json_data_single_place', $json_ret, $mod, $place_id );
 
 			/**
 			 * Update the @id string based on $json_ret[ 'url' ], $place_type_id, and $place_id values.

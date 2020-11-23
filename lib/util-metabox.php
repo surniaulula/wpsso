@@ -132,7 +132,7 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 			$count_rows     = 0;
 			$hidden_opts    = 0;
 			$hidden_rows    = 0;
-			$user_classname = $this->p->lca . 'user';
+			$user_classname = $this->p->id . 'user';
 			$show_opts      = class_exists( $user_classname ) ? call_user_func( array( $user_classname, 'show_opts' ) ) : 'basic';
 
 			foreach ( $table_rows as $key => $row ) {
@@ -229,7 +229,7 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 				( empty( $class_tabset_mb ) ? '' : ' ' . $class_tabset_mb ) . 
 				( empty( $class_href_key ) ? '' : ' ' . $class_href_key );
 
-			$table_class = 'sucom-settings ' . $this->p->lca . 
+			$table_class = 'sucom-settings ' . $this->p->id . 
 				( empty( $class_href_key ) ? '' : ' ' . $class_href_key ) . 
 				( $hidden_rows > 0 && $hidden_rows === $count_rows ? ' hide_in_' . $show_opts : '' );
 

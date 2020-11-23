@@ -43,7 +43,6 @@
 .icon-calendar:before { content: '\e828'; } /* '' */
 .icon-th-list:before { content: '\e829'; } /* '' */
 .icon-briefcase:before { content: '\e82a'; } /* '' */
-.icon-crown:before { content: '\e844'; } /* '' */
 .icon-tasks:before { content: '\f0ae'; } /* '' */
 .icon-filter:before { content: '\f0b0'; } /* '' */
 .icon-table:before { content: '\f0ce'; } /* '' */
@@ -66,6 +65,7 @@
 .icon-puzzle:before { content: '\f12e'; } /* '' */
 .icon-shield:before { content: '\f132'; } /* '' */
 .icon-export-alt:before { content: '\f14d'; } /* '' */
+.icon-doc-inv:before { content: '\f15b'; } /* '' */
 .icon-doc-text-inv:before { content: '\f15c'; } /* '' */
 .icon-apple:before { content: '\f179'; } /* '' */
 .icon-plus-squared-alt:before { content: '\f196'; } /* '' */

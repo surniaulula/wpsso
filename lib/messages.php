@@ -73,14 +73,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			/**
 			 * Set a lowercase acronym.
 			 *
-			 * Example lcas: wpsso, wpssojson, wpssoum, etc.
+			 * Example plugin IDs: wpsso, wpssojson, wpssoum, etc.
 			 */
-			$info[ 'lca' ] = $lca = isset( $info[ 'lca' ] ) ? $info[ 'lca' ] : $this->p->lca;
+			$info[ 'plugin_id' ] = $plugin_id = isset( $info[ 'plugin_id' ] ) ? $info[ 'plugin_id' ] : $this->p->id;
 
 			/**
 			 * Get the array of plugin urls (download, purchase, etc.).
 			 */
-			$url = isset( $this->p->cf[ 'plugin' ][ $lca ][ 'url' ] ) ? $this->p->cf[ 'plugin' ][ $lca ][ 'url' ] : array();
+			$url = isset( $this->p->cf[ 'plugin' ][ $plugin_id ][ 'url' ] ) ? $this->p->cf[ 'plugin' ][ $plugin_id ][ 'url' ] : array();
 
 			/**
 			 * Add query arguments to the Premium purchase URL.
@@ -105,7 +105,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			if ( ! empty( $url[ 'purchase' ] ) ) {
 
 				$url[ 'purchase' ] = add_query_arg( array(
-					'utm_source'  => $lca,
+					'utm_source'  => $plugin_id,
 					'utm_medium'  => 'plugin',
 					'utm_content' => $msg_key,
 				), $url[ 'purchase' ] );
@@ -122,7 +122,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 				if ( ! isset( $info[ $info_key ] ) ) {
 
-					if ( ! isset( $this->p->cf[ 'plugin' ][ $lca ][ $info_key ] ) ) {	// Just in case.
+					if ( ! isset( $this->p->cf[ 'plugin' ][ $plugin_id ][ $info_key ] ) ) {	// Just in case.
 
 						$info[ $info_key ] = null;
 
@@ -130,7 +130,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					} else {
 
-						$info[ $info_key ] = $this->p->cf[ 'plugin' ][ $lca ][ $info_key ];
+						$info[ $info_key ] = $this->p->cf[ 'plugin' ][ $plugin_id ][ $info_key ];
 					}
 				}
 
@@ -452,7 +452,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca . '_messages_tooltip_meta', $text, $msg_key, $info );
+							$text = apply_filters( 'wpsso_messages_tooltip_meta', $text, $msg_key, $info );
 
 							break;
 
@@ -769,7 +769,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca . '_messages_tooltip_og', $text, $msg_key, $info );
+							$text = apply_filters( 'wpsso_messages_tooltip_og', $text, $msg_key, $info );
 
 							break;
 
@@ -1140,7 +1140,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_clear_short_urls':		// Refresh Short URLs on Clear Cache.
 
-							$cache_exp_secs = (int) apply_filters( $this->p->lca . '_cache_expire_short_url',
+							$cache_exp_secs = (int) apply_filters( 'wpsso_cache_expire_short_url',
 								$this->p->options[ 'plugin_short_url_cache_exp' ] );
 
 							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : 
@@ -1346,7 +1346,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca . '_messages_tooltip_plugin', $text, $msg_key, $info );
+							$text = apply_filters( 'wpsso_messages_tooltip_plugin', $text, $msg_key, $info );
 
 							break;
 
@@ -1408,7 +1408,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca . '_messages_tooltip_fb', $text, $msg_key, $info );
+							$text = apply_filters( 'wpsso_messages_tooltip_fb', $text, $msg_key, $info );
 
 							break;
 
@@ -1457,7 +1457,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca . '_messages_tooltip_seo', $text, $msg_key, $info );
+							$text = apply_filters( 'wpsso_messages_tooltip_seo', $text, $msg_key, $info );
 
 							break;
 
@@ -1525,7 +1525,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca . '_messages_tooltip_robots', $text, $msg_key, $info );
+							$text = apply_filters( 'wpsso_messages_tooltip_robots', $text, $msg_key, $info );
 
 							break;
 
@@ -1638,7 +1638,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca . '_messages_tooltip_schema', $text, $msg_key, $info );
+							$text = apply_filters( 'wpsso_messages_tooltip_schema', $text, $msg_key, $info );
 
 							break;
 
@@ -1709,7 +1709,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca . '_messages_tooltip_p', $text, $msg_key, $info );
+							$text = apply_filters( 'wpsso_messages_tooltip_p', $text, $msg_key, $info );
 
 							break;
 
@@ -1776,7 +1776,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca . '_messages_tooltip_tc', $text, $msg_key, $info );
+							$text = apply_filters( 'wpsso_messages_tooltip_tc', $text, $msg_key, $info );
 
 							break;
 
@@ -1803,7 +1803,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca . '_messages_tooltip_instagram', $text, $msg_key, $info );
+							$text = apply_filters( 'wpsso_messages_tooltip_instagram', $text, $msg_key, $info );
 
 							break;
 
@@ -1830,7 +1830,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca . '_messages_tooltip_linkedin', $text, $msg_key, $info );
+							$text = apply_filters( 'wpsso_messages_tooltip_linkedin', $text, $msg_key, $info );
 
 							break;
 
@@ -1857,7 +1857,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca . '_messages_tooltip_myspace', $text, $msg_key, $info );
+							$text = apply_filters( 'wpsso_messages_tooltip_myspace', $text, $msg_key, $info );
 
 							break;
 
@@ -1884,7 +1884,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca . '_messages_tooltip_wikipedia', $text, $msg_key, $info );
+							$text = apply_filters( 'wpsso_messages_tooltip_wikipedia', $text, $msg_key, $info );
 
 							break;
 
@@ -1925,7 +1925,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca . '_messages_tooltip', $text, $msg_key, $info );
+							$text = apply_filters( 'wpsso_messages_tooltip', $text, $msg_key, $info );
 
 							break;
 
@@ -2422,7 +2422,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						default:
 
-							$text = apply_filters( $lca . '_messages_info', $text, $msg_key, $info );
+							$text = apply_filters( 'wpsso_messages_info', $text, $msg_key, $info );
 
 							break;
 
@@ -2441,7 +2441,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= empty( $url[ 'purchase' ] ) ? '' : '<a href="' . $url[ 'purchase' ] . '">';
 
-						if ( $lca === $this->p->lca ) {
+						if ( 'wpsso' === $plugin_id ) {
 
 							$text .= sprintf( __( 'Purchase the %1$s plugin to upgrade and get the following features.',
 								'wpsso' ), $info[ 'short_pro' ] );
@@ -2468,7 +2468,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = '<p class="pro-feature-msg">';
 
-							if ( ! empty( WpssoAdmin::$pkg[ $this->p->lca ][ 'pp' ] ) ) {
+							if ( ! empty( WpssoAdmin::$pkg[ 'wpsso' ][ 'pp' ] ) ) {
 
 								$text .= __( 'An e-commerce plugin is active &ndash; product information may be provided by the e-commerce plugin.', 'wpsso' );
 
@@ -2497,7 +2497,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = _x( 'Get More Licenses', 'plugin action link', 'wpsso' );
 
-						} elseif ( $info[ 'ext' ] === $lca ) {
+						} elseif ( $info[ 'ext' ] === $plugin_id ) {
 
 							$text = sprintf( _x( 'Purchase %s Plugin', 'plugin action link', 'wpsso' ), $pro_transl );
 
@@ -2516,7 +2516,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					default:
 
-						$text = apply_filters( $lca . '_messages_pro', $text, $msg_key, $info );
+						$text = apply_filters( 'wpsso_messages_pro', $text, $msg_key, $info );
 
 						break;
 				}
@@ -2670,10 +2670,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= '</p>';
 
-						if ( empty( WpssoAdmin::$pkg[ $this->p->lca ][ 'pp' ] ) ) {
+						if ( empty( WpssoAdmin::$pkg[ 'wpsso' ][ 'pp' ] ) ) {
 
-							$text .= '<p>' . sprintf( __( 'Note that the %1$s option is an advanced %2$s feature.', 'wpsso' ),
-								$option_link, $info[ 'name_pro' ] ) . '</p>';
+							$text .= '<p>' . sprintf( __( 'Note that the %1$s option is an advanced %2$s feature.', 'wpsso' ), $option_link, $info[ 'name_pro' ] ) . '</p>';
 						}
 
 						break;
@@ -2698,10 +2697,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= '</p>';
 
-						if ( empty( WpssoAdmin::$pkg[ $this->p->lca ][ 'pp' ] ) ) {
+						if ( empty( WpssoAdmin::$pkg[ 'wpsso' ][ 'pp' ] ) ) {
 
-							$text .= '<p>' . sprintf( __( 'Note that the %1$s option is an advanced %2$s feature.', 'wpsso' ),
-								$option_link, $info[ 'name_pro' ] ) . '</p>';
+							$text .= '<p>' . sprintf( __( 'Note that the %1$s option is an advanced %2$s feature.', 'wpsso' ), $option_link, $info[ 'name_pro' ] ) . '</p>';
 						}
 
 						break;
@@ -2730,7 +2728,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$php_code  = '<pre><code>&lt;head &lt;?php do_action( &#39;add_head_attributes&#39; ); ?&gt;&gt;</code></pre>';
 
-						$action_url  = wp_nonce_url( $this->p->util->get_admin_url( '?' . $this->p->lca . '-action=modify_tmpl_head_attributes' ),
+						$action_url  = wp_nonce_url( $this->p->util->get_admin_url( '?wpsso-action=modify_tmpl_head_attributes' ),
 							WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 
 						$text = '<p class="top">';
@@ -2849,7 +2847,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					default:
 
-						$text = apply_filters( $lca . '_messages_notice', $text, $msg_key, $info );
+						$text = apply_filters( 'wpsso_messages_notice', $text, $msg_key, $info );
 
 						break;
 			}
@@ -2985,14 +2983,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					default:
 
-						$text = apply_filters( $lca . '_messages_side', $text, $msg_key, $info );
+						$text = apply_filters( 'wpsso_messages_side', $text, $msg_key, $info );
 
 						break;
 				}
 
 			} else {
 
-				$text = apply_filters( $lca . '_messages', $text, $msg_key, $info );
+				$text = apply_filters( 'wpsso_messages', $text, $msg_key, $info );
 			}
 
 			if ( ! empty( $info[ 'is_locale' ] ) ) {
@@ -3192,7 +3190,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				return '';
 			}
 
-			return $this->get( 'pro-feature-msg', array( 'lca' => $ext ) );
+			return $this->get( 'pro-feature-msg', array( 'plugin_id' => $ext ) );
 		}
 
 		public function pro_feature_video_api( $ext ) {
@@ -3218,7 +3216,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 				return '';
 
-			} elseif ( $this->p->lca === $ext ) {					// The main plugin is not considered an add-on.
+			} elseif ( 'wpsso' === $ext ) {						// The main plugin is not considered an add-on.
 
 				return '';
 
@@ -3382,12 +3380,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 			if ( is_string( $ext ) ) {
 
-				if ( strpos( $ext, $this->p->lca ) !== 0 ) {
+				if ( strpos( $ext, $this->p->id ) !== 0 ) {
 
-					$ext = $this->p->lca . $ext;
+					$ext = $this->p->id . $ext;
 				}
 
-				$p_ext = substr( $ext, strlen( $this->p->lca ) );
+				$p_ext = substr( $ext, strlen( $this->p->id ) );
 
 			} else {
 

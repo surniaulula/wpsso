@@ -43,7 +43,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 				'mem'   => memory_get_usage(),
 			);
 
-			$this->display_name = $this->p->lca;
+			$this->display_name = $this->p->id;
 			$this->log_prefix   = strtoupper( $this->display_name );
 			$this->outputs      = $outputs;
 

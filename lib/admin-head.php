@@ -55,13 +55,13 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				return;
 			}
 
-			$update_count = SucomPlugin::get_updates_count( $plugin_prefix = $this->p->lca );
+			$update_count = SucomPlugin::get_updates_count( $plugin_prefix = $this->p->id );
 
 			if ( $update_count > 0 ) {
 
-				$info = $this->p->cf[ 'plugin' ][ $this->p->lca ];
+				$info = $this->p->cf[ 'plugin' ][ $this->p->id ];
 
-				$notice_key = 'have-updates-for-' . $this->p->lca;
+				$notice_key = 'have-updates-for-' . $this->p->id;
 
 				$notice_msg = sprintf( _n( 'There is <a href="%1$s">%2$d pending update for the %3$s plugin and its add-on(s)</a>.',
 					'There are <a href="%1$s">%2$d pending updates for the %3$s plugin and its add-on(s)</a>.', $update_count, 'wpsso' ),
@@ -104,9 +104,11 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 							if ( ! empty( $info[ 'base' ] ) && ! SucomPlugin::is_plugin_installed( $info[ 'base' ], $use_cache = true ) ) {
 
-								$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-installed', array( 'lca' => $ext ) ) );
+								$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-installed', array( 'plugin_id' => $ext ) ) );
+
 							} else {
-								$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-updated', array( 'lca' => $ext ) ) );
+
+								$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-updated', array( 'plugin_id' => $ext ) ) );
 							}
 						}
 					}
@@ -310,7 +312,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			/**
 			 * Nothing to suggest.
 			 */
-			if ( ! empty( $pkg[ $this->p->lca ][ 'pp' ] ) && ! empty( $pkg[ $ext ][ 'pp' ] ) ) {
+			if ( ! empty( $pkg[ $this->p->id ][ 'pp' ] ) && ! empty( $pkg[ $ext ][ 'pp' ] ) ) {
 
 				return;
 			}
@@ -354,12 +356,12 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			/**
 			 * Maybe add a purchase link for the WPSSO Core Premium plugin.
 			 */
-			if ( empty( $pkg[ $this->p->lca ][ 'pp' ] ) ) {
+			if ( empty( $pkg[ $this->p->id ][ 'pp' ] ) ) {
 
-				$purchase_url = $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'url' ][ 'purchase' ];
+				$purchase_url = $this->p->cf[ 'plugin' ][ $this->p->id ][ 'url' ][ 'purchase' ];
 
 				$action_links[] = '<a href="' . $purchase_url . '">' . sprintf( __( 'Purchase the %s plugin.', 'wpsso' ),
-					$pkg[ $this->p->lca ][ 'short_pro' ] ) . '</a>';
+					$pkg[ $this->p->id ][ 'short_pro' ] ) . '</a>';
 			}
 
 			/**
@@ -391,7 +393,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 		 */
 		private function single_notice_review() {
 
-			$form          = $this->p->admin->get_form_object( $this->p->lca );
+			$form          = $this->p->admin->get_form_object( $this->p->id );
 			$user_id       = get_current_user_id();
 			$ext_reg       = $this->p->util->reg->get_ext_reg();
 			$week_ago_secs = time() - ( 1 * WEEK_IN_SECONDS );
@@ -400,7 +402,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			/**
 			 * Use the transient cache to show only one notice per day.
 			 */
-			$cache_md5_pre  = $this->p->lca . '_';
+			$cache_md5_pre  = $this->p->id . '_';
 			$cache_exp_secs = DAY_IN_SECONDS;
 			$cache_salt     = __METHOD__ . '(user_id:' . $user_id . ')';
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
@@ -511,7 +513,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 				$notice_msg .= '<p>';
 
-				$notice_msg .= sprintf( __( 'We\'ve put many years of time and effort into making %s and its add-ons the best possible.', 'wpsso' ), $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'name' ] ) . ' ';
+				$notice_msg .= sprintf( __( 'We\'ve put many years of time and effort into making %s and its add-ons the best possible.', 'wpsso' ), $this->p->cf[ 'plugin' ][ $this->p->id ][ 'name' ] ) . ' ';
 
 				$notice_msg .= '</p>' . "\n";
 				
@@ -557,7 +559,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 		 */
 		private function single_notice_upsell() {
 
-			$ext = $this->p->lca;
+			$ext = $this->p->id;
 			$pkg = $this->p->admin->plugin_pkg_info();
 
 			if ( $pkg[ $ext ][ 'pdir' ] ) {
@@ -574,7 +576,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				return 0;
 			}
 
-			$form           = $this->p->admin->get_form_object( $this->p->lca );
+			$form           = $this->p->admin->get_form_object( $this->p->id );
 			$user_id        = get_current_user_id();
 			$info           = $this->p->cf[ 'plugin' ][ $ext ];
 			$notice_key     = 'timed-notice-' . $ext . '-pro-purchase-notice';
@@ -632,7 +634,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			$notice_msg .= '</p><p>';
 
 			$notice_msg .= sprintf( __( 'We\'ve put many years of time and effort into making %s and its add-ons the best possible.',
-				'wpsso' ), $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'name' ] ) . ' ';
+				'wpsso' ), $this->p->cf[ 'plugin' ][ $this->p->id ][ 'name' ] ) . ' ';
 
 			$notice_msg .= sprintf( __( 'I hope you\'ve enjoyed all the new features, improvements and updates over the past %s.',
 				'wpsso' ), $months_ago_transl );

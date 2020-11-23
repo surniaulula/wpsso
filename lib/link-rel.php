@@ -100,14 +100,14 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$link_rel = apply_filters( $this->p->lca . '_link_rel_seed', array(), $mod );
+			$link_rel = apply_filters( $this->p->id . '_link_rel_seed', array(), $mod );
 
 			/**
 			 * Link rel canonical.
 			 */
 			$add_link_rel_canonical = empty( $this->p->options[ 'add_link_rel_canonical' ] ) ? false : true;
 
-			if ( apply_filters( $this->p->lca . '_add_link_rel_canonical', $add_link_rel_canonical, $mod ) ) {
+			if ( apply_filters( $this->p->id . '_add_link_rel_canonical', $add_link_rel_canonical, $mod ) ) {
 
 				$link_rel[ 'canonical' ] = $this->p->util->get_canonical_url( $mod );
 			}
@@ -117,7 +117,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 			 */
 			$add_link_rel_shortlink = empty( $this->p->options[ 'add_link_rel_shortlink' ] ) ? false : true;
 
-			if ( apply_filters( $this->p->lca . '_add_link_rel_shortlink', $add_link_rel_shortlink, $mod ) ) {
+			if ( apply_filters( $this->p->id . '_add_link_rel_shortlink', $add_link_rel_shortlink, $mod ) ) {
 
 				$shortlink = '';
 
@@ -139,12 +139,12 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'using ' . $this->p->lca . '_get_short_url filters to get shortlink' );
+						$this->p->debug->log( 'using ' . $this->p->id . '_get_short_url filters to get shortlink' );
 					}
 
 					$shortener = $this->p->options[ 'plugin_shortener' ];
 
-					$shortlink = apply_filters( $this->p->lca . '_get_short_url', $sharing_url, $shortener, $mod, $is_main = true );
+					$shortlink = apply_filters( $this->p->id . '_get_short_url', $sharing_url, $shortener, $mod, $is_main = true );
 				}
 
 				if ( empty( $shortlink ) ) {
@@ -171,7 +171,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 				$this->p->debug->log( 'skipping shortlink: add_link_rel_shortlink filter returned false' );
 			}
 
-			return (array) apply_filters( $this->p->lca . '_link_rel', $link_rel, $mod );
+			return (array) apply_filters( $this->p->id . '_link_rel', $link_rel, $mod );
 		}
 	}
 }

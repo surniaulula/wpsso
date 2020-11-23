@@ -100,7 +100,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				/**
 				 * Addons and license settings page.
 				 */
-				case ( preg_match( '/_page_' . $this->p->lca . '-.*(addons|licenses)/', $hook_name ) ? true : false ):
+				case ( preg_match( '/_page_wpsso-.*(addons|licenses)/', $hook_name ) ? true : false ):
 
 					if ( $this->p->debug->enabled ) {
 
@@ -114,7 +114,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				/**
 				 * Any settings page. Also matches the profile_page and users_page hooks.
 				 */
-				case ( false !== strpos( $hook_name, '_page_' . $this->p->lca . '-' ) ? true : false ):
+				case ( false !== strpos( $hook_name, '_page_wpsso-' ) ? true : false ):
 
 					if ( $this->p->debug->enabled ) {
 
@@ -187,13 +187,12 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$lca           = $this->p->lca;
-			$filter_name   = $lca . '_admin_page_style_css';
+			$filter_name   = 'wpsso_admin_page_style_css';
 			$filter_ids    = SucomUtilWP::get_filter_hook_ids( $filter_name );
 			$sortable_cols = WpssoWpMeta::get_sortable_columns();	// Uses a static cache.
 
-			$cache_md5_pre    = $lca . '_';
-			$cache_exp_filter = $lca . '_cache_expire_admin_css';
+			$cache_md5_pre    = 'wpsso_';
+			$cache_exp_filter = 'wpsso_cache_expire_admin_css';
 			$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, DAY_IN_SECONDS );
 
 			$cache_salt = __METHOD__ . '(';
@@ -233,8 +232,8 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			}
 
 			$metabox_id = $this->p->cf[ 'meta' ][ 'id' ];
-			$menu       = $lca . '-' . key( $this->p->cf[ '*' ][ 'lib' ][ 'submenu' ] );
-			$sitemenu   = $lca . '-' . key( $this->p->cf[ '*' ][ 'lib' ][ 'sitesubmenu' ] );
+			$menu       = 'wpsso-' . key( $this->p->cf[ '*' ][ 'lib' ][ 'submenu' ] );
+			$sitemenu   = 'wpsso-' . key( $this->p->cf[ '*' ][ 'lib' ][ 'sitesubmenu' ] );
 
 			/**
 			 * Fonts.
@@ -266,7 +265,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			 * Admin toolbar notices.
 			 */
 			$custom_style_css .= '
-				#wpadminbar #wp-toolbar #' . $lca . '-toolbar-notices-icon.ab-icon::before {
+				#wpadminbar #wp-toolbar #wpsso-toolbar-notices-icon.ab-icon::before {
 					content:"' . $this->p->cf[ 'notice' ][ 'icon-code' ] . '";
 					font-family:'. $this->p->cf[ 'notice' ][ 'icon-font' ] . ';
 				}
@@ -276,26 +275,29 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 				foreach ( $css_props as $prop_name => $prop_value ) {
 
-					$custom_style_css .= '.' . $lca . '-notice.' . $css_class . '{' . $prop_name . ':' . $prop_value . ';}' . "\n";
+					$custom_style_css .= '.wpsso-notice.' . $css_class . '{' . $prop_name . ':' . $prop_value . ';}' . "\n";
 				}
 			}
 
+			/**
+			 * Admin nag notices.
+			 */
 			$custom_style_css .= '
-				.' . $lca . '-notice.update-nag .notice-message {
+				.wpsso-notice.update-nag .notice-message {
 					padding:15px 30px;
 				}
-				.' . $lca . '-notice.update-nag .notice-message p,
-				.' . $lca . '-notice.update-nag .notice-message ul,
-				.' . $lca . '-notice.update-nag .notice-message ol {
+				.wpsso-notice.update-nag .notice-message p,
+				.wpsso-notice.update-nag .notice-message ul,
+				.wpsso-notice.update-nag .notice-message ol {
 					margin:15px 0;
 				}
-				.' . $lca . '-notice.update-nag .notice-message ul li {
+				.wpsso-notice.update-nag .notice-message ul li {
 					list-style-type:square;
 				}
-				.' . $lca . '-notice.update-nag .notice-message ol li {
+				.wpsso-notice.update-nag .notice-message ol li {
 					list-style-type:decimal;
 				}
-				.' . $lca . '-notice.update-nag .notice-message li {
+				.wpsso-notice.update-nag .notice-message li {
 					margin:5px 0 5px 60px;
 				}
 			';
@@ -315,24 +317,24 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				#adminmenu #toplevel_page_' . $sitemenu . ' ul > li > a {
 					padding:6px 8px;	/* Default is 6px 12px. */
 				}
-				#adminmenu ul.wp-submenu div.' . $lca . '-menu-item {
+				#adminmenu ul.wp-submenu div.wpsso-menu-item {
 					display:table-cell;
 				}
-				#adminmenu ul.wp-submenu div.' . $lca . '-menu-item.dashicons-before {
+				#adminmenu ul.wp-submenu div.wpsso-menu-item.dashicons-before {
 					max-width:1.3em;
 					padding-right:6px;
 				}
-				#adminmenu ul.wp-submenu div.' . $lca . '-menu-item.dashicons-before::before {
+				#adminmenu ul.wp-submenu div.wpsso-menu-item.dashicons-before::before {
 					font-size:1.3em;
 					text-align:left;
 					opacity:0.5;
 					filter:alpha(opacity=50);	/* IE8 and earlier. */
 				}
-				#adminmenu ul.wp-submenu div.' . $lca . '-menu-item.menu-item-label {
+				#adminmenu ul.wp-submenu div.wpsso-menu-item.menu-item-label {
 					width:100%;
 				}
-				#adminmenu ul.wp-submenu div.' . $lca . '-menu-item.' . $lca . '-setup,
-				#adminmenu ul.wp-submenu div.' . $lca . '-menu-item.top-last-submenu-page.with-add-ons {
+				#adminmenu ul.wp-submenu div.wpsso-menu-item.wpsso-setup,
+				#adminmenu ul.wp-submenu div.wpsso-menu-item.top-last-submenu-page.with-add-ons {
 					padding-bottom:12px;
 					border-bottom:1px solid;
 				}
@@ -342,22 +344,22 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			 * Settings pages.
 			 */
 			$custom_style_css .= '
-				#profile-page.wrap #your-profile #' . $lca . '_' . $metabox_id . '.postbox h3:first-of-type {
+				#profile-page.wrap #your-profile #wpsso_' . $metabox_id . '.postbox h3:first-of-type {
 					margin:0;
 				}
-				#' . $lca . '_' . $metabox_id . '.postbox {
+				#wpsso_' . $metabox_id . '.postbox {
 					min-width:455px;	/* The default WordPress postbox minimum width is 255px. */
 				}
-				#' . $lca . '_' . $metabox_id . ' .inside {
+				#wpsso_' . $metabox_id . ' .inside {
 					padding:0;
 					margin:0;
 				}
-				.' . $lca . '-rate-heart {
+				.wpsso-rate-heart {
 					color:red;
 					font-size:1.5em;
 					vertical-align:top;
 				}
-				.' . $lca . '-rate-heart::before {
+				.wpsso-rate-heart::before {
 					content:"\2665";	/* Heart. */
 				}
 			';
@@ -535,7 +537,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			if ( isset( $sortable_cols[ 'schema_type' ][ 'width' ] ) ) {
 
 				$custom_style_css .= '
-					.column-' . $lca . '_schema_type {
+					.column-wpsso_schema_type {
 						width:' . $sortable_cols[ 'schema_type' ][ 'width' ] . ';
 						max-width:' . $sortable_cols[ 'schema_type' ][ 'width' ] . ';
 						white-space:nowrap;
@@ -547,7 +549,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			if ( isset( $sortable_cols[ 'og_type' ][ 'width' ] ) ) {
 
 				$custom_style_css .= '
-					.column-' . $lca . '_og_type {
+					.column-wpsso_og_type {
 						width:' . $sortable_cols[ 'og_type' ][ 'width' ] . ' !important;
 						max-width:' . $sortable_cols[ 'og_type' ][ 'width' ] . ' !important;
 						white-space:nowrap;
@@ -559,7 +561,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			if ( isset( $sortable_cols[ 'og_img' ][ 'width' ] ) ) {
 
 				$custom_style_css .= '
-					.column-' . $lca . '_og_img {
+					.column-wpsso_og_img {
 						width:' . $sortable_cols[ 'og_img' ][ 'width' ] . ' !important;
 						max-width:' . $sortable_cols[ 'og_img' ][ 'width' ] . ' !important;
 					}
@@ -568,7 +570,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				if ( isset( $sortable_cols[ 'og_img' ][ 'height' ] ) ) {	// Just in case.
 
 					$custom_style_css .= '
-						.column-' . $lca . '_og_img div.wp-thumb-bg-img {
+						.column-wpsso_og_img div.wp-thumb-bg-img {
 							max-width:' . $sortable_cols[ 'og_img' ][ 'width' ] . ' !important;
 							height:' . $sortable_cols[ 'og_img' ][ 'height' ] . ';
 							min-height:' . $sortable_cols[ 'og_img' ][ 'height' ] . ';
@@ -584,13 +586,13 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			}
 
 			$custom_style_css .= '
-				.column-' . $lca . '_og_desc {
+				.column-wpsso_og_desc {
 					overflow:hidden;
 				}
 
-				td.column-' . $lca . '_schema_type,
-				td.column-' . $lca . '_og_type,
-				td.column-' . $lca . '_og_desc {
+				td.column-wpsso_schema_type,
+				td.column-wpsso_og_type,
+				td.column-wpsso_og_desc {
 					direction:ltr;
 					font-family:"Helvetica";
 					text-align:left;
@@ -599,8 +601,8 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 				@media screen and ( max-width:1295px ) {
 
-					th.column-' . $lca . '_og_desc,
-					td.column-' . $lca . '_og_desc {
+					th.column-wpsso_og_desc,
+					td.column-wpsso_og_desc {
 						display:none;
 					}
 				}
@@ -611,8 +613,8 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				if ( isset( $col_info[ 'width' ] ) ) {
 
 					$custom_style_css .= '
-						table.wp-list-table > thead > tr > th.column-' . $lca . '_' . $col_name . ',
-						table.wp-list-table > tbody > tr > td.column-' . $lca . '_' . $col_name . ' {
+						table.wp-list-table > thead > tr > th.column-wpsso_' . $col_name . ',
+						table.wp-list-table > tbody > tr > td.column-wpsso_' . $col_name . ' {
 							width:' . $col_info[ 'width' ] . ' !important;
 							min-width:' . $col_info[ 'width' ] . ' !important;
 						}
@@ -631,7 +633,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 				if ( method_exists( 'SucomUtil', 'minify_css' ) ) {
 
-					$custom_style_css = SucomUtil::minify_css( $custom_style_css, $lca );
+					$custom_style_css = SucomUtil::minify_css( $custom_style_css, $ext = 'wpsso' );
 				}
 
 				set_transient( $cache_id, $custom_style_css, $cache_exp_secs );

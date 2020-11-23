@@ -15,7 +15,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 	class WpssoConfig {
 
 		public static $cf = array(
-			'lca'  => 'wpsso',	// Main plugin lowercase acronym (deprecated on 2017/11/18).
 			'dist' => array(
 				'pro' => 'Premium',
 				'std' => 'Standard',
@@ -4060,7 +4059,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			/**
 			 * Create a unique md5 query name from the config array and the local wp nonce key.
 			 */
-			$var_const[ 'WPSSO_NONCE_NAME' ] = md5( var_export( self::$cf, true ) . ( defined( 'NONCE_KEY' ) ? NONCE_KEY : '' ) );
+			$var_const[ 'WPSSO_NONCE_NAME' ] = md5( var_export( self::$cf[ 'plugin' ][ 'wpsso' ], $return = true ) .
+				( defined( 'NONCE_KEY' ) ? NONCE_KEY : '' ) );
 
 			if ( defined( 'WPSSO_PLUGINDIR' ) ) {
 

@@ -30,7 +30,7 @@ if ( ! class_exists( 'WpssoSchemaNoScript' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( apply_filters( $this->p->lca . '_add_schema_noscript_array', true ) ) {
+			if ( apply_filters( $this->p->id . '_add_schema_noscript_array', true ) ) {
 
 				$this->p->util->add_plugin_filters( $this, array( 
 					'schema_scripts' => 3,
@@ -40,7 +40,7 @@ if ( ! class_exists( 'WpssoSchemaNoScript' ) ) {
 
 		public function filter_schema_scripts( array $schema_scripts, array $mod, array $mt_og ) {
 
-			if ( ! apply_filters( $this->p->lca . '_add_schema_noscript_aggregaterating', true ) ) {
+			if ( ! apply_filters( $this->p->id . '_add_schema_noscript_aggregaterating', true ) ) {
 
 				return $schema_scripts;
 			}

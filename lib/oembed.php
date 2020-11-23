@@ -153,7 +153,7 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 		 */
 		public function the_embed_thumbnail_image_size( $size_name, $pid ) {
 
-			$size_name = $this->p->lca . '-opengraph';
+			$size_name = $this->p->id . '-opengraph';
 
 			return $size_name;
 		}

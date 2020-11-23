@@ -135,7 +135,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 									/**
 									 * Loaded module objects from core plugin.
 									 */
-									if ( $ext === $this->p->lca ) {
+									if ( $ext === $this->p->id ) {
 
 										if ( $this->p->debug->enabled ) {
 

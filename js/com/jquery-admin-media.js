@@ -11,10 +11,12 @@ function sucomInitAdminMedia( container_id, doing_ajax ) {
 	var table_id = 'table.sucom-settings';
 
 	if ( typeof container_id !== 'undefined' && container_id ) {
+
 		table_id = container_id + ' ' + table_id;
 	}
 
 	jQuery( document ).on( 'click', table_id + ' .sucom_image_upload_button', function( event ) {
+
 		sucomHandleImageUpload( this, event );
 	} );
 }
@@ -26,6 +28,7 @@ function sucomHandleImageUpload( t, e ) {
 	var opt_suffix  = '';
 
 	if ( opt_prefix.match( /^.*_[0-9]+$/ ) ) {
+
 		opt_suffix = opt_prefix.replace( /^(.*)(_[0-9]+)$/, '$2' );
 		opt_prefix = opt_prefix.replace( /^(.*)(_[0-9]+)$/, '$1' );
 	}
@@ -33,6 +36,7 @@ function sucomHandleImageUpload( t, e ) {
 	e.preventDefault();
 
 	if ( typeof sucom_image_upload_media !== 'undefined' ) {
+
 		sucom_image_upload_media.close();
 	}
 

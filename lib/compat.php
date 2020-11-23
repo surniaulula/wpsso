@@ -166,7 +166,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 
 				foreach ( $mixed as $size_name => $disabled ) {
 
-					if ( false !== strpos( $size_name, $this->p->lca . '-' ) ) {
+					if ( false !== strpos( $size_name, $this->p->id . '-' ) ) {
 
 						unset( $mixed[ $size_name ] );
 					}
@@ -182,7 +182,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			 */
 			foreach ( $_wp_additional_image_sizes as $size_name => $size_info ) {
 
-				if ( false !== strpos( $size_name, $this->p->lca . '-' ) ) {
+				if ( false !== strpos( $size_name, $this->p->id . '-' ) ) {
 
 					$mixed[ $size_name ] = 1;
 				}
@@ -249,8 +249,8 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 
 			if ( class_exists( 'Yoast_Notification_Center' ) ) {
 
-				$info = $this->p->cf[ 'plugin' ][ $this->p->lca ];
-				$name = $this->p->cf[ 'plugin' ][ $this->p->lca ][ 'name' ];
+				$info = $this->p->cf[ 'plugin' ][ $this->p->id ];
+				$name = $this->p->cf[ 'plugin' ][ $this->p->id ][ 'name' ];
 
 				/**
 				 * Since WordPress SEO v4.0.

@@ -329,12 +329,8 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\e81b";	/* .icon-robot-4 */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_schema_general::before {		/* SSO > Schema Markup > Schema Settings > General Settings tab. */
+.sucom-tablink_schema-defaults.sucom-tablink-icon::before {		/* SSO > Schema Markup > Schema Defaults tabs. */
 	content:"\f0f6";	/* .icon-doc-text */
-}
-
-.sucom-tablink-icon.sucom-tablink-href_schema_defaults::before {	/* SSO > Schema Markup > Schema Settings > Schema Defaults tab. */
-	content:"\f0ce";	/* .icon-table */
 }
 
 .sucom-tablink-icon.sucom-tablink-href_schema::before {			/* SSO > Advanced Settings > HTML Tags > Schema tab. */

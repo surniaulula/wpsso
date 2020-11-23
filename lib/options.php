@@ -485,7 +485,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				$this->defaults_cache[ 'options_filtered' ] = 1;	// Set before calling filter to prevent recursion.
 
-				$this->defaults_cache = apply_filters( $this->p->lca . '_get_defaults', $this->defaults_cache );
+				$this->defaults_cache = apply_filters( $this->p->id . '_get_defaults', $this->defaults_cache );
 
 				if ( empty( self::$allow_cache ) ) {
 
@@ -550,7 +550,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				$this->site_defaults_cache[ 'options_filtered' ] = 1;	// Set before calling filter to prevent recursion.
 
-				$this->site_defaults_cache = apply_filters( $this->p->lca . '_get_site_defaults', $this->site_defaults_cache );
+				$this->site_defaults_cache = apply_filters( $this->p->id . '_get_site_defaults', $this->site_defaults_cache );
 
 				if ( empty( self::$allow_cache ) ) {
 
@@ -1175,7 +1175,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$this->p->debug->log( '$upgrading = ' . $upgrading );
 			}
 
-			$opts = apply_filters( $this->p->lca . '_save_setting_options', $opts, $network, $upgrading );
+			$opts = apply_filters( $this->p->id . '_save_setting_options', $opts, $network, $upgrading );
 
 			/**
 			 * Save plugin version and option version.
@@ -1240,7 +1240,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				if ( ! empty( $ext_updates ) ) {
 
-					do_action( $this->p->lca . '_version_updates', $ext_updates );
+					do_action( $this->p->id . '_version_updates', $ext_updates );
 				}
 			}
 
@@ -1380,7 +1380,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			/**
 			 * Hooked by several add-ons.
 			 */
-			$option_type = apply_filters( $this->p->lca . '_option_type', false, $base_key, $network, $mod );
+			$option_type = apply_filters( $this->p->id . '_option_type', false, $base_key, $network, $mod );
 
 			/**
 			 * Translate error messages only once.

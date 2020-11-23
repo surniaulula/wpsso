@@ -118,7 +118,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				/**
 				 * Addons and license settings page.
 				 */
-				case ( preg_match( '/_page_' . $this->p->lca . '-.*(addons|licenses)/', $hook_name ) ? true : false ) :
+				case ( preg_match( '/_page_wpsso-.*(addons|licenses)/', $hook_name ) ? true : false ) :
 
 					if ( $this->p->debug->enabled ) {
 
@@ -134,7 +134,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				/**
 				 * Any settings page. Also matches the profile_page and users_page hooks.
 				 */
-				case ( false !== strpos( $hook_name, '_page_' . $this->p->lca . '-' ) ? true : false ):
+				case ( false !== strpos( $hook_name, '_page_wpsso-' ) ? true : false ):
 
 					if ( $this->p->debug->enabled ) {
 
@@ -188,7 +188,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 						$this->p->debug->log( 'wp_enqueue_media() function not found' );
 					}
 
-					do_action( $this->p->lca . '_admin_enqueue_scripts_editing_page', $hook_name, $this->file_ext );
+					do_action( 'wpsso_admin_enqueue_scripts_editing_page', $hook_name, $this->file_ext );
 
 					break;	// Stop here.
 
@@ -263,7 +263,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			 */
 			if ( ! empty( $this->p->debug->enabled ) ) {
 
-				$this->p->debug->log( 'adding jQuery call for sucomUpdateToolbar()' );
+				$this->p->debug->log( 'adding jQuery call for sucomToolbarNotices()' );
 			}
 
 			?><script type="text/javascript">
@@ -272,7 +272,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 					jQuery( window ).on( 'load', function() {
 
-						sucomUpdateToolbar( 'wpsso' );
+						sucomToolbarNotices( 'wpsso', 'sucomAdminPageL10n' );
 					});
 				});
 
@@ -301,11 +301,11 @@ jQuery( document ).ready( function(){
 
 	jQuery( "body#plugin-information.iframe a[id$=_from_iframe]" ).on( "click", function(){
 
-		if ( window.top.location.href.indexOf( "page=' . $this->p->lca . '-" ) ) {
+		if ( window.top.location.href.indexOf( "page=wpsso-" ) ) {
 
 			var plugin_url        = jQuery( this ).attr( "href" );
-			var pageref_url_arg   = "&' . $this->p->lca . '_pageref_url=" + encodeURIComponent( window.top.location.href );
-			var pageref_title_arg = "&' . $this->p->lca . '_pageref_title=" + encodeURIComponent( jQuery( "h1", window.parent.document ).text() );
+			var pageref_url_arg   = "&wpsso_pageref_url=" + encodeURIComponent( window.top.location.href );
+			var pageref_title_arg = "&wpsso_pageref_title=" + encodeURIComponent( jQuery( "h1", window.parent.document ).text() );
 
 			window.top.location.href = plugin_url + pageref_url_arg + pageref_title_arg;
 		}
@@ -385,13 +385,13 @@ jQuery( document ).ready( function(){
 			);
 
 			$metabox_id       = $this->p->cf[ 'meta' ][ 'id' ];
-			$mb_container_id  = $this->p->lca . '_metabox_' . $metabox_id . '_inside';
-			$mb_container_ids = apply_filters( $this->p->lca . '_metabox_container_ids', array( $mb_container_id ) );
+			$mb_container_id  = 'wpsso_metabox_' . $metabox_id . '_inside';
+			$mb_container_ids = apply_filters( 'wpsso_metabox_container_ids', array( $mb_container_id ) );
 
 			$no_notices_transl = sprintf( __( 'No %s notifications.', 'wpsso' ), $this->p->cf[ 'menu' ][ 'title' ] );
 			$no_notices_html   = '<div class="ab-item ab-empty-item">' . $no_notices_transl . '</div>';
 
-			$notice_text_id      = $this->p->lca . '_' . uniqid();	// CSS id of hidden notice text container.
+			$notice_text_id      = 'wpsso_' . uniqid();	// CSS id of hidden notice text container.
 			$copy_notices_transl = __( 'Copy notifications to clipboard.', 'wpsso' );
 			$copy_notices_html   = '<div class="wpsso-notice notice notice-alt notice-copy">' .
 				'<div class="notice-message">' .
@@ -399,7 +399,7 @@ jQuery( document ).ready( function(){
 				'</div><!-- .notice-message -->' .
 				'</div><!-- .notice-copy -->';
 
-			$option_labels = apply_filters( $this->p->lca . '_admin_page_script_data_option_labels', $option_labels );
+			$option_labels = apply_filters( 'wpsso_admin_page_script_data_option_labels', $option_labels );
 
 			return array(
 				'_ajax_nonce'         => wp_create_nonce( WPSSO_NONCE_NAME ),

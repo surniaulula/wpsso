@@ -16,8 +16,8 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 		private $p;	// Plugin class object.
 
-		private $lca          = 'sucom';
-		private $uca          = 'SUCOM';
+		private $plugin_id    = 'sucom';
+		private $plugin_ucid  = 'SUCOM';
 		private $text_domain  = 'sucom';
 		private $label_transl = '';
 
@@ -39,14 +39,14 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			'ignore_urls'       => array(),
 		);
 
-		public function __construct( $plugin = null, $lca = null, $text_domain = null, $label_transl = null ) {
+		public function __construct( $plugin = null, $plugin_id = null, $text_domain = null, $label_transl = null ) {
 
 			if ( ! class_exists( 'SucomUtil' ) ) {	// Just in case.
 
 				require_once trailingslashit( dirname( __FILE__ ) ) . 'util.php';
 			}
 
-			$this->set_config( $plugin, $lca, $text_domain, $label_transl );
+			$this->set_config( $plugin, $plugin_id, $text_domain, $label_transl );
 
 			add_action( 'shutdown', array( $this, 'save_ignored_urls' ) );
 		}
@@ -54,7 +54,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		/**
 		 * Set property values for text domain, notice label, etc.
 		 */
-		private function set_config( $plugin = null, $lca = null, $text_domain = null, $label_transl = null ) {
+		private function set_config( $plugin = null, $plugin_id = null, $text_domain = null, $label_transl = null ) {
 
 			if ( $plugin !== null ) {
 
@@ -66,24 +66,24 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				}
 			}
 
-			if ( $lca !== null ) {
+			if ( $plugin_id !== null ) {
 
-				$this->lca = $lca;
+				$this->plugin_id = $plugin_id;
 
-			} elseif ( ! empty( $this->p->lca ) ) {
+			} elseif ( ! empty( $this->p->id ) ) {
 
-				$this->lca = $this->p->lca;
+				$this->plugin_id = $this->p->id;
 			}
 
-			$this->uca = strtoupper( $this->lca );
+			$this->plugin_ucid = strtoupper( $this->plugin_id );
 
 			if ( $text_domain !== null ) {
 
 				$this->text_domain = $text_domain;
 
-			} elseif ( ! empty( $this->p->cf[ 'plugin' ][ $this->lca ][ 'text_domain' ] ) ) {
+			} elseif ( ! empty( $this->p->cf[ 'plugin' ][ $this->plugin_id ][ 'text_domain' ] ) ) {
 
-				$this->text_domain = $this->p->cf[ 'plugin' ][ $this->lca ][ 'text_domain' ];
+				$this->text_domain = $this->p->cf[ 'plugin' ][ $this->plugin_id ][ 'text_domain' ];
 			}
 
 			if ( $label_transl !== null ) {
@@ -100,15 +100,15 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				$this->label_transl = __( 'Notice', $this->text_domain );
 			}
 
-			$this->base_dir = trailingslashit( constant( $this->uca . '_CACHEDIR' ) );
-			$this->base_url = trailingslashit( constant( $this->uca . '_CACHEURL' ) );
+			$this->base_dir = trailingslashit( constant( $this->plugin_ucid . '_CACHEDIR' ) );
+			$this->base_url = trailingslashit( constant( $this->plugin_ucid . '_CACHEURL' ) );
 		}
 
 		public function maybe_load_ignored_urls() {
 
 			if ( ! $this->ignored_urls[ 'transient_loaded' ] ) {
 
-				$cache_md5_pre = $this->lca . '_';
+				$cache_md5_pre = $this->plugin_id . '_';
 				$cache_salt    = __CLASS__ . '::ignored_urls';
 				$cache_id      = $cache_md5_pre . md5( $cache_salt );
 				$cache_ret     = get_transient( $cache_id );
@@ -126,7 +126,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			if ( $this->ignored_urls[ 'transient_loaded' ] ) {
 
-				$cache_md5_pre = $this->lca . '_';
+				$cache_md5_pre = $this->plugin_id . '_';
 				$cache_salt    = __CLASS__ . '::ignored_urls';
 				$cache_id      = $cache_md5_pre . md5( $cache_salt );
 
@@ -277,7 +277,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			$url_nofrag    = preg_replace( '/#.*$/', '', $url );	// Remove the fragment.
 			$url_path      = parse_url( $url_nofrag, PHP_URL_PATH );
-			$cache_md5_pre = $this->lca . ( $cache_ext ? $cache_ext : '_' );
+			$cache_md5_pre = $this->plugin_id . ( $cache_ext ? $cache_ext : '_' );
 			$cache_salt    = __CLASS__ . '::get(url:' . $url_nofrag . ')';
 			$cache_id      = $cache_md5_pre . md5( $cache_salt );
 
@@ -512,7 +512,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 				return $failure;
 
-			} elseif ( SucomUtil::get_const( $this->uca . '_PHP_CURL_DISABLE' ) ) { {
+			} elseif ( SucomUtil::get_const( $this->plugin_ucid . '_PHP_CURL_DISABLE' ) ) { {
 
 				if ( $this->p->debug->enabled )
 
@@ -697,12 +697,12 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			foreach ( $allowed_curl_const as $const_suffix ) {
 
-				$uca_const_name  = $this->uca . '_PHP_CURL_' . $const_suffix;
-				$curl_const_name = 'CURLOPT_' . $const_suffix;
+				$curl_const_name   = 'CURLOPT_' . $const_suffix;
+				$custom_const_name = $this->plugin_ucid . '_PHP_CURL_' . $const_suffix;
 
-				if ( defined( $uca_const_name ) ) {
+				if ( defined( $custom_const_name ) ) {
 
-					curl_setopt( $ch, constant( $curl_const_name ), constant( $uca_const_name ) );
+					curl_setopt( $ch, constant( $curl_const_name ), constant( $custom_const_name ) );
 				}
 			}
 
@@ -825,7 +825,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				$this->p->debug->log( $cache_type . ' cache salt ' . $cache_salt );
 			}
 
-			$cache_md5_pre = $this->lca . ( $cache_ext ? $cache_ext : '_' );
+			$cache_md5_pre = $this->plugin_id . ( $cache_ext ? $cache_ext : '_' );
 			$cache_id      = $cache_md5_pre . md5( $cache_salt );
 
 			switch ( $cache_type ) {
@@ -940,7 +940,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				$this->p->debug->log( $cache_type . ' cache salt ' . $cache_salt );
 			}
 
-			$cache_md5_pre = $this->lca . ( $cache_ext ? $cache_ext : '_' );
+			$cache_md5_pre = $this->plugin_id . ( $cache_ext ? $cache_ext : '_' );
 			$cache_id      = $cache_md5_pre . md5( $cache_salt );
 
 			switch ( $cache_type ) {

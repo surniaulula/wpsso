@@ -6,6 +6,7 @@
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
+
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
@@ -18,6 +19,7 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteAdvanced' ) && class_exists( 'WpssoAdm
 			$this->p =& $plugin;
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark();
 			}
 
@@ -30,6 +32,7 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteAdvanced' ) && class_exists( 'WpssoAdm
 		protected function set_form_object( $menu_ext ) {
 
 			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->log( 'setting site form object for ' . $menu_ext );
 			}
 
@@ -65,7 +68,7 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteAdvanced' ) && class_exists( 'WpssoAdm
 
 			$metabox_id = 'plugin';
 
-			$tabs = apply_filters( $this->p->lca . '_site_advanced_' . $metabox_id . '_tabs', array(
+			$tabs = apply_filters( $this->p->id . '_site_advanced_' . $metabox_id . '_tabs', array(
 				'settings' => _x( 'Plugin Admin', 'metabox tab', 'wpsso' ),
 				'cache'    => _x( 'Caching', 'metabox tab', 'wpsso' ),
 			) );
@@ -74,7 +77,7 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteAdvanced' ) && class_exists( 'WpssoAdm
 
 			foreach ( $tabs as $tab_key => $title ) {
 
-				$filter_name = $this->p->lca . '_' . $metabox_id . '_' . $tab_key . '_rows';
+				$filter_name = $this->p->id . '_' . $metabox_id . '_' . $tab_key . '_rows';
 
 				$table_rows[ $tab_key ] = array_merge(
 					$this->get_table_rows( $metabox_id, $tab_key ),
