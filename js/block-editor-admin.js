@@ -20,7 +20,7 @@ wp.data.subscribe( function() {
 
 		if ( ! isSavingContainer ) {		// Saving the post meta is done.
 
-			wpssoUpdateContainers();	// Update metaboxes.
+			sucomUpdateContainers();	// Update metaboxes.
 
 			wpssoCreateNotices();		// Get any new notices.
 		}
@@ -29,52 +29,16 @@ wp.data.subscribe( function() {
 	wasSavingContainer = isSavingContainer;
 } );
 
-function wpssoUpdateContainers() {
-
-	if ( jQuery.isArray( sucomAdminPageL10n._mb_container_ids ) ) {
-
-		var post_id = getCurrentPostId();
-
-		for ( var container_key in sucomAdminPageL10n._mb_container_ids ) {
-
-			var container_id = sucomAdminPageL10n._mb_container_ids[ container_key ];
-
-			var ajax_action_update_container = 'get_container_id_' + container_id;
-
-			/**
-			 * Just in case - sanitize the WP ajax action filter name.
-			 */
-			ajax_action_update_container = ajax_action_update_container.toLowerCase();
-			ajax_action_update_container = ajax_action_update_container.replace( /[:\/\-\. ]+/g, '_' );
-			ajax_action_update_container = ajax_action_update_container.replace( /[^a-z0-9_\-]/g, '' );
-
-			var ajaxData = {
-				action: ajax_action_update_container,
-				post_id: post_id,
-				_ajax_nonce: sucomAdminPageL10n._ajax_nonce,
-			}
-
-			jQuery.post( ajaxurl, ajaxData, function( html ) {
-
-				/**
-				 * The returned HTML includes javascript to call the sucomInitMetabox() function.
-				 */
-				if ( html ) {
-
-					jQuery( '#' + container_id ).replaceWith( html );
-				}
-			} );
-		}
-	}
-}
-
+/**
+ * Create block-editor notices first, excluding any toolbar notice types, then update the toolbar notices.
+ */
 function wpssoCreateNotices() {
 
 	var ajaxData = {
 		action: sucomAdminPageL10n._ajax_actions[ 'get_notices_json' ],
 		context: 'block_editor',
 		_ajax_nonce: sucomAdminPageL10n._ajax_nonce,
-		_exclude_types: sucomAdminPageL10n._tb_notices,
+		_exclude_types: sucomAdminPageL10n._tb_notices,	// Exclude the toolbar notice types.
 	}
 
 	jQuery.getJSON( ajaxurl, ajaxData, function( data ) {

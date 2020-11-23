@@ -60,6 +60,45 @@ function sucomStripHtml( html ) {
 	return html;
 }
 
+function sucomUpdateContainers() {
+
+	if ( jQuery.isArray( sucomAdminPageL10n._mb_container_ids ) ) {
+
+		var post_id = getCurrentPostId();
+
+		for ( var container_key in sucomAdminPageL10n._mb_container_ids ) {
+
+			var container_id = sucomAdminPageL10n._mb_container_ids[ container_key ];
+
+			var ajax_action_update_container = 'get_container_id_' + container_id;
+
+			/**
+			 * Just in case - sanitize the WP ajax action filter name.
+			 */
+			ajax_action_update_container = ajax_action_update_container.toLowerCase();
+			ajax_action_update_container = ajax_action_update_container.replace( /[:\/\-\. ]+/g, '_' );
+			ajax_action_update_container = ajax_action_update_container.replace( /[^a-z0-9_\-]/g, '' );
+
+			var ajaxData = {
+				action: ajax_action_update_container,
+				post_id: post_id,
+				_ajax_nonce: sucomAdminPageL10n._ajax_nonce,
+			}
+
+			jQuery.post( ajaxurl, ajaxData, function( html ) {
+
+				/**
+				 * The returned HTML includes javascript to call the sucomInitMetabox() function.
+				 */
+				if ( html ) {
+
+					jQuery( '#' + container_id ).replaceWith( html );
+				}
+			} );
+		}
+	}
+}
+
 function sucomUpdateToolbar( lca ) {
 
 	/**
