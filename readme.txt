@@ -318,7 +318,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.14.0-dev.1 (TBD)**
+**Version 8.14.0-dev.1 (2020/11/23)**
 
 * **New Features**
 	* None.
@@ -328,6 +328,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Added a new WpssoProUtilCheckImgDims class (Premium version).
+	* Added an update option 'active_plugins' filter to sort the WPSSO Core plugin before its add-ons.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.4.
@@ -743,7 +744,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 = 8.14.0-dev.1 =
 
-(TBD) Added a 'disabled' status light (Yellow) to the SSO &gt; Features Status page.
+(2020/11/23) Added a 'disabled' status light (Yellow) to the SSO &gt; Features Status page.
 
 = 8.13.0 =
 
