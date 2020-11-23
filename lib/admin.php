@@ -89,7 +89,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			add_action( 'update_option_home', array( $this, 'site_address_changed' ), PHP_INT_MAX, 3 );
 			add_action( 'sucom_update_option_home', array( $this, 'site_address_changed' ), PHP_INT_MAX, 3 );
 
+			/**
+			 * Re-sort the active plugins array to load WPSSO Core before its add-ons.
+			 */
+			add_filter( 'pre_update_option_active_plugins', array( $this, 'pre_update_active_plugins' ), PHP_INT_MAX, 3 );
+
+			/**
+			 * Define and disable the "Expect: 100-continue" header.
+			 */
 			add_filter( 'http_request_args', array( $this, 'add_expect_header' ), 1000, 2 );
+
 			add_filter( 'http_request_host_is_external', array( $this, 'maybe_allow_hosts' ), 1000, 3 );
 
 			/**
@@ -2659,6 +2668,43 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$notice_key = __FUNCTION__ . '_' . $old_value . '_' . $new_value;
 
 			$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
+		}
+
+		/**
+		 * Re-sort the active plugins array to load WPSSO Core before its add-ons.
+		 */
+		public function pre_update_active_plugins( $value, $old_value, $option = 'active_plugins' ) {
+
+			usort( $value, array( 'self', 'sort_active_plugins' ) );
+
+			return $value;
+		}
+
+		/**
+		 * Sort the WPSSO Core plugin slug before the WPSSO add-on slugs.
+		 */
+		private static function sort_active_plugins( $a, $b ) {
+
+			$plugin_prefix = 'wpsso/';
+
+			$addon_prefix = 'wpsso-';
+
+			if ( 0 === strpos( $a, $plugin_prefix ) ) {
+			
+				if ( 0 === strpos( $b, $addon_prefix ) ) {
+
+					return -1;
+				}
+
+			} elseif ( 0 === strpos( $a, $addon_prefix ) ) {
+
+				if ( 0 === strpos( $b, $plugin_prefix ) ) {
+
+					return 1;
+				}
+			}
+
+			return 0;
 		}
 
 		public function check_tmpl_head_attributes() {
