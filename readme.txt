@@ -323,7 +323,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Added a WP SiteMaps filter to add article modified dates and exclude posts / pages with 'noindex' checked under the Document SSO &gt; Robots tab.
+	* Added a WP SiteMaps filter to add modified dates and exclude posts / pages with 'noindex' checked under the Document SSO &gt; Robots Meta tab.
 	* Added a possible 'disabled' status light (Yellow) in the SSO &gt; Features Status page.
 	* Added new features in the SSO &gt; Features Status &gt; Standard Features metabox:
 		* Link Relation URL Tags
@@ -333,6 +333,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
+	* Added a new WpssoUtilRobots class.
+	* Added a new SucomUtilRobots class (extended by WpssoUtilRobots).
 	* Added a new WpssoProUtilCheckImgDims class (Premium version).
 	* Added an update option 'active_plugins' filter to sort the WPSSO Core plugin before its add-ons.
 	* Added a new `Wpsso->id` variable to replace `Wpsso->lca` (now deprecated).
