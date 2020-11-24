@@ -41,6 +41,9 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 			}
 		}
 
+		/**
+		 * Pinterest / SEO Meta Name Tags.
+		 */
 		public function get_array( array $mod, array $mt_og = array(), $author_id = false ) {
 
 			if ( $this->p->debug->enabled ) {

@@ -93,6 +93,9 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 			}
 		}
 
+		/**
+		 * Link Relation URL Tags.
+		 */
 		public function get_array( array $mod, array $mt_og = array(), $author_id = false, $sharing_url = '' ) {
 
 			if ( $this->p->debug->enabled ) {

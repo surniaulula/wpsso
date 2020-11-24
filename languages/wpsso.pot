@@ -3561,7 +3561,7 @@ msgstr ""
 
 #: lib/admin-filters.php:171
 msgctxt "lib file description"
-msgid "(code) Link Relation Tags"
+msgid "(code) Link Relation URL Tags"
 msgstr ""
 
 #: lib/admin-filters.php:176
@@ -3571,7 +3571,7 @@ msgstr ""
 
 #: lib/admin-filters.php:181
 msgctxt "lib file description"
-msgid "(code) Schema Meta Name Tags"
+msgid "(code) Pinterest / SEO Meta Name Tags"
 msgstr ""
 
 #: lib/admin-filters.php:186

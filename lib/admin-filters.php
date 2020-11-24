@@ -167,8 +167,8 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 				'status'       => $knowl_status,
 			);
 
-			$features[ '(code) Link Relation Tags' ] = array(
-				'label_transl' => _x( '(code) Link Relation Tags', 'lib file description', 'wpsso' ),
+			$features[ '(code) Link Relation URL Tags' ] = array(
+				'label_transl' => _x( '(code) Link Relation URL Tags', 'lib file description', 'wpsso' ),
 				'status'       => class_exists( 'WpssoLinkRel' ) ? 'on' : 'recommended',
 			);
 
@@ -177,8 +177,8 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 				'status'       => class_exists( 'WpssoOembed' ) ? 'on' : 'recommended',
 			);
 
-			$features[ '(code) Schema Meta Name Tags' ] = array(
-				'label_transl' => _x( '(code) Schema Meta Name Tags', 'lib file description', 'wpsso' ),
+			$features[ '(code) Pinterest / SEO Meta Name Tags' ] = array(
+				'label_transl' => _x( '(code) Pinterest / SEO Meta Name Tags', 'lib file description', 'wpsso' ),
 				'status'       => class_exists( 'WpssoMetaName' ) ? 'on' : 'recommended',
 			);
 
