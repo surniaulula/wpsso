@@ -323,14 +323,19 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Added a WP SiteMaps filter to exclude posts / pages with 'noindex' checked in the Document SSO metabox.
-	* Added a 'disabled' status light (Yellow) to the SSO &gt; Features Status page.
+	* Added a WP SiteMaps filter to add article modified dates and exclude posts / pages with 'noindex' checked under the Document SSO &gt; Robots tab.
+	* Added a possible 'disabled' status light (Yellow) in the SSO &gt; Features Status page.
+	* Added new features in the SSO &gt; Features Status &gt; Standard Features metabox:
+		* Link Relation URL Tags
+		* oEmbed Response Enhancements
+		* Pinterest / SEO Meta Name Tags
+		* WP SiteMaps Enhancements
 * **Bugfixes**
 	* None.
 * **Developer Notes**
 	* Added a new WpssoProUtilCheckImgDims class (Premium version).
 	* Added an update option 'active_plugins' filter to sort the WPSSO Core plugin before its add-ons.
-	* Added a new `Wpsso->id` variable to replace `Wpsso->lca`.
+	* Added a new `Wpsso->id` variable to replace `Wpsso->lca` (now deprecated).
 	* Removed the `WpssoConfig::$cf[ 'lca' ]` array element (deprecated in 2017).
 * **Requires At Least**
 	* PHP v5.6.
@@ -747,7 +752,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 = 8.14.0-dev.2 =
 
-(2020/11/24) Added a 'disabled' status light (Yellow) to the SSO &gt; Features Status page.
+(2020/11/24) Added a WP SiteMaps filter. Added new features in the SSO &gt; Features Status &gt; Standard Features metabox.
 
 = 8.13.0 =
 
