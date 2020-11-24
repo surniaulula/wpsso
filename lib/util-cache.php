@@ -88,7 +88,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			/**
 			 * A transient is set and checked to limit the runtime and allow this process to be terminated early.
 			 */
-			$cache_md5_pre  = 'wpsso_!_';	// Protect transient from being cleared.
+			$cache_md5_pre  = 'wpsso_!_';			// Protect transient from being cleared.
 			$cache_exp_secs = HOUR_IN_SECONDS;		// Prevent duplicate runs for max 1 hour.
 			$cache_salt     = __CLASS__ . '::clear';	// Use a common cache salt for start / stop.
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
@@ -557,7 +557,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 		public function stop_refresh() {
 
-			$cache_md5_pre  = 'wpsso_!_';	// Protect transient from being cleared.
+			$cache_md5_pre  = 'wpsso_!_';			// Protect transient from being cleared.
 			$cache_exp_secs = HOUR_IN_SECONDS;		// Prevent duplicate runs for max 1 hour.
 			$cache_salt     = __CLASS__ . '::refresh';	// Use a common cache salt for start / stop.
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
@@ -582,7 +582,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			/**
 			 * A transient is set and checked to limit the runtime and allow this process to be terminated early.
 			 */
-			$cache_md5_pre  = 'wpsso_!_';	// Protect transient from being cleared.
+			$cache_md5_pre  = 'wpsso_!_';			// Protect transient from being cleared.
 			$cache_exp_secs = HOUR_IN_SECONDS;		// Prevent duplicate runs for max 1 hour.
 			$cache_salt     = __CLASS__ . '::refresh';	// Use a common cache salt for start / stop.
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );

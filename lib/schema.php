@@ -1439,7 +1439,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$wpsso =& Wpsso::get_instance();
 
-			$cache_md5_pre  = $wpsso->id . '_t_';
+			$cache_md5_pre  = 'wpsso_t_';
 			$cache_exp_secs = $wpsso->util->get_cache_exp_secs( $cache_md5_pre );	// Default is month in seconds.
 
 			if ( $cache_exp_secs > 0 ) {

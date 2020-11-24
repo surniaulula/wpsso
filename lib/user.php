@@ -1506,7 +1506,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public function stop_add_person_role() {
 
-			$cache_md5_pre  = 'wpsso_!_';		// Protect transient from being cleared.
+			$cache_md5_pre  = 'wpsso_!_';				// Protect transient from being cleared.
 			$cache_exp_secs = HOUR_IN_SECONDS;			// Prevent duplicate runs for max 1 hour.
 			$cache_salt     = __CLASS__ . '::add_person_role';	// Use a common cache salt for start / stop.
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
@@ -1532,7 +1532,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			/**
 			 * A transient is set and checked to limit the runtime and allow this process to be terminated early.
 			 */
-			$cache_md5_pre  = 'wpsso_!_';		// Protect transient from being cleared.
+			$cache_md5_pre  = 'wpsso_!_';				// Protect transient from being cleared.
 			$cache_exp_secs = HOUR_IN_SECONDS;			// Prevent duplicate runs for max 1 hour.
 			$cache_salt     = __CLASS__ . '::add_person_role';	// Use a common cache salt for start / stop.
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
@@ -1640,7 +1640,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			/**
 			 * A transient is set and checked to limit the runtime and allow this process to be terminated early.
 			 */
-			$cache_md5_pre  = 'wpsso_!_';		// Protect transient from being cleared.
+			$cache_md5_pre  = 'wpsso_!_';				// Protect transient from being cleared.
 			$cache_exp_secs = HOUR_IN_SECONDS;			// Prevent duplicate runs for max 1 hour.
 			$cache_salt     = __CLASS__ . '::remove_person_role';	// Use a common cache salt for start / stop.
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
