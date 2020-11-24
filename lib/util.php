@@ -3739,6 +3739,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$directives = self::get_robots_default_directives();
 
+			/**
+			 * Maybe get post, term, and user meta.
+			 */
 			$md_opts = is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ? $mod[ 'obj' ]->get_options( $mod[ 'id' ] ) : array();
 
 			foreach ( $directives as $directive_key => $directive_value ) {
