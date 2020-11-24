@@ -83,39 +83,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			$url = isset( $this->p->cf[ 'plugin' ][ $plugin_id ][ 'url' ] ) ? $this->p->cf[ 'plugin' ][ $plugin_id ][ 'url' ] : array();
 
 			/**
-			 * Add query arguments to the Premium purchase URL.
-			 *
-			 * utm_source   = Use utm_source to identify a search engine,
-			 *                newsletter name, or other source. Example: google.
-			 *
-			 * utm_medium   = Use utm_medium to identify a medium such as email or
-			 *                cost-per-click. Example: cpc.
-			 *
-			 * utm_campaign = Used for keyword analysis. Use utm_campaign to
-			 *                identify a specific product promotion or strategic
-			 *                campaign. Example: spring_sale.
-			 *
-			 * utm_term     = Used for paid search. Use utm_term to note the
-			 *                keywords for this ad. Example: running+shoes.
-			 *
-			 * utm_content  = Used for A/B testing and content-targeted ads. Use
-			 *                utm_content to differentiate ads or links that point
-			 *                to the same URL. Examples: logolink or textlink
-			 */
-			if ( ! empty( $url[ 'purchase' ] ) ) {
-
-				$url[ 'purchase' ] = add_query_arg( array(
-					'utm_source'  => $plugin_id,
-					'utm_medium'  => 'plugin',
-					'utm_content' => $msg_key,
-				), $url[ 'purchase' ] );
-
-			} else {
-
-				$url[ 'purchase' ] = '';
-			}
-
-			/**
 			 * Make sure specific plugin information is available, like 'short', 'short_pro', etc.
 			 */
 			foreach ( array( 'short', 'name', 'version' ) as $info_key ) {
@@ -2443,13 +2410,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						if ( 'wpsso' === $plugin_id ) {
 
-							$text .= sprintf( __( 'Purchase the %1$s plugin to upgrade and get the following features.',
-								'wpsso' ), $info[ 'short_pro' ] );
+							$text .= sprintf( __( 'Purchase the %1$s plugin to upgrade and get the following features.', 'wpsso' ),
+								$info[ 'short_pro' ] );
 
 						} else {
 
-							$text .= sprintf( __( 'Purchase the %1$s add-on to upgrade and get the following features.',
-								'wpsso' ), $info[ 'short_pro' ] );
+							$text .= sprintf( __( 'Purchase the %1$s add-on to upgrade and get the following features.', 'wpsso' ),
+								$info[ 'short_pro' ] );
 						}
 
 						$text .= empty( $url[ 'purchase' ] ) ? '' : '</a>';
@@ -2758,8 +2725,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'notice-pro-not-installed':
 
-						$licenses_page_link = $this->p->util->get_admin_url( 'licenses',
-							_x( 'Premium Licenses', 'lib file description', 'wpsso' ) );
+						$licenses_page_link = $this->p->util->get_admin_url( 'licenses', _x( 'Premium Licenses', 'lib file description', 'wpsso' ) );
 
 						$text = sprintf( __( 'An Authentication ID has been entered for %1$s but the plugin is not installed &mdash; you can install and activate the %2$s version from the %3$s settings page.', 'wpsso' ), '<b>' . $info[ 'name' ] . '</b>', $pro_transl, $licenses_page_link ) . ' ;-)';
 
@@ -2767,8 +2733,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'notice-pro-not-updated':
 
-						$licenses_page_link = $this->p->util->get_admin_url( 'licenses',
-							_x( 'Premium Licenses', 'lib file description', 'wpsso' ) );
+						$licenses_page_link = $this->p->util->get_admin_url( 'licenses', _x( 'Premium Licenses', 'lib file description', 'wpsso' ) );
 
 						$text = sprintf( __( 'An Authentication ID has been entered for %1$s in the %2$s settings page but the %3$s version is not installed &mdash; don\'t forget to update the plugin to install the latest %3$s version.', 'wpsso' ), '<b>' . $info[ 'name' ] . '</b>', $licenses_page_link, $pro_transl ) . ' ;-)';
 
@@ -2779,11 +2744,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$um_info = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
 
-						$addons_page_link = $this->p->util->get_admin_url( 'addons#wpssoum',
-							_x( 'Complementary Add-ons', 'lib file description', 'wpsso' ) );
+						$addons_page_link = $this->p->util->get_admin_url( 'addons#wpssoum', _x( 'Complementary Add-ons', 'lib file description', 'wpsso' ) );
 
-						$licenses_page_link = $this->p->util->get_admin_url( 'licenses',
-							_x( 'Premium Licenses', 'lib file description', 'wpsso' ) );
+						$licenses_page_link = $this->p->util->get_admin_url( 'licenses', _x( 'Premium Licenses', 'lib file description', 'wpsso' ) );
 
 						// translators: Please ignore - translation uses a different text domain.
 						$plugins_page_link = '<a href="' . get_admin_url( $blog_id = null, 'plugins.php' ) . '">' . __( 'Plugins' ) . '</a>';
@@ -2798,8 +2761,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						if ( $msg_key === 'notice-um-add-on-required' ) {
 
-							$text .= sprintf( __( 'Install and activate the %1$s add-on from the %2$s settings page.', 'wpsso' ),
-								$um_info[ 'name' ], $addons_page_link ) . ' ';
+							$text .= sprintf( __( 'Install and activate the %1$s add-on from the %2$s settings page.', 'wpsso' ), $um_info[ 'name' ], $addons_page_link ) . ' ';
 
 						} else {
 

@@ -756,15 +756,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( ! empty( $info[ 'url' ][ 'purchase' ] ) ) {
 
-				$url = add_query_arg( array( 
-					'utm_source'  => $ext,
-					'utm_medium'  => 'plugin',
-					'utm_content' => 'licenses-action-links',
-				), $info[ 'url' ][ 'purchase' ] );
-
 				$action_links[] = $this->p->msgs->get( 'pro-purchase-link', array(
 					'ext'      => $ext,
-					'url'      => $url,
+					'url'      => $info[ 'url' ][ 'purchase' ],
 					'tabindex' => false !== $tabindex ? ++$tabindex : false,
 				) );
 			}
@@ -1611,12 +1605,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					continue;
 				}
 
-				$purchase_url = add_query_arg( array(
-					'utm_source'  => $this->p->id,
-					'utm_medium'  => 'plugin',
-					'utm_content' => 'column-purchase',
-				), $info[ 'url' ][ 'purchase' ] );
-
 				$box = '<div class="side-info-header">' . "\n";
 				$box .= '<h2>' . __( 'Upgrade to Premium', 'wpsso' ) . '</h2>' . "\n";
 				$box .= '</div><!-- .side-info-header -->' . "\n";
@@ -1631,7 +1619,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$box .= '<div class="side-info-buttons">' . "\n";
 				$box .= $this->form->get_button( sprintf( _x( 'Get %s', 'submit button', 'wpsso' ), self::$pkg[ $ext ][ 'short_pro' ] ),
-					'button-secondary', 'column-purchase', $purchase_url, true ) . "\n";
+					'button-secondary', 'column-purchase', $info[ 'url' ][ 'purchase' ], true ) . "\n";
 				$box .= '</div><!-- .side-info-buttons -->' . "\n";
 
 				$local_cache[] = $box;
