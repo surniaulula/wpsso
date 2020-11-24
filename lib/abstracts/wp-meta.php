@@ -515,9 +515,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'notranslate',
 				) as $directive ) {
 
-					$opt_key = SucomUtil::sanitize_hookname( 'robots_' . $directive );
+					$opt_key = 'robots_' . $directive;
 
-					$meta_key = SucomUtil::sanitize_hookname( '_wpsso_' . $directive );
+					$meta_key = '_wpsso_' . $directive;
 
 					$value = static::get_meta( $mod_id, $meta_key, $single = true );	// Use static method from child.
 
