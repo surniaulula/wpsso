@@ -318,11 +318,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.14.0-dev.1 (2020/11/23)**
+**Version 8.14.0-dev.2 (2020/11/24)**
 
 * **New Features**
 	* None.
 * **Improvements**
+	* Added a WP SiteMaps filter to exclude posts / pages with 'noindex' checked in the Document SSO metabox.
 	* Added a 'disabled' status light (Yellow) to the SSO &gt; Features Status page.
 * **Bugfixes**
 	* None.
@@ -744,9 +745,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.14.0-dev.1 =
+= 8.14.0-dev.2 =
 
-(2020/11/23) Added a 'disabled' status light (Yellow) to the SSO &gt; Features Status page.
+(2020/11/24) Added a 'disabled' status light (Yellow) to the SSO &gt; Features Status page.
 
 = 8.13.0 =
 
