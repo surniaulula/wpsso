@@ -329,6 +329,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Link Relation URL Tags
 		* oEmbed Response Enhancements
 		* Pinterest / SEO Meta Name Tags
+		* Post, Term, and User Robots Meta
 		* WP SiteMaps Enhancements
 * **Bugfixes**
 	* None.
