@@ -30,54 +30,15 @@ if ( ! class_exists( 'WpssoWpSiteMaps' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( ! SucomUtilWP::wp_sitemaps_enabled() ) {	// Nothing to do.
+			if ( ! SucomUtilWP::sitemaps_enabled() ) {	// Nothing to do.
 
 				return;
 			}
 
-			add_filter( 'wp_sitemaps_posts_query_args', array( $this, 'wp_sitemaps_posts_query_args' ), 10, 2 );
 			add_filter( 'wp_sitemaps_posts_entry', array( $this, 'wp_sitemaps_posts_entry' ), 10, 3 );
-		}
-
-		/**
-		 * The 'wp_sitemaps_posts_query_args' filter is applied at least twice; to get the maximum number of pages, and to
-		 * get posts for each of those pages. This method uses a local cache to avoid running the same code more than once.
-		 */
-		public function wp_sitemaps_posts_query_args( $args, $post_type ) {
-
-			$args[ 'orderby' ] = 'modified';
-			$args[ 'order' ]   = 'DESC';
-
-			if ( ! empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
-
-				static $local_cache = array();
-
-				if ( ! isset( $local_cache[ $post_type ] ) ) {
-
-					$local_cache[ $post_type ] = array();
-
-					$query = new WP_Query( array_merge( $args, array(
-						'fields'        => 'ids',	// Return an array of post ids.
-						'no_found_rows' => true,	// Skip counting total rows found.
-					) ) );
-
-					foreach ( $query->posts as $post_id ) {
-				
-						if ( $this->p->util->robots->is_noindex( 'post', $post_id ) ) {
-
-							$local_cache[ $post_type ][] = $post_id;
-						}
-					}
-				}
-
-				if ( ! empty( $local_cache[ $post_type ] ) ) {
-
-					$args[ 'post__not_in' ] = empty( $args[ 'post__not_in' ] ) ? $local_cache[ $post_type ] :
-						array_merge( $args[ 'post__not_in' ], $local_cache[ $post_type ] );
-				}
-			}
-
-			return $args;
+			add_filter( 'wp_sitemaps_posts_query_args', array( $this, 'wp_sitemaps_posts_query_args' ), 10, 2 );
+			add_filter( 'wp_sitemaps_taxonomies_query_args', array( $this, 'wp_sitemaps_taxonomies_query_args' ), 10, 2 );
+			add_filter( 'wp_sitemaps_users_query_args', array( $this, 'wp_sitemaps_users_query_args' ), 10, 1 );
 		}
 
 		public function wp_sitemaps_posts_entry( $sitemap_entry, $post, $post_type ) {
@@ -100,6 +61,113 @@ if ( ! class_exists( 'WpssoWpSiteMaps' ) ) {
 			}
 
 			return $sitemap_entry;
+		}
+
+		public function wp_sitemaps_posts_query_args( $args, $post_type ) {
+
+			$args[ 'orderby' ] = 'modified';
+			$args[ 'order' ]   = 'DESC';
+
+			if ( ! empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
+
+				static $local_cache = array();
+
+				if ( ! isset( $local_cache[ $post_type ] ) ) {
+
+					$local_cache[ $post_type ] = array();
+
+					$query = new WP_Query( array_merge( $args, array(
+						'fields'        => 'ids',
+						'no_found_rows' => true,
+					) ) );
+
+					foreach ( $query->posts as $post_id ) {
+				
+						if ( $this->p->util->robots->is_noindex( 'post', $post_id ) ) {
+
+							$local_cache[ $post_type ][] = $post_id;
+						}
+					}
+				}
+
+				if ( ! empty( $local_cache[ $post_type ] ) ) {
+
+					$args[ 'post__not_in' ] = empty( $args[ 'post__not_in' ] ) ? $local_cache[ $post_type ] :
+						array_merge( $args[ 'post__not_in' ], $local_cache[ $post_type ] );
+				}
+			}
+
+			return $args;
+		}
+
+		public function wp_sitemaps_taxonomies_query_args( $args, $taxonomy ) {
+
+			if ( ! empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
+
+				static $local_cache = array();
+
+				if ( ! isset( $local_cache[ $taxonomy ] ) ) {
+
+					$local_cache[ $taxonomy ] = array();
+
+					$query = new WP_Term_Query( array_merge( $args, array(
+						'fields'        => 'ids',
+						'no_found_rows' => true,
+					) ) );
+
+					foreach ( $query->terms as $term_id ) {
+				
+						if ( $this->p->util->robots->is_noindex( 'term', $term_id ) ) {
+
+							$local_cache[ $taxonomy ][] = $term_id;
+						}
+					}
+				}
+
+				if ( ! empty( $local_cache[ $taxonomy ] ) ) {
+
+					$args[ 'exclude' ] = empty( $args[ 'exclude' ] ) ? $local_cache[ $taxonomy ] :
+						array_merge( $args[ 'exclude' ], $local_cache[ $taxonomy ] );
+				}
+			}
+
+			return $args;
+		}
+
+		public function wp_sitemaps_users_query_args( $args ) {
+
+			if ( ! empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
+
+				static $local_cache = null;
+
+				if ( null === $local_cache ) {
+
+					$local_cache = array();
+
+					$query = new WP_User_Query( array_merge( $args, array(
+						'fields'        => 'ids',
+						'no_found_rows' => true,
+					) ) );
+
+					$users = $query->get_results();
+
+					foreach ( $users as $user_id ) {
+				
+						if ( $this->p->util->robots->is_noindex( 'user', $user_id ) ) {
+
+							$local_cache[] = $user_id;
+						}
+					}
+				}
+
+				if ( ! empty( $local_cache ) ) {
+
+					$args[ 'exclude' ] = empty( $args[ 'exclude' ] ) ? $local_cache :
+						array_merge( $args[ 'exclude' ], $local_cache );
+				}
+			}
+
+			return $args;
 		}
 	}
 }

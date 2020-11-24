@@ -18,18 +18,26 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 		public function __construct() {}
 
-		public static function wp_sitemaps_enabled() {
+		public static function oembed_enabled() {
+
+			if ( function_exists( 'get_oembed_response_data' ) ) {	// Since WP v4.4.
+				
+				return true;
+			}
+
+			return false;
+		}
+
+		public static function sitemaps_enabled() {
 
 			global $wp_sitemaps;
 
-			if ( is_callable( array( $wp_sitemaps, 'sitemaps_enabled' ) ) ) {
+			if ( is_callable( array( $wp_sitemaps, 'sitemaps_enabled' ) ) ) {	// Since WP v5.5.
 
 				return $wp_sitemaps->sitemaps_enabled();
 			}
 
-			$is_enabled = (bool) get_option( 'blog_public' );
-		
-			return (bool) apply_filters( 'wp_sitemaps_enabled', $is_enabled );
+			return false;
 		}
 
 		public static function get_db_transient_keys( $only_expired = false, $transient_prefix = '' ) {

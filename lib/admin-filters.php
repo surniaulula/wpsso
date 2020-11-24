@@ -185,6 +185,11 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 				'status'       => class_exists( 'WpssoMetaName' ) ? 'on' : 'recommended',
 			);
 
+			$features[ '(code) SEO Robots Meta' ] = array(
+				'label_transl' => _x( '(code) SEO Robots Meta', 'lib file description', 'wpsso' ),
+				'status'       => empty( $this->p->options[ 'add_meta_name_robots' ] ) ? 'off' : 'on',
+			);
+
 			$features[ '(code) Twitter Card Meta Tags' ] = array(
 				'label_transl' => _x( '(code) Twitter Card Meta Tags', 'lib file description', 'wpsso' ),
 				'status'       => class_exists( 'WpssoTwitterCard' ) ? 'on' : 'recommended',
@@ -192,7 +197,7 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 
 			$features[ '(code) WP SiteMaps Enhancements' ] = array(
 				'label_transl' => _x( '(code) WP SiteMaps Enhancements', 'lib file description', 'wpsso' ),
-				'status'       => SucomUtilWP::wp_sitemaps_enabled() ? 'on' : 'off',
+				'status'       => SucomUtilWP::sitemaps_enabled() ? 'on' : 'off',
 			);
 
 			return $features;

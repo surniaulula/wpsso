@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.14.0-dev.2\n"
+"Project-Id-Version: WPSSO Core 8.14.0-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1044,7 +1044,7 @@ msgid "Your SSO"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:53 gettext/gettext-lib-config.php:65
-#: lib/admin-head.php:263 lib/messages.php:3365
+#: lib/admin-head.php:263 lib/messages.php:3385
 msgctxt "lib file description"
 msgid "Advanced Settings"
 msgstr ""
@@ -1319,7 +1319,7 @@ msgid ""
 msgstr ""
 
 #: gettext/gettext-lib-config.php:104 lib/admin-head.php:262
-#: lib/messages.php:3364
+#: lib/messages.php:3384
 msgctxt "menu title"
 msgid "SSO"
 msgstr ""
@@ -3274,7 +3274,7 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:174 lib/edit.php:481 lib/page.php:941
+#: gettext/gettext-lib-pro.php:174 lib/edit.php:486 lib/page.php:941
 #: lib/pro/social/buddypress.php:710
 msgctxt "default description"
 msgid "No Description."
@@ -3490,32 +3490,32 @@ msgctxt "metabox tab"
 msgid "Priority Media"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:708
+#: lib/abstracts/wp-meta.php:706
 msgctxt "metabox tab"
 msgid "Robots Meta"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:711
+#: lib/abstracts/wp-meta.php:707
 msgctxt "metabox tab"
 msgid "Preview"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:712
+#: lib/abstracts/wp-meta.php:708
 msgctxt "metabox tab"
 msgid "oEmbed"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:713
+#: lib/abstracts/wp-meta.php:709
 msgctxt "metabox tab"
 msgid "Head Markup"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:714
+#: lib/abstracts/wp-meta.php:710
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1020
+#: lib/abstracts/wp-meta.php:1016
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
@@ -3576,10 +3576,15 @@ msgstr ""
 
 #: lib/admin-filters.php:189
 msgctxt "lib file description"
-msgid "(code) Twitter Card Meta Tags"
+msgid "(code) SEO Robots Meta"
 msgstr ""
 
 #: lib/admin-filters.php:194
+msgctxt "lib file description"
+msgid "(code) Twitter Card Meta Tags"
+msgstr ""
+
+#: lib/admin-filters.php:199
 msgctxt "lib file description"
 msgid "(code) WP SiteMaps Enhancements"
 msgstr ""
@@ -3600,12 +3605,12 @@ msgid_plural "Please install these updates at your earliest convenience."
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/admin-head.php:264 lib/messages.php:3366 lib/submenu/advanced.php:86
+#: lib/admin-head.php:264 lib/messages.php:3386 lib/submenu/advanced.php:86
 msgctxt "metabox title"
 msgid "HTML Tags"
 msgstr ""
 
-#: lib/admin-head.php:265 lib/messages.php:3367 lib/submenu/advanced.php:188
+#: lib/admin-head.php:265 lib/messages.php:3387 lib/submenu/advanced.php:188
 msgctxt "metabox tab"
 msgid "SEO / Other"
 msgstr ""
@@ -4240,7 +4245,7 @@ msgctxt "option label"
 msgid "Schema Description Max. Length"
 msgstr ""
 
-#: lib/admin.php:3081 lib/edit.php:370 lib/submenu/general.php:318
+#: lib/admin.php:3081 lib/edit.php:375 lib/submenu/general.php:318
 #: lib/submenu/general.php:330 lib/submenu/general.php:406
 msgctxt "option comment"
 msgid "characters or less"
@@ -4793,12 +4798,12 @@ msgctxt "option label"
 msgid "Search Description"
 msgstr ""
 
-#: lib/edit.php:187 lib/edit.php:456
+#: lib/edit.php:187 lib/edit.php:461
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
 
-#: lib/edit.php:195 lib/edit.php:460
+#: lib/edit.php:195 lib/edit.php:465
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
@@ -4838,155 +4843,155 @@ msgctxt "option label"
 msgid "Maximum Images"
 msgstr ""
 
-#: lib/edit.php:331
+#: lib/edit.php:336
 msgctxt "option label"
 msgid "No Archive"
 msgstr ""
 
-#: lib/edit.php:334
+#: lib/edit.php:339
 msgctxt "option comment"
 msgid "do not show a cached link in search results"
 msgstr ""
 
-#: lib/edit.php:337
+#: lib/edit.php:342
 msgctxt "option label"
 msgid "No Follow"
 msgstr ""
 
-#: lib/edit.php:340
+#: lib/edit.php:345
 msgctxt "option comment"
 msgid "do not follow links on this webpage"
 msgstr ""
 
-#: lib/edit.php:343
+#: lib/edit.php:348
 msgctxt "option label"
 msgid "No Image Index"
 msgstr ""
 
-#: lib/edit.php:346
+#: lib/edit.php:351
 msgctxt "option comment"
 msgid "do not index images on this webpage"
 msgstr ""
 
-#: lib/edit.php:349
+#: lib/edit.php:354
 msgctxt "option label"
 msgid "No Index"
 msgstr ""
 
-#: lib/edit.php:352
+#: lib/edit.php:357
 msgctxt "option comment"
 msgid "do not show this webpage in search results"
 msgstr ""
 
-#: lib/edit.php:355
+#: lib/edit.php:360
 msgctxt "option label"
 msgid "No Snippet"
 msgstr ""
 
-#: lib/edit.php:358
+#: lib/edit.php:363
 msgctxt "option comment"
 msgid "do not show a text snippet or a video preview in search results"
 msgstr ""
 
-#: lib/edit.php:361
+#: lib/edit.php:366
 msgctxt "option label"
 msgid "No Translate"
 msgstr ""
 
-#: lib/edit.php:364
+#: lib/edit.php:369
 msgctxt "option comment"
 msgid "do not offer translation of this webpage in search results"
 msgstr ""
 
-#: lib/edit.php:367
+#: lib/edit.php:372
 msgctxt "option label"
 msgid "Snippet Max. Length"
 msgstr ""
 
-#: lib/edit.php:370 lib/edit.php:381 lib/submenu/general.php:330
+#: lib/edit.php:375 lib/edit.php:386 lib/submenu/general.php:330
 #: lib/submenu/general.php:343
 msgctxt "option comment"
 msgid "-1 for no limit"
 msgstr ""
 
-#: lib/edit.php:373
+#: lib/edit.php:378
 msgctxt "option label"
 msgid "Image Preview Size"
 msgstr ""
 
-#: lib/edit.php:378
+#: lib/edit.php:383
 msgctxt "option label"
 msgid "Video Max. Previews"
 msgstr ""
 
-#: lib/edit.php:381 lib/submenu/general.php:343
+#: lib/edit.php:386 lib/submenu/general.php:343
 msgctxt "option comment"
 msgid "seconds"
 msgstr ""
 
-#: lib/edit.php:435
+#: lib/edit.php:440
 msgctxt "preview image error"
 msgid "Image Size Smaller<br/>than Suggested Minimum<br/>of %s"
 msgstr ""
 
-#: lib/edit.php:444
+#: lib/edit.php:449
 msgctxt "preview image error"
 msgid "Image Size Unknown<br/>or Not Available"
 msgstr ""
 
-#: lib/edit.php:451
+#: lib/edit.php:456
 msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/edit.php:465
+#: lib/edit.php:470
 msgctxt "option label"
 msgid "Shortlink URL"
 msgstr ""
 
-#: lib/edit.php:469
+#: lib/edit.php:474
 msgctxt "option label"
 msgid "Facebook / Open Graph Example"
 msgstr ""
 
-#: lib/edit.php:478 lib/page.php:1242
+#: lib/edit.php:483 lib/page.php:1242
 msgctxt "default title"
 msgid "No Title"
 msgstr ""
 
-#: lib/edit.php:514
+#: lib/edit.php:519
 msgctxt "option label"
 msgid "oEmbed JSON URL"
 msgstr ""
 
-#: lib/edit.php:517
+#: lib/edit.php:522
 msgctxt "option label"
 msgid "oEmbed XML URL"
 msgstr ""
 
-#: lib/edit.php:521
+#: lib/edit.php:526
 msgctxt "option label"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/edit.php:531
+#: lib/edit.php:536
 msgid "(see below)"
 msgstr ""
 
-#: lib/edit.php:540
+#: lib/edit.php:545
 msgid "No oEmbed data found."
 msgstr ""
 
-#: lib/edit.php:544
+#: lib/edit.php:549
 msgctxt "option label"
 msgid "oEmbed HTML"
 msgstr ""
 
-#: lib/edit.php:554
+#: lib/edit.php:559
 msgid "No oEmbed HTML found."
 msgstr ""
 
-#: lib/edit.php:681
+#: lib/edit.php:686
 msgctxt "submit button"
 msgid "Validate %s"
 msgstr ""
@@ -5766,7 +5771,7 @@ msgstr ""
 msgid "Your theme does not support <a href=\"%s\">the WordPress Title Tag</a>."
 msgstr ""
 
-#: lib/messages.php:867 lib/messages.php:3341
+#: lib/messages.php:867 lib/messages.php:3361
 msgid "https://codex.wordpress.org/Title_Tag"
 msgstr ""
 
@@ -6732,7 +6737,7 @@ msgid ""
 "structure."
 msgstr ""
 
-#: lib/messages.php:2067 lib/messages.php:3311
+#: lib/messages.php:2067 lib/messages.php:3302
 msgid "Schema markup is disabled."
 msgstr ""
 
@@ -7663,35 +7668,39 @@ msgid ""
 "Modifications disabled (<code>%s</code> tag disabled or SEO plugin detected)."
 msgstr ""
 
+#: lib/messages.php:3293
+msgid "Robots meta tag is disabled."
+msgstr ""
+
+#: lib/messages.php:3295 lib/messages.php:3304 lib/util-metabox.php:221
+msgid "No options available."
+msgstr ""
+
 #. translators: %s is is the add-on name (and a link to the add-on page).
-#: lib/messages.php:3303
+#: lib/messages.php:3344
 msgid ""
 "Activate the %s add-on<br/>if you require additional options for Schema "
 "markup and structured data."
 msgstr ""
 
-#: lib/messages.php:3313 lib/util-metabox.php:221
-msgid "No options available."
-msgstr ""
-
-#: lib/messages.php:3340
+#: lib/messages.php:3360
 msgid "theme does not support <a href=\"%s\">the WordPress Title Tag</a>"
 msgstr ""
 
-#: lib/messages.php:3369
+#: lib/messages.php:3389
 msgid "Note that the <code>%s</code> HTML tag is currently disabled."
 msgstr ""
 
-#: lib/messages.php:3372
+#: lib/messages.php:3392
 msgid "You can re-enable this option under the %s tab."
 msgstr ""
 
-#: lib/messages.php:3408
+#: lib/messages.php:3428
 msgctxt "option value"
 msgid "uncropped"
 msgstr ""
 
-#: lib/messages.php:3408
+#: lib/messages.php:3428
 msgctxt "option value"
 msgid "cropped"
 msgstr ""

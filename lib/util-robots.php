@@ -91,7 +91,7 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 
 			foreach ( $directives as $directive_key => $directive_value ) {
 
-				$opt_key = 'robots_' . $directive_key;
+				$opt_key = str_replace( '-', '_', 'robots_' . $directive_key );	// Convert dashes to underscores.
 
 				/**
 				 * Maybe use a custom directive value for this webpage.

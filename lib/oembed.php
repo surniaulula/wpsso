@@ -30,9 +30,7 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( ! function_exists( 'get_oembed_response_data' ) ) {	// Since WP v4.4.
-
-				$this->p->debug->log( 'exiting early: get_oembed_response_data does not exist' );
+			if ( ! SucomUtilWP::oembed_enabled() ) {	// Nothing to do.
 
 				return;
 			}

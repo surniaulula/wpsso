@@ -3288,22 +3288,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			return '<p class="status-msg smaller disabled">' . $text . '</p>';
 		}
 
-		public function more_schema_options() {
+		public function robots_disabled() {
 
-			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
+			$html = '<p class="status-msg">' . __( 'Robots meta tag is disabled.', 'wpsso' ) . '</p>';
 
-				return $this->schema_disabled();
+			$html .= '<p class="status-msg">' . __( 'No options available.', 'wpsso' ) . '</p>';
 
-			}
-
-			$json_addon_link = $this->p->util->get_admin_url( 'addons#wpssojson',
-				$this->p->cf[ 'plugin' ][ 'wpssojson' ][ 'name' ] );
-
-			// translators: %s is is the add-on name (and a link to the add-on page).
-			$text = sprintf( __( 'Activate the %s add-on<br/>if you require additional options for Schema markup and structured data.',
-				'wpsso' ), $json_addon_link );
-
-			return '<p class="status-msg">' . $text . '</p>';
+			return $html;
 		}
 
 		public function schema_disabled() {
@@ -3315,16 +3306,45 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			return $html;
 		}
 
-		public function get_schema_disabled_rows( $table_rows = array(), $col_span = 1 ) {
+		public function get_robots_disabled_rows( $table_rows = array() ) {
 
 			if ( ! is_array( $table_rows ) ) {	// Just in case.
 
 				$table_rows = array();
 			}
 
-			$table_rows[ 'schema_disabled' ] = '<tr><td align="center" colspan="' . $col_span . '">' . $this->schema_disabled() . '</td></tr>';
+			$table_rows[ 'robots_disabled' ] = '<tr><td align="center">' . $this->robots_disabled() . '</td></tr>';
 
 			return $table_rows;
+		}
+
+		public function get_schema_disabled_rows( $table_rows = array() ) {
+
+			if ( ! is_array( $table_rows ) ) {	// Just in case.
+
+				$table_rows = array();
+			}
+
+			$table_rows[ 'schema_disabled' ] = '<tr><td align="center">' . $this->schema_disabled() . '</td></tr>';
+
+			return $table_rows;
+		}
+
+		public function more_schema_options() {
+
+			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
+
+				return $this->schema_disabled();
+
+			}
+
+			$json_addon_link = $this->p->util->get_admin_url( 'addons#wpssojson', $this->p->cf[ 'plugin' ][ 'wpssojson' ][ 'name' ] );
+
+			// translators: %s is is the add-on name (and a link to the add-on page).
+			$text = sprintf( __( 'Activate the %s add-on<br/>if you require additional options for Schema markup and structured data.',
+				'wpsso' ), $json_addon_link );
+
+			return '<p class="status-msg">' . $text . '</p>';
 		}
 
 		/**

@@ -702,7 +702,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
 
-				return $this->p->msgs->get_schema_disabled_rows( $table_rows, $col_span = 1 );
+				return $this->p->msgs->get_schema_disabled_rows( $table_rows );
 			}
 
 			return $this->get_head_tags_rows( $table_rows, $form, $network, array( '/^add_(meta|link)_(itemprop)_(.+)$/' ) );

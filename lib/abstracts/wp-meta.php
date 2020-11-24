@@ -359,11 +359,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				/**
 				 * See https://developers.google.com/search/reference/robots_meta_tag.
 				 */
-				$default_directives = SucomUtilRobots::get_default_directives();
+				$directives = SucomUtilRobots::get_default_directives();
 
-				foreach ( $default_directives as $directive => $value ) {
+				foreach ( $directives as $directive_key => $directive_value ) {
 
-					$opt_key = 'robots_' . $directive;
+					$opt_key = str_replace( '-', '_', 'robots_' . $directive_key );	// Convert dashes to underscores.
 
 					/**
 					 * Use a default value from the plugin settings, if one exists.
@@ -382,9 +382,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					 *	'robots_nosnippet'
 					 *	'robots_notranslate'
 					 */
-					} elseif ( 0 === strpos( $directive, 'no' ) && is_bool( $value ) ) {
+					} elseif ( 0 === strpos( $directive_key, 'no' ) && is_bool( $directive_value ) ) {
 
-						$md_defs[ $opt_key ] = $value ? 1 : 0;
+						$md_defs[ $opt_key ] = $directive_value ? 1 : 0;
 
 					/**
 					 * Save the directive value:
@@ -393,9 +393,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					 *	'robots_max_image_preview'
 					 *	'robots_max_video_preview'
 					 */
-					} elseif ( 0 === strpos( $directive, 'max' ) ) {
+					} elseif ( 0 === strpos( $directive_key, 'max' ) ) {
 
-						$md_defs[ $opt_key ] = $value;
+						$md_defs[ $opt_key ] = $directive_value;
 					}
 				}
 
@@ -513,17 +513,17 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'noindex',
 					'nosnippet',
 					'notranslate',
-				) as $directive ) {
+				) as $directive_key ) {
 
-					$opt_key = 'robots_' . $directive;
+					$opt_key = 'robots_' . $directive_key;
 
-					$meta_key = '_wpsso_' . $directive;
+					$meta_key = '_wpsso_' . $directive_key;
 
-					$value = static::get_meta( $mod_id, $meta_key, $single = true );	// Use static method from child.
+					$directive_value = static::get_meta( $mod_id, $meta_key, $single = true );	// Use static method from child.
 
-					if ( '' !== $value ) {
+					if ( '' !== $directive_value ) {
 
-						$md_opts[ $opt_key ] = (int) $value;
+						$md_opts[ $opt_key ] = (int) $directive_value;
 
 						static::delete_meta( $mod_id, $meta_key );	// Use static method from child.
 					}
@@ -703,11 +703,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 					if ( $mod[ 'is_public' ] ) {	// Since WPSSO Core v7.0.0.
 
-						if ( ! empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
-
-							$tabs[ 'robots' ] = _x( 'Robots Meta', 'metabox tab', 'wpsso' );	// Since WPSSO Core v8.4.0.
-						}
-
+						$tabs[ 'robots' ]   = _x( 'Robots Meta', 'metabox tab', 'wpsso' );	// Since WPSSO Core v8.4.0.
 						$tabs[ 'preview' ]  = _x( 'Preview', 'metabox tab', 'wpsso' );
 						$tabs[ 'oembed' ]   = _x( 'oEmbed', 'metabox tab', 'wpsso' );
 						$tabs[ 'head' ]     = _x( 'Head Markup', 'metabox tab', 'wpsso' );
