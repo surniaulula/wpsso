@@ -359,11 +359,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				/**
 				 * See https://developers.google.com/search/reference/robots_meta_tag.
 				 */
-				$default_directives = SucomUtil::get_robots_default_directives();
+				$default_directives = SucomUtilRobots::get_default_directives();
 
 				foreach ( $default_directives as $directive => $value ) {
 
-					$opt_key = SucomUtil::sanitize_hookname( 'robots_' . $directive );
+					$opt_key = 'robots_' . $directive;
 
 					/**
 					 * Use a default value from the plugin settings, if one exists.
@@ -727,6 +727,8 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			/**
 			 * Exclude the 'oEmbed' tab from non-post editing pages.
+			 *
+			 * get_oembed_response_data() is available since WP v4.4.
 			 */
 			if ( ! function_exists( 'get_oembed_response_data' ) ||	! $mod[ 'is_post' ] || ! $mod[ 'id' ] ) {
 

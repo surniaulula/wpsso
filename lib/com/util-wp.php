@@ -16,6 +16,8 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 		protected static $cache_user_exists = array();	// Saved user_exists() values.
 
+		public function __construct() {}
+
 		public static function wp_sitemaps_enabled() {
 
 			global $wp_sitemaps;

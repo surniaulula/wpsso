@@ -805,29 +805,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			)
 		);
 
-		private static $robots_directives = array(
-			'follow'            => true,	// Follow by default.
-			'index'             => true,	// Index by default.
-			'noarchive'         => false,
-			'nofollow'          => false,
-			'noimageindex'      => false,
-			'noindex'           => false,
-			'nosnippet'         => false,
-			'notranslate'       => false,
-			'max-snippet'       => -1,	// Max characters for textual snippet (-1 = no limit).
-			'max-image-preview' => 'large',	// Max size for image preview.
-			'max-video-preview' => -1,	// Max seconds for video snippet (-1 = no limit).
-		);
-
-		private static $inverse_directives = array(
-			'nofollow'     => array( 'follow' ),				// Do not follow links on this webpage.
-			'noimageindex' => array( 'max-image-preview' ),			// Do not index images on this webpage.
-			'noindex'      => array( 'index' ),				// Do not show this webpage in search results.
-			'nosnippet'    => array( 'max-snippet', 'max-video-preview' ),	// Do not show a text snippet or a video preview in search results.
-		);
-
-		public function __construct() {
-		}
+		public function __construct() {}
 
 		public static function get_min_int() {
 
@@ -3946,6 +3924,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$user_ids = array();
 
 			foreach ( get_users( $user_args ) as $user_obj ) {
+
 				$user_ids[] = $user_obj->ID;
 			}
 
@@ -4483,101 +4462,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			return $html;
-		}
-
-		/**
-		 * See https://developers.google.com/search/reference/robots_meta_tag.
-		 */
-		public static function get_robots_default_directives() {
-
-			$is_public = get_option( 'blog_public' );
-
-			$default_directives = self::$robots_directives;
-
-			/**
-			 * If the site is not public, discourage robots from indexing the site.
-			 */
-			if ( ! $is_public ) {
-
-				$default_directives[ 'follow' ]       = false;	// No follow.
-				$default_directives[ 'index' ]        = false;	// No index.
-				$default_directives[ 'noarchive' ]    = true;
-				$default_directives[ 'nofollow' ]     = true;
-				$default_directives[ 'noimageindex' ] = true;
-				$default_directives[ 'noindex' ]      = true;
-				$default_directives[ 'nosnippet' ]    = true;
-				$default_directives[ 'notranslate' ]  = true;
-
-			/**
-			 * The webpage should not be indexed, but allow robots to follow links.
-			 */
-			} elseif ( isset( $_GET[ 'replytocom' ] ) || is_404() || is_search() ) {
-
-				$default_directives[ 'index' ]     = false;	// No index.
-				$default_directives[ 'noarchive' ] = true;
-				$default_directives[ 'noindex' ]   = true;
-				$default_directives[ 'nosnippet' ] = true;
-			}
-
-			return apply_filters( 'sucom_robots_default_directives', $default_directives );
-		}
-
-		/**
-		 * Properly set boolean directives and their inverse boolean directives.
-		 */
-		public static function set_robots_directive( array &$directives, $directive_key, $directive_value ) {
-
-			if ( isset( self::$robots_directives[ $directive_key ] ) ) {	// Directive must be known.
-
-				if ( is_bool( self::$robots_directives[ $directive_key ] ) ) {	// Default boolean, so set as boolean.
-
-					$directives[ $directive_key ] = $directive_value ? true : false;	// Convert to boolean.
-
-					/**
-					 * Check for inverse directives.
-					 */
-					if ( isset( self::$inverse_directives[ $directive_key ] ) ) {
-
-						foreach ( self::$inverse_directives[ $directive_key ] as $inverse_key ) {
-
-							/**
-							 * If the inverse is also a boolean, then set the inverse boolean value.
-							 */
-							if ( isset( self::$robots_directives[ $inverse_key ] ) ) {	// Directive must be known.
-
-								if ( is_bool( self::$robots_directives[ $inverse_key ] ) ) {	// Also a boolean.
-
-									$directives[ $inverse_key ] = $directive_value ? false : true;	// Inverse boolean.
-								}
-							}
-						}
-					}
-
-				} else {
-
-					$directives[ $directive_key ] = $directive_value;
-				}
-			}
-		}
-
-		/**
-		 * Sanity check - make sure inverse directives are removed.
-		 */
-		public static function sanitize_robots_directives( array &$directives ) {
-
-			foreach ( self::$inverse_directives as $directive_key => $inverse_keys ) {
-
-				if ( ! empty( $directives[ $directive_key ] ) ) {	// $directive_key exists and is true.
-
-					foreach ( $inverse_keys as $inverse_key ) {	// Unset each inverse directive.
-
-						if ( isset( $directives[ $inverse_key ] ) ) {	// Just in case.
-
-							unset( $directives[ $inverse_key ] );
-						}
-					}
-				}
-			}
 		}
 
 		/**

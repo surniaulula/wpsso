@@ -117,7 +117,7 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 			 */
 			if ( ! empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
 
-				$mt_name[ 'robots' ] = $this->p->util->get_robots_content( $mod );
+				$mt_name[ 'robots' ] = $this->p->util->robots->get_content( $mod );
 			}
 
 			return (array) apply_filters( 'wpsso_meta_name', $mt_name, $mod );

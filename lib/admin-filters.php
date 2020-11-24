@@ -172,9 +172,12 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 				'status'       => class_exists( 'WpssoLinkRel' ) ? 'on' : 'recommended',
 			);
 
+			/**
+			 * get_oembed_response_data() is available since WP v4.4.
+			 */
 			$features[ '(code) oEmbed Response Enhancements' ] = array(
 				'label_transl' => _x( '(code) oEmbed Response Enhancements', 'lib file description', 'wpsso' ),
-				'status'       => class_exists( 'WpssoOembed' ) ? 'on' : 'recommended',
+				'status'       => class_exists( 'WpssoOembed' ) && function_exists( 'get_oembed_response_data' ) ? 'on' : 'recommended',
 			);
 
 			$features[ '(code) Pinterest / SEO Meta Name Tags' ] = array(

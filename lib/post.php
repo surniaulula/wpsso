@@ -495,8 +495,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				'paged'          => false,
 				'post_status'    => 'publish',	// Only 'publish' (not 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', or 'trash').
 				'post_type'      => 'any',	// Return any post, page, or custom post type.
-				'posts_per_page' => -1,
+				'posts_per_page' => -1,		// The number of posts to query for. -1 to request all posts.
 				'fields'         => 'ids',	// Return an array of post ids.
+				'no_found_rows'  => true,	// Skip counting total rows found - should be enabled when pagination is not needed.
 			);
 
 			return get_posts( $posts_args );

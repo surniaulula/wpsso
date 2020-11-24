@@ -73,6 +73,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		public $cf;		// WpssoUtilCustomFields.
 		public $metabox;	// WpssoUtilMetabox.
 		public $reg;		// WpssoUtilReg.
+		public $robots;		// WpssoUtilRobots.
 		public $wc;		// WpssoUtilWooCommerce.
 
 		public function __construct( &$plugin ) {
@@ -144,6 +145,16 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$this->reg = new WpssoUtilReg( $plugin );
+
+			/**
+			 * WpssoUtilReg.
+			 */
+			if ( ! class_exists( 'WpssoUtilRobots' ) ) { // Since WPSSO Core v6.13.1.
+
+				require_once WPSSO_PLUGINDIR . 'lib/util-robots.php';
+			}
+
+			$this->robots = new WpssoUtilRobots( $plugin );
 
 			/**
 			 * WpssoUtilWooCommerce.
@@ -2347,8 +2358,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 								$post_obj->post_status = 'publish';
 
-								$post_obj->post_name = $post_obj->post_name ? 
-									$post_obj->post_name : sanitize_title( $post_obj->post_title );
+								$post_obj->post_name = $post_obj->post_name ? $post_obj->post_name : sanitize_title( $post_obj->post_title );
 
 								$url = get_permalink( $post_obj );
 							}
@@ -2360,6 +2370,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						}
 
 					} else {
+
 						$url = get_permalink( $mod[ 'id' ] );
 					}
 				}
@@ -2429,8 +2440,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 								$post_obj->post_status = 'publish';
 
-								$post_obj->post_name = $post_obj->post_name ? 
-									$post_obj->post_name : sanitize_title( $post_obj->post_title );
+								$post_obj->post_name = $post_obj->post_name ? $post_obj->post_name : sanitize_title( $post_obj->post_title );
 
 								$data = get_oembed_response_data( $post_obj, $width );	// Returns false on error.
 							}
@@ -3703,73 +3713,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$text = preg_replace( '/(\xC2\xA0|\s)+/s', ' ', $text );
 
 			return trim( $text );
-		}
-
-		/**
-		 * See https://developers.google.com/search/reference/robots_meta_tag.
-		 */
-		public function get_robots_content( array $mod ) {
-
-			$directives = $this->get_robots_directives( $mod );
-
-			$content = '';
-
-			foreach ( $directives as $directive_key => $directive_value ) {
-
-				if ( false === $directive_value ) {		// Nothing to do.
-
-					continue;
-
-				} elseif ( true === $directive_value ) {	// Add the directive.
-
-					$content .= $directive_key . ', ';	// index, follow, etc.
-
-				} else {					// Add the directive and its value.
-
-					$content .= $directive_key . ':' . $directive_value . ', ';
-				}
-			}
-
-			$content = trim( $content, ', ' );
-
-			return apply_filters( 'wpsso_robots_content', $content, $mod, $directives );
-		}
-
-		public function get_robots_directives( array $mod ) {
-
-			$directives = self::get_robots_default_directives();
-
-			/**
-			 * Maybe get post, term, and user meta.
-			 */
-			$md_opts = is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ? $mod[ 'obj' ]->get_options( $mod[ 'id' ] ) : array();
-
-			foreach ( $directives as $directive_key => $directive_value ) {
-
-				$opt_key = SucomUtil::sanitize_hookname( 'robots_' . $directive_key );
-
-				/**
-				 * Maybe use a custom directive value for this webpage.
-				 */
-				if ( isset( $md_opts[ $opt_key ] ) ) {
-
-					self::set_robots_directive( $directives, $directive_key, $md_opts[ $opt_key ] );
-
-				/**
-				 * Maybe read a default value from the plugin settings.
-				 */
-				} elseif ( isset( $this->p->options[ $opt_key ] ) ) {
-
-					self::set_robots_directive( $directives, $directive_key, $this->p->options[ $opt_key ] );
-				}
-			}
-
-			/**
-			 * Sanity check - make sure inverse directives are removed.
-			 */
-			self::sanitize_robots_directives( $directives );
-		
-			return $directives;
 		}
 
 		public function get_validators( array $mod, $allow_clipboard = true ) {
