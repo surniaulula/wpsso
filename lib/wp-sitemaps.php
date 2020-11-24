@@ -30,6 +30,11 @@ if ( ! class_exists( 'WpssoWpSiteMaps' ) ) {
 				$this->p->debug->mark();
 			}
 
+			if ( ! SucomUtilWP::wp_sitemaps_enabled() ) {	// Nothing to do.
+
+				return;
+			}
+
 			add_filter( 'wp_sitemaps_posts_query_args', array( $this, 'wp_sitemaps_posts_query_args' ), 10, 2 );
 			add_filter( 'wp_sitemaps_posts_entry', array( $this, 'wp_sitemaps_posts_entry' ), 10, 3 );
 		}

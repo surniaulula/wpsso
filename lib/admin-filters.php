@@ -167,9 +167,29 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 				'status'       => $knowl_status,
 			);
 
+			$features[ '(code) Link Relation Tags' ] = array(
+				'label_transl' => _x( '(code) Link Relation Tags', 'lib file description', 'wpsso' ),
+				'status'       => class_exists( 'WpssoLinkRel' ) ? 'on' : 'recommended',
+			);
+
+			$features[ '(code) oEmbed Response Enhancements' ] = array(
+				'label_transl' => _x( '(code) oEmbed Response Enhancements', 'lib file description', 'wpsso' ),
+				'status'       => class_exists( 'WpssoOembed' ) ? 'on' : 'recommended',
+			);
+
+			$features[ '(code) Schema Meta Name Tags' ] = array(
+				'label_transl' => _x( '(code) Schema Meta Name Tags', 'lib file description', 'wpsso' ),
+				'status'       => class_exists( 'WpssoMetaName' ) ? 'on' : 'recommended',
+			);
+
 			$features[ '(code) Twitter Card Meta Tags' ] = array(
 				'label_transl' => _x( '(code) Twitter Card Meta Tags', 'lib file description', 'wpsso' ),
-				'status'       => class_exists( 'wpssotwittercard' ) ? 'on' : 'recommended',
+				'status'       => class_exists( 'WpssoTwitterCard' ) ? 'on' : 'recommended',
+			);
+
+			$features[ '(code) WP SiteMaps Enhancements' ] = array(
+				'label_transl' => _x( '(code) WP SiteMaps Enhancements', 'lib file description', 'wpsso' ),
+				'status'       => SucomUtilWP::wp_sitemaps_enabled() ? 'on' : 'off',
 			);
 
 			return $features;

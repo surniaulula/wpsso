@@ -2291,7 +2291,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		private static function sort_plugin_features( $feature_a, $feature_b ) {
 
-			return strnatcmp( self::feature_priority( $feature_a ), self::feature_priority( $feature_b ) );
+			return strnatcasecmp( self::feature_priority( $feature_a ), self::feature_priority( $feature_b ) );
 		}
 
 		private static function feature_priority( $feature ) {

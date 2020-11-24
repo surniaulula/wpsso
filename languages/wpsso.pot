@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.14.0-dev.1\n"
+"Project-Id-Version: WPSSO Core 8.14.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3561,7 +3561,27 @@ msgstr ""
 
 #: lib/admin-filters.php:171
 msgctxt "lib file description"
+msgid "(code) Link Relation Tags"
+msgstr ""
+
+#: lib/admin-filters.php:176
+msgctxt "lib file description"
+msgid "(code) oEmbed Response Enhancements"
+msgstr ""
+
+#: lib/admin-filters.php:181
+msgctxt "lib file description"
+msgid "(code) Schema Meta Name Tags"
+msgstr ""
+
+#: lib/admin-filters.php:186
+msgctxt "lib file description"
 msgid "(code) Twitter Card Meta Tags"
+msgstr ""
+
+#: lib/admin-filters.php:191
+msgctxt "lib file description"
+msgid "(code) WP SiteMaps Enhancements"
 msgstr ""
 
 #: lib/admin-head.php:66

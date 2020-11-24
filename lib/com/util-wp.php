@@ -16,6 +16,20 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 		protected static $cache_user_exists = array();	// Saved user_exists() values.
 
+		public static function wp_sitemaps_enabled() {
+
+			global $wp_sitemaps;
+
+			if ( is_callable( array( $wp_sitemaps, 'sitemaps_enabled' ) ) ) {
+
+				return $wp_sitemaps->sitemaps_enabled();
+			}
+
+			$is_enabled = (bool) get_option( 'blog_public' );
+		
+			return (bool) apply_filters( 'wp_sitemaps_enabled', $is_enabled );
+		}
+
 		public static function get_db_transient_keys( $only_expired = false, $transient_prefix = '' ) {
 
 			global $wpdb;
