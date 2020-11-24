@@ -48,7 +48,7 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$mt_name = apply_filters( $this->p->id . '_meta_name_seed', array(), $mod );
+			$mt_name = apply_filters( 'wpsso_meta_name_seed', array(), $mod );
 
 			/**
 			 * Meta name "author".
@@ -79,7 +79,7 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 			 */
 			if ( ! empty( $this->p->options[ 'add_meta_name_thumbnail' ] ) ) {
 
-				$mt_name[ 'thumbnail' ] = $this->p->og->get_thumbnail_url( $this->p->id . '-thumbnail', $mod, $md_pre = 'og' );
+				$mt_name[ 'thumbnail' ] = $this->p->og->get_thumbnail_url( 'wpsso-thumbnail', $mod, $md_pre = 'og' );
 
 				if ( empty( $mt_name[ 'thumbnail' ] ) ) {
 
@@ -117,7 +117,7 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 				$mt_name[ 'robots' ] = $this->p->util->get_robots_content( $mod );
 			}
 
-			return (array) apply_filters( $this->p->id . '_meta_name', $mt_name, $mod );
+			return (array) apply_filters( 'wpsso_meta_name', $mt_name, $mod );
 		}
 	}
 }

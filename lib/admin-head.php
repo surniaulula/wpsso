@@ -402,7 +402,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			/**
 			 * Use the transient cache to show only one notice per day.
 			 */
-			$cache_md5_pre  = $this->p->id . '_';
+			$cache_md5_pre  = 'wpsso_';
 			$cache_exp_secs = DAY_IN_SECONDS;
 			$cache_salt     = __METHOD__ . '(user_id:' . $user_id . ')';
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );

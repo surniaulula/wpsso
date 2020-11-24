@@ -68,7 +68,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				$metabox_id   = $this->p->cf[ 'meta' ][ 'id' ];
 
-				$mb_container_id = $this->p->id . '_metabox_' . $metabox_id . '_inside';
+				$mb_container_id = 'wpsso_metabox_' . $metabox_id . '_inside';
 
 				add_action( 'wp_ajax_get_container_id_' . $mb_container_id, array( $this, 'ajax_get_metabox_document_meta' ) );
 
@@ -240,13 +240,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $mod[ 'id' ] ) {	// Just in case.
 
-				$mod[ 'post_slug' ]      = get_post_field( 'post_name', $mod[ 'id' ] );		// Post name (aka slug).
-				$mod[ 'post_type' ]      = get_post_type( $mod[ 'id' ] );			// Post type name.
-				$mod[ 'post_mime' ]      = get_post_mime_type( $mod[ 'id' ] );			// Post mime type (ie. image/jpg).
-				$mod[ 'post_status' ]    = get_post_status( $mod[ 'id' ] );			// Post status name.
-				$mod[ 'post_author' ]    = (int) get_post_field( 'post_author', $mod[ 'id' ] );	// Post author id.
-				$mod[ 'post_coauthors' ] = array();
-
+				$mod[ 'post_slug' ]            = get_post_field( 'post_name', $mod[ 'id' ] );		// Post name (aka slug).
+				$mod[ 'post_type' ]            = get_post_type( $mod[ 'id' ] );				// Post type name.
+				$mod[ 'post_mime' ]            = get_post_mime_type( $mod[ 'id' ] );			// Post mime type (ie. image/jpg).
+				$mod[ 'post_status' ]          = get_post_status( $mod[ 'id' ] );			// Post status name.
+				$mod[ 'post_author' ]          = (int) get_post_field( 'post_author', $mod[ 'id' ] );	// Post author id.
+				$mod[ 'post_coauthors' ]       = array();
+				$mod[ 'post_time' ]            = get_post_time( 'c', $gmt = true, $mod[ 'id' ] );		// Returns false on failure.
+				$mod[ 'post_modified_time' ]   = get_post_modified_time( 'c', $gmt = true, $mod[ 'id' ] );	// Returns false on failure.
 				$mod[ 'is_post_type_archive' ] = SucomUtil::is_post_type_archive( $mod[ 'post_type' ], $mod[ 'post_slug' ] );
 
 				if ( $post_type_object = get_post_type_object( $mod[ 'post_type' ] ) ) {
@@ -266,7 +267,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * Hooked by the 'coauthors' pro module.
 			 */
-			return $local_cache[ $post_id ] = apply_filters( $this->p->id . '_get_post_mod', $mod, $post_id );
+			return $local_cache[ $post_id ] = apply_filters( 'wpsso_get_post_mod', $mod, $post_id );
 		}
 
 		/**
@@ -395,7 +396,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$this->p->debug->log( 'applying import_custom_fields filters for post id ' . $post_id . ' metadata' );
 					}
 
-					$md_opts = apply_filters( $this->p->id . '_import_custom_fields', $md_opts, get_post_meta( $post_id ) );
+					$md_opts = apply_filters( 'wpsso_import_custom_fields', $md_opts, get_post_meta( $post_id ) );
 
 					/**
 					 * Since WPSSO Core v7.1.0.
@@ -405,7 +406,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$this->p->debug->log( 'applying get_md_options filters' );
 					}
 
-					$md_opts = (array) apply_filters( $this->p->id . '_get_md_options', $md_opts, $mod );
+					$md_opts = (array) apply_filters( 'wpsso_get_md_options', $md_opts, $mod );
 
 					/**
 					 * Since WPSSO Core v4.31.0.
@@ -419,7 +420,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$this->p->debug->log( 'applying get_post_options filters for post id ' . $post_id . ' metadata' );
 					}
 
-					$md_opts = (array) apply_filters( $this->p->id . '_get_post_options', $md_opts, $post_id, $mod );
+					$md_opts = (array) apply_filters( 'wpsso_get_post_options', $md_opts, $post_id, $mod );
 
 					/**
 					 * Since WPSSO Core v8.2.0.
@@ -429,7 +430,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$this->p->debug->log( 'applying sanitize_md_options filters' );
 					}
 
-					$md_opts = apply_filters( $this->p->id . '_sanitize_md_options', $md_opts, $mod );
+					$md_opts = apply_filters( 'wpsso_sanitize_md_options', $md_opts, $mod );
 				}
 			}
 
@@ -462,9 +463,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				unset( $opts[ 'seo_desc' ] );
 			}
 
-			$opts = apply_filters( $this->p->id . '_save_md_options', $opts, $mod );
+			$opts = apply_filters( 'wpsso_save_md_options', $opts, $mod );
 
-			$opts = apply_filters( $this->p->id . '_save_post_options', $opts, $post_id, $rel_id, $mod );
+			$opts = apply_filters( 'wpsso_save_post_options', $opts, $post_id, $rel_id, $mod );
 
 			if ( empty( $opts ) ) {
 
@@ -513,7 +514,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( null === $ppp ) {
 
-				$ppp = apply_filters( $this->p->id . '_posts_per_page', get_option( 'posts_per_page' ), $mod );
+				$ppp = apply_filters( 'wpsso_posts_per_page', get_option( 'posts_per_page' ), $mod );
 			}
 
 			if ( null === $paged ) {
@@ -615,9 +616,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		public function get_column_content( $value, $column_name, $post_id ) {
 
-			if ( ! empty( $post_id ) && 0 === strpos( $column_name, $this->p->id . '_' ) ) {	// Just in case.
+			if ( ! empty( $post_id ) && 0 === strpos( $column_name, 'wpsso_' ) ) {	// Just in case.
 
-				$col_key = str_replace( $this->p->id . '_', '', $column_name );
+				$col_key = str_replace( 'wpsso_', '', $column_name );
 
 				if ( $this->p->debug->enabled ) {
 
@@ -821,7 +822,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				/**
 				 * Hooked by woocommerce module to load front-end libraries and start a session.
 				 */
-				do_action( $this->p->id . '_admin_post_head', $mod );
+				do_action( 'wpsso_admin_post_head', $mod );
 
 				if ( $this->p->debug->enabled ) {
 
@@ -873,7 +874,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 						$check_head = empty( $this->p->options[ 'plugin_check_head' ] ) ? false : true;
 
-						if ( apply_filters( $this->p->id . '_check_post_head', $check_head, $post_id, $post_obj ) ) {
+						if ( apply_filters( 'wpsso_check_post_head', $check_head, $post_id, $post_obj ) ) {
 
 							if ( $this->p->debug->enabled ) {
 
@@ -886,7 +887,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 			}
 
-			$action_query = $this->p->id . '-action';
+			$action_query = 'wpsso-action';
 
 			if ( ! empty( $_GET[ $action_query ] ) ) {
 
@@ -916,7 +917,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 						default:
 
-							do_action( $this->p->id . '_load_meta_page_post_' . $action_name, $post_id, $post_obj );
+							do_action( 'wpsso_load_meta_page_post_' . $action_name, $post_id, $post_obj );
 
 							break;
 					}
@@ -929,16 +930,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
-			}
-
-			if ( ! apply_filters( $this->p->id . '_add_meta_name_' . $this->p->id . ':mark', true ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: ' . $this->p->id . ':mark meta tags are disabled');
-				}
-
-				return;	// Stop here.
 			}
 
 			if ( empty( $post_id ) ) {
@@ -1171,11 +1162,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				return;	// Stop here.
 
-			} elseif ( false === strpos( $webpage_html, $this->p->id . ' meta tags begin' ) ) {	// Webpage should include our own meta tags.
+			} elseif ( false === strpos( $webpage_html, 'wpsso meta tags begin' ) ) {	// Webpage should include our own meta tags.
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: ' . $this->p->id . ' meta tag section not found in ' . $check_url );
+					$this->p->debug->log( 'exiting early: wpsso meta tag section not found in ' . $check_url );
 				}
 
 				if ( $is_admin ) {
@@ -1193,7 +1184,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 */
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'removing the ' . $this->p->id . ' meta tag section from the webpage html' );
+				$this->p->debug->log( 'removing the wpsso meta tag section from the webpage html' );
 			}
 
 			$html_stripped = preg_replace( $this->p->head->get_mt_mark( 'preg' ), '', $webpage_html, -1, $mark_count );
@@ -1393,7 +1384,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				'__block_editor_compatible_meta_box' => true,
 			);
 
-			add_meta_box( $this->p->id . '_' . $metabox_id, $metabox_title,
+			add_meta_box( 'wpsso_' . $metabox_id, $metabox_title,
 				array( $this, 'show_metabox_document_meta' ), $metabox_screen,
 					$metabox_context, $metabox_prio, $callback_args );
 		}
@@ -1516,8 +1507,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				} else {
 
-					$mb_filter_name  = $this->p->id . '_metabox_' . $metabox_id . '_' . $tab_key . '_rows';
-					$mod_filter_name = $this->p->id . '_' . $mod[ 'name' ] . '_' . $tab_key . '_rows';
+					$mb_filter_name  = 'wpsso_metabox_' . $metabox_id . '_' . $tab_key . '_rows';
+					$mod_filter_name = 'wpsso_' . $mod[ 'name' ] . '_' . $tab_key . '_rows';
 
 					$table_rows[ $tab_key ] = (array) apply_filters( $mb_filter_name,
 						array(), $this->form, parent::$head_info, $mod );
@@ -1532,7 +1523,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				'is_auto_draft' => $is_auto_draft,
 			);
 
-			$mb_container_id = $this->p->id . '_metabox_' . $metabox_id . '_inside';
+			$mb_container_id = 'wpsso_metabox_' . $metabox_id . '_inside';
 
 			$metabox_html = "\n" . '<div id="' . $mb_container_id . '">';
 
@@ -2022,7 +2013,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$sharing_url = $this->p->util->get_sharing_url( $mod, $add_page = false );
 
-			$short_url = apply_filters( $this->p->id . '_get_short_url', $sharing_url, $this->p->options[ 'plugin_shortener' ], $mod );
+			$short_url = apply_filters( 'wpsso_get_short_url', $sharing_url, $this->p->options[ 'plugin_shortener' ], $mod );
 
 			if ( filter_var( $short_url, FILTER_VALIDATE_URL ) === false ) {	// Invalid url.
 

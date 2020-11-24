@@ -74,7 +74,7 @@ if ( ! class_exists( 'WpssoSubmenuSetup' ) && class_exists( 'WpssoAdmin' ) ) {
 
 		public function show_metabox_setup_guide() {
 
-			echo '<table class="sucom-settings ' . $this->p->id . ' html-content-metabox">';
+			echo '<table class="sucom-settings wpsso html-content-metabox">';
 			echo '<tr><td>';
 			echo $this->get_ext_file_content( $ext = 'wpsso', $rel_file = 'html/setup.html' );
 			echo '</td></tr></table>';

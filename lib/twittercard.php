@@ -65,7 +65,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			 */
 			$mt_tc = SucomUtil::preg_grep_keys( '/^twitter:/', $mt_og, $invert = false, $replace = false, $remove = true );
 
-			$mt_tc = apply_filters( $this->p->id . '_tc_seed', $mt_tc, $mod );
+			$mt_tc = apply_filters( 'wpsso_tc_seed', $mt_tc, $mod );
 
 			/**
 			 * The twitter:domain is used in place of the 'view on web' text.
@@ -121,7 +121,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			 */
 			$this->maybe_add_extra_data( $mt_tc, $mod, $mt_og, $author_id );
 
-			return (array) apply_filters( $this->p->id . '_tc', $mt_tc, $mod );
+			return (array) apply_filters( 'wpsso_tc', $mt_tc, $mod );
 		}
 
 		/**
@@ -211,7 +211,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				case 'summary':
 
 					$card_label = _x( 'Twitter Summary Card', 'metabox title', 'wpsso' );
-					$size_name  = $this->p->id . '-tc-summary';
+					$size_name  = 'wpsso-tc-summary';
 					$md_pre     = 'tc_sum';
 
 					break;
@@ -219,7 +219,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				case 'summary_large_image':
 
 					$card_label = _x( 'Twitter Large Image Summary Card', 'metabox title', 'wpsso' );
-					$size_name  = $this->p->id . '-tc-lrgimg';
+					$size_name  = 'wpsso-tc-lrgimg';
 					$md_pre     = 'tc_lrg';
 
 					break;

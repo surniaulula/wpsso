@@ -166,7 +166,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 
 				foreach ( $mixed as $size_name => $disabled ) {
 
-					if ( false !== strpos( $size_name, $this->p->id . '-' ) ) {
+					if ( false !== strpos( $size_name, 'wpsso-' ) ) {
 
 						unset( $mixed[ $size_name ] );
 					}
@@ -182,7 +182,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			 */
 			foreach ( $_wp_additional_image_sizes as $size_name => $size_info ) {
 
-				if ( false !== strpos( $size_name, $this->p->id . '-' ) ) {
+				if ( false !== strpos( $size_name, 'wpsso-' ) ) {
 
 					$mixed[ $size_name ] = 1;
 				}

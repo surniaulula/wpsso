@@ -132,7 +132,7 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 			$count_rows     = 0;
 			$hidden_opts    = 0;
 			$hidden_rows    = 0;
-			$user_classname = $this->p->id . 'user';
+			$user_classname = 'wpssouser';
 			$show_opts      = class_exists( $user_classname ) ? call_user_func( array( $user_classname, 'show_opts' ) ) : 'basic';
 
 			foreach ( $table_rows as $key => $row ) {

@@ -83,7 +83,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			/**
 			 * Allow our sizes to exceed the editor width.
 			 */
-			if ( is_string( $size ) && 0 === strpos( $size, $this->p->id . '-' ) ) {
+			if ( is_string( $size ) && 0 === strpos( $size, 'wpsso-' ) ) {
 
 				$max_image_size = array( 0, 0 );
 			}
@@ -111,7 +111,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 */
 			$img_info = (array) self::get_image_src_args();
 
-			if ( empty( $img_info[ 'size_name' ] ) || 0 !== strpos( $img_info[ 'size_name' ], $this->p->id . '-' ) ) {
+			if ( empty( $img_info[ 'size_name' ] ) || 0 !== strpos( $img_info[ 'size_name' ], 'wpsso-' ) ) {
 
 				return $file_path;
 			}
@@ -149,7 +149,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$img_info = (array) self::get_image_src_args();
 
-			if ( empty( $img_info[ 'size_name' ] ) || 0 !== strpos( $img_info[ 'size_name' ], $this->p->id . '-' ) ) {
+			if ( empty( $img_info[ 'size_name' ] ) || 0 !== strpos( $img_info[ 'size_name' ], 'wpsso-' ) ) {
 
 				return $resize;
 			}
@@ -290,7 +290,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 			}
 
-			return apply_filters( $this->p->id . '_og_featured', $mt_ret, $num, $size_name, $post_id, $check_dupes );
+			return apply_filters( 'wpsso_og_featured', $mt_ret, $num, $size_name, $post_id, $check_dupes );
 		}
 
 		/**
@@ -337,7 +337,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					rsort( $local_cache_attached_ids[ $post_id ], SORT_NUMERIC );
 
-					$filter_name = $this->p->id . '_attached_image_ids';
+					$filter_name = 'wpsso_attached_image_ids';
 
 					$local_cache_attached_ids[ $post_id ] = array_unique( apply_filters( $filter_name, $local_cache_attached_ids[ $post_id ], $post_id ) );
 				}
@@ -367,7 +367,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			/**
 			 * The 'wpsso_attached_images' filter is used by the buddypress module.
 			 */
-			return apply_filters( $this->p->id . '_attached_images', $mt_ret, $num, $size_name, $post_id, $check_dupes );
+			return apply_filters( 'wpsso_attached_images', $mt_ret, $num, $size_name, $post_id, $check_dupes );
 		}
 
 		/**
@@ -437,7 +437,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 */
 			foreach( array( 'html_tag', 'pid_attr' ) as $type ) {
 
-				$filter_name = $this->p->id . '_content_image_preg_' . $type;	// No need to sanitize.
+				$filter_name = 'wpsso_content_image_preg_' . $type;	// No need to sanitize.
 
 				if ( false !== has_filter( $filter_name ) ) {
 
@@ -518,7 +518,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						case ( preg_match( '/^' . $content_img_preg[ 'pid_attr' ] . '$/', $attr_name ) ? true : false ):
 
 							// Filter hook for 3rd party modules to return image information.
-							$filter_name = SucomUtil::sanitize_hookname( $this->p->id . '_get_content_' . $tag_name . '_' . $attr_name );
+							$filter_name = SucomUtil::sanitize_hookname( 'wpsso_get_content_' . $tag_name . '_' . $attr_name );
 
 							if ( $this->p->debug->enabled ) {
 
@@ -672,7 +672,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 									' (' . $mt_single_image[ 'og:image:width' ] . 'x' . $mt_single_image[ 'og:image:height' ] . ')' );
 							}
 
-							if ( ! apply_filters( $this->p->id . '_content_accept_img_dims', $img_within_limits, $mt_single_image,
+							if ( ! apply_filters( 'wpsso_content_accept_img_dims', $img_within_limits, $mt_single_image,
 								$size_name, $attr_name, $content_passed ) ) {
 
 								$mt_single_image = array();
@@ -685,7 +685,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 						$mt_single_image[ 'og:image:url' ] = $this->p->util->fix_relative_url( $mt_single_image[ 'og:image:url' ] );
 
-						$mt_single_image[ 'og:image:url' ] = apply_filters( $this->p->id . '_rewrite_image_url', $mt_single_image[ 'og:image:url' ] );
+						$mt_single_image[ 'og:image:url' ] = apply_filters( 'wpsso_rewrite_image_url', $mt_single_image[ 'og:image:url' ] );
 
 						if ( ! $check_dupes || $this->p->util->is_uniq_url( $mt_single_image[ 'og:image:url' ], $size_name ) ) {
 
@@ -997,7 +997,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			/**
 			 * Only resize our own custom image sizes.
 			 */
-			if ( 0 === strpos( $size_name, $this->p->id . '-' ) ) {
+			if ( 0 === strpos( $size_name, 'wpsso-' ) ) {
 
 				if ( ! $use_full_size ) {
 
@@ -1185,7 +1185,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$img_width,
 				$img_height,
 				$img_intermediate
-			) = apply_filters( $this->p->id . '_image_downsize', $img_downsize, $pid, $size_name );
+			) = apply_filters( 'wpsso_image_downsize', $img_downsize, $pid, $size_name );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1216,7 +1216,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 */
 			$img_within_limits = $this->is_image_within_config_limits( $pid, $size_name, $img_width, $img_height );
 
-			if ( apply_filters( $this->p->id . '_attached_accept_img_dims', $img_within_limits, $img_url, $img_width, $img_height, $size_name, $pid ) ) {
+			if ( apply_filters( 'wpsso_attached_accept_img_dims', $img_within_limits, $img_url, $img_width, $img_height, $size_name, $pid ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -1225,7 +1225,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				$img_url = $this->p->util->fix_relative_url( $img_url );
 
-				$img_url = apply_filters( $this->p->id . '_rewrite_image_url', $img_url );
+				$img_url = apply_filters( 'wpsso_rewrite_image_url', $img_url );
 
 				return self::reset_image_src_args( array( $img_url, $img_width, $img_height, $size_info[ 'is_cropped' ], $pid, $img_alt, $size_name ) );
 			}
@@ -1520,7 +1520,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			/**
 			 * Additional filters / modules may detect other embedded video markup.
 			 */
-			$filter_name = $this->p->id . '_content_videos';	// No need to sanitize.
+			$filter_name = 'wpsso_content_videos';	// No need to sanitize.
 
 			if ( false !== has_filter( $filter_name ) ) {
 
@@ -1626,7 +1626,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return array();
 			}
 
-			$filter_name = $this->p->id . '_video_details';	// No need to sanitize.
+			$filter_name = 'wpsso_video_details';	// No need to sanitize.
 
 			/**
 			 * Maybe filter using a specific API library hook.
@@ -2027,7 +2027,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 */
 		public function is_image_within_config_limits( $img_mixed, $size_name, $img_width, $img_height, $img_lib = null ) {
 
-			if ( 0 !== strpos( $size_name, $this->p->id . '-' ) ) {	// Only check our own sizes.
+			if ( 0 !== strpos( $size_name, 'wpsso-' ) ) {	// Only check our own sizes.
 
 				return true;
 			}
@@ -2177,7 +2177,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				$img_info = (array) self::get_image_src_args();
 
-				$upscale_img_max     = apply_filters( $this->p->id . '_image_upscale_max', $this->p->options[ 'plugin_upscale_img_max' ], $img_info );
+				$upscale_img_max     = apply_filters( 'wpsso_image_upscale_max', $this->p->options[ 'plugin_upscale_img_max' ], $img_info );
 				$upscale_multiplier  = 1 + ( $upscale_img_max / 100 );
 				$upscale_full_width  = round( $full_width * $upscale_multiplier );
 				$upscale_full_height = round( $full_height * $upscale_multiplier );

@@ -60,14 +60,14 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 				array( $this, 'show_metabox_' . $metabox_id ), $metabox_screen,
 					$metabox_context, $metabox_prio, $callback_args );
 
-			$this->p->media->get_default_images( 1, $this->p->id . '-opengraph', $check_dupes = false );
+			$this->p->media->get_default_images( 1, 'wpsso-opengraph', $check_dupes = false );
 		}
 
 		public function show_metabox_og() {
 
 			$metabox_id = 'og';
 
-			$tabs = apply_filters( $this->p->id . '_general_' . $metabox_id . '_tabs', array(
+			$tabs = apply_filters( 'wpsso_general_' . $metabox_id . '_tabs', array(
 				'site'    => _x( 'Site Information', 'metabox tab', 'wpsso' ),
 				'content' => _x( 'Content and Text', 'metabox tab', 'wpsso' ),
 				'author'  => _x( 'Authorship', 'metabox tab', 'wpsso' ),
@@ -79,7 +79,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $tabs as $tab_key => $title ) {
 
-				$filter_name = $this->p->id . '_' . $metabox_id . '_' . $tab_key . '_rows';
+				$filter_name = 'wpsso_' . $metabox_id . '_' . $tab_key . '_rows';
 
 				$table_rows[ $tab_key ] = apply_filters( $filter_name, $this->get_table_rows( $metabox_id, $tab_key ), $this->form );
 			}
@@ -91,7 +91,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			$metabox_id = 'pub';
 
-			$tabs = apply_filters( $this->p->id . '_general_' . $metabox_id . '_tabs', array(
+			$tabs = apply_filters( 'wpsso_general_' . $metabox_id . '_tabs', array(
 				'facebook'     => _x( 'Facebook', 'metabox tab', 'wpsso' ),
 				'google'       => _x( 'Google', 'metabox tab', 'wpsso' ),
 				'pinterest'    => _x( 'Pinterest', 'metabox tab', 'wpsso' ),
@@ -103,7 +103,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $tabs as $tab_key => $title ) {
 
-				$filter_name = $this->p->id . '_' . $metabox_id . '_' . $tab_key . '_rows';
+				$filter_name = 'wpsso_' . $metabox_id . '_' . $tab_key . '_rows';
 
 				$table_rows[ $tab_key ] = apply_filters( $filter_name, $this->get_table_rows( $metabox_id, $tab_key ), $this->form );
 			}
@@ -126,7 +126,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$def_site_name = get_bloginfo( 'name' );
 					$def_site_desc = get_bloginfo( 'description' );
 
-					$select_exp_secs    = $this->p->util->get_cache_exp_secs( $this->p->id . '_f_' );	// Default is month in seconds.
+					$select_exp_secs    = $this->p->util->get_cache_exp_secs( 'wpsso_f_' );	// Default is month in seconds.
 					$article_sections   = $this->p->util->get_article_sections();
 					$product_categories = $this->p->util->get_google_product_categories();
 
@@ -429,7 +429,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'pub-other_social':
 
-					$social_accounts = apply_filters( $this->p->id . '_social_accounts', $this->p->cf[ 'form' ][ 'social_accounts' ] );
+					$social_accounts = apply_filters( 'wpsso_social_accounts', $this->p->cf[ 'form' ][ 'social_accounts' ] );
 
 					asort( $social_accounts );	// Sort by translated label and maintain key association.
 

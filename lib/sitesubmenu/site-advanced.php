@@ -68,7 +68,7 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteAdvanced' ) && class_exists( 'WpssoAdm
 
 			$metabox_id = 'plugin';
 
-			$tabs = apply_filters( $this->p->id . '_site_advanced_' . $metabox_id . '_tabs', array(
+			$tabs = apply_filters( 'wpsso_site_advanced_' . $metabox_id . '_tabs', array(
 				'settings' => _x( 'Plugin Admin', 'metabox tab', 'wpsso' ),
 				'cache'    => _x( 'Caching', 'metabox tab', 'wpsso' ),
 			) );
@@ -77,7 +77,7 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteAdvanced' ) && class_exists( 'WpssoAdm
 
 			foreach ( $tabs as $tab_key => $title ) {
 
-				$filter_name = $this->p->id . '_' . $metabox_id . '_' . $tab_key . '_rows';
+				$filter_name = 'wpsso_' . $metabox_id . '_' . $tab_key . '_rows';
 
 				$table_rows[ $tab_key ] = array_merge(
 					$this->get_table_rows( $metabox_id, $tab_key ),

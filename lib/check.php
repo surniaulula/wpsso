@@ -644,7 +644,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 			$mtime_total = microtime( true ) - $mtime_start;
 
-			return apply_filters( $this->p->id . '_get_avail', $get_avail );
+			return apply_filters( 'wpsso_get_avail', $get_avail );
 		}
 
 		public function is_pp( $ext = null, $rc = true ) {

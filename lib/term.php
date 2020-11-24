@@ -197,7 +197,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				}
 			}
 
-			return $local_cache[ $term_id ] = apply_filters( $this->p->id . '_get_term_mod', $mod, $term_id, $tax_slug );
+			return $local_cache[ $term_id ] = apply_filters( 'wpsso_get_term_mod', $mod, $term_id, $tax_slug );
 		}
 
 		/**
@@ -288,7 +288,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 						$this->p->debug->log( 'applying get_md_options filters' );
 					}
 
-					$md_opts = (array) apply_filters( $this->p->id . '_get_md_options', $md_opts, $mod );
+					$md_opts = (array) apply_filters( 'wpsso_get_md_options', $md_opts, $mod );
 
 					/**
 					 * Since WPSSO Core v4.31.0.
@@ -298,7 +298,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 						$this->p->debug->log( 'applying get_term_options filters for term_id ' . $term_id . ' meta' );
 					}
 
-					$md_opts = (array) apply_filters( $this->p->id . '_get_term_options', $md_opts, $term_id, $mod );
+					$md_opts = (array) apply_filters( 'wpsso_get_term_options', $md_opts, $term_id, $mod );
 
 					/**
 					 * Since WPSSO Core v8.2.0.
@@ -308,7 +308,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 						$this->p->debug->log( 'applying sanitize_md_options filters' );
 					}
 
-					$md_opts = apply_filters( $this->p->id . '_sanitize_md_options', $md_opts, $mod );
+					$md_opts = apply_filters( 'wpsso_sanitize_md_options', $md_opts, $mod );
 				}
 			}
 
@@ -353,9 +353,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				unset( $opts[ 'seo_desc' ] );
 			}
 
-			$opts = apply_filters( $this->p->id . '_save_md_options', $opts, $mod );
+			$opts = apply_filters( 'wpsso_save_md_options', $opts, $mod );
 
-			$opts = apply_filters( $this->p->id . '_save_term_options', $opts, $term_id, $term_tax_id, $mod );
+			$opts = apply_filters( 'wpsso_save_term_options', $opts, $term_id, $term_tax_id, $mod );
 
 			if ( empty( $opts ) ) {
 
@@ -433,7 +433,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			 */
 			if ( null === $ppp ) {
 
-				$ppp = apply_filters( $this->p->id . '_posts_per_page', get_option( 'posts_per_page' ), $mod );
+				$ppp = apply_filters( 'wpsso_posts_per_page', get_option( 'posts_per_page' ), $mod );
 			}
 
 			if ( null === $paged ) {
@@ -618,7 +618,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( $this->query_term_id && ! empty( $this->p->options[ 'plugin_add_to_tax_' . $this->query_tax_slug ] ) ) {
 
-				do_action( $this->p->id . '_admin_term_head', $mod, $screen->id );
+				do_action( 'wpsso_admin_term_head', $mod, $screen->id );
 
 				if ( $this->p->debug->enabled ) {
 
@@ -665,7 +665,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				}
 			}
 
-			$action_query = $this->p->id . '-action';
+			$action_query = 'wpsso-action';
 
 			if ( ! empty( $_GET[ $action_query ] ) ) {
 
@@ -695,7 +695,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 						default:
 
-							do_action( $this->p->id . '_load_meta_page_term_' . $action_name, $this->query_term_id );
+							do_action( 'wpsso_load_meta_page_term_' . $action_name, $this->query_term_id );
 
 							break;
 					}
@@ -717,14 +717,14 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			$metabox_id      = $this->p->cf[ 'meta' ][ 'id' ];
 			$metabox_title   = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
-			$metabox_screen  = $this->p->id . '-term';
+			$metabox_screen  = 'wpsso-term';
 			$metabox_context = 'normal';
 			$metabox_prio    = 'default';
 			$callback_args   = array(	// Second argument passed to the callback.
 				'__block_editor_compatible_meta_box' => true,
 			);
 
-			add_meta_box( $this->p->id . '_' . $metabox_id, $metabox_title,
+			add_meta_box( 'wpsso_' . $metabox_id, $metabox_title,
 				array( $this, 'show_metabox_document_meta' ), $metabox_screen,
 					$metabox_context, $metabox_prio, $callback_args );
 		}
@@ -741,17 +741,17 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				return;
 			}
 
-			$metabox_screen  = $this->p->id . '-term';
+			$metabox_screen  = 'wpsso-term';
 			$metabox_context = 'normal';
 
-			echo "\n" . '<!-- ' . $this->p->id . ' term metabox section begin -->' . "\n";
+			echo "\n" . '<!-- wpsso term metabox section begin -->' . "\n";
 			echo '<h3>' . WpssoAdmin::$pkg[ $this->p->id ][ 'short' ] . '</h3>' . "\n";
-			echo '<div id="poststuff" class="' . $this->p->id . '-metaboxes metabox-holder">' . "\n";
+			echo '<div id="poststuff" class="wpsso-metaboxes metabox-holder">' . "\n";
 
 			do_meta_boxes( $metabox_screen, 'normal', $term_obj );
 
 			echo "\n" . '</div><!-- #poststuff -->' . "\n";
-			echo '<!-- ' . $this->p->id . ' term metabox section end -->' . "\n";
+			echo '<!-- wpsso term metabox section end -->' . "\n";
 		}
 
 		public function ajax_get_metabox_document_meta() {
@@ -782,8 +782,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			foreach ( $tabs as $tab_key => $title ) {
 
-				$mb_filter_name  = $this->p->id . '_metabox_' . $metabox_id . '_' . $tab_key . '_rows';
-				$mod_filter_name = $this->p->id . '_' . $mod[ 'name' ] . '_' . $tab_key . '_rows';
+				$mb_filter_name  = 'wpsso_metabox_' . $metabox_id . '_' . $tab_key . '_rows';
+				$mod_filter_name = 'wpsso_' . $mod[ 'name' ] . '_' . $tab_key . '_rows';
 
 				$table_rows[ $tab_key ] = (array) apply_filters( $mb_filter_name,
 					array(), $this->form, parent::$head_info, $mod );
@@ -796,7 +796,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				'layout' => 'vertical',
 			);
 
-			$mb_container_id = $this->p->id . '_metabox_' . $metabox_id . '_inside';
+			$mb_container_id = 'wpsso_metabox_' . $metabox_id . '_inside';
 
 			$metabox_html = "\n" . '<div id="' . $mb_container_id . '">';
 

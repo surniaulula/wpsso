@@ -4206,6 +4206,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			require_once WPSSO_PLUGINDIR . 'lib/pinterest.php';
 			require_once WPSSO_PLUGINDIR . 'lib/schema.php';
 			require_once WPSSO_PLUGINDIR . 'lib/twittercard.php';
+			require_once WPSSO_PLUGINDIR . 'lib/wp-sitemaps.php';
 
 			/**
 			 * Additional module library loader.

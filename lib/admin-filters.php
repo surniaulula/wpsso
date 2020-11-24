@@ -149,7 +149,7 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 
 			$features[ '(code) Facebook / Open Graph Meta Tags' ] = array(
 				'label_transl' => _x( '(code) Facebook / Open Graph Meta Tags', 'lib file description', 'wpsso' ),
-				'status'       => class_exists( $this->p->id . 'opengraph' ) ? 'on' : 'recommended',
+				'status'       => class_exists( 'wpssoopengraph' ) ? 'on' : 'recommended',
 			);
 
 			$features[ '(code) Knowledge Graph Organization Markup' ] = array(
@@ -169,7 +169,7 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 
 			$features[ '(code) Twitter Card Meta Tags' ] = array(
 				'label_transl' => _x( '(code) Twitter Card Meta Tags', 'lib file description', 'wpsso' ),
-				'status'       => class_exists( $this->p->id . 'twittercard' ) ? 'on' : 'recommended',
+				'status'       => class_exists( 'wpssotwittercard' ) ? 'on' : 'recommended',
 			);
 
 			return $features;

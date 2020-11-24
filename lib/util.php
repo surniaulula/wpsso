@@ -827,8 +827,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 */
 			if ( $mtime_max > 0 && $mtime_total > $mtime_max ) {
 
-				$info = $this->p->cf[ 'plugin' ][ $this->p->id ];
-
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( sprintf( 'slow PHP function detected - getimagesize() took %1$0.3f secs for %2$s',
@@ -1612,8 +1610,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				if ( $is_admin ) {
 
-					$this->p->notice->err( sprintf( __( 'The %1$s request argument is not HTML or a valid URL.',
-						'wpsso' ), __FUNCTION__ ) );
+					$this->p->notice->err( sprintf( __( 'The %1$s request argument is not HTML or a valid URL.', 'wpsso' ), __FUNCTION__ ) );
 				}
 
 				return false;
@@ -1636,8 +1633,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					if ( $is_admin ) {
 
-						$this->p->notice->err( sprintf( __( 'Error getting HTML from <a href="%1$s">%1$s</a>.',
-							'wpsso' ), $request ) );
+						$this->p->notice->err( sprintf( __( 'Error getting HTML from <a href="%1$s">%1$s</a>.', 'wpsso' ), $request ) );
 					}
 
 					return false;
@@ -1888,6 +1884,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$function_info = $this->get_is_functions();
 
 			foreach ( $function_info as $function => $info ) {
+
 				$this->p->debug->log( $info[ 0 ] );
 			}
 		}
@@ -3368,8 +3365,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						break;
 				}
 
-				$info = $this->p->cf[ 'plugin' ][ $this->p->id ];
-
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( sprintf( 'slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "%2$s" filter',
@@ -3390,14 +3385,14 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					if ( $is_wp_filter ) {
 
-						$filter_api_link = '<a href="https://codex.wordpress.org/Plugin_API/Filter_Reference/' . $filter_name . '">' .
-							$filter_name . '</a>';
+						$filter_api_link = '<a href="https://codex.wordpress.org/Plugin_API/Filter_Reference/' .
+							$filter_name . '">' . $filter_name . '</a>';
 
 						$query_monitor_link = '<a href="https://wordpress.org/plugins/query-monitor/">Query Monitor</a>';
 
 						$notice_msg = sprintf( __( 'Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f seconds to execute. This is longer than the recommended maximum of %3$0.3f seconds and may affect page load time. Please consider reviewing 3rd party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code.', 'wpsso' ), $filter_api_link, $mtime_total, $mtime_max ) . ' ';
 
-						$notice_msg .= sprintf( __( 'Activating the %1$s plugin and clearing the %2$s cache (to re-apply the filter) may provide more information on the specific hook(s) or PHP code affecting performance.', 'wpsso' ), $query_monitor_link, $info[ 'short' ] );
+						$notice_msg .= sprintf( __( 'Activating the %1$s plugin and clearing the %2$s cache (to re-apply the filter) may provide more information on the specific hook(s) or PHP code affecting performance.', 'wpsso' ), $query_monitor_link, $this->p->cf[ 'plugin' ][ 'wpsso' ][ 'short' ] );
 
 						$notice_key = 'slow-filter-hooks-detected-' . $filter_name;
 

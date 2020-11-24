@@ -73,14 +73,14 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 				array( $this, 'show_metabox_' . $metabox_id ), $metabox_screen,
 					$metabox_context, $metabox_prio, $callback_args );
 
-			$this->p->media->get_default_images( 1, $this->p->id . '-opengraph', $check_dupes = false );
+			$this->p->media->get_default_images( 1, 'wpsso-opengraph', $check_dupes = false );
 		}
 
 		public function show_metabox_essential() {
 
 			$metabox_id = 'essential';
 
-			$tabs = apply_filters( $this->p->id . '_essential_tabs', array(
+			$tabs = apply_filters( 'wpsso_essential_tabs', array(
 				'site'      => _x( 'Site Information', 'metabox tab', 'wpsso' ),
 				'facebook'  => _x( 'Facebook', 'metabox tab', 'wpsso' ),
 				'google'    => _x( 'Google', 'metabox tab', 'wpsso' ),
@@ -92,7 +92,7 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 
 			foreach ( $tabs as $tab_key => $title ) {
 
-				$filter_name = $this->p->id . '_' . $metabox_id . '_' . $tab_key . '_rows';
+				$filter_name = 'wpsso_' . $metabox_id . '_' . $tab_key . '_rows';
 
 				$table_rows[ $tab_key ] = apply_filters( $filter_name, $this->get_table_rows( $metabox_id, $tab_key ), $this->form );
 			}
@@ -111,7 +111,7 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 					$def_site_name = get_bloginfo( 'name' );
 					$def_site_desc = get_bloginfo( 'description' );
 
-					$select_exp_secs  = $this->p->util->get_cache_exp_secs( $this->p->id . '_f_' );	// Default is month in seconds.
+					$select_exp_secs  = $this->p->util->get_cache_exp_secs( 'wpsso_f_' );	// Default is month in seconds.
 					$article_sections = $this->p->util->get_article_sections();
 
 					$table_rows[ 'site_name' ] = '' . 

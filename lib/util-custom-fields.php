@@ -84,7 +84,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 
 			if ( null === $local_cache ) {
 
-				$local_cache = (array) apply_filters( $this->p->id . '_cf_md_index', $this->p->cf[ 'opt' ][ 'cf_md_index' ] );
+				$local_cache = (array) apply_filters( 'wpsso_cf_md_index', $this->p->cf[ 'opt' ][ 'cf_md_index' ] );
 			}
 
 			foreach ( $local_cache as $cf_key => $md_key ) {

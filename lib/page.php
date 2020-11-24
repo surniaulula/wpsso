@@ -48,7 +48,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				return;
 			}
 
-			$use_post = apply_filters( $this->p->id . '_use_post', false );
+			$use_post = apply_filters( 'wpsso_use_post', false );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -121,7 +121,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				return $title;
 			}
 
-			$use_post = apply_filters( $this->p->id . '_use_post', false );
+			$use_post = apply_filters( 'wpsso_use_post', false );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -169,7 +169,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 		public function get_quote( array $mod ) {
 
-			$quote_text = apply_filters( $this->p->id . '_quote_seed', '', $mod );
+			$quote_text = apply_filters( 'wpsso_quote_seed', '', $mod );
 
 			if ( ! empty( $quote_text ) ) {
 
@@ -195,7 +195,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			$quote_text = $this->p->util->cleanup_html_tags( $quote_text, false );
 
-			return apply_filters( $this->p->id . '_quote', $quote_text, $mod );
+			return apply_filters( 'wpsso_quote', $quote_text, $mod );
 		}
 
 		/**
@@ -390,7 +390,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$cap_text = html_entity_decode( SucomUtil::decode_utf8( $cap_text ), ENT_QUOTES, get_bloginfo( 'charset' ) );
 			}
 
-			return apply_filters( $this->p->id . '_caption', $cap_text, $mod, $add_hashtags, $md_key );
+			return apply_filters( 'wpsso_caption', $cap_text, $mod, $add_hashtags, $md_key );
 		}
 
 		/**
@@ -484,7 +484,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( empty( $title_text ) ) {
 
-				$title_text = apply_filters( $this->p->id . '_title_seed', '', $mod, $add_hashtags, $md_key, $sep );
+				$title_text = apply_filters( 'wpsso_title_seed', '', $mod, $add_hashtags, $md_key, $sep );
 
 				if ( ! empty( $title_text ) ) {
 
@@ -519,7 +519,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/**
 			 * Apply a title filter before adjusting it's length.
 			 */
-			$title_text = apply_filters( $this->p->id . '_title_pre_limit', $title_text );
+			$title_text = apply_filters( 'wpsso_title_pre_limit', $title_text );
 
 			/**
 			 * Check title against string length limits.
@@ -588,7 +588,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'before title filter = "' . $title_text . '"' );
 			}
 
-			return apply_filters( $this->p->id . '_title', $title_text, $mod, $add_hashtags, $md_key, $sep );
+			return apply_filters( 'wpsso_title', $title_text, $mod, $add_hashtags, $md_key, $sep );
 		}
 
 		/**
@@ -675,7 +675,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( empty( $desc_text ) ) {
 
-				$desc_text = apply_filters( $this->p->id . '_description_seed', '', $mod, $add_hashtags, $md_key );
+				$desc_text = apply_filters( 'wpsso_description_seed', '', $mod, $add_hashtags, $md_key );
 
 				if ( ! empty( $desc_text ) ) {
 
@@ -735,7 +735,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 							$this->p->debug->log( 'before post_archive_description filter = ' . $desc_text );
 						}
 
-						$desc_text = apply_filters( $this->p->id . '_post_archive_description', $desc_text, $mod, $post_type_obj );
+						$desc_text = apply_filters( 'wpsso_post_archive_description', $desc_text, $mod, $post_type_obj );
 
 					} else {
 
@@ -817,7 +817,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 							}
 						}
 
-						$desc_text = apply_filters( $this->p->id . '_tag_archive_description', $desc_text, $mod, $term_obj );
+						$desc_text = apply_filters( 'wpsso_tag_archive_description', $desc_text, $mod, $term_obj );
 
 					/**
 					 * Category archive page.
@@ -829,7 +829,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 							$desc_text = sprintf( _x( 'Category archive for %s.', 'default description', 'wpsso' ), get_cat_name( $mod[ 'id' ] ) );
 						}
 
-						$desc_text = apply_filters( $this->p->id . '_category_archive_description', $desc_text, $mod, $term_obj );
+						$desc_text = apply_filters( 'wpsso_category_archive_description', $desc_text, $mod, $term_obj );
 
 					/**
 					 * Other archive page.
@@ -846,7 +846,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						}
 					}
 
-					$desc_text = apply_filters( $this->p->id . '_term_archive_description', $desc_text, $mod, $term_obj );
+					$desc_text = apply_filters( 'wpsso_term_archive_description', $desc_text, $mod, $term_obj );
 
 				} elseif ( $mod[ 'is_user' ] ) {
 
@@ -861,7 +861,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						$desc_text = sprintf( _x( 'Authored by %s.', 'default description', 'wpsso' ), $user_obj->display_name );
 					}
 
-					$desc_text = apply_filters( $this->p->id . '_user_archive_description', $desc_text, $mod, $user_obj );
+					$desc_text = apply_filters( 'wpsso_user_archive_description', $desc_text, $mod, $user_obj );
 
 				} elseif ( $mod[ 'is_home_posts' ] ) {
 
@@ -872,13 +872,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						$this->p->debug->log( 'home posts get_site_description() = "' . $desc_text . '"' );
 					}
 
-					$desc_text = apply_filters( $this->p->id . '_home_posts_description', $desc_text, $mod );
+					$desc_text = apply_filters( 'wpsso_home_posts_description', $desc_text, $mod );
 
 				} elseif ( ! empty( $mod[ 'is_search' ] ) || ( ! isset( $mod[ 'is_search' ] ) && is_search() ) ) {
 
 					$desc_text = sprintf( __( 'Search Results for &#8220;%s&#8221;' ), get_search_query() );
 
-					$desc_text = apply_filters( $this->p->id . '_search_results_description', $desc_text, $mod );
+					$desc_text = apply_filters( 'wpsso_search_results_description', $desc_text, $mod );
 
 				} elseif ( ! empty( $mod[ 'is_archive' ] ) || ( ! isset( $mod[ 'is_archive' ] ) && SucomUtil::is_archive_page() ) ) {
 
@@ -888,26 +888,26 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 							$desc_text = sprintf( _x( 'Yearly archive for %s.', 'default description', 'wpsso' ), get_the_date( 'Y' ) );
 
-							$desc_text = apply_filters( $this->p->id . '_yearly_archive_description', $desc_text, $mod );
+							$desc_text = apply_filters( 'wpsso_yearly_archive_description', $desc_text, $mod );
 
 						} elseif ( ! empty( $mod[ 'is_month' ] ) || ( ! isset( $mod[ 'is_month' ] ) && is_month() ) ) {
 
 							$desc_text = sprintf( _x( 'Monthly archive for %s.', 'default description', 'wpsso' ), get_the_date( 'F Y' ) );
 
-							$desc_text = apply_filters( $this->p->id . '_monthly_archive_description', $desc_text, $mod );
+							$desc_text = apply_filters( 'wpsso_monthly_archive_description', $desc_text, $mod );
 
 						} elseif ( ! empty( $mod[ 'is_day' ] ) || ( ! isset( $mod[ 'is_day' ] ) && is_day() ) ) {
 
 							$desc_text = sprintf( _x( 'Daily archive for %s.', 'default description', 'wpsso' ), get_the_date() );
 
-							$desc_text = apply_filters( $this->p->id . '_daily_archive_description', $desc_text, $mod );
+							$desc_text = apply_filters( 'wpsso_daily_archive_description', $desc_text, $mod );
 						}
 
 					} else {
 
 						$desc_text = _x( 'Archive page.', 'default description', 'wpsso' );
 
-						$desc_text = apply_filters( $this->p->id . '_archive_page_description', $desc_text, $mod );
+						$desc_text = apply_filters( 'wpsso_archive_page_description', $desc_text, $mod );
 					}
 				}
 			}
@@ -945,7 +945,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/**
 			 * Apply a description filter before adjusting it's length.
 			 */
-			$desc_text = apply_filters( $this->p->id . '_description_pre_limit', $desc_text );
+			$desc_text = apply_filters( 'wpsso_description_pre_limit', $desc_text );
 
 			/**
 			 * Replace any inline variables in the string.
@@ -989,7 +989,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'before description filter = "' . $desc_text . '"' );
 			}
 
-			$desc_text = apply_filters( $this->p->id . '_description', $desc_text, $mod, $add_hashtags, $md_key );
+			$desc_text = apply_filters( 'wpsso_description', $desc_text, $mod, $add_hashtags, $md_key );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1060,7 +1060,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'before text filter = "' . $text . '"' );
 			}
 
-			return apply_filters( $this->p->id . '_text', $text, $mod, $add_hashtags, $md_key );
+			return apply_filters( 'wpsso_text', $text, $mod, $add_hashtags, $md_key );
 		}
 
 		/**
@@ -1117,7 +1117,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						$this->p->debug->log( 'before post_archive_title filter = ' . $title_text );
 					}
 
-					$title_text = apply_filters( $this->p->id . '_post_archive_title', $title_text, $mod, $post_type_obj );
+					$title_text = apply_filters( 'wpsso_post_archive_title', $title_text, $mod, $post_type_obj );
 
 				} else {
 
@@ -1158,7 +1158,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				 */
 				$title_text = $this->get_term_title( $term_obj, $sep );
 
-				$title_text = apply_filters( $this->p->id . '_term_archive_title', $title_text, $mod, $term_obj );
+				$title_text = apply_filters( 'wpsso_term_archive_title', $title_text, $mod, $term_obj );
 
 			} elseif ( $mod[ 'is_user' ] ) {
 
@@ -1171,7 +1171,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$title_text = $this->p->util->safe_apply_filters( array( 'wp_title', $title_text, $sep, 'right' ), $mod );
 				}
 
-				$title_text = apply_filters( $this->p->id . '_user_archive_title', $title_text, $mod, $user_obj );
+				$title_text = apply_filters( 'wpsso_user_archive_title', $title_text, $mod, $user_obj );
 
 			} elseif ( $mod[ 'is_home' ] ) {
 
@@ -1187,13 +1187,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$title_text = $this->p->util->safe_apply_filters( array( 'wp_title', $title_text, $sep, 'right' ), $mod );
 				}
 
-				$title_text = apply_filters( $this->p->id . '_home_posts_title', $title_text, $mod );
+				$title_text = apply_filters( 'wpsso_home_posts_title', $title_text, $mod );
 
 			} elseif ( ! empty( $mod[ 'is_search' ] ) || ( ! isset( $mod[ 'is_search' ] ) && is_search() ) ) {
 
 				$title_text = sprintf( __( 'Search Results %1$s %2$s' ), $sep, get_search_query() );
 
-				$title_text = apply_filters( $this->p->id . '_search_results_title', $title_text, $mod );
+				$title_text = apply_filters( 'wpsso_search_results_title', $title_text, $mod );
 
 			} elseif ( ! empty( $mod[ 'is_archive' ] ) || ( ! isset( $mod[ 'is_archive' ] ) && SucomUtil::is_archive_page() ) ) {
 
@@ -1212,20 +1212,20 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						$title_text = get_the_date();
 					}
 
-					$title_text = apply_filters( $this->p->id . '_date_archive_title', $title_text, $mod );
+					$title_text = apply_filters( 'wpsso_date_archive_title', $title_text, $mod );
 
 				} else {
 
 					$title_text = wp_title( $sep, $display = false, $seplocation = 'right' );
 
-					$title_text = apply_filters( $this->p->id . '_wp_title', $title_text, $mod );
+					$title_text = apply_filters( 'wpsso_wp_title', $title_text, $mod );
 				}
 
 			} else {
 
 				$title_text = wp_title( $sep, $display = false, $seplocation = 'right' );
 
-				$title_text = apply_filters( $this->p->id . '_wp_title', $title_text, $mod );
+				$title_text = apply_filters( 'wpsso_wp_title', $title_text, $mod );
 			}
 
 			if ( empty( $title_text ) ) {
@@ -1269,7 +1269,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/**
 			 * Apply the filter.
 			 */
-			$title_text = apply_filters( $this->p->id . '_the_title', $title_text, $mod, $sep );
+			$title_text = apply_filters( 'wpsso_the_title', $title_text, $mod, $sep );
 
 			return $title_text;
 		}
@@ -1308,7 +1308,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/**
 			 * Apply the filter.
 			 */
-			$excerpt_text = apply_filters( $this->p->id . '_the_excerpt', $excerpt_text, $mod );
+			$excerpt_text = apply_filters( 'wpsso_the_excerpt', $excerpt_text, $mod );
 
 			return $excerpt_text;
 		}
@@ -1335,7 +1335,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$filter_content = empty( $this->p->options[ 'plugin_filter_content' ] ) ? false : true;
 			$sharing_url    = $this->p->util->get_sharing_url( $mod );
-			$cache_md5_pre  = $this->p->id . '_c_';
+			$cache_md5_pre  = 'wpsso_c_';
 			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'wp_cache', $def_secs = HOUR_IN_SECONDS );
 			$cache_salt     = __METHOD__ . '(' . SucomUtil::get_mod_salt( $mod, $sharing_url ) . ')';
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
@@ -1409,7 +1409,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 *
 			 * Return false to prevent the 'post_content' from being used.
 			 */
-			$content = apply_filters( $this->p->id . '_the_content_seed', '', $mod, $read_cache, $md_key );
+			$content = apply_filters( 'wpsso_the_content_seed', '', $mod, $read_cache, $md_key );
 
 			if ( false === $content ) {
 
@@ -1482,24 +1482,24 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				 */
 				if ( false !== strpos( $content, '[' ) ) {
 
-					$content = apply_filters( $this->p->id . '_do_shortcode', $content );
+					$content = apply_filters( 'wpsso_do_shortcode', $content );
 				}
 			}
 
 			/**
 			 * Maybe use only a certain part of the content.
 			 */
-			if ( false !== strpos( $content, $this->p->id . '-content' ) ) {
+			if ( false !== strpos( $content, 'wpsso-content' ) ) {
 
-				$content = preg_replace( '/^.*<!-- *' . $this->p->id . '-content *-->(.*)<!--\/' . $this->p->id . '-content *-->.*$/Us', '$1', $content );
+				$content = preg_replace( '/^.*<!-- *wpsso-content *-->(.*)<!--\/wpsso-content *-->.*$/Us', '$1', $content );
 			}
 
 			/**
 			 * Maybe remove text between ignore markers.
 			 */
-			if ( false !== strpos( $content, $this->p->id . '-ignore' ) ) {
+			if ( false !== strpos( $content, 'wpsso-ignore' ) ) {
 
-				$content = preg_replace( '/<!-- *' . $this->p->id . '-ignore *-->.*<!-- *\/' . $this->p->id . '-ignore *-->/Us', ' ', $content );
+				$content = preg_replace( '/<!-- *wpsso-ignore *-->.*<!-- *\/wpsso-ignore *-->/Us', ' ', $content );
 			}
 
 			/**
@@ -1526,7 +1526,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/**
 			 * Apply the filter.
 			 */
-			$content = apply_filters( $this->p->id . '_the_content', $content, $mod, $read_cache, $md_key );
+			$content = apply_filters( 'wpsso_the_content', $content, $mod, $read_cache, $md_key );
 
 			/**
 			 * Log content strlen before and after changes / filters.
@@ -1731,7 +1731,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				return '';
 			}
 
-			$hashtags = apply_filters( $this->p->id . '_hashtags_seed', '', $mod, $add_hashtags );
+			$hashtags = apply_filters( 'wpsso_hashtags_seed', '', $mod, $add_hashtags );
 
 			if ( ! empty( $hashtags ) ) {	// Seed hashtags returned.
 
@@ -1760,7 +1760,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			return apply_filters( $this->p->id . '_hashtags', $hashtags, $mod, $add_hashtags );
+			return apply_filters( 'wpsso_hashtags', $hashtags, $mod, $add_hashtags );
 		}
 
 		/**
@@ -1785,7 +1785,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				return $local_cache[ $mod[ 'name' ] ][ $mod[ 'id' ] ];
 			}
 
-			$tags = apply_filters( $this->p->id . '_tag_names_seed', array(), $mod );
+			$tags = apply_filters( 'wpsso_tag_names_seed', array(), $mod );
 
 			if ( ! empty( $tags ) ) {
 
@@ -1810,7 +1810,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$tags = array_unique( $tags );
 			}
 
-			$tags = $local_cache[ $mod[ 'name' ] ][ $mod[ 'id' ] ] = apply_filters( $this->p->id . '_tag_names', $tags, $mod );
+			$tags = $local_cache[ $mod[ 'name' ] ][ $mod[ 'id' ] ] = apply_filters( 'wpsso_tag_names', $tags, $mod );
 
 			if ( $this->p->debug->enabled ) {
 

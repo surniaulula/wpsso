@@ -39,9 +39,9 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			add_action( 'wp_scheduled_delete', array( $this, 'clear_expired_db_transients' ) );
 
-			add_action( $this->p->id . '_clear_cache', array( $this, 'clear' ), 10, 4 );		// For single scheduled task.
+			add_action( 'wpsso_clear_cache', array( $this, 'clear' ), 10, 4 );		// For single scheduled task.
 
-			add_action( $this->p->id . '_refresh_cache', array( $this, 'refresh' ), 10, 1 );	// For single scheduled task.
+			add_action( 'wpsso_refresh_cache', array( $this, 'refresh' ), 10, 1 );	// For single scheduled task.
 		}
 
 		/**
@@ -51,7 +51,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
 			$event_time = time() + 5;	// Add a 5 second event buffer.
-			$event_hook = $this->p->id . '_clear_cache';
+			$event_hook = 'wpsso_clear_cache';
 			$event_args = array( $user_id, $clear_other, $clear_short, $refresh );
 
 			wp_schedule_single_event( $event_time, $event_hook, $event_args );
@@ -88,7 +88,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			/**
 			 * A transient is set and checked to limit the runtime and allow this process to be terminated early.
 			 */
-			$cache_md5_pre  = $this->p->id . '_!_';	// Protect transient from being cleared.
+			$cache_md5_pre  = 'wpsso_!_';	// Protect transient from being cleared.
 			$cache_exp_secs = HOUR_IN_SECONDS;		// Prevent duplicate runs for max 1 hour.
 			$cache_salt     = __CLASS__ . '::clear';	// Use a common cache salt for start / stop.
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
@@ -133,12 +133,12 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				/**
 				 * Register image sizes and include WooCommerce front-end libs.
 				 */
-				do_action( $this->p->id . '_scheduled_task_started', $user_id );
+				do_action( 'wpsso_scheduled_task_started', $user_id );
 			}
 
 			$cleared_files = $this->clear_cache_dir();
 
-			$cleared_transients = $this->clear_db_transients( $clear_short, $transient_prefix = $this->p->id . '_' );
+			$cleared_transients = $this->clear_db_transients( $clear_short, $transient_prefix = 'wpsso_' );
 
 			$cleared_col_meta = $this->clear_column_meta();
 
@@ -259,7 +259,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 					/**
 					 * Preserve transients that begin with "wpsso_!_".
 					 */
-					if ( 0 === strpos( $cache_id, $this->p->id . '_!_' ) ) {
+					if ( 0 === strpos( $cache_id, 'wpsso_!_' ) ) {
 
 						continue;
 					}
@@ -269,7 +269,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 					 */
 					if ( ! $clear_short ) {							// If not clearing short URLs.
 
-						if ( 0 === strpos( $cache_id, $this->p->id . '_s_' ) ) {	// This is a shortened URL.
+						if ( 0 === strpos( $cache_id, 'wpsso_s_' ) ) {	// This is a shortened URL.
 
 							continue;						// Get the next transient.
 						}
@@ -305,7 +305,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			$cleared_count = 0;
 
-			$transient_prefix = $this->p->id . '_';
+			$transient_prefix = 'wpsso_';
 
 			$transient_keys = SucomUtilWP::get_db_transient_keys( $only_expired = true, $transient_prefix );
 
@@ -547,7 +547,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
 			$event_time = time() + 5;	// Add a 5 second event buffer.
-			$event_hook = $this->p->id . '_refresh_cache';
+			$event_hook = 'wpsso_refresh_cache';
 			$event_args = array( $user_id, $read_cache );
 
 			$this->stop_refresh();	// Just in case.
@@ -557,7 +557,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 		public function stop_refresh() {
 
-			$cache_md5_pre  = $this->p->id . '_!_';	// Protect transient from being cleared.
+			$cache_md5_pre  = 'wpsso_!_';	// Protect transient from being cleared.
 			$cache_exp_secs = HOUR_IN_SECONDS;		// Prevent duplicate runs for max 1 hour.
 			$cache_salt     = __CLASS__ . '::refresh';	// Use a common cache salt for start / stop.
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
@@ -582,7 +582,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			/**
 			 * A transient is set and checked to limit the runtime and allow this process to be terminated early.
 			 */
-			$cache_md5_pre  = $this->p->id . '_!_';	// Protect transient from being cleared.
+			$cache_md5_pre  = 'wpsso_!_';	// Protect transient from being cleared.
 			$cache_exp_secs = HOUR_IN_SECONDS;		// Prevent duplicate runs for max 1 hour.
 			$cache_salt     = __CLASS__ . '::refresh';	// Use a common cache salt for start / stop.
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
@@ -625,12 +625,12 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				/**
 				 * Register image sizes and include WooCommerce front-end libs.
 				 */
-				do_action( $this->p->id . '_scheduled_task_started', $user_id );
+				do_action( 'wpsso_scheduled_task_started', $user_id );
 			}
 
-			$size_names = array( 'thumbnail', $this->p->id . '-opengraph' );
+			$size_names = array( 'thumbnail', 'wpsso-opengraph' );
 
-			$post_ids = call_user_func( array( $this->p->id . 'post', 'get_public_ids' ) );	// Call static method.
+			$post_ids = call_user_func( array( 'wpssopost', 'get_public_ids' ) );	// Call static method.
 
 			foreach ( $post_ids as $post_id ) {
 

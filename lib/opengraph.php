@@ -116,7 +116,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						$this->p->debug->log( 'checking for value from column wp_cache' );
 					}
 
-					$value = $mod[ 'obj' ]->get_column_wp_cache( $mod, $this->p->id . '_og_type' );	// Returns empty string if no value found.
+					$value = $mod[ 'obj' ]->get_column_wp_cache( $mod, 'wpsso_og_type' );	// Returns empty string if no value found.
 
 					if ( ! empty( $value ) ) {
 
@@ -158,7 +158,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$this->p->debug->log( 'skipping cache check: mod name and/or id value is empty' );
 			}
 
-			$default_key = apply_filters( $this->p->id . '_og_type_for_default', 'website', $mod );
+			$default_key = apply_filters( 'wpsso_og_type_for_default', 'website', $mod );
 			$og_type_ns  = $this->p->cf[ 'head' ][ 'og_type_ns' ];
 			$type_id     = null;
 
@@ -233,7 +233,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 						$type_id = $this->get_og_type_id_for_name( 'home_page' );
 
-						$type_id = apply_filters( $this->p->id . '_og_type_for_home_page', $type_id, $mod );
+						$type_id = apply_filters( 'wpsso_og_type_for_home_page', $type_id, $mod );
 
 						if ( $this->p->debug->enabled ) {
 
@@ -244,7 +244,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 						$type_id = $this->get_og_type_id_for_name( 'home_posts' );
 
-						$type_id = apply_filters( $this->p->id . '_og_type_for_home_posts', $type_id, $mod );
+						$type_id = apply_filters( 'wpsso_og_type_for_home_posts', $type_id, $mod );
 
 						if ( $this->p->debug->enabled ) {
 
@@ -260,7 +260,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 							$type_id = $this->get_og_type_id_for_name( 'post_archive' );
 
-							$type_id = apply_filters( $this->p->id . '_og_type_for_post_type_archive_page', $type_id, $mod );
+							$type_id = apply_filters( 'wpsso_og_type_for_post_type_archive_page', $type_id, $mod );
 
 							if ( $this->p->debug->enabled ) {
 
@@ -289,7 +289,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 							$type_id = $this->get_og_type_id_for_name( 'page' );
 
-							$type_id = apply_filters( $this->p->id . '_og_type_for_post_type_unknown_type', $type_id, $mod );
+							$type_id = apply_filters( 'wpsso_og_type_for_post_type_unknown_type', $type_id, $mod );
 
 							if ( $this->p->debug->enabled ) {
 
@@ -301,7 +301,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 						$type_id = $this->get_og_type_id_for_name( 'page' );
 
-						$type_id = apply_filters( $this->p->id . '_og_type_for_post_type_empty_type', $type_id, $mod );
+						$type_id = apply_filters( 'wpsso_og_type_for_post_type_empty_type', $type_id, $mod );
 
 						if ( $this->p->debug->enabled ) {
 
@@ -354,7 +354,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$this->p->debug->log( 'og type id before filter is "' . $type_id . '"' );
 			}
 
-			$type_id = apply_filters( $this->p->id . '_og_type', $type_id, $mod, $is_custom );
+			$type_id = apply_filters( 'wpsso_og_type', $type_id, $mod, $is_custom );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -433,11 +433,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			/**
 			 * 'wpsso_og_seed' is hooked by e-commerce modules to provide product meta tags.
 			 */
-			$mt_og = apply_filters( $this->p->id . '_og_seed', SucomUtil::get_mt_og_seed(), $mod );
+			$mt_og = apply_filters( 'wpsso_og_seed', SucomUtil::get_mt_og_seed(), $mod );
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_arr( $this->p->id . '_og_seed filter returned:', $mt_og );
+				$this->p->debug->log_arr( 'wpsso_og_seed filter returned:', $mt_og );
 			}
 
 			/**
@@ -567,9 +567,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 */
 			if ( ! isset( $mt_og[ 'og:updated_time' ] ) ) {
 
-				if ( $mod[ 'is_post' ] && $mod[ 'id' ] ) {
+				if ( $mod[ 'post_modified_time' ] ) {
 
-					$mt_og[ 'og:updated_time' ] = trim( get_post_modified_time( 'c', $gmt = true, $mod[ 'id' ] ) );
+					$mt_og[ 'og:updated_time' ] = $mod[ 'post_modified_time' ];
 				}
 			}
 
@@ -749,15 +749,21 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				if ( ! isset( $mt_og[ 'article:published_time' ] ) ) {
 
-					if ( 'publish' === $mod[ 'post_status' ] ) {	// Must be published to have publish time.
+					if ( 'publish' === $mod[ 'post_status' ] ) {	// Must be published to have a publish time meta tag.
+					
+						if ( $mod[ 'post_time' ] ) {	// ISO 8601 date or false.
 
-						$mt_og[ 'article:published_time' ] = trim( get_post_time( 'c', $gmt = true, $mod[ 'id' ] ) );
+							$mt_og[ 'article:published_time' ] = $mod[ 'post_time' ];
+						}
 					}
 				}
 
 				if ( ! isset( $mt_og[ 'article:modified_time' ] ) ) {
 
-					$mt_og[ 'article:modified_time' ] = trim( get_post_modified_time( 'c', $gmt = true, $mod[ 'id' ] ) );
+					if ( $mod[ 'post_modified_time' ] ) {	// ISO 8601 date or false.
+
+						$mt_og[ 'article:modifiedmodified_time' ] = $mod[ 'post_modified_time' ];
+					}
 				}
 			}
 
@@ -765,16 +771,16 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				$og_ns = $this->p->cf[ 'head' ][ 'og_type_ns' ][ $type_id ];	// Example: https://ogp.me/ns/product#
 
-				$filter_name = $this->p->id . '_og_data_' . SucomUtil::sanitize_hookname( $og_ns );
+				$filter_name = 'wpsso_og_data_' . SucomUtil::sanitize_hookname( $og_ns );
 
 				$mt_og = (array) apply_filters( $filter_name, $mt_og, $mod );
 			}
 
-			$mt_og = (array) apply_filters( $this->p->id . '_og', $mt_og, $mod );
+			$mt_og = (array) apply_filters( 'wpsso_og', $mt_og, $mod );
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_arr( $this->p->id . '_og filter returned:', $mt_og );
+				$this->p->debug->log_arr( 'wpsso_og filter returned:', $mt_og );
 			}
 
 			return $mt_og;

@@ -65,8 +65,8 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			/**
 			 * Select option arrays.
 			 */
-			$select_exp_secs = $this->p->util->get_cache_exp_secs( $this->p->id . '_f_' );	// Default is month in seconds.
-			$schema_exp_secs = $this->p->util->get_cache_exp_secs( $this->p->id . '_t_' );	// Default is month in seconds.
+			$select_exp_secs = $this->p->util->get_cache_exp_secs( 'wpsso_f_' );	// Default is month in seconds.
+			$schema_exp_secs = $this->p->util->get_cache_exp_secs( 'wpsso_t_' );	// Default is month in seconds.
 
 			$og_types         = $this->p->og->get_og_types_select();
 			$schema_types     = $this->p->schema->get_schema_types_select( $context = 'meta' );
@@ -256,7 +256,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			/**
 			 * Get the default Open Graph image pid and URL.
 			 */
-			$size_name       = $this->p->id . '-opengraph';
+			$size_name       = 'wpsso-opengraph';
 			$media_request   = array( 'pid', 'img_url' );
 			$media_info      = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = 'none' );
 
@@ -404,8 +404,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 
 			} else {
 
-				$shortlink_url = apply_filters( $this->p->id . '_get_short_url', $sharing_url,
-					$this->p->options[ 'plugin_shortener' ], $mod );
+				$shortlink_url = apply_filters( 'wpsso_get_short_url', $sharing_url, $this->p->options[ 'plugin_shortener' ], $mod );
 			}
 
 			$have_sizes = isset( $head_info[ 'og:image:width' ] ) && $head_info[ 'og:image:width' ] > 0 && 

@@ -72,6 +72,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $pinterest;	// WpssoPinterest class object.
 		public $schema;		// WpssoSchema class object.
 		public $tc;		// WpssoTwitterCard class object.
+		public $sitemaps;	// WpssoWpSiteMaps class object.
 
 		/**
 		 * Reference variables (config, options, modules, etc.).
@@ -444,6 +445,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->pinterest = new WpssoPinterest( $this );		// Pinterest image markup.
 			$this->schema    = new WpssoSchema( $this );		// Schema json scripts.
 			$this->tc        = new WpssoTwitterCard( $this );	// Twitter Card meta tags.
+			$this->sitemaps  = new WpssoWpSiteMaps( $this );	// WordPress sitemaps.
 
 			/**
 			 * Load distribution modules.
