@@ -3576,7 +3576,7 @@ msgstr ""
 
 #: lib/admin-filters.php:189
 msgctxt "lib file description"
-msgid "(code) SEO Robots Meta"
+msgid "(code) Post, Term, and User Robots Meta"
 msgstr ""
 
 #: lib/admin-filters.php:194

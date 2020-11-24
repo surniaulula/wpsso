@@ -185,8 +185,8 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 				'status'       => class_exists( 'WpssoMetaName' ) ? 'on' : 'recommended',
 			);
 
-			$features[ '(code) SEO Robots Meta' ] = array(
-				'label_transl' => _x( '(code) SEO Robots Meta', 'lib file description', 'wpsso' ),
+			$features[ '(code) Post, Term, and User Robots Meta' ] = array(
+				'label_transl' => _x( '(code) Post, Term, and User Robots Meta', 'lib file description', 'wpsso' ),
 				'status'       => empty( $this->p->options[ 'add_meta_name_robots' ] ) ? 'off' : 'on',
 			);
 
