@@ -41,6 +41,9 @@ if ( ! class_exists( 'WpssoWpSiteMaps' ) ) {
 			add_filter( 'wp_sitemaps_users_query_args', array( $this, 'wp_sitemaps_users_query_args' ), 10, 1 );
 		}
 
+		/**
+		 * Add a modification time for Open Graph type non-website posts (ie. article, book, product, etc.).
+		 */
 		public function wp_sitemaps_posts_entry( $sitemap_entry, $post, $post_type ) {
 
 			if ( empty( $post->ID ) ) {	// Just in case.
@@ -63,6 +66,9 @@ if ( ! class_exists( 'WpssoWpSiteMaps' ) ) {
 			return $sitemap_entry;
 		}
 
+		/**
+		 * Exclude posts from the sitemaps that have been defined as noindex.
+		 */
 		public function wp_sitemaps_posts_query_args( $args, $post_type ) {
 
 			if ( ! empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
