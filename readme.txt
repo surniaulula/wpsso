@@ -318,7 +318,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.14.0-dev.5 (2020/11/24)**
+**Version 8.14.0-dev.5 (2020/11/25)**
 
 * **New Features**
 	* None.
@@ -755,7 +755,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 = 8.14.0-dev.5 =
 
-(2020/11/24) Added WP SiteMaps filters to add article modified dates, and exclude posts / pages, terms, and users with 'noindex' checked under the Document SSO &gt; Robots Meta tab.
+(2020/11/25) Added WP SiteMaps filters to add article modified dates, and exclude posts / pages, terms, and users with 'noindex' checked under the Document SSO &gt; Robots Meta tab.
 
 = 8.13.0 =
 
