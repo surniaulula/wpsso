@@ -741,11 +741,12 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				return;
 			}
 
+			$pkg_info        = $this->p->admin->get_pkg_info();	// Returns an array from cache.
 			$metabox_screen  = 'wpsso-user';
 			$metabox_context = 'normal';
 
 			echo "\n" . '<!-- wpsso user metabox section begin -->' . "\n";
-			echo '<h3>' . WpssoAdmin::$pkg[ $this->p->id ][ 'short' ] . '</h3>' . "\n";
+			echo '<h3>' . $pkg_info[ 'wpsso' ][ 'short_dist' ] . '</h3>' . "\n";
 			echo '<div id="poststuff" class="wpsso-metaboxes metabox-holder">' . "\n";
 
 			do_meta_boxes( $metabox_screen, $metabox_context, $user_obj );
@@ -767,7 +768,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$opts       = $this->get_options( $user_obj->ID );
 			$def_opts   = $this->get_defaults( $user_obj->ID );
 
-			$this->p->admin->plugin_pkg_info();
+			$this->p->admin->get_pkg_info();	// Returns an array from cache.
 
 			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts, $this->p->id );
 

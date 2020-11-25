@@ -76,7 +76,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 		public function requires_notices() {
 
-			$pkg = $this->p->admin->plugin_pkg_info();
+			$pkg_info = $this->p->admin->get_pkg_info();	// Returns an array from cache.
 
 			$um_info = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
 
@@ -91,16 +91,12 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 					/**
 					 * If the update manager is active, its version should be available.
 					 *
-					 * If the update manager version is defined, the skip the warning notices and show a nag
+					 * If the update manager version is not available, skip the warning notices and show a nag
 					 * notice to install the update manager.
 					 */
-					if ( empty( $um_info[ 'version' ] ) ) {
+					if ( ! empty( $um_info[ 'version' ] ) ) {
 
-						break;
-
-					} else {
-
-						if ( empty( $pkg[ $ext ][ 'pdir' ] ) ) {
+						if ( empty( $pkg_info[ $ext ][ 'pdir' ] ) ) {
 
 							if ( ! empty( $info[ 'base' ] ) && ! SucomPlugin::is_plugin_installed( $info[ 'base' ], $use_cache = true ) ) {
 
@@ -111,11 +107,15 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 								$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-updated', array( 'plugin_id' => $ext ) ) );
 							}
 						}
+
+					} else {
+
+						break;
 					}
 				}
 			}
 
-			if ( true === $have_tid ) {
+			if ( $have_tid ) {
 
 				/**
 				 * If the update manager is active, its version should be available.
@@ -174,8 +174,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 								continue 2;
 						}
 
-						$app_label = WpssoConfig::$cf[ $key ][ 'label' ];
-
+						$app_label   = WpssoConfig::$cf[ $key ][ 'label' ];
 						$rec_version = WpssoConfig::$cf[ $key ][ 'rec_version' ];
 
 						if ( version_compare( $app_version, $rec_version, '<' ) ) {
@@ -200,11 +199,6 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 		public function suggest_addons() {
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
 			if ( ! $this->p->notice->can_dismiss() || ! current_user_can( 'manage_options' ) ) {
 
 				if ( $this->p->debug->enabled ) {
@@ -219,11 +213,6 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 		}
 
 		public function timed_notices() {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
 
 			if ( ! $this->p->notice->can_dismiss() || ! current_user_can( 'manage_options' ) ) {
 
@@ -249,9 +238,14 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 		public function robots_notice() {
 
-			if ( ! current_user_can( 'manage_options' ) ) {
+			if ( ! $this->p->notice->can_dismiss() || ! current_user_can( 'manage_options' ) ) {
 
-				return;
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: cannot dismiss or cannot manage options' );
+				}
+
+				return;	// Stop here.
 			}
 
 			if ( empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
@@ -277,6 +271,8 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 		/**
 		 * Suggest activating the WPSSO JSON add-on for better Schema markup.
+		 *
+		 * These private notice functions should return the number of notices shown.
 		 */
 		private function suggest_addons_woocommerce() {
 
@@ -287,7 +283,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 					$this->p->debug->log( 'woocommerce is not active' );
 				}
 
-				return;
+				return 0;
 			}
 
 			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
@@ -297,79 +293,102 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 					$this->p->debug->log( 'schema markup is disabled' );
 				}
 
-				return;
+				return 0;
 			}
 
-			$pkg = $this->p->admin->plugin_pkg_info();	// Returns array from cache.
+			$pkg_info = $this->p->admin->get_pkg_info();	// Returns an array from cache.
 
-			$action_links = array();	// Init a new action array for the notice message.
-
-			if ( empty( $pkg[ 'wpsso' ][ 'pp' ] ) ) {
-
-				$action_links[] = $this->get_purchase_plugin_link( 'wpsso' );
-			}
-
-			if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
-
-				$action_links[] = $this->get_install_activate_addon_link( 'wpssojson' );
-			}
-
-			if ( ! empty( $action_links ) ) {
-
-				$notice_msg = __( 'The WooCommerce plugin is known to offer incomplete Schema markup for Google Rich Results.', 'wpsso' ) . ' ';
-
-				$notice_msg .= __( 'The WPSSO Core Premium plugin (required for WooCommerce integration) and its WPSSO Schema JSON-LD Markup add-on provide a much better solution by offering complete product meta tags for Facebook / Pinterest, and complete Schema product markup for Google Rich Results &mdash; including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.', 'wpsso' ) . ' ';
-
-				$notice_msg .= '<ul><li>' . implode( $glue = '</li> <li>', $action_links ) . '</li></ul>' . ' ';
+			if ( empty( $pkg_info[ 'wpsso' ][ 'pp' ] ) || empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
 
 				$notice_key = 'suggest-wpssojson-for-woocommerce';
 
-				$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
+				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
 
-				return;	// Stop here.
+					$action_links = array();	// Init a new action array for the notice message.
+	
+					if ( empty( $pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
+		
+						$action_links[] = $this->get_purchase_plugin_link( 'wpsso' );
+					}
+		
+					if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
+		
+						$action_links[] = $this->get_install_activate_addon_link( 'wpssojson' );
+					}
+		
+					if ( ! empty( $action_links ) ) {
+		
+						$info = $this->p->cf[ 'plugin' ][ 'wpssojson' ];
+
+						$info_name_transl = _x( $info[ 'name' ], 'plugin name', 'wpsso' );
+
+						$notice_msg = __( 'The WooCommerce plugin is known to offer incomplete Schema markup for Google Rich Results.', 'wpsso' ) . ' ';
+		
+						$notice_msg .= sprintf( __( 'The %1$s plugin (required for WooCommerce integration) and its %2$s add-on provide a much better solution by offering complete product meta tags for Facebook / Pinterest, and complete Schema product markup for Google Rich Results &mdash; including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'name_pro' ], $info_name_transl ) . ' ';
+		
+						$notice_msg .= '<ul><li>' . implode( $glue = '</li> <li>', $action_links ) . '</li></ul>' . ' ';
+		
+						$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
+		
+						return 1;	// Stop here.
+					}
+				}
 			}
-
-			$action_links = array();	// Init a new action array for the notice message.
 
 			if ( empty( $this->p->avail[ 'p_ext' ][ 'wcsdt' ] ) ) {
 
-				$shipping_continents = WC()->countries->get_shipping_continents();
-				$shipping_countries  = WC()->countries->get_shipping_countries();
-				$shipping_enabled    = $shipping_continents || $shipping_countries ? true : false;
+				$notice_key = 'suggest-wpssowcsdt-for-woocommerce';
 
-				if ( $shipping_enabled ) {
+				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
 
-					$action_links[] = $this->get_install_activate_addon_link( 'wpssowcsdt' );
+					$action_links = array();	// Init a new action array for the notice message.
 
-					$notice_msg = __( 'Product shipping features are enabled in WooCommerce, but the WPSSO Shipping Delivery Time for WooCommerce add-on is not active.', 'wpsso' ) . ' ';
+					$shipping_continents = WC()->countries->get_shipping_continents();
+					$shipping_countries  = WC()->countries->get_shipping_countries();
+					$shipping_enabled    = $shipping_continents || $shipping_countries ? true : false;
+	
+					if ( $shipping_enabled ) {
+	
+						$action_links[] = $this->get_install_activate_addon_link( 'wpssowcsdt' );
+			
+						$info = $this->p->cf[ 'plugin' ][ 'wpssowcsdt' ];
+	
+						$info_name_transl = _x( $info[ 'name' ], 'plugin name', 'wpsso' );
 
-					$notice_msg .= __( 'Adding shipping details to your Schema Product markup is especially important if you offer free or low-cost shipping options as this will make your products more appealing in Google search results.', 'wpsso' ) . ' ';
-
-					$notice_msg .= '<ul><li>' . implode( $glue = '</li> <li>', $action_links ) . '</li></ul>' . ' ';
-
-					$notice_key = 'suggest-wpssowcsdt-for-woocommerce';
-
-					$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
-
-					return;	// Stop here.
+						$notice_msg = sprintf( __( 'Product shipping features are enabled in WooCommerce, but the %s add-on is not active.',
+							'wpsso' ), $info_name_transl ) . ' ';
+	
+						$notice_msg .= __( 'Adding shipping details to your Schema Product markup is especially important if you offer free or low-cost shipping options as this will make your products more appealing in Google search results.', 'wpsso' ) . ' ';
+	
+						$notice_msg .= '<ul><li>' . implode( $glue = '</li> <li>', $action_links ) . '</li></ul>' . ' ';
+	
+						$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
+	
+						return 1;	// Stop here.
+					}
 				}
 			}
+
+			return 0;
 		}
 
+		
 		private function get_purchase_plugin_link( $ext ) {
 
-			$pkg = $this->p->admin->plugin_pkg_info();	// Returns array from cache.
+			$pkg_info = $this->p->admin->get_pkg_info();	// Returns an array from cache.
 
 			$info = $this->p->cf[ 'plugin' ][ $ext ];
 
 			$purchase_url = $info[ 'url' ][ 'purchase' ];
 
-			return '<a href="' . $purchase_url . '">' . sprintf( __( 'Purchase the %s plugin.', 'wpsso' ), $pkg[ $ext ][ 'name_pro' ] ) . '</a>';
+			return '<a href="' . $purchase_url . '">' . sprintf( __( 'Purchase the %s plugin.', 'wpsso' ), $pkg_info[ $ext ][ 'name_pro' ] ) . '</a>';
 		}
 
 		private function get_install_activate_addon_link( $ext ) {
 
 			$info = $this->p->cf[ 'plugin' ][ $ext ];
+
+			$info_name_transl = _x( $info[ 'name' ], 'plugin name', 'wpsso' );
 
 			if ( SucomPlugin::is_plugin_installed( $info[ 'base' ], $use_cache = true ) ) {
 
@@ -377,19 +396,19 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 				$search_url = add_query_arg( array( 's' => $info[ 'base' ] ), $search_url );
 
-				return '<a href="' . $search_url . '">' . sprintf( __( 'Activate the %s add-on.', 'wpsso' ), $info[ 'name' ] ) . '</a>';
+				return '<a href="' . $search_url . '">' . sprintf( __( 'Activate the %s add-on.', 'wpsso' ), $info_name_transl ) . '</a>';
 
 			}
 
 			$addons_url = $this->p->util->get_admin_url( 'addons#' . $ext );
 
-			return '<a href="' . $addons_url . '">' . sprintf( __( 'Install and activate the %s add-on.', 'wpsso' ), $info[ 'name' ] ) . '</a>';
+			return '<a href="' . $addons_url . '">' . sprintf( __( 'Install and activate the %s add-on.', 'wpsso' ), $info_name_transl ) . '</a>';
 		}
 
 		/**
 		 * This method is called by timed_notices() if WordPress can dismiss notices and the user can manage options.
 		 *
-		 * Returns 0 by default and 1 if a notice has been created.
+		 * These private notice functions should return the number of notices shown.
 		 */
 		private function single_notice_review() {
 
@@ -407,10 +426,13 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			$cache_salt     = __METHOD__ . '(user_id:' . $user_id . ')';
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 
+			$showing_ext = get_transient( $cache_id );	// Returns an empty string or the $notice_key value.
+
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				$notice_key  = 'timed-notice-' . $ext . '-plugin-review';
-				$showing_ext = get_transient( $cache_id );	// Returns an empty string or the $notice_key value.
+				$info_name_transl  = _x( $info[ 'name' ], 'plugin name', 'wpsso' );
+				$info_desc_transl  = _x( $info[ 'desc' ], 'plugin description', 'wpsso' );
+				$wpsso_name_transl = _x( $this->p->cf[ 'plugin' ][ 'wpsso' ][ 'name' ], 'plugin name', 'wpsso' );
 
 				/**
 				 * Make sure the plugin is installed (ie. it has a version number).
@@ -418,18 +440,22 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				if ( empty( $info[ 'version' ] ) ) {
 
 					continue;	// Get the next plugin.
+				}
 
 				/**
 				 * Make sure we have wordpress.org review URL.
 				 */
-				} elseif ( empty( $info[ 'url' ][ 'review' ] ) ) {
+				if ( empty( $info[ 'url' ][ 'review' ] ) ) {
 
 					continue;	// Get the next plugin.
+				}
 
 				/**
 				 * The user has already dismissed this notice.
 				 */
-				} elseif ( $this->p->notice->is_dismissed( $notice_key, $user_id ) ) {
+				$notice_key  = 'timed-notice-' . $ext . '-plugin-review';
+
+				if ( $this->p->notice->is_dismissed( $notice_key, $user_id ) ) {
 
 					/**
 					 * The single notice per day period has not expired yet.
@@ -467,9 +493,9 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 					continue;	// Get the next plugin.
 				}
 
-				$wp_plugin_link = '<a href="' . $info[ 'url' ][ 'home' ] . '">' . $info[ 'name' ] . '</a>';
+				$wp_plugin_link = '<a href="' . $info[ 'url' ][ 'home' ] . '">' . $info_name_transl . '</a>';
 
-				$wp_plugin_link_desc = $wp_plugin_link . ' (' . trim( $info[ 'desc' ], '.' ) . ')';
+				$wp_plugin_link_desc = $wp_plugin_link . ' (' . trim( $info_desc_transl, '.' ) . ')';
 
 				/**
 				 * The action buttons.
@@ -479,10 +505,10 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				$already_rated_label = sprintf( __( 'I\'ve already rated %s.', 'wpsso' ), $info[ 'short' ] );
 
 				$rate_plugin_clicked = '<p><b>' . __( 'Awesome!', 'wpsso' ) . '</b> ' .
-					sprintf( __( 'Thank you for rating the %s plugin!', 'wpsso' ), $info[ 'name' ] ) . '</p>';
+					sprintf( __( 'Thank you for rating the %s plugin!', 'wpsso' ), $info_name_transl ) . '</p>';
 
 				$already_rated_clicked = '<p><b>' . __( 'Awesome!', 'wpsso' ) . '</b> ' .
-					sprintf( __( 'Thank you for supporting and encouraging your developers!', 'wpsso' ), $info[ 'name' ] ) . '</p>';
+					sprintf( __( 'Thank you for supporting and encouraging your developers!', 'wpsso' ), $info_name_transl ) . '</p>';
 
 				$rate_plugin_button = '<div class="notice-single-button">' .
 					$form->get_button( $rate_plugin_label, 'button-primary dismiss-on-click', '', $info[ 'url' ][ 'review' ],
@@ -513,7 +539,8 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 				$notice_msg .= '<p>';
 
-				$notice_msg .= sprintf( __( 'We\'ve put many years of time and effort into making %s and its add-ons the best possible.', 'wpsso' ), $this->p->cf[ 'plugin' ][ 'wpsso' ][ 'name' ] ) . ' ';
+				$notice_msg .= sprintf( __( 'We\'ve put many years of time and effort into making %s and its add-ons the best possible.', 'wpsso' ),
+					$wpsso_name_transl ) . ' ';
 
 				$notice_msg .= '</p>' . "\n";
 				
@@ -522,7 +549,8 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				 */
 				$notice_msg .= '<p><b>';
 
-				$notice_msg .= sprintf( __( 'Now that you\'ve been using %s for a while, it would help tremendously if you could rate it on WordPress.org.', 'wpsso' ), $wp_plugin_link ) . ' ';
+				$notice_msg .= sprintf( __( 'Now that you\'ve been using %s for a while, it would help tremendously if you could rate it on WordPress.org.',
+					'wpsso' ), $wp_plugin_link ) . ' ';
 
 				$notice_msg .= __( 'Great ratings are an excellent way to ensure the continued development of your favorite plugins.', 'wpsso' ) . ' ';
 
@@ -555,13 +583,13 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 		/**
 		 * This method is called by timed_notices() if WordPress can dismiss notices and the user can manage options.
 		 *
-		 * Returns 0 by default and 1 if a notice has been created.
+		 * These private notice functions should return the number of notices shown.
 		 */
 		private function single_notice_upsell() {
 
-			$pkg = $this->p->admin->plugin_pkg_info();
+			$pkg_info = $this->p->admin->get_pkg_info();	// Returns an array from cache.
 
-			if ( $pkg[ 'wpsso' ][ 'pdir' ] ) {
+			if ( $pkg_info[ 'wpsso' ][ 'pdir' ] ) {
 
 				return 0;
 			}
@@ -575,30 +603,32 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				return 0;
 			}
 
-			$form           = $this->p->admin->get_form_object( 'wpsso' );
-			$user_id        = get_current_user_id();
-			$info           = $this->p->cf[ 'plugin' ][ 'wpsso' ];
-			$notice_key     = 'timed-notice-wpsso-pro-purchase-notice';
-			$dismiss_time   = true;	// Allow the notice to be dismissed forever.
-			$wp_plugin_link = '<a href="' . $info[ 'url' ][ 'home' ] . '">' . $info[ 'name' ] . '</a>';
-			$purchase_url   = $info[ 'url' ][ 'purchase' ];
+			$form              = $this->p->admin->get_form_object( 'wpsso' );
+			$user_id           = get_current_user_id();
+			$info              = $this->p->cf[ 'plugin' ][ 'wpsso' ];
+			$info_name_transl  = _x( $info[ 'name' ], 'plugin name', 'wpsso' );
+			$wpsso_name_transl = _x( $this->p->cf[ 'plugin' ][ 'wpsso' ][ 'name' ], 'plugin name', 'wpsso' );
+			$dist_pro_transl   = _x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' );
+			$dist_std_transl   = _x( $this->p->cf[ 'dist' ][ 'std' ], 'distribution name', 'wpsso' );
+			$notice_key        = 'timed-notice-wpsso-pro-purchase-notice';
+			$dismiss_time      = true;	// Allow the notice to be dismissed forever.
+			$wp_plugin_link    = '<a href="' . $info[ 'url' ][ 'home' ] . '">' . $info_name_transl . '</a>';
+			$purchase_url      = $info[ 'url' ][ 'purchase' ];
 
 			/**
 			 * The action buttons.
 			 */
-			$purchase_label = sprintf( __( 'Yes! I\'d like to get the %s version!', 'wpsso' ),
-				_x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) );
+			$purchase_label = sprintf( __( 'Yes! I\'d like to get the %s version!', 'wpsso' ), $dist_pro_transl );
 
-			$no_thanks_label = sprintf( __( 'No thanks. I\'ll stay with the %s version.', 'wpsso' ),
-				_x( $this->p->cf[ 'dist' ][ 'std' ], 'distribution name', 'wpsso' ) );
+			$no_thanks_label = sprintf( __( 'No thanks. I\'ll stay with the %s version.', 'wpsso' ), $dist_std_transl );
 
 			$purchase_clicked = '<p><b>' . __( 'Awesome!', 'wpsso' ) . '</b> ' .
 				sprintf( __( 'Thank you for encouraging and supporting the continued development of %s.',
-					'wpsso' ), $info[ 'name' ] ) . '</p>';
+					'wpsso' ), $info_name_transl ) . '</p>';
 
 			$no_thanks_clicked = '<p>' . __( 'Thank you.', 'wpsso' ) . ' ' . 
 				sprintf( __( 'Hopefully you\'ll change your mind in the future and help support the continued development of %s.',
-					'wpsso' ), $info[ 'name' ] ) . '</p>';
+					'wpsso' ), $info_name_transl ) . '</p>';
 
 			$purchase_button  = '<div class="notice-single-button">' .
 				$form->get_button( $purchase_label, 'button-primary dismiss-on-click', '', $purchase_url,
@@ -623,21 +653,21 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 			$notice_msg .= '<b>' . __( 'Fantastic!', 'wpsso' ) . '</b> ';
 
-			$notice_msg .= sprintf( __( 'You\'ve been using %1$s for more than %2$s now, which is awesome!',
-				'wpsso' ), $wp_plugin_link, $months_ago_transl );
+			$notice_msg .= sprintf( __( 'You\'ve been using %1$s for more than %2$s now, which is awesome!', 'wpsso' ),
+				$wp_plugin_link, $months_ago_transl );
 
 			$notice_msg .= '</p><p>';
 
-			$notice_msg .= sprintf( __( 'We\'ve put many years of time and effort into making %s and its add-ons the best possible.',
-				'wpsso' ), $this->p->cf[ 'plugin' ][ 'wpsso' ][ 'name' ] ) . ' ';
+			$notice_msg .= sprintf( __( 'We\'ve put many years of time and effort into making %s and its add-ons the best possible.', 'wpsso' ),
+				$wpsso_name_transl ) . ' ';
 
-			$notice_msg .= sprintf( __( 'I hope you\'ve enjoyed all the new features, improvements and updates over the past %s.',
-				'wpsso' ), $months_ago_transl );
+			$notice_msg .= sprintf( __( 'I hope you\'ve enjoyed all the new features, improvements and updates over the past %s.', 'wpsso' ),
+				$months_ago_transl );
 
 			$notice_msg .= '</p><p>';
 
-			$notice_msg .= sprintf( __( 'Have you thought about purchasing the %s version? It comes with a lot of great extra features!',
-				'wpsso' ), _x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) );
+			$notice_msg .= sprintf( __( 'Have you thought about purchasing the %s version? It comes with a lot of great extra features!', 'wpsso' ),
+				$dist_pro_transl );
 
 			$notice_msg .= '</p>';
 

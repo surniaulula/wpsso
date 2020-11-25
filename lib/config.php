@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.14.0-dev.4',	// Plugin version.
+					'version'     => '8.14.0-dev.5',	// Plugin version.
 					'opt_version' => '770',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1987,7 +1987,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '4.0.1-dev.4',	// Minimum update manager version (soft limit).
+				'rec_version' => '4.0.1-dev.5',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
 					48  => 'Every two days',
@@ -3983,20 +3983,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Maybe complete relative paths in the image arrays.
 					 */
-					$plugin_base = trailingslashit( plugins_url( '', $info[ 'base' ] ) );
+					$plugins_url_base = trailingslashit( plugins_url( '', $info[ 'base' ] ) );
 
-					array_walk_recursive( self::$cf[ 'plugin' ][ $ext ][ 'assets' ], array( __CLASS__, 'maybe_prefix_base_url' ), $plugin_base );
+					array_walk_recursive( self::$cf[ 'plugin' ][ $ext ][ 'assets' ], array( __CLASS__, 'maybe_prefix_base_url' ), $plugins_url_base );
 				}
 			}
 
 			return self::$cf;
 		}
 
-		private static function maybe_prefix_base_url( &$url, $key, $plugin_base ) {
+		private static function maybe_prefix_base_url( &$url, $key, $plugins_url_base ) {
 
 			if ( ! empty( $url ) && false === strpos( $url, '//' ) ) {
 
-				$url = $plugin_base . $url;
+				$url = $plugins_url_base . $url;
 			}
 		}
 

@@ -30,7 +30,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected $pageref_url;
 		protected $pageref_title;
 
-		public static $pkg    = array();
+		protected static $pkg_cache = array();
+
 		public static $readme = array();
 
 		public $form    = null;
@@ -181,7 +182,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$this->plugin_pkg_info();
+			$this->get_pkg_info();	// Returns an array from cache.
 
 			if ( empty( $menu_libs ) ) {
 
@@ -247,35 +248,41 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $dashicon;
 		}
 
-		public function plugin_pkg_info() {
+		public function get_pkg_info() {
 
-			if ( ! empty( self::$pkg ) ) {	// Only execute once.
+			if ( ! empty( self::$pkg_cache ) ) {	// Only execute once.
 
-				return self::$pkg;
+				return self::$pkg_cache;
 			}
+
+			$pkg_info = array();
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				$ext_pdir      = $this->p->check->pp( $ext, $li = false );
-				$ext_auth_id   = $this->p->check->get_ext_auth_id( $ext );
-				$ext_pp        = $ext_auth_id && $this->p->check->pp( $ext, $li = true, WPSSO_UNDEF ) === WPSSO_UNDEF ? true : false;
-				$ext_stat      = ( $ext_pp ? 'L' : ( $ext_pdir ? 'U' : 'S' ) ) . ( $ext_auth_id ? '*' : '' );
-				$dist_pro_name = _x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' );
-				$dist_std_name = _x( $this->p->cf[ 'dist' ][ 'std' ], 'distribution name', 'wpsso' );
+				$ext_pdir    = $this->p->check->pp( $ext, $li = false );
+				$ext_auth_id = $this->p->check->get_ext_auth_id( $ext );
+				$ext_pp      = $ext_auth_id && $this->p->check->pp( $ext, $li = true, WPSSO_UNDEF ) === WPSSO_UNDEF ? true : false;
+				$ext_stat    = ( $ext_pp ? 'L' : ( $ext_pdir ? 'U' : 'S' ) ) . ( $ext_auth_id ? '*' : '' );
 
-				self::$pkg[ $ext ][ 'pdir' ]      = $ext_pdir;
-				self::$pkg[ $ext ][ 'pp' ]        = $ext_pp;
-				self::$pkg[ $ext ][ 'dist' ]      = $ext_pp ? $dist_pro_name : $dist_std_name;
-				self::$pkg[ $ext ][ 'short' ]     = $info[ 'short' ] . ' ' . self::$pkg[ $ext ][ 'dist' ];
-				self::$pkg[ $ext ][ 'short_pro' ] = $info[ 'short' ] . ' ' . $dist_pro_name;
-				self::$pkg[ $ext ][ 'short_std' ] = $info[ 'short' ] . ' ' . $dist_std_name;
-				self::$pkg[ $ext ][ 'name' ]      = SucomUtil::get_dist_name( $info[ 'name' ], self::$pkg[ $ext ][ 'dist' ] );
-				self::$pkg[ $ext ][ 'name_pro' ]  = SucomUtil::get_dist_name( $info[ 'name' ], $dist_pro_name );
-				self::$pkg[ $ext ][ 'name_std' ]  = SucomUtil::get_dist_name( $info[ 'name' ], $dist_std_name );
-				self::$pkg[ $ext ][ 'gen' ]       = $info[ 'short' ] . ( isset( $info[ 'version' ] ) ? ' ' . $info[ 'version' ] . '/' . $ext_stat : '' );
+				$info_name_transl = _x( $info[ 'name' ], 'plugin name', 'wpsso' );
+				$dist_pro_transl  = _x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' );
+				$dist_std_transl  = _x( $this->p->cf[ 'dist' ][ 'std' ], 'distribution name', 'wpsso' );
+
+				$pkg_info[ $ext ][ 'pdir' ]       = $ext_pdir;
+				$pkg_info[ $ext ][ 'pp' ]         = $ext_pp;
+				$pkg_info[ $ext ][ 'dist' ]       = $ext_pp ? $dist_pro_transl : $dist_std_transl;
+				$pkg_info[ $ext ][ 'short' ]      = $info[ 'short' ];
+				$pkg_info[ $ext ][ 'short_dist' ] = $info[ 'short' ] . ' ' . $pkg_info[ $ext ][ 'dist' ];
+				$pkg_info[ $ext ][ 'short_pro' ]  = $info[ 'short' ] . ' ' . $dist_pro_transl;
+				$pkg_info[ $ext ][ 'short_std' ]  = $info[ 'short' ] . ' ' . $dist_std_transl;
+				$pkg_info[ $ext ][ 'gen' ]        = $info[ 'short' ] . ( isset( $info[ 'version' ] ) ? ' ' . $info[ 'version' ] . '/' . $ext_stat : '' );
+				$pkg_info[ $ext ][ 'name' ]       = $info_name_transl;
+				$pkg_info[ $ext ][ 'name_dist' ]  = SucomUtil::get_dist_name( $info_name_transl, $pkg_info[ $ext ][ 'dist' ] );
+				$pkg_info[ $ext ][ 'name_pro' ]   = SucomUtil::get_dist_name( $info_name_transl, $dist_pro_transl );
+				$pkg_info[ $ext ][ 'name_std' ]   = SucomUtil::get_dist_name( $info_name_transl, $dist_std_transl );
 			}
 
-			return self::$pkg;
+			return self::$pkg_cache = $pkg_info;
 		}
 
 		public function add_network_admin_menus() {
@@ -552,7 +559,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			global $wp_version;
 
-			$page_title  = self::$pkg[ 'wpsso' ][ 'short' ] . ' &mdash; ' . $this->menu_name;
+			$pkg_info    = $this->get_pkg_info();	// Returns an array from cache.
+			$page_title  = $pkg_info[ 'wpsso' ][ 'short_dist' ] . ' &mdash; ' . $this->menu_name;
 			$menu_title  = _x( $this->p->cf[ 'menu' ][ 'title' ], 'menu title', 'wpsso' );
 			$cf_wp_admin = $this->p->cf[ 'wp' ][ 'admin' ];
 			$capability  = isset( $cf_wp_admin[ $this->menu_lib ][ 'cap' ] ) ? $cf_wp_admin[ $this->menu_lib ][ 'cap' ] : 'manage_options';
@@ -610,7 +618,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$menu_title = $menu_name;
 			}
 
-			$page_title  = self::$pkg[ $menu_ext ][ 'short' ] . ' &mdash; ' . $menu_name;
+			$pkg_info    = $this->get_pkg_info();	// Returns an array from cache.
+			$page_title  = $pkg_info[ $menu_ext ][ 'short_dist' ] . ' &mdash; ' . $menu_name;
 			$cf_wp_admin = $this->p->cf[ 'wp' ][ 'admin' ];
 			$capability  = isset( $cf_wp_admin[ $menu_lib ][ 'cap' ] ) ? $cf_wp_admin[ $menu_lib ][ 'cap' ] : 'manage_options';
 			$menu_slug   = 'wpsso-' . $menu_id;
@@ -689,6 +698,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 */
 		public function get_ext_action_links( $ext, $info, &$tabindex = false ) {
 
+			$pkg_info = $this->get_pkg_info();	// Returns an array from cache.
+
 			$action_links = array();
 
 			if ( ! empty( $info[ 'base' ] ) ) {
@@ -740,7 +751,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						_x( 'Documentation', 'plugin action link', 'wpsso' ) . '</a>';
 			}
 
-			if ( ! empty( $info[ 'url' ][ 'support' ] ) && self::$pkg[ $ext ][ 'pp' ] ) {
+			if ( ! empty( $info[ 'url' ][ 'support' ] ) && $pkg_info[ $ext ][ 'pp' ] ) {
 
 				$action_links[] = '<a href="' . $info[ 'url' ][ 'support' ] . '"' .
 					( false !== $tabindex ? ' tabindex="' . ++$tabindex . '"' : '' ) . '>' .
@@ -1354,9 +1365,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				settings_errors( WPSSO_OPTIONS_NAME );
 			}
 
+			$pkg_info        = $this->get_pkg_info();	// Returns an array from cache.
 			$side_info_boxes = $this->get_side_info_boxes();
-
-			$dashicon_html = $this->get_menu_dashicon_html( $this->menu_id );
+			$dashicon_html   = $this->get_menu_dashicon_html( $this->menu_id );
 
 			/**
 			 * Settings page wrapper.
@@ -1371,7 +1382,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo $dashicon_html . ' ';
 			echo $this->menu_name;
 			echo ' <span class="qualifier">(';
-			echo self::$pkg[ $this->menu_ext ][ 'short' ];
+			echo $pkg_info[ $this->menu_ext ][ 'short_dist' ];
 			echo ')</span></h1>' . "\n";
 			echo '</div><!-- #wpsso-setting-page-header -->' . "\n";
 
@@ -1588,6 +1599,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return $local_cache;
 			}
 
+			$pkg_info    = $this->get_pkg_info();	// Returns an array from cache.
 			$local_cache = array();
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
@@ -1600,7 +1612,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					continue;
 
-				} elseif ( self::$pkg[ $ext ][ 'pp' ] ) {
+				} elseif ( $pkg_info[ $ext ][ 'pp' ] ) {
 
 					continue;
 				}
@@ -1618,7 +1630,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$box .= '</div><!-- .side-info-content -->' . "\n";
 
 				$box .= '<div class="side-info-buttons">' . "\n";
-				$box .= $this->form->get_button( sprintf( _x( 'Get %s', 'submit button', 'wpsso' ), self::$pkg[ $ext ][ 'short_pro' ] ),
+				$box .= $this->form->get_button( sprintf( _x( 'Get %s', 'submit button', 'wpsso' ), $pkg_info[ $ext ][ 'short_pro' ] ),
 					'button-secondary', 'column-purchase', $info[ 'url' ][ 'purchase' ], true ) . "\n";
 				$box .= '</div><!-- .side-info-buttons -->' . "\n";
 
@@ -1951,11 +1963,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function show_metabox_status_pro() {
 
+			$pkg_info = $this->get_pkg_info();	// Returns an array from cache.
+
 			echo '<table class="sucom-settings wpsso column-metabox feature-status">';
 
-			/**
-			 * Premium version features.
-			 */
 			$ext_num = 0;
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
@@ -1973,10 +1984,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						foreach ( $libs as $id => $label ) {
 
-							$td_class   = self::$pkg[ $ext ][ 'pp' ] ? '' : 'blank';
+							$td_class   = $pkg_info[ $ext ][ 'pp' ] ? '' : 'blank';
 							$classname  = SucomUtil::sanitize_classname( $ext . 'pro' . $sub . $id, $allow_underscore = false );
 							$status_off = empty( $this->p->avail[ $sub ][ $id ] ) ? 'off' : 'rec';
-							$status_on  = self::$pkg[ $ext ][ 'pp' ] ? 'on' : $status_off;
+							$status_on  = $pkg_info[ $ext ][ 'pp' ] ? 'on' : $status_off;
 
 							$features[ $label ] = array(
 								'sub'          => $sub,
@@ -1989,7 +2000,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					}
 				}
 
-				$features = apply_filters( $ext . '_status_pro_features', $features, $ext, $info, self::$pkg[ $ext ] );
+				$features = apply_filters( $ext . '_status_pro_features', $features, $ext, $info, $pkg_info[ $ext ] );
 
 				if ( ! empty( $features ) ) {
 
@@ -2009,16 +2020,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function show_metabox_status_std() {
 
+			$pkg_info = $this->get_pkg_info();	// Returns an array from cache.
+
 			echo '<table class="sucom-settings wpsso column-metabox feature-status">';
 
-			/**
-			 * GPL version features
-			 */
 			$ext_num = 0;
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				$features = apply_filters( $ext . '_status_std_features', array(), $ext, $info, self::$pkg[ $ext ] );
+				$features = apply_filters( $ext . '_status_std_features', array(), $ext, $info, $pkg_info[ $ext ] );
 
 				if ( ! empty( $features ) ) {
 
@@ -2037,6 +2047,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		public function show_metabox_help_support() {
+
+			$pkg_info = $this->get_pkg_info();	// Returns an array from cache.
 
 			echo '<table class="sucom-settings wpsso column-metabox"><tr><td>';
 
@@ -2059,7 +2071,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$action_links[] = sprintf( __( '<a href="%s">Notes and Documentation</a>', 'wpsso' ), $info[ 'url' ][ 'notes' ] );
 				}
 
-				if ( ! empty( $info[ 'url' ][ 'support' ] ) && self::$pkg[ $ext ][ 'pp' ] ) {
+				if ( ! empty( $info[ 'url' ][ 'support' ] ) && $pkg_info[ $ext ][ 'pp' ] ) {
 
 					$action_links[] = sprintf( __( '<a href="%s">Priority Support Ticket</a>', 'wpsso' ), $info[ 'url' ][ 'support' ] );
 
@@ -2561,16 +2573,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function admin_footer_ext( $footer_html ) {
 
+			$pkg_info = $this->get_pkg_info();	// Returns an array from cache.
+
 			$footer_html = '<div class="admin-footer-ext">';
 
-			if ( isset( self::$pkg[ $this->menu_ext ][ 'name' ] ) ) {
+			if ( isset( $pkg_info[ $this->menu_ext ][ 'name_dist' ] ) ) {
 
-				$footer_html .= self::$pkg[ $this->menu_ext ][ 'name' ] . '<br/>';
+				$footer_html .= $pkg_info[ $this->menu_ext ][ 'name_dist' ] . '<br/>';
 			}
 
-			if ( isset( self::$pkg[ $this->menu_ext ][ 'gen' ] ) ) {
+			if ( isset( $pkg_info[ $this->menu_ext ][ 'gen' ] ) ) {
 
-				$footer_html .= self::$pkg[ $this->menu_ext ][ 'gen' ] . '<br/>';
+				$footer_html .= $pkg_info[ $this->menu_ext ][ 'gen' ] . '<br/>';
 			}
 
 			$footer_html .= '</div>';
@@ -2730,38 +2744,36 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 */
 			$notice_key = 'notice-header-tmpl-no-head-attr-' . SucomUtilWP::get_theme_slug_version();
 
-			if ( ! $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
+			if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
 
-				return;
-			}
-
-			/**
-			 * Get parent and child theme template file paths.
-			 */
-			$header_files = SucomUtilWP::get_theme_header_file_paths();
-
-			foreach ( $header_files as $tmpl_base => $tmpl_file ) {
-
-				$stripped_php = SucomUtil::get_stripped_php( $tmpl_file );
-
-				if ( empty( $stripped_php ) ) {	// Empty string or false.
-
-					continue;
-
-				} elseif ( false !== strpos( $stripped_php, '<head>' ) ) {
-
-					$notice_msg = $this->p->msgs->get( 'notice-header-tmpl-no-head-attr' );
-
-					$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
-
-					return;	// Stop here.
+				/**
+				 * Get parent and child theme template file paths.
+				 */
+				$header_files = SucomUtilWP::get_theme_header_file_paths();
+	
+				foreach ( $header_files as $tmpl_base => $tmpl_file ) {
+	
+					$stripped_php = SucomUtil::get_stripped_php( $tmpl_file );
+	
+					if ( empty( $stripped_php ) ) {	// Empty string or false.
+	
+						continue;
+	
+					} elseif ( false !== strpos( $stripped_php, '<head>' ) ) {
+	
+						$notice_msg = $this->p->msgs->get( 'notice-header-tmpl-no-head-attr' );
+	
+						$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
+	
+						return;	// Stop here.
+					}
 				}
+	
+				/**
+				 * Mark all template head checks as complete.
+				 */
+				update_option( WPSSO_TMPL_HEAD_CHECK_NAME, $passed = true, $autoload = false );
 			}
-
-			/**
-			 * Mark all template head checks as complete.
-			 */
-			update_option( WPSSO_TMPL_HEAD_CHECK_NAME, $passed = true, $autoload = false );
 		}
 
 		public function check_wp_config_constants() {
@@ -2930,18 +2942,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function add_og_types_table_rows( array &$table_rows, $form ) {
 
-			$td_attr = '';
-			$se_func = 'get_select';
-
-			if ( ! self::$pkg[ $this->p->id ][ 'pp' ] ) {
-
-				$td_attr = ' class="blank"';
-				$se_func = 'get_no_select';
-
-				$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
-			}
-
+			$pkg_info = $this->get_pkg_info();	// Returns an array from cache.
+			$td_attr  = $pkg_info[ 'wpsso' ][ 'pp' ] ? '' : ' class="blank"';
+			$get_func = $pkg_info[ 'wpsso' ][ 'pp' ] ? 'get_select' : 'get_no_select';
 			$og_types = $this->p->og->get_og_types_select();
+
+			$table_rows[] = $pkg_info[ 'wpsso' ][ 'pp' ] ? '' : '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
 			/**
 			 * Open Graph Type.
@@ -2958,7 +2964,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$table_rows[ $opt_key ] = $form->get_tr_hide( 'basic', $opt_key ) .
 					$form->get_th_html( $th_label, '', $opt_key ) . 
-					'<td' . $td_attr . '>' . $form->$se_func( $opt_key, $og_types, $css_class = 'og_type' ) . '</td>';
+					'<td' . $td_attr . '>' . $form->$get_func( $opt_key, $og_types, $css_class = 'og_type' ) . '</td>';
 			}
 
 			/**
@@ -2974,13 +2980,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$obj_label = SucomUtilWP::get_object_label( $obj );
 
-				$type_select .= '<p>' . $form->$se_func( $opt_key, $og_types, $css_class = 'og_type' ) . ' ' .
+				$type_select .= '<p>' . $form->$get_func( $opt_key, $og_types, $css_class = 'og_type' ) . ' ' .
 					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
 			}
 
 			$type_keys[] = $opt_key = 'og_type_for_post_archive';	// Hard-coded value - no sanitation required.
 
-			$type_select .= '<p>' . $form->$se_func( $opt_key, $og_types, $css_class = 'og_type' ) . ' ' .
+			$type_select .= '<p>' . $form->$get_func( $opt_key, $og_types, $css_class = 'og_type' ) . ' ' .
 				sprintf( _x( 'for %s', 'option comment', 'wpsso' ), _x( 'Post Type Archive Page', 'option comment', 'wpsso' ) ) . '</p>' . "\n";
 
 			$tr_key   = 'og_type_for_ptn';
@@ -3005,7 +3011,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$obj_label = SucomUtilWP::get_object_label( $obj );
 
-				$type_select .= '<p>' . $form->$se_func( $opt_key, $og_types, $css_class = 'og_type' ) . ' ' .
+				$type_select .= '<p>' . $form->$get_func( $opt_key, $og_types, $css_class = 'og_type' ) . ' ' .
 					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
 			}
 
@@ -3101,20 +3107,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function add_schema_item_types_table_rows( array &$table_rows, $form ) {
 
-			$td_attr = '';
-			$se_func = 'get_select';
-
-			if ( ! self::$pkg[ $this->p->id ][ 'pp' ] ) {
-
-				$td_attr = ' class="blank"';
-				$se_func = 'get_no_select';
-
-				$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
-			}
-
+			$pkg_info        = $this->get_pkg_info();	// Returns an array from cache.
+			$td_attr         = $pkg_info[ 'wpsso' ][ 'pp' ] ? '' : ' class="blank"';
+			$get_func        = $pkg_info[ 'wpsso' ][ 'pp' ] ? 'get_select' : 'get_no_select';
 			$schema_exp_secs = $this->p->util->get_cache_exp_secs( 'wpsso_t_' );	// Default is month in seconds.
+			$schema_types    = $this->p->schema->get_schema_types_select( $context = 'settings' );
 
-			$schema_types = $this->p->schema->get_schema_types_select( $context = 'settings' );
+			$table_rows[] = $pkg_info[ 'wpsso' ][ 'pp' ] ? '' : '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
 			/**
 			 * Schema Type.
@@ -3131,7 +3130,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$table_rows[ $opt_key ] = $form->get_tr_hide( 'basic', $opt_key ) . 
 					$form->get_th_html( $th_label, '', $opt_key ) . 
-					'<td' . $td_attr . '>' . $form->$se_func( $opt_key, $schema_types, $css_class = 'schema_type', $css_id = '',
+					'<td' . $td_attr . '>' . $form->$get_func( $opt_key, $schema_types, $css_class = 'schema_type', $css_id = '',
 						$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
 							$event_args = array(
 								'json_var'  => 'schema_types',
@@ -3156,7 +3155,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$obj_label = SucomUtilWP::get_object_label( $obj );
 
-				$type_select .= '<p>' . $form->$se_func( $opt_key, $schema_types, $css_class = 'schema_type', $css_id = '',
+				$type_select .= '<p>' . $form->$get_func( $opt_key, $schema_types, $css_class = 'schema_type', $css_id = '',
 					$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
 						$event_args = array(
 							'json_var'  => 'schema_types',
@@ -3169,7 +3168,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$type_keys[] = $opt_key = 'schema_type_for_post_archive';	// Hard-coded value - no sanitation required.
 
-			$type_select .= '<p>' . $form->$se_func( $opt_key, $schema_types, $css_class = 'schema_type', $css_id = '',
+			$type_select .= '<p>' . $form->$get_func( $opt_key, $schema_types, $css_class = 'schema_type', $css_id = '',
 				$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
 					$event_args = array(
 						'json_var'  => 'schema_types',
@@ -3201,7 +3200,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$obj_label = SucomUtilWP::get_object_label( $obj );
 
-				$type_select .= '<p>' . $form->$se_func( $opt_key, $schema_types, $css_class = 'schema_type', $css_id = '',
+				$type_select .= '<p>' . $form->$get_func( $opt_key, $schema_types, $css_class = 'schema_type', $css_id = '',
 					$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
 						$event_args = array(
 							'json_var'  => 'schema_types',
@@ -3247,16 +3246,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function add_advanced_product_attrs_table_rows( array &$table_rows, $form ) {
 
-			$td_attr = '';
-			$in_func = 'get_input';
+			$pkg_info = $this->get_pkg_info();	// Returns an array from cache.
+			$td_attr  = $pkg_info[ 'wpsso' ][ 'pp' ] ? '' : ' class="blank"';
+			$get_func = $pkg_info[ 'wpsso' ][ 'pp' ] ? 'get_input' : 'get_no_input';
 
-			if ( ! self::$pkg[ $this->p->id ][ 'pp' ] ) {
-
-				$td_attr = ' class="blank"';
-				$in_func = 'get_no_input';
-
-				$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
-			}
+			$table_rows[] = $pkg_info[ 'wpsso' ][ 'pp' ] ? '' : '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'info-product-attrs' ) . '</td>';
 
@@ -3266,22 +3260,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$table_rows[ $opt_key ] = '' .
 					$form->get_th_html( _x( $opt_label, 'option label', 'wpsso' ), '', $opt_key ) . 
-					'<td' . $td_attr . '>' . $form->$in_func( $opt_key ) . $cmt_transl . '</td>';
+					'<td' . $td_attr . '>' . $form->$get_func( $opt_key ) . $cmt_transl . '</td>';
 			}
 		}
 
 		public function add_advanced_custom_fields_table_rows( array &$table_rows, $form ) {
 
-			$td_attr = '';
-			$in_func = 'get_input';
+			$pkg_info = $this->get_pkg_info();	// Returns an array from cache.
+			$td_attr  = $pkg_info[ 'wpsso' ][ 'pp' ] ? '' : ' class="blank"';
+			$get_func = $pkg_info[ 'wpsso' ][ 'pp' ] ? 'get_input' : 'get_no_input';
 
-			if ( ! self::$pkg[ $this->p->id ][ 'pp' ] ) {
-
-				$td_attr = ' class="blank"';
-				$in_func = 'get_no_input';
-
-				$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
-			}
+			$table_rows[] = $pkg_info[ 'wpsso' ][ 'pp' ] ? '' : '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'info-custom-fields' ) . '</td>';
 
@@ -3352,7 +3341,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$table_rows[ $opt_key ] = '' .
 					$form->get_th_html( _x( $opt_label, 'option label', 'wpsso' ), '', $opt_key ) . 
-					'<td' . $td_attr . '>' . $form->$in_func( $opt_key, $css_class = '', $css_id = '',
+					'<td' . $td_attr . '>' . $form->$get_func( $opt_key, $css_class = '', $css_id = '',
 						$max_len = 0, $holder = '', $always_disabled ) . $cmt_transl . '</td>';
 			}
 		}
@@ -3378,7 +3367,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( $network ) {
 
-				$is_enabled = $is_enabled || self::$pkg[ 'wpsso' ][ 'pp' ] ? true : false;
+				$pkg_info   = $this->get_pkg_info();	// Returns an array from cache.
+				$is_enabled = $is_enabled || $pkg_info[ 'wpsso' ][ 'pp' ] ? true : false;
 
 				$html .= $form->get_th_html( _x( 'Site Use', 'option label (very short)', 'wpsso' ), 'site-use' );
 
@@ -3638,21 +3628,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function get_check_for_updates_link( $get_notice = true ) {
 
-			$check_url   = '';
-			$notice_html = '';
+			$check_url  = '';
+			$notice_msg = '';
 
 			if ( class_exists( 'WpssoUm' ) ) {
 
-				$this->plugin_pkg_info();
-
-				$check_url  = $this->p->util->get_admin_url( 'um-general?wpsso-action=check_for_updates' );
-				$check_url  = wp_nonce_url( $check_url, WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
-				$short_name = self::$pkg[ 'wpsso' ][ 'short' ];
+				$pkg_info  = $this->get_pkg_info();	// Returns an array from cache.
+				$check_url = $this->p->util->get_admin_url( 'um-general?wpsso-action=check_for_updates' );
+				$check_url = wp_nonce_url( $check_url, WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 
 				// translators: %1$s is the URL, %2$s is the short plugin name.
 				$notice_transl = __( 'You may <a href="%1$s">refresh the update information for %2$s and its add-ons</a> to check if newer versions are available.', 'wpsso' );
 
-				$notice_html = sprintf( $notice_transl, $check_url, $short_name );
+				$notice_msg = sprintf( $notice_transl, $check_url, $pkg_info[ 'wpsso' ][ 'short_dist' ] );
 
 			} elseif ( empty( $_GET[ 'force-check' ] ) ) {
 
@@ -3661,10 +3649,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				// translators: %1$s is the URL.
 				$notice_transl = __( 'You may <a href="%1$s">refresh the update information for WordPress (plugins, themes and translations)</a> to check if newer versions are available.', 'wpsso' );
 
-				$notice_html = sprintf( $notice_transl, $check_url );
+				$notice_msg = sprintf( $notice_transl, $check_url );
 			}
 
-			return $get_notice ? $notice_html : $check_url;
+			return $get_notice ? $notice_msg : $check_url;
 		}
 
 		/**

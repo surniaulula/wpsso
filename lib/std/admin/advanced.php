@@ -504,7 +504,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$table_rows[ 'plugin_shopperapproved_age_max' ] = '' .
 				$form->get_th_html( _x( 'Maximum Age of Reviews', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_shopperapproved_age_max' ) .
-				'td class="blank"td>' . $form->get_no_input( 'plugin_shopperapproved_age_max', $css_class = 'short' ) . ' ' .
+				'<td class="blank">' . $form->get_no_input( 'plugin_shopperapproved_age_max', $css_class = 'short' ) . ' ' .
 					_x( 'months', 'option comment', 'wpsso' ) . '</td>';
 
 			$sa_for_values = SucomUtilWP::get_post_type_labels( array(), $val_prefix = '', _x( 'Post Type', 'option label', 'wpsso' ) );

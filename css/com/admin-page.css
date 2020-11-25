@@ -76,9 +76,15 @@
 	width:4%;
 }
 
+/**
+ * WooCommerce.
+ */
+.woocommerce-page .wpsso-notice.update-nag {
+	margin:90px 20px 0 20px;
+}
 
 /**
- * qTip
+ * qTip.
  */
 .sucom-tooltip {
 	cursor:pointer;

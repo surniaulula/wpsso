@@ -741,14 +741,15 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				return;
 			}
 
+			$pkg_info        = $this->p->admin->get_pkg_info();	// Returns an array from cache.
 			$metabox_screen  = 'wpsso-term';
 			$metabox_context = 'normal';
 
 			echo "\n" . '<!-- wpsso term metabox section begin -->' . "\n";
-			echo '<h3>' . WpssoAdmin::$pkg[ $this->p->id ][ 'short' ] . '</h3>' . "\n";
+			echo '<h3>' . $pkg_info[ 'wpsso' ][ 'short_dist' ] . '</h3>' . "\n";
 			echo '<div id="poststuff" class="wpsso-metaboxes metabox-holder">' . "\n";
 
-			do_meta_boxes( $metabox_screen, 'normal', $term_obj );
+			do_meta_boxes( $metabox_screen, $metabox_context, $term_obj );
 
 			echo "\n" . '</div><!-- #poststuff -->' . "\n";
 			echo '<!-- wpsso term metabox section end -->' . "\n";
@@ -767,7 +768,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$opts       = $this->get_options( $term_obj->term_id );
 			$def_opts   = $this->get_defaults( $term_obj->term_id );
 
-			$this->p->admin->plugin_pkg_info();
+			$this->p->admin->get_pkg_info();	// Returns an array from cache.
 
 			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts, $this->p->id );
 

@@ -65,12 +65,9 @@ if ( ! class_exists( 'WpssoWpSiteMaps' ) ) {
 
 		public function wp_sitemaps_posts_query_args( $args, $post_type ) {
 
-			$args[ 'orderby' ] = 'modified';
-			$args[ 'order' ]   = 'DESC';
-
 			if ( ! empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
 
-				static $local_cache = array();
+				static $local_cache = array();	// Create post ID exclusion only once.
 
 				if ( ! isset( $local_cache[ $post_type ] ) ) {
 
@@ -104,7 +101,7 @@ if ( ! class_exists( 'WpssoWpSiteMaps' ) ) {
 
 			if ( ! empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
 
-				static $local_cache = array();
+				static $local_cache = array();	// Create term ID exclusion only once.
 
 				if ( ! isset( $local_cache[ $taxonomy ] ) ) {
 
@@ -138,7 +135,7 @@ if ( ! class_exists( 'WpssoWpSiteMaps' ) ) {
 
 			if ( ! empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
 
-				static $local_cache = null;
+				static $local_cache = null;	// Create user ID exclusion only once.
 
 				if ( null === $local_cache ) {
 
