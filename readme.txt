@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires PHP: 5.6
 Requires At Least: 4.4
 Tested Up To: 5.6
-WC Tested Up To: 4.7.0
+WC Tested Up To: 4.7.1
 Stable Tag: 8.13.0
 
 Make sure your content looks best on social sites and in search results, no matter how your webpages are shared, re-shared, messaged, posted, embedded, or crawled.
@@ -318,7 +318,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.14.0-dev.4 (2020/11/24)**
+**Version 8.14.0-dev.5 (2020/11/24)**
 
 * **New Features**
 	* None.
@@ -753,7 +753,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.14.0-dev.4 =
+= 8.14.0-dev.5 =
 
 (2020/11/24) Added WP SiteMaps filters to add article modified dates, and exclude posts / pages, terms, and users with 'noindex' checked under the Document SSO &gt; Robots Meta tab.
 
