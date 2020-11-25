@@ -1767,7 +1767,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			$social_accounts = apply_filters( $wpsso->id . '_social_accounts', $wpsso->cf[ 'form' ][ 'social_accounts' ] );
+			$social_accounts = apply_filters( 'wpsso_social_accounts', $wpsso->cf[ 'form' ][ 'social_accounts' ] );
 
 			$org_sameas = array();
 
@@ -2112,7 +2112,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/**
 			 * Filter to allow changing of the 'orderby' and 'order' values.
 			 */
-			$posts_args = apply_filters( $wpsso->id . '_json_itemlist_posts_args', $posts_args, $mod );
+			$posts_args = apply_filters( 'wpsso_json_itemlist_posts_args', $posts_args, $mod );
 
 			switch ( $posts_args[ 'order' ] ) {
 
@@ -2195,7 +2195,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			$filter_name = SucomUtil::sanitize_hookname( $wpsso->id . '_json_prop_https_schema_org_' . $prop_name );
+			$filter_name = SucomUtil::sanitize_hookname( 'wpsso_json_prop_https_schema_org_' . $prop_name );
 
 			if ( $wpsso->debug->enabled ) {
 
@@ -2286,7 +2286,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 */
 			$main_prop = $mod[ 'is_post' ] && $mod[ 'post_type' ] === 'attachment' ? preg_replace( '/\/.*$/', '', $mod[ 'post_mime' ] ) : '';
 
-			$main_prop = apply_filters( $wpsso->id . '_json_media_main_prop', $main_prop, $mod );
+			$main_prop = apply_filters( 'wpsso_json_media_main_prop', $main_prop, $mod );
 
 			if ( ! empty( $main_prop ) ) {
 
@@ -2557,7 +2557,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 				}
 
-				$filter_name = SucomUtil::sanitize_hookname( $wpsso->id . '_json_prop_https_schema_org_' . $prop_name );
+				$filter_name = SucomUtil::sanitize_hookname( 'wpsso_json_prop_https_schema_org_' . $prop_name );
 
 				if ( $wpsso->debug->enabled ) {
 
@@ -2787,7 +2787,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return false;
 			}
 
-			$type_opts = apply_filters( $wpsso->id . '_get_' . $type . '_options', false, $mod, $type_id );
+			$type_opts = apply_filters( 'wpsso_get_' . $type . '_options', false, $mod, $type_id );
 
 			if ( ! empty( $type_opts ) ) {
 
@@ -2980,7 +2980,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( null === self::$units_cache ) {
 
-				self::$units_cache = apply_filters( $wpsso->id . '_schema_units', $wpsso->cf[ 'head' ][ 'schema_units' ] );
+				self::$units_cache = apply_filters( 'wpsso_schema_units', $wpsso->cf[ 'head' ][ 'schema_units' ] );
 			}
 
 			if ( ! is_array( self::$units_cache ) ) {	// Just in case.
@@ -3057,7 +3057,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( null === self::$units_cache ) {
 
-				self::$units_cache = apply_filters( $wpsso->id . '_schema_units', $wpsso->cf[ 'head' ][ 'schema_units' ] );
+				self::$units_cache = apply_filters( 'wpsso_schema_units', $wpsso->cf[ 'head' ][ 'schema_units' ] );
 			}
 
 			if ( empty( self::$units_cache[ $key ] ) || ! is_array( self::$units_cache[ $key ] ) ) {
@@ -3922,7 +3922,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			$page_posts_mods = apply_filters( $wpsso->id . '_json_page_posts_mods', $page_posts_mods, $mod, $page_type_id, $is_main );
+			$page_posts_mods = apply_filters( 'wpsso_json_page_posts_mods', $page_posts_mods, $mod, $page_type_id, $is_main );
 
 			if ( $wpsso->debug->enabled ) {
 
@@ -3941,7 +3941,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$ppp = get_option( 'posts_per_page' );
 			}
 
-			$ppp = (int) apply_filters( $wpsso->id . '_posts_per_page', $ppp, $mod, $page_type_id, $is_main );
+			$ppp = (int) apply_filters( 'wpsso_posts_per_page', $ppp, $mod, $page_type_id, $is_main );
 
 			if ( $wpsso->debug->enabled ) {
 

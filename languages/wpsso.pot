@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.14.0-dev.5\n"
+"Project-Id-Version: WPSSO Core 8.14.0-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3896,7 +3896,7 @@ msgstr ""
 
 #: lib/admin.php:1194 lib/admin.php:1205 lib/messages.php:928
 #: lib/submenu/tools.php:58 lib/submenu/tools.php:103 lib/user.php:52
-#: lib/user.php:1531 lib/user.php:1639 lib/user.php:1770
+#: lib/user.php:1529 lib/user.php:1637 lib/user.php:1768
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -8783,40 +8783,40 @@ msgstr ""
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1326
+#: lib/user.php:1324
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/user.php:1550
+#: lib/user.php:1548
 msgid ""
 "Aborting task to add the %1$s role to content creators - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1565
+#: lib/user.php:1563
 msgid "A task to add the %1$s role for content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1607
+#: lib/user.php:1605
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1609 lib/user.php:1712 lib/util-cache.php:158
+#: lib/user.php:1607 lib/user.php:1710 lib/util-cache.php:158
 #: lib/util-cache.php:682
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
-#: lib/user.php:1658
+#: lib/user.php:1656
 msgid ""
 "Aborting task to remove the %1$s role from all users - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1673
+#: lib/user.php:1671
 msgid "A task to remove the %1$s role from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1710
+#: lib/user.php:1708
 msgid "The %1$s role has been removed from %2$d content creators."
 msgstr ""
 
