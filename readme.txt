@@ -318,19 +318,18 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.14.0-b.1 (2020/11/25)**
+**Version 8.14.0-rc.1 (2020/11/25)**
 
 * **New Features**
-	* None.
+	* Added WP Sitemaps filters to add article modified dates, and exclude posts / pages, terms, and users with 'noindex' checked under the Document SSO &gt; Robots Meta tab.
 * **Improvements**
-	* Added WP SiteMaps filters to add article modified dates, and exclude posts / pages, terms, and users with 'noindex' checked under the Document SSO &gt; Robots Meta tab.
 	* Added a possible 'disabled' status light (Yellow) in the SSO &gt; Features Status page.
 	* Added new features in the SSO &gt; Features Status &gt; Standard Features metabox:
 		* Link Relation URL Tags
 		* oEmbed Response Enhancements
 		* Pinterest / SEO Meta Name Tags
 		* Post, Term, and User Robots Meta
-		* WP SiteMaps Enhancements
+		* WP Sitemaps Enhancements
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -753,9 +752,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.14.0-b.1 =
+= 8.14.0-rc.1 =
 
-(2020/11/25) Added WP SiteMaps filters to add article modified dates, and exclude posts / pages, terms, and users with 'noindex' checked under the Document SSO &gt; Robots Meta tab.
+(2020/11/25) Added WP Sitemaps filters to add article modified dates, and exclude posts / pages, terms, and users with 'noindex' checked under the Document SSO &gt; Robots Meta tab.
 
 = 8.13.0 =
 
