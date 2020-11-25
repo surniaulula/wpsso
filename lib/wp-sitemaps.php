@@ -67,7 +67,7 @@ if ( ! class_exists( 'WpssoWpSiteMaps' ) ) {
 		}
 
 		/**
-		 * Exclude posts from the sitemaps that have been defined as noindex.
+		 * Exclude posts from the sitemap that have been defined as noindex.
 		 */
 		public function wp_sitemaps_posts_query_args( $args, $post_type ) {
 
@@ -103,6 +103,9 @@ if ( ! class_exists( 'WpssoWpSiteMaps' ) ) {
 			return $args;
 		}
 
+		/**
+		 * Exclude terms from the sitemap that have been defined as noindex.
+		 */
 		public function wp_sitemaps_taxonomies_query_args( $args, $taxonomy ) {
 
 			if ( ! empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
@@ -137,6 +140,9 @@ if ( ! class_exists( 'WpssoWpSiteMaps' ) ) {
 			return $args;
 		}
 
+		/**
+		 * Exclude users from the sitemap that have been defined as noindex.
+		 */
 		public function wp_sitemaps_users_query_args( $args ) {
 
 			if ( ! empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
