@@ -1508,7 +1508,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				} else {
 
-					$mb_filter_name  = 'wpsso_metabox_' . $metabox_id . '_' . $tab_key . '_rows';
+					$mb_filter_name = 'wpsso_metabox_' . $metabox_id . '_' . $tab_key . '_rows';
+
 					$mod_filter_name = 'wpsso_' . $mod[ 'name' ] . '_' . $tab_key . '_rows';
 
 					$table_rows[ $tab_key ] = (array) apply_filters( $mb_filter_name,
@@ -1519,10 +1520,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 			}
 
-			$tabbed_args = array(
-				'layout'        => 'vertical',
-				'is_auto_draft' => $is_auto_draft,
-			);
+			$tabbed_args = array( 'layout' => 'vertical', 'is_auto_draft' => $is_auto_draft );
 
 			$mb_container_id = 'wpsso_metabox_' . $metabox_id . '_inside';
 

@@ -15,7 +15,7 @@
  * Requires At Least: 4.4
  * Tested Up To: 5.6
  * WC Tested Up To: 4.7.1
- * Version: 8.14.0-b.1
+ * Version: 8.14.0-rc.1
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -72,7 +72,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $pinterest;	// WpssoPinterest class object.
 		public $schema;		// WpssoSchema class object.
 		public $tc;		// WpssoTwitterCard class object.
-		public $sitemaps;	// WpssoWpSiteMaps class object.
+		public $sitemaps;	// WpssoWpSitemaps class object.
 
 		/**
 		 * Reference variables (config, options, modules, etc.).
@@ -445,7 +445,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->pinterest = new WpssoPinterest( $this );		// Pinterest image markup.
 			$this->schema    = new WpssoSchema( $this );		// Schema json scripts.
 			$this->tc        = new WpssoTwitterCard( $this );	// Twitter Card meta tags.
-			$this->sitemaps  = new WpssoWpSiteMaps( $this );	// WordPress sitemaps.
+			$this->sitemaps  = new WpssoWpSitemaps( $this );	// WordPress sitemaps.
 
 			/**
 			 * Load distribution modules.

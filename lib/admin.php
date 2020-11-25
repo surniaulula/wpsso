@@ -1419,11 +1419,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				echo '<div id="side-info-column">' . "\n";
 
-				foreach ( $side_info_boxes as $box ) {
+				foreach ( $side_info_boxes as $info_box ) {
 
 					echo '<table class="sucom-settings wpsso side-info-box">' . "\n";
 					echo '<tr><td>' . "\n";
-					echo $box;
+					echo $info_box;
 					echo '</td></tr>' . "\n";
 					echo '</table><!-- .side-info-box -->' . "\n";
 				}
@@ -1625,24 +1625,24 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					continue;
 				}
 
-				$box = '<div class="side-info-header">' . "\n";
-				$box .= '<h2>' . __( 'Upgrade to Premium', 'wpsso' ) . '</h2>' . "\n";
-				$box .= '</div><!-- .side-info-header -->' . "\n";
+				$info_box = '<div class="side-info-header">' . "\n";
+				$info_box .= '<h2>' . __( 'Upgrade to Premium', 'wpsso' ) . '</h2>' . "\n";
+				$info_box .= '</div><!-- .side-info-header -->' . "\n";
 
-				$box .= '<div class="side-info-icon">' . "\n";
-				$box .= $this->get_ext_img_icon( $ext ) . "\n";
-				$box .= '</div><!-- .side-info-icon -->' . "\n";
+				$info_box .= '<div class="side-info-icon">' . "\n";
+				$info_box .= $this->get_ext_img_icon( $ext ) . "\n";
+				$info_box .= '</div><!-- .side-info-icon -->' . "\n";
 
-				$box .= '<div class="side-info-content has-buttons">' . "\n";
-				$box .= $this->p->msgs->get( 'column-purchase-' . $ext, $info ) . "\n";
-				$box .= '</div><!-- .side-info-content -->' . "\n";
+				$info_box .= '<div class="side-info-content has-buttons">' . "\n";
+				$info_box .= $this->p->msgs->get( 'column-purchase-' . $ext, $info ) . "\n";
+				$info_box .= '</div><!-- .side-info-content -->' . "\n";
 
-				$box .= '<div class="side-info-buttons">' . "\n";
-				$box .= $this->form->get_button( sprintf( _x( 'Get %s', 'submit button', 'wpsso' ), $pkg_info[ $ext ][ 'short_pro' ] ),
+				$info_box .= '<div class="side-info-buttons">' . "\n";
+				$info_box .= $this->form->get_button( sprintf( _x( 'Get %s', 'submit button', 'wpsso' ), $pkg_info[ $ext ][ 'short_pro' ] ),
 					'button-secondary', 'column-purchase', $info[ 'url' ][ 'purchase' ], true ) . "\n";
-				$box .= '</div><!-- .side-info-buttons -->' . "\n";
+				$info_box .= '</div><!-- .side-info-buttons -->' . "\n";
 
-				$local_cache[] = $box;
+				$local_cache[] = $info_box;
 			}
 
 			return $local_cache;
@@ -2016,7 +2016,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					echo '<tr><td colspan="3">';
 					echo '<h4' . ( $ext_num > 1 ? ' style="margin-top:10px;"' : '' ) . '>';
-					echo $info[ 'name' ];
+					echo _x( $info[ 'name' ], 'plugin name', 'wpsso' );
 					echo '</h4></td></tr>';
 
 					$this->show_features_status( $ext, $info, $features );
@@ -2044,7 +2044,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					echo '<tr><td colspan="3">';
 					echo '<h4' . ( $ext_num > 1 ? ' style="margin-top:10px;"' : '' ) . '>';
-					echo $info[ 'name' ];
+					echo _x( $info[ 'name' ], 'plugin name', 'wpsso' );
 					echo '</h4></td></tr>';
 
 					$this->show_features_status( $ext, $info, $features );
@@ -2216,60 +2216,55 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( ! empty( $status_key ) ) {
 
-					$icon_title   = '';
-					$icon_type    = preg_match( '/^\(([a-z\-]+)\) (.*)/', $label_transl, $match ) ? $match[ 1 ] : 'admin-generic';
-					$label_transl = empty( $match[ 2 ] ) ? $label_transl : $match[ 2 ];
-					$label_url    = empty( $arr[ 'label_url' ] ) ? '' : $arr[ 'label_url' ];
-					$td_class     = empty( $arr[ 'td_class' ] ) ? '' : ' ' . $arr[ 'td_class' ];
-					$td_class_is  = ' ' . SucomUtil::sanitize_key( 'module-is-' . $status_key );
+					$dashicon_title = '';
+					$dashicon_name  = preg_match( '/^\(([a-z\-]+)\) (.*)/', $label_transl, $match ) ? $match[ 1 ] : 'admin-generic';
+					$label_transl   = empty( $match[ 2 ] ) ? $label_transl : $match[ 2 ];
+					$label_url      = empty( $arr[ 'label_url' ] ) ? '' : $arr[ 'label_url' ];
+					$td_class       = empty( $arr[ 'td_class' ] ) ? '' : ' ' . $arr[ 'td_class' ];
+					$td_class_is    = ' ' . SucomUtil::sanitize_key( 'module-is-' . $status_key );
 
-					switch ( $icon_type ) {
+					switch ( $dashicon_name ) {
 
 						case 'api':
-						case 'cloud':
+						case 'update':
 
-							$icon_title = __( 'Service API module', 'wpsso' );
-							$icon_type  = 'cloud';
+							$dashicon_title = __( 'Service API module', 'wpsso' );
+							$dashicon_name  = 'update';
 
 							break;
 
 						case 'code':
-						case 'media-code':
 
-							$icon_title = __( 'HTML tag and markup module', 'wpsso' );
-							$icon_type  = 'media-code';
-
-							break;
-
-						case 'plugin':
-						case 'admin-plugins':
-
-							$icon_title = __( 'Plugin integration module', 'wpsso' );
-							$icon_type  = 'admin-plugins';
-
-							break;
-
-						case 'plus':
-						case 'welcome-add-page':
-
-							$icon_title = __( 'Markup property module', 'wpsso' );
-							$icon_type  = 'welcome-add-page';
-
-							break;
-
-						case 'sharing':
-						case 'screenoptions':
-
-							$icon_title = __( 'Sharing functionality module', 'wpsso' );
-							$icon_type  = 'screenoptions';
+							$dashicon_title = __( 'HTML tag and markup module', 'wpsso' );
+							$dashicon_name  = 'media-code';
 
 							break;
 
 						case 'feature':
-						case 'admin-generic':
 
-							$icon_title = __( 'Additional functionality module', 'wpsso' );
-							$icon_type  = 'admin-generic';
+							$dashicon_title = __( 'Additional functionality module', 'wpsso' );
+							$dashicon_name  = 'pressthis';
+
+							break;
+
+						case 'plugin':
+
+							$dashicon_title = __( 'Plugin integration module', 'wpsso' );
+							$dashicon_name  = 'admin-plugins';
+
+							break;
+
+						case 'plus':
+
+							$dashicon_title = __( 'Markup property module', 'wpsso' );
+							$dashicon_name  = 'welcome-add-page';
+
+							break;
+
+						case 'sharing':
+
+							$dashicon_title = __( 'Sharing functionality module', 'wpsso' );
+							$dashicon_name  = 'share';
 
 							break;
 					}
@@ -2277,7 +2272,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					echo '<tr>';
 
 					echo '<td class="module-icon' . $td_class_is . '">';
-					echo '<span class="dashicons-before dashicons-' . $icon_type . '" title="' . $icon_title . '"></span>';
+					echo '<span class="dashicons-before dashicons-' . $dashicon_name . '" title="' . $dashicon_title . '"></span>';
 					echo '</td>';
 
 					echo '<td class="' . trim( 'module-label ' . $td_class . $td_class_is ) . '">';

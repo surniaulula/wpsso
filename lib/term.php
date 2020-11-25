@@ -783,7 +783,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			foreach ( $tabs as $tab_key => $title ) {
 
-				$mb_filter_name  = 'wpsso_metabox_' . $metabox_id . '_' . $tab_key . '_rows';
+				$mb_filter_name = 'wpsso_metabox_' . $metabox_id . '_' . $tab_key . '_rows';
+
 				$mod_filter_name = 'wpsso_' . $mod[ 'name' ] . '_' . $tab_key . '_rows';
 
 				$table_rows[ $tab_key ] = (array) apply_filters( $mb_filter_name,
@@ -793,9 +794,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					$table_rows[ $tab_key ], $this->form, parent::$head_info, $mod );
 			}
 
-			$tabbed_args = array(
-				'layout' => 'vertical',
-			);
+			$tabbed_args = array( 'layout' => 'vertical' );
 
 			$mb_container_id = 'wpsso_metabox_' . $metabox_id . '_inside';
 

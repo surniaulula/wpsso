@@ -793,9 +793,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					$table_rows[ $tab_key ], $this->form, parent::$head_info, $mod );
 			}
 
-			$tabbed_args = array(
-				'layout' => 'vertical',
-			);
+			$tabbed_args = array( 'layout' => 'vertical' );
 
 			$mb_container_id = 'wpsso_metabox_' . $metabox_id . '_inside';
 

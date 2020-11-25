@@ -15,9 +15,9 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 	die( 'Do. Or do not. There is no try.' );
 }
 
-if ( ! class_exists( 'WpssoWpSiteMaps' ) ) {
+if ( ! class_exists( 'WpssoWpSitemaps' ) ) {
 
-	class WpssoWpSiteMaps {
+	class WpssoWpSitemaps {
 
 		private $p;	// Wpsso class object.
 

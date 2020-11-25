@@ -790,13 +790,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						}
 
 						$advanced_opts = SucomUtil::preg_grep_keys( '/^plugin_/', $defs );
-
 						$advanced_opts = SucomUtil::preg_grep_keys( '/^plugin_.*_tid$/', $advanced_opts, $invert = true );
 
-						foreach ( array(
-							'plugin_clean_on_uninstall',
-							'plugin_debug',
-						) as $opt_key ) {
+						foreach ( array( 'plugin_clean_on_uninstall', 'plugin_debug' ) as $opt_key ) {
 
 							unset( $advanced_opts[ $opt_key ] );
 						}

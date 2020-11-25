@@ -195,8 +195,8 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 				'status'       => class_exists( 'WpssoTwitterCard' ) ? 'on' : 'recommended',
 			);
 
-			$features[ '(code) WP SiteMaps Enhancements' ] = array(
-				'label_transl' => _x( '(code) WP SiteMaps Enhancements', 'lib file description', 'wpsso' ),
+			$features[ '(code) WP Sitemaps Enhancements' ] = array(
+				'label_transl' => _x( '(code) WP Sitemaps Enhancements', 'lib file description', 'wpsso' ),
 				'status'       => SucomUtilWP::sitemaps_enabled() ? 'on' : 'off',
 			);
 

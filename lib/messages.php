@@ -95,16 +95,22 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$info[ $info_key ] = null;
 
 						continue;
-
-					} else {
-
-						$info[ $info_key ] = $this->p->cf[ 'plugin' ][ $plugin_id ][ $info_key ];
 					}
+
+					$info[ $info_key ] = $this->p->cf[ 'plugin' ][ $plugin_id ][ $info_key ];
+				}
+				
+				if ( 'name' === $info_key ) {
+
+					$info[ $info_key ] = _x( $info[ $info_key ], 'plugin name', 'wpsso' );
 				}
 
-				if ( 'short' == $info_key || 'name' === $info_key ) {
+				if ( 'version' !== $info_key ) {
+			
+					if ( ! isset( $info[ $info_key . '_pro' ] ) ) {
 
-					$info[ $info_key . '_pro' ] = SucomUtil::get_dist_name( $info[ $info_key ], $dist_pro );
+						$info[ $info_key . '_pro' ] = SucomUtil::get_dist_name( $info[ $info_key ], $dist_pro );
+					}
 				}
 			}
 
@@ -2762,7 +2768,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text .= sprintf( __( 'The %1$s add-on can be activated from the WordPress %2$s page &mdash; please activate this complementary add-on now.', 'wpsso' ), $um_info_name, $plugins_page_link ) . ' ';
 						}
 
-						$text .= sprintf( __( 'When the %1$s add-on is active, one or more %2$s version updates may be available for the %3$s plugin and its add-on(s).', 'wpsso' ), $um_info_name, $dist_pro, $wpsso_name_pro );
+						$text .= sprintf( __( 'When the %1$s add-on is active, one or more %2$s updates may be available for the %3$s plugin and its add-on(s).', 'wpsso' ), $um_info_name, $dist_pro, $wpsso_name_pro );
 
 						$text .= '</p>';
 
@@ -2787,6 +2793,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text = sprintf( __( '%1$s version %2$s requires the use of %3$s version %4$s or newer (version %5$s is currently installed).', 'wpsso' ), $wpsso_name_pro, $info[ 'version' ], $um_info_name, $um_rec_version, $um_version ) . ' ';
 
+						// translators: %1$s is the WPSSO Update Manager add-on name.
 						$text .= sprintf( __( 'If an update for the %1$s add-on is not available under the WordPress %2$s page, use the <em>%3$s</em> button in the %4$s settings page to force an immediate refresh of the plugin update information.', 'wpsso' ), $um_info_name, $wp_updates_page_link, $um_check_updates, $tools_page_link );
 
 						break;
@@ -2813,13 +2820,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
 				$li_support_link = empty( $info[ 'url' ][ 'support' ] ) ? '' :
-					'<li><a href="' . $info[ 'url' ][ 'support' ] . '">' . __( 'Premium plugin support.', 'wpsso' ) . '</a></li>';
+					'<li><a href="' . $info[ 'url' ][ 'support' ] . '">' .
+						__( 'Premium plugin support.', 'wpsso' ) . '</a></li>';
 
 				switch ( $msg_key ) {
 
 					case 'column-purchase-wpsso':
 
-						$text = '<p>' . sprintf( __( '<strong>%s includes:</strong>', 'wpsso' ), $info[ 'short_pro' ] ) . '</p>';
+						$text = '<p>' . sprintf( __( '<strong>%s includes:</strong>', 'wpsso' ), $info[ 'name_pro' ] ) . '</p>';
 
 						$text .= '<ul>';
 
@@ -2833,8 +2841,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= ' <li>' . __( 'Advanced plugin settings.', 'wpsso' ) . '</li>';
 
-						$text .= ' <li>' . __( 'Access to development updates.', 'wpsso' ) . '</li>';
-
 						$text .= $li_support_link;
 
 						$text .= '</ul>';
@@ -2843,13 +2849,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'column-purchase-wpssojson':
 
-						$text = '<p>' . sprintf( __( '<strong>%s includes:</strong>', 'wpsso' ), $info[ 'short_pro' ] ) . '</p>';
+						$text = '<p>' . sprintf( __( '<strong>%s includes:</strong>', 'wpsso' ), $info[ 'name_pro' ] ) . '</p>';
 
 						$text .= '<ul>';
 
 						$text .= ' <li>' . sprintf( __( 'Additional Schema options in the %s metabox to customize creative works, events, how-tos, job postings, movies, products, recipes, reviews, and many more.', 'wpsso' ), $mb_title ) . '</li>';
-
-						$text .= ' <li>' . __( 'Access to development updates.', 'wpsso' ) . '</li>';
 
 						$text .= $li_support_link;
 
@@ -2863,15 +2867,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$json_info_name  = _x( $json_info[ 'name' ], 'plugin name', 'wpsso' );
 						$json_addon_link = $this->p->util->get_admin_url( 'addons#wpssojson', $json_info_name );
 
-						$text = '<p>' . sprintf( __( '<strong>%s includes:</strong>', 'wpsso' ), $info[ 'short_pro' ] ) . '</p>';
+						$text = '<p>' . sprintf( __( '<strong>%s includes:</strong>', 'wpsso' ), $info[ 'name_pro' ] ) . '</p>';
 
 						$text .= '<ul>';
 
 						$text .= ' <li>' . __( 'Manage the details of multiple organizations.', 'wpsso' ) . '</li>';
 
 						$text .= ' <li>' . sprintf( __( 'Offers an organization selector for the %s add-on.', 'wpsso' ), $json_addon_link ) . '</li>';
-
-						$text .= ' <li>' . __( 'Access to development updates.', 'wpsso' ) . '</li>';
 
 						$text .= $li_support_link;
 
@@ -2881,13 +2883,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'column-purchase-wpssoplm':
 
-						$text = '<p>' . sprintf( __( '<strong>%s includes:</strong>', 'wpsso' ), $info[ 'short_pro' ] ) . '</p>';
+						$text = '<p>' . sprintf( __( '<strong>%s includes:</strong>', 'wpsso' ), $info[ 'name_pro' ] ) . '</p>';
 
 						$text .= '<ul>';
 
-						$text .= ' <li>' . sprintf( __( 'Includes a %1$s tab in the %2$s metabox to select a place or customize place information.', 'wpsso' ), _x( 'Schema Place', 'metabox tab', 'wpsso' ), $mb_title ) . '</li>';
-
-						$text .= ' <li>' . __( 'Access to development updates.', 'wpsso' ) . '</li>';
+						$text .= ' <li>' . sprintf( __( 'A %1$s tab in the %2$s metabox to select a place or customize place information.', 'wpsso' ), _x( 'Schema Place', 'metabox tab', 'wpsso' ), $mb_title ) . '</li>';
 
 						$text .= $li_support_link;
 
