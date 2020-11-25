@@ -248,6 +248,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $dashicon;
 		}
 
+		/**
+		 * Deprecated since 2020/11/25.
+		 */
+		public function plugin_pkg_info() {
+
+			return $this->get_pkg_info();
+		}
+
 		public function get_pkg_info() {
 
 			if ( ! empty( self::$pkg_cache ) ) {	// Only execute once.
@@ -255,7 +263,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return self::$pkg_cache;
 			}
 
-			$pkg_info = array();
+			$pkg_info = array();	// Init a new pkg info array.
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
