@@ -347,7 +347,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 					$action_links[] = $this->get_install_activate_addon_link( 'wpssowcsdt' );
 
-					$info = $this->p->cf[ 'plugin' ][ 'wpssowcsdt' ];
+					$info = $this->p->cf[ 'plugin' ][ 'wpssowcmd' ];
 
 					$info_name_transl = _x( $info[ 'name' ], 'plugin name', 'wpsso' );
 
