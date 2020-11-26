@@ -345,7 +345,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 					$action_links = array();	// Init a new action array for the notice message.
 
-					$action_links[] = $this->get_install_activate_addon_link( 'wpssowcsdt' );
+					$action_links[] = $this->get_install_activate_addon_link( 'wpssowcmd' );
 
 					$info = $this->p->cf[ 'plugin' ][ 'wpssowcmd' ];
 
