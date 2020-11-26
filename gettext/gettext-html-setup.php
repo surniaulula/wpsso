@@ -3,7 +3,6 @@
 /**
  * Extract of translatable strings from html/setup.html.
  */
-_x( 'Integration Notes', 'html header', 'wpsso' );
 _x( 'Business Social Accounts (Optional)', 'html header', 'wpsso' );
 _x( 'Author Social Accounts (Optional)', 'html header', 'wpsso' );
 _x( 'Review Essential Settings', 'html header', 'wpsso' );
@@ -20,7 +19,6 @@ _x( 'BuddyPress Integration', 'html header', 'wpsso' );
 _x( 'WooCommerce Integration', 'html header', 'wpsso' );
 _x( 'Developers and WebSite Designers', 'html header', 'wpsso' );
 _x( 'Taking the time to read this Setup Guide and review the plugin Essential Settings page will help your click-through rates and rankings in Google search results.', 'html paragraph', 'wpsso' );
-_x( 'If you use the WooCommerce plugin, don\'t miss the <a href="#documentation-and-resources">Documentation and Resources section bellow</a> for additional WooCommerce integration notes.', 'html paragraph', 'wpsso' );
 _x( 'If you haven\'t already done so, create a Facebook Page and Twitter account for your business / website. You can enter all your business / website social account information in the <em><strong>SSO &gt; Social Pages</strong></em> settings page. The social account URLs are used by WPSSO Core for Open Graph and Schema meta tag values, along with Schema Organization markup in JSON-LD format (which may appear in Google Search results to highlight your business / website social pages).', 'html paragraph', 'wpsso' );
 _x( '<strong>Related information:</strong>', 'html paragraph', 'wpsso' );
 _x( 'Ask your content authors to enter their Facebook and Twitter contact information in their WordPress user profile page. Each author\'s contact information can appear in various meta tags and Schema JSON-LD markup for Facebook, Twitter, and Google, but only if they complete their user profile.', 'html paragraph', 'wpsso' );
@@ -74,3 +72,4 @@ _x( '<a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-dete
 _x( '<a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-are-some-html-elements-missing-misaligned-different/">Why are some HTML elements missing / misaligned / different?</a>', 'html list item', 'wpsso' );
 _x( '<a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/">Why does Facebook show the wrong image or text?</a>', 'html list item', 'wpsso' );
 _x( '<a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/">Why shouldn\'t I upload small images to the Media library?</a>', 'html list item', 'wpsso' );
+_x( 'If you use the WooCommerce plugin, don\'t miss the <a href="#documentation-and-resources">Documentation and Resources section bellow</a> for additional WooCommerce integration notes.', 'html blockquote', 'wpsso' );

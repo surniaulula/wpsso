@@ -2360,9 +2360,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$gettext = array();
 
 			foreach ( array(
-				'/(<h[0-9][^>]*>)(.*)(<\/h[0-9]>)/Uis' => 'html header',
-				'/(<p>|<p [^>]*>)(.*)(<\/p>)/Uis'      => 'html paragraph',	// Get paragraphs before list items.
-				'/(<li[^>]*>)(.*)(<\/li>)/Uis'         => 'html list item',
+				'/(<h[0-9][^>]*>)(.*)(<\/h[0-9]>)/Uis'         => 'html header',
+				'/(<p>|<p [^>]*>)(.*)(<\/p>)/Uis'              => 'html paragraph',	// Get paragraphs before list items.
+				'/(<li[^>]*>)(.*)(<\/li>)/Uis'                 => 'html list item',
+				'/(<blockquote[^>]*>)(.*)(<\/blockquote>)/Uis' => 'html blockquote',
 			) as $pattern => $context ) {
 
 				if ( preg_match_all( $pattern, $html, $all_matches, PREG_SET_ORDER ) ) {
@@ -2372,6 +2373,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						list( $match, $begin, $text, $end ) = $matches;
 
 						$html = str_replace( $match, '', $html );	// Do not match again.
+
+						$text = trim( $text );	// Just in case.
 
 						if ( '' === $text ) {	// Ignore HTML tags with no content.
 
