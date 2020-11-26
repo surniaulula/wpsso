@@ -21,7 +21,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		public static function oembed_enabled() {
 
 			if ( function_exists( 'get_oembed_response_data' ) ) {	// Since WP v4.4.
-				
+
 				return true;
 			}
 

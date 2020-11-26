@@ -113,7 +113,7 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 			 * Sanity check - make sure inverse directives are removed.
 			 */
 			self::sanitize_directives( $directives );
-		
+
 			return $directives;
 		}
 
@@ -128,7 +128,7 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 					return $md_opts[ 'robots_noindex' ] ? true : false;
 				}
 			}
-			
+
 			$directives = self::get_default_directives();
 
 			return $directives[ 'noindex' ] ? true : false;

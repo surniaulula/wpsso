@@ -633,7 +633,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			}
 
 			if ( isset( $mt_og[ 'og:type' ] ) ) {
-			
+
 				switch ( $mt_og[ 'og:type' ] ) {
 
 					case 'article':
@@ -652,7 +652,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 					case 'product':
 
 						if ( isset( $mt_og[ 'product:price:amount' ] ) && isset( $mt_og[ 'product:price:currency' ] ) ) {
-						
+
 							$mt_tc[ 'twitter:label1' ] = __( 'Price', 'wpsso' );
 							$mt_tc[ 'twitter:data1' ]  = $mt_og[ 'product:price:amount' ] . ' ' . $mt_og[ 'product:price:currency' ];
 						}

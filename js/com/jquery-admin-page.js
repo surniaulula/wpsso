@@ -16,7 +16,7 @@ function sucomStripHtml( html ) {
 function sucomCopyById( cssId, cfgName ) {
 
 	if ( ! cssId ) {	// Just in case.
-		
+
 		return false;
 	}
 

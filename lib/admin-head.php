@@ -305,31 +305,31 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
 
 					$action_links = array();	// Init a new action array for the notice message.
-	
+
 					if ( empty( $pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
-		
+
 						$action_links[] = $this->get_purchase_plugin_link( 'wpsso' );
 					}
-		
+
 					if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
-		
+
 						$action_links[] = $this->get_install_activate_addon_link( 'wpssojson' );
 					}
-		
+
 					if ( ! empty( $action_links ) ) {
-		
+
 						$info = $this->p->cf[ 'plugin' ][ 'wpssojson' ];
 
 						$info_name_transl = _x( $info[ 'name' ], 'plugin name', 'wpsso' );
 
 						$notice_msg = __( 'The WooCommerce plugin is known to offer incomplete Schema markup for Google Rich Results.', 'wpsso' ) . ' ';
-		
+
 						$notice_msg .= sprintf( __( 'The %1$s plugin (required for WooCommerce integration) and its %2$s add-on provide a much better solution by offering complete product meta tags for Facebook / Pinterest, and complete Schema product markup for Google Rich Results &mdash; including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'name_pro' ], $info_name_transl ) . ' ';
-		
+
 						$notice_msg .= '<ul><li>' . implode( $glue = '</li> <li>', $action_links ) . '</li></ul>' . ' ';
-		
+
 						$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
-		
+
 						return 1;	// Stop here.
 					}
 				}
@@ -346,24 +346,24 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 					$shipping_continents = WC()->countries->get_shipping_continents();
 					$shipping_countries  = WC()->countries->get_shipping_countries();
 					$shipping_enabled    = $shipping_continents || $shipping_countries ? true : false;
-	
+
 					if ( $shipping_enabled ) {
-	
+
 						$action_links[] = $this->get_install_activate_addon_link( 'wpssowcsdt' );
-			
+
 						$info = $this->p->cf[ 'plugin' ][ 'wpssowcsdt' ];
-	
+
 						$info_name_transl = _x( $info[ 'name' ], 'plugin name', 'wpsso' );
 
 						$notice_msg = sprintf( __( 'Product shipping features are enabled in WooCommerce, but the %s add-on is not active.',
 							'wpsso' ), $info_name_transl ) . ' ';
-	
+
 						$notice_msg .= __( 'Adding shipping details to your Schema Product markup is especially important if you offer free or low-cost shipping options as this will make your products more appealing in Google search results.', 'wpsso' ) . ' ';
-	
+
 						$notice_msg .= '<ul><li>' . implode( $glue = '</li> <li>', $action_links ) . '</li></ul>' . ' ';
-	
+
 						$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
-	
+
 						return 1;	// Stop here.
 					}
 				}
@@ -372,7 +372,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			return 0;
 		}
 
-		
+
 		private function get_purchase_plugin_link( $ext ) {
 
 			$pkg_info = $this->p->admin->get_pkg_info();	// Returns an array from cache.
@@ -543,7 +543,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 					$wpsso_name_transl ) . ' ';
 
 				$notice_msg .= '</p>' . "\n";
-				
+
 				/**
 				 * See the 'column-rate-review' message.
 				 */
@@ -561,7 +561,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				$notice_msg .= __( 'Without your rating, a plugin you value and depend on could be deprecated prematurely.', 'wpsso' ) . ' ';
 
 				$notice_msg .= sprintf( __( 'Don\'t let that happen - rate %s now!', 'wpsso' ), $wp_plugin_link ) . ' ';
-						
+
 				$notice_msg .= '</p>' . "\n";
 
 				$notice_msg .= '<div class="notice-actions">';

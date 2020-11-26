@@ -1976,16 +1976,16 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 						}
 
 					} elseif ( ! empty( $mod[ 'is_term' ] ) ) {
-	
+
 						$ret_val = get_term_meta( $mod[ 'id' ], $meta_key, $single );
-	
+
 						if ( $delete && $ret_val !== $not_found ) {	// Only delete if we have something to delete.
 
 							delete_term_meta( $mod[ 'id' ], $meta_key );
 						}
 
 					} elseif ( ! empty( $mod[ 'is_user' ] ) ) {
-	
+
 						$ret_val = get_user_meta( $mod[ 'id' ], $meta_key, $single );
 
 						if ( $delete && $ret_val !== $not_found ) {	// Only delete if we have something to delete.
@@ -1993,7 +1993,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 							delete_user_meta( $mod[ 'id' ], $meta_key );
 						}
 					}
-			
+
 					return $ret_val;
 				}
 			}

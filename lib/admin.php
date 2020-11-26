@@ -2689,7 +2689,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$addon_prefix = 'wpsso-';
 
 			if ( 0 === strpos( $a, $plugin_prefix ) ) {
-			
+
 				if ( 0 === strpos( $b, $addon_prefix ) ) {
 
 					return -1;
@@ -2753,25 +2753,25 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 * Get parent and child theme template file paths.
 				 */
 				$header_files = SucomUtilWP::get_theme_header_file_paths();
-	
+
 				foreach ( $header_files as $tmpl_base => $tmpl_file ) {
-	
+
 					$stripped_php = SucomUtil::get_stripped_php( $tmpl_file );
-	
+
 					if ( empty( $stripped_php ) ) {	// Empty string or false.
-	
+
 						continue;
-	
+
 					} elseif ( false !== strpos( $stripped_php, '<head>' ) ) {
-	
+
 						$notice_msg = $this->p->msgs->get( 'notice-header-tmpl-no-head-attr' );
-	
+
 						$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
-	
+
 						return;	// Stop here.
 					}
 				}
-	
+
 				/**
 				 * Mark all template head checks as complete.
 				 */

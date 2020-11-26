@@ -750,7 +750,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				if ( ! isset( $mt_og[ 'article:published_time' ] ) ) {
 
 					if ( 'publish' === $mod[ 'post_status' ] ) {	// Must be published to have a publish time meta tag.
-					
+
 						if ( $mod[ 'post_time' ] ) {	// ISO 8601 date or false.
 
 							$mt_og[ 'article:published_time' ] = $mod[ 'post_time' ];

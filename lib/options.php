@@ -449,7 +449,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->defaults_cache[ 'plugin_wpseo_social_meta' ] = 1;
 
 				} elseif ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) && get_option( 'wpseo' ) ) {
-					
+
 					$this->defaults_cache[ 'plugin_wpseo_social_meta' ] = 1;
 				}
 

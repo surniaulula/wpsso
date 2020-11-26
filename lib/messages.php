@@ -99,14 +99,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					$info[ $info_key ] = $this->p->cf[ 'plugin' ][ $plugin_id ][ $info_key ];
 				}
-				
+
 				if ( 'name' === $info_key ) {
 
 					$info[ $info_key ] = _x( $info[ $info_key ], 'plugin name', 'wpsso' );
 				}
 
 				if ( 'version' !== $info_key ) {
-			
+
 					if ( ! isset( $info[ $info_key . '_pro' ] ) ) {
 
 						$info[ $info_key . '_pro' ] = SucomUtil::get_dist_name( $info[ $info_key ], $dist_pro );
@@ -2430,22 +2430,37 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						} else {
 
-							$text = '<p class="pro-feature-msg">';
-
 							if ( ! empty( $pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
 
-								$text .= __( 'An e-commerce plugin is active &ndash; product information may be provided by the e-commerce plugin.', 'wpsso' );
+								if ( ! empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ) {
+
+									$text = '<p class="pro-feature-msg">';
+
+									$text .= __( 'Disabled fields show information imported from WooCommerce product data, including custom product attributes.', 'wpsso' );
+
+									$text .= '</p>';
+
+								} else {
+
+									$text = '<p class="pro-feature-msg">';
+
+									$text .= __( 'An e-commerce plugin is active &ndash; disabled fields show information imported from the e-commerce plugin.', 'wpsso' );
+
+									$text .= '</p>';
+								}
 
 							} else {
+
+								$text = '<p class="pro-feature-msg">';
 
 								$text .= empty( $url[ 'purchase' ] ) ? '' : '<a href="' . $url[ 'purchase' ] . '">';
 
 								$text .= sprintf( __( 'An e-commerce plugin is active &ndash; product information may be imported by the %s plugin.', 'wpsso' ), $wpsso_name_pro );
 
 								$text .= empty( $url[ 'purchase' ] ) ? '' : '</a>';
-							}
 
-							$text .= '</p>';
+								$text .= '</p>';
+							}
 						}
 
 						break;
@@ -2930,7 +2945,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text .= __( 'Without your rating, a plugin you value and depend on could be deprecated prematurely.', 'wpsso' ) . ' ';
 
 						$text .= __( 'Don\'t let that happen - rate your active plugins now!', 'wpsso' ) . ' ';
-						
+
 						$text .= '</p>' . "\n";
 
 						break;

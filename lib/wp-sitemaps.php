@@ -85,7 +85,7 @@ if ( ! class_exists( 'WpssoWpSitemaps' ) ) {
 					) ) );
 
 					foreach ( $query->posts as $post_id ) {
-				
+
 						if ( $this->p->util->robots->is_noindex( 'post', $post_id ) ) {
 
 							$local_cache[ $post_type ][] = $post_id;
@@ -122,7 +122,7 @@ if ( ! class_exists( 'WpssoWpSitemaps' ) ) {
 					) ) );
 
 					foreach ( $query->terms as $term_id ) {
-				
+
 						if ( $this->p->util->robots->is_noindex( 'term', $term_id ) ) {
 
 							$local_cache[ $taxonomy ][] = $term_id;
@@ -161,7 +161,7 @@ if ( ! class_exists( 'WpssoWpSitemaps' ) ) {
 					$users = $query->get_results();
 
 					foreach ( $users as $user_id ) {
-				
+
 						if ( $this->p->util->robots->is_noindex( 'user', $user_id ) ) {
 
 							$local_cache[] = $user_id;

@@ -96,7 +96,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						'html' => '<style>#wp-admin-bar-wpsso-validate .disabled { opacity:0.5; filter:alpha(opacity=50); }</style>',
 					),
 				) );
-			
+
 				foreach ( $menu_items as $menu_item ) {
 
 					$wp_admin_bar->add_node( $menu_item );

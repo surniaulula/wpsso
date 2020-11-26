@@ -61,8 +61,8 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				),
 				'og_product_ecom_msg' => array(
 					'tr_class' => 'hide_og_type hide_og_type_product',
-					'table_row' => ( empty( $this->p->avail[ 'ecom' ][ 'any' ] ) ? '' :
-						'<td colspan="2">' . $this->p->msgs->get( 'pro-ecom-product-msg' ) . '</td>' ),
+					'table_row' => empty( $this->p->avail[ 'ecom' ][ 'any' ] ) ? '' :
+						'<td colspan="2">' . $this->p->msgs->get( 'pro-ecom-product-msg' ) . '</td>',
 				),
 				'og_product_category' => array(
 					'tr_class' => 'hide_og_type hide_og_type_product',
