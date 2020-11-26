@@ -335,6 +335,36 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				}
 			}
 
+			if ( empty( $this->p->avail[ 'p_ext' ][ 'wcmd' ] ) &&
+				empty( $this->p->avail[ 'ecom' ][ 'woo-add-gtin' ] ) &&
+				empty( $this->p->avail[ 'ecom' ][ 'wpm-product-gtin-wc' ] ) ) {
+
+				$notice_key = 'suggest-wpssowcmd-for-woocommerce';
+
+				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
+
+					$action_links = array();	// Init a new action array for the notice message.
+
+					$action_links[] = $this->get_install_activate_addon_link( 'wpssowcsdt' );
+
+					$info = $this->p->cf[ 'plugin' ][ 'wpssowcsdt' ];
+
+					$info_name_transl = _x( $info[ 'name' ], 'plugin name', 'wpsso' );
+
+					$notice_msg = __( 'Schema Product markup for Google Rich Results requires at least one unique product ID, like the product MPN (Manufacturer Part Number), UPC, EAN, GTIN, or ISBN.', 'wpsso' ) . ' ';
+
+					$notice_msg .= __( 'The product SKU (Stock Keeping Unit) from WooCommerce is not a unique product ID.', 'wpsso' ) . ' ';
+
+					$notice_msg .= sprintf( __( 'If you\'re not already using a plugin to manage unique product IDs for WooCommerce, you should activate the %s add-on.', 'wpsso' ), $info_name_transl ) . ' ';
+
+					$notice_msg .= '<ul><li>' . implode( $glue = '</li> <li>', $action_links ) . '</li></ul>' . ' ';
+
+					$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
+
+					return 1;	// Stop here.
+				}
+			}
+
 			if ( empty( $this->p->avail[ 'p_ext' ][ 'wcsdt' ] ) ) {
 
 				$notice_key = 'suggest-wpssowcsdt-for-woocommerce';

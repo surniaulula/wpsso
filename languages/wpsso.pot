@@ -3646,125 +3646,144 @@ msgid ""
 "tax prices, VAT prices, shipping rates, shipping times, and much, much more."
 msgstr ""
 
+#: lib/admin-head.php:354
+msgid ""
+"Schema Product markup for Google Rich Results requires at least one unique "
+"product ID, like the product MPN (Manufacturer Part Number), UPC, EAN, GTIN, "
+"or ISBN."
+msgstr ""
+
+#: lib/admin-head.php:356
+msgid ""
+"The product SKU (Stock Keeping Unit) from WooCommerce is not a unique "
+"product ID."
+msgstr ""
+
 #: lib/admin-head.php:358
+msgid ""
+"If you're not already using a plugin to manage unique product IDs for "
+"WooCommerce, you should activate the %s add-on."
+msgstr ""
+
+#: lib/admin-head.php:388
 msgid ""
 "Product shipping features are enabled in WooCommerce, but the %s add-on is "
 "not active."
 msgstr ""
 
-#: lib/admin-head.php:361
+#: lib/admin-head.php:391
 msgid ""
 "Adding shipping details to your Schema Product markup is especially "
 "important if you offer free or low-cost shipping options as this will make "
 "your products more appealing in Google search results."
 msgstr ""
 
-#: lib/admin-head.php:384
+#: lib/admin-head.php:414
 msgid "Purchase the %s plugin."
 msgstr ""
 
-#: lib/admin-head.php:399
+#: lib/admin-head.php:429
 msgid "Activate the %s add-on."
 msgstr ""
 
-#: lib/admin-head.php:405
+#: lib/admin-head.php:435
 msgid "Install and activate the %s add-on."
 msgstr ""
 
-#: lib/admin-head.php:503
+#: lib/admin-head.php:533
 msgid "Yes! Rate %s 5 stars!"
 msgstr ""
 
-#: lib/admin-head.php:505
+#: lib/admin-head.php:535
 msgid "I've already rated %s."
 msgstr ""
 
-#: lib/admin-head.php:507 lib/admin-head.php:510 lib/admin-head.php:625
+#: lib/admin-head.php:537 lib/admin-head.php:540 lib/admin-head.php:655
 msgid "Awesome!"
 msgstr ""
 
-#: lib/admin-head.php:508
+#: lib/admin-head.php:538
 msgid "Thank you for rating the %s plugin!"
 msgstr ""
 
-#: lib/admin-head.php:511
+#: lib/admin-head.php:541
 msgid "Thank you for supporting and encouraging your developers!"
 msgstr ""
 
-#: lib/admin-head.php:534 lib/admin-head.php:654
+#: lib/admin-head.php:564 lib/admin-head.php:684
 msgid "Fantastic!"
 msgstr ""
 
-#: lib/admin-head.php:536
+#: lib/admin-head.php:566
 msgid "You've been using %s for a while now, which is awesome!"
 msgstr ""
 
-#: lib/admin-head.php:542 lib/admin-head.php:661
+#: lib/admin-head.php:572 lib/admin-head.php:691
 msgid ""
 "We've put many years of time and effort into making %s and its add-ons the "
 "best possible."
 msgstr ""
 
-#: lib/admin-head.php:552
+#: lib/admin-head.php:582
 msgid ""
 "Now that you've been using %s for a while, it would help tremendously if you "
 "could rate it on WordPress.org."
 msgstr ""
 
-#: lib/admin-head.php:555 lib/messages.php:2939
+#: lib/admin-head.php:585 lib/messages.php:2939
 msgid ""
 "Great ratings are an excellent way to ensure the continued development of "
 "your favorite plugins."
 msgstr ""
 
-#: lib/admin-head.php:561 lib/messages.php:2945
+#: lib/admin-head.php:591 lib/messages.php:2945
 msgid ""
 "Without your rating, a plugin you value and depend on could be deprecated "
 "prematurely."
 msgstr ""
 
-#: lib/admin-head.php:563
+#: lib/admin-head.php:593
 msgid "Don't let that happen - rate %s now!"
 msgstr ""
 
-#: lib/admin-head.php:599
+#: lib/admin-head.php:629
 msgid "two months"
 msgstr ""
 
-#: lib/admin-head.php:621
+#: lib/admin-head.php:651
 msgid "Yes! I'd like to get the %s version!"
 msgstr ""
 
-#: lib/admin-head.php:623
+#: lib/admin-head.php:653
 msgid "No thanks. I'll stay with the %s version."
 msgstr ""
 
-#: lib/admin-head.php:626
+#: lib/admin-head.php:656
 msgid ""
 "Thank you for encouraging and supporting the continued development of %s."
 msgstr ""
 
-#: lib/admin-head.php:629
+#: lib/admin-head.php:659
 msgid "Thank you."
 msgstr ""
 
-#: lib/admin-head.php:630
+#: lib/admin-head.php:660
 msgid ""
 "Hopefully you'll change your mind in the future and help support the "
 "continued development of %s."
 msgstr ""
 
-#: lib/admin-head.php:656
+#: lib/admin-head.php:686
 msgid "You've been using %1$s for more than %2$s now, which is awesome!"
 msgstr ""
 
-#: lib/admin-head.php:664
+#: lib/admin-head.php:694
 msgid ""
 "I hope you've enjoyed all the new features, improvements and updates over "
 "the past %s."
 msgstr ""
 
-#: lib/admin-head.php:669
+#: lib/admin-head.php:699
 msgid ""
 "Have you thought about purchasing the %s version? It comes with a lot of "
 "great extra features!"

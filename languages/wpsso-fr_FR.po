@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 8.14.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-11-26 06:43-0800\n"
-"PO-Revision-Date: 2020-11-26 06:45-0800\n"
+"POT-Creation-Date: 2020-11-26 07:27-0800\n"
+"PO-Revision-Date: 2020-11-26 07:30-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3278,107 +3278,119 @@ msgstr "L'extension WooCommerce est reconnue pour offrir un balisage de schéma 
 msgid "The %1$s plugin (required for WooCommerce integration) and its %2$s add-on provide a much better solution by offering complete product meta tags for Facebook / Pinterest, and complete Schema product markup for Google Rich Results &mdash; including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more."
 msgstr "L'extension %1$s (requis pour l'intégration de WooCommerce) et son ajout %2$s fournissent une bien meilleure solution en offrant des balises méta de produit complètes pour Facebook / Pinterest et un balisage de produit de Schéma complet pour les résultats enrichis Google &mdash; y compris des images de produit supplémentaires, des variantes de produit, des informations additionnelles sur le produit (marque, couleur, état, EAN, dimensions, GTIN-8/12/13/14, ISBN, matériel, MPN, taille, SKU, volume, poids, etc.), critiques de produits, évaluations de produits, dates de début / fin de vente, prix de vente, prix hors taxes, prix avec TVA, tarifs d'expédition, délais d'expédition, et bien plus encore."
 
+#: lib/admin-head.php:354
+msgid "Schema Product markup for Google Rich Results requires at least one unique product ID, like the product MPN (Manufacturer Part Number), UPC, EAN, GTIN, or ISBN."
+msgstr "Le balisage de produit de Schéma pour les résultats enrichis Google nécessite au moins un ID de produit unique, tel que le MPN (numéro de pièce du fabricant), l'UPC, l'EAN, le GTIN ou l'ISBN du produit."
+
+#: lib/admin-head.php:356
+msgid "The product SKU (Stock Keeping Unit) from WooCommerce is not a unique product ID."
+msgstr "Le SKU du produit (unité de gestion des stocks) de WooCommerce n'est pas un ID de produit unique."
+
 #: lib/admin-head.php:358
+msgid "If you're not already using a plugin to manage unique product IDs for WooCommerce, you should activate the %s add-on."
+msgstr "Si vous n'utilisez pas déjà une extension pour gérer les ID de produit uniques pour WooCommerce, vous pouvez activer l'ajout %s."
+
+#: lib/admin-head.php:388
 msgid "Product shipping features are enabled in WooCommerce, but the %s add-on is not active."
 msgstr "Les fonctionnalités d'expédition des produits sont activées dans WooCommerce, mais l'ajout %s n'est pas actif."
 
-#: lib/admin-head.php:361
+#: lib/admin-head.php:391
 msgid "Adding shipping details to your Schema Product markup is especially important if you offer free or low-cost shipping options as this will make your products more appealing in Google search results."
 msgstr "L'ajout de détails d'expédition à votre balisage de produit de Schéma est particulièrement important si vous proposez des options d'expédition gratuites ou à faible coût, car cela rendra vos produits plus attrayants dans les résultats de recherche Google."
 
-#: lib/admin-head.php:384
+#: lib/admin-head.php:414
 msgid "Purchase the %s plugin."
 msgstr "Acheter l'extension %s."
 
-#: lib/admin-head.php:399
+#: lib/admin-head.php:429
 msgid "Activate the %s add-on."
 msgstr "Activer l'ajout %s."
 
-#: lib/admin-head.php:405
+#: lib/admin-head.php:435
 msgid "Install and activate the %s add-on."
 msgstr "Installer et activer l'ajout %s."
 
-#: lib/admin-head.php:503
+#: lib/admin-head.php:533
 msgid "Yes! Rate %s 5 stars!"
 msgstr "Oui! Noter %s 5 étoiles!"
 
-#: lib/admin-head.php:505
+#: lib/admin-head.php:535
 msgid "I've already rated %s."
 msgstr "J'ai déjà noté %s."
 
-#: lib/admin-head.php:507 lib/admin-head.php:510 lib/admin-head.php:625
+#: lib/admin-head.php:537 lib/admin-head.php:540 lib/admin-head.php:655
 msgid "Awesome!"
 msgstr "Excellent!"
 
-#: lib/admin-head.php:508
+#: lib/admin-head.php:538
 msgid "Thank you for rating the %s plugin!"
 msgstr "Merci d'avoir noté l'extension %s!"
 
-#: lib/admin-head.php:511
+#: lib/admin-head.php:541
 msgid "Thank you for supporting and encouraging your developers!"
 msgstr "Merci de soutenir et d'encourager vos développeurs!"
 
-#: lib/admin-head.php:534 lib/admin-head.php:654
+#: lib/admin-head.php:564 lib/admin-head.php:684
 msgid "Fantastic!"
 msgstr "Fantastique!"
 
-#: lib/admin-head.php:536
+#: lib/admin-head.php:566
 msgid "You've been using %s for a while now, which is awesome!"
 msgstr "Vous utilisez %s depuis un moment déjà, ce qui est génial!"
 
-#: lib/admin-head.php:542 lib/admin-head.php:661
+#: lib/admin-head.php:572 lib/admin-head.php:691
 msgid "We've put many years of time and effort into making %s and its add-ons the best possible."
 msgstr "Nous avons mis plusieurs années et beaucoup d'efforts à faire %s et ses ajouts les meilleurs possibles."
 
-#: lib/admin-head.php:552
+#: lib/admin-head.php:582
 msgid "Now that you've been using %s for a while, it would help tremendously if you could rate it on WordPress.org."
 msgstr "Maintenant que vous utilisez %s depuis un certain temps, cela aiderait énormément si vous pouviez l'évaluer sur WordPress.org."
 
-#: lib/admin-head.php:555 lib/messages.php:2939
+#: lib/admin-head.php:585 lib/messages.php:2939
 msgid "Great ratings are an excellent way to ensure the continued development of your favorite plugins."
 msgstr "De bonnes notes sont un excellent moyen d'assurer le développement continu de vos extensions préférées."
 
-#: lib/admin-head.php:561 lib/messages.php:2945
+#: lib/admin-head.php:591 lib/messages.php:2945
 msgid "Without your rating, a plugin you value and depend on could be deprecated prematurely."
 msgstr "Sans votre note, une extension que vous appréciez et dont vous dépendez pourrait être abandonnée prématurément."
 
-#: lib/admin-head.php:563
+#: lib/admin-head.php:593
 msgid "Don't let that happen - rate %s now!"
 msgstr "Ne laissez pas cela arriver - notez %s maintenant!"
 
-#: lib/admin-head.php:599
+#: lib/admin-head.php:629
 msgid "two months"
 msgstr "deux mois"
 
-#: lib/admin-head.php:621
+#: lib/admin-head.php:651
 msgid "Yes! I'd like to get the %s version!"
 msgstr "Oui! J'aimerais avoir la version %s!"
 
-#: lib/admin-head.php:623
+#: lib/admin-head.php:653
 msgid "No thanks. I'll stay with the %s version."
 msgstr "Non merci. Je vais rester avec la version %s."
 
-#: lib/admin-head.php:626
+#: lib/admin-head.php:656
 msgid "Thank you for encouraging and supporting the continued development of %s."
 msgstr "Merci d'avoir encouragé et soutenu le développement continu de %s."
 
-#: lib/admin-head.php:629
+#: lib/admin-head.php:659
 msgid "Thank you."
 msgstr "Merci."
 
-#: lib/admin-head.php:630
+#: lib/admin-head.php:660
 msgid "Hopefully you'll change your mind in the future and help support the continued development of %s."
 msgstr "J'espère que vous changerez d'avis dans le futur et que vous aiderez à soutenir le développement de %s."
 
-#: lib/admin-head.php:656
+#: lib/admin-head.php:686
 msgid "You've been using %1$s for more than %2$s now, which is awesome!"
 msgstr "Vous utilisez %1$s depuis plus de %2$s déjà, ce qui est génial!"
 
-#: lib/admin-head.php:664
+#: lib/admin-head.php:694
 msgid "I hope you've enjoyed all the new features, improvements and updates over the past %s."
 msgstr "J'espère que vous avez aimé toutes les nouvelles fonctionnalités, améliorations et mises à jour au cours des derniers %s."
 
-#: lib/admin-head.php:669
+#: lib/admin-head.php:699
 msgid "Have you thought about purchasing the %s version? It comes with a lot of great extra features!"
 msgstr "Avez-vous pensé à acheter la version %s? Elle offre de nombreuses fonctionnalités supplémentaires!"
 
