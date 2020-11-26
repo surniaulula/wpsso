@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 8.14.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-11-26 07:27-0800\n"
-"PO-Revision-Date: 2020-11-26 07:30-0800\n"
+"POT-Creation-Date: 2020-11-26 10:46-0800\n"
+"PO-Revision-Date: 2020-11-26 10:46-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -15,358 +15,353 @@ msgstr ""
 
 #: gettext/gettext-html-setup.php:6
 msgctxt "html header"
-msgid "Integration Notes"
-msgstr "Notes d'intégration"
-
-#: gettext/gettext-html-setup.php:7
-msgctxt "html header"
 msgid "Business Social Accounts (Optional)"
 msgstr "Comptes sociaux d'entreprise (facultatif)"
 
-#: gettext/gettext-html-setup.php:8
+#: gettext/gettext-html-setup.php:7
 msgctxt "html header"
 msgid "Author Social Accounts (Optional)"
 msgstr "Comptes sociaux des auteurs (facultatif)"
 
-#: gettext/gettext-html-setup.php:9
+#: gettext/gettext-html-setup.php:8
 msgctxt "html header"
 msgid "Review Essential Settings"
 msgstr "Parcourez les réglages essentiels"
 
-#: gettext/gettext-html-setup.php:10
+#: gettext/gettext-html-setup.php:9
 msgctxt "html header"
 msgid "Keep an Eye on Notifications"
 msgstr "Gardez un œil sur les notifications"
 
-#: gettext/gettext-html-setup.php:11
+#: gettext/gettext-html-setup.php:10
 msgctxt "html header"
 msgid "Schema Markup vs Google Rich Results"
 msgstr "Balisage de Schéma vs résultats enrichis Google"
 
-#: gettext/gettext-html-setup.php:12
+#: gettext/gettext-html-setup.php:11
 msgctxt "html header"
 msgid "Social and Search Image Sizes"
 msgstr "Tailles d'images sociales et de recherche"
 
-#: gettext/gettext-html-setup.php:13
+#: gettext/gettext-html-setup.php:12
 msgctxt "html header"
 msgid "Cropped or Uncropped?"
 msgstr "Recadrée ou non recadrée?"
 
-#: gettext/gettext-html-setup.php:14
+#: gettext/gettext-html-setup.php:13
 msgctxt "html header"
 msgid "Upscale (Enlarge) Images?"
 msgstr "Agrandir les images?"
 
-#: gettext/gettext-html-setup.php:15
+#: gettext/gettext-html-setup.php:14
 msgctxt "html header"
 msgid "Validation Tools"
 msgstr "Outils de validation"
 
-#: gettext/gettext-html-setup.php:16
+#: gettext/gettext-html-setup.php:15
 msgctxt "html header"
 msgid "Interface and General Usage"
 msgstr "Interface et utilisation générale"
 
-#: gettext/gettext-html-setup.php:17
+#: gettext/gettext-html-setup.php:16
 msgctxt "html header"
 msgid "Documentation and Resources"
 msgstr "Documentation et ressources"
 
-#: gettext/gettext-html-setup.php:18
+#: gettext/gettext-html-setup.php:17
 msgctxt "html header"
 msgid "Frequently Asked Questions"
 msgstr "Questions fréquemment posées"
 
-#: gettext/gettext-html-setup.php:19
+#: gettext/gettext-html-setup.php:18
 msgctxt "html header"
 msgid "BuddyPress Integration"
 msgstr "Intégration BuddyPress"
 
-#: gettext/gettext-html-setup.php:20
+#: gettext/gettext-html-setup.php:19
 msgctxt "html header"
 msgid "WooCommerce Integration"
 msgstr "Intégration WooCommerce"
 
-#: gettext/gettext-html-setup.php:21
+#: gettext/gettext-html-setup.php:20
 msgctxt "html header"
 msgid "Developers and WebSite Designers"
 msgstr "Développeurs et concepteurs de sites Web"
 
-#: gettext/gettext-html-setup.php:22
+#: gettext/gettext-html-setup.php:21
 msgctxt "html paragraph"
 msgid "Taking the time to read this Setup Guide and review the plugin Essential Settings page will help your click-through rates and rankings in Google search results."
 msgstr "Prendre le temps de lire ce guide de configuration et de consulter la page des Réglages essentiels de l'extension vous aidera à améliorer vos taux de clics et votre classement dans les résultats de recherche Google."
 
-#: gettext/gettext-html-setup.php:23
-msgctxt "html paragraph"
-msgid "If you use the WooCommerce plugin, don't miss the <a href=\"#documentation-and-resources\">Documentation and Resources section bellow</a> for additional WooCommerce integration notes."
-msgstr "Si vous utilisez l'extension WooCommerce, ne manquez pas la <a href=\"#documentation-and-resources\">section Documentation et ressources ci-dessous</a> pour des notes d'intégration additionnelles pour WooCommerce."
-
-#: gettext/gettext-html-setup.php:24
+#: gettext/gettext-html-setup.php:22
 msgctxt "html paragraph"
 msgid "If you haven't already done so, create a Facebook Page and Twitter account for your business / website. You can enter all your business / website social account information in the <em><strong>SSO &gt; Social Pages</strong></em> settings page. The social account URLs are used by WPSSO Core for Open Graph and Schema meta tag values, along with Schema Organization markup in JSON-LD format (which may appear in Google Search results to highlight your business / website social pages)."
 msgstr "Si vous ne l'avez pas déjà fait, créez une page Facebook et un compte Twitter pour votre entreprise / site Web. Vous pouvez saisir toutes les informations relatives au compte social de votre entreprise / site Web dans la page des réglages <em><strong>SSO &gt; Pages sociales</strong></em>. Les URL des comptes sociaux sont utilisées par WPSSO Core pour les valeurs de balise méta Open Graph et de Schéma, ainsi que le balisage d'Organisation de Schéma en format JSON-LD (qui peut apparaître dans les résultats de recherche Google pour mettre en évidence les pages sociales de votre entreprise / site Web)."
 
-#: gettext/gettext-html-setup.php:25
+#: gettext/gettext-html-setup.php:23
 msgctxt "html paragraph"
 msgid "<strong>Related information:</strong>"
 msgstr "<strong>Informations connexes:</strong>"
 
-#: gettext/gettext-html-setup.php:26
+#: gettext/gettext-html-setup.php:24
 msgctxt "html paragraph"
 msgid "Ask your content authors to enter their Facebook and Twitter contact information in their WordPress user profile page. Each author's contact information can appear in various meta tags and Schema JSON-LD markup for Facebook, Twitter, and Google, but only if they complete their user profile."
 msgstr "Demandez à vos auteurs de contenu de saisir leurs coordonnées Facebook et Twitter dans leur page de profil utilisateur WordPress. Les informations de contact de chaque auteur peuvent apparaître dans diverses balises meta et le balisage Schéma JSON-LD pour Facebook, Twitter et Google, mais uniquement s'ils complètent leur profil utilisateur."
 
-#: gettext/gettext-html-setup.php:27
+#: gettext/gettext-html-setup.php:25
 msgctxt "html paragraph"
 msgid "Review the website description on the <em><strong>SSO &gt; Essential Settings</strong></em> page and select a default image ID or URL. The default image is used for index / archive pages, and as a fallback for posts and pages that do not have a suitable custom image, featured image, attached image, or an image available in their content."
 msgstr "Consultez la description du site Web sur la page <em><strong>SSO &gt; Réglages essentiels</strong></em> et sélectionnez un ID d'image ou une URL par défaut. L'image par défaut est utilisée pour les pages d'index / d'archive et comme solution de secours pour les articles et les pages qui n'ont pas d'image personnalisée appropriée, d'image en vedette, d'image jointe ou une image disponible dans leur contenu."
 
-#: gettext/gettext-html-setup.php:28
+#: gettext/gettext-html-setup.php:26
 msgctxt "html paragraph"
 msgid "<strong>Do not forget to submit a few example posts / pages to the validation tools mentioned below.</strong> Some markup formats, like Pinterest Rich Pins, must be requested / enabled when submitting an example post / page to their validation tool."
 msgstr "<strong>N'oubliez pas de soumettre quelques exemples d'articles / pages aux outils de validation mentionnés ci-dessous.</strong> Certains formats de balisage, comme les épingles riches Pinterest, doivent être demandés / activés lors de la soumission d'un exemple d'article / de page à leur outil de validation."
 
-#: gettext/gettext-html-setup.php:29
+#: gettext/gettext-html-setup.php:27
 msgctxt "html paragraph"
 msgid "WPSSO Core and its complementary add-ons attempt to keep notifications to a minimum, issuing only informational, warning, or error notifications when required. Messages from the default WordPress notication system can feel intrusive and over-used, and are not compatible with the new block editor in WordPress v5, so WPSSO Core includes its own (more discreet) notification system in the top toolbar."
 msgstr "WPSSO Core et ses modules complémentaires tentent de réduire au minimum les notifications, en émettant uniquement des notifications d'information, d'avertissement ou d'erreur lorsque cela est nécessaire. Les messages du système de notification WordPress par défaut peuvent sembler intrusifs et sur-utilisés, et ne sont pas compatibles avec le nouvel éditeur de blocs de WordPress v5, donc WPSSO Core inclut son propre système de notification (plus discret) dans la barre d'outils supérieure."
 
-#: gettext/gettext-html-setup.php:30
+#: gettext/gettext-html-setup.php:28
 msgctxt "html paragraph"
 msgid "Look for the SSO notification icon in the top toolbar - by default, it will be grey with a 0 count. If there are notifications, the count will increase, and the SSO icon be shown on a red, yellow, or blue background. WPSSO notifications are context sensitive - they relate to the content shown in the current webpage."
 msgstr "Recherchez l'icône de notification SSO dans la barre d'outils supérieure - par défaut, elle sera grise avec un décompte de 0. S'il y a des notifications, le nombre augmentera et l'icône SSO sera affichée sur un fond rouge, jaune ou bleu. Les notifications WPSSO sont sensibles au contexte - elles se rapportent au contenu affiché dans la page Web actuelle."
 
-#: gettext/gettext-html-setup.php:31
+#: gettext/gettext-html-setup.php:29
 msgctxt "html paragraph"
 msgid "Schema (aka \"Schema.org\") is a collaborative, community lead standard for structured data markup. Schema markup is classified by type, and each type is associated with a set of properties. The types are arranged in a hierarchy and <a href=\"https://schema.org/docs/schemas.html\">the current Schema vocabulary consists of 841 types, 1369 properties, and 352 enumeration values</a>. The Schema vocabulary can be used with many different encodings, including meta tags, RDFa, Microdata, and JSON-LD. WPSSO Core adds Schema markup to webpages using meta tags for Pinterest and other social crawlers. The <a href=\"https://wordpress.org/plugins/wpsso-schema-json-ld/\">WPSSO Schema JSON-LD Markup add-on</a> is required to provide additional markup using JSON-LD encoding for Google and other search engines."
 msgstr "Le Schéma (alias «Schema.org») est une norme de collaboration et de direction communautaire pour le balisage de données structurées. Le balisage de Schéma est classé par type et chaque type est associé à un ensemble de propriétés. Les types sont organisés dans une hiérarchie et <a href=\"https://schema.org/docs/schemas.html\">le vocabulaire de Schéma actuel comprend 841 types, 1369 propriétés et 352 valeurs d'énumération</a>. Le vocabulaire de Schéma peut être utilisé avec de nombreux encodages différents, y compris les balises méta, RDFa, Microdata et JSON-LD. WPSSO Core ajoute un balisage de Schéma aux pages Web à l'aide de balises méta pour Pinterest et d'autres robots sociaux. <a href=\"https://wordpress.org/plugins/wpsso-schema-json-ld/\">L'ajout WPSSO balisage JSON-LD de Schéma</a> est requis pour fournir un balisage supplémentaire à l'aide du codage JSON-LD pour Google et autres moteurs de recherche."
 
-#: gettext/gettext-html-setup.php:32
+#: gettext/gettext-html-setup.php:30
 msgctxt "html paragraph"
 msgid "<a href=\"https://developers.google.com/search/docs/guides/intro-structured-data\">Google Rich Results are a set of requirements for a small selection of Schema types</a>, which includes specific images dimensions, a limited set of values for some Schema properties, limited Schema types for some property relations, and more. Google Rich Results require several layers of related markup (aka a multi-dimensional arrays) that must be expressed using JSON-LD in the webpage head section (preferred by Google), or with RDFa / Microdata markup in theme templates (deprecated standards)."
 msgstr "<a href=\"https://developers.google.com/search/docs/guides/intro-structured-data\"> Les résultats enrichis Google sont un ensemble d'exigences pour une petite sélection de types de schémas </a>, qui comprend des dimensions d'images spécifiques, un ensemble limité de valeurs pour certaines propriétés de schéma, des types de schéma limités pour certaines relations de propriété, etc. Les résultats enrichis Google nécessite plusieurs couches de balisage associé (alias des tableaux multidimensionnels) qui doivent être exprimés à l'aide de JSON-LD dans la section d'en-tête de page Web (préférée par Google), ou avec le balisage RDFa / Microdata dans les modèles de thème (normes obsolètes)."
 
-#: gettext/gettext-html-setup.php:33
+#: gettext/gettext-html-setup.php:31
 msgctxt "html paragraph"
 msgid "If your theme templates do not provide RDFa / Microdata markup for Google Rich Results, you should enable the <a href=\"https://wordpress.org/plugins/wpsso-schema-json-ld/\">WPSSO Schema JSON-LD Markup add-on</a>. If your theme templates include incomplete or incorrect RDFa / Microdata markup (a common problem), you should enable both the WPSSO Schema JSON-LD Markup add-on and the <a href=\"https://wordpress.org/plugins/wpsso-strip-schema-microdata/\">WPSSO Strip Schema Microdata add-on</a> to also remove the incomplete or incorrect Microdata markup."
 msgstr "Si vos modèles de thème ne fournissent pas de balisage RDFa / microdonnées pour les résultats enrichis Google, vous pouvez activer <a href=\"https://wordpress.org/plugins/wpsso-schema-json-ld/\">l'ajout WPSSO balisage JSON-LD de Schéma</a>. Si vos modèles de thème incluent un balisage RDFa / microdonnées incomplet ou incorrect (un problème courant), vous devez activer à la fois l'ajout WPSSO balisage JSON-LD de Schéma et <a href=\"https://wordpress.org/plugins/wpsso-strip-schema-microdata/\">l'ajout WPSSO supprimer microdonnées de Schéma</a> pour également supprimer le balisage de microdonnées incomplet ou incorrect."
 
-#: gettext/gettext-html-setup.php:34
+#: gettext/gettext-html-setup.php:32
 msgctxt "html paragraph"
 msgid "<strong>Not sure if your theme templates already provide markup for Google rich results?</strong> Submit a post or page URL from your website to the <a href=\"https://search.google.com/test/rich-results\">Google Rich Results Test Tool</a> or the <a href=\"https://search.google.com/structured-data/testing-tool/u/0/\">Google Structured Data Test Tool</a>, and compare the results before / after enabling the <a href=\"https://wordpress.org/plugins/wpsso-schema-json-ld/\">WPSSO Schema JSON-LD Markup add-on</a>. Between checks, don't forget to clear the cache of any caching plugin or service you may be using, along with clearing the WPSSO cache in the <em><strong>SSO &gt; Tools and Actions</strong></em> settings page. ;-)"
 msgstr "<strong>Vous ne savez pas si vos modèles de thème fournissent déjà un balisage pour les résultats enrichis Google?</strong> Soumettez une URL d'article ou de page de votre site Web au <a href=\"https://search.google.com/test/rich-results\">test de résultats riches Google</a> ou l'<a href=\"https://search.google.com/structured-data/testing-tool/u/0/\">outil de test des données structurées de Google</a> et comparez les résultats avant / après l'activation de <a href=\"https://wordpress.org/plugins/wpsso-schema-json-ld/\">l'ajout WPSSO balisage JSON-LD de Schéma</a>. Entre les vérifications, n'oubliez pas de vider le cache de toute extension ou service de mise en cache que vous utilisez, ainsi que de vider le cache WPSSO dans la page de réglages <em><strong>SSO &gt; Outils et actions</strong></em>. ;-)"
 
-#: gettext/gettext-html-setup.php:35
+#: gettext/gettext-html-setup.php:33
 msgctxt "html paragraph"
 msgid "<strong>The difference between a cropped and uncropped image size is important to understand.</strong> When resizing and cropping an image, it will be resized so that both sides meet or exceed the image dimensions requested, and the excess width or height will be trimmed. The resulting image will match the required dimensions <em>exactly</em> (having sacrificed parts of the image). When resizing without cropping, the original aspect ratio is preserved and no parts of the image are sacrificed. The image will be resized so that both the width and height will fit <em>within</em> the requested width and height - meaning that only one side of the image will match the requested dimensions."
 msgstr "<strong>Il est important de comprendre la différence entre une taille d'image recadrée et non recadrée.</strong> Lors du redimensionnement et du recadrage d'une image, celle-ci sera redimensionnée de sorte que les deux côtés atteignent ou dépassent les dimensions de l'image demandées, et la largeur ou la hauteur excédentaire seront coupées. L'image résultante correspondra aux dimensions requises <em>exactement</em> (après avoir sacrifié des parties de l'image). Lors du redimensionnement sans recadrage, le rapport hauteur / largeur d'origine est conservé et aucune partie de l'image n'est sacrifiée. L'image sera redimensionnée de manière à ce que la largeur et la hauteur correspondent <em>dans</em> la largeur et la hauteur demandées - ce qui signifie qu'un seul côté de l'image correspondra aux dimensions demandées."
 
-#: gettext/gettext-html-setup.php:36
+#: gettext/gettext-html-setup.php:34
 msgctxt "html paragraph"
 msgid "Most social and search sites automatically crop images to fit within a specific size container - for example, Facebook shows link share images within a 600x315px container. By offering pre-cropped images of the correct dimension, site owners can control how images are cropped, instead of letting social and search sites crop images automatically (and sometimes incorrectly)."
 msgstr "La plupart des sites sociaux et de recherche recadrent automatiquement les images pour les adapter à un conteneur de taille spécifique - par exemple, Facebook affiche des images de partage de liens dans un conteneur de 600x315px. En proposant des images pré-recadrées de la bonne dimension, les propriétaires de sites peuvent contrôler la façon dont les images sont recadrées, au lieu de laisser les sites sociaux et de recherche recadrer les images automatiquement (et parfois de manière incorrecte)."
 
-#: gettext/gettext-html-setup.php:37
+#: gettext/gettext-html-setup.php:35
 msgctxt "html paragraph"
 msgid "<strong>WordPress does not upscale (enlarge) images.</strong> WordPress can only create smaller images from larger full size originals. Upscaled images do not look as sharp or clear, and if upscaled too much, will look fuzzy and unappealing - not something you want to promote on social and search sites. WPSSO Core Premium includes an optional module to allow upscaling of WordPress Media Library images (up to a maximum upscale percentage). For example, a full size image of 100x200px could be upscaled up to 150x300px using a maximum upscaling value of 50%, but trying to resize any larger than this would fail. If you feel strongly that upscaling small images is something you require (instead of uploading larger full size originals), you can enable the <em><strong>SSO > Advanced Settings > Integration > Upscale Media Library Images</strong></em> option."
 msgstr "<strong>WordPress n'agrandit pas les images.</strong> WordPress ne peut créer que des images plus petites à partir d'originaux de plus grande taille. Les images agrandies ne semblent pas aussi nettes ou claires, et si elles sont trop agrandies, elles auront l'air floues et peu attrayantes - pas quelque chose que vous souhaitez promouvoir sur les sites sociaux et de recherche. WPSSO Core Premium comprend un module optionnel pour permettre l'agrandissement des images de la médiathèque WordPress (jusqu'à un pourcentage d'agrandissement maximal). Par exemple, une image pleine taille de 100x200px pourrait être agrandie jusqu'à 150x300px en utilisant une valeur d'agrandissement maximale de 50%, mais essayer de redimensionner plus grand que cela échouerait. Si vous pensez que l’agrandissement de petites images est quelque chose dont vous avez besoin (au lieu de télécharger des originaux de plus grande taille), vous pouvez activer l'option <em><strong>SSO &gt; Paramètres avancés &gt; Intégration &gt; Agrandir les images de la médiathèque</strong></em>."
 
-#: gettext/gettext-html-setup.php:38
+#: gettext/gettext-html-setup.php:36
 msgctxt "html paragraph"
 msgid "Submit a few sample posts, pages, etc. to the <a href=\"https://developers.facebook.com/tools/debug/\">Facebook Sharing Debugger</a> to verify your Open Graph meta tags. A link to the Facebook debugger is available under the Validate tab in the Document SSO metabox (on post, term, and user editing pages). Submitting a URL to the Facebook debugger can also be used to clear Facebook's cache (after clicking the \"Fetch new scrape information\" button). If you're validating older posts / pages, pre-dating the activation of WPSSO Core, note that <a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/\">Facebook may continue to use the old meta tag values from its cache</a>, even after fetching the new scrape information."
 msgstr "Soumettez quelques exemples d'articles, de pages, etc. au <a href=\"https://developers.facebook.com/tools/debug/\">Débogueur de partage Facebook</a> pour vérifier vos balises méta Open Graph. Un lien vers le débogueur Facebook est disponible sous l'onglet Valider dans la métabox Document SSO (sur les pages d'édition d'articles, termes et utilisateurs). La soumission d'une URL au débogueur de Facebook peut également être utilisée pour vider le cache de Facebook (après avoir cliqué sur le bouton «Scrape Again»). Si vous validez des articles / pages plus anciens, avant l'activation de WPSSO Core, notez que <a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/\">Facebook peut continuer à utiliser les anciennes valeurs de balises méta de son cache</a>, même après avoir récupéré les nouvelles informations avec le bouton «Scrape Again»."
 
-#: gettext/gettext-html-setup.php:39
+#: gettext/gettext-html-setup.php:37
 msgctxt "html paragraph"
 msgid "Submit an example post or page to the <a href=\"http://developers.pinterest.com/rich_pins/validator/\">Pinterest Rich Pins Validator</a>. Note that the Pinterest validator recognizes only known Rich Pin types (article, recipe, product, etc.) - your home page and WordPress archive pages are generally not valid Rich Pin types. If you haven't already requested Rich Pin approval from Pinterest for your website, you can submit a request when validating your first example post or page."
 msgstr "Soumettez un exemple d'article ou de page au <a href=\"http://developers.pinterest.com/rich_pins/validator/\">Validateur Pinterest épingles riches</a>. Notez que le validateur Pinterest reconnaît uniquement les types Rich Pin connus (article, recette, produit, etc.) - votre page d'accueil et les pages d'archives WordPress ne sont généralement pas des types Rich Pin valides. Si vous n'avez pas encore demandé l'approbation de Rich Pin auprès de Pinterest pour votre site Web, vous pouvez soumettre une demande lors de la validation de votre premier exemple d'article ou de page."
 
-#: gettext/gettext-html-setup.php:40
+#: gettext/gettext-html-setup.php:38
 msgctxt "html paragraph"
 msgid "If you have activated the <a href=\"https://wordpress.org/plugins/wpsso-schema-json-ld/\">WPSSO Schema JSON-LD Markup add-on</a>, you can also submit URLs to the <a href=\"https://search.google.com/test/rich-results\">Google Rich Results Test Tool</a> or the <a href=\"https://search.google.com/structured-data/testing-tool/u/0/\">Google Structured Data Test Tool</a>. WPSSO Core includes all the meta tags that social sites need, along with Schema markup for Google's Knowledge Graph in the site home page, but to create Schema markup for your post / page content, you must activate the WPSSO Schema JSON-LD Markup add-on. Some Schema types may also require additional organization and/or location information from the <a href=\"https://wordpress.org/plugins/wpsso-organization/\">WPSSO Organization Markup add-on</a> and/or <a href=\"https://wordpress.org/plugins/wpsso-plm/\">WPSSO Place and Local SEO Markup add-on</a>."
 msgstr "Si vous avez activé l'<a href=\"https://wordpress.org/plugins/wpsso-schema-json-ld/\">ajout WPSSO balisage JSON-LD de Schema</a>, vous pouvez également soumettre des URL au <a href=\"https://search.google.com/test/rich-results\">test de résultats enrichis Google</a> ou l'<a href=\"https://search.google.com/structured-data/testing-tool/u/0/\">outil de test des données structurées de Google</a>. WPSSO Core inclut toutes les balises méta dont les sites sociaux ont besoin, ainsi que le balisage de Schéma pour le Knowledge Graph de Google dans la page d'accueil du site, mais pour créer un balisage de Schéma pour le contenu de vos articles / pages, vous devez activer l'ajout WPSSO balisage JSON-LD de Schéma. Certains types de schéma peuvent également nécessiter des informations d'organisation et / ou d'emplacement supplémentaires provenant de l'<a href=\"https://wordpress.org/plugins/wpsso-organization/\">ajout WPSSO balisage d'organisation</a> et / ou l'<a href=\"https://wordpress.org/plugins/wpsso-plm/\">ajout WPSSO balisage d'endroit et SEO local</a>."
 
-#: gettext/gettext-html-setup.php:41
+#: gettext/gettext-html-setup.php:39
 msgctxt "html paragraph"
 msgid "Submit a few index / archive webpages and post / page URLs to the <a href=\"https://validator.w3.org/\">W3C Markup Validator</a> to verify the HTML of your theme templates. Social and search engine crawlers expect properly formatted HTML that conforms to current HTML / XHTML standards. If your webpages contain serious HTML markup errors, social and search crawlers may be unable to read your meta tags and Schema markup. You should report any template HTML markup errors to your theme author."
 msgstr "Soumettez quelques pages Web d'index / d'archivage et des URL d'articles / de pages au <a href=\"https://validator.w3.org/\">validateur W3C de balisage</a> pour vérifier le code HTML de vos modèles de thème. Les robots d'exploration des réseaux sociaux et des moteurs de recherche nécessitent un HTML correctement formaté et conforme aux normes HTML / XHTML actuelles. Si vos pages Web contiennent de graves erreurs de balisage HTML, les robots d'exploration des réseaux sociaux et de recherche risquent de ne pas pouvoir lire vos balises méta et votre balisage de Schéma. Vous devriez signaler toute erreur de balisage HTML de modèle à l'auteur de votre thème."
 
-#: gettext/gettext-html-setup.php:42
+#: gettext/gettext-html-setup.php:40
 msgctxt "html paragraph"
 msgid "<strong>Validators:</strong>"
 msgstr "<strong>Validateurs:</strong>"
 
-#: gettext/gettext-html-setup.php:43
+#: gettext/gettext-html-setup.php:41
 msgctxt "html paragraph"
 msgid "On most WordPress admin pages you'll find a \"Screen Options\" drop-down tab on the upper right-hand side of the page. You can use these screen options to include / exclude specific metaboxes and columns from the current page. For example, when viewing the posts or pages list you can use the \"Screen Options\" drop-down to hide / view the \"Schema\" and \"SSO Image\" columns. You can also enable / disable these columns globally under the <em><strong>SSO &gt; Advanced Settings &gt; Interface</strong></em> tab."
 msgstr "Sur la plupart des pages d'administration de WordPress, vous trouverez un onglet déroulant \"Options d'écran\" en haut à droite de la page. Vous pouvez utiliser ces options d'écran pour inclure / exclure des métabox et des colonnes spécifiques de la page actuelle. Par exemple, lorsque vous affichez la liste des articles ou des pages, vous pouvez utiliser la liste déroulante «Options d'écran» pour masquer / afficher les colonnes «Schéma» et «Image SSO». Vous pouvez également activer / désactiver ces colonnes globalement sous l'onglet <em><strong>SSO &gt; Réglages avancés &gt; Interface</strong></em>."
 
-#: gettext/gettext-html-setup.php:44
+#: gettext/gettext-html-setup.php:42
 msgctxt "html paragraph"
 msgid "When editing a post, page, category, tag, user profile, etc., you'll find a Document SSO metabox below the content area where you can customize default texts, images, and videos. The Document SSO metabox shows a different set of options based on the content type selected (ie. Schema type or Open Graph type), allowing you to customize the details of articles, events, e-Commerce products, recipes, reviews, and more. The \"Preview\" tab shows how this webpage might look when shared on Facebook, the \"Head Markup\" tab shows a complete list of meta tags and Schema markup created by the WPSSO Core plugin and its add-ons, and the \"Validate\" tab allows you to submit the current webpage URL to several test and validation tools (mentioned above)."
 msgstr "Lors de la modification d'un article, d'une page, d'une catégorie, d'une étiquette, d'un profil utilisateur, etc., vous trouverez une métabox Document SSO sous la zone de contenu dans laquelle vous pouvez personnaliser les textes, images et vidéos par défaut. La métabox Document SSO affiche un ensemble d'options différent en fonction du type de contenu sélectionné (c'est-à-dire le type de Schéma ou le type Open Graph), vous permettant de personnaliser les détails des articles, des événements, des produits de commerce électronique, des recettes, des critiques, etc. L'onglet «Aperçu» montre à quoi cette page Web pourrait ressembler lorsqu'elle est partagée sur Facebook, l'onglet «Balisage d'entête» affiche une liste complète des balises méta et du balisage de Schéma créés par l'extension WPSSO Core et ses ajouts, et l'onglet «Valider» vous permet de soumettre l'URL de la page Web actuelle à plusieurs outils de test et de validation (mentionnés ci-dessus)."
 
-#: gettext/gettext-html-setup.php:45
+#: gettext/gettext-html-setup.php:43
 msgctxt "html paragraph"
 msgid "WPSSO Core is a powerful application and social framework, that can read content, image, and video information from a variety of sources, including data from 3rd party plugins and services. It's worth noting the most common questions and issues bellow, along with their solutions:"
 msgstr "WPSSO Core est une application et cadre social puissant capable de lire des informations sur le contenu, les images et les vidéos à partir de diverses sources, y compris des données provenant d'extensions et de services tiers. Il convient de noter les questions et problèmes les plus courants ci-dessous, ainsi que leurs solutions:"
 
-#: gettext/gettext-html-setup.php:46
+#: gettext/gettext-html-setup.php:44
 msgctxt "html paragraph"
 msgid "More <a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/\">Frequently Asked Questions</a>..."
 msgstr "Plus de <a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/\">questions fréquemment posées</a> ..."
 
-#: gettext/gettext-html-setup.php:47
+#: gettext/gettext-html-setup.php:45
 msgctxt "html paragraph"
 msgid "Comments and suggestions to improve the plugin are always welcome &mdash; please <a href=\"https://surniaulula.com/support/create_ticket/\">open a ticket if you have any ideas or comments you would like to share with us</a>."
 msgstr "Les commentaires et suggestions pour améliorer l'extension sont toujours les bienvenus &mdash; veuillez <a href=\"https://surniaulula.com/support/create_ticket/\">ouvrir un ticket si vous avez des idées ou des commentaires que vous souhaitez partager avec nous</a>."
 
-#: gettext/gettext-html-setup.php:48
+#: gettext/gettext-html-setup.php:46
 msgctxt "html paragraph"
 msgid "BuddyPress was not originally created as a WordPress plugin, and consequently BuddyPress is not well integrated with WordPress features and functions. There are specific <a href=\"https://wpsso.com/docs/plugins/wpsso/installation/integration/buddypress-integration/\">BuddyPress Integration Notes</a> available to help you with some known BuddyPress integration issues."
 msgstr "BuddyPress n'a pas été créé comme extension WordPress à l'origine, et par conséquent, BuddyPress n'est pas bien intégré aux fonctionnalités et fonctions de WordPress. Il y a des <a href=\"https://wpsso.com/docs/plugins/wpsso/installation/integration/buddypress-integration/\">notes d'intégration BuddyPress</a> disponibles pour vous aider à résoudre certains problèmes connus d'intégration BuddyPress."
 
-#: gettext/gettext-html-setup.php:49
+#: gettext/gettext-html-setup.php:47
 msgctxt "html paragraph"
 msgid "The <a href=\"https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/\">WooCommerce Integration Notes</a> are very useful if you would like to include additional product information in your meta tags and Schema markup, like the product brand, color, condition, material, size, etc."
 msgstr "Les <a href=\"https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/\">notes d'intégration WooCommerce </a> sont très utiles si vous souhaitez inclure des informations produit supplémentaires dans vos balises méta et le balisage de Schéma, comme la marque du produit, la couleur, l'état, le matériel, la taille, etc."
 
-#: gettext/gettext-html-setup.php:50
+#: gettext/gettext-html-setup.php:48
 msgctxt "html paragraph"
 msgid "<strong>The WooCommerce plugin is known to offer incomplete Schema markup for Google Rich Results.</strong> The <a href=\"https://wpsso.com/extend/plugins/wpsso/\">WPSSO Core Premium plugin</a> and its <a href=\"https://wordpress.org/plugins/wpsso-schema-json-ld/\">WPSSO Schema JSON-LD Markup add-on</a> provide a much better solution by offering complete product meta tags for Facebook / Pinterest, and complete Schema product markup for Google Rich Results &mdash; including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more."
 msgstr "<strong>L'extension WooCommerce est reconnue pour offrir un balisage de Schéma incomplet pour les résultats enrichis Google.</strong> L'<a href=\"https://wpsso.com/extend/plugins/wpsso/\">extension WPSSO Core Premium</a> et son <a href=\"https://wordpress.org/plugins/wpsso-schema-json-ld/\">ajout WPSSO balisage JSON-LD de Schéma</a> fournissent une bien meilleure solution en offrant des balises méta de produit complètes pour Facebook / Pinterest et un balisage de produit de Schéma complet pour les résultats enrichis Google &mdash; y compris des images de produit supplémentaires, des variantes de produit, des informations additionnelles sur le produit (marque, couleur, état, EAN, dimensions, GTIN-8/12/13/14, ISBN, matériel, MPN, taille, SKU, volume, poids, etc.), critiques de produits, évaluations de produits, dates de début / fin de vente, prix de vente, prix hors taxes, prix avec TVA, tarifs d'expédition, délais d'expédition, et bien plus encore."
 
-#: gettext/gettext-html-setup.php:51
+#: gettext/gettext-html-setup.php:49
 msgctxt "html paragraph"
 msgid "WordPress developers and website designers may consider a few additional settings:"
 msgstr "Les développeurs WordPress et les concepteurs de sites Web peuvent envisager quelques réglages supplémentaires:"
 
-#: gettext/gettext-html-setup.php:52
+#: gettext/gettext-html-setup.php:50
 msgctxt "html paragraph"
 msgid "If your theme uses custom fields (ie. post metadata) to manage additional image URLs, video URLs, embedded video HTML, e-commerce product details, etc., you can enter their custom field names under the <em><strong>SSO &gt; Advanced Settings &gt; Metadata &gt; Custom Fields</strong></em> tab."
 msgstr "Si votre thème utilise des champs personnalisés (c.à.d., des métadonnées d'article) pour gérer des URL d'image supplémentaires, des URL de vidéo, du HTML de vidéo intégré, des détails sur les produits de commerce électronique, etc., vous pouvez saisir leurs noms de champs personnalisés sous l'onglet <em><strong>SSO &gt; Réglages avancés &gt; Métadonnée &gt; Champs personnalisés</strong></em>."
 
-#: gettext/gettext-html-setup.php:53
+#: gettext/gettext-html-setup.php:51
 msgctxt "html paragraph"
 msgid "WPSSO Core adds a <code>meta name description</code> and <code>meta name robots</code> HTML tag to the webpage by default, unless an SEO plugin is detected (in that case they are disabled automatically). You can enable or disable individual SEO HTML tags under the <em><strong>SSO &gt; Advanced Settings &gt; HTML Tags &gt; SEO / Other</strong></em> tab."
 msgstr "WPSSO Core ajoute une balise HTML <code>meta name description</code> et <code>meta name robots</code> à la page Web par défaut, sauf si un plugin SEO est détecté (dans ce cas, ils sont automatiquement désactivés). Vous pouvez activer ou désactiver des balises HTML SEO individuelles sous l'onglet <em><strong>SSO &gt; Réglages avancés &gt; Balises HTML &gt; SEO / autre</strong></em>."
 
-#: gettext/gettext-html-setup.php:54
+#: gettext/gettext-html-setup.php:52
 msgctxt "html paragraph"
 msgid "WPSSO Core creates Schema WebSite, Organization, and Person social markup for Google's Knowledge Graph in the front page using JSON-LD. If your theme does not include Schema markup (using JSON-LD or Microdata formats) for your post / page content, you should consider enabling the <a href=\"https://wordpress.org/plugins/wpsso-schema-json-ld/\">WPSSO Schema JSON-LD Markup add-on</a> to provide complete Schema markup for your content (ie. Schema Article, Place, Product, etc.)."
 msgstr "WPSSO Core crée le balisage de Schéma social WebSite, Organization et Person pour le Knowledge Graph de Google sur la page d'accueil à l'aide de JSON-LD. Si votre thème n'inclut pas un balisage de Schéma (en utilisant les formats JSON-LD ou Microdata) pour le contenu de vos articles / pages, vous devriez envisager d'activer le <a href=\"https://wordpress.org/plugins/wpsso-schema-json-ld/\">l'ajout WPSSO balisage JSON-LD de Schéma</a> pour fournir un balisage complet de Schéma pour votre contenu (c.à.d., Schéma d'article, place, produit, etc.)."
 
-#: gettext/gettext-html-setup.php:55
+#: gettext/gettext-html-setup.php:53
 msgctxt "html list item"
 msgid "<a href=\"https://www.facebook.com/business/learn/set-up-facebook-page\">Setup a Facebook Business Page</a>"
 msgstr "<a href=\"https://www.facebook.com/business/learn/set-up-facebook-page\">Configurer une page d'entreprise Facebook</a>"
 
-#: gettext/gettext-html-setup.php:56
+#: gettext/gettext-html-setup.php:54
 msgctxt "html list item"
 msgid "<a href=\"https://business.twitter.com/en/basics/create-a-twitter-business-profile.html\">Create a Twitter Business Profile</a>"
 msgstr "<a href=\"https://business.twitter.com/en/basics/create-a-twitter-business-profile.html\">Créer un profil d'entreprise Twitter</a>"
 
-#: gettext/gettext-html-setup.php:57
+#: gettext/gettext-html-setup.php:55
 msgctxt "html list item"
 msgid "<a href=\"https://business.google.com/create\">Add your Business to Google</a>"
 msgstr "<a href=\"https://business.google.com/create\">Ajoutez votre entreprise à Google</a>"
 
-#: gettext/gettext-html-setup.php:58
+#: gettext/gettext-html-setup.php:56
 msgctxt "html list item"
 msgid "<a href=\"https://www.pinterest.com/business/create/\">Create a Pinterest Business Account</a>"
 msgstr "<a href=\"https://www.pinterest.com/business/create/\">Créer un compte d'entreprise Pinterest</a>"
 
-#: gettext/gettext-html-setup.php:59
+#: gettext/gettext-html-setup.php:57
 msgctxt "html list item"
 msgid "<a href=\"https://developers.facebook.com/tools/debug/\">Facebook Sharing Debugger</a>"
 msgstr "<a href=\"https://developers.facebook.com/tools/debug/\">Débogueur de partage Facebook</a>"
 
-#: gettext/gettext-html-setup.php:60
+#: gettext/gettext-html-setup.php:58
 msgctxt "html list item"
 msgid "<a href=\"https://business.facebook.com/ads/microdata/debug\">Facebook Microdata Debug Tool</a>"
 msgstr "<a href=\"https://business.facebook.com/ads/microdata/debug\">Outil de débogage des microdonnées Facebook</a>"
 
-#: gettext/gettext-html-setup.php:61
+#: gettext/gettext-html-setup.php:59
 msgctxt "html list item"
 msgid "<a href=\"https://search.google.com/test/rich-results\">Google Rich Results Test</a>"
 msgstr "<a href=\"https://search.google.com/test/rich-results\">Test de résultats enrichis Google</a>"
 
-#: gettext/gettext-html-setup.php:62
+#: gettext/gettext-html-setup.php:60
 msgctxt "html list item"
 msgid "<a href=\"https://search.google.com/structured-data/testing-tool/u/0/\">Google Structured Data Test Tool</a> &mdash; although deprecated, this tool provides additional validation for Schema types beyond the limited <a href=\"https://developers.google.com/search/docs/guides/search-gallery\">selection of Google Rich Result types</a>."
 msgstr "<a href=\"https://search.google.com/structured-data/testing-tool/u/0/\">Outil de test des données structurées de Google</a> &mdash; bien que obsolète, cet outil fournit une validation supplémentaire pour les types de Schémas au-delà de la <a href=\"https://developers.google.com/search/docs/guides/search-gallery\">sélection limitée de types de résultats enrichis Google</a>."
 
-#: gettext/gettext-html-setup.php:63
+#: gettext/gettext-html-setup.php:61
 msgctxt "html list item"
 msgid "<a href=\"https://www.linkedin.com/post-inspector/inspect/\">LinkedIn Post Inspector</a>"
 msgstr "<a href=\"https://www.linkedin.com/post-inspector/inspect/\">Inspecteur LinkedIn de publication</a>"
 
-#: gettext/gettext-html-setup.php:64
+#: gettext/gettext-html-setup.php:62
 msgctxt "html list item"
 msgid "<a href=\"https://developers.pinterest.com/tools/url-debugger/\">Pinterest Rich Pins Validator</a>"
 msgstr "<a href=\"https://developers.pinterest.com/tools/url-debugger/\">Validateur Pinterest épingles riches</a>"
 
-#: gettext/gettext-html-setup.php:65
+#: gettext/gettext-html-setup.php:63
 msgctxt "html list item"
 msgid "<a href=\"https://cards-dev.twitter.com/validator\">Twitter Card Validator</a>"
 msgstr "<a href=\"https://cards-dev.twitter.com/validator\">Vérificateur de carte Twitter</a>"
 
-#: gettext/gettext-html-setup.php:66
+#: gettext/gettext-html-setup.php:64
 msgctxt "html list item"
 msgid "<a href=\"https://validator.w3.org/\">W3C Markup Validator</a> &mdash; recommended to check your theme templates for HTML markup issues."
 msgstr "<a href=\"https://validator.w3.org/\">Validateur W3C de balisage</a> &mdash; recommandé pour vérifier vos modèles de thème pour des problèmes de balisage HTML."
 
-#: gettext/gettext-html-setup.php:67
+#: gettext/gettext-html-setup.php:65
 msgctxt "html list item"
 msgid "<a href=\"https://developers.google.com/speed/pagespeed/insights/\">Google PageSpeed Insights</a> &mdash; recommended for general site and webpage health checks (results influence SEO ranking)."
 msgstr "<a href=\"https://developers.google.com/speed/pagespeed/insights/\">PageSpeed Insights de Google</a> &mdash; recommandé pour les vérifications générales de l'état du site et des pages Web (les résultats influencent le classement SEO)."
 
-#: gettext/gettext-html-setup.php:68
+#: gettext/gettext-html-setup.php:66
 msgctxt "html list item"
 msgid "<a href=\"https://support.google.com/webmasters/answer/7451184\">Google's Search Engine Optimization (SEO) Starter Guide</a> &mdash; essential reading to understand Google SEO ranking factors."
 msgstr "<a href=\"https://support.google.com/webmasters/answer/7451184?hl=fr\">Bien débuter en référencement naturel (SEO)</a> &mdash; lecture essentielle pour comprendre les facteurs de classement SEO de Google."
 
-#: gettext/gettext-html-setup.php:69
+#: gettext/gettext-html-setup.php:67
 msgctxt "html list item"
 msgid "<a href=\"https://www.webpagetest.org/\">Webpage Performance Test with Waterfall</a> &mdash; recommended to check and diagnose basic performance issues."
 msgstr "<a href=\"https://www.webpagetest.org/\">Test de performance de page Web avec cascade</a> &mdash; recommandé pour vérifier et diagnostiquer les problèmes de performances de base."
 
-#: gettext/gettext-html-setup.php:70
+#: gettext/gettext-html-setup.php:68
 msgctxt "html list item"
 msgid "<a href=\"https://www.ssllabs.com/ssltest/\">SSL Server Test by SSL Labs</a> &mdash; recommended test for any site using https."
 msgstr "<a href=\"https://www.ssllabs.com/ssltest/\">Test de serveur SSL par SSL Labs</a> &mdash; test recommandé pour tout site utilisant https."
 
-#: gettext/gettext-html-setup.php:71
+#: gettext/gettext-html-setup.php:69
 msgctxt "html list item"
 msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-fix-google-structured-data-hatom-errors/\">How do I fix Google Structured Data &gt; hatom errors?</a>"
 msgstr "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-fix-google-structured-data-hatom-errors/\">Comment corriger les erreurs de données structurées Google &gt; hatom?</a>"
 
-#: gettext/gettext-html-setup.php:72
+#: gettext/gettext-html-setup.php:70
 msgctxt "html list item"
 msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-images/\">How does WPSSO Core find / detect / select images?</a>"
 msgstr "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-images/\">Comment WPSSO Core trouve / détecte / sélectionne les images?</a>"
 
-#: gettext/gettext-html-setup.php:73
+#: gettext/gettext-html-setup.php:71
 msgctxt "html list item"
 msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-videos/\">How does WPSSO Core find / detect / select videos?</a>"
 msgstr "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-videos/\">Comment WPSSO Core trouve / détecte / sélectionne les videos?</a>"
 
-#: gettext/gettext-html-setup.php:74
+#: gettext/gettext-html-setup.php:72
 msgctxt "html list item"
 msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-are-some-html-elements-missing-misaligned-different/\">Why are some HTML elements missing / misaligned / different?</a>"
 msgstr "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-are-some-html-elements-missing-misaligned-different/\">Pourquoi certains éléments HTML sont-ils manquants / mal alignés / différents?</a>"
 
-#: gettext/gettext-html-setup.php:75
+#: gettext/gettext-html-setup.php:73
 msgctxt "html list item"
 msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/\">Why does Facebook show the wrong image or text?</a>"
 msgstr "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/\">Pourquoi Facebook affiche-t-il la mauvaise image ou le mauvais texte?</a>"
 
-#: gettext/gettext-html-setup.php:76
+#: gettext/gettext-html-setup.php:74
 msgctxt "html list item"
 msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/\">Why shouldn't I upload small images to the Media library?</a>"
 msgstr "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/\">Pourquoi ne devrais-je pas télécharger de petites images dans la médiathèque?</a>"
+
+#: gettext/gettext-html-setup.php:75
+msgctxt "html blockquote"
+msgid "If you use the WooCommerce plugin, don't miss the <a href=\"#documentation-and-resources\">Documentation and Resources section bellow</a> for additional WooCommerce integration notes."
+msgstr "Si vous utilisez l'extension WooCommerce, ne manquez pas la <a href=\"#documentation-and-resources\">section Documentation et ressources ci-dessous</a> pour des notes d'intégration additionnelles pour WooCommerce."
 
 #: gettext/gettext-lib-abstracts-com.php:6 lib/abstracts/com/add-on.php:178
 msgid "The %1$s add-on requires the %2$s plugin &mdash; please activate the missing plugin."
