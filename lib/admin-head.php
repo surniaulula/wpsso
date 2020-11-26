@@ -276,6 +276,8 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 		 */
 		private function suggest_addons_woocommerce() {
 
+			$notice_shown = 0;
+
 			if ( empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
@@ -283,7 +285,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 					$this->p->debug->log( 'woocommerce is not active' );
 				}
 
-				return 0;
+				return $notice_shown;
 			}
 
 			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
@@ -293,7 +295,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 					$this->p->debug->log( 'schema markup is disabled' );
 				}
 
-				return 0;
+				return $notice_shown;
 			}
 
 			$pkg_info = $this->p->admin->get_pkg_info();	// Returns an array from cache.
@@ -330,7 +332,9 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 						$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
 
-						return 1;	// Stop here.
+						$notice_shown++;
+
+						return $notice_shown;	// Stop here.
 					}
 				}
 			}
@@ -361,7 +365,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 					$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
 
-					return 1;	// Stop here.
+					$notice_shown++;
 				}
 			}
 
@@ -394,12 +398,12 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 						$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
 
-						return 1;	// Stop here.
+						$notice_shown++;
 					}
 				}
 			}
 
-			return 0;
+			return $notice_shown;
 		}
 
 
