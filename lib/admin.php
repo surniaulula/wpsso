@@ -52,17 +52,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$doing_ajax = SucomUtil::get_const( 'DOING_AJAX' );
 
-			if ( ! class_exists( 'WpssoAdminHead' ) ) {
-
-				require_once WPSSO_PLUGINDIR . 'lib/admin-head.php';
-			}
+			require_once WPSSO_PLUGINDIR . 'lib/admin-head.php';
 
 			$this->head = new WpssoAdminHead( $plugin );
 
-			if ( ! class_exists( 'WpssoAdminFilters' ) ) {
-
-				require_once WPSSO_PLUGINDIR . 'lib/admin-filters.php';
-			}
+			require_once WPSSO_PLUGINDIR . 'lib/admin-filters.php';
 
 			$this->filters = new WpssoAdminFilters( $plugin );
 
@@ -3469,10 +3463,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			} else {
 
-				if ( ! class_exists( 'SuextParseReadme' ) ) {
-
-					require_once WPSSO_PLUGINDIR . 'lib/ext/parse-readme.php';
-				}
+				require_once WPSSO_PLUGINDIR . 'lib/ext/parse-readme.php';
 
 				$parser =& SuextParseReadme::get_instance();
 

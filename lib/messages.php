@@ -2436,7 +2436,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 									$text = '<p class="pro-feature-msg">';
 
-									$text .= __( 'Disabled fields show information imported from WooCommerce product data, including custom product attributes.', 'wpsso' );
+									$text .= __( 'Disabled product information fields show values imported from WooCommerce product data, including WooCommerce product metadata and attributes.', 'wpsso' );
 
 									$text .= '</p>';
 
@@ -2444,7 +2444,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 									$text = '<p class="pro-feature-msg">';
 
-									$text .= __( 'An e-commerce plugin is active &ndash; disabled fields show information imported from the e-commerce plugin.', 'wpsso' );
+									$text .= __( 'An e-commerce plugin is active &ndash; disabled product information fields show values imported from the e-commerce plugin.', 'wpsso' );
 
 									$text .= '</p>';
 								}
