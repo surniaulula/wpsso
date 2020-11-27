@@ -2436,7 +2436,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 									$text = '<p class="pro-feature-msg">';
 
-									$text .= __( 'Disabled product information fields show values imported from WooCommerce product data, including WooCommerce product metadata and attributes.', 'wpsso' );
+									$text .= __( 'Disabled product information fields show values imported from the WooCommerce product data metabox, including additional WooCommerce product metadata and attributes.', 'wpsso' );
 
 									$text .= '</p>';
 

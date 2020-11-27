@@ -7041,8 +7041,9 @@ msgstr ""
 
 #: lib/messages.php:2439
 msgid ""
-"Disabled product information fields show values imported from WooCommerce "
-"product data, including WooCommerce product metadata and attributes."
+"Disabled product information fields show values imported from the "
+"WooCommerce product data metabox, including additional WooCommerce product "
+"metadata and attributes."
 msgstr ""
 
 #: lib/messages.php:2447
