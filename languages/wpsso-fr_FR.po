@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 8.14.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-11-27 10:21-0800\n"
-"PO-Revision-Date: 2020-11-27 10:31-0800\n"
+"POT-Creation-Date: 2020-11-28 10:50-0800\n"
+"PO-Revision-Date: 2020-11-28 10:52-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -757,7 +757,7 @@ msgid "Your SSO"
 msgstr "Votre SSO"
 
 #: gettext/gettext-lib-config.php:53 gettext/gettext-lib-config.php:65
-#: lib/admin-head.php:257 lib/messages.php:3356
+#: lib/admin-head.php:255 lib/messages.php:3356
 msgctxt "lib file description"
 msgid "Advanced Settings"
 msgstr "Réglages avancés"
@@ -995,7 +995,7 @@ msgctxt "plugin description"
 msgid "Shipping delivery time estimates for WooCommerce shipping zones, methods, and classes."
 msgstr "Estimations du délai de livraison pour les zones, méthodes et classes d'expédition WooCommerce."
 
-#: gettext/gettext-lib-config.php:104 lib/admin-head.php:256
+#: gettext/gettext-lib-config.php:104 lib/admin-head.php:254
 #: lib/messages.php:3355
 msgctxt "menu title"
 msgid "SSO"
@@ -3247,145 +3247,149 @@ msgid_plural "Please install these updates at your earliest convenience."
 msgstr[0] "SVP installer cette mise à jour dès que possible."
 msgstr[1] "SVP installer ces mises à jour dès que possible."
 
-#: lib/admin-head.php:258 lib/messages.php:3357 lib/submenu/advanced.php:86
+#: lib/admin-head.php:256 lib/messages.php:3357 lib/submenu/advanced.php:86
 msgctxt "metabox title"
 msgid "HTML Tags"
 msgstr "Balises HTML"
 
-#: lib/admin-head.php:259 lib/messages.php:3358 lib/submenu/advanced.php:188
+#: lib/admin-head.php:257 lib/messages.php:3358 lib/submenu/advanced.php:188
 msgctxt "metabox tab"
 msgid "SEO / Other"
 msgstr "SEO / autre"
 
-#: lib/admin-head.php:261
+#: lib/admin-head.php:259
 msgid "Please note that the <code>%s</code> HTML tag is currently disabled and a known SEO plugin has not been detected."
 msgstr "Veuillez noter que la balise HTML <code>%s</code> est actuellement désactivée et qu'une extension SEO connue n'a pas été détectée."
 
-#: lib/admin-head.php:263
+#: lib/admin-head.php:261
 msgid "If another SEO plugin or your theme templates are not adding the <code>%1$s</code> HTML tag to your webpages, you can re-enable this option under the %2$s tab."
 msgstr "Si une autre extension SEO ou vos modèles de thème n'ajoutent pas la balise HTML <code>%1$s</code> à vos pages Web, vous pouvez réactiver cette option sous l'onglet %2$s."
 
-#: lib/admin-head.php:327
+#: lib/admin-head.php:324
 msgid "The WooCommerce plugin is known to offer incomplete Schema markup for Google Rich Results."
 msgstr "L'extension WooCommerce est reconnue pour offrir un balisage de schéma incomplet pour les résultats enrichis Google Google."
 
-#: lib/admin-head.php:329
+#: lib/admin-head.php:326
 msgid "The %1$s plugin (required for WooCommerce integration) and its %2$s add-on provide a much better solution by offering complete product meta tags for Facebook / Pinterest, and complete Schema product markup for Google Rich Results &mdash; including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more."
 msgstr "L'extension %1$s (requis pour l'intégration de WooCommerce) et son ajout %2$s fournissent une bien meilleure solution en offrant des balises méta de produit complètes pour Facebook / Pinterest et un balisage de produit de Schéma complet pour les résultats enrichis Google &mdash; y compris des images de produit supplémentaires, des variantes de produit, des informations additionnelles sur le produit (marque, couleur, état, EAN, dimensions, GTIN-8/12/13/14, ISBN, matériel, MPN, taille, SKU, volume, poids, etc.), critiques de produits, évaluations de produits, dates de début / fin de vente, prix de vente, prix hors taxes, prix avec TVA, tarifs d'expédition, délais d'expédition, et bien plus encore."
 
-#: lib/admin-head.php:358
+#: lib/admin-head.php:352
 msgid "Schema Product markup for Google Rich Results requires at least one unique product ID, like the product MPN (Manufacturer Part Number), UPC, EAN, GTIN, or ISBN."
 msgstr "Le balisage de produit de Schéma pour les résultats enrichis Google nécessite au moins un ID de produit unique, tel que le MPN (numéro de pièce du fabricant), l'UPC, l'EAN, le GTIN ou l'ISBN du produit."
 
-#: lib/admin-head.php:360
+#: lib/admin-head.php:354
 msgid "The product SKU (Stock Keeping Unit) from WooCommerce is not a unique product ID."
 msgstr "Le SKU du produit (unité de gestion des stocks) de WooCommerce n'est pas un ID de produit unique."
 
-#: lib/admin-head.php:362
+#: lib/admin-head.php:356
 msgid "If you're not already using a plugin to manage unique product IDs for WooCommerce, you should activate the %s add-on."
 msgstr "Si vous n'utilisez pas déjà une extension pour gérer les ID de produit uniques pour WooCommerce, vous pouvez activer l'ajout %s."
 
-#: lib/admin-head.php:392
+#: lib/admin-head.php:365 lib/admin-head.php:407
+msgid "Note that you will also need to activate the %s add-on to include this information in Schema markup for Google Rich Results."
+msgstr "Notez que vous devrez également activer l'ajout %s pour inclure ces informations dans le balisage de Schéma pour des résultats enrichis Google."
+
+#: lib/admin-head.php:395
 msgid "Product shipping features are enabled in WooCommerce, but the %s add-on is not active."
 msgstr "Les fonctionnalités d'expédition des produits sont activées dans WooCommerce, mais l'ajout %s n'est pas actif."
 
-#: lib/admin-head.php:395
+#: lib/admin-head.php:398
 msgid "Adding shipping details to your Schema Product markup is especially important if you offer free or low-cost shipping options as this will make your products more appealing in Google search results."
 msgstr "L'ajout de détails d'expédition à votre balisage de produit de Schéma est particulièrement important si vous proposez des options d'expédition gratuites ou à faible coût, car cela rendra vos produits plus attrayants dans les résultats de recherche Google."
 
-#: lib/admin-head.php:418
+#: lib/admin-head.php:429
 msgid "Purchase the %s plugin."
 msgstr "Acheter l'extension %s."
 
-#: lib/admin-head.php:433
+#: lib/admin-head.php:442
 msgid "Activate the %s add-on."
 msgstr "Activer l'ajout %s."
 
-#: lib/admin-head.php:439
+#: lib/admin-head.php:448
 msgid "Install and activate the %s add-on."
 msgstr "Installer et activer l'ajout %s."
 
-#: lib/admin-head.php:537
+#: lib/admin-head.php:546
 msgid "Yes! Rate %s 5 stars!"
 msgstr "Oui! Noter %s 5 étoiles!"
 
-#: lib/admin-head.php:539
-msgid "I've already rated %s."
-msgstr "J'ai déjà noté %s."
-
-#: lib/admin-head.php:541 lib/admin-head.php:544 lib/admin-head.php:659
+#: lib/admin-head.php:548 lib/admin-head.php:560 lib/admin-head.php:670
 msgid "Awesome!"
 msgstr "Excellent!"
 
-#: lib/admin-head.php:542
+#: lib/admin-head.php:549
 msgid "Thank you for rating the %s plugin!"
 msgstr "Merci d'avoir noté l'extension %s!"
 
-#: lib/admin-head.php:545
+#: lib/admin-head.php:558
+msgid "I've already rated %s."
+msgstr "J'ai déjà noté %s."
+
+#: lib/admin-head.php:561
 msgid "Thank you for supporting and encouraging your developers!"
 msgstr "Merci de soutenir et d'encourager vos développeurs!"
 
-#: lib/admin-head.php:568 lib/admin-head.php:688
+#: lib/admin-head.php:580 lib/admin-head.php:699
 msgid "Fantastic!"
 msgstr "Fantastique!"
 
-#: lib/admin-head.php:570
+#: lib/admin-head.php:582
 msgid "You've been using %s for a while now, which is awesome!"
 msgstr "Vous utilisez %s depuis un moment déjà, ce qui est génial!"
 
-#: lib/admin-head.php:576 lib/admin-head.php:695
+#: lib/admin-head.php:588 lib/admin-head.php:706
 msgid "We've put many years of time and effort into making %s and its add-ons the best possible."
 msgstr "Nous avons mis plusieurs années et beaucoup d'efforts à faire %s et ses ajouts les meilleurs possibles."
 
-#: lib/admin-head.php:586
+#: lib/admin-head.php:598
 msgid "Now that you've been using %s for a while, it would help tremendously if you could rate it on WordPress.org."
 msgstr "Maintenant que vous utilisez %s depuis un certain temps, cela aiderait énormément si vous pouviez l'évaluer sur WordPress.org."
 
-#: lib/admin-head.php:589 lib/messages.php:2939
+#: lib/admin-head.php:601 lib/messages.php:2939
 msgid "Great ratings are an excellent way to ensure the continued development of your favorite plugins."
 msgstr "De bonnes notes sont un excellent moyen d'assurer le développement continu de vos extensions préférées."
 
-#: lib/admin-head.php:595 lib/messages.php:2945
+#: lib/admin-head.php:607 lib/messages.php:2945
 msgid "Without your rating, a plugin you value and depend on could be deprecated prematurely."
 msgstr "Sans votre note, une extension que vous appréciez et dont vous dépendez pourrait être abandonnée prématurément."
 
-#: lib/admin-head.php:597
+#: lib/admin-head.php:609
 msgid "Don't let that happen - rate %s now!"
 msgstr "Ne laissez pas cela arriver - notez %s maintenant!"
 
-#: lib/admin-head.php:633
+#: lib/admin-head.php:645
 msgid "two months"
 msgstr "deux mois"
 
-#: lib/admin-head.php:655
+#: lib/admin-head.php:666
 msgid "Yes! I'd like to get the %s version!"
 msgstr "Oui! J'aimerais avoir la version %s!"
 
-#: lib/admin-head.php:657
+#: lib/admin-head.php:668
 msgid "No thanks. I'll stay with the %s version."
 msgstr "Non merci. Je vais rester avec la version %s."
 
-#: lib/admin-head.php:660
+#: lib/admin-head.php:671
 msgid "Thank you for encouraging and supporting the continued development of %s."
 msgstr "Merci d'avoir encouragé et soutenu le développement continu de %s."
 
-#: lib/admin-head.php:663
+#: lib/admin-head.php:674
 msgid "Thank you."
 msgstr "Merci."
 
-#: lib/admin-head.php:664
+#: lib/admin-head.php:675
 msgid "Hopefully you'll change your mind in the future and help support the continued development of %s."
 msgstr "J'espère que vous changerez d'avis dans le futur et que vous aiderez à soutenir le développement de %s."
 
-#: lib/admin-head.php:690
+#: lib/admin-head.php:701
 msgid "You've been using %1$s for more than %2$s now, which is awesome!"
 msgstr "Vous utilisez %1$s depuis plus de %2$s déjà, ce qui est génial!"
 
-#: lib/admin-head.php:698
+#: lib/admin-head.php:709
 msgid "I hope you've enjoyed all the new features, improvements and updates over the past %s."
 msgstr "J'espère que vous avez aimé toutes les nouvelles fonctionnalités, améliorations et mises à jour au cours des derniers %s."
 
-#: lib/admin-head.php:703
+#: lib/admin-head.php:714
 msgid "Have you thought about purchasing the %s version? It comes with a lot of great extra features!"
 msgstr "Avez-vous pensé à acheter la version %s? Elle offre de nombreuses fonctionnalités supplémentaires!"
 
