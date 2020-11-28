@@ -59,13 +59,13 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 			if ( $update_count > 0 ) {
 
-				$info = $this->p->cf[ 'plugin' ][ 'wpsso' ];
+				$wpsso_info = $this->p->cf[ 'plugin' ][ 'wpsso' ];
 
 				$notice_key = 'have-updates-for-wpsso';
 
 				$notice_msg = sprintf( _n( 'There is <a href="%1$s">%2$d pending update for the %3$s plugin and its add-on(s)</a>.',
 					'There are <a href="%1$s">%2$d pending updates for the %3$s plugin and its add-on(s)</a>.', $update_count, 'wpsso' ),
-						self_admin_url( 'update-core.php' ), $update_count, $info[ 'short' ] ) . ' ';
+						self_admin_url( 'update-core.php' ), $update_count, $wpsso_info[ 'short' ] ) . ' ';
 
 				$notice_msg .= _n( 'Please install this update at your earliest convenience.',
 					'Please install these updates at your earliest convenience.', $update_count, 'wpsso' );
@@ -77,12 +77,10 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 		public function requires_notices() {
 
 			$pkg_info = $this->p->admin->get_pkg_info();	// Returns an array from cache.
-
-			$um_info = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
-
+			$um_info  = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
 			$have_tid = false;
 
-			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
+			foreach ( $this->p->cf[ 'plugin' ] as $ext => $ext_info ) {
 
 				if ( ! empty( $this->p->options[ 'plugin_' . $ext . '_tid' ] ) ) {
 
@@ -98,7 +96,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 						if ( empty( $pkg_info[ $ext ][ 'pdir' ] ) ) {
 
-							if ( ! empty( $info[ 'base' ] ) && ! SucomPlugin::is_plugin_installed( $info[ 'base' ], $use_cache = true ) ) {
+							if ( ! empty( $ext_info[ 'base' ] ) && ! SucomPlugin::is_plugin_installed( $ext_info[ 'base' ], $use_cache = true ) ) {
 
 								$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-installed', array( 'plugin_id' => $ext ) ) );
 
@@ -320,21 +318,18 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 					if ( ! empty( $action_links ) ) {
 
-						$info = $this->p->cf[ 'plugin' ][ 'wpssojson' ];
-
-						$info_name_transl = _x( $info[ 'name' ], 'plugin name', 'wpsso' );
+						$json_info        = $this->p->cf[ 'plugin' ][ 'wpssojson' ];
+						$json_name_transl = _x( $json_info[ 'name' ], 'plugin name', 'wpsso' );
 
 						$notice_msg = __( 'The WooCommerce plugin is known to offer incomplete Schema markup for Google Rich Results.', 'wpsso' ) . ' ';
 
-						$notice_msg .= sprintf( __( 'The %1$s plugin (required for WooCommerce integration) and its %2$s add-on provide a much better solution by offering complete product meta tags for Facebook / Pinterest, and complete Schema product markup for Google Rich Results &mdash; including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'name_pro' ], $info_name_transl ) . ' ';
+						$notice_msg .= sprintf( __( 'The %1$s plugin (required for WooCommerce integration) and its %2$s add-on provide a much better solution by offering complete product meta tags for Facebook / Pinterest, and complete Schema product markup for Google Rich Results &mdash; including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'name_pro' ], $json_name_transl ) . ' ';
 
 						$notice_msg .= '<ul><li>' . implode( $glue = '</li> <li>', $action_links ) . '</li></ul>' . ' ';
 
 						$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
 
 						$notice_shown++;
-
-						return $notice_shown;	// Stop here.
 					}
 				}
 			}
@@ -351,15 +346,24 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 					$action_links[] = $this->get_install_activate_addon_link( 'wpssowcmd' );
 
-					$info = $this->p->cf[ 'plugin' ][ 'wpssowcmd' ];
-
-					$info_name_transl = _x( $info[ 'name' ], 'plugin name', 'wpsso' );
+					$wcmd_info        = $this->p->cf[ 'plugin' ][ 'wpssowcmd' ];
+					$wcmd_name_transl = _x( $wcmd_info[ 'name' ], 'plugin name', 'wpsso' );
 
 					$notice_msg = __( 'Schema Product markup for Google Rich Results requires at least one unique product ID, like the product MPN (Manufacturer Part Number), UPC, EAN, GTIN, or ISBN.', 'wpsso' ) . ' ';
 
 					$notice_msg .= __( 'The product SKU (Stock Keeping Unit) from WooCommerce is not a unique product ID.', 'wpsso' ) . ' ';
 
-					$notice_msg .= sprintf( __( 'If you\'re not already using a plugin to manage unique product IDs for WooCommerce, you should activate the %s add-on.', 'wpsso' ), $info_name_transl ) . ' ';
+					$notice_msg .= sprintf( __( 'If you\'re not already using a plugin to manage unique product IDs for WooCommerce, you should activate the %s add-on.', 'wpsso' ), $wcmd_name_transl ) . ' ';
+
+					if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
+
+						$action_links[] = $this->get_install_activate_addon_link( 'wpssojson' );
+
+						$json_info        = $this->p->cf[ 'plugin' ][ 'wpssojson' ];
+						$json_name_transl = _x( $json_info[ 'name' ], 'plugin name', 'wpsso' );
+
+						$notice_msg .= sprintf( __( 'Note that you will also need to activate the %s add-on to include this information in Schema markup for Google Rich Results.', 'wpsso' ), $json_name_transl ) . ' ';
+					}
 
 					$notice_msg .= '<ul><li>' . implode( $glue = '</li> <li>', $action_links ) . '</li></ul>' . ' ';
 
@@ -385,14 +389,23 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 						$action_links[] = $this->get_install_activate_addon_link( 'wpssowcsdt' );
 
-						$info = $this->p->cf[ 'plugin' ][ 'wpssowcsdt' ];
-
-						$info_name_transl = _x( $info[ 'name' ], 'plugin name', 'wpsso' );
+						$wcsdt_info        = $this->p->cf[ 'plugin' ][ 'wpssowcsdt' ];
+						$wcsdt_name_transl = _x( $wcsdt_info[ 'name' ], 'plugin name', 'wpsso' );
 
 						$notice_msg = sprintf( __( 'Product shipping features are enabled in WooCommerce, but the %s add-on is not active.',
-							'wpsso' ), $info_name_transl ) . ' ';
+							'wpsso' ), $wcsdt_name_transl ) . ' ';
 
 						$notice_msg .= __( 'Adding shipping details to your Schema Product markup is especially important if you offer free or low-cost shipping options as this will make your products more appealing in Google search results.', 'wpsso' ) . ' ';
+
+						if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
+
+							$action_links[] = $this->get_install_activate_addon_link( 'wpssojson' );
+
+							$json_info        = $this->p->cf[ 'plugin' ][ 'wpssojson' ];
+							$json_name_transl = _x( $json_info[ 'name' ], 'plugin name', 'wpsso' );
+
+							$notice_msg .= sprintf( __( 'Note that you will also need to activate the %s add-on to include this information in Schema markup for Google Rich Results.', 'wpsso' ), $json_name_transl ) . ' ';
+						}
 
 						$notice_msg .= '<ul><li>' . implode( $glue = '</li> <li>', $action_links ) . '</li></ul>' . ' ';
 
@@ -409,34 +422,30 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 		private function get_purchase_plugin_link( $ext ) {
 
-			$pkg_info = $this->p->admin->get_pkg_info();	// Returns an array from cache.
+			$pkg_info         = $this->p->admin->get_pkg_info();	// Returns an array from cache.
+			$ext_info         = $this->p->cf[ 'plugin' ][ $ext ];
+			$ext_purchase_url = $ext_info[ 'url' ][ 'purchase' ];
 
-			$info = $this->p->cf[ 'plugin' ][ $ext ];
-
-			$purchase_url = $info[ 'url' ][ 'purchase' ];
-
-			return '<a href="' . $purchase_url . '">' . sprintf( __( 'Purchase the %s plugin.', 'wpsso' ), $pkg_info[ $ext ][ 'name_pro' ] ) . '</a>';
+			return '<a href="' . $ext_purchase_url . '">' . sprintf( __( 'Purchase the %s plugin.', 'wpsso' ), $pkg_info[ $ext ][ 'name_pro' ] ) . '</a>';
 		}
 
 		private function get_install_activate_addon_link( $ext ) {
 
-			$info = $this->p->cf[ 'plugin' ][ $ext ];
+			$ext_info        = $this->p->cf[ 'plugin' ][ $ext ];
+			$ext_name_transl = _x( $ext_info[ 'name' ], 'plugin name', 'wpsso' );
 
-			$info_name_transl = _x( $info[ 'name' ], 'plugin name', 'wpsso' );
-
-			if ( SucomPlugin::is_plugin_installed( $info[ 'base' ], $use_cache = true ) ) {
+			if ( SucomPlugin::is_plugin_installed( $ext_info[ 'base' ], $use_cache = true ) ) {
 
 				$search_url = is_multisite() ? network_admin_url( 'plugins.php', null ) : get_admin_url( $blog_id = null, 'plugins.php' );
+				$search_url = add_query_arg( array( 's' => $ext_info[ 'base' ] ), $search_url );
 
-				$search_url = add_query_arg( array( 's' => $info[ 'base' ] ), $search_url );
-
-				return '<a href="' . $search_url . '">' . sprintf( __( 'Activate the %s add-on.', 'wpsso' ), $info_name_transl ) . '</a>';
+				return '<a href="' . $search_url . '">' . sprintf( __( 'Activate the %s add-on.', 'wpsso' ), $ext_name_transl ) . '</a>';
 
 			}
 
 			$addons_url = $this->p->util->get_admin_url( 'addons#' . $ext );
 
-			return '<a href="' . $addons_url . '">' . sprintf( __( 'Install and activate the %s add-on.', 'wpsso' ), $info_name_transl ) . '</a>';
+			return '<a href="' . $addons_url . '">' . sprintf( __( 'Install and activate the %s add-on.', 'wpsso' ), $ext_name_transl ) . '</a>';
 		}
 
 		/**
@@ -462,16 +471,17 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 			$showing_ext = get_transient( $cache_id );	// Returns an empty string or the $notice_key value.
 
-			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
+			foreach ( $this->p->cf[ 'plugin' ] as $ext => $ext_info ) {
 
-				$info_name_transl  = _x( $info[ 'name' ], 'plugin name', 'wpsso' );
-				$info_desc_transl  = _x( $info[ 'desc' ], 'plugin description', 'wpsso' );
-				$wpsso_name_transl = _x( $this->p->cf[ 'plugin' ][ 'wpsso' ][ 'name' ], 'plugin name', 'wpsso' );
+				$wpsso_info        = $this->p->cf[ 'plugin' ][ 'wpsso' ];
+				$wpsso_name_transl = _x( $wpsso_info[ 'name' ], 'plugin name', 'wpsso' );
+				$ext_name_transl   = _x( $ext_info[ 'name' ], 'plugin name', 'wpsso' );
+				$ext_desc_transl   = _x( $ext_info[ 'desc' ], 'plugin description', 'wpsso' );
 
 				/**
 				 * Make sure the plugin is installed (ie. it has a version number).
 				 */
-				if ( empty( $info[ 'version' ] ) ) {
+				if ( empty( $ext_info[ 'version' ] ) ) {
 
 					continue;	// Get the next plugin.
 				}
@@ -479,7 +489,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				/**
 				 * Make sure we have wordpress.org review URL.
 				 */
-				if ( empty( $info[ 'url' ][ 'review' ] ) ) {
+				if ( empty( $ext_info[ 'url' ][ 'review' ] ) ) {
 
 					continue;	// Get the next plugin.
 				}
@@ -527,26 +537,28 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 					continue;	// Get the next plugin.
 				}
 
-				$wp_plugin_link = '<a href="' . $info[ 'url' ][ 'home' ] . '">' . $info_name_transl . '</a>';
-
-				$wp_plugin_link_desc = $wp_plugin_link . ' (' . trim( $info_desc_transl, '.' ) . ')';
+				$wp_plugin_link      = '<a href="' . $ext_info[ 'url' ][ 'home' ] . '">' . $ext_name_transl . '</a>';
+				$wp_plugin_link_desc = $wp_plugin_link . ' (' . trim( $ext_desc_transl, '.' ) . ')';
 
 				/**
-				 * The action buttons.
+				 * Rate plugin action button.
 				 */
-				$rate_plugin_label = sprintf( __( 'Yes! Rate %s 5 stars!', 'wpsso' ), $info[ 'short' ] );
-
-				$already_rated_label = sprintf( __( 'I\'ve already rated %s.', 'wpsso' ), $info[ 'short' ] );
+				$rate_plugin_label = sprintf( __( 'Yes! Rate %s 5 stars!', 'wpsso' ), $ext_info[ 'short' ] );
 
 				$rate_plugin_clicked = '<p><b>' . __( 'Awesome!', 'wpsso' ) . '</b> ' .
-					sprintf( __( 'Thank you for rating the %s plugin!', 'wpsso' ), $info_name_transl ) . '</p>';
-
-				$already_rated_clicked = '<p><b>' . __( 'Awesome!', 'wpsso' ) . '</b> ' .
-					sprintf( __( 'Thank you for supporting and encouraging your developers!', 'wpsso' ), $info_name_transl ) . '</p>';
+					sprintf( __( 'Thank you for rating the %s plugin!', 'wpsso' ), $ext_name_transl ) . '</p>';
 
 				$rate_plugin_button = '<div class="notice-single-button">' .
-					$form->get_button( $rate_plugin_label, 'button-primary dismiss-on-click', '', $info[ 'url' ][ 'review' ],
+					$form->get_button( $rate_plugin_label, 'button-primary dismiss-on-click', '', $ext_info[ 'url' ][ 'review' ],
 						true, false, array( 'dismiss-msg' => $rate_plugin_clicked ) ) . '</div>';
+
+				/**
+				 * Already rated action button.
+				 */
+				$already_rated_label = sprintf( __( 'I\'ve already rated %s.', 'wpsso' ), $ext_info[ 'short' ] );
+
+				$already_rated_clicked = '<p><b>' . __( 'Awesome!', 'wpsso' ) . '</b> ' .
+					sprintf( __( 'Thank you for supporting and encouraging your developers!', 'wpsso' ), $ext_name_transl ) . '</p>';
 
 				$already_rated_button = '<div class="notice-single-button">' .
 					$form->get_button( $already_rated_label, 'button-secondary dismiss-on-click', '', '',
@@ -637,17 +649,16 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				return 0;
 			}
 
-			$form              = $this->p->admin->get_form_object( 'wpsso' );
-			$user_id           = get_current_user_id();
-			$info              = $this->p->cf[ 'plugin' ][ 'wpsso' ];
-			$info_name_transl  = _x( $info[ 'name' ], 'plugin name', 'wpsso' );
-			$wpsso_name_transl = _x( $this->p->cf[ 'plugin' ][ 'wpsso' ][ 'name' ], 'plugin name', 'wpsso' );
-			$dist_pro_transl   = _x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' );
-			$dist_std_transl   = _x( $this->p->cf[ 'dist' ][ 'std' ], 'distribution name', 'wpsso' );
-			$notice_key        = 'timed-notice-wpsso-pro-purchase-notice';
-			$dismiss_time      = true;	// Allow the notice to be dismissed forever.
-			$wp_plugin_link    = '<a href="' . $info[ 'url' ][ 'home' ] . '">' . $info_name_transl . '</a>';
-			$purchase_url      = $info[ 'url' ][ 'purchase' ];
+			$form               = $this->p->admin->get_form_object( 'wpsso' );
+			$user_id            = get_current_user_id();
+			$wpsso_info         = $this->p->cf[ 'plugin' ][ 'wpsso' ];
+			$wpsso_name_transl  = _x( $wpsso_info[ 'name' ], 'plugin name', 'wpsso' );
+			$wpsso_purchase_url = $wpsso_info[ 'url' ][ 'purchase' ];
+			$wp_plugin_link     = '<a href="' . $wpsso_info[ 'url' ][ 'home' ] . '">' . $wpsso_name_transl . '</a>';
+			$dist_pro_transl    = _x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' );
+			$dist_std_transl    = _x( $this->p->cf[ 'dist' ][ 'std' ], 'distribution name', 'wpsso' );
+			$notice_key         = 'timed-notice-wpsso-pro-purchase-notice';
+			$dismiss_time       = true;	// Allow the notice to be dismissed forever.
 
 			/**
 			 * The action buttons.
@@ -658,14 +669,14 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 			$purchase_clicked = '<p><b>' . __( 'Awesome!', 'wpsso' ) . '</b> ' .
 				sprintf( __( 'Thank you for encouraging and supporting the continued development of %s.',
-					'wpsso' ), $info_name_transl ) . '</p>';
+					'wpsso' ), $wpsso_name_transl ) . '</p>';
 
 			$no_thanks_clicked = '<p>' . __( 'Thank you.', 'wpsso' ) . ' ' . 
 				sprintf( __( 'Hopefully you\'ll change your mind in the future and help support the continued development of %s.',
-					'wpsso' ), $info_name_transl ) . '</p>';
+					'wpsso' ), $wpsso_name_transl ) . '</p>';
 
 			$purchase_button  = '<div class="notice-single-button">' .
-				$form->get_button( $purchase_label, 'button-primary dismiss-on-click', '', $purchase_url,
+				$form->get_button( $purchase_label, 'button-primary dismiss-on-click', '', $wpsso_purchase_url,
 					true, false, array( 'dismiss-msg' => $purchase_clicked ) ) . '</div>';
 
 			$no_thanks_button  = '<div class="notice-single-button">' .
