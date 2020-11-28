@@ -318,6 +318,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.15.0 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Improved suggested add-on notifications for the WooCommerce plugin.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v5.6.
+	* WordPress v4.4.
+
 **Version 8.14.0 (2020/11/26)**
 
 * **New Features**
