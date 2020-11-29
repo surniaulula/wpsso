@@ -245,7 +245,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 								$text .= __( 'When e-commerce product variations are available, the value from each variation will be used instead.', 'wpsso' ) . ' ';
 
-								$text .= __( 'This option may be disabled when a supported e-commerce plugin manages the source value.', 'wpsso' );
+								$text .= __( 'This option may be disabled when a supported e-commerce plugin is the authoritative source of this data.', 'wpsso' );
 							}
 
 						 	break;

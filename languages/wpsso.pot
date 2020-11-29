@@ -5257,8 +5257,8 @@ msgstr ""
 
 #: lib/messages.php:248
 msgid ""
-"This option may be disabled when a supported e-commerce plugin manages the "
-"source value."
+"This option may be disabled when a supported e-commerce plugin is the "
+"authoritative source of this data."
 msgstr ""
 
 #: lib/messages.php:255
