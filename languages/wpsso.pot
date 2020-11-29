@@ -6927,8 +6927,8 @@ msgstr ""
 
 #: lib/messages.php:2280
 msgid ""
-"These options allow you to customize the custom field name (aka metadata "
-"name) that %s can use to get additional information about your content."
+"These options allow you to customize the custom field names (aka metadata "
+"names) that %s can use to get additional information about your content."
 msgstr ""
 
 #: lib/messages.php:2284

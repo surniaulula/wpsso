@@ -2277,7 +2277,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							
 							$text .= '<p>';
 
-							$text .= sprintf( __( 'These options allow you to customize the custom field name (aka metadata name) that %s can use to get additional information about your content.', 'wpsso' ), $wpsso_name_pro ) . ' ';
+							$text .= sprintf( __( 'These options allow you to customize the custom field names (aka metadata names) that %s can use to get additional information about your content.', 'wpsso' ), $wpsso_name_pro ) . ' ';
 
 							$text .= '</p> <p><center><strong>';
 
