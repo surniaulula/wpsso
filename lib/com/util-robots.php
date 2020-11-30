@@ -77,9 +77,9 @@ if ( ! class_exists( 'SucomUtilRobots' ) ) {
 		 */
 		public static function set_directive( $key, $value, array &$directives ) {
 
-			if ( isset( self::$directives[ $key ] ) ) {	// Directive must be known.
+			if ( isset( self::$default_directives[ $key ] ) ) {	// Directive must be known.
 
-				if ( is_bool( self::$directives[ $key ] ) ) {	// Default boolean, so set as boolean.
+				if ( is_bool( self::$default_directives[ $key ] ) ) {	// Default boolean, so set as boolean.
 
 					$directives[ $key ] = $value ? true : false;	// Convert to boolean.
 
@@ -93,9 +93,9 @@ if ( ! class_exists( 'SucomUtilRobots' ) ) {
 							/**
 							 * If the inverse is also a boolean, then set the inverse boolean value.
 							 */
-							if ( isset( self::$directives[ $inverse_key ] ) ) {	// Directive must be known.
+							if ( isset( self::$default_directives[ $inverse_key ] ) ) {	// Directive must be known.
 
-								if ( is_bool( self::$directives[ $inverse_key ] ) ) {	// Also a boolean.
+								if ( is_bool( self::$default_directives[ $inverse_key ] ) ) {	// Also a boolean.
 
 									$directives[ $inverse_key ] = $value ? false : true;	// Inverse boolean.
 								}
