@@ -318,14 +318,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.15.0 (TBD)**
+**Version 8.14.1 (2020/11/30)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Improved suggested add-on notifications for the WooCommerce plugin.
 * **Bugfixes**
-	* None.
+	* Fixed an "undeclared static property: SucomUtilRobots::$directives" error.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -765,6 +765,10 @@ This release adds a new SSO &gt; Features Status page and integration module for
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.14.1 =
+
+(2020/11/30) Improved suggested add-on notifications for the WooCommerce plugin. Fixed an "undeclared static property: SucomUtilRobots::$directives" error.
 
 = 8.14.0 =
 
