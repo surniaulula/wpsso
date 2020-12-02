@@ -17,7 +17,7 @@
 
 <p style="margin:0;"><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"></p>
 
-<h3>The Complete Structured Data Solution for WordPress</h3>
+<h3 style="margin-top:0;">The Complete Structured Data Solution for WordPress</h3>
 
 <p><strong>Make sure your content looks best on social sites and in search results, no matter how your webpages are shared, re-shared, messaged, posted, embedded, or crawled:</strong></p>
 
