@@ -308,7 +308,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 					if ( empty( $pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
 
-						$action_links[] = $this->get_purchase_plugin_link( 'wpsso' );
+						$action_links[] = $this->get_purchase_plugin_link( 'wpsso', __( '(required for WooCommerce integration)', 'wpsso' ) );
 					}
 
 					if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
@@ -344,6 +344,16 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 					$action_links = array();	// Init a new action array for the notice message.
 
+					if ( empty( $pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
+
+						$action_links[] = $this->get_purchase_plugin_link( 'wpsso', __( '(required for WooCommerce integration)', 'wpsso' ) );
+					}
+
+					if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
+
+						$action_links[] = $this->get_install_activate_addon_link( 'wpssojson' );
+					}
+
 					$action_links[] = $this->get_install_activate_addon_link( 'wpssowcmd' );
 
 					$wcmd_info        = $this->p->cf[ 'plugin' ][ 'wpssowcmd' ];
@@ -356,8 +366,6 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 					$notice_msg .= sprintf( __( 'If you\'re not already using a plugin to manage unique product IDs for WooCommerce, you should activate the %s add-on.', 'wpsso' ), $wcmd_name_transl ) . ' ';
 
 					if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
-
-						$action_links[] = $this->get_install_activate_addon_link( 'wpssojson' );
 
 						$json_info        = $this->p->cf[ 'plugin' ][ 'wpssojson' ];
 						$json_name_transl = _x( $json_info[ 'name' ], 'plugin name', 'wpsso' );
@@ -387,6 +395,16 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 					if ( $shipping_enabled ) {
 
+						if ( empty( $pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
+
+							$action_links[] = $this->get_purchase_plugin_link( 'wpsso', __( '(required for WooCommerce integration)', 'wpsso' ) );
+						}
+
+						if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
+
+							$action_links[] = $this->get_install_activate_addon_link( 'wpssojson' );
+						}
+
 						$action_links[] = $this->get_install_activate_addon_link( 'wpssowcsdt' );
 
 						$wcsdt_info        = $this->p->cf[ 'plugin' ][ 'wpssowcsdt' ];
@@ -398,8 +416,6 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 						$notice_msg .= __( 'Adding shipping details to your Schema Product markup is especially important if you offer free or low-cost shipping options as this will make your products more appealing in Google search results.', 'wpsso' ) . ' ';
 
 						if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
-
-							$action_links[] = $this->get_install_activate_addon_link( 'wpssojson' );
 
 							$json_info        = $this->p->cf[ 'plugin' ][ 'wpssojson' ];
 							$json_name_transl = _x( $json_info[ 'name' ], 'plugin name', 'wpsso' );
@@ -420,11 +436,17 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 		}
 
 
-		private function get_purchase_plugin_link( $ext ) {
+		private function get_purchase_plugin_link( $ext, $cmt = '' ) {
 
 			$pkg_info         = $this->p->admin->get_pkg_info();	// Returns an array from cache.
 			$ext_info         = $this->p->cf[ 'plugin' ][ $ext ];
 			$ext_purchase_url = $ext_info[ 'url' ][ 'purchase' ];
+
+			if ( $cmt ) {
+
+				// translators: %1$s is a URL, %2$s is the plugin name, and %3$s is a pre-translated comment.
+				return sprintf( __( '<a href="%1$s">Purchase the %2$s plugin</a> %3$s.', 'wpsso' ), $ext_purchase_url, $pkg_info[ $ext ][ 'name_pro' ], $cmt );
+			}
 
 			return '<a href="' . $ext_purchase_url . '">' . sprintf( __( 'Purchase the %s plugin.', 'wpsso' ), $pkg_info[ $ext ][ 'name_pro' ] ) . '</a>';
 		}
