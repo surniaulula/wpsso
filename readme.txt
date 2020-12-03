@@ -318,6 +318,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.15.0-dev.1 (2020/12/03)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added a new SSO &gt; Advanced Settings &gt; Services API metabox.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v5.6.
+	* WordPress v4.4.
+
 **Version 8.14.1 (2020/11/30)**
 
 * **New Features**
@@ -765,6 +779,10 @@ This release adds a new SSO &gt; Features Status page and integration module for
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.15.0-dev.1 =
+
+(2020/12/03) Added a new SSO &gt; Advanced Settings &gt; Services API metabox.
 
 = 8.14.1 =
 
