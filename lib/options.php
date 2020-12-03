@@ -396,7 +396,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					'og_type_for'                => 'article',
 					'schema_type_for'            => 'webpage',
 					'plugin_add_to'              => 1,		// Show Document SSO Metabox.
-					'plugin_shopperapproved_for' => 0,		// Get Reviews for Post Type.
+					'plugin_shopperapproved_for' => 0,		// Get Reviews for Post Types.
 				) );
 
 				/**
@@ -830,7 +830,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			$this->p->util->add_post_type_names( $opts, array(
 				'plugin_add_to'              => 1,		// Show Document SSO Metabox.
-				'plugin_shopperapproved_for' => 0,		// Get Reviews for Post Type.
+				'plugin_shopperapproved_for' => 0,		// Get Reviews for Post Types.
 				'og_type_for'                => 'article',
 				'schema_type_for'            => 'webpage',
 			) );

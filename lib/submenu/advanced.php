@@ -34,73 +34,27 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 		 */
 		protected function add_meta_boxes() {
 
-			/**
-			 * Advanced Settings metabox.
-			 */
-			$metabox_id      = 'plugin';
-			$metabox_title   = _x( 'Advanced Settings', 'metabox title', 'wpsso' );
-			$metabox_screen  = $this->pagehook;
-			$metabox_context = 'normal';
-			$metabox_prio    = 'default';
-			$callback_args   = array(	// Second argument passed to the callback function / method.
-			);
+			foreach ( array(
+				'plugin'         => _x( 'Advanced Settings', 'metabox title', 'wpsso' ),
+				'services'       => _x( 'Service APIs', 'metabox title', 'wpsso' ),
+				'contact_fields' => _x( 'Contact Fields', 'metabox title', 'wpsso' ),
+				'metadata'       => _x( 'Metadata', 'metabox title', 'wpsso' ),
+				'head_tags'      => _x( 'HTML Tags', 'metabox title', 'wpsso' ),
+			) as $metabox_id => $metabox_title ) {
 
-			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
-				array( $this, 'show_metabox_' . $metabox_id ), $metabox_screen,
-					$metabox_context, $metabox_prio, $callback_args );
+				$metabox_screen  = $this->pagehook;
+				$metabox_context = 'normal';
+				$metabox_prio    = 'default';
+				$callback_args   = array(	// Second argument passed to the callback function / method.
+				);
 
-			/**
-			 * Contact Fields metabox.
-			 */
-			$metabox_id      = 'contact_fields';
-			$metabox_title   = _x( 'Contact Fields', 'metabox title', 'wpsso' );
-			$metabox_screen  = $this->pagehook;
-			$metabox_context = 'normal';
-			$metabox_prio    = 'default';
-			$callback_args   = array(	// Second argument passed to the callback function / method.
-			);
-
-			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
-				array( $this, 'show_metabox_' . $metabox_id ), $metabox_screen,
-					$metabox_context, $metabox_prio, $callback_args );
-
-			/**
-			 * Metadata metabox.
-			 */
-			$metabox_id      = 'edit';
-			$metabox_title   = _x( 'Metadata', 'metabox title', 'wpsso' );
-			$metabox_screen  = $this->pagehook;
-			$metabox_context = 'normal';
-			$metabox_prio    = 'default';
-			$callback_args   = array(	// Second argument passed to the callback function / method.
-			);
-
-			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
-				array( $this, 'show_metabox_' . $metabox_id ), $metabox_screen,
-					$metabox_context, $metabox_prio, $callback_args );
-
-			/**
-			 * HTML Tags metabox.
-			 */
-			$metabox_id      = 'head_tags';
-			$metabox_title   = _x( 'HTML Tags', 'metabox title', 'wpsso' );
-			$metabox_screen  = $this->pagehook;
-			$metabox_context = 'normal';
-			$metabox_prio    = 'default';
-			$callback_args   = array(	// Second argument passed to the callback function / method.
-			);
-
-			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
-				array( $this, 'show_metabox_' . $metabox_id ), $metabox_screen,
-					$metabox_context, $metabox_prio, $callback_args );
+				add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
+					array( $this, 'show_metabox_' . $metabox_id ), $metabox_screen,
+						$metabox_context, $metabox_prio, $callback_args );
+			}
 		}
 
 		public function show_metabox_plugin() {
-
-			/**
-			 * Translate contact method field labels for current language.
-			 */
-			SucomUtil::transl_key_values( '/^plugin_(cm_.*_label|.*_prefix)$/', $this->p->options, 'wpsso' );
 
 			$metabox_id = 'plugin';
 			$table_rows = array();
@@ -110,7 +64,6 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				'interface'    => _x( 'Interface', 'metabox tab', 'wpsso' ),
 				'integration'  => _x( 'Integration', 'metabox tab', 'wpsso' ),
 				'cache'        => _x( 'Caching', 'metabox tab', 'wpsso' ),
-				'apikeys'      => _x( 'Service APIs', 'metabox tab', 'wpsso' ),
 			) );
 
 			foreach ( $tabs as $tab_key => $title ) {
@@ -126,9 +79,33 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
 		}
 
-		public function show_metabox_edit() {
+		public function show_metabox_services() {
 
-			$metabox_id = 'edit';
+			$metabox_id = 'services';
+			$table_rows = array();
+
+			$tabs = apply_filters( 'wpsso_advanced_' . $metabox_id . '_tabs', array(
+				'media'           => _x( 'Media Services', 'metabox tab', 'wpsso' ),
+				'shortening'      => _x( 'Shortening Services', 'metabox tab', 'wpsso' ),
+				'ratings_reviews' => _x( 'Ratings and Reviews', 'metabox tab', 'wpsso' ),
+			) );
+
+			foreach ( $tabs as $tab_key => $title ) {
+
+				$filter_name = 'wpsso_' . $metabox_id . '_' . $tab_key . '_rows';
+
+				$table_rows[ $tab_key ] = array_merge(
+					$this->get_table_rows( $metabox_id, $tab_key ),
+					(array) apply_filters( $filter_name, array(), $this->form, $network = false )
+				);
+			}
+
+			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
+		}
+
+		public function show_metabox_metadata() {
+
+			$metabox_id = 'metadata';
 			$table_rows = array();
 
 			$tabs = apply_filters( 'wpsso_advanced_' . $metabox_id . '_tabs', array(
@@ -151,6 +128,11 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 
 		public function show_metabox_contact_fields() {
 
+			/**
+			 * Translate contact method field labels for current language.
+			 */
+			SucomUtil::transl_key_values( '/^plugin_(cm_.*_label|.*_prefix)$/', $this->p->options, 'wpsso' );
+
 			$metabox_id = 'cm';
 			$table_rows = array();
 			$info_msg   = $this->p->msgs->get( 'info-' . $metabox_id );
@@ -170,8 +152,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				);
 			}
 
-			$this->p->util->metabox->do_table( array( '<td>' . $info_msg . '</td>' ),
-				$class_href_key = 'metabox-info metabox-' . $metabox_id . '-info' );
+			$this->p->util->metabox->do_table( array( '<td>' . $info_msg . '</td>' ), $class_href_key = 'metabox-info metabox-' . $metabox_id . '-info' );
 
 			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
 		}
@@ -201,8 +182,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				);
 			}
 
-			$this->p->util->metabox->do_table( array( '<td>' . $info_msg . '</td>' ),
-				$class_href_key = 'metabox-info metabox-' . $metabox_id . '-info' );
+			$this->p->util->metabox->do_table( array( '<td>' . $info_msg . '</td>' ), $class_href_key = 'metabox-info metabox-' . $metabox_id . '-info' );
 
 			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
 		}
@@ -225,13 +205,13 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				/**
 				 * Metadata metabox.
 				 */
-				case 'edit-product_attrs':
+				case 'metadata-product_attrs':
 
 					$this->add_advanced_product_attrs_table_rows( $table_rows, $this->form );
 
 					break;
 
-				case 'edit-custom_fields':
+				case 'metadata-custom_fields':
 
 					$this->add_advanced_custom_fields_table_rows( $table_rows, $this->form );
 

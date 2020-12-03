@@ -202,10 +202,6 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	margin:0 8px 0 0;
 }
 
-.sucom-tablink-icon.sucom-tablink-href_apikeys::before {		/* SSO > Advanced Settings > Advanced Settings > Service APIs tab. */
-	content:"\e80a";	/* .icon-cloud */
-}
-
 .sucom-tablink-icon.sucom-tablink-href_appmeta::before {		/* Mobile Apps tab. */
 	content:"\f10b";	/* .icon-mobile */
 }
@@ -286,7 +282,7 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\f1a0";	/* .icon-google */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_media::before {			/* Priority Media tab. */
+.sucom-tablink-icon.sucom-tablink-href_media::before {			/* Priority Media tab and SSO > Advanced Settings > Service APIs > Media Services tab. */
 	content:"\e808";	/* .icon-picture */
 }
 
@@ -326,12 +322,12 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\e80f";	/* .icon-barcode */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_robots::before {			/* Robots Meta tab. */
-	content:"\e81b";	/* .icon-robot-4 */
+.sucom-tablink-icon.sucom-tablink-href_ratings_reviews::before {	/* SSO > Advanced Settings > Service APIs > Ratings and Reviews tab. */
+	content:"\f123";	/* .icon-star-half-alt */
 }
 
-.sucom-tablink_schema-defaults.sucom-tablink-icon::before {		/* SSO > Schema Markup > Schema Defaults tabs. */
-	content:"\f0f6";	/* .icon-doc-text */
+.sucom-tablink-icon.sucom-tablink-href_robots::before {			/* Robots Meta tab. */
+	content:"\e81b";	/* .icon-robot-4 */
 }
 
 .sucom-tablink-icon.sucom-tablink-href_schema::before {			/* SSO > Advanced Settings > HTML Tags > Schema tab. */
@@ -354,6 +350,10 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\f12e";	/* .icon-puzzle */
 }
 
+.sucom-tablink-icon.sucom-tablink-href_shortening::before {		/* SSO > Advanced Settings > Service APIs > Shortening Services tab. */
+	content:"\e82c";	/* .icon-link */
+}
+
 .sucom-tablink-icon.sucom-tablink-href_site::before {			/* Site Information tab. */
 	content:"\e803";	/* .icon-home */
 }
@@ -370,10 +370,11 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\e800";	/* .icon-videocam */
 }
 
-/**
- * Social Sharing Styles tabs.
- */
-.sucom-tablink.sucom-tablink_rrssb_styles.sucom-tablink-icon::before {
+.sucom-tablink_schema-defaults.sucom-tablink-icon::before {		/* SSO > Schema Markup > Schema Defaults tabs. */
+	content:"\f0f6";	/* .icon-doc-text */
+}
+
+.sucom-tablink.sucom-tablink_rrssb_styles.sucom-tablink-icon::before {	/* Social Sharing Styles tabs. */
 	content:"\e809";	/* .icon-edit */
 }
 

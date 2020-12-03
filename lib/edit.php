@@ -458,43 +458,44 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			}
 
 			$table_rows[] = '' . 
-			$form->get_th_html( _x( 'Sharing URL', 'option label', 'wpsso' ), $css_class = 'medium' ) . 
-			'<td>' . SucomForm::get_no_input_clipboard( $sharing_url ) . '</td>';
+				$form->get_th_html( _x( 'Sharing URL', 'option label', 'wpsso' ), $css_class = 'medium' ) . 
+				'<td>' . SucomForm::get_no_input_clipboard( $sharing_url ) . '</td>';
 
 			$table_rows[] = ( $sharing_url === $canonical_url ? '<tr class="hide_in_basic">' : '' ) . 
-			$form->get_th_html( _x( 'Canonical URL', 'option label', 'wpsso' ), $css_class = 'medium' ) . 
-			'<td>' . SucomForm::get_no_input_clipboard( $canonical_url ) . '</td>';
+				$form->get_th_html( _x( 'Canonical URL', 'option label', 'wpsso' ), $css_class = 'medium' ) . 
+				'<td>' . SucomForm::get_no_input_clipboard( $canonical_url ) . '</td>';
 
-			$table_rows[] = ( empty( $this->p->options[ 'plugin_shortener' ] ) || $this->p->options[ 'plugin_shortener' ] === 'none' ||
-				$sharing_url === $shortlink_url ? '<tr class="hide_in_basic">' : '' ) . 
-			$form->get_th_html( _x( 'Shortlink URL', 'option label', 'wpsso' ), $css_class = 'medium' ) . 
-			'<td>' . SucomForm::get_no_input_clipboard( $shortlink_url ) . '</td>';
+			$table_rows[] = ( empty( $this->p->options[ 'plugin_shortener' ] ) ||
+				$this->p->options[ 'plugin_shortener' ] === 'none' ||
+					$sharing_url === $shortlink_url ? '<tr class="hide_in_basic">' : '' ) . 
+				$form->get_th_html( _x( 'Shortlink URL', 'option label', 'wpsso' ), $css_class = 'medium' ) . 
+				'<td>' . SucomForm::get_no_input_clipboard( $shortlink_url ) . '</td>';
 
 			$table_rows[ 'subsection_og_example' ] = '<td colspan="2" class="subsection"><h4>' . 
-			_x( 'Facebook / Open Graph Example', 'option label', 'wpsso' ) . '</h4></td>';
+				_x( 'Facebook / Open Graph Example', 'option label', 'wpsso' ) . '</h4></td>';
 
 			$table_rows[] = '' .
-			'<td colspan="2" class="preview_container">
-				<div class="preview_box_border">
-					<div class="preview_box">
-						' . $og_prev_img_html . '
-						<div class="preview_txt">
-							<div class="preview_title">' . ( empty( $head_info[ 'og:title' ] ) ?
-								_x( 'No Title', 'default title', 'wpsso' ) : $head_info[ 'og:title' ] ) . 
-							'</div><!-- .preview_title -->
-							<div class="preview_desc">' . ( empty( $head_info[ 'og:description' ] ) ?
-								_x( 'No Description.', 'default description', 'wpsso' ) : $head_info[ 'og:description' ] ) . 
-							'</div><!-- .preview_desc -->
-							<div class="preview_by">' . 
-								$_SERVER[ 'SERVER_NAME' ] . 
-								( empty( $this->p->options[ 'add_meta_property_article:author' ] ) ||
-									empty( $head_info[ 'article:author:name' ] ) ?
-										'' : ' | By ' . $head_info[ 'article:author:name' ] ) . 
-							'</div><!-- .preview_by -->
-						</div><!-- .preview_txt -->
-					</div><!-- .preview_box -->
-				</div><!-- .preview_box_border -->
-			</td><!-- .preview_container -->';
+				'<td colspan="2" class="preview_container">
+					<div class="preview_box_border">
+						<div class="preview_box">
+							' . $og_prev_img_html . '
+							<div class="preview_txt">
+								<div class="preview_title">' . ( empty( $head_info[ 'og:title' ] ) ?
+									_x( 'No Title', 'default title', 'wpsso' ) : $head_info[ 'og:title' ] ) . 
+								'</div><!-- .preview_title -->
+								<div class="preview_desc">' . ( empty( $head_info[ 'og:description' ] ) ?
+									_x( 'No Description.', 'default description', 'wpsso' ) : $head_info[ 'og:description' ] ) . 
+								'</div><!-- .preview_desc -->
+								<div class="preview_by">' . 
+									$_SERVER[ 'SERVER_NAME' ] . 
+									( empty( $this->p->options[ 'add_meta_property_article:author' ] ) ||
+										empty( $head_info[ 'article:author:name' ] ) ?
+											'' : ' | By ' . $head_info[ 'article:author:name' ] ) . 
+								'</div><!-- .preview_by -->
+							</div><!-- .preview_txt -->
+						</div><!-- .preview_box -->
+					</div><!-- .preview_box_border -->
+				</td><!-- .preview_container -->';
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'info-meta-social-preview' ) . '</td>';
 

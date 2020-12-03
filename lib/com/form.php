@@ -138,6 +138,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $value;
 		}
 
+		public function get_tr_on_change( $select_id, $select_value ) {
+
+			return '<tr class="hide_' . $select_id . ' hide_' . $select_id . '_' . $select_value . '">';
+		}
+
 		public function get_tr_hide( $in_view = 'basic', $option_keys = array() ) {
 
 			$css_class = self::get_css_class_hide( $in_view, $option_keys );

@@ -28,17 +28,19 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			}
 
 			$this->p->util->add_plugin_filters( $this, array(
-				'plugin_interface_rows'     => 2,	// Interface tab.
-				'plugin_integration_rows'   => 2,	// Integration tab.
-				'plugin_cache_rows'         => 3,	// Caching tab.
-				'plugin_apikeys_rows'       => 2,	// Service APIs tab.
-				'cm_custom_contacts_rows'   => 2,	// Custom Contacts tab.
-				'cm_default_contacts_rows'  => 2,	// Default Contacts tab.
-				'head_tags_facebook_rows'   => 3,
-				'head_tags_open_graph_rows' => 3,
-				'head_tags_twitter_rows'    => 3,
-				'head_tags_schema_rows'     => 3,
-				'head_tags_seo_other_rows'  => 3,
+				'plugin_interface_rows'         => 2,	// Interface tab.
+				'plugin_integration_rows'       => 2,	// Integration tab.
+				'plugin_cache_rows'             => 3,	// Caching tab.
+				'services_media_rows'           => 2,	// Media Services tab.
+				'services_shortening_rows'      => 2,	// Shortening Services tab.
+				'services_ratings_reviews_rows' => 2,	// Ratings and Reviews tab.
+				'cm_custom_contacts_rows'       => 2,	// Custom Contacts tab.
+				'cm_default_contacts_rows'      => 2,	// Default Contacts tab.
+				'head_tags_facebook_rows'       => 3,
+				'head_tags_open_graph_rows'     => 3,
+				'head_tags_twitter_rows'        => 3,
+				'head_tags_schema_rows'         => 3,
+				'head_tags_seo_other_rows'      => 3,
 			), $prio = 20 );
 		}
 
@@ -356,41 +358,21 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		}
 
 		/**
-		 * Service APIs tab.
+		 * Media Services tab.
 		 */
-		public function filter_plugin_apikeys_rows( $table_rows, $form ) {
+		public function filter_services_media_rows( $table_rows, $form ) {
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			/**
-			 * Show selected shortener options and hide all others.
-			 */
-			$tr_shortener_html = array();
-
-			foreach ( array(
-				'bitly'    => 'plugin_bitly_access_token',	// Bitly Generic Access Token.
-				'dlmyapp'  => 'plugin_dlmyapp_api_key',		// DLMY.App API Key.
-				'owly'     => 'plugin_owly_api_key',		// Ow.ly API Key.
-				'yourls'   => 'plugin_yourls_api_url',		// YOURLS API URL.
-			) as $tr_key => $opt_key ) {
-
-				$tr_shortener_html[ $tr_key ] = empty( $form->options[ $opt_key ] ) && $form->options[ 'plugin_shortener' ] !== $tr_key ?
-					$form->get_tr_hide( 'basic' ) : '';
-			}
-
-			if ( empty( $form->options[ 'plugin_shortener' ] ) || 'none' === $form->options[ 'plugin_shortener' ] || 
-				$form->options[ 'plugin_shortener' ] === 'bitly' ) {
-
-				$tr_shortener_html[ 'bitly' ] = '';
-			}
-
-			/**
-			 * Begin settings.
-			 */
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
+
+			$table_rows[ 'plugin_gravatar_api' ] = '' . 
+				$form->get_th_html( _x( 'Gravatar is Default Author Image', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_gravatar_api' ) . 
+				$form->get_no_td_checkbox( 'plugin_gravatar_api' );
+
+			$table_rows[ 'plugin_gravatar_size' ] = $form->get_tr_hide( 'basic', 'plugin_gravatar_size' ) . 
+				$form->get_th_html( _x( 'Gravatar Image Size', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_gravatar_size' ) . 
+				'<td class="blank">' . $form->get_no_input( 'plugin_gravatar_size', $css_class = 'short' ) . '</td>';
 
 			$check_embed_html = '';
 
@@ -404,97 +386,60 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					$css_class = '', $css_id = 'plugin_embed_media_apis' ).
 				'<td class="blank">' . $check_embed_html . '</td>';
 
-			$table_rows[ 'plugin_gravatar_api' ] = '' . 
-				$form->get_th_html( _x( 'Gravatar is Default Author Image', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_gravatar_api' ) . 
-				$form->get_no_td_checkbox( 'plugin_gravatar_api' );
+			return $table_rows;
+		}
 
-			$table_rows[ 'plugin_gravatar_size' ] = $form->get_tr_hide( 'basic', 'plugin_gravatar_size' ) . 
-				$form->get_th_html( _x( 'Gravatar Image Size', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_gravatar_size' ) . 
-				'<td class="blank">' . $form->get_no_input( 'plugin_gravatar_size', $css_class = 'short' ) . '</td>';
+		/**
+		 * Shortening Services tab.
+		 */
+		public function filter_services_shortening_rows( $table_rows, $form ) {
+
+			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
 			$table_rows[ 'plugin_shortener' ] = '' . 
-				$form->get_th_html( _x( 'URL Shortening Service', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_shortener' ) . 
+				$form->get_th_html( _x( 'URL Shortening Service', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_shortener' ) . 
 				'<td class="blank">' . $form->get_no_select_none( 'plugin_shortener' ) . '</td>';
 
 			$table_rows[ 'plugin_min_shorten' ] = $form->get_tr_hide( 'basic', 'plugin_min_shorten' ) . 
-				$form->get_th_html( _x( 'Minimum URL Length to Shorten', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_min_shorten' ) . 
+				$form->get_th_html( _x( 'Minimum URL Length to Shorten', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_min_shorten' ) . 
 				'<td nowrap class="blank">' . $form->get_no_input( 'plugin_min_shorten', $css_class = 'short' ) . ' ' .
 					_x( 'characters', 'option comment', 'wpsso' ) . '</td>';
 
 			$table_rows[ 'plugin_wp_shortlink' ] = $form->get_tr_hide( 'basic', 'plugin_wp_shortlink' ) .
-				$form->get_th_html( _x( 'Use Shortened URL for WP Shortlink', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_wp_shortlink' ) . 
+				$form->get_th_html( _x( 'Use Shortened URL for WP Shortlink', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_wp_shortlink' ) . 
 				$form->get_no_td_checkbox( 'plugin_wp_shortlink' );
 
 			$table_rows[ 'plugin_add_link_rel_shortlink' ] = $form->get_tr_hide( 'basic', 'add_link_rel_shortlink' ) .
-				$form->get_th_html( sprintf( _x( 'Add "%s" HTML Tag', 'option label', 'wpsso' ),
-					'link&nbsp;rel&nbsp;shortlink' ), $css_class = '', $css_id = 'plugin_add_link_rel_shortlink' ) . 
-				'<td class="blank">' . $form->get_no_checkbox( 'add_link_rel_shortlink',
-					$css_class = '', $css_id = 'add_link_rel_shortlink_html_tag', $force = null,
-						$group = 'add_link_rel_shortlink' ) . '</td>';	// Group with option in head tags list
+				$form->get_th_html( sprintf( _x( 'Add "%s" HTML Tag', 'option label', 'wpsso' ), 'link&nbsp;rel&nbsp;shortlink' ),
+					$css_class = '', $css_id = 'plugin_add_link_rel_shortlink' ) . 
+				'<td class="blank">' . $form->get_no_checkbox( 'add_link_rel_shortlink', $css_class = '', $css_id = 'add_link_rel_shortlink_html_tag',
+					$force = null, $group = 'add_link_rel_shortlink' ) . '</td>';	// Group with option in head tags list
+
+			return $table_rows;
+		}
+
+		/**
+		 * Ratings and Reviews tab.
+		 */
+		public function filter_services_ratings_reviews_rows( $table_rows, $form ) {
+
+			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
 			/**
-			 * Bitly URL shortener.
-			 */
-			$table_rows[ 'subsection_plugin_bitly' ] = $tr_shortener_html[ 'bitly' ] . 
-				'<td colspan="2" class="subsection"><h4>' . _x( 'Bitly (URL Shortener)', 'metabox title', 'wpsso' ) . '</h4></td>';
-
-			$table_rows[ 'plugin_bitly_access_token' ] = $tr_shortener_html[ 'bitly' ] . 
-				$form->get_th_html( _x( 'Bitly Generic Access Token', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_bitly_access_token' ) . 
-				'<td class="blank mono"></td>';
-
-			$table_rows[ 'plugin_bitly_domain' ] = $tr_shortener_html[ 'bitly' ] . 
-				$form->get_th_html( _x( 'Bitly Short Domain (Optional)', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_bitly_domain' ) . 
-				'<td class="blank mono"></td>';
-
-			$table_rows[ 'plugin_bitly_group_name' ] = $tr_shortener_html[ 'bitly' ] . 
-				$form->get_th_html( _x( 'Bitly Group Name (Optional)', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_bitly_group_name' ) . 
-				'<td class="blank mono"></td>';
-
-			/**
-			 * DLMY.App URL shortener.
-			 */
-			$table_rows[ 'subsection_plugin_dlmyapp' ] = $tr_shortener_html[ 'dlmyapp' ] . 
-				'<td colspan="2" class="subsection"><h4>' . _x( 'DLMY.App (URL Shortener)', 'metabox title', 'wpsso' ) . '</h4></td>';
-
-			$table_rows[ 'plugin_dlmyapp_api_key' ] = $tr_shortener_html[ 'dlmyapp' ] . 
-				$form->get_th_html( _x( 'DLMY.App API Key', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_dlmyapp_api_key' ) . 
-				'<td class="blank mono"></td>';
-
-			/**
-			 * Owly URL shortener.
-			 */
-			$table_rows[ 'subsection_plugin_owly' ] = $tr_shortener_html[ 'owly' ] . 
-				'<td colspan="2" class="subsection"><h4>' . _x( 'Ow.ly (URL Shortener)', 'metabox title', 'wpsso' ) . '</h4></td>';
-
-			$table_rows[ 'plugin_owly_api_key' ] = $tr_shortener_html[ 'owly' ] . 
-				$form->get_th_html( _x( 'Ow.ly API Key', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_owly_api_key' ) . 
-				'<td class="blank mono"></td>';
-
-			/**
-			 * Shopper Approved ratings and reviews.
+			 * Shopper Approved.
 			 */
 			$table_rows[ 'subsection_plugin_shopperapproved' ] = '' .
-				'<td colspan="2" class="subsection"><h4>' . _x( 'Shopper Approved (Ratings and Reviews)', 'metabox title', 'wpsso' ) . '</h4></td>';
+				'<td colspan="2" class="subsection top"><h4>' . _x( 'Shopper Approved', 'metabox title', 'wpsso' ) . '</h4></td>';
 
 			$table_rows[ 'plugin_shopperapproved_site_id' ] = '' .
 				$form->get_th_html( _x( 'Shopper Approved Site ID', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_shopperapproved_site_id' ) .
-				'<td class="blank mono"></td>';
+				'<td class="blank">' . $form->get_no_input( 'plugin_shopperapproved_site_id', $css_class = 'api_key' ) . '</td>';
 
 			$table_rows[ 'plugin_shopperapproved_token' ] = '' .
 				$form->get_th_html( _x( 'Shopper Approved API Token', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_shopperapproved_token' ) .
-				'<td class="blank mono"></td>';
+				'<td class="blank">' . $form->get_no_input( 'plugin_shopperapproved_token', $css_class = 'api_key' ) . '</td>';
 
 			$table_rows[ 'plugin_shopperapproved_num_max' ] = '' .
 				$form->get_th_html( _x( 'Maximum Number of Reviews', 'option label', 'wpsso' ),
@@ -504,42 +449,16 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$table_rows[ 'plugin_shopperapproved_age_max' ] = '' .
 				$form->get_th_html( _x( 'Maximum Age of Reviews', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_shopperapproved_age_max' ) .
-				'<td class="blank">' . $form->get_no_input( 'plugin_shopperapproved_age_max', $css_class = 'short' ) . ' ' .
+				'<td nowrap class="blank">' . $form->get_no_input( 'plugin_shopperapproved_age_max', $css_class = 'short' ) . ' ' .
 					_x( 'months', 'option comment', 'wpsso' ) . '</td>';
 
 			$sa_for_values = SucomUtilWP::get_post_type_labels( array(), $val_prefix = '', _x( 'Post Type', 'option label', 'wpsso' ) );
 
 			$table_rows[ 'plugin_shopperapproved_for' ] = '' .
-				$form->get_th_html( _x( 'Get Reviews for Post Type', 'option label', 'wpsso' ),
+				$form->get_th_html( _x( 'Get Reviews for Post Types', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_shopperapproved_for' ) .
 				'<td class="blank">' . $form->get_no_checklist( 'plugin_shopperapproved_for', $sa_for_values,
 					$css_class = 'input_vertical_list', $css_id = '', $is_assoc = true ) . '</td>';
-
-			/**
-			 * YOURLS URL shortener.
-			 */
-			$table_rows[ 'subsection_plugin_yourls' ] = $tr_shortener_html[ 'yourls' ] . 
-				'<td colspan="2" class="subsection"><h4>' . _x( 'YOURLS (URL Shortener)', 'metabox title', 'wpsso' ) . '</h4></td>';
-
-			$table_rows[ 'plugin_yourls_api_url' ] = $tr_shortener_html[ 'yourls' ] . 
-				$form->get_th_html( _x( 'YOURLS API URL', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_yourls_api_url' ) . 
-				'<td class="blank mono"></td>';
-
-			$table_rows[ 'plugin_yourls_username' ] = $tr_shortener_html[ 'yourls' ] . 
-				$form->get_th_html( _x( 'YOURLS Username', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_yourls_username' ) . 
-				'<td class="blank mono"></td>';
-
-			$table_rows[ 'plugin_yourls_password' ] = $tr_shortener_html[ 'yourls' ] . 
-				$form->get_th_html( _x( 'YOURLS Password', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_yourls_password' ) . 
-				'<td class="blank mono"></td>';
-
-			$table_rows[ 'plugin_yourls_token' ] = $tr_shortener_html[ 'yourls' ] . 
-				$form->get_th_html( _x( 'YOURLS Token', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_yourls_token' ) . 
-				'<td class="blank mono"></td>';
 
 			return $table_rows;
 		}
