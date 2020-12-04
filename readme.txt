@@ -318,7 +318,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.15.0-dev.1 (2020/12/03)**
+**Version 8.15.0-b.1 (2020/12/03)**
 
 * **New Features**
 	* None.
@@ -327,7 +327,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added a new `WpssoPost->get_primary_post_term_id()` method.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.4.
@@ -780,7 +780,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.15.0-dev.1 =
+= 8.15.0-b.1 =
 
 (2020/12/03) Added a new SSO &gt; Advanced Settings &gt; Services API metabox.
 
