@@ -327,7 +327,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added a new `WpssoPost->get_primary_post_term_id()` method.
+	* Added a new `WpssoPost->get_primary_term_id()` method.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.4.
