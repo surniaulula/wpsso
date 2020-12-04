@@ -1003,8 +1003,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$cache_exp_secs = $this->p->opt->get_defaults( 'plugin_head_cache_exp' );
 
-							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : 
-								_x( 'disabled', 'option comment', 'wpsso' );
+							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : _x( 'disabled', 'option comment', 'wpsso' );
 
 							$text = __( 'Head meta tags and Schema markup are saved to the WordPress transient cache to optimize performance.', 'wpsso' ) . ' ';
 
@@ -1016,8 +1015,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$cache_exp_secs = $this->p->opt->get_defaults( 'plugin_content_cache_exp' );
 
-							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : 
-								_x( 'disabled', 'option comment', 'wpsso' );
+							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : _x( 'disabled', 'option comment', 'wpsso' );
 
 							$text = __( 'Filtered post content is saved to the WordPress <em>non-persistent</em> object cache to optimize performance.', 'wpsso' ) . ' ';
 
@@ -1029,8 +1027,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$cache_exp_secs = $this->p->opt->get_defaults( 'plugin_imgsize_cache_exp' );
 
-							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : 
-								_x( 'disabled', 'option comment', 'wpsso' );
+							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : _x( 'disabled', 'option comment', 'wpsso' );
 
 							$text = __( 'The size information for image URLs (not image IDs) is retrieved and saved to the WordPress transient cache to optimize performance and save network bandwidth.', 'wpsso' ) . ' ';
 
@@ -1042,8 +1039,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$cache_exp_secs = $this->p->opt->get_defaults( 'plugin_vidinfo_cache_exp' );
 
-							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : 
-								_x( 'disabled', 'option comment', 'wpsso' );
+							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : _x( 'disabled', 'option comment', 'wpsso' );
 
 							$text = __( 'Video information is retrieved from the video service API and saved to the WordPress transient cache to optimize performance and reduce API connections.', 'wpsso' ) . ' ';
 
@@ -1055,8 +1051,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$cache_exp_secs = $this->p->opt->get_defaults( 'plugin_short_url_cache_exp' );
 
-							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : 
-								_x( 'disabled', 'option comment', 'wpsso' );
+							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : _x( 'disabled', 'option comment', 'wpsso' );
 
 							$text = __( 'Shortened URLs are saved to the WordPress transient cache to optimize performance and reduce API connections.', 'wpsso' ) . ' ';
 
@@ -1068,8 +1063,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$cache_exp_secs = $this->p->opt->get_defaults( 'plugin_types_cache_exp' );
 
-							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : 
-								_x( 'disabled', 'option comment', 'wpsso' );
+							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : _x( 'disabled', 'option comment', 'wpsso' );
 
 							$text = __( 'The filtered Schema type index arrays are saved to the WordPress transient cache to optimize performance.', 'wpsso' ) . ' ';
 
@@ -1081,8 +1075,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$cache_exp_secs = $this->p->opt->get_defaults( 'plugin_select_cache_exp' );
 
-							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : 
-								_x( 'disabled', 'option comment', 'wpsso' );
+							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : _x( 'disabled', 'option comment', 'wpsso' );
 
 							$text = __( 'The filtered text list arrays (for example, article sections and product categories) are saved to the WordPress transient cache to optimize performance and disk access.', 'wpsso' ) . ' ';
 
@@ -1107,8 +1100,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$cache_exp_secs = (int) apply_filters( 'wpsso_cache_expire_short_url',
 								$this->p->options[ 'plugin_short_url_cache_exp' ] );
 
-							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : 
-								_x( 'disabled', 'option comment', 'wpsso' );
+							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : _x( 'disabled', 'option comment', 'wpsso' );
 
 							$text = sprintf( __( 'Clear all shortened URLs when clearing all %s transients from the WordPress database (default is unchecked).', 'wpsso' ), $info[ 'short' ] ) . ' ';
 
