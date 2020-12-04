@@ -123,17 +123,15 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						/**
 						 * See https://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns.
 						 */
-						add_filter( 'manage_' . $post_type_name . '_posts_columns',
-							array( $this, 'add_post_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
+						add_filter( 'manage_' . $post_type_name . '_posts_columns', array( $this, 'add_post_column_headings' ),
+							WPSSO_ADD_COLUMN_PRIORITY, 1 );
 
-						add_filter( 'manage_edit-' . $post_type_name . '_sortable_columns',
-							array( $this, 'add_sortable_columns' ), 10, 1 );
+						add_filter( 'manage_edit-' . $post_type_name . '_sortable_columns', array( $this, 'add_sortable_columns' ), 10, 1 );
 
 						/**
 						 * See https://codex.wordpress.org/Plugin_API/Action_Reference/manage_$post_type_posts_custom_column.
 						 */
-						add_action( 'manage_' . $post_type_name . '_posts_custom_column',
-							array( $this, 'show_column_content' ), 10, 2 );
+						add_action( 'manage_' . $post_type_name . '_posts_custom_column', array( $this, 'show_column_content' ), 10, 2 );
 					}
 				}
 
@@ -149,7 +147,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				add_action( 'manage_media_custom_column', array( $this, 'show_column_content' ), 10, 2 );
 
 				/**
-				 * The 'parse_query' action is hooked ONCE in the WpssoPost class to set the column orderby for
+				 * The 'parse_query' action is hooked once in the WpssoPost class to set the column orderby for
 				 * post, term, and user edit tables.
 				 */
 				add_action( 'parse_query', array( $this, 'set_column_orderby' ), 10, 1 );
@@ -1542,6 +1540,50 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $metabox_html;
 		}
 
+		/**
+		 * Since WPSSO Core v8.15.0.
+		 *
+		 * $tax_slug = 'category', 'post_tag', 'post_format', 'product_cat', etc.
+		 */
+		public function get_primary_post_term_id( $post_id, $tax_slug = 'category' ) {
+
+			static $local_cache = array();
+
+			if ( isset( $local_cache[ $post_id ][ $tax_slug ] ) ) {
+
+				return $local_cache[ $post_id ][ $tax_slug ];
+			}
+
+			/**
+			 * Returns null if a custom primary post term id has not been selected.
+			 */
+			$term_id = $this->get_options( $post_id, $md_key = 'primary_term_id' );
+
+			/**
+			 * Make sure the term still exists.
+			 */
+			if ( empty( $term_id ) || ! term_exists( $term_id ) ) {	// Since WP v3.0.
+
+				$term_id = false;
+
+				$post_terms = wp_get_post_terms( $post_id, $tax_slug );	// Returns WP_Error if $tax_slug does not exist.
+
+				if ( is_array( $post_terms ) ) {
+
+					foreach ( $post_terms as $term_obj ) {
+
+						$term_id = $term_obj->term_id;	// Use the first term id found.
+
+						break;	// Stop here.
+					}
+				}
+			}
+	
+			$term_id = apply_filters( 'wpsso_primary_post_term_id', $term_id, $post_id, $tax_slug );
+
+			return $local_cache[ $post_id ][ $tax_slug ] = $term_id;
+		}
+
 		public function clear_cache( $post_id, $rel_id = false ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -1617,11 +1659,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					foreach ( $post_taxonomies as $tax_slug ) {
 
-						$post_terms = wp_get_post_terms( $post_id, $tax_slug );
+						$post_terms = wp_get_post_terms( $post_id, $tax_slug );	// Returns WP_Error if $tax_slug does not exist.
 
-						foreach ( $post_terms as $post_term ) {
+						if ( is_array( $post_terms ) ) {
 
-							$this->p->term->clear_cache( $post_term->term_id, $post_term->term_taxonomy_id );
+							foreach ( $post_terms as $term_obj ) {
+
+								$this->p->term->clear_cache( $term_obj->term_id, $term_obj->term_taxonomy_id );
+							}
 						}
 					}
 				}

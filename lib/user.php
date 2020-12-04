@@ -112,8 +112,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				add_filter( 'manage_users_custom_column', array( $this, 'get_column_content',), 10, 3 );
 
 				/**
-				 * The 'parse_query' action is hooked ONCE in the WpssoPost class to set the column orderby for
-				 * post, term, and user edit tables.
+				 * The 'parse_query' action is hooked once in the WpssoPost class to set the column orderby for
+				 * post, term, and user edit tables. This comment is only here as a reminder - do not uncomment the
+				 * following 'parse_query' action hook.
 				 *
 				 * add_action( 'parse_query', array( $this, 'set_column_orderby' ), 10, 1 );
 				 */
