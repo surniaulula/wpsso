@@ -318,7 +318,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.15.0-b.1 (2020/12/03)**
+**Version 8.15.0-b.1 (2020/12/04)**
 
 * **New Features**
 	* None.
@@ -782,7 +782,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 = 8.15.0-b.1 =
 
-(2020/12/03) Added a new SSO &gt; Advanced Settings &gt; Services API metabox.
+(2020/12/04) Added a new SSO &gt; Advanced Settings &gt; Services API metabox.
 
 = 8.14.1 =
 
