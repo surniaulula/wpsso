@@ -1540,50 +1540,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $metabox_html;
 		}
 
-		/**
-		 * Since WPSSO Core v8.15.0.
-		 *
-		 * $tax_slug = 'category', 'post_tag', 'post_format', 'product_cat', etc.
-		 */
-		public function get_primary_post_term_id( $post_id, $tax_slug = 'category' ) {
-
-			static $local_cache = array();
-
-			if ( isset( $local_cache[ $post_id ][ $tax_slug ] ) ) {
-
-				return $local_cache[ $post_id ][ $tax_slug ];
-			}
-
-			/**
-			 * Returns null if a custom primary post term id has not been selected.
-			 */
-			$term_id = $this->get_options( $post_id, $md_key = 'primary_term_id' );
-
-			/**
-			 * Make sure the term still exists.
-			 */
-			if ( empty( $term_id ) || ! term_exists( $term_id ) ) {	// Since WP v3.0.
-
-				$term_id = false;
-
-				$post_terms = wp_get_post_terms( $post_id, $tax_slug );	// Returns WP_Error if $tax_slug does not exist.
-
-				if ( is_array( $post_terms ) ) {
-
-					foreach ( $post_terms as $term_obj ) {
-
-						$term_id = $term_obj->term_id;	// Use the first term id found.
-
-						break;	// Stop here.
-					}
-				}
-			}
-	
-			$term_id = apply_filters( 'wpsso_primary_post_term_id', $term_id, $post_id, $tax_slug );
-
-			return $local_cache[ $post_id ][ $tax_slug ] = $term_id;
-		}
-
 		public function clear_cache( $post_id, $rel_id = false ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -2105,6 +2061,50 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			return $shortlink;
+		}
+
+		/**
+		 * Since WPSSO Core v8.15.0.
+		 *
+		 * $tax_slug = 'category', 'post_tag', 'post_format', 'product_cat', etc.
+		 */
+		public function get_primary_term_id( $post_id, $tax_slug = 'category' ) {
+
+			static $local_cache = array();
+
+			if ( isset( $local_cache[ $post_id ][ $tax_slug ] ) ) {
+
+				return $local_cache[ $post_id ][ $tax_slug ];
+			}
+
+			/**
+			 * Returns null if a custom primary term id has not been selected.
+			 */
+			$term_id = $this->get_options( $post_id, $md_key = 'primary_term_id' );
+
+			/**
+			 * Make sure the term still exists.
+			 */
+			if ( empty( $term_id ) || ! term_exists( $term_id ) ) {	// Since WP v3.0.
+
+				$term_id = false;
+
+				$post_terms = wp_get_post_terms( $post_id, $tax_slug );	// Returns WP_Error if $tax_slug does not exist.
+
+				if ( is_array( $post_terms ) ) {
+
+					foreach ( $post_terms as $term_obj ) {
+
+						$term_id = $term_obj->term_id;	// Use the first term id found.
+
+						break;	// Stop here.
+					}
+				}
+			}
+	
+			$term_id = apply_filters( 'wpsso_primary_post_term_id', $term_id, $post_id, $tax_slug );
+
+			return $local_cache[ $post_id ][ $tax_slug ] = $term_id;
 		}
 
 		/**
