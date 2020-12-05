@@ -7,14 +7,6 @@ var createElement      = wp.element.createElement;
 var RawHTML            = wp.element.RawHTML;
 var wasSavingContainer = false;
 
-jQuery( document ).ready( function() {
-
-	var pluginId = 'wpsso';
-	var cfgName  = 'sucomAdminPageL10n';
-
-	sucomBlockNotices( pluginId, cfgName );
-} );
-
 wp.data.subscribe( function() {
 
 	var pluginId          = 'wpsso';
@@ -33,3 +25,19 @@ wp.data.subscribe( function() {
 
 	wasSavingContainer = isSavingContainer;
 } );
+
+jQuery( document ).ready( function() {
+
+	var pluginId = 'wpsso';
+	var cfgName  = 'sucomAdminPageL10n';
+
+	sucomBlockNotices( pluginId, cfgName );
+} );
+
+jQuery( document ).on( 'change', '.editor-post-taxonomies__hierarchical-terms-list input[type="checkbox"]', wpssoPrimaryTermChanged );
+
+function wpssoPrimaryTermChanged() {
+
+	var actor   = jQuery( this );
+	var checked = actor.prop( 'checked' );
+}
