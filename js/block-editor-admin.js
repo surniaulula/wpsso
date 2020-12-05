@@ -34,5 +34,3 @@ jQuery( document ).ready( function() {
 	sucomBlockNotices( pluginId, cfgName );
 } );
 
-jQuery( document ).on( 'change', 'div.editor-post-taxonomies__hierarchical-terms-list input[type="checkbox"]', sucomPrimaryTermChanged );
-
