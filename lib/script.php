@@ -73,7 +73,8 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			 * header, with a dependency on 'wp-edit-post', the NextGEN Gallery featured image picker does not load.
 			 */
 			wp_register_script( 'sucom-block-editor-admin', WPSSO_URLPATH . 'js/block-editor-admin.' . $this->file_ext,
-				array( 'wp-data', 'wp-editor', 'wp-edit-post' ), $this->version, $in_footer = true );
+				array( 'wp-data', 'wp-editor', 'wp-edit-post', 'sucom-admin-page', 'sucom-metabox' ),
+					$this->version, $in_footer = true );
 
 			wp_enqueue_script( 'sucom-block-editor-admin' );
 
@@ -102,7 +103,8 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				array( 'jquery' ), $this->p->cf[ 'jquery-qtip' ][ 'version' ], $in_footer = true );
 
 			wp_register_script( 'sucom-metabox', WPSSO_URLPATH . 'js/com/jquery-metabox.' . $this->file_ext,
-				array( 'jquery', 'jquery-ui-datepicker', 'wp-color-picker' ), $this->version, $in_footer = true );
+				array( 'jquery', 'jquery-ui-datepicker', 'wp-color-picker', 'sucom-admin-page' ),
+					$this->version, $in_footer = true );
 
 			wp_register_script( 'sucom-tooltips', WPSSO_URLPATH . 'js/com/jquery-tooltips.' . $this->file_ext,
 				array( 'jquery', 'jquery-qtip' ), $this->version, $in_footer = true );

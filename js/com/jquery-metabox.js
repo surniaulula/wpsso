@@ -4,6 +4,8 @@ jQuery( document ).ready( function() {
 	sucomInitMetabox();
 } );
 
+jQuery( document ).on( 'change', 'ul.categorychecklist input[type="checkbox"]', sucomPrimaryTermChanged );
+
 /**
  * Example: container_id = '#sucom_metabox_sso_inside'
  */
@@ -443,6 +445,13 @@ function sucomSelectChangeRedirect( name, value, redirect_url ) {
 	url = redirect_url + jQuery( location ).attr( 'hash' );
 
         window.location = url.replace( '%%' + name + '%%', value );
+}
+
+function sucomPrimaryTermChanged( event ) {
+
+	var actor   = jQuery( this );
+	var checked = actor.prop( 'checked' );
+	var value   = actor.val();
 }
 
 /**

@@ -34,10 +34,5 @@ jQuery( document ).ready( function() {
 	sucomBlockNotices( pluginId, cfgName );
 } );
 
-jQuery( document ).on( 'change', '.editor-post-taxonomies__hierarchical-terms-list input[type="checkbox"]', wpssoPrimaryTermChanged );
+jQuery( document ).on( 'change', 'div.editor-post-taxonomies__hierarchical-terms-list input[type="checkbox"]', sucomPrimaryTermChanged );
 
-function wpssoPrimaryTermChanged() {
-
-	var actor   = jQuery( this );
-	var checked = actor.prop( 'checked' );
-}
