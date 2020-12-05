@@ -2066,11 +2066,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		/**
 		 * Since WPSSO Core v8.15.0.
 		 *
+		 * Returns a term id, or false if a term for the $tax_slug is not found.
+		 *
 		 * $tax_slug = 'category', 'post_tag', 'post_format', 'product_cat', etc.
 		 */
-		public function get_primary_term_id( $post_id, $tax_slug = 'category' ) {
+		public function get_primary_term_id( array $mod, $tax_slug = 'category' ) {
 
 			static $local_cache = array();
+
+			$post_id   = $mod[ 'id' ];
+			$post_type = $mod[ 'post_type' ];
 
 			if ( isset( $local_cache[ $post_id ][ $tax_slug ] ) ) {
 
@@ -2080,31 +2085,33 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * Returns null if a custom primary term id has not been selected.
 			 */
-			$term_id = $this->get_options( $post_id, $md_key = 'primary_term_id' );
+			$primary_term_id = $this->get_options( $post_id, $md_key = 'primary_term_id' );
 
 			/**
 			 * Make sure the term still exists.
 			 */
-			if ( empty( $term_id ) || ! term_exists( $term_id ) ) {	// Since WP v3.0.
+			if ( empty( $primary_term_id ) || ! term_exists( $primary_term_id ) ) {	// Since WP v3.0.
 
-				$term_id = false;
+				$primary_term_id = false;
 
-				$post_terms = wp_get_post_terms( $post_id, $tax_slug );	// Returns WP_Error if $tax_slug does not exist.
+				$primary_tax_slug = apply_filters( 'wpsso_' . $post_type . '_primary_tax_slug', $tax_slug, $mod );
+
+				$post_terms = wp_get_post_terms( $post_id, $primary_tax_slug );	// Returns WP_Error if $primary_tax_slug does not exist.
 
 				if ( is_array( $post_terms ) ) {
 
 					foreach ( $post_terms as $term_obj ) {
 
-						$term_id = $term_obj->term_id;	// Use the first term id found.
+						$primary_term_id = $term_obj->term_id;	// Use the first term id found.
 
 						break;	// Stop here.
 					}
 				}
 			}
 	
-			$term_id = apply_filters( 'wpsso_primary_post_term_id', $term_id, $post_id, $tax_slug );
+			$primary_term_id = apply_filters( 'wpsso_' . $post_type . '_primary_term_id', $primary_term_id, $mod );
 
-			return $local_cache[ $post_id ][ $tax_slug ] = $term_id;
+			return $local_cache[ $post_id ][ $tax_slug ] = $primary_term_id;
 		}
 
 		/**
