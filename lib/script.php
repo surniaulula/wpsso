@@ -73,19 +73,9 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			 * header, with a dependency on 'wp-edit-post', the NextGEN Gallery featured image picker does not load.
 			 */
 			wp_register_script( 'sucom-block-editor-admin', WPSSO_URLPATH . 'js/block-editor-admin.' . $this->file_ext,
-				$deps = array( 'wp-data', 'wp-editor', 'wp-edit-post', 'sucom-metabox' ),
-					$this->version, $in_footer = true );
+				$deps = array( 'wp-data', 'wp-editor', 'wp-edit-post', 'sucom-metabox' ), $this->version, $in_footer = true );
 
 			wp_enqueue_script( 'sucom-block-editor-admin' );
-
-			/**
-			 * Work in progress for WPSSO Core v9.0.0.
-			 *
-			 * wp_register_script( 'wpsso-block-editor', WPSSO_URLPATH . 'js/dist/block-editor.' . $this->file_ext,
-			 * 	array( 'wp-data', 'wp-components', 'wp-editor', 'wp-edit-post', 'wp-i18n' ), $this->version, $in_footer = true );
-			 *
-			 * wp_enqueue_script( 'wpsso-block-editor' );
-			 */
 		}
 
 		public function admin_enqueue_scripts( $hook_name ) {
@@ -106,8 +96,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				$deps = array( 'jquery', 'jquery-qtip' ), $this->version, $in_footer = true );
 
 			wp_register_script( 'sucom-metabox', WPSSO_URLPATH . 'js/com/jquery-metabox.' . $this->file_ext,
-				$deps = array( 'jquery', 'jquery-ui-datepicker', 'wp-color-picker', 'sucom-admin-page' ),
-					$this->version, $in_footer = true );
+				$deps = array( 'jquery', 'jquery-ui-datepicker', 'wp-color-picker', 'sucom-admin-page' ), $this->version, $in_footer = true );
 
 			wp_register_script( 'sucom-admin-media', WPSSO_URLPATH . 'js/com/jquery-admin-media.' . $this->file_ext,
 				$deps = array( 'jquery', 'jquery-ui-core' ), $this->version, $in_footer = true );
@@ -331,9 +320,8 @@ jQuery( document ).ready( function(){
 				$this->p->debug->log( 'registering script sucom-admin-page' );
 			}
 
-			wp_register_script( 'sucom-admin-page',
-				WPSSO_URLPATH . 'js/com/jquery-admin-page.' . $this->file_ext,
-					$deps = array( 'jquery' ), $this->version, $in_footer = true );
+			wp_register_script( 'sucom-admin-page', WPSSO_URLPATH . 'js/com/jquery-admin-page.' . $this->file_ext,
+				$deps = array( 'jquery' ), $this->version, $in_footer = true );
 
 			wp_localize_script( 'sucom-admin-page', 'sucomAdminPageL10n', $this->get_admin_page_script_data() );
 		}
