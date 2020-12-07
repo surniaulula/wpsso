@@ -2911,7 +2911,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * Called by scheduled tasks to check the user ID value and possibly load a different textdomain language.
+		 * Called by scheduled tasks to check the user id value and possibly load a different textdomain language.
 		 */
 		public function maybe_change_user_id( $user_id ) {
 
@@ -2929,7 +2929,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			/**
-			 * The user ID is different than the current / effective user ID, so check if the user locale is different
+			 * The user id is different than the current / effective user id, so check if the user locale is different
 			 * to the current locale and load the user locale if required.
 			 */
 			$current_locale = get_locale();

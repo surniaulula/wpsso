@@ -748,7 +748,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 							if ( $this->p->debug->enabled ) {
 
-								$this->p->debug->log( 'getting the content for post ID ' . $mod[ 'id' ] );
+								$this->p->debug->log( 'getting the content for post id ' . $mod[ 'id' ] );
 							}
 
 							$desc_text = $this->get_the_content( $mod, $read_cache, $md_key );

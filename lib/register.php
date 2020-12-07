@@ -259,7 +259,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 				delete_metadata( $meta_type = 'user', $object_id = null, WPSSO_PREF_NAME, $meta_value = null, $delete_all = true );
 
-				while ( $blog_user_ids = SucomUtil::get_user_ids( $blog_id, '', 1000 ) ) {	// Get a maximum of 1000 user IDs at a time.
+				while ( $blog_user_ids = SucomUtil::get_user_ids( $blog_id, '', 1000 ) ) {	// Get a maximum of 1000 user ids at a time.
 
 					foreach ( $blog_user_ids as $user_id ) {
 

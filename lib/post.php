@@ -202,7 +202,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		/**
-		 * Get the $mod object for a post ID.
+		 * Get the $mod object for a post id.
 		 */
 		public function get_mod( $post_id ) {
 
@@ -480,9 +480,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		/**
-		 * Get all publicly accessible post IDs.
+		 * Get all publicly accessible post ids.
 		 *
-		 * These may include post IDs from non-public post types.
+		 * These may include post ids from non-public post types.
 		 */
 		public static function get_public_ids() {
 
@@ -502,7 +502,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		/**
-		 * Return an array of post IDs for a given $mod object.
+		 * Return an array of post ids for a given $mod object.
 		 */
 		public function get_posts_ids( array $mod, $ppp = null, $paged = null, array $posts_args = array() ) {
 
@@ -556,12 +556,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( sprintf( 'slow query detected - WordPress get_posts() took %1$0.3f secs' . 
-						' to get the children of post ID %2$d', $mtime_total, $mod[ 'id' ] ) );
+						' to get the children of post id %2$d', $mtime_total, $mod[ 'id' ] ) );
 				}
 
 				$error_pre   = sprintf( __( '%s warning:', 'wpsso' ), __METHOD__ );
 				$rec_max_msg = sprintf( __( 'longer than recommended max of %1$0.3f secs', 'wpsso' ), $mtime_max );
-				$error_msg   = sprintf( __( 'Slow query detected - get_posts() took %1$0.3f secs to get the children of post ID %2$d (%3$s).',
+				$error_msg   = sprintf( __( 'Slow query detected - get_posts() took %1$0.3f secs to get the children of post id %2$d (%3$s).',
 					'wpsso' ), $mtime_total, $mod[ 'id' ], $rec_max_msg );
 
 				/**
@@ -607,7 +607,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( $column_name . ' for post ID ' . $post_id );
+				$this->p->debug->log( $column_name . ' for post id ' . $post_id );
 			}
 
 			echo $this->get_column_content( '', $column_name, $post_id );
@@ -656,7 +656,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			/**
-			 * WordPress stores data using a post, term, or user ID, along with a group string.
+			 * WordPress stores data using a post, term, or user id, along with a group string.
 			 *
 			 * Example: wp_cache_get( 1, 'user_meta' );
 			 *
@@ -741,7 +741,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'post ID = ' . $post_id );
+				$this->p->debug->log( 'post id = ' . $post_id );
 			}
 
 			/**
@@ -1607,7 +1607,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * Clear the post terms (categories, tags, etc.) for published (aka public) posts.
 			 */
-			if ( $post_status === 'publish' ) {
+			if ( 'publish' === $post_status ) {
 
 				if ( ! empty( $this->p->options[ 'plugin_clear_post_terms' ] ) ) {
 
@@ -1634,7 +1634,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			/**
-			 * The question shortcode (in the WPSSO FAQ add-on) attaches the post ID to the question so the post cache
+			 * The question shortcode (in the WPSSO FAQ add-on) attaches the post id to the question so the post cache
 			 * can be cleared when the question is updated.
 			 */
 			foreach ( array( 'post' ) as $attach_type ) {
@@ -1895,8 +1895,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			/**
-			 * The WordPress link-template.php functions call wp_get_shortlink() with a post ID of 0. Recreate the same
-			 * code here to get a real post ID and create a default shortlink (if required).
+			 * The WordPress link-template.php functions call wp_get_shortlink() with a post id of 0. Recreate the same
+			 * code here to get a real post id and create a default shortlink (if required).
 			 */
 			if ( 0 === $post_id ) {
 
@@ -2067,51 +2067,77 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		 * Since WPSSO Core v8.15.0.
 		 *
 		 * Returns a term id, or false if a term for the $tax_slug is not found.
-		 *
-		 * $tax_slug = 'category', 'post_tag', 'post_format', 'product_cat', etc.
 		 */
 		public function get_primary_term_id( array $mod, $tax_slug = 'category' ) {
 
-			static $local_cache = array();
+			$primary_term_id = false;
 
-			$post_id   = $mod[ 'id' ];
-			$post_type = $mod[ 'post_type' ];
+			if ( $mod[ 'is_post' ] ) {	// Just in case.
 
-			if ( isset( $local_cache[ $post_id ][ $tax_slug ] ) ) {
+				static $local_cache = array();
 
-				return $local_cache[ $post_id ][ $tax_slug ];
+				$post_id = $mod[ 'id' ];
+	
+				if ( isset( $local_cache[ $post_id ][ $tax_slug ] ) ) {
+	
+					return $local_cache[ $post_id ][ $tax_slug ];	// Return value from local cache.
+				}
+
+				/**
+				 * Returns null if a custom primary term id has not been selected.
+				 */
+				$primary_term_id = $this->get_options( $post_id, $md_key = 'primary_term_id' );
+
+				/**
+				 * Make sure the term is not null, false, and still exists.
+				 */
+				if ( empty( $primary_term_id ) || ! term_exists( $primary_term_id ) ) {	// Since WP v3.0.
+
+					$primary_term_id = false;
+
+					$primary_terms = $this->get_primary_terms( $mod, $tax_slug );
+
+					foreach ( $primary_terms as $term_id => $term_name ) {
+
+						$primary_term_id = $term_id;	// Use the first term id found.
+	
+						break;	// Stop here.
+					}
+				}
+
+				$primary_term_id = apply_filters( 'wpsso_primary_term_id', $primary_term_id, $mod );
+			
+				$local_cache[ $post_id ][ $tax_slug ] = $primary_term_id;
 			}
 
-			/**
-			 * Returns null if a custom primary term id has not been selected.
-			 */
-			$primary_term_id = $this->get_options( $post_id, $md_key = 'primary_term_id' );
+			return $primary_term_id;
+		}
 
-			/**
-			 * Make sure the term still exists.
-			 */
-			if ( empty( $primary_term_id ) || ! term_exists( $primary_term_id ) ) {	// Since WP v3.0.
+		/**
+		 * Since WPSSO Core v8.16.0.
+		 *
+		 * Returns an associative array of term ids and names.
+		 */
+		public function get_primary_terms( array $mod, $tax_slug = 'category' ) {
 
-				$primary_term_id = false;
+			$primary_terms = array();
 
-				$primary_tax_slug = apply_filters( 'wpsso_' . $post_type . '_primary_tax_slug', $tax_slug, $mod );
+			if ( $mod[ 'is_post' ] ) {	// Just in case.
 
-				$post_terms = wp_get_post_terms( $post_id, $primary_tax_slug );	// Returns WP_Error if $primary_tax_slug does not exist.
+				$primary_tax_slug = apply_filters( 'wpsso_primary_tax_slug', $tax_slug, $mod );
+
+				$post_terms = wp_get_post_terms( $mod[ 'id' ], $primary_tax_slug );	// Returns WP_Error if $primary_tax_slug does not exist.
 
 				if ( is_array( $post_terms ) ) {
 
 					foreach ( $post_terms as $term_obj ) {
-
-						$primary_term_id = $term_obj->term_id;	// Use the first term id found.
-
-						break;	// Stop here.
+			
+						$primary_terms[ $term_obj->term_id ] = $term_obj->name;
 					}
 				}
 			}
-	
-			$primary_term_id = apply_filters( 'wpsso_' . $post_type . '_primary_term_id', $primary_term_id, $mod );
 
-			return $local_cache[ $post_id ][ $tax_slug ] = $primary_term_id;
+			return $primary_terms;
 		}
 
 		/**

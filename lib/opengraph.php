@@ -1656,7 +1656,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		/**
 		 * Returns an optional and customized locale value for the og:locale meta tag.
 		 *
-		 * $mixed = 'default' | 'current' | post ID | $mod array
+		 * $mixed = 'default' | 'current' | post id | $mod array
 		 */
 		public function get_fb_locale( array $opts, $mixed = 'current' ) {
 
@@ -1681,7 +1681,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			/**
 			 * Get the locale requested in $mixed.
 			 *
-			 * $mixed = 'default' | 'current' | post ID | $mod array
+			 * $mixed = 'default' | 'current' | post id | $mod array
 			 */
 			$locale = SucomUtil::get_locale( $mixed );
 

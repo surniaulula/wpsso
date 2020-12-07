@@ -48,7 +48,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		/**
 		 * Can return an empty string if $mixed and $sharing_rul are false.
 		 *
-		 * $mixed = 'default' | 'current' | post ID | $mod array
+		 * $mixed = 'default' | 'current' | post id | $mod array
 		 */
 		public function get_head_cache_index( $mixed = 'current', $sharing_url = false ) {
 

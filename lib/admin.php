@@ -1210,7 +1210,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							$user_name = $user_obj->display_name;
 
-							$notice_msg = sprintf( __( 'Metabox layout preferences for user ID #%d "%s" have been reset.', 'wpsso' ),
+							$notice_msg = sprintf( __( 'Metabox layout preferences for user id #%d "%s" have been reset.', 'wpsso' ),
 								$user_id, $user_name );
 
 							$this->p->notice->upd( $notice_msg, $user_id );
@@ -1225,7 +1225,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							$user_name = $user_obj->display_name;
 
-							$notice_msg = sprintf( __( 'Dismissed notices for user ID #%d "%s" have been reset.', 'wpsso' ),
+							$notice_msg = sprintf( __( 'Dismissed notices for user id #%d "%s" have been reset.', 'wpsso' ),
 								$user_id, $user_name );
 
 							$this->p->notice->upd( $notice_msg, $user_id );

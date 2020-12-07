@@ -136,7 +136,7 @@ if ( ! function_exists( 'wpsso_clear_post_cache' ) ) {
 
 /**
  * Get the $mod array for the current webpage. If $use_post is true, then the requested object is assumed to be a post, and the
- * global $post object will be used to determine the post ID.
+ * global $post object will be used to determine the post id.
  */
 if ( ! function_exists( 'wpsso_get_page_mod' ) ) {
 

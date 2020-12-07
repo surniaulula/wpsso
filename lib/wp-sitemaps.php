@@ -73,7 +73,7 @@ if ( ! class_exists( 'WpssoWpSitemaps' ) ) {
 
 			if ( ! empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
 
-				static $local_cache = array();	// Create post ID exclusion only once.
+				static $local_cache = array();	// Create post id exclusion only once.
 
 				if ( ! isset( $local_cache[ $post_type ] ) ) {
 
@@ -110,7 +110,7 @@ if ( ! class_exists( 'WpssoWpSitemaps' ) ) {
 
 			if ( ! empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
 
-				static $local_cache = array();	// Create term ID exclusion only once.
+				static $local_cache = array();	// Create term id exclusion only once.
 
 				if ( ! isset( $local_cache[ $taxonomy ] ) ) {
 
@@ -147,7 +147,7 @@ if ( ! class_exists( 'WpssoWpSitemaps' ) ) {
 
 			if ( ! empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
 
-				static $local_cache = null;	// Create user ID exclusion only once.
+				static $local_cache = null;	// Create user id exclusion only once.
 
 				if ( null === $local_cache ) {
 

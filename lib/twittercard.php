@@ -497,7 +497,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				$image_url = SucomUtil::get_first_mt_media_url( $mt_single_image );
 
 				/**
-				 * Note that two 'summary_large_image' pages cannot have the same image URL, so add the post ID to
+				 * Note that two 'summary_large_image' pages cannot have the same image URL, so add the post id to
 				 * all 'summary_large_image' images.
 				 */
 				if ( 'summary_large_image' === $card_type ) {

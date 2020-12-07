@@ -259,7 +259,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$pid = $local_cache_featured_ids[ $post_id ];
 
 				/**
-				 * If the post ID is an attachment page, then use the post ID as the image ID.
+				 * If the post id is an attachment page, then use the post id as the image ID.
 				 */
 				} elseif ( ( is_attachment( $post_id ) || 'attachment' === get_post_type( $post_id ) ) && wp_attachment_is_image( $post_id ) ) {
 
@@ -406,7 +406,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			/**
 			 * Allow custom content to be passed as an argument in $content.
 			 *
-			 * Allow empty post IDs to get additional content from filter hooks.
+			 * Allow empty post ids to get additional content from filter hooks.
 			 */
 			if ( empty( $content ) ) {
 
@@ -1397,7 +1397,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			/**
 			 * Allow custom content to be passed as an argument in $content.
 			 *
-			 * Allow empty post IDs to get additional content from filter hooks.
+			 * Allow empty post ids to get additional content from filter hooks.
 			 */
 			if ( empty( $content ) ) {
 

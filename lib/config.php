@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'     => '8.16.0-dev.2',	// Plugin version.
-					'opt_version' => '770',		// Increment when changing default option values.
+					'opt_version' => '771',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Make sure your content looks best on social sites and in search results, no matter how your webpages are shared, re-shared, messaged, posted, embedded, or crawled.',
@@ -1264,7 +1264,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_def_img_id'           => '',			// Default Image ID.
 					'og_def_img_id_pre'       => 'wp',
 					'og_def_img_url'          => '',			// or Default Image URL.
-					'og_def_product_category' => 'none',			// Default Product Category.
+					'og_def_product_category' => 'none',			// Default Product Type.
 					'og_def_currency'         => 'USD',			// Default Currency.
 					'og_img_width'            => 1200,
 					'og_img_height'           => 630,

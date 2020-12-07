@@ -152,7 +152,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		/**
-		 * Get the $mod object for a user ID.
+		 * Get the $mod object for a user id.
 		 */
 		public function get_mod( $user_id ) {
 
@@ -381,7 +381,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		/**
-		 * Get all publicly accessible user IDs in the 'creator' array.
+		 * Get all publicly accessible user ids in the 'creator' array.
 		 */
 		public static function get_public_ids() {
 
@@ -403,7 +403,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		/**
-		 * Return an array of post IDs for a given $mod object.
+		 * Return an array of post ids for a given $mod object.
 		 */
 		public function get_posts_ids( array $mod, $ppp = null, $paged = null, array $posts_args = array() ) {
 
@@ -456,14 +456,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( sprintf( 'slow query detected - WordPress get_posts() took %1$0.3f secs'.
-						' to get posts authored by user ID %2$d', $mtime_total, $mod[ 'id' ] ) );
+						' to get posts authored by user id %2$d', $mtime_total, $mod[ 'id' ] ) );
 				}
 
 				$error_pre = sprintf( __( '%s warning:', 'wpsso' ), __METHOD__ );
 
 				$rec_max_msg = sprintf( __( 'longer than recommended max of %1$0.3f secs', 'wpsso' ), $mtime_max );
 
-				$error_msg = sprintf( __( 'Slow query detected - get_posts() took %1$0.3f secs to get posts authored by user ID %2$d (%3$s).',
+				$error_msg = sprintf( __( 'Slow query detected - get_posts() took %1$0.3f secs to get posts authored by user id %2$d (%3$s).',
 					'wpsso' ), $mtime_total, $mod[ 'id' ], $rec_max_msg );
 
 				/**
@@ -498,7 +498,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		public function get_meta_cache_value( $user_id, $meta_key, $none = '' ) {
 
 			/**
-			 * WordPress stores data using a post, term, or user ID, along with a group string.
+			 * WordPress stores data using a post, term, or user id, along with a group string.
 			 *
 			 * Example: wp_cache_get( 1, 'user_meta' );
 			 *
@@ -599,7 +599,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'user ID = ' . $user_id );
+				$this->p->debug->log( 'user id = ' . $user_id );
 				$this->p->debug->log( 'home url = ' . get_option( 'home' ) );
 				$this->p->debug->log( 'locale default = ' . SucomUtil::get_locale( 'default' ) );
 				$this->p->debug->log( 'locale current = ' . SucomUtil::get_locale( 'current' ) );
@@ -1312,7 +1312,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'insufficient privileges to save settings for user ID ' . $user_id );
+					$this->p->debug->log( 'insufficient privileges to save settings for user id ' . $user_id );
 				}
 
 				/**
@@ -1320,7 +1320,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				 */
 				if ( $this->p->notice->is_admin_pre_notices() ) {
 
-					$this->p->notice->err( sprintf( __( 'Insufficient privileges to save settings for user ID %1$s.',
+					$this->p->notice->err( sprintf( __( 'Insufficient privileges to save settings for user id %1$s.',
 						'wpsso' ), $user_id ) );
 				}
 			}
@@ -1492,7 +1492,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		 */
 		public function schedule_add_person_role( $user_id = null ) {
 
-			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user id.
 			$event_time = time() + 5;	// Add a 5 second event buffer.
 			$event_hook = 'wpsso_add_person_role';
 			$event_args = array( $user_id );
@@ -1523,7 +1523,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user id.
 			$notice_key = 'add-user-roles-status';
 			$role_label = _x( 'Person', 'user role', 'wpsso' );
 
@@ -1616,7 +1616,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		 */
 		public function schedule_remove_person_role( $user_id = null ) {
 
-			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user id.
 			$event_time = time() + 5;	// Add a 5 second event buffer.
 			$event_hook = 'wpsso_remove_person_role';
 			$event_args = array( $user_id );
@@ -1631,7 +1631,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user id.
 			$notice_key = 'remove-user-roles-status';
 			$role_label = _x( 'Person', 'user role', 'wpsso' );
 
@@ -1692,7 +1692,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$count = 0;
 
-			while ( $blog_user_ids = SucomUtil::get_user_ids( $blog_id, '', 1000 ) ) {	// Get a maximum of 1000 user IDs at a time.
+			while ( $blog_user_ids = SucomUtil::get_user_ids( $blog_id, '', 1000 ) ) {	// Get a maximum of 1000 user ids at a time.
 
 				foreach ( $blog_user_ids as $id ) {
 

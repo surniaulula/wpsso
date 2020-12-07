@@ -698,10 +698,13 @@ table.sucom-settings td select.timezone { width:220px; }
 
 table.sucom-settings td select.update_filter { width:220px; }
 
-table.sucom-settings td select.article_section,
-table.sucom-settings td select.long_name,
 table.sucom-settings td select.og_type,
-table.sucom-settings td select.schema_type { width:320px; }
+table.sucom-settings td select.schema_type,
+table.sucom-settings td select.primary_term_id,
+table.sucom-settings td select.article_section,
+table.sucom-settings td select.long_name {
+	width:320px;
+}
 
 table.sucom-settings td select.site-use { width:14em; }
 

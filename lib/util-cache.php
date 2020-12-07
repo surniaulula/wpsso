@@ -49,7 +49,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		 */
 		public function schedule_clear( $user_id = null, $clear_other = false, $clear_short = null, $refresh = true ) {
 
-			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user id.
 			$event_time = time() + 5;	// Add a 5 second event buffer.
 			$event_hook = 'wpsso_clear_cache';
 			$event_args = array( $user_id, $clear_other, $clear_short, $refresh );
@@ -82,7 +82,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 					$this->p->options[ 'plugin_clear_short_urls' ] : false;
 			}
 
-			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user id.
 			$notice_key = 'clear-cache-status';
 
 			/**
@@ -545,7 +545,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		 */
 		public function schedule_refresh( $user_id = null, $read_cache = false ) {
 
-			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user id.
 			$event_time = time() + 5;	// Add a 5 second event buffer.
 			$event_hook = 'wpsso_refresh_cache';
 			$event_args = array( $user_id, $read_cache );
@@ -576,7 +576,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user id.
 			$notice_key = 'refresh-cache-status';
 
 			/**

@@ -70,6 +70,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 
 			$og_types         = $this->p->og->get_og_types_select();
 			$schema_types     = $this->p->schema->get_schema_types_select( $context = 'meta' );
+			$primary_terms    = $this->p->post->get_primary_terms( $mod );
 			$article_sections = $this->p->util->get_article_sections();
 
 			/**
@@ -116,7 +117,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					'tr_class'  => $schema_type_row_class[ 'question' ],
 					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'info-schema-question' ) . '</td>',
 				),
-				'attach_img_crop' => $mod[ 'post_type' ] === 'attachment' && wp_attachment_is_image( $mod[ 'id' ] ) ? array(
+				'attach_img_crop' => 'attachment' === $mod[ 'post_type' ] && wp_attachment_is_image( $mod[ 'id' ] ) ? array(
 					'th_class' => 'medium',
 					'label'    => _x( 'Preferred Cropping', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-og_img_crop_area',
@@ -143,6 +144,13 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					'content'  => $form->get_select( 'og_type', $og_types, $css_class = 'og_type', $css_id = '',
 						$is_assoc = true, $is_disabled = false, $selected = true, $event_names = array( 'on_change_unhide_rows' ) ),
 				),
+				'primary_term_id' => ! empty( $primary_terms ) ? array(
+					'th_class' => 'medium',
+					'label'    => _x( 'Primary Category', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-primary_term_id',
+					'content'  => $form->get_select( 'primary_term_id', $primary_terms, $css_class = 'primary_term_id', $css_id = '',
+						$is_assoc = true, $is_disabled = false, $selected = true ),
+				) : array(),
 				'og_title' => array(
 					'th_class' => 'medium',
 					'label'    => _x( 'Default Title', 'option label', 'wpsso' ),

@@ -135,7 +135,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-og_type':		// Open Graph Type
+						case 'tooltip-meta-og_type':		// Open Graph Type.
 
 							$text = __( 'Select a document Facebook / Open Graph type that best describes the main content of this webpage.', 'wpsso' ) . ' ';
 
@@ -151,7 +151,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-og_title':		// Default Title
+						case 'tooltip-meta-primary_term_id':	// Primary Category.
+
+							$text .= __( 'Select the primary category.' );
+
+						 	break;
+
+						case 'tooltip-meta-og_title':		// Default Title.
 
 							$text = sprintf( __( 'A customized title for the Facebook / Open Graph %s meta tag, and the default for all other title values.', 'wpsso' ), '<code>og:title</code>' );
 
@@ -222,16 +228,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-product_category':	// Product Category.
+						case 'tooltip-meta-product_category':	// Product Type.
 
 							$option_link = $this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_site',
-								_x( 'Default Product Category', 'option label', 'wpsso' ) );
+								_x( 'Default Product Type', 'option label', 'wpsso' ) );
 
-							$text = sprintf( __( 'A customized category for this product, which may be different than the %s option value.',
+							$text = sprintf( __( 'A custom Google product type, which may be different than the %s option value.',
 								'wpsso' ), $option_link ) . ' ';
 
-							$text .= sprintf( __( 'Select "[None]" if you prefer to exclude the %s meta tag.',
-								'wpsso' ), '<code>product:category</code>' );
+							$text .= sprintf( __( 'Your selection will be used for Schema product markup and the %s meta tag.',
+								'wpsso' ), '<code>product:category</code>' ) . ' ';
+
+							$text .= __( 'Select "[None]" if you prefer to exclude the product type from Schema markup and meta tags.',
+								'wpsso' );
 
 						 	break;
 
@@ -530,13 +539,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-og_def_product_category':	// Default Product Category.
+						case 'tooltip-og_def_product_category':	// Default Product Type.
 
-							$text = __( 'The category that describes the products on your site.', 'wpsso' ) . ' ';
+							$text = __( 'The Google product type that best describes all the products on your site.', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( 'Your selection will be used by default for the Facebook %s meta tag value.', 'wpsso' ), '<code>product:category</code>' ) . ' ';
+							$text .= sprintf( __( 'Your selection will be used by default for Schema product markup and the %s meta tag.', 'wpsso' ), '<code>product:category</code>' ) . ' ';
 
-							$text .= sprintf( __( 'Select "[None]" to exclude the %s meta tag by default (you can still select a custom category when editing a product).', 'wpsso' ), '<code>product:category</code>' );
+							$text .= __( 'Select "[None]" if you prefer to exclude the product type from Schema markup and meta tags by default (you can still select a custom product type when editing a product).', 'wpsso' );
 
 							break;
 
@@ -3014,8 +3023,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'desc'  => _x( 'a product brand', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_category' => array(
-						'label' => _x( 'Product Category', 'option label', 'wpsso' ),
-						'desc'  => sprintf( _x( 'a <a href="%s">Google product type ID</a>', 'tooltip fragment', 'wpsso' ),
+						'label' => _x( 'Product Type', 'option label', 'wpsso' ),
+						'desc'  => sprintf( _x( 'a <a href="%s">Google product type</a>', 'tooltip fragment', 'wpsso' ),
 							__( 'https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt', 'wpsso' ) ),
 					),
 					'product_color' => array(

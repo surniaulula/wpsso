@@ -1756,7 +1756,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/**
 		 * Get the site organization array.
 		 *
-		 * $mixed = 'default' | 'current' | post ID | $mod array
+		 * $mixed = 'default' | 'current' | post id | $mod array
 		 */
 		public static function get_site_organization( $mixed = 'current' ) {
 

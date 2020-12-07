@@ -158,7 +158,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					'</td>';
 
 					$table_rows[ 'og_def_product_category' ] = '' . 
-					$this->form->get_th_html( _x( 'Default Product Category', 'option label', 'wpsso' ),
+					$this->form->get_th_html( _x( 'Default Product Type', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'og_def_product_category' ) . 
 					'<td>' .
 					$this->form->get_select( 'og_def_product_category', $product_categories, $css_class = 'wide', $css_id = '',

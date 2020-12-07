@@ -2468,7 +2468,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		/**
 		 * Returns a localized option value or null.
 		 *
-		 * $mixed = 'default' | 'current' | post ID | $mod array
+		 * $mixed = 'default' | 'current' | post id | $mod array
 		 */
 		public static function get_key_value( $key, array $opts, $mixed = 'current' ) {
 
@@ -2515,7 +2515,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 *
 		 * $opts = false | array
 		 *
-		 * $mixed = 'default' | 'current' | post ID | $mod array
+		 * $mixed = 'default' | 'current' | post id | $mod array
 		 */
 		public static function get_key_locale( $key, $opts = false, $mixed = 'current' ) {
 
@@ -2587,7 +2587,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * $mixed = 'default' | 'current' | post ID | $mod array
+		 * $mixed = 'default' | 'current' | post id | $mod array
 		 */
 		public static function get_locale( $mixed = 'current' ) {
 
@@ -4140,7 +4140,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 *
 		 * Returns a custom site name or the default WordPress site name.
 		 *
-		 * $mixed = 'default' | 'current' | post ID | $mod array
+		 * $mixed = 'default' | 'current' | post id | $mod array
 		 */
 		public static function get_site_name( array $opts = array(), $mixed = 'current' ) {
 
@@ -4164,7 +4164,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * 
 		 * Returns a custom site description or the default WordPress site description / tagline.
 		 *
-		 * $mixed = 'default' | 'current' | post ID | $mod array
+		 * $mixed = 'default' | 'current' | post id | $mod array
 		 */
 		public static function get_site_description( array $opts = array(), $mixed = 'current' ) {
 
@@ -4183,7 +4183,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 *
 		 * Returns a custom site address URL or the default site address URL (aka the 'home' URL).
 		 *
-		 * $mixed = 'default' | 'current' | post ID | $mod array
+		 * $mixed = 'default' | 'current' | post id | $mod array
 		 */
 		public static function get_site_url( array $opts = array(), $mixed = 'current' ) {
 
@@ -4213,7 +4213,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * $mixed = 'default' | 'current' | post ID | $mod array
+		 * $mixed = 'default' | 'current' | post id | $mod array
 		 */
 		public static function is_site_https( array $opts = array(), $mixed = 'current' ) {
 

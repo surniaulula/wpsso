@@ -150,7 +150,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		/**
-		 * Get the $mod object for a term ID.
+		 * Get the $mod object for a term id.
 		 */
 		public function get_mod( $term_id, $tax_slug = '' ) {
 
@@ -373,9 +373,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		/**
-		 * Get all publicly accessible term IDs for a taxonomy slug (optional).
+		 * Get all publicly accessible term ids for a taxonomy slug (optional).
 		 *
-		 * These may include term IDs from non-public taxonomies.
+		 * These may include term ids from non-public taxonomies.
 		 */
 		public static function get_public_ids( $tax_name = null ) {
 
@@ -415,7 +415,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		/**
-		 * Return an array of post IDs for a given $mod object.
+		 * Return an array of post ids for a given $mod object.
 		 *
 		 * Note that this method returns posts in child terms as well.
 		 */
@@ -480,12 +480,12 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( sprintf( 'slow query detected - WordPress get_posts() took %1$0.3f secs'.
-						' to get posts for term ID %2$d in taxonomy %3$s', $mtime_total, $mod[ 'id' ], $mod[ 'tax_slug' ] ) );
+						' to get posts for term id %2$d in taxonomy %3$s', $mtime_total, $mod[ 'id' ], $mod[ 'tax_slug' ] ) );
 				}
 
 				$error_pre   = sprintf( __( '%s warning:', 'wpsso' ), __METHOD__ );
 				$rec_max_msg = sprintf( __( 'longer than recommended max of %1$0.3f secs', 'wpsso' ), $mtime_max );
-				$error_msg   = sprintf( __( 'Slow query detected - get_posts() took %1$0.3f secs to get posts for term ID %2$d in taxonomy %3$s (%4$s).',
+				$error_msg   = sprintf( __( 'Slow query detected - get_posts() took %1$0.3f secs to get posts for term id %2$d in taxonomy %3$s (%4$s).',
 					'wpsso' ), $mtime_total, $mod[ 'id' ], $mod[ 'tax_slug' ], $rec_max_msg );
 
 				/**
@@ -520,7 +520,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		public function get_meta_cache_value( $term_id, $meta_key, $none = '' ) {
 
 			/**
-			 * WordPress stores data using a post, term, or user ID, along with a group string.
+			 * WordPress stores data using a post, term, or user id, along with a group string.
 			 *
 			 * Example: wp_cache_get( 1, 'user_meta' );
 			 *
@@ -604,7 +604,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'term ID = ' . $this->query_term_id );
+				$this->p->debug->log( 'term id = ' . $this->query_term_id );
 				$this->p->debug->log( 'home url = ' . get_option( 'home' ) );
 				$this->p->debug->log( 'locale default = ' . SucomUtil::get_locale( 'default' ) );
 				$this->p->debug->log( 'locale current = ' . SucomUtil::get_locale( 'current' ) );
@@ -876,7 +876,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'insufficient privileges to save settings for term ID ' . $term_id );
+					$this->p->debug->log( 'insufficient privileges to save settings for term id ' . $term_id );
 				}
 
 				/**
@@ -884,7 +884,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				 */
 				if ( $this->p->notice->is_admin_pre_notices() ) {
 
-					$this->p->notice->err( sprintf( __( 'Insufficient privileges to save settings for term ID %1$s.',
+					$this->p->notice->err( sprintf( __( 'Insufficient privileges to save settings for term id %1$s.',
 						'wpsso' ), $term_id ) );
 				}
 			}
