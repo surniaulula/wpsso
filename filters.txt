@@ -199,9 +199,11 @@
 
 'wpsso_post_url' ( $url, $mod, $add_page )
 
+'wpsso_primary_tax_slug' ( $tax_slug, $mod )
+
 'wpsso_primary_term_id' ( $primary_term_id, $mod, $tax_slug, $is_custom )
 
-'wpsso_primary_tax_slug' ( $tax_slug, $mod )
+'wpsso_primary_terms' ( $primary_terms, $mod, $tax_slug )
 
 'wpsso_product_attribute_names' ( array $attr_names )
 
