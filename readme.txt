@@ -324,6 +324,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Improvements**
 	* Added a new "Primary Category" option in the Document SSO metabox.
+	* Added support for the Yoast SEO primary category value (Premium version).
 	* Renamed the "Product Category" option to "Product Type" in the Document SSO metabox.
 * **Bugfixes**
 	* None.
