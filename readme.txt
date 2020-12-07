@@ -318,18 +318,24 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.16.0-dev.2 (2020/12/07)**
+**Version 8.16.0-dev.3 (2020/12/07)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added a new "Primary Category" option in the Document SSO metabox.
 	* Added support for the Yoast SEO primary category value (Premium version).
+	* Added support for The SEO Framework primary category value (Premium version).
+	* Added support for SEOPress primary category value (Premium version).
+	* Added a new integration module for Rank Math SEO to provide a primary category value (Premium version).
 	* Renamed the "Product Category" option to "Product Type" in the Document SSO metabox.
 * **Bugfixes**
-	* None.
+	* Fixed a duplicate 'meta name="author"' meta tag from SEOPress.
 * **Developer Notes**
-	* None.
+	* Added a new `wpsso_get_post_primary_category()` function.
+	* Added a new `WpssoPost->get_primary_terms()` method.
+	* Added a new 'wpsso_primary_term_id' filter.
+	* Added a new 'wpsso_primary_tax_slug' filter.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.4.
@@ -796,7 +802,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.16.0-dev.2 =
+= 8.16.0-dev.3 =
 
 (2020/12/07) Added a new "Primary Category" option in the Document SSO metabox.
 
