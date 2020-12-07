@@ -323,19 +323,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
+	* Renamed the "Product Category" option to "Product Type" in the Document SSO metabox.
 	* Added a new "Primary Category" option in the Document SSO metabox.
 	* Added support for the Yoast SEO primary category value (Premium version).
-	* Added support for The SEO Framework primary category value (Premium version).
-	* Added support for SEOPress primary category value (Premium version).
+	* Added support for the SEO Framework primary category value (Premium version).
+	* Added support for the SEOPress primary category value (Premium version).
 	* Added a new integration module for Rank Math SEO to provide a primary category value (Premium version).
-	* Renamed the "Product Category" option to "Product Type" in the Document SSO metabox.
 * **Bugfixes**
-	* Fixed a duplicate 'meta name="author"' meta tag from SEOPress.
+	* Fixed a duplicate `meta name="author"` meta tag from SEOPress.
 * **Developer Notes**
 	* Added a new `wpsso_get_post_primary_category()` function.
 	* Added a new `WpssoPost->get_primary_terms()` method.
-	* Added a new 'wpsso_primary_term_id' filter.
 	* Added a new 'wpsso_primary_tax_slug' filter.
+	* Added a new 'wpsso_primary_term_id' filter.
+	* Added a new 'wpsso_primary_terms' filter.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.4.
