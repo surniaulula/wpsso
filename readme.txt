@@ -318,12 +318,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.16.0-dev.2 (TBD)**
+**Version 8.16.0-dev.2 (2020/12/07)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added a new "Primary Category" option in the Document SSO metabox.
+	* Renamed the "Product Category" option to "Product Type" in the Document SSO metabox.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -654,7 +655,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 	* Refactored the `WpssoSchema::get_page_posts_mods()` method to allow getting archive post objects when not in an archive page.
 	* Refactored `SucomUtil::get_robots_default_directives()` to include disabled directives as well.
 	* Refactored `WpssoUtil::get_robots_content()` to use custom options from the Document SSO metabox.
-	* Added a post/term/user ID argument to the `WpssoWpMeta->upgrade_options()` method.
+	* Added a post/term/user id argument to the `WpssoWpMeta->upgrade_options()` method.
 	* Added new `get_meta()`, `update_meta()`, and `delete_meta()` static methods in the WpssoWpMeta, WpssoPost, WpssoTerm, and WpssoUser classes.
 	* Moved the `get_attached()`, `add_attached()`, and `delete_attached()` static methods from the WpssoPost, WpssoTerm, and WpssoUser classes to the WpssoWpMeta class.
 	* Changed `WpssoWpMeta->must_be_extended()` to a `WpssoWpMeta::must_be_extended()` static method.
@@ -793,6 +794,10 @@ This release adds a new SSO &gt; Features Status page and integration module for
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.16.0-dev.2 =
+
+(2020/12/07) Added a new "Primary Category" option in the Document SSO metabox.
 
 = 8.15.0 =
 
