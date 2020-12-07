@@ -115,54 +115,83 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							switch ( $id ) {
 
+								/**
+								 * Easy Digital Downloads.
+								 */
 								case 'edd':
 
 									$chk[ 'class' ] = 'Easy_Digital_Downloads';
 
 									break;
 
+								/**
+								 * WooCommerce Show Single Variations.
+								 *
+								 * See https://iconicwp.com/products/woocommerce-show-single-variations/.
+								 */
 								case 'jck-wssv':
 
 									$chk[ 'class' ] = 'JCK_WSSV';
 
 									break;
 
+								/**
+								 * Perfect WooCommerce Brands.
+								 */
 								case 'perfect-woocommerce-brands':
 
 									$chk[ 'class' ] = '\Perfect_Woocommerce_Brands\Perfect_Woocommerce_Brands';
 
 									break;
 
+								/**
+								 * WooCommerce.
+								 */
 								case 'woocommerce':
 
 									$chk[ 'class' ] = 'WooCommerce';
 
 									break;
 
+								/**
+								 * WooCommerce Brands.
+								 */
 								case 'woocommerce-brands':
 
 									$chk[ 'class' ] = 'WC_Brands';
 
 									break;
 
+								/**
+								 * WooCommerce Currency Switcher.
+								 */
 								case 'woocommerce-currency-switcher':
 
 									$chk[ 'class' ] = 'WOOCS';
 
 									break;
 
+								/**
+								 * WooCommerce UPC, EAN, and ISBN.
+								 */
 								case 'woo-add-gtin':
 
 									$chk[ 'class' ] = 'Woo_GTIN';
 
 									break;
 
+								/**
+								 * Product GTIN for WooCommerce.
+								 */
 								case 'wpm-product-gtin-wc':
 
 									$chk[ 'class' ] = 'WPM_Product_GTIN_WC';
 
 									break;
 
+								/**
+								 * YITH WooCommerce Brands Add-on.
+								 */
 								case 'yith-woocommerce-brands':
 
 									$chk[ 'class' ] = 'YITH_WCBR';

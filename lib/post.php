@@ -2091,7 +2091,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				/**
 				 * Make sure the term is not null, false, and still exists.
 				 */
-				if ( empty( $primary_term_id ) || ! term_exists( $primary_term_id ) ) {	// Since WP v3.0.
+				if ( ! empty( $primary_term_id ) && term_exists( $primary_term_id ) ) {	// Since WP v3.0.
+
+					$is_custom = true;
+
+				} else {
+
+					$is_custom = false;
 
 					$primary_term_id = false;
 
@@ -2105,7 +2111,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					}
 				}
 
-				$primary_term_id = apply_filters( 'wpsso_primary_term_id', $primary_term_id, $mod );
+				$primary_term_id = apply_filters( 'wpsso_primary_term_id', $primary_term_id, $mod, $is_custom );
 			
 				$local_cache[ $post_id ][ $tax_slug ] = $primary_term_id;
 			}

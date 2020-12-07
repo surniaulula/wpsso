@@ -153,7 +153,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-meta-primary_term_id':	// Primary Category.
 
-							$text .= __( 'Select the primary category.' );
+							$text .= __( 'Select a primary category for breadcrumbs.' );
 
 						 	break;
 

@@ -3286,15 +3286,15 @@ msgstr ""
 msgid "The URL shortening library file for \"%s\" is missing and required."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:187 lib/pro/util/wpseo-meta.php:149
+#: gettext/gettext-lib-pro.php:187 lib/pro/util/wpseo-meta.php:157
 msgid "Imported Yoast SEO \"%1$s\" metadata from post id %2$d."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:188 lib/pro/util/wpseo-meta.php:293
+#: gettext/gettext-lib-pro.php:188 lib/pro/util/wpseo-meta.php:301
 msgid "Imported Yoast SEO \"%1$s\" metadata from term id %2$d."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:189 lib/pro/util/wpseo-meta.php:400
+#: gettext/gettext-lib-pro.php:189 lib/pro/util/wpseo-meta.php:408
 msgid "Imported Yoast SEO \"%1$s\" metadata from user id %2$d."
 msgstr ""
 
@@ -5166,7 +5166,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:156
-msgid "Select the primary category."
+msgid "Select a primary category for breadcrumbs."
 msgstr ""
 
 #: lib/messages.php:162
