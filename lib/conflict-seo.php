@@ -376,10 +376,18 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 
 			$opts = get_option( '_metaseo_settings' );
 
+			if ( empty( $opts ) ) {	// Plugin settings not yet saved.
+
+				if ( function_exists( 'wpmsGetDefaultSettings' ) ) {
+
+					$opts = wpmsGetDefaultSettings();
+				}
+			}
+
 			/**
 			 * Check for Open Graph and Twitter Cards.
 			 */
-			$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=metaseo_settings' );
+			$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=metaseo_settings#social' );
 
 			$settings_link = '<a href="' . $settings_url . '">' .
 				// translators: Please ignore - translation uses a different text domain.
@@ -387,7 +395,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 				// translators: Please ignore - translation uses a different text domain.
 				__( 'Settings', 'wp-meta-seo' ) . ' &gt; ' .
 				// translators: Please ignore - translation uses a different text domain.
-				__( 'Global', 'wp-meta-seo' ) . '</a>';
+				__( 'Social', 'wp-meta-seo' ) . '</a>';
 
 			foreach ( array(
 				// translators: Please ignore - translation uses a different text domain.

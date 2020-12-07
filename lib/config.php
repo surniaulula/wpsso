@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.16.0-dev.2',	// Plugin version.
+					'version'     => '8.16.0-dev.3',	// Plugin version.
 					'opt_version' => '771',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -150,6 +150,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							),
 							'seo' => array(
 								'aioseop'      => '(plugin) All in One SEO Pack',
+								'rank-math'    => '(plugin) Rank Math SEO',
 								'seoframework' => '(plugin) The SEO Framework',
 								'seopress'     => '(plugin) SEOPress',
 								'wpmetaseo'    => '(plugin) WP Meta SEO',

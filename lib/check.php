@@ -34,7 +34,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			),
 			'seo' => array(
 				'jetpack-seo' => 'Jetpack SEO Tools',
-				'rankmath'    => 'Rank Math',
 				'seoultimate' => 'SEO Ultimate',
 				'slim-seo'    => 'Slim SEO',
 				'squirrlyseo' => 'Squirrly SEO',
@@ -470,7 +469,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
-								case 'rankmath':
+								case 'rank-math':
 
 									$chk[ 'class' ] = 'RankMath';
 

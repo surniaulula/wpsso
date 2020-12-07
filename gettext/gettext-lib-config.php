@@ -40,6 +40,7 @@ _x( '(api) Shopper Approved API', 'lib file description', 'wpsso' );
 _x( '(plugin) WP Product Review', 'lib file description', 'wpsso' );
 _x( '(plugin) Yotpo Social Reviews for WooCommerce', 'lib file description', 'wpsso' );
 _x( '(plugin) All in One SEO Pack', 'lib file description', 'wpsso' );
+_x( '(plugin) Rank Math SEO', 'lib file description', 'wpsso' );
 _x( '(plugin) The SEO Framework', 'lib file description', 'wpsso' );
 _x( '(plugin) SEOPress', 'lib file description', 'wpsso' );
 _x( '(plugin) WP Meta SEO', 'lib file description', 'wpsso' );

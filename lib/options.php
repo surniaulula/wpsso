@@ -448,9 +448,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					$this->defaults_cache[ 'plugin_wpseo_social_meta' ] = 1;
 
-				} elseif ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) && get_option( 'wpseo' ) ) {
+				} elseif ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {	// No other SEO plugin is active.
 
-					$this->defaults_cache[ 'plugin_wpseo_social_meta' ] = 1;
+					if ( get_option( 'wpseo' ) ) {	// Yoast SEO was once active.
+
+						$this->defaults_cache[ 'plugin_wpseo_social_meta' ] = 1;
+					}
 				}
 
 				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
@@ -713,31 +716,40 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			if ( ! $network ) {
 
 				/**
-				 * If an SEO plugin is detected, adjust SEO related options.
+				 * Adjust SEO plugin related options.
 				 */
-				$seo_other_opts = array();
+				$seo_opts = array();
 
-				if ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
+				if ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {	// An SEO plugin is not active.
 
 					if ( empty( $opts[ 'plugin_wpsso_tid' ] ) ) {
 
-						$seo_other_opts = array(
+						$seo_opts = array(
 							'add_link_rel_canonical'    => 0,
 							'add_meta_name_description' => 1,
 							'add_meta_name_robots'      => 1,
 						);
 					}
 
-				} else {
+				} else {	// An SEO plugin is active (Yoast SEO, or any other).
 
-					$seo_other_opts = array(
+					$seo_opts = array(
 						'add_link_rel_canonical'    => 0,
 						'add_meta_name_description' => 0,
 						'add_meta_name_robots'      => 0,
 					);
+				
+					/**
+					 * An SEO plugin is active, but it's not the Yoast SEO plugin, so skip importing old Yoast
+					 * SEO post/term/user metadata.
+					 */
+					if ( empty( $this->p->avail[ 'seo' ][ 'wpseo' ] ) ) {
+
+						$seo_opts[ 'plugin_wpseo_social_meta' ] = 0;
+					}
 				}
 
-				foreach ( $seo_other_opts as $opt_key => $def_val ) {
+				foreach ( $seo_opts as $opt_key => $def_val ) {
 
 					$opts[ $opt_key . ':is' ] = 'disabled';	// Prevent changes in settings page.
 

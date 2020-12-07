@@ -1615,7 +1615,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					foreach ( $post_taxonomies as $tax_slug ) {
 
-						$post_terms = wp_get_post_terms( $post_id, $tax_slug );	// Returns WP_Error if $tax_slug does not exist.
+						$post_terms = wp_get_post_terms( $post_id, $tax_slug );	// Returns WP_Error if taxonomy does not exist.
 
 						if ( is_array( $post_terms ) ) {
 
@@ -2089,7 +2089,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$primary_term_id = $this->get_options( $post_id, $md_key = 'primary_term_id' );
 
 				/**
-				 * Make sure the term is not null, false, and still exists.
+				 * Make sure the term is not null or false, and still exists.
 				 */
 				if ( ! empty( $primary_term_id ) && term_exists( $primary_term_id ) ) {	// Since WP v3.0.
 
@@ -2097,11 +2097,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				} else {
 
-					$is_custom = false;
-
-					$primary_term_id = false;
-
-					$primary_terms = $this->get_primary_terms( $mod, $tax_slug );
+					$is_custom        = false;
+					$primary_term_id  = false;
+					$primary_tax_slug = apply_filters( 'wpsso_primary_tax_slug', $tax_slug, $mod );
+					$primary_terms    = $this->get_primary_terms( $mod, $primary_tax_slug );
 
 					foreach ( $primary_terms as $term_id => $term_name ) {
 
@@ -2111,7 +2110,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					}
 				}
 
-				$primary_term_id = apply_filters( 'wpsso_primary_term_id', $primary_term_id, $mod, $is_custom );
+				$primary_term_id = apply_filters( 'wpsso_primary_term_id', $primary_term_id, $mod, $tax_slug, $is_custom );
 			
 				$local_cache[ $post_id ][ $tax_slug ] = $primary_term_id;
 			}
@@ -2124,15 +2123,17 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		 *
 		 * Returns an associative array of term ids and names.
 		 */
-		public function get_primary_terms( array $mod, $tax_slug = 'category' ) {
+		public function get_primary_terms( array $mod, $tax_slug = null ) {
 
 			$primary_terms = array();
 
 			if ( $mod[ 'is_post' ] ) {	// Just in case.
 
-				$primary_tax_slug = apply_filters( 'wpsso_primary_tax_slug', $tax_slug, $mod );
-
-				$post_terms = wp_get_post_terms( $mod[ 'id' ], $primary_tax_slug );	// Returns WP_Error if $primary_tax_slug does not exist.
+				/**
+				 * Don't apply the 'wpsso_primary_tax_slug' filter when called by $this->get_primary_term_id().
+				 */
+				$primary_tax_slug = null === $tax_slug ? apply_filters( 'wpsso_primary_tax_slug', 'category', $mod ) : $tax_slug;
+				$post_terms       = wp_get_post_terms( $mod[ 'id' ], $primary_tax_slug );	// Returns WP_Error if taxonomy does not exist.
 
 				if ( is_array( $post_terms ) ) {
 
@@ -2143,7 +2144,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 			}
 
-			return $primary_terms;
+			return apply_filters( 'wpsso_primary_terms', $primary_terms, $mod, $tax_slug );
 		}
 
 		/**

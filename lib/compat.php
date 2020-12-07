@@ -52,102 +52,131 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 
 			if ( is_admin() ) {
 
-				if ( class_exists( 'GFForms' ) ) {
-
-					add_action( 'gform_noconflict_styles', array( $this, 'update_gform_noconflict_styles' ) );
-
-					add_action( 'gform_noconflict_scripts', array( $this, 'update_gform_noconflict_scripts' ) );
-				}
-
-				if ( class_exists( 'GravityView_Plugin' ) ) {
-
-					add_action( 'gravityview_noconflict_styles', array( $this, 'update_gform_noconflict_styles' ) );
-
-					add_action( 'gravityview_noconflict_scripts', array( $this, 'update_gform_noconflict_scripts' ) );
-				}
-
-				/**
-				 * Rank Math.
-				 */
-				if ( ! empty( $this->p->avail[ 'seo' ][ 'rankmath' ] ) ) {
-
-					$this->p->util->add_plugin_filters( $this, array( 
-						'admin_page_style_css_rank_math' => array(	// Class method.
-							'admin_page_style_css' => 1,		// Filter name.
-						),
-					) );
-				}
-
-				/**
-				 * SEOPress.
-				 */
-				if ( ! empty( $this->p->avail[ 'seo' ][ 'seopress' ] ) ) {
-
-					add_filter( 'seopress_metabox_seo_tabs', array( $this, 'cleanup_seopress_tabs' ), 1000 );
-				}
-
-				/**
-				 * Yoast SEO.
-				 */
-				if ( ! empty( $this->p->avail[ 'seo' ][ 'wpseo' ] ) ) {
-
-					add_action( 'admin_init', array( $this, 'cleanup_wpseo_notifications' ), 15 );
-
-					$this->p->util->add_plugin_filters( $this, array( 
-						'admin_page_style_css_wpseo' => array(		// Class method.
-							'admin_page_style_css' => 1,		// Filter name.
-						),
-					) );
-				}
+				$this->back_end_hooks();
 
 			} else {
 
+				$this->front_end_hooks();
+			}
+		}
+
+		public function back_end_hooks() {
+
+			/**
+			 * Gravity Forms and Gravity View.
+			 */
+			if ( class_exists( 'GFForms' ) ) {
+
+				add_action( 'gform_noconflict_styles', array( $this, 'update_gform_noconflict_styles' ) );
+
+				add_action( 'gform_noconflict_scripts', array( $this, 'update_gform_noconflict_scripts' ) );
+			}
+
+			if ( class_exists( 'GravityView_Plugin' ) ) {
+
+				add_action( 'gravityview_noconflict_styles', array( $this, 'update_gform_noconflict_styles' ) );
+
+				add_action( 'gravityview_noconflict_scripts', array( $this, 'update_gform_noconflict_scripts' ) );
+			}
+
+			/**
+			 * Rank Math.
+			 */
+			if ( ! empty( $this->p->avail[ 'seo' ][ 'rank-math' ] ) ) {
+
+				$this->p->util->add_plugin_filters( $this, array( 
+					'admin_page_style_css_rank_math' => array(	// Class method.
+						'admin_page_style_css' => 1,		// Filter name.
+					),
+				) );
+			}
+
+			/**
+			 * The SEO Framework.
+			 */
+			if ( ! empty( $this->p->avail[ 'seo' ][ 'seoframework' ] ) ) {
+
+				add_filter( 'the_seo_framework_inpost_settings_tabs', array( $this, 'cleanup_seoframework_tabs' ), 1000 );
+			}
+
+			/**
+			 * SEOPress.
+			 */
+			if ( ! empty( $this->p->avail[ 'seo' ][ 'seopress' ] ) ) {
+
+				add_filter( 'seopress_metabox_seo_tabs', array( $this, 'cleanup_seopress_tabs' ), 1000 );
+			}
+
+			/**
+			 * Yoast SEO.
+			 */
+			if ( ! empty( $this->p->avail[ 'seo' ][ 'wpseo' ] ) ) {
+
+				add_action( 'admin_init', array( $this, 'cleanup_wpseo_notifications' ), 15 );
+
+				$this->p->util->add_plugin_filters( $this, array( 
+					'admin_page_style_css_wpseo' => array(		// Class method.
+						'admin_page_style_css' => 1,		// Filter name.
+					),
+				) );
+			}
+		}
+		
+		public function front_end_hooks() {
+
+			/**
+			 * JetPack.
+			 */
+			if ( ! empty( $this->p->avail[ 'util' ][ 'jetpack' ] ) ) {
+
+				add_filter( 'jetpack_enable_opengraph', '__return_false', 1000 );
+
+				add_filter( 'jetpack_enable_open_graph', '__return_false', 1000 );
+
+				add_filter( 'jetpack_disable_twitter_cards', '__return_true', 1000 );
+			}
+
+			/**
+			 * NextScripts: Social Networks Auto-Poster.
+			 */
+			if ( function_exists( 'nxs_initSNAP' ) ) {
+
+				add_action( 'wp_head', array( $this, 'remove_snap_og_meta_tags_holder' ), -2000 );
+			}
+
+			/**
+			 * Rank Math.
+			 */
+			if ( ! empty( $this->p->avail[ 'seo' ][ 'rank-math' ] ) ) {
+
+				add_action( 'rank_math/head', array( $this, 'cleanup_rank_math_actions' ), -2000 );
+			}
+
+			/**
+			 * SEOPress.
+			 */
+			if ( ! empty( $this->p->avail[ 'seo' ][ 'seopress' ] ) ) {
+
+				add_filter( 'seopress_titles_author', '__return_empty_string', 1000 );
+			}
+
+			/**
+			 * Yoast SEO.
+			 */
+			if ( ! empty( $this->p->avail[ 'seo' ][ 'wpseo' ] ) ) {
+
 				/**
-				 * JetPack.
+				 * Since Yoast SEO v14.0.
 				 */
-				if ( ! empty( $this->p->avail[ 'util' ][ 'jetpack' ] ) ) {
+				if ( method_exists( 'Yoast\WP\SEO\Integrations\Front_End_Integration', 'get_presenters' ) ) {
 
-					add_filter( 'jetpack_enable_opengraph', '__return_false', 1000 );
+					add_filter( 'wpseo_frontend_presenters', array( $this, 'cleanup_wpseo_frontend_presenters' ), 1000 );
 
-					add_filter( 'jetpack_enable_open_graph', '__return_false', 1000 );
+				} else {
 
-					add_filter( 'jetpack_disable_twitter_cards', '__return_true', 1000 );
-				}
+					add_action( 'template_redirect', array( $this, 'cleanup_wpseo_actions' ), 1000 );
 
-				/**
-				 * NextScripts: Social Networks Auto-Poster.
-				 */
-				if ( function_exists( 'nxs_initSNAP' ) ) {
-
-					add_action( 'wp_head', array( $this, 'remove_snap_og_meta_tags_holder' ), -2000 );
-				}
-
-				/**
-				 * Rank Math.
-				 */
-				if ( ! empty( $this->p->avail[ 'seo' ][ 'rankmath' ] ) ) {
-
-					add_action( 'rank_math/head', array( $this, 'cleanup_rankmath_actions' ), -2000 );
-				}
-
-				/**
-				 * Yoast SEO.
-				 */
-				if ( ! empty( $this->p->avail[ 'seo' ][ 'wpseo' ] ) ) {
-
-					/**
-					 * Since Yoast SEO v14.0.
-					 */
-					if ( method_exists( 'Yoast\WP\SEO\Integrations\Front_End_Integration', 'get_presenters' ) ) {
-
-						add_filter( 'wpseo_frontend_presenters', array( $this, 'cleanup_wpseo_frontend_presenters' ), 1000 );
-
-					} else {
-
-						add_action( 'template_redirect', array( $this, 'cleanup_wpseo_actions' ), 1000 );
-
-						add_action( 'amp_post_template_head', array( $this, 'cleanup_wpseo_actions' ), -2000 );
-					}
+					add_action( 'amp_post_template_head', array( $this, 'cleanup_wpseo_actions' ), -2000 );
 				}
 			}
 		}
@@ -217,6 +246,13 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				'sucom-tooltips',
 				'wp-color-picker',
 			) );
+		}
+
+		public function cleanup_seoframework_tabs( $tabs ) {
+
+			unset( $tabs[ 'social' ] );
+
+			return $tabs;
 		}
 
 		public function cleanup_seopress_tabs( $tabs ) {
@@ -405,7 +441,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			}
 		}
 
-		public function cleanup_rankmath_actions() {
+		public function cleanup_rank_math_actions() {
 
 			if ( $this->p->debug->enabled ) {
 
