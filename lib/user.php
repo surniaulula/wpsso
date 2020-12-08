@@ -15,6 +15,11 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 	die( 'Do. Or do not. There is no try.' );
 }
 
+if ( ! class_exists( 'WpssoWpMeta' ) ) {
+
+	require_once dirname( __FILE__ ) . '/abstracts/wp-meta.php';	// SucomAddOn class.
+}
+
 if ( ! class_exists( 'WpssoUser' ) ) {
 
 	class WpssoUser extends WpssoWpMeta {

@@ -4210,9 +4210,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			require_once WPSSO_PLUGINDIR . 'lib/wp-sitemaps.php';
 
 			/**
-			 * Additional module library loader.
+			 * Module library loader.
 			 */
 			require_once WPSSO_PLUGINDIR . 'lib/loader.php';
+
+			/**
+			 * Add-ons library.
+			 */
+			require_once WPSSO_PLUGINDIR . 'lib/abstracts/add-on.php';	// Extends SucomAddOn.
 
 			add_filter( 'wpsso_load_lib', array( 'WpssoConfig', 'load_lib' ), 10, 3 );
 		}

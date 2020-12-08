@@ -3212,7 +3212,7 @@ msgid ""
 "installed."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:165 lib/post.php:1129
+#: gettext/gettext-lib-pro.php:165 lib/post.php:1134
 #: lib/pro/media/youtube.php:187
 msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
@@ -3883,7 +3883,7 @@ msgstr ""
 msgid "Network plugin settings have been saved."
 msgstr ""
 
-#: lib/admin.php:1124 lib/post.php:909 lib/term.php:686 lib/user.php:682
+#: lib/admin.php:1124 lib/post.php:914 lib/term.php:691 lib/user.php:687
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -3916,8 +3916,8 @@ msgid ""
 msgstr ""
 
 #: lib/admin.php:1188 lib/admin.php:1199 lib/messages.php:943
-#: lib/submenu/tools.php:58 lib/submenu/tools.php:103 lib/user.php:52
-#: lib/user.php:1528 lib/user.php:1636 lib/user.php:1767
+#: lib/submenu/tools.php:58 lib/submenu/tools.php:103 lib/user.php:57
+#: lib/user.php:1533 lib/user.php:1641 lib/user.php:1772
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -7974,152 +7974,152 @@ msgctxt "option label"
 msgid "Pinterest Pin It"
 msgstr ""
 
-#: lib/post.php:228
+#: lib/post.php:233
 msgctxt "module name"
 msgid "post"
 msgstr ""
 
-#: lib/post.php:562 lib/register.php:347 lib/term.php:486 lib/user.php:462
+#: lib/post.php:567 lib/register.php:347 lib/term.php:491 lib/user.php:467
 #: lib/util.php:847 lib/util.php:3384
 msgid "%s warning:"
 msgstr ""
 
-#: lib/post.php:563 lib/term.php:487 lib/user.php:464 lib/util.php:849
+#: lib/post.php:568 lib/term.php:492 lib/user.php:469 lib/util.php:849
 #: lib/util.php:3386
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
-#: lib/post.php:564
+#: lib/post.php:569
 msgid ""
 "Slow query detected - get_posts() took %1$0.3f secs to get the children of "
 "post ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/post.php:845 lib/post.php:1452 lib/schema.php:3284 lib/term.php:640
-#: lib/user.php:635
+#: lib/post.php:850 lib/post.php:1457 lib/schema.php:3284 lib/term.php:645
+#: lib/user.php:640
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/post.php:1047
+#: lib/post.php:1052
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:1078
+#: lib/post.php:1083
 msgid "The webpage HTML retrieved from %1$s is %2$s bytes."
 msgstr ""
 
-#: lib/post.php:1080
+#: lib/post.php:1085
 msgid ""
 "This exceeds the maximum limit of %1$s bytes imposed by the Google crawler."
 msgstr ""
 
-#: lib/post.php:1081
+#: lib/post.php:1086
 msgid ""
 "If you do not reduce the webpage HTML size, Google will refuse to crawl this "
 "webpage."
 msgstr ""
 
-#: lib/post.php:1110
+#: lib/post.php:1115
 msgid "Retrieving the webpage HTML for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:1112
+#: lib/post.php:1117
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:1114
+#: lib/post.php:1119
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:1115
+#: lib/post.php:1120
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:1143
+#: lib/post.php:1148
 msgid "An %1$s tag was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1158
+#: lib/post.php:1163
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1175
+#: lib/post.php:1180
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:1202
+#: lib/post.php:1207
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:1247
+#: lib/post.php:1252
 msgid "The webpage at %1$s does not include any Schema JSON-LD script(s)."
 msgstr ""
 
-#: lib/post.php:1249
+#: lib/post.php:1254
 msgid ""
 "Complete and accurate Schema JSON-LD markup is highly recommended for better "
 "ranking and click-through rates in search results."
 msgstr ""
 
-#: lib/post.php:1251
+#: lib/post.php:1256
 msgid ""
 "Consider activating the %1$s add-on to include Schema JSON-LD markup for "
 "Google Rich Results."
 msgstr ""
 
-#: lib/post.php:1272
+#: lib/post.php:1277
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:1290
+#: lib/post.php:1295
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1290
+#: lib/post.php:1295
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML document &mdash; please review the <a href=\"%1$s\">W3C "
 "Markup Validator</a> results and correct any syntax errors."
 msgstr ""
 
-#: lib/post.php:1328
+#: lib/post.php:1333
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1330
+#: lib/post.php:1335
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1338
+#: lib/post.php:1343
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1342
+#: lib/post.php:1347
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1346
+#: lib/post.php:1351
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1505
+#: lib/post.php:1510
 msgid "Save a draft or publish to display these options."
 msgstr ""
 
-#: lib/post.php:1747
+#: lib/post.php:1752
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -8766,18 +8766,18 @@ msgctxt "submit button"
 msgid "Reset Metabox Layout"
 msgstr ""
 
-#: lib/term.php:176
+#: lib/term.php:181
 msgctxt "module name"
 msgid "term"
 msgstr ""
 
-#: lib/term.php:488
+#: lib/term.php:493
 msgid ""
 "Slow query detected - get_posts() took %1$0.3f secs to get posts for term ID "
 "%2$d in taxonomy %3$s (%4$s)."
 msgstr ""
 
-#: lib/term.php:887
+#: lib/term.php:892
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -8817,67 +8817,67 @@ msgstr ""
 msgid "Availability"
 msgstr ""
 
-#: lib/user.php:178
+#: lib/user.php:183
 msgctxt "module name"
 msgid "user"
 msgstr ""
 
-#: lib/user.php:466
+#: lib/user.php:471
 msgid ""
 "Slow query detected - get_posts() took %1$0.3f secs to get posts authored by "
 "user ID %2$d (%3$s)."
 msgstr ""
 
-#: lib/user.php:895
+#: lib/user.php:900
 msgid "(not a Facebook Pages URL)"
 msgstr ""
 
-#: lib/user.php:981
+#: lib/user.php:986
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:982
+#: lib/user.php:987
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:983
+#: lib/user.php:988
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1323
+#: lib/user.php:1328
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/user.php:1547
+#: lib/user.php:1552
 msgid ""
 "Aborting task to add the %1$s role to content creators - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1562
+#: lib/user.php:1567
 msgid "A task to add the %1$s role for content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1604
+#: lib/user.php:1609
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1606 lib/user.php:1709 lib/util-cache.php:158
+#: lib/user.php:1611 lib/user.php:1714 lib/util-cache.php:158
 #: lib/util-cache.php:682
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
-#: lib/user.php:1655
+#: lib/user.php:1660
 msgid ""
 "Aborting task to remove the %1$s role from all users - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1670
+#: lib/user.php:1675
 msgid "A task to remove the %1$s role from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1707
+#: lib/user.php:1712
 msgid "The %1$s role has been removed from %2$d content creators."
 msgstr ""
 
