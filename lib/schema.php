@@ -259,7 +259,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'exiting early: user id is empty or "none"' );
+						$this->p->debug->log( 'exiting early: user ID is empty or "none"' );
 					}
 
 					return $json_data;
@@ -1756,7 +1756,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/**
 		 * Get the site organization array.
 		 *
-		 * $mixed = 'default' | 'current' | post id | $mod array
+		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 */
 		public static function get_site_organization( $mixed = 'current' ) {
 
@@ -2179,7 +2179,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log( 'adding post id ' . $post_mod[ 'id' ] . ' to ' . $prop_name . ' as #' . $item_count );
+					$wpsso->debug->log( 'adding post ID ' . $post_mod[ 'id' ] . ' to ' . $prop_name . ' as #' . $item_count );
 				}
 
 				$json_data[ $prop_name ][] = $post_json_data;	// Add the post data.
@@ -2477,7 +2477,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 							if ( $wpsso->debug->enabled ) {
 
-								$wpsso->debug->log( 'accepting post id ' . $post_mod[ 'id' ] . ': any schema type is allowed' );
+								$wpsso->debug->log( 'accepting post ID ' . $post_mod[ 'id' ] . ': any schema type is allowed' );
 							}
 
 							$add_post_data = true;
@@ -2496,7 +2496,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 							if ( $wpsso->debug->enabled ) {
 
-								$wpsso->debug->log( 'accepting post id ' . $post_mod[ 'id' ] . ': ' .
+								$wpsso->debug->log( 'accepting post ID ' . $post_mod[ 'id' ] . ': ' .
 									$post_type_id . ' is child of ' . $family_member_id );
 							}
 
@@ -2506,7 +2506,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 						} elseif ( $wpsso->debug->enabled ) {
 
-							$wpsso->debug->log( 'post id ' . $post_mod[ 'id' ] . ' schema type ' .
+							$wpsso->debug->log( 'post ID ' . $post_mod[ 'id' ] . ' schema type ' .
 								$post_type_id . ' not a child of ' . $family_member_id );
 						}
 					}
@@ -2515,7 +2515,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 						if ( $wpsso->debug->enabled ) {
 
-							$wpsso->debug->log( 'skipping post id ' . $post_mod[ 'id' ] . ' for prop_name ' . $prop_name );
+							$wpsso->debug->log( 'skipping post ID ' . $post_mod[ 'id' ] . ' for prop_name ' . $prop_name );
 						}
 
 						continue;
@@ -2523,14 +2523,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( $wpsso->debug->enabled ) {
 
-						$wpsso->debug->log( 'getting single mod data for post id ' . $post_mod[ 'id' ] );
+						$wpsso->debug->log( 'getting single mod data for post ID ' . $post_mod[ 'id' ] );
 					}
 
 					$post_json_data = $wpsso->schema->get_mod_json_data( $post_mod );
 
 					if ( empty( $post_json_data ) ) {	// Prevent null assignment.
 
-						$wpsso->debug->log( 'single mod data for post id ' . $post_mod[ 'id' ] . ' is empty' );
+						$wpsso->debug->log( 'single mod data for post ID ' . $post_mod[ 'id' ] . ' is empty' );
 
 						continue;	// Get the next post mod.
 					}
@@ -2541,7 +2541,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( $wpsso->debug->enabled ) {
 
-						$wpsso->debug->log( 'adding post id ' . $post_mod[ 'id' ] . ' to ' . $prop_name . ' as #' . $prop_count );
+						$wpsso->debug->log( 'adding post ID ' . $post_mod[ 'id' ] . ' to ' . $prop_name . ' as #' . $prop_count );
 					}
 
 					$json_data[ $prop_name ][] = $post_json_data;	// Add the post data.
@@ -3870,7 +3870,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 						if ( $wpsso->debug->enabled ) {
 
-							$wpsso->debug->log( 'getting mod for post id ' . $post->ID );
+							$wpsso->debug->log( 'getting mod for post ID ' . $post->ID );
 						}
 
 						$page_posts_mods[] = $wpsso->post->get_mod( $post->ID );

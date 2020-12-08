@@ -967,7 +967,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 				}
 
 				/**
-				 * If we can edit the post id, then check if we can edit the post type.
+				 * If we can edit the post ID, then check if we can edit the post type.
 				 */
 				if ( $can_edit_id ) {
 
@@ -1038,7 +1038,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		public static function get_roles_user_ids( array $roles, $blog_id = null, $limit = '' ) {
 
 			/**
-			 * Get the user id => name associative array, and keep only the array keys.
+			 * Get the user ID => name associative array, and keep only the array keys.
 			 */
 			$user_ids = array_keys( self::get_roles_user_names( $roles, $blog_id, $limit ) );
 

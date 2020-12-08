@@ -367,7 +367,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$this->notice_cache[ $user_id ][ $msg_type ][ $msg_key ] = $payload;
 
 			/**
-			 * Update the notice transient now if we're adding a notice for a different user id, otherwise wait for the
+			 * Update the notice transient now if we're adding a notice for a different user ID, otherwise wait for the
 			 * shutdown_notice_cache() method to execute.
 			 */
 			if ( $user_id !== $current_user_id ) {
@@ -1220,7 +1220,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		}
 
 		/**
-		 * Called by the WordPress 'shutdown' action. Save notices for all user ids in the notice cache.
+		 * Called by the WordPress 'shutdown' action. Save notices for all user IDs in the notice cache.
 		 */
 		public function shutdown_notice_cache() {
 

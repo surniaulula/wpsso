@@ -2861,7 +2861,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				} else {
 
-					if ( $mod[ 'is_home_page' ] ) {	// Static home page (have post id).
+					if ( $mod[ 'is_home_page' ] ) {	// Static home page (have post ID).
 
 						$base = $wp_rewrite->using_index_permalinks() ? 'index.php/' : '/';
 						$url  = home_url( $base );
@@ -2911,7 +2911,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * Called by scheduled tasks to check the user id value and possibly load a different textdomain language.
+		 * Called by scheduled tasks to check the user ID value and possibly load a different textdomain language.
 		 */
 		public function maybe_change_user_id( $user_id ) {
 
@@ -2929,7 +2929,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			/**
-			 * The user id is different than the current / effective user id, so check if the user locale is different
+			 * The user ID is different than the current / effective user ID, so check if the user locale is different
 			 * to the current locale and load the user locale if required.
 			 */
 			$current_locale = get_locale();
@@ -3277,7 +3277,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'saving the original post object ' . ( isset( $post->ID ) ? 'id ' . $post->ID : '(no post id)' ) );
+				$this->p->debug->log( 'saving the original post object ' . ( isset( $post->ID ) ? 'id ' . $post->ID : '(no post ID)' ) );
 			}
 
 			$post_obj_pre_filter = $post;		// Save the original global post object.
@@ -3423,7 +3423,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'restoring the original post object ' . 
-					( isset( $post_obj_pre_filter->ID ) ? 'id ' . $post_obj_pre_filter->ID : '(no post id)' ) );
+					( isset( $post_obj_pre_filter->ID ) ? 'id ' . $post_obj_pre_filter->ID : '(no post ID)' ) );
 			}
 
 			$post     = $post_obj_pre_filter;	// Restore the original global post object.

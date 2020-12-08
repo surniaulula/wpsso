@@ -1312,7 +1312,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				/**
 				 * Check for custom meta, featured, or attached image(s).
 				 *
-				 * Allow for empty post id in order to execute featured / attached image filters for modules.
+				 * Allow for empty post ID in order to execute featured / attached image filters for modules.
 				 */
 				$post_images = $this->p->media->get_post_images( $num, $size_name, $mod[ 'id' ], $check_dupes, $md_pre );
 
@@ -1656,7 +1656,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		/**
 		 * Returns an optional and customized locale value for the og:locale meta tag.
 		 *
-		 * $mixed = 'default' | 'current' | post id | $mod array
+		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 */
 		public function get_fb_locale( array $opts, $mixed = 'current' ) {
 
@@ -1681,7 +1681,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			/**
 			 * Get the locale requested in $mixed.
 			 *
-			 * $mixed = 'default' | 'current' | post id | $mod array
+			 * $mixed = 'default' | 'current' | post ID | $mod array
 			 */
 			$locale = SucomUtil::get_locale( $mixed );
 

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.16.0-dev.3\n"
+"Project-Id-Version: WPSSO Core 8.16.0-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3292,15 +3292,15 @@ msgid "The URL shortening library file for \"%s\" is missing and required."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:187 lib/pro/util/wpseo-meta.php:157
-msgid "Imported Yoast SEO \"%1$s\" metadata from post id %2$d."
+msgid "Imported Yoast SEO \"%1$s\" metadata from post ID %2$d."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:188 lib/pro/util/wpseo-meta.php:301
-msgid "Imported Yoast SEO \"%1$s\" metadata from term id %2$d."
+msgid "Imported Yoast SEO \"%1$s\" metadata from term ID %2$d."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:189 lib/pro/util/wpseo-meta.php:408
-msgid "Imported Yoast SEO \"%1$s\" metadata from user id %2$d."
+msgid "Imported Yoast SEO \"%1$s\" metadata from user ID %2$d."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:190 lib/pro/util/check-img-dims.php:84
@@ -3928,11 +3928,11 @@ msgid ""
 msgstr ""
 
 #: lib/admin.php:1213
-msgid "Metabox layout preferences for user id #%d \"%s\" have been reset."
+msgid "Metabox layout preferences for user ID #%d \"%s\" have been reset."
 msgstr ""
 
 #: lib/admin.php:1228
-msgid "Dismissed notices for user id #%d \"%s\" have been reset."
+msgid "Dismissed notices for user ID #%d \"%s\" have been reset."
 msgstr ""
 
 #: lib/admin.php:1247
@@ -5523,8 +5523,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:544
-msgid ""
-"The Google product type that best describes all the products on your site."
+msgid "The Google product type that best describes the products on your site."
 msgstr ""
 
 #: lib/messages.php:546
@@ -7993,7 +7992,7 @@ msgstr ""
 #: lib/post.php:564
 msgid ""
 "Slow query detected - get_posts() took %1$0.3f secs to get the children of "
-"post id %2$d (%3$s)."
+"post ID %2$d (%3$s)."
 msgstr ""
 
 #: lib/post.php:845 lib/post.php:1452 lib/schema.php:3284 lib/term.php:640
@@ -8155,7 +8154,7 @@ msgid "Edit %s's Profile"
 msgstr ""
 
 #: lib/profile/your-sso.php:55
-msgid "Invalid user id."
+msgid "Invalid user ID."
 msgstr ""
 
 #: lib/register.php:159
@@ -8774,12 +8773,12 @@ msgstr ""
 
 #: lib/term.php:488
 msgid ""
-"Slow query detected - get_posts() took %1$0.3f secs to get posts for term id "
+"Slow query detected - get_posts() took %1$0.3f secs to get posts for term ID "
 "%2$d in taxonomy %3$s (%4$s)."
 msgstr ""
 
 #: lib/term.php:887
-msgid "Insufficient privileges to save settings for term id %1$s."
+msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
 #: lib/twittercard.php:197
@@ -8826,7 +8825,7 @@ msgstr ""
 #: lib/user.php:466
 msgid ""
 "Slow query detected - get_posts() took %1$0.3f secs to get posts authored by "
-"user id %2$d (%3$s)."
+"user ID %2$d (%3$s)."
 msgstr ""
 
 #: lib/user.php:895
@@ -8846,7 +8845,7 @@ msgid "Yahoo Messenger"
 msgstr ""
 
 #: lib/user.php:1323
-msgid "Insufficient privileges to save settings for user id %1$s."
+msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
 #: lib/user.php:1547

@@ -202,7 +202,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		/**
-		 * Get the $mod object for a post id.
+		 * Get the $mod object for a post ID.
 		 */
 		public function get_mod( $post_id ) {
 
@@ -391,7 +391,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 */
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying import_custom_fields filters for post id ' . $post_id . ' metadata' );
+						$this->p->debug->log( 'applying import_custom_fields filters for post ID ' . $post_id . ' metadata' );
 					}
 
 					$md_opts = apply_filters( 'wpsso_import_custom_fields', $md_opts, get_post_meta( $post_id ) );
@@ -415,7 +415,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 */
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying get_post_options filters for post id ' . $post_id . ' metadata' );
+						$this->p->debug->log( 'applying get_post_options filters for post ID ' . $post_id . ' metadata' );
 					}
 
 					$md_opts = (array) apply_filters( 'wpsso_get_post_options', $md_opts, $post_id, $mod );
@@ -480,9 +480,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		/**
-		 * Get all publicly accessible post ids.
+		 * Get all publicly accessible post IDs.
 		 *
-		 * These may include post ids from non-public post types.
+		 * These may include post IDs from non-public post types.
 		 */
 		public static function get_public_ids() {
 
@@ -494,7 +494,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				'post_status'    => 'publish',	// Only 'publish' (not 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', or 'trash').
 				'post_type'      => 'any',	// Return any post, page, or custom post type.
 				'posts_per_page' => -1,		// The number of posts to query for. -1 to request all posts.
-				'fields'         => 'ids',	// Return an array of post ids.
+				'fields'         => 'ids',	// Return an array of post IDs.
 				'no_found_rows'  => true,	// Skip counting total rows found - should be enabled when pagination is not needed.
 			);
 
@@ -502,7 +502,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		/**
-		 * Return an array of post ids for a given $mod object.
+		 * Return an array of post IDs for a given $mod object.
 		 */
 		public function get_posts_ids( array $mod, $ppp = null, $paged = null, array $posts_args = array() ) {
 
@@ -542,7 +542,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				'posts_per_page' => $ppp,
 				'post_parent'    => $mod[ 'id' ],
 				'child_of'       => $mod[ 'id' ],	// Only include direct children.
-			), $posts_args, array( 'fields' => 'ids' ) );	// Return an array of post ids.
+			), $posts_args, array( 'fields' => 'ids' ) );	// Return an array of post IDs.
 
 			$mtime_max   = SucomUtil::get_const( 'WPSSO_GET_POSTS_MAX_TIME', 0.10 );
 			$mtime_start = microtime( true );
@@ -556,12 +556,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( sprintf( 'slow query detected - WordPress get_posts() took %1$0.3f secs' . 
-						' to get the children of post id %2$d', $mtime_total, $mod[ 'id' ] ) );
+						' to get the children of post ID %2$d', $mtime_total, $mod[ 'id' ] ) );
 				}
 
 				$error_pre   = sprintf( __( '%s warning:', 'wpsso' ), __METHOD__ );
 				$rec_max_msg = sprintf( __( 'longer than recommended max of %1$0.3f secs', 'wpsso' ), $mtime_max );
-				$error_msg   = sprintf( __( 'Slow query detected - get_posts() took %1$0.3f secs to get the children of post id %2$d (%3$s).',
+				$error_msg   = sprintf( __( 'Slow query detected - get_posts() took %1$0.3f secs to get the children of post ID %2$d (%3$s).',
 					'wpsso' ), $mtime_total, $mod[ 'id' ], $rec_max_msg );
 
 				/**
@@ -577,7 +577,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( count( $post_ids ) . ' post ids returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
+				$this->p->debug->log( count( $post_ids ) . ' post IDs returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
 			}
 
 			return $post_ids;
@@ -607,7 +607,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( $column_name . ' for post id ' . $post_id );
+				$this->p->debug->log( $column_name . ' for post ID ' . $post_id );
 			}
 
 			echo $this->get_column_content( '', $column_name, $post_id );
@@ -656,7 +656,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			/**
-			 * WordPress stores data using a post, term, or user id, along with a group string.
+			 * WordPress stores data using a post, term, or user ID, along with a group string.
 			 *
 			 * Example: wp_cache_get( 1, 'user_meta' );
 			 *
@@ -741,7 +741,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'post id = ' . $post_id );
+				$this->p->debug->log( 'post ID = ' . $post_id );
 			}
 
 			/**
@@ -957,7 +957,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'exiting early: post id in post object is empty');
+						$this->p->debug->log( 'exiting early: post ID in post object is empty');
 					}
 
 					return;	// Stop here.
@@ -1634,7 +1634,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			/**
-			 * The question shortcode (in the WPSSO FAQ add-on) attaches the post id to the question so the post cache
+			 * The question shortcode (in the WPSSO FAQ add-on) attaches the post ID to the question so the post cache
 			 * can be cleared when the question is updated.
 			 */
 			foreach ( array( 'post' ) as $attach_type ) {
@@ -1895,14 +1895,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			/**
-			 * The WordPress link-template.php functions call wp_get_shortlink() with a post id of 0. Recreate the same
-			 * code here to get a real post id and create a default shortlink (if required).
+			 * The WordPress link-template.php functions call wp_get_shortlink() with a post ID of 0. Recreate the same
+			 * code here to get a real post ID and create a default shortlink (if required).
 			 */
 			if ( 0 === $post_id ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'provided post id is 0 (current post)' );
+					$this->p->debug->log( 'provided post ID is 0 (current post)' );
 				}
 
 				if ( 'query' === $context && is_singular() ) {	// wp_get_shortlink() uses the same logic.
@@ -1911,7 +1911,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'setting post id ' . $post_id . ' from queried object' );
+						$this->p->debug->log( 'setting post ID ' . $post_id . ' from queried object' );
 					}
 
 				} elseif ( 'post' === $context ) {
@@ -1933,7 +1933,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'setting post id ' . $post_id . ' from post object' );
+							$this->p->debug->log( 'setting post ID ' . $post_id . ' from post object' );
 						}
 					}
 				}
@@ -1942,7 +1942,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'exiting early: unable to determine the post id' );
+						$this->p->debug->log( 'exiting early: unable to determine the post ID' );
 					}
 
 					return $shortlink;	// Return original shortlink.
@@ -2066,7 +2066,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		/**
 		 * Since WPSSO Core v8.15.0.
 		 *
-		 * Returns a term id, or false if a term for the $tax_slug is not found.
+		 * Returns a term ID, or false if a term for the $tax_slug is not found.
 		 */
 		public function get_primary_term_id( array $mod, $tax_slug = 'category' ) {
 
@@ -2084,7 +2084,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 
 				/**
-				 * Returns null if a custom primary term id has not been selected.
+				 * Returns null if a custom primary term ID has not been selected.
 				 */
 				$primary_term_id = $this->get_options( $post_id, $md_key = 'primary_term_id' );
 
@@ -2104,7 +2104,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					foreach ( $primary_terms as $term_id => $term_name ) {
 
-						$primary_term_id = $term_id;	// Use the first term id found.
+						$primary_term_id = $term_id;	// Use the first term ID found.
 	
 						break;	// Stop here.
 					}
@@ -2121,7 +2121,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		/**
 		 * Since WPSSO Core v8.16.0.
 		 *
-		 * Returns an associative array of term ids and names.
+		 * Returns an associative array of term IDs and names.
 		 */
 		public function get_primary_terms( array $mod, $tax_slug = null ) {
 

@@ -541,7 +541,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-og_def_product_category':	// Default Product Type.
 
-							$text = __( 'The Google product type that best describes all the products on your site.', 'wpsso' ) . ' ';
+							$text = __( 'The Google product type that best describes the products on your site.', 'wpsso' ) . ' ';
 
 							$text .= sprintf( __( 'Your selection will be used by default for Schema product markup and the %s meta tag.', 'wpsso' ), '<code>product:category</code>' ) . ' ';
 

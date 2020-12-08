@@ -52,7 +52,7 @@ if ( ! class_exists( 'WpssoProfileYourSSO' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			if ( empty( $user_obj->ID ) ) {	// Just in case.
 
-				wp_die( __( 'Invalid user id.' ) );
+				wp_die( __( 'Invalid user ID.' ) );
 			}
 
 			$this->p->user->show_metabox_document_meta( $user_obj );

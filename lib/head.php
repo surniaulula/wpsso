@@ -48,7 +48,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		/**
 		 * Can return an empty string if $mixed and $sharing_rul are false.
 		 *
-		 * $mixed = 'default' | 'current' | post id | $mod array
+		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 */
 		public function get_head_cache_index( $mixed = 'current', $sharing_url = false ) {
 
@@ -115,7 +115,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->log( 'required call to get_page_mod()' );
 			}
 
-			$mod = $this->p->util->get_page_mod( $use_post );	// Get post/user/term id, module name, and module object reference.
+			$mod = $this->p->util->get_page_mod( $use_post );	// Get post/term/user ID, module name, and module object reference.
 
 			$add_head_html = apply_filters( 'wpsso_add_head_html', true, $mod );
 

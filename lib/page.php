@@ -55,7 +55,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'required call to get_page_mod()' );
 			}
 
-			$mod = $this->p->util->get_page_mod( $use_post );	// Get post/user/term id, module name, and module object reference.
+			$mod = $this->p->util->get_page_mod( $use_post );	// Get post/term/user ID, module name, and module object reference.
 
 			$validators = $this->p->util->get_validators( $mod, $allow_clipboard = false );
 
@@ -748,7 +748,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 							if ( $this->p->debug->enabled ) {
 
-								$this->p->debug->log( 'getting the content for post id ' . $mod[ 'id' ] );
+								$this->p->debug->log( 'getting the content for post ID ' . $mod[ 'id' ] );
 							}
 
 							$desc_text = $this->get_the_content( $mod, $read_cache, $md_key );
@@ -1287,7 +1287,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'getting the excerpt for post id ' . $mod[ 'id' ] );
+						$this->p->debug->log( 'getting the excerpt for post ID ' . $mod[ 'id' ] );
 					}
 
 					$excerpt_text = get_post_field( 'post_excerpt', $mod[ 'id' ] );
