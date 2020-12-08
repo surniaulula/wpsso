@@ -632,6 +632,7 @@ table.sucom-settings td div.multi_container.mixed_multi.single_line {
 table.sucom-settings td div.multi_number {
 	display:table-cell;
 	width:20px;
+	min-width:20px;
 	vertical-align:top;
 }
 

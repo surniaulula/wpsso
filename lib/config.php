@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.16.0-b.2',	// Plugin version.
+					'version'     => '8.16.0-rc.1',	// Plugin version.
 					'opt_version' => '771',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2086,11 +2086,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			/**
 			 * WordPress config.
 			 *
-			 * WordPress v4.4 was released on December 8, 2015.
+			 * Requires: WordPress v4.5.
+			 * Recommends: WordPress v5.5.3.
 			 */
 			'wp' => array(
 				'label'       => 'WordPress',
-				'min_version' => '4.4',		// Hard limit - deactivate the plugin when activating.
+				'min_version' => '4.5',		// Hard limit - deactivate the plugin when activating.
 				'rec_version' => '5.5.3',	// Soft limit - issue warning if lower version found.
 				'version_url' => 'https://codex.wordpress.org/Supported_Versions?nocache=1',
 				'tb_iframe'   => array(		// Thickbox iframe.

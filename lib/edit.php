@@ -70,7 +70,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 
 			$og_types         = $this->p->og->get_og_types_select();
 			$schema_types     = $this->p->schema->get_schema_types_select( $context = 'meta' );
-			$primary_terms    = $this->p->post->get_primary_terms( $mod );
+			$primary_terms    = $this->p->post->get_primary_terms( $mod, $tax_slug = 'category' );
 			$article_sections = $this->p->util->get_article_sections();
 
 			/**
@@ -144,7 +144,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					'content'  => $form->get_select( 'og_type', $og_types, $css_class = 'og_type', $css_id = '',
 						$is_assoc = true, $is_disabled = false, $selected = true, $event_names = array( 'on_change_unhide_rows' ) ),
 				),
-				'primary_term_id' => ! empty( $primary_terms ) ? array(
+				'primary_term_id' => ! empty( $primary_terms ) ? array(	// Show the option if we have post category terms.
 					'th_class' => 'medium',
 					'label'    => _x( 'Primary Category', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-primary_term_id',
