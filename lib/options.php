@@ -327,7 +327,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					return 'img_url';
 
 				/**
-				 * Strip leading urls off facebook usernames.
+				 * Strip leading URLs off facebook usernames.
 				 */
 				case 'fb_admins':
 
@@ -1080,7 +1080,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			/**
 			 * If there's no image ID, then reset the image ID library prefix to its default value. If an image ID is
-			 * used, then remove the image url (only one option can be defined). Use isset() to check for array keys
+			 * used, then remove the image URL (only one option can be defined). Use isset() to check for array keys
 			 * since this method is also called to sanitize meta options.
 			 */
 			foreach ( array( 'og_def' ) as $opt_pre ) {
@@ -1291,7 +1291,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		}
 
 		/**
-		 * Update the width / height of remote image urls.
+		 * Update the width / height of remote image URLs.
 		 */
 		private function refresh_image_url_sizes( array &$opts ) {
 
@@ -1797,7 +1797,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					break;
 
 				/**
-				 * Strip leading urls off facebook usernames.
+				 * Strip leading URLs off facebook usernames.
 				 */
 				case 'url_base':
 

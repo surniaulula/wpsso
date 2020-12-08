@@ -265,7 +265,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 					}
 
 					/**
-					 * Maybe delete shortened urls.
+					 * Maybe delete shortened URLs.
 					 */
 					if ( ! $clear_short ) {							// If not clearing short URLs.
 

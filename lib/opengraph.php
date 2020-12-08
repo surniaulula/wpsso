@@ -703,7 +703,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'getting names / urls for article:author meta tags' );
+						$this->p->debug->log( 'getting names / URLs for article:author meta tags' );
 					}
 
 					if ( $mod[ 'post_author' ] ) {
@@ -1383,7 +1383,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			} else {
 
 				/**
-				 * get_og_images() provides filter hooks for additional image ids and urls.
+				 * get_og_images() provides filter hooks for additional image IDs and URLs.
 				 *
 				 * Unless $md_pre is 'none', get_og_images() will fallback to using the 'og' custom meta.
 				 */

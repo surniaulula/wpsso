@@ -764,7 +764,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: image url is empty' );
+					$this->p->debug->log( 'exiting early: image URL is empty' );
 				}
 
 				return $local_cache[ $image_url ] = $def_image_info;	// Stop here.
@@ -773,7 +773,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: invalid image url = '.$image_url );
+					$this->p->debug->log( 'exiting early: invalid image URL = '.$image_url );
 				}
 
 				return $local_cache[ $image_url ] = $def_image_info;	// Stop here.

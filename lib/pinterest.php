@@ -211,14 +211,14 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'image url for pinterest is empty' );
+					$this->p->debug->log( 'image URL for pinterest is empty' );
 				}
 
 			} else {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'adding image url for pinterest = ' . $image_url );
+					$this->p->debug->log( 'adding image URL for pinterest = ' . $image_url );
 				}
 
 				$data_pin_desc = $this->p->page->get_description( $this->p->options[ 'p_img_desc_max_len' ],

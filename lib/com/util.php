@@ -1239,14 +1239,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function update_prot( $url = '' ) {
 
-			if ( 0 === strpos( $url, '/' ) ) { // Skip relative urls.
+			if ( 0 === strpos( $url, '/' ) ) { // Skip relative URLs.
 
 				return $url;
 			}
 
 			$prot_slash = self::get_prot() . '://';
 
-			if ( 0 === strpos( $url, $prot_slash ) ) { // Skip correct urls.
+			if ( 0 === strpos( $url, $prot_slash ) ) { // Skip correct URLs.
 
 				return $url;
 			}
@@ -3793,7 +3793,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Used to decode Facebook video urls.
+		 * Used to decode Facebook video URLs.
 		 */
 		public static function replace_unicode_escape( $str ) {
 

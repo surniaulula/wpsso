@@ -200,7 +200,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			if ( ! empty( $post_id ) ) {
 
 				/**
-				 * get_og_images() provides filter hooks for additional image ids and urls.
+				 * get_og_images() provides filter hooks for additional image IDs and URLs.
 				 *
 				 * Unless $md_pre is 'none', get_og_images() will fallback to using the 'og' custom meta.
 				 */
@@ -499,7 +499,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					switch ( $attr_name ) {
 
 						/**
-						 * WordPress media library image id.
+						 * WordPress media library image ID.
 						 */
 						case 'data-wp-pid':
 
@@ -582,7 +582,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							}
 
 							/**
-							 * Check for image id in class for old content w/o the data-wp-pid attribute.
+							 * Check for image ID in class for old content w/o the data-wp-pid attribute.
 							 */
 							if ( preg_match( '/class="[^"]+ wp-image-([0-9]+)/', $tag_value, $match ) ) {
 
@@ -631,7 +631,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 								if ( $this->p->debug->enabled ) {
 
-									$this->p->debug->log( 'returned / fetched image url size: ' . 
+									$this->p->debug->log( 'returned / fetched image URL size: ' . 
 										$mt_single_image[ 'og:image:width' ] . 'x' . $mt_single_image[ 'og:image:height' ] );
 								}
 
@@ -757,7 +757,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'using default image url: ' . $def_img[ 'url' ] );
+					$this->p->debug->log( 'using default image URL: ' . $def_img[ 'url' ] );
 				}
 
 				$mt_single_image = array(
@@ -882,7 +882,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'ngg module is not available: image id ' . $attr_value . ' ignored' );
+						$this->p->debug->log( 'ngg module is not available: image ID ' . $attr_value . ' ignored' );
 					}
 
 					return self::reset_image_src_args();
@@ -1819,7 +1819,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'returned / fetched video image url size: ' . 
+							$this->p->debug->log( 'returned / fetched video image URL size: ' . 
 								$mt_single_video[ 'og:image:width' ] . 'x' . $mt_single_video[ 'og:image:height' ] );
 						}
 
@@ -2021,7 +2021,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		}
 
 		/**
-		 * $img_mixed can be an image id or URL.
+		 * $img_mixed can be an image ID or URL.
 		 *
 		 * $img_lib can be 'Media Library', 'NextGEN Gallery', 'Content', etc.
 		 */

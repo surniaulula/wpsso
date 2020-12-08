@@ -79,7 +79,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			$info[ 'plugin_id' ] = $plugin_id = isset( $info[ 'plugin_id' ] ) ? $info[ 'plugin_id' ] : $this->p->id;
 
 			/**
-			 * Get the array of plugin urls (download, purchase, etc.).
+			 * Get the array of plugin URLs (download, purchase, etc.).
 			 */
 			$url = isset( $this->p->cf[ 'plugin' ][ $plugin_id ][ 'url' ] ) ? $this->p->cf[ 'plugin' ][ $plugin_id ][ 'url' ] : array();
 
