@@ -42,13 +42,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
-			 * WP Retina 2x.
-			 */
-			if ( ! empty( $this->p->avail[ 'media' ][ 'wp-retina-2x' ] ) ) {
-
-				add_filter( 'option_wr2x_ignore_sizes', array( $this, 'update_wr2x_ignore_sizes' ), 10, 1 );
-			}
+			$this->common_hooks();
 
 			if ( is_admin() ) {
 
@@ -57,6 +51,17 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			} else {
 
 				$this->front_end_hooks();
+			}
+		}
+
+		public function common_hooks() {
+
+			/**
+			 * WP Retina 2x.
+			 */
+			if ( ! empty( $this->p->avail[ 'media' ][ 'wp-retina-2x' ] ) ) {
+
+				add_filter( 'option_wr2x_ignore_sizes', array( $this, 'update_wr2x_ignore_sizes' ), 10, 1 );
 			}
 		}
 
