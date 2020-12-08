@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 8.16.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-12-07 16:59-0800\n"
-"PO-Revision-Date: 2020-12-07 17:09-0800\n"
+"POT-Creation-Date: 2020-12-08 06:22-0800\n"
+"PO-Revision-Date: 2020-12-08 06:22-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2882,7 +2882,7 @@ msgstr "La <a href=\"%1$s\">fonction PHP %2$s</a> n'est pas disponible."
 msgid "Please contact your hosting provider to have the missing PHP function installed."
 msgstr "SVP contacter votre hébergeur pour installer la fonction PHP manquante."
 
-#: gettext/gettext-lib-pro.php:165 lib/post.php:1129
+#: gettext/gettext-lib-pro.php:165 lib/post.php:1134
 #: lib/pro/media/youtube.php:187
 msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
 msgstr "Erreur lors de la récupération du contenu de <a href=\"%1$s\">%1$s</a>."
@@ -3484,7 +3484,7 @@ msgstr "Privilèges insuffisants pour modifier les options de réseau."
 msgid "Network plugin settings have been saved."
 msgstr "Les réglages réseau ont été sauvegardés."
 
-#: lib/admin.php:1124 lib/post.php:909 lib/term.php:686 lib/user.php:682
+#: lib/admin.php:1124 lib/post.php:914 lib/term.php:691 lib/user.php:687
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr "La validation du jeton nonce pour l'action %1$s \"%2$s\" a échoué."
 
@@ -3513,8 +3513,8 @@ msgid "A background task will begin shortly to add the %s role to content creato
 msgstr "Une tâche en arrière-plan va commencer sous peu pour ajouter le rôle %s aux créateurs de contenu."
 
 #: lib/admin.php:1188 lib/admin.php:1199 lib/messages.php:943
-#: lib/submenu/tools.php:58 lib/submenu/tools.php:103 lib/user.php:52
-#: lib/user.php:1528 lib/user.php:1636 lib/user.php:1767
+#: lib/submenu/tools.php:58 lib/submenu/tools.php:103 lib/user.php:57
+#: lib/user.php:1533 lib/user.php:1641 lib/user.php:1772
 msgctxt "user role"
 msgid "Person"
 msgstr "Personne"
@@ -6817,128 +6817,128 @@ msgctxt "option label"
 msgid "Pinterest Pin It"
 msgstr "Pinterest Pin It"
 
-#: lib/post.php:228
+#: lib/post.php:233
 msgctxt "module name"
 msgid "post"
 msgstr "article"
 
-#: lib/post.php:562 lib/register.php:347 lib/term.php:486 lib/user.php:462
+#: lib/post.php:567 lib/register.php:347 lib/term.php:491 lib/user.php:467
 #: lib/util.php:847 lib/util.php:3384
 msgid "%s warning:"
 msgstr "Alerte %s:"
 
-#: lib/post.php:563 lib/term.php:487 lib/user.php:464 lib/util.php:849
+#: lib/post.php:568 lib/term.php:492 lib/user.php:469 lib/util.php:849
 #: lib/util.php:3386
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr "supérieur au max recommandé de %1$0.3f secs"
 
-#: lib/post.php:564
+#: lib/post.php:569
 msgid "Slow query detected - get_posts() took %1$0.3f secs to get the children of post ID %2$d (%3$s)."
 msgstr "Requête lente détectée - get_posts() a pris %1$0.3f secs pour obtenir les enfants de l'ID d'article %2$d (%3$s)."
 
-#: lib/post.php:845 lib/post.php:1452 lib/schema.php:3284 lib/term.php:640
-#: lib/user.php:635
+#: lib/post.php:850 lib/post.php:1457 lib/schema.php:3284 lib/term.php:645
+#: lib/user.php:640
 msgid "checking meta tags"
 msgstr "vérification des balises méta"
 
-#: lib/post.php:1047
+#: lib/post.php:1052
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr "Vérification de balises méta en double pour %1$s..."
 
-#: lib/post.php:1078
+#: lib/post.php:1083
 msgid "The webpage HTML retrieved from %1$s is %2$s bytes."
 msgstr "L'HTML de la page Web récupérée de %1$s est %2$s octets."
 
-#: lib/post.php:1080
+#: lib/post.php:1085
 msgid "This exceeds the maximum limit of %1$s bytes imposed by the Google crawler."
 msgstr "Cela dépasse la limite maximale de %1$s octets imposée par le robot d'exploration de Google."
 
-#: lib/post.php:1081
+#: lib/post.php:1086
 msgid "If you do not reduce the webpage HTML size, Google will refuse to crawl this webpage."
 msgstr "Si vous ne réduisez pas la taille du HTML de la page Web, Google refusera d'analyser cette page Web."
 
-#: lib/post.php:1110
+#: lib/post.php:1115
 msgid "Retrieving the webpage HTML for %1$s took %2$s seconds."
 msgstr "Récupérer l'HTML de la page Web pour %1$s a pris %2$s secondes."
 
-#: lib/post.php:1112
+#: lib/post.php:1117
 msgid "This exceeds the recommended limit of %1$s seconds (crawlers often time-out after %2$s seconds)."
 msgstr "Cela dépasse le délai recommandé de %1$s secondes (plusieurs crawlers déconnectent après %2$s secondes)."
 
-#: lib/post.php:1114
+#: lib/post.php:1119
 msgid "Please consider improving the speed of your site."
 msgstr "SVP envisager d'améliorer la vitesse de votre site."
 
-#: lib/post.php:1115
+#: lib/post.php:1120
 msgid "As an added benefit, a faster site will also improve ranking in search results."
 msgstr "Comme avantage supplémentaire, un site plus rapide améliore également le classement dans les résultats de recherche."
 
-#: lib/post.php:1143
+#: lib/post.php:1148
 msgid "An %1$s tag was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr "Une balise %1$s est introuvable dans <a href=\"%2$s\">%2$s</a>."
 
-#: lib/post.php:1158
+#: lib/post.php:1163
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr "Aucune balises HTML %1$s ont été trouvées dans <a href=\"%2$s\">%2$s</a>."
 
-#: lib/post.php:1175
+#: lib/post.php:1180
 msgid "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr "Une section de balises méta %2$s n'a pas été trouvée dans <a href=\"%1$s\">%1$s</a> &mdash; peut-être qu'une extension ou un service de mise en cache de page Web doit être actualisé?"
 
-#: lib/post.php:1202
+#: lib/post.php:1207
 msgid "The PHP preg_replace() function failed to remove the %1$s meta tag section &mdash; this could be an indication of a problem with PHP's PCRE library or a webpage filter corrupting the %1$s meta tags."
 msgstr "La fonction PHP preg_replace() n'a pas réussi à supprimer la section de balises méta %1$s &mdash; ceci pourrait être une indication d'un problème avec la bibliothèque PHP PCRE ou un filtre de page Web qui corrompt les balises méta de %1$s."
 
-#: lib/post.php:1247
+#: lib/post.php:1252
 msgid "The webpage at %1$s does not include any Schema JSON-LD script(s)."
 msgstr "La page Web à %1$s n'inclut aucun script(s) de Schéma JSON-LD."
 
-#: lib/post.php:1249
+#: lib/post.php:1254
 msgid "Complete and accurate Schema JSON-LD markup is highly recommended for better ranking and click-through rates in search results."
 msgstr "Un balisage de Schéma JSON-LD complet et précis est vivement recommandé pour un meilleur classement et taux de clic dans les résultats de recherche."
 
-#: lib/post.php:1251
+#: lib/post.php:1256
 msgid "Consider activating the %1$s add-on to include Schema JSON-LD markup for Google Rich Results."
 msgstr "Considérez activer l'ajout %1$s pour inclure le balisage de Schéma JSON-LD pour des résultats enrichis Google."
 
-#: lib/post.php:1272
+#: lib/post.php:1277
 msgid "Conflict detected &mdash; your theme or another plugin is adding %1$s to the head section of this webpage."
 msgstr "Conflit détecté &mdash; votre thème ou une autre extension ajoute une balise %1$s à l'entête de cette page Web."
 
-#: lib/post.php:1290
+#: lib/post.php:1295
 msgid "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> (no \"link\" or \"meta\" HTML tags were found)."
 msgstr "Une erreur s'est produite lors de l'analyse des balises méta de tête pour <a href=\"%1$s\">%1$s</a> (aucune balise HTML \"link\" ou \"meta\" ont été trouvée)."
 
-#: lib/post.php:1290
+#: lib/post.php:1295
 msgid "The webpage may contain HTML syntax errors preventing PHP from successfully parsing the HTML document &mdash; please review the <a href=\"%1$s\">W3C Markup Validator</a> results and correct any syntax errors."
 msgstr "La page Web peut contenir des erreurs de syntaxe HTML empêchant PHP d'analyser correctement le document HTML &mdash; veuillez consulter les résultats du <a href=\"%1$s\"> validateur de balisage W3C </a> et corriger les erreurs de syntaxe."
 
-#: lib/post.php:1328
+#: lib/post.php:1333
 msgid "%1$d duplicate meta tags found."
 msgstr "%1$d balises méta en double trouvées."
 
-#: lib/post.php:1330
+#: lib/post.php:1335
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr "Vérification %1$d de %2$d a échoué (réessaie à suivre)..."
 
-#: lib/post.php:1338
+#: lib/post.php:1343
 msgid "Awesome! No duplicate meta tags found."
 msgstr "Génial! Aucune balise méta dupliquée trouvée."
 
-#: lib/post.php:1342
+#: lib/post.php:1347
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr "L'option de débogage est activée - cette vérification sera répétée..."
 
-#: lib/post.php:1346
+#: lib/post.php:1351
 msgid "Check %1$d of %2$d successful..."
 msgstr "Vérification %1$d de %2$d réussi..."
 
 # Ignore the post type to avoid gender issues in the French translation.
-#: lib/post.php:1505
+#: lib/post.php:1510
 msgid "Save a draft or publish to display these options."
 msgstr "Enregistrez un brouillon ou publiez pour afficher ces options."
 
-#: lib/post.php:1747
+#: lib/post.php:1752
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr "Privilèges insuffisants pour enregistrer les réglages pour %1$s ID %2$s."
 
@@ -7576,16 +7576,16 @@ msgctxt "submit button"
 msgid "Reset Metabox Layout"
 msgstr "Réinitialiser la disposition des métabox"
 
-#: lib/term.php:176
+#: lib/term.php:181
 msgctxt "module name"
 msgid "term"
 msgstr "terme"
 
-#: lib/term.php:488
+#: lib/term.php:493
 msgid "Slow query detected - get_posts() took %1$0.3f secs to get posts for term ID %2$d in taxonomy %3$s (%4$s)."
 msgstr "Requête lente détectée - get_posts() a pris %1$0.3f secs pour obtenir les articles de taxonomie %3$s de l'ID du terme %2$d (%4$s)."
 
-#: lib/term.php:887
+#: lib/term.php:892
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr "Privilèges insuffisants pour enregistrer les réglages pour l'ID du terme %1$s."
 
@@ -7625,61 +7625,61 @@ msgstr "Prix"
 msgid "Availability"
 msgstr "Disponibilité"
 
-#: lib/user.php:178
+#: lib/user.php:183
 msgctxt "module name"
 msgid "user"
 msgstr "utilisateur "
 
-#: lib/user.php:466
+#: lib/user.php:471
 msgid "Slow query detected - get_posts() took %1$0.3f secs to get posts authored by user ID %2$d (%3$s)."
 msgstr "Requête lente détectée - get_posts() a pris %1$0.3f secs pour obtenir les articles d'auteur pour l'ID d'utilisateur %2$d (%3$s)."
 
-#: lib/user.php:895
+#: lib/user.php:900
 msgid "(not a Facebook Pages URL)"
 msgstr "(pas un URL de Pages Facebook)"
 
-#: lib/user.php:981
+#: lib/user.php:986
 msgid "AIM"
 msgstr "AIM"
 
-#: lib/user.php:982
+#: lib/user.php:987
 msgid "Jabber / Google Talk"
 msgstr "Jabber / Google Talk"
 
-#: lib/user.php:983
+#: lib/user.php:988
 msgid "Yahoo Messenger"
 msgstr "Yahoo Messenger"
 
-#: lib/user.php:1323
+#: lib/user.php:1328
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr "Privilèges insuffisants pour enregistrer les réglages pour l'ID d'utilisateur %1$s."
 
-#: lib/user.php:1547
+#: lib/user.php:1552
 msgid "Aborting task to add the %1$s role to content creators - another identical task is still running."
 msgstr "Abandon de la tâche pour ajouter le rôle %1$s aux créateurs de contenu - une autre tâche identique est toujours en cours d'exécution."
 
-#: lib/user.php:1562
+#: lib/user.php:1567
 msgid "A task to add the %1$s role for content creators was started at %2$s."
 msgstr "Une tâche pour ajouter le rôle %1$s aux créateurs de contenu a démarré à %2$s."
 
-#: lib/user.php:1604
+#: lib/user.php:1609
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr "Le rôle %1$s a été ajouté à %2$d créateurs de contenu."
 
-#: lib/user.php:1606 lib/user.php:1709 lib/util-cache.php:158
+#: lib/user.php:1611 lib/user.php:1714 lib/util-cache.php:158
 #: lib/util-cache.php:682
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr "Le temps d'exécution total pour cette tâche était %0.3f secondes."
 
-#: lib/user.php:1655
+#: lib/user.php:1660
 msgid "Aborting task to remove the %1$s role from all users - another identical task is still running."
 msgstr "Abandon de la tâche pour supprimer le rôle %1$s de tous les utilisateurs - une autre tâche identique est toujours en cours d'exécution."
 
-#: lib/user.php:1670
+#: lib/user.php:1675
 msgid "A task to remove the %1$s role from all users was started at %2$s."
 msgstr "Une tâche pour supprimer le rôle %1$s de tous les utilisateurs a démarré à %2$s."
 
-#: lib/user.php:1707
+#: lib/user.php:1712
 msgid "The %1$s role has been removed from %2$d content creators."
 msgstr "Le rôle %1$s a été supprimé de %2$d créateurs de contenu."
 
