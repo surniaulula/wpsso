@@ -2072,6 +2072,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		 * Since WPSSO Core v8.15.0.
 		 *
 		 * Returns a term ID, or false if a term for the $tax_slug is not found.
+		 *
+		 * Called by WpssoWpMeta->get_defaults().
 		 */
 		public function get_primary_term_id( array $mod, $tax_slug = 'category' ) {
 
@@ -2126,6 +2128,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		 * Since WPSSO Core v8.16.0.
 		 *
 		 * Returns an associative array of term IDs and names.
+		 *
+		 * Called by $this->get_primary_term_id() and WpssoEdit->filter_metabox_sso_edit_rows(),
 		 */
 		public function get_primary_terms( array $mod, $tax_slug = 'category' ) {
 
