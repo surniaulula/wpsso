@@ -9,7 +9,7 @@ Assets URI: https://surniaulula.github.io/wpsso/assets/
 Tags: schema, open graph, twitter, social sharing, rich results, linkedin, facebook, pinterest, google, meta tags, rich pins, structured data, seo
 Contributors: jsmoriss
 Requires PHP: 5.6
-Requires At Least: 4.4
+Requires At Least: 4.5
 Tested Up To: 5.6
 WC Tested Up To: 4.7.1
 Stable Tag: 8.15.0
@@ -318,7 +318,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.16.0-b.2 (2020/12/08)**
+**Version 8.16.0-rc.1 (2020/12/08)**
 
 * **New Features**
 	* None.
@@ -332,14 +332,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed a duplicate `meta name="author"` meta tag from SEOPress.
 * **Developer Notes**
-	* Added a new `wpsso_get_post_primary_category()` function.
+	* Refactored the `WpssoPost->get_primary_term_id()` method.
 	* Added a new `WpssoPost->get_primary_terms()` method.
+	* Added a new `wpsso_get_post_primary_category()` function.
 	* Added a new 'wpsso_primary_tax_slug' filter.
 	* Added a new 'wpsso_primary_term_id' filter.
 	* Added a new 'wpsso_primary_terms' filter.
 * **Requires At Least**
 	* PHP v5.6.
-	* WordPress v4.4.
+	* WordPress v4.5.
 
 **Version 8.15.0 (2020/12/05)**
 
@@ -803,7 +804,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.16.0-b.2 =
+= 8.16.0-rc.1 =
 
 (2020/12/08) Added a new "Primary Category" option in the Document SSO metabox.
 
