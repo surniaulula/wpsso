@@ -422,6 +422,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 		/**
 		 * Return an array of post IDs for a given $mod object. This method returns posts in child terms as well.
+		 *
+		 * Called by WpssoWpMeta->get_posts_mods().
 		 */
 		public function get_posts_ids( array $mod, array $posts_args = array() ) {
 

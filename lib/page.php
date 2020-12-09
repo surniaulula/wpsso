@@ -392,7 +392,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return $mod;
 		}
 
-		public function get_posts_mods( array $mod, $page_type_id, $is_main, array $posts_args = array() ) {
+		public function get_posts_mods( array $mod, array $posts_args = array() ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -490,7 +490,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			$page_posts_mods = apply_filters( 'wpsso_json_page_posts_mods', $page_posts_mods, $mod, $page_type_id, $is_main );
+			$page_posts_mods = apply_filters( 'wpsso_json_page_posts_mods', $page_posts_mods, $mod );
 
 			if ( $wpsso->debug->enabled ) {
 

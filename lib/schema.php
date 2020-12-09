@@ -2110,7 +2110,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 			}
 
-			$page_posts_mods = $wpsso->page->get_posts_mods( $mod, $page_type_id, $is_main );
+			$page_posts_mods = $wpsso->page->get_posts_mods( $mod );
 
 			if ( empty( $page_posts_mods ) ) {
 
@@ -2348,7 +2348,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->mark( 'adding posts data' );	// Begin timer.
 			}
 
-			$page_posts_mods = $wpsso->page->get_posts_mods( $mod, $page_type_id, $is_main );
+			$page_posts_mods = $wpsso->page->get_posts_mods( $mod );
 
 			if ( empty( $page_posts_mods ) ) {
 

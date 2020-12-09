@@ -409,6 +409,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		/**
 		 * Return an array of post IDs for a given $mod object.
+		 *
+		 * Called by WpssoWpMeta->get_posts_mods().
 		 */
 		public function get_posts_ids( array $mod, array $posts_args = array() ) {
 
