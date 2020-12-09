@@ -108,11 +108,13 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'required call to get_page_mod()' );
+				$this->p->debug->log( 'required call to WpssoPage->get_mod()' );
 			}
 
-			$mod           = $this->p->util->get_page_mod( $use_post );
-			$page_type_id  = $this->p->schema->get_mod_schema_type( $mod, $get_id = true );
+			$mod = $this->p->page->get_mod( $use_post );
+
+			$page_type_id = $this->p->schema->get_mod_schema_type( $mod, $get_id = true );
+
 			$page_type_url = $this->p->schema->get_schema_type_url( $page_type_id );
 
 			if ( empty( $page_type_url ) ) {

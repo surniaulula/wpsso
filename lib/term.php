@@ -171,7 +171,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				return $local_cache[ $term_id ];
 			}
 
-			$mod = parent::$mod_defaults;
+			$mod = self::get_mod_defaults();
 
 			/**
 			 * Common elements.
@@ -182,7 +182,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$mod[ 'obj' ]         =& $this;
 
 			/**
-			 * Term elements.
+			 * WpssoTerm elements.
 			 */
 			$mod[ 'is_term' ]  = true;
 			$mod[ 'tax_slug' ] = SucomUtil::get_term_object( $mod[ 'id' ], (string) $tax_slug, 'taxonomy' );
@@ -405,6 +405,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					$term_ids = get_terms( $terms_args );
 
 				} else {
+
 					$term_ids = get_terms( $name, $terms_args );
 				}
 
@@ -420,49 +421,26 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		/**
-		 * Return an array of post IDs for a given $mod object.
-		 *
-		 * Note that this method returns posts in child terms as well.
+		 * Return an array of post IDs for a given $mod object. This method returns posts in child terms as well.
 		 */
-		public function get_posts_ids( array $mod, $ppp = null, $paged = null, array $posts_args = array() ) {
+		public function get_posts_ids( array $mod, array $posts_args = array() ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
 			}
 
-			/**
-			 * $ppp = -1 for all posts.
-			 */
-			if ( null === $ppp ) {
-
-				$ppp = apply_filters( 'wpsso_posts_per_page', get_option( 'posts_per_page' ), $mod );
-			}
-
-			if ( null === $paged ) {
-
-				$paged = get_query_var( 'paged' );
-			}
-
-			if ( ! $paged > 1 ) {
-
-				$paged = 1;
-			}
-
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'calling get_posts() for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . 
-					' in taxonomy ' . $mod[ 'tax_slug' ] . ' (posts_per_page is ' . $ppp . ')' );
+				$this->p->debug->log( 'calling get_posts() for ' . $mod[ 'name' ] . ' ID ' . $mod[ 'id' ] .  ' in taxonomy ' . $mod[ 'tax_slug' ] );
 			}
 
 			$posts_args = array_merge( array(
 				'has_password'   => false,
 				'order'          => 'DESC',	// Newest first.
 				'orderby'        => 'date',
-				'paged'          => $paged,
 				'post_status'    => 'publish',	// Only 'publish', not 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', or 'trash'.
 				'post_type'      => 'any',	// Return post, page, or any custom post type.
-				'posts_per_page' => $ppp,
 				'tax_query'      => array(
 				        array(
 						'taxonomy'         => $mod[ 'tax_slug' ],

@@ -1968,10 +1968,10 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'optional call to get_page_mod()' );
+					$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
 				}
 
-				$mod = $this->get_page_mod( $mod );
+				$mod = $this->p->page->get_mod( $mod );
 			}
 
 			$replace_vars = $this->get_inline_vars();
@@ -2018,15 +2018,15 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'optional call to get_page_mod()' );
+					$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
 				}
 
-				$mod = $this->get_page_mod( $mod );
+				$mod = $this->p->page->get_mod( $mod );
 			}
 
-			$add_page = isset( $atts[ 'add_page' ] ) ? $atts[ 'add_page' ] : true;
-
 			if ( empty( $atts[ 'url' ] ) ) {
+
+				$add_page = isset( $atts[ 'add_page' ] ) ? $atts[ 'add_page' ] : true;
 
 				$sharing_url = $this->get_sharing_url( $mod, $add_page );
 
@@ -2128,191 +2128,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * Determine and return the post/user/term module array.
+		 * Deprecated since 2020/12/09.
 		 */
 		public function get_page_mod( $use_post = false, $mod = false, $wp_obj = false ) {
 
-			if ( ! is_array( $mod ) ) {
-
-				$mod = array();
-
-			} elseif ( isset( $mod[ 'obj' ] ) && is_object( $mod[ 'obj' ] ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: module object is defined' );
-				}
-
-				return $mod;
-			}
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'use_post is ' . self::get_use_post_string( $use_post ) );
-			}
-
-			/**
-			 * Check for known WP objects and set the object module name and its object ID.
-			 */
-			if ( is_object( $wp_obj ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'wp_obj argument is ' . get_class( $wp_obj ) . ' object' );
-				}
-
-				switch ( get_class( $wp_obj ) ) {
-
-					case 'WP_Post':
-
-						$mod[ 'name' ] = 'post';
-						$mod[ 'id' ]   = $wp_obj->ID;
-
-						break;
-
-					case 'WP_Term':
-
-						$mod[ 'name' ] = 'term';
-						$mod[ 'id' ]   = $wp_obj->term_id;
-
-						break;
-
-					case 'WP_User':
-
-						$mod[ 'name' ] = 'user';
-						$mod[ 'id' ]   = $wp_obj->ID;
-
-						break;
-				}
-			}
-
-			if ( empty( $mod[ 'name' ] ) ) {
-
-				if ( self::is_post_page( $use_post ) ) {	// $use_post = true | false | post_id
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'is_post_page is true' );
-					}
-
-					$mod[ 'name' ] = 'post';
-
-				} elseif ( self::is_term_page() ) {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'is_term_page is true' );
-					}
-
-					$mod[ 'name' ] = 'term';
-
-				} elseif ( self::is_user_page() ) {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'is_user_page is true' );
-					}
-
-					$mod[ 'name' ] = 'user';
-
-				} else {
-					$mod[ 'name' ] = false;
-				}
-			}
-
-			if ( empty( $mod[ 'id' ] ) ) {
-
-				switch ( $mod[ 'name' ] ) {
-
-					case 'post':
-
-						$mod[ 'id' ] = self::get_post_object( $use_post, 'id' );	// $use_post = true | false | post_id
-
-						break;
-
-					case 'term':
-
-						$mod[ 'id' ] = self::get_term_object( false, '', 'id' );
-
-						break;
-
-					case 'user':
-
-						$mod[ 'id' ] = self::get_user_object( false, 'id' );
-
-						break;
-
-					default:
-
-						$mod[ 'id' ] = false;
-
-						break;
-				}
-			}
-
-			if ( ! empty( $mod[ 'name' ] ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'getting $mod array from ' . $mod[ 'name' ] . ' module object' );
-				}
-			}
-
-			switch ( $mod[ 'name' ] ) {
-
-				case 'post':
-
-					$mod = $this->p->post->get_mod( $mod[ 'id' ] );
-
-					break;
-
-				case 'term':
-
-					$mod = $this->p->term->get_mod( $mod[ 'id' ] );
-
-					break;
-
-				case 'user':
-
-					$mod = $this->p->user->get_mod( $mod[ 'id' ] );
-
-					break;
-
-				default:
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'module object is unknown: merging $mod defaults' );
-					}
-
-					$mod = array_merge( WpssoWpMeta::$mod_defaults, $mod );
-
-					break;
-			}
-
-			$mod[ 'use_post' ] = $use_post;
-
-			/**
-			 * The post module defines is_home_page, is_home_posts and is_home.
-			 *
-			 * If we don't have a module, then check if we're on the home posts page.
-			 */
-			if ( empty( $mod[ 'name' ] ) ) {
-
-				$mod[ 'is_home' ] = $mod[ 'is_home_posts' ] = is_home();
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'is_home and is_home_posts are ' . ( $mod[ 'is_home' ] ? 'true' : 'false' ) );
-				}
-			}
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log_arr( 'mod', $mod );
-			}
-
-			return $mod;
+			return $this->p->page->get_mod( $use_post, $mod, $wp_obj );
 		}
 
 		public function get_oembed_url( $mod = false, $format = 'json' ) {
@@ -2338,10 +2158,10 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'optional call to get_page_mod()' );
+					$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
 				}
 
-				$mod = $this->get_page_mod( $mod );
+				$mod = $this->p->page->get_mod( $mod );
 			}
 
 			if ( $mod[ 'is_post' ] ) {
@@ -2420,10 +2240,10 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'optional call to get_page_mod()' );
+					$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
 				}
 
-				$mod = $this->get_page_mod( $mod );
+				$mod = $this->p->page->get_mod( $mod );
 			}
 
 			if ( $mod[ 'is_post' ] ) {
@@ -2475,7 +2295,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( empty( $mod[ 'canonical_url' ] ) ) {
 
-				$url = $this->get_page_url( 'canonical', $mod, $add_page );
+				$url = $this->get_type_url( $type = 'canonical', $mod, $add_page );
 
 			} else {
 
@@ -2499,7 +2319,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( empty( $mod[ 'sharing_url' ] ) ) {
 
-				$url = $this->get_page_url( 'sharing', $mod, $add_page );
+				$url = $this->get_type_url( $type = 'sharing', $mod, $add_page );
 
 			} else {
 
@@ -2514,7 +2334,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 *
 		 * $mod = true | false | post_id | $mod array
 		 */
-		private function get_page_url( $type, $mod, $add_page ) {
+		private function get_type_url( $type, $mod, $add_page = true ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -2531,10 +2351,10 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'optional call to get_page_mod()' );
+					$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
 				}
 
-				$mod = $this->get_page_mod( $mod );
+				$mod = $this->p->page->get_mod( $mod );
 			}
 
 			/**
@@ -2560,7 +2380,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					$url = $this->check_url_string( get_post_type_archive_link( $mod[ 'post_type' ] ), 'post_type_archive' );
 
-				} elseif ( ! empty( $mod[ 'id' ] ) ) {	// Just in case.
+				} elseif ( $mod[ 'id' ] ) {	// Just in case.
 
 					if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
 
@@ -2609,35 +2429,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						$url = $this->check_url_string( $url, 'post permalink' );
 					}
-
-					if ( $add_page && get_query_var( 'page' ) > 1 && ! empty( $url ) ) {
-
-						global $wp_rewrite;
-
-						$post_obj = self::get_post_object( $mod[ 'id' ] );
-
-						$numpages = substr_count( $post_obj->post_content, '<!--nextpage-->' ) + 1;
-
-						if ( $numpages && get_query_var( 'page' ) <= $numpages ) {
-
-							if ( ! $wp_rewrite->using_permalinks() || false !== strpos( $url, '?' ) ) {
-
-								$url = add_query_arg( 'page', get_query_var( 'page' ), $url );
-
-							} else {
-
-								$url = user_trailingslashit( trailingslashit( $url ) . get_query_var( 'page' ) );
-							}
-						}
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'add page query url = ' . $url );
-						}
-					}
 				}
 
-				$url = apply_filters( 'wpsso_post_url', $url, $mod, $add_page );
+				$url = apply_filters( 'wpsso_post_url', $url, $mod );
 
 			} elseif ( $mod[ 'is_home' ] ) {
 
@@ -2647,7 +2441,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				} else {
 
-					$url = apply_filters( 'wpsso_home_url', home_url( '/' ), $mod, $add_page );
+					$url = apply_filters( 'wpsso_home_url', home_url( '/' ), $mod );
 
 					if ( $this->p->debug->enabled ) {
 
@@ -2677,7 +2471,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					}
 				}
 
-				$url = apply_filters( 'wpsso_term_url', $url, $mod, $add_page );
+				$url = apply_filters( 'wpsso_term_url', $url, $mod );
 
 			} elseif ( $mod[ 'is_user' ] ) {
 
@@ -2703,44 +2497,36 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					}
 				}
 
-				$url = apply_filters( 'wpsso_user_url', $url, $mod, $add_page );
+				$url = apply_filters( 'wpsso_user_url', $url, $mod );
 
-			/**
-			 * $mod[ 'is_search' ] = true will return the search page URL.
-			 *
-			 * $mod[ 'is_search' ] = false will skip this section, even if is_search() is true.
-			 */
-			} elseif ( ! empty( $mod[ 'is_search' ] ) || ( ! isset( $mod[ 'is_search' ] ) && is_search() ) ) {
+			} elseif ( $mod[ 'is_search' ] ) {
 
-				$url = $this->check_url_string( get_search_link(), 'search link' );
+				$url = $this->check_url_string( get_search_link( $mod[ 'query_vars' ][ 's' ] ), 'search link' );
 
-				$url = apply_filters( 'wpsso_search_url', $url, $mod, $add_page );
+				$url = apply_filters( 'wpsso_search_url', $url, $mod );
 
-			} elseif ( ! empty( $mod[ 'is_archive' ] ) || ( ! isset( $mod[ 'is_archive' ] ) && self::is_archive_page() ) ) {
+			} elseif ( $mod[ 'is_archive' ] ) {
 
-				if ( ! empty( $mod[ 'is_date' ] ) || ( ! isset( $mod[ 'is_date' ] ) && is_date() ) ) {
+				if ( $mod[ 'is_date' ] ) {
 
-					if ( ! empty( $mod[ 'is_year' ] ) || ( ! isset( $mod[ 'is_year' ] ) && is_year() ) ) {
+					if ( $mod[ 'is_year' ] ) {
 
-						$url = $this->check_url_string( get_year_link( get_query_var( 'year' ) ), 'year link' );
+						$url = $this->check_url_string( get_year_link( $mod[ 'query_vars' ][ 'year' ] ), 'year link' );
 
-					} elseif ( ! empty( $mod[ 'is_month' ] ) || ( ! isset( $mod[ 'is_month' ] ) && is_month() ) ) {
+					} elseif ( $mod[ 'is_month' ] ) {
 
-						$url = $this->check_url_string( get_month_link( get_query_var( 'year' ),
-							get_query_var( 'monthnum' ) ), 'month link' );
+						$url = $this->check_url_string( get_month_link( $mod[ 'query_vars' ][ 'year' ],
+							$mod[ 'query_vars' ][ 'monthnum' ] ), 'month link' );
 
-					} elseif ( ! empty( $mod[ 'is_day' ] ) || ( ! isset( $mod[ 'is_day' ] ) && is_day() ) ) {
+					} elseif ( $mod[ 'is_day' ] ) {
 
-						$url = $this->check_url_string( get_day_link( get_query_var( 'year' ),
-							get_query_var( 'monthnum' ), get_query_var( 'day' ) ), 'day link' );
+						$url = $this->check_url_string( get_day_link( $mod[ 'query_vars' ][ 'year' ],
+							$mod[ 'query_vars' ][ 'monthnum' ], $mod[ 'query_vars' ][ 'day' ] ), 'day link' );
 					}
 				}
 
-				$url = apply_filters( 'wpsso_archive_page_url', $url, $mod, $add_page );
+				$url = apply_filters( 'wpsso_archive_page_url', $url, $mod );
 
-			} else {
-
-				$url = $this->get_url_paged( $url, $mod, $add_page );
 			}
 
 			/**
@@ -2755,7 +2541,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					$this->p->debug->log( 'falling back to request url' );
 				}
 
-				$url = $this->get_request_url( $mod, $add_page );
+				$url = $this->get_request_url( $mod );
 			}
 
 			/**
@@ -2774,6 +2560,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				}
 			}
 
+			$url = $this->get_url_paged( $url, $mod, $add_page );
+
 			$url = apply_filters( 'wpsso_' . $type . '_url', $url, $mod, $add_page );
 
 			if ( ! empty( $cache_salt ) ) {
@@ -2784,7 +2572,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $url;
 		}
 
-		private function get_request_url( $mod, $add_page ) {
+		private function get_request_url() {
 
 			$url = self::get_prot() . '://' . $_SERVER[ 'SERVER_NAME' ] . $_SERVER[ 'REQUEST_URI' ];
 
@@ -2802,7 +2590,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				'gclid|pk_campaign|pk_kwd' .
 				')=[^&]*&?/i', '$1', $url );
 
-			$url = apply_filters( 'wpsso_server_request_url', $url, $mod, $add_page );
+			$url = apply_filters( 'wpsso_server_request_url', $url );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -2814,71 +2602,101 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 */
 			if ( false !== strpos( $url, '?' ) ) {
 
-				$cache_disabled = true;
-
-			} else {
-
-				$cache_disabled = false;
-			}
-
-			if ( apply_filters( 'wpsso_server_request_url_cache_disabled', $cache_disabled, $url, $mod, $add_page ) ) {
-
-				$this->disable_cache_filters( array( 'shorten_url_disabled' => '__return_true' ) );
+				$this->disable_cache_filters( array(
+					'shorten_url_disabled' => '__return_true',
+				) );
 			}
 
 			return $url;
 		}
 
-		private function get_url_paged( $url, $mod, $add_page ) {
+		private function get_url_paged( $url, array $mod, $add_page ) {
 
-			if ( empty( $url ) || empty( $add_page ) ) {
+			if ( empty( $url ) || empty( $add_page ) ) {	// Just in case.
 
-				return $url;
+				return $url;	// Nothing to do.
 			}
 
-			global $wpsso_paged;
 
-			if ( is_numeric( $add_page ) ) {
+			if ( $mod[ 'is_post' ] ) {
 
-				$paged = $add_page;
+				if ( $mod[ 'is_post_type_archive' ] ) {
 
-			} elseif ( is_numeric( $wpsso_paged ) ) {
+					// Nothing to do.
 
-				$paged = $wpsso_paged;
+				} elseif ( $mod[ 'id' ] ) {
+
+					if ( is_numeric( $add_page ) ) {
+
+						$page_in_page = $add_page;
+
+					} else {
+
+						$page_in_page = isset( $mod[ 'query_vars' ][ 'page' ] ) ? $mod[ 'query_vars' ][ 'page' ] : 1;
+					}
+
+					if ( $page_in_page > 1 ) {
+
+						global $wp_rewrite;
+
+						$post_obj = self::get_post_object( $mod[ 'id' ] );
+
+						$total_pages = substr_count( $post_obj->post_content, '<!--nextpage-->' ) + 1;
+
+						if ( $total_pages && $page_in_page <= $total_pages ) {
+
+							if ( ! $wp_rewrite->using_permalinks() || false !== strpos( $url, '?' ) ) {
+
+								$url = add_query_arg( 'page', $page_in_page, $url );
+
+							} else {
+
+								$url = user_trailingslashit( trailingslashit( $url ) . $page_in_page );
+							}
+						}
+					}
+				}
 
 			} else {
 
-				$paged = get_query_var( 'paged' );
-			}
+				if ( is_numeric( $add_page ) ) {
 
-			if ( $paged > 1 ) {
-
-				global $wp_rewrite;
-
-				if ( ! $wp_rewrite->using_permalinks() ) {
-
-					$url = add_query_arg( 'paged', $paged, $url );
+					$paged = $add_page;
 
 				} else {
-
-					if ( $mod[ 'is_home_page' ] ) {	// Static home page (have post ID).
-
-						$base = $wp_rewrite->using_index_permalinks() ? 'index.php/' : '/';
-						$url  = home_url( $base );
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'home_url for ' . $base . ' = ' . $url );
-						}
-					}
-
-					$url = user_trailingslashit( trailingslashit( $url ) . 
-						trailingslashit( $wp_rewrite->pagination_base ) . $paged );
+				
+					$paged = isset( $mod[ 'query_vars' ][ 'paged' ] ) ? $mod[ 'query_vars' ][ 'paged' ] : 1;
 				}
 
-				if ( $this->p->debug->enabled ) {
+				if ( $paged > 1 ) {
 
-					$this->p->debug->log( 'get url paged = ' . $url );
+					global $wp_rewrite;
+
+					if ( ! $wp_rewrite->using_permalinks() !== strpos( $url, '?' ) ) {
+	
+						$url = add_query_arg( 'paged', $paged, $url );
+	
+					} else {
+	
+						if ( $mod[ 'is_home_page' ] ) {	// Static home page (have post ID).
+	
+							$base = $wp_rewrite->using_index_permalinks() ? 'index.php/' : '/';
+	
+							$url = home_url( $base );
+	
+							if ( $this->p->debug->enabled ) {
+	
+								$this->p->debug->log( 'home_url for ' . $base . ' = ' . $url );
+							}
+						}
+	
+						$url = user_trailingslashit( trailingslashit( $url ) . trailingslashit( $wp_rewrite->pagination_base ) . $paged );
+					}
+	
+					if ( $this->p->debug->enabled ) {
+	
+						$this->p->debug->log( 'get url paged = ' . $url );
+					}
 				}
 			}
 

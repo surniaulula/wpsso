@@ -173,7 +173,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				return $local_cache[ $user_id ];
 			}
 
-			$mod = parent::$mod_defaults;
+			$mod = self::get_mod_defaults();
 
 			/**
 			 * Common elements.
@@ -184,7 +184,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$mod[ 'obj' ]         =& $this;
 
 			/**
-			 * User elements.
+			 * WpssoUser elements.
 			 */
 			$mod[ 'is_user' ] = true;
 
@@ -410,42 +410,24 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		/**
 		 * Return an array of post IDs for a given $mod object.
 		 */
-		public function get_posts_ids( array $mod, $ppp = null, $paged = null, array $posts_args = array() ) {
+		public function get_posts_ids( array $mod, array $posts_args = array() ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
 			}
 
-			if ( null === $ppp ) {
-
-				$ppp = apply_filters( 'wpsso_posts_per_page', get_option( 'posts_per_page' ), $mod );
-			}
-
-			if ( null === $paged ) {
-
-				$paged = get_query_var( 'paged' );
-			}
-
-			if ( ! $paged > 1 ) {
-
-				$paged = 1;
-			}
-
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'calling get_posts() for posts authored by ' . 
-					$mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' (posts_per_page is ' . $ppp . ')' );
+				$this->p->debug->log( 'calling get_posts() for posts authored by ' . $mod[ 'name' ] . ' ID ' . $mod[ 'id' ] );
 			}
 
 			$posts_args = array_merge( array(
 				'has_password'   => false,
 				'order'          => 'DESC',		// Newest first.
 				'orderby'        => 'date',
-				'paged'          => $paged,
 				'post_status'    => 'publish',		// Only 'publish', not 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', or 'trash'.
 				'post_type'      => 'any',		// Return post, page, or any custom post type.
-				'posts_per_page' => $ppp,
 				'author'         => $mod[ 'id' ],
 			), $posts_args, array( 'fields' => 'ids' ) );	// Return an array of post IDs.
 

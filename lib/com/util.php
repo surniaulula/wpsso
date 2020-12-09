@@ -2930,36 +2930,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			);
 		}
 
+		/**
+		 * Deprecated on 2020/12/09.
+		 */
 		public static function is_archive_page() {
 
-			$ret = false;
-
-			if ( is_archive() ) {	// False for search page.
-
-				$ret = true;
-
-			} elseif ( is_admin() ) {
-
-				$screen_base = self::get_screen_base();
-
-				if ( false !== $screen_base ) {
-
-					switch ( $screen_base ) {
-
-						case 'edit':		// Post/page list.
-
-						case 'edit-tags':	// Categories/tags list.
-
-						case 'users':		// Users list.
-
-							$ret = true;
-
-							break;
-					}
-				}
-			}
-
-			return apply_filters( 'sucom_is_archive_page', $ret );
+			return apply_filters( 'sucom_is_archive_page', is_archive() );
 		}
 
 		public static function is_home_page( $use_post = false ) {

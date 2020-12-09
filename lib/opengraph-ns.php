@@ -70,10 +70,10 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'required call to get_page_mod()' );
+				$this->p->debug->log( 'required call to WpssoPage->get_mod()' );
 			}
 
-			$mod = $this->p->util->get_page_mod( $use_post );
+			$mod = $this->p->page->get_mod( $use_post );
 
 			$type_id = $this->p->og->get_mod_og_type( $mod );
 

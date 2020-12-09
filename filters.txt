@@ -31,7 +31,7 @@
 
 'wpsso_archive_page_description' ( $desc_text, $mod )
 
-'wpsso_archive_page_url' ( $url, $mod, $add_page )
+'wpsso_archive_page_url' ( $url, $mod )
 
 'wpsso_article_sections' ( array $sections )
 
@@ -75,8 +75,6 @@
 
 'wpsso_description' ( $desc_text, $mod, $add_hashtags, $md_key )
 
-'wpsso_description_pre_limit' ( $desc_text )
-
 'wpsso_description_seed' ( '', $mod, $add_hashtags, $md_key )
 
 'wpsso_get_avail' ( $ret )
@@ -103,7 +101,7 @@
 
 'wpsso_hashtags_seed' ( '', $post_id )
 
-'wpsso_home_url' ( $url, $mod, $add_page )
+'wpsso_home_url' ( $url, $mod )
 
 'wpsso_image_upscale_all' ( WPSSO_IMAGE_UPSCALE_ALL = false )
 
@@ -197,7 +195,7 @@
 
 'wpsso_post_types' ( $post_types, $output )
 
-'wpsso_post_url' ( $url, $mod, $add_page )
+'wpsso_post_url' ( $url, $mod )
 
 'wpsso_primary_tax_slug' ( $tax_slug, $mod )
 
@@ -249,11 +247,9 @@
 
 'wpsso_schema_types_select' ( (array) $schema_types, $context )	// $context = 'settings', 'business', 'organization', 'place', or 'meta'.
 
-'wpsso_search_url' ( $url, $mod, $add_page )
+'wpsso_search_url' ( $url, $mod )
 
-'wpsso_server_request_url_cache_disabled' ( $bool, $url, $mod, $add_page )
-
-'wpsso_server_request_url' ( $url, $mod, $add_page )
+'wpsso_server_request_url' ( $url, $mod )
 
 'wpsso_sharing_url' ( $url, $mod, $add_page )
 
@@ -285,15 +281,13 @@
 
 'wpsso_term_image_urls' ( array $urls, $size_name, $term_id )
 
-'wpsso_term_url' ( $url, $mod, $add_page )
+'wpsso_term_url' ( $url, $mod )
 
 'wpsso_text' ( $text, $mod, $add_hashtags, $md_key )
 
 'wpsso_the_content' ( $content, $mod, $read_cache, $md_key )
 
 'wpsso_the_content_seed' ( '', $mod, $read_cache, $md_key )
-
-'wpsso_title_pre_limit' ( $title )
 
 'wpsso_title_seed' ( '', $mod, $add_hashtags, $md_key, $sep )
 
@@ -313,7 +307,7 @@
 
 'wpsso_user_image_urls' ( array $urls, $size_name, $user_id )
 
-'wpsso_user_url' ( $url, $mod, $add_page )
+'wpsso_user_url' ( $url, $mod )
 
 'wpsso_variation_title' ( $title, $variation )
 

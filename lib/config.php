@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.16.0',	// Plugin version.
-					'opt_version' => '771',		// Increment when changing default option values.
+					'version'     => '8.17.0-dev.1',	// Plugin version.
+					'opt_version' => '772',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Make sure your content looks best on social sites and in search results, no matter how your webpages are shared, re-shared, messaged, posted, embedded, or crawled.',
@@ -4095,22 +4095,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			/**
 			 * Schema limits.
 			 */
-			$var_const[ 'WPSSO_SCHEMA_ADDL_TYPE_URL_MAX' ]         = 5;
-			$var_const[ 'WPSSO_SCHEMA_HOWTO_STEPS_MAX' ]           = 40;
-			$var_const[ 'WPSSO_SCHEMA_HOWTO_SUPPLIES_MAX' ]        = 30;
-			$var_const[ 'WPSSO_SCHEMA_HOWTO_TOOLS_MAX' ]           = 20;
-			$var_const[ 'WPSSO_SCHEMA_ISPARTOF_URL_MAX' ]          = 20;
-			$var_const[ 'WPSSO_SCHEMA_ITEMS_PER_LIST_MAX' ]        = 100;
-			$var_const[ 'WPSSO_SCHEMA_JOB_LOCATIONS_MAX' ]         = 5;
-			$var_const[ 'WPSSO_SCHEMA_METADATA_OFFERS_MAX' ]       = 5;
-			$var_const[ 'WPSSO_SCHEMA_MOVIE_ACTORS_MAX' ]          = 15;
-			$var_const[ 'WPSSO_SCHEMA_MOVIE_DIRECTORS_MAX' ]       = 5;
-			$var_const[ 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME' ]    = 3 * MONTH_IN_SECONDS;	// Used for Schema 'priceValidUntil' property default.
-			$var_const[ 'WPSSO_SCHEMA_QUESTIONS_PER_FAQPAGE_MAX' ] = 50;
-			$var_const[ 'WPSSO_SCHEMA_RECIPE_INGREDIENTS_MAX' ]    = 40;
-			$var_const[ 'WPSSO_SCHEMA_RECIPE_INSTRUCTIONS_MAX' ]   = 40;
-			$var_const[ 'WPSSO_SCHEMA_REVIEWS_PER_PAGE_MAX' ]      = 30;
-			$var_const[ 'WPSSO_SCHEMA_SAMEAS_URL_MAX' ]            = 5;
+			$var_const[ 'WPSSO_SCHEMA_ADDL_TYPE_URL_MAX' ]       = 5;
+			$var_const[ 'WPSSO_SCHEMA_HOWTO_STEPS_MAX' ]         = 40;
+			$var_const[ 'WPSSO_SCHEMA_HOWTO_SUPPLIES_MAX' ]      = 30;
+			$var_const[ 'WPSSO_SCHEMA_HOWTO_TOOLS_MAX' ]         = 20;
+			$var_const[ 'WPSSO_SCHEMA_ISPARTOF_URL_MAX' ]        = 20;
+			$var_const[ 'WPSSO_SCHEMA_JOB_LOCATIONS_MAX' ]       = 5;
+			$var_const[ 'WPSSO_SCHEMA_METADATA_OFFERS_MAX' ]     = 5;
+			$var_const[ 'WPSSO_SCHEMA_MOVIE_ACTORS_MAX' ]        = 15;
+			$var_const[ 'WPSSO_SCHEMA_MOVIE_DIRECTORS_MAX' ]     = 5;
+			$var_const[ 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME' ]  = 3 * MONTH_IN_SECONDS;	// Used for Schema 'priceValidUntil' property default.
+			$var_const[ 'WPSSO_SCHEMA_RECIPE_INGREDIENTS_MAX' ]  = 40;
+			$var_const[ 'WPSSO_SCHEMA_RECIPE_INSTRUCTIONS_MAX' ] = 40;
+			$var_const[ 'WPSSO_SCHEMA_REVIEWS_MAX' ]             = 100;
+			$var_const[ 'WPSSO_SCHEMA_SAMEAS_URL_MAX' ]          = 5;
 
 			/**
 			 * Setting and meta array names.

@@ -223,7 +223,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return $local_cache[ $post_id ];
 			}
 
-			$mod = parent::$mod_defaults;
+			$mod = self::get_mod_defaults();
 
 			/**
 			 * Common elements.
@@ -234,7 +234,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$mod[ 'obj' ]         =& $this;
 
 			/**
-			 * Post elements.
+			 * WpssoPost elements.
 			 */
 			$mod[ 'is_post' ]       = true;
 			$mod[ 'is_home_page' ]  = SucomUtil::is_home_page( $post_id );
@@ -509,42 +509,24 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		/**
 		 * Return an array of post IDs for a given $mod object.
 		 */
-		public function get_posts_ids( array $mod, $ppp = null, $paged = null, array $posts_args = array() ) {
+		public function get_posts_ids( array $mod, array $posts_args = array() ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
 			}
 
-			if ( null === $ppp ) {
-
-				$ppp = apply_filters( 'wpsso_posts_per_page', get_option( 'posts_per_page' ), $mod );
-			}
-
-			if ( null === $paged ) {
-
-				$paged = get_query_var( 'paged' );
-			}
-
-			if ( ! $paged > 1 ) {
-
-				$paged = 1;
-			}
-
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'calling get_posts() for direct children of ' . 
-					$mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' (posts_per_page is ' . $ppp . ')' );
+				$this->p->debug->log( 'calling get_posts() for direct children of ' . $mod[ 'name' ] . ' ID ' . $mod[ 'id' ] );
 			}
 
 			$posts_args = array_merge( array(
 				'has_password'   => false,
 				'order'          => 'DESC',		// Newest first.
 				'orderby'        => 'date',
-				'paged'          => $paged,
 				'post_status'    => 'publish',		// Only 'publish', not 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', or 'trash'.
 				'post_type'      => 'any',		// Return post, page, or any custom post type.
-				'posts_per_page' => $ppp,
 				'post_parent'    => $mod[ 'id' ],
 				'child_of'       => $mod[ 'id' ],	// Only include direct children.
 			), $posts_args, array( 'fields' => 'ids' ) );	// Return an array of post IDs.
@@ -1762,13 +1744,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		 */
 		public function get_og_type_reviews( $post_id, $og_type = 'product', $rating_meta = 'rating', $worst_rating = 1, $best_rating = 5 ) {
 
-			static $reviews_max = null;
-
-			if ( null === $reviews_max ) {	// Only set the value once.
-
-				$reviews_max = SucomUtil::get_const( 'WPSSO_SCHEMA_REVIEWS_PER_PAGE_MAX', 30 );
-			}
-
 			$reviews = array();
 
 			if ( empty( $post_id ) ) {
@@ -1782,7 +1757,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				'parent'  => 0,					// Parent ID of comment to retrieve children of (0 = don't get replies).
 				'order'   => 'DESC',				// Newest first.
 				'orderby' => 'date',
-				'number'  => get_option( 'comments_per_page' ),	// Maximum number of comments to retrieve.
+				'number'  => WPSSO_SCHEMA_REVIEWS_MAX,
 			) );
 
 			if ( is_array( $comments ) ) {
@@ -1800,16 +1775,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 						$reviews[] = $og_review;
 					}
-				}
-
-				if ( count( $reviews ) > $reviews_max ) {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( count( $reviews ) . ' reviews found (adjusted to ' . $reviews_max . ')' );
-					}
-
-					$reviews = array_slice( $reviews, 0, $reviews_max );
 				}
 			}
 

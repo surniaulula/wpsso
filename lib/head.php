@@ -112,10 +112,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'required call to get_page_mod()' );
+				$this->p->debug->log( 'required call to WpssoPage->get_mod()' );
 			}
 
-			$mod = $this->p->util->get_page_mod( $use_post );	// Get post/term/user ID, module name, and module object reference.
+			$mod = $this->p->page->get_mod( $use_post );	// Get post/term/user ID, module name, and module object reference.
 
 			$add_head_html = apply_filters( 'wpsso_add_head_html', true, $mod );
 
@@ -358,10 +358,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'optional call to get_page_mod()' );
+					$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
 				}
 
-				$mod = $this->p->util->get_page_mod( $use_post );
+				$mod = $this->p->page->get_mod( $use_post );
 			}
 
 			$html = "\n\n" . '<!-- social and search optimization by ' . $short_version . ' - https://wpsso.com/ -->' . "\n";
@@ -418,10 +418,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'optional call to get_page_mod()' );
+					$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
 				}
 
-				$mod = $this->p->util->get_page_mod( $use_post );
+				$mod = $this->p->page->get_mod( $use_post );
 			}
 
 			$sharing_url = $this->p->util->get_sharing_url( $mod, $add_page = true );
@@ -446,7 +446,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$cache_index    = $this->get_head_cache_index( $mod, $sharing_url );	// Includes locale, url, etc.
 			$cache_array    = array();
 
-			if ( is_404() || is_search() ) {
+			if ( $mod[ 'is_404' ] || $mod[ 'is_search' ] ) {
 
 				if ( $this->p->debug->enabled ) {
 

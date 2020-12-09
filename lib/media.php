@@ -395,10 +395,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'optional call to get_page_mod()' );
+					$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
 				}
 
-				$mod = $this->p->util->get_page_mod( $mod );
+				$mod = $this->p->page->get_mod( $mod );
 			}
 
 			$mt_ret = array();
@@ -1386,10 +1386,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'optional call to get_page_mod()' );
+					$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
 				}
 
-				$mod = $this->p->util->get_page_mod( $mod );
+				$mod = $this->p->page->get_mod( $mod );
 			}
 
 			$mt_videos = array();

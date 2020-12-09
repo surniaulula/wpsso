@@ -31,6 +31,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			$show_validate = empty( $this->p->options[ 'plugin_show_validate_toolbar' ] ) ? false : true;
+
 			$show_validate = (bool) apply_filters( 'wpsso_show_validate_toolbar', $show_validate );
 
 			if ( $show_validate ) {
@@ -52,10 +53,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'required call to get_page_mod()' );
+				$this->p->debug->log( 'required call to WpssoPage->get_mod()' );
 			}
 
-			$mod = $this->p->util->get_page_mod( $use_post );	// Get post/term/user ID, module name, and module object reference.
+			$mod = $this->p->page->get_mod( $use_post );	// Get post/term/user ID, module name, and module object reference.
 
 			$validators = $this->p->util->get_validators( $mod, $allow_clipboard = false );
 
@@ -125,10 +126,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'required call to get_page_mod()' );
+				$this->p->debug->log( 'required call to WpssoPage->get_mod()' );
 			}
 
-			$mod = $this->p->util->get_page_mod( $use_post );
+			$mod = $this->p->page->get_mod( $use_post );
 
 			switch ( $title_prov ) {
 
@@ -165,6 +166,338 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			return $title;
+		}
+
+		/**
+		 * Determine and return the post/user/term module array.
+		 */
+		public function get_mod( $use_post = false, $mod = false, $wp_obj = false ) {
+
+			if ( ! is_array( $mod ) ) {
+
+				$mod = array();
+
+			} elseif ( isset( $mod[ 'obj' ] ) && is_object( $mod[ 'obj' ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: module object is defined' );
+				}
+
+				return $mod;
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'use_post is ' . SucomUtil::get_use_post_string( $use_post ) );
+			}
+
+			/**
+			 * Check for known WP objects and set the object module name and its object ID.
+			 */
+			if ( is_object( $wp_obj ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'wp_obj argument is ' . get_class( $wp_obj ) . ' object' );
+				}
+
+				switch ( get_class( $wp_obj ) ) {
+
+					case 'WP_Post':
+
+						$mod[ 'name' ] = 'post';
+
+						$mod[ 'id' ] = $wp_obj->ID;
+
+						break;
+
+					case 'WP_Term':
+
+						$mod[ 'name' ] = 'term';
+
+						$mod[ 'id' ] = $wp_obj->term_id;
+
+						break;
+
+					case 'WP_User':
+
+						$mod[ 'name' ] = 'user';
+
+						$mod[ 'id' ] = $wp_obj->ID;
+
+						break;
+				}
+			}
+
+			if ( empty( $mod[ 'name' ] ) ) {
+
+				if ( SucomUtil::is_post_page( $use_post ) ) {	// $use_post = true | false | post ID.
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'is_post_page is true' );
+					}
+
+					$mod[ 'name' ] = 'post';
+
+				} elseif ( SucomUtil::is_term_page() ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'is_term_page is true' );
+					}
+
+					$mod[ 'name' ] = 'term';
+
+				} elseif ( SucomUtil::is_user_page() ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'is_user_page is true' );
+					}
+
+					$mod[ 'name' ] = 'user';
+
+				} else {
+
+					$mod[ 'name' ] = false;
+				}
+			}
+
+			if ( empty( $mod[ 'id' ] ) ) {
+
+				switch ( $mod[ 'name' ] ) {
+
+					case 'post':
+
+						$mod[ 'id' ] = SucomUtil::get_post_object( $use_post, 'id' );	// $use_post = true | false | post_id
+
+						break;
+
+					case 'term':
+
+						$mod[ 'id' ] = SucomUtil::get_term_object( false, '', 'id' );
+
+						break;
+
+					case 'user':
+
+						$mod[ 'id' ] = SucomUtil::get_user_object( false, 'id' );
+
+						break;
+
+					default:
+
+						$mod[ 'id' ] = false;
+
+						break;
+				}
+			}
+
+			if ( ! empty( $mod[ 'name' ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'getting $mod array from ' . $mod[ 'name' ] . ' module object' );
+				}
+			}
+
+			switch ( $mod[ 'name' ] ) {
+
+				case 'post':
+
+					$mod = $this->p->post->get_mod( $mod[ 'id' ] );
+
+					break;
+
+				case 'term':
+
+					$mod = $this->p->term->get_mod( $mod[ 'id' ] );
+
+					break;
+
+				case 'user':
+
+					$mod = $this->p->user->get_mod( $mod[ 'id' ] );
+
+					break;
+
+				default:
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'module object is unknown: merging $mod defaults' );
+					}
+
+					$mod = array_merge( WpssoWpMeta::get_mod_defaults(), $mod );
+
+					break;
+			}
+
+			/**
+			 * WpssoPage elements.
+			 */
+			global $wp_query;
+
+			$mod[ 'query_vars' ] = $wp_query->query_vars;
+
+			$mod[ 'use_post' ] = $use_post;
+
+			if ( empty( $mod[ 'name' ] ) ) {	// Not a post, term, or user object.
+
+				if ( is_home() ) {
+
+					$mod[ 'is_home' ] = true;
+
+					$mod[ 'is_home_posts' ] = true;
+
+				} elseif ( is_404() ) {
+
+					$mod[ 'is_404' ] = true;
+
+				} elseif ( is_search() ) {
+
+					$mod[ 'is_search' ] = true;
+
+				} elseif ( is_archive() ) {
+
+					$mod[ 'is_archive' ] = true;
+
+					if ( is_date() ) {
+					
+						$mod[ 'is_date' ]  = true;
+
+						if ( is_year() ) {
+
+							$mod[ 'is_year' ] = true;
+
+						} elseif ( is_month() ) {
+
+							$mod[ 'is_month' ] = true;
+
+						} elseif ( is_day() ) {
+
+							$mod[ 'is_day' ] = true;
+						}
+					}
+				}
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_arr( 'mod', $mod );
+			}
+
+			return $mod;
+		}
+
+		public function get_posts_mods( array $mod, $page_type_id, $is_main, array $posts_args = array() ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->mark();
+			}
+
+			$page_posts_mods = array();
+
+			if ( ! empty( $mod[ 'query_vars' ] ) ) {
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( 'using query loop to get post mods' );
+				}
+
+				global $wp_query;
+
+				$saved_wp_query = $wp_query;
+
+				$wp_query = new WP_Query( $mod[ 'query_vars' ] );
+
+				if ( $mod[ 'is_home_posts' ] ) {
+
+					$wp_query->is_home = true;
+				}
+
+				if ( have_posts() ) {
+
+					if ( $wpsso->debug->enabled ) {
+
+						$wpsso->debug->log( 'looping through posts' );
+					}
+				
+					$have_num = 0;
+
+					while ( have_posts() ) {
+
+						$have_num++;
+
+						the_post();	// Defines the $post global.
+
+						global $post;
+
+						if ( $wpsso->debug->enabled ) {
+
+							$wpsso->debug->log( 'getting mod for post ID ' . $post->ID );
+						}
+
+						$page_posts_mods[] = $wpsso->post->get_mod( $post->ID );
+					}
+
+					if ( $wpsso->debug->enabled ) {
+
+						$wpsso->debug->log( 'retrieved ' . $have_num . ' post mods' );
+					}
+
+					rewind_posts();
+
+				} elseif ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( 'no posts to add' );
+				}
+
+				$wp_query = $saved_wp_query;
+
+			} elseif ( is_object( $mod[ 'obj' ] ) ) {
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( 'using module object to get post mods' );
+				}
+
+				$posts_args = array_merge( array(
+					'has_password'   => false,
+					'order'          => 'DESC',
+					'orderby'        => 'date',
+					'post_status'    => 'publish',
+					'post_type'      => $mod[ 'is_user' ] ? 'post' : 'any',
+				), $posts_args );
+	
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log_arr( '$posts_args', $posts_args );
+				}
+
+				$page_posts_mods = $mod[ 'obj' ]->get_posts_mods( $mod, $posts_args );
+
+			} else {
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( 'no source to get post mods' );
+				}
+			}
+
+			$page_posts_mods = apply_filters( 'wpsso_json_page_posts_mods', $page_posts_mods, $mod, $page_type_id, $is_main );
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'returning ' . count( $page_posts_mods ) . ' post mods' );
+			}
+
+			return $page_posts_mods;
 		}
 
 		public function get_quote( array $mod ) {
@@ -230,10 +563,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'optional call to get_page_mod()' );
+					$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
 				}
 
-				$mod = $this->p->util->get_page_mod( $mod );
+				$mod = $this->p->page->get_mod( $mod );
 			}
 
 			$cap_text = '';
@@ -426,10 +759,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'optional call to get_page_mod()' );
+					$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
 				}
 
-				$mod = $this->p->util->get_page_mod( $mod );
+				$mod = $this->p->page->get_mod( $mod );
 			}
 
 			if ( false === $md_key ) {			// False would return the complete meta array.
@@ -452,8 +785,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
 			}
 
-			$title_text   = '';
-			$paged_suffix = '';
+			$title_text = '';
 
 			/**
 			 * Check for custom title if a metadata index key is provided.
@@ -517,57 +849,46 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			/**
-			 * Apply a title filter before adjusting it's length.
+			 * Apply seo-like title modifications.
 			 */
-			$title_text = apply_filters( 'wpsso_title_pre_limit', $title_text );
+			$pagesuffix = '';
+
+			if ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
+
+				$paged = isset( $mod[ 'query_vars' ][ 'paged' ] ) ? $mod[ 'query_vars' ][ 'paged' ] : 1;
+
+				if ( $paged > 1 ) {
+
+					if ( ! empty( $sep ) ) {
+
+						$pagesuffix .= $sep . ' ';
+					}
+
+					$pagesuffix .= sprintf( 'Page %s', $paged );
+				}
+			}
 
 			/**
 			 * Check title against string length limits.
 			 */
 			if ( $max_len > 0 ) {
 
-				/**
-				 * Apply seo-like title modifications.
-				 */
-				if ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
+				$adj_max_len = empty( $pagesuffix ) ? $max_len : $max_len - strlen( $pagesuffix ) - 1;
 
-					global $wpsso_paged;
-
-					if ( is_numeric( $wpsso_paged ) ) {
-
-						$paged = $wpsso_paged;
-
-					} else {
-
-						$paged = get_query_var( 'paged' );
-					}
-
-					if ( $paged > 1 ) {
-
-						if ( ! empty( $sep ) ) {
-
-							$paged_suffix .= $sep . ' ';
-						}
-
-						$paged_suffix .= sprintf( 'Page %s', $paged );
-
-						$max_len = $max_len - strlen( $paged_suffix ) - 1;
-					}
-				}
-
-				$adj_max_len = empty( $hashtags ) ? $max_len : $max_len - strlen( $hashtags ) - 1;
+				$adj_max_len = empty( $hashtags ) ? $adj_max_len : $adj_max_len - strlen( $hashtags ) - 1;
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'title strlen before limit length ' . strlen( $title_text ) . ' (limiting to ' . $adj_max_len . ' chars)' );
+					$this->p->debug->log( 'title strlen before limit length ' . strlen( $title_text ) .
+						' (limiting to ' . $adj_max_len . ' chars)' );
 				}
 
 				$title_text = $this->p->util->limit_text_length( $title_text, $adj_max_len, $dots, $cleanup_html = false );
 			}
 
-			if ( ! empty( $paged_suffix ) ) {
+			if ( ! empty( $pagesuffix ) ) {
 
-				$title_text .= ' ' . $paged_suffix;
+				$title_text .= ' ' . $pagesuffix;
 			}
 
 			if ( ! empty( $hashtags ) ) {
@@ -575,7 +896,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$title_text = trim( $title_text . ' ' . $hashtags );	// Trim in case text is empty.
 			}
 
-			if ( true === $do_encode ) {
+			if ( $do_encode ) {
 
 				foreach ( array( 'title_text', 'sep' ) as $var ) {	// Loop through variables.
 
@@ -623,10 +944,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'optional call to get_page_mod()' );
+					$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
 				}
 
-				$mod = $this->p->util->get_page_mod( $mod );
+				$mod = $this->p->page->get_mod( $mod );
 			}
 
 			if ( false === $md_key ) {		// False would return the complete meta array.
@@ -874,29 +1195,29 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					$desc_text = apply_filters( 'wpsso_home_posts_description', $desc_text, $mod );
 
-				} elseif ( ! empty( $mod[ 'is_search' ] ) || ( ! isset( $mod[ 'is_search' ] ) && is_search() ) ) {
+				} elseif ( $mod[ 'is_search' ] ) {
 
-					$desc_text = sprintf( __( 'Search Results for &#8220;%s&#8221;' ), get_search_query() );
+					$desc_text = sprintf( __( 'Search Results for &#8220;%s&#8221;' ), esc_attr( $mod[ 'query_vars' ][ 's' ] ) );
 
 					$desc_text = apply_filters( 'wpsso_search_results_description', $desc_text, $mod );
 
-				} elseif ( ! empty( $mod[ 'is_archive' ] ) || ( ! isset( $mod[ 'is_archive' ] ) && SucomUtil::is_archive_page() ) ) {
+				} elseif ( $mod[ 'is_archive' ] ) {
 
-					if ( ! empty( $mod[ 'is_date' ] ) || ( ! isset( $mod[ 'is_date' ] ) && is_date() ) ) {
+					if ( $mod[ 'is_date' ] ) {
 
-						if ( ! empty( $mod[ 'is_year' ] ) || ( ! isset( $mod[ 'is_year' ] ) && is_year() ) ) {
+						if ( $mod[ 'is_year' ] ) {
 
 							$desc_text = sprintf( _x( 'Yearly archive for %s.', 'default description', 'wpsso' ), get_the_date( 'Y' ) );
 
 							$desc_text = apply_filters( 'wpsso_yearly_archive_description', $desc_text, $mod );
 
-						} elseif ( ! empty( $mod[ 'is_month' ] ) || ( ! isset( $mod[ 'is_month' ] ) && is_month() ) ) {
+						} elseif ( $mod[ 'is_month' ] ) {
 
 							$desc_text = sprintf( _x( 'Monthly archive for %s.', 'default description', 'wpsso' ), get_the_date( 'F Y' ) );
 
 							$desc_text = apply_filters( 'wpsso_monthly_archive_description', $desc_text, $mod );
 
-						} elseif ( ! empty( $mod[ 'is_day' ] ) || ( ! isset( $mod[ 'is_day' ] ) && is_day() ) ) {
+						} elseif ( $mod[ 'is_day' ] ) {
 
 							$desc_text = sprintf( _x( 'Daily archive for %s.', 'default description', 'wpsso' ), get_the_date() );
 
@@ -943,11 +1264,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			/**
-			 * Apply a description filter before adjusting it's length.
-			 */
-			$desc_text = apply_filters( 'wpsso_description_pre_limit', $desc_text );
-
-			/**
 			 * Replace any inline variables in the string.
 			 */
 			if ( false !== strpos( $desc_text, '%%' ) ) {
@@ -964,7 +1280,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'description strlen before limit length ' . strlen( $desc_text ) . ' (limiting to ' . $adj_max_len . ' chars)' );
+					$this->p->debug->log( 'description strlen before limit length ' . strlen( $desc_text ) .
+						' (limiting to ' . $adj_max_len . ' chars)' );
 				}
 
 				$desc_text = $this->p->util->limit_text_length( $desc_text, $adj_max_len, $dots, $cleanup_html = false );
@@ -1016,10 +1333,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'optional call to get_page_mod()' );
+					$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
 				}
 
-				$mod = $this->p->util->get_page_mod( $mod );
+				$mod = $this->p->page->get_mod( $mod );
 			}
 
 			$text = $this->get_the_text( $mod, $read_cache, $md_key );
@@ -1035,7 +1352,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'text strlen before limit length ' . strlen( $text ) . ' (limiting to ' . $adj_max_len . ' chars)' );
+					$this->p->debug->log( 'text strlen before limit length ' . strlen( $text ) .
+						' (limiting to ' . $adj_max_len . ' chars)' );
 				}
 
 				$text = $this->p->util->limit_text_length( $text, $adj_max_len, $dots, $cleanup_html = false );
@@ -1189,25 +1507,25 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				$title_text = apply_filters( 'wpsso_home_posts_title', $title_text, $mod );
 
-			} elseif ( ! empty( $mod[ 'is_search' ] ) || ( ! isset( $mod[ 'is_search' ] ) && is_search() ) ) {
+			} elseif ( $mod[ 'is_search' ] ) {
 
-				$title_text = sprintf( __( 'Search Results %1$s %2$s' ), $sep, get_search_query() );
+				$title_text = sprintf( __( 'Search Results %1$s %2$s' ), $sep, esc_attr( $mod[ 'query_vars' ][ 's' ] ) );
 
 				$title_text = apply_filters( 'wpsso_search_results_title', $title_text, $mod );
 
-			} elseif ( ! empty( $mod[ 'is_archive' ] ) || ( ! isset( $mod[ 'is_archive' ] ) && SucomUtil::is_archive_page() ) ) {
+			} elseif ( $mod[ 'is_archive' ] ) {
 
-				if ( ! empty( $mod[ 'is_date' ] ) || ( ! isset( $mod[ 'is_date' ] ) && is_date() ) ) {
+				if ( $mod[ 'is_date' ] ) {
 
-					if ( ! empty( $mod[ 'is_year' ] ) || ( ! isset( $mod[ 'is_year' ] ) && is_year() ) ) {
+					if ( $mod[ 'is_year' ] ) {
 
 						$title_text = get_the_date( 'Y' );
 
-					} elseif ( ! empty( $mod[ 'is_month' ] ) || ( ! isset( $mod[ 'is_month' ] ) && is_month() ) ) {
+					} elseif ( $mod[ 'is_month' ] ) {
 
 						$title_text = get_the_date( 'F Y' );
 
-					} elseif ( ! empty( $mod[ 'is_day' ] ) || ( ! isset( $mod[ 'is_day' ] ) && is_day() ) ) {
+					} elseif ( $mod[ 'is_day' ] ) {
 
 						$title_text = get_the_date();
 					}

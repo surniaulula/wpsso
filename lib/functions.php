@@ -129,7 +129,7 @@ if ( ! function_exists( 'wpsso_get_page_mod' ) ) {
 
 		$wpsso =& Wpsso::get_instance();
 
-		return $wpsso->util->get_page_mod( $use_post );
+		return $wpsso->page->get_mod( $use_post );
 	}
 }
 

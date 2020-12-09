@@ -169,22 +169,22 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 				return $content;	// Stop here.
 			}
 
-			static $local_recursion = array();			// Use a static variable to prevent recursion.
+			static $local_recursion = array();	// Use a static variable to prevent recursion.
 
-			$use_post = in_the_loop() ? true : false;		// Use the $post object inside the loop.
+			$use_post = in_the_loop() ? true : false;	// Use the $post object inside the loop.
 
 			$use_post = apply_filters( 'wpsso_use_post', $use_post );
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'required call to get_page_mod()' );
+				$this->p->debug->log( 'required call to WpssoPage->get_mod()' );
 			}
 
-			$mod = $this->p->util->get_page_mod( $use_post );	// $use_post is true by default.
+			$mod = $this->p->page->get_mod( $use_post );	// $use_post is true by default.
 
 			$cache_salt = SucomUtil::get_mod_salt( $mod );
 
-			if ( ! empty( $local_recursion[ $cache_salt ] ) ) {		// Check for recursion.
+			if ( ! empty( $local_recursion[ $cache_salt ] ) ) {	// Check for recursion.
 
 				if ( $this->p->debug->enabled ) {
 
