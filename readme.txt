@@ -318,6 +318,51 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.17.0-dev.1 (2020/12/09)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed canonical and sharing URL pagination.
+	* Fixed Schema SearchResultsPage markup to use the search query.
+* **Developer Notes**
+	* Added support new `$mod` array elements:
+		* 'query_vars'
+		* 'is_404'
+		* 'is_search'
+		* 'is_archive'
+		* 'is_date'
+		* 'is_year'
+		* 'is_month'
+		* 'is_day'
+	* Refactored the WpssoUtil->get_page_url() method.
+	* Refactored the WpssoUtil->get_url_paged() method.
+	* Refactored the WpssoUtil->get_request_url() method.
+	* Removed the 'wpsso_server_request_url_cache_disabled' filter.
+	* Removed the `$add_page` argument from the following filters:
+		* 'wpsso_post_url'
+		* 'wpsso_home_url'
+		* 'wpsso_term_url'
+		* 'wpsso_user_url'
+		* 'wpsso_search_url'
+		* 'wpsso_archive_page_url'
+	* Removed the `$ppp` and `$paged` arguments from the following methods:
+		* `WpssoPost->get_posts_ids()`
+		* `WpssoTerm->get_posts_ids()`
+		* `WpssoUser->get_posts_ids()`
+	* Removed the `$ppp` argument from the following methods:
+		* `WpssoSchema->add_itemlist_data()`
+		* `WpssoSchema->add_posts_data()`
+	* Removed the `WpssoSchema->add_page_links()` method.
+	* Removed the `$wpsso_paged` global variable.
+	* Renamed the WPSSO_SCHEMA_REVIEWS_PER_PAGE_MAX constant to WPSSO_SCHEMA_REVIEWS_MAX.
+	* Moved `WpssoUtil->get_page_posts_mods()` to `WpssoPage->get_posts_mods()`.
+* **Requires At Least**
+	* PHP v5.6.
+	* WordPress v4.5.
+
 **Version 8.16.0 (2020/12/08)**
 
 * **New Features**
@@ -803,6 +848,10 @@ This release adds a new SSO &gt; Features Status page and integration module for
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.17.0-dev.1 =
+
+(2020/12/09) Fixed Schema SearchResultsPage markup to use the search query for 'mentions' property values.
 
 = 8.16.0 =
 
