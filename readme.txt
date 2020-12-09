@@ -340,6 +340,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Refactored the WpssoUtil->get_page_url() method.
 	* Refactored the WpssoUtil->get_url_paged() method.
 	* Refactored the WpssoUtil->get_request_url() method.
+	* Refactored and moved `WpssoUtil->get_page_posts_mods()` to `WpssoPage->get_posts_mods()`.
 	* Removed the 'wpsso_server_request_url_cache_disabled' filter.
 	* Removed the `$add_page` argument from the following filters:
 		* 'wpsso_post_url'
@@ -358,7 +359,6 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Removed the `WpssoSchema->add_page_links()` method.
 	* Removed the `$wpsso_paged` global variable.
 	* Renamed the WPSSO_SCHEMA_REVIEWS_PER_PAGE_MAX constant to WPSSO_SCHEMA_REVIEWS_MAX.
-	* Moved `WpssoUtil->get_page_posts_mods()` to `WpssoPage->get_posts_mods()`.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.5.
