@@ -85,16 +85,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			add_action( 'sucom_update_option_home', array( $this, 'site_address_changed' ), PHP_INT_MAX, 3 );
 
 			/**
-			 * Possibly re-sort the active plugins array to load WPSSO Core before its add-ons.
+			 * WordPress sorts the active plugins array before updating the 'active_plugins' option. The default PHP
+			 * sort order loads WPSSO add-ons before the WPSSO Core plugin. This filter re-sorts (if necessary) the
+			 * active plugins array to load WPSSO Core before its add-ons. This allows WPSSO Core to load the latest
+			 * WpssoAddon and SucomAddon classes before any (possibly old) add-on does.
 			 */
-			add_filter( 'pre_update_option_active_plugins', array( $this, 'pre_update_active_plugins' ), 1000, 3 );
+			add_filter( 'pre_update_option_active_plugins', array( $this, 'pre_update_active_plugins' ), 10, 3 );
 
 			/**
 			 * Define and disable the "Expect: 100-continue" header.
 			 */
 			add_filter( 'http_request_args', array( $this, 'add_expect_header' ), 1000, 2 );
 
-			add_filter( 'http_request_host_is_external', array( $this, 'maybe_allow_safe_hosts' ), 1000, 3 );
+			add_filter( 'http_request_host_is_external', array( $this, 'allow_safe_hosts' ), 1000, 3 );
 
 			/**
 			 * Provide plugin data / information from the readme.txt for additional add-ons. Don't hook the
@@ -801,7 +804,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $req;
 		}
 
-		public function maybe_allow_safe_hosts( $is_allowed, $ip, $url ) {
+		public function allow_safe_hosts( $is_allowed, $ip, $url ) {
 
 			if ( $is_allowed ) {	// Already allowed.
 
@@ -2664,9 +2667,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/**
-		 * Possibly re-sort the active plugins array to load WPSSO Core before its add-ons.
-		 *
-		 * See the activate_plugin() function in wordpress/wp-admin/includes/plugin.php for context.
+		 * WordPress sorts the active plugins array before updating the 'active_plugins' option. The default PHP sort order
+		 * loads WPSSO add-ons before the WPSSO Core plugin. This filter re-sorts (if necessary) the active plugins array
+		 * to load WPSSO Core before its add-ons. This allows WPSSO Core to load the latest WpssoAddon and SucomAddon
+		 * classes before any (possibly old) add-on does.
 		 *
 		 * When activating a plugin, the activate_plugin() function executes the following:
 		 *
@@ -2674,6 +2678,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 *	$current[] = $plugin;					// Add the new plugin.
 		 *	sort( $current );					// Sort the plugin array.
 		 *	update_option( 'active_plugins', $current );		// Save the plugin array.
+		 *
+		 * See the activate_plugin() function in wordpress/wp-admin/includes/plugin.php for additional context.
 		 */
 		public function pre_update_active_plugins( $current, $old_value, $option = 'active_plugins' ) {
 
