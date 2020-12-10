@@ -318,7 +318,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.17.0-dev.1 (2020/12/09)**
+**Version 8.17.0-dev.2 (2020/12/09)**
 
 * **New Features**
 	* None.
@@ -328,7 +328,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fixed canonical and sharing URL pagination.
 	* Fixed Schema SearchResultsPage markup to use the search query.
 * **Developer Notes**
-	* Added support new `$mod` array elements:
+	* Added new `$mod` array elements:
 		* 'query_vars'
 		* 'is_404'
 		* 'is_search'
@@ -349,11 +349,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* 'wpsso_user_url'
 		* 'wpsso_search_url'
 		* 'wpsso_archive_page_url'
-	* Removed the `$ppp` and `$paged` arguments from the following methods:
+	* Removed the `$posts_per_page` and `$paged` arguments from the following methods:
 		* `WpssoPost->get_posts_ids()`
 		* `WpssoTerm->get_posts_ids()`
 		* `WpssoUser->get_posts_ids()`
-	* Removed the `$ppp` argument from the following methods:
+	* Removed the `$posts_per_page` argument from the following methods:
 		* `WpssoSchema->add_itemlist_data()`
 		* `WpssoSchema->add_posts_data()`
 	* Removed the `WpssoSchema->add_page_links()` method.
@@ -849,9 +849,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.17.0-dev.1 =
+= 8.17.0-dev.2 =
 
-(2020/12/09) Fixed Schema SearchResultsPage markup to use the search query for 'mentions' property values.
+(2020/12/09) Fixed canonical and sharing URL pagination. Fixed Schema SearchResultsPage markup to use the search query.
 
 = 8.16.0 =
 
