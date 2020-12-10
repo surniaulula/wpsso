@@ -2691,18 +2691,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$addon_prefix = 'wpsso-';
 
-			if ( 0 === strpos( $a, $plugin_prefix ) ) {		// Wpsso Core.
+			if ( 0 === strpos( $a, $plugin_prefix ) ) {		// WPSSO Core.
 
-				if ( 0 === strpos( $b, $addon_prefix ) ) {	// Wpsso add-on.
+				if ( 0 === strpos( $b, $addon_prefix ) ) {	// WPSSO add-on.
 
-					return -1;				// Sort Wpsso Core before.
+					return -1;				// Sort WPSSO Core before.
 				}
 
-			} elseif ( 0 === strpos( $a, $addon_prefix ) ) {	// Wpsso add-on.
+			} elseif ( 0 === strpos( $a, $addon_prefix ) ) {	// WPSSO add-on.
 
-				if ( 0 === strpos( $b, $plugin_prefix ) ) {	// Wpsso Core.
+				if ( 0 === strpos( $b, $plugin_prefix ) ) {	// WPSSO Core.
 
-					return 1;				// Sort Wpsso add-on after.
+					return 1;				// Sort WPSSO add-on after.
 				}
 			}
 
