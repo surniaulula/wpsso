@@ -922,7 +922,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 							} else {
 
-								if ( SucomUtil::get_const( 'DOING_AJAX' ) ) {
+								$doing_ajax = SucomUtilWP::doing_ajax();
+
+								if ( $doing_ajax ) {
 
 									$html .= 'sucomSelectChangeUnhideRows( \'' . $hide_class . '\', \'' . $show_class . '\' );';
 

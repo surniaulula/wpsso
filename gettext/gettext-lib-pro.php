@@ -151,6 +151,7 @@ __( 'The WooCommerce "%1$s" option value is empty.', 'wpsso' );
 __( 'The WooCommerce %s method is not available - please update to a newer version of WooCommerce.', 'wpsso' );
 __( 'World', 'wpsso' );
 __( 'https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax.html', 'wpsso' );
+__( '%s warning:', 'wpsso' );
 __( 'The <a href="%1$s">WooCommerce %2$s function</a> is not available.', 'wpsso' );
 __( 'Please update your site to WooCommerce version %s or newer.', 'wpsso' );
 __( 'https://secure.php.net/manual/en/function.simplexml-load-string.php', 'wpsso' );
@@ -199,7 +200,7 @@ _x( 'Single Entry Integration', 'metabox title', 'wpsso' );
 _x( 'Title Field ID', 'option label', 'wpsso' );
 _x( 'Description Field ID', 'option label', 'wpsso' );
 _x( 'Post Image Field ID', 'option label', 'wpsso' );
-__( 'Plugin conflict detected', 'wpsso' );
+__( 'Plugin conflict detected:', 'wpsso' );
 // translators: Please ignore - translation uses a different text domain.
 __( 'Enable Google Rich Snippets?', 'wp-postratings' );
 // translators: Please ignore - translation uses a different text domain.
@@ -208,8 +209,8 @@ __( 'WP-PostRatings', 'wp-postratings' );
 __( 'Ratings', 'wp-postratings' );
 // translators: Please ignore - translation uses a different text domain.
 __( 'Ratings Options', 'wp-postratings' );
-__( 'please disable the %1$s option in the %2$s settings page.', 'wpsso' );
-__( 'Plugin conflict detected', 'wpsso' );
+__( 'Please disable the %1$s option in the %2$s settings page.', 'wpsso' );
+__( 'Plugin conflict detected:', 'wpsso' );
 // translators: Please ignore - translation uses a different text domain.
 __( 'Type of structured data for rich snippets', 'rate-my-post' );
 // translators: Please ignore - translation uses a different text domain.
@@ -218,7 +219,7 @@ __( 'Rate my Post', 'rate-my-post' );
 __( 'Settings', 'rate-my-post' );
 // translators: Please ignore - translation uses a different text domain.
 __( 'Rating Widget Settings', 'rate-my-post' );
-__( 'please disable the %1$s option in the %2$s settings page.', 'wpsso' );
+__( 'Please disable the %1$s option in the %2$s settings page.', 'wpsso' );
 __( '%s error:', 'wpsso' );
 __( 'Yotpo for WooCommerce "%s" setting value is empty.', 'wpsso' );
 __( 'Yotpo for WooCommerce "%s" setting value is empty.', 'wpsso' );

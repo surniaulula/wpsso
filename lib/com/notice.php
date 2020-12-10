@@ -880,7 +880,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		public function ajax_dismiss_notice() {
 
-			if ( ! SucomUtil::get_const( 'DOING_AJAX' ) ) {	// Just in case.
+			$doing_ajax = SucomUtilWP::doing_ajax();
+
+			if ( ! $doing_ajax ) {	// Just in case.
 
 				return;
 			}
@@ -931,7 +933,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		public function ajax_get_notices_json() {
 
-			if ( ! SucomUtil::get_const( 'DOING_AJAX' ) ) {
+			$doing_ajax = SucomUtilWP::doing_ajax();
+
+			if ( ! $doing_ajax ) {	// Just in case.
 
 				return;
 

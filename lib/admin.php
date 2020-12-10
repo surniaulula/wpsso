@@ -50,7 +50,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$doing_ajax = SucomUtil::get_const( 'DOING_AJAX' );
+			$doing_ajax = SucomUtilWP::doing_ajax();
 
 			require_once WPSSO_PLUGINDIR . 'lib/admin-head.php';
 

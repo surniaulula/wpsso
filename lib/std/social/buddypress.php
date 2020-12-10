@@ -28,10 +28,12 @@ if ( ! class_exists( 'WpssoStdSocialBuddypress' ) ) {
 			}
 
 			/**
-			 * Note that the latest BuddyPress templates use AJAX calls, so is_admin(),
-			 * bp_current_component(), and DOING_AJAX will all be true in those cases.
+			 * The latest BuddyPress templates use ajax calls, so is_admin(), bp_current_component(), and DOING_AJAX
+			 * will all be true for those ajax calls.
 			 */
-			if ( is_admin() || bp_current_component() ) {
+			$component = bp_current_component();
+
+			if ( is_admin() || $component ) {
 
 				$this->p->util->add_plugin_filters( $this, array( 
 					'get_defaults'            => 1,
@@ -43,7 +45,7 @@ if ( ! class_exists( 'WpssoStdSocialBuddypress' ) ) {
 
 		public function filter_get_defaults( $def_opts ) {
 
-			$bio_const_name = strtoupper( $this->p->id ) . '_BP_MEMBER_BIOGRAPHICAL_FIELD';
+			$bio_const_name = 'WPSSO_BP_MEMBER_BIOGRAPHICAL_FIELD';
 
 			$def_opts[ 'plugin_bp_bio_field' ] = SucomUtil::get_const( $bio_const_name );
 
@@ -52,9 +54,9 @@ if ( ! class_exists( 'WpssoStdSocialBuddypress' ) ) {
 
 		public function filter_plugin_integration_rows( $table_rows, $form ) {
 
-			$table_rows[ 'plugin_bp_bio_field' ] = $form->get_th_html( _x( 'BuddyPress Member Bio Field Name',
-				'option label', 'wpsso' ), '', 'plugin_bp_bio_field' ) . 
-			'<td class="blank">' . $this->p->options[ 'plugin_bp_bio_field' ] . '</td>';
+			$table_rows[ 'plugin_bp_bio_field' ] = '' .
+				$form->get_th_html( _x( 'BuddyPress Member Bio Field Name', 'option label', 'wpsso' ), '', 'plugin_bp_bio_field' ) . 
+				'<td class="blank">' . $this->p->options[ 'plugin_bp_bio_field' ] . '</td>';
 
 			return $table_rows;
 		}

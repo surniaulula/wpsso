@@ -44,7 +44,8 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 				return;
 			}
 
-			$this->log_pre    = 'seo plugin conflict detected - ';
+			$this->log_pre = 'seo plugin conflict detected - ';
+
 			$this->notice_pre =  __( 'Plugin conflict detected:', 'wpsso' ) . ' ';
 
 			$this->conflict_check_aioseop();	// All in One SEO Pack.

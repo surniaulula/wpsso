@@ -1402,7 +1402,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public function ajax_schema_type_og_type() {
 
-			if ( ! SucomUtil::get_const( 'DOING_AJAX' ) ) {
+			$doing_ajax = SucomUtilWP::doing_ajax();
+
+			if ( ! $doing_ajax ) {	// Just in case.
 
 				return;
 
@@ -2281,14 +2283,20 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
-		 * Called by Blog, CollectionPage, ProfilePage, and SearchResultsPage.
+		 * Called by the Blog, CollectionPage, ProfilePage, and SearchResultsPage filters.
 		 *
 		 * Examples:
 		 *
 		 *	$prop_type_ids = array( 'mentions' => false )
+		 *
 		 *	$prop_type_ids = array( 'blogPosting' => 'blog.posting' )
+		 *
+		 * The 6th argument used to be $posts_per_page (now $prop_type_ids) and 7th argument $prop_type_ids (now
+		 * $deprecated).
+		 *
+		 * Do not cast $prop_type_ids as an array to allow for backwards compatibility.
 		 */
-		public static function add_posts_data( array &$json_data, array $mod, array $mt_og, $page_type_id, $is_main, array $prop_type_ids ) {
+		public static function add_posts_data( array &$json_data, array $mod, array $mt_og, $page_type_id, $is_main, $prop_type_ids, $deprecated = null ) {
 
 			static $added_page_type_ids = array();
 
@@ -2300,6 +2308,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$added_count = 0;	// Initialize the total posts added counter.
+
+			/**
+			 * The 6th argument used to be $posts_per_page (now $prop_type_ids) and 7th argument $prop_type_ids (now
+			 * $deprecated).
+			 */
+			if ( ! is_array( $prop_type_ids ) && is_array( $deprecated ) ) {
+
+				$prop_type_ids = $deprecated;
+
+				$deprecated = null;
+			}
 
 			/**
 			 * Sanity checks.
@@ -2317,7 +2336,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log( 'exiting early: prop_name_type_ids is empty' );
+					$wpsso->debug->log( 'exiting early: prop_type_ids is empty' );
 				}
 
 				return $added_count;

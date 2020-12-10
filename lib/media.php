@@ -941,12 +941,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			} else {
 
-				$img_lib       = __( 'Media Library', 'wpsso' );
-				$img_edit_url  = get_edit_post_link( $pid );
-				$img_title     = get_the_title( $pid );
-				$img_func_url  = __( 'https://developer.wordpress.org/reference/functions/wp_get_attachment_metadata/', 'wpsso' );
-				$img_func_name = 'wp_get_attachment_metadata()';
-				$img_regen_msg = sprintf( __( 'You may consider regenerating the sizes of all WordPress Media Library images using one of <a href="%s">several available plugins from WordPress.org</a>.', 'wpsso' ), 'https://wordpress.org/plugins/search/regenerate+thumbnails/' );
+				$img_lib   = __( 'Media Library', 'wpsso' );
+				$edit_url  = get_edit_post_link( $pid );
+				$img_title = get_the_title( $pid );
+				$func_name = 'wp_get_attachment_metadata()';
+				$func_url  = __( 'https://developer.wordpress.org/reference/functions/wp_get_attachment_metadata/', 'wpsso' );
+				$regen_msg = sprintf( __( 'You may consider regenerating the sizes of all WordPress Media Library images using one of <a href="%s">several available plugins from WordPress.org</a>.', 'wpsso' ), 'https://wordpress.org/plugins/search/regenerate+thumbnails/' );
 
 				if ( isset( $img_meta[ 'file' ] ) ) {
 
@@ -963,7 +963,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					 */
 					if ( $this->p->notice->is_admin_pre_notices() ) {
 
-						$notice_msg = sprintf( __( 'Possible %1$s corruption detected &mdash; the full size image dimensions for <a href="%2$s">image ID %3$s</a> are missing from the image metadata returned by the <a href="%4$s">WordPress %5$s function</a>.', 'wpsso' ), $img_lib, $img_edit_url, $pid, $img_func_url, '<code>' . $img_func_name . '</code>' ) . ' ' . $img_regen_msg;
+						$notice_msg = sprintf( __( 'Possible %1$s corruption detected &mdash; the full size image dimensions for <a href="%2$s">image ID %3$s</a> are missing from the image metadata returned by the <a href="%4$s">WordPress %5$s function</a>.', 'wpsso' ), $img_lib, $edit_url, $pid, $func_url, '<code>' . $func_name . '</code>' ) . ' ' . $regen_msg;
 
 						$notice_key = 'full-size-image-' . $pid . '-dimensions-missing';
 
@@ -985,7 +985,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					 */
 					if ( $this->p->notice->is_admin_pre_notices() ) {
 
-						$notice_msg = sprintf( __( 'Possible %1$s corruption detected &mdash; the full size image file path for <a href="%2$s">image ID %3$s</a> is missing from the image metadata returned by the <a href="%4$s">WordPress %5$s function</a>.', 'wpsso' ), $img_lib, $img_edit_url, $pid, $img_func_url, '<code>' . $img_func_name . '</code>' ) . ' ' . $img_regen_msg;
+						$notice_msg = sprintf( __( 'Possible %1$s corruption detected &mdash; the full size image file path for <a href="%2$s">image ID %3$s</a> is missing from the image metadata returned by the <a href="%4$s">WordPress %5$s function</a>.', 'wpsso' ), $img_lib, $edit_url, $pid, $func_url, '<code>' . $func_name . '</code>' ) . ' ' . $regen_msg;
 
 						$notice_key = 'full-size-image-' . $pid . '-file-path-missing';
 
@@ -1064,8 +1064,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					}
 
 					/**
-					 * Depending on cropping, one or both sides of the image must be accurate. If not, attempt
-					 * to create a resized image by calling image_make_intermediate_size().
+					 * Depending on cropping, one or both sides of the image must be accurate.
+					 *
+					 * If the image is not accurate, then attempt to create a resized image by calling
+					 * image_make_intermediate_size().
 					 */
 					if ( ! $is_accurate_filename ||
 						( ! $size_info[ 'is_cropped' ] && ( ! $is_accurate_width && ! $is_accurate_height ) ) ||
@@ -1073,12 +1075,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 						if ( $this->can_make_intermediate_size( $img_meta, $size_info ) ) {
 
-							$img_lib       = __( 'Media Library', 'wpsso' );
-							$img_func_url  = __( 'https://developer.wordpress.org/reference/functions/image_make_intermediate_size/', 'wpsso' );
-							$img_func_name = 'image_make_intermediate_size()';
-							$fullsizepath  = get_attached_file( $pid );
-
-							$mtime_start = microtime( true );
+							$img_lib      = __( 'Media Library', 'wpsso' );
+							$func_name    = 'image_make_intermediate_size()';
+							$func_url     = __( 'https://developer.wordpress.org/reference/functions/image_make_intermediate_size/', 'wpsso' );
+							$fullsizepath = get_attached_file( $pid );
+							$mtime_start  = microtime( true );
 
 							/**
 							 * image_make_intermediate_size() resizes an image to make a thumbnail or
@@ -1086,28 +1087,31 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							 *
 							 * Returns (array|false) metadata array on success, false if no image was created.
 							 */
-							$resized_meta = image_make_intermediate_size( $fullsizepath,
-								$size_info[ 'width' ], $size_info[ 'height' ], $size_info[ 'crop' ] );
+							$resized_meta = image_make_intermediate_size( $fullsizepath, $size_info[ 'width' ], $size_info[ 'height' ],
+								$size_info[ 'crop' ] );
 
 							$mtime_total = microtime( true ) - $mtime_start;
+							$mtime_max   = WPSSO_IMAGE_MAKE_SIZE_MAX_TIME;
 
-							$mtime_max = SucomUtil::get_const( 'WPSSO_IMAGE_MAKE_SIZE_MAX_TIME', 1.00 );
+							if ( $mtime_total > $mtime_max ) {
 
-							/**
-							 * Issue warning for slow image_make_intermediate_size() request.
-							 */
-							if ( $mtime_max > 0 && $mtime_total > $mtime_max ) {
+								$error_pre   = sprintf( __( '%s warning:', 'wpsso' ), __METHOD__ );
+								$rec_max_msg = sprintf( __( 'longer than recommended max of %1$0.3f secs', 'wpsso' ), $mtime_max );
+								$error_msg   = sprintf( __( 'Slow WordPress function detected - %1$s took %2$0.3f secs to make image size "%3$s" from %4$s (%5$s).', 'wpsso' ), '<code>' . $func_name . '</code>', $mtime_total, $size_name, $fullsizepath, $rec_max_msg );
 
 								if ( $this->p->debug->enabled ) {
 
-									$this->p->debug->log( sprintf( 'slow WordPress function detected - %1$s took %2$0.3f secs to make size "%3$s" from %4$s', $img_func_name, $mtime_total, $size_name, $fullsizepath ) );
+									$this->p->debug->log( sprintf( 'slow WordPress function detected - %1$s took %2$0.3f secs' .
+										' to make image size "%3$s" from %4$s', $func_name, $mtime_total, $size_name,
+											$fullsizepath ) );
 								}
-							}
 
-							if ( $this->p->debug->enabled ) {
+								if ( $this->p->notice->is_admin_pre_notices() ) {
+				
+									$this->p->notice->warn( $error_msg );
+								}
 
-								$this->p->debug->log( 'WordPress ' . $img_func_name . ' reported ' .
-									( false === $resized_meta ? 'failure' : 'success' ) );
+								SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
 							}
 
 							/**
@@ -1120,7 +1124,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								 */
 								if ( $this->p->notice->is_admin_pre_notices() ) {
 
-									$notice_msg = sprintf( __( 'Possible %1$s corruption detected &mdash; the <a href="%2$s">WordPress %3$s function</a> failed to create the "%4$s" image size (%5$s) from %6$s.', 'wpsso' ), $img_lib, $img_func_url, '<code>' . $img_func_name . '</code>', $size_name, $size_info[ 'dimensions' ], $fullsizepath ) . ' ';
+									$notice_msg = sprintf( __( 'Possible %1$s corruption detected &mdash; the <a href="%2$s">WordPress %3$s function</a> failed to create the "%4$s" image size (%5$s) from %6$s.', 'wpsso' ), $img_lib, $func_url, '<code>' . $func_name . '</code>', $size_name, $size_info[ 'dimensions' ], $fullsizepath ) . ' ';
 
 									$notice_msg .= sprintf( __( 'You may consider regenerating the sizes of all WordPress Media Library images using one of <a href="%s">several available plugins from WordPress.org</a>.', 'wpsso' ), 'https://wordpress.org/plugins/search/regenerate+thumbnails/' );
 
@@ -2042,10 +2046,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( is_numeric( $img_mixed ) ) {
 
-				$img_edit_url = get_edit_post_link( $img_mixed );
-				$img_title    = get_the_title( $img_mixed );
-				$img_label    = sprintf( __( 'image ID %1$s (%2$s)', 'wpsso' ), $img_mixed, $img_title );
-				$img_label    = empty( $img_edit_url ) ? $img_label : '<a href="' . $img_edit_url . '">' . $img_label . '</a>';
+				$edit_url  = get_edit_post_link( $img_mixed );
+				$img_title = get_the_title( $img_mixed );
+				$img_label = sprintf( __( 'image ID %1$s (%2$s)', 'wpsso' ), $img_mixed, $img_title );
+				$img_label = empty( $edit_url ) ? $img_label : '<a href="' . $edit_url . '">' . $img_label . '</a>';
 
 			} elseif ( false !== strpos( $img_mixed, '://' ) ) {
 

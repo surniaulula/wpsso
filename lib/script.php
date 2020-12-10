@@ -39,7 +39,9 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			$this->file_ext  = $this->doing_dev ? 'js' : 'min.js';
 			$this->version   = WpssoConfig::get_version() . ( $this->doing_dev ? gmdate( '-ymd-His' ) : '' );
 
-			if ( ! SucomUtil::get_const( 'DOING_AJAX' ) ) {
+			$doing_ajax = SucomUtilWP::doing_ajax();
+
+			if ( ! $doing_ajax ) {
 
 				if ( is_admin() ) {
 

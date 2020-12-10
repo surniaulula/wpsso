@@ -408,16 +408,13 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		/**
+		 * Get post IDs authored by a user ID.
+		 *
 		 * Return an array of post IDs for a given $mod object.
 		 *
 		 * Called by WpssoWpMeta->get_posts_mods().
 		 */
-		public function get_posts_ids( array $mod, array $posts_args = array() ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
+		public function get_posts_ids( array $mod, array $extra_args = array() ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -425,45 +422,39 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			$posts_args = array_merge( array(
-				'has_password'   => false,
-				'order'          => 'DESC',		// Newest first.
-				'orderby'        => 'date',
-				'post_status'    => 'publish',		// Only 'publish', not 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', or 'trash'.
-				'post_type'      => 'any',		// Return post, page, or any custom post type.
-				'author'         => $mod[ 'id' ],
-			), $posts_args, array( 'fields' => 'ids' ) );	// Return an array of post IDs.
+				'has_password' => false,
+				'order'        => 'DESC',		// Newest first.
+				'orderby'      => 'date',
+				'post_status'  => 'publish',		// Only 'publish', not 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', or 'trash'.
+				'post_type'    => 'post',		// Return only posts authored by the user.
+				'author'       => $mod[ 'id' ],
+			), $extra_args, array( 'fields' => 'ids' ) );	// Return an array of post IDs.
 
-			$mtime_max   = SucomUtil::get_const( 'WPSSO_GET_POSTS_MAX_TIME', 0.10 );
 			$mtime_start = microtime( true );
 			$post_ids    = get_posts( $posts_args );
 			$mtime_total = microtime( true ) - $mtime_start;
+			$mtime_max   = WPSSO_GET_POSTS_MAX_TIME;
 
-			if ( $mtime_max > 0 && $mtime_total > $mtime_max ) {
+			if ( $mtime_total > $mtime_max ) {
 
-				$info = $this->p->cf[ 'plugin' ][ $this->p->id ];
+				$func_name   = 'get_posts()';
+				$error_pre   = sprintf( __( '%s warning:', 'wpsso' ), __METHOD__ );
+				$rec_max_msg = sprintf( __( 'longer than recommended max of %1$0.3f secs', 'wpsso' ), $mtime_max );
+				$error_msg   = sprintf( __( 'Slow WordPress function detected - %1$s took %2$0.3f secs to get posts authored by user ID %3$d (%4$s).',
+					'wpsso' ), '<code>' . $func_name . '</code>', $mtime_total, $mod[ 'id' ], $rec_max_msg );
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( sprintf( 'slow query detected - WordPress get_posts() took %1$0.3f secs'.
-						' to get posts authored by user ID %2$d', $mtime_total, $mod[ 'id' ] ) );
+					$this->p->debug->log( sprintf( 'slow WordPress function detected - %1$s took %2$0.3f secs to get posts authored by user ID %3$d',
+						$func_name, $mtime_total, $mod[ 'id' ] ) );
 				}
 
-				$error_pre = sprintf( __( '%s warning:', 'wpsso' ), __METHOD__ );
-
-				$rec_max_msg = sprintf( __( 'longer than recommended max of %1$0.3f secs', 'wpsso' ), $mtime_max );
-
-				$error_msg = sprintf( __( 'Slow query detected - get_posts() took %1$0.3f secs to get posts authored by user ID %2$d (%3$s).',
-					'wpsso' ), $mtime_total, $mod[ 'id' ], $rec_max_msg );
-
-				/**
-				 * Add notice only if the admin notices have not already been shown.
-				 */
 				if ( $this->p->notice->is_admin_pre_notices() ) {
 
 					$this->p->notice->warn( $error_msg );
 				}
 
-				SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
+				SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg, $strip_html = true );
 			}
 
 			if ( $this->p->debug->enabled ) {

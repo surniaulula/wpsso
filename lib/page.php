@@ -17,7 +17,14 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 
 if ( ! class_exists( 'WpssoPage' ) ) {
 
-	class WpssoPage {
+	/**
+	 * This class provides methods for the WebPage document.
+	 *
+	 * The use of "Page" in the WpssoPage classname refers to the WebPage document, not WordPress Pages.
+	 *
+	 * For methods related to WordPress Posts, Pages, and custom post types (which are all post objects), see the WpssoPost class.
+	 */
+	class WpssoPage {	// Aka WpssoWebPage.
 
 		private $p;	// Wpsso class object.
 
@@ -392,7 +399,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return $mod;
 		}
 
-		public function get_posts_mods( array $mod, array $posts_args = array() ) {
+		public function get_posts_mods( array $mod, array $extra_args = array() ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -467,20 +474,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$wpsso->debug->log( 'using module object to get post mods' );
 				}
 
-				$posts_args = array_merge( array(
-					'has_password'   => false,
-					'order'          => 'DESC',
-					'orderby'        => 'date',
-					'post_status'    => 'publish',
-					'post_type'      => $mod[ 'is_user' ] ? 'post' : 'any',
-				), $posts_args );
-	
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log_arr( '$posts_args', $posts_args );
+					$wpsso->debug->log_arr( '$extra_args', $extra_args );
 				}
 
-				$page_posts_mods = $mod[ 'obj' ]->get_posts_mods( $mod, $posts_args );
+				$page_posts_mods = $mod[ 'obj' ]->get_posts_mods( $mod, $extra_args );
 
 			} else {
 

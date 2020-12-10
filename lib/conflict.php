@@ -33,7 +33,9 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( ! SucomUtil::get_const( 'DOING_AJAX' ) ) {
+			$doing_ajax = SucomUtilWP::doing_ajax();
+
+			if ( ! $doing_ajax ) {
 
 				if ( ! SucomUtilWP::doing_block_editor() ) {
 

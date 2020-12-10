@@ -15,7 +15,7 @@
  * Requires At Least: 4.5
  * Tested Up To: 5.6
  * WC Tested Up To: 4.8.0
- * Version: 8.17.0-dev.1
+ * Version: 8.17.0-dev.2
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -174,6 +174,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$this->options = false;
 
 			} else {
+
 				$this->options = get_option( WPSSO_OPTIONS_NAME );
 			}
 

@@ -36,7 +36,7 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$doing_ajax = SucomUtil::get_const( 'DOING_AJAX' );
+			$doing_ajax = SucomUtilWP::doing_ajax();
 
 			if ( ! $doing_ajax ) {
 
