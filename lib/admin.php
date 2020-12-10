@@ -87,14 +87,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			/**
 			 * Possibly re-sort the active plugins array to load WPSSO Core before its add-ons.
 			 */
-			add_filter( 'pre_update_option_active_plugins', array( $this, 'pre_update_active_plugins' ), PHP_INT_MAX, 3 );
+			add_filter( 'pre_update_option_active_plugins', array( $this, 'pre_update_active_plugins' ), 1000, 3 );
 
 			/**
 			 * Define and disable the "Expect: 100-continue" header.
 			 */
 			add_filter( 'http_request_args', array( $this, 'add_expect_header' ), 1000, 2 );
 
-			add_filter( 'http_request_host_is_external', array( $this, 'maybe_allow_hosts' ), 1000, 3 );
+			add_filter( 'http_request_host_is_external', array( $this, 'maybe_allow_safe_hosts' ), 1000, 3 );
 
 			/**
 			 * Provide plugin data / information from the readme.txt for additional add-ons. Don't hook the
@@ -801,7 +801,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $req;
 		}
 
-		public function maybe_allow_hosts( $is_allowed, $ip, $url ) {
+		public function maybe_allow_safe_hosts( $is_allowed, $ip, $url ) {
 
 			if ( $is_allowed ) {	// Already allowed.
 
