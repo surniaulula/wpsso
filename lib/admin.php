@@ -85,10 +85,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			add_action( 'sucom_update_option_home', array( $this, 'site_address_changed' ), PHP_INT_MAX, 3 );
 
 			/**
-			 * WordPress sorts the active plugins array before updating the 'active_plugins' option. The default PHP
-			 * sort order loads WPSSO add-ons before the WPSSO Core plugin. This filter re-sorts (if necessary) the
-			 * active plugins array to load WPSSO Core before its add-ons. This allows WPSSO Core to load the latest
-			 * WpssoAddon and SucomAddon classes before any (possibly old) add-on does.
+			 * This filter re-sorts (if necessary) the active plugins array to load WPSSO Core before its add-ons.
 			 */
 			add_filter( 'pre_update_option_active_plugins', array( $this, 'pre_update_active_plugins' ), 10, 3 );
 
@@ -2670,7 +2667,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 * WordPress sorts the active plugins array before updating the 'active_plugins' option. The default PHP sort order
 		 * loads WPSSO add-ons before the WPSSO Core plugin. This filter re-sorts (if necessary) the active plugins array
 		 * to load WPSSO Core before its add-ons. This allows WPSSO Core to load the latest WpssoAddon and SucomAddon
-		 * classes before any (possibly old) add-on does.
+		 * classes before any (possibly older) add-on does.
 		 *
 		 * When activating a plugin, the activate_plugin() function executes the following:
 		 *
