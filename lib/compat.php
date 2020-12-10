@@ -126,7 +126,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				) );
 			}
 		}
-		
+
 		public function front_end_hooks() {
 
 			/**

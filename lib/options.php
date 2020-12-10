@@ -738,7 +738,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						'add_meta_name_description' => 0,
 						'add_meta_name_robots'      => 0,
 					);
-				
+
 					/**
 					 * An SEO plugin is active, but it's not the Yoast SEO plugin, so skip importing old Yoast
 					 * SEO post/term/user metadata.

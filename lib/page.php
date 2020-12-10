@@ -372,7 +372,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$mod[ 'is_archive' ] = true;
 
 					if ( is_date() ) {
-					
+
 						$mod[ 'is_date' ]  = true;
 
 						if ( is_year() ) {
@@ -434,7 +434,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 						$wpsso->debug->log( 'looping through posts' );
 					}
-				
+
 					$have_num = 0;
 
 					while ( have_posts() ) {

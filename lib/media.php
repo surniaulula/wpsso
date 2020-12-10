@@ -1107,7 +1107,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								}
 
 								if ( $this->p->notice->is_admin_pre_notices() ) {
-				
+
 									$this->p->notice->warn( $error_msg );
 								}
 

@@ -2099,15 +2099,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				switch ( $mod[ 'query_vars' ][ 'order' ] ) {
 
 					case 'ASC':
-	
+
 						$json_data[ 'itemListOrder' ] = 'https://schema.org/ItemListOrderAscending';
-	
+
 						break;
-	
+
 					case 'DESC':
-	
+
 						$json_data[ 'itemListOrder' ] = 'https://schema.org/ItemListOrderDescending';
-	
+
 						break;
 				}
 			}

@@ -2275,7 +2275,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'info-custom-fields':
 
 							$text .= '<blockquote class="top-info">';
-							
+
 							$text .= '<p>';
 
 							$text .= sprintf( __( 'These options allow you to customize the custom field names (aka metadata names) that %s can use to get additional information about your content.', 'wpsso' ), $wpsso_name_pro ) . ' ';

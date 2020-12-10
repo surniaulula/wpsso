@@ -300,7 +300,7 @@ if ( ! function_exists( 'wpsso_get_post_organization_options' ) ) {
 			return false;
 
 		}
-		
+
 		$mod = wpsso_get_post_mod( $post_id );
 
 		$org_opts = apply_filters( 'wpsso_get_organization_options', false, $mod, $type_id );
@@ -325,7 +325,7 @@ if ( ! function_exists( 'wpsso_get_post_place_options' ) ) {
 
 			return false;
 		}
-		
+
 		$mod = wpsso_get_post_mod( $post_id );
 
 		return apply_filters( 'wpsso_get_place_options', false, $mod, $type_id );
@@ -340,7 +340,7 @@ if ( ! function_exists( 'wpsso_get_post_primary_category' ) ) {
 
 			return false;
 		}
-		
+
 		$wpsso =& Wpsso::get_instance();
 
 		$mod = wpsso_get_post_mod( $post_id );

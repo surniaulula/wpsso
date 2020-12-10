@@ -2044,9 +2044,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				static $local_cache = array();
 
 				$post_id = $mod[ 'id' ];
-	
+
 				if ( isset( $local_cache[ $post_id ][ $tax_slug ] ) ) {
-	
+
 					return $local_cache[ $post_id ][ $tax_slug ];	// Return value from local cache.
 				}
 
@@ -2071,13 +2071,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					foreach ( $primary_terms as $term_id => $term_name ) {
 
 						$primary_term_id = $term_id;	// Use the first term ID found.
-	
+
 						break;	// Stop here.
 					}
 				}
 
 				$primary_term_id = apply_filters( 'wpsso_primary_term_id', $primary_term_id, $mod, $tax_slug, $is_custom );
-			
+
 				$local_cache[ $post_id ][ $tax_slug ] = $primary_term_id;
 			}
 
@@ -2103,7 +2103,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				if ( is_array( $post_terms ) ) {
 
 					foreach ( $post_terms as $term_obj ) {
-			
+
 						$primary_terms[ $term_obj->term_id ] = $term_obj->name;
 					}
 				}
