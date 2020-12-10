@@ -318,7 +318,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.17.0-dev.2 (2020/12/09)**
+**Version 8.17.0-b.1 (2020/12/10)**
 
 * **New Features**
 	* None.
@@ -337,6 +337,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* 'is_year'
 		* 'is_month'
 		* 'is_day'
+	* Added a new `SucomUtilWP::doing_ajax()` method.
+	* Added a new `SucomUtilWP::doing_cron()` method.
+	* Added a new `SucomUtilWP::doing_autosave()` method.
 	* Refactored the WpssoUtil->get_page_url() method.
 	* Refactored the WpssoUtil->get_url_paged() method.
 	* Refactored the WpssoUtil->get_request_url() method.
@@ -849,9 +852,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.17.0-dev.2 =
+= 8.17.0-b.1 =
 
-(2020/12/09) Fixed canonical and sharing URL pagination. Fixed Schema SearchResultsPage markup to use the search query.
+(2020/12/10) Fixed canonical and sharing URL pagination. Fixed Schema SearchResultsPage markup to use the search query.
 
 = 8.16.0 =
 
