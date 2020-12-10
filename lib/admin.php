@@ -85,7 +85,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			add_action( 'sucom_update_option_home', array( $this, 'site_address_changed' ), PHP_INT_MAX, 3 );
 
 			/**
-			 * Re-sort the active plugins array to load WPSSO Core before its add-ons.
+			 * Possibly re-sort the active plugins array to load WPSSO Core before its add-ons.
 			 */
 			add_filter( 'pre_update_option_active_plugins', array( $this, 'pre_update_active_plugins' ), PHP_INT_MAX, 3 );
 
@@ -2664,13 +2664,22 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/**
-		 * Re-sort the active plugins array to load WPSSO Core before its add-ons.
+		 * Possibly re-sort the active plugins array to load WPSSO Core before its add-ons.
+		 *
+		 * See the activate_plugin() function in wordpress/wp-admin/includes/plugin.php for context.
+		 *
+		 * When activating a plugin, the activate_plugin() function executes the following:
+		 *
+		 *	$current   = get_option( 'active_plugins', array() );	// Get current plugins array.
+		 *	$current[] = $plugin;					// Add the new plugin.
+		 *	sort( $current );					// Sort the plugin array.
+		 *	update_option( 'active_plugins', $current );		// Save the plugin array.
 		 */
-		public function pre_update_active_plugins( $value, $old_value, $option = 'active_plugins' ) {
+		public function pre_update_active_plugins( $current, $old_value, $option = 'active_plugins' ) {
 
-			usort( $value, array( 'self', 'sort_active_plugins' ) );
+			usort( $current, array( 'self', 'sort_active_plugins' ) );
 
-			return $value;
+			return $current;
 		}
 
 		/**
@@ -2682,22 +2691,22 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$addon_prefix = 'wpsso-';
 
-			if ( 0 === strpos( $a, $plugin_prefix ) ) {
+			if ( 0 === strpos( $a, $plugin_prefix ) ) {		// Wpsso Core.
 
-				if ( 0 === strpos( $b, $addon_prefix ) ) {
+				if ( 0 === strpos( $b, $addon_prefix ) ) {	// Wpsso add-on.
 
-					return -1;
+					return -1;				// Sort Wpsso Core before.
 				}
 
-			} elseif ( 0 === strpos( $a, $addon_prefix ) ) {
+			} elseif ( 0 === strpos( $a, $addon_prefix ) ) {	// Wpsso add-on.
 
-				if ( 0 === strpos( $b, $plugin_prefix ) ) {
+				if ( 0 === strpos( $b, $plugin_prefix ) ) {	// Wpsso Core.
 
-					return 1;
+					return 1;				// Sort Wpsso add-on after.
 				}
 			}
 
-			return 0;
+			return 0;	// Leave as-is.
 		}
 
 		public function check_tmpl_head_attributes() {
