@@ -2709,7 +2709,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 
-			return strcmp( $a, $b );				// Fallback to default WordPress sort() behavior.
+			return strcmp( $a, $b );				// Fallback to default sort() used by WordPress.
 		}
 
 		public function check_tmpl_head_attributes() {
