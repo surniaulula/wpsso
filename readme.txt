@@ -318,7 +318,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.17.0-b.1 (2020/12/10)**
+**Version 8.17.0-b.2 (2020/12/10)**
 
 * **New Features**
 	* None.
@@ -852,7 +852,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.17.0-b.1 =
+= 8.17.0-b.2 =
 
 (2020/12/10) Fixed canonical and sharing URL pagination. Fixed Schema SearchResultsPage markup to use the search query.
 
