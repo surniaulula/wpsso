@@ -2694,22 +2694,22 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$addon_prefix = 'wpsso-';
 
-			if ( 0 === strpos( $a, $plugin_prefix ) ) {		// WPSSO Core.
+			if ( 0 === strpos( $a, $plugin_prefix ) ) {		// WPSSO Core plugin.
 
 				if ( 0 === strpos( $b, $addon_prefix ) ) {	// WPSSO add-on.
 
-					return -1;				// Sort WPSSO Core before.
+					return -1;				// Sort WPSSO Core before the add-on.
 				}
 
 			} elseif ( 0 === strpos( $a, $addon_prefix ) ) {	// WPSSO add-on.
 
-				if ( 0 === strpos( $b, $plugin_prefix ) ) {	// WPSSO Core.
+				if ( 0 === strpos( $b, $plugin_prefix ) ) {	// WPSSO Core plugin.
 
-					return 1;				// Sort WPSSO add-on after.
+					return 1;				// Sort the add-on after WPSSO Core.
 				}
 			}
 
-			return 0;	// Leave as-is.
+			return strcmp( $a, $b );				// Fallback to default WordPress sort() behavior.
 		}
 
 		public function check_tmpl_head_attributes() {
