@@ -362,6 +362,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Removed the `WpssoSchema->add_page_links()` method.
 	* Removed the `$wpsso_paged` global variable.
 	* Renamed the WPSSO_SCHEMA_REVIEWS_PER_PAGE_MAX constant to WPSSO_SCHEMA_REVIEWS_MAX.
+	* Updated the 'pre_update_option_active_plugins' filter hook fallback to sorting like WordPress (instead of leaving the order as-is).
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.5.
