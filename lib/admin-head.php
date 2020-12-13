@@ -453,12 +453,14 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 		private function get_install_activate_addon_link( $ext ) {
 
-			$ext_info        = $this->p->cf[ 'plugin' ][ $ext ];
+			$ext_info = $this->p->cf[ 'plugin' ][ $ext ];
+
 			$ext_name_transl = _x( $ext_info[ 'name' ], 'plugin name', 'wpsso' );
 
 			if ( SucomPlugin::is_plugin_installed( $ext_info[ 'base' ], $use_cache = true ) ) {
 
 				$search_url = is_multisite() ? network_admin_url( 'plugins.php', null ) : get_admin_url( $blog_id = null, 'plugins.php' );
+
 				$search_url = add_query_arg( array( 's' => $ext_info[ 'base' ] ), $search_url );
 
 				return '<a href="' . $search_url . '">' . sprintf( __( 'Activate the %s add-on.', 'wpsso' ), $ext_name_transl ) . '</a>';

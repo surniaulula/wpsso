@@ -3691,108 +3691,108 @@ msgstr ""
 msgid "Purchase the %s plugin."
 msgstr ""
 
-#: lib/admin-head.php:464
+#: lib/admin-head.php:466
 msgid "Activate the %s add-on."
 msgstr ""
 
-#: lib/admin-head.php:470
+#: lib/admin-head.php:472
 msgid "Install and activate the %s add-on."
 msgstr ""
 
-#: lib/admin-head.php:568
+#: lib/admin-head.php:570
 msgid "Yes! Rate %s 5 stars!"
 msgstr ""
 
-#: lib/admin-head.php:570 lib/admin-head.php:582 lib/admin-head.php:692
+#: lib/admin-head.php:572 lib/admin-head.php:584 lib/admin-head.php:694
 msgid "Awesome!"
 msgstr ""
 
-#: lib/admin-head.php:571
+#: lib/admin-head.php:573
 msgid "Thank you for rating the %s plugin!"
 msgstr ""
 
-#: lib/admin-head.php:580
+#: lib/admin-head.php:582
 msgid "I've already rated %s."
 msgstr ""
 
-#: lib/admin-head.php:583
+#: lib/admin-head.php:585
 msgid "Thank you for supporting and encouraging your developers!"
 msgstr ""
 
-#: lib/admin-head.php:602 lib/admin-head.php:721
+#: lib/admin-head.php:604 lib/admin-head.php:723
 msgid "Fantastic!"
 msgstr ""
 
-#: lib/admin-head.php:604
+#: lib/admin-head.php:606
 msgid "You've been using %s for a while now, which is awesome!"
 msgstr ""
 
-#: lib/admin-head.php:610 lib/admin-head.php:728
+#: lib/admin-head.php:612 lib/admin-head.php:730
 msgid ""
 "We've put many years of time and effort into making %s and its add-ons the "
 "best possible."
 msgstr ""
 
-#: lib/admin-head.php:620
+#: lib/admin-head.php:622
 msgid ""
 "Now that you've been using %s for a while, it would help tremendously if you "
 "could rate it on WordPress.org."
 msgstr ""
 
-#: lib/admin-head.php:623 lib/messages.php:2942
+#: lib/admin-head.php:625 lib/messages.php:2942
 msgid ""
 "Great ratings are an excellent way to ensure the continued development of "
 "your favorite plugins."
 msgstr ""
 
-#: lib/admin-head.php:629 lib/messages.php:2948
+#: lib/admin-head.php:631 lib/messages.php:2948
 msgid ""
 "Without your rating, a plugin you value and depend on could be deprecated "
 "prematurely."
 msgstr ""
 
-#: lib/admin-head.php:631
+#: lib/admin-head.php:633
 msgid "Don't let that happen - rate %s now!"
 msgstr ""
 
-#: lib/admin-head.php:667
+#: lib/admin-head.php:669
 msgid "two months"
 msgstr ""
 
-#: lib/admin-head.php:688
+#: lib/admin-head.php:690
 msgid "Yes! I'd like to get the %s version!"
 msgstr ""
 
-#: lib/admin-head.php:690
+#: lib/admin-head.php:692
 msgid "No thanks. I'll stay with the %s version."
 msgstr ""
 
-#: lib/admin-head.php:693
+#: lib/admin-head.php:695
 msgid ""
 "Thank you for encouraging and supporting the continued development of %s."
 msgstr ""
 
-#: lib/admin-head.php:696
+#: lib/admin-head.php:698
 msgid "Thank you."
 msgstr ""
 
-#: lib/admin-head.php:697
+#: lib/admin-head.php:699
 msgid ""
 "Hopefully you'll change your mind in the future and help support the "
 "continued development of %s."
 msgstr ""
 
-#: lib/admin-head.php:723
+#: lib/admin-head.php:725
 msgid "You've been using %1$s for more than %2$s now, which is awesome!"
 msgstr ""
 
-#: lib/admin-head.php:731
+#: lib/admin-head.php:733
 msgid ""
 "I hope you've enjoyed all the new features, improvements and updates over "
 "the past %s."
 msgstr ""
 
-#: lib/admin-head.php:736
+#: lib/admin-head.php:738
 msgid ""
 "Have you thought about purchasing the %s version? It comes with a lot of "
 "great extra features!"
