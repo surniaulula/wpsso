@@ -318,6 +318,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.17.1-dev.1 (2020/12/13)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed 'wpsso_post_url' argument count in NextGEN Gallery integration module (Premium version).
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v5.6.
+	* WordPress v4.5.
+
 **Version 8.17.0 (2020/12/11)**
 
 * **New Features**
@@ -852,6 +866,10 @@ This release adds a new SSO &gt; Features Status page and integration module for
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.17.1-dev.1 =
+
+(2020/12/13) Fixed 'wpsso_post_url' argument count in NextGEN Gallery integration module (Premium version).
 
 = 8.17.0 =
 
