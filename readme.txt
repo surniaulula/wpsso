@@ -318,7 +318,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.17.1-rc.1 (2020/12/13)**
+**Version 8.17.1 (2020/12/13)**
 
 * **New Features**
 	* None.
@@ -867,7 +867,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.17.1-rc.1 =
+= 8.17.1 =
 
 (2020/12/13) Fixed an incorrect 'wpsso_post_url' argument count in the NextGEN Gallery integration module (Premium version).
 
