@@ -318,7 +318,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.17.2-dev.1 (TBD)**
+**Version 8.17.2-dev.1 (2020/12/14)**
 
 * **New Features**
 	* None.
@@ -327,7 +327,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Removed the `SucomUtil::get_query_salt()` method.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.5.
@@ -880,6 +880,10 @@ This release adds a new SSO &gt; Features Status page and integration module for
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.17.2-dev.1 =
+
+(2020/12/14) Removed the `SucomUtil::get_query_salt()` method.
 
 = 8.17.1 =
 
