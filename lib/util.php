@@ -3085,7 +3085,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'saving the original post object ' . ( isset( $post->ID ) ? 'id ' . $post->ID : '(no post ID)' ) );
+				$this->p->debug->log( 'saving the original post object ' . ( isset( $post->ID ) ?
+					'ID ' . $post->ID : '(no post ID)' ) );
 			}
 
 			$post_pre_filter = $post;		// Save the original global post object.
@@ -3224,7 +3225,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 */
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'restoring the original post ' . ( isset( $post_pre_filter->ID ) ?
+				$this->p->debug->log( 'restoring the original post object ' . ( isset( $post_pre_filter->ID ) ?
 					'ID ' . $post_pre_filter->ID : '(no post ID)' ) );
 			}
 

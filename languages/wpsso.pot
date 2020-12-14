@@ -3185,7 +3185,7 @@ msgstr ""
 
 #: gettext/gettext-lib-pro.php:154 lib/media.php:1098 lib/post.php:541
 #: lib/pro/ecom/woocommerce.php:1517 lib/register.php:347 lib/term.php:461
-#: lib/user.php:441 lib/util.php:836 lib/util.php:3187
+#: lib/user.php:441 lib/util.php:836 lib/util.php:3188
 msgid "%s warning:"
 msgstr ""
 
@@ -5105,7 +5105,7 @@ msgid ""
 msgstr ""
 
 #: lib/media.php:1099 lib/post.php:542 lib/term.php:462 lib/user.php:442
-#: lib/util.php:837 lib/util.php:3188
+#: lib/util.php:837 lib/util.php:3189
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -9176,13 +9176,13 @@ msgid ""
 "provider to have the missing function installed."
 msgstr ""
 
-#: lib/util.php:3189
+#: lib/util.php:3190
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3205
+#: lib/util.php:3206
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -9191,120 +9191,120 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3207
+#: lib/util.php:3208
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3552
+#: lib/util.php:3553
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr ""
 
-#: lib/util.php:3553
+#: lib/util.php:3554
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/util.php:3557
+#: lib/util.php:3558
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr ""
 
-#: lib/util.php:3558
+#: lib/util.php:3559
 msgctxt "validator type"
 msgid "Microdata"
 msgstr ""
 
-#: lib/util.php:3562
+#: lib/util.php:3563
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr ""
 
-#: lib/util.php:3563
+#: lib/util.php:3564
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr ""
 
-#: lib/util.php:3567
+#: lib/util.php:3568
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/util.php:3568
+#: lib/util.php:3569
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr ""
 
-#: lib/util.php:3572
+#: lib/util.php:3573
 msgctxt "option label"
 msgid "Google Structured Data Test (Deprecated)"
 msgstr ""
 
-#: lib/util.php:3573
+#: lib/util.php:3574
 msgctxt "validator type"
 msgid "Structured Data"
 msgstr ""
 
-#: lib/util.php:3577
+#: lib/util.php:3578
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/util.php:3578
+#: lib/util.php:3579
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/util.php:3582
+#: lib/util.php:3583
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/util.php:3583
+#: lib/util.php:3584
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr ""
 
-#: lib/util.php:3587
+#: lib/util.php:3588
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/util.php:3588
+#: lib/util.php:3589
 msgctxt "validator type"
 msgid "Twitter Card"
 msgstr ""
 
-#: lib/util.php:3593
+#: lib/util.php:3594
 msgctxt "option label"
 msgid "The AMP Project Validator"
 msgstr ""
 
-#: lib/util.php:3594
+#: lib/util.php:3595
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr ""
 
-#: lib/util.php:3598
+#: lib/util.php:3599
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr ""
 
-#: lib/util.php:3599
+#: lib/util.php:3600
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name.
-#: lib/util.php:3749
+#: lib/util.php:3750
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3759
+#: lib/util.php:3760
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 
