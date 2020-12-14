@@ -155,14 +155,16 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 								global $wp_version;
 
-								$app_version  = $wp_version;
+								$app_version = $wp_version;
+
 								$dismiss_time = MONTH_IN_SECONDS;
 
 								break;
 
 							case 'php':
 
-								$app_version  = phpversion();
+								$app_version = phpversion();
+
 								$dismiss_time = 3 * MONTH_IN_SECONDS;
 
 								break;
