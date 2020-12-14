@@ -86,7 +86,9 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'label'    => _x( 'Product Price', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_price',
 					'content'  => $form->get_no_input( 'product_price', $css_class = 'price', $css_id = '', $holder = true ) . ' ' .
-						$form->get_no_select( 'product_currency', $currencies, $css_class = 'currency' ),
+						$form->get_no_select( 'product_currency', $currencies, $css_class = 'currency' ) .
+							( empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ? '' :
+								' ' . __( 'for simple or main product' ) ),
 				),
 				'og_product_avail' => array(		// Open Graph meta tag product:availability.
 					'tr_class' => 'hide_og_type hide_og_type_product',

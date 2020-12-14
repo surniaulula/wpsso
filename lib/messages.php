@@ -2437,9 +2437,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 								if ( ! empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ) {
 
+									// translators: Please ignore - translation uses a different text domain.
+									$wc_mb_name = '<strong>' . __( 'Product data', 'woocommerce' ) . '</strong>';
+
 									$text = '<p class="pro-feature-msg">';
 
-									$text .= __( 'Disabled product information fields show values imported from the WooCommerce product data metabox, including additional WooCommerce product metadata and attributes.', 'wpsso' );
+									$text .= sprintf( __( 'Disabled product information fields show values imported from the WooCommerce %s metabox.', 'wpsso' ), $wc_mb_name ) . '<br/>';
+
+									$text .= sprintf( __( 'Edit product information in the WooCommerce %s metabox to update the default values.', 'wpsso' ), $wc_mb_name );
 
 									$text .= '</p>';
 

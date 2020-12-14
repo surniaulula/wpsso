@@ -112,6 +112,8 @@ _x( 'Basic Product Information', 'metabox title', 'wpsso' );
 _x( 'Product Type', 'option label', 'wpsso' );
 _x( 'Product Brand', 'option label', 'wpsso' );
 _x( 'Product Price', 'option label', 'wpsso' );
+// translators: Please ignore - translation uses a different text domain.
+__( 'for simple or main product' );
 _x( 'Product Availability', 'option label', 'wpsso' );
 _x( 'Product Condition', 'option label', 'wpsso' );
 _x( 'Product Material', 'option label', 'wpsso' );
