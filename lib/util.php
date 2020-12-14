@@ -3088,7 +3088,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$this->p->debug->log( 'saving the original post object ' . ( isset( $post->ID ) ? 'id ' . $post->ID : '(no post ID)' ) );
 			}
 
-			$post_obj_pre_filter = $post;		// Save the original global post object.
+			$post_pre_filter = $post;		// Save the original global post object.
+
 			$wp_query_pre_filter = $wp_query;	// Save the original global wp_query.
 
 			/**
@@ -3223,11 +3224,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 */
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'restoring the original post object ' . 
-					( isset( $post_obj_pre_filter->ID ) ? 'id ' . $post_obj_pre_filter->ID : '(no post ID)' ) );
+				$this->p->debug->log( 'restoring the original post ' . ( isset( $post_pre_filter->ID ) ?
+					'ID ' . $post_pre_filter->ID : '(no post ID)' ) );
 			}
 
-			$post     = $post_obj_pre_filter;	// Restore the original global post object.
+			$post = $post_pre_filter;	// Restore the original global post object.
+
 			$wp_query = $wp_query_pre_filter;	// Restore the original global wp_query.
 
 			if ( $this->p->debug->enabled ) {

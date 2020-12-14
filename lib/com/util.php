@@ -2770,18 +2770,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return apply_filters( 'sucom_mod_salt', $mod_salt, $sharing_url );
 		}
 
-		public static function get_query_salt( $query_salt = '' ) {
-
-			global $wp_query;
-
-			if ( isset( $wp_query->query ) ) {
-
-				$query_salt = self::get_implode_assoc( '_', ':', $wp_query->query, $query_salt );
-			}
-
-			return apply_filters( 'sucom_query_salt', $query_salt );
-		}
-
 		public static function get_assoc_salt( array $assoc ) {
 
 			$assoc_salt = '';
