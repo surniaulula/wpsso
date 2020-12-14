@@ -323,7 +323,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Updated product information text in the Document SSO metabox for WooCommerce (Premium version).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -883,7 +883,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 = 8.17.2-dev.1 =
 
-(2020/12/14) Removed the `SucomUtil::get_query_salt()` method.
+(2020/12/14) Updated product information text in the Document SSO metabox for WooCommerce (Premium version).
 
 = 8.17.1 =
 
