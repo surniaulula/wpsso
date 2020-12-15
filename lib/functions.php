@@ -336,7 +336,10 @@ if ( ! function_exists( 'wpsso_get_post_place_options' ) ) {
 
 if ( ! function_exists( 'wpsso_get_post_primary_category' ) ) {
 
-	function wpsso_get_post_primary_category( $post_id ) {
+	/**
+	 * Returns a custom or default term ID, or false if a term for the $tax_slug is not found.
+	 */
+	function wpsso_get_post_primary_category( $post_id, $tax_slug = 'category' ) {
 
 		if ( empty( $post_id ) ) {	// Just in case.
 
@@ -347,6 +350,6 @@ if ( ! function_exists( 'wpsso_get_post_primary_category' ) ) {
 
 		$mod = wpsso_get_post_mod( $post_id );
 
-		return $wpsso->post->get_primary_term_id( $mod, $tax_slug = 'category' );
+		return $wpsso->post->get_primary_term_id( $mod, $tax_slug );
 	}
 }

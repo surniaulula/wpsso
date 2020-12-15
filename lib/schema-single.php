@@ -89,7 +89,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				 */
 				$json_ret[ 'name' ] = $wpsso->page->get_title( $title_max_len = 0, $dots = '', $mod,
 					$read_cache = true, $add_hashtags = false, $do_encode = true,
-						$md_key = 'schema_title', $sep = false );
+						$md_key = 'schema_title', $title_sep = false );
 
 				/**
 				 * Get the image alternate title, if one has been defined in the custom post meta.

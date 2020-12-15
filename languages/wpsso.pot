@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.17.2-dev.2\n"
+"Project-Id-Version: WPSSO Core 8.17.2-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3179,27 +3179,27 @@ msgid ""
 "version of WooCommerce."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:154 lib/pro/ecom/woocommerce.php:1289
+#: gettext/gettext-lib-pro.php:154 lib/pro/ecom/woocommerce.php:1292
 msgid "World"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:155 lib/pro/ecom/woocommerce.php:1516
+#: gettext/gettext-lib-pro.php:155 lib/pro/ecom/woocommerce.php:1519
 msgid ""
 "https://docs.woocommerce.com/wc-apidocs/function-wc_get_price_including_tax."
 "html"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:156 lib/media.php:1098 lib/post.php:541
-#: lib/pro/ecom/woocommerce.php:1517 lib/register.php:347 lib/term.php:461
+#: lib/pro/ecom/woocommerce.php:1520 lib/register.php:347 lib/term.php:461
 #: lib/user.php:441 lib/util.php:836 lib/util.php:3188
 msgid "%s warning:"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:157 lib/pro/ecom/woocommerce.php:1518
+#: gettext/gettext-lib-pro.php:157 lib/pro/ecom/woocommerce.php:1521
 msgid "The <a href=\"%1$s\">WooCommerce %2$s function</a> is not available."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:158 lib/pro/ecom/woocommerce.php:1521
+#: gettext/gettext-lib-pro.php:158 lib/pro/ecom/woocommerce.php:1524
 msgid "Please update your site to WooCommerce version %s or newer."
 msgstr ""
 
@@ -3274,7 +3274,7 @@ msgid ""
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:177 lib/edit.php:495 lib/page.php:1261
-#: lib/pro/social/buddypress.php:695
+#: lib/pro/social/buddypress.php:700
 msgctxt "default description"
 msgid "No Description."
 msgstr ""

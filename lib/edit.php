@@ -70,7 +70,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 
 			$og_types         = $this->p->og->get_og_types_select();
 			$schema_types     = $this->p->schema->get_schema_types_select( $context = 'meta' );
-			$primary_terms    = $this->p->post->get_primary_terms( $mod, $tax_slug = 'category' );
+			$primary_terms    = $this->p->post->get_primary_terms( $mod, $tax_slug = 'category', $output = 'names' );
 			$article_sections = $this->p->util->get_article_sections();
 
 			/**

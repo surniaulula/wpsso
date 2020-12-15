@@ -201,7 +201,7 @@
 
 'wpsso_primary_term_id' ( $primary_term_id, $mod, $tax_slug, $is_custom )
 
-'wpsso_primary_terms' ( $primary_terms, $mod, $tax_slug )
+'wpsso_primary_terms' ( $primary_terms, $mod, $tax_slug, $output )
 
 'wpsso_product_attribute_names' ( array $attr_names )
 
@@ -289,9 +289,9 @@
 
 'wpsso_the_content_seed' ( '', $mod, $read_cache, $md_key )
 
-'wpsso_title_seed' ( '', $mod, $add_hashtags, $md_key, $sep )
+'wpsso_title_seed' ( '', $mod, $add_hashtags, $md_key, $title_sep )
 
-'wpsso_title' ( $title_text, $mod, $add_hashtags, $md_key, $sep )
+'wpsso_title' ( $title_text, $mod, $add_hashtags, $md_key, $title_sep )
 
 'wpsso_user_archive_description' ( $desc_text, $mod, $user_obj )
 

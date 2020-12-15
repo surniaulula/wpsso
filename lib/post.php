@@ -1599,7 +1599,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 						$post_terms = wp_get_post_terms( $post_id, $tax_slug );	// Returns WP_Error if taxonomy does not exist.
 
-						if ( is_array( $post_terms ) ) {
+						if ( ! empty( $post_terms ) && is_array( $post_terms ) ) {	// Have one or more terms and taxonomy exists.
 
 							foreach ( $post_terms as $term_obj ) {
 
@@ -2031,9 +2031,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		/**
 		 * Since WPSSO Core v8.15.0.
 		 *
-		 * Returns a term ID, or false if a term for the $tax_slug is not found.
-		 *
-		 * Called by WpssoWpMeta->get_defaults().
+		 * Returns a custom or default term ID, or false if a term for the $tax_slug is not found.
 		 */
 		public function get_primary_term_id( array $mod, $tax_slug = 'category' ) {
 
@@ -2051,65 +2049,144 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 
 				/**
+				 * The 'wpsso_primary_tax_slug' filter is hooked by the EDD and WooCommerce integration modules.
+				 */
+				$primary_tax_slug = apply_filters( 'wpsso_primary_tax_slug', $tax_slug, $mod );
+
+				/**
 				 * Returns null if a custom primary term ID has not been selected.
 				 */
 				$primary_term_id = $this->get_options( $post_id, $md_key = 'primary_term_id' );
 
 				/**
 				 * Make sure the term is not null or false, and still exists.
+				 *
+				 * Note that term_exists() requires an integer ID, not a string ID.
 				 */
-				if ( ! empty( $primary_term_id ) && term_exists( $primary_term_id ) ) {	// Since WP v3.0.
+				if ( ! empty( $primary_term_id ) && term_exists( (int) $primary_term_id ) ) {	// Since WP v3.0.
 
 					$is_custom = true;
 
 				} else {
 
-					$is_custom       = false;
-					$primary_term_id = false;
-					$primary_terms   = $this->get_primary_terms( $mod, $tax_slug );
+					$is_custom = false;
 
-					foreach ( $primary_terms as $term_id => $term_name ) {
-
-						$primary_term_id = $term_id;	// Use the first term ID found.
-
-						break;	// Stop here.
-					}
+					$primary_term_id = $this->get_default_term_id( $mod, $tax_slug );
 				}
 
 				$primary_term_id = apply_filters( 'wpsso_primary_term_id', $primary_term_id, $mod, $tax_slug, $is_custom );
 
-				$local_cache[ $post_id ][ $tax_slug ] = $primary_term_id;
+				$local_cache[ $post_id ][ $tax_slug ] = empty( $primary_term_id ) ? false : (int) $primary_term_id;
 			}
 
 			return $primary_term_id;
 		}
 
 		/**
+		 * Since WPSSO Core v8.17.2.
+		 *
+		 * Returns the first taxonomy term ID, , or false if a term for the $tax_slug is not found.
+		 */
+		public function get_default_term_id( array $mod, $tax_slug = 'category' ) {
+
+			$default_term_id = false;
+
+			if ( $mod[ 'is_post' ] ) {	// Just in case.
+
+				/**
+				 * The 'wpsso_primary_tax_slug' filter is hooked by the EDD and WooCommerce integration modules.
+				 */
+				$primary_tax_slug = apply_filters( 'wpsso_primary_tax_slug', $tax_slug, $mod );
+
+				$post_terms = wp_get_post_terms( $mod[ 'id' ], $primary_tax_slug, $args = array( 'number' => 1 ) );
+
+				if ( ! empty( $post_terms ) && is_array( $post_terms ) ) {	// Have one or more terms and taxonomy exists.
+
+					foreach ( $post_terms as $term_obj ) {
+
+						$default_term_id = (int) $term_obj->term_id;	// Use the first term ID found.
+
+						break;
+					}
+				}
+
+				$default_term_id = apply_filters( 'wpsso_default_term_id', $default_term_id, $mod, $tax_slug );
+			}
+
+			return $default_term_id;
+		}
+
+		/**
 		 * Since WPSSO Core v8.16.0.
 		 *
-		 * Returns an associative array of term IDs and names.
+		 * Returns an associative array of term IDs and their names or objects.
 		 *
-		 * Called by $this->get_primary_term_id() and WpssoEdit->filter_metabox_sso_edit_rows(),
+		 * The primary or default term ID will be included as the first array element.
 		 */
-		public function get_primary_terms( array $mod, $tax_slug = 'category' ) {
+		public function get_primary_terms( array $mod, $tax_slug = 'category', $output = 'objects' ) {
 
 			$primary_terms = array();
 
 			if ( $mod[ 'is_post' ] ) {	// Just in case.
 
-				$primary_tax_slug = apply_filters( 'wpsso_primary_tax_slug', $tax_slug, $mod );
-				$post_terms       = wp_get_post_terms( $mod[ 'id' ], $primary_tax_slug );	// Returns WP_Error if taxonomy does not exist.
+				$post_id = $mod[ 'id' ];
 
-				if ( is_array( $post_terms ) ) {
+				/**
+				 * Returns a custom or default term ID, or false if a term for the $tax_slug is not found.
+				 */
+				$primary_term_id = $this->p->post->get_primary_term_id( $mod, $tax_slug );	// Returns false or term ID.
 
-					foreach ( $post_terms as $term_obj ) {
+				if ( $primary_term_id ) {
 
-						$primary_terms[ $term_obj->term_id ] = $term_obj->name;
+					/**
+					 * The 'wpsso_primary_tax_slug' filter is hooked by the EDD and WooCommerce integration modules.
+					 */
+					$primary_tax_slug = apply_filters( 'wpsso_primary_tax_slug', $tax_slug, $mod );
+
+					$primary_term_obj = get_term_by( 'id', $primary_term_id, $primary_tax_slug, OBJECT, 'raw' );
+
+					if ( $primary_term_obj ) {
+
+						$post_terms = wp_get_post_terms( $post_id, $primary_tax_slug, $args = array( 'exclude' => array( $primary_term_id ) ) );
+	
+						if ( ! empty( $post_terms ) && is_array( $post_terms ) ) {	// Have one or more terms and taxonomy exists.
+
+							$post_terms = array_merge( array( $primary_term_obj ), $post_terms );
+
+						} else {
+
+							$post_terms = array( $primary_term_obj );
+						}
+
+						foreach ( $post_terms as $term_obj ) {
+
+							switch ( $output ) {
+	
+								case 'ids':
+								case 'term_ids':
+	
+									$primary_terms[ $term_obj->term_id ] = (int) $term_obj->term_id;
+	
+									break;
+	
+								case 'names':
+	
+									$primary_terms[ $term_obj->term_id ] = (string) $term_obj->name;
+	
+									break;
+	
+								case 'objects':
+	
+									$primary_terms[ $term_obj->term_id ] = $term_obj;
+	
+									break;
+							}
+						}
 					}
 				}
 			}
 
-			return apply_filters( 'wpsso_primary_terms', $primary_terms, $mod, $tax_slug );
+			return apply_filters( 'wpsso_primary_terms', $primary_terms, $mod, $tax_slug, $output );
 		}
 
 		/**

@@ -3606,9 +3606,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * Returns an array of product attribute names, indexed by meta tag name ($sep = ":") or option name ($sep = "_").
+		 * Returns an array of product attribute names, indexed by meta tag name ($delim = ":") or option name ($delim = "_").
 		 *
-		 * Example $prefix = "product" and $sep = ":" for meta tag names:
+		 * Example $prefix = "product" and $delim = ":" for meta tag names:
 		 *
 		 * 	Array(
 		 *		[product:brand]              => Brand
@@ -3625,7 +3625,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 *		[product:fluid_volume:value] => Volume
 		 *	)
 		 *
-		 * Example $prefix = "product" and $sep = "_" for option names:
+		 * Example $prefix = "product" and $delim = "_" for option names:
 		 *
 		 * 	Array(
 		 *		[product_brand]              => Brand
@@ -3642,7 +3642,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 *		[product_fluid_volume_value] => Volume
 		 *	)
 		 */
-		public function get_product_attr_names( $prefix = 'product', $sep = ':' ) {
+		public function get_product_attr_names( $prefix = 'product', $delim = ':' ) {
 
 			static $local_cache = null;
 
@@ -3682,12 +3682,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			foreach ( $local_cache as $key => $val ) {
 
-				if ( $sep !== '_' ) {
+				if ( $delim !== '_' ) {
 
-					$key = preg_replace( '/_(value|units)$/', $sep . '$1', $key );
+					$key = preg_replace( '/_(value|units)$/', $delim . '$1', $key );
 				}
 
-				$attr_names[ $prefix . $sep . $key ] = $val;
+				$attr_names[ $prefix . $delim . $key ] = $val;
 			}
 
 			return $attr_names;

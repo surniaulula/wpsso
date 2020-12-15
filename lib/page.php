@@ -570,7 +570,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$cap_text = '';
 
-			$sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
+			$title_sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
 
 			if ( false === $md_key ) {	// False would return the complete meta array.
 
@@ -697,9 +697,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 							$cap_text .= ' ';
 						}
 
-						if ( ! empty( $sep ) ) {
+						if ( ! empty( $title_sep ) ) {
 
-							$cap_text .= $sep . ' ';
+							$cap_text .= $title_sep . ' ';
 						}
 
 						/**
@@ -730,10 +730,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		 *
 		 * $md_key = true | false | string | array
 		 *
-		 * Use $sep = false to avoid adding parent names in the term title.
+		 * Use $title_sep = false to avoid adding parent names in the term title.
 		 */
 		public function get_title( $max_len = 70, $dots = '', $mod = false, $read_cache = true,
-			$add_hashtags = false, $do_encode = true, $md_key = 'og_title', $sep = null ) {
+			$add_hashtags = false, $do_encode = true, $md_key = 'og_title', $title_sep = null ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -745,7 +745,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					'add_hashtags' => $add_hashtags,	// True, false, or numeric.
 					'do_encode'    => $do_encode,
 					'md_key'       => $md_key,
-					'sep'          => $sep,
+					'title_sep'    => $title_sep,
 				) );
 			}
 
@@ -779,9 +779,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$md_key = array_unique( $md_key );	// Just in case.
 
-			if ( null === $sep ) {	// Can be false.
+			if ( null === $title_sep ) {	// Can be false.
 
-				$sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
+				$title_sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
 			}
 
 			$title_text = '';
@@ -815,7 +815,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( empty( $title_text ) ) {
 
-				$title_text = apply_filters( 'wpsso_title_seed', '', $mod, $add_hashtags, $md_key, $sep );
+				$title_text = apply_filters( 'wpsso_title_seed', '', $mod, $add_hashtags, $md_key, $title_sep );
 
 				if ( ! empty( $title_text ) ) {
 
@@ -836,7 +836,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( empty( $title_text ) ) {
 
-				$title_text = $this->get_the_title( $mod, $sep );
+				$title_text = $this->get_the_title( $mod, $title_sep );
 			}
 
 			/**
@@ -858,12 +858,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $paged > 1 ) {
 
-					if ( ! empty( $sep ) ) {
+					if ( ! empty( $title_sep ) ) {	// Can be false.
 
-						$pagesuffix .= $sep . ' ';
+						$pagesuffix .= ' ' . $title_sep;
 					}
 
-					$pagesuffix .= sprintf( 'Page %s', $paged );
+					$pagesuffix .= ' ' . sprintf( 'Page %s', $paged );
 				}
 			}
 
@@ -872,7 +872,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( $max_len > 0 ) {
 
-				$adj_max_len = empty( $pagesuffix ) ? $max_len : $max_len - strlen( $pagesuffix ) - 1;
+				$adj_max_len = empty( $pagesuffix ) ? $max_len : $max_len - strlen( $pagesuffix );
 
 				$adj_max_len = empty( $hashtags ) ? $adj_max_len : $adj_max_len - strlen( $hashtags ) - 1;
 
@@ -887,7 +887,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( ! empty( $pagesuffix ) ) {
 
-				$title_text .= ' ' . $pagesuffix;
+				$title_text = trim( $title_text . $pagesuffix );	// $pagesuffix includes a leading space.
 			}
 
 			if ( ! empty( $hashtags ) ) {
@@ -897,7 +897,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( $do_encode ) {
 
-				foreach ( array( 'title_text', 'sep' ) as $var ) {	// Loop through variables.
+				foreach ( array( 'title_text', 'title_sep' ) as $var ) {	// Loop through variables.
 
 					$$var = SucomUtil::encode_html_emoji( $$var );
 				}
@@ -908,7 +908,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'before title filter = "' . $title_text . '"' );
 			}
 
-			return apply_filters( 'wpsso_title', $title_text, $mod, $add_hashtags, $md_key, $sep );
+			return apply_filters( 'wpsso_title', $title_text, $mod, $add_hashtags, $md_key, $title_sep );
 		}
 
 		/**
@@ -1383,15 +1383,15 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		/**
 		 * $mod = array
 		 *
-		 * Use $sep = false to avoid adding parent names in the term title.
+		 * Use $title_sep = false to avoid adding parent names in the term title.
 		 */
-		public function get_the_title( array $mod, $sep = null ) {
+		public function get_the_title( array $mod, $title_sep = null ) {
 
 			$title_text = '';
 
-			if ( null === $sep ) {	// Can be false.
+			if ( null === $title_sep ) {	// Can be false.
 
-				$sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
+				$title_sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
 			}
 
 			/**
@@ -1451,19 +1451,19 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					}
 				}
 
-				if ( ! empty( $sep ) ) {
+				if ( ! empty( $title_sep ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'adding separator "' . $sep . '" to title string' );
+						$this->p->debug->log( 'adding separator "' . $title_sep . '" to title string' );
 					}
 
-					$title_text .= $sep . ' ';
+					$title_text .= $title_sep . ' ';
 				}
 
 				if ( $filter_title ) {
 
-					$title_text = $this->p->util->safe_apply_filters( array( 'wp_title', $title_text, $sep, 'right' ), $mod );
+					$title_text = $this->p->util->safe_apply_filters( array( 'wp_title', $title_text, $title_sep, $seplocation = 'right' ), $mod );
 				}
 
 			} elseif ( $mod[ 'is_term' ] ) {
@@ -1471,9 +1471,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$term_obj = get_term( $mod[ 'id' ], $mod[ 'tax_slug' ] );
 
 				/**
-				 * Use $sep = false to avoid adding parent names in the term title.
+				 * Use $title_sep = false to avoid adding parent names in the term title.
 				 */
-				$title_text = $this->get_term_title( $term_obj, $sep );
+				$title_text = $this->get_term_title( $term_obj, $title_sep );
 
 				$title_text = apply_filters( 'wpsso_term_archive_title', $title_text, $mod, $term_obj );
 
@@ -1481,11 +1481,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				$user_obj = SucomUtil::get_user_object( $mod[ 'id' ] );
 
-				$title_text = $user_obj->display_name . ' ' . $sep . ' ';
+				$title_text = $user_obj->display_name . ' ' . $title_sep . ' ';
 
 				if ( $filter_title ) {
 
-					$title_text = $this->p->util->safe_apply_filters( array( 'wp_title', $title_text, $sep, 'right' ), $mod );
+					$title_text = $this->p->util->safe_apply_filters( array( 'wp_title', $title_text, $title_sep, $seplocation = 'right' ), $mod );
 				}
 
 				$title_text = apply_filters( 'wpsso_user_archive_title', $title_text, $mod, $user_obj );
@@ -1501,14 +1501,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $filter_title ) {
 
-					$title_text = $this->p->util->safe_apply_filters( array( 'wp_title', $title_text, $sep, 'right' ), $mod );
+					$title_text = $this->p->util->safe_apply_filters( array( 'wp_title', $title_text, $title_sep, $seplocation = 'right' ), $mod );
 				}
 
 				$title_text = apply_filters( 'wpsso_home_posts_title', $title_text, $mod );
 
 			} elseif ( $mod[ 'is_search' ] ) {
 
-				$title_text = sprintf( __( 'Search Results %1$s %2$s' ), $sep, esc_attr( $mod[ 'query_vars' ][ 's' ] ) );
+				$title_text = sprintf( __( 'Search Results %1$s %2$s' ), $title_sep, esc_attr( $mod[ 'query_vars' ][ 's' ] ) );
 
 				$title_text = apply_filters( 'wpsso_search_results_title', $title_text, $mod );
 
@@ -1533,14 +1533,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				} else {
 
-					$title_text = wp_title( $sep, $display = false, $seplocation = 'right' );
+					$title_text = wp_title( $title_sep, $display = false, $seplocation = 'right' );
 
 					$title_text = apply_filters( 'wpsso_wp_title', $title_text, $mod );
 				}
 
 			} else {
 
-				$title_text = wp_title( $sep, $display = false, $seplocation = 'right' );
+				$title_text = wp_title( $title_sep, $display = false, $seplocation = 'right' );
 
 				$title_text = apply_filters( 'wpsso_wp_title', $title_text, $mod );
 			}
@@ -1578,15 +1578,15 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/**
 			 * Trim excess separator.
 			 */
-			if ( ! empty( $sep ) ) {
+			if ( ! empty( $title_sep ) ) {
 
-				$title_text = preg_replace( '/ *' . preg_quote( $sep, '/' ) . ' *$/', '', $title_text );
+				$title_text = preg_replace( '/ *' . preg_quote( $title_sep, '/' ) . ' *$/', '', $title_text );
 			}
 
 			/**
 			 * Apply the filter.
 			 */
-			$title_text = apply_filters( 'wpsso_the_title', $title_text, $mod, $sep );
+			$title_text = apply_filters( 'wpsso_the_title', $title_text, $mod, $title_sep );
 
 			return $title_text;
 		}
@@ -2138,9 +2138,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		}
 
 		/**
-		 * Includes parent names in the term title if the $sep value is not empty.
+		 * Includes parent names in the term title if the $title_sep value is not empty.
 		 */
-		public function get_term_title( $term_id = 0, $sep = null ) {
+		public function get_term_title( $term_id = 0, $title_sep = null ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -2183,18 +2183,18 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				return $title_text;
 			}
 
-			if ( null === $sep ) {
+			if ( null === $title_sep ) {
 
-				$sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
+				$title_sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
 			}
 
 			if ( isset( $term_obj->name ) ) {
 
 				$title_text = $term_obj->name . ' ';
 
-				if ( ! empty( $sep ) ) {
+				if ( ! empty( $title_sep ) ) {
 
-					$title_text .= $sep . ' ';	// Default behavior.
+					$title_text .= $title_sep . ' ';	// Default behavior.
 				}
 
 			} elseif ( $this->p->debug->enabled ) {
@@ -2202,13 +2202,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'name property missing in term object' );
 			}
 
-			if ( ! empty( $sep ) ) {	// Just in case.
+			if ( ! empty( $title_sep ) ) {	// Just in case.
 
 				if ( ! empty( $term_obj->parent ) ) {
 
 					$term_parents = get_term_parents_list( $term_obj->term_id, $term_obj->taxonomy, $args = array(
 						'format'    => 'name',
-						'separator' => ' ' . $sep . ' ',
+						'separator' => ' ' . $title_sep . ' ',
 						'link'      => false,
 						'inclusive' => true,
 					) );
@@ -2238,9 +2238,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/**
 			 * Trim excess separator.
 			 */
-			if ( ! empty( $sep ) ) {
+			if ( ! empty( $title_sep ) ) {
 
-				$title_text = preg_replace( '/ *' . preg_quote( $sep, '/' ) . ' *$/', '', $title_text );
+				$title_text = preg_replace( '/ *' . preg_quote( $title_sep, '/' ) . ' *$/', '', $title_text );
 			}
 
 			return $title_text;

@@ -1770,7 +1770,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				} elseif ( true === $loop ) {
 
-					return $keys[0];
+					return $keys[ 0 ];
 				}
 			}
 
@@ -1811,10 +1811,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function add_after_key( array &$arr, $match_key, $mixed, $add_value = null ) {
 
-			return self::insert_in_array( 'after', $arr, $match_key, $mixed, $add_value, $ret_bool = true );
+			return self::insert_in_array( $insert = 'after', $arr, $match_key, $mixed, $add_value, $ret_bool = true );
 		}
 
-		private static function insert_in_array( $pos, array &$arr, $match_key, $mixed, $add_value = null, $ret_bool = false ) {
+		private static function insert_in_array( $insert = 'after', array &$arr, $match_key, $mixed, $add_value = null, $ret_bool = false ) {
 
 			$matched = false;
 
@@ -1824,7 +1824,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				foreach ( $arr as $key => $val ) {
 
-					if ( 'after' === $pos ) {
+					if ( 'after' === $insert ) {
 
 						$new_arr[ $key ] = $val;
 					}
@@ -1852,7 +1852,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						$matched = true;
 					}
 
-					if ( 'before' === $pos ) {
+					if ( 'before' === $insert ) {
 
 						$new_arr[ $key ] = $val;
 					}
@@ -2721,13 +2721,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function get_mod_salt( array $mod, $sharing_url = false ) {
 
-			$sep = '_';
-
 			$mod_salt = '';
 
 			if ( ! empty( $mod[ 'name' ] ) ) {
 
-				$mod_salt .= $sep . $mod[ 'name' ] . ':';
+				$mod_salt .= '_' . $mod[ 'name' ] . ':';
 
 				if ( $mod[ 'id' ] === false ) {
 
@@ -2749,23 +2747,23 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( ! empty( $mod[ 'tax_slug' ] ) ) {
 
-				$mod_salt .= $sep . 'tax:' . $mod[ 'tax_slug' ];
+				$mod_salt .= '_tax:' . $mod[ 'tax_slug' ];
 			}
 
 			if ( empty( $mod[ 'id' ] ) ) {
 
 				if ( ! empty( $mod[ 'is_home' ] ) ) {
 
-					$mod_salt .= $sep . 'home';
+					$mod_salt .= '_home';
 				}
 
 				if ( ! empty( $sharing_url ) ) {
 
-					$mod_salt .= $sep . 'url:' . $sharing_url;
+					$mod_salt .= '_url:' . $sharing_url;
 				}
 			}
 
-			$mod_salt = ltrim( $mod_salt, $sep );
+			$mod_salt = ltrim( $mod_salt, '_' );
 
 			return apply_filters( 'sucom_mod_salt', $mod_salt, $sharing_url );
 		}
@@ -3266,7 +3264,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( is_numeric( $term_id ) && $term_id > 0 ) {
 
-				$ret = term_exists( $term_id, $tax_slug );	// Since WP v3.0.
+				/**
+				 * Note that term_exists() requires an integer ID, not a string ID.
+				 */
+				$ret = term_exists( (int) $term_id, $tax_slug );	// Since WP v3.0.
 
 			} elseif ( is_tax() || is_category() || is_tag() ) {
 
@@ -3297,7 +3298,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( is_numeric( $term_id ) && $term_id > 0 ) {
 
-				$ret = term_exists( $term_id, 'category' );	// Since WP v3.0.
+				/**
+				 * Note that term_exists() requires an integer ID, not a string ID.
+				 */
+				$ret = term_exists( (int) $term_id, 'category' );	// Since WP v3.0.
 
 			} elseif ( is_category() ) {
 
@@ -3320,7 +3324,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( is_numeric( $term_id ) && $term_id > 0 ) {
 
-				$ret = term_exists( $term_id, 'post_tag' );	// Since WP v3.0.
+				/**
+				 * Note that term_exists() requires an integer ID, not a string ID.
+				 */
+				$ret = term_exists( (int) $term_id, 'post_tag' );	// Since WP v3.0.
 
 			} elseif ( is_tag() ) {
 
