@@ -318,7 +318,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.17.2-dev.2 (2020/12/14)**
+**Version 8.17.2-dev.3 (2020/12/15)**
 
 * **New Features**
 	* None.
@@ -328,6 +328,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Removed the `SucomUtil::get_query_salt()` method.
+	* Added a new `WpssoPost->get_default_term_id()` method.
+	* Refactored the `WpssoPost->get_primary_term_id()` method.
+	* Refactored the `WpssoPost->get_primary_terms()` method.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.5.
@@ -881,9 +884,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.17.2-dev.2 =
+= 8.17.2-dev.3 =
 
-(2020/12/14) Updated product information text in the Document SSO metabox for WooCommerce (Premium version).
+(2020/12/15) Updated product information text in the Document SSO metabox for WooCommerce (Premium version).
 
 = 8.17.1 =
 
