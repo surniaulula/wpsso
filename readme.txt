@@ -318,7 +318,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.17.2-dev.3 (2020/12/15)**
+**Version 8.17.2-b.1 (2020/12/16)**
 
 * **New Features**
 	* None.
@@ -884,9 +884,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.17.2-dev.3 =
+= 8.17.2-b.1 =
 
-(2020/12/15) Updated product information text in the Document SSO metabox for WooCommerce (Premium version).
+(2020/12/16) Updated product information text in the Document SSO metabox for WooCommerce (Premium version).
 
 = 8.17.1 =
 
