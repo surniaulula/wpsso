@@ -327,10 +327,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Removed the `SucomUtil::get_query_salt()` method.
+	* Added `$single = false` argument to the `WpssoSchema->get_json_data()` method.
+	* Added `$output = 'objects'` argument to the `WpssoPost->get_primary_terms()` method.
 	* Added a new `WpssoPost->get_default_term_id()` method.
 	* Refactored the `WpssoPost->get_primary_term_id()` method.
 	* Refactored the `WpssoPost->get_primary_terms()` method.
+	* Removed the `SucomUtil::get_query_salt()` method.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.5.
