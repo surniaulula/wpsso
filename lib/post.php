@@ -1002,7 +1002,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$check_url = SucomUtilWP::wp_get_shortlink( $post_id, $context = 'post' );
 			}
 
-			$check_url_htmlenc = SucomUtil::encode_html_emoji( urldecode( $check_url ) );
+			$check_url_htmlenc = SucomUtil::encode_html_emoji( urldecode( $check_url ) );	// Does not double-encode.
 
 			if ( empty( $check_url ) ) {
 

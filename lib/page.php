@@ -715,7 +715,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( true === $do_encode ) {
 
-				$cap_text = SucomUtil::encode_html_emoji( $cap_text );
+				$cap_text = SucomUtil::encode_html_emoji( $cap_text );	// Does not double-encode.
 
 			} else {	// Just in case.
 
@@ -899,7 +899,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				foreach ( array( 'title_text', 'title_sep' ) as $var ) {	// Loop through variables.
 
-					$$var = SucomUtil::encode_html_emoji( $$var );
+					$$var = SucomUtil::encode_html_emoji( $$var );	// Does not double-encode.
 				}
 			}
 
@@ -1297,7 +1297,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( $do_encode ) {
 
-				$desc_text = SucomUtil::encode_html_emoji( $desc_text );
+				$desc_text = SucomUtil::encode_html_emoji( $desc_text );	// Does not double-encode.
 			}
 
 			if ( $this->p->debug->enabled ) {
@@ -1369,7 +1369,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( $do_encode ) {
 
-				$text = SucomUtil::encode_html_emoji( $text );
+				$text = SucomUtil::encode_html_emoji( $text );	// Does not double-encode.
 			}
 
 			if ( $this->p->debug->enabled ) {

@@ -171,9 +171,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 
 			static $local_recursion = array();	// Use a static variable to prevent recursion.
 
-			$use_post = in_the_loop() ? true : false;	// Use the $post object inside the loop.
-
-			$use_post = apply_filters( 'wpsso_use_post', $use_post );
+			$use_post = apply_filters( 'wpsso_use_post', in_the_loop() ? true : false );
 
 			if ( $this->p->debug->enabled ) {
 

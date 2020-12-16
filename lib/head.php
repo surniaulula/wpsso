@@ -1010,7 +1010,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					case 'description':
 					case 'name':
 
-						$parts[ 5 ] = SucomUtil::encode_html_emoji( $parts[ 5 ] );
+						$parts[ 5 ] = SucomUtil::encode_html_emoji( $parts[ 5 ] );	// Does not double-encode.
 
 						break;
 

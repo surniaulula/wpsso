@@ -3738,10 +3738,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function esc_url_encode( $url, $esc_url = true ) {
 
 			$decoded_url = self::decode_html( $url ); // Just in case - decode HTML entities.
-			$clean_url   = $esc_url ? esc_url_raw( $decoded_url ) : $decoded_url;
+
+			$clean_url = $esc_url ? esc_url_raw( $decoded_url ) : $decoded_url;
+
 			$encoded_url = urlencode( $clean_url );
 
 			$replace = array( '%21', '%2A', '%27', '%28', '%29', '%3B', '%3A', '%40', '%26', '%3D', '%2B', '%24', '%2C', '%2F', '%3F', '%25', '%23', '%5B', '%5D' );
+
 			$allowed = array( '!', '*', '\'', '(', ')', ';', ':', '@', '&', '=', '+', '$', ',', '/', '?', '%', '#', '[', ']' );
 
 			return str_replace( $replace, $allowed, $encoded_url );
