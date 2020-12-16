@@ -114,7 +114,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 */
 			if ( $is_admin || $doing_ajax ) {
 
-				$post_type_names = SucomUtilWP::get_post_types( 'names' );
+				$post_type_names = SucomUtilWP::get_post_types( $output = 'names' );
 
 				if ( is_array( $post_type_names ) ) {
 
@@ -2148,7 +2148,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					if ( $primary_term_obj ) {
 
 						$post_terms = wp_get_post_terms( $post_id, $primary_tax_slug, $args = array( 'exclude' => array( $primary_term_id ) ) );
-	
+
 						if ( ! empty( $post_terms ) && is_array( $post_terms ) ) {	// Have one or more terms and taxonomy exists.
 
 							$post_terms = array_merge( array( $primary_term_obj ), $post_terms );
@@ -2161,24 +2161,24 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						foreach ( $post_terms as $term_obj ) {
 
 							switch ( $output ) {
-	
+
 								case 'ids':
 								case 'term_ids':
-	
+
 									$primary_terms[ $term_obj->term_id ] = (int) $term_obj->term_id;
-	
+
 									break;
-	
+
 								case 'names':
-	
+
 									$primary_terms[ $term_obj->term_id ] = (string) $term_obj->name;
-	
+
 									break;
-	
+
 								case 'objects':
-	
+
 									$primary_terms[ $term_obj->term_id ] = $term_obj;
-	
+
 									break;
 							}
 						}

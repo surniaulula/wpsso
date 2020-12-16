@@ -2984,7 +2984,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 */
 			$type_select = '';
 			$type_keys   = array();
-			$post_types  = SucomUtilWP::get_post_types( 'objects' );
+			$post_types  = SucomUtilWP::get_post_types( $output = 'objects' );
 
 			foreach ( $post_types as $obj ) {
 
@@ -3015,7 +3015,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 */
 			$type_select = '';
 			$type_keys   = array();
-			$taxonomies  = SucomUtilWP::get_taxonomies( 'objects' );
+			$taxonomies  = SucomUtilWP::get_taxonomies( $output = 'objects' );
 
 			foreach ( $taxonomies as $obj ) {
 
@@ -3159,7 +3159,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 */
 			$type_select = '';
 			$type_keys   = array();
-			$post_types  = SucomUtilWP::get_post_types( 'objects' );
+			$post_types  = SucomUtilWP::get_post_types( $output = 'objects' );
 
 			foreach ( $post_types as $obj ) {
 
@@ -3204,7 +3204,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 */
 			$type_select = '';
 			$type_keys   = array();
-			$taxonomies  = SucomUtilWP::get_taxonomies( 'objects' );
+			$taxonomies  = SucomUtilWP::get_taxonomies( $output = 'objects' );
 
 			foreach ( $taxonomies as $obj ) {
 

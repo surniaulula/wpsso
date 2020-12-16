@@ -1378,7 +1378,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 		public static function get_post_type_labels( array $values = array(), $val_prefix = '', $label_prefix = '' ) {
 
-			$objects = self::get_post_types( 'objects' );
+			$objects = self::get_post_types( $output = 'objects' );
 
 			foreach ( $objects as $obj ) {
 
@@ -1417,7 +1417,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 		public static function get_taxonomy_labels( array $values = array(), $val_prefix = '', $label_prefix = '' ) {
 
-			$objects = self::get_taxonomies( 'objects' );
+			$objects = self::get_taxonomies( $output = 'objects' );
 
 			foreach ( $objects as $obj ) {
 

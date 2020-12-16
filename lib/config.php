@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.17.2-dev.3',	// Plugin version.
+					'version'     => '8.17.2-b.1',	// Plugin version.
 					'opt_version' => '772',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2462,9 +2462,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * Breadcrumbs settings.
 				 */
 				'breadcrumbs_for_posts' => array(	// Breadcrumbs by Post Type.
-					'none'         => '[No Breadcrumbs]',
-					'categories'   => 'Home Page(s) and Categories',
-					'ancestors'    => 'Home Page(s) and Parents',
+					'none'        => '[No Breadcrumbs]',
+					'categories'  => 'Home Page(s) and Categories',
+					'ancestors'   => 'Home Page(s) and Parents',
+					'primary_cat' => 'Home Page(s) and Primary Category',
 				),
 				'breadcrumbs_for_terms' => array(	// Breadcrumbs by Taxonomy.
 					'none'      => '[No Breadcrumbs]',

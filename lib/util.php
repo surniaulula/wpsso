@@ -1068,7 +1068,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					$this->p->debug->log( 'checking options for prefix ' . $opt_pre );
 				}
 
-				foreach ( SucomUtilWP::get_post_types( 'names' ) as $name ) {
+				foreach ( SucomUtilWP::get_post_types( $output = 'names' ) as $name ) {
 
 					$opt_key = $opt_pre . '_' . $name;
 
@@ -1135,7 +1135,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					$this->p->debug->log( 'checking options for prefix ' . $opt_pre );
 				}
 
-				foreach ( SucomUtilWP::get_taxonomies( 'names' ) as $name ) {
+				foreach ( SucomUtilWP::get_taxonomies( $output = 'names' ) as $name ) {
 
 					$opt_key = $opt_pre . '_' . $name;
 

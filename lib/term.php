@@ -394,7 +394,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			$public_term_ids = array();
 
-			$tax_names = SucomUtilWP::get_taxonomies( 'names' );
+			$tax_names = SucomUtilWP::get_taxonomies( $output = 'names' );
 
 			foreach ( $tax_names as $name ) {
 

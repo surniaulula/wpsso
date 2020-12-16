@@ -448,28 +448,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$this->p->debug->log( 'schema main entity is ' . ( $is_main ? 'true' : 'false' ) . ' for ' . $type_id );
 				}
 
-				$json_data = $this->get_json_data( $mod, $mt_og, $type_id, $is_main );
-
 				/**
-				 * The $json_data array will almost always be a single associative array, but the breadcrumblist
-				 * filter may return an array of associative arrays.
+				 * WpssoSchema->get_json_data() returns a two dimensional array of json data unless $single is true.
 				 */
-				if ( isset( $json_data[ 0 ] ) && ! SucomUtil::is_assoc( $json_data ) ) {	// Multiple json arrays returned.
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'multiple json data arrays returned' );
-					}
-
-				} else {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'single json data array returned' );
-					}
-
-					$json_data = array( $json_data );	// Single json script returned.
-				}
+				$json_data = $this->get_json_data( $mod, $mt_og, $type_id, $is_main, $single = false );
 
 				/**
 				 * Add the json data to the @graph array.
@@ -522,8 +504,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$graph_json = WpssoSchemaGraph::optimize_json( $graph_json );
 
-				$schema_scripts[][] = '<script type="application/ld+json">' .
-					$this->p->util->json_format( $graph_json ) . '</script>' . "\n";
+				$schema_scripts[][] = '<script type="application/ld+json">' . $this->p->util->json_format( $graph_json ) . '</script>' . "\n";
 			}
 
 			unset( $graph_json );
@@ -540,8 +521,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		/**
 		 * Get the JSON-LD data array.
+		 *
+		 * Returns a two dimensional array of json data unless $single is true.
 		 */
-		public function get_json_data( array $mod, array &$mt_og, $page_type_id = false, $is_main = false ) {
+		public function get_json_data( array $mod, array $mt_og, $page_type_id = false, $is_main = false, $single = false ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -564,6 +547,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$child_family_urls = array();
 
 			foreach ( $this->get_schema_type_child_family( $page_type_id ) as $type_id ) {
+
 				$child_family_urls[] = $this->get_schema_type_url( $type_id );
 			}
 
@@ -584,11 +568,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				/**
 				 * Add website, organization, and person markup to home page.
 				 */
-				if ( false !== has_filter( $data_filter_name ) ) {
+				if ( has_filter( $data_filter_name ) ) {
 
 					$json_data = apply_filters( $data_filter_name, $json_data, $mod, $mt_og, $page_type_id, $is_main );
 
-					if ( false !== has_filter( $valid_filter_name ) ) {
+					if ( has_filter( $valid_filter_name ) ) {
 
 						$json_data = apply_filters( $valid_filter_name, $json_data, $mod, $mt_og, $page_type_id, $is_main );
 					}
@@ -612,9 +596,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			} else {
 
 				self::update_data_id( $json_data, $page_type_id );
+
+				$json_data = array( $json_data );
 			}
 
-			return $json_data;
+			return $single ? reset( $json_data ) : $json_data;
 		}
 
 		public function get_json_data_home_website() {
@@ -623,7 +609,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$mt_og = array();
 
-			$json_data = $this->get_json_data( $mod, $mt_og, $type_id = 'website', $is_main = false );
+			/**
+			 * WpssoSchema->get_json_data() returns a two dimensional array of json data unless $single is true.
+			 */
+			$json_data = $this->get_json_data( $mod, $mt_og, $page_type_id = 'website', $is_main = false, $single = true );
 
 			return $json_data;
 		}
@@ -690,7 +679,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->log( 'getting schema json-ld markup array' );
 			}
 
-			$json_data = $this->get_json_data( $mod, $mt_og, $page_type_id, $is_main = true );
+			/**
+			 * WpssoSchema->get_json_data() returns a two dimensional array of json data unless $single is true.
+			 */
+			$json_data = $this->get_json_data( $mod, $mt_og, $page_type_id, $is_main = true, $single = true );
 
 			$this->p->util->maybe_unset_ref( $ref_url );
 

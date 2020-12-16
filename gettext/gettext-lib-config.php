@@ -205,6 +205,7 @@ _x( 'Large', 'option value', 'wpsso' );
 _x( '[No Breadcrumbs]', 'option value', 'wpsso' );
 _x( 'Home Page(s) and Categories', 'option value', 'wpsso' );
 _x( 'Home Page(s) and Parents', 'option value', 'wpsso' );
+_x( 'Home Page(s) and Primary Category', 'option value', 'wpsso' );
 _x( '[No Breadcrumbs]', 'option value', 'wpsso' );
 _x( 'Home Page(s) and Parents', 'option value', 'wpsso' );
 _x( '[None]', 'option value', 'wpsso' );
