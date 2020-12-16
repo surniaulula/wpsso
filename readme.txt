@@ -8,7 +8,7 @@ License URI: https://www.gnu.org/licenses/gpl.txt
 Assets URI: https://surniaulula.github.io/wpsso/assets/
 Tags: schema, open graph, twitter, social sharing, rich results, linkedin, facebook, pinterest, google, meta tags, rich pins, structured data, seo
 Contributors: jsmoriss
-Requires PHP: 5.6
+Requires PHP: 7.0
 Requires At Least: 4.5
 Tested Up To: 5.6
 WC Tested Up To: 4.8.0
@@ -38,7 +38,7 @@ Text, image, and video related options are WordPress language / locale aware, wh
 
 **Coded for maximum WordPress performance and compatibility:**
 
-WPSSO makes full use of all available caching methods &mdash; along with offering advanced caching features like pre-seeding in background. WPSSO Core and its complementary add-ons load only the libraries and classes they need, keeping their code small, fast and light. All code is fully tested and compatible with the latest version of WordPress and PHP v8.x (WordPress v4.2 and PHP v5.6 or newer is required).
+WPSSO makes full use of all available caching methods &mdash; along with offering advanced caching features like pre-seeding in background. WPSSO Core and its complementary add-ons load only the libraries and classes they need, keeping their code small, fast and light. All code is fully tested and compatible with the latest version of WordPress and PHP v8.x (WordPress v4.2 and PHP v7.0 or newer is required).
 
 <h3>Users Love the WPSSO Core Plugin</h3>
 
@@ -334,7 +334,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Refactored the `WpssoPost->get_primary_terms()` method.
 	* Removed the `SucomUtil::get_query_salt()` method.
 * **Requires At Least**
-	* PHP v5.6.
+	* PHP v7.0.
 	* WordPress v4.5.
 
 **Version 8.17.1 (2020/12/13)**
