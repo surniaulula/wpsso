@@ -4153,26 +4153,34 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Site Address URL.
+		 * Deprecated on 2020/12/16.
+		 */
+		public static function get_site_url( array $opts = array(), $mixed = 'current' ) {
+
+			return self::get_home_url( $opts, $mixed );
+		}
+
+		/**
+		 * Website (aka Home) Address URL.
 		 *
 		 * Returns a custom site address URL or the default site address URL (aka the 'home' URL).
 		 *
 		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 */
-		public static function get_site_url( array $opts = array(), $mixed = 'current' ) {
+		public static function get_home_url( array $opts = array(), $mixed = 'current' ) {
 
-			$site_url = empty( $opts ) ? '' : self::get_key_value( 'site_url', $opts, $mixed );
+			$home_url = empty( $opts ) ? '' : self::get_key_value( 'home_url', $opts, $mixed );
 
-			if ( empty( $site_url ) ) {	// Fallback to default WordPress value.
+			if ( empty( $home_url ) ) {	// Fallback to default WordPress value.
 
-				$site_url = get_bloginfo( $show = 'url', $filter = 'raw' );	// Fallback to default WordPress value.
+				$home_url = get_home_url( $blog_id = null, $path = '/' );	// Fallback to default WordPress value.
 			}
 
-			return $site_url;
+			return $home_url;
 		}
 
 		/**
-		 * WordPress Address (URL).
+		 * WordPress Address URL.
 		 */
 		public static function get_wp_url( array $opts = array(), $mixed = 'current' ) {
 
@@ -4196,7 +4204,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return true;
 			}
 
-			return self::is_https( self::get_site_url( $opts, $mixed ) );
+			return self::is_https( self::get_home_url( $opts, $mixed ) );
 		}
 
 		/**

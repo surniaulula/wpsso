@@ -345,7 +345,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 *	'plugin_cf_vid_url'                     = ''
 				 *	'plugin_cf_review_item_image_url'       = ''
 				 */
-				case 'site_url':
+				case 'home_url':
 				case 'sharing_url':
 				case 'canonical_url':
 				case 'fb_page_url':

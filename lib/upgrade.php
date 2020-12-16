@@ -90,7 +90,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'schema_img_article_crop_y'      => '',
 					'og_site_name'                   => 'site_name',
 					'og_site_description'            => 'site_desc',
-					'org_url'                        => 'site_url',
+					'org_url'                        => 'home_url',
 					'org_type'                       => 'site_org_schema_type',
 					'org_place_id'                   => 'site_org_place_id',
 					'link_def_author_id'             => '',
@@ -396,6 +396,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				),
 				768 => array(
 					'plugin_def_currency' => 'og_def_currency',	// Default Currency.
+				),
+				772 => array(
+					'site_url' => 'home_url',
 				),
 			),
 		);

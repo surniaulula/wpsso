@@ -2425,18 +2425,20 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			} elseif ( $mod[ 'is_home' ] ) {
 
-				if ( 'page' === get_option( 'show_on_front' ) ) {	// Show_on_front = posts | page.
+				if ( 'page' === get_option( 'show_on_front' ) ) {	// 'show_on_front' = posts | page.
 
 					$url = $this->check_url_string( get_permalink( get_option( 'page_for_posts' ) ), 'page for posts' );
 
 				} else {
 
-					$url = apply_filters( 'wpsso_home_url', home_url( '/' ), $mod );
+					$url = self::get_home_url( $this->p->options, $mod );
+				}
+	
+				$url = apply_filters( 'wpsso_home_url', $url, $mod );
 
-					if ( $this->p->debug->enabled ) {
+				if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'home url = ' . $url );
-					}
+					$this->p->debug->log( 'home url = ' . $url );
 				}
 
 			} elseif ( $mod[ 'is_term' ] ) {

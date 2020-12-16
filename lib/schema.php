@@ -117,7 +117,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$json_ret = self::get_schema_type_context( 'https://schema.org/WebSite', array(
-				'url' => SucomUtil::get_site_url( $this->p->options, $mod ),
+				'url' => SucomUtil::get_home_url( $this->p->options, $mod ),
 			) );
 
 			foreach ( array(
@@ -293,7 +293,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 */
 			if ( $mod[ 'is_home' ] ) {
 
-				$json_ret[ 'url' ] = $mt_og[ 'og:url' ];
+				$json_ret[ 'url' ] = SucomUtil::get_home_url( $this->p->options, $mod );
 			}
 
 			return self::return_data_from_filter( $json_data, $json_ret, $is_main );
@@ -1790,7 +1790,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * Example: 'site_org_logo_url:width#fr_FR'.
 			 */
 			$org_opts = array(
-				'org_url'               => SucomUtil::get_site_url( $wpsso->options, $mixed ),
+				'org_url'               => SucomUtil::get_home_url( $wpsso->options, $mixed ),
 				'org_name'              => SucomUtil::get_site_name( $wpsso->options, $mixed ),
 				'org_name_alt'          => SucomUtil::get_site_name_alt( $wpsso->options, $mixed ),
 				'org_desc'              => SucomUtil::get_site_description( $wpsso->options, $mixed ),
