@@ -318,7 +318,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.18.0-rc.4 (2020/12/17)**
+**Version 8.18.0 (2020/12/17)**
 
 * **New Features**
 	* None.
@@ -889,7 +889,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.18.0-rc.4 =
+= 8.18.0 =
 
 (2020/12/17) Updated product information text in the Document SSO metabox for WooCommerce (Premium version).
 
