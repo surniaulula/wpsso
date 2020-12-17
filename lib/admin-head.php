@@ -391,7 +391,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 					$action_links = array();	// Init a new action array for the notice message.
 
-					$shipping_continents = WC()->countries->get_shipping_continents();	// Since WooCommerce v3.6.0.
+					$shipping_continents = WC()->countries->get_shipping_continents();	// Since WC v3.6.0.
 					$shipping_countries  = WC()->countries->get_shipping_countries();
 					$shipping_enabled    = $shipping_continents || $shipping_countries ? true : false;
 

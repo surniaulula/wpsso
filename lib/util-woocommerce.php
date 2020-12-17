@@ -71,7 +71,7 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 
 			if ( is_callable( array( $product, 'get_id' ) ) ) {
 
-				$product_id = $product->get_id();	// Since WooCommerce v2.6.0.
+				$product_id = $product->get_id();
 
 			} elseif ( isset( $product->id ) ) {
 
@@ -114,7 +114,7 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 
 			foreach ( $product->get_children() as $child_id ) {
 
-				$variation = wc_get_product( $child_id );	// Since WooCommerce v2.2.0.
+				$variation = wc_get_product( $child_id );
 
 				if ( ! $variation ) {
 
@@ -157,8 +157,6 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 				 * Returns an array of data for a variation.
 				 *
 				 * Applies the 'woocommerce_available_variation' filter.
-				 *
-				 * Since WooCommerce v2.4.0.
 				 */
 				$available_variations[] = $product->get_available_variation( $variation );
 			}
