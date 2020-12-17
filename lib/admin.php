@@ -2322,21 +2322,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$ext_num++;
 
-				$ext_links = $this->get_ext_action_links( $ext, $info, $tabindex );
+				$ext_links       = $this->get_ext_action_links( $ext, $info, $tabindex );
+				$ext_name_transl = _x( $info[ 'name' ], 'plugin name', 'wpsso' );
+				$ext_name_html   = '<h4>' . htmlentities( $ext_name_transl, ENT_QUOTES, $charset, $double_encode = false ) . '</h4>';
+				$ext_desc_transl = _x( $info[ 'desc' ], 'plugin description', 'wpsso' );
+				$ext_desc_html   = '<p>' . htmlentities( $ext_desc_transl, ENT_QUOTES, $charset, $double_encode = false ) . '</p>';
 
 				$table_rows = array();
 
 				/**
 				 * Plugin name, description and links.
 				 */
-				$plugin_name_html = '<h4>' . htmlentities( _x( $info[ 'name' ], 'plugin name', 'wpsso' ),
-					ENT_QUOTES, $charset, $double_encode = false ) . '</h4>';
-
-				$plugin_desc_html = '<p>' . htmlentities( _x( $info[ 'desc' ], 'plugin description', 'wpsso' ),
-					ENT_QUOTES, $charset, $double_encode = false ) . '</p>';
-
 				$table_rows[ 'plugin_name' ] = '<td class="ext-info-plugin-name" id="ext-info-plugin-name-' . $ext . '">' .
-					$plugin_name_html . $plugin_desc_html . ( empty( $ext_links ) ? '' : '<div class="row-actions visible">' .
+					$ext_name_html . $ext_desc_html . ( empty( $ext_links ) ? '' : '<div class="row-actions visible">' .
 						implode( $glue = ' | ', $ext_links ) . '</div>' ) . '</td>';
 
 				/**
@@ -2400,18 +2398,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$ext_num++;
 
-				$ext_links = $this->get_ext_action_links( $ext, $info, $tabindex );
+				$ext_links       = $this->get_ext_action_links( $ext, $info, $tabindex );
+				$ext_name_transl = _x( $info[ 'name' ], 'plugin name', 'wpsso' );
+				$ext_name_html   = '<h4>' . htmlentities( $ext_name_transl, ENT_QUOTES, $charset, $double_encode = false ) . '</h4>';
+				$placeholder     = strtoupper( $ext . '-PP-0000000000000000' );
 
 				$table_rows = array();
 
 				/**
 				 * Plugin name, description and links
 				 */
-				$plugin_name_html = '<h4>' . htmlentities( _x( $info[ 'name' ], 'plugin name', 'wpsso' ),
-					ENT_QUOTES, $charset, $double_encode = false ) . '</h4>';
-
 				$table_rows[ 'plugin_name' ] = '<td colspan="2" class="ext-info-plugin-name" id="ext-info-plugin-name-' . $ext . '">' .
-					$plugin_name_html . ( empty( $ext_links ) ? '' : '<div class="row-actions visible">' .
+					$ext_name_html . ( empty( $ext_links ) ? '' : '<div class="row-actions visible">' .
 						implode( $glue = ' | ', $ext_links ) . '</div>' ) . '</td>';
 
 				/**
@@ -2421,8 +2419,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					'option label', 'wpsso' ), $info[ 'short' ] ), 'medium nowrap' );
 
 				$table_rows[ 'plugin_tid' ] .= '<td width="100%">' .
-					$this->form->get_input( 'plugin_' . $ext . '_tid', 'tid mono', '', 0,
-						'', false, ++$tabindex ) . '</td>';
+					$this->form->get_input( 'plugin_' . $ext . '_tid', $css_class = 'tid mono', $css_id = '', $len = 0,
+						$placeholder, $is_disabled = false, ++$tabindex ) . '</td>';
 
 				if ( $network ) {
 

@@ -782,7 +782,7 @@ table.sucom-settings td input[type="button"].button-secondary { margin:0 5px; }
 
 table.sucom-settings td input::placeholder,
 table.sucom-settings td textarea::placeholder {
-	color:#999;
+	color:#ccc;
 }
 
 table.sucom-settings td input[disabled] { cursor:default; }	/* Keep the default cursor for disabled options. */
