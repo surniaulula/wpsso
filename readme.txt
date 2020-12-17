@@ -318,7 +318,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.17.2-rc.3 (2020/12/17)**
+**Version 8.18.0-rc.3 (2020/12/17)**
 
 * **New Features**
 	* None.
@@ -327,6 +327,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
+	* Added an additional version check for WooCommerce plugin detection in the `WpssoCheck->get_avail()` method.
 	* Added `$single = false` argument to the `WpssoSchema->get_json_data()` method.
 	* Added `$output = 'objects'` argument to the `WpssoPost->get_primary_terms()` method.
 	* Added a new `WpssoPost->get_default_term_id()` method.
@@ -888,7 +889,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.17.2-rc.3 =
+= 8.18.0-rc.3 =
 
 (2020/12/17) Updated product information text in the Document SSO metabox for WooCommerce (Premium version).
 
