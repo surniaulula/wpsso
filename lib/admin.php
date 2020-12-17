@@ -602,11 +602,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 
+			/**
+			 * WordPress version 3.8 or better is required for dashicons.
+			 */
 			global $wp_version;
 
-			/**
-			 * WordPress version 3.8 is required for dashicons.
-			 */
 			if ( ( $menu_lib === 'submenu' || $menu_lib === 'sitesubmenu' ) && version_compare( $wp_version, '3.8', '>=' ) ) {
 
 				$css_class = trim( 'wpsso-menu-item wpsso-' . $menu_id . ' ' . $css_class );

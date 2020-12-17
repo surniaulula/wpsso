@@ -2339,7 +2339,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				' onMouseUp="return false;">';
 
 			/**
-			 * Dashicons are only available since WP v3.8
+			 * WordPress version 3.8 or better is required for dashicons.
 			 */
 			global $wp_version;
 

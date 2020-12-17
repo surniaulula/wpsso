@@ -2083,7 +2083,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		/**
-		 * Since WPSSO Core v8.17.2.
+		 * Since WPSSO Core v8.18.0.
 		 *
 		 * Returns the first taxonomy term ID, , or false if a term for the $tax_slug is not found.
 		 */
