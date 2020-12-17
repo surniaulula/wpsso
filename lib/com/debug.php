@@ -39,7 +39,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			$this->p =& $plugin;
 
 			$this->start_stats = array(
-				'mtime' => microtime( true ),
+				'mtime' => microtime( $get_float = true ),
 				'mem'   => memory_get_usage(),
 			);
 
@@ -254,7 +254,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			}
 
 			$cur_stats = array(
-				'mtime' => microtime( true ),
+				'mtime' => microtime( $get_float = true ),
 				'mem'   => memory_get_usage(),
 			);
 

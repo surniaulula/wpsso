@@ -430,9 +430,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				'author'       => $mod[ 'id' ],
 			), $extra_args, array( 'fields' => 'ids' ) );	// Return an array of post IDs.
 
-			$mtime_start = microtime( true );
+			$mtime_start = microtime( $get_float = true );
 			$post_ids    = get_posts( $posts_args );
-			$mtime_total = microtime( true ) - $mtime_start;
+			$mtime_total = microtime( $get_float = true ) - $mtime_start;
 			$mtime_max   = WPSSO_GET_POSTS_MAX_TIME;
 
 			if ( $mtime_total > $mtime_max ) {
@@ -1535,7 +1535,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			set_transient( $cache_id, $cache_run_val, $cache_exp_secs );
 
-			$mtime_start = microtime( true );
+			$mtime_start = microtime( $get_float = true );
 
 			if ( $user_id ) {
 
@@ -1579,7 +1579,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $user_id ) {
 
-				$mtime_total = microtime( true ) - $mtime_start;
+				$mtime_total = microtime( $get_float = true ) - $mtime_start;
 
 				$notice_msg = sprintf( __( 'The %1$s role has been added to %2$d content creators.', 'wpsso' ), $role_label, $count ) . ' ';
 
@@ -1643,7 +1643,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			set_transient( $cache_id, $cache_run_val, $cache_exp_secs );
 
-			$mtime_start = microtime( true );
+			$mtime_start = microtime( $get_float = true );
 
 			if ( $user_id ) {
 
@@ -1682,7 +1682,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $user_id ) {
 
-				$mtime_total = microtime( true ) - $mtime_start;
+				$mtime_total = microtime( $get_float = true ) - $mtime_start;
 
 				$notice_msg = sprintf( __( 'The %1$s role has been removed from %2$d content creators.', 'wpsso' ), $role_label, $count ) . ' ';
 

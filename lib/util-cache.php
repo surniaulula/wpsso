@@ -112,7 +112,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			set_transient( $cache_id, $cache_run_val, $cache_exp_secs );
 
-			$mtime_start = microtime( true );
+			$mtime_start = microtime( $get_float = true );
 
 			if ( $user_id ) {
 
@@ -151,7 +151,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			if ( $user_id ) {
 
-				$mtime_total = microtime( true ) - $mtime_start;
+				$mtime_total = microtime( $get_float = true ) - $mtime_start;
 
 				$notice_msg = sprintf( __( '%1$d cached files, %2$d transient cache objects, %3$d column metadata, and the WordPress object cache have been cleared.', 'wpsso' ), $cleared_files, $cleared_transients, $cleared_col_meta ) . ' ' . $cleared_other_msg . ' ';
 
@@ -606,7 +606,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			set_transient( $cache_id, $cache_run_val, $cache_exp_secs );
 
-			$mtime_start = microtime( true );
+			$mtime_start = microtime( $get_float = true );
 
 			if ( $user_id ) {
 
@@ -674,7 +674,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			if ( $user_id ) {
 
-				$mtime_total = microtime( true ) - $mtime_start;
+				$mtime_total = microtime( $get_float = true ) - $mtime_start;
 
 				$notice_msg = sprintf( __( 'The transient cache for %1$d posts, %2$d terms and %3$d users has been refreshed.',
 					'wpsso' ), $total_count[ 'post' ], $total_count[ 'term' ], $total_count[ 'user' ] ) . ' ';

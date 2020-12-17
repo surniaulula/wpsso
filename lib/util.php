@@ -812,7 +812,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$this->p->debug->log( 'transient cache for image info is disabled' );
 			}
 
-			$mtime_start = microtime( true );
+			$mtime_start = microtime( $get_float = true );
 
 			/**
 			 * Example $image_info:
@@ -827,7 +827,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 * )
 			 */
 			$image_info  = $this->p->cache->get_image_size( $image_url, $exp_secs = 300, $curl_opts = array(), $error_handler = 'wpsso_error_handler' );
-			$mtime_total = microtime( true ) - $mtime_start;
+			$mtime_total = microtime( $get_float = true ) - $mtime_start;
 			$mtime_max   = WPSSO_PHP_GETIMGSIZE_MAX_TIME;
 
 			if ( $mtime_total > $mtime_max ) {
@@ -1898,11 +1898,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				if ( function_exists( $function ) ) {
 
-					$mtime_start = microtime( true );
+					$mtime_start = microtime( $get_float = true );
 
 					$function_ret = $function();
 
-					$mtime_total = microtime( true ) - $mtime_start;
+					$mtime_total = microtime( $get_float = true ) - $mtime_start;
 
 					$function_info[ $function ] = array(
 						sprintf( '%-40s (%f secs)', $function . '() = ' . ( $function_ret ? 'TRUE' : 'false' ), $mtime_total ),
@@ -1917,14 +1917,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			return $function_info;
-		}
-
-		/**
-		 * Deprecated on 2019/11/21.
-		 */
-		public static function register_ext_version( $ext, $version ) {
-
-			WpssoUtilReg::update_ext_version( $ext, $version );
 		}
 
 		/**
@@ -3145,9 +3137,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$this->p->debug->mark( 'applying WordPress ' . $filter_name . ' filters' );	// Begin timer.
 			}
 
-			$mtime_start  = microtime( true );
+			$mtime_start  = microtime( $get_float = true );
 			$filter_value = call_user_func_array( 'apply_filters', $args );
-			$mtime_total  = microtime( true ) - $mtime_start;
+			$mtime_total  = microtime( $get_float = true ) - $mtime_start;
 
 			if ( $this->p->debug->enabled ) {
 
@@ -3831,16 +3823,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		public static function get_fragment_anchor( $mod = null ) {
 
 			return '#sso-' . ( $mod ? self::get_mod_anchor( $mod ) : '' );
-		}
-
-		/**
-		 * Deprecated since WPSSO Core v6.10.0 on 2019/10/28.
-		 *
-		 * Keep for older add-ons that still call this method on activation.
-		 */
-		public static function save_all_times( $ext, $version ) {
-
-			WpssoUtilReg::update_ext_version( $ext, $version );
 		}
 	}
 }

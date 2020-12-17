@@ -2910,14 +2910,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
-		 * Deprecated on 2019/08/01.
-		 */
-		public static function get_data_unitcode_text( $key ) {
-
-			return self::get_data_unit_text( $key );
-		}
-
-		/**
 		 * Returns a https://schema.org/unitText value (for example, 'cm', 'ml', 'kg', etc.).
 		 */
 		public static function get_data_unit_text( $key ) {

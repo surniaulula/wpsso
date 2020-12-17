@@ -30,7 +30,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				'wp-retina-2x' => 'WP Retina 2x',
 			),
 			'p' => array(
-				'schema'  => 'Schema Markup',
+				'schema' => 'Schema Markup',
 			),
 			'seo' => array(
 				'jetpack-seo' => 'Jetpack SEO Tools',
@@ -41,9 +41,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			),
 			'util' => array(
 				'jetpack' => 'Jetpack',
-			),
-			'wp' => array(
-				'featured' => 'Post Thumbnail',
 			),
 		);
 
@@ -57,15 +54,17 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 		}
 
 		/**
-		 * Please note that get_avail() is executed *before* the debug class object is defined, so do not log any debugging
-		 * messages using $this->p->debug, for example.
+		 * This method is run only once by Wpsso->set_objects() and typically runs under 0.0002 secs.
 		 *
-		 * Most PHP library files have already been loaded, even if the class objects have not yet been defined, so you can
-		 * safely use static methods, like SucomUtil::get_const(), for example.
+		 * Please note that get_avail() is executed before the debug class object is defined, so do not log debugging
+		 * messages using $this->p->debug.
+		 *
+		 * Non-admin PHP library files have been loaded, even if the class object variables have not been defined yet, so
+		 * you can safely call static methods, like SucomUtil::get_const(), for example.
 		 */
 		public function get_avail() {
 
-			$mtime_start  = microtime( true );
+			$mtime_start = microtime( $get_float = true );
 
 			$get_avail = array();	// Initialize the array to return.
 
@@ -91,6 +90,8 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 								/**
 								 * AMP, Better AMP, etc.
+								 *
+								 * See https://wordpress.org/plugins/amp/.
 								 */
 								case 'amp':
 
@@ -100,6 +101,8 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 								/**
 								 * Accelerated Mobile Pages.
+								 *
+								 * See https://wordpress.org/plugins/accelerated-mobile-pages/.
 								 */
 								case 'accelerated-mobile-pages':
 
@@ -116,6 +119,8 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 								/**
 								 * Easy Digital Downloads.
+								 *
+								 * See https://wordpress.org/plugins/easy-digital-downloads/.
 								 */
 								case 'edd':
 
@@ -145,10 +150,16 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 								/**
 								 * WooCommerce.
+								 *
+								 * See https://wordpress.org/plugins/woocommerce/.
 								 */
 								case 'woocommerce':
 
 									$chk[ 'class' ] = 'WooCommerce';
+
+									$chk[ 'version_const' ] = 'WC_VERSION';
+
+									$chk[ 'min_version' ] = '3.8.0';	// WooCommerce v3.8.0.
 
 									break;
 
@@ -204,6 +215,11 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							switch ( $id ) {
 
+								/**
+								 * The Events Calendar.
+								 *
+								 * See https://wordpress.org/plugins/the-events-calendar/.
+								 */
 								case 'the-events-calendar':
 
 									$chk[ 'class' ] = 'Tribe__Events__Main';
@@ -237,6 +253,11 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							switch ( $id ) {
 
+								/**
+								 * bbPress.
+								 *
+								 * See https://wordpress.org/plugins/bbpress/.
+								 */
 								case 'bbpress':
 
 									$chk[ 'plugin' ] = 'bbpress/bbpress.php';
@@ -251,12 +272,22 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							switch ( $id ) {
 
+								/**
+								 * Simple Job Board.
+								 *
+								 * See https://wordpress.org/plugins/simple-job-board/.
+								 */
 								case 'simplejobboard':
 
 									$chk[ 'class' ] = 'Simple_Job_Board';
 
 									break;
 
+								/**
+								 * WP Job Manager.
+								 *
+								 * See https://wordpress.org/plugins/wp-job-manager/.
+								 */
 								case 'wpjobmanager':
 
 									$chk[ 'class' ] = 'WP_Job_Manager';
@@ -271,12 +302,22 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							switch ( $id ) {
 
+								/**
+								 * Polylang.
+								 *
+								 * See https://wordpress.org/plugins/polylang/.
+								 */
 								case 'polylang':
 
 									$chk[ 'class' ] = 'Polylang';
 
 									break;
 
+								/**
+								 * WPML.
+								 *
+								 * See https://wpml.org/.
+								 */
 								case 'wpml':
 
 									$chk[ 'class' ] = 'SitePress';
@@ -293,6 +334,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 								/**
 								 * NextGEN Gallery and NextCellent Gallery.
+								 *
+								 * See https://wordpress.org/plugins/nextgen-gallery/.
+								 * See https://wordpress.org/plugins/nextcellent-gallery-nextgen-legacy/.
 								 */
 								case 'ngg':
 
@@ -300,6 +344,11 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
+								/**
+								 * rtMedia for WordPress, BuddyPress and bbPress.
+								 *
+								 * See https://wordpress.org/plugins/buddypress-media/.
+								 */
 								case 'rtmedia':
 
 									$chk[ 'plugin' ] = 'buddypress-media/index.php';
@@ -307,7 +356,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 									break;
 
 								/**
-								 * WP Retina 2x.
+								 * Perfect Images + Retina (aka WP Retina 2x).
+								 *
+								 * See https://wordpress.org/plugins/wp-retina-2x/.
 								 */
 								case 'wp-retina-2x':
 
@@ -358,8 +409,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 								case 'schema':
 
 									/**
-									 * If WPSSO_SCHEMA_MARKUP_DISABLE is true, then schema
-									 * markup is not available (ie. false).
+									 * If WPSSO_SCHEMA_MARKUP_DISABLE is true, then schema markup is not available (ie. false).
 									 */
 									$get_avail[ $sub ][ $id ] = SucomUtil::get_const( 'WPSSO_SCHEMA_MARKUP_DISABLE' ) ? false : true;
 
@@ -401,12 +451,22 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							switch ( $id ) {
 
+								/**
+								 * WP Recipe Maker.
+								 *
+								 * See https://wordpress.org/plugins/wp-recipe-maker/.
+								 */
 								case 'wprecipemaker':
 
 									$chk[ 'class' ] = 'WP_Recipe_Maker';
 
 									break;
 
+								/**
+								 * WP Ultimate Recipe.
+								 *
+								 * See https://wordpress.org/plugins/wp-ultimate-recipe/.
+								 */
 								case 'wpultimaterecipe':
 
 									$chk[ 'class' ] = 'WPUltimateRecipe';
@@ -429,12 +489,22 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
+								/**
+								 * WP Product Review Lite.
+								 *
+								 * See https://wordpress.org/plugins/wp-product-review/.
+								 */
 								case 'wpproductreview':
 
 									$chk[ 'class' ] = 'WPPR';
 
 									break;
 
+								/**
+								 * Yotpo: Product & Photo Reviews for WooCommerce.
+								 *
+								 * See * https://wordpress.org/plugins/yotpo-social-reviews-for-woocommerce/.
+								 */
 								case 'yotpowc':
 
 									$chk[ 'function' ] = 'wc_yotpo_init';
@@ -448,18 +518,27 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							switch ( $id ) {
 
+								/**
+								 * All in One SEO Pack.
+								 *
+								 * See https://wordpress.org/plugins/all-in-one-seo-pack/.
+								 */
 								case 'aioseop':
 
 									$chk[ 'class' ] = 'AIOSEOP_Core';
 
 									break;
 
+								/**
+								 * Jetpack SEO module.
+								 *
+								 * See https://wordpress.org/plugins/jetpack/.
+								 */
 								case 'jetpack-seo':
 
-									$jetpack_modules = method_exists( 'Jetpack', 'get_active_modules' ) ?
-										Jetpack::get_active_modules() : array();
+									if ( method_exists( 'Jetpack', 'get_active_modules' ) ) {
 
-									if ( ! empty( $jetpack_modules ) ) {
+										$jetpack_modules = Jetpack::get_active_modules();
 
 										if ( in_array( 'seo-tools', $jetpack_modules ) ) {
 
@@ -469,54 +548,99 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
+								/**
+								 * Rank Math.
+								 *
+								 * See https://wordpress.org/plugins/seo-by-rank-math/.
+								 */
 								case 'rank-math':
 
 									$chk[ 'class' ] = 'RankMath';
 
 									break;
 
+								/**
+								 * The SEO Framework.
+								 *
+								 * See https://wordpress.org/plugins/autodescription/.
+								 */
 								case 'seoframework':
 
 									$chk[ 'function' ] = 'the_seo_framework';
 
 									break;
 
+								/**
+								 * SEOPress.
+								 *
+								 * See https://wordpress.org/plugins/wp-seopress/.
+								 */
 								case 'seopress':
 
 									$chk[ 'function' ] = 'seopress_init';
 
 									break;
 
+								/**
+								 * SEO Ultimate.
+								 *
+								 * See https://wordpress.org/plugins/seo-ultimate/.
+								 */
 								case 'seoultimate':
 
 									$chk[ 'plugin' ] = 'seo-ultimate/seo-ultimate.php';
 
 									break;
 
+								/**
+								 * Slim SEO.
+								 *
+								 * See https://wordpress.org/plugins/slim-seo/.
+								 */
 								case 'slim-seo':
 
 									$chk[ 'plugin' ] = 'slim-seo/slim-seo.php';
 
 									break;
 
+								/**
+								 * SEO 2020 by Squirrly.
+								 *
+								 * https://wordpress.org/plugins/squirrly-seo/.
+								 */
 								case 'squirrlyseo':
 
 									$chk[ 'plugin' ] = 'squirrly-seo/squirrly.php';
 
 									break;
 
+								/**
+								 * WP Meta SEO.
+								 *
+								 * See https://wordpress.org/plugins/wp-meta-seo/.
+								 */
 								case 'wpmetaseo':
 
 									$chk[ 'class' ] = 'WpMetaSeo';
 
 									break;
 
+								/**
+								 * Yoast SEO.
+								 *
+								 * See https://wordpress.org/plugins/wordpress-seo/.
+								 */
 								case 'wpseo':
 
 									$chk[ 'function' ] = 'wpseo_init';
 
 									break;
 
+								/**
+								 * Yoast WooCommerce SEO.
+								 *
+								 * https://yoast.com/wordpress/plugins/yoast-woocommerce-seo/.
+								 */
 								case 'wpseo-wc':
 
 									$chk[ 'class' ] = 'Yoast_WooCommerce_SEO';
@@ -530,12 +654,22 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							switch ( $id ) {
 
+								/**
+								 * BuddyBlog.
+								 *
+								 * See https://buddydev.com/plugins/buddyblog/.
+								 */
 								case 'buddyblog':
 
 									$chk[ 'class' ] = 'BuddyBlog';
 
 									break;
 
+								/**
+								 * BuddyPress.
+								 *
+								 * See https://wordpress.org/plugins/buddypress/.
+								 */
 								case 'buddypress':
 
 									$chk[ 'class' ] = 'BuddyPress';
@@ -558,12 +692,22 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									break;
 
+								/**
+								 * Co-Authors Plus.
+								 *
+								 * See https://wordpress.org/plugins/co-authors-plus/.
+								 */
 								case 'coauthors':
 
 									$chk[ 'plugin' ] = 'co-authors-plus/co-authors-plus.php';
 
 									break;
 
+								/**
+								 * Jetpack.
+								 *
+								 * See https://wordpress.org/plugins/jetpack/.
+								 */
 								case 'jetpack':
 
 									$chk[ 'class' ] = 'Jetpack';
@@ -590,24 +734,11 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							}
 
 							break;
-
-						case 'wp':
-
-							switch ( $id ) {
-
-								case 'featured':
-
-									$chk[ 'function' ] = 'has_post_thumbnail';
-
-									break;
-							}
-
-							break;
 					}
 
 					/**
-					 * Check classes / functions first to include both free and pro / premium plugins, which
-					 * have different plugin slugs, but use the same class / function names.
+					 * Check for plugin classes and functions first, to include both free and pro / premium
+					 * plugins that have different plugin slugs, but use the same class or function names.
 					 */
 					if ( ! empty( $chk ) ) {
 
@@ -617,11 +748,27 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 								( ! empty( $chk[ 'function' ] ) && function_exists( $chk[ 'function' ] ) ) ||
 								( ! empty( $chk[ 'plugin' ] ) && SucomPlugin::is_plugin_active( $chk[ 'plugin' ], $use_cache = true ) ) ) {
 
-								$get_avail[ $sub ][ 'any' ] = $get_avail[ $sub ][ $id ] = true;
+								$version = false;
+
+								if ( ! empty( $chk[ 'min_version' ] ) ) {
+
+									if ( ! empty( $chk[ 'version_global' ] ) ) {
+
+										$version = $GLOBALS[ $chk[ 'version_global' ] ];
+
+									} elseif ( ! empty( $chk[ 'version_const' ] ) ) {
+
+										$version = constant( $chk[ 'version_const' ] );
+									}
+								}
+
+								if ( ! $version || version_compare( $version, $chk[ 'min_version' ], '>=' ) ) {
+
+									$get_avail[ $sub ][ 'any' ] = $get_avail[ $sub ][ $id ] = true;
+								}
 							}
 
 						} elseif ( isset( $chk[ 'opt_key' ] ) ) {
-
 
 							if ( is_array( $chk[ 'opt_key' ] ) ) {
 
@@ -670,7 +817,10 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				$get_avail[ 'seo' ][ 'any' ] = true;
 			}
 
-			$mtime_total = microtime( true ) - $mtime_start;
+			/**
+			 * This method is run only once by Wpsso->set_objects() and typically runs under 0.0002 secs.
+			 */
+			$get_avail[ 'p' ][ 'avail_mtime' ] = microtime( $get_float = true ) - $mtime_start;
 
 			return apply_filters( 'wpsso_get_avail', $get_avail );
 		}

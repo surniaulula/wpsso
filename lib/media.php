@@ -265,7 +265,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					$pid = $local_cache_featured_ids[ $post_id ] = $post_id;
 
-				} elseif ( $this->p->avail[ 'wp' ][ 'featured' ] && has_post_thumbnail( $post_id ) ) {
+				} elseif ( has_post_thumbnail( $post_id ) ) {
 
 					$pid = $local_cache_featured_ids[ $post_id ] = get_post_thumbnail_id( $post_id );
 
@@ -1079,7 +1079,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							$func_name    = 'image_make_intermediate_size()';
 							$func_url     = __( 'https://developer.wordpress.org/reference/functions/image_make_intermediate_size/', 'wpsso' );
 							$fullsizepath = get_attached_file( $pid );
-							$mtime_start  = microtime( true );
+							$mtime_start  = microtime( $get_float = true );
 
 							/**
 							 * image_make_intermediate_size() resizes an image to make a thumbnail or
@@ -1090,7 +1090,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							$resized_meta = image_make_intermediate_size( $fullsizepath, $size_info[ 'width' ], $size_info[ 'height' ],
 								$size_info[ 'crop' ] );
 
-							$mtime_total = microtime( true ) - $mtime_start;
+							$mtime_total = microtime( $get_float = true ) - $mtime_start;
 							$mtime_max   = WPSSO_IMAGE_MAKE_SIZE_MAX_TIME;
 
 							if ( $mtime_total > $mtime_max ) {

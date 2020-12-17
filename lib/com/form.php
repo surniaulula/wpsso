@@ -1505,14 +1505,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		/**
-		 * Deprecated on 2019/07/14.
-		 */
-		public function get_date_time_iso( $name_prefix, $is_disabled = false, $step_mins = 15, $add_none = true ) {
-
-			return $this->get_date_time_tz( $name_prefix, $is_disabled, $step_mins, $add_none );
-		}
-
 		public function get_date_time_tz( $name_prefix, $is_disabled = false, $step_mins = 15, $add_none = true ) {
 
 			$selected = false;
@@ -2297,14 +2289,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_no_input_multi( $name, $css_class = '', $css_id = '', $start_num = 0, $max_input = 90, $show_first = 5 ) {
 
 			return $this->get_input_multi( $name, $css_class, $css_id, $start_num, $max_input, $show_first, $is_disabled = true );
-		}
-
-		/**
-		 * Deprecated on 2019/07/14.
-		 */
-		public function get_no_date_time_iso( $name_prefix = '' ) {
-
-			return $this->get_date_time_tz( $name_prefix, $is_disabled = true );
 		}
 
 		public function get_no_date_time_tz( $name_prefix = '' ) {

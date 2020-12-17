@@ -344,7 +344,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$mtime_start   = microtime( true );
+			$mtime_start   = microtime( $get_float = true );
 			$indent_num    = 0;
 			$home_url      = SucomUtilWP::raw_home_url();
 			$info          = $this->p->cf[ 'plugin' ][ $this->p->id ];
@@ -392,7 +392,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$html .= $this->get_mt_mark( 'end' );
 
-			$mtime_total = microtime( true ) - $mtime_start;
+			$mtime_total = microtime( $get_float = true ) - $mtime_start;
 			$total_secs  = sprintf( '%f secs', $mtime_total );
 
 			$html .= '<!-- added on ' . date( 'c' ) . ' in ' . $total_secs . ' from ' . $home_url . ' -->' . "\n\n";

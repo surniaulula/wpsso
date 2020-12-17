@@ -732,9 +732,9 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				$this->p->debug->log( 'curl: fetching ' . $url_nofrag );
 			}
 
-			$mtime_start = microtime( true );
+			$mtime_start = microtime( $get_float = true );
 			$cache_data  = curl_exec( $ch );
-			$mtime_total = microtime( true ) - $mtime_start;
+			$mtime_total = microtime( $get_float = true ) - $mtime_start;
 			$http_code   = (int) curl_getinfo( $ch, CURLINFO_HTTP_CODE );
 			$ssl_verify  = curl_getinfo( $ch, CURLINFO_SSL_VERIFYRESULT );
 

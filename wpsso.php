@@ -15,7 +15,7 @@
  * Requires At Least: 4.5
  * Tested Up To: 5.6
  * WC Tested Up To: 4.8.0
- * Version: 8.17.2-rc.2
+ * Version: 8.17.2-rc.3
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -414,15 +414,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->post  = new WpssoPost( $this );			// Extends WpssoWpMeta.
 			$this->term  = new WpssoTerm( $this );			// Extends WpssoWpMeta.
 			$this->user  = new WpssoUser( $this );			// Extends WpssoWpMeta.
-
-			/**
-			 * Deprecated on 2019/05/06.
-			 *
-			 * Maintain backwards compatibility for older add-ons.
-			 */
-			$this->m[ 'util' ][ 'post' ] =& $this->post;
-			$this->m[ 'util' ][ 'term' ] =& $this->term;
-			$this->m[ 'util' ][ 'user' ] =& $this->user;
 
 			/**
 			 * Setup classe for meta tags and Schema markup:

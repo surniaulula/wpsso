@@ -1053,14 +1053,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $mixed;
 		}
 
-		/**
-		 * Deprecated on 2019/08/18.
-		 */
-		public static function is_force_regen() {
-
-			return false;
-		}
-
 		public static function is_valid_day( $hm_o, $hm_c ) {
 
 			/**
@@ -4173,7 +4165,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( empty( $home_url ) ) {	// Fallback to default WordPress value.
 
-				$home_url = get_home_url( $blog_id = null, $path = '/' );	// Fallback to default WordPress value.
+				$home_url = get_home_url();	// Fallback to default WordPress value.
 			}
 
 			return $home_url;
@@ -4188,23 +4180,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( empty( $wp_url ) ) {
 
-				$wp_url = get_bloginfo( $show = 'wpurl', $filter = 'raw' );	// Fallback to default WordPress value.
+				$wp_url = get_site_url();	// Fallback to default WordPress value.
 			}
 
 			return $wp_url;
-		}
-
-		/**
-		 * $mixed = 'default' | 'current' | post ID | $mod array
-		 */
-		public static function is_site_https( array $opts = array(), $mixed = 'current' ) {
-
-			if ( self::get_const( 'FORCE_SSL' ) ) {	// Optimize - all front-end URLs are forced to https.
-
-				return true;
-			}
-
-			return self::is_https( self::get_home_url( $opts, $mixed ) );
 		}
 
 		/**
