@@ -2850,7 +2850,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'column-purchase-wpsso':
 
-						$text = '<p>' . sprintf( __( '<strong>%s includes:</strong>', 'wpsso' ), $info[ 'name_pro' ] ) . '</p>';
+						$text = '<p><strong>' . sprintf( __( 'The %s plugin includes:', 'wpsso' ), $info[ 'name_pro' ] ) . '</strong></p>';
 
 						$text .= '<ul>';
 
@@ -2872,7 +2872,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'column-purchase-wpssojson':
 
-						$text = '<p>' . sprintf( __( '<strong>%s includes:</strong>', 'wpsso' ), $info[ 'name_pro' ] ) . '</p>';
+						$text = '<p><strong>' . sprintf( __( 'The %s add-on includes:', 'wpsso' ), $info[ 'name_pro' ] ) . '</strong></p>';
 
 						$text .= '<ul>';
 
@@ -2890,11 +2890,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$json_info_name  = _x( $json_info[ 'name' ], 'plugin name', 'wpsso' );
 						$json_addon_link = $this->p->util->get_admin_url( 'addons#wpssojson', $json_info_name );
 
-						$text = '<p>' . sprintf( __( '<strong>%s includes:</strong>', 'wpsso' ), $info[ 'name_pro' ] ) . '</p>';
+						$text = '<p><strong>' . sprintf( __( 'The %s add-on includes:', 'wpsso' ), $info[ 'name_pro' ] ) . '</strong></p>';
 
 						$text .= '<ul>';
 
-						$text .= ' <li>' . __( 'Manage the details of multiple organizations.', 'wpsso' ) . '</li>';
+						$text .= ' <li>' . __( 'Allows managing the details of multiple organizations.', 'wpsso' ) . '</li>';
 
 						$text .= ' <li>' . sprintf( __( 'Offers an organization selector for the %s add-on.', 'wpsso' ), $json_addon_link ) . '</li>';
 
@@ -2906,11 +2906,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'column-purchase-wpssoplm':
 
-						$text = '<p>' . sprintf( __( '<strong>%s includes:</strong>', 'wpsso' ), $info[ 'name_pro' ] ) . '</p>';
+						$text = '<p><strong>' . sprintf( __( 'The %s add-on includes:', 'wpsso' ), $info[ 'name_pro' ] ) . '</strong></p>';
 
 						$text .= '<ul>';
 
-						$text .= ' <li>' . sprintf( __( 'A %1$s tab in the %2$s metabox to select a place or customize place information.', 'wpsso' ), _x( 'Schema Place', 'metabox tab', 'wpsso' ), $mb_title ) . '</li>';
+						$text .= ' <li>' . sprintf( __( 'A %1$s tab in the %2$s metabox to select a place or customize place information.',
+							'wpsso' ), _x( 'Schema Place', 'metabox tab', 'wpsso' ), $mb_title ) . '</li>';
 
 						$text .= $li_support_link;
 

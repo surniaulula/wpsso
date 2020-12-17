@@ -71,12 +71,16 @@ h1 > div.dashicons-before::before {
 
 #side-info-column .side-info-icon {
 	text-align:center;
-	margin:20px 0;
+	margin:10px 0;
 }
 
 #side-info-column .side-info-content ul {
-	margin:15px 0 15px 20px;
 	list-style-type:disc;
+	margin:10px 0 10px 20px;
+}
+
+#side-info-column .side-info-content ul li {
+	margin-bottom:10px;
 }
 
 #side-info-column .button-primary,

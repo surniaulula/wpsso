@@ -1601,7 +1601,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return $local_cache;
 			}
 
-			$pkg_info    = $this->get_pkg_info();	// Returns an array from cache.
+			$pkg_info = $this->get_pkg_info();	// Returns an array from cache.
+
 			$local_cache = array();
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
@@ -1620,7 +1621,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 
 				$info_box = '<div class="side-info-header">' . "\n";
-				$info_box .= '<h2>' . __( 'Upgrade to Premium', 'wpsso' ) . '</h2>' . "\n";
+				// translators: %s is the Premium add-on short name.
+				$info_box .= '<h2>' . sprintf( __( 'Upgrade to %s', 'wpsso' ), $pkg_info[ $ext ][ 'short_pro' ] ) . '</h2>' . "\n";
 				$info_box .= '</div><!-- .side-info-header -->' . "\n";
 
 				$info_box .= '<div class="side-info-icon">' . "\n";
