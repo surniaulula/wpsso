@@ -27,7 +27,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				'accelerated-mobile-pages' => 'AMP for WP',
 			),
 			'media' => array(
-				'wp-retina-2x' => 'WP Retina 2x',
+				'wp-retina-2x' => 'Perfect Images + Retina',
 			),
 			'p' => array(
 				'schema' => 'Schema Markup',
