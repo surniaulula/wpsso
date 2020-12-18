@@ -23,8 +23,8 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 		private $extend_lib_checks = array(
 			'amp' => array(
-				'amp'                      => 'AMP',	// AMP, Better AMP, etc.
-				'accelerated-mobile-pages' => 'Accelerated Mobile Pages',
+				'amp'                      => 'AMP',
+				'accelerated-mobile-pages' => 'AMP for WP',
 			),
 			'media' => array(
 				'wp-retina-2x' => 'WP Retina 2x',
@@ -89,7 +89,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							switch ( $id ) {
 
 								/**
-								 * AMP, Better AMP, etc.
+								 * AMP.
 								 *
 								 * See https://wordpress.org/plugins/amp/.
 								 */
