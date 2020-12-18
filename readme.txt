@@ -86,7 +86,6 @@ WPSSO makes full use of all available caching methods &mdash; along with offerin
 * Built-in compatibility with AMP plugins:
 
 	* [AMP](https://wordpress.org/plugins/amp/)
-	* [Better AMP](https://wordpress.org/plugins/better-amp/)
 	* [AMP for WP](https://wordpress.org/plugins/accelerated-mobile-pages/)
 
 * Built-in compatibility with caching plugins:
@@ -103,18 +102,18 @@ WPSSO makes full use of all available caching methods &mdash; along with offerin
 	* WP Rocket Cache
 	* WP Super Cache.
 
-* Built-in compatibility checks for popular SEO plugins (\* = additional integration features also available in the Premium version):
+* Built-in compatibility checks for popular SEO plugins (+ denotes that additional integration features are also available in the Premium version):
 
-	* All in One SEO Pack\*
+	* All in One SEO Pack +
 	* Jetpack SEO
-	* Rank Math SEO\*
+	* Rank Math SEO +
 	* SEO Ultimate
-	* SEOPress\*
+	* SEOPress +
 	* Slim SEO
 	* Squirrly SEO
-	* The SEO Framework\*
-	* WP Meta SEO\*
-	* Yoast SEO\*
+	* The SEO Framework +
+	* WP Meta SEO +
+	* Yoast SEO +
 	* Yoast WooCommerce SEO
 
 * Built-in compatibility for advanced WordPress configurations:

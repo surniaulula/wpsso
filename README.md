@@ -82,7 +82,6 @@
 
 <ul>
 <li><a href="https://wordpress.org/plugins/amp/">AMP</a></li>
-<li><a href="https://wordpress.org/plugins/better-amp/">Better AMP</a></li>
 <li><a href="https://wordpress.org/plugins/accelerated-mobile-pages/">AMP for WP</a></li>
 </ul></li>
 <li><p>Built-in compatibility with caching plugins:</p>
@@ -100,19 +99,19 @@
 <li>WP Rocket Cache</li>
 <li>WP Super Cache.</li>
 </ul></li>
-<li><p>Built-in compatibility checks for popular SEO plugins (&#42; = additional integration features also available in the Premium version):</p>
+<li><p>Built-in compatibility checks for popular SEO plugins (+ denotes that additional integration features are also available in the Premium version):</p>
 
 <ul>
-<li>All in One SEO Pack&#42;</li>
+<li>All in One SEO Pack +</li>
 <li>Jetpack SEO</li>
-<li>Rank Math SEO&#42;</li>
+<li>Rank Math SEO +</li>
 <li>SEO Ultimate</li>
-<li>SEOPress&#42;</li>
+<li>SEOPress +</li>
 <li>Slim SEO</li>
 <li>Squirrly SEO</li>
-<li>The SEO Framework&#42;</li>
-<li>WP Meta SEO&#42;</li>
-<li>Yoast SEO&#42;</li>
+<li>The SEO Framework +</li>
+<li>WP Meta SEO +</li>
+<li>Yoast SEO +</li>
 <li>Yoast WooCommerce SEO</li>
 </ul></li>
 <li><p>Built-in compatibility for advanced WordPress configurations:</p>
