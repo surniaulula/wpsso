@@ -100,6 +100,21 @@
 <li>WP Rocket Cache</li>
 <li>WP Super Cache.</li>
 </ul></li>
+<li><p>Built-in compatibility checks for popular SEO plugins (&#42; = additional integration features also available in the Premium version):</p>
+
+<ul>
+<li>All in One SEO Pack&#42;</li>
+<li>Jetpack SEO</li>
+<li>Rank Math SEO&#42;</li>
+<li>SEO Ultimate</li>
+<li>SEOPress&#42;</li>
+<li>Slim SEO</li>
+<li>Squirrly SEO</li>
+<li>The SEO Framework&#42;</li>
+<li>WP Meta SEO&#42;</li>
+<li>Yoast SEO&#42;</li>
+<li>Yoast WooCommerce SEO</li>
+</ul></li>
 <li><p>Built-in compatibility for advanced WordPress configurations:</p>
 
 <ul>
