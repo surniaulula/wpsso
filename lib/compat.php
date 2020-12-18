@@ -57,11 +57,16 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 		public function common_hooks() {
 
 			/**
-			 * WP Retina 2x.
+			 * Perfect Images + Retina (aka WP Retina 2x).
 			 */
 			if ( ! empty( $this->p->avail[ 'media' ][ 'wp-retina-2x' ] ) ) {
 
-				add_filter( 'option_wr2x_ignore_sizes', array( $this, 'update_wr2x_ignore_sizes' ), 10, 1 );
+				/**
+				 * Filter for the get_option() and update_option() functions.
+				 */
+				add_filter( 'option_wr2x_retina_sizes', array( $this, 'update_wr2x_retina_sizes' ), 10, 1 );
+
+				add_filter( 'pre_update_option_wr2x_retina_sizes', array( $this, 'update_wr2x_retina_sizes' ), 10, 1 );
 			}
 		}
 
@@ -187,38 +192,20 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 		}
 
 		/**
-		 * Prevent WP Retina 2x from creating 2x images for WPSSO image sizes.
+		 * Filter for the get_option() and update_option() functions.
+		 *
+		 * Prevent Perfect Images + Retina (aka WP Retina 2x) from creating 2x images for WPSSO image sizes.
 		 */
-		public function update_wr2x_ignore_sizes( $mixed ) {
+		public function update_wr2x_retina_sizes( $mixed ) {
 
-			global $_wp_additional_image_sizes;
-
-			/**
-			 * Maybe remove old image size names.
-			 */
 			if ( is_array( $mixed ) ) {
 
-				foreach ( $mixed as $size_name => $disabled ) {
+				foreach ( $mixed as $num => $size_name ) {
 
-					if ( false !== strpos( $size_name, 'wpsso-' ) ) {
+					if ( 0 === strpos( $size_name, 'wpsso-' ) ) {
 
-						unset( $mixed[ $size_name ] );
+						unset( $mixed[ $num ] );
 					}
-				}
-
-			} else {
-
-				$mixed = array();
-			}
-
-			/**
-			 * Disable all current WPSSO image size names.
-			 */
-			foreach ( $_wp_additional_image_sizes as $size_name => $size_info ) {
-
-				if ( false !== strpos( $size_name, 'wpsso-' ) ) {
-
-					$mixed[ $size_name ] = 1;
 				}
 			}
 
