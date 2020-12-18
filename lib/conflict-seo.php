@@ -49,10 +49,10 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			$this->notice_pre =  __( 'Plugin conflict detected:', 'wpsso' ) . ' ';
 
 			$this->conflict_check_aioseop();	// All in One SEO Pack.
+			$this->conflict_check_seoframework();	// The SEO Framework.
 			$this->conflict_check_seopress();	// SEOPress.
 			$this->conflict_check_seoultimate();	// SEO Ultimate.
 			$this->conflict_check_squirrlyseo();	// Squirrly SEO.
-			$this->conflict_check_seoframework();	// The SEO Framework.
 			$this->conflict_check_wpmetaseo();	// WP Meta SEO.
 			$this->conflict_check_wpseo();		// Yoast SEO.
 		}
