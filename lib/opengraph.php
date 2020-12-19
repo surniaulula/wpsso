@@ -567,7 +567,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 */
 			if ( ! isset( $mt_og[ 'og:updated_time' ] ) ) {
 
-				if ( $mod[ 'post_modified_time' ] ) {
+				if ( $mod[ 'post_modified_time' ] ) {	// ISO 8601 date or false.
 
 					$mt_og[ 'og:updated_time' ] = $mod[ 'post_modified_time' ];
 				}
@@ -762,7 +762,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					if ( $mod[ 'post_modified_time' ] ) {	// ISO 8601 date or false.
 
-						$mt_og[ 'article:modifiedmodified_time' ] = $mod[ 'post_modified_time' ];
+						$mt_og[ 'article:modified_time' ] = $mod[ 'post_modified_time' ];
 					}
 				}
 			}
