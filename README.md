@@ -100,7 +100,7 @@
 <li>WP Rocket Cache</li>
 <li>WP Super Cache</li>
 </ul></li>
-<li><p>Built-in compatibility checks for popular SEO plugins (&#42;&#42; additional integration features also available in Premium version):</p>
+<li><p>Built-in compatibility checks for popular SEO plugins (&#42;&#42; additional integration also available in Premium version):</p>
 
 <ul>
 <li>All in One SEO Pack &#42;&#42;</li>
