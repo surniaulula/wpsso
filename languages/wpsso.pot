@@ -3252,7 +3252,7 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:172 lib/edit.php:495 lib/page.php:1261
+#: gettext/gettext-lib-pro.php:172 lib/edit.php:495 lib/page.php:1262
 #: lib/pro/social/buddypress.php:700
 msgctxt "default description"
 msgid "No Description."
@@ -4962,7 +4962,7 @@ msgctxt "option label"
 msgid "Facebook / Open Graph Example"
 msgstr ""
 
-#: lib/edit.php:492 lib/page.php:1559
+#: lib/edit.php:492 lib/page.php:1560
 msgctxt "default title"
 msgid "No Title"
 msgstr ""
@@ -7972,16 +7972,16 @@ msgctxt "default description"
 msgid "Archive page."
 msgstr ""
 
-#: lib/page.php:1425 lib/page.php:1429
+#: lib/page.php:1426 lib/page.php:1430
 msgctxt "default title"
 msgid "%s Archive"
 msgstr ""
 
-#: lib/page.php:1511
+#: lib/page.php:1512
 msgid "Search Results %1$s %2$s"
 msgstr ""
 
-#: lib/page.php:1639
+#: lib/page.php:1640
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] ""

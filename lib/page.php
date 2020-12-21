@@ -1108,7 +1108,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						 */
 						if ( empty( $desc_text ) ) {
 
-							if ( $mod[ 'post_type' ] === 'attachment' && strpos( $mod[ 'post_mime' ], 'image/' ) === 0 ) {
+							if ( 'attachment' === $mod[ 'post_type' ] && strpos( $mod[ 'post_mime' ], 'image/' ) === 0 ) {
 
 								if ( $this->p->debug->enabled ) {
 
@@ -1251,6 +1251,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			if ( empty( $desc_text ) ) {
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( 'description is empty - falling back to generic description text' );
 				}
 
