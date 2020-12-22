@@ -359,7 +359,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 */
 				$md_opts = get_post_meta( $post_id, WPSSO_META_NAME, $single = true );
 
-				if ( ! is_array( $md_opts ) ) {
+				if ( ! is_array( $md_opts ) ) {	// WPSSO_META_NAME not found.
+
+					if ( '' !== $md_opts ) {	// Invalid post ID.
+
+						$error_pre = sprintf( __( '%s warning:', 'wpsso' ), __METHOD__ );
+						$error_msg = sprintf( __( 'WordPress get_post_meta() reported post ID %1$s as invalid for post meta %2$s' ),
+							$post_id, WPSSO_META_NAME );
+					
+						self::safe_error_log( $error_pre . ' ' . $error_msg );
+					}
 
 					$md_opts = array();
 				}

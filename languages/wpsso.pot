@@ -3203,7 +3203,7 @@ msgid ""
 "installed."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:163 lib/post.php:1120
+#: gettext/gettext-lib-pro.php:163 lib/post.php:1129
 #: lib/pro/media/youtube.php:187
 msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
@@ -3875,7 +3875,7 @@ msgstr ""
 msgid "Network plugin settings have been saved."
 msgstr ""
 
-#: lib/admin.php:1124 lib/post.php:900 lib/term.php:669 lib/user.php:667
+#: lib/admin.php:1124 lib/post.php:909 lib/term.php:669 lib/user.php:667
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -5095,12 +5095,12 @@ msgid ""
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1098 lib/post.php:550 lib/register.php:347 lib/term.php:466
-#: lib/user.php:446 lib/util.php:841 lib/util.php:3195
+#: lib/media.php:1098 lib/post.php:366 lib/post.php:559 lib/register.php:347
+#: lib/term.php:466 lib/user.php:446 lib/util.php:841 lib/util.php:3195
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1099 lib/post.php:551 lib/term.php:467 lib/user.php:447
+#: lib/media.php:1099 lib/post.php:560 lib/term.php:467 lib/user.php:447
 #: lib/util.php:842 lib/util.php:3196
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
@@ -8008,137 +8008,142 @@ msgctxt "module name"
 msgid "post"
 msgstr ""
 
-#: lib/post.php:552
+#: lib/post.php:367
+msgid ""
+"WordPress get_post_meta() reported post ID %1$s as invalid for post meta %2$s"
+msgstr ""
+
+#: lib/post.php:561
 msgid ""
 "Slow WordPress function detected - %1$s took %2$0.3f secs to get children of "
 "post ID %3$d (%4$s)."
 msgstr ""
 
-#: lib/post.php:836 lib/post.php:1443 lib/schema.php:3157 lib/term.php:623
+#: lib/post.php:845 lib/post.php:1452 lib/schema.php:3157 lib/term.php:623
 #: lib/user.php:620
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/post.php:1038
+#: lib/post.php:1047
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:1069
+#: lib/post.php:1078
 msgid "The webpage HTML retrieved from %1$s is %2$s bytes."
 msgstr ""
 
-#: lib/post.php:1071
+#: lib/post.php:1080
 msgid ""
 "This exceeds the maximum limit of %1$s bytes imposed by the Google crawler."
 msgstr ""
 
-#: lib/post.php:1072
+#: lib/post.php:1081
 msgid ""
 "If you do not reduce the webpage HTML size, Google will refuse to crawl this "
 "webpage."
 msgstr ""
 
-#: lib/post.php:1101
+#: lib/post.php:1110
 msgid "Retrieving the webpage HTML for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:1103
+#: lib/post.php:1112
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:1105
+#: lib/post.php:1114
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:1106
+#: lib/post.php:1115
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:1134
+#: lib/post.php:1143
 msgid "An %1$s tag was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1149
+#: lib/post.php:1158
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1166
+#: lib/post.php:1175
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:1193
+#: lib/post.php:1202
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
 "&mdash; this could be an indication of a problem with PHP's PCRE library or "
 "a webpage filter corrupting the %1$s meta tags."
 msgstr ""
 
-#: lib/post.php:1238
+#: lib/post.php:1247
 msgid "The webpage at %1$s does not include any Schema JSON-LD script(s)."
 msgstr ""
 
-#: lib/post.php:1240
+#: lib/post.php:1249
 msgid ""
 "Complete and accurate Schema JSON-LD markup is highly recommended for better "
 "ranking and click-through rates in search results."
 msgstr ""
 
-#: lib/post.php:1242
+#: lib/post.php:1251
 msgid ""
 "Consider activating the %1$s add-on to include Schema JSON-LD markup for "
 "Google Rich Results."
 msgstr ""
 
-#: lib/post.php:1263
+#: lib/post.php:1272
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:1281
+#: lib/post.php:1290
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1281
+#: lib/post.php:1290
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML document &mdash; please review the <a href=\"%1$s\">W3C "
 "Markup Validator</a> results and correct any syntax errors."
 msgstr ""
 
-#: lib/post.php:1319
+#: lib/post.php:1328
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1321
+#: lib/post.php:1330
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1329
+#: lib/post.php:1338
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1333
+#: lib/post.php:1342
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1337
+#: lib/post.php:1346
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1496
+#: lib/post.php:1505
 msgid "Save a draft or publish to display these options."
 msgstr ""
 
-#: lib/post.php:1738
+#: lib/post.php:1747
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 

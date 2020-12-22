@@ -259,16 +259,16 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 					$md_opts = get_user_meta( $user_exists_id, WPSSO_META_NAME, $single = true );
 
+					if ( ! is_array( $md_opts ) ) {
+
+						$md_opts = array();
+					}
+
 				} else {
 
 					$user_exists_id = 0;
 
-					$md_opts = apply_filters( 'wpsso_get_other_user_meta', false, $user_id );
-				}
-
-				if ( ! is_array( $md_opts ) ) {
-
-					$md_opts = array();
+					$md_opts = (array) apply_filters( 'wpsso_get_other_user_meta', array(), $user_id );
 				}
 
 				/**
