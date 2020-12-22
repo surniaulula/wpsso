@@ -101,6 +101,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			add_action( 'wp', array( $this, 'add_plugin_image_sizes' ), -100 );				// Front-end compatibility.
 			add_action( 'admin_init', array( $this, 'add_plugin_image_sizes' ), -100 );			// Back-end + AJAX compatibility.
 			add_action( 'rest_api_init', array( $this, 'add_plugin_image_sizes' ), -100 );			// REST API compatibility.
+
+			if ( ! empty( $this->p->options[ 'plugin_cache_disable' ] ) ) {
+
+				$this->cache_disable_filters();
+			}
 		}
 
 		public function set_util_instances( &$plugin ) {
@@ -883,10 +888,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * Disable transient cache for debug mode. This method is also called for non-WordPress sharing / canonical URLs
-		 * with query arguments.
+		 * Disable transient cache.
+		 *
+		 * This method is also called by WpssoUtil->get_request_url() for URLs with query arguments.
 		 */
-		public function disable_cache_filters( array $add_filters = array() ) {
+		public function cache_disable_filters( $disable_short = false ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -895,28 +901,36 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			static $do_once = array();
 
-			$default_filters = array(
-				'cache_expire_head_markup'      => '__return_zero',
-				'cache_expire_setup_html'       => '__return_zero',
-				'cache_expire_shortcode_html'   => '__return_zero',
-				'cache_expire_sharing_buttons'  => '__return_zero',
+			$disable_filters = array(
+				'cache_expire_head_markup'     => '__return_zero',
+				'cache_expire_setup_html'      => '__return_zero',	// Used by WpssoAdmin->get_ext_file_content().
+				'cache_expire_shortcode_html'  => '__return_zero',	// Used by WpssoAdmin->get_ext_file_content().
+				'cache_expire_sharing_buttons' => '__return_zero',
 			);
 
-			$disable_filters = array();
+			if ( $disable_short ) {
 
-			foreach ( array_merge( $default_filters, $add_filters ) as $filter_name => $callback ) {
+				$disable_filters[ 'cache_expire_short_url' ] = '__return_zero';
+			}
+
+			/**
+			 * Add filter of not already added.
+			 */
+			$add_filters = array();
+
+			foreach ( $disable_filters as $filter_name => $callback ) {
 
 				if ( ! isset( $do_once[ $filter_name ] ) ) {
 
 					$do_once[ $filter_name ] = true;
 
-					$disable_filters[ $filter_name ] = $callback;
+					$add_filters[ $filter_name ] = $callback;
 				}
 			}
 
-			if ( ! empty( $disable_filters ) ) {
+			if ( ! empty( $add_filters ) ) {
 
-				$this->add_plugin_filters( $this, $disable_filters );
+				$this->add_plugin_filters( $this, $add_filters );
 			}
 		}
 
@@ -2586,9 +2600,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 */
 			if ( false !== strpos( $url, '?' ) ) {
 
-				$this->disable_cache_filters( array(
-					'shorten_url_disabled' => '__return_true',
-				) );
+				$this->cache_disable_filters( $disable_short = true );
 			}
 
 			return $url;

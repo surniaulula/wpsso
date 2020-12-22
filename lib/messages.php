@@ -759,15 +759,21 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						/**
 						 * Plugin Admin settings.
 						 */
-						case 'tooltip-plugin_clean_on_uninstall': // Remove Settings on Uninstall.
+						case 'tooltip-plugin_clean_on_uninstall':	// Remove Settings on Uninstall.
 
 							$text = sprintf( __( 'Check this option to remove all %s settings when you <em>uninstall</em> the plugin. This includes any custom post, term, and user meta.', 'wpsso' ), $info[ 'short' ] );
 
 							break;
 
-						case 'tooltip-plugin_debug': 		// Add Hidden Debug Messages.
+						case 'tooltip-plugin_cache_disable': 		// Disable Cache for Debugging.
 
-							$text = __( 'Add debugging messages as hidden HTML comments to back-end and front-end webpages (default is unchecked).', 'wpsso' );
+							$text = __( 'Disable the head markup transient cache for debugging purposes (default is unchecked).', 'wpsso' );
+
+							break;
+
+						case 'tooltip-plugin_debug_html': 		// Add Hidden Debug Messages.
+
+							$text = __( 'Add debugging messages as hidden HTML comments to front-end and admin webpages (default is unchecked).', 'wpsso' );
 
 							break;
 

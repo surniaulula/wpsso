@@ -15,7 +15,7 @@
  * Requires At Least: 4.5
  * Tested Up To: 5.6
  * WC Tested Up To: 4.8.0
- * Version: 8.18.1-dev.1
+ * Version: 8.18.1-dev.2
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -286,7 +286,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$debug_log = true;
 			}
 
-			if ( ! empty( $this->options[ 'plugin_debug' ] ) ) {
+			if ( ! empty( $this->options[ 'plugin_debug_html' ] ) ) {
 
 				$debug_html = true;
 
@@ -516,8 +516,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			 * Show a reminder that debug mode is enabled if the WPSSO_DEV constant is not defined.
 			 */
 			if ( $this->debug->enabled ) {
-
-				$this->util->disable_cache_filters();
 
 				$doing_dev    = SucomUtil::get_const( 'WPSSO_DEV' );
 				$notice_key   = 'debug-mode-is-active';

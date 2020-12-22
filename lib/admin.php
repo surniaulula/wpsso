@@ -3235,17 +3235,22 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function add_advanced_plugin_settings_table_rows( array &$table_rows, $form, $network = false ) {
 
 			$table_rows[ 'plugin_clean_on_uninstall' ] = '' .
-				$form->get_th_html( _x( 'Remove Settings on Uninstall', 'option label', 'wpsso' ), '', 'plugin_clean_on_uninstall' ) . 
+				$form->get_th_html( _x( 'Remove Settings on Uninstall', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_clean_on_uninstall' ) . 
 				'<td>' . $form->get_checkbox( 'plugin_clean_on_uninstall' ) . ' ' .
 				_x( 'including any custom meta for posts, terms and users', 'option comment', 'wpsso' ) . '</td>' .
 				self::get_option_site_use( 'plugin_clean_on_uninstall', $form, $network, $is_enabled = true );
 
-			$table_rows[ 'plugin_debug' ] = '' .
-				$form->get_th_html( _x( 'Add Hidden Debug Messages', 'option label', 'wpsso' ), '', 'plugin_debug' ) . 
-				'<td>' . ( ! $network && SucomUtil::get_const( 'WPSSO_HTML_DEBUG' ) ? $form->get_no_checkbox( 'plugin_debug' ) .
-					' <em>' . _x( 'WPSSO_HTML_DEBUG constant is true', 'option comment', 'wpsso' ) . '</em>' :
-						$form->get_checkbox( 'plugin_debug' ) ) . '</td>' .
-				self::get_option_site_use( 'plugin_debug', $form, $network, $is_enabled = true );
+			$table_rows[ 'plugin_cache_disable' ] = '' .
+				$form->get_th_html( _x( 'Disable Cache for Debugging', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_cache_disable' ) . 
+				'<td>' . $form->get_checkbox( 'plugin_cache_disable' ) . '</td>' .
+				self::get_option_site_use( 'plugin_cache_disable', $form, $network, $is_enabled = true );
+
+			$table_rows[ 'plugin_debug_html' ] = '' .
+				$form->get_th_html( _x( 'Add Hidden Debug Messages', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_debug_html' ) . 
+				'<td>' . ( ! $network && SucomUtil::get_const( 'WPSSO_DEBUG_HTML' ) ?
+				$form->get_no_checkbox( 'plugin_debug_html' ) . ' <em>' . _x( 'WPSSO_DEBUG_HTML constant is true', 'option comment', 'wpsso' ) . '</em>' :
+				$form->get_checkbox( 'plugin_debug_html' ) ) . '</td>' .
+				self::get_option_site_use( 'plugin_debug_html', $form, $network, $is_enabled = true );
 		}
 
 		/**

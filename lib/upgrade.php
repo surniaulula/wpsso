@@ -400,6 +400,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				772 => array(
 					'site_url' => 'home_url',
 				),
+				773 => array(
+					'plugin_debug' => 'plugin_debug_html',
+				),
 			),
 		);
 
@@ -463,6 +466,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				725 => array(
 					'plugin_attr_product_volume_value' => 'plugin_attr_product_fluid_volume_value',
 					'plugin_cf_product_volume_value'   => 'plugin_cf_product_fluid_volume_value',
+				),
+				773 => array(
+					'plugin_debug' => 'plugin_debug_html',
 				),
 			),
 		);

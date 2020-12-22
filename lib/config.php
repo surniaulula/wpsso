@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.18.1-dev.1',	// Plugin version.
-					'opt_version' => '773',		// Increment when changing default option values.
+					'version'     => '8.18.1-dev.2',	// Plugin version.
+					'opt_version' => '774',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Make sure your content looks best on social sites and in search results, no matter how your webpages are shared, re-shared, messaged, posted, embedded, or crawled.',
@@ -1626,7 +1626,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Advanced Settings - Plugin Admin tab.
 					 */
 					'plugin_clean_on_uninstall' => 0,			// Remove Settings on Uninstall.
-					'plugin_debug'              => 0,			// Add Hidden Debug Messages.
+					'plugin_cache_disable'      => 0,			// Disable Cache for Debugging.
+					'plugin_debug_html'         => 0,			// Add Hidden Debug Messages.
 
 					/**
 					 * Advanced Settings - Interface tab.
@@ -1866,10 +1867,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings - Plugin Admin tab.
 					 */
-					'plugin_clean_on_uninstall'     => 0,			// Remove Settings on Uninstall
+					'plugin_clean_on_uninstall'     => 0,			// Remove Settings on Uninstall.
 					'plugin_clean_on_uninstall:use' => 'default',
-					'plugin_debug'                  => 0,			// Add Hidden Debug Messages
-					'plugin_debug:use'              => 'default',
+					'plugin_cache_disable'          => 0,			// Disable Cache for Debugging.
+					'plugin_cache_disable:use'      => 'default',
+					'plugin_debug_html'             => 0,			// Add Hidden Debug Messages.
+					'plugin_debug_html:use'         => 'default',
 
 					/**
 					 * Advanced Settings - Caching tab.
@@ -3946,14 +3949,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				/**
 				 * Parse the complete config and define some reference values.
 				 */
-				$pro_disabled = defined( 'WPSSO_PRO_DISABLE' ) && WPSSO_PRO_DISABLE ? true : false;
+				$pro_disable = defined( 'WPSSO_PRO_DISABLE' ) && WPSSO_PRO_DISABLE ? true : false;
 
 				foreach ( self::$cf[ 'plugin' ] as $ext => $info ) {
 
 					$pkg_dir = 'std';
 
 					if ( defined( $ext_dir_const = strtoupper( $ext ) . '_PLUGINDIR' ) &&
-						is_dir( constant( $ext_dir_const ) . 'lib/pro/' ) && ! $pro_disabled ) {
+						is_dir( constant( $ext_dir_const ) . 'lib/pro/' ) && ! $pro_disable ) {
 
 						$pkg_dir = 'pro';
 					}

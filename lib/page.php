@@ -1781,6 +1781,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				 * Cleanup for NextGEN Gallery pre-v2 album shortcode.
 				 */
 				unset ( $GLOBALS[ 'subalbum' ] );
+
 				unset ( $GLOBALS[ 'nggShowGallery' ] );
 
 			/**
@@ -1857,11 +1858,16 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			/**
-			 * Save content to cache.
+			 * Save content to non-persistant cache.
 			 */
 			if ( $cache_exp_secs > 0 ) {
 
-				wp_cache_add_non_persistent_groups( array( __METHOD__ ) );	// Only some caching plugins support this feature.
+				/**
+				 * Adds a group or set of groups to the list of non-persistent groups.
+				 *
+				 * Note that only a few caching plugins support this feature.
+				 */
+				wp_cache_add_non_persistent_groups( array( __METHOD__ ) );
 
 				wp_cache_set( $cache_id, $cache_array, __METHOD__, $cache_exp_secs );
 
