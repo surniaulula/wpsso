@@ -337,9 +337,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added a new "Disable Cache for Debugging" option in the SSO &gt; Advanced Settings page.
 * **Bugfixes**
-	* Fixed missing 'article:modified_time' meta tag value.
+	* Fixed a missing 'article:modified_time' meta tag value.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -919,7 +919,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 = 8.18.1-dev.2 =
 
-(2020/12/19) Fixed missing 'article:modified_time' meta tag value.
+(2020/12/19) Added a new "Disable Cache for Debugging" option in the SSO &gt; Advanced Settings page. Fixed a missing 'article:modified_time' meta tag value.
 
 = 8.18.0 =
 
