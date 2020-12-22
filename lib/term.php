@@ -230,21 +230,26 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			 */
 			$cache_id = SucomUtil::get_assoc_salt( array( 'id' => $term_id, 'filter' => $filter_opts ) );
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'local cache_id is ' . $cache_id );
+			}
+
 			/**
 			 * Maybe initialize the cache.
 			 */
 			if ( ! isset( $local_cache[ $cache_id ] ) ) {
 
-				$local_cache[ $cache_id ] = false;
+				$local_cache[ $cache_id ] = null;
 
 			} elseif ( $this->md_cache_disabled ) {
 
-				$local_cache[ $cache_id ] = false;
+				$local_cache[ $cache_id ] = null;
 			}
 
 			$md_opts =& $local_cache[ $cache_id ];	// Shortcut variable name.
 
-			if ( false === $md_opts ) {
+			if ( null === $md_opts ) {
 
 				$md_opts = self::get_term_meta( $term_id, WPSSO_META_NAME, true );
 

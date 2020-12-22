@@ -332,22 +332,31 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 */
 			$cache_id = SucomUtil::get_assoc_salt( array( 'id' => $post_id, 'filter' => $filter_opts ) );
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'local cache_id is ' . $cache_id );
+			}
+
 			/**
 			 * Maybe initialize the cache.
 			 */
 			if ( ! isset( $local_cache[ $cache_id ] ) ) {
 
-				$local_cache[ $cache_id ] = false;
+				$local_cache[ $cache_id ] = null;
 
 			} elseif ( $this->md_cache_disabled ) {
 
-				$local_cache[ $cache_id ] = false;
+				$local_cache[ $cache_id ] = null;
 			}
 
 			$md_opts =& $local_cache[ $cache_id ];	// Shortcut variable name.
 
-			if ( false === $md_opts ) {
+			if ( null === $md_opts ) {	// Cache is empty.
 
+				/**
+				 * If no metadata is found, get_post_meta() returns an empty string if $single is true, an empty
+				 * array if $single is false, or false for an invalid $post_id.
+				 */
 				$md_opts = get_post_meta( $post_id, WPSSO_META_NAME, $single = true );
 
 				if ( ! is_array( $md_opts ) ) {

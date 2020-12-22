@@ -230,21 +230,26 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			 */
 			$cache_id = SucomUtil::get_assoc_salt( array( 'id' => $user_id, 'filter' => $filter_opts ) );
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'local cache_id is ' . $cache_id );
+			}
+
 			/**
 			 * Maybe initialize the cache.
 			 */
 			if ( ! isset( $local_cache[ $cache_id ] ) ) {
 
-				$local_cache[ $cache_id ] = false;
+				$local_cache[ $cache_id ] = null;
 
 			} elseif ( $this->md_cache_disabled ) {
 
-				$local_cache[ $cache_id ] = false;
+				$local_cache[ $cache_id ] = null;
 			}
 
 			$md_opts =& $local_cache[ $cache_id ];	// Shortcut variable name.
 
-			if ( false === $md_opts ) {
+			if ( null === $md_opts ) {
 
 				$user_exists = SucomUtilWP::user_exists( $user_id );
 
