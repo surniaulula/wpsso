@@ -906,6 +906,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				'cache_expire_setup_html'      => '__return_zero',	// Used by WpssoAdmin->get_ext_file_content().
 				'cache_expire_shortcode_html'  => '__return_zero',	// Used by WpssoAdmin->get_ext_file_content().
 				'cache_expire_sharing_buttons' => '__return_zero',
+				'cache_expire_the_content'     => '__return_zero',	// Used by WpssoPage->get_the_content().
 			);
 
 			if ( $disable_short ) {
