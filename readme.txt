@@ -332,7 +332,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.18.1-dev.2 (2020/12/21)**
+**Version 8.18.1-dev.3 (2020/12/21)**
 
 * **New Features**
 	* None.
@@ -341,7 +341,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed a missing 'article:modified_time' meta tag value.
 * **Developer Notes**
-	* None.
+	* Added a `WpssoWpMeta->is_upgrade_options_required()` method.
+	* Refactored the `WpssoWpMeta->upgrade_options()` method.
 * **Requires At Least**
 	* PHP v7.0.
 	* WordPress v4.5.
@@ -917,7 +918,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.18.1-dev.2 =
+= 8.18.1-dev.3 =
 
 (2020/12/21) Added a new "Disable Cache for Debugging" option in the SSO &gt; Advanced Settings page. Fixed a missing 'article:modified_time' meta tag value.
 
