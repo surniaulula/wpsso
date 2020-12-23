@@ -491,16 +491,11 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 			/**
 			 * Save / create the current options version number for version checks to follow.
 			 */
-			$version_key = 'plugin_wpsso_opt_version';
-
-			$prev_version = empty( $opts[ $version_key ] ) ? 0 : $opts[ $version_key ];
+			$prev_version = empty( $opts[ 'plugin_wpsso_opt_version' ] ) ? 0 : $opts[ 'plugin_wpsso_opt_version' ];
 
 			if ( $options_name === constant( 'WPSSO_OPTIONS_NAME' ) ) {
 
-				$rename_filter_name   = 'wpsso_rename_options_keys';
-				$upgraded_filter_name = 'wpsso_upgraded_options';
-
-				$rename_options_keys = apply_filters( $rename_filter_name, self::$rename_options_keys );
+				$rename_options_keys = apply_filters( 'wpsso_rename_options_keys', self::$rename_options_keys );
 
 				$this->p->util->rename_opts_by_ext( $opts, $rename_options_keys );
 
@@ -731,17 +726,16 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					}
 				}
 
+				$opts = apply_filters( 'wpsso_upgraded_options', $opts, $defs );
+
 			} elseif ( $options_name === constant( 'WPSSO_SITE_OPTIONS_NAME' ) ) {
 
-				$rename_filter_name   = 'wpsso_rename_site_options_keys';
-				$upgraded_filter_name = 'wpsso_upgraded_site_options';
+				$rename_site_options_keys = apply_filters( 'wpsso_rename_site_options_keys', self::$rename_site_options_keys );
 
-				$this->p->util->rename_opts_by_ext( $opts, apply_filters( $rename_filter_name, self::$rename_site_options_keys ) );
+				$this->p->util->rename_opts_by_ext( $opts, $rename_site_options_keys );
+				
+				$opts = apply_filters( 'wpsso_upgraded_site_options', $opts, $defs );
 			}
-
-			$opts = apply_filters( $upgraded_filter_name, $opts, $defs );
-
-			$opts = $this->p->opt->sanitize( $opts, $defs, $network );	// Create any new / missing options.
 
 			return $opts;
 		}

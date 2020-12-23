@@ -261,11 +261,10 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				/**
 				 * Check if options need to be upgraded and saved.
 				 */
-				if ( $this->upgrade_options( $md_opts, $term_id ) ) {
+				if ( $this->is_upgrade_options_required( $md_opts ) ) {
 
-					/**
-					 * Save the upgraded options.
-					 */
+					$md_opts = $this->upgrade_options( $md_opts, $term_id );
+
 					self::update_term_meta( $term_id, WPSSO_META_NAME, $md_opts );
 
 					if ( $this->p->debug->enabled ) {

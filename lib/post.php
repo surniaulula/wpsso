@@ -353,38 +353,20 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( null === $md_opts ) {	// Cache is empty.
 
-				/**
-				 * If no metadata is found, get_post_meta() returns an empty string if $single is true, an empty
-				 * array if $single is false, or false for an invalid $post_id.
-				 */
 				$md_opts = get_post_meta( $post_id, WPSSO_META_NAME, $single = true );
 
 				if ( ! is_array( $md_opts ) ) {	// WPSSO_META_NAME not found.
-
-					if ( '' !== $md_opts ) {	// Invalid post ID.
-
-						$error_pre = sprintf( __( '%s warning:', 'wpsso' ), __METHOD__ );
-						$error_msg = sprintf( __( 'WordPress get_post_meta() reported post ID %1$s as invalid for post meta %2$s' ),
-							$post_id, WPSSO_META_NAME );
-					
-						self::safe_error_log( $error_pre . ' ' . $error_msg );
-					}
 
 					$md_opts = array();
 				}
 
 				/**
 				 * Check if options need to be upgraded and saved.
-				 *
-				 * Returns true or false.
-				 *
-				 * $md_opts is passed by reference so the array can be modified.
 				 */
-				if ( $this->upgrade_options( $md_opts, $post_id ) ) {
+				if ( $this->is_upgrade_options_required( $md_opts ) ) {
+				
+					$md_opts = $this->upgrade_options( $md_opts, $post_id );
 
-					/**
-					 * Save the upgraded options.
-					 */
 					update_post_meta( $post_id, WPSSO_META_NAME, $md_opts );
 
 					if ( $this->p->debug->enabled ) {
