@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.18.1-dev.3',	// Plugin version.
+					'version'     => '8.18.1-dev.4',	// Plugin version.
 					'opt_version' => '774',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -4074,8 +4074,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				$var_const[ 'WPSSO_PRODUCT_CATEGORIES_LIST' ] = WPSSO_PLUGINDIR . 'share/product-categories.txt';
 			}
 
-			$var_const[ 'WPSSO_CACHEDIR' ] = self::get_cache_dir();
-			$var_const[ 'WPSSO_CACHEURL' ] = self::get_cache_url();
+			$var_const[ 'WPSSO_CACHE_DIR' ] = self::get_cache_dir();
+			$var_const[ 'WPSSO_CACHE_URL' ] = self::get_cache_url();
+
+			/**
+			 * Deprecated on 2020/12/23.
+			 */
+			$var_const[ 'WPSSO_CACHEDIR' ] = $var_const[ 'WPSSO_CACHE_DIR' ];
+			$var_const[ 'WPSSO_CACHEURL' ] = $var_const[ 'WPSSO_CACHE_URL' ];
 
 			$var_const[ 'WPSSO_MENU_ORDER' ]                  = '80.0';	// Position of the SSO settings menu item.
 			$var_const[ 'WPSSO_TB_NOTICE_MENU_ORDER' ]        = '55';	// Position of the SSO notices toolbar menu item.
@@ -4250,9 +4256,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 		public static function get_cache_dir() {
 
-			if ( defined( 'WPSSO_CACHEDIR' ) ) {
+			if ( defined( 'WPSSO_CACHE_DIR' ) ) {
 
-				return WPSSO_CACHEDIR;
+				return WPSSO_CACHE_DIR;
 			}
 
 			if ( defined( 'WP_CONTENT_DIR' ) ) {
@@ -4278,9 +4284,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 		public static function get_cache_url() {
 
-			if ( defined( 'WPSSO_CACHEURL' ) ) {
+			if ( defined( 'WPSSO_CACHE_URL' ) ) {
 
-				return WPSSO_CACHEURL;
+				return WPSSO_CACHE_URL;
 			}
 
 			if ( defined( 'WP_CONTENT_DIR' ) ) {

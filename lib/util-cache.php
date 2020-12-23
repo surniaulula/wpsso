@@ -181,15 +181,13 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$cache_dir = constant( 'WPSSO_CACHEDIR' );
-
 			$cleared_count = 0;
 
-			if ( ! $dh = @opendir( $cache_dir ) ) {
+			if ( ! $dh = @opendir( WPSSO_CACHE_DIR ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'failed to open the cache folder ' . $cache_dir . ' for reading' );
+					$this->p->debug->log( 'failed to open the cache folder ' . WPSSO_CACHE_DIR . ' for reading' );
 				}
 
 				$error_pre = sprintf( '%s error:', __METHOD__ );
@@ -204,7 +202,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 				while ( $file_name = @readdir( $dh ) ) {
 
-					$cache_file = $cache_dir . $file_name;
+					$cache_file = WPSSO_CACHE_DIR . $file_name;
 
 					if ( ! preg_match( '/^(\..*|index\.php)$/', $file_name ) && is_file( $cache_file ) ) {
 

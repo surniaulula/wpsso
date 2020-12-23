@@ -3378,30 +3378,59 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * Rename settings array keys, preserving the option modifiers (:is|:use|#.*|_[0-9]+).
+		 * Rename options array keys, preserving the option modifiers (ie. '_[0-9]', ':is', ':use', and '#.*').
 		 */
-		public function rename_opts_by_ext( array &$opts, $options_keys ) {
+		public function rename_options_by_ext( $opts, $keys_by_ext ) {
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
 				$ext_version_key = 'plugin_' . $ext . '_opt_version';
 
-				if ( ! isset( $options_keys[ $ext ] ) || ! is_array( $options_keys[ $ext ] ) ||
+				if ( ! isset( $keys_by_ext[ $ext ] ) || ! is_array( $keys_by_ext[ $ext ] ) ||
 					! isset( $info[ 'opt_version' ] ) || empty( $opts[ $ext_version_key ] ) ) {
 
 					continue;
 				}
 
-				foreach ( $options_keys[ $ext ] as $max_version => $keys ) {
+				foreach ( $keys_by_ext[ $ext ] as $max_version => $keys ) {
 
 					if ( is_numeric( $max_version ) && is_array( $keys ) && $opts[ $ext_version_key ] <= $max_version ) {
 
-						self::rename_keys( $opts, $keys, $modifiers = true );
+						$opts = $this->rename_options_keys( $opts, $keys );
 
 						$opts[ $ext_version_key ] = $info[ 'opt_version' ];	// Mark as current.
 					}
 				}
 			}
+
+			return $opts;
+		}
+
+		public function rename_options_keys( $opts, $keys ) {
+
+			foreach ( $keys as $old_key => $new_key ) {
+
+				if ( empty( $old_key ) ) { // Just in case.
+
+					continue;
+				}
+
+				$old_key_preg = '/^' . $old_key . '(:is|:use|#.*|_[0-9]+)?$/';
+
+				foreach ( preg_grep( $old_key_preg, array_keys( $opts ) ) as $old_key_matched ) {
+
+					if ( ! empty( $new_key ) ) { // Can be empty to remove the option.
+
+						$new_key_matched = preg_replace( $old_key_preg, $new_key . '$1', $old_key_matched );
+
+						$opts[ $new_key_matched ] = $opts[ $old_key_matched ];	// Preserve the old option value.
+					}
+
+					unset( $opts[ $old_key_matched ] );
+				}
+			}
+
+			return $opts;
 		}
 
 		/**

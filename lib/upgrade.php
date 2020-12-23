@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 
 		private $p;	// Wpsso class object.
 
-		private static $rename_options_keys = array(
+		private static $rename_keys_by_ext = array(
 			'wpsso' => array(	// WPSSO Core plugin.
 				500 => array(
 					'og_img_resize'                  => '',
@@ -406,7 +406,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 			),
 		);
 
-		private static $rename_site_options_keys = array(
+		private static $rename_site_keys_by_ext = array(
 			'wpsso' => array(
 				500 => array(
 					'plugin_tid'              => 'plugin_wpsso_tid',
@@ -495,9 +495,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 
 			if ( $options_name === constant( 'WPSSO_OPTIONS_NAME' ) ) {
 
-				$rename_options_keys = apply_filters( 'wpsso_rename_options_keys', self::$rename_options_keys );
+				$keys_by_ext = apply_filters( 'wpsso_rename_options_keys', self::$rename_keys_by_ext );
 
-				$this->p->util->rename_opts_by_ext( $opts, $rename_options_keys );
+				$opts = $this->p->util->rename_options_by_ext( $opts, $keys_by_ext );
 
 				/**
 				 * Check for schema type IDs to be renamed.
@@ -730,9 +730,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 
 			} elseif ( $options_name === constant( 'WPSSO_SITE_OPTIONS_NAME' ) ) {
 
-				$rename_site_options_keys = apply_filters( 'wpsso_rename_site_options_keys', self::$rename_site_options_keys );
+				$keys_by_ext = apply_filters( 'wpsso_rename_site_options_keys', self::$rename_site_keys_by_ext );
 
-				$this->p->util->rename_opts_by_ext( $opts, $rename_site_options_keys );
+				$opts = $this->p->util->rename_options_by_ext( $opts, $keys_by_ext );
 				
 				$opts = apply_filters( 'wpsso_upgraded_site_options', $opts, $defs );
 			}

@@ -187,13 +187,11 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 			} else {
 
-				$cache_dir = constant( 'WPSSO_CACHEDIR' );
-
-				if ( $dh = @opendir( $cache_dir ) ) {
+				if ( $dh = @opendir( WPSSO_CACHE_DIR ) ) {
 
 					while ( $file_name = @readdir( $dh ) ) {
 
-						$cache_file = $cache_dir . $file_name;
+						$cache_file = WPSSO_CACHE_DIR . $file_name;
 
 						if ( ! preg_match( '/^(\..*|index\.php)$/', $file_name ) && is_file( $cache_file ) ) {
 

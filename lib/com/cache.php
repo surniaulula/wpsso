@@ -17,7 +17,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		private $p;	// Plugin class object.
 
 		private $plugin_id    = 'sucom';
-		private $plugin_ucid  = 'SUCOM';
+		private $plugin_idu   = 'SUCOM';
 		private $text_domain  = 'sucom';
 		private $label_transl = '';
 
@@ -75,7 +75,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				$this->plugin_id = $this->p->id;
 			}
 
-			$this->plugin_ucid = strtoupper( $this->plugin_id );
+			$this->plugin_idu = strtoupper( $this->plugin_id );
 
 			if ( $text_domain !== null ) {
 
@@ -100,8 +100,9 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				$this->label_transl = __( 'Notice', $this->text_domain );
 			}
 
-			$this->base_dir = trailingslashit( constant( $this->plugin_ucid . '_CACHEDIR' ) );
-			$this->base_url = trailingslashit( constant( $this->plugin_ucid . '_CACHEURL' ) );
+			$this->base_dir = trailingslashit( constant( $this->plugin_idu . '_CACHE_DIR' ) );
+
+			$this->base_url = trailingslashit( constant( $this->plugin_idu . '_CACHE_URL' ) );
 		}
 
 		public function maybe_load_ignored_urls() {
@@ -512,7 +513,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 				return $failure;
 
-			} elseif ( SucomUtil::get_const( $this->plugin_ucid . '_PHP_CURL_DISABLE' ) ) { {
+			} elseif ( SucomUtil::get_const( $this->plugin_idu . '_PHP_CURL_DISABLE' ) ) { {
 
 				if ( $this->p->debug->enabled )
 
@@ -697,8 +698,9 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			foreach ( $allowed_curl_const as $const_suffix ) {
 
-				$curl_const_name   = 'CURLOPT_' . $const_suffix;
-				$custom_const_name = $this->plugin_ucid . '_PHP_CURL_' . $const_suffix;
+				$curl_const_name = 'CURLOPT_' . $const_suffix;
+
+				$custom_const_name = $this->plugin_idu . '_PHP_CURL_' . $const_suffix;
 
 				if ( defined( $custom_const_name ) ) {
 

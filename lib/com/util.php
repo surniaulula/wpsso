@@ -1723,31 +1723,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $new_array;
 		}
 
-		public static function rename_keys( &$opts = array(), $key_names = array(), $modifiers = true ) {
-
-			foreach ( $key_names as $old_name => $new_name ) {
-
-				if ( empty( $old_name ) ) { // Just in case.
-
-					continue;
-				}
-
-				$old_name_preg = $modifiers ? '/^' . $old_name . '(:is|:use|#.*|_[0-9]+)?$/' : '/^' . $old_name . '$/';
-
-				foreach ( preg_grep( $old_name_preg, array_keys ( $opts ) ) as $old_name_local ) {
-
-					if ( ! empty( $new_name ) ) { // Can be empty to remove option.
-
-						$new_name_local = preg_replace( $old_name_preg, $new_name . '$1', $old_name_local );
-
-						$opts[ $new_name_local ] = $opts[ $old_name_local ];
-					}
-
-					unset( $opts[ $old_name_local ] );
-				}
-			}
-		}
-
 		public static function next_key( $needle, array &$input, $loop = true ) {
 
 			$keys = array_keys( $input );
