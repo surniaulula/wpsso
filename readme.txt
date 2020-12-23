@@ -332,7 +332,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.18.1-dev.3 (2020/12/21)**
+**Version 8.18.1-dev.4 (2020/12/23)**
 
 * **New Features**
 	* None.
@@ -341,8 +341,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed a missing 'article:modified_time' meta tag value.
 * **Developer Notes**
+	* Added a `WpssoUtil->cache_disable_filters()` method.
+	* Added a `WpssoUtil->rename_options_by_ext()` method.
+	* Added a `WpssoUtil->rename_options_keys()` method.
 	* Added a `WpssoWpMeta->is_upgrade_options_required()` method.
 	* Refactored the `WpssoWpMeta->upgrade_options()` method.
+	* Removed the `WpssoUtil->disable_cache_filters()` method.
+	* Removed the `WpssoUtil->rename_opts_by_ext()` method.
+	* Removed the `SucomUtil::rename_keys()` method.
+	* Renamed the WPSSO_CACHEDIR constant to WPSSO_CACHE_DIR.
+	* Renamed the WPSSO_CACHEURL constant to WPSSO_CACHE_URL.
 * **Requires At Least**
 	* PHP v7.0.
 	* WordPress v4.5.
@@ -918,9 +926,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.18.1-dev.3 =
+= 8.18.1-dev.4 =
 
-(2020/12/21) Added a new "Disable Cache for Debugging" option in the SSO &gt; Advanced Settings page. Fixed a missing 'article:modified_time' meta tag value.
+(2020/12/23) Added a new "Disable Cache for Debugging" option in the SSO &gt; Advanced Settings page. Fixed a missing 'article:modified_time' meta tag value.
 
 = 8.18.0 =
 
