@@ -273,7 +273,6 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 
 * [Developer Resources](https://wpsso.com/docs/plugins/wpsso/notes/developer/)
 	* [Constants](https://wpsso.com/docs/plugins/wpsso/notes/developer/constants/)
-		* [All Constants](https://wpsso.com/docs/plugins/wpsso/notes/developer/constants/all/)
 	* [Filters](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/)
 		* [All Filters](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/all/)
 		* [Filter Examples](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/)

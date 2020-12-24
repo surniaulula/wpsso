@@ -290,11 +290,7 @@
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/">Developer Resources</a>
 
 <ul>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/constants/">Constants</a>
-
-<ul>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/constants/all/">All Constants</a></li>
-</ul></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/constants/">Constants</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/">Filters</a>
 
 <ul>
