@@ -103,7 +103,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			add_action( 'rest_api_init', array( $this, 'add_plugin_image_sizes' ), -100 );			// REST API compatibility.
 
 			/**
-			 * Disable the head markup transient cache for debugging purposes.
+			 * Maybe disable the head markup transient cache for debugging purposes.
 			 */
 			if ( ! empty( $this->p->options[ 'plugin_cache_disable' ] ) || self::get_const( 'WPSSO_CACHE_DISABLE' ) ) {
 
