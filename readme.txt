@@ -332,7 +332,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.19.0-dev.4 (2020/12/23)**
+**Version 8.19.0-dev.5 (2020/12/24)**
 
 * **New Features**
 	* None.
@@ -345,6 +345,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a `WpssoUtil->rename_options_by_ext()` method.
 	* Added a `WpssoUtil->rename_options_keys()` method.
 	* Added a `WpssoWpMeta->is_upgrade_options_required()` method.
+	* Added support for a new WPSSO_CACHE_DISABLE constant.
 	* Refactored the `WpssoWpMeta->upgrade_options()` method.
 	* Removed the `WpssoUtil->disable_cache_filters()` method.
 	* Removed the `WpssoUtil->rename_opts_by_ext()` method.
@@ -926,9 +927,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.19.0-dev.4 =
+= 8.19.0-dev.5 =
 
-(2020/12/23) Added a new "Disable Cache for Debugging" option in the SSO &gt; Advanced Settings page. Fixed a missing 'article:modified_time' meta tag value.
+(2020/12/24) Added a new "Disable Cache for Debugging" option in the SSO &gt; Advanced Settings page. Fixed a missing 'article:modified_time' meta tag value.
 
 = 8.18.0 =
 
