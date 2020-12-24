@@ -102,7 +102,10 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			add_action( 'admin_init', array( $this, 'add_plugin_image_sizes' ), -100 );			// Back-end + AJAX compatibility.
 			add_action( 'rest_api_init', array( $this, 'add_plugin_image_sizes' ), -100 );			// REST API compatibility.
 
-			if ( ! empty( $this->p->options[ 'plugin_cache_disable' ] ) ) {
+			/**
+			 * Disable the head markup transient cache for debugging purposes.
+			 */
+			if ( ! empty( $this->p->options[ 'plugin_cache_disable' ] ) || self::get_const( 'WPSSO_CACHE_DISABLE' ) ) {
 
 				$this->cache_disable_filters();
 			}
@@ -888,7 +891,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * Disable transient cache.
+		 * Disable the head markup transient cache.
 		 *
 		 * This method is also called by WpssoUtil->get_request_url() for URLs with query arguments.
 		 */
@@ -905,7 +908,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				'cache_expire_head_markup'     => '__return_zero',
 				'cache_expire_setup_html'      => '__return_zero',	// Used by WpssoAdmin->get_ext_file_content().
 				'cache_expire_shortcode_html'  => '__return_zero',	// Used by WpssoAdmin->get_ext_file_content().
-				'cache_expire_sharing_buttons' => '__return_zero',
 				'cache_expire_the_content'     => '__return_zero',	// Used by WpssoPage->get_the_content().
 			);
 
@@ -2597,7 +2599,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			/**
-			 * Disable transient cache and URL shortening if the URL contains a query argument.
+			 * Disable the head markup transient cache and URL shortening if the URL contains a query argument.
 			 */
 			if ( false !== strpos( $url, '?' ) ) {
 

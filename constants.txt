@@ -23,6 +23,7 @@ WPSSO_ADMIN_DEBUG_LOG                    = false	// Log only back-end debug mess
 WPSSO_ADMIN_SCRIPTS_PRIORITY             = -1000
 WPSSO_BLOCK_ASSETS_PRIORITY              = -1000
 WPSSO_ARTICLE_SECTIONS_LIST              = WPSSO_PLUGINDIR . 'share/article-sections.txt'
+WPSSO_CACHE_DISABLE                      = false	// Disable the head markup transient cache for debugging purposes.
 WPSSO_CACHE_DIR                          = trailingslashit( WP_CONTENT_DIR ) . 'cache/wpsso/'
 WPSSO_CACHE_URL                          = content_url( 'cache/wpsso/' )
 WPSSO_CONTENT_BLOCK_FILTER_OUTPUT        = true 	// Monitor and control incorrectly coded filter output.

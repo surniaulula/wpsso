@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.19.0-dev.4\n"
+"Project-Id-Version: WPSSO Core 8.19.0-dev.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2020-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -5096,12 +5096,12 @@ msgid ""
 msgstr ""
 
 #: lib/media.php:1098 lib/post.php:541 lib/register.php:345 lib/term.php:465
-#: lib/user.php:445 lib/util.php:841 lib/util.php:3195
+#: lib/user.php:445 lib/util.php:844 lib/util.php:3197
 msgid "%s warning:"
 msgstr ""
 
 #: lib/media.php:1099 lib/post.php:542 lib/term.php:466 lib/user.php:446
-#: lib/util.php:842 lib/util.php:3196
+#: lib/util.php:845 lib/util.php:3198
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -9145,59 +9145,59 @@ msgstr ""
 msgid "lbs"
 msgstr ""
 
-#: lib/util.php:550
+#: lib/util.php:553
 msgid "cropped"
 msgstr ""
 
-#: lib/util.php:550
+#: lib/util.php:553
 msgid "uncropped"
 msgstr ""
 
-#: lib/util.php:843
+#: lib/util.php:846
 msgid "Slow PHP function detected - %1$s took %2$0.3f secs for %3$s (%4$s)."
 msgstr ""
 
-#: lib/util.php:1402
+#: lib/util.php:1404
 msgid "Error reading the %s file for the article sections list."
 msgstr ""
 
-#: lib/util.php:1506
+#: lib/util.php:1508
 msgid "Error reading the %s file for the product categories list."
 msgstr ""
 
-#: lib/util.php:1629
+#: lib/util.php:1631
 msgid "The %1$s request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1652
+#: lib/util.php:1654
 msgid "Error getting HTML from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/util.php:1680
+#: lib/util.php:1682
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
 #. translators: %1$s is the class name.
-#: lib/util.php:1875
+#: lib/util.php:1877
 msgid ""
 "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting "
 "provider to have the missing class installed."
 msgstr ""
 
 #. translators: %1$s is the function name.
-#: lib/util.php:1889
+#: lib/util.php:1891
 msgid ""
 "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting "
 "provider to have the missing function installed."
 msgstr ""
 
-#: lib/util.php:3197
+#: lib/util.php:3199
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3213
+#: lib/util.php:3215
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -9206,143 +9206,143 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3215
+#: lib/util.php:3217
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3591
+#: lib/util.php:3593
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr ""
 
-#: lib/util.php:3592
+#: lib/util.php:3594
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/util.php:3596
+#: lib/util.php:3598
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr ""
 
-#: lib/util.php:3597
+#: lib/util.php:3599
 msgctxt "validator type"
 msgid "Microdata"
 msgstr ""
 
-#: lib/util.php:3601
+#: lib/util.php:3603
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr ""
 
-#: lib/util.php:3602
+#: lib/util.php:3604
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr ""
 
-#: lib/util.php:3606
+#: lib/util.php:3608
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/util.php:3607
+#: lib/util.php:3609
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr ""
 
-#: lib/util.php:3611
+#: lib/util.php:3613
 msgctxt "option label"
 msgid "Google Structured Data Test (Deprecated)"
 msgstr ""
 
-#: lib/util.php:3612
+#: lib/util.php:3614
 msgctxt "validator type"
 msgid "Structured Data"
 msgstr ""
 
-#: lib/util.php:3616
+#: lib/util.php:3618
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/util.php:3617
+#: lib/util.php:3619
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/util.php:3621
+#: lib/util.php:3623
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/util.php:3622
+#: lib/util.php:3624
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr ""
 
-#: lib/util.php:3626
+#: lib/util.php:3628
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/util.php:3627
+#: lib/util.php:3629
 msgctxt "validator type"
 msgid "Twitter Card"
 msgstr ""
 
-#: lib/util.php:3632
+#: lib/util.php:3634
 msgctxt "option label"
 msgid "The AMP Project Validator"
 msgstr ""
 
-#: lib/util.php:3633
+#: lib/util.php:3635
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr ""
 
-#: lib/util.php:3637
+#: lib/util.php:3639
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr ""
 
-#: lib/util.php:3638
+#: lib/util.php:3640
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name.
-#: lib/util.php:3788
+#: lib/util.php:3790
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3798
+#: lib/util.php:3800
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 
-#: wpsso.php:535
+#: wpsso.php:541
 msgid ""
 "WP debug logging mode is active &mdash; debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:548
+#: wpsso.php:554
 msgid ""
 "HTML debug mode is active &mdash; debug messages are being added to webpages "
 "as hidden HTML comments."
 msgstr ""
 
 #. translators: %s is the short plugin name.
-#: wpsso.php:556
+#: wpsso.php:562
 msgid ""
 "Debug mode disables some %s caching features, which degrades performance "
 "slightly."
 msgstr ""
 
-#: wpsso.php:557
+#: wpsso.php:563
 msgid "Please disable debug mode when debugging is complete."
 msgstr ""
 

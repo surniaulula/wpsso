@@ -15,7 +15,7 @@
  * Requires At Least: 4.5
  * Tested Up To: 5.6
  * WC Tested Up To: 4.8.0
- * Version: 8.19.0-dev.4
+ * Version: 8.19.0-dev.5
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -277,6 +277,9 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$debug_log  = false;
 			$debug_html = false;
 
+			/**
+			 * Maybe log debug messages to the WordPress debug.log file.
+			 */
 			if ( defined( 'WPSSO_DEBUG_LOG' ) && WPSSO_DEBUG_LOG ) {
 
 				$debug_log = true;
@@ -286,6 +289,9 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$debug_log = true;
 			}
 
+			/**
+			 * Maybe log debug messages as HTML comments in the webpage.
+			 */
 			if ( ! empty( $this->options[ 'plugin_debug_html' ] ) ) {
 
 				$debug_html = true;
