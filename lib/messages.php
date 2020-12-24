@@ -771,9 +771,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_debug_html': 		// Add Hidden Debug Messages.
+						case 'tooltip-plugin_debug_html': 		// Add HTML Debug Messages.
 
-							$text = __( 'Add debugging messages as hidden HTML comments to front-end and admin webpages (default is unchecked).', 'wpsso' );
+							$text = __( 'Add hidden debugging messages as HTML comments to front-end and admin webpages (default is unchecked).', 'wpsso' );
 
 							break;
 

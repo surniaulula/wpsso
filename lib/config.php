@@ -1627,7 +1627,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'plugin_clean_on_uninstall' => 0,			// Remove Settings on Uninstall.
 					'plugin_cache_disable'      => 0,			// Disable Cache for Debugging.
-					'plugin_debug_html'         => 0,			// Add Hidden Debug Messages.
+					'plugin_debug_html'         => 0,			// Add HTML Debug Messages.
 
 					/**
 					 * Advanced Settings - Interface tab.
@@ -1871,7 +1871,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_clean_on_uninstall:use' => 'default',
 					'plugin_cache_disable'          => 0,			// Disable Cache for Debugging.
 					'plugin_cache_disable:use'      => 'default',
-					'plugin_debug_html'             => 0,			// Add Hidden Debug Messages.
+					'plugin_debug_html'             => 0,			// Add HTML Debug Messages.
 					'plugin_debug_html:use'         => 'default',
 
 					/**
