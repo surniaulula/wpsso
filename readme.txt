@@ -340,9 +340,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed a missing 'article:modified_time' meta tag value.
 * **Developer Notes**
-	* Added a `WpssoUtil->cache_disable_filters()` method.
+	* Added a `Wpsso->get_const_status_bool()` method.
+	* Added a `Wpsso->get_const_status_transl()` method.
 	* Added a `WpssoUtil->rename_options_by_ext()` method.
 	* Added a `WpssoUtil->rename_options_keys()` method.
+	* Added a `WpssoUtilCache->expire_zero_filters()` method.
 	* Added a `WpssoWpMeta->is_upgrade_options_required()` method.
 	* Added support for a new WPSSO_CACHE_DISABLE constant.
 	* Refactored the `WpssoWpMeta->upgrade_options()` method.
