@@ -2947,21 +2947,21 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'column-rate-review':
 
-						$text = '<p style="text-align:center;"><strong>';
+						$text = '<p style="text-align:center;">';
 
 						$text .= __( 'It would help tremendously if you could rate the following plugins on WordPress.org.', 'wpsso' ) . ' ';
 
 						$text .= __( 'Great ratings are an excellent way to ensure the continued development of your favorite plugins.', 'wpsso' ) . ' ';
 
-						$text .= '</strong></p>' . "\n";
+						$text .= '</p>' . "\n";
 
-						$text .= '<p style="text-align:center;">';
+						$text .= '<p style="text-align:center;"><strong>';
 
 						$text .= __( 'Without your rating, a plugin you value and depend on could be deprecated prematurely.', 'wpsso' ) . ' ';
 
 						$text .= __( 'Don\'t let that happen - rate your active plugins now!', 'wpsso' ) . ' ';
 
-						$text .= '</p>' . "\n";
+						$text .= '</strong></p>' . "\n";
 
 						break;
 
@@ -3223,7 +3223,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 		public function preview_images_first() {
 
-			$html = ' <em>' . _x( 'note that video preview images are included first', 'option comment', 'wpsso' ) . '</em>';
+			$html = ' ' . _x( 'note that video preview images are included first', 'option comment', 'wpsso' );
 
 			return $html;
 		}
@@ -3234,7 +3234,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 			if ( ! empty( $this->form->options[ 'og_vid_prev_img' ] ) ) {
 
-				$html .= ' <em>' . _x( 'note that video preview images are enabled (and included first)', 'option comment', 'wpsso' ) . '</em>';
+				$html .= ' ' . _x( 'note that video preview images are enabled (and included first)', 'option comment', 'wpsso' );
 			}
 
 			return $html;

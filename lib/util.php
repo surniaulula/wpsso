@@ -101,14 +101,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			add_action( 'wp', array( $this, 'add_plugin_image_sizes' ), -100 );				// Front-end compatibility.
 			add_action( 'admin_init', array( $this, 'add_plugin_image_sizes' ), -100 );			// Back-end + AJAX compatibility.
 			add_action( 'rest_api_init', array( $this, 'add_plugin_image_sizes' ), -100 );			// REST API compatibility.
-
-			/**
-			 * Maybe disable the head markup transient cache for debugging purposes.
-			 */
-			if ( ! empty( $this->p->options[ 'plugin_cache_disable' ] ) || self::get_const( 'WPSSO_CACHE_DISABLE' ) ) {
-
-				$this->cache_disable_filters();
-			}
 		}
 
 		public function set_util_instances( &$plugin ) {
@@ -121,7 +113,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				require_once WPSSO_PLUGINDIR . 'lib/util-cache.php';
 			}
 
-			$this->cache = new WpssoUtilCache( $plugin );
+			$this->cache = new WpssoUtilCache( $plugin, $this );
 
 			/**
 			 * WpssoUtilCustomFields.
@@ -131,7 +123,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				require_once WPSSO_PLUGINDIR . 'lib/util-custom-fields.php';
 			}
 
-			$this->cf = new WpssoUtilCustomFields( $plugin, $this );	// Constructor uses $this->add_plugin_filters().
+			$this->cf = new WpssoUtilCustomFields( $plugin, $this );
 
 			/**
 			 * WpssoUtilMetabox.
@@ -888,53 +880,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			return $local_cache[ $image_url ] = $image_info;
-		}
-
-		/**
-		 * Disable the head markup transient cache.
-		 *
-		 * This method is also called by WpssoUtil->get_request_url() for URLs with query arguments.
-		 */
-		public function cache_disable_filters( $disable_short = false ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			static $do_once = array();
-
-			$disable_filters = array(
-				'cache_expire_head_markup'     => '__return_zero',
-				'cache_expire_setup_html'      => '__return_zero',	// Used by WpssoAdmin->get_ext_file_content().
-				'cache_expire_shortcode_html'  => '__return_zero',	// Used by WpssoAdmin->get_ext_file_content().
-				'cache_expire_the_content'     => '__return_zero',	// Used by WpssoPage->get_the_content().
-			);
-
-			if ( $disable_short ) {
-
-				$disable_filters[ 'cache_expire_short_url' ] = '__return_zero';
-			}
-
-			/**
-			 * Add filter of not already added.
-			 */
-			$add_filters = array();
-
-			foreach ( $disable_filters as $filter_name => $callback ) {
-
-				if ( ! isset( $do_once[ $filter_name ] ) ) {
-
-					$do_once[ $filter_name ] = true;
-
-					$add_filters[ $filter_name ] = $callback;
-				}
-			}
-
-			if ( ! empty( $add_filters ) ) {
-
-				$this->add_plugin_filters( $this, $add_filters );
-			}
 		}
 
 		/**
@@ -2603,7 +2548,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 */
 			if ( false !== strpos( $url, '?' ) ) {
 
-				$this->cache_disable_filters( $disable_short = true );
+				$this->cache->expire_zero_filters( $disable_short = true );
 			}
 
 			return $url;

@@ -15,7 +15,7 @@
  * Requires At Least: 4.5
  * Tested Up To: 5.6
  * WC Tested Up To: 4.8.0
- * Version: 8.19.0-b.1
+ * Version: 8.19.0-b.2
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -280,29 +280,16 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			/**
 			 * Maybe log debug messages to the WordPress debug.log file.
 			 */
-			if ( defined( 'WPSSO_DEBUG_LOG' ) && WPSSO_DEBUG_LOG ) {
-
-				$debug_log = true;
-
-			} elseif ( $is_admin && defined( 'WPSSO_ADMIN_DEBUG_LOG' ) && WPSSO_ADMIN_DEBUG_LOG ) {
-
-				$debug_log = true;
-			}
+			$debug_log = $this->get_const_status_bool( 'DEBUG_LOG' );
 
 			/**
 			 * Maybe log debug messages as HTML comments in the webpage.
 			 */
-			if ( ! empty( $this->options[ 'plugin_debug_html' ] ) ) {
+			$debug_html = $this->get_const_status_bool( 'DEBUG_HTML' );
 
-				$debug_html = true;
+			if ( null === $debug_html ) {	// Constant not defined.
 
-			} elseif ( defined( 'WPSSO_DEBUG_HTML' ) && WPSSO_DEBUG_HTML ) {
-
-				$debug_html = true;
-
-			} elseif ( $is_admin && defined( 'WPSSO_ADMIN_DEBUG_HTML' ) && WPSSO_ADMIN_DEBUG_HTML ) {
-
-				$debug_html = true;
+				$debug_html = empty( $this->options[ 'plugin_debug_html' ] ) ? false : true;
 			}
 
 			/**
@@ -328,7 +315,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			/**
 			 * Make sure a debug object is always available.
 			 */
-			if ( $debug_log || $debug_html || ( defined( 'WPSSO_LOAD_DEBUG' ) && WPSSO_LOAD_DEBUG ) ) {
+			if ( $debug_log || $debug_html ) {
 
 				require_once WPSSO_PLUGINDIR . 'lib/com/debug.php';
 
@@ -755,6 +742,45 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			}
 
 			load_plugin_textdomain( 'wpsso', false, 'wpsso/languages/' );
+		}
+
+		public function get_const_status_bool( $const_suffix ) {
+
+			return $this->get_const_status_transl( $const_suffix, $ret_bool = true );
+		}
+
+		public function get_const_status_transl( $const_suffix, $ret_bool = null ) {
+
+			$const_name = '';
+
+			if ( is_admin() && defined( 'WPSSO_ADMIN_' . $const_suffix ) ) {
+
+				$const_name = 'WPSSO_ADMIN_' . $const_suffix;
+
+			} elseif ( defined( 'WPSSO_' . $const_suffix ) ) {
+
+				$const_name = 'WPSSO_' . $const_suffix;
+			}
+
+			if ( $const_name ) {
+
+				$const_val = constant( $const_name ) ? true : false;
+
+				if ( $ret_bool ) {	// Return the boolean value.
+
+					return $const_val;
+				}
+
+				if ( $const_val ) {	// Constant value is true.
+
+					return sprintf( _x( '%s constant is true', 'option comment', 'wpsso' ), $const_name );
+
+				}
+
+				return sprintf( _x( '%s constant is false', 'option comment', 'wpsso' ), $const_name );
+			}
+
+			return null;	// Constant not defined.
 		}
 
 		public function get_lib_classnames( $type_dir ) {

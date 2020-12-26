@@ -2077,7 +2077,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( ! empty( $info[ 'url' ][ 'support' ] ) && $pkg_info[ $ext ][ 'pp' ] ) {
 
-					$action_links[] = sprintf( __( '<a href="%s">Priority Support Ticket</a>', 'wpsso' ), $info[ 'url' ][ 'support' ] );
+					$action_links[] = sprintf( __( '<a href="%s">Priority Support Ticket</a>', 'wpsso' ), $info[ 'url' ][ 'support' ] ) . 
+						' (' . __( 'Premium version', 'wpsso' ) . ')';
 
 				} elseif ( ! empty( $info[ 'url' ][ 'forum' ] ) ) {
 
@@ -3234,7 +3235,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function add_advanced_plugin_settings_table_rows( array &$table_rows, $form, $network = false ) {
 
-			$const_is_true = _x( '%s constant is true', 'option comment', 'wpsso' );
+			$cache_val    = $this->p->get_const_status_bool( 'CACHE_DISABLE' ) ? 1 : 0;
+			$cache_status = $this->p->get_const_status_transl( 'CACHE_DISABLE' );
+
+			$debug_val    = $this->p->get_const_status_bool( 'DEBUG_HTML' ) ? 1 : 0;
+			$debug_status = $this->p->get_const_status_transl( 'DEBUG_HTML' );
 
 			$table_rows[ 'plugin_clean_on_uninstall' ] = '' .
 				$form->get_th_html( _x( 'Remove Settings on Uninstall', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_clean_on_uninstall' ) . 
@@ -3245,18 +3250,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$table_rows[ 'plugin_cache_disable' ] = '' .
 				$form->get_th_html( _x( 'Disable Cache for Debugging', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_cache_disable' ) . 
-				'<td>' . ( ! $network && SucomUtil::get_const( 'WPSSO_CACHE_DISABLE' ) ?
-				$form->get_no_checkbox( 'plugin_cache_disable' ) . ' <em>' . sprintf( $const_is_true, 'WPSSO_CACHE_DISABLE' ) . '</em>' :
-				$form->get_checkbox( 'plugin_cache_disable' ) ) .
-				'</td>' .
+				'<td>' . ( ! $network && $cache_status ?
+				$form->get_hidden( 'plugin_cache_disable', 0 ) .	// Uncheck if a constant is defined.
+				$form->get_no_checkbox( 'plugin_cache_disable', $css_class = '', $css_id = '', $cache_val ) . ' ' . $cache_status :
+				$form->get_checkbox( 'plugin_cache_disable' ) ) . '</td>' .
 				self::get_option_site_use( 'plugin_cache_disable', $form, $network, $is_enabled = true );
 
 			$table_rows[ 'plugin_debug_html' ] = '' .
 				$form->get_th_html( _x( 'Add HTML Debug Messages', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_debug_html' ) . 
-				'<td>' . ( ! $network && SucomUtil::get_const( 'WPSSO_DEBUG_HTML' ) ?
-				$form->get_no_checkbox( 'plugin_debug_html' ) . ' <em>' . sprintf( $const_is_true, 'WPSSO_DEBUG_HTML' ) . '</em>' :
-				$form->get_checkbox( 'plugin_debug_html' ) ) .
-				'</td>' .
+				'<td>' . ( ! $network && $debug_status ?
+				$form->get_hidden( 'plugin_plugin_debug_html', 0 ) .	// Uncheck if a constant is defined.
+				$form->get_no_checkbox( 'plugin_debug_html', $css_class = '', $css_id = '', $debug_val ) . ' ' . $debug_status :
+				$form->get_checkbox( 'plugin_debug_html' ) ) . '</td>' .
 				self::get_option_site_use( 'plugin_debug_html', $form, $network, $is_enabled = true );
 		}
 

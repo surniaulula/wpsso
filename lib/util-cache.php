@@ -24,13 +24,15 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 	class WpssoUtilCache {
 
 		private $p;	// Wpsso class object.
+		private $u;	// WpssoUtil class object.
 
 		/**
 		 * Instantiated by WpssoUtil->__construct().
 		 */
-		public function __construct( &$plugin ) {
+		public function __construct( &$plugin, &$util ) {
 
 			$this->p =& $plugin;
+			$this->u =& $util;
 
 			if ( $this->p->debug->enabled ) {
 
@@ -39,9 +41,24 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			add_action( 'wp_scheduled_delete', array( $this, 'clear_expired_db_transients' ) );
 
-			add_action( 'wpsso_clear_cache', array( $this, 'clear' ), 10, 4 );		// For single scheduled task.
+			add_action( 'wpsso_clear_cache', array( $this, 'clear' ), 10, 4 );	// For single scheduled task.
 
 			add_action( 'wpsso_refresh_cache', array( $this, 'refresh' ), 10, 1 );	// For single scheduled task.
+
+			/**
+			 * Maybe disable the head markup transient cache for debugging purposes.
+			 */
+			$cache_disable = $this->p->get_const_status_bool( 'CACHE_DISABLE' );
+
+			if ( null === $cache_disable ) {	// Constant not defined.
+
+				$cache_disable = empty( $this->p->options[ 'plugin_cache_disable' ] ) ? false : true;
+			}
+
+			if ( $cache_disable ) {
+
+				$this->expire_zero_filters( $disable_short = false );
+			}
 		}
 
 		/**
@@ -49,7 +66,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		 */
 		public function schedule_clear( $user_id = null, $clear_other = false, $clear_short = null, $refresh = true ) {
 
-			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+			$user_id    = $this->u->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
 			$event_time = time() + 5;	// Add a 5 second event buffer.
 			$event_hook = 'wpsso_clear_cache';
 			$event_args = array( $user_id, $clear_other, $clear_short, $refresh );
@@ -82,7 +99,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 					$this->p->options[ 'plugin_clear_short_urls' ] : false;
 			}
 
-			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+			$user_id    = $this->u->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
 			$notice_key = 'clear-cache-status';
 
 			/**
@@ -543,7 +560,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		 */
 		public function schedule_refresh( $user_id = null, $read_cache = false ) {
 
-			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+			$user_id    = $this->u->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
 			$event_time = time() + 5;	// Add a 5 second event buffer.
 			$event_hook = 'wpsso_refresh_cache';
 			$event_args = array( $user_id, $read_cache );
@@ -574,7 +591,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+			$user_id    = $this->u->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
 			$notice_key = 'refresh-cache-status';
 
 			/**
@@ -697,6 +714,53 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			$sleep_secs = SucomUtil::get_const( 'WPSSO_REFRESH_CACHE_SLEEP_TIME', 0.50 );
 
 			usleep( $sleep_secs * 1000000 );	// Sleeps for 0.50 seconds by default.
+		}
+
+		/**
+		 * Disable the head markup, setup page, shortcode page, and post content transient cache.
+		 *
+		 * This method is also called by WpssoUtil->get_request_url() for URLs with query arguments.
+		 */
+		public function expire_zero_filters( $disable_short = false ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			static $do_once = array();
+
+			$disable_filters = array(
+				'cache_expire_head_markup'     => '__return_zero',
+				'cache_expire_setup_html'      => '__return_zero',	// Used by WpssoAdmin->get_ext_file_content().
+				'cache_expire_shortcode_html'  => '__return_zero',	// Used by WpssoAdmin->get_ext_file_content().
+				'cache_expire_the_content'     => '__return_zero',	// Used by WpssoPage->get_the_content().
+			);
+
+			if ( $disable_short ) {
+
+				$disable_filters[ 'cache_expire_short_url' ] = '__return_zero';
+			}
+
+			/**
+			 * Add filter of not already added.
+			 */
+			$add_filters = array();
+
+			foreach ( $disable_filters as $filter_name => $callback ) {
+
+				if ( ! isset( $do_once[ $filter_name ] ) ) {
+
+					$do_once[ $filter_name ] = true;
+
+					$add_filters[ $filter_name ] = $callback;
+				}
+			}
+
+			if ( ! empty( $add_filters ) ) {
+
+				$this->u->add_plugin_filters( $this, $add_filters );
+			}
 		}
 	}
 }

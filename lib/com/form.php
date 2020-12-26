@@ -412,24 +412,19 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		/**
 		 * Hidden input field.
 		 */
-		public function get_hidden( $name, $value = '', $is_checkbox = false ) {
+		public function get_hidden( $name, $value = null ) {
 
 			if ( empty( $name ) ) {
 
 				return;	// Just in case.
 			}
 
-			if ( empty( $value ) && $value !== 0 && $this->in_options( $name ) ) {
-
-				$value = $this->options[ $name ];
+			if ( null === $value ) {
+			
+				$value = $this->in_options( $name ) ? $this->options[ $name ] : '';
 			}
 
-			$html = $is_checkbox ? $this->get_hidden( 'is_checkbox_' . $name, 1, false ) : '';
-
-			$html .= '<input type="hidden" name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '" ' .
-				'value="' . esc_attr( $value ) . '" />' . "\n";
-
-			return $html;
+			return '<input type="hidden" name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '" value="' . esc_attr( $value ) . '" />' . "\n";
 		}
 
 		/**
@@ -467,13 +462,16 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$input_id = empty( $css_id ) ? 'checkbox_' . $name : 'checkbox_' . $css_id;
 
-			$html = $is_disabled ? '' : $this->get_hidden( 'is_checkbox_' . $name, 1, false );
+			$html = $is_disabled ? '' : $this->get_hidden( 'is_checkbox_' . $name, 1 );
+
 			$html .= '<input type="checkbox"';
 			$html .= $is_disabled ? '' : ' name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '" value="1"';
 			$html .= $input_disabled ? ' disabled="disabled"' : '';
 			$html .= empty( $group ) ? '' : ' data-group="' . esc_attr( $group ) . '"';
 			$html .= empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"';
-			$html .= ' id="' . esc_attr( $input_id ) . '"' . $input_checked . ' title="' . $title_transl . '" />';
+			$html .= ' id="' . esc_attr( $input_id ) . '"';
+			$html .= ' title="' . $title_transl . '"';
+			$html .= ' ' . $input_checked . '/>';
 
 			return $html;
 		}
@@ -545,12 +543,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				$title_transl = sprintf( $this->get_value_transl( 'default is %s' ), $this->get_value_transl( $default_is ) );
 
-				$html .= $is_disabled ? '' : $this->get_hidden( 'is_checkbox_' . $input_name, 1, false );
+				$html .= $is_disabled ? '' : $this->get_hidden( 'is_checkbox_' . $input_name, 1 );
+
 				$html .= '<span><input type="checkbox"';
 				$html .= $is_disabled ? '' : ' name="' . esc_attr( $this->opts_name . '[' . $input_name . ']' ) . '" value="1"';
 				$html .= $input_disabled ? ' disabled="disabled"' : '';
-				$html .= $input_checked . ' title="' . $title_transl . '"/>&nbsp;' . $label_transl . '&nbsp;&nbsp;</span>';
-				$html .= "\n";
+				$html .= ' title="' . $title_transl . '"';
+				$html .= ' ' . $input_checked . '/>';
+				$html .= '&nbsp;' . $label_transl . '&nbsp;&nbsp;</span>' . "\n";
 			}
 
 			$html .= '</div>' . "\n";

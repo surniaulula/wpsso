@@ -24,6 +24,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 	class WpssoUtilCustomFields {
 
 		private $p;	// Wpsso class object.
+		private $u;	// WpssoUtil class object.
 
 		/**
 		 * Instantiated by WpssoUtil->__construct().
@@ -31,13 +32,14 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 		public function __construct( &$plugin, &$util ) {
 
 			$this->p =& $plugin;
+			$this->u =& $util;
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
 			}
 
-			$util->add_plugin_filters( $this, array(
+			$this->u->add_plugin_filters( $this, array(
 				'import_custom_fields' => 3,
 			), $prio = 1000 );
 		}
