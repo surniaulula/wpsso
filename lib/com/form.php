@@ -1208,13 +1208,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			$html .= '<input type="text" name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '"';
-
 			$html .= empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"';
-
 			$html .= empty( $css_id ) ? ' id="text_' . esc_attr( $name ) . '"' : ' id="text_' . esc_attr( $css_id ) . '"';
-
 			$html .= is_numeric( $tabidx ) ? '' : ' tabindex="' . esc_attr( $tabidx ) . '"';
-
 			$html .= empty( $elmt_attr ) ? '' : ' ' . $elmt_attr;
 
 			foreach ( $len as $key => $val ) {
@@ -1223,9 +1219,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			$html .= $this->get_placeholder_attrs( 'input', $holder );
-
 			$html .= ' value="' . esc_attr( $value ) . '" />' . "\n";
-
 			$html .= empty( $len ) ? '' : '<div id="text_' . esc_attr( $css_id ) . '-lenMsg"></div>' . "\n";
 
 			return $html;
@@ -1580,20 +1574,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			$html .= '<textarea ';
-
 			$html .= $is_disabled ? ' disabled="disabled"' : ' name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '"';
-
 			$html .= empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"';
-
 			$html .= empty( $css_id ) ? ' id="textarea_' . esc_attr( $name ) . '"' : ' id="textarea_' . esc_attr( $css_id ) . '"';
-
 			$html .= empty( $len[ 'max' ] ) || $is_disabled ? '' : ' maxLength="' . esc_attr( $len[ 'max' ] ) . '"';
-
 			$html .= empty( $len[ 'warn' ] ) || $is_disabled ? '' : ' warnLength="' . esc_attr( $len[ 'warn' ] ) . '"';
-
 			$html .= empty( $len[ 'max' ] ) && empty( $len[ 'rows' ] ) ? '' :
 				( empty( $len[ 'rows' ] ) ? ' rows="'.( round( $len[ 'max' ] / 100 ) + 1 ) . '"' : ' rows="' . $len[ 'rows' ] . '"' );
-
 			$html .= $this->get_placeholder_attrs( 'textarea', $holder ) . '>' . esc_attr( $value ) . '</textarea>';
 
 			$html .= empty( $len[ 'max' ] ) || $is_disabled ? '' : ' <div id="textarea_' . esc_attr( $css_id ) . '-lenMsg"></div>';
@@ -2173,9 +2160,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_no_input( $name = '', $css_class = '', $css_id = '', $holder = '' ) {
 
-			$html   = '';
-			$value  = $this->in_options( $name ) ? $this->options[ $name ] : '';
+			$value = $this->in_options( $name ) ? $this->options[ $name ] : '';
+
 			$holder = $this->get_placeholder_sanitized( $name, $holder );
+
+			$html = '';
 
 			if ( ! empty( $name ) ) {
 
@@ -2209,16 +2198,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$input_id    = empty( $css_id ) ? '' : $css_id . '_' . $key_num;
 
 					$html .= '<div class="multi_container">' . "\n";
-
 					$html .= '<div class="multi_number">' . ( $key_num + 1 ) . '.</div>' . "\n";
-
 					$html .= '<div class="multi_input">' . "\n";
 				}
 
 				$html .= '<input type="text" disabled="disabled"';
-
 				$html .= empty( $input_class ) ? '' : ' class="' . esc_attr( $input_class ) . '"';
-
 				$html .= empty( $input_id ) ? '' : ' id="text_' . esc_attr( $input_id ) . '"';
 
 				/**
@@ -2239,7 +2224,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				if ( $max_input > 1 ) {
 
 					$html .= '</div><!-- .multi_input -->' . "\n";
-
 					$html .= '</div><!-- .multi_container -->' . "\n";
 				}
 			}
