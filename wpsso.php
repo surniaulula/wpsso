@@ -15,7 +15,7 @@
  * Requires At Least: 4.5
  * Tested Up To: 5.6
  * WC Tested Up To: 4.8.0
- * Version: 8.19.0-rc.1
+ * Version: 8.19.0-rc.2
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -746,10 +746,15 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 		public function get_const_status_bool( $const_suffix ) {
 
-			return $this->get_const_status_transl( $const_suffix, $ret_bool = true );
+			return $this->get_const_status( $const_suffix, $transl = false );
 		}
 
-		public function get_const_status_transl( $const_suffix, $ret_bool = null ) {
+		public function get_const_status_transl( $const_suffix ) {
+
+			return $this->get_const_status( $const_suffix, $transl = true );
+		}
+
+		private function get_const_status( $const_suffix, $transl ) {
 
 			$const_name = '';
 
@@ -766,18 +771,18 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 				$const_val = constant( $const_name ) ? true : false;
 
-				if ( $ret_bool ) {	// Return the boolean value.
+				if ( $transl ) {	// Return the translated string value.
 
-					return $const_val;
+					if ( $const_val ) {	// Constant value is true.
+
+						return sprintf( _x( '%s constant is true', 'option comment', 'wpsso' ), $const_name );
+					}
+
+					return sprintf( _x( '%s constant is false', 'option comment', 'wpsso' ), $const_name );
+
 				}
 
-				if ( $const_val ) {	// Constant value is true.
-
-					return sprintf( _x( '%s constant is true', 'option comment', 'wpsso' ), $const_name );
-
-				}
-
-				return sprintf( _x( '%s constant is false', 'option comment', 'wpsso' ), $const_name );
+				return $const_val;	// Return the boolean value.
 			}
 
 			return null;	// Constant not defined.
