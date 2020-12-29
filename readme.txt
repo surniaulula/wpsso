@@ -331,7 +331,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.19.0-rc.2 (2020/12/27)**
+**Version 8.19.0 (2020/12/29)**
 
 * **New Features**
 	* None.
@@ -928,9 +928,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.19.0-rc.2 =
+= 8.19.0 =
 
-(2020/12/27) Added a new "Disable Cache for Debugging" option in the SSO &gt; Advanced Settings page. Fixed a missing 'article:modified_time' meta tag value.
+(2020/12/29) Added a new "Disable Cache for Debugging" option in the SSO &gt; Advanced Settings page. Fixed a missing 'article:modified_time' meta tag value.
 
 = 8.18.0 =
 
