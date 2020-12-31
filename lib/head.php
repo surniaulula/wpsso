@@ -327,7 +327,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					 */
 					$prefix = '<(!--[\s\n\r]+|meta[\s\n\r]+name="?wpsso:mark:(begin|end)"?[\s\n\r]+content=")';
 
-					$suffix = '([\s\n\r]+--|"[\s\n\r]*\/?)>';
+					$suffix = '("[\s\n\r]*\/?|[\s\n\r]+--)>';
 
 					$mt_mark = '/' . $prefix . 'wpsso meta tags begin' . $suffix . '.*' . $prefix . 'wpsso meta tags end' . $suffix . '/ums';
 

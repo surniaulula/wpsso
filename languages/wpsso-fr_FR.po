@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: WPSSO Core 8.19.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
-"POT-Creation-Date: 2020-12-26 09:34-0800\n"
-"PO-Revision-Date: 2020-12-26 09:35-0800\n"
+"POT-Creation-Date: 2020-12-29 08:27-0800\n"
+"PO-Revision-Date: 2020-12-29 08:27-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -457,12 +457,12 @@ msgstr "Impossible d'ouvrir le fichier de cache %s pour écriture."
 msgid "Failed writing data to cache file %s."
 msgstr "Échec d'écriture des données dans le fichier cache %s."
 
-#: gettext/gettext-lib-com.php:28 lib/com/form.php:1379
+#: gettext/gettext-lib-com.php:28 lib/com/form.php:1373
 msgctxt "option comment"
 msgid "crop"
 msgstr "recadrer"
 
-#: gettext/gettext-lib-com.php:29 lib/com/form.php:1381
+#: gettext/gettext-lib-com.php:29 lib/com/form.php:1375
 msgctxt "option comment"
 msgid "from"
 msgstr "de"
@@ -8113,12 +8113,12 @@ msgstr "Le mode de débogage désactive certaines fonctionnalités de mise en ca
 msgid "Please disable debug mode when debugging is complete."
 msgstr "SVP désactiver le mode de débogage lorsque le débogage est terminé."
 
-#: wpsso.php:776
+#: wpsso.php:778
 msgctxt "option comment"
 msgid "%s constant is true"
 msgstr "constante %s est vraie"
 
-#: wpsso.php:780
+#: wpsso.php:781
 msgctxt "option comment"
 msgid "%s constant is false"
 msgstr "constante %s est fausse"
