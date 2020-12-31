@@ -296,9 +296,6 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				}
 			';
 
-			$custom_style_css .= '
-			';
-
 			/**
 			 * Admin menu and sub-menu items.
 			 */
