@@ -300,10 +300,6 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			 * Admin menu and sub-menu items.
 			 */
 			$custom_style_css .= '
-				#adminmenu li.menu-top a img {	/* Fix color images from 3rd party plugins. */
-					-webkit-filter:grayscale(100%);
-					filter:grayscale(100%);
-				}
 				#adminmenu li.menu-top.toplevel_page_' . $menu . ' div.wp-menu-image::before,
 				#adminmenu li.menu-top.toplevel_page_' . $sitemenu . ' div.wp-menu-image::before,
 				#adminmenu li.menu-top.toplevel_page_' . $menu . ':hover div.wp-menu-image::before,
