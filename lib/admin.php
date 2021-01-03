@@ -609,11 +609,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( ( $menu_lib === 'submenu' || $menu_lib === 'sitesubmenu' ) && version_compare( $wp_version, '3.8', '>=' ) ) {
 
-				$css_class = trim( 'wpsso-menu-item wpsso-' . $menu_id . ' ' . $css_class );
-
+				$css_class     = trim( 'wpsso-menu-item wpsso-' . $menu_id . ' ' . $css_class );
 				$dashicon_html = $this->get_menu_dashicon_html( $menu_id, $css_class );
-
-				$menu_title = $dashicon_html . '<div class="' . $css_class . ' menu-item-label">' . $menu_name . '</div>';
+				$menu_title    = $dashicon_html . '<div class="' . $css_class . ' menu-item-label">' . $menu_name . '</div>';
 
 			} else {
 
