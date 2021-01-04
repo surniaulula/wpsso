@@ -942,7 +942,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.19.1 =
+= 8.19.1-dev.1 =
 
 (2021/01/04) Fix to allow the SSO &gt; Advanced Settings &gt; Disable Cache for Debugging option to be changed in the Standard version.
 
