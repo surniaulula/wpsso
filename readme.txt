@@ -331,6 +331,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.19.1-dev.1 (2021/01/04)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fix to allow the SSO &gt; Advanced Settings &gt; Disable Cache for Debugging option to be changed in the Standard version.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.0.
+	* WordPress v4.5.
+
 **Version 8.19.0 (2020/12/29)**
 
 * **New Features**
@@ -927,6 +941,10 @@ This release adds a new SSO &gt; Features Status page and integration module for
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.19.1 =
+
+(2021/01/04) Fix to allow the SSO &gt; Advanced Settings &gt; Disable Cache for Debugging option to be changed in the Standard version.
 
 = 8.19.0 =
 
