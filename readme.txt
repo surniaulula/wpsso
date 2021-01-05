@@ -338,7 +338,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* Fix to allow the SSO &gt; Advanced Settings &gt; Disable Cache for Debugging option to be changed in the Standard version.
+	* Fix to allow the new "Disable Cache for Debugging" option to be changed in the Standard version.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -944,7 +944,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 = 8.19.1-dev.1 =
 
-(2021/01/04) Fix to allow the SSO &gt; Advanced Settings &gt; Disable Cache for Debugging option to be changed in the Standard version.
+(2021/01/04) Fix to allow the new "Disable Cache for Debugging" option to be changed in the Standard version.
 
 = 8.19.0 =
 
