@@ -103,7 +103,7 @@ WPSSO makes full use of all available caching methods &mdash; along with offerin
 	* WP Rocket Cache
 	* WP Super Cache
 
-* Built-in compatibility checks for popular SEO plugins (\*\* additional integration also available in Premium version):
+* Built-in compatibility checks for popular SEO plugins (\*\* additional integration features are also available in the Premium version):
 
 	* All in One SEO Pack \*\*
 	* Jetpack SEO
