@@ -3558,7 +3558,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$convmap = array( 0x0, 0x10000, 0, 0xfffff );
 
-			return mb_decode_numericentity( $matches[0], $convmap, 'UTF-8' );
+			return mb_decode_numericentity( $matches[ 0 ], $convmap, 'UTF-8' );
 		}
 
 		/**
@@ -3787,7 +3787,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_json_scripts( $html, $do_decode = true ) {
 
-			if ( function_exists( 'mb_convert_encoding' ) ) {
+			if ( function_exists( 'mb_convert_encoding' ) ) {	// Just in case.
 
 				$html = mb_convert_encoding( $html, 'HTML-ENTITIES', 'UTF-8' );	// Convert to UTF8.
 			}

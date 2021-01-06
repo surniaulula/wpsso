@@ -1054,14 +1054,20 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$this->p->debug->log( 'size of ' . $check_url . ' is ' . $html_size . ' bytes' );
 				}
 
+				/**
+				 * If debug is enabled, the webpage may be larger than normal, so skip this warning.
+				 */
 				if ( $is_admin && ! $this->p->debug->enabled ) {
 
-					$this->p->notice->err(
-						sprintf( __( 'The webpage HTML retrieved from %1$s is %2$s bytes.', 'wpsso' ),
-							'<a href="' . $check_url . '">' . $check_url_htmlenc . '</a>', $html_size ) . ' ' . 
-						sprintf( __( 'This exceeds the maximum limit of %1$s bytes imposed by the Google crawler.', 'wpsso' ), $error_size ) . ' ' . 
-						__( 'If you do not reduce the webpage HTML size, Google will refuse to crawl this webpage.', 'wpsso' )
-					);
+					$notice_msg = sprintf( __( 'The webpage HTML retrieved from %1$s is %2$s bytes.', 'wpsso' ),
+						'<a href="' . $check_url . '">' . $check_url_htmlenc . '</a>', $html_size ) . ' ';
+
+					$notice_msg .= sprintf( __( 'This exceeds the maximum limit of %1$s bytes imposed by the Google crawler.', 'wpsso' ),
+						$error_size ) . ' ';
+
+					$notice_msg .= __( 'If you do not reduce the webpage HTML size, Google will refuse to crawl this webpage.', 'wpsso' );
+
+					$this->p->notice->err( $notice_msg );
 				}
 			}
 
@@ -1168,7 +1174,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->log( 'removing the wpsso meta tag section from the webpage html' );
 			}
 
-			$html_stripped = preg_replace( $this->p->head->get_mt_mark( 'preg' ), '', $webpage_html, -1, $mark_count );
+			$mt_mark_preg = $this->p->head->get_mt_mark( 'preg' );
+
+			$html_stripped = preg_replace( $mt_mark_preg, '', $webpage_html, -1, $mark_count );
 
 			if ( ! $mark_count ) {
 
@@ -1181,7 +1189,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					$short_name = $this->p->cf[ 'plugin' ][ $this->p->id ][ 'short' ];
 
-					$this->p->notice->err( sprintf( __( 'The PHP preg_replace() function failed to remove the %1$s meta tag section &mdash; this could be an indication of a problem with PHP\'s PCRE library or a webpage filter corrupting the %1$s meta tags.', 'wpsso' ), $short_name ) );
+					$notice_msg = sprintf( __( 'The PHP preg_replace() function failed to remove the %1$s meta tag section &mdash; this could be an indication of a problem with PHP\'s PCRE library, or an optimization plugin or service corrupting the webpage HTML markup.', 'wpsso' ), $short_name ) . ' ';
+
+					$notice_msg .= __( 'You may consider updating, or having your hosting provider update, your PHP installation and its PCRE library.', 'wpsso' );
+
+					$this->p->notice->err( $notice_msg );
 				}
 
 				return;	// Stop here.

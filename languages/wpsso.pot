@@ -3203,7 +3203,7 @@ msgid ""
 "installed."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:163 lib/post.php:1111
+#: gettext/gettext-lib-pro.php:163 lib/post.php:1117
 #: lib/pro/media/youtube.php:187
 msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
@@ -5008,27 +5008,27 @@ msgctxt "submit button"
 msgid "Validate %s"
 msgstr ""
 
-#: lib/head.php:547
+#: lib/head.php:555
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:556
+#: lib/head.php:564
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:565
+#: lib/head.php:573
 msgid "adding meta name meta tags"
 msgstr ""
 
-#: lib/head.php:574
+#: lib/head.php:582
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:596
+#: lib/head.php:604
 msgid "adding schema meta tags"
 msgstr ""
 
-#: lib/head.php:605
+#: lib/head.php:613
 msgid "adding schema json-ld markup"
 msgstr ""
 
@@ -8013,7 +8013,7 @@ msgid ""
 "post ID %3$d (%4$s)."
 msgstr ""
 
-#: lib/post.php:827 lib/post.php:1434 lib/schema.php:3157 lib/term.php:622
+#: lib/post.php:827 lib/post.php:1446 lib/schema.php:3157 lib/term.php:622
 #: lib/user.php:619
 msgid "checking meta tags"
 msgstr ""
@@ -8022,122 +8022,128 @@ msgstr ""
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:1060
+#: lib/post.php:1062
 msgid "The webpage HTML retrieved from %1$s is %2$s bytes."
 msgstr ""
 
-#: lib/post.php:1062
+#: lib/post.php:1065
 msgid ""
 "This exceeds the maximum limit of %1$s bytes imposed by the Google crawler."
 msgstr ""
 
-#: lib/post.php:1063
+#: lib/post.php:1068
 msgid ""
 "If you do not reduce the webpage HTML size, Google will refuse to crawl this "
 "webpage."
 msgstr ""
 
-#: lib/post.php:1092
+#: lib/post.php:1098
 msgid "Retrieving the webpage HTML for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:1094
+#: lib/post.php:1100
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:1096
+#: lib/post.php:1102
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:1097
+#: lib/post.php:1103
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:1125
+#: lib/post.php:1131
 msgid "An %1$s tag was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1140
+#: lib/post.php:1146
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1157
+#: lib/post.php:1163
 msgid ""
 "A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
 "perhaps a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:1184
+#: lib/post.php:1192
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section "
-"&mdash; this could be an indication of a problem with PHP's PCRE library or "
-"a webpage filter corrupting the %1$s meta tags."
+"&mdash; this could be an indication of a problem with PHP's PCRE library, or "
+"an optimization plugin or service corrupting the webpage HTML markup."
 msgstr ""
 
-#: lib/post.php:1229
+#: lib/post.php:1194
+msgid ""
+"You may consider updating, or having your hosting provider update, your PHP "
+"installation and its PCRE library."
+msgstr ""
+
+#: lib/post.php:1241
 msgid "The webpage at %1$s does not include any Schema JSON-LD script(s)."
 msgstr ""
 
-#: lib/post.php:1231
+#: lib/post.php:1243
 msgid ""
 "Complete and accurate Schema JSON-LD markup is highly recommended for better "
 "ranking and click-through rates in search results."
 msgstr ""
 
-#: lib/post.php:1233
+#: lib/post.php:1245
 msgid ""
 "Consider activating the %1$s add-on to include Schema JSON-LD markup for "
 "Google Rich Results."
 msgstr ""
 
-#: lib/post.php:1254
+#: lib/post.php:1266
 msgid ""
 "Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
 "head section of this webpage."
 msgstr ""
 
-#: lib/post.php:1272
+#: lib/post.php:1284
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1272
+#: lib/post.php:1284
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML document &mdash; please review the <a href=\"%1$s\">W3C "
 "Markup Validator</a> results and correct any syntax errors."
 msgstr ""
 
-#: lib/post.php:1310
+#: lib/post.php:1322
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1312
+#: lib/post.php:1324
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1320
+#: lib/post.php:1332
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1324
+#: lib/post.php:1336
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1328
+#: lib/post.php:1340
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1487
+#: lib/post.php:1499
 msgid "Save a draft or publish to display these options."
 msgstr ""
 
-#: lib/post.php:1729
+#: lib/post.php:1741
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 

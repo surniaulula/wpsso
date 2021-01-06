@@ -319,17 +319,25 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 					break;
 
+				/**
+				 * Used by WpssoPost->check_post_head() and WpssoSsmFilters->strip_schema_microdata().
+				 */
 				case 'preg':
 
 					/**
-					 * Some HTML optimization plugins/services may remove the double-quotes from the name attribute,
-					 * along with the trailing space and slash characters, so make these optional in the regex.
+					 * Some HTML optimization plugins or services may remove the double-quotes from the name
+					 * attribute, along with the trailing space and slash characters, so make these optional in
+					 * the regex.
 					 */
 					$prefix = '<(!--[\s\n\r]+|meta[\s\n\r]+name="?wpsso:mark:(begin|end)"?[\s\n\r]+content=")';
 
 					$suffix = '("[\s\n\r]*\/?|[\s\n\r]+--)>';
 
-					$mt_mark = '/' . $prefix . 'wpsso meta tags begin' . $suffix . '.*' . $prefix . 'wpsso meta tags end' . $suffix . '/ums';
+					/**
+					 * u = Pattern and subject strings are treated as UTF-8.
+					 * s = A dot metacharacter in the pattern matches all characters, including newlines.
+					 */
+					$mt_mark = '/' . $prefix . 'wpsso meta tags begin' . $suffix . '.*' . $prefix . 'wpsso meta tags end' . $suffix . '/us';
 
 					break;
 			}
