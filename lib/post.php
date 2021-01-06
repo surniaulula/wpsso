@@ -1191,7 +1191,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					$notice_msg = sprintf( __( 'The PHP preg_replace() function failed to remove the %1$s meta tag section &mdash; this could be an indication of a problem with PHP\'s PCRE library, or an optimization plugin or service corrupting the webpage HTML markup.', 'wpsso' ), $short_name ) . ' ';
 
-					$notice_msg .= __( 'You may consider updating, or having your hosting provider update, your PHP installation and its PCRE library.', 'wpsso' );
+					$notice_msg .= __( 'You may consider updating or having your hosting provider update your PHP installation and its PCRE library.', 'wpsso' );
 
 					$this->p->notice->err( $notice_msg );
 				}

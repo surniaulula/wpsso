@@ -44,6 +44,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			if ( is_string( $info ) ) {
 
 				$text = $info;
+
 				$info = array( 'text' => $text );
 
 			} else {
@@ -965,9 +966,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$img_sizes_page_link = $this->p->util->get_admin_url( 'image-sizes',
 								_x( 'Image Sizes', 'lib file description', 'wpsso' ) );
 
-							$text .= __( 'Content authors often upload small featured images, without knowing that WordPress creates resized images based on predefined image sizes, so this option is disabled by default.', 'wpsso' ) . ' ';
+							$text = __( 'Content authors often upload small featured images, without knowing that WordPress creates resized images based on predefined image sizes, so this option is disabled by default.', 'wpsso' ) . ' ';
 
-							$text = sprintf( __( 'When this option is enabled, full size images used for meta tags and Schema markup must be equal to (or larger) than the image dimensions you\'ve selected in the %s settings page &mdash; images that do not meet or exceed the minimum requirements are ignored.', 'wpsso' ), $img_sizes_page_link ) . ' ';
+							$text .= sprintf( __( 'When this option is enabled, full size images used for meta tags and Schema markup must be equal to (or larger) than the image dimensions you\'ve selected in the %s settings page &mdash; images that do not meet or exceed the minimum requirements are ignored.', 'wpsso' ), $img_sizes_page_link ) . ' ';
 
 							$text .= __( 'Providing social and search sites with perfectly resized images is highly recommended, so this option should be enabled if possible.', 'wpsso' ) . ' ';
 
@@ -1158,7 +1159,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = __( 'The requested Gravatar image width and height.', 'wpsso' ) . ' ';
 
-							$text = __( 'You may choose an image size from 1px up to 2048px, however note that many users have lower resolution images, so choosing a larger size may result in pixelation and lower-quality images.', 'wpsso' );
+							$text .= __( 'You may choose an image size from 1px up to 2048px, however note that many users have lower resolution images, so choosing a larger size may result in pixelation and lower-quality images.', 'wpsso' );
 
 							break;
 
@@ -1278,7 +1279,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$attr_key = str_replace( 'tooltip-', '', $msg_key );
 
-							$text .= __( 'Enter the name of a product attribute available in your e-commerce plugin.', 'wpsso' ) . ' ';
+							$text = __( 'Enter the name of a product attribute available in your e-commerce plugin.', 'wpsso' ) . ' ';
 
 							$text .= sprintf( __( 'The product attribute name allows %s to request the attribute value from your e-commerce plugin.', 'wpsso' ), $wpsso_name_pro ) . ' ';
 
@@ -1361,7 +1362,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$fb_insights_url = __( 'https://developers.facebook.com/docs/insights/', 'wpsso' );
 							$fb_username_url = __( 'https://www.facebook.com/settings?tab=account&section=username&view', 'wpsso' );
 
-							$text .= sprintf( __( 'The Facebook admin usernames are used by Facebook to allow access to <a href="%1$s">Facebook Insight</a> data for your website. Note that these are Facebook user account names, not Facebook Page names. You may enter one or more Facebook usernames (comma delimited).', 'wpsso' ), $fb_insights_url );
+							$text = sprintf( __( 'The Facebook admin usernames are used by Facebook to allow access to <a href="%1$s">Facebook Insight</a> data for your website. Note that these are Facebook user account names, not Facebook Page names. You may enter one or more Facebook usernames (comma delimited).', 'wpsso' ), $fb_insights_url );
 
 							$text .= '<br/><br/>';
 
@@ -1394,7 +1395,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-g_site_verify':	// Google Website Verification ID.
 
-							$text .= sprintf( __( 'To verify your website ownership with <a href="%1$s">Google\'s Search Console</a>, select the <em>Settings</em> left-side menu option in the Search Console, then <em>Ownership and verification</em>, and then choose the <em>HTML tag</em> method.', 'wpsso' ), 'https://search.google.com/search-console' ) . ' ';
+							$text = sprintf( __( 'To verify your website ownership with <a href="%1$s">Google\'s Search Console</a>, select the <em>Settings</em> left-side menu option in the Search Console, then <em>Ownership and verification</em>, and then choose the <em>HTML tag</em> method.', 'wpsso' ), 'https://search.google.com/search-console' ) . ' ';
 
 							$text .= __( 'Enter the "google-site-verification" meta tag <code>content</code> value here (enter only the verification ID value, not the whole HTML tag).', 'wpsso' );
 
@@ -2280,7 +2281,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'info-custom-fields':
 
-							$text .= '<blockquote class="top-info">';
+							$text = '<blockquote class="top-info">';
 
 							$text .= '<p>';
 
@@ -2530,11 +2531,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						if ( $is_meta_page ) {
 
-							$text .= sprintf( __( 'A larger custom image can be selected in the %1$s metabox under the %2$s tab.',
+							$text = sprintf( __( 'A larger custom image can be selected in the %1$s metabox under the %2$s tab.',
 								'wpsso' ), $mb_title, $media_tab );
 						} else {
 
-							$text .= __( 'Consider replacing the original image with a higher resolution version.', 'wpsso' ) . ' ';
+							$text = __( 'Consider replacing the original image with a higher resolution version.', 'wpsso' ) . ' ';
 
 							$text .= sprintf( __( 'See <a href="%s">Why shouldn\'t I upload small images to the Media library?</a> for more information on WordPress image sizes.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/' ). ' ';
 						}
