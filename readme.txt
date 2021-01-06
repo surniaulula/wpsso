@@ -336,7 +336,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Sorted transient labels in the SSO &gt; Dashboard &gt; Cache Status metabox.
 * **Bugfixes**
 	* Fix to allow the new "Disable Cache for Debugging" option to be changed in the Standard version.
 * **Developer Notes**
