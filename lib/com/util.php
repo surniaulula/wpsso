@@ -995,6 +995,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					$local_cache = array();
 
 					foreach ( self::$currency_symbols as $key => $value ) {
+
 						$local_cache[ $key ] = self::decode_html( $value );	// Example: USD => $
 					}
 

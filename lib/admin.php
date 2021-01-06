@@ -350,7 +350,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						$menu_name = _x( $menu_name, 'lib file description', $info[ 'text_domain' ] );
 					}
 
-					$ksort_key = $menu_name . '-' . $menu_id;
+					$sort_key = $menu_name . '-' . $menu_id;
 
 					$parent_slug = 'wpsso-' . $this->menu_id;
 
@@ -367,7 +367,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					} else {
 
-						$sorted_menu[ $ksort_key ] = array( $parent_slug, $menu_id, $menu_name, $menu_lib, $ext );
+						$sorted_menu[ $sort_key ] = array( $parent_slug, $menu_id, $menu_name, $menu_lib, $ext );
 
 						if ( false === $ext_first_id ) {
 
@@ -456,9 +456,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							$menu_name = _x( $menu_name, 'lib file description', $info[ 'text_domain' ] );
 						}
 
-						$ksort_key = $menu_name . '-' . $menu_id;
+						$sort_key = $menu_name . '-' . $menu_id;
 
-						$sorted_menu[ $ksort_key ] = array( $parent_slug, $menu_id, $menu_name, $menu_lib, $ext );
+						$sorted_menu[ $sort_key ] = array( $parent_slug, $menu_id, $menu_name, $menu_lib, $ext );
 					}
 				}
 
@@ -1778,9 +1778,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '</tr>';
 
 			/**
-			 * The $this->p->cf is filtered and may have been modified by add-ons, so make sure the "All Transients"
-			 * count is last.
+			 * Sort the transient array and make sure the "All Transients" count is last.
 			 */
+			uasort( $this->p->cf[ 'wp' ][ 'transient' ], array( 'self', 'sort_by_label_key' ) );
+
 			if ( isset( $this->p->cf[ 'wp' ][ 'transient' ][ $all_transients_pre ] ) ) {
 
 				SucomUtil::move_to_end( $this->p->cf[ 'wp' ][ 'transient' ], $all_transients_pre );
@@ -1850,6 +1851,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			echo '</table>';
+		}
+
+		private static function sort_by_label_key( $a, $b ) {
+
+			if ( isset( $a[ 'label' ] ) && isset( $b[ 'label' ] ) ) {
+			
+				return strcmp( $a[ 'label' ], $b[ 'label' ] );
+			}
+
+			return 0;	// No change.
 		}
 
 		public function show_metabox_version_info() {

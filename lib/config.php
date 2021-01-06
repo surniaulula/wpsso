@@ -4369,7 +4369,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			/**
 			 * Sort the array by plugin name and maintain index association.
 			 */
-			uasort( $cf[ 'plugin' ], array( 'self', 'sort_ext_by_name' ) );
+			uasort( $cf[ 'plugin' ], array( 'self', 'sort_by_name_key' ) );
 
 			reset( $cf[ 'plugin' ] );	// Just in case.
 
@@ -4386,9 +4386,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			return $cf[ 'plugin' ];
 		}
 
-		private static function sort_ext_by_name( $a, $b ) {
+		private static function sort_by_name_key( $a, $b ) {
 
-			if ( isset( $a[ 'name' ] ) && isset( $b[ 'name' ] ) ) {		// Just in case.
+			if ( isset( $a[ 'name' ] ) && isset( $b[ 'name' ] ) ) {
 
 				return strnatcmp( $a[ 'name' ], $b[ 'name' ] );
 			}
