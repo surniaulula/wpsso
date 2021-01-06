@@ -965,11 +965,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$img_sizes_page_link = $this->p->util->get_admin_url( 'image-sizes',
 								_x( 'Image Sizes', 'lib file description', 'wpsso' ) );
 
-							$text .= __( 'Providing social and search sites with perfectly resized images is highly recommended, so this option should be enabled if possible.', 'wpsso' ) . ' ';
-
 							$text .= __( 'Content authors often upload small featured images, without knowing that WordPress creates resized images based on predefined image sizes, so this option is disabled by default.', 'wpsso' ) . ' ';
 
 							$text = sprintf( __( 'When this option is enabled, full size images used for meta tags and Schema markup must be equal to (or larger) than the image dimensions you\'ve selected in the %s settings page &mdash; images that do not meet or exceed the minimum requirements are ignored.', 'wpsso' ), $img_sizes_page_link ) . ' ';
+
+							$text .= __( 'Providing social and search sites with perfectly resized images is highly recommended, so this option should be enabled if possible.', 'wpsso' ) . ' ';
 
 							$text .= sprintf( __( 'See <a href="%s">Why shouldn\'t I upload small images to the Media library?</a> for more information on WordPress image sizes.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/' ). ' ';
 
@@ -2516,7 +2516,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			/**
 			 * Misc notice messages
 			 */
-			} elseif ( strpos( $msg_key, 'notice-' ) === 0 ) {
+			} elseif ( 0 === strpos( $msg_key, 'notice-' ) ) {
 
 				switch ( $msg_key ) {
 
