@@ -1603,14 +1603,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				}
 			}
 
-			$html = mb_convert_encoding( $html, 'HTML-ENTITIES', 'UTF-8' );	// Convert to UTF8.
+			if ( function_exists( 'mb_convert_encoding' ) ) {	// Just in case.
 
-			/**
-			 * U = Ungreedy.
-			 * u = UTF-8.
-			 * m = Multiline.
-			 * s = Dot matches newlines.
-			 */
+				$html = mb_convert_encoding( $html, 'HTML-ENTITIES', 'UTF-8' );	// Convert to UTF8.
+			}
+
 			$html = preg_replace( '/<!--.*-->/Uums', '', $html );	// Pattern and subject strings are treated as UTF8.
 
 			if ( empty( $html ) ) {	// Returned html for url is empty.
@@ -1653,14 +1650,14 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					}
 
 					/**
-					 *	libXMLError {
-					 *		public int $level;
-					 *		public int $code;
-					 *		public int $column;
-					 *		public string $message;
-					 *		public string $file;
-					 *		public int $line;
-					 *	}
+					 * libXMLError {
+					 *	public int $level;
+					 *	public int $code;
+					 *	public int $column;
+					 *	public string $message;
+					 *	public string $file;
+					 *	public int $line;
+					 * }
 					 */
 					foreach ( libxml_get_errors() as $error ) {
 

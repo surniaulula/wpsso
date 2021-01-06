@@ -334,10 +334,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					$suffix = '("[\s\n\r]*\/?|[\s\n\r]+--)>';
 
 					/**
-					 * u = Pattern and subject strings are treated as UTF-8.
 					 * s = A dot metacharacter in the pattern matches all characters, including newlines.
 					 */
-					$mt_mark = '/' . $prefix . 'wpsso meta tags begin' . $suffix . '.*' . $prefix . 'wpsso meta tags end' . $suffix . '/us';
+					$mt_mark = '/' . $prefix . 'wpsso meta tags begin' . $suffix . '.*' . $prefix . 'wpsso meta tags end' . $suffix . '/s';
 
 					break;
 			}

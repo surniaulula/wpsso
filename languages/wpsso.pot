@@ -5008,27 +5008,27 @@ msgctxt "submit button"
 msgid "Validate %s"
 msgstr ""
 
-#: lib/head.php:555
+#: lib/head.php:554
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:564
+#: lib/head.php:563
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:573
+#: lib/head.php:572
 msgid "adding meta name meta tags"
 msgstr ""
 
-#: lib/head.php:582
+#: lib/head.php:581
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:604
+#: lib/head.php:603
 msgid "adding schema meta tags"
 msgstr ""
 
-#: lib/head.php:613
+#: lib/head.php:612
 msgid "adding schema json-ld markup"
 msgstr ""
 
@@ -5095,12 +5095,12 @@ msgid ""
 msgstr ""
 
 #: lib/media.php:1098 lib/post.php:541 lib/register.php:345 lib/term.php:465
-#: lib/user.php:445 lib/util.php:836 lib/util.php:3142
+#: lib/user.php:445 lib/util.php:836 lib/util.php:3139
 msgid "%s warning:"
 msgstr ""
 
 #: lib/media.php:1099 lib/post.php:542 lib/term.php:466 lib/user.php:446
-#: lib/util.php:837 lib/util.php:3143
+#: lib/util.php:837 lib/util.php:3140
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -8147,32 +8147,32 @@ msgstr ""
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:114 lib/pro/forum/bbpress.php:211
+#: lib/pro/forum/bbpress.php:114 lib/pro/forum/bbpress.php:213
 msgctxt "bbpress single user description"
 msgid "%s's Profile"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:222
+#: lib/pro/forum/bbpress.php:224
 msgctxt "bbpress single user description"
 msgid "%s's Topics Started"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:228
+#: lib/pro/forum/bbpress.php:230
 msgctxt "bbpress single user description"
 msgid "%s's Replies Created"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:234
+#: lib/pro/forum/bbpress.php:236
 msgctxt "bbpress single user description"
 msgid "%s's Favorites"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:240
+#: lib/pro/forum/bbpress.php:242
 msgctxt "bbpress single user description"
 msgid "%s's Subscriptions"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:246
+#: lib/pro/forum/bbpress.php:248
 msgctxt "bbpress single user description"
 msgid "Edit %s's Profile"
 msgstr ""
@@ -9178,31 +9178,31 @@ msgstr ""
 msgid "Error getting HTML from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/util.php:1627
+#: lib/util.php:1624
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
 #. translators: %1$s is the class name.
-#: lib/util.php:1822
+#: lib/util.php:1819
 msgid ""
 "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting "
 "provider to have the missing class installed."
 msgstr ""
 
 #. translators: %1$s is the function name.
-#: lib/util.php:1836
+#: lib/util.php:1833
 msgid ""
 "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting "
 "provider to have the missing function installed."
 msgstr ""
 
-#: lib/util.php:3144
+#: lib/util.php:3141
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3160
+#: lib/util.php:3157
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -9211,120 +9211,120 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3162
+#: lib/util.php:3159
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3538
+#: lib/util.php:3535
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr ""
 
-#: lib/util.php:3539
+#: lib/util.php:3536
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/util.php:3543
+#: lib/util.php:3540
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr ""
 
-#: lib/util.php:3544
+#: lib/util.php:3541
 msgctxt "validator type"
 msgid "Microdata"
 msgstr ""
 
-#: lib/util.php:3548
+#: lib/util.php:3545
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr ""
 
-#: lib/util.php:3549
+#: lib/util.php:3546
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr ""
 
-#: lib/util.php:3553
+#: lib/util.php:3550
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/util.php:3554
+#: lib/util.php:3551
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr ""
 
-#: lib/util.php:3558
+#: lib/util.php:3555
 msgctxt "option label"
 msgid "Google Structured Data Test (Deprecated)"
 msgstr ""
 
-#: lib/util.php:3559
+#: lib/util.php:3556
 msgctxt "validator type"
 msgid "Structured Data"
 msgstr ""
 
-#: lib/util.php:3563
+#: lib/util.php:3560
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/util.php:3564
+#: lib/util.php:3561
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/util.php:3568
+#: lib/util.php:3565
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/util.php:3569
+#: lib/util.php:3566
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr ""
 
-#: lib/util.php:3573
+#: lib/util.php:3570
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/util.php:3574
+#: lib/util.php:3571
 msgctxt "validator type"
 msgid "Twitter Card"
 msgstr ""
 
-#: lib/util.php:3579
+#: lib/util.php:3576
 msgctxt "option label"
 msgid "The AMP Project Validator"
 msgstr ""
 
-#: lib/util.php:3580
+#: lib/util.php:3577
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr ""
 
-#: lib/util.php:3584
+#: lib/util.php:3581
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr ""
 
-#: lib/util.php:3585
+#: lib/util.php:3582
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name.
-#: lib/util.php:3735
+#: lib/util.php:3732
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3745
+#: lib/util.php:3742
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 
