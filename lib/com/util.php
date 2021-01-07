@@ -3794,6 +3794,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			/**
 			 * Remove containers that should not include json scripts.
+			 *
+			 * U = Invert greediness of quantifiers, so they are NOT greedy by default, but become greedy if followed by ?.
+			 * u = Pattern and subject strings are treated as UTF-8.
+			 * m = The "^" and "$" constructs match newlines and the complete subject string.
+			 * s = A dot metacharacter in the pattern matches all characters, including newlines.
 			 */
 			$html = preg_replace( '/<!--.*-->/Uums', '', $html );
 			$html = preg_replace( '/<pre[ >].*<\/pre>/Uiums', '', $html );
@@ -3825,6 +3830,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						} else {
 
 							$error_pre = sprintf( '%s error:', __METHOD__ );
+
 							$error_msg = sprintf( 'Error decoding json script: %s', print_r( $matches[ 1 ], true ) );
 
 							self::safe_error_log( $error_pre . ' ' . $error_msg );

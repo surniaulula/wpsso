@@ -1608,7 +1608,13 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$html = mb_convert_encoding( $html, 'HTML-ENTITIES', 'UTF-8' );	// Convert to UTF8.
 			}
 
-			$html = preg_replace( '/<!--.*-->/Uums', '', $html );	// Pattern and subject strings are treated as UTF8.
+			/**
+			 * U = Invert greediness of quantifiers, so they are NOT greedy by default, but become greedy if followed by ?.
+			 * u = Pattern and subject strings are treated as UTF-8.
+			 * m = The "^" and "$" constructs match newlines and the complete subject string.
+			 * s = A dot metacharacter in the pattern matches all characters, including newlines.
+			 */
+			$html = preg_replace( '/<!--.*-->/Uums', '', $html );
 
 			if ( empty( $html ) ) {	// Returned html for url is empty.
 

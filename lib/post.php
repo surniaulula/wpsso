@@ -1174,7 +1174,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->log( 'removing the wpsso meta tag section from the webpage html' );
 			}
 
-			$mt_mark_preg = $this->p->head->get_mt_mark( 'preg' );
+			$mt_mark_preg = $this->p->head->get_mt_mark( 'preg' );	// Includes a modifier to handle UTF-8 in subject strings.
 
 			$html_stripped = preg_replace( $mt_mark_preg, '', $webpage_html, -1, $mark_count );
 

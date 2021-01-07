@@ -334,9 +334,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					$suffix = '("[\s\n\r]*\/?|[\s\n\r]+--)>';
 
 					/**
+					 * U = Invert greediness of quantifiers, so they are NOT greedy by default, but become greedy if followed by ?.
+					 * u = Pattern and subject strings are treated as UTF-8.
+					 * m = The "^" and "$" constructs match newlines and the complete subject string.
 					 * s = A dot metacharacter in the pattern matches all characters, including newlines.
 					 */
-					$mt_mark = '/' . $prefix . 'wpsso meta tags begin' . $suffix . '.*' . $prefix . 'wpsso meta tags end' . $suffix . '/s';
+					$mt_mark = '/' . $prefix . 'wpsso meta tags begin' . $suffix . '.*' . $prefix . 'wpsso meta tags end' . $suffix . '/Uums';
 
 					break;
 			}
