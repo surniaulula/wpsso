@@ -331,7 +331,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.19.1-rc.1 (2021/01/07)**
+**Version 8.19.1 (2021/01/07)**
 
 * **New Features**
 	* None.
@@ -942,7 +942,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.19.1-rc.1 =
+= 8.19.1 =
 
 (2021/01/07) Fix to allow the new "Disable Cache for Debugging" option to be changed in the Standard version.
 
