@@ -2455,7 +2455,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							if ( '0000-00-00 00:00:00' === $val ) {
 
-								$val = _x( 'Never', 'option value', 'wpsso' );
+								$val = _x( 'Never (Nontransferable Lifetime License)', 'option value', 'wpsso' );
 							}
 
 						} elseif ( $key === 'qty_used' ) {

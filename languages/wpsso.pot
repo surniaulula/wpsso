@@ -4111,7 +4111,7 @@ msgstr ""
 
 #: lib/admin.php:2458
 msgctxt "option value"
-msgid "Never"
+msgid "Never (Nontransferable Lifetime License)"
 msgstr ""
 
 #: lib/admin.php:2466
