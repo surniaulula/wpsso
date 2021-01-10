@@ -517,7 +517,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'calling get_posts() for direct children of ' . $mod[ 'name' ] . ' ID ' . $mod[ 'id' ] );
+				$this->p->debug->mark();
 			}
 
 			$posts_args = array_merge( array(
@@ -529,6 +529,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				'post_parent'    => $mod[ 'id' ],
 				'child_of'       => $mod[ 'id' ],	// Only include direct children.
 			), $extra_args, array( 'fields' => 'ids' ) );	// Return an array of post IDs.
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'calling get_posts() for direct children of ' . $mod[ 'name' ] . ' ID ' . $mod[ 'id' ] );
+			}
 
 			$mtime_start = microtime( $get_float = true );
 			$post_ids    = get_posts( $posts_args );

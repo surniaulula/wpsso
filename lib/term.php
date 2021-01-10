@@ -435,7 +435,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'calling get_posts() for ' . $mod[ 'name' ] . ' ID ' . $mod[ 'id' ] .  ' in taxonomy ' . $mod[ 'tax_slug' ] );
+				$this->p->debug->mark();
 			}
 
 			$posts_args = array_merge( array(
@@ -453,6 +453,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					)
 				),
 			), $extra_args, array( 'fields' => 'ids' ) );	// Return an array of post IDs.
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'calling get_posts() for ' . $mod[ 'name' ] . ' ID ' . $mod[ 'id' ] .  ' in taxonomy ' . $mod[ 'tax_slug' ] );
+			}
 
 			$mtime_start = microtime( $get_float = true );
 			$post_ids    = get_posts( $posts_args );

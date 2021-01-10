@@ -1,5 +1,5 @@
 
-jQuery( document ).ready( function() {
+jQuery( document ).on( 'ready', function() {
 
 	sucomInitMetabox();
 } );

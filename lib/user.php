@@ -422,7 +422,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'calling get_posts() for posts authored by ' . $mod[ 'name' ] . ' ID ' . $mod[ 'id' ] );
+				$this->p->debug->mark();
 			}
 
 			$posts_args = array_merge( array(
@@ -433,6 +433,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				'post_type'    => 'post',		// Return only posts authored by the user.
 				'author'       => $mod[ 'id' ],
 			), $extra_args, array( 'fields' => 'ids' ) );	// Return an array of post IDs.
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'calling get_posts() for posts authored by ' . $mod[ 'name' ] . ' ID ' . $mod[ 'id' ] );
+			}
 
 			$mtime_start = microtime( $get_float = true );
 			$post_ids    = get_posts( $posts_args );

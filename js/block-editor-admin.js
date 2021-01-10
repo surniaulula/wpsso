@@ -13,9 +13,9 @@ wp.data.subscribe( function() {
 	var cfgName           = 'sucomAdminPageL10n';
 	var isSavingContainer = isSavingMetaBoxes();
 
-	if ( wasSavingContainer ) {			// Last check was saving post meta.
+	if ( wasSavingContainer ) {	// Last check was saving post meta.
 
-		if ( ! isSavingContainer ) {		// Saving the post meta is done.
+		if ( ! isSavingContainer ) {	// Saving the post meta is done.
 
 			sucomUpdateContainers( pluginId, cfgName );
 
@@ -24,13 +24,12 @@ wp.data.subscribe( function() {
 	}
 
 	wasSavingContainer = isSavingContainer;
-} );
+});
 
-jQuery( document ).ready( function() {
+jQuery( document ).on( 'ready', function() {
 
 	var pluginId = 'wpsso';
 	var cfgName  = 'sucomAdminPageL10n';
 
 	sucomBlockNotices( pluginId, cfgName );
-} );
-
+});

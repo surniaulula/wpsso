@@ -261,8 +261,14 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 			?><script type="text/javascript">
 
-				jQuery( document ).ready( function() {
+				/**
+				 * Executes when HTML-Document is loaded and DOM is ready.
+				 */
+				jQuery( document ).on( 'ready', function() {
 
+					/**
+					 * Executes when page is fully loaded, including all frames, objects and images.
+					 */
 					jQuery( window ).on( 'load', function() {
 
 						sucomToolbarNotices( 'wpsso', 'sucomAdminPageL10n' );
@@ -290,15 +296,15 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			 * Fix the update / install button to load the href when clicked.
 			 */
 			$custom_script_js = '
-jQuery( document ).ready( function(){
+jQuery( document ).on( \'ready\', function(){
 
-	jQuery( "body#plugin-information.iframe a[id$=_from_iframe]" ).on( "click", function(){
+	jQuery( \'body#plugin-information.iframe a[id$=_from_iframe]\' ).on( \'click\', function(){
 
-		if ( window.top.location.href.indexOf( "page=wpsso-" ) ) {
+		if ( window.top.location.href.indexOf( \'page=wpsso-\' ) ) {
 
-			var plugin_url        = jQuery( this ).attr( "href" );
-			var pageref_url_arg   = "&wpsso_pageref_url=" + encodeURIComponent( window.top.location.href );
-			var pageref_title_arg = "&wpsso_pageref_title=" + encodeURIComponent( jQuery( "h1", window.parent.document ).text() );
+			var plugin_url        = jQuery( this ).attr( \'href\' );
+			var pageref_url_arg   = \'&wpsso_pageref_url=\' + encodeURIComponent( window.top.location.href );
+			var pageref_title_arg = \'&wpsso_pageref_title=\' + encodeURIComponent( jQuery( \'h1\', window.parent.document ).text() );
 
 			window.top.location.href = plugin_url + pageref_url_arg + pageref_title_arg;
 		}

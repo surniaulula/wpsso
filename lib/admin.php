@@ -1429,17 +1429,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			?>
 			<script type="text/javascript">
 
-				jQuery( document ).ready(
+				jQuery( document ).on( 'ready', function() {
 
-					function( $ ) {
+					/**
+					 * Close postboxes that should be closed.
+					 */
+					jQuery( '.if-js-closed' ).removeClass( 'if-js-closed' ).addClass( 'closed' );
 
-						/* Close postboxes that should be closed. */
-						$( '.if-js-closed' ).removeClass( 'if-js-closed' ).addClass( 'closed' );
-
-						/* Postboxes setup. */
-						postboxes.add_postbox_toggles( '<?php echo $this->pagehook; ?>' );
-					}
-				);
+					/**
+					 * Postboxes setup.
+					 */
+					postboxes.add_postbox_toggles( '<?php echo $this->pagehook; ?>' );
+				});
 
 			</script>
 			<?php
