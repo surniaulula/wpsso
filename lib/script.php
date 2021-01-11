@@ -297,7 +297,6 @@ EOF;
 			 * Fix the update / install button to load the href when clicked.
 			 */
 			$custom_script_js = <<<EOF
-
 jQuery( document ).on( 'ready', function(){
 
 	jQuery( 'body#plugin-information.iframe a[id$=_from_iframe]' ).on( 'click', function(){
@@ -312,7 +311,6 @@ jQuery( document ).on( 'ready', function(){
 		}
 	});
 });
-
 EOF;
 
 			if ( function_exists( 'wp_add_inline_script' ) ) {	// Since WP v4.5.0.
@@ -321,7 +319,7 @@ EOF;
 
 			} else {
 
-				echo '<script type="text/javascript">' . $custom_script_js . '</script>';
+				echo '<script type="text/javascript">' . "\n" . $custom_script_js . '</script>' . "\n";
 			}
 		}
 
