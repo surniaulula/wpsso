@@ -259,23 +259,24 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				$this->p->debug->log( 'adding jQuery call for sucomToolbarNotices()' );
 			}
 
-			?><script type="text/javascript">
+			/**
+			 * jQuery( document ).on( 'ready' ) executes when HTML-Document is loaded and DOM is ready.
+			 *
+			 * jQuery( window ).on( 'load' ) executes when page is fully loaded, including all frames, objects and images.
+			 */
+			echo <<<EOF
+<script type="text/javascript">
 
-				/**
-				 * Executes when HTML-Document is loaded and DOM is ready.
-				 */
-				jQuery( document ).on( 'ready', function() {
+	jQuery( document ).on( 'ready', function() {
 
-					/**
-					 * Executes when page is fully loaded, including all frames, objects and images.
-					 */
-					jQuery( window ).on( 'load', function() {
+		jQuery( window ).on( 'load', function() {
 
-						sucomToolbarNotices( 'wpsso', 'sucomAdminPageL10n' );
-					});
-				});
+			sucomToolbarNotices( 'wpsso', 'sucomAdminPageL10n' );
+		});
+	});
 
-			</script><?php
+</script>
+EOF;
 		}
 
 		/**
@@ -295,21 +296,24 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			/**
 			 * Fix the update / install button to load the href when clicked.
 			 */
-			$custom_script_js = '
-jQuery( document ).on( \'ready\', function(){
+			$custom_script_js = <<<EOF
 
-	jQuery( \'body#plugin-information.iframe a[id$=_from_iframe]\' ).on( \'click\', function(){
+jQuery( document ).on( 'ready', function(){
 
-		if ( window.top.location.href.indexOf( \'page=wpsso-\' ) ) {
+	jQuery( 'body#plugin-information.iframe a[id$=_from_iframe]' ).on( 'click', function(){
 
-			var plugin_url        = jQuery( this ).attr( \'href\' );
-			var pageref_url_arg   = \'&wpsso_pageref_url=\' + encodeURIComponent( window.top.location.href );
-			var pageref_title_arg = \'&wpsso_pageref_title=\' + encodeURIComponent( jQuery( \'h1\', window.parent.document ).text() );
+		if ( window.top.location.href.indexOf( 'page=wpsso-' ) ) {
+
+			var plugin_url        = jQuery( this ).attr( 'href' );
+			var pageref_url_arg   = '&wpsso_pageref_url=' + encodeURIComponent( window.top.location.href );
+			var pageref_title_arg = '&wpsso_pageref_title=' + encodeURIComponent( jQuery( 'h1', window.parent.document ).text() );
 
 			window.top.location.href = plugin_url + pageref_url_arg + pageref_title_arg;
 		}
 	});
-});';
+});
+
+EOF;
 
 			if ( function_exists( 'wp_add_inline_script' ) ) {	// Since WP v4.5.0.
 
