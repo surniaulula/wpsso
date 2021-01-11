@@ -331,7 +331,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.19.2-rc.1 (2021/01/10)**
+**Version 8.19.2 (2021/01/11)**
 
 * **New Features**
 	* None.
@@ -956,9 +956,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.19.2-rc.1 =
+= 8.19.2 =
 
-(2021/01/10) Updated `jQuery( document ).ready()` calls to `jQuery( document ).on( 'ready' )`.
+(2021/01/11) Updated `jQuery( document ).ready()` calls to `jQuery( document ).on( 'ready' )`.
 
 = 8.19.1 =
 
