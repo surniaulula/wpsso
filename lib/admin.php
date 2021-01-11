@@ -1857,7 +1857,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		private static function sort_by_label_key( $a, $b ) {
 
 			if ( isset( $a[ 'label' ] ) && isset( $b[ 'label' ] ) ) {
-			
+
 				return strcmp( $a[ 'label' ], $b[ 'label' ] );
 			}
 

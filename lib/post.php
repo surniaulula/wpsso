@@ -364,7 +364,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 * Check if options need to be upgraded and saved.
 				 */
 				if ( $this->is_upgrade_options_required( $md_opts ) ) {
-				
+
 					$md_opts = $this->upgrade_options( $md_opts, $post_id );
 
 					update_post_meta( $post_id, WPSSO_META_NAME, $md_opts );

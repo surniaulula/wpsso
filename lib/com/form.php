@@ -420,7 +420,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			if ( null === $value ) {
-			
+
 				$value = $this->in_options( $name ) ? $this->options[ $name ] : '';
 			}
 

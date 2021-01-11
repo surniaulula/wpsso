@@ -2390,7 +2390,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					$url = self::get_home_url( $this->p->options, $mod );
 				}
-	
+
 				$url = apply_filters( 'wpsso_home_url', $url, $mod );
 
 				if ( $this->p->debug->enabled ) {

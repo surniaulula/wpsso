@@ -733,7 +733,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				$keys_by_ext = apply_filters( 'wpsso_rename_site_options_keys', self::$rename_site_keys_by_ext );
 
 				$opts = $this->p->util->rename_options_by_ext( $opts, $keys_by_ext );
-				
+
 				$opts = apply_filters( 'wpsso_upgraded_site_options', $opts, $defs );
 			}
 
