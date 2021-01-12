@@ -1635,7 +1635,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$content = $this->get_the_content( $mod );
 
-			$minutes = SucomUtil::get_reading_mins( $content );
+			$words_per_minute = WPSSO_READING_WORDS_PER_MIN;
+
+			$minutes = SucomUtil::get_reading_mins( $content, $words_per_minute );
 
 			return sprintf( _n( '%s minute', '%s minutes', $minutes, 'wpsso' ), $minutes );
 		}

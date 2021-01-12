@@ -4770,7 +4770,7 @@ msgctxt "option label"
 msgid "Preferred Cropping"
 msgstr ""
 
-#: lib/edit.php:128 lib/script.php:384
+#: lib/edit.php:128 lib/script.php:381
 msgctxt "option label"
 msgid "Schema Type"
 msgstr ""
@@ -7991,7 +7991,7 @@ msgstr ""
 msgid "Search Results %1$s %2$s"
 msgstr ""
 
-#: lib/page.php:1640
+#: lib/page.php:1642
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] ""
@@ -8260,39 +8260,39 @@ msgstr ""
 msgid "adding schema"
 msgstr ""
 
-#: lib/script.php:391
+#: lib/script.php:388
 msgid "No %s notifications."
 msgstr ""
 
-#: lib/script.php:395
+#: lib/script.php:392
 msgid "Copy notifications to clipboard."
 msgstr ""
 
-#: lib/script.php:416
+#: lib/script.php:413
 msgid "Copied to clipboard."
 msgstr ""
 
-#: lib/script.php:417
+#: lib/script.php:414
 msgid "Value linked to %s option"
 msgstr ""
 
-#: lib/script.php:418
+#: lib/script.php:415
 msgid "{0} of {1} characters minimum"
 msgstr ""
 
-#: lib/script.php:419
+#: lib/script.php:416
 msgid "{0} of {1} characters required"
 msgstr ""
 
-#: lib/script.php:420
+#: lib/script.php:417
 msgid "{0} of {1} characters maximum"
 msgstr ""
 
-#: lib/script.php:421
+#: lib/script.php:418
 msgid "{0} characters"
 msgstr ""
 
-#: lib/script.php:431
+#: lib/script.php:428
 msgid "Select Image"
 msgstr ""
 

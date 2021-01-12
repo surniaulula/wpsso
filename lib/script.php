@@ -221,8 +221,8 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			}
 
 			/**
-			 * Exit early if this is a block editor page - the notices will be retrieved using an ajax call on page
-			 * load and post save.
+			 * Exit early if this is a block editor page - the notices will be retrieved using an ajax call during
+			 * editor page load and post save.
 			 */
 			if ( SucomUtilWP::doing_block_editor() ) {
 
@@ -267,12 +267,9 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			echo <<<EOF
 <script type="text/javascript">
 
-	jQuery( document ).on( 'ready', function() {
+	jQuery( window ).on( 'load', function() {
 
-		jQuery( window ).on( 'load', function() {
-
-			sucomToolbarNotices( 'wpsso', 'sucomAdminPageL10n' );
-		});
+		sucomToolbarNotices( 'wpsso', 'sucomAdminPageL10n' );
 	});
 
 </script>

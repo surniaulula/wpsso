@@ -4425,7 +4425,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 *
 		 * See https://en.wikipedia.org/wiki/Speed_reading.
 		 */
-		public static function get_reading_mins( $content, $words_per_minute = 250 ) {
+		public static function get_reading_mins( $content, $words_per_minute = 200 ) {
 
 			$word_count = str_word_count( wp_strip_all_tags( $content ) );
 
