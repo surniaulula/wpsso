@@ -266,12 +266,10 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			 */
 			echo <<<EOF
 <script type="text/javascript">
-
-	jQuery( window ).on( 'load', function() {
+	jQuery( window ).on( 'load', function(){
 
 		sucomToolbarNotices( 'wpsso', 'sucomAdminPageL10n' );
 	});
-
 </script>
 EOF;
 		}
@@ -298,7 +296,7 @@ jQuery( document ).on( 'ready', function(){
 
 	jQuery( 'body#plugin-information.iframe a[id$=_from_iframe]' ).on( 'click', function(){
 
-		if ( window.top.location.href.indexOf( 'page=wpsso-' ) ) {
+		if ( window.top.location.href.indexOf( 'page=wpsso-' ) ){
 
 			var plugin_url        = jQuery( this ).attr( 'href' );
 			var pageref_url_arg   = '&wpsso_pageref_url=' + encodeURIComponent( window.top.location.href );
