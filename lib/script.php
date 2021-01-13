@@ -52,7 +52,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 					add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ), WPSSO_ADMIN_SCRIPTS_PRIORITY );
 
 					/**
-					 * Add jQuery to update the toolbar menu item counter and container on page load.
+					 * Add jQuery to update the toolbar menu item on page load.
 					 */
 					if ( ! empty( $this->tb_notices ) ) {
 
@@ -211,6 +211,8 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 		}
 
 		/**
+		 * Add jQuery to update the toolbar menu item on page load.
+		 *
 		 * Hooked to the WordPress 'admin_footer' action.
 		 */
 		public function update_toolbar_on_load_script() {
@@ -221,8 +223,9 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			}
 
 			/**
-			 * Exit early if this is a block editor page - the notices will be retrieved using an ajax call during
-			 * editor page load and post save.
+			 * Exit early if this is a block editor page.
+			 *
+			 * Notices will be retrieved using an ajax call during editor page load and post save.
 			 */
 			if ( SucomUtilWP::doing_block_editor() ) {
 
@@ -252,24 +255,18 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			}
 
 			/**
-			 * Make sure to run this script last, so WordPress does not move notices out of the toolbar.
-			 */
-			if ( ! empty( $this->p->debug->enabled ) ) {
-
-				$this->p->debug->log( 'adding jQuery call for sucomToolbarNotices()' );
-			}
-
-			/**
 			 * jQuery( document ).on( 'ready' ) executes when HTML-Document is loaded and DOM is ready.
 			 *
 			 * jQuery( window ).on( 'load' ) executes when page is fully loaded, including all frames, objects and images.
 			 */
 			echo <<<EOF
 <script type="text/javascript">
+
 	jQuery( window ).on( 'load', function(){
 
 		sucomToolbarNotices( 'wpsso', 'sucomAdminPageL10n' );
 	});
+
 </script>
 EOF;
 		}

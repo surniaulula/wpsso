@@ -853,7 +853,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 						$html .= '<script type="text/javascript">';
 						$html .= 'jQuery( \'select#' . esc_js( $input_id ) . '\' ).on( \'focus\', function(){';
-						$html .= 'jQuery(\'' . $event_args . '\').show();';
+						$html .= 'jQuery( \'' . $event_args . '\' ).show();';
 						$html .= '});';
 						$html .= '</script>' . "\n";
 
@@ -2492,10 +2492,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			return empty( $css_id ) ? '' : '
 <script type="text/javascript">
+
 	jQuery( document ).on( \'ready\', function() {
+
 		jQuery( \'#' . esc_js( $css_id ) . '\' ).focus( function() { sucomTextLen(\'' . esc_js( $css_id ) . '\'); } );
 		jQuery( \'#' . esc_js( $css_id ) . '\' ).keyup( function() { sucomTextLen(\'' . esc_js( $css_id ) . '\'); } );
 	});
+
 </script>
 ';
 		}
@@ -2593,25 +2596,25 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html .= <<<EOF
 <script type="text/javascript">
 
-jQuery.each( [ 'show', 'hide' ], function( i, ev ){
+	jQuery.each( [ 'show', 'hide' ], function( i, ev ){
 
-	var el = jQuery.fn[ ev ];
+		var el = jQuery.fn[ ev ];
 
-	jQuery.fn[ ev ] = function(){
+		jQuery.fn[ ev ] = function(){
 
-		if ( jQuery( this ).is( 'tr' ) ) {
+			if ( jQuery( this ).is( 'tr' ) ) {
 
-			var css_class = jQuery( this ).attr( 'class' );
+				var css_class = jQuery( this ).attr( 'class' );
 
-			if ( css_class && css_class.indexOf( 'hide_' ) == 0 ) {
+				if ( css_class && css_class.indexOf( 'hide_' ) == 0 ) {
 
-				this.trigger( ev );
+					this.trigger( ev );
+				}
 			}
-		}
 
-		return el.apply( this, arguments );
-	};
-});
+			return el.apply( this, arguments );
+		};
+	});
 
 </script>
 EOF;

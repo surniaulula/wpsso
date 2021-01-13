@@ -1426,24 +1426,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '</div><!-- #wpsso-setting-page-content -->' . "\n";
 			echo '</div><!-- #' . $this->pagehook .' -->' . "\n";
 
-			?>
-			<script type="text/javascript">
+			echo <<<EOF
+<script type="text/javascript">
 
-				jQuery( document ).on( 'ready', function() {
+	jQuery( document ).on( 'ready', function(){
 
-					/**
-					 * Close postboxes that should be closed.
-					 */
-					jQuery( '.if-js-closed' ).removeClass( 'if-js-closed' ).addClass( 'closed' );
+		jQuery( '.if-js-closed' ).removeClass( 'if-js-closed' ).addClass( 'closed' );	// Postboxes that should be closed.
 
-					/**
-					 * Postboxes setup.
-					 */
-					postboxes.add_postbox_toggles( '<?php echo $this->pagehook; ?>' );
-				});
+		postboxes.add_postbox_toggles( '<?php echo $this->pagehook; ?>' );	// Postboxes setup.
+	});
 
-			</script>
-			<?php
+</script>
+EOF;
 		}
 
 		public function profile_updated_redirect( $url, $status ) {

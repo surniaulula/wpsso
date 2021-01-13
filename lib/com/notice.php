@@ -1760,7 +1760,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			return '
 <script type="text/javascript">
 
-	jQuery( document ).on( "click", "div.' . $this->plugin_id . '-dismissible > button.notice-dismiss, div.' . $this->plugin_id . '-dismissible .dismiss-on-click", function() {
+	jQuery( document ).on( "click", "div.' . $this->plugin_id . '-dismissible > button.notice-dismiss, div.' .
+		$this->plugin_id . '-dismissible .dismiss-on-click", function() {
 
 		var notice = jQuery( this ).closest( ".' . $this->plugin_id . '-dismissible" );
 
