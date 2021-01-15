@@ -2800,12 +2800,19 @@ EOF;
 				$this->p->debug->mark();
 			}
 
+			$user_id = get_current_user_id();
+
+			if ( ! $user_id ) {	// Nobody there.
+
+				return;	// Stop here.
+			}
+
 			/**
 			 * Skip if previous check is already successful.
 			 */
 			if ( $passed = get_option( WPSSO_WP_CONFIG_CHECK_NAME, $default = false ) ) {
 
-				return;
+				return;	// Stop here.
 			}
 
 			if ( $file_path = SucomUtilWP::get_wp_config_file_path() ) {
@@ -2818,7 +2825,7 @@ EOF;
 
 					$notice_msg = $this->p->msgs->get( $notice_key );
 
-					$this->p->notice->err( $notice_msg, null, $notice_key );
+					$this->p->notice->err( $notice_msg, $user_id, $notice_key );
 
 					return;	// Stop here.
 				}
@@ -2845,7 +2852,7 @@ EOF;
 
 					$notice_key = 'notice-wp-config-home-url-ip-address';
 
-					$this->p->notice->warn( $notice_msg, null, $notice_key );
+					$this->p->notice->warn( $notice_msg, $user_id, $notice_key );
 
 					return;	// Stop here.
 				}
