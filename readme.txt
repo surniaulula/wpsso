@@ -331,7 +331,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.19.3-rc.2 (2021/01/15)**
+**Version 8.19.3 (2021/01/16)**
 
 * **New Features**
 	* None.
@@ -970,9 +970,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.19.3-rc.2 =
+= 8.19.3 =
 
-(2021/01/15) Updated the jQuery event to update toolbar notices.
+(2021/01/16) Updated the jQuery event to update toolbar notices.
 
 = 8.19.2 =
 
