@@ -56,7 +56,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 					 */
 					if ( ! empty( $this->tb_notices ) ) {
 
-						add_action( 'admin_footer', array( $this, 'update_toolbar_on_load_script' ), 1000 );
+						add_action( 'admin_head', array( $this, 'update_toolbar_on_load_script' ) );
 					}
 				}
 			}
