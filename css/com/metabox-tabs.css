@@ -200,6 +200,7 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	font-family:"WpssoIcons";
 	text-align:center;
 	margin:0 8px 0 0;
+	width:1.1em;
 }
 
 .sucom-tablink-icon.sucom-tablink-href_appmeta::before {		/* Mobile Apps tab. */
