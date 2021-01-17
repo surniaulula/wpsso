@@ -331,7 +331,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.19.4-rc.1 (2021/01/17)**
+**Version 8.19.4 (2021/01/17)**
 
 * **New Features**
 	* None.
@@ -984,7 +984,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.19.4-rc.1 =
+= 8.19.4 =
 
 (2021/01/17) Fixed relocation of toolbar notices in WooCommerce 4.9.0 product pages.
 
