@@ -331,6 +331,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.19.4-dev.1 (2021/01/16)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed relocation of toolbar notices in WooCommerce 4.9.0 product pages.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.0.
+	* WordPress v4.5.
+
 **Version 8.19.3 (2021/01/16)**
 
 * **New Features**
@@ -969,6 +983,10 @@ This release adds a new SSO &gt; Features Status page and integration module for
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.19.4-dev.1 =
+
+(2021/01/16) Fixed relocation of toolbar notices in WooCommerce 4.9.0 product pages.
 
 = 8.19.3 =
 
