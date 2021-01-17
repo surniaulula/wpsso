@@ -65,12 +65,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 */
 			'is_amp_endpoint',
 			'wp_using_ext_object_cache',
-			'wpsso_is_doing_ajax',
-			'wpsso_is_doing_autosave',
-			'wpsso_is_doing_cron',
-			'wpsso_is_doing_frontend',
-			'wpsso_is_doing_rest',
-			'wpsso_is_doing_block_editor',
 		);
 
 		private static $form_cache = array();

@@ -156,8 +156,14 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 				add_action( 'wp_ajax_' . $this->plugin_id . '_dismiss_notice', array( $this, 'ajax_dismiss_notice' ) );
 				add_action( 'wp_ajax_' . $this->plugin_id . '_get_notices_json', array( $this, 'ajax_get_notices_json' ) );
+
+				/**
+				 * The 'in_admin_header' action executes at the beginning of the content section in an admin page.
+				 */
 				add_action( 'in_admin_header', array( $this, 'admin_header_notices' ), $max_int );
+
 				add_action( 'admin_footer', array( $this, 'admin_footer_script' ) );
+
 				add_action( 'shutdown', array( $this, 'shutdown_notice_cache' ) );
 			}
 		}
@@ -650,9 +656,23 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			return false;
 		}
 
+		/**
+		 * Hooked to the 'in_admin_header' action.
+		 *
+		 * The 'in_admin_header' action executes at the beginning of the content section in an admin page.
+		 */
 		public function admin_header_notices() {
 
-			add_action( 'all_admin_notices', array( $this, 'show_admin_notices' ), -10 );
+			/**
+			 * 'network_admin_notices' prints network admin screen notices.
+			 *
+			 * 'user_admin_notices' prints user admin screen notices.
+			 *
+			 * 'admin_notices' prints admin screen notices.
+			 *
+			 * 'all_admin_notices' prints generic admin screen notices.
+			 */
+			add_action( 'all_admin_notices', array( $this, 'show_admin_notices' ), -1000 );
 		}
 
 		public function show_admin_notices() {
