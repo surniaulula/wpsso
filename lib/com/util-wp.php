@@ -879,6 +879,11 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			return defined( 'DOING_AJAX' ) ? DOING_AJAX : false;
 		}
 
+		public static function doing_autosave() {
+
+			return defined( 'DOING_AUTOSAVE' ) ? DOING_AUTOSAVE : false;
+		}
+
 		public static function doing_cron() {
 
 			if ( function_exists( 'wp_doing_cron' ) ) {	// Since WP v4.8.0.
@@ -1034,11 +1039,6 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			}
 
 			return $is_doing;
-		}
-
-		public static function doing_autosave() {
-
-			return defined( 'DOING_AUTOSAVE' ) ? DOING_AUTOSAVE : false;
 		}
 
 		public static function role_exists( $role ) {

@@ -144,7 +144,7 @@ function sucomBlockNotices( pluginId, cfgName ) {
 		action: cfg._ajax_actions[ 'get_notices_json' ],
 		context: 'block_editor',
 		_ajax_nonce: cfg._ajax_nonce,
-		_exclude_types: cfg._tb_notices,	// Exclude the toolbar notice types.
+		_exclude_types: cfg._tb_types_showing,	// Exclude the toolbar notice types.
 	}
 
 	jQuery.getJSON( ajaxurl, ajaxData, function( data ) {
@@ -247,7 +247,7 @@ function sucomToolbarNotices( pluginId, cfgName ) {
 	/**
 	 * Just in case - no use getting notices if there's nothing to get.
 	 */
-	if ( ! cfg._tb_notices ) {
+	if ( ! cfg._tb_types_showing ) {
 
 		return;
 	}
@@ -260,7 +260,7 @@ function sucomToolbarNotices( pluginId, cfgName ) {
 		action: cfg._ajax_actions[ 'get_notices_json' ],
 		context: 'toolbar_notices',
 		_ajax_nonce: cfg._ajax_nonce,
-		_notice_types: cfg._tb_notices,
+		_notice_types: cfg._tb_types_showing,
 	}
 
 	jQuery.getJSON( ajaxurl, ajaxData, function( data ) {
@@ -309,6 +309,11 @@ function sucomToolbarNotices( pluginId, cfgName ) {
 		if ( noticeHtml ) {
 
 			noticeHtml = '<div style="display:none;" id="' + noticeTextId + '">' + noticeText + '</div>' + copyNoticesHtml + noticeHtml;
+
+			/**
+			 * Add an "inline" class to prevent WordPress from moving the notices.
+			 */
+			noticeHtml = noticeHtml.replaceAll( ' notice-alt ', ' notice-alt inline ' );
 
 			jQuery( subMenuId ).html( noticeHtml );
 

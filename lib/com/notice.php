@@ -25,9 +25,9 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		private $label_transl = false;
 		private $doing_dev    = false;
 		private $use_cache    = true;	// Read/save minimized CSS from/to transient cache.
-		private $tb_notices   = false;
-		private $has_shown    = false;
 		private $all_types    = array( 'nag', 'err', 'warn', 'inf', 'upd' );	// Sort by importance (most to least).
+		private $tb_types     = array( 'err', 'warn', 'inf' );
+		private $has_shown    = false;
 		private $notice_info  = array();
 		private $notice_cache = array();
 		private $cache_loaded = array();
@@ -134,47 +134,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$this->doing_dev = SucomUtil::get_const( $this->plugin_ucid . '_DEV' );
 
 			$this->use_cache = $this->doing_dev ? false : true;	// Read/save minimized CSS from/to transient cache.
-
-			/**
-			 * Set the notification system.
-			 */
-			$this->tb_notices = is_admin_bar_showing() ? true : false;
-
-			if ( defined( $this->plugin_ucid . '_TOOLBAR_NOTICES' ) ) {
-
-				if ( ! empty( $this->p->debug->enabled ) ) {
-
-					$this->p->debug->log( $this->plugin_ucid . '_TOOLBAR_NOTICES is defined' );
-				}
-
-				$this->tb_notices = constant( $this->plugin_ucid . '_TOOLBAR_NOTICES' );
-			}
-
-			if ( false === $this->tb_notices ) {
-
-				if ( ! empty( $this->p->debug->enabled ) ) {
-
-					$this->p->debug->log( 'tb_notices is false' );
-				}
-
-			} elseif ( true === $this->tb_notices ) {
-
-				if ( ! empty( $this->p->debug->enabled ) ) {
-
-					$this->p->debug->log( 'tb_notices is true' );
-				}
-
-				$this->tb_notices = array( 'err', 'warn', 'inf' );
-
-			} elseif ( ! is_array( $this->tb_notices ) ) {	// Empty string, null, etc.
-
-				if ( ! empty( $this->p->debug->enabled ) ) {
-
-					$this->p->debug->log( 'tb_notices is not an array' );
-				}
-
-				$this->tb_notices = false;
-			}
 		}
 
 		/**
@@ -191,11 +150,13 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$do_once = true;
 
+			$max_int = defined( 'PHP_INT_MAX' ) ? PHP_INT_MAX : 2147483647;	// Since PHP 5.0.2.
+
 			if ( is_admin() ) {
 
 				add_action( 'wp_ajax_' . $this->plugin_id . '_dismiss_notice', array( $this, 'ajax_dismiss_notice' ) );
 				add_action( 'wp_ajax_' . $this->plugin_id . '_get_notices_json', array( $this, 'ajax_get_notices_json' ) );
-				add_action( 'in_admin_header', array( $this, 'admin_header_notices' ), PHP_INT_MAX );
+				add_action( 'in_admin_header', array( $this, 'admin_header_notices' ), $max_int );
 				add_action( 'admin_footer', array( $this, 'admin_footer_script' ) );
 				add_action( 'shutdown', array( $this, 'shutdown_notice_cache' ) );
 			}
@@ -705,23 +666,18 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			/**
 			 * If toolbar notices are being used, exclude these from being shown.
-			 *
-			 * The default toolbar notices array is err, warn, and inf.
 			 */
-			if ( ! empty( $this->tb_notices ) && is_array( $this->tb_notices ) ) {
+			$tb_types_showing = $this->get_tb_types_showing();
 
-				if ( ! empty( $this->p->debug->enabled ) ) {
+			if ( ! empty( $tb_types_showing ) ) {
+			
+				if ( is_array( $tb_types_showing ) ) {
 
-					$this->p->debug->log_arr( 'tb_notices', $this->tb_notices );
-				}
+					$notice_types = array_diff( $notice_types, $tb_types_showing );
 
-				$notice_types = array_diff( $notice_types, $this->tb_notices );
+				} else {
 
-			} else {
-
-				if ( ! empty( $this->p->debug->enabled ) ) {
-
-					$this->p->debug->log( 'toolbar notices are disabled' );
+					$notice_types = array();
 				}
 			}
 
@@ -1082,9 +1038,12 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			die( $json_encoded );
 		}
 
-		public function get_notice_system() {
+		/**
+		 * Returns false or an array of notice types to include in the toolbar menu.
+		 */
+		public function get_tb_types_showing() {
 
-			return $this->tb_notices;
+			return is_admin_bar_showing() ? $this->tb_types : false;
 		}
 
 		/**

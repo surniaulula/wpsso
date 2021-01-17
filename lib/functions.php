@@ -353,3 +353,51 @@ if ( ! function_exists( 'wpsso_get_post_primary_category' ) ) {
 		return $wpsso->post->get_primary_term_id( $mod, $tax_slug );
 	}
 }
+
+if ( ! function_exists( 'wpsso_is_doing_ajax' ) ) {
+
+	function wpsso_is_doing_ajax() {
+
+		return SucomUtilWP::doing_ajax();
+	}
+}
+
+if ( ! function_exists( 'wpsso_is_doing_autosave' ) ) {
+
+	function wpsso_is_doing_autosave() {
+
+		return SucomUtilWP::doing_autosave();
+	}
+}
+
+if ( ! function_exists( 'wpsso_is_doing_cron' ) ) {
+
+	function wpsso_is_doing_cron() {
+
+		return SucomUtilWP::doing_cron();
+	}
+}
+
+if ( ! function_exists( 'wpsso_is_doing_frontend' ) ) {
+
+	function wpsso_is_doing_frontend() {
+
+		return SucomUtilWP::doing_frontend();
+	}
+}
+
+if ( ! function_exists( 'wpsso_is_doing_rest' ) ) {
+
+	function wpsso_is_doing_rest() {
+
+		return SucomUtilWP::doing_rest();
+	}
+}
+
+if ( ! function_exists( 'wpsso_is_doing_block_editor' ) ) {
+
+	function wpsso_is_doing_block_editor() {
+
+		return SucomUtilWP::doing_block_editor();
+	}
+}

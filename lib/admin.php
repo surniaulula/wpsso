@@ -150,9 +150,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				add_filter( 'wp_redirect', array( $this, 'profile_updated_redirect' ), -100, 2 );
 
 				/**
-				 * get_notice_system() can return true, false, or an array of notice types to include in the menu.
+				 * get_tb_types_showing() returns false or an array of notice types to include in the toolbar menu.
 				 */
-				if ( $this->p->notice->get_notice_system() ) {
+				if ( $this->p->notice->get_tb_types_showing() ) {
 
 					add_action( 'admin_bar_menu', array( $this, 'add_admin_tb_notices_menu_item' ), WPSSO_TB_NOTICE_MENU_ORDER );
 				}

@@ -41,7 +41,7 @@ if ( ! class_exists( 'SucomNoNotice' ) ) {
 		public function admin_footer_script() {}
 		public function ajax_dismiss_notice() { die( -1 ); }
 		public function ajax_get_notices_json() { die( -1 ); }
-		public function get_notice_system() { return false; }
+		public function get_tb_types_showing() { return false; }
 		public function shutdown_notice_cache() {}
 	}
 }

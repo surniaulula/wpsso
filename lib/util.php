@@ -31,6 +31,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		private $cache_size_opts   = array();	// Array for image size option prefix.
 
 		private $is_functions = array(
+			'is_admin',
 			'is_archive',
 			'is_attachment',
 			'is_author',
@@ -64,6 +65,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 */
 			'is_amp_endpoint',
 			'wp_using_ext_object_cache',
+			'wpsso_is_doing_ajax',
+			'wpsso_is_doing_autosave',
+			'wpsso_is_doing_cron',
+			'wpsso_is_doing_frontend',
+			'wpsso_is_doing_rest',
+			'wpsso_is_doing_block_editor',
 		);
 
 		private static $form_cache = array();

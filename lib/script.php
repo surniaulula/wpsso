@@ -24,7 +24,6 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 		private $doing_dev  = false;
 		private $file_ext   = 'min.js';
 		private $version    = '';
-		private $tb_notices = false;
 
 		public function __construct( &$plugin ) {
 
@@ -45,19 +44,11 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 				if ( is_admin() ) {
 
-					$this->tb_notices = $this->p->notice->get_notice_system();
-
 					add_action( 'enqueue_block_editor_assets', array( $this, 'enqueue_block_editor_assets' ), WPSSO_BLOCK_ASSETS_PRIORITY );
 
 					add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ), WPSSO_ADMIN_SCRIPTS_PRIORITY );
 
-					/**
-					 * Add jQuery to update the toolbar menu item on page load.
-					 */
-					if ( ! empty( $this->tb_notices ) ) {
-
-						add_action( 'admin_head', array( $this, 'update_toolbar_on_load_script' ) );
-					}
+					add_action( 'admin_head', array( $this, 'on_load_update_toolbar_script' ) );
 				}
 			}
 		}
@@ -215,11 +206,28 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 		 *
 		 * Hooked to the WordPress 'admin_footer' action.
 		 */
-		public function update_toolbar_on_load_script() {
+		public function on_load_update_toolbar_script() {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
+			}
+
+			$tb_types_showing = $this->p->notice->get_tb_types_showing();
+
+			/**
+			 * Just in case - no use getting notices if there's nothing to get.
+			 *
+			 * Example $tb_types_showing = array( 'err', 'warn', 'inf' ).
+			 */
+			if ( empty( $tb_types_showing ) || ! is_array( $tb_types_showing ) ) {
+
+				if ( ! empty( $this->p->debug->enabled ) ) {
+
+					$this->p->debug->log( 'exiting early: no toolbar notice types defined' );
+				}
+
+				return;
 			}
 
 			/**
@@ -235,21 +243,6 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				}
 
 				echo '<!-- ' . __METHOD__ . ' exiting early: block editor will update toolbar notices -->' . "\n\n";
-
-				return;
-			}
-
-			/**
-			 * Just in case - no use getting notices if there's nothing to get.
-			 *
-			 * Example $this->tb_notices = array( 'err', 'warn', 'inf' ).
-			 */
-			if ( empty( $this->tb_notices ) || ! is_array( $this->tb_notices ) ) {
-
-				if ( ! empty( $this->p->debug->enabled ) ) {
-
-					$this->p->debug->log( 'exiting early: no toolbar notice types defined' );
-				}
 
 				return;
 			}
@@ -393,6 +386,8 @@ EOF;
 
 			$option_labels = apply_filters( 'wpsso_admin_page_script_data_option_labels', $option_labels );
 
+			$tb_types_showing = $this->p->notice->get_tb_types_showing();
+
 			return array(
 				'_ajax_nonce'         => wp_create_nonce( WPSSO_NONCE_NAME ),
 				'_ajax_actions'       => array(
@@ -401,7 +396,7 @@ EOF;
 				),
 				'_option_labels'      => $option_labels,
 				'_mb_container_ids'   => $mb_container_ids,	// Metabox ids to update when block editor saves.
-				'_tb_notices'         => $this->tb_notices,	// Maybe null, true, false, or array.
+				'_tb_types_showing'   => $tb_types_showing,	// Maybe null, true, false, or array.
 				'_no_notices_html'    => $no_notices_html,
 				'_notice_text_id'     => $notice_text_id,	// CSS id of hidden notice text container.
 				'_copy_notices_html'  => $copy_notices_html,

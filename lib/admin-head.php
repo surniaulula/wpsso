@@ -39,6 +39,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 				add_action( 'admin_head', array( $this, 'update_count_notice' ), -200 );
 				add_action( 'admin_head', array( $this, 'requires_notices' ), -100 );
+				add_action( 'admin_head', array( $this->p->util, 'log_is_functions' ), 10 );
 				add_action( 'admin_head', array( $this, 'suggest_addons' ), 100 );
 				add_action( 'admin_head', array( $this, 'timed_notices' ), 200 );
 				add_action( 'admin_head', array( $this, 'robots_notice' ), 300 );
