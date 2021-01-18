@@ -378,7 +378,7 @@ EOF;
 
 			$notice_text_id      = 'wpsso_' . uniqid();	// CSS id of hidden notice text container.
 			$copy_notices_transl = __( 'Copy notifications to clipboard.', 'wpsso' );
-			$copy_notices_html   = '<div class="wpsso-notice notice notice-alt notice-copy">' .
+			$copy_notices_html   = '<div class="wpsso-notice notice notice-alt notice-copy" style="display:block !important;">' .
 				'<div class="notice-message">' .
 				'<a href="" onClick="return sucomCopyById( \'' . $notice_text_id . '\' );">' . $copy_notices_transl . '</a>' .
 				'</div><!-- .notice-message -->' .

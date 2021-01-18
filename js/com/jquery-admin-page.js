@@ -313,7 +313,7 @@ function sucomToolbarNotices( pluginId, cfgName ) {
 			/**
 			 * Add an "inline" class to prevent WordPress from moving the notices.
 			 */
-			noticeHtml = noticeHtml.replaceAll( ' notice-alt ', ' notice-alt inline ' );
+			noticeHtml = noticeHtml.replaceAll( pluginId + '-notice notice notice-alt ', '$&inline ' );
 
 			jQuery( subMenuId ).html( noticeHtml );
 
