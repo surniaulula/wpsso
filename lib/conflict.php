@@ -251,9 +251,9 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				 *
 				 * https://kb.wpbakery.com/docs/preface/release-notes/
 				 */
-				$wpb_vc_version_event_bug = '6.0.5';
+				$wpb_vc_version_event_bug = '6.1.0';
 
-				if ( version_compare( WPB_VC_VERSION, $wpb_vc_version_event_bug, '<=' ) ) {
+				if ( version_compare( WPB_VC_VERSION, $wpb_vc_version_event_bug, '<' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
