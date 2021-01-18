@@ -900,7 +900,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'url'             => 'product:url',
 				'name'            => 'product:title',
 				'description'     => 'product:description',
-				'category'        => 'product:category',
+				'category'        => 'product:category',		// See https://developers.facebook.com/docs/marketing-api/catalog/reference/.
 				'sku'             => 'product:retailer_part_no',	// Product SKU.
 				'mpn'             => 'product:mfr_part_no',		// Product MPN.
 				'gtin14'          => 'product:gtin14',			// Valid for both products and offers.

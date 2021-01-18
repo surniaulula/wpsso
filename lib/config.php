@@ -2783,8 +2783,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'profile'             => 'https://ogp.me/ns/profile#',
 					'website'             => 'https://ogp.me/ns/website#',
 				),
-				'og_type_mt' => array(						// See https://developers.facebook.com/docs/reference/opengraph/.
-					'article' => array(					// See https://developers.facebook.com/docs/reference/opengraph/object-type/article/.
+
+				/**
+				 * See https://developers.facebook.com/docs/reference/opengraph/.
+				 */
+				'og_type_mt' => array(
+
+					/**
+					 * See https://developers.facebook.com/docs/reference/opengraph/object-type/article/.
+					 */
+					'article' => array(
 						'article:author'          => '',		// An array of Facebook profile URLs or IDs of the authors for this article.
 						'article:publisher'       => '',		// A Facebook page URL or ID of the publishing entity.
 						'article:published_time'  => '',
@@ -2871,6 +2879,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'place:postal_code'        => '',
 						'place:country_name'       => '',
 					),
+
+					/**
+					 * See https://developers.facebook.com/docs/marketing-api/catalog/reference/.
+					 */
 					'product' => array(
 						'product:age_group'               => '',
 						'product:availability'            => 'product_avail',

@@ -237,6 +237,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = sprintf( __( 'A custom Google product type, which may be different than the %s option value.',
 								'wpsso' ), $option_link ) . ' ';
 
+							/**
+							 * See https://developers.facebook.com/docs/marketing-api/catalog/reference/.
+							 */
 							$text .= sprintf( __( 'Your selection will be used for Schema product markup and the %s meta tag.',
 								'wpsso' ), '<code>product:category</code>' ) . ' ';
 
@@ -544,7 +547,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = __( 'The Google product type that best describes the products on your site.', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( 'Your selection will be used by default for Schema product markup and the %s meta tag.', 'wpsso' ), '<code>product:category</code>' ) . ' ';
+							/**
+							 * See https://developers.facebook.com/docs/marketing-api/catalog/reference/.
+							 */
+							$text .= sprintf( __( 'Your selection will be used by default for Schema product markup and the %s meta tag.',
+								'wpsso' ), '<code>product:category</code>' ) . ' ';
 
 							$text .= __( 'Select "[None]" if you prefer to exclude the product type from Schema markup and meta tags by default (you can still select a custom product type when editing a product).', 'wpsso' );
 

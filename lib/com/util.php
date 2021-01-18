@@ -2061,7 +2061,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':age_group'                       => '',
 				$mt_pre . ':availability'                    => '',
 				$mt_pre . ':brand'                           => '',
-				$mt_pre . ':category'                        => '',	// Product category ID.
+				$mt_pre . ':category'                        => '',	// Product category ID. See https://developers.facebook.com/docs/marketing-api/catalog/reference/.
 				$mt_pre . ':color'                           => '',
 				$mt_pre . ':condition'                       => '',
 				$mt_pre . ':expiration_time'                 => '',
