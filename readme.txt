@@ -331,6 +331,23 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.20.0-dev.1 (2021/01/19)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new `WpssoComment` class.
+	* Added support for 'is_comment' in `WpssoUtil->get_type_url()`.
+	* Renamed `WpssoPost->get_og_type_reviews()` to `WpssoPost->get_mt_reviews()`.
+	* Moved `WpssoPost->get_og_comment_review()` to `WpssoWpMeta->get_mt_comment_review()`.
+* **Requires At Least**
+	* PHP v7.0.
+	* WordPress v4.5.
+
 **Version 8.19.4 (2021/01/17)**
 
 * **New Features**
@@ -983,6 +1000,10 @@ This release adds a new SSO &gt; Features Status page and integration module for
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.20.0-dev.1 =
+
+(2021/01/19) Added a new `WpssoComment` class.
 
 = 8.19.4 =
 
