@@ -1305,6 +1305,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 		/**
 		 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
+		 *
+		 * $size_name can also be false to ignore image IDs and only use image URLs.
 		 */
 		public function get_mt_opts_images( $opts, $size_names = null, $img_pre = 'og_img', $key_num = null, $mt_pre = 'og' ) {
 

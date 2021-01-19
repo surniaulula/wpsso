@@ -67,8 +67,18 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 
 			$class_metabox_tabs .= ' ' . $layout . ( $is_auto_draft ? ' auto-draft' : '' );
 
-			$metabox_html .= "\n" . '<script type="text/javascript">jQuery( document ).on( \'ready\', function() { ' . 
-				'sucomTabs(\'' . $metabox_id . '\', \'' . $default_tab . '\', \'' . $scroll_to . '\'); });</script>' . "\n";
+			$metabox_html .= "\n" . '<script type="text/javascript">';
+
+			/**
+			 * Use .ready() instead of .on( 'ready' ) or jQuery Migrate will complain that "HTML tags must be properly nested and closed".
+			 */
+			$metabox_html .= 'jQuery( document ).ready( function(){ ';
+
+			$metabox_html .= "sucomTabs( '$metabox_id', '$default_tab', '$scroll_to' );";
+
+			$metabox_html .= '});';
+			
+			$metabox_html .= '</script>' . "\n";
 
 			$metabox_html .= '<div class="' . $class_metabox_tabs . '">' . "\n";
 

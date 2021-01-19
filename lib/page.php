@@ -211,6 +211,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				switch ( get_class( $wp_obj ) ) {
 
+					case 'WP_Comment':
+
+						$mod[ 'name' ] = 'comment';
+
+						$mod[ 'id' ] = $wp_obj->ID;
+
+						break;
+
 					case 'WP_Post':
 
 						$mod[ 'name' ] = 'post';
@@ -312,6 +320,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			switch ( $mod[ 'name' ] ) {
 
+				case 'comment':
+
+					$mod = $this->p->comment->get_mod( $mod[ 'id' ] );
+
+					break;
+
 				case 'post':
 
 					$mod = $this->p->post->get_mod( $mod[ 'id' ] );
@@ -351,7 +365,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$mod[ 'use_post' ] = $use_post;
 
-			if ( empty( $mod[ 'name' ] ) ) {	// Not a post, term, or user object.
+			if ( empty( $mod[ 'name' ] ) ) {	// Not a comment, post, term, or user object.
 
 				if ( is_home() ) {
 

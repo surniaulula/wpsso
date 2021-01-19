@@ -252,16 +252,14 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			 *
 			 * jQuery( window ).on( 'load' ) executes when page is fully loaded, including all frames, objects and images.
 			 */
-			echo <<<EOF
-<script type="text/javascript">
+			?><script type="text/javascript">
 
-	jQuery( window ).on( 'load', function(){
+				jQuery( window ).on( 'load', function(){
 
-		sucomToolbarNotices( 'wpsso', 'sucomAdminPageL10n' );
-	});
+					sucomToolbarNotices( 'wpsso', 'sucomAdminPageL10n' );
+				});
 
-</script>
-EOF;
+			</script><?php
 		}
 
 		/**

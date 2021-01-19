@@ -1754,7 +1754,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		/**
 		 * Methods that return an associative array of Open Graph meta tags.
 		 */
-		public function get_og_type_reviews( $post_id, $og_type = 'product', $rating_meta = 'rating', $worst_rating = 1, $best_rating = 5 ) {
+		public function get_mt_reviews( $post_id, $mt_pre = 'product', $rating_meta = 'rating', $worst_rating = 1, $best_rating = 5 ) {
 
 			$reviews = array();
 
@@ -1766,8 +1766,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$comments = get_comments( array(
 				'post_id' => $post_id,
 				'status'  => 'approve',
-				'parent'  => 0,					// Parent ID of comment to retrieve children of (0 = don't get replies).
-				'order'   => 'DESC',				// Newest first.
+				'parent'  => 0,		// Parent ID of comment to retrieve children of (0 = don't get replies).
+				'order'   => 'DESC',	// Newest first.
 				'orderby' => 'date',
 				'number'  => WPSSO_SCHEMA_REVIEWS_MAX,
 			) );
@@ -1781,7 +1781,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				foreach( $comments as $num => $comment_obj ) {
 
-					$og_review = $this->get_og_comment_review( $comment_obj, $og_type, $rating_meta, $worst_rating, $best_rating );
+					$og_review = $this->get_mt_comment_review( $comment_obj, $mt_pre, $rating_meta, $worst_rating, $best_rating );
 
 					if ( ! empty( $og_review ) ) {	// Just in case.
 
@@ -1796,39 +1796,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			return $reviews;
-		}
-
-		public function get_og_comment_review( $comment_obj, $og_type = 'product', $rating_meta = 'rating', $worst_rating = 1, $best_rating = 5 ) {
-
-			$mt_ret = array();
-
-			$mt_ret[ $og_type . ':review:id' ]           = $comment_obj->comment_ID;
-			$mt_ret[ $og_type . ':review:url' ]          = get_comment_link( $comment_obj->comment_ID );
-			$mt_ret[ $og_type . ':review:title' ]        = '';
-			$mt_ret[ $og_type . ':review:content' ]      = get_comment_excerpt( $comment_obj->comment_ID );
-			$mt_ret[ $og_type . ':review:created_time' ] = mysql2date( 'c', $comment_obj->comment_date_gmt );
-
-			/**
-			 * Review author.
-			 */
-			$mt_ret[ $og_type . ':review:author:id' ]    = $comment_obj->user_id;		// Author ID if registered (0 otherwise).
-			$mt_ret[ $og_type . ':review:author:name' ]  = $comment_obj->comment_author;	// Author display name.
-
-			/**
-			 * Review rating.
-			 *
-			 * Rating values must be larger than 0 to include rating info.
-			 */
-			$rating_value = (float) get_comment_meta( $comment_obj->comment_ID, $rating_meta, true );
-
-			if ( $rating_value > 0 ) {
-
-				$mt_ret[ $og_type . ':review:rating:value' ] = $rating_value;
-				$mt_ret[ $og_type . ':review:rating:worst' ] = $worst_rating;
-				$mt_ret[ $og_type . ':review:rating:best' ]  = $best_rating;
-			}
-
-			return $mt_ret;
 		}
 
 		/**

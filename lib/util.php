@@ -2322,7 +2322,18 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				}
 			}
 
-			if ( $mod[ 'is_post' ] ) {
+			if ( $mod[ 'is_comment' ] ) {
+
+				if ( ! empty( $mod[ 'id' ] ) ) {	// Just in case.
+
+					$url = get_comment_link( $mod[ 'id' ] );
+
+					$url = $this->check_url_string( $url, 'comment link' );
+				}
+
+				$url = apply_filters( 'wpsso_comment_url', $url, $mod );
+
+			} elseif ( $mod[ 'is_post' ] ) {
 
 				if ( $mod[ 'is_post_type_archive' ] ) {
 
@@ -2401,7 +2412,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			} elseif ( $mod[ 'is_term' ] ) {
 
-				if ( ! empty( $mod[ 'id' ] ) ) {
+				if ( ! empty( $mod[ 'id' ] ) ) {	// Just in case.
 
 					if ( ! empty( $mod[ 'obj' ] ) ) {
 
@@ -2417,7 +2428,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					} else {
 
-						$url = $this->check_url_string( get_term_link( $mod[ 'id' ], $mod[ 'tax_slug' ] ), 'term link' );
+						$url = get_term_link( $mod[ 'id' ], $mod[ 'tax_slug' ] );
+
+						$url = $this->check_url_string( $url, 'term link' );
 					}
 				}
 
@@ -2425,7 +2438,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			} elseif ( $mod[ 'is_user' ] ) {
 
-				if ( ! empty( $mod[ 'id' ] ) ) {
+				if ( ! empty( $mod[ 'id' ] ) ) {	// Just in case.
 
 					if ( ! empty( $mod[ 'obj' ] ) ) {
 

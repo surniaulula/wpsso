@@ -15,7 +15,7 @@
  * Requires At Least: 4.5
  * Tested Up To: 5.6
  * WC Tested Up To: 4.9.0
- * Version: 8.19.4
+ * Version: 8.20.0-dev.1
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -42,6 +42,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $admin;		// WpssoAdmin (admin menus and settings page loader) class object.
 		public $cache;		// SucomCache (object and file caching) class object.
 		public $check;		// WpssoCheck class object.
+		public $comment;	// WpssoComment class object (extends WpssoWpMeta).
 		public $compat;		// WpssoCompat (3rd party plugin and theme compatibility actions and filters) class object.
 		public $conflict;	// WpssoConflict (admin plugin conflict checks) class object.
 		public $debug;		// SucomDebug or SucomNoDebug class object.
@@ -53,12 +54,12 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $notice;		// SucomNotice or SucomNoNotice class object.
 		public $opt;		// WpssoOptions class object.
 		public $page;		// WpssoPage (page title, desc, etc.) class object.
-		public $post;		// WpssoPost class object.
+		public $post;		// WpssoPost class object (extends WpssoWpMeta).
 		public $reg;		// WpssoRegister class object.
 		public $script;		// WpssoScript (admin jquery tooltips) class object.
 		public $style;		// WpssoStyle (admin styles) class object.
-		public $term;		// WpssoTerm class object.
-		public $user;		// WpssoUser class object.
+		public $term;		// WpssoTerm class object (extends WpssoWpMeta).
+		public $user;		// WpssoUser class object (extends WpssoWpMeta).
 		public $util;		// WpssoUtil (extends SucomUtil) class object.
 
 		/**
@@ -396,17 +397,19 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			/**
 			 * Setup resource classes:
 			 *
+			 *	$comment
 			 *	$media
 			 *	$page
 			 *	$post
 			 *	$term
 			 *	$user
 			 */
-			$this->media = new WpssoMedia( $this );
-			$this->page  = new WpssoPage( $this );
-			$this->post  = new WpssoPost( $this );			// Extends WpssoWpMeta.
-			$this->term  = new WpssoTerm( $this );			// Extends WpssoWpMeta.
-			$this->user  = new WpssoUser( $this );			// Extends WpssoWpMeta.
+			$this->comment = new WpssoComment( $this );		// Extends WpssoWpMeta.
+			$this->media   = new WpssoMedia( $this );
+			$this->page    = new WpssoPage( $this );
+			$this->post    = new WpssoPost( $this );		// Extends WpssoWpMeta.
+			$this->term    = new WpssoTerm( $this );		// Extends WpssoWpMeta.
+			$this->user    = new WpssoUser( $this );		// Extends WpssoWpMeta.
 
 			/**
 			 * Setup classe for meta tags and Schema markup:

@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.19.4',	// Plugin version.
+					'version'     => '8.20.0-dev.1',	// Plugin version.
 					'opt_version' => '774',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -4211,9 +4211,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			require_once WPSSO_PLUGINDIR . 'lib/util.php';		// Extends SucomUtil.
 
 			/**
-			 * Post, term, user modules.
+			 * Comment, post, term, user modules.
 			 */
 			require_once WPSSO_PLUGINDIR . 'lib/abstracts/wp-meta.php';
+			require_once WPSSO_PLUGINDIR . 'lib/comment.php';	// Extends WpssoWpMeta.
 			require_once WPSSO_PLUGINDIR . 'lib/post.php';		// Extends WpssoWpMeta.
 			require_once WPSSO_PLUGINDIR . 'lib/term.php';		// Extends WpssoWpMeta.
 			require_once WPSSO_PLUGINDIR . 'lib/user.php';		// Extends WpssoWpMeta.

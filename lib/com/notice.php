@@ -450,7 +450,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 					if ( ! empty( $refs[ 'mod' ][ 'id' ] ) && is_numeric( $refs[ 'mod' ][ 'id' ] ) ) {
 
-						if ( $refs[ 'mod' ][ 'is_post' ] ) {
+						if ( $refs[ 'mod' ][ 'is_comment' ] ) {
+
+							$link = get_edit_comment_link( $refs[ 'mod' ][ 'id' ] );
+
+						} elseif ( $refs[ 'mod' ][ 'is_post' ] ) {
 
 							$link = get_edit_post_link( $refs[ 'mod' ][ 'id' ], $display = false );
 
@@ -1056,6 +1060,14 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$json_encoded = SucomUtil::json_encode_array( $json_notices );
 
 			die( $json_encoded );
+		}
+
+		/**
+		 * Deprecated on 2021/01/19.
+		 */
+		public function get_notice_system() {
+
+			return $this->get_tb_types_showing();
 		}
 
 		/**
