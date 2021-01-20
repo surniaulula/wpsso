@@ -331,7 +331,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.20.0-dev.4 (2021/01/20)**
+**Version 8.20.0-b.1 (2021/01/20)**
 
 * **New Features**
 	* None.
@@ -342,9 +342,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Added a new `WpssoComment` class.
 	* Added support for 'is_comment' in `WpssoUtil->get_type_url()`.
+	* Added support for 'reviews-images' comment metadata in `WpssoWpMeta->get_mt_comment_review()`.
 	* Renamed `WpssoPost->get_og_type_reviews()` to `WpssoPost->get_mt_reviews()`.
 	* Moved `WpssoPost->get_og_comment_review()` to `WpssoWpMeta->get_mt_comment_review()`.
-	* Added support for 'reviews-images' comment metadata in `WpssoWpMeta->get_mt_comment_review()`.
 	* Changed `jQuery( document ).on( 'ready' )` event handlers to `jQuery()` for jQuery v3.0.
 * **Requires At Least**
 	* PHP v7.0.
@@ -1003,7 +1003,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.20.0-dev.4 =
+= 8.20.0-b.1 =
 
 (2021/01/20) Added support for images in WooCommerce product reviews (Premium version). Fixed jQuery "document ready" event incompatibility with the block editor.
 
