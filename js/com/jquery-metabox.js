@@ -354,12 +354,10 @@ function sucomClean( str ) {
 function sucomTabs( metabox, tab, scroll_to ) {
 
 	metabox = metabox ? metabox : '_default';
-
-	tab = tab ? tab : '_default';
+	tab     = tab ? tab : '_default';
 
 	var default_tab = 'sucom-tabset' + metabox + '-tab' + tab;
-
-	var hash = window.location.hash;
+	var hash        = window.location.hash;
 
 	if ( hash === '' ) {
 
@@ -375,12 +373,15 @@ function sucomTabs( metabox, tab, scroll_to ) {
 	}
 
 	jQuery( '.' + hash ).addClass( 'active' );
+
 	jQuery( '.' + hash + '-msg' ).addClass( 'active' );
 
 	jQuery( 'a.sucom-tablink' + metabox ).click( function(){
 
 		jQuery( '.sucom-metabox-tabs' + metabox + ' li' ).removeClass( 'active' );
+
 		jQuery( '.sucom-tabset' + metabox ).removeClass( 'active' );
+
 		jQuery( '.sucom-tabset' + metabox + '-msg' ).removeClass( 'active' );
 
 		/**
@@ -392,7 +393,9 @@ function sucomTabs( metabox, tab, scroll_to ) {
 		var href = jQuery( this ).attr( 'href' ).replace( '#', '' );
 
 		jQuery( '.' + href ).addClass( 'active' );
+
 		jQuery( '.' + href + '-msg' ).addClass( 'active' );
+
 		jQuery( this ).parent().addClass( 'active' );
 	});
 

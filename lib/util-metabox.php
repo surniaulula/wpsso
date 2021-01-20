@@ -45,12 +45,13 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 
 		public function get_tabbed( $metabox_id = '', $tabs = array(), $table_rows = array(), $args = array() ) {
 
+			$doing_ajax         = SucomUtilWP::doing_ajax();
 			$tab_keys           = array_keys( $tabs );
 			$default_tab        = '_' . reset( $tab_keys );		// Must start with an underscore.
 			$class_metabox_tabs = 'sucom-metabox-tabs';
 			$class_link         = 'sucom-tablink';
 			$class_tabset       = 'sucom-tabset';
-			$metabox_html       = '';
+			$metabox_html       = "\n";
 
 			if ( ! empty( $metabox_id ) ) {
 
@@ -67,21 +68,7 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 
 			$class_metabox_tabs .= ' ' . $layout . ( $is_auto_draft ? ' auto-draft' : '' );
 
-			$metabox_html .= "\n" . '<script type="text/javascript">';
-
-			/**
-			 * Use .ready() instead of .on( 'ready' ) or jQuery Migrate will complain that "HTML tags must be properly nested and closed".
-			 */
-			$metabox_html .= 'jQuery( document ).ready( function(){ ';
-
-			$metabox_html .= "sucomTabs( '$metabox_id', '$default_tab', '$scroll_to' );";
-
-			$metabox_html .= '});';
-			
-			$metabox_html .= '</script>' . "\n";
-
 			$metabox_html .= '<div class="' . $class_metabox_tabs . '">' . "\n";
-
 			$metabox_html .= '<ul class="' . $class_metabox_tabs . '">' . "\n";
 
 			/**
@@ -120,6 +107,12 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 			}
 
 			$metabox_html .= '</div><!-- .' . $class_metabox_tabs . ' -->' . "\n";
+
+			$metabox_html .= '<script type="text/javascript">';
+			$metabox_html .= $doing_ajax ? '' : 'jQuery( document ).on( \'ready\', function(){ ';
+			$metabox_html .= "sucomTabs( '$metabox_id', '$default_tab', '$scroll_to' );";
+			$metabox_html .= $doing_ajax ? '' : '});';
+			$metabox_html .= '</script>' . "\n";
 
 			return $metabox_html;
 		}
