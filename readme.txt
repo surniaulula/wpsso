@@ -338,7 +338,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* Added support for images in WooCommerce product reviews (Premium version).
 * **Bugfixes**
-	* Fixed jQuery document ready event incompatibility with the block editor.
+	* Fixed jQuery "document ready" event incompatibility with the block editor.
 * **Developer Notes**
 	* Added a new `WpssoComment` class.
 	* Added support for 'is_comment' in `WpssoUtil->get_type_url()`.
@@ -1005,7 +1005,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 = 8.20.0-dev.4 =
 
-(2021/01/20) Added support for images in WooCommerce product reviews (Premium version). Fixed jQuery document ready event incompatibility with the block editor.
+(2021/01/20) Added support for images in WooCommerce product reviews (Premium version). Fixed jQuery "document ready" event incompatibility with the block editor.
 
 = 8.19.4 =
 
