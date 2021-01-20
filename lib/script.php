@@ -248,7 +248,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			}
 
 			/**
-			 * jQuery( document ).on( 'ready' ) executes when HTML-Document is loaded and DOM is ready.
+			 * jQuery() or jQuery( document ).on( 'ready' ) executes when HTML-Document is loaded and DOM is ready.
 			 *
 			 * jQuery( window ).on( 'load' ) executes when page is fully loaded, including all frames, objects and images.
 			 */
@@ -278,9 +278,11 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 			/**
 			 * Fix the update / install button to load the href when clicked.
+			 *
+			 * jQuery() or jQuery( document ).on( 'ready' ) executes when HTML-Document is loaded and DOM is ready.
 			 */
 			$custom_script_js = <<<EOF
-jQuery( document ).on( 'ready', function(){
+jQuery( function(){
 
 	jQuery( 'body#plugin-information.iframe a[id$=_from_iframe]' ).on( 'click', function(){
 

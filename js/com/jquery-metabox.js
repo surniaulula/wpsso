@@ -1,8 +1,8 @@
 
-jQuery( document ).on( 'ready', function() {
+jQuery( function(){
 
 	sucomInitMetabox();
-} );
+});
 
 /**
  * Example: container_id = '#sucom_metabox_sso_inside'

@@ -7,7 +7,7 @@ var createElement      = wp.element.createElement;
 var RawHTML            = wp.element.RawHTML;
 var wasSavingContainer = false;
 
-wp.data.subscribe( function() {
+wp.data.subscribe( function(){
 
 	var pluginId          = 'wpsso';
 	var cfgName           = 'sucomAdminPageL10n';
@@ -26,7 +26,7 @@ wp.data.subscribe( function() {
 	wasSavingContainer = isSavingContainer;
 });
 
-jQuery( document ).on( 'ready', function() {
+jQuery( function(){
 
 	var pluginId = 'wpsso';
 	var cfgName  = 'sucomAdminPageL10n';

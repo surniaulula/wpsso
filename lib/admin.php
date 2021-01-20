@@ -1428,7 +1428,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			?><script type="text/javascript">
 
-				jQuery( document ).on( 'ready', function(){
+				jQuery( function(){
 
 					jQuery( '.if-js-closed' ).removeClass( 'if-js-closed' ).addClass( 'closed' );	// Postboxes that should be closed.
 
