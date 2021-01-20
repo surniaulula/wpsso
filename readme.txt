@@ -331,14 +331,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.20.0-dev.1 (2021/01/19)**
+**Version 8.20.0-dev.2 (2021/01/19)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* None.
+	* Fixed jQuery `on( 'ready' )` event incompatibility with the block editor.
 * **Developer Notes**
 	* Added a new `WpssoComment` class.
 	* Added support for 'is_comment' in `WpssoUtil->get_type_url()`.
@@ -1001,9 +1001,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.20.0-dev.1 =
+= 8.20.0-dev.2 =
 
-(2021/01/19) Added a new `WpssoComment` class.
+(2021/01/19) Fixed jQuery `on( 'ready' )` event incompatibility with the block editor.
 
 = 8.19.4 =
 
