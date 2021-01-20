@@ -577,7 +577,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return '';
 		}
 
-		public function get_image_size_names( $mixed = null ) {
+		public function get_image_size_names( $mixed = null, $sanitize = true ) {
 
 			$size_names = array_keys( $this->cache_size_labels );
 
@@ -587,7 +587,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			} elseif ( is_array( $mixed ) ) {
 
-				return array_intersect( $size_names, $mixed );	// Sanitize and return.
+				return $sanitize ? array_intersect( $size_names, $mixed ) : $mixed;	// Sanitize and return.
 
 			} elseif ( is_string( $mixed ) ) {
 
@@ -626,7 +626,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					default:
 
-						return array_intersect( $size_names, array( $mixed ) );
+						return $sanitize ? array_intersect( $size_names, array( $mixed ) ) : array( $mixed );
 				}
 			}
 
@@ -2796,7 +2796,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( ! is_array( $mixed ) ) {
 
-				$mixed = array( $mixed );
+				$mixed = $this->get_image_size_names( $mixed, $sanitize = false );	// Always returns an array.
 			}
 
 			$cleared = 0;

@@ -1270,7 +1270,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			return $mt_ret;
-
 		}
 
 		/**
