@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires PHP: 7.0
 Requires At Least: 4.5
 Tested Up To: 5.6
-WC Tested Up To: 4.9.0
+WC Tested Up To: 4.9.1
 Stable Tag: 8.19.4
 
 Present your content at its best on social sites and in search results, no matter how webpages are shared, re-shared, messaged, posted, embedded, or crawled.
@@ -331,19 +331,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.20.0-dev.2 (2021/01/19)**
+**Version 8.20.0-dev.3 (2021/01/20)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* Fixed jQuery `on( 'ready' )` event incompatibility with the block editor.
+	* Fixed jQuery document ready event incompatibility with the block editor.
 * **Developer Notes**
 	* Added a new `WpssoComment` class.
 	* Added support for 'is_comment' in `WpssoUtil->get_type_url()`.
 	* Renamed `WpssoPost->get_og_type_reviews()` to `WpssoPost->get_mt_reviews()`.
 	* Moved `WpssoPost->get_og_comment_review()` to `WpssoWpMeta->get_mt_comment_review()`.
+	* Changed `jQuery( document ).on( 'ready' )` event handlers to `jQuery()` for jQuery v3.0.
 * **Requires At Least**
 	* PHP v7.0.
 	* WordPress v4.5.
@@ -1001,9 +1002,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.20.0-dev.2 =
+= 8.20.0-dev.3 =
 
-(2021/01/19) Fixed jQuery `on( 'ready' )` event incompatibility with the block editor.
+(2021/01/20) Fixed jQuery document ready event incompatibility with the block editor.
 
 = 8.19.4 =
 
