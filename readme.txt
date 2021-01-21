@@ -331,7 +331,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.20.0-b.1 (2021/01/20)**
+**Version 8.20.0-rc.1 (2021/01/21)**
 
 * **New Features**
 	* None.
@@ -1003,9 +1003,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.20.0-b.1 =
+= 8.20.0-rc.1 =
 
-(2021/01/20) Added support for images in WooCommerce product reviews (Premium version). Fixed jQuery "document ready" event incompatibility with the block editor.
+(2021/01/21) Added support for images in WooCommerce product reviews (Premium version). Fixed jQuery "document ready" event incompatibility with the block editor.
 
 = 8.19.4 =
 
