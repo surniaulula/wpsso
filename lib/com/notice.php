@@ -694,7 +694,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			$tb_types_showing = $this->get_tb_types_showing();
 
 			if ( ! empty( $tb_types_showing ) ) {
-			
+
 				if ( is_array( $tb_types_showing ) ) {
 
 					$notice_types = array_diff( $notice_types, $tb_types_showing );
