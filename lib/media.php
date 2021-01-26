@@ -626,6 +626,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 								/**
 								 * Add correct image sizes for the image URL using getimagesize().
+								 *
+								 * Note that PHP v7.1 or better is required to get the image size of WebP images.
 								 */
 								$this->p->util->add_image_url_size( $mt_single_image );
 
@@ -1819,6 +1821,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 						/**
 						 * Add correct image sizes for the image URL using getimagesize().
+						 *
+						 * Note that PHP v7.1 or better is required to get the image size of WebP images.
 						 */
 						$this->p->util->add_image_url_size( $mt_single_video );
 

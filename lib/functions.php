@@ -16,14 +16,15 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 }
 
 /**
- * The wpsso_error_handler() function can be used for cases where errors need to be captured and sent to the toolbar notification
- * area. Example:
+ * The wpsso_error_handler() function can be used for cases where errors need to be captured and sent to the toolbar notification area.
  *
- * $previous_error_handler = set_error_handler( 'wpsso_error_handler' );
+ * Example:
  *
- * $image_size = getimagesize( $file_path );
+ *	$previous_error_handler = set_error_handler( 'wpsso_error_handler' );
  *
- * restore_error_handler();
+ *	$image_size = getimagesize( $file_path );
+ *
+ *	restore_error_handler();
  */
 if ( ! function_exists( 'wpsso_error_handler' ) ) {
 
@@ -182,28 +183,38 @@ if ( ! function_exists( 'wpsso_get_mod_og_image' ) ) {
 	}
 }
 
+if ( ! function_exists( 'wpsso_get_mod_og_image_url' ) ) {
+
+	function wpsso_get_mod_og_image_url( array $mod, $size_name = 'thumbnail' ) {
+
+		$mt_single_image = wpsso_get_mod_og_image( $mod, $size_name );
+
+		return SucomUtil::get_first_mt_media_url( $mt_single_image, $media_pre = 'og:image' );
+	}
+}
+
 /**
  * Returns a single dimension array or false on error. Example:
  *
- * Array (
- * 	[og:image:secure_url] =>
- *	[og:image:url]        => http://adm.surniaulula.com/wp-content/uploads/2013/03/captain-america-150x150.jpg
- *	[og:image:width]      => 150
- *	[og:image:height]     => 150
- *	[og:image:cropped]    => 1
- *	[og:image:id]         => 1261
- *	[og:image:alt]        => Captain America
- *	[og:image:size_name]  => wpsso-schema
- * )
+ *	Array (
+ *		[og:image:secure_url] =>
+ *		[og:image:url]        => http://adm.surniaulula.com/wp-content/uploads/2013/03/captain-america-150x150.jpg
+ *		[og:image:width]      => 150
+ *		[og:image:height]     => 150
+ *		[og:image:cropped]    => 1
+ *		[og:image:id]         => 1261
+ *		[og:image:alt]        => Captain America
+ *		[og:image:size_name]  => wpsso-schema
+ *	)
  *
  * An image URL may be located in the :secure_url or :url meta tags (or both).
  *
  * An easy way to get the image URL would be to use the get_first_mt_media_url() method. Example:
  *
- * if ( $og_image = wpsso_get_post_og_image( $post_id ) ) {	// Returns false or array.
+ *	if ( $og_image = wpsso_get_post_og_image( $post_id ) ) {	// Returns false or array.
  *
- * 	$image_url = SucomUtil::get_first_mt_media_url( $og_image );	// Returns a string.
- * }
+ * 		$image_url = SucomUtil::get_first_mt_media_url( $og_image );	// Returns a string.
+ *	}
  */
 if ( ! function_exists( 'wpsso_get_post_og_image' ) ) {
 
@@ -232,6 +243,45 @@ if ( ! function_exists( 'wpsso_get_user_og_image' ) ) {
 		$mod = wpsso_get_user_mod( $user_id );
 
 		return wpsso_get_mod_og_image( $mod, $size_name );
+	}
+}
+
+/**
+ * Returns an image URL or empty string.
+ */
+if ( ! function_exists( 'wpsso_get_post_og_image_url' ) ) {
+
+	function wpsso_get_post_og_image_url( $post_id, $size_name = 'thumbnail' ) {
+
+		$mod = wpsso_get_post_mod( $post_id );
+
+		return wpsso_get_mod_og_image_url( $mod, $size_name );
+	}
+}
+
+/**
+ * Returns an image URL or empty string.
+ */
+if ( ! function_exists( 'wpsso_get_term_og_image_url' ) ) {
+
+	function wpsso_get_term_og_image_url( $term_id, $size_name = 'thumbnail' ) {
+
+		$mod = wpsso_get_term_mod( $term_id );
+
+		return wpsso_get_mod_og_image_url( $mod, $size_name );
+	}
+}
+
+/**
+ * Returns an image URL or empty string.
+ */
+if ( ! function_exists( 'wpsso_get_user_og_image_url' ) ) {
+
+	function wpsso_get_user_og_image_url( $user_id, $size_name = 'thumbnail' ) {
+
+		$mod = wpsso_get_user_mod( $user_id );
+
+		return wpsso_get_mod_og_image_url( $mod, $size_name );
 	}
 }
 

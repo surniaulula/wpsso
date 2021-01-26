@@ -353,6 +353,8 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		 * If $exp_secs is null, then use the default expiration time.
 		 *
 		 * If $exp_secs is false, then get but do not save the data.
+		 *
+		 * Note that PHP v7.1 or better is required to get the image size of WebP images.
 		 */
 		public function get_image_size( $image_url, $exp_secs = 300, $curl_opts = array(), $error_handler = null ) {
 
@@ -372,7 +374,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						$previous_error_handler = set_error_handler( $error_handler );
 					}
 
-					$image_size = getimagesize( $file_path );
+					$image_size = getimagesize( $file_path );	// WebP supported since PHP v7.1.
 
 					if ( null !== $error_handler ) {
 

@@ -1964,7 +1964,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$short_url = apply_filters( 'wpsso_get_short_url', $sharing_url, $this->p->options[ 'plugin_shortener' ], $mod );
 
-			if ( filter_var( $short_url, FILTER_VALIDATE_URL ) === false ) {	// Invalid url.
+			if ( false === filter_var( $short_url, FILTER_VALIDATE_URL ) ) {	// Invalid url.
 
 				if ( $this->p->debug->enabled ) {
 

@@ -335,7 +335,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			$shortlink = wp_get_shortlink( $id, $context, $allow_slugs );	// Since WP v3.0.
 
-			if ( empty( $shortlink ) || ! is_string( $shortlink) || filter_var( $shortlink, FILTER_VALIDATE_URL ) === false ) {
+			if ( empty( $shortlink ) || ! is_string( $shortlink) || false === filter_var( $shortlink, FILTER_VALIDATE_URL ) ) {
 
 				$shortlink = self::raw_wp_get_shortlink( $id, $context, $allow_slugs );
 			}

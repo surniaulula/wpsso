@@ -1316,6 +1316,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			/**
 			 * Add correct image sizes for the image URL using getimagesize().
+			 *
+			 * Note that PHP v7.1 or better is required to get the image size of WebP images.
 			 */
 			$this->p->util->add_image_url_size( $opts, $img_url_keys );
 
@@ -1573,7 +1575,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 							$part = SucomUtil::decode_html( $part );	// Just in case.
 
-							if ( filter_var( $part, FILTER_VALIDATE_URL ) === false ) {
+							if ( false === filter_var( $part, FILTER_VALIDATE_URL ) ) {
 
 								$this->p->notice->err( sprintf( $errors_transl[ 'csv_urls' ], $opt_key ) );
 

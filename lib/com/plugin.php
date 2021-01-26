@@ -288,7 +288,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 
 			} elseif ( isset( $plugin_info->download_link ) ) {
 
-				if ( filter_var( $plugin_info->download_link, FILTER_VALIDATE_URL ) === false ) { // Just in case.
+				if ( false === filter_var( $plugin_info->download_link, FILTER_VALIDATE_URL ) ) { // Just in case.
 
 					$plugin_name = empty( $plugin_info->name ) ? $plugin_slug : $plugin_info->name;
 

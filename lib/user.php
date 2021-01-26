@@ -1435,7 +1435,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 						$website_url = get_the_author_meta( $meta_key, $user_id );
 
-						if ( filter_var( $website_url, FILTER_VALIDATE_URL ) === false ) {
+						if ( false === filter_var( $website_url, FILTER_VALIDATE_URL ) ) {
 
 							$website_url = 'https://twitter.com/' . preg_replace( '/^@/', '', $website_url );
 						}

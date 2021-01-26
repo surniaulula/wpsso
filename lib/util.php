@@ -1565,7 +1565,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				$request = false;	// Just in case.
 
-			} elseif ( filter_var( $request, FILTER_VALIDATE_URL ) === false ) {	// Request is an invalid url.
+			} elseif ( false === filter_var( $request, FILTER_VALIDATE_URL ) ) {	// Request is an invalid url.
 
 				if ( $this->p->debug->enabled ) {
 
