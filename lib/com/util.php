@@ -2233,7 +2233,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function get_first_mt_media_url( array $assoc, $media_pre = 'og:image', $mt_suffixes = null ) {
 
-			if ( ! is_array( $mt_suffixes ) ) {	// Array of meta tag extensions to use.
+			if ( ! is_array( $mt_suffixes ) ) {	// Array of meta tag suffixes to use.
 
 				$mt_suffixes = array( ':secure_url', ':url', '', ':embed_url' );
 			}
