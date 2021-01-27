@@ -166,6 +166,24 @@ if ( ! function_exists( 'wpsso_get_user_mod' ) ) {
 	}
 }
 
+/**
+ * Returns a single dimension array of image meta tags or false if no image is found.
+ * 
+ * Example:
+ *
+ *	Array (
+ *		[og:image:secure_url] =>
+ *		[og:image:url]        => http://adm.surniaulula.com/wp-content/uploads/2013/03/captain-america-150x150.jpg
+ *		[og:image:width]      => 150
+ *		[og:image:height]     => 150
+ *		[og:image:cropped]    => 1
+ *		[og:image:id]         => 1261
+ *		[og:image:alt]        => Captain America
+ *		[og:image:size_name]  => wpsso-schema
+ *	)
+ *
+ * You can use the SucomUtil::get_first_mt_media_url() method to get an image URL from the returned array.
+ */
 if ( ! function_exists( 'wpsso_get_mod_og_image' ) ) {
 
 	function wpsso_get_mod_og_image( array $mod, $size_name = 'thumbnail' ) {
@@ -183,38 +201,8 @@ if ( ! function_exists( 'wpsso_get_mod_og_image' ) ) {
 	}
 }
 
-if ( ! function_exists( 'wpsso_get_mod_og_image_url' ) ) {
-
-	function wpsso_get_mod_og_image_url( array $mod, $size_name = 'thumbnail' ) {
-
-		$mt_single_image = wpsso_get_mod_og_image( $mod, $size_name );
-
-		return SucomUtil::get_first_mt_media_url( $mt_single_image, $media_pre = 'og:image' );
-	}
-}
-
 /**
- * Returns a single dimension array or false on error. Example:
- *
- *	Array (
- *		[og:image:secure_url] =>
- *		[og:image:url]        => http://adm.surniaulula.com/wp-content/uploads/2013/03/captain-america-150x150.jpg
- *		[og:image:width]      => 150
- *		[og:image:height]     => 150
- *		[og:image:cropped]    => 1
- *		[og:image:id]         => 1261
- *		[og:image:alt]        => Captain America
- *		[og:image:size_name]  => wpsso-schema
- *	)
- *
- * An image URL may be located in the :secure_url or :url meta tags (or both).
- *
- * An easy way to get the image URL would be to use the get_first_mt_media_url() method. Example:
- *
- *	if ( $og_image = wpsso_get_post_og_image( $post_id ) ) {	// Returns false or array.
- *
- * 		$image_url = SucomUtil::get_first_mt_media_url( $og_image );	// Returns a string.
- *	}
+ * Returns a single dimension array of image meta tags or false if no image is found.
  */
 if ( ! function_exists( 'wpsso_get_post_og_image' ) ) {
 
@@ -226,6 +214,9 @@ if ( ! function_exists( 'wpsso_get_post_og_image' ) ) {
 	}
 }
 
+/**
+ * Returns a single dimension array of image meta tags or false if no image is found.
+ */
 if ( ! function_exists( 'wpsso_get_term_og_image' ) ) {
 
 	function wpsso_get_term_og_image( $term_id, $size_name = 'thumbnail' ) {
@@ -236,6 +227,9 @@ if ( ! function_exists( 'wpsso_get_term_og_image' ) ) {
 	}
 }
 
+/**
+ * Returns a single dimension array of image meta tags or false if no image is found.
+ */
 if ( ! function_exists( 'wpsso_get_user_og_image' ) ) {
 
 	function wpsso_get_user_og_image( $user_id, $size_name = 'thumbnail' ) {
@@ -247,7 +241,20 @@ if ( ! function_exists( 'wpsso_get_user_og_image' ) ) {
 }
 
 /**
- * Returns an image URL or empty string.
+ * Returns an image URL or an empty string.
+ */
+if ( ! function_exists( 'wpsso_get_mod_og_image_url' ) ) {
+
+	function wpsso_get_mod_og_image_url( array $mod, $size_name = 'thumbnail' ) {
+
+		$mt_single_image = wpsso_get_mod_og_image( $mod, $size_name );
+
+		return SucomUtil::get_first_mt_media_url( $mt_single_image, $media_pre = 'og:image' );
+	}
+}
+
+/**
+ * Returns an image URL or an empty string.
  */
 if ( ! function_exists( 'wpsso_get_post_og_image_url' ) ) {
 
@@ -260,7 +267,7 @@ if ( ! function_exists( 'wpsso_get_post_og_image_url' ) ) {
 }
 
 /**
- * Returns an image URL or empty string.
+ * Returns an image URL or an empty string.
  */
 if ( ! function_exists( 'wpsso_get_term_og_image_url' ) ) {
 
@@ -273,7 +280,7 @@ if ( ! function_exists( 'wpsso_get_term_og_image_url' ) ) {
 }
 
 /**
- * Returns an image URL or empty string.
+ * Returns an image URL or an empty string.
  */
 if ( ! function_exists( 'wpsso_get_user_og_image_url' ) ) {
 
@@ -384,11 +391,11 @@ if ( ! function_exists( 'wpsso_get_post_place_options' ) ) {
 	}
 }
 
+/**
+ * Returns a custom or default term ID, or false if a term for the $tax_slug is not found.
+ */
 if ( ! function_exists( 'wpsso_get_post_primary_category' ) ) {
 
-	/**
-	 * Returns a custom or default term ID, or false if a term for the $tax_slug is not found.
-	 */
 	function wpsso_get_post_primary_category( $post_id, $tax_slug = 'category' ) {
 
 		if ( empty( $post_id ) ) {	// Just in case.
