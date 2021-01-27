@@ -2271,6 +2271,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return ''; // Empty string.
 		}
 
+		public static function get_first_og_image_url( array $assoc ) {
+
+			return self::get_first_mt_media_url( $assoc, $media_pre = 'og:image', $mt_suffixes = array( ':secure_url', ':url', '' ) );
+		}
+
 		/**
 		 * Check for a local translated file name, and if found, return a file path and file URL to the translated version.
 		 */

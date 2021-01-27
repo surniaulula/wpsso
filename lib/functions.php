@@ -182,7 +182,7 @@ if ( ! function_exists( 'wpsso_get_user_mod' ) ) {
  *		[og:image:size_name]  => wpsso-schema
  *	)
  *
- * You can use the SucomUtil::get_first_mt_media_url() method to get an image URL from the returned array.
+ * You can use the SucomUtil::get_first_og_image_url() method to get an image URL from the returned array.
  */
 if ( ! function_exists( 'wpsso_get_mod_og_image' ) ) {
 
@@ -249,7 +249,7 @@ if ( ! function_exists( 'wpsso_get_mod_og_image_url' ) ) {
 
 		$mt_single_image = wpsso_get_mod_og_image( $mod, $size_name );
 
-		return SucomUtil::get_first_mt_media_url( $mt_single_image, $media_pre = 'og:image' );
+		return SucomUtil::get_first_og_image_url( $mt_single_image );
 	}
 }
 
