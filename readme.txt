@@ -345,6 +345,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* `wpsso_get_post_og_image_url()`
 		* `wpsso_get_term_og_image_url()`
 		* `wpsso_get_user_og_image_url()`
+	* Removed the 'wpsso_version_updates' action.
 * **Requires At Least**
 	* PHP v7.0.
 	* WordPress v4.5.
@@ -1023,7 +1024,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 = 8.20.1-dev.1 =
 
-(2021/01/27) Added new functions to retrieve Open Graph image URLs.
+(2021/01/27) Added new functions to retrieve Open Graph image URLs. Removed the 'wpsso_version_updates' action.
 
 = 8.20.0 =
 
