@@ -1192,18 +1192,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			/**
 			 * Save plugin version and option version.
 			 */
-			$ext_updates = array();
-
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
 				if ( isset( $info[ 'version' ] ) ) {
 
 					$version_key = 'plugin_' . $ext . '_version';
-
-					if ( ! isset( $opts[ $version_key ] ) || $opts[ $version_key ] !== $info[ 'version' ] ) {
-
-						$ext_updates[] = $ext;
-					}
 
 					$opts[ $version_key ] = $info[ 'version' ];
 				}
@@ -1245,14 +1238,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				if ( $saved = update_option( $options_name, $opts ) ) {		// Auto-creates options with autoload yes.
 
 					$this->p->options = $opts;				// Update the current plugin options array.
-				}
-
-				/**
-				 * Example $ext_updates = array( 'wpssoum' ).
-				 */
-				if ( ! empty( $ext_updates ) ) {
-
-					do_action( 'wpsso_version_updates', $ext_updates );
 				}
 			}
 
