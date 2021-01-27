@@ -331,6 +331,24 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.20.1-dev.1 (2021/01/27)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added new functions to retrieve Open Graph image URLs:
+		* `wpsso_get_mod_og_image_url()`
+		* `wpsso_get_post_og_image_url()`
+		* `wpsso_get_term_og_image_url()`
+		* `wpsso_get_user_og_image_url()`
+* **Requires At Least**
+	* PHP v7.0.
+	* WordPress v4.5.
+
 **Version 8.20.0 (2021/01/21)**
 
 * **New Features**
@@ -1002,6 +1020,10 @@ This release adds a new SSO &gt; Features Status page and integration module for
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.20.1-dev.1 =
+
+(2021/01/27) Added new functions to retrieve Open Graph image URLs.
 
 = 8.20.0 =
 
