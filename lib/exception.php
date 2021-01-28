@@ -15,56 +15,18 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 	die( 'Do. Or do not. There is no try.' );
 }
 
+if ( ! class_exists( 'SucomErrorException' ) ) {
+
+	require_once WPSSO_PLUGINDIR . 'lib/com/exception.php';
+}
+
 if ( ! class_exists( 'WpssoErrorException' ) ) {
 
-	class WpssoErrorException extends ErrorException {
+	class WpssoErrorException extends SucomErrorException {
 
 		protected $p;
 
-		protected $http_result_codes = array(
-			100 => 'Continue',
-			101 => 'Switching Protocols',
-			200 => 'OK',
-			201 => 'Created',
-			202 => 'Accepted',
-			203 => 'Non-Authoritative Information',
-			204 => 'No Content',
-			205 => 'Reset Content',
-			206 => 'Partial Content',
-			300 => 'Multiple Choices',
-			301 => 'Moved Permanently',
-			302 => 'Found',
-			303 => 'See Other',
-			304 => 'Not Modified',
-			305 => 'Use Proxy',
-			306 => '(Unused)',
-			307 => 'Temporary Redirect',
-			400 => 'Bad Request',
-			401 => 'Unauthorized',
-			402 => 'Payment Required',
-			403 => 'Forbidden',
-			404 => 'Not Found',
-			405 => 'Method Not Allowed',
-			406 => 'Not Acceptable',
-			407 => 'Proxy Authentication Required',
-			408 => 'Request Timeout',
-			409 => 'Conflict',
-			411 => 'Length Required',
-			412 => 'Precondition Failed',
-			413 => 'Request Entity Too Large',
-			414 => 'Request-URI Too Long',
-			415 => 'Unsupported Media Type',
-			416 => 'Requested Range Not Satisfiable',
-			417 => 'Expectation Failed',
-			500 => 'Internal Server Error',
-			501 => 'Not Implemented',
-			502 => 'Bad Gateway',
-			503 => 'Service Unavailable',
-			504 => 'Gateway Timeout',
-			505 => 'HTTP Version Not Supported'
-		);
-
-		public function __construct( $errstr = '', $errno = 0, $severity = E_ERROR, $filename = __FILE__, $lineno = __LINE__, Exception $previous = null ) {
+		public function __construct( $errstr = '', $errcode = null, $severity = E_ERROR, $filename = __FILE__, $lineno = __LINE__, Exception $previous = null ) {
 
 			$this->p =& Wpsso::get_instance();
 
@@ -73,12 +35,7 @@ if ( ! class_exists( 'WpssoErrorException' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( isset( $this->http_result_codes[ (int) $errno ] ) ) {
-
-				$errstr .= ' HTTP ' . $errno . ' ' . $this->http_result_codes[ (int) $errno ] . '.';
-			}
-
-			parent::__construct( trim( $errstr ), $errno, $severity, $filename, $lineno, $previous );
+			parent::__construct( $errstr, $errcode, $severity, $filename, $lineno, $previous );	// Calls SucomErrorException::__construct().
 		}
 
 		public function errorMessage( $ret = false ) {

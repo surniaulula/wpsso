@@ -37,7 +37,7 @@ if ( ! function_exists( 'wpsso_error_handler' ) ) {
 
 		try {
 
-			throw new WpssoErrorException( $errstr, $errno = 0, $severity, $filename, $lineno );
+			throw new WpssoErrorException( $errstr, $errcode = null, $severity, $filename, $lineno );
 
 		} catch ( WpssoErrorException $e ) {
 

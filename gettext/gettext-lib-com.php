@@ -9,6 +9,7 @@ __( 'Error retrieving %1$s for caching (HTTP code %2$d after %3$.03f seconds).',
 __( 'Error retrieving %1$s for caching (HTTP code %2$d).', 'wpsso' );
 __( 'Error retrieving %1$s for caching (after %2$.03f seconds).', 'wpsso' );
 __( 'Error retrieving %1$s for caching.', 'wpsso' );
+__( 'SSL verification failed (SSL verify code %1$d).', 'wpsso' );
 __( 'The PHP "%s" setting is enabled &mdash; the PHP cURL library cannot follow URL redirects.', 'wpsso' );
 __( 'The "%s" setting is deprecated since PHP version 5.3 and removed from PHP since version 5.4.', 'wpsso' );
 __( 'Please contact your hosting provider to have this setting disabled or install a newer version of PHP.', 'wpsso' );
