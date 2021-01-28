@@ -335,7 +335,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 					/**
 					 * U = Invert greediness of quantifiers, so they are NOT greedy by default, but become greedy if followed by ?.
-					 * u = Pattern and subject strings are treated as UTF-8.
+					 * u = Modifier to handle UTF-8 in subject strings.
 					 * m = The "^" and "$" constructs match newlines and the complete subject string.
 					 * s = A dot metacharacter in the pattern matches all characters, including newlines.
 					 */

@@ -306,7 +306,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 					foreach ( $all_matches[ 1 ] as $emoji ) {
 
-						$unpacked = unpack( 'H*', mb_convert_encoding( $emoji, 'UTF-32', 'UTF-8' ) );
+						$unpacked = unpack( 'H*', mb_convert_encoding( $emoji, $to_encoding = 'UTF-32', $from_encoding = 'UTF-8' ) );
 
 						if ( isset( $unpacked[ 1 ] ) ) {
 

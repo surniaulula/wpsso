@@ -3760,7 +3760,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		private static function replace_unicode_escape_callback( $match ) {
 
-			return mb_convert_encoding( pack( 'H*', $match[ 1 ] ), 'UTF-8', 'UCS-2' );
+			return mb_convert_encoding( pack( 'H*', $match[ 1 ] ), $to_encoding = 'UTF-8', $from_encoding = 'UCS-2' );
 		}
 
 		public static function json_encode_array( array $data, $options = 0, $depth = 32 ) {
@@ -3794,20 +3794,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( function_exists( 'mb_convert_encoding' ) ) {	// Just in case.
 
-				$html = mb_convert_encoding( $html, 'HTML-ENTITIES', 'UTF-8' );	// Convert to UTF8.
+				$html = mb_convert_encoding( $html, $to_encoding = 'HTML-ENTITIES', $from_encoding = 'UTF-8' );
 			}
 
 			/**
 			 * Remove containers that should not include json scripts.
 			 *
 			 * U = Invert greediness of quantifiers, so they are NOT greedy by default, but become greedy if followed by ?.
-			 * u = Pattern and subject strings are treated as UTF-8.
 			 * m = The "^" and "$" constructs match newlines and the complete subject string.
 			 * s = A dot metacharacter in the pattern matches all characters, including newlines.
 			 */
-			$html = preg_replace( '/<!--.*-->/Uums', '', $html );
-			$html = preg_replace( '/<pre[ >].*<\/pre>/Uiums', '', $html );
-			$html = preg_replace( '/<textarea[ >].*<\/textarea>/Uiums', '', $html );
+			$html = preg_replace( '/<!--.*-->/Ums', '', $html );
+			$html = preg_replace( '/<pre[ >].*<\/pre>/Uims', '', $html );
+			$html = preg_replace( '/<textarea[ >].*<\/textarea>/Uims', '', $html );
 
 			$json_data = array();
 

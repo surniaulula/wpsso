@@ -1421,9 +1421,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					break;
 
-				case 'html':		// Leave html, css, and javascript code blocks as-is.
-				case 'code':		// Code values cannot be blank.
-				case 'preg':
+				case 'html':	// Leave html, css, and javascript code blocks as-is.
+				case 'code':	// Code values cannot be blank.
+				case 'preg':	// A regular expression.
 
 					$opt_val = preg_replace( '/[\r]+/', '', $opt_val );
 
@@ -1583,7 +1583,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				case 'desc':
 				case 'one_line':
-				case 'preg':
+				case 'preg':	// A regular expression.
 
 					if ( '' !== $opt_val ) {
 
