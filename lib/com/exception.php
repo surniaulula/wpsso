@@ -61,7 +61,7 @@ if ( ! class_exists( 'SucomErrorException' ) ) {
 				504 => 'Gateway Timeout',
 				505 => 'HTTP Version Not Supported'
 			),
-	
+
 			/**
 			 * CURLINFO_SSL_VERIFYRESULT.
 			 */
