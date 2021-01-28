@@ -331,7 +331,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.20.1-dev.2 (2021/01/27)**
+**Version 8.20.1-dev.3 (2021/01/28)**
 
 * **New Features**
 	* None.
@@ -345,6 +345,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* `wpsso_get_post_og_image_url()`
 		* `wpsso_get_term_og_image_url()`
 		* `wpsso_get_user_og_image_url()`
+	* Added a new `SucomErrorException` class.
+	* Refactored the `WpssoErrorException` class.
+	* Refactored the URL shortening classes to translate error messages (Premium version).
 	* Removed the 'wpsso_version_updates' action.
 * **Requires At Least**
 	* PHP v7.0.
@@ -1022,9 +1025,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.20.1-dev.2 =
+= 8.20.1-dev.3 =
 
-(2021/01/27) Added new functions to retrieve Open Graph image URLs. Removed the 'wpsso_version_updates' action.
+(2021/01/28) Added new functions to retrieve Open Graph image URLs. Removed the 'wpsso_version_updates' action.
 
 = 8.20.0 =
 
