@@ -251,7 +251,7 @@ __( 'Group name "%s" not found in the Bitly groups.', 'wpsso' );
 __( 'Bitly shortener API error: %s', 'wpsso' );
 __( 'Groups missing from the Bitly API request.', 'wpsso' );
 __( 'Bitly shortener API error: %s', 'wpsso' );
-__( 'Returned link value is empty.', 'wpsso' );
+__( 'Link property value is empty.', 'wpsso' );
 __( 'Bitly shortener API error: %s', 'wpsso' );
 __( 'Bitly shortener API error: %s', 'wpsso' );
 __( 'Bitly shortener API error: %s', 'wpsso' );
