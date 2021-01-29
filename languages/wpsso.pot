@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.21.0-b.2\n"
+"Project-Id-Version: WPSSO Core 8.21.0-b.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -648,92 +648,91 @@ msgstr ""
 msgid "Notice"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:8 lib/com/cache.php:181
-msgid ""
-"Error retrieving %1$s for caching (HTTP code %2$d after %3$.03f seconds)."
-msgstr ""
-
-#: gettext/gettext-lib-com.php:9 lib/com/cache.php:186
-msgid "Error retrieving %1$s for caching (HTTP code %2$d)."
-msgstr ""
-
-#: gettext/gettext-lib-com.php:10 lib/com/cache.php:194
+#: gettext/gettext-lib-com.php:8 lib/com/cache.php:179
 msgid "Error retrieving %1$s for caching (after %2$.03f seconds)."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:11 lib/com/cache.php:199
+#: gettext/gettext-lib-com.php:9 lib/com/cache.php:184
 msgid "Error retrieving %1$s for caching."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:12 lib/com/cache.php:206
-msgid "SSL verification failed (SSL verify code %1$d)."
+#: gettext/gettext-lib-com.php:10 lib/com/cache.php:190
+msgid "cURL error code %1$d %2$s."
+msgstr ""
+
+#: gettext/gettext-lib-com.php:11 lib/com/cache.php:195
+msgid "SSL verification failed code %1$d."
+msgstr ""
+
+#: gettext/gettext-lib-com.php:12 lib/com/cache.php:200
+msgid "HTTP connection returned code %1$d."
 msgstr ""
 
 #: gettext/gettext-lib-com.php:13 gettext/gettext-lib-com.php:16
-#: lib/com/cache.php:221 lib/com/cache.php:238
+#: lib/com/cache.php:215 lib/com/cache.php:232
 msgid ""
 "The PHP \"%s\" setting is enabled &mdash; the PHP cURL library cannot follow "
 "URL redirects."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:14 lib/com/cache.php:224
+#: gettext/gettext-lib-com.php:14 lib/com/cache.php:218
 msgid ""
 "The \"%s\" setting is deprecated since PHP version 5.3 and removed from PHP "
 "since version 5.4."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:15 lib/com/cache.php:227
+#: gettext/gettext-lib-com.php:15 lib/com/cache.php:221
 msgid ""
 "Please contact your hosting provider to have this setting disabled or "
 "install a newer version of PHP."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:17 lib/com/cache.php:241
+#: gettext/gettext-lib-com.php:17 lib/com/cache.php:235
 msgid "Please contact your hosting provider to have this setting disabled."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:18 lib/com/cache.php:246
+#: gettext/gettext-lib-com.php:18 lib/com/cache.php:240
 msgid "The maximum number of URL redirects (%d) may have been exceeded."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:19 lib/com/cache.php:251
+#: gettext/gettext-lib-com.php:19 lib/com/cache.php:245
 msgid ""
 "Additional requests to retrieve and cache this URL will be ignored for "
 "another %d second(s)."
 msgstr ""
 
 #: gettext/gettext-lib-com.php:20 gettext/gettext-lib-com.php:22
-#: lib/com/cache.php:452 lib/com/cache.php:625 lib/util-cache.php:244
+#: lib/com/cache.php:444 lib/com/cache.php:614 lib/util-cache.php:244
 msgid "Error removing cache file %s."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:21 lib/com/cache.php:515
+#: gettext/gettext-lib-com.php:21 lib/com/cache.php:504
 msgid ""
 "PHP cURL library missing &mdash; contact your hosting provider to have the "
 "cURL library installed."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:23 lib/com/cache.php:878
+#: gettext/gettext-lib-com.php:23 lib/com/cache.php:863
 msgid "Cache file %s is not readable."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:24 lib/com/cache.php:900
+#: gettext/gettext-lib-com.php:24 lib/com/cache.php:885
 msgid "Failed to open the cache file %s for reading."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:25 lib/com/cache.php:1006
+#: gettext/gettext-lib-com.php:25 lib/com/cache.php:991
 msgid "Failed to create the %s cache folder."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:26 lib/com/cache.php:1021
+#: gettext/gettext-lib-com.php:26 lib/com/cache.php:1006
 msgid "Cache folder %s is not writable."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:27 lib/com/cache.php:1036
+#: gettext/gettext-lib-com.php:27 lib/com/cache.php:1021
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:28 lib/com/cache.php:1066
+#: gettext/gettext-lib-com.php:28 lib/com/cache.php:1051
 msgid "Failed writing data to cache file %s."
 msgstr ""
 
@@ -3200,21 +3199,21 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:253 gettext/gettext-lib-pro.php:255
 #: gettext/gettext-lib-pro.php:256 gettext/gettext-lib-pro.php:257
 #: gettext/gettext-lib-pro.php:259 lib/pro/com/bitly.php:60
-#: lib/pro/com/bitly.php:68 lib/pro/com/bitly.php:110 lib/pro/com/bitly.php:168
-#: lib/pro/com/bitly.php:174 lib/pro/com/bitly.php:186
-#: lib/pro/ext/dlmyapp.php:54 lib/pro/ext/dlmyapp.php:60
-#: lib/pro/ext/dlmyapp.php:72 lib/pro/ext/owly.php:65 lib/pro/ext/owly.php:183
-#: lib/pro/ext/owly.php:189 lib/pro/ext/owly.php:201 lib/pro/ext/owly.php:207
-#: lib/pro/ext/tinyurl.php:137 lib/pro/ext/tinyurl.php:143
-#: lib/pro/ext/yourls.php:198 lib/pro/ext/yourls.php:204
-#: lib/pro/ext/yourls.php:216
+#: lib/pro/com/bitly.php:68 lib/pro/com/bitly.php:110 lib/pro/com/bitly.php:170
+#: lib/pro/com/bitly.php:176 lib/pro/com/bitly.php:188
+#: lib/pro/ext/dlmyapp.php:56 lib/pro/ext/dlmyapp.php:62
+#: lib/pro/ext/dlmyapp.php:74 lib/pro/ext/owly.php:65 lib/pro/ext/owly.php:185
+#: lib/pro/ext/owly.php:191 lib/pro/ext/owly.php:203 lib/pro/ext/owly.php:209
+#: lib/pro/ext/tinyurl.php:139 lib/pro/ext/tinyurl.php:145
+#: lib/pro/ext/yourls.php:200 lib/pro/ext/yourls.php:206
+#: lib/pro/ext/yourls.php:218
 msgid "%1$s shortener API error: %2$s"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:158 gettext/gettext-lib-pro.php:165
 #: gettext/gettext-lib-pro.php:169 gettext/gettext-lib-pro.php:258
-#: lib/pro/com/bitly.php:184 lib/pro/ext/dlmyapp.php:70
-#: lib/pro/ext/owly.php:199 lib/pro/ext/yourls.php:214
+#: lib/pro/com/bitly.php:186 lib/pro/ext/dlmyapp.php:72
+#: lib/pro/ext/owly.php:201 lib/pro/ext/yourls.php:216
 msgid "JSON response decode error (%d)."
 msgstr ""
 

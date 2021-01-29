@@ -151,7 +151,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'requests to retrieve and cache ' . $url_nofrag . ' are ignored for another ' . $time_left . ' second(s)' );
+						$this->p->debug->log( 'requests to retrieve and cache ' . $url_nofrag . ' ignored for another ' . $time_left . ' second(s)' );
 					}
 
 					return $time_left;
@@ -164,7 +164,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			return false;
 		}
 
-		public function add_ignored_url( $url_nofrag, $mtime_total = null, $http_code = 0, $ssl_verify = 0 ) {
+		public function add_ignored_url( $url_nofrag, $mtime_total = null, $curl_errnum = 0, $curl_errmsg = '', $ssl_verify = 0, $http_code = 0 ) {
 
 			$this->maybe_load_ignored_urls();
 
@@ -174,36 +174,30 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 				$errors = array();
 
-				if ( $http_code ) {
+				if ( $mtime_total ) {
 
-					if ( $mtime_total ) {
-
-						$errors[] = sprintf( __( 'Error retrieving %1$s for caching (HTTP code %2$d after %3$.03f seconds).',
-							$this->text_domain ), '<a href="' . $url_nofrag . '">' . $url_nofrag . '</a>', $http_code, $mtime_total );
-
-					} else {
-
-						$errors[] = sprintf( __( 'Error retrieving %1$s for caching (HTTP code %2$d).',
-							$this->text_domain ), '<a href="' . $url_nofrag . '">' . $url_nofrag . '</a>', $http_code );
-					}
+					$errors[] = sprintf( __( 'Error retrieving %1$s for caching (after %2$.03f seconds).',
+						$this->text_domain ), '<a href="' . $url_nofrag . '">' . $url_nofrag . '</a>', $mtime_total );
 
 				} else {
 
-					if ( $mtime_total ) {
+					$errors[] = sprintf( __( 'Error retrieving %1$s for caching.',
+						$this->text_domain ), '<a href="' . $url_nofrag . '">' . $url_nofrag . '</a>' );
+				}
 
-						$errors[] = sprintf( __( 'Error retrieving %1$s for caching (after %2$.03f seconds).',
-							$this->text_domain ), '<a href="' . $url_nofrag . '">' . $url_nofrag . '</a>', $mtime_total );
+				if ( $curl_errnum ) {
 
-					} else {
-
-						$errors[] = sprintf( __( 'Error retrieving %1$s for caching.',
-							$this->text_domain ), '<a href="' . $url_nofrag . '">' . $url_nofrag . '</a>' );
-					}
+					$errors[] = sprintf( __( 'cURL error code %1$d %2$s.', $this->text_domain ), $curl_errnum, $curl_errmsg );
 				}
 
 				if ( $ssl_verify ) {
 
-					$errors[] = sprintf( __( 'SSL verification failed (SSL verify code %1$d).', $this->text_domain ), $ssl_verify );
+					$errors[] = sprintf( __( 'SSL verification failed code %1$d.', $this->text_domain ), $ssl_verify );
+				}
+
+				if ( $http_code ) {
+
+					$errors[] = sprintf( __( 'HTTP connection returned code %1$d.', $this->text_domain ), $http_code );
 				}
 
 				if ( 301 === $http_code || 302 === $http_code ) {
@@ -259,9 +253,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'error connecting to ' . $url_nofrag . ' for caching (http code ' . $http_code . ')' );
-
-				$this->is_ignored_url( $url_nofrag );	// Returns false or time in seconds.
+				$this->p->debug->log( 'ignoring requests to retrieve and cache ' . $url_nofrag );
 			}
 		}
 
@@ -488,11 +480,8 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		 * If $exp_secs is null, then use the default expiration time.
 		 *
 		 * If $exp_secs is false, then get but do not save the data.
-		 *
-		 * If $http_success is empty, save the data regardless of the HTTP return code.
 		 */
-		public function get( $url, $format = 'url', $cache_type = 'file', $exp_secs = null, $cache_ext = '',
-			array $curl_opts = array(), array $http_success = array( 200 ) ) {
+		public function get( $url, $format = 'url', $cache_type = 'file', $exp_secs = null, $cache_ext = '', array $curl_opts = array() ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -744,23 +733,29 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			$mtime_start = microtime( $get_float = true );
 			$cache_data  = curl_exec( $ch );
 			$mtime_total = microtime( $get_float = true ) - $mtime_start;
-			$http_code   = (int) curl_getinfo( $ch, CURLINFO_HTTP_CODE );
-			$ssl_verify  = (int) curl_getinfo( $ch, CURLINFO_SSL_VERIFYRESULT );	// See https://www.php.net/manual/en/function.curl-getinfo.php.
 			$curl_errnum = curl_errno( $ch );
 			$curl_errmsg = curl_error( $ch );	// See https://curl.se/libcurl/c/libcurl-errors.html.
+			$ssl_verify  = (int) curl_getinfo( $ch, CURLINFO_SSL_VERIFYRESULT );	// See https://www.php.net/manual/en/function.curl-getinfo.php.
+			$http_code   = (int) curl_getinfo( $ch, CURLINFO_HTTP_CODE );
 
 			curl_close( $ch );
+
+			$http_success_codes = array( 200, 201 );
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'curl: execution time = ' . $mtime_total );
-				$this->p->debug->log( 'curl: http return code = ' . $http_code );
-				$this->p->debug->log( 'curl: ssl verify code = ' . $ssl_verify );
 				$this->p->debug->log( 'curl: error number = ' . $curl_errnum );
 				$this->p->debug->log( 'curl: error message = ' . $curl_errmsg );
+				$this->p->debug->log( 'curl: ssl verify code = ' . $ssl_verify );
+				$this->p->debug->log( 'curl: http return code = ' . $http_code );
 			}
 
-			if ( empty( $http_success ) || in_array( $http_code, $http_success ) ) {
+			if ( $curl_errnum || $ssl_verify || ! in_array( $http_code, $http_success_codes ) ) {
+
+				$this->add_ignored_url( $url_nofrag, $mtime_total, $curl_errnum, $curl_errmsg, $ssl_verify, $http_code );
+
+			} else {
 
 				$this->url_get_mtimes[ $url ] = $mtime_total;
 
@@ -801,17 +796,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						return $cache_file;
 
 						break;
-
-					default:
-
-						return $failure;	// Just in case.
-
-						break;
 				}
-
-			} else {
-
-				$this->add_ignored_url( $url_nofrag, $mtime_total, $http_code, $ssl_verify );
 			}
 
 			return $failure;
