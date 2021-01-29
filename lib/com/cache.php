@@ -745,7 +745,9 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			$cache_data  = curl_exec( $ch );
 			$mtime_total = microtime( $get_float = true ) - $mtime_start;
 			$http_code   = (int) curl_getinfo( $ch, CURLINFO_HTTP_CODE );
-			$ssl_verify  = curl_getinfo( $ch, CURLINFO_SSL_VERIFYRESULT );	// See https://www.php.net/manual/en/function.curl-getinfo.php.
+			$ssl_verify  = (int) curl_getinfo( $ch, CURLINFO_SSL_VERIFYRESULT );	// See https://www.php.net/manual/en/function.curl-getinfo.php.
+			$curl_errnum = curl_errno( $ch );
+			$curl_errmsg = curl_error( $ch );	// See https://curl.se/libcurl/c/libcurl-errors.html.
 
 			curl_close( $ch );
 
@@ -753,7 +755,9 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 				$this->p->debug->log( 'curl: execution time = ' . $mtime_total );
 				$this->p->debug->log( 'curl: http return code = ' . $http_code );
-				$this->p->debug->log( 'curl: ssl verify result = ' . $ssl_verify );
+				$this->p->debug->log( 'curl: ssl verify code = ' . $ssl_verify );
+				$this->p->debug->log( 'curl: error number = ' . $curl_errnum );
+				$this->p->debug->log( 'curl: error message = ' . $curl_errmsg );
 			}
 
 			if ( empty( $http_success ) || in_array( $http_code, $http_success ) ) {

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.21.0-b.1\n"
+"Project-Id-Version: WPSSO Core 8.21.0-b.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -713,27 +713,27 @@ msgid ""
 "cURL library installed."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:23 lib/com/cache.php:874
+#: gettext/gettext-lib-com.php:23 lib/com/cache.php:878
 msgid "Cache file %s is not readable."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:24 lib/com/cache.php:896
+#: gettext/gettext-lib-com.php:24 lib/com/cache.php:900
 msgid "Failed to open the cache file %s for reading."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:25 lib/com/cache.php:1002
+#: gettext/gettext-lib-com.php:25 lib/com/cache.php:1006
 msgid "Failed to create the %s cache folder."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:26 lib/com/cache.php:1017
+#: gettext/gettext-lib-com.php:26 lib/com/cache.php:1021
 msgid "Cache folder %s is not writable."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:27 lib/com/cache.php:1032
+#: gettext/gettext-lib-com.php:27 lib/com/cache.php:1036
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:28 lib/com/cache.php:1062
+#: gettext/gettext-lib-com.php:28 lib/com/cache.php:1066
 msgid "Failed writing data to cache file %s."
 msgstr ""
 
@@ -3186,46 +3186,36 @@ msgstr ""
 msgid "World"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:154 lib/pro/ext/owly.php:67
+#: gettext/gettext-lib-pro.php:154 lib/pro/ext/owly.php:63
 msgid "API key missing."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:155 gettext/gettext-lib-pro.php:157
-#: gettext/gettext-lib-pro.php:158 gettext/gettext-lib-pro.php:160
-#: lib/pro/ext/owly.php:69 lib/pro/ext/owly.php:187 lib/pro/ext/owly.php:199
-#: lib/pro/ext/owly.php:215
-msgid "Ow.ly shortener API error: %s"
-msgstr ""
-
-#: gettext/gettext-lib-pro.php:156 lib/pro/ext/owly.php:185
-msgid "Invalid response received."
-msgstr ""
-
-#: gettext/gettext-lib-pro.php:159 lib/pro/ext/owly.php:213
-msgid "Invalid request method."
-msgstr ""
-
-#: gettext/gettext-lib-pro.php:161 gettext/gettext-lib-pro.php:162
-#: lib/pro/ext/tinyurl.php:136 lib/pro/ext/tinyurl.php:142
-msgid "TinyURL shortener API error: %s"
-msgstr ""
-
-#: gettext/gettext-lib-pro.php:163 gettext/gettext-lib-pro.php:164
-#: gettext/gettext-lib-pro.php:166 lib/pro/ext/yourls.php:197
-#: lib/pro/ext/yourls.php:203 lib/pro/ext/yourls.php:215
-msgid "YOURLS shortener API error: %s"
-msgstr ""
-
-#: gettext/gettext-lib-pro.php:165 gettext/gettext-lib-pro.php:169
-#: gettext/gettext-lib-pro.php:258 lib/pro/com/bitly.php:183
-#: lib/pro/ext/dlmyapp.php:69 lib/pro/ext/yourls.php:213
-msgid "JSON response decode error (%d)."
-msgstr ""
-
+#: gettext/gettext-lib-pro.php:155 gettext/gettext-lib-pro.php:156
+#: gettext/gettext-lib-pro.php:157 gettext/gettext-lib-pro.php:159
+#: gettext/gettext-lib-pro.php:160 gettext/gettext-lib-pro.php:161
+#: gettext/gettext-lib-pro.php:162 gettext/gettext-lib-pro.php:163
+#: gettext/gettext-lib-pro.php:164 gettext/gettext-lib-pro.php:166
 #: gettext/gettext-lib-pro.php:167 gettext/gettext-lib-pro.php:168
-#: gettext/gettext-lib-pro.php:170 lib/pro/ext/dlmyapp.php:53
-#: lib/pro/ext/dlmyapp.php:59 lib/pro/ext/dlmyapp.php:71
-msgid "DLMY.App shortener API error: %s"
+#: gettext/gettext-lib-pro.php:170 gettext/gettext-lib-pro.php:251
+#: gettext/gettext-lib-pro.php:253 gettext/gettext-lib-pro.php:255
+#: gettext/gettext-lib-pro.php:256 gettext/gettext-lib-pro.php:257
+#: gettext/gettext-lib-pro.php:259 lib/pro/com/bitly.php:60
+#: lib/pro/com/bitly.php:68 lib/pro/com/bitly.php:110 lib/pro/com/bitly.php:168
+#: lib/pro/com/bitly.php:174 lib/pro/com/bitly.php:186
+#: lib/pro/ext/dlmyapp.php:54 lib/pro/ext/dlmyapp.php:60
+#: lib/pro/ext/dlmyapp.php:72 lib/pro/ext/owly.php:65 lib/pro/ext/owly.php:183
+#: lib/pro/ext/owly.php:189 lib/pro/ext/owly.php:201 lib/pro/ext/owly.php:207
+#: lib/pro/ext/tinyurl.php:137 lib/pro/ext/tinyurl.php:143
+#: lib/pro/ext/yourls.php:198 lib/pro/ext/yourls.php:204
+#: lib/pro/ext/yourls.php:216
+msgid "%1$s shortener API error: %2$s"
+msgstr ""
+
+#: gettext/gettext-lib-pro.php:158 gettext/gettext-lib-pro.php:165
+#: gettext/gettext-lib-pro.php:169 gettext/gettext-lib-pro.php:258
+#: lib/pro/com/bitly.php:184 lib/pro/ext/dlmyapp.php:70
+#: lib/pro/ext/owly.php:199 lib/pro/ext/yourls.php:214
+msgid "JSON response decode error (%d)."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:171 gettext/gettext-lib-pro.php:174
@@ -3507,15 +3497,6 @@ msgstr ""
 
 #: gettext/gettext-lib-pro.php:250 lib/pro/com/bitly.php:58
 msgid "Group name \"%s\" not found in the Bitly groups."
-msgstr ""
-
-#: gettext/gettext-lib-pro.php:251 gettext/gettext-lib-pro.php:253
-#: gettext/gettext-lib-pro.php:255 gettext/gettext-lib-pro.php:256
-#: gettext/gettext-lib-pro.php:257 gettext/gettext-lib-pro.php:259
-#: lib/pro/com/bitly.php:60 lib/pro/com/bitly.php:68 lib/pro/com/bitly.php:110
-#: lib/pro/com/bitly.php:167 lib/pro/com/bitly.php:173
-#: lib/pro/com/bitly.php:185
-msgid "Bitly shortener API error: %s"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:252 lib/pro/com/bitly.php:66
