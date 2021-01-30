@@ -331,7 +331,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.21.0-rc.1 (2021/01/30)**
+**Version 8.21.0 (2021/01/30)**
 
 * **New Features**
 	* None.
@@ -1026,7 +1026,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.21.0-rc.1 =
+= 8.21.0 =
 
 (2021/01/30) Added new functions to retrieve Open Graph image URLs. Refactored error handling and error messages in URL shortening classes (Premium version). Removed the 'wpsso_version_updates' action.
 
