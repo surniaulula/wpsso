@@ -192,7 +192,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 				if ( $ssl_verify ) {
 
-					$errors[] = sprintf( __( 'SSL verification failed code %1$d.', $this->text_domain ), $ssl_verify );
+					$errors[] = sprintf( __( 'SSL verification failed with code %1$d.', $this->text_domain ), $ssl_verify );
 				}
 
 				if ( $http_code ) {

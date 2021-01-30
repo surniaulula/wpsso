@@ -8,7 +8,7 @@ __( 'Notice', 'wpsso' );
 __( 'Error retrieving %1$s for caching (after %2$.03f seconds).', 'wpsso' );
 __( 'Error retrieving %1$s for caching.', 'wpsso' );
 __( 'cURL error code %1$d %2$s.', 'wpsso' );
-__( 'SSL verification failed code %1$d.', 'wpsso' );
+__( 'SSL verification failed with code %1$d.', 'wpsso' );
 __( 'HTTP connection returned code %1$d.', 'wpsso' );
 __( 'The PHP "%s" setting is enabled &mdash; the PHP cURL library cannot follow URL redirects.', 'wpsso' );
 __( 'The "%s" setting is deprecated since PHP version 5.3 and removed from PHP since version 5.4.', 'wpsso' );

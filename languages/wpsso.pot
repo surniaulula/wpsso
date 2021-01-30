@@ -661,7 +661,7 @@ msgid "cURL error code %1$d %2$s."
 msgstr ""
 
 #: gettext/gettext-lib-com.php:11 lib/com/cache.php:195
-msgid "SSL verification failed code %1$d."
+msgid "SSL verification failed with code %1$d."
 msgstr ""
 
 #: gettext/gettext-lib-com.php:12 lib/com/cache.php:200
@@ -3214,7 +3214,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:169 gettext/gettext-lib-pro.php:258
 #: lib/pro/com/bitly.php:186 lib/pro/ext/dlmyapp.php:72
 #: lib/pro/ext/owly.php:201 lib/pro/ext/yourls.php:216
-msgid "JSON response decode error (%d)."
+msgid "JSON response decode error code %d."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:171 gettext/gettext-lib-pro.php:174
@@ -3495,11 +3495,11 @@ msgid "[%s Location]"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:250 lib/pro/com/bitly.php:58
-msgid "Group name \"%s\" not found in the Bitly groups."
+msgid "Group name \"%s\" not found in the Bitly API response data."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:252 lib/pro/com/bitly.php:66
-msgid "Groups missing from the Bitly API request."
+msgid "Groups property missing from the Bitly API response data."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:254 lib/pro/com/bitly.php:108
