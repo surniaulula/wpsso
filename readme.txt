@@ -345,7 +345,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* `wpsso_get_post_og_image_url()`
 		* `wpsso_get_term_og_image_url()`
 		* `wpsso_get_user_og_image_url()`
-	* Added a new `SucomUtil->get_first_og_image_url()` method.
+	* Added a new `SucomUtil::get_first_og_image_url()` method.
 	* Refactored error handling and error messages in URL shortening classes (Premium version).
 	* Refactored the `WpssoErrorException` class and added a new `SucomErrorException` class.
 	* Refactored the `WpssoCache->add_ignored_url()` method to report cURL and SSL error messages.
