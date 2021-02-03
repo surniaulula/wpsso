@@ -46,7 +46,7 @@ WPSSO makes full use of all available caching methods &mdash; along with offerin
 
 &#x2605;&#x2605;&#x2605;&#x2605;&#x2605; &mdash; "Yoast on steroids! As an SEO marketer, I love using Yoast for my basic on-page SEO. But Yoast only allows you to enter basic Open Graph social settings. This plugin gives you SO many more options on completing the Open Graph for Facebook, Twitter cards, Pinterest etc. If you use WordPress, I totally recommend using this plugin to help with better rankings in the SERPS!" - [gregmontag](https://wordpress.org/support/topic/yoast-on-steroids/)
 
-<h3>WPSSO Core Features</h3>
+<h3>WPSSO Core Plugin Features</h3>
 
 Offers meta tag and Schema markup options for all WordPress pages:
 
