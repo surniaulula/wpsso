@@ -22,11 +22,11 @@ Present your content at its best on social sites and in search results, no matte
 
 **Present your content at its best on social sites and in search results, no matter how webpages are shared, re-shared, messaged, posted, embedded, or crawled:**
 
-WPSSO provides structured data for Facebook / Open Graph, Pinterest Rich Pins, Twitter Cards, Google Knowledge Graph, Google Rich Results (aka Rich Snippets, Structured Data), WhatsApp and Messaging Apps, Mobile Web Browsers, WordPress REST API, LinkedIn / oEmbed data and more &mdash; including markup for image SEO, video SEO, extensive e-Commerce product markup (for WooCommerce and others), mobile store apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing WordPress content, supported plugin data, and service API data.
+WPSSO provides meta tags and structured data markup for Facebook / Open Graph, Pinterest Rich Pins, Twitter Cards, Google Knowledge Graph, Google Rich Results (aka Rich Snippets, Structured Data), WhatsApp and Messaging Apps, Mobile Web Browsers, WordPress REST API, LinkedIn / oEmbed data and more &mdash; including markup for image SEO, video SEO, extensive e-Commerce product markup (for WooCommerce and others), mobile store apps, author profile / authorship, co-authors, publisher information, local business markup, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing WordPress content, supported plugin data, and service API data.
 
 **Reads your existing WordPress content, plugin data, and service API data:**
 
-There's no need to manually re-enter descriptions, titles, product information, and re-select images / videos like other meta tag, SEO, and Schema markup plugins. WPSSO can be used as your one and only *social and search optimization* plugin, and the Premium version can also be used with your favorite SEO plugin to improve your SEO plugin's meta tags and Schema markup (including All in One SEO Pack, Jetpack SEO Tools, Rank Math SEO, SEO Ultimate, SEOPress, The SEO Framework, WP Meta SEO, Yoast SEO, and more).
+There's no need to manually re-enter descriptions, titles, product information, and re-select images / videos like other meta tag, SEO, and Schema plugins. WPSSO can be used as your one and only *social and search optimization* plugin, or combine WPSSO Core with your favorite SEO plugin to improve your SEO plugin's meta tags and Schema markup (including All in One SEO Pack, Jetpack SEO Tools, Rank Math SEO, SEO Ultimate, SEOPress, The SEO Framework, WP Meta SEO, Yoast SEO, and more).
 
 **Customize the plugin settings for different languages:**
 
@@ -46,13 +46,13 @@ WPSSO makes full use of all available caching methods &mdash; along with offerin
 
 &#x2605;&#x2605;&#x2605;&#x2605;&#x2605; &mdash; "Yoast on steroids! As an SEO marketer, I love using Yoast for my basic on-page SEO. But Yoast only allows you to enter basic Open Graph social settings. This plugin gives you SO many more options on completing the Open Graph for Facebook, Twitter cards, Pinterest etc. If you use WordPress, I totally recommend using this plugin to help with better rankings in the SERPS!" - [gregmontag](https://wordpress.org/support/topic/yoast-on-steroids/)
 
-<h3>WPSSO Core Standard Features</h3>
+<h3>WPSSO Core Features</h3>
 
-* Complete and accurate meta tags for all social sites, search engines, web browser extensions, mail and messaging apps, and embedded object / iframe content.
+Complete and accurate meta tags for all social sites, search engines, web browser extensions, mail and messaging apps, and embedded object / iframe content.
 
-* Updates WordPress oEmbed data with the Open Graph title, description, and image for posts, pages, and custom post types.
+Updates WordPress oEmbed data with the Open Graph title, description, and image for posts, pages, and custom post types.
 
-* Provides WordPress image size settings for:
+Provides WordPress image size settings for:
 
 	* Open Graph (Facebook and oEmbed)
 	* Pinterest Pin It
@@ -63,11 +63,11 @@ WPSSO makes full use of all available caching methods &mdash; along with offerin
 	* Twitter Summary Card
 	* Twitter Large Image Summary Card
 
-* Includes additional Twitter article and product meta tags for Slack.
+Includes additional Twitter article and product meta tags for Slack.
 
-* Locates images from numerous sources, including featured, attached, gallery shortcode, content images, or a custom fallback image.
+Locates images from numerous sources, including featured, attached, gallery shortcode, content images, or a custom fallback image.
 
-* Offers meta tags and optional Schema markup for all webpages, including:
+Offers meta tags and optional Schema markup for all webpages, including:
 
 	* Home Page (static page or blog)
 	* Posts, Pages, and Custom Post Types
@@ -77,14 +77,12 @@ WPSSO makes full use of all available caching methods &mdash; along with offerin
 	* Search Result Pages
 	* Archive Pages
 
-* Customize values in the Document SSO metabox when editing posts, pages, custom post types, terms (categories and tags), custom post types, and user profiles.
-
-* Built-in compatibility with AMP plugins:
+Built-in compatibility with AMP plugins:
 
 	* [AMP](https://wordpress.org/plugins/amp/)
 	* [AMP for WP](https://wordpress.org/plugins/accelerated-mobile-pages/)
 
-* Built-in compatibility with optimization and caching plugins:
+Built-in compatibility with optimization and caching plugins:
 
 	* Autoptimize
 	* Cache Enabler
@@ -99,26 +97,26 @@ WPSSO makes full use of all available caching methods &mdash; along with offerin
 	* WP Rocket Cache
 	* WP Super Cache
 
-* Built-in compatibility checks for popular SEO plugins (\*\* additional integration features are also available in the Premium version):
+Built-in compatibility checks for popular SEO plugins:
 
-	* All in One SEO Pack \*\*
+	* All in One SEO Pack
 	* Jetpack SEO
-	* Rank Math SEO \*\*
+	* Rank Math SEO
 	* SEO Ultimate
-	* SEOPress \*\*
+	* SEOPress
 	* Slim SEO
 	* Squirrly SEO
-	* The SEO Framework \*\*
-	* WP Meta SEO \*\*
-	* Yoast SEO \*\*
+	* The SEO Framework
+	* WP Meta SEO
+	* Yoast SEO
 	* Yoast WooCommerce SEO
 
-* Built-in compatibility for advanced WordPress configurations:
+Built-in compatibility for advanced WordPress configurations:
 
 	* WordPress MU Domain Mapping
 	* Network / Multisite Installations
 
-* Includes advanced quality assurance features and options:
+Includes advanced quality assurance features and options:
 
 	* Checks and warns of any missing PHP modules.
 	* Checks 3rd party plugin settings for possible conflicts.
@@ -127,45 +125,19 @@ WPSSO makes full use of all available caching methods &mdash; along with offerin
 	* Validates theme header templates for correct HTML markup.
 	* Verifies webpage HTML for duplicate meta tags.
 
-* Contextual help for every plugin option and [comprehensive online documentation](https://wpsso.com/docs/plugins/wpsso/).
+Contextual help for every plugin option and [comprehensive online documentation](https://wpsso.com/docs/plugins/wpsso/).
 
-<h3>Free Complementary Add-ons</h3>
+[Premium] Detection of embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube in the content text.
 
-Do you need even more advanced, special and unique features?
+[Premium] Support for the Twitter [Player Card](https://dev.twitter.com/cards/types/player) for embedded videos.
 
-Simply activate the free complementary add-on(s) you require:
+[Premium] Optional upscaling of small images from the Media Library for social sharing and Schema markup.
 
-* [WPSSO FAQ Manager](https://wordpress.org/plugins/wpsso-faq/) to manage FAQ categories with Question and Answer pages.
-* [WPSSO Inherit Parent Metadata](https://wordpress.org/plugins/wpsso-inherit-parent-meta/) to inherit featured and custom images.
-* [WPSSO Mobile App Meta Tags](https://wordpress.org/plugins/wpsso-am/) to manage mobile App information.
-* [WPSSO Organization Markup](https://wordpress.org/plugins/wpsso-organization/) to manage multiple Organizations.
-* [WPSSO Place and Local SEO Markup](https://wordpress.org/plugins/wpsso-plm/) to manage multiple locations.
-* [WPSSO Product Metadata for WooCommerce](https://wordpress.org/plugins/wpsso-wc-metadata/) to add GTIN, GTIN-8, GTIN-12 (UPC), GTIN-13 (EAN), GTIN-14, ISBN, MPN, depth, and volume for WooCommerce products and variations.
-* [WPSSO Ratings and Reviews](https://wordpress.org/plugins/wpsso-ratings-and-reviews/) to add ratings in WordPress comments.
-* [WPSSO REST API](https://wordpress.org/plugins/wpsso-rest-api/) to add meta tags and Schema markup in REST API queries.
-* [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/) to add responsive share buttons.
-* [WPSSO Schema Breadcrumbs Markup](https://wordpress.org/plugins/wpsso-breadcrumbs/) to add Breadcrumbs markup for Google.
-* [WPSSO Schema JSON-LD Markup](https://wordpress.org/plugins/wpsso-schema-json-ld/) to provide Google with Schema markup in its preferred format.
-* [WPSSO Shipping Delivery Time for WooCommerce](https://wordpress.org/plugins/wpsso-wc-shipping-delivery-time/) to provide Google with shipping rates and delivery time estimates.
-* [WPSSO Strip Schema Microdata](https://wordpress.org/plugins/wpsso-strip-schema-microdata/) to strip incorrect markup from templates.
-* [WPSSO Tune WP Image Editors](https://wordpress.org/plugins/wpsso-tune-image-editors/) for better looking WordPress thumbnails.
-* [WPSSO User Locale Selector](https://wordpress.org/plugins/wpsso-user-locale/) to switch languages quickly and easily.
+[Premium] URL shortening with Bitly, DLMY.App, Google, Ow.ly, TinyURL, or YOURLS.
 
-<h3>WPSSO Core Premium Features</h3>
+[Premium] Complete Schema JSON-LD markup for WooCommerce products ([WPSSO JSON add-on required](https://wordpress.org/plugins/wpsso-schema-json-ld/)).
 
-The Standard version is designed to satisfy the requirements of most WordPress sites, but if your site would benefit from additional 3rd party plugin or service API integration, then you may consider getting the Premium version for those additional features.
-
-* Detection of embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube in the content text.
-
-* Support for the Twitter [Player Card](https://dev.twitter.com/cards/types/player) for embedded videos.
-
-* Optional upscaling of small images from the Media Library for social sharing and Schema markup.
-
-* URL shortening with Bitly, DLMY.App, Google, Ow.ly, TinyURL, or YOURLS.
-
-* Most complete Schema JSON-LD markup for WooCommerce products ([WPSSO JSON add-on required](https://wordpress.org/plugins/wpsso-schema-json-ld/)).
-
-* Integrates with 3rd party plugins and service APIs for additional image, video, e-Commerce product details, SEO settings, etc. The following modules are included with the Premium version, and are automatically loaded if/when the supported plugins and/or services are required.
+[Premium] Integrates with 3rd party plugins and service APIs for additional image, video, e-Commerce product details, SEO settings, etc. The following modules are included with the Premium version and automatically loaded if/when the supported plugins and/or services are required.
 
 	* **Integration with 3rd Party Plugins:** 
 
@@ -218,6 +190,28 @@ The Standard version is designed to satisfy the requirements of most WordPress s
 		* WordPress Video Shortcode (and Self-Hosted Videos)
 		* Your Own URL Shortener (YOURLS)
 		* YouTube Videos and Playlists
+
+<h3>Free Complementary Add-ons</h3>
+
+Do you need even more advanced, special and unique features?
+
+Simply activate the free complementary add-on(s) you require:
+
+* [WPSSO FAQ Manager](https://wordpress.org/plugins/wpsso-faq/) to manage FAQ categories with Question and Answer pages.
+* [WPSSO Inherit Parent Metadata](https://wordpress.org/plugins/wpsso-inherit-parent-meta/) to inherit featured and custom images.
+* [WPSSO Mobile App Meta Tags](https://wordpress.org/plugins/wpsso-am/) to manage mobile App information.
+* [WPSSO Organization Markup](https://wordpress.org/plugins/wpsso-organization/) to manage multiple Organizations.
+* [WPSSO Place and Local SEO Markup](https://wordpress.org/plugins/wpsso-plm/) to manage multiple locations.
+* [WPSSO Product Metadata for WooCommerce](https://wordpress.org/plugins/wpsso-wc-metadata/) to add GTIN, GTIN-8, GTIN-12 (UPC), GTIN-13 (EAN), GTIN-14, ISBN, MPN, depth, and volume for WooCommerce products and variations.
+* [WPSSO Ratings and Reviews](https://wordpress.org/plugins/wpsso-ratings-and-reviews/) to add ratings in WordPress comments.
+* [WPSSO REST API](https://wordpress.org/plugins/wpsso-rest-api/) to add meta tags and Schema markup in REST API queries.
+* [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/) to add responsive share buttons.
+* [WPSSO Schema Breadcrumbs Markup](https://wordpress.org/plugins/wpsso-breadcrumbs/) to add Breadcrumbs markup for Google.
+* [WPSSO Schema JSON-LD Markup](https://wordpress.org/plugins/wpsso-schema-json-ld/) to provide Google with Schema markup in its preferred format.
+* [WPSSO Shipping Delivery Time for WooCommerce](https://wordpress.org/plugins/wpsso-wc-shipping-delivery-time/) to provide Google with shipping rates and delivery time estimates.
+* [WPSSO Strip Schema Microdata](https://wordpress.org/plugins/wpsso-strip-schema-microdata/) to strip incorrect markup from templates.
+* [WPSSO Tune WP Image Editors](https://wordpress.org/plugins/wpsso-tune-image-editors/) for better looking WordPress thumbnails.
+* [WPSSO User Locale Selector](https://wordpress.org/plugins/wpsso-user-locale/) to switch languages quickly and easily.
 
 == Installation ==
 
