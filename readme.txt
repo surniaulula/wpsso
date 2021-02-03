@@ -54,14 +54,14 @@ Updates WordPress oEmbed data with the Open Graph title, description, and image 
 
 Provides WordPress image size settings for:
 
-	* Open Graph (Facebook and oEmbed)
-	* Pinterest Pin It
-	* Schema 1:1 (Google Rich Results)
-	* Schema 4:3 (Google Rich Results)
-	* Schema 16:9 (Google Rich Results)
-	* Schema Thumbnail Image
-	* Twitter Summary Card
-	* Twitter Large Image Summary Card
+* Open Graph (Facebook and oEmbed)
+* Pinterest Pin It
+* Schema 1:1 (Google Rich Results)
+* Schema 4:3 (Google Rich Results)
+* Schema 16:9 (Google Rich Results)
+* Schema Thumbnail Image
+* Twitter Summary Card
+* Twitter Large Image Summary Card
 
 Includes additional Twitter article and product meta tags for Slack.
 
@@ -69,61 +69,61 @@ Locates images from numerous sources, including featured, attached, gallery shor
 
 Offers meta tags and optional Schema markup for all webpages, including:
 
-	* Home Page (static page or blog)
-	* Posts, Pages, and Custom Post Types
-	* Categories, Tags, and Custom Taxonomy / Terms
-	* User Profile Pages
-	* Media Attachment Pages
-	* Search Result Pages
-	* Archive Pages
+* Home Page (static page or blog)
+* Posts, Pages, and Custom Post Types
+* Categories, Tags, and Custom Taxonomy / Terms
+* User Profile Pages
+* Media Attachment Pages
+* Search Result Pages
+* Archive Pages
 
 Built-in compatibility with AMP plugins:
 
-	* [AMP](https://wordpress.org/plugins/amp/)
-	* [AMP for WP](https://wordpress.org/plugins/accelerated-mobile-pages/)
+* [AMP](https://wordpress.org/plugins/amp/)
+* [AMP for WP](https://wordpress.org/plugins/accelerated-mobile-pages/)
 
 Built-in compatibility with optimization and caching plugins:
 
-	* Autoptimize
-	* Cache Enabler
-	* Comet Cache
-	* LiteSpeed Cache
-	* Hummingbird Cache
-	* Pagely, Siteground Optimizer
-	* Perfect Images + Retina
-	* W3 Total Cache (aka W3TC)
-	* WP Engine Cache
-	* WP Fastest Cache
-	* WP Rocket Cache
-	* WP Super Cache
+* Autoptimize
+* Cache Enabler
+* Comet Cache
+* LiteSpeed Cache
+* Hummingbird Cache
+* Pagely, Siteground Optimizer
+* Perfect Images + Retina
+* W3 Total Cache (aka W3TC)
+* WP Engine Cache
+* WP Fastest Cache
+* WP Rocket Cache
+* WP Super Cache
 
 Built-in compatibility checks for popular SEO plugins:
 
-	* All in One SEO Pack
-	* Jetpack SEO
-	* Rank Math SEO
-	* SEO Ultimate
-	* SEOPress
-	* Slim SEO
-	* Squirrly SEO
-	* The SEO Framework
-	* WP Meta SEO
-	* Yoast SEO
-	* Yoast WooCommerce SEO
+* All in One SEO Pack
+* Jetpack SEO
+* Rank Math SEO
+* SEO Ultimate
+* SEOPress
+* Slim SEO
+* Squirrly SEO
+* The SEO Framework
+* WP Meta SEO
+* Yoast SEO
+* Yoast WooCommerce SEO
 
 Built-in compatibility for advanced WordPress configurations:
 
-	* WordPress MU Domain Mapping
-	* Network / Multisite Installations
+* WordPress MU Domain Mapping
+* Network / Multisite Installations
 
 Includes advanced quality assurance features and options:
 
-	* Checks and warns of any missing PHP modules.
-	* Checks 3rd party plugin settings for possible conflicts.
-	* Checks for minimum / maximum image dimensions and aspect ratios.
-	* Shows notices for missing and required images.
-	* Validates theme header templates for correct HTML markup.
-	* Verifies webpage HTML for duplicate meta tags.
+* Checks and warns of any missing PHP modules.
+* Checks 3rd party plugin settings for possible conflicts.
+* Checks for minimum / maximum image dimensions and aspect ratios.
+* Shows notices for missing and required images.
+* Validates theme header templates for correct HTML markup.
+* Verifies webpage HTML for duplicate meta tags.
 
 Contextual help for every plugin option and [comprehensive online documentation](https://wpsso.com/docs/plugins/wpsso/).
 
@@ -139,57 +139,57 @@ Contextual help for every plugin option and [comprehensive online documentation]
 
 [Premium] Integrates with 3rd party plugins and service APIs for additional image, video, e-Commerce product details, SEO settings, etc. The following modules are included with the Premium version and automatically loaded if/when the supported plugins and/or services are required.
 
-	* **Integration with 3rd Party Plugins:** 
+* **Integration with 3rd Party Plugins:** 
 
-		* [All in One SEO Pack](https://wordpress.org/plugins/all-in-one-seo-pack/)
-		* [bbPress](https://wordpress.org/plugins/bbpress/)
-		* [BuddyPress](https://wordpress.org/plugins/buddypress/) (including Group Forum Topics)
-		* [Co-Authors Plus](https://wordpress.org/plugins/co-authors-plus/) (including Guest Authors)
-		* [Easy Digital Downloads](https://wordpress.org/plugins/easy-digital-downloads/)
-		* Gravity Forms + GravityView
-		* [NextCellent Gallery - NextGEN Legacy](https://wordpress.org/plugins/nextcellent-gallery-nextgen-legacy/)
-		* [NextGEN Gallery](https://wordpress.org/plugins/nextgen-gallery/)
-		* [Perfect WooCommerce Brands](https://wordpress.org/plugins/perfect-woocommerce-brands/)
-		* [Polylang](https://wordpress.org/plugins/polylang/)
-		* [Product GTIN (EAN, UPC, ISBN) for WooCommerce](https://wordpress.org/plugins/product-gtin-ean-upc-isbn-for-woocommerce/)
-		* [Rate my Post](https://wordpress.org/plugins/rate-my-post/)
-		* [rtMedia for WordPress, BuddyPress and bbPress](https://wordpress.org/plugins/buddypress-media/)
-		* [SEOPress](https://wordpress.org/plugins/wp-seopress/)
-		* [Simple Job Board](https://wordpress.org/plugins/simple-job-board/)
-		* [The Events Calendar](https://wordpress.org/plugins/the-events-calendar/)
-		* [The SEO Framework](https://wordpress.org/plugins/autodescription/)
-		* [WooCommerce](https://wordpress.org/plugins/woocommerce/)
-		* [WooCommerce Brands](https://woocommerce.com/products/brands/)
-		* [WooCommerce Currency Switcher](https://wordpress.org/plugins/woocommerce-currency-switcher/)
-		* [WooCommerce UPC, EAN, and ISBN](https://wordpress.org/plugins/woo-add-gtin/)
-		* WooCommerce Show Single Variations
-		* [WP Job Manager](https://wordpress.org/plugins/wp-job-manager/)
-		* [WP Meta SEO](https://wordpress.org/plugins/wp-meta-seo/)
-		* [WP-PostRatings](https://wordpress.org/plugins/wp-postratings/)
-		* [WP Product Review](https://wordpress.org/plugins/wp-product-review/)
-		* [WP Recipe Maker](https://wordpress.org/plugins/wp-recipe-maker/)
-		* [WP Ultimate Recipe](https://wordpress.org/plugins/wp-ultimate-recipe/)
-		* [WPML](https://wpml.org/)
-		* [YITH WooCommerce Brands Add-on](https://wordpress.org/plugins/search/yith-woocommerce-brands-add-on/)
-		* [Yoast SEO](https://wordpress.org/plugins/wordpress-seo/) (aka WordPress SEO)
-		* [Yotpo Social Reviews for WooCommerce](https://wordpress.org/plugins/yotpo-social-reviews-for-woocommerce/)
+	* [All in One SEO Pack](https://wordpress.org/plugins/all-in-one-seo-pack/)
+	* [bbPress](https://wordpress.org/plugins/bbpress/)
+	* [BuddyPress](https://wordpress.org/plugins/buddypress/) (including Group Forum Topics)
+	* [Co-Authors Plus](https://wordpress.org/plugins/co-authors-plus/) (including Guest Authors)
+	* [Easy Digital Downloads](https://wordpress.org/plugins/easy-digital-downloads/)
+	* Gravity Forms + GravityView
+	* [NextCellent Gallery - NextGEN Legacy](https://wordpress.org/plugins/nextcellent-gallery-nextgen-legacy/)
+	* [NextGEN Gallery](https://wordpress.org/plugins/nextgen-gallery/)
+	* [Perfect WooCommerce Brands](https://wordpress.org/plugins/perfect-woocommerce-brands/)
+	* [Polylang](https://wordpress.org/plugins/polylang/)
+	* [Product GTIN (EAN, UPC, ISBN) for WooCommerce](https://wordpress.org/plugins/product-gtin-ean-upc-isbn-for-woocommerce/)
+	* [Rate my Post](https://wordpress.org/plugins/rate-my-post/)
+	* [rtMedia for WordPress, BuddyPress and bbPress](https://wordpress.org/plugins/buddypress-media/)
+	* [SEOPress](https://wordpress.org/plugins/wp-seopress/)
+	* [Simple Job Board](https://wordpress.org/plugins/simple-job-board/)
+	* [The Events Calendar](https://wordpress.org/plugins/the-events-calendar/)
+	* [The SEO Framework](https://wordpress.org/plugins/autodescription/)
+	* [WooCommerce](https://wordpress.org/plugins/woocommerce/)
+	* [WooCommerce Brands](https://woocommerce.com/products/brands/)
+	* [WooCommerce Currency Switcher](https://wordpress.org/plugins/woocommerce-currency-switcher/)
+	* [WooCommerce UPC, EAN, and ISBN](https://wordpress.org/plugins/woo-add-gtin/)
+	* WooCommerce Show Single Variations
+	* [WP Job Manager](https://wordpress.org/plugins/wp-job-manager/)
+	* [WP Meta SEO](https://wordpress.org/plugins/wp-meta-seo/)
+	* [WP-PostRatings](https://wordpress.org/plugins/wp-postratings/)
+	* [WP Product Review](https://wordpress.org/plugins/wp-product-review/)
+	* [WP Recipe Maker](https://wordpress.org/plugins/wp-recipe-maker/)
+	* [WP Ultimate Recipe](https://wordpress.org/plugins/wp-ultimate-recipe/)
+	* [WPML](https://wpml.org/)
+	* [YITH WooCommerce Brands Add-on](https://wordpress.org/plugins/search/yith-woocommerce-brands-add-on/)
+	* [Yoast SEO](https://wordpress.org/plugins/wordpress-seo/) (aka WordPress SEO)
+	* [Yotpo Social Reviews for WooCommerce](https://wordpress.org/plugins/yotpo-social-reviews-for-woocommerce/)
 
-	* **Integration with Service APIs:**
+* **Integration with Service APIs:**
 
-		* Bitly
-		* DLMY.App
-		* Facebook Embedded Videos
-		* Gravatar (Author Image)
-		* Ow.ly
-		* Shopper Approved (Ratings and Reviews)
-		* Slideshare Presentations
-		* Soundcloud Tracks (for the Twitter Player Card)
-		* TinyURL
-		* Vimeo Videos
-		* Wistia Videos
-		* WordPress Video Shortcode (and Self-Hosted Videos)
-		* Your Own URL Shortener (YOURLS)
-		* YouTube Videos and Playlists
+	* Bitly
+	* DLMY.App
+	* Facebook Embedded Videos
+	* Gravatar (Author Image)
+	* Ow.ly
+	* Shopper Approved (Ratings and Reviews)
+	* Slideshare Presentations
+	* Soundcloud Tracks (for the Twitter Player Card)
+	* TinyURL
+	* Vimeo Videos
+	* Wistia Videos
+	* WordPress Video Shortcode (and Self-Hosted Videos)
+	* Your Own URL Shortener (YOURLS)
+	* YouTube Videos and Playlists
 
 <h3>Free Complementary Add-ons</h3>
 
