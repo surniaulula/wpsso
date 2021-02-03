@@ -48,7 +48,7 @@ WPSSO makes full use of all available caching methods &mdash; along with offerin
 
 <h3>WPSSO Core Features</h3>
 
-Offers meta tag and Schema markup options for all WordPress pages, including:
+Offers meta tag and Schema markup options for all WordPress pages:
 
 * Home Page (static page or blog)
 * Posts, Pages, and Custom Post Types
@@ -58,13 +58,11 @@ Offers meta tag and Schema markup options for all WordPress pages, including:
 * Search Result Pages
 * Archive Pages
 
-Enhances WordPress oEmbed markup for LinkedIn.
-
-Provides additional article and product meta tags for Slack.
+Enhances the WordPress oEmbed markup for LinkedIn and provides additional article and product meta tags for Slack.
 
 Includes structured data images from numerous sources, including featured, attached, gallery shortcode, content images, or a custom fallback image.
 
-Offers custom WordPress image sizes for:
+Offers optimized structured data image sizes:
 
 * Open Graph (Facebook and oEmbed)
 * Pinterest Pin It
@@ -74,6 +72,7 @@ Offers custom WordPress image sizes for:
 * Schema Thumbnail Image
 * Twitter Summary Card
 * Twitter Large Image Summary Card
+* **[Premium]** Twitter Player Card
 
 Built-in compatibility with AMP plugins:
 
