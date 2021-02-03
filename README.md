@@ -133,7 +133,7 @@
 <li>Verifies webpage HTML for duplicate meta tags.</li>
 </ul>
 
-<p>The Standard version is designed to satisfy the requirements of most standard WordPress sites. If your site requires additional 3rd party plugin and service API integration, like WooCommerce shops, embedded video support, or advanced customization features, then you may want to get the Premium version for those additional features.</p>
+<p>The WPSSO Core Standard plugin is designed to satisfy the requirements of most standard WordPress sites. If your site requires additional 3rd party plugin and service API integration, like WooCommerce shops, embedded video support, or advanced customization features, then you may want to get the <a href="https://wpsso.com/extend/plugins/wpsso/">WPSSO Core Premium plugin</a> for those additional features.</p>
 
 <p><strong>[Premium]</strong> Detection of embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube in the content text.</p>
 
