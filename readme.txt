@@ -48,11 +48,23 @@ WPSSO makes full use of all available caching methods &mdash; along with offerin
 
 <h3>WPSSO Core Features</h3>
 
-Complete and accurate meta tags for all social sites, search engines, web browser extensions, mail and messaging apps, and embedded object / iframe content.
+Offers meta tag and Schema markup options for all WordPress pages, including:
 
-Updates WordPress oEmbed data with the Open Graph title, description, and image for posts, pages, and custom post types.
+* Home Page (static page or blog)
+* Posts, Pages, and Custom Post Types
+* Categories, Tags, and Custom Taxonomy / Terms
+* User Profile Pages
+* Media Attachment Pages
+* Search Result Pages
+* Archive Pages
 
-Provides WordPress image size settings for:
+Enhances WordPress oEmbed markup for LinkedIn.
+
+Provides additional article and product meta tags for Slack.
+
+Includes structured data images from numerous sources, including featured, attached, gallery shortcode, content images, or a custom fallback image.
+
+Offers custom WordPress image sizes for:
 
 * Open Graph (Facebook and oEmbed)
 * Pinterest Pin It
@@ -62,20 +74,6 @@ Provides WordPress image size settings for:
 * Schema Thumbnail Image
 * Twitter Summary Card
 * Twitter Large Image Summary Card
-
-Includes additional Twitter article and product meta tags for Slack.
-
-Locates images from numerous sources, including featured, attached, gallery shortcode, content images, or a custom fallback image.
-
-Offers meta tags and optional Schema markup for all webpages, including:
-
-* Home Page (static page or blog)
-* Posts, Pages, and Custom Post Types
-* Categories, Tags, and Custom Taxonomy / Terms
-* User Profile Pages
-* Media Attachment Pages
-* Search Result Pages
-* Archive Pages
 
 Built-in compatibility with AMP plugins:
 
@@ -97,7 +95,7 @@ Built-in compatibility with optimization and caching plugins:
 * WP Rocket Cache
 * WP Super Cache
 
-Built-in compatibility checks for popular SEO plugins:
+Built-in compatibility with popular SEO plugins:
 
 * All in One SEO Pack
 * Jetpack SEO
@@ -124,8 +122,6 @@ Includes advanced quality assurance features and options:
 * Shows notices for missing and required images.
 * Validates theme header templates for correct HTML markup.
 * Verifies webpage HTML for duplicate meta tags.
-
-Contextual help for every plugin option and [comprehensive online documentation](https://wpsso.com/docs/plugins/wpsso/).
 
 **[Premium]** Detection of embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube in the content text.
 
