@@ -122,11 +122,13 @@ Includes advanced quality assurance features and options:
 * Validates theme header templates for correct HTML markup.
 * Verifies webpage HTML for duplicate meta tags.
 
+The Standard version is designed to satisfy the requirements of most standard WordPress sites. If your site requires additional 3rd party plugin and service API integration, like WooCommerce shops, embedded video support, or advanced customization features, then you may want to get the Premium version for those additional features.
+
 **[Premium]** Detection of embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube in the content text.
 
 **[Premium]** Support for the Twitter [Player Card](https://dev.twitter.com/cards/types/player) for embedded videos.
 
-**[Premium]** Optional upscaling of small images from the Media Library for social sharing and Schema markup.
+**[Premium]** Optional upscaling of small images from the Media Library to satisfy minimum image size requirements for social sharing and Schema markup.
 
 **[Premium]** URL shortening with Bitly, DLMY.App, Google, Ow.ly, TinyURL, or YOURLS.
 
