@@ -26,7 +26,7 @@ WPSSO provides structured data for Facebook / Open Graph, Pinterest Rich Pins, T
 
 **Reads your existing WordPress content, plugin data, and service API data:**
 
-There's no need to manually re-enter descriptions, titles, product information, and re-select images / videos like other meta tag, SEO, and Schema markup plugins. WPSSO can be used as your one and only *social and search optimization* plugin - it can also be used with your favorite SEO plugin to improve your SEO plugin's meta tags and Schema markup (including All in One SEO Pack, Jetpack SEO Tools, Rank Math SEO, SEO Ultimate, SEOPress, The SEO Framework, WP Meta SEO, Yoast SEO, and more).
+There's no need to manually re-enter descriptions, titles, product information, and re-select images / videos like other meta tag, SEO, and Schema markup plugins. WPSSO can be used as your one and only *social and search optimization* plugin, and the Premium version can also be used with your favorite SEO plugin to improve your SEO plugin's meta tags and Schema markup (including All in One SEO Pack, Jetpack SEO Tools, Rank Math SEO, SEO Ultimate, SEOPress, The SEO Framework, WP Meta SEO, Yoast SEO, and more).
 
 **Customize the plugin settings for different languages:**
 
@@ -153,7 +153,7 @@ Simply activate the free complementary add-on(s) you require:
 
 <h3>WPSSO Core Premium Features</h3>
 
-The Standard version is designed to satisfy the requirements of most standard WordPress sites / blogs. If your site requires additional 3rd party plugin or service API integration, like WooCommerce shops, embedded video support, or advanced customization features, then you may want the Premium version for those additional features.
+The Standard version is designed to satisfy the requirements of most WordPress sites, but if your site would benefit from additional 3rd party plugin or service API integration, then you may consider getting the Premium version for those additional features.
 
 * Detection of embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube in the content text.
 
@@ -218,8 +218,6 @@ The Standard version is designed to satisfy the requirements of most standard Wo
 		* WordPress Video Shortcode (and Self-Hosted Videos)
 		* Your Own URL Shortener (YOURLS)
 		* YouTube Videos and Playlists
-
-* Customize additional option values in the Document SSO metabox when editing posts, pages, custom post types, terms (categories and tags), custom post types, and user profiles.
 
 == Installation ==
 
