@@ -26,7 +26,7 @@ WPSSO provides structured data for Facebook / Open Graph, Pinterest Rich Pins, T
 
 **Reads your existing WordPress content, plugin data, and service API data:**
 
-There's no need to manually re-enter descriptions, titles, product information, re-select images / videos, etc. like other meta tag, SEO and Schema markup plugins. WPSSO can be used as your one and only *social and search optimization* plugin - it can also be used with your favorite SEO plugin to improve your SEO plugin's meta tags and Schema markup (including All in One SEO Pack, Jetpack SEO Tools, Rank Math SEO, SEO Ultimate, SEOPress, The SEO Framework, WP Meta SEO, Yoast SEO, and more).
+There's no need to manually re-enter descriptions, titles, product information, and re-select images / videos like other meta tag, SEO, and Schema markup plugins. WPSSO can be used as your one and only *social and search optimization* plugin - it can also be used with your favorite SEO plugin to improve your SEO plugin's meta tags and Schema markup (including All in One SEO Pack, Jetpack SEO Tools, Rank Math SEO, SEO Ultimate, SEOPress, The SEO Framework, WP Meta SEO, Yoast SEO, and more).
 
 **Customize the plugin settings for different languages:**
 
