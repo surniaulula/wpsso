@@ -127,17 +127,17 @@ Includes advanced quality assurance features and options:
 
 Contextual help for every plugin option and [comprehensive online documentation](https://wpsso.com/docs/plugins/wpsso/).
 
-[Premium] Detection of embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube in the content text.
+**[Premium]** Detection of embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube in the content text.
 
-[Premium] Support for the Twitter [Player Card](https://dev.twitter.com/cards/types/player) for embedded videos.
+**[Premium]** Support for the Twitter [Player Card](https://dev.twitter.com/cards/types/player) for embedded videos.
 
-[Premium] Optional upscaling of small images from the Media Library for social sharing and Schema markup.
+**[Premium]** Optional upscaling of small images from the Media Library for social sharing and Schema markup.
 
-[Premium] URL shortening with Bitly, DLMY.App, Google, Ow.ly, TinyURL, or YOURLS.
+**[Premium]** URL shortening with Bitly, DLMY.App, Google, Ow.ly, TinyURL, or YOURLS.
 
-[Premium] Complete Schema JSON-LD markup for WooCommerce products ([WPSSO JSON add-on required](https://wordpress.org/plugins/wpsso-schema-json-ld/)).
+**[Premium]** Complete Schema JSON-LD markup for WooCommerce products ([WPSSO JSON add-on required](https://wordpress.org/plugins/wpsso-schema-json-ld/)).
 
-[Premium] Integrates with 3rd party plugins and service APIs for additional image, video, e-Commerce product details, SEO settings, etc. The following modules are included with the Premium version and automatically loaded if/when the supported plugins and/or services are required.
+**[Premium]** Integrates with 3rd party plugins and service APIs for additional image, video, e-Commerce product details, SEO settings, etc. The following modules are included with the Premium version and automatically loaded if/when the supported plugins and/or services are required.
 
 * **Integration with 3rd Party Plugins:** 
 
