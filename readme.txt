@@ -1,4 +1,4 @@
-=== WPSSO Core | The Complete (Social and Search) Structured Data Solution ===
+=== WPSSO Core | The Complete (Social and Search) Structured Data Solution for Everyone ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso

@@ -1,4 +1,4 @@
-<h1>WPSSO Core</h1><h3>The Complete (Social and Search) Structured Data Solution</h3>
+<h1>WPSSO Core</h1><h3>The Complete (Social and Search) Structured Data Solution for Everyone</h3>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
