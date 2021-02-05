@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 8.21.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-01-30 10:58-0800\n"
+"PO-Revision-Date: 2021-02-04 12:14-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -765,7 +765,7 @@ msgctxt "lib file description"
 msgid "Your SSO"
 msgstr "Votre SSO"
 
-#: gettext/gettext-lib-config.php:54 gettext/gettext-lib-config.php:66
+#: gettext/gettext-lib-config.php:54 gettext/gettext-lib-config.php:63
 #: lib/admin-head.php:258 lib/messages.php:3379
 msgctxt "lib file description"
 msgid "Advanced Settings"
@@ -809,17 +809,17 @@ msgctxt "lib file description"
 msgid "General Settings"
 msgstr "Réglages généraux"
 
-#: gettext/gettext-lib-config.php:63
+#: gettext/gettext-lib-config.php:64
 msgctxt "lib file description"
 msgid "Social Pages"
 msgstr "Pages sociales"
 
-#: gettext/gettext-lib-config.php:64 lib/messages.php:974 lib/messages.php:2568
+#: gettext/gettext-lib-config.php:65 lib/messages.php:974 lib/messages.php:2568
 msgctxt "lib file description"
 msgid "Image Sizes"
 msgstr "Tailles d'images"
 
-#: gettext/gettext-lib-config.php:65
+#: gettext/gettext-lib-config.php:66
 msgctxt "lib file description"
 msgid "Document Types"
 msgstr "Types de documents"
