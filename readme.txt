@@ -1,4 +1,4 @@
-=== WPSSO Core | The Structured Data Solution for Everyone ===
+=== WPSSO Core | The Structured Data Plugin for Everyone ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -18,7 +18,7 @@ Present your content at its best on social sites and in search results, no matte
 
 == Description ==
 
-<h3 style="margin-top:0;"><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"> The Structured Data Solution for Everyone</h3>
+<h3 style="margin-top:0;"><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"> The Structured Data Plugin for Everyone</h3>
 
 **Present your content at its best on social sites and in search results, no matter how webpages are shared, re-shared, messaged, posted, embedded, or crawled:**
 
