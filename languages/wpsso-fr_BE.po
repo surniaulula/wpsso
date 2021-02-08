@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.21.0\n"
+"Project-Id-Version: WPSSO Core 8.22.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-02-04 12:14-0800\n"
+"PO-Revision-Date: 2021-02-08 11:23-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -6910,7 +6910,7 @@ msgstr "article"
 msgid "Slow WordPress function detected - %1$s took %2$0.3f secs to get children of post ID %3$d (%4$s)."
 msgstr "Fonction WordPress lente détectée - %1$s a pris %2$0.3f secs pour obtenir les enfants de l'ID d'article %3$d (%4$s)."
 
-#: lib/post.php:832 lib/post.php:1451 lib/schema.php:3157 lib/term.php:627
+#: lib/post.php:832 lib/post.php:1451 lib/schema.php:3225 lib/term.php:627
 #: lib/user.php:624
 msgid "checking meta tags"
 msgstr "vérification des balises méta"
