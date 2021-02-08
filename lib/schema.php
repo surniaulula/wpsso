@@ -1808,7 +1808,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $org_opts;
 		}
 
-		public static function add_aggregate_offer_data( &$json_data, array $mod, array $mt_offers ) {
+		public static function add_offers_data( &$json_data, array $mod, array $mt_offers ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -1817,10 +1817,69 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			$aggregate_added  = 0;
-			$aggregate_prices = array();
-			$aggregate_offers = array();
-			$aggregate_common = array();
+			$offers_added  = 0;
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'adding ' . count( $mt_offers ) . ' offers as offer' );
+			}
+
+			foreach ( $mt_offers as $offer_num => $mt_offer ) {
+
+				if ( ! is_array( $mt_offer ) ) {	// Just in case.
+
+					if ( $wpsso->debug->enabled ) {
+
+						$wpsso->debug->log( 'skipping offer #' . $offer_num . ': not an array' );
+					}
+
+					continue;
+				}
+
+				$single_offer = WpssoSchemaSingle::get_offer_data( $mod, $mt_offer );
+
+				if ( false === $single_offer ) {
+
+					continue;
+				}
+
+				/**
+				 * Trust the offer image size and add it directly.
+				 */
+				if ( ! empty( $mt_offer[ 'og:image' ] ) ) {
+
+					WpssoSchema::add_images_data_mt( $single_offer[ 'image' ], $mt_offer[ 'og:image' ] );
+				}
+
+				/**
+				 * Make sure we have a price currency value.
+				 */
+				if ( empty( $single_offer[ 'priceCurrency' ] ) ) {
+				
+					$single_offer[ 'priceCurrency' ] = $wpsso->options[ 'og_def_currency' ];
+				}
+
+				$json_data[ 'offers' ][] = self::get_schema_type_context( 'https://schema.org/Offer', $single_offer );
+
+				$offers_added++;
+			}
+
+			return $offers_added;
+		}
+
+		public static function add_offers_aggregate_data( &$json_data, array $mod, array $mt_offers ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->mark();
+			}
+
+			$aggr_added  = 0;
+			$aggr_prices = array();
+			$aggr_offers = array();
+			$aggr_common = array();
 
 			if ( $wpsso->debug->enabled ) {
 
@@ -1864,16 +1923,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				 */
 				if ( isset( $single_offer[ 'price' ] ) ) {	// Just in case.
 
-					if ( ! isset( $aggregate_prices[ $price_currency ][ 'lowPrice' ] )
-						|| $aggregate_prices[ $price_currency ][ 'lowPrice' ] > $single_offer[ 'price' ] ) {
+					if ( ! isset( $aggr_prices[ $price_currency ][ 'lowPrice' ] ) ||
+						$aggr_prices[ $price_currency ][ 'lowPrice' ] > $single_offer[ 'price' ] ) {
 
-						$aggregate_prices[ $price_currency ][ 'lowPrice' ] = $single_offer[ 'price' ];
+						$aggr_prices[ $price_currency ][ 'lowPrice' ] = $single_offer[ 'price' ];
 					}
 
-					if ( ! isset( $aggregate_prices[ $price_currency ][ 'highPrice' ] )
-						|| $aggregate_prices[ $price_currency ][ 'highPrice' ] < $single_offer[ 'price' ] ) {
+					if ( ! isset( $aggr_prices[ $price_currency ][ 'highPrice' ] ) ||
+						$aggr_prices[ $price_currency ][ 'highPrice' ] < $single_offer[ 'price' ] ) {
 
-						$aggregate_prices[ $price_currency ][ 'highPrice' ] = $single_offer[ 'price' ];
+						$aggr_prices[ $price_currency ][ 'highPrice' ] = $single_offer[ 'price' ];
 					}
 				}
 
@@ -1884,20 +1943,20 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					foreach ( preg_grep( '/^[^@]/', array_keys( $single_offer ) ) as $key ) {
 
-						$aggregate_common[ $price_currency ][ $key ] = $single_offer[ $key ];
+						$aggr_common[ $price_currency ][ $key ] = $single_offer[ $key ];
 					}
 
-				} elseif ( ! empty( $aggregate_common[ $price_currency ] ) ) {
+				} elseif ( ! empty( $aggr_common[ $price_currency ] ) ) {
 
-					foreach ( $aggregate_common[ $price_currency ] as $key => $val ) {
+					foreach ( $aggr_common[ $price_currency ] as $key => $val ) {
 
 						if ( ! isset( $single_offer[ $key ] ) ) {
 
-							unset( $aggregate_common[ $price_currency ][ $key ] );
+							unset( $aggr_common[ $price_currency ][ $key ] );
 
 						} elseif ( $val !== $single_offer[ $key ] ) {
 
-							unset( $aggregate_common[ $price_currency ][ $key ] );
+							unset( $aggr_common[ $price_currency ][ $key ] );
 						}
 					}
 				}
@@ -1905,13 +1964,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				/**
 				 * Add the complete offer.
 				 */
-				$aggregate_offers[ $price_currency ][] = $single_offer;
+				$aggr_offers[ $price_currency ][] = $single_offer;
 			}
 
 			/**
 			 * Add aggregate offers grouped by currency.
 			 */
-			foreach ( $aggregate_offers as $price_currency => $currency_offers ) {
+			foreach ( $aggr_offers as $price_currency => $currency_offers ) {
 
 				if ( ( $offer_count = count( $currency_offers ) ) > 0 ) {
 
@@ -1922,32 +1981,41 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					 */
 					foreach ( array( 'lowPrice', 'highPrice' ) as $price_mark ) {
 
-						if ( isset( $aggregate_prices[ $price_currency ][ $price_mark ] ) ) {
+						if ( isset( $aggr_prices[ $price_currency ][ $price_mark ] ) ) {
 
-							$offer_group[ $price_mark ] = $aggregate_prices[ $price_currency ][ $price_mark ];
+							$offer_group[ $price_mark ] = $aggr_prices[ $price_currency ][ $price_mark ];
 						}
 					}
 
 					$offer_group[ 'priceCurrency' ] = $price_currency;
 
-					if ( ! empty( $aggregate_common[ $price_currency ] ) ) {
+					if ( ! empty( $aggr_common[ $price_currency ] ) ) {
 
-						foreach ( $aggregate_common[ $price_currency ] as $key => $val ) {
+						foreach ( $aggr_common[ $price_currency ] as $key => $val ) {
 
 							$offer_group[ $key ] = $val;
 						}
 					}
 
 					$offer_group[ 'offerCount' ] = $offer_count;
-					$offer_group[ 'offers' ]     = $currency_offers;
+
+					$offer_group[ 'offers' ] = $currency_offers;
 
 					$json_data[ 'offers' ][] = self::get_schema_type_context( 'https://schema.org/AggregateOffer', $offer_group );
 
-					$aggregate_added++;
+					$aggr_added++;
 				}
 			}
 
-			return $aggregate_added;
+			return $aggr_added;
+		}
+
+		/**
+		 * Deprecated on 2021/02/08.
+		 */
+		public static function add_aggregate_offer_data( &$json_data, array $mod, array $mt_offers ) {
+
+			return self::add_offers_aggregate_data( $json_data, $mod, $mt_offers );
 		}
 
 		/**
