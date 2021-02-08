@@ -316,6 +316,22 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.22.0-dev.1 (2021/02/08)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Updated the product offer methods in `WpssoSchema` for WPSSO JSON v4.14.0:
+		* Added a new `add_offers_data()` method.
+		* Renamed the `add_aggregate_offer_data()` method to `add_offers_aggregate_data()`.
+* **Requires At Least**
+	* PHP v7.0.
+	* WordPress v4.5.
+
 **Version 8.21.0 (2021/01/30)**
 
 * **New Features**
@@ -1010,6 +1026,10 @@ This release adds a new SSO &gt; Features Status page and integration module for
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.22.0-dev.1 =
+
+(2021/02/08) Updated the product offer methods in `WpssoSchema` for WPSSO JSON v4.14.0.
 
 = 8.21.0 =
 
