@@ -316,7 +316,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.22.0-dev.1 (2021/02/08)**
+**Version 8.22.0-b.1 (2021/02/08)**
 
 * **New Features**
 	* None.
@@ -325,7 +325,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Updated the product offer methods in `WpssoSchema` for WPSSO JSON v4.14.0:
+	* Updated product offer methods in `WpssoSchema` for WPSSO JSON v4.14.0:
 		* Added a new `add_offers_data()` method.
 		* Renamed the `add_aggregate_offer_data()` method to `add_offers_aggregate_data()`.
 * **Requires At Least**
@@ -1027,9 +1027,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.22.0-dev.1 =
+= 8.22.0-b.1 =
 
-(2021/02/08) Updated the product offer methods in `WpssoSchema` for WPSSO JSON v4.14.0.
+(2021/02/08) Updated product offer methods in `WpssoSchema` for WPSSO JSON v4.14.0.
 
 = 8.21.0 =
 
