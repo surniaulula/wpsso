@@ -232,7 +232,7 @@ Simply activate the free complementary add-on(s) you require:
 <h3 class="top">Frequently Asked Questions</h3>
 
 * [Can I use the Premium plugin on multiple websites?](https://wpsso.com/docs/plugins/wpsso/faqs/can-i-use-the-pro-version-on-multiple-websites/)
-* [Does LinkedIn read the Open Graph meta tags?](https://wpsso.com/docs/plugins/wpsso/faqs/does-linkedin-read-the-open-graph-meta-tags/)
+* [Does LinkedIn read the Facebook / Open Graph meta tags?](https://wpsso.com/docs/plugins/wpsso/faqs/does-linkedin-read-the-open-graph-meta-tags/)
 * [How can I fix a ERR_TOO_MANY_REDIRECTS error?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-a-err_too_many_redirects-error/)
 * [How can I fix a generic HTTP 500 error?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-a-generic-http-500-error/)
 * [How can I fix a PHP fatal "out of memory" error?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-a-php-fatal-out-of-memory-error/)
@@ -341,7 +341,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added new functions to retrieve Open Graph image URLs:
+	* Added new functions to retrieve Facebook / Open Graph image URLs:
 		* `wpsso_get_mod_og_image_url()`
 		* `wpsso_get_post_og_image_url()`
 		* `wpsso_get_term_og_image_url()`
@@ -1033,7 +1033,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 = 8.21.0 =
 
-(2021/01/30) Added new functions to retrieve Open Graph image URLs. Refactored error handling and error messages in URL shortening classes (Premium version). Removed the 'wpsso_version_updates' action.
+(2021/01/30) Added new functions to retrieve Facebook / Open Graph image URLs. Refactored error handling and error messages in URL shortening classes (Premium version). Removed the 'wpsso_version_updates' action.
 
 = 8.20.0 =
 
