@@ -66,9 +66,9 @@ Offers optimized structured data image sizes:
 
 * Open Graph (Facebook and oEmbed)
 * Pinterest Pin It
-* Schema 1:1 (Google Rich Results)
-* Schema 4:3 (Google Rich Results)
-* Schema 16:9 (Google Rich Results)
+* Schema 1:1 (Google Rich Results and SEO)
+* Schema 4:3 (Google Rich Results and SEO)
+* Schema 16:9 (Google Rich Results and SEO)
 * Schema Thumbnail Image
 * Twitter Summary Card
 * Twitter Large Image Summary Card
