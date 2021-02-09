@@ -316,7 +316,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.22.0-rc.1 (2021/02/09)**
+**Version 8.22.0 (2021/02/09)**
 
 * **New Features**
 	* None.
@@ -1027,7 +1027,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.22.0-rc.1 =
+= 8.22.0 =
 
 (2021/02/09) Updated product offer methods in `WpssoSchema` for WPSSO JSON v4.14.0.
 
