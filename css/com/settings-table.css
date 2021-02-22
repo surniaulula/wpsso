@@ -1094,10 +1094,17 @@ table.sucom-settings .oembed_container > iframe {
 }
 
 /**
+ * Document SSO > eEmbed tab.
+ */
+div.sucom-tabset_sso-tab_oembed table.sucom-settings {
+	border-spacing:12px 6px;	/* 12px by default. */
+}
+
+/**
  * Document SSO > Markup tab.
  */
 div.sucom-tabset_sso-tab_head table.sucom-settings {
-	border-spacing:4px;	/* 12px by default. */
+	border-spacing:12px 2px;	/* 12px by default. */
 }
 
 div.sucom-tabset_sso-tab_head table.sucom-settings tr th,
