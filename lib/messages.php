@@ -2049,7 +2049,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							} elseif ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
 
-								$json_info       = $this->p->cf[ 'plugin' ][ 'wpssoplm' ];
+								$json_info       = $this->p->cf[ 'plugin' ][ 'wpssojson' ];
 								$json_addon_link = $this->p->util->get_admin_url( 'addons#wpssojson', $json_info[ 'short' ] );
 
 								$text .= '<p class="status-msg left">* ';
