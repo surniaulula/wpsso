@@ -532,7 +532,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			'<td>' . SucomForm::get_no_input_clipboard( $xml_url ) . '</td>';
 
 			$table_rows[ 'subsection_oembed_data' ] = '<td colspan="2" class="subsection"><h4>' . 
-			_x( 'oEmbed Data', 'option label', 'wpsso' ) . '</h4></td>';
+				_x( 'oEmbed Data', 'option label', 'wpsso' ) . '</h4></td>';
 
 			if ( ! empty( $oembed_data ) && is_array( $oembed_data ) ) {
 
@@ -555,7 +555,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			}
 
 			$table_rows[ 'subsection_oembed_html' ] = '<td colspan="2" class="subsection"><h4>' . 
-			_x( 'oEmbed HTML', 'option label', 'wpsso' ) . '</h4></td>';
+				_x( 'oEmbed HTML', 'option label', 'wpsso' ) . '</h4></td>';
 
 			if ( ! empty( $oembed_html ) ) {
 

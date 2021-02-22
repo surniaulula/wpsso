@@ -149,10 +149,10 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 				 * Default row class and id attribute values.
 				 */
 				$tr = array(
-					'class' => 'sucom_alt' . 
+					'class' => 'sucom-alt' . 
 						( $count_rows % 2 ) . 
-						( $count_rows === 0 ? ' first_row' : '' ) . 
-						( $count_rows === ( $total_rows - 1 ) ? ' last_row' : '' ),
+						( $count_rows === 0 ? ' first-row' : '' ) . 
+						( $count_rows === ( $total_rows - 1 ) ? ' last-row' : '' ),
 					'id' => ( is_int( $key ) ? '' : 'tr_' . $key )
 				);
 
