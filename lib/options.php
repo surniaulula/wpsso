@@ -664,8 +664,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					if ( isset( $info[ 'version' ] ) ) {
 
-						if ( ! isset( $opts[ 'plugin_' . $ext . '_version' ] ) ||
-							$opts[ 'plugin_' . $ext . '_version' ] !== $info[ 'version' ] ) {
+						if ( ! isset( $opts[ 'plugin_' . $ext . '_version' ] ) || $opts[ 'plugin_' . $ext . '_version' ] !== $info[ 'version' ] ) {
 
 							$version_changed = true;
 						}

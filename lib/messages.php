@@ -1258,24 +1258,24 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_yourls_api_url':
 
-							$text = sprintf( __( 'The URL to <a href="%1$s">Your Own URL Shortener</a> (YOURLS) shortening service.', 'wpsso' ), 'http://yourls.org/' );
+							$text = sprintf( __( 'The URL to <a href="%1$s">Your Own URL Shortener</a> (YOURLS) shortening service.', 'wpsso' ), 'https://yourls.org/' );
 							break;
 
 						case 'tooltip-plugin_yourls_username':
 
-							$text = sprintf( __( 'If <a href="%1$s">Your Own URL Shortener</a> (YOURLS) shortening service is private, enter a configured username (see YOURLS Token for an alternative to the username / password options).', 'wpsso' ), 'http://yourls.org/' );
+							$text = sprintf( __( 'If <a href="%1$s">Your Own URL Shortener</a> (YOURLS) shortening service is private, enter a configured username (see YOURLS Token for an alternative to the username / password options).', 'wpsso' ), 'https://yourls.org/' );
 
 							break;
 
 						case 'tooltip-plugin_yourls_password':
 
-							$text = sprintf( __( 'If <a href="%1$s">Your Own URL Shortener</a> (YOURLS) shortening service is private, enter a configured user password (see YOURLS Token for an alternative to the username / password options).', 'wpsso' ), 'http://yourls.org/' );
+							$text = sprintf( __( 'If <a href="%1$s">Your Own URL Shortener</a> (YOURLS) shortening service is private, enter a configured user password (see YOURLS Token for an alternative to the username / password options).', 'wpsso' ), 'https://yourls.org/' );
 
 							break;
 
 						case 'tooltip-plugin_yourls_token':
 
-							$text = sprintf( __( 'If <a href="%1$s">Your Own URL Shortener</a> (YOURLS) shortening service is private, you can use a token string for authentication instead of a username / password combination.', 'wpsso' ), 'http://yourls.org/' );
+							$text = sprintf( __( 'If <a href="%1$s">Your Own URL Shortener</a> (YOURLS) shortening service is private, you can use a token string for authentication instead of a username / password combination.', 'wpsso' ), 'https://yourls.org/' );
 
 							break;
 
@@ -1816,6 +1816,33 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					}	// End of tooltip-linkedin switch.
 
 				/**
+				 * Medium settings.
+				 */
+				} elseif ( strpos( $msg_key, 'tooltip-medium_' ) === 0 ) {
+
+					switch ( $msg_key ) {
+
+						case 'tooltip-medium_publisher_url':
+
+							$publisher_url_label = _x( $this->p->cf[ 'form' ][ 'social_accounts' ][ 'medium_publisher_url' ], 'option value', 'wpsso' );
+
+							$text = sprintf( __( 'If you have a <a href="%1$s">Medium page for your business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://medium.com/', 'wpsso' ) ) . ' ';
+
+							$text .= sprintf( __( 'The %s will be included in the website\'s Schema Organization markup.', 'wpsso' ), $publisher_url_label ) . ' ';
+
+							$text .= __( 'Google Search may use this URL to display additional information about the website, business, or company in its search results.', 'wpsso' );
+
+							break;
+
+						default:
+
+							$text = apply_filters( 'wpsso_messages_tooltip_medium', $text, $msg_key, $info );
+
+							break;
+
+						}	// End of tooltip-medium switch.
+
+				/**
 				 * Myspace settings.
 				 */
 				} elseif ( strpos( $msg_key, 'tooltip-myspace_' ) === 0 ) {
@@ -1826,7 +1853,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$publisher_url_label = _x( $this->p->cf[ 'form' ][ 'social_accounts' ][ 'myspace_publisher_url' ], 'option value', 'wpsso' );
 
-							$text = sprintf( __( 'If you have a <a href="%1$s">Myspace page for your business</a>, you may enter its URL here.', 'wpsso' ), __( 'http://myspace.com/', 'wpsso' ) ) . ' ';
+							$text = sprintf( __( 'If you have a <a href="%1$s">Myspace page for your business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://myspace.com/', 'wpsso' ) ) . ' ';
 
 							$text .= sprintf( __( 'The %s will be included in the website\'s Schema Organization markup.', 'wpsso' ), $publisher_url_label ) . ' ';
 
@@ -1841,6 +1868,87 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						}	// End of tooltip-myspace switch.
+
+				/**
+				 * Soundcloud settings.
+				 */
+				} elseif ( strpos( $msg_key, 'tooltip-sc_' ) === 0 ) {
+
+					switch ( $msg_key ) {
+
+						case 'tooltip-sc_publisher_url':
+
+							$publisher_url_label = _x( $this->p->cf[ 'form' ][ 'social_accounts' ][ 'sc_publisher_url' ], 'option value', 'wpsso' );
+
+							$text = sprintf( __( 'If you have a <a href="%1$s">Soundcloud page for your business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://soundcloud.com/', 'wpsso' ) ) . ' ';
+
+							$text .= sprintf( __( 'The %s will be included in the website\'s Schema Organization markup.', 'wpsso' ), $publisher_url_label ) . ' ';
+
+							$text .= __( 'Google Search may use this URL to display additional information about the website, business, or company in its search results.', 'wpsso' );
+
+							break;
+
+						default:
+
+							$text = apply_filters( 'wpsso_messages_tooltip_sc', $text, $msg_key, $info );
+
+							break;
+
+						}	// End of tooltip-sc switch.
+
+				/**
+				 * TikTok settings.
+				 */
+				} elseif ( strpos( $msg_key, 'tooltip-tiktok_' ) === 0 ) {
+
+					switch ( $msg_key ) {
+
+						case 'tooltip-tiktok_publisher_url':
+
+							$publisher_url_label = _x( $this->p->cf[ 'form' ][ 'social_accounts' ][ 'tiktok_publisher_url' ], 'option value', 'wpsso' );
+
+							$text = sprintf( __( 'If you have a <a href="%1$s">TikTok page for your business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://tiktok.com/', 'wpsso' ) ) . ' ';
+
+							$text .= sprintf( __( 'The %s will be included in the website\'s Schema Organization markup.', 'wpsso' ), $publisher_url_label ) . ' ';
+
+							$text .= __( 'Google Search may use this URL to display additional information about the website, business, or company in its search results.', 'wpsso' );
+
+							break;
+
+						default:
+
+							$text = apply_filters( 'wpsso_messages_tooltip_tiktok', $text, $msg_key, $info );
+
+							break;
+
+						}	// End of tooltip-tiktok switch.
+
+				/**
+				 * Tumblr settings.
+				 */
+				} elseif ( strpos( $msg_key, 'tooltip-tumblr_' ) === 0 ) {
+
+					switch ( $msg_key ) {
+
+						case 'tooltip-tumblr_publisher_url':
+
+							$publisher_url_label = _x( $this->p->cf[ 'form' ][ 'social_accounts' ][ 'tumblr_publisher_url' ], 'option value', 'wpsso' );
+
+							$text = sprintf( __( 'If you have a <a href="%1$s">Tumblr page for your business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://tumblr.com/', 'wpsso' ) ) . ' ';
+
+							$text .= sprintf( __( 'The %s will be included in the website\'s Schema Organization markup.', 'wpsso' ), $publisher_url_label ) . ' ';
+
+							$text .= __( 'Google Search may use this URL to display additional information about the website, business, or company in its search results.', 'wpsso' );
+
+							break;
+
+						default:
+
+							$text = apply_filters( 'wpsso_messages_tooltip_tumblr', $text, $msg_key, $info );
+
+							break;
+
+						}	// End of tooltip-tumblr switch.
 
 				/**
 				 * Wikipedia settings.
@@ -1868,6 +1976,33 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 					}	// End of tooltip-wikipedia switch.
+
+				/**
+				 * YouTube settings.
+				 */
+				} elseif ( strpos( $msg_key, 'tooltip-yt_' ) === 0 ) {
+
+					switch ( $msg_key ) {
+
+						case 'tooltip-yt_publisher_url':
+
+							$publisher_url_label = _x( $this->p->cf[ 'form' ][ 'social_accounts' ][ 'yt_publisher_url' ], 'option value', 'wpsso' );
+
+							$text = sprintf( __( 'If you have a <a href="%1$s">YouTube channel for your business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://youtube.com/', 'wpsso' ) ) . ' ';
+
+							$text .= sprintf( __( 'The %s will be included in the website\'s Schema Organization markup.', 'wpsso' ), $publisher_url_label ) . ' ';
+
+							$text .= __( 'Google Search may use this URL to display additional information about the website, business, or company in its search results.', 'wpsso' );
+
+							break;
+
+						default:
+
+							$text = apply_filters( 'wpsso_messages_tooltip_yt', $text, $msg_key, $info );
+
+							break;
+
+						}	// End of tooltip-yt switch.
 
 				/**
 				 * All other settings.
