@@ -19,13 +19,13 @@
 
 <p><strong>Present your content at its best on social sites and in search results:</strong></p>
 
-<p>WPSSO provides meta tags and structured data markup for Facebook / <strong>Open Graph</strong>, Pinterest <strong>Rich Pins</strong>, <strong>Twitter Cards</strong>, Google Knowledge Graph, Google <strong>Rich Results</strong> (aka <strong>Schema</strong>, <strong>Rich Snippets</strong>, <strong>Structured Data</strong>), WhatsApp and Messaging Apps, Mobile Web Browsers, WordPress REST API, LinkedIn / <strong>oEmbed</strong> data and more &mdash; including markup for <strong>image SEO</strong>, <strong>video SEO</strong>, extensive e-Commerce product markup (for WooCommerce and others), mobile store apps, author profile / authorship, co-authors, publisher information, local business / <strong>local SEO</strong>, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content, supported plugin data, and service API data.</p>
+<p>WPSSO provides meta tags and structured data markup for Facebook / <strong>Open Graph</strong>, Pinterest <strong>Rich Pins</strong>, <strong>Twitter Cards</strong>, Google Knowledge Graph, Google <strong>Rich Results</strong> (aka <strong>Schema</strong>, <strong>Rich Snippets</strong>, <strong>Structured Data</strong>), WhatsApp and Messaging Apps, Mobile Web Browsers, WordPress REST API, LinkedIn / <strong>oEmbed</strong> data and more &mdash; including markup for image SEO, video SEO, extensive e-Commerce product markup (for WooCommerce and others), mobile store apps, author profile / authorship, co-authors, publisher information, local business / local SEO, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content, supported plugin data, and service API data.</p>
 
-<p><strong>Reads your existing content, plugin data, and service API data:</strong></p>
+<p><strong>Reads existing content, plugin data, and service API data:</strong></p>
 
 <p>There's no need to manually re-enter descriptions, titles, product information, and re-select images / videos like other meta tag, SEO, or Schema plugins. WPSSO can be used as your only social and search optimization plugin, or combined Core with your favorite SEO plugin to improve your SEO plugin's meta tags and Schema markup (including All in One SEO Pack, Jetpack SEO Tools, Rank Math SEO, SEO Ultimate, SEOPress, The SEO Framework, WP Meta SEO, Yoast SEO, and more).</p>
 
-<p><strong>Customize the plugin settings for different languages:</strong></p>
+<p><strong>Customize the settings for different languages:</strong></p>
 
 <p>Text, image, and video related options are WordPress language / locale aware, which means you can easily switch languages and customize these options for different front-end webpage languages.</p>
 
