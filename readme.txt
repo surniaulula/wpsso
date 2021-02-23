@@ -316,6 +316,25 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.23.0-dev.2 (2021/02/23)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added business page URL options in the SSO &gt; Social Pages settings page:
+		* Medium Business Page URL
+		* TikTok Business Page URL
+	* Added custom contacts options in the SSO &gt; Advanced settings page (Premium version):
+		* Medium URL
+		* TikTok URL
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.0.
+	* WordPress v4.5.
+
 **Version 8.22.0 (2021/02/09)**
 
 * **New Features**
@@ -1026,6 +1045,10 @@ This release adds a new SSO &gt; Features Status page and integration module for
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.23.0-dev.2 =
+
+(2021/02/23) Added business page URL and custom contacts options.
 
 = 8.22.0 =
 
