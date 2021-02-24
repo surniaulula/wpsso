@@ -77,7 +77,7 @@ _x( 'Schema BreadcrumbList markup with JSON-LD structured data for better Google
 _x( 'WPSSO FAQ Manager', 'plugin name', 'wpsso' );
 _x( 'Create FAQ and Question / Answer Pages with optional shortcodes to include FAQs and Questions / Answers in your content.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Inherit Parent Metadata', 'plugin name', 'wpsso' );
-_x( 'Inherit the featured and custom images from parents for posts, pages, custom post types, categories, tags, and custom taxonomies.', 'plugin description', 'wpsso' );
+_x( 'Inherit featured and custom images from parents for posts, pages, custom post types, categories, tags, and custom taxonomies.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Schema JSON-LD Markup', 'plugin name', 'wpsso' );
 _x( 'Google Rich Results and JSON-LD structured data for Articles, Carousels, Events, FAQ pages, How-tos, Local SEO, Products, Recipes, Ratings, Reviews, and more.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Organization Markup', 'plugin name', 'wpsso' );

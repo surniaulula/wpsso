@@ -1172,7 +1172,7 @@ msgstr ""
 #: gettext/gettext-lib-config.php:80
 msgctxt "plugin description"
 msgid ""
-"Inherit the featured and custom images from parents for posts, pages, custom "
+"Inherit featured and custom images from parents for posts, pages, custom "
 "post types, categories, tags, and custom taxonomies."
 msgstr ""
 
