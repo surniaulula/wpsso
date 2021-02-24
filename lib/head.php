@@ -136,7 +136,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			} else {
 
-				echo "\n" . '<!-- wpsso head html is disabled -->' . "\n";
+				echo "\n\n" . '<!-- wpsso head html is disabled -->' . "\n\n";
 			}
 		}
 
