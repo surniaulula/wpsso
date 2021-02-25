@@ -12,7 +12,7 @@ Requires PHP: 7.0
 Requires At Least: 4.5
 Tested Up To: 5.6.2
 WC Tested Up To: 5.0.0
-Stable Tag: 8.22.0
+Stable Tag: 8.23.0
 
 Present your content at its best on social sites and in search results, no matter how webpages are shared, re-shared, messaged, posted, embedded, or crawled.
 
@@ -324,10 +324,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added business page URL options in the SSO &gt; Social Pages settings page:
 		* Medium Business Page URL
 		* TikTok Business Page URL
-	* Added custom contacts options in the SSO &gt; Advanced settings page (Premium version):
+	* Added custom contact options in the SSO &gt; Advanced settings page (Premium version):
 		* Medium URL
 		* TikTok URL
-	* Updated the banners and icons of WPSSO Core and all its add-ons.
+	* Updated the banners and icons of the WPSSO Core plugin and all its add-ons.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -1049,7 +1049,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 = 8.23.0 =
 
-(2021/02/25) Added new business page URL and custom contacts options.
+(2021/02/25) Added new business page URL and custom contact options. Updated the banners and icons of the WPSSO Core plugin and all its add-ons.
 
 = 8.22.0 =
 
