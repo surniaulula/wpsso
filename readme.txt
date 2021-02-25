@@ -327,7 +327,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added custom contact options in the SSO &gt; Advanced settings page (Premium version):
 		* Medium URL
 		* TikTok URL
-	* Updated the banners and icons of the WPSSO Core plugin and all its add-ons.
+	* Updated the banners and icons of WPSSO Core and its add-ons.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -1049,7 +1049,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 = 8.23.0 =
 
-(2021/02/25) Added new business page URL and custom contact options. Updated the banners and icons of the WPSSO Core plugin and all its add-ons.
+(2021/02/25) Added new business page URL and custom contact options. Updated the banners and icons of WPSSO Core and its add-ons.
 
 = 8.22.0 =
 
