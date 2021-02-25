@@ -327,6 +327,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added custom contacts options in the SSO &gt; Advanced settings page (Premium version):
 		* Medium URL
 		* TikTok URL
+	* Updated the WPSSO Core plugin and add-on banners and icons.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
