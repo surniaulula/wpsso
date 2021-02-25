@@ -316,7 +316,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.23.0-rc.1 (2021/02/25)**
+**Version 8.23.0 (2021/02/25)**
 
 * **New Features**
 	* None.
@@ -327,7 +327,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added custom contacts options in the SSO &gt; Advanced settings page (Premium version):
 		* Medium URL
 		* TikTok URL
-	* Updated the WPSSO Core plugin and add-on banners and icons.
+	* Updated the banners and icons of WPSSO Core and all its add-ons.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -1047,9 +1047,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.23.0-rc.1 =
+= 8.23.0 =
 
-(2021/02/25) Added business page URL and custom contacts options.
+(2021/02/25) Added new business page URL and custom contacts options.
 
 = 8.22.0 =
 
