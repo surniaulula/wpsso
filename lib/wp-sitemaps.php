@@ -84,11 +84,14 @@ if ( ! class_exists( 'WpssoWpSitemaps' ) ) {
 						'no_found_rows' => true,
 					) ) );
 
-					foreach ( $query->posts as $post_id ) {
+					if ( ! empty( $query->posts ) ) {	// Just in case.
 
-						if ( $this->p->util->robots->is_noindex( 'post', $post_id ) ) {
+						foreach ( $query->posts as $post_id ) {
 
-							$local_cache[ $post_type ][] = $post_id;
+							if ( $this->p->util->robots->is_noindex( 'post', $post_id ) ) {
+
+								$local_cache[ $post_type ][] = $post_id;
+							}
 						}
 					}
 				}
@@ -121,11 +124,14 @@ if ( ! class_exists( 'WpssoWpSitemaps' ) ) {
 						'no_found_rows' => true,
 					) ) );
 
-					foreach ( $query->terms as $term_id ) {
+					if ( ! empty( $query->terms ) ) {	// Just in case.
 
-						if ( $this->p->util->robots->is_noindex( 'term', $term_id ) ) {
+						foreach ( $query->terms as $term_id ) {
 
-							$local_cache[ $taxonomy ][] = $term_id;
+							if ( $this->p->util->robots->is_noindex( 'term', $term_id ) ) {
+
+								$local_cache[ $taxonomy ][] = $term_id;
+							}
 						}
 					}
 				}
@@ -160,11 +166,14 @@ if ( ! class_exists( 'WpssoWpSitemaps' ) ) {
 
 					$users = $query->get_results();
 
-					foreach ( $users as $user_id ) {
+					if ( ! empty( $users ) ) {	// Just in case.
 
-						if ( $this->p->util->robots->is_noindex( 'user', $user_id ) ) {
+						foreach ( $users as $user_id ) {
 
-							$local_cache[] = $user_id;
+							if ( $this->p->util->robots->is_noindex( 'user', $user_id ) ) {
+
+								$local_cache[] = $user_id;
+							}
 						}
 					}
 				}
