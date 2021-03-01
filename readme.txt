@@ -316,6 +316,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.24.0-dev.1 (2021/03/01)**
+
+* **New Features**
+	* Added custom templates for iframe embed content with additional support for custom image URLs.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new lib/theme-compat/embed.php template.
+	* Added a new lib/theme-compat/embed-content.php template.
+* **Requires At Least**
+	* PHP v7.0.
+	* WordPress v4.5.
+
 **Version 8.23.0 (2021/02/25)**
 
 * **New Features**
@@ -1046,6 +1061,10 @@ This release adds a new SSO &gt; Features Status page and integration module for
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.24.0-dev.1 =
+
+(2021/03/01) Added custom templates for iframe embed content with additional support for custom image URLs.
 
 = 8.23.0 =
 
