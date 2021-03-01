@@ -59,9 +59,13 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 			/**
 			 * Filters that are called in the loop.
 			 */
+			add_filter( 'embed_thumbnail_url', array( $this, 'the_embed_thumbnail_url' ), 10000, 1 );
+			add_filter( 'embed_thumbnail_url_image_shape', array( $this, 'the_embed_thumbnail_url_image_shape' ), 10000, 2 );
+
 			add_filter( 'embed_thumbnail_id', array( $this, 'the_embed_thumbnail_id' ), 10000, 1 );
 			add_filter( 'embed_thumbnail_image_size', array( $this, 'the_embed_thumbnail_image_size' ), 10000, 2 );
 			add_filter( 'embed_thumbnail_image_shape', array( $this, 'the_embed_thumbnail_image_shape' ), 10000, 2 );
+
 			add_filter( 'the_excerpt_embed', array( $this, 'the_embed_excerpt' ), 10000, 1 );
 			add_filter( 'embed_site_title_html', array( $this, 'the_embed_site_title_html' ), 10000, 1 );
 		}
@@ -158,9 +162,7 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 				if ( isset( $head_info[ 'og:image:width' ] ) && $head_info[ 'og:image:width' ] > 0 && 
 					isset( $head_info[ 'og:image:height' ] ) && $head_info[ 'og:image:height' ] > 0 ) {
 
-					$image_url = SucomUtil::get_first_mt_media_url( $head_info );
-
-					if ( $image_url ) {
+					if ( $image_url = SucomUtil::get_first_mt_media_url( $head_info ) ) {
 
 						$data[ 'thumbnail_url' ]    = $image_url;
 						$data[ 'thumbnail_width' ]  = $head_info[ 'og:image:width' ];
@@ -180,6 +182,50 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 		public function post_embed_html( $output, $post, $width, $height ) {
 
 			return $output;
+		}
+
+		/**
+		 * Filters the thumbnail image URL for use in the embed template.
+		 */
+		public function the_embed_thumbnail_url( $thumbnail_url ) {
+
+			global $post;
+
+			if ( ! empty( $post->ID ) ) {	// Just in case.
+
+				$head_info = $this->p->post->get_head_info( $post->ID );	// Uses a static local cache.
+
+				if ( $image_url = SucomUtil::get_first_mt_media_url( $head_info ) ) {
+
+					$thumbnail_url = $image_url;
+				}
+			}
+
+			return $thumbnail_url;
+		}
+
+		public function the_embed_thumbnail_url_image_shape( $shape, $thumbnail_url ) {
+
+			global $post;
+
+			if ( ! empty( $post->ID ) ) {	// Just in case.
+
+				$head_info = $this->p->post->get_head_info( $post->ID );	// Uses a static local cache.
+
+				if ( ! empty( $head_info[ 'og:image:width' ] ) && ! empty( $head_info[ 'og:image:height' ] ) ) {
+					
+					if ( $head_info[ 'og:image:width' ] > $head_info[ 'og:image:height' ] ) {
+
+						$shape = 'rectangular';
+
+					} else {
+
+						$shape = 'square';
+					}
+				}
+			}
+
+			return $shape;
 		}
 
 		/**
