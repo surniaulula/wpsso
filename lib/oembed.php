@@ -36,6 +36,19 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 			}
 
 			/**
+			 * Replace the WordPress theme-compat/embed.php and any theme embed.php template with our own.
+			 */
+			add_filter( 'template_include', array( $this, 'template_include_embed' ), 10000, 1 );
+
+			/**
+			 * The WordPress locate_template() and load_template() functions are not filtered and only check the
+			 * STYLESHEETPATH, TEMPLATEPATH, and WordPress theme-compat folders, so preempt their use in
+			 * get_template_part() by hooking the "get_template_part_{$slug}" action to require our own embed template
+			 * part(s).
+			 */
+			add_action( 'get_template_part_wpsso/embed', array( $this, 'template_part_embed' ), 10, 3 );
+
+			/**
 			 * Filters that receive a $post object.
 			 */
 			add_filter( 'oembed_response_data', array( $this, 'post_oembed_response_data' ), 10000, 4 );
@@ -51,6 +64,42 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 			add_filter( 'embed_thumbnail_image_shape', array( $this, 'the_embed_thumbnail_image_shape' ), 10000, 2 );
 			add_filter( 'the_excerpt_embed', array( $this, 'the_embed_excerpt' ), 10000, 1 );
 			add_filter( 'embed_site_title_html', array( $this, 'the_embed_site_title_html' ), 10000, 1 );
+		}
+
+		/**
+		 * Replace the WordPress theme-compat/embed.php and any theme embed.php template with our own.
+		 */
+		public function template_include_embed( $template ) {
+
+			if ( false !== strpos( $template, '/embed.php' ) ) {
+
+				$template = preg_replace( '/^.*\/(embed\.php)$/', WPSSO_PLUGINDIR . 'lib/theme-compat/$1', $template );
+			}
+
+			return $template;
+		}
+
+		/**
+		 * The WordPress locate_template() and load_template() functions are not filtered and only check the
+		 * STYLESHEETPATH, TEMPLATEPATH, and WordPress theme-compat folders, so preempt their use in get_template_part() by
+		 * hooking the "get_template_part_{$slug}" action to require our own embed template part(s).
+		 *
+		 * Example:
+		 *
+		 *	$slug = 'wpsso/embed'
+		 *	$name = 'content'
+		 */
+		public function template_part_embed( $slug, $name, $args ) {
+
+			if ( 0 === strpos( $slug, 'wpsso/' ) ) {	// Just in case.
+
+				$template = preg_replace( '/^wpsso\/(.*)/', WPSSO_PLUGINDIR . 'lib/theme-compat/$1-' . $name . '.php', $slug );
+
+				if ( file_exists( $template ) ) {	// Just in case.
+
+					require $template;
+				}
+			}
 		}
 
 		/**
