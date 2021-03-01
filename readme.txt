@@ -316,10 +316,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.24.0-dev.1 (2021/03/01)**
+**Version 8.24.0-dev.2 (2021/03/01)**
 
 * **New Features**
-	* Added custom templates for iframe embed content with additional support for custom image URLs.
+	* Added theme templates for iframe embed content with additional support for custom image URLs.
 * **Improvements**
 	* None.
 * **Bugfixes**
@@ -1062,9 +1062,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.24.0-dev.1 =
+= 8.24.0-dev.2 =
 
-(2021/03/01) Added custom templates for iframe embed content with additional support for custom image URLs.
+(2021/03/01) Added theme templates for iframe embed content with additional support for custom image URLs.
 
 = 8.23.0 =
 
