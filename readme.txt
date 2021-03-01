@@ -10,7 +10,7 @@ Tags: structured data, seo, schema, facebook, open graph, linkedin, twitter, goo
 Contributors: jsmoriss
 Requires PHP: 7.0
 Requires At Least: 4.5
-Tested Up To: 5.6.2
+Tested Up To: 5.7
 WC Tested Up To: 5.0.0
 Stable Tag: 8.23.0
 
