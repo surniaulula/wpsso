@@ -13,7 +13,7 @@
  * Description: Present your content at its best on social sites and in search results, no matter how webpages are shared, re-shared, messaged, posted, embedded, or crawled.
  * Requires PHP: 7.0
  * Requires At Least: 4.5
- * Tested Up To: 5.6.2
+ * Tested Up To: 5.7
  * WC Tested Up To: 5.0.0
  * Version: 8.24.0-dev.1
  *
