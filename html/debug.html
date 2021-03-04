@@ -25,6 +25,8 @@
 
 <p>Some older versions of PHP are known to have bugs in their ImageMagick library or PHP may have timed-out when trying to create several thumbnail images in a row (<a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-an-http-error-when-uploading-images/">see this FAQ for details</a>), or PHP may have run out of memory (<a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-a-php-fatal-out-of-memory-error/">see this FAQ for details</a>), or WPSSO Core may be triggering a bug in your theme or another plugin (try disabling WPSSO Core's use of the WordPress content filter as suggested below).</p>
 
+<a name="timeout-or-layout-issues"></a>
+
 <h3>Timeout or Layout Issues</h3>
 
 <blockquote>
@@ -42,6 +44,8 @@
 <p>If you disable the content filter, <em>and your Post / Page content relies upon shortcodes for its text</em>, then you may find that WPSSO Core cannot create accurate description meta tags. WPSSO Core looks for a custom description and excerpt before falling back to using the content text. In the case where content filters are disabled, and the content uses shortcodes for its text, then you may have to enter an excerpt and/or custom description for those Posts / Pages.</p>
 
 <p>Since WPSSO Core uses the custom description and/or post excerpt <em>before</em> falling back the content, using a custom description and/or excerpt for a few Posts / Pages could be another alternative to disabling the content filter for the whole website.</p>
+
+<a name="wordpress-and-php-error-messages"></a>
 
 <h3>WordPress and PHP Error Messages</h3>
 
