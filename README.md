@@ -1,4 +1,4 @@
-<h1>WPSSO Core</h1><h3>Structured Data SEO for Everyone</h3>
+<h1>WPSSO Core</h1><h3>Meta Tags and Structured Data SEO for Everyone</h3>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
