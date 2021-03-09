@@ -15,9 +15,7 @@
 
 <h2>Description</h2>
 
-<h3 style="margin-top:0;"><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"> Structured Data SEO for Everyone</h3>
-
-<p><strong>Present your content at its best on social sites and in search results, no matter how webpages are shared, re-shared, messaged, posted, embedded, or crawled:</strong></p>
+<p><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"><strong>Present your content at its best on social sites and in search results, no matter how webpages are shared, re-shared, messaged, posted, embedded, or crawled:</strong></p>
 
 <p>WPSSO automatically creates meta tags and structured data markup for Facebook / Open Graph, Pinterest Rich Pins, Twitter Cards, Google Knowledge Graph, Google Rich Results (aka Schema, Rich Snippets, Structured Data), WhatsApp and Messaging Apps, Mobile Web Browsers, WordPress REST API, LinkedIn / oEmbed data and more &mdash; including markup for image SEO, video SEO, extensive e-Commerce product markup (for WooCommerce and others), mobile store apps, author profile / authorship, co-authors, publisher information, local business / local SEO, aggregate ratings, reviews, recipe information, event details, and much, much more &mdash; all from your existing content, supported plugin data, and service API data.</p>
 
