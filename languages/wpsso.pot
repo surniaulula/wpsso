@@ -3443,13 +3443,13 @@ msgid ""
 "for the required %4$s image dimensions."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:217 lib/pro/social/buddypress.php:101
+#: gettext/gettext-lib-pro.php:217 lib/pro/social/buddypress.php:95
 #: lib/std/social/buddypress.php:58
 msgctxt "option label"
 msgid "BuddyPress Member Bio Field Name"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:218 lib/pro/social/buddypress.php:121
+#: gettext/gettext-lib-pro.php:218 lib/pro/social/buddypress.php:112
 #: lib/std/social/buddypress.php:75
 msgid ""
 "The BuddyPress member profile page does not include the <em>Biographical "
@@ -3460,7 +3460,7 @@ msgid ""
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:219 lib/edit.php:495 lib/page.php:1276
-#: lib/pro/social/buddypress.php:700
+#: lib/pro/social/buddypress.php:667
 msgctxt "default description"
 msgid "No Description."
 msgstr ""

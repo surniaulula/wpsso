@@ -56,7 +56,7 @@ if ( ! class_exists( 'WpssoStdSocialBuddypress' ) ) {
 
 			$table_rows[ 'plugin_bp_bio_field' ] = '' .
 				$form->get_th_html( _x( 'BuddyPress Member Bio Field Name', 'option label', 'wpsso' ), '', 'plugin_bp_bio_field' ) . 
-				'<td class="blank">' . $this->p->options[ 'plugin_bp_bio_field' ] . '</td>';
+				'<td class="blank">' . $form->get_no_input( 'plugin_bp_bio_field' ) . '</td>';
 
 			return $table_rows;
 		}
