@@ -3077,110 +3077,18 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 * Deprecated since 2020/04/28.
 		 */
 		public function add_advanced_product_attr_table_rows( array &$table_rows, $form ) {
-
-			$this->add_advanced_product_attrs_table_rows( $table_rows, $form );
 		}
 
+		/**
+		 * Deprecated since 2021/03/10.
+		 */
 		public function add_advanced_product_attrs_table_rows( array &$table_rows, $form ) {
-
-			$pkg_info = $this->get_pkg_info();	// Returns an array from cache.
-			$td_attr  = $pkg_info[ 'wpsso' ][ 'pp' ] ? '' : ' class="blank"';
-			$get_func = $pkg_info[ 'wpsso' ][ 'pp' ] ? 'get_input' : 'get_no_input';
-
-			$table_rows[] = $pkg_info[ 'wpsso' ][ 'pp' ] ? '' : '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
-
-			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'info-product-attrs' ) . '</td>';
-
-			foreach ( $this->p->cf[ 'form' ][ 'attr_labels' ] as $opt_key => $opt_label ) {
-
-				$cmt_transl = self::get_option_unit_comment( $opt_key );
-
-				$table_rows[ $opt_key ] = '' .
-					$form->get_th_html( _x( $opt_label, 'option label', 'wpsso' ), '', $opt_key ) . 
-					'<td' . $td_attr . '>' . $form->$get_func( $opt_key ) . $cmt_transl . '</td>';
-			}
 		}
 
+		/**
+		 * Deprecated since 2021/03/10.
+		 */
 		public function add_advanced_custom_fields_table_rows( array &$table_rows, $form ) {
-
-			$pkg_info = $this->get_pkg_info();	// Returns an array from cache.
-			$td_attr  = $pkg_info[ 'wpsso' ][ 'pp' ] ? '' : ' class="blank"';
-			$get_func = $pkg_info[ 'wpsso' ][ 'pp' ] ? 'get_input' : 'get_no_input';
-
-			$table_rows[] = $pkg_info[ 'wpsso' ][ 'pp' ] ? '' : '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
-
-			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'info-custom-fields' ) . '</td>';
-
-			/**
-			 * Example config:
-			 *
-			 * 	$cf_md_index = array(
-			 *		'plugin_cf_addl_type_urls'           => 'schema_addl_type_url',
-			 *		'plugin_cf_howto_steps'              => 'schema_howto_step',
-			 *		'plugin_cf_howto_supplies'           => 'schema_howto_supply',
-			 *		'plugin_cf_howto_tools'              => 'schema_howto_tool',
-			 *		'plugin_cf_img_url'                  => 'og_img_url',
-			 *		'plugin_cf_product_avail'            => 'product_avail',
-			 *		'plugin_cf_product_brand'            => 'product_brand',
-			 *		'plugin_cf_product_color'            => 'product_color',
-			 *		'plugin_cf_product_condition'        => 'product_condition',
-			 *		'plugin_cf_product_currency'         => 'product_currency',
-			 *		'plugin_cf_product_material'         => 'product_material',
-			 *		'plugin_cf_product_mfr_part_no'      => 'product_mfr_part_no',		// Product MPN.
-			 *		'plugin_cf_product_price'            => 'product_price',
-			 *		'plugin_cf_product_retailer_part_no' => 'product_retailer_part_no',	// Product SKU.
-			 *		'plugin_cf_product_size'             => 'product_size',
-			 *		'plugin_cf_product_target_gender'    => 'product_target_gender',
-			 *		'plugin_cf_recipe_ingredients'       => 'schema_recipe_ingredient',
-			 *		'plugin_cf_recipe_instructions'      => 'schema_recipe_instruction',
-			 *		'plugin_cf_sameas_urls'              => 'schema_sameas_url',
-			 *		'plugin_cf_vid_embed'                => 'og_vid_embed',
-			 *		'plugin_cf_vid_url'                  => 'og_vid_url',
-			 * 	);
-			 *
-			 * Hooked by the WpssoProRecipeWpRecipeMaker and WpssoProRecipeWpUltimateRecipe classes
-			 * to clear the 'plugin_cf_recipe_ingredients' and 'plugin_cf_recipe_instructions' values.
-			 */
-			$cf_md_index = (array) apply_filters( 'wpsso_cf_md_index', $this->p->cf[ 'opt' ][ 'cf_md_index' ] );
-
-			$opt_labels = array();
-
-			foreach ( $cf_md_index as $opt_key => $md_key ) {
-
-				/**
-				 * Make sure we have a label for the custom field option.
-				 */
-				if ( ! empty( $this->p->cf[ 'form' ][ 'cf_labels' ][ $opt_key ] ) ) {
-
-					$opt_labels[ $opt_key ] = $this->p->cf[ 'form' ][ 'cf_labels' ][ $opt_key ];
-				}
-			}
-
-			asort( $opt_labels );
-
-			foreach ( $opt_labels as $opt_key => $opt_label ) {
-
-				/**
-				 * If we don't have a meta data key, then clear the custom field name (just in case) and disable
-				 * the option.
-				 */
-				if ( empty( $cf_md_index[ $opt_key ] ) ) {
-
-					$form->options[ $opt_key ] = '';
-
-					$always_disabled = true;
-
-				} else {
-					$always_disabled = false;
-				}
-
-				$cmt_transl = self::get_option_unit_comment( $opt_key );
-
-				$table_rows[ $opt_key ] = '' .
-					$form->get_th_html( _x( $opt_label, 'option label', 'wpsso' ), '', $opt_key ) . 
-					'<td' . $td_attr . '>' . $form->$get_func( $opt_key, $css_class = '', $css_id = '',
-						$max_len = 0, $holder = '', $always_disabled ) . $cmt_transl . '</td>';
-			}
 		}
 
 		public static function get_option_unit_comment( $opt_key ) {

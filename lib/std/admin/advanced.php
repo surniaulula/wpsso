@@ -22,37 +22,29 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$this->p =& $plugin;
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
 			$this->p->util->add_plugin_filters( $this, array(
-				'plugin_interface_rows'         => 2,	// Interface tab.
-				'plugin_integration_rows'       => 2,	// Integration tab.
-				'plugin_cache_rows'             => 3,	// Caching tab.
-				'services_media_rows'           => 2,	// Media Services tab.
-				'services_shortening_rows'      => 2,	// Shortening Services tab.
-				'services_ratings_reviews_rows' => 2,	// Ratings and Reviews tab.
-				'cm_custom_contacts_rows'       => 2,	// Custom Contacts tab.
-				'cm_default_contacts_rows'      => 2,	// Default Contacts tab.
-				'head_tags_facebook_rows'       => 3,
-				'head_tags_open_graph_rows'     => 3,
-				'head_tags_twitter_rows'        => 3,
-				'head_tags_schema_rows'         => 3,
-				'head_tags_seo_other_rows'      => 3,
+				'plugin_interface_rows'         => 2,	// Advanced Settings > Interface tab.
+				'plugin_integration_rows'       => 2,	// Advanced Settings > Integration tab.
+				'plugin_cache_rows'             => 3,	// Advanced Settings > Caching tab.
+				'services_media_rows'           => 2,	// Service APIs > Media Services tab.
+				'services_shortening_rows'      => 2,	// Service APIs > Shortening Services tab.
+				'services_ratings_reviews_rows' => 2,	// Service APIs > Ratings and Reviews tab.
+				'cm_custom_contacts_rows'       => 2,	// Contact Fields > Custom Contacts tab.
+				'cm_default_contacts_rows'      => 2,	// Contact Fields > Default Contacts tab.
+				'metadata_product_attrs_rows'   => 2,	// Metadata > Product Attributes tab.
+				'metadata_custom_fields_rows'   => 2,	// Metadata > Custom Fields tab.
+				'head_tags_facebook_rows'       => 3,	// HTML Tags > Facebook tab.
+				'head_tags_open_graph_rows'     => 3,	// HTML Tags > Open Graph tab.
+				'head_tags_twitter_rows'        => 3,	// HTML Tags > Twitter tab.
+				'head_tags_schema_rows'         => 3,	// HTML Tags > Schema tab.
+				'head_tags_seo_other_rows'      => 3,	// HTML Tags > SEO / Other tab.
 			), $prio = 20 );
 		}
 
 		/**
-		 * Interface tab.
+		 * Advanced Settings > Interface tab.
 		 */
 		public function filter_plugin_interface_rows( $table_rows, $form ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
@@ -147,14 +139,9 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		}
 
 		/**
-		 * Integration tab.
+		 * Advanced Settings > Integration tab.
 		 */
 		public function filter_plugin_integration_rows( $table_rows, $form ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
@@ -264,14 +251,9 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		}
 
 		/**
-		 * Caching tab.
+		 * Advanced Settings > Caching tab.
 		 */
 		public function filter_plugin_cache_rows( $table_rows, $form, $network = false ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
 
 			$table_rows[] = '<td colspan="' . ( $network ? 4 : 2 ) . '">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
@@ -358,7 +340,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		}
 
 		/**
-		 * Media Services tab.
+		 * Service APIs > Media Services tab.
 		 */
 		public function filter_services_media_rows( $table_rows, $form ) {
 
@@ -390,7 +372,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		}
 
 		/**
-		 * Shortening Services tab.
+		 * Service APIs > Shortening Services tab.
 		 */
 		public function filter_services_shortening_rows( $table_rows, $form ) {
 
@@ -419,7 +401,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		}
 
 		/**
-		 * Ratings and Reviews tab.
+		 * Service APIs > Ratings and Reviews tab.
 		 */
 		public function filter_services_ratings_reviews_rows( $table_rows, $form ) {
 
@@ -464,14 +446,9 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		}
 
 		/**
-		 * Custom Contacts tab.
+		 * Contact Fields > Custom Contacts tab.
 		 */
 		public function filter_cm_custom_contacts_rows( $table_rows, $form ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
 
 			$table_rows[] = '<td colspan="4">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
@@ -524,14 +501,9 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		}
 
 		/**
-		 * Default Contacts tab.
+		 * Contact Fields > Default Contacts tab.
 		 */
 		public function filter_cm_default_contacts_rows( $table_rows, $form ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
 
 			$table_rows[] = '<td colspan="4">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
@@ -571,53 +543,135 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		}
 
 		/**
-		 * Facebook tab.
+		 * Metadata > Product Attributes tab.
+		 */
+		public function filter_metadata_product_attrs_rows( $table_rows, $form ) {
+
+			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'info-product-attrs' ) . '</td>';
+
+			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
+
+			foreach ( $this->p->cf[ 'form' ][ 'attr_labels' ] as $opt_key => $opt_label ) {
+
+				$cmt_transl = WpssoAdmin::get_option_unit_comment( $opt_key );
+
+				$table_rows[ $opt_key ] = '' .
+					$form->get_th_html( _x( $opt_label, 'option label', 'wpsso' ), '', $opt_key ) . 
+					'<td class="blank">' . $form->get_no_input( $opt_key ) . $cmt_transl . '</td>';
+			}
+			return $table_rows;
+		}
+
+		/**
+		 * Metadata > Custom Fields tab.
+		 */
+		public function filter_metadata_custom_fields_rows( $table_rows, $form ) {
+
+			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'info-custom-fields' ) . '</td>';
+
+			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
+
+			/**
+			 * Example config:
+			 *
+			 * 	$cf_md_index = array(
+			 *		'plugin_cf_addl_type_urls'           => 'schema_addl_type_url',
+			 *		'plugin_cf_howto_steps'              => 'schema_howto_step',
+			 *		'plugin_cf_howto_supplies'           => 'schema_howto_supply',
+			 *		'plugin_cf_howto_tools'              => 'schema_howto_tool',
+			 *		'plugin_cf_img_url'                  => 'og_img_url',
+			 *		'plugin_cf_product_avail'            => 'product_avail',
+			 *		'plugin_cf_product_brand'            => 'product_brand',
+			 *		'plugin_cf_product_color'            => 'product_color',
+			 *		'plugin_cf_product_condition'        => 'product_condition',
+			 *		'plugin_cf_product_currency'         => 'product_currency',
+			 *		'plugin_cf_product_material'         => 'product_material',
+			 *		'plugin_cf_product_mfr_part_no'      => 'product_mfr_part_no',		// Product MPN.
+			 *		'plugin_cf_product_price'            => 'product_price',
+			 *		'plugin_cf_product_retailer_part_no' => 'product_retailer_part_no',	// Product SKU.
+			 *		'plugin_cf_product_size'             => 'product_size',
+			 *		'plugin_cf_product_target_gender'    => 'product_target_gender',
+			 *		'plugin_cf_recipe_ingredients'       => 'schema_recipe_ingredient',
+			 *		'plugin_cf_recipe_instructions'      => 'schema_recipe_instruction',
+			 *		'plugin_cf_sameas_urls'              => 'schema_sameas_url',
+			 *		'plugin_cf_vid_embed'                => 'og_vid_embed',
+			 *		'plugin_cf_vid_url'                  => 'og_vid_url',
+			 * 	);
+			 *
+			 * Hooked by the WpssoProRecipeWpRecipeMaker and WpssoProRecipeWpUltimateRecipe classes
+			 * to clear the 'plugin_cf_recipe_ingredients' and 'plugin_cf_recipe_instructions' values.
+			 */
+			$cf_md_index = (array) apply_filters( 'wpsso_cf_md_index', $this->p->cf[ 'opt' ][ 'cf_md_index' ] );
+
+			$opt_labels = array();
+
+			foreach ( $cf_md_index as $opt_key => $md_key ) {
+
+				/**
+				 * Make sure we have a label for the custom field option.
+				 */
+				if ( ! empty( $this->p->cf[ 'form' ][ 'cf_labels' ][ $opt_key ] ) ) {
+
+					$opt_labels[ $opt_key ] = $this->p->cf[ 'form' ][ 'cf_labels' ][ $opt_key ];
+				}
+			}
+
+			asort( $opt_labels );
+
+			foreach ( $opt_labels as $opt_key => $opt_label ) {
+
+				/**
+				 * If we don't have a meta data key, then clear the custom field name (just in case) and disable
+				 * the option.
+				 */
+				if ( empty( $cf_md_index[ $opt_key ] ) ) {
+
+					$form->options[ $opt_key ] = '';
+
+					$always_disabled = true;
+
+				} else {
+					$always_disabled = false;
+				}
+
+				$cmt_transl = WpssoAdmin::get_option_unit_comment( $opt_key );
+
+				$table_rows[ $opt_key ] = '' .
+					$form->get_th_html( _x( $opt_label, 'option label', 'wpsso' ), '', $opt_key ) . 
+					'<td class="blank">' . $form->get_no_input( $opt_key, $css_class = '', $css_id = '',
+						$max_len = 0, $holder = '', $always_disabled ) . $cmt_transl . '</td>';
+			}
+			return $table_rows;
+		}
+
+		/**
+		 * HTML Tags > Facebook tab.
 		 */
 		public function filter_head_tags_facebook_rows( $table_rows, $form, $network = false ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
 
 			return $this->get_head_tags_rows( $table_rows, $form, $network, array( '/^add_(meta)_(property)_((fb|al):.+)$/' ) );
 		}
 
 		/**
-		 * Open Graph tab.
+		 * HTML Tags > Open Graph tab.
 		 */
 		public function filter_head_tags_open_graph_rows( $table_rows, $form, $network = false ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
 
 			return $this->get_head_tags_rows( $table_rows, $form, $network, array( '/^add_(meta)_(property)_(.+)$/' ) );
 		}
 
 		/**
-		 * Twitter tab.
+		 * HTML Tags > Twitter tab.
 		 */
 		public function filter_head_tags_twitter_rows( $table_rows, $form, $network = false ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
 
 			return $this->get_head_tags_rows( $table_rows, $form, $network, array( '/^add_(meta)_(name)_(twitter:.+)$/' ) );
 		}
 
 		/**
-		 * Schema tab.
+		 * HTML Tags > Schema tab.
 		 */
 		public function filter_head_tags_schema_rows( $table_rows, $form, $network = false ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
 
 			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
 
@@ -628,14 +682,9 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		}
 
 		/**
-		 * SEO / Other tab.
+		 * HTML Tags > SEO / Other tab.
 		 */
 		public function filter_head_tags_seo_other_rows( $table_rows, $form, $network = false ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
 
 			if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
 

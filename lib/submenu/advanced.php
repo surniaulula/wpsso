@@ -201,21 +201,6 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 					$this->add_advanced_plugin_settings_table_rows( $table_rows, $this->form );
 
 					break;
-
-				/**
-				 * Metadata metabox.
-				 */
-				case 'metadata-product_attrs':
-
-					$this->add_advanced_product_attrs_table_rows( $table_rows, $this->form );
-
-					break;
-
-				case 'metadata-custom_fields':
-
-					$this->add_advanced_custom_fields_table_rows( $table_rows, $this->form );
-
-					break;
 			}
 
 			return $table_rows;
