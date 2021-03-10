@@ -314,6 +314,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.25.0-dev.5 (2021/03/10)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Updated the All In One SEO plugin options conflict detection.
+	* Moved customization of image sizes to the Premium version. 
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.0.
+	* WordPress v4.5.
+
 **Version 8.24.0 (2021/03/04)**
 
 * **New Features**
@@ -1059,6 +1074,10 @@ This release adds a new SSO &gt; Features Status page and integration module for
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.25.0-dev.5 =
+
+(2021/03/10) Updated the All In One SEO plugin options conflict detection.
 
 = 8.24.0 =
 
