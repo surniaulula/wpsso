@@ -464,7 +464,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-site_pub_schema_type':	// WebSite Publisher Type.
 
-							$text .= __( 'Select a Schema type for the publisher of the content for this website.', 'wpsso' ) . ' ';
+							$text .= __( 'Select a Schema type for the publisher of content for this website.', 'wpsso' ) . ' ';
 
 							$text .= __( 'Traditionally, the Schema Organization type is selected for business websites, where-as the Schema Person type is selected for personal websites.', 'wpsso' );
 
@@ -3011,7 +3011,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= ' <li>' . __( 'Upscaling of images and URL shortening.', 'wpsso' ) . '</li>';
 
-						$text .= ' <li>' . __( 'Advanced plugin settings.', 'wpsso' ) . '</li>';
+						$text .= ' <li>' . __( 'Customize default image sizes.', 'wpsso' ) . '</li>';
+
+						$text .= ' <li>' . __( 'Customize default document types.', 'wpsso' ) . '</li>';
+
+						$text .= ' <li>' . __( 'Customize default advanced settings.', 'wpsso' ) . '</li>';
 
 						$text .= $li_support_link;
 
@@ -3445,16 +3449,21 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			return $table_rows;
 		}
 
-		public function get_schema_disabled_rows( $table_rows = array() ) {
+		public function get_schema_disabled_rows( $table_rows = array(), $col_span = 1 ) {
 
 			if ( ! is_array( $table_rows ) ) {	// Just in case.
 
 				$table_rows = array();
 			}
 
-			$table_rows[ 'schema_disabled' ] = '<tr><td align="center">' . $this->schema_disabled() . '</td></tr>';
+			$this->add_schema_disabled_rows( $table_rows, $col_span );
 
 			return $table_rows;
+		}
+
+		public function add_schema_disabled_rows( array &$table_rows, $col_span = 1 ) {
+
+			$table_rows[ 'schema_disabled' ] = '<tr><td align="center" colspan="' . $col_span . '">' . $this->schema_disabled() . '</td></tr>';
 		}
 
 		public function more_schema_options() {
@@ -3519,7 +3528,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					'wpsso' ), $html_tag ) . ' ';
 
 				$text .= sprintf( __( 'You can re-enable this option under the %s tab.',
-					'wpsso' ), $html_tag, $seo_other_tab_link );
+					'wpsso' ), $seo_other_tab_link );
 			}
 
 			return $text;

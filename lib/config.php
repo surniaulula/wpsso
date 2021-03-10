@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.24.0',	// Plugin version.
-					'opt_version' => '776',		// Increment when changing default option values.
+					'version'     => '8.25.0-dev.5',	// Plugin version.
+					'opt_version' => '777',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results, no matter how webpages are shared, re-shared, messaged, posted, embedded, or crawled.',
@@ -90,9 +90,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'lib' => array(
 						'pro' => array(
 							'admin' => array(
-								'advanced' => 'Advanced Settings Filters',
-								'general'  => 'General Settings Filters',
-								'edit'     => 'Edit Metabox Filters',
+								'advanced'       => 'Advanced Settings Filters',
+								'document-types' => 'Document Types Filters',
+								'edit'           => 'Edit Metabox Filters',
+								'general'        => 'General Settings Filters',
+								'image-sizes'    => 'Image Sizes Filters',
 							),
 							'ecom' => array(
 								'edd'                           => '(plugin) Easy Digital Downloads',
@@ -176,9 +178,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 						'std' => array(
 							'admin' => array(
-								'advanced' => 'Advanced Settings Filters',
-								'general'  => 'General Settings Filters',
-								'edit'     => 'Edit Metabox Filters',
+								'advanced'       => 'Advanced Settings Filters',
+								'document-types' => 'Document Types Filters',
+								'edit'           => 'Edit Metabox Filters',
+								'general'        => 'General Settings Filters',
+								'image-sizes'    => 'Image Sizes Filters',
 							),
 							'social' => array(
 								'buddypress' => '(plugin) BuddyPress',
@@ -190,10 +194,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'dashboard'      => 'Dashboard',
 							'features'       => 'Features Status',
 							'general'        => 'General Settings',
-							'advanced'       => 'Advanced Settings',
 							'social-pages'   => 'Social Pages',
 							'image-sizes'    => 'Image Sizes',
 							'document-types' => 'Document Types',
+							'advanced'       => 'Advanced Settings',
 							'addons'         => 'Complementary Add-ons',
 							'licenses'       => 'Premium Licenses',
 							'tools'          => 'Tools and Actions',
@@ -1568,11 +1572,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_property_product:weight:value'            => 1,
 					'add_meta_property_product:weight:units'            => 1,
 					'add_meta_name_author'                              => 1,
+					'add_meta_name_baidu-site-verification'             => 1,	// Baidu Website Verification ID.
 					'add_meta_name_description'                         => 1,
 					'add_meta_name_generator'                           => 1,
+					'add_meta_name_google-site-verification'            => 1,	// Google Website Verification ID.
+					'add_meta_name_msvalidate.01'                       => 1,	// Microsoft Bing Website Verification ID.
+					'add_meta_name_p:domain_verify'                     => 1,	// Pinterest Website Verification ID.
 					'add_meta_name_robots'                              => 1,
-					'add_meta_name_google-site-verification'            => 1,
-					'add_meta_name_p:domain_verify'                     => 1,
 					'add_meta_name_thumbnail'                           => 1,
 					'add_meta_name_twitter:card'                        => 1,
 					'add_meta_name_twitter:creator'                     => 1,
@@ -1602,6 +1608,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_name_twitter:data1'                       => 1,
 					'add_meta_name_twitter:label2'                      => 1,
 					'add_meta_name_twitter:data2'                       => 1,
+					'add_meta_name_yandex-verification'                 => 1,	// Yandex Website Verification ID.
 
 					/**
 					 * Link itemprop.
@@ -1994,6 +2001,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_recipe_ingredient'  => true,	// Recipe Ingredients.
 					'schema_recipe_instruction' => true,	// Recipe Instructions.
 					'schema_sameas_url'         => true,	// Same-As URLs.
+				),
+
+				'site_verify_meta_names' => array(
+					'baidu_site_verify'  => 'baidu-site-verification',	// Baidu Website Verification ID.
+					'g_site_verify'      => 'google-site-verification',	// Google Website Verification ID.
+					'bing_site_verify'   => 'msvalidate.01',		// Microsoft Bing Website Verification ID.
+					'p_site_verify'      => 'p:domain_verify',		// Pinterest Website Verification ID.
+					'yandex_site_verify' => 'yandex-verification',		// Yandex Website Verification ID.
 				),
 			),
 

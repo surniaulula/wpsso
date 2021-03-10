@@ -1366,7 +1366,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_input_image_dimensions( $name, $is_disabled = false ) {
 
-			$html = $this->get_input( $name . '_width', $css_class = 'size width', $css_id = '', $len = 0, $holder = '', $is_disabled ) . 'x&nbsp;';
+			$html = $this->get_input( $name . '_width', $css_class = 'size width', $css_id = '', $len = 0, $holder = '', $is_disabled ) . 'x';
 
 			$html .= $this->get_input( $name . '_height', $css_class = 'size height', $css_id = '', $len = 0, $holder = '', $is_disabled ) . 'px' . ' ';
 

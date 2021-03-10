@@ -67,58 +67,72 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 				return;
 			}
 
-			$opts = get_option( 'aioseop_options' );
+			$min_version = '4.0.16';
+
+			/**
+			 * Check for minimum supported version.
+			 */
+			if ( ! defined( 'AIOSEO_VERSION' ) || version_compare( AIOSEO_VERSION, $min_version, '<' ) ) {
+
+				$notice_msg_transl = __( 'The %1$s plugin is too old - please update the %1$s plugin to version %2$s or newer.', 'wpsso' );
+
+				$this->p->notice->err( $this->notice_pre . sprintf( $notice_msg_transl, __( 'All in One SEO', 'all-in-one-seo-pack' ), $min_version ) );
+
+				return;
+			}
 
 			/**
 			 * Check for Open Graph.
 			 */
-			if ( ! empty( $opts[ 'modules' ][ 'aiosp_feature_manager_options' ][ 'aiosp_feature_manager_enable_opengraph' ] ) ) {
+			if ( aioseo()->options->social->facebook->general->enable ) {
 
 				// translators: Please ignore - translation uses a different text domain.
-				$label_transl = '<strong>' . __( 'Social Meta', 'all-in-one-seo-pack' ) . '</strong>';
+				$label_transl = '<strong>' . __( 'Enable Open Graph Markup', 'all-in-one-seo-pack' ) . '</strong>';
 
-				$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=all-in-one-seo-pack%2Fmodules%2Faioseop_feature_manager.php' );
+				$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=aioseo-social-networks#/facebook' );
 
 				$settings_link = '<a href="' . $settings_url . '">' .
 					// translators: Please ignore - translation uses a different text domain.
 					__( 'All in One SEO', 'all-in-one-seo-pack' ) . ' &gt; ' .
 					// translators: Please ignore - translation uses a different text domain.
-					__( 'Feature Manager', 'all-in-one-seo-pack' ) . '</a>';
+					__( 'Social Networks', 'all-in-one-seo-pack' ) . ' &gt; ' .
+					// translators: Please ignore - translation uses a different text domain.
+					__( 'Facebook', 'all-in-one-seo-pack' ) . '</a>';
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( $this->log_pre . 'aioseop social meta feature is enabled' );
+					$this->p->debug->log( $this->log_pre . 'aioseop open graph markup is enabled' );
 				}
 
-				$notice_msg_transl = __( 'Please deactivate the %1$s feature in the %2$s settings.', 'wpsso' );
+				$notice_msg_transl = __( 'Please uncheck the %1$s option in the %2$s settings.', 'wpsso' );
 
 				$this->p->notice->err( $this->notice_pre . sprintf( $notice_msg_transl, $label_transl, $settings_link ) );
 			}
 
 			/**
-			 * Check for Knowledge Graph.
+			 * Check for Twitter.
 			 */
-			if ( ! empty( $opts[ 'aiosp_schema_markup' ] ) ) {
+			if ( aioseo()->options->social->twitter->general->enable ) {
 
 				// translators: Please ignore - translation uses a different text domain.
-				$label_transl = '<strong>' . __( 'Use Schema.org Markup', 'all-in-one-seo-pack' ) . '</strong>';
+				$label_transl = '<strong>' . __( 'Enable Twitter Card', 'all-in-one-seo-pack' ) . '</strong>';
 
-				$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=all-in-one-seo-pack%2Faioseop_class.php' );
+				$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=aioseo-social-networks#/twitter' );
 
 				$settings_link = '<a href="' . $settings_url . '">' .
 					// translators: Please ignore - translation uses a different text domain.
 					__( 'All in One SEO', 'all-in-one-seo-pack' ) . ' &gt; ' .
 					// translators: Please ignore - translation uses a different text domain.
-					__( 'General Settings', 'all-in-one-seo-pack' ) . ' &gt; ' .
+					__( 'Social Networks', 'all-in-one-seo-pack' ) . ' &gt; ' .
 					// translators: Please ignore - translation uses a different text domain.
-					__( 'General Settings', 'all-in-one-seo-pack' ) . '</a>';
+					__( 'Twitter', 'all-in-one-seo-pack' ) . '</a>';
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( $this->log_pre . 'aioseop schema markup option is checked' );
+					$this->p->debug->log( $this->log_pre . 'aioseop twitter card is enabled' );
 				}
 
-				$notice_msg_transl = __( 'Please uncheck the %1$s option in the %2$s metabox.', 'wpsso' );
+				$notice_msg_transl = __( 'Please uncheck the %1$s option in the %2$s settings.', 'wpsso' );
 
 				$this->p->notice->err( $this->notice_pre . sprintf( $notice_msg_transl, $label_transl, $settings_link ) );
 			}

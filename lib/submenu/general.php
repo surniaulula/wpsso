@@ -237,11 +237,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$this->p->msgs->maybe_preview_images_first() .
 					'</td>';
 
-					$table_rows[ 'og_img' ] = $this->form->get_tr_hide_img_dim( 'basic', 'og_img' ). 
-					$this->form->get_th_html( _x( 'Open Graph Image Size', 'option label', 'wpsso' ),
-						$css_class = '', $css_id = 'og_img_size' ) . 
-					'<td>' . $this->form->get_input_image_dimensions( 'og_img' ) . '</td>';
-
 					$table_rows[ 'og_def_img_id' ] = '' . 
 					$this->form->get_th_html( _x( 'Default Image ID', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'og_def_img_id' ) . 
@@ -292,13 +287,10 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					/**
 					 * Google settings.
 					 */
-					$g_verif_disabled = empty( $this->p->options[ 'add_meta_name_google-site-verification' ] ) ? true : false;
-
 					$table_rows[ 'g_site_verify' ] = '' .
 					$this->form->get_th_html( _x( 'Google Website Verification ID', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'g_site_verify' ) . 
-					'<td>' . $this->form->get_input( 'g_site_verify',
-						$css_class = 'api_key', $css_id = '', $len = 0, $holder = false, $g_verif_disabled ) . ' ' .
+					'<td>' . $this->form->get_input( 'g_site_verify', $css_class = 'api_key' ) . '</td>';
 
 					/**
 					 * Schema settings.
@@ -415,42 +407,24 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						$css_class = '', $css_id = 'tc_type_default' ) . 
 					'<td>' . $this->form->get_select( 'tc_type_default', $tc_types ) . '</td>';
 
-					$table_rows[ 'tc_sum_img' ] = $this->form->get_tr_hide_img_dim( 'basic', 'tc_sum_img' ) . 
-					$this->form->get_th_html( _x( 'Summary Card Image Size', 'option label', 'wpsso' ),
-						$css_class = '', $css_id = 'tc_sum_img_size' ) . 
-					'<td>' . $this->form->get_input_image_dimensions( 'tc_sum_img' ) . '</td>';
-
-					$table_rows[ 'tc_lrg_img' ] = $this->form->get_tr_hide_img_dim( 'basic', 'tc_lrg_img' ) . 
-					$this->form->get_th_html( _x( 'Large Image Summary Card Img Size', 'option label', 'wpsso' ),
-						$css_class = '', $css_id = 'tc_lrg_img_size' ) . 
-					'<td>' . $this->form->get_input_image_dimensions( 'tc_lrg_img' ) . '</td>';
-
 					break;
 
 				case 'pub-other_social':
 
-					$social_accounts = apply_filters( 'wpsso_social_accounts', $this->p->cf[ 'form' ][ 'social_accounts' ] );
+					$table_rows[ 'baidu_site_verify' ] = '' .
+					$this->form->get_th_html( _x( 'Baidu Website Verification ID', 'option label', 'wpsso' ),
+						$css_class = '', $css_id = 'baidu_site_verify' ) . 
+					'<td>' . $this->form->get_input( 'baidu_site_verify', 'api_key' ) . '</td>';
 
-					asort( $social_accounts );	// Sort by translated label and maintain key association.
+					$table_rows[ 'bing_site_verify' ] = '' .
+					$this->form->get_th_html( _x( 'Bing Website Verification ID', 'option label', 'wpsso' ),
+						$css_class = '', $css_id = 'bing_site_verify' ) . 
+					'<td>' . $this->form->get_input( 'bing_site_verify', 'api_key' ) . '</td>';
 
-					foreach ( $social_accounts as $social_key => $label ) {
-
-						/**
-						 * Skip options shown in previous tabs.
-						 */
-						switch ( $social_key ) {
-
-							case 'fb_publisher_url':	// Facebook
-							case 'p_publisher_url':		// Pinterest
-							case 'tc_site':			// Twitter
-
-								continue 2;
-						}
-
-						$table_rows[ $social_key ] = '' . 
-						$this->form->get_th_html_locale( _x( $label, 'option value', 'wpsso' ), $css_class = 'nowrap', $social_key ) . 
-						'<td>' . $this->form->get_input_locale( $social_key, strpos( $social_key, '_url' ) ? 'wide' : '' ) . '</td>';
-					}
+					$table_rows[ 'yandex_site_verify' ] = '' .
+					$this->form->get_th_html( _x( 'Yandex Website Verification ID', 'option label', 'wpsso' ),
+						$css_class = '', $css_id = 'yandex_site_verify' ) . 
+					'<td>' . $this->form->get_input( 'yandex_site_verify', 'api_key' ) . '</td>';
 
 					break;
 			}

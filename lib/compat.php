@@ -56,6 +56,11 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 
 		public function common_hooks() {
 
+			if ( ! empty( $this->p->avail[ 'seo' ][ 'aioseop' ] ) ) {
+
+				add_filter( 'aioseo_schema_disable', '__return_true', 10, 1 );
+			}
+
 			/**
 			 * Perfect Images + Retina (aka WP Retina 2x).
 			 */

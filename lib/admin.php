@@ -1336,6 +1336,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 * This method is extended by each submenu page.
 		 */
 		protected function get_table_rows( $metabox_id, $tab_key ) {
+
+			return array();
 		}
 
 		/**
@@ -2962,88 +2964,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
+		/**
+		 * Deprecated on 2021/03/10.
+		 */
 		public function add_og_types_table_rows( array &$table_rows, $form ) {
-
-			$pkg_info = $this->get_pkg_info();	// Returns an array from cache.
-			$td_attr  = $pkg_info[ 'wpsso' ][ 'pp' ] ? '' : ' class="blank"';
-			$get_func = $pkg_info[ 'wpsso' ][ 'pp' ] ? 'get_select' : 'get_no_select';
-			$og_types = $this->p->og->get_og_types_select();
-
-			$table_rows[] = $pkg_info[ 'wpsso' ][ 'pp' ] ? '' : '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
-
-			/**
-			 * Open Graph Type.
-			 */
-			foreach ( array( 
-				'home_page'    => _x( 'Open Graph Type for Page Homepage', 'option label', 'wpsso' ),
-				'home_posts'   => _x( 'Open Graph Type for Posts Homepage', 'option label', 'wpsso' ),
-				'user_page'    => _x( 'Open Graph Type for User Profile', 'option label', 'wpsso' ),
-				'search_page'  => _x( 'Open Graph Type for Search Results', 'option label', 'wpsso' ),
-				'archive_page' => _x( 'Open Graph Type for Other Archive', 'option label', 'wpsso' ),
-			) as $type_name => $th_label ) {
-
-				$opt_key = 'og_type_for_' . $type_name;	// Hard-coded value - no sanitation required.
-
-				$table_rows[ $opt_key ] = $form->get_tr_hide( 'basic', $opt_key ) .
-					$form->get_th_html( $th_label, '', $opt_key ) . 
-					'<td' . $td_attr . '>' . $form->$get_func( $opt_key, $og_types, $css_class = 'og_type' ) . '</td>';
-			}
-
-			/**
-			 * Open Graph Type by Post Type.
-			 */
-			$type_select = '';
-			$type_keys   = array();
-			$post_types  = SucomUtilWP::get_post_types( $output = 'objects' );
-
-			foreach ( $post_types as $obj ) {
-
-				$type_keys[] = $opt_key = SucomUtil::sanitize_hookname( 'og_type_for_' . $obj->name );
-
-				$obj_label = SucomUtilWP::get_object_label( $obj );
-
-				$type_select .= '<p>' . $form->$get_func( $opt_key, $og_types, $css_class = 'og_type' ) . ' ' .
-					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
-			}
-
-			$type_keys[] = $opt_key = 'og_type_for_post_archive';	// Hard-coded value - no sanitation required.
-
-			$type_select .= '<p>' . $form->$get_func( $opt_key, $og_types, $css_class = 'og_type' ) . ' ' .
-				sprintf( _x( 'for %s', 'option comment', 'wpsso' ), _x( 'Post Type Archive Page', 'option comment', 'wpsso' ) ) . '</p>' . "\n";
-
-			$tr_key   = 'og_type_for_ptn';
-			$th_label = _x( 'Open Graph Type by Post Type', 'option label', 'wpsso' );
-
-			$table_rows[ $tr_key ] = '' .
-				$form->get_th_html( $th_label, $css_class = '', $css_id = $tr_key ) .
-				'<td' . $td_attr . '>' . $type_select . '</td>';
-
-			unset( $type_select, $type_keys, $post_types, $tr_key, $th_label );	// Just in case.
-
-			/**
-			 * Open Graph Type by Taxonomy.
-			 */
-			$type_select = '';
-			$type_keys   = array();
-			$taxonomies  = SucomUtilWP::get_taxonomies( $output = 'objects' );
-
-			foreach ( $taxonomies as $obj ) {
-
-				$type_keys[] = $opt_key = SucomUtil::sanitize_hookname( 'og_type_for_tax_' . $obj->name );
-
-				$obj_label = SucomUtilWP::get_object_label( $obj );
-
-				$type_select .= '<p>' . $form->$get_func( $opt_key, $og_types, $css_class = 'og_type' ) . ' ' .
-					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
-			}
-
-			$tr_key   = 'og_type_for_ttn';
-			$th_label = _x( 'Open Graph Type by Taxonomy', 'option label', 'wpsso' );
-
-			$table_rows[ $tr_key ] = $form->get_tr_hide( 'basic', $type_keys ) .
-				$form->get_th_html( $th_label, '', $tr_key ) . '<td' . $td_attr . '>' . $type_select . '</td>';
-
-			unset( $type_select, $type_keys, $taxonomies, $tr_key, $th_label );	// Just in case.
 		}
 
 		/**
@@ -3075,22 +2999,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$form->get_select( 'schema_img_max', range( 0, $max_media_items ), $css_class = 'short', $css_id = '', $is_assoc = true ) .
 				$this->p->msgs->maybe_preview_images_first() .
 				'</td>';
-
-			$table_rows[ 'schema_1_1_img_size' ] = $form->get_tr_hide_img_dim( 'basic', 'schema_1_1_img' ) .
-				$form->get_th_html( _x( 'Schema 1:1 (Google) Image Size', 'option label', 'wpsso' ), '', 'schema_1_1_img_size' ) . 
-				'<td>' . $form->get_input_image_dimensions( 'schema_1_1_img' ) . $json_req_msg . '</td>';
-
-			$table_rows[ 'schema_4_3_img_size' ] = $form->get_tr_hide_img_dim( 'basic', 'schema_4_3_img' ) .
-				$form->get_th_html( _x( 'Schema 4:3 (Google) Image Size', 'option label', 'wpsso' ), '', 'schema_4_3_img_size' ) . 
-				'<td>' . $form->get_input_image_dimensions( 'schema_4_3_img' ) . $json_req_msg . '</td>';
-
-			$table_rows[ 'schema_16_9_img_size' ] = $form->get_tr_hide_img_dim( 'basic', 'schema_16_9_img' ) .
-				$form->get_th_html( _x( 'Schema 16:9 (Google) Image Size', 'option label', 'wpsso' ), '', 'schema_16_9_img_size' ) . 
-				'<td>' . $form->get_input_image_dimensions( 'schema_16_9_img' ) . $json_req_msg . '</td>';
-
-			$table_rows[ 'thumb_img_size' ] = $form->get_tr_hide_img_dim( 'basic', 'thumb_img' ) .
-				$form->get_th_html( _x( 'Schema Thumbnail Image Size', 'option label', 'wpsso' ), '', 'thumb_img_size' ).
-				'<td>' . $form->get_input_image_dimensions( 'thumb_img' ) . '</td>';
 
 			$table_rows[ 'schema_desc_max_len' ] = $form->get_tr_hide( 'basic', 'schema_desc_max_len' ) . 
 				$form->get_th_html( _x( 'Schema Description Max. Length', 'option label', 'wpsso' ), '', 'schema_desc_max_len' ) . 
@@ -3127,119 +3035,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				'<td>' . $form->get_input_locale( 'site_org_banner_url', $css_class = 'wide is_required' ) . '</td>';
 		}
 
+		/**
+		 * Deprecated on 2021/03/10.
+		 */
 		public function add_schema_item_types_table_rows( array &$table_rows, $form ) {
-
-			$pkg_info        = $this->get_pkg_info();	// Returns an array from cache.
-			$td_attr         = $pkg_info[ 'wpsso' ][ 'pp' ] ? '' : ' class="blank"';
-			$get_func        = $pkg_info[ 'wpsso' ][ 'pp' ] ? 'get_select' : 'get_no_select';
-			$schema_exp_secs = $this->p->util->get_cache_exp_secs( 'wpsso_t_' );	// Default is month in seconds.
-			$schema_types    = $this->p->schema->get_schema_types_select( $context = 'settings' );
-
-			$table_rows[] = $pkg_info[ 'wpsso' ][ 'pp' ] ? '' : '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
-
-			/**
-			 * Schema Type.
-			 */
-			foreach ( array( 
-				'home_page'    => _x( 'Schema Type for Page Homepage', 'option label', 'wpsso' ),
-				'home_posts'   => _x( 'Schema Type for Posts Homepage', 'option label', 'wpsso' ),
-				'user_page'    => _x( 'Schema Type for User Profile', 'option label', 'wpsso' ),
-				'search_page'  => _x( 'Schema Type for Search Results', 'option label', 'wpsso' ),
-				'archive_page' => _x( 'Schema Type for Other Archive', 'option label', 'wpsso' ),
-			) as $type_name => $th_label ) {
-
-				$opt_key = 'schema_type_for_' . $type_name;	// Hard-coded value - no sanitation required.
-
-				$table_rows[ $opt_key ] = $form->get_tr_hide( 'basic', $opt_key ) . 
-					$form->get_th_html( $th_label, '', $opt_key ) . 
-					'<td' . $td_attr . '>' . $form->$get_func( $opt_key, $schema_types, $css_class = 'schema_type', $css_id = '',
-						$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
-							$event_args = array(
-								'json_var'  => 'schema_types',
-								'exp_secs'  => $schema_exp_secs,	// Create and read from a javascript URL.
-								'is_transl' => true,			// No label translation required.
-								'is_sorted' => true,			// No label sorting required.
-							)
-						) .
-					'</td>';
-			}
-
-			/**
-			 * Schema Type by Post Type.
-			 */
-			$type_select = '';
-			$type_keys   = array();
-			$post_types  = SucomUtilWP::get_post_types( $output = 'objects' );
-
-			foreach ( $post_types as $obj ) {
-
-				$type_keys[] = $opt_key = SucomUtil::sanitize_hookname( 'schema_type_for_' . $obj->name );
-
-				$obj_label = SucomUtilWP::get_object_label( $obj );
-
-				$type_select .= '<p>' . $form->$get_func( $opt_key, $schema_types, $css_class = 'schema_type', $css_id = '',
-					$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
-						$event_args = array(
-							'json_var'  => 'schema_types',
-							'exp_secs'  => $schema_exp_secs,	// Create and read from a javascript URL.
-							'is_transl' => true,			// No label translation required.
-							'is_sorted' => true,			// No label sorting required.
-						)
-					) . ' ' . sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
-			}
-
-			$type_keys[] = $opt_key = 'schema_type_for_post_archive';	// Hard-coded value - no sanitation required.
-
-			$type_select .= '<p>' . $form->$get_func( $opt_key, $schema_types, $css_class = 'schema_type', $css_id = '',
-				$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
-					$event_args = array(
-						'json_var'  => 'schema_types',
-						'exp_secs'  => $schema_exp_secs,	// Create and read from a javascript URL.
-						'is_transl' => true,			// No label translation required.
-						'is_sorted' => true,			// No label sorting required.
-					)
-				) . ' ' .
-				sprintf( _x( 'for %s', 'option comment', 'wpsso' ), _x( 'Post Type Archive Page', 'option comment', 'wpsso' ) ) .
-				'</p>' . "\n";
-
-			$tr_key   = 'schema_type_for_ptn';
-			$th_label = _x( 'Schema Type by Post Type', 'option label', 'wpsso' );
-
-			$table_rows[ $tr_key ] = $form->get_th_html( $th_label, '', $tr_key ) . '<td' . $td_attr . '>' . $type_select . '</td>';
-
-			unset( $type_select, $type_keys, $post_types, $tr_key, $th_label );	// Just in case.
-
-			/**
-			 * Schema Type by Taxonomy.
-			 */
-			$type_select = '';
-			$type_keys   = array();
-			$taxonomies  = SucomUtilWP::get_taxonomies( $output = 'objects' );
-
-			foreach ( $taxonomies as $obj ) {
-
-				$type_keys[] = $opt_key = SucomUtil::sanitize_hookname( 'schema_type_for_tax_' . $obj->name );
-
-				$obj_label = SucomUtilWP::get_object_label( $obj );
-
-				$type_select .= '<p>' . $form->$get_func( $opt_key, $schema_types, $css_class = 'schema_type', $css_id = '',
-					$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
-						$event_args = array(
-							'json_var'  => 'schema_types',
-							'exp_secs'  => $schema_exp_secs,	// Create and read from a javascript URL.
-							'is_transl' => true,			// No label translation required.
-							'is_sorted' => true,			// No label sorting required.
-						)
-					) . ' ' . sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
-			}
-
-			$tr_key   = 'schema_type_for_ttn';
-			$th_label = _x( 'Schema Type by Taxonomy', 'option label', 'wpsso' );
-
-			$table_rows[ $tr_key ] = $form->get_tr_hide( 'basic', $type_keys ) .
-				$form->get_th_html( $th_label, '', $tr_key ) . '<td' . $td_attr . '>' . $type_select . '</td>';
-
-			unset( $type_select, $type_keys, $taxonomies, $tr_key, $th_label );	// Just in case.
 		}
 
 		public function add_advanced_plugin_settings_table_rows( array &$table_rows, $form, $network = false ) {

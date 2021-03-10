@@ -58,12 +58,12 @@ if ( ! class_exists( 'WpssoStdAdminGeneral' ) ) {
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
 			$table_rows[ 'plugin_check_img_dims' ] = '' . 
-			$form->get_th_html( _x( 'Enforce Image Dimension Checks', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_check_img_dims' ) . 
-			$form->get_no_td_checkbox( 'plugin_check_img_dims', '<em>' . _x( 'recommended', 'option comment', 'wpsso' ) . '</em>' );
+				$form->get_th_html( _x( 'Enforce Image Dimension Checks', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_check_img_dims' ) . 
+				$form->get_no_td_checkbox( 'plugin_check_img_dims', '<em>' . _x( 'recommended', 'option comment', 'wpsso' ) . '</em>' );
 
 			$table_rows[ 'plugin_upscale_images' ] = '' . 
-			$form->get_th_html( _x( 'Upscale Media Library Images', 'option label', 'wpsso' ), '', 'plugin_upscale_images' ) . 
-			$form->get_no_td_checkbox( 'plugin_upscale_images' );
+				$form->get_th_html( _x( 'Upscale Media Library Images', 'option label', 'wpsso' ), '', 'plugin_upscale_images' ) . 
+				$form->get_no_td_checkbox( 'plugin_upscale_images' );
 
 			return $table_rows;
 		}

@@ -774,16 +774,16 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				/**
-				 * Google Website Verification ID.
+				 * Check for website verification IDs. If we have an ID, then make sure the tag is enabled.
 				 */
-				$opts[ 'add_meta_name_google-site-verification' ]    = empty( $opts[ 'g_site_verify' ] ) ? 0 : 1;
-				$opts[ 'add_meta_name_google-site-verification:is' ] = 'disabled';
+				foreach ( WpssoConfig::$cf[ 'opt' ][ 'site_verify_meta_names' ] as $site_verify => $meta_name ) {
 
-				/**
-				 * Pinterest Website Verification ID.
-				 */
-				$opts[ 'add_meta_name_p:domain_verify' ]    = empty( $opts[ 'p_site_verify' ] ) ? 0 : 1;
-				$opts[ 'add_meta_name_p:domain_verify:is' ] = 'disabled';
+					if ( ! empty( $opts[ $site_verify ] ) ) {
+
+						$opts[ 'add_meta_name_' . $meta_name ]         = 1;
+						$opts[ 'add_meta_name_' . $meta_name . ':is' ] = 'disabled';
+					}
+				}
 
 				/**
 				 * Check for incompatible options between versions.
@@ -800,7 +800,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							$defs = $this->get_defaults();
 						}
 
-						$advanced_opts = SucomUtil::preg_grep_keys( '/^plugin_/', $defs );
+						$advanced_preg = '/^(plugin_.*|add_meta_(property_|name_twitter:).*|.*_img_(width|height|crop|crop_x|crop_y))$/';
+						$advanced_opts = SucomUtil::preg_grep_keys( $advanced_preg, $defs );
 						$advanced_opts = SucomUtil::preg_grep_keys( '/^plugin_.*_tid$/', $advanced_opts, $invert = true );
 
 						foreach ( array(

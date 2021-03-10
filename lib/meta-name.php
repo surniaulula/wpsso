@@ -42,7 +42,7 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 		}
 
 		/**
-		 * Pinterest / SEO Meta Name Tags.
+		 * Meta Name Tags.
 		 */
 		public function get_array( array $mod, array $mt_og = array(), $author_id = false ) {
 
@@ -91,24 +91,16 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 			}
 
 			/**
-			 * Meta name "google-site-verification".
+			 * Baidu, Google, Microsoft Bing, Pinterest, and Yandex website verification IDs.
 			 */
-			if ( ! empty( $this->p->options[ 'add_meta_name_google-site-verification' ] ) ) {
+			foreach ( WpssoConfig::$cf[ 'opt' ][ 'site_verify_meta_names' ] as $site_verify => $meta_name ) {
 
-				if ( ! empty( $this->p->options[ 'g_site_verify' ] ) ) {	// Google Website Verification ID.
+				if ( ! empty( $this->p->options[ 'add_meta_name_' . $meta_name ] ) ) {
 
-					$mt_name[ 'google-site-verification' ] = $this->p->options[ 'g_site_verify' ];
-				}
-			}
+					if ( ! empty( $this->p->options[ $site_verify ] ) ) {
 
-			/**
-			 * Meta name "p:domain_verify".
-			 */
-			if ( ! empty( $this->p->options[ 'add_meta_name_p:domain_verify' ] ) ) {
-
-				if ( ! empty( $this->p->options[ 'p_site_verify' ] ) ) {	// Pinterest Website Verification ID.
-
-					$mt_name[ 'p:domain_verify' ] = $this->p->options[ 'p_site_verify' ];
+						$mt_name[ 'add_meta_name_' . $meta_name ] = $this->p->options[ $site_verify ];
+					}
 				}
 			}
 

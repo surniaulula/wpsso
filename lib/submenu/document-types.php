@@ -66,30 +66,5 @@ if ( ! class_exists( 'WpssoSubmenuDocumentTypes' ) && class_exists( 'WpssoAdmin'
 			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title, array( $this, 'show_metabox_table' ),
 				$metabox_screen, $metabox_context, $metabox_prio, $callback_args );
 		}
-
-		protected function get_table_rows( $page_id, $metabox_id ) {
-
-			$table_rows = array();
-
-			switch ( $page_id . '-' . $metabox_id ) {
-
-				/**
-				 * Document Types metabox.
-				 */
-				case 'document_types-og_types':
-
-					$this->add_og_types_table_rows( $table_rows, $this->form );
-
-					break;
-
-				case 'document_types-schema_types':
-
-					$this->add_schema_item_types_table_rows( $table_rows, $this->form );
-
-					break;
-			}
-
-			return $table_rows;
-		}
 	}
 }

@@ -525,7 +525,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 								 */
 								case 'aioseop':
 
-									$chk[ 'class' ] = 'AIOSEOP_Core';
+									$chk[ 'function' ] = 'aioseo';
 
 									break;
 

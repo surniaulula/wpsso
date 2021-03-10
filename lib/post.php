@@ -775,14 +775,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			parent::$head_tags = array();
 
-			if ( $post_obj->post_status === 'auto-draft' ) {
+			if ( 'auto-draft' === $post_obj->post_status ) {
 
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'head meta skipped: post_status is auto-draft' );
 				}
 
-			} elseif ( $post_obj->post_status === 'trash' ) {
+			} elseif ( 'trash' === $post_obj->post_status ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -1363,7 +1363,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$post_id = empty( $post_obj->ID ) ? 0 : $post_obj->ID;
 
-			if ( ( $post_obj->post_type === 'page' && ! current_user_can( 'edit_page', $post_id ) ) || ! current_user_can( 'edit_post', $post_id ) ) {
+			if ( ( 'page' === $post_obj->post_type && ! current_user_can( 'edit_page', $post_id ) ) || ! current_user_can( 'edit_post', $post_id ) ) {
 
 				return;
 			}
@@ -1423,11 +1423,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				die( -1 );
 
-			} elseif ( $post_obj->post_status === 'auto-draft' ) {
+			} elseif ( 'auto-draft' === $post_obj->post_status ) {
 
 				die( -1 );
 
-			} elseif ( $post_obj->post_status === 'trash' ) {
+			} elseif ( 'trash' === $post_obj->post_status ) {
 
 				die( -1 );
 			}
