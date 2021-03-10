@@ -319,7 +319,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Updated the All In One SEO plugin options conflict detection.
+	* Updated plugin conflict detection for All In One SEO v4.
 	* Moved customization of image sizes to the Premium version. 
 * **Bugfixes**
 	* None.
@@ -1077,7 +1077,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 = 8.25.0-b.1 =
 
-(2021/03/10) Updated the All In One SEO plugin options conflict detection.
+(2021/03/10) Updated plugin conflict detection for All In One SEO v4.
 
 = 8.24.0 =
 
