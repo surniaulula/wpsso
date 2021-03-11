@@ -314,7 +314,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.25.0-rc.1 (2021/03/11)**
+**Version 8.25.0 (2021/03/11)**
 
 * **New Features**
 	* None.
@@ -1083,7 +1083,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.25.0-rc.1 =
+= 8.25.0 =
 
 (2021/03/11) Added new options in the Document SSO metabox and settings pages. Fixed plugin conflict detection with All In One SEO v4.0.
 
