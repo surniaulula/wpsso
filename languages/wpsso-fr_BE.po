@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 8.25.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-03-11 13:30-0800\n"
+"PO-Revision-Date: 2021-03-11 13:37-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -5833,7 +5833,7 @@ msgstr "Ajoutez un attribut %s à l'en-tête du site et aux images Gravatar pour
 #: lib/submenu/general.php:364
 msgctxt "option label"
 msgid "Add Hidden Image for Pinterest"
-msgstr "Ajouter une image masquée pour Pinterest"
+msgstr "Ajouter image masquée pour Pinterest"
 
 #: lib/messages.php:1672
 msgid "Add a %s attribute to images from the WordPress Media Library to prevent the Pin It browser button from suggesting those images."
