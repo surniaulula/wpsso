@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'     => '8.25.0-b.2',	// Plugin version.
-					'opt_version' => '778',		// Increment when changing default option values.
+					'opt_version' => '779',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results, no matter how webpages are shared, re-shared, messaged, posted, embedded, or crawled.',
@@ -1252,7 +1252,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Facebook options.
 					 */
 					'fb_publisher_url' => '',				// Facebook Business Page URL (localized).
-					'fb_app_id'        => '',				// Facebook Application ID.
+					'fb_app_id'        => '966242223397117',		// Facebook Application ID.
 					'fb_admins'        => '',				// or Facebook Admin Username(s).
 					'fb_locale'        => 'en_US',				// Alternate Facebook Locale.
 

@@ -726,6 +726,17 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					}
 				}
 
+				/**
+				 * Update the Facebook App ID to its default value.
+				 */
+				if ( $prev_version > 0 && $prev_version <= 778 ) {
+
+					if ( empty( $opts[ 'fb_app_id' ] ) ) {
+
+						$opts[ 'fb_app_id' ] = '966242223397117';
+					}
+				}
+
 				$opts = apply_filters( 'wpsso_upgraded_options', $opts, $defs );
 
 			} elseif ( $options_name === constant( 'WPSSO_SITE_OPTIONS_NAME' ) ) {
