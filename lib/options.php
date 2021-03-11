@@ -150,6 +150,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					return 'blank_int';
 
+				case 'reading_mins':
 				case 'robots_max_snippet':		// Snippet Max. Length.
 				case 'robots_max_video_preview':	// Video Max. Previews.
 

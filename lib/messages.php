@@ -221,6 +221,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						 	break;
 
+						case 'tooltip-meta-reading_mins':	// Est. Reading Time.
+
+							$text = __( 'The estimated reading time (in minutes) for this article.', 'wpsso' ) . ' ';
+
+							$text .= __( 'Enter 0 to disable the estimated reading time meta tags.', 'wpsso' );
+
+						 	break;
+
 						case 'tooltip-meta-book_isbn':		// Book ISBN.
 
 							$cf_frags = $this->get_cf_tooltip_fragments( preg_replace( '/^tooltip-meta-/', '', $msg_key ) );

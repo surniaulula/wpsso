@@ -283,6 +283,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				$def_og_type         = $this->p->og->get_mod_og_type( $mod, $get_ns = false, $use_mod_opts = false );
 				$def_schema_type     = $this->p->schema->get_mod_schema_type( $mod, $get_id = true, $use_mod_opts = false );
 				$def_primary_term_id = $this->p->post->get_default_term_id( $mod, $tax_slug = 'category' );	// Returns term ID or false.
+				$def_reading_mins    = $this->p->page->get_reading_mins( $mod );
 
 				$md_defs = array(
 					'options_filtered'  => 0,
@@ -308,6 +309,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					 * Open Graph article type.
 					 */
 					'article_section' => isset( $opts[ 'og_def_article_section' ] ) ? $opts[ 'og_def_article_section' ] : 'none',
+					'reading_mins'    => $def_reading_mins,
 
 					/**
 					 * Open Graph book type.

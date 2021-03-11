@@ -1645,15 +1645,30 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return $excerpt_text;
 		}
 
+		/**
+		 * Returns an empty or formatted string (number with minutes).
+		 */
 		public function get_reading_time( array $mod ) {
+
+			$reading_mins = $this->get_reading_mins( $mod );
+
+			return $reading_mins ? sprintf( _n( '%s minute', '%s minutes', $reading_mins, 'wpsso' ), $reading_mins ) : '';
+		}
+
+		public function get_reading_mins( array $mod ) {
 
 			$content = $this->get_the_content( $mod );
 
-			$words_per_minute = WPSSO_READING_WORDS_PER_MIN;
+			$words_per_min = WPSSO_READING_WORDS_PER_MIN;
 
-			$minutes = SucomUtil::get_reading_mins( $content, $words_per_minute );
+			$reading_mins = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'reading_mins' );
 
-			return sprintf( _n( '%s minute', '%s minutes', $minutes, 'wpsso' ), $minutes );
+			if ( null === $reading_mins ) {	// No custom value.
+
+				$reading_mins = SucomUtil::get_text_reading_mins( $content, $words_per_min );
+			}
+
+			return $reading_mins;
 		}
 
 		public function get_the_content( array $mod, $read_cache = true, $md_key = '', $flatten = true ) {

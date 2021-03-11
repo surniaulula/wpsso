@@ -641,11 +641,18 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 						if ( isset( $mt_og[ 'article:author:name' ] ) ) {
 
 							$mt_tc[ 'twitter:label1' ] = __( 'Written by', 'wpsso' );
-							$mt_tc[ 'twitter:data1' ]  = $mt_og[ 'article:author:name' ];
+
+							$mt_tc[ 'twitter:data1' ] = $mt_og[ 'article:author:name' ];
 						}
 
-						$mt_tc[ 'twitter:label2' ] = __( 'Est. reading time', 'wpsso' );
-						$mt_tc[ 'twitter:data2' ]  = $this->p->page->get_reading_time( $mod );
+						$reading_time = $this->p->page->get_reading_time( $mod );
+
+						if ( $reading_time ) {
+
+							$mt_tc[ 'twitter:label2' ] = __( 'Est. reading time', 'wpsso' );
+
+							$mt_tc[ 'twitter:data2' ] = $reading_time;
+						}
 
 						break;
 
@@ -654,7 +661,8 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 						if ( isset( $mt_og[ 'product:price:amount' ] ) && isset( $mt_og[ 'product:price:currency' ] ) ) {
 
 							$mt_tc[ 'twitter:label1' ] = __( 'Price', 'wpsso' );
-							$mt_tc[ 'twitter:data1' ]  = $mt_og[ 'product:price:amount' ] . ' ' . $mt_og[ 'product:price:currency' ];
+
+							$mt_tc[ 'twitter:data1' ] = $mt_og[ 'product:price:amount' ] . ' ' . $mt_og[ 'product:price:currency' ];
 						}
 
 						if ( isset( $mt_og[ 'product:availability' ] ) ) {
@@ -671,7 +679,8 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 							}
 
 							$mt_tc[ 'twitter:label2' ] = __( 'Availability', 'wpsso' );
-							$mt_tc[ 'twitter:data2' ]  = ucwords( $avail );
+
+							$mt_tc[ 'twitter:data2' ] = ucwords( $avail );
 						}
 
 						break;

@@ -103,7 +103,7 @@ _x( 'GTIN, GTIN-8, GTIN-12 (UPC), GTIN-13 (EAN), GTIN-14, ISBN, MPN, depth, and 
 _x( 'WPSSO Shipping Delivery Time for WooCommerce', 'plugin name', 'wpsso' );
 _x( 'Shipping delivery time estimates for WooCommerce shipping zones, methods, and classes.', 'plugin description', 'wpsso' );
 _x( 'SSO', 'menu title', 'wpsso' );
-_x( 'Document SSO', 'metabox title', 'wpsso' );
+_x( 'Document SSO (Social and Search Optimization)', 'metabox title', 'wpsso' );
 _x( 'Facebook User URL', 'option value', 'wpsso' );
 _x( 'Instagram URL', 'option value', 'wpsso' );
 _x( 'LinkedIn URL', 'option value', 'wpsso' );

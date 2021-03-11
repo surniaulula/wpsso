@@ -95,6 +95,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			$def_seo_desc      = $seo_desc_disabled ? '' : $this->p->page->get_description( $seo_desc_max_len, $dots, $mod, $read_cache, $no_hashtags );
 			$def_sharing_url   = $this->p->util->get_sharing_url( $mod, $add_page = false );
 			$def_canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = false );
+			$def_reading_mins  = $this->p->page->get_reading_mins( $mod );
 
 			/**
 			 * Javascript classes to hide/show rows by selected schema type.
@@ -229,6 +230,14 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 								'is_sorted' => true,			// No label sorting required.
 							)
 						),
+				),
+				'og_reading_mins' => array(
+					'tr_class' => 'hide_og_type hide_og_type_article',
+					'th_class' => 'medium',
+					'label'    => _x( 'Est. Reading Time', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-reading_mins',
+					'content'  => $form->get_input( 'reading_mins', $css_class = 'xshort', $css_id = '', 0, $def_reading_mins ) . ' ' .
+						__( 'minute(s)', 'wpsso' ),
 				),
 
 				/**

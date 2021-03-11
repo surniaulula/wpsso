@@ -4429,11 +4429,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 *
 		 * See https://en.wikipedia.org/wiki/Speed_reading.
 		 */
-		public static function get_reading_mins( $content, $words_per_minute = 200 ) {
+		public static function get_text_reading_mins( $text, $words_per_min = 200 ) {
 
-			$word_count = str_word_count( wp_strip_all_tags( $content ) );
+			$word_count = str_word_count( wp_strip_all_tags( $text ) );
 
-			return round( $word_count / $words_per_minute );
+			return round( $word_count / $words_per_min );
 		}
 	}
 }
