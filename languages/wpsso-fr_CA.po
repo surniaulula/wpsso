@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 8.25.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-03-11 10:59-0800\n"
+"PO-Revision-Date: 2021-03-11 13:30-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2354,8 +2354,7 @@ msgstr "Appliquer vérifications taille d'image"
 #: gettext/gettext-lib-pro.php:41 gettext/gettext-lib-pro.php:104
 #: lib/pro/admin/advanced.php:224 lib/pro/admin/general.php:62
 #: lib/std/admin/advanced.php:225 lib/std/admin/general.php:62
-#: lib/submenu/essential.php:168 lib/submenu/general.php:355
-#: lib/submenu/general.php:361
+#: lib/submenu/general.php:355
 msgctxt "option comment"
 msgid "recommended"
 msgstr "recommandé"
@@ -4859,7 +4858,7 @@ msgstr "SVP assurez-vous que l'URL personnalisé que vous entrez ici est fonctio
 msgid "A customized URL used for the \"%1$s\" head tag."
 msgstr "Un URL personnalisé pour la balise d'entête \"%1$s\"."
 
-#: lib/messages.php:214 lib/submenu/essential.php:123
+#: lib/messages.php:214 lib/submenu/essential.php:117
 #: lib/submenu/general.php:146
 msgctxt "option label"
 msgid "Default Article Section"
@@ -5830,7 +5829,7 @@ msgstr "L'%s sera incluse dans le balisage Schéma Organization du site Web."
 msgid "Add a %s attribute to the site header and Gravatar images to prevent the Pin It browser button from suggesting those images."
 msgstr "Ajoutez un attribut %s à l'en-tête du site et aux images Gravatar pour empêcher que le bouton de navigateur Pin It suggère ces images."
 
-#: lib/messages.php:1670 lib/messages.php:3405 lib/submenu/essential.php:171
+#: lib/messages.php:1670 lib/messages.php:3405 lib/submenu/essential.php:153
 #: lib/submenu/general.php:364
 msgctxt "option label"
 msgid "Add Hidden Image for Pinterest"
@@ -7426,67 +7425,52 @@ msgctxt "metabox title"
 msgid "Essential Settings"
 msgstr "Réglages essentiels"
 
-#: lib/submenu/essential.php:98
-msgctxt "metabox title"
-msgid "WebSite Information"
-msgstr "Information du site Web"
-
-#: lib/submenu/essential.php:101 lib/submenu/general.php:134
+#: lib/submenu/essential.php:95 lib/submenu/general.php:134
 msgctxt "option label"
 msgid "WebSite Name"
 msgstr "Nom du site Web"
 
-#: lib/submenu/essential.php:107 lib/submenu/general.php:140
+#: lib/submenu/essential.php:101 lib/submenu/general.php:140
 msgctxt "option label"
 msgid "WebSite Description"
 msgstr "Description du site Web"
 
-#: lib/submenu/essential.php:113 lib/submenu/general.php:241
+#: lib/submenu/essential.php:107 lib/submenu/general.php:241
 msgctxt "option label"
 msgid "Default Image ID"
 msgstr "ID d'image par défaut"
 
-#: lib/submenu/essential.php:118 lib/submenu/general.php:246
+#: lib/submenu/essential.php:112 lib/submenu/general.php:246
 msgctxt "option label"
 msgid "or Default Image URL"
 msgstr "ou URL d'image par défaut"
 
-#: lib/submenu/essential.php:146
-msgctxt "metabox title"
-msgid "Facebook"
-msgstr "Facebook"
-
-#: lib/submenu/essential.php:149 lib/submenu/general.php:259
+#: lib/submenu/essential.php:137 lib/submenu/general.php:259
 msgctxt "option label"
 msgid "Facebook Business Page URL"
 msgstr "URL page d'affaires Facebook"
 
-#: lib/submenu/essential.php:157
-msgctxt "metabox title"
-msgid "Pinterest"
-msgstr "Pinterest"
-
-#: lib/submenu/essential.php:160 lib/submenu/general.php:347
+#: lib/submenu/essential.php:142 lib/submenu/general.php:347
 msgctxt "option label"
 msgid "Pinterest Company Page URL"
 msgstr "URL page d'entreprise Pinterest"
 
-#: lib/submenu/essential.php:165 lib/submenu/general.php:358
+#: lib/submenu/essential.php:147 lib/submenu/general.php:358
 msgctxt "option label"
-msgid "Add \"nopin\" to WordPress Media"
-msgstr "Ajouter \"nopin\" aux médias WordPress"
+msgid "Add Pinterest \"nopin\" to Images"
+msgstr "Ajouter \"nopin\" Pinterest aux images"
 
-#: lib/submenu/essential.php:174 lib/submenu/general.php:367
+#: lib/submenu/essential.php:150 lib/submenu/general.php:361
 msgctxt "option comment"
-msgid "recommended (adds a hidden image in the content)"
-msgstr "recommandé (ajoute une image cachée dans le contenu)"
+msgid "recommended (with hidden image)"
+msgstr "recommandé (avec image cachée)"
 
-#: lib/submenu/essential.php:180
-msgctxt "metabox title"
-msgid "Twitter"
-msgstr "Twitter"
+#: lib/submenu/essential.php:156 lib/submenu/general.php:367
+msgctxt "option comment"
+msgid "recommended (adds hidden image in content)"
+msgstr "recommandé (ajoute image cachée au contenu)"
 
-#: lib/submenu/essential.php:183 lib/submenu/general.php:389
+#: lib/submenu/essential.php:159 lib/submenu/general.php:389
 msgctxt "option label"
 msgid "Twitter Business @username"
 msgstr "@usager d'affaires Twitter"
