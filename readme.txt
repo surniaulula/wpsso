@@ -314,13 +314,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.25.0-b.3 (2021/03/11)**
+**Version 8.25.0-rc.1 (2021/03/11)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added a new option in the Document SSO metabox for Open Graph articles:
 		* Est. Reading Time
+	* Added a new option under the SSO &gt; Advanced Settings &gt; Plugin Admin tab:
+		* Use Local Plugin Translations
 	* Added new options under the SSO &gt; General Settings &gt; Social and Search Sites &gt; Other Sites tab:
 		* Ahrefs Website Verification ID
 		* Baidu Website Verification ID
@@ -1081,9 +1083,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.25.0-b.3 =
+= 8.25.0-rc.1 =
 
-(2021/03/11) Added new options in the Document SSO metabox and under the SSO &gt; General Settings &gt; Social and Search Sites &gt; Other Sites tab. Fixed plugin conflict detection with All In One SEO v4.0.
+(2021/03/11) Added new options in the Document SSO metabox and settings pages. Fixed plugin conflict detection with All In One SEO v4.0.
 
 = 8.24.0 =
 
