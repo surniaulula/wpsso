@@ -91,12 +91,6 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 					$select_exp_secs  = $this->p->util->get_cache_exp_secs( 'wpsso_f_' );	// Default is month in seconds.
 					$article_sections = $this->p->util->get_article_sections();
 
-					/**
-					 * WebSite Information.
-					 */
-					$table_rows[ 'subsection_essential_website' ] = '<td colspan="2" class="subsection top"><h5>' .
-						_x( 'WebSite Information', 'metabox title', 'wpsso' ) . '</h5></td>';
-
 					$table_rows[ 'site_name' ] = '' . 
 					$this->form->get_th_html_locale( _x( 'WebSite Name', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'site_name' ) . 
@@ -139,22 +133,10 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 						$this->add_schema_publisher_type_table_rows( $table_rows, $this->form );
 					}
 
-					/**
-					 * Facebook.
-					 */
-					$table_rows[ 'subsection_essential_facebook' ] = '<td colspan="2" class="subsection"><h5>' .
-						_x( 'Facebook', 'metabox title', 'wpsso' ) . '</h5></td>';
-
 					$table_rows[ 'fb_publisher_url' ] = '' . 
 					$this->form->get_th_html_locale( _x( 'Facebook Business Page URL', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'fb_publisher_url' ) .
 					'<td>' . $this->form->get_input_locale( 'fb_publisher_url', $css_class = 'wide' ) . '</td>';
-
-					/**
-					 * Pinterest.
-					 */
-					$table_rows[ 'subsection_essential_pinterest' ] = '<td colspan="2" class="subsection"><h5>' .
-						_x( 'Pinterest', 'metabox title', 'wpsso' ) . '</h5></td>';
 
 					$table_rows[ 'p_publisher_url' ] = '' . 
 					$this->form->get_th_html_locale( _x( 'Pinterest Company Page URL', 'option label', 'wpsso' ),
@@ -172,12 +154,6 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 						$css_class = '', $css_id = 'p_add_img_html' ) . 
 					'<td>' . $this->form->get_checkbox( 'p_add_img_html' ) .
 					' ' . _x( 'recommended (adds a hidden image in the content)', 'option comment', 'wpsso' ) . '</td>';
-
-					/**
-					 * Twitter.
-					 */
-					$table_rows[ 'subsection_essential_twitter' ] = '<td colspan="2" class="subsection"><h5>' .
-						_x( 'Twitter', 'metabox title', 'wpsso' ) . '</h5></td>';
 
 					$table_rows[ 'tc_site' ] = '' . 
 					$this->form->get_th_html_locale( _x( 'Twitter Business @username', 'option label', 'wpsso' ),

@@ -2671,7 +2671,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:41 gettext/gettext-lib-pro.php:104
 #: lib/pro/admin/advanced.php:224 lib/pro/admin/general.php:62
 #: lib/std/admin/advanced.php:225 lib/std/admin/general.php:62
-#: lib/submenu/essential.php:168 lib/submenu/general.php:355
+#: lib/submenu/essential.php:150 lib/submenu/general.php:355
 #: lib/submenu/general.php:361
 msgctxt "option comment"
 msgid "recommended"
@@ -5364,7 +5364,7 @@ msgstr ""
 msgid "A customized URL used for the \"%1$s\" head tag."
 msgstr ""
 
-#: lib/messages.php:214 lib/submenu/essential.php:123
+#: lib/messages.php:214 lib/submenu/essential.php:117
 #: lib/submenu/general.php:146
 msgctxt "option label"
 msgid "Default Article Section"
@@ -6710,7 +6710,7 @@ msgid ""
 "It browser button from suggesting those images."
 msgstr ""
 
-#: lib/messages.php:1670 lib/messages.php:3405 lib/submenu/essential.php:171
+#: lib/messages.php:1670 lib/messages.php:3405 lib/submenu/essential.php:153
 #: lib/submenu/general.php:364
 msgctxt "option label"
 msgid "Add Hidden Image for Pinterest"
@@ -8627,67 +8627,47 @@ msgctxt "metabox title"
 msgid "Essential Settings"
 msgstr ""
 
-#: lib/submenu/essential.php:98
-msgctxt "metabox title"
-msgid "WebSite Information"
-msgstr ""
-
-#: lib/submenu/essential.php:101 lib/submenu/general.php:134
+#: lib/submenu/essential.php:95 lib/submenu/general.php:134
 msgctxt "option label"
 msgid "WebSite Name"
 msgstr ""
 
-#: lib/submenu/essential.php:107 lib/submenu/general.php:140
+#: lib/submenu/essential.php:101 lib/submenu/general.php:140
 msgctxt "option label"
 msgid "WebSite Description"
 msgstr ""
 
-#: lib/submenu/essential.php:113 lib/submenu/general.php:241
+#: lib/submenu/essential.php:107 lib/submenu/general.php:241
 msgctxt "option label"
 msgid "Default Image ID"
 msgstr ""
 
-#: lib/submenu/essential.php:118 lib/submenu/general.php:246
+#: lib/submenu/essential.php:112 lib/submenu/general.php:246
 msgctxt "option label"
 msgid "or Default Image URL"
 msgstr ""
 
-#: lib/submenu/essential.php:146
-msgctxt "metabox title"
-msgid "Facebook"
-msgstr ""
-
-#: lib/submenu/essential.php:149 lib/submenu/general.php:259
+#: lib/submenu/essential.php:137 lib/submenu/general.php:259
 msgctxt "option label"
 msgid "Facebook Business Page URL"
 msgstr ""
 
-#: lib/submenu/essential.php:157
-msgctxt "metabox title"
-msgid "Pinterest"
-msgstr ""
-
-#: lib/submenu/essential.php:160 lib/submenu/general.php:347
+#: lib/submenu/essential.php:142 lib/submenu/general.php:347
 msgctxt "option label"
 msgid "Pinterest Company Page URL"
 msgstr ""
 
-#: lib/submenu/essential.php:165 lib/submenu/general.php:358
+#: lib/submenu/essential.php:147 lib/submenu/general.php:358
 msgctxt "option label"
 msgid "Add \"nopin\" to WordPress Media"
 msgstr ""
 
-#: lib/submenu/essential.php:174 lib/submenu/general.php:367
+#: lib/submenu/essential.php:156 lib/submenu/general.php:367
 msgctxt "option comment"
 msgid "recommended (adds a hidden image in the content)"
 msgstr ""
 
-#: lib/submenu/essential.php:180
-msgctxt "metabox title"
-msgid "Twitter"
-msgstr ""
-
-#: lib/submenu/essential.php:183 lib/submenu/general.php:389
+#: lib/submenu/essential.php:159 lib/submenu/general.php:389
 msgctxt "option label"
 msgid "Twitter Business @username"
 msgstr ""
