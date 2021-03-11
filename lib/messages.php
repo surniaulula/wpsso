@@ -1665,7 +1665,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-p_add_nopin_media_img_tag':	// Add "nopin" to WordPress Media.
+						case 'tooltip-p_add_nopin_media_img_tag':	// Add Pinterest "nopin" to Images.
 
 							$add_img_html_label = _x( 'Add Hidden Image for Pinterest', 'option label', 'wpsso' );
 

@@ -355,16 +355,16 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					' ' . _x( 'recommended', 'option comment', 'wpsso' ) . '</td>';
 
 					$table_rows[ 'p_add_nopin_media_img_tag' ] = '' . 
-					$this->form->get_th_html( _x( 'Add "nopin" to WordPress Media', 'option label', 'wpsso' ),
+					$this->form->get_th_html( _x( 'Add Pinterest "nopin" to Images', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'p_add_nopin_media_img_tag' ) . 
 					'<td>' . $this->form->get_checkbox( 'p_add_nopin_media_img_tag' ) .
-					' ' . _x( 'recommended', 'option comment', 'wpsso' ) . '</td>';
+					' ' . _x( 'recommended (with hidden image)', 'option comment', 'wpsso' ) . '</td>';
 
 					$table_rows[ 'p_add_img_html' ] = '' . 
 					$this->form->get_th_html( _x( 'Add Hidden Image for Pinterest', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'p_add_img_html' ) . 
 					'<td>' . $this->form->get_checkbox( 'p_add_img_html' ) .
-					' ' . _x( 'recommended (adds a hidden image in the content)', 'option comment', 'wpsso' ) . '</td>';
+					' ' . _x( 'recommended (adds hidden image in content)', 'option comment', 'wpsso' ) . '</td>';
 
 					$table_rows[ 'p_img_desc_max_len' ] = $this->form->get_tr_hide( 'basic', 'p_img_desc_max_len' ) . 
 					$this->form->get_th_html( _x( 'Image Description Max. Length', 'option label', 'wpsso' ),

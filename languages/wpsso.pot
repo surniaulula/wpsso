@@ -2671,8 +2671,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:41 gettext/gettext-lib-pro.php:104
 #: lib/pro/admin/advanced.php:224 lib/pro/admin/general.php:62
 #: lib/std/admin/advanced.php:225 lib/std/admin/general.php:62
-#: lib/submenu/essential.php:150 lib/submenu/general.php:355
-#: lib/submenu/general.php:361
+#: lib/submenu/general.php:355
 msgctxt "option comment"
 msgid "recommended"
 msgstr ""
@@ -8659,12 +8658,17 @@ msgstr ""
 
 #: lib/submenu/essential.php:147 lib/submenu/general.php:358
 msgctxt "option label"
-msgid "Add \"nopin\" to WordPress Media"
+msgid "Add Pinterest \"nopin\" to Images"
+msgstr ""
+
+#: lib/submenu/essential.php:150 lib/submenu/general.php:361
+msgctxt "option comment"
+msgid "recommended (with hidden image)"
 msgstr ""
 
 #: lib/submenu/essential.php:156 lib/submenu/general.php:367
 msgctxt "option comment"
-msgid "recommended (adds a hidden image in the content)"
+msgid "recommended (adds hidden image in content)"
 msgstr ""
 
 #: lib/submenu/essential.php:159 lib/submenu/general.php:389
