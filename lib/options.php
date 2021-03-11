@@ -809,6 +809,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							'plugin_clean_on_uninstall',
 							'plugin_cache_disable',
 							'plugin_debug_html',
+							'plugin_load_mofiles',
 						) as $opt_key ) {
 
 							unset( $advanced_opts[ $opt_key ] );

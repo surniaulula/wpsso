@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.25.0-b.3',	// Plugin version.
-					'opt_version' => '779',		// Increment when changing default option values.
+					'version'     => '8.25.0-rc.1',	// Plugin version.
+					'opt_version' => '780',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results, no matter how webpages are shared, re-shared, messaged, posted, embedded, or crawled.',
@@ -1642,6 +1642,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_clean_on_uninstall' => 0,			// Remove Settings on Uninstall.
 					'plugin_cache_disable'      => 0,			// Disable Cache for Debugging.
 					'plugin_debug_html'         => 0,			// Add HTML Debug Messages.
+					'plugin_load_mofiles'       => 0,			// Use Local Plugin Translations.
 
 					/**
 					 * Advanced Settings - Interface tab.
@@ -1893,6 +1894,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cache_disable:use'      => 'default',
 					'plugin_debug_html'             => 0,			// Add HTML Debug Messages.
 					'plugin_debug_html:use'         => 'default',
+					'plugin_load_mofiles'           => 0,			// Use Local Plugin Translations.
+					'plugin_load_mofiles:use'       => 'default',
 
 					/**
 					 * Advanced Settings - Caching tab.

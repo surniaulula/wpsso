@@ -793,10 +793,16 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
+						case 'tooltip-plugin_load_mofiles': 		// Use Local Plugin Translations.
+
+							$text = __( 'Prefer using the local plugin translation files instead of the default WordPress.org translations (default is unchecked).', 'wpsso' );
+
+							break;
+
 						/**
 						 * Interface settings.
 						 */
-						case 'tooltip-plugin_show_opts': 	// Plugin Options to Show by Default.
+						case 'tooltip-plugin_show_opts': 		// Plugin Options to Show by Default.
 
 							$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 

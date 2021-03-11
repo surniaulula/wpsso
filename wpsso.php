@@ -15,7 +15,7 @@
  * Requires At Least: 4.5
  * Tested Up To: 5.7
  * WC Tested Up To: 5.1.0
- * Version: 8.25.0-b.3
+ * Version: 8.25.0-rc.1
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -124,8 +124,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			/**
 			 * The 'wpsso_init_textdomain' action is run after the $check, $avail, and $debug properties are defined.
-			 * If debug is enabled, hook the 'override_textdomain_mofile' filter to use local translation files instead
-			 * of translations from wordpress.org.
 			 */
 			add_action( 'wpsso_init_textdomain', array( $this, 'init_textdomain' ), -1000, 0 );
 
@@ -311,7 +309,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			 */
 			$this->check = new WpssoCheck( $this );
 
-			$this->avail = $this->check->get_avail();		// Uses $this->options for availability checks.
+			$this->avail = $this->check->get_avail();	// Uses $this->options for availability checks.
 
 			/**
 			 * Make sure a debug object is always available.
@@ -724,15 +722,13 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		/**
 		 * Runs at wpsso_init_textdomain priority -1000.
 		 *
-		 * The 'wpsso_init_textdomain' action is run after the $check, $avail, and $debug properties are defined. If debug
-		 * is enabled, hook the 'override_textdomain_mofile' filter to use local translation files instead of translations
-		 * from wordpress.org.
+		 * The 'wpsso_init_textdomain' action is run after the $check, $avail, and $debug properties are defined.
 		 *
-		 * May also be called via the 'change_locale' action, in which case the $debug property is probably not available.
+		 * May also be called via the 'change_locale' action.
 		 */
 		public function init_textdomain() {
 
-			if ( ! empty( $this->debug->enabled ) ) {
+			if ( ! empty( $this->options[ 'plugin_load_mofiles' ] ) ) {
 
 				static $do_once = null;
 
@@ -849,9 +845,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			return $classnames;
 		}
 
-		/**
-		 * Only runs when debug is enabled.
-		 */
 		public function override_textdomain_mofile( $wp_mofile, $domain ) {
 
 			if ( 0 === strpos( $domain, 'wpsso' ) ) {	// Optimize.

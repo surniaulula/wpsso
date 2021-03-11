@@ -3056,6 +3056,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				'</td>' .
 				self::get_option_site_use( 'plugin_clean_on_uninstall', $form, $network, $is_enabled = true );
 
+			$table_rows[ 'plugin_load_mofiles' ] = '' .
+				$form->get_th_html( _x( 'Use Local Plugin Translations', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_load_mofiles' ) . 
+				'<td>' . ( ! $network && $debug_status ?
+				$form->get_hidden( 'plugin_load_mofiles', 0 ) .	// Uncheck if a constant is defined.
+				$form->get_no_checkbox( 'plugin_load_mofiles', $css_class = '', $css_id = '', $debug_val ) . ' ' . $debug_status :
+				$form->get_checkbox( 'plugin_load_mofiles' ) ) . '</td>' .
+				self::get_option_site_use( 'plugin_load_mofiles', $form, $network, $is_enabled = true );
+
 			$table_rows[ 'plugin_cache_disable' ] = '' .
 				$form->get_th_html( _x( 'Disable Cache for Debugging', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_cache_disable' ) . 
 				'<td>' . ( ! $network && $cache_status ?
@@ -3067,7 +3075,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$table_rows[ 'plugin_debug_html' ] = '' .
 				$form->get_th_html( _x( 'Add HTML Debug Messages', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_debug_html' ) . 
 				'<td>' . ( ! $network && $debug_status ?
-				$form->get_hidden( 'plugin_plugin_debug_html', 0 ) .	// Uncheck if a constant is defined.
+				$form->get_hidden( 'plugin_debug_html', 0 ) .	// Uncheck if a constant is defined.
 				$form->get_no_checkbox( 'plugin_debug_html', $css_class = '', $css_id = '', $debug_val ) . ' ' . $debug_status :
 				$form->get_checkbox( 'plugin_debug_html' ) ) . '</td>' .
 				self::get_option_site_use( 'plugin_debug_html', $form, $network, $is_enabled = true );
