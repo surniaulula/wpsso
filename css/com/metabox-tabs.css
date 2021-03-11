@@ -308,7 +308,7 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 }
 
 .sucom-tablink-icon.sucom-tablink-href_other_sites::before {		/* SSO > General Settings > Social and Search Sites > Other Sites tab. */
-	content:"\e81b";	/* .icon-robot-4 */
+	content:"\e81c";	/* .icon-robot-5 */
 }
 
 .sucom-tablink-icon.sucom-tablink-href_pinterest::before {		/* SSO > General Settings > Social and Search Sites > Pinterest tab. */
