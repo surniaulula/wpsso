@@ -1354,13 +1354,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$fb_apps_url     = __( 'https://developers.facebook.com/apps', 'wpsso' );
 							$fb_docs_reg_url = __( 'https://developers.facebook.com/docs/apps/register', 'wpsso' );
-							$fb_insights_url = __( 'https://developers.facebook.com/docs/insights/', 'wpsso' );
 
 							$text = sprintf( __( 'If you have a <a href="%1$s">Facebook App ID for your website</a>, enter it here (see <a href="%2$s">Register and Configure an App</a> for help on creating a Facebook App ID).', 'wpsso' ), $fb_apps_url, $fb_docs_reg_url ) . ' ';
-
-							$text .= '<br/><br/>';
-
-							$text .= sprintf( __( 'The Facebook App ID will appear in webpage meta tags and is used by Facebook to allow access to <a href="%1$s">Facebook Insight</a> data for accounts associated with that App ID.', 'wpsso' ), $fb_insights_url );
 
 							break;
 

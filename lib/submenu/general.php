@@ -92,11 +92,11 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 			$metabox_id = 'pub';
 
 			$tabs = apply_filters( 'wpsso_general_' . $metabox_id . '_tabs', array(
-				'facebook'     => _x( 'Facebook', 'metabox tab', 'wpsso' ),
-				'google'       => _x( 'Google', 'metabox tab', 'wpsso' ),
-				'pinterest'    => _x( 'Pinterest', 'metabox tab', 'wpsso' ),
-				'twitter'      => _x( 'Twitter', 'metabox tab', 'wpsso' ),
-				'other_social' => _x( 'Other Sites', 'metabox tab', 'wpsso' ),
+				'facebook'    => _x( 'Facebook', 'metabox tab', 'wpsso' ),
+				'google'      => _x( 'Google', 'metabox tab', 'wpsso' ),
+				'pinterest'   => _x( 'Pinterest', 'metabox tab', 'wpsso' ),
+				'twitter'     => _x( 'Twitter', 'metabox tab', 'wpsso' ),
+				'other_sites' => _x( 'Other Sites', 'metabox tab', 'wpsso' ),
 			) );
 
 			$table_rows = array();
@@ -260,10 +260,10 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						$css_class = '', $css_id = 'fb_publisher_url' ) . 
 					'<td>' . $this->form->get_input_locale( 'fb_publisher_url', $css_class = 'wide' ) . '</td>';
 
-					$table_rows[ 'fb_app_id' ] = '' . 
+					$table_rows[ 'fb_app_id' ] = $this->form->get_tr_hide( 'basic', 'fb_app_id' ) . 
 					$this->form->get_th_html( _x( 'Facebook Application ID', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'fb_app_id' ) . 
-					'<td>' . $this->form->get_input( 'fb_app_id', $css_class = 'is_required' ) . '</td>';
+					'<td>' . $this->form->get_input( 'fb_app_id', $css_class = 'api_key' ) . '</td>';
 
 					$table_rows[ 'fb_admins' ] = $this->form->get_tr_hide( 'basic', 'fb_admins' ) . 
 					$this->form->get_th_html( _x( 'or Facebook Admin Username(s)', 'option label', 'wpsso' ),
@@ -409,7 +409,12 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					break;
 
-				case 'pub-other_social':
+				case 'pub-other_sites':
+
+					$table_rows[ 'ahrefs_site_verify' ] = '' .
+					$this->form->get_th_html( _x( 'Ahrefs Website Verification ID', 'option label', 'wpsso' ),
+						$css_class = '', $css_id = 'ahrefs_site_verify' ) . 
+					'<td>' . $this->form->get_input( 'ahrefs_site_verify', 'api_key' ) . '</td>';
 
 					$table_rows[ 'baidu_site_verify' ] = '' .
 					$this->form->get_th_html( _x( 'Baidu Website Verification ID', 'option label', 'wpsso' ),

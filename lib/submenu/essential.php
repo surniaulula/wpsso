@@ -150,11 +150,6 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 						$css_class = '', $css_id = 'fb_publisher_url' ) .
 					'<td>' . $this->form->get_input_locale( 'fb_publisher_url', $css_class = 'wide' ) . '</td>';
 
-					$table_rows[ 'fb_app_id' ] = '' . 
-					$this->form->get_th_html( _x( 'Facebook Application ID', 'option label', 'wpsso' ),
-						$css_class = '', $css_id = 'fb_app_id' ) . 
-					'<td>' . $this->form->get_input( 'fb_app_id', $css_class = 'is_required' ) . '</td>';
-
 					/**
 					 * Pinterest.
 					 */

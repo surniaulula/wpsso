@@ -203,11 +203,11 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	width:1.1em;
 }
 
-.sucom-tablink-icon.sucom-tablink-href_appmeta::before {		/* Mobile Apps tab. */
+.sucom-tablink-icon.sucom-tablink-href_appmeta::before {		/* SSO > Mobile Apps tab. */
 	content:"\f10b";	/* .icon-mobile */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_author::before {			/* Authorship tab. */
+.sucom-tablink-icon.sucom-tablink-href_author::before {			/* SSO > General Settings > General Settings > Authorship tab. */
 	content:"\f2be";	/* .icon-user-circle-o */
 }
 
@@ -223,6 +223,10 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\f1c0";	/* .icon-database */
 }
 
+.sucom-tablink-icon.sucom-tablink-href_content::before {		/* SSO > General Settings > General Settings > Content and Text tab. */
+	content:"\e809";	/* .icon-edit */
+}
+
 .sucom-tablink-icon.sucom-tablink-href_custom_fields::before {		/* SSO > Advanced Settings > Metadata > Custom Fields tab. */
 	content:"\e80c";	/* .icon-key */
 }
@@ -235,11 +239,11 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\f2c2";	/* .icon-id-card */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_edit::before {			/* Customize tab. */
+.sucom-tablink-icon.sucom-tablink-href_edit::before {			/* Document SSO > Customize tab. */
 	content:"\e809";	/* .icon-edit */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_facebook::before {		/* Facebook tab. */
+.sucom-tablink-icon.sucom-tablink-href_facebook::before {		/* SSO > General Settings > Social and Search Sites > Facebook tab. */
 	content:"\f308";	/* .icon-facebook-squared */
 }
 
@@ -247,7 +251,7 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\f0b0";	/* .icon-filter */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_google::before {			/* Google tab. */
+.sucom-tablink-icon.sucom-tablink-href_google::before {			/* SSO > General Settings > Social and Search Sites > Google tab. */
 	content:"\f1a0";	/* .icon-google */
 }
 
@@ -259,7 +263,7 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\e816";	/* .icon-upload */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_images::before {			/* Images tab. */
+.sucom-tablink-icon.sucom-tablink-href_images::before {			/* SSO > General Settings > General Settings > Images tab. */
 	content:"\e808";	/* .icon-picture */
 }
 
@@ -303,11 +307,11 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\f0f7";	/* .icon-building */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_other_social::before {		/* Other Sites tab. */
-	content:"\e807";	/* .icon-export */
+.sucom-tablink-icon.sucom-tablink-href_other_sites::before {		/* SSO > General Settings > Social and Search Sites > Other Sites tab. */
+	content:"\e81b";	/* .icon-robot-4 */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_pinterest::before {		/* Pinterest tab. */
+.sucom-tablink-icon.sucom-tablink-href_pinterest::before {		/* SSO > General Settings > Social and Search Sites > Pinterest tab. */
 	content:"\f0d3";	/* .icon-pinterest-squared */
 }
 
@@ -327,7 +331,7 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\f123";	/* .icon-star-half-alt */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_robots::before {			/* Robots Meta tab. */
+.sucom-tablink-icon.sucom-tablink-href_robots::before {			/* Document SSO > Robots Meta tab. */
 	content:"\e81b";	/* .icon-robot-4 */
 }
 
@@ -355,11 +359,11 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\e82c";	/* .icon-link */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_site::before {			/* Site Information tab. */
+.sucom-tablink-icon.sucom-tablink-href_site::before {			/* SSO > General Settings > General Settings > Site Information tab. */
 	content:"\e803";	/* .icon-home */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_twitter::before {		/* Twitter tab. */
+.sucom-tablink-icon.sucom-tablink-href_twitter::before {		/* SSO > General Settings > Social and Search Sites > Twitter tab. */
 	content:"\f304";	/* .icon-twitter-squared */
 }
 
@@ -367,7 +371,7 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\e814";	/* .icon-dashicons-code-standards */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_videos::before {			/* Videos tab. */
+.sucom-tablink-icon.sucom-tablink-href_videos::before {			/* SSO > General Settings > General Settings > Videos tab. */
 	content:"\e800";	/* .icon-videocam */
 }
 

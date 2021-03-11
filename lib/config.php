@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.25.0-b.1',	// Plugin version.
-					'opt_version' => '777',		// Increment when changing default option values.
+					'version'     => '8.25.0-b.2',	// Plugin version.
+					'opt_version' => '778',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results, no matter how webpages are shared, re-shared, messaged, posted, embedded, or crawled.',
@@ -1257,11 +1257,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'fb_locale'        => 'en_US',				// Alternate Facebook Locale.
 
 					/**
-					 * Google options.
-					 */
-					'g_site_verify' => '',					// Google Website Verification ID.
-
-					/**
 					 * Open Graph options.
 					 */
 					'og_author_field'         => 'facebook',		// Author Profile URL Field.
@@ -1327,7 +1322,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Pinterest options.
 					 */
-					'p_site_verify'              => '',			// Pinterest Website Verification ID.
 					'p_publisher_url'            => '',
 					'p_add_nopin_header_img_tag' => 1,			// Add "nopin" to Site Header Image.
 					'p_add_nopin_media_img_tag'  => 0,			// Add "nopin" to WordPress Media.
@@ -1463,6 +1457,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'yt_publisher_url'        => '',	// YouTube Business Channel URL (localized).
 
 					/**
+					 * Website verification IDs.
+					 */
+					'ahrefs_site_verify' => '',		// Ahrefs Website Verification ID.
+					'baidu_site_verify'  => '',		// Baidu Website Verification ID.
+					'g_site_verify'      => '',		// Google Website Verification ID.
+					'bing_site_verify'   => '',		// Microsoft Bing Website Verification ID.
+					'p_site_verify'      => '',		// Pinterest Website Verification ID.
+					'yandex_site_verify' => '',		// Yandex Website Verification ID.
+
+					/**
 					 * Enable / disable individual head HTML tags.
 					 */
 					'add_link_rel_author'                               => 0,	// Deprecated - no longer used by Google.
@@ -1571,6 +1575,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_property_product:upc'                     => 1,
 					'add_meta_property_product:weight:value'            => 1,
 					'add_meta_property_product:weight:units'            => 1,
+					'add_meta_name_ahrefs-site-verification'            => 1,	// Ahrefs Website Verification ID.
 					'add_meta_name_author'                              => 1,
 					'add_meta_name_baidu-site-verification'             => 1,	// Baidu Website Verification ID.
 					'add_meta_name_description'                         => 1,
@@ -2004,6 +2009,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 
 				'site_verify_meta_names' => array(
+					'ahrefs_site_verify' => 'ahrefs-site-verification',	// Ahrefs Website Verification ID.
 					'baidu_site_verify'  => 'baidu-site-verification',	// Baidu Website Verification ID.
 					'g_site_verify'      => 'google-site-verification',	// Google Website Verification ID.
 					'bing_site_verify'   => 'msvalidate.01',		// Microsoft Bing Website Verification ID.
