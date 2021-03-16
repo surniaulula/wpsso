@@ -581,24 +581,22 @@ msgstr ""
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-"
-"detect-select-images/\">How does WPSSO Core find / detect / select images?</"
-"a>"
+"detect-select-images/\">How does WPSSO Core find and select images?</a>"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:71
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-"
-"detect-select-videos/\">How does WPSSO Core find / detect / select videos?</"
-"a>"
+"detect-select-videos/\">How does WPSSO Core find and select videos?</a>"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:72
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-are-some-html-"
-"elements-missing-misaligned-different/\">Why are some HTML elements "
-"missing / misaligned / different?</a>"
+"elements-missing-misaligned-different/\">Why are some HTML elements missing "
+"or misaligned?</a>"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:73
