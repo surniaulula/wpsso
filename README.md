@@ -270,11 +270,11 @@
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-fix-my-themes-front-page-pagination/">How do I fix my theme's front page pagination?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-install-the-wpsso-pro-version/">How do I install the WPSSO Core Premium plugin?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-remove-duplicate-meta-tags/">How do I remove duplicate meta tags?</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-images/">How does WPSSO Core find / detect / select images?</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-videos/">How does WPSSO Core find / detect / select videos?</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-images/">How does WPSSO Core find and select images?</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-videos/">How does WPSSO Core find and select videos?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/is-wpsso-the-best-alternative-to-yoast-seo/">Is WPSSO the Best Alternative to Yoast SEO?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/w3c-says-there-is-no-attribute-property/">W3C says "there is no attribute 'property'"</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-are-some-html-elements-missing-misaligned-different/">Why are some HTML elements missing / misaligned / different?</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-are-some-html-elements-missing-misaligned-different/">Why are some HTML elements missing or misaligned?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/">Why does Facebook show the wrong image / text?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-does-google-structured-data-testing-tool-show-errors/">Why does Google Structured Data Test Tool show errors?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-is-the-open-graph-title-the-same-for-every-webpage/">Why is the Open Graph title the same for every webpage?</a></li>
