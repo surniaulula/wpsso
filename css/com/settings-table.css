@@ -678,7 +678,7 @@ table.sucom-settings td select { width:255px; }	/* Default width. */
 
 table.sucom-settings td select.crop-area,
 div.postbox table.sucom-settings td select.crop-area {
-	width:85px;
+	width:82px;
 }
 
 table.sucom-settings td select.xshort { width:60px; }
@@ -739,18 +739,15 @@ table.sucom-settings td textarea:disabled {
 	background-color:#f9f9f9;
 }
 
-table.sucom-settings td input[type="text"].s50 { width:50px; }
+table.sucom-settings td input[type="text"].size { width:55px; }	 /* Image size. */
 
-table.sucom-settings td input[type="text"].chars,	/* Character length. */
-table.sucom-settings td input[type="text"].pid,		/* Image ID. */
-table.sucom-settings td input[type="text"].size,	/* Image size. */
+table.sucom-settings td input[type="text"].chars { width:60px; }	/* Character length. */
+
+table.sucom-settings td input[type="text"].pid { width:60px; }		/* Image ID. */
+
 table.sucom-settings td input[type="text"].xshort { width:60px; }
 
 table.sucom-settings td input[type="text"].price { width:70px; }
-
-table.sucom-settings td input[type="text"].s75 { width:75px; }
-
-table.sucom-settings td input[type="text"].s100 { width:100px; }
 
 table.sucom-settings td input[type="text"].year,
 table.sucom-settings td input[type="text"].short { width:110px; }
@@ -768,9 +765,7 @@ table.sucom-settings td input[type="text"].api_key { width:400px; font-family:"C
 
 table.sucom-settings td input[type="text"].wide { width:100%; }
 
-table.sucom-settings td input[type="checkbox"] {
-	margin:0 4px 0 0;
-}
+table.sucom-settings td input[type="checkbox"] { margin:0 4px 0 0; }
 
 table.sucom-settings td.blank input[type="checkbox"] { margin:2px 8px 2px 2px; }
 
@@ -781,9 +776,7 @@ table.sucom-settings td input[type="button"].button-primary,
 table.sucom-settings td input[type="button"].button-secondary { margin:0 5px; }
 
 table.sucom-settings td input::placeholder,
-table.sucom-settings td textarea::placeholder {
-	color:#ccc;
-}
+table.sucom-settings td textarea::placeholder { color:#ccc; }
 
 table.sucom-settings td input[disabled] { cursor:default; }	/* Keep the default cursor for disabled options. */
 
