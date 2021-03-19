@@ -281,8 +281,11 @@ Simply activate the free complementary add-on(s) you require:
 
 == Screenshots ==
 
-01. The Document SSO metabox shows a different set of options based on the content type selected, allowing you to customize the details of articles, events, e-Commerce products, recipes, reviews, and more.
-02. The Essential Settings page offers a quick and easy setup for a few essential settings. The General and Advanced settings pages offer a wealth of additional options to further customize the plugin for your site.
+01. The essential settings page offers a quick and easy setup.
+02. You can easily customize the details of articles, events, e-Commerce products, recipes, reviews, and much more.
+03. The preview tab allows you to quickly preview an example social share.
+04. The oEmbed tab allows you to preview the oEmbed image and text offered by WordPress.
+05. The validators tab allows you to quickly validate your webpage markup.
 
 == Changelog ==
 
