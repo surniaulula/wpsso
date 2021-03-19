@@ -38,6 +38,8 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 			if ( ! empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
 
 				remove_action( 'wp_head', 'noindex', 1 );
+
+				remove_action( 'wp_head', 'wp_robots', 1 );
 			}
 		}
 
