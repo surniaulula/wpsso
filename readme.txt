@@ -314,6 +314,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.25.1 (2021/03/19)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added an `is_embed()` check for robots 'noindex' default.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.0.
+	* WordPress v4.5.
+
 **Version 8.25.0 (2021/03/11)**
 
 * **New Features**
@@ -1082,6 +1096,10 @@ This release adds a new SSO &gt; Features Status page and integration module for
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.25.1 =
+
+(2021/03/19) Added an `is_embed()` check for robots 'noindex' default.
 
 = 8.25.0 =
 
