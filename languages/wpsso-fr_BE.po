@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.25.0\n"
+"Project-Id-Version: WPSSO Core 8.25.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-03-11 13:37-0800\n"
+"PO-Revision-Date: 2021-03-19 10:21-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -335,18 +335,18 @@ msgstr "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-fix-google-
 
 #: gettext/gettext-html-setup.php:70
 msgctxt "html list item"
-msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-images/\">How does WPSSO Core find / detect / select images?</a>"
-msgstr "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-images/\">Comment WPSSO Core trouve / détecte / sélectionne les images?</a>"
+msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-images/\">How does WPSSO Core find and select images?</a>"
+msgstr "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-images/\">Comment WPSSO Core trouve et sélectionne les images?</a>"
 
 #: gettext/gettext-html-setup.php:71
 msgctxt "html list item"
-msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-videos/\">How does WPSSO Core find / detect / select videos?</a>"
-msgstr "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-videos/\">Comment WPSSO Core trouve / détecte / sélectionne les videos?</a>"
+msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-videos/\">How does WPSSO Core find and select videos?</a>"
+msgstr "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-videos/\">Comment WPSSO Core trouve et sélectionne les videos?</a>"
 
 #: gettext/gettext-html-setup.php:72
 msgctxt "html list item"
-msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-are-some-html-elements-missing-misaligned-different/\">Why are some HTML elements missing / misaligned / different?</a>"
-msgstr "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-are-some-html-elements-missing-misaligned-different/\">Pourquoi certains éléments HTML sont-ils manquants / mal alignés / différents?</a>"
+msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-are-some-html-elements-missing-misaligned-different/\">Why are some HTML elements missing or misaligned?</a>"
+msgstr "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-are-some-html-elements-missing-misaligned-different/\">Pourquoi certains éléments HTML sont-ils manquants ou mal alignés?</a>"
 
 #: gettext/gettext-html-setup.php:73
 msgctxt "html list item"
@@ -6060,8 +6060,8 @@ msgid "You can edit images in the <a href=\"%s\">WordPress Media Library</a> to 
 msgstr "Vous pouvez éditer les images dans la <a href=\"%s\">médiathèque WordPress</a> pour sélectionner une zone de recadrage préférée (comme exemple, en haut ou en bas) et optimiser les textes sociaux et SEO de l'image."
 
 #: lib/messages.php:2238
-msgid "oEmbed HTML is provided by the WordPress or theme <code>%s</code> template, which may not use all available oEmbed data."
-msgstr "L'HTML oEmbed est fourni par le modèle de WordPress ou de theme <code>%s</code>, qui peut ne pas utiliser toutes les données oEmbed disponibles."
+msgid "The oEmbed HTML is created by the <code>%s</code> template."
+msgstr "Le HTML oEmbed est créé par le modèle <code>%s</code>."
 
 #: lib/messages.php:2264
 msgid "Schema FAQPage markup is a collection of Questions and Answers, and WordPress manages a collection of related content in two different ways:"

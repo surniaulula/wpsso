@@ -7014,7 +7014,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:2238
-msgid "oEmbed HTML is created by the <code>%1$s</code> template."
+msgid "The oEmbed HTML is created by the <code>%s</code> template."
 msgstr ""
 
 #: lib/messages.php:2264

@@ -2235,7 +2235,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						 	$text = '<p class="status-msg">';
 
-							$text .= sprintf( __( 'oEmbed HTML is created by the <code>%1$s</code> template.', 'wpsso' ), 'wpsso/embed-content' );
+							$text .= sprintf( __( 'The oEmbed HTML is created by the <code>%s</code> template.', 'wpsso' ), 'wpsso/embed-content' );
 
 							$text .= '</p>';
 
