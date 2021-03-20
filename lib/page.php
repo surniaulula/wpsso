@@ -1661,9 +1661,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$words_per_min = WPSSO_READING_WORDS_PER_MIN;
 
-			$reading_mins = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'reading_mins' );
+			$reading_mins = null;
 
-			if ( null === $reading_mins ) {	// No custom value.
+			if ( is_object( $mod[ 'obj' ] ) ) {	// Just in case.
+
+				$reading_mins = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'reading_mins' );
+			}
+
+			if ( null === $reading_mins ) {	// Default value or no custom value.
 
 				$reading_mins = SucomUtil::get_text_reading_mins( $content, $words_per_min );
 			}
