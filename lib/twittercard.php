@@ -53,7 +53,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 		/**
 		 * Use reference for $mt_og argument to allow unset of existing twitter meta tags.
 		 */
-		public function get_array( array $mod, array &$mt_og = array(), $author_id = false ) {	// Pass by reference is OK.
+		public function get_array( array $mod, array $mt_og = array(), $author_id = false ) {
 
 			if ( $this->p->debug->enabled ) {
 
