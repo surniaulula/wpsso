@@ -320,11 +320,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Added a PHP class object check before getting the post content reading time.
+	* None.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added a PHP class object check before getting the post content reading time.
 * **Requires At Least**
 	* PHP v7.0.
 	* WordPress v4.5.
