@@ -315,7 +315,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.25.2-dev.1 (2021/03/20)**
+**Version 8.25.2-dev.1 (TBD)**
 
 * **New Features**
 	* None.
@@ -1114,7 +1114,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 = 8.25.2-dev.1 =
 
-(2021/03/20) Added a PHP class object check before getting the post content reading time.
+(TBD) Added a PHP class object check before getting the post content reading time.
 
 = 8.25.1 =
 
