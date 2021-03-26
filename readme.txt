@@ -310,12 +310,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.25.2-dev.1 (TBD)**
+**Version 8.25.2-dev.2 (2021/03/26)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added a 'wpsso_add_schema_head_attributes' filter check (true by default) before validating theme header templates.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -1107,9 +1107,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.25.2-dev.1 =
+= 8.25.2-dev.2 =
 
-(TBD) Added a PHP class object check before getting the post content reading time.
+(2021/03/26) Added a 'wpsso_add_schema_head_attributes' filter check (true by default) before validating theme header templates.
 
 = 8.25.1 =
 
