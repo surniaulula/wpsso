@@ -1,4 +1,4 @@
-<h1>WPSSO Core</h1><h3>Complete Meta Tags and Structured Data SEO</h3>
+<h1>WPSSO Core</h1><h3>Complete Meta Tags and Structured Data for WordPress SEO</h3>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
