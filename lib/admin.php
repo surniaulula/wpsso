@@ -2727,69 +2727,95 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$filter_name = SucomUtil::get_const( 'WPSSO_HEAD_ATTR_FILTER_NAME', 'head_attributes' );
+			/**
+			 * If Schema markup is disabled, do not add an itemtype to the <head> HTML tag.
+			 *
+			 * See WpssoMetaItem->__construct().
+			 */
+			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'schema markup is disabled' );
+				}
 
 			/**
-			 * Skip if not using the default filter name.
+			 * Hooked by the WPSSO JSON add-on to disable Schema head attributes.
 			 */
-			if ( 'head_attributes' !== $filter_name ) {
+			} elseif ( ! apply_filters( 'wpsso_add_schema_head_attributes', true ) ) {
 
-				return;
-			}
+				if ( $this->p->debug->enabled ) {
 
-			/**
-			 * Skip if previous check is already successful.
-			 */
-			if ( $passed = get_option( WPSSO_TMPL_HEAD_CHECK_NAME, $default = false ) ) {
+					$this->p->debug->log( 'schema head attributes are disabled' );
+				}
 
-				return;
-			}
+			} else {
 
-			/**
-			 * Skip if we will be modifying the header templates.
-			 */
-			$action_query = 'wpsso-action';
-			$action_value = SucomUtil::get_request_value( $action_query ) ;		// POST or GET with sanitize_text_field().
-
-			if ( 'modify_tmpl_head_attributes' === $action_value ) {
-
-				return;
-			}
-
-			/**
-			 * Skip if already dismissed.
-			 */
-			$notice_key = 'notice-header-tmpl-no-head-attr-' . SucomUtilWP::get_theme_slug_version();
-
-			if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
+				$filter_name = SucomUtil::get_const( 'WPSSO_HEAD_ATTR_FILTER_NAME', 'head_attributes' );
 
 				/**
-				 * Get parent and child theme template file paths.
+				 * Skip if not using the default filter name of 'head_attributes'.
 				 */
-				$header_files = SucomUtilWP::get_theme_header_file_paths();
+				if ( 'head_attributes' !== $filter_name ) {	// Can be empty or 'none'.
 
-				foreach ( $header_files as $tmpl_base => $tmpl_file ) {
-
-					$stripped_php = SucomUtil::get_stripped_php( $tmpl_file );
-
-					if ( empty( $stripped_php ) ) {	// Empty string or false.
-
-						continue;
-
-					} elseif ( false !== strpos( $stripped_php, '<head>' ) ) {
-
-						$notice_msg = $this->p->msgs->get( 'notice-header-tmpl-no-head-attr' );
-
-						$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
-
-						return;	// Stop here.
-					}
+					return;
 				}
 
 				/**
-				 * Mark all template head checks as complete.
+				 * Skip if previous check is already successful.
 				 */
-				update_option( WPSSO_TMPL_HEAD_CHECK_NAME, $passed = true, $autoload = false );
+				if ( $passed = get_option( WPSSO_TMPL_HEAD_CHECK_NAME, $default = false ) ) {
+
+					return;
+				}
+
+				/**
+				 * Skip if we will be modifying the header templates.
+				 */
+				$action_query = 'wpsso-action';
+
+				$action_value = SucomUtil::get_request_value( $action_query ) ;	// POST or GET with sanitize_text_field().
+
+				if ( 'modify_tmpl_head_attributes' === $action_value ) {	// Just in case.
+
+					return;
+				}
+
+				/**
+				 * Skip if already dismissed.
+				 */
+				$notice_key = 'notice-header-tmpl-no-head-attr-' . SucomUtilWP::get_theme_slug_version();
+
+				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
+
+					/**
+					 * Get parent and child theme template file paths.
+					 */
+					$header_files = SucomUtilWP::get_theme_header_file_paths();
+
+					foreach ( $header_files as $tmpl_base => $tmpl_file ) {
+
+						$stripped_php = SucomUtil::get_stripped_php( $tmpl_file );
+
+						if ( empty( $stripped_php ) ) {	// Empty string or false.
+
+							continue;
+
+						} elseif ( false !== strpos( $stripped_php, '<head>' ) ) {
+
+							$notice_msg = $this->p->msgs->get( 'notice-header-tmpl-no-head-attr' );
+
+							$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
+
+							return;	// Stop here.
+						}
+					}
+
+					/**
+					 * Mark all template head checks as complete.
+					 */
+					update_option( WPSSO_TMPL_HEAD_CHECK_NAME, $passed = true, $autoload = false );
+				}
 			}
 		}
 

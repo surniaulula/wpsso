@@ -2140,6 +2140,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						$url = get_permalink( $mod[ 'id' ] );
 					}
+
+					$url = $this->check_url_string( $url, 'post permalink' );
 				}
 			}
 
@@ -2336,7 +2338,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				if ( $mod[ 'is_post_type_archive' ] ) {
 
-					$url = $this->check_url_string( get_post_type_archive_link( $mod[ 'post_type' ] ), 'post_type_archive' );
+					$url = get_post_type_archive_link( $mod[ 'post_type' ] );
+
+					$url = $this->check_url_string( $url, 'post_type_archive' );
 
 				} elseif ( $mod[ 'id' ] ) {	// Just in case.
 
@@ -2379,14 +2383,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					} else {
 
 						$url = get_permalink( $mod[ 'id' ] );
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'get_permalink url = ' . $url );
-						}
-
-						$url = $this->check_url_string( $url, 'post permalink' );
 					}
+
+					$url = $this->check_url_string( $url, 'post permalink' );
 				}
 
 				$url = apply_filters( 'wpsso_post_url', $url, $mod );
@@ -2395,7 +2394,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				if ( 'page' === get_option( 'show_on_front' ) ) {	// 'show_on_front' = posts | page.
 
-					$url = $this->check_url_string( get_permalink( get_option( 'page_for_posts' ) ), 'page for posts' );
+					$url = get_permalink( get_option( 'page_for_posts' ) );
+
+					$url = $this->check_url_string( $url, 'page for posts' );
 
 				} else {
 

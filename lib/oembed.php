@@ -213,7 +213,7 @@ if ( ! class_exists( 'WpssoOembed' ) ) {
 				$head_info = $this->p->post->get_head_info( $post->ID );	// Uses a static local cache.
 
 				if ( ! empty( $head_info[ 'og:image:width' ] ) && ! empty( $head_info[ 'og:image:height' ] ) ) {
-					
+
 					if ( $head_info[ 'og:image:width' ] > $head_info[ 'og:image:height' ] ) {
 
 						$shape = 'rectangular';

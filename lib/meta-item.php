@@ -31,7 +31,9 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 			}
 
 			/**
-			 * If Schema markup is disabled, do not add the itemtype to the <head> HTML tag.
+			 * If Schema markup is disabled, do not add an itemtype to the <head> HTML tag.
+			 *
+			 * See WpssoAdmin->check_tmpl_head_attributes().
 			 */
 			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
 
@@ -40,14 +42,25 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 					$this->p->debug->log( 'schema markup is disabled' );
 				}
 
+			/**
+			 * Hooked by the WPSSO JSON add-on to disable Schema head attributes.
+			 *
+			 * The __construct() may be run before WPSSO JSON has hooked this filter, so re-check in the
+			 * add_head_attributes() action.
+			 */
+			} elseif ( ! apply_filters( 'wpsso_add_schema_head_attributes', true ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'schema head attributes are disabled' );
+				}
+
 			} else {
 
-				/**
-				 * Template action hook.
-				 */
 				add_action( 'add_head_attributes', array( $this, 'add_head_attributes' ), -1000 );
 
 				$filter_name = SucomUtil::get_const( 'WPSSO_HEAD_ATTR_FILTER_NAME', 'head_attributes' );
+
 				$filter_prio = SucomUtil::get_const( 'WPSSO_HEAD_ATTR_FILTER_PRIO', 1000 );
 
 				if ( empty( $filter_name ) || 'none' === $filter_name ) {
@@ -80,9 +93,26 @@ if ( ! class_exists( 'WpssoMetaItem' ) ) {
 			}
 
 			/**
-			 * Hooked by the WPSSO JSON add-on to disable the Schema head attributes.
+			 * If Schema markup is disabled, do not add an itemtype to the <head> HTML tag.
 			 */
-			if ( apply_filters( 'wpsso_add_schema_head_attributes', true ) ) {
+			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'schema markup is disabled' );
+				}
+
+			/**
+			 * Hooked by the WPSSO JSON add-on to disable Schema head attributes.
+			 */
+			} elseif ( ! apply_filters( 'wpsso_add_schema_head_attributes', true ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'schema head attributes are disabled' );
+				}
+
+			} else {
 
 				$filter_name = SucomUtil::get_const( 'WPSSO_HEAD_ATTR_FILTER_NAME', 'head_attributes' );
 

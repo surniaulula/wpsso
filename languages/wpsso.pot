@@ -4350,178 +4350,178 @@ msgstr ""
 msgid "The Site Address URL value has been changed from %1$s to %2$s."
 msgstr ""
 
-#: lib/admin.php:2849
+#: lib/admin.php:2875
 msgid ""
 "The WordPress <a href=\"%1$s\">Search Engine Visibility</a> option is set to "
 "allow search engines and social sites to access this site, but your <a href="
 "\"%2$s\">Site Address URL</a> value is an IP address (%3$s)."
 msgstr ""
 
-#: lib/admin.php:2851
+#: lib/admin.php:2877
 msgid ""
 "Please update your Search Engine Visibility option to discourage search "
 "engines from indexing this site, or use a fully qualified domain name as "
 "your Site Address URL."
 msgstr ""
 
-#: lib/admin.php:2880
+#: lib/admin.php:2906
 msgid "No header templates found in the parent or child theme directories."
 msgstr ""
 
-#: lib/admin.php:2900
+#: lib/admin.php:2926
 msgid "No <code>%1$s</code> HTML tag found in the <code>%2$s</code> template."
 msgstr ""
 
-#: lib/admin.php:2911
+#: lib/admin.php:2937
 msgid "Error copying <code>%1$s</code> to <code>%2$s</code>."
 msgstr ""
 
-#: lib/admin.php:2923
+#: lib/admin.php:2949
 msgid "Failed to open template file <code>%s</code> for writing."
 msgstr ""
 
-#: lib/admin.php:2931
+#: lib/admin.php:2957
 msgid "The <code>%s</code> template has been successfully modified and saved."
 msgstr ""
 
-#: lib/admin.php:2934
+#: lib/admin.php:2960
 msgid ""
 "A backup copy of the original template has been saved as <code>%s</code> in "
 "the same folder."
 msgstr ""
 
-#: lib/admin.php:2943
+#: lib/admin.php:2969
 msgid "Failed to write the <code>%s</code> template."
 msgstr ""
 
-#: lib/admin.php:2946
+#: lib/admin.php:2972
 msgid ""
 "You may need to restore the original template saved as <code>%s</code> in "
 "the same folder."
 msgstr ""
 
-#: lib/admin.php:2993
+#: lib/admin.php:3019
 msgctxt "option label"
 msgid "Author / Person Name Format"
 msgstr ""
 
-#: lib/admin.php:2997 lib/submenu/general.php:233
+#: lib/admin.php:3023 lib/submenu/general.php:233
 msgctxt "option label"
 msgid "Maximum Images to Include"
 msgstr ""
 
-#: lib/admin.php:3004
+#: lib/admin.php:3030
 msgctxt "option label"
 msgid "Schema Description Max. Length"
 msgstr ""
 
-#: lib/admin.php:3005 lib/edit.php:392 lib/submenu/general.php:310
+#: lib/admin.php:3031 lib/edit.php:392 lib/submenu/general.php:310
 #: lib/submenu/general.php:322 lib/submenu/general.php:398
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
 
-#: lib/admin.php:3019
+#: lib/admin.php:3045
 msgctxt "option label"
 msgid "WebSite Publisher Type"
 msgstr ""
 
-#: lib/admin.php:3024
+#: lib/admin.php:3050
 msgctxt "option label"
 msgid "WebSite Publisher (Person)"
 msgstr ""
 
-#: lib/admin.php:3029
+#: lib/admin.php:3055
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:3034 lib/options.php:1325
+#: lib/admin.php:3060 lib/options.php:1325
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
 
-#: lib/admin.php:3053
+#: lib/admin.php:3079
 msgctxt "option label"
 msgid "Remove Settings on Uninstall"
 msgstr ""
 
-#: lib/admin.php:3055
+#: lib/admin.php:3081
 msgctxt "option comment"
 msgid "including custom post, term, and user meta"
 msgstr ""
 
-#: lib/admin.php:3060
+#: lib/admin.php:3086
 msgctxt "option label"
 msgid "Use Local Plugin Translations"
 msgstr ""
 
-#: lib/admin.php:3068
+#: lib/admin.php:3094
 msgctxt "option label"
 msgid "Disable Cache for Debugging"
 msgstr ""
 
-#: lib/admin.php:3076
+#: lib/admin.php:3102
 msgctxt "option label"
 msgid "Add HTML Debug Messages"
 msgstr ""
 
-#: lib/admin.php:3110
+#: lib/admin.php:3136
 msgctxt "option comment"
 msgid "in %s"
 msgstr ""
 
-#: lib/admin.php:3126
+#: lib/admin.php:3152
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:3339
+#: lib/admin.php:3365
 msgid "Return to %s"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:3370
+#: lib/admin.php:3396
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
 #. translators: %1$s is the URL, %2$s is the short plugin name.
-#: lib/admin.php:3391
+#: lib/admin.php:3417
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-"
 "ons</a> to check if newer versions are available."
 msgstr ""
 
 #. translators: %1$s is the URL.
-#: lib/admin.php:3400
+#: lib/admin.php:3426
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for WordPress "
 "(plugins, themes and translations)</a> to check if newer versions are "
 "available."
 msgstr ""
 
-#: lib/admin.php:3551
+#: lib/admin.php:3577
 msgid "Please select a %1$s settings file to import."
 msgstr ""
 
-#: lib/admin.php:3558
+#: lib/admin.php:3584
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr ""
 
-#: lib/admin.php:3565
+#: lib/admin.php:3591
 msgid ""
 "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr ""
 
-#: lib/admin.php:3579
+#: lib/admin.php:3605
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr ""
 
-#: lib/admin.php:3589
+#: lib/admin.php:3615
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr ""
 
-#: lib/admin.php:3599
+#: lib/admin.php:3625
 msgid "Import of plugin and add-on settings is complete."
 msgstr ""
 
@@ -5230,12 +5230,12 @@ msgid ""
 msgstr ""
 
 #: lib/media.php:1100 lib/post.php:546 lib/register.php:345 lib/term.php:470
-#: lib/user.php:450 lib/util.php:837 lib/util.php:3158
+#: lib/user.php:450 lib/util.php:837 lib/util.php:3159
 msgid "%s warning:"
 msgstr ""
 
 #: lib/media.php:1101 lib/post.php:547 lib/term.php:471 lib/user.php:451
-#: lib/util.php:838 lib/util.php:3159
+#: lib/util.php:838 lib/util.php:3160
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
@@ -9365,13 +9365,13 @@ msgid ""
 "provider to have the missing function installed."
 msgstr ""
 
-#: lib/util.php:3160
+#: lib/util.php:3161
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3176
+#: lib/util.php:3177
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
@@ -9380,120 +9380,120 @@ msgid ""
 "and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3178
+#: lib/util.php:3179
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3554
+#: lib/util.php:3555
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr ""
 
-#: lib/util.php:3555
+#: lib/util.php:3556
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/util.php:3559
+#: lib/util.php:3560
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr ""
 
-#: lib/util.php:3560
+#: lib/util.php:3561
 msgctxt "validator type"
 msgid "Microdata"
 msgstr ""
 
-#: lib/util.php:3564
+#: lib/util.php:3565
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr ""
 
-#: lib/util.php:3565
+#: lib/util.php:3566
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr ""
 
-#: lib/util.php:3569
+#: lib/util.php:3570
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/util.php:3570
+#: lib/util.php:3571
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr ""
 
-#: lib/util.php:3574
+#: lib/util.php:3575
 msgctxt "option label"
 msgid "Google Structured Data Test (Deprecated)"
 msgstr ""
 
-#: lib/util.php:3575
+#: lib/util.php:3576
 msgctxt "validator type"
 msgid "Structured Data"
 msgstr ""
 
-#: lib/util.php:3579
+#: lib/util.php:3580
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/util.php:3580
+#: lib/util.php:3581
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/util.php:3584
+#: lib/util.php:3585
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/util.php:3585
+#: lib/util.php:3586
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr ""
 
-#: lib/util.php:3589
+#: lib/util.php:3590
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/util.php:3590
+#: lib/util.php:3591
 msgctxt "validator type"
 msgid "Twitter Card"
 msgstr ""
 
-#: lib/util.php:3595
+#: lib/util.php:3596
 msgctxt "option label"
 msgid "The AMP Project Validator"
 msgstr ""
 
-#: lib/util.php:3596
+#: lib/util.php:3597
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr ""
 
-#: lib/util.php:3600
+#: lib/util.php:3601
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr ""
 
-#: lib/util.php:3601
+#: lib/util.php:3602
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name.
-#: lib/util.php:3751
+#: lib/util.php:3752
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3761
+#: lib/util.php:3762
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 

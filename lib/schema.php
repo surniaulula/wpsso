@@ -1855,7 +1855,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				 * Make sure we have a price currency value.
 				 */
 				if ( empty( $single_offer[ 'priceCurrency' ] ) ) {
-				
+
 					$single_offer[ 'priceCurrency' ] = $wpsso->options[ 'og_def_currency' ];
 				}
 
