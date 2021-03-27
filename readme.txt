@@ -30,9 +30,9 @@ There's no need to manually re-enter descriptions, titles, product information, 
 
 WPSSO is coded for speed and makes full use of all WordPress caching methods &mdash; along with advanced caching features like transient cache pre-seeding in background. WPSSO Core and its complementary add-ons load only the PHP libraries and classes they need, keeping their code small, fast and light. All code is fully tested and compatible with the latest version of WordPress and PHP v8.
 
-**Customize the settings for different languages:**
+**Customizable settings for different languages:**
 
-Text, image, and video related options are WordPress language / locale aware, which means you can easily switch languages and customize these options for different front-end webpage languages.
+Text, image, and video related option values are WordPress language / locale aware, which means you can easily switch languages and customize these options for different front-end languages.
 
 <h3>Users Love the WPSSO Core Plugin</h3>
 
