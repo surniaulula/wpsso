@@ -20,13 +20,13 @@ Present your content at its best on social sites and in search results, no matte
 
 <p><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"><strong>Present your content at its best on social sites and in search results, no matter how webpages are shared, re-shared, messaged, posted, embedded, or crawled:</strong></p>
 
-WPSSO automatically creates meta tags and structured data markup for Facebook / Open Graph, Pinterest Rich Pins, Twitter Cards, Google Knowledge Graph, Google Rich Results (aka Schema, Rich Snippets, Structured Data), WhatsApp and Messaging Apps, Mobile Web Browsers, WordPress REST API, LinkedIn / oEmbed data and more &mdash; all from your existing WordPress content, plugin data, and service APIs.
+WPSSO automatically creates meta tags and structured data markup for Facebook / Open Graph, Pinterest Rich Pins, Twitter Cards, Google Knowledge Graph, Google Rich Results (aka Schema, Rich Snippets, Structured Data), WhatsApp and Messaging Apps, Mobile Web Browsers, WordPress REST API, LinkedIn / oEmbed data and more.
 
-**Reads existing content, plugin data, and service API data:**
+**Reads existing WordPress content, plugin data, and service API data:**
 
 There's no need to manually re-enter descriptions, titles, product information, and re-select images / videos like other meta tag, SEO, or Schema plugins. WPSSO can be used as your only social and search optimization plugin, or combined Core with your favorite SEO plugin to improve your SEO plugin's meta tags and Schema markup (including All in One SEO Pack, Jetpack SEO Tools, Rank Math SEO, SEO Ultimate, SEOPress, The SEO Framework, WP Meta SEO, Yoast SEO, and more).
 
-**Fast, light, and coded for maximum performance:**
+**Fast, lightweight, and coded for maximum performance:**
 
 WPSSO is coded for speed and makes full use of all WordPress caching methods &mdash; along with advanced caching features like transient cache pre-seeding in background. WPSSO Core and its complementary add-ons load only the PHP libraries and classes they need, keeping their code small, fast and light. All code is fully tested and compatible with the latest version of WordPress and PHP v8.
 
