@@ -136,38 +136,38 @@ The WPSSO Core Standard plugin is designed to satisfy the requirements of most s
 
 * **Integration with 3rd Party Plugins:** 
 
-	* [All in One SEO Pack](https://wordpress.org/plugins/all-in-one-seo-pack/)
-	* [bbPress](https://wordpress.org/plugins/bbpress/)
-	* [BuddyPress](https://wordpress.org/plugins/buddypress/) (including Group Forum Topics)
-	* [Co-Authors Plus](https://wordpress.org/plugins/co-authors-plus/) (including Guest Authors)
-	* [Easy Digital Downloads](https://wordpress.org/plugins/easy-digital-downloads/)
+	* All in One SEO Pack
+	* bbPress
+	* BuddyPress
+	* Co-Authors Plus
+	* Easy Digital Downloads
 	* Gravity Forms + GravityView
-	* [NextCellent Gallery - NextGEN Legacy](https://wordpress.org/plugins/nextcellent-gallery-nextgen-legacy/)
-	* [NextGEN Gallery](https://wordpress.org/plugins/nextgen-gallery/)
-	* [Perfect WooCommerce Brands](https://wordpress.org/plugins/perfect-woocommerce-brands/)
-	* [Polylang](https://wordpress.org/plugins/polylang/)
-	* [Product GTIN (EAN, UPC, ISBN) for WooCommerce](https://wordpress.org/plugins/product-gtin-ean-upc-isbn-for-woocommerce/)
-	* [Rate my Post](https://wordpress.org/plugins/rate-my-post/)
-	* [rtMedia for WordPress, BuddyPress and bbPress](https://wordpress.org/plugins/buddypress-media/)
-	* [SEOPress](https://wordpress.org/plugins/wp-seopress/)
-	* [Simple Job Board](https://wordpress.org/plugins/simple-job-board/)
-	* [The Events Calendar](https://wordpress.org/plugins/the-events-calendar/)
-	* [The SEO Framework](https://wordpress.org/plugins/autodescription/)
-	* [WooCommerce](https://wordpress.org/plugins/woocommerce/)
-	* [WooCommerce Brands](https://woocommerce.com/products/brands/)
-	* [WooCommerce Currency Switcher](https://wordpress.org/plugins/woocommerce-currency-switcher/)
-	* [WooCommerce UPC, EAN, and ISBN](https://wordpress.org/plugins/woo-add-gtin/)
+	* NextCellent Gallery - NextGEN Legacy
+	* NextGEN Gallery
+	* Perfect WooCommerce Brands
+	* Polylang
+	* Product GTIN (EAN, UPC, ISBN) for WooCommerce
+	* Rate my Post
+	* rtMedia for WordPress, BuddyPress and bbPress
+	* SEOPress
+	* Simple Job Board
+	* The Events Calendar
+	* The SEO Framework
+	* WooCommerce
+	* WooCommerce Brands
+	* WooCommerce Currency Switcher
+	* WooCommerce UPC, EAN, and ISBN
 	* WooCommerce Show Single Variations
-	* [WP Job Manager](https://wordpress.org/plugins/wp-job-manager/)
-	* [WP Meta SEO](https://wordpress.org/plugins/wp-meta-seo/)
-	* [WP-PostRatings](https://wordpress.org/plugins/wp-postratings/)
-	* [WP Product Review](https://wordpress.org/plugins/wp-product-review/)
-	* [WP Recipe Maker](https://wordpress.org/plugins/wp-recipe-maker/)
-	* [WP Ultimate Recipe](https://wordpress.org/plugins/wp-ultimate-recipe/)
-	* [WPML](https://wpml.org/)
-	* [YITH WooCommerce Brands Add-on](https://wordpress.org/plugins/search/yith-woocommerce-brands-add-on/)
-	* [Yoast SEO](https://wordpress.org/plugins/wordpress-seo/) (aka WordPress SEO)
-	* [Yotpo Social Reviews for WooCommerce](https://wordpress.org/plugins/yotpo-social-reviews-for-woocommerce/)
+	* WP Job Manager
+	* WP Meta SEO
+	* WP-PostRatings
+	* WP Product Review
+	* WP Recipe Maker
+	* WP Ultimate Recipe
+	* WPML
+	* YITH WooCommerce Brands Add-on
+	* Yoast SEO
+	* Yotpo Social Reviews for WooCommerce
 
 * **Integration with Service APIs:**
 
