@@ -87,13 +87,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					return 'at_name';
 
 				/**
-				 * Empty or alpha-numeric uppercase (hyphens are allowed as well).
-				 */
-				case ( preg_match( '/_tid$/', $base_key ) ? true : false ):
-
-					return 'auth_id';
-
-				/**
 				 * Empty or alpha-numeric (upper or lower case), plus underscores.
 				 */
 				case 'fb_app_id':
@@ -110,27 +103,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case ( false !== strpos( $base_key, '_color_' ) ? true : false ):
 
 					return 'color';
-
-				/**
-				 * Empty or 'none' string, or date as yyyy-mm-dd.
-				 */
-				case ( preg_match( '/_date$/', $base_key ) ? true : false ):
-
-					return 'date';
-
-				/**
-				 * Empty or 'none' string, or time as hh:mm or hh:mm:ss.
-				 */
-				case ( preg_match( '/_time$/', $base_key ) ? true : false ):
-
-					return 'time';
-
-				/**
-				 * A regular expression.
-				 */
-				case ( preg_match( '/_preg$/', $base_key ) ? true : false ):
-
-					return 'preg';
 
 				/**
 				 * JS and CSS code (cannot be blank).
@@ -218,20 +190,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					return 'img_id';
 
 				/**
-				 * Image width, subject to minimum value (typically, at least 200px).
-				 */
-				case ( preg_match( '/_img_width$/', $base_key ) ? true : false ):
-
-					return 'img_width';
-
-				/**
-				 * Image height, subject to minimum value (typically, at least 200px).
-				 */
-				case ( preg_match( '/_img_height$/', $base_key ) ? true : false ):
-
-					return 'img_height';
-
-				/**
 				 * Empty string or must include at least one HTML tag.
 				 */
 				case 'og_vid_embed':
@@ -309,7 +267,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'robots_max_image_preview':	// Image Preview Size.
 				case ( false !== strpos( $base_key, '_crop_x' ) ? true : false ):
 				case ( false !== strpos( $base_key, '_crop_y' ) ? true : false ):
-				case ( false !== strpos( $base_key, '_type_for_' ) ? true : false ):
+				case ( false !== strpos( $base_key, '_type_for_' ) ? true : false ):	// Example: 'og_type_for_.*' or 'schema_type_for_.*'.
 				case ( preg_match( '/^(plugin|wp)_cm_[a-z]+_(name|label)$/', $base_key ) ? true : false ):
 
 					return 'not_blank';
@@ -358,6 +316,50 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case ( strpos( $base_key, '_url' ) && isset( $this->p->cf[ 'form' ][ 'social_accounts' ][ $base_key ] ) ? true : false ):
 
 					return 'url';
+
+				/**
+				 * Empty or alpha-numeric uppercase (hyphens are allowed as well).
+				 */
+				case ( preg_match( '/_tid$/', $base_key ) ? true : false ):
+
+					return 'auth_id';
+
+				/**
+				 * Image width, subject to minimum value (typically, at least 200px).
+				 */
+				case ( preg_match( '/_img_width$/', $base_key ) ? true : false ):
+
+					return 'img_width';
+
+				/**
+				 * Image height, subject to minimum value (typically, at least 200px).
+				 */
+				case ( preg_match( '/_img_height$/', $base_key ) ? true : false ):
+
+					return 'img_height';
+
+				/**
+				 * Empty or 'none' string, or date as yyyy-mm-dd.
+				 */
+				case ( preg_match( '/_date$/', $base_key ) ? true : false ):
+
+					return 'date';
+
+				/**
+				 * Empty or 'none' string, or time as hh:mm or hh:mm:ss.
+				 *
+				 * Check last in case there are taxonomy option names like 'og_type_for_tax_product_delivery_time'.
+				 */
+				case ( preg_match( '/_time$/', $base_key ) ? true : false ):
+
+					return 'time';
+
+				/**
+				 * A regular expression.
+				 */
+				case ( preg_match( '/_preg$/', $base_key ) ? true : false ):
+
+					return 'preg';
 			}
 
 			return $type;
