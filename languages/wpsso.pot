@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.25.2-b.1\n"
+"Project-Id-Version: WPSSO Core 8.25.2-rc.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2669,7 +2669,8 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:41 gettext/gettext-lib-pro.php:104
 #: lib/pro/admin/advanced.php:224 lib/pro/admin/general.php:62
 #: lib/std/admin/advanced.php:225 lib/std/admin/general.php:62
-#: lib/submenu/general.php:355
+#: lib/submenu/essential.php:150 lib/submenu/general.php:355
+#: lib/submenu/general.php:361
 msgctxt "option comment"
 msgid "recommended"
 msgstr ""
@@ -8655,11 +8656,6 @@ msgstr ""
 #: lib/submenu/essential.php:147 lib/submenu/general.php:358
 msgctxt "option label"
 msgid "Add Pinterest \"nopin\" to Images"
-msgstr ""
-
-#: lib/submenu/essential.php:150 lib/submenu/general.php:361
-msgctxt "option comment"
-msgid "recommended (with hidden image)"
 msgstr ""
 
 #: lib/submenu/essential.php:156 lib/submenu/general.php:367

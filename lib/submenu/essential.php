@@ -147,7 +147,7 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 					$this->form->get_th_html( _x( 'Add Pinterest "nopin" to Images', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'p_add_nopin_media_img_tag' ) . 
 					'<td>' . $this->form->get_checkbox( 'p_add_nopin_media_img_tag' ) .
-					' ' . _x( 'recommended (with hidden image)', 'option comment', 'wpsso' ) . '</td>';
+					' ' . _x( 'recommended', 'option comment', 'wpsso' ) . '</td>';
 
 					$table_rows[ 'p_add_img_html' ] = '' . 
 					$this->form->get_th_html( _x( 'Add Hidden Image for Pinterest', 'option label', 'wpsso' ),
