@@ -92,41 +92,41 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 					$article_sections = $this->p->util->get_article_sections();
 
 					$table_rows[ 'site_name' ] = '' . 
-					$this->form->get_th_html_locale( _x( 'WebSite Name', 'option label', 'wpsso' ),
-						$css_class = '', $css_id = 'site_name' ) . 
-					'<td>' . $this->form->get_input_locale( 'site_name', $css_class = 'long_name', $css_id = '',
-						$len = 0, $def_site_name ) . '</td>';
+						$this->form->get_th_html_locale( _x( 'WebSite Name', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'site_name' ) . 
+						'<td>' . $this->form->get_input_locale( 'site_name', $css_class = 'long_name', $css_id = '',
+							$len = 0, $def_site_name ) . '</td>';
 
 					$table_rows[ 'site_desc' ] = '' . 
-					$this->form->get_th_html_locale( _x( 'WebSite Description', 'option label', 'wpsso' ),
-						$css_class = '', $css_id = 'site_desc' ) .
-					'<td>' . $this->form->get_textarea_locale( 'site_desc', $css_class = '', $css_id = '',
-						$len = 0, $def_site_desc ) . '</td>';
+						$this->form->get_th_html_locale( _x( 'WebSite Description', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'site_desc' ) .
+						'<td>' . $this->form->get_textarea_locale( 'site_desc', $css_class = '', $css_id = '',
+							$len = 0, $def_site_desc ) . '</td>';
 
 					$table_rows[ 'og_def_img_id' ] = '' . 
-					$this->form->get_th_html( _x( 'Default Image ID', 'option label', 'wpsso' ),
-						$css_class = '', $css_id = 'og_def_img_id' ) . 
-					'<td>' . $this->form->get_input_image_upload( 'og_def_img' ) . '</td>';
+						$this->form->get_th_html( _x( 'Default Image ID', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'og_def_img_id' ) . 
+						'<td>' . $this->form->get_input_image_upload( 'og_def_img' ) . '</td>';
 
 					$table_rows[ 'og_def_img_url' ] = '' . 
-					$this->form->get_th_html( _x( 'or Default Image URL', 'option label', 'wpsso' ),
-						$css_class = '', $css_id = 'og_def_img_url' ) . 
-					'<td>' . $this->form->get_input_image_url( 'og_def_img' ) . '</td>';
+						$this->form->get_th_html( _x( 'or Default Image URL', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'og_def_img_url' ) . 
+						'<td>' . $this->form->get_input_image_url( 'og_def_img' ) . '</td>';
 
 					$table_rows[ 'og_def_article_section' ] = '' . 
-					$this->form->get_th_html( _x( 'Default Article Section', 'option label', 'wpsso' ),
-						$css_class = '', $css_id = 'og_def_article_section' ) . 
-					'<td>' .
-					$this->form->get_select( 'og_def_article_section', $article_sections, $css_class = '', $css_id = '',
-						$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
-							$event_args = array(
-								'json_var'  => 'article_sections',
-								'exp_secs'  => $select_exp_secs,	// Create and read from a javascript URL.
-								'is_transl' => true,			// No label translation required.
-								'is_sorted' => true,			// No label sorting required.
-							)
-						) .
-					'</td>';
+						$this->form->get_th_html( _x( 'Default Article Section', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'og_def_article_section' ) . 
+						'<td>' .
+						$this->form->get_select( 'og_def_article_section', $article_sections, $css_class = '', $css_id = '',
+							$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
+								$event_args = array(
+									'json_var'  => 'article_sections',
+									'exp_secs'  => $select_exp_secs,	// Create and read from a javascript URL.
+									'is_transl' => true,			// No label translation required.
+									'is_sorted' => true,			// No label sorting required.
+								)
+							) .
+						'</td>';
 
 					if ( ! empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
 
@@ -134,31 +134,31 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 					}
 
 					$table_rows[ 'fb_publisher_url' ] = '' . 
-					$this->form->get_th_html_locale( _x( 'Facebook Business Page URL', 'option label', 'wpsso' ),
-						$css_class = '', $css_id = 'fb_publisher_url' ) .
-					'<td>' . $this->form->get_input_locale( 'fb_publisher_url', $css_class = 'wide' ) . '</td>';
+						$this->form->get_th_html_locale( _x( 'Facebook Business Page URL', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'fb_publisher_url' ) .
+						'<td>' . $this->form->get_input_locale( 'fb_publisher_url', $css_class = 'wide' ) . '</td>';
 
 					$table_rows[ 'p_publisher_url' ] = '' . 
-					$this->form->get_th_html_locale( _x( 'Pinterest Company Page URL', 'option label', 'wpsso' ),
-						$css_class = '', $css_id = 'p_publisher_url' ) .
-					'<td>' . $this->form->get_input_locale( 'p_publisher_url', $css_class = 'wide' ) . '</td>';
+						$this->form->get_th_html_locale( _x( 'Pinterest Company Page URL', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'p_publisher_url' ) .
+						'<td>' . $this->form->get_input_locale( 'p_publisher_url', $css_class = 'wide' ) . '</td>';
 
 					$table_rows[ 'p_add_nopin_media_img_tag' ] = '' . 
-					$this->form->get_th_html( _x( 'Add Pinterest "nopin" to Images', 'option label', 'wpsso' ),
-						$css_class = '', $css_id = 'p_add_nopin_media_img_tag' ) . 
-					'<td>' . $this->form->get_checkbox( 'p_add_nopin_media_img_tag' ) .
-					' ' . _x( 'recommended', 'option comment', 'wpsso' ) . '</td>';
+						$this->form->get_th_html( _x( 'Add Pinterest "nopin" to Images', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'p_add_nopin_media_img_tag' ) . 
+						'<td>' . $this->form->get_checkbox( 'p_add_nopin_media_img_tag' ) . ' ' .
+						_x( 'recommended', 'option comment', 'wpsso' ) . '</td>';
 
 					$table_rows[ 'p_add_img_html' ] = '' . 
-					$this->form->get_th_html( _x( 'Add Hidden Image for Pinterest', 'option label', 'wpsso' ),
-						$css_class = '', $css_id = 'p_add_img_html' ) . 
-					'<td>' . $this->form->get_checkbox( 'p_add_img_html' ) .
-					' ' . _x( 'recommended (adds hidden image in content)', 'option comment', 'wpsso' ) . '</td>';
+						$this->form->get_th_html( _x( 'Add Hidden Image for Pinterest', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'p_add_img_html' ) . 
+						'<td>' . $this->form->get_checkbox( 'p_add_img_html' ) . ' ' .
+						_x( 'recommended (adds hidden image in content)', 'option comment', 'wpsso' ) . '</td>';
 
 					$table_rows[ 'tc_site' ] = '' . 
-					$this->form->get_th_html_locale( _x( 'Twitter Business @username', 'option label', 'wpsso' ),
-						$css_class = '', $css_id = 'tc_site' ) .
-					'<td>' . $this->form->get_input_locale( 'tc_site' ) . '</td>';
+						$this->form->get_th_html_locale( _x( 'Twitter Business @username', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'tc_site' ) .
+						'<td>' . $this->form->get_input_locale( 'tc_site' ) . '</td>';
 
 					break;
 			}

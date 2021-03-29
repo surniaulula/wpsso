@@ -127,13 +127,15 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$form->get_th_html( _x( 'Title / Name Column Width', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_col_title_width' ) . 
 				'<td>' . $form->get_no_input( 'plugin_col_title_width', 'short' ) . ' ' .
-				_x( 'and max width', 'option comment', 'wpsso' ) . ' ' . $form->get_no_input( 'plugin_col_title_width_max', 'short' ) . '</td>';
+				_x( 'and max width', 'option comment', 'wpsso' ) . ' ' .
+				$form->get_no_input( 'plugin_col_title_width_max', 'short' ) . '</td>';
 
 			$table_rows[ 'plugin_col_def_width' ] = $form->get_tr_hide( 'basic', 'plugin_col_def_width' ) . 
 				$form->get_th_html( _x( 'Default for Posts / Pages List', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_col_def_width' ) . 
 				'<td>' . $form->get_no_input( 'plugin_col_def_width', 'short' ) .
-				_x( 'and max width', 'option comment', 'wpsso' ) . ' ' . $form->get_no_input( 'plugin_col_def_width_max', 'short' ) . '</td>';
+				_x( 'and max width', 'option comment', 'wpsso' ) . ' ' .
+				$form->get_no_input( 'plugin_col_def_width_max', 'short' ) . '</td>';
 
 			return $table_rows;
 		}
@@ -154,20 +156,17 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$table_rows[ 'plugin_filter_title' ] = '' . 
 				$form->get_th_html( _x( 'Use WordPress Title Filters', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_filter_title' ) . 
-				$form->get_no_td_checkbox( 'plugin_filter_title',
-					'<em>' . _x( 'not recommended', 'option comment', 'wpsso' ) . '</em>' );
+				$form->get_no_td_checkbox( 'plugin_filter_title', _x( 'not recommended', 'option comment', 'wpsso' ) );
 
 			$table_rows[ 'plugin_filter_content' ] = '' . 
 				$form->get_th_html( _x( 'Use WordPress Content Filters', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_filter_content' ) . 
-				$form->get_no_td_checkbox( 'plugin_filter_content',
-					'<em>' . _x( 'recommended (see help text)', 'option comment', 'wpsso' ) . '</em>' );
+				$form->get_no_td_checkbox( 'plugin_filter_content', _x( 'recommended (see help text)', 'option comment', 'wpsso' ) );
 
 			$table_rows[ 'plugin_filter_excerpt' ] = '' . 
 				$form->get_th_html( _x( 'Use WordPress Excerpt Filters', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_filter_excerpt' ) . 
-				$form->get_no_td_checkbox( 'plugin_filter_excerpt',
-					'<em>' . _x( 'recommended only if using shortcodes in excerpts', 'option comment', 'wpsso' ) . '</em>' );
+				$form->get_no_td_checkbox( 'plugin_filter_excerpt', _x( 'recommended only if using shortcodes in excerpts', 'option comment', 'wpsso' ) );
 
 			$table_rows[ 'plugin_p_strip' ] = $form->get_tr_hide( 'basic', 'plugin_p_strip' ) .
 				$form->get_th_html( _x( 'Content Starts at 1st Paragraph', 'option label', 'wpsso' ),
@@ -222,7 +221,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$table_rows[ 'plugin_check_img_dims' ] = '' . 
 				$form->get_th_html( _x( 'Enforce Image Dimension Checks', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_check_img_dims' ) . 
-				$form->get_no_td_checkbox( 'plugin_check_img_dims', '<em>' . _x( 'recommended', 'option comment', 'wpsso' ) . '</em>' );
+				$form->get_no_td_checkbox( 'plugin_check_img_dims', _x( 'recommended', 'option comment', 'wpsso' ) );
 
 			$table_rows[ 'plugin_upscale_images' ] = '' . 
 				$form->get_th_html( _x( 'Upscale Media Library Images', 'option label', 'wpsso' ),
@@ -385,7 +384,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$table_rows[ 'plugin_min_shorten' ] = $form->get_tr_hide( 'basic', 'plugin_min_shorten' ) . 
 				$form->get_th_html( _x( 'Minimum URL Length to Shorten', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_min_shorten' ) . 
 				'<td nowrap class="blank">' . $form->get_no_input( 'plugin_min_shorten', $css_class = 'short' ) . ' ' .
-					_x( 'characters', 'option comment', 'wpsso' ) . '</td>';
+				_x( 'characters', 'option comment', 'wpsso' ) . '</td>';
 
 			$table_rows[ 'plugin_wp_shortlink' ] = $form->get_tr_hide( 'basic', 'plugin_wp_shortlink' ) .
 				$form->get_th_html( _x( 'Use Shortened URL for WP Shortlink', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_wp_shortlink' ) . 
@@ -432,7 +431,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$form->get_th_html( _x( 'Maximum Age of Reviews', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_shopperapproved_age_max' ) .
 				'<td nowrap class="blank">' . $form->get_no_input( 'plugin_shopperapproved_age_max', $css_class = 'short' ) . ' ' .
-					_x( 'months', 'option comment', 'wpsso' ) . '</td>';
+				_x( 'months', 'option comment', 'wpsso' ) . '</td>';
 
 			$sa_for_values = SucomUtilWP::get_post_type_labels( array(), $val_prefix = '', _x( 'Post Type', 'option label', 'wpsso' ) );
 

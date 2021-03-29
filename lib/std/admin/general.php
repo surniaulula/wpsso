@@ -42,8 +42,9 @@ if ( ! class_exists( 'WpssoStdAdminGeneral' ) ) {
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
 			$table_rows[ 'plugin_gravatar_api' ] = '' . 
-			$form->get_th_html( _x( 'Gravatar is Default Author Image', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_gravatar_api' ) . 
-			$form->get_no_td_checkbox( 'plugin_gravatar_api' );
+				$form->get_th_html( _x( 'Gravatar is Default Author Image', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_gravatar_api' ) . 
+				$form->get_no_td_checkbox( 'plugin_gravatar_api' );
 
 			return $table_rows;
 		}
@@ -58,11 +59,13 @@ if ( ! class_exists( 'WpssoStdAdminGeneral' ) ) {
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
 			$table_rows[ 'plugin_check_img_dims' ] = '' . 
-				$form->get_th_html( _x( 'Enforce Image Dimension Checks', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_check_img_dims' ) . 
-				$form->get_no_td_checkbox( 'plugin_check_img_dims', '<em>' . _x( 'recommended', 'option comment', 'wpsso' ) . '</em>' );
+				$form->get_th_html( _x( 'Enforce Image Dimension Checks', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_check_img_dims' ) . 
+				$form->get_no_td_checkbox( 'plugin_check_img_dims', _x( 'recommended', 'option comment', 'wpsso' ) );
 
 			$table_rows[ 'plugin_upscale_images' ] = '' . 
-				$form->get_th_html( _x( 'Upscale Media Library Images', 'option label', 'wpsso' ), '', 'plugin_upscale_images' ) . 
+				$form->get_th_html( _x( 'Upscale Media Library Images', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_upscale_images' ) . 
 				$form->get_no_td_checkbox( 'plugin_upscale_images' );
 
 			return $table_rows;
@@ -80,16 +83,17 @@ if ( ! class_exists( 'WpssoStdAdminGeneral' ) ) {
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature_video_api( 'wpsso' ) . '</td>';
 
 			$table_rows[ 'og_vid_max' ] = $form->get_tr_hide( 'basic', 'og_vid_max' ) . 
-			$form->get_th_html( _x( 'Maximum Videos to Include', 'option label', 'wpsso' ), null, 'og_vid_max' ) . 
-			'<td class="blank">' . $form->get_no_select( 'og_vid_max', range( 0, $max_media_items ), $css_class = 'short', $css_id = '', $is_assoc = true ) . '</td>';
+				$form->get_th_html( _x( 'Maximum Videos to Include', 'option label', 'wpsso' ), null, 'og_vid_max' ) . 
+				'<td class="blank">' . $form->get_no_select( 'og_vid_max', range( 0, $max_media_items ),
+					$css_class = 'short', $css_id = '', $is_assoc = true ) . '</td>';
 
 			$table_rows[ 'og_vid_prev_img' ] = '' . 
-			$form->get_th_html( _x( 'Include Video Preview Images', 'option label', 'wpsso' ), null, 'og_vid_prev_img' ) . 
-			$form->get_no_td_checkbox( 'og_vid_prev_img', $this->p->msgs->preview_images_first() );
+				$form->get_th_html( _x( 'Include Video Preview Images', 'option label', 'wpsso' ), null, 'og_vid_prev_img' ) . 
+				$form->get_no_td_checkbox( 'og_vid_prev_img', $this->p->msgs->preview_images_first() );
 
 			$table_rows[ 'og_vid_autoplay' ] = '' . 
-			$form->get_th_html( _x( 'Force Autoplay when Possible', 'option label', 'wpsso' ), null, 'og_vid_autoplay' ) . 
-			$form->get_no_td_checkbox( 'og_vid_autoplay' );
+				$form->get_th_html( _x( 'Force Autoplay when Possible', 'option label', 'wpsso' ), null, 'og_vid_autoplay' ) . 
+				$form->get_no_td_checkbox( 'og_vid_autoplay' );
 
 			$check_embed_html = '';
 
@@ -99,8 +103,8 @@ if ( ! class_exists( 'WpssoStdAdminGeneral' ) ) {
 			}
 
 			$table_rows[ 'plugin_embed_media_apis' ] = '' .
-			$form->get_th_html( _x( 'Check for Embedded Media', 'option label', 'wpsso' ), '', 'plugin_embed_media_apis' ) . 
-			'<td class="blank">' . $check_embed_html . '</td>';
+				$form->get_th_html( _x( 'Check for Embedded Media', 'option label', 'wpsso' ), '', 'plugin_embed_media_apis' ) . 
+				'<td class="blank">' . $check_embed_html . '</td>';
 
 			return $table_rows;
 		}
