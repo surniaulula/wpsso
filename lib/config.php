@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'     => '8.25.2-b.1',	// Plugin version.
-					'opt_version' => '780',		// Increment when changing default option values.
+					'opt_version' => '781',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results, no matter how webpages are shared, re-shared, messaged, posted, embedded, or crawled.',
