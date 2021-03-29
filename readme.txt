@@ -310,7 +310,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.25.2-dev.3 (2021/03/28)**
+**Version 8.25.2-b.1 (2021/03/28)**
 
 * **New Features**
 	* None.
@@ -1107,7 +1107,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.25.2-dev.3 =
+= 8.25.2-b.1 =
 
 (2021/03/28) Added a 'wpsso_add_schema_head_attributes' filter check (true by default) before validating theme header templates.
 
