@@ -102,24 +102,15 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			$role_label = _x( 'Person', 'user role', 'wpsso' );
 
-			$change_show_next_key     = SucomUtil::next_key( WpssoUser::show_opts(), $this->p->cf[ 'form' ][ 'show_options' ] );
-			$change_show_name_transl  = _x( $this->p->cf[ 'form' ][ 'show_options' ][ $change_show_next_key ], 'option value', 'wpsso' );
-			$change_show_label_transl = sprintf( _x( 'Change to "%s" View', 'submit button', 'wpsso' ), $change_show_name_transl );
-
-			$clear_cache_label_transl       = _x( 'Clear All Caches', 'submit button', 'wpsso' );
-			$clear_short_label_transl       = _x( 'Clear All Caches and Short URLs', 'submit button', 'wpsso' );
-			$clear_cache_dir_label_transl   = _x( 'Clear All Files in Cache Folder', 'submit button', 'wpsso' );
-			$clear_transients_label_transl  = _x( 'Clear All Database Transients', 'submit button', 'wpsso' );
-			$refresh_cache_label_transl     = _x( 'Refresh Transient Cache', 'submit button', 'wpsso' );
-			$add_persons_label_transl       = sprintf( _x( 'Add %s Role to Content Creators', 'submit button', 'wpsso' ), $role_label );
-			$remove_persons_label_transl    = sprintf( _x( 'Remove %s Role from All Users', 'submit button', 'wpsso' ), $role_label );
-			$export_settings_label_transl   = _x( 'Export Plugin and Add-on Settings', 'submit button', 'wpsso' );
-			$import_settings_label_transl   = _x( 'Import Plugin and Add-on Settings', 'submit button', 'wpsso' );
-
 			/**
-			 * Add a note about shortened URLs being preserved or cleared, depending on the 'plugin_clear_short_urls'
-			 * option value.
+			 * Row #0.
 			 */
+			$clear_cache_label_transl      = _x( 'Clear All Caches', 'submit button', 'wpsso' );
+			$clear_short_label_transl      = _x( 'Clear All Caches and Short URLs', 'submit button', 'wpsso' );
+			$clear_cache_dir_label_transl  = _x( 'Clear All Files in Cache Folder', 'submit button', 'wpsso' );
+			$clear_transients_label_transl = _x( 'Clear All Database Transients', 'submit button', 'wpsso' );
+			$refresh_cache_label_transl    = _x( 'Refresh Transient Cache', 'submit button', 'wpsso' );
+
 			if ( $this->using_db_cache ) {
 
 				if ( $this->p->options[ 'plugin_shortener' ] !== 'none' ) {
@@ -128,9 +119,33 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 
+			/**
+			 * Row #1.
+			 */
+			$export_settings_label_transl = _x( 'Export Plugin and Add-on Settings', 'submit button', 'wpsso' );
+			$import_settings_label_transl = _x( 'Import Plugin and Add-on Settings', 'submit button', 'wpsso' );
+
+			/**
+			 * Row #2.
+			 */
+			$add_persons_label_transl        = sprintf( _x( 'Add %s Role to Content Creators', 'submit button', 'wpsso' ), $role_label );
+			$remove_persons_label_transl     = sprintf( _x( 'Remove %s Role from All Users', 'submit button', 'wpsso' ), $role_label );
+			$reload_image_sizes_label_transl = _x( 'Reload Default Image Sizes', 'submit button', 'wpsso' );
+
 			$add_persons_label_transl .= ' **';
 
+			/**
+			 * Row #3.
+			 */
+			$change_show_next_key     = SucomUtil::next_key( WpssoUser::show_opts(), $this->p->cf[ 'form' ][ 'show_options' ] );
+			$change_show_name_transl  = _x( $this->p->cf[ 'form' ][ 'show_options' ][ $change_show_next_key ], 'option value', 'wpsso' );
+			$change_show_label_transl = sprintf( _x( 'Change to "%s" View', 'submit button', 'wpsso' ), $change_show_name_transl );
+
 			$form_button_rows = array(
+
+				/**
+				 * Row #0.
+				 */
 				array(
 					'clear_cache'                => $clear_cache_label_transl,	// Clear All Caches.
 					'clear_cache_and_short_urls' => null,				// Clear All Caches and Short URLs.
@@ -138,6 +153,10 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 					'clear_db_transients'        => null,				// Clear All Database Transients.
 					'refresh_cache'              => $refresh_cache_label_transl,	// Refresh Transient Cache.
 				),
+
+				/**
+				 * Row #1.
+				 */
 				array(
 					'export_plugin_settings_json' => $export_settings_label_transl,
 					'import_plugin_settings_json' => array(
@@ -152,11 +171,19 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 						',
 					),
 				),
+
+				/**
+				 * Row #2.
+				 */
 				array(
-					'add_persons'    => $add_persons_label_transl,
-					'remove_persons' => $remove_persons_label_transl,
-					// 'Reload Default Image Sizes' button added by the WpssoSubmenuImageSizes class.
+					'add_persons'                => $add_persons_label_transl,
+					'remove_persons'             => $remove_persons_label_transl,
+					'reload_default_image_sizes' => $reload_image_sizes_label_transl,
 				),
+
+				/**
+				 * Row #3.
+				 */
 				array(
 					'change_show_options&show-opts=' . $change_show_next_key => $change_show_label_transl,
 					'reset_user_dismissed_notices' => _x( 'Reset Dismissed Notices', 'submit button', 'wpsso' ),

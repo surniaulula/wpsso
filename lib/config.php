@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.25.2',	// Plugin version.
+					'version'     => '8.26.0-dev.1',	// Plugin version.
 					'opt_version' => '781',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -94,7 +94,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'document-types' => 'Document Types Filters',
 								'edit'           => 'Edit Metabox Filters',
 								'general'        => 'General Settings Filters',
-								'image-sizes'    => 'Image Sizes Filters',
 							),
 							'ecom' => array(
 								'edd'                           => '(plugin) Easy Digital Downloads',
@@ -182,7 +181,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'document-types' => 'Document Types Filters',
 								'edit'           => 'Edit Metabox Filters',
 								'general'        => 'General Settings Filters',
-								'image-sizes'    => 'Image Sizes Filters',
 							),
 							'social' => array(
 								'buddypress' => '(plugin) BuddyPress',
@@ -197,7 +195,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'general'        => 'General Settings',
 							'advanced'       => 'Advanced Settings',
 							'document-types' => 'Document Types',
-							'image-sizes'    => 'Image Sizes',
 							'addons'         => 'Complementary Add-ons',
 							'licenses'       => 'Premium Licenses',
 							'tools'          => 'Tools and Actions',
@@ -2284,7 +2281,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'essential'      => 'star-filled',
 					'features'       => 'yes-alt',
 					'general'        => 'admin-settings',
-					'image-sizes'    => 'images-alt2',
 					'licenses'       => 'admin-network',
 					'dashboard'      => 'dashboard',
 					'setup'          => 'welcome-learn-more',

@@ -264,6 +264,10 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\e816";	/* .icon-upload */
 }
 
+.sucom-tablink-icon.sucom-tablink-href_image_sizes::before {		/* SSO > Advanced Settings > Advanced Settings > Image Sizes tab. */
+	content:"\e82d";	/* .icon-resize-full */
+}
+
 .sucom-tablink-icon.sucom-tablink-href_images::before {			/* SSO > General Settings > General Settings > Images tab. */
 	content:"\e808";	/* .icon-picture */
 }

@@ -2412,14 +2412,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 								$text .= __( 'Please note that WooCommerce creates a selector on the purchase page for product attributes used for variations.', 'wpsso' ) . ' ';
 
-								$text .= '</br>';
-
 								// translators: Please ignore - translation uses a different text domain.
 								$used_for_variations = __( 'Used for variations', 'woocommerce' );
 
-								$text .= sprintf( __( 'Enabling the WooCommerce "%s" attribute option may not be suitable for some product attributes (like GTIN, ISBN, and MPN).', 'wpsso' ), $used_for_variations );
-
-								$text .= '</br>';
+								$text .= sprintf( __( 'Enabling the WooCommerce "%s" attribute option may not be suitable for some product attributes (like GTIN, ISBN, and MPN).', 'wpsso' ), $used_for_variations ) . ' ';
 
 								$text .= __( 'We suggest using a supported 3rd party plugin to manage Brand, GTIN, ISBN, and MPN values for variations.', 'wpsso' );
 
@@ -3019,10 +3015,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text .= ' <li>' . __( 'Provides Twitter Player Card meta tags.', 'wpsso' ) . '</li>';
 
 						$text .= ' <li>' . __( 'Upscaling of images and URL shortening.', 'wpsso' ) . '</li>';
-
-						$text .= ' <li>' . __( 'Customize default image sizes.', 'wpsso' ) . '</li>';
-
-						$text .= ' <li>' . __( 'Customize default document types.', 'wpsso' ) . '</li>';
 
 						$text .= ' <li>' . __( 'Customize default advanced settings.', 'wpsso' ) . '</li>';
 
