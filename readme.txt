@@ -310,7 +310,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.25.2-rc.1 (2021/03/28)**
+**Version 8.25.2-rc.2 (2021/03/28)**
 
 * **New Features**
 	* None.
@@ -329,7 +329,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Added an `is_embed()` check for robots 'noindex' default.
+	* Added an `is_embed()` check for the robots 'noindex' default.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -1107,13 +1107,13 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.25.2-rc.1 =
+= 8.25.2-rc.2 =
 
 (2021/03/28) Added a 'wpsso_add_schema_head_attributes' filter check (true by default) before validating theme header templates.
 
 = 8.25.1 =
 
-(2021/03/19) Added an `is_embed()` check for robots 'noindex' default.
+(2021/03/19) Added an `is_embed()` check for the robots 'noindex' default.
 
 = 8.25.0 =
 
