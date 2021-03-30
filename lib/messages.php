@@ -984,7 +984,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_check_img_dims':	// Enforce Image Dimension Checks.
 
-							$img_sizes_page_link = $this->p->util->get_admin_url( 'image-sizes',
+							$img_sizes_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_image_sizes',
 								_x( 'Image Sizes', 'lib file description', 'wpsso' ) );
 
 							$text = __( 'Content authors often upload small featured images, without knowing that WordPress creates resized images based on predefined image sizes, so this option is disabled by default.', 'wpsso' ) . ' ';
@@ -2704,7 +2704,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								$img_dim_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
 									_x( 'Enforce Image Dimension Checks', 'option label', 'wpsso' ) );
 
-								$img_sizes_page_link = $this->p->util->get_admin_url( 'image-sizes',
+								$img_sizes_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_image_sizes',
 									_x( 'Image Sizes', 'lib file description', 'wpsso' ) );
 
 								/**
