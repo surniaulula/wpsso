@@ -1435,19 +1435,15 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			$desc = '';
 
-			if ( empty( $obj->description ) ) {
+			/**
+			 * Maybe show the slug (ie. name) of custom post types and taxonomies.
+			 */
+			if ( empty( $obj->_builtin ) ) {
 
-				/**
-				 * Only show the slug (ie. name) of custom post types and taxonomies.
-				 */
-				if ( empty( $obj->_builtin ) ) {
+				if ( empty( $obj->description ) ) {
 
 					$desc = '[' . $obj->name . ']';
 				}
-
-			} else {
-
-				$desc = '(' . $obj->description . ')';
 			}
 
 			return trim( $obj->label . ' ' . $desc );
