@@ -146,7 +146,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'review' => array(
 								'shopperapproved'          => '(api) Shopper Approved API',
 								'wpproductreview'          => '(plugin) WP Product Review',
-								'yith-woocommerce-reviews' => '(plugin) YITH WooCommerce Advanced Reviews',
 								'yotpowc'                  => '(plugin) Yotpo Social Reviews for WooCommerce',
 							),
 							'seo' => array(
@@ -4183,6 +4182,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_SITE_OPTIONS_NAME' ]     = 'wpsso_site_options';
 			$var_const[ 'WPSSO_TMPL_HEAD_CHECK_NAME' ]  = 'wpsso_tmpl_head_check';
 			$var_const[ 'WPSSO_WP_CONFIG_CHECK_NAME' ]  = 'wpsso_wp_config_check';
+			$var_const[ 'WPSSO_REVIEW_IMAGE_IDS_NAME' ] = 'reviews-images';
 
 			/**
 			 * Hook priorities.

@@ -38,7 +38,6 @@ _x( '(plugin) WP Recipe Maker', 'lib file description', 'wpsso' );
 _x( '(plugin) WP Ultimate Recipe', 'lib file description', 'wpsso' );
 _x( '(api) Shopper Approved API', 'lib file description', 'wpsso' );
 _x( '(plugin) WP Product Review', 'lib file description', 'wpsso' );
-_x( '(plugin) YITH WooCommerce Advanced Reviews', 'lib file description', 'wpsso' );
 _x( '(plugin) Yotpo Social Reviews for WooCommerce', 'lib file description', 'wpsso' );
 _x( '(plugin) All in One SEO Pack', 'lib file description', 'wpsso' );
 _x( '(plugin) Rank Math SEO', 'lib file description', 'wpsso' );

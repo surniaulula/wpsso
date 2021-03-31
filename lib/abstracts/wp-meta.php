@@ -1879,14 +1879,14 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				return $mt_ret;
 			}
 
-			$mod          = $this->p->comment->get_mod( $comment_obj->comment_ID );
-			$sharing_url  = $this->p->util->get_sharing_url( $mod );
-			$img_ids_meta = apply_filters( 'wpsso_mt_comment_review_image_ids_meta_name', 'reviews-images' );
+			$comment_mod = $this->p->comment->get_mod( $comment_obj->comment_ID );
 
-			$mt_ret[ $mt_pre . ':review:id' ]           = $mod[ 'id' ];
+			$sharing_url  = $this->p->util->get_sharing_url( $comment_mod );
+
+			$mt_ret[ $mt_pre . ':review:id' ]           = $comment_mod[ 'id' ];
 			$mt_ret[ $mt_pre . ':review:url' ]          = $sharing_url;
 			$mt_ret[ $mt_pre . ':review:title' ]        = '';
-			$mt_ret[ $mt_pre . ':review:content' ]      = get_comment_excerpt( $mod[ 'id' ] );
+			$mt_ret[ $mt_pre . ':review:content' ]      = get_comment_excerpt( $comment_mod[ 'id' ] );
 			$mt_ret[ $mt_pre . ':review:created_time' ] = mysql2date( 'c', $comment_obj->comment_date_gmt );
 
 			/**
@@ -1900,7 +1900,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			 *
 			 * Rating values must be larger than 0 to include rating info.
 			 */
-			$rating_value = (float) get_comment_meta( $mod[ 'id' ], $rating_meta, $single = true );
+			$rating_value = (float) get_comment_meta( $comment_mod[ 'id' ], $rating_meta, $single = true );
 
 			if ( $rating_value > 0 ) {
 
@@ -1914,19 +1914,28 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			 */
 			$mt_ret[ $mt_pre . ':review:image' ] = array();
 
-			$image_ids = get_comment_meta( $mod[ 'id' ], $img_ids_meta, $single = true );
+			$image_ids = get_comment_meta( $comment_mod[ 'id' ], WPSSO_REVIEW_IMAGE_IDS_NAME, $single = true );
 
-			if ( is_array( $image_ids ) ) {
+			$image_ids = (array) apply_filters( 'wpsso_mt_comment_review_image_ids', is_array( $image_ids ) ? $image_ids : array(), $comment_obj );
+
+			if ( empty( $image_ids ) ) {
+			
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'no comment review image IDs found' );
+				}
+
+			} else {
 
 				/**
 				 * Set the reference values for admin notices.
 				 */
 				if ( is_admin() ) {
 
-					$this->p->util->maybe_set_ref( $sharing_url, $mod, __( 'adding schema images', 'wpsso' ) );
+					$this->p->util->maybe_set_ref( $sharing_url, $comment_mod, __( 'adding schema images', 'wpsso' ) );
 				}
 
-				$size_names = $this->p->util->get_image_size_names( 'schema' );	// Always returns an array.
+				$size_names = $this->p->util->get_image_size_names( 'full' );	// Always returns an array.
 
 				$this->p->util->clear_uniq_urls( $size_names );	// Reset previously seen image URLs.
 
@@ -1939,9 +1948,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 							$this->p->debug->log( 'adding image pid: ' . $pid );
 						}
 
-						/**
-						 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
-						 */
 						$mt_pid_images = $this->p->media->get_mt_pid_images( $pid, $size_names, $check_dupes = true, $mt_pre . ':review' );
 
 						if ( ! empty( $mt_pid_images ) ) {
