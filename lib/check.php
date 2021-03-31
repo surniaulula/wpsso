@@ -501,9 +501,20 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 									break;
 
 								/**
+								 * YITH WooCommerce Advanced Reviews.
+								 *
+								 * See https://wordpress.org/plugins/yith-woocommerce-advanced-reviews/.
+								 */
+								case 'yith-woocommerce-reviews':
+
+									$chk[ 'class' ] = 'YITH_WooCommerce_Advanced_Reviews';
+
+									break;
+
+								/**
 								 * Yotpo: Product & Photo Reviews for WooCommerce.
 								 *
-								 * See * https://wordpress.org/plugins/yotpo-social-reviews-for-woocommerce/.
+								 * See https://wordpress.org/plugins/yotpo-social-reviews-for-woocommerce/.
 								 */
 								case 'yotpowc':
 

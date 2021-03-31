@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.26.0-dev.1',	// Plugin version.
+					'version'     => '8.26.0-dev.2',	// Plugin version.
 					'opt_version' => '781',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -145,9 +145,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'wpultimaterecipe' => '(plugin) WP Ultimate Recipe',
 							),
 							'review' => array(
-								'shopperapproved' => '(api) Shopper Approved API',
-								'wpproductreview' => '(plugin) WP Product Review',
-								'yotpowc'         => '(plugin) Yotpo Social Reviews for WooCommerce',
+								'shopperapproved'          => '(api) Shopper Approved API',
+								'wpproductreview'          => '(plugin) WP Product Review',
+								'yith-woocommerce-reviews' => '(plugin) YITH WooCommerce Advanced Reviews',
+								'yotpowc'                  => '(plugin) Yotpo Social Reviews for WooCommerce',
 							),
 							'seo' => array(
 								'aioseop'      => '(plugin) All in One SEO Pack',

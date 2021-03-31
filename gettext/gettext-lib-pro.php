@@ -180,6 +180,9 @@ __( 'Checkout page', 'woocommerce' );
 // translators: Please ignore - translation uses a different text domain.
 __( 'Shop page', 'woocommerce' );
 __( 'The WooCommerce "%1$s" option value is empty.', 'wpsso' );
+__( 'The rating and review counts provided by WooCommerce for product ID %d are invalid.', 'wpsso' );
+__( 'The average rating is %.2f, but the rating count is %d and the review count is %d.', 'wpsso' );
+__( 'The rating count or the review count must be greater than 0.', 'wpsso' );
 __( 'World', 'wpsso' );
 __( 'API key missing.', 'wpsso' );
 __( '%1$s shortener API error: %2$s', 'wpsso' );
