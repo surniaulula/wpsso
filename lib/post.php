@@ -186,24 +186,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					}
 				}
 			}
-
-			if ( ! empty( $this->p->options[ 'plugin_clear_for_comment' ] ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'adding clear cache for comment actions' );
-				}
-
-				/**
-				 * Fires when a comment is inserted into the database.
-				 */
-				add_action ( 'comment_post', array( $this, 'clear_cache_for_new_comment' ), 10, 2 );
-
-				/**
-				 * Fires before transitioning a comment's status.
-				 */
-				add_action ( 'wp_set_comment_status', array( $this, 'clear_cache_for_comment_status' ), 10, 2 );
-			}
 		}
 
 		/**
@@ -1633,65 +1615,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			/**
-			 * The question shortcode (in the WPSSO FAQ add-on) attaches the post ID to the question so the post cache
-			 * can be cleared when the question is updated.
+			 * The WPSSO FAQ question shortcode attaches the post ID to the question so the post cache can be cleared
+			 * if/when a question is updated.
 			 */
-			foreach ( array( 'post' ) as $attach_type ) {
+			$attached_ids = self::get_attached( $post_id, 'post' );
 
-				$attached_ids = self::get_attached( $post_id, $attach_type );
+			foreach ( $attached_ids as $post_id => $bool ) {
 
-				foreach ( $attached_ids as $post_id => $bool ) {
+				if ( $bool ) {
 
-					if ( $bool ) {
-
-						$this->p->$attach_type->clear_cache( $post_id );
-					}
-				}
-			}
-		}
-
-		public function clear_cache_for_new_comment( $comment_id, $comment_approved ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			if ( $comment_id && $comment_approved === 1 ) {
-
-				if ( ( $comment = get_comment( $comment_id ) ) && $comment->comment_post_ID ) {
-
-					$post_id = $comment->comment_post_ID;
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'clearing post_id ' . $post_id . ' cache for comment_id ' . $comment_id );
-					}
-
-					$this->clear_cache( $post_id );
-				}
-			}
-		}
-
-		public function clear_cache_for_comment_status( $comment_id, $comment_status ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			if ( $comment_id ) {	// Just in case.
-
-				if ( ( $comment = get_comment( $comment_id ) ) && $comment->comment_post_ID ) {
-
-					$post_id = $comment->comment_post_ID;
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'clearing post_id ' . $post_id . ' cache for comment_id ' . $comment_id );
-					}
-
-					$this->clear_cache( $post_id );
+					$this->p->post->clear_cache( $post_id );
 				}
 			}
 		}

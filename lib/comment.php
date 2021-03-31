@@ -32,6 +32,24 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 
 				$this->p->debug->mark();
 			}
+
+			if ( ! empty( $this->p->options[ 'plugin_clear_for_comment' ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'adding clear cache for comment actions' );
+				}
+
+				/**
+				 * Fires when a comment is inserted into the database.
+				 */
+				add_action ( 'comment_post', array( $this, 'clear_cache_for_new_comment' ), 1000, 2 );
+
+				/**
+				 * Fires before transitioning a comment's status.
+				 */
+				add_action ( 'wp_set_comment_status', array( $this, 'clear_cache_for_comment_status' ), 1000, 2 );
+			}
 		}
 
 		/**
@@ -70,6 +88,52 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 			 * Hooked by the 'coauthors' pro module.
 			 */
 			return $local_cache[ $comment_id ] = apply_filters( 'wpsso_get_comment_mod', $mod, $comment_id );
+		}
+
+		public function clear_cache_for_comment_status( $comment_id, $comment_status ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			if ( $comment_id ) {	// Just in case.
+
+				if ( ( $comment = get_comment( $comment_id ) ) && $comment->comment_post_ID ) {
+
+					$post_id = $comment->comment_post_ID;
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'clearing post_id ' . $post_id . ' cache for comment_id ' . $comment_id );
+					}
+
+					$this->p->post->clear_cache( $post_id );
+				}
+			}
+		}
+
+		public function clear_cache_for_new_comment( $comment_id, $comment_approved ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			if ( $comment_id && $comment_approved === 1 ) {
+
+				if ( ( $comment = get_comment( $comment_id ) ) && $comment->comment_post_ID ) {
+
+					$post_id = $comment->comment_post_ID;
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'clearing post_id ' . $post_id . ' cache for comment_id ' . $comment_id );
+					}
+
+					$this->p->post->clear_cache( $post_id );
+				}
+			}
 		}
 
 		/**
