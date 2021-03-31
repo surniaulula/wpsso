@@ -313,10 +313,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 8.26.0-dev.4 (2021/03/31)**
 
 * **New Features**
-	* Added support for the YITH WooCommerce Advanced Reviews plugin (Premium version).
+	* None.
 * **Improvements**
-	* Moved the SSO &gt; Image Sizes settings page to an SSO &gt; Advanced Settings &gt; Image Sizes tab.
-	* Moved the SSO &gt; Document Types settings page to an SSO &gt; Advanced Settings &gt; Document Types metabox.
+	* Moved the SSO &gt; Image Sizes settings to the SSO &gt; Advanced Settings &gt; Image Sizes tab.
+	* Moved the SSO &gt; Document Types settings to the SSO &gt; Advanced Settings &gt; Document Types metabox.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -1124,7 +1124,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 = 8.26.0-dev.4 =
 
-(2021/03/31) Added support for the YITH WooCommerce Advanced Reviews plugin (Premium version). Moved the SSO &gt; Image Sizes settings page to an SSO &gt; Advanced Settings tab.
+(2021/03/31) Moved the SSO &gt; Image Sizes and SSO &gt; Document Types settings to the SSO &gt; Advanced Settings page.
 
 = 8.25.2 =
 
