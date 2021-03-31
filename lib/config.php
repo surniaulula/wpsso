@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.26.0-dev.2',	// Plugin version.
+					'version'     => '8.26.0-dev.3',	// Plugin version.
 					'opt_version' => '781',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -91,7 +91,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'pro' => array(
 							'admin' => array(
 								'advanced'       => 'Advanced Settings Filters',
-								'document-types' => 'Document Types Filters',
 								'edit'           => 'Edit Metabox Filters',
 								'general'        => 'General Settings Filters',
 							),
@@ -179,7 +178,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'std' => array(
 							'admin' => array(
 								'advanced'       => 'Advanced Settings Filters',
-								'document-types' => 'Document Types Filters',
 								'edit'           => 'Edit Metabox Filters',
 								'general'        => 'General Settings Filters',
 							),
@@ -195,7 +193,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'features'       => 'Features Status',
 							'general'        => 'General Settings',
 							'advanced'       => 'Advanced Settings',
-							'document-types' => 'Document Types',
 							'addons'         => 'Complementary Add-ons',
 							'licenses'       => 'Premium Licenses',
 							'tools'          => 'Tools and Actions',
@@ -1635,7 +1632,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_itemprop_aggregaterating.reviewcount' => 1,
 
 					/**
-					 * Advanced Settings - Plugin Admin tab.
+					 * Advanced Settings > Plugin Admin tab.
 					 */
 					'plugin_clean_on_uninstall' => 0,			// Remove Settings on Uninstall.
 					'plugin_cache_disable'      => 0,			// Disable Cache for Debugging.
@@ -1643,40 +1640,56 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_load_mofiles'       => 0,			// Use Local Plugin Translations.
 
 					/**
-					 * Advanced Settings - Interface tab.
+					 * Advanced Settings > Interface tab.
 					 */
-					'plugin_show_opts'                => 'basic',		// Plugin Options to Show by Default.
-					'plugin_show_validate_toolbar'    => 1,			// Show Validators Toolbar Menu.
-					'plugin_add_to_attachment'        => 1,			// Show Document SSO Metabox.
-					'plugin_add_to_page'              => 1,
-					'plugin_add_to_post'              => 1,
-					'plugin_add_to_tax_category'      => 1,
-					'plugin_add_to_tax_link_category' => 1,
-					'plugin_add_to_tax_post_tag'      => 1,
-					'plugin_add_to_user_page'         => 1,
-					'plugin_schema_type_col_media'    => 0,			// Additional Item List Columns.
-					'plugin_schema_type_col_post'     => 1,
-					'plugin_schema_type_col_term'     => 0,
-					'plugin_schema_type_col_user'     => 0,
-					'plugin_og_type_col_media'        => 0,
-					'plugin_og_type_col_post'         => 0,
-					'plugin_og_type_col_term'         => 0,
-					'plugin_og_type_col_user'         => 0,
-					'plugin_og_img_col_media'         => 0,
-					'plugin_og_img_col_post'          => 1,
-					'plugin_og_img_col_term'          => 1,
-					'plugin_og_img_col_user'          => 1,
-					'plugin_og_desc_col_media'        => 1,
-					'plugin_og_desc_col_post'         => 0,
-					'plugin_og_desc_col_term'         => 0,
-					'plugin_og_desc_col_user'         => 1,
-					'plugin_col_title_width'          => '30%',		// Title / Name Column Width.
-					'plugin_col_title_width_max'      => '15vw',
-					'plugin_col_def_width'            => '15%',		// Default for Posts / Pages List.
-					'plugin_col_def_width_max'        => '15vw',
+					'plugin_show_opts'                     => 'basic',	// Plugin Options to Show by Default.
+					'plugin_show_validate_toolbar'         => 1,		// Show Validators Toolbar Menu.
+					'plugin_add_to_article'                => 1,
+					'plugin_add_to_attachment'             => 1,		// Show Document SSO Metabox.
+					'plugin_add_to_download'               => 1,		// For Easy Digital Downloads.
+					'plugin_add_to_organization'           => 1,
+					'plugin_add_to_page'                   => 1,
+					'plugin_add_to_place'                  => 1,
+					'plugin_add_to_post'                   => 1,
+					'plugin_add_to_product'                => 1,		// For WooCommerce, etc.
+					'plugin_add_to_question'               => 1,
+					'plugin_add_to_reply'                  => 0,		// For Bbpress
+					'plugin_add_to_tax_category'           => 1,
+					'plugin_add_to_tax_faq_category'       => 1,
+					'plugin_add_to_tax_link_category'      => 1,
+					'plugin_add_to_tax_post_tag'           => 1,
+					'plugin_add_to_tax_product_brand'      => 1,		// For WooCommerce Brands.
+					'plugin_add_to_tax_product_cat'        => 1,		// For WooCommerce.
+					'plugin_add_to_tax_product_tag'        => 1,		// For WooCommerce.
+					'plugin_add_to_tax_pwb-brand'          => 1,		// For Perfect WooCommerce Brands Add-on.
+					'plugin_add_to_tax_yith_product_brand' => 1,		// For YITH WooCommerce Brands Add-on.
+					'plugin_add_to_topic'                  => 0,		// For Bbpress
+					'plugin_add_to_tribe_events'           => 1,		// For The Events Calendar.
+					'plugin_add_to_tribe-ea-record'        => 1,		// For The Events Calendar.
+					'plugin_add_to_user_page'              => 1,
+					'plugin_schema_type_col_media'         => 0,		// Additional Item List Columns.
+					'plugin_schema_type_col_post'          => 1,
+					'plugin_schema_type_col_term'          => 0,
+					'plugin_schema_type_col_user'          => 0,
+					'plugin_og_type_col_media'             => 0,
+					'plugin_og_type_col_post'              => 0,
+					'plugin_og_type_col_term'              => 0,
+					'plugin_og_type_col_user'              => 0,
+					'plugin_og_img_col_media'              => 0,
+					'plugin_og_img_col_post'               => 1,
+					'plugin_og_img_col_term'               => 1,
+					'plugin_og_img_col_user'               => 1,
+					'plugin_og_desc_col_media'             => 1,
+					'plugin_og_desc_col_post'              => 0,
+					'plugin_og_desc_col_term'              => 0,
+					'plugin_og_desc_col_user'              => 1,
+					'plugin_col_title_width'               => '30%',	// Title / Name Column Width.
+					'plugin_col_title_width_max'           => '15vw',
+					'plugin_col_def_width'                 => '15%',	// Default for Posts / Pages List.
+					'plugin_col_def_width_max'             => '15vw',
 
 					/**
-					 * Advanced Settings - Integration tab.
+					 * Advanced Settings > Integration tab.
 					 */
 					'plugin_document_title'     => 'wp_title',		// Webpage Document Title.
 					'plugin_filter_title'       => 0,			// Use WordPress Title Filters.
@@ -1699,7 +1712,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_wpseo_show_import'  => 1,			// Show Yoast SEO Import Details.
 
 					/**
-					 * Advanced Settings - Caching tab.
+					 * Advanced Settings > Caching tab.
 					 */
 					'plugin_head_cache_exp'      => WEEK_IN_SECONDS,	// Head Markup Cache Expiry (1 week).
 					'plugin_content_cache_exp'   => 43200,			// Filtered Content Cache Expiry (12 hours).
@@ -1715,8 +1728,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_clear_for_comment'   => 1,			// Clear Post Cache for New Comment.
 
 					/**
-					 * Advanced Settings - Service APIs tab.
+					 * Advanced Settings > Media Services tab.
 					 */
+					'plugin_gravatar_api'                 => 1,		// Gravatar is Default Author Image.
+					'plugin_gravatar_size'                => 1200,		// Gravatar Image Size.
 					'plugin_facebook_api'                 => 1,		// Check for Embedded Media: Facebook Videos.
 					'plugin_slideshare_api'               => 1,		// Check for Embedded Media: Slideshare Presentations.
 					'plugin_soundcloud_api'               => 1,		// Check for Embedded Media: Soundcloud Tracks.
@@ -1724,8 +1739,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_wistia_api'                   => 1,		// Check for Embedded Media: Wistia Videos.
 					'plugin_wpvideo_api'                  => 1,		// Check for Embedded Media: WordPress Video Shortcode.
 					'plugin_youtube_api'                  => 1,		// Check for Embedded Media: Youtube Videos and Playlists.
-					'plugin_gravatar_api'                 => 1,		// Gravatar is Default Author Image.
-					'plugin_gravatar_size'                => 1200,		// Gravatar Image Size.
+
+					/**
+					 * Advanced Settings > Shortening Services tab.
+					 */
 					'plugin_shortener'                    => 'none',	// URL Shortening Service.
 					'plugin_wp_shortlink'                 => 1,		// Use Shortened URL for WP Shortlink.
 					'plugin_min_shorten'                  => 23,		// Minimum URL Length to Shorten.
@@ -1734,97 +1751,23 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_bitly_group_name'             => '',		// Bitly Group Name (Optional).
 					'plugin_dlmyapp_api_key'              => '',		// DLMY.App API Key.
 					'plugin_owly_api_key'                 => '',		// Ow.ly API Key.
-					'plugin_shopperapproved_site_id'      => '',		// Shopper Approved Site ID.
-					'plugin_shopperapproved_token'        => '',		// Shopper Approved API Token.
-					'plugin_shopperapproved_num_max'      => 100,		// Maximum Number of Reviews.
-					'plugin_shopperapproved_age_max'      => 60,		// Maximum Age of Reviews.
-					'plugin_shopperapproved_for_download' => 1,		// For Easy Digital Downloads.
-					'plugin_shopperapproved_for_product'  => 1,		// For WooCommerce, etc.
 					'plugin_yourls_api_url'               => '',		// YOURLS API URL.
 					'plugin_yourls_username'              => '',		// YOURLS Username.
 					'plugin_yourls_password'              => '',		// YOURLS Password.
 					'plugin_yourls_token'                 => '',		// YOURLS Token.
 
 					/**
-					 * Advanced Settings - Document Meta tab (custom taxonomy and post types).
+					 * Advanced Settings > Ratings and Reviews tab.
 					 */
-					'plugin_add_to_article'                => 1,
-					'plugin_add_to_download'               => 1,		// For Easy Digital Downloads.
-					'plugin_add_to_organization'           => 1,
-					'plugin_add_to_place'                  => 1,
-					'plugin_add_to_product'                => 1,		// For WooCommerce, etc.
-					'plugin_add_to_question'               => 1,
-					'plugin_add_to_reply'                  => 0,		// For Bbpress
-					'plugin_add_to_tax_faq_category'       => 1,
-					'plugin_add_to_tax_product_brand'      => 1,		// For WooCommerce Brands.
-					'plugin_add_to_tax_product_cat'        => 1,		// For WooCommerce.
-					'plugin_add_to_tax_product_tag'        => 1,		// For WooCommerce.
-					'plugin_add_to_tax_pwb-brand'          => 1,		// For Perfect WooCommerce Brands Add-on.
-					'plugin_add_to_tax_yith_product_brand' => 1,		// For YITH WooCommerce Brands Add-on.
-					'plugin_add_to_topic'                  => 0,		// For Bbpress
-					'plugin_add_to_tribe_events'           => 1,		// For The Events Calendar.
-					'plugin_add_to_tribe-ea-record'        => 1,		// For The Events Calendar.
+					'plugin_shopperapproved_site_id'      => '',		// Shopper Approved Site ID.
+					'plugin_shopperapproved_token'        => '',		// Shopper Approved API Token.
+					'plugin_shopperapproved_num_max'      => 100,		// Maximum Number of Reviews.
+					'plugin_shopperapproved_age_max'      => 60,		// Maximum Age of Reviews.
+					'plugin_shopperapproved_for_download' => 1,		// For Easy Digital Downloads.
+					'plugin_shopperapproved_for_product'  => 1,		// For WooCommerce, etc.
 
 					/**
-					 * Advanced Settings - Product Attributes tab.
-					 */
-					'plugin_attr_product_brand'              => 'Brand',		// Brand Attribute Name.
-					'plugin_attr_product_color'              => 'Color',		// Color Attribute Name.
-					'plugin_attr_product_condition'          => 'Condition',	// Condition Attribute Name.
-					'plugin_attr_product_depth_value'        => 'Depth',		// Depth Attribute Name.
-					'plugin_attr_product_fluid_volume_value' => 'Volume',		// Fluid Volume Attribute Name.
-					'plugin_attr_product_gtin14'             => 'GTIN-14',		// GTIN-14 Attribute Name.
-					'plugin_attr_product_gtin13'             => 'GTIN-13',		// GTIN-13 (EAN) Attribute Name.
-					'plugin_attr_product_gtin12'             => 'GTIN-12',		// GTIN-12 (UPC) Attribute Name.
-					'plugin_attr_product_gtin8'              => 'GTIN-8',		// GTIN-8 Attribute Name.
-					'plugin_attr_product_gtin'               => 'GTIN',		// GTIN Attribute Name.
-					'plugin_attr_product_isbn'               => 'ISBN',		// ISBN Attribute Name.
-					'plugin_attr_product_material'           => 'Material',		// Material Attribute Name.
-					'plugin_attr_product_mfr_part_no'        => 'MPN',		// MPN Attribute Name.
-					'plugin_attr_product_size'               => 'Size',		// Size Attribute Name.
-					'plugin_attr_product_target_gender'      => 'Gender',		// Target Gender Attribute Name.
-
-					/**
-					 * Advanced Settings - Custom Fields tab.
-					 */
-					'plugin_cf_addl_type_urls'             => '',		// Microdata Type URLs Custom Field.
-					'plugin_cf_book_isbn'                  => '',		// Book ISBN Custom Field.
-					'plugin_cf_howto_steps'                => '',		// How-To Steps Custom Field.
-					'plugin_cf_howto_supplies'             => '',		// How-To Supplies Custom Field.
-					'plugin_cf_howto_tools'                => '',		// How-To Tools Custom Field.
-					'plugin_cf_img_url'                    => '',		// Image URL Custom Field.
-					'plugin_cf_product_avail'              => '',		// Product Availability Custom Field.
-					'plugin_cf_product_brand'              => '',		// Product Brand Custom Field.
-					'plugin_cf_product_category'           => '',		// Product Type ID Custom Field.
-					'plugin_cf_product_color'              => '',		// Product Color Custom Field.
-					'plugin_cf_product_condition'          => '',		// Product Condition Custom Field.
-					'plugin_cf_product_currency'           => '',		// Product Currency Custom Field.
-					'plugin_cf_product_depth_value'        => '',		// Product Depth Custom Field.
-					'plugin_cf_product_fluid_volume_value' => '',		// Product Fluid Volume Custom Field.
-					'plugin_cf_product_gtin14'             => '',		// Product GTIN-14 Custom Field.
-					'plugin_cf_product_gtin13'             => '',		// Product GTIN-13 (EAN) Custom Field.
-					'plugin_cf_product_gtin12'             => '',		// Product GTIN-12 (UPC) Custom Field.
-					'plugin_cf_product_gtin8'              => '',		// Product GTIN-8 Custom Field.
-					'plugin_cf_product_gtin'               => '',		// Product GTIN Custom Field.
-					'plugin_cf_product_height_value'       => '',		// Product Height Custom Field.
-					'plugin_cf_product_isbn'               => '',		// Product ISBN Custom Field.
-					'plugin_cf_product_length_value'       => '',		// Product Length Custom Field.
-					'plugin_cf_product_material'           => '',		// Product Material Custom Field.
-					'plugin_cf_product_mfr_part_no'        => '',		// Product MPN Custom Field.
-					'plugin_cf_product_price'              => '',		// Product Price Custom Field.
-					'plugin_cf_product_retailer_part_no'   => '',		// Product SKU Custom Field.
-					'plugin_cf_product_size'               => '',		// Product Size Custom Field.
-					'plugin_cf_product_target_gender'      => '',		// Product Target Gender Custom Field.
-					'plugin_cf_product_weight_value'       => '',		// Product Weight Custom Field.
-					'plugin_cf_product_width_value'        => '',		// Product Width Custom Field.
-					'plugin_cf_recipe_ingredients'         => '',		// Recipe Ingredients Custom Field.
-					'plugin_cf_recipe_instructions'        => '',		// Recipe Instructions Custom Field.
-					'plugin_cf_sameas_urls'                => '',		// Same-As URLs Custom Field.
-					'plugin_cf_vid_url'                    => '',		// Video URL Custom Field.
-					'plugin_cf_vid_embed'                  => '',		// Video Embed HTML Custom Field.
-
-					/**
-					 * Advanced Settings - Contact Fields.
+					 * Advanced Settings > Custom Contacts tab.
 					 */
 					'plugin_cm_fb_name'           => 'facebook',
 					'plugin_cm_fb_label'          => 'Facebook User URL',
@@ -1865,6 +1808,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cm_yt_name'           => 'youtube',
 					'plugin_cm_yt_label'          => 'YouTube Channel URL',
 					'plugin_cm_yt_enabled'        => 1,
+
+					/**
+					 * Advanced Settings > Default Contacts tab.
+					 */
 					'wp_cm_aim_name'              => 'aim',
 					'wp_cm_aim_label'             => 'AIM',
 					'wp_cm_aim_enabled'           => 1,
@@ -1874,6 +1821,64 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'wp_cm_yim_name'              => 'yim',
 					'wp_cm_yim_label'             => 'Yahoo Messenger',
 					'wp_cm_yim_enabled'           => 1,
+
+					/**
+					 * Advanced Settings > Product Attributes tab.
+					 */
+					'plugin_attr_product_brand'              => 'Brand',		// Brand Attribute Name.
+					'plugin_attr_product_color'              => 'Color',		// Color Attribute Name.
+					'plugin_attr_product_condition'          => 'Condition',	// Condition Attribute Name.
+					'plugin_attr_product_depth_value'        => 'Depth',		// Depth Attribute Name.
+					'plugin_attr_product_fluid_volume_value' => 'Volume',		// Fluid Volume Attribute Name.
+					'plugin_attr_product_gtin14'             => 'GTIN-14',		// GTIN-14 Attribute Name.
+					'plugin_attr_product_gtin13'             => 'GTIN-13',		// GTIN-13 (EAN) Attribute Name.
+					'plugin_attr_product_gtin12'             => 'GTIN-12',		// GTIN-12 (UPC) Attribute Name.
+					'plugin_attr_product_gtin8'              => 'GTIN-8',		// GTIN-8 Attribute Name.
+					'plugin_attr_product_gtin'               => 'GTIN',		// GTIN Attribute Name.
+					'plugin_attr_product_isbn'               => 'ISBN',		// ISBN Attribute Name.
+					'plugin_attr_product_material'           => 'Material',		// Material Attribute Name.
+					'plugin_attr_product_mfr_part_no'        => 'MPN',		// MPN Attribute Name.
+					'plugin_attr_product_size'               => 'Size',		// Size Attribute Name.
+					'plugin_attr_product_target_gender'      => 'Gender',		// Target Gender Attribute Name.
+
+					/**
+					 * Advanced Settings > Custom Fields tab.
+					 */
+					'plugin_cf_addl_type_urls'             => '',		// Microdata Type URLs Custom Field.
+					'plugin_cf_book_isbn'                  => '',		// Book ISBN Custom Field.
+					'plugin_cf_howto_steps'                => '',		// How-To Steps Custom Field.
+					'plugin_cf_howto_supplies'             => '',		// How-To Supplies Custom Field.
+					'plugin_cf_howto_tools'                => '',		// How-To Tools Custom Field.
+					'plugin_cf_img_url'                    => '',		// Image URL Custom Field.
+					'plugin_cf_product_avail'              => '',		// Product Availability Custom Field.
+					'plugin_cf_product_brand'              => '',		// Product Brand Custom Field.
+					'plugin_cf_product_category'           => '',		// Product Type ID Custom Field.
+					'plugin_cf_product_color'              => '',		// Product Color Custom Field.
+					'plugin_cf_product_condition'          => '',		// Product Condition Custom Field.
+					'plugin_cf_product_currency'           => '',		// Product Currency Custom Field.
+					'plugin_cf_product_depth_value'        => '',		// Product Depth Custom Field.
+					'plugin_cf_product_fluid_volume_value' => '',		// Product Fluid Volume Custom Field.
+					'plugin_cf_product_gtin14'             => '',		// Product GTIN-14 Custom Field.
+					'plugin_cf_product_gtin13'             => '',		// Product GTIN-13 (EAN) Custom Field.
+					'plugin_cf_product_gtin12'             => '',		// Product GTIN-12 (UPC) Custom Field.
+					'plugin_cf_product_gtin8'              => '',		// Product GTIN-8 Custom Field.
+					'plugin_cf_product_gtin'               => '',		// Product GTIN Custom Field.
+					'plugin_cf_product_height_value'       => '',		// Product Height Custom Field.
+					'plugin_cf_product_isbn'               => '',		// Product ISBN Custom Field.
+					'plugin_cf_product_length_value'       => '',		// Product Length Custom Field.
+					'plugin_cf_product_material'           => '',		// Product Material Custom Field.
+					'plugin_cf_product_mfr_part_no'        => '',		// Product MPN Custom Field.
+					'plugin_cf_product_price'              => '',		// Product Price Custom Field.
+					'plugin_cf_product_retailer_part_no'   => '',		// Product SKU Custom Field.
+					'plugin_cf_product_size'               => '',		// Product Size Custom Field.
+					'plugin_cf_product_target_gender'      => '',		// Product Target Gender Custom Field.
+					'plugin_cf_product_weight_value'       => '',		// Product Weight Custom Field.
+					'plugin_cf_product_width_value'        => '',		// Product Width Custom Field.
+					'plugin_cf_recipe_ingredients'         => '',		// Recipe Ingredients Custom Field.
+					'plugin_cf_recipe_instructions'        => '',		// Recipe Instructions Custom Field.
+					'plugin_cf_sameas_urls'                => '',		// Same-As URLs Custom Field.
+					'plugin_cf_vid_url'                    => '',		// Video URL Custom Field.
+					'plugin_cf_vid_embed'                  => '',		// Video Embed HTML Custom Field.
 				),
 
 				/**
@@ -1884,7 +1889,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'options_filtered' => 0,
 
 					/**
-					 * Advanced Settings - Plugin Admin tab.
+					 * Advanced Settings > Plugin Admin tab.
 					 */
 					'plugin_clean_on_uninstall'     => 0,			// Remove Settings on Uninstall.
 					'plugin_clean_on_uninstall:use' => 'default',
@@ -1896,7 +1901,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_load_mofiles:use'       => 'default',
 
 					/**
-					 * Advanced Settings - Caching tab.
+					 * Advanced Settings > Caching tab.
 					 */
 					'plugin_head_cache_exp'          => WEEK_IN_SECONDS,	// Head Markup Cache Expiry (1 week).
 					'plugin_head_cache_exp:use'      => 'default',
@@ -2278,7 +2283,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add-person'     => 'admin-users',
 					'addons'         => 'admin-plugins',
 					'advanced'       => 'superhero',
-					'document-types' => 'media-document',
 					'essential'      => 'star-filled',
 					'features'       => 'yes-alt',
 					'general'        => 'admin-settings',

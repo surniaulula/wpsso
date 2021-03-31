@@ -35,8 +35,9 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 		protected function add_meta_boxes() {
 
 			foreach ( array(
-				'plugin'         => _x( 'Advanced Settings', 'metabox title', 'wpsso' ),
+				'plugin'         => _x( 'Plugin Settings', 'metabox title', 'wpsso' ),
 				'services'       => _x( 'Service APIs', 'metabox title', 'wpsso' ),
+				'doc_types'      => _x( 'Document Types', 'metabox title', 'wpsso' ),
 				'contact_fields' => _x( 'Contact Fields', 'metabox title', 'wpsso' ),
 				'metadata'       => _x( 'Metadata', 'metabox title', 'wpsso' ),
 				'head_tags'      => _x( 'HTML Tags', 'metabox title', 'wpsso' ),
@@ -104,14 +105,14 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
 		}
 
-		public function show_metabox_metadata() {
+		public function show_metabox_doc_types() {
 
-			$metabox_id = 'metadata';
+			$metabox_id = 'doc_types';
 			$table_rows = array();
 
 			$tabs = apply_filters( 'wpsso_advanced_' . $metabox_id . '_tabs', array(
-				'product_attrs' => _x( 'Product Attributes', 'metabox tab', 'wpsso' ),
-				'custom_fields' => _x( 'Custom Fields', 'metabox tab', 'wpsso' ),
+				'og_types'     => _x( 'Open Graph', 'metabox tab', 'wpsso' ),
+				'schema_types' => _x( 'Schema', 'metabox tab', 'wpsso' ),
 			) );
 
 			foreach ( $tabs as $tab_key => $title ) {
@@ -158,6 +159,29 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
 		}
 
+		public function show_metabox_metadata() {
+
+			$metabox_id = 'metadata';
+			$table_rows = array();
+
+			$tabs = apply_filters( 'wpsso_advanced_' . $metabox_id . '_tabs', array(
+				'product_attrs' => _x( 'Product Attributes', 'metabox tab', 'wpsso' ),
+				'custom_fields' => _x( 'Custom Fields', 'metabox tab', 'wpsso' ),
+			) );
+
+			foreach ( $tabs as $tab_key => $title ) {
+
+				$filter_name = 'wpsso_' . $metabox_id . '_' . $tab_key . '_rows';
+
+				$table_rows[ $tab_key ] = array_merge(
+					$this->get_table_rows( $metabox_id, $tab_key ),
+					(array) apply_filters( $filter_name, array(), $this->form, $network = false )
+				);
+			}
+
+			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
+		}
+
 		public function show_metabox_head_tags() {
 
 			$metabox_id = 'head_tags';
@@ -194,9 +218,6 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 
 			switch ( $metabox_id . '-' . $tab_key ) {
 
-				/**
-				 * Advanced Settings metabox.
-				 */
 				case 'plugin-settings':
 
 					$this->add_advanced_plugin_settings_table_rows( $table_rows, $this->form );

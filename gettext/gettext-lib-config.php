@@ -63,7 +63,6 @@ _x( 'Dashboard', 'lib file description', 'wpsso' );
 _x( 'Features Status', 'lib file description', 'wpsso' );
 _x( 'General Settings', 'lib file description', 'wpsso' );
 _x( 'Advanced Settings', 'lib file description', 'wpsso' );
-_x( 'Document Types', 'lib file description', 'wpsso' );
 _x( 'Complementary Add-ons', 'lib file description', 'wpsso' );
 _x( 'Premium Licenses', 'lib file description', 'wpsso' );
 _x( 'Tools and Actions', 'lib file description', 'wpsso' );
