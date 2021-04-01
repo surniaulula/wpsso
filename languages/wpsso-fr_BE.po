@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 8.25.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-03-31 09:58-0700\n"
+"PO-Revision-Date: 2021-03-31 11:08-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -8269,57 +8269,3 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
-
-#~ msgctxt "option label"
-#~ msgid "Open Graph Type for Page Homepage"
-#~ msgstr "Type Open Graph pour page d'accueil singulière"
-
-#~ msgctxt "option label"
-#~ msgid "Open Graph Type for Posts Homepage"
-#~ msgstr "Type Open Graph pour page d'accueil d'articles"
-
-#~ msgctxt "option label"
-#~ msgid "Open Graph Type for User Profile"
-#~ msgstr "Type Open Graph pour profil d'utilisateur"
-
-#~ msgctxt "option label"
-#~ msgid "Open Graph Type for Search Results"
-#~ msgstr "Type Open Graph pour résultats de recherche"
-
-#~ msgctxt "option label"
-#~ msgid "Open Graph Type for Other Archive"
-#~ msgstr "Type Open Graph pour autre archive"
-
-#~ msgctxt "option label"
-#~ msgid "Open Graph Type by Post Type"
-#~ msgstr "Type Open Graph par type d'article"
-
-#~ msgctxt "option label"
-#~ msgid "Open Graph Type by Taxonomy"
-#~ msgstr "Type Open Graph par taxonomie"
-
-#~ msgid "Customize default image sizes."
-#~ msgstr "Personnalisez les tailles d'images par défaut."
-
-#~ msgid "Customize default document types."
-#~ msgstr "Personnalisez les types de documents par défaut."
-
-#~ msgctxt "metabox title"
-#~ msgid "Advanced Settings"
-#~ msgstr "Réglages avancés"
-
-#~ msgctxt "metabox title"
-#~ msgid "Open Graph Types"
-#~ msgstr "Types Open Graph"
-
-#~ msgctxt "metabox title"
-#~ msgid "Schema Types"
-#~ msgstr "Types de Schéma"
-
-#~ msgctxt "option comment"
-#~ msgid "recommended (with hidden image)"
-#~ msgstr "recommandé (avec image cachée)"
-
-#~ msgctxt "metabox title"
-#~ msgid "Social and Search Image Sizes"
-#~ msgstr "Tailles d'images sociales et de recherche"
