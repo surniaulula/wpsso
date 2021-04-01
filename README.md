@@ -21,7 +21,9 @@
 
 <p><strong>Reads existing WordPress content, plugin data, and service API data:</strong></p>
 
-<p>There's no need to manually re-enter descriptions, titles, product information, and re-select images / videos like other meta tag, SEO, or Schema plugins. WPSSO can be used as your only social and search optimization plugin, or combined Core with your favorite SEO plugin to improve your SEO plugin's meta tags and Schema markup (including All in One SEO Pack, Jetpack SEO Tools, Rank Math SEO, SEO Ultimate, SEOPress, The SEO Framework, WP Meta SEO, Yoast SEO, and more).</p>
+<p>There's no need to manually re-enter descriptions, titles, product information, and re-select images / videos like other meta tag, SEO, or Schema plugins.</p>
+
+<p>WPSSO can be used as your only social and search optimization plugin, or combined Core with your favorite SEO plugin to improve your SEO plugin's meta tags and Schema markup (including All in One SEO Pack, Jetpack SEO Tools, Rank Math SEO, SEO Ultimate, SEOPress, The SEO Framework, WP Meta SEO, Yoast SEO, and more).</p>
 
 <p><strong>Fast, lightweight, and coded for maximum performance:</strong></p>
 
