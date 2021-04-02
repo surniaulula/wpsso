@@ -133,6 +133,10 @@
 
 'wpsso_og_add_mt_reviews' ( $bool = false, $mod )
 
+'wpsso_og_add_wc_mt_rating' ( $bool, $mod )	// True if 'woocommerce_enable_review_rating' option is 'yes'.
+
+'wpsso_og_add_wc_mt_reviews' ( $bool, $mod )	// True if 'woocommerce_enable_reviews' option is 'yes'.
+
 'wpsso_og_data_https_ogp_me_ns_{og_type}' ( $mt_og, $mod )
 
 'wpsso_og_default_img_id' ( $image_id )
