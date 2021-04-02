@@ -312,7 +312,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.26.0-b.2 (2021/04/02)**
+**Version 8.26.0-rc.1 (2021/04/02)**
 
 * **New Features**
 	* None.
@@ -1127,7 +1127,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.26.0-b.2 =
+= 8.26.0-rc.1 =
 
 (2021/04/02) Moved the SSO &gt; Image Sizes and SSO &gt; Document Types settings to the SSO &gt; Advanced Settings page.
 
