@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.26.0-b.1\n"
+"Project-Id-Version: WPSSO Core 8.26.0-b.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -39,63 +39,51 @@ msgstr ""
 
 #: gettext/gettext-html-setup.php:11
 msgctxt "html header"
-msgid "Social and Search Image Sizes"
+msgid "Validation Tools"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:12
 msgctxt "html header"
-msgid "Cropped or Uncropped?"
+msgid "User Interface and General Usage"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:13
 msgctxt "html header"
-msgid "Upscale (Enlarge) Images?"
+msgid "Documentation and Resources"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:14
 msgctxt "html header"
-msgid "Validation Tools"
+msgid "Frequently Asked Questions"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:15
 msgctxt "html header"
-msgid "Interface and General Usage"
+msgid "BuddyPress Integration"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:16
 msgctxt "html header"
-msgid "Documentation and Resources"
-msgstr ""
-
-#: gettext/gettext-html-setup.php:17
-msgctxt "html header"
-msgid "Frequently Asked Questions"
-msgstr ""
-
-#: gettext/gettext-html-setup.php:18
-msgctxt "html header"
-msgid "BuddyPress Integration"
-msgstr ""
-
-#: gettext/gettext-html-setup.php:19
-msgctxt "html header"
 msgid "WooCommerce Integration"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:20
-msgctxt "html header"
-msgid "Developers and WebSite Designers"
-msgstr ""
-
-#: gettext/gettext-html-setup.php:21
+#: gettext/gettext-html-setup.php:17
 msgctxt "html paragraph"
 msgid ""
-"Taking the time to read this Setup Guide and review the plugin Essential "
-"Settings page will help your click-through rates and rankings in Google "
-"search results."
+"Taking the time to read this guide and review the <em><strong>SSO &gt; "
+"Essential Settings</strong></em> page will help your click-through rates and "
+"rankings in Google search results."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:22
+#: gettext/gettext-html-setup.php:18
+msgctxt "html paragraph"
+msgid ""
+"<strong>If you use the WooCommerce plugin, don't forget to check the <a href="
+"\"#documentation-and-resources\">Documentation and Resources section bellow</"
+"a> for additional integration notes for WooCommerce.</strong>"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:19
 msgctxt "html paragraph"
 msgid ""
 "If you haven't already done so, create a Facebook Page and Twitter account "
@@ -107,21 +95,22 @@ msgid ""
 "highlight your business / website social pages)."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:23
+#: gettext/gettext-html-setup.php:20
 msgctxt "html paragraph"
 msgid "<strong>Related information:</strong>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:24
+#: gettext/gettext-html-setup.php:21
 msgctxt "html paragraph"
 msgid ""
 "Ask your content authors to enter their Facebook and Twitter contact "
 "information in their WordPress user profile page. Each author's contact "
 "information can appear in various meta tags and Schema JSON-LD markup for "
-"Facebook, Twitter, and Google, but only if they complete their user profile."
+"Facebook, Twitter, and Google, <em>but only if they complete their user "
+"profile</em>."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:25
+#: gettext/gettext-html-setup.php:22
 msgctxt "html paragraph"
 msgid ""
 "Review the website description on the <em><strong>SSO &gt; Essential "
@@ -131,7 +120,7 @@ msgid ""
 "image, or an image available in their content."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:26
+#: gettext/gettext-html-setup.php:23
 msgctxt "html paragraph"
 msgid ""
 "<strong>Do not forget to submit a few example posts / pages to the "
@@ -140,7 +129,7 @@ msgid ""
 "post / page to their validation tool."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:27
+#: gettext/gettext-html-setup.php:24
 msgctxt "html paragraph"
 msgid ""
 "WPSSO Core and its complementary add-ons attempt to keep notifications to a "
@@ -151,34 +140,33 @@ msgid ""
 "system in the top toolbar."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:28
+#: gettext/gettext-html-setup.php:25
 msgctxt "html paragraph"
 msgid ""
 "Look for the SSO notification icon in the top toolbar - by default, it will "
-"be grey with a 0 count. If there are notifications, the count will increase, "
-"and the SSO icon be shown on a red, yellow, or blue background. WPSSO "
-"notifications are context sensitive - they relate to the content shown in "
-"the current webpage."
+"be grey with a 0 notification count. If there are notifications, the count "
+"will increase, and the SSO icon be shown on a red, yellow, or blue "
+"background. WPSSO notifications are context sensitive - they relate to the "
+"content shown in the current webpage."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:29
+#: gettext/gettext-html-setup.php:26
 msgctxt "html paragraph"
 msgid ""
 "Schema (aka \"Schema.org\") is a collaborative, community lead standard for "
 "structured data markup. Schema markup is classified by type, and each type "
 "is associated with a set of properties. The types are arranged in a "
 "hierarchy and <a href=\"https://schema.org/docs/schemas.html\">the current "
-"Schema vocabulary consists of 841 types, 1369 properties, and 352 "
-"enumeration values</a>. The Schema vocabulary can be used with many "
-"different encodings, including meta tags, RDFa, Microdata, and JSON-LD. "
-"WPSSO Core adds Schema markup to webpages using meta tags for Pinterest and "
-"other social crawlers. The <a href=\"https://wordpress.org/plugins/wpsso-"
-"schema-json-ld/\">WPSSO Schema JSON-LD Markup add-on</a> is required to "
-"provide additional markup using JSON-LD encoding for Google and other search "
-"engines."
+"Schema vocabulary consists of 779 types and 1390 properties</a>. The Schema "
+"vocabulary can be used with many different encodings, including meta tags, "
+"RDFa, Microdata, and JSON-LD. WPSSO Core adds Schema markup to webpages "
+"using meta tags for Pinterest and other social crawlers. The <a href="
+"\"https://wordpress.org/plugins/wpsso-schema-json-ld/\">WPSSO Schema JSON-LD "
+"Markup add-on</a> is required to provide additional markup using JSON-LD "
+"encoding for Google and other search engines."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:30
+#: gettext/gettext-html-setup.php:27
 msgctxt "html paragraph"
 msgid ""
 "<a href=\"https://developers.google.com/search/docs/guides/intro-structured-"
@@ -191,7 +179,7 @@ msgid ""
 "Microdata markup in theme templates (deprecated standards)."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:31
+#: gettext/gettext-html-setup.php:28
 msgctxt "html paragraph"
 msgid ""
 "If your theme templates do not provide RDFa / Microdata markup for Google "
@@ -204,7 +192,7 @@ msgid ""
 "incomplete or incorrect Microdata markup."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:32
+#: gettext/gettext-html-setup.php:29
 msgctxt "html paragraph"
 msgid ""
 "<strong>Not sure if your theme templates already provide markup for Google "
@@ -219,50 +207,7 @@ msgid ""
 "&gt; Tools and Actions</strong></em> settings page. ;-)"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:33
-msgctxt "html paragraph"
-msgid ""
-"<strong>The difference between a cropped and uncropped image size is "
-"important to understand.</strong> When resizing and cropping an image, it "
-"will be resized so that both sides meet or exceed the image dimensions "
-"requested, and the excess width or height will be trimmed. The resulting "
-"image will match the required dimensions <em>exactly</em> (having sacrificed "
-"parts of the image). When resizing without cropping, the original aspect "
-"ratio is preserved and no parts of the image are sacrificed. The image will "
-"be resized so that both the width and height will fit <em>within</em> the "
-"requested width and height - meaning that only one side of the image will "
-"match the requested dimensions."
-msgstr ""
-
-#: gettext/gettext-html-setup.php:34
-msgctxt "html paragraph"
-msgid ""
-"Most social and search sites automatically crop images to fit within a "
-"specific size container - for example, Facebook shows link share images "
-"within a 600x315px container. By offering pre-cropped images of the correct "
-"dimension, site owners can control how images are cropped, instead of "
-"letting social and search sites crop images automatically (and sometimes "
-"incorrectly)."
-msgstr ""
-
-#: gettext/gettext-html-setup.php:35
-msgctxt "html paragraph"
-msgid ""
-"<strong>WordPress does not upscale (enlarge) images.</strong> WordPress can "
-"only create smaller images from larger full size originals. Upscaled images "
-"do not look as sharp or clear, and if upscaled too much, will look fuzzy and "
-"unappealing - not something you want to promote on social and search sites. "
-"WPSSO Core Premium includes an optional module to allow upscaling of "
-"WordPress Media Library images (up to a maximum upscale percentage). For "
-"example, a full size image of 100x200px could be upscaled up to 150x300px "
-"using a maximum upscaling value of 50%, but trying to resize any larger than "
-"this would fail. If you feel strongly that upscaling small images is "
-"something you require (instead of uploading larger full size originals), you "
-"can enable the <em><strong>SSO > Advanced Settings > Integration > Upscale "
-"Media Library Images</strong></em> option."
-msgstr ""
-
-#: gettext/gettext-html-setup.php:36
+#: gettext/gettext-html-setup.php:30
 msgctxt "html paragraph"
 msgid ""
 "Submit a few sample posts, pages, etc. to the <a href=\"https://developers."
@@ -278,7 +223,7 @@ msgid ""
 "scrape information."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:37
+#: gettext/gettext-html-setup.php:31
 msgctxt "html paragraph"
 msgid ""
 "Submit an example post or page to the <a href=\"http://developers.pinterest."
@@ -290,7 +235,7 @@ msgid ""
 "your first example post or page."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:38
+#: gettext/gettext-html-setup.php:32
 msgctxt "html paragraph"
 msgid ""
 "If you have activated the <a href=\"https://wordpress.org/plugins/wpsso-"
@@ -308,7 +253,7 @@ msgid ""
 "\">WPSSO Place and Local SEO Markup add-on</a>."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:39
+#: gettext/gettext-html-setup.php:33
 msgctxt "html paragraph"
 msgid ""
 "Submit a few index / archive webpages and post / page URLs to the <a href="
@@ -320,12 +265,12 @@ msgid ""
 "template HTML markup errors to your theme author."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:40
+#: gettext/gettext-html-setup.php:34
 msgctxt "html paragraph"
 msgid "<strong>Validators:</strong>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:41
+#: gettext/gettext-html-setup.php:35
 msgctxt "html paragraph"
 msgid ""
 "On most WordPress admin pages you'll find a \"Screen Options\" drop-down tab "
@@ -337,7 +282,7 @@ msgid ""
 "<em><strong>SSO &gt; Advanced Settings &gt; Interface</strong></em> tab."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:42
+#: gettext/gettext-html-setup.php:36
 msgctxt "html paragraph"
 msgid ""
 "When editing a post, page, category, tag, user profile, etc., you'll find a "
@@ -352,7 +297,7 @@ msgid ""
 "current webpage URL to several test and validation tools (mentioned above)."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:43
+#: gettext/gettext-html-setup.php:37
 msgctxt "html paragraph"
 msgid ""
 "WPSSO Core is a powerful application and social framework, that can read "
@@ -361,14 +306,14 @@ msgid ""
 "questions and issues bellow, along with their solutions:"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:44
+#: gettext/gettext-html-setup.php:38
 msgctxt "html paragraph"
 msgid ""
 "More <a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/\">Frequently Asked "
 "Questions</a>..."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:45
+#: gettext/gettext-html-setup.php:39
 msgctxt "html paragraph"
 msgid ""
 "Comments and suggestions to improve the plugin are always welcome &mdash; "
@@ -376,7 +321,7 @@ msgid ""
 "ticket if you have any ideas or comments you would like to share with us</a>."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:46
+#: gettext/gettext-html-setup.php:40
 msgctxt "html paragraph"
 msgid ""
 "BuddyPress was not originally created as a WordPress plugin, and "
@@ -387,7 +332,7 @@ msgid ""
 "issues."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:47
+#: gettext/gettext-html-setup.php:41
 msgctxt "html paragraph"
 msgid ""
 "The <a href=\"https://wpsso.com/docs/plugins/wpsso/installation/integration/"
@@ -397,7 +342,7 @@ msgid ""
 "size, etc."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:48
+#: gettext/gettext-html-setup.php:42
 msgctxt "html paragraph"
 msgid ""
 "<strong>The WooCommerce plugin is known to offer incomplete Schema markup "
@@ -413,94 +358,56 @@ msgid ""
 "tax prices, VAT prices, shipping rates, shipping times, and much, much more."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:49
-msgctxt "html paragraph"
-msgid ""
-"WordPress developers and website designers may consider a few additional "
-"settings:"
-msgstr ""
-
-#: gettext/gettext-html-setup.php:50
-msgctxt "html paragraph"
-msgid ""
-"If your theme uses custom fields (ie. post metadata) to manage additional "
-"image URLs, video URLs, embedded video HTML, e-commerce product details, "
-"etc., you can enter their custom field names under the <em><strong>SSO &gt; "
-"Advanced Settings &gt; Metadata &gt; Custom Fields</strong></em> tab."
-msgstr ""
-
-#: gettext/gettext-html-setup.php:51
-msgctxt "html paragraph"
-msgid ""
-"WPSSO Core adds a <code>meta name description</code> and <code>meta name "
-"robots</code> HTML tag to the webpage by default, unless an SEO plugin is "
-"detected (in that case they are disabled automatically). You can enable or "
-"disable individual SEO HTML tags under the <em><strong>SSO &gt; Advanced "
-"Settings &gt; HTML Tags &gt; SEO / Other</strong></em> tab."
-msgstr ""
-
-#: gettext/gettext-html-setup.php:52
-msgctxt "html paragraph"
-msgid ""
-"WPSSO Core creates Schema WebSite, Organization, and Person social markup "
-"for Google's Knowledge Graph in the front page using JSON-LD. If your theme "
-"does not include Schema markup (using JSON-LD or Microdata formats) for your "
-"post / page content, you should consider enabling the <a href=\"https://"
-"wordpress.org/plugins/wpsso-schema-json-ld/\">WPSSO Schema JSON-LD Markup "
-"add-on</a> to provide complete Schema markup for your content (ie. Schema "
-"Article, Place, Product, etc.)."
-msgstr ""
-
-#: gettext/gettext-html-setup.php:53
+#: gettext/gettext-html-setup.php:43
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://www.facebook.com/business/learn/set-up-facebook-page"
 "\">Setup a Facebook Business Page</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:54
+#: gettext/gettext-html-setup.php:44
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://business.twitter.com/en/basics/create-a-twitter-business-"
 "profile.html\">Create a Twitter Business Profile</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:55
+#: gettext/gettext-html-setup.php:45
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://business.google.com/create\">Add your Business to Google</"
 "a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:56
+#: gettext/gettext-html-setup.php:46
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://www.pinterest.com/business/create/\">Create a Pinterest "
 "Business Account</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:57
+#: gettext/gettext-html-setup.php:47
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://developers.facebook.com/tools/debug/\">Facebook Sharing "
 "Debugger</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:58
+#: gettext/gettext-html-setup.php:48
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://business.facebook.com/ads/microdata/debug\">Facebook "
 "Microdata Debug Tool</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:59
+#: gettext/gettext-html-setup.php:49
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://search.google.com/test/rich-results\">Google Rich Results "
 "Test</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:60
+#: gettext/gettext-html-setup.php:50
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://search.google.com/structured-data/testing-tool/u/0/"
@@ -510,35 +417,35 @@ msgid ""
 "\">selection of Google Rich Result types</a>."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:61
+#: gettext/gettext-html-setup.php:51
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://www.linkedin.com/post-inspector/inspect/\">LinkedIn Post "
 "Inspector</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:62
+#: gettext/gettext-html-setup.php:52
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://developers.pinterest.com/tools/url-debugger/\">Pinterest "
 "Rich Pins Validator</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:63
+#: gettext/gettext-html-setup.php:53
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://cards-dev.twitter.com/validator\">Twitter Card Validator</"
 "a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:64
+#: gettext/gettext-html-setup.php:54
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://validator.w3.org/\">W3C Markup Validator</a> &mdash; "
 "recommended to check your theme templates for HTML markup issues."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:65
+#: gettext/gettext-html-setup.php:55
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://developers.google.com/speed/pagespeed/insights/\">Google "
@@ -546,7 +453,7 @@ msgid ""
 "health checks (results influence SEO ranking)."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:66
+#: gettext/gettext-html-setup.php:56
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://support.google.com/webmasters/answer/7451184\">Google's "
@@ -554,7 +461,7 @@ msgid ""
 "to understand Google SEO ranking factors."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:67
+#: gettext/gettext-html-setup.php:57
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://www.webpagetest.org/\">Webpage Performance Test with "
@@ -562,14 +469,14 @@ msgid ""
 "issues."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:68
+#: gettext/gettext-html-setup.php:58
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://www.ssllabs.com/ssltest/\">SSL Server Test by SSL Labs</a> "
 "&mdash; recommended test for any site using https."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:69
+#: gettext/gettext-html-setup.php:59
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-fix-google-"
@@ -577,21 +484,21 @@ msgid ""
 "hatom errors?</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:70
+#: gettext/gettext-html-setup.php:60
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-"
 "detect-select-images/\">How does WPSSO Core find and select images?</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:71
+#: gettext/gettext-html-setup.php:61
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-"
 "detect-select-videos/\">How does WPSSO Core find and select videos?</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:72
+#: gettext/gettext-html-setup.php:62
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-are-some-html-"
@@ -599,27 +506,19 @@ msgid ""
 "or misaligned?</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:73
+#: gettext/gettext-html-setup.php:63
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-"
 "the-wrong-image-text/\">Why does Facebook show the wrong image or text?</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:74
+#: gettext/gettext-html-setup.php:64
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-"
 "small-images-to-the-media-library/\">Why shouldn't I upload small images to "
 "the Media library?</a>"
-msgstr ""
-
-#: gettext/gettext-html-setup.php:75
-msgctxt "html blockquote"
-msgid ""
-"If you use the WooCommerce plugin, don't miss the <a href=\"#documentation-"
-"and-resources\">Documentation and Resources section bellow</a> for "
-"additional WooCommerce integration notes."
 msgstr ""
 
 #: gettext/gettext-lib-abstracts-com.php:6 lib/abstracts/com/add-on.php:178
@@ -1045,7 +944,7 @@ msgid "Your SSO"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:54 gettext/gettext-lib-config.php:64
-#: lib/admin-head.php:258 lib/messages.php:3524
+#: lib/admin-head.php:258 lib/messages.php:3530
 msgctxt "lib file description"
 msgid "Advanced Settings"
 msgstr ""
@@ -1310,7 +1209,7 @@ msgid ""
 msgstr ""
 
 #: gettext/gettext-lib-config.php:103 lib/admin-head.php:257
-#: lib/messages.php:3523
+#: lib/messages.php:3529
 msgctxt "menu title"
 msgid "SSO"
 msgstr ""
@@ -3110,19 +3009,19 @@ msgctxt "metabox title"
 msgid "Basic Product Information"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:142 lib/messages.php:3186
+#: gettext/gettext-lib-pro.php:142 lib/messages.php:3192
 #: lib/pro/admin/edit.php:71 lib/std/admin/edit.php:70
 msgctxt "option label"
 msgid "Product Type"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:143 lib/messages.php:3182
+#: gettext/gettext-lib-pro.php:143 lib/messages.php:3188
 #: lib/pro/admin/edit.php:86 lib/std/admin/edit.php:78
 msgctxt "option label"
 msgid "Product Brand"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:144 lib/messages.php:3250
+#: gettext/gettext-lib-pro.php:144 lib/messages.php:3256
 #: lib/pro/admin/edit.php:93 lib/std/admin/edit.php:86
 msgctxt "option label"
 msgid "Product Price"
@@ -3134,61 +3033,61 @@ msgstr ""
 msgid "for simple or main product"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:147 lib/messages.php:3178
+#: gettext/gettext-lib-pro.php:147 lib/messages.php:3184
 #: lib/pro/admin/edit.php:104 lib/std/admin/edit.php:97
 msgctxt "option label"
 msgid "Product Availability"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:148 lib/messages.php:3195
+#: gettext/gettext-lib-pro.php:148 lib/messages.php:3201
 #: lib/pro/admin/edit.php:112 lib/std/admin/edit.php:106
 msgctxt "option label"
 msgid "Product Condition"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:149 lib/messages.php:3242
+#: gettext/gettext-lib-pro.php:149 lib/messages.php:3248
 #: lib/pro/admin/edit.php:120 lib/std/admin/edit.php:115
 msgctxt "option label"
 msgid "Product Material"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:150 lib/messages.php:3191
+#: gettext/gettext-lib-pro.php:150 lib/messages.php:3197
 #: lib/pro/admin/edit.php:127 lib/std/admin/edit.php:123
 msgctxt "option label"
 msgid "Product Color"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:151 lib/messages.php:3262
+#: gettext/gettext-lib-pro.php:151 lib/messages.php:3268
 #: lib/pro/admin/edit.php:134 lib/std/admin/edit.php:131
 msgctxt "option label"
 msgid "Product Target Gender"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:152 lib/messages.php:3258
+#: gettext/gettext-lib-pro.php:152 lib/messages.php:3264
 #: lib/pro/admin/edit.php:142 lib/std/admin/edit.php:140
 msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:153 lib/messages.php:3271
+#: gettext/gettext-lib-pro.php:153 lib/messages.php:3277
 #: lib/pro/admin/edit.php:149 lib/std/admin/edit.php:148
 msgctxt "option label"
 msgid "Product Weight"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:154 lib/messages.php:3254
+#: gettext/gettext-lib-pro.php:154 lib/messages.php:3260
 #: lib/pro/admin/edit.php:157 lib/std/admin/edit.php:157
 msgctxt "option label"
 msgid "Product SKU"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:155 lib/messages.php:3246
+#: gettext/gettext-lib-pro.php:155 lib/messages.php:3252
 #: lib/pro/admin/edit.php:164 lib/std/admin/edit.php:165
 msgctxt "option label"
 msgid "Product MPN"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:156 lib/messages.php:3233
+#: gettext/gettext-lib-pro.php:156 lib/messages.php:3239
 #: lib/pro/admin/edit.php:171 lib/std/admin/edit.php:173
 msgctxt "option label"
 msgid "Product ISBN"
@@ -3225,7 +3124,7 @@ msgctxt "option label"
 msgid "Video Dimensions"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:162 lib/messages.php:3293
+#: gettext/gettext-lib-pro.php:162 lib/messages.php:3299
 #: lib/pro/admin/edit.php:241 lib/std/admin/edit.php:239
 msgctxt "option label"
 msgid "Video Embed HTML"
@@ -3775,12 +3674,12 @@ msgid_plural "Please install these updates at your earliest convenience."
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/admin-head.php:259 lib/messages.php:3525 lib/submenu/advanced.php:43
+#: lib/admin-head.php:259 lib/messages.php:3531 lib/submenu/advanced.php:43
 msgctxt "metabox title"
 msgid "HTML Tags"
 msgstr ""
 
-#: lib/admin-head.php:260 lib/messages.php:3526 lib/submenu/advanced.php:194
+#: lib/admin-head.php:260 lib/messages.php:3532 lib/submenu/advanced.php:194
 msgctxt "metabox tab"
 msgid "SEO / Other"
 msgstr ""
@@ -3915,13 +3814,13 @@ msgid ""
 "could rate it on WordPress.org."
 msgstr ""
 
-#: lib/admin-head.php:628 lib/messages.php:3102
+#: lib/admin-head.php:628
 msgid ""
 "Great ratings are an excellent way to ensure the continued development of "
 "your favorite plugins."
 msgstr ""
 
-#: lib/admin-head.php:634 lib/messages.php:3108
+#: lib/admin-head.php:634
 msgid ""
 "Without your rating, a plugin you value and depend on could be deprecated "
 "prematurely."
@@ -4941,7 +4840,7 @@ msgctxt "metabox title"
 msgid "Book Information"
 msgstr ""
 
-#: lib/edit.php:255 lib/messages.php:3158
+#: lib/edit.php:255 lib/messages.php:3164
 msgctxt "option label"
 msgid "Book ISBN"
 msgstr ""
@@ -5947,7 +5846,7 @@ msgstr ""
 msgid "Your theme does not support <a href=\"%s\">the WordPress Title Tag</a>."
 msgstr ""
 
-#: lib/messages.php:868 lib/messages.php:3500
+#: lib/messages.php:868 lib/messages.php:3506
 msgid "https://codex.wordpress.org/Title_Tag"
 msgstr ""
 
@@ -6683,7 +6582,7 @@ msgid ""
 "It browser button from suggesting those images."
 msgstr ""
 
-#: lib/messages.php:1670 lib/messages.php:3397 lib/submenu/general.php:366
+#: lib/messages.php:1670 lib/messages.php:3403 lib/submenu/general.php:366
 msgctxt "option label"
 msgid "Add Hidden Image for Pinterest"
 msgstr ""
@@ -6963,7 +6862,7 @@ msgid ""
 "structure."
 msgstr ""
 
-#: lib/messages.php:2190 lib/messages.php:3434
+#: lib/messages.php:2190 lib/messages.php:3440
 msgid "Schema markup is disabled."
 msgstr ""
 
@@ -7578,369 +7477,387 @@ msgid ""
 "welcome all your comments and suggestions."
 msgstr ""
 
-#: lib/messages.php:3100
+#: lib/messages.php:3102
 msgid ""
 "It would help tremendously if you could rate the following plugins on "
-"WordPress.org."
+"WordPress.org!"
 msgstr ""
 
 #: lib/messages.php:3110
-msgid "Don't let that happen - rate your active plugins now!"
+msgid ""
+"New ratings are an excellent way to ensure the continued success of your "
+"favorite plugins."
+msgstr ""
+
+#: lib/messages.php:3112
+msgid ""
+"Without ratings, plugins or add-ons that you depend on could be discontinued "
+"prematurely."
+msgstr ""
+
+#: lib/messages.php:3114
+msgid "Don't let that happen!"
+msgstr ""
+
+#: lib/messages.php:3116
+msgid ""
+"Rate your active plugins today - it only takes a few seconds to rate a "
+"plugin!"
 msgstr ""
 
 #. translators: %s is the wordpress.org URL for the WPSSO User Locale Selector add-on.
-#: lib/messages.php:3131
+#: lib/messages.php:3137
 msgid ""
 "This option is localized &mdash; <a href=\"%s\">you may change the WordPress "
 "locale</a> to define alternate values for different languages."
 msgstr ""
 
-#: lib/messages.php:3154
+#: lib/messages.php:3160
 msgctxt "option label"
 msgid "Microdata Type URLs"
 msgstr ""
 
-#: lib/messages.php:3155
+#: lib/messages.php:3161
 msgctxt "tooltip fragment"
 msgid "additional microdata type URLs"
 msgstr ""
 
-#: lib/messages.php:3159 lib/messages.php:3234
+#: lib/messages.php:3165 lib/messages.php:3240
 msgctxt "tooltip fragment"
 msgid "an ISBN code (aka International Standard Book Number)"
 msgstr ""
 
-#: lib/messages.php:3162
+#: lib/messages.php:3168
 msgctxt "option label"
 msgid "How-To Steps"
 msgstr ""
 
-#: lib/messages.php:3163
+#: lib/messages.php:3169
 msgctxt "tooltip fragment"
 msgid "how-to steps"
 msgstr ""
 
-#: lib/messages.php:3166
+#: lib/messages.php:3172
 msgctxt "option label"
 msgid "How-To Supplies"
 msgstr ""
 
-#: lib/messages.php:3167
+#: lib/messages.php:3173
 msgctxt "tooltip fragment"
 msgid "how-to supplies"
 msgstr ""
 
-#: lib/messages.php:3170
+#: lib/messages.php:3176
 msgctxt "option label"
 msgid "How-To Tools"
 msgstr ""
 
-#: lib/messages.php:3171
+#: lib/messages.php:3177
 msgctxt "tooltip fragment"
 msgid "how-to tools"
 msgstr ""
 
-#: lib/messages.php:3174
+#: lib/messages.php:3180
 msgctxt "option label"
 msgid "Image URL"
 msgstr ""
 
-#: lib/messages.php:3175
+#: lib/messages.php:3181
 msgctxt "tooltip fragment"
 msgid "an image URL"
 msgstr ""
 
-#: lib/messages.php:3179
+#: lib/messages.php:3185
 msgctxt "tooltip fragment"
 msgid "a product availability"
 msgstr ""
 
-#: lib/messages.php:3183
+#: lib/messages.php:3189
 msgctxt "tooltip fragment"
 msgid "a product brand"
 msgstr ""
 
-#: lib/messages.php:3187
+#: lib/messages.php:3193
 msgctxt "tooltip fragment"
 msgid "a <a href=\"%s\">Google product type</a>"
 msgstr ""
 
-#: lib/messages.php:3188
+#: lib/messages.php:3194
 msgid ""
 "https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt"
 msgstr ""
 
-#: lib/messages.php:3192
+#: lib/messages.php:3198
 msgctxt "tooltip fragment"
 msgid "a product color"
 msgstr ""
 
-#: lib/messages.php:3196
+#: lib/messages.php:3202
 msgctxt "tooltip fragment"
 msgid "a product condition"
 msgstr ""
 
-#: lib/messages.php:3199
+#: lib/messages.php:3205
 msgctxt "option label"
 msgid "Product Currency"
 msgstr ""
 
-#: lib/messages.php:3200
+#: lib/messages.php:3206
 msgctxt "tooltip fragment"
 msgid "a product currency"
 msgstr ""
 
-#: lib/messages.php:3203
+#: lib/messages.php:3209
 msgctxt "option label"
 msgid "Product Depth"
 msgstr ""
 
-#: lib/messages.php:3204
+#: lib/messages.php:3210
 msgctxt "tooltip fragment"
 msgid "a product depth (in %s)"
 msgstr ""
 
-#: lib/messages.php:3208
+#: lib/messages.php:3214
 msgctxt "option label"
 msgid "Product GTIN-14"
 msgstr ""
 
-#: lib/messages.php:3209
+#: lib/messages.php:3215
 msgctxt "tooltip fragment"
 msgid "a product GTIN-14 code (aka ITF-14)"
 msgstr ""
 
-#: lib/messages.php:3212
+#: lib/messages.php:3218
 msgctxt "option label"
 msgid "Product GTIN-13 (EAN)"
 msgstr ""
 
-#: lib/messages.php:3213
+#: lib/messages.php:3219
 msgctxt "tooltip fragment"
 msgid "a product GTIN-13 code (aka 13-digit ISBN codes or EAN/UCC-13)"
 msgstr ""
 
-#: lib/messages.php:3216
+#: lib/messages.php:3222
 msgctxt "option label"
 msgid "Product GTIN-12 (UPC)"
 msgstr ""
 
-#: lib/messages.php:3217
+#: lib/messages.php:3223
 msgctxt "tooltip fragment"
 msgid ""
 "a product GTIN-12 code (12-digit GS1 identification key composed of a UPC "
 "company prefix, item reference, and check digit)"
 msgstr ""
 
-#: lib/messages.php:3220
+#: lib/messages.php:3226
 msgctxt "option label"
 msgid "Product GTIN-8"
 msgstr ""
 
-#: lib/messages.php:3221
+#: lib/messages.php:3227
 msgctxt "tooltip fragment"
 msgid "a product GTIN-8 code (aka EAN/UCC-8 or 8-digit EAN)"
 msgstr ""
 
-#: lib/messages.php:3224
+#: lib/messages.php:3230
 msgctxt "option label"
 msgid "Product GTIN"
 msgstr ""
 
-#: lib/messages.php:3225
+#: lib/messages.php:3231
 msgctxt "tooltip fragment"
 msgid "a product GTIN code (GTIN-8, GTIN-12/UPC, GTIN-13/EAN, or GTIN-14)"
 msgstr ""
 
-#: lib/messages.php:3228
+#: lib/messages.php:3234
 msgctxt "option label"
 msgid "Product Height"
 msgstr ""
 
-#: lib/messages.php:3229
+#: lib/messages.php:3235
 msgctxt "tooltip fragment"
 msgid "a product height (in %s)"
 msgstr ""
 
-#: lib/messages.php:3237
+#: lib/messages.php:3243
 msgctxt "option label"
 msgid "Product Length"
 msgstr ""
 
-#: lib/messages.php:3238
+#: lib/messages.php:3244
 msgctxt "tooltip fragment"
 msgid "a product length (in %s)"
 msgstr ""
 
-#: lib/messages.php:3243
+#: lib/messages.php:3249
 msgctxt "tooltip fragment"
 msgid "a product material"
 msgstr ""
 
-#: lib/messages.php:3247
+#: lib/messages.php:3253
 msgctxt "tooltip fragment"
 msgid "a Manufacturer Part Number (MPN)"
 msgstr ""
 
-#: lib/messages.php:3251
+#: lib/messages.php:3257
 msgctxt "tooltip fragment"
 msgid "a product price"
 msgstr ""
 
-#: lib/messages.php:3255
+#: lib/messages.php:3261
 msgctxt "tooltip fragment"
 msgid "a Stock-Keeping Unit (SKU)"
 msgstr ""
 
-#: lib/messages.php:3259
+#: lib/messages.php:3265
 msgctxt "tooltip fragment"
 msgid "a product size"
 msgstr ""
 
-#: lib/messages.php:3263
+#: lib/messages.php:3269
 msgctxt "tooltip fragment"
 msgid "a product target gender"
 msgstr ""
 
-#: lib/messages.php:3266
+#: lib/messages.php:3272
 msgctxt "option label"
 msgid "Product Fluid Volume"
 msgstr ""
 
-#: lib/messages.php:3267
+#: lib/messages.php:3273
 msgctxt "tooltip fragment"
 msgid "a product fluid volume (in %s)"
 msgstr ""
 
-#: lib/messages.php:3272
+#: lib/messages.php:3278
 msgctxt "tooltip fragment"
 msgid "a product weight (in %s)"
 msgstr ""
 
-#: lib/messages.php:3276
+#: lib/messages.php:3282
 msgctxt "option label"
 msgid "Product Width"
 msgstr ""
 
-#: lib/messages.php:3277
+#: lib/messages.php:3283
 msgctxt "tooltip fragment"
 msgid "a product width (in %s)"
 msgstr ""
 
-#: lib/messages.php:3281
+#: lib/messages.php:3287
 msgctxt "option label"
 msgid "Recipe Ingredients"
 msgstr ""
 
-#: lib/messages.php:3282
+#: lib/messages.php:3288
 msgctxt "tooltip fragment"
 msgid "recipe ingredients"
 msgstr ""
 
-#: lib/messages.php:3285
+#: lib/messages.php:3291
 msgctxt "option label"
 msgid "Recipe Instructions"
 msgstr ""
 
-#: lib/messages.php:3286
+#: lib/messages.php:3292
 msgctxt "tooltip fragment"
 msgid "recipe instructions"
 msgstr ""
 
-#: lib/messages.php:3289
+#: lib/messages.php:3295
 msgctxt "option label"
 msgid "Same-As URLs"
 msgstr ""
 
-#: lib/messages.php:3290
+#: lib/messages.php:3296
 msgctxt "tooltip fragment"
 msgid "additional Same-As URLs"
 msgstr ""
 
-#: lib/messages.php:3294
+#: lib/messages.php:3300
 msgctxt "tooltip fragment"
 msgid "video embed HTML code (not a URL)"
 msgstr ""
 
-#: lib/messages.php:3297
+#: lib/messages.php:3303
 msgctxt "option label"
 msgid "Video URL"
 msgstr ""
 
-#: lib/messages.php:3298
+#: lib/messages.php:3304
 msgctxt "tooltip fragment"
 msgid "a video URL (not HTML code)"
 msgstr ""
 
-#: lib/messages.php:3332
+#: lib/messages.php:3338
 msgid ""
 "Video discovery and service API modules are provided with the %s version."
 msgstr ""
 
 #. translators: %s is is the short add-on name.
-#: lib/messages.php:3365
+#: lib/messages.php:3371
 msgctxt "option comment"
 msgid "%s required"
 msgstr ""
 
-#: lib/messages.php:3374
+#: lib/messages.php:3380
 msgctxt "option comment"
 msgid "note that video preview images are included first"
 msgstr ""
 
-#: lib/messages.php:3385
+#: lib/messages.php:3391
 msgctxt "option comment"
 msgid "note that video preview images are enabled (and included first)"
 msgstr ""
 
 #. translators: %s is the option name, linked to its settings page.
-#: lib/messages.php:3400
+#: lib/messages.php:3406
 msgid "Modifications disabled (%s option is unchecked)."
 msgstr ""
 
-#: lib/messages.php:3410
+#: lib/messages.php:3416
 msgid "Modifications disabled (no AMP plugin active)."
 msgstr ""
 
 #. translators: %s is the meta tag name (aka meta name canonical).
-#: lib/messages.php:3418
+#: lib/messages.php:3424
 msgid ""
 "Modifications disabled (<code>%s</code> tag disabled or SEO plugin detected)."
 msgstr ""
 
-#: lib/messages.php:3425
+#: lib/messages.php:3431
 msgid "Robots meta tag is disabled."
 msgstr ""
 
-#: lib/messages.php:3427 lib/messages.php:3436 lib/util-metabox.php:224
+#: lib/messages.php:3433 lib/messages.php:3442 lib/util-metabox.php:224
 msgid "No options available."
 msgstr ""
 
 #. translators: %s is is the add-on name (and a link to the add-on page).
-#: lib/messages.php:3483
+#: lib/messages.php:3489
 msgid ""
 "Activate the %s add-on<br/>if you require additional options for Schema "
 "markup and structured data."
 msgstr ""
 
-#: lib/messages.php:3499
+#: lib/messages.php:3505
 msgid "theme does not support <a href=\"%s\">the WordPress Title Tag</a>"
 msgstr ""
 
-#: lib/messages.php:3528
+#: lib/messages.php:3534
 msgid "Note that the <code>%s</code> HTML tag is currently disabled."
 msgstr ""
 
-#: lib/messages.php:3531
+#: lib/messages.php:3537
 msgid "You can re-enable this option under the %s tab."
 msgstr ""
 
-#: lib/messages.php:3567
+#: lib/messages.php:3573
 msgctxt "option value"
 msgid "uncropped"
 msgstr ""
 
-#: lib/messages.php:3567
+#: lib/messages.php:3573
 msgctxt "option value"
 msgid "cropped"
 msgstr ""

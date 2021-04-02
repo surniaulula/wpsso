@@ -3097,19 +3097,25 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text = '<p style="text-align:center;">';
 
-						$text .= __( 'It would help tremendously if you could rate the following plugins on WordPress.org.', 'wpsso' ) . ' ';
+						$text .= '<strong>';
 
-						$text .= __( 'Great ratings are an excellent way to ensure the continued development of your favorite plugins.', 'wpsso' ) . ' ';
+						$text .= __( 'It would help tremendously if you could rate the following plugins on WordPress.org!', 'wpsso' ) . ' ';
+
+						$text .= '</strong>';
 
 						$text .= '</p>' . "\n";
 
-						$text .= '<p style="text-align:center;"><strong>';
+						$text .= '<p style="text-align:center;">';
 
-						$text .= __( 'Without your rating, a plugin you value and depend on could be deprecated prematurely.', 'wpsso' ) . ' ';
+						$text .= __( 'New ratings are an excellent way to ensure the continued success of your favorite plugins.', 'wpsso' ) . ' ';
 
-						$text .= __( 'Don\'t let that happen - rate your active plugins now!', 'wpsso' ) . ' ';
+						$text .= __( 'Without ratings, plugins or add-ons that you depend on could be discontinued prematurely.', 'wpsso' ) . ' ';
 
-						$text .= '</strong></p>' . "\n";
+						$text .= __( 'Don\'t let that happen!', 'wpsso' ) . ' ';
+						
+						$text .= __( 'Rate your active plugins today - it only takes a few seconds to rate a plugin!', 'wpsso' ) . ' ;-)';
+
+						$text .= '</p>' . "\n";
 
 						break;
 
