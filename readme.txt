@@ -312,17 +312,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.26.0-dev.5 (2021/04/01)**
+**Version 8.26.0-b.1 (2021/04/01)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Moved the SSO &gt; Image Sizes settings to the SSO &gt; Advanced Settings &gt; Image Sizes tab.
 	* Moved the SSO &gt; Document Types settings to the SSO &gt; Advanced Settings &gt; Document Types metabox.
+	* Removed the Add Pinterest "nopin" to Images option from the SSO &gt; Essential Settings page (available in General Settings).
+	* Removed the Add Hidden Image for Pinterest option from the SSO &gt; Essential Settings page (available in General Settings).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added a new 'wpsso_og_add_wc_mt_rating' filter.
+	* Added a new 'wpsso_og_add_wc_mt_reviews' filter.
 * **Requires At Least**
 	* PHP v7.0.
 	* WordPress v4.5.
@@ -1124,7 +1127,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.26.0-dev.5 =
+= 8.26.0-b.1 =
 
 (2021/04/01) Moved the SSO &gt; Image Sizes and SSO &gt; Document Types settings to the SSO &gt; Advanced Settings page.
 
