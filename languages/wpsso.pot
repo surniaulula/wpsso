@@ -80,7 +80,7 @@ msgctxt "html paragraph"
 msgid ""
 "<strong>If you use the WooCommerce plugin, don't forget to check the <a href="
 "\"#documentation-and-resources\">Documentation and Resources section bellow</"
-"a> for additional integration notes for WooCommerce.</strong>"
+"a> for additional integration notes specific to WooCommerce.</strong>"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:19
