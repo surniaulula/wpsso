@@ -7491,7 +7491,7 @@ msgstr ""
 
 #: lib/messages.php:3112
 msgid ""
-"Without new ratings, plugins or add-ons that you depend on could be "
+"Without new ratings, plugins and add-ons that you depend on could be "
 "discontinued prematurely."
 msgstr ""
 

@@ -3109,7 +3109,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= __( 'New ratings are an excellent way to ensure the continued success of your favorite plugins.', 'wpsso' ) . ' ';
 
-						$text .= __( 'Without new ratings, plugins or add-ons that you depend on could be discontinued prematurely.', 'wpsso' ) . ' ';
+						$text .= __( 'Without new ratings, plugins and add-ons that you depend on could be discontinued prematurely.', 'wpsso' ) . ' ';
 
 						$text .= __( 'Don\'t let that happen!', 'wpsso' ) . ' ';
 						
