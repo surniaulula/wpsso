@@ -101,7 +101,7 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 
 					if ( ! empty( $this->p->options[ $site_verify ] ) ) {
 
-						$mt_name[ 'add_meta_name_' . $meta_name ] = $this->p->options[ $site_verify ];
+						$mt_name[ $meta_name ] = $this->p->options[ $site_verify ];
 					}
 				}
 			}
