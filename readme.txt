@@ -312,7 +312,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.26.0 (2021/04/02)**
+**Version 8.26.1 (2021/04/02)**
 
 * **New Features**
 	* None.
@@ -322,7 +322,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Removed the Add Pinterest "nopin" to Images option from the SSO &gt; Essential Settings page (available in General Settings).
 	* Removed the Add Hidden Image for Pinterest option from the SSO &gt; Essential Settings page (available in General Settings).
 * **Bugfixes**
-	* None.
+	* Fixed an incorrect prefix for site verification meta tag names.
 * **Developer Notes**
 	* Added a new 'wpsso_og_add_wc_mt_rating' filter.
 	* Added a new 'wpsso_og_add_wc_mt_reviews' filter.
@@ -1127,7 +1127,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.26.0 =
+= 8.26.1 =
 
 (2021/04/02) Moved the SSO &gt; Image Sizes and SSO &gt; Document Types settings to the SSO &gt; Advanced Settings page.
 
