@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.26.0\n"
+"Project-Id-Version: WPSSO Core 8.26.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-04-02 09:39-0700\n"
+"PO-Revision-Date: 2021-04-04 07:10-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -305,7 +305,7 @@ msgstr "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-sh
 
 #: gettext/gettext-html-setup.php:64
 msgctxt "html list item"
-msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/\">Why shouldn't I upload small images to the Media library?</a>"
+msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/\">Why shouldn't I upload small images to the media library?</a>"
 msgstr "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/\">Pourquoi ne devrais-je pas télécharger de petites images dans la médiathèque?</a>"
 
 #: gettext/gettext-lib-abstracts-com.php:6 lib/abstracts/com/add-on.php:178
@@ -5363,8 +5363,8 @@ msgid "Providing social and search sites with perfectly resized images is highly
 msgstr "Il est fortement recommandé de fournir aux sites sociaux et de recherche des images parfaitement redimensionnées, cette option doit donc être activée si possible."
 
 #: lib/messages.php:996 lib/messages.php:2687 lib/messages.php:2837
-msgid "See <a href=\"%s\">Why shouldn't I upload small images to the Media library?</a> for more information on WordPress image sizes."
-msgstr "Consultez <a href=\"%s\">Pourquoi ne dois-je pas télécharger de petites images dans la médiathèque?</a> pour plus d'informations sur les tailles d'image WordPress."
+msgid "See <a href=\"%s\">Why shouldn't I upload small images to the media library?</a> for more information on WordPress image sizes."
+msgstr "Consultez <a href=\"%s\">Pourquoi ne devrais-je pas télécharger de petites images dans la médiathèque?</a> pour plus d'informations sur les tailles d'image WordPress."
 
 #: lib/messages.php:1002
 msgid "WordPress does not upscale (enlarge) images - WordPress can only create smaller images from larger full size originals."
