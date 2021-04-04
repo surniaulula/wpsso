@@ -993,7 +993,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= __( 'Providing social and search sites with perfectly resized images is highly recommended, so this option should be enabled if possible.', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( 'See <a href="%s">Why shouldn\'t I upload small images to the Media library?</a> for more information on WordPress image sizes.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/' ). ' ';
+							$text .= sprintf( __( 'See <a href="%s">Why shouldn\'t I upload small images to the media library?</a> for more information on WordPress image sizes.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/' ). ' ';
 
 							break;
 
@@ -2684,7 +2684,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = __( 'Consider replacing the original image with a higher resolution version.', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( 'See <a href="%s">Why shouldn\'t I upload small images to the Media library?</a> for more information on WordPress image sizes.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/' ). ' ';
+							$text .= sprintf( __( 'See <a href="%s">Why shouldn\'t I upload small images to the media library?</a> for more information on WordPress image sizes.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/' ). ' ';
 						}
 
 						/**
@@ -2834,7 +2834,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= __( 'Content authors often upload small featured images, without knowing that WordPress creates resized images based on predefined image sizes, so this option is disabled by default.', 'wpsso' ) . ' ';
 
-						$text .= sprintf( __( 'See <a href="%s">Why shouldn\'t I upload small images to the Media library?</a> for more information on WordPress image sizes.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/' ). ' ';
+						$text .= sprintf( __( 'See <a href="%s">Why shouldn\'t I upload small images to the media library?</a> for more information on WordPress image sizes.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/' ). ' ';
 
 						$text .= '</p>';
 

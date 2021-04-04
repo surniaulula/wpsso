@@ -61,4 +61,4 @@ _x( '<a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-dete
 _x( '<a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-detect-select-videos/">How does WPSSO Core find and select videos?</a>', 'html list item', 'wpsso' );
 _x( '<a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-are-some-html-elements-missing-misaligned-different/">Why are some HTML elements missing or misaligned?</a>', 'html list item', 'wpsso' );
 _x( '<a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/">Why does Facebook show the wrong image or text?</a>', 'html list item', 'wpsso' );
-_x( '<a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/">Why shouldn\'t I upload small images to the Media library?</a>', 'html list item', 'wpsso' );
+_x( '<a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/">Why shouldn\'t I upload small images to the media library?</a>', 'html list item', 'wpsso' );

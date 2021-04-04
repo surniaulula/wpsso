@@ -518,7 +518,7 @@ msgctxt "html list item"
 msgid ""
 "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-"
 "small-images-to-the-media-library/\">Why shouldn't I upload small images to "
-"the Media library?</a>"
+"the media library?</a>"
 msgstr ""
 
 #: gettext/gettext-lib-abstracts-com.php:6 lib/abstracts/com/add-on.php:178
@@ -6037,7 +6037,7 @@ msgstr ""
 
 #: lib/messages.php:996 lib/messages.php:2687 lib/messages.php:2837
 msgid ""
-"See <a href=\"%s\">Why shouldn't I upload small images to the Media library?"
+"See <a href=\"%s\">Why shouldn't I upload small images to the media library?"
 "</a> for more information on WordPress image sizes."
 msgstr ""
 
