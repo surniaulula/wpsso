@@ -247,7 +247,7 @@ Simply activate the free complementary add-on(s) you require:
 * [Why are some HTML elements missing or misaligned?](https://wpsso.com/docs/plugins/wpsso/faqs/why-are-some-html-elements-missing-misaligned-different/)
 * [Why does Facebook show the wrong image / text?](https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/)
 * [Why does Google Structured Data Test Tool show errors?](https://wpsso.com/docs/plugins/wpsso/faqs/why-does-google-structured-data-testing-tool-show-errors/)
-* [Why shouldn't I upload small images to the Media library?](https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/)
+* [Why shouldn't I upload small images to the media library?](https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/)
 
 <h3>Notes and Documentation</h3>
 
