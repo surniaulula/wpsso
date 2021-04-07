@@ -312,6 +312,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.26.2-dev.1 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed the default size values included in help text for the Pinterest Pin It image size option.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.0.
+	* WordPress v4.5.
+
 **Version 8.26.1 (2021/04/02)**
 
 * **New Features**
@@ -1126,6 +1140,10 @@ This release adds a new SSO &gt; Features Status page and integration module for
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.26.2-dev.1 =
+
+(TBD) Fixed the default size values included in help text for the Pinterest Pin It image size option.
 
 = 8.26.1 =
 
