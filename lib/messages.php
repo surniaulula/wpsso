@@ -1689,7 +1689,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-p_img_size':			// Pinterest Pin It Image Size.
 
-							$def_img_dims = $this->get_def_img_dims( 'p_img' );
+							$def_img_dims = $this->get_def_img_dims( 'p' );
 
 							$text = sprintf( __( 'The dimensions used for the Pinterest Pin It browser button image (the default dimensions are %s).', 'wpsso' ), $def_img_dims );
 
@@ -2225,7 +2225,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= sprintf( __( 'The example image container uses the minimum recommended Facebook image dimensions of %s.', 'wpsso' ), $fb_img_dims ) . ' ';
 
-							$text .= sprintf( __( 'You can edit images in the <a href="%s">WordPress Media Library</a> to select a preferred cropping area (ie. top or bottom), along with optimizing the image social and SEO texts.', 'wpsso' ), $upload_url );
+							$text .= sprintf( __( 'You can edit images in the <a href="%s">WordPress Media Library</a> to select a preferred cropping area (ie. top or bottom), along with optimizing the social and SEO texts for the image.', 'wpsso' ), $upload_url );
 
 							$text .= '</p>' . "\n";
 

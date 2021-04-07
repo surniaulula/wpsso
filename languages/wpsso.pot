@@ -6880,11 +6880,11 @@ msgid ""
 "dimensions of %s."
 msgstr ""
 
-#: lib/messages.php:2228 lib/messages.php:2320
+#: lib/messages.php:2228
 msgid ""
 "You can edit images in the <a href=\"%s\">WordPress Media Library</a> to "
 "select a preferred cropping area (ie. top or bottom), along with optimizing "
-"the image social and SEO texts."
+"the social and SEO texts for the image."
 msgstr ""
 
 #: lib/messages.php:2238
@@ -6926,6 +6926,13 @@ msgstr ""
 msgid ""
 "The Schema Question document title is a summary of the question and the "
 "content text is the complete answer for that question."
+msgstr ""
+
+#: lib/messages.php:2320
+msgid ""
+"You can edit images in the <a href=\"%s\">WordPress Media Library</a> to "
+"select a preferred cropping area (ie. top or bottom), along with optimizing "
+"the image social and SEO texts."
 msgstr ""
 
 #: lib/messages.php:2334
