@@ -707,6 +707,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $opts;
 		}
 
+		/**
+		 * Note that WebP is only supported since PHP v7.1.
+		 */
 		public function is_image_url( $image_url ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -738,6 +741,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 		/**
 		 * Always returns an array.
+		 *
+		 * Note that WebP is only supported since PHP v7.1.
 		 */
 		public function get_image_url_info( $image_url ) {
 
