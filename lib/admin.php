@@ -1151,7 +1151,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							$cleared_count = $this->p->util->cache->clear_cache_dir();
 
-							$notice_msg = sprintf( __( '%s cache files have been deleted.', 'wpsso' ), $cleared_count );
+							$notice_msg = sprintf( __( '%s cache files have been cleared.', 'wpsso' ), $cleared_count );
 
 							$this->p->notice->upd( $notice_msg, $user_id );
 
@@ -1161,7 +1161,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							$cleared_count = $this->p->util->cache->clear_db_transients( $clear_short = true, $transient_prefix = '' );
 
-							$notice_msg = sprintf( __( '%s database transients have been deleted.', 'wpsso' ), $cleared_count );
+							$notice_msg = sprintf( __( '%s database transients have been cleared.', 'wpsso' ), $cleared_count );
+
+							$this->p->notice->upd( $notice_msg, $user_id );
+
+							break;
+
+						case 'clear_ignored_urls':
+
+							$cleared_count = $this->p->util->cache->clear_ignored_urls();
+
+							$notice_msg = sprintf( __( '%s temporarily ignored URLs have been cleared.', 'wpsso' ), $cleared_count );
 
 							$this->p->notice->upd( $notice_msg, $user_id );
 

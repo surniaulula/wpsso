@@ -35,7 +35,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		private $ignored_urls   = array(	// Saved on wp shutdown action.
 			'transient_expires' => DAY_IN_SECONDS,
 			'transient_loaded'  => false,
-			'ignore_secs'       => 300,	// 5 mins.
+			'ignore_secs'       => 600,	// 10 mins.
 			'ignore_urls'       => array(),
 		);
 
@@ -145,6 +145,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			if ( isset( $this->ignored_urls[ 'ignore_urls' ][ $url_nofrag ] ) ) {
 
 				$time_diff = time() - $this->ignored_urls[ 'ignore_urls' ][ $url_nofrag ];
+
 				$time_left = $this->ignored_urls[ 'ignore_secs' ] - $time_diff;
 
 				if ( $time_left > 0 ) {
@@ -269,6 +270,20 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			}
 
 			return false;
+		}
+
+		/**
+		 * Clear all ignored URLs.
+		 */
+		public function clear_ignored_urls() {
+
+			$this->maybe_load_ignored_urls();
+
+			$cleared = count( $this->ignored_urls[ 'ignore_urls' ] );
+
+			$this->ignored_urls[ 'ignore_urls' ] = array();
+
+			return $cleared;
 		}
 
 		public function clear( $url, $cache_ext = '' ) {

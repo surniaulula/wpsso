@@ -105,11 +105,12 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			/**
 			 * Row #0.
 			 */
-			$clear_cache_label_transl      = _x( 'Clear All Caches', 'submit button', 'wpsso' );
-			$clear_short_label_transl      = _x( 'Clear All Caches and Short URLs', 'submit button', 'wpsso' );
-			$clear_cache_dir_label_transl  = _x( 'Clear All Files in Cache Folder', 'submit button', 'wpsso' );
-			$clear_transients_label_transl = _x( 'Clear All Database Transients', 'submit button', 'wpsso' );
-			$refresh_cache_label_transl    = _x( 'Refresh Transient Cache', 'submit button', 'wpsso' );
+			$clear_cache_label_transl        = _x( 'Clear All Caches', 'submit button', 'wpsso' );
+			$clear_short_label_transl        = _x( 'Clear All Caches and Short URLs', 'submit button', 'wpsso' );
+			$clear_cache_dir_label_transl    = _x( 'Clear All Files in Cache Folder', 'submit button', 'wpsso' );
+			$clear_transients_label_transl   = _x( 'Clear All Database Transients', 'submit button', 'wpsso' );
+			$clear_ignored_urls_label_transl = _x( 'Clear Temporarily Ignored URLs', 'submit button', 'wpsso' );
+			$refresh_cache_label_transl      = _x( 'Refresh Transient Cache', 'submit button', 'wpsso' );
 
 			if ( $this->using_db_cache ) {
 
@@ -147,11 +148,12 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 				 * Row #0.
 				 */
 				array(
-					'clear_cache'                => $clear_cache_label_transl,	// Clear All Caches.
-					'clear_cache_and_short_urls' => null,				// Clear All Caches and Short URLs.
-					'clear_cache_dir'            => $clear_cache_dir_label_transl,	// Clear All Cache Files.
-					'clear_db_transients'        => null,				// Clear All Database Transients.
-					'refresh_cache'              => $refresh_cache_label_transl,	// Refresh Transient Cache.
+					'clear_cache'                => $clear_cache_label_transl,		// Clear All Caches.
+					'clear_cache_and_short_urls' => null,					// Clear All Caches and Short URLs.
+					'clear_cache_dir'            => $clear_cache_dir_label_transl,		// Clear All Cache Files.
+					'clear_db_transients'        => null,					// Clear All Database Transients.
+					'clear_ignored_urls'         => $clear_ignored_urls_label_transl,	// Clear All Ignored URLs.
+					'refresh_cache'              => $refresh_cache_label_transl,		// Refresh Transient Cache.
 				),
 
 				/**

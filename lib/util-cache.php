@@ -157,6 +157,8 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			$cleared_transients = $this->clear_db_transients( $clear_short, $transient_prefix = 'wpsso_' );
 
+			$cleared_ignored = $this->clear_ignored_urls();
+
 			$cleared_col_meta = $this->clear_column_meta();
 
 			wp_cache_flush();	// Clear non-database transients as well.
@@ -333,6 +335,11 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			}
 
 			return $cleared_count;
+		}
+
+		public function clear_ignored_urls() {
+
+			return $this->p->cache->clear_ignored_urls();
 		}
 
 		public function clear_column_meta() {
