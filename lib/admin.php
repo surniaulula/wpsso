@@ -1147,9 +1147,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							break;
 
-						case 'clear_cache_dir':
+						case 'clear_cache_files':
 
-							$cleared_count = $this->p->util->cache->clear_cache_dir();
+							$cleared_count = $this->p->util->cache->clear_cache_files();
 
 							$notice_msg = sprintf( __( '%s cache files have been cleared.', 'wpsso' ), $cleared_count );
 

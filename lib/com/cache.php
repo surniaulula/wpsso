@@ -125,7 +125,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				 */
 				if ( isset( $cache_ret[ 'ignore_urls' ] ) ) {
 
-					$this->ignored_urls = $cache_ret[ 'ignore_urls' ];
+					$this->ignored_urls[ 'ignore_urls' ] = $cache_ret[ 'ignore_urls' ];
 				}
 
 				$this->ignored_urls[ 'transient_loaded' ] = true;
@@ -142,6 +142,13 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 				set_transient( $cache_id, $this->ignored_urls, $this->ignored_urls[ 'transient_expires' ] );
 			}
+		}
+
+		public function count_ignored_urls() {
+
+			$this->maybe_load_ignored_urls();
+
+			return count( $this->ignored_urls[ 'ignore_urls' ] );
 		}
 
 		/**

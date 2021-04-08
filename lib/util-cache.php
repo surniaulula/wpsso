@@ -76,11 +76,6 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 		public function clear( $user_id = null, $clear_other = false, $clear_short = null, $refresh = true ) {
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
 			static $have_cleared = null;
 
 			if ( null !== $have_cleared ) {	// Already run once.
@@ -153,7 +148,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				do_action( 'wpsso_scheduled_task_started', $user_id );
 			}
 
-			$cleared_files = $this->clear_cache_dir();
+			$cleared_files = $this->clear_cache_files();
 
 			$cleared_transients = $this->clear_db_transients( $clear_short, $transient_prefix = 'wpsso_' );
 
@@ -193,14 +188,53 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			delete_transient( $cache_id );
 		}
 
-		public function clear_cache_dir() {
+		public function count_cache_files() {
 
-			if ( $this->p->debug->enabled ) {
+			$cache_files = $this->get_cache_files();
 
-				$this->p->debug->mark();
+			return count( $cache_files );
+		}
+
+		public function clear_cache_files() {
+
+			$count = 0;
+
+			$cache_files = $this->get_cache_files();
+
+			foreach ( $cache_files as $file_path ) {
+
+				if ( @unlink( $file_path ) ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'removed the cache file ' . $file_path );
+					}
+
+					$count++;
+
+				} else {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'error removing cache file ' . $file_path );
+					}
+
+					$error_pre = sprintf( '%s error:', __METHOD__ );
+
+					$error_msg = sprintf( __( 'Error removing cache file %s.', 'wpsso' ), $file_path );
+
+					$this->p->notice->err( $error_msg );
+
+					SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
+				}
 			}
 
-			$cleared_count = 0;
+			return $count++;
+		}
+
+		public function get_cache_files() {
+
+			$cache_files = array();
 
 			if ( ! $dh = @opendir( WPSSO_CACHE_DIR ) ) {
 
@@ -211,7 +245,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 				$error_pre = sprintf( '%s error:', __METHOD__ );
 
-				$error_msg = sprintf( __( 'Failed to open the cache folder %s for reading.', 'wpsso' ), $cache_file );
+				$error_msg = sprintf( __( 'Failed to open the cache folder %s for reading.', 'wpsso' ), WPSSO_CACHE_DIR );
 
 				$this->p->notice->err( $error_msg );
 
@@ -221,57 +255,54 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 				while ( $file_name = @readdir( $dh ) ) {
 
-					$cache_file = WPSSO_CACHE_DIR . $file_name;
+					$file_path = WPSSO_CACHE_DIR . $file_name;
 
-					if ( ! preg_match( '/^(\..*|index\.php)$/', $file_name ) && is_file( $cache_file ) ) {
+					if ( ! preg_match( '/^(\..*|index\.php)$/', $file_name ) && is_file( $file_path ) ) {
 
-						if ( @unlink( $cache_file ) ) {
+						$cache_files[] = $file_path;
 
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'removed the cache file ' . $cache_file );
-							}
-
-							$cleared_count++;
-
-						} else {
-
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'error removing cache file ' . $cache_file );
-							}
-
-							$error_pre = sprintf( '%s error:', __METHOD__ );
-
-							$error_msg = sprintf( __( 'Error removing cache file %s.', 'wpsso' ), $cache_file );
-
-							$this->p->notice->err( $error_msg );
-
-							SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
-						}
 					}
 				}
 
 				closedir( $dh );
 			}
 
-			return $cleared_count;
+			return $cache_files;
+		}
+
+		public function count_db_transients( $clear_short = false, $transient_prefix = '' ) {
+
+			$cache_ids = $this->get_db_transients_cache_ids( $clear_short, $transient_prefix );
+		
+			return count( $cache_ids );
 		}
 
 		public function clear_db_transients( $clear_short = false, $transient_prefix = '' ) {
 
-			if ( $this->p->debug->enabled ) {
+			$count = 0;
 
-				$this->p->debug->mark();
+			$cache_ids = $this->get_db_transients_cache_ids( $clear_short, $transient_prefix );
+
+			foreach ( $cache_ids as $cache_id ) {
+
+				if ( delete_transient( $cache_id ) ) {
+
+					$count++;
+				}
 			}
 
-			$cleared_count = 0;
+			return $count;
+		}
+
+		public function get_db_transients_cache_ids( $clear_short = false, $transient_prefix = '' ) {
+
+			$cache_ids = array();
 
 			$transient_keys = SucomUtilWP::get_db_transient_keys( $only_expired = false, $transient_prefix );
 
-			foreach( $transient_keys as $cache_id ) {
+			foreach ( $transient_keys as $cache_id ) {
 
-				if ( 0 === strpos( $transient_prefix, $this->p->id ) ) {
+				if ( 0 === strpos( $transient_prefix, 'wpsso_' ) ) {
 
 					/**
 					 * Preserve transients that begin with "wpsso_!_".
@@ -284,18 +315,15 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 					/**
 					 * Maybe delete shortened URLs.
 					 */
-					if ( ! $clear_short ) {							// If not clearing short URLs.
+					if ( ! $clear_short ) {					// If not clearing short URLs.
 
 						if ( 0 === strpos( $cache_id, 'wpsso_s_' ) ) {	// This is a shortened URL.
 
-							continue;						// Get the next transient.
+							continue;				// Get the next transient.
 						}
 					}
 				}
 
-				/**
-				 * Maybe only clear a specific transient ID prefix.
-				 */
 				if ( $transient_prefix ) {					// We're only clearing a specific prefix.
 
 					if ( 0 !== strpos( $cache_id, $transient_prefix ) ) {	// The cache ID does not match that prefix.
@@ -304,37 +332,34 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 					}
 				}
 
-				if ( delete_transient( $cache_id ) ) {
-
-					$cleared_count++;
-				}
+				$cache_ids[] = $cache_id;
 			}
 
-			return $cleared_count;
+			return $cache_ids;
 		}
 
 		public function clear_expired_db_transients() {
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			$cleared_count = 0;
+			$count = 0;
 
 			$transient_prefix = 'wpsso_';
 
 			$transient_keys = SucomUtilWP::get_db_transient_keys( $only_expired = true, $transient_prefix );
 
-			foreach( $transient_keys as $cache_id ) {
+			foreach ( $transient_keys as $cache_id ) {
 
 				if ( delete_transient( $cache_id ) ) {
 
-					$cleared_count++;
+					$count++;
 				}
 			}
 
-			return $cleared_count;
+			return $count;
+		}
+
+		public function count_ignored_urls() {
+
+			return $this->p->cache->count_ignored_urls();
 		}
 
 		public function clear_ignored_urls() {
@@ -344,12 +369,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 		public function clear_column_meta() {
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			$cleared_count = 0;
+			$count = 0;
 
 			$col_meta_keys = WpssoWpMeta::get_column_meta_keys();
 
@@ -363,7 +383,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			foreach ( $col_meta_keys as $col_key => $meta_key ) {
 
-				$cleared_count += SucomUtilWP::count_metadata( $meta_type = 'post', $meta_key );
+				$count += SucomUtilWP::count_metadata( $meta_type = 'post', $meta_key );
 
 				delete_metadata( $meta_type = 'post', $object_id = null, $meta_key, $meta_value = null, $delete_all = true );
 			}
@@ -382,7 +402,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 					if ( WpssoTerm::delete_term_meta( $term_id, $meta_key ) ) {
 
-						$cleared_count++;
+						$count++;
 					}
 				}
 			}
@@ -397,12 +417,12 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			foreach ( $col_meta_keys as $col_key => $meta_key ) {
 
-				$cleared_count += SucomUtilWP::count_metadata( $meta_type = 'user', $meta_key );
+				$count += SucomUtilWP::count_metadata( $meta_type = 'user', $meta_key );
 
 				delete_metadata( $meta_type = 'user', $object_id = null, $meta_key, $meta_value = null, $delete_all = true );
 			}
 
-			return $cleared_count;
+			return $count;
 		}
 
 		public function clear_other() {
@@ -593,11 +613,6 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 		public function refresh( $user_id = null, $read_cache = false ) {
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
 			$user_id    = $this->u->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
 			$notice_key = 'refresh-cache-status';
 
@@ -672,7 +687,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			foreach ( $total_count as $obj_name => &$count ) {
 
-				$obj_ids = call_user_func( array( $this->p->id . $obj_name, 'get_public_ids' ) );	// Call static method.
+				$obj_ids = call_user_func( array( 'wpsso' . $obj_name, 'get_public_ids' ) );	// Call static method.
 
 				foreach ( $obj_ids as $obj_id ) {
 
@@ -729,11 +744,6 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		 * This method is also called by WpssoUtil->get_request_url() for URLs with query arguments.
 		 */
 		public function expire_zero_filters( $disable_short = false ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
 
 			static $do_once = array();
 
