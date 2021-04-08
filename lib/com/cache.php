@@ -35,7 +35,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		private $ignored_urls   = array(	// Saved on wp shutdown action.
 			'transient_expires' => DAY_IN_SECONDS,
 			'transient_loaded'  => false,
-			'ignore_secs'       => 1800,	// 30 mins.
+			'ignore_secs'       => 300,	// 5 mins.
 			'ignore_urls'       => array(),
 		);
 
