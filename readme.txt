@@ -10,7 +10,7 @@ Tags: woocommerce, structured data, seo, schema, open graph, facebook, linkedin,
 Contributors: jsmoriss
 Requires PHP: 7.0
 Requires At Least: 4.5
-Tested Up To: 5.7
+Tested Up To: 5.7.1
 WC Tested Up To: 5.1.0
 Stable Tag: 8.26.1
 
