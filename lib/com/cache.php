@@ -105,6 +105,11 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			$this->base_url = trailingslashit( constant( $this->plugin_idu . '_CACHE_URL' ) );
 		}
 
+		public function set_ignored_urls_secs( $secs ) {
+
+			$this->ignored_urls[ 'ignore_secs' ] = (int) $secs;
+		}
+
 		public function maybe_load_ignored_urls() {
 
 			if ( ! $this->ignored_urls[ 'transient_loaded' ] ) {
@@ -114,9 +119,13 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				$cache_id      = $cache_md5_pre . md5( $cache_salt );
 				$cache_ret     = get_transient( $cache_id );
 
-				if ( false !== $cache_ret ) {
+				/**
+				 * Retrieve the list of ignored URLs cached, while keeping the existing 'transient_expires' and
+				 * 'ignore_secs' array values.
+				 */
+				if ( isset( $cache_ret[ 'ignore_urls' ] ) ) {
 
-					$this->ignored_urls = $cache_ret;
+					$this->ignored_urls = $cache_ret[ 'ignore_urls' ];
 				}
 
 				$this->ignored_urls[ 'transient_loaded' ] = true;
@@ -258,20 +267,6 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			}
 		}
 
-		public function clear_ignored_url( $url_nofrag ) {
-
-			$this->maybe_load_ignored_urls();
-
-			if ( isset( $this->ignored_urls[ 'ignore_urls' ][ $url_nofrag ] ) ) {
-
-				unset( $this->ignored_urls[ 'ignore_urls' ][ $url_nofrag ] );
-
-				return true;
-			}
-
-			return false;
-		}
-
 		/**
 		 * Clear all ignored URLs.
 		 */
@@ -284,6 +279,20 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			$this->ignored_urls[ 'ignore_urls' ] = array();
 
 			return $cleared;
+		}
+
+		public function clear_ignored_url( $url_nofrag ) {
+
+			$this->maybe_load_ignored_urls();
+
+			if ( isset( $this->ignored_urls[ 'ignore_urls' ][ $url_nofrag ] ) ) {
+
+				unset( $this->ignored_urls[ 'ignore_urls' ][ $url_nofrag ] );
+
+				return true;
+			}
+
+			return false;
 		}
 
 		public function clear( $url, $cache_ext = '' ) {
