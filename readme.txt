@@ -312,12 +312,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.26.2-dev.1 (TBD)**
+**Version 8.26.2-dev.1 (2021/04/08)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added a new SSO &gt; Tools and Actions &gt; Clear Temporarily Ignored URLs button.
 * **Bugfixes**
 	* Fixed the default size values included in help text for the Pinterest Pin It image size option.
 * **Developer Notes**
@@ -1143,7 +1143,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 = 8.26.2-dev.1 =
 
-(TBD) Fixed the default size values included in help text for the Pinterest Pin It image size option.
+(2021/04/08) Added a new SSO &gt; Tools and Actions &gt; Clear Temporarily Ignored URLs button.
 
 = 8.26.1 =
 
