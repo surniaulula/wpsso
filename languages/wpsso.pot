@@ -599,7 +599,7 @@ msgid ""
 msgstr ""
 
 #: gettext/gettext-lib-com.php:20 gettext/gettext-lib-com.php:22
-#: lib/com/cache.php:475 lib/com/cache.php:645 lib/util-cache.php:224
+#: lib/com/cache.php:475 lib/com/cache.php:645 lib/util-cache.php:217
 msgid "Error removing cache file %s."
 msgstr ""
 
@@ -3938,7 +3938,7 @@ msgctxt "plugin action link"
 msgid "Community Forum"
 msgstr ""
 
-#: lib/admin.php:1012 lib/submenu/tools.php:112
+#: lib/admin.php:1012 lib/submenu/tools.php:111
 msgctxt "submit button"
 msgid "Clear All Caches"
 msgstr ""
@@ -4067,7 +4067,7 @@ msgctxt "submit button"
 msgid "Get %s"
 msgstr ""
 
-#: lib/admin.php:1659 lib/submenu/tools.php:147
+#: lib/admin.php:1659 lib/submenu/tools.php:146
 msgctxt "submit button"
 msgid "Change to \"%s\" View"
 msgstr ""
@@ -8789,62 +8789,62 @@ msgid ""
 "contributors."
 msgstr ""
 
-#: lib/submenu/tools.php:113
+#: lib/submenu/tools.php:112
 msgctxt "submit button"
-msgid "Clear All Caches + Short URLs"
+msgid "Clear All Caches and Short URLs"
 msgstr ""
 
-#: lib/submenu/tools.php:114
+#: lib/submenu/tools.php:113
 msgctxt "submit button"
 msgid "Clear %s Cached Files"
 msgstr ""
 
-#: lib/submenu/tools.php:115
-msgctxt "submit button"
-msgid "Clear %s Database Transients"
-msgstr ""
-
-#: lib/submenu/tools.php:116
+#: lib/submenu/tools.php:114
 msgctxt "submit button"
 msgid "Clear %s Temporarily Ignored URLs"
 msgstr ""
 
-#: lib/submenu/tools.php:117
+#: lib/submenu/tools.php:115
+msgctxt "submit button"
+msgid "Clear All Database Transients"
+msgstr ""
+
+#: lib/submenu/tools.php:116
 msgctxt "submit button"
 msgid "Refresh Transient Cache"
 msgstr ""
 
-#: lib/submenu/tools.php:130
+#: lib/submenu/tools.php:129
 msgctxt "submit button"
 msgid "Export Plugin and Add-on Settings"
 msgstr ""
 
-#: lib/submenu/tools.php:131
+#: lib/submenu/tools.php:130
 msgctxt "submit button"
 msgid "Import Plugin and Add-on Settings"
 msgstr ""
 
-#: lib/submenu/tools.php:136
+#: lib/submenu/tools.php:135
 msgctxt "submit button"
 msgid "Add %s Role to Content Creators"
 msgstr ""
 
-#: lib/submenu/tools.php:137
+#: lib/submenu/tools.php:136
 msgctxt "submit button"
 msgid "Remove %s Role from All Users"
 msgstr ""
 
-#: lib/submenu/tools.php:138
+#: lib/submenu/tools.php:137
 msgctxt "submit button"
 msgid "Reload Default Image Sizes"
 msgstr ""
 
-#: lib/submenu/tools.php:195
+#: lib/submenu/tools.php:194
 msgctxt "submit button"
 msgid "Reset Dismissed Notices"
 msgstr ""
 
-#: lib/submenu/tools.php:196
+#: lib/submenu/tools.php:195
 msgctxt "submit button"
 msgid "Reset Metabox Layout"
 msgstr ""

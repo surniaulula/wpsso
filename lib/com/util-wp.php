@@ -40,7 +40,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			return false;
 		}
 
-		public static function get_db_transient_keys( $only_expired = false, $transient_prefix = '' ) {
+		public static function get_db_transient_keys( $only_expired = false, $key_prefix = '' ) {
 
 			global $wpdb;
 
@@ -50,7 +50,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			$db_query = 'SELECT option_name';
 			$db_query .= ' FROM ' . $wpdb->options;
-			$db_query .= ' WHERE option_name LIKE \'' . $opt_row_prefix . $transient_prefix . '%\'';
+			$db_query .= ' WHERE option_name LIKE \'' . $opt_row_prefix . $key_prefix . '%\'';
 
 			if ( $only_expired ) {
 
@@ -72,14 +72,14 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $transient_keys;
 		}
 
-		public static function get_db_transient_size_mb( $decimals = 2, $dec_point = '.', $thousands_sep = ',', $transient_prefix = '' ) {
+		public static function get_db_transient_size_mb( $decimals = 2, $dec_point = '.', $thousands_sep = ',', $key_prefix = '' ) {
 
 			global $wpdb;
 
 			$db_query = 'SELECT CHAR_LENGTH( option_value ) / 1024 / 1024';
 			$db_query .= ', CHAR_LENGTH( option_value )';
 			$db_query .= ' FROM ' . $wpdb->options;
-			$db_query .= ' WHERE option_name LIKE \'_transient_' . $transient_prefix . '%\'';
+			$db_query .= ' WHERE option_name LIKE \'_transient_' . $key_prefix . '%\'';
 			$db_query .= ';';	// End of query.
 
 			$result = $wpdb->get_col( $db_query );

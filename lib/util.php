@@ -1293,9 +1293,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		/**
 		 * Deprecated on 2020/05/05.
 		 */
-		public function delete_all_db_transients( $clear_short = false, $transient_prefix = '' ) {
+		public function delete_all_db_transients( $clear_short = false, $key_prefix = '' ) {
 
-			return $this->cache->clear_db_transients( $clear_short, $transient_prefix = '' );
+			return $this->cache->clear_db_transients( $clear_short, $key_prefix = '' );
 		}
 
 		/**

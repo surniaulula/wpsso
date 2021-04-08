@@ -1159,7 +1159,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						case 'clear_db_transients':
 
-							$cleared_count = $this->p->util->cache->clear_db_transients( $clear_short = true, $transient_prefix = '' );
+							$cleared_count = $this->p->util->cache->clear_db_transients( $clear_short = true, $key_prefix = '' );
 
 							$notice_msg = sprintf( __( '%s database transients have been cleared.', 'wpsso' ), $cleared_count );
 
