@@ -3989,8 +3989,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				/**
 				 * Apply filters to have add-ons include their config.
 				 *
-				 * $plugin_version was added in WPSSO Core v3.33.6.
-				 * $plugin_version was removed in WPSSO Core v8.7.1.
+				 * $plugin_version was added in WPSSO Core v3.33.6 and removed in v8.7.1.
 				 */
 				self::$cf = apply_filters( 'wpsso_get_config', self::$cf );
 

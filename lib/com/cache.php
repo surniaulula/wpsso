@@ -371,7 +371,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						$previous_error_handler = set_error_handler( $error_handler );
 					}
 
-					$image_size = getimagesize( $file_path );	// WebP supported since PHP v7.1.
+					$image_size = getimagesize( $file_path );	// Note that WebP is only supported since PHP v7.1.
 
 					if ( null !== $error_handler ) {
 

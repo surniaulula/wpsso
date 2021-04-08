@@ -1762,6 +1762,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				/**
 				 * Empty string or a URL.
+				 *
+				 * Note that WebP is only supported since PHP v7.1.
 				 */
 				case 'img_url':
 
