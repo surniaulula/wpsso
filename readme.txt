@@ -312,7 +312,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.26.2-dev.2 (2021/04/08)**
+**Version 8.26.2-b.1 (2021/04/09)**
 
 * **New Features**
 	* None.
@@ -1141,9 +1141,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.26.2-dev.2 =
+= 8.26.2-b.1 =
 
-(2021/04/08) Added a new SSO &gt; Tools and Actions &gt; Clear Temporarily Ignored URLs button.
+(2021/04/09) Added a new SSO &gt; Tools and Actions &gt; Clear Temporarily Ignored URLs button.
 
 = 8.26.1 =
 
