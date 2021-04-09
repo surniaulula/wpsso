@@ -324,9 +324,9 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 						$json_info        = $this->p->cf[ 'plugin' ][ 'wpssojson' ];
 						$json_name_transl = _x( $json_info[ 'name' ], 'plugin name', 'wpsso' );
 
-						$notice_msg = __( 'The WooCommerce plugin is known to offer incomplete Schema markup for Google Rich Results.', 'wpsso' ) . ' ';
+						$notice_msg = __( 'Note that WooCommerce offers incomplete Schema markup for Google Rich Results by default.', 'wpsso' ) . ' ';
 
-						$notice_msg .= sprintf( __( 'The %1$s plugin (required for WooCommerce integration) and its %2$s add-on provide a much better solution by offering complete product meta tags for Facebook / Pinterest, and complete Schema product markup for Google Rich Results &mdash; including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'name_pro' ], $json_name_transl ) . ' ';
+						$notice_msg .= sprintf( __( 'The %1$s plugin and its %2$s add-on provide a solution by offering complete product meta tags for Facebook / Pinterest and complete Schema product markup for Google Rich Results &mdash; including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'name_pro' ], $json_name_transl ) . ' ';
 
 						$notice_msg .= '<ul><li>' . implode( $glue = '</li> <li>', $action_links ) . '</li></ul>' . ' ';
 
