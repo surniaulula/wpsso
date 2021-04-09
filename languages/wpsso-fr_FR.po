@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 8.26.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-04-08 16:10-0700\n"
+"PO-Revision-Date: 2021-04-08 17:35-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -374,7 +374,7 @@ msgid "Additional requests to retrieve and cache this URL will be ignored for an
 msgstr "Les demandes supplémentaires de récupération et de mise en cache de cette URL seront ignorées pour un autre %d seconde(s)."
 
 #: gettext/gettext-lib-com.php:20 gettext/gettext-lib-com.php:22
-#: lib/com/cache.php:475 lib/com/cache.php:645 lib/util-cache.php:224
+#: lib/com/cache.php:475 lib/com/cache.php:645 lib/util-cache.php:217
 msgid "Error removing cache file %s."
 msgstr "Erreur de suppression du fichier cache %s."
 
@@ -3590,7 +3590,7 @@ msgctxt "plugin action link"
 msgid "Community Forum"
 msgstr "Forum communautaire"
 
-#: lib/admin.php:1012 lib/submenu/tools.php:112
+#: lib/admin.php:1012 lib/submenu/tools.php:111
 msgctxt "submit button"
 msgid "Clear All Caches"
 msgstr "Vider tout les caches"
@@ -3707,7 +3707,7 @@ msgctxt "submit button"
 msgid "Get %s"
 msgstr "Obtenir %s"
 
-#: lib/admin.php:1659 lib/submenu/tools.php:147
+#: lib/admin.php:1659 lib/submenu/tools.php:146
 msgctxt "submit button"
 msgid "Change to \"%s\" View"
 msgstr "Passer l'affichage \"%s\""
@@ -7623,62 +7623,62 @@ msgstr "Les membres du rôle %s peuvent être sélectionnés pour certaines prop
 msgid "\"Content Creators\" are all administrators, editors, authors, and contributors."
 msgstr "Les «créateurs de contenu» sont tous les administrateurs, éditeurs, auteurs et contributeurs."
 
-#: lib/submenu/tools.php:113
+#: lib/submenu/tools.php:112
 msgctxt "submit button"
-msgid "Clear All Caches + Short URLs"
-msgstr "Vider tout les caches + URLs raccourcies"
+msgid "Clear All Caches and Short URLs"
+msgstr "Vider tout les caches et URLs raccourcies"
 
-#: lib/submenu/tools.php:114
+#: lib/submenu/tools.php:113
 msgctxt "submit button"
 msgid "Clear %s Cached Files"
 msgstr "Supprimer %s fichiers en cache"
 
-#: lib/submenu/tools.php:115
-msgctxt "submit button"
-msgid "Clear %s Database Transients"
-msgstr "Supprimer %s objets transitoires de la BdD"
-
-#: lib/submenu/tools.php:116
+#: lib/submenu/tools.php:114
 msgctxt "submit button"
 msgid "Clear %s Temporarily Ignored URLs"
 msgstr "Supprimer %s URL temporairement ignorées"
 
-#: lib/submenu/tools.php:117
+#: lib/submenu/tools.php:115
+msgctxt "submit button"
+msgid "Clear All Database Transients"
+msgstr "Supprimer les objets transitoires de la BdD"
+
+#: lib/submenu/tools.php:116
 msgctxt "submit button"
 msgid "Refresh Transient Cache"
 msgstr "Actualiser le cache transitoire"
 
-#: lib/submenu/tools.php:130
+#: lib/submenu/tools.php:129
 msgctxt "submit button"
 msgid "Export Plugin and Add-on Settings"
 msgstr "Exporter réglages d'extension et ajouts"
 
-#: lib/submenu/tools.php:131
+#: lib/submenu/tools.php:130
 msgctxt "submit button"
 msgid "Import Plugin and Add-on Settings"
 msgstr "Importer réglages d'extension et ajouts"
 
-#: lib/submenu/tools.php:136
+#: lib/submenu/tools.php:135
 msgctxt "submit button"
 msgid "Add %s Role to Content Creators"
 msgstr "Ajouter le rôle %s aux créateurs de contenu"
 
-#: lib/submenu/tools.php:137
+#: lib/submenu/tools.php:136
 msgctxt "submit button"
 msgid "Remove %s Role from All Users"
 msgstr "Supprimer le rôle %s des utilisateurs"
 
-#: lib/submenu/tools.php:138
+#: lib/submenu/tools.php:137
 msgctxt "submit button"
 msgid "Reload Default Image Sizes"
 msgstr "Recharger les tailles d'images par défaut"
 
-#: lib/submenu/tools.php:195
+#: lib/submenu/tools.php:194
 msgctxt "submit button"
 msgid "Reset Dismissed Notices"
 msgstr "Réinitialiser les avis masquées"
 
-#: lib/submenu/tools.php:196
+#: lib/submenu/tools.php:195
 msgctxt "submit button"
 msgid "Reset Metabox Layout"
 msgstr "Réinitialiser la disposition des métabox"

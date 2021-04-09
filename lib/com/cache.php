@@ -105,11 +105,6 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			$this->base_url = trailingslashit( constant( $this->plugin_idu . '_CACHE_URL' ) );
 		}
 
-		public function set_ignored_urls_secs( $secs ) {
-
-			$this->ignored_urls[ 'ignore_secs' ] = (int) $secs;
-		}
-
 		public function maybe_load_ignored_urls() {
 
 			if ( ! $this->ignored_urls[ 'transient_loaded' ] ) {
@@ -142,6 +137,11 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 				set_transient( $cache_id, $this->ignored_urls, $this->ignored_urls[ 'transient_expires' ] );
 			}
+		}
+
+		public function set_ignored_urls_secs( $secs ) {
+
+			$this->ignored_urls[ 'ignore_secs' ] = (int) $secs;
 		}
 
 		public function count_ignored_urls() {
