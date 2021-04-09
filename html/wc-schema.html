@@ -44,7 +44,7 @@
 	<li><strong>Missing field "deliveryTime".</strong></li>
 </ul>
 
-<p>The <em>aggregateRating</em> warning from WooCommerce's Schema markup can be addressed by having your customers leave one or more reviews for each of your products. Unfortunately, products without any reviews will not have an <em>aggregateRating</em> value (see bellow for a solution). If your product has several reviews, WooCommerce will only include the <strong>last review</strong> in the Schema Product markup, which may not reflect the total <em>aggregateRating</em> values (see bellow for a solution). All product reviews (ie. have a rating value) and comments (ie. no rating value) are combined by WooCommerce into a separate, disconnected Schema JSON-LD block for reviews, no matter if a review or comment has a rating value or not (see bellow for a solution). The following values should be included in the Schema markup when available, but WooCommerce cannot manage this information without using several 3rd party plugins and coding complex filters for its default Schema markup (see bellow for a solution).</p>
+<p>The <em>aggregateRating</em> warning from WooCommerce's Schema markup can be addressed by having your customers leave one or more reviews for each of your products. Unfortunately, products without any reviews will not have an <em>aggregateRating</em> value (see bellow for a solution). If your product has several reviews, WooCommerce will only include the <strong>last review</strong> in the Schema Product markup, which may not reflect the total <em>aggregateRating</em> values (see bellow for a solution). All product reviews (ie. have a rating value) and comments (ie. no rating value) are combined by WooCommerce into a separate, disconnected Schema JSON-LD block for reviews, no matter if a review or comment has a rating value or not (see bellow for a solution). The following values should also be included in the Schema markup when available, but WooCommerce cannot manage this information without using several 3rd party plugins and coding complex filters for its default Schema markup (see bellow for a solution).</p>
 
 <ul>
 	<li><strong>Brand</strong></li>
@@ -58,7 +58,7 @@
 
 <p>Although Google does not warn about the lack of a <em>mainEntity</em> or <em>mainEntityOfPage</em> value in the default Schema markup from WooCommerce, <u>this property should be included so Google can recognize the Schema Product markup as the main subject of the webpage</u>.</p>
 
-<h3>WPSSO - The Best Solution for Better Schema</h3>
+<h3>WPSSO: A Solution for Better Schema Markup</h3>
 
 <div class="wp-block-image">
 	<figure class="alignright">
