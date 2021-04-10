@@ -1137,7 +1137,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							break;
 
-						case 'clear_cache_and_short_urls':
+						case 'clear_cache_short_urls':
 
 							$this->p->util->cache->schedule_clear( $user_id, $clear_other = true, $clear_short = true );
 
@@ -1171,7 +1171,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							$cleared_count = $this->p->util->cache->clear_ignored_urls();
 
-							$notice_msg = sprintf( __( '%s temporarily ignored URLs have been cleared.', 'wpsso' ), $cleared_count );
+							$notice_msg = sprintf( __( '%s failed URL connections have been cleared.', 'wpsso' ), $cleared_count );
 
 							$this->p->notice->upd( $notice_msg, $user_id );
 

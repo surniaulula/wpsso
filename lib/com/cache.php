@@ -27,16 +27,16 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		public $default_file_cache_exp   = DAY_IN_SECONDS;
 		public $default_object_cache_exp = DAY_IN_SECONDS;
 
-		public $curl_connect_timeout     = 10;	// The number of seconds to wait while trying to connect. Use 0 to wait indefinitely.
-		public $curl_timeout             = 15;	// The maximum number of seconds to allow cURL functions to execute. 
-		public $curl_max_redirs          = 10;	// The maximum amount of HTTP redirections to follow.
+		public $curl_connect_timeout = 10;	// The number of seconds to wait while trying to connect. Use 0 to wait indefinitely.
+		public $curl_timeout         = 15;	// The maximum number of seconds to allow cURL functions to execute. 
+		public $curl_max_redirs      = 10;	// The maximum amount of HTTP redirections to follow.
 
 		private $url_get_mtimes = array();
-		private $ignored_urls   = array(	// Saved on wp shutdown action.
-			'transient_expires' => DAY_IN_SECONDS,
-			'transient_loaded'  => false,
-			'ignore_secs'       => 600,	// 10 mins.
-			'ignore_urls'       => array(),
+		private $ignored        = array(
+			'expires'  => DAY_IN_SECONDS,
+			'loaded'   => false,
+			'for_secs' => 600,		// Ignore failed URLs for 10 mins by default.
+			'urls'     => array(),
 		);
 
 		public function __construct( $plugin = null, $plugin_id = null, $text_domain = null, $label_transl = null ) {
@@ -105,50 +105,66 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			$this->base_url = trailingslashit( constant( $this->plugin_idu . '_CACHE_URL' ) );
 		}
 
+		/**
+		 * This method is only run on an as-needed basis.
+		 */
 		public function maybe_load_ignored_urls() {
 
-			if ( ! $this->ignored_urls[ 'transient_loaded' ] ) {
+			if ( $this->ignored[ 'loaded' ] ) {
 
-				$cache_md5_pre = $this->plugin_id . '_';
-				$cache_salt    = __CLASS__ . '::ignored_urls';
-				$cache_id      = $cache_md5_pre . md5( $cache_salt );
-				$cache_ret     = get_transient( $cache_id );
-
-				/**
-				 * Retrieve the list of ignored URLs cached, while keeping the existing 'transient_expires' and
-				 * 'ignore_secs' array values.
-				 */
-				if ( isset( $cache_ret[ 'ignore_urls' ] ) ) {
-
-					$this->ignored_urls[ 'ignore_urls' ] = $cache_ret[ 'ignore_urls' ];
-				}
-
-				$this->ignored_urls[ 'transient_loaded' ] = true;
+				return;
 			}
+
+			$cache_md5_pre = $this->plugin_id . '_';
+			$cache_salt    = __CLASS__ . '::ignored_urls';
+			$cache_id      = $cache_md5_pre . md5( $cache_salt );
+			$cache_ret     = get_transient( $cache_id );
+
+			/**
+			 * Retrieve the list of ignored URLs cached, while keeping the existing 'expires' and 'for_secs' array values.
+			 */
+			if ( isset( $cache_ret[ 'urls' ] ) ) {
+
+				$this->ignored[ 'urls' ] = $cache_ret[ 'urls' ];
+
+				$this->ignored[ 'saved_urls' ] = $cache_ret[ 'urls' ];
+
+			} else {
+
+				$this->ignored[ 'saved_urls' ] = array();
+			}
+		
+			$this->ignored[ 'for_secs' ] = (int) apply_filters( 'sucom_cache_ignored_for_secs', $this->ignored[ 'for_secs' ] );
+
+			$this->ignored[ 'loaded' ] = true;
 		}
 
 		public function save_ignored_urls() {
 
-			if ( $this->ignored_urls[ 'transient_loaded' ] ) {
+			/**
+			 * 'loaded' will be true is any ignored URL method has been run.
+			 */
+			if ( $this->ignored[ 'loaded' ] ) {
 
-				$cache_md5_pre = $this->plugin_id . '_';
-				$cache_salt    = __CLASS__ . '::ignored_urls';
-				$cache_id      = $cache_md5_pre . md5( $cache_salt );
+				/**
+				 * Only save ignored URLs if the current URL array is different to the saved URL array.
+				 */
+				if ( $this->ignored[ 'urls' ] !== $this->ignored[ 'saved_urls' ] ) {
 
-				set_transient( $cache_id, $this->ignored_urls, $this->ignored_urls[ 'transient_expires' ] );
+					$cache_md5_pre = $this->plugin_id . '_';
+					$cache_salt    = __CLASS__ . '::ignored_urls';
+					$cache_id      = $cache_md5_pre . md5( $cache_salt );
+
+					set_transient( $cache_id, $this->ignored, $this->ignored[ 'expires' ] );
+				}
 			}
-		}
-
-		public function set_ignored_urls_secs( $secs ) {
-
-			$this->ignored_urls[ 'ignore_secs' ] = (int) $secs;
 		}
 
 		public function count_ignored_urls() {
 
 			$this->maybe_load_ignored_urls();
 
-			return count( $this->ignored_urls[ 'ignore_urls' ] );
+			return count( $this->ignored[ 'urls' ] );
 		}
 
 		/**
@@ -158,24 +174,24 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			$this->maybe_load_ignored_urls();
 
-			if ( isset( $this->ignored_urls[ 'ignore_urls' ][ $url_nofrag ] ) ) {
+			if ( isset( $this->ignored[ 'urls' ][ $url_nofrag ] ) ) {
 
-				$time_diff = time() - $this->ignored_urls[ 'ignore_urls' ][ $url_nofrag ];
+				$time_diff = time() - $this->ignored[ 'urls' ][ $url_nofrag ];
 
-				$time_left = $this->ignored_urls[ 'ignore_secs' ] - $time_diff;
+				$time_left = $this->ignored[ 'for_secs' ] - $time_diff;
 
 				if ( $time_left > 0 ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'requests to retrieve and cache ' . $url_nofrag . ' ignored for another ' . $time_left . ' second(s)' );
+						$this->p->debug->log( 'requests to retrieve ' . $url_nofrag . ' ignored for another ' . $time_left . ' second(s)' );
 					}
 
 					return $time_left;
 
 				}
 
-				unset( $this->ignored_urls[ 'ignore_urls' ][ $url_nofrag ] );
+				unset( $this->ignored[ 'urls' ][ $url_nofrag ] );
 			}
 
 			return false;
@@ -185,7 +201,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			$this->maybe_load_ignored_urls();
 
-			$this->ignored_urls[ 'ignore_urls' ][ $url_nofrag ] = time();
+			$this->ignored[ 'urls' ][ $url_nofrag ] = time();
 
 			if ( is_admin() ) {
 
@@ -259,8 +275,8 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					}
 				}
 
-				$errors[] = sprintf( __( 'Additional requests to retrieve and cache this URL will be ignored for another %d second(s).',
-					$this->text_domain ), $this->ignored_urls[ 'ignore_secs' ] );
+				$errors[] = sprintf( __( 'Additional requests to retrieve this URL will be ignored for another %d second(s).',
+					$this->text_domain ), $this->ignored[ 'for_secs' ] );
 
 				/**
 				 * Combine all strings into one error notice.
@@ -270,7 +286,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'ignoring requests to retrieve and cache ' . $url_nofrag );
+				$this->p->debug->log( 'ignoring requests to retrieve ' . $url_nofrag );
 			}
 		}
 
@@ -281,20 +297,20 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			$this->maybe_load_ignored_urls();
 
-			$cleared = count( $this->ignored_urls[ 'ignore_urls' ] );
+			$count = count( $this->ignored[ 'urls' ] );
 
-			$this->ignored_urls[ 'ignore_urls' ] = array();
+			$this->ignored[ 'urls' ] = array();	// Clear the ignored URLs.
 
-			return $cleared;
+			return $count;
 		}
 
 		public function clear_ignored_url( $url_nofrag ) {
 
 			$this->maybe_load_ignored_urls();
 
-			if ( isset( $this->ignored_urls[ 'ignore_urls' ][ $url_nofrag ] ) ) {
+			if ( isset( $this->ignored[ 'urls' ][ $url_nofrag ] ) ) {
 
-				unset( $this->ignored_urls[ 'ignore_urls' ][ $url_nofrag ] );
+				unset( $this->ignored[ 'urls' ][ $url_nofrag ] );
 
 				return true;
 			}

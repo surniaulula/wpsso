@@ -16,7 +16,7 @@ __( 'Please contact your hosting provider to have this setting disabled or insta
 __( 'The PHP "%s" setting is enabled &mdash; the PHP cURL library cannot follow URL redirects.', 'wpsso' );
 __( 'Please contact your hosting provider to have this setting disabled.', 'wpsso' );
 __( 'The maximum number of URL redirects (%d) may have been exceeded.', 'wpsso' );
-__( 'Additional requests to retrieve and cache this URL will be ignored for another %d second(s).', 'wpsso' );
+__( 'Additional requests to retrieve this URL will be ignored for another %d second(s).', 'wpsso' );
 __( 'Error removing cache file %s.', 'wpsso' );
 __( 'PHP cURL library missing &mdash; contact your hosting provider to have the cURL library installed.', 'wpsso' );
 __( 'Error removing cache file %s.', 'wpsso' );

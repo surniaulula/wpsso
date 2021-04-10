@@ -105,13 +105,13 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			/**
 			 * Row #0.
 			 */
-			$count_cache_files   = number_format_i18n( $this->p->util->cache->count_cache_files() );
-			$count_ignored_urls  = number_format_i18n( $this->p->util->cache->count_ignored_urls() );
+			$count_cache_files  = number_format_i18n( $this->p->util->cache->count_cache_files() );
+			$count_ignored_urls = number_format_i18n( $this->p->util->cache->count_ignored_urls() );
 
 			$clear_cache_label_transl         = _x( 'Clear All Caches', 'submit button', 'wpsso' );
 			$clear_short_label_transl         = _x( 'Clear All Caches and Short URLs', 'submit button', 'wpsso' );
 			$clear_cache_files_label_transl   = sprintf( _x( 'Clear %s Cached Files', 'submit button', 'wpsso' ), $count_cache_files );
-			$clear_ignored_urls_label_transl  = sprintf( _x( 'Clear %s Temporarily Ignored URLs', 'submit button', 'wpsso' ), $count_ignored_urls );
+			$clear_ignored_urls_label_transl  = sprintf( _x( 'Clear %s Failed URL Connections', 'submit button', 'wpsso' ), $count_ignored_urls );
 			$clear_db_transients_label_transl = _x( 'Clear All Database Transients', 'submit button', 'wpsso' );
 			$refresh_cache_label_transl       = _x( 'Refresh Transient Cache', 'submit button', 'wpsso' );
 
@@ -151,12 +151,12 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 				 * Row #0.
 				 */
 				array(
-					'clear_cache'                => $clear_cache_label_transl,
-					'clear_cache_and_short_urls' => null,
-					'clear_cache_files'          => $clear_cache_files_label_transl,
-					'clear_ignored_urls'         => $clear_ignored_urls_label_transl,
-					'clear_db_transients'        => null,
-					'refresh_cache'              => $refresh_cache_label_transl,
+					'clear_cache'            => $clear_cache_label_transl,
+					'clear_cache_short_urls' => null,
+					'clear_cache_files'      => $clear_cache_files_label_transl,
+					'clear_ignored_urls'     => $clear_ignored_urls_label_transl,
+					'clear_db_transients'    => null,
+					'refresh_cache'          => $refresh_cache_label_transl,
 				),
 
 				/**
@@ -210,7 +210,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					if ( empty( $this->p->options[ 'plugin_clear_short_urls' ] ) ) {
 
-						$form_button_rows[ 0 ][ 'clear_cache_and_short_urls' ] = $clear_short_label_transl;
+						$form_button_rows[ 0 ][ 'clear_cache_short_urls' ] = $clear_short_label_transl;
 					}
 				}
 			}
