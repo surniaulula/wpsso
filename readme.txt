@@ -314,7 +314,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.26.2-rc.1 (2021/04/11)**
+**Version 8.26.2-rc.2 (2021/04/11)**
 
 * **New Features**
 	* None.
@@ -323,7 +323,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed the default size values included in help text for the Pinterest Pin It image size option.
 * **Developer Notes**
-	* None.
+	* Refactored the `WpssoUtilCache->clear_cache_files()` method.
+	* Added a new `WpssoUtilCache->count_cache_files()` method.
+	* Added a new `WpssoUtilCache->get_cache_files()` method.
+	* Added a new `WpssoUtilCache->clear_ignored_urls()` method.
+	* Added a new `WpssoUtilCache->count_ignored_urls()` method.
+	* Added a new `SucomCache->clear_ignored_urls()` method.
+	* Added a new `SucomCache->count_ignored_urls()` method.
+	* Added a new `SucomCache->get_ignored_urls()` method.
 * **Requires At Least**
 	* PHP v7.0.
 	* WordPress v4.5.
@@ -1143,7 +1150,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.26.2-rc.1 =
+= 8.26.2-rc.2 =
 
 (2021/04/11) Added a new SSO &gt; Tools and Actions &gt; Clear Failed URL Connections button.
 
