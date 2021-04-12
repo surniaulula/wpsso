@@ -49,7 +49,7 @@ if ( ! function_exists( 'wpsso_error_handler' ) ) {
 /**
  * Deprecated on 2020/10/02.
  */
-if ( ! function_exists( 'wpsso_is_mobile' ) ) {
+if ( ! function_exists( 'wpsso_is_mobile' ) ) {	// Deprecated.
 
 	function wpsso_is_mobile() {
 
@@ -90,7 +90,7 @@ if ( ! function_exists( 'wpsso_show_head' ) ) {
 /**
  * Deprecated on 2020/05/05.
  */
-if ( ! function_exists( 'wpsso_clear_all_cache' ) ) {
+if ( ! function_exists( 'wpsso_clear_all_cache' ) ) {	// Deprecated.
 
 	function wpsso_clear_all_cache( $clear_other = false ) {
 

@@ -5,6 +5,10 @@ wpsso_clear_post_cache( $post_id );
 
 wpsso_get_canonical_url( $mod = false, $add_page = true );
 
+wpsso_get_mod_og_image( array $mod, $size_name = 'thumbnail' );
+
+wpsso_get_mod_og_image_url( array $mod, $size_name = 'thumbnail' );
+
 wpsso_get_page_mod( $use_post = false );
 
 wpsso_get_post_event_options( $post_id, $type_id = false );
