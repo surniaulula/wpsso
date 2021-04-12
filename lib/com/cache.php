@@ -108,7 +108,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		/**
 		 * This method is only run on an as-needed basis.
 		 */
-		public function maybe_load_ignored_urls() {
+		public function maybe_load_ignored() {
 
 			if ( $this->ignored[ 'loaded' ] ) {
 
@@ -142,7 +142,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		public function save_ignored_urls() {
 
 			/**
-			 * 'loaded' will be true is any ignored URL method has been run.
+			 * 'loaded' will be true if any ignored URL method has been run.
 			 */
 			if ( $this->ignored[ 'loaded' ] ) {
 
@@ -162,9 +162,14 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 		public function count_ignored_urls() {
 
-			$this->maybe_load_ignored_urls();
+			return count( $this->get_ignored_urls() );
+		}
 
-			return count( $this->ignored[ 'urls' ] );
+		public function get_ignored_urls() {
+
+			$this->maybe_load_ignored();
+
+			return $this->ignored[ 'urls' ];
 		}
 
 		/**
@@ -172,7 +177,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		 */
 		public function is_ignored_url( $url_nofrag ) {
 
-			$this->maybe_load_ignored_urls();
+			$this->maybe_load_ignored();
 
 			if ( isset( $this->ignored[ 'urls' ][ $url_nofrag ] ) ) {
 
@@ -199,7 +204,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 		public function add_ignored_url( $url_nofrag, $mtime_total = null, $curl_errnum = 0, $curl_errmsg = '', $ssl_verify = 0, $http_code = 0 ) {
 
-			$this->maybe_load_ignored_urls();
+			$this->maybe_load_ignored();
 
 			$this->ignored[ 'urls' ][ $url_nofrag ] = time();
 
@@ -292,10 +297,12 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 		/**
 		 * Clear all ignored URLs.
+		 *
+		 * Returns a count of cleared URLs.
 		 */
 		public function clear_ignored_urls() {
 
-			$this->maybe_load_ignored_urls();
+			$this->maybe_load_ignored();
 
 			$count = count( $this->ignored[ 'urls' ] );
 
@@ -304,9 +311,14 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			return $count;
 		}
 
+		/**
+		 * Clear a single ignored URL.
+		 *
+		 * Returns true if the URL was ignored and is now cleared.
+		 */
 		public function clear_ignored_url( $url_nofrag ) {
 
-			$this->maybe_load_ignored_urls();
+			$this->maybe_load_ignored();
 
 			if ( isset( $this->ignored[ 'urls' ][ $url_nofrag ] ) ) {
 
