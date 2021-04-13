@@ -314,7 +314,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.26.2-rc.2 (2021/04/11)**
+**Version 8.26.2 (2021/04/13)**
 
 * **New Features**
 	* None.
@@ -1150,9 +1150,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.26.2-rc.2 =
+= 8.26.2 =
 
-(2021/04/11) Added a new SSO &gt; Tools and Actions &gt; Clear Failed URL Connections button.
+(2021/04/13) Added a new SSO &gt; Tools and Actions &gt; Clear Failed URL Connections button.
 
 = 8.26.1 =
 
