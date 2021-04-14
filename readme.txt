@@ -314,6 +314,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.26.3-dev.1 (2021/04/14)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added debug messages to the WpssoPost, WpssoTerm, and WpssoUser `add_meta_boxes()` method.
+* **Requires At Least**
+	* PHP v7.0.
+	* WordPress v4.5.
+
 **Version 8.26.2 (2021/04/13)**
 
 * **New Features**
@@ -1149,6 +1163,10 @@ This release adds a new SSO &gt; Features Status page and integration module for
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.26.3-dev.1 =
+
+(2021/04/14) Added debug messages to the WpssoPost, WpssoTerm, and WpssoUser `add_meta_boxes()` method.
 
 = 8.26.2 =
 
