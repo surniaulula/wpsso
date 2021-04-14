@@ -1338,7 +1338,17 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		public function add_meta_boxes() {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			if ( false === ( $post_obj = SucomUtil::get_post_object( true ) ) || empty( $post_obj->post_type ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: invalid post object or empty post type' );
+				}
 
 				return;
 			}
@@ -1347,10 +1357,20 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( ( 'page' === $post_obj->post_type && ! current_user_can( 'edit_page', $post_id ) ) || ! current_user_can( 'edit_post', $post_id ) ) {
 
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: user cannot edit page/post id ' . $post_id );
+				}
+
 				return;
 			}
 
 			if ( empty( $this->p->options[ 'plugin_add_to_' . $post_obj->post_type ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: cannot add metabox to post type "' . $post_obj->post_type . '"' );
+				}
 
 				return;
 			}
@@ -1363,6 +1383,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$callback_args   = array(	// Second argument passed to the callback function / method.
 				'__block_editor_compatible_meta_box' => true,
 			);
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'adding metabox id wpsso_' . $metabox_id );
+			}
 
 			add_meta_box( 'wpsso_' . $metabox_id, $metabox_title,
 				array( $this, 'show_metabox_document_meta' ), $metabox_screen,

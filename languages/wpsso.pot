@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.26.2\n"
+"Project-Id-Version: WPSSO Core 8.26.3-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4003,7 +4003,7 @@ msgstr ""
 
 #: lib/admin.php:1196 lib/admin.php:1207 lib/messages.php:971
 #: lib/submenu/tools.php:58 lib/submenu/tools.php:103 lib/user.php:57
-#: lib/user.php:1517 lib/user.php:1625 lib/user.php:1756
+#: lib/user.php:1537 lib/user.php:1645 lib/user.php:1776
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -8099,7 +8099,7 @@ msgid ""
 "post ID %3$d (%4$s)."
 msgstr ""
 
-#: lib/post.php:814 lib/post.php:1433 lib/schema.php:3225 lib/term.php:627
+#: lib/post.php:814 lib/post.php:1458 lib/schema.php:3225 lib/term.php:627
 #: lib/user.php:624
 msgid "checking meta tags"
 msgstr ""
@@ -8225,11 +8225,11 @@ msgstr ""
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1486
+#: lib/post.php:1511
 msgid "Save a draft or publish to display these options."
 msgstr ""
 
-#: lib/post.php:1679
+#: lib/post.php:1704
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -8860,7 +8860,7 @@ msgid ""
 "term ID %3$d in taxonomy %4$s (%5$s)."
 msgstr ""
 
-#: lib/term.php:874
+#: lib/term.php:894
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -8911,56 +8911,56 @@ msgid ""
 "authored by user ID %3$d (%4$s)."
 msgstr ""
 
-#: lib/user.php:884
+#: lib/user.php:904
 msgid "(not a Facebook Pages URL)"
 msgstr ""
 
-#: lib/user.php:970
+#: lib/user.php:990
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:971
+#: lib/user.php:991
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:972
+#: lib/user.php:992
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1312
+#: lib/user.php:1332
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/user.php:1536
+#: lib/user.php:1556
 msgid ""
 "Aborting task to add the %1$s role to content creators - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1551
+#: lib/user.php:1571
 msgid "A task to add the %1$s role for content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1593
+#: lib/user.php:1613
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1595 lib/user.php:1698 lib/util-cache.php:172
+#: lib/user.php:1615 lib/user.php:1718 lib/util-cache.php:172
 #: lib/util-cache.php:719
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
-#: lib/user.php:1644
+#: lib/user.php:1664
 msgid ""
 "Aborting task to remove the %1$s role from all users - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1659
+#: lib/user.php:1679
 msgid "A task to remove the %1$s role from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1696
+#: lib/user.php:1716
 msgid "The %1$s role has been removed from %2$d content creators."
 msgstr ""
 

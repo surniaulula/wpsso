@@ -688,14 +688,29 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public function add_meta_boxes() {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			$user_id = SucomUtil::get_user_object( false, 'id' );
 
 			if ( ! current_user_can( 'edit_user', $user_id ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: user cannot edit user id ' . $user_id );
+				}
 
 				return;
 			}
 
 			if ( empty( $this->p->options[ 'plugin_add_to_user_page' ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: cannot add metabox to user page' );
+				}
 
 				return;
 			}
@@ -708,6 +723,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$callback_args   = array(	// Second argument passed to the callback.
 				'__block_editor_compatible_meta_box' => true,
 			);
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'adding metabox id wpsso_' . $metabox_id );
+			}
 
 			add_meta_box( 'wpsso_' . $metabox_id, $metabox_title,
 				array( $this, 'show_metabox_document_meta' ), $metabox_screen,
