@@ -1362,7 +1362,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			 * Some custom post types, like visual editor blocks, show in the UI but not in the main WordPress admin
 			 * menu, so require 'show_in_menu' to exclude visual editor blocks.
 			 */
-			$args = array( 'show_ui' => 1, 'show_in_menu' => 1 );
+			$args = apply_filters( 'sucom_get_post_types_args', array( 'show_ui' => 1, 'show_in_menu' => 1 ) );
 
 			$operator = 'and';
 
@@ -1401,7 +1401,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			 * Some taxonomies, like WooCommerce product attributes, do not show in the main WordPress admin menu, so
 			 * do not require 'show_in_menu' for taxonomies.
 			 */
-			$args = array( 'show_ui' => 1 );
+			$args = apply_filters( 'sucom_get_taxonomies_args', array( 'show_ui' => 1 ) );
 
 			$operator = 'and';
 

@@ -1,6 +1,10 @@
 
 'sucom_get_post_object' ( $post_obj, $use_post )
 
+'sucom_get_post_types_args' ( $args = array( 'show_ui' => 1, 'show_in_menu' => 1 ) )
+
+'sucom_get_taxonomies_args' ( $args = array( 'show_ui' => 1 ) )
+
 'sucom_get_term_object' ( $term_obj, $term_id, $tax_slug )
 
 'sucom_get_user_object' ( $user_obj, $user_id )
