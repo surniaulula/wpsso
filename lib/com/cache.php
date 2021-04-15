@@ -27,8 +27,8 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		public $default_file_cache_exp   = DAY_IN_SECONDS;
 		public $default_object_cache_exp = DAY_IN_SECONDS;
 
-		public $curl_connect_timeout = 10;	// The number of seconds to wait while trying to connect. Use 0 to wait indefinitely.
-		public $curl_timeout         = 15;	// The maximum number of seconds to allow cURL functions to execute. 
+		public $curl_connect_timeout = 5;	// The number of seconds to wait while trying to connect. Use 0 to wait indefinitely.
+		public $curl_timeout         = 10;	// The maximum number of seconds to allow cURL functions to execute. 
 		public $curl_max_redirs      = 10;	// The maximum amount of HTTP redirections to follow.
 
 		private $url_get_mtimes = array();

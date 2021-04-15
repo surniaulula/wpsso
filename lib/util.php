@@ -1036,7 +1036,14 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					$this->p->debug->log( 'checking options for prefix ' . $opt_pre );
 				}
 
-				foreach ( SucomUtilWP::get_post_types( $output = 'names' ) as $name ) {
+				$post_type_names = SucomUtilWP::get_post_types( $output = 'names' );
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log_arr( '$post_type_names', $post_type_names );
+				}
+
+				foreach ( $post_type_names as $name ) {
 
 					$opt_key = $opt_pre . '_' . $name;
 
