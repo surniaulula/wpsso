@@ -314,7 +314,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.26.3-dev.1 (2021/04/14)**
+**Version 8.26.3-dev.1 (2021/04/15)**
 
 * **New Features**
 	* None.
@@ -1168,7 +1168,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 = 8.26.3-dev.1 =
 
-(2021/04/14) Added debug messages to the WpssoPost, WpssoTerm, and WpssoUser `add_meta_boxes()` method.
+(2021/04/15) Added debug messages to the WpssoPost, WpssoTerm, and WpssoUser `add_meta_boxes()` method.
 
 = 8.26.2 =
 
