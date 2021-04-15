@@ -324,6 +324,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Added debug messages to the WpssoPost, WpssoTerm, and WpssoUser `add_meta_boxes()` method.
+	* Added a new `SucomForm->get_checklist_post_tax_user()` method.
+	* Refactored the `SucomForm->get_checklist_post_types()` method.
 * **Requires At Least**
 	* PHP v7.0.
 	* WordPress v4.5.
