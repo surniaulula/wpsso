@@ -865,9 +865,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							if ( ! current_theme_supports( 'title-tag' ) ) {
 
-								$text .= '<strong>' . sprintf( __( 'Your theme does not support <a href="%s">the WordPress Title Tag</a>.', 'wpsso' ), __( 'https://codex.wordpress.org/Title_Tag', 'wpsso' ) ) . '</strong> ';
+								$text .= '<strong>' . sprintf( __( 'Your theme does not support the <a href="%s">WordPress Title Tag</a>.', 'wpsso' ), __( 'https://codex.wordpress.org/Title_Tag', 'wpsso' ) ) . '</strong> ';
 
 								$text .= __( 'Please contact your theme author and request that they add support for the WordPress Title Tag feature (available since WordPress v4.1).', 'wpsso' ) . ' ';
+
+								$text .= '<br/><br/>';
 							}
 
 							$text .= sprintf( __( '%1$s can provide a customized value for the %2$s HTML tag.', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'name' ], '<code>&amp;lt;title&amp;gt;</code>' ) . ' ';
@@ -3502,7 +3504,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				return '';
 			}
 
-			$text = sprintf( __( 'theme does not support <a href="%s">the WordPress Title Tag</a>', 'wpsso' ),
+			$text = sprintf( __( 'no <a href="%s">WordPress Title Tag</a> support in your theme', 'wpsso' ),
 				__( 'https://codex.wordpress.org/Title_Tag', 'wpsso' ) );
 
 			return '<span class="option-warning">' . $text . '</span>';

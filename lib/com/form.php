@@ -560,7 +560,25 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_checklist_post_types( $name_prefix, $css_class = 'input_vertical_list', $css_id = '', $is_disabled = false ) {
 
-			$values = SucomUtilWP::get_post_type_labels();
+			$values = SucomUtilWP::get_post_type_labels( $values = array(), $val_prefix = '',
+				$label_prefix = _x( 'Post Type', 'option label', $this->text_domain ) );
+
+			return $this->get_checklist( $name_prefix, $values, $css_class, $css_id, $is_assoc = true, $is_disabled );
+		}
+
+		public function get_checklist_post_tax_user( $name_prefix, $css_class = 'input_vertical_list', $css_id = '', $is_disabled = false ) {
+
+			$values = array();
+
+			$values = SucomUtilWP::get_post_type_labels( $values, $val_prefix = '',
+				$label_prefix = _x( 'Post Type', 'option label', $this->text_domain ) );
+
+			$values = SucomUtilWP::get_taxonomy_labels( $values, $val_prefix = 'tax_',	// Add 'tax_' prefix to key values.
+				$label_prefix = _x( 'Taxonomy', 'option label', $this->text_domain ) );
+
+			$values[ 'user_page' ] = _x( 'User Profile', 'option label', $this->text_domain );
+
+			asort( $values );	// Sort by label.
 
 			return $this->get_checklist( $name_prefix, $values, $css_class, $css_id, $is_assoc = true, $is_disabled );
 		}
@@ -2057,6 +2075,16 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_no_checklist( $name_prefix, $values = array(), $css_class = 'input_vertical_list', $css_id = '', $is_assoc = null ) {
 
 			return $this->get_checklist( $name_prefix, $values, $css_class, $css_id, $is_assoc, $is_disabled = true );
+		}
+
+		public function get_no_checklist_post_types( $name_prefix, $css_class = 'input_vertical_list', $css_id = '' ) {
+		
+			return $this->get_checklist_post_types( $name_prefix, $css_class, $css_id, $is_disabled = true );
+		}
+
+		public function get_no_checklist_post_tax_user( $name_prefix, $css_class = 'input_vertical_list', $css_id = '' ) {
+			
+			return $this->get_checklist_post_tax_user( $name_prefix, $css_class, $css_id, $is_disabled = true );
 		}
 
 		public function get_no_radio( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null ) {

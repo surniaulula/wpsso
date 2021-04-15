@@ -67,15 +67,10 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			 */
 			$add_to_metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
-			$add_to_values = array( 'user_page' => _x( 'User Profile', 'option label', 'wpsso' ) );
-			$add_to_values = SucomUtilWP::get_post_type_labels( $add_to_values, $val_prefix = '', _x( 'Post Type', 'option label', 'wpsso' ) );
-			$add_to_values = SucomUtilWP::get_taxonomy_labels( $add_to_values, $val_prefix = 'tax_', _x( 'Taxonomy', 'option label', 'wpsso' ) );
-
 			$table_rows[ 'plugin_add_to' ] = '' .	// Show Document SSO Metabox.
 				$form->get_th_html( sprintf( _x( 'Show %s Metabox', 'option label', 'wpsso' ), $add_to_metabox_title ),
 					$css_class = '', $css_id = 'plugin_add_to' ) . 
-				'<td class="blank">' . $form->get_no_checklist( 'plugin_add_to', $add_to_values,
-					$css_class = 'input_vertical_list', $css_id = '', $is_assoc = true ) . '</td>';
+				'<td class="blank">' . $form->get_no_checklist_post_tax_user( $name_prefix = 'plugin_add_to' ) . '</td>';
 
 			/**
 			 * Additional item list columns.
@@ -487,13 +482,10 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'<td nowrap class="blank">' . $form->get_no_input( 'plugin_shopperapproved_age_max', $css_class = 'short' ) . ' ' .
 				_x( 'months', 'option comment', 'wpsso' ) . '</td>';
 
-			$sa_for_values = SucomUtilWP::get_post_type_labels( array(), $val_prefix = '', _x( 'Post Type', 'option label', 'wpsso' ) );
-
 			$table_rows[ 'plugin_shopperapproved_for' ] = '' .
 				$form->get_th_html( _x( 'Get Reviews for Post Types', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_shopperapproved_for' ) .
-				'<td class="blank">' . $form->get_no_checklist( 'plugin_shopperapproved_for', $sa_for_values,
-					$css_class = 'input_vertical_list', $css_id = '', $is_assoc = true ) . '</td>';
+				'<td class="blank">' . $form->get_no_checklist_post_types( $name_prefix = 'plugin_shopperapproved_for' ) . '</td>';
 
 			return $table_rows;
 		}
@@ -529,7 +521,8 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			 * Open Graph Type by Post Type.
 			 */
 			$type_select = '';
-			$post_types  = SucomUtilWP::get_post_types( $output = 'objects' );
+
+			$post_types = SucomUtilWP::get_post_types( $output = 'objects' );
 
 			foreach ( $post_types as $obj ) {
 
@@ -616,7 +609,8 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			 * Schema Type by Post Type.
 			 */
 			$type_select = '';
-			$post_types  = SucomUtilWP::get_post_types( $output = 'objects' );
+
+			$post_types = SucomUtilWP::get_post_types( $output = 'objects' );
 
 			foreach ( $post_types as $obj ) {
 

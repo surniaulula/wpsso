@@ -1359,8 +1359,8 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		public static function get_post_types( $output = 'objects' ) {
 
 			/**
-			 * Some post types, like visual editor blocks, show in the UI but not in the main WordPress admin menu, so
-			 * require 'show_in_menu' to exclude the visual editor blocks.
+			 * Some custom post types, like visual editor blocks, show in the UI but not in the main WordPress admin
+			 * menu, so require 'show_in_menu' to exclude visual editor blocks.
 			 */
 			$args = array( 'show_ui' => 1, 'show_in_menu' => 1 );
 
@@ -1440,10 +1440,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			 */
 			if ( empty( $obj->_builtin ) ) {
 
-				if ( empty( $obj->description ) ) {
-
-					$desc = '[' . $obj->name . ']';
-				}
+				$desc = '[' . $obj->name . ']';
 			}
 
 			return trim( $obj->label . ' ' . $desc );

@@ -6,9 +6,6 @@
 _x( 'Plugin Options to Show by Default', 'option label', 'wpsso' );
 _x( 'Validators', 'toolbar menu title', 'wpsso' );
 _x( 'Show %s Toolbar Menu', 'option label', 'wpsso' );
-_x( 'User Profile', 'option label', 'wpsso' );
-_x( 'Post Type', 'option label', 'wpsso' );
-_x( 'Taxonomy', 'option label', 'wpsso' );
 _x( 'Show %s Metabox', 'option label', 'wpsso' );
 __( 'Posts, Pages, and Custom Post Types', 'wpsso' );
 __( 'Media Library', 'wpsso' );
@@ -98,7 +95,6 @@ _x( 'Shopper Approved API Token', 'option label', 'wpsso' );
 _x( 'Maximum Number of Reviews', 'option label', 'wpsso' );
 _x( 'Maximum Age of Reviews', 'option label', 'wpsso' );
 _x( 'months', 'option comment', 'wpsso' );
-_x( 'Post Type', 'option label', 'wpsso' );
 _x( 'Get Reviews for Post Types', 'option label', 'wpsso' );
 _x( 'Type for Page Homepage', 'option label', 'wpsso' );
 _x( 'Type for Posts Homepage', 'option label', 'wpsso' );
