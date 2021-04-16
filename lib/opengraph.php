@@ -749,11 +749,20 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				if ( ! isset( $mt_og[ 'article:published_time' ] ) ) {
 
-					if ( 'publish' === $mod[ 'post_status' ] ) {	// Must be published to have a publish time meta tag.
+					if ( $mod[ 'post_time' ] ) {	// ISO 8601 date or false.
 
-						if ( $mod[ 'post_time' ] ) {	// ISO 8601 date or false.
+						/**
+						 * The post object must be published or expired (ie. was once published) to have a
+						 * published time value.
+						 */
+						switch ( $mod[ 'post_status' ] ) {
 
-							$mt_og[ 'article:published_time' ] = $mod[ 'post_time' ];
+							case 'publish':
+							case 'expired':
+
+								$mt_og[ 'article:published_time' ] = $mod[ 'post_time' ];
+								
+								break;
 						}
 					}
 				}
