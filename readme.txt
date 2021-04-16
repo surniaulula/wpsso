@@ -314,7 +314,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.26.3-dev.3 (2021/04/16)**
+**Version 8.26.3-b.1 (2021/04/16)**
 
 * **New Features**
 	* None.
@@ -1167,7 +1167,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.26.3-dev.3 =
+= 8.26.3-b.1 =
 
 (2021/04/16) Included support for custom post types that do not appear in the WordPress menu. Allowed 'expired' posts to have an 'article:published_time' meta tag.
 
