@@ -51,7 +51,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
-			$table_rows[ 'plugin_show_opts' ] = '' .
+			$table_rows[ 'plugin_show_opts' ] = $form->get_tr_hide( 'basic', 'plugin_show_opts' ) .
 				$form->get_th_html( _x( 'Plugin Options to Show by Default', 'option label', 'wpsso' ), '', 'plugin_show_opts' ) .
 				'<td class="blank">' . $form->get_no_select( 'plugin_show_opts', $this->p->cf[ 'form' ][ 'show_options' ] ) . '</td>';
 

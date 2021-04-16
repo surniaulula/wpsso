@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.26.3-dev.1\n"
+"Project-Id-Version: WPSSO Core 8.26.3-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1573,7 +1573,8 @@ msgstr ""
 #: gettext/gettext-lib-config.php:294 gettext/gettext-lib-config.php:298
 #: gettext/gettext-lib-config.php:304 gettext/gettext-lib-config.php:313
 #: gettext/gettext-lib-config.php:317 gettext/gettext-lib-config.php:323
-#: gettext/gettext-lib-config.php:333 lib/users/add-person.php:96
+#: gettext/gettext-lib-config.php:333 gettext/gettext-lib-config.php:338
+#: lib/users/add-person.php:96
 msgctxt "option value"
 msgid "[None]"
 msgstr ""
@@ -2303,67 +2304,72 @@ msgctxt "option value"
 msgid "Used"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:338
-msgctxt "option value"
-msgid "Every day"
-msgstr ""
-
 #: gettext/gettext-lib-config.php:339
 msgctxt "option value"
-msgid "Every two days"
+msgid "Telecommute"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:340
 msgctxt "option value"
-msgid "Every three days"
+msgid "Every day"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:341
 msgctxt "option value"
-msgid "Every four days"
+msgid "Every two days"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:342
 msgctxt "option value"
-msgid "Every five days"
+msgid "Every three days"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:343
 msgctxt "option value"
-msgid "Every six days"
+msgid "Every four days"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:344
 msgctxt "option value"
-msgid "Every week"
+msgid "Every five days"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:345
 msgctxt "option value"
-msgid "Every two weeks"
+msgid "Every six days"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:346
 msgctxt "option value"
-msgid "Development and Up"
+msgid "Every week"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:347
 msgctxt "option value"
-msgid "Alpha and Up"
+msgid "Every two weeks"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:348
 msgctxt "option value"
-msgid "Beta and Up"
+msgid "Development and Up"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:349
 msgctxt "option value"
-msgid "Release Candidate and Up"
+msgid "Alpha and Up"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:350
+msgctxt "option value"
+msgid "Beta and Up"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:351
+msgctxt "option value"
+msgid "Release Candidate and Up"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:352
 msgctxt "option value"
 msgid "Stable / Production"
 msgstr ""

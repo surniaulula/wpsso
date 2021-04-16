@@ -335,6 +335,8 @@ _x( 'Damaged', 'option value', 'wpsso' );
 _x( 'New', 'option value', 'wpsso' );
 _x( 'Refurbished', 'option value', 'wpsso' );
 _x( 'Used', 'option value', 'wpsso' );
+_x( '[None]', 'option value', 'wpsso' );
+_x( 'Telecommute', 'option value', 'wpsso' );
 _x( 'Every day', 'option value', 'wpsso' );
 _x( 'Every two days', 'option value', 'wpsso' );
 _x( 'Every three days', 'option value', 'wpsso' );

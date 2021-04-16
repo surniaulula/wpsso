@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.26.3-dev.1',	// Plugin version.
+					'version'     => '8.26.3-dev.2',	// Plugin version.
 					'opt_version' => '781',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2737,6 +2737,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'https://schema.org/NewCondition'         => 'New',
 					'https://schema.org/RefurbishedCondition' => 'Refurbished',
 					'https://schema.org/UsedCondition'        => 'Used',
+				),
+
+				/**
+				 * Validated on 2021/04/15.
+				 *
+				 * See https://developers.google.com/search/docs/data-types/job-postings.
+				 */
+				'job_location_type' => array(
+					'none'        => '[None]',
+					'TELECOMMUTE' => 'Telecommute',
 				),
 			),
 			'head' => array(

@@ -1359,16 +1359,16 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		public static function get_post_types( $output = 'objects' ) {
 
 			/**
-			 * Some custom post types, like visual editor blocks, show in the UI but not in the main WordPress admin
-			 * menu, so require 'show_in_menu' to exclude visual editor blocks.
+			 * Note that the 'wp_block' custom post type for reusable blocks is registered as 'public' = 0 and
+			 * 'show_ui' = 1.
 			 */
-			$args = apply_filters( 'sucom_get_post_types_args', array( 'show_ui' => 1, 'show_in_menu' => 1 ) );
+			$args = apply_filters( 'sucom_get_post_types_args', array( 'public' => 1, 'show_ui' => 1 ) );
 
 			$operator = 'and';
 
 			$post_types = get_post_types( $args, $output, $operator );
 
-			if ( $output === 'objects' ) {
+			if ( 'objects' === $output ) {
 
 				self::sort_objects_by_label( $post_types );
 			}
@@ -1397,17 +1397,13 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		 */
 		public static function get_taxonomies( $output = 'objects' ) {
 
-			/**
-			 * Some taxonomies, like WooCommerce product attributes, do not show in the main WordPress admin menu, so
-			 * do not require 'show_in_menu' for taxonomies.
-			 */
-			$args = apply_filters( 'sucom_get_taxonomies_args', array( 'show_ui' => 1 ) );
+			$args = apply_filters( 'sucom_get_taxonomies_args', array( 'public' => 1, 'show_ui' => 1 ) );
 
 			$operator = 'and';
 
 			$taxonomies = get_taxonomies( $args, $output, $operator );
 
-			if ( $output === 'objects' ) {
+			if ( 'objects' === $output ) {
 
 				self::sort_objects_by_label( $taxonomies );
 			}
