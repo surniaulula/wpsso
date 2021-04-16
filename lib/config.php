@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'     => '8.26.3-dev.2',	// Plugin version.
-					'opt_version' => '781',		// Increment when changing default option values.
+					'opt_version' => '782',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results, no matter how webpages are shared, re-shared, messaged, posted, embedded, or crawled.',
@@ -2665,10 +2665,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * Validated on 2020/08/17.
 				 *
 				 * See https://developers.google.com/search/docs/data-types/job-postings.
-				 *
-				 * Choose one or more of the following case-sensitive values: "FULL_TIME" "PART_TIME" "CONTRACTOR"
-				 * "TEMPORARY" "INTERN" "VOLUNTEER" "PER_DIEM" "OTHER". You can include more than one
-				 * employmentType property.
 				 */
 				'employment_type' => array(
 					'none'       => '[None]',
@@ -2746,7 +2742,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 */
 				'job_location_type' => array(
 					'none'        => '[None]',
-					'TELECOMMUTE' => 'Telecommute',
+					'TELECOMMUTE' => 'Telecommute (100% Remote)',
 				),
 			),
 			'head' => array(

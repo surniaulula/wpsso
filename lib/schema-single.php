@@ -771,8 +771,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$json_ret = WpssoSchema::get_schema_type_context( $job_type_url );
 
 			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $job_opts, array(
-				'title'        => 'job_title',
-				'validThrough' => 'job_expire_iso',
+				'title'           => 'job_title',
+				'validThrough'    => 'job_expire_iso',
+				'jobLocationType' => 'job_location_type',
 			) );
 
 			if ( isset( $job_opts[ 'job_salary' ] ) && is_numeric( $job_opts[ 'job_salary' ] ) ) {	// Allow for 0.

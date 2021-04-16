@@ -1359,8 +1359,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		public static function get_post_types( $output = 'objects' ) {
 
 			/**
-			 * Note that the 'wp_block' custom post type for reusable blocks is registered as 'public' = 0 and
-			 * 'show_ui' = 1.
+			 * The 'wp_block' custom post type for reusable blocks is registered as 'public' = 0 and 'show_ui' = 1.
 			 */
 			$args = apply_filters( 'sucom_get_post_types_args', array( 'public' => 1, 'show_ui' => 1 ) );
 
