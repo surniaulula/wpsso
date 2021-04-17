@@ -314,7 +314,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.26.3-b.1 (2021/04/16)**
+**Version 8.26.3-b.2 (2021/04/17)**
 
 * **New Features**
 	* None.
@@ -325,6 +325,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Added debug messages to the WpssoPost, WpssoTerm, and WpssoUser `add_meta_boxes()` method.
+	* Added a new `SucomUtilWP::get_available_languages()` method.
 	* Added a new `SucomForm->get_checklist_post_tax_user()` method.
 	* Refactored the `SucomForm->get_checklist_post_types()` method.
 * **Requires At Least**
@@ -1167,9 +1168,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.26.3-b.1 =
+= 8.26.3-b.2 =
 
-(2021/04/16) Included support for custom post types that do not appear in the WordPress menu. Allowed 'expired' posts to have an 'article:published_time' meta tag.
+(2021/04/17) Included support for custom post types that do not appear in the WordPress menu. Allowed 'expired' posts to have an 'article:published_time' meta tag.
 
 = 8.26.2 =
 
