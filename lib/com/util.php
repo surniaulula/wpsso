@@ -2620,12 +2620,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$locale = is_admin() && function_exists( 'get_user_locale' ) ? get_user_locale() : get_locale();
 			}
 
-			return self::$cache_locale[ $cache_index ] = apply_filters( 'sucom_locale', $locale, $mixed );
+			return self::$cache_locale[ $cache_index ] = apply_filters( 'sucom_get_locale', $locale, $mixed );
 		}
 
 		public static function get_available_locales() {
 
-			$available_locales = get_available_languages();		// Since WP v3.0.
+			$available_locales = SucomUtilWP::get_available_languages();	// Uses a local static cache.
 
 			$default_locale = self::get_locale( 'default' );
 

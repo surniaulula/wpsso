@@ -40,6 +40,21 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			return false;
 		}
 
+		/**
+		 * Add a layer of static cache to improve the speed of get_available_languages().
+		 */
+		public static function get_available_languages() {
+
+			static $local_cache = null;
+
+			if ( null === $local_cache ) {
+
+				$local_cache = get_available_languages();
+			}
+
+			return $local_cache;
+		}
+
 		public static function get_db_transient_keys( $only_expired = false, $key_prefix = '' ) {
 
 			global $wpdb;
