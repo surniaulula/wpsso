@@ -2562,11 +2562,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		/**
 		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 */
-		public static function get_locale( $mixed = 'current' ) {
+		public static function get_locale( $mixed = 'current', $read_cache = true ) {
 
 			$cache_index = is_array( $mixed ) ? $mixed[ 'name' ] . '_' . $mixed[ 'id' ] : $mixed;
 
-			if ( isset( self::$cache_locale[ $cache_index ] ) ) {
+			if ( $read_cache && isset( self::$cache_locale[ $cache_index ] ) ) {
 
 				return self::$cache_locale[ $cache_index ];
 			}

@@ -1167,6 +1167,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$child_family = get_transient( $cache_id );	// Returns false when not found.
 
 					if ( is_array( $child_family ) ) {
+
 						return $child_family;
 					}
 				}

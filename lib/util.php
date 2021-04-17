@@ -2721,9 +2721,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			/**
 			 * The user ID is different than the current / effective user ID, so check if the user locale is different
-			 * to the current locale and load the user locale if required.
+			 * to the current WordPress locale and load the user locale if required.
 			 */
-			$current_locale = get_locale();
+			$current_locale = get_locale();	// Use the WordPress locale.
 			$user_locale    = get_user_meta( $user_id, 'locale', $single = true );
 
 			$this->maybe_load_textdomain( $current_locale, $user_locale, $plugin_slug = 'wpsso' );
