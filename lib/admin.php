@@ -2313,11 +2313,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( strpos( $feature, '(feature)' ) === 0 ) {
 
 				return '(10) ' . $feature;
-
-			} else {
-
-				return $feature;
 			}
+
+			return $feature;
 		}
 
 		public function addons_metabox_content( $network = false ) {
@@ -3088,7 +3086,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$table_rows[ 'plugin_clean_on_uninstall' ] = '' .
 				$form->get_th_html( _x( 'Remove Settings on Uninstall', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_clean_on_uninstall' ) . 
 				'<td>' .
-				$form->get_checkbox( 'plugin_clean_on_uninstall' ) . ' ' . _x( 'including custom post, term, and user meta', 'option comment', 'wpsso' ) .
+				$form->get_checkbox( 'plugin_clean_on_uninstall' ) .
 				'</td>' .
 				self::get_option_site_use( 'plugin_clean_on_uninstall', $form, $network, $is_enabled = true );
 
@@ -3156,7 +3154,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( $network ) {
 
-				$pkg_info   = $this->get_pkg_info();	// Returns an array from cache.
+				$wpsso =& Wpsso::get_instance();
+
+				$pkg_info = $wpsso->admin->get_pkg_info();	// Returns an array from cache.
+
 				$is_enabled = $is_enabled || $pkg_info[ 'wpsso' ][ 'pp' ] ? true : false;
 
 				$html .= $form->get_th_html( _x( 'Site Use', 'option label (very short)', 'wpsso' ), 'site-use' );
