@@ -1,10 +1,10 @@
 === WPSSO Core | Complete Meta Tags and Structured Data SEO for WordPress ===
-Plugin Name: WPSSO Core
+Plugin Name: WPSSO Core (Premium)
 Plugin Slug: wpsso
 Text Domain: wpsso
 Domain Path: /languages
-License: GPLv3
-License URI: https://www.gnu.org/licenses/gpl.txt
+License: Nontransferable License for WordPress Site Address URL
+License URI: https://wpsso.com/wp-content/plugins/wpsso/license/premium.txt
 Assets URI: https://surniaulula.github.io/wpsso/assets/
 Tags: woocommerce, structured data, seo, schema, open graph, facebook, linkedin, twitter, google, pinterest, social sharing, meta tags
 Contributors: jsmoriss
