@@ -152,7 +152,6 @@ The WPSSO Core Standard plugin is designed to satisfy the requirements of most s
 	* Polylang
 	* Product GTIN (EAN, UPC, ISBN) for WooCommerce
 	* Rate my Post
-	* rtMedia for WordPress, BuddyPress and bbPress
 	* SEOPress
 	* Simple Job Board
 	* The Events Calendar
@@ -317,7 +316,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 8.26.4-dev.1 (TBD)**
 
 * **New Features**
-	* None.
+	* Removed support for the rtMedia plugin (Premium version).
 * **Improvements**
 	* Fine-tuned the CSS for metabox tabs.
 * **Bugfixes**
@@ -1184,7 +1183,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 = 8.26.4-dev.1 =
 
-(TBD) Fine-tuned the CSS for metabox tabs.
+(TBD) Removed support for the rtMedia plugin (Premium version).
 
 = 8.26.3 =
 
