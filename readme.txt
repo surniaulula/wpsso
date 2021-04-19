@@ -314,6 +314,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.26.4-dev.1 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Fine-tuned the CSS for metabox tabs.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.0.
+	* WordPress v4.5.
+
 **Version 8.26.3 (2021/04/17)**
 
 * **New Features**
@@ -1167,6 +1181,10 @@ This release adds a new SSO &gt; Features Status page and integration module for
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.26.4-dev.1 =
+
+(TBD) Fine-tuned the CSS for metabox tabs.
 
 = 8.26.3 =
 
