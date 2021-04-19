@@ -126,7 +126,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'facebook'   => '(api) Facebook Video API',
 								'gravatar'   => '(api) Gravatar Image API',
 								'ngg'        => '(plugin) NextGEN Gallery, NextCellent Gallery',
-								'rtmedia'    => '(plugin) rtMedia for WordPress, BuddyPress and bbPress',
 								'slideshare' => '(api) Slideshare API',
 								'soundcloud' => '(api) Soundcloud API',
 								'upscale'    => '(feature) Upscale Media Library Images',

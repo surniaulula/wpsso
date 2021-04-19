@@ -345,17 +345,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 									break;
 
 								/**
-								 * rtMedia for WordPress, BuddyPress and bbPress.
-								 *
-								 * See https://wordpress.org/plugins/buddypress-media/.
-								 */
-								case 'rtmedia':
-
-									$chk[ 'plugin' ] = 'buddypress-media/index.php';
-
-									break;
-
-								/**
 								 * Perfect Images + Retina (aka WP Retina 2x).
 								 *
 								 * See https://wordpress.org/plugins/wp-retina-2x/.

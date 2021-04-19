@@ -24,7 +24,6 @@ _x( '(plugin) WPML', 'lib file description', 'wpsso' );
 _x( '(api) Facebook Video API', 'lib file description', 'wpsso' );
 _x( '(api) Gravatar Image API', 'lib file description', 'wpsso' );
 _x( '(plugin) NextGEN Gallery, NextCellent Gallery', 'lib file description', 'wpsso' );
-_x( '(plugin) rtMedia for WordPress, BuddyPress and bbPress', 'lib file description', 'wpsso' );
 _x( '(api) Slideshare API', 'lib file description', 'wpsso' );
 _x( '(api) Soundcloud API', 'lib file description', 'wpsso' );
 _x( '(feature) Upscale Media Library Images', 'lib file description', 'wpsso' );
