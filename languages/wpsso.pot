@@ -3009,7 +3009,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:137 lib/pro/admin/edit.php:61
 #: lib/std/admin/edit.php:56
 msgctxt "metabox title"
-msgid "Basic Product Information"
+msgid "Product Information (Basic)"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:138 lib/messages.php:3194

@@ -134,7 +134,7 @@ _x( 'Maximum Videos to Include', 'option label', 'wpsso' );
 _x( 'Include Video Preview Images', 'option label', 'wpsso' );
 _x( 'Force Autoplay when Possible', 'option label', 'wpsso' );
 _x( 'Check for Embedded Media', 'option label', 'wpsso' );
-_x( 'Basic Product Information', 'metabox title', 'wpsso' );
+_x( 'Product Information (Basic)', 'metabox title', 'wpsso' );
 _x( 'Product Type', 'option label', 'wpsso' );
 _x( 'Product Brand', 'option label', 'wpsso' );
 _x( 'Product Price', 'option label', 'wpsso' );

@@ -53,7 +53,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tr_class' => 'hide_og_type hide_og_type_product',
 					'td_class' => 'subsection',
 					'header'   => 'h5',
-					'label'    => _x( 'Basic Product Information', 'metabox title', 'wpsso' )
+					'label'    => _x( 'Product Information (Basic)', 'metabox title', 'wpsso' )
 				),
 				'pro_feature_msg' => array(
 					'tr_class'  => 'hide_og_type hide_og_type_product',
