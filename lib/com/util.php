@@ -3173,9 +3173,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				$post_obj = $GLOBALS[ 'post' ];
 
-			/**
-			 * The 'sucom_is_post_page' filter is used by the buddypress module.
-			 */
 			} elseif ( false === $use_post && apply_filters( 'sucom_is_post_page', ( is_singular() ? true : false ), $use_post ) ) {
 
 				$post_obj = get_queried_object();

@@ -217,9 +217,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$mt_ret = array_merge( $mt_ret, $this->get_featured( $num_diff, $size_name, $post_id, $check_dupes ) );
 			}
 
-			/**
-			 * 'wpsso_attached_images' filter is used by the buddypress module.
-			 */
 			if ( ! $this->p->util->is_maxed( $mt_ret, $num ) ) {
 
 				$num_diff = SucomUtil::count_diff( $mt_ret, $num );
@@ -364,9 +361,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 			}
 
-			/**
-			 * The 'wpsso_attached_images' filter is used by the buddypress module.
-			 */
 			return apply_filters( 'wpsso_attached_images', $mt_ret, $num, $size_name, $post_id, $check_dupes );
 		}
 
@@ -745,7 +739,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( ! empty( $def_img[ 'id' ] ) ) {
 
-				$def_img[ 'id' ] = $def_img[ 'id_pre' ] === 'ngg' ? 'ngg-' . $def_img[ 'id' ] : $def_img[ 'id' ];
+				$def_img[ 'id' ] = 'ngg' === $def_img[ 'id_pre' ] ? 'ngg-' . $def_img[ 'id' ] : $def_img[ 'id' ];
 
 				if ( $this->p->debug->enabled ) {
 

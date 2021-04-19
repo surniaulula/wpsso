@@ -27,10 +27,6 @@ if ( ! class_exists( 'WpssoStdSocialBuddypress' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
-			 * The latest BuddyPress templates use ajax calls, so is_admin(), bp_current_component(), and DOING_AJAX
-			 * will all be true for those ajax calls.
-			 */
 			$component = bp_current_component();
 
 			if ( is_admin() || $component ) {

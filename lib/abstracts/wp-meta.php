@@ -1551,7 +1551,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				if ( $pid > 0 ) {
 
-					$pid = $pre === 'ngg' ? 'ngg-' . $pid : $pid;
+					$pid = 'ngg' === $pre ? 'ngg-' . $pid : $pid;
 
 					if ( $this->p->debug->enabled ) {
 
