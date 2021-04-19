@@ -2963,7 +2963,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( $mod[ 'is_post' ] && isset( $mod[ 'post_status' ] ) ) {
 
-				if ( $mod[ 'post_status' ] === 'trash' ) {
+				if ( 'trash' === $mod[ 'post_status' ] ) {
 
 					return true;
 				}

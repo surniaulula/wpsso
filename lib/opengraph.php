@@ -155,7 +155,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			} elseif ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'skipping cache check: mod name and/or id value is empty' );
+				$this->p->debug->log( 'skipped cache check: mod name and/or id value is empty' );
 			}
 
 			$default_key = apply_filters( 'wpsso_og_type_for_default', 'website', $mod );
@@ -201,12 +201,12 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				} elseif ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'skipping custom type id - mod object is empty' );
+					$this->p->debug->log( 'skipping custom type id: mod object is empty' );
 				}
 
 			} elseif ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'skipping custom type id - use_mod_opts is false' );
+				$this->p->debug->log( 'skipping custom type id: use_mod_opts is false' );
 			}
 
 			if ( empty( $type_id ) ) {
@@ -751,14 +751,26 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					if ( $mod[ 'post_time' ] ) {	// ISO 8601 date or false.
 
-						/**
-						 * The post object must be published or expired (ie. was once published) to have a
-						 * published time value.
-						 */
 						switch ( $mod[ 'post_status' ] ) {
 
+							case 'auto-draft':
+							case 'draft':
+							case 'future':
+							case 'inherit':	// Post revision.
+							case 'pending':
+							case 'trash':
+
+								if ( $this->p->debug->enabled ) {
+
+									$this->p->debug->log( 'skipping article published time for post status ' .  $post_status );
+								}
+
+								break;
+
+							case 'expired':	// Previously published.
+							case 'private':
 							case 'publish':
-							case 'expired':
+							default:	// Any other post status.
 
 								$mt_og[ 'article:published_time' ] = $mod[ 'post_time' ];
 								
@@ -1350,7 +1362,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'skipping NGG shortcode check - ' . count( $query_images ) . ' query image(s) returned' );
+							$this->p->debug->log( 'skipping NGG shortcode check: ' . count( $query_images ) . ' query image(s) returned' );
 						}
 
 						$mt_ret = array_merge( $mt_ret, $query_images );
@@ -1639,14 +1651,14 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					continue;
 
-				} elseif ( $og_media[ $key ] === '' || $og_media[ $key ] === null ) {	// Allow for 0.
+				} elseif ( '' === $og_media[ $key ] || null === $og_media[ $key ] ) {	// Allow for 0.
 
 					if ( $this->p->debug->enabled ) {
 
 						$this->p->debug->log( $og_media[ $key ] . ' value is empty (skipped)' );
 					}
 
-				} elseif ( $og_media[ $key ] === WPSSO_UNDEF || $og_media[ $key ] === (string) WPSSO_UNDEF ) {
+				} elseif ( WPSSO_UNDEF === $og_media[ $key ] || (string) WPSSO_UNDEF === $og_media[ $key ] ) {
 
 					if ( $this->p->debug->enabled ) {
 

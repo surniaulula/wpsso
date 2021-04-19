@@ -478,7 +478,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				'order'          => 'DESC',	// Newest first.
 				'orderby'        => 'date',
 				'paged'          => false,
-				'post_status'    => 'publish',	// Only 'publish' (not 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', or 'trash').
+				'post_status'    => 'publish',	// Only 'publish', not 'auto-draft', 'draft', 'future', 'inherit', 'pending', 'private', or 'trash'.
 				'post_type'      => 'any',	// Return any post, page, or custom post type.
 				'posts_per_page' => -1,		// The number of posts to query for. -1 to request all posts.
 				'fields'         => 'ids',	// Return an array of post IDs.
@@ -506,7 +506,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				'has_password'   => false,
 				'order'          => 'DESC',		// Newest first.
 				'orderby'        => 'date',
-				'post_status'    => 'publish',		// Only 'publish', not 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', or 'trash'.
+				'post_status'    => 'publish',		// Only 'publish', not 'auto-draft', 'draft', 'future', 'inherit', 'pending', 'private', or 'trash'.
 				'post_type'      => 'any',		// Return posts, pages, or any custom post type.
 				'post_parent'    => $mod[ 'id' ],
 				'child_of'       => $mod[ 'id' ],	// Only include direct children.
@@ -771,7 +771,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$this->p->debug->log( 'head meta skipped: post_status is trash' );
 				}
 
-			} elseif ( isset( $_REQUEST[ 'action' ] ) && $_REQUEST[ 'action' ] === 'trash' ) {
+			} elseif ( isset( $_REQUEST[ 'action' ] ) && 'trash' === $_REQUEST[ 'action' ] ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -1566,19 +1566,26 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			switch ( $post_status ) {
 
-				case 'draft':
-				case 'pending':
-				case 'future':
-				case 'private':
-				case 'publish':
-
-					break;	// Cache clearing allowed.
-
 				case 'auto-draft':
+				case 'inherit':	// Post revision.
 				case 'trash':
-				default:
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'exiting early: cache clearing ignored for post status ' .  $post_status );
+					}
 
 					return;	// Stop here.
+
+				case 'draft':
+				case 'expired':
+				case 'future':
+				case 'pending':
+				case 'private':
+				case 'publish':
+				default:	// Any other post status.
+
+					break;
 			}
 
 			$mod = $this->get_mod( $post_id );

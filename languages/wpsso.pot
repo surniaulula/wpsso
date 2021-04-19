@@ -8222,7 +8222,7 @@ msgstr ""
 msgid "Save a draft or publish to display these options."
 msgstr ""
 
-#: lib/post.php:1704
+#: lib/post.php:1711
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
