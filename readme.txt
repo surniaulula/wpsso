@@ -320,7 +320,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* Fine-tuned the CSS for metabox tabs.
 * **Bugfixes**
-	* None.
+	* Fixed merging new options keys during update.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
