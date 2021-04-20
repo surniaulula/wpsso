@@ -313,14 +313,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.26.4-dev.1 (TBD)**
+**Version 8.26.4-dev.1 (2021/04/20)**
 
 * **New Features**
 	* Removed support for the rtMedia plugin (Premium version).
 * **Improvements**
 	* Fine-tuned the CSS for metabox tabs.
 * **Bugfixes**
-	* Fixed merging new options keys during update.
+	* Fixed merging of new plugin / add-on options keys during update.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -1183,7 +1183,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 = 8.26.4-dev.1 =
 
-(TBD) Removed support for the rtMedia plugin (Premium version).
+(2021/04/20) Removed support for the rtMedia plugin (Premium version). Fixed merging of new plugin / add-on options keys during update.
 
 = 8.26.3 =
 
