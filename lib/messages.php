@@ -3018,7 +3018,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= ' <li>' . __( 'Upscaling of images and URL shortening.', 'wpsso' ) . '</li>';
 
-						$text .= ' <li>' . __( 'Customize default advanced settings.', 'wpsso' ) . '</li>';
+						$text .= ' <li>' . __( 'Customize advanced settings, including image sizes, cache expiry, video services, shortening services, document types, contact fields, product attributes, custom fields, and more.', 'wpsso' ) . '</li>';
 
 						$text .= $li_support_link;
 

@@ -7442,7 +7442,10 @@ msgid "Upscaling of images and URL shortening."
 msgstr ""
 
 #: lib/messages.php:3021
-msgid "Customize default advanced settings."
+msgid ""
+"Customize advanced settings, including image sizes, cache expiry, video "
+"services, shortening services, document types, contact fields, product "
+"attributes, custom fields, and more."
 msgstr ""
 
 #: lib/messages.php:3031 lib/messages.php:3049 lib/messages.php:3065
