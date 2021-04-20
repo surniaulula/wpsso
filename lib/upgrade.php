@@ -486,14 +486,14 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 		/**
 		 * The $defs argument accepts output from functions, so don't force reference.
 		 */
-		public function options( $options_name, &$opts = array(), $defs = array(), $network = false ) {
+		public function options( $opts_name, &$opts = array(), $defs = array(), $network = false ) {
 
 			/**
 			 * Save / create the current options version number for version checks to follow.
 			 */
 			$prev_version = empty( $opts[ 'plugin_wpsso_opt_version' ] ) ? 0 : $opts[ 'plugin_wpsso_opt_version' ];
 
-			if ( $options_name === constant( 'WPSSO_OPTIONS_NAME' ) ) {
+			if ( $opts_name === constant( 'WPSSO_OPTIONS_NAME' ) ) {
 
 				$keys_by_ext = apply_filters( 'wpsso_rename_options_keys', self::$rename_keys_by_ext );
 
@@ -737,13 +737,23 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					}
 				}
 
+				/**
+				 * Maybe add any new / missing options keys.
+				 */
+				$opts = array_merge( $defs, $opts );
+
 				$opts = apply_filters( 'wpsso_upgraded_options', $opts, $defs );
 
-			} elseif ( $options_name === constant( 'WPSSO_SITE_OPTIONS_NAME' ) ) {
+			} elseif ( $opts_name === constant( 'WPSSO_SITE_OPTIONS_NAME' ) ) {
 
 				$keys_by_ext = apply_filters( 'wpsso_rename_site_options_keys', self::$rename_site_keys_by_ext );
 
 				$opts = $this->p->util->rename_options_by_ext( $opts, $keys_by_ext );
+
+				/**
+				 * Maybe add any new / missing site options keys.
+				 */
+				$opts = array_merge( $defs, $opts );
 
 				$opts = apply_filters( 'wpsso_upgraded_site_options', $opts, $defs );
 			}
