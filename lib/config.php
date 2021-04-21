@@ -2297,6 +2297,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'notice' => array(
+				'title'     => 'SSO',					// Notice title.
 				'icon-font' => 'WpssoIcons',				// Icon font family.
 				'icon-code' => '\e81d',					// Icon CSS code.
 				'css-class' => array(					// Used by WpssoStyle->add_admin_page_style().

@@ -118,10 +118,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 				$this->label_transl = $label_transl;
 
-			} elseif ( ! empty( $this->p->cf[ 'menu' ][ 'title' ] ) ) {
+			} elseif ( ! empty( $this->p->cf[ 'notice' ][ 'title' ] ) ) {
 
 				$this->label_transl = sprintf( __( '%s Notice', $this->text_domain ),
-					_x( $this->p->cf[ 'menu' ][ 'title' ], 'menu title', $this->text_domain ) );
+					_x( $this->p->cf[ 'notice' ][ 'title' ], 'notice title', $this->text_domain ) );
 
 			} else {
 
