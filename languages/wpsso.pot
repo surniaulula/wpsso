@@ -1219,10 +1219,9 @@ msgid ""
 "and classes."
 msgstr ""
 
-#: gettext/gettext-lib-config.php:102 lib/admin-head.php:257
-#: lib/messages.php:3531
+#: gettext/gettext-lib-config.php:102
 msgctxt "menu title"
-msgid "SSO"
+msgid "SSO (Social and Search Optimization)"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:103
@@ -3671,6 +3670,11 @@ msgid "Please install this update at your earliest convenience."
 msgid_plural "Please install these updates at your earliest convenience."
 msgstr[0] ""
 msgstr[1] ""
+
+#: lib/admin-head.php:257 lib/messages.php:3531
+msgctxt "menu title"
+msgid "SSO"
+msgstr ""
 
 #: lib/admin-head.php:259 lib/messages.php:3533 lib/submenu/advanced.php:43
 msgctxt "metabox title"

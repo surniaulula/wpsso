@@ -2274,9 +2274,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'version' => '1.12.1',
 			),
 			'menu' => array(
-				'title'     => 'SSO',		// Menu title.
-				'icon-code' => '\e81e',		// Icon CSS code.
-				'icon-font' => 'WpssoIcons',	// Icon font family.
+				'title'     => 'SSO (Social and Search Optimization)',	// Menu title.
+				'icon-font' => 'WpssoIcons',				// Icon font family.
+				'icon-code' => '\e81e',					// Icon CSS code.
 				'dashicons' => array(
 					'add-person'     => 'admin-users',
 					'addons'         => 'admin-plugins',
@@ -2297,8 +2297,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'notice' => array(
-				'icon-code' => '\e81d',					// Icon CSS code.
 				'icon-font' => 'WpssoIcons',				// Icon font family.
+				'icon-code' => '\e81d',					// Icon CSS code.
 				'css-class' => array(					// Used by WpssoStyle->add_admin_page_style().
 					'update-nag' => array(				// CSS class name.
 						'color'            => '#144e14',	// CSS property name and value.
