@@ -318,7 +318,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* Removed support for the rtMedia plugin (Premium version).
 * **Improvements**
-	* Fine-tuned the CSS for metabox tabs.
+	* Fine-tuned the CSS for settings and Document SSO metabox tabs.
 	* Renamed the "SSO" menu item to "SSO (Social and Search Optimization)".
 * **Bugfixes**
 	* Fixed merging of new plugin / add-on options keys during update.
