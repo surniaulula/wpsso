@@ -410,3 +410,56 @@ if ( ! function_exists( 'wpsso_get_post_primary_category' ) ) {
 		return $wpsso->post->get_primary_term_id( $mod, $tax_slug );
 	}
 }
+
+/**
+ * Wrapper for the Yoast SEO wpseo_replace_vars() function.
+ */
+if ( ! function_exists( 'wpsso_wpseo_replace_vars' ) ) {
+
+	function wpsso_wpseo_replace_vars( $text, $obj ) {
+
+		$wpsso =& Wpsso::get_instance();
+
+		if ( ! function_exists( 'wpseo_replace_vars' ) ) {	// Yoast SEO must be active.
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'exiting early: wpseo_replace_vars() not found' );
+			}
+
+			return $text;
+
+		} elseif ( empty( $text ) || ! is_string( $text ) ) {	// Just in case.
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'exiting early: text is empty or not a string' );
+			}
+
+			return $text;
+
+		} elseif ( false === strpos( $text, '%%' ) ) {
+		
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'exiting early: no inline variables in text = ' . $text );
+			}
+
+			return $text;
+		}
+
+		if ( $wpsso->debug->enabled ) {
+
+			$wpsso->debug->log( 'inline variables before: ' . $text );
+		}
+
+		$text = wpseo_replace_vars( $text, $obj );
+
+		if ( $wpsso->debug->enabled ) {
+
+			$wpsso->debug->log( 'inline variables after: ' . $text );
+		}
+
+		return $text;
+	}
+}

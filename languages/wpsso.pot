@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.26.4-dev.2\n"
+"Project-Id-Version: WPSSO Core 8.26.4-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3340,11 +3340,11 @@ msgstr ""
 msgid "Imported Yoast SEO \"%1$s\" metadata from post ID %2$d."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:229 lib/pro/util/wpseo-meta.php:301
+#: gettext/gettext-lib-pro.php:229 lib/pro/util/wpseo-meta.php:295
 msgid "Imported Yoast SEO \"%1$s\" metadata from term ID %2$d."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:230 lib/pro/util/wpseo-meta.php:408
+#: gettext/gettext-lib-pro.php:230 lib/pro/util/wpseo-meta.php:396
 msgid "Imported Yoast SEO \"%1$s\" metadata from user ID %2$d."
 msgstr ""
 

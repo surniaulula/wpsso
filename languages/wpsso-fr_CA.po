@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 8.26.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-04-22 07:59-0700\n"
+"PO-Revision-Date: 2021-04-22 08:42-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -5401,7 +5401,7 @@ msgid "Import the Yoast SEO custom social meta text for Posts, Terms, and Users.
 msgstr "Importer le texte méta social personnalisé de Yoast SEO pour les articles, termes, et utilisateurs."
 
 #: lib/messages.php:1028
-msgid "This option is checked by default if the Yoast SEO plugin is active, or no SEO plugin is active and Yoast SEO settings are found in the database."
+msgid "This option is checked by default if the Yoast SEO plugin is active, or if no SEO plugin is active and Yoast SEO settings are found in the database."
 msgstr "Cette option est cochée par défaut si l'extension Yoast SEO est active, ou si aucune extension SEO n'est active et que les réglages Yoast SEO sont trouvés dans la base de données."
 
 #: lib/messages.php:1034
