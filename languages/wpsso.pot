@@ -5874,7 +5874,7 @@ msgstr ""
 
 #: lib/messages.php:887
 msgid ""
-"The title value that WordPress provides to %s may include modifications by "
+"The title value that WordPress provides to %s may include modifications from "
 "themes and/or other SEO plugins (appending the site name or expanding inline "
 "variables, for example, is a common practice)."
 msgstr ""

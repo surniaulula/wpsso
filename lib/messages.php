@@ -884,7 +884,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								_x( 'checked', 'option value', 'wpsso' ) :
 								_x( 'unchecked', 'option value', 'wpsso' );
 
-							$text = sprintf( __( 'The title value that WordPress provides to %s may include modifications by themes and/or other SEO plugins (appending the site name or expanding inline variables, for example, is a common practice).', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'name' ] ) . ' ';
+							$text = sprintf( __( 'The title value that WordPress provides to %s may include modifications from themes and/or other SEO plugins (appending the site name or expanding inline variables, for example, is a common practice).', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'name' ] ) . ' ';
 
 							$text .= sprintf( __( 'Uncheck this option to always use the original unmodified title value from WordPress (default is %1$s) or enable this option to allow themes and plugins to modify the title value provided to %2$s.', 'wpsso' ), $def_checked, $pkg_info[ 'wpsso' ][ 'name' ] ) . ' ';
 

@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.26.3\n"
+"Project-Id-Version: WPSSO Core 8.26.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-04-21 12:04-0700\n"
+"PO-Revision-Date: 2021-04-22 07:59-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -956,8 +956,6 @@ msgid "SSO (Social and Search Optimization)"
 msgstr "SSO (optimisation sociale et de recherche)"
 
 #: gettext/gettext-lib-config.php:103
-#| msgctxt "menu title"
-#| msgid "SSO"
 msgctxt "notice title"
 msgid "SSO"
 msgstr "SSO"
@@ -2187,8 +2185,8 @@ msgstr "Titre du document de la page Web"
 #: gettext/gettext-lib-pro.php:21 lib/pro/admin/advanced.php:152
 #: lib/std/admin/advanced.php:155
 msgctxt "option label"
-msgid "Use WordPress Title Filters"
-msgstr "Utiliser les filtres de titre WP"
+msgid "Use WordPress \"SEO\" Title Filters"
+msgstr "Utiliser les filtres \"SEO\" de titre WP"
 
 #: gettext/gettext-lib-pro.php:22 gettext/gettext-lib-pro.php:40
 #: gettext/gettext-lib-pro.php:132 lib/pro/admin/advanced.php:155
@@ -3294,8 +3292,8 @@ msgstr "ajout d’images schéma"
 
 #: lib/admin-filters.php:73
 msgctxt "lib file description"
-msgid "(feature) Use WordPress Title Filters"
-msgstr "(feature) Utiliser les filtres de titre WP"
+msgid "(feature) Use WordPress \"SEO\" Title Filters"
+msgstr "(feature) Utiliser les filtres \"SEO\" de titre WP"
 
 #: lib/admin-filters.php:80
 msgctxt "lib file description"
@@ -5258,12 +5256,12 @@ msgid "The %1$s HTML tag value is used by web browsers to display the current we
 msgstr "La valeur de la balise HTML %1$s est utilisée par les navigateurs Web pour afficher le titre de la page Web actuelle dans l'onglet du navigateur."
 
 #: lib/messages.php:887
-msgid "The default title value provided by WordPress may include modifications by themes and/or other SEO plugins (appending the site name or expanding inline variables, for example, is a common practice)."
-msgstr "Les valeurs de titre fournies par WordPress peuvent inclure des modifications de thèmes et/ou d'autres extensions SEO (l'ajout du nom du site ou le remplacement de variables, par exemple, est une pratique courante)."
+msgid "The title value that WordPress provides to %s may include modifications from themes and/or other SEO plugins (appending the site name or expanding inline variables, for example, is a common practice)."
+msgstr "La valeur de titre que WordPress fournit à %s peut inclure des modifications à partir de thèmes et/ou d'autres extensions SEO (l'ajout du nom du site ou l'expansion des variables en ligne, par exemple, est une pratique courante)."
 
 #: lib/messages.php:889
-msgid "Uncheck this option to always use the original unmodified title value from WordPress (default is %s)."
-msgstr "Décochez cette option pour toujours utiliser la valeur originale non-modifiée de WordPress (la valeur par défaut est %s)."
+msgid "Uncheck this option to always use the original unmodified title value from WordPress (default is %1$s) or enable this option to allow themes and plugins to modify the title value provided to %2$s."
+msgstr "Décochez cette option pour toujours utiliser la valeur du titre d'origine non modifiée de WordPress (%1$s par défaut) ou activez cette option pour permettre aux thèmes et aux extensions de modifier la valeur du titre fournie à %2$s."
 
 #: lib/messages.php:895 lib/messages.php:2806
 msgid "The use of WordPress content filters allows %s to fully render your content text for meta tag descriptions and detect additional images and/or embedded videos provided by shortcodes."
