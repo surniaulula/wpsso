@@ -6094,8 +6094,8 @@ msgstr ""
 
 #: lib/messages.php:1028
 msgid ""
-"This option is checked by default if the Yoast SEO plugin is active, or no "
-"SEO plugin is active and Yoast SEO settings are found in the database."
+"This option is checked by default if the Yoast SEO plugin is active, or if "
+"no SEO plugin is active and Yoast SEO settings are found in the database."
 msgstr ""
 
 #: lib/messages.php:1034

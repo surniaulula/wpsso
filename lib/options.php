@@ -444,8 +444,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				/**
 				 * Import Yoast SEO Social Meta.
 				 *
-				 * Enabled by default if the Yoast SEO plugin is active, or no SEO plugin is active and Yoast SEO
-				 * settings are found in the database.
+				 * Enabled by default if the Yoast SEO plugin is active, or if no SEO plugin is active and Yoast
+				 * SEO settings are found in the database.
 				 */
 				if ( ! empty( $this->p->avail[ 'seo' ][ 'wpseo' ] ) ) {	// Yoast SEO is active.
 

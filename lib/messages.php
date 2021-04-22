@@ -1025,7 +1025,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = __( 'Import the Yoast SEO custom social meta text for Posts, Terms, and Users.', 'wpsso' ) . ' ';
 
-							$text .= __( 'This option is checked by default if the Yoast SEO plugin is active, or no SEO plugin is active and Yoast SEO settings are found in the database.', 'wpsso' );
+							$text .= __( 'This option is checked by default if the Yoast SEO plugin is active, or if no SEO plugin is active and Yoast SEO settings are found in the database.', 'wpsso' );
 
 							break;
 
