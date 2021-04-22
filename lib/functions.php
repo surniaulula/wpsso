@@ -429,20 +429,13 @@ if ( ! function_exists( 'wpsso_wpseo_replace_vars' ) ) {
 
 			return $text;
 
-		} elseif ( empty( $text ) || ! is_string( $text ) ) {	// Just in case.
-
-			if ( $wpsso->debug->enabled ) {
-
-				$wpsso->debug->log( 'exiting early: text is empty or not a string' );
-			}
-
-			return $text;
-
-		} elseif ( false === strpos( $text, '%%' ) ) {
+		}
+		
+		if ( ! is_object( $obj ) ) {	// Just in case.
 		
 			if ( $wpsso->debug->enabled ) {
 
-				$wpsso->debug->log( 'exiting early: no inline variables in text = ' . $text );
+				$wpsso->debug->log( 'exiting early: $obj is not an object' );
 			}
 
 			return $text;
@@ -450,14 +443,50 @@ if ( ! function_exists( 'wpsso_wpseo_replace_vars' ) ) {
 
 		if ( $wpsso->debug->enabled ) {
 
-			$wpsso->debug->log( 'inline variables before: ' . $text );
+			$id_str = 'unknown id';
+
+			if ( isset( $obj->ID ) ) {	// Most common.
+	
+				$id_str = 'id ' . $obj->ID;
+
+			} elseif ( isset( $obj->term_id ) ) {
+
+				$id_str = 'term id ' . $obj->term_id;
+			}
+
+			$wpsso->debug->log( 'given object is ' . get_class( $obj ) . ' with ' . $id_str );
+		}
+
+		if ( empty( $text ) || ! is_string( $text ) ) {	// Just in case.
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'exiting early: $text is empty or not a string' );
+			}
+
+			return $text;
+		}
+		
+		if ( false === strpos( $text, '%%' ) ) {
+		
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'exiting early: no inline vars in text = ' . $text );
+			}
+
+			return $text;
+		}
+
+		if ( $wpsso->debug->enabled ) {
+
+			$wpsso->debug->log( 'text before replace vars: ' . $text );
 		}
 
 		$text = wpseo_replace_vars( $text, $obj );
 
 		if ( $wpsso->debug->enabled ) {
 
-			$wpsso->debug->log( 'inline variables after: ' . $text );
+			$wpsso->debug->log( 'text after replace vars: ' . $text );
 		}
 
 		return $text;
