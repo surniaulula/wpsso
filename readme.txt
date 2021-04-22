@@ -313,7 +313,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.26.4-b.2 (2021/04/22)**
+**Version 8.26.4-rc.1 (2021/04/23)**
 
 * **New Features**
 	* Removed support for the rtMedia plugin (Premium version).
@@ -1183,9 +1183,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.26.4-b.2 =
+= 8.26.4-rc.1 =
 
-(2021/04/22) Removed support for the rtMedia plugin (Premium version). Fixed merging of new plugin / add-on options keys during update.
+(2021/04/23) Removed support for the rtMedia plugin (Premium version). Fixed merging of new plugin / add-on options keys during update. Refactored the Yoast SEO integration module (Premium version).
 
 = 8.26.3 =
 
