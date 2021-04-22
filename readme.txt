@@ -313,7 +313,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.26.4-dev.2 (2021/04/22)**
+**Version 8.26.4-dev.3 (2021/04/22)**
 
 * **New Features**
 	* Removed support for the rtMedia plugin (Premium version).
@@ -323,6 +323,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed merging of new plugin / add-on options keys during update.
 * **Developer Notes**
+	* Added a new `wpsso_wpseo_replace_vars()` wrapper function.
 	* Refactored the Yoast SEO integration module to standardize the use of `wpseo_replace_vars()` (Premium version).
 * **Requires At Least**
 	* PHP v7.0.
@@ -1182,7 +1183,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.26.4-dev.2 =
+= 8.26.4-dev.3 =
 
 (2021/04/22) Removed support for the rtMedia plugin (Premium version). Fixed merging of new plugin / add-on options keys during update.
 
