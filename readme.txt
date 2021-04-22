@@ -313,7 +313,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.26.4-dev.1 (2021/04/20)**
+**Version 8.26.4-dev.2 (2021/04/22)**
 
 * **New Features**
 	* Removed support for the rtMedia plugin (Premium version).
@@ -1182,9 +1182,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.26.4-dev.1 =
+= 8.26.4-dev.2 =
 
-(2021/04/20) Removed support for the rtMedia plugin (Premium version). Fixed merging of new plugin / add-on options keys during update.
+(2021/04/22) Removed support for the rtMedia plugin (Premium version). Fixed merging of new plugin / add-on options keys during update.
 
 = 8.26.3 =
 
