@@ -479,14 +479,14 @@ if ( ! function_exists( 'wpsso_wpseo_replace_vars' ) ) {
 
 		if ( $wpsso->debug->enabled ) {
 
-			$wpsso->debug->log( 'text before replace vars: ' . $text );
+			$wpsso->debug->log( 'wpseo replace vars before: ' . $text );
 		}
 
 		$text = wpseo_replace_vars( $text, $obj );
 
 		if ( $wpsso->debug->enabled ) {
 
-			$wpsso->debug->log( 'text after replace vars: ' . $text );
+			$wpsso->debug->log( 'wpseo replace vars after: ' . $text );
 		}
 
 		return $text;
