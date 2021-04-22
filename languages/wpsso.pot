@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.26.3\n"
+"Project-Id-Version: WPSSO Core 8.26.4-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2454,7 +2454,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:21 lib/pro/admin/advanced.php:152
 #: lib/std/admin/advanced.php:155
 msgctxt "option label"
-msgid "Use WordPress Title Filters"
+msgid "Use WordPress \"SEO\" Title Filters"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:22 gettext/gettext-lib-pro.php:40
@@ -3592,7 +3592,7 @@ msgstr ""
 
 #: lib/admin-filters.php:73
 msgctxt "lib file description"
-msgid "(feature) Use WordPress Title Filters"
+msgid "(feature) Use WordPress \"SEO\" Title Filters"
 msgstr ""
 
 #: lib/admin-filters.php:80
@@ -5874,7 +5874,7 @@ msgstr ""
 
 #: lib/messages.php:887
 msgid ""
-"The default title value provided by WordPress may include modifications by "
+"The title value that WordPress provides to %s may include modifications by "
 "themes and/or other SEO plugins (appending the site name or expanding inline "
 "variables, for example, is a common practice)."
 msgstr ""
@@ -5882,7 +5882,8 @@ msgstr ""
 #: lib/messages.php:889
 msgid ""
 "Uncheck this option to always use the original unmodified title value from "
-"WordPress (default is %s)."
+"WordPress (default is %1$s) or enable this option to allow themes and "
+"plugins to modify the title value provided to %2$s."
 msgstr ""
 
 #: lib/messages.php:895 lib/messages.php:2806

@@ -68,9 +68,9 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 
 			$features[ '(feature) Upscale Media Library Images' ][ 'label_url' ] = $integ_tab_url;
 
-			$features[ '(feature) Use WordPress Title Filters' ] = array(
+			$features[ '(feature) Use WordPress "SEO" Title Filters' ] = array(
 				'td_class'     => $td_class,
-				'label_transl' => _x( '(feature) Use WordPress Title Filters', 'lib file description', 'wpsso' ),
+				'label_transl' => _x( '(feature) Use WordPress "SEO" Title Filters', 'lib file description', 'wpsso' ),
 				'label_url'    => $integ_tab_url,
 				'status'       => $this->p->options[ 'plugin_filter_title' ] ? $status_on : 'off',
 			);

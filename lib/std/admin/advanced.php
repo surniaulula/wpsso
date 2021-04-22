@@ -152,7 +152,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					$this->p->msgs->maybe_title_tag_disabled() . '</td>';
 
 			$table_rows[ 'plugin_filter_title' ] = '' . 
-				$form->get_th_html( _x( 'Use WordPress Title Filters', 'option label', 'wpsso' ),
+				$form->get_th_html( _x( 'Use WordPress "SEO" Title Filters', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_filter_title' ) . 
 				$form->get_no_td_checkbox( 'plugin_filter_title', _x( 'not recommended', 'option comment', 'wpsso' ) );
 

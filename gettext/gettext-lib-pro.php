@@ -18,7 +18,7 @@ _x( 'and max width', 'option comment', 'wpsso' );
 _x( 'Default for Posts / Pages List', 'option label', 'wpsso' );
 _x( 'and max width', 'option comment', 'wpsso' );
 _x( 'Webpage Document Title', 'option label', 'wpsso' );
-_x( 'Use WordPress Title Filters', 'option label', 'wpsso' );
+_x( 'Use WordPress "SEO" Title Filters', 'option label', 'wpsso' );
 _x( 'not recommended', 'option comment', 'wpsso' );
 _x( 'Use WordPress Content Filters', 'option label', 'wpsso' );
 _x( 'recommended (see help text)', 'option comment', 'wpsso' );

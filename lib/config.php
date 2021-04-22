@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.26.3',	// Plugin version.
+					'version'     => '8.26.4-dev.2',	// Plugin version.
 					'opt_version' => '782',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1690,7 +1690,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Advanced Settings > Integration tab.
 					 */
 					'plugin_document_title'     => 'wp_title',		// Webpage Document Title.
-					'plugin_filter_title'       => 0,			// Use WordPress Title Filters.
+					'plugin_filter_title'       => 0,			// Use WordPress "SEO" Title Filters.
 					'plugin_filter_content'     => 0,			// Use WordPress Content Filters.
 					'plugin_filter_excerpt'     => 0,			// Use WordPress Excerpt Filters.
 					'plugin_p_strip'            => 1,			// Content Starts at 1st Paragraph.
