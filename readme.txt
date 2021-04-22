@@ -323,7 +323,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed merging of new plugin / add-on options keys during update.
 * **Developer Notes**
-	* None.
+	* Refactored the Yoast SEO integration module to standardize the use of `wpseo_replace_vars()` (Premium version).
 * **Requires At Least**
 	* PHP v7.0.
 	* WordPress v4.5.
