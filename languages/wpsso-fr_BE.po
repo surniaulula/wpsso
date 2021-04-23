@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.26.4\n"
+"Project-Id-Version: WPSSO Core 8.27.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-04-23 10:35-0700\n"
+"PO-Revision-Date: 2021-04-23 12:59-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -8239,11 +8239,3 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
-
-#~ msgctxt "option label"
-#~ msgid "Use WordPress Content Filters"
-#~ msgstr "Utiliser les filtres de contenu WP"
-
-#~ msgctxt "option label"
-#~ msgid "Use WordPress Excerpt Filters"
-#~ msgstr "Utiliser les filtres d'extrait WP"
