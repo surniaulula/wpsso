@@ -1462,7 +1462,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				if ( is_admin() ) {
 
 					$error_pre = sprintf( '%s error:', __METHOD__ );
-
 					$error_msg = sprintf( __( 'Error reading the %s file for the product categories list.', 'wpsso' ), $text_list_file );
 
 					$this->p->notice->err( $error_msg );
@@ -1586,7 +1585,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				if ( $is_admin ) {
 
-					$this->p->notice->err( sprintf( __( 'The %1$s request argument is not HTML or a valid URL.', 'wpsso' ), __FUNCTION__ ) );
+					$this->p->notice->err( sprintf( __( 'The <code>%1$s</code> request argument is not HTML or a valid URL.',
+						'wpsso' ), __METHOD__ . '()' ) );
 				}
 
 				return false;
@@ -1899,9 +1899,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		/**
 		 * Allow the variables and values array to be extended.
 		 *
-		 * $extra must be an associative array with key/value pairs to be replaced.
+		 * $atts can be an associative array with additional information ('url', 'short_url', 'add_page', etc.).
+		 *
+		 * $extra can be an associative array with key/value pairs to be replaced.
 		 */
-		public function replace_inline_vars( $content, $mod = false, $atts = array(), $extra = array() ) {
+		public function replace_inline_vars( $content, $mod = false, array $atts = array(), array $extra = array() ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1934,7 +1936,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$replace_vars = $this->get_inline_vars();
-
 			$replace_vals = $this->get_inline_vals( $mod, $atts );
 
 			if ( ! empty( $extra ) && self::is_assoc( $extra ) ) {
@@ -1942,13 +1943,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				foreach ( $extra as $match => $replace ) {
 
 					$replace_vars[] = '%%' . $match . '%%';
-
 					$replace_vals[] = $replace;
 				}
 			}
 
 			ksort( $replace_vars );
-
 			ksort( $replace_vals );
 
 			return str_replace( $replace_vars, $replace_vals, $content );
@@ -2006,9 +2005,10 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			if ( empty( $atts[ 'short_url' ] ) ) {
 
 				$shortener = $this->p->options[ 'plugin_shortener' ];
-
 				$short_url = apply_filters( 'wpsso_get_short_url', $sharing_url, $shortener, $mod, $is_main = true );
+
 			} else {
+
 				$short_url = $atts[ 'short_url' ];
 			}
 

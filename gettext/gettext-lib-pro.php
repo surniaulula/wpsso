@@ -213,6 +213,7 @@ __( 'NextGEN Gallery', 'wpsso' );
 __( 'image ID %s', 'wpsso' );
 __( '%1$s %2$s ignored &mdash; the resulting resized image of %3$s is too small for the required %4$s image dimensions.', 'wpsso' );
 __( 'NextGEN Gallery', 'wpsso' );
+__( 'The Yoast SEO <code>%1$s</code> method is missing &ndash; if you are using an older version of Yoast SEO, please update now.', 'wpsso' );
 __( 'The "%s" option value is empty and required.', 'wpsso' );
 _x( 'Bitly Generic Access Token', 'option label', 'wpsso' );
 __( 'The "%s" option value is empty and required.', 'wpsso' );

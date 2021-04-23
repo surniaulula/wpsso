@@ -319,5 +319,7 @@
 
 'wpsso_variation_title' ( $title, $variation )
 
+'wpsso_wpseo_replace_vars' ( $text, $obj )
+
 'wpsso_yearly_archive_description' ( $desc_text, $mod )
 

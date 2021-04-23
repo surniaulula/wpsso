@@ -73,6 +73,16 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 
 				add_filter( 'pre_update_option_wr2x_retina_sizes', array( $this, 'update_wr2x_retina_sizes' ), 10, 1 );
 			}
+
+			/**
+			 * Yoast SEO.
+			 */
+			if ( ! empty( $this->p->avail[ 'seo' ][ 'wpseo' ] ) ) {
+
+				$this->p->util->add_plugin_filters( $this, array( 
+					'wpseo_replace_vars' => 2,
+				) );
+			}
 		}
 
 		public function back_end_hooks() {
@@ -464,6 +474,85 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			 * Prevent SNAP from adding meta tags for the Facebook user agent.
 			 */
 			remove_action( 'wp_head', 'nxs_addOGTagsPreHolder', 150 );
+		}
+
+
+		public function filter_wpseo_replace_vars( $text, $obj ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			if ( ! function_exists( 'wpseo_replace_vars' ) ) {	// Just in case.
+	
+				if ( $this->p->debug->enabled ) {
+	
+					$this->p->debug->log( 'exiting early: wpseo_replace_vars() not found' );
+				}
+	
+				return $text;
+			}
+			
+			if ( ! is_object( $obj ) ) {	// Just in case.
+			
+				if ( $this->p->debug->enabled ) {
+	
+					$this->p->debug->log( 'exiting early: $obj is not an object' );
+				}
+	
+				return $text;
+			}
+	
+			if ( $this->p->debug->enabled ) {
+	
+				$id_str = 'unknown id';
+	
+				if ( isset( $obj->ID ) ) {	// Most common.
+		
+					$id_str = 'id ' . $obj->ID;
+	
+				} elseif ( isset( $obj->term_id ) ) {
+	
+					$id_str = 'term id ' . $obj->term_id;
+				}
+	
+				$this->p->debug->log( 'given object is ' . get_class( $obj ) . ' with ' . $id_str );
+			}
+	
+			if ( empty( $text ) || ! is_string( $text ) ) {	// Just in case.
+	
+				if ( $this->p->debug->enabled ) {
+	
+					$this->p->debug->log( 'exiting early: $text is empty or not a string' );
+				}
+	
+				return $text;
+			}
+			
+			if ( false === strpos( $text, '%%' ) ) {
+			
+				if ( $this->p->debug->enabled ) {
+	
+					$this->p->debug->log( 'exiting early: no inline vars in text = ' . $text );
+				}
+	
+				return $text;
+			}
+	
+			if ( $this->p->debug->enabled ) {
+	
+				$this->p->debug->log( 'wpseo replace vars before: ' . $text );
+			}
+	
+			$text = wpseo_replace_vars( $text, $obj );
+	
+			if ( $this->p->debug->enabled ) {
+	
+				$this->p->debug->log( 'wpseo replace vars after: ' . $text );
+			}
+	
+			return $text;
 		}
 
 		public function filter_admin_page_style_css_rank_math( $custom_style_css ) {
