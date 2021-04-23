@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 8.27.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-04-23 12:59-0700\n"
+"PO-Revision-Date: 2021-04-23 13:15-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3792,8 +3792,8 @@ msgid "<a href=\"%s\">Community Support Forum</a>"
 msgstr "<a href=\"%s\">Forum de soutien communautaire</a>"
 
 #: lib/admin.php:2119
-msgid "Active plugins"
-msgstr "Extensions actives"
+msgid "Rate your active plugins:"
+msgstr "Notez vos extensions actives:"
 
 #: lib/admin.php:2172
 msgid "Feature is disabled."
