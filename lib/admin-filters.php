@@ -68,23 +68,23 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 
 			$features[ '(feature) Upscale Media Library Images' ][ 'label_url' ] = $integ_tab_url;
 
-			$features[ '(feature) Use WordPress "SEO" Title Filters' ] = array(
+			$features[ '(feature) Use Filtered "SEO" Title' ] = array(
 				'td_class'     => $td_class,
-				'label_transl' => _x( '(feature) Use WordPress "SEO" Title Filters', 'lib file description', 'wpsso' ),
+				'label_transl' => _x( '(feature) Use Filtered "SEO" Title', 'lib file description', 'wpsso' ),
 				'label_url'    => $integ_tab_url,
 				'status'       => $this->p->options[ 'plugin_filter_title' ] ? $status_on : 'off',
 			);
 
-			$features[ '(feature) Use WordPress Content Filters' ] = array(
+			$features[ '(feature) Use Filtered Content' ] = array(
 				'td_class'     => $td_class,
-				'label_transl' => _x( '(feature) Use WordPress Content Filters', 'lib file description', 'wpsso' ),
+				'label_transl' => _x( '(feature) Use Filtered Content', 'lib file description', 'wpsso' ),
 				'label_url'    => $integ_tab_url,
 				'status'       => $this->p->options[ 'plugin_filter_content' ] ? $status_on : 'recommended',
 			);
 
-			$features[ '(feature) Use WordPress Excerpt Filters' ] = array(
+			$features[ '(feature) Use Filtered Excerpt' ] = array(
 				'td_class'     => $td_class,
-				'label_transl' => _x( '(feature) Use WordPress Excerpt Filters', 'lib file description', 'wpsso' ),
+				'label_transl' => _x( '(feature) Use Filtered Excerpt', 'lib file description', 'wpsso' ),
 				'label_url'    => $integ_tab_url,
 				'status'       => $this->p->options[ 'plugin_filter_excerpt' ] ? $status_on : 'off',
 			);

@@ -152,17 +152,17 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					$this->p->msgs->maybe_title_tag_disabled() . '</td>';
 
 			$table_rows[ 'plugin_filter_title' ] = '' . 
-				$form->get_th_html( _x( 'Use WordPress "SEO" Title Filters', 'option label', 'wpsso' ),
+				$form->get_th_html( _x( 'Use Filtered "SEO" Title', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_filter_title' ) . 
 				$form->get_no_td_checkbox( 'plugin_filter_title', _x( 'not recommended', 'option comment', 'wpsso' ) );
 
 			$table_rows[ 'plugin_filter_content' ] = '' . 
-				$form->get_th_html( _x( 'Use WordPress Content Filters', 'option label', 'wpsso' ),
+				$form->get_th_html( _x( 'Use Filtered Content', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_filter_content' ) . 
 				$form->get_no_td_checkbox( 'plugin_filter_content', _x( 'recommended (see help text)', 'option comment', 'wpsso' ) );
 
 			$table_rows[ 'plugin_filter_excerpt' ] = '' . 
-				$form->get_th_html( _x( 'Use WordPress Excerpt Filters', 'option label', 'wpsso' ),
+				$form->get_th_html( _x( 'Use Filtered Excerpt', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_filter_excerpt' ) . 
 				$form->get_no_td_checkbox( 'plugin_filter_excerpt', _x( 'recommended if using shortcodes in excerpts', 'option comment', 'wpsso' ) );
 
@@ -197,12 +197,12 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'<td class="blank">' . SucomUtil::get_key_value( 'plugin_no_desc_text', $form->options ) . '</td>';
 
 			$table_rows[ 'plugin_page_excerpt' ] = '' . 
-				$form->get_th_html( _x( 'Enable WP Excerpt for Pages', 'option label', 'wpsso' ),
+				$form->get_th_html( _x( 'Enable Excerpt for Pages', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_page_excerpt' ) . 
 				$form->get_no_td_checkbox( 'plugin_page_excerpt' );
 
 			$table_rows[ 'plugin_page_tags' ] = $form->get_tr_hide( 'basic', 'plugin_page_tags' ) .
-				$form->get_th_html( _x( 'Enable WP Tags for Pages', 'option label', 'wpsso' ),
+				$form->get_th_html( _x( 'Enable Tags for Pages', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_page_tags' ) . 
 				$form->get_no_td_checkbox( 'plugin_page_tags' );
 

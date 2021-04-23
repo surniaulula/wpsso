@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.26.4-rc.2\n"
+"Project-Id-Version: WPSSO Core 8.26.4-rc.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1511,7 +1511,7 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:160
 msgctxt "option value"
-msgid "WordPress Title"
+msgid "[WordPress Title]"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:161
@@ -2454,7 +2454,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:21 lib/pro/admin/advanced.php:152
 #: lib/std/admin/advanced.php:155
 msgctxt "option label"
-msgid "Use WordPress \"SEO\" Title Filters"
+msgid "Use Filtered \"SEO\" Title"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:22 gettext/gettext-lib-pro.php:40
@@ -2468,7 +2468,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:23 lib/messages.php:2800
 #: lib/pro/admin/advanced.php:158 lib/std/admin/advanced.php:160
 msgctxt "option label"
-msgid "Use WordPress Content Filters"
+msgid "Use Filtered Content"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:24 lib/pro/admin/advanced.php:161
@@ -2480,7 +2480,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:25 lib/pro/admin/advanced.php:164
 #: lib/std/admin/advanced.php:165
 msgctxt "option label"
-msgid "Use WordPress Excerpt Filters"
+msgid "Use Filtered Excerpt"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:26 lib/pro/admin/advanced.php:167
@@ -2528,13 +2528,13 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:33 lib/pro/admin/advanced.php:200
 #: lib/std/admin/advanced.php:200
 msgctxt "option label"
-msgid "Enable WP Excerpt for Pages"
+msgid "Enable Excerpt for Pages"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:34 lib/pro/admin/advanced.php:205
 #: lib/std/admin/advanced.php:205
 msgctxt "option label"
-msgid "Enable WP Tags for Pages"
+msgid "Enable Tags for Pages"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:35 lib/pro/admin/advanced.php:210
@@ -3548,7 +3548,7 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:289 lib/edit.php:504 lib/page.php:1276
+#: gettext/gettext-lib-pro.php:289 lib/edit.php:504 lib/page.php:1277
 #: lib/pro/social/buddypress.php:664
 msgctxt "default description"
 msgid "No Description."
@@ -3599,17 +3599,17 @@ msgstr ""
 
 #: lib/admin-filters.php:73
 msgctxt "lib file description"
-msgid "(feature) Use WordPress \"SEO\" Title Filters"
+msgid "(feature) Use Filtered \"SEO\" Title"
 msgstr ""
 
 #: lib/admin-filters.php:80
 msgctxt "lib file description"
-msgid "(feature) Use WordPress Content Filters"
+msgid "(feature) Use Filtered Content"
 msgstr ""
 
 #: lib/admin-filters.php:87
 msgctxt "lib file description"
-msgid "(feature) Use WordPress Excerpt Filters"
+msgid "(feature) Use Filtered Excerpt"
 msgstr ""
 
 #: lib/admin-filters.php:100
@@ -4984,7 +4984,7 @@ msgctxt "option label"
 msgid "Facebook / Open Graph Example"
 msgstr ""
 
-#: lib/edit.php:501 lib/page.php:1574
+#: lib/edit.php:501 lib/page.php:1575
 msgctxt "default title"
 msgid "No Title"
 msgstr ""
@@ -5881,7 +5881,7 @@ msgstr ""
 
 #: lib/messages.php:887
 msgid ""
-"The title value that WordPress provides to %s may include modifications from "
+"The title value provided by WordPress to %1$s may include modifications from "
 "themes and/or other SEO plugins (appending the site name or expanding inline "
 "variables, for example, is a common practice)."
 msgstr ""
@@ -8042,60 +8042,60 @@ msgid ""
 "its default value."
 msgstr ""
 
-#: lib/page.php:1057 lib/page.php:1062 lib/page.php:1179
+#: lib/page.php:1058 lib/page.php:1063 lib/page.php:1180
 msgctxt "default description"
 msgid "Archive for %s."
 msgstr ""
 
-#: lib/page.php:1150
+#: lib/page.php:1151
 msgctxt "default description"
 msgid "Tag archive for %s."
 msgstr ""
 
-#: lib/page.php:1163
+#: lib/page.php:1164
 msgctxt "default description"
 msgid "Category archive for %s."
 msgstr ""
 
-#: lib/page.php:1195
+#: lib/page.php:1196
 msgctxt "default description"
 msgid "Authored by %s."
 msgstr ""
 
-#: lib/page.php:1213
+#: lib/page.php:1214
 msgid "Search Results for &#8220;%s&#8221;"
 msgstr ""
 
-#: lib/page.php:1223
+#: lib/page.php:1224
 msgctxt "default description"
 msgid "Yearly archive for %s."
 msgstr ""
 
-#: lib/page.php:1229
+#: lib/page.php:1230
 msgctxt "default description"
 msgid "Monthly archive for %s."
 msgstr ""
 
-#: lib/page.php:1235
+#: lib/page.php:1236
 msgctxt "default description"
 msgid "Daily archive for %s."
 msgstr ""
 
-#: lib/page.php:1242
+#: lib/page.php:1243
 msgctxt "default description"
 msgid "Archive page."
 msgstr ""
 
-#: lib/page.php:1440 lib/page.php:1444
+#: lib/page.php:1441 lib/page.php:1445
 msgctxt "default title"
 msgid "%s Archive"
 msgstr ""
 
-#: lib/page.php:1526
+#: lib/page.php:1527
 msgid "Search Results %1$s %2$s"
 msgstr ""
 
-#: lib/page.php:1655
+#: lib/page.php:1656
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] ""

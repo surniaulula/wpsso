@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.26.4-rc.2',	// Plugin version.
+					'version'     => '8.26.4-rc.3',	// Plugin version.
 					'opt_version' => '782',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1690,17 +1690,17 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Advanced Settings > Integration tab.
 					 */
 					'plugin_document_title'     => 'wp_title',		// Webpage Document Title.
-					'plugin_filter_title'       => 0,			// Use WordPress "SEO" Title Filters.
-					'plugin_filter_content'     => 0,			// Use WordPress Content Filters.
-					'plugin_filter_excerpt'     => 0,			// Use WordPress Excerpt Filters.
+					'plugin_filter_title'       => 0,			// Use Filtered "SEO" Title.
+					'plugin_filter_content'     => 0,			// Use Filtered Content.
+					'plugin_filter_excerpt'     => 0,			// Use Filtered Excerpt.
 					'plugin_p_strip'            => 1,			// Content Starts at 1st Paragraph.
 					'plugin_use_img_alt'        => 1,			// Use Image Alt if No Content.
 					'plugin_img_alt_prefix'     => 'Image:',		// Content Image Alt Prefix.
 					'plugin_p_cap_prefix'       => 'Caption:',		// WP Caption Text Prefix.
 					'plugin_no_title_text'      => 'No Title',		// No Title Text.
 					'plugin_no_desc_text'       => 'No Description.',	// No Description Text.
-					'plugin_page_excerpt'       => 0,			// Enable WP Excerpt for Pages.
-					'plugin_page_tags'          => 0,			// Enable WP Tags for Pages.
+					'plugin_page_excerpt'       => 0,			// Enable Excerpt for Pages.
+					'plugin_page_tags'          => 0,			// Enable Tags for Pages.
 					'plugin_new_user_is_person' => 0,			// Add Person Role for New Users.
 					'plugin_check_head'         => 1,			// Check for Duplicate Meta Tags.
 					'plugin_check_img_dims'     => 0,			// Enforce Image Dimension Checks.
@@ -2412,7 +2412,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'tz'         => 'tz',
 				),
 				'document_title' => array(	// Webpage Document Title.
-					'wp_title'         => 'WordPress Title',
+					'wp_title'         => '[WordPress Title]',
 					'og_title'         => 'Document SSO Default Title',
 					'schema_title'     => 'Document SSO Schema Name (Title)',
 					'schema_title_alt' => 'Document SSO Schema Alternate Name',

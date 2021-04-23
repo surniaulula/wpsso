@@ -878,19 +878,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_filter_title':	// Use WordPress "SEO" Title Filters.
+						case 'tooltip-plugin_filter_title':	// Use Filtered "SEO" Title.
 
 							$def_checked = $this->p->opt->get_defaults( 'plugin_filter_title' ) ?
 								_x( 'checked', 'option value', 'wpsso' ) :
 								_x( 'unchecked', 'option value', 'wpsso' );
 
-							$text = sprintf( __( 'The title value that WordPress provides to %s may include modifications from themes and/or other SEO plugins (appending the site name or expanding inline variables, for example, is a common practice).', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'name' ] ) . ' ';
+							$text = sprintf( __( 'The title value provided by WordPress to %1$s may include modifications from themes and/or other SEO plugins (appending the site name or expanding inline variables, for example, is a common practice).', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'name' ] ) . ' ';
 
 							$text .= sprintf( __( 'Uncheck this option to always use the original unmodified title value from WordPress (default is %1$s) or enable this option to allow themes and plugins to modify the title value provided to %2$s.', 'wpsso' ), $def_checked, $pkg_info[ 'wpsso' ][ 'name' ] ) . ' ';
 
 							break;
 
-						case 'tooltip-plugin_filter_content':	// Use WordPress Content Filters.
+						case 'tooltip-plugin_filter_content':	// Use Filtered Content.
 
 							$text .= sprintf( __( 'The use of WordPress content filters allows %s to fully render your content text for meta tag descriptions and detect additional images and/or embedded videos provided by shortcodes.', 'wpsso' ), $wpsso_name ) . ' ';
 
@@ -900,7 +900,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_filter_excerpt':	// Use WordPress Excerpt Filters.
+						case 'tooltip-plugin_filter_excerpt':	// Use Filtered Excerpt.
 
 							$text = __( 'Apply the WordPress "get_the_excerpt" filter to the excerpt text (default is unchecked). Enable this option if you use shortcodes in your excerpts, for example.', 'wpsso' ) . ' ';
 
@@ -950,7 +950,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_page_excerpt':	// Enable WP Excerpt for Pages.
+						case 'tooltip-plugin_page_excerpt':	// Enable Excerpt for Pages.
 
 							$text = __( 'Enable the WordPress excerpt metabox for Pages.', 'wpsso' ) . ' ';
 
@@ -958,7 +958,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_page_tags':	// Enable WP Tags for Pages.
+						case 'tooltip-plugin_page_tags':	// Enable Tags for Pages.
 
 							$text = __( 'Enable the WordPress tags metabox for Pages.', 'wpsso' ) . ' ';
 
@@ -2792,12 +2792,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						break;
 
 					/**
-					 * Notice shown when saving settings if the "Use WordPress Content Filters" option is unchecked.
+					 * Notice shown when saving settings if the "Use Filtered Content" option is unchecked.
 					 */
 					case 'notice-content-filters-disabled':
 
 						$option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
-							_x( 'Use WordPress Content Filters', 'option label', 'wpsso' ) );
+							_x( 'Use Filtered Content', 'option label', 'wpsso' ) );
 
 						$text = '<p class="top">';
 

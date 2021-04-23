@@ -122,7 +122,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$title_prov = empty( $this->p->options[ 'plugin_document_title' ] ) ? 'wp_title' : $this->p->options[ 'plugin_document_title' ];
+			$title_prov = empty( $this->p->options[ 'plugin_document_title' ] ) ?
+				'wp_title' : $this->p->options[ 'plugin_document_title' ];
 
 			if ( 'wp_title' === $title_prov ) {	// Nothing to do.
 
