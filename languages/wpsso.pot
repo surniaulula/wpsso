@@ -1516,17 +1516,17 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:161
 msgctxt "option value"
-msgid "Default Title"
+msgid "Document SSO Default Title"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:162
 msgctxt "option value"
-msgid "Schema Name (Title)"
+msgid "Document SSO Schema Name (Title)"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:163
 msgctxt "option value"
-msgid "Schema Alternate Name"
+msgid "Document SSO Schema Alternate Name"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:164
