@@ -4154,7 +4154,7 @@ msgid "<a href=\"%s\">Community Support Forum</a>"
 msgstr ""
 
 #: lib/admin.php:2119
-msgid "Active plugins"
+msgid "Rate your active plugins"
 msgstr ""
 
 #: lib/admin.php:2172

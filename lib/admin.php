@@ -2116,7 +2116,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			echo $this->p->msgs->get( 'column-rate-review' );
 
-			echo '<h4>' . __( 'Active plugins', 'option label', 'wpsso' ) . ':</h4>' . "\n";
+			echo '<h4>' . __( 'Rate your active plugins', 'option label', 'wpsso' ) . ':</h4>' . "\n";
 
 			$action_links = array();
 
