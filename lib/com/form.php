@@ -869,7 +869,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					case 'on_focus_show':
 
-						$html .= '<script type="text/javascript">';
+						/**
+						 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
+						 */
+						$html .= '<script>';
 						$html .= 'jQuery( \'select#' . esc_js( $input_id ) . '\' ).on( \'focus\', function(){';
 						$html .= 'jQuery( \'' . $event_args . '\' ).show();';
 						$html .= '});';
@@ -897,7 +900,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 						$redirect_url_encoded = SucomUtil::esc_url_encode( $redirect_url );
 
-						$html .= '<script type="text/javascript">';
+						/**
+						 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
+						 */
+						$html .= '<script>';
 						$html .= 'jQuery( \'select#' . esc_js( $input_id ) . '\' ).on( \'change\', function(){';
 						$html .= 'sucomSelectChangeRedirect( \'' . esc_js( $name ) . '\', this.value, \'' . $redirect_url_encoded . '\' );';
 						$html .= '});';
@@ -913,7 +919,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					case 'on_change_unhide_rows':
 
-						$html .= '<script type="text/javascript">';
+						/**
+						 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
+						 */
+						$html .= '<script>';
 						$html .= 'jQuery( \'select#' . esc_js( $input_id ) . '\' ).on( \'change\', function(){';
 						$html .= 'sucomSelectChangeUnhideRows( \'hide_' . esc_js( $name ) . '\', \'hide_' . esc_js( $name ) . '_\' + this.value );';
 						$html .= '});';
@@ -930,7 +939,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 							$hide_class = 'hide_' . esc_js( $name );
 							$show_class = 'hide_' . esc_js( $name . '_' . $selected_value );
 
-							$html .= '<script type="text/javascript">';
+							/**
+							 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
+							 */
+							$html .= '<script>';
 
 							if ( 'on_show_unhide_rows' === $event_name ) {
 
@@ -2518,8 +2530,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		private function get_textlen_script( $css_id ) {
 
+			/**
+			 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
+			 */
 			return empty( $css_id ) ? '' : '
-<script type="text/javascript">
+<script>
 
 	jQuery( document ).on( \'ready\', function(){
 
@@ -2580,11 +2595,18 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					} else {
 
-						$html .= '<script type="text/javascript">' . "\n" . $script_js . '</script>' . "\n";
+						/**
+						 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
+						 */
+						$html .= '<script>' . "\n" . $script_js . '</script>' . "\n";
 					}
 
 				} else {
-					$html .= '<script type="text/javascript">' . "\n" . $script_js . '</script>' . "\n";
+
+					/**
+					 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
+					 */
+					$html .= '<script>' . "\n" . $script_js . '</script>' . "\n";
 				}
 
 			} else {
@@ -2598,8 +2620,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			 * The 'mouseenter' event is required for Firefox to render the option list correctly.
 			 *
 			 * sucomSelectLoadJson() is loaded in the footer, so test to make sure the function is available.
+			 *
+			 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
 			 */
-			$html .= '<script type="text/javascript">' . "\n";
+			$html .= '<script>' . "\n";
 			$html .= 'jQuery( \'select#' . $select_id_esc . ':not( .json_loaded )\' ).on( \'mouseenter focus load_json\', function(){';
 			$html .= 'if ( typeof sucomSelectLoadJson === "function" ) {' ;
 			$html .= 'sucomSelectLoadJson( \'select#' . $select_id_esc . '\', \'' . $event_json_var . '\' );';
@@ -2621,8 +2645,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$this->show_hide_js_added = true;
 
+			/**
+			 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
+			 */
 			$html .= <<<EOF
-<script type="text/javascript">
+<script>
 
 	jQuery.each( [ 'show', 'hide' ], function( i, ev ){
 

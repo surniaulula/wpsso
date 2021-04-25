@@ -101,7 +101,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					'href'   => false,
 					'group'  => false,
 					'meta'   => array(
-						'html' => '<style>#wp-admin-bar-wpsso-validate .disabled { opacity:0.5; filter:alpha(opacity=50); }</style>',
+						'html' => '<style type="text/css">#wp-admin-bar-wpsso-validate .disabled { opacity:0.5; filter:alpha(opacity=50); }</style>',
 					),
 				) );
 

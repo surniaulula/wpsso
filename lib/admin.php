@@ -1438,7 +1438,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '</div><!-- #wpsso-setting-page-content -->' . "\n";
 			echo '</div><!-- #' . $this->pagehook .' -->' . "\n";
 
-			?><script type="text/javascript">
+			/**
+			 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
+			 */
+			?><script>
 
 				jQuery( function(){
 

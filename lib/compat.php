@@ -302,7 +302,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				if ( method_exists( 'Yoast_Notification_Center', 'get_notification_by_id' ) ) {
 
 					$notif_id     = 'wpseo-conflict-' . md5( $info[ 'base' ] );
-					$notif_msg    = '<style>#' . $notif_id . '{display:none;}</style>';	// Hide our empty notification. ;-)
+					$notif_msg    = '<style type="text/css">#' . $notif_id . '{display:none;}</style>';	// Hide our empty notification. ;-)
 					$notif_center = Yoast_Notification_Center::get();
 					$notif_obj    = $notif_center->get_notification_by_id( $notif_id );
 

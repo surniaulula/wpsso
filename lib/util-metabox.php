@@ -108,7 +108,10 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 
 			$metabox_html .= '</div><!-- .' . $class_metabox_tabs . ' -->' . "\n";
 
-			$metabox_html .= '<script type="text/javascript">';
+			/**
+			 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
+			 */
+			$metabox_html .= '<script>';
 			$metabox_html .= $doing_ajax ? '' : 'jQuery( document ).on( \'ready\', function(){ ';
 			$metabox_html .= "sucomTabs( '$metabox_id', '$default_tab', '$scroll_to' );";
 			$metabox_html .= $doing_ajax ? '' : '});';

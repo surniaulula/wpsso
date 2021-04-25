@@ -1748,8 +1748,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		private function get_notice_script() {
 
+			/**
+			 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
+			 */
 			return '
-<script type="text/javascript">
+<script>
 
 	jQuery( document ).on( "click", "div.' . $this->plugin_id . '-dismissible > button.notice-dismiss, div.' .
 		$this->plugin_id . '-dismissible .dismiss-on-click", function() {

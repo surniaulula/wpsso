@@ -251,8 +251,10 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			 * jQuery() or jQuery( document ).on( 'ready' ) executes when HTML-Document is loaded and DOM is ready.
 			 *
 			 * jQuery( window ).on( 'load' ) executes when page is fully loaded, including all frames, objects and images.
+			 *
+			 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
 			 */
-			?><script type="text/javascript">
+			?><script>
 
 				jQuery( window ).on( 'load', function(){
 
@@ -304,7 +306,10 @@ EOF;
 
 			} else {
 
-				echo '<script type="text/javascript">' . "\n" . $custom_script_js . '</script>' . "\n";
+				/**
+				 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
+				 */
+				echo '<script>' . "\n" . $custom_script_js . '</script>' . "\n";
 			}
 		}
 
