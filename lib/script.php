@@ -258,7 +258,10 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 				jQuery( window ).on( 'load', function(){
 
-					sucomToolbarNotices( 'wpsso', 'sucomAdminPageL10n' );
+					if ( 'function' === typeof sucomToolbarNotices ) {
+
+						sucomToolbarNotices( 'wpsso', 'sucomAdminPageL10n' );
+					}
 				});
 
 			</script><?php

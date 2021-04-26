@@ -2624,10 +2624,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
 			 */
 			$html .= '<script>' . "\n";
-			$html .= 'jQuery( \'select#' . $select_id_esc . ':not( .json_loaded )\' ).on( \'mouseenter focus load_json\', function(){';
-			$html .= 'if ( typeof sucomSelectLoadJson === "function" ) {' ;
-			$html .= 'sucomSelectLoadJson( \'select#' . $select_id_esc . '\', \'' . $event_json_var . '\' );';
-			$html .= '}';
+			$html .= 'jQuery( \'select#' . $select_id_esc . ':not( .json_loaded )\' ).on( \'mouseenter focus load_json\', function(){' . "\n";
+			$html .= '	if ( \'function\' === typeof sucomSelectLoadJson ) {' . "\n";
+			$html .= '		sucomSelectLoadJson( \'select#' . $select_id_esc . '\', \'' . $event_json_var . '\' );' . "\n";
+			$html .= '	}' . "\n";
 			$html .= '});' . "\n";
 			$html .= '</script>' . "\n";
 
