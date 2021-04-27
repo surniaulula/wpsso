@@ -141,9 +141,13 @@
 
 <p><strong>[Premium]</strong> Support for the Twitter <a href="https://dev.twitter.com/cards/types/player">Player Card</a> for embedded videos.</p>
 
-<p><strong>[Premium]</strong> Optional upscaling of small images from the Media Library to satisfy minimum image size requirements for social sharing and Schema markup.</p>
+<p><strong>[Premium]</strong> Optional upscaling of small images to satisfy minimum image size requirements for social sharing and Schema markup.</p>
 
 <p><strong>[Premium]</strong> URL shortening with Bitly, DLMY.App, Google, Ow.ly, TinyURL, or YOURLS.</p>
+
+<p><strong>[Premium]</strong> Customize the default Open Graph and Schema document type for posts, pages, custom post types, taxonomy terms (categories, tags, etc.), and user profile pages.</p>
+
+<p><strong>[Premium]</strong> Customize the post and taxonomy types included in the WordPress sitemap XML.</p>
 
 <p><strong>[Premium]</strong> Complete Schema JSON-LD markup for WooCommerce products (<a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO JSON add-on required</a>).</p>
 

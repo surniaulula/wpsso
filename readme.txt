@@ -130,9 +130,13 @@ The WPSSO Core Standard plugin is designed to satisfy the requirements of most s
 
 **[Premium]** Support for the Twitter [Player Card](https://dev.twitter.com/cards/types/player) for embedded videos.
 
-**[Premium]** Optional upscaling of small images from the Media Library to satisfy minimum image size requirements for social sharing and Schema markup.
+**[Premium]** Optional upscaling of small images to satisfy minimum image size requirements for social sharing and Schema markup.
 
 **[Premium]** URL shortening with Bitly, DLMY.App, Google, Ow.ly, TinyURL, or YOURLS.
+
+**[Premium]** Customize the default Open Graph and Schema document type for posts, pages, custom post types, taxonomy terms (categories, tags, etc.), and user profile pages.
+
+**[Premium]** Customize the post and taxonomy types included in the WordPress sitemap XML.
 
 **[Premium]** Complete Schema JSON-LD markup for WooCommerce products ([WPSSO JSON add-on required](https://wordpress.org/plugins/wpsso-schema-json-ld/)).
 
