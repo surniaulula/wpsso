@@ -71,7 +71,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $is_admin ) {
 
-				$metabox_id   = $this->p->cf[ 'meta' ][ 'id' ];
+				$metabox_id = $this->p->cf[ 'meta' ][ 'id' ];
 
 				$mb_container_id = 'wpsso_metabox_' . $metabox_id . '_inside';
 

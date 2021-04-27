@@ -41,17 +41,28 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				'contact_fields' => _x( 'Contact Fields', 'metabox title', 'wpsso' ),
 				'metadata'       => _x( 'Metadata', 'metabox title', 'wpsso' ),
 				'head_tags'      => _x( 'HTML Tags', 'metabox title', 'wpsso' ),
+				'wp_sitemaps'    => _x( 'WordPress Sitemaps', 'metabox title', 'wpsso' ),
 			) as $metabox_id => $metabox_title ) {
 
 				$metabox_screen  = $this->pagehook;
 				$metabox_context = 'normal';
 				$metabox_prio    = 'default';
 				$callback_args   = array(	// Second argument passed to the callback function / method.
+					'page_id'    => SucomUtil::sanitize_hookname( $this->menu_id ),
+					'metabox_id' => $metabox_id,
 				);
 
-				add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
-					array( $this, 'show_metabox_' . $metabox_id ), $metabox_screen,
-						$metabox_context, $metabox_prio, $callback_args );
+				if ( method_exists( $this, 'show_metabox_' . $metabox_id ) ) {
+
+					add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
+						array( $this, 'show_metabox_' . $metabox_id ), $metabox_screen,
+							$metabox_context, $metabox_prio, $callback_args );
+				} else {
+
+					add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
+						array( $this, 'show_metabox_table' ), $metabox_screen,
+							$metabox_context, $metabox_prio, $callback_args );
+				}
 			}
 		}
 
@@ -185,6 +196,8 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 		public function show_metabox_head_tags() {
 
 			$metabox_id = 'head_tags';
+			$table_rows = array();
+			$info_msg   = $this->p->msgs->get( 'info-' . $metabox_id );
 
 			$tabs = apply_filters( 'wpsso_advanced_' . $metabox_id . '_tabs', array(
 				'facebook'   => _x( 'Facebook', 'metabox tab', 'wpsso' ),
@@ -193,9 +206,6 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				'schema'     => _x( 'Schema', 'metabox tab', 'wpsso' ),
 				'seo_other'  => _x( 'SEO / Other', 'metabox tab', 'wpsso' ),
 			) );
-
-			$table_rows = array();
-			$info_msg   = $this->p->msgs->get( 'info-' . $metabox_id );
 
 			foreach ( $tabs as $tab_key => $title ) {
 
@@ -207,7 +217,8 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				);
 			}
 
-			$this->p->util->metabox->do_table( array( '<td>' . $info_msg . '</td>' ), $class_href_key = 'metabox-info metabox-' . $metabox_id . '-info' );
+			$this->p->util->metabox->do_table( array( '<td>' . $info_msg . '</td>' ),
+				$class_href_key = 'metabox-info metabox-' . $metabox_id . '-info' );
 
 			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
 		}
@@ -221,6 +232,17 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				case 'plugin-settings':
 
 					$this->add_advanced_plugin_settings_table_rows( $table_rows, $this->form );
+
+					break;
+
+				case 'advanced-wp_sitemaps':
+
+					if ( ! SucomUtilWP::sitemaps_enabled() ) {	// Nothing to do.
+
+						return $this->p->msgs->get_wp_sitemaps_disabled_rows( $table_rows );
+					}
+
+					$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'info-' . $tab_key ) . '</td>';
 
 					break;
 			}

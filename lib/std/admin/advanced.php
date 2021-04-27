@@ -41,6 +41,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'head_tags_twitter_rows'        => 3,	// HTML Tags > Twitter tab.
 				'head_tags_schema_rows'         => 3,	// HTML Tags > Schema tab.
 				'head_tags_seo_other_rows'      => 3,	// HTML Tags > SEO / Other tab.
+				'advanced_wp_sitemaps_rows'     => 3,	// WordPress Sitemaps metabox.
 			), $prio = 20 );
 		}
 
@@ -505,7 +506,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			foreach ( array( 
 				'home_page'    => _x( 'Type for Page Homepage', 'option label', 'wpsso' ),
 				'home_posts'   => _x( 'Type for Posts Homepage', 'option label', 'wpsso' ),
-				'user_page'    => _x( 'Type for User Profile', 'option label', 'wpsso' ),
+				'user_page'    => _x( 'Type for User Profiles', 'option label', 'wpsso' ),
 				'search_page'  => _x( 'Type for Search Results', 'option label', 'wpsso' ),
 				'archive_page' => _x( 'Type for Other Archive', 'option label', 'wpsso' ),
 			) as $type_name => $th_label ) {
@@ -584,7 +585,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			foreach ( array( 
 				'home_page'    => _x( 'Type for Page Homepage', 'option label', 'wpsso' ),
 				'home_posts'   => _x( 'Type for Posts Homepage', 'option label', 'wpsso' ),
-				'user_page'    => _x( 'Type for User Profile', 'option label', 'wpsso' ),
+				'user_page'    => _x( 'Type for User Profiles', 'option label', 'wpsso' ),
 				'search_page'  => _x( 'Type for Search Results', 'option label', 'wpsso' ),
 				'archive_page' => _x( 'Type for Other Archive', 'option label', 'wpsso' ),
 			) as $type_name => $th_label ) {
@@ -981,6 +982,24 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			}
 
 			return array_merge( $table_rows, SucomUtil::get_column_rows( $table_cells, 2 ) );
+		}
+
+		/**
+		 * WordPress Sitemaps metabox.
+		 */
+		public function filter_advanced_wp_sitemaps_rows( $table_rows, $form ) {
+
+			if ( ! SucomUtilWP::sitemaps_enabled() ) {	// Nothing to do.
+
+				return $table_rows;
+			}
+
+			$table_rows[ 'plugin_sitemaps_for' ] = '' .
+				$form->get_th_html( _x( 'Include in Sitemaps', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_sitemaps_for' ) .
+				'<td class="blank">' . $form->get_no_checklist_post_tax_user( $name_prefix = 'plugin_sitemaps_for' ) . '</td>';
+
+			return $table_rows;
 		}
 	}
 }

@@ -576,7 +576,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$values = SucomUtilWP::get_taxonomy_labels( $values, $val_prefix = 'tax_',	// Add 'tax_' prefix to key values.
 				$label_prefix = _x( 'Taxonomy', 'option label', $this->text_domain ) );
 
-			$values[ 'user_page' ] = _x( 'User Profile', 'option label', $this->text_domain );
+			$values[ 'user_page' ] = _x( 'User Profiles', 'option label', $this->text_domain );
 
 			asort( $values );	// Sort by label.
 

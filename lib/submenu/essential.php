@@ -71,8 +71,9 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 				'metabox_id' => $metabox_id,
 			);
 
-			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title, array( $this, 'show_metabox_table' ),
-				$metabox_screen, $metabox_context, $metabox_prio, $callback_args );
+			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
+				array( $this, 'show_metabox_table' ), $metabox_screen,
+					$metabox_context, $metabox_prio, $callback_args );
 
 			$this->p->media->get_default_images( 1, 'wpsso-opengraph', $check_dupes = false );
 		}

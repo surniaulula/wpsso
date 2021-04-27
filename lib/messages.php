@@ -673,7 +673,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 */
 						case 'tooltip-og_author_field':		// Author Profile URL Field.
 
-							$cm_label_key   = 'plugin_cm_fb_label';
+							$cm_label_key = 'plugin_cm_fb_label';
+
 							$cm_label_value = SucomUtil::get_key_value( $cm_label_key, $this->p->options );
 
 							$text = sprintf( __( 'Choose a contact field from the WordPress profile page to use for the Facebook / Open Graph %s meta tag value.', 'wpsso' ), '<code>article:author</code>' ) . ' ';
@@ -2311,7 +2312,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'info-priority-media':	// Shown in the Document SSO > Priority Media tab.
+						case 'info-priority-media':
 
 							$upload_url = get_admin_url( $blog_id = null, 'upload.php' );
 
@@ -2536,6 +2537,32 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text .= __( 'Image sizes using the same dimensions and crop settings will create only a single image file.', 'wpsso' ) . ' ';
 
 							$text .= sprintf( __( 'The default dimensions and crop settings from %1$s create only %2$s resized image files (%3$s if an AMP plugin is active) per original full size image.', 'wpsso' ), $info[ 'short' ], __( 'two', 'wpsso' ), __( 'five', 'wpsso' ) );
+
+							$text .= '</p>';
+
+							$text .= '</blockquote>';
+
+							break;
+
+						case 'info-wp_sitemaps':
+
+							$sitemap_url = get_site_url( $blog_id = null, $path = '/wp-sitemap.xml' );
+
+							$no_index_label = _x( 'No Index', 'option label', 'wpsso' );
+
+							$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+
+							$robots_tab = _x( 'Robots Meta', 'metabox tab', 'wpsso' );
+
+							$text = '<blockquote class="top-info">';
+
+							$text .= '<p>';
+
+							$text .= sprintf( __( 'These options allow you to customize the post and taxonomy types included in the <a href="%s">WordPress sitemap XML</a>.', 'wpsso' ), $sitemap_url ) . ' ';
+
+							$text .= '</p><p>';
+
+							$text .= sprintf( __( 'To <strong>exclude</strong> individual posts, pages, custom post types, taxonomy terms (categories, tags, etc.), or user profile pages from the WordPress sitemap XML, enable the <strong>%1$s</strong> option under their %2$s &gt; Robots Meta tab.', 'wpsso' ), $no_index_label, $mb_title, $robots_tab ) . ' ';
 
 							$text .= '</p>';
 
@@ -3420,80 +3447,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			return '<p class="status-msg smaller disabled ' . $extra_css_class . '">' . $text . '</p>';
 		}
 
-		public function seo_option_disabled( $mt_name ) {
-
-			// translators: %s is the meta tag name (aka meta name canonical).
-			$text = sprintf( __( 'Modifications disabled (<code>%s</code> tag disabled or SEO plugin detected).', 'wpsso' ), $mt_name );
-
-			return '<p class="status-msg smaller disabled">' . $text . '</p>';
-		}
-
-		public function robots_disabled() {
-
-			$html = '<p class="status-msg">' . __( 'Robots meta tag is disabled.', 'wpsso' ) . '</p>';
-
-			$html .= '<p class="status-msg">' . __( 'No options available.', 'wpsso' ) . '</p>';
-
-			return $html;
-		}
-
-		public function schema_disabled() {
-
-			$html = '<p class="status-msg">' . __( 'Schema markup is disabled.', 'wpsso' ) . '</p>';
-
-			$html .= '<p class="status-msg">' . __( 'No options available.', 'wpsso' ) . '</p>';
-
-			return $html;
-		}
-
-		public function get_robots_disabled_rows( $table_rows = array() ) {
-
-			if ( ! is_array( $table_rows ) ) {	// Just in case.
-
-				$table_rows = array();
-			}
-
-			$table_rows[ 'robots_disabled' ] = '<tr><td align="center">' . $this->robots_disabled() . '</td></tr>';
-
-			return $table_rows;
-		}
-
-		public function get_schema_disabled_rows( $table_rows = array(), $col_span = 1 ) {
-
-			if ( ! is_array( $table_rows ) ) {	// Just in case.
-
-				$table_rows = array();
-			}
-
-			$this->add_schema_disabled_rows( $table_rows, $col_span );
-
-			return $table_rows;
-		}
-
-		public function add_schema_disabled_rows( array &$table_rows, $col_span = 1 ) {
-
-			$table_rows[ 'schema_disabled' ] = '<tr><td align="center" colspan="' . $col_span . '">' . $this->schema_disabled() . '</td></tr>';
-		}
-
-		public function more_schema_options() {
-
-			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
-
-				return $this->schema_disabled();
-
-			}
-
-			$json_info       = $this->p->cf[ 'plugin' ][ 'wpssojson' ];
-			$json_info_name  = _x( $json_info[ 'name' ], 'plugin name', 'wpsso' );
-			$json_addon_link = $this->p->util->get_admin_url( 'addons#wpssojson', $json_info_name );
-
-			// translators: %s is is the add-on name (and a link to the add-on page).
-			$text = sprintf( __( 'Activate the %s add-on<br/>if you require additional options for Schema markup and structured data.',
-				'wpsso' ), $json_addon_link );
-
-			return '<p class="status-msg">' . $text . '</p>';
-		}
-
 		/**
 		 * Used for the 'Webpage Document Title' option.
 		 */
@@ -3533,14 +3486,31 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					_x( 'HTML Tags', 'metabox title', 'wpsso' ) . ' &gt; ' .
 					_x( 'SEO / Other', 'metabox tab', 'wpsso' ) );
 
-				$text .= ' ' . sprintf( __( 'Note that the <code>%s</code> HTML tag is currently disabled.',
-					'wpsso' ), $html_tag ) . ' ';
+				$text .= ' ' . sprintf( __( 'Note that the <code>%s</code> HTML tag is currently disabled.', 'wpsso' ), $html_tag ) . ' ';
 
-				$text .= sprintf( __( 'You can re-enable this option under the %s tab.',
-					'wpsso' ), $seo_other_tab_link );
+				$text .= sprintf( __( 'You can re-enable this option under the %s tab.', 'wpsso' ), $seo_other_tab_link );
 			}
 
 			return $text;
+		}
+
+		public function more_schema_options() {
+
+			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
+
+				return $this->schema_disabled();
+
+			}
+
+			$json_info       = $this->p->cf[ 'plugin' ][ 'wpssojson' ];
+			$json_info_name  = _x( $json_info[ 'name' ], 'plugin name', 'wpsso' );
+			$json_addon_link = $this->p->util->get_admin_url( 'addons#wpssojson', $json_info_name );
+
+			// translators: %s is is the add-on name (and a link to the add-on page).
+			$text = sprintf( __( 'Activate the %s add-on<br/>if you require additional options for Schema markup and structured data.',
+				'wpsso' ), $json_addon_link );
+
+			return '<p class="status-msg">' . $text . '</p>';
 		}
 
 		private function get_ext_p_ext( $ext ) {
@@ -3575,6 +3545,94 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			$img_cropped = empty( $def_opts[ $opt_pre . '_img_crop' ] ) ? _x( 'uncropped', 'option value', 'wpsso' ) : _x( 'cropped', 'option value', 'wpsso' );
 
 			return $img_width . 'x' . $img_height . 'px ' . $img_cropped;
+		}
+
+		/**
+		 * Robots disabled.
+		 */
+		public function robots_disabled() {
+
+			$html = '<p class="status-msg">' . __( 'Robots meta tag is disabled.', 'wpsso' ) . '</p>';
+
+			$html .= '<p class="status-msg">' . __( 'No options available.', 'wpsso' ) . '</p>';
+
+			return $html;
+		}
+
+		public function get_robots_disabled_rows( $table_rows = array() ) {
+
+			if ( ! is_array( $table_rows ) ) {	// Just in case.
+
+				$table_rows = array();
+			}
+
+			$table_rows[ 'robots_disabled' ] = '<tr><td align="center">' . $this->robots_disabled() . '</td></tr>';
+
+			return $table_rows;
+		}
+
+		/**
+		 * Schema disabled.
+		 */
+		public function schema_disabled() {
+
+			$html = '<p class="status-msg">' . __( 'Schema markup is disabled.', 'wpsso' ) . '</p>';
+
+			$html .= '<p class="status-msg">' . __( 'No options available.', 'wpsso' ) . '</p>';
+
+			return $html;
+		}
+
+		public function add_schema_disabled_rows( array &$table_rows, $col_span = 1 ) {
+
+			$table_rows[ 'schema_disabled' ] = '<tr><td align="center" colspan="' . $col_span . '">' . $this->schema_disabled() . '</td></tr>';
+		}
+
+		public function get_schema_disabled_rows( $table_rows = array(), $col_span = 1 ) {
+
+			if ( ! is_array( $table_rows ) ) {	// Just in case.
+
+				$table_rows = array();
+			}
+
+			$this->add_schema_disabled_rows( $table_rows, $col_span );
+
+			return $table_rows;
+		}
+
+		/**
+		 * SEO option disabled.
+		 */
+		public function seo_option_disabled( $mt_name ) {
+
+			// translators: %s is the meta tag name (aka meta name canonical).
+			$text = sprintf( __( 'Modifications disabled (<code>%s</code> tag disabled or SEO plugin detected).', 'wpsso' ), $mt_name );
+
+			return '<p class="status-msg smaller disabled">' . $text . '</p>';
+		}
+
+		/**
+		 * WordPress sitemaps disabled.
+		 */
+		public function wp_sitemaps_disabled() {
+
+			$html = '<p class="status-msg">' . __( 'WordPress sitemaps are disabled.', 'wpsso' ) . '</p>';
+
+			$html .= '<p class="status-msg">' . __( 'No options available.', 'wpsso' ) . '</p>';
+
+			return $html;
+		}
+
+		public function get_wp_sitemaps_disabled_rows( $table_rows = array() ) {
+
+			if ( ! is_array( $table_rows ) ) {	// Just in case.
+
+				$table_rows = array();
+			}
+
+			$table_rows[ 'wp_sitemaps_disabled' ] = '<tr><td align="center">' . $this->wp_sitemaps_disabled() . '</td></tr>';
+
+			return $table_rows;
 		}
 	}
 }

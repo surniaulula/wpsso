@@ -388,33 +388,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				/**
-				 * Add defaults using a key prefix array and post type names.
+				 * Complete the options array for any custom post types and/or custom taxonomies.
 				 */
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'adding defaults derived from post type names' );
-				}
-
-				$this->p->util->add_post_type_names( $this->defaults_cache, array(
-					'og_type_for'                => 'article',
-					'schema_type_for'            => 'webpage',
-					'plugin_add_to'              => 1,		// Show Document SSO Metabox.
-					'plugin_shopperapproved_for' => 0,		// Get Reviews for Post Types.
-				) );
-
-				/**
-				 * Add defaults using a key prefix array and term names.
-				 */
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'adding defaults derived from term names' );
-				}
-
-				$this->p->util->add_taxonomy_names( $this->defaults_cache, array(
-					'og_type_for_tax'     => 'website',
-					'schema_type_for_tax' => 'item.list',
-					'plugin_add_to_tax'   => 1,		// Show Document SSO Metabox.
-				) );
+				$this->add_post_type_taxonomy_name_options( $this->defaults_cache );
 
 				/**
 				 * Translate contact method field labels for current language.
@@ -841,33 +817,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			/**
-			 * Add options using a key prefix array and post type names.
+			 * Complete the options array for any custom post types and/or custom taxonomies.
 			 */
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'adding options derived from post type names' );
-			}
-
-			$this->p->util->add_post_type_names( $opts, array(
-				'plugin_add_to'              => 1,		// Show Document SSO Metabox.
-				'plugin_shopperapproved_for' => 0,		// Get Reviews for Post Types.
-				'og_type_for'                => 'article',
-				'schema_type_for'            => 'webpage',
-			) );
-
-			/**
-			 * Add options using a key prefix array and term names.
-			 */
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'adding options derived from term names' );
-			}
-
-			$this->p->util->add_taxonomy_names( $opts, array(
-				'plugin_add_to_tax'   => 1,		// Show Document SSO Metabox.
-				'og_type_for_tax'     => 'website',
-				'schema_type_for_tax' => 'item.list',
-			) );
+			$this->add_post_type_taxonomy_name_options( $opts );
 
 			/**
 			 * Note that generator meta tags are required for plugin support. If you disable the generator meta
@@ -1284,9 +1236,47 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		}
 
 		/**
+		 * Complete the options array for any custom post types and/or custom taxonomies.
+		 *
+		 * Called by $this->get_defaults() and $this->check_options();
+		 */
+		private function add_post_type_taxonomy_name_options( array &$opts ) {	// Pass by reference is OK.
+
+			/**
+			 * Add options using a key prefix array and post type names.
+			 */
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'adding options derived from post type names' );
+			}
+
+			$this->p->util->add_post_type_names( $opts, array(
+				'og_type_for'                => 'article',	// Advanced Settings > Document Types > Open Graph > Type by Post Type.
+				'plugin_add_to'              => 1,		// Advanced Settings > Plugin Settings > Interface > Show Document SSO Metabox.
+				'plugin_shopperapproved_for' => 0,		// Advanced Settings > Service APIs > Ratings and Reviews > Get Reviews for Post Type.
+				'plugin_sitemaps_for'        => 1,		// Advanced Settings > WordPress Sitemaps > Post Types > Include Post Type.
+				'schema_type_for'            => 'webpage',	// Advanced Settings > Document Types > Schema > Type by Post Type.
+			) );
+
+			/**
+			 * Add options using a key prefix array and term names.
+			 */
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'adding options derived from term names' );
+			}
+
+			$this->p->util->add_taxonomy_names( $opts, array(
+				'og_type_for_tax'     => 'website',	// Advanced Settings > Document Types > Open Graph > Type by Taxonomy.
+				'plugin_add_to_tax'   => 1,		// Advanced Settings > Plugin Settings > Interface > Show Document SSO Metabox.
+				'schema_type_for_tax' => 'item.list',	// Advanced Settings > Document Types > Schema > Type by Taxonomy.
+			) );
+		}
+
+		/**
 		 * Update the width / height of remote image URLs.
 		 */
-		private function refresh_image_url_sizes( array &$opts ) {
+		private function refresh_image_url_sizes( array &$opts ) {	// Pass by reference is OK.
 
 			if ( $this->p->debug->enabled ) {
 

@@ -35,10 +35,27 @@ if ( ! class_exists( 'WpssoWpSitemaps' ) ) {
 				return;
 			}
 
+			add_filter( 'wp_sitemaps_post_types', array( $this, 'wp_sitemaps_post_types' ), 10, 1 );
 			add_filter( 'wp_sitemaps_posts_entry', array( $this, 'wp_sitemaps_posts_entry' ), 10, 3 );
 			add_filter( 'wp_sitemaps_posts_query_args', array( $this, 'wp_sitemaps_posts_query_args' ), 10, 2 );
+			add_filter( 'wp_sitemaps_taxonomies', array( $this, 'wp_sitemaps_taxonomies' ), 10, 1 );
 			add_filter( 'wp_sitemaps_taxonomies_query_args', array( $this, 'wp_sitemaps_taxonomies_query_args' ), 10, 2 );
 			add_filter( 'wp_sitemaps_users_query_args', array( $this, 'wp_sitemaps_users_query_args' ), 10, 1 );
+		}
+
+		public function wp_sitemaps_post_types( $post_types ) {
+
+			$post_types = SucomUtilWP::get_post_types( $output = 'objects', $sort_by_label = false );
+
+			foreach ( $post_types as $name => $obj ) {
+
+				if ( empty( $this->p->options[ 'plugin_sitemaps_for_' . $name ] ) ) {
+
+					unset( $post_types[ $name ] );
+				}
+			}
+
+			return $post_types;
 		}
 
 		/**
@@ -71,6 +88,14 @@ if ( ! class_exists( 'WpssoWpSitemaps' ) ) {
 		 */
 		public function wp_sitemaps_posts_query_args( $args, $post_type ) {
 
+			/**
+			 * The published post status for attachments is 'inherit'.
+			 */
+			if ( 'attachment' === $post_type ) {
+
+				$args[ 'post_status' ] = array( 'inherit' );
+			}
+
 			if ( ! empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
 
 				static $local_cache = array();	// Create post ID exclusion only once.
@@ -82,6 +107,7 @@ if ( ! class_exists( 'WpssoWpSitemaps' ) ) {
 					$query = new WP_Query( array_merge( $args, array(
 						'fields'        => 'ids',
 						'no_found_rows' => true,
+						'post_type'     => $post_type,
 					) ) );
 
 					if ( ! empty( $query->posts ) ) {	// Just in case.
@@ -98,12 +124,28 @@ if ( ! class_exists( 'WpssoWpSitemaps' ) ) {
 
 				if ( ! empty( $local_cache[ $post_type ] ) ) {
 
-					$args[ 'post__not_in' ] = empty( $args[ 'post__not_in' ] ) ? $local_cache[ $post_type ] :
+					$args[ 'post__not_in' ] = empty( $args[ 'post__not_in' ] ) ?
+						$local_cache[ $post_type ] :
 						array_merge( $args[ 'post__not_in' ], $local_cache[ $post_type ] );
 				}
 			}
 
 			return $args;
+		}
+
+		public function wp_sitemaps_taxonomies( $taxonomies ) {
+
+			$taxonomies = SucomUtilWP::get_taxonomies( $output = 'objects', $sort_by_label = false );
+
+			foreach ( $taxonomies as $name => $obj ) {
+
+				if ( empty( $this->p->options[ 'plugin_sitemaps_for_tax_' . $name ] ) ) {
+
+					unset( $taxonomies[ $name ] );
+				}
+			}
+
+			return $taxonomies;
 		}
 
 		/**
@@ -138,7 +180,8 @@ if ( ! class_exists( 'WpssoWpSitemaps' ) ) {
 
 				if ( ! empty( $local_cache[ $taxonomy ] ) ) {
 
-					$args[ 'exclude' ] = empty( $args[ 'exclude' ] ) ? $local_cache[ $taxonomy ] :
+					$args[ 'exclude' ] = empty( $args[ 'exclude' ] ) ?
+						$local_cache[ $taxonomy ] :
 						array_merge( $args[ 'exclude' ], $local_cache[ $taxonomy ] );
 				}
 			}
@@ -151,7 +194,14 @@ if ( ! class_exists( 'WpssoWpSitemaps' ) ) {
 		 */
 		public function wp_sitemaps_users_query_args( $args ) {
 
-			if ( ! empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
+			if ( empty( $this->p->options[ 'plugin_sitemaps_for_user_page' ] ) ) {
+
+				/**
+				 * Exclude all user pages by including only user ID 0 (which does not exist).
+				 */
+				$args[ 'include' ] = array( 0 );
+
+			} elseif ( ! empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
 
 				static $local_cache = null;	// Create user ID exclusion only once.
 
@@ -180,7 +230,8 @@ if ( ! class_exists( 'WpssoWpSitemaps' ) ) {
 
 				if ( ! empty( $local_cache ) ) {
 
-					$args[ 'exclude' ] = empty( $args[ 'exclude' ] ) ? $local_cache :
+					$args[ 'exclude' ] = empty( $args[ 'exclude' ] ) ?
+						$local_cache :
 						array_merge( $args[ 'exclude' ], $local_cache );
 				}
 			}

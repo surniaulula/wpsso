@@ -1371,7 +1371,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		/**
 		 * $output = objects | names
 		 */
-		public static function get_post_types( $output = 'objects' ) {
+		public static function get_post_types( $output = 'objects', $sort_by_label = true ) {
 
 			/**
 			 * The 'wp_block' custom post type for reusable blocks is registered as 'public' = 0 and 'show_ui' = 1.
@@ -1384,7 +1384,10 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			if ( 'objects' === $output ) {
 
-				self::sort_objects_by_label( $post_types );
+				if ( $sort_by_label ) {
+
+					self::sort_objects_by_label( $post_types );
+				}
 			}
 
 			return apply_filters( 'sucom_get_post_types', $post_types, $output );
@@ -1409,7 +1412,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		/**
 		 * $output = objects | names
 		 */
-		public static function get_taxonomies( $output = 'objects' ) {
+		public static function get_taxonomies( $output = 'objects', $sort_by_label = true ) {
 
 			$args = apply_filters( 'sucom_get_taxonomies_args', array( 'public' => 1, 'show_ui' => 1 ) );
 
@@ -1419,7 +1422,10 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			if ( 'objects' === $output ) {
 
-				self::sort_objects_by_label( $taxonomies );
+				if ( $sort_by_label ) {
+
+					self::sort_objects_by_label( $taxonomies );
+				}
 			}
 
 			return apply_filters( 'sucom_get_taxonomies', $taxonomies, $output );

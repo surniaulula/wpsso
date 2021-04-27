@@ -2563,7 +2563,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$menu_count = '<span class="ab-label" id="wpsso-toolbar-notices-count">0</span>';
 
-			$no_notices_text = sprintf( __( 'Fetching %s notifications...', 'wpsso' ), $this->p->cf[ 'menu' ][ 'title' ] );
+			$no_notices_text = sprintf( __( 'Fetching %s notifications...', 'wpsso' ),
+				_x( $this->p->cf[ 'menu' ][ 'title' ], 'menu title', 'wpsso' ) );
 
 			$wp_admin_bar->add_node( array(
 				'id'     => 'wpsso-toolbar-notices',
