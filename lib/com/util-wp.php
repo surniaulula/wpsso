@@ -1447,19 +1447,17 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $values;
 		}
 
+		/**
+		 * Add the slug (ie. name) to custom post type and taxonomy labels.
+		 */
 		public static function get_object_label( $obj ) {
 
-			$desc = '';
-
-			/**
-			 * Maybe show the slug (ie. name) of custom post types and taxonomies.
-			 */
 			if ( empty( $obj->_builtin ) ) {
 
-				$desc = '[' . $obj->name . ']';
+				return $obj->label . ' [' . $obj->name . ']';
 			}
 
-			return trim( $obj->label . ' ' . $desc );
+			return $obj->label;
 		}
 
 		public static function sort_objects_by_label( array &$objects ) {
