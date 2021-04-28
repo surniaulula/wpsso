@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.28.0-dev.2\n"
+"Project-Id-Version: WPSSO Core 8.28.0-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -7180,7 +7180,7 @@ msgid ""
 "To <strong>exclude</strong> individual posts, pages, custom post types, "
 "taxonomy terms (categories, tags, etc.), or user profile pages from the "
 "WordPress sitemap XML, enable the <strong>%1$s</strong> option under their "
-"%2$s &gt; Robots Meta tab."
+"%2$s &gt; %3$s tab."
 msgstr ""
 
 #: lib/messages.php:2596

@@ -2562,7 +2562,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '</p><p>';
 
-							$text .= sprintf( __( 'To <strong>exclude</strong> individual posts, pages, custom post types, taxonomy terms (categories, tags, etc.), or user profile pages from the WordPress sitemap XML, enable the <strong>%1$s</strong> option under their %2$s &gt; Robots Meta tab.', 'wpsso' ), $no_index_label, $mb_title, $robots_tab ) . ' ';
+							$text .= sprintf( __( 'To <strong>exclude</strong> individual posts, pages, custom post types, taxonomy terms (categories, tags, etc.), or user profile pages from the WordPress sitemap XML, enable the <strong>%1$s</strong> option under their %2$s &gt; %3$s tab.', 'wpsso' ), $no_index_label, $mb_title, $robots_tab ) . ' ';
 
 							$text .= '</p>';
 
