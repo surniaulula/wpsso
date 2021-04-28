@@ -121,7 +121,8 @@ ul.sucom-metabox-tabs > li > a.nav-tab-active {
 }
 
 .sucom-no_tabset.metabox-info,	/* A non-tabbed metabox above another tabbed metabox. */
-.sucom-no_tabset.metabox-rrssb_share {
+.sucom-no_tabset.metabox-rrssb_share,
+.sucom-no_tabset.metabox-tie-wp-general {
 	min-height:0;
 }
 

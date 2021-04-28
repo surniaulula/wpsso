@@ -165,7 +165,8 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				);
 			}
 
-			$this->p->util->metabox->do_table( array( '<td>' . $info_msg . '</td>' ), $class_href_key = 'metabox-info metabox-' . $metabox_id . '-info' );
+			$this->p->util->metabox->do_table( array( '<td>' . $info_msg . '</td>' ),
+				$class_href_key = 'metabox-info metabox-' . $metabox_id . '-info' );
 
 			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
 		}

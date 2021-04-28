@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.28.0-dev.1\n"
+"Project-Id-Version: WPSSO Core 8.28.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3699,7 +3699,7 @@ msgctxt "metabox title"
 msgid "HTML Tags"
 msgstr ""
 
-#: lib/admin-head.php:260 lib/messages.php:3487 lib/submenu/advanced.php:207
+#: lib/admin-head.php:260 lib/messages.php:3487 lib/submenu/advanced.php:208
 msgctxt "metabox tab"
 msgid "SEO / Other"
 msgstr ""
@@ -8495,12 +8495,12 @@ msgctxt "metabox tab"
 msgid "Ratings and Reviews"
 msgstr ""
 
-#: lib/submenu/advanced.php:125 lib/submenu/advanced.php:204
+#: lib/submenu/advanced.php:125 lib/submenu/advanced.php:205
 msgctxt "metabox tab"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/submenu/advanced.php:126 lib/submenu/advanced.php:206
+#: lib/submenu/advanced.php:126 lib/submenu/advanced.php:207
 msgctxt "metabox tab"
 msgid "Schema"
 msgstr ""
@@ -8515,22 +8515,22 @@ msgctxt "metabox tab"
 msgid "Default Contacts"
 msgstr ""
 
-#: lib/submenu/advanced.php:179
+#: lib/submenu/advanced.php:180
 msgctxt "metabox tab"
 msgid "Product Attributes"
 msgstr ""
 
-#: lib/submenu/advanced.php:180
+#: lib/submenu/advanced.php:181
 msgctxt "metabox tab"
 msgid "Custom Fields"
 msgstr ""
 
-#: lib/submenu/advanced.php:203 lib/submenu/general.php:95
+#: lib/submenu/advanced.php:204 lib/submenu/general.php:95
 msgctxt "metabox tab"
 msgid "Facebook"
 msgstr ""
 
-#: lib/submenu/advanced.php:205 lib/submenu/general.php:98
+#: lib/submenu/advanced.php:206 lib/submenu/general.php:98
 msgctxt "metabox tab"
 msgid "Twitter"
 msgstr ""
