@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.28.0-b.1\n"
+"Project-Id-Version: WPSSO Core 8.28.0-b.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -7882,12 +7882,12 @@ msgid ""
 "markup and structured data."
 msgstr ""
 
-#: lib/messages.php:3545
+#: lib/messages.php:3542
 msgctxt "option value"
 msgid "uncropped"
 msgstr ""
 
-#: lib/messages.php:3545
+#: lib/messages.php:3542
 msgctxt "option value"
 msgid "cropped"
 msgstr ""
@@ -7897,7 +7897,7 @@ msgid "Robots meta tag is disabled."
 msgstr ""
 
 #: lib/messages.php:3557 lib/messages.php:3581 lib/messages.php:3621
-#: lib/util-metabox.php:227
+#: lib/util-metabox.php:226
 msgid "No options available."
 msgstr ""
 

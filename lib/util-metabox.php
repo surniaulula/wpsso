@@ -51,25 +51,24 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 			$class_metabox_tabs = 'sucom-metabox-tabs';
 			$class_link         = 'sucom-tablink';
 			$class_tabset       = 'sucom-tabset';
+			$container_id       = '';
 			$metabox_html       = "\n";
 
 			if ( ! empty( $metabox_id ) ) {
 
-				$metabox_id = '_' . trim( $metabox_id, '_' );		// Must start with an underscore.
-
+				$metabox_id         = '_' . trim( $metabox_id, '_' );		// Must start with an underscore.
+				$container_id       = $class_metabox_tabs . $metabox_id;
 				$class_metabox_tabs .= ' ' . $class_metabox_tabs . $metabox_id;
 			}
 
 			extract( array_merge( array(
 				'layout'        => 'horizontal',	// 'horizontal', 'vertical', or 'responsive'.
 				'is_auto_draft' => false,
-				'scroll_to'     => isset( $_GET[ 'scroll_to' ] ) ? '#' . SucomUtil::sanitize_key( $_GET[ 'scroll_to' ] ) : '',
 			), $args ) );
 
 			$class_metabox_tabs .= ' ' . $layout . ( $is_auto_draft ? ' auto-draft' : '' );
-
-			$metabox_html .= '<div class="' . $class_metabox_tabs . '">' . "\n";
-			$metabox_html .= '<ul class="' . $class_metabox_tabs . '">' . "\n";
+			$metabox_html       .= '<div class="' . $class_metabox_tabs . '"' . ( $container_id ? ' id="' . $container_id . '"' : '' ) . '>' . "\n";
+			$metabox_html       .= '<ul class="' . $class_metabox_tabs . '">' . "\n";
 
 			/**
 			 * Add the settings tab list.
@@ -113,9 +112,9 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 			 */
 			$metabox_html .= '<script>';
 			$metabox_html .= $doing_ajax ? '' : 'jQuery( document ).on( \'ready\', function(){ ';
-			$metabox_html .= "sucomTabs( '$metabox_id', '$default_tab', '$scroll_to' );";
+			$metabox_html .= 'sucomTabs( \'' . $metabox_id . '\', \'' . $default_tab . '\' );';
 			$metabox_html .= $doing_ajax ? '' : '});';
-			$metabox_html .= '</script>' . "\n";
+			$metabox_html .= '</script>' . "\n\n";
 
 			return $metabox_html;
 		}
@@ -240,15 +239,16 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 				( $hidden_rows > 0 && $hidden_rows === $count_rows ? ' hide_in_' . $show_opts : '' );
 
 			$metabox_html .= '<div class="' . $div_class . '">' . "\n";
-			$metabox_html .= $title_transl ? '<h3 class="sucom-metabox-tab_title">' . $title_transl . '</h3>' : '';
+			$metabox_html .= $title_transl ? '<h3 class="sucom-metabox-tab_title">' . $title_transl . '</h3>' . "\n" : '';
 			$metabox_html .= '<table class="' . $table_class . '">' . "\n";
 
 			foreach ( $table_rows as $row ) {
+
 				$metabox_html .= $row;
 			}
 
 			$metabox_html .= '</table><!-- .' . $table_class . ' --> ' . "\n";
-			$metabox_html .= '</div><!-- .' . $div_class . ' -->' . "\n";
+			$metabox_html .= '</div><!-- .' . $div_class . ' -->' . "\n\n";
 
 			$show_opts_label = $this->p->cf[ 'form' ][ 'show_options' ][ $show_opts ];
 

@@ -343,46 +343,42 @@ function sucomClean( str ) {
 	}
 
 	try {
+
 		str = str.replace( /<\/?[^>]+>/g, '' );
 		str = str.replace( /\[(.+?)\](.+?\[\/\\1\])?/, '' )
+
 	} catch( err ) {
 	}
 
 	return str;
 }
 
-function sucomTabs( metabox, tab, scroll_to ) {
+function sucomTabs( metabox_name, tab_name ) {
 
-	metabox = metabox ? metabox : '_default';
-	tab     = tab ? tab : '_default';
+	metabox_name = metabox_name ? metabox_name : '_default';
+	tab_name     = tab_name ? tab_name : '_default';
 
-	var default_tab = 'sucom-tabset' + metabox + '-tab' + tab;
-	var hash        = window.location.hash;
+	var active_metabox_id  = '';
+	var active_tab_class   = '.sucom-tabset' + metabox_name + '-tab' + tab_name;
+	var location_hash      = window.location.hash;
 
-	if ( hash === '' ) {
+	if ( location_hash !== '' && location_hash.search( 'sucom-tabset' + metabox_name + '-tab_' ) !== -1 ) {
 
-		hash = default_tab;
-
-	} else if ( hash.search( 'sucom-tabset' + metabox + '-tab_' ) === -1 ) {
-
-		hash = default_tab;
-
-	} else {
-
-		hash = hash.replace( '#', '' );
+		active_metabox_id = 'div#sucom-metabox-tabs' + metabox_name;
+		active_tab_class  = location_hash.replace( '#', '.' );
 	}
 
-	jQuery( '.' + hash ).addClass( 'active' );
+	jQuery( active_tab_class ).addClass( 'active' );
+	jQuery( active_tab_class + '-msg' ).addClass( 'active' );
+	jQuery( '.sucom-metabox-tabs' ).show();
 
-	jQuery( '.' + hash + '-msg' ).addClass( 'active' );
+	sucomScrollInView( active_metabox_id );
 
-	jQuery( 'a.sucom-tablink' + metabox ).click( function(){
+	jQuery( 'a.sucom-tablink' + metabox_name ).click( function(){
 
-		jQuery( '.sucom-metabox-tabs' + metabox + ' li' ).removeClass( 'active' );
-
-		jQuery( '.sucom-tabset' + metabox ).removeClass( 'active' );
-
-		jQuery( '.sucom-tabset' + metabox + '-msg' ).removeClass( 'active' );
+		jQuery( 'ul.sucom-metabox-tabs' + metabox_name + ' li' ).removeClass( 'active' );
+		jQuery( '.sucom-tabset' + metabox_name ).removeClass( 'active' );
+		jQuery( '.sucom-tabset' + metabox_name + '-msg' ).removeClass( 'active' );
 
 		/**
 		 * Example tablink: 
@@ -397,16 +393,32 @@ function sucomTabs( metabox, tab, scroll_to ) {
 		jQuery( '.' + href + '-msg' ).addClass( 'active' );
 
 		jQuery( this ).parent().addClass( 'active' );
+	
+		sucomScrollInView( 'div#sucom-metabox-tabs' + metabox_name );
 	});
+}
 
-	jQuery( '.sucom-metabox-tabs' ).show();
+function sucomScrollInView( container_id ) {
 
-	if ( scroll_to ) {
+	if ( container_id ) {
 
-		var adjust_height = jQuery( 'div#wpadminbar' ).height();
-		var scroll_offset = jQuery( scroll_to ).offset().top + adjust_height;
+		var container = jQuery( container_id );
+	
+		var viewport = {};
+		viewport.top = jQuery( window ).scrollTop();
+		viewport.bottom = viewport.top + jQuery( window ).height();
+	
+       		var bounds = {};
+		bounds.top    = container.offset().top;
+		bounds.bottom = bounds.top + container.outerHeight();
 
-		jQuery( 'html, body' ).stop( true, true ).animate( { scrollTop:scroll_offset }, 'fast' );
+		if ( bounds.top < viewport.top || bounds.bottom > viewport.bottom ) {
+			
+			var adjust_height = jQuery( 'div#wpadminbar' ).height();
+			var scroll_offset = bounds.top - adjust_height;
+
+			jQuery( 'html, body' ).stop( true, true ).animate( { scrollTop:scroll_offset }, 'fast' );
+		}
 	}
 }
 
@@ -444,7 +456,7 @@ function sucomSelectChangeUnhideRows( row_hide_class, row_show_class ) {
 
 function sucomSelectChangeRedirect( name, value, redirect_url ) {
 
-	url = redirect_url + jQuery( location ).attr( 'hash' );
+	url = redirect_url + window.location.hash;
 
         window.location = url.replace( '%%' + name + '%%', value );
 }

@@ -3536,12 +3536,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 		private function get_def_img_dims( $opt_pre ) {
 
-			$def_opts = $this->p->opt->get_defaults();
-
-			$img_width = empty( $def_opts[ $opt_pre . '_img_width' ] ) ? 0 : $def_opts[ $opt_pre . '_img_width' ];
-
-			$img_height = empty( $def_opts[ $opt_pre . '_img_height' ] ) ? 0 : $def_opts[ $opt_pre . '_img_height' ];
-
+			$def_opts    = $this->p->opt->get_defaults();
+			$img_width   = empty( $def_opts[ $opt_pre . '_img_width' ] ) ? 0 : $def_opts[ $opt_pre . '_img_width' ];
+			$img_height  = empty( $def_opts[ $opt_pre . '_img_height' ] ) ? 0 : $def_opts[ $opt_pre . '_img_height' ];
 			$img_cropped = empty( $def_opts[ $opt_pre . '_img_crop' ] ) ? _x( 'uncropped', 'option value', 'wpsso' ) : _x( 'cropped', 'option value', 'wpsso' );
 
 			return $img_width . 'x' . $img_height . 'px ' . $img_cropped;
@@ -3552,7 +3549,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 		 */
 		public function robots_disabled() {
 
-			$html = '<p class="status-msg">' . __( 'Robots meta tag is disabled.', 'wpsso' ) . '</p>';
+			$option_url = $this->p->util->get_admin_url( 'advanced#sucom-tabset_head_tags-tab_seo_other' );
+
+			$html = '<p class="status-msg"><a href="' . $option_url . '">' .
+				__( 'Robots meta tag is disabled.', 'wpsso' ) . '</a></p>';
 
 			$html .= '<p class="status-msg">' . __( 'No options available.', 'wpsso' ) . '</p>';
 
