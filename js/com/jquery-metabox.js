@@ -400,17 +400,12 @@ function sucomScrollIntoView( container_id ) {
 
 	if ( container_id ) {
 
-		var container     = jQuery( container_id );
-		var editor        = jQuery( 'div.interface-interface-skeleton__content' );
-		var height_adj    = 0;
-		var viewport      = {};
-       		var bounds        = {};
-		var scroll_offset = 0;
-
-		if ( editor.length > 0 ) {
-
-			return false;
-		}
+		var container      = jQuery( container_id );
+		var content_offset = jQuery( 'div#wpbody' ).offset().top;
+		var editor_content = jQuery( 'div.interface-interface-skeleton__content' );
+		var viewport       = {};
+       		var bounds         = {};
+		var scroll_offset  = 0;
 
 		viewport.top    = jQuery( window ).scrollTop();
 		viewport.bottom = viewport.top + jQuery( window ).height();
@@ -420,14 +415,24 @@ function sucomScrollIntoView( container_id ) {
 
 		if ( bounds.top && bounds.bottom ) {
 
-			scroll_parent = jQuery( 'html, body' );
-			height_adj    = jQuery( 'div#wpadminbar' ).height();
+			if ( editor_content.length > 0 ) {
+	
+				var editor_top    = jQuery( 'div.edit-post-visual-editor' ).offset().top;
+				var metaboxes_top = jQuery( 'div.edit-post-layout__metaboxes' ).offset().top;
 
-			if ( bounds.top < viewport.top + height_adj || bounds.bottom > viewport.bottom ) {
-			
-				scroll_offset = bounds.top - height_adj;
+				content_offset   = editor_content.offset().top;
+				scroll_container = editor_content;
+				scroll_offset    = bounds.top - editor_top + 1;
 
-				scroll_parent.stop().animate( { scrollTop:scroll_offset }, 'fast' );
+			} else {
+
+				scroll_container = jQuery( 'html, body' );
+				scroll_offset    = bounds.top - content_offset;
+			}
+
+			if ( bounds.top < viewport.top + content_offset || bounds.bottom > viewport.bottom ) {
+
+				scroll_container.stop().animate( { scrollTop:scroll_offset }, 'fast' );
 			}
 		}
 	}
