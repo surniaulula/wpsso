@@ -68,7 +68,7 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 
 			$class_metabox_tabs .= ' ' . $layout . ( $is_auto_draft ? ' auto-draft' : '' );
 			$metabox_html       .= '<div class="' . $class_metabox_tabs . '"' . ( $container_id ? ' id="' . $container_id . '"' : '' ) . '>' . "\n";
-			$metabox_html       .= '<ul class="' . $class_metabox_tabs . '">' . "\n";
+			$metabox_html       .= '<ul class="' . $class_metabox_tabs . '">';
 
 			/**
 			 * Add the settings tab list.
@@ -83,15 +83,15 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 				$class_icon_key = $class_link . ' ' . $class_link . $metabox_id . ' ' . $class_link . '-icon ' . $class_link . '-href_' . $tab;
 				$class_link_key = $class_link . ' ' . $class_link . $metabox_id . ' ' . $class_link . '-text ' . $class_link . '-href_' . $tab;
 
-				$metabox_html .= '<li class="tab_space' . ( $tab_num === 1 ? ' start_tabs' : '' ) . '"></li>';
-				$metabox_html .= '<li class="' . $class_href_key . '">';
+				$metabox_html .= '<li' . "\n" . 'class="tab_space' . ( $tab_num === 1 ? ' start_tabs' : '' ) . '"></li>';
+				$metabox_html .= '<li' . "\n" . 'class="' . $class_href_key . '">';
 				$metabox_html .= '<a class="' . $class_icon_key . '" href="#' . $class_href_key . '"></a>';
 				$metabox_html .= '<a class="' . $class_link_key . '" href="#' . $class_href_key . '">' . $title_transl . '</a>';
 				$metabox_html .= '</li>';	// Do not add a newline.
 			}
 
-			$metabox_html .= '<li class="tab_space end_tabs"></li>';
-			$metabox_html .= '</ul><!-- .' . $class_metabox_tabs . ' -->' . "\n";
+			$metabox_html .= '<li' . "\n" . 'class="tab_space end_tabs"></li>';
+			$metabox_html .= '</ul><!-- .' . $class_metabox_tabs . ' -->' . "\n\n";
 
 			/**
 			 * Add the settings table for each tab.
@@ -114,7 +114,7 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 			$metabox_html .= $doing_ajax ? '' : 'jQuery( document ).on( \'ready\', function(){ ';
 			$metabox_html .= 'sucomTabs( \'' . $metabox_id . '\', \'' . $default_tab . '\' );';
 			$metabox_html .= $doing_ajax ? '' : '});';
-			$metabox_html .= '</script>' . "\n\n";
+			$metabox_html .= '</script>' . "\n";
 
 			return $metabox_html;
 		}

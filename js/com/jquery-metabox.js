@@ -210,7 +210,7 @@ function sucomSchemaTypeOgType() {
 
 			select_og_type.prop( 'disabled', false );
 
-			if ( 'undefined' !== typeof def_og_type_id ) {
+			if ( def_og_type_id.length > 0 ) {
 
 				if ( def_og_type_id !== og_type_id ) {
 
@@ -372,7 +372,7 @@ function sucomTabs( metabox_name, tab_name ) {
 	jQuery( active_tab_class + '-msg' ).addClass( 'active' );
 	jQuery( '.sucom-metabox-tabs' ).show();
 
-	sucomScrollInView( active_metabox_id );
+	sucomScrollIntoView( active_metabox_id );
 
 	jQuery( 'a.sucom-tablink' + metabox_name ).click( function(){
 
@@ -389,35 +389,46 @@ function sucomTabs( metabox_name, tab_name ) {
 		var href = jQuery( this ).attr( 'href' ).replace( '#', '' );
 
 		jQuery( '.' + href ).addClass( 'active' );
-
 		jQuery( '.' + href + '-msg' ).addClass( 'active' );
-
 		jQuery( this ).parent().addClass( 'active' );
 	
-		sucomScrollInView( 'div#sucom-metabox-tabs' + metabox_name );
+		sucomScrollIntoView( 'div#sucom-metabox-tabs' + metabox_name );
 	});
 }
 
-function sucomScrollInView( container_id ) {
+function sucomScrollIntoView( container_id ) {
 
 	if ( container_id ) {
 
-		var container = jQuery( container_id );
-	
-		var viewport = {};
-		viewport.top = jQuery( window ).scrollTop();
+		var container     = jQuery( container_id );
+		var editor        = jQuery( 'div.interface-interface-skeleton__content' );
+		var height_adj    = 0;
+		var viewport      = {};
+       		var bounds        = {};
+		var scroll_offset = 0;
+
+		if ( editor.length > 0 ) {
+
+			return false;
+		}
+
+		viewport.top    = jQuery( window ).scrollTop();
 		viewport.bottom = viewport.top + jQuery( window ).height();
-	
-       		var bounds = {};
+
 		bounds.top    = container.offset().top;
 		bounds.bottom = bounds.top + container.outerHeight();
 
-		if ( bounds.top < viewport.top || bounds.bottom > viewport.bottom ) {
-			
-			var adjust_height = jQuery( 'div#wpadminbar' ).height();
-			var scroll_offset = bounds.top - adjust_height;
+		if ( bounds.top && bounds.bottom ) {
 
-			jQuery( 'html, body' ).stop( true, true ).animate( { scrollTop:scroll_offset }, 'fast' );
+			scroll_parent = jQuery( 'html, body' );
+			height_adj    = jQuery( 'div#wpadminbar' ).height();
+
+			if ( bounds.top < viewport.top + height_adj || bounds.bottom > viewport.bottom ) {
+			
+				scroll_offset = bounds.top - height_adj;
+
+				scroll_parent.stop().animate( { scrollTop:scroll_offset }, 'fast' );
+			}
 		}
 	}
 }
@@ -491,7 +502,7 @@ function sucomDisableUnchanged( container_id ) {
 
 		var checkbox_name = jQuery( this ).attr( 'name' );
 
-		if ( 'undefined' !== typeof checkbox_name && checkbox_name ) {
+		if ( checkbox_name.length > 0 ) {
 
 			/**
 			 * When disabling a checkbox, also disable it's associated hidden input field.
