@@ -317,12 +317,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.28.0-b.1 (2021/04/28)**
+**Version 8.28.0-b.2 (2021/04/29)**
 
 * **New Features**
 	* Added a new SSO &gt; Advanced Settings &gt; WordPress Sitemaps metabox with options to customize the post and taxonomy types included in the WordPress sitemap XML.
 * **Improvements**
-	* None.
+	* Updated the metabox tabs jQuery to scroll the tab container into view if necessary.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -1201,9 +1201,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.28.0-b.1 =
+= 8.28.0-b.2 =
 
-(2021/04/28) Added a new SSO &gt; Advanced Settings &gt; WordPress Sitemaps metabox with options to customize the post and taxonomy types included in the WordPress sitemap XML.
+(2021/04/29) Added a new SSO &gt; Advanced Settings &gt; WordPress Sitemaps metabox with options to customize the post and taxonomy types included in the WordPress sitemap XML.
 
 = 8.27.0 =
 
