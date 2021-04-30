@@ -475,17 +475,15 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			}
 
 			$table_rows[] = '' . 
-				$form->get_th_html( _x( 'Sharing URL', 'option label', 'wpsso' ), $css_class = 'medium' ) . 
-				'<td>' . SucomForm::get_no_input_clipboard( $sharing_url ) . '</td>';
-
-			$table_rows[] = ( $sharing_url === $canonical_url ? '<tr class="hide_in_basic">' : '' ) . 
-				$form->get_th_html( _x( 'Canonical URL', 'option label', 'wpsso' ), $css_class = 'medium' ) . 
+				$form->get_th_html( _x( 'Canonical URL', 'option label', 'wpsso' ), $css_class = 'medium nowrap' ) . 
 				'<td>' . SucomForm::get_no_input_clipboard( $canonical_url ) . '</td>';
 
-			$table_rows[] = ( empty( $this->p->options[ 'plugin_shortener' ] ) ||
-				$this->p->options[ 'plugin_shortener' ] === 'none' ||
-					$sharing_url === $shortlink_url ? '<tr class="hide_in_basic">' : '' ) . 
-				$form->get_th_html( _x( 'Shortlink URL', 'option label', 'wpsso' ), $css_class = 'medium' ) . 
+			$table_rows[] = '' .
+				$form->get_th_html( _x( 'Sharing URL', 'option label', 'wpsso' ), $css_class = 'medium nowrap' ) . 
+				'<td>' . SucomForm::get_no_input_clipboard( $sharing_url ) . '</td>';
+
+			$table_rows[] = '' .
+				$form->get_th_html( _x( 'Shortlink URL', 'option label', 'wpsso' ), $css_class = 'medium nowrap' ) . 
 				'<td>' . SucomForm::get_no_input_clipboard( $shortlink_url ) . '</td>';
 
 			$table_rows[ 'subsection_og_example' ] = '<td colspan="2" class="subsection"><h4>' . 
@@ -534,11 +532,13 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			$xml_url     = $this->p->util->get_oembed_url( $mod, 'xml' );
 			$oembed_data = $this->p->util->get_oembed_data( $mod, $oembed_width );
 
-			$table_rows[] = $form->get_th_html( _x( 'oEmbed JSON URL', 'option label', 'wpsso' ), $css_class = 'medium nowrap' ) . 
-			'<td>' . SucomForm::get_no_input_clipboard( $json_url ) . '</td>';
+			$table_rows[] = '' .
+				$form->get_th_html( _x( 'oEmbed JSON URL', 'option label', 'wpsso' ), $css_class = 'medium' ) . 
+				'<td>' . SucomForm::get_no_input_clipboard( $json_url ) . '</td>';
 
-			$table_rows[] = $form->get_th_html( _x( 'oEmbed XML URL', 'option label', 'wpsso' ), $css_class = 'medium nowrap' ) . 
-			'<td>' . SucomForm::get_no_input_clipboard( $xml_url ) . '</td>';
+			$table_rows[] = '' .
+				$form->get_th_html( _x( 'oEmbed XML URL', 'option label', 'wpsso' ), $css_class = 'medium' ) . 
+				'<td>' . SucomForm::get_no_input_clipboard( $xml_url ) . '</td>';
 
 			$table_rows[ 'subsection_oembed_data' ] = '<td colspan="2" class="subsection"><h4>' . 
 				_x( 'oEmbed Data', 'option label', 'wpsso' ) . '</h4></td>';
@@ -554,8 +554,9 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 						$val = __( '(see below)', 'wpsso' );
 					}
 
-					$table_rows[] = '<th class="short">' . esc_html( $key ) . '</th>' .
-						'<td class="wide">' . SucomUtil::maybe_link_url( esc_html( $val ) ) . '</td>';
+					$table_rows[] = '' .
+						'<th class="medium">' . esc_html( $key ) . '</th>' .
+						'<td>' . SucomUtil::maybe_link_url( esc_html( $val ) ) . '</td>';
 				}
 
 			} else {
@@ -674,10 +675,10 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					$tr_class .= $opt_exists ? ' is_standard' : ' is_internal';
 
 					$table_rows[] = '<tr class="' . trim( $tr_class ) . '">' .
-					'<th class="xshort">' . $parts[1] . '</th>' . 
-					'<th class="xshort">' . $parts[2] . '</th>' . 
-					'<td class="">' . ( empty( $parts[6] ) ? '' : '<!-- ' . $parts[6] . ' -->' ) . $match_name . '</td>' . 
-					'<th class="xshort">' . $parts[4] . '</th>' . 
+					'<th class="xshort">' . $parts[ 1 ] . '</th>' . 
+					'<th class="xshort">' . $parts[ 2 ] . '</th>' . 
+					'<td class="">' . ( empty( $parts[ 6 ] ) ? '' : '<!-- ' . $parts[ 6 ] . ' -->' ) . $match_name . '</td>' . 
+					'<th class="xshort">' . $parts[ 4 ] . '</th>' . 
 					'<td class="wide">' . SucomUtil::maybe_link_url( $parts[5] ) . '</td>';
 				}
 			}

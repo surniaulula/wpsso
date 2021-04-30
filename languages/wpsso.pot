@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.28.0-rc.3\n"
+"Project-Id-Version: WPSSO Core 8.28.0-rc.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3554,7 +3554,7 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:290 lib/edit.php:504 lib/page.php:1277
+#: gettext/gettext-lib-pro.php:290 lib/edit.php:502 lib/page.php:1277
 #: lib/pro/social/buddypress.php:664
 msgctxt "default description"
 msgid "No Description."
@@ -4825,12 +4825,12 @@ msgctxt "option label"
 msgid "Search Description"
 msgstr ""
 
-#: lib/edit.php:196 lib/edit.php:478
+#: lib/edit.php:196 lib/edit.php:482
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
 
-#: lib/edit.php:204 lib/edit.php:482
+#: lib/edit.php:204 lib/edit.php:478
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
@@ -4980,22 +4980,22 @@ msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/edit.php:488
+#: lib/edit.php:486
 msgctxt "option label"
 msgid "Shortlink URL"
 msgstr ""
 
-#: lib/edit.php:492
+#: lib/edit.php:490
 msgctxt "option label"
 msgid "Facebook / Open Graph Example"
 msgstr ""
 
-#: lib/edit.php:501 lib/page.php:1575
+#: lib/edit.php:499 lib/page.php:1575
 msgctxt "default title"
 msgid "No Title"
 msgstr ""
 
-#: lib/edit.php:537
+#: lib/edit.php:536
 msgctxt "option label"
 msgid "oEmbed JSON URL"
 msgstr ""
@@ -5014,20 +5014,20 @@ msgstr ""
 msgid "(see below)"
 msgstr ""
 
-#: lib/edit.php:563
+#: lib/edit.php:564
 msgid "No oEmbed data found."
 msgstr ""
 
-#: lib/edit.php:567
+#: lib/edit.php:568
 msgctxt "option label"
 msgid "oEmbed HTML"
 msgstr ""
 
-#: lib/edit.php:577
+#: lib/edit.php:578
 msgid "No oEmbed HTML found."
 msgstr ""
 
-#: lib/edit.php:704
+#: lib/edit.php:705
 msgctxt "submit button"
 msgid "Validate %s"
 msgstr ""
