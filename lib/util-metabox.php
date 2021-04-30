@@ -257,16 +257,16 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 				$metabox_html .= '<div class="hidden_opts_msg ' . $class_tabset . '-msg ' . $class_tabset_mb . '-msg ' . $class_href_key . '-msg">' .
 					sprintf( _x( '%1$d additional options not shown in "%2$s" view', 'option comment', 'wpsso' ), $hidden_opts,
 						_x( $show_opts_label, 'option value', 'wpsso' ) ) .
-					' (<a href="javascript:void(0);" onClick="sucomViewUnhideRows( \'' . $class_href_key . '\', \'' . $show_opts . '\' );">' .
-						_x( 'show these options now', 'option comment', 'wpsso' ) . '</a>)</div>' . "\n";
+					' (<a href="javascript:void(0);" onClick="sucomViewUnhideRows( \'' . $class_href_key . '\', \'' . $show_opts .
+						'\' );">' . _x( 'show these options now', 'option comment', 'wpsso' ) . '</a>)</div>' . "\n";
 
 			} elseif ( $hidden_rows > 0 ) {
 
 				$metabox_html .= '<div class="hidden_opts_msg ' . $class_tabset . '-msg ' . $class_tabset_mb . '-msg ' . $class_href_key . '-msg">' .
 					sprintf( _x( '%1$d additional rows not shown in "%2$s" view', 'option comment', 'wpsso' ), $hidden_rows,
 						_x( $show_opts_label, 'option value', 'wpsso' ) ) .
-					' (<a href="javascript:void(0);" onClick="sucomViewUnhideRows( \'' . $class_href_key . '\', \'' . $show_opts . '\', \'hide_row_in\' );">' .
-						_x( 'show these rows now', 'option comment', 'wpsso' ) . '</a>)</div>' . "\n";
+					' (<a href="javascript:void(0);" onClick="sucomViewUnhideRows( \'' . $class_href_key . '\', \'' . $show_opts .
+						'\', \'hide_row_in\' );">' . _x( 'show these rows now', 'option comment', 'wpsso' ) . '</a>)</div>' . "\n";
 			}
 
 			return $metabox_html;
