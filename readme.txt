@@ -317,7 +317,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.28.0-rc.3 (2021/04/29)**
+**Version 8.28.0-rc.4 (2021/04/30)**
 
 * **New Features**
 	* Added a new SSO &gt; Advanced Settings &gt; WordPress Sitemaps metabox with options to customize the post and taxonomy types included in the WordPress sitemap XML.
@@ -1201,9 +1201,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.28.0-rc.3 =
+= 8.28.0-rc.4 =
 
-(2021/04/29) Added a new SSO &gt; Advanced Settings &gt; WordPress Sitemaps metabox with options to customize the post and taxonomy types included in the WordPress sitemap XML.
+(2021/04/30) Added a new SSO &gt; Advanced Settings &gt; WordPress Sitemaps metabox with options to customize the post and taxonomy types included in the WordPress sitemap XML.
 
 = 8.27.0 =
 
