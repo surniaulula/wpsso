@@ -3039,7 +3039,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= ' <li>' . __( 'Integration with 3rd party plugins and service APIs (WooCommerce, Yoast SEO, YouTube, Bitly, and many more).', 'wpsso' ) . '</li>';
 
-						$text .= ' <li>' . __( 'Detection of embedded videos in the content text.', 'wpsso' ) . '</li>';
+						$text .= ' <li>' . __( 'Detection of embedded videos in content text.', 'wpsso' ) . '</li>';
 
 						$text .= ' <li>' . __( 'Provides Twitter Player Card meta tags.', 'wpsso' ) . '</li>';
 

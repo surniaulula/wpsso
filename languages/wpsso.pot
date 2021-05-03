@@ -7467,7 +7467,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:3042
-msgid "Detection of embedded videos in the content text."
+msgid "Detection of embedded videos in content text."
 msgstr ""
 
 #: lib/messages.php:3044
