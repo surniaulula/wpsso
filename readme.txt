@@ -126,7 +126,7 @@ Includes advanced quality assurance features and options:
 
 The WPSSO Core Standard plugin is designed to satisfy the requirements of most standard WordPress sites. If your site requires additional 3rd party plugin and service API integration, like WooCommerce shops, embedded video support, or advanced customization features, then you may want to get the [WPSSO Core Premium plugin](https://wpsso.com/extend/plugins/wpsso/) for those additional features.
 
-**[Premium]** Detection of embedded videos from Facebook, Slideshare, Vimeo, Wistia, and Youtube in the content text.
+**[Premium]** Detection of embedded videos in content text with API support for Facebook, Slideshare, Vimeo, Wistia, and Youtube videos.
 
 **[Premium]** Support for the Twitter [Player Card](https://dev.twitter.com/cards/types/player) for embedded videos.
 
