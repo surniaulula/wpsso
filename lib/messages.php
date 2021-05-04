@@ -1535,15 +1535,17 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = __( 'The maximum number of images to include in the Schema main entity markup for the webpage.', 'wpsso' ) . ' ';
 
+							$text .= __( 'Each image will be included in three different sizes for Google (1:1, 4:3, and 16:9).', 'wpsso' ) . ' ';
+
 							$text .= __( 'If you select "0", then no images will be included (<strong>not recommended</strong>).', 'wpsso' ) . ' ';
 
 							break;
 
-						case 'tooltip-schema_1_1_img_size':	// Schema 1:1 Image Size.
-						case 'tooltip-schema_4_3_img_size':	// Schema 4:3 Image Size.
-						case 'tooltip-schema_16_9_img_size':	// Schema 16:9 Image Size.
+						case 'tooltip-schema_1x1_img_size':	// Schema 1:1 Image Size.
+						case 'tooltip-schema_4x3_img_size':	// Schema 4:3 Image Size.
+						case 'tooltip-schema_16x9_img_size':	// Schema 16:9 Image Size.
 
-							if ( preg_match( '/^tooltip-(schema_([0-9]+)_([0-9]+))_img_size$/', $msg_key, $matches ) ) {
+							if ( preg_match( '/^tooltip-(schema_([0-9]+)x([0-9]+))_img_size$/', $msg_key, $matches ) ) {
 
 								$opt_pre      = $matches[ 1 ];
 								$ratio_msg    = $matches[ 2 ] . ':' . $matches[ 3 ];
@@ -3361,15 +3363,16 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 		}
 
 		public function pro_feature_video_api( $ext ) {
+ 
+			$pkg_info = $this->p->admin->get_pkg_info();	// Returns an array from cache.
 
 			$html = '<p class="pro-feature-msg">';
 
-			$html .= sprintf( __( 'Video discovery and service API modules are provided with the %s version.', 'wpsso' ),
-					_x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) );
+			$html .= sprintf( __( 'Video discovery and service API modules are provided with the %s version.', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'short_pro' ] );
 
 			$html .= '</p>';
 
-			return $html . $this->pro_feature( 'wpsso' );
+			return $html;
 		}
 
 		/**
@@ -3551,8 +3554,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 			$option_url = $this->p->util->get_admin_url( 'advanced#sucom-tabset_head_tags-tab_seo_other' );
 
-			$html = '<p class="status-msg"><a href="' . $option_url . '">' .
-				__( 'Robots meta tag is disabled.', 'wpsso' ) . '</a></p>';
+			$html = '<p class="status-msg"><a href="' . $option_url . '">' . __( 'Robots meta tag is disabled.', 'wpsso' ) . '</a></p>';
 
 			$html .= '<p class="status-msg">' . __( 'No options available.', 'wpsso' ) . '</p>';
 

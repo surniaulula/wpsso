@@ -272,17 +272,17 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$form->get_th_html( _x( 'Pinterest Pin It', 'option label', 'wpsso' ), '', 'p_img_size' ) . 
 				'<td class="blank">' . $form->get_no_input_image_dimensions( 'p_img', $p_img_disabled ) . $p_img_msg . '</td>';
 
-			$table_rows[ 'schema_01_01_img_size' ] = '' .
-				$form->get_th_html( _x( 'Schema 1:1 (Google)', 'option label', 'wpsso' ), '', 'schema_1_1_img_size' ) . 
-				'<td class="blank">' . $form->get_no_input_image_dimensions( 'schema_1_1_img' ) . $json_req_msg . '</td>';
+			$table_rows[ 'schema_01x01_img_size' ] = '' .
+				$form->get_th_html( _x( 'Schema 1:1 (Google)', 'option label', 'wpsso' ), '', 'schema_1x1_img_size' ) . 
+				'<td class="blank">' . $form->get_no_input_image_dimensions( 'schema_1x1_img' ) . $json_req_msg . '</td>';
 
-			$table_rows[ 'schema_04_03_img_size' ] = '' .
-				$form->get_th_html( _x( 'Schema 4:3 (Google)', 'option label', 'wpsso' ), '', 'schema_4_3_img_size' ) . 
-				'<td class="blank">' . $form->get_no_input_image_dimensions( 'schema_4_3_img' ) . $json_req_msg . '</td>';
+			$table_rows[ 'schema_04x03_img_size' ] = '' .
+				$form->get_th_html( _x( 'Schema 4:3 (Google)', 'option label', 'wpsso' ), '', 'schema_4x3_img_size' ) . 
+				'<td class="blank">' . $form->get_no_input_image_dimensions( 'schema_4x3_img' ) . $json_req_msg . '</td>';
 
-			$table_rows[ 'schema_16_09_img_size' ] = '' .
-				$form->get_th_html( _x( 'Schema 16:9 (Google)', 'option label', 'wpsso' ), '', 'schema_16_9_img_size' ) . 
-				'<td class="blank">' . $form->get_no_input_image_dimensions( 'schema_16_9_img' ) . $json_req_msg . '</td>';
+			$table_rows[ 'schema_16x09_img_size' ] = '' .
+				$form->get_th_html( _x( 'Schema 16:9 (Google)', 'option label', 'wpsso' ), '', 'schema_16x9_img_size' ) . 
+				'<td class="blank">' . $form->get_no_input_image_dimensions( 'schema_16x9_img' ) . $json_req_msg . '</td>';
 
 			$table_rows[ 'schema_thumb_img_size' ] = '' .
 				$form->get_th_html( _x( 'Schema Thumbnail Image', 'option label', 'wpsso' ), '', 'thumb_img_size' ) . 

@@ -115,6 +115,23 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				725 => array(
 					'product_volume_value' => 'product_fluid_volume_value',
 				),
+				784 => array(
+					'schema_1_1_img_width'   => 'schema_1x1_img_width',
+					'schema_1_1_img_height'  => 'schema_1x1_img_height',
+					'schema_1_1_img_crop'    => 'schema_1x1_img_crop',
+					'schema_1_1_img_crop_x'  => 'schema_1x1_img_crop_x',
+					'schema_1_1_img_crop_y'  => 'schema_1x1_img_crop_y',
+					'schema_4_3_img_width'   => 'schema_4x3_img_width',
+					'schema_4_3_img_height'  => 'schema_4x3_img_height',
+					'schema_4_3_img_crop'    => 'schema_4x3_img_crop',
+					'schema_4_3_img_crop_x'  => 'schema_4x3_img_crop_x',
+					'schema_4_3_img_crop_y'  => 'schema_4x3_img_crop_y',
+					'schema_16_9_img_width'  => 'schema_16x9_img_width',
+					'schema_16_9_img_height' => 'schema_16x9_img_height',
+					'schema_16_9_img_crop'   => 'schema_16x9_img_crop',
+					'schema_16_9_img_crop_x' => 'schema_16x9_img_crop_x',
+					'schema_16_9_img_crop_y' => 'schema_16x9_img_crop_y',
+				),
 			),
 		);
 
@@ -1562,7 +1579,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					}
 
 					$mt_images = $this->p->media->get_mt_pid_images( $pid, $size_names, $check_dupes, $mt_pre );
-
 				}
 
 				if ( empty( $mt_images ) && $url ) {

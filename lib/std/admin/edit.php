@@ -55,7 +55,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'header'   => 'h5',
 					'label'    => _x( 'Product Information (Basic)', 'metabox title', 'wpsso' )
 				),
-				'pro_feature_msg' => array(
+				'pro_feature_msg_product' => array(
 					'tr_class'  => 'hide_og_type hide_og_type_product',
 					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
 				),
@@ -199,15 +199,59 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$max_media_items = $this->p->cf[ 'form' ][ 'max_media_items' ];
+			/**
+			 * Default priority media.
+			 */
+			$max_media_items   = $this->p->cf[ 'form' ][ 'max_media_items' ];
+			$size_name         = 'wpsso-opengraph';
+			$media_request     = array( 'pid', 'img_url' );
+			$media_info        = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = 'none' );
 
 			$form_rows = array(
+				'info_priority_media' => array(
+					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'info-priority-media' ) . '</td>',
+				),
+				'subsection_opengraph' => array(
+					'td_class' => 'subsection top',
+					'header'   => 'h4',
+					'label'    => _x( 'Default Priority Media', 'metabox title', 'wpsso' ),
+				),
+				'pro_feature_msg_opengraph' => array(
+					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
+				),
+				'subsection_priority_image' => array(
+					'td_class' => 'subsection top',
+					'header'   => 'h5',
+					'label'    => _x( 'Priority Image Information', 'metabox title', 'wpsso' )
+				),
+				'og_img_max' => $mod[ 'is_post' ] ? array(
+					'tr_class' => $form->get_css_class_hide( 'basic', 'og_img_max' ),
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Maximum Images', 'option label', 'wpsso' ),
+					'tooltip'  => 'og_img_max',		// Use tooltip message from settings.
+					'content'  => $form->get_select( 'og_img_max', range( 0, $max_media_items ), $css_class = 'medium' ),
+				) : '',	// Placeholder if not a post module.
+				'og_img_id' => array(
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Image ID', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-og_img_id',
+					'content'  => $form->get_no_input_image_upload( 'og_img', $media_info[ 'pid' ] ),
+				),
+				'og_img_url' => array(
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-og_img_url',
+					'content'  => $form->get_no_input_value( $media_info[ 'img_url' ], $css_class = 'wide' ),
+				),
 				'subsection_priority_video' => array(
 					'td_class'     => 'subsection',
 					'header'       => 'h5',
 					'label'        => _x( 'Priority Video Information', 'metabox title', 'wpsso' )
 				),
-				'pro_feature_msg' => array(
+				'pro_feature_msg_video_api' => array(
 					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature_video_api( 'wpsso' ) . '</td>',
 				),
 				'og_vid_prev_img' => array(
@@ -268,23 +312,23 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			/**
 			 * Pinterest Pin It.
 			 */
+			$size_name      = 'wpsso-pinterest';
+			$media_request  = array( 'pid', 'img_url' );
+			$media_info     = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = array( 'schema', 'og' ) );
 			$p_img_disabled = empty( $this->p->options[ 'p_add_img_html' ] ) ? true : false;
 			$p_img_msg      = $p_img_disabled ? $this->p->msgs->p_img_disabled() : '';
-
-			/**
-			 * Get the default Pinterest image pid and URL.
-			 */
-			$size_name     = 'wpsso-pinterest';
-			$media_request = array( 'pid', 'img_url' );
-			$media_info    = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = array( 'schema', 'og' ) );
-
-			$row_class = ! $p_img_disabled && $form->in_options( '/^p_img_/', $is_preg = true ) ? '' : 'hide_in_basic';
+			$row_class      = ! $p_img_disabled && $form->in_options( '/^p_img_/', $is_preg = true ) ? '' : 'hide_in_basic';
 
 			$form_rows[ 'subsection_pinterest' ] = array(
 				'tr_class' => $row_class,
 				'td_class' => 'subsection',
 				'header'   => 'h4',
-				'label'    => _x( 'Pinterest Pin It', 'metabox title', 'wpsso' )
+				'label'    => _x( 'Pinterest Pin It', 'metabox title', 'wpsso' ),
+			);
+
+			$form_rows[ 'pro_feature_msg_pinterest' ] = array(
+				'tr_class' => $row_class,
+				'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
 			);
 
 			$form_rows[ 'p_img_id' ] = array(
@@ -293,7 +337,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				'td_class' => 'blank',
 				'label'    => _x( 'Image ID', 'option label', 'wpsso' ),
 				'tooltip'  => 'meta-p_img_id',
-				'content'  => $form->get_no_input_image_upload( 'p_img', $media_info[ 'pid' ], true ),
+				'content'  => $form->get_no_input_image_upload( 'p_img', $media_info[ 'pid' ] ),
 			);
 
 			$form_rows[ 'p_img_url' ] = array(
@@ -341,7 +385,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Image ID', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-' . $tc_prefix . '_img_id',
-					'content'  => $form->get_no_input_image_upload( $tc_prefix . '_img', $media_info[ 'pid' ], true ),
+					'content'  => $form->get_no_input_image_upload( $tc_prefix . '_img', $media_info[ 'pid' ] ),
 				);
 
 				$form_rows[ $tc_prefix . '_img_url' ] = array(
@@ -357,10 +401,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			/**
 			 * Schema JSON-LD Markup / Google Rich Results.
 			 */
-			$row_class = $form->in_options( '/^schema_img_/', $is_preg = true ) ? '' : 'hide_in_basic';
-
 			$form_rows[ 'subsection_schema' ] = array(
-				'tr_class' => $row_class,
 				'td_class' => 'subsection',
 				'header'   => 'h4',
 				'label'    => _x( 'Schema JSON-LD Markup / Google Rich Results', 'metabox title', 'wpsso' )
@@ -369,7 +410,6 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
 
 				$form_rows[ 'wpssojson_addon_msg' ] = array(
-					'tr_class'  => $row_class,
 					'table_row' => '<td colspan="2">' . $this->p->msgs->more_schema_options() . '</td>',
 				);
 			}

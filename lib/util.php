@@ -602,27 +602,10 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					case 'schema':
 
 						return array(
-							'wpsso-schema-1-1',
-							'wpsso-schema-4-3',
-							'wpsso-schema-16-9',
+							'wpsso-schema-1x1',
+							'wpsso-schema-4x3',
+							'wpsso-schema-16x9',
 						);
-
-					case 'wpsso-schema':			// Deprecated on 2020/08/12.
-					case 'wpsso-schema-article':		// Deprecated on 2020/08/12.
-
-						return array( 'wpsso-schema-1-1' );
-
-					case 'wpsso-schema-article-1-1':	// Deprecated on 2020/08/12.
-
-						return array( 'wpsso-schema-1-1' );
-
-					case 'wpsso-schema-article-4-3':	// Deprecated on 2020/08/12.
-
-						return array( 'wpsso-schema-4-3' );
-
-					case 'wpsso-schema-article-16-9':	// Deprecated on 2020/08/12.
-
-						return array( 'wpsso-schema-16-9' );
 
 					default:
 

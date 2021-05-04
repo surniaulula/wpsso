@@ -1209,11 +1209,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				return $this->get_no_input( $name, $css_class, $css_id, $holder );
 			}
 
-			$html = '';
-
-			$holder = $this->get_placeholder_sanitized( $name, $holder );
-
-			$value = $this->in_options( $name ) ? $this->options[ $name ] : '';
+			$html         = '';
+			$holder       = $this->get_placeholder_sanitized( $name, $holder );
+			$value        = $this->in_options( $name ) ? $this->options[ $name ] : '';
+			$container_id = 'text_' . ( empty( $css_id ) ? $name : $css_id );	// Required for get_textlen_script().
 
 			if ( ! is_array( $len ) ) {	// A non-array value defaults to a max length.
 
@@ -1227,19 +1226,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				}
 			}
 
-			if ( ! empty( $len ) ) {
-
-				if ( empty( $css_id ) ) {
-
-					$css_id = $name;
-				}
-
-				$html .= $this->get_textlen_script( 'text_' . $css_id );
-			}
-
 			$html .= '<input type="text" name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '"';
 			$html .= empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"';
-			$html .= empty( $css_id ) ? ' id="text_' . esc_attr( $name ) . '"' : ' id="text_' . esc_attr( $css_id ) . '"';
+			$html .= ' id="' . esc_attr( $container_id ) . '"';
 			$html .= is_numeric( $tabidx ) ? '' : ' tabindex="' . esc_attr( $tabidx ) . '"';
 			$html .= empty( $elmt_attr ) ? '' : ' ' . $elmt_attr;
 
@@ -1250,7 +1239,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$html .= $this->get_placeholder_attrs( 'input', $holder );
 			$html .= ' value="' . esc_attr( $value ) . '" />' . "\n";
-			$html .= empty( $len ) ? '' : '<div id="text_' . esc_attr( $css_id ) . '-lenMsg"></div>' . "\n";
+			$html .= empty( $len ) ? '' : '<div id="' . esc_attr( $container_id ) . '-text-length-message"></div>' . "\n";
+
+			if ( ! empty( $len ) ) {
+
+				$html .= $this->get_textlen_script( $container_id );
+			}
 
 			return $html;
 		}
@@ -1584,36 +1578,32 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$is_disabled = true;
 			}
 
-			$html   = '';
-			$value  = $this->in_options( $name ) ? $this->options[ $name ] : '';
-			$holder = $this->get_placeholder_sanitized( $name, $holder );
+			$html         = '';
+			$value        = $this->in_options( $name ) ? $this->options[ $name ] : '';
+			$holder       = $this->get_placeholder_sanitized( $name, $holder );
+			$container_id = 'textarea_' . ( empty( $css_id ) ? $name : $css_id );	// Required for get_textlen_script().
 
 			if ( ! is_array( $len ) ) {
 
 				$len = array( 'max' => $len );
 			}
 
-			if ( ! empty( $len[ 'max' ] ) ) {
-
-				if ( empty( $css_id ) ) {
-
-					$css_id = $name;
-				}
-
-				$html .= $this->get_textlen_script( 'textarea_' . $css_id );
-			}
-
 			$html .= '<textarea ';
 			$html .= $is_disabled ? ' disabled="disabled"' : ' name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '"';
 			$html .= empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"';
-			$html .= empty( $css_id ) ? ' id="textarea_' . esc_attr( $name ) . '"' : ' id="textarea_' . esc_attr( $css_id ) . '"';
+			$html .= ' id="' . esc_attr( $container_id ) . '"';
 			$html .= empty( $len[ 'max' ] ) || $is_disabled ? '' : ' maxLength="' . esc_attr( $len[ 'max' ] ) . '"';
 			$html .= empty( $len[ 'warn' ] ) || $is_disabled ? '' : ' warnLength="' . esc_attr( $len[ 'warn' ] ) . '"';
 			$html .= empty( $len[ 'max' ] ) && empty( $len[ 'rows' ] ) ? '' :
 				( empty( $len[ 'rows' ] ) ? ' rows="'.( round( $len[ 'max' ] / 100 ) + 1 ) . '"' : ' rows="' . $len[ 'rows' ] . '"' );
 			$html .= $this->get_placeholder_attrs( 'textarea', $holder ) . '>' . esc_attr( $value ) . '</textarea>';
 
-			$html .= empty( $len[ 'max' ] ) || $is_disabled ? '' : ' <div id="textarea_' . esc_attr( $css_id ) . '-lenMsg"></div>';
+			$html .= empty( $len[ 'max' ] ) || $is_disabled ? '' : ' <div id="' . esc_attr( $container_id ) . '-text-length-message"></div>';
+
+			if ( ! empty( $len[ 'max' ] ) ) {
+
+				$html .= $this->get_textlen_script( $container_id );
+			}
 
 			return $html;
 		}
@@ -2528,22 +2518,26 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		private function get_textlen_script( $css_id ) {
+		private function get_textlen_script( $container_id ) {
+
+			if ( empty( $container_id ) ) {	// Nothing to do.
+			
+				return '';	// Return an empty string.
+			}
+
+			$doing_ajax = SucomUtilWP::doing_ajax();
 
 			/**
 			 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
 			 */
-			return empty( $css_id ) ? '' : '
-<script>
+			$html = '<script>';
+			$html .= $doing_ajax ? '' : 'jQuery( document ).on( \'ready\', function(){';
+			$html .= 'jQuery( \'#' . esc_js( $container_id ) . '\' ).focus( function(){ sucomTextLen( \'' . esc_js( $container_id ) . '\' ); } );';
+			$html .= 'jQuery( \'#' . esc_js( $container_id ) . '\' ).keyup( function(){ sucomTextLen( \'' . esc_js( $container_id ) . '\' ); } );';
+			$html .= $doing_ajax ? '' : '});';
+			$html .= '</script>';
 
-	jQuery( document ).on( \'ready\', function(){
-
-		jQuery( \'#' . esc_js( $css_id ) . '\' ).focus( function(){ sucomTextLen( \'' . esc_js( $css_id ) . '\' ); } );
-		jQuery( \'#' . esc_js( $css_id ) . '\' ).keyup( function(){ sucomTextLen( \'' . esc_js( $css_id ) . '\' ); } );
-	});
-
-</script>
-';
+			return $html;
 		}
 
 		private function get_event_load_json_script( $event_json_var, $event_args, $select_json_arr, $select_id ) {

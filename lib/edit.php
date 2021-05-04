@@ -37,7 +37,6 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			 */
 			$this->p->util->add_plugin_filters( $this, array( 
 				'metabox_sso_edit_rows'     => 4,
-				'metabox_sso_media_rows'    => 4,
 				'metabox_sso_robots_rows'   => 4,
 				'metabox_sso_preview_rows'  => 4,
 				'metabox_sso_oembed_rows'   => 4,
@@ -257,77 +256,6 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					'content'  => $form->get_input( 'book_isbn', $css_class = '', $css_id = '', array( 'min' => 10, 'max' => 13 ) ),
 				),
 			);
-
-			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
-		}
-
-		public function filter_metabox_sso_media_rows( $table_rows, $form, $head_info, $mod ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			$max_media_items = $this->p->cf[ 'form' ][ 'max_media_items' ];
-
-			/**
-			 * Get the default Open Graph image pid and URL.
-			 */
-			$size_name       = 'wpsso-opengraph';
-			$media_request   = array( 'pid', 'img_url' );
-			$media_info      = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = 'none' );
-
-			/**
-			 * Metabox form rows.
-			 */
-			$form_rows = array(
-				'info_priority_media' => array(
-					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'info-priority-media' ) . '</td>',
-				),
-				'subsection_opengraph' => array(
-					'td_class' => 'subsection top',
-					'header'   => 'h4',
-					'label'    => _x( 'Facebook / Open Graph and Default Media', 'metabox title', 'wpsso' ),
-				),
-				'subsection_priority_image' => array(
-					'td_class' => 'subsection top',
-					'header'   => 'h5',
-					'label'    => _x( 'Priority Image Information', 'metabox title', 'wpsso' )
-				),
-				'og_img_max' => $mod[ 'is_post' ] ? array(
-					'tr_class' => $form->get_css_class_hide( 'basic', 'og_img_max' ),
-					'th_class' => 'medium',
-					'label'    => _x( 'Maximum Images', 'option label', 'wpsso' ),
-					'tooltip'  => 'og_img_max',		// Use tooltip message from settings.
-					'content'  => $form->get_select( 'og_img_max', range( 0, $max_media_items ), $css_class = 'medium' ),
-				) : '',	// Placeholder if not a post module.
-				'og_img_id' => array(
-					'th_class' => 'medium',
-					'label'    => _x( 'Image ID', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-og_img_id',
-					'content'  => $form->get_input_image_upload( 'og_img', $media_info[ 'pid' ] ),
-				),
-				'og_img_url' => array(
-					'th_class' => 'medium',
-					'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-og_img_url',
-					'content'  => $form->get_input_image_url( 'og_img', $media_info[ 'img_url' ] ),
-				),
-			);
-
-			/**
-			 * Additional sections and sub-sections added by the 'wpsso_metabox_sso_media_rows' filter:
-			 *
-			 * 	Facebook / Open Graph and Default Media
-			 *
-			 * 		Priority Video Information
-			 *
-			 * 	Pinterest Pin It
-			 *
-			 * 	Twitter Card
-			 *
-			 * 	Schema JSON-LD Markup / Google Rich Results
-			 */
 
 			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
 		}

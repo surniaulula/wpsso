@@ -66,18 +66,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public function filter_plugin_image_sizes( array $sizes ) {
 
-			$sizes[ 'schema_1_1' ] = array(		// Option prefix.
-				'name'         => 'schema-1-1',
+			$sizes[ 'schema_1x1' ] = array(		// Option prefix.
+				'name'         => 'schema-1x1',
 				'label_transl' => _x( 'Schema 1:1 (Google)', 'option label', 'wpsso' ),
 			);
 
-			$sizes[ 'schema_4_3' ] = array(		// Option prefix.
-				'name'         => 'schema-4-3',
+			$sizes[ 'schema_4x3' ] = array(		// Option prefix.
+				'name'         => 'schema-4x3',
 				'label_transl' => _x( 'Schema 4:3 (Google)', 'option label', 'wpsso' ),
 			);
 
-			$sizes[ 'schema_16_9' ] = array(	// Option prefix.
-				'name'         => 'schema-16-9',
+			$sizes[ 'schema_16x9' ] = array(	// Option prefix.
+				'name'         => 'schema-16x9',
 				'label_transl' => _x( 'Schema 16:9 (Google)', 'option label', 'wpsso' ),
 			);
 

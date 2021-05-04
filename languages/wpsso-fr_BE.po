@@ -3,14 +3,14 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 8.28.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-04-28 15:14-0700\n"
+"PO-Revision-Date: 2021-04-29 11:48-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.2\n"
+"X-Generator: Poedit 2.4.3\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: gettext/gettext-html-setup.php:6
@@ -6783,12 +6783,12 @@ msgstr "Vous pouvez réactiver cette option sous l'onglet %s."
 msgid "Activate the %s add-on<br/>if you require additional options for Schema markup and structured data."
 msgstr "Activer l'ajout %s<br/>si vous avez besoin d'options supplémentaires pour le balisage de Schéma et données structurées."
 
-#: lib/messages.php:3545
+#: lib/messages.php:3542
 msgctxt "option value"
 msgid "uncropped"
 msgstr "non recadrée"
 
-#: lib/messages.php:3545
+#: lib/messages.php:3542
 msgctxt "option value"
 msgid "cropped"
 msgstr "recadrée"
@@ -6798,7 +6798,7 @@ msgid "Robots meta tag is disabled."
 msgstr "Balise méta robots est désactivée."
 
 #: lib/messages.php:3557 lib/messages.php:3581 lib/messages.php:3621
-#: lib/util-metabox.php:227
+#: lib/util-metabox.php:226
 msgid "No options available."
 msgstr "Aucune options disponibles."
 

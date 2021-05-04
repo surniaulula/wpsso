@@ -282,7 +282,7 @@ function sucomTextLen( css_id ) {
 		msg_transl = sucomAdminPageL10n._len_msg;
 	}
 
-	jQuery( '#' + css_id + '-lenMsg' ).html( '<div class="text_len_msg">' + msg_transl.formatUnicorn( len_html, limit_html ) + '</div>' )
+	jQuery( '#' + css_id + '-text-length-message' ).html( '<div class="text_len_msg">' + msg_transl.formatUnicorn( len_html, limit_html ) + '</div>' )
 }
 
 function sucomLenSpan( text_len, max_len, warn_len, min_len ) {

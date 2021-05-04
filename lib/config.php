@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.28.0',	// Plugin version.
-					'opt_version' => '784',		// Increment when changing default option values.
+					'version'     => '8.29.0-dev.1',	// Plugin version.
+					'opt_version' => '785',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results, no matter how webpages are shared, re-shared, messaged, posted, embedded, or crawled.',
@@ -1269,7 +1269,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_title_max_len'        => 70,
 					'og_title_warn_len'       => 40,
 					'og_desc_max_len'         => 300,
-					'og_desc_warn_len'        => 200,
+					'og_desc_warn_len'        => 160,
 					'og_desc_hashtags'        => 0,
 					'og_vid_max'              => 1,
 					'og_vid_autoplay'         => 1,
@@ -1337,21 +1337,21 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Schema options.
 					 */
-					'schema_1_1_img_width'   => 1200,
-					'schema_1_1_img_height'  => 1200,
-					'schema_1_1_img_crop'    => 1,
-					'schema_1_1_img_crop_x'  => 'center',
-					'schema_1_1_img_crop_y'  => 'center',
-					'schema_4_3_img_width'   => 1200,
-					'schema_4_3_img_height'  => 900,
-					'schema_4_3_img_crop'    => 1,
-					'schema_4_3_img_crop_x'  => 'center',
-					'schema_4_3_img_crop_y'  => 'center',
-					'schema_16_9_img_width'  => 1200,
-					'schema_16_9_img_height' => 675,
-					'schema_16_9_img_crop'   => 1,
-					'schema_16_9_img_crop_x' => 'center',
-					'schema_16_9_img_crop_y' => 'center',
+					'schema_1x1_img_width'   => 1200,
+					'schema_1x1_img_height'  => 1200,
+					'schema_1x1_img_crop'    => 1,
+					'schema_1x1_img_crop_x'  => 'center',
+					'schema_1x1_img_crop_y'  => 'center',
+					'schema_4x3_img_width'   => 1200,
+					'schema_4x3_img_height'  => 900,
+					'schema_4x3_img_crop'    => 1,
+					'schema_4x3_img_crop_x'  => 'center',
+					'schema_4x3_img_crop_y'  => 'center',
+					'schema_16x9_img_width'  => 1200,
+					'schema_16x9_img_height' => 675,
+					'schema_16x9_img_crop'   => 1,
+					'schema_16x9_img_crop_x' => 'center',
+					'schema_16x9_img_crop_y' => 'center',
 					'schema_desc_max_len'    => 300,			// Schema Description Max. Length (hard limit).
 					'schema_img_max'         => 1,
 
@@ -2774,20 +2774,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'head' => array(
 				'limit' => array(
-					'schema_1_1_img_ratio'  => 1.000,
-					'schema_4_3_img_ratio'  => 1.333,
-					'schema_16_9_img_ratio' => 1.778,
+					'schema_1x1_img_ratio'  => 1.000,
+					'schema_4x3_img_ratio'  => 1.333,
+					'schema_16x9_img_ratio' => 1.778,
 				),
 				'limit_min' => array(
 					'og_desc_len'            => 160,
 					'og_img_width'           => 200,
 					'og_img_height'          => 200,
-					'schema_1_1_img_width'   => 1200,
-					'schema_1_1_img_height'  => 1200,
-					'schema_4_3_img_width'   => 1200,
-					'schema_4_3_img_height'  => 900,
-					'schema_16_9_img_width'  => 1200,
-					'schema_16_9_img_height' => 675,
+					'schema_1x1_img_width'   => 1200,
+					'schema_1x1_img_height'  => 1200,
+					'schema_4x3_img_width'   => 1200,
+					'schema_4x3_img_height'  => 900,
+					'schema_16x9_img_width'  => 1200,
+					'schema_16x9_img_height' => 675,
 					'schema_desc_len'        => 156,
 					'seo_desc_len'           => 156,
 					'tc_desc_len'            => 160,
