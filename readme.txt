@@ -317,7 +317,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.29.0-dev.1 (2021/05/04)**
+**Version 8.28.1-dev.1 (2021/05/04)**
 
 * **New Features**
 	* None.
@@ -326,8 +326,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed the missing sucomTextLen() function calls to display text limits after saving/updating in the block editor.
 * **Developer Notes**
-	* Renamed Schema image option keys ratio delimiter from '_' to 'x'.
 	* Removed the WpssoEdit->filter_metabox_sso_media_rows() method.
+	* Renamed Schema image option keys ratio delimiter from '_' to 'x'.
 * **Requires At Least**
 	* PHP v7.0.
 	* WordPress v4.5.
@@ -1216,7 +1216,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.29.0-dev.1 =
+= 8.28.1-dev.1 =
 
 (2021/05/04) Fixed the missing sucomTextLen() function calls to display text limits after saving/updating in the block editor.
 
