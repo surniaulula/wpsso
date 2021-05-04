@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 8.28.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-05-04 11:28-0700\n"
+"PO-Revision-Date: 2021-05-04 11:48-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -6160,20 +6160,16 @@ msgid "Please note that the %1$s HTML tag is disabled by default (as themes ofte
 msgstr "Veuillez noter que la balise HTML %1$s est désactivée par défaut (car les thèmes incluent souvent cette balise HTML dans leurs modèles d'en-tête) et que les balises HTML %2$s et %3$s sont désactivées automatiquement si une extension SEO connu est détecté."
 
 #: lib/messages.php:2537
-msgid "WordPress and %s create resized image files based on image size dimensions and crop settings."
-msgstr "WordPress et %s créent des fichiers d'image redimensionnés à partir des dimensions et paramètres de recadrage des tailles d'image."
+msgid "%s and WordPress create image files for social sites and search engines based on the following image dimensions and crop settings."
+msgstr "%s et WordPress créent des fichiers image pour les sites sociaux et les moteurs de recherche en fonction des dimensions et paramètres de recadrage d'image suivants."
 
 #: lib/messages.php:2539
-msgid "Image sizes using the same dimensions and crop settings will create only a single image file."
-msgstr "Les tailles d'image utilisant les mêmes dimensions et paramètres de recadrage ne créeront qu'un seul fichier d'image."
+msgid "Image sizes that use the same dimensions and crop settings will create just one image file."
+msgstr "Les tailles d'image qui utilisent les mêmes dimensions et les mêmes paramètres de recadrage ne créeront qu'un seul fichier image."
 
 #: lib/messages.php:2541
-msgid "The default dimensions and crop settings from %1$s create only %2$s resized image files (%3$s if an AMP plugin is active) per original full size image."
-msgstr "Les dimensions et paramètres de recadrage par défaut de %1$s ne créent que %2$s fichiers d'image redimensionnés (%3$s si une extension AMP est active) pour chaque image originale."
-
-#: lib/messages.php:2541
-msgid "two"
-msgstr "deux"
+msgid "The default dimensions and crop settings from %1$s create only %2$s image files from an original full size image (provided the original image is large enough or image upscaling has been enabled)."
+msgstr "Les dimensions et paramètres de recadrage par défaut de %1$s ne créent que %2$s fichiers d'image à partir d'une image plaine taille d'origine (à condition que l'image d'origine soit suffisamment grande ou que l'agrandissement d'image est activée)."
 
 #: lib/messages.php:2541
 msgid "five"

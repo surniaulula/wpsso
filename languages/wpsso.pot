@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.28.1-dev.1\n"
+"Project-Id-Version: WPSSO Core 8.28.1-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -7158,24 +7158,21 @@ msgstr ""
 
 #: lib/messages.php:2537
 msgid ""
-"WordPress and %s create resized image files based on image size dimensions "
-"and crop settings."
+"%s and WordPress create image files for social sites and search engines "
+"based on the following image dimensions and crop settings."
 msgstr ""
 
 #: lib/messages.php:2539
 msgid ""
-"Image sizes using the same dimensions and crop settings will create only a "
-"single image file."
+"Image sizes that use the same dimensions and crop settings will create just "
+"one image file."
 msgstr ""
 
 #: lib/messages.php:2541
 msgid ""
-"The default dimensions and crop settings from %1$s create only %2$s resized "
-"image files (%3$s if an AMP plugin is active) per original full size image."
-msgstr ""
-
-#: lib/messages.php:2541
-msgid "two"
+"The default dimensions and crop settings from %1$s create only %2$s image "
+"files from an original full size image (provided the original image is large "
+"enough or image upscaling has been enabled)."
 msgstr ""
 
 #: lib/messages.php:2541

@@ -2534,11 +2534,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '<p>';
 
-							$text .= sprintf( __( 'WordPress and %s create resized image files based on image size dimensions and crop settings.', 'wpsso' ), $info[ 'short' ] ) . ' ';
+							$text .= sprintf( __( '%s and WordPress create image files for social sites and search engines based on the following image dimensions and crop settings.', 'wpsso' ), $info[ 'short' ] ) . ' ';
 
-							$text .= __( 'Image sizes using the same dimensions and crop settings will create only a single image file.', 'wpsso' ) . ' ';
+							$text .= __( 'Image sizes that use the same dimensions and crop settings will create just one image file.', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( 'The default dimensions and crop settings from %1$s create only %2$s resized image files (%3$s if an AMP plugin is active) per original full size image.', 'wpsso' ), $info[ 'short' ], __( 'two', 'wpsso' ), __( 'five', 'wpsso' ) );
+							$text .= sprintf( __( 'The default dimensions and crop settings from %1$s create only %2$s image files from an original full size image (provided the original image is large enough or image upscaling has been enabled).', 'wpsso' ), $info[ 'short' ], __( 'five', 'wpsso' ) );
 
 							$text .= '</p>';
 
