@@ -325,7 +325,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Updated the SSO &gt; Advanced &gt; Plugin Settings &gt; Image Sizes tab information text.
 	* Moved Priority Media default image selection to Premium version.
 * **Bugfixes**
-	* Fixed the missing sucomTextLen() function calls to display text limits after saving/updating in the block editor.
+	* Fixed the missing jQuery sucomTextLen() function calls to display text limits after saving/updating in the block editor.
 * **Developer Notes**
 	* Removed the WpssoEdit->filter_metabox_sso_media_rows() method.
 	* Renamed Schema image option keys ratio delimiter from '_' to 'x'.
@@ -1219,7 +1219,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 = 8.28.1-rc.1 =
 
-(2021/05/04) Fixed the missing sucomTextLen() function calls to display text limits after saving/updating in the block editor.
+(2021/05/04) Fixed the missing jQuery sucomTextLen() function calls to display text limits after saving/updating in the block editor.
 
 = 8.28.0 =
 
