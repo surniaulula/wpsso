@@ -221,13 +221,13 @@ function sucomSchemaTypeOgType() {
 	} );
 }
 
-function sucomTextLen( css_id ) {
+function sucomTextLen( container_id ) {
 
-	var text       = jQuery.trim( sucomClean( jQuery( '#' + css_id ).val() ) );
+	var text       = jQuery.trim( sucomClean( jQuery( '#' + container_id ).val() ) );
 	var text_len   = text.length;
-	var min_len    = Number( jQuery( '#' + css_id ).attr( 'minLength' ) );
-	var warn_len   = Number( jQuery( '#' + css_id ).attr( 'warnLength' ) );
-	var max_len    = Number( jQuery( '#' + css_id ).attr( 'maxLength' ) );
+	var min_len    = Number( jQuery( '#' + container_id ).attr( 'minLength' ) );
+	var warn_len   = Number( jQuery( '#' + container_id ).attr( 'warnLength' ) );
+	var max_len    = Number( jQuery( '#' + container_id ).attr( 'maxLength' ) );
 	var msg_transl = '{0} characters';
 
 	/**
@@ -282,7 +282,12 @@ function sucomTextLen( css_id ) {
 		msg_transl = sucomAdminPageL10n._len_msg;
 	}
 
-	jQuery( '#' + css_id + '-text-length-message' ).html( '<div class="text_len_msg">' + msg_transl.formatUnicorn( len_html, limit_html ) + '</div>' )
+	jQuery( '#' + container_id + '-text-length-message' ).html( '<div class="text_len_msg">' + msg_transl.formatUnicorn( len_html, limit_html ) + '</div>' )
+}
+
+function sucomTextLenReset( container_id ) {
+
+	jQuery( '#' + container_id + '-text-length-message' ).html( '' )
 }
 
 function sucomLenSpan( text_len, max_len, warn_len, min_len ) {

@@ -2534,6 +2534,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html .= $doing_ajax ? '' : 'jQuery( document ).on( \'ready\', function(){';
 			$html .= 'jQuery( \'#' . esc_js( $container_id ) . '\' ).focus( function(){ sucomTextLen( \'' . esc_js( $container_id ) . '\' ); } );';
 			$html .= 'jQuery( \'#' . esc_js( $container_id ) . '\' ).keyup( function(){ sucomTextLen( \'' . esc_js( $container_id ) . '\' ); } );';
+			$html .= 'jQuery( \'#' . esc_js( $container_id ) . '\' ).blur( function(){ sucomTextLenReset( \'' . esc_js( $container_id ) . '\' ); } );';
 			$html .= $doing_ajax ? '' : '});';
 			$html .= '</script>';
 
