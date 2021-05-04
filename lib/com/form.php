@@ -2530,11 +2530,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			/**
 			 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
 			 */
+			$container_id_esc = esc_js( $container_id );	// Just in case.
+
 			$html = '<script>';
-			$html .= $doing_ajax ? '' : 'jQuery( document ).on( \'ready\', function(){';
-			$html .= 'jQuery( \'#' . esc_js( $container_id ) . '\' ).focus( function(){ sucomTextLen( \'' . esc_js( $container_id ) . '\' ); } );';
-			$html .= 'jQuery( \'#' . esc_js( $container_id ) . '\' ).keyup( function(){ sucomTextLen( \'' . esc_js( $container_id ) . '\' ); } );';
-			$html .= 'jQuery( \'#' . esc_js( $container_id ) . '\' ).blur( function(){ sucomTextLenReset( \'' . esc_js( $container_id ) . '\' ); } );';
+			$html .= $doing_ajax ? '' : 'jQuery( document ).on( \'ready\', function(){';	// Make sure sucomTextLen() is available.
+			$html .= 'jQuery( \'#' . $container_id_esc . '\' ).focus( function(){ sucomTextLen( \'' . $container_id_esc . '\' ); } );';
+			$html .= 'jQuery( \'#' . $container_id_esc . '\' ).keyup( function(){ sucomTextLen( \'' . $container_id_esc . '\' ); } );';
+			$html .= 'jQuery( \'#' . $container_id_esc . '\' ).blur( function(){ sucomTextLenReset( \'' . $container_id_esc . '\' ); } );';
 			$html .= $doing_ajax ? '' : '});';
 			$html .= '</script>';
 
@@ -2609,8 +2611,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= '<!-- ' . $event_json_var . ' array already added -->' . "\n";
 			}
 
-			$select_id_esc = esc_js( $select_id );
-
 			/**
 			 * The 'mouseenter' event is required for Firefox to render the option list correctly.
 			 *
@@ -2618,6 +2618,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			 *
 			 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
 			 */
+			$select_id_esc = esc_js( $select_id );
+
 			$html .= '<script>' . "\n";
 			$html .= 'jQuery( \'select#' . $select_id_esc . ':not( .json_loaded )\' ).on( \'mouseenter focus load_json\', function(){' . "\n";
 			$html .= '	if ( \'function\' === typeof sucomSelectLoadJson ) {' . "\n";
