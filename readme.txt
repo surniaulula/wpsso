@@ -317,6 +317,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.29.0-dev.1 (2021/05/04)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Moved Priority Media default image selection to Premium version.
+* **Bugfixes**
+	* Fixed the missing sucomTextLen() function calls to display text limits after saving/updating in the block editor.
+* **Developer Notes**
+	* Renamed Schema image option keys ratio delimiter from '_' to 'x'.
+	* Removed the WpssoEdit->filter_metabox_sso_media_rows() method.
+* **Requires At Least**
+	* PHP v7.0.
+	* WordPress v4.5.
+
 **Version 8.28.0 (2021/04/30)**
 
 * **New Features**
@@ -1200,6 +1215,10 @@ This release adds a new SSO &gt; Features Status page and integration module for
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.29.0-dev.1 =
+
+(2021/05/04) Fixed the missing sucomTextLen() function calls to display text limits after saving/updating in the block editor.
 
 = 8.28.0 =
 
