@@ -244,7 +244,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-og_img_url',
-					'content'  => $form->get_no_input_value( $media_info[ 'img_url' ], $css_class = 'wide' ),
+					'content'  => $form->get_no_input_holder( $media_info[ 'img_url' ], $css_class = 'wide' ),
 				),
 				'subsection_priority_video' => array(
 					'td_class'     => 'subsection',
@@ -282,14 +282,14 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Video Embed HTML', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-og_vid_embed',
-					'content'  => $form->get_no_textarea_value( '' ),	// The Standard plugin does not include video modules.
+					'content'  => $form->get_no_textarea_value( $value = '' ),	// The Standard plugin does not include video modules.
 				),
 				'og_vid_url' => array(
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'or a Video URL', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-og_vid_url',
-					'content'  => $form->get_no_input_value( '', $css_class = 'wide' ),	// The Standard plugin does not include video modules.
+					'content'  => $form->get_no_input_value( $value = '', $css_class = 'wide' ),	// The Standard plugin does not include video modules.
 				),
 				'og_vid_title' => array(
 					'tr_class' => $form->get_css_class_hide( 'basic', 'og_vid_title' ),
@@ -297,7 +297,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Video Name (Title)', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-og_vid_title',
-					'content'  => $form->get_no_input_value( '', $css_class = 'wide' ),	// The Standard plugin does not include video modules.
+					'content'  => $form->get_no_input_value( $value = '', $css_class = 'wide' ),	// The Standard plugin does not include video modules.
 				),
 				'og_vid_desc' => array(
 					'tr_class' => $form->get_css_class_hide( 'basic', 'og_vid_desc' ),
@@ -346,7 +346,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				'td_class' => 'blank',
 				'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
 				'tooltip'  => 'meta-p_img_url',
-				'content'  => $form->get_no_input_value( $media_info[ 'img_url' ], $css_class = 'wide' ) . ' ' . $p_img_msg,
+				'content'  => $form->get_no_input_holder( $media_info[ 'img_url' ], $css_class = 'wide' ) . ' ' . $p_img_msg,
 			);
 
 			/**
@@ -394,7 +394,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-' . $tc_prefix . '_img_url',
-					'content'  => $form->get_no_input_value( $media_info[ 'img_url' ], $css_class = 'wide' ),
+					'content'  => $form->get_no_input_holder( $media_info[ 'img_url' ], $css_class = 'wide' ),
 				);
 			}
 

@@ -2190,11 +2190,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_no_input( $name = '', $css_class = '', $css_id = '', $holder = '' ) {
 
-			$value = $this->in_options( $name ) ? $this->options[ $name ] : '';
-
+			$html   = '';
+			$value  = $this->in_options( $name ) ? $this->options[ $name ] : '';
 			$holder = $this->get_placeholder_sanitized( $name, $holder );
-
-			$html = '';
 
 			if ( ! empty( $name ) ) {
 
@@ -2213,12 +2211,18 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->get_no_input_value( $value, $css_class, $css_id, $holder );
 		}
 
+		public function get_no_input_holder( $holder = '', $css_class = '', $css_id = '' ) {
+		
+			return $this->get_no_input_value( $value = '', $css_class, $css_id, $holder );
+		}
+
 		public function get_no_input_value( $value = '', $css_class = '', $css_id = '', $holder = '', $max_input = 1 ) {
 
 			$html        = '';
-			$end_num     = $max_input > 0 ? $max_input - 1 : 0;
 			$input_class = empty( $css_class ) ? '' : $css_class;
 			$input_id    = empty( $css_id ) ? '' : $css_id;
+			$end_num     = $max_input > 0 ? $max_input - 1 : 0;
+			$holder      = $this->get_placeholder_sanitized( $name = '', $holder );
 
 			foreach ( range( 0, $end_num, 1 ) as $key_num ) {
 
@@ -2241,7 +2245,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				 */
 				if ( ! $key_num ) {
 
-					if ( $holder ) {
+					if ( '' !== $holder ) {
 
 						$html .= ' placeholder="' . esc_attr( $holder ) . '"';
 					}
@@ -2448,48 +2452,41 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		private function get_placeholder_sanitized( $name, $holder = '' ) {
 
-			if ( empty( $name ) ) {	// Just in case.
+			if ( ! empty( $name ) ) {	// Just in case.
 
-				return $holder;
-			}
-
-			if ( true === $holder ) {	// Use default value.
-
-				if ( isset( $this->defaults[ $name ] ) ) {	// Not null.
-
-					$holder = $this->defaults[ $name ];
+				if ( true === $holder ) {	// Use default value.
+	
+					if ( isset( $this->defaults[ $name ] ) ) {	// Not null.
+	
+						$holder = $this->defaults[ $name ];
+					}
 				}
-			}
-
-			if ( true === $holder || '' === $holder ) {
-
-				if ( ( $pos = strpos( $name, '#' ) ) > 0 ) {
-
-					$key_default = SucomUtil::get_key_locale( substr( $name, 0, $pos ), $this->options, 'default' );
-
-					if ( $name !== $key_default ) {
-
-						if ( isset( $this->options[ $key_default ] ) ) {
-
-							$holder = $this->options[ $key_default ];
-
-						} elseif ( true === $holder ) {
-
-							if ( isset( $this->defaults[ $key_default ] ) ) {
-
-								$holder = $this->defaults[ $key_default ];
+	
+				if ( true === $holder || '' === $holder ) {
+	
+					if ( ( $pos = strpos( $name, '#' ) ) > 0 ) {
+	
+						$key_default = SucomUtil::get_key_locale( substr( $name, 0, $pos ), $this->options, 'default' );
+	
+						if ( $name !== $key_default ) {
+	
+							if ( isset( $this->options[ $key_default ] ) ) {
+	
+								$holder = $this->options[ $key_default ];
+	
+							} elseif ( true === $holder ) {
+	
+								if ( isset( $this->defaults[ $key_default ] ) ) {
+	
+									$holder = $this->defaults[ $key_default ];
+								}
 							}
 						}
 					}
 				}
 			}
 
-			if ( true === $holder ) {
-
-				$holder = '';	// Must be a string.
-			}
-
-			return $holder;
+			return is_bool( $holder ) ? '' : $holder;	// Must be numeric or string.
 		}
 
 		private function get_placeholder_attrs( $type = 'input', $holder = '' ) {
