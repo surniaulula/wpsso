@@ -22,8 +22,7 @@
 	display:none;
 }
 
-table.sucom-settings,
-.gutenberg table.sucom-settings {
+table.sucom-settings {
 	width:100%;
 	padding:15px 10px 20px 10px;	/* Use padding to prevent horizontal bar from showing. */
 	margin:0;
@@ -1097,7 +1096,8 @@ div.sucom-tabset_sso-tab_oembed table.sucom-settings {
  * Document SSO > Markup tab.
  */
 div.sucom-tabset_sso-tab_head table.sucom-settings {
-	border-spacing:12px 2px;	/* 12px by default. */
+	border-spacing:8px 2px;	/* 12px by default. */
+	padding:12px 4px;
 }
 
 div.sucom-tabset_sso-tab_head table.sucom-settings tr th,
