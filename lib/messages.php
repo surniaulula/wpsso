@@ -987,12 +987,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_check_img_dims':	// Enforce Image Dimension Checks.
 
-							$img_sizes_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_image_sizes',
+							$img_sizes_tab_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_image_sizes',
 								_x( 'Image Sizes', 'lib file description', 'wpsso' ) );
 
 							$text = __( 'Content authors often upload small featured images, without knowing that WordPress creates resized images based on predefined image sizes, so this option is disabled by default.', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( 'When this option is enabled, full size images used for meta tags and Schema markup must be equal to (or larger) than the image dimensions you\'ve selected in the %s settings page &mdash; images that do not meet or exceed the minimum requirements are ignored.', 'wpsso' ), $img_sizes_page_link ) . ' ';
+							$text .= sprintf( __( 'When this option is enabled, full size images used for meta tags and Schema markup must be equal to (or larger) than the image dimensions you\'ve selected in the %s settings page &mdash; images that do not meet or exceed the minimum requirements are ignored.', 'wpsso' ), $img_sizes_tab_link ) . ' ';
 
 							$text .= __( 'Providing social and search sites with perfectly resized images is highly recommended, so this option should be enabled if possible.', 'wpsso' ) . ' ';
 
@@ -2735,7 +2735,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								$img_dim_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
 									_x( 'Enforce Image Dimension Checks', 'option label', 'wpsso' ) );
 
-								$img_sizes_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_image_sizes',
+								$img_sizes_tab_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_image_sizes',
 									_x( 'Image Sizes', 'lib file description', 'wpsso' ) );
 
 								/**
@@ -2779,7 +2779,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								if ( ! isset( $info[ 'show_adjust_img_size_opts' ] ) || ! empty( $info[ 'show_adjust_img_size_opts' ] ) ) {
 
 									$text .= ' <li>' . sprintf( __( 'Update image size dimensions in the %s settings page.',
-										'wpsso' ), $img_sizes_page_link ) . '</li>';
+										'wpsso' ), $img_sizes_tab_link ) . '</li>';
 
 									if ( ! empty( $this->p->options[ 'plugin_check_img_dims' ] ) ) {
 
@@ -2930,7 +2930,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'notice-pro-not-installed':
 
-						$licenses_page_link = $this->p->util->get_admin_url( 'licenses', _x( 'Premium Licenses', 'lib file description', 'wpsso' ) );
+						$licenses_page_link = $this->p->util->get_admin_url( 'licenses',
+							_x( 'Premium Licenses', 'lib file description', 'wpsso' ) );
 
 						$text = sprintf( __( 'An Authentication ID has been entered for %1$s but the plugin is not installed &mdash; you can install and activate the %2$s version from the %3$s settings page.', 'wpsso' ), '<b>' . $info[ 'name' ] . '</b>', $dist_pro, $licenses_page_link ) . ' ;-)';
 
@@ -2938,7 +2939,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'notice-pro-not-updated':
 
-						$licenses_page_link = $this->p->util->get_admin_url( 'licenses', _x( 'Premium Licenses', 'lib file description', 'wpsso' ) );
+						$licenses_page_link = $this->p->util->get_admin_url( 'licenses',
+							_x( 'Premium Licenses', 'lib file description', 'wpsso' ) );
 
 						$text = sprintf( __( 'An Authentication ID has been entered for %1$s in the %2$s settings page but the %3$s version is not installed &mdash; don\'t forget to update the plugin to install the latest %3$s version.', 'wpsso' ), '<b>' . $info[ 'name' ] . '</b>', $licenses_page_link, $dist_pro ) . ' ;-)';
 
@@ -3035,6 +3037,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'column-purchase-wpsso':
 
+						$advanced_page_url = $this->p->util->get_admin_url( 'advanced' );
+
 						$text = '<p><strong>' . sprintf( __( 'The %s plugin includes:', 'wpsso' ), $info[ 'name_pro' ] ) . '</strong></p>';
 
 						$text .= '<ul>';
@@ -3047,7 +3051,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= ' <li>' . __( 'Upscaling of images and URL shortening.', 'wpsso' ) . '</li>';
 
-						$text .= ' <li>' . __( 'Customize advanced settings, including image sizes, cache expiry, video services, shortening services, document types, contact fields, product attributes, custom fields, and more.', 'wpsso' ) . '</li>';
+						$text .= ' <li>' . sprintf( __( '<a href="%s">Customize advanced settings</a>, including image sizes, cache expiry, video services, shortening services, document types, contact fields, product attributes, custom fields, and more.', 'wpsso' ), $advanced_page_url ) . '</li>';
 
 						$text .= $li_support_link;
 
