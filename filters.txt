@@ -77,6 +77,8 @@
 
 'wpsso_daily_archive_description' ( $desc_text, $mod )
 
+'wpsso_default_term_id' ( $default_term_id, $mod, $tax_slug )
+
 'wpsso_description' ( $desc_text, $mod, $add_hashtags, $md_key )
 
 'wpsso_description_seed' ( '', $mod, $add_hashtags, $md_key )
