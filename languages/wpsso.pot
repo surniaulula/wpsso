@@ -3234,23 +3234,23 @@ msgstr ""
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:185 lib/pro/ecom/woocommerce.php:665
+#: gettext/gettext-lib-pro.php:185 lib/pro/ecom/woocommerce.php:686
 msgid ""
 "The rating and review counts provided by WooCommerce for product ID %d are "
 "invalid."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:186 lib/pro/ecom/woocommerce.php:668
+#: gettext/gettext-lib-pro.php:186 lib/pro/ecom/woocommerce.php:689
 msgid ""
 "The average rating is %.2f, but the rating count is %d and the review count "
 "is %d."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:187 lib/pro/ecom/woocommerce.php:671
+#: gettext/gettext-lib-pro.php:187 lib/pro/ecom/woocommerce.php:692
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:188 lib/pro/ecom/woocommerce.php:1297
+#: gettext/gettext-lib-pro.php:188 lib/pro/ecom/woocommerce.php:1318
 msgid "World"
 msgstr ""
 
@@ -6170,8 +6170,8 @@ msgstr ""
 
 #: lib/messages.php:1108
 msgid ""
-"The filtered Schema type index arrays are saved to the WordPress transient "
-"cache to optimize performance."
+"The Schema type arrays (ie. the indexed lists of all Schema types) are saved "
+"to the WordPress transient cache to optimize performance."
 msgstr ""
 
 #: lib/messages.php:1120
@@ -8277,7 +8277,7 @@ msgstr ""
 msgid "Save a draft or publish to display these options."
 msgstr ""
 
-#: lib/post.php:1711
+#: lib/post.php:1714
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 

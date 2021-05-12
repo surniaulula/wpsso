@@ -1105,7 +1105,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : _x( 'disabled', 'option comment', 'wpsso' );
 
-							$text = __( 'The filtered Schema type index arrays are saved to the WordPress transient cache to optimize performance.', 'wpsso' ) . ' ';
+							$text = __( 'The Schema type arrays (ie. the indexed lists of all Schema types) are saved to the WordPress transient cache to optimize performance.', 'wpsso' ) . ' ';
 
 							$text .= sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human );
 

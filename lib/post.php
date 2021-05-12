@@ -1546,6 +1546,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $metabox_html;
 		}
 
+		/**
+		 * Uses a static cache to clear the cache only once per post ID per page load.
+		 */
 		public function clear_cache( $post_id, $rel_id = false ) {
 
 			if ( $this->p->debug->enabled ) {
