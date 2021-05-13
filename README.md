@@ -6,7 +6,7 @@
 <tr><th align="right" valign="top" nowrap>Stable Version</th><td>8.28.1</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires PHP</th><td>7.0 or newer</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires WordPress</th><td>4.5 or newer</td></tr>
-<tr><th align="right" valign="top" nowrap>Tested Up To WordPress</th><td>5.7.1</td></tr>
+<tr><th align="right" valign="top" nowrap>Tested Up To WordPress</th><td>5.7.2</td></tr>
 <tr><th align="right" valign="top" nowrap>Tested Up To WooCommerce</th><td>5.3.0</td></tr>
 <tr><th align="right" valign="top" nowrap>Contributors</th><td>jsmoriss</td></tr>
 <tr><th align="right" valign="top" nowrap>License</th><td><a href="https://www.gnu.org/licenses/gpl.txt">GPLv3</a></td></tr>
