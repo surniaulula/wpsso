@@ -317,7 +317,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.28.2-dev.2 (2021/05/13)**
+**Version 8.28.2-dev.2 (2021/05/14)**
 
 * **New Features**
 	* None.
@@ -1233,7 +1233,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 = 8.28.2-dev.2 =
 
-(2021/05/13) Added cache refresh when a WooCommerce product changes on the front-end - for example, from in stock to out of stock (Premium version).
+(2021/05/14) Added cache refresh when a WooCommerce product changes on the front-end - for example, from in stock to out of stock (Premium version).
 
 = 8.28.1 =
 
