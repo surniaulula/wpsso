@@ -327,6 +327,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Added a hook for the 'woocommerce_after_product_object_save' action in the WooCommerce integration module (Premium version).
+	* Added '/knowledge_graph' to the site organization Schema '@id' on the home page to help Google detect the site logo.
 * **Requires At Least**
 	* PHP v7.0.
 	* WordPress v4.5.
