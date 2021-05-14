@@ -1445,6 +1445,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return preg_replace( '/[^a-z0-9\-]/', '-', strtolower( $anchor ) );
 		}
 
+		public static function array_key_last( array $array ) {
+
+			if ( function_exists( 'array_key_last' ) ) {
+
+				return array_key_last( $array );	// Since PHP v7.3.
+			}
+
+			return key( array_slice( $array, -1, 1, true ) );
+		}
+
 		public static function array_to_keywords( array $tags = array() ) {
 
 			$keywords = array_map( 'sanitize_text_field', $tags );
