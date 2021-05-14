@@ -375,8 +375,8 @@ msgstr ""
 #: gettext/gettext-html-setup.php:45
 msgctxt "html list item"
 msgid ""
-"<a href=\"https://business.google.com/create\">Add your Business to Google</"
-"a>"
+"<a href=\"https://business.google.com/create\">Add or claim your business on "
+"Google My Business</a> (recommended)"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:46
