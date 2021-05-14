@@ -3234,23 +3234,23 @@ msgstr ""
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:185 lib/pro/ecom/woocommerce.php:686
+#: gettext/gettext-lib-pro.php:185 lib/pro/ecom/woocommerce.php:689
 msgid ""
 "The rating and review counts provided by WooCommerce for product ID %d are "
 "invalid."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:186 lib/pro/ecom/woocommerce.php:689
+#: gettext/gettext-lib-pro.php:186 lib/pro/ecom/woocommerce.php:692
 msgid ""
 "The average rating is %.2f, but the rating count is %d and the review count "
 "is %d."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:187 lib/pro/ecom/woocommerce.php:692
+#: gettext/gettext-lib-pro.php:187 lib/pro/ecom/woocommerce.php:695
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:188 lib/pro/ecom/woocommerce.php:1318
+#: gettext/gettext-lib-pro.php:188 lib/pro/ecom/woocommerce.php:1321
 msgid "World"
 msgstr ""
 
