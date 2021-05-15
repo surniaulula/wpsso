@@ -220,23 +220,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			WpssoSchemaSingle::add_organization_data( $json_ret, $mod, $org_id, $org_logo_key = 'org_logo_url', $list_element = false );
 
-			/**
-			 * Create a unique @id string for the home page Knowledge Graph organization markup.
-			 *
-			 * This prevents the home page Knowledge Graph organization markup from being re-used for the WebSite
-			 * publisher organization, which would prevent Google from reading the Knowledge Graph organization logo.
-			 */
-			if ( $mod[ 'is_home' ] ) {	// Static or index home page.
-
-				if ( 'site' === $org_id ) {
-
-					if ( ! empty( $json_ret[ '@id' ] ) ) {	// Just in case.
-
-						WpssoSchema::update_data_id( $json_ret, '/knowledge_graph' );
-					}
-				}
-			}
-
 			return self::return_data_from_filter( $json_data, $json_ret, $is_main );
 		}
 

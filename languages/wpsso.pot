@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.28.2-dev.3\n"
+"Project-Id-Version: WPSSO Core 8.28.2-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -8147,7 +8147,7 @@ msgid ""
 "post ID %3$d (%4$s)."
 msgstr ""
 
-#: lib/post.php:814 lib/post.php:1458 lib/schema.php:3243 lib/term.php:627
+#: lib/post.php:814 lib/post.php:1458 lib/schema.php:3226 lib/term.php:627
 #: lib/user.php:624
 msgid "checking meta tags"
 msgstr ""
@@ -8375,7 +8375,7 @@ msgctxt "option label"
 msgid "Schema Thumbnail"
 msgstr ""
 
-#: lib/schema.php:685
+#: lib/schema.php:668
 msgid "adding schema"
 msgstr ""
 
