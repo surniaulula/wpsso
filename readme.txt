@@ -317,7 +317,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.28.2-dev.3 (2021/05/14)**
+**Version 8.28.2-b.1 (2021/05/15)**
 
 * **New Features**
 	* None.
@@ -327,7 +327,6 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Added a hook for the 'woocommerce_after_product_object_save' action in the WooCommerce integration module (Premium version).
-	* Added '/knowledge_graph' to the site organization Schema '@id' on the home page to help Google detect the site logo.
 * **Requires At Least**
 	* PHP v7.0.
 	* WordPress v4.5.
@@ -1232,9 +1231,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.28.2-dev.3 =
+= 8.28.2-b.1 =
 
-(2021/05/14) Added cache refresh when a WooCommerce product changes on the front-end - for example, from in stock to out of stock (Premium version).
+(2021/05/15) Added cache refresh when a WooCommerce product changes on the front-end - for example, from in stock to out of stock (Premium version).
 
 = 8.28.1 =
 
