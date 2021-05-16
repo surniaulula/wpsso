@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.28.1\n"
+"Project-Id-Version: WPSSO Core 8.28.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-05-12 09:29-0700\n"
+"PO-Revision-Date: 2021-05-16 07:45-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -210,8 +210,8 @@ msgstr "<a href=\"https://business.twitter.com/en/basics/create-a-twitter-busine
 
 #: gettext/gettext-html-setup.php:45
 msgctxt "html list item"
-msgid "<a href=\"https://business.google.com/create\">Add your Business to Google</a>"
-msgstr "<a href=\"https://business.google.com/create\">Ajoutez votre entreprise à Google</a>"
+msgid "<a href=\"https://business.google.com/create\">Add or claim your business on Google My Business</a> (recommended)"
+msgstr "<a href=\"https://business.google.com/create\">Ajoutez ou revendiquez votre entreprise sur Google My Business</a> (recommandé)"
 
 #: gettext/gettext-html-setup.php:46
 msgctxt "html list item"
@@ -2959,19 +2959,19 @@ msgstr "Shop page"
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr "La valeur de l'option \"%1$s\" de WooCommerce est vide."
 
-#: gettext/gettext-lib-pro.php:185 lib/pro/ecom/woocommerce.php:686
+#: gettext/gettext-lib-pro.php:185 lib/pro/ecom/woocommerce.php:689
 msgid "The rating and review counts provided by WooCommerce for product ID %d are invalid."
 msgstr "Le nombre de notes et de critiques fournis par WooCommerce pour l'ID de produit %d n'est pas valide."
 
-#: gettext/gettext-lib-pro.php:186 lib/pro/ecom/woocommerce.php:689
+#: gettext/gettext-lib-pro.php:186 lib/pro/ecom/woocommerce.php:692
 msgid "The average rating is %.2f, but the rating count is %d and the review count is %d."
 msgstr "La note moyenne est %.2f, mais le nombre de notes est %d et le nombre de critiques est %d."
 
-#: gettext/gettext-lib-pro.php:187 lib/pro/ecom/woocommerce.php:692
+#: gettext/gettext-lib-pro.php:187 lib/pro/ecom/woocommerce.php:695
 msgid "The rating count or the review count must be greater than 0."
 msgstr "Le nombre de notes ou le nombre de critiques doit être supérieur à 0."
 
-#: gettext/gettext-lib-pro.php:188 lib/pro/ecom/woocommerce.php:1318
+#: gettext/gettext-lib-pro.php:188 lib/pro/ecom/woocommerce.php:1321
 msgid "World"
 msgstr "Monde"
 
