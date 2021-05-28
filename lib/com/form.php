@@ -1003,13 +1003,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			foreach ( range( $start_num, $end_num, 1 ) as $key_num ) {
 
-				$display = empty( $one_more ) && $key_num >= $show_first ? false : true;
-
+				$display  = $one_more || $key_num < $show_first ? true : false;
 				$prev_num = $key_num > 0 ? $key_num - 1 : 0;
 				$next_num = $key_num + 1;
 
-				$input_name      = $name . '_' . $key_num;
-
+				$input_name     = $name . '_' . $key_num;
 				$input_class    = empty( $css_class ) ? '' : $css_class;
 				$input_id       = empty( $css_id ) ? $input_name : $css_id . '_' . $key_num;
 				$input_id_prev  = empty( $css_id ) ? $name . '_' . $prev_num : $css_id . '_' . $prev_num;
@@ -1041,7 +1039,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				$html .= '</div><!-- .multi_container -->' . "\n";
 
-				$one_more = $input_value === 'none' || ( empty( $input_value ) && ! is_numeric( $input_value ) ) ? false : true;
+				$one_more = 'none' === $input_value || ( empty( $input_value ) && ! is_numeric( $input_value ) ) ? false : true;
 			}
 
 			return $html;
@@ -1325,6 +1323,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$input_name_id     = $name . '_id' . $key_suffix;
 			$input_name_id_pre = $name . '_id_pre' . $key_suffix;
 			$input_name_url    = $name . '_url' . $key_suffix;
+			$input_disabled    = 'disabled' === $this->get_options( $input_name_id . ':is' ) ? true : $is_disabled;
 
 			/**
 			 * Prevent conflicts by removing the image URL if we have an image ID.
@@ -1332,6 +1331,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			if ( ! empty( $this->options[ $input_name_id ] ) ) {
 
 				unset( $this->options[ $input_name_url ] );
+				unset( $this->options[ $input_name_url . ':is' ] );
 				unset( $this->options[ $input_name_url . ':width' ] );
 				unset( $this->options[ $input_name_url . ':height' ] );
 			}
@@ -1341,8 +1341,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			 */
 			if ( ! empty( $this->options[ $input_name_url ] ) ) {
 
-				$is_disabled = true;
-				$holder      = '';
+				$input_disabled = true;
+
+				$holder = '';
 			}
 
 			if ( ! empty( $this->p->avail[ 'media' ][ 'ngg' ] ) ) {
@@ -1350,7 +1351,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$media_libs[ 'ngg' ] = 'NextGEN Gallery';
 			}
 
-			$lib_is_disabled = count( $media_libs ) <= 1 ? true : $is_disabled;
+			$lib_is_disabled = count( $media_libs ) <= 1 ? true : $input_disabled;
 
 			if ( strpos( $holder, 'ngg-' ) === 0 ) {
 
@@ -1358,7 +1359,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$holder      = preg_replace( '/^ngg-/', '', $holder );
 			}
 
-			$input_pid  = $this->get_input( $input_name_id, 'pid', '', 0, $holder, $is_disabled, $tabidx = null, $elmt_attr );
+			$input_pid = $this->get_input( $input_name_id, 'pid', '', 0, $holder, $input_disabled, $tabidx = null, $elmt_attr );
+
 			$select_lib = $this->get_select( $input_name_id_pre, $media_libs, '', '', true, $lib_is_disabled, $default_lib );
 
 			if ( ! empty( $this->options[ $input_name_id ] ) &&
@@ -1377,10 +1379,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$button_css_class   = 'sucom_image_upload_button button';
 				$button_css_id      = $input_name;
 				$button_url         = '';
-				$button_is_disabled = function_exists( 'wp_enqueue_media' ) ? $is_disabled : true;	// Just in case.
+				$button_is_disabled = function_exists( 'wp_enqueue_media' ) ? $input_disabled : true;	// Just in case.
 
 				$upload_button = $this->get_button( 'Select Image', $button_css_class, $button_css_id,
-					$button_url, $newtab = false, $is_disabled, $data );
+					$button_url, $newtab = false, $input_disabled, $data );
 			}
 
 			return '<div class="img_upload">' . $input_pid . 'in&nbsp;' . $select_lib . '&nbsp;' . $upload_button . '</div>';
@@ -1473,8 +1475,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			foreach ( range( $start_num, $end_num, 1 ) as $key_num ) {
 
-				$display = empty( $one_more ) && $key_num >= $show_first ? false : true;
-
+				$display  = $one_more || $key_num < $show_first ? true : false;
 				$prev_num = $key_num > 0 ? $key_num - 1 : 0;
 				$next_num = $key_num + 1;
 
@@ -1571,7 +1572,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				return;	// Just in case.
 			}
 
-			if ( $this->get_options( $name . ':is' ) === 'disabled' ) {
+			if ( 'disabled' === $this->get_options( $name . ':is' ) ) {
 
 				$is_disabled = true;
 			}
@@ -1701,8 +1702,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			foreach ( range( $start_num, $end_num, 1 ) as $key_num ) {
 
-				$display = empty( $one_more ) && $key_num >= $show_first ? false : true;
-
+				$display  = $one_more || $key_num < $show_first ? true : false;
 				$prev_num = $key_num > 0 ? $key_num - 1 : 0;
 				$next_num = $key_num + 1;
 
@@ -1720,6 +1720,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= '<div class="multi_number">' . ( $key_num + 1 ) . '.</div>' . "\n";
 
 				$html .= '<div class="multi_input">' . "\n";
+
+				$one_more = false;	// Return to default.
+
+				$multi_label_num = 0;
 
 				foreach ( $mixed as $name => $atts ) {
 
@@ -1795,7 +1799,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					 */
 					if ( ! empty( $atts[ 'input_label' ] ) ) {
 
-						$html .= '<p class="multi_label">' . $atts[ 'input_label' ] . ':</p> ';
+						$multi_label_num++;
+
+						$html .= '<p class="multi_label' . ( 1 === $multi_label_num ? ' first_label' : '' ) . '">' .
+							$atts[ 'input_label' ] . ':</p> ';
 					}
 
 					if ( isset( $atts[ 'input_type' ] ) ) {
@@ -1854,7 +1861,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 									' value="' . esc_attr( $input_value ) . '"' .
 									' ' . $elmt_attr . '/>' . "\n";
 
-								$one_more = empty( $input_value ) && ! is_numeric( $input_value ) ? false : true;
+								if ( $input_value || is_numeric( $input_value ) ) {
+
+									$one_more = true;
+								}
 
 								break;
 
@@ -1870,7 +1880,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 									( $this->get_placeholder_attrs( 'textarea', $holder ) ) .
 									'>' . esc_attr( $input_value ) . '</textarea>' . "\n";
 
-								$one_more = empty( $input_value ) && ! is_numeric( $input_value ) ? false : true;
+								if ( $input_value || is_numeric( $input_value ) ) {
+
+									$one_more = true;
+								}
 
 								break;
 
@@ -2442,6 +2455,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$is_disabled = true;
 
 			} else {
+
 				$holder = SucomUtil::esc_url_encode( $url );
 			}
 

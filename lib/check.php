@@ -450,17 +450,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 									$chk[ 'class' ] = 'WP_Recipe_Maker';
 
 									break;
-
-								/**
-								 * WP Ultimate Recipe.
-								 *
-								 * See https://wordpress.org/plugins/wp-ultimate-recipe/.
-								 */
-								case 'wpultimaterecipe':
-
-									$chk[ 'class' ] = 'WPUltimateRecipe';
-
-									break;
 							}
 
 							break;

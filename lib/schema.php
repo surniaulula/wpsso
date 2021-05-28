@@ -1809,6 +1809,138 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $org_opts;
 		}
 
+		public static function add_howto_step_data( &$json_data, $md_opts, $opt_prefix = 'schema_howto_step', $prop_name = 'step' ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->mark();
+			}
+
+			$howto_steps = SucomUtil::preg_grep_keys( '/^' . $opt_prefix . '_([0-9]+)$/', $md_opts, $invert = false, $replace = '$1' );
+
+			if ( ! empty( $howto_steps ) ) {
+
+				$section_ref = false;
+				$section_pos = 1;
+
+				$step_pos = 1;
+				$step_idx = 0;
+
+				/**
+				 * $md_val is the section/step name.
+				 */
+				foreach ( $howto_steps as $md_num => $md_val ) {
+
+					/**
+					 * Maybe get a longer text / description value.
+					 */
+					$step_text = isset( $md_opts[ $opt_prefix . '_text_' . $md_num ] ) ? $md_opts[ $opt_prefix . '_text_' . $md_num ] : $md_val;
+
+					/**
+					 * Get images for the section or step.
+					 */
+					$step_images = array();
+
+					if ( ! empty( $md_opts[ $opt_prefix . '_img_id_' . $md_num ] ) ) {
+
+						/**
+						 * Set reference values for admin notices.
+						 */
+						if ( is_admin() ) {
+
+							$sharing_url = $wpsso->util->get_sharing_url( $mod );
+
+							$wpsso->notice->set_ref( $sharing_url, $mod, sprintf( __( 'adding schema %s #%d image',
+								'wpsso-schema-json-ld' ), $prop_name, $md_num + 1 ) );
+						}
+
+						/**
+						 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
+						 */
+						$mt_images = $wpsso->media->get_mt_opts_images( $md_opts, $size_names = 'schema', $opt_prefix . '_img', $md_num );
+
+						WpssoSchema::add_images_data_mt( $step_images, $mt_images );
+
+						/**
+						 * Restore previous reference values for admin notices.
+						 */
+						if ( is_admin() ) {
+
+							$wpsso->notice->unset_ref( $sharing_url );
+						}
+					}
+
+					/**
+					 * How-To Sections.
+					 */
+					if ( ! empty( $md_opts[ $opt_prefix . '_section_' . $md_num ] ) ) {
+
+						$json_data[ $prop_name ][ $step_idx ] = WpssoSchema::get_schema_type_context( 'https://schema.org/HowToSection',
+							array(
+								'name'            => $md_val,
+								'description'     => $step_text,
+								'numberOfItems'   => 0,
+								'itemListOrder'   => 'https://schema.org/ItemListOrderAscending',
+								'itemListElement' => array(),
+							)
+						);
+
+						if ( $step_images ) {
+
+							$json_data[ $prop_name ][ $step_idx ][ 'image' ] = $step_images;
+						}
+
+						$section_ref =& $json_data[ $prop_name ][ $step_idx ];
+
+						$section_pos++;
+
+						$step_pos = 1;
+
+						$step_idx++;
+
+					/**
+					 * How-To Step.
+					 */
+					} else {
+
+						$step_arr = WpssoSchema::get_schema_type_context( 'https://schema.org/HowToStep',
+							array(
+								'position' => $step_pos,
+								'name'     => $md_val,		// The step name.
+								'text'     => $step_text,	// The step text / description.
+								'image'    => null,
+							)
+						);
+
+						if ( ! empty( $step_images ) ) {
+
+							$step_arr[ 'image' ] = $step_images;
+						}
+
+						/**
+						 * If we have a section, add a new step to the section.
+						 */
+						if ( false !== $section_ref ) {
+
+							$section_ref[ 'itemListElement' ][] = $step_arr;
+
+							$section_ref[ 'numberOfItems' ] = $step_pos;
+
+						} else {
+
+							$json_data[ $prop_name ][ $step_idx ] = $step_arr;
+
+							$step_idx++;
+						}
+
+						$step_pos++;
+					}
+				}
+			}
+		}
+
 		public static function add_offers_data( &$json_data, array $mod, array $mt_offers ) {
 
 			$wpsso =& Wpsso::get_instance();
@@ -2140,7 +2272,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/**
 		 * Called by WpssoJsonFiltersTypeItemList.
 		 */
-		public static function add_itemlist_data( array &$json_data, array $mod, array $mt_og, $page_type_id, $is_main ) {
+		public static function add_itemlist_data( &$json_data, array $mod, array $mt_og, $page_type_id, $is_main ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -2357,7 +2489,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 *
 		 * Do not cast $prop_type_ids as an array to allow for backwards compatibility.
 		 */
-		public static function add_posts_data( array &$json_data, array $mod, array $mt_og, $page_type_id, $is_main, $prop_type_ids, $deprecated = null ) {
+		public static function add_posts_data( &$json_data, array $mod, array $mt_og, $page_type_id, $is_main, $prop_type_ids, $deprecated = null ) {
 
 			static $added_page_type_ids = array();
 

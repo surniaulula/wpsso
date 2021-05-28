@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.29.0-dev.2',	// Plugin version.
+					'version'     => '8.29.0-dev.3',	// Plugin version.
 					'opt_version' => '785',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -140,7 +140,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							),
 							'recipe' => array(
 								'wprecipemaker'    => '(plugin) WP Recipe Maker',
-								'wpultimaterecipe' => '(plugin) WP Ultimate Recipe',
 							),
 							'review' => array(
 								'shopperapproved'          => '(api) Shopper Approved API',
@@ -1390,7 +1389,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_product'                => 'product',		// For WooCommerce etc.
 					'schema_type_for_qa'                     => 'webpage.qa',
 					'schema_type_for_question'               => 'question',		// For WPSSO FAQ.
-					'schema_type_for_recipe'                 => 'recipe',		// For WP Ultimate Recipe.
 					'schema_type_for_review'                 => 'review',		// For WP Product Review.
 					'schema_type_for_tax_faq_category'       => 'webpage.faq',	// For WPSSO FAQ.
 					'schema_type_for_tax_product_brand'      => 'item.list',	// For WooCommerce Brands.
@@ -2027,7 +2025,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'cf_md_multi' => array(
 					'schema_addl_type_url'      => true,	// Microdata Type URLs.
 					'schema_howto_step'         => array(	// How-To Name.
-						'schema_howto_step_section',	// How-To Step or Section Details.
+						'schema_howto_step_section',	// How-To Step or Group / Section.
 						'schema_howto_step_text',	// How-To Description.
 						'schema_howto_step_img_id',	// How-To Image ID.
 						'schema_howto_step_img_id_pre',
@@ -2035,7 +2033,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_howto_supply'       => true,	// How-To Supplies.
 					'schema_howto_tool'         => true,	// How-To Tools.
 					'schema_recipe_ingredient'  => true,	// Recipe Ingredients.
-					'schema_recipe_instruction' => true,	// Recipe Instructions.
+					'schema_recipe_instruction' => array(	// Recipe Instructions.
+						'schema_recipe_instruction_section',	// How-To Instruction or Group / Section.
+						'schema_recipe_instruction_text',	// How-To Description.
+						'schema_recipe_instruction_img_id',	// How-To Image ID.
+						'schema_recipe_instruction_img_id_pre',
+					),
 					'schema_sameas_url'         => true,	// Same-As URLs.
 				),
 

@@ -832,8 +832,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			 *		'plugin_cf_vid_url'                  => 'og_vid_url',
 			 * 	);
 			 *
-			 * Hooked by the WpssoProRecipeWpRecipeMaker and WpssoProRecipeWpUltimateRecipe classes
-			 * to clear the 'plugin_cf_recipe_ingredients' and 'plugin_cf_recipe_instructions' values.
+			 * Hooked by WpssoProRecipeWpRecipeMaker to clear the 'plugin_cf_recipe_ingredients' and 'plugin_cf_recipe_instructions' values.
 			 */
 			$cf_md_index = (array) apply_filters( 'wpsso_cf_md_index', $this->p->cf[ 'opt' ][ 'cf_md_index' ] );
 

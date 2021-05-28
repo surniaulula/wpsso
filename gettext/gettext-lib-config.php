@@ -34,7 +34,6 @@ _x( '(api) YouTube Video / Playlist API', 'lib file description', 'wpsso' );
 _x( '(plugin) Rate my Post', 'lib file description', 'wpsso' );
 _x( '(plugin) WP-PostRatings', 'lib file description', 'wpsso' );
 _x( '(plugin) WP Recipe Maker', 'lib file description', 'wpsso' );
-_x( '(plugin) WP Ultimate Recipe', 'lib file description', 'wpsso' );
 _x( '(api) Shopper Approved API', 'lib file description', 'wpsso' );
 _x( '(plugin) WP Product Review', 'lib file description', 'wpsso' );
 _x( '(plugin) Yotpo Social Reviews for WooCommerce', 'lib file description', 'wpsso' );
