@@ -170,7 +170,6 @@ The WPSSO Core Standard plugin is designed to satisfy the requirements of most s
 	* WP-PostRatings
 	* WP Product Review
 	* WP Recipe Maker
-	* WP Ultimate Recipe
 	* WPML
 	* YITH WooCommerce Brands Add-on
 	* Yoast SEO
@@ -317,12 +316,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.29.0-dev.2 (TBD)**
+**Version 8.29.0-dev.3 (2021/05/28)**
+
+Please note that the WP Ultimate Recipe plugin is deprecated and support for WP Ultimate Recipe has been removed from the Premium version.
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Removed the WP Ultimate Recipe integration module (Premium version).
+	* Updated the WP Recipe Maker integration module to include instruction sections and images (Premium version).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -1245,9 +1247,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.29.0-dev.2 =
+= 8.29.0-dev.3 =
 
-(TBD) None.
+(2021/05/28) Removed the WP Ultimate Recipe integration module (Premium version). Updated the WP Recipe Maker integration module to include instruction sections and images (Premium version).
 
 = 8.28.2 =
 

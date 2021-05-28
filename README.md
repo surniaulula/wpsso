@@ -183,7 +183,6 @@
 <li>WP-PostRatings</li>
 <li>WP Product Review</li>
 <li>WP Recipe Maker</li>
-<li>WP Ultimate Recipe</li>
 <li>WPML</li>
 <li>YITH WooCommerce Brands Add-on</li>
 <li>Yoast SEO</li>
