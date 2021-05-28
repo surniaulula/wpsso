@@ -3541,7 +3541,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$have_amp        = $mod[ 'is_post' ] && $mod[ 'id' ] && function_exists( 'amp_get_permalink' ) ? true : false;
 			$have_clipboard  = $allow_clipboard && method_exists( 'SucomForm', 'get_no_input_clipboard' ) ? true : false;
-			$have_schema     = empty( $this->p->avail[ 'p' ][ 'schema' ] ) || empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ?  false : true;
+			$have_json       = empty( $this->p->avail[ 'p' ][ 'schema' ] ) || empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ?  false : true;
 			$amp_url_enc     = $have_amp ? urlencode( amp_get_permalink( $mod[ 'id' ] ) ) : '';
 			$sharing_url_enc = urlencode( $sharing_url );
 
@@ -3563,13 +3563,13 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				),
 				'google-rich-results' => array(
 					'title' => _x( 'Google Rich Results Test', 'option label', 'wpsso' ),
-					'type'  => _x( 'Rich Results', 'validator type', 'wpsso' ) . ( $have_schema ? '' : ' *' ),
-					'url'   => $have_schema ? 'https://search.google.com/test/rich-results?url=' . $sharing_url_enc : '',
+					'type'  => _x( 'Rich Results', 'validator type', 'wpsso' ) . ( $have_json ? '' : ' *' ),
+					'url'   => $have_json ? 'https://search.google.com/test/rich-results?url=' . $sharing_url_enc : '',
 				),
 				'google-testing-tool' => array(
 					'title' => _x( 'Google Structured Data Test (Deprecated)', 'option label', 'wpsso' ),
-					'type'  => _x( 'Structured Data', 'validator type', 'wpsso' ) . ( $have_schema ? '' : ' *' ),
-					'url'   => $have_schema ? 'https://search.google.com/structured-data/testing-tool/u/0/#url=' . $sharing_url_enc : '',
+					'type'  => _x( 'Structured Data', 'validator type', 'wpsso' ) . ( $have_json ? '' : ' *' ),
+					'url'   => $have_json ? 'https://search.google.com/structured-data/testing-tool/u/0/#url=' . $sharing_url_enc : '',
 				),
 				'linkedin' => array(
 					'title' => _x( 'LinkedIn Post Inspector', 'option label', 'wpsso' ),

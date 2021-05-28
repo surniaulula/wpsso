@@ -1341,9 +1341,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			 */
 			if ( ! empty( $this->options[ $input_name_url ] ) ) {
 
-				$holder = '';
-
 				$is_disabled = true;
+				$holder      = '';
 			}
 
 			if ( ! empty( $this->p->avail[ 'media' ][ 'ngg' ] ) ) {
@@ -1351,18 +1350,16 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$media_libs[ 'ngg' ] = 'NextGEN Gallery';
 			}
 
-			$lib_disabled = count( $media_libs ) <= 1 ? true : $is_disabled;
+			$lib_is_disabled = count( $media_libs ) <= 1 ? true : $is_disabled;
 
 			if ( strpos( $holder, 'ngg-' ) === 0 ) {
 
 				$default_lib = 'ngg';
-
-				$holder = preg_replace( '/^ngg-/', '', $holder );
+				$holder      = preg_replace( '/^ngg-/', '', $holder );
 			}
 
-			$input_pid = $this->get_input( $input_name_id, 'pid', '', 0, $holder, $is_disabled, $tabidx = null, $elmt_attr );
-
-			$select_lib = $this->get_select( $input_name_id_pre, $media_libs, '', '', true, $lib_disabled, $default_lib );
+			$input_pid  = $this->get_input( $input_name_id, 'pid', '', 0, $holder, $is_disabled, $tabidx = null, $elmt_attr );
+			$select_lib = $this->get_select( $input_name_id_pre, $media_libs, '', '', true, $lib_is_disabled, $default_lib );
 
 			if ( ! empty( $this->options[ $input_name_id ] ) &&
 				( empty( $this->options[ $input_name_id_pre ] ) ||
@@ -1375,14 +1372,15 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$data[ 'pid' ] = $holder;
 			}
 
-			if ( function_exists( 'wp_enqueue_media' ) ) {
+			if ( ! empty( $media_libs[ 'wp' ] ) ) {
 
-				$upload_button = $this->get_button( 'Select Image',
-					'sucom_image_upload_button button', $input_name,
-						'', false, $is_disabled, $data );
-			} else {
+				$button_css_class   = 'sucom_image_upload_button button';
+				$button_css_id      = $input_name;
+				$button_url         = '';
+				$button_is_disabled = function_exists( 'wp_enqueue_media' ) ? $is_disabled : true;	// Just in case.
 
-				$upload_button = '';
+				$upload_button = $this->get_button( 'Select Image', $button_css_class, $button_css_id,
+					$button_url, $newtab = false, $is_disabled, $data );
 			}
 
 			return '<div class="img_upload">' . $input_pid . 'in&nbsp;' . $select_lib . '&nbsp;' . $upload_button . '</div>';

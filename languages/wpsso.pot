@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.28.2\n"
+"Project-Id-Version: WPSSO Core 8.29.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -649,12 +649,12 @@ msgctxt "option label"
 msgid "User Profiles"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:33 lib/com/form.php:1397
+#: gettext/gettext-lib-com.php:33 lib/com/form.php:1395
 msgctxt "option comment"
 msgid "crop"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:34 lib/com/form.php:1399
+#: gettext/gettext-lib-com.php:34 lib/com/form.php:1397
 msgctxt "option comment"
 msgid "from"
 msgstr ""
