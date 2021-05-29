@@ -755,6 +755,14 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				}
 
 				/**
+				 * Deprecated since 2021/05/28.
+				 */
+				if ( $prev_version > 0 && $prev_version <= 785 ) {
+				
+					delete_post_meta_by_key( '_wpsso_wprecipemaker' );
+				}
+
+				/**
 				 * Maybe add any new / missing options keys.
 				 */
 				$opts = array_merge( $defs, $opts );

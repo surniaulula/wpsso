@@ -1600,8 +1600,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				delete_post_meta( $post_id, $meta_key );
 
 				delete_post_meta( $post_id, '_wpsso_wpproductreview' );	// Re-created automatically.
-
-				delete_post_meta( $post_id, '_wpsso_wprecipemaker' );	// Deprecated since 2021/05/28.
 			}
 
 			$permalink = get_permalink( $post_id );

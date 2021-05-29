@@ -1873,7 +1873,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 
 					/**
-					 * How-To Sections.
+					 * Add a How-To Section.
 					 */
 					if ( ! empty( $md_opts[ $opt_prefix . '_section_' . $md_num ] ) ) {
 
@@ -1901,7 +1901,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$step_idx++;
 
 					/**
-					 * How-To Step.
+					 * Add a How-To Step.
 					 */
 					} else {
 
