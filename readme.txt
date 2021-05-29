@@ -316,9 +316,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.29.0-dev.3 (2021/05/28)**
+**Version 8.29.0-b.1 (2021/05/29)**
 
-Please note that the WP Ultimate Recipe plugin is deprecated and support for WP Ultimate Recipe has been removed from the Premium version.
+Please note that the WP Ultimate Recipe plugin is deprecated and support for this plugin has been removed from the Premium version.
 
 * **New Features**
 	* None.
@@ -1247,9 +1247,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.29.0-dev.3 =
+= 8.29.0-b.1 =
 
-(2021/05/28) Removed the WP Ultimate Recipe integration module (Premium version). Updated the WP Recipe Maker integration module to include instruction sections and images (Premium version).
+(2021/05/29) Removed the WP Ultimate Recipe integration module (Premium version). Updated the WP Recipe Maker integration module to include instruction sections and images (Premium version).
 
 = 8.28.2 =
 
