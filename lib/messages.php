@@ -2711,6 +2711,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = sprintf( __( 'A larger custom image can be selected in the %1$s metabox under the %2$s tab.',
 								'wpsso' ), $mb_title, $media_tab );
+
 						} else {
 
 							$text = __( 'Consider replacing the original image with a higher resolution version.', 'wpsso' ) . ' ';
