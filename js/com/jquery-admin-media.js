@@ -38,7 +38,7 @@ function sucomShowLibraryImage( t, e ) {
 		pid = jQuery( t ).attr( 'placeholder' );
 	}
 
-	var option_prefix  = jQuery( t ).attr( 'id' ).replace( /^text_(.*)$/, '$1' );
+	var option_prefix  = jQuery( t ).attr( 'id' ).replace( /^text_(.*)$/, '$1' );	// Example: 'text_og_def_img_id'
 	var option_suffix  = '';
 
 	if ( option_prefix.match( /^.*_[0-9]+$/ ) ) {
@@ -47,14 +47,15 @@ function sucomShowLibraryImage( t, e ) {
 		option_prefix = option_prefix.replace( /^(.*)(_[0-9]+)$/, '$1' );
 	}
 
-	var container = jQuery( '#preview_' + option_prefix + option_suffix );
+	option_prefix = option_prefix.replace( /^(.*)_id$/, '$1' );
+
+	var container = jQuery( '#preview_' + option_prefix + '_id' + option_suffix );
 
 	container.empty();
 
 	if ( jQuery.isNumeric( pid ) && pid ) {
 
-		jQuery( '#select_' + option_prefix + '_pre' + option_suffix ).val( 'wp' ).change();
-
+		jQuery( '#select_' + option_prefix + '_id_pre' + option_suffix ).val( 'wp' ).change();
 		jQuery( '#text_' + option_prefix + '_url' + option_suffix ).val( '' ).change();
 		jQuery( '#text_' + option_prefix + '_url' + option_suffix ).prop( 'disabled', true );
 
@@ -62,9 +63,9 @@ function sucomShowLibraryImage( t, e ) {
 
 		q.fetch( { success:function( ret ) {
 
-			if ( typeof attachment.sizes.thumbnail.url !== 'undefined' ) {
+			if ( typeof ret.attributes.sizes.thumbnail.url !== 'undefined' ) {
 
-				var thumbnail = attachment.sizes.thumbnail;
+				var thumbnail = ret.attributes.sizes.thumbnail;
 
 				if ( container ) {
 
@@ -97,7 +98,7 @@ function sucomShowLibraryImage( t, e ) {
 function sucomSelectLibraryImage( t, e ) {
 
 	var default_pid   = jQuery( t ).attr( 'data-pid' );
-	var option_prefix = jQuery( t ).attr( 'id' ).replace( /^button_(.*)$/, '$1' );
+	var option_prefix = jQuery( t ).attr( 'id' ).replace( /^button_(.*)$/, '$1' );	// Example: 'button_og_def_img_id'
 	var option_suffix = '';
 
 	if ( option_prefix.match( /^.*_[0-9]+$/ ) ) {
@@ -105,6 +106,8 @@ function sucomSelectLibraryImage( t, e ) {
 		option_suffix = option_prefix.replace( /^(.*)(_[0-9]+)$/, '$2' );
 		option_prefix = option_prefix.replace( /^(.*)(_[0-9]+)$/, '$1' );
 	}
+
+	option_prefix = option_prefix.replace( /^(.*)_id$/, '$1' );
 
 	e.preventDefault();
 

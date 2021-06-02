@@ -976,8 +976,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		public function get_select_locale( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null, $is_disabled = false,
-			$selected = false, $event_names = array(), $event_args = null ) {
+		public function get_select_locale( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null,
+			$is_disabled = false, $selected = false, $event_names = array(), $event_args = null ) {
 
 			$name = SucomUtil::get_key_locale( $name, $this->options );
 
@@ -1306,6 +1306,46 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				' placeholder="yyyy-mm-dd" value="' . esc_attr( $value ) . '" />';
 		}
 
+		public function get_input_image_crop_area( $name, $add_none = false, $is_disabled = false ) {
+
+			$html = '';
+
+			foreach ( array( 'crop_x', 'crop_y' ) as $key ) {
+
+				$values = $this->p->cf[ 'form' ][ 'position_' . $key ];
+
+				if ( $add_none ) {
+
+					$html .= $this->get_select_none( $name . '_' . $key, $values, $css_class = 'crop-area',
+						$css_id = '', $is_assoc = true, $is_disabled );
+
+				} else {
+
+					$html .= $this->get_select( $name . '_' . $key, $values, $css_class = 'crop-area',
+						$css_id = '', $is_assoc = true, $is_disabled );
+				}
+			}
+
+			return $html;
+		}
+
+		public function get_input_image_dimensions( $name, $is_disabled = false ) {
+
+			$html = $this->get_input( $name . '_width', $css_class = 'size width', $css_id = '', $len = 0, $holder = '', $is_disabled ) . 'x';
+
+			$html .= $this->get_input( $name . '_height', $css_class = 'size height', $css_id = '', $len = 0, $holder = '', $is_disabled ) . 'px' . ' ';
+
+			$html .= _x( 'crop', 'option comment', $this->text_domain ) . ' ' . $this->get_checkbox( $name . '_crop', '', '', $is_disabled );
+
+			$html .= ' <div class="image_crop_area">' . _x( 'from', 'option comment', $this->text_domain ) . ' ';
+
+			$html .= $this->get_input_image_crop_area( $name, $add_none = false, $is_disabled );
+
+			$html .= '</div>';
+
+			return $html;
+		}
+
 		public function get_input_image_upload( $name, $holder = '', $is_disabled = false, $el_attr = '' ) {
 
 			$key_suffix  = '';
@@ -1313,13 +1353,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$media_libs  = array( 'wp' => 'Media Library' );
 			$data        = array();
 
+			//$name = SucomUtil::get_key_locale( $name, $this->options );
+
 			if ( preg_match( '/^(.*)(_[0-9]+)$/', $name, $matches ) ) {
 
 				$name       = $matches[ 1 ];
 				$key_suffix = $matches[ 2 ];	// Mutiple numbered option.
 			}
 
-			$input_name         = $name . $key_suffix;
 			$input_name_preview = 'preview_' . $name . '_id' . $key_suffix;
 			$input_name_id      = $name . '_id' . $key_suffix;
 			$input_name_id_pre  = $name . '_id_pre' . $key_suffix;
@@ -1368,24 +1409,21 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			if ( ! empty( $this->options[ $input_name_id ] ) &&
 				( empty( $this->options[ $input_name_id_pre ] ) ||
-					$this->options[ $input_name_id_pre ] === 'wp' ) ) {
+					'wp' === $this->options[ $input_name_id_pre ] ) ) {
 
 				$data[ 'pid' ] = $this->options[ $input_name_id ];
 
-			} elseif ( $default_lib === 'wp' && ! empty( $holder ) ) {
+			} elseif ( 'wp' === $default_lib && ! empty( $holder ) ) {
 
 				$data[ 'pid' ] = $holder;
 			}
 
 			if ( ! empty( $media_libs[ 'wp' ] ) ) {
 
-				$button_css_class   = 'sucom_image_upload_button button';
-				$button_css_id      = $input_name;
-				$button_url         = '';
 				$button_is_disabled = function_exists( 'wp_enqueue_media' ) ? $input_disabled : true;	// Just in case.
 
-				$upload_button = $this->get_button( 'Select Image', $button_css_class, $button_css_id,
-					$button_url, $newtab = false, $input_disabled, $data );
+				$upload_button = $this->get_button( 'Select Image', $css_class = 'sucom_image_upload_button button', $input_name_id,
+					$url = '', $newtab = false, $input_disabled, $data );
 			}
 
 			$html = '<div class="sucom_image_upload_preview" id="' . $input_name_preview . '"></div>';
@@ -1395,46 +1433,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html .= $input_pid . ' ' . __( 'from', $this->text_domain ) . ' ' . $select_lib . ' ' . $upload_button;
 
 			$html .= '</div>';
-
-			return $html;
-		}
-
-		public function get_input_image_dimensions( $name, $is_disabled = false ) {
-
-			$html = $this->get_input( $name . '_width', $css_class = 'size width', $css_id = '', $len = 0, $holder = '', $is_disabled ) . 'x';
-
-			$html .= $this->get_input( $name . '_height', $css_class = 'size height', $css_id = '', $len = 0, $holder = '', $is_disabled ) . 'px' . ' ';
-
-			$html .= _x( 'crop', 'option comment', $this->text_domain ) . ' ' . $this->get_checkbox( $name . '_crop', '', '', $is_disabled );
-
-			$html .= ' <div class="image_crop_area">' . _x( 'from', 'option comment', $this->text_domain ) . ' ';
-
-			$html .= $this->get_input_image_crop_area( $name, $add_none = false, $is_disabled );
-
-			$html .= '</div>';
-
-			return $html;
-		}
-
-		public function get_input_image_crop_area( $name, $add_none = false, $is_disabled = false ) {
-
-			$html = '';
-
-			foreach ( array( 'crop_x', 'crop_y' ) as $key ) {
-
-				$values = $this->p->cf[ 'form' ][ 'position_' . $key ];
-
-				if ( $add_none ) {
-
-					$html .= $this->get_select_none( $name . '_' . $key, $values, $css_class = 'crop-area',
-						$css_id = '', $is_assoc = true, $is_disabled );
-
-				} else {
-
-					$html .= $this->get_select( $name . '_' . $key, $values, $css_class = 'crop-area',
-						$css_id = '', $is_assoc = true, $is_disabled );
-				}
-			}
 
 			return $html;
 		}
