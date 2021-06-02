@@ -133,7 +133,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 				$this->ignored[ 'saved_urls' ] = array();
 			}
-		
+
 			$this->ignored[ 'for_secs' ] = (int) apply_filters( 'sucom_cache_ignored_for_secs', $this->ignored[ 'for_secs' ] );
 
 			$this->ignored[ 'loaded' ] = true;

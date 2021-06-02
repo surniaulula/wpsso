@@ -773,7 +773,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 							default:	// Any other post status.
 
 								$mt_og[ 'article:published_time' ] = $mod[ 'post_time' ];
-								
+
 								break;
 						}
 					}

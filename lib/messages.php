@@ -1674,9 +1674,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$add_img_html_label = _x( 'Add Hidden Image for Pinterest', 'option label', 'wpsso' );
 
-							$text = sprintf( __( 'Add a %s attribute to images from the WordPress Media Library to prevent the Pin It browser button from suggesting those images.', 'wpsso' ), '<code>data-pin-nopin</code>' ) . ' ';
+							$text = sprintf( __( '%1$s can add a %2$s attribute to resized images from the WordPress Media Library.', 'wpsso' ), $info[ 'short' ], '<code>data-pin-nopin</code>' ) . ' ';
 
-							$text .= sprintf( __( 'If this option is enabled, you should also enable the "%s" option to provide an image for the Pin It browser button.', 'wpsso' ), $add_img_html_label );
+							$text .=  __( 'This prevents the Pin It browser button from suggesting images that may be too small.', 'wpsso' ) . ' ';
+
+							$text .= sprintf( __( 'When enabling this option, you should also enable the "%s" option to provide an image for the Pin It browser button.', 'wpsso' ), $add_img_html_label ) . ' ';
 
 							break;
 
@@ -1684,9 +1686,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = sprintf( __( '%s can add an extra hidden image in the WordPress post / page content for the Pinterest Pin It browser button.', 'wpsso' ), $info[ 'short' ] ) . ' ';
 
-							$text .= __( 'Although recommended, this option is unchecked by default since the extra image can affect page load speed (the image cannot be lazy loaded).', 'wpsso' ) . ' ';
+							$text .= __( 'Although generally recommended, this option is unchecked by default since the extra image can affect page load speed (the image cannot be lazy loaded).', 'wpsso' ) . ' ';
 
-							$text .= __( 'If you have visitors using the Pinterest Pin It browser button, you can enable this option, otherwise you can leave it unchecked.', 'wpsso' ) . ' ';
+							$text .= __( 'If you have visitors using the Pinterest Pin It browser button, you may enable this option, otherwise leave it unchecked.', 'wpsso' ) . ' ';
 
 							break;
 
@@ -3152,7 +3154,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text .= __( 'Without new ratings, plugins and add-ons that you depend on could be discontinued prematurely.', 'wpsso' ) . ' ';
 
 						$text .= __( 'Don\'t let that happen!', 'wpsso' ) . ' ';
-						
+
 						$text .= __( 'Rate your active plugins today - it only takes a few seconds to rate a plugin!', 'wpsso' ) . ' ;-)';
 
 						$text .= '</p>' . "\n";
@@ -3372,7 +3374,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 		}
 
 		public function pro_feature_video_api( $ext ) {
- 
+
 			$pkg_info = $this->p->admin->get_pkg_info();	// Returns an array from cache.
 
 			$html = '<p class="pro-feature-msg">';

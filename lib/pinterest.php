@@ -233,7 +233,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 				 *
 				 * Adding a 'loading="lazy"' attribute breaks the Pinterest Save button.
 				 *
-				 * The 'skip-lazy' class is used by WP Rocket to skip lazy loading an image.
+				 * The 'skip-lazy' class is used by WP Rocket to skip the lazy loading of an image.
 				 */
 				$image_html .= "\t" . '<img src="' . SucomUtil::esc_url_encode( $image_url ) . '" ' .
 					'width="0" height="0" class="skip-lazy" style="width:0;height:0;" alt="" ' . 

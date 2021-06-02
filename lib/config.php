@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'     => '8.30.0-dev.1',	// Plugin version.
-					'opt_version' => '786',		// Increment when changing default option values.
+					'opt_version' => '787',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results, no matter how webpages are shared, re-shared, messaged, posted, embedded, or crawled.',
@@ -1254,7 +1254,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_author_field'         => 'facebook',		// Author Profile URL Field.
 					'og_def_article_section'  => 'none',			// Default Article Section.
 					'og_def_img_id'           => '',			// Default Image ID.
-					'og_def_img_id_pre'       => 'wp',
+					'og_def_img_id_lib'       => 'wp',
 					'og_def_img_url'          => '',			// or Default Image URL.
 					'og_def_product_category' => 'none',			// Default Product Type.
 					'og_def_currency'         => 'USD',			// Default Currency.
@@ -2028,7 +2028,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'schema_howto_step_section',	// How-To Step or Group / Section.
 						'schema_howto_step_text',	// How-To Description.
 						'schema_howto_step_img_id',	// How-To Image ID.
-						'schema_howto_step_img_id_pre',
+						'schema_howto_step_img_id_lib',
 					),
 					'schema_howto_supply'       => true,	// How-To Supplies.
 					'schema_howto_tool'         => true,	// How-To Tools.
@@ -2037,7 +2037,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'schema_recipe_instruction_section',	// How-To Instruction or Group / Section.
 						'schema_recipe_instruction_text',	// How-To Description.
 						'schema_recipe_instruction_img_id',	// How-To Image ID.
-						'schema_recipe_instruction_img_id_pre',
+						'schema_recipe_instruction_img_id_lib',
 					),
 					'schema_sameas_url'         => true,	// Same-As URLs.
 				),

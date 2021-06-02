@@ -14,7 +14,7 @@ function sucomInitAdminMedia( container_id, doing_ajax ) {
 	}
 
 	jQuery( table_id + ' .sucom_image_upload_pid' ).each( function( event ) {
-	
+
 		sucomShowLibraryImage( this, event );
 	} );
 
@@ -55,7 +55,7 @@ function sucomShowLibraryImage( t, e ) {
 
 	if ( jQuery.isNumeric( pid ) && pid ) {
 
-		jQuery( '#select_' + option_prefix + '_id_pre' + option_suffix ).val( 'wp' ).change();
+		jQuery( '#select_' + option_prefix + '_id_lib' + option_suffix ).val( 'wp' ).change();
 		jQuery( '#text_' + option_prefix + '_url' + option_suffix ).val( '' ).change();
 		jQuery( '#text_' + option_prefix + '_url' + option_suffix ).prop( 'disabled', true );
 
@@ -72,12 +72,12 @@ function sucomShowLibraryImage( t, e ) {
 					var img_html = '<img src="' + thumbnail.url + '"';
 
 					if ( thumbnail.width ) {
-		
+
 						img_html += ' width="' + thumbnail.width + '"';
 					}
 
 					if ( thumbnail.height ) {
-		
+
 						img_html += ' height="' + thumbnail.height + '"';
 					}
 

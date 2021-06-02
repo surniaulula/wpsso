@@ -42,7 +42,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				),
 				514 => array(
 					'rp_img_id'     => 'p_img_id',
-					'rp_img_id_pre' => 'p_img_id_pre',
+					'rp_img_id_pre' => 'p_img_id_lib',
 					'rp_img_width'  => '',
 					'rp_img_height' => '',
 					'rp_img_crop'   => '',
@@ -131,6 +131,13 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'schema_16_9_img_crop'   => 'schema_16x9_img_crop',
 					'schema_16_9_img_crop_x' => 'schema_16x9_img_crop_x',
 					'schema_16_9_img_crop_y' => 'schema_16x9_img_crop_y',
+				),
+				786 => array(
+					'og_img_id_pre'     => 'og_img_id_lib',
+					'p_img_id_pre'      => 'p_img_id_lib',
+					'tc_lrg_img_id_pre' => 'tc_lrg_img_id_lib',
+					'tc_sum_img_id_pre' => 'tc_sum_img_id_lib',
+					'schema_img_id_pre' => 'schema_img_id_lib',
 				),
 			),
 		);
@@ -355,7 +362,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					 */
 					'og_img_max'    => isset( $opts[ 'og_img_max' ] ) ? (int) $opts[ 'og_img_max' ] : 1,	// 1 by default.
 					'og_img_id'     => '',
-					'og_img_id_pre' => empty( $opts[ 'og_def_img_id_pre' ] ) ? '' : $opts[ 'og_def_img_id_pre' ],	// Default library prefix.
+					'og_img_id_lib' => empty( $opts[ 'og_def_img_id_lib' ] ) ? '' : $opts[ 'og_def_img_id_lib' ],	// Default library prefix.
 					'og_img_url'    => '',
 
 					/**
@@ -375,18 +382,18 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					 * Pinterest.
 					 */
 					'p_img_id'     => '',
-					'p_img_id_pre' => empty( $opts[ 'og_def_img_id_pre' ] ) ? '' : $opts[ 'og_def_img_id_pre' ],	// Default library prefix.
+					'p_img_id_lib' => empty( $opts[ 'og_def_img_id_lib' ] ) ? '' : $opts[ 'og_def_img_id_lib' ],	// Default library prefix.
 					'p_img_url'    => '',
 
 					/**
 					 * Twitter Card.
 					 */
 					'tc_lrg_img_id'     => '',
-					'tc_lrg_img_id_pre' => empty( $opts[ 'og_def_img_id_pre' ] ) ? '' : $opts[ 'og_def_img_id_pre' ],	// Default library prefix.
+					'tc_lrg_img_id_lib' => empty( $opts[ 'og_def_img_id_lib' ] ) ? '' : $opts[ 'og_def_img_id_lib' ],	// Default library prefix.
 					'tc_lrg_img_url'    => '',
 
 					'tc_sum_img_id'     => '',
-					'tc_sum_img_id_pre' => empty( $opts[ 'og_def_img_id_pre' ] ) ? '' : $opts[ 'og_def_img_id_pre' ],	// Default library prefix.
+					'tc_sum_img_id_lib' => empty( $opts[ 'og_def_img_id_lib' ] ) ? '' : $opts[ 'og_def_img_id_lib' ],	// Default library prefix.
 					'tc_sum_img_url'    => '',
 
 					/**
@@ -394,7 +401,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					 */
 					'schema_img_max'    => isset( $opts[ 'schema_img_max' ] ) ? (int) $opts[ 'schema_img_max' ] : 1,	// 1 by default.
 					'schema_img_id'     => '',
-					'schema_img_id_pre' => empty( $opts[ 'og_def_img_id_pre' ] ) ? '' : $opts[ 'og_def_img_id_pre' ],	// Default library prefix.
+					'schema_img_id_lib' => empty( $opts[ 'og_def_img_id_lib' ] ) ? '' : $opts[ 'og_def_img_id_lib' ],	// Default library prefix.
 					'schema_img_url'    => '',
 
 					/**
@@ -1121,7 +1128,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				 */
 				if ( empty( $md_opts[ $md_pre . '_img_id' ] ) ) {
 
-					unset( $md_opts[ $md_pre . '_img_id_pre' ] );
+					unset( $md_opts[ $md_pre . '_img_id_lib' ] );
 
 				} else {
 
@@ -1566,7 +1573,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				}
 
 				$pid = $this->get_options( $mod[ 'id' ], $opt_pre . '_img_id' );
-				$pre = $this->get_options( $mod[ 'id' ], $opt_pre . '_img_id_pre' );
+				$pre = $this->get_options( $mod[ 'id' ], $opt_pre . '_img_id_lib' );
 				$url = $this->get_options( $mod[ 'id' ], $opt_pre . '_img_url' );
 
 				if ( $pid > 0 ) {
@@ -1938,7 +1945,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			$image_ids = (array) apply_filters( 'wpsso_mt_comment_review_image_ids', is_array( $image_ids ) ? $image_ids : array(), $comment_obj );
 
 			if ( empty( $image_ids ) ) {
-			
+
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'no comment review image IDs found' );

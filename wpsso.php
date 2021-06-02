@@ -543,7 +543,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 					// translators: %s is the short plugin name.
 					$notice_msg .= sprintf( __( 'Debug mode can generate thousands of runtime messages during page load, which may degrade website performance.', 'wpsso' ), $info[ 'short' ] ) . ' ';
-						
+
 					$notice_msg .= __( 'Don\'t forget to disable debug mode when debugging is complete.', 'wpsso' );
 
 					$this->notice->warn( $notice_msg, null, $notice_key, $dismiss_time );

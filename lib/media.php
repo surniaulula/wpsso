@@ -1245,7 +1245,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$img_opts = array();
 
-			foreach ( array( 'id', 'id_pre', 'url', 'url:width', 'url:height' ) as $key ) {
+			foreach ( array( 'id', 'id_lib', 'url', 'url:width', 'url:height' ) as $key ) {
 
 				$key_suffix = null === $key_num ? $key : $key . '_' . $key_num;	// Use a numbered multi-option key.
 				$opt_key    = $img_pre . '_' . $key_suffix;
@@ -1257,7 +1257,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( ! empty( $img_opts[ 'id' ] ) && ! empty( $size_names ) ) {
 
-				$pid = 'ngg' === $img_opts[ 'id_pre' ] ? 'ngg-' . $img_opts[ 'id' ] : $img_opts[ 'id' ];
+				$pid = 'ngg' === $img_opts[ 'id_lib' ] ? 'ngg-' . $img_opts[ 'id' ] : $img_opts[ 'id' ];
 
 				$mt_ret = $this->get_mt_pid_images( $pid, $size_names, $check_dupes = false, $mt_pre );
 

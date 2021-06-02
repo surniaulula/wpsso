@@ -300,7 +300,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		public function count_db_transients( $clear_short = false, $key_prefix = '' ) {
 
 			$cache_ids = $this->get_db_transients_cache_ids( $clear_short, $key_prefix );
-		
+
 			return count( $cache_ids );
 		}
 

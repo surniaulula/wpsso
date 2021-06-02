@@ -252,8 +252,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'site_org_place_id':		// Example: 'none' or place ID.
 				case 'site_org_schema_type':		// Example: 'organization' or a sub-type.
 				case 'og_author_field':
-				case 'og_def_img_id_pre': 		// Example: 'wp' or 'ngg' media library name.
-				case 'og_img_id_pre': 			// Example: 'wp' or 'ngg' media library name.
+				case 'og_def_img_id_lib': 		// Example: 'wp' or 'ngg' media library name.
+				case 'og_img_id_lib': 			// Example: 'wp' or 'ngg' media library name.
 				case 'plugin_shortener':		// Example: 'none' or name of shortener
 				case 'plugin_col_def_width':
 				case 'plugin_col_def_width_max':
@@ -1047,9 +1047,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				if ( empty( $opts[ $opt_pre . '_img_id' ] ) ) {
 
-					if ( isset( $defs[ $opt_pre . '_img_id_pre' ] ) ) {	// Just in case.
+					if ( isset( $defs[ $opt_pre . '_img_id_lib' ] ) ) {	// Just in case.
 
-						$opts[ $opt_pre . '_img_id_pre' ] = $defs[ $opt_pre . '_img_id_pre' ];
+						$opts[ $opt_pre . '_img_id_lib' ] = $defs[ $opt_pre . '_img_id_lib' ];
 					}
 
 				} elseif ( isset( $opts[ $opt_pre . '_img_url' ] ) ) {

@@ -420,6 +420,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'schema_16_9_img_crop_x' => 'schema_16x9_img_crop_x',
 					'schema_16_9_img_crop_y' => 'schema_16x9_img_crop_y',
 				),
+				786 => array(
+					'og_def_img_id_pre' => 'og_def_img_id_lib',
+				),
 			),
 		);
 
@@ -758,7 +761,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				 * Deprecated since 2021/05/28.
 				 */
 				if ( $prev_version > 0 && $prev_version <= 785 ) {
-				
+
 					delete_post_meta_by_key( '_wpsso_wprecipemaker' );
 				}
 

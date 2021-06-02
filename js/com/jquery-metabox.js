@@ -378,14 +378,14 @@ function sucomTabs( metabox_name, tab_name ) {
 	jQuery( '.sucom-metabox-tabs' ).show();
 
 	if ( scroll_to_tab_id ) {
-	
+
 		/**
 		 * Do not scroll the metabox into view if this is a visual editor page.
 		 */
 		var editor_content = jQuery( 'div.interface-interface-skeleton__content' );	// Page might be a visual editor container.
 
 		if ( ! editor_content.length ) {	// Scrolling is allowed if the visual editor container length is not 0.
-	
+
 			sucomScrollIntoView( scroll_to_tab_id );
 		}
 	}
@@ -407,7 +407,7 @@ function sucomTabs( metabox_name, tab_name ) {
 		jQuery( '.' + href ).addClass( 'active' );
 		jQuery( '.' + href + '-msg' ).addClass( 'active' );
 		jQuery( this ).parent().addClass( 'active' );
-	
+
 		sucomScrollIntoView( 'div#sucom-metabox-tabs' + metabox_name );
 	});
 }
@@ -418,7 +418,7 @@ function sucomScrollIntoView( container_id ) {
 
 		return false;
 	}
-	
+
 	var wpbody    = jQuery( 'div#wpbody' );	// Located bellow the admin toolbar.
 	var container = jQuery( container_id );
 
