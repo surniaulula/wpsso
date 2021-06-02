@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.29.0\n"
+"Project-Id-Version: WPSSO Core 8.30.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -533,14 +533,14 @@ msgid ""
 "currently installed)."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:6 gettext/gettext-lib-com.php:35
-#: gettext/gettext-lib-com.php:42 lib/com/bfo.php:267 lib/com/cache.php:95
+#: gettext/gettext-lib-com.php:6 gettext/gettext-lib-com.php:36
+#: gettext/gettext-lib-com.php:43 lib/com/bfo.php:267 lib/com/cache.php:95
 #: lib/com/notice.php:123
 msgid "%s Notice"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:7 gettext/gettext-lib-com.php:36
-#: gettext/gettext-lib-com.php:43 lib/com/bfo.php:272 lib/com/cache.php:100
+#: gettext/gettext-lib-com.php:7 gettext/gettext-lib-com.php:37
+#: gettext/gettext-lib-com.php:44 lib/com/bfo.php:272 lib/com/cache.php:100
 #: lib/com/notice.php:128
 msgid "Notice"
 msgstr ""
@@ -649,73 +649,77 @@ msgctxt "option label"
 msgid "User Profiles"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:33 lib/com/form.php:1397
+#: gettext/gettext-lib-com.php:33 lib/com/form.php:1395
+msgid "from"
+msgstr ""
+
+#: gettext/gettext-lib-com.php:34 lib/com/form.php:1408
 msgctxt "option comment"
 msgid "crop"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:34 lib/com/form.php:1399
+#: gettext/gettext-lib-com.php:35 lib/com/form.php:1410
 msgctxt "option comment"
 msgid "from"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:37 lib/com/notice.php:283
+#: gettext/gettext-lib-com.php:38 lib/com/notice.php:283
 msgid "Forever"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:38 lib/com/notice.php:285
+#: gettext/gettext-lib-com.php:39 lib/com/notice.php:285
 msgid "This notice can be dismissed permanently."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:39 lib/com/notice.php:297
+#: gettext/gettext-lib-com.php:40 lib/com/notice.php:297
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:40 lib/com/notice.php:511
+#: gettext/gettext-lib-com.php:41 lib/com/notice.php:511
 msgid "Edit"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:41 lib/com/notice.php:515
+#: gettext/gettext-lib-com.php:42 lib/com/notice.php:515
 msgid "Reference: %s"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:44 lib/com/bfo.php:288
+#: gettext/gettext-lib-com.php:45 lib/com/bfo.php:288
 msgid ""
 "The \"%1$s\" hook with priority %2$d in the \"%3$s\" filter has incorrectly "
 "sent output to the webpage."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:45 lib/com/bfo.php:291
+#: gettext/gettext-lib-com.php:46 lib/com/bfo.php:291
 msgid ""
 "Unlike WordPress actions, WordPress filters must always return their text, "
 "not echo it to the webpage output."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:46 lib/com/bfo.php:294
+#: gettext/gettext-lib-com.php:47 lib/com/bfo.php:294
 msgid ""
 "Please contact the author of that filter and report this issue as a coding "
 "error."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:47 lib/com/bfo.php:337
+#: gettext/gettext-lib-com.php:48 lib/com/bfo.php:337
 msgid "Incorrect webpage output:"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:48 lib/com/bfo.php:338
+#: gettext/gettext-lib-com.php:49 lib/com/bfo.php:338
 msgid "BEGIN OUTPUT"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:49 lib/com/bfo.php:339
+#: gettext/gettext-lib-com.php:50 lib/com/bfo.php:339
 msgid "END OUTPUT"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:51 lib/com/plugin.php:296
+#: gettext/gettext-lib-com.php:52 lib/com/plugin.php:296
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:53 lib/com/plugin.php:307
+#: gettext/gettext-lib-com.php:54 lib/com/plugin.php:307
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr ""
 
@@ -2398,7 +2402,7 @@ msgid "Posts, Pages, and Custom Post Types"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:11 gettext/gettext-lib-pro.php:239
-#: lib/media.php:940 lib/media.php:1074 lib/media.php:2040
+#: lib/media.php:870 lib/media.php:1004 lib/media.php:1967
 #: lib/pro/admin/advanced.php:90 lib/pro/util/check-img-dims.php:102
 #: lib/std/admin/advanced.php:90
 msgid "Media Library"
@@ -3382,7 +3386,7 @@ msgstr ""
 msgid "full size original"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:240 lib/media.php:2050
+#: gettext/gettext-lib-pro.php:240 lib/media.php:1977
 #: lib/pro/util/check-img-dims.php:105
 msgid "image ID %1$s (%2$s)"
 msgstr ""
@@ -4802,7 +4806,7 @@ msgctxt "option label"
 msgid "Preferred Cropping"
 msgstr ""
 
-#: lib/edit.php:128 lib/script.php:377
+#: lib/edit.php:128 lib/script.php:378
 msgctxt "option label"
 msgid "Schema Type"
 msgstr ""
@@ -5087,73 +5091,73 @@ msgstr ""
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:944
+#: lib/media.php:874
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:945 lib/media.php:1125
+#: lib/media.php:875 lib/media.php:1055
 msgid ""
 "You may consider regenerating the sizes of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
 "org</a>."
 msgstr ""
 
-#: lib/media.php:962
+#: lib/media.php:892
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image dimensions for "
 "<a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:984
+#: lib/media.php:914
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image file path for "
 "<a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:1076
+#: lib/media.php:1006
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1094 lib/post.php:528 lib/register.php:339 lib/term.php:470
+#: lib/media.php:1024 lib/post.php:528 lib/register.php:339 lib/term.php:470
 #: lib/user.php:450 lib/util.php:825 lib/util.php:3154
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1095 lib/post.php:529 lib/term.php:471 lib/user.php:451
+#: lib/media.php:1025 lib/post.php:529 lib/term.php:471 lib/user.php:451
 #: lib/util.php:826 lib/util.php:3155
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
-#: lib/media.php:1096
+#: lib/media.php:1026
 msgid ""
 "Slow WordPress function detected - %1$s took %2$0.3f secs to make image size "
 "\"%3$s\" from %4$s (%5$s)."
 msgstr ""
 
-#: lib/media.php:1123
+#: lib/media.php:1053
 msgid ""
 "Possible %1$s corruption detected &mdash; the <a href=\"%2$s\">WordPress "
 "%3$s function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr ""
 
-#: lib/media.php:2066
+#: lib/media.php:1993
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:2117
+#: lib/media.php:2044
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting resized image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:2150
+#: lib/media.php:2077
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting resized image of %3$s is "
 "<strong>smaller than the minimum of %4$s allowed by the %5$s standard</"
@@ -8378,39 +8382,39 @@ msgstr ""
 msgid "adding schema %s #%d image"
 msgstr ""
 
-#: lib/script.php:384
+#: lib/script.php:385
 msgid "No %s notifications."
 msgstr ""
 
-#: lib/script.php:388
+#: lib/script.php:389
 msgid "Copy notifications to clipboard."
 msgstr ""
 
-#: lib/script.php:411
+#: lib/script.php:412
 msgid "Copied to clipboard."
 msgstr ""
 
-#: lib/script.php:412
+#: lib/script.php:413
 msgid "Value linked to %s option"
 msgstr ""
 
-#: lib/script.php:413
+#: lib/script.php:414
 msgid "{0} of {1} characters minimum"
 msgstr ""
 
-#: lib/script.php:414
+#: lib/script.php:415
 msgid "{0} of {1} characters required"
 msgstr ""
 
-#: lib/script.php:415
+#: lib/script.php:416
 msgid "{0} of {1} characters maximum"
 msgstr ""
 
-#: lib/script.php:416
+#: lib/script.php:417
 msgid "{0} characters"
 msgstr ""
 
-#: lib/script.php:426
+#: lib/script.php:427
 msgid "Select Image"
 msgstr ""
 

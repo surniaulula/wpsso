@@ -30,6 +30,7 @@ _x( 'Post Type', 'option label', 'wpsso' );
 _x( 'Post Type', 'option label', 'wpsso' );
 _x( 'Taxonomy', 'option label', 'wpsso' );
 _x( 'User Profiles', 'option label', 'wpsso' );
+__( 'from', 'wpsso' );
 _x( 'crop', 'option comment', 'wpsso' );
 _x( 'from', 'option comment', 'wpsso' );
 __( '%s Notice', 'wpsso' );

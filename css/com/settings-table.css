@@ -780,8 +780,7 @@ table.sucom-settings td input[type="checkbox"] { margin:0 4px 0 0; }
 
 table.sucom-settings td.blank input[type="checkbox"] { margin:2px 8px 2px 2px; }
 
-table.sucom-settings td input[type="button"],
-table.sucom-settings td input[type="button"].sucom_image_upload_button { margin:0; }
+table.sucom-settings td input[type="button"] { margin:0; }
 
 table.sucom-settings td input[type="button"].button-primary,
 table.sucom-settings td input[type="button"].button-secondary { margin:0 5px; }
@@ -893,14 +892,32 @@ table.sucom-settings .video {
 	margin:20px 0;
 }
 
-table.sucom-settings .img_upload,
-table.sucom-settings .img_crop_from {
+table.sucom-settings .image_crop_area,
+table.sucom-settings .sucom_image_upload {
 	display:inline-block;
 	white-space:nowrap;
 }
 
-table.sucom-settings .img_upload select {
-	max-width:175px;
+table.sucom-settings .sucom_image_upload * {
+	margin:0;
+	vertical-align:middle;
+}
+
+table.sucom-settings select.sucom_image_upload_lib {
+	max-width:185px;
+}
+
+table.sucom-settings .sucom_image_upload_preview {
+	display:inline-block;
+	line-height:0;
+	max-height:2.2em;
+	vertical-align:middle;
+}
+
+table.sucom-settings .sucom_image_upload_preview img {
+	width:auto;
+	max-height:2.2em;
+	margin:0 0.5em 0 0;
 }
 
 table.sucom-settings .button-primary {

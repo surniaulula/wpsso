@@ -984,7 +984,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/**
 			 * Check for custom description if a metadata index key is provided.
 			 */
-			if ( ! empty( $md_key ) && $md_key !== 'none' ) {
+			if ( ! empty( $md_key ) && 'none' !== $md_key ) {
 
 				$desc_text = is_object( $mod[ 'obj' ] ) ? $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
 

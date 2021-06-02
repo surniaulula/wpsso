@@ -762,7 +762,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 								if ( $this->p->debug->enabled ) {
 
-									$this->p->debug->log( 'skipping article published time for post status ' .  $post_status );
+									$this->p->debug->log( 'skipping article published time for post status ' .  $mod[ 'post_status' ] );
 								}
 
 								break;
@@ -1426,11 +1426,18 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$this->p->debug->log( 'no image(s) found - getting the default image' );
 				}
 
-				$default_images = $this->p->media->get_default_images( 1, $size_name, $check_dupes );
+				$mt_ret = $this->p->media->get_default_images( $size_name );
 
-				if ( ! empty( $default_images ) ) {
+				if ( $this->p->debug->enabled ) {
 
-					$mt_ret = array_merge( $mt_ret, $default_images );
+					if ( empty( $mt_ret ) ) {
+
+						$this->p->debug->log( 'no default image' );
+
+					} else {
+
+						$this->p->debug->log( 'default image found' );
+					}
 				}
 			}
 

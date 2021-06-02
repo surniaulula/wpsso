@@ -15,22 +15,97 @@ function sucomInitAdminMedia( container_id, doing_ajax ) {
 		table_id = container_id + ' ' + table_id;
 	}
 
+	jQuery( table_id + ' .sucom_image_upload_pid' ).each( function( event ) {
+	
+		sucomShowLibraryImage( this, event );
+	} );
+
+	jQuery( document ).on( 'change', table_id + ' .sucom_image_upload_pid', function( event ) {
+
+		sucomShowLibraryImage( this, event );
+	} );
+
 	jQuery( document ).on( 'click', table_id + ' .sucom_image_upload_button', function( event ) {
 
-		sucomHandleImageUpload( this, event );
+		sucomSelectLibraryImage( this, event );
 	} );
 }
 
-function sucomHandleImageUpload( t, e ) {
+function sucomShowLibraryImage( t, e ) {
 
-	var default_pid = jQuery( t ).attr( 'data-pid' );
-	var opt_prefix  = jQuery( t ).attr( 'id' ).replace( /^button_(.*)$/, '$1' );
-	var opt_suffix  = '';
+	var pid = jQuery( t ).val();
 
-	if ( opt_prefix.match( /^.*_[0-9]+$/ ) ) {
+	if ( ! pid ) {
 
-		opt_suffix = opt_prefix.replace( /^(.*)(_[0-9]+)$/, '$2' );
-		opt_prefix = opt_prefix.replace( /^(.*)(_[0-9]+)$/, '$1' );
+		pid = jQuery( t ).attr( 'placeholder' );
+	}
+
+	var option_prefix  = jQuery( t ).attr( 'id' ).replace( /^text_(.*)$/, '$1' );
+	var option_suffix  = '';
+
+	if ( option_prefix.match( /^.*_[0-9]+$/ ) ) {
+
+		option_suffix = option_prefix.replace( /^(.*)(_[0-9]+)$/, '$2' );
+		option_prefix = option_prefix.replace( /^(.*)(_[0-9]+)$/, '$1' );
+	}
+
+	var container = jQuery( '#preview_' + option_prefix + option_suffix );
+
+	container.empty();
+
+	if ( jQuery.isNumeric( pid ) && pid ) {
+
+		jQuery( '#select_' + option_prefix + '_pre' + option_suffix ).val( 'wp' ).change();
+
+		jQuery( '#text_' + option_prefix + '_url' + option_suffix ).val( '' ).change();
+		jQuery( '#text_' + option_prefix + '_url' + option_suffix ).prop( 'disabled', true );
+
+		var q = new wp.media.model.Attachment.get( pid );
+
+		q.fetch( { success:function( ret ) {
+
+			if ( typeof attachment.sizes.thumbnail.url !== 'undefined' ) {
+
+				var thumbnail = attachment.sizes.thumbnail;
+
+				if ( container ) {
+
+					var img_html = '<img src="' + thumbnail.url + '"';
+
+					if ( thumbnail.width ) {
+		
+						img_html += ' width="' + thumbnail.width + '"';
+					}
+
+					if ( thumbnail.height ) {
+		
+						img_html += ' height="' + thumbnail.height + '"';
+					}
+
+					img_html += '/>';
+
+					container.empty();
+
+					container.append( img_html );
+				}
+			}
+		} } );
+
+	} else {
+
+	}
+}
+
+function sucomSelectLibraryImage( t, e ) {
+
+	var default_pid   = jQuery( t ).attr( 'data-pid' );
+	var option_prefix = jQuery( t ).attr( 'id' ).replace( /^button_(.*)$/, '$1' );
+	var option_suffix = '';
+
+	if ( option_prefix.match( /^.*_[0-9]+$/ ) ) {
+
+		option_suffix = option_prefix.replace( /^(.*)(_[0-9]+)$/, '$2' );
+		option_prefix = option_prefix.replace( /^(.*)(_[0-9]+)$/, '$1' );
 	}
 
 	e.preventDefault();
@@ -53,7 +128,8 @@ function sucomHandleImageUpload( t, e ) {
 
 		if ( jQuery.isNumeric( default_pid ) && default_pid ) {
 
-			var selection  = sucom_image_upload_media.state().get( 'selection' );
+			var selection = sucom_image_upload_media.state().get( 'selection' );
+
 			var attachment = wp.media.attachment( default_pid );
 
 			selection.add( attachment ? [ attachment ] : [] );
@@ -66,10 +142,9 @@ function sucomHandleImageUpload( t, e ) {
 
 		var attachment = sucom_image_upload_media.state().get( 'selection' ).first().toJSON();
 
-		jQuery( '#text_' + opt_prefix + '_id' + opt_suffix ).val( attachment.id ).change();
-		jQuery( '#select_' + opt_prefix + '_id_pre' + opt_suffix ).val( 'wp' ).change();
-		jQuery( '#text_' + opt_prefix + '_url' + opt_suffix ).val( '' ).change();
-		jQuery( '#text_' + opt_prefix + '_url' + opt_suffix ).prop( 'disabled', true );
+		jQuery( t ).attr( 'data-pid', attachment.id );
+
+		jQuery( '#text_' + option_prefix + '_id' + option_suffix ).val( attachment.id ).change();
 	} );
 
 	sucom_image_upload_media.open();

@@ -1195,7 +1195,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		/**
 		 * Text input field.
 		 */
-		public function get_input( $name, $css_class = '', $css_id = '', $len = 0, $holder = '', $is_disabled = false, $tabidx = null, $elmt_attr = '' ) {
+		public function get_input( $name, $css_class = '', $css_id = '', $len = 0, $holder = '', $is_disabled = false, $tabidx = null, $el_attr = '' ) {
 
 			if ( empty( $name ) ) {
 
@@ -1228,7 +1228,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html .= empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"';
 			$html .= ' id="' . esc_attr( $container_id ) . '"';
 			$html .= is_numeric( $tabidx ) ? '' : ' tabindex="' . esc_attr( $tabidx ) . '"';
-			$html .= empty( $elmt_attr ) ? '' : ' ' . $elmt_attr;
+			$html .= empty( $el_attr ) ? '' : ' ' . $el_attr;
 
 			foreach ( $len as $key => $val ) {
 
@@ -1306,7 +1306,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				' placeholder="yyyy-mm-dd" value="' . esc_attr( $value ) . '" />';
 		}
 
-		public function get_input_image_upload( $name, $holder = '', $is_disabled = false, $elmt_attr = '' ) {
+		public function get_input_image_upload( $name, $holder = '', $is_disabled = false, $el_attr = '' ) {
 
 			$key_suffix  = '';
 			$default_lib = 'wp';
@@ -1319,11 +1319,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$key_suffix = $matches[ 2 ];	// Mutiple numbered option.
 			}
 
-			$input_name        = $name . $key_suffix;
-			$input_name_id     = $name . '_id' . $key_suffix;
-			$input_name_id_pre = $name . '_id_pre' . $key_suffix;
-			$input_name_url    = $name . '_url' . $key_suffix;
-			$input_disabled    = 'disabled' === $this->get_options( $input_name_id . ':is' ) ? true : $is_disabled;
+			$input_name         = $name . $key_suffix;
+			$input_name_preview = 'preview_' . $name . '_id' . $key_suffix;
+			$input_name_id      = $name . '_id' . $key_suffix;
+			$input_name_id_pre  = $name . '_id_pre' . $key_suffix;
+			$input_name_url     = $name . '_url' . $key_suffix;
+			$input_disabled     = 'disabled' === $this->get_options( $input_name_id . ':is' ) ? true : $is_disabled;
 
 			/**
 			 * Prevent conflicts by removing the image URL if we have an image ID.
@@ -1359,9 +1360,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$holder      = preg_replace( '/^ngg-/', '', $holder );
 			}
 
-			$input_pid = $this->get_input( $input_name_id, 'pid', '', 0, $holder, $input_disabled, $tabidx = null, $elmt_attr );
+			$input_pid = $this->get_input( $input_name_id, $css_class = 'sucom_image_upload_pid pid', $css_id = '',
+				$len = 0, $holder, $input_disabled, $tabidx = null, $el_attr );
 
-			$select_lib = $this->get_select( $input_name_id_pre, $media_libs, '', '', true, $lib_is_disabled, $default_lib );
+			$select_lib = $this->get_select( $input_name_id_pre, $media_libs, $css_class = 'sucom_image_upload_lib', $css_id = '',
+				$is_assoc = true, $lib_is_disabled, $default_lib );
 
 			if ( ! empty( $this->options[ $input_name_id ] ) &&
 				( empty( $this->options[ $input_name_id_pre ] ) ||
@@ -1385,7 +1388,15 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$button_url, $newtab = false, $input_disabled, $data );
 			}
 
-			return '<div class="img_upload">' . $input_pid . 'in&nbsp;' . $select_lib . '&nbsp;' . $upload_button . '</div>';
+			$html = '<div class="sucom_image_upload_preview" id="' . $input_name_preview . '"></div>';
+
+			$html .= '<div class="sucom_image_upload">';
+
+			$html .= $input_pid . ' ' . __( 'from', $this->text_domain ) . ' ' . $select_lib . ' ' . $upload_button;
+
+			$html .= '</div>';
+
+			return $html;
 		}
 
 		public function get_input_image_dimensions( $name, $is_disabled = false ) {
@@ -1396,7 +1407,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$html .= _x( 'crop', 'option comment', $this->text_domain ) . ' ' . $this->get_checkbox( $name . '_crop', '', '', $is_disabled );
 
-			$html .= ' <div class="img_crop_from">' . _x( 'from', 'option comment', $this->text_domain ) . ' ';
+			$html .= ' <div class="image_crop_area">' . _x( 'from', 'option comment', $this->text_domain ) . ' ';
 
 			$html .= $this->get_input_image_crop_area( $name, $add_none = false, $is_disabled );
 
@@ -1492,7 +1503,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					continue;
 				}
 
-				$elmt_attr = 'onFocus="if ( jQuery(\'input#text_' . $input_id_prev . '\').val().length ) { '.
+				$el_attr = 'onFocus="if ( jQuery(\'input#text_' . $input_id_prev . '\').val().length ) { '.
 					'jQuery(\'div#multi_' . esc_attr( $input_id_next ) . '\').show(); }"';
 
 				$html .= '<div class="multi_container input_multi" id="multi_' . esc_attr( $input_id ) . '"';
@@ -1509,7 +1520,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= ' class="' . esc_attr( $input_class ) . '"';
 				$html .= ' id="text_' . esc_attr( $input_id ) . '"';
 				$html .= ' value="' . esc_attr( $input_value ) . '"';
-				$html .= ' ' . $elmt_attr . '/>' . "\n";
+				$html .= ' ' . $el_attr . '/>' . "\n";
 
 				$html .= '</div><!-- .multi_input -->' . "\n";
 
@@ -1711,7 +1722,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$multi_id_prev = $css_id . '_' . $prev_num;
 				$multi_id_next = $css_id . '_' . $next_num;
 
-				$elmt_attr = 'onFocus="jQuery(\'div#multi_' . esc_attr( $multi_id_next ) . '\').show();"';
+				$el_attr = 'onFocus="jQuery(\'div#multi_' . esc_attr( $multi_id_next ) . '\').show();"';
 
 				$html .= '<div class="' . $multi_class . '" id="multi_' . esc_attr( $multi_id ) . '"';
 				$html .= $display ? '' : ' style="display:none;"';
@@ -1842,7 +1853,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 									$html .= '<p';
 									$html .= ' class="' . esc_attr( $input_class ) . '"';
 									$html .= ' id="' . esc_attr( $input_id ) . '"';
-									$html .= ' ' . $elmt_attr . '>';
+									$html .= ' ' . $el_attr . '>';
 									$html .= vsprintf( $atts[ 'input_content' ], $radio_inputs );
 									$html .= '</p>' . "\n";
 								}
@@ -1859,7 +1870,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 									' class="' . esc_attr( $input_class ) . '"' .
 									' id="text_' . esc_attr( $input_id ) . '"' .
 									' value="' . esc_attr( $input_value ) . '"' .
-									' ' . $elmt_attr . '/>' . "\n";
+									' ' . $el_attr . '/>' . "\n";
 
 								if ( $input_value || is_numeric( $input_value ) ) {
 
@@ -2017,7 +2028,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 								$html .= empty( $input_id ) ? '' : ' id="select_' . esc_attr( $input_id ) . '"';
 								$html .= empty( $default_value ) ? '' : ' data-default-value="' . esc_attr( $default_value ) . '"';
 								$html .= empty( $default_text ) ? '' : ' data-default-text="' . esc_attr( $default_text ) . '"';
-								$html .= ' ' . $elmt_attr . '>' . "\n";
+								$html .= ' ' . $el_attr . '>' . "\n";
 								$html .= implode( $glue = "\n", $select_opt_arr );
 								$html .= '<!-- ' . $select_opt_added . ' select options added -->' . "\n";
 								$html .= '</select>' . "\n";
@@ -2041,8 +2052,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 							case 'image':
 
-								$html .= '<div tabindex="-1" ' . $elmt_attr . '>' . "\n";
-								$html .= $this->get_input_image_upload( $input_name, $holder, $is_disabled, $elmt_attr );
+								$html .= '<div tabindex="-1" ' . $el_attr . '>' . "\n";
+								$html .= $this->get_input_image_upload( $input_name, $holder, $is_disabled, $el_attr );
 								$html .= '</div>' . "\n";
 
 								break;

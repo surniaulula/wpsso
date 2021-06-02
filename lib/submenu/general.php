@@ -60,7 +60,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 				array( $this, 'show_metabox_' . $metabox_id ), $metabox_screen,
 					$metabox_context, $metabox_prio, $callback_args );
 
-			$this->p->media->get_default_images( 1, 'wpsso-opengraph', $check_dupes = false );
+			$this->p->media->get_default_images( $size_name = 'wpsso-opengraph' );
 		}
 
 		public function show_metabox_og() {
@@ -240,12 +240,12 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'</td>';
 
 					$table_rows[ 'og_def_img_id' ] = '' . 
-						$this->form->get_th_html( _x( 'Default Image ID', 'option label', 'wpsso' ),
+						$this->form->get_th_html_locale( _x( 'Default Image ID', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'og_def_img_id' ) . 
 						'<td>' . $this->form->get_input_image_upload( 'og_def_img' ) . '</td>';
 
 					$table_rows[ 'og_def_img_url' ] = '' . 
-						$this->form->get_th_html( _x( 'or Default Image URL', 'option label', 'wpsso' ),
+						$this->form->get_th_html_locale( _x( 'or Default Image URL', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'og_def_img_url' ) . 
 						'<td>' . $this->form->get_input_image_url( 'og_def_img' ) . '</td>';
 

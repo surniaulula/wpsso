@@ -707,76 +707,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		/**
 		 * $size_name must be a string.
 		 */
-		public function get_default_images( $num = 1, $size_name = 'thumbnail', $check_dupes = true ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log_args( array(
-					'num'         => $num,
-					'size_name'   => $size_name,
-					'check_dupes' => $check_dupes,
-				) );
-			}
-
-			$mt_ret = array();
-
-			foreach ( array( 'id', 'id_pre', 'url', 'url:width', 'url:height' ) as $key ) {
-
-				$def_img[ $key ] = empty( $this->p->options[ 'og_def_img_' . $key ] ) ? '' : $this->p->options[ 'og_def_img_' . $key ];
-			}
-
-			if ( empty( $def_img[ 'id' ] ) && empty( $def_img[ 'url' ] ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: no default image defined' );
-				}
-
-				return $mt_ret;
-			}
-
-			$mt_single_image = SucomUtil::get_mt_image_seed();
-
-			if ( ! empty( $def_img[ 'id' ] ) ) {
-
-				$def_img[ 'id' ] = 'ngg' === $def_img[ 'id_pre' ] ? 'ngg-' . $def_img[ 'id' ] : $def_img[ 'id' ];
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'using default image pid: ' . $def_img[ 'id' ] );
-				}
-
-				$this->add_mt_single_image_src( $mt_single_image, $def_img[ 'id' ], $size_name, $check_dupes );
-			}
-
-			if ( empty( $mt_single_image[ 'og:image:url' ] ) && ! empty( $def_img[ 'url' ] ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'using default image URL: ' . $def_img[ 'url' ] );
-				}
-
-				$mt_single_image = array(
-					'og:image:url'    => $def_img[ 'url' ],
-					'og:image:width'  => $def_img[ 'url:width' ],
-					'og:image:height' => $def_img[ 'url:height' ],
-				);
-			}
-
-			if ( ! empty( $mt_single_image[ 'og:image:url' ] ) ) {
-
-				if ( $this->p->util->push_max( $mt_ret, $mt_single_image, $num ) ) {
-
-					return $mt_ret;
-				}
-			}
-
-			return $mt_ret;
-		}
-
-		/**
-		 * $size_name must be a string.
-		 */
 		public function get_attachment_image( $num = 0, $size_name = 'thumbnail', $attachment_id, $check_dupes = true ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -1236,6 +1166,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		/**
 		 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
 		 */
+		public function get_default_images( $size_names = 'thumbnail' ) {
+
+			return $this->get_mt_opts_images( $this->p->options, $size_names, $img_pre = 'og_def_img', $key_num = null, $mt_pre = 'og' );
+		}
+
+		/**
+		 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
+		 */
 		public function get_mt_pid_images( $pid, $size_names = 'thumbnail', $check_dupes = true, $mt_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -1303,17 +1241,16 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 *
 		 * $size_name can also be false to ignore image IDs and only use image URLs.
 		 */
-		public function get_mt_opts_images( $opts, $size_names = null, $img_pre = 'og_img', $key_num = null, $mt_pre = 'og' ) {
+		public function get_mt_opts_images( $opts, $size_names, $img_pre = 'og_img', $key_num = null, $mt_pre = 'og' ) {
 
 			$img_opts = array();
 
 			foreach ( array( 'id', 'id_pre', 'url', 'url:width', 'url:height' ) as $key ) {
 
-				$key_suffix     = $key_num === null ? $key : $key . '_' . $key_num;	// Use a numbered multi-option key.
-				$opt_key        = $img_pre . '_' . $key_suffix;
-				$opt_key_locale = SucomUtil::get_key_locale( $img_pre . '_' . $key_suffix, $opts );
+				$key_suffix = null === $key_num ? $key : $key . '_' . $key_num;	// Use a numbered multi-option key.
+				$opt_key    = $img_pre . '_' . $key_suffix;
 
-				$img_opts[ $key ] = empty( $opts[ $opt_key_locale ] ) ? '' : $opts[ $opt_key_locale ];
+				$img_opts[ $key ] = SucomUtil::get_key_value( $opt_key, $opts );
 			}
 
 			$mt_ret = array();
@@ -1349,16 +1286,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 * $size_name is false to ignore image IDs and only use image URLs.
 			 */
 			$mt_ret = $this->get_mt_opts_images( $opts, $size_name = false, $img_pre, $key_num, $mt_pre );
-
-			return isset( $mt_ret[ 0 ] ) ? $mt_ret[ 0 ] : array();
-		}
-
-		/**
-		 * Deprecated on 2020/08/10.
-		 */
-		public function get_opts_single_image( $opts, $size_name = null, $img_pre = 'og_img', $key_num = null ) {
-
-			$mt_ret = $this->get_mt_opts_images( $opts, $size_name, $img_pre, $key_num );
 
 			return isset( $mt_ret[ 0 ] ) ? $mt_ret[ 0 ] : array();
 		}

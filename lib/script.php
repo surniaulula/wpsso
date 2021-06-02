@@ -160,6 +160,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 							wp_enqueue_media( array( 'post' => $post_id ) );
 
 						} else {
+
 							wp_enqueue_media();
 						}
 
