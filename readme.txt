@@ -316,7 +316,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.30.0-dev.2 (2021/08/04)**
+**Version 8.30.0-dev.3 (2021/08/04)**
 
 * **New Features**
 	* None.
@@ -1264,7 +1264,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.30.0-dev.2 =
+= 8.30.0-dev.3 =
 
 (2021/08/04) Added a thumbnail to all Image ID options.
 
