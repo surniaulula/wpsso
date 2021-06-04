@@ -32,7 +32,6 @@ _x( 'Taxonomy', 'option label', 'wpsso' );
 _x( 'User Profiles', 'option label', 'wpsso' );
 _x( 'crop', 'option comment', 'wpsso' );
 _x( 'from', 'option comment', 'wpsso' );
-__( 'from', 'wpsso' );
 __( '%s Notice', 'wpsso' );
 __( 'Notice', 'wpsso' );
 __( 'Forever', 'wpsso' );

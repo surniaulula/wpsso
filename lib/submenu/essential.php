@@ -107,12 +107,12 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 					$table_rows[ 'og_def_img_id' ] = '' . 
 						$this->form->get_th_html_locale( _x( 'Default Image ID', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'og_def_img_id' ) . 
-						'<td>' . $this->form->get_input_image_upload( 'og_def_img' ) . '</td>';
+						'<td>' . $this->form->get_input_image_upload_locale( 'og_def_img' ) . '</td>';
 
 					$table_rows[ 'og_def_img_url' ] = '' . 
 						$this->form->get_th_html_locale( _x( 'or Default Image URL', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'og_def_img_url' ) . 
-						'<td>' . $this->form->get_input_image_url( 'og_def_img' ) . '</td>';
+						'<td>' . $this->form->get_input_image_url_locale( 'og_def_img' ) . '</td>';
 
 					$table_rows[ 'og_def_article_section' ] = '' . 
 						$this->form->get_th_html( _x( 'Default Article Section', 'option label', 'wpsso' ),

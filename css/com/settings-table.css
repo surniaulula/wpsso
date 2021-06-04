@@ -917,7 +917,7 @@ table.sucom-settings .sucom_image_upload_preview {
 table.sucom-settings .sucom_image_upload_preview img {
 	width:auto;
 	max-height:2.2em;
-	margin:0 0.5em 0 0;
+	margin:0 0 0 4px;
 }
 
 table.sucom-settings .button-primary {

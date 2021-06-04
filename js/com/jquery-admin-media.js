@@ -31,14 +31,22 @@ function sucomInitAdminMedia( container_id, doing_ajax ) {
 
 function sucomShowLibraryImage( t, e ) {
 
-	var pid = jQuery( t ).val();
+	var preview_id = jQuery( t ).attr( 'data-preview-id' );
+	var pid        = jQuery( t ).val();
 
 	if ( ! pid ) {
 
 		pid = jQuery( t ).attr( 'placeholder' );
 	}
 
-	var option_prefix  = jQuery( t ).attr( 'id' ).replace( /^text_(.*)$/, '$1' );	// Example: 'text_og_def_img_id'
+	if ( ! preview_id || ! pid ) {	// Nothing to do.
+
+		return;
+	}
+
+	var container = jQuery( '#' + preview_id );
+
+	var option_prefix  = jQuery( t ).attr( 'id' ).replace( /^text_(.*)$/, '$1' );	// Example: 'text_og_def_img_id_1#fr_FR'
 	var option_suffix  = '';
 
 	if ( option_prefix.match( /^.*_[0-9]+$/ ) ) {
@@ -48,8 +56,6 @@ function sucomShowLibraryImage( t, e ) {
 	}
 
 	option_prefix = option_prefix.replace( /^(.*)_id$/, '$1' );
-
-	var container = jQuery( '#preview_' + option_prefix + '_id' + option_suffix );
 
 	container.empty();
 
@@ -83,8 +89,6 @@ function sucomShowLibraryImage( t, e ) {
 
 					img_html += '/>';
 
-					container.empty();
-
 					container.append( img_html );
 				}
 			}
@@ -97,17 +101,8 @@ function sucomShowLibraryImage( t, e ) {
 
 function sucomSelectLibraryImage( t, e ) {
 
-	var default_pid   = jQuery( t ).attr( 'data-pid' );
-	var option_prefix = jQuery( t ).attr( 'id' ).replace( /^button_(.*)$/, '$1' );	// Example: 'button_og_def_img_id'
-	var option_suffix = '';
-
-	if ( option_prefix.match( /^.*_[0-9]+$/ ) ) {
-
-		option_suffix = option_prefix.replace( /^(.*)(_[0-9]+)$/, '$2' );
-		option_prefix = option_prefix.replace( /^(.*)(_[0-9]+)$/, '$1' );
-	}
-
-	option_prefix = option_prefix.replace( /^(.*)_id$/, '$1' );
+	var default_pid = jQuery( t ).attr( 'data-pid' );
+	var input_id    = jQuery( t ).attr( 'data-input-id' );
 
 	e.preventDefault();
 
@@ -145,7 +140,7 @@ function sucomSelectLibraryImage( t, e ) {
 
 		jQuery( t ).attr( 'data-pid', attachment.id );
 
-		jQuery( '#text_' + option_prefix + '_id' + option_suffix ).val( attachment.id ).change();
+		jQuery( '#' + input_id ).val( attachment.id ).change();
 	} );
 
 	window.sucom_image_upload_media.open();

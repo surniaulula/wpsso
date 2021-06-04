@@ -1417,14 +1417,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function sanitize_hookname( $name ) {
 
-			$name = preg_replace( '/[:\/\-\. ]+/', '_', $name );
+			$name = preg_replace( '/[#:\/\-\. ]+/', '_', $name );
 
 			return self::sanitize_key( $name );
 		}
 
 		public static function sanitize_classname( $name, $allow_underscore = true ) {
 
-			$name = preg_replace( '/[:\/\-\. ' . ( $allow_underscore ? '' : '_' ) . ']+/', '', $name );
+			$name = preg_replace( '/[#:\/\-\. ' . ( $allow_underscore ? '' : '_' ) . ']+/', '', $name );
 
 			return self::sanitize_key( $name );
 		}
@@ -1440,9 +1440,18 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $allow_upper ? $key : strtolower( $key );
 		}
 
-		public static function sanitize_anchor( $anchor ) {
+		public static function sanitize_css_class( $class ) {
 
-			return preg_replace( '/[^a-z0-9\-]/', '-', strtolower( $anchor ) );
+			return preg_replace( '/[^a-zA-Z0-9\-_ ]/', '-', $class );
+		}
+
+		/**
+		 * Do not allow colons and periods as they may cause issues with some browsers, CSS editors and Javascript
+		 * framworks. jQuery, for example, has issues with ids that contain periods and colons.
+		 */
+		public static function sanitize_css_id( $id ) {
+
+			return preg_replace( '/[^a-zA-Z0-9\-_]/', '-', $id );
 		}
 
 		public static function array_key_last( array $array ) {
@@ -2693,7 +2702,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$mod_anchor = self::get_mod_salt( $mod );
 
-			$mod_anchor = self::sanitize_anchor( $mod_anchor );
+			$mod_anchor = self::sanitize_css_id( $mod_anchor );
 
 			return $mod_anchor;
 		}

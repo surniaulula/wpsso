@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.30.0-dev.1\n"
+"Project-Id-Version: WPSSO Core 8.30.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -533,14 +533,14 @@ msgid ""
 "currently installed)."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:6 gettext/gettext-lib-com.php:36
-#: gettext/gettext-lib-com.php:43 lib/com/bfo.php:267 lib/com/cache.php:95
+#: gettext/gettext-lib-com.php:6 gettext/gettext-lib-com.php:35
+#: gettext/gettext-lib-com.php:42 lib/com/bfo.php:267 lib/com/cache.php:95
 #: lib/com/notice.php:123
 msgid "%s Notice"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:7 gettext/gettext-lib-com.php:37
-#: gettext/gettext-lib-com.php:44 lib/com/bfo.php:272 lib/com/cache.php:100
+#: gettext/gettext-lib-com.php:7 gettext/gettext-lib-com.php:36
+#: gettext/gettext-lib-com.php:43 lib/com/bfo.php:272 lib/com/cache.php:100
 #: lib/com/notice.php:128
 msgid "Notice"
 msgstr ""
@@ -634,92 +634,88 @@ msgid "Failed writing data to cache file %s."
 msgstr ""
 
 #: gettext/gettext-lib-com.php:29 gettext/gettext-lib-com.php:30
-#: lib/com/form.php:557 lib/com/form.php:567
+#: lib/com/form.php:586 lib/com/form.php:596
 msgctxt "option label"
 msgid "Post Type"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:31 lib/com/form.php:570
+#: gettext/gettext-lib-com.php:31 lib/com/form.php:599
 msgctxt "option label"
 msgid "Taxonomy"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:32 lib/com/form.php:572
+#: gettext/gettext-lib-com.php:32 lib/com/form.php:601
 msgctxt "option label"
 msgid "User Profiles"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:33 lib/com/form.php:1316
+#: gettext/gettext-lib-com.php:33 lib/com/form.php:766
 msgctxt "option comment"
 msgid "crop"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:34 lib/com/form.php:1318
+#: gettext/gettext-lib-com.php:34 lib/com/form.php:767
 msgctxt "option comment"
 msgid "from"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:35 lib/com/form.php:1411
-msgid "from"
-msgstr ""
-
-#: gettext/gettext-lib-com.php:38 lib/com/notice.php:283
+#: gettext/gettext-lib-com.php:37 lib/com/notice.php:283
 msgid "Forever"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:39 lib/com/notice.php:285
+#: gettext/gettext-lib-com.php:38 lib/com/notice.php:285
 msgid "This notice can be dismissed permanently."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:40 lib/com/notice.php:297
+#: gettext/gettext-lib-com.php:39 lib/com/notice.php:297
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:41 lib/com/notice.php:511
+#: gettext/gettext-lib-com.php:40 lib/com/notice.php:511
 msgid "Edit"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:42 lib/com/notice.php:515
+#: gettext/gettext-lib-com.php:41 lib/com/notice.php:515
 msgid "Reference: %s"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:45 lib/com/bfo.php:288
+#: gettext/gettext-lib-com.php:44 lib/com/bfo.php:288
 msgid ""
 "The \"%1$s\" hook with priority %2$d in the \"%3$s\" filter has incorrectly "
 "sent output to the webpage."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:46 lib/com/bfo.php:291
+#: gettext/gettext-lib-com.php:45 lib/com/bfo.php:291
 msgid ""
 "Unlike WordPress actions, WordPress filters must always return their text, "
 "not echo it to the webpage output."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:47 lib/com/bfo.php:294
+#: gettext/gettext-lib-com.php:46 lib/com/bfo.php:294
 msgid ""
 "Please contact the author of that filter and report this issue as a coding "
 "error."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:48 lib/com/bfo.php:337
+#: gettext/gettext-lib-com.php:47 lib/com/bfo.php:337
 msgid "Incorrect webpage output:"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:49 lib/com/bfo.php:338
+#: gettext/gettext-lib-com.php:48 lib/com/bfo.php:338
 msgid "BEGIN OUTPUT"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:50 lib/com/bfo.php:339
+#: gettext/gettext-lib-com.php:49 lib/com/bfo.php:339
 msgid "END OUTPUT"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:52 lib/com/plugin.php:296
+#: gettext/gettext-lib-com.php:51 lib/com/plugin.php:296
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:54 lib/com/plugin.php:307
+#: gettext/gettext-lib-com.php:53 lib/com/plugin.php:307
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr ""
 
