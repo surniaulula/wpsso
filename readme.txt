@@ -316,16 +316,19 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.30.0-dev.1 (TBD)**
+**Version 8.30.0-dev.2 (2021/08/04)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added a thumbnail to all Image ID options.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added new `SucomUtil::sanitize_css_class()` and `SucomUtil::sanitize_css_id()` methods.
+	* Renamed all '*_img_id_pre' option keys to '*_img_id_lib'.
+	* Refactored the `WpssoMedia::get_default_images()` method.
+	* Refactored almost all methods in the SucomForm class.
 * **Requires At Least**
 	* PHP v7.0.
 	* WordPress v4.5.
@@ -1261,9 +1264,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.30.0-dev.1 =
+= 8.30.0-dev.2 =
 
-(TBD) None.
+(2021/08/04) Added a thumbnail to all Image ID options.
 
 = 8.29.0 =
 
