@@ -1437,12 +1437,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$key = preg_replace( '/[^a-zA-Z0-9\-_:]/', '', $key );
 
-			return $allow_upper ? $key : strtolower( $key );
+			return trim( $allow_upper ? $key : strtolower( $key ) );
 		}
 
 		public static function sanitize_css_class( $class ) {
 
-			return preg_replace( '/[^a-zA-Z0-9\-_ ]/', '-', $class );
+			return trim( preg_replace( '/[^a-zA-Z0-9\-_ ]/', '-', $class ) );	// Allow spaces between css class names.
 		}
 
 		/**
@@ -1451,7 +1451,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function sanitize_css_id( $id ) {
 
-			return preg_replace( '/[^a-zA-Z0-9\-_]/', '-', $id );
+			return trim( preg_replace( '/[^a-zA-Z0-9\-_]/', '-', $id ) );
 		}
 
 		public static function array_key_last( array $array ) {
@@ -2458,26 +2458,22 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Returns a localized option value or null.
+		 * Returns an option value or null.
+		 *
+		 * Note that for non-existing keys or empty strings, this methods will return the default non-localized value.
 		 *
 		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 */
 		public static function get_key_value( $key, array $opts, $mixed = 'current' ) {
 
 			$key_locale = self::get_key_locale( $key, $opts, $mixed );
-
 			$val_locale = isset( $opts[ $key_locale ] ) ? $opts[ $key_locale ] : null;
 
-			/**
-			 * Fallback to default value for non-existing keys or empty strings.
-			 */
-			if ( ! isset( $opts[ $key_locale ] ) || $opts[ $key_locale ] === '' ) {
+			if ( ! isset( $opts[ $key_locale ] ) || '' === $opts[ $key_locale ] ) {
 
-				if ( false !== ( $pos = strpos( $key_locale, '#' ) ) ) {
+				if ( false !== strpos( $key_locale, '#' ) ) {
 
-					$key_default = substr( $key_locale, 0, $pos );
-
-					$key_default = self::get_key_locale( $key_default, $opts, 'default' );
+					$key_default = self::get_key_locale( $key_locale, $opts, 'default' );
 
 					if ( $key_locale !== $key_default ) {
 
@@ -2485,7 +2481,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					}
 
 					return $val_locale;
-
 				}
 
 				return $val_locale;
@@ -2519,8 +2514,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$key = substr( $key, 0, $pos );
 			}
 
-			$default    = self::get_locale( 'default' );
-			$locale     = self::get_locale( $mixed );
+			$default    = self::get_locale( 'default' );	// Uses a static cache.
+			$locale     = self::get_locale( $mixed );	// Uses a static cache.
 			$key_locale = $key . '#' . $locale;
 
 			/**
@@ -2537,8 +2532,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_multi_key_locale( $prefix, array &$opts, $add_none = false ) {
 
-			$default = self::get_locale( 'default' );
-			$current = self::get_locale( 'current' );
+			$default = self::get_locale( 'default' );	// Uses a static cache.
+			$current = self::get_locale( 'current' );	// Uses a static cache.
 			$matches = self::preg_grep_keys( '/^' . $prefix . '_([0-9]+)(#.*)?$/', $opts );
 			$results = array();
 
@@ -2651,7 +2646,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$available_locales = SucomUtilWP::get_available_languages();	// Uses a local static cache.
 
-			$default_locale = self::get_locale( 'default' );
+			$default_locale = self::get_locale( 'default' );	// Uses a static cache.
 
 			if ( ! is_array( $available_locales ) ) {		// Just in case.
 

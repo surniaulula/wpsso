@@ -32,6 +32,10 @@ _x( 'Taxonomy', 'option label', 'wpsso' );
 _x( 'User Profiles', 'option label', 'wpsso' );
 _x( 'crop', 'option comment', 'wpsso' );
 _x( 'from', 'option comment', 'wpsso' );
+// translators: Please ignore - translation uses a different text domain.
+__( 'Media Library' );
+// translators: Please ignore - translation uses a different text domain.
+__( 'Select Image' );
 __( '%s Notice', 'wpsso' );
 __( 'Notice', 'wpsso' );
 __( 'Forever', 'wpsso' );

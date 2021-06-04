@@ -1714,10 +1714,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						} else {
 
-							$action_url = $this->p->util->get_admin_url( '?wpsso-action=' . $action_value );
-
-							$button_url = wp_nonce_url( $action_url, WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
-
+							$action_url   = $this->p->util->get_admin_url( '?wpsso-action=' . $action_value );
+							$button_url   = wp_nonce_url( $action_url, WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 							$buttons_html .= $this->form->get_button( $mixed, $css_class, '', $button_url );
 						}
 
