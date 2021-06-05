@@ -326,7 +326,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Added new `SucomUtil::sanitize_css_class()` and `SucomUtil::sanitize_css_id()` methods.
-	* Renamed all '*_img_id_pre' option keys to '*_img_id_lib'.
+	* Renamed all '\*_img_id_pre' option keys to '\*_img_id_lib'.
 	* Refactored the `WpssoMedia::get_default_images()` method.
 	* Refactored almost all methods in the SucomForm class.
 * **Requires At Least**
