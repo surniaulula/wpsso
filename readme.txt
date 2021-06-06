@@ -316,14 +316,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.30.0-dev.3 (2021/08/04)**
+**Version 8.30.0-dev.4 (2021/08/04)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added a thumbnail to all Image ID options.
+	* Updated the YouTube video API URL query arguments (Premium version).
 * **Bugfixes**
-	* None.
+	* Fixed an HTTP 404 error for YouTube video API calls (Premium version).
 * **Developer Notes**
 	* Added new `SucomUtil::sanitize_css_class()` and `SucomUtil::sanitize_css_id()` methods.
 	* Renamed all '\*_img_id_pre' option keys to '\*_img_id_lib'.
@@ -1264,9 +1265,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.30.0-dev.3 =
+= 8.30.0-dev.4 =
 
-(2021/08/04) Added a thumbnail to all Image ID options.
+(2021/08/04) Added a thumbnail to all Image ID options. Updated the YouTube video API URL query arguments (Premium version).
 
 = 8.29.0 =
 
