@@ -31,39 +31,38 @@ function sucomInitAdminMedia( container_id, doing_ajax ) {
 
 function sucomShowLibraryImage( t, e ) {
 
-	var preview_id = jQuery( t ).attr( 'data-preview-id' );
-	var pid        = jQuery( t ).val();
+	var pid            = jQuery( t ).val();
+	var preview_css_id = jQuery( t ).attr( 'data-preview-css-id' );
 
 	if ( ! pid ) {
 
 		pid = jQuery( t ).attr( 'placeholder' );
 	}
 
-	if ( ! preview_id || ! pid ) {	// Nothing to do.
+	if ( ! preview_css_id || ! pid ) {	// Nothing to do.
 
 		return;
 	}
 
-	var container = jQuery( '#' + preview_id );
-
-	var option_prefix  = jQuery( t ).attr( 'id' ).replace( /^text_(.*)$/, '$1' );	// Example: 'text_og_def_img_id_1#fr_FR'
-	var option_suffix  = '';
-
-	if ( option_prefix.match( /^.*_[0-9]+$/ ) ) {
-
-		option_suffix = option_prefix.replace( /^(.*)(_[0-9]+)$/, '$2' );
-		option_prefix = option_prefix.replace( /^(.*)(_[0-9]+)$/, '$1' );
-	}
-
-	option_prefix = option_prefix.replace( /^(.*)_id$/, '$1' );
+	var container = jQuery( '#' + preview_css_id );
 
 	container.empty();
 
 	if ( jQuery.isNumeric( pid ) && pid ) {
 
-		jQuery( '#select_' + option_prefix + '_id_lib' + option_suffix ).val( 'wp' ).change();
-		jQuery( '#text_' + option_prefix + '_url' + option_suffix ).val( '' ).change();
-		jQuery( '#text_' + option_prefix + '_url' + option_suffix ).prop( 'disabled', true );
+		var img_lib_css_id = jQuery( t ).attr( 'data-img-lib-css-id' );
+		var img_url_css_id = jQuery( t ).attr( 'data-img-url-css-id' );
+
+		if ( img_lib_css_id ) {
+		
+			jQuery( '#' + img_lib_css_id ).val( 'wp' ).change();
+		}
+
+		if ( img_url_css_id ) {
+		
+			jQuery( '#' + img_url_css_id ).val( '' ).change();
+			jQuery( '#' + img_url_css_id ).prop( 'disabled', true );
+		}
 
 		var q = new wp.media.model.Attachment.get( pid );
 
@@ -93,16 +92,10 @@ function sucomShowLibraryImage( t, e ) {
 				}
 			}
 		} } );
-
-	} else {
-
 	}
 }
 
 function sucomSelectLibraryImage( t, e ) {
-
-	var default_pid = jQuery( t ).attr( 'data-pid' );
-	var input_id    = jQuery( t ).attr( 'data-input-id' );
 
 	e.preventDefault();
 
@@ -122,11 +115,12 @@ function sucomSelectLibraryImage( t, e ) {
 
 	window.sucom_image_upload_media.on( 'open', function() {
 
-		if ( jQuery.isNumeric( default_pid ) && default_pid ) {
+		var pid = jQuery( t ).attr( 'data-pid' );
 
-			var selection = window.sucom_image_upload_media.state().get( 'selection' );
+		if ( jQuery.isNumeric( pid ) && pid ) {
 
-			var attachment = wp.media.attachment( default_pid );
+			var selection  = window.sucom_image_upload_media.state().get( 'selection' );
+			var attachment = wp.media.attachment( pid );
 
 			selection.add( attachment ? [ attachment ] : [] );
 		}
@@ -136,11 +130,12 @@ function sucomSelectLibraryImage( t, e ) {
 
 	window.sucom_image_upload_media.on( 'select', function() {
 
-		var attachment = window.sucom_image_upload_media.state().get( 'selection' ).first().toJSON();
+		var attachment    = window.sucom_image_upload_media.state().get( 'selection' ).first().toJSON();
+		var img_id_css_id = jQuery( t ).attr( 'data-img-id-css-id' );
 
 		jQuery( t ).attr( 'data-pid', attachment.id );
 
-		jQuery( '#' + input_id ).val( attachment.id ).change();
+		jQuery( '#' + img_id_css_id ).val( attachment.id ).change();
 	} );
 
 	window.sucom_image_upload_media.open();

@@ -780,32 +780,42 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		public function get_input_image_upload( $name_prefix, $holder = '', $is_disabled = false, $el_attr = '' ) {
+		public function get_input_image_upload( $name_prefix, $holder = '', $is_disabled = false, $input_name_id_attr = '' ) {
+
+			// translators: Please ignore - translation uses a different text domain.
+			$media_libs  = array( 'wp' => __( 'Media Library' ) );
+			$default_lib = 'wp';
 
 			list( $name_prefix, $name_suffix ) = $this->split_name_locale( $name_prefix );
 
-			$input_name_id_locale      = $name_prefix . '_id' . $name_suffix;
-			$input_name_id_lib_locale  = $name_prefix . '_id_lib' . $name_suffix;
-			$input_name_url_locale     = $name_prefix . '_url' . $name_suffix;
-			$input_name_id_value       = $this->get_options_locale( $input_name_id_locale );
-			$input_name_id_lib_value   = $this->get_options_locale( $input_name_id_lib_locale );
-			$input_name_url_value      = $this->get_options_locale( $input_name_url_locale );
-			$input_disabled            = 'disabled' === $this->get_options( $input_name_id_locale . ':is' ) ? true : $is_disabled;
+			$input_name_id_locale  = $name_prefix . '_id' . $name_suffix;
+			$input_name_lib_locale = $name_prefix . '_id_lib' . $name_suffix;
+			$input_name_url_locale = $name_prefix . '_url' . $name_suffix;
+
+			$input_disabled = 'disabled' === $this->get_options( $input_name_id_locale . ':is' ) ? true : $is_disabled;
+
+			$img_id_value     = $this->get_options_locale( $input_name_id_locale );
+			$img_lib_value = $this->get_options_locale( $input_name_lib_locale );
+			$img_url_value    = $this->get_options_locale( $input_name_url_locale );
 
 			$preview_css_id = SucomUtil::sanitize_css_id( 'preview_' . $input_name_id_locale );
-			$el_attr        .= 'data-preview-id="' . $preview_css_id . '"';
-			$button_data    = array( 'input-id' => $input_name_id_locale );
-			// translators: Please ignore - translation uses a different text domain.
-			$media_libs     = array( 'wp' => __( 'Media Library' ) );
-			$default_lib    = 'wp';
+			$img_id_css_id  = SucomUtil::sanitize_css_id( $input_name_id_locale );
+			$img_lib_css_id = SucomUtil::sanitize_css_id( $input_name_lib_locale );
+			$img_url_css_id = SucomUtil::sanitize_css_id( $input_name_url_locale );
 
-			if ( ! empty( $input_name_id_value ) && 'wp' === $input_name_id_lib_value ) {
+			$input_name_id_attr .= 'data-preview-css-id="' . $preview_css_id . '"' .
+				' data-img-lib-css-id="select_' . $img_lib_css_id . '"' .
+				' data-img-url-css-id="text_' . $img_url_css_id . '"';
 
-				$data[ 'pid' ] = $input_name_id_value;
+			$button_data = array( 'img-id-css-id' => 'text_' . $img_id_css_id );
+
+			if ( ! empty( $img_id_value ) && 'wp' === $img_lib_value ) {
+
+				$button_data[ 'pid' ] = $img_id_value;
 
 			} elseif ( 'wp' === $default_lib && ! empty( $holder ) ) {
 
-				$data[ 'pid' ] = $holder;
+				$button_data[ 'pid' ] = $holder;
 			}
 
 			if ( ! empty( $this->p->avail[ 'media' ][ 'ngg' ] ) ) {
@@ -813,12 +823,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$media_libs[ 'ngg' ] = 'NextGEN Gallery';
 			}
 
-			$media_libs_is_disabled = count( $media_libs ) <= 1 ? true : $input_disabled;
+			$media_libs_disabled = count( $media_libs ) <= 1 ? true : $input_disabled;
 
 			/**
 			 * Prevent conflicts by removing the image URL if we have an image ID.
 			 */
-			if ( ! empty( $input_name_id_value ) ) {
+			if ( ! empty( $img_id_value ) ) {
 
 				unset( $this->options[ $input_name_url_locale ] );
 				unset( $this->options[ $input_name_url_locale . ':is' ] );
@@ -829,7 +839,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			/**
 			 * Disable the image ID option if we have an image URL.
 			 */
-			if ( ! empty( $input_name_url_value ) ) {
+			if ( ! empty( $img_url_value ) ) {
 
 				$holder         = '';
 				$input_disabled = true;
@@ -846,15 +856,15 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$button_is_disabled = function_exists( 'wp_enqueue_media' ) ? $input_disabled : true;	// Just in case.
 
 				// translators: Please ignore - translation uses a different text domain.
-				$upload_button = $this->get_button( __( 'Select Image' ), $css_class = 'sucom_image_upload_button button', $input_name_id_locale,
+				$upload_button = $this->get_button( __( 'Select Image' ), $css_class = 'sucom_image_upload_button button', $css_id = '',
 					$url = '', $newtab = false, $input_disabled, $button_data );
 			}
 
-			$select_lib = $this->get_select( $input_name_id_lib_locale, $media_libs, $css_class = 'sucom_image_upload_lib', $css_id = '',
-				$is_assoc = true, $media_libs_is_disabled, $default_lib );
+			$select_lib = $this->get_select( $input_name_lib_locale, $media_libs, $css_class = 'sucom_image_upload_lib', $img_lib_css_id,
+				$is_assoc = true, $media_libs_disabled, $default_lib );
 
-			$input_pid = $this->get_input( $input_name_id_locale, $css_class = 'sucom_image_upload_pid pid', $css_id = '',
-				$len = 0, $holder, $input_disabled, $tabidx = null, $el_attr );
+			$input_pid = $this->get_input( $input_name_id_locale, $css_class = 'sucom_image_upload_pid pid', $img_id_css_id,
+				$len = 0, $holder, $input_disabled, $tabidx = null, $input_name_id_attr );
 
 			$html = '<div class="sucom_image_upload">';
 			$html .= $upload_button . ' ';

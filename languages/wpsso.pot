@@ -661,14 +661,14 @@ msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
 #: gettext/gettext-lib-com.php:36 gettext/gettext-lib-pro.php:11
-#: gettext/gettext-lib-pro.php:239 lib/com/form.php:799 lib/media.php:870
+#: gettext/gettext-lib-pro.php:239 lib/com/form.php:786 lib/media.php:870
 #: lib/media.php:1004 lib/media.php:1967 lib/pro/admin/advanced.php:90
 #: lib/pro/util/check-img-dims.php:102 lib/std/admin/advanced.php:90
 msgid "Media Library"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:38 lib/com/form.php:849 lib/script.php:427
+#: gettext/gettext-lib-com.php:38 lib/com/form.php:859 lib/script.php:427
 msgid "Select Image"
 msgstr ""
 
