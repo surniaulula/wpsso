@@ -68,7 +68,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			if ( false !== $opt_key ) {
 
-				if ( isset( $this->options[ $opt_key ] ) ) {
+				if ( $this->in_options( $opt_key ) ) {
 
 					return $this->options[ $opt_key ];
 
@@ -80,25 +80,29 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->options;
 		}
 
-		public function get_defaults( $opt_key = false ) {
+		public function get_defaults( $opt_key = false, $def_val = null ) {
 
 			if ( false !== $opt_key ) {
 
-				if ( isset( $this->defaults[ $opt_key ] ) ) {
+				if ( $this->in_defaults( $opt_key ) ) {
 
 					return $this->defaults[ $opt_key ];
 
 				}
 
-				return null;
+				return $def_val;
 			}
 
 			return $this->defaults;
 		}
 
-		public function in_options( $opt_key, $do_preg = false ) {
+		public function in_options( $opt_key ) {
 
-			if ( $do_preg ) {
+			if ( isset( $this->options[ $opt_key ] ) ) {
+			
+				return true;
+
+			} elseif ( 0 !== strpos( $opt_key, '/' ) ) {	// Regular expression.
 
 				if ( ! is_array( $this->options ) ) {	// Just in case.
 
@@ -110,9 +114,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				return empty( $opts ) ? false : true;
 			}
 
-			return isset( $this->options[ $opt_key ] ) ? true : false;
+			return false;
 		}
-
 
 		public function in_defaults( $opt_key ) {
 
@@ -120,7 +123,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			
 				return true;
 
-			} elseif ( false !== ( $pos = strpos( $opt_key, '#' ) ) ) {
+			} elseif ( false !== strpos( $opt_key, '#' ) ) {	// Localized option name.
 
 				$opt_key_locale = SucomUtil::get_key_locale( $opt_key, $this->defaults, 'default' );
 
@@ -325,8 +328,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				/**
 				 * Example:
 				 *
-				 *	$opt_key        = 'site_name'
 				 *	$opt_key_locale = 'site_name#fr_FR'
+				 *	$opt_key        = 'site_name'
 				 */
 				$opt_key_locale = SucomUtil::get_key_locale( $opt_key, $this->options );
 
@@ -1425,11 +1428,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$selected = false, $event_names = array(), $event_args = null ) {
 
 			/**
-			 * Set 'none' as the default value is no default is defined.
+			 * Set 'none' as the default if no default is defined.
 			 */
-			if ( ! empty( $name ) && ! isset( $this->defaults[ $name ] ) ) {
+			if ( ! empty( $name ) ) {
+			
+				if ( ! $this->in_defaults( $name ) ) {
 
-				$this->defaults[ $name ] = 'none';
+					$this->defaults[ $name ] = 'none';
+				}
 			}
 
 			if ( null === $is_assoc ) {
@@ -1481,15 +1487,18 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$event_args  = 'hour_mins_step_' . $step_mins;
 
 			/**
-			 * Set 'none' as the default value if no default is defined.
+			 * Set 'none' as the default if no default is defined.
 			 */
 			if ( $add_none ) {
 
 				$event_args .= '_add_none';
 
-				if ( ! empty( $name ) && ! isset( $this->defaults[ $name ] ) ) {
+				if ( ! empty( $name ) ) {
 
-					$this->defaults[ $name ] = 'none';
+					if ( ! $this->in_defaults( $name ) ) {
+
+						$this->defaults[ $name ] = 'none';
+					}
 				}
 
 				return $this->get_select_none( $name, $local_cache[ $step_mins ], $css_class, $css_id, $is_assoc = true,
@@ -1503,11 +1512,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_select_time_none( $name, $css_class = '', $css_id = '', $is_disabled = false, $selected = false, $step_mins = 15 ) {
 
 			/**
-			 * Set 'none' as the default value is no default is defined.
+			 * Set 'none' as the default if no default is defined.
 			 */
-			if ( ! empty( $name ) && ! isset( $this->defaults[ $name ] ) ) {
+			if ( ! empty( $name ) ) {
+			
+				if ( ! $this->in_defaults( $name ) ) {
 
-				$this->defaults[ $name ] = 'none';
+					$this->defaults[ $name ] = 'none';
+				}
 			}
 
 			return $this->get_select_time( $name, $css_class, $css_id, $is_disabled, $selected, $step_mins, $add_none = true );
@@ -1525,12 +1537,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			 */
 			$timezones = SucomUtilWP::get_timezones();
 
-			if ( empty( $this->defaults[ $name ] ) ) {
+			if ( ! empty( $name ) ) {
 
-				/**
-				 * May return a timezone string (ie. 'Africa/Abidjan'), 'UTC', or an offset (ie. '-07:00').
-				 */
-				$this->defaults[ $name ] = SucomUtilWP::get_default_timezone();
+				if ( ! $this->in_defaults( $name ) ) {
+
+					$this->defaults[ $name ] = SucomUtilWP::get_default_timezone();
+				}
 			}
 
 			return $this->get_select( $name, $timezones, $css_class, $css_id, $is_assoc = true, $is_disabled, $selected,
@@ -1540,11 +1552,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_select_country( $name, $css_class = '', $css_id = '', $is_disabled = false, $selected = false ) {
 
 			/**
-			 * Set 'none' as the default value is no default is defined.
+			 * Set 'none' as the default if no default is defined.
 			 */
-			if ( ! empty( $name ) && ! isset( $this->defaults[ $name ] ) ) {
+			if ( ! empty( $name ) ) {
 
-				$this->defaults[ $name ] = 'none';
+				if ( ! $this->in_defaults( $name ) ) {
+
+					$this->defaults[ $name ] = 'none';
+				}
 			}
 
 			/**
@@ -2367,11 +2382,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_no_select_time_none( $name, $css_class = '', $css_id = '', $selected = false, $step_mins = 15 ) {
 
 			/**
-			 * Set 'none' as the default value is no default is defined.
+			 * Set 'none' as the default if no default is defined.
 			 */
-			if ( ! empty( $name ) && ! isset( $this->defaults[ $name ] ) ) {
+			if ( ! empty( $name ) ) {
+			
+				if ( ! $this->in_defaults( $name ) ) {
 
-				$this->defaults[ $name ] = 'none';
+					$this->defaults[ $name ] = 'none';
+				}
 			}
 
 			return $this->get_select_time( $name, $css_class, $css_id, $is_disabled = true, $selected, $step_mins, $add_none = true );
@@ -2387,11 +2405,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_no_select_time_options_none( $name, array $opts, $css_class = '', $css_id = '', $step_mins = 15 ) {
 
 			/**
-			 * Set 'none' as the default value is no default is defined.
+			 * Set 'none' as the default if no default is defined.
 			 */
-			if ( ! empty( $name ) && ! isset( $this->defaults[ $name ] ) ) {
+			if ( ! empty( $name ) ) {
+			
+				if ( ! $this->in_defaults( $name ) ) {
 
-				$this->defaults[ $name ] = 'none';
+					$this->defaults[ $name ] = 'none';
+				}
 			}
 
 			$selected = isset( $opts[ $name ] ) ? $opts[ $name ] : true;

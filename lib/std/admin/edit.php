@@ -317,7 +317,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			$media_info     = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = array( 'schema', 'og' ) );
 			$p_img_disabled = empty( $this->p->options[ 'p_add_img_html' ] ) ? true : false;
 			$p_img_msg      = $p_img_disabled ? $this->p->msgs->p_img_disabled() : '';
-			$row_class      = ! $p_img_disabled && $form->in_options( '/^p_img_/', $do_preg = true ) ? '' : 'hide_in_basic';
+			$row_class      = ! $p_img_disabled && $form->in_options( '/^p_img_/' ) ? '' : 'hide_in_basic';
 
 			$form_rows[ 'subsection_pinterest' ] = array(
 				'tr_class' => $row_class,
@@ -370,7 +370,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				/**
 				 * Hide unless a custom twitter card image exists.
 				 */
-				$row_class = $form->in_options( '/^' . $tc_prefix . '_img_/', $do_preg = true ) ? '' : 'hide_in_basic';
+				$row_class = $form->in_options( '/^' . $tc_prefix . '_img_/' ) ? '' : 'hide_in_basic';
 
 				$form_rows[ 'subsection_tc' ] = array(
 					'tr_class' => $row_class,
