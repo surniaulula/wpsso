@@ -729,10 +729,8 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		 */
 		private function refresh_mod_head_meta( array $mod, $read_cache = false ) {
 
-			$head_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache );
-
-			$head_info = $this->p->head->extract_head_info( $mod, $head_tags );
-
+			$head_tags  = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache );
+			$head_info  = $this->p->head->extract_head_info( $mod, $head_tags );
 			$sleep_secs = SucomUtil::get_const( 'WPSSO_REFRESH_CACHE_SLEEP_TIME', 0.50 );
 
 			usleep( $sleep_secs * 1000000 );	// Sleeps for 0.50 seconds by default.

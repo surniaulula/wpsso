@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.30.0-b.1',	// Plugin version.
-					'opt_version' => '787',		// Increment when changing default option values.
+					'version'     => '8.30.0-b.2',	// Plugin version.
+					'opt_version' => '790',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results, no matter how webpages are shared, re-shared, messaged, posted, embedded, or crawled.',
@@ -1676,8 +1676,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_og_img_col_term'               => 1,
 					'plugin_og_img_col_user'               => 1,
 					'plugin_og_desc_col_media'             => 1,
-					'plugin_og_desc_col_post'              => 0,
-					'plugin_og_desc_col_term'              => 0,
+					'plugin_og_desc_col_post'              => 1,
+					'plugin_og_desc_col_term'              => 1,
 					'plugin_og_desc_col_user'              => 1,
 					'plugin_col_title_width'               => '30%',	// Title / Name Column Width.
 					'plugin_col_title_width_max'           => '15vw',
@@ -1687,25 +1687,41 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings > Integration tab.
 					 */
-					'plugin_document_title'     => 'wp_title',		// Webpage Document Title.
-					'plugin_filter_title'       => 0,			// Use Filtered "SEO" Title.
-					'plugin_filter_content'     => 0,			// Use Filtered Content.
-					'plugin_filter_excerpt'     => 0,			// Use Filtered Excerpt.
-					'plugin_p_strip'            => 1,			// Content Starts at 1st Paragraph.
-					'plugin_use_img_alt'        => 1,			// Use Image Alt if No Content.
-					'plugin_img_alt_prefix'     => 'Image:',		// Content Image Alt Prefix.
-					'plugin_p_cap_prefix'       => 'Caption:',		// WP Caption Text Prefix.
-					'plugin_no_title_text'      => 'No Title',		// No Title Text.
-					'plugin_no_desc_text'       => 'No Description.',	// No Description Text.
-					'plugin_page_excerpt'       => 0,			// Enable Excerpt for Pages.
-					'plugin_page_tags'          => 0,			// Enable Tags for Pages.
-					'plugin_new_user_is_person' => 0,			// Add Person Role for New Users.
-					'plugin_check_head'         => 1,			// Check for Duplicate Meta Tags.
-					'plugin_check_img_dims'     => 0,			// Enforce Image Dimension Checks.
-					'plugin_upscale_images'     => 0,			// Upscale Media Library Images.
-					'plugin_upscale_img_max'    => 33,			// Maximum Image Upscale Percent.
-					'plugin_wpseo_social_meta'  => 0,			// Import Yoast SEO Social Meta.
-					'plugin_wpseo_show_import'  => 1,			// Show Yoast SEO Import Details.
+					'plugin_document_title'       => 'wp_title',		// Webpage Document Title.
+					'plugin_filter_title'         => 0,			// Use Filtered "SEO" Title.
+					'plugin_filter_content'       => 0,			// Use Filtered Content.
+					'plugin_filter_excerpt'       => 0,			// Use Filtered Excerpt.
+					'plugin_p_strip'              => 1,			// Content Starts at 1st Paragraph.
+					'plugin_use_img_alt'          => 1,			// Use Image Alt if No Content.
+					'plugin_img_alt_prefix'       => 'Image:',		// Content Image Alt Prefix.
+					'plugin_img_alt_prefix#es_ES' => 'Imagen:',		// Content Image Alt Prefix (es_ES).
+					'plugin_img_alt_prefix#fr_BE' => 'Image:',		// Content Image Alt Prefix (fr_BE).
+					'plugin_img_alt_prefix#fr_CA' => 'Image:',		// Content Image Alt Prefix (fr_CA).
+					'plugin_img_alt_prefix#fr_FR' => 'Image:',		// Content Image Alt Prefix (fr_FR).
+					'plugin_p_cap_prefix'         => 'Caption:',		// WP Caption Text Prefix.
+					'plugin_p_cap_prefix#es_ES'   => 'Leyenda:',		// WP Caption Text Prefix (es_ES).
+					'plugin_p_cap_prefix#fr_BE'   => 'Légende:',		// WP Caption Text Prefix (fr_BE).
+					'plugin_p_cap_prefix#fr_CA'   => 'Légende:',		// WP Caption Text Prefix (fr_CA).
+					'plugin_p_cap_prefix#fr_FR'   => 'Légende:',		// WP Caption Text Prefix (fr_FR).
+					'plugin_no_title_text'        => 'No Title',		// No Title Text.
+					'plugin_no_title_text#es_ES'  => 'Sin título',		// No Title Text (es_ES).
+					'plugin_no_title_text#fr_BE'  => 'Aucun titre',		// No Title Text (fr_BE).
+					'plugin_no_title_text#fr_CA'  => 'Aucun titre',		// No Title Text (fr_CA).
+					'plugin_no_title_text#fr_FR'  => 'Aucun titre',		// No Title Text (fr_FR).
+					'plugin_no_desc_text'         => 'No Description.',	// No Description Text.
+					'plugin_no_desc_text#es_ES'   => 'Sin descripción.',	// No Description Text (es_ES).
+					'plugin_no_desc_text#fr_BE'   => 'Aucune description.',	// No Description Text (fr_BE).
+					'plugin_no_desc_text#fr_CA'   => 'Aucune description.',	// No Description Text (fr_CA).
+					'plugin_no_desc_text#fr_FR'   => 'Aucune description.',	// No Description Text (fr_FR).
+					'plugin_page_excerpt'         => 0,			// Enable Excerpt for Pages.
+					'plugin_page_tags'            => 0,			// Enable Tags for Pages.
+					'plugin_new_user_is_person'   => 0,			// Add Person Role for New Users.
+					'plugin_check_head'           => 1,			// Check for Duplicate Meta Tags.
+					'plugin_check_img_dims'       => 0,			// Enforce Image Dimension Checks.
+					'plugin_upscale_images'       => 0,			// Upscale Media Library Images.
+					'plugin_upscale_img_max'      => 33,			// Maximum Image Upscale Percent.
+					'plugin_wpseo_social_meta'    => 0,			// Import Yoast SEO Social Meta.
+					'plugin_wpseo_show_import'    => 1,			// Show Yoast SEO Import Details.
 
 					/**
 					 * Advanced Settings > Caching tab.
@@ -2375,6 +2391,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'header'    => 'SSO Image',
 						'mt_name'   => 'og:image',
 						'meta_key'  => '_wpsso_head_info_og_img_thumb',
+						'localized' => true,
 						'orderby'   => false,	// Do not offer column sorting.
 						'width'     => '75px',
 						'height'    => '40px',
@@ -2383,6 +2400,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'header'   => 'SSO Desc',
 						'mt_name'  => 'og:description',
 						'meta_key' => '_wpsso_head_info_og_desc',
+						'localized' => true,
 						'orderby'  => false,	// Do not offer column sorting.
 						'width'    => '160px',
 						'height'   => 'auto',

@@ -1168,6 +1168,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 */
 		public function get_default_images( $size_names = 'thumbnail' ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			return $this->get_mt_opts_images( $this->p->options, $size_names, $img_pre = 'og_def_img', $key_num = null, $mt_pre = 'og' );
 		}
 
@@ -1248,9 +1253,15 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			foreach ( array( 'id', 'id_lib', 'url', 'url:width', 'url:height' ) as $key ) {
 
 				$key_suffix = null === $key_num ? $key : $key . '_' . $key_num;	// Use a numbered multi-option key.
-				$opt_key    = $img_pre . '_' . $key_suffix;
+
+				$opt_key = $img_pre . '_' . $key_suffix;
 
 				$img_opts[ $key ] = SucomUtil::get_key_value( $opt_key, $opts );
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_arr( '$img_opts', $img_opts );
 			}
 
 			$mt_ret = array();

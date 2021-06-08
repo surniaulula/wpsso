@@ -822,18 +822,105 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			static $local_cache = array();
 
+			if ( is_array( $mod_id ) ) {
+
+				$mod = $mod_id;
+
+				$mod_id = $mod[ 'id' ];
+
+			} else {
+
+				$mod = $this->get_mod( $mod_id );
+			}
+
 			if ( isset( $local_cache[ $mod_id ] ) ) {
 
 				return $local_cache[ $mod_id ];
 			}
 
-			$mod = $this->get_mod( $mod_id );
-
 			$head_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache );
-
 			$head_info = $this->p->head->extract_head_info( $mod, $head_tags );
 
 			return $local_cache[ $mod_id ] = $head_info;
+		}
+
+		public function get_head_info_thumb_bg_img( $head_info, $mod, $md_pre = 'og', $mt_pre = 'og' ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark( 'getting thumbnail image' );	// Begin timer.
+			}
+
+			$media_html = '';
+
+			if ( empty( $head_info[ $mt_pre . ':image:id' ] ) ) {
+
+				$media_html .= '<!-- checking head info array for image URL -->';
+
+			} else {
+
+				$pid = $head_info[ $mt_pre . ':image:id' ];
+
+				$size_name = 'thumbnail';
+
+				/**
+				 * get_mt_single_image_src() returns an og:image:url value, not an og:image:secure_url.
+				 *
+				 * Example:
+				 *
+				 * 	array(
+				 *		$mt_pre . ':image:url'        => '',
+				 *		$mt_pre . ':image:width'      => '',
+				 *		$mt_pre . ':image:height'     => '',
+				 *		$mt_pre . ':image:cropped'    => '',	// Non-standard / internal meta tag.
+				 *		$mt_pre . ':image:id'         => '',	// Non-standard / internal meta tag.
+				 *		$mt_pre . ':image:alt'        => '',
+				 *		$mt_pre . ':image:size_name'  => '',	// Non-standard / internal meta tag.
+				 * 	);
+				 */
+				$mt_single_image = $this->p->media->get_mt_single_image_src( $pid, $size_name, $check_dupes = false, $mt_pre );
+
+				$media_html .= '<!-- getting ' . $size_name . ' size for image ID ' . $pid . ' = ';
+
+				if ( empty( $mt_single_image[ $mt_pre . ':image:url' ] ) ) {	// Just in case.
+
+					$media_html .= 'failed';
+
+				} else {
+
+					$media_html .= 'success';
+
+					$head_info =& $mt_single_image;	// Use the updated image information.
+				}
+
+				$media_html .= ' -->';
+			}
+
+			$image_url = SucomUtil::get_first_mt_media_url( $head_info );
+
+			if ( empty( $image_url ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'no thumbnail image URL' );
+				}
+
+			} else {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'thumbnail image URL = ' . $image_url );
+				}
+
+				$media_html .= '<div class="wp-thumb-bg-img" style="background-image:url(' . $image_url . ');"></div><!-- .wp-thumb-bg-img -->';
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark( 'getting thumbnail image' );	// End timer.
+			}
+
+			return $media_html;
 		}
 
 		/**
@@ -1251,28 +1338,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		}
 
 		/**
-		 * Return translated column headers.
-		 *
-		 * Called by add_column_headings(), WpssoStdAdminAdvanced->filter_edit_table_columns_rows(), and WpssoProAdminAdvanced->filter_edit_table_columns_rows().
-		 */
-		public static function get_column_headers() {
-
-			$headers = array();
-
-			$sortable_cols = self::get_sortable_columns();
-
-			foreach ( $sortable_cols as $col_key => $col_info ) {
-
-				if ( ! empty( $col_info[ 'header' ] ) ) {
-
-					$headers[ $col_key ] = _x( $col_info[ 'header' ], 'column header', 'wpsso' );
-				}
-			}
-
-			return $headers;
-		}
-
-		/**
 		 * Return sortable column keys and their query sort info.
 		 */
 		public static function get_sortable_columns( $col_key = false ) {
@@ -1298,11 +1363,27 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					return $local_cache[ $col_key ];
 				}
 
-				return null;
-
+				return null;	// Column key not found.
 			}
 
-			return $local_cache;
+			return $local_cache;	// Always an array.
+		}
+
+		public static function get_column_headers() {
+
+			$headers = array();
+
+			$sortable_cols = self::get_sortable_columns();
+
+			foreach ( $sortable_cols as $col_key => $col_info ) {
+
+				if ( ! empty( $col_info[ 'header' ] ) ) {
+
+					$headers[ $col_key ] = _x( $col_info[ 'header' ], 'column header', 'wpsso' );
+				}
+			}
+
+			return $headers;
 		}
 
 		public static function get_column_meta_keys() {
@@ -1322,150 +1403,211 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $meta_keys;
 		}
 
-		public function get_column_wp_cache( array $mod, $column_name ) {
+		public static function get_column_by_meta_key( $meta_key ) {
 
-			if ( $this->p->debug->enabled ) {
+			$sortable_cols = self::get_sortable_columns();
 
-				$this->p->debug->mark();
-			}
+			foreach ( $sortable_cols as $col_key => $col_info ) {
 
-			$column_val = '';
+				if ( ! empty( $col_info[ 'meta_key' ] ) ) {
 
-			if ( ! empty( $mod[ 'id' ] ) && strpos( $column_name, 'wpsso_' ) === 0 ) {	// Just in case.
+					if ( $col_info[ 'meta_key' ] === $meta_key ) {
 
-				$col_key = str_replace( 'wpsso_', '', $column_name );
-
-				if ( ( $col_info = self::get_sortable_columns( $col_key ) ) !== null ) {
-
-					if ( isset( $col_info[ 'meta_key' ] ) ) {	// Just in case.
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'getting meta cache for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] );
-						}
-
-						/**
-						 * WordPress stores data using a post, term, or user ID, along with a group string.
-						 *
-						 * Example: wp_cache_get( 1, 'user_meta' );
-						 *
-						 * Returns (bool|mixed) false on failure to retrieve contents or the cache contents on success.
-						 *
-						 * $found (bool) (Optional) whether the key was found in the cache (passed by reference). Disambiguates a
-						 * return of false, a storable value. Default null.
-						 */
-						$meta_cache = wp_cache_get( $mod[ 'id' ], $mod[ 'name' ] . '_meta', $force = false, $found );
-
-						if ( ! $found ) {
-
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'updating meta cache for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] );
-							}
-
-							$meta_cache = update_meta_cache( $mod[ 'name' ], array( $mod[ 'id' ] ) );
-
-							$meta_cache = $meta_cache[ $mod[ 'id' ] ];
-						}
-
-						if ( isset( $meta_cache[ $col_info[ 'meta_key' ] ] ) ) {
-
-							$column_val = (string) maybe_unserialize( $meta_cache[ $col_info[ 'meta_key' ] ][ 0 ] );
-						}
+						return $col_info;
 					}
 				}
 			}
 
-			return $column_val;
+			return array();
 		}
 
 		public function get_column_content( $value, $column_name, $mod_id ) {
 
-			if ( ! empty( $mod_id ) && 0 === strpos( $column_name, 'wpsso_' ) ) {	// Just in case.
+			if ( empty( $mod_id ) || 0 !== strpos( $column_name, 'wpsso_' ) ) {	// Just in case.
 
-				$col_key = str_replace( 'wpsso_', '', $column_name );
+				return $value;
+			}
 
-				if ( ( $col_info = self::get_sortable_columns( $col_key ) ) !== null ) {
+			$col_key = str_replace( 'wpsso_', '', $column_name );
 
-					if ( isset( $col_info[ 'meta_key' ] ) ) {	// just in case
+			if ( $col_info = self::get_sortable_columns( $col_key ) ) {
 
-						$value = $this->get_meta_cache_value( $mod_id, $col_info[ 'meta_key' ] );
+				$mod = $this->get_mod( $mod_id );
+
+				$value = $this->get_column_wp_cache( $mod, $col_info );	// Can return 'none' or an empty string.
+
+				/**
+				 * Callback added by WpssoRarAdmin->filter_get_sortable_columns().
+				 */
+				$callbacks_key = $mod[ 'name' ] . '_callbacks';
+
+				if ( isset( $col_info[ $callbacks_key ] ) && is_array( $col_info[ $callbacks_key ] ) ) {
+
+					foreach( $col_info[ $callbacks_key ] as $input_callback ) {
+
+						$value = call_user_func( $input_callback, $value, $mod_id );
 					}
+				}
+
+				if ( 'none' === $value ) {
+
+					$value = '';
 				}
 			}
 
 			return $value;
 		}
 
-		public function get_meta_cache_value( $mod_id, $meta_key, $none = '' ) {
-
-			return self::must_be_extended( $none );
-		}
-
 		/**
-		 * Called by WpssoPost->check_sortable_post_metadata(), WpssoTerm->check_sortable_term_metadata(), and
-		 * WpssoUser->check_sortable_user_metadata().
+		 * Can return 'none' or an empty string.
+		 *
+		 * Called by WpssoPost->get_column_content(), WpssoTerm->get_column_content(), and WpssoUser->get_column_content().
 		 */
-		protected function check_sortable_metadata( $value, $mod_id, $meta_key, $single ) {
-
-			/**
-			 * Example $meta_key value:
-			 *
-			 *	'_wpsso_head_info_og_img_thumb'.
-			 */
-			if ( 0 !== strpos( $meta_key, '_wpsso_head_info_' ) ) {
-
-				return $value;	// Return null.
-			}
+		public function get_column_wp_cache( array $mod, array $col_info ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
 			}
 
-			static $local_no_recurs = array();
+			$value  = '';
+			$locale = empty( $col_info[ 'localized' ] ) ? '' : SucomUtil::get_locale( $mixed = 'current', $read_cache = true );
 
-			if ( isset( $local_no_recurs[ $mod_id ][ $meta_key ] ) ) {
+			if ( empty( $col_info[ 'meta_key' ] ) ) {	// Just in case.
+
+				return $value;
+			}
+				
+			/**
+			 * WordPress stores data using a post, term, or user ID, along with a group string.
+			 *
+			 * Example: wp_cache_get( 1, 'user_meta' );
+			 *
+			 * Returns (bool|mixed) false on failure to retrieve contents or the cache contents on success.
+			 *
+			 * $found (bool) (Optional) whether the key was found in the cache (passed by reference). Disambiguates a
+			 * return of false, a storable value. Default null.
+			 */
+			$metadata = wp_cache_get( $mod[ 'id' ], $mod[ 'name' ] . '_meta', $force = false, $found );
+
+			if ( ! $found ) {
+
+				$metadata = update_meta_cache( $mod[ 'name' ], array( $mod[ 'id' ] ) );
+				$metadata = $metadata[ $mod[ 'id' ] ];
+			}
+
+			if ( ! empty( $metadata[ $col_info[ 'meta_key' ] ] ) ) {
+
+				$value = maybe_unserialize( $metadata[ $col_info[ 'meta_key' ] ][ 0 ] );
+			}
+
+			/**
+			 * $value is an empty string by default. If wp_cache_get() or update_meta_cache() do not return a value for
+			 * this meta key, then $value will still be an empty string. If this meta key is localized, and the locale
+			 * key does not exist in the array, then fetch a new / updated array value.
+			 */
+			if ( '' === $value || ( $locale && ! isset( $value[ $locale ] ) ) ) {
+
+				$value = static::get_meta( $mod[ 'id' ], $col_info[ 'meta_key' ], $single = true );	// Use static method from child.
+			}
+
+			if ( $locale ) {	// Values stored by locale.
+
+				$value = isset( $value[ $locale ] ) ? $value[ $locale ] : '';
+			}
+
+			return (string) $value;
+		}
+
+		/**
+		 * Filters all post, term, and user metadata.
+		 */
+		public function check_sortable_meta( $value, $mod_id, $meta_key, $single ) {
+
+			if ( empty( $mod_id ) || 0 !== strpos( $meta_key, '_wpsso_head_info_' ) ) {
+
+				return $value;
+			}
+
+			$mod = $this->get_mod( $mod_id );
+
+			$mod_salt = SucomUtil::get_mod_salt( $mod );
+
+			static $local_prevent_recursion = array();
+
+			if ( isset( $local_prevent_recursion[ $mod_salt ][ $meta_key ] ) ) {
 
 				return $value;	// Return null.
 			}
 
-			$local_no_recurs[ $mod_id ][ $meta_key ] = true;	// Prevent recursion.
+			$col_info = self::get_column_by_meta_key( $meta_key );
 
-			$meta_value = static::get_meta( $mod_id, $meta_key, $force_single = true );	// Use static method from child.
+			if ( ! empty( $col_info ) ) {
 
-			if ( '' === $meta_value ) {
+				$local_prevent_recursion[ $mod_salt ][ $meta_key ] = true;	// Prevent recursion.
 
-				$this->get_head_info( $mod_id, $read_cache = true );
+				$metadata = static::get_meta( $mod_id, $meta_key, $single = true );	// Use static method from child.
+
+				$do_head_info = false;
+
+				if ( '' === $metadata ) {
+
+					$do_head_info = true;
+
+				} elseif ( ! empty( $col_info[ 'localized' ] ) ) {	// Values stored by locale.
+
+					$locale = SucomUtil::get_locale( $mixed = 'current', $read_cache = true );
+
+					if ( empty( $metadata[ $locale ] ) ) {
+
+						$do_head_info = true;
+					}
+				}
+
+				if ( $do_head_info ) {
+
+					$this->get_head_info( $mod, $read_cache = true );
+				}
+			
+				unset( $local_prevent_recursion[ $mod_salt ][ $meta_key ] );
 			}
 
-			unset( $local_no_recurs[ $mod_id ][ $meta_key ] );
-
-			return $value;	// Return null.
+			return $value;
 		}
 
 		public function update_sortable_meta( $mod_id, $col_key, $content ) {
 
-			if ( $this->p->debug->enabled ) {
+			if ( empty( $mod_id ) ) {	// Just in case.
 
-				$this->p->debug->mark();
+				return;
 			}
 
-			if ( ! empty( $mod_id ) ) {	// Just in case.
+			if ( $col_info = self::get_sortable_columns( $col_key ) ) {
 
-				if ( ( $sortable_cols = self::get_sortable_columns( $col_key ) ) !== null ) {
+				if ( ! empty( $col_info[ 'meta_key' ] ) ) {	// Just in case.
 
-					if ( isset( $sortable_cols[ 'meta_key' ] ) ) {	// Just in case.
+					if ( ! empty( $col_info[ 'localized' ] ) ) {	// Values stored by locale.
 
-						static::update_meta( $mod_id, $sortable_cols[ 'meta_key' ], $content );	// Use static method from child.
+						$locale   = SucomUtil::get_locale( $mixed = 'current', $read_cache = true );
+						$content  = array( $locale => $content );
+						$metadata = static::get_meta( $mod_id, $col_info[ 'meta_key' ], $single = true );
+
+						if ( is_array( $metadata ) ) {
+
+							$content = array_merge( $metadata, $content );
+						}
 					}
+
+					static::update_meta( $mod_id, $col_info[ 'meta_key' ], $content );	// Use static method from child.
 				}
 			}
 		}
 
 		public function add_sortable_columns( $columns ) {
 
-			foreach ( self::get_sortable_columns() as $col_key => $col_info ) {
+			$sortable_cols = self::get_sortable_columns();
+
+			foreach ( $sortable_cols as $col_key => $col_info ) {
 
 				if ( ! empty( $col_info[ 'orderby' ] ) ) {
 
@@ -1484,7 +1626,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				$col_key = str_replace( 'wpsso_', '', $col_name );
 
-				if ( ( $col_info = self::get_sortable_columns( $col_key ) ) !== null ) {
+				if ( $col_info = self::get_sortable_columns( $col_key ) ) {
 
 					foreach ( array( 'meta_key', 'orderby' ) as $set_name ) {
 
@@ -1794,85 +1936,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			}
 
 			return $mt_videos;
-		}
-
-		public function get_head_info_thumb_bg_img( $head_info, $mod, $md_pre = 'og', $mt_pre = 'og' ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark( 'getting thumbnail image' );	// Begin timer.
-			}
-
-			$media_html = '';
-
-			if ( empty( $head_info[ $mt_pre . ':image:id' ] ) ) {
-
-				$media_html .= '<!-- checking head info array for image URL -->';
-
-			} else {
-
-				$pid = $head_info[ $mt_pre . ':image:id' ];
-
-				$size_name = 'thumbnail';
-
-				/**
-				 * get_mt_single_image_src() returns an og:image:url value, not an og:image:secure_url.
-				 *
-				 * Example:
-				 *
-				 * 	array(
-				 *		$mt_pre . ':image:url'        => '',
-				 *		$mt_pre . ':image:width'      => '',
-				 *		$mt_pre . ':image:height'     => '',
-				 *		$mt_pre . ':image:cropped'    => '',	// Non-standard / internal meta tag.
-				 *		$mt_pre . ':image:id'         => '',	// Non-standard / internal meta tag.
-				 *		$mt_pre . ':image:alt'        => '',
-				 *		$mt_pre . ':image:size_name'  => '',	// Non-standard / internal meta tag.
-				 * 	);
-				 */
-				$mt_single_image = $this->p->media->get_mt_single_image_src( $pid, $size_name, $check_dupes = false, $mt_pre );
-
-				$media_html .= '<!-- getting ' . $size_name . ' size for image ID ' . $pid . ' = ';
-
-				if ( empty( $mt_single_image[ $mt_pre . ':image:url' ] ) ) {	// Just in case.
-
-					$media_html .= 'failed';
-
-				} else {
-
-					$media_html .= 'success';
-
-					$head_info =& $mt_single_image;	// Use the updated image information.
-				}
-
-				$media_html .= ' -->';
-			}
-
-			$image_url = SucomUtil::get_first_mt_media_url( $head_info );
-
-			if ( empty( $image_url ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'no thumbnail image URL' );
-				}
-
-			} else {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'thumbnail image URL = ' . $image_url );
-				}
-
-				$media_html .= '<div class="wp-thumb-bg-img" style="background-image:url(' . $image_url . ');"></div><!-- .wp-thumb-bg-img -->';
-			}
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark( 'getting thumbnail image' );	// End timer.
-			}
-
-			return $media_html;
 		}
 
 		/**

@@ -114,7 +114,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				add_filter( 'manage_users_sortable_columns', array( $this, 'add_sortable_columns' ), 10, 1 );
 
-				add_filter( 'manage_users_custom_column', array( $this, 'get_column_content',), 10, 3 );
+				add_filter( 'manage_users_custom_column', array( $this, 'get_column_content' ), 10, 3 );
 
 				/**
 				 * The 'parse_query' action is hooked once in the WpssoPost class to set the column orderby for
@@ -124,7 +124,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				 * add_action( 'parse_query', array( $this, 'set_column_orderby' ), 10, 1 );
 				 */
 
-				add_action( 'get_user_metadata', array( $this, 'check_sortable_user_metadata' ), 10, 4 );
+				/**
+				 * Maybe create or update the user column content.
+				 */
+				add_action( 'get_user_metadata', array( $this, 'check_sortable_meta' ), 10, 4 );
 
 				/**
 				 * Exit here if not a user or profile page.
@@ -484,47 +487,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $this->add_column_headings( $columns, $list_type = 'user' );
 		}
 
-		public function get_meta_cache_value( $user_id, $meta_key, $none = '' ) {
-
-			/**
-			 * WordPress stores data using a post, term, or user ID, along with a group string.
-			 *
-			 * Example: wp_cache_get( 1, 'user_meta' );
-			 *
-			 * Returns (bool|mixed) false on failure to retrieve contents or the cache contents on success.
-			 *
-			 * $found (bool) (Optional) whether the key was found in the cache (passed by reference). Disambiguates a
-			 * return of false, a storable value. Default null.
-			 */
-			$meta_cache = wp_cache_get( $user_id, 'user_meta', $force = false, $found );	// Optimize and check wp_cache first.
-
-			if ( isset( $meta_cache[ $meta_key ][ 0 ] ) ) {
-
-				$value = (string) maybe_unserialize( $meta_cache[ $meta_key ][ 0 ] );
-
-			} else {
-
-				$value = (string) get_user_meta( $user_id, $meta_key, $single = true );
-			}
-
-			if ( $value === 'none' ) {
-
-				$value = $none;
-			}
-
-			return $value;
-		}
-
-		public function check_sortable_user_metadata( $value, $user_id, $meta_key, $single ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			return $this->check_sortable_metadata( $value, $user_id, $meta_key, $single );
-		}
-
 		/**
 		 * Hooked into the current_screen action.
 		 *
@@ -611,7 +573,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				 * $read_cache is false to generate notices etc.
 				 */
 				parent::$head_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache = false );
-
 				parent::$head_info = $this->p->head->extract_head_info( $mod, parent::$head_tags );
 
 				/**

@@ -104,7 +104,10 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				 * add_action( 'parse_query', array( $this, 'set_column_orderby' ), 10, 1 );
 				 */
 
-				add_action( 'get_term_metadata', array( $this, 'check_sortable_term_metadata' ), 10, 4 );
+				/**
+				 * Maybe create or update the term column content.
+				 */
+				add_filter( 'get_term_metadata', array( $this, 'check_sortable_meta' ), 10, 4 );
 
 				if ( ( $this->query_term_id = SucomUtil::get_request_value( 'tag_ID' ) ) === '' ) {	// Uses sanitize_text_field.
 
@@ -504,47 +507,6 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			return $this->add_column_headings( $columns, $list_type = 'term' );
 		}
 
-		public function get_meta_cache_value( $term_id, $meta_key, $none = '' ) {
-
-			/**
-			 * WordPress stores data using a post, term, or user ID, along with a group string.
-			 *
-			 * Example: wp_cache_get( 1, 'user_meta' );
-			 *
-			 * Returns (bool|mixed) false on failure to retrieve contents or the cache contents on success.
-			 *
-			 * $found (bool) (Optional) whether the key was found in the cache (passed by reference). Disambiguates a
-			 * return of false, a storable value. Default null.
-			 */
-			$meta_cache = wp_cache_get( $term_id, 'term_meta', $force = false, $found );	// Optimize and check wp_cache first.
-
-			if ( isset( $meta_cache[ $meta_key ][ 0 ] ) ) {
-
-				$value = (string) maybe_unserialize( $meta_cache[ $meta_key ][ 0 ] );
-
-			} else {
-
-				$value = (string) self::get_term_meta( $term_id, $meta_key, $single = true );
-			}
-
-			if ( $value === 'none' ) {
-
-				$value = $none;
-			}
-
-			return $value;
-		}
-
-		public function check_sortable_term_metadata( $value, $term_id, $meta_key, $single ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			return $this->check_sortable_metadata( $value, $term_id, $meta_key, $single );
-		}
-
 		/**
 		 * Hooked into the current_screen action.
 		 *
@@ -614,7 +576,6 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				 * $read_cache is false to generate notices etc.
 				 */
 				parent::$head_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache = false );
-
 				parent::$head_info = $this->p->head->extract_head_info( $mod, parent::$head_tags );
 
 				/**

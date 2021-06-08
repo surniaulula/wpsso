@@ -157,7 +157,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 */
 				add_action( 'parse_query', array( $this, 'set_column_orderby' ), 10, 1 );
 
-				add_action( 'get_post_metadata', array( $this, 'check_sortable_post_metadata' ), 10, 4 );
+				/**
+				 * Maybe create or update the post column content.
+				 */
+				add_filter( 'get_post_metadata', array( $this, 'check_sortable_meta' ), 10, 4 );
 			}
 
 			if ( ! empty( $this->p->options[ 'plugin_shortener' ] ) && $this->p->options[ 'plugin_shortener' ] !== 'none' ) {
@@ -582,87 +585,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			echo $this->get_column_content( '', $column_name, $post_id );
 		}
 
-		public function get_column_content( $value, $column_name, $post_id ) {
-
-			if ( ! empty( $post_id ) && 0 === strpos( $column_name, 'wpsso_' ) ) {	// Just in case.
-
-				$col_key = str_replace( 'wpsso_', '', $column_name );
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'getting column value for ' . $col_key );
-				}
-
-				if ( null !== ( $col_info = self::get_sortable_columns( $col_key ) ) ) {
-
-					if ( isset( $col_info[ 'meta_key' ] ) ) {	// Just in case.
-
-						$value = $this->get_meta_cache_value( $post_id, $col_info[ 'meta_key' ] );
-					}
-
-					if ( isset( $col_info[ 'post_callbacks' ] ) && is_array( $col_info[ 'post_callbacks' ] ) ) {
-
-						foreach( $col_info[ 'post_callbacks' ] as $input_name => $input_callback ) {
-
-							if ( ! empty( $input_callback ) ) {
-
-								$value .= "\n" . '<input name="' . $input_name . '" type="hidden" value="' . 
-									call_user_func( $input_callback, $post_id ) . '" readonly="readonly" />';
-							}
-						}
-					}
-				}
-			}
-
-			return $value;
-		}
-
-		public function get_meta_cache_value( $post_id, $meta_key, $none = '' ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			/**
-			 * WordPress stores data using a post, term, or user ID, along with a group string.
-			 *
-			 * Example: wp_cache_get( 1, 'user_meta' );
-			 *
-			 * Returns (bool|mixed) false on failure to retrieve contents or the cache contents on success.
-			 *
-			 * $found (bool) (Optional) whether the key was found in the cache (passed by reference). Disambiguates a
-			 * return of false, a storable value. Default null.
-			 */
-			$meta_cache = wp_cache_get( $post_id, 'post_meta', $force = false, $found );	// Optimize and check wp_cache first.
-
-			if ( isset( $meta_cache[ $meta_key ][ 0 ] ) ) {
-
-				$value = (string) maybe_unserialize( $meta_cache[ $meta_key ][ 0 ] );
-
-			} else {
-
-				$value = (string) get_post_meta( $post_id, $meta_key, $single = true );
-			}
-
-			if ( 'none' === $value ) {
-
-				$value = $none;
-			}
-
-			return $value;
-		}
-
-		public function check_sortable_post_metadata( $value, $post_id, $meta_key, $single ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			return $this->check_sortable_metadata( $value, $post_id, $meta_key, $single );
-		}
-
 		/**
 		 * Hooked into the current_screen action.
 		 *
@@ -801,7 +723,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 * $read_cache is false to generate notices etc.
 				 */
 				parent::$head_tags = $this->p->head->get_head_array( $post_id, $mod, $read_cache = false );
-
 				parent::$head_info = $this->p->head->extract_head_info( $mod, parent::$head_tags );
 
 				/**
@@ -1445,7 +1366,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 * $read_cache is false to generate notices etc.
 			 */
 			parent::$head_tags = $this->p->head->get_head_array( $post_id, $mod, $read_cache = false );
-
 			parent::$head_info = $this->p->head->extract_head_info( $mod, parent::$head_tags );
 
 			/**

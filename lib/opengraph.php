@@ -116,7 +116,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						$this->p->debug->log( 'checking for value from column wp_cache' );
 					}
 
-					$value = $mod[ 'obj' ]->get_column_wp_cache( $mod, 'wpsso_og_type' );	// Returns empty string if no value found.
+					if ( $col_info = WpssoWpMeta::get_sortable_columns( 'og_type' ) ) {
+
+						$value = $mod[ 'obj' ]->get_column_wp_cache( $mod, $col_info );	// Can return 'none' or empty string.
+					}
 
 					if ( ! empty( $value ) ) {
 

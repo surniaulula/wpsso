@@ -1039,26 +1039,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			/**
-			 * If there's no image ID, then reset the image ID library prefix to its default value. If an image ID is
-			 * used, then remove the image URL (only one option can be defined). Use isset() to check for array keys
-			 * since this method is also called to sanitize meta options.
-			 */
-			foreach ( array( 'og_def' ) as $opt_pre ) {
-
-				if ( empty( $opts[ $opt_pre . '_img_id' ] ) ) {
-
-					if ( isset( $defs[ $opt_pre . '_img_id_lib' ] ) ) {	// Just in case.
-
-						$opts[ $opt_pre . '_img_id_lib' ] = $defs[ $opt_pre . '_img_id_lib' ];
-					}
-
-				} elseif ( isset( $opts[ $opt_pre . '_img_url' ] ) ) {
-
-					$opts[ $opt_pre . '_img_url' ] = '';
-				}
-			}
-
-			/**
 			 * og_desc_max_len must be at least 160 chars (defined in config).
 			 */
 			if ( isset( $opts[ 'og_desc_max_len' ] ) && $opts[ 'og_desc_max_len' ] < $this->p->cf[ 'head' ][ 'limit_min' ][ 'og_desc_len' ] )  {

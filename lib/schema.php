@@ -701,23 +701,25 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->mark();
 			}
 
-			static $local_cache = array();	// Cache for single page load.
+			static $local_cache = array();
+
+			$cache_salt = false;
 
 			/**
 			 * Optimize and cache post/term/user schema type values.
 			 */
 			if ( ! empty( $mod[ 'name' ] ) && ! empty( $mod[ 'id' ] ) ) {
 
-				if ( isset( $local_cache[ $mod[ 'name' ] ][ $mod[ 'id' ] ][ $get_id ][ $use_mod_opts ] ) ) {
+				$cache_salt = SucomUtil::get_mod_salt( $mod ) . '_id:' . (string) $get_id . '_opts:' . (string) $use_mod_opts;
 
-					$value =& $local_cache[ $mod[ 'name' ] ][ $mod[ 'id' ] ][ $get_id ][ $use_mod_opts ];
+				if ( isset( $local_cache[ $cache_salt ] ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'returning local cache value "' . $value . '"' );
+						$this->p->debug->log( 'returning local cache value "' . $local_cache[ $cache_salt ] . '"' );
 					}
 
-					return $value;
+					return $local_cache[ $cache_salt ];
 
 				} elseif ( is_object( $mod[ 'obj' ] ) && $use_mod_opts ) {	// Check for a column schema_type value in wp_cache.
 
@@ -726,7 +728,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$this->p->debug->log( 'checking for value from column wp_cache' );
 					}
 
-					$value = $mod[ 'obj' ]->get_column_wp_cache( $mod, 'wpsso_schema_type' );	// Returns empty string if no value found.
+					if ( $col_info = WpssoWpMeta::get_sortable_columns( 'schema_type' ) ) {
+
+						$value = $mod[ 'obj' ]->get_column_wp_cache( $mod, $col_info );	// Can return 'none' or empty string.
+					}
 
 					if ( ! empty( $value ) ) {
 
@@ -754,7 +759,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 							$this->p->debug->log( 'returning column wp_cache value "' . $value . '"' );
 						}
 
-						return $local_cache[ $mod[ 'name' ] ][ $mod[ 'id' ] ][ $get_id ][ $use_mod_opts ] = $value;
+						return $local_cache[ $cache_salt ] = $value;
 					}
 				}
 
@@ -984,9 +989,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/**
 			 * Optimize and cache post/term/user schema type values.
 			 */
-			if ( ! empty( $mod[ 'name' ] ) && ! empty( $mod[ 'id' ] ) ) {
+			if ( $cache_salt ) {
 
-				$local_cache[ $mod[ 'name' ] ][ $mod[ 'id' ] ][ $get_id ][ $use_mod_opts ] = $get_value;
+				$local_cache[ $cache_salt ] = $get_value;
 			}
 
 			return $get_value;

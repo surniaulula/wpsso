@@ -13,12 +13,12 @@ function sucomInitAdminMedia( container_id, doing_ajax ) {
 		table_id = container_id + ' ' + table_id;
 	}
 
-	jQuery( table_id + ' .sucom_image_upload_pid' ).each( function( event ) {
+	jQuery( table_id + ' .sucom_image_upload_id' ).each( function( event ) {
 
 		sucomShowLibraryImage( this, event );
 	} );
 
-	jQuery( document ).on( 'change', table_id + ' .sucom_image_upload_pid', function( event ) {
+	jQuery( document ).on( 'change', table_id + ' .sucom_image_upload_id', function( event ) {
 
 		sucomShowLibraryImage( this, event );
 	} );
@@ -31,32 +31,27 @@ function sucomInitAdminMedia( container_id, doing_ajax ) {
 
 function sucomShowLibraryImage( t, e ) {
 
-	var pid            = jQuery( t ).val();
+	var img_id_value   = jQuery( t ).val();
+	var img_lib_css_id = jQuery( t ).attr( 'data-img-lib-css-id' );
+	var img_url_css_id = jQuery( t ).attr( 'data-img-url-css-id' );
 	var preview_css_id = jQuery( t ).attr( 'data-preview-css-id' );
 
-	if ( ! pid ) {
+	if ( ! img_id_value ) {
 
-		pid = jQuery( t ).attr( 'placeholder' );
+		img_id_value = jQuery( t ).attr( 'placeholder' );
 	}
 
-	if ( ! preview_css_id || ! pid ) {	// Nothing to do.
+	if ( ! img_id_value || ! img_lib_css_id || ! preview_css_id ) {	// Nothing to do.
 
 		return;
 	}
 
-	var container = jQuery( '#' + preview_css_id );
+	var preview_container = jQuery( '#' + preview_css_id );
+	var img_lib_value     = jQuery( '#' + img_lib_css_id ).val();
 
-	container.empty();
+	preview_container.empty();
 
-	if ( jQuery.isNumeric( pid ) && pid ) {
-
-		var img_lib_css_id = jQuery( t ).attr( 'data-img-lib-css-id' );
-		var img_url_css_id = jQuery( t ).attr( 'data-img-url-css-id' );
-
-		if ( img_lib_css_id ) {
-		
-			jQuery( '#' + img_lib_css_id ).val( 'wp' ).change();
-		}
+	if ( 'wp' === img_lib_value && jQuery.isNumeric( img_id_value ) ) {
 
 		if ( img_url_css_id ) {
 		
@@ -64,7 +59,7 @@ function sucomShowLibraryImage( t, e ) {
 			jQuery( '#' + img_url_css_id ).prop( 'disabled', true );
 		}
 
-		var q = new wp.media.model.Attachment.get( pid );
+		var q = new wp.media.model.Attachment.get( img_id_value );
 
 		q.fetch( { success:function( ret ) {
 
@@ -72,7 +67,7 @@ function sucomShowLibraryImage( t, e ) {
 
 				var thumbnail = ret.attributes.sizes.thumbnail;
 
-				if ( container ) {
+				if ( preview_container ) {
 
 					var img_html = '<img src="' + thumbnail.url + '"';
 
@@ -88,7 +83,7 @@ function sucomShowLibraryImage( t, e ) {
 
 					img_html += '/>';
 
-					container.append( img_html );
+					preview_container.append( img_html );
 				}
 			}
 		} } );
@@ -115,12 +110,12 @@ function sucomSelectLibraryImage( t, e ) {
 
 	window.sucom_image_upload_media.on( 'open', function() {
 
-		var pid = jQuery( t ).attr( 'data-pid' );
+		var img_id_value = jQuery( t ).attr( 'data-wp-img-id' );
 
-		if ( jQuery.isNumeric( pid ) && pid ) {
+		if ( img_id_value && jQuery.isNumeric( img_id_value ) ) {
 
 			var selection  = window.sucom_image_upload_media.state().get( 'selection' );
-			var attachment = wp.media.attachment( pid );
+			var attachment = wp.media.attachment( img_id_value );
 
 			selection.add( attachment ? [ attachment ] : [] );
 		}
@@ -130,12 +125,21 @@ function sucomSelectLibraryImage( t, e ) {
 
 	window.sucom_image_upload_media.on( 'select', function() {
 
-		var attachment    = window.sucom_image_upload_media.state().get( 'selection' ).first().toJSON();
-		var img_id_css_id = jQuery( t ).attr( 'data-img-id-css-id' );
+		var attachment     = window.sucom_image_upload_media.state().get( 'selection' ).first().toJSON();
+		var img_id_css_id  = jQuery( t ).attr( 'data-img-id-css-id' );
+		var img_lib_css_id = jQuery( t ).attr( 'data-img-lib-css-id' );
 
-		jQuery( t ).attr( 'data-pid', attachment.id );
+		jQuery( t ).attr( 'data-wp-img-id', attachment.id );
 
-		jQuery( '#' + img_id_css_id ).val( attachment.id ).change();
+		if ( img_lib_css_id ) {	// Update the media library before the image id.
+		
+			jQuery( '#' + img_lib_css_id ).val( 'wp' ).change();
+		}
+
+		if ( img_id_css_id ) {
+		
+			jQuery( '#' + img_id_css_id ).val( attachment.id ).change();
+		}
 	} );
 
 	window.sucom_image_upload_media.open();

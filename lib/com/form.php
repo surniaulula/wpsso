@@ -102,7 +102,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			
 				return true;
 
-			} elseif ( 0 !== strpos( $opt_key, '/' ) ) {	// Regular expression.
+			} elseif ( 0 === strpos( $opt_key, '/' ) ) {	// Regular expression.
 
 				if ( ! is_array( $this->options ) ) {	// Just in case.
 
@@ -783,11 +783,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		public function get_input_image_upload( $name_prefix, $holder = '', $is_disabled = false, $input_name_id_attr = '' ) {
+		public function get_input_image_upload( $name_prefix, $img_id_holder = '', $is_disabled = false, $input_name_id_attr = '' ) {
 
 			// translators: Please ignore - translation uses a different text domain.
-			$media_libs  = array( 'wp' => __( 'Media Library' ) );
-			$default_lib = 'wp';
+			$img_libs     = array( 'wp' => __( 'Media Library' ) );
+			$selected_lib = false;
 
 			list( $name_prefix, $name_suffix ) = $this->split_name_locale( $name_prefix );
 
@@ -797,11 +797,16 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$input_disabled = 'disabled' === $this->get_options( $input_name_id_locale . ':is' ) ? true : $is_disabled;
 
-			$img_id_value     = $this->get_options_locale( $input_name_id_locale );
+			$img_id_value  = $this->get_options_locale( $input_name_id_locale );
 			$img_lib_value = $this->get_options_locale( $input_name_lib_locale );
-			$img_url_value    = $this->get_options_locale( $input_name_url_locale );
+			$img_url_value = $this->get_options_locale( $input_name_url_locale );
+
+			$upload_css_class  = 'sucom_image_upload_button button';
+			$img_id_css_class  = 'sucom_image_upload_id';
+			$img_lib_css_class = 'sucom_image_upload_lib';
 
 			$preview_css_id = SucomUtil::sanitize_css_id( 'preview_' . $input_name_id_locale );
+			$upload_css_id  = '';
 			$img_id_css_id  = SucomUtil::sanitize_css_id( $input_name_id_locale );
 			$img_lib_css_id = SucomUtil::sanitize_css_id( $input_name_lib_locale );
 			$img_url_css_id = SucomUtil::sanitize_css_id( $input_name_url_locale );
@@ -810,26 +815,46 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				' data-img-lib-css-id="select_' . $img_lib_css_id . '"' .
 				' data-img-url-css-id="text_' . $img_url_css_id . '"';
 
-			$button_data = array( 'img-id-css-id' => 'text_' . $img_id_css_id );
+			$upload_data = array(
+				'img-id-css-id'  => 'text_' . $img_id_css_id,
+				'img-lib-css-id' => 'select_' . $img_lib_css_id,
+			);
 
-			if ( ! empty( $img_id_value ) && 'wp' === $img_lib_value ) {
+			if ( 'wp' === $img_lib_value ) {
 
-				$button_data[ 'pid' ] = $img_id_value;
+				if ( ! empty( $img_id_value ) ) {
 
-			} elseif ( 'wp' === $default_lib && ! empty( $holder ) ) {
+					$upload_data[ 'wp-img-id' ] = $img_id_value;
 
-				$button_data[ 'pid' ] = $holder;
+				} elseif ( ! empty( $img_id_holder ) ) {
+
+					$upload_data[ 'wp-img-id' ] = $img_id_holder;
+				}
+			}
+
+			if ( 0 === strpos( $img_id_holder, 'ngg-' ) ) {
+
+				$img_id_holder = preg_replace( '/^ngg-/', '', $img_id_holder );
+
+				$selected_lib = 'ngg';
+
+			} elseif ( ! empty( $img_id_holder ) ) {
+
+				$selected_lib = 'wp';
 			}
 
 			if ( ! empty( $this->p->avail[ 'media' ][ 'ngg' ] ) ) {
 
-				$media_libs[ 'ngg' ] = 'NextGEN Gallery';
+				$img_libs[ 'ngg' ] = 'NextGEN Gallery';
 			}
 
-			$media_libs_disabled = count( $media_libs ) <= 1 ? true : $input_disabled;
+			$img_libs_count    = count( $img_libs );
+			$img_libs_disabled = $img_libs_count > 1 ? $input_disabled : true;
 
 			/**
 			 * Prevent conflicts by removing the image URL if we have an image ID.
+			 *
+			 * Disable the image ID option if we have an image URL.
 			 */
 			if ( ! empty( $img_id_value ) ) {
 
@@ -837,42 +862,41 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				unset( $this->options[ $input_name_url_locale . ':is' ] );
 				unset( $this->options[ $input_name_url_locale . ':width' ] );
 				unset( $this->options[ $input_name_url_locale . ':height' ] );
-			}
 
-			/**
-			 * Disable the image ID option if we have an image URL.
-			 */
-			if ( ! empty( $img_url_value ) ) {
+			} elseif ( ! empty( $img_url_value ) ) {
 
-				$holder         = '';
+				unset( $this->options[ $input_name_id_locale ] );
+				unset( $this->options[ $input_name_lib_locale ] );
+
+				$img_id_holder = '';
+
 				$input_disabled = true;
 			}
 
-			if ( 0 === strpos( $holder, 'ngg-' ) ) {
-
-				$holder      = preg_replace( '/^ngg-/', '', $holder );
-				$default_lib = 'ngg';
-			}
-
-			if ( ! empty( $media_libs[ 'wp' ] ) ) {
-
-				$button_is_disabled = function_exists( 'wp_enqueue_media' ) ? $input_disabled : true;	// Just in case.
+			if ( ! empty( $img_libs[ 'wp' ] ) ) {
 
 				// translators: Please ignore - translation uses a different text domain.
-				$upload_button = $this->get_button( __( 'Select Image' ), $css_class = 'sucom_image_upload_button button', $css_id = '',
-					$url = '', $newtab = false, $input_disabled, $button_data );
+				$upload_label    = __( 'Select Image' );
+				$upload_disabled = function_exists( 'wp_enqueue_media' ) ? $input_disabled : true;	// Just in case.
+				$upload_button   = $this->get_button( $upload_label, $upload_css_class, $upload_css_id = '',
+					$url = '', $newtab = false, $upload_disabled, $upload_data );
+			
+				if ( 1 === $img_libs_count ) {
+
+					$img_lib_css_class .= ' hidden';
+				}
 			}
 
-			$select_lib = $this->get_select( $input_name_lib_locale, $media_libs, $css_class = 'sucom_image_upload_lib', $img_lib_css_id,
-				$is_assoc = true, $media_libs_disabled, $default_lib );
+			$select_lib = $this->get_select( $input_name_lib_locale, $img_libs, $img_lib_css_class, $img_lib_css_id,
+				$is_assoc = true, $img_libs_disabled, $selected_lib );
 
-			$input_pid = $this->get_input( $input_name_id_locale, $css_class = 'sucom_image_upload_pid pid', $img_id_css_id,
-				$len = 0, $holder, $input_disabled, $tabidx = null, $input_name_id_attr );
+			$input_id = $this->get_input( $input_name_id_locale, $img_id_css_class, $img_id_css_id,
+				$len = 0, $img_id_holder, $input_disabled, $tabidx = null, $input_name_id_attr );
 
 			$html = '<div class="sucom_image_upload">';
-			$html .= $upload_button . ' ';
 			$html .= $select_lib . ' ';
-			$html .= $input_pid . ' ';
+			$html .= $input_id . ' ';
+			$html .= $upload_button . ' ';
 			$html .= '</div>';
 			$html .= '<div class="sucom_image_upload_preview" id="' . $preview_css_id . '"></div>';
 

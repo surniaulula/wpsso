@@ -750,11 +750,9 @@ table.sucom-settings td textarea:disabled {
 	background-color:#f9f9f9;
 }
 
-table.sucom-settings td input[type="text"].size { width:55px; }	 /* Image size. */
+table.sucom-settings td input[type="text"].size { width:55px; }		/* Image size. */
 
 table.sucom-settings td input[type="text"].chars { width:60px; }	/* Character length. */
-
-table.sucom-settings td input[type="text"].pid { width:60px; }		/* Image ID. */
 
 table.sucom-settings td input[type="text"].xshort { width:60px; }
 
@@ -901,6 +899,10 @@ table.sucom-settings .sucom_image_upload {
 table.sucom-settings .sucom_image_upload * {
 	margin:0;
 	vertical-align:middle;
+}
+
+table.sucom-settings input[type="text"].sucom_image_upload_id {
+	width:60px;
 }
 
 table.sucom-settings select.sucom_image_upload_lib {

@@ -260,7 +260,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/**
 			 * Save meta tag values for later sorting in list tables.
 			 */
-			foreach ( WpssoWpMeta::get_sortable_columns() as $col_key => $col_info ) {
+			$sortable_cols = WpssoWpMeta::get_sortable_columns();
+
+			foreach ( $sortable_cols as $col_key => $col_info ) {
 
 				if ( empty( $col_info[ 'meta_key' ] ) || strpos( $col_info[ 'meta_key' ], '_wpsso_head_info_' ) !== 0 ) {
 
