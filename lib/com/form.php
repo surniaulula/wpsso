@@ -843,7 +843,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$selected_lib = 'wp';
 			}
 
-			if ( ! empty( $this->p->avail[ 'media' ][ 'ngg' ] ) ) {
+			if ( 'ngg' === $img_lib_value || ! empty( $this->p->avail[ 'media' ][ 'ngg' ] ) ) {
 
 				$img_libs[ 'ngg' ] = 'NextGEN Gallery';
 			}
