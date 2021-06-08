@@ -1666,7 +1666,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-p_add_nopin_header_img_tag':	// Add "nopin" to Site Header Image.
 
-							$text = sprintf( __( 'Add a %s attribute to the site header and Gravatar images to prevent the Pin It browser button from suggesting those images.', 'wpsso' ), '<code>data-pin-nopin</code>' );
+							$text = sprintf( __( 'Add a %s attribute to the site header and Gravatar images to prevent the Pinterest Pin It browser button from suggesting these images.', 'wpsso' ), '<code>data-pin-nopin</code>' );
 
 							break;
 
@@ -1676,7 +1676,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = sprintf( __( '%1$s can add a %2$s attribute to resized images from the WordPress Media Library.', 'wpsso' ), $info[ 'short' ], '<code>data-pin-nopin</code>' ) . ' ';
 
-							$text .=  __( 'This prevents the Pin It browser button from suggesting images that may be too small.', 'wpsso' ) . ' ';
+							$text .=  __( 'This prevents the Pinterest Pin It browser button from suggesting images that may be too small.', 'wpsso' ) . ' ';
 
 							$text .= sprintf( __( 'When enabling this option, you should also enable the "%s" option to provide an image for the Pin It browser button.', 'wpsso' ), $add_img_html_label ) . ' ';
 
@@ -1688,7 +1688,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= __( 'Although generally recommended, this option is unchecked by default since the extra image can affect page load speed (the image cannot be lazy loaded).', 'wpsso' ) . ' ';
 
-							$text .= __( 'If you have visitors using the Pinterest Pin It browser button, you may enable this option, otherwise leave it unchecked.', 'wpsso' ) . ' ';
+							$text .= __( 'If your website visitors use the Pinterest Pin It browser button, you may enable this option, otherwise leave it unchecked.', 'wpsso' ) . ' ';
 
 							break;
 

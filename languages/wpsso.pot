@@ -6612,8 +6612,8 @@ msgstr ""
 
 #: lib/messages.php:1669
 msgid ""
-"Add a %s attribute to the site header and Gravatar images to prevent the Pin "
-"It browser button from suggesting those images."
+"Add a %s attribute to the site header and Gravatar images to prevent the "
+"Pinterest Pin It browser button from suggesting these images."
 msgstr ""
 
 #: lib/messages.php:1675 lib/messages.php:3446 lib/submenu/general.php:366
@@ -6629,8 +6629,8 @@ msgstr ""
 
 #: lib/messages.php:1679
 msgid ""
-"This prevents the Pin It browser button from suggesting images that may be "
-"too small."
+"This prevents the Pinterest Pin It browser button from suggesting images "
+"that may be too small."
 msgstr ""
 
 #: lib/messages.php:1681
@@ -6653,7 +6653,7 @@ msgstr ""
 
 #: lib/messages.php:1691
 msgid ""
-"If you have visitors using the Pinterest Pin It browser button, you may "
+"If your website visitors use the Pinterest Pin It browser button, you may "
 "enable this option, otherwise leave it unchecked."
 msgstr ""
 
