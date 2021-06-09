@@ -667,8 +667,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html .= '<input type="text" name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '"';
 			$html .= empty( $input_class ) ? '' : ' class="' . $input_class . '"';	// Already sanitized.
 			$html .= empty( $input_id ) ? '' : ' id="text_' . $input_id . '"';	// Already sanitized.
+			$html .= empty( $el_attr ) ? '' : ' ' . trim( $el_attr );
 			$html .= is_numeric( $tabidx ) ? '' : ' tabindex="' . esc_attr( $tabidx ) . '"';
-			$html .= empty( $el_attr ) ? '' : ' ' . $el_attr;
 
 			foreach ( $len as $key => $val ) {
 
@@ -806,7 +806,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$img_lib_css_class = 'sucom_image_upload_lib';
 
 			$preview_css_id = SucomUtil::sanitize_css_id( 'preview_' . $input_name_id_locale );
-			$upload_css_id  = '';
+			$upload_css_id  = SucomUtil::sanitize_css_id( 'upload_' . $input_name_id_locale );
 			$img_id_css_id  = SucomUtil::sanitize_css_id( $input_name_id_locale );
 			$img_lib_css_id = SucomUtil::sanitize_css_id( $input_name_lib_locale );
 			$img_url_css_id = SucomUtil::sanitize_css_id( $input_name_url_locale );
@@ -815,7 +815,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				' data-img-lib-css-id="select_' . $img_lib_css_id . '"' .
 				' data-img-url-css-id="text_' . $img_url_css_id . '"';
 
-			$upload_data = array(
+			$input_name_lib_attr = 'data-img-id-css-id="text_' . $img_id_css_id . '"' .
+				'data-upload-css-id="button_' . $upload_css_id . '"';
+
+			$upload_button_data = array(
 				'img-id-css-id'  => 'text_' . $img_id_css_id,
 				'img-lib-css-id' => 'select_' . $img_lib_css_id,
 			);
@@ -824,11 +827,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				if ( ! empty( $img_id_value ) ) {
 
-					$upload_data[ 'wp-img-id' ] = $img_id_value;
+					$upload_button_data[ 'wp-img-id' ] = $img_id_value;
 
 				} elseif ( ! empty( $img_id_holder ) ) {
 
-					$upload_data[ 'wp-img-id' ] = $img_id_holder;
+					$upload_button_data[ 'wp-img-id' ] = $img_id_holder;
 				}
 			}
 
@@ -878,8 +881,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				// translators: Please ignore - translation uses a different text domain.
 				$upload_label    = __( 'Select Image' );
 				$upload_disabled = function_exists( 'wp_enqueue_media' ) ? $input_disabled : true;	// Just in case.
-				$upload_button   = $this->get_button( $upload_label, $upload_css_class, $upload_css_id = '',
-					$url = '', $newtab = false, $upload_disabled, $upload_data );
+				$upload_button   = $this->get_button( $upload_label, $upload_css_class, $upload_css_id,
+					$url = '', $newtab = false, $upload_disabled, $upload_button_data );
 			
 				if ( 1 === $img_libs_count ) {
 
@@ -888,7 +891,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			$select_lib = $this->get_select( $input_name_lib_locale, $img_libs, $img_lib_css_class, $img_lib_css_id,
-				$is_assoc = true, $img_libs_disabled, $selected_lib );
+				$is_assoc = true, $img_libs_disabled, $selected_lib, $event_names = array(), $event_args = null,
+					$input_name_lib_attr );
 
 			$input_id = $this->get_input( $input_name_id_locale, $img_id_css_class, $img_id_css_id,
 				$len = 0, $img_id_holder, $input_disabled, $tabidx = null, $input_name_id_attr );
@@ -1056,8 +1060,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		 *
 		 * $is_disabled can be false or an option value for the disabled select.
 		 */
-		public function get_select( $name, $values = array(), $css_class = '', $css_id = '',
-			$is_assoc = null, $is_disabled = false, $selected = false, $event_names = array(), $event_args = null ) {
+		public function get_select( $name, $values = array(), $css_class = '', $css_id = '', $is_assoc = null, $is_disabled = false, $selected = false,
+			$event_names = array(), $event_args = null, $el_attr = '' ) {
 
 			if ( empty( $name ) ) {
 
@@ -1261,9 +1265,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html .= $is_disabled ? '' : ' name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '"';
 			$html .= $input_disabled ? ' disabled="disabled"' : '';
 			$html .= empty( $input_class ) ? '' : ' class="' . $input_class . '"';	// Already sanitized.
-			$html .= empty( $input_id ) ? '' : ' id="select_' . $input_id . '"';		// Already sanitized.
+			$html .= empty( $input_id ) ? '' : ' id="select_' . $input_id . '"';	// Already sanitized.
 			$html .= empty( $default_value ) ? '' : ' data-default-value="' . esc_attr( $default_value ) . '"';
 			$html .= empty( $default_text ) ? '' : ' data-default-text="' . esc_attr( $default_text ) . '"';
+			$html .= empty( $el_attr ) ? '' : ' ' . trim( $el_attr );
 			$html .= '>' . "\n";
 			$html .= implode( $glue = "\n", $select_opt_arr );
 			$html .= '<!-- ' . $select_opt_added . ' select options added -->' . "\n";
@@ -1678,7 +1683,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		public function get_button( $value, $css_class = '', $css_id = '', $url = '', $newtab = false, $is_disabled = false, array $data = array() ) {
+		public function get_button( $value, $css_class = '', $css_id = '', $url = '', $newtab = false, $is_disabled = false, $el_data = array() ) {
  
 			$input_class = SucomUtil::sanitize_css_class( $css_class );
 			$input_id    = SucomUtil::sanitize_css_id( $css_id );
@@ -1694,9 +1699,16 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$el_attr = '';
 
-			foreach ( $data as $data_key => $data_value ) {
+			if ( is_array( $el_data ) ) {
 
-				$el_attr .= ' data-' . $data_key . '="' . esc_attr( $data_value ) . '"';
+				foreach ( $el_data as $data_key => $data_value ) {
+
+					$el_attr .= ' data-' . $data_key . '="' . esc_attr( $data_value ) . '"';
+				}
+
+			} else {
+
+				$el_attr = $el_data;
 			}
 
 			$html = '<input type="button" ';
@@ -1704,7 +1716,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html .= empty( $input_class ) ? '' : ' class="' . $input_class . '"';	// Already sanitized.
 			$html .= empty( $input_id ) ? '' : ' id="button_' . $input_id . '"';	// Already sanitized.
 			$html .= empty( $url ) || $is_disabled ? '' : $on_click;
-			$html .= ' value="' . esc_attr( wp_kses( $value, array() ) ) . '" ' . $el_attr . '/>';
+			$html .= empty( $el_attr ) ? '' : ' ' . trim( $el_attr );
+			$html .= ' value="' . esc_attr( wp_kses( $value, array() ) ) . '"/>';
 
 			return $html;
 		}

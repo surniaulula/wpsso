@@ -668,7 +668,7 @@ msgid "Media Library"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:38 lib/com/form.php:879 lib/script.php:427
+#: gettext/gettext-lib-com.php:38 lib/com/form.php:882 lib/script.php:427
 msgid "Select Image"
 msgstr ""
 

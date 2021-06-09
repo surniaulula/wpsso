@@ -13,9 +13,14 @@ function sucomInitAdminMedia( container_id, doing_ajax ) {
 		table_id = container_id + ' ' + table_id;
 	}
 
-	jQuery( table_id + ' .sucom_image_upload_id' ).each( function( event ) {
+	jQuery( table_id + ' .sucom_image_upload_lib' ).each( function( event ) {
 
-		sucomShowLibraryImage( this, event );
+		sucomMaybeShowUpload( this, event );	// Also executes sucomShowLibraryImage().
+	} );
+
+	jQuery( document ).on( 'change', table_id + ' .sucom_image_upload_lib', function( event ) {
+
+		sucomMaybeShowUpload( this, event );	// Also executes sucomShowLibraryImage().
 	} );
 
 	jQuery( document ).on( 'change', table_id + ' .sucom_image_upload_id', function( event ) {
@@ -27,6 +32,29 @@ function sucomInitAdminMedia( container_id, doing_ajax ) {
 
 		sucomSelectLibraryImage( this, event );
 	} );
+}
+
+function sucomMaybeShowUpload( t, e ) {
+
+	var img_lib_value = jQuery( t ).val();
+	var img_id_css_id = jQuery( t ).attr( 'data-img-id-css-id' );
+	var upload_css_id = jQuery( t ).attr( 'data-upload-css-id' );
+
+	if ( 'wp' === img_lib_value ) {
+
+		jQuery( '#' + upload_css_id ).show();
+
+	} else {
+
+		jQuery( '#' + upload_css_id ).hide();
+	}
+
+	if ( img_id_css_id ) {
+
+		var img_id_container = jQuery( '#' + img_id_css_id );
+
+		sucomShowLibraryImage( img_id_container, e );
+	}
 }
 
 function sucomShowLibraryImage( t, e ) {
@@ -49,7 +77,7 @@ function sucomShowLibraryImage( t, e ) {
 	var preview_container = jQuery( '#' + preview_css_id );
 	var img_lib_value     = jQuery( '#' + img_lib_css_id ).val();
 
-	preview_container.empty();
+	preview_container.empty();	// Remove any old image preview.
 
 	if ( 'wp' === img_lib_value && jQuery.isNumeric( img_id_value ) ) {
 
@@ -83,7 +111,7 @@ function sucomShowLibraryImage( t, e ) {
 
 					img_html += '/>';
 
-					preview_container.append( img_html );
+					preview_container.html( img_html );
 				}
 			}
 		} } );
@@ -131,11 +159,17 @@ function sucomSelectLibraryImage( t, e ) {
 
 		jQuery( t ).attr( 'data-wp-img-id', attachment.id );
 
-		if ( img_lib_css_id ) {	// Update the media library before the image id.
+		/**
+		 * Update the media library before the image id, but do not trigger a change yet.
+		 */
+		if ( img_lib_css_id ) {
 		
-			jQuery( '#' + img_lib_css_id ).val( 'wp' ).change();
+			jQuery( '#' + img_lib_css_id ).val( 'wp' );
 		}
 
+		/**
+		 * Update the image id and trigger a change event.
+		 */
 		if ( img_id_css_id ) {
 		
 			jQuery( '#' + img_id_css_id ).val( attachment.id ).change();
