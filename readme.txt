@@ -18,11 +18,11 @@ Present your content at its best on social sites and in search results, no matte
 
 == Description ==
 
-<h3>WPSSO: The #1 Structured Data Plugin Since 2014</h3>
+<h3>WPSSO: THE #1 STRUCTURED DATA PLUGIN SINCE 2014</h3>
 
 <p><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"><strong>Present your content at its best on social sites and in search results, no matter how webpages are shared, re-shared, messaged, posted, embedded, or crawled:</strong></p>
 
-WPSSO automatically creates meta tags and structured data markup for Facebook / Open Graph, Pinterest Rich Pins, Twitter Cards, Google Knowledge Graph, Google Rich Results (aka Schema, Rich Snippets, Structured Data), WhatsApp and Messaging Apps, Mobile Web Browsers, WordPress REST API, LinkedIn / oEmbed data and more.
+WPSSO creates meta tags and structured data markup for Facebook / Open Graph, Pinterest Rich Pins, Twitter Cards, Google Knowledge Graph, Google Rich Results (aka Schema, Rich Snippets, Structured Data), WhatsApp and Messaging Apps, Mobile Web Browsers, WordPress REST API, LinkedIn / oEmbed data and more.
 
 **Reads existing WordPress content, plugin data, and service API data:**
 
