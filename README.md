@@ -1,4 +1,4 @@
-<h1>WPSSO Core</h1><h3>Meta Tags and Schema Structured Data SEO for WordPress</h3>
+<h1>WPSSO</h1><h3>Meta Tags and Schema Structured Data SEO</h3>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
@@ -15,6 +15,8 @@
 
 <h2>Description</h2>
 
+<h3>WPSSO: The #1 Structured Data Plugin Since 2014</h3>
+
 <p><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"><strong>Present your content at its best on social sites and in search results, no matter how webpages are shared, re-shared, messaged, posted, embedded, or crawled:</strong></p>
 
 <p>WPSSO automatically creates meta tags and structured data markup for Facebook / Open Graph, Pinterest Rich Pins, Twitter Cards, Google Knowledge Graph, Google Rich Results (aka Schema, Rich Snippets, Structured Data), WhatsApp and Messaging Apps, Mobile Web Browsers, WordPress REST API, LinkedIn / oEmbed data and more.</p>
@@ -23,15 +25,11 @@
 
 <p>There's no need to manually re-enter descriptions, titles, product information, and re-select images / videos like other meta tag, SEO, or Schema plugins.</p>
 
-<p>WPSSO can be used as your only social and search optimization plugin, or combined with your existing SEO plugin to improve its meta tags and Schema markup (including All in One SEO Pack, Jetpack SEO Tools, Rank Math SEO, SEO Ultimate, SEOPress, The SEO Framework, WP Meta SEO, Yoast SEO, and more).</p>
+<p>WPSSO can be used as your only social and search optimization plugin or combined with a pre-existing SEO plugin to improve its meta tags and Schema markup (including All in One SEO Pack, Jetpack SEO Tools, Rank Math SEO, SEO Ultimate, SEOPress, The SEO Framework, WP Meta SEO, Yoast SEO, and more).</p>
 
-<p><strong>Fast, lightweight, and coded for maximum performance:</strong></p>
+<p><strong>Reliable, fast, lightweight, and coded for maximum performance:</strong></p>
 
-<p>WPSSO is coded for speed and makes full use of all WordPress caching methods &mdash; along with advanced caching features like transient cache pre-seeding in background. WPSSO Core and its complementary add-ons load only the PHP libraries and classes they need, keeping their code small, fast and light. All code is fully tested and compatible with the latest version of WordPress and PHP v8.</p>
-
-<p><strong>Customizable settings for different languages:</strong></p>
-
-<p>Text, image, and video related option values are WordPress language / locale aware, which means you can easily switch languages and customize these options for different front-end languages.</p>
+<p>WPSSO is coded for reliability and speed, making full use of all WordPress caching and optimization techniques. WPSSO Core and its complementary add-ons load only the PHP libraries and classes they need, keeping their code fast and lightweight. All code is fully tested and compatible with the latest versions of WordPress and PHP.</p>
 
 <h3>Users Love the WPSSO Core Plugin</h3>
 
