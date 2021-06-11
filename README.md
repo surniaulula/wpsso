@@ -21,7 +21,7 @@
 
 <p>WPSSO creates meta tags and structured data markup for Facebook / Open Graph, Pinterest Rich Pins, Twitter Cards, Google Knowledge Graph, Google Rich Results (Schema, Rich Snippets, Structured Data), WhatsApp and Messaging Apps, Mobile Web Browsers, WordPress REST API, LinkedIn / oEmbed data and more.</p>
 
-<p><strong>Reads existing WordPress content, third-party plugin data, and service API data:</strong></p>
+<p><strong>Reads existing content, third-party plugin data, and service API data:</strong></p>
 
 <p>There's no need to manually re-enter descriptions, titles, product information, and re-select images / videos like other meta tag, SEO, or Schema plugins. WPSSO can be your only social and search optimization plugin, or combined to improve another SEO plugin (All in One SEO Pack, Jetpack SEO Tools, Rank Math SEO, SEO Ultimate, SEOPress, The SEO Framework, WP Meta SEO, Yoast SEO, and more). The Premium version can also detect embedded media and retrieve information from remote service APIs like Vimeo, Wistia, YouTube, and many more.</p>
 
