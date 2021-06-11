@@ -318,7 +318,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-breadcrumbs/changelog/',
 						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-breadcrumbs/',
 						'install'   => 'https://wpsso.com/docs/plugins/wpsso-breadcrumbs/installation/',
-						'faqs'      => '',
+						'faqs'      => 'https://wpsso.com/docs/plugins/wpsso-breadcrumbs/faqs/',
 						'notes'     => '',
 						'support'   => '',	// Premium support ticket.
 						'purchase'  => '',	// Purchase page.
@@ -382,8 +382,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-faq/changelog/',
 						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-faq/',
 						'install'   => 'https://wpsso.com/docs/plugins/wpsso-faq/installation/',
-						'faqs'      => '',
-						'notes'     => '',
+						'faqs'      => 'https://wpsso.com/docs/plugins/wpsso-faq/faqs/',
+						'notes'     => 'https://wpsso.com/docs/plugins/wpsso-faq/notes/',
 						'support'   => '',	// Premium support ticket.
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
@@ -511,7 +511,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-schema-json-ld/changelog/',
 						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-schema-json-ld/',
 						'install'   => 'https://wpsso.com/docs/plugins/wpsso-schema-json-ld/installation/',
-						'faqs'      => '',
+						'faqs'      => 'https://wpsso.com/docs/plugins/wpsso-schema-json-ld/faqs/',
 						'notes'     => 'https://wpsso.com/docs/plugins/wpsso-schema-json-ld/notes/',
 						'support'   => 'https://surniaulula.com/support/create_ticket/',		// Premium support ticket.
 						'purchase'  => 'https://wpsso.com/extend/plugins/wpsso-schema-json-ld/',	// Purchase page.
@@ -704,7 +704,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-ratings-and-reviews/',
 						'install'   => 'https://wpsso.com/docs/plugins/wpsso-ratings-and-reviews/installation/',
 						'faqs'      => '',
-						'notes'     => '',
+						'notes'     => 'https://wpsso.com/docs/plugins/wpsso-ratings-and-reviews/notes/',
 						'support'   => '',	// Premium support ticket.
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
@@ -1211,7 +1211,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-wc-shipping-delivery-time/changelog/',
 						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-wc-shipping-delivery-time/',
 						'install'   => 'https://wpsso.com/docs/plugins/wpsso-wc-shipping-delivery-time/installation/',
-						'faqs'      => '',
+						'faqs'      => 'https://wpsso.com/docs/plugins/wpsso-wc-shipping-delivery-time/faqs/',
 						'notes'     => '',
 						'support'   => '',	// Premium support ticket.
 						'purchase'  => '',	// Purchase page.
