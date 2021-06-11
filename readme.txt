@@ -24,7 +24,7 @@ Present your content at its best on social sites and in search results, no matte
 
 WPSSO creates meta tags and structured data markup for Facebook / Open Graph, Pinterest Rich Pins, Twitter Cards, Google Knowledge Graph, Google Rich Results (Schema, Rich Snippets, Structured Data), WhatsApp and Messaging Apps, Mobile Web Browsers, WordPress REST API, LinkedIn / oEmbed data and more.
 
-**Reads existing WordPress content, 3rd party plugin data, and service API data:**
+**Reads existing WordPress content, third-party plugin data, and service API data:**
 
 There's no need to manually re-enter descriptions, titles, product information, and re-select images / videos like other meta tag, SEO, or Schema plugins. WPSSO can be your only social and search optimization plugin, or combined to improve another SEO plugin (All in One SEO Pack, Jetpack SEO Tools, Rank Math SEO, SEO Ultimate, SEOPress, The SEO Framework, WP Meta SEO, Yoast SEO, and more). The Premium version can also detect embedded media and retrieve information from remote service APIs like Vimeo, Wistia, YouTube, and many more.
 
@@ -114,13 +114,13 @@ Built-in compatibility for advanced WordPress configurations:
 Includes advanced quality assurance features and options:
 
 * Checks and warns of any missing PHP modules.
-* Checks 3rd party plugin settings for possible conflicts.
+* Checks third-party plugin settings for possible conflicts.
 * Checks for minimum / maximum image dimensions and aspect ratios.
 * Shows notices for missing and required images.
 * Validates theme header templates for correct HTML markup.
 * Verifies webpage HTML for duplicate meta tags.
 
-The WPSSO Core Standard plugin is designed to satisfy the requirements of most standard WordPress sites. If your site requires additional 3rd party plugin and service API integration, like WooCommerce shops, embedded video support, or advanced customization features, then you may want to get the [WPSSO Core Premium plugin](https://wpsso.com/extend/plugins/wpsso/) for those additional features.
+The WPSSO Core Standard plugin is designed to satisfy the requirements of most standard WordPress sites. If your site requires additional third-party plugin and service API integration, like WooCommerce shops, embedded video support, or advanced customization features, then you may want to get the [WPSSO Core Premium plugin](https://wpsso.com/extend/plugins/wpsso/) for those additional features.
 
 **[Premium]** Detection of embedded videos in content text with API support for Facebook, Slideshare, Vimeo, Wistia, and Youtube videos.
 
@@ -136,9 +136,9 @@ The WPSSO Core Standard plugin is designed to satisfy the requirements of most s
 
 **[Premium]** Complete Schema JSON-LD markup for WooCommerce products ([WPSSO JSON add-on required](https://wordpress.org/plugins/wpsso-schema-json-ld/)).
 
-**[Premium]** Integrates with 3rd party plugins and service APIs for additional image, video, e-Commerce product details, SEO settings, etc. The following modules are included with the Premium version and automatically loaded if/when the supported plugins and/or services are required.
+**[Premium]** Integrates with third-party plugins and service APIs for additional image, video, e-Commerce product details, SEO settings, etc. The following modules are included with the Premium version and automatically loaded if/when the supported plugins and/or services are required.
 
-* **Reads Plugin Data from 3rd Party Plugins:** 
+* **Reads Plugin Data from Third-party Plugins:** 
 
 	* All in One SEO Pack
 	* bbPress
@@ -1161,7 +1161,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 	* Refactored the `WpssoUtil->get_page_url()` method to handle 'is_search' and 'is_date' module array elements.
 	* Refactored the `WpssoPage->get_description()` method to handle 'is_search' and 'is_date' module array elements.
 	* Refactored the `WpssoPage->get_the_title()` method to handle 'is_search' and 'is_date' module array elements.
-	* Added a lib/compat.php library file for 3rd party plugin and theme compatibility actions and filters.
+	* Added a lib/compat.php library file for third-party plugin and theme compatibility actions and filters.
 * **Requires At Least**
 	* PHP v5.6.
 	* WordPress v4.2.

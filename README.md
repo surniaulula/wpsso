@@ -21,7 +21,7 @@
 
 <p>WPSSO creates meta tags and structured data markup for Facebook / Open Graph, Pinterest Rich Pins, Twitter Cards, Google Knowledge Graph, Google Rich Results (Schema, Rich Snippets, Structured Data), WhatsApp and Messaging Apps, Mobile Web Browsers, WordPress REST API, LinkedIn / oEmbed data and more.</p>
 
-<p><strong>Reads existing WordPress content, 3rd party plugin data, and service API data:</strong></p>
+<p><strong>Reads existing WordPress content, third-party plugin data, and service API data:</strong></p>
 
 <p>There's no need to manually re-enter descriptions, titles, product information, and re-select images / videos like other meta tag, SEO, or Schema plugins. WPSSO can be your only social and search optimization plugin, or combined to improve another SEO plugin (All in One SEO Pack, Jetpack SEO Tools, Rank Math SEO, SEO Ultimate, SEOPress, The SEO Framework, WP Meta SEO, Yoast SEO, and more). The Premium version can also detect embedded media and retrieve information from remote service APIs like Vimeo, Wistia, YouTube, and many more.</p>
 
@@ -124,14 +124,14 @@
 
 <ul>
 <li>Checks and warns of any missing PHP modules.</li>
-<li>Checks 3rd party plugin settings for possible conflicts.</li>
+<li>Checks third-party plugin settings for possible conflicts.</li>
 <li>Checks for minimum / maximum image dimensions and aspect ratios.</li>
 <li>Shows notices for missing and required images.</li>
 <li>Validates theme header templates for correct HTML markup.</li>
 <li>Verifies webpage HTML for duplicate meta tags.</li>
 </ul>
 
-<p>The WPSSO Core Standard plugin is designed to satisfy the requirements of most standard WordPress sites. If your site requires additional 3rd party plugin and service API integration, like WooCommerce shops, embedded video support, or advanced customization features, then you may want to get the <a href="https://wpsso.com/extend/plugins/wpsso/">WPSSO Core Premium plugin</a> for those additional features.</p>
+<p>The WPSSO Core Standard plugin is designed to satisfy the requirements of most standard WordPress sites. If your site requires additional third-party plugin and service API integration, like WooCommerce shops, embedded video support, or advanced customization features, then you may want to get the <a href="https://wpsso.com/extend/plugins/wpsso/">WPSSO Core Premium plugin</a> for those additional features.</p>
 
 <p><strong>[Premium]</strong> Detection of embedded videos in content text with API support for Facebook, Slideshare, Vimeo, Wistia, and Youtube videos.</p>
 
@@ -147,10 +147,10 @@
 
 <p><strong>[Premium]</strong> Complete Schema JSON-LD markup for WooCommerce products (<a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO JSON add-on required</a>).</p>
 
-<p><strong>[Premium]</strong> Integrates with 3rd party plugins and service APIs for additional image, video, e-Commerce product details, SEO settings, etc. The following modules are included with the Premium version and automatically loaded if/when the supported plugins and/or services are required.</p>
+<p><strong>[Premium]</strong> Integrates with third-party plugins and service APIs for additional image, video, e-Commerce product details, SEO settings, etc. The following modules are included with the Premium version and automatically loaded if/when the supported plugins and/or services are required.</p>
 
 <ul>
-<li><p><strong>Reads Plugin Data from 3rd Party Plugins:</strong></p>
+<li><p><strong>Reads Plugin Data from Third-party Plugins:</strong></p>
 
 <ul>
 <li>All in One SEO Pack</li>
