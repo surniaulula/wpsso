@@ -5,7 +5,7 @@
  */
 __( '%s Notice', 'wpsso' );
 __( 'Notice', 'wpsso' );
-__( 'Error retrieving %1$s for caching (after %2$.03f seconds).', 'wpsso' );
+__( 'Error retrieving %1$s for caching (after %2$.3f seconds).', 'wpsso' );
 __( 'Error retrieving %1$s for caching.', 'wpsso' );
 __( 'cURL error code %1$d %2$s.', 'wpsso' );
 __( 'SSL verification failed with code %1$d.', 'wpsso' );

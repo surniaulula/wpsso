@@ -1024,12 +1024,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							if ( $mtime_total > $mtime_max ) {
 
 								$error_pre   = sprintf( __( '%s warning:', 'wpsso' ), __METHOD__ );
-								$rec_max_msg = sprintf( __( 'longer than recommended max of %1$0.3f secs', 'wpsso' ), $mtime_max );
-								$error_msg   = sprintf( __( 'Slow WordPress function detected - %1$s took %2$0.3f secs to make image size "%3$s" from %4$s (%5$s).', 'wpsso' ), '<code>' . $func_name . '</code>', $mtime_total, $size_name, $fullsizepath, $rec_max_msg );
+								$rec_max_msg = sprintf( __( 'longer than recommended max of %1$.3f secs', 'wpsso' ), $mtime_max );
+								$error_msg   = sprintf( __( 'Slow WordPress function detected - %1$s took %2$.3f secs to make image size "%3$s" from %4$s (%5$s).', 'wpsso' ), '<code>' . $func_name . '</code>', $mtime_total, $size_name, $fullsizepath, $rec_max_msg );
 
 								if ( $this->p->debug->enabled ) {
 
-									$this->p->debug->log( sprintf( 'slow WordPress function detected - %1$s took %2$0.3f secs' .
+									$this->p->debug->log( sprintf( 'slow WordPress function detected - %1$s took %2$.3f secs' .
 										' to make image size "%3$s" from %4$s', $func_name, $mtime_total, $size_name,
 											$fullsizepath ) );
 								}

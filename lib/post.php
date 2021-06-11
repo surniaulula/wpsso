@@ -529,13 +529,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				$func_name   = 'get_posts()';
 				$error_pre   = sprintf( __( '%s warning:', 'wpsso' ), __METHOD__ );
-				$rec_max_msg = sprintf( __( 'longer than recommended max of %1$0.3f secs', 'wpsso' ), $mtime_max );
-				$error_msg   = sprintf( __( 'Slow WordPress function detected - %1$s took %2$0.3f secs to get children of post ID %3$d (%4$s).',
+				$rec_max_msg = sprintf( __( 'longer than recommended max of %1$.3f secs', 'wpsso' ), $mtime_max );
+				$error_msg   = sprintf( __( 'Slow WordPress function detected - %1$s took %2$.3f secs to get children of post ID %3$d (%4$s).',
 					'wpsso' ), '<code>' . $func_name . '</code>', $mtime_total, $mod[ 'id' ], $rec_max_msg );
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( sprintf( 'slow WordPress function detected - %1$s took %2$0.3f secs to get children of post ID %3$d',
+					$this->p->debug->log( sprintf( 'slow WordPress function detected - %1$s took %2$.3f secs to get children of post ID %3$d',
 						$func_name, $mtime_total, $mod[ 'id' ] ) );
 				}
 
