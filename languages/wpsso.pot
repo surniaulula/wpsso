@@ -302,8 +302,8 @@ msgctxt "html paragraph"
 msgid ""
 "WPSSO Core is a powerful application and social framework, that can read "
 "content, image, and video information from a variety of sources, including "
-"data from 3rd party plugins and services. It's worth noting the most common "
-"questions and issues bellow, along with their solutions:"
+"data from third-party plugins and services. It's worth noting the most "
+"common questions and issues bellow, along with their solutions:"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:38
@@ -661,8 +661,8 @@ msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
 #: gettext/gettext-lib-com.php:36 gettext/gettext-lib-pro.php:11
-#: gettext/gettext-lib-pro.php:239 lib/com/form.php:789 lib/media.php:870
-#: lib/media.php:1004 lib/media.php:1978 lib/pro/admin/advanced.php:90
+#: gettext/gettext-lib-pro.php:239 lib/com/form.php:789 lib/media.php:872
+#: lib/media.php:1006 lib/media.php:1980 lib/pro/admin/advanced.php:90
 #: lib/pro/util/check-img-dims.php:102 lib/std/admin/advanced.php:90
 msgid "Media Library"
 msgstr ""
@@ -3388,7 +3388,7 @@ msgstr ""
 msgid "full size original"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:240 lib/media.php:1988
+#: gettext/gettext-lib-pro.php:240 lib/media.php:1990
 #: lib/pro/util/check-img-dims.php:105
 msgid "image ID %1$s (%2$s)"
 msgstr ""
@@ -5089,77 +5089,77 @@ msgid ""
 "all %1$d image sizes): %2$d by %3$d pixels."
 msgstr ""
 
-#: lib/media.php:663
+#: lib/media.php:665
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:874
+#: lib/media.php:876
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:875 lib/media.php:1055
+#: lib/media.php:877 lib/media.php:1057
 msgid ""
 "You may consider regenerating the sizes of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
 "org</a>."
 msgstr ""
 
-#: lib/media.php:892
+#: lib/media.php:894
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image dimensions for "
 "<a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:914
+#: lib/media.php:916
 msgid ""
 "Possible %1$s corruption detected &mdash; the full size image file path for "
 "<a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata "
 "returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:1006
+#: lib/media.php:1008
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1024 lib/post.php:531 lib/register.php:339 lib/term.php:473
+#: lib/media.php:1026 lib/post.php:531 lib/register.php:339 lib/term.php:473
 #: lib/user.php:453 lib/util.php:825 lib/util.php:3154
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1025 lib/post.php:532 lib/term.php:474 lib/user.php:454
+#: lib/media.php:1027 lib/post.php:532 lib/term.php:474 lib/user.php:454
 #: lib/util.php:826 lib/util.php:3155
 msgid "longer than recommended max of %1$0.3f secs"
 msgstr ""
 
-#: lib/media.php:1026
+#: lib/media.php:1028
 msgid ""
 "Slow WordPress function detected - %1$s took %2$0.3f secs to make image size "
 "\"%3$s\" from %4$s (%5$s)."
 msgstr ""
 
-#: lib/media.php:1053
+#: lib/media.php:1055
 msgid ""
 "Possible %1$s corruption detected &mdash; the <a href=\"%2$s\">WordPress "
 "%3$s function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr ""
 
-#: lib/media.php:2004
+#: lib/media.php:2006
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:2055
+#: lib/media.php:2057
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting resized image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:2088
+#: lib/media.php:2090
 msgid ""
 "%1$s %2$s ignored &mdash; the resulting resized image of %3$s is "
 "<strong>smaller than the minimum of %4$s allowed by the %5$s standard</"
@@ -5859,7 +5859,7 @@ msgstr ""
 
 #: lib/messages.php:856
 msgid ""
-"All columns should have a width defined, but some 3rd party plugins do not "
+"All columns should have a width defined, but some third-party plugins do not "
 "provide width information for their columns."
 msgstr ""
 
@@ -7085,7 +7085,7 @@ msgstr ""
 
 #: lib/messages.php:2431 lib/messages.php:2471
 msgid ""
-"We suggest using a supported 3rd party plugin to manage Brand, GTIN, ISBN, "
+"We suggest using a supported third-party plugin to manage Brand, GTIN, ISBN, "
 "and MPN values for variations."
 msgstr ""
 
@@ -7491,8 +7491,8 @@ msgstr ""
 
 #: lib/messages.php:3049
 msgid ""
-"Integration with 3rd party plugins and service APIs (WooCommerce, Yoast SEO, "
-"YouTube, Bitly, and many more)."
+"Integration with third-party plugins and service APIs (WooCommerce, Yoast "
+"SEO, YouTube, Bitly, and many more)."
 msgstr ""
 
 #: lib/messages.php:3051
@@ -9337,7 +9337,7 @@ msgstr ""
 msgid ""
 "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f "
 "seconds to execute. This is longer than the recommended maximum of %3$0.3f "
-"seconds and may affect page load time. Please consider reviewing 3rd party "
+"seconds and may affect page load time. Please consider reviewing third-party "
 "plugin and theme functions hooked into the WordPress %1$s filter for slow "
 "and/or sub-optimal PHP code."
 msgstr ""

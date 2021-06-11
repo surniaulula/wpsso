@@ -2841,7 +2841,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
-		 * Return any 3rd party and custom post options for a given option type.
+		 * Return any third-party and custom post options for a given option type.
 		 * 
 		 * function wpsso_get_post_event_options( $post_id, $event_id = false ) {
 		 *

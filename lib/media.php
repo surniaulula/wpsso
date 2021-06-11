@@ -511,7 +511,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						 */
 						case ( preg_match( '/^' . $content_img_preg[ 'pid_attr' ] . '$/', $attr_name ) ? true : false ):
 
-							// Filter hook for 3rd party modules to return image information.
+							/**
+							 * Filter hook for third-party modules to return image information.
+							 */
 							$filter_name = SucomUtil::sanitize_hookname( 'wpsso_get_content_' . $tag_name . '_' . $attr_name );
 
 							if ( $this->p->debug->enabled ) {

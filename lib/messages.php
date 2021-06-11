@@ -853,7 +853,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= __( 'A default column width for the admin Posts and Pages list table.', 'wpsso' ) . ' ';
 
-							$text .= __( 'All columns should have a width defined, but some 3rd party plugins do not provide width information for their columns.', 'wpsso' ) . ' ';
+							$text .= __( 'All columns should have a width defined, but some third-party plugins do not provide width information for their columns.', 'wpsso' ) . ' ';
 
 							$text .= __( 'This option offers a way to set a generic width for all Posts and Pages list table columns.', 'wpsso' ) . ' ';
 
@@ -2428,7 +2428,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 								$text .= sprintf( __( 'Enabling the WooCommerce "%s" attribute option may not be suitable for some product attributes (like GTIN, ISBN, and MPN).', 'wpsso' ), $used_for_variations ) . ' ';
 
-								$text .= __( 'We suggest using a supported 3rd party plugin to manage Brand, GTIN, ISBN, and MPN values for variations.', 'wpsso' );
+								$text .= __( 'We suggest using a supported third-party plugin to manage Brand, GTIN, ISBN, and MPN values for variations.', 'wpsso' );
 
 								$text .= '</center></p>';
 							}
@@ -2468,7 +2468,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 								$text .= sprintf( __( 'Refer to the <a href="%s">WooCommerce integration notes</a> for information on setting up product attributes and custom fields.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/' ) . ' ';
 
-								$text .= __( 'We suggest using a supported 3rd party plugin to manage Brand, GTIN, ISBN, and MPN values for variations.', 'wpsso' ) . ' ';
+								$text .= __( 'We suggest using a supported third-party plugin to manage Brand, GTIN, ISBN, and MPN values for variations.', 'wpsso' ) . ' ';
 
 								$text .= '</center></p>';
 							}
@@ -3046,7 +3046,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= '<ul>';
 
-						$text .= ' <li>' . __( 'Integration with 3rd party plugins and service APIs (WooCommerce, Yoast SEO, YouTube, Bitly, and many more).', 'wpsso' ) . '</li>';
+						$text .= ' <li>' . __( 'Integration with third-party plugins and service APIs (WooCommerce, Yoast SEO, YouTube, Bitly, and many more).', 'wpsso' ) . '</li>';
 
 						$text .= ' <li>' . __( 'Detection of embedded videos in content text.', 'wpsso' ) . '</li>';
 

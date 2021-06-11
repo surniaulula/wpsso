@@ -43,7 +43,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $cache;		// SucomCache (object and file caching) class object.
 		public $check;		// WpssoCheck class object.
 		public $comment;	// WpssoComment class object (extends WpssoWpMeta).
-		public $compat;		// WpssoCompat (3rd party plugin and theme compatibility actions and filters) class object.
+		public $compat;		// WpssoCompat (third-party plugin and theme compatibility actions and filters) class object.
 		public $conflict;	// WpssoConflict (admin plugin conflict checks) class object.
 		public $debug;		// SucomDebug or SucomNoDebug class object.
 		public $edit;		// WpssoEdit class object.
@@ -83,7 +83,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $m            = array();	// Loaded module objects from core plugin.
 		public $m_ext        = array();	// Loaded module objects from extensions / add-ons.
 		public $cf           = array();	// Config array defined in construct method.
-		public $avail        = array();	// Assoc array for 3rd party plugin checks.
+		public $avail        = array();	// Assoc array for third-party plugin checks.
 		public $options      = array();	// Individual blog/site options.
 		public $site_options = array();	// Multisite options.
 		public $sc           = array();	// Shortcodes.
