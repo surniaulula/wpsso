@@ -609,7 +609,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$admin_url = $this->p->util->get_admin_url( 'general' );
 					}
 
-					$error_msg .= ' ' . sprintf( __( 'The plugin settings have been returned to their default values &mdash; <a href="%s">please review and save the new settings</a>.', 'wpsso' ), $admin_url );
+					$error_msg .= ' ' . sprintf( __( 'The plugin settings have been returned to their default values - <a href="%s">please review and save the new settings</a>.', 'wpsso' ), $admin_url );
 
 					$this->p->notice->err( $error_msg );
 				}
@@ -1061,7 +1061,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				if ( ! empty( $opts[ 'fb_app_id' ] ) && ( ! is_numeric( $opts[ 'fb_app_id' ] ) || strlen( $opts[ 'fb_app_id' ] ) > 32 ) ) {
 
-					$this->p->notice->err( sprintf( __( 'The Facebook App ID must be numeric and 32 characters or less in length &mdash; the value of "%s" is not valid.', 'wpsso' ), $opts[ 'fb_app_id' ] ) );
+					$this->p->notice->err( sprintf( __( 'The Facebook App ID must be numeric and 32 characters or less in length - the value of "%s" is not valid.', 'wpsso' ), $opts[ 'fb_app_id' ] ) );
 				}
 
 				/**

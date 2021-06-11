@@ -175,7 +175,7 @@ if ( ! class_exists( 'SucomAddOn' ) ) {
 
 					$this->init_textdomain();	// If not already loaded, load the textdomain now.
 
-					$notice_msg = __( 'The %1$s add-on requires the %2$s plugin &mdash; please activate the missing plugin.',
+					$notice_msg = __( 'The %1$s add-on requires the %2$s plugin - please activate the missing plugin.',
 						$text_domain );
 
 					$req_info[ 'notice' ] = sprintf( $notice_msg, $addon_name, $req_name );

@@ -3169,7 +3169,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						$filter_api_link = sprintf( '<a href="https://codex.wordpress.org/Plugin_API/Filter_Reference/%1$s">%1$s</a>', $filter_name );
 						$qm_plugin_link  = '<a href="https://wordpress.org/plugins/query-monitor/">Query Monitor</a>';
 
-						$notice_msg = sprintf( __( 'Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$.3f seconds to execute. This is longer than the recommended maximum of %3$.3f seconds and may affect page load time. Please consider reviewing third-party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code.', 'wpsso' ), $filter_api_link, $mtime_total, $mtime_max ) . ' ';
+						$notice_msg = sprintf( __( 'Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds to execute. This is longer than the recommended maximum of %3$.3f seconds and may affect page load time. Please consider reviewing third-party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code.', 'wpsso' ), $filter_api_link, $mtime_total, $mtime_max ) . ' ';
 
 						$notice_msg .= sprintf( __( 'Activating the %1$s plugin and clearing the %2$s cache (to re-apply the filter) may provide more information on the specific hook(s) or PHP code affecting performance.', 'wpsso' ), $qm_plugin_link, $this->p->cf[ 'plugin' ][ 'wpsso' ][ 'short' ] );
 

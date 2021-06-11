@@ -250,7 +250,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					 */
 					if ( ini_get( 'safe_mode' ) ) {
 
-						$errors[] = sprintf( __( 'The PHP "%s" setting is enabled &mdash; the PHP cURL library cannot follow URL redirects.',
+						$errors[] = sprintf( __( 'The PHP "%s" setting is enabled - the PHP cURL library cannot follow URL redirects.',
 							$this->text_domain ), 'safe_mode' );
 
 						$errors[] = sprintf( __( 'The "%s" setting is deprecated since PHP version 5.3 and removed from PHP since version 5.4.',
@@ -267,7 +267,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					 */
 					} elseif ( ini_get( 'open_basedir' ) ) {
 
-						$errors[] = sprintf( __( 'The PHP "%s" setting is enabled &mdash; the PHP cURL library cannot follow URL redirects.',
+						$errors[] = sprintf( __( 'The PHP "%s" setting is enabled - the PHP cURL library cannot follow URL redirects.',
 							$this->text_domain ), 'open_basedir' );
 
 						$errors[] = __( 'Please contact your hosting provider to have this setting disabled.',
@@ -560,7 +560,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 				$error_pre = sprintf( '%s error:', __METHOD__ );
 
-				$error_msg = __( 'PHP cURL library missing &mdash; contact your hosting provider to have the cURL library installed.', $this->text_domain );
+				$error_msg = __( 'PHP cURL library missing - contact your hosting provider to have the cURL library installed.', $this->text_domain );
 
 				$this->p->notice->err( $error_msg );
 

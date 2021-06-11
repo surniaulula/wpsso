@@ -507,7 +507,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-site_org_banner_url':	// Organization Banner URL.
 
-							$text = __( 'A URL for this organization\'s banner image &mdash; <strong>measuring exactly 600x60px</strong> &mdash; that Google News can show for Schema Article type content from this publisher.', 'wpsso' );
+							$text = __( 'A URL for this organization\'s banner image - <strong>measuring exactly 600x60px</strong> - that Google News can show for Schema Article type content from this publisher.', 'wpsso' );
 
 							break;
 
@@ -897,7 +897,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= __( 'Many themes and plugins have badly coded content filters, so this option is disabled by default.', 'wpsso' ) . ' ';
 
-							$text .= __( 'If you use shortcodes in your content text, this option should be enabled &mdash; IF YOU EXPERIENCE WEBPAGE LAYOUT OR PERFORMANCE ISSUES AFTER ENABLING THIS OPTION, determine which theme or plugin is filtering the content incorrectly and report the problem to its author(s).', 'wpsso' );
+							$text .= __( 'If you use shortcodes in your content text, this option should be enabled - IF YOU EXPERIENCE WEBPAGE LAYOUT OR PERFORMANCE ISSUES AFTER ENABLING THIS OPTION, determine which theme or plugin is filtering the content incorrectly and report the problem to its author(s).', 'wpsso' );
 
 							break;
 
@@ -981,7 +981,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$check_head_count = SucomUtil::get_const( 'WPSSO_DUPE_CHECK_HEADER_COUNT', 10 );
 
-							$text = sprintf( __( 'When editing Posts and Pages, %1$s can check the head section of webpages for conflicting and/or duplicate HTML tags. After %2$d <em>successful</em> checks, no additional checks will be performed &mdash; until the theme and/or any plugin is updated, when another %2$d checks are performed.', 'wpsso' ), $info[ 'short' ], $check_head_count );
+							$text = sprintf( __( 'When editing Posts and Pages, %1$s can check the head section of webpages for conflicting and/or duplicate HTML tags. After %2$d <em>successful</em> checks, no additional checks will be performed - until the theme and/or any plugin is updated, when another %2$d checks are performed.', 'wpsso' ), $info[ 'short' ], $check_head_count );
 
 							break;
 
@@ -992,7 +992,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = __( 'Content authors often upload small featured images, without knowing that WordPress creates resized images based on predefined image sizes, so this option is disabled by default.', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( 'When this option is enabled, full size images used for meta tags and Schema markup must be equal to (or larger) than the image dimensions you\'ve selected in the %s settings page &mdash; images that do not meet or exceed the minimum requirements are ignored.', 'wpsso' ), $img_sizes_tab_link ) . ' ';
+							$text .= sprintf( __( 'When this option is enabled, full size images used for meta tags and Schema markup must be equal to (or larger) than the image dimensions you\'ve selected in the %s settings page - images that do not meet or exceed the minimum requirements are ignored.', 'wpsso' ), $img_sizes_tab_link ) . ' ';
 
 							$text .= __( 'Providing social and search sites with perfectly resized images is highly recommended, so this option should be enabled if possible.', 'wpsso' ) . ' ';
 
@@ -1189,7 +1189,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_shortener':
 
-							$text = sprintf( __( 'A preferred URL shortening service for %s plugin filters and/or add-ons that may need to shorten URLs &mdash; don\'t forget to define the service API keys for the URL shortening service of your choice.', 'wpsso' ), $info[ 'short' ] );
+							$text = sprintf( __( 'A preferred URL shortening service for %s plugin filters and/or add-ons that may need to shorten URLs - don\'t forget to define the service API keys for the URL shortening service of your choice.', 'wpsso' ), $info[ 'short' ] );
 
 							break;
 
@@ -1334,7 +1334,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 									$text .= '</br></br>';
 
-									$text .= sprintf( __( 'Note that the "%1$s" option provides multiple input fields &mdash; the custom field value will be split on newline characters, and each line will be assigned to an individual input field.', 'wpsso' ), $cf_frags[ 'label' ] );
+									$text .= sprintf( __( 'Note that the "%1$s" option provides multiple input fields - the custom field value will be split on newline characters, and each line will be assigned to an individual input field.', 'wpsso' ), $cf_frags[ 'label' ] );
 								}
 							}
 
@@ -2159,7 +2159,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = '<p class="top">';
 
-							$text .= __( 'The Twitter Card validator does not (currently) accept query arguments &mdash; paste the following URL in the Twitter Card validator "Card URL" input field:', 'wpsso' );
+							$text .= __( 'The Twitter Card validator does not (currently) accept query arguments - paste the following URL in the Twitter Card validator "Card URL" input field:', 'wpsso' );
 
 							$text .= '</p>';
 
@@ -2385,11 +2385,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '<p>' . sprintf( __( 'After purchasing the %1$s plugin or any complementary %2$s add-on, you\'ll receive an email with a unique Authentication ID for the plugin or add-on you purchased.', 'wpsso' ), $wpsso_name_pro, $dist_pro ) . ' ';
 
-							$text .= sprintf( __( 'You may enter each Authentication ID on this page <em>to define a value for all sites within the network</em> &mdash; or enter Authentication IDs individually on each site\'s %1$s settings page.', 'wpsso' ), $licenses_page_link ) . '</p>';
+							$text .= sprintf( __( 'You may enter each Authentication ID on this page <em>to define a value for all sites within the network</em> - or enter Authentication IDs individually on each site\'s %1$s settings page.', 'wpsso' ), $licenses_page_link ) . '</p>';
 
-							$text.= '<p>' . sprintf( __( 'If you enter Authentication IDs in this network settings page, <em>please make sure you have purchased enough licenses for all sites within the network</em> &mdash; for example, to license a %1$s add-on for 10 sites, you would need an Authentication ID from a 10 license pack purchase (or better) of that %1$s add-on.', 'wpsso' ), $dist_pro ) . '</p>';
+							$text.= '<p>' . sprintf( __( 'If you enter Authentication IDs in this network settings page, <em>please make sure you have purchased enough licenses for all sites within the network</em> - for example, to license a %1$s add-on for 10 sites, you would need an Authentication ID from a 10 license pack purchase (or better) of that %1$s add-on.', 'wpsso' ), $dist_pro ) . '</p>';
 
-							$text .= '<p>' . sprintf( __( '<strong>WordPress uses the default blog to install and/or update plugins from the Network Admin interface</strong> &mdash; to update the %1$s and its %2$s add-ons, please make sure the %3$s add-on is active on the default blog, and the default blog is licensed.', 'wpsso' ), $wpsso_name_pro, $dist_pro, $um_info_name ) . '</p>';
+							$text .= '<p>' . sprintf( __( '<strong>WordPress uses the default blog to install and/or update plugins from the Network Admin interface</strong> - to update the %1$s and its %2$s add-ons, please make sure the %3$s add-on is active on the default blog, and the default blog is licensed.', 'wpsso' ), $wpsso_name_pro, $dist_pro, $um_info_name ) . '</p>';
 
 							$text .= '</blockquote>';
 
@@ -2841,7 +2841,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= '<b>' . __( 'Many themes and plugins have badly coded content filters, so this option is disabled by default.', 'wpsso' ) . '</b> ';
 
-						$text .= __( 'If you use shortcodes in your content text, this option should be enabled &mdash; IF YOU EXPERIENCE WEBPAGE LAYOUT OR PERFORMANCE ISSUES AFTER ENABLING THIS OPTION, determine which theme or plugin is filtering the content incorrectly and report the problem to its author(s).', 'wpsso' );
+						$text .= __( 'If you use shortcodes in your content text, this option should be enabled - IF YOU EXPERIENCE WEBPAGE LAYOUT OR PERFORMANCE ISSUES AFTER ENABLING THIS OPTION, determine which theme or plugin is filtering the content incorrectly and report the problem to its author(s).', 'wpsso' );
 
 						$text .= '</p>';
 
@@ -2936,7 +2936,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$licenses_page_link = $this->p->util->get_admin_url( 'licenses',
 							_x( 'Premium Licenses', 'lib file description', 'wpsso' ) );
 
-						$text = sprintf( __( 'An Authentication ID has been entered for %1$s but the plugin is not installed &mdash; you can install and activate the %2$s version from the %3$s settings page.', 'wpsso' ), '<b>' . $info[ 'name' ] . '</b>', $dist_pro, $licenses_page_link ) . ' ;-)';
+						$text = sprintf( __( 'An Authentication ID has been entered for %1$s but the plugin is not installed - you can install and activate the %2$s version from the %3$s settings page.', 'wpsso' ), '<b>' . $info[ 'name' ] . '</b>', $dist_pro, $licenses_page_link ) . ' ;-)';
 
 						break;
 
@@ -2945,7 +2945,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$licenses_page_link = $this->p->util->get_admin_url( 'licenses',
 							_x( 'Premium Licenses', 'lib file description', 'wpsso' ) );
 
-						$text = sprintf( __( 'An Authentication ID has been entered for %1$s in the %2$s settings page but the %3$s version is not installed &mdash; don\'t forget to update the plugin to install the latest %3$s version.', 'wpsso' ), '<b>' . $info[ 'name' ] . '</b>', $licenses_page_link, $dist_pro ) . ' ;-)';
+						$text = sprintf( __( 'An Authentication ID has been entered for %1$s in the %2$s settings page but the %3$s version is not installed - don\'t forget to update the plugin to install the latest %3$s version.', 'wpsso' ), '<b>' . $info[ 'name' ] . '</b>', $licenses_page_link, $dist_pro ) . ' ;-)';
 
 						break;
 
@@ -2978,7 +2978,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						} else {
 
-							$text .= sprintf( __( 'The %1$s add-on can be activated from the WordPress %2$s page &mdash; please activate this complementary add-on now.', 'wpsso' ), $um_info_name, $plugins_page_link ) . ' ';
+							$text .= sprintf( __( 'The %1$s add-on can be activated from the WordPress %2$s page - please activate this complementary add-on now.', 'wpsso' ), $um_info_name, $plugins_page_link ) . ' ';
 						}
 
 						$text .= sprintf( __( 'When the %1$s add-on is active, one or more %2$s updates may be available for the %3$s plugin and its add-on(s).', 'wpsso' ), $um_info_name, $dist_pro, $wpsso_name_pro );
@@ -3013,7 +3013,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'notice-recommend-version':
 
-						$text = sprintf( __( 'You are using %1$s version %2$s &mdash; <a href="%3$s">this %1$s version is outdated, unsupported, possibly insecure</a>, and may lack important updates and features.', 'wpsso' ), $info[ 'app_label' ], $info[ 'app_version' ], $info[ 'version_url' ] ) . ' ';
+						$text = sprintf( __( 'You are using %1$s version %2$s - <a href="%3$s">this %1$s version is outdated, unsupported, possibly insecure</a>, and may lack important updates and features.', 'wpsso' ), $info[ 'app_label' ], $info[ 'app_version' ], $info[ 'version_url' ] ) . ' ';
 
 						$text .= sprintf( __( 'If possible, please update to the latest %1$s stable release (or at least version %2$s).', 'wpsso' ), $info[ 'app_label' ], $info[ 'rec_version' ] );
 
@@ -3115,7 +3115,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text = '<p>';
 
-						$text .= sprintf( __( '<strong>Development of %1$s is driven by user requests</strong> &mdash; we welcome all your comments and suggestions.', 'wpsso' ), $info[ 'short' ] ) . ' ;-)';
+						$text .= sprintf( __( '<strong>Development of %1$s is driven by user requests</strong> - we welcome all your comments and suggestions.', 'wpsso' ), $info[ 'short' ] ) . ' ;-)';
 
 						$text .= '</p>';
 
@@ -3125,7 +3125,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text = '<p>';
 
-						$text .= sprintf( __( '<strong>Development of %1$s is driven by user requests</strong> &mdash; we welcome all your comments and suggestions.', 'wpsso' ), $info[ 'short' ] ) . ' ;-)';
+						$text .= sprintf( __( '<strong>Development of %1$s is driven by user requests</strong> - we welcome all your comments and suggestions.', 'wpsso' ), $info[ 'short' ] ) . ' ;-)';
 
 						$text .= '</p>';
 
@@ -3172,7 +3172,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			if ( ! empty( $info[ 'is_locale' ] ) ) {
 
 				// translators: %s is the wordpress.org URL for the WPSSO User Locale Selector add-on.
-				$text .= ' ' . sprintf( __( 'This option is localized &mdash; <a href="%s">you may change the WordPress locale</a> to define alternate values for different languages.', 'wpsso' ), 'https://wordpress.org/plugins/wpsso-user-locale/' );
+				$text .= ' ' . sprintf( __( 'This option is localized - <a href="%s">you may change the WordPress locale</a> to define alternate values for different languages.', 'wpsso' ), 'https://wordpress.org/plugins/wpsso-user-locale/' );
 			}
 
 			if ( strpos( $msg_key, 'tooltip-' ) === 0 && ! empty( $text ) ) {

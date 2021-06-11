@@ -316,9 +316,9 @@ msgstr ""
 #: gettext/gettext-html-setup.php:39
 msgctxt "html paragraph"
 msgid ""
-"Comments and suggestions to improve the plugin are always welcome &mdash; "
-"please <a href=\"https://surniaulula.com/support/create_ticket/\">open a "
-"ticket if you have any ideas or comments you would like to share with us</a>."
+"Comments and suggestions to improve the plugin are always welcome - please "
+"<a href=\"https://surniaulula.com/support/create_ticket/\">open a ticket if "
+"you have any ideas or comments you would like to share with us</a>."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:40
@@ -351,11 +351,11 @@ msgid ""
 "wordpress.org/plugins/wpsso-schema-json-ld/\">WPSSO Schema JSON-LD Markup "
 "add-on</a> provide a solution by offering complete product meta tags for "
 "Facebook / Pinterest and complete Schema product markup for Google Rich "
-"Results &mdash; including additional product images, product variations, "
-"product information (brand, color, condition, EAN, dimensions, "
-"GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, volume, weight, etc), "
-"product reviews, product ratings, sale start / end dates, sale prices, pre-"
-"tax prices, VAT prices, shipping rates, shipping times, and much, much more."
+"Results - including additional product images, product variations, product "
+"information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, "
+"ISBN, material, MPN, size, SKU, volume, weight, etc), product reviews, "
+"product ratings, sale start / end dates, sale prices, pre-tax prices, VAT "
+"prices, shipping rates, shipping times, and much, much more."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:43
@@ -411,9 +411,9 @@ msgstr ""
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://search.google.com/structured-data/testing-tool/u/0/"
-"\">Google Structured Data Test Tool</a> &mdash; although deprecated, this "
-"tool provides additional validation for Schema types beyond the limited <a "
-"href=\"https://developers.google.com/search/docs/guides/search-gallery"
+"\">Google Structured Data Test Tool</a> - although deprecated, this tool "
+"provides additional validation for Schema types beyond the limited <a href="
+"\"https://developers.google.com/search/docs/guides/search-gallery"
 "\">selection of Google Rich Result types</a>."
 msgstr ""
 
@@ -441,39 +441,38 @@ msgstr ""
 #: gettext/gettext-html-setup.php:54
 msgctxt "html list item"
 msgid ""
-"<a href=\"https://validator.w3.org/\">W3C Markup Validator</a> &mdash; "
-"recommended to check your theme templates for HTML markup issues."
+"<a href=\"https://validator.w3.org/\">W3C Markup Validator</a> - recommended "
+"to check your theme templates for HTML markup issues."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:55
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://developers.google.com/speed/pagespeed/insights/\">Google "
-"PageSpeed Insights</a> &mdash; recommended for general site and webpage "
-"health checks (results influence SEO ranking)."
+"PageSpeed Insights</a> - recommended for general site and webpage health "
+"checks (results influence SEO ranking)."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:56
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://support.google.com/webmasters/answer/7451184\">Google's "
-"Search Engine Optimization (SEO) Starter Guide</a> &mdash; essential reading "
-"to understand Google SEO ranking factors."
+"Search Engine Optimization (SEO) Starter Guide</a> - essential reading to "
+"understand Google SEO ranking factors."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:57
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://www.webpagetest.org/\">Webpage Performance Test with "
-"Waterfall</a> &mdash; recommended to check and diagnose basic performance "
-"issues."
+"Waterfall</a> - recommended to check and diagnose basic performance issues."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:58
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://www.ssllabs.com/ssltest/\">SSL Server Test by SSL Labs</a> "
-"&mdash; recommended test for any site using https."
+"- recommended test for any site using https."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:59
@@ -523,7 +522,7 @@ msgstr ""
 
 #: gettext/gettext-lib-abstracts-com.php:6 lib/abstracts/com/add-on.php:178
 msgid ""
-"The %1$s add-on requires the %2$s plugin &mdash; please activate the missing "
+"The %1$s add-on requires the %2$s plugin - please activate the missing "
 "plugin."
 msgstr ""
 
@@ -568,8 +567,8 @@ msgstr ""
 #: gettext/gettext-lib-com.php:13 gettext/gettext-lib-com.php:16
 #: lib/com/cache.php:253 lib/com/cache.php:270
 msgid ""
-"The PHP \"%s\" setting is enabled &mdash; the PHP cURL library cannot follow "
-"URL redirects."
+"The PHP \"%s\" setting is enabled - the PHP cURL library cannot follow URL "
+"redirects."
 msgstr ""
 
 #: gettext/gettext-lib-com.php:14 lib/com/cache.php:256
@@ -605,8 +604,8 @@ msgstr ""
 
 #: gettext/gettext-lib-com.php:21 lib/com/cache.php:563
 msgid ""
-"PHP cURL library missing &mdash; contact your hosting provider to have the "
-"cURL library installed."
+"PHP cURL library missing - contact your hosting provider to have the cURL "
+"library installed."
 msgstr ""
 
 #: gettext/gettext-lib-com.php:23 lib/com/cache.php:922
@@ -2984,7 +2983,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:127 lib/pro/admin/advanced.php:965
 #: lib/std/admin/advanced.php:925
 msgid ""
-"An SEO plugin has been detected &mdash; some basic SEO meta tags have been "
+"An SEO plugin has been detected - some basic SEO meta tags have been "
 "unchecked and disabled automatically."
 msgstr ""
 
@@ -3337,8 +3336,8 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:220 gettext/gettext-lib-pro.php:241
 #: lib/pro/media/ngg.php:144 lib/pro/util/check-img-dims.php:108
 msgid ""
-"%1$s %2$s ignored &mdash; the resulting resized image of %3$s is too small "
-"for the required %4$s image dimensions."
+"%1$s %2$s ignored - the resulting resized image of %3$s is too small for the "
+"required %4$s image dimensions."
 msgstr ""
 
 #. translators: %1$s is the class::method name.
@@ -3395,16 +3394,15 @@ msgstr ""
 
 #: gettext/gettext-lib-pro.php:242 lib/pro/util/check-img-dims.php:169
 msgid ""
-"Image %1$s in content ignored &mdash; the image width and height is too "
-"small for the required %2$s image dimensions."
+"Image %1$s in content ignored - the image width and height is too small for "
+"the required %2$s image dimensions."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:243 lib/pro/util/check-img-dims.php:171
 msgid ""
 "%1$s includes an additional 'data-wp-pid' attribute for WordPress Media "
-"Library images &mdash; if this image was selected from the Media Library "
-"before %1$s was activated, try removing and adding the image back to your "
-"content."
+"Library images - if this image was selected from the Media Library before "
+"%1$s was activated, try removing and adding the image back to your content."
 msgstr ""
 
 #. translators: %s is the Events Calendar plugin name
@@ -3754,7 +3752,7 @@ msgstr ""
 msgid ""
 "The %1$s plugin and its %2$s add-on provide a solution by offering complete "
 "product meta tags for Facebook / Pinterest and complete Schema product "
-"markup for Google Rich Results &mdash; including additional product images, "
+"markup for Google Rich Results - including additional product images, "
 "product variations, product information (brand, color, condition, EAN, "
 "dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, volume, weight, "
 "etc), product reviews, product ratings, sale start / end dates, sale prices, "
@@ -4065,7 +4063,7 @@ msgid "Dismissed notices for user ID #%d \"%s\" have been reset."
 msgstr ""
 
 #: lib/admin.php:1255
-msgid "Option preference saved &mdash; viewing \"%s\" by default."
+msgid "Option preference saved - viewing \"%s\" by default."
 msgstr ""
 
 #: lib/admin.php:1278
@@ -4751,8 +4749,8 @@ msgstr ""
 #: lib/conflict.php:192
 msgid ""
 "Note that the ImageMagick application and the PHP \"%1$s\" extension are two "
-"different products &mdash; this error is for the PHP \"%1$s\" extension, not "
-"the ImageMagick application."
+"different products - this error is for the PHP \"%1$s\" extension, not the "
+"ImageMagick application."
 msgstr ""
 
 #: lib/conflict.php:195
@@ -4799,7 +4797,7 @@ msgid ""
 "The WordPress <a href=\"%s\">Search Engine Visibility</a> option is set to "
 "discourage search engines and social sites from indexing this site. This is "
 "not compatible with the purpose of optimizing your content for social and "
-"search engines &mdash; please uncheck the option to allow search engines and "
+"search engines - please uncheck the option to allow search engines and "
 "social sites to access your site."
 msgstr ""
 
@@ -5108,16 +5106,16 @@ msgstr ""
 
 #: lib/media.php:894
 msgid ""
-"Possible %1$s corruption detected &mdash; the full size image dimensions for "
-"<a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata "
-"returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
+"Possible %1$s corruption detected - the full size image dimensions for <a "
+"href=\"%2$s\">image ID %3$s</a> are missing from the image metadata returned "
+"by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
 #: lib/media.php:916
 msgid ""
-"Possible %1$s corruption detected &mdash; the full size image file path for "
-"<a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata "
-"returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
+"Possible %1$s corruption detected - the full size image file path for <a "
+"href=\"%2$s\">image ID %3$s</a> is missing from the image metadata returned "
+"by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
 #: lib/media.php:1008
@@ -5144,8 +5142,8 @@ msgstr ""
 
 #: lib/media.php:1055
 msgid ""
-"Possible %1$s corruption detected &mdash; the <a href=\"%2$s\">WordPress "
-"%3$s function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
+"Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s "
+"function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr ""
 
 #: lib/media.php:2006
@@ -5154,16 +5152,15 @@ msgstr ""
 
 #: lib/media.php:2057
 msgid ""
-"%1$s %2$s ignored &mdash; the resulting resized image of %3$s has an "
+"%1$s %2$s ignored - the resulting resized image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
 #: lib/media.php:2090
 msgid ""
-"%1$s %2$s ignored &mdash; the resulting resized image of %3$s is "
-"<strong>smaller than the minimum of %4$s allowed by the %5$s standard</"
-"strong>."
+"%1$s %2$s ignored - the resulting resized image of %3$s is <strong>smaller "
+"than the minimum of %4$s allowed by the %5$s standard</strong>."
 msgstr ""
 
 #: lib/messages.php:72
@@ -5539,8 +5536,8 @@ msgstr ""
 
 #: lib/messages.php:510
 msgid ""
-"A URL for this organization's banner image &mdash; <strong>measuring exactly "
-"600x60px</strong> &mdash; that Google News can show for Schema Article type "
+"A URL for this organization's banner image - <strong>measuring exactly "
+"600x60px</strong> - that Google News can show for Schema Article type "
 "content from this publisher."
 msgstr ""
 
@@ -5922,10 +5919,10 @@ msgstr ""
 
 #: lib/messages.php:900 lib/messages.php:2844
 msgid ""
-"If you use shortcodes in your content text, this option should be enabled "
-"&mdash; IF YOU EXPERIENCE WEBPAGE LAYOUT OR PERFORMANCE ISSUES AFTER "
-"ENABLING THIS OPTION, determine which theme or plugin is filtering the "
-"content incorrectly and report the problem to its author(s)."
+"If you use shortcodes in your content text, this option should be enabled - "
+"IF YOU EXPERIENCE WEBPAGE LAYOUT OR PERFORMANCE ISSUES AFTER ENABLING THIS "
+"OPTION, determine which theme or plugin is filtering the content incorrectly "
+"and report the problem to its author(s)."
 msgstr ""
 
 #: lib/messages.php:906
@@ -6033,8 +6030,8 @@ msgstr ""
 msgid ""
 "When editing Posts and Pages, %1$s can check the head section of webpages "
 "for conflicting and/or duplicate HTML tags. After %2$d <em>successful</em> "
-"checks, no additional checks will be performed &mdash; until the theme and/"
-"or any plugin is updated, when another %2$d checks are performed."
+"checks, no additional checks will be performed - until the theme and/or any "
+"plugin is updated, when another %2$d checks are performed."
 msgstr ""
 
 #: lib/messages.php:991 lib/messages.php:2742
@@ -6053,8 +6050,8 @@ msgstr ""
 msgid ""
 "When this option is enabled, full size images used for meta tags and Schema "
 "markup must be equal to (or larger) than the image dimensions you've "
-"selected in the %s settings page &mdash; images that do not meet or exceed "
-"the minimum requirements are ignored."
+"selected in the %s settings page - images that do not meet or exceed the "
+"minimum requirements are ignored."
 msgstr ""
 
 #: lib/messages.php:997 lib/messages.php:2867
@@ -6250,8 +6247,8 @@ msgstr ""
 #: lib/messages.php:1192
 msgid ""
 "A preferred URL shortening service for %s plugin filters and/or add-ons that "
-"may need to shorten URLs &mdash; don't forget to define the service API keys "
-"for the URL shortening service of your choice."
+"may need to shorten URLs - don't forget to define the service API keys for "
+"the URL shortening service of your choice."
 msgstr ""
 
 #: lib/messages.php:1198
@@ -6397,9 +6394,9 @@ msgstr ""
 
 #: lib/messages.php:1337
 msgid ""
-"Note that the \"%1$s\" option provides multiple input fields &mdash; the "
-"custom field value will be split on newline characters, and each line will "
-"be assigned to an individual input field."
+"Note that the \"%1$s\" option provides multiple input fields - the custom "
+"field value will be split on newline characters, and each line will be "
+"assigned to an individual input field."
 msgstr ""
 
 #: lib/messages.php:1362
@@ -6892,9 +6889,9 @@ msgstr ""
 
 #: lib/messages.php:2162
 msgid ""
-"The Twitter Card validator does not (currently) accept query arguments "
-"&mdash; paste the following URL in the Twitter Card validator \"Card URL\" "
-"input field:"
+"The Twitter Card validator does not (currently) accept query arguments - "
+"paste the following URL in the Twitter Card validator \"Card URL\" input "
+"field:"
 msgstr ""
 
 #: lib/messages.php:2172
@@ -7016,25 +7013,25 @@ msgstr ""
 #: lib/messages.php:2388
 msgid ""
 "You may enter each Authentication ID on this page <em>to define a value for "
-"all sites within the network</em> &mdash; or enter Authentication IDs "
-"individually on each site's %1$s settings page."
+"all sites within the network</em> - or enter Authentication IDs individually "
+"on each site's %1$s settings page."
 msgstr ""
 
 #: lib/messages.php:2390
 msgid ""
 "If you enter Authentication IDs in this network settings page, <em>please "
 "make sure you have purchased enough licenses for all sites within the "
-"network</em> &mdash; for example, to license a %1$s add-on for 10 sites, you "
-"would need an Authentication ID from a 10 license pack purchase (or better) "
-"of that %1$s add-on."
+"network</em> - for example, to license a %1$s add-on for 10 sites, you would "
+"need an Authentication ID from a 10 license pack purchase (or better) of "
+"that %1$s add-on."
 msgstr ""
 
 #: lib/messages.php:2392
 msgid ""
 "<strong>WordPress uses the default blog to install and/or update plugins "
-"from the Network Admin interface</strong> &mdash; to update the %1$s and its "
-"%2$s add-ons, please make sure the %3$s add-on is active on the default "
-"blog, and the default blog is licensed."
+"from the Network Admin interface</strong> - to update the %1$s and its %2$s "
+"add-ons, please make sure the %3$s add-on is active on the default blog, and "
+"the default blog is licensed."
 msgstr ""
 
 #: lib/messages.php:2402
@@ -7395,15 +7392,15 @@ msgstr ""
 #: lib/messages.php:2939
 msgid ""
 "An Authentication ID has been entered for %1$s but the plugin is not "
-"installed &mdash; you can install and activate the %2$s version from the "
-"%3$s settings page."
+"installed - you can install and activate the %2$s version from the %3$s "
+"settings page."
 msgstr ""
 
 #: lib/messages.php:2948
 msgid ""
 "An Authentication ID has been entered for %1$s in the %2$s settings page but "
-"the %3$s version is not installed &mdash; don't forget to update the plugin "
-"to install the latest %3$s version."
+"the %3$s version is not installed - don't forget to update the plugin to "
+"install the latest %3$s version."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
@@ -7429,7 +7426,7 @@ msgstr ""
 
 #: lib/messages.php:2981
 msgid ""
-"The %1$s add-on can be activated from the WordPress %2$s page &mdash; please "
+"The %1$s add-on can be activated from the WordPress %2$s page - please "
 "activate this complementary add-on now."
 msgstr ""
 
@@ -7470,9 +7467,9 @@ msgstr ""
 
 #: lib/messages.php:3016 lib/register.php:348
 msgid ""
-"You are using %1$s version %2$s &mdash; <a href=\"%3$s\">this %1$s version "
-"is outdated, unsupported, possibly insecure</a>, and may lack important "
-"updates and features."
+"You are using %1$s version %2$s - <a href=\"%3$s\">this %1$s version is "
+"outdated, unsupported, possibly insecure</a>, and may lack important updates "
+"and features."
 msgstr ""
 
 #: lib/messages.php:3018
@@ -7546,8 +7543,8 @@ msgstr ""
 
 #: lib/messages.php:3118 lib/messages.php:3128
 msgid ""
-"<strong>Development of %1$s is driven by user requests</strong> &mdash; we "
-"welcome all your comments and suggestions."
+"<strong>Development of %1$s is driven by user requests</strong> - we welcome "
+"all your comments and suggestions."
 msgstr ""
 
 #: lib/messages.php:3140
@@ -7581,7 +7578,7 @@ msgstr ""
 #. translators: %s is the wordpress.org URL for the WPSSO User Locale Selector add-on.
 #: lib/messages.php:3175
 msgid ""
-"This option is localized &mdash; <a href=\"%s\">you may change the WordPress "
+"This option is localized - <a href=\"%s\">you may change the WordPress "
 "locale</a> to define alternate values for different languages."
 msgstr ""
 
@@ -7962,8 +7959,8 @@ msgstr ""
 
 #: lib/options.php:612
 msgid ""
-"The plugin settings have been returned to their default values &mdash; <a "
-"href=\"%s\">please review and save the new settings</a>."
+"The plugin settings have been returned to their default values - <a href=\"%s"
+"\">please review and save the new settings</a>."
 msgstr ""
 
 #. translators: %s is the option key name.
@@ -7992,8 +7989,8 @@ msgstr ""
 
 #: lib/options.php:1064
 msgid ""
-"The Facebook App ID must be numeric and 32 characters or less in length "
-"&mdash; the value of \"%s\" is not valid."
+"The Facebook App ID must be numeric and 32 characters or less in length - "
+"the value of \"%s\" is not valid."
 msgstr ""
 
 #: lib/options.php:1191
@@ -8220,15 +8217,15 @@ msgstr ""
 
 #: lib/post.php:1071
 msgid ""
-"A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> &mdash; "
-"perhaps a webpage caching plugin or service needs to be refreshed?"
+"A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> - perhaps "
+"a webpage caching plugin or service needs to be refreshed?"
 msgstr ""
 
 #: lib/post.php:1100
 msgid ""
-"The PHP preg_replace() function failed to remove the %1$s meta tag section "
-"&mdash; this could be an indication of a problem with PHP's PCRE library, or "
-"an optimization plugin or service corrupting the webpage HTML markup."
+"The PHP preg_replace() function failed to remove the %1$s meta tag section - "
+"this could be an indication of a problem with PHP's PCRE library, or an "
+"optimization plugin or service corrupting the webpage HTML markup."
 msgstr ""
 
 #: lib/post.php:1102
@@ -8255,8 +8252,8 @@ msgstr ""
 
 #: lib/post.php:1174
 msgid ""
-"Conflict detected &mdash; your theme or another plugin is adding %1$s to the "
-"head section of this webpage."
+"Conflict detected - your theme or another plugin is adding %1$s to the head "
+"section of this webpage."
 msgstr ""
 
 #: lib/post.php:1192
@@ -8268,8 +8265,8 @@ msgstr ""
 #: lib/post.php:1192
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
-"parsing the HTML document &mdash; please review the <a href=\"%1$s\">W3C "
-"Markup Validator</a> results and correct any syntax errors."
+"parsing the HTML document - please review the <a href=\"%1$s\">W3C Markup "
+"Validator</a> results and correct any syntax errors."
 msgstr ""
 
 #: lib/post.php:1230
@@ -9335,11 +9332,11 @@ msgstr ""
 
 #: lib/util.php:3172
 msgid ""
-"Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$.3f "
-"seconds to execute. This is longer than the recommended maximum of %3$.3f "
-"seconds and may affect page load time. Please consider reviewing third-party "
-"plugin and theme functions hooked into the WordPress %1$s filter for slow "
-"and/or sub-optimal PHP code."
+"Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds "
+"to execute. This is longer than the recommended maximum of %3$.3f seconds "
+"and may affect page load time. Please consider reviewing third-party plugin "
+"and theme functions hooked into the WordPress %1$s filter for slow and/or "
+"sub-optimal PHP code."
 msgstr ""
 
 #: lib/util.php:3174
@@ -9461,14 +9458,14 @@ msgstr ""
 
 #: wpsso.php:526
 msgid ""
-"WP debug logging mode is active &mdash; debug messages are being sent to the "
+"WP debug logging mode is active - debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
 #: wpsso.php:538
 msgid ""
-"HTML debug mode is active &mdash; debug messages are being added to webpages "
-"as hidden HTML comments."
+"HTML debug mode is active - debug messages are being added to webpages as "
+"hidden HTML comments."
 msgstr ""
 
 #. translators: %s is the short plugin name.

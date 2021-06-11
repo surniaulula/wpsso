@@ -1068,7 +1068,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					$short_name = $this->p->cf[ 'plugin' ][ $this->p->id ][ 'short' ];
 
-					$this->p->notice->err( sprintf( __( 'A %2$s meta tag section was not found in <a href="%1$s">%1$s</a> &mdash; perhaps a webpage caching plugin or service needs to be refreshed?', 'wpsso' ), $check_url, $short_name ) );
+					$this->p->notice->err( sprintf( __( 'A %2$s meta tag section was not found in <a href="%1$s">%1$s</a> - perhaps a webpage caching plugin or service needs to be refreshed?', 'wpsso' ), $check_url, $short_name ) );
 				}
 
 				return;	// Stop here.
@@ -1097,7 +1097,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					$short_name = $this->p->cf[ 'plugin' ][ $this->p->id ][ 'short' ];
 
-					$notice_msg = sprintf( __( 'The PHP preg_replace() function failed to remove the %1$s meta tag section &mdash; this could be an indication of a problem with PHP\'s PCRE library, or an optimization plugin or service corrupting the webpage HTML markup.', 'wpsso' ), $short_name ) . ' ';
+					$notice_msg = sprintf( __( 'The PHP preg_replace() function failed to remove the %1$s meta tag section - this could be an indication of a problem with PHP\'s PCRE library, or an optimization plugin or service corrupting the webpage HTML markup.', 'wpsso' ), $short_name ) . ' ';
 
 					$notice_msg .= __( 'You may consider updating or having your hosting provider update your PHP installation and its PCRE library.', 'wpsso' );
 
@@ -1171,7 +1171,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$check_opts = SucomUtil::preg_grep_keys( '/^add_/', $this->p->options, false, '' );
 
-			$conflicts_msg = __( 'Conflict detected &mdash; your theme or another plugin is adding %1$s to the head section of this webpage.', 'wpsso' );
+			$conflicts_msg = __( 'Conflict detected - your theme or another plugin is adding %1$s to the head section of this webpage.', 'wpsso' );
 
 			$conflicts_found = 0;
 
@@ -1189,7 +1189,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$validator_url     = 'https://validator.w3.org/nu/?doc=' . urlencode( $check_url );
 						$settings_page_url = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_pinterest' );
 
-						$this->p->notice->err( sprintf( __( 'An error occured parsing the head meta tags from <a href="%1$s">%1$s</a> (no "link" or "meta" HTML tags were found).', 'wpsso' ), $check_url ) . ' ' . sprintf( __( 'The webpage may contain HTML syntax errors preventing PHP from successfully parsing the HTML document &mdash; please review the <a href="%1$s">W3C Markup Validator</a> results and correct any syntax errors.', 'wpsso' ), $validator_url ) );
+						$this->p->notice->err( sprintf( __( 'An error occured parsing the head meta tags from <a href="%1$s">%1$s</a> (no "link" or "meta" HTML tags were found).', 'wpsso' ), $check_url ) . ' ' . sprintf( __( 'The webpage may contain HTML syntax errors preventing PHP from successfully parsing the HTML document - please review the <a href="%1$s">W3C Markup Validator</a> results and correct any syntax errors.', 'wpsso' ), $validator_url ) );
 					}
 
 				} else {

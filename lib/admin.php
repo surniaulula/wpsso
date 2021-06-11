@@ -562,7 +562,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			global $wp_version;
 
 			$pkg_info    = $this->get_pkg_info();	// Returns an array from cache.
-			$page_title  = $pkg_info[ 'wpsso' ][ 'short_dist' ] . ' &mdash; ' . $this->menu_name;
+			$page_title  = $pkg_info[ 'wpsso' ][ 'short_dist' ] . ' - ' . $this->menu_name;
 			$menu_title  = _x( $this->p->cf[ 'menu' ][ 'title' ], 'menu title', 'wpsso' );
 			$cf_wp_admin = $this->p->cf[ 'wp' ][ 'admin' ];
 			$capability  = isset( $cf_wp_admin[ $this->menu_lib ][ 'cap' ] ) ? $cf_wp_admin[ $this->menu_lib ][ 'cap' ] : 'manage_options';
@@ -619,7 +619,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			$pkg_info    = $this->get_pkg_info();	// Returns an array from cache.
-			$page_title  = $pkg_info[ $menu_ext ][ 'short_dist' ] . ' &mdash; ' . $menu_name;
+			$page_title  = $pkg_info[ $menu_ext ][ 'short_dist' ] . ' - ' . $menu_name;
 			$cf_wp_admin = $this->p->cf[ 'wp' ][ 'admin' ];
 			$capability  = isset( $cf_wp_admin[ $menu_lib ][ 'cap' ] ) ? $cf_wp_admin[ $menu_lib ][ 'cap' ] : 'manage_options';
 			$menu_slug   = 'wpsso-' . $menu_id;
@@ -1252,7 +1252,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 								WpssoUser::save_pref( array( 'show_opts' => $show_opts_key ) );
 
-								$notice_msg = sprintf( __( 'Option preference saved &mdash; viewing "%s" by default.', 'wpsso' ),
+								$notice_msg = sprintf( __( 'Option preference saved - viewing "%s" by default.', 'wpsso' ),
 									$show_name_transl );
 
 								$this->p->notice->upd( $notice_msg, $user_id );

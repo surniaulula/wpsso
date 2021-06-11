@@ -891,7 +891,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					 */
 					if ( $this->p->notice->is_admin_pre_notices() ) {
 
-						$notice_msg = sprintf( __( 'Possible %1$s corruption detected &mdash; the full size image dimensions for <a href="%2$s">image ID %3$s</a> are missing from the image metadata returned by the <a href="%4$s">WordPress %5$s function</a>.', 'wpsso' ), $img_lib, $edit_url, $pid, $func_url, '<code>' . $func_name . '</code>' ) . ' ' . $regen_msg;
+						$notice_msg = sprintf( __( 'Possible %1$s corruption detected - the full size image dimensions for <a href="%2$s">image ID %3$s</a> are missing from the image metadata returned by the <a href="%4$s">WordPress %5$s function</a>.', 'wpsso' ), $img_lib, $edit_url, $pid, $func_url, '<code>' . $func_name . '</code>' ) . ' ' . $regen_msg;
 
 						$notice_key = 'full-size-image-' . $pid . '-dimensions-missing';
 
@@ -913,7 +913,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					 */
 					if ( $this->p->notice->is_admin_pre_notices() ) {
 
-						$notice_msg = sprintf( __( 'Possible %1$s corruption detected &mdash; the full size image file path for <a href="%2$s">image ID %3$s</a> is missing from the image metadata returned by the <a href="%4$s">WordPress %5$s function</a>.', 'wpsso' ), $img_lib, $edit_url, $pid, $func_url, '<code>' . $func_name . '</code>' ) . ' ' . $regen_msg;
+						$notice_msg = sprintf( __( 'Possible %1$s corruption detected - the full size image file path for <a href="%2$s">image ID %3$s</a> is missing from the image metadata returned by the <a href="%4$s">WordPress %5$s function</a>.', 'wpsso' ), $img_lib, $edit_url, $pid, $func_url, '<code>' . $func_name . '</code>' ) . ' ' . $regen_msg;
 
 						$notice_key = 'full-size-image-' . $pid . '-file-path-missing';
 
@@ -1052,7 +1052,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								 */
 								if ( $this->p->notice->is_admin_pre_notices() ) {
 
-									$notice_msg = sprintf( __( 'Possible %1$s corruption detected &mdash; the <a href="%2$s">WordPress %3$s function</a> failed to create the "%4$s" image size (%5$s) from %6$s.', 'wpsso' ), $img_lib, $func_url, '<code>' . $func_name . '</code>', $size_name, $size_info[ 'dimensions' ], $fullsizepath ) . ' ';
+									$notice_msg = sprintf( __( 'Possible %1$s corruption detected - the <a href="%2$s">WordPress %3$s function</a> failed to create the "%4$s" image size (%5$s) from %6$s.', 'wpsso' ), $img_lib, $func_url, '<code>' . $func_name . '</code>', $size_name, $size_info[ 'dimensions' ], $fullsizepath ) . ' ';
 
 									$notice_msg .= sprintf( __( 'You may consider regenerating the sizes of all WordPress Media Library images using one of <a href="%s">several available plugins from WordPress.org</a>.', 'wpsso' ), 'https://wordpress.org/plugins/search/regenerate+thumbnails/' );
 
@@ -2054,7 +2054,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 			/**
 					 * $img_lib can be 'Media Library', 'NextGEN Gallery', 'Content', etc.
 					 */
-					$notice_msg = sprintf( __( '%1$s %2$s ignored &mdash; the resulting resized image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>.', 'wpsso' ), $img_lib, $img_label, $img_width . 'x' . $img_height, $max_ratio, $size_label ). ' ';
+					$notice_msg = sprintf( __( '%1$s %2$s ignored - the resulting resized image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>.', 'wpsso' ), $img_lib, $img_label, $img_width . 'x' . $img_height, $max_ratio, $size_label ). ' ';
 
 					$notice_msg .= $this->p->msgs->get( 'notice-image-rejected', array( 'show_adjust_img_opts' => false ) );
 
@@ -2087,7 +2087,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 			/**
 					 * $img_lib can be 'Media Library', 'NextGEN Gallery', 'Content', etc.
 					 */
-					$notice_msg = sprintf( __( '%1$s %2$s ignored &mdash; the resulting resized image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>.', 'wpsso' ), $img_lib, $img_label, $img_width . 'x' . $img_height, $min_width . 'x' . $min_height, $size_label ) . ' ';
+					$notice_msg = sprintf( __( '%1$s %2$s ignored - the resulting resized image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>.', 'wpsso' ), $img_lib, $img_label, $img_width . 'x' . $img_height, $min_width . 'x' . $min_height, $size_label ) . ' ';
 
 					$notice_msg .= $this->p->msgs->get( 'notice-image-rejected', array( 'show_adjust_img_size_opts' => false ) );
 

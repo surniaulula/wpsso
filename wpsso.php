@@ -523,7 +523,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 						$notice_key .= '-with-debug-log';
 
-						$notice_msg .= __( 'WP debug logging mode is active &mdash; debug messages are being sent to the WordPress debug log.', 'wpsso' ) . ' ';
+						$notice_msg .= __( 'WP debug logging mode is active - debug messages are being sent to the WordPress debug log.', 'wpsso' ) . ' ';
 					}
 				}
 
@@ -535,7 +535,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 						$notice_key .= '-with-html-comments';
 
-						$notice_msg .= __( 'HTML debug mode is active &mdash; debug messages are being added to webpages as hidden HTML comments.', 'wpsso' ) . ' ';
+						$notice_msg .= __( 'HTML debug mode is active - debug messages are being added to webpages as hidden HTML comments.', 'wpsso' ) . ' ';
 					}
 				}
 

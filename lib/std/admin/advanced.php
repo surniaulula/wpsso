@@ -922,7 +922,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
 
 				$table_rows[] = '<td colspan="8"><blockquote class="top-info"><p>' . 
-					__( 'An SEO plugin has been detected &mdash; some basic SEO meta tags have been unchecked and disabled automatically.', 'wpsso' ) . 
+					__( 'An SEO plugin has been detected - some basic SEO meta tags have been unchecked and disabled automatically.', 'wpsso' ) . 
 						'</p></blockquote></td>';
 			}
 

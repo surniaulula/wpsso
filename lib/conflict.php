@@ -189,7 +189,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 					 */
 					if ( $php_ext === 'imagick' ) {
 
-						$notice_msg .= sprintf( __( 'Note that the ImageMagick application and the PHP "%1$s" extension are two different products &mdash; this error is for the PHP "%1$s" extension, not the ImageMagick application.', 'wpsso' ), $php_ext ) . ' ';
+						$notice_msg .= sprintf( __( 'Note that the ImageMagick application and the PHP "%1$s" extension are two different products - this error is for the PHP "%1$s" extension, not the ImageMagick application.', 'wpsso' ), $php_ext ) . ' ';
 					}
 
 					$notice_msg .= sprintf( __( 'Please contact your hosting provider to have the missing PHP "%1$s" extension installed and enabled.', 'wpsso' ), $php_ext );
@@ -291,7 +291,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 				$settings_url = get_admin_url( $blog_id = null, 'options-reading.php' );
 
-				$notice_msg = sprintf( __( 'The WordPress <a href="%s">Search Engine Visibility</a> option is set to discourage search engines and social sites from indexing this site. This is not compatible with the purpose of optimizing your content for social and search engines &mdash; please uncheck the option to allow search engines and social sites to access your site.', 'wpsso' ), $settings_url );
+				$notice_msg = sprintf( __( 'The WordPress <a href="%s">Search Engine Visibility</a> option is set to discourage search engines and social sites from indexing this site. This is not compatible with the purpose of optimizing your content for social and search engines - please uncheck the option to allow search engines and social sites to access your site.', 'wpsso' ), $settings_url );
 
 				$notice_key = 'wp-search-engine-visibility-disabled';
 
