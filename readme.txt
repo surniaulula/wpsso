@@ -30,7 +30,7 @@ There's no need to manually re-enter descriptions, titles, product information, 
 
 **Fast, lightweight, reliable, and coded for maximum performance:**
 
-WPSSO and its add-ons are coded for speed, reliability, and quality assurance &mdash; using advanced WordPress caching techniques, theme template validations, media optimization, and much more.
+WPSSO and its add-ons are coded for speed, reliability, and quality assurance using advanced WordPress caching techniques, theme template validations, media optimization, and much more.
 
 <h3>Users Love the WPSSO Core Plugin</h3>
 
