@@ -2409,7 +2409,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '</strong><br/>';
 
-							$text .= __( 'You can create the following product attribute names, and enter their corresponding values, in your e-commerce plugin.', 'wpsso' );
+							$text .= __( 'You can create the following product attribute names and enter their corresponding values in your e-commerce plugin.', 'wpsso' );
 
 							$text .= '</center></p>';
 

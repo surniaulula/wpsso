@@ -300,7 +300,7 @@ msgstr ""
 #: gettext/gettext-html-setup.php:37
 msgctxt "html paragraph"
 msgid ""
-"WPSSO Core is a powerful application and social framework, that can read "
+"WPSSO Core is a powerful application and social framework that can read "
 "content, image, and video information from a variety of sources, including "
 "data from third-party plugins and services. It's worth noting the most "
 "common questions and issues bellow, along with their solutions:"
@@ -7058,8 +7058,8 @@ msgstr ""
 
 #: lib/messages.php:2412
 msgid ""
-"You can create the following product attribute names, and enter their "
-"corresponding values, in your e-commerce plugin."
+"You can create the following product attribute names and enter their "
+"corresponding values in your e-commerce plugin."
 msgstr ""
 
 #: lib/messages.php:2420 lib/messages.php:2463
