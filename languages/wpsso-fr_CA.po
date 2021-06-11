@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 8.30.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-06-11 10:30-0700\n"
+"PO-Revision-Date: 2021-06-11 11:03-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -329,8 +329,8 @@ msgid "Notice"
 msgstr "Avis"
 
 #: gettext/gettext-lib-com.php:8 lib/com/cache.php:217
-msgid "Error retrieving %1$s for caching (after %2$.03f seconds)."
-msgstr "Erreur lors de la récupération de %1$s pour mise en cache (après %2$.03f secondes)."
+msgid "Error retrieving %1$s for caching (after %2$.3f seconds)."
+msgstr "Erreur lors de la récupération de %1$s pour mise en cache (après %2$.3f secondes)."
 
 #: gettext/gettext-lib-com.php:9 lib/com/cache.php:222
 msgid "Error retrieving %1$s for caching."
@@ -4708,12 +4708,12 @@ msgstr "Alerte %s:"
 
 #: lib/media.php:1027 lib/post.php:532 lib/term.php:474 lib/user.php:454
 #: lib/util.php:826 lib/util.php:3155
-msgid "longer than recommended max of %1$0.3f secs"
-msgstr "supérieur au max recommandé de %1$0.3f secs"
+msgid "longer than recommended max of %1$.3f secs"
+msgstr "supérieur au max recommandé de %1$.3f secs"
 
 #: lib/media.php:1028
-msgid "Slow WordPress function detected - %1$s took %2$0.3f secs to make image size \"%3$s\" from %4$s (%5$s)."
-msgstr "Fonction WordPress lente détectée - %1$s a pris %2$0.3f secs pour créer la taille d'image \"%3$s\" à partir de %4$s (%5$s)."
+msgid "Slow WordPress function detected - %1$s took %2$.3f secs to make image size \"%3$s\" from %4$s (%5$s)."
+msgstr "Fonction WordPress lente détectée - %1$s a pris %2$.3f secs pour créer la taille d'image \"%3$s\" à partir de %4$s (%5$s)."
 
 #: lib/media.php:1055
 msgid "Possible %1$s corruption detected &mdash; the <a href=\"%2$s\">WordPress %3$s function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
@@ -7009,8 +7009,8 @@ msgid "post"
 msgstr "article"
 
 #: lib/post.php:533
-msgid "Slow WordPress function detected - %1$s took %2$0.3f secs to get children of post ID %3$d (%4$s)."
-msgstr "Fonction WordPress lente détectée - %1$s a pris %2$0.3f secs pour obtenir les enfants de l'ID d'article %3$d (%4$s)."
+msgid "Slow WordPress function detected - %1$s took %2$.3f secs to get children of post ID %3$d (%4$s)."
+msgstr "Fonction WordPress lente détectée - %1$s a pris %2$.3f secs pour obtenir les enfants de l'ID d'article %3$d (%4$s)."
 
 #: lib/post.php:735 lib/post.php:1378 lib/schema.php:3363 lib/term.php:588
 #: lib/user.php:585
@@ -7740,8 +7740,8 @@ msgid "term"
 msgstr "terme"
 
 #: lib/term.php:475
-msgid "Slow WordPress function detected - %1$s took %2$0.3f secs to get posts for term ID %3$d in taxonomy %4$s (%5$s)."
-msgstr "Fonction WordPress lente détectée - %1$s a pris %2$0.3f secs pour obtenir les articles de l'ID du terme %3$d de taxonomie %4$s  (%5$s)."
+msgid "Slow WordPress function detected - %1$s took %2$.3f secs to get posts for term ID %3$d in taxonomy %4$s (%5$s)."
+msgstr "Fonction WordPress lente détectée - %1$s a pris %2$.3f secs pour obtenir les articles de l'ID du terme %3$d de taxonomie %4$s  (%5$s)."
 
 #: lib/term.php:855
 msgid "Insufficient privileges to save settings for term ID %1$s."
@@ -7789,8 +7789,8 @@ msgid "user"
 msgstr "utilisateur "
 
 #: lib/user.php:455
-msgid "Slow WordPress function detected - %1$s took %2$0.3f secs to get posts authored by user ID %3$d (%4$s)."
-msgstr "Fonction WordPress lente détectée - %1$s a pris %2$0.3f secs pour obtenir les articles de l'ID d'utilisateur %3$d (%4$s)."
+msgid "Slow WordPress function detected - %1$s took %2$.3f secs to get posts authored by user ID %3$d (%4$s)."
+msgstr "Fonction WordPress lente détectée - %1$s a pris %2$.3f secs pour obtenir les articles de l'ID d'utilisateur %3$d (%4$s)."
 
 #: lib/user.php:865
 msgid "(not a Facebook Pages URL)"
@@ -8082,8 +8082,8 @@ msgid "uncropped"
 msgstr "non recadrée"
 
 #: lib/util.php:827
-msgid "Slow PHP function detected - %1$s took %2$0.3f secs for %3$s (%4$s)."
-msgstr "Fonction PHP lente détectée - %1$s a pris %2$0.3f secs pour %3$s (%4$s)."
+msgid "Slow PHP function detected - %1$s took %2$.3f secs for %3$s (%4$s)."
+msgstr "Fonction PHP lente détectée - %1$s a pris %2$.3f secs pour %3$s (%4$s)."
 
 #: lib/util.php:1345
 msgid "Error reading the %s file for the article sections list."
@@ -8116,12 +8116,12 @@ msgid "The PHP <code>%1$s</code> function is missing &ndash; contact your hostin
 msgstr "La fonction PHP <code>%1$s</code> est manquante &ndash; contactez votre fournisseur d'hébergement pour installer la fonction manquante."
 
 #: lib/util.php:3156
-msgid "Slow filter hook(s) detected - WordPress took %1$0.3f secs to execute the \"%2$s\" filter (%3$s)."
-msgstr "Crochet(s) de filtre lent détecté - WordPress a pris %1$0.3f secs pour exécuter le filtre \"%2$s\" (%3$s)."
+msgid "Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the \"%2$s\" filter (%3$s)."
+msgstr "Crochet(s) de filtre lent détecté - WordPress a pris %1$.3f secs pour exécuter le filtre \"%2$s\" (%3$s)."
 
 #: lib/util.php:3172
-msgid "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$0.3f seconds to execute. This is longer than the recommended maximum of %3$0.3f seconds and may affect page load time. Please consider reviewing third-party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code."
-msgstr "Crochet(s) de filtre lent détecté &mdash; le filtre WordPress %1$s a pris %2$0.3f secondes pour exécuter. Ceci est plus long que le maximum recommandé de %3$0.3f secondes et peut affecter le temps de chargement de la page. S'il vous plaît envisagez d'examiner les fonctions d'extensions de tiers partie et de thème accrochées au filtre WordPress %1$s pour du code PHP lent et/ou sous-optimal."
+msgid "Slow filter hook(s) detected &mdash; the WordPress %1$s filter took %2$.3f seconds to execute. This is longer than the recommended maximum of %3$.3f seconds and may affect page load time. Please consider reviewing third-party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code."
+msgstr "Crochet(s) de filtre lent détecté &mdash; le filtre WordPress %1$s a pris %2$.3f secondes pour exécuter. Ceci est plus long que le maximum recommandé de %3$.3f secondes et peut affecter le temps de chargement de la page. S'il vous plaît envisagez d'examiner les fonctions d'extensions de tiers partie et de thème accrochées au filtre WordPress %1$s pour du code PHP lent et/ou sous-optimal."
 
 #: lib/util.php:3174
 msgid "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the filter) may provide more information on the specific hook(s) or PHP code affecting performance."
