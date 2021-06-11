@@ -2399,9 +2399,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = '<blockquote class="top-info"><p>';
 
-							$text .= sprintf( __( 'These options allow you to customize the product attribute names (aka attribute labels) that %s uses to request additional product information from your e-commerce plugin.', 'wpsso' ), $wpsso_name_pro ) . ' ';
+							$text .= sprintf( __( 'These options allow you to customize the product attribute names (aka attribute labels) that %s can use to request additional product information from your e-commerce plugin.', 'wpsso' ), $wpsso_name_pro ) . ' ';
 
-							$text .= __( 'These are the product attribute names that you can create in your e-commerce plugin and not their values.', 'wpsso' ) . ' ';
+							$text .= __( 'Note that these are product attribute names that you can create in your e-commerce plugin and not their values.', 'wpsso' ) . ' ';
 
 							$text .= '</p> <p><center><strong>';
 
@@ -2409,7 +2409,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '</strong><br/>';
 
-							$text .= __( 'You can create the following product attribute names and choose their corresponding values in your e-commerce plugin.', 'wpsso' );
+							$text .= __( 'You can create the following product attribute names, and enter their corresponding values, in your e-commerce plugin.', 'wpsso' );
 
 							$text .= '</center></p>';
 
@@ -2447,11 +2447,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '</p> <p><center><strong>';
 
-							$text .= __( 'Do not enter custom field values here &ndash; these options are for custom field names only.', 'wpsso' );
+							$text .= __( 'Do not enter custom field values here &ndash; these options are for custom field names only.', 'wpsso' ) . ' ';
 
 							$text .= '</strong><br/>';
 
-							$text .= __( 'Use the following custom field names when creating custom fields for your posts, pages, and custom post types.', 'wpsso' );
+							$text .= __( 'Use the following custom field names when creating custom fields for your posts, pages, and custom post types.', 'wpsso' ) . ' ';
 
 							$text .= '</center></p>';
 
@@ -2460,19 +2460,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 								$text .= '<p><center><strong>';
 
-								$text .= __( 'An active WooCommerce plugin has been detected.', 'wpsso' );
+								$text .= __( 'An active WooCommerce plugin has been detected.', 'wpsso' ) . ' ';
 
 								$text .= '</strong></br>';
 
-								$text .= __( 'Please note that product attributes from WooCommerce have precedence over custom field values.', 'wpsso' ) . ' ';
+								$text .= __( 'Note that product attributes from WooCommerce have precedence over custom field values.', 'wpsso' ) . ' ';
 
-								$text .= '</br>';
+								$text .= sprintf( __( 'Refer to the <a href="%s">WooCommerce integration notes</a> for information on setting up product attributes and custom fields.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/' ) . ' ';
 
-								$text .= sprintf( __( 'Refer to the <a href="%s">WooCommerce integration notes</a> for information on setting up product attributes and custom fields.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/' );
-
-								$text .= '</br>';
-
-								$text .= __( 'We suggest using a supported 3rd party plugin to manage Brand, GTIN, ISBN, and MPN values for variations.', 'wpsso' );
+								$text .= __( 'We suggest using a supported 3rd party plugin to manage Brand, GTIN, ISBN, and MPN values for variations.', 'wpsso' ) . ' ';
 
 								$text .= '</center></p>';
 							}
