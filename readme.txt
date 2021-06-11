@@ -20,7 +20,7 @@ Present your content at its best on social sites and in search results, no matte
 
 <h3>THE MOST ADVANCED STRUCTURED DATA PLUGIN FOR WORDPRESS</h3>
 
-<p><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"><strong>Make sure your content is presented at its best on social sites and in search results, no matter how webpages are shared, re-shared, messaged, posted, embedded, or crawled:</strong></p>
+<p><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"><strong>Rank higher by making sure your content is presented at its best on social sites and in search results, no matter how webpages are shared, re-shared, messaged, posted, embedded, or crawled:</strong></p>
 
 WPSSO creates meta tags and structured data markup for Facebook / Open Graph, Pinterest Rich Pins, Twitter Cards, Google Knowledge Graph, Google Rich Results (Schema, Rich Snippets, Structured Data), WhatsApp and Messaging Apps, Mobile Web Browsers, WordPress REST API, LinkedIn / oEmbed data and more.
 
