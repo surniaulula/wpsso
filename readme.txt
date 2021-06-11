@@ -138,7 +138,7 @@ The WPSSO Core Standard plugin is designed to satisfy the requirements of most s
 
 **[Premium]** Integrates with third-party plugins and service APIs for additional image, video, e-Commerce product details, SEO settings, etc. The following modules are included with the Premium version and automatically loaded if/when the supported plugins and/or services are required.
 
-* **Reads plugin data from third-party plugins:** 
+* **Reads data from third-party plugins:** 
 
 	* All in One SEO Pack
 	* bbPress
