@@ -171,7 +171,7 @@ The WPSSO Core Standard plugin is designed to satisfy the requirements of most s
 	* Yoast SEO
 	* Yotpo Social Reviews for WooCommerce
 
-* **Retrieves remote data from service APIs:**
+* **Reads data from remote service APIs:**
 
 	* Bitly
 	* DLMY.App

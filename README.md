@@ -184,7 +184,7 @@
 <li>Yoast SEO</li>
 <li>Yotpo Social Reviews for WooCommerce</li>
 </ul></li>
-<li><p><strong>Retrieves remote data from service APIs:</strong></p>
+<li><p><strong>Reads data from remote service APIs:</strong></p>
 
 <ul>
 <li>Bitly</li>
