@@ -12,7 +12,7 @@ Requires PHP: 7.0
 Requires At Least: 4.5
 Tested Up To: 5.7.2
 WC Tested Up To: 5.4.1
-Stable Tag: 8.30.0
+Stable Tag: 8.30.1
 
 Present your content at its best on social sites and in search results, no matter how webpages are shared, re-shared, messaged, posted, embedded, or crawled.
 
@@ -43,7 +43,7 @@ There's no need to manually re-enter descriptions, titles, product information, 
 
 <p><strong>WPSSO is fast, lightweight, reliable, and coded for performance:</strong></p>
 
-Tired of slow and buggy SEO plugins? Unlike most SEO plugins, WPSSO Core and its add-ons are coded for speed, reliability, and quality assurance using advanced WordPress caching techniques, theme template validations, media optimization, contextual help, and much more.
+Tired of slow and buggy SEO plugins? Unlike other SEO plugins, WPSSO Core and its add-ons are coded for speed, reliability, and quality assurance using advanced WordPress caching techniques, theme template validations, media optimization, contextual notices, and much more.
 
 <h3>Users Love the WPSSO Core Plugin</h3>
 
