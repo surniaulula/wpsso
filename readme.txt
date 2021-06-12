@@ -20,15 +20,29 @@ Present your content at its best on social sites and in search results, no matte
 
 <h3>THE MOST ADVANCED STRUCTURED DATA PLUGIN FOR WORDPRESS</h3>
 
-<p><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"><strong>Rank higher by making sure your content is presented at its best on social sites and in search results, no matter how webpages are shared, re-shared, messaged, posted, embedded, or crawled:</strong></p>
+<p><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"><strong>WPSSO helps you rank higher by presenting your content at its best on social sites and in search results, no matter how webpages are shared, re-shared, messaged, posted, embedded, or crawled.</strong></p>
 
-WPSSO creates meta tags and structured data markup for Facebook / Open Graph, Pinterest Rich Pins, Twitter Cards, Google Knowledge Graph, Google Rich Results (Schema, Rich Snippets, Structured Data), WhatsApp and Messaging Apps, Mobile Web Browsers, WordPress REST API, LinkedIn / oEmbed data and more.
+<p><strong>WPSSO creates meta tags and structured data markup for:</strong></p>
 
-**Reads existing content, third-party plugin data, and service API data:**
+<ul>
+	<li>Facebook / Open Graph</li>
+	<li>Google Knowledge Graph</li>
+	<li>Google Rich Results (aka Rich Snippets)</li>
+	<li>LinkedIn / oEmbed Data</li>
+	<li>Mobile Web Browsers</li>
+	<li>Pinterest Rich Pins</li>
+	<li>Twitter Cards</li>
+	<li>Schema.org Markup (for 500+ Schema Types)</li>
+	<li>WhatsApp and Messaging Apps</li>
+	<li>WordPress REST API</li>
+	<li>And more!</li>
+</ul>
+
+<p>strong>WPSSO reads existing content, third-party plugin data, and service API data:</strong></p>
 
 There's no need to manually re-enter descriptions, titles, product information, and re-select images / videos like other meta tag, SEO, or Schema plugins. WPSSO can be your only social and search optimization plugin, or combined to improve another SEO plugin (All in One SEO Pack, Jetpack SEO Tools, Rank Math SEO, SEO Ultimate, SEOPress, The SEO Framework, WP Meta SEO, Yoast SEO, and more). The Premium version can also detect embedded media and retrieve information from remote service APIs like Vimeo, Wistia, YouTube, and many more.
 
-**Fast, lightweight, reliable, and coded for maximum performance:**
+<p><strong>WPSSO is fast, lightweight, reliable, and coded for maximum performance:</strong></p>
 
 WPSSO and its add-ons are coded for speed, reliability, and quality assurance using advanced WordPress caching techniques, theme template validations, media optimization, and much more.
 
