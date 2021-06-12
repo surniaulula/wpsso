@@ -43,7 +43,7 @@ There's no need to manually re-enter descriptions, titles, product information, 
 
 <p><strong>WPSSO is fast, lightweight, reliable, and coded for performance:</strong></p>
 
-Tired of slow and buggy plugins? WPSSO and its add-ons are coded for speed, reliability, and quality assurance, using advanced WordPress caching techniques, theme template validation, image and video optimization, and much more.
+Tired of slow and buggy SEO plugins? Unlike most SEO plugins, WPSSO Core and its add-ons are coded for speed, reliability, and quality assurance using advanced WordPress caching techniques, theme template validations, media optimization, contextual help, and much more.
 
 <h3>Users Love the WPSSO Core Plugin</h3>
 
@@ -314,6 +314,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 <p>Under the SSO &gt; Update Manager settings page, select the "Development and Up" version filter for WPSSO Core and all its extensions (to satisfy any version dependencies). Save the plugin settings, and click the "Check for Plugin Updates" button to fetch the latest / current WPSSO version information. When new Development versions are available, they will automatically appear under your WordPress Dashboard &gt; Updates page. You can always re-select the "Stable / Production" version filter at any time to re-install the last stable / production version of a plugin.</p>
 
 <h3>Changelog / Release Notes</h3>
+
+**Version 8.30.1 (2021/06/12)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed the missing text length message for textarea fields in the Document SSO metabox.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.0.
+	* WordPress v4.5.
 
 **Version 8.30.0 (2021/06/08)**
 
@@ -1263,6 +1277,10 @@ This release adds a new SSO &gt; Features Status page and integration module for
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.30.1 =
+
+(2021/06/12) Fixed the missing text length message for textarea fields in the Document SSO metabox.
 
 = 8.30.0 =
 
