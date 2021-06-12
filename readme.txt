@@ -43,7 +43,7 @@ There's no need to manually re-enter descriptions, titles, product information, 
 
 <p><strong>WPSSO is fast, lightweight, reliable, and coded for performance:</strong></p>
 
-Tired of slow and buggy SEO plugins? Unlike other SEO plugins, WPSSO Core and its add-ons are coded for speed, reliability, and quality assurance using advanced WordPress caching techniques, theme template validations, media optimization, contextual notices, and much more.
+Tired of slow and buggy SEO plugins? Unlike other SEO plugins, WPSSO Core and its add-ons are coded for speed, reliability, and quality assurance, using advanced WordPress caching techniques, theme template validations, media optimization, contextual notices, and much more.
 
 <h3>Users Love the WPSSO Core Plugin</h3>
 
@@ -139,7 +139,7 @@ The WPSSO Core Standard plugin is designed to satisfy the requirements of most s
 
 **[Premium]** Complete Schema JSON-LD markup for WooCommerce products ([WPSSO JSON add-on required](https://wordpress.org/plugins/wpsso-schema-json-ld/)).
 
-**[Premium]** Integrates with third-party plugins and service APIs for additional image, video, e-Commerce product details, SEO settings, etc. The following modules are included with the Premium version and automatically loaded if/when the supported plugins and/or services are required.
+**[Premium]** Integrates with other plugins and service APIs for additional image, video, e-Commerce product details, SEO settings, etc. The following modules are included with the Premium version and automatically loaded if/when the supported plugins and/or services are required.
 
 * **Reads data from third-party plugins:** 
 
