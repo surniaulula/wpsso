@@ -1673,7 +1673,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html .= empty( $len[ 'max' ] ) && empty( $len[ 'rows' ] ) ? '' :
 				( empty( $len[ 'rows' ] ) ? ' rows="'.( round( $len[ 'max' ] / 100 ) + 1 ) . '"' : ' rows="' . $len[ 'rows' ] . '"' );
 			$html .= $this->get_placeholder_attrs( 'textarea', $holder ) . '>' . esc_attr( $value ) . '</textarea>';
-			$html .= empty( $len[ 'max' ] ) || $is_disabled ? '' : ' <div id="text_area_' . $input_id . '-text-length-message"></div>';
+			$html .= empty( $len[ 'max' ] ) || $is_disabled ? '' : ' <div id="textarea_' . $input_id . '-text-length-message"></div>';
 
 			if ( ! empty( $len[ 'max' ] ) ) {
 
