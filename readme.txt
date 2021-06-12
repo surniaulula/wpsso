@@ -34,17 +34,16 @@ Present your content at its best on social sites and in search results, no matte
 	<li>Twitter Cards</li>
 	<li>Schema.org Markup (for 500+ Schema Types)</li>
 	<li>WhatsApp and Messaging Apps</li>
-	<li>WordPress REST API</li>
-	<li>And more!</li>
+	<li>WordPress REST API and More!</li>
 </ul>
 
-<p><strong>WPSSO reads existing content, third-party plugin data, and service API data:</strong></p>
+<p><strong>WPSSO reads your existing content, plugin data, and API data:</strong></p>
 
-There's no need to manually re-enter descriptions, titles, product information, and re-select images / videos like other meta tag, SEO, or Schema plugins. WPSSO can be your only social and search optimization plugin, or combined to improve another SEO plugin (All in One SEO Pack, Jetpack SEO Tools, Rank Math SEO, SEO Ultimate, SEOPress, The SEO Framework, WP Meta SEO, Yoast SEO, and more). The Premium version can also detect embedded media and retrieve information from remote service APIs like Vimeo, Wistia, YouTube, and many more.
+There's no need to manually re-enter descriptions, titles, product information, or re-select images / videos. WPSSO can be your only social and search optimization plugin, or combined to improve the structured data of another SEO plugin (All in One SEO Pack, Jetpack SEO Tools, Rank Math SEO, SEO Ultimate, SEOPress, The SEO Framework, WP Meta SEO, Yoast SEO, and more).
 
-<p><strong>WPSSO is fast, lightweight, reliable, and coded for maximum performance:</strong></p>
+<p><strong>WPSSO is fast, lightweight, reliable, and coded for performance:</strong></p>
 
-WPSSO and its add-ons are coded for speed, reliability, and quality assurance using advanced WordPress caching techniques, theme template validations, media optimization, and much more.
+Tired of slow and buggy plugins? WPSSO and its add-ons are coded for speed, reliability, and quality assurance, using advanced WordPress caching techniques, theme template validation, image and video optimization, and much more.
 
 <h3>Users Love the WPSSO Core Plugin</h3>
 
@@ -60,21 +59,11 @@ WPSSO and its add-ons are coded for speed, reliability, and quality assurance us
 
 <h3>WPSSO Core Plugin Features</h3>
 
-Offers meta tag and Schema markup options for all WordPress pages:
+Provides meta tag and Schema markup for all WordPress and plugin pages, including custom post types, taxonomies, search results, shop pages, and more.
 
-* Home Page (static page or blog)
-* Posts, Pages, and Custom Post Types
-* Categories, Tags, and Custom Taxonomy / Terms
-* User Profile Pages
-* Media Attachment Pages
-* Search Result Pages
-* Archive Pages
+Enhances oEmbed markup for LinkedIn, and provides additional article and product meta tags for Slack.
 
-Enhances the WordPress oEmbed markup for LinkedIn and provides additional article and product meta tags for Slack.
-
-Includes structured data images from numerous sources, including featured, attached, gallery shortcode, content images, or a custom fallback image.
-
-Offers optimized structured data image sizes:
+Offers optimized image sizes for social sites and search engines:
 
 * Open Graph (Facebook and oEmbed)
 * Pinterest Pin It
@@ -91,7 +80,7 @@ Built-in compatibility with AMP plugins:
 * [AMP](https://wordpress.org/plugins/amp/)
 * [AMP for WP](https://wordpress.org/plugins/accelerated-mobile-pages/)
 
-Built-in compatibility with optimization and caching plugins:
+Built-in compatibility with caching and optimization plugins:
 
 * Autoptimize
 * Cache Enabler
