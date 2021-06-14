@@ -61,7 +61,7 @@ WPSSO is coded for SPEED and QUALITY ASSURANCE using advanced WordPress caching 
 
 <h3>WPSSO Core Plugin Features</h3>
 
-Provides meta tag and Schema markup for all WordPress and plugin pages, including custom post types, taxonomies, search results, shop pages, and more.
+Provides meta tag and Schema markup for WordPress posts / pages, plugin and theme custom post types, taxonomies, search results, shop pages, and much more.
 
 Enhances oEmbed markup for LinkedIn, and provides additional article and product meta tags for Slack.
 
@@ -116,7 +116,7 @@ Built-in compatibility for advanced WordPress configurations:
 * WordPress MU Domain Mapping
 * Network / Multisite Installations
 
-Includes advanced quality assurance features and options:
+Includes advanced QUALITY ASSURANCE features and options:
 
 * Checks and warns of any missing PHP modules.
 * Checks third-party plugin settings for possible conflicts.

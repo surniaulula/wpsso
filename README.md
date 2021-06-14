@@ -58,7 +58,7 @@
 
 <h3>WPSSO Core Plugin Features</h3>
 
-<p>Provides meta tag and Schema markup for all WordPress and plugin pages, including custom post types, taxonomies, search results, shop pages, and more.</p>
+<p>Provides meta tag and Schema markup for WordPress posts / pages, plugin and theme custom post types, taxonomies, search results, shop pages, and much more.</p>
 
 <p>Enhances oEmbed markup for LinkedIn, and provides additional article and product meta tags for Slack.</p>
 
@@ -123,7 +123,7 @@
 <li>Network / Multisite Installations</li>
 </ul>
 
-<p>Includes advanced quality assurance features and options:</p>
+<p>Includes advanced QUALITY ASSURANCE features and options:</p>
 
 <ul>
 <li>Checks and warns of any missing PHP modules.</li>
