@@ -82,7 +82,7 @@ function sucomShowLibraryImage( t, e ) {
 	if ( 'wp' === img_lib_value && jQuery.isNumeric( img_id_value ) ) {
 
 		if ( img_url_css_id ) {
-		
+
 			jQuery( '#' + img_url_css_id ).val( '' ).change();
 			jQuery( '#' + img_url_css_id ).prop( 'disabled', true );
 		}
@@ -163,7 +163,7 @@ function sucomSelectLibraryImage( t, e ) {
 		 * Update the media library before the image id, but do not trigger a change yet.
 		 */
 		if ( img_lib_css_id ) {
-		
+
 			jQuery( '#' + img_lib_css_id ).val( 'wp' );
 		}
 
@@ -171,7 +171,7 @@ function sucomSelectLibraryImage( t, e ) {
 		 * Update the image id and trigger a change event.
 		 */
 		if ( img_id_css_id ) {
-		
+
 			jQuery( '#' + img_id_css_id ).val( attachment.id ).change();
 		}
 	} );

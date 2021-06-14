@@ -1477,7 +1477,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				return $value;
 			}
-				
+
 			/**
 			 * WordPress stores data using a post, term, or user ID, along with a group string.
 			 *
@@ -1568,7 +1568,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 					$this->get_head_info( $mod, $read_cache = true );
 				}
-			
+
 				unset( $local_prevent_recursion[ $mod_salt ][ $meta_key ] );
 			}
 

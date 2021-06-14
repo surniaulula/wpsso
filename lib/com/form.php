@@ -99,7 +99,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function in_options( $opt_key ) {
 
 			if ( isset( $this->options[ $opt_key ] ) ) {
-			
+
 				return true;
 
 			} elseif ( 0 === strpos( $opt_key, '/' ) ) {	// Regular expression.
@@ -120,7 +120,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function in_defaults( $opt_key ) {
 
 			if ( isset( $this->defaults[ $opt_key ] ) ) {
-			
+
 				return true;
 
 			} elseif ( false !== strpos( $opt_key, '#' ) ) {	// Localized option name.
@@ -128,7 +128,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$opt_key_locale = SucomUtil::get_key_locale( $opt_key, $this->defaults, 'default' );
 
 				if ( isset( $this->defaults[ $opt_key_locale ] ) ) {
-				
+
 					$this->defaults[ $opt_key ] = $this->defaults[ $opt_key_locale ];
 
 					return true;
@@ -883,7 +883,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$upload_disabled = function_exists( 'wp_enqueue_media' ) ? $input_disabled : true;	// Just in case.
 				$upload_button   = $this->get_button( $upload_label, $upload_css_class, $upload_css_id,
 					$url = '', $newtab = false, $upload_disabled, $upload_button_data );
-			
+
 				if ( 1 === $img_libs_count ) {
 
 					$img_lib_css_class .= ' hidden';
@@ -1460,7 +1460,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			 * Set 'none' as the default if no default is defined.
 			 */
 			if ( ! empty( $name ) ) {
-			
+
 				if ( ! $this->in_defaults( $name ) ) {
 
 					$this->defaults[ $name ] = 'none';
@@ -1544,7 +1544,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			 * Set 'none' as the default if no default is defined.
 			 */
 			if ( ! empty( $name ) ) {
-			
+
 				if ( ! $this->in_defaults( $name ) ) {
 
 					$this->defaults[ $name ] = 'none';
@@ -1684,7 +1684,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		public function get_button( $value, $css_class = '', $css_id = '', $url = '', $newtab = false, $is_disabled = false, $el_data = array() ) {
- 
+
 			$input_class = SucomUtil::sanitize_css_class( $css_class );
 			$input_id    = SucomUtil::sanitize_css_id( $css_id );
 
@@ -2147,14 +2147,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_input_image_url_locale( $name_prefix, $url = '', $is_disabled = false ) {
 
 			$name_prefix = SucomUtil::get_key_locale( $name_prefix, $this->options );
-			
+
 			return $this->get_input_image_url( $name_prefix, $url, $is_disabled );
 		}
 
 		public function get_input_video_url_locale( $name_prefix, $url = '', $is_disabled = false ) {
 
 			$name_prefix = SucomUtil::get_key_locale( $name_prefix, $this->options );
-			
+
 			return $this->get_input_video_url( $name_prefix, $media_suffix = 'embed', $url, $is_disabled );
 		}
 
@@ -2422,7 +2422,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			 * Set 'none' as the default if no default is defined.
 			 */
 			if ( ! empty( $name ) ) {
-			
+
 				if ( ! $this->in_defaults( $name ) ) {
 
 					$this->defaults[ $name ] = 'none';
@@ -2445,7 +2445,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			 * Set 'none' as the default if no default is defined.
 			 */
 			if ( ! empty( $name ) ) {
-			
+
 				if ( ! $this->in_defaults( $name ) ) {
 
 					$this->defaults[ $name ] = 'none';
