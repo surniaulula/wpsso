@@ -39,7 +39,7 @@ Present your content at its best on social sites and in search results, no matte
 
 <p><strong>WPSSO reads your existing content, plugin and service API data:</strong></p>
 
-There's no need to manually re-enter descriptions, titles, product information, or re-select images / videos - WPSSO can read your existing WordPress content, plugin data, and fetch data from remote service APIs (Bitly, Facebook, Shopper Approves, Vimeo, Wistia, YouTube, and many more).
+There's no need to manually re-enter descriptions, titles, product information, or re-select images / videos! WPSSO can read your existing WordPress content, plugin data, and fetch data from remote service APIs (Bitly, Facebook, Shopper Approved, Vimeo, Wistia, YouTube, and many more).
 
 WPSSO can be your only social and search optimization plugin, or combined to improve the structured data of another SEO plugin (like All in One SEO Pack, Jetpack SEO Tools, Rank Math SEO, SEO Ultimate, SEOPress, The SEO Framework, WP Meta SEO, Yoast SEO, and more).
 
