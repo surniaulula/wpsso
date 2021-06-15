@@ -1615,7 +1615,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 								if ( 'site' === $org_id ) {
 
-									$general_page_link = $wpsso->util->get_admin_url( 'essential#sucom-tabset_essential-tab_google' );
+									$general_page_link = $wpsso->util->get_admin_url( 'essential' );
 
 									// translators: site, as in the "site organization settings".
 									$org_id_transl = __( 'site', 'wpsso' );
