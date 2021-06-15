@@ -2,7 +2,7 @@
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
-<tr><th align="right" valign="top" nowrap>Summary</th><td>Present your content at its best on social sites and in search results, no matter how webpages are shared, re-shared, messaged, posted, embedded, or c</td></tr>
+<tr><th align="right" valign="top" nowrap>Summary</th><td>Present your content at its best on social sites and in search results - no matter how webpages are shared, re-shared, messaged, posted, embedded, or </td></tr>
 <tr><th align="right" valign="top" nowrap>Stable Version</th><td>8.30.1</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires PHP</th><td>7.0 or newer</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires WordPress</th><td>4.5 or newer</td></tr>
@@ -17,7 +17,7 @@
 
 <h3 class="top">THE MOST ADVANCED STRUCTURED DATA PLUGIN FOR WORDPRESS</h3>
 
-<p><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"><strong>WPSSO helps you rank higher and increase click-through-rates by presenting your content at its best on social sites and in search results, no matter how webpages are shared, re-shared, messaged, posted, embedded, or crawled.</strong></p>
+<p><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"><strong>WPSSO helps you rank higher and increase click-through-rates by presenting your content at its best on social sites and in search results - no matter how webpages are shared, re-shared, messaged, posted, embedded, or crawled.</strong></p>
 
 <p><strong>WPSSO creates meta tags and structured data markup for:</strong></p>
 
