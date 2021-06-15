@@ -465,7 +465,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			$opts_social = get_option( 'wpseo_social' );
 
 			/**
-			 * Check for Social Page URLs.
+			 * Check for Social page URLs.
 			 */
 			$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=wpseo_social#top#accounts' );
 
