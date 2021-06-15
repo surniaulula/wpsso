@@ -317,14 +317,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.31.0-dev.1 (TBD)**
+**Version 8.30.2-dev.1 (2021/07/15)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Moved the SSO &gt; Features metaboxes to the SSO &gt; Dashboard page.
 * **Bugfixes**
-	* None.
+	* Fixed a non-working and duplicated copy-to-clipboard icon issue.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -1294,9 +1294,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.31.0-dev.1 =
+= 8.30.2-dev.1 =
 
-(TBD) None.
+(2021/07/15) Fixed a non-working and duplicated copy-to-clipboard icon issue.
 
 = 8.30.1 =
 
