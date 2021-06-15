@@ -19,7 +19,7 @@
 
 <p><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"><strong>WPSSO helps you rank higher and increase click-through-rates by presenting your content at its best on social sites and in search results - no matter how webpages are shared, re-shared, messaged, posted, embedded, or crawled.</strong></p>
 
-<p><strong>WPSSO creates meta tags and structured data markup for:</strong></p>
+<p><strong>WPSSO provides meta tags and structured data markup for:</strong></p>
 
 <ul>
     <li>Facebook / Open Graph</li>
@@ -34,13 +34,13 @@
     <li>WordPress REST API and More!</li>
 </ul>
 
-<p><strong>WPSSO reads your existing content, plugin and service API data:</strong></p>
+<p><strong>WPSSO reads existing content, plugin, and service API data:</strong></p>
 
 <p>There's no need to manually re-enter descriptions, titles, product information, or re-select images and videos! WPSSO can read your existing WordPress content, plugin data, and fetch data from remote service APIs (Bitly, Facebook, Shopper Approved, Vimeo, Wistia, YouTube, and many more).</p>
 
 <p>WPSSO can be your only social and search optimization plugin, or combined to improve the structured data of another SEO plugin (like All in One SEO Pack, Jetpack SEO Tools, Rank Math SEO, SEO Ultimate, SEOPress, The SEO Framework, WP Meta SEO, Yoast SEO, and more).</p>
 
-<p><strong>WPSSO is fast, lightweight, reliable, and coded for performance:</strong></p>
+<p><strong>WPSSO is fast, reliable, and coded for performance:</strong></p>
 
 <p>WPSSO is coded for SPEED and QUALITY ASSURANCE using advanced WordPress caching techniques, template validations, media optimization, discreet contextual notices, and much more.</p>
 
