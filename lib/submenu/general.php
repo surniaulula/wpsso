@@ -267,13 +267,8 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 							$css_class = '', $css_id = 'fb_app_id' ) . 
 						'<td>' . $this->form->get_input( 'fb_app_id', $css_class = 'api_key' ) . '</td>';
 
-					$table_rows[ 'fb_admins' ] = $this->form->get_tr_hide( 'basic', 'fb_admins' ) . 
-						$this->form->get_th_html( _x( 'or Facebook Admin Username(s)', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'fb_admins' ) . 
-						'<td>' . $this->form->get_input( 'fb_admins' ) . '</td>';
-
 					$table_rows[ 'fb_locale' ] = $this->form->get_tr_hide( 'basic', 'fb_locale' ) . 
-						$this->form->get_th_html_locale( _x( 'Alternate Facebook Locale', 'option label', 'wpsso' ),
+						$this->form->get_th_html_locale( _x( 'Facebook Locale', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'fb_locale' ) . 
 						'<td>' . $this->form->get_select_locale( 'fb_locale', SucomUtil::get_pub_lang( 'facebook' ) ) . '</td>';
 

@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.30.1',	// Plugin version.
+					'version'     => '8.31.0-dev.1',	// Plugin version.
 					'opt_version' => '790',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -187,7 +187,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'social-pages'   => 'Social Pages',
 							'setup'          => 'Setup Guide',
 							'dashboard'      => 'Dashboard',
-							'features'       => 'Features Status',
 							'general'        => 'General Settings',
 							'advanced'       => 'Advanced Settings',
 							'addons'         => 'Complementary Add-ons',
@@ -1245,8 +1244,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'fb_publisher_url' => '',				// Facebook Business Page URL (localized).
 					'fb_app_id'        => '966242223397117',		// Facebook Application ID.
-					'fb_admins'        => '',				// or Facebook Admin Username(s).
-					'fb_locale'        => 'en_US',				// Alternate Facebook Locale.
+					'fb_locale'        => 'en_US',				// Facebook Locale.
 
 					/**
 					 * Open Graph options.

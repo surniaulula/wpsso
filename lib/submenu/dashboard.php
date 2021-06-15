@@ -91,6 +91,9 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 
 			$metabox_ids = array();
 
+			$dist_pro_name = _x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' );
+			$dist_std_name = _x( $this->p->cf[ 'dist' ][ 'std' ], 'distribution name', 'wpsso' );
+
 			/**
 			 * Don't include the 'cache_status' metabox if we're using an external object cache.
 			 */
@@ -104,6 +107,8 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 			$metabox_ids[ 'rate_review' ]  = _x( 'Your Rating is Important', 'metabox title', 'wpsso' );
 			$metabox_ids[ 'help_support' ] = _x( 'Help and Support', 'metabox title', 'wpsso' );
 			$metabox_ids[ 'version_info' ] = _x( 'Version Information', 'metabox title', 'wpsso' );
+			$metabox_ids[ 'status_std' ]   = sprintf( _x( '%s Features', 'metabox title', 'wpsso' ), $dist_std_name );
+			$metabox_ids[ 'status_pro' ]   = sprintf( _x( '%s Features', 'metabox title', 'wpsso' ), $dist_pro_name );
 
 			$max_cols = 2;
 
@@ -122,7 +127,8 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 					array( $this, 'show_metabox_' . $metabox_id ), $metabox_screen,
 						$metabox_context, $metabox_prio, $callback_args );
 
-				add_filter( 'postbox_classes_' . $this->pagehook . '_' . $this->pagehook . '_' . $metabox_id, array( $this, 'add_class_postbox_menu_id' ) );
+				add_filter( 'postbox_classes_' . $this->pagehook . '_' . $this->pagehook . '_' . $metabox_id,
+					array( $this, 'add_class_postbox_menu_id' ) );
 			}
 		}
 	}

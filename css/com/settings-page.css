@@ -318,18 +318,16 @@ div.submit-buttons .button-alt:hover {
 }
 
 .postbox-dashboard .inside {
-	min-height:280px;
+	min-height:320px;
 	overflow-y:auto;
 }
 
-.postbox-dashboard h2:before,
-.postbox-features h2:before {
+.postbox-dashboard h2:before {
 	font-family:"WpssoIcons";
 	margin-right:10px;
 }
 
-.postbox-dashboard > div.postbox-header:before,	/* WP v5.5. */
-.postbox-features > div.postbox-header:before {	/* WP v5.5. */
+.postbox-dashboard > div.postbox-header:before {	/* WP v5.5. */
 	font-family:"WpssoIcons";
 	margin-left:10px;
 }
@@ -354,10 +352,10 @@ div.submit-buttons .button-alt:hover {
 	content:"\e80b";	/* .icon-ok-circled */
 }
 
-.postbox-features_status_pro > h2:before,
-.postbox-features_status_std > h2:before,
-.postbox-features_status_pro > div.postbox-header:before,	/* WP v5.5. */
-.postbox-features_status_std > div.postbox-header:before {	/* WP v5.5. */
+.postbox-dashboard_status_pro > h2:before,
+.postbox-dashboard_status_std > h2:before,
+.postbox-dashboard_status_pro > div.postbox-header:before,	/* WP v5.5. */
+.postbox-dashboard_status_std > div.postbox-header:before {	/* WP v5.5. */
 	content:"\e80e";	/* .icon-cog-alt */
 }
 

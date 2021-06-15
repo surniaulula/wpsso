@@ -1369,25 +1369,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-fb_app_id':
 
-							$fb_apps_url     = __( 'https://developers.facebook.com/apps', 'wpsso' );
-							$fb_docs_reg_url = __( 'https://developers.facebook.com/docs/apps/register', 'wpsso' );
+							$fb_docs_url = __( 'https://developers.facebook.com/docs/development/create-an-app', 'wpsso' );
 
-							$text = sprintf( __( 'If you have a <a href="%1$s">Facebook App ID for your website</a>, enter it here (see <a href="%2$s">Register and Configure an App</a> for help on creating a Facebook App ID).', 'wpsso' ), $fb_apps_url, $fb_docs_reg_url ) . ' ';
-
-							break;
-
-						case 'tooltip-fb_admins':
-
-							$fb_insights_url = __( 'https://developers.facebook.com/docs/insights/', 'wpsso' );
-							$fb_username_url = __( 'https://www.facebook.com/settings?tab=account&section=username&view', 'wpsso' );
-
-							$text = sprintf( __( 'The Facebook admin usernames are used by Facebook to allow access to <a href="%1$s">Facebook Insight</a> data for your website. Note that these are Facebook user account names, not Facebook Page names. You may enter one or more Facebook usernames (comma delimited).', 'wpsso' ), $fb_insights_url );
-
-							$text .= '<br/><br/>';
-
-							$text .= __( 'When viewing your own Facebook wall, your username is located in the URL (for example, https://www.facebook.com/<strong>username</strong>). Enter only the usernames, not the URLs.', 'wpsso' ) . ' ';
-
-							$text .= sprintf( __( 'You may update your Facebook username in the <a href="%1$s">Facebook General Account Settings</a>.', 'wpsso' ), $fb_username_url );
+							$text = sprintf( __( 'If you have a Facebook App ID for your WebSite App, enter it here (see <a href="%s">Create an App</a> for help on creating a Facebook App ID for your WebSite).', 'wpsso' ), $fb_docs_url ) . ' ';
 
 							break;
 
