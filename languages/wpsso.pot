@@ -1023,9 +1023,9 @@ msgstr ""
 #: gettext/gettext-lib-config.php:67
 msgctxt "plugin description"
 msgid ""
-"Rank higher by making sure your content is presented at its best on social "
-"sites and in search results, no matter how webpages are shared, re-shared, "
-"messaged, posted, embedded, or crawled."
+"Rank higher and increase click-through-rates by presenting your content at "
+"its best on social sites and in search results - no matter how webpages are "
+"shared, re-shared, messaged, posted, embedded, or crawled."
 msgstr ""
 
 #: gettext/gettext-lib-config.php:68
@@ -9456,9 +9456,9 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"Rank higher by making sure your content is presented at its best on social "
-"sites and in search results, no matter how webpages are shared, re-shared, "
-"messaged, posted, embedded, or crawled."
+"Rank higher and increase click-through-rates by presenting your content at "
+"its best on social sites and in search results - no matter how webpages are "
+"shared, re-shared, messaged, posted, embedded, or crawled."
 msgstr ""
 
 #. Author of the plugin/theme
