@@ -2259,7 +2259,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				' onFocus="this.select();"' .
 				' onMouseUp="return false;">';
 
-			if ( ! empty( $input_id ) ) {
+			/**
+			 * Add a dashicons copy-to-clipboard button to the input text field.
+			 */
+			if ( ! empty( $input_id ) ) {	// Just in case.
 
 				$html = '<div class="no_input_clipboard">';
 				$html .= '<div class="copy_button"><a href="" onClick="return sucomCopyById( \'text_' . $input_id . '\' );">';
