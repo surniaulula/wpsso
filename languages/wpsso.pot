@@ -3592,46 +3592,46 @@ msgctxt "default description"
 msgid "No Description."
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:761
+#: lib/abstracts/wp-meta.php:762
 msgctxt "metabox tab"
 msgid "Customize"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:762 lib/messages.php:2694
+#: lib/abstracts/wp-meta.php:763 lib/messages.php:2694
 msgctxt "metabox tab"
 msgid "Priority Media"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:766 lib/messages.php:2545
+#: lib/abstracts/wp-meta.php:767 lib/messages.php:2545
 msgctxt "metabox tab"
 msgid "Robots Meta"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:767
+#: lib/abstracts/wp-meta.php:768
 msgctxt "metabox tab"
 msgid "Preview"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:768
+#: lib/abstracts/wp-meta.php:769
 msgctxt "metabox tab"
 msgid "oEmbed"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:769
+#: lib/abstracts/wp-meta.php:770
 msgctxt "metabox tab"
 msgid "Head Markup"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:770
+#: lib/abstracts/wp-meta.php:771
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1163
+#: lib/abstracts/wp-meta.php:1164
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:2024
+#: lib/abstracts/wp-meta.php:2025
 msgid "adding schema images"
 msgstr ""
 

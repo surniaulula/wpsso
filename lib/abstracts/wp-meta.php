@@ -308,6 +308,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				$def_schema_type     = $this->p->schema->get_mod_schema_type( $mod, $get_id = true, $use_mod_opts = false );
 				$def_primary_term_id = $this->p->post->get_default_term_id( $mod, $tax_slug = 'category' );	// Returns term ID or false.
 				$def_reading_mins    = $this->p->page->get_reading_mins( $mod );
+				$def_img_id_lib      = empty( $opts[ 'og_def_img_id_lib' ] ) ? '' : $opts[ 'og_def_img_id_lib' ];
 
 				$md_defs = array(
 					'options_filtered'  => 0,
@@ -362,7 +363,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					 */
 					'og_img_max'    => isset( $opts[ 'og_img_max' ] ) ? (int) $opts[ 'og_img_max' ] : 1,	// 1 by default.
 					'og_img_id'     => '',
-					'og_img_id_lib' => empty( $opts[ 'og_def_img_id_lib' ] ) ? '' : $opts[ 'og_def_img_id_lib' ],	// Default library prefix.
+					'og_img_id_lib' => $def_img_id_lib,
 					'og_img_url'    => '',
 
 					/**
@@ -382,18 +383,18 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					 * Pinterest.
 					 */
 					'p_img_id'     => '',
-					'p_img_id_lib' => empty( $opts[ 'og_def_img_id_lib' ] ) ? '' : $opts[ 'og_def_img_id_lib' ],	// Default library prefix.
+					'p_img_id_lib' => $def_img_id_lib,
 					'p_img_url'    => '',
 
 					/**
 					 * Twitter Card.
 					 */
 					'tc_lrg_img_id'     => '',
-					'tc_lrg_img_id_lib' => empty( $opts[ 'og_def_img_id_lib' ] ) ? '' : $opts[ 'og_def_img_id_lib' ],	// Default library prefix.
+					'tc_lrg_img_id_lib' => $def_img_id_lib,
 					'tc_lrg_img_url'    => '',
 
 					'tc_sum_img_id'     => '',
-					'tc_sum_img_id_lib' => empty( $opts[ 'og_def_img_id_lib' ] ) ? '' : $opts[ 'og_def_img_id_lib' ],	// Default library prefix.
+					'tc_sum_img_id_lib' => $def_img_id_lib,
 					'tc_sum_img_url'    => '',
 
 					/**
@@ -401,7 +402,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					 */
 					'schema_img_max'    => isset( $opts[ 'schema_img_max' ] ) ? (int) $opts[ 'schema_img_max' ] : 1,	// 1 by default.
 					'schema_img_id'     => '',
-					'schema_img_id_lib' => empty( $opts[ 'og_def_img_id_lib' ] ) ? '' : $opts[ 'og_def_img_id_lib' ],	// Default library prefix.
+					'schema_img_id_lib' => $def_img_id_lib,
 					'schema_img_url'    => '',
 
 					/**
