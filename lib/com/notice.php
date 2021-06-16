@@ -41,6 +41,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				require_once trailingslashit( dirname( __FILE__ ) ) . 'util.php';
 			}
 
+			if ( ! class_exists( 'SucomUtilWP' ) ) {	// Just in case.
+
+				require_once trailingslashit( dirname( __FILE__ ) ) . 'util-wp.php';
+			}
+
 			$this->set_config( $plugin, $plugin_id, $text_domain, $label_transl );
 
 			$this->add_wp_hooks();
@@ -691,18 +696,32 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			/**
 			 * If toolbar notices are being used, exclude these from being shown.
 			 */
-			$tb_types_showing = $this->get_tb_types_showing();
+			$tb_types_showing = $this->get_tb_types_showing();	// Returns false or array.
 
-			if ( ! empty( $tb_types_showing ) ) {
+			if ( is_array( $tb_types_showing ) ) {	// The admin toolbar is available.
 
-				if ( is_array( $tb_types_showing ) ) {
+				if ( ! empty( $tb_types_showing ) ) {
 
 					$notice_types = array_diff( $notice_types, $tb_types_showing );
-
-				} else {
-
-					$notice_types = array();
 				}
+
+			} elseif ( is_admin() ) {	// Just in case.
+
+				if ( defined( 'XMLRPC_REQUEST' ) || defined( 'DOING_AJAX' ) || defined( 'IFRAME_REQUEST' ) || wp_is_json_request() || is_embed() ) {
+
+					return;
+				}
+
+				$msg_text = sprintf( __( 'The WordPress admin toolbar appears to be disabled (ie. the WordPress <code>%s</code> function returned false).',
+					$this->text_domain ), 'is_admin_bar_showing()' ) . ' ';
+
+				$msg_text .= __( 'Consequently, showing discreet notices in the admin toolbar is not possible.', $this->text_domain ) . ' ';
+
+				$msg_text .= __( 'Please diagnose the issue and re-enable the admin toolbar.', $this->text_domain ) . ' ';
+
+				$notice_key = 'is_admin-is_admin_bar_showing-returned-false';
+
+				$this->err( $msg_text, $user_id = null, $notice_key );
 			}
 
 			if ( ! empty( $this->p->debug->enabled ) ) {
@@ -959,15 +978,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			check_ajax_referer( $this->nonce_name, '_ajax_nonce', true );
 
-			$user_id = get_current_user_id();	// Always returns an integer.
-
-			$user_dismissed = $user_id ? get_user_option( $this->dismiss_name, $user_id ) : false;	// Note that $user_id is the second argument.
-
+			$user_id          = get_current_user_id();	// Always returns an integer.
+			$user_dismissed   = $user_id ? get_user_option( $this->dismiss_name, $user_id ) : false;	// Note that $user_id is the second argument.
 			$update_dismissed = false;
-
-			$json_notices = array();
-
-			$ajax_context = empty( $_REQUEST[ 'context' ] ) ? '' : $_REQUEST[ 'context' ];	// 'block_editor' or 'toolbar_notices'
+			$json_notices     = array();
+			$ajax_context     = empty( $_REQUEST[ 'context' ] ) ? '' : $_REQUEST[ 'context' ];	// 'block_editor' or 'toolbar_notices'
 
 			$this->has_shown = true;
 
@@ -1072,10 +1087,17 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		/**
 		 * Returns false or an array of notice types to include in the toolbar menu.
+		 *
+		 * Called by WpssoScript->get_admin_page_script_data() to define the types shown for ajax calls.
 		 */
 		public function get_tb_types_showing() {
 
-			return is_admin_bar_showing() ? $this->tb_types : false;
+			/**
+			 * is_admin_bar_showing() should always return true in the back-end for a standard request (ie. not xmlrpc, ajax, iframe). 
+			 */
+			$tb_types_showing = is_admin_bar_showing() ? $this->tb_types : false;
+
+			return $tb_types_showing;
 		}
 
 		/**
