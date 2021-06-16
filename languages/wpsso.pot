@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.30.2-dev.2\n"
+"Project-Id-Version: WPSSO Core 8.30.2-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -699,7 +699,8 @@ msgstr ""
 
 #: gettext/gettext-lib-com.php:47 lib/com/notice.php:718
 msgid ""
-"Consequently, showing discreet notices in the admin toolbar is not possible."
+"As a consequence, showing discreet notices in the admin toolbar is not "
+"possible."
 msgstr ""
 
 #: gettext/gettext-lib-com.php:48 lib/com/notice.php:720

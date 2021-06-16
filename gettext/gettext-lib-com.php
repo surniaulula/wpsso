@@ -44,7 +44,7 @@ __( 'This notice can be dismissed for %s.', 'wpsso' );
 __( 'Edit', 'wpsso' );
 __( 'Reference: %s', 'wpsso' );
 __( 'The WordPress admin toolbar appears to be disabled (ie. the WordPress <code>%s</code> function returned false).', 'wpsso' );
-__( 'Consequently, showing discreet notices in the admin toolbar is not possible.', 'wpsso' );
+__( 'As a consequence, showing discreet notices in the admin toolbar is not possible.', 'wpsso' );
 __( 'Please diagnose the issue to re-enable the admin toolbar.', 'wpsso' );
 __( '%s Notice', 'wpsso' );
 __( 'Notice', 'wpsso' );

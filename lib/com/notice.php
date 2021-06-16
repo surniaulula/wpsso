@@ -715,11 +715,16 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				$msg_text = sprintf( __( 'The WordPress admin toolbar appears to be disabled (ie. the WordPress <code>%s</code> function returned false).',
 					$this->text_domain ), 'is_admin_bar_showing()' ) . ' ';
 
-				$msg_text .= __( 'Consequently, showing discreet notices in the admin toolbar is not possible.', $this->text_domain ) . ' ';
+				$msg_text .= __( 'As a consequence, showing discreet notices in the admin toolbar is not possible.', $this->text_domain ) . ' ';
 
 				$msg_text .= __( 'Please diagnose the issue to re-enable the admin toolbar.', $this->text_domain ) . ' ';
 
 				$notice_key = 'is_admin-is_admin_bar_showing-returned-false';
+
+				/**
+				 * Clear all notices and show only this error.
+				 */
+				$this->clear();
 
 				$this->err( $msg_text, $user_id = null, $notice_key );
 			}
