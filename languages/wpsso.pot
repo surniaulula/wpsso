@@ -137,15 +137,15 @@ msgid ""
 "required. Messages from the default WordPress notication system can feel "
 "intrusive and over-used, and are not compatible with the new block editor in "
 "WordPress v5, so WPSSO Core includes its own (more discreet) notification "
-"system in the top toolbar."
+"system in the admin toolbar."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:25
 msgctxt "html paragraph"
 msgid ""
-"Look for the SSO notification icon in the top toolbar - by default, it will "
-"be grey with a 0 notification count. If there are notifications, the count "
-"will increase, and the SSO icon be shown on a red, yellow, or blue "
+"Look for the SSO notification icon in the admin toolbar - by default, it "
+"will be grey with a 0 notification count. If there are notifications, the "
+"count will increase, and the SSO icon be shown on a red, yellow, or blue "
 "background. WPSSO notifications are context sensitive - they relate to the "
 "content shown in the current webpage."
 msgstr ""
@@ -703,7 +703,7 @@ msgid ""
 msgstr ""
 
 #: gettext/gettext-lib-com.php:48 lib/com/notice.php:720
-msgid "Please diagnose the issue and re-enable the admin toolbar."
+msgid "Please diagnose the issue to re-enable the admin toolbar."
 msgstr ""
 
 #: gettext/gettext-lib-com.php:51 lib/com/bfo.php:288
@@ -5821,7 +5821,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:822
-msgid "Show a \"%s\" menu in the top toolbar."
+msgid "Show a \"%s\" menu in the admin toolbar."
 msgstr ""
 
 #: lib/messages.php:824

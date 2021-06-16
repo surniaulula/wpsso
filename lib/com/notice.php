@@ -717,7 +717,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 				$msg_text .= __( 'Consequently, showing discreet notices in the admin toolbar is not possible.', $this->text_domain ) . ' ';
 
-				$msg_text .= __( 'Please diagnose the issue and re-enable the admin toolbar.', $this->text_domain ) . ' ';
+				$msg_text .= __( 'Please diagnose the issue to re-enable the admin toolbar.', $this->text_domain ) . ' ';
 
 				$notice_key = 'is_admin-is_admin_bar_showing-returned-false';
 

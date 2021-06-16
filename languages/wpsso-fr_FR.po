@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.30.2\n"
+"Project-Id-Version: WPSSO Core 8.30.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-06-15 13:09-0700\n"
+"PO-Revision-Date: 2021-06-15 17:36-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -105,13 +105,13 @@ msgstr "<strong>N'oubliez pas de soumettre quelques exemples d'articles / pages 
 
 #: gettext/gettext-html-setup.php:24
 msgctxt "html paragraph"
-msgid "WPSSO Core and its complementary add-ons attempt to keep notifications to a minimum, issuing only informational, warning, or error notifications when required. Messages from the default WordPress notication system can feel intrusive and over-used, and are not compatible with the new block editor in WordPress v5, so WPSSO Core includes its own (more discreet) notification system in the top toolbar."
-msgstr "WPSSO Core et ses modules complémentaires tentent de réduire au minimum les notifications, en émettant uniquement des notifications d'information, d'avertissement ou d'erreur lorsque cela est nécessaire. Les messages du système de notification WordPress par défaut peuvent sembler intrusifs et sur-utilisés, et ne sont pas compatibles avec le nouvel éditeur de blocs de WordPress v5, donc WPSSO Core inclut son propre système de notification (plus discret) dans la barre d'outils supérieure."
+msgid "WPSSO Core and its complementary add-ons attempt to keep notifications to a minimum, issuing only informational, warning, or error notifications when required. Messages from the default WordPress notication system can feel intrusive and over-used, and are not compatible with the new block editor in WordPress v5, so WPSSO Core includes its own (more discreet) notification system in the admin toolbar."
+msgstr "WPSSO Core et ses modules complémentaires tentent de réduire au minimum les notifications, en émettant uniquement des notifications d'information, d'avertissement ou d'erreur lorsque cela est nécessaire. Les messages du système de notification WordPress par défaut peuvent sembler intrusifs et sur-utilisés, et ne sont pas compatibles avec le nouvel éditeur de blocs de WordPress v5, donc WPSSO Core inclut son propre système de notification (plus discret) dans la barre d'outils d'administration."
 
 #: gettext/gettext-html-setup.php:25
 msgctxt "html paragraph"
-msgid "Look for the SSO notification icon in the top toolbar - by default, it will be grey with a 0 notification count. If there are notifications, the count will increase, and the SSO icon be shown on a red, yellow, or blue background. WPSSO notifications are context sensitive - they relate to the content shown in the current webpage."
-msgstr "Recherchez l'icône de notification SSO dans la barre d'outils supérieure - par défaut, elle sera grise avec un nombre de notifications de 0. S'il y a des notifications, le nombre augmentera et l'icône SSO sera affichée sur un fond rouge, jaune ou bleu. Les notifications WPSSO sont sensibles au contexte - elles se rapportent au contenu affiché dans la page Web actuelle."
+msgid "Look for the SSO notification icon in the admin toolbar - by default, it will be grey with a 0 notification count. If there are notifications, the count will increase, and the SSO icon be shown on a red, yellow, or blue background. WPSSO notifications are context sensitive - they relate to the content shown in the current webpage."
+msgstr "Recherchez l'icône de notification SSO dans la barre d'outils d'administration - par défaut, elle sera grise avec un nombre de notifications de 0. S'il y a des notifications, le nombre augmentera et l'icône SSO sera affichée sur un fond rouge, jaune ou bleu. Les notifications WPSSO sont sensibles au contexte - elles se rapportent au contenu affiché dans la page Web actuelle."
 
 #: gettext/gettext-html-setup.php:26
 msgctxt "html paragraph"
@@ -317,14 +317,14 @@ msgid "The %1$s add-on requires %2$s version %3$s or newer (version %4$s is curr
 msgstr "L'ajout %1$s nécessite %2$s version %3$s ou plus récente (la version %4$s est actuellement installée)."
 
 #: gettext/gettext-lib-com.php:6 gettext/gettext-lib-com.php:39
-#: gettext/gettext-lib-com.php:46 lib/com/bfo.php:267 lib/com/cache.php:95
-#: lib/com/notice.php:123
+#: gettext/gettext-lib-com.php:49 lib/com/bfo.php:267 lib/com/cache.php:95
+#: lib/com/notice.php:128
 msgid "%s Notice"
 msgstr "Avis %s"
 
 #: gettext/gettext-lib-com.php:7 gettext/gettext-lib-com.php:40
-#: gettext/gettext-lib-com.php:47 lib/com/bfo.php:272 lib/com/cache.php:100
-#: lib/com/notice.php:128
+#: gettext/gettext-lib-com.php:50 lib/com/bfo.php:272 lib/com/cache.php:100
+#: lib/com/notice.php:133
 msgid "Notice"
 msgstr "Avis"
 
@@ -445,57 +445,69 @@ msgstr "la médiathèque"
 msgid "Select Image"
 msgstr "Choisir l'image"
 
-#: gettext/gettext-lib-com.php:41 lib/com/notice.php:283
+#: gettext/gettext-lib-com.php:41 lib/com/notice.php:288
 msgid "Forever"
 msgstr "Toujours"
 
-#: gettext/gettext-lib-com.php:42 lib/com/notice.php:285
+#: gettext/gettext-lib-com.php:42 lib/com/notice.php:290
 msgid "This notice can be dismissed permanently."
 msgstr "Cet avis peut être masqué définitivement."
 
-#: gettext/gettext-lib-com.php:43 lib/com/notice.php:297
+#: gettext/gettext-lib-com.php:43 lib/com/notice.php:302
 msgid "This notice can be dismissed for %s."
 msgstr "Cet avis peut être masqué pour %s."
 
-#: gettext/gettext-lib-com.php:44 lib/com/notice.php:511
+#: gettext/gettext-lib-com.php:44 lib/com/notice.php:516
 msgid "Edit"
 msgstr "Modifier"
 
-#: gettext/gettext-lib-com.php:45 lib/com/notice.php:515
+#: gettext/gettext-lib-com.php:45 lib/com/notice.php:520
 msgid "Reference: %s"
 msgstr "Référence: %s"
 
-#: gettext/gettext-lib-com.php:48 lib/com/bfo.php:288
+#: gettext/gettext-lib-com.php:46 lib/com/notice.php:715
+msgid "The WordPress admin toolbar appears to be disabled (ie. the WordPress <code>%s</code> function returned false)."
+msgstr "La barre d'outils d'administration de WordPress semble être désactivée (c'est-à-dire que la fonction WordPress <code>%s</code> a renvoyé faux)."
+
+#: gettext/gettext-lib-com.php:47 lib/com/notice.php:718
+msgid "Consequently, showing discreet notices in the admin toolbar is not possible."
+msgstr "Par conséquent, il n'est pas possible d'afficher des avis discrets dans la barre d'outils d'administration."
+
+#: gettext/gettext-lib-com.php:48 lib/com/notice.php:720
+msgid "Please diagnose the issue to re-enable the admin toolbar."
+msgstr "Veuillez diagnostiquer le problème pour réactiver la barre d'outils d'administration."
+
+#: gettext/gettext-lib-com.php:51 lib/com/bfo.php:288
 msgid "The \"%1$s\" hook with priority %2$d in the \"%3$s\" filter has incorrectly sent output to the webpage."
 msgstr "Le crochet de filtre \"%1$s\" avec la priorité %2$d dans le filtre \"%3$s\" a envoyé une valeur à la sortie de page Web incorrectement."
 
-#: gettext/gettext-lib-com.php:49 lib/com/bfo.php:291
+#: gettext/gettext-lib-com.php:52 lib/com/bfo.php:291
 msgid "Unlike WordPress actions, WordPress filters must always return their text, not echo it to the webpage output."
 msgstr "Contrairement aux actions WordPress, les filtres WordPress doivent toujours renvoyer leur texte, et non faire l'écho (c'est-à-dire l'imprimer) à la page Web."
 
-#: gettext/gettext-lib-com.php:50 lib/com/bfo.php:294
+#: gettext/gettext-lib-com.php:53 lib/com/bfo.php:294
 msgid "Please contact the author of that filter and report this issue as a coding error."
 msgstr "Veuillez contacter l'auteur de ce filtre et signaler ce problème comme une erreur de codage."
 
-#: gettext/gettext-lib-com.php:51 lib/com/bfo.php:337
+#: gettext/gettext-lib-com.php:54 lib/com/bfo.php:337
 msgid "Incorrect webpage output:"
 msgstr "Sortie incorrecte à la page Web:"
 
-#: gettext/gettext-lib-com.php:52 lib/com/bfo.php:338
+#: gettext/gettext-lib-com.php:55 lib/com/bfo.php:338
 msgid "BEGIN OUTPUT"
 msgstr "DÉBUT DE SORTIE"
 
-#: gettext/gettext-lib-com.php:53 lib/com/bfo.php:339
+#: gettext/gettext-lib-com.php:56 lib/com/bfo.php:339
 msgid "END OUTPUT"
 msgstr "FIN DE SORTIE"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:55 lib/com/plugin.php:296
+#: gettext/gettext-lib-com.php:58 lib/com/plugin.php:296
 msgid "The plugin information for \"%s\" contains an invalid download link."
 msgstr "Les informations pour l'extension \"%s\" contiennent un lien de téléchargement invalide."
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:57 lib/com/plugin.php:307
+#: gettext/gettext-lib-com.php:60 lib/com/plugin.php:307
 msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr "L'information pour l'extension \"%s\" ne contient pas de lien de téléchargement."
 
@@ -5210,8 +5222,8 @@ msgid "Note that showing all options by default could be a bit overwhelming for 
 msgstr "Notez que l'affichage de toutes les options par défaut peut être un peu compliqué pour les nouveaux utilisateurs."
 
 #: lib/messages.php:822
-msgid "Show a \"%s\" menu in the top toolbar."
-msgstr "Afficher un menu \"%s\" dans la barre d'outils supérieure."
+msgid "Show a \"%s\" menu in the admin toolbar."
+msgstr "Afficher un menu \"%s\" dans la barre d'outils d'administration."
 
 #: lib/messages.php:824
 msgid "Please note that the Twitter Card validator does not (currently) accept query arguments, so it cannot be included in this menu."
@@ -5632,7 +5644,6 @@ msgid "Google Search may use this URL to display additional information about th
 msgstr "Google Search peut utiliser cette URL pour afficher des informations supplémentaires sur le site Web, l'entreprise ou la société dans ses résultats de recherche."
 
 #: lib/messages.php:1372
-#| msgid "https://developers.facebook.com/docs/apps/register"
 msgid "https://developers.facebook.com/docs/development/create-an-app"
 msgstr "https://developers.facebook.com/docs/development/create-an-app?locale=fr_FR"
 

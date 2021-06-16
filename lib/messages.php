@@ -819,7 +819,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$menu_title = _x( 'Validators', 'toolbar menu title', 'wpsso' );
 
-							$text = sprintf( __( 'Show a "%s" menu in the top toolbar.', 'wpsso' ), $menu_title ) . ' ';
+							$text = sprintf( __( 'Show a "%s" menu in the admin toolbar.', 'wpsso' ), $menu_title ) . ' ';
 
 							$text .= __( 'Please note that the Twitter Card validator does not (currently) accept query arguments, so it cannot be included in this menu.', 'wpsso' ) . ' ';
 
