@@ -2244,7 +2244,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public static function get_no_input_clipboard( $value, $css_class = 'wide', $css_id = '' ) {
 
-			if ( empty( $css_id ) ) {
+			if ( empty( $css_id ) ) {	// Make sure we have an ID string.
 
 				$css_id = uniqid();
 			}
