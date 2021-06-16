@@ -317,12 +317,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.30.2-dev.1 (2021/07/15)**
+**Version 8.30.2-dev.2 (2021/07/15)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Moved the SSO &gt; Features metaboxes to the SSO &gt; Dashboard page.
+	* Added a notice in case the `is_admin_bar_showing()` function returns false.
 * **Bugfixes**
 	* Fixed a non-working and duplicated copy-to-clipboard icon issue.
 * **Developer Notes**
@@ -1294,9 +1295,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.30.2-dev.1 =
+= 8.30.2-dev.2 =
 
-(2021/07/15) Fixed a non-working and duplicated copy-to-clipboard icon issue.
+(2021/07/15) Fixed a non-working and duplicated copy-to-clipboard icon issue. Moved the SSO &gt; Features metaboxes to the SSO &gt; Dashboard page.
 
 = 8.30.1 =
 
