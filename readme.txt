@@ -890,7 +890,7 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 This release includes a new "Validators" toolbar menu and several changes to the Advanced Settings page.
 
 * **New Features**
-	* Added a "Validators" menu in the top toolbar.
+	* Added a "Validators" menu in the admin toolbar.
 * **Improvements**
 	* Added a "Show Validators Toolbar Menu" option under the new SSO &gt; Advanced Settings &gt; Interface tab.
 	* Moved all options from the SSO &gt; Advanced Settings &gt; Table Columns tab to the new Interface tab (removing the Table Columns tab).
@@ -1149,7 +1149,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 	* Replaced the option tooltip help image with a font.
 * **Bugfixes**
 	* Fixed an important bug, introduced in v8.3.0, that prevented getting archive post objects when not in an archive page.
-	* Fixed the top toolbar overlaying the block editor in fullscreen mode when there are SSO notifications.
+	* Fixed the admin toolbar overlaying the block editor in fullscreen mode when there are SSO notifications.
 * **Developer Notes**
 	* Refactored the `WpssoSchema::get_page_posts_mods()` method to allow getting archive post objects when not in an archive page.
 	* Refactored `SucomUtil::get_robots_default_directives()` to include disabled directives as well.
