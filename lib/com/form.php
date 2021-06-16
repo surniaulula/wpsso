@@ -2251,13 +2251,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$input_class = SucomUtil::sanitize_css_class( $css_class );
 			$input_id    = SucomUtil::sanitize_css_id( $css_id );
-
-			$html = '<input type="text"' .
+			$input_text  = '<input type="text"' .
 				( empty( $input_class ) ? '' : ' class="' . esc_attr( $input_class ) . '"' ) .
 				( empty( $input_id ) ? '' : ' id="text_' . esc_attr( $input_id ) . '"' ) .
 				' value="' . esc_attr( $value ) . '" readonly' .
 				' onFocus="this.select();"' .
-				' onMouseUp="return false;">';
+				' onMouseUp="return false;"/>';
 
 			/**
 			 * Add a dashicons copy-to-clipboard button to the input text field.
@@ -2268,8 +2267,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= '<div class="copy_button"><a href="" onClick="return sucomCopyById( \'text_' . $input_id . '\' );">';
 				$html .= '<span class="dashicons dashicons-clipboard"></span>';
 				$html .= '</a></div><!-- .copy_button -->' . "\n";
-				$html .= '<div class="copy_text">' . $html . '</div><!-- .copy_text -->' . "\n";
+				$html .= '<div class="copy_text">' . $input_text . '</div><!-- .copy_text -->' . "\n";
 				$html .= '</div><!-- .no_input_clipboard -->' . "\n";
+
+			} else {
+
+				$html = $input_text;
 			}
 
 			return $html;
