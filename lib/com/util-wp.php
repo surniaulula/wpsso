@@ -899,57 +899,6 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			return defined( 'DOING_AUTOSAVE' ) ? DOING_AUTOSAVE : false;
 		}
 
-		public static function doing_cron() {
-
-			if ( function_exists( 'wp_doing_cron' ) ) {	// Since WP v4.8.0.
-
-				return wp_doing_cron();
-			}
-
-			return defined( 'DOING_CRON' ) ? DOING_CRON : false;
-		}
-
-		public static function doing_frontend() {
-
-			if ( is_admin() ) {
-
-				return false;
-
-			} elseif ( defined( 'DOING_CRON' ) && DOING_CRON ) {
-
-				return false;
-
-			} elseif ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
-
-				return true;	// An ajax call is considered a frontend task.
-
-			} elseif ( self::doing_rest() ) {
-
-				return false;
-
-			} else {
-
-				return true;
-			}
-		}
-
-		public static function doing_iframe() {
-
-			return defined( 'DOING_IFRAME' ) ? DOING_IFRAME : false;
-		}
-
-		public static function doing_rest() {
-
-			if ( empty( $_SERVER[ 'REQUEST_URI' ] ) ) {
-
-				return false;
-			}
-
-			$rest_prefix = trailingslashit( rest_get_url_prefix() );
-
-			return strpos( $_SERVER[ 'REQUEST_URI' ], $rest_prefix ) !== false ? true : false;
-		}
-
 		public static function doing_block_editor() {
 
 			static $is_doing = null;
@@ -1059,6 +1008,62 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			}
 
 			return $is_doing;
+		}
+
+		public static function doing_cron() {
+
+			if ( function_exists( 'wp_doing_cron' ) ) {	// Since WP v4.8.0.
+
+				return wp_doing_cron();
+			}
+
+			return defined( 'DOING_CRON' ) ? DOING_CRON : false;
+		}
+
+		public static function doing_frontend() {
+
+			if ( is_admin() ) {
+
+				return false;
+
+			} elseif ( defined( 'DOING_CRON' ) && DOING_CRON ) {
+
+				return false;
+
+			} elseif ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+
+				return true;	// An ajax call is considered a frontend task.
+
+			} elseif ( self::doing_rest() ) {
+
+				return false;
+
+			} else {
+
+				return true;
+			}
+		}
+
+		public static function doing_iframe() {
+
+			return defined( 'IFRAME_REQUEST' ) ? true : false;
+		}
+
+		public static function doing_rest() {
+
+			if ( empty( $_SERVER[ 'REQUEST_URI' ] ) ) {
+
+				return false;
+			}
+
+			$rest_prefix = trailingslashit( rest_get_url_prefix() );
+
+			return strpos( $_SERVER[ 'REQUEST_URI' ], $rest_prefix ) !== false ? true : false;
+		}
+
+		public static function doing_xmlrpc() {
+
+			return defined( 'XMLRPC_REQUEST' ) ? true : false;
 		}
 
 		public static function role_exists( $role ) {
