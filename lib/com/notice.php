@@ -707,6 +707,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			} elseif ( is_admin() ) {	// Just in case.
 
+				/**
+				 * SucomNotice->get_tb_types_showing() will always return false for these types of requests.
+				 *
+				 * See is_admin_bar_showing() in wordpress/wp-includes/admin-bar.php for details.
+				 */
 				if ( defined( 'XMLRPC_REQUEST' ) || defined( 'DOING_AJAX' ) || defined( 'IFRAME_REQUEST' ) || wp_is_json_request() || is_embed() ) {
 
 					return;

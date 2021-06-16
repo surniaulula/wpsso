@@ -933,6 +933,11 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			}
 		}
 
+		public static function doing_iframe() {
+
+			return defined( 'DOING_IFRAME' ) ? DOING_IFRAME : false;
+		}
+
 		public static function doing_rest() {
 
 			if ( empty( $_SERVER[ 'REQUEST_URI' ] ) ) {
