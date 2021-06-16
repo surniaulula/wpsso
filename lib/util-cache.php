@@ -150,11 +150,11 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			$cleared_files = $this->clear_cache_files();
 
-			$cleared_transients = $this->clear_db_transients( $clear_short, $key_prefix = 'wpsso_' );
-
 			$cleared_ignored = $this->clear_ignored_urls();
 
 			$cleared_col_meta = $this->clear_column_meta();
+
+			$cleared_transients = $this->clear_db_transients( $clear_short, $key_prefix = 'wpsso_' );
 
 			wp_cache_flush();	// Clear non-database transients as well.
 

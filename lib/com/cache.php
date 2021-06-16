@@ -131,6 +131,8 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			} else {
 
+				$this->ignored[ 'urls' ] = array();
+
 				$this->ignored[ 'saved_urls' ] = array();
 			}
 
@@ -156,6 +158,8 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					$cache_id      = $cache_md5_pre . md5( $cache_salt );
 
 					set_transient( $cache_id, $this->ignored, $this->ignored[ 'expires' ] );
+
+					$this->ignored[ 'saved_urls' ] = $this->ignored[ 'urls' ];	// Just in case.
 				}
 			}
 		}
@@ -307,6 +311,8 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			$count = count( $this->ignored[ 'urls' ] );
 
 			$this->ignored[ 'urls' ] = array();	// Clear the ignored URLs.
+
+			$this->save_ignored_urls();
 
 			return $count;
 		}
