@@ -317,7 +317,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.30.2-rc.1 (2021/06/16)**
+**Version 8.30.2 (2021/06/16)**
 
 * **New Features**
 	* None.
@@ -1295,7 +1295,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.30.2-rc.1 =
+= 8.30.2 =
 
 (2021/06/16) Fixed a non-working and duplicated copy-to-clipboard icon issue. Moved the SSO &gt; Features metaboxes to the SSO &gt; Dashboard page.
 
