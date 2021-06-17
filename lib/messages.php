@@ -782,28 +782,37 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
+						case 'tooltip-plugin_load_mofiles': 		// Use Local Plugin Translations.
+
+							$def_checked = $this->get_def_checked( 'plugin_load_mofiles' );
+
+							$text = sprintf( __( 'Prefer local translation files instead of translations from WordPress.org (default is %s).',
+								'wpsso' ), $def_checked );
+
+							break;
+
 						case 'tooltip-plugin_cache_disable': 		// Disable Cache for Debugging.
 
-							$text = __( 'Disable the head markup transient cache for debugging purposes (default is unchecked).', 'wpsso' );
+							$def_checked = $this->get_def_checked( 'plugin_cache_disable' );
+
+							$text = sprintf( __( 'Disable the head markup transient cache for debugging purposes (default is %s).',
+								'wpsso' ), $def_checked );
 
 							break;
 
 						case 'tooltip-plugin_debug_html': 		// Add HTML Debug Messages.
 
-							$text = __( 'Add hidden debugging messages as HTML comments to front-end and admin webpages (default is unchecked).', 'wpsso' );
+							$def_checked = $this->get_def_checked( 'plugin_debug_html' );
 
-							break;
-
-						case 'tooltip-plugin_load_mofiles': 		// Use Local Plugin Translations.
-
-							$text = __( 'Prefer using the local plugin translation files instead of the default WordPress.org translations (default is unchecked).', 'wpsso' );
+							$text = sprintf( __( 'Add hidden debugging messages as HTML comments to front-end and admin webpages (default is %s).',
+								'wpsso' ), $def_checked );
 
 							break;
 
 						/**
 						 * Interface settings.
 						 */
-						case 'tooltip-plugin_show_opts': 		// Plugin Options to Show by Default.
+						case 'tooltip-plugin_show_opts': 		// Options to Show by Default.
 
 							$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
@@ -881,9 +890,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_filter_title':	// Use Filtered "SEO" Title.
 
-							$def_checked = $this->p->opt->get_defaults( 'plugin_filter_title' ) ?
-								_x( 'checked', 'option value', 'wpsso' ) :
-								_x( 'unchecked', 'option value', 'wpsso' );
+							$def_checked = $this->get_def_checked( 'plugin_filter_title' );
 
 							$text = sprintf( __( 'The title value provided by WordPress to %1$s may include modifications from themes and/or other SEO plugins (appending the site name or expanding inline variables, for example, is a common practice).', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'name' ] ) . ' ';
 
@@ -1125,106 +1132,69 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_cache_date_archive':	// Cache Date Archive Pages.
 
-							$text = __( 'Cache meta tags and Schema markup for date (year, month, day) archive pages.', 'wpsso' );
+							$def_checked = $this->get_def_checked( 'plugin_cache_date_archive' );
 
-							break;
-
-						case 'tooltip-plugin_clear_on_deactivate':	// Clear All Caches on Deactivate.
-
-							$text = sprintf( __( 'Automatically clear all caches when the %s plugin is deactivated.', 'wpsso' ), $info[ 'short' ] );
-
-							break;
-
-						case 'tooltip-plugin_clear_short_urls':		// Refresh Short URLs on Clear Cache.
-
-							$cache_exp_secs = (int) apply_filters( 'wpsso_cache_expire_short_url',
-								$this->p->options[ 'plugin_short_url_cache_exp' ] );
-
-							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : _x( 'disabled', 'option comment', 'wpsso' );
-
-							$text = sprintf( __( 'Clear all shortened URLs when clearing all %s transients from the WordPress database (default is unchecked).', 'wpsso' ), $info[ 'short' ] ) . ' ';
-
-							$text .= sprintf( __( 'Shortened URLs are cached for %1$s seconds (%2$s) to minimize external service API calls. Updating all shortened URLs at once may exceed API call limits imposed by your shortening service provider.', 'wpsso' ), $cache_exp_secs, $cache_exp_human );
-
-							break;
-
-						case 'tooltip-plugin_clear_post_terms':		// Clear Term Cache for Published Post.
-
-							$text = __( 'When a published post, page, or custom post type is updated, automatically clear the cache of its selected terms (categories, tags, etc.).', 'wpsso' );
-
-							break;
-
-						case 'tooltip-plugin_clear_for_comment':	// Clear Post Cache for New Comment.
-
-							$text = __( 'Automatically clear the post cache when a new comment is added or the status of an existing comment is changed.', 'wpsso' );
-
-							break;
-
-						/**
-						 * Service APIs settings.
-						 */
-						case 'tooltip-plugin_embed_media_apis':
-
-							$text = __( 'Check the content for embedded media URLs from supported media providers (Vimeo, Wistia, YouTube, etc.). If a supported media URL is found, an API connection to the provider will be made to retrieve information about the media (preview image URL, flash player URL, oembed player URL, the video width / height, etc.).', 'wpsso' );
-
-							break;
-
-						case 'tooltip-plugin_gravatar_api':	// Gravatar is Default Author Image.
-
-							$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
-
-							$text = __( 'If a custom author image has not been selected, fallback to using their Gravatar image in author related meta tags and Schema markup.', 'wpsso' ) . ' ';
-
-							$text .= sprintf( __( 'A customized image for each author can be selected in the WordPress user profile %s metabox.', 'wpsso' ), $mb_title );
+							$text = sprintf( __( 'Cache meta tags and Schema markup for date based (year, month, day) archive pages (default is %s).',
+								'wpsso' ), $def_checked );
 
 							break;
 
 						case 'tooltip-plugin_clear_on_activate':	// Clear All Caches on Activate.
 
-							$text = sprintf( __( 'Automatically clear all caches when the %s plugin is activated.', 'wpsso' ), $info[ 'short' ] );
+							$def_checked = $this->get_def_checked( 'plugin_clear_on_activate' );
+
+							$text = sprintf( __( 'Automatically clear all caches when the %1$s plugin is activated (default is %2$s).',
+								'wpsso' ), $info[ 'short' ], $def_checked );
 
 							break;
 
 						case 'tooltip-plugin_clear_on_deactivate':	// Clear All Caches on Deactivate.
 
-							$text = sprintf( __( 'Automatically clear all caches when the %s plugin is deactivated.', 'wpsso' ), $info[ 'short' ] );
+							$def_checked = $this->get_def_checked( 'plugin_clear_on_deactivate' );
+
+							$text = sprintf( __( 'Automatically clear all caches when the %1$s plugin is deactivated (default is %2$s).',
+								'wpsso' ), $info[ 'short' ], $def_checked );
 
 							break;
 
 						case 'tooltip-plugin_clear_short_urls':		// Refresh Short URLs on Clear Cache.
+
+							$def_checked = $this->get_def_checked( 'plugin_clear_short_urls' );
 
 							$cache_exp_secs = (int) apply_filters( 'wpsso_cache_expire_short_url',
 								$this->p->options[ 'plugin_short_url_cache_exp' ] );
 
 							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : _x( 'disabled', 'option comment', 'wpsso' );
 
-							$text = sprintf( __( 'Clear all shortened URLs when clearing all %s transients from the WordPress database (default is unchecked).', 'wpsso' ), $info[ 'short' ] ) . ' ';
+							$text = sprintf( __( 'Clear shortened URLs when clearing %1$s transients from the WordPress database (default is %2$s).',
+								'wpsso' ), $info[ 'short' ], $def_checked ) . ' ';
 
-							$text .= sprintf( __( 'Shortened URLs are cached for %1$s seconds (%2$s) to minimize external service API calls. Updating all shortened URLs at once may exceed API call limits imposed by your shortening service provider.', 'wpsso' ), $cache_exp_secs, $cache_exp_human );
+							$text .= sprintf( __( 'Shortened URLs are cached for %1$s seconds (%2$s) to minimize external service API calls.',
+								'wpsso' ), $cache_exp_secs, $cache_exp_human ) . ' ';
+
+							$text .= __( 'Clearing and re-updating all shortened URLs at once may exceed API call limits imposed by your shortening service provider.', 'wpsso' );
 
 							break;
 
 						case 'tooltip-plugin_clear_post_terms':		// Clear Term Cache for Published Post.
 
-							$text = __( 'When a published post, page, or custom post type is updated, automatically clear the cache of its selected terms (categories, tags, etc.).', 'wpsso' );
+							$def_checked = $this->get_def_checked( 'plugin_clear_post_terms' );
+
+							$text = sprintf( __( 'When a published post, page, or custom post type is updated, automatically clear the cache of its selected terms (default is %s).', 'wpsso' ), $def_checked );
 
 							break;
 
 						case 'tooltip-plugin_clear_for_comment':	// Clear Post Cache for New Comment.
 
-							$text = __( 'Automatically clear the post cache when a new comment is added or the status of an existing comment is changed.', 'wpsso' );
+							$def_checked = $this->get_def_checked( 'plugin_clear_for_comment' );
+
+							$text = sprintf( __( 'Automatically clear the post cache when a new comment is added, or the status of an existing comment is changed (default is %s).', 'wpsso' ), $def_checked );
 
 							break;
 
 						/**
-						 * Service APIs settings.
+						 * Media Services settings.
 						 */
-						case 'tooltip-plugin_embed_media_apis':
-
-							$text = __( 'Check the content for embedded media URLs from supported media providers (Vimeo, Wistia, YouTube, etc.). If a supported media URL is found, an API connection to the provider will be made to retrieve information about the media (preview image URL, flash player URL, oembed player URL, the video width / height, etc.).', 'wpsso' );
-
-							break;
-
 						case 'tooltip-plugin_gravatar_api':	// Gravatar is Default Author Image.
 
 							$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
@@ -1243,13 +1213,22 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_shortener':
+						case 'tooltip-plugin_embed_media_apis':	// Check for Embedded Media.
+
+							$text = __( 'Check the content for embedded media URLs from supported media providers (Vimeo, Wistia, YouTube, etc.). If a supported media URL is found, an API connection to the provider will be made to retrieve information about the media (preview image URL, flash player URL, oembed player URL, the video width / height, etc.).', 'wpsso' );
+
+							break;
+
+						/**
+						 * Shortening Services settings.
+						 */
+						case 'tooltip-plugin_shortener':	// URL Shortening Service.
 
 							$text = sprintf( __( 'A preferred URL shortening service for %s plugin filters and/or add-ons that may need to shorten URLs - don\'t forget to define the service API keys for the URL shortening service of your choice.', 'wpsso' ), $info[ 'short' ] );
 
 							break;
 
-						case 'tooltip-plugin_min_shorten':
+						case 'tooltip-plugin_min_shorten':	// Minimum URL Length to Shorten.
 
 							$text = sprintf( __( 'URLs shorter than this length will not be shortened (the default suggested by Twitter is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'plugin_min_shorten' ) );
 
@@ -1261,7 +1240,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_add_link_rel_shortlink':
+						case 'tooltip-plugin_add_link_rel_shortlink':	// Add "link rel shortlink" HTML Tag.
 
 							$text = sprintf( __( 'Add a "%s" HTML tag for social sites and web browsers to the head section of webpages.', 'wpsso' ), 'link&nbsp;rel&nbsp;shortlink' );
 
@@ -1275,7 +1254,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_bitly_domain':		// Bitly Short Domain (Optional).
+						case 'tooltip-plugin_bitly_domain':	// Bitly Short Domain (Optional).
 
 							$text = __( 'An optional Bitly short domain to use - either bit.ly, j.mp, bitly.com, or another custom short domain.', 'wpsso' ) . ' ';
 
@@ -1283,27 +1262,53 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_bitly_group_name':		// Bitly Group Name (Optional).
+						case 'tooltip-plugin_bitly_group_name':	// Bitly Group Name (Optional).
 
 							$text = sprintf( __( 'An optional <a href="%s">Bitly group name to organize your Bitly account links</a>.', 'wpsso' ),
 								'https://support.bitly.com/hc/en-us/articles/115004551268' );
 
 							break;
 
-						case 'tooltip-plugin_dlmyapp_api_key':
+						case 'tooltip-plugin_dlmyapp_api_key':	// DLMY.App API Key.
 
 							$text = __( 'The DLMY.App secret API Key can be found in the DLMY.App user account &gt; Tools &gt; Developer API webpage.', 'wpsso' );
 
 							break;
 
-						case 'tooltip-plugin_owly_api_key':
+						case 'tooltip-plugin_owly_api_key':	// Ow.ly API Key.
 
 							$text = sprintf( __( 'To use Ow.ly as your preferred shortening service, you must provide the Ow.ly API Key for this website (complete this form to <a href="%s">Request Ow.ly API Access</a>).', 'wpsso' ), 'https://docs.google.com/forms/d/1Fn8E-XlJvZwlN4uSRNrAIWaY-nN_QA3xAHUJ7aEF7NU/viewform' );
 
 							break;
 
-						case 'tooltip-plugin_shopperapproved_site_id':
-						case 'tooltip-plugin_shopperapproved_token':
+						case 'tooltip-plugin_yourls_api_url':	// YOURLS API URL.
+
+							$text = sprintf( __( 'The URL to <a href="%1$s">Your Own URL Shortener</a> (YOURLS) shortening service.', 'wpsso' ), 'https://yourls.org/' );
+							break;
+
+						case 'tooltip-plugin_yourls_username':	// YOURLS Username.
+
+							$text = sprintf( __( 'If <a href="%1$s">Your Own URL Shortener</a> (YOURLS) shortening service is private, enter a configured username (see YOURLS Token for an alternative to the username / password options).', 'wpsso' ), 'https://yourls.org/' );
+
+							break;
+
+						case 'tooltip-plugin_yourls_password':	// YOURLS Password.
+
+							$text = sprintf( __( 'If <a href="%1$s">Your Own URL Shortener</a> (YOURLS) shortening service is private, enter a configured user password (see YOURLS Token for an alternative to the username / password options).', 'wpsso' ), 'https://yourls.org/' );
+
+							break;
+
+						case 'tooltip-plugin_yourls_token':	// YOURLS Token.
+
+							$text = sprintf( __( 'If <a href="%1$s">Your Own URL Shortener</a> (YOURLS) shortening service is private, you can use a token string for authentication instead of a username / password combination.', 'wpsso' ), 'https://yourls.org/' );
+
+							break;
+
+						/**
+						 * Ratings and Reviews settings.
+						 */
+						case 'tooltip-plugin_shopperapproved_site_id':	// Shopper Approved Site ID.
+						case 'tooltip-plugin_shopperapproved_token':	// Shopper Approved API Token.
 
 							$text = __( 'Your Shopper Approved Site ID and API Token are required to retrieve ratings and reviews from Shopper Approved.', 'wpsso' ) . ' ';
 
@@ -1311,44 +1316,21 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_shopperapproved_num_max':
+						case 'tooltip-plugin_shopperapproved_num_max':	// Maximum Number of Reviews.
 
 							$text = __( 'The maximum number of reviews retrieved from the Shopper Approved API.', 'wpsso' );
 
 							break;
 
-						case 'tooltip-plugin_shopperapproved_age_max':
+						case 'tooltip-plugin_shopperapproved_age_max':	// Maximum Age of Reviews.
 
 							$text = __( 'The maximum age of reviews retrieved from the Shopper Approved API.', 'wpsso' );
 
 							break;
 
-						case 'tooltip-plugin_shopperapproved_for':
+						case 'tooltip-plugin_shopperapproved_for':	// Get Reviews for Post Types.
 
 							$text = __( 'Retrieve ratings and reviews from Shopper Approved for the selected post types.', 'wpsso' );
-
-							break;
-
-						case 'tooltip-plugin_yourls_api_url':
-
-							$text = sprintf( __( 'The URL to <a href="%1$s">Your Own URL Shortener</a> (YOURLS) shortening service.', 'wpsso' ), 'https://yourls.org/' );
-							break;
-
-						case 'tooltip-plugin_yourls_username':
-
-							$text = sprintf( __( 'If <a href="%1$s">Your Own URL Shortener</a> (YOURLS) shortening service is private, enter a configured username (see YOURLS Token for an alternative to the username / password options).', 'wpsso' ), 'https://yourls.org/' );
-
-							break;
-
-						case 'tooltip-plugin_yourls_password':
-
-							$text = sprintf( __( 'If <a href="%1$s">Your Own URL Shortener</a> (YOURLS) shortening service is private, enter a configured user password (see YOURLS Token for an alternative to the username / password options).', 'wpsso' ), 'https://yourls.org/' );
-
-							break;
-
-						case 'tooltip-plugin_yourls_token':
-
-							$text = sprintf( __( 'If <a href="%1$s">Your Own URL Shortener</a> (YOURLS) shortening service is private, you can use a token string for authentication instead of a username / password combination.', 'wpsso' ), 'https://yourls.org/' );
 
 							break;
 
@@ -3397,6 +3379,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			}
 
 			return $local_cache;
+		}
+
+		public function get_def_checked( $opt_key ) {
+
+			$def_checked = $this->p->opt->get_defaults( $opt_key ) ?
+				_x( 'checked', 'option value', 'wpsso' ) :
+				_x( 'unchecked', 'option value', 'wpsso' );
+
+			return $def_checked;
 		}
 
 		public function pro_feature( $ext ) {

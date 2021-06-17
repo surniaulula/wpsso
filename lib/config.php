@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.31.0-dev.1',	// Plugin version.
+					'version'     => '8.31.0-dev.2',	// Plugin version.
 					'opt_version' => '791',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1636,7 +1636,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings > Interface tab.
 					 */
-					'plugin_show_opts'                     => 'basic',	// Plugin Options to Show by Default.
+					'plugin_show_opts'                     => 'basic',	// Options to Show by Default.
 					'plugin_show_validate_toolbar'         => 1,		// Show Validators Toolbar Menu.
 					'plugin_add_to_article'                => 1,
 					'plugin_add_to_attachment'             => 1,
