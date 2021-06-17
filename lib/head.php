@@ -450,19 +450,18 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/**
 			 * Setup variables for transient cache.
 			 */
-			$cache_md5_pre  = 'wpsso_h_';
-			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre );
-			$cache_salt     = __METHOD__ . '(' . SucomUtil::get_mod_salt( $mod, $canonical_url ) . ')';
-			$cache_id       = $cache_md5_pre . md5( $cache_salt );
-			$cache_index    = $this->get_head_cache_index( $mod, $canonical_url );	// Includes locale, url, etc.
-			$cache_array    = array();
+			$cache_md5_pre      = 'wpsso_h_';
+			$cache_exp_secs     = $this->p->util->get_cache_exp_secs( $cache_md5_pre );
+			$cache_salt         = __METHOD__ . '(' . SucomUtil::get_mod_salt( $mod, $canonical_url ) . ')';
+			$cache_id           = $cache_md5_pre . md5( $cache_salt );
+			$cache_index        = $this->get_head_cache_index( $mod, $canonical_url );	// Includes locale, url, etc.
+			$cache_array        = array();
+			$cache_date_archive = empty( $this->p->options[ 'plugin_cache_date_archive' ] ) ? false : true;
 
-			if ( $mod[ 'is_404' ] || $mod[ 'is_search' ] ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'setting cache expiration to 0 seconds for 404 or search page' );
-				}
+			/**
+			 * Do not cache 404 pages, search results, or date (year, month, day) archive pages.
+			 */
+			if ( $mod[ 'is_404' ] || $mod[ 'is_search' ] || ( $cache_date_archive && $mod[ 'is_date' ] ) ) {
 
 				$cache_exp_secs = 0;
 			}

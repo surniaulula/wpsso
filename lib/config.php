@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'     => '8.31.0-dev.1',	// Plugin version.
-					'opt_version' => '790',		// Increment when changing default option values.
+					'opt_version' => '791',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Rank higher and increase click-through-rates by presenting your content at its best on social sites and in search results - no matter how webpages are shared, re-shared, messaged, posted, embedded, or crawled.',
@@ -1731,6 +1731,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_short_url_cache_exp' => 7776000,		// Shortened URL Cache Expiry (90 days).
 					'plugin_types_cache_exp'     => MONTH_IN_SECONDS,	// Schema Index Cache Expiry (1 month).
 					'plugin_select_cache_exp'    => MONTH_IN_SECONDS,	// Form Selects Cache Expiry (1 month).
+					'plugin_cache_date_archive'  => 0,			// Cache Date Archive Pages.
 					'plugin_clear_on_activate'   => 1,			// Clear All Caches on Activate.
 					'plugin_clear_on_deactivate' => 0,			// Clear All Caches on Deactivate.
 					'plugin_clear_short_urls'    => 0,			// Refresh Short URLs on Clear Cache.
@@ -1954,6 +1955,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_types_cache_exp:use'     => 'default',
 					'plugin_select_cache_exp'        => MONTH_IN_SECONDS,	// Form Selects Cache Expiry (1 month).
 					'plugin_select_cache_exp:use'    => 'default',
+					'plugin_cache_date_archive'      => 0,			// Cache Date Archive Pages.
+					'plugin_cache_date_archive:use'  => 'default',
 					'plugin_clear_on_activate'       => 1,			// Clear All Caches on Activate.
 					'plugin_clear_on_activate:use'   => 'default',
 					'plugin_clear_on_deactivate'     => 0,			// Clear All Caches on Deactivate.

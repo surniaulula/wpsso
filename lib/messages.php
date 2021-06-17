@@ -1123,6 +1123,62 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
+						case 'tooltip-plugin_cache_date_archive':	// Cache Date Archive Pages.
+
+							$text = __( 'Cache meta tags and Schema markup for date (year, month, day) archive pages.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-plugin_clear_on_deactivate':	// Clear All Caches on Deactivate.
+
+							$text = sprintf( __( 'Automatically clear all caches when the %s plugin is deactivated.', 'wpsso' ), $info[ 'short' ] );
+
+							break;
+
+						case 'tooltip-plugin_clear_short_urls':		// Refresh Short URLs on Clear Cache.
+
+							$cache_exp_secs = (int) apply_filters( 'wpsso_cache_expire_short_url',
+								$this->p->options[ 'plugin_short_url_cache_exp' ] );
+
+							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : _x( 'disabled', 'option comment', 'wpsso' );
+
+							$text = sprintf( __( 'Clear all shortened URLs when clearing all %s transients from the WordPress database (default is unchecked).', 'wpsso' ), $info[ 'short' ] ) . ' ';
+
+							$text .= sprintf( __( 'Shortened URLs are cached for %1$s seconds (%2$s) to minimize external service API calls. Updating all shortened URLs at once may exceed API call limits imposed by your shortening service provider.', 'wpsso' ), $cache_exp_secs, $cache_exp_human );
+
+							break;
+
+						case 'tooltip-plugin_clear_post_terms':		// Clear Term Cache for Published Post.
+
+							$text = __( 'When a published post, page, or custom post type is updated, automatically clear the cache of its selected terms (categories, tags, etc.).', 'wpsso' );
+
+							break;
+
+						case 'tooltip-plugin_clear_for_comment':	// Clear Post Cache for New Comment.
+
+							$text = __( 'Automatically clear the post cache when a new comment is added or the status of an existing comment is changed.', 'wpsso' );
+
+							break;
+
+						/**
+						 * Service APIs settings.
+						 */
+						case 'tooltip-plugin_embed_media_apis':
+
+							$text = __( 'Check the content for embedded media URLs from supported media providers (Vimeo, Wistia, YouTube, etc.). If a supported media URL is found, an API connection to the provider will be made to retrieve information about the media (preview image URL, flash player URL, oembed player URL, the video width / height, etc.).', 'wpsso' );
+
+							break;
+
+						case 'tooltip-plugin_gravatar_api':	// Gravatar is Default Author Image.
+
+							$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+
+							$text = __( 'If a custom author image has not been selected, fallback to using their Gravatar image in author related meta tags and Schema markup.', 'wpsso' ) . ' ';
+
+							$text .= sprintf( __( 'A customized image for each author can be selected in the WordPress user profile %s metabox.', 'wpsso' ), $mb_title );
+
+							break;
+
 						case 'tooltip-plugin_clear_on_activate':	// Clear All Caches on Activate.
 
 							$text = sprintf( __( 'Automatically clear all caches when the %s plugin is activated.', 'wpsso' ), $info[ 'short' ] );
