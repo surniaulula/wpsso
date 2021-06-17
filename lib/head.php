@@ -461,7 +461,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/**
 			 * Do not cache 404 pages, search results, or date (year, month, day) archive pages.
 			 */
-			if ( $mod[ 'is_404' ] || $mod[ 'is_search' ] || ( $cache_date_archive && $mod[ 'is_date' ] ) ) {
+			if ( $mod[ 'is_404' ] || $mod[ 'is_search' ] || ( ! $cache_date_archive && $mod[ 'is_date' ] ) ) {
 
 				$cache_exp_secs = 0;
 			}
