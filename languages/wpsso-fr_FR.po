@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.30.2\n"
+"Project-Id-Version: WPSSO Core 8.31.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-06-16 07:30-0700\n"
+"PO-Revision-Date: 2021-06-17 09:31-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -328,81 +328,81 @@ msgstr "Avis %s"
 msgid "Notice"
 msgstr "Avis"
 
-#: gettext/gettext-lib-com.php:8 lib/com/cache.php:217
+#: gettext/gettext-lib-com.php:8 lib/com/cache.php:221
 msgid "Error retrieving %1$s for caching (after %2$.3f seconds)."
 msgstr "Erreur lors de la récupération de %1$s pour mise en cache (après %2$.3f secondes)."
 
-#: gettext/gettext-lib-com.php:9 lib/com/cache.php:222
+#: gettext/gettext-lib-com.php:9 lib/com/cache.php:226
 msgid "Error retrieving %1$s for caching."
 msgstr "Erreur lors de la récupération de %1$s pour mise en cache."
 
-#: gettext/gettext-lib-com.php:10 lib/com/cache.php:228
+#: gettext/gettext-lib-com.php:10 lib/com/cache.php:232
 msgid "cURL error code %1$d %2$s."
 msgstr "Code d'erreur cURL %1$d %2$s."
 
-#: gettext/gettext-lib-com.php:11 lib/com/cache.php:233
+#: gettext/gettext-lib-com.php:11 lib/com/cache.php:237
 msgid "SSL verification failed with code %1$d."
 msgstr "La vérification SSL a échoué avec le code %1$d."
 
-#: gettext/gettext-lib-com.php:12 lib/com/cache.php:238
+#: gettext/gettext-lib-com.php:12 lib/com/cache.php:242
 msgid "HTTP connection returned code %1$d."
 msgstr "La connexion HTTP a renvoyé le code %1$d."
 
 #: gettext/gettext-lib-com.php:13 gettext/gettext-lib-com.php:16
-#: lib/com/cache.php:253 lib/com/cache.php:270
+#: lib/com/cache.php:257 lib/com/cache.php:274
 msgid "The PHP \"%s\" setting is enabled - the PHP cURL library cannot follow URL redirects."
 msgstr "Le paramètre PHP \"%s\" est activé - la bibliothèque PHP cURL ne peut pas suivre les re-directions d'URL."
 
-#: gettext/gettext-lib-com.php:14 lib/com/cache.php:256
+#: gettext/gettext-lib-com.php:14 lib/com/cache.php:260
 msgid "The \"%s\" setting is deprecated since PHP version 5.3 and removed from PHP since version 5.4."
 msgstr "Le paramètre \"%s\" est obsolète depuis la version 5.3 de PHP et supprimée de PHP depuis la version 5.4."
 
-#: gettext/gettext-lib-com.php:15 lib/com/cache.php:259
+#: gettext/gettext-lib-com.php:15 lib/com/cache.php:263
 msgid "Please contact your hosting provider to have this setting disabled or install a newer version of PHP."
 msgstr "SVP contacter votre fournisseur d'hébergement pour désactiver ce paramètre ou installer une version plus récente de PHP."
 
-#: gettext/gettext-lib-com.php:17 lib/com/cache.php:273
+#: gettext/gettext-lib-com.php:17 lib/com/cache.php:277
 msgid "Please contact your hosting provider to have this setting disabled."
 msgstr "SVP contacter votre fournisseur d'hébergement pour désactiver ce paramètre."
 
-#: gettext/gettext-lib-com.php:18 lib/com/cache.php:278
+#: gettext/gettext-lib-com.php:18 lib/com/cache.php:282
 msgid "The maximum number of URL redirects (%d) may have been exceeded."
 msgstr "Le nombre maximal de redirections d'URL (%d) peut avoir été dépassé."
 
-#: gettext/gettext-lib-com.php:19 lib/com/cache.php:283
+#: gettext/gettext-lib-com.php:19 lib/com/cache.php:287
 msgid "Additional requests to retrieve this URL will be ignored for another %d second(s)."
 msgstr "Les demandes supplémentaires de récupération de cette URL seront ignorées pour un autre %d seconde(s)."
 
 #: gettext/gettext-lib-com.php:20 gettext/gettext-lib-com.php:22
-#: lib/com/cache.php:503 lib/com/cache.php:673 lib/util-cache.php:217
+#: lib/com/cache.php:509 lib/com/cache.php:679 lib/util-cache.php:217
 msgid "Error removing cache file %s."
 msgstr "Erreur de suppression du fichier cache %s."
 
-#: gettext/gettext-lib-com.php:21 lib/com/cache.php:563
+#: gettext/gettext-lib-com.php:21 lib/com/cache.php:569
 msgid "PHP cURL library missing - contact your hosting provider to have the cURL library installed."
 msgstr "La bibliothèque cURL de PHP est manquante - contactez votre hébergeur pour faire installer la bibliothèque cURL."
 
-#: gettext/gettext-lib-com.php:23 lib/com/cache.php:922
+#: gettext/gettext-lib-com.php:23 lib/com/cache.php:928
 msgid "Cache file %s is not readable."
 msgstr "Le fichier de cache %s n'est pas lisible."
 
-#: gettext/gettext-lib-com.php:24 lib/com/cache.php:944
+#: gettext/gettext-lib-com.php:24 lib/com/cache.php:950
 msgid "Failed to open the cache file %s for reading."
 msgstr "Impossible d'ouvrir le fichier de cache %s pour lecture."
 
-#: gettext/gettext-lib-com.php:25 lib/com/cache.php:1050
+#: gettext/gettext-lib-com.php:25 lib/com/cache.php:1056
 msgid "Failed to create the %s cache folder."
 msgstr "Impossible de créer le dossier de cache %s."
 
-#: gettext/gettext-lib-com.php:26 lib/com/cache.php:1065
+#: gettext/gettext-lib-com.php:26 lib/com/cache.php:1071
 msgid "Cache folder %s is not writable."
 msgstr "Le dossier de cache %s n'est pas accessible en écriture."
 
-#: gettext/gettext-lib-com.php:27 lib/com/cache.php:1080
+#: gettext/gettext-lib-com.php:27 lib/com/cache.php:1086
 msgid "Failed to open the cache file %s for writing."
 msgstr "Impossible d'ouvrir le fichier de cache %s pour écriture."
 
-#: gettext/gettext-lib-com.php:28 lib/com/cache.php:1110
+#: gettext/gettext-lib-com.php:28 lib/com/cache.php:1116
 msgid "Failed writing data to cache file %s."
 msgstr "Échec d'écriture des données dans le fichier cache %s."
 
@@ -441,39 +441,39 @@ msgid "Media Library"
 msgstr "la médiathèque"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:38 lib/com/form.php:882 lib/script.php:427
+#: gettext/gettext-lib-com.php:38 lib/com/form.php:882 lib/script.php:431
 msgid "Select Image"
 msgstr "Choisir l'image"
 
-#: gettext/gettext-lib-com.php:41 lib/com/notice.php:288
+#: gettext/gettext-lib-com.php:41 lib/com/notice.php:284
 msgid "Forever"
 msgstr "Toujours"
 
-#: gettext/gettext-lib-com.php:42 lib/com/notice.php:290
+#: gettext/gettext-lib-com.php:42 lib/com/notice.php:286
 msgid "This notice can be dismissed permanently."
 msgstr "Cet avis peut être masqué définitivement."
 
-#: gettext/gettext-lib-com.php:43 lib/com/notice.php:302
+#: gettext/gettext-lib-com.php:43 lib/com/notice.php:298
 msgid "This notice can be dismissed for %s."
 msgstr "Cet avis peut être masqué pour %s."
 
-#: gettext/gettext-lib-com.php:44 lib/com/notice.php:516
+#: gettext/gettext-lib-com.php:44 lib/com/notice.php:510
 msgid "Edit"
 msgstr "Modifier"
 
-#: gettext/gettext-lib-com.php:45 lib/com/notice.php:520
+#: gettext/gettext-lib-com.php:45 lib/com/notice.php:514
 msgid "Reference: %s"
 msgstr "Référence: %s"
 
-#: gettext/gettext-lib-com.php:46 lib/com/notice.php:720
+#: gettext/gettext-lib-com.php:46 lib/com/notice.php:714
 msgid "The WordPress admin toolbar appears to be disabled (ie. the WordPress <code>%s</code> function returned false)."
 msgstr "La barre d'outils d'administration de WordPress semble être désactivée (c'est-à-dire que la fonction WordPress <code>%s</code> a renvoyé faux)."
 
-#: gettext/gettext-lib-com.php:47 lib/com/notice.php:723
+#: gettext/gettext-lib-com.php:47 lib/com/notice.php:717
 msgid "As a consequence, showing discreet notices in the admin toolbar is not possible."
 msgstr "Par conséquent, il n'est pas possible d'afficher des avis discrets dans la barre d'outils d'administration."
 
-#: gettext/gettext-lib-com.php:48 lib/com/notice.php:725
+#: gettext/gettext-lib-com.php:48 lib/com/notice.php:719
 msgid "Please diagnose the issue to re-enable the admin toolbar."
 msgstr "Veuillez diagnostiquer le problème pour réactiver la barre d'outils d'administration."
 
@@ -3288,46 +3288,46 @@ msgctxt "default description"
 msgid "No Description."
 msgstr "Aucune description."
 
-#: lib/abstracts/wp-meta.php:761
+#: lib/abstracts/wp-meta.php:762
 msgctxt "metabox tab"
 msgid "Customize"
 msgstr "Personnaliser"
 
-#: lib/abstracts/wp-meta.php:762 lib/messages.php:2694
+#: lib/abstracts/wp-meta.php:763 lib/messages.php:2694
 msgctxt "metabox tab"
 msgid "Priority Media"
 msgstr "Média prioritaire"
 
-#: lib/abstracts/wp-meta.php:766 lib/messages.php:2545
+#: lib/abstracts/wp-meta.php:767 lib/messages.php:2545
 msgctxt "metabox tab"
 msgid "Robots Meta"
 msgstr "Meta Robots"
 
-#: lib/abstracts/wp-meta.php:767
+#: lib/abstracts/wp-meta.php:768
 msgctxt "metabox tab"
 msgid "Preview"
 msgstr "Aperçu"
 
-#: lib/abstracts/wp-meta.php:768
+#: lib/abstracts/wp-meta.php:769
 msgctxt "metabox tab"
 msgid "oEmbed"
 msgstr "oEmbed"
 
-#: lib/abstracts/wp-meta.php:769
+#: lib/abstracts/wp-meta.php:770
 msgctxt "metabox tab"
 msgid "Head Markup"
 msgstr "Balisage d'entête"
 
-#: lib/abstracts/wp-meta.php:770
+#: lib/abstracts/wp-meta.php:771
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr "Validateurs"
 
-#: lib/abstracts/wp-meta.php:1163
+#: lib/abstracts/wp-meta.php:1164
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr "La validation du jeton nonce pour le formulaire soumis a échoué (mise à jour ignorée)."
 
-#: lib/abstracts/wp-meta.php:2024
+#: lib/abstracts/wp-meta.php:2025
 msgid "adding schema images"
 msgstr "ajout d'images schéma"
 
@@ -7213,8 +7213,8 @@ msgid "Copied to clipboard."
 msgstr "Copié au presse-papiers."
 
 #: lib/script.php:413
-msgid "Value linked to %s option"
-msgstr "Valeur liée à l'option %s"
+msgid "Value linked to {0} option"
+msgstr "Valeur liée à l'option {0}"
 
 #: lib/script.php:414
 msgid "{0} of {1} characters minimum"
@@ -7231,6 +7231,10 @@ msgstr "{0} de {1} caractères maximum"
 #: lib/script.php:417
 msgid "{0} characters"
 msgstr "{0} caractères"
+
+#: lib/script.php:419
+msgid "There are {0} important error messages under the %s notification icon."
+msgstr "Il y a {0} messages d'erreur importants sous l'icône de notification %s."
 
 #: lib/sitesubmenu/site-addons.php:82
 msgctxt "metabox title"
