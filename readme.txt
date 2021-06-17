@@ -317,6 +317,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.31.0-dev.1 (2021/06/17)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added a reminder message in the block editor in case there are any error messages under the SSO notification icon.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.0.
+	* WordPress v4.5.
+
 **Version 8.30.2 (2021/06/16)**
 
 * **New Features**
@@ -1294,6 +1308,10 @@ This release adds a new SSO &gt; Features Status page and integration module for
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.31.0-dev.1 =
+
+(2021/06/17) Added a reminder message in the block editor in case there are any error messages under the SSO notification icon.
 
 = 8.30.2 =
 
