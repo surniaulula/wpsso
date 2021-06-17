@@ -317,10 +317,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.31.0-dev.1 (2021/06/17)**
+**Version 8.31.0-dev.2 (2021/06/17)**
 
 * **New Features**
-	* None.
+	* Added a new SSO &gt; Advanced Settings &gt; caching &gt; Cache Date Archive Pages option.
 * **Improvements**
 	* Added a snackbar reminder in the block editor in case there are any important error messages under the SSO notification icon.
 * **Bugfixes**
@@ -912,7 +912,7 @@ This release includes a new "Validators" toolbar menu and several changes to the
 	* Moved all options from the SSO &gt; Advanced Settings &gt; Content and Text tab to the Integration tab (removing the Content and Text tab).
 	* Moved the "Default Currency" option to the SSO &gt; General Settings &gt; Site Information tab.
 	* Moved the "Check for Embedded Media" options to the SSO &gt; Advanced Settings &gt; Service APIs tab.
-	* Moved the "Plugin Options to Show by Default" options to the new SSO &gt; Advanced Settings &gt; Interface tab.
+	* Moved the "Options to Show by Default" options to the new SSO &gt; Advanced Settings &gt; Interface tab.
 	* Moved the "Show Document SSO Metabox" option to the new SSO &gt; Advanced Settings &gt; Interface tab.
 	* Moved the "Import Yoast SEO Social Meta" and "Show Yoast SEO Import Details" options to the SSO &gt; Advanced Settings &gt; Integration tab.
 	* Removed the "Notification System" option.
@@ -1309,7 +1309,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.31.0-dev.1 =
+= 8.31.0-dev.2 =
 
 (2021/06/17) Added a snackbar reminder in the block editor in case there are any important error messages under the SSO notification icon.
 
