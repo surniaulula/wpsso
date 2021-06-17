@@ -7525,13 +7525,13 @@ msgid ""
 "all your comments and suggestions."
 msgstr ""
 
-#: lib/messages.php:3126
+#: lib/messages.php:3124
 msgid ""
 "It would help tremendously if you could rate the following plugins on "
 "WordPress.org!"
 msgstr ""
 
-#: lib/messages.php:3134
+#: lib/messages.php:3130
 msgid ""
 "New ratings are an excellent way to ensure the continued success of your "
 "favorite plugins."

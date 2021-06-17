@@ -96,7 +96,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 		/**
 		 * Link Relation URL Tags.
 		 */
-		public function get_array( array $mod, array $mt_og = array(), $author_id = false, $sharing_url = '' ) {
+		public function get_array( array $mod, array $mt_og = array(), $author_id = false ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -122,7 +122,8 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 
 			if ( apply_filters( 'wpsso_add_link_rel_shortlink', $add_link_rel_shortlink, $mod ) ) {
 
-				$shortlink = '';
+				$shortlink   = '';
+				$sharing_url = $this->p->util->get_sharing_url( $mod, $add_page = true );
 
 				if ( $mod[ 'is_post' ] && $mod[ 'id' ] ) {
 

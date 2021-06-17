@@ -50,7 +50,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		 *
 		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 */
-		public function get_head_cache_index( $mixed = 'current', $sharing_url = false ) {
+		public function get_head_cache_index( $mixed = 'current', $canonical_url = false ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -64,9 +64,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$cache_index .= '_locale:' . SucomUtil::get_locale( $mixed );
 			}
 
-			if ( false !== $sharing_url ) {
+			if ( false !== $canonical_url ) {
 
-				$cache_index .= '_url:' . $sharing_url;
+				$cache_index .= '_url:' . $canonical_url;
 			}
 
 			/**
@@ -79,7 +79,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$cache_index = trim( $cache_index, '_' );	// Cleanup leading underscores.
 
-			$cache_index = apply_filters( 'wpsso_head_cache_index', $cache_index, $mixed, $sharing_url );
+			$cache_index = apply_filters( 'wpsso_head_cache_index', $cache_index, $mixed, $canonical_url );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -435,13 +435,13 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$mod = $this->p->page->get_mod( $use_post );
 			}
 
-			$sharing_url = $this->p->util->get_sharing_url( $mod, $add_page = true );
+			$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = true );
 
-			if ( empty( $sharing_url ) ) {	// Just in case.
+			if ( empty( $canonical_url ) ) {	// Just in case.
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: get_sharing_url() returned an empty string' );
+					$this->p->debug->log( 'exiting early: get_canonical_url() returned an empty string' );
 				}
 
 				return array();
@@ -452,9 +452,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 */
 			$cache_md5_pre  = 'wpsso_h_';
 			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre );
-			$cache_salt     = __METHOD__ . '(' . SucomUtil::get_mod_salt( $mod, $sharing_url ) . ')';
+			$cache_salt     = __METHOD__ . '(' . SucomUtil::get_mod_salt( $mod, $canonical_url ) . ')';
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
-			$cache_index    = $this->get_head_cache_index( $mod, $sharing_url );	// Includes locale, url, etc.
+			$cache_index    = $this->get_head_cache_index( $mod, $canonical_url );	// Includes locale, url, etc.
 			$cache_array    = array();
 
 			if ( $mod[ 'is_404' ] || $mod[ 'is_search' ] ) {
@@ -469,7 +469,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'sharing url = ' . $sharing_url );
+				$this->p->debug->log( 'canonical url = ' . $canonical_url );
 				$this->p->debug->log( 'cache expire = ' . $cache_exp_secs );
 				$this->p->debug->log( 'cache salt = ' . $cache_salt );
 				$this->p->debug->log( 'cache id = ' . $cache_id );
@@ -541,7 +541,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/**
 			 * Set a general reference value for admin notices.
 			 */
-			$this->p->util->maybe_set_ref( $sharing_url, $mod );
+			$this->p->util->maybe_set_ref( $canonical_url, $mod );
 
 			/**
 			 * Define the author_id (if one is available).
@@ -556,38 +556,38 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/**
 			 * Open Graph - define first to pass the mt_og array to other methods.
 			 */
-			$this->p->util->maybe_set_ref( $sharing_url, $mod, __( 'adding open graph meta tags', 'wpsso' ) );
+			$this->p->util->maybe_set_ref( $canonical_url, $mod, __( 'adding open graph meta tags', 'wpsso' ) );
 
 			$mt_og = $this->p->og->get_array( $mod );
 
-			$this->p->util->maybe_unset_ref( $sharing_url );
+			$this->p->util->maybe_unset_ref( $canonical_url );
 
 			/**
 			 * Twitter Cards.
 			 */
-			$this->p->util->maybe_set_ref( $sharing_url, $mod, __( 'adding twitter card meta tags', 'wpsso' ) );
+			$this->p->util->maybe_set_ref( $canonical_url, $mod, __( 'adding twitter card meta tags', 'wpsso' ) );
 
 			$mt_tc = $this->p->tc->get_array( $mod, $mt_og, $author_id );
 
-			$this->p->util->maybe_unset_ref( $sharing_url );
+			$this->p->util->maybe_unset_ref( $canonical_url );
 
 			/**
 			 * Name / SEO meta tags.
 			 */
-			$this->p->util->maybe_set_ref( $sharing_url, $mod, __( 'adding meta name meta tags', 'wpsso' ) );
+			$this->p->util->maybe_set_ref( $canonical_url, $mod, __( 'adding meta name meta tags', 'wpsso' ) );
 
 			$mt_name = $this->p->meta_name->get_array( $mod, $mt_og, $author_id );
 
-			$this->p->util->maybe_unset_ref( $sharing_url );
+			$this->p->util->maybe_unset_ref( $canonical_url );
 
 			/**
 			 * Link relation tags.
 			 */
-			$this->p->util->maybe_set_ref( $sharing_url, $mod, __( 'adding link relation tags', 'wpsso' ) );
+			$this->p->util->maybe_set_ref( $canonical_url, $mod, __( 'adding link relation tags', 'wpsso' ) );
 
-			$link_rel = $this->p->link_rel->get_array( $mod, $mt_og, $author_id, $sharing_url );
+			$link_rel = $this->p->link_rel->get_array( $mod, $mt_og, $author_id );
 
-			$this->p->util->maybe_unset_ref( $sharing_url );
+			$this->p->util->maybe_unset_ref( $canonical_url );
 
 			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
 
@@ -605,20 +605,20 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				/**
 				 * Schema itemprop meta tags.
 				 */
-				$this->p->util->maybe_set_ref( $sharing_url, $mod, __( 'adding schema meta tags', 'wpsso' ) );
+				$this->p->util->maybe_set_ref( $canonical_url, $mod, __( 'adding schema meta tags', 'wpsso' ) );
 
 				$mt_item = $this->p->meta_item->get_array( $mod, $mt_og );
 
-				$this->p->util->maybe_unset_ref( $sharing_url );
+				$this->p->util->maybe_unset_ref( $canonical_url );
 
 				/**
 				 * Schema json scripts.
 				 */
-				$this->p->util->maybe_set_ref( $sharing_url, $mod, __( 'adding schema json-ld markup', 'wpsso' ) );
+				$this->p->util->maybe_set_ref( $canonical_url, $mod, __( 'adding schema json-ld markup', 'wpsso' ) );
 
 				$schema_scripts = $this->p->schema->get_array( $mod, $mt_og );
 
-				$this->p->util->maybe_unset_ref( $sharing_url );
+				$this->p->util->maybe_unset_ref( $canonical_url );
 			}
 
 			/**
@@ -657,7 +657,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/**
 			 * Unset the general reference value for admin notices.
 			 */
-			$this->p->util->maybe_unset_ref( $sharing_url );
+			$this->p->util->maybe_unset_ref( $canonical_url );
 
 			if ( $this->p->debug->enabled ) {
 
