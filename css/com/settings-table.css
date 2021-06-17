@@ -788,7 +788,7 @@ table.sucom-settings td textarea::placeholder { color:#ccc; }
 
 table.sucom-settings td input[disabled] { cursor:default; }	/* Keep the default cursor for disabled options. */
 
-table.sucom-settings td div.linked_to_msg {
+table.sucom-settings td div.linked_to_label {
 	display:inline-block;
 	color:#999;
 	font-size:1.2em;

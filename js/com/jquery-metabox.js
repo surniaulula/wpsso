@@ -189,9 +189,9 @@ function sucomSchemaTypeOgType() {
 		if ( schema_og_type_id ) {
 
 			var schema_type_label = sucomAdminPageL10n._option_labels[ 'schema_type' ];
-			var linked_to_label   = sucomAdminPageL10n._linked_to_msg.replace( /%s/, schema_type_label );
+			var linked_to_label   = sucomAdminPageL10n._linked_to_transl.formatUnicorn( schema_type_label );
 
-			select_og_type.after( '<div id="og_type_linked" class="dashicons dashicons-admin-links linked_to_msg" title="' + linked_to_label + '"></div>' );
+			select_og_type.after( '<div id="og_type_linked" class="dashicons dashicons-admin-links linked_to_label" title="' + linked_to_label + '"></div>' );
 
 			select_og_type.prop( 'disabled', true );
 
@@ -248,9 +248,9 @@ function sucomTextLen( container_id ) {
 			limit_html = min_len;
 			msg_transl = '{0} of {1} characters minimum';
 
-			if ( ! sucomAdminPageL10n._min_len_msg ) {
+			if ( ! sucomAdminPageL10n._min_len_transl ) {
 
-				msg_transl = sucomAdminPageL10n._min_len_msg;
+				msg_transl = sucomAdminPageL10n._min_len_transl;
 			}
 
 		} else {
@@ -262,9 +262,9 @@ function sucomTextLen( container_id ) {
 
 			msg_transl = '{0} of {1} characters required';
 
-			if ( ! sucomAdminPageL10n._req_len_msg ) {
+			if ( ! sucomAdminPageL10n._req_len_transl ) {
 
-				msg_transl = sucomAdminPageL10n._req_len_msg;
+				msg_transl = sucomAdminPageL10n._req_len_transl;
 			}
 		}
 
@@ -272,14 +272,14 @@ function sucomTextLen( container_id ) {
 
 		msg_transl = '{0} of {1} characters maximum';
 
-		if ( ! sucomAdminPageL10n._max_len_msg ) {
+		if ( ! sucomAdminPageL10n._max_len_transl ) {
 
-			msg_transl = sucomAdminPageL10n._max_len_msg;
+			msg_transl = sucomAdminPageL10n._max_len_transl;
 		}
 
-	} else if ( ! sucomAdminPageL10n._len_msg ) {
+	} else if ( ! sucomAdminPageL10n._len_transl ) {
 
-		msg_transl = sucomAdminPageL10n._len_msg;
+		msg_transl = sucomAdminPageL10n._len_transl;
 	}
 
 	jQuery( '#' + container_id + '-text-length-message' ).html( '<div class="text_len_msg">' + msg_transl.formatUnicorn( len_html, limit_html ) + '</div>' )
@@ -574,28 +574,4 @@ function sucomToggle( css_id ) {
 	jQuery( '#' + css_id ).toggle();
 
 	return false;
-}
-
-/**
- * String.prototype.formatUnicorn from Stack Overflow.
- */
-String.prototype.formatUnicorn = String.prototype.formatUnicorn || function () {
-
-	"use strict";
-
-	var str = this.toString();
-
-	if ( arguments.length ) {
-
-		var t = typeof arguments[ 0 ];
-		var key;
-		var args = ( "string" === t || "number" === t ) ? Array.prototype.slice.call( arguments ) : arguments[ 0 ];
-
-		for ( key in args ) {
-
-			str = str.replace( new RegExp( "\\{" + key + "\\}", "gi" ), args[ key ] );
-		}
-	}
-
-	return str;
 }

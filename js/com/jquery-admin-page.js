@@ -29,7 +29,7 @@ function sucomCopyById( cssId, cfgName ) {
 
 	try {
 
-		var copyClipboardMsg = cfg._copy_clipboard_msg;
+		var copyClipboardTransl = cfg._copy_clipboard_transl;
 
 		var elem = document.getElementById( cssId );
 
@@ -62,7 +62,7 @@ function sucomCopyById( cssId, cfgName ) {
 
 		target.textContent = '';
 
-		alert( copyClipboardMsg );
+		alert( copyClipboardTransl );
 
 	} catch ( err ) {
 
@@ -169,22 +169,17 @@ function sucomBlockNotices( pluginId, cfgName ) {
 
 			jQuery.each( data[ noticeType ], function( noticeKey ) {
 
-				var noticeObj     = false;
-				var noticeStatus  = false;
-				var noticeSpoken  = data[ noticeType ][ noticeKey ][ 'msg_spoken' ];
-
-				/**
-				 * The current version of the block editor casts the notice message as a string, so we
-				 * cannot give createNotice() an html message or RawHTML element.
-				 *
-				 * var noticeHtml    = data[ noticeType ][ noticeKey ][ 'msg_html' ];
-				 * var noticeElement = createElement( RawHTML, {}, noticeHtml );
-				 */
+				var noticeObj         = false;
+				var noticeStatus      = false;
+				var noticeHtml        = data[ noticeType ][ noticeKey ][ 'msg_html' ];
+				var noticeHtmlElement = createElement( RawHTML, {}, noticeHtml );
+				var noticeSpoken      = data[ noticeType ][ noticeKey ][ 'msg_spoken' ];
+				var noticeDismissable = data[ noticeType ][ noticeKey ][ 'dismiss_time' ] ? false : true;	// True, false, or seconds (0 or more).
 
 				var noticeOptions = {
 					id: noticeKey,
-					spokenMessage: data[ noticeType ][ noticeKey ][ 'msg_spoken' ],
-					isDismissible: data[ noticeType ][ noticeKey ][ 'dismiss_time' ] ? false : true,
+					spokenMessage: noticeSpoken,
+					isDismissible: noticeDismissable,
 				};
 
 				if ( noticeType == 'err' ) {
@@ -214,7 +209,7 @@ function sucomBlockNotices( pluginId, cfgName ) {
 					 * block editor can handle an html notice message, we must give it the "spoken" notice
 					 * message string instead, which is a plain text string.
 					 *
-					 * noticeObj = createNotice( noticeStatus, noticeElement, noticeOptions );
+					 * noticeObj = createNotice( noticeStatus, noticeHtmlElement, noticeOptions );
 					 */
 					noticeObj = createNotice( noticeStatus, noticeSpoken, noticeOptions );
 
@@ -273,6 +268,7 @@ function sucomToolbarNotices( pluginId, cfgName ) {
 		var noticeTypeCount  = {};
 		var noNoticesHtml    = cfg._no_notices_html;
 		var copyNoticesHtml  = cfg._copy_notices_html;
+		var countMsgsTransl  = cfg._count_msgs_transl;
 
 		jQuery.each( data, function( noticeType ) {
 
@@ -334,22 +330,62 @@ function sucomToolbarNotices( pluginId, cfgName ) {
 
 			if ( noticeTypeCount[ 'err' ] ) {
 
+				noticeCount  = noticeTypeCount[ 'err' ];
 				noticeStatus = 'error';
 
 			} else if ( noticeTypeCount[ 'warn' ] ) {
 
+				noticeCount  = noticeTypeCount[ 'warn' ];
 				noticeStatus = 'warning';
 
 			} else if ( noticeTypeCount[ 'inf' ] ) {
 
+				noticeCount  = noticeTypeCount[ 'inf' ];
 				noticeStatus = 'info';
 
 			} else if ( noticeTypeCount[ 'upd' ] ) {
 
+				noticeCount  = noticeTypeCount[ 'upd' ];
 				noticeStatus = 'success';
+			}
+
+			if ( countMsgsTransl[ noticeStatus ] ) {
+
+				var noticeMessage = countMsgsTransl[ noticeStatus ].formatUnicorn( noticeCount );
+
+				var noticeOptions = {
+					type: 'snackbar',
+					spokenMessage: noticeMessage,
+				};
+
+				noticeObj = createNotice( noticeStatus, noticeMessage, noticeOptions );
 			}
 
 			jQuery( menuId ).addClass( 'toolbar-notices-' + noticeStatus );
 		}
 	} );
+}
+
+/**
+ * String.prototype.formatUnicorn from Stack Overflow.
+ */
+String.prototype.formatUnicorn = String.prototype.formatUnicorn || function () {
+
+	"use strict";
+
+	var str = this.toString();
+
+	if ( arguments.length ) {
+
+		var t = typeof arguments[ 0 ];
+		var key;
+		var args = ( "string" === t || "number" === t ) ? Array.prototype.slice.call( arguments ) : arguments[ 0 ];
+
+		for ( key in args ) {
+
+			str = str.replace( new RegExp( "\\{" + key + "\\}", "gi" ), args[ key ] );
+		}
+	}
+
+	return str;
 }

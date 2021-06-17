@@ -258,18 +258,14 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			}
 
 			$payload[ 'notice_label' ] = isset( $payload[ 'notice_label' ] ) ? $payload[ 'notice_label' ] : $this->label_transl;
-
-			$payload[ 'notice_key' ] = empty( $notice_key ) ? false : sanitize_key( $notice_key );
-
-			$payload[ 'notice_time' ] = time();
+			$payload[ 'notice_key' ]   = empty( $notice_key ) ? false : sanitize_key( $notice_key );
+			$payload[ 'notice_time' ]  = time();
 
 			/**
 			 * 0 disables notice expiration.
 			 */
-			$payload[ 'notice_ttl' ]  = isset( $payload[ 'notice_ttl' ] ) ? (int) $payload[ 'notice_ttl' ] : $this->default_ttl;
-
+			$payload[ 'notice_ttl' ]   = isset( $payload[ 'notice_ttl' ] ) ? (int) $payload[ 'notice_ttl' ] : $this->default_ttl;
 			$payload[ 'dismiss_time' ] = false;
-
 			$payload[ 'dismiss_diff' ] = isset( $payload[ 'dismiss_diff' ] ) ? $payload[ 'dismiss_diff' ] : null;
 
 			/**
@@ -328,10 +324,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			 */
 			$msg_text .= $this->get_ref_url_html();
 
-			$payload[ 'msg_text' ] = preg_replace( '/<!--spoken-->(.*?)<!--\/spoken-->/Us', ' ', $msg_text );
-
+			$payload[ 'msg_text' ]   = preg_replace( '/<!--spoken-->(.*?)<!--\/spoken-->/Us', ' ', $msg_text );
 			$payload[ 'msg_spoken' ] = preg_replace( '/<!--not-spoken-->(.*?)<!--\/not-spoken-->/Us', ' ', $msg_text );
-
 			$payload[ 'msg_spoken' ] = SucomUtil::decode_html( SucomUtil::strip_html( $payload[ 'msg_spoken' ] ) );
 
 			$msg_key = empty( $payload[ 'notice_key' ] ) ? sanitize_key( $payload[ 'msg_spoken' ] ) : $payload[ 'notice_key' ];
@@ -698,7 +692,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			 */
 			$tb_types_showing = $this->get_tb_types_showing();	// Returns false or array.
 
-			if ( is_array( $tb_types_showing ) ) {	// The admin toolbar is available.
+			if ( is_array( $tb_types_showing ) ) {	// Admin toolbar is available.
 
 				if ( ! empty( $tb_types_showing ) ) {
 

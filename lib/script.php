@@ -403,18 +403,22 @@ EOF;
 					'get_notices_json'    => 'wpsso_get_notices_json',
 					'schema_type_og_type' => 'wpsso_schema_type_og_type',
 				),
-				'_option_labels'      => $option_labels,
-				'_mb_container_ids'   => $mb_container_ids,	// Metabox ids to update when block editor saves.
-				'_tb_types_showing'   => $tb_types_showing,	// Maybe null, true, false, or array.
-				'_no_notices_html'    => $no_notices_html,
-				'_notice_text_id'     => $notice_text_id,	// CSS id of hidden notice text container.
-				'_copy_notices_html'  => $copy_notices_html,
-				'_copy_clipboard_msg' => __( 'Copied to clipboard.', 'wpsso' ),
-				'_linked_to_msg'      => __( 'Value linked to %s option', 'wpsso' ),
-				'_min_len_msg'        => __( '{0} of {1} characters minimum', 'wpsso' ),
-				'_req_len_msg'        => __( '{0} of {1} characters required', 'wpsso' ),
-				'_max_len_msg'        => __( '{0} of {1} characters maximum', 'wpsso' ),
-				'_len_msg'            => __( '{0} characters', 'wpsso' ),
+				'_option_labels'         => $option_labels,
+				'_mb_container_ids'      => $mb_container_ids,	// Metabox ids to update when block editor saves.
+				'_tb_types_showing'      => $tb_types_showing,	// Maybe null, true, false, or array.
+				'_no_notices_html'       => $no_notices_html,
+				'_notice_text_id'        => $notice_text_id,	// CSS id of hidden notice text container.
+				'_copy_notices_html'     => $copy_notices_html,
+				'_copy_clipboard_transl' => __( 'Copied to clipboard.', 'wpsso' ),
+				'_linked_to_transl'      => __( 'Value linked to {0} option', 'wpsso' ),
+				'_min_len_transl'        => __( '{0} of {1} characters minimum', 'wpsso' ),
+				'_req_len_transl'        => __( '{0} of {1} characters required', 'wpsso' ),
+				'_max_len_transl'        => __( '{0} of {1} characters maximum', 'wpsso' ),
+				'_len_transl'            => __( '{0} characters', 'wpsso' ),
+				'_count_msgs_transl'     => array(
+					'error' => sprintf( __( 'There are {0} important error messages under the %s notification icon.', 'wpsso' ),
+						$this->p->cf[ 'notice' ][ 'title' ] ),
+				),
 			);
 		}
 

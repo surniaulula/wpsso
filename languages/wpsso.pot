@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.30.2\n"
+"Project-Id-Version: WPSSO Core 8.31.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -667,43 +667,43 @@ msgid "Media Library"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:38 lib/com/form.php:882 lib/script.php:427
+#: gettext/gettext-lib-com.php:38 lib/com/form.php:882 lib/script.php:431
 msgid "Select Image"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:41 lib/com/notice.php:288
+#: gettext/gettext-lib-com.php:41 lib/com/notice.php:284
 msgid "Forever"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:42 lib/com/notice.php:290
+#: gettext/gettext-lib-com.php:42 lib/com/notice.php:286
 msgid "This notice can be dismissed permanently."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:43 lib/com/notice.php:302
+#: gettext/gettext-lib-com.php:43 lib/com/notice.php:298
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:44 lib/com/notice.php:516
+#: gettext/gettext-lib-com.php:44 lib/com/notice.php:510
 msgid "Edit"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:45 lib/com/notice.php:520
+#: gettext/gettext-lib-com.php:45 lib/com/notice.php:514
 msgid "Reference: %s"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:46 lib/com/notice.php:720
+#: gettext/gettext-lib-com.php:46 lib/com/notice.php:714
 msgid ""
 "The WordPress admin toolbar appears to be disabled (ie. the WordPress <code>"
 "%s</code> function returned false)."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:47 lib/com/notice.php:723
+#: gettext/gettext-lib-com.php:47 lib/com/notice.php:717
 msgid ""
 "As a consequence, showing discreet notices in the admin toolbar is not "
 "possible."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:48 lib/com/notice.php:725
+#: gettext/gettext-lib-com.php:48 lib/com/notice.php:719
 msgid "Please diagnose the issue to re-enable the admin toolbar."
 msgstr ""
 
@@ -8390,7 +8390,7 @@ msgid "Copied to clipboard."
 msgstr ""
 
 #: lib/script.php:413
-msgid "Value linked to %s option"
+msgid "Value linked to {0} option"
 msgstr ""
 
 #: lib/script.php:414
@@ -8407,6 +8407,10 @@ msgstr ""
 
 #: lib/script.php:417
 msgid "{0} characters"
+msgstr ""
+
+#: lib/script.php:419
+msgid "There are {0} important error messages under the %s notification icon."
 msgstr ""
 
 #: lib/sitesubmenu/site-addons.php:82
