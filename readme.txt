@@ -322,7 +322,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Added a reminder message in the block editor in case there are any error messages under the SSO notification icon.
+	* Added a snackbar reminder in the block editor in case there are any important error messages under the SSO notification icon.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -1311,7 +1311,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 = 8.31.0-dev.1 =
 
-(2021/06/17) Added a reminder message in the block editor in case there are any error messages under the SSO notification icon.
+(2021/06/17) Added a snackbar reminder in the block editor in case there are any important error messages under the SSO notification icon.
 
 = 8.30.2 =
 
