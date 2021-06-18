@@ -1130,11 +1130,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_cache_date_archive':	// Cache Date Archive Pages.
+						case 'tooltip-plugin_cache_date_archive':	// Caching for Date Archive Pages.
 
 							$def_checked = $this->get_def_checked( 'plugin_cache_date_archive' );
 
-							$text = sprintf( __( 'Cache meta tags and Schema markup for date based (year, month, day) archive pages (default is %s).',
+							$text = sprintf( __( 'Enable caching of meta tags and Schema markup for date based (year, month, day) archive pages (default is %s).',
 								'wpsso' ), $def_checked );
 
 							break;
@@ -1166,13 +1166,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : _x( 'disabled', 'option comment', 'wpsso' );
 
-							$text = sprintf( __( 'Clear shortened URLs when clearing %1$s transients from the WordPress database (default is %2$s).',
+							$text = sprintf( __( 'Also clear shortened URLs when clearing the %1$s transient cache (default is %2$s).',
 								'wpsso' ), $info[ 'short' ], $def_checked ) . ' ';
 
 							$text .= sprintf( __( 'Shortened URLs are cached for %1$s seconds (%2$s) to minimize external service API calls.',
 								'wpsso' ), $cache_exp_secs, $cache_exp_human ) . ' ';
 
-							$text .= __( 'Clearing and re-updating all shortened URLs at once may exceed API call limits imposed by your shortening service provider.', 'wpsso' );
+							$text .= __( 'Note that clearing and updating all shortened URLs at once may exceed API limits imposed by your shortening service provider.', 'wpsso' );
 
 							break;
 

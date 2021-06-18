@@ -63,7 +63,7 @@ _x( 'Schema Index Cache Expiry', 'option label', 'wpsso' );
 _x( 'seconds (0 to disable)', 'option comment', 'wpsso' );
 _x( 'Form Selects Cache Expiry', 'option label', 'wpsso' );
 _x( 'seconds (0 to disable)', 'option comment', 'wpsso' );
-_x( 'Cache Date Archive Pages', 'option label', 'wpsso' );
+_x( 'Caching for Date Archive Pages', 'option label', 'wpsso' );
 _x( 'Clear All Caches on Activate', 'option label', 'wpsso' );
 _x( 'Clear All Caches on Deactivate', 'option label', 'wpsso' );
 _x( 'Refresh Short URLs on Clear Cache', 'option label', 'wpsso' );

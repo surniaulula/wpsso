@@ -2710,7 +2710,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:66 lib/pro/admin/advanced.php:357
 #: lib/std/admin/advanced.php:359
 msgctxt "option label"
-msgid "Cache Date Archive Pages"
+msgid "Caching for Date Archive Pages"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:67 lib/pro/admin/advanced.php:363
@@ -6198,8 +6198,8 @@ msgstr ""
 
 #: lib/messages.php:1137
 msgid ""
-"Cache meta tags and Schema markup for date based (year, month, day) archive "
-"pages (default is %s)."
+"Enable caching of meta tags and Schema markup for date based (year, month, "
+"day) archive pages (default is %s)."
 msgstr ""
 
 #: lib/messages.php:1146
@@ -6216,8 +6216,8 @@ msgstr ""
 
 #: lib/messages.php:1169
 msgid ""
-"Clear shortened URLs when clearing %1$s transients from the WordPress "
-"database (default is %2$s)."
+"Also clear shortened URLs when clearing the %1$s transient cache (default is "
+"%2$s)."
 msgstr ""
 
 #: lib/messages.php:1172
@@ -6228,7 +6228,7 @@ msgstr ""
 
 #: lib/messages.php:1175
 msgid ""
-"Clearing and re-updating all shortened URLs at once may exceed API call "
+"Note that clearing and updating all shortened URLs at once may exceed API "
 "limits imposed by your shortening service provider."
 msgstr ""
 

@@ -737,7 +737,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		}
 
 		/**
-		 * Disable the head markup, setup page, shortcode page, and post content transient cache.
+		 * Disable the head markup, setup page, shortcode page, and post content cache.
 		 *
 		 * This method is also called by WpssoUtil->get_request_url() for URLs with query arguments.
 		 */
