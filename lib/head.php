@@ -405,7 +405,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$html .= $this->get_mt_mark( 'end' );
 
 			$mtime_total = microtime( $get_float = true ) - $mtime_start;
-			$total_secs  = sprintf( '%f secs', $mtime_total );
+
+			$total_secs = sprintf( '%f secs', $mtime_total );
 
 			$html .= '<!-- added on ' . date( 'c' ) . ' in ' . $total_secs . ' from ' . $home_url . ' -->' . "\n\n";
 

@@ -2263,9 +2263,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * Transient id prefix.
 				 */
 				'transient' => array(
-					'wpsso_!_' => array(	// Protect from being cleared automatically.
-					),
-					'wpsso_b_' => array(	// Sharing buttons HTML.
+					'wpsso_!_' => array(	// Is not cleared automatically.
 					),
 					'wpsso_f_' => array(	// Default is month in seconds.
 						'label'   => 'Form Selects',

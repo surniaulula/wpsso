@@ -5055,27 +5055,27 @@ msgctxt "submit button"
 msgid "Validate %s"
 msgstr ""
 
-#: lib/head.php:558
+#: lib/head.php:559
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:567
+#: lib/head.php:568
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:576
+#: lib/head.php:577
 msgid "adding meta name meta tags"
 msgstr ""
 
-#: lib/head.php:585
+#: lib/head.php:586
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:607
+#: lib/head.php:608
 msgid "adding schema meta tags"
 msgstr ""
 
-#: lib/head.php:616
+#: lib/head.php:617
 msgid "adding schema json-ld markup"
 msgstr ""
 
