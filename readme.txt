@@ -317,7 +317,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.31.0-b.1 (2021/06/17)**
+**Version 8.31.0-rc.1 (2021/06/18)**
 
 * **New Features**
 	* Added a new SSO &gt; Advanced Settings &gt; caching &gt; Cache Date Archive Pages option.
@@ -1309,9 +1309,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.31.0-b.1 =
+= 8.31.0-rc.1 =
 
-(2021/06/17) Added a snackbar reminder in the block editor in case there are any important error messages under the SSO notification icon.
+(2021/06/18) Added a snackbar reminder in the block editor in case there are any important error messages under the SSO notification icon.
 
 = 8.30.2 =
 
