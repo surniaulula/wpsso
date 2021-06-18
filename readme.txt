@@ -320,7 +320,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 8.31.0 (2021/06/18)**
 
 * **New Features**
-	* Added a new SSO &gt; Advanced Settings &gt; caching &gt; Cache Date Archive Pages option.
+	* Added a new SSO &gt; Advanced Settings &gt; caching &gt; Caching for Date Archive Pages option.
 * **Improvements**
 	* Added a snackbar reminder in the block editor in case there are any important error messages under the SSO notification icon.
 * **Bugfixes**
