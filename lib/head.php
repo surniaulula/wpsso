@@ -464,7 +464,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 */
 			if ( $mod[ 'is_404' ] || $mod[ 'is_search' ] || ( ! $cache_date_archive && $mod[ 'is_date' ] ) ) {
 
-				$cache_exp_secs = 0;
+				$read_cache = false;
 			}
 
 			if ( $this->p->debug->enabled ) {
