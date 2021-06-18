@@ -38,7 +38,7 @@ function sucomCopyById( cssId, cfgName ) {
 		 */
 		var elemVal = elem.value;
 
-		if ( undefined === elemVal ) {
+		if ( 'undefined' === elemVal ) {
 
 			elemVal = elem.textContent;
 		}
@@ -174,13 +174,8 @@ function sucomBlockNotices( pluginId, cfgName ) {
 				var noticeHtml        = data[ noticeType ][ noticeKey ][ 'msg_html' ];
 				var noticeHtmlElement = createElement( RawHTML, {}, noticeHtml );
 				var noticeSpoken      = data[ noticeType ][ noticeKey ][ 'msg_spoken' ];
-				var noticeDismissable = data[ noticeType ][ noticeKey ][ 'dismiss_time' ] ? false : true;	// True, false, or seconds (0 or more).
-
-				var noticeOptions = {
-					id: noticeKey,
-					spokenMessage: noticeSpoken,
-					isDismissible: noticeDismissable,
-				};
+				var noticeDismissable = data[ noticeType ][ noticeKey ][ 'dismiss_time' ] ? true : false;	// True, false, or seconds (0 or more).
+				var noticeHidden      = data[ noticeType ][ noticeKey ][ 'hidden' ] ? true : false;
 
 				if ( noticeType == 'err' ) {
 
@@ -192,14 +187,22 @@ function sucomBlockNotices( pluginId, cfgName ) {
 
 				} else if ( noticeType == 'inf' ) {
 
-					noticeStatus = 'info';
+					noticeStatus      = 'info';
+					noticeDismissable = true;	// Always make info messages dismissible.
 
 				} else if ( noticeType == 'upd' ) {
 
-					noticeStatus = 'success';
+					noticeStatus      = 'success';
+					noticeDismissable = true;	// Always make success messages dismissible.
 				}
 
-				if ( noticeStatus ) {
+				if ( noticeStatus && ! noticeHidden ) {
+
+					var noticeOptions = {
+						id: noticeKey,
+						spokenMessage: noticeSpoken,
+						isDismissible: noticeDismissable,
+					};
 
 					removeNotice( noticeKey );
 
@@ -214,9 +217,10 @@ function sucomBlockNotices( pluginId, cfgName ) {
 					noticeObj = createNotice( noticeStatus, noticeSpoken, noticeOptions );
 
 					/**
-					 * Remove the notices class to fix notice-in-notice padding issues.
+					 * Remove the notices class to fix notice-in-notice padding issues for RawHTML elements.
+					 *
+					 * jQuery( 'div.' + pluginId + '-notice' ).parents( 'div.components-notice' ).removeClass( 'components-notice' );
 					 */
-					jQuery( 'div.' + pluginId + '-notice' ).parents( 'div.components-notice' ).removeClass( 'components-notice' );
 				}
 			} );
 		} );
@@ -349,19 +353,26 @@ function sucomToolbarNotices( pluginId, cfgName ) {
 				noticeStatus = 'success';
 			}
 
+			jQuery( menuId ).addClass( 'toolbar-notices-' + noticeStatus );
+
 			if ( countMsgsTransl[ noticeStatus ] ) {
 
-				var noticeMessage = countMsgsTransl[ noticeStatus ].formatUnicorn( noticeCount );
+				if ( 'undefined' !== typeof createNotice ) {
 
-				var noticeOptions = {
-					type: 'snackbar',
-					spokenMessage: noticeMessage,
-				};
+					var noticeKey     = 'notice-count-msg-' + noticeStatus;
+					var noticeMessage = countMsgsTransl[ noticeStatus ].formatUnicorn( noticeCount );
 
-				noticeObj = createNotice( noticeStatus, noticeMessage, noticeOptions );
+					var noticeOptions = {
+						id: noticeKey,
+						type: 'snackbar',
+						spokenMessage: noticeMessage,
+					};
+
+					removeNotice( noticeKey );
+
+					noticeObj = createNotice( noticeStatus, noticeMessage, noticeOptions );
+				}
 			}
-
-			jQuery( menuId ).addClass( 'toolbar-notices-' + noticeStatus );
 		}
 	} );
 }

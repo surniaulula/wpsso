@@ -464,7 +464,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 */
 			if ( $mod[ 'is_404' ] || $mod[ 'is_search' ] || ( ! $cache_date_archive && $mod[ 'is_date' ] ) ) {
 
-				$read_cache = false;
+				$cache_exp_secs = 0;
 			}
 
 			if ( $this->p->debug->enabled ) {
@@ -494,13 +494,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 							return $cache_array[ $cache_index ];	// Stop here.
 
-						} else {
+						} elseif ( $this->p->debug->enabled ) {
 
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'cache index is not an array' );
-							}
+							$this->p->debug->log( 'cache index is not an array' );
 						}
+
 					} else {
 
 						if ( $this->p->debug->enabled ) {
@@ -514,27 +512,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						}
 					}
 
-				} else {
+				} elseif ( $this->p->debug->enabled ) {
 
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'read cache for head is disabled' );
-					}
-				}
-
-			} else {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'head array transient cache is disabled' );
-				}
-
-				if ( SucomUtil::delete_transient_array( $cache_id ) ) {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'deleted transient cache id ' . $cache_id );
-					}
+					$this->p->debug->log( 'read cache for head is disabled' );
 				}
 			}
 
