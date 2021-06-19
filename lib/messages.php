@@ -2727,23 +2727,28 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'notice-image-rejected':
 
-						$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
-
-						$media_tab = _x( 'Priority Media', 'metabox tab', 'wpsso' );
-
+						$mb_title     = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+						$media_tab    = _x( 'Priority Media', 'metabox tab', 'wpsso' );
 						$is_meta_page = WpssoWpMeta::is_meta_page();
+
+						$text = '<!-- show-once -->';
+
+						$text .= ' <p>';
+
+						$text .= __( 'Please note that a correctly sized image improves click-through-rates by presenting your content at its best on social sites and in search results.', 'wpsso' ) . ' ';
 
 						if ( $is_meta_page ) {
 
-							$text = sprintf( __( 'A larger custom image can be selected in the %1$s metabox under the %2$s tab.',
-								'wpsso' ), $mb_title, $media_tab );
+							$text .= sprintf( __( 'A larger image can be uploaded and/or selected in the %1$s metabox under the %2$s tab.', 'wpsso' ), $mb_title, $media_tab );
 
 						} else {
 
-							$text = __( 'Consider replacing the original image with a higher resolution version.', 'wpsso' ) . ' ';
+							$text .= __( 'Consider replacing the original image with a higher resolution version.', 'wpsso' ) . ' ';
 
 							$text .= sprintf( __( 'See <a href="%s">Why shouldn\'t I upload small images to the media library?</a> for more information on WordPress image sizes.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/' ). ' ';
 						}
+
+						$text .= '</p>';
 
 						/**
 						 * WpssoMedia->is_image_within_config_limits() sets 'show_adjust_img_opts' = false
@@ -2765,37 +2770,28 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								$img_sizes_tab_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_image_sizes',
 									_x( 'Image Sizes', 'lib file description', 'wpsso' ) );
 
-								/**
-								 * Add an HTML comment to signal that additional md5() matching
-								 * sections should be removed from any following notice messages
-								 * (ie. show this section only once).
-								 */
-								$text .= '<!-- show-once -->';
-
-								$text .= ' <p style="margin-left:0;"><em>' .
-									__( 'Additional information shown only to users with Administrative privileges:',
-										'wpsso' ) . '</em></p>';
+								$text .= ' <p><strong>';
+								
+								$text .= __( 'Additional information shown only to users with Administrative privileges:', 'wpsso' );
+								
+								$text .= '</strong></p>';
 
 								$text .= '<ul>';
 
-								$text .= ' <li>' . __( 'Replace the original image with a higher resolution version.',
-									'wpsso' ) . '</li>';
+								$text .= ' <li>' . __( 'Replace the original image with a higher resolution version.', 'wpsso' ) . '</li>';
 
 								if ( $is_meta_page ) {
 
-									$text .= ' <li>' . sprintf( __( 'Select a larger image under the %1$s &gt; %2$s tab.',
-										'wpsso' ), $mb_title, $media_tab ) . '</li>';
+									$text .= ' <li>' . sprintf( __( 'Select a larger image under the %1$s &gt; %2$s tab.', 'wpsso' ), $mb_title, $media_tab ) . '</li>';
 								}
 
 								if ( empty( $this->p->options[ 'plugin_upscale_images' ] ) ) {
 
-									$text .= ' <li>' . sprintf( __( 'Enable the %s option.',
-										'wpsso' ), $upscale_option_link ) . '</li>';
+									$text .= ' <li>' . sprintf( __( 'Enable the %s option.', 'wpsso' ), $upscale_option_link ) . '</li>';
 
 								} else {
 
-									$text .= ' <li>' . sprintf( __( 'Increase the %s option value.',
-										'wpsso' ), $pct_option_link ) . '</li>';
+									$text .= ' <li>' . sprintf( __( 'Increase the %s option value.', 'wpsso' ), $pct_option_link ) . '</li>';
 								}
 
 								/**
@@ -2805,21 +2801,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								 */
 								if ( ! isset( $info[ 'show_adjust_img_size_opts' ] ) || ! empty( $info[ 'show_adjust_img_size_opts' ] ) ) {
 
-									$text .= ' <li>' . sprintf( __( 'Update image size dimensions in the %s settings page.',
-										'wpsso' ), $img_sizes_tab_link ) . '</li>';
+									$text .= ' <li>' . sprintf( __( 'Update image size dimensions in the %s settings page.', 'wpsso' ), $img_sizes_tab_link ) . '</li>';
 
 									if ( ! empty( $this->p->options[ 'plugin_check_img_dims' ] ) ) {
 
-										$text .= ' <li>' . sprintf( __( 'Disable the %s option (not recommended).',
-											'wpsso' ), $img_dim_option_link ) . '</li>';
+										$text .= ' <li>' . sprintf( __( 'Disable the %s option (not recommended).', 'wpsso' ), $img_dim_option_link ) . '</li>';
 									}
 								}
 
 								$text .= '</ul>';
-
-								$text .= '<!-- /show-once -->';
 							}
 						}
+
+						$text .= '<!-- /show-once -->';
 
 						break;
 
