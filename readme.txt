@@ -20,7 +20,7 @@ Present your content at its best on social sites and in search results - no matt
 
 <h3 class="top">THE MOST ADVANCED STRUCTURED DATA PLUGIN FOR WORDPRESS</h3>
 
-<p><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"><strong>WPSSO helps you rank higher and increase click-through-rates by presenting your content at its best on social sites and in search results - no matter how webpages are shared, re-shared, messaged, posted, embedded, or crawled.</strong></p>
+<p><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"><strong>WPSSO helps you rank higher and improve click-through-rates by presenting your content at its best on social sites and in search results - no matter how webpages are shared, re-shared, messaged, posted, embedded, or crawled.</strong></p>
 
 <p><strong>WPSSO provides meta tags and structured data markup for:</strong></p>
 
