@@ -45,7 +45,7 @@ WPSSO can be your only social and search optimization plugin, or combined to imp
 
 <p><strong>WPSSO is fast, reliable, and coded for performance:</strong></p>
 
-WPSSO is coded for speed and QUALITY ASSURANCE using advanced WordPress caching techniques, media optimization (ie. image and video SEO, 1:1, 4:3, and 16:9 images for Google, etc.), template validations, discreet contextual notices, and much more.
+WPSSO is coded for SPEED and QUALITY ASSURANCE using advanced WordPress caching techniques, media optimization (ie. image and video SEO, 1:1, 4:3, and 16:9 images for Google, etc.), template validations, discreet contextual notices, and much more.
 
 <h3>Users Love the WPSSO Core Plugin</h3>
 
