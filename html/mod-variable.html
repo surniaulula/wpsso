@@ -45,28 +45,19 @@
     [tax_slug] =&gt; ''
     [tax_label] =&gt; false
 )</pre>
-<!-- /wp:preformatted -->
 
-<!-- wp:paragraph -->
 <p>An example to retrieve custom post meta:</p>
-<!-- /wp:paragraph -->
 
-<!-- wp:preformatted {"className":"lang:php decode:true"} -->
-<pre class="wp-block-preformatted lang:php decode:true">if ( $mod['is_post'] ) {
+<pre class="lang:php decode:true">
+if ( $mod[ 'is_post' ] ) {
 
-    $value = get_post_meta( $mod['id'], 'example_meta_name', true );
+    $value = get_post_meta( $mod[ 'id' ], 'example_meta_name', $single = true );
 }
 </pre>
-<!-- /wp:preformatted -->
 
-<!-- wp:paragraph -->
-<p>The 'obj' element can be used to call the module object methods.</p>
-<!-- /wp:paragraph -->
+<p>The 'obj' element can be used to call module object methods. Here's an example to get a custom Open Graph description value (if one has been defined):</p>
 
-<!-- wp:paragraph -->
-<p>Here's an example to get a custom Open Graph description value (if one has been defined):</p>
-<!-- /wp:paragraph -->
+<pre class="lang:php decode:true">
+$og_desc = $mod[ 'obj' ]-&gt;get_options( $mod[ 'id' ], 'og_desc' );
+</pre>
 
-<!-- wp:preformatted {"className":"lang:php decode:true"} -->
-<pre class="wp-block-preformatted lang:php decode:true">$og_desc = $mod['obj']-&gt;get_options( $mod['id'], 'og_desc' );</pre>
-<!-- /wp:preformatted -->
