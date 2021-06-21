@@ -2656,17 +2656,17 @@ msgctxt "option label"
 msgid "Head Markup Cache Expiry"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:53 gettext/gettext-lib-pro.php:55
-#: gettext/gettext-lib-pro.php:57 gettext/gettext-lib-pro.php:59
-#: gettext/gettext-lib-pro.php:61 gettext/gettext-lib-pro.php:63
-#: gettext/gettext-lib-pro.php:65 lib/pro/admin/advanced.php:311
-#: lib/pro/admin/advanced.php:318 lib/pro/admin/advanced.php:325
-#: lib/pro/admin/advanced.php:332 lib/pro/admin/advanced.php:339
-#: lib/pro/admin/advanced.php:346 lib/pro/admin/advanced.php:353
-#: lib/std/admin/advanced.php:313 lib/std/admin/advanced.php:320
-#: lib/std/admin/advanced.php:327 lib/std/admin/advanced.php:334
-#: lib/std/admin/advanced.php:341 lib/std/admin/advanced.php:348
-#: lib/std/admin/advanced.php:355
+#: gettext/gettext-lib-pro.php:53 gettext/gettext-lib-pro.php:57
+#: gettext/gettext-lib-pro.php:59 gettext/gettext-lib-pro.php:61
+#: gettext/gettext-lib-pro.php:63 gettext/gettext-lib-pro.php:65
+#: gettext/gettext-lib-pro.php:67 lib/pro/admin/advanced.php:311
+#: lib/pro/admin/advanced.php:330 lib/pro/admin/advanced.php:337
+#: lib/pro/admin/advanced.php:344 lib/pro/admin/advanced.php:351
+#: lib/pro/admin/advanced.php:358 lib/pro/admin/advanced.php:365
+#: lib/std/admin/advanced.php:313 lib/std/admin/advanced.php:332
+#: lib/std/admin/advanced.php:339 lib/std/admin/advanced.php:346
+#: lib/std/admin/advanced.php:353 lib/std/admin/advanced.php:360
+#: lib/std/admin/advanced.php:367
 msgctxt "option comment"
 msgid "seconds (0 to disable)"
 msgstr ""
@@ -2674,49 +2674,49 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:54 lib/pro/admin/advanced.php:315
 #: lib/std/admin/advanced.php:317
 msgctxt "option label"
+msgid "Cache Attachment Markup"
+msgstr ""
+
+#: gettext/gettext-lib-pro.php:55 lib/pro/admin/advanced.php:321
+#: lib/std/admin/advanced.php:323
+msgctxt "option label"
+msgid "Cache Date Archive Markup"
+msgstr ""
+
+#: gettext/gettext-lib-pro.php:56 lib/pro/admin/advanced.php:327
+#: lib/std/admin/advanced.php:329
+msgctxt "option label"
 msgid "Filtered Content Cache Expiry"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:56 lib/pro/admin/advanced.php:322
-#: lib/std/admin/advanced.php:324
+#: gettext/gettext-lib-pro.php:58 lib/pro/admin/advanced.php:334
+#: lib/std/admin/advanced.php:336
 msgctxt "option label"
 msgid "Image URL Info Cache Expiry"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:58 lib/pro/admin/advanced.php:329
-#: lib/std/admin/advanced.php:331
+#: gettext/gettext-lib-pro.php:60 lib/pro/admin/advanced.php:341
+#: lib/std/admin/advanced.php:343
 msgctxt "option label"
 msgid "Video API Info Cache Expiry"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:60 lib/pro/admin/advanced.php:336
-#: lib/std/admin/advanced.php:338
+#: gettext/gettext-lib-pro.php:62 lib/pro/admin/advanced.php:348
+#: lib/std/admin/advanced.php:350
 msgctxt "option label"
 msgid "Shortened URL Cache Expiry"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:62 lib/pro/admin/advanced.php:343
-#: lib/std/admin/advanced.php:345
+#: gettext/gettext-lib-pro.php:64 lib/pro/admin/advanced.php:355
+#: lib/std/admin/advanced.php:357
 msgctxt "option label"
 msgid "Schema Index Cache Expiry"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:64 lib/pro/admin/advanced.php:350
-#: lib/std/admin/advanced.php:352
+#: gettext/gettext-lib-pro.php:66 lib/pro/admin/advanced.php:362
+#: lib/std/admin/advanced.php:364
 msgctxt "option label"
 msgid "Form Selects Cache Expiry"
-msgstr ""
-
-#: gettext/gettext-lib-pro.php:66 lib/pro/admin/advanced.php:357
-#: lib/std/admin/advanced.php:359
-msgctxt "option label"
-msgid "Cache Attachment Markup"
-msgstr ""
-
-#: gettext/gettext-lib-pro.php:67 lib/pro/admin/advanced.php:363
-#: lib/std/admin/advanced.php:365
-msgctxt "option label"
-msgid "Cache Date Archive Markup"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:68 lib/pro/admin/advanced.php:369
@@ -6145,9 +6145,9 @@ msgid ""
 "for Posts, Terms, and Users."
 msgstr ""
 
-#: lib/messages.php:1053 lib/messages.php:1065 lib/messages.php:1077
-#: lib/messages.php:1089 lib/messages.php:1101 lib/messages.php:1113
-#: lib/messages.php:1125 lib/messages.php:1180
+#: lib/messages.php:1053 lib/messages.php:1087 lib/messages.php:1099
+#: lib/messages.php:1111 lib/messages.php:1123 lib/messages.php:1135
+#: lib/messages.php:1147 lib/messages.php:1180
 msgctxt "option comment"
 msgid "disabled"
 msgstr ""
@@ -6158,80 +6158,80 @@ msgid ""
 "to optimize performance."
 msgstr ""
 
-#: lib/messages.php:1057 lib/messages.php:1069 lib/messages.php:1081
-#: lib/messages.php:1093 lib/messages.php:1105 lib/messages.php:1117
-#: lib/messages.php:1129
+#: lib/messages.php:1057 lib/messages.php:1091 lib/messages.php:1103
+#: lib/messages.php:1115 lib/messages.php:1127 lib/messages.php:1139
+#: lib/messages.php:1151
 msgid "The suggested cache expiration value is %1$s seconds (%2$s)."
 msgstr ""
 
-#: lib/messages.php:1067
-msgid ""
-"Filtered post content is saved to the WordPress <em>non-persistent</em> "
-"object cache to optimize performance."
-msgstr ""
-
-#: lib/messages.php:1079
-msgid ""
-"The size information for image URLs (not image IDs) is retrieved and saved "
-"to the WordPress transient cache to optimize performance and save network "
-"bandwidth."
-msgstr ""
-
-#: lib/messages.php:1091
-msgid ""
-"Video information is retrieved from the video service API and saved to the "
-"WordPress transient cache to optimize performance and reduce API connections."
-msgstr ""
-
-#: lib/messages.php:1103
-msgid ""
-"Shortened URLs are saved to the WordPress transient cache to optimize "
-"performance and reduce API connections."
-msgstr ""
-
-#: lib/messages.php:1115
-msgid ""
-"The Schema type arrays (ie. the indexed lists of all Schema types) are saved "
-"to the WordPress transient cache to optimize performance."
-msgstr ""
-
-#: lib/messages.php:1127
-msgid ""
-"The filtered text list arrays (for example, article sections and product "
-"categories) are saved to the WordPress transient cache to optimize "
-"performance and disk access."
-msgstr ""
-
-#: lib/messages.php:1137
+#: lib/messages.php:1065
 msgid ""
 "You may enable or disable caching of meta tags and Schema markup for media "
 "attachment pages (default is %s)."
 msgstr ""
 
-#: lib/messages.php:1139
+#: lib/messages.php:1067
 msgid ""
 "Since media attachment pages are not often visited, caching is disabled by "
 "default to reduce the number of transient cache objects created in the "
 "database options table."
 msgstr ""
 
-#: lib/messages.php:1141
+#: lib/messages.php:1069
 msgid ""
 "As an example, the addition of meta tags and Schema markup may take %1$s "
 "with caching enabled and %2$s with caching disabled."
 msgstr ""
 
-#: lib/messages.php:1149
+#: lib/messages.php:1077
 msgid ""
 "You may enable or disable caching of meta tags and Schema markup for date "
 "based (year, month, day) archive pages (default is %s)."
 msgstr ""
 
-#: lib/messages.php:1151
+#: lib/messages.php:1079
 msgid ""
 "Since date based archive pages are not often visited, caching is disabled by "
 "default to reduce the number of transient cache objects created in the "
 "database options table."
+msgstr ""
+
+#: lib/messages.php:1089
+msgid ""
+"Filtered post content is saved to the WordPress <em>non-persistent</em> "
+"object cache to optimize performance."
+msgstr ""
+
+#: lib/messages.php:1101
+msgid ""
+"The size information for image URLs (not image IDs) is retrieved and saved "
+"to the WordPress transient cache to optimize performance and save network "
+"bandwidth."
+msgstr ""
+
+#: lib/messages.php:1113
+msgid ""
+"Video information is retrieved from the video service API and saved to the "
+"WordPress transient cache to optimize performance and reduce API connections."
+msgstr ""
+
+#: lib/messages.php:1125
+msgid ""
+"Shortened URLs are saved to the WordPress transient cache to optimize "
+"performance and reduce API connections."
+msgstr ""
+
+#: lib/messages.php:1137
+msgid ""
+"The Schema type arrays (ie. the indexed lists of all Schema types) are saved "
+"to the WordPress transient cache to optimize performance."
+msgstr ""
+
+#: lib/messages.php:1149
+msgid ""
+"The filtered text list arrays (for example, article sections and product "
+"categories) are saved to the WordPress transient cache to optimize "
+"performance and disk access."
 msgstr ""
 
 #: lib/messages.php:1159

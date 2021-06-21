@@ -1725,14 +1725,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Advanced Settings > Caching tab.
 					 */
 					'plugin_head_cache_exp'      => WEEK_IN_SECONDS,	// Head Markup Cache Expiry (1 week).
+					'plugin_cache_attach_page'   => 0,			// Cache Attachment Markup.
+					'plugin_cache_date_archive'  => 0,			// Cache Date Archive Markup.
 					'plugin_content_cache_exp'   => 43200,			// Filtered Content Cache Expiry (12 hours).
 					'plugin_imgsize_cache_exp'   => DAY_IN_SECONDS,		// Image URL Info Cache Expiry (1 day).
 					'plugin_vidinfo_cache_exp'   => DAY_IN_SECONDS,		// Video API Info Cache Expiry (1 day).
 					'plugin_short_url_cache_exp' => 7776000,		// Shortened URL Cache Expiry (90 days).
 					'plugin_types_cache_exp'     => MONTH_IN_SECONDS,	// Schema Index Cache Expiry (1 month).
 					'plugin_select_cache_exp'    => MONTH_IN_SECONDS,	// Form Selects Cache Expiry (1 month).
-					'plugin_cache_attach_page'   => 0,			// Cache Attachment Markup.
-					'plugin_cache_date_archive'  => 0,			// Cache Date Archive Markup.
 					'plugin_clear_on_activate'   => 1,			// Clear All Caches on Activate.
 					'plugin_clear_on_deactivate' => 0,			// Clear All Caches on Deactivate.
 					'plugin_clear_short_urls'    => 0,			// Refresh Short URLs on Clear Cache.
@@ -1944,6 +1944,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'plugin_head_cache_exp'          => WEEK_IN_SECONDS,	// Head Markup Cache Expiry (1 week).
 					'plugin_head_cache_exp:use'      => 'default',
+					'plugin_cache_attach_page'       => 0,			// Cache Attachment Markup.
+					'plugin_cache_attach_page:use'   => 'default',
+					'plugin_cache_date_archive'      => 0,			// Cache Date Archive Markup.
+					'plugin_cache_date_archive:use'  => 'default',
 					'plugin_content_cache_exp'       => 43200,		// Filtered Content Cache Expiry (12 hours).
 					'plugin_content_cache_exp:use'   => 'default',
 					'plugin_imgsize_cache_exp'       => DAY_IN_SECONDS,	// Image URL Info Cache Expiry (1 day).
@@ -1956,10 +1960,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_types_cache_exp:use'     => 'default',
 					'plugin_select_cache_exp'        => MONTH_IN_SECONDS,	// Form Selects Cache Expiry (1 month).
 					'plugin_select_cache_exp:use'    => 'default',
-					'plugin_cache_attach_page'       => 0,			// Cache Attachment Markup.
-					'plugin_cache_attach_page:use'   => 'default',
-					'plugin_cache_date_archive'      => 0,			// Cache Date Archive Markup.
-					'plugin_cache_date_archive:use'  => 'default',
 					'plugin_clear_on_activate'       => 1,			// Clear All Caches on Activate.
 					'plugin_clear_on_activate:use'   => 'default',
 					'plugin_clear_on_deactivate'     => 0,			// Clear All Caches on Deactivate.

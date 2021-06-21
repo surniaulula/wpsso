@@ -313,6 +313,18 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
 				WpssoAdmin::get_option_site_use( 'plugin_head_cache_exp', $form, $network );
 
+			$table_rows[ 'plugin_cache_attach_page' ] = $form->get_tr_hide( 'basic', 'plugin_cache_attach_page' ) . 
+				$form->get_th_html( _x( 'Cache Attachment Markup', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_cache_attach_page' ) . 
+				$form->get_no_td_checkbox( 'plugin_cache_attach_page' ) . 
+				WpssoAdmin::get_option_site_use( 'plugin_cache_attach_page', $form, $network );
+
+			$table_rows[ 'plugin_cache_date_archive' ] = $form->get_tr_hide( 'basic', 'plugin_cache_date_archive' ) . 
+				$form->get_th_html( _x( 'Cache Date Archive Markup', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_cache_date_archive' ) . 
+				$form->get_no_td_checkbox( 'plugin_cache_date_archive' ) . 
+				WpssoAdmin::get_option_site_use( 'plugin_cache_date_archive', $form, $network );
+
 			$table_rows[ 'plugin_content_cache_exp' ] = $form->get_tr_hide( 'basic', 'plugin_content_cache_exp' ) . 
 				$form->get_th_html( _x( 'Filtered Content Cache Expiry', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_content_cache_exp' ) . 
@@ -354,18 +366,6 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'<td nowrap class="blank">' . $form->get_no_input( 'plugin_select_cache_exp', $css_class = 'medium' ) . ' ' . 
 				_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
 				WpssoAdmin::get_option_site_use( 'plugin_select_cache_exp', $form, $network );
-
-			$table_rows[ 'plugin_cache_attach_page' ] = $form->get_tr_hide( 'basic', 'plugin_cache_attach_page' ) . 
-				$form->get_th_html( _x( 'Cache Attachment Markup', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_cache_attach_page' ) . 
-				$form->get_no_td_checkbox( 'plugin_cache_attach_page' ) . 
-				WpssoAdmin::get_option_site_use( 'plugin_cache_attach_page', $form, $network );
-
-			$table_rows[ 'plugin_cache_date_archive' ] = $form->get_tr_hide( 'basic', 'plugin_cache_date_archive' ) . 
-				$form->get_th_html( _x( 'Cache Date Archive Markup', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_cache_date_archive' ) . 
-				$form->get_no_td_checkbox( 'plugin_cache_date_archive' ) . 
-				WpssoAdmin::get_option_site_use( 'plugin_cache_date_archive', $form, $network );
 
 			$table_rows[ 'plugin_clear_on_activate' ] = $form->get_tr_hide( 'basic', 'plugin_clear_on_activate' ) . 
 				$form->get_th_html( _x( 'Clear All Caches on Activate', 'option label', 'wpsso' ),
