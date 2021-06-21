@@ -317,16 +317,19 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.32.0-dev.1 (TBD)**
+**Version 8.32.0-dev.1 (2021/06/21)**
 
 * **New Features**
-	* None.
+	* Added a new SSO &gt; Advanced Settings &gt; Caching &gt; Cache Attachment Markup option.
 * **Improvements**
 	* None.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added new constants:
+		* `WPSSO_CACHE_REFRESH_MAX_TIME`
+		* `WPSSO_CACHE_REFRESH_SLEEP_TIME`
+	* Refactored the `WpssoUtil->get_cache_exp_secs()` method.
 * **Requires At Least**
 	* PHP v7.0.
 	* WordPress v4.5.
@@ -334,7 +337,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 8.31.0 (2021/06/18)**
 
 * **New Features**
-	* Added a new SSO &gt; Advanced Settings &gt; caching &gt; Cache Date Archive Markup option.
+	* Added a new SSO &gt; Advanced Settings &gt; Caching &gt; Cache Date Archive Markup option.
 * **Improvements**
 	* Added a snackbar reminder in the block editor in case there are any important error messages under the SSO notification icon.
 * **Bugfixes**
@@ -1325,11 +1328,11 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 = 8.32.0-dev.1 =
 
-(TBD) None.
+(2021/06/21) Added a new SSO &gt; Advanced Settings &gt; Caching &gt; Cache Attachment Markup option.
 
 = 8.31.0 =
 
-(2021/06/18) Added a snackbar reminder in the block editor in case there are any important error messages under the SSO notification icon.
+(2021/06/18) Added a snackbar reminder in the block editor in case there are any important error messages under the SSO notification icon. Added a new SSO &gt; Advanced Settings &gt; Caching &gt; Cache Date Archive Markup option.
 
 = 8.30.2 =
 
