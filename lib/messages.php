@@ -1062,9 +1062,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$def_checked = $this->get_def_checked( 'plugin_cache_attach_page' );
 
-							$text = sprintf( __( 'You may enable or disable caching of meta tags and Schema markup for media attachment pages (default is %s).', 'wpsso' ), $def_checked ) . ' ';
+							$text = sprintf( __( 'You may enable or disable caching of meta tags and Schema markup for media library attachment pages (default is %s).', 'wpsso' ), $def_checked ) . ' ';
 
-							$text .= __( 'Since media attachment pages are not often visited, caching is disabled by default to reduce the number of transient cache objects created in the database options table.', 'wpsso' ) . ' ';
+							$text .= __( 'Since media library attachment pages are not often visited, caching is disabled by default to reduce the number of transient cache objects created in the database options table.', 'wpsso' ) . ' ';
 
 							$text .= sprintf( __( 'As an example, the addition of meta tags and Schema markup may take %1$s with caching enabled and %2$s with caching disabled.', 'wpsso' ), '0.005s', '0.02s' ) . ' ';
 

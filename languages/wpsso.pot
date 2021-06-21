@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.32.0-dev.1\n"
+"Project-Id-Version: WPSSO Core 8.32.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -6167,14 +6167,14 @@ msgstr ""
 #: lib/messages.php:1065
 msgid ""
 "You may enable or disable caching of meta tags and Schema markup for media "
-"attachment pages (default is %s)."
+"library attachment pages (default is %s)."
 msgstr ""
 
 #: lib/messages.php:1067
 msgid ""
-"Since media attachment pages are not often visited, caching is disabled by "
-"default to reduce the number of transient cache objects created in the "
-"database options table."
+"Since media library attachment pages are not often visited, caching is "
+"disabled by default to reduce the number of transient cache objects created "
+"in the database options table."
 msgstr ""
 
 #: lib/messages.php:1069
