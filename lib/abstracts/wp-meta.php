@@ -143,42 +143,28 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		);
 
 		private static $mod_defaults = array(
-
-			/**
-			 * Common elements.
-			 */
-			'id'          => 0,		// Post, term, or user ID.
-			'name'        => false,		// Module name ('post', 'term', or 'user').
-			'name_transl' => false,		// Module name translated.
-			'obj'         => false,		// Module object.
-
-			/**
-			 * WpssoComment elements.
-			 */
-			'is_comment' => false,	// Is comment module.
-
-			/**
-			 * WpssoPage elements.
-			 */
-			'query_vars'  => array(),
-			'is_404'      => false,
-			'is_archive'  => false,
-			'is_date'     => false,
-			'is_day'      => false,
-			'is_month'    => false,
-			'is_public'   => true,
-			'is_search'   => false,
-			'is_year'     => false,
-
-			/**
-			 * WpssoPost elements.
-			 */
-			'use_post'             => false,
-			'is_post'              => false,	// Is post module.
-			'is_post_type_archive' => false,	// Post is an archive.
+			'id'                   => 0,		// Post, term, or user ID.
+			'name'                 => false,	// Module name ('post', 'term', or 'user').
+			'name_transl'          => false,	// Module name translated.
+			'obj'                  => false,	// Module object.
+			'query_vars'           => array(),	// Defined by WpssoPage->get_mod().
+			'is_404'               => false,
+			'is_archive'           => false,
+			'is_comment'           => false,	// Is comment module.
+			'is_date'              => false,
+			'is_day'               => false,
 			'is_home'              => false,	// Home page (index or static)
 			'is_home_page'         => false,	// Static front page.
 			'is_home_posts'        => false,	// Static posts page or latest posts.
+			'is_month'             => false,
+			'is_post'              => false,	// Is post module.
+			'is_post_type_archive' => false,	// Post is an archive.
+			'is_public'            => true,
+			'is_search'            => false,
+			'is_term'              => false,	// Is term module.
+			'is_user'              => false,	// Is user module.
+			'is_year'              => false,
+			'use_post'             => false,
 			'post_slug'            => false,	// Post name (aka slug).
 			'post_type'            => false,	// Post type name.
 			'post_type_label'      => false,	// Post type singular name.
@@ -188,18 +174,8 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			'post_coauthors'       => array(),
 			'post_time'            => false,	// Post published time (ISO 8601 date or false).
 			'post_modified_time'   => false,	// Post modified time (ISO 8601 date or false).
-
-			/**
-			 * WpssoTerm elements.
-			 */
-			'is_term'   => false,	// Is term module.
-			'tax_slug'  => '',	// Empty string by default.
-			'tax_label' => false,	// Taxonomy singular name.
-
-			/**
-			 * WpssoUser elements.
-			 */
-			'is_user' => false,	// Is user module.
+			'tax_slug'  => '',			// Empty string by default.
+			'tax_label' => false,			// Taxonomy singular name.
 		);
 
 		public function __construct( &$plugin ) {
