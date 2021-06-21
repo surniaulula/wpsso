@@ -3776,50 +3776,62 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $this->p->notice->unset_ref( $sharing_url );
 		}
 
-		public function get_cache_exp_secs( $md5_pre, $cache_type = 'transient' ) {
+		public function get_cache_exp_secs( $cache_md5_pre, $cache_type = 'transient', $mod = false ) {
 
-			static $local_cache = array();
+			$cache_exp_secs = 0;	// No caching by default.
 
-			$def_secs = 0;	// No caching by default.
+			if ( ! empty( $this->p->cf[ 'wp' ][ $cache_type ][ $cache_md5_pre ] ) ) {
 
-			if ( empty( $md5_pre ) || empty( $cache_type ) ) {	// Just in case.
+				$cache_info =& $this->p->cf[ 'wp' ][ $cache_type ][ $cache_md5_pre ];	// Shortcut variable.
 
-				return $def_secs;
+				if ( ! empty( $cache_info[ 'opt_key' ] ) ) {
 
-			} elseif ( isset( $local_cache[ $md5_pre ][ $cache_type ] ) ) {
+					if ( isset( $this->p->options[ $cache_info[ 'opt_key' ] ] ) ) {
 
-				return $local_cache[ $md5_pre ][ $cache_type ];
+						$cache_exp_secs = $this->p->options[ $cache_info[ 'opt_key' ] ];
+					}
+				}
+
+				if ( is_array( $mod ) ) {
+
+					if ( 'wpsso_h_' === $cache_md5_pre ) {
+
+						if ( $mod[ 'is_404' ] ) {
+						
+							$cache_exp_secs = 0;
+
+						} elseif ( $mod[ 'is_search' ] ) {
+
+							$cache_exp_secs = 0;
+
+						} elseif ( empty( $this->p->options[ 'plugin_cache_attach_page' ] ) && 'attachment' === $mod[ 'post_type' ] ) {
+
+							$cache_exp_secs = 0;
+
+						} elseif ( empty( $this->p->options[ 'plugin_cache_date_archive' ] ) && $mod[ 'is_date' ] ) {
+	
+							$cache_exp_secs = 0;
+						}
+					}
+				}
+
+				/**
+				 * Example filter names:
+				 *
+				 *	'wpsso_cache_expire_select_arrays'
+				 *	'wpsso_cache_expire_head_markup'
+				 *	'wpsso_cache_expire_image_info'
+				 *	'wpsso_cache_expire_short_url'
+				 *	'wpsso_cache_expire_schema_types'
+				 *	'wpsso_cache_expire_video_info'
+				 */
+				if ( ! empty( $cache_info[ 'filter' ] ) ) {
+	
+					$cache_exp_secs = (int) apply_filters( $cache_info[ 'filter' ], $cache_exp_secs, $cache_type, $mod );
+				}
 			}
 
-			if ( ! empty( $this->p->cf[ 'wp' ][ $cache_type ][ $md5_pre ][ 'opt_key' ] ) ) {	// Just in case.
-
-				$opt_key = $this->p->cf[ 'wp' ][ $cache_type ][ $md5_pre ][ 'opt_key' ];
-
-				$exp_secs = isset( $this->p->options[ $opt_key ] ) ? $this->p->options[ $opt_key ] : $def_secs;
-
-			} else {
-
-				$exp_secs = $def_secs;
-			}
-
-			/**
-			 * Example filter names:
-			 *
-			 *	'wpsso_cache_expire_select_arrays'
-			 *	'wpsso_cache_expire_head_markup'
-			 *	'wpsso_cache_expire_image_info'
-			 *	'wpsso_cache_expire_short_url'
-			 *	'wpsso_cache_expire_schema_types'
-			 *	'wpsso_cache_expire_video_info'
-			 */
-			if ( ! empty( $this->p->cf[ 'wp' ][ $cache_type ][ $md5_pre ][ 'filter' ] ) ) {	// Just in case.
-
-				$exp_filter = $this->p->cf[ 'wp' ][ $cache_type ][ $md5_pre ][ 'filter' ];
-
-				$exp_secs = (int) apply_filters( $exp_filter, $exp_secs );
-			}
-
-			return $local_cache[ $md5_pre ][ $cache_type ] = $exp_secs;
+			return $cache_exp_secs;
 		}
 
 		/**

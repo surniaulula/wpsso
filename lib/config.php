@@ -2261,12 +2261,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'person',
 					),
 				),
-
-				/**
-				 * Transient id prefix.
-				 *
-				 * Used by WpssoUtil->get_cache_exp_secs().
-				 */
 				'transient' => array(
 					'wpsso_!_' => array(	// Preserved on clear cache.
 					),

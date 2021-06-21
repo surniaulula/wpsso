@@ -123,10 +123,9 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'og-site':
 
-					$def_site_name = get_bloginfo( 'name' );
-					$def_site_desc = get_bloginfo( 'description' );
-
-					$select_exp_secs    = $this->p->util->get_cache_exp_secs( 'wpsso_f_' );	// Form Selects (default is 1 month).
+					$def_site_name      = get_bloginfo( 'name' );
+					$def_site_desc      = get_bloginfo( 'description' );
+					$cache_exp_secs     = $this->p->util->get_cache_exp_secs( $cache_md5_pre = 'wpsso_f_' );	// Form Selects (default is 1 month).
 					$article_sections   = $this->p->util->get_article_sections();
 					$product_categories = $this->p->util->get_google_product_categories();
 
@@ -150,9 +149,9 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 							$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
 								$event_args = array(
 									'json_var'  => 'article_sections',
-									'exp_secs'  => $select_exp_secs,	// Create and read from a javascript URL.
-									'is_transl' => true,			// No label translation required.
-									'is_sorted' => true,			// No label sorting required.
+									'exp_secs'  => $cache_exp_secs,	// Create and read from a javascript URL.
+									'is_transl' => true,		// No label translation required.
+									'is_sorted' => true,		// No label sorting required.
 								)
 							) .
 						'</td>';
@@ -165,9 +164,9 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 							$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
 								$event_args = array(
 									'json_var'  => 'product_categories',
-									'exp_secs'  => $select_exp_secs,	// Create and read from a javascript URL.
-									'is_transl' => true,			// No label translation required.
-									'is_sorted' => true,			// No label sorting required.
+									'exp_secs'  => $cache_exp_secs,	// Create and read from a javascript URL.
+									'is_transl' => true,		// No label translation required.
+									'is_sorted' => true,		// No label sorting required.
 								)
 							) .
 						'</td>';

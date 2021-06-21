@@ -64,8 +64,8 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			/**
 			 * Select option arrays.
 			 */
-			$select_exp_secs = $this->p->util->get_cache_exp_secs( 'wpsso_f_' );	// Form Selects (default is 1 month).
-			$schema_exp_secs = $this->p->util->get_cache_exp_secs( 'wpsso_t_' );	// Schema Indexes (default is 1 month).
+			$select_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre = 'wpsso_f_' );	// Form Selects (default is 1 month).
+			$schema_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre = 'wpsso_t_' );	// Schema Indexes (default is 1 month).
 
 			$og_types         = $this->p->og->get_og_types_select();
 			$schema_types     = $this->p->schema->get_schema_types_select( $context = 'meta' );
