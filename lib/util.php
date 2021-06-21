@@ -3797,7 +3797,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					if ( 'wpsso_h_' === $cache_md5_pre ) {
 
 						if ( $mod[ 'is_404' ] ) {
-						
+
 							$cache_exp_secs = 0;
 
 						} elseif ( $mod[ 'is_search' ] ) {
@@ -3809,7 +3809,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 							$cache_exp_secs = 0;
 
 						} elseif ( empty( $this->p->options[ 'plugin_cache_date_archive' ] ) && $mod[ 'is_date' ] ) {
-	
+
 							$cache_exp_secs = 0;
 						}
 					}
@@ -3826,7 +3826,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				 *	'wpsso_cache_expire_video_info'
 				 */
 				if ( ! empty( $cache_info[ 'filter' ] ) ) {
-	
+
 					$cache_exp_secs = (int) apply_filters( $cache_info[ 'filter' ], $cache_exp_secs, $cache_type, $mod );
 				}
 			}

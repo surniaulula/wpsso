@@ -700,7 +700,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 					$mod = $this->p->$obj_name->get_mod( $obj_id );
 
 					if ( $this->refresh_mod_head_meta( $mod, $read_cache ) ) {
-					
+
 						$count++;	// Reference to post, term, or user total count.
 					}
 				}

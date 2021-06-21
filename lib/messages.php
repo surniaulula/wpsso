@@ -2785,9 +2785,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 									_x( 'Image Sizes', 'lib file description', 'wpsso' ) );
 
 								$text .= ' <p><strong>';
-								
+
 								$text .= __( 'Additional information shown only to users with Administrative privileges:', 'wpsso' );
-								
+
 								$text .= '</strong></p>';
 
 								$text .= '<ul>';
