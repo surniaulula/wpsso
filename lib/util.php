@@ -768,7 +768,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$cache_md5_pre  = 'wpsso_i_';
-			$cache_exp_secs = $this->get_cache_exp_secs( $cache_md5_pre );	// Default is day in seconds.
+			$cache_exp_secs = $this->get_cache_exp_secs( $cache_md5_pre );	// Image URL Info (default is 1 day).
 
 			if ( $cache_exp_secs > 0 ) {
 
@@ -1299,7 +1299,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$cache_md5_pre  = 'wpsso_f_';
-			$cache_exp_secs = $this->get_cache_exp_secs( $cache_md5_pre );	// Default is month in seconds.
+			$cache_exp_secs = $this->get_cache_exp_secs( $cache_md5_pre );	// Form Selects (default is 1 month).
 			$text_list_file = self::get_file_path_locale( WPSSO_ARTICLE_SECTIONS_LIST );
 
 			if ( $cache_exp_secs > 0 ) {
@@ -1403,7 +1403,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$cache_md5_pre  = 'wpsso_f_';
-			$cache_exp_secs = $this->get_cache_exp_secs( $cache_md5_pre );	// Default is month in seconds.
+			$cache_exp_secs = $this->get_cache_exp_secs( $cache_md5_pre );	// Form Selects (default is 1 month).
 			$text_list_file = self::get_file_path_locale( WPSSO_PRODUCT_CATEGORIES_LIST );
 
 			if ( $cache_exp_secs > 0 ) {
@@ -3776,9 +3776,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $this->p->notice->unset_ref( $sharing_url );
 		}
 
-		public function get_cache_exp_secs( $md5_pre, $cache_type = 'transient', $def_secs = MONTH_IN_SECONDS, $min_secs = 0 ) {
+		public function get_cache_exp_secs( $md5_pre, $cache_type = 'transient' ) {
 
 			static $local_cache = array();
+
+			$def_secs = 0;	// No caching by default.
 
 			if ( empty( $md5_pre ) || empty( $cache_type ) ) {	// Just in case.
 
@@ -3796,19 +3798,25 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$exp_secs = isset( $this->p->options[ $opt_key ] ) ? $this->p->options[ $opt_key ] : $def_secs;
 
 			} else {
+
 				$exp_secs = $def_secs;
 			}
 
+			/**
+			 * Example filter names:
+			 *
+			 *	'wpsso_cache_expire_select_arrays'
+			 *	'wpsso_cache_expire_head_markup'
+			 *	'wpsso_cache_expire_image_info'
+			 *	'wpsso_cache_expire_short_url'
+			 *	'wpsso_cache_expire_schema_types'
+			 *	'wpsso_cache_expire_video_info'
+			 */
 			if ( ! empty( $this->p->cf[ 'wp' ][ $cache_type ][ $md5_pre ][ 'filter' ] ) ) {	// Just in case.
 
 				$exp_filter = $this->p->cf[ 'wp' ][ $cache_type ][ $md5_pre ][ 'filter' ];
 
 				$exp_secs = (int) apply_filters( $exp_filter, $exp_secs );
-			}
-
-			if ( $exp_secs < $min_secs ) {
-
-				$exp_secs = $def_secs;
 			}
 
 			return $local_cache[ $md5_pre ][ $cache_type ] = $exp_secs;

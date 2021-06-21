@@ -452,17 +452,20 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 * Setup variables for transient cache.
 			 */
 			$cache_md5_pre      = 'wpsso_h_';
-			$cache_exp_secs     = $this->p->util->get_cache_exp_secs( $cache_md5_pre );
+			$cache_exp_secs     = $this->p->util->get_cache_exp_secs( $cache_md5_pre );	// Head Markup (default is 1 month).
 			$cache_salt         = __METHOD__ . '(' . SucomUtil::get_mod_salt( $mod, $canonical_url ) . ')';
 			$cache_id           = $cache_md5_pre . md5( $cache_salt );
 			$cache_index        = $this->get_head_cache_index( $mod, $canonical_url );	// Includes locale, url, etc.
 			$cache_array        = array();
+			$cache_attach_page  = empty( $this->p->options[ 'plugin_cache_attach_page' ] ) ? false : true;
 			$cache_date_archive = empty( $this->p->options[ 'plugin_cache_date_archive' ] ) ? false : true;
 
 			/**
-			 * Do not cache 404 pages, search results, or date (year, month, day) archive pages.
+			 * Do not cache 404 pages, search results, attachment pages, or date (year, month, day) archive pages.
 			 */
-			if ( $mod[ 'is_404' ] || $mod[ 'is_search' ] || ( ! $cache_date_archive && $mod[ 'is_date' ] ) ) {
+			if ( $mod[ 'is_404' ] || $mod[ 'is_search' ] || 
+				( ! $cache_attach_page && 'attachment' === $mod[ 'post_type' ] ) || 
+					( ! $cache_date_archive && $mod[ 'is_date' ] ) ) {
 
 				$cache_exp_secs = 0;
 			}

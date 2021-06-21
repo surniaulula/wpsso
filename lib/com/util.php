@@ -1298,11 +1298,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$use_post = self::sanitize_use_post( $use_post );
 
-			if ( $use_post === false ) {
+			if ( false === $use_post ) {
 
 				return 'false';
 
-			} elseif ( $use_post === true ) {
+			} elseif ( true === $use_post ) {
 
 				return 'true';
 			}
@@ -1328,7 +1328,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$use_post = $mixed;
 			}
 
-			if ( empty( $use_post ) || $use_post === 'false' ) { // 0, false, or 'false'
+			if ( empty( $use_post ) || 'false' === $use_post ) { // 0, false, or 'false'
 
 				return false;
 
@@ -2712,7 +2712,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * 	'term:456_tax:post_tag'
 		 * 	'post:0_url:https://example.com/a-subject/'
 		 */
-		public static function get_mod_salt( array $mod, $sharing_url = false ) {
+		public static function get_mod_salt( array $mod, $canonical_url = false ) {
 
 			$mod_salt = '';
 
@@ -2743,22 +2743,22 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mod_salt .= '_tax:' . $mod[ 'tax_slug' ];
 			}
 
-			if ( empty( $mod[ 'id' ] ) ) {
+			if ( ! is_numeric( $mod[ 'id' ] ) || ! $mod[ 'id' ] > 0 ) {
 
 				if ( ! empty( $mod[ 'is_home' ] ) ) {
 
 					$mod_salt .= '_home';
 				}
 
-				if ( ! empty( $sharing_url ) ) {
+				if ( ! empty( $canonical_url ) ) {
 
-					$mod_salt .= '_url:' . $sharing_url;
+					$mod_salt .= '_url:' . $canonical_url;
 				}
 			}
 
 			$mod_salt = ltrim( $mod_salt, '_' );
 
-			return apply_filters( 'sucom_mod_salt', $mod_salt, $sharing_url );
+			return apply_filters( 'sucom_mod_salt', $mod_salt, $canonical_url );
 		}
 
 		public static function get_assoc_salt( array $assoc ) {

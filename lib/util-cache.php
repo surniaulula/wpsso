@@ -101,7 +101,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			 * A transient is set and checked to limit the runtime and allow this process to be terminated early.
 			 */
 			$cache_md5_pre  = 'wpsso_!_';			// Protect transient from being cleared.
-			$cache_exp_secs = HOUR_IN_SECONDS;		// Prevent duplicate runs for max 1 hour.
+			$cache_exp_secs = WPSSO_CACHE_CLEAR_MAX_TIME;	// Prevent duplicate runs for max seconds.
 			$cache_salt     = __CLASS__ . '::clear';	// Use a common cache salt for start / stop.
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 			$cache_run_val  = 'running';
@@ -135,9 +135,9 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			$this->stop_refresh();	// Just in case.
 
-			if ( 0 === get_current_user_id() ) {		// User is the scheduler.
+			if ( 0 === get_current_user_id() ) {	// User is the scheduler.
 
-				set_time_limit( HOUR_IN_SECONDS );	// Set maximum PHP execution time to one hour.
+				set_time_limit( $cache_exp_secs );	// Set maximum PHP execution time.
 			}
 
 			if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
@@ -148,12 +148,9 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				do_action( 'wpsso_scheduled_task_started', $user_id );
 			}
 
-			$cleared_files = $this->clear_cache_files();
-
-			$cleared_ignored = $this->clear_ignored_urls();
-
-			$cleared_col_meta = $this->clear_column_meta();
-
+			$cleared_files      = $this->clear_cache_files();
+			$cleared_ignored    = $this->clear_ignored_urls();
+			$cleared_col_meta   = $this->clear_column_meta();
 			$cleared_transients = $this->clear_db_transients( $clear_short, $key_prefix = 'wpsso_' );
 
 			wp_cache_flush();	// Clear non-database transients as well.
@@ -600,12 +597,12 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		public function stop_refresh() {
 
 			$cache_md5_pre  = 'wpsso_!_';			// Protect transient from being cleared.
-			$cache_exp_secs = HOUR_IN_SECONDS;		// Prevent duplicate runs for max 1 hour.
+			$cache_exp_secs = WPSSO_CACHE_REFRESH_MAX_TIME;	// Prevent duplicate runs for max seconds.
 			$cache_salt     = __CLASS__ . '::refresh';	// Use a common cache salt for start / stop.
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 			$cache_stop_val = 'stop';
 
-			if ( false !== get_transient( $cache_id ) ) {				// Another process is already running.
+			if ( false !== get_transient( $cache_id ) ) {	// Another process is already running.
 
 				set_transient( $cache_id, $cache_stop_val, $cache_exp_secs );	// Signal the other process to stop.
 			}
@@ -620,7 +617,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			 * A transient is set and checked to limit the runtime and allow this process to be terminated early.
 			 */
 			$cache_md5_pre  = 'wpsso_!_';			// Protect transient from being cleared.
-			$cache_exp_secs = HOUR_IN_SECONDS;		// Prevent duplicate runs for max 1 hour.
+			$cache_exp_secs = WPSSO_CACHE_REFRESH_MAX_TIME;	// Prevent duplicate runs for max seconds.
 			$cache_salt     = __CLASS__ . '::refresh';	// Use a common cache salt for start / stop.
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 			$cache_run_val  = 'running';
@@ -652,9 +649,9 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 			}
 
-			if ( 0 === get_current_user_id() ) {		// User is the scheduler.
+			if ( 0 === get_current_user_id() ) {	// User is the scheduler.
 
-				set_time_limit( HOUR_IN_SECONDS );	// Set maximum PHP execution time to one hour.
+				set_time_limit( $cache_exp_secs );	// Set maximum PHP execution time.
 			}
 
 			if ( defined( 'DOING_CRON' ) && DOING_CRON ) {
@@ -666,8 +663,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			}
 
 			$size_names = array( 'thumbnail', 'wpsso-opengraph' );
-
-			$post_ids = call_user_func( array( 'wpssopost', 'get_public_ids' ) );	// Call static method.
+			$post_ids   = call_user_func( array( 'wpssopost', 'get_public_ids' ) );	// Call static method.
 
 			foreach ( $post_ids as $post_id ) {
 
@@ -694,18 +690,19 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 					/**
 					 * Check that we are allowed to continue. Stop if cache status is not 'running'.
 					 */
-					if ( get_transient( $cache_id ) !== $cache_run_val ) {
+					if ( $cache_run_val !== get_transient( $cache_id ) ) {
 
 						delete_transient( $cache_id );
 
 						return;	// Stop here.
 					}
 
-					$count++;	// Reference to post, term, or user total count.
-
 					$mod = $this->p->$obj_name->get_mod( $obj_id );
 
-					$this->refresh_mod_head_meta( $mod, $read_cache );
+					if ( $this->refresh_mod_head_meta( $mod, $read_cache ) ) {
+					
+						$count++;	// Reference to post, term, or user total count.
+					}
 				}
 			}
 
@@ -731,9 +728,11 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			$head_tags  = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache );
 			$head_info  = $this->p->head->extract_head_info( $mod, $head_tags );
-			$sleep_secs = SucomUtil::get_const( 'WPSSO_REFRESH_CACHE_SLEEP_TIME', 0.50 );
+			$sleep_secs = SucomUtil::get_const( 'WPSSO_CACHE_REFRESH_SLEEP_TIME', 0.50 );
 
 			usleep( $sleep_secs * 1000000 );	// Sleeps for 0.50 seconds by default.
+
+			return 1;
 		}
 
 		/**

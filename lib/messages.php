@@ -1130,12 +1130,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_cache_date_archive':	// Caching for Date Archive Pages.
+						case 'tooltip-plugin_cache_attach_page':	// Cache Attachment Markup.
+
+							$def_checked = $this->get_def_checked( 'plugin_cache_attach_page' );
+
+							$text = sprintf( __( 'Enable caching of meta tags and Schema markup (aka head markup) for media attachment pages (default is %s).', 'wpsso' ), $def_checked );
+
+							break;
+
+						case 'tooltip-plugin_cache_date_archive':	// Cache Date Archive Markup.
 
 							$def_checked = $this->get_def_checked( 'plugin_cache_date_archive' );
 
-							$text = sprintf( __( 'Enable caching of meta tags and Schema markup for date based (year, month, day) archive pages (default is %s).',
-								'wpsso' ), $def_checked );
+							$text = sprintf( __( 'Enable caching of meta tags and Schema markup (aka head markup) for date based (year, month, day) archive pages (default is %s).', 'wpsso' ), $def_checked );
 
 							break;
 
@@ -2718,6 +2725,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						break;
 				}
+
 			/**
 			 * Misc notice messages
 			 */

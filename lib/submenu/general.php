@@ -126,7 +126,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$def_site_name = get_bloginfo( 'name' );
 					$def_site_desc = get_bloginfo( 'description' );
 
-					$select_exp_secs    = $this->p->util->get_cache_exp_secs( 'wpsso_f_' );	// Default is month in seconds.
+					$select_exp_secs    = $this->p->util->get_cache_exp_secs( 'wpsso_f_' );	// Form Selects (default is 1 month).
 					$article_sections   = $this->p->util->get_article_sections();
 					$product_categories = $this->p->util->get_google_product_categories();
 

@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.31.0',	// Plugin version.
-					'opt_version' => '791',		// Increment when changing default option values.
+					'version'     => '8.32.0-dev.1',	// Plugin version.
+					'opt_version' => '792',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Rank higher and improve click-through-rates by presenting your content at its best on social sites and in search results - no matter how webpages are shared, re-shared, messaged, posted, embedded, or crawled.',
@@ -1731,7 +1731,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_short_url_cache_exp' => 7776000,		// Shortened URL Cache Expiry (90 days).
 					'plugin_types_cache_exp'     => MONTH_IN_SECONDS,	// Schema Index Cache Expiry (1 month).
 					'plugin_select_cache_exp'    => MONTH_IN_SECONDS,	// Form Selects Cache Expiry (1 month).
-					'plugin_cache_date_archive'  => 0,			// Caching for Date Archive Pages.
+					'plugin_cache_attach_page'   => 0,			// Cache Attachment Markup.
+					'plugin_cache_date_archive'  => 0,			// Cache Date Archive Markup.
 					'plugin_clear_on_activate'   => 1,			// Clear All Caches on Activate.
 					'plugin_clear_on_deactivate' => 0,			// Clear All Caches on Deactivate.
 					'plugin_clear_short_urls'    => 0,			// Refresh Short URLs on Clear Cache.
@@ -1955,7 +1956,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_types_cache_exp:use'     => 'default',
 					'plugin_select_cache_exp'        => MONTH_IN_SECONDS,	// Form Selects Cache Expiry (1 month).
 					'plugin_select_cache_exp:use'    => 'default',
-					'plugin_cache_date_archive'      => 0,			// Caching for Date Archive Pages.
+					'plugin_cache_attach_page'       => 0,			// Cache Attachment Markup.
+					'plugin_cache_attach_page:use'   => 'default',
+					'plugin_cache_date_archive'      => 0,			// Cache Date Archive Markup.
 					'plugin_cache_date_archive:use'  => 'default',
 					'plugin_clear_on_activate'       => 1,			// Clear All Caches on Activate.
 					'plugin_clear_on_activate:use'   => 'default',
@@ -2261,36 +2264,38 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 				/**
 				 * Transient id prefix.
+				 *
+				 * Used by WpssoUtil->get_cache_exp_secs().
 				 */
 				'transient' => array(
-					'wpsso_!_' => array(	// Is not cleared automatically.
+					'wpsso_!_' => array(	// Preserved on clear cache.
 					),
-					'wpsso_f_' => array(	// Default is month in seconds.
+					'wpsso_f_' => array(	// Default is 1 month.
 						'label'   => 'Form Selects',
 						'opt_key' => 'plugin_select_cache_exp',
 						'filter'  => 'wpsso_cache_expire_select_arrays',
 					),
-					'wpsso_h_' => array(	// Default is month in seconds.
+					'wpsso_h_' => array(	// Default is 1 month.
 						'label'   => 'Head Markup',
 						'opt_key' => 'plugin_head_cache_exp',
 						'filter'  => 'wpsso_cache_expire_head_markup',
 					),
-					'wpsso_i_' => array(	// Default is day in seconds.
+					'wpsso_i_' => array(	// Default is 1 day.
 						'label'   => 'Image URL Info',
 						'opt_key' => 'plugin_imgsize_cache_exp',
 						'filter'  => 'wpsso_cache_expire_image_info',
 					),
-					'wpsso_s_' => array(	// Default is 7776000 seconds.
+					'wpsso_s_' => array(	// Default is 90 days.
 						'label'   => 'Shortened URLs',
 						'opt_key' => 'plugin_short_url_cache_exp',
 						'filter'  => 'wpsso_cache_expire_short_url',
 					),
-					'wpsso_t_' => array(	// Default is month in seconds.
+					'wpsso_t_' => array(	// Default is 1 month.
 						'label'   => 'Schema Indexes',
 						'opt_key' => 'plugin_types_cache_exp',
 						'filter'  => 'wpsso_cache_expire_schema_types',
 					),
-					'wpsso_v_' => array(	// Default is day in seconds.
+					'wpsso_v_' => array(	// Default is 1 day.
 						'label'   => 'Video API Info',
 						'opt_key' => 'plugin_vidinfo_cache_exp',
 						'filter'  => 'wpsso_cache_expire_video_info',
@@ -2300,7 +2305,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 				),
 				'wp_cache' => array(
-					'wpsso_c_' => array(	// Default is hour in seconds.
+					'wpsso_c_' => array(	// Default is 1 hour.
 						'label'   => 'Filtered Content',
 						'opt_key' => 'plugin_content_cache_exp',
 						'filter'  => 'wpsso_cache_expire_the_content',
@@ -4188,6 +4193,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_TB_LOCALE_MENU_ORDER' ]        = '56';	// Position of the user locale toolbar menu item.
 			$var_const[ 'WPSSO_TB_VALIDATE_MENU_ORDER' ]      = '57';	// Position of the validate menu item.
 			$var_const[ 'WPSSO_JSON_PRETTY_PRINT' ]           = true;	// Allows for better visual cues in the Google validator.
+			$var_const[ 'WPSSO_CACHE_CLEAR_MAX_TIME' ]        = 3600;	// 1 hour.
+			$var_const[ 'WPSSO_CACHE_REFRESH_MAX_TIME' ]      = 10800;	// 3 hours.
+			$var_const[ 'WPSSO_CACHE_REFRESH_SLEEP_TIME' ]    = 0.50;	// Seconds to sleep between requests when refreshing the cache.
 			$var_const[ 'WPSSO_CONTENT_BLOCK_FILTER_OUTPUT' ] = true;	// Monitor and fix incorrectly coded filter hooks.
 			$var_const[ 'WPSSO_CONTENT_FILTERS_MAX_TIME' ]    = 1.00;	// Issue a warning if the content filter takes longer than 1 second.
 			$var_const[ 'WPSSO_CONTENT_IMAGES_MAX_LIMIT' ]    = 5;		// Maximum number of images extracted from the content.
@@ -4198,7 +4206,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_GET_POSTS_MAX_TIME' ]          = 0.20;	// Send an error to trigger_error() if get_posts() takes longer.
 			$var_const[ 'WPSSO_IMAGE_MAKE_SIZE_MAX_TIME' ]    = 1.50;	// Send an error to trigger_error() if image_make_intermediate_size() takes longer.
 			$var_const[ 'WPSSO_PHP_GETIMGSIZE_MAX_TIME' ]     = 1.50;	// Send an error to trigger_error() if getimagesize() takes longer.
-			$var_const[ 'WPSSO_REFRESH_CACHE_SLEEP_TIME' ]    = 0.50;	// Seconds to sleep between requests when refreshing the cache.
 			$var_const[ 'WPSSO_SELECT_PERSON_NAMES_MAX' ]     = 100;	// Maximum number of persons to include in a form select.
 			$var_const[ 'WPSSO_GRAVATAR_IMAGE_SIZE_MAX' ]     = 2048;	// Maximum available width of images from Gravatar.com.
 			$var_const[ 'WPSSO_READING_WORDS_PER_MIN' ]       = 200;	// Estimated reading words per minute.

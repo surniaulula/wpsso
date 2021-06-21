@@ -1691,7 +1691,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$filter_content = empty( $this->p->options[ 'plugin_filter_content' ] ) ? false : true;
 			$sharing_url    = $this->p->util->get_sharing_url( $mod );
 			$cache_md5_pre  = 'wpsso_c_';
-			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'wp_cache', $def_secs = HOUR_IN_SECONDS );
+			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'wp_cache' );	// Filtered Content (default is 1 hour).
 			$cache_salt     = __METHOD__ . '(' . SucomUtil::get_mod_salt( $mod, $sharing_url ) . ')';
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 			$cache_index    = 'locale:' . SucomUtil::get_locale( $mod ) . '_filter:' . ( $filter_content ? 'true' : 'false' );
