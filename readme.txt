@@ -317,10 +317,24 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.32.0-dev.1 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.0.
+	* WordPress v4.5.
+
 **Version 8.31.0 (2021/06/18)**
 
 * **New Features**
-	* Added a new SSO &gt; Advanced Settings &gt; caching &gt; Caching for Date Archive Pages option.
+	* Added a new SSO &gt; Advanced Settings &gt; caching &gt; Cache Date Archive Markup option.
 * **Improvements**
 	* Added a snackbar reminder in the block editor in case there are any important error messages under the SSO notification icon.
 * **Bugfixes**
@@ -1308,6 +1322,10 @@ This release adds a new SSO &gt; Features Status page and integration module for
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.32.0-dev.1 =
+
+(TBD) None.
 
 = 8.31.0 =
 
