@@ -322,7 +322,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* Added a new SSO &gt; Advanced Settings &gt; Caching &gt; Cache Attachment Markup option.
 * **Improvements**
-	* None.
+	* Removed the "Clear All Caches on Activate" option (now always enabled).
+	* Removed the "Clear All Caches on Deactivate" option (now always disabled for WPSSO Core and enabled for add-ons).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
