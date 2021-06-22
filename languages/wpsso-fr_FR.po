@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 8.32.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-06-22 07:59-0700\n"
+"PO-Revision-Date: 2021-06-22 08:17-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -6790,8 +6790,8 @@ msgid "Modifications disabled (no AMP plugin active)."
 msgstr "Modifications désactivées (aucune extension AMP active)."
 
 #: lib/messages.php:3493
-msgid "no <a href=\"%s\">WordPress Title Tag</a> support in your theme"
-msgstr "pas de support de <a href=\"%s\">la balise titre WordPress</a> dans votre thème"
+msgid "<a href=\"%s\">WordPress Title Tag</a> not supported by theme"
+msgstr "<a href=\"%s\">Balise de titre WordPress</a> non prise en charge par le thème"
 
 #: lib/messages.php:3522
 msgid "Note that the <code>%s</code> HTML tag is currently disabled."

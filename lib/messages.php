@@ -3490,7 +3490,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				return '';
 			}
 
-			$text = sprintf( __( 'no <a href="%s">WordPress Title Tag</a> support in your theme', 'wpsso' ),
+			$text = sprintf( __( '<a href="%s">WordPress Title Tag</a> not supported by theme', 'wpsso' ),
 				__( 'https://codex.wordpress.org/Title_Tag', 'wpsso' ) );
 
 			return '<span class="option-warning">' . $text . '</span>';

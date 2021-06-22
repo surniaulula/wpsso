@@ -7904,7 +7904,7 @@ msgid "Modifications disabled (no AMP plugin active)."
 msgstr ""
 
 #: lib/messages.php:3493
-msgid "no <a href=\"%s\">WordPress Title Tag</a> support in your theme"
+msgid "<a href=\"%s\">WordPress Title Tag</a> not supported by theme"
 msgstr ""
 
 #: lib/messages.php:3522
