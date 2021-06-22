@@ -1129,7 +1129,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						case 'clear_cache':
 
-							$this->p->util->cache->schedule_clear( $user_id, $clear_other = true );
+							$this->p->util->cache->schedule_clear( $user_id );
 
 							$notice_msg = __( 'A background task will begin shortly to clear all caches.', 'wpsso' );
 

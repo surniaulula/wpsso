@@ -423,6 +423,10 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				786 => array(
 					'og_def_img_id_pre' => 'og_def_img_id_lib',
 				),
+				793 => array(
+					'plugin_clear_on_activate'   => '',	// Deprecated on 2021/06/22.
+					'plugin_clear_on_deactivate' => '',	// Deprecated on 2021/06/22.
+				),
 			),
 		);
 
@@ -489,6 +493,10 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				),
 				773 => array(
 					'plugin_debug' => 'plugin_debug_html',
+				),
+				793 => array(
+					'plugin_clear_on_activate'   => '',	// Deprecated on 2021/06/22.
+					'plugin_clear_on_deactivate' => '',	// Deprecated on 2021/06/22.
 				),
 			),
 		);

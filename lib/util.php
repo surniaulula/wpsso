@@ -1273,22 +1273,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * Deprecated on 2020/05/05.
-		 */
-		public function schedule_clear_all_cache( $user_id = null, $clear_other = false, $clear_short = null, $refresh = true ) {
-
-			$this->cache->schedule_clear( $user_id, $clear_other, $clear_short, $refresh );
-		}
-
-		/**
-		 * Deprecated on 2020/05/05.
-		 */
-		public function delete_all_db_transients( $clear_short = false, $key_prefix = '' ) {
-
-			return $this->cache->clear_db_transients( $clear_short, $key_prefix = '' );
-		}
-
-		/**
 		 * Returns an associative array, with 'none' as the first element.
 		 */
 		public function get_article_sections() {

@@ -1191,7 +1191,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$this->p->notice->upd( '<strong>' . __( 'Plugin settings have been upgraded and saved.', 'wpsso' ) . '</strong> ' .
 							__( 'A background task will begin shortly to clear all caches.', 'wpsso' ) );
 
-						$this->p->util->cache->schedule_clear( $user_id = get_current_user_id(), $clear_other = true );
+						$this->p->util->cache->schedule_clear( $user_id = get_current_user_id() );
 					}
 
 				} elseif ( $this->p->debug->enabled ) {

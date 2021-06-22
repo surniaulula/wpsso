@@ -64,7 +64,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		/**
 		 * Schedule the clearing of all caches.
 		 */
-		public function schedule_clear( $user_id = null, $clear_other = false, $clear_short = null, $refresh = true ) {
+		public function schedule_clear( $user_id = null, $clear_other = true, $clear_short = null, $refresh = true ) {
 
 			$user_id    = $this->u->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
 			$event_time = time() + 5;	// Add a 5 second event buffer.

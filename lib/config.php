@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'     => '8.32.0-dev.3',	// Plugin version.
-					'opt_version' => '792',		// Increment when changing default option values.
+					'opt_version' => '794',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Rank higher and improve click-through-rates by presenting your content at its best on social sites and in search results - no matter how webpages are shared, re-shared, messaged, posted, embedded, or crawled.',
@@ -1733,9 +1733,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_select_cache_exp'    => MONTH_IN_SECONDS,	// Form Selects Cache Expiry (1 month).
 					'plugin_cache_attach_page'   => 0,			// Cache Attachment Markup.
 					'plugin_cache_date_archive'  => 0,			// Cache Date Archive Markup.
-					'plugin_clear_on_activate'   => 1,			// Clear All Caches on Activate.
-					'plugin_clear_on_deactivate' => 0,			// Clear All Caches on Deactivate.
-					'plugin_clear_short_urls'    => 0,			// Refresh Short URLs on Clear Cache.
+					'plugin_clear_short_urls'    => 0,			// Clear Short URLs on Clear Cache.
 					'plugin_clear_post_terms'    => 1,			// Clear Term Cache for Published Post.
 					'plugin_clear_for_comment'   => 1,			// Clear Post Cache for New Comment.
 
@@ -1960,11 +1958,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cache_attach_page:use'   => 'default',
 					'plugin_cache_date_archive'      => 0,			// Cache Date Archive Markup.
 					'plugin_cache_date_archive:use'  => 'default',
-					'plugin_clear_on_activate'       => 1,			// Clear All Caches on Activate.
-					'plugin_clear_on_activate:use'   => 'default',
-					'plugin_clear_on_deactivate'     => 0,			// Clear All Caches on Deactivate.
-					'plugin_clear_on_deactivate:use' => 'default',
-					'plugin_clear_short_urls'        => 0,			// Refresh Short URLs on Clear Cache.
+					'plugin_clear_short_urls'        => 0,			// Clear Short URLs on Clear Cache.
 					'plugin_clear_short_urls:use'    => 'default',
 					'plugin_clear_post_terms'        => 1,			// Clear Term Cache for Published Post.
 					'plugin_clear_post_terms:use'    => 'default',

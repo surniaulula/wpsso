@@ -1152,25 +1152,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_clear_on_activate':	// Clear All Caches on Activate.
-
-							$def_checked = $this->get_def_checked( 'plugin_clear_on_activate' );
-
-							$text = sprintf( __( 'Automatically clear all caches when the %1$s plugin is activated (default is %2$s).',
-								'wpsso' ), $info[ 'short' ], $def_checked );
-
-							break;
-
-						case 'tooltip-plugin_clear_on_deactivate':	// Clear All Caches on Deactivate.
-
-							$def_checked = $this->get_def_checked( 'plugin_clear_on_deactivate' );
-
-							$text = sprintf( __( 'Automatically clear all caches when the %1$s plugin is deactivated (default is %2$s).',
-								'wpsso' ), $info[ 'short' ], $def_checked );
-
-							break;
-
-						case 'tooltip-plugin_clear_short_urls':		// Refresh Short URLs on Clear Cache.
+						case 'tooltip-plugin_clear_short_urls':		// Clear Short URLs on Clear Cache.
 
 							$def_checked = $this->get_def_checked( 'plugin_clear_short_urls' );
 
@@ -1179,13 +1161,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : _x( 'disabled', 'option comment', 'wpsso' );
 
-							$text = sprintf( __( 'Also clear shortened URLs when clearing the %1$s transient cache (default is %2$s).',
+							$text = sprintf( __( 'Clear shortened URLs when clearing the %1$s transient cache (default is %2$s).',
 								'wpsso' ), $info[ 'short' ], $def_checked ) . ' ';
 
 							$text .= sprintf( __( 'Shortened URLs are cached for %1$s seconds (%2$s) to minimize external service API calls.',
 								'wpsso' ), $cache_exp_secs, $cache_exp_human ) . ' ';
 
-							$text .= __( 'Note that clearing and updating all shortened URLs at once may exceed API limits imposed by your shortening service provider.', 'wpsso' );
+							$text .= '<strong>' . __( 'Note that clearing and then re-updating all shortened URLs at once may exceed API limits imposed by your shortening service provider.', 'wpsso' ) . '</strong>';
 
 							break;
 

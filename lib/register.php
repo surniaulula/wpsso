@@ -149,19 +149,12 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			/**
 			 * Clear all caches on activate.
 			 */
-			if ( ! empty( $this->p->options[ 'plugin_clear_on_activate' ] ) ) {
+			$short = WpssoConfig::$cf[ 'plugin' ][ 'wpsso' ][ 'short' ];
 
-				$short = WpssoConfig::$cf[ 'plugin' ][ 'wpsso' ][ 'short' ];
+			$this->p->notice->upd( '<strong>' . sprintf( __( 'The %s plugin has been activated.', 'wpsso' ), $short ) . '</strong> ' .
+				__( 'A background task will begin shortly to clear all caches.', 'wpsso' ) );
 
-				$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
-					_x( 'Clear All Caches on Activate', 'option label', 'wpsso' ) );
-
-				$this->p->notice->upd( '<strong>' . sprintf( __( 'The %s plugin has been activated.', 'wpsso' ), $short ) . '</strong> ' .
-					sprintf( __( 'A background task will begin shortly to clear all caches (%s is enabled).',
-						'wpsso' ), $settings_page_link ) );
-
-				$this->p->util->cache->schedule_clear( $user_id = get_current_user_id(), $clear_other = true, $clear_short = null, $refresh = true );
-			}
+			$this->p->util->cache->schedule_clear( $user_id = get_current_user_id() );
 
 			/**
 			 * End of plugin activation.
@@ -175,32 +168,23 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 		private function deactivate_plugin() {
 
 			/**
-			 * Clear all caches on deactivate.
+			 * Clear the disk cache.
 			 *
-			 * Do not call the WpssoUtilCache->schedule_clear() method since WPSSO will be deactivated before the scheduled task can begin.
-			 *
-			 * If 'plugin_clear_on_deactivate' is empty, then at least clear the disk cache.
+			 * Do not call WpssoUtilCache->schedule_clear() since WPSSO will be deactivated before the scheduled task can begin.
 			 */
-			if ( ! empty( $this->p->options[ 'plugin_clear_on_deactivate' ] ) ) {
+			if ( $dh = @opendir( WPSSO_CACHE_DIR ) ) {
 
-				$this->p->util->cache->clear( $user_id = 0, $clear_other = true, $clear_short = true, $refresh = false );
+				while ( $file_name = @readdir( $dh ) ) {
 
-			} else {
+					$cache_file = WPSSO_CACHE_DIR . $file_name;
 
-				if ( $dh = @opendir( WPSSO_CACHE_DIR ) ) {
+					if ( ! preg_match( '/^(\..*|index\.php)$/', $file_name ) && is_file( $cache_file ) ) {
 
-					while ( $file_name = @readdir( $dh ) ) {
-
-						$cache_file = WPSSO_CACHE_DIR . $file_name;
-
-						if ( ! preg_match( '/^(\..*|index\.php)$/', $file_name ) && is_file( $cache_file ) ) {
-
-							@unlink( $cache_file );
-						}
+						@unlink( $cache_file );
 					}
-
-					closedir( $dh );
 				}
+
+				closedir( $dh );
 			}
 
 			if ( class_exists( 'WpssoAdmin' ) ) {	// Just in case.

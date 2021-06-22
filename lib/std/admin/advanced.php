@@ -367,20 +367,8 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$form->get_no_td_checkbox( 'plugin_cache_date_archive' ) . 
 				WpssoAdmin::get_option_site_use( 'plugin_cache_date_archive', $form, $network );
 
-			$table_rows[ 'plugin_clear_on_activate' ] = $form->get_tr_hide( 'basic', 'plugin_clear_on_activate' ) . 
-				$form->get_th_html( _x( 'Clear All Caches on Activate', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_clear_on_activate' ) . 
-				$form->get_no_td_checkbox( 'plugin_clear_on_activate' ) . 
-				WpssoAdmin::get_option_site_use( 'plugin_clear_on_activate', $form, $network );
-
-			$table_rows[ 'plugin_clear_on_deactivate' ] = $form->get_tr_hide( 'basic', 'plugin_clear_on_deactivate' ) . 
-				$form->get_th_html( _x( 'Clear All Caches on Deactivate', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_clear_on_deactivate' ) . 
-				$form->get_no_td_checkbox( 'plugin_clear_on_deactivate' ) . 
-				WpssoAdmin::get_option_site_use( 'plugin_clear_on_deactivate', $form, $network );
-
 			$table_rows[ 'plugin_clear_short_urls' ] = $form->get_tr_hide( 'basic', 'plugin_clear_short_urls' ) . 
-				$form->get_th_html( _x( 'Refresh Short URLs on Clear Cache', 'option label', 'wpsso' ),
+				$form->get_th_html( _x( 'Clear Short URLs on Clear Cache', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_clear_short_urls' ) . 
 				$form->get_no_td_checkbox( 'plugin_clear_short_urls' ) . 
 				WpssoAdmin::get_option_site_use( 'plugin_clear_short_urls', $form, $network );

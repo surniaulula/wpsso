@@ -100,13 +100,13 @@ if ( ! function_exists( 'wpsso_clear_all_cache' ) ) {	// Deprecated.
 
 if ( ! function_exists( 'wpsso_clear_cache' ) ) {
 
-	function wpsso_clear_cache( $clear_other = false ) {
+	function wpsso_clear_cache( $clear_other = true, $clear_short = true ) {
 
 		$wpsso =& Wpsso::get_instance();
 
 		$user_id = get_current_user_id();
 
-		return $wpsso->util->cache->schedule_clear( $user_id, $clear_other );
+		return $wpsso->util->cache->schedule_clear( $user_id, $clear_other, $clear_short );
 	}
 }
 
