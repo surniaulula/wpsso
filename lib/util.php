@@ -995,19 +995,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * Deprecated on 2020/04/15.
-		 */
-		public function add_ptns_to_opts( array &$opts, $mixed, $default = 1 ) {
-
-			if ( ! is_array( $mixed ) ) {
-
-				$mixed = array( $mixed => $default );
-			}
-
-			return $this->add_post_type_names( $opts, $mixed );
-		}
-
-		/**
 		 * Add options using a key prefix string / array and post type names.
 		 */
 		public function add_post_type_names( array &$opts, array $opt_pre_defs ) {

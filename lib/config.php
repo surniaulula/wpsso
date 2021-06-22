@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.32.0-dev.3',	// Plugin version.
-					'opt_version' => '794',		// Increment when changing default option values.
+					'version'     => '8.32.0-b.1',	// Plugin version.
+					'opt_version' => '796',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Rank higher and improve click-through-rates by presenting your content at its best on social sites and in search results - no matter how webpages are shared, re-shared, messaged, posted, embedded, or crawled.',
@@ -1645,7 +1645,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_add_to_page'                   => 1,
 					'plugin_add_to_place'                  => 1,
 					'plugin_add_to_post'                   => 1,
-					'plugin_add_to_product'                => 1,		// For WooCommerce, etc.
+					'plugin_add_to_product'                => 1,		// For WooCommerce and other e-commerce plugins.
 					'plugin_add_to_question'               => 1,
 					'plugin_add_to_reply'                  => 0,		// For Bbpress
 					'plugin_add_to_tax_category'           => 1,

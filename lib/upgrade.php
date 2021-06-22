@@ -423,9 +423,11 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				786 => array(
 					'og_def_img_id_pre' => 'og_def_img_id_lib',
 				),
-				793 => array(
+				795 => array(
 					'plugin_clear_on_activate'   => '',	// Deprecated on 2021/06/22.
 					'plugin_clear_on_deactivate' => '',	// Deprecated on 2021/06/22.
+					'plugin_add_to_shop_coupon'  => '',	// Fix for private post type.
+					'plugin_add_to_shop_order'   => '',	// Fix for private post type.
 				),
 			),
 		);
