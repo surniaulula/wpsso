@@ -317,7 +317,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.32.0-dev.3 (2021/06/22)**
+**Version 8.32.0-b.1 (2021/06/22)**
 
 * **New Features**
 	* Added a new SSO &gt; Advanced Settings &gt; Caching &gt; Cache Attachment Markup option.
@@ -1327,7 +1327,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.32.0-dev.3 =
+= 8.32.0-b.1 =
 
 (2021/06/22) Added a new SSO &gt; Advanced Settings &gt; Caching &gt; Cache Attachment Markup option.
 
