@@ -451,12 +451,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/**
 			 * Setup variables for transient cache.
 			 */
-			$cache_md5_pre      = 'wpsso_h_';
-			$cache_exp_secs     = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'transient', $mod );	// Head Markup (default is 1 month).
-			$cache_salt         = __METHOD__ . '(' . SucomUtil::get_mod_salt( $mod, $canonical_url ) . ')';
-			$cache_id           = $cache_md5_pre . md5( $cache_salt );
-			$cache_index        = $this->get_head_cache_index( $mod, $canonical_url );	// Includes locale, url, etc.
-			$cache_array        = array();
+			$cache_md5_pre  = 'wpsso_h_';
+			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'transient', $mod );	// Head Markup (default is 1 month).
+			$cache_salt     = __METHOD__ . '(' . SucomUtil::get_mod_salt( $mod, $canonical_url ) . ')';
+			$cache_id       = $cache_md5_pre . md5( $cache_salt );
+			$cache_index    = $this->get_head_cache_index( $mod, $canonical_url );	// Includes locale, url, etc.
+			$cache_array    = array();
 
 			if ( $this->p->debug->enabled ) {
 

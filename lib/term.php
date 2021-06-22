@@ -812,7 +812,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			if ( isset( $taxonomy->slug ) ) {	// Just in case.
 
 				$mod = $this->get_mod( $term_id, $taxonomy->slug );
+
 			} else {
+
 				$mod = $this->get_mod( $term_id );
 			}
 

@@ -1006,25 +1006,30 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return self::must_be_extended();
 		}
 
-		protected function clear_mod_cache( array $mod, array $cache_types = array(), $sharing_url = false ) {
+		/**
+		 * Called by WpssoPost->clear_cache(), WpssoTerm->clear_cache(), and WpssoUser->clear_cache().
+		 */
+		protected function clear_mod_cache( array $mod ) {
 
-			if ( false === $sharing_url ) {
+			$canonical_url = $this->p->util->get_canonical_url( $mod );
 
-				$sharing_url = $this->p->util->get_sharing_url( $mod );
-			}
+			$mod_salt = SucomUtil::get_mod_salt( $mod, $canonical_url );
 
-			$mod_salt = SucomUtil::get_mod_salt( $mod, $sharing_url );
-
-			$cache_types[ 'transient' ][] = array(
-				'id'   => 'wpsso_h_' . md5( 'WpssoHead::get_head_array(' . $mod_salt . ')' ),
-				'pre'  => 'wpsso_h_',
-				'salt' => 'WpssoHead::get_head_array(' . $mod_salt . ')',
-			);
-
-			$cache_types[ 'wp_cache' ][] = array(
-				'id'   => 'wpsso_c_' . md5( 'WpssoPage::get_the_content(' . $mod_salt . ')' ),
-				'pre'  => 'wpsso_c_',
-				'salt' => 'WpssoPage::get_the_content(' . $mod_salt . ')',
+			$cache_types = array(
+				'transient' => array(
+					array(
+						'id'   => 'wpsso_h_' . md5( 'WpssoHead::get_head_array(' . $mod_salt . ')' ),
+						'pre'  => 'wpsso_h_',
+						'salt' => 'WpssoHead::get_head_array(' . $mod_salt . ')',
+					)
+				),
+				'wp_cache' => array(
+					array(
+						'id'   => 'wpsso_c_' . md5( 'WpssoPage::get_the_content(' . $mod_salt . ')' ),
+						'pre'  => 'wpsso_c_',
+						'salt' => 'WpssoPage::get_the_content(' . $mod_salt . ')',
+					),
+				),
 			);
 
 			/**
@@ -1039,11 +1044,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			foreach ( $cache_types as $type_name => $type_keys ) {
 
 				/**
-				 * $filter_name example: 'wpsso_post_cache_transient_keys'.
+				 * Example: 'wpsso_post_cache_transient_keys'.
 				 */
 				$filter_name = 'wpsso_' . $mod[ 'name' ] . '_cache_' . $type_name . '_keys';
 
-				$type_keys = (array) apply_filters( $filter_name, $type_keys, $mod, $sharing_url, $mod_salt );
+				$type_keys = (array) apply_filters( $filter_name, $type_keys, $mod, $canonical_url, $mod_salt );
 
 				foreach ( $type_keys as $mixed ) {
 

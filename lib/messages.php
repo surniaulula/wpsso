@@ -1058,28 +1058,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_cache_attach_page':	// Cache Attachment Markup.
-
-							$def_checked = $this->get_def_checked( 'plugin_cache_attach_page' );
-
-							$text = sprintf( __( 'You may enable or disable caching of meta tags and Schema markup for media library attachment pages (default is %s).', 'wpsso' ), $def_checked ) . ' ';
-
-							$text .= __( 'Since media library attachment pages are not often visited, caching is disabled by default to reduce the number of transient cache objects created in the database options table.', 'wpsso' ) . ' ';
-
-							$text .= sprintf( __( 'As an example, the addition of meta tags and Schema markup may take %1$s with caching enabled and %2$s with caching disabled.', 'wpsso' ), '0.005s', '0.02s' ) . ' ';
-
-							break;
-
-						case 'tooltip-plugin_cache_date_archive':	// Cache Date Archive Markup.
-
-							$def_checked = $this->get_def_checked( 'plugin_cache_date_archive' );
-
-							$text = sprintf( __( 'You may enable or disable caching of meta tags and Schema markup for date based (year, month, day) archive pages (default is %s).', 'wpsso' ), $def_checked ) . ' ';
-
-							$text .= __( 'Since date based archive pages are not often visited, caching is disabled by default to reduce the number of transient cache objects created in the database options table.', 'wpsso' ) . ' ';
-
-							break;
-
 						case 'tooltip-plugin_content_cache_exp':	// Filtered Content Cache Expiry.
 
 							$cache_exp_secs = $this->p->opt->get_defaults( 'plugin_content_cache_exp' );
@@ -1149,6 +1127,28 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = __( 'The filtered text list arrays (for example, article sections and product categories) are saved to the WordPress transient cache to optimize performance and disk access.', 'wpsso' ) . ' ';
 
 							$text .= sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human );
+
+							break;
+
+						case 'tooltip-plugin_cache_attach_page':	// Cache Attachment Markup.
+
+							$def_checked = $this->get_def_checked( 'plugin_cache_attach_page' );
+
+							$text = sprintf( __( 'You may enable or disable caching of meta tags and Schema markup for media library attachment pages (default is %s).', 'wpsso' ), $def_checked ) . ' ';
+
+							$text .= __( 'Since media library attachment pages are not often visited, caching is disabled by default to reduce the number of transient cache objects created in the database options table.', 'wpsso' ) . ' ';
+
+							$text .= sprintf( __( 'The addition of meta tags and Schema markup, for example, may take %1$s with caching enabled and %2$s with caching disabled.', 'wpsso' ), '0.005s', '0.02s' ) . ' ';
+
+							break;
+
+						case 'tooltip-plugin_cache_date_archive':	// Cache Date Archive Markup.
+
+							$def_checked = $this->get_def_checked( 'plugin_cache_date_archive' );
+
+							$text = sprintf( __( 'You may enable or disable caching of meta tags and Schema markup for date based (year, month, day) archive pages (default is %s).', 'wpsso' ), $def_checked ) . ' ';
+
+							$text .= __( 'Since date based archive pages are not often visited, caching is disabled by default to reduce the number of transient cache objects created in the database options table.', 'wpsso' ) . ' ';
 
 							break;
 
