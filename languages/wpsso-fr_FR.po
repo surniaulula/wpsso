@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 8.32.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-06-22 07:57-0700\n"
+"PO-Revision-Date: 2021-06-22 07:59-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -4001,7 +4001,7 @@ msgstr "Supprimer les réglages lors de la désinstallation"
 #: lib/admin.php:3096
 msgctxt "option label"
 msgid "Use Local Plugin Translations"
-msgstr "Utiliser les traductions d'ext. locale"
+msgstr "Utiliser les traductions locale"
 
 #: lib/admin.php:3104
 msgctxt "option label"
