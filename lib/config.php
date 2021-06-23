@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.32.0-b.1',	// Plugin version.
+					'version'     => '8.32.0-rc.1',	// Plugin version.
 					'opt_version' => '796',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -4183,7 +4183,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_JSON_PRETTY_PRINT' ]           = true;	// Allows for better visual cues in the Google validator.
 			$var_const[ 'WPSSO_CACHE_CLEAR_MAX_TIME' ]        = 3600;	// 1 hour.
 			$var_const[ 'WPSSO_CACHE_REFRESH_MAX_TIME' ]      = 10800;	// 3 hours.
-			$var_const[ 'WPSSO_CACHE_REFRESH_SLEEP_TIME' ]    = 0.50;	// Seconds to sleep between requests when refreshing the cache.
+			$var_const[ 'WPSSO_CACHE_REFRESH_SLEEP_TIME' ]    = 0.30;	// Seconds to sleep between requests when refreshing the cache.
 			$var_const[ 'WPSSO_CONTENT_BLOCK_FILTER_OUTPUT' ] = true;	// Monitor and fix incorrectly coded filter hooks.
 			$var_const[ 'WPSSO_CONTENT_FILTERS_MAX_TIME' ]    = 1.00;	// Issue a warning if the content filter takes longer than 1 second.
 			$var_const[ 'WPSSO_CONTENT_IMAGES_MAX_LIMIT' ]    = 5;		// Maximum number of images extracted from the content.

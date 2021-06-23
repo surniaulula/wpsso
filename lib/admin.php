@@ -3004,12 +3004,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 * Deprecated on 2021/03/10.
 		 */
 		public function add_og_types_table_rows( array &$table_rows, $form ) {
+
+			_deprecated_function( __METHOD__ . '()', '2021/03/10', '' );	// Deprecation message.
 		}
 
 		/**
 		 * Deprecated on 2020/07/01.
 		 */
 		public function add_schema_knowledge_graph_table_rows( array &$table_rows, $form ) {
+
+			_deprecated_function( __METHOD__ . '()', '2020/07/01', '' );	// Deprecation message.
 		}
 
 		public function add_schema_item_props_table_rows( array &$table_rows, $form ) {
@@ -3075,6 +3079,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 * Deprecated on 2021/03/10.
 		 */
 		public function add_schema_item_types_table_rows( array &$table_rows, $form ) {
+
+			_deprecated_function( __METHOD__ . '()', '2021/03/10', '' );	// Deprecation message.
 		}
 
 		public function add_advanced_plugin_settings_table_rows( array &$table_rows, $form, $network = false ) {
@@ -3296,6 +3302,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 * Deprecated on 2020/09/14.
 		 */
 		public function get_config_url_content( $ext, $rel_file, $cache_exp_secs = null ) {
+
+			_deprecated_function( __METHOD__ . '()', '2020/09/14', __CLASS__ . '::get_ext_file_content()' );	// Deprecation message.
 
 			return $this->get_ext_file_content( $ext, $rel_file, $cache_exp_secs );
 		}

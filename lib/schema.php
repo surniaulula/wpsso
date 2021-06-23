@@ -2153,6 +2153,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 */
 		public static function add_aggregate_offer_data( &$json_data, array $mod, array $mt_offers ) {
 
+			_deprecated_function( __METHOD__ . '()', '2021/02/08', __CLASS__ . '::add_offers_aggregate_data()' );	// Deprecation message.
+
 			return self::add_offers_aggregate_data( $json_data, $mod, $mt_offers );
 		}
 
@@ -3390,6 +3392,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * Deprecated on 2020/08/14.
 		 */
 		public static function check_category_prop_value( &$json_data ) {
+
+			_deprecated_function( __METHOD__ . '()', '2020/08/14', '' );	// Deprecation message.
 		}
 
 		/**
@@ -3433,6 +3437,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * Deprecated on 2020/08/14.
 		 */
 		public static function check_gtin_prop_value( &$json_data ) {
+
+			_deprecated_function( __METHOD__ . '()', '2020/08/14', '' );	// Deprecation message.
 		}
 
 		/**
@@ -3481,6 +3487,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * Deprecated on 2020/08/14.
 		 */
 		public static function check_sameas_prop_values( &$json_data ) {
+
+			_deprecated_function( __METHOD__ . '()', '2020/08/14', '' );	// Deprecation message.
 		}
 
 		/**
@@ -3552,6 +3560,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * Deprecated on 2020/08/14.
 		 */
 		public static function check_itemprop_content_map( &$json_data, $prop_name, $map_name ) {
+
+			_deprecated_function( __METHOD__ . '()', '2020/08/14', '' );	// Deprecation message.
 		}
 
 		/**

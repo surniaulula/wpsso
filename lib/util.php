@@ -1044,6 +1044,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 */
 		public function get_post_types( $output = 'objects' ) {
 
+			_deprecated_function( __METHOD__ . '()', '2020/06/03', 'SucomUtilWP::get_post_types()' );	// Deprecation message.
+
 			return SucomUtilWP::get_post_types( $output );
 		}
 
@@ -1051,6 +1053,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 * Deprecated on 2020/06/03.
 		 */
 		public function get_taxonomies( $output = 'objects' ) {
+
+			_deprecated_function( __METHOD__ . '()', '2020/06/03', 'SucomUtilWP::get_taxonomies()' );	// Deprecation message.
 
 			return SucomUtilWP::get_taxonomies( $output );
 		}
@@ -1064,6 +1068,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				$mixed = array( $mixed => $default );
 			}
+
+			_deprecated_function( __METHOD__ . '()', '2020/04/15', __CLASS__ . '::add_taxonomy_names()' );	// Deprecation message.
 
 			return $this->add_taxonomy_names( $opts, $mixed );
 		}
@@ -2044,6 +2050,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 * Deprecated since 2020/12/09.
 		 */
 		public function get_page_mod( $use_post = false, $mod = false, $wp_obj = false ) {
+
+			_deprecated_function( __METHOD__ . '()', '2020/12/09', 'WpssoPage::get_mod()' );	// Deprecation message.
 
 			return $this->p->page->get_mod( $use_post, $mod, $wp_obj );
 		}
@@ -3296,6 +3304,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 */
 		public function do_metabox_tabbed( $metabox_id = '', $tabs = array(), $table_rows = array(), $args = array() ) {
 
+			_deprecated_function( __METHOD__ . '()', '2020/07/07', 'WpssoUtilMetabox::get_tabbed()' );	// Deprecation message.
+
 			echo $this->metabox->get_tabbed( $metabox_id, $tabs, $table_rows, $args );
 		}
 
@@ -3303,6 +3313,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 * Deprecated on 2020/07/07.
 		 */
 		public function do_metabox_table( $table_rows, $class_href_key = '', $class_tabset_mb = '', $class_tabset = 'sucom-no_tabset', $title_transl = '' ) {
+
+			_deprecated_function( __METHOD__ . '()', '2020/07/07', 'WpssoUtilMetabox::get_table()' );	// Deprecation message.
 
 			echo $this->metabox->get_table( $table_rows, $class_href_key, $class_tabset_mb, $class_tabset, $title_transl );
 		}

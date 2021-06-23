@@ -730,7 +730,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			$head_info  = $this->p->head->extract_head_info( $mod, $head_tags );
 			$sleep_secs = SucomUtil::get_const( 'WPSSO_CACHE_REFRESH_SLEEP_TIME', 0.50 );
 
-			usleep( $sleep_secs * 1000000 );	// Sleeps for 0.50 seconds by default.
+			usleep( $sleep_secs * 1000000 );	// Sleeps for 0.30 seconds by default.
 
 			return 1;
 		}
