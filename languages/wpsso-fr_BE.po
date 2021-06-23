@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 8.32.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-06-22 17:26-0700\n"
+"PO-Revision-Date: 2021-06-23 07:47-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -802,8 +802,8 @@ msgstr "WPSSO Core"
 
 #: gettext/gettext-lib-config.php:67
 msgctxt "plugin description"
-msgid "Rank higher and improve click-through-rates by presenting your content at its best on social sites and in search results - no matter how webpages are shared, re-shared, messaged, posted, embedded, or crawled."
-msgstr "Classez-vous plus haut et améliorez les taux de clics en présentant votre contenu à son meilleur sur les sites sociaux et dans les résultats de recherche - quelle que soit la façon dont les pages Web sont partagées, re-partagées, envoyées par message, publiées, intégrées ou explorées."
+msgid "Rank higher and improve click-through-rates by presenting your content at its best on social sites and in search results - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled."
+msgstr "Classez-vous plus haut et améliorez les taux de clics en présentant votre contenu à son meilleur sur les sites sociaux et dans les résultats de recherche - quelle que soit la manière dont les URL sont partagées, re-partagées, envoyées par message, publiées, intégrées ou explorées."
 
 #: gettext/gettext-lib-config.php:68
 msgctxt "plugin name"
@@ -822,8 +822,8 @@ msgstr "WPSSO balisage de Schéma fil d'Ariane"
 
 #: gettext/gettext-lib-config.php:71
 msgctxt "plugin description"
-msgid "Schema BreadcrumbList markup with JSON-LD structured data for better Google Rich Results."
-msgstr "Balisage de Schéma BreadcrumbList avec des données structurées JSON-LD pour de meilleurs résultats enrichis Google."
+msgid "Schema BreadcrumbList markup in JSON-LD format for Google Rich Results."
+msgstr "Balisage de Schéma BreadcrumbList en format JSON-LD pour résultats enrichis Google."
 
 #: gettext/gettext-lib-config.php:72
 msgctxt "plugin name"
@@ -852,8 +852,8 @@ msgstr "WPSSO balisage JSON-LD de Schéma"
 
 #: gettext/gettext-lib-config.php:77
 msgctxt "plugin description"
-msgid "Google Rich Results and JSON-LD structured data for Articles, Carousels, Events, FAQ pages, How-tos, Local SEO, Products, Recipes, Ratings, Reviews, and more."
-msgstr "Résultats enrichis Google et données structurées JSON-LD pour les articles, carrousels, événements, pages de FAQ, procédures, référencement local, produits, recettes, critiques, évaluations et plus."
+msgid "Google Rich Results with JSON-LD structured data for Articles, Carousels, Events, FAQ pages, How-tos, Local SEO, Products, Recipes, Ratings, Reviews, and more."
+msgstr "Résultats enrichis Google avec données structurées JSON-LD pour les articles, carrousels, événements, pages de FAQ, procédures, référencement local, produits, recettes, critiques, évaluations et plus."
 
 #: gettext/gettext-lib-config.php:78
 msgctxt "plugin name"
@@ -3327,7 +3327,7 @@ msgstr "Validateurs"
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr "La validation du jeton nonce pour le formulaire soumis a échoué (mise à jour ignorée)."
 
-#: lib/abstracts/wp-meta.php:2006
+#: lib/abstracts/wp-meta.php:2008
 msgid "adding schema images"
 msgstr "ajout d'images schéma"
 
@@ -3697,7 +3697,7 @@ msgstr "Une tâche en arrière-plan va commencer sous peu pour ajouter le rôle 
 
 #: lib/admin.php:1196 lib/admin.php:1207 lib/messages.php:981
 #: lib/submenu/tools.php:58 lib/submenu/tools.php:103 lib/user.php:57
-#: lib/user.php:1498 lib/user.php:1606 lib/user.php:1737
+#: lib/user.php:1500 lib/user.php:1608 lib/user.php:1739
 msgctxt "user role"
 msgid "Person"
 msgstr "Personne"
@@ -3952,117 +3952,117 @@ msgstr "Échec d'écriture du modèle <code>%s</code> ."
 msgid "You may need to restore the original template saved as <code>%s</code> in the same folder."
 msgstr "Vous devrez peut-être restaurer le modèle d'origine enregistré en tant que <code>%s</code> dans le même dossier."
 
-#: lib/admin.php:3029
+#: lib/admin.php:3033
 msgctxt "option label"
 msgid "Author / Person Name Format"
 msgstr "Format du nom d'auteur"
 
-#: lib/admin.php:3033 lib/submenu/general.php:234
+#: lib/admin.php:3037 lib/submenu/general.php:234
 msgctxt "option label"
 msgid "Maximum Images to Include"
 msgstr "Images maximum a inclure"
 
-#: lib/admin.php:3040
+#: lib/admin.php:3044
 msgctxt "option label"
 msgid "Schema Description Max. Length"
 msgstr "Longueur max. description Schéma"
 
-#: lib/admin.php:3041 lib/edit.php:320 lib/submenu/general.php:306
+#: lib/admin.php:3045 lib/edit.php:320 lib/submenu/general.php:306
 #: lib/submenu/general.php:318 lib/submenu/general.php:394
 msgctxt "option comment"
 msgid "characters or less"
 msgstr "caractères ou moins"
 
-#: lib/admin.php:3055
+#: lib/admin.php:3059
 msgctxt "option label"
 msgid "WebSite Publisher Type"
 msgstr "Type d'éditeur du site Web"
 
-#: lib/admin.php:3060
+#: lib/admin.php:3064
 msgctxt "option label"
 msgid "WebSite Publisher (Person)"
 msgstr "Éditeur du site Web (personne)"
 
-#: lib/admin.php:3065
+#: lib/admin.php:3069
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr "URL logo de organisation"
 
-#: lib/admin.php:3070 lib/options.php:1297
+#: lib/admin.php:3074 lib/options.php:1297
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr "URL bannière d'organisation"
 
-#: lib/admin.php:3089
+#: lib/admin.php:3095
 msgctxt "option label"
 msgid "Remove Settings on Uninstall"
 msgstr "Supprimer les réglages lors de la désinstallation"
 
-#: lib/admin.php:3096
+#: lib/admin.php:3102
 msgctxt "option label"
 msgid "Use Local Plugin Translations"
 msgstr "Utiliser les traductions locale"
 
-#: lib/admin.php:3104
+#: lib/admin.php:3110
 msgctxt "option label"
 msgid "Disable Cache for Debugging"
 msgstr "Désactiver le cache pour débogage"
 
-#: lib/admin.php:3112
+#: lib/admin.php:3118
 msgctxt "option label"
 msgid "Add HTML Debug Messages"
 msgstr "Ajouter messages de débogage HTML"
 
-#: lib/admin.php:3146
+#: lib/admin.php:3152
 msgctxt "option comment"
 msgid "in %s"
 msgstr "en %s"
 
-#: lib/admin.php:3165
+#: lib/admin.php:3171
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr "Util. par site"
 
-#: lib/admin.php:3378
+#: lib/admin.php:3386
 msgid "Return to %s"
 msgstr "Retour à %s"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:3409
+#: lib/admin.php:3417
 msgid "Plugin <strong>activated</strong>."
 msgstr "Extension <strong>activé</strong>."
 
 #. translators: %1$s is the URL, %2$s is the short plugin name.
-#: lib/admin.php:3430
+#: lib/admin.php:3438
 msgid "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-ons</a> to check if newer versions are available."
 msgstr "Vous pouvez <a href=\"%1$s\">actualiser les informations de mise à jour pour %2$s et ses ajouts</a> afin de vérifier si des versions plus récentes sont disponibles."
 
 #. translators: %1$s is the URL.
-#: lib/admin.php:3439
+#: lib/admin.php:3447
 msgid "You may <a href=\"%1$s\">refresh the update information for WordPress (plugins, themes and translations)</a> to check if newer versions are available."
 msgstr "Vous pouvez <a href=\"%1$s\">actualiser les informations de mise jour pour WordPress (extensions, thèmes et traductions)</a> afin de vérifier si des versions plus récentes sont disponibles."
 
-#: lib/admin.php:3590
+#: lib/admin.php:3598
 msgid "Please select a %1$s settings file to import."
 msgstr "Veuillez sélectionner un fichier de réglages %1$s à importer."
 
-#: lib/admin.php:3597
+#: lib/admin.php:3605
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr "Le fichier de réglages %1$s à importer doit être un type mime \"%2$s\"."
 
-#: lib/admin.php:3604
+#: lib/admin.php:3612
 msgid "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr "Le fichier de réglages %1$s dépasse le maximum autorisé de %2$d octets."
 
-#: lib/admin.php:3618
+#: lib/admin.php:3626
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr "Le fichier de réglages %1$s semble vide ou corrompu."
 
-#: lib/admin.php:3628
+#: lib/admin.php:3636
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr "Le fichier de réglages %1$s n'a pas pu être décodé dans un tableau de réglages."
 
-#: lib/admin.php:3638
+#: lib/admin.php:3646
 msgid "Import of plugin and add-on settings is complete."
 msgstr "L'importation des réglages d'extension et ajouts est terminée."
 
@@ -4709,12 +4709,12 @@ msgid "https://developer.wordpress.org/reference/functions/image_make_intermedia
 msgstr "https://developer.wordpress.org/reference/functions/image_make_intermediate_size/"
 
 #: lib/media.php:1026 lib/post.php:531 lib/register.php:323 lib/term.php:473
-#: lib/user.php:453 lib/util.php:825 lib/util.php:3125
+#: lib/user.php:453 lib/util.php:825 lib/util.php:3133
 msgid "%s warning:"
 msgstr "Alerte %s:"
 
 #: lib/media.php:1027 lib/post.php:532 lib/term.php:474 lib/user.php:454
-#: lib/util.php:826 lib/util.php:3126
+#: lib/util.php:826 lib/util.php:3134
 msgid "longer than recommended max of %1$.3f secs"
 msgstr "supérieur au max recommandé de %1$.3f secs"
 
@@ -7015,7 +7015,7 @@ msgstr "article"
 msgid "Slow WordPress function detected - %1$s took %2$.3f secs to get children of post ID %3$d (%4$s)."
 msgstr "Fonction WordPress lente détectée - %1$s a pris %2$.3f secs pour obtenir les enfants de l'ID d'article %3$d (%4$s)."
 
-#: lib/post.php:735 lib/post.php:1378 lib/schema.php:3363 lib/term.php:588
+#: lib/post.php:735 lib/post.php:1378 lib/schema.php:3365 lib/term.php:588
 #: lib/user.php:585
 msgid "checking meta tags"
 msgstr "vérification des balises méta"
@@ -7806,36 +7806,36 @@ msgstr "Jabber / Google Talk"
 msgid "Yahoo Messenger"
 msgstr "Yahoo Messenger"
 
-#: lib/user.php:1293
+#: lib/user.php:1295
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr "Privilèges insuffisants pour enregistrer les réglages pour l'ID d'utilisateur %1$s."
 
-#: lib/user.php:1517
+#: lib/user.php:1519
 msgid "Aborting task to add the %1$s role to content creators - another identical task is still running."
 msgstr "Abandon de la tâche pour ajouter le rôle %1$s aux créateurs de contenu - une autre tâche identique est toujours en cours d'exécution."
 
-#: lib/user.php:1532
+#: lib/user.php:1534
 msgid "A task to add the %1$s role for content creators was started at %2$s."
 msgstr "Une tâche pour ajouter le rôle %1$s aux créateurs de contenu a démarré à %2$s."
 
-#: lib/user.php:1574
+#: lib/user.php:1576
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr "Le rôle %1$s a été ajouté à %2$d créateurs de contenu."
 
-#: lib/user.php:1576 lib/user.php:1679 lib/util-cache.php:169
+#: lib/user.php:1578 lib/user.php:1681 lib/util-cache.php:169
 #: lib/util-cache.php:716
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr "Le temps d'exécution total pour cette tâche était %0.3f secondes."
 
-#: lib/user.php:1625
+#: lib/user.php:1627
 msgid "Aborting task to remove the %1$s role from all users - another identical task is still running."
 msgstr "Abandon de la tâche pour supprimer le rôle %1$s de tous les utilisateurs - une autre tâche identique est toujours en cours d'exécution."
 
-#: lib/user.php:1640
+#: lib/user.php:1642
 msgid "A task to remove the %1$s role from all users was started at %2$s."
 msgstr "Une tâche pour supprimer le rôle %1$s de tous les utilisateurs a démarré à %2$s."
 
-#: lib/user.php:1677
+#: lib/user.php:1679
 msgid "The %1$s role has been removed from %2$d content creators."
 msgstr "Le rôle %1$s a été supprimé de %2$d créateurs de contenu."
 
@@ -8083,155 +8083,155 @@ msgstr "non recadrée"
 msgid "Slow PHP function detected - %1$s took %2$.3f secs for %3$s (%4$s)."
 msgstr "Fonction PHP lente détectée - %1$s a pris %2$.3f secs pour %3$s (%4$s)."
 
-#: lib/util.php:1316
+#: lib/util.php:1322
 msgid "Error reading the %s file for the article sections list."
 msgstr "Erreur de lecture du fichier %s pour la liste des rubriques d'article."
 
-#: lib/util.php:1419
+#: lib/util.php:1425
 msgid "Error reading the %s file for the product categories list."
 msgstr "Erreur de lecture du fichier %s pour de la liste des catégories de produit."
 
-#: lib/util.php:1542
+#: lib/util.php:1548
 msgid "The <code>%1$s</code> request argument is not HTML or a valid URL."
 msgstr "L'argument de requête à <code>%1$s</code> n'est pas du HTML ou une URL valide."
 
-#: lib/util.php:1566
+#: lib/util.php:1572
 msgid "Error getting HTML from <a href=\"%1$s\">%1$s</a>."
 msgstr "Erreur lors de l'obtention du code HTML de <a href=\"%1$s\">%1$s</a>."
 
-#: lib/util.php:1596
+#: lib/util.php:1602
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr "La page Web récupéré de <a href=\"%1$s\">%1$s</a> est vide."
 
 #. translators: %1$s is the class name.
-#: lib/util.php:1791
+#: lib/util.php:1797
 msgid "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting provider to have the missing class installed."
 msgstr "La classe PHP <code>%1$s</code> est manquante &ndash; contactez votre fournisseur d'hébergement pour installer la classe manquante."
 
 #. translators: %1$s is the function name.
-#: lib/util.php:1805
+#: lib/util.php:1811
 msgid "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting provider to have the missing function installed."
 msgstr "La fonction PHP <code>%1$s</code> est manquante &ndash; contactez votre fournisseur d'hébergement pour installer la fonction manquante."
 
-#: lib/util.php:3127
+#: lib/util.php:3135
 msgid "Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the \"%2$s\" filter (%3$s)."
 msgstr "Crochet(s) de filtre lent détecté - WordPress a pris %1$.3f secs pour exécuter le filtre \"%2$s\" (%3$s)."
 
-#: lib/util.php:3143
+#: lib/util.php:3151
 msgid "Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds to execute. This is longer than the recommended maximum of %3$.3f seconds and may affect page load time. Please consider reviewing third-party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr "Crochet(s) de filtre lent détecté - le filtre WordPress %1$s a pris %2$.3f secondes pour exécuter. Ceci est plus long que le maximum recommandé de %3$.3f secondes et peut affecter le temps de chargement de la page. S'il vous plaît envisagez d'examiner les fonctions d'extensions de tiers partie et de thème accrochées au filtre WordPress %1$s pour du code PHP lent et/ou sous-optimal."
 
-#: lib/util.php:3145
+#: lib/util.php:3153
 msgid "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the filter) may provide more information on the specific hook(s) or PHP code affecting performance."
 msgstr "Si vous activez l'extension %1$s et effacez le cache de %2$s (pour ré-appliquer le filtre), vous obtiendrez peut-être plus d'informations sur les crochets spécifiques ou le code PHP affectant les performances."
 
-#: lib/util.php:3521
+#: lib/util.php:3533
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr "Débogueur de partage Facebook"
 
-#: lib/util.php:3522
+#: lib/util.php:3534
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr "Open Graph"
 
-#: lib/util.php:3526
+#: lib/util.php:3538
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr "Outil de débogage des microdonnées Facebook"
 
-#: lib/util.php:3527
+#: lib/util.php:3539
 msgctxt "validator type"
 msgid "Microdata"
 msgstr "Microdonnées"
 
-#: lib/util.php:3531
+#: lib/util.php:3543
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr "PageSpeed Insights de Google"
 
-#: lib/util.php:3532
+#: lib/util.php:3544
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr "Vitesse de page"
 
-#: lib/util.php:3536
+#: lib/util.php:3548
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr "Test de résultats enrichis Google"
 
-#: lib/util.php:3537
+#: lib/util.php:3549
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr "Résultats riches"
 
-#: lib/util.php:3541
+#: lib/util.php:3553
 msgctxt "option label"
 msgid "Google Structured Data Test (Deprecated)"
 msgstr "Test de données structurées Google (obsolète)"
 
-#: lib/util.php:3542
+#: lib/util.php:3554
 msgctxt "validator type"
 msgid "Structured Data"
 msgstr "Données structurées"
 
-#: lib/util.php:3546
+#: lib/util.php:3558
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr "Inspecteur d'article LinkedIn"
 
-#: lib/util.php:3547
+#: lib/util.php:3559
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr "Données oEmbed"
 
-#: lib/util.php:3551
+#: lib/util.php:3563
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr "Validateur Pinterest épingles riches"
 
-#: lib/util.php:3552
+#: lib/util.php:3564
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr "Épingles riches"
 
-#: lib/util.php:3556
+#: lib/util.php:3568
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr "Vérificateur de carte Twitter"
 
-#: lib/util.php:3557
+#: lib/util.php:3569
 msgctxt "validator type"
 msgid "Twitter Card"
 msgstr "Carte Twitter"
 
-#: lib/util.php:3562
+#: lib/util.php:3574
 msgctxt "option label"
 msgid "The AMP Project Validator"
 msgstr "Le validateur de projet AMP"
 
-#: lib/util.php:3563
+#: lib/util.php:3575
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr "Balisage AMP"
 
-#: lib/util.php:3567
+#: lib/util.php:3579
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr "Validateur W3C de balisage"
 
-#: lib/util.php:3568
+#: lib/util.php:3580
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr "Balisage HTML"
 
 #. translators: %1$s is an action message, %2$s is the module or post type name.
-#: lib/util.php:3718
+#: lib/util.php:3730
 msgid "%1$s for this %2$s"
 msgstr "%1$s pour cet %2$s"
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3728
+#: lib/util.php:3740
 msgid "%1$s for %2$s ID %3$d"
 msgstr "%1$s pour %2$s ID %3$d"
 
@@ -8271,8 +8271,8 @@ msgid "https://wpsso.com/extend/plugins/wpsso/"
 msgstr "https://wpsso.com/extend/plugins/wpsso/"
 
 #. Description of the plugin/theme
-msgid "Rank higher and improve click-through-rates by presenting your content at its best on social sites and in search results - no matter how webpages are shared, re-shared, messaged, posted, embedded, or crawled."
-msgstr "Classez-vous plus haut et améliorez les taux de clics en présentant votre contenu à son meilleur sur les sites sociaux et dans les résultats de recherche - quelle que soit la façon dont les pages Web sont partagées, re-partagées, envoyées par message, publiées, intégrées ou explorées."
+msgid "Rank higher and improve click-through-rates by presenting your content at its best on social sites and in search results - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled."
+msgstr "Classez-vous plus haut et améliorez les taux de clics en présentant votre contenu à son meilleur sur les sites sociaux et dans les résultats de recherche - quelle que soit la manière dont les URL sont partagées, re-partagées, envoyées par message, publiées, intégrées ou explorées."
 
 #. Author of the plugin/theme
 msgid "JS Morisset"
