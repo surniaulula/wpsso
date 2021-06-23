@@ -317,7 +317,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.32.0-rc.1 (2021/06/23)**
+**Version 8.32.0 (2021/06/23)**
 
 * **New Features**
 	* Added a new SSO &gt; Advanced Settings &gt; Caching &gt; Cache Attachment Markup option.
@@ -330,6 +330,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added new constants:
 		* `WPSSO_CACHE_REFRESH_MAX_TIME`
 		* `WPSSO_CACHE_REFRESH_SLEEP_TIME`
+	* Added `_deprecated_function()` calls to all deprecated functions and methods.
 	* Refactored the `WpssoUtil->get_cache_exp_secs()` method.
 * **Requires At Least**
 	* PHP v7.0.
@@ -1327,7 +1328,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.32.0-rc.1 =
+= 8.32.0 =
 
 (2021/06/23) Added a new SSO &gt; Advanced Settings &gt; Caching &gt; Cache Attachment Markup option. Fix to remove the Document SSO metabox from the WooCommerce orders and coupons editing pages.
 
