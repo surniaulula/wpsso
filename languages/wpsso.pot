@@ -1040,7 +1040,7 @@ msgstr ""
 msgctxt "plugin description"
 msgid ""
 "Rank higher and improve click-through-rates by presenting your content at "
-"its best on social sites and in search results - no matter how webpages are "
+"its best on social sites and in search results - no matter how URLs are "
 "shared, re-shared, messaged, posted, embedded, or crawled."
 msgstr ""
 
@@ -9508,7 +9508,7 @@ msgstr ""
 #. Description of the plugin/theme
 msgid ""
 "Rank higher and improve click-through-rates by presenting your content at "
-"its best on social sites and in search results - no matter how webpages are "
+"its best on social sites and in search results - no matter how URLs are "
 "shared, re-shared, messaged, posted, embedded, or crawled."
 msgstr ""
 
