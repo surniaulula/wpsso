@@ -1098,7 +1098,7 @@ msgstr ""
 #: gettext/gettext-lib-config.php:77
 msgctxt "plugin description"
 msgid ""
-"Google Rich Results and JSON-LD structured data for Articles, Carousels, "
+"Google Rich Results with JSON-LD structured data for Articles, Carousels, "
 "Events, FAQ pages, How-tos, Local SEO, Products, Recipes, Ratings, Reviews, "
 "and more."
 msgstr ""
