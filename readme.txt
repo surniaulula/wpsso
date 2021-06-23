@@ -317,13 +317,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.32.0-b.1 (2021/06/22)**
+**Version 8.32.0-rc.1 (2021/06/23)**
 
 * **New Features**
 	* Added a new SSO &gt; Advanced Settings &gt; Caching &gt; Cache Attachment Markup option.
 * **Improvements**
 	* Removed the "Clear All Caches on Activate" option (now always enabled).
-	* Removed the "Clear All Caches on Deactivate" option (now always disabled for WPSSO Core and enabled for add-ons).
+	* Removed the "Clear All Caches on Deactivate" option (now always disabled for WPSSO Core and always enabled for add-ons).
 * **Bugfixes**
 	* Fix to remove the Document SSO metabox from the WooCommerce orders and coupons editing pages.
 * **Developer Notes**
@@ -1327,9 +1327,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.32.0-b.1 =
+= 8.32.0-rc.1 =
 
-(2021/06/22) Added a new SSO &gt; Advanced Settings &gt; Caching &gt; Cache Attachment Markup option. Fix to remove the Document SSO metabox from the WooCommerce orders and coupons editing pages.
+(2021/06/23) Added a new SSO &gt; Advanced Settings &gt; Caching &gt; Cache Attachment Markup option. Fix to remove the Document SSO metabox from the WooCommerce orders and coupons editing pages.
 
 = 8.31.0 =
 
