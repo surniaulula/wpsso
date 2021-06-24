@@ -317,11 +317,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.33.0-dev.1 (2021/06/23)**
+**Version 8.33.0-dev.2 (2021/06/24)**
 
 * **New Features**
 	* None.
 * **Improvements**
+	* Added new options under the SSO &gt; Advanced Settings &gt; Service APIs &gt; Ratings and Reviews tab:
+		* Ratings and Reviews Service
+		* Stamped.io Store Hash
+		* Stamped.io API Key Public
 	* Renamed the "Video API Info Cache Expiry" option to "API Response Cache Expiry".
 * **Bugfixes**
 	* None.
@@ -1341,6 +1345,10 @@ This release adds a new SSO &gt; Features Status page and integration module for
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.33.0-dev.2 =
+
+(2021/06/24) Added new options under the SSO &gt; Advanced Settings &gt; Service APIs &gt; Ratings and Reviews tab.
 
 = 8.32.0 =
 
