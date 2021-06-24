@@ -3801,12 +3801,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				/**
 				 * Example filter names:
 				 *
-				 *	'wpsso_cache_expire_select_arrays'
+				 *	'wpsso_cache_expire_api_response'
 				 *	'wpsso_cache_expire_head_markup'
 				 *	'wpsso_cache_expire_image_info'
-				 *	'wpsso_cache_expire_short_url'
 				 *	'wpsso_cache_expire_schema_types'
-				 *	'wpsso_cache_expire_video_info'
+				 *	'wpsso_cache_expire_select_arrays'
+				 *	'wpsso_cache_expire_short_url'
 				 */
 				if ( ! empty( $cache_info[ 'filter' ] ) ) {
 

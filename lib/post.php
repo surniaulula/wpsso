@@ -165,7 +165,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( ! empty( $this->p->options[ 'plugin_shortener' ] ) && $this->p->options[ 'plugin_shortener' ] !== 'none' ) {
 
-				if ( ! empty( $this->p->options[ 'plugin_wp_shortlink' ] ) ) {	// Use Shortened URL for WP Shortlink.
+				if ( ! empty( $this->p->options[ 'plugin_wp_shortlink' ] ) ) {	// Use Short URL for WP Shortlink.
 
 					if ( $this->p->debug->enabled ) {
 

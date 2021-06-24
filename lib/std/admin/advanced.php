@@ -327,15 +327,15 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
 				WpssoAdmin::get_option_site_use( 'plugin_imgsize_cache_exp', $form, $network );
 
-			$table_rows[ 'plugin_vidinfo_cache_exp' ] = '' .
-				$form->get_th_html( _x( 'Video API Info Cache Expiry', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_vidinfo_cache_exp' ) . 
-				'<td nowrap class="blank">' . $form->get_no_input( 'plugin_vidinfo_cache_exp', $css_class = 'medium' ) . ' ' . 
+			$table_rows[ 'plugin_apiresp_cache_exp' ] = '' .
+				$form->get_th_html( _x( 'API Response Cache Expiry', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_apiresp_cache_exp' ) . 
+				'<td nowrap class="blank">' . $form->get_no_input( 'plugin_apiresp_cache_exp', $css_class = 'medium' ) . ' ' . 
 				_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
-				WpssoAdmin::get_option_site_use( 'plugin_vidinfo_cache_exp', $form, $network );
+				WpssoAdmin::get_option_site_use( 'plugin_apiresp_cache_exp', $form, $network );
 
 			$table_rows[ 'plugin_short_url_cache_exp' ] = '' .
-				$form->get_th_html( _x( 'Shortened URL Cache Expiry', 'option label', 'wpsso' ),
+				$form->get_th_html( _x( 'Short URL Cache Expiry', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_short_url_cache_exp' ) . 
 				'<td nowrap class="blank">' . $form->get_no_input( 'plugin_short_url_cache_exp', $css_class = 'medium' ) . ' ' . 
 				_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
@@ -437,7 +437,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				_x( 'characters', 'option comment', 'wpsso' ) . '</td>';
 
 			$table_rows[ 'plugin_wp_shortlink' ] = $form->get_tr_hide( 'basic', 'plugin_wp_shortlink' ) .
-				$form->get_th_html( _x( 'Use Shortened URL for WP Shortlink', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_wp_shortlink' ) . 
+				$form->get_th_html( _x( 'Use Short URL for WP Shortlink', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_wp_shortlink' ) . 
 				$form->get_no_td_checkbox( 'plugin_wp_shortlink' );
 
 			$table_rows[ 'plugin_add_link_rel_shortlink' ] = $form->get_tr_hide( 'basic', 'add_link_rel_shortlink' ) .

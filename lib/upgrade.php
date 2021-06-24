@@ -429,6 +429,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'plugin_add_to_shop_coupon'  => '',	// Fix for private post type.
 					'plugin_add_to_shop_order'   => '',	// Fix for private post type.
 				),
+				796 => array(
+					'plugin_vidinfo_cache_exp' => 'plugin_apiresp_cache_exp',	// Renamed on 2021/06/24.
+				),
 			),
 		);
 

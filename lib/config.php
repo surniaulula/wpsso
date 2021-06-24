@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.32.0',	// Plugin version.
-					'opt_version' => '796',		// Increment when changing default option values.
+					'version'     => '8.33.0-dev.1',	// Plugin version.
+					'opt_version' => '797',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Rank higher and improve click-through-rates by presenting your content at its best on social sites and in search results - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled.',
@@ -1727,8 +1727,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_head_cache_exp'      => WEEK_IN_SECONDS,	// Head Markup Cache Expiry (1 week).
 					'plugin_content_cache_exp'   => 43200,			// Filtered Content Cache Expiry (12 hours).
 					'plugin_imgsize_cache_exp'   => DAY_IN_SECONDS,		// Image URL Info Cache Expiry (1 day).
-					'plugin_vidinfo_cache_exp'   => DAY_IN_SECONDS,		// Video API Info Cache Expiry (1 day).
-					'plugin_short_url_cache_exp' => 7776000,		// Shortened URL Cache Expiry (90 days).
+					'plugin_apiresp_cache_exp'   => DAY_IN_SECONDS,		// API Response Cache Expiry (1 day).
+					'plugin_short_url_cache_exp' => 7776000,		// Short URL Cache Expiry (90 days).
 					'plugin_types_cache_exp'     => MONTH_IN_SECONDS,	// Schema Index Cache Expiry (1 month).
 					'plugin_select_cache_exp'    => MONTH_IN_SECONDS,	// Form Selects Cache Expiry (1 month).
 					'plugin_cache_attach_page'   => 0,			// Cache Attachment Markup.
@@ -1754,7 +1754,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Advanced Settings > Shortening Services tab.
 					 */
 					'plugin_shortener'                    => 'none',	// URL Shortening Service.
-					'plugin_wp_shortlink'                 => 1,		// Use Shortened URL for WP Shortlink.
+					'plugin_wp_shortlink'                 => 1,		// Use Short URL for WP Shortlink.
 					'plugin_min_shorten'                  => 23,		// Minimum URL Length to Shorten.
 					'plugin_bitly_access_token'           => '',		// Bitly Generic Access Token.
 					'plugin_bitly_domain'                 => '',		// Bitly Short Domain (Optional).
@@ -1946,9 +1946,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_content_cache_exp:use'   => 'default',
 					'plugin_imgsize_cache_exp'       => DAY_IN_SECONDS,	// Image URL Info Cache Expiry (1 day).
 					'plugin_imgsize_cache_exp:use'   => 'default',
-					'plugin_vidinfo_cache_exp'       => DAY_IN_SECONDS,	// Video API Info Cache Expiry (1 day).
-					'plugin_vidinfo_cache_exp:use'   => 'default',
-					'plugin_short_url_cache_exp'     => 7776000,		// Shortened URL Cache Expiry (90 days).
+					'plugin_apiresp_cache_exp'       => DAY_IN_SECONDS,	// API Response Cache Expiry (1 day).
+					'plugin_apiresp_cache_exp:use'   => 'default',
+					'plugin_short_url_cache_exp'     => 7776000,		// Short URL Cache Expiry (90 days).
 					'plugin_short_url_cache_exp:use' => 'default',
 					'plugin_types_cache_exp'         => MONTH_IN_SECONDS,	// Schema Index Cache Expiry (1 month).
 					'plugin_types_cache_exp:use'     => 'default',
@@ -2273,8 +2273,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'opt_key' => 'plugin_imgsize_cache_exp',
 						'filter'  => 'wpsso_cache_expire_image_info',
 					),
+					'wpsso_r_' => array(	// Default is 1 day.
+						'label'   => 'API Response',
+						'opt_key' => 'plugin_apiresp_cache_exp',
+						'filter'  => 'wpsso_cache_expire_api_response',
+					),
 					'wpsso_s_' => array(	// Default is 90 days.
-						'label'   => 'Shortened URLs',
+						'label'   => 'Short URLs',
 						'opt_key' => 'plugin_short_url_cache_exp',
 						'filter'  => 'wpsso_cache_expire_short_url',
 					),
@@ -2282,11 +2287,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'label'   => 'Schema Indexes',
 						'opt_key' => 'plugin_types_cache_exp',
 						'filter'  => 'wpsso_cache_expire_schema_types',
-					),
-					'wpsso_v_' => array(	// Default is 1 day.
-						'label'   => 'Video API Info',
-						'opt_key' => 'plugin_vidinfo_cache_exp',
-						'filter'  => 'wpsso_cache_expire_video_info',
 					),
 					'wpsso_' => array(
 						'label' => 'All Transients',

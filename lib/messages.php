@@ -1082,19 +1082,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_vidinfo_cache_exp':	// Video API Info Cache Expiry.
+						case 'tooltip-plugin_apiresp_cache_exp':	// API Response Cache Expiry.
 
-							$cache_exp_secs = $this->p->opt->get_defaults( 'plugin_vidinfo_cache_exp' );
+							$cache_exp_secs = $this->p->opt->get_defaults( 'plugin_apiresp_cache_exp' );
 
 							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : _x( 'disabled', 'option comment', 'wpsso' );
 
-							$text = __( 'Video information is retrieved from the video service API and saved to the WordPress transient cache to optimize performance and reduce API connections.', 'wpsso' ) . ' ';
+							$text = __( 'Response data returned by remote API services, like video information and product ratings, is saved to the WordPress transient cache to optimize performance and reduce API connections.', 'wpsso' ) . ' ';
 
 							$text .= sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human );
 
 							break;
 
-						case 'tooltip-plugin_short_url_cache_exp':	// Shortened URL Cache Expiry.
+						case 'tooltip-plugin_short_url_cache_exp':	// Short URL Cache Expiry.
 
 							$cache_exp_secs = $this->p->opt->get_defaults( 'plugin_short_url_cache_exp' );
 
@@ -1161,11 +1161,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : _x( 'disabled', 'option comment', 'wpsso' );
 
-							$text = sprintf( __( 'Clear shortened URLs when clearing the %1$s transient cache (default is %2$s).',
-								'wpsso' ), $info[ 'short' ], $def_checked ) . ' ';
+							$text = sprintf( __( 'Clear shortened URLs when clearing the %1$s transient cache (default is %2$s).', 'wpsso' ), $info[ 'short' ], $def_checked ) . ' ';
 
-							$text .= sprintf( __( 'Shortened URLs are cached for %1$s seconds (%2$s) to minimize external service API calls.',
-								'wpsso' ), $cache_exp_secs, $cache_exp_human ) . ' ';
+							$text .= sprintf( __( 'Shortened URLs are cached for %1$s seconds (%2$s) to minimize external service API calls.', 'wpsso' ), $cache_exp_secs, $cache_exp_human ) . ' ';
 
 							$text .= '<strong>' . __( 'Note that clearing and then re-updating all shortened URLs at once may exceed API limits imposed by your shortening service provider.', 'wpsso' ) . '</strong>';
 
@@ -1229,7 +1227,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_wp_shortlink':	// Use Shortened URL for WP Shortlink.
+						case 'tooltip-plugin_wp_shortlink':	// Use Short URL for WP Shortlink.
 
 							$text = sprintf( __( 'Use the shortened sharing URL for the <em>Get Shortlink</em> button in admin editing pages, along with the "%s" HTML tag value.', 'wpsso' ), 'link&nbsp;rel&nbsp;shortlink' );
 
