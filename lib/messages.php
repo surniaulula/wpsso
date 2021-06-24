@@ -1088,7 +1088,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : _x( 'disabled', 'option comment', 'wpsso' );
 
-							$text = __( 'Response data returned by remote API services, like video information and product ratings, is saved to the WordPress transient cache to optimize performance and reduce API connections.', 'wpsso' ) . ' ';
+							$text = __( 'Response data returned by remote service APIs, like video information and product reviews, is saved to the WordPress transient cache to optimize performance and reduce API connections.', 'wpsso' ) . ' ';
 
 							$text .= sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human );
 
@@ -1217,25 +1217,25 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 */
 						case 'tooltip-plugin_shortener':	// URL Shortening Service.
 
-							$text = sprintf( __( 'A preferred URL shortening service for %s plugin filters and/or add-ons that may need to shorten URLs - don\'t forget to define the service API keys for the URL shortening service of your choice.', 'wpsso' ), $info[ 'short' ] );
+							$text = sprintf( __( 'A preferred URL shortening service used for the <code>%s</code> HTML tag value, Schema markup, and social sharing buttons.', 'wpsso' ), 'link rel shortlink' );
 
 							break;
 
 						case 'tooltip-plugin_min_shorten':	// Minimum URL Length to Shorten.
 
-							$text = sprintf( __( 'URLs shorter than this length will not be shortened (the default suggested by Twitter is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'plugin_min_shorten' ) );
+							$text = sprintf( __( 'Shorten URLs longer than this length (the default suggested by Twitter is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'plugin_min_shorten' ) );
 
 							break;
 
 						case 'tooltip-plugin_wp_shortlink':	// Use Short URL for WP Shortlink.
 
-							$text = sprintf( __( 'Use the shortened sharing URL for the <em>Get Shortlink</em> button in admin editing pages, along with the "%s" HTML tag value.', 'wpsso' ), 'link&nbsp;rel&nbsp;shortlink' );
+							$text = sprintf( __( 'Use the selected URL shortening service to replace the WordPress <code>%s</code> function value.', 'wpsso' ), 'wp_get_shortlink()' );
 
 							break;
 
 						case 'tooltip-plugin_add_link_rel_shortlink':	// Add "link rel shortlink" HTML Tag.
 
-							$text = sprintf( __( 'Add a "%s" HTML tag for social sites and web browsers to the head section of webpages.', 'wpsso' ), 'link&nbsp;rel&nbsp;shortlink' );
+							$text = sprintf( __( 'Use the selected URL shortening service to replace the WordPress <code>%s</code> HTML tag.', 'wpsso' ), 'link rel shortlink' );
 
 							break;
 
@@ -1300,30 +1300,43 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						/**
 						 * Ratings and Reviews settings.
 						 */
+						case 'tooltip-plugin_ratings_reviews_svc':	// Ratings and Reviews Service.
+
+							$text = sprintf( __( 'An external service API used to retrieve ratings and reviews for meta tags and Schema markup.', 'wpsso' ), $info[ 'short' ] );
+
+							break;
+
+						case 'tooltip-plugin_ratings_reviews_num_max':	// Maximum Number of Reviews.
+
+							$text = __( 'The maximum number of reviews retrieved from the service API.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-plugin_ratings_reviews_age_max':	// Maximum Age of Reviews.
+
+							$text = __( 'The maximum age of reviews retrieved from the service API.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-plugin_ratings_reviews_for':	// Get Reviews for Post Types.
+
+							$text = __( 'Get ratings and reviews for the selected post types from the service API.', 'wpsso' );
+
+							break;
+
 						case 'tooltip-plugin_shopperapproved_site_id':	// Shopper Approved Site ID.
 						case 'tooltip-plugin_shopperapproved_token':	// Shopper Approved API Token.
 
-							$text = __( 'Your Shopper Approved Site ID and API Token are required to retrieve ratings and reviews from Shopper Approved.', 'wpsso' ) . ' ';
+							$text = __( 'Your unique Shopper Approved site ID and API token values are required to retrieve ratings and reviews from the Shopper Approved service API.', 'wpsso' ) . ' ';
 
 							$text .= sprintf( __( '<a href="%s">Login to your Shopper Approved account and go to the API Dashboard</a>, then scroll down to find your Site ID and API Token.', 'wpsso' ), 'https://www.shopperapproved.com/account/setup/api/merchant-api' );
 
 							break;
 
-						case 'tooltip-plugin_shopperapproved_num_max':	// Maximum Number of Reviews.
+						case 'tooltip-plugin_stamped_store_hash':	// Stamped Store Hash.
+						case 'tooltip-plugin_stamped_key_public':	// Stamped API Key Public.
 
-							$text = __( 'The maximum number of reviews retrieved from the Shopper Approved API.', 'wpsso' );
-
-							break;
-
-						case 'tooltip-plugin_shopperapproved_age_max':	// Maximum Age of Reviews.
-
-							$text = __( 'The maximum age of reviews retrieved from the Shopper Approved API.', 'wpsso' );
-
-							break;
-
-						case 'tooltip-plugin_shopperapproved_for':	// Get Reviews for Post Types.
-
-							$text = __( 'Retrieve ratings and reviews from Shopper Approved for the selected post types.', 'wpsso' );
+							$text = __( 'Your unique Stamped.io store hash and API public key values are required to retrieve ratings and reviews from the Stamped.io service API.', 'wpsso' ) . ' ';
 
 							break;
 

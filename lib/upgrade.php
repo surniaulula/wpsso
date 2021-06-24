@@ -61,7 +61,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'tc_prod_def_data2'              => '',
 					'plugin_version'                 => '',
 					'plugin_columns_taxonomy'        => 'plugin_columns_term',
-					'plugin_add_to_taxonomy'         => '',	// Replaced by "plugin_add_to_tax_{tax_slug}" options.
+					'plugin_add_to_taxonomy'         => '',
 					'plugin_ignore_small_img'        => 'plugin_check_img_dims',
 					'plugin_file_cache_exp'          => '',
 					'plugin_object_cache_exp'        => '',
@@ -429,8 +429,12 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'plugin_add_to_shop_coupon'  => '',	// Fix for private post type.
 					'plugin_add_to_shop_order'   => '',	// Fix for private post type.
 				),
-				796 => array(
-					'plugin_vidinfo_cache_exp' => 'plugin_apiresp_cache_exp',	// Renamed on 2021/06/24.
+				797 => array(
+					'plugin_vidinfo_cache_exp'            => 'plugin_apiresp_cache_exp',	// Renamed on 2021/06/24.
+					'plugin_shopperapproved_num_max'      => 'plugin_ratings_reviews_num_max',
+					'plugin_shopperapproved_age_max'      => 'plugin_ratings_reviews_age_max',
+					'plugin_shopperapproved_for_download' => 'plugin_ratings_reviews_for_download',
+					'plugin_shopperapproved_for_product'  => 'plugin_ratings_reviews_for_product',
 				),
 			),
 		);
@@ -641,8 +645,8 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 
 					if ( isset( $this->p->options[ 'plugin_shortener' ] ) ) {
 
-						if ( $this->p->options[ 'plugin_shortener' ] === 'googl' ||
-							$this->p->options[ 'plugin_shortener' ] === 'google-url-shortener' ) {
+						if ( 'googl' === $this->p->options[ 'plugin_shortener' ] ||
+							'google-url-shortener' === $this->p->options[ 'plugin_shortener' ] ) {
 
 							$this->p->options[ 'plugin_shortener' ] = 'none';
 						}

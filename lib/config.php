@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.33.0-dev.1',	// Plugin version.
-					'opt_version' => '797',		// Increment when changing default option values.
+					'version'     => '8.33.0-dev.2',	// Plugin version.
+					'opt_version' => '798',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Rank higher and improve click-through-rates by presenting your content at its best on social sites and in search results - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled.',
@@ -90,9 +90,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'lib' => array(
 						'pro' => array(
 							'admin' => array(
-								'advanced'       => 'Advanced Settings Filters',
-								'edit'           => 'Edit Metabox Filters',
-								'general'        => 'General Settings Filters',
+								'advanced' => 'Advanced Settings Filters',
+								'edit'     => 'Edit Metabox Filters',
+								'general'  => 'General Settings Filters',
 							),
 							'ecom' => array(
 								'edd'                           => '(plugin) Easy Digital Downloads',
@@ -139,12 +139,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'wppostratings' => '(plugin) WP-PostRatings',
 							),
 							'recipe' => array(
-								'wprecipemaker'    => '(plugin) WP Recipe Maker',
+								'wprecipemaker' => '(plugin) WP Recipe Maker',
 							),
 							'review' => array(
-								'shopperapproved'          => '(api) Shopper Approved API',
-								'wpproductreview'          => '(plugin) WP Product Review',
-								'yotpowc'                  => '(plugin) Yotpo Social Reviews for WooCommerce',
+								'shopperapproved' => '(api) Shopper Approved API',
+								'stamped'         => '(api) Stamped.io API',
+								'wpproductreview' => '(plugin) WP Product Review',
+								'yotpowc'         => '(plugin) Yotpo Social Reviews for WooCommerce',
 							),
 							'seo' => array(
 								'aioseop'      => '(plugin) All in One SEO Pack',
@@ -174,9 +175,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 						'std' => array(
 							'admin' => array(
-								'advanced'       => 'Advanced Settings Filters',
-								'edit'           => 'Edit Metabox Filters',
-								'general'        => 'General Settings Filters',
+								'advanced' => 'Advanced Settings Filters',
+								'edit'     => 'Edit Metabox Filters',
+								'general'  => 'General Settings Filters',
 							),
 							'social' => array(
 								'buddypress' => '(plugin) BuddyPress',
@@ -1769,12 +1770,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings > Ratings and Reviews tab.
 					 */
+					'plugin_ratings_reviews_svc'          => 'none',	// Ratings and Reviews Service.
+					'plugin_ratings_reviews_num_max'      => 100,		// Maximum Number of Reviews.
+					'plugin_ratings_reviews_age_max'      => 60,		// Maximum Age of Reviews.
+					'plugin_ratings_reviews_for_download' => 1,		// For Easy Digital Downloads.
+					'plugin_ratings_reviews_for_product'  => 1,		// For WooCommerce, etc.
 					'plugin_shopperapproved_site_id'      => '',		// Shopper Approved Site ID.
 					'plugin_shopperapproved_token'        => '',		// Shopper Approved API Token.
-					'plugin_shopperapproved_num_max'      => 100,		// Maximum Number of Reviews.
-					'plugin_shopperapproved_age_max'      => 60,		// Maximum Age of Reviews.
-					'plugin_shopperapproved_for_download' => 1,		// For Easy Digital Downloads.
-					'plugin_shopperapproved_for_product'  => 1,		// For WooCommerce, etc.
+					'plugin_stamped_store_hash'           => '',		// Stamped Store Hash.
+					'plugin_stamped_key_public'           => '',		// Stamped API Key Public.
 
 					/**
 					 * Advanced Settings > Custom Contacts tab.
@@ -2550,7 +2554,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 
 				/**
-				 * The shortener key is also its file name under lib/pro/ext/.
+				 * Shortening service.
 				 */
 				'shorteners' => array(
 					'none'    => '[None]',
@@ -2559,6 +2563,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'owly'    => 'Ow.ly',		// Requires lib/pro/ext/owly.php.
 					'tinyurl' => 'TinyURL',		// Requires lib/pro/ext/tinyurl.php.
 					'yourls'  => 'YOURLS',		// Requires lib/pro/ext/yourls.php.
+				),
+
+				/**
+				 * Ratings and reviews services.
+				 */
+				'ratings_reviews' => array(
+					'none'            => '[None]',
+					'shopperapproved' => 'Shopper Approved',
+					'stamped'         => 'Stamped.io',
 				),
 
 				/**

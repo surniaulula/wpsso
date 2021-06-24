@@ -461,8 +461,19 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 								case 'shopperapproved':
 
 									$chk[ 'opt_key' ] = array(
-										'plugin_shopperapproved_site_id',
-										'plugin_shopperapproved_token',
+										'plugin_ratings_reviews_svc'     => 'shopperapproved',
+										'plugin_shopperapproved_site_id' => null,	// Any non-empty value.
+										'plugin_shopperapproved_token'   => null,	// Any non-empty value.
+									);
+
+									break;
+
+								case 'stamped':
+
+									$chk[ 'opt_key' ] = array(
+										'plugin_ratings_reviews_svc' => 'stamped',
+										'plugin_stamped_store_hash'  => null,	// Any non-empty value.
+										'plugin_stamped_key_public'  => null,	// Any non-empty value.
 									);
 
 									break;
@@ -750,20 +761,16 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							if ( is_array( $chk[ 'opt_key' ] ) ) {
 
-								$all_enabled = false;
+								$all_enabled = true;
 
-								foreach ( $chk[ 'opt_key' ] as $key ) {
+								foreach ( $chk[ 'opt_key' ] as $key => $val ) {
 
-									if ( $this->is_opt_enabled( $key ) ) {
+									if ( ! $this->is_opt_enabled( $key, $val ) ) {
 
-										$all_enabled = true;
+										$all_enabled = false;
 
-										continue;
+										break;
 									}
-
-									$all_enabled = false;
-
-									break;
 								}
 
 								if ( $all_enabled ) {
@@ -879,13 +886,23 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			return empty( $this->p->cf[ 'plugin' ][ $ext ][ 'update_auth' ] ) ? 'none' : $this->p->cf[ 'plugin' ][ $ext ][ 'update_auth' ];
 		}
 
-		private function is_opt_enabled( $opt_key ) {
+		private function is_opt_enabled( $key, $val = null ) {
 
-			if ( ! empty( $opt_key ) ) {	// Just in case.
+			if ( ! empty( $key ) ) {	// Just in case.
 
-				if ( ! empty( $this->p->options[ $opt_key ] ) ) {	// Not 0 or empty string.
+				if ( null === $val ) {
 
-					if ( $this->p->options[ $opt_key ] !== 'none' ) {
+					if ( ! empty( $this->p->options[ $key ] ) ) {	// Not 0 or empty string.
+
+						if ( $this->p->options[ $key ] !== 'none' ) {
+
+							return true;
+						}
+					}
+
+				} elseif ( isset( $this->p->options[ $key ] ) ) {	// Just in case.
+						
+					if ( $val === $this->p->options[ $key ] ) {
 
 						return true;
 					}

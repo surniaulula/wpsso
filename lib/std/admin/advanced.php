@@ -428,16 +428,19 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
 			$table_rows[ 'plugin_shortener' ] = '' . 
-				$form->get_th_html( _x( 'URL Shortening Service', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_shortener' ) . 
+				$form->get_th_html( _x( 'URL Shortening Service', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_shortener' ) . 
 				'<td class="blank">' . $form->get_no_select_none( 'plugin_shortener' ) . '</td>';
 
 			$table_rows[ 'plugin_min_shorten' ] = $form->get_tr_hide( 'basic', 'plugin_min_shorten' ) . 
-				$form->get_th_html( _x( 'Minimum URL Length to Shorten', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_min_shorten' ) . 
+				$form->get_th_html( _x( 'Minimum URL Length to Shorten', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_min_shorten' ) . 
 				'<td nowrap class="blank">' . $form->get_no_input( 'plugin_min_shorten', $css_class = 'short' ) . ' ' .
 				_x( 'characters', 'option comment', 'wpsso' ) . '</td>';
 
 			$table_rows[ 'plugin_wp_shortlink' ] = $form->get_tr_hide( 'basic', 'plugin_wp_shortlink' ) .
-				$form->get_th_html( _x( 'Use Short URL for WP Shortlink', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_wp_shortlink' ) . 
+				$form->get_th_html( _x( 'Use Short URL for WP Shortlink', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_wp_shortlink' ) . 
 				$form->get_no_td_checkbox( 'plugin_wp_shortlink' );
 
 			$table_rows[ 'plugin_add_link_rel_shortlink' ] = $form->get_tr_hide( 'basic', 'add_link_rel_shortlink' ) .
@@ -456,37 +459,28 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
-			/**
-			 * Shopper Approved.
-			 */
-			$table_rows[ 'subsection_plugin_shopperapproved' ] = '' .
-				'<td colspan="2" class="subsection top"><h4>' . _x( 'Shopper Approved', 'metabox title', 'wpsso' ) . '</h4></td>';
+			$ratings_reviews = $this->p->cf[ 'form' ][ 'ratings_reviews' ];
 
-			$table_rows[ 'plugin_shopperapproved_site_id' ] = '' .
-				$form->get_th_html( _x( 'Shopper Approved Site ID', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_shopperapproved_site_id' ) .
-				'<td class="blank">' . $form->get_no_input( 'plugin_shopperapproved_site_id', $css_class = 'api_key' ) . '</td>';
+			$table_rows[ 'plugin_ratings_reviews_svc' ] = '' .
+				$form->get_th_html( _x( 'Ratings and Reviews Service', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_ratings_reviews_svc' ) .
+				'<td class="blank">' . $form->get_no_select_none( 'plugin_ratings_reviews_svc' ) . '</td>';
 
-			$table_rows[ 'plugin_shopperapproved_token' ] = '' .
-				$form->get_th_html( _x( 'Shopper Approved API Token', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_shopperapproved_token' ) .
-				'<td class="blank">' . $form->get_no_input( 'plugin_shopperapproved_token', $css_class = 'api_key' ) . '</td>';
-
-			$table_rows[ 'plugin_shopperapproved_num_max' ] = '' .
+			$table_rows[ 'plugin_ratings_reviews_num_max' ] = $form->get_tr_hide( 'basic', 'plugin_ratings_reviews_num_max' ) .
 				$form->get_th_html( _x( 'Maximum Number of Reviews', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_shopperapproved_num_max' ) .
-				'<td class="blank">' . $form->get_no_input( 'plugin_shopperapproved_num_max', $css_class = 'short' ) . '</td>';
+					$css_class = '', $css_id = 'plugin_ratings_reviews_num_max' ) .
+				'<td class="blank">' . $form->get_no_input( 'plugin_ratings_reviews_num_max', $css_class = 'short' ) . '</td>';
 
-			$table_rows[ 'plugin_shopperapproved_age_max' ] = '' .
+			$table_rows[ 'plugin_ratings_reviews_age_max' ] = $form->get_tr_hide( 'basic', 'plugin_ratings_reviews_age_max' ) .
 				$form->get_th_html( _x( 'Maximum Age of Reviews', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_shopperapproved_age_max' ) .
-				'<td nowrap class="blank">' . $form->get_no_input( 'plugin_shopperapproved_age_max', $css_class = 'short' ) . ' ' .
+					$css_class = '', $css_id = 'plugin_ratings_reviews_age_max' ) .
+				'<td nowrap class="blank">' . $form->get_no_input( 'plugin_ratings_reviews_age_max', $css_class = 'short' ) . ' ' .
 				_x( 'months', 'option comment', 'wpsso' ) . '</td>';
 
-			$table_rows[ 'plugin_shopperapproved_for' ] = '' .
+			$table_rows[ 'plugin_ratings_reviews_for' ] = '' .
 				$form->get_th_html( _x( 'Get Reviews for Post Types', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_shopperapproved_for' ) .
-				'<td class="blank">' . $form->get_no_checklist_post_types( $name_prefix = 'plugin_shopperapproved_for' ) . '</td>';
+					$css_class = '', $css_id = 'plugin_ratings_reviews_for' ) .
+				'<td>' . $form->get_no_checklist_post_types( $name_prefix = 'plugin_ratings_reviews_for' ) . '</td>';
 
 			return $table_rows;
 		}

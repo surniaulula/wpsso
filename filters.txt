@@ -219,6 +219,8 @@
 
 'wpsso_quote_seed' ( '', $mod )
 
+'wpsso_ratings_reviews_for_{post_type}' ( $bool, $mod )
+
 'wpsso_rename_md_options_keys' ( $options_keys )
 
 'wpsso_rename_options_keys' ( $options_keys )
@@ -262,8 +264,6 @@
 'wpsso_server_request_url' ( $url, $mod )
 
 'wpsso_sharing_url' ( $url, $mod, $add_page )
-
-'wpsso_shopperapproved_for_{post_type}' ( $bool, $mod )
 
 'wpsso_show_validate_toolbar' ( $bool )
 

@@ -151,8 +151,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				case 'plugin_gravatar_size':		// Gravatar Image Size.
 				case 'plugin_min_shorten':		// Minimum URL Length to Shorten.
-				case 'plugin_shopperapproved_num_max':	// Maximum Number of Reviews.
-				case 'plugin_shopperapproved_age_max':	// Maximum Age of Reviews.
+				case 'plugin_ratings_reviews_num_max':	// Maximum Number of Reviews.
+				case 'plugin_ratings_reviews_age_max':	// Maximum Age of Reviews.
 				case 'plugin_upscale_img_max':		// Maximum Image Upscale Percent.
 				case ( preg_match( '/_(len|warn)$/', $base_key ) ? true : false ):
 
@@ -238,6 +238,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'plugin_owly_api_key':
 				case 'plugin_shopperapproved_site_id':
 				case 'plugin_shopperapproved_token':
+				case 'plugin_stamped_store_hash':
+				case 'plugin_stamped_key_public':
 				case 'plugin_yourls_username':
 				case 'plugin_yourls_password':
 				case 'plugin_yourls_token':
@@ -1233,7 +1235,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			$this->p->util->add_post_type_names( $opts, array(
 				'og_type_for'                => 'article',	// Advanced Settings > Document Types > Open Graph > Type by Post Type.
 				'plugin_add_to'              => 1,		// Advanced Settings > Plugin Settings > Interface > Show Document SSO Metabox.
-				'plugin_shopperapproved_for' => 0,		// Advanced Settings > Service APIs > Ratings and Reviews > Get Reviews for Post Type.
+				'plugin_ratings_reviews_for' => 0,		// Advanced Settings > Service APIs > Ratings and Reviews > Get Reviews for Post Type.
 				'plugin_sitemaps_for'        => 1,		// Advanced Settings > WordPress Sitemaps > Post Types > Include Post Type.
 				'schema_type_for'            => 'webpage',	// Advanced Settings > Document Types > Schema > Type by Post Type.
 			) );
