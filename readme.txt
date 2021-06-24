@@ -317,6 +317,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.33.0-dev.1 (2021/06/23)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Renamed the "Video API Info Cache Expiry" option to "API Response Cache Expiry".
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Renamed the 'wpsso_cache_expire_video_info' filter to 'wpsso_cache_expire_api_response'.
+* **Requires At Least**
+	* PHP v7.0.
+	* WordPress v4.5.
+
 **Version 8.32.0 (2021/06/23)**
 
 * **New Features**
