@@ -26,21 +26,24 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				'amp'                      => 'AMP',
 				'accelerated-mobile-pages' => 'AMP for WP',
 			),
+			'cache' => array(	// Page caching plugins and services.
+				'enabler'     => 'Cache Enabler',
+				'comet'       => 'Comet Cache',
+				'hummingbird' => 'Hummingbird Cache',
+				'litespeed'   => 'LiteSpeed Cache',
+				'pagely'      => 'Pagely Cache',
+				'siteground'  => 'SiteGround Cache',
+				'w3tc'        => 'W3 Total Cache',
+				'wp-engine'   => 'WP Engine cache',
+				'wp-fastest'  => 'WP Fastest Cache',
+				'wp-rocket'   => 'WP Rocket Cache',
+				'wp-super'    => 'WP Super Cache',
+			),
 			'media' => array(
 				'wp-retina-2x' => 'Perfect Images + Retina',
 			),
 			'p' => array(
 				'schema' => 'Schema Markup',
-			),
-			'cache' => array(
-				'comet'      => 'Comet Cache',
-				'enabler'    => 'Cache Enabler',
-				'lightspeed' => 'LightSpeed Cache',
-				'w3tc'       => 'W3 Total Cache',
-				'wp-engine'  => 'WP Engine cache',
-				'wp-fastest' => 'WP Fastest Cache',
-				'wp-rocket'  => 'WP Rocket Cache',
-				'wp-super'   => 'WP Super Cache',
 			),
 			'seo' => array(
 				'jetpack-seo' => 'Jetpack SEO Tools',
@@ -118,6 +121,129 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 								case 'accelerated-mobile-pages':
 
 									$chk[ 'function' ] = 'ampforwp_is_amp_endpoint';
+
+									break;
+							}
+
+							break;
+
+						case 'cache':
+
+							switch ( $id ) {
+
+								/**
+								 * Cache Enabler.
+								 *
+								 * See https://wordpress.org/plugins/cache-enabler/.
+								 */
+								case 'enabler':
+
+									$chk[ 'class' ] = 'Cache_Enabler';
+
+									break;
+
+								/**
+								 * Comet Cache.
+								 *
+								 * See https://wordpress.org/plugins/comet-cache/.
+								 */
+								case 'comet':
+
+									if ( isset( $GLOBALS[ 'comet_cache' ] ) ) {
+
+										$get_avail[ $sub ][ 'any' ] = $get_avail[ $sub ][ $id ] = true;
+									}
+
+									break;
+
+								/**
+								 * Hummingbird Cache.
+								 *
+								 * See https://wordpress.org/plugins/hummingbird-performance/.
+								 */
+								case 'hummingbird':
+
+									$chk[ 'class' ] = '\Hummingbird\WP_Hummingbird';
+
+									break;
+
+								/**
+								 * LiteSpeed Cache.
+								 *
+								 * See https://wordpress.org/plugins/litespeed-cache/.
+								 */
+								case 'litespeed':
+
+									$chk[ 'class' ] = 'LiteSpeed_Cache_API';
+
+									break;
+
+								/**
+								 * Pagely Cache.
+								 */
+								case 'pagely':
+
+									$chk[ 'class' ] = 'PagelyCachePurge';
+
+									break;
+
+								/**
+								 * SiteGround Cache.
+								 */
+								case 'siteground':
+
+									$chk[ 'function' ] = 'sg_cachepress_purge_cache';
+
+									break;
+
+								/**
+								 * W3 Total Cache.
+								 *
+								 * See https://wordpress.org/plugins/w3-total-cache/.
+								 */
+								case 'w3tc':
+
+									$chk[ 'function' ] = 'w3tc_pgcache_flush';
+
+									break;
+
+								/**
+								 * WP Engine Cache.
+								 */
+								case 'wp-engine':
+
+									$chk[ 'class' ] = 'WpeCommon';
+
+									break;
+
+								/**
+								 * WP Fastest Cache.
+								 *
+								 * See https://wordpress.org/plugins/wp-fastest-cache/.
+								 */
+								case 'wp-fastest':
+
+									$chk[ 'function' ] = 'wpfc_clear_all_cache';
+
+									break;
+
+								/**
+								 * WP Rocket Cache.
+								 */
+								case 'wp-rocket':
+
+									$chk[ 'function' ] = 'rocket_clean_domain';
+
+									break;
+
+								/**
+								 * WP Super Cache.
+								 *
+								 * See https://wordpress.org/plugins/wp-super-cache/.
+								 */
+								case 'wp-super':
+
+									$chk[ 'function' ] = 'wp_cache_clear_cache';
 
 									break;
 							}
@@ -684,6 +810,17 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							switch ( $id ) {
 
 								/**
+								 * Autoptimize.
+								 *
+								 * See https://wordpress.org/plugins/autoptimize/.
+								 */
+								case 'autoptimize':
+
+									$chk[ 'class' ] = 'autoptimizeCache';
+
+									break;
+
+								/**
 								 * Premium version feature / option.
 								 */
 								case 'check-img-dims':	// Enforce Image Dimension Checks.
@@ -808,13 +945,13 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			/**
 			 * Define WPSSO_UNKNOWN_SEO_PLUGIN_ACTIVE as true to disable WPSSO's SEO related meta tags and features.
 			 */
-			if ( SucomUtil::get_const( 'WPSSO_UNKNOWN_SEO_PLUGIN_ACTIVE' ) ) {
+			if ( defined( 'WPSSO_UNKNOWN_SEO_PLUGIN_ACTIVE' ) && WPSSO_UNKNOWN_SEO_PLUGIN_ACTIVE ) {
 
 				$get_avail[ 'seo' ][ 'any' ] = true;
 			}
 
 			/**
-			 * This method is run only once by Wpsso->set_objects() and typically runs under 0.0002 secs.
+			 * This method is run once by Wpsso->set_objects() and typically runs in 0.0002 secs.
 			 */
 			$get_avail[ 'p' ][ 'avail_mtime' ] = microtime( $get_float = true ) - $mtime_start;
 

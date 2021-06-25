@@ -9084,7 +9084,7 @@ msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
 #: lib/user.php:1581 lib/user.php:1684 lib/util-cache.php:169
-#: lib/util-cache.php:718
+#: lib/util-cache.php:720
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
@@ -9222,17 +9222,17 @@ msgstr ""
 msgid "The cache for <strong>%s</strong> has also been cleared."
 msgstr ""
 
-#: lib/util-cache.php:635
+#: lib/util-cache.php:637
 msgid ""
 "Aborting task to refresh the transient cache - another identical task is "
 "still running."
 msgstr ""
 
-#: lib/util-cache.php:649
+#: lib/util-cache.php:651
 msgid "A task to refresh the transient cache was started at %s."
 msgstr ""
 
-#: lib/util-cache.php:715
+#: lib/util-cache.php:717
 msgid ""
 "The transient cache for %1$d posts, %2$d terms and %3$d users has been "
 "refreshed."

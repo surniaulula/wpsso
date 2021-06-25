@@ -435,7 +435,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			 */
 			if ( class_exists( 'autoptimizeCache' ) ) {
 
-				if ( method_exists( 'autoptimizeCache', 'clearall' ) ) {
+				if ( method_exists( 'autoptimizeCache', 'clearall' ) ) {	// Just in case.
 
 					autoptimizeCache::clearall();
 
@@ -467,19 +467,6 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			}
 
 			/**
-			 * LiteSpeed Cache.
-			 */
-			if ( class_exists( 'LiteSpeed_Cache_API' ) ) {
-
-				if ( method_exists( 'LiteSpeed_Cache_API', 'purge_all' ) ) {
-
-					LiteSpeed_Cache_API::purge_all();
-
-					$notice_msg .= sprintf( $cleared_msg, 'LiteSpeed Cache' );
-				}
-			}
-
-			/**
 			 * Hummingbird Cache.
 			 */
 			if ( class_exists( '\Hummingbird\WP_Hummingbird' ) ) {
@@ -493,7 +480,20 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			}
 
 			/**
-			 * Pagely.
+			 * LiteSpeed Cache.
+			 */
+			if ( class_exists( 'LiteSpeed_Cache_API' ) ) {
+
+				if ( method_exists( 'LiteSpeed_Cache_API', 'purge_all' ) ) {
+
+					LiteSpeed_Cache_API::purge_all();
+
+					$notice_msg .= sprintf( $cleared_msg, 'LiteSpeed Cache' );
+				}
+			}
+
+			/**
+			 * Pagely Cache.
 			 */
 			if ( class_exists( 'PagelyCachePurge' ) ) {
 
@@ -506,13 +506,13 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			}
 
 			/**
-			 * Siteground Optimizer.
+			 * SiteGround Cache.
 			 */
 			if ( function_exists( 'sg_cachepress_purge_cache' ) ) {
 
 				sg_cachepress_purge_cache();
 
-				$notice_msg .= sprintf( $cleared_msg, 'Siteground Optimizer' );
+				$notice_msg .= sprintf( $cleared_msg, 'Siteground Cache' );
 			}
 
 			/**
@@ -570,6 +570,8 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			/**
 			 * WP Super Cache.
+			 *
+			 * See https://wordpress.org/plugins/wp-super-cache/.
 			 */
 			if ( function_exists( 'wp_cache_clear_cache' ) ) {
 
