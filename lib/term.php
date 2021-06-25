@@ -596,6 +596,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 								$this->p->debug->log( 'og:' . $mt_suffix . ' meta tag is value empty and required' );
 							}
 
+							/**
+							 * An is_admin() test is required to use the WpssoMessages class.
+							 */
 							if ( $this->p->notice->is_admin_pre_notices() ) {
 
 								$notice_msg = $this->p->msgs->get( 'notice-missing-og-' . $mt_suffix );

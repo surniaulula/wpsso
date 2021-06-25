@@ -2046,8 +2046,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				/**
 				 * Add notice only if the admin notices have not already been shown.
+				 *
+				 * An is_admin() test is required to use the WpssoMessages class.
 				 */
-				if ( $this->p->notice->is_admin_pre_notices() ) {
+				if ( $this->p->notice->is_admin_pre_notices() ) {	
 
 					$size_label = $this->p->util->get_image_size_label( $size_name );	// Returns pre-translated labels.
 
@@ -2079,6 +2081,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				/**
 				 * Add notice only if the admin notices have not already been shown.
+				 *
+				 * An is_admin() test is required to use the WpssoMessages class.
 				 */
 				if ( $this->p->notice->is_admin_pre_notices() ) {
 

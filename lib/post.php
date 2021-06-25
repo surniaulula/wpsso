@@ -743,6 +743,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 								$this->p->debug->log( 'og:' . $mt_suffix . ' meta tag is value empty and required' );
 							}
 
+							/**
+							 * An is_admin() test is required to use the WpssoMessages class.
+							 */
 							if ( $this->p->notice->is_admin_pre_notices() ) {
 
 								$notice_msg = $this->p->msgs->get( 'notice-missing-og-' . $mt_suffix );
@@ -1381,6 +1384,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					if ( empty( parent::$head_info[ 'og:' . $mt_suffix ] ) ) {
 
+						/**
+						 * An is_admin() test is required to use the WpssoMessages class.
+						 */
 						if ( $this->p->notice->is_admin_pre_notices() ) {
 
 							$notice_msg = $this->p->msgs->get( 'notice-missing-og-' . $mt_suffix );

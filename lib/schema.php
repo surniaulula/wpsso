@@ -3373,6 +3373,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 							$wpsso->debug->log( $prop_name . ' property value is empty and required' );
 						}
 
+						/**
+						 * An is_admin() test is required to use the WpssoMessages class.
+						 */
 						if ( $wpsso->notice->is_admin_pre_notices() ) {
 
 							$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-schema-' . $prop_name;
