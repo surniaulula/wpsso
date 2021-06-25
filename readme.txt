@@ -87,10 +87,11 @@ Built-in compatibility with caching and optimization plugins:
 * Autoptimize
 * Cache Enabler
 * Comet Cache
-* LiteSpeed Cache
 * Hummingbird Cache
-* Pagely, Siteground Optimizer
+* LiteSpeed Cache
+* Pagely Cache
 * Perfect Images + Retina
+* SiteGround Cache
 * W3 Total Cache (aka W3TC)
 * WP Engine Cache
 * WP Fastest Cache
