@@ -596,7 +596,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 		}
 
 		/**
-		 * Schedule the refreshing of all post, term and user transient cache objects.
+		 * Schedule the refreshing of all post, term, and user transient cache objects.
 		 */
 		public function schedule_refresh( $user_id = null, $read_cache = false ) {
 

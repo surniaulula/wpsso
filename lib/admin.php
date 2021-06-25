@@ -1181,7 +1181,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							$this->p->util->cache->schedule_refresh( $user_id, $read_cache = false );
 
-							$notice_msg = __( 'A background task will begin shortly to refresh the post, term and user transient cache objects.',
+							$notice_msg = __( 'A background task will begin shortly to refresh the post, term, and user transient cache objects.',
 								'wpsso' );
 
 							$this->p->notice->upd( $notice_msg, $user_id );

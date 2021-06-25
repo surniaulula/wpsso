@@ -83,7 +83,7 @@ _x( 'Manage Schema Places and Local SEO for Facebook / Open Graph, Pinterest, an
 _x( 'WPSSO Ratings and Reviews', 'plugin name', 'wpsso' );
 _x( 'Ratings and Reviews for WordPress Comments with Schema Aggregate Rating and Schema Review Markup.', 'plugin description', 'wpsso' );
 _x( 'WPSSO REST API', 'plugin name', 'wpsso' );
-_x( 'Enhances the WordPress REST API post, term and user queries with an array of social meta tags, SEO HTML tags and Schema JSON-LD markup.', 'plugin description', 'wpsso' );
+_x( 'Enhances the WordPress REST API post, term, and user query results with an array of meta tags and Schema JSON-LD markup.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Ridiculously Responsive Social Sharing Buttons', 'plugin name', 'wpsso' );
 _x( 'Ridiculously Responsive (SVG) Social Sharing Buttons for your content, excerpts, CSS sidebar, widget, shortcode, templates, and editor.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Strip Schema Microdata', 'plugin name', 'wpsso' );
