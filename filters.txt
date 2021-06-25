@@ -219,7 +219,7 @@
 
 'wpsso_quote_seed' ( '', $mod )
 
-'wpsso_ratings_reviews_for_{post_type}' ( $bool, $mod )
+'wpsso_ratings_reviews_for_{post_type}' ( $bool )
 
 'wpsso_rename_md_options_keys' ( $options_keys )
 

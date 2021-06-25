@@ -745,7 +745,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			static $do_once = array();
 
 			$disable_filters = array(
-				'cache_expire_head_markup'     => '__return_zero',
+				'cache_expire_head_markup'     => '__return_zero',	// Used by WpssoHead->get_head_array().
 				'cache_expire_setup_html'      => '__return_zero',	// Used by WpssoAdmin->get_ext_file_content().
 				'cache_expire_shortcode_html'  => '__return_zero',	// Used by WpssoAdmin->get_ext_file_content().
 				'cache_expire_the_content'     => '__return_zero',	// Used by WpssoPage->get_the_content().
@@ -753,7 +753,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			if ( $disable_short ) {
 
-				$disable_filters[ 'cache_expire_short_url' ] = '__return_zero';
+				$disable_filters[ 'cache_expire_short_url' ] = '__return_zero';	// Used by WpssoProUtilShorten->get_short_url().
 			}
 
 			/**

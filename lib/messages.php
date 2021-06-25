@@ -994,12 +994,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_check_img_dims':	// Enforce Image Dimension Checks.
 
-							$img_sizes_tab_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_image_sizes',
+							$image_sizes_tab_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_image_sizes',
 								_x( 'Image Sizes', 'lib file description', 'wpsso' ) );
 
 							$text = __( 'Content authors often upload small featured images, without knowing that WordPress creates resized images based on predefined image sizes, so this option is disabled by default.', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( 'When this option is enabled, full size images used for meta tags and Schema markup must be equal to (or larger) than the image dimensions you\'ve selected in the %s settings page - images that do not meet or exceed the minimum requirements are ignored.', 'wpsso' ), $img_sizes_tab_link ) . ' ';
+							$text .= sprintf( __( 'When this option is enabled, full size images used for meta tags and Schema markup must be equal to (or larger) than the image dimensions you\'ve selected in the %s settings page - images that do not meet or exceed the minimum requirements are ignored.', 'wpsso' ), $image_sizes_tab_link ) . ' ';
 
 							$text .= __( 'Providing social and search sites with perfectly resized images is highly recommended, so this option should be enabled if possible.', 'wpsso' ) . ' ';
 
@@ -2256,7 +2256,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'info-meta-social-preview':
 
-							$upload_url = get_admin_url( $blog_id = null, 'upload.php' );
+							$upload_page_url = get_admin_url( $blog_id = null, 'upload.php' );
 
 							$fb_img_dims = '600x315px';
 
@@ -2266,7 +2266,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '<br/>' . "\n";
 
-							$text .= sprintf( __( 'You can edit images in the <a href="%s">WordPress Media Library</a> to select a preferred cropping area (ie. top or bottom), along with optimizing the social and SEO texts for the image.', 'wpsso' ), $upload_url );
+							$text .= sprintf( __( 'You can edit images in the <a href="%s">WordPress Media Library</a> to select a preferred cropping area (ie. top or bottom), along with optimizing the social and SEO texts for the image.', 'wpsso' ), $upload_page_url );
 
 							$text .= '</p>' . "\n";
 
@@ -2352,13 +2352,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'info-priority-media':
 
-							$upload_url = get_admin_url( $blog_id = null, 'upload.php' );
+							$upload_page_url = get_admin_url( $blog_id = null, 'upload.php' );
 
 							$text = '<blockquote class="top-info">';
 
 							$text .= '<p>';
 
-							$text .= sprintf( __( 'You can edit images in the <a href="%s">WordPress Media Library</a> to select a preferred cropping area (ie. top or bottom), along with optimizing the image social and SEO texts.', 'wpsso' ), $upload_url );
+							$text .= sprintf( __( 'You can edit images in the <a href="%s">WordPress Media Library</a> to select a preferred cropping area (ie. top or bottom), along with optimizing the image social and SEO texts.', 'wpsso' ), $upload_page_url );
 
 							$text .= '</p>' . "\n";
 
@@ -2512,11 +2512,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							// translators: Please ignore - translation uses a different text domain.
 							$contact_info = __( 'Contact Info' );
 
+							$profile_page_url = get_admin_url( $blog_id = null, 'profile.php' );
+
 							$text = '<blockquote class="top-info">';
 
 							$text .= '<p>';
 
-							$text .= sprintf( __( 'These options allow you to customize the list of contact fields shown in the %1$s section of <a href="%2$s">the user profile page</a>.', 'wpsso' ), $contact_info, get_admin_url( $blog_id = null, 'profile.php' ) ) . ' ';
+							$text .= sprintf( __( 'These options allow you to customize the list of contact fields shown in the %1$s section of <a href="%2$s">the user profile page</a>.', 'wpsso' ), $contact_info, $profile_page_url ) . ' ';
 
 							$text .= sprintf( __( '%1$s uses the Facebook and Twitter contact field values in its meta tags and Schema markup.', 'wpsso' ), $info[ 'short' ] ) . ' ';
 
@@ -2530,7 +2532,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '<strong>' . __( 'Do not enter your contact information here &ndash; these options are for contact field ids and labels only.', 'wpsso' ) . '</strong><br/>';
 
-							$text .= sprintf( __( 'Enter your personal contact information in <a href="%1$s">the user profile page</a>.', 'wpsso' ), get_admin_url( $blog_id = null, 'profile.php' ) );
+							$text .= sprintf( __( 'Enter your personal contact information in <a href="%1$s">the user profile page</a>.', 'wpsso' ), $profile_page_url );
 
 							$text .= '</center>';
 
@@ -2580,13 +2582,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'info-wp_sitemaps':
 
-							$sitemap_url = get_site_url( $blog_id = null, $path = '/wp-sitemap.xml' );
-
+							$sitemap_url    = get_site_url( $blog_id = null, $path = '/wp-sitemap.xml' );
 							$no_index_label = _x( 'No Index', 'option label', 'wpsso' );
-
-							$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
-
-							$robots_tab = _x( 'Robots Meta', 'metabox tab', 'wpsso' );
+							$mb_title       = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+							$robots_tab     = _x( 'Robots Meta', 'metabox tab', 'wpsso' );
 
 							$text = '<blockquote class="top-info">';
 
@@ -2768,13 +2767,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								$upscale_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
 									_x( 'Upscale Media Library Images', 'option label', 'wpsso' ) );
 
-								$pct_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
+								$percent_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
 									_x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' ) );
 
-								$img_dim_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
+								$image_dim_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
 									_x( 'Enforce Image Dimension Checks', 'option label', 'wpsso' ) );
 
-								$img_sizes_tab_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_image_sizes',
+								$image_sizes_tab_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_image_sizes',
 									_x( 'Image Sizes', 'lib file description', 'wpsso' ) );
 
 								$text .= ' <p><strong>';
@@ -2798,7 +2797,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 								} else {
 
-									$text .= ' <li>' . sprintf( __( 'Increase the %s option value.', 'wpsso' ), $pct_option_link ) . '</li>';
+									$text .= ' <li>' . sprintf( __( 'Increase the %s option value.', 'wpsso' ), $percent_option_link ) . '</li>';
 								}
 
 								/**
@@ -2808,11 +2807,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								 */
 								if ( ! isset( $info[ 'show_adjust_img_size_opts' ] ) || ! empty( $info[ 'show_adjust_img_size_opts' ] ) ) {
 
-									$text .= ' <li>' . sprintf( __( 'Update image size dimensions in the %s settings page.', 'wpsso' ), $img_sizes_tab_link ) . '</li>';
+									$text .= ' <li>' . sprintf( __( 'Update image size dimensions in the %s settings page.', 'wpsso' ), $image_sizes_tab_link ) . '</li>';
 
 									if ( ! empty( $this->p->options[ 'plugin_check_img_dims' ] ) ) {
 
-										$text .= ' <li>' . sprintf( __( 'Disable the %s option (not recommended).', 'wpsso' ), $img_dim_option_link ) . '</li>';
+										$text .= ' <li>' . sprintf( __( 'Disable the %s option (not recommended).', 'wpsso' ), $image_dim_option_link ) . '</li>';
 									}
 								}
 
@@ -2904,6 +2903,21 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						break;
 
+					case 'notice-ratings-reviews-wc-enabled':
+
+						$option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_services-tab_ratings_reviews',
+							_x( 'Ratings and Reviews Service', 'option label', 'wpsso' ) );
+
+						$wc_settings_page_url = get_admin_url( $blog_id = null, 'admin.php?page=wc-settings&tab=products' );
+
+						$text = sprintf( __( 'WooCommerce product reviews are not compatible with the selected %s service API.', 'wpsso' ),
+							_x( 'Stamped.io (Ratings and Reviews)', 'metabox title', 'wpsso' ) ) . ' ';
+
+						$text .= sprintf( __( 'Please choose another %1$s or <a href="%2$s">disable the product reviews in WooCommerce</a>.',
+							'wpsso' ), $option_link, $wc_settings_page_url ) . ' ';
+
+						break;
+
 					case 'notice-wp-config-php-variable-home':
 
 						$const_html = '<code>WP_HOME</code>';
@@ -2923,11 +2937,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'notice-header-tmpl-no-head-attr':
 
 						$filter_name = 'head_attributes';
-
-						$tag_code = '<code>&lt;head&gt;</code>';
-
-						$php_code  = '<pre><code>&lt;head &lt;?php do_action( &#39;add_head_attributes&#39; ); ?&gt;&gt;</code></pre>';
-
+						$tag_code    = '<code>&lt;head&gt;</code>';
+						$php_code    = '<pre><code>&lt;head &lt;?php do_action( &#39;add_head_attributes&#39; ); ?&gt;&gt;</code></pre>';
 						$action_url  = wp_nonce_url( $this->p->util->get_admin_url( '?wpsso-action=modify_tmpl_head_attributes' ),
 							WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 
@@ -2986,8 +2997,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$licenses_page_link = $this->p->util->get_admin_url( 'licenses',
 							_x( 'Premium Licenses', 'lib file description', 'wpsso' ) );
 
+						$plugins_page_url = get_admin_url( $blog_id = null, 'plugins.php' );
+
 						// translators: Please ignore - translation uses a different text domain.
-						$plugins_page_link = '<a href="' . get_admin_url( $blog_id = null, 'plugins.php' ) . '">' . __( 'Plugins' ) . '</a>';
+						$plugins_page_link = '<a href="' . $plugins_page_url . '">' . __( 'Plugins' ) . '</a>';
 
 						$text = '<p>';
 
@@ -3524,7 +3537,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 			if ( $is_disabled ) {
 
-				$seo_other_tab_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_head_tags-tab_seo_other',
+				$seo_tab_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_head_tags-tab_seo_other',
 					_x( 'SSO', 'menu title', 'wpsso' ) . ' &gt; ' .
 					_x( 'Advanced Settings', 'lib file description', 'wpsso' ) . ' &gt; ' .
 					_x( 'HTML Tags', 'metabox title', 'wpsso' ) . ' &gt; ' .
@@ -3532,7 +3545,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 				$text .= ' ' . sprintf( __( 'Note that the <code>%s</code> HTML tag is currently disabled.', 'wpsso' ), $html_tag ) . ' ';
 
-				$text .= sprintf( __( 'You can re-enable this option under the %s tab.', 'wpsso' ), $seo_other_tab_link );
+				$text .= sprintf( __( 'You can re-enable this option under the %s tab.', 'wpsso' ), $seo_tab_link );
 			}
 
 			return $text;
@@ -3593,9 +3606,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 		 */
 		public function robots_disabled() {
 
-			$option_url = $this->p->util->get_admin_url( 'advanced#sucom-tabset_head_tags-tab_seo_other' );
+			$seo_tab_url = $this->p->util->get_admin_url( 'advanced#sucom-tabset_head_tags-tab_seo_other' );
 
-			$html = '<p class="status-msg"><a href="' . $option_url . '">' . __( 'Robots meta tag is disabled.', 'wpsso' ) . '</a></p>';
+			$html = '<p class="status-msg"><a href="' . $seo_tab_url . '">' . __( 'Robots meta tag is disabled.', 'wpsso' ) . '</a></p>';
 
 			$html .= '<p class="status-msg">' . __( 'No options available.', 'wpsso' ) . '</p>';
 

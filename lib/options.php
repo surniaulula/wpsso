@@ -91,8 +91,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				case 'fb_app_id':
 				case 'fb_app_secret':
-				case 'g_site_verify':	// Google Website Verification ID.
-				case 'p_site_verify':	// Pinterest Website Verification ID.
+				case 'g_site_verify':			// Google Website Verification ID.
+				case 'p_site_verify':			// Pinterest Website Verification ID.
+				case 'plugin_stamped_key_public':	// Stamped.io API Key Public.
 				case ( preg_match( '/_api_key$/', $base_key ) ? true : false ):
 
 					return 'api_key';
@@ -175,6 +176,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'product_price':
 				case 'product_weight_value':
 				case 'product_width_value':
+				case 'plugin_stamped_store_hash':	// Stamped.io Store Hash.
 
 					return 'blank_num';
 
@@ -236,10 +238,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'plugin_bitly_group_name':		// Bitly Group Name (Optional).
 				case 'plugin_dlmyapp_api_key':
 				case 'plugin_owly_api_key':
-				case 'plugin_shopperapproved_site_id':
-				case 'plugin_shopperapproved_token':
-				case 'plugin_stamped_store_hash':
-				case 'plugin_stamped_key_public':
+				case 'plugin_shopperapproved_site_id':	// Shopper Approved Site ID.
+				case 'plugin_shopperapproved_token':	// Shopper Approved API Token.
 				case 'plugin_yourls_username':
 				case 'plugin_yourls_password':
 				case 'plugin_yourls_token':
@@ -1430,7 +1430,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			switch ( $option_type ) {
 
 				/**
-				 * Empty or alpha-numeric (upper or lower case), plus underscores.
+				 * Empty or alpha-numeric (upper or lower case), plus underscores and hypens.
 				 */
 				case 'api_key':
 
