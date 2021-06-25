@@ -431,9 +431,11 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			/**
 			 * Autoptimize.
 			 *
+			 * See https://wordpress.org/plugins/autoptimize/.
+			 *
 			 * Note that Autoptimize is not a page caching plugin - it optimizes CSS and JavaScript.
 			 */
-			if ( class_exists( 'autoptimizeCache' ) ) {
+			if ( $this->p->avail[ 'util' ][ 'autoptimize' ] ) {
 
 				if ( method_exists( 'autoptimizeCache', 'clearall' ) ) {	// Just in case.
 
@@ -445,8 +447,10 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			/**
 			 * Cache Enabler.
+			 *
+			 * See https://wordpress.org/plugins/cache-enabler/.
 			 */
-			if ( class_exists( 'Cache_Enabler' ) ) {
+			if ( $this->p->avail[ 'cache' ][ 'enabler' ] ) {
 
 				if ( method_exists( 'Cache_Enabler', 'clear_total_cache') ) {
 
@@ -458,8 +462,10 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			/**
 			 * Comet Cache.
+			 *
+			 * See https://wordpress.org/plugins/comet-cache/.
 			 */
-			if ( isset( $GLOBALS[ 'comet_cache' ] ) ) {
+			if ( $this->p->avail[ 'cache' ][ 'comet' ] ) {
 
 				$GLOBALS[ 'comet_cache' ]->wipe_cache();
 
@@ -468,8 +474,10 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			/**
 			 * Hummingbird Cache.
+			 *
+			 * See https://wordpress.org/plugins/hummingbird-performance/.
 			 */
-			if ( class_exists( '\Hummingbird\WP_Hummingbird' ) ) {
+			if ( $this->p->avail[ 'cache' ][ 'hummingbird' ] ) {
 
 				if ( method_exists( '\Hummingbird\WP_Hummingbird', 'flush_cache' ) ) {
 
@@ -481,8 +489,10 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			/**
 			 * LiteSpeed Cache.
+			 *
+			 * See https://wordpress.org/plugins/litespeed-cache/.
 			 */
-			if ( class_exists( 'LiteSpeed_Cache_API' ) ) {
+			if ( $this->p->avail[ 'cache' ][ 'litespeed' ] ) {
 
 				if ( method_exists( 'LiteSpeed_Cache_API', 'purge_all' ) ) {
 
@@ -495,7 +505,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			/**
 			 * Pagely Cache.
 			 */
-			if ( class_exists( 'PagelyCachePurge' ) ) {
+			if ( $this->p->avail[ 'cache' ][ 'pagely' ] ) {
 
 				if ( method_exists( 'PagelyCachePurge', 'purgeAll' ) ) {
 
@@ -508,7 +518,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			/**
 			 * SiteGround Cache.
 			 */
-			if ( function_exists( 'sg_cachepress_purge_cache' ) ) {
+			if ( $this->p->avail[ 'cache' ][ 'siteground' ] ) {
 
 				sg_cachepress_purge_cache();
 
@@ -518,7 +528,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			/**
 			 * W3 Total Cache (aka W3TC).
 			 */
-			if ( function_exists( 'w3tc_pgcache_flush' ) ) {
+			if ( $this->p->avail[ 'cache' ][ 'w3tc' ] ) {
 
 				w3tc_pgcache_flush();
 
@@ -533,7 +543,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			/**
 			 * WP Engine Cache.
 			 */
-			if ( class_exists( 'WpeCommon' ) ) {
+			if ( $this->p->avail[ 'cache' ][ 'wp-engine' ] ) {
 
 				if ( method_exists( 'WpeCommon', 'purge_memcached' ) ) {
 
@@ -550,8 +560,10 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			/**
 			 * WP Fastest Cache.
+			 *
+			 * See https://wordpress.org/plugins/wp-fastest-cache/.
 			 */
-			if( function_exists( 'wpfc_clear_all_cache' ) ) {
+			if ( $this->p->avail[ 'cache' ][ 'wp-fastest' ] ) {
 
 				wpfc_clear_all_cache( true );
 
@@ -561,7 +573,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			/**
 			 * WP Rocket Cache.
 			 */
-			if ( function_exists( 'rocket_clean_domain' ) ) {
+			if ( $this->p->avail[ 'cache' ][ 'wp-rocket' ] ) {
 
 				rocket_clean_domain();
 
@@ -573,7 +585,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			 *
 			 * See https://wordpress.org/plugins/wp-super-cache/.
 			 */
-			if ( function_exists( 'wp_cache_clear_cache' ) ) {
+			if ( $this->p->avail[ 'cache' ][ 'wp-super' ] ) {
 
 				wp_cache_clear_cache();
 
