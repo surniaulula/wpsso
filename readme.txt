@@ -39,7 +39,7 @@ Rank higher and improve click-through-rates by presenting your content at its be
 
 <p><strong>WPSSO reads existing content, plugin, and service API data:</strong></p>
 
-There's no need to manually re-enter descriptions, titles, product information, or re-select images and videos! WPSSO can read your existing WordPress content, plugin data, and fetch data from remote service APIs (Bitly, Facebook, Shopper Approved, Vimeo, Wistia, YouTube, and many more).
+There's no need to manually re-enter descriptions, titles, product information, or re-select images and videos! WPSSO can read your existing WordPress content, plugin data, and fetch data from remote service APIs (Bitly, Facebook, Shopper Approved, Stamped.io, Vimeo, Wistia, YouTube, and many more).
 
 WPSSO can be your only social and search optimization plugin, or combined to improve the structured data of another SEO plugin (like All in One SEO Pack, Jetpack SEO Tools, Rank Math SEO, SEO Ultimate, SEOPress, The SEO Framework, WP Meta SEO, Yoast SEO, and more).
 
@@ -187,6 +187,7 @@ The WPSSO Core Standard plugin is designed to satisfy the requirements of most s
 	* Shopper Approved (Ratings and Reviews)
 	* Slideshare Presentations
 	* Soundcloud Tracks (for the Twitter Player Card)
+	* Stamped.io (Ratings and Reviews)
 	* TinyURL
 	* Vimeo Videos
 	* Wistia Videos
