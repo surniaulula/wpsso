@@ -79,7 +79,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 		public function get_avail() {
 
 			$mtime_start = microtime( $get_float = true );
-
+		
 			$get_avail = array();	// Initialize the array to return.
 
 			$lib_checks = SucomUtil::array_merge_recursive_distinct( $this->p->cf[ '*' ][ 'lib' ][ 'pro' ], $this->extend_lib_checks );
@@ -955,7 +955,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			 */
 			$get_avail[ 'p' ][ 'avail_mtime' ] = microtime( $get_float = true ) - $mtime_start;
 
-			return apply_filters( 'wpsso_get_avail', $get_avail );
+			$get_avail = apply_filters( 'wpsso_get_avail', $get_avail );
+
+			return $get_avail;
 		}
 
 		public function is_pp( $ext = null, $rc = true ) {

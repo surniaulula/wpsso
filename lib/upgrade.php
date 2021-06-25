@@ -430,11 +430,11 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'plugin_add_to_shop_order'   => '',	// Fix for private post type.
 				),
 				797 => array(
-					'plugin_vidinfo_cache_exp'            => 'plugin_apiresp_cache_exp',	// Renamed on 2021/06/24.
-					'plugin_shopperapproved_num_max'      => 'plugin_ratings_reviews_num_max',
-					'plugin_shopperapproved_age_max'      => 'plugin_ratings_reviews_age_max',
-					'plugin_shopperapproved_for_download' => 'plugin_ratings_reviews_for_download',
-					'plugin_shopperapproved_for_product'  => 'plugin_ratings_reviews_for_product',
+					'plugin_vidinfo_cache_exp'            => 'plugin_apiresp_cache_exp',		// Renamed on 2021/06/24.
+					'plugin_shopperapproved_num_max'      => 'plugin_ratings_reviews_num_max',	// Renamed on 2021/06/24.
+					'plugin_shopperapproved_age_max'      => 'plugin_ratings_reviews_age_max',	// Renamed on 2021/06/24.
+					'plugin_shopperapproved_for_download' => 'plugin_ratings_reviews_for_download',	// Renamed on 2021/06/24.
+					'plugin_shopperapproved_for_product'  => 'plugin_ratings_reviews_for_product',	// Renamed on 2021/06/24.
 				),
 			),
 		);
