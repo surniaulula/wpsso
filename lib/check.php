@@ -59,8 +59,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 		);
 
 		/**
-		 * The WpssoCheck class is instantiated before the SucomDebug class, so do not use the $this->p->debug class
-		 * object to log status messages.
+		 * This class is instantiated before the SucomDebug class, so do not use $this->p->debug to log status messages.
 		 */
 		public function __construct( &$plugin ) {
 
@@ -68,7 +67,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 		}
 
 		/**
-		 * This method is run only once by Wpsso->set_objects() and typically runs under 0.0002 secs.
+		 * This method is run once by Wpsso->set_objects() and typically runs in 0.0002 secs.
+		 *
+		 * Do not save or retrieve the array from the transient cache as this is slower than running the method.
 		 *
 		 * Please note that get_avail() is executed before the debug class object is defined, so do not log debugging
 		 * messages using $this->p->debug.

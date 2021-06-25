@@ -5258,13 +5258,13 @@ msgstr ""
 
 #: lib/messages.php:163
 msgid ""
-"A customized title for the Facebook / Open Graph %s meta tag, and the "
-"default for all other title values."
+"A customized title for the Facebook / Open Graph %s meta tag and the default "
+"for all other title values."
 msgstr ""
 
 #: lib/messages.php:169
 msgid ""
-"A customized description for the Facebook / Open Graph %s meta tag, and the "
+"A customized description for the Facebook / Open Graph %s meta tag and the "
 "default for all other description values."
 msgstr ""
 
