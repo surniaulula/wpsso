@@ -318,10 +318,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.33.0-dev.5 (2021/06/25)**
+**Version 8.33.0-b.1 (2021/06/25)**
 
 * **New Features**
-	* None.
+	* Added a new module for Stamped.io ratings and reviews in the WPSSO Core Premium plugin.
 * **Improvements**
 	* Added new options under the SSO &gt; Advanced Settings &gt; Service APIs &gt; Ratings and Reviews tab:
 		* Ratings and Reviews Service
@@ -331,6 +331,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
+	* Added supported caching plugins to the array returned by `WpssoCheck->get_avail()`.
 	* Renamed the 'wpsso_cache_expire_video_info' filter to 'wpsso_cache_expire_api_response'.
 * **Requires At Least**
 	* PHP v7.0.
@@ -1347,9 +1348,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.33.0-dev.5 =
+= 8.33.0-b.1 =
 
-(2021/06/25) Added new options under the SSO &gt; Advanced Settings &gt; Service APIs &gt; Ratings and Reviews tab.
+(2021/06/25) Added a new module for Stamped.io ratings and reviews in the WPSSO Core Premium plugin.
 
 = 8.32.0 =
 
