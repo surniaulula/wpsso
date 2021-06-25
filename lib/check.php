@@ -32,6 +32,16 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			'p' => array(
 				'schema' => 'Schema Markup',
 			),
+			'cache' => array(
+				'comet'      => 'Comet Cache',
+				'enabler'    => 'Cache Enabler',
+				'lightspeed' => 'LightSpeed Cache',
+				'w3tc'       => 'W3 Total Cache',
+				'wp-engine'  => 'WP Engine cache',
+				'wp-fastest' => 'WP Fastest Cache',
+				'wp-rocket'  => 'WP Rocket Cache',
+				'wp-super'   => 'WP Super Cache',
+			),
 			'seo' => array(
 				'jetpack-seo' => 'Jetpack SEO Tools',
 				'seoultimate' => 'SEO Ultimate',
@@ -40,7 +50,8 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 				'wpseo-wc'    => 'Yoast WooCommerce SEO',
 			),
 			'util' => array(
-				'jetpack' => 'Jetpack',
+				'autoptimize' => 'Autoptimize',
+				'jetpack'     => 'Jetpack',
 			),
 		);
 

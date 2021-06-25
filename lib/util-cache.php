@@ -430,6 +430,8 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			/**
 			 * Autoptimize.
+			 *
+			 * Note that Autoptimize is not a page caching plugin - it optimizes CSS and JavaScript.
 			 */
 			if ( class_exists( 'autoptimizeCache' ) ) {
 
@@ -446,7 +448,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			 */
 			if ( class_exists( 'Cache_Enabler' ) ) {
 
-				if ( method_exists('Cache_Enabler', 'clear_total_cache') ) {
+				if ( method_exists( 'Cache_Enabler', 'clear_total_cache') ) {
 
 					Cache_Enabler::clear_total_cache();
 
