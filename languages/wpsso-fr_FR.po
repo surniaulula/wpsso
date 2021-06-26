@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.32.0\n"
+"Project-Id-Version: WPSSO Core 8.33.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-06-25 12:14-0700\n"
+"PO-Revision-Date: 2021-06-26 07:12-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3274,12 +3274,12 @@ msgid "getting shopper approved ratings and reviews"
 msgstr "obtention des notes et critiques de shopper approved"
 
 #: gettext/gettext-lib-pro.php:283 gettext/gettext-lib-pro.php:286
-#: lib/pro/review/shopperapproved.php:363 lib/pro/review/stamped.php:319
+#: lib/pro/review/shopperapproved.php:363 lib/pro/review/stamped.php:336
 msgid "There has been a previous error connecting to %s for caching."
 msgstr "Il y a eu une erreur précédente lors de la connexion à %s pour mise en cache."
 
 #: gettext/gettext-lib-pro.php:284 gettext/gettext-lib-pro.php:287
-#: lib/pro/review/shopperapproved.php:366 lib/pro/review/stamped.php:322
+#: lib/pro/review/shopperapproved.php:366 lib/pro/review/stamped.php:339
 msgid "Requests to retrieve and cache this URL are ignored for another %d second(s)"
 msgstr "Les demandes de récupération et de mise en cache de cette URL sont ignorées pendant un autre %d seconde(s)."
 
