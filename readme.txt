@@ -43,7 +43,7 @@ There's no need to manually re-enter descriptions, titles, product information, 
 
 WPSSO can be your only social and search optimization plugin, or combined to improve the structured data of another SEO plugin (like All in One SEO Pack, Jetpack SEO Tools, Rank Math SEO, SEO Ultimate, SEOPress, The SEO Framework, WP Meta SEO, Yoast SEO, and more).
 
-<p><strong>WPSSO is fast, reliable, and coded for performance:</strong></p>
+<p><strong>WPSSO is FAST, reliable, and coded for performance:</strong></p>
 
 WPSSO is coded for SPEED and QUALITY ASSURANCE using advanced WordPress caching techniques, media optimization (ie. image and video SEO, 1:1, 4:3, and 16:9 images for Google, etc.), template validations, discreet contextual notices, and much more.
 
@@ -197,9 +197,9 @@ The WPSSO Core Standard plugin is designed to satisfy the requirements of most s
 
 <h3>Free Complementary Add-ons</h3>
 
-Do you need even more advanced, special and unique features?
+<p><strong>Do you need even more advanced or unique features?</strong></p>
 
-Simply activate the free complementary add-on(s) you require:
+Activate any of the free complementary add-on(s) you require:
 
 * [WPSSO FAQ Manager](https://wordpress.org/plugins/wpsso-faq/) to manage FAQ categories with Question and Answer pages.
 * [WPSSO Inherit Parent Metadata](https://wordpress.org/plugins/wpsso-inherit-parent-meta/) to inherit featured and custom images.

@@ -40,7 +40,7 @@
 
 <p>WPSSO can be your only social and search optimization plugin, or combined to improve the structured data of another SEO plugin (like All in One SEO Pack, Jetpack SEO Tools, Rank Math SEO, SEO Ultimate, SEOPress, The SEO Framework, WP Meta SEO, Yoast SEO, and more).</p>
 
-<p><strong>WPSSO is fast, reliable, and coded for performance:</strong></p>
+<p><strong>WPSSO is FAST, reliable, and coded for performance:</strong></p>
 
 <p>WPSSO is coded for SPEED and QUALITY ASSURANCE using advanced WordPress caching techniques, media optimization (ie. image and video SEO, 1:1, 4:3, and 16:9 images for Google, etc.), template validations, discreet contextual notices, and much more.</p>
 
@@ -211,9 +211,9 @@
 
 <h3>Free Complementary Add-ons</h3>
 
-<p>Do you need even more advanced, special and unique features?</p>
+<p><strong>Do you need even more advanced or unique features?</strong></p>
 
-<p>Simply activate the free complementary add-on(s) you require:</p>
+<p>Activate any of the free complementary add-on(s) you require:</p>
 
 <ul>
 <li><a href="https://wordpress.org/plugins/wpsso-faq/">WPSSO FAQ Manager</a> to manage FAQ categories with Question and Answer pages.</li>
