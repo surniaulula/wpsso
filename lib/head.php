@@ -941,6 +941,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$log_prefix = $parts[ 1 ] . ' ' . $parts[ 2 ] . ' ' . $parts[ 3 ];
 
 				if ( $this->p->debug->enabled ) {
+
 					$this->p->debug->log( $log_prefix . ' = "' . $parts[ 5 ] . '"' );
 				}
 
@@ -1067,7 +1068,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 				if ( ! empty( $this->p->options[ $opt_key ] ) ) {
 
-					$parts[0] = ( empty( $parts[ 6 ] ) ? '' : '<!-- ' . $parts[ 6 ] . ' -->' ) . 
+					$parts[ 0 ] = ( empty( $parts[ 6 ] ) ? '' : '<!-- ' . $parts[ 6 ] . ' -->' ) . 
 						'<' . $parts[ 1 ] . ' ' . $parts[ 2 ] . '="' . $match_name . '" ' . $parts[ 4 ] . '="' . $parts[ 5 ] . '"/>' . "\n";
 
 				} elseif ( $this->p->debug->enabled ) {

@@ -3487,10 +3487,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				return $text;
 			}
 
-			$opt_key = strtolower( 'add_' . implode( '_', $parts ) );	// Use same concatenation technique as WpssoHead->add_mt_singles().
-
-			$html_tag = implode( ' ', $parts );	// HTML tag string for display.
-
+			$opt_key     = strtolower( 'add_' . implode( '_', $parts ) );	// Use same concatenation technique as WpssoHead->add_mt_singles().
+			$html_tag    = implode( ' ', $parts );	// HTML tag string for display.
 			$is_disabled = empty( $this->p->options[ $opt_key ] ) ? true : false;
 
 			if ( $is_disabled ) {
@@ -3534,7 +3532,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 			$html = '<p class="pro-feature-msg">';
 
-			$html .= sprintf( __( 'Video discovery and service API modules are provided with the %s version.', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'short_pro' ] );
+			$html .= sprintf( __( 'Video discovery and service API modules are provided with the %s version.',
+				'wpsso' ), $pkg_info[ 'wpsso' ][ 'short_pro' ] );
 
 			$html .= '</p>';
 
@@ -3593,8 +3592,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 		/**
 		 * Head cache disabled.
-		 *
-		 * $extra_css_class can be empty, 'left', or 'inline'.
 		 */
 		public function head_cache_disabled() {
 
@@ -3657,11 +3654,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			return $html;
 		}
 
-		public function add_schema_disabled_rows( array &$table_rows, $col_span = 1 ) {
-
-			$table_rows[ 'schema_disabled' ] = '<tr><td align="center" colspan="' . $col_span . '">' . $this->schema_disabled() . '</td></tr>';
-		}
-
 		public function get_schema_disabled_rows( $table_rows = array(), $col_span = 1 ) {
 
 			if ( ! is_array( $table_rows ) ) {	// Just in case.
@@ -3669,7 +3661,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				$table_rows = array();
 			}
 
-			$this->add_schema_disabled_rows( $table_rows, $col_span );
+			$table_rows[ 'schema_disabled' ] = '<tr><td align="center" colspan="' . $col_span . '">' . $this->schema_disabled() . '</td></tr>';
 
 			return $table_rows;
 		}

@@ -983,7 +983,7 @@ msgid "Your SSO"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:53 gettext/gettext-lib-config.php:62
-#: lib/admin-head.php:258 lib/messages.php:3500
+#: lib/admin-head.php:258 lib/messages.php:3498
 msgctxt "lib file description"
 msgid "Advanced Settings"
 msgstr ""
@@ -3759,17 +3759,17 @@ msgid_plural "Please install these updates at your earliest convenience."
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/admin-head.php:257 lib/messages.php:3499
+#: lib/admin-head.php:257 lib/messages.php:3497
 msgctxt "menu title"
 msgid "SSO"
 msgstr ""
 
-#: lib/admin-head.php:259 lib/messages.php:3501 lib/submenu/advanced.php:43
+#: lib/admin-head.php:259 lib/messages.php:3499 lib/submenu/advanced.php:43
 msgctxt "metabox title"
 msgid "HTML Tags"
 msgstr ""
 
-#: lib/admin-head.php:260 lib/messages.php:3502 lib/submenu/advanced.php:208
+#: lib/admin-head.php:260 lib/messages.php:3500 lib/submenu/advanced.php:208
 msgctxt "metabox tab"
 msgid "SEO / Other"
 msgstr ""
@@ -6675,7 +6675,7 @@ msgid ""
 "Pinterest Pin It browser button from suggesting these images."
 msgstr ""
 
-#: lib/messages.php:1717 lib/messages.php:3614 lib/submenu/general.php:360
+#: lib/messages.php:1717 lib/messages.php:3611 lib/submenu/general.php:360
 msgctxt "option label"
 msgid "Add Hidden Image for Pinterest"
 msgstr ""
@@ -6973,7 +6973,7 @@ msgid ""
 "structure."
 msgstr ""
 
-#: lib/messages.php:2243 lib/messages.php:3653
+#: lib/messages.php:2243 lib/messages.php:3650
 msgid "Schema markup is disabled."
 msgstr ""
 
@@ -7955,66 +7955,66 @@ msgstr ""
 msgid "<a href=\"%s\">WordPress Title Tag</a> not supported by theme"
 msgstr ""
 
-#: lib/messages.php:3504
+#: lib/messages.php:3502
 msgid "Note that the <code>%s</code> HTML tag is currently disabled."
 msgstr ""
 
-#: lib/messages.php:3506
+#: lib/messages.php:3504
 msgid "You can re-enable this option under the %s tab."
 msgstr ""
 
-#: lib/messages.php:3514
+#: lib/messages.php:3512
 msgctxt "option comment"
 msgid "note that video preview images are included first"
 msgstr ""
 
-#: lib/messages.php:3537
+#: lib/messages.php:3535
 msgid ""
 "Video discovery and service API modules are provided with the %s version."
 msgstr ""
 
 #. translators: %s is is the add-on name (and a link to the add-on page).
-#: lib/messages.php:3557
+#: lib/messages.php:3556
 msgid ""
 "Activate the %s add-on<br/>if you require additional options for Schema "
 "markup and structured data."
 msgstr ""
 
-#: lib/messages.php:3589
+#: lib/messages.php:3588
 msgctxt "option value"
 msgid "uncropped"
 msgstr ""
 
-#: lib/messages.php:3589
+#: lib/messages.php:3588
 msgctxt "option value"
 msgid "cropped"
 msgstr ""
 
-#: lib/messages.php:3601
+#: lib/messages.php:3598
 msgid "head cache is disabled (caching plugin or service detected)."
 msgstr ""
 
 #. translators: %s is the option name, linked to its settings page.
-#: lib/messages.php:3617
+#: lib/messages.php:3614
 msgid "Modifications disabled (%s option is unchecked)."
 msgstr ""
 
-#: lib/messages.php:3629
+#: lib/messages.php:3626
 msgid "Robots meta tag is disabled."
 msgstr ""
 
-#: lib/messages.php:3631 lib/messages.php:3655 lib/messages.php:3695
+#: lib/messages.php:3628 lib/messages.php:3652 lib/messages.php:3687
 #: lib/util-metabox.php:226
 msgid "No options available."
 msgstr ""
 
 #. translators: %s is the meta tag name (aka meta name canonical).
-#: lib/messages.php:3683
+#: lib/messages.php:3675
 msgid ""
 "Modifications disabled (<code>%s</code> tag disabled or SEO plugin detected)."
 msgstr ""
 
-#: lib/messages.php:3693
+#: lib/messages.php:3685
 msgid "WordPress sitemaps are disabled."
 msgstr ""
 
