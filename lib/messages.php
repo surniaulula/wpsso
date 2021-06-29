@@ -225,7 +225,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = __( 'The estimated reading time (in minutes) for this article.', 'wpsso' ) . ' ';
 
-							$text .= __( 'Enter 0 to disable the estimated reading time meta tags.', 'wpsso' );
+							$text .= __( 'A value of 0 minutes disables the estimated reading time meta tags.', 'wpsso' );
 
 						 	break;
 
@@ -1056,6 +1056,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human ) . ' ';
 
+							$text .= __( 'A cache expiration value of 0 seconds disables the cache.', 'wpsso' );
+
 							break;
 
 						case 'tooltip-plugin_content_cache_exp':	// Filtered Content Cache Expiry.
@@ -1066,7 +1068,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = __( 'Filtered post content is saved to the WordPress <em>non-persistent</em> object cache to optimize performance.', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human );
+							$text .= sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human ) . ' ';
+
+							$text .= __( 'A cache expiration value of 0 seconds disables the cache.', 'wpsso' );
 
 							break;
 
@@ -1078,7 +1082,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = __( 'The size information for image URLs (not image IDs) is retrieved and saved to the WordPress transient cache to optimize performance and save network bandwidth.', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human );
+							$text .= sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human ) . ' ';
+
+							$text .= __( 'A cache expiration value of 0 seconds disables the cache.', 'wpsso' );
 
 							break;
 
@@ -1090,7 +1096,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = __( 'Response data returned by remote service APIs, like video information and product reviews, is saved to the WordPress transient cache to optimize performance and reduce API connections.', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human );
+							$text .= sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human ) . ' ';
+
+							$text .= __( 'A cache expiration value of 0 seconds disables the cache.', 'wpsso' );
 
 							break;
 
@@ -1102,7 +1110,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = __( 'Shortened URLs are saved to the WordPress transient cache to optimize performance and reduce API connections.', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human );
+							$text .= sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human ) . ' ';
+
+							$text .= __( 'A cache expiration value of 0 seconds disables the cache.', 'wpsso' );
 
 							break;
 
@@ -1114,7 +1124,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = __( 'The Schema type arrays (ie. the indexed lists of all Schema types) are saved to the WordPress transient cache to optimize performance.', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human );
+							$text .= sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human ) . ' ';
+
+							$text .= __( 'A cache expiration value of 0 seconds disables the cache.', 'wpsso' );
 
 							break;
 
@@ -1126,7 +1138,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = __( 'The filtered text list arrays (for example, article sections and product categories) are saved to the WordPress transient cache to optimize performance and disk access.', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human );
+							$text .= sprintf( __( 'The suggested cache expiration value is %1$s seconds (%2$s).', 'wpsso' ), $cache_exp_secs, $cache_exp_human ) . ' ';
+
+							$text .= __( 'A cache expiration value of 0 seconds disables the cache.', 'wpsso' );
 
 							break;
 
@@ -3404,31 +3418,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			return $def_checked;
 		}
 
-		public function pro_feature( $ext ) {
-
-			list( $ext, $p_ext ) = $this->get_ext_p_ext( $ext );
-
-			if ( empty( $ext ) ) {
-
-				return '';
-			}
-
-			return $this->get( 'pro-feature-msg', array( 'plugin_id' => $ext ) );
-		}
-
-		public function pro_feature_video_api( $ext ) {
-
-			$pkg_info = $this->p->admin->get_pkg_info();	// Returns an array from cache.
-
-			$html = '<p class="pro-feature-msg">';
-
-			$html .= sprintf( __( 'Video discovery and service API modules are provided with the %s version.', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'short_pro' ] );
-
-			$html .= '</p>';
-
-			return $html;
-		}
-
 		/**
 		 * If an add-on is not active, return a short message that this add-on is required.
 		 */
@@ -3461,13 +3450,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			return ' <span class="ext-req-msg">' . $text . '</span>';
 		}
 
-		public function preview_images_first() {
-
-			$html = ' ' . _x( 'note that video preview images are included first', 'option comment', 'wpsso' );
-
-			return $html;
-		}
-
 		public function maybe_preview_images_first() {
 
 			$html = '';
@@ -3478,30 +3460,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			}
 
 			return $html;
-		}
-
-		/**
-		 * $extra_css_class can be empty, 'left', or 'inline'.
-		 */
-		public function p_img_disabled( $extra_css_class = '' ) {
-
-			$option_link = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_pinterest',
-				_x( 'Add Hidden Image for Pinterest', 'option label', 'wpsso' ) );
-
-			// translators: %s is the option name, linked to its settings page.
-			$text = sprintf( __( 'Modifications disabled (%s option is unchecked).', 'wpsso' ), $option_link );
-
-			return '<p class="status-msg smaller disabled ' . $extra_css_class . '">' . $text . '</p>';
-		}
-
-		/**
-		 * $extra_css_class can be empty, 'left', or 'inline'.
-		 */
-		public function amp_img_disabled( $extra_css_class = '' ) {
-
-			$text = __( 'Modifications disabled (no AMP plugin active).', 'wpsso' );
-
-			return '<p class="status-msg smaller disabled ' . $extra_css_class . '">' . $text . '</p>';
 		}
 
 		/**
@@ -3549,6 +3507,38 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			}
 
 			return $text;
+		}
+
+		public function preview_images_first() {
+
+			$html = ' ' . _x( 'note that video preview images are included first', 'option comment', 'wpsso' );
+
+			return $html;
+		}
+
+		public function pro_feature( $ext ) {
+
+			list( $ext, $p_ext ) = $this->get_ext_p_ext( $ext );
+
+			if ( empty( $ext ) ) {
+
+				return '';
+			}
+
+			return $this->get( 'pro-feature-msg', array( 'plugin_id' => $ext ) );
+		}
+
+		public function pro_feature_video_api( $ext ) {
+
+			$pkg_info = $this->p->admin->get_pkg_info();	// Returns an array from cache.
+
+			$html = '<p class="pro-feature-msg">';
+
+			$html .= sprintf( __( 'Video discovery and service API modules are provided with the %s version.', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'short_pro' ] );
+
+			$html .= '</p>';
+
+			return $html;
 		}
 
 		public function more_schema_options() {
@@ -3599,6 +3589,34 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			$img_cropped = empty( $def_opts[ $opt_pre . '_img_crop' ] ) ? _x( 'uncropped', 'option value', 'wpsso' ) : _x( 'cropped', 'option value', 'wpsso' );
 
 			return $img_width . 'x' . $img_height . 'px ' . $img_cropped;
+		}
+
+		/**
+		 * Head cache disabled.
+		 *
+		 * $extra_css_class can be empty, 'left', or 'inline'.
+		 */
+		public function head_cache_disabled() {
+
+			$text = __( 'head cache is disabled (caching plugin or service detected).', 'wpsso' );
+
+			return '<span class="option-info">' . $text . '</span>';
+		}
+
+		/**
+		 * Pinterest disabled.
+		 *
+		 * $extra_css_class can be empty, 'left', or 'inline'.
+		 */
+		public function p_img_disabled( $extra_css_class = '' ) {
+
+			$option_link = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_pinterest',
+				_x( 'Add Hidden Image for Pinterest', 'option label', 'wpsso' ) );
+
+			// translators: %s is the option name, linked to its settings page.
+			$text = sprintf( __( 'Modifications disabled (%s option is unchecked).', 'wpsso' ), $option_link );
+
+			return '<p class="status-msg smaller disabled ' . $extra_css_class . '">' . $text . '</p>';
 		}
 
 		/**

@@ -371,12 +371,15 @@ table.sucom-settings td span.ext-req-msg a {
 	margin-left:2px;
 }
 
+table.sucom-settings td span.option-info,
+table.sucom-settings td span.option-info a {
+	color:#00f;
+	margin-left:2px;
+}
+
 table.sucom-settings td span.option-warning,
 table.sucom-settings td span.option-warning a {
 	color:#f00;
-	font-style:italic;
-	font-weight:normal;
-	text-align:left;
 	margin-left:2px;
 }
 

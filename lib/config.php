@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.33.0',	// Plugin version.
+					'version'     => '8.34.0-dev.1',	// Plugin version.
 					'opt_version' => '798',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2288,7 +2288,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'filter'  => 'wpsso_cache_expire_short_url',
 					),
 					'wpsso_t_' => array(	// Default is 1 month.
-						'label'   => 'Schema Indexes',
+						'label'   => 'Schema Index',
 						'opt_key' => 'plugin_types_cache_exp',
 						'filter'  => 'wpsso_cache_expire_schema_types',
 					),

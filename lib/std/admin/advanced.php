@@ -310,7 +310,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$form->get_th_html( _x( 'Head Markup Cache Expiry', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_head_cache_exp' ) . 
 				'<td nowrap class="blank">' . $form->get_no_input( 'plugin_head_cache_exp', $css_class = 'medium' ) . ' ' . 
-				_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
+				_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' .
 				WpssoAdmin::get_option_site_use( 'plugin_head_cache_exp', $form, $network );
 
 			$table_rows[ 'plugin_content_cache_exp' ] = $form->get_tr_hide( 'basic', 'plugin_content_cache_exp' ) . 
@@ -567,7 +567,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		 */
 		public function filter_doc_types_schema_types_rows( array $table_rows, $form ) {
 
-			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre = 'wpsso_t_' );	// Schema Indexes (default is 1 month).
+			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre = 'wpsso_t_' );	// Schema Index (default is 1 month).
 			$schema_types   = $this->p->schema->get_schema_types_select( $context = 'settings' );
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';

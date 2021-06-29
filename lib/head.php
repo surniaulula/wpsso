@@ -36,6 +36,13 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 				add_action( 'amp_post_template_head', array( $this, 'show_head' ), WPSSO_HEAD_PRIORITY );
 			}
+
+			if ( ! empty( $this->p->avail[ 'cache' ][ 'any' ] ) ) {
+
+				$this->p->util->add_plugin_filters( $this, array(
+					'cache_expire_head_markup' => '__return_zero',
+				) );
+			}
 		}
 
 		public function add_vary_user_agent_header( $headers ) {

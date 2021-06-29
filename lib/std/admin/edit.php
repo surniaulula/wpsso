@@ -176,7 +176,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				),
 
 				/**
-				 * All Schema Types
+				 * All Schema Types.
 				 */
 				'subsection_schema' => array(
 					'td_class' => 'subsection',
