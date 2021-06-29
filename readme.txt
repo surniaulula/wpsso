@@ -319,6 +319,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.34.0-dev.1 (2021/06/29)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Head markup cache is now disabled if a caching plugin or service is detected.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.0.
+	* WordPress v4.5.
+
 **Version 8.33.0 (2021/06/27)**
 
 * **New Features**
@@ -1348,6 +1362,10 @@ This release adds a new SSO &gt; Features Status page and integration module for
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.34.0-dev.1 =
+
+(2021/06/29) Head markup cache is now disabled if a caching plugin or service is detected.
 
 = 8.33.0 =
 
