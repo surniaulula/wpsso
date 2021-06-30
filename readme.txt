@@ -49,7 +49,7 @@ WPSSO is coded for SPEED and QUALITY ASSURANCE using advanced WordPress caching 
 
 <h3>Users Love the WPSSO Core Plugin</h3>
 
-&#x2605;&#x2605;&#x2605;&#x2605;&#x2605; - "Unlike competitors, you can literally customize just about every aspect of SEO and Social SEO if you desire to. You can use it combined with Yoast and other SEO plugins. This plugin has the most complete JSON-LD markup out of any of them, so you won’t have any errors and warnings in search console for WordPress or WooCommerce sites. You can go crazy customizing everything, or you can just set and forget. There aren’t many plugins that allow the best of both worlds." - [kw11](https://wordpress.org/support/topic/most-responsive-developer-ive-ever-seen/)
+&#x2605;&#x2605;&#x2605;&#x2605;&#x2605; - "Unlike competitors, you can literally customize just about every aspect of SEO and Social SEO if you desire to. [[...]] This plugin has the most complete JSON-LD markup out of any of them, so you won’t have any errors and warnings in search console for WordPress or WooCommerce sites. You can go crazy customizing everything, or you can just set and forget. There aren’t many plugins that allow the best of both worlds." - [kw11](https://wordpress.org/support/topic/most-responsive-developer-ive-ever-seen/)
 
 &#x2605;&#x2605;&#x2605;&#x2605;&#x2605; - "This plugin makes getting sites structured data ready extremely easy, and it works flawlessly without any issues. It shows messages on the top bar every step of the way to alert you of any issues until everything is set up correctly. It made all my ecommerce products pass Google's validation tests. Great work." - [marguy1](https://wordpress.org/support/topic/excellent-plugin-6825/)
 
