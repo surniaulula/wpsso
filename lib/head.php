@@ -32,11 +32,17 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			add_action( 'wp_head', array( $this, 'show_head' ), WPSSO_HEAD_PRIORITY );
 
+			/**
+			 * If an AMP plugin is active, hook 'amp_post_template_head' to add head markup for AMP pages.
+			 */
 			if ( ! empty( $this->p->avail[ 'amp' ][ 'any' ] ) ) {
 
 				add_action( 'amp_post_template_head', array( $this, 'show_head' ), WPSSO_HEAD_PRIORITY );
 			}
 
+			/**
+			 * If a caching plugin or service is active, disable the head markup cache.
+			 */
 			if ( ! empty( $this->p->avail[ 'cache' ][ 'any' ] ) ) {
 
 				$this->p->util->add_plugin_filters( $this, array(
