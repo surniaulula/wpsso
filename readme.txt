@@ -49,6 +49,8 @@ WPSSO is coded for SPEED and QUALITY ASSURANCE using advanced WordPress caching 
 
 <h3>Users Love the WPSSO Core Plugin</h3>
 
+&#x2605;&#x2605;&#x2605;&#x2605;&#x2605; - "Unlike competitors, you can literally customize just about every aspect of SEO and Social SEO if you desire to. You can use it combined with Yoast and other SEO plugins. This plugin has the most complete JSON-LD markup out of any of them, so you won’t have any errors and warnings in search console for WordPress or WooCommerce sites. You can go crazy customizing everything, or you can just set and forget. There aren’t many plugins that allow the best of both worlds." - [kw11](https://wordpress.org/support/topic/most-responsive-developer-ive-ever-seen/)
+
 &#x2605;&#x2605;&#x2605;&#x2605;&#x2605; - "This plugin makes getting sites structured data ready extremely easy, and it works flawlessly without any issues. It shows messages on the top bar every step of the way to alert you of any issues until everything is set up correctly. It made all my ecommerce products pass Google's validation tests. Great work." - [marguy1](https://wordpress.org/support/topic/excellent-plugin-6825/)
 
 &#x2605;&#x2605;&#x2605;&#x2605;&#x2605; - "This plugin has been a lifesaver in terms of making our images and links and descriptions look beautiful everywhere we post them! It’s so easy to use and the preview functions are incredibly helpful." - [lotusblooms](https://wordpress.org/support/topic/love-this-plugin-789/)
@@ -56,8 +58,6 @@ WPSSO is coded for SPEED and QUALITY ASSURANCE using advanced WordPress caching 
 &#x2605;&#x2605;&#x2605;&#x2605;&#x2605; - "What a fantastic plugin. If you want to fix all the errors in search console for structured data, this is the plugin to use. Love it." - [goviral](https://wordpress.org/support/topic/makes-schema-so-easy/)
 
 &#x2605;&#x2605;&#x2605;&#x2605;&#x2605; - "This plugin saves me so much time, and it has really lifted my SERP rankings. Most of my keywords I now rank 1-3 position. I also noticed after about a week that my impressions have gone up at least 75%. I upgraded to the pro version which gave me even more options." - [playnstocks](https://wordpress.org/support/topic/excellent-plugin-and-support-200/)
-
-&#x2605;&#x2605;&#x2605;&#x2605;&#x2605; - "Yoast SEO on steroids! As an SEO marketer, I love using Yoast SEO for my basic on-page SEO. But Yoast SEO only allows you to enter basic Open Graph social settings. This plugin gives you SO many more options on completing the Open Graph for Facebook, Twitter cards, Pinterest etc." - [gregmontag](https://wordpress.org/support/topic/yoast-on-steroids/)
 
 <h3>WPSSO Core Plugin Features</h3>
 
