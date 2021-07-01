@@ -1560,7 +1560,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				$html = $this->p->cache->get( $request, $format = 'raw', $cache_type = 'transient', $exp_secs = 300, $cache_ext = '', $curl_opts );
 
-				if ( ! $html ) {
+				if ( empty( $html ) ) {
 
 					if ( $this->p->debug->enabled ) {
 

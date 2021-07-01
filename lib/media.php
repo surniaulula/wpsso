@@ -1369,7 +1369,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$figure_block_matches = array();
 			$iframe_embed_matches = array();
 
-			if ( preg_match_all( '/<(figure) class="(wp-block-embed-[^ "]+) [^"]+"><div class="wp-block-embed__wrapper">' . 
+			if ( preg_match_all( '/<(figure) class="(wp-block-embed[^ "]*) [^"]+"><div class="wp-block-embed__wrapper">' . 
 				' *([^ \'"<>]+\/(embed\/|embed_code\/|player\/|swf\/|v\/|videos?\/|video\.php\?)[^ \'"<>]+) *<\/div><\/figure>/i',
 					$content, $figure_block_matches, PREG_SET_ORDER ) ) {
 
