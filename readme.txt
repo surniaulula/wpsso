@@ -61,21 +61,22 @@ WPSSO is coded for SPEED and QUALITY ASSURANCE using advanced WordPress caching 
 
 <h3>WPSSO Core Plugin Features</h3>
 
-Provides meta tag and Schema markup for WordPress posts / pages, plugin and theme custom post types, taxonomies, search results, shop pages, and much more.
+Provides meta tags and Schema markup for WordPress posts / pages, plugin and theme custom post types, taxonomies, search results, shop pages, and much more.
 
-Enhances oEmbed markup for LinkedIn, and provides additional article and product meta tags for Slack.
+Enhances the WordPress oEmbed data for LinkedIn, Discord, Drupal, Squarespace, and others.
+
+Includes additional article and product meta tags for Slack.
 
 Offers optimized image sizes for social sites and search engines:
 
 * Open Graph (Facebook and oEmbed)
 * Pinterest Pin It
-* Schema 1:1 (Google Rich Results and SEO)
-* Schema 4:3 (Google Rich Results and SEO)
-* Schema 16:9 (Google Rich Results and SEO)
-* Schema Thumbnail Image
+* Schema 1:1 (Google)
+* Schema 4:3 (Google)
+* Schema 16:9 (Google)
+* Schema Thumbnail
 * Twitter Summary Card
 * Twitter Large Image Summary Card
-* **[Premium]** Twitter Player Card
 
 Built-in compatibility with AMP plugins:
 
@@ -325,6 +326,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Improvements**
 	* To prevent multiple layers of caching, the head markup cache is now disabled if a caching plugin or service is detected.
+	* Renamed the SSO &gt; General Settings &gt; > Content and Text tab to Titles / Descriptions.
+	* Removed the SSO &gt; General Settings &gt; Authorship tab.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
