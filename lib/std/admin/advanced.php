@@ -309,49 +309,49 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$table_rows[ 'plugin_head_cache_exp' ] = '' . 
 				$form->get_th_html( _x( 'Head Markup Cache Expiry', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_head_cache_exp' ) . 
-				'<td nowrap class="blank">' . $form->get_no_input( 'plugin_head_cache_exp', $css_class = 'medium' ) . ' ' . 
+				'<td class="blank">' . $form->get_no_input( 'plugin_head_cache_exp', $css_class = 'medium' ) . ' ' . 
 				_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' .
 				WpssoAdmin::get_option_site_use( 'plugin_head_cache_exp', $form, $network );
 
 			$table_rows[ 'plugin_content_cache_exp' ] = $form->get_tr_hide( 'basic', 'plugin_content_cache_exp' ) . 
 				$form->get_th_html( _x( 'Filtered Content Cache Expiry', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_content_cache_exp' ) . 
-				'<td nowrap class="blank">' . $form->get_no_input( 'plugin_content_cache_exp', $css_class = 'medium' ) . ' ' . 
+				'<td class="blank">' . $form->get_no_input( 'plugin_content_cache_exp', $css_class = 'medium' ) . ' ' . 
 				_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
 				WpssoAdmin::get_option_site_use( 'plugin_content_cache_exp', $form, $network );
 
 			$table_rows[ 'plugin_imgsize_cache_exp' ] = '' .
 				$form->get_th_html( _x( 'Image URL Info Cache Expiry', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_imgsize_cache_exp' ) . 
-				'<td nowrap class="blank">' . $form->get_no_input( 'plugin_imgsize_cache_exp', $css_class = 'medium' ) . ' ' . 
+				'<td class="blank">' . $form->get_no_input( 'plugin_imgsize_cache_exp', $css_class = 'medium' ) . ' ' . 
 				_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
 				WpssoAdmin::get_option_site_use( 'plugin_imgsize_cache_exp', $form, $network );
 
 			$table_rows[ 'plugin_apiresp_cache_exp' ] = '' .
 				$form->get_th_html( _x( 'API Response Cache Expiry', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_apiresp_cache_exp' ) . 
-				'<td nowrap class="blank">' . $form->get_no_input( 'plugin_apiresp_cache_exp', $css_class = 'medium' ) . ' ' . 
+				'<td class="blank">' . $form->get_no_input( 'plugin_apiresp_cache_exp', $css_class = 'medium' ) . ' ' . 
 				_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
 				WpssoAdmin::get_option_site_use( 'plugin_apiresp_cache_exp', $form, $network );
 
 			$table_rows[ 'plugin_short_url_cache_exp' ] = '' .
 				$form->get_th_html( _x( 'Short URL Cache Expiry', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_short_url_cache_exp' ) . 
-				'<td nowrap class="blank">' . $form->get_no_input( 'plugin_short_url_cache_exp', $css_class = 'medium' ) . ' ' . 
+				'<td class="blank">' . $form->get_no_input( 'plugin_short_url_cache_exp', $css_class = 'medium' ) . ' ' . 
 				_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
 				WpssoAdmin::get_option_site_use( 'plugin_short_url_cache_exp', $form, $network );
 
 			$table_rows[ 'plugin_types_cache_exp' ] = $form->get_tr_hide( 'basic', 'plugin_types_cache_exp' ) . 
 				$form->get_th_html( _x( 'Schema Index Cache Expiry', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_types_cache_exp' ) . 
-				'<td nowrap class="blank">' . $form->get_no_input( 'plugin_types_cache_exp', $css_class = 'medium' ) . ' ' . 
+				'<td class="blank">' . $form->get_no_input( 'plugin_types_cache_exp', $css_class = 'medium' ) . ' ' . 
 				_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
 				WpssoAdmin::get_option_site_use( 'plugin_types_cache_exp', $form, $network );
 
 			$table_rows[ 'plugin_select_cache_exp' ] = $form->get_tr_hide( 'basic', 'plugin_select_cache_exp' ) . 
 				$form->get_th_html( _x( 'Form Selects Cache Expiry', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_select_cache_exp' ) .
-				'<td nowrap class="blank">' . $form->get_no_input( 'plugin_select_cache_exp', $css_class = 'medium' ) . ' ' . 
+				'<td class="blank">' . $form->get_no_input( 'plugin_select_cache_exp', $css_class = 'medium' ) . ' ' . 
 				_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
 				WpssoAdmin::get_option_site_use( 'plugin_select_cache_exp', $form, $network );
 
@@ -435,7 +435,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$table_rows[ 'plugin_min_shorten' ] = $form->get_tr_hide( 'basic', 'plugin_min_shorten' ) . 
 				$form->get_th_html( _x( 'Minimum URL Length to Shorten', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_min_shorten' ) . 
-				'<td nowrap class="blank">' . $form->get_no_input( 'plugin_min_shorten', $css_class = 'short' ) . ' ' .
+				'<td class="blank">' . $form->get_no_input( 'plugin_min_shorten', $css_class = 'short' ) . ' ' .
 				_x( 'characters', 'option comment', 'wpsso' ) . '</td>';
 
 			$table_rows[ 'plugin_wp_shortlink' ] = $form->get_tr_hide( 'basic', 'plugin_wp_shortlink' ) .
@@ -474,7 +474,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$table_rows[ 'plugin_ratings_reviews_age_max' ] = $form->get_tr_hide( 'basic', 'plugin_ratings_reviews_age_max' ) .
 				$form->get_th_html( _x( 'Maximum Age of Reviews', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_ratings_reviews_age_max' ) .
-				'<td nowrap class="blank">' . $form->get_no_input( 'plugin_ratings_reviews_age_max', $css_class = 'short' ) . ' ' .
+				'<td class="blank">' . $form->get_no_input( 'plugin_ratings_reviews_age_max', $css_class = 'short' ) . ' ' .
 				_x( 'months', 'option comment', 'wpsso' ) . '</td>';
 
 			$table_rows[ 'plugin_ratings_reviews_for' ] = '' .
