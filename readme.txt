@@ -20,8 +20,6 @@ Rank higher and improve click-through-rates by presenting your content at its be
 
 <h3 class="top">THE MOST ADVANCED STRUCTURED DATA PLUGIN FOR WORDPRESS</h3>
 
-<p>No fancy cartoons or marketing - just fast and reliable code. ;-)</p>
-
 <p><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"><strong>WPSSO helps you rank higher and improves click-through-rates by presenting your content at its best on social sites and in search results - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled.</strong></p>
 
 <p><strong>WPSSO provides meta tags and structured data markup for:</strong></p>
@@ -47,7 +45,9 @@ WPSSO can be your only social and search optimization plugin, or combined to imp
 
 <p><strong>WPSSO is FAST, reliable, and coded for performance:</strong></p>
 
-WPSSO is coded for SPEED and QUALITY ASSURANCE using advanced WordPress caching techniques, media optimization (ie. image and video SEO, 1:1, 4:3, and 16:9 images for Google, etc.), template validations, discreet contextual notices, and much more.
+<p>WPSSO is coded for SPEED and QUALITY ASSURANCE with advanced caching techniques, media optimization (ie. image and video SEO, 1:1, 4:3, and 16:9 images for Google, etc.), template validations, discreet contextual notices, and much more.</p>
+
+<p>No fancy cartoons or marketing - just fast and reliable code. ;-)</p>
 
 <h3>Users Love the WPSSO Core Plugin</h3>
 
