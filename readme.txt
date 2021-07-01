@@ -1,4 +1,4 @@
-=== WPSSO | Meta Tags and Schema Structured Data ===
+=== WPSSO Core | Meta Tags and Schema Structured Data ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
