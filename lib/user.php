@@ -1351,7 +1351,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( empty( $meta_key ) ) {
 
-				$meta_key = $this->p->options[ 'og_author_field' ];	// Provide a default value.
+				$meta_key = $this->p->options[ 'fb_author_field' ];	// Provide a default value.
 			}
 
 			if ( ! empty( $meta_key ) && 'none' !== $meta_key ) {	// Just in case.

@@ -721,7 +721,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						 * An array of author URLs.
 						 */
 						$mt_og[ 'article:author' ] = $this->p->user->get_authors_websites( $mod[ 'post_author' ],
-							$this->p->options[ 'og_author_field' ] );
+							$this->p->options[ 'fb_author_field' ] );
 
 					} else {
 
@@ -734,7 +734,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					if ( ! empty( $mod[ 'post_coauthors' ] ) ) {
 
 						$og_profile_urls = $this->p->user->get_authors_websites( $mod[ 'post_coauthors' ],
-							$this->p->options[ 'og_author_field' ] );
+							$this->p->options[ 'fb_author_field' ] );
 
 						$mt_og[ 'article:author' ] = array_merge( $mt_og[ 'article:author' ], $og_profile_urls );
 					}

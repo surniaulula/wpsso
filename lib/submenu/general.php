@@ -69,8 +69,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			$tabs = apply_filters( 'wpsso_general_' . $metabox_id . '_tabs', array(
 				'site'    => _x( 'Site Information', 'metabox tab', 'wpsso' ),
-				'content' => _x( 'Content and Text', 'metabox tab', 'wpsso' ),
-				'author'  => _x( 'Authorship', 'metabox tab', 'wpsso' ),
+				'content' => _x( 'Titles / Descriptions', 'metabox tab', 'wpsso' ),
 				'images'  => _x( 'Images', 'metabox tab', 'wpsso' ),
 				'videos'  => _x( 'Videos', 'metabox tab', 'wpsso' ),
 			) );
@@ -186,10 +185,9 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$table_rows[ 'og_title_sep' ] = '' . 
 						$this->form->get_th_html( _x( 'Title Separator', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'og_title_sep' ) . 
-						'<td>' . $this->form->get_input( 'og_title_sep', 'short' ) . '</td>';
+						'<td>' . $this->form->get_input( 'og_title_sep', 'xshort' ) . '</td>';
 
 					$table_rows[ 'og_title_max_len' ] = '' . 
-						// translators: Title Max. Length label for Open Graph.
 						$this->form->get_th_html( _x( 'Title Max. Length', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'og_title_max_len' ) . 
 						'<td>' . 
@@ -200,7 +198,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'</td>';
 
 					$table_rows[ 'og_desc_max_len' ] = '' . 
-						// translators: Description Max. Length label for Twitter and Open Graph.
 						$this->form->get_th_html( _x( 'Description Max. Length', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'og_desc_max_len' ) . 
 						'<td>' . 
@@ -211,20 +208,11 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'</td>';
 
 					$table_rows[ 'og_desc_hashtags' ] = '' .
-						$this->form->get_th_html( _x( 'Add Hashtags to Descriptions', 'option label', 'wpsso' ),
+						$this->form->get_th_html( _x( 'Description Hashtags', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'og_desc_hashtags' ) . 
 						'<td>' . $this->form->get_select( 'og_desc_hashtags', range( 0, $this->p->cf[ 'form' ][ 'max_hashtags' ] ),
 							$css_class = 'short', $css_id = '', $is_assoc = true ) . ' ' . 
 						_x( 'tag names', 'option comment', 'wpsso' ) . '</td>';
-
-					break;
-
-				case 'og-author':
-
-					$table_rows[ 'og_author_field' ] = '' . 
-						$this->form->get_th_html( _x( 'Author Profile URL Field', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'og_author_field' ) . 
-						'<td>' . $this->form->get_select( 'og_author_field', $user_contacts ) . '</td>';
 
 					break;
 
@@ -260,6 +248,11 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						$this->form->get_th_html_locale( _x( 'Facebook Business Page URL', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'fb_publisher_url' ) . 
 						'<td>' . $this->form->get_input_locale( 'fb_publisher_url', $css_class = 'wide' ) . '</td>';
+
+					$table_rows[ 'fb_author_field' ] = $this->form->get_tr_hide( 'basic', 'fb_author_field' ) . 
+						$this->form->get_th_html( _x( 'Author Profile URL Field', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'fb_author_field' ) . 
+						'<td>' . $this->form->get_select( 'fb_author_field', $user_contacts ) . '</td>';
 
 					$table_rows[ 'fb_app_id' ] = $this->form->get_tr_hide( 'basic', 'fb_app_id' ) . 
 						$this->form->get_th_html( _x( 'Facebook Application ID', 'option label', 'wpsso' ),
@@ -387,8 +380,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'<td>' . $this->form->get_input_locale( 'tc_site' ) . '</td>';
 
 					$table_rows[ 'tc_desc_max_len' ] = $this->form->get_tr_hide( 'basic', 'tc_desc_max_len' ) . 
-						// translators: Description Max. Length label for Twitter and Open Graph.
-						$this->form->get_th_html( _x( 'Description Max. Length', 'option label', 'wpsso' ),
+						$this->form->get_th_html( _x( 'Twitter Card Description Max. Length', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'tc_desc_max_len' ) . 
 						'<td>' . $this->form->get_input( 'tc_desc_max_len', $css_class = 'chars' ) . ' ' . 
 						_x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';

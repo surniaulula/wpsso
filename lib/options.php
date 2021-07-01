@@ -137,10 +137,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				/**
 				 * Cast as integer (zero and -1 is ok).
 				 */
-				case 'og_img_max':
+				case 'og_img_max':			// Maximum Images to Include.
 				case 'og_vid_max':
 				case 'og_desc_hashtags': 
-				case 'schema_img_max':
+				case 'schema_img_max':			// Schema Max. Images to Include.
 				case 'schema_vid_max':
 				case ( preg_match( '/_(cache_exp|caption_hashtags|filter_prio)$/', $base_key ) ? true : false ):
 				case ( preg_match( '/_(img|logo|banner)_url(:width|:height)$/', $base_key ) ? true : false ):
@@ -253,7 +253,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				case 'site_org_place_id':		// Example: 'none' or place ID.
 				case 'site_org_schema_type':		// Example: 'organization' or a sub-type.
-				case 'og_author_field':
+				case 'fb_author_field':
 				case 'og_def_img_id_lib': 		// Example: 'wp' or 'ngg' media library name.
 				case 'og_img_id_lib': 			// Example: 'wp' or 'ngg' media library name.
 				case 'plugin_shortener':		// Example: 'none' or name of shortener
@@ -417,7 +417,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				/**
 				 * Maybe use a custom value from the SSO > Advanced settings page.
 				 */
-				$this->cache_defaults[ 'og_author_field' ] = $this->p->options[ 'plugin_cm_fb_name' ];
+				$this->cache_defaults[ 'fb_author_field' ] = $this->p->options[ 'plugin_cm_fb_name' ];
 
 				/**
 				 * Import Yoast SEO Social Meta.

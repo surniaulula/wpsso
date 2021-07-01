@@ -57,7 +57,7 @@ ul.sucom-metabox-tabs > li {
 	height:1.1em;
 	min-height:1.1em;
 	margin:0 0 -1px 0;
-	padding:10px;
+	padding:10px 12px;
 	border-top:1px solid #e9e9e9;
 	border-left:1px solid #e9e9e9;
 	border-right:1px solid #e9e9e9;
@@ -209,10 +209,6 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\f10b";	/* .icon-mobile */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_author::before {			/* SSO > General Settings > General Settings > Authorship tab. */
-	content:"\f2be";	/* .icon-user-circle-o */
-}
-
 .sucom-tablink-icon.sucom-tablink-href_body_section::before {		/* Body Section tab. */
 	content:"\e815";	/* .icon-download */
 }
@@ -225,7 +221,7 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\f1c0";	/* .icon-database */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_content::before {		/* SSO > General Settings > General Settings > Content and Text tab. */
+.sucom-tablink-icon.sucom-tablink-href_content::before {		/* SSO > General Settings > General Settings > Titles / Descriptions tab. */
 	content:"\e809";	/* .icon-edit */
 }
 

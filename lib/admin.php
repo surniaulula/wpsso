@@ -3034,7 +3034,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				'<td>' . $form->get_select( 'seo_author_name', $this->p->cf[ 'form' ][ 'user_name_fields' ] ) . '</td>';
 
 			$table_rows[ 'schema_img_max' ] = $form->get_tr_hide( 'basic', 'schema_img_max' ) . 
-				$form->get_th_html( _x( 'Maximum Images to Include', 'option label', 'wpsso' ), $css_class = '', $css_id = 'schema_img_max' ) . 
+				$form->get_th_html( _x( 'Schema Max. Images to Include', 'option label', 'wpsso' ), $css_class = '', $css_id = 'schema_img_max' ) . 
 				'<td>' .
 				$form->get_select( 'schema_img_max', range( 0, $max_media_items ), $css_class = 'short', $css_id = '', $is_assoc = true ) .
 				$this->p->msgs->maybe_preview_images_first() .

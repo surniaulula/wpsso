@@ -436,6 +436,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'plugin_shopperapproved_for_download' => 'plugin_ratings_reviews_for_download',	// Renamed on 2021/06/24.
 					'plugin_shopperapproved_for_product'  => 'plugin_ratings_reviews_for_product',	// Renamed on 2021/06/24.
 				),
+				798 => array(
+					'og_author_field' => 'fb_author_field',	// Renamed on 2021/07/01.
+				),
 			),
 		);
 

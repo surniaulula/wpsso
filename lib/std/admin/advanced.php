@@ -285,7 +285,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'<td class="blank">' . $form->get_no_input_image_dimensions( 'schema_16x9_img' ) . $json_req_msg . '</td>';
 
 			$table_rows[ 'schema_thumb_img_size' ] = '' .
-				$form->get_th_html( _x( 'Schema Thumbnail Image', 'option label', 'wpsso' ), '', 'thumb_img_size' ) . 
+				$form->get_th_html( _x( 'Schema Thumbnail', 'option label', 'wpsso' ), '', 'schema_thumb_img_size' ) . 
 				'<td class="blank">' . $form->get_no_input_image_dimensions( 'thumb_img' ) . '</td>';
 
 			$table_rows[ 'tc_00_sum_img_size' ] = '' .

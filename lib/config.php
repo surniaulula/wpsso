@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'     => '8.34.0-rc.1',	// Plugin version.
-					'opt_version' => '798',		// Increment when changing default option values.
+					'opt_version' => '799',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Rank higher and improve click-through-rates by presenting your content at its best on social sites and in search results - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled.',
@@ -1243,26 +1243,26 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Facebook options.
 					 */
-					'fb_publisher_url' => '',				// Facebook Business Page URL (localized).
-					'fb_app_id'        => '966242223397117',		// Facebook Application ID.
-					'fb_locale'        => 'en_US',				// Facebook Locale.
+					'fb_publisher_url' => '',			// Facebook Business Page URL (localized).
+					'fb_author_field'  => 'facebook',		// Author Profile URL Field.
+					'fb_app_id'        => '966242223397117',	// Facebook Application ID.
+					'fb_locale'        => 'en_US',			// Facebook Locale.
 
 					/**
 					 * Open Graph options.
 					 */
-					'og_author_field'         => 'facebook',		// Author Profile URL Field.
-					'og_def_article_section'  => 'none',			// Default Article Section.
-					'og_def_img_id'           => '',			// Default Image ID.
+					'og_def_article_section'  => 'none',		// Default Article Section.
+					'og_def_img_id'           => '',		// Default Image ID.
 					'og_def_img_id_lib'       => 'wp',
-					'og_def_img_url'          => '',			// or Default Image URL.
-					'og_def_product_category' => 'none',			// Default Product Type.
-					'og_def_currency'         => 'USD',			// Default Currency.
+					'og_def_img_url'          => '',		// or Default Image URL.
+					'og_def_product_category' => 'none',		// Default Product Type.
+					'og_def_currency'         => 'USD',		// Default Currency.
 					'og_img_width'            => 1200,
 					'og_img_height'           => 630,
 					'og_img_crop'             => 1,
 					'og_img_crop_x'           => 'center',
 					'og_img_crop_y'           => 'center',
-					'og_img_max'              => 1,
+					'og_img_max'              => 1,			// Maximum Images to Include.
 					'og_title_sep'            => '-',
 					'og_title_max_len'        => 70,
 					'og_title_warn_len'       => 40,
@@ -1271,7 +1271,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_desc_hashtags'        => 0,
 					'og_vid_max'              => 1,
 					'og_vid_autoplay'         => 1,
-					'og_vid_prev_img'         => 1,				// Include Video Preview Images.
+					'og_vid_prev_img'         => 1,			// Include Video Preview Images.
 
 					/**
 					 * Open Graph options for default taxonomy and post types.
@@ -1350,8 +1350,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_16x9_img_crop'   => 1,
 					'schema_16x9_img_crop_x' => 'center',
 					'schema_16x9_img_crop_y' => 'center',
-					'schema_desc_max_len'    => 300,			// Schema Description Max. Length (hard limit).
-					'schema_img_max'         => 1,
+					'schema_desc_max_len'    => 300,	// Schema Description Max. Length (hard limit).
+					'schema_img_max'         => 1,		// Schema Max. Images to Include.
 
 					/**
 					 * Schema options for default taxonomy and post types.
@@ -1410,9 +1410,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Twitter Card options.
 					 */
 					'tc_site'           => '',				// Twitter Business @username (localized).
-					'tc_desc_max_len'   => 200,				// Description Max. Length (hard limit).
-					'tc_type_singular'  => 'summary_large_image',
-					'tc_type_default'   => 'summary',
+					'tc_desc_max_len'   => 200,				// Twitter Card Description Max. Length (hard limit).
+					'tc_type_singular'  => 'summary_large_image',		// Twitter Card for Post / Page Image.
+					'tc_type_default'   => 'summary',			// Twitter Card Type by Default.
 					'tc_sum_img_width'  => 1200,
 					'tc_sum_img_height' => 630,
 					'tc_sum_img_crop'   => 1,

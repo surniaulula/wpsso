@@ -630,7 +630,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						/**
-						 * Content and Text tab.
+						 * Titles / Descriptions tab.
 						 */
 						case 'tooltip-og_title_sep':		// Title Separator.
 
@@ -652,30 +652,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-og_desc_hashtags':	// Add Hashtags to Descriptions.
+						case 'tooltip-og_desc_hashtags':	// Description Hashtags.
 
 							$text = __( 'The maximum number of tag names (converted to hashtags) to include in the Facebook / Open Graph description.', 'wpsso' ) . ' ';
 
 							$text .= __( 'Each tag name is converted to lowercase with whitespaces removed.', 'wpsso' ) . ' ';
 
 							$text .= __( 'Select "0" to disable the addition of hashtags.', 'wpsso' );
-
-							break;
-
-						/**
-						 * Authorship tab.
-						 */
-						case 'tooltip-og_author_field':		// Author Profile URL Field.
-
-							$cm_label_key = 'plugin_cm_fb_label';
-
-							$cm_label_value = SucomUtil::get_key_value( $cm_label_key, $this->p->options );
-
-							$text = sprintf( __( 'Choose a contact field from the WordPress profile page to use for the Facebook / Open Graph %s meta tag value.', 'wpsso' ), '<code>article:author</code>' ) . ' ';
-
-							$text .= sprintf( __( 'The suggested setting is the "%s" user profile contact field (default value).', 'wpsso' ), $cm_label_value ) . ' ';
-
-							$text .= sprintf( __( 'Select "[None]" if you prefer to exclude the %s meta tag and prevent Facebook from showing author attribution in shared links.', 'wpsso' ), '<code>article:author</code>' );
 
 							break;
 
@@ -692,7 +675,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-og_img_size':		// Open Graph.
+						case 'tooltip-og_img_size':		// Open Graph (Facebook and oEmbed) Image Size.
 
 							$def_img_dims = $this->get_def_img_dims( 'og' );
 
@@ -1200,9 +1183,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
-							$text = __( 'If a custom author image has not been selected, fallback to using their Gravatar image in author related meta tags and Schema markup.', 'wpsso' ) . ' ';
+							$text .= sprintf( __( 'A customized image for each author can be selected in the WordPress user profile %s metabox.', 'wpsso' ), $mb_title ) . ' ';
 
-							$text .= sprintf( __( 'A customized image for each author can be selected in the WordPress user profile %s metabox.', 'wpsso' ), $mb_title );
+							$text = __( 'If a custom image has not been selected, fallback to using their Gravatar image.', 'wpsso' ) . ' ';
 
 							break;
 
@@ -1407,7 +1390,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					switch ( $msg_key ) {
 
-						case 'tooltip-fb_publisher_url':
+						case 'tooltip-fb_publisher_url':	// Facebook Business Page URL (localized).
 
 							$publisher_url_label = _x( $this->p->cf[ 'form' ][ 'social_accounts' ][ 'fb_publisher_url' ], 'option value', 'wpsso' );
 
@@ -1419,7 +1402,17 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-fb_app_id':
+						case 'tooltip-fb_author_field':		// Author Profile URL Field.
+
+							$cm_label_value = SucomUtil::get_key_value( 'plugin_cm_fb_label', $this->p->options );
+
+							$text = sprintf( __( 'Choose a contact field from the WordPress profile page to use for the Facebook / Open Graph %s meta tag value.', 'wpsso' ), '<code>article:author</code>' ) . ' ';
+
+							$text .= sprintf( __( 'The suggested value is the "%s" user profile contact field.', 'wpsso' ), $cm_label_value ) . ' ';
+
+							break;
+
+						case 'tooltip-fb_app_id':		// Facebook Application ID.
 
 							$fb_docs_url = __( 'https://developers.facebook.com/docs/development/create-an-app', 'wpsso' );
 
@@ -1427,9 +1420,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-fb_locale':
+						case 'tooltip-fb_locale':		// Facebook Locale.
 
-							$text = sprintf( __( 'Facebook does not support all WordPress locale values. If the Facebook debugger returns an error parsing the %1$s meta tag, you may have to choose an alternate Facebook language for that WordPress locale.', 'wpsso' ), '<code>og:locale</code>' );
+							$text = __( 'Facebook does not support all WordPress locale values.', 'wpsso' ) . ' ';
+
+							$text .= sprintf( __( 'If the Facebook debugger returns an error parsing the %1$s meta tag, you may have to choose an alternate Facebook language for that WordPress locale.', 'wpsso' ), '<code>og:locale</code>' );
 
 							break;
 
@@ -1567,7 +1562,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					switch ( $msg_key ) {
 
-						case 'tooltip-schema_img_max':		// Maximum Images to Include.
+						case 'tooltip-schema_img_max':		// Schema Max. Images to Include.
 
 							$text = __( 'The maximum number of images to include in the Schema main entity markup for the webpage.', 'wpsso' ) . ' ';
 
@@ -1577,9 +1572,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-schema_1x1_img_size':	// Schema 1:1 Image Size.
-						case 'tooltip-schema_4x3_img_size':	// Schema 4:3 Image Size.
-						case 'tooltip-schema_16x9_img_size':	// Schema 16:9 Image Size.
+						case 'tooltip-schema_1x1_img_size':	// Schema 1:1 (Google) Image Size.
+						case 'tooltip-schema_4x3_img_size':	// Schema 4:3 (Google) Image Size.
+						case 'tooltip-schema_16x9_img_size':	// Schema 16:9 (Google) Image Size.
 
 							if ( preg_match( '/^tooltip-(schema_([0-9]+)x([0-9]+))_img_size$/', $msg_key, $matches ) ) {
 
@@ -1591,6 +1586,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 								$text .= sprintf( __( 'The minimum image width required by Google is %dpx.', 'wpsso' ), $this->p->cf[ 'head' ][ 'limit_min' ][ $opt_pre . '_img_width' ] ). ' ';
 							}
+
+							break;
+
+						case 'tooltip-schema_thumb_img_size':	// Schema Thumbnail Image Size.
+
+							$def_img_dims = $this->get_def_img_dims( 'thumb' );
+
+							$text = sprintf( __( 'The image dimensions used for the Schema "%1$s" property and the "%2$s" tag (the default dimensions are %3$s).', 'wpsso' ), 'thumbnailUrl', 'meta name thumbnail', $def_img_dims );
 
 							break;
 
@@ -1757,7 +1760,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					switch ( $msg_key ) {
 
-						case 'tooltip-tc_site':
+						case 'tooltip-tc_site':		// Twitter Business @username.
 
 							$publisher_url_label = _x( $this->p->cf[ 'form' ][ 'social_accounts' ][ 'tc_site' ], 'option value', 'wpsso' );
 
@@ -1769,7 +1772,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-tc_desc_max_len':
+						case 'tooltip-tc_desc_max_len':	// Twitter Card Description Max. Length.
 
 							$text = sprintf( __( 'The maximum length for the Twitter Card description value (the default is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'tc_desc_max_len' ) ) . ' ';
 
@@ -1789,7 +1792,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-tc_sum_img_size':
+						case 'tooltip-tc_sum_img_size':	// Twitter Summary Card Image Size.
 
 							$def_img_dims = $this->get_def_img_dims( $opt_pre = 'tc_sum' );
 
@@ -1799,7 +1802,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-tc_lrg_img_size':
+						case 'tooltip-tc_lrg_img_size':	// Twitter Large Image Summary Card Image Size.
 
 							$def_img_dims = $this->get_def_img_dims( $opt_pre = 'tc_lrg' );
 
@@ -2084,12 +2087,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-wp-cm-field-id':
 
 							$text = sprintf( __( 'The built-in WordPress <em>%1$s</em> column cannot be modified.', 'wpsso' ), _x( 'Contact Field ID', 'column title', 'wpsso' ) );
-
-							break;
-
-						case 'tooltip-thumb_img_size':
-
-							$text = sprintf( __( 'The image dimensions used for the Schema "%1$s" property and the "%2$s" tag (the default dimensions are %3$s).', 'wpsso' ), 'thumbnailUrl', 'meta name thumbnail', $this->get_def_img_dims( $opt_pre = 'thumb' ) );
 
 							break;
 
@@ -3531,7 +3528,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 			$html .= '</p>';
 
-			return $html;
+			return $html . $this->get( 'pro-feature-msg', array( 'plugin_id' => $ext ) );
 		}
 
 		public function more_schema_options() {
