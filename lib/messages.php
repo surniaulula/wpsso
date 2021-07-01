@@ -1422,9 +1422,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-fb_locale':		// Facebook Locale.
 
-							$text = __( 'Facebook does not support all WordPress locale values.', 'wpsso' ) . ' ';
+							$text = __( 'Facebook does not understand all WordPress locale values.', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( 'If the Facebook debugger returns an error parsing the %1$s meta tag, you may have to choose an alternate Facebook language for that WordPress locale.', 'wpsso' ), '<code>og:locale</code>' );
+							$text .= sprintf( __( 'If the Facebook debugger returns an error parsing the %s meta tag, you should choose an alternate Facebook language for that WordPress locale.', 'wpsso' ), '<code>og:locale</code>' );
 
 							break;
 
