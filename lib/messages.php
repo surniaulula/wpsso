@@ -126,9 +126,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-meta-og_schema_type':	// Schema Type.
 
-							$text = __( 'Select a document Schema type that best describes the main content of this webpage.', 'wpsso' );
-
-							$text .= '<br/><br/>';
+							$text = __( 'Select a document Schema type that best describes the main content of this webpage.', 'wpsso' ) . ' ';
 
 							$text .= __( 'The Schema type option offers a much larger selection of types than the Open Graph type, and the Open Graph type may reflect the Schema type selected (the Open Graph type option will be disabled in this case).', 'wpsso' ) . ' ';
 
@@ -140,13 +138,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = __( 'Select a document Facebook / Open Graph type that best describes the main content of this webpage.', 'wpsso' ) . ' ';
 
-							$text .= '<br/><br/>';
-
 							$text .= __( 'The Schema type option offers a much larger selection of types than the Open Graph type, and the Open Graph type may reflect the Schema type selected (the Open Graph type option will be disabled in this case).', 'wpsso' ) . ' ';
 
 							$text .= __( 'As an example, a Schema type or sub-type of "Article" will change the Open Graph type to "article", a Schema type or sub-type of "Place" will change the Open Graph type to "place", a Schema type or sub-type of "Product" will change the Open Graph type to "product",  etc.', 'wpsso' ) . ' ';
-
-							$text .= '<br/><br/>';
 
 							$text .= __( 'Note that for social sharing purposes, the document Open Graph type must be "article", "place", "product", or "website".', 'wpsso' ) . ' ';
 

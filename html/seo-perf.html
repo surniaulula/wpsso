@@ -1,0 +1,122 @@
+
+<style type="text/css">
+
+	table.seo-perf {
+		width:100%;
+		color:#333333;
+		border-collapse:separate;
+		border-spacing:4px;
+		margin:10px 0 30px 0;
+	}
+
+	table.seo-perf a {
+		color:#000000;
+		text-decoration:underline;
+	}
+
+	table.seo-perf th,
+	table.seo-perf td {
+		padding:4px 8px;
+	}
+
+	table.seo-perf th {
+		width:15%;
+		vertical-align:bottom;
+	}
+
+	table.seo-perf th.plugin-name {
+		width:40%;
+	}
+
+	table.seo-perf tr.best td {
+		background-color:#00c851;
+	}
+
+	table.seo-perf tr.average td {
+		background-color:#ffbb33;
+	}
+
+	table.seo-perf tr.worst td {
+		background-color:#ff4444;
+	}
+
+</style>
+
+<table class="seo-perf">
+	<thead>
+		<tr>
+			<th class="plugin-name">Plugin Name</th>
+			<th>Page Gen. Time</th>
+			<th>Peak Mem. Usage</th>
+			<th>Database Queries</th>
+			<th>Query Time</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="best">
+			<td><a href="https://wordpress.org/plugins/wpsso/">WPSSO Core</a></td>
+			<td>0.034s</td>
+			<td>6,683 kB</td>
+			<td>33</td>
+			<td>0.0021s</td>
+		</tr>
+		<tr class="best">
+			<td><a href="https://wordpress.org/plugins/autodescription/">The SEO Framework</a></td>
+			<td>0.034s</td>
+			<td>6,787 kB</td>
+			<td>32</td>
+			<td>0.0021s</td>
+		</tr>
+		<tr class="best">
+			<td><a href="https://wordpress.org/plugins/wp-meta-seo/">WP Meta SEO</a></td>
+			<td>0.035s</td>
+			<td>6,561 kB</td>
+			<td>38</td>
+			<td>0.0024s</td>
+		</tr>
+		<tr class="best">
+			<td><a href="https://wordpress.org/plugins/wpsso/">WPSSO Core</a> with <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">JSON Add-on</a></td>
+			<td>0.035s</td>
+			<td>6,913 kB</td>
+			<td>33</td>
+			<td>0.0021s</td>
+		</tr>
+		<tr class="average">
+			<td><a href="https://wordpress.org/plugins/wordpress-seo/">Yoast SEO</a></td>
+			<td>0.039s</td>
+			<td>7,648 kB</td>
+			<td>34</td>
+			<td>0.0023s</td>
+		</tr>
+		<!--
+		<tr class="average">
+			<td><a href="https://wordpress.org/plugins/wpsso/">WPSSO Core</a> with <a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">JSON Add-on</a> and <a href="https://wordpress.org/plugins/wordpress-seo/">Yoast SEO</a></td>
+			<td>0.041s</td>
+			<td>8,575 kB</td>
+			<td>34</td>
+			<td>0.0021s</td>
+		</tr>
+		-->
+		<tr class="average">
+			<td><a href="https://wordpress.org/plugins/seo-by-rank-math/">Rank Math SEO</a></td>
+			<td>0.043s</td>
+			<td>7,542 kB</td>
+			<td>48</td>
+			<td>0.0029s</td>
+		</tr>
+		<tr class="average">
+			<td><a href="https://wordpress.org/plugins/wp-seopress/">SEOPress</a></td>
+			<td>0.050s</td>
+			<td>6,496 kB</td>
+			<td>34</td>
+			<td>0.0022s</td>
+		</tr>
+		<tr class="worst">
+			<td><a href="https://wordpress.org/plugins/all-in-one-seo-pack/">All in One SEO</a></td>
+			<td>0.060s</td>
+			<td>9,285 kB</td>
+			<td>62</td>
+			<td>0.0057s</td>
+		</tr>
+	</tbody>
+</table>
