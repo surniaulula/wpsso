@@ -322,7 +322,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.34.0-rc.1 (2021/06/30)**
+**Version 8.34.0-rc.2 (2021/07/01)**
 
 * **New Features**
 	* None.
@@ -331,7 +331,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Renamed the SSO &gt; General Settings &gt; > Content and Text tab to Titles / Descriptions.
 	* Removed the SSO &gt; General Settings &gt; Authorship tab.
 * **Bugfixes**
-	* None.
+	* Fixed video detection for the block editor 'wp-block-embed' block.
 * **Developer Notes**
 	* Renamed the 'og_author_field' options key to 'fb_author_field'.
 * **Requires At Least**
@@ -1368,9 +1368,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.34.0-rc.1 =
+= 8.34.0-rc.2 =
 
-(2021/06/30) To prevent multiple layers of caching, the head markup cache is now disabled if a caching plugin or service is detected.
+(2021/07/01) Fixed video detection for the block editor 'wp-block-embed' block. To prevent multiple layers of caching, the head markup cache is now disabled if a caching plugin or service is detected.
 
 = 8.33.0 =
 
