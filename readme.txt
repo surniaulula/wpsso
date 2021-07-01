@@ -9,7 +9,7 @@ Assets URI: https://surniaulula.github.io/wpsso/assets/
 Tags: woocommerce, structured data, seo, schema, open graph, facebook, linkedin, twitter, google, pinterest, social sharing, meta tags
 Contributors: jsmoriss
 Requires PHP: 7.0
-Requires At Least: 4.5
+Requires At Least: 5.0
 Tested Up To: 5.7.2
 WC Tested Up To: 5.4.1
 Stable Tag: 8.34.0
@@ -337,7 +337,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Renamed the 'og_author_field' options key to 'fb_author_field'.
 * **Requires At Least**
 	* PHP v7.0.
-	* WordPress v4.5.
+	* WordPress v5.0.
 
 **Version 8.33.0 (2021/06/27)**
 
