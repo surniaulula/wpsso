@@ -328,9 +328,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Improvements**
 	* To prevent multiple layers of caching, the head markup cache is now disabled if a caching plugin or service is detected.
-	* Renamed the SSO &gt; General Settings &gt; > Content and Text tab to Titles / Descriptions.
+	* Renamed the SSO &gt; General Settings &gt; Content and Text tab to Titles / Descriptions.
 	* Removed the SSO &gt; General Settings &gt; Authorship tab.
 * **Bugfixes**
+	* Fixed the video query arguments for YouTube's latest API requirements.
 	* Fixed video detection for the block editor 'wp-block-embed' block.
 * **Developer Notes**
 	* Renamed the 'og_author_field' options key to 'fb_author_field'.
@@ -1370,7 +1371,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 = 8.34.0-rc.2 =
 
-(2021/07/01) Fixed video detection for the block editor 'wp-block-embed' block. To prevent multiple layers of caching, the head markup cache is now disabled if a caching plugin or service is detected.
+(2021/07/01) Fixed the video query arguments for YouTube's latest API requirements. Fixed video detection for the block editor 'wp-block-embed' block. To prevent multiple layers of caching, the head markup cache is now disabled if a caching plugin or service is detected.
 
 = 8.33.0 =
 
