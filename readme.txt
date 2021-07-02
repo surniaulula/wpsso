@@ -322,6 +322,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.34.1-dev.1 (2021/07/02)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fix for possible critical error when creating a new order in WooCommerce with The SEO Framework plugin.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.0.
+	* WordPress v5.0.
+
 **Version 8.34.0 (2021/07/01)**
 
 * **New Features**
@@ -1368,6 +1382,10 @@ This release adds a new SSO &gt; Features Status page and integration module for
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.34.1-dev.1 =
+
+(2021/07/02) Fix for possible critical error when creating a new order in WooCommerce with The SEO Framework plugin.
 
 = 8.34.0 =
 
