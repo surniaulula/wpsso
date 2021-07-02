@@ -3246,6 +3246,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function maybe_load_post( $post_id, $force = false ) {
 
+			if ( empty( $post_id ) ) {	// Just in case.
+
+				return false;
+			}
+
 			global $post;
 
 			if ( $force || ! isset( $post->ID ) || $post->ID !== $post_id ) {
