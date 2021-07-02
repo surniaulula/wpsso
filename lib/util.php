@@ -1025,13 +1025,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						}
 
 						$opts[ $opt_key ] = $def_val;
-
-					} else {
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'skipped ' . $opt_key . ' - already set' );
-						}
 					}
 				}
 			}
@@ -1098,13 +1091,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						}
 
 						$opts[ $opt_key ] = $def_val;
-
-					} else {
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'skipped ' . $opt_key . ' - already set' );
-						}
 					}
 				}
 			}
