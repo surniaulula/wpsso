@@ -315,38 +315,54 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			return $head_info;
 		}
 
+		/**
+		 * Deprecated on 2021/07/04.
+		 */
 		public function get_mt_mark( $type ) {
 
-			$mt_mark = '';
+			return $this->get_mt_data( $type );
+		}
+
+		/**
+		 * Called by WpssoHead->get_head_html() with $type = 'begin' and 'end'.
+		 *
+		 * Called by WpssoPost->check_post_head() and WpssoSsmFilters->strip_schema_microdata() with $type = 'preg'.
+		 */
+		public function get_mt_data( $type, $args = null ) {
+
+			$ret = '';
 
 			switch ( $type ) {
+
+				case 'added':
+
+					$total_secs = sprintf( '%f secs', $args );
+					$home_url   = SucomUtilWP::raw_home_url();
+
+					return '<meta name="wpsso-data-' . $type . '" content="' . date( 'c' ) . ' in ' . $total_secs .  ' for ' . $home_url . '">' . "\n";
 
 				case 'begin':
 				case 'end':
 
-					$add_meta_name = empty( $this->p->options[ 'plugin_check_head' ] ) ? false : true;
+					return '<meta name="wpsso-data-mark-' . $type . '" content="' . WPSSO_DATA_ID . ' ' . $type . '"/>' . "\n";
 
-					$html_comment = '<!-- wpsso meta tags ' . $type . ' -->';
+				case 'cached':
 
-					$mt_name = $add_meta_name ? '<meta name="wpsso:mark:' . $type . '" content="wpsso meta tags ' . $type . '"/>' . "\n" : '';
-
-					$mt_mark = 'begin' === $type ? $html_comment . "\n" . $mt_name : $mt_name . $html_comment . "\n";
-
-					break;
+					return '<meta name="wpsso-data-' . $type . '" content="' . ( $args ? date( 'c' ) : 'no cache' ) . '">' . "\n";
 
 				/**
 				 * Used by WpssoPost->check_post_head() and WpssoSsmFilters->strip_schema_microdata().
 				 */
 				case 'preg':
+				case 'begin-end-preg':
 
 					/**
 					 * Some HTML optimization plugins or services may remove the double-quotes from the name
 					 * attribute, along with the trailing space and slash characters, so make these optional in
 					 * the regex.
 					 */
-					$prefix = '<(!--[\s\n\r]+|meta[\s\n\r]+name="?wpsso:mark:(begin|end)"?[\s\n\r]+content=")';
-
-					$suffix = '("[\s\n\r]*\/?|[\s\n\r]+--)>';
+					$preg_prefix = '<(meta[\s\n\r]+name="?wpsso-data-mark-(begin|end)"?[\s\n\r]+content=")';
+					$preg_suffix = '("[\s\n\r]*\/?)>';
 
 					/**
 					 * U = Invert greediness of quantifiers, so they are NOT greedy by default, but become greedy if followed by ?.
@@ -354,12 +370,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					 * m = The "^" and "$" constructs match newlines and the complete subject string.
 					 * s = A dot metacharacter in the pattern matches all characters, including newlines.
 					 */
-					$mt_mark = '/' . $prefix . 'wpsso meta tags begin' . $suffix . '.*' . $prefix . 'wpsso meta tags end' . $suffix . '/Uums';
-
-					break;
+					return '/' . $preg_prefix . WPSSO_DATA_ID . ' begin' . $preg_suffix . '.*' . $preg_prefix . WPSSO_DATA_ID . ' end' . $preg_suffix . '/Uums';
 			}
 
-			return $mt_mark;
+			return $ret;
 		}
 
 		public function get_head_html( $use_post = false, $mod = false, $read_cache = true ) {
@@ -369,11 +383,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$mtime_start   = microtime( $get_float = true );
-			$indent_num    = 0;
-			$home_url      = SucomUtilWP::raw_home_url();
-			$info          = $this->p->cf[ 'plugin' ][ $this->p->id ];
-			$short_version = $info[ 'short' ] . ' v' . $info[ 'version' ];
+			$mtime_start = microtime( $get_float = true );
+			$indent_num  = 0;
 
 			/**
 			 * The $mod array argument is preferred but not required.
@@ -388,9 +399,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$mod = $this->p->page->get_mod( $use_post );
 			}
 
-			$html = "\n\n" . '<!-- social and search optimization by ' . $short_version . ' - https://wpsso.com/ -->' . "\n";
-
-			$html .= $this->get_mt_mark( 'begin' );
+			$html = "\n\n";
 
 			$head_tags = $this->get_head_array( $use_post, $mod, $read_cache );
 
@@ -405,23 +414,16 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 					$html .= str_repeat( "\t", (int) $indent_num ) . $mt[0];
 
-					/**
-					 * Indent meta tags within a noscript container.
-					 */
-					if ( 0 === strpos( $mt[ 0 ], '<noscript' ) ) {
+					if ( 0 === strpos( $mt[ 0 ], '<noscript' ) ) {	// Indent meta tags within a noscript container.
 
 						$indent_num = 1;
 					}
 				}
 			}
 
-			$html .= $this->get_mt_mark( 'end' );
-
 			$mtime_total = microtime( $get_float = true ) - $mtime_start;
 
-			$total_secs = sprintf( '%f secs', $mtime_total );
-
-			$html .= '<!-- added on ' . date( 'c' ) . ' in ' . $total_secs . ' from ' . $home_url . ' -->' . "\n\n";
+			$html .= $this->get_mt_data( 'added', $mtime_total ) . "\n";
 
 			return $html;
 		}
@@ -493,6 +495,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 							if ( $this->p->debug->enabled ) {
 
 								$this->p->debug->log( 'cache index found in transient cache' );
+
 								$this->p->debug->mark( 'build head array' );	// End timer.
 							}
 
@@ -616,13 +619,20 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$mt_og = $this->p->og->sanitize_mt_array( $mt_og );	// Unset mis-matched og_type meta tags.
 
 			$cache_array[ $cache_index ] = array_merge(
+				array(
+					array( $this->get_mt_data( 'begin' ) ),
+				),
 				$this->get_mt_array( $tag = 'meta', $type = 'name', $mt_gen, $mod ),
 				$this->get_mt_array( $tag = 'link', $type = 'rel', $link_rel, $mod ),
 				$this->get_mt_array( $tag = 'meta', $type = 'property', $mt_og, $mod ),
 				$this->get_mt_array( $tag = 'meta', $type = 'name', $mt_tc, $mod ),
 				$this->get_mt_array( $tag = 'meta', $type = 'itemprop', $mt_item, $mod ),
 				$this->get_mt_array( $tag = 'meta', $type = 'name', $mt_name, $mod ),	// SEO description is last.
-				$schema_scripts
+				$schema_scripts,
+				array(
+					array( $this->get_mt_data( 'end' ) ),
+					array( $this->get_mt_data( 'cached', $cache_exp_secs ) ),
+				)
 			);
 
 			if ( $cache_exp_secs > 0 ) {
@@ -775,7 +785,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			/**
-			 * Sanitation check for both "link rel href" and "link itemprop href". All other meta tags use a "content"
+			 * Sanitation check for both "link rel href" and "link itemprop href" - all other meta tags use a "content"
 			 * attribute name.
 			 */
 			if ( 'link' === $tag ) {

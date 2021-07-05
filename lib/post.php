@@ -970,11 +970,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 */
 				if ( $is_admin && ! $this->p->debug->enabled ) {
 
-					$notice_msg = sprintf( __( 'The webpage HTML retrieved from %1$s is %2$s bytes.', 'wpsso' ),
-						'<a href="' . $check_url . '">' . $check_url_htmlenc . '</a>', $html_size ) . ' ';
+					$notice_msg = sprintf( __( 'The webpage HTML retrieved from %1$s is %2$s bytes.', 'wpsso' ), '<a href="' . $check_url . '">' . $check_url_htmlenc . '</a>', $html_size ) . ' ';
 
-					$notice_msg .= sprintf( __( 'This exceeds the maximum limit of %1$s bytes imposed by the Google crawler.', 'wpsso' ),
-						$error_size ) . ' ';
+					$notice_msg .= sprintf( __( 'This exceeds the maximum limit of %1$s bytes imposed by the Google crawler.', 'wpsso' ), $error_size ) . ' ';
 
 					$notice_msg .= __( 'If you do not reduce the webpage HTML size, Google will refuse to crawl this webpage.', 'wpsso' );
 
@@ -1060,18 +1058,22 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				return;	// Stop here.
 
-			} elseif ( false === strpos( $webpage_html, 'wpsso meta tags begin' ) ) {	// Webpage should include our own meta tags.
+			} elseif ( false === strpos( $webpage_html, WPSSO_DATA_ID . ' begin' ) ) {	// Webpage should include our own meta tags.
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: wpsso meta tag section not found in ' . $check_url );
+					$this->p->debug->log( 'exiting early: ' . WPSSO_DATA_ID . ' not found in ' . $check_url );
 				}
 
 				if ( $is_admin ) {
 
-					$short_name = $this->p->cf[ 'plugin' ][ $this->p->id ][ 'short' ];
+					$short_name = $this->p->cf[ 'plugin' ][ 'wpsso' ][ 'short' ];
 
-					$this->p->notice->err( sprintf( __( 'A %2$s meta tag section was not found in <a href="%1$s">%1$s</a> - perhaps a webpage caching plugin or service needs to be refreshed?', 'wpsso' ), $check_url, $short_name ) );
+					$notice_msg = sprintf( __( 'The %1$s meta tags and Schema markup section was not found in <a href="%2$s">%2$s</a>.', 'wpsso' ), $short_name, $check_url ) . ' ';
+
+					$notice_msg .= __( 'Does a caching plugin or service needs to be refreshed?', 'wpsso' );
+
+					$this->p->notice->err( $notice_msg );
 				}
 
 				return;	// Stop here.
@@ -1085,7 +1087,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->log( 'removing the wpsso meta tag section from the webpage html' );
 			}
 
-			$mt_mark_preg = $this->p->head->get_mt_mark( 'preg' );	// Includes a modifier to handle UTF-8 in subject strings.
+			$mt_mark_preg = $this->p->head->get_mt_data( 'begin-end-preg' );
 
 			$html_stripped = preg_replace( $mt_mark_preg, '', $webpage_html, -1, $mark_count );
 
@@ -1098,7 +1100,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				if ( $is_admin ) {
 
-					$short_name = $this->p->cf[ 'plugin' ][ $this->p->id ][ 'short' ];
+					$short_name = $this->p->cf[ 'plugin' ][ 'wpsso' ][ 'short' ];
 
 					$notice_msg = sprintf( __( 'The PHP preg_replace() function failed to remove the %1$s meta tag section - this could be an indication of a problem with PHP\'s PCRE library, or an optimization plugin or service corrupting the webpage HTML markup.', 'wpsso' ), $short_name ) . ' ';
 

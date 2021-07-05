@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.34.1-dev.1',	// Plugin version.
+					'version'     => '8.34.1-dev.2',	// Plugin version.
 					'opt_version' => '799',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -4131,6 +4131,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			define( 'WPSSO_UNDEF', -1 );			// Default undefined image width / height value.
 			define( 'WPSSO_URLPATH', trailingslashit( plugins_url( '', $plugin_file ) ) );
 			define( 'WPSSO_VERSION', $info[ 'version' ] );
+			define( 'WPSSO_DATA_ID', 'wpsso meta tags and schema markup' );
 
 			define( 'WPSSO_INIT_CONFIG_PRIORITY', -10 );
 			define( 'WPSSO_INIT_OPTIONS_PRIORITY', 9 );

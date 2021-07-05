@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.34.1-dev.1\n"
+"Project-Id-Version: WPSSO Core 8.34.1-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3350,7 +3350,7 @@ msgid ""
 "installed."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:219 lib/post.php:1028
+#: gettext/gettext-lib-pro.php:219 lib/post.php:1026
 #: lib/pro/media/youtube.php:187
 msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
@@ -5087,27 +5087,27 @@ msgctxt "submit button"
 msgid "Validate %s"
 msgstr ""
 
-#: lib/head.php:543
+#: lib/head.php:546
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:552
+#: lib/head.php:555
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:561
+#: lib/head.php:564
 msgid "adding meta name meta tags"
 msgstr ""
 
-#: lib/head.php:570
+#: lib/head.php:573
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:592
+#: lib/head.php:595
 msgid "adding schema meta tags"
 msgstr ""
 
-#: lib/head.php:601
+#: lib/head.php:604
 msgid "adding schema json-ld markup"
 msgstr ""
 
@@ -8239,7 +8239,7 @@ msgid ""
 "post ID %3$d (%4$s)."
 msgstr ""
 
-#: lib/post.php:735 lib/post.php:1381 lib/schema.php:3365 lib/term.php:588
+#: lib/post.php:735 lib/post.php:1383 lib/schema.php:3365 lib/term.php:588
 #: lib/user.php:585
 msgid "checking meta tags"
 msgstr ""
@@ -8252,124 +8252,128 @@ msgstr ""
 msgid "The webpage HTML retrieved from %1$s is %2$s bytes."
 msgstr ""
 
-#: lib/post.php:976
+#: lib/post.php:975
 msgid ""
 "This exceeds the maximum limit of %1$s bytes imposed by the Google crawler."
 msgstr ""
 
-#: lib/post.php:979
+#: lib/post.php:977
 msgid ""
 "If you do not reduce the webpage HTML size, Google will refuse to crawl this "
 "webpage."
 msgstr ""
 
-#: lib/post.php:1009
+#: lib/post.php:1007
 msgid "Retrieving the webpage HTML for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:1011
+#: lib/post.php:1009
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:1013
+#: lib/post.php:1011
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:1014
+#: lib/post.php:1012
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:1042
+#: lib/post.php:1040
 msgid "An %1$s tag was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1057
+#: lib/post.php:1055
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1074
+#: lib/post.php:1072
 msgid ""
-"A %2$s meta tag section was not found in <a href=\"%1$s\">%1$s</a> - perhaps "
-"a webpage caching plugin or service needs to be refreshed?"
+"The %1$s meta tags and Schema markup section was not found in <a href=\"%2$s"
+"\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1103
+#: lib/post.php:1074
+msgid "Does a caching plugin or service needs to be refreshed?"
+msgstr ""
+
+#: lib/post.php:1105
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section - "
 "this could be an indication of a problem with PHP's PCRE library, or an "
 "optimization plugin or service corrupting the webpage HTML markup."
 msgstr ""
 
-#: lib/post.php:1105
+#: lib/post.php:1107
 msgid ""
 "You may consider updating or having your hosting provider update your PHP "
 "installation and its PCRE library."
 msgstr ""
 
-#: lib/post.php:1152
+#: lib/post.php:1154
 msgid "The webpage at %1$s does not include any Schema JSON-LD script(s)."
 msgstr ""
 
-#: lib/post.php:1154
+#: lib/post.php:1156
 msgid ""
 "Complete and accurate Schema JSON-LD markup is highly recommended for better "
 "ranking and click-through rates in search results."
 msgstr ""
 
-#: lib/post.php:1156
+#: lib/post.php:1158
 msgid ""
 "Consider activating the %1$s add-on to include Schema JSON-LD markup for "
 "Google Rich Results."
 msgstr ""
 
-#: lib/post.php:1177
+#: lib/post.php:1179
 msgid ""
 "Conflict detected - your theme or another plugin is adding %1$s to the head "
 "section of this webpage."
 msgstr ""
 
-#: lib/post.php:1195
+#: lib/post.php:1197
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1195
+#: lib/post.php:1197
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML document - please review the <a href=\"%1$s\">W3C Markup "
 "Validator</a> results and correct any syntax errors."
 msgstr ""
 
-#: lib/post.php:1233
+#: lib/post.php:1235
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1235
+#: lib/post.php:1237
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1243
+#: lib/post.php:1245
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1247
+#: lib/post.php:1249
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1251
+#: lib/post.php:1253
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1437
+#: lib/post.php:1439
 msgid "Save a draft or publish to display these options."
 msgstr ""
 
-#: lib/post.php:1642
+#: lib/post.php:1644
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 

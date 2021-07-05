@@ -201,9 +201,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 
 			$image_url = SucomUtil::get_first_mt_media_url( $mt_images );
 
-			$image_html = "\n" . '<!-- wpsso pinterest pin it image added on ' . date( 'c' ) . ' -->' . "\n";
-
-			$image_html .= '<div class="wpsso-pinterest-pin-it-image" style="display:none !important;">' . "\n";
+			$image_html = '<div class="wpsso-pinterest-pin-it-image" style="display:none !important;">' . "\n";
 
 			if ( empty( $image_url ) ) {
 
