@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.34.1-dev.2\n"
+"Project-Id-Version: WPSSO Core 8.34.1-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3342,7 +3342,7 @@ msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:212 gettext/gettext-lib-pro.php:215
-#: gettext/gettext-lib-pro.php:218 lib/conflict.php:230
+#: gettext/gettext-lib-pro.php:218 lib/conflict.php:224
 #: lib/pro/media/slideshare.php:202 lib/pro/media/vimeo.php:176
 #: lib/pro/media/wistia.php:337
 msgid ""
@@ -3398,7 +3398,7 @@ msgid "The \"%s\" option value is empty and required."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:235 gettext/gettext-lib-pro.php:237
-#: gettext/gettext-lib-pro.php:274 lib/conflict.php:124 lib/loader.php:180
+#: gettext/gettext-lib-pro.php:274 lib/conflict.php:118 lib/loader.php:180
 #: lib/loader.php:194 lib/pro/review/yotpowc.php:204
 #: lib/pro/util/shorten.php:464 lib/pro/util/shorten.php:501
 msgid "%s error:"
@@ -4758,90 +4758,90 @@ msgstr ""
 msgid "Features"
 msgstr ""
 
-#: lib/conflict.php:98
+#: lib/conflict.php:92
 msgid ""
 "Your database is configured for a \"%1$s\" size of %2$d bytes, which is less "
 "than the recommended minimum value of %3$d bytes (a common default value is "
 "%4$d bytes)."
 msgstr ""
 
-#: lib/conflict.php:100
+#: lib/conflict.php:94
 msgid ""
 "Please contact your hosting provider and have the \"%1$s\" database option "
 "adjusted to a larger and safer value."
 msgstr ""
 
-#: lib/conflict.php:102
+#: lib/conflict.php:96
 msgid ""
 "See the %1$s sections %2$s and %3$s for more information on this database "
 "option."
 msgstr ""
 
-#: lib/conflict.php:170
+#: lib/conflict.php:164
 msgid ""
 "WordPress is configured to use the %1$s image editing class but the <a href="
 "\"%2$s\">PHP %3$s extension module</a> is not loaded:"
 msgstr ""
 
-#: lib/conflict.php:174
+#: lib/conflict.php:168
 msgid "The <a href=\"%1$s\">PHP %2$s extension module</a> is not loaded:"
 msgstr ""
 
-#: lib/conflict.php:181
+#: lib/conflict.php:175
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> for \"%3$s\" returned false."
 msgstr ""
 
-#: lib/conflict.php:182
+#: lib/conflict.php:176
 msgid "https://secure.php.net/manual/en/function.extension-loaded.php"
 msgstr ""
 
-#: lib/conflict.php:192
+#: lib/conflict.php:186
 msgid ""
 "Note that the ImageMagick application and the PHP \"%1$s\" extension are two "
 "different products - this error is for the PHP \"%1$s\" extension, not the "
 "ImageMagick application."
 msgstr ""
 
-#: lib/conflict.php:195
+#: lib/conflict.php:189
 msgid ""
 "Please contact your hosting provider to have the missing PHP \"%1$s\" "
 "extension installed and enabled."
 msgstr ""
 
-#: lib/conflict.php:211
+#: lib/conflict.php:205
 msgid ""
 "The <a href=\"%1$s\">PHP %2$s extension module</a> is loaded but the %3$s "
 "class is missing."
 msgstr ""
 
-#: lib/conflict.php:213
+#: lib/conflict.php:207
 msgid ""
 "Please contact your hosting provider to have the missing PHP class installed."
 msgstr ""
 
-#: lib/conflict.php:228
+#: lib/conflict.php:222
 msgid ""
 "The <a href=\"%1$s\">PHP %2$s extension module</a> is loaded but the %3$s "
 "function is missing."
 msgstr ""
 
-#: lib/conflict.php:265
+#: lib/conflict.php:259
 msgid "An issue with WPBakery Visual Composer has been detected."
 msgstr ""
 
-#: lib/conflict.php:267
+#: lib/conflict.php:261
 msgid ""
 "WPBakery Visual Composer version %s and older are known to have a bug in "
 "their jQuery event handling code."
 msgstr ""
 
-#: lib/conflict.php:269
+#: lib/conflict.php:263
 msgid ""
 "To avoid jQuery crashing on show / hide jQuery events, please update your "
 "version of WPBakery Visual Composer immediately."
 msgstr ""
 
-#: lib/conflict.php:294
+#: lib/conflict.php:288
 msgid ""
 "The WordPress <a href=\"%s\">Search Engine Visibility</a> option is set to "
 "discourage search engines and social sites from indexing this site. This is "
@@ -5087,27 +5087,27 @@ msgctxt "submit button"
 msgid "Validate %s"
 msgstr ""
 
-#: lib/head.php:546
+#: lib/head.php:547
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:555
+#: lib/head.php:556
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:564
+#: lib/head.php:565
 msgid "adding meta name meta tags"
 msgstr ""
 
-#: lib/head.php:573
+#: lib/head.php:574
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:595
+#: lib/head.php:596
 msgid "adding schema meta tags"
 msgstr ""
 
-#: lib/head.php:604
+#: lib/head.php:605
 msgid "adding schema json-ld markup"
 msgstr ""
 

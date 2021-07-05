@@ -68,34 +68,28 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 			global $wpdb;
 
-			$db_query = 'SHOW VARIABLES LIKE "%s";';
-			$db_args  = array( 'max_allowed_packet' );
-
-			$db_query = $wpdb->prepare( $db_query, $db_args );
-
-			/**
-			 * OBJECT_K returns an associative array of objects.
-			 */
-			$result = $wpdb->get_results( $db_query, OBJECT_K );
-
 			/**
 			 * See https://dev.mysql.com/doc/refman/8.0/en/program-variables.html.
 			 *
 			 * See https://dev.mysql.com/doc/refman/8.0/en/packet-too-large.html.
 			 */
-			if ( isset( $result[ 'max_allowed_packet' ]->Value ) ) {
+			$result = $wpdb->get_results( 'SELECT @@global.max_allowed_packet', ARRAY_A );
+
+			if ( isset( $result[ 0 ][ '@@global.max_allowed_packet' ] ) ) {	// Just in case.
+
+				$max_allowed = $result[ 0 ][ '@@global.max_allowed_packet' ];
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'db max_allowed_packet value is "' . $result[ 'max_allowed_packet' ]->Value . '"' );
+					$this->p->debug->log( 'db max_allowed_packet value is "' . $max_allowed . '"' );
 				}
 
 				$min_bytes = 1 * 1024 * 1024;	// 1MB in bytes.
 				$def_bytes = 16 * 1024 * 1024;	// 16MB in bytes.
 
-				if ( $result[ 'max_allowed_packet' ]->Value < $min_bytes ) {
+				if ( $max_allowed < $min_bytes ) {
 
-					$notice_msg = sprintf( __( 'Your database is configured for a "%1$s" size of %2$d bytes, which is less than the recommended minimum value of %3$d bytes (a common default value is %4$d bytes).', 'wpsso' ), 'max_allowed_packet', $result[ 'max_allowed_packet' ]->Value, $min_bytes, $def_bytes ) . ' ';
+					$notice_msg = sprintf( __( 'Your database is configured for a "%1$s" size of %2$d bytes, which is less than the recommended minimum value of %3$d bytes (a common default value is %4$d bytes).', 'wpsso' ), 'max_allowed_packet', $max_allowed, $min_bytes, $def_bytes ) . ' ';
 
 					$notice_msg .= sprintf( __( 'Please contact your hosting provider and have the "%1$s" database option adjusted to a larger and safer value.', 'wpsso' ), 'max_allowed_packet' ) . ' ';
 

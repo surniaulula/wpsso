@@ -82,9 +82,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$cache_index .= '_url:' . $canonical_url;
 			}
 
-			/**
-			 * AMP
-			 */
 			if ( SucomUtil::is_amp() ) {	// Returns null, true, or false.
 
 				$cache_index .= '_amp:true';
@@ -339,16 +336,16 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					$total_secs = sprintf( '%f secs', $args );
 					$home_url   = SucomUtilWP::raw_home_url();
 
-					return '<meta name="wpsso-data-' . $type . '" content="' . date( 'c' ) . ' in ' . $total_secs .  ' for ' . $home_url . '">' . "\n";
+					return '<meta name="wpsso-' . $type . '" content="' . date( 'c' ) . ' in ' . $total_secs .  ' for ' . $home_url . '">' . "\n";
 
 				case 'begin':
 				case 'end':
 
-					return '<meta name="wpsso-data-mark-' . $type . '" content="' . WPSSO_DATA_ID . ' ' . $type . '"/>' . "\n";
+					return '<meta name="wpsso-' . $type . '" content="' . WPSSO_DATA_ID . ' ' . $type . '"/>' . "\n";
 
 				case 'cached':
 
-					return '<meta name="wpsso-data-' . $type . '" content="' . ( $args ? date( 'c' ) : 'no cache' ) . '">' . "\n";
+					return '<meta name="wpsso-' . $type . '" content="' . ( $args ? date( 'c' ) : 'no cache' ) . '">' . "\n";
 
 				/**
 				 * Used by WpssoPost->check_post_head() and WpssoSsmFilters->strip_schema_microdata().
@@ -361,7 +358,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					 * attribute, along with the trailing space and slash characters, so make these optional in
 					 * the regex.
 					 */
-					$preg_prefix = '<(meta[\s\n\r]+name="?wpsso-data-mark-(begin|end)"?[\s\n\r]+content=")';
+					$preg_prefix = '<(meta[\s\n\r]+name="?wpsso-(begin|end)"?[\s\n\r]+content=")';
 					$preg_suffix = '("[\s\n\r]*\/?)>';
 
 					/**
@@ -370,7 +367,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					 * m = The "^" and "$" constructs match newlines and the complete subject string.
 					 * s = A dot metacharacter in the pattern matches all characters, including newlines.
 					 */
-					return '/' . $preg_prefix . WPSSO_DATA_ID . ' begin' . $preg_suffix . '.*' . $preg_prefix . WPSSO_DATA_ID . ' end' . $preg_suffix . '/Uums';
+					return '/' . $preg_prefix . WPSSO_DATA_ID . ' begin' . $preg_suffix . '.*' .
+						$preg_prefix . WPSSO_DATA_ID . ' end' . $preg_suffix . '/Uums';
 			}
 
 			return $ret;
@@ -451,6 +449,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$mod = $this->p->page->get_mod( $use_post );
 			}
 
+			/**
+			 * The canonical URL is optional for SucomUtil::get_mod_salt(), but required for get_head_cache_index().
+			 */
 			$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = true );
 
 			if ( empty( $canonical_url ) ) {	// Just in case.
