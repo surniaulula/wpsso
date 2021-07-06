@@ -322,7 +322,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.34.1-dev.3 (2021/07/05)**
+**Version 8.34.1-dev.4 (2021/07/06)**
 
 * **New Features**
 	* None.
@@ -332,6 +332,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fix for possible critical error when creating a new order in WooCommerce with The SEO Framework plugin.
 * **Developer Notes**
 	* Refactored and renamed the `WpssoHead->get_mt_mark()` method to `get_mt_data()`.
+	* Added new functions for filter hooks in lib/functions.php:
+		* __return_hour_in_seconds
+		* __return_day_in_seconds
+		* __return_week_in_seconds
+		* __return_month_in_seconds
+		* __return_year_in_seconds
 * **Requires At Least**
 	* PHP v7.0.
 	* WordPress v5.0.
@@ -1383,9 +1389,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.34.1-dev.3 =
+= 8.34.1-dev.4 =
 
-(2021/07/05) Fix for possible critical error when creating a new order in WooCommerce with The SEO Framework plugin.
+(2021/07/06) Fix for possible critical error when creating a new order in WooCommerce with The SEO Framework plugin.
 
 = 8.34.0 =
 
