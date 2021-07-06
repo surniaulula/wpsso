@@ -228,14 +228,15 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $mod[ 'id' ] ) {	// Just in case.
 
-				$mod[ 'post_slug' ]            = get_post_field( 'post_name', $mod[ 'id' ] );		// Post name (aka slug).
-				$mod[ 'post_type' ]            = get_post_type( $mod[ 'id' ] );				// Post type name.
-				$mod[ 'post_mime' ]            = get_post_mime_type( $mod[ 'id' ] );			// Post mime type (ie. image/jpg).
-				$mod[ 'post_status' ]          = get_post_status( $mod[ 'id' ] );			// Post status name.
-				$mod[ 'post_author' ]          = (int) get_post_field( 'post_author', $mod[ 'id' ] );	// Post author id.
+				$mod[ 'post_slug' ]            = get_post_field( 'post_name', $mod[ 'id' ] );			// Post name (aka slug).
+				$mod[ 'post_type' ]            = get_post_type( $mod[ 'id' ] );					// Post type name.
+				$mod[ 'post_mime' ]            = get_post_mime_type( $mod[ 'id' ] );				// Post mime type (ie. image/jpg).
+				$mod[ 'post_status' ]          = get_post_status( $mod[ 'id' ] );				// Post status name.
+				$mod[ 'post_author' ]          = (int) get_post_field( 'post_author', $mod[ 'id' ] );		// Post author id.
 				$mod[ 'post_coauthors' ]       = array();
 				$mod[ 'post_time' ]            = get_post_time( 'c', $gmt = true, $mod[ 'id' ] );		// Returns false on failure.
 				$mod[ 'post_modified_time' ]   = get_post_modified_time( 'c', $gmt = true, $mod[ 'id' ] );	// Returns false on failure.
+				$mod[ 'is_attachment' ]        = 'attachment' === $mod[ 'post_type' ] ? true : false;		// Post type is 'attachment'.
 				$mod[ 'is_post_type_archive' ] = SucomUtil::is_post_type_archive( $mod[ 'post_type' ], $mod[ 'post_slug' ] );
 
 				if ( $post_type_object = get_post_type_object( $mod[ 'post_type' ] ) ) {

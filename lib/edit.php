@@ -64,8 +64,8 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			/**
 			 * Select option arrays.
 			 */
-			$select_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre = 'wpsso_f_' );	// Form Selects (default is 1 month).
-			$schema_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre = 'wpsso_t_' );	// Schema Index (default is 1 month).
+			$select_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre = 'wpsso_f_' );
+			$schema_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre = 'wpsso_t_' );
 
 			$og_types         = $this->p->og->get_og_types_select();
 			$schema_types     = $this->p->schema->get_schema_types_select( $context = 'meta' );
@@ -117,7 +117,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					'tr_class'  => $schema_type_row_class[ 'question' ],
 					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'info-schema-question' ) . '</td>',
 				),
-				'attach_img_crop' => 'attachment' === $mod[ 'post_type' ] && wp_attachment_is_image( $mod[ 'id' ] ) ? array(
+				'attach_img_crop' => $mod[ 'is_attachment' ] && wp_attachment_is_image( $mod[ 'id' ] ) ? array(
 					'th_class' => 'medium',
 					'label'    => _x( 'Preferred Cropping', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-og_img_crop_area',

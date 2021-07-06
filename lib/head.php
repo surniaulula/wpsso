@@ -46,7 +46,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( ! empty( $this->p->avail[ 'cache' ][ 'any' ] ) ) {
 
 				$this->p->util->add_plugin_filters( $this, array(
-					'cache_expire_head_markup' => '__return_zero',
+					'cache_expire_head_markup' => '__return_hour_in_seconds',
 				) );
 			}
 		}
@@ -468,7 +468,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 * Setup variables for transient cache.
 			 */
 			$cache_md5_pre  = 'wpsso_h_';
-			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'transient', $mod );	// Head Markup (default is 1 month).
+			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'transient', $mod );
 			$cache_salt     = __METHOD__ . '(' . SucomUtil::get_mod_salt( $mod, $canonical_url ) . ')';
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 			$cache_index    = $this->get_head_cache_index( $mod, $canonical_url );	// Includes locale, url, etc.

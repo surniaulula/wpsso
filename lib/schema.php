@@ -1073,7 +1073,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( ! isset( $this->types_cache[ 'filtered' ] ) ) {
 
 				$cache_md5_pre  = 'wpsso_t_';
-				$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre );	// Schema Index (default is 1 month).
+				$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre );
 
 				if ( $cache_exp_secs > 0 ) {
 
@@ -1163,7 +1163,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $use_cache ) {
 
 				$cache_md5_pre  = 'wpsso_t_';
-				$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre );	// Schema Index (default is 1 month).
+				$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre );
 
 				if ( $cache_exp_secs > 0 ) {
 
@@ -1219,7 +1219,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $use_cache ) {
 
 				$cache_md5_pre  = 'wpsso_t_';
-				$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre );	// Schema Index (default is 1 month).
+				$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre );
 
 				if ( $cache_exp_secs > 0 ) {
 
@@ -1440,7 +1440,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$wpsso =& Wpsso::get_instance();
 
 			$cache_md5_pre  = 'wpsso_t_';
-			$cache_exp_secs = $wpsso->util->get_cache_exp_secs( $cache_md5_pre );	// Schema Index (default is 1 month).
+			$cache_exp_secs = $wpsso->util->get_cache_exp_secs( $cache_md5_pre );
 
 			if ( $cache_exp_secs > 0 ) {
 
@@ -2446,7 +2446,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * then set the first media array element mainEntityOfPage to the page url, and set the page
 			 * mainEntityOfPage property to false (so it doesn't get defined later).
 			 */
-			$main_prop = $mod[ 'is_post' ] && $mod[ 'post_type' ] === 'attachment' ? preg_replace( '/\/.*$/', '', $mod[ 'post_mime' ] ) : '';
+			$main_prop = $mod[ 'is_attachment' ] ? preg_replace( '/\/.*$/', '', $mod[ 'post_mime' ] ) : '';
 
 			$main_prop = apply_filters( 'wpsso_json_media_main_prop', $main_prop, $mod );
 

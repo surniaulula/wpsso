@@ -130,7 +130,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'plugin_bitly_token' => 'plugin_bitly_access_token',
 				),
 				539 => array(
-					'plugin_shorten_cache_exp' => 'plugin_short_url_cache_exp',
+					'plugin_shorten_cache_exp' => '',
 				),
 				541 => array(
 					'plugin_content_img_max' => '',
@@ -316,7 +316,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				),
 				700 => array(
 					'og_art_section'          => 'og_def_article_section',
-					'plugin_topics_cache_exp' => 'plugin_select_cache_exp',
+					'plugin_topics_cache_exp' => '',
 				),
 				701 => array(
 					'og_def_article_topic' => 'og_def_article_section',
@@ -342,7 +342,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'og_type_for_home_index'     => 'og_type_for_home_posts',
 				),
 				718 => array(
-					'plugin_list_cache_exp' => 'plugin_select_cache_exp',
+					'plugin_list_cache_exp' => '',
 				),
 				722 => array(
 					'plugin_add_to_term' => '',	// Replaced by "plugin_add_to_tax_{tax_slug}" options.
@@ -430,7 +430,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'plugin_add_to_shop_order'   => '',	// Fix for private post type.
 				),
 				797 => array(
-					'plugin_vidinfo_cache_exp'            => 'plugin_apiresp_cache_exp',		// Renamed on 2021/06/24.
+					'plugin_vidinfo_cache_exp'            => '',		// Renamed on 2021/06/24.
 					'plugin_shopperapproved_num_max'      => 'plugin_ratings_reviews_num_max',	// Renamed on 2021/06/24.
 					'plugin_shopperapproved_age_max'      => 'plugin_ratings_reviews_age_max',	// Renamed on 2021/06/24.
 					'plugin_shopperapproved_for_download' => 'plugin_ratings_reviews_for_download',	// Renamed on 2021/06/24.
@@ -438,6 +438,16 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				),
 				798 => array(
 					'og_author_field' => 'fb_author_field',	// Renamed on 2021/07/01.
+				),
+				800 => array(
+					'plugin_apiresp_cache_exp'   => '',
+					'plugin_cache_attach_page'   => '',
+					'plugin_content_cache_exp'   => '',
+					'plugin_head_cache_exp'      => '',
+					'plugin_imgsize_cache_exp'   => '',
+					'plugin_select_cache_exp'    => '',
+					'plugin_short_url_cache_exp' => '',
+					'plugin_types_cache_exp'     => '',
 				),
 			),
 		);
@@ -453,7 +463,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'plugin_verify_certs'     => '',
 				),
 				539 => array(
-					'plugin_shorten_cache_exp' => 'plugin_short_url_cache_exp',
+					'plugin_shorten_cache_exp' => '',
 				),
 				580 => array(
 					'plugin_shortcodes' => '',
@@ -471,7 +481,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'plugin_wpssotie_tid' => '',	// Deprecated on 2019/11/21.
 				),
 				700 => array(
-					'plugin_topics_cache_exp' => 'plugin_select_cache_exp',
+					'plugin_topics_cache_exp' => '',
 				),
 				703 => array(
 					'plugin_clear_all_refresh' => '',
@@ -480,7 +490,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'plugin_term_title_prefix' => '',
 				),
 				718 => array(
-					'plugin_list_cache_exp' => 'plugin_select_cache_exp',
+					'plugin_list_cache_exp' => '',
 				),
 				723 => array(
 					'plugin_product_attr_brand'         => 'plugin_attr_product_brand',
@@ -509,6 +519,16 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				793 => array(
 					'plugin_clear_on_activate'   => '',	// Deprecated on 2021/06/22.
 					'plugin_clear_on_deactivate' => '',	// Deprecated on 2021/06/22.
+				),
+				800 => array(
+					'plugin_apiresp_cache_exp'   => '',
+					'plugin_cache_attach_page'   => '',
+					'plugin_content_cache_exp'   => '',
+					'plugin_head_cache_exp'      => '',
+					'plugin_imgsize_cache_exp'   => '',
+					'plugin_select_cache_exp'    => '',
+					'plugin_short_url_cache_exp' => '',
+					'plugin_types_cache_exp'     => '',
 				),
 			),
 		);

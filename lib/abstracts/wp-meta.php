@@ -150,6 +150,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			'query_vars'           => array(),	// Defined by WpssoPage->get_mod().
 			'is_404'               => false,
 			'is_archive'           => false,
+			'is_attachment'        => false,	// Post type is 'attachment'.
 			'is_comment'           => false,	// Is comment module.
 			'is_date'              => false,
 			'is_day'               => false,
@@ -753,7 +754,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			/**
 			 * Exclude the 'Priority Media' tab from attachment editing pages.
 			 */
-			if ( $mod[ 'post_type' ] === 'attachment' ) {
+			if ( $mod[ 'is_attachment' ] ) {
 
 				unset( $tabs[ 'media' ] );
 			}

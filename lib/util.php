@@ -768,7 +768,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$cache_md5_pre  = 'wpsso_i_';
-			$cache_exp_secs = $this->get_cache_exp_secs( $cache_md5_pre );	// Image URL Info (default is 1 day).
+			$cache_exp_secs = $this->get_cache_exp_secs( $cache_md5_pre );
 
 			if ( $cache_exp_secs > 0 ) {
 
@@ -1262,7 +1262,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$cache_md5_pre  = 'wpsso_f_';
-			$cache_exp_secs = $this->get_cache_exp_secs( $cache_md5_pre );	// Form Selects (default is 1 month).
+			$cache_exp_secs = $this->get_cache_exp_secs( $cache_md5_pre );
 			$text_list_file = self::get_file_path_locale( WPSSO_ARTICLE_SECTIONS_LIST );
 
 			if ( $cache_exp_secs > 0 ) {
@@ -1366,7 +1366,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$cache_md5_pre  = 'wpsso_f_';
-			$cache_exp_secs = $this->get_cache_exp_secs( $cache_md5_pre );	// Form Selects (default is 1 month).
+			$cache_exp_secs = $this->get_cache_exp_secs( $cache_md5_pre );
 			$text_list_file = self::get_file_path_locale( WPSSO_PRODUCT_CATEGORIES_LIST );
 
 			if ( $cache_exp_secs > 0 ) {
@@ -3753,7 +3753,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				$cache_info =& $this->p->cf[ 'wp' ][ $cache_type ][ $cache_md5_pre ];	// Shortcut variable.
 
-				if ( ! empty( $cache_info[ 'opt_key' ] ) ) {
+				if ( isset( $cache_info[ 'value' ] ) ) {
+
+					$cache_exp_secs = $cache_info[ 'value' ];
+
+				} elseif ( ! empty( $cache_info[ 'opt_key' ] ) ) {
 
 					if ( isset( $this->p->options[ $cache_info[ 'opt_key' ] ] ) ) {
 
@@ -3763,23 +3767,16 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				if ( is_array( $mod ) ) {
 
-					if ( 'wpsso_h_' === $cache_md5_pre ) {
+					if ( ! empty( $cache_info[ 'conditional_values' ] ) ) {
 
-						if ( $mod[ 'is_404' ] ) {
+						foreach ( $cache_info[ 'conditional_values' ] as $cond => $val ) {
 
-							$cache_exp_secs = 0;
+							if ( ! empty( $mod[ $cond ] ) ) {
 
-						} elseif ( $mod[ 'is_search' ] ) {
+								$cache_exp_secs = $val;
 
-							$cache_exp_secs = 0;
-
-						} elseif ( empty( $this->p->options[ 'plugin_cache_attach_page' ] ) && 'attachment' === $mod[ 'post_type' ] ) {
-
-							$cache_exp_secs = 0;
-
-						} elseif ( empty( $this->p->options[ 'plugin_cache_date_archive' ] ) && $mod[ 'is_date' ] ) {
-
-							$cache_exp_secs = 0;
+								break;
+							}
 						}
 					}
 				}

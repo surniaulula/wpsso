@@ -1227,6 +1227,8 @@ table.sucom-settings.column-metabox.cache-status .cache-size {
 table.sucom-settings.column-metabox.cache-status .cache-expiration {
 	width:20%;
 	min-width:auto;
+	text-align:left;
+	padding-left:10px;
 }
 
 table.sucom-settings.column-metabox th.version-label {

@@ -1123,7 +1123,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						 */
 						if ( empty( $desc_text ) ) {
 
-							if ( 'attachment' === $mod[ 'post_type' ] && strpos( $mod[ 'post_mime' ], 'image/' ) === 0 ) {
+							if ( $mod[ 'is_attachment' ] && strpos( $mod[ 'post_mime' ], 'image/' ) === 0 ) {
 
 								if ( $this->p->debug->enabled ) {
 
@@ -1611,10 +1611,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$excerpt_text = '';
 
-			/**
-			 * Use the excerpt, if we have one.
-			 */
-			if ( $mod[ 'is_post' ] ) {
+			if ( $mod[ 'is_post' ] ) {	// Only post objects have excerpts.
 
 				if ( has_excerpt( $mod[ 'id' ] ) ) {
 
@@ -1629,7 +1626,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					if ( $filter_excerpt ) {
 
-						$excerpt_text = $this->p->util->safe_apply_filters( array( 'get_the_excerpt', $excerpt_text ), $mod );
+						/**
+						 * The $post_obj argument was added to 'get_the_excerpt' in WordPress v4.5.
+						 */
+						$post_obj = SucomUtil::get_post_object( $mod[ 'id' ] );
+
+						$excerpt_text = $this->p->util->safe_apply_filters( array( 'get_the_excerpt', $excerpt_text, $post_obj ), $mod );
 
 					} elseif ( $this->p->debug->enabled ) {
 
@@ -1638,9 +1640,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			/**
-			 * Apply the filter.
-			 */
 			$excerpt_text = apply_filters( 'wpsso_the_excerpt', $excerpt_text, $mod );
 
 			return $excerpt_text;
@@ -1691,7 +1690,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$filter_content = empty( $this->p->options[ 'plugin_filter_content' ] ) ? false : true;
 			$canonical_url  = $this->p->util->get_sharing_url( $mod );
 			$cache_md5_pre  = 'wpsso_c_';
-			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'wp_cache' );	// Filtered Content (default is 1 hour).
+			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'wp_cache' );
 			$cache_salt     = __METHOD__ . '(' . SucomUtil::get_mod_salt( $mod, $canonical_url ) . ')';
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 			$cache_index    = 'locale:' . SucomUtil::get_locale( $mod ) . '_filter:' . ( $filter_content ? 'true' : 'false' );

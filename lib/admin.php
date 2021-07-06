@@ -1768,7 +1768,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$table_cols         = 4;
 			$db_transient_keys  = SucomUtilWP::get_db_transient_keys();
 			$all_transients_pre = 'wpsso_';
-			$have_filtered_exp  = false;
 
 			echo '<table class="sucom-settings wpsso column-metabox cache-status">';
 
@@ -1780,7 +1779,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '<th class="cache-label"></th>';
 			echo '<th class="cache-count">' . __( 'Count', 'wpsso' ) . '</th>';
 			echo '<th class="cache-size">' . __( 'MB', 'wpsso' ) . '</th>';
-			echo '<th class="cache-expiration">' . __( 'Hours', 'wpsso' ) . '</th>';
+			echo '<th class="cache-expiration">' . __( 'Expiration', 'wpsso' ) . '</th>';
 			echo '</tr>';
 
 			/**
@@ -1808,31 +1807,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$cache_label_transl = _x( $cache_info[ 'label' ], 'option label', $cache_text_dom );
 				$cache_count        = count( preg_grep( '/^' . $cache_md5_pre . '/', $db_transient_keys ) );
 				$cache_size         = SucomUtilWP::get_db_transient_size_mb( $decimals = 1, $dec_point = '.', $thousands_sep = '', $cache_md5_pre );
-				$cache_opt_key      = isset( $cache_info[ 'opt_key' ] ) ? $cache_info[ 'opt_key' ] : false;
-				$cache_exp_secs     = $cache_opt_key && isset( $this->p->options[ $cache_opt_key ] ) ? $this->p->options[ $cache_opt_key ] : 0;
-				$cache_exp_suffix   = '';
 
-				if ( ! empty( $cache_info[ 'filter' ] ) ) {
-
-					$filter_name     = $cache_info[ 'filter' ];
-					$filter_exp_secs = (int) apply_filters( $filter_name, $cache_exp_secs );
-
-					if ( $cache_exp_secs !== $filter_exp_secs ) {
-
-						$cache_exp_secs    = $filter_exp_secs;
-						$cache_exp_suffix  = ' *';	// Show that value was changed by a filter.
-						$have_filtered_exp = true;
-					}
-				}
-
-				if ( is_numeric( $cache_exp_secs ) && $cache_exp_secs > 0 ) {
-
-					$cache_exp_hours = number_format( $cache_exp_secs / 60 / 60, $decimals = 1, $dec_point = '.', $thousands_sep = '' );
-
-				} else {
-
-					$cache_exp_hours = $cache_exp_secs;
-				}
+				$cache_exp_secs  = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'transient' );
+				$cache_exp_human = human_time_diff( 0, $cache_exp_secs );
 
 				echo '<tr>';
 				echo '<th class="cache-label">' . $cache_label_transl . ':</th>';
@@ -1841,19 +1818,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( $cache_md5_pre !== $all_transients_pre ) {
 
-					echo '<td class="cache-expiration">' . $cache_exp_hours . $cache_exp_suffix . '</td>';
+					echo '<td class="cache-expiration">' . $cache_exp_human . '</td>';
 				}
 
 				echo '</tr>' . "\n";
-			}
-
-			do_action( 'wpsso_column_metabox_cache_status_table_rows', $table_cols, $this->form, $db_transient_keys );
-
-			if ( $have_filtered_exp ) {
-
-				echo '<tr><td></td></tr>' . "\n";
-				echo '<tr><td colspan="' . $table_cols . '"><p class="status-msg smaller left">* ' .
-					__( 'Cache expiration modified by filter.', 'wpsso' ) . '</small></p></td></tr>' . "\n";
 			}
 
 			echo '</table>';

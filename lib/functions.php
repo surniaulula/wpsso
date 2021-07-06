@@ -16,6 +16,58 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 }
 
 /**
+ * Additional generic return functions.
+ *
+ * WordPress already defines:
+ *
+ *	__return_empty_array()
+ *	__return_empty_string()
+ *	__return_false()
+ *	__return_null()
+ *	__return_true()
+ *	__return_zero()
+ */
+if ( ! function_exists( '__return_hour_in_seconds' ) ) {
+
+	function __return_hour_in_seconds() {
+
+		return HOUR_IN_SECONDS;
+	}
+}
+
+if ( ! function_exists( '__return_day_in_seconds' ) ) {
+
+	function __return_day_in_seconds() {
+
+		return DAY_IN_SECONDS;
+	}
+}
+
+if ( ! function_exists( '__return_week_in_seconds' ) ) {
+
+	function __return_week_in_seconds() {
+
+		return WEEK_IN_SECONDS;
+	}
+}
+
+if ( ! function_exists( '__return_month_in_seconds' ) ) {
+
+	function __return_month_in_seconds() {
+
+		return MONTH_IN_SECONDS;
+	}
+}
+
+if ( ! function_exists( '__return_year_in_seconds' ) ) {
+
+	function __return_year_in_seconds() {
+
+		return YEAR_IN_SECONDS;
+	}
+}
+
+/**
  * The wpsso_error_handler() function can be used for cases where errors need to be captured and sent to the toolbar notification area.
  *
  * Example:

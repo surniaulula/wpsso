@@ -1313,7 +1313,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			if ( $mod[ 'is_post' ] ) {
 
-				if ( $mod[ 'post_type' ] === 'attachment' && wp_attachment_is_image( $mod[ 'id' ] ) ) {
+				if ( $mod[ 'is_attachment' ] && wp_attachment_is_image( $mod[ 'id' ] ) ) {
 
 					/**
 					 * $size_name must be a string.

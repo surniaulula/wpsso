@@ -306,67 +306,6 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$table_rows[] = '<td colspan="' . ( $network ? 4 : 2 ) . '">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
-			$table_rows[ 'plugin_head_cache_exp' ] = '' . 
-				$form->get_th_html( _x( 'Head Markup Cache Expiry', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_head_cache_exp' ) . 
-				'<td class="blank">' . $form->get_no_input( 'plugin_head_cache_exp', $css_class = 'medium' ) . ' ' . 
-				_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' .
-				WpssoAdmin::get_option_site_use( 'plugin_head_cache_exp', $form, $network );
-
-			$table_rows[ 'plugin_content_cache_exp' ] = $form->get_tr_hide( 'basic', 'plugin_content_cache_exp' ) . 
-				$form->get_th_html( _x( 'Filtered Content Cache Expiry', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_content_cache_exp' ) . 
-				'<td class="blank">' . $form->get_no_input( 'plugin_content_cache_exp', $css_class = 'medium' ) . ' ' . 
-				_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
-				WpssoAdmin::get_option_site_use( 'plugin_content_cache_exp', $form, $network );
-
-			$table_rows[ 'plugin_imgsize_cache_exp' ] = '' .
-				$form->get_th_html( _x( 'Image URL Info Cache Expiry', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_imgsize_cache_exp' ) . 
-				'<td class="blank">' . $form->get_no_input( 'plugin_imgsize_cache_exp', $css_class = 'medium' ) . ' ' . 
-				_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
-				WpssoAdmin::get_option_site_use( 'plugin_imgsize_cache_exp', $form, $network );
-
-			$table_rows[ 'plugin_apiresp_cache_exp' ] = '' .
-				$form->get_th_html( _x( 'API Response Cache Expiry', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_apiresp_cache_exp' ) . 
-				'<td class="blank">' . $form->get_no_input( 'plugin_apiresp_cache_exp', $css_class = 'medium' ) . ' ' . 
-				_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
-				WpssoAdmin::get_option_site_use( 'plugin_apiresp_cache_exp', $form, $network );
-
-			$table_rows[ 'plugin_short_url_cache_exp' ] = '' .
-				$form->get_th_html( _x( 'Short URL Cache Expiry', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_short_url_cache_exp' ) . 
-				'<td class="blank">' . $form->get_no_input( 'plugin_short_url_cache_exp', $css_class = 'medium' ) . ' ' . 
-				_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
-				WpssoAdmin::get_option_site_use( 'plugin_short_url_cache_exp', $form, $network );
-
-			$table_rows[ 'plugin_types_cache_exp' ] = $form->get_tr_hide( 'basic', 'plugin_types_cache_exp' ) . 
-				$form->get_th_html( _x( 'Schema Index Cache Expiry', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_types_cache_exp' ) . 
-				'<td class="blank">' . $form->get_no_input( 'plugin_types_cache_exp', $css_class = 'medium' ) . ' ' . 
-				_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
-				WpssoAdmin::get_option_site_use( 'plugin_types_cache_exp', $form, $network );
-
-			$table_rows[ 'plugin_select_cache_exp' ] = $form->get_tr_hide( 'basic', 'plugin_select_cache_exp' ) . 
-				$form->get_th_html( _x( 'Form Selects Cache Expiry', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_select_cache_exp' ) .
-				'<td class="blank">' . $form->get_no_input( 'plugin_select_cache_exp', $css_class = 'medium' ) . ' ' . 
-				_x( 'seconds (0 to disable)', 'option comment', 'wpsso' ) . '</td>' . 
-				WpssoAdmin::get_option_site_use( 'plugin_select_cache_exp', $form, $network );
-
-			$table_rows[ 'plugin_cache_attach_page' ] = $form->get_tr_hide( 'basic', 'plugin_cache_attach_page' ) . 
-				$form->get_th_html( _x( 'Cache Attachment Markup', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_cache_attach_page' ) . 
-				$form->get_no_td_checkbox( 'plugin_cache_attach_page' ) . 
-				WpssoAdmin::get_option_site_use( 'plugin_cache_attach_page', $form, $network );
-
-			$table_rows[ 'plugin_cache_date_archive' ] = $form->get_tr_hide( 'basic', 'plugin_cache_date_archive' ) . 
-				$form->get_th_html( _x( 'Cache Date Archive Markup', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_cache_date_archive' ) . 
-				$form->get_no_td_checkbox( 'plugin_cache_date_archive' ) . 
-				WpssoAdmin::get_option_site_use( 'plugin_cache_date_archive', $form, $network );
-
 			$table_rows[ 'plugin_clear_short_urls' ] = $form->get_tr_hide( 'basic', 'plugin_clear_short_urls' ) . 
 				$form->get_th_html( _x( 'Clear Short URLs on Clear Cache', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_clear_short_urls' ) . 
@@ -567,7 +506,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		 */
 		public function filter_doc_types_schema_types_rows( array $table_rows, $form ) {
 
-			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre = 'wpsso_t_' );	// Schema Index (default is 1 month).
+			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre = 'wpsso_t_' );
 			$schema_types   = $this->p->schema->get_schema_types_select( $context = 'settings' );
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';

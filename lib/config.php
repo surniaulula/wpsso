@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.34.1-dev.3',	// Plugin version.
-					'opt_version' => '799',		// Increment when changing default option values.
+					'version'     => '8.34.1-dev.4',	// Plugin version.
+					'opt_version' => '801',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Rank higher and improve click-through-rates by presenting your content at its best on social sites and in search results - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled.',
@@ -1725,15 +1725,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings > Caching tab.
 					 */
-					'plugin_head_cache_exp'      => WEEK_IN_SECONDS,	// Head Markup Cache Expiry (1 week).
-					'plugin_content_cache_exp'   => 43200,			// Filtered Content Cache Expiry (12 hours).
-					'plugin_imgsize_cache_exp'   => DAY_IN_SECONDS,		// Image URL Info Cache Expiry (1 day).
-					'plugin_apiresp_cache_exp'   => DAY_IN_SECONDS,		// API Response Cache Expiry (1 day).
-					'plugin_short_url_cache_exp' => 7776000,		// Short URL Cache Expiry (90 days).
-					'plugin_types_cache_exp'     => MONTH_IN_SECONDS,	// Schema Index Cache Expiry (1 month).
-					'plugin_select_cache_exp'    => MONTH_IN_SECONDS,	// Form Selects Cache Expiry (1 month).
-					'plugin_cache_attach_page'   => 0,			// Cache Attachment Markup.
-					'plugin_cache_date_archive'  => 0,			// Cache Date Archive Markup.
 					'plugin_clear_short_urls'    => 0,			// Clear Short URLs on Clear Cache.
 					'plugin_clear_post_terms'    => 1,			// Clear Term Cache for Published Post.
 					'plugin_clear_for_comment'   => 1,			// Clear Post Cache for New Comment.
@@ -1944,24 +1935,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings > Caching tab.
 					 */
-					'plugin_head_cache_exp'          => WEEK_IN_SECONDS,	// Head Markup Cache Expiry (1 week).
-					'plugin_head_cache_exp:use'      => 'default',
-					'plugin_content_cache_exp'       => 43200,		// Filtered Content Cache Expiry (12 hours).
-					'plugin_content_cache_exp:use'   => 'default',
-					'plugin_imgsize_cache_exp'       => DAY_IN_SECONDS,	// Image URL Info Cache Expiry (1 day).
-					'plugin_imgsize_cache_exp:use'   => 'default',
-					'plugin_apiresp_cache_exp'       => DAY_IN_SECONDS,	// API Response Cache Expiry (1 day).
-					'plugin_apiresp_cache_exp:use'   => 'default',
-					'plugin_short_url_cache_exp'     => 7776000,		// Short URL Cache Expiry (90 days).
-					'plugin_short_url_cache_exp:use' => 'default',
-					'plugin_types_cache_exp'         => MONTH_IN_SECONDS,	// Schema Index Cache Expiry (1 month).
-					'plugin_types_cache_exp:use'     => 'default',
-					'plugin_select_cache_exp'        => MONTH_IN_SECONDS,	// Form Selects Cache Expiry (1 month).
-					'plugin_select_cache_exp:use'    => 'default',
-					'plugin_cache_attach_page'       => 0,			// Cache Attachment Markup.
-					'plugin_cache_attach_page:use'   => 'default',
-					'plugin_cache_date_archive'      => 0,			// Cache Date Archive Markup.
-					'plugin_cache_date_archive:use'  => 'default',
 					'plugin_clear_short_urls'        => 0,			// Clear Short URLs on Clear Cache.
 					'plugin_clear_short_urls:use'    => 'default',
 					'plugin_clear_post_terms'        => 1,			// Clear Term Cache for Published Post.
@@ -2262,44 +2235,54 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'transient' => array(
 					'wpsso_!_' => array(	// Preserved on clear cache.
 					),
-					'wpsso_f_' => array(	// Default is 1 month.
-						'label'   => 'Form Selects',
-						'opt_key' => 'plugin_select_cache_exp',
-						'filter'  => 'wpsso_cache_expire_select_arrays',
+					'wpsso_f_' => array(
+						'label'  => 'Form Selects',
+						'value'  => HOUR_IN_SECONDS,
+						'filter' => 'wpsso_cache_expire_select_arrays',
 					),
-					'wpsso_h_' => array(	// Default is 1 month.
-						'label'   => 'Head Markup',
-						'opt_key' => 'plugin_head_cache_exp',
-						'filter'  => 'wpsso_cache_expire_head_markup',
+					'wpsso_h_' => array(
+						'label'  => 'Head Markup',
+						'value'  => WEEK_IN_SECONDS,
+						'filter' => 'wpsso_cache_expire_head_markup',
+
+						/**
+						 * If the $mod array matches these conditions, then use the associated value.
+						 */
+						'conditional_values' => array(
+							'is_404'        => 0,
+							'is_attachment' => 0,
+							'is_date'       => 0,
+							'is_search'     => 0,
+						),
 					),
-					'wpsso_i_' => array(	// Default is 1 day.
-						'label'   => 'Image URL Info',
-						'opt_key' => 'plugin_imgsize_cache_exp',
-						'filter'  => 'wpsso_cache_expire_image_info',
+					'wpsso_i_' => array(
+						'label'  => 'Image URL Info',
+						'value'  => DAY_IN_SECONDS,
+						'filter' => 'wpsso_cache_expire_image_info',
 					),
-					'wpsso_r_' => array(	// Default is 1 day.
-						'label'   => 'API Response',
-						'opt_key' => 'plugin_apiresp_cache_exp',
-						'filter'  => 'wpsso_cache_expire_api_response',
+					'wpsso_r_' => array(
+						'label'  => 'API Response',
+						'value'  => HOUR_IN_SECONDS,
+						'filter' => 'wpsso_cache_expire_api_response',
 					),
-					'wpsso_s_' => array(	// Default is 90 days.
-						'label'   => 'Short URLs',
-						'opt_key' => 'plugin_short_url_cache_exp',
-						'filter'  => 'wpsso_cache_expire_short_url',
+					'wpsso_s_' => array(
+						'label'  => 'Short URLs',
+						'value'  => YEAR_IN_SECONDS,
+						'filter' => 'wpsso_cache_expire_short_url',
 					),
-					'wpsso_t_' => array(	// Default is 1 month.
-						'label'   => 'Schema Index',
-						'opt_key' => 'plugin_types_cache_exp',
-						'filter'  => 'wpsso_cache_expire_schema_types',
+					'wpsso_t_' => array(
+						'label'  => 'Schema Index',
+						'value'  => MONTH_IN_SECONDS,
+						'filter' => 'wpsso_cache_expire_schema_types',
 					),
 					'wpsso_' => array(
 						'label' => 'All Transients',
 					),
 				),
 				'wp_cache' => array(
-					'wpsso_c_' => array(	// Default is 1 hour.
+					'wpsso_c_' => array(
 						'label'   => 'Filtered Content',
-						'opt_key' => 'plugin_content_cache_exp',
+						'value'   => HOUR_IN_SECONDS,
 						'filter'  => 'wpsso_cache_expire_the_content',
 					),
 					'wpsso_' => array(
