@@ -322,7 +322,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.34.1-dev.4 (2021/07/06)**
+**Version 8.34.1-b.1 (2021/07/06)**
 
 * **New Features**
 	* None.
@@ -332,6 +332,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fix for possible critical error when creating a new order in WooCommerce with The SEO Framework plugin.
 * **Developer Notes**
 	* Refactored and renamed the `WpssoHead->get_mt_mark()` method to `get_mt_data()`.
+	* Refactored the `WpssoUtil->get_cache_exp_secs()` method for the new 'conditional_values' config element.
 	* Added an 'is_attachment' element to the `$mod` array.
 	* Added new functions for filter hooks in lib/functions.php:
 		* `__return_hour_in_seconds()`
@@ -1390,7 +1391,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.34.1-dev.4 =
+= 8.34.1-b.1 =
 
 (2021/07/06) Fix for possible critical error when creating a new order in WooCommerce with The SEO Framework plugin.
 
