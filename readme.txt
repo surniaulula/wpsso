@@ -332,12 +332,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fix for possible critical error when creating a new order in WooCommerce with The SEO Framework plugin.
 * **Developer Notes**
 	* Refactored and renamed the `WpssoHead->get_mt_mark()` method to `get_mt_data()`.
+	* Added an 'is_attachment' element to the `$mod` array.
 	* Added new functions for filter hooks in lib/functions.php:
-		* __return_hour_in_seconds
-		* __return_day_in_seconds
-		* __return_week_in_seconds
-		* __return_month_in_seconds
-		* __return_year_in_seconds
+		* `__return_hour_in_seconds()`
+		* `__return_day_in_seconds()`
+		* `__return_week_in_seconds()`
+		* `__return_month_in_seconds()`
+		* `__return_year_in_seconds()`
 * **Requires At Least**
 	* PHP v7.0.
 	* WordPress v5.0.
