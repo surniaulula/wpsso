@@ -3756,13 +3756,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				if ( isset( $cache_info[ 'value' ] ) ) {
 
 					$cache_exp_secs = $cache_info[ 'value' ];
-
-				} elseif ( ! empty( $cache_info[ 'opt_key' ] ) ) {
-
-					if ( isset( $this->p->options[ $cache_info[ 'opt_key' ] ] ) ) {
-
-						$cache_exp_secs = $this->p->options[ $cache_info[ 'opt_key' ] ];
-					}
 				}
 
 				if ( is_array( $mod ) ) {
@@ -3771,11 +3764,14 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						foreach ( $cache_info[ 'conditional_values' ] as $cond => $val ) {
 
+							/**
+							 * If one of these $mod array conditions is true, then use the associated value.
+							 */
 							if ( ! empty( $mod[ $cond ] ) ) {
 
 								$cache_exp_secs = $val;
 
-								break;
+								break;	// Stop here.
 							}
 						}
 					}

@@ -2246,7 +2246,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'filter' => 'wpsso_cache_expire_head_markup',
 
 						/**
-						 * If the $mod array matches these conditions, then use the associated value.
+						 * If one of these $mod array conditions is true, then use the associated value.
 						 */
 						'conditional_values' => array(
 							'is_404'        => 0,
