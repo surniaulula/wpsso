@@ -1088,7 +1088,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->log( 'removing the wpsso meta tag section from the webpage html' );
 			}
 
-			$mt_mark_preg = $this->p->head->get_mt_data( 'begin-end-preg' );
+			$mt_mark_preg = $this->p->head->get_mt_data( 'preg' );
 
 			$html_stripped = preg_replace( $mt_mark_preg, '', $webpage_html, -1, $mark_count );
 

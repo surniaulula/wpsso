@@ -327,8 +327,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		 */
 		public function get_mt_data( $type, $args = null ) {
 
-			$ret = '';
-
 			switch ( $type ) {
 
 				case 'added':
@@ -351,7 +349,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				 * Used by WpssoPost->check_post_head() and WpssoSsmFilters->strip_schema_microdata().
 				 */
 				case 'preg':
-				case 'begin-end-preg':
 
 					/**
 					 * Some HTML optimization plugins or services may remove the double-quotes from the name
@@ -369,9 +366,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					 */
 					return '/' . $preg_prefix . WPSSO_DATA_ID . ' begin' . $preg_suffix . '.*' .
 						$preg_prefix . WPSSO_DATA_ID . ' end' . $preg_suffix . '/Uums';
-			}
 
-			return $ret;
+				default:
+
+					return '';
+			}
 		}
 
 		public function get_head_html( $use_post = false, $mod = false, $read_cache = true ) {

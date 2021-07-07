@@ -112,11 +112,9 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 		protected function get_table_rows( $metabox_id, $tab_key ) {
 
-			$table_rows = array();
-
+			$table_rows      = array();
 			$max_media_items = $this->p->cf[ 'form' ][ 'max_media_items' ];
-
-			$user_contacts = $this->p->user->get_form_contact_fields();
+			$user_contacts   = $this->p->user->get_form_contact_fields();
 
 			switch ( $metabox_id . '-' . $tab_key ) {
 
@@ -124,7 +122,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					$def_site_name      = get_bloginfo( 'name' );
 					$def_site_desc      = get_bloginfo( 'description' );
-					$cache_exp_secs     = $this->p->util->get_cache_exp_secs( $cache_md5_pre = 'wpsso_f_' );
+					$select_exp_secs    = $this->p->util->get_cache_exp_secs( $cache_md5_pre = 'wpsso_f_' );
 					$article_sections   = $this->p->util->get_article_sections();
 					$product_categories = $this->p->util->get_google_product_categories();
 
@@ -148,9 +146,9 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 							$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
 								$event_args = array(
 									'json_var'  => 'article_sections',
-									'exp_secs'  => $cache_exp_secs,	// Create and read from a javascript URL.
-									'is_transl' => true,		// No label translation required.
-									'is_sorted' => true,		// No label sorting required.
+									'exp_secs'  => $select_exp_secs,	// Create and read from a javascript URL.
+									'is_transl' => true,			// No label translation required.
+									'is_sorted' => true,			// No label sorting required.
 								)
 							) .
 						'</td>';
@@ -163,9 +161,9 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 							$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
 								$event_args = array(
 									'json_var'  => 'product_categories',
-									'exp_secs'  => $cache_exp_secs,	// Create and read from a javascript URL.
-									'is_transl' => true,		// No label translation required.
-									'is_sorted' => true,		// No label sorting required.
+									'exp_secs'  => $select_exp_secs,	// Create and read from a javascript URL.
+									'is_transl' => true,			// No label translation required.
+									'is_sorted' => true,			// No label sorting required.
 								)
 							) .
 						'</td>';
