@@ -767,7 +767,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				return $local_cache[ $image_url ] = $def_image_info;	// Stop here.
 			}
 
-			$cache_md5_pre  = 'wpsso_i_';
+			$cache_md5_pre  = 'wpsso_i_';	// Transient prefix for image URL info.
 			$cache_exp_secs = $this->get_cache_exp_secs( $cache_md5_pre );
 
 			if ( $cache_exp_secs > 0 ) {
@@ -1544,7 +1544,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					$this->p->debug->log( 'getting HTML for ' . $request );
 				}
 
-				$html = $this->p->cache->get( $request, $format = 'raw', $cache_type = 'transient', $exp_secs = 300, $cache_ext = '', $curl_opts );
+				$html = $this->p->cache->get( $request, $format = 'raw', $cache_type = 'transient', $exp_secs = 300, $pre_ext = '', $curl_opts );
 
 				if ( empty( $html ) ) {
 

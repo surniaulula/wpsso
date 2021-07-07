@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.34.1-b.2\n"
+"Project-Id-Version: WPSSO Core 8.35.0-b.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -598,37 +598,37 @@ msgid ""
 msgstr ""
 
 #: gettext/gettext-lib-com.php:20 gettext/gettext-lib-com.php:22
-#: lib/com/cache.php:509 lib/com/cache.php:679 lib/util-cache.php:214
+#: lib/com/cache.php:507 lib/com/cache.php:675 lib/util-cache.php:214
 msgid "Error removing cache file %s."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:21 lib/com/cache.php:569
+#: gettext/gettext-lib-com.php:21 lib/com/cache.php:567
 msgid ""
 "PHP cURL library missing - contact your hosting provider to have the cURL "
 "library installed."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:23 lib/com/cache.php:928
+#: gettext/gettext-lib-com.php:23 lib/com/cache.php:924
 msgid "Cache file %s is not readable."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:24 lib/com/cache.php:950
+#: gettext/gettext-lib-com.php:24 lib/com/cache.php:946
 msgid "Failed to open the cache file %s for reading."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:25 lib/com/cache.php:1056
+#: gettext/gettext-lib-com.php:25 lib/com/cache.php:1051
 msgid "Failed to create the %s cache folder."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:26 lib/com/cache.php:1071
+#: gettext/gettext-lib-com.php:26 lib/com/cache.php:1066
 msgid "Cache folder %s is not writable."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:27 lib/com/cache.php:1086
+#: gettext/gettext-lib-com.php:27 lib/com/cache.php:1081
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:28 lib/com/cache.php:1116
+#: gettext/gettext-lib-com.php:28 lib/com/cache.php:1111
 msgid "Failed writing data to cache file %s."
 msgstr ""
 
@@ -3256,28 +3256,28 @@ msgid "JSON response decode error code %d."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:194 gettext/gettext-lib-pro.php:197
-#: gettext/gettext-lib-pro.php:200 lib/pro/media/slideshare.php:198
-#: lib/pro/media/vimeo.php:172 lib/pro/media/wistia.php:333
+#: gettext/gettext-lib-pro.php:200 lib/pro/media/slideshare.php:197
+#: lib/pro/media/vimeo.php:171 lib/pro/media/wistia.php:332
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:195 gettext/gettext-lib-pro.php:198
-#: gettext/gettext-lib-pro.php:201 lib/pro/media/slideshare.php:199
-#: lib/pro/media/vimeo.php:173 lib/pro/media/wistia.php:334
+#: gettext/gettext-lib-pro.php:201 lib/pro/media/slideshare.php:198
+#: lib/pro/media/vimeo.php:172 lib/pro/media/wistia.php:333
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:196 gettext/gettext-lib-pro.php:199
 #: gettext/gettext-lib-pro.php:202 lib/conflict.php:224
-#: lib/pro/media/slideshare.php:202 lib/pro/media/vimeo.php:176
-#: lib/pro/media/wistia.php:337
+#: lib/pro/media/slideshare.php:201 lib/pro/media/vimeo.php:175
+#: lib/pro/media/wistia.php:336
 msgid ""
 "Please contact your hosting provider to have the missing PHP function "
 "installed."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:203 lib/post.php:1027
-#: lib/pro/media/youtube.php:187
+#: lib/pro/media/youtube.php:186
 msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
@@ -3491,22 +3491,22 @@ msgstr ""
 msgid "Yotpo for WooCommerce \"%s\" class does not exist."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:266 lib/pro/review/shopperapproved.php:170
+#: gettext/gettext-lib-pro.php:266 lib/pro/review/shopperapproved.php:169
 msgid "getting shopper approved ratings and reviews"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:267 gettext/gettext-lib-pro.php:270
-#: lib/pro/review/shopperapproved.php:363 lib/pro/review/stamped.php:336
+#: lib/pro/review/shopperapproved.php:362 lib/pro/review/stamped.php:335
 msgid "There has been a previous error connecting to %s for caching."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:268 gettext/gettext-lib-pro.php:271
-#: lib/pro/review/shopperapproved.php:366 lib/pro/review/stamped.php:339
+#: lib/pro/review/shopperapproved.php:365 lib/pro/review/stamped.php:338
 msgid ""
 "Requests to retrieve and cache this URL are ignored for another %d second(s)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:269 lib/pro/review/stamped.php:170
+#: gettext/gettext-lib-pro.php:269 lib/pro/review/stamped.php:169
 msgid "getting stamp.io ratings and reviews"
 msgstr ""
 

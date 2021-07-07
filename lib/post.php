@@ -952,7 +952,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$this->p->cache->clear( $check_url );	// Clear the cached webpage, just in case.
 
 			$exp_secs     = $this->p->debug->enabled ? false : null;
-			$webpage_html = $this->p->cache->get( $check_url, $format = 'raw', $cache_type = 'transient', $exp_secs, $cache_ext = '', $curl_opts );
+			$webpage_html = $this->p->cache->get( $check_url, $format = 'raw', $cache_type = 'transient', $exp_secs, $pre_ext = '', $curl_opts );
 			$url_mtime    = $this->p->cache->get_url_mtime( $check_url );
 			$html_size    = strlen( $webpage_html );
 			$error_size   = (int) SucomUtil::get_const( 'WPSSO_DUPE_CHECK_ERROR_SIZE', 2500000 );

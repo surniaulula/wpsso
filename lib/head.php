@@ -466,7 +466,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/**
 			 * Setup variables for transient cache.
 			 */
-			$cache_md5_pre  = 'wpsso_h_';
+			$cache_md5_pre  = 'wpsso_h_';	// Transient prefix for head markup.
 			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'transient', $mod );
 			$cache_salt     = __METHOD__ . '(' . SucomUtil::get_mod_salt( $mod, $canonical_url ) . ')';
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );

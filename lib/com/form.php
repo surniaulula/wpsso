@@ -2748,7 +2748,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					/**
 					 * Returns false on error.
 					 */
-					$script_url = $this->p->cache->get_data_url( $cache_salt, $script_js, $event_args[ 'exp_secs' ], $cache_ext = '.js' );
+					$script_url = $this->p->cache->get_data_url( $cache_salt, $script_js, $event_args[ 'exp_secs' ], $pre_ext = '.js' );
 
 					if ( ! empty( $script_url ) ) {
 
