@@ -322,7 +322,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.34.1-b.2 (2021/07/07)**
+**Version 8.35.0-b.3 (2021/07/07)**
 
 * **New Features**
 	* None.
@@ -1400,7 +1400,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.34.1-b.2 =
+= 8.35.0-b.3 =
 
 (2021/07/07) Fix for possible critical error when creating a new order in WooCommerce with The SEO Framework plugin.
 
