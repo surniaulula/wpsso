@@ -2239,16 +2239,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'wpsso_!_' => array(
 					),
-
-					/**
-					 * Used by WpssoUtil->get_article_sections() and
-					 * WpssoUtil->get_google_product_categories().
-					 */
-					'wpsso_f_' => array(
-						'label'  => 'Form Selects',
-						'value'  => DAY_IN_SECONDS,
-						'filter' => 'wpsso_cache_expire_select_arrays',
-					),
 					'wpsso_h_' => array(
 						'label'  => 'Head Markup',
 						'value'  => WEEK_IN_SECONDS,
@@ -2280,7 +2270,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'filter' => 'wpsso_cache_expire_short_url',
 					),
 					'wpsso_t_' => array(
-						'label'  => 'Schema Index',
+						'label'  => 'Schema Indexes',
 						'value'  => MONTH_IN_SECONDS,
 						'filter' => 'wpsso_cache_expire_schema_types',
 					),
@@ -4182,27 +4172,28 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_CACHEDIR' ] = $var_const[ 'WPSSO_CACHE_DIR' ];
 			$var_const[ 'WPSSO_CACHEURL' ] = $var_const[ 'WPSSO_CACHE_URL' ];
 
-			$var_const[ 'WPSSO_MENU_ORDER' ]                  = '80.0';	// Position of the SSO settings menu item.
-			$var_const[ 'WPSSO_TB_NOTICE_MENU_ORDER' ]        = '55';	// Position of the SSO notices toolbar menu item.
-			$var_const[ 'WPSSO_TB_LOCALE_MENU_ORDER' ]        = '56';	// Position of the user locale toolbar menu item.
-			$var_const[ 'WPSSO_TB_VALIDATE_MENU_ORDER' ]      = '57';	// Position of the validate menu item.
-			$var_const[ 'WPSSO_JSON_PRETTY_PRINT' ]           = true;	// Allows for better visual cues in the Google validator.
-			$var_const[ 'WPSSO_CACHE_CLEAR_MAX_TIME' ]        = 3600;	// 1 hour.
-			$var_const[ 'WPSSO_CACHE_REFRESH_MAX_TIME' ]      = 10800;	// 3 hours.
-			$var_const[ 'WPSSO_CACHE_REFRESH_SLEEP_TIME' ]    = 0.30;	// Seconds to sleep between requests when refreshing the cache.
-			$var_const[ 'WPSSO_CONTENT_BLOCK_FILTER_OUTPUT' ] = true;	// Monitor and fix incorrectly coded filter hooks.
-			$var_const[ 'WPSSO_CONTENT_FILTERS_MAX_TIME' ]    = 1.00;	// Issue a warning if the content filter takes longer than 1 second.
-			$var_const[ 'WPSSO_CONTENT_IMAGES_MAX_LIMIT' ]    = 5;		// Maximum number of images extracted from the content.
-			$var_const[ 'WPSSO_CONTENT_VIDEOS_MAX_LIMIT' ]    = 5;		// Maximum number of videos extracted from the content.
-			$var_const[ 'WPSSO_DUPE_CHECK_HEADER_COUNT' ]     = 5;		// Maximum number of times to check for duplicates.
-			$var_const[ 'WPSSO_DUPE_CHECK_TIMEOUT_TIME' ]     = 3.00;	// Hard-limit - most crawlers time-out after 3 seconds.
-			$var_const[ 'WPSSO_DUPE_CHECK_WARNING_TIME' ]     = 2.50;	// Issue a warning if getting shortlink took more than 2.5 seconds.
-			$var_const[ 'WPSSO_GET_POSTS_MAX_TIME' ]          = 0.20;	// Send an error to trigger_error() if get_posts() takes longer.
-			$var_const[ 'WPSSO_IMAGE_MAKE_SIZE_MAX_TIME' ]    = 1.50;	// Send an error to trigger_error() if image_make_intermediate_size() takes longer.
-			$var_const[ 'WPSSO_PHP_GETIMGSIZE_MAX_TIME' ]     = 1.50;	// Send an error to trigger_error() if getimagesize() takes longer.
-			$var_const[ 'WPSSO_SELECT_PERSON_NAMES_MAX' ]     = 100;	// Maximum number of persons to include in a form select.
-			$var_const[ 'WPSSO_GRAVATAR_IMAGE_SIZE_MAX' ]     = 2048;	// Maximum available width of images from Gravatar.com.
-			$var_const[ 'WPSSO_READING_WORDS_PER_MIN' ]       = 200;	// Estimated reading words per minute.
+			$var_const[ 'WPSSO_MENU_ORDER' ]                  = '80.0';		// Position of the SSO settings menu item.
+			$var_const[ 'WPSSO_TB_NOTICE_MENU_ORDER' ]        = '55';		// Position of the SSO notices toolbar menu item.
+			$var_const[ 'WPSSO_TB_LOCALE_MENU_ORDER' ]        = '56';		// Position of the user locale toolbar menu item.
+			$var_const[ 'WPSSO_TB_VALIDATE_MENU_ORDER' ]      = '57';		// Position of the validate menu item.
+			$var_const[ 'WPSSO_JSON_PRETTY_PRINT' ]           = true;		// Allows for better visual cues in the Google validator.
+			$var_const[ 'WPSSO_CACHE_CLEAR_MAX_TIME' ]        = 3600;		// 1 hour.
+			$var_const[ 'WPSSO_CACHE_REFRESH_MAX_TIME' ]      = 10800;		// 3 hours.
+			$var_const[ 'WPSSO_CACHE_REFRESH_SLEEP_TIME' ]    = 0.30;		// Seconds to sleep between requests when refreshing the cache.
+			$var_const[ 'WPSSO_CACHE_SELECT_JSON_EXP_SECS' ]  = MONTH_IN_SECONDS;	// Javascript URLs for Schema types, article sections, and product categories.
+			$var_const[ 'WPSSO_CONTENT_BLOCK_FILTER_OUTPUT' ] = true;		// Monitor and fix incorrectly coded filter hooks.
+			$var_const[ 'WPSSO_CONTENT_FILTERS_MAX_TIME' ]    = 1.00;		// Issue a warning if the content filter takes longer than 1 second.
+			$var_const[ 'WPSSO_CONTENT_IMAGES_MAX_LIMIT' ]    = 5;			// Maximum number of images extracted from the content.
+			$var_const[ 'WPSSO_CONTENT_VIDEOS_MAX_LIMIT' ]    = 5;			// Maximum number of videos extracted from the content.
+			$var_const[ 'WPSSO_DUPE_CHECK_HEADER_COUNT' ]     = 5;			// Maximum number of times to check for duplicates.
+			$var_const[ 'WPSSO_DUPE_CHECK_TIMEOUT_TIME' ]     = 3.00;		// Hard-limit - most crawlers time-out after 3 seconds.
+			$var_const[ 'WPSSO_DUPE_CHECK_WARNING_TIME' ]     = 2.50;		// Issue a warning if getting shortlink took more than 2.5 seconds.
+			$var_const[ 'WPSSO_GET_POSTS_MAX_TIME' ]          = 0.20;		// Send error to trigger_error() if get_posts() takes longer.
+			$var_const[ 'WPSSO_IMAGE_MAKE_SIZE_MAX_TIME' ]    = 1.50;		// Send error to trigger_error() if image_make_intermediate_size() takes longer.
+			$var_const[ 'WPSSO_PHP_GETIMGSIZE_MAX_TIME' ]     = 1.50;		// Send an error to trigger_error() if getimagesize() takes longer.
+			$var_const[ 'WPSSO_SELECT_PERSON_NAMES_MAX' ]     = 100;		// Maximum number of persons to include in a form select.
+			$var_const[ 'WPSSO_GRAVATAR_IMAGE_SIZE_MAX' ]     = 2048;		// Maximum available width of images from Gravatar.com.
+			$var_const[ 'WPSSO_READING_WORDS_PER_MIN' ]       = 200;		// Estimated reading words per minute.
 
 			/**
 			 * Schema limits.

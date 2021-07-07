@@ -88,7 +88,6 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 
 					$def_site_name    = get_bloginfo( 'name' );
 					$def_site_desc    = get_bloginfo( 'description' );
-					$select_exp_secs  = $this->p->util->get_cache_exp_secs( $cache_md5_pre = 'wpsso_f_' );
 					$article_sections = $this->p->util->get_article_sections();
 
 					$table_rows[ 'site_name' ] = '' . 
@@ -121,9 +120,9 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 							$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
 								$event_args = array(
 									'json_var'  => 'article_sections',
-									'exp_secs'  => $select_exp_secs,	// Create and read from a javascript URL.
-									'is_transl' => true,			// No label translation required.
-									'is_sorted' => true,			// No label sorting required.
+									'exp_secs'  => WPSSO_CACHE_SELECT_JSON_EXP_SECS,	// Create and read from a javascript URL.
+									'is_transl' => true,					// No label translation required.
+									'is_sorted' => true,					// No label sorting required.
 								)
 							) .
 						'</td>';

@@ -1262,7 +1262,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$cache_md5_pre  = 'wpsso_f_';
-			$cache_exp_secs = $this->get_cache_exp_secs( $cache_md5_pre );
+			$cache_exp_secs = MONTH_IN_SECONDS;
 			$text_list_file = self::get_file_path_locale( WPSSO_ARTICLE_SECTIONS_LIST );
 
 			if ( $cache_exp_secs > 0 ) {
@@ -1366,7 +1366,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$cache_md5_pre  = 'wpsso_f_';
-			$cache_exp_secs = $this->get_cache_exp_secs( $cache_md5_pre );
+			$cache_exp_secs = MONTH_IN_SECONDS;
 			$text_list_file = self::get_file_path_locale( WPSSO_PRODUCT_CATEGORIES_LIST );
 
 			if ( $cache_exp_secs > 0 ) {

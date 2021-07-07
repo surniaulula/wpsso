@@ -53,8 +53,6 @@
 
 'wpsso_cache_expire_schema_types' ( $secs, $cache_type, $mod )
 
-'wpsso_cache_expire_select_arrays' ( $secs, $cache_type, $mod )
-
 'wpsso_cache_expire_short_url' ( $secs, $cache_type, $mod )
 
 'wpsso_cache_expire_the_content' ( $secs, $cache_type, $mod )

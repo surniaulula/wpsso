@@ -64,7 +64,6 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			/**
 			 * Select option arrays.
 			 */
-			$select_exp_secs  = $this->p->util->get_cache_exp_secs( $cache_md5_pre = 'wpsso_f_' );
 			$og_types         = $this->p->og->get_og_types_select();
 			$schema_types     = $this->p->schema->get_schema_types_select( $context = 'meta' );
 			$primary_terms    = $this->p->post->get_primary_terms( $mod, $tax_slug = 'category', $output = 'names' );
@@ -129,9 +128,9 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 						$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json', 'on_change_unhide_rows' ),
 							$event_args = array(
 								'json_var'  => 'schema_types',
-								'exp_secs'  => $select_exp_secs,	// Create and read from a javascript URL.
-								'is_transl' => true,			// No label translation required.
-								'is_sorted' => true,			// No label sorting required.
+								'exp_secs'  => WPSSO_CACHE_SELECT_JSON_EXP_SECS,	// Create and read from a javascript URL.
+								'is_transl' => true,					// No label translation required.
+								'is_sorted' => true,					// No label sorting required.
 							)
 						),
 				),
@@ -222,9 +221,9 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 						$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
 							$event_args = array(
 								'json_var'  => 'article_sections',
-								'exp_secs'  => $select_exp_secs,	// Create and read from a javascript URL.
-								'is_transl' => true,			// No label translation required.
-								'is_sorted' => true,			// No label sorting required.
+								'exp_secs'  => WPSSO_CACHE_SELECT_JSON_EXP_SECS,	// Create and read from a javascript URL.
+								'is_transl' => true,					// No label translation required.
+								'is_sorted' => true,					// No label sorting required.
 							)
 						),
 				),
