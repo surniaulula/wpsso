@@ -2233,11 +2233,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 				),
 				'transient' => array(
-					'wpsso_!_' => array(	// Preserved on clear cache.
+
+					/**
+					 * Preserved on clear cache.
+					 */
+					'wpsso_!_' => array(
 					),
+
+					/**
+					 * Used by WpssoUtil->get_article_sections() and
+					 * WpssoUtil->get_google_product_categories().
+					 */
 					'wpsso_f_' => array(
 						'label'  => 'Form Selects',
-						'value'  => HOUR_IN_SECONDS,
+						'value'  => DAY_IN_SECONDS,
 						'filter' => 'wpsso_cache_expire_select_arrays',
 					),
 					'wpsso_h_' => array(
