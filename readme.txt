@@ -322,18 +322,27 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.34.1-b.1 (2021/07/06)**
+**Version 8.34.1-b.2 (2021/07/07)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Removed the following options from the SSO &gt; Advanced Settings &gt; Caching tab:
+		* Head Markup Cache Expiry
+		* Filtered Content Cache Expiry
+		* Image URL Info Cache Expiry
+		* API Response Cache Expiry
+		* Short URL Cache Expiry
+		* Schema Index Cache Expiry
+		* Form Selects Cache Expiry
+		* Cache Attachment Markup
+		* Cache Date Archive Markup
 * **Bugfixes**
 	* Fix for possible critical error when creating a new order in WooCommerce with The SEO Framework plugin.
 * **Developer Notes**
 	* Refactored and renamed the `WpssoHead->get_mt_mark()` method to `get_mt_data()`.
 	* Refactored the `WpssoUtil->get_cache_exp_secs()` method for the new 'conditional_values' config element.
-	* Added an 'is_attachment' element to the `$mod` array.
+	* Added an 'is_attachment' element to the `$mod` array (true for attachment post types).
 	* Added new functions for filter hooks in lib/functions.php:
 		* `__return_hour_in_seconds()`
 		* `__return_day_in_seconds()`
@@ -1391,9 +1400,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.34.1-b.1 =
+= 8.34.1-b.2 =
 
-(2021/07/06) Fix for possible critical error when creating a new order in WooCommerce with The SEO Framework plugin.
+(2021/07/07) Fix for possible critical error when creating a new order in WooCommerce with The SEO Framework plugin.
 
 = 8.34.0 =
 
