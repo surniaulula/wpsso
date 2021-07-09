@@ -1220,15 +1220,15 @@ table.sucom-settings.column-metabox.cache-status .cache-label {
 
 table.sucom-settings.column-metabox.cache-status .cache-count,
 table.sucom-settings.column-metabox.cache-status .cache-size {
-	width:20%;
+	width:15%;
 	min-width:auto;
 }
 
 table.sucom-settings.column-metabox.cache-status .cache-expiration {
-	width:20%;
+	width:30%;
 	min-width:auto;
 	text-align:left;
-	padding-left:10px;
+	padding-left:20px;
 }
 
 table.sucom-settings.column-metabox th.version-label {
