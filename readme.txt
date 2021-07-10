@@ -322,7 +322,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.35.0-rc.2 (2021/07/08)**
+**Version 8.35.0 (2021/07/10)**
 
 * **New Features**
 	* None.
@@ -1402,9 +1402,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.35.0-rc.2 =
+= 8.35.0 =
 
-(2021/07/08) Updated the SSO &gt; Dashboard &gt; Cache Status metabox. Removed options from the SSO &gt; Advanced Settings &gt; Caching tab. Fix for possible critical error when creating a new order in WooCommerce with The SEO Framework plugin.
+(2021/07/10) Updated the SSO &gt; Dashboard &gt; Cache Status metabox. Removed options from the SSO &gt; Advanced Settings &gt; Caching tab. Fix for possible critical error when creating a new order in WooCommerce with The SEO Framework plugin.
 
 = 8.34.0 =
 
