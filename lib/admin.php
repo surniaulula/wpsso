@@ -780,23 +780,35 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		/**
 		 * Define and disable the "Expect: 100-continue" header.
 		 *
-		 * $req should be an array, so make sure other filters aren't giving us a string or boolean.
+		 * $parsed_args should be an array, so make sure other filters aren't giving us a string or boolean.
 		 */
-		public function add_expect_header( $req, $url ) {
+		public function add_expect_header( $parsed_args, $url ) {
 
-			if ( ! is_array( $req ) ) {
+			if ( ! is_array( $parsed_args ) ) {	// Just in case.
 
-				$req = array();
+				$parsed_args = array();
 			}
 
-			if ( ! isset( $req[ 'headers' ] ) || ! is_array( $req[ 'headers' ] ) ) {
+			if ( empty( $parsed_args[ 'headers' ] ) ) {	// Just in case.
 
-				$req[ 'headers' ] = array();
+				$parsed_args[ 'headers' ] = array();
+
+			/**
+			 * WordPress allows passing headers as a string -- fix that issue here so we can update the 'headers' array
+			 * properly.
+			 *
+			 * See https://core.trac.wordpress.org/browser/tags/5.7.1/src/wp-includes/class-http.php#L310.
+			 */
+			} elseif ( ! is_array( $parsed_args[ 'headers' ] ) ) {
+
+				$processedHeaders = WP_Http::processHeaders( $parsed_args[ 'headers' ] );
+
+				$parsed_args[ 'headers' ] = $processedHeaders[ 'headers' ];
 			}
 
-			$req[ 'headers' ][ 'Expect' ] = '';
+			$parsed_args[ 'headers' ][ 'Expect' ] = '';
 
-			return $req;
+			return $parsed_args;
 		}
 
 		public function allow_safe_hosts( $is_allowed, $ip, $url ) {
