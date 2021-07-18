@@ -65,8 +65,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 * iframe_parent arguments when the Install or Update button is clicked.
 			 *
 			 * These class properties are used by both the WpssoAdmin plugin_complete_actions() and
-			 * plugin_complete_redirect() methods to direct the user back to the thickbox iframe parent (aka the plugin
-			 * licenses settings page) after plugin installation / activation / update.
+			 * plugin_complete_redirect() methods to direct the user back to the thickbox iframe parent after plugin
+			 * installation / activation / update.
 			 */
 			if ( ! empty( $_GET[ 'wpsso_pageref_title' ] ) ) {
 
@@ -3354,7 +3354,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						case 'plugins_page':
 
-							$html = '<a href="' . urlencode( $this->pageref_url ) . '" target="_parent">' .
+							$html = '<a href="' . $this->pageref_url . '" target="_parent">' .
 								sprintf( __( 'Return to %s', 'wpsso' ), $this->pageref_title ) . '</a>';
 
 							break;
