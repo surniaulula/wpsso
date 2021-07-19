@@ -675,7 +675,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= empty( $len[ $key ] ) ? '' : ' ' . $key . 'Length="' . esc_attr( $len[ $key ] ) . '"';
 			}
 
-			$html .= $this->get_placeholder_attrs( 'input', $holder );
+			$html .= $this->get_placeholder_attrs( 'input', $holder, $name );
 			$html .= ' value="' . esc_attr( $value ) . '" />' . "\n";
 			$html .= empty( $len ) ? '' : '<div id="text_' . $input_id . '-text-length-message"></div>' . "\n";
 
@@ -2656,28 +2656,39 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return is_bool( $holder ) ? '' : $holder;	// Must be numeric or string.
 		}
 
-		private function get_placeholder_attrs( $type = 'input', $holder = '' ) {
+		private function get_placeholder_attrs( $type = 'input', $holder = '', $name = '' ) {
 
 			if ( $holder === '' ) {
 
 				return '';
 			}
 
-			$js_if_empty = 'if ( this.value == \'\' ) this.value = \'' . esc_js( $holder ) . '\';';
+			/**
+			 * Do not pre-populate an empty input field for these option names.
+			 */
+			if ( preg_match( '/_tid$/', $name ) ) {
+
+				$js_if_empty = '';
+
+			} else {
+
+				$js_if_empty = 'if ( this.value == \'\' ) this.value = \'' . esc_js( $holder ) . '\';';
+			}
+
 			$js_if_same  = 'if ( this.value == \'' . esc_js( $holder ) . '\' ) this.value = \'\';';
 
-			$html = ' placeholder="' . esc_attr( $holder ) . '"' .
-				' onClick="' . $js_if_empty . '"' .
-				' onFocus="' . $js_if_empty . '"' .
-				' onBlur="' . $js_if_same . '"';
+			$html = ' placeholder="' . esc_attr( $holder ) . '"';
+			$html .= $js_if_empty ? ' onClick="' . $js_if_empty . '"' : '';
+			$html .= $js_if_empty ? ' onFocus="' . $js_if_empty . '"' : '';
+			$html .= $js_if_same ? ' onBlur="' . $js_if_same . '"' : '';
 
 			if ( $type === 'input' ) {
 
-				$html .= ' onKeyPress="if ( event.keyCode === 13 ) { ' . $js_if_same . ' }"';
+				$html .= $js_if_same ? ' onKeyPress="if ( event.keyCode === 13 ) { ' . $js_if_same . ' }"' : '';
 			}
 
-			$html .= ' onMouseEnter="' . $js_if_empty . '"';
-			$html .= ' onMouseLeave="' . $js_if_same . '"';
+			$html .= $js_if_empty ? ' onMouseEnter="' . $js_if_empty . '"' : '';
+			$html .= $js_if_same ? ' onMouseLeave="' . $js_if_same . '"' : '';
 
 			return $html;
 		}
