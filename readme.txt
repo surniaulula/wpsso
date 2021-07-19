@@ -322,6 +322,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.35.1-dev.1 (2021/07/19)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Minor http header filter and form input placeholder handling improvements.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Refactored the `WpssoAdmin->add_expect_header()` method to handle badly coded headers created by other plugins.
+	* Refactored the `SucomForm->get_placeholder_attrs()` method to skip pre-populating input values for license Authentication IDs.
+* **Requires At Least**
+	* PHP v7.0.
+	* WordPress v5.0.
+
 **Version 8.35.0 (2021/07/10)**
 
 * **New Features**
@@ -1401,6 +1416,10 @@ This release adds a new SSO &gt; Features Status page and integration module for
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.35.1-dev.1 =
+
+(2021/07/19) Minor http header filter and form input placeholder handling improvements.
 
 = 8.35.0 =
 
