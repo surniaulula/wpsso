@@ -1564,7 +1564,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 						$post_terms = wp_get_post_terms( $post_id, $tax_slug );	// Returns WP_Error if taxonomy does not exist.
 
-						if ( ! empty( $post_terms ) && is_array( $post_terms ) ) {	// Have one or more terms and taxonomy exists.
+						if ( is_array( $post_terms ) ) {
 
 							foreach ( $post_terms as $term_obj ) {
 
