@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.35.1-dev.1\n"
+"Project-Id-Version: WPSSO Core 8.35.1-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1588,8 +1588,8 @@ msgstr ""
 #: gettext/gettext-lib-config.php:287 gettext/gettext-lib-config.php:295
 #: gettext/gettext-lib-config.php:299 gettext/gettext-lib-config.php:305
 #: gettext/gettext-lib-config.php:314 gettext/gettext-lib-config.php:318
-#: gettext/gettext-lib-config.php:324 gettext/gettext-lib-config.php:334
-#: gettext/gettext-lib-config.php:339 lib/users/add-person.php:96
+#: gettext/gettext-lib-config.php:324 gettext/gettext-lib-config.php:335
+#: gettext/gettext-lib-config.php:340 lib/users/add-person.php:96
 msgctxt "option value"
 msgid "[None]"
 msgstr ""
@@ -2266,135 +2266,140 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:325
 msgctxt "option value"
-msgid "Discontinued"
+msgid "Back Order"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:326
 msgctxt "option value"
-msgid "In Stock"
+msgid "Discontinued"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:327
 msgctxt "option value"
-msgid "In Store Only"
+msgid "In Stock"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:328
 msgctxt "option value"
-msgid "Limited Availability"
+msgid "In Store Only"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:329
 msgctxt "option value"
-msgid "Online Only"
+msgid "Limited Availability"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:330
 msgctxt "option value"
-msgid "Out of Stock"
+msgid "Online Only"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:331
 msgctxt "option value"
-msgid "Pre-Order"
+msgid "Out Of Stock"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:332
 msgctxt "option value"
-msgid "Pre-Sale"
+msgid "Pre-Order"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:333
 msgctxt "option value"
-msgid "Sold Out"
+msgid "Pre-Sale"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:335
+#: gettext/gettext-lib-config.php:334
 msgctxt "option value"
-msgid "Damaged"
+msgid "Sold Out"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:336
 msgctxt "option value"
-msgid "New"
+msgid "Damaged"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:337
 msgctxt "option value"
-msgid "Refurbished"
+msgid "New"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:338
 msgctxt "option value"
-msgid "Used"
+msgid "Refurbished"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:340
+#: gettext/gettext-lib-config.php:339
 msgctxt "option value"
-msgid "Telecommute (100% Remote)"
+msgid "Used"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:341
 msgctxt "option value"
-msgid "Every day"
+msgid "Telecommute (100% Remote)"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:342
 msgctxt "option value"
-msgid "Every two days"
+msgid "Every day"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:343
 msgctxt "option value"
-msgid "Every three days"
+msgid "Every two days"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:344
 msgctxt "option value"
-msgid "Every four days"
+msgid "Every three days"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:345
 msgctxt "option value"
-msgid "Every five days"
+msgid "Every four days"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:346
 msgctxt "option value"
-msgid "Every six days"
+msgid "Every five days"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:347
 msgctxt "option value"
-msgid "Every week"
+msgid "Every six days"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:348
 msgctxt "option value"
-msgid "Every two weeks"
+msgid "Every week"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:349
 msgctxt "option value"
-msgid "Development and Up"
+msgid "Every two weeks"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:350
 msgctxt "option value"
-msgid "Alpha and Up"
+msgid "Development and Up"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:351
 msgctxt "option value"
-msgid "Beta and Up"
+msgid "Alpha and Up"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:352
 msgctxt "option value"
-msgid "Release Candidate and Up"
+msgid "Beta and Up"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:353
+msgctxt "option value"
+msgid "Release Candidate and Up"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:354
 msgctxt "option value"
 msgid "Stable / Production"
 msgstr ""
@@ -3203,23 +3208,23 @@ msgstr ""
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:173 lib/pro/ecom/woocommerce.php:681
+#: gettext/gettext-lib-pro.php:173 lib/pro/ecom/woocommerce.php:690
 msgid ""
 "The rating and review counts provided by WooCommerce for product ID %d are "
 "invalid."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:174 lib/pro/ecom/woocommerce.php:684
+#: gettext/gettext-lib-pro.php:174 lib/pro/ecom/woocommerce.php:693
 msgid ""
 "The average rating is %.2f, but the rating count is %d and the review count "
 "is %d."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:175 lib/pro/ecom/woocommerce.php:687
+#: gettext/gettext-lib-pro.php:175 lib/pro/ecom/woocommerce.php:696
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:176 lib/pro/ecom/woocommerce.php:1313
+#: gettext/gettext-lib-pro.php:176 lib/pro/ecom/woocommerce.php:1331
 msgid "World"
 msgstr ""
 

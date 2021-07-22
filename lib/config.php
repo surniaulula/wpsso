@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.35.1-dev.1',	// Plugin version.
+					'version'     => '8.35.1-dev.2',	// Plugin version.
 					'opt_version' => '801',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2746,12 +2746,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 */
 				'item_availability' => array(
 					'none'                                   => '[None]',
+			 		'https://schema.org/BackOrder'           => 'Back Order',	// Indicates that the item is available on back order.
 			 		'https://schema.org/Discontinued'        => 'Discontinued',
 			 		'https://schema.org/InStock'             => 'In Stock',
 			 		'https://schema.org/InStoreOnly'         => 'In Store Only',
 			 		'https://schema.org/LimitedAvailability' => 'Limited Availability',
 			 		'https://schema.org/OnlineOnly'          => 'Online Only',
-			 		'https://schema.org/OutOfStock'          => 'Out of Stock',
+			 		'https://schema.org/OutOfStock'          => 'Out Of Stock',
 			 		'https://schema.org/PreOrder'            => 'Pre-Order',
 			 		'https://schema.org/PreSale'             => 'Pre-Sale',
 			 		'https://schema.org/SoldOut'             => 'Sold Out',
@@ -3064,7 +3065,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'og_content_map' => array(	// Element of 'head' array.
 
 					/**
-					 * Validated on 2020/08/17.
+					 * Validated on 2021/07/22.
 					 *
 					 * See https://developers.facebook.com/docs/marketing-api/catalog/reference/#og-tags.
 					 *
@@ -3072,13 +3073,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * discontinued. Supports pixel-based catalogs.
 					 */
 					'product:availability' => array(
+				 		'https://schema.org/BackOrder'           => 'available for order',
 				 		'https://schema.org/Discontinued'        => 'discontinued',
 				 		'https://schema.org/InStock'             => 'in stock',
 				 		'https://schema.org/InStoreOnly'         => 'in stock',
 				 		'https://schema.org/LimitedAvailability' => 'in stock',
 				 		'https://schema.org/OnlineOnly'          => 'in stock',
 				 		'https://schema.org/OutOfStock'          => 'out of stock',
-				 		'https://schema.org/PreOrder'            => 'preorder',
+				 		'https://schema.org/PreOrder'            => 'available for order',
 			 			'https://schema.org/PreSale'             => 'available for order',
 				 		'https://schema.org/SoldOut'             => 'available for order',
 					),
