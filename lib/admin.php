@@ -3471,8 +3471,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			global $wp_current_filter;
 
-			$filter_name = end( $wp_current_filter );
-
+			$filter_name  = end( $wp_current_filter );
 			$postbox_name = preg_replace( '/^.*-(' . $this->menu_id . '_.*)$/u', '$1', $filter_name );
 
 			$classes[] = 'postbox-' . $this->menu_id;
