@@ -322,7 +322,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.35.1-dev.3 (2021/07/22)**
+**Version 8.35.1-dev.4 (2021/07/23)**
 
 * **New Features**
 	* None.
@@ -332,6 +332,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
+	* Added error reporting in `WpssoProEcomWoocommerceBrandsCommon` for cases where `get_the_terms()` returns an error.
 	* Refactored the `WpssoAdmin->add_expect_header()` method to handle badly coded headers created by other plugins.
 	* Refactored the `SucomForm->get_placeholder_attrs()` method to skip pre-populating input values for license Authentication IDs.
 * **Requires At Least**
@@ -1418,9 +1419,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.35.1-dev.3 =
+= 8.35.1-dev.4 =
 
-(2021/07/22) Added support for the WooCommerce product `is_on_backorder()` method (Premium version).
+(2021/07/23) Added support for the WooCommerce product `is_on_backorder()` method (Premium version).
 
 = 8.35.0 =
 
