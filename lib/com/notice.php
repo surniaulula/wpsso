@@ -302,14 +302,14 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 						$msg_close_div = '';
 
-						if ( substr( $msg_text, -6 ) === '</div>' ) {
+						if ( '</div>' === substr( $msg_text, -6 ) ) {
 
 							$msg_text = substr( $msg_text, 0, -6 );
 
 							$msg_close_div = '</div>';
 						}
 
-						$msg_add_p = substr( $msg_text, -4 ) === '</p>' ? true : false;
+						$msg_add_p = '</p>' === substr( $msg_text, -4 ) ? true : false;
 
 						$msg_text .= $msg_add_p || $msg_close_div ? '<p>' : ' ';
 						$msg_text .= sprintf( $dismiss_suffix_msg, $payload[ 'dismiss_diff' ] );
