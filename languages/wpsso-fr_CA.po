@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.35.0\n"
+"Project-Id-Version: WPSSO Core 8.35.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-07-16 08:11-0700\n"
+"PO-Revision-Date: 2021-07-24 12:39-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1318,8 +1318,8 @@ msgstr "Toujours"
 #: gettext/gettext-lib-config.php:287 gettext/gettext-lib-config.php:295
 #: gettext/gettext-lib-config.php:299 gettext/gettext-lib-config.php:305
 #: gettext/gettext-lib-config.php:314 gettext/gettext-lib-config.php:318
-#: gettext/gettext-lib-config.php:324 gettext/gettext-lib-config.php:334
-#: gettext/gettext-lib-config.php:339 lib/users/add-person.php:96
+#: gettext/gettext-lib-config.php:324 gettext/gettext-lib-config.php:335
+#: gettext/gettext-lib-config.php:340 lib/users/add-person.php:96
 msgctxt "option value"
 msgid "[None]"
 msgstr "[Aucun]"
@@ -1996,135 +1996,140 @@ msgstr "Planifié"
 
 #: gettext/gettext-lib-config.php:325
 msgctxt "option value"
+msgid "Back Order"
+msgstr "En commande"
+
+#: gettext/gettext-lib-config.php:326
+msgctxt "option value"
 msgid "Discontinued"
 msgstr "Discontinué"
 
-#: gettext/gettext-lib-config.php:326
+#: gettext/gettext-lib-config.php:327
 msgctxt "option value"
 msgid "In Stock"
 msgstr "En main"
 
-#: gettext/gettext-lib-config.php:327
+#: gettext/gettext-lib-config.php:328
 msgctxt "option value"
 msgid "In Store Only"
 msgstr "En magasin uniquement"
 
-#: gettext/gettext-lib-config.php:328
+#: gettext/gettext-lib-config.php:329
 msgctxt "option value"
 msgid "Limited Availability"
 msgstr "Disponibilité limitée"
 
-#: gettext/gettext-lib-config.php:329
+#: gettext/gettext-lib-config.php:330
 msgctxt "option value"
 msgid "Online Only"
 msgstr "En ligne seulement"
 
-#: gettext/gettext-lib-config.php:330
+#: gettext/gettext-lib-config.php:331
 msgctxt "option value"
-msgid "Out of Stock"
+msgid "Out Of Stock"
 msgstr "Rupture de stock"
 
-#: gettext/gettext-lib-config.php:331
+#: gettext/gettext-lib-config.php:332
 msgctxt "option value"
 msgid "Pre-Order"
 msgstr "Pré-commande"
 
-#: gettext/gettext-lib-config.php:332
+#: gettext/gettext-lib-config.php:333
 msgctxt "option value"
 msgid "Pre-Sale"
 msgstr "Prévente"
 
-#: gettext/gettext-lib-config.php:333
+#: gettext/gettext-lib-config.php:334
 msgctxt "option value"
 msgid "Sold Out"
 msgstr "Épuisé"
 
-#: gettext/gettext-lib-config.php:335
+#: gettext/gettext-lib-config.php:336
 msgctxt "option value"
 msgid "Damaged"
 msgstr "Endommagé"
 
-#: gettext/gettext-lib-config.php:336
+#: gettext/gettext-lib-config.php:337
 msgctxt "option value"
 msgid "New"
 msgstr "Neuf"
 
-#: gettext/gettext-lib-config.php:337
+#: gettext/gettext-lib-config.php:338
 msgctxt "option value"
 msgid "Refurbished"
 msgstr "Remis à neuf"
 
-#: gettext/gettext-lib-config.php:338
+#: gettext/gettext-lib-config.php:339
 msgctxt "option value"
 msgid "Used"
 msgstr "Usagé"
 
-#: gettext/gettext-lib-config.php:340
+#: gettext/gettext-lib-config.php:341
 msgctxt "option value"
 msgid "Telecommute (100% Remote)"
 msgstr "Télétravail (100% à distance)"
 
-#: gettext/gettext-lib-config.php:341
+#: gettext/gettext-lib-config.php:342
 msgctxt "option value"
 msgid "Every day"
 msgstr "Chaque jour"
 
-#: gettext/gettext-lib-config.php:342
+#: gettext/gettext-lib-config.php:343
 msgctxt "option value"
 msgid "Every two days"
 msgstr "Aux deux jours"
 
-#: gettext/gettext-lib-config.php:343
+#: gettext/gettext-lib-config.php:344
 msgctxt "option value"
 msgid "Every three days"
 msgstr "Aux trois jours"
 
-#: gettext/gettext-lib-config.php:344
+#: gettext/gettext-lib-config.php:345
 msgctxt "option value"
 msgid "Every four days"
 msgstr "Aux quatre jours"
 
-#: gettext/gettext-lib-config.php:345
+#: gettext/gettext-lib-config.php:346
 msgctxt "option value"
 msgid "Every five days"
 msgstr "Aux cinq jours"
 
-#: gettext/gettext-lib-config.php:346
+#: gettext/gettext-lib-config.php:347
 msgctxt "option value"
 msgid "Every six days"
 msgstr "Aux six jours"
 
-#: gettext/gettext-lib-config.php:347
+#: gettext/gettext-lib-config.php:348
 msgctxt "option value"
 msgid "Every week"
 msgstr "Chaque semaine"
 
-#: gettext/gettext-lib-config.php:348
+#: gettext/gettext-lib-config.php:349
 msgctxt "option value"
 msgid "Every two weeks"
 msgstr "Aux deux semaines"
 
-#: gettext/gettext-lib-config.php:349
+#: gettext/gettext-lib-config.php:350
 msgctxt "option value"
 msgid "Development and Up"
 msgstr "Développement et plus"
 
-#: gettext/gettext-lib-config.php:350
+#: gettext/gettext-lib-config.php:351
 msgctxt "option value"
 msgid "Alpha and Up"
 msgstr "Alpha et plus"
 
-#: gettext/gettext-lib-config.php:351
+#: gettext/gettext-lib-config.php:352
 msgctxt "option value"
 msgid "Beta and Up"
 msgstr "Bêta et plus"
 
-#: gettext/gettext-lib-config.php:352
+#: gettext/gettext-lib-config.php:353
 msgctxt "option value"
 msgid "Release Candidate and Up"
 msgstr "Candidat stable et plus"
 
-#: gettext/gettext-lib-config.php:353
+#: gettext/gettext-lib-config.php:354
 msgctxt "option value"
 msgid "Stable / Production"
 msgstr "Stable / production"
@@ -2927,19 +2932,19 @@ msgstr "Shop page"
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr "La valeur de l'option \"%1$s\" de WooCommerce est vide."
 
-#: gettext/gettext-lib-pro.php:173 lib/pro/ecom/woocommerce.php:681
+#: gettext/gettext-lib-pro.php:173 lib/pro/ecom/woocommerce.php:690
 msgid "The rating and review counts provided by WooCommerce for product ID %d are invalid."
 msgstr "Le nombre de notes et de critiques fournis par WooCommerce pour l'ID de produit %d n'est pas valide."
 
-#: gettext/gettext-lib-pro.php:174 lib/pro/ecom/woocommerce.php:684
+#: gettext/gettext-lib-pro.php:174 lib/pro/ecom/woocommerce.php:693
 msgid "The average rating is %.2f, but the rating count is %d and the review count is %d."
 msgstr "La note moyenne est %.2f, mais le nombre de notes est %d et le nombre de critiques est %d."
 
-#: gettext/gettext-lib-pro.php:175 lib/pro/ecom/woocommerce.php:687
+#: gettext/gettext-lib-pro.php:175 lib/pro/ecom/woocommerce.php:696
 msgid "The rating count or the review count must be greater than 0."
 msgstr "Le nombre de notes ou le nombre de critiques doit être supérieur à 0."
 
-#: gettext/gettext-lib-pro.php:176 lib/pro/ecom/woocommerce.php:1313
+#: gettext/gettext-lib-pro.php:176 lib/pro/ecom/woocommerce.php:1343
 msgid "World"
 msgstr "Monde"
 
@@ -4004,27 +4009,27 @@ msgstr "Vous pouvez <a href=\"%1$s\">actualiser les informations de mise à jour
 msgid "You may <a href=\"%1$s\">refresh the update information for WordPress (plugins, themes and translations)</a> to check if newer versions are available."
 msgstr "Vous pouvez <a href=\"%1$s\">actualiser les informations de mise jour pour WordPress (extensions, thèmes et traductions)</a> afin de vérifier si des versions plus récentes sont disponibles."
 
-#: lib/admin.php:3570
+#: lib/admin.php:3569
 msgid "Please select a %1$s settings file to import."
 msgstr "Veuillez sélectionner un fichier de réglages %1$s à importer."
 
-#: lib/admin.php:3577
+#: lib/admin.php:3576
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr "Le fichier de réglages %1$s à importer doit être un type mime \"%2$s\"."
 
-#: lib/admin.php:3584
+#: lib/admin.php:3583
 msgid "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr "Le fichier de réglages %1$s dépasse le maximum autorisé de %2$d octets."
 
-#: lib/admin.php:3598
+#: lib/admin.php:3597
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr "Le fichier de réglages %1$s semble vide ou corrompu."
 
-#: lib/admin.php:3608
+#: lib/admin.php:3607
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr "Le fichier de réglages %1$s n'a pas pu être décodé dans un tableau de réglages."
 
-#: lib/admin.php:3618
+#: lib/admin.php:3617
 msgid "Import of plugin and add-on settings is complete."
 msgstr "L'importation des réglages d'extension et ajouts est terminée."
 
