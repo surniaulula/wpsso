@@ -322,7 +322,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.35.1-rc.1 (2021/07/23)**
+**Version 8.35.1 (2021/07/24)**
 
 * **New Features**
 	* None.
@@ -1419,9 +1419,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.35.1-rc.1 =
+= 8.35.1 =
 
-(2021/07/23) Added support for the WooCommerce product `is_on_backorder()` method (Premium version).
+(2021/07/24) Added support for the WooCommerce product `is_on_backorder()` method (Premium version).
 
 = 8.35.0 =
 
