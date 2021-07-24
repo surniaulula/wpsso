@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires PHP: 7.0
 Requires At Least: 5.0
 Tested Up To: 5.8
-WC Tested Up To: 5.5.1
+WC Tested Up To: 5.5.2
 Stable Tag: 8.35.0
 
 Rank higher and improve click-through-rates by presenting your content at its best on social sites and in search results.
@@ -322,7 +322,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.35.1-b.1 (2021/07/23)**
+**Version 8.35.1-rc.1 (2021/07/23)**
 
 * **New Features**
 	* None.
@@ -1419,7 +1419,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.35.1-b.1 =
+= 8.35.1-rc.1 =
 
 (2021/07/23) Added support for the WooCommerce product `is_on_backorder()` method (Premium version).
 
