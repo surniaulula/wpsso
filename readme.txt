@@ -322,6 +322,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.35.2-dev.1 (2021/07/26)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added support for the current page number when adding Schema comments.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new `WPSSO_SCHEMA_COMMENTS_MAX` constant (default is 50).
+* **Requires At Least**
+	* PHP v7.0.
+	* WordPress v5.0.
+
 **Version 8.35.1 (2021/07/24)**
 
 * **New Features**
@@ -1418,6 +1432,10 @@ This release adds a new SSO &gt; Features Status page and integration module for
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.35.2-dev.1 =
+
+(2021/07/26) Added support for the current page number when adding Schema comments.
 
 = 8.35.1 =
 
