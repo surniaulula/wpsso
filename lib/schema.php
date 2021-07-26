@@ -2228,19 +2228,36 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/**
 			 * Only get parent comments. The add_comment_data() method will recurse and add the children.
 			 */
-			$comments = get_comments( array(
-				'post_id' => $mod[ 'id' ],
-				'status'  => 'approve',
-				'parent'  => 0,					// Don't get replies.
-				'order'   => 'DESC',
-				'number'  => get_option( 'page_comments' ),	// Limit number of comments.
-			) );
+			if ( get_option( 'page_comments' ) ) {	// "Break comments into pages" option is checked.
 
-			if ( is_array( $comments ) ) {
+				$paged  = isset( $mod[ 'query_vars' ][ 'paged' ] ) ? $mod[ 'query_vars' ][ 'paged' ] : 1;	// Get the page number.
+				$number = get_option( 'comments_per_page' );							// "Top level comments per page" option value.
+				$order  = 'oldest' === get_option( 'default_comments_page' ) ? 'ASC' : 'DESC';			// Maybe sort oldest comments first.
 
-				foreach( $comments as $num => $cmt ) {
+			} else {
 
-					$comments_added += WpssoSchemaSingle::add_comment_data( $json_data[ 'comment' ], $mod, $cmt->comment_ID );
+				$paged  = 1;
+				$number = SucomUtil::get_const( 'WPSSO_SCHEMA_COMMENTS_MAX' );
+				$order  = 'DESC';
+			}
+
+			if ( $number ) {	// 0 disables the addition of comments.
+
+				$comments = get_comments( array(
+					'post_id' => $mod[ 'id' ],
+					'status'  => 'approve',
+					'parent'  => 0,					// Don't get replies.
+					'order'   => $order,
+					'orderby' => 'comment_date_gmt',
+					'number'  => get_option( 'page_comments' ),	// Limit number of comments.
+				) );
+
+				if ( is_array( $comments ) ) {
+
+					foreach( $comments as $num => $cmt ) {
+
+						$comments_added += WpssoSchemaSingle::add_comment_data( $json_data[ 'comment' ], $mod, $cmt->comment_ID );
+					}
 				}
 			}
 

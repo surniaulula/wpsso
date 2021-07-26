@@ -388,7 +388,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					if ( is_date() ) {
 
-						$mod[ 'is_date' ]  = true;
+						$mod[ 'is_date' ] = true;
 
 						if ( is_year() ) {
 
