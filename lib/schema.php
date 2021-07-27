@@ -2231,7 +2231,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( get_option( 'page_comments' ) ) {	// "Break comments into pages" option is checked.
 
 				$paged  = isset( $mod[ 'query_vars' ][ 'paged' ] ) ? $mod[ 'query_vars' ][ 'paged' ] : 1;	// Get the page number.
-				$number = get_option( 'comments_per_page' );							// "Top level comments per page" option value.
+				$number = get_option( 'comments_per_page' );							// Get "Top level comments per page" option value.
 				$order  = 'oldest' === get_option( 'default_comments_page' ) ? 'ASC' : 'DESC';			// Maybe sort oldest comments first.
 
 			} else {
