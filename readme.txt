@@ -322,6 +322,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.35.3-dev.1 (2021/07/27)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added support for the 'yith_wcbr_taxonomy_slug' filter to get the taxonomy slug in the YITH WooCommerce Brands Add-on module (Premium version).
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.0.
+	* WordPress v5.0.
+
 **Version 8.35.2 (2021/07/26)**
 
 * **New Features**
@@ -1432,6 +1446,10 @@ This release adds a new SSO &gt; Features Status page and integration module for
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.35.3-dev.1 =
+
+(2021/07/27) Added support for the 'yith_wcbr_taxonomy_slug' filter to get the taxonomy slug in the YITH WooCommerce Brands Add-on module (Premium version).
 
 = 8.35.2 =
 
