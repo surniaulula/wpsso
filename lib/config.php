@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.35.2-dev.1',	// Plugin version.
+					'version'     => '8.35.2-rc.1',	// Plugin version.
 					'opt_version' => '801',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -4201,7 +4201,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Schema limits.
 			 */
 			$var_const[ 'WPSSO_SCHEMA_ADDL_TYPE_URL_MAX' ]       = 5;
-			$var_const[ 'WPSSO_SCHEMA_COMMENTS_MAX' ]            = 50;		// Maximum number of comments, when "Break comments into pages" is unchecked.
+			$var_const[ 'WPSSO_SCHEMA_COMMENTS_MAX' ]            = 50;		// Maximum number of comments when "Break comments into pages" is unchecked.
 			$var_const[ 'WPSSO_SCHEMA_HOWTO_STEPS_MAX' ]         = 40;
 			$var_const[ 'WPSSO_SCHEMA_HOWTO_SUPPLIES_MAX' ]      = 30;
 			$var_const[ 'WPSSO_SCHEMA_HOWTO_TOOLS_MAX' ]         = 20;
