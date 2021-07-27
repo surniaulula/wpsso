@@ -322,7 +322,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.35.2-rc.1 (2021/07/26)**
+**Version 8.35.2 (2021/07/26)**
 
 * **New Features**
 	* None.
@@ -1433,7 +1433,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.35.2-rc.1 =
+= 8.35.2 =
 
 (2021/07/26) Added support for the current page number when adding Schema comments.
 
