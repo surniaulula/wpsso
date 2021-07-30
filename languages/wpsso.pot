@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.35.3-dev.1\n"
+"Project-Id-Version: WPSSO Core 8.35.3-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -5681,11 +5681,11 @@ msgid ""
 "and no other image is available)."
 msgstr ""
 
-#: lib/messages.php:692 lib/messages.php:708
+#: lib/messages.php:692
 msgid ""
-"The default image is used for archive pages and as a fallback for posts and "
-"pages that do not have a suitable image featured, attached, or in their "
-"content."
+"The default image is used for archive pages (ie. blog, category, tag archive "
+"page) and as a fallback for posts and pages that do not have a suitable "
+"image featured, attached, or in their content."
 msgstr ""
 
 #: lib/messages.php:700
@@ -5701,6 +5701,13 @@ msgstr ""
 
 #: lib/messages.php:704
 msgid "The image should be at least %s or more in width and height."
+msgstr ""
+
+#: lib/messages.php:708
+msgid ""
+"The default image is used for archive pages (ie. blog, category, and tag "
+"archive page) and as a fallback for posts and pages that do not have a "
+"suitable image featured, attached, or in their content."
 msgstr ""
 
 #: lib/messages.php:719
