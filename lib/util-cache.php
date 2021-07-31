@@ -791,8 +791,6 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 				$this->u->add_plugin_filters( $this, $add_filters );
 			}
-
-			add_filter( 'sucom_cache_ignored_for_secs', '__return_zero' );
 		}
 	}
 }
