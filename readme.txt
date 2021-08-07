@@ -324,16 +324,18 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 Please note: YouTube has shutdown their video API service, which limits the ability of WPSSO Core Premium to get video details for Schema markup. We are working on a solution for the next release of WPSSO Core Premium.
 
-**Version 8.35.3-dev.2 (2021/07/29)**
+**Version 8.35.3-dev.3 (2021/08/07)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added support for the 'yith_wcbr_taxonomy_slug' filter to get the taxonomy slug in the YITH WooCommerce Brands Add-on module (Premium version).
+	* Updated the YouTube integration module (Premium version).
+	* Added support for the 'yith_wcbr_taxonomy_slug' filter to get the taxonomy slug in the YITH WooCommerce Brands Add-on integration module (Premium version).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Updated the `WpssoMedia->add_og_video_from_url()` method to add itemprop duration value.
+	* Deprecated the `WpssoProMediaYoutube->add_og_video_from_data()` method since Google has removed the https://www.youtube.com/get_video_info API.
 * **Requires At Least**
 	* PHP v7.0.
 	* WordPress v5.0.
@@ -422,7 +424,7 @@ Please note: YouTube has shutdown their video API service, which limits the abil
 **Version 8.33.0 (2021/06/27)**
 
 * **New Features**
-	* Added a new module for Stamped.io ratings and reviews in the WPSSO Core Premium plugin.
+	* Added a new integration module for Stamped.io ratings and reviews in the WPSSO Core Premium plugin.
 * **Improvements**
 	* Added new options under the SSO &gt; Advanced Settings &gt; Service APIs &gt; Ratings and Reviews tab:
 		* Ratings and Reviews Service
@@ -1449,9 +1451,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.35.3-dev.2 =
+= 8.35.3-dev.3 =
 
-(2021/07/29) Added support for the 'yith_wcbr_taxonomy_slug' filter to get the taxonomy slug in the YITH WooCommerce Brands Add-on module (Premium version).
+(2021/08/07) Updated the YouTube integration module (Premium version). Updated the YITH WooCommerce Brands Add-on integration module (Premium version).
 
 = 8.35.2 =
 
@@ -1471,7 +1473,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 = 8.33.0 =
 
-(2021/06/27) Added a new module for Stamped.io ratings and reviews in the WPSSO Core Premium plugin.
+(2021/06/27) Added a new integration module for Stamped.io ratings and reviews in the WPSSO Core Premium plugin.
 
 = 8.32.0 =
 
