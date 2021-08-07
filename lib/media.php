@@ -1817,15 +1817,474 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$metas = $this->p->util->get_html_head_meta( $url, $query = '//meta', $libxml_errors = false, $curl_opts );
 
+			/**
+			 * Array
+			 * (
+			 *     [meta] => Array
+			 *         (
+			 *             [0] => Array
+			 *                 (
+			 *                     [http-equiv] => X-UA-Compatible
+			 *                     [content] => IE=edge
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [1] => Array
+			 *                 (
+			 *                     [name] => theme-color
+			 *                     [content] => rgba(255, 255, 255, 0.98)
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [2] => Array
+			 *                 (
+			 *                     [name] => title
+			 *                     [content] => Entering Namibia's TRIBAL LANDS [S5 - Eps. 58]
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [3] => Array
+			 *                 (
+			 *                     [name] => description
+			 *                     [content] => In this episode I am riding to Epupa Falls, gorgeous waterfalls right at the border between
+			 * Namibia and Angola. The border with Angola is closed, so I can't ...
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [4] => Array
+			 *                 (
+			 *                     [name] => keywords
+			 *                     [content] => honda, Honda CRF250L, crf250L review, dual purpose bike, RTW, round the world on motorbike, adv
+			 * rider, motorbike traveller, female motorcycle traveler, solo female traveller, best dirt bike, things to see namibia, motorcycling
+			 * namibia, best roads namibia, solo ride namibia, Namibia, Southern Africa, off-roading namibia, himba tribe, tribes namibia, opuwo,
+			 * epupa, epupa falls
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [5] => Array
+			 *                 (
+			 *                     [property] => og:site_name
+			 *                     [content] => YouTube
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [6] => Array
+			 *                 (
+			 *                     [property] => og:url
+			 *                     [content] => https://www.youtube.com/watch?v=IQu7ox_UxpA
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [7] => Array
+			 *                 (
+			 *                     [property] => og:title
+			 *                     [content] => Entering Namibia's TRIBAL LANDS [S5 - Eps. 58]
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [8] => Array
+			 *                 (
+			 *                     [property] => og:image
+			 *                     [content] => https://i.ytimg.com/vi/IQu7ox_UxpA/maxresdefault.jpg
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [9] => Array
+			 *                 (
+			 *                     [property] => og:image:width
+			 *                     [content] => 1280
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [10] => Array
+			 *                 (
+			 *                     [property] => og:image:height
+			 *                     [content] => 720
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [11] => Array
+			 *                 (
+			 *                     [property] => og:description
+			 *                     [content] => In this episode I am riding to Epupa Falls, gorgeous waterfalls right at the border between
+			 * Namibia and Angola. The border with Angola is closed, so I can't ...
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [12] => Array
+			 *                 (
+			 *                     [property] => al:ios:app_store_id
+			 *                     [content] => 544007664
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [13] => Array
+			 *                 (
+			 *                     [property] => al:ios:app_name
+			 *                     [content] => YouTube
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [14] => Array
+			 *                 (
+			 *                     [property] => al:ios:url
+			 *                     [content] => vnd.youtube://www.youtube.com/watch?v=IQu7ox_UxpA&feature=applinks
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [15] => Array
+			 *                 (
+			 *                     [property] => al:android:url
+			 *                     [content] => vnd.youtube://www.youtube.com/watch?v=IQu7ox_UxpA&feature=applinks
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [16] => Array
+			 *                 (
+			 *                     [property] => al:web:url
+			 *                     [content] => http://www.youtube.com/watch?v=IQu7ox_UxpA&feature=applinks
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [17] => Array
+			 *                 (
+			 *                     [property] => og:type
+			 *                     [content] => video.other
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [18] => Array
+			 *                 (
+			 *                     [property] => og:video:url
+			 *                     [content] => https://www.youtube.com/embed/IQu7ox_UxpA
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [19] => Array
+			 *                 (
+			 *                     [property] => og:video:secure_url
+			 *                     [content] => https://www.youtube.com/embed/IQu7ox_UxpA
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [20] => Array
+			 *                 (
+			 *                     [property] => og:video:type
+			 *                     [content] => text/html
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [21] => Array
+			 *                 (
+			 *                     [property] => og:video:width
+			 *                     [content] => 1280
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [22] => Array
+			 *                 (
+			 *                     [property] => og:video:height
+			 *                     [content] => 720
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [23] => Array
+			 *                 (
+			 *                     [property] => al:android:app_name
+			 *                     [content] => YouTube
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [24] => Array
+			 *                 (
+			 *                     [property] => al:android:package
+			 *                     [content] => com.google.android.youtube
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [25] => Array
+			 *                 (
+			 *                     [property] => og:video:tag
+			 *                     [content] => honda
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [48] => Array
+			 *                 (
+			 *                     [property] => fb:app_id
+			 *                     [content] => 87741124305
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [49] => Array
+			 *                 (
+			 *                     [name] => twitter:card
+			 *                     [content] => player
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [50] => Array
+			 *                 (
+			 *                     [name] => twitter:site
+			 *                     [content] => @youtube
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [51] => Array
+			 *                 (
+			 *                     [name] => twitter:url
+			 *                     [content] => https://www.youtube.com/watch?v=IQu7ox_UxpA
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [52] => Array
+			 *                 (
+			 *                     [name] => twitter:title
+			 *                     [content] => Entering Namibia's TRIBAL LANDS [S5 - Eps. 58]
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [53] => Array
+			 *                 (
+			 *                     [name] => twitter:description
+			 *                     [content] => In this episode I am riding to Epupa Falls, gorgeous waterfalls right at the border between
+			 * Namibia and Angola. The border with Angola is closed, so I can't ...
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [54] => Array
+			 *                 (
+			 *                     [name] => twitter:image
+			 *                     [content] => https://i.ytimg.com/vi/IQu7ox_UxpA/maxresdefault.jpg
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [55] => Array
+			 *                 (
+			 *                     [name] => twitter:app:name:iphone
+			 *                     [content] => YouTube
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [56] => Array
+			 *                 (
+			 *                     [name] => twitter:app:id:iphone
+			 *                     [content] => 544007664
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [57] => Array
+			 *                 (
+			 *                     [name] => twitter:app:name:ipad
+			 *                     [content] => YouTube
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [58] => Array
+			 *                 (
+			 *                     [name] => twitter:app:id:ipad
+			 *                     [content] => 544007664
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [59] => Array
+			 *                 (
+			 *                     [name] => twitter:app:url:iphone
+			 *                     [content] => vnd.youtube://www.youtube.com/watch?v=IQu7ox_UxpA&feature=applinks
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [60] => Array
+			 *                 (
+			 *                     [name] => twitter:app:url:ipad
+			 *                     [content] => vnd.youtube://www.youtube.com/watch?v=IQu7ox_UxpA&feature=applinks
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [61] => Array
+			 *                 (
+			 *                     [name] => twitter:app:name:googleplay
+			 *                     [content] => YouTube
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [62] => Array
+			 *                 (
+			 *                     [name] => twitter:app:id:googleplay
+			 *                     [content] => com.google.android.youtube
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [63] => Array
+			 *                 (
+			 *                     [name] => twitter:app:url:googleplay
+			 *                     [content] => https://www.youtube.com/watch?v=IQu7ox_UxpA
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [64] => Array
+			 *                 (
+			 *                     [name] => twitter:player
+			 *                     [content] => https://www.youtube.com/embed/IQu7ox_UxpA
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [65] => Array
+			 *                 (
+			 *                     [name] => twitter:player:width
+			 *                     [content] => 1280
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [66] => Array
+			 *                 (
+			 *                     [name] => twitter:player:height
+			 *                     [content] => 720
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [67] => Array
+			 *                 (
+			 *                     [itemprop] => name
+			 *                     [content] => Entering Namibia's TRIBAL LANDS [S5 - Eps. 58]
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [68] => Array
+			 *                 (
+			 *                     [itemprop] => description
+			 *                     [content] => In this episode I am riding to Epupa Falls, gorgeous waterfalls right at the border between
+			 * Namibia and Angola. The border with Angola is closed, so I can't ...
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [69] => Array
+			 *                 (
+			 *                     [itemprop] => paid
+			 *                     [content] => False
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [70] => Array
+			 *                 (
+			 *                     [itemprop] => channelId
+			 *                     [content] => UCEIs9nkveW9WmYtsOcJBwTg
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [71] => Array
+			 *                 (
+			 *                     [itemprop] => videoId
+			 *                     [content] => IQu7ox_UxpA
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [72] => Array
+			 *                 (
+			 *                     [itemprop] => duration
+			 *                     [content] => PT21M53S
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [73] => Array
+			 *                 (
+			 *                     [itemprop] => unlisted
+			 *                     [content] => False
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [74] => Array
+			 *                 (
+			 *                     [itemprop] => width
+			 *                     [content] => 1280
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [75] => Array
+			 *                 (
+			 *                     [itemprop] => height
+			 *                     [content] => 720
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [76] => Array
+			 *                 (
+			 *                     [itemprop] => playerType
+			 *                     [content] => HTML5 Flash
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [77] => Array
+			 *                 (
+			 *                     [itemprop] => width
+			 *                     [content] => 1280
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [78] => Array
+			 *                 (
+			 *                     [itemprop] => height
+			 *                     [content] => 720
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [79] => Array
+			 *                 (
+			 *                     [itemprop] => isFamilyFriendly
+			 *                     [content] => true
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [80] => Array
+			 *                 (
+			 *                     [itemprop] => regionsAllowed
+			 *                     [content] =>
+			 * AD,AE,AF,AG,AI,AL,AM,AO,AQ,AR,AS,AT,AU,AW,AX,AZ,BA,BB,BD,BE,BF,BG,BH,BI,BJ,BL,BM,BN,BO,BQ,BR,BS,BT,BV,BW,BY,BZ,CA,CC,CD,CF,CG,CH,CI,CK,CL,CM,CN,CO,CR,CU,CV,CW,CX,CY,CZ,DE,DJ,DK,DM,DO,DZ,EC,EE,EG,EH,ER,ES,ET,FI,FJ,FK,FM,FO,FR,GA,GB,GD,GE,GF,GG,GH,GI,GL,GM,GN,GP,GQ,GR,GS,GT,GU,GW,GY,HK,HM,HN,HR,HT,HU,ID,IE,IL,IM,IN,IO,IQ,IR,IS,IT,JE,JM,JO,JP,KE,KG,KH,KI,KM,KN,KP,KR,KW,KY,KZ,LA,LB,LC,LI,LK,LR,LS,LT,LU,LV,LY,MA,MC,MD,ME,MF,MG,MH,MK,ML,MM,MN,MO,MP,MQ,MR,MS,MT,MU,MV,MW,MX,MY,MZ,NA,NC,NE,NF,NG,NI,NL,NO,NP,NR,NU,NZ,OM,PA,PE,PF,PG,PH,PK,PL,PM,PN,PR,PS,PT,PW,PY,QA,RE,RO,RS,RU,RW,SA,SB,SC,SD,SE,SG,SH,SI,SJ,SK,SL,SM,SN,SO,SR,SS,ST,SV,SX,SY,SZ,TC,TD,TF,TG,TH,TJ,TK,TL,TM,TN,TO,TR,TT,TV,TW,TZ,UA,UG,UM,US,UY,UZ,VA,VC,VE,VG,VI,VN,VU,WF,WS,YE,YT,ZA,ZM,ZW
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [81] => Array
+			 *                 (
+			 *                     [itemprop] => interactionCount
+			 *                     [content] => 180432
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [82] => Array
+			 *                 (
+			 *                     [itemprop] => datePublished
+			 *                     [content] => 2021-07-30
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [83] => Array
+			 *                 (
+			 *                     [itemprop] => uploadDate
+			 *                     [content] => 2021-07-30
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *             [84] => Array
+			 *                 (
+			 *                     [itemprop] => genre
+			 *                     [content] => Education
+			 *                     [textContent] =>
+			 *                 )
+			 * 
+			 *         )
+			 * 
+			 * )
+			 */
 			if ( isset( $metas[ 'meta' ] ) ) {
 
 				foreach ( $metas as $m ) {		// Loop through all meta tags.
 
 					foreach ( $m as $a ) {		// Loop through all attributes for that meta tag.
 
-						$meta_type  = key( $a );
-						$meta_name  = reset( $a );
-						$meta_match = $meta_type . '-' . $meta_name;
+						$meta_type  = key( $a );			// Example: itemprop
+						$meta_name  = reset( $a );			// Example: uploadDate
+						$meta_match = $meta_type . '-' . $meta_name;	// Example: itemprop-uploadDate
+						$content    = isset( $a[ 'content' ] ) ? $a[ 'content' ] : '';
 
 						switch ( $meta_match ) {
 
@@ -1837,10 +2296,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							case 'property-og:video:type':
 							case ( strpos( $meta_match, 'property-al:' ) === 0 ? true : false ):	// Facebook AppLink.
 
-								if ( ! empty( $a[ 'content' ] ) ) {
-
-									$mt_single_video[ $a[ 'property' ] ] = $a[ 'content' ];
-								}
+								$mt_single_video[ $a[ 'property' ] ] = $content;
 
 								break;
 
@@ -1849,10 +2305,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							 */
 							case 'property-og:video:tag':
 
-								if ( ! empty( $a[ 'content' ] ) ) {
-
-									$mt_single_video[ $a[ 'property' ] ][] = $a[ 'content' ];	// Array of tags.
-								}
+								$mt_single_video[ $a[ 'property' ] ][] = $content;	// Array of tags.
 
 								break;
 
@@ -1860,30 +2313,27 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							case 'property-og:image:url':
 							case 'property-og:image':
 
-								if ( ! empty( $a[ 'content' ] ) ) {
+								/**
+								 * Add the meta name as a query string to know where the value came from.
+								 */
+								$content = add_query_arg( 'meta', $meta_name, $content );
 
-									/**
-									 * Add the meta name as a query string to know where the value came from.
-									 */
-									$a[ 'content' ] = add_query_arg( 'meta', $meta_name, $a[ 'content' ] );
+								if ( SucomUtil::is_https( $content ) ) {
 
-									if ( SucomUtil::is_https( $a[ 'content' ] ) ) {
+									$mt_single_video[ 'og:image:secure_url' ]    = $content;
+									$mt_single_video[ 'og:video:thumbnail_url' ] = $content;
 
-										$mt_single_video[ 'og:image:secure_url' ]    = $a[ 'content' ];
-										$mt_single_video[ 'og:video:thumbnail_url' ] = $a[ 'content' ];
+								} else {
 
-									} else {
+									$mt_single_video[ 'og:image:url' ] = $content;
 
-										$mt_single_video[ 'og:image:url' ] = $a[ 'content' ];
+									if ( empty( $mt_single_video[ 'og:video:thumbnail_url' ] ) ) {
 
-										if ( empty( $mt_single_video[ 'og:video:thumbnail_url' ] ) ) {
-
-											$mt_single_video[ 'og:video:thumbnail_url' ] = $a[ 'content' ];
-										}
+										$mt_single_video[ 'og:video:thumbnail_url' ] = $content;
 									}
-
-									$mt_single_video[ 'og:video:has_image' ] = true;
 								}
+
+								$mt_single_video[ 'og:video:has_image' ] = true;
 
 								break;
 
@@ -1893,21 +2343,18 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							case 'property-og:title':
 							case 'property-og:description':
 
-								if ( ! empty( $a[ 'content' ] ) ) {
+								$og_key = 'og:video:' . substr( $a[ 'property' ], 3 );
 
-									$og_key = 'og:video:' . substr( $a[ 'property' ], 3 );
+								$mt_single_video[ $og_key ] = $this->p->util->cleanup_html_tags( $content );
 
-									$mt_single_video[ $og_key ] = $this->p->util->cleanup_html_tags( $a[ 'content' ] );
+								if ( $this->p->debug->enabled ) {
 
-									if ( $this->p->debug->enabled ) {
+									$this->p->debug->log( 'adding ' . $og_key . ' = ' . $mt_single_video[ $og_key ] );
+								}
 
-										$this->p->debug->log( 'adding ' . $og_key . ' = ' . $mt_single_video[ $og_key ] );
-									}
+								if ( empty( $mt_single_video[ 'og:image:alt' ] ) ) {
 
-									if ( empty( $mt_single_video[ 'og:image:alt' ] ) ) {
-
-										$mt_single_video[ 'og:image:alt' ] = $mt_single_video[ $og_key ];
-									}
+									$mt_single_video[ 'og:image:alt' ] = $mt_single_video[ $og_key ];
 								}
 
 								break;
@@ -1919,33 +2366,30 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							 */
 							case ( strpos( $meta_match, 'name-twitter:app:' ) === 0 ? true : false ):	// Twitter Apps
 
-								if ( ! empty( $a[ 'content' ] ) ) {
+								if ( preg_match( '/^twitter:app:([a-z]+):([a-z]+)$/', $meta_name, $match ) ) {
 
-									if ( preg_match( '/^twitter:app:([a-z]+):([a-z]+)$/', $meta_name, $match ) ) {
-
-										$mt_single_video[ 'og:video:' . $match[ 2 ] . '_' .
-											$match[ 1 ] ] = SucomUtil::decode_html( $a[ 'content' ] );
-									}
+									$mt_single_video[ 'og:video:' . $match[ 2 ] . '_' . $match[ 1 ] ] = SucomUtil::decode_html( $content );
 								}
 
 								break;
 
 							case 'itemprop-datePublished':
+							case 'itemprop-uploadDate':
 
-								if ( ! empty( $a[ 'content' ] ) ) {
+								$mt_single_video[ 'og:video:upload_date' ] = gmdate( 'c', strtotime( $content ) );
 
-									$mt_single_video[ 'og:video:upload_date' ] = gmdate( 'c', strtotime( $a[ 'content' ] ) );
-								}
+								break;
+
+							case 'itemprop-duration':
+
+								$mt_single_video[ 'og:video:duration' ] = $content;	// Example: PT21M53S.
 
 								break;
 
 							case 'itemprop-embedUrl':
 							case 'itemprop-embedURL':
 
-								if ( ! empty( $a[ 'content' ] ) ) {
-
-									$mt_single_video[ 'og:video:embed_url' ] = SucomUtil::decode_html( $a[ 'content' ] );
-								}
+								$mt_single_video[ 'og:video:embed_url' ] = SucomUtil::decode_html( $content );
 
 								break;
 						}
