@@ -335,7 +335,7 @@ Please note: YouTube has shutdown their video API service, which limits the abil
 	* None.
 * **Developer Notes**
 	* Updated the `WpssoMedia->add_og_video_from_url()` method to add itemprop duration value.
-	* Deprecated the `WpssoProMediaYoutube->add_og_video_from_data()` method since Google has removed the https://www.youtube.com/get_video_info API.
+	* Deprecated the `WpssoProMediaYoutube->add_og_video_from_data()` method since Google has removed access to the https://www.youtube.com/get_video_info API.
 * **Requires At Least**
 	* PHP v7.0.
 	* WordPress v5.0.
