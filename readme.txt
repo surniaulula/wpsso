@@ -324,7 +324,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 Please note: YouTube has shutdown their video API service, which limits the ability of WPSSO Core Premium to get video details for Schema markup. We are working on a solution for the next release of WPSSO Core Premium.
 
-**Version 8.35.3-dev.3 (2021/08/07)**
+**Version 8.35.3-dev.4 (2021/08/07)**
 
 * **New Features**
 	* None.
@@ -1451,7 +1451,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.35.3-dev.3 =
+= 8.35.3-dev.4 =
 
 (2021/08/07) Updated the YouTube integration module (Premium version). Updated the YITH WooCommerce Brands Add-on integration module (Premium version).
 
