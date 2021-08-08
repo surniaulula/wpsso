@@ -31,7 +31,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		public $curl_timeout         = 10;	// The maximum number of seconds to allow cURL functions to execute. 
 		public $curl_max_redirs      = 10;	// The maximum amount of HTTP redirections to follow.
 
-		private $url_get_mtimes = array();
+		private $url_get_mtimes = array();	// Associative array of URL fetch times (true, false, or microtime).
 		private $ignored        = array(
 			'expires'  => DAY_IN_SECONDS,
 			'loaded'   => false,
@@ -186,7 +186,6 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			if ( isset( $this->ignored[ 'urls' ][ $url_nofrag ] ) ) {
 
 				$time_diff = time() - $this->ignored[ 'urls' ][ $url_nofrag ];
-
 				$time_left = $this->ignored[ 'for_secs' ] - $time_diff;
 
 				if ( $time_left > 0 ) {
@@ -388,6 +387,11 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			}
 		}
 
+		/**
+		 * Get the formatted microtime it took to retrieve the URL. 
+		 *
+		 * Returns false if retrieving failed, true if the URL was already cached, or the formatted microtime.
+		 */
 		public function get_url_mtime( $url, $precision = 3 ) {
 
 			if ( isset( $this->url_get_mtimes[ $url ] ) ) {
@@ -461,6 +465,9 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			return false;
 		}
 
+		/**
+		 * Called by SucomForm->get_event_load_json_script().
+		 */
 		public function get_data_url( $cache_salt, $cache_data, $exp_secs = null, $pre_ext = '' ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -503,7 +510,6 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					}
 
 					$error_pre = sprintf( '%s error:', __METHOD__ );
-
 					$error_msg = sprintf( __( 'Error removing cache file %s.', $this->text_domain ), $cache_file );
 
 					$this->p->notice->err( $error_msg );
@@ -563,7 +569,6 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				}
 
 				$error_pre = sprintf( '%s error:', __METHOD__ );
-
 				$error_msg = __( 'PHP cURL library missing - contact your hosting provider to have the cURL library installed.', $this->text_domain );
 
 				$this->p->notice->err( $error_msg );
@@ -671,7 +676,6 @@ if ( ! class_exists( 'SucomCache' ) ) {
 							}
 
 							$error_pre = sprintf( '%s error:', __METHOD__ );
-
 							$error_msg = sprintf( __( 'Error removing cache file %s.', $this->text_domain ), $cache_file );
 
 							$this->p->notice->err( $error_msg );
@@ -1047,7 +1051,6 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						}
 
 						$error_pre = sprintf( '%s error:', __METHOD__ );
-
 						$error_msg = sprintf( __( 'Failed to create the %s cache folder.', $this->text_domain ), $this->base_dir );
 
 						$this->p->notice->err( $error_msg );
@@ -1062,7 +1065,6 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						}
 
 						$error_pre = sprintf( '%s error:', __METHOD__ );
-
 						$error_msg = sprintf( __( 'Cache folder %s is not writable.', $this->text_domain ), $this->base_dir );
 
 						$this->p->notice->err( $error_msg );
@@ -1077,7 +1079,6 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						}
 
 						$error_pre = sprintf( '%s error:', __METHOD__ );
-
 						$error_msg = sprintf( __( 'Failed to open the cache file %s for writing.', $this->text_domain ), $cache_file );
 
 						$this->p->notice->err( $error_msg );
@@ -1107,7 +1108,6 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						}
 
 						$error_pre = sprintf( '%s error:', __METHOD__ );
-
 						$error_msg = sprintf( __( 'Failed writing data to cache file %s.', $this->text_domain ), $cache_file );
 
 						$this->p->notice->err( $error_msg );
@@ -1128,6 +1128,54 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			}
 
 			return $data_saved;	// Return true or false.
+		}
+
+		public function is_cached( $url, $format = 'url', $cache_type = 'file', $exp_secs = null, $pre_ext = '' ) {
+
+			$url_nofrag = preg_replace( '/#.*$/', '', $url );	// Remove the URL fragment.
+			$url_path   = parse_url( $url_nofrag, PHP_URL_PATH );
+
+			if ( '' === $pre_ext ) {	// Default is an empty string.
+
+				if ( $pre_ext = pathinfo( $url_path, PATHINFO_EXTENSION ) ) {
+
+					$pre_ext = '.' . $pre_ext;
+				}
+			}
+
+			$cache_salt = __CLASS__ . '::get(url:' . $url_nofrag . ')';
+			$cache_file = $this->base_dir . md5( $cache_salt ) . $pre_ext;
+
+			/**
+			 * Return immediately if the cache contains what we need.
+			 */
+			switch ( $format ) {
+
+				case 'raw':
+
+					if ( false !== $this->get_cache_data( $cache_salt, $cache_type, $exp_secs, $pre_ext ) ) {
+					
+						return true;
+					}
+
+				case 'url':
+				case 'file_path':
+
+					if ( file_exists( $cache_file ) ) {
+
+						$file_mod_time = filemtime( $cache_file );
+						$file_exp_secs = null === $exp_secs ? $this->default_file_cache_exp : $exp_secs;
+
+						if ( false !== $exp_secs && $file_mod_time > time() - $file_exp_secs ) {
+
+							return true;
+						}
+					}
+
+					break;
+			}
+
+			return false;
 		}
 	}
 }
