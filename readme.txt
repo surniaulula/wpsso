@@ -322,8 +322,6 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-Please note: YouTube has shutdown their video API service, which limits the ability of WPSSO Core Premium to get video details for Schema markup. We are working on a solution for the next release of WPSSO Core Premium.
-
 **Version 8.35.3-dev.7 (2021/08/09)**
 
 * **New Features**
