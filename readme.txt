@@ -324,13 +324,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 Please note: YouTube has shutdown their video API service, which limits the ability of WPSSO Core Premium to get video details for Schema markup. We are working on a solution for the next release of WPSSO Core Premium.
 
-**Version 8.35.3-dev.6 (2021/08/09)**
+**Version 8.35.3-dev.7 (2021/08/09)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added optional throttling by host when retrieving URLs for caching.
 	* Added five second throttling in the YouTube integration module (Premium version).
+	* Added support for the "Product brand taxonomy" option value in the YITH WooCommerce Brands Add-on integration module (Premium version).
 	* Added support for the 'yith_wcbr_taxonomy_slug' filter in the YITH WooCommerce Brands Add-on integration module (Premium version).
 * **Bugfixes**
 	* None.
@@ -1452,7 +1453,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.35.3-dev.6 =
+= 8.35.3-dev.7 =
 
 (2021/08/09) Updated the YouTube integration module (Premium version). Updated the YITH WooCommerce Brands Add-on integration module (Premium version).
 
