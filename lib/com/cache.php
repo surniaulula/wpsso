@@ -703,7 +703,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				return $failure;
 			}
 
-			$this->maybe_throttle_curl( $url_nofrag, $throttle_secs );
+			$this->maybe_throttle_host( $url_nofrag, $throttle_secs );
 
 			$ch = curl_init();
 
@@ -1180,13 +1180,14 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			return false;
 		}
 
-		public function maybe_throttle_curl( $url, $throttle_secs ) {
+		public function maybe_throttle_host( $url, $throttle_secs ) {
 
 			if ( $throttle_secs ) {
 
 				$url_nofrag     = preg_replace( '/#.*$/', '', $url );	// Remove the fragment.
+				$url_host       = parse_url( $url_nofrag, PHP_URL_HOST );
 				$cache_md5_pre  = $this->plugin_id . '_!_';	// Preserved on clear cache.
-				$cache_salt     = __CLASS__ . '::get(url:' . $url_nofrag . ')';
+				$cache_salt     = __CLASS__ . '::get(url_host:' . $url_host . ')';
 				$cache_id       = $cache_md5_pre . md5( $cache_salt );
 				$cache_exp_secs = 0;	// No expiration.
 	
