@@ -1806,33 +1806,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( $throttle_secs ) {
-
-				if ( ! $this->p->cache->is_cached( $url, $format = 'raw', $cache_type = 'transient', $exp_secs = 300, $pre_ext = '' ) ) {
-
-					$cache_md5_pre  = 'wpsso_!_';	// Preserved on clear cache.
-					$cache_salt     = __METHOD__;
-					$cache_id       = $cache_md5_pre . md5( $cache_salt );
-					$cache_exp_secs = 0;		// No expiration.
-		
-					while ( true ) {
-					
-						$cache_ret = get_transient( $cache_id );
-						
-						if ( is_numeric( $cache_ret ) && $cache_ret + $throttle_secs > time() ) {
-
-							sleep( 1 );
-
-						} else {
-
-							break;
-						}
-					}
-	
-					set_transient( $cache_id, time(), $cache_exp_secs );
-				}
-			}
-
 			/**
 			 * Use the Facebook user agent to get Open Graph meta tags.
 			 *
@@ -1842,7 +1815,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				'CURLOPT_USERAGENT' => WPSSO_PHP_CURL_USERAGENT_FACEBOOK,
 			);
 
-			$metas = $this->p->util->get_html_head_meta( $url, $query = '//meta', $libxml_errors = false, $curl_opts );
+			$metas = $this->p->util->get_html_head_meta( $url, $query = '//meta', $libxml_errors = false, $curl_opts, $throttle_secs );
 
 			/**
 			 * Array

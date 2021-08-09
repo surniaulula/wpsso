@@ -1466,14 +1466,18 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 * 	/html/head/link[@rel="canonical"]
 		 * 	/html/head/meta[starts-with(@property, "og:video:")]
 		 */
-		public function get_html_head_meta( $request, $query = '/html/head/meta', $libxml_errors = false, array $curl_opts = array() ) {
+		public function get_html_head_meta( $request, $query = '/html/head/meta', $libxml_errors = false, array $curl_opts = array(), $throttle_secs = 0 ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
 			}
 
-			$is_admin = is_admin();	// Optimize and call once.
+			$is_admin       = is_admin();	// Optimize and call once.
+			$cache_format   = 'raw';
+			$cache_type     = 'transient';
+			$cache_exp_secs = 300;
+			$cache_pre_ext  = '';
 
 			if ( ! function_exists( 'mb_convert_encoding' ) ) {
 
@@ -1544,7 +1548,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					$this->p->debug->log( 'getting HTML for ' . $request );
 				}
 
-				$html = $this->p->cache->get( $request, $format = 'raw', $cache_type = 'transient', $exp_secs = 300, $pre_ext = '', $curl_opts );
+				$html = $this->p->cache->get( $request, $cache_format, $cache_type, $cache_exp_secs, $cache_pre_ext, $curl_opts, $throttle_secs );
 
 				if ( empty( $html ) ) {
 
@@ -1697,7 +1701,10 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 		public function get_html_body( $request, $remove_script = true ) {
 
-			$html = '';
+			$html           = '';
+			$cache_format   = 'raw';
+			$cache_type     = 'transient';
+			$cache_exp_secs = 300;
 
 			if ( 0 === strpos( $request, '//' ) ) {
 
@@ -1747,7 +1754,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					$this->p->debug->log( 'getting HTML for ' . $request );
 				}
 
-				$html = $this->p->cache->get( $request, $format = 'raw', $cache_type = 'transient', $exp_secs = 300 );
+				$html = $this->p->cache->get( $request, $cache_format, $cache_type, $cache_exp_secs );
 
 				if ( ! $html ) {
 
@@ -1980,10 +1987,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			/**
 			 * Allows for better visual cues in the Google validator.
 			 */
-			$do_pretty = self::get_const( 'WPSSO_JSON_PRETTY_PRINT', true ) || $this->p->debug->enabled ? true : false;
-
-			$use_ext_lib = self::get_const( 'WPSSO_EXT_JSON_DISABLE', false ) ? false : true;
-
+			$do_pretty    = self::get_const( 'WPSSO_JSON_PRETTY_PRINT', true ) || $this->p->debug->enabled ? true : false;
+			$use_ext_lib  = self::get_const( 'WPSSO_EXT_JSON_DISABLE', false ) ? false : true;
 			$have_old_php = false;
 
 			if ( 0 === $options && defined( 'JSON_UNESCAPED_SLASHES' ) ) {
@@ -3020,8 +3025,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					'ID ' . $post->ID : '(no post ID)' ) );
 			}
 
-			$post_pre_filter = $post;		// Save the original global post object.
-
+			$post_pre_filter     = $post;		// Save the original global post object.
 			$wp_query_pre_filter = $wp_query;	// Save the original global wp_query.
 
 			/**
@@ -3160,8 +3164,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					'ID ' . $post_pre_filter->ID : '(no post ID)' ) );
 			}
 
-			$post = $post_pre_filter;	// Restore the original global post object.
-
+			$post     = $post_pre_filter;		// Restore the original global post object.
 			$wp_query = $wp_query_pre_filter;	// Restore the original global wp_query.
 
 			if ( $this->p->debug->enabled ) {

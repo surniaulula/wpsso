@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.35.3-dev.4\n"
+"Project-Id-Version: WPSSO Core 8.35.3-dev.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -608,27 +608,27 @@ msgid ""
 "library installed."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:23 lib/com/cache.php:928
+#: gettext/gettext-lib-com.php:23 lib/com/cache.php:930
 msgid "Cache file %s is not readable."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:24 lib/com/cache.php:950
+#: gettext/gettext-lib-com.php:24 lib/com/cache.php:952
 msgid "Failed to open the cache file %s for reading."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:25 lib/com/cache.php:1054
+#: gettext/gettext-lib-com.php:25 lib/com/cache.php:1056
 msgid "Failed to create the %s cache folder."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:26 lib/com/cache.php:1068
+#: gettext/gettext-lib-com.php:26 lib/com/cache.php:1070
 msgid "Cache folder %s is not writable."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:27 lib/com/cache.php:1082
+#: gettext/gettext-lib-com.php:27 lib/com/cache.php:1084
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:28 lib/com/cache.php:1111
+#: gettext/gettext-lib-com.php:28 lib/com/cache.php:1113
 msgid "Failed writing data to cache file %s."
 msgstr ""
 
@@ -661,7 +661,7 @@ msgstr ""
 #. translators: Please ignore - translation uses a different text domain.
 #: gettext/gettext-lib-com.php:36 gettext/gettext-lib-pro.php:11
 #: gettext/gettext-lib-pro.php:227 lib/com/form.php:789 lib/media.php:872
-#: lib/media.php:1006 lib/media.php:2451 lib/pro/admin/advanced.php:90
+#: lib/media.php:1006 lib/media.php:2424 lib/pro/admin/advanced.php:90
 #: lib/pro/util/check-img-dims.php:104 lib/std/admin/advanced.php:90
 msgid "Media Library"
 msgstr ""
@@ -3361,7 +3361,7 @@ msgstr ""
 msgid "full size original"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:228 lib/media.php:2461
+#: gettext/gettext-lib-pro.php:228 lib/media.php:2434
 #: lib/pro/util/check-img-dims.php:107
 msgid "image ID %1$s (%2$s)"
 msgstr ""
@@ -5101,12 +5101,12 @@ msgid ""
 msgstr ""
 
 #: lib/media.php:1026 lib/post.php:532 lib/register.php:323 lib/term.php:473
-#: lib/user.php:453 lib/util.php:825 lib/util.php:3119
+#: lib/user.php:453 lib/util.php:825 lib/util.php:3123
 msgid "%s warning:"
 msgstr ""
 
 #: lib/media.php:1027 lib/post.php:533 lib/term.php:474 lib/user.php:454
-#: lib/util.php:826 lib/util.php:3120
+#: lib/util.php:826 lib/util.php:3124
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
@@ -5122,18 +5122,18 @@ msgid ""
 "function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr ""
 
-#: lib/media.php:2477
+#: lib/media.php:2450
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:2530
+#: lib/media.php:2503
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:2565
+#: lib/media.php:2538
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
@@ -9219,39 +9219,39 @@ msgstr ""
 msgid "Error reading the %s file for the product categories list."
 msgstr ""
 
-#: lib/util.php:1534
+#: lib/util.php:1538
 msgid "The <code>%1$s</code> request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1558
+#: lib/util.php:1562
 msgid "Error getting HTML from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/util.php:1588
+#: lib/util.php:1592
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
 #. translators: %1$s is the class name.
-#: lib/util.php:1783
+#: lib/util.php:1790
 msgid ""
 "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting "
 "provider to have the missing class installed."
 msgstr ""
 
 #. translators: %1$s is the function name.
-#: lib/util.php:1797
+#: lib/util.php:1804
 msgid ""
 "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting "
 "provider to have the missing function installed."
 msgstr ""
 
-#: lib/util.php:3121
+#: lib/util.php:3125
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3137
+#: lib/util.php:3141
 msgid ""
 "Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds "
 "to execute. This is longer than the recommended maximum of %3$.3f seconds "
@@ -9260,120 +9260,120 @@ msgid ""
 "sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3139
+#: lib/util.php:3143
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3519
+#: lib/util.php:3522
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr ""
 
-#: lib/util.php:3520
+#: lib/util.php:3523
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/util.php:3524
+#: lib/util.php:3527
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr ""
 
-#: lib/util.php:3525
+#: lib/util.php:3528
 msgctxt "validator type"
 msgid "Microdata"
 msgstr ""
 
-#: lib/util.php:3529
+#: lib/util.php:3532
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr ""
 
-#: lib/util.php:3530
+#: lib/util.php:3533
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr ""
 
-#: lib/util.php:3534
+#: lib/util.php:3537
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/util.php:3535
+#: lib/util.php:3538
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr ""
 
-#: lib/util.php:3539
+#: lib/util.php:3542
 msgctxt "option label"
 msgid "Google Structured Data Test (Deprecated)"
 msgstr ""
 
-#: lib/util.php:3540
+#: lib/util.php:3543
 msgctxt "validator type"
 msgid "Structured Data"
 msgstr ""
 
-#: lib/util.php:3544
+#: lib/util.php:3547
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/util.php:3545
+#: lib/util.php:3548
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/util.php:3549
+#: lib/util.php:3552
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/util.php:3550
+#: lib/util.php:3553
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr ""
 
-#: lib/util.php:3554
+#: lib/util.php:3557
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/util.php:3555
+#: lib/util.php:3558
 msgctxt "validator type"
 msgid "Twitter Card"
 msgstr ""
 
-#: lib/util.php:3560
+#: lib/util.php:3563
 msgctxt "option label"
 msgid "The AMP Project Validator"
 msgstr ""
 
-#: lib/util.php:3561
+#: lib/util.php:3564
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr ""
 
-#: lib/util.php:3565
+#: lib/util.php:3568
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr ""
 
-#: lib/util.php:3566
+#: lib/util.php:3569
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name.
-#: lib/util.php:3716
+#: lib/util.php:3719
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3726
+#: lib/util.php:3729
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 

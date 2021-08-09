@@ -337,7 +337,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 		public function clear( $url, $pre_ext = '' ) {
 
-			$url_nofrag    = preg_replace( '/#.*$/', '', $url );		// Remove the fragment.
+			$url_nofrag    = preg_replace( '/#.*$/', '', $url );	// Remove the fragment.
 			$url_path      = parse_url( $url_nofrag, PHP_URL_PATH );
 			$cache_md5_pre = $pre_ext ? $pre_ext : $this->plugin_id . '_';	// Default is an empty string.
 			$cache_salt    = __CLASS__ . '::get(url:' . $url_nofrag . ')';
@@ -550,7 +550,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		 *
 		 * If $exp_secs is false, then get but do not save the data.
 		 */
-		public function get( $url, $format = 'url', $cache_type = 'file', $exp_secs = null, $pre_ext = '', array $curl_opts = array() ) {
+		public function get( $url, $format = 'url', $cache_type = 'file', $exp_secs = null, $pre_ext = '', array $curl_opts = array(), $throttle_secs = 0 ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -702,6 +702,8 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 				return $failure;
 			}
+
+			$this->maybe_throttle_curl( $url_nofrag, $throttle_secs );
 
 			$ch = curl_init();
 
@@ -1176,6 +1178,34 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			}
 
 			return false;
+		}
+
+		public function maybe_throttle_curl( $url, $throttle_secs ) {
+
+			if ( $throttle_secs ) {
+
+				$url_nofrag     = preg_replace( '/#.*$/', '', $url );	// Remove the fragment.
+				$cache_md5_pre  = $this->plugin_id . '_!_';	// Preserved on clear cache.
+				$cache_salt     = __CLASS__ . '::get(url:' . $url_nofrag . ')';
+				$cache_id       = $cache_md5_pre . md5( $cache_salt );
+				$cache_exp_secs = 0;	// No expiration.
+	
+				while ( true ) {
+			
+					$cache_ret = get_transient( $cache_id );
+					
+					if ( is_numeric( $cache_ret ) && $cache_ret + $throttle_secs > time() ) {
+
+						sleep( 1 );
+
+					} else {
+
+						break;
+					}
+				}
+
+				set_transient( $cache_id, time(), $cache_exp_secs );
+			}
 		}
 	}
 }
