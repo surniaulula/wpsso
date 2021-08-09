@@ -337,7 +337,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 		public function clear( $url, $pre_ext = '' ) {
 
-			$url_nofrag    = preg_replace( '/#.*$/', '', $url );	// Remove the fragment.
+			$url_nofrag    = preg_replace( '/#.*$/', '', $url );		// Remove the fragment.
 			$url_path      = parse_url( $url_nofrag, PHP_URL_PATH );
 			$cache_md5_pre = $pre_ext ? $pre_ext : $this->plugin_id . '_';	// Default is an empty string.
 			$cache_salt    = __CLASS__ . '::get(url:' . $url_nofrag . ')';
@@ -926,7 +926,6 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						}
 
 						$error_pre = sprintf( '%s error:', __METHOD__ );
-
 						$error_msg = sprintf( __( 'Cache file %s is not readable.', $this->text_domain ), $cache_file );
 
 						$this->p->notice->err( $error_msg );
@@ -948,7 +947,6 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						}
 
 						$error_pre = sprintf( '%s error:', __METHOD__ );
-
 						$error_msg = sprintf( __( 'Failed to open the cache file %s for reading.', $this->text_domain ), $cache_file );
 
 						$this->p->notice->err( $error_msg );
@@ -1184,10 +1182,10 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			if ( $throttle_secs ) {
 
-				$url_nofrag     = preg_replace( '/#.*$/', '', $url );	// Remove the fragment.
+				$url_nofrag     = preg_replace( '/#.*$/', '', $url );		// Remove the fragment.
 				$url_host       = parse_url( $url_nofrag, PHP_URL_HOST );
-				$cache_md5_pre  = $this->plugin_id . '_!_';	// Preserved on clear cache.
-				$cache_salt     = __CLASS__ . '::get(url_host:' . $url_host . ')';
+				$cache_md5_pre  = $this->plugin_id . '_!_';			// Preserved on clear cache.
+				$cache_salt     = __METHOD__ . '(url_host:' . $url_host . ')';	// Throttle by host.
 				$cache_id       = $cache_md5_pre . md5( $cache_salt );
 				$cache_exp_secs = 0;	// No expiration.
 	
