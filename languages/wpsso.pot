@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.35.3-dev.6\n"
+"Project-Id-Version: WPSSO Core 8.35.3-dev.7\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -608,27 +608,27 @@ msgid ""
 "library installed."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:23 lib/com/cache.php:929
+#: gettext/gettext-lib-com.php:23 lib/com/cache.php:932
 msgid "Cache file %s is not readable."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:24 lib/com/cache.php:950
+#: gettext/gettext-lib-com.php:24 lib/com/cache.php:953
 msgid "Failed to open the cache file %s for reading."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:25 lib/com/cache.php:1054
+#: gettext/gettext-lib-com.php:25 lib/com/cache.php:1057
 msgid "Failed to create the %s cache folder."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:26 lib/com/cache.php:1068
+#: gettext/gettext-lib-com.php:26 lib/com/cache.php:1071
 msgid "Cache folder %s is not writable."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:27 lib/com/cache.php:1082
+#: gettext/gettext-lib-com.php:27 lib/com/cache.php:1085
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:28 lib/com/cache.php:1111
+#: gettext/gettext-lib-com.php:28 lib/com/cache.php:1114
 msgid "Failed writing data to cache file %s."
 msgstr ""
 

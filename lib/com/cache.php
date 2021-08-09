@@ -703,6 +703,9 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				return $failure;
 			}
 
+			/**
+			 * Maybe throttle connections for specific hosts, like YouTube for example.
+			 */
 			$this->maybe_throttle_host( $url_nofrag, $throttle_secs );
 
 			$ch = curl_init();
@@ -1178,6 +1181,9 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			return false;
 		}
 
+		/**
+		 * Maybe throttle connections for specific hosts, like YouTube for example.
+		 */
 		public function maybe_throttle_host( $url, $throttle_secs ) {
 
 			if ( $throttle_secs ) {
@@ -1187,20 +1193,18 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				$cache_md5_pre  = $this->plugin_id . '_!_';			// Preserved on clear cache.
 				$cache_salt     = __METHOD__ . '(url_host:' . $url_host . ')';	// Throttle by host.
 				$cache_id       = $cache_md5_pre . md5( $cache_salt );
-				$cache_exp_secs = 0;	// No expiration.
-	
-				while ( true ) {
-			
-					$cache_ret = get_transient( $cache_id );
-					
-					if ( is_numeric( $cache_ret ) && $cache_ret + $throttle_secs > time() ) {
+				$cache_exp_secs = $throttle_secs;
+
+				while ( $cache_ret = get_transient( $cache_id ) ) {
+
+					if ( $cache_ret + $throttle_secs > time() ) {
 
 						sleep( 1 );
 
-					} else {
-
-						break;
+						continue;
 					}
+
+					break;
 				}
 
 				set_transient( $cache_id, time(), $cache_exp_secs );
