@@ -322,7 +322,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.35.3-b.2 (2021/08/10)**
+**Version 8.35.3 (2021/08/10)**
 
 * **New Features**
 	* None.
@@ -1451,7 +1451,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.35.3-b.2 =
+= 8.35.3 =
 
 (2021/08/10) Updated the YouTube integration module (Premium version). Updated the YITH WooCommerce Brands Add-on integration module (Premium version).
 
