@@ -322,13 +322,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.35.3-b.1 (2021/08/09)**
+**Version 8.35.3-b.2 (2021/08/10)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added optional throttling by host when retrieving URLs for caching.
-	* Added five second throttling in the YouTube integration module (Premium version).
+	* Added 3 second throttling in the YouTube integration module (Premium version).
 	* Added support for the "Product brand taxonomy" option value in the YITH WooCommerce Brands Add-on integration module (Premium version).
 	* Added support for the 'yith_wcbr_taxonomy_slug' filter in the YITH WooCommerce Brands Add-on integration module (Premium version).
 * **Bugfixes**
@@ -1451,9 +1451,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.35.3-b.1 =
+= 8.35.3-b.2 =
 
-(2021/08/09) Updated the YouTube integration module (Premium version). Updated the YITH WooCommerce Brands Add-on integration module (Premium version).
+(2021/08/10) Updated the YouTube integration module (Premium version). Updated the YITH WooCommerce Brands Add-on integration module (Premium version).
 
 = 8.35.2 =
 
