@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.35.1\n"
+"Project-Id-Version: WPSSO Core 8.35.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-07-24 12:39-0700\n"
+"PO-Revision-Date: 2021-08-10 09:40-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -328,81 +328,81 @@ msgstr "Avis %s"
 msgid "Notice"
 msgstr "Avis"
 
-#: gettext/gettext-lib-com.php:8 lib/com/cache.php:221
+#: gettext/gettext-lib-com.php:8 lib/com/cache.php:220
 msgid "Error retrieving %1$s for caching (after %2$.3f seconds)."
 msgstr "Erreur lors de la récupération de %1$s pour mise en cache (après %2$.3f secondes)."
 
-#: gettext/gettext-lib-com.php:9 lib/com/cache.php:226
+#: gettext/gettext-lib-com.php:9 lib/com/cache.php:225
 msgid "Error retrieving %1$s for caching."
 msgstr "Erreur lors de la récupération de %1$s pour mise en cache."
 
-#: gettext/gettext-lib-com.php:10 lib/com/cache.php:232
+#: gettext/gettext-lib-com.php:10 lib/com/cache.php:231
 msgid "cURL error code %1$d %2$s."
 msgstr "Code d'erreur cURL %1$d %2$s."
 
-#: gettext/gettext-lib-com.php:11 lib/com/cache.php:237
+#: gettext/gettext-lib-com.php:11 lib/com/cache.php:236
 msgid "SSL verification failed with code %1$d."
 msgstr "La vérification SSL a échoué avec le code %1$d."
 
-#: gettext/gettext-lib-com.php:12 lib/com/cache.php:242
+#: gettext/gettext-lib-com.php:12 lib/com/cache.php:241
 msgid "HTTP connection returned code %1$d."
 msgstr "La connexion HTTP a renvoyé le code %1$d."
 
 #: gettext/gettext-lib-com.php:13 gettext/gettext-lib-com.php:16
-#: lib/com/cache.php:257 lib/com/cache.php:274
+#: lib/com/cache.php:256 lib/com/cache.php:273
 msgid "The PHP \"%s\" setting is enabled - the PHP cURL library cannot follow URL redirects."
 msgstr "Le paramètre PHP \"%s\" est activé - la bibliothèque PHP cURL ne peut pas suivre les re-directions d'URL."
 
-#: gettext/gettext-lib-com.php:14 lib/com/cache.php:260
+#: gettext/gettext-lib-com.php:14 lib/com/cache.php:259
 msgid "The \"%s\" setting is deprecated since PHP version 5.3 and removed from PHP since version 5.4."
 msgstr "Le paramètre \"%s\" est obsolète depuis la version 5.3 de PHP et supprimée de PHP depuis la version 5.4."
 
-#: gettext/gettext-lib-com.php:15 lib/com/cache.php:263
+#: gettext/gettext-lib-com.php:15 lib/com/cache.php:262
 msgid "Please contact your hosting provider to have this setting disabled or install a newer version of PHP."
 msgstr "SVP contacter votre fournisseur d'hébergement pour désactiver ce paramètre ou installer une version plus récente de PHP."
 
-#: gettext/gettext-lib-com.php:17 lib/com/cache.php:277
+#: gettext/gettext-lib-com.php:17 lib/com/cache.php:276
 msgid "Please contact your hosting provider to have this setting disabled."
 msgstr "SVP contacter votre fournisseur d'hébergement pour désactiver ce paramètre."
 
-#: gettext/gettext-lib-com.php:18 lib/com/cache.php:282
+#: gettext/gettext-lib-com.php:18 lib/com/cache.php:281
 msgid "The maximum number of URL redirects (%d) may have been exceeded."
 msgstr "Le nombre maximal de redirections d'URL (%d) peut avoir été dépassé."
 
-#: gettext/gettext-lib-com.php:19 lib/com/cache.php:287
+#: gettext/gettext-lib-com.php:19 lib/com/cache.php:286
 msgid "Additional requests to retrieve this URL will be ignored for another %d second(s)."
 msgstr "Les demandes supplémentaires de récupération de cette URL seront ignorées pour un autre %d seconde(s)."
 
 #: gettext/gettext-lib-com.php:20 gettext/gettext-lib-com.php:22
-#: lib/com/cache.php:507 lib/com/cache.php:675 lib/util-cache.php:214
+#: lib/com/cache.php:513 lib/com/cache.php:679 lib/util-cache.php:214
 msgid "Error removing cache file %s."
 msgstr "Erreur de suppression du fichier cache %s."
 
-#: gettext/gettext-lib-com.php:21 lib/com/cache.php:567
+#: gettext/gettext-lib-com.php:21 lib/com/cache.php:572
 msgid "PHP cURL library missing - contact your hosting provider to have the cURL library installed."
 msgstr "La bibliothèque cURL de PHP est manquante - contactez votre hébergeur pour faire installer la bibliothèque cURL."
 
-#: gettext/gettext-lib-com.php:23 lib/com/cache.php:924
+#: gettext/gettext-lib-com.php:23 lib/com/cache.php:932
 msgid "Cache file %s is not readable."
 msgstr "Le fichier de cache %s n'est pas lisible."
 
-#: gettext/gettext-lib-com.php:24 lib/com/cache.php:946
+#: gettext/gettext-lib-com.php:24 lib/com/cache.php:953
 msgid "Failed to open the cache file %s for reading."
 msgstr "Impossible d'ouvrir le fichier de cache %s pour lecture."
 
-#: gettext/gettext-lib-com.php:25 lib/com/cache.php:1051
+#: gettext/gettext-lib-com.php:25 lib/com/cache.php:1057
 msgid "Failed to create the %s cache folder."
 msgstr "Impossible de créer le dossier de cache %s."
 
-#: gettext/gettext-lib-com.php:26 lib/com/cache.php:1066
+#: gettext/gettext-lib-com.php:26 lib/com/cache.php:1071
 msgid "Cache folder %s is not writable."
 msgstr "Le dossier de cache %s n'est pas accessible en écriture."
 
-#: gettext/gettext-lib-com.php:27 lib/com/cache.php:1081
+#: gettext/gettext-lib-com.php:27 lib/com/cache.php:1085
 msgid "Failed to open the cache file %s for writing."
 msgstr "Impossible d'ouvrir le fichier de cache %s pour écriture."
 
-#: gettext/gettext-lib-com.php:28 lib/com/cache.php:1111
+#: gettext/gettext-lib-com.php:28 lib/com/cache.php:1114
 msgid "Failed writing data to cache file %s."
 msgstr "Échec d'écriture des données dans le fichier cache %s."
 
@@ -434,8 +434,8 @@ msgstr "de"
 
 #. translators: Please ignore - translation uses a different text domain.
 #: gettext/gettext-lib-com.php:36 gettext/gettext-lib-pro.php:11
-#: gettext/gettext-lib-pro.php:227 lib/com/form.php:789 lib/media.php:872
-#: lib/media.php:1006 lib/media.php:1980 lib/pro/admin/advanced.php:90
+#: gettext/gettext-lib-pro.php:226 lib/com/form.php:789 lib/media.php:872
+#: lib/media.php:1006 lib/media.php:2424 lib/pro/admin/advanced.php:90
 #: lib/pro/util/check-img-dims.php:104 lib/std/admin/advanced.php:90
 msgid "Media Library"
 msgstr "la médiathèque"
@@ -2466,7 +2466,7 @@ msgctxt "metabox title"
 msgid "Bitly (URL Shortener)"
 msgstr "Bitly (raccourcisseur d'URL)"
 
-#: gettext/gettext-lib-pro.php:64 gettext/gettext-lib-pro.php:212
+#: gettext/gettext-lib-pro.php:64 gettext/gettext-lib-pro.php:211
 #: lib/pro/admin/advanced.php:394 lib/pro/util/shorten.php:330
 msgctxt "option label"
 msgid "Bitly Generic Access Token"
@@ -2487,7 +2487,7 @@ msgctxt "metabox title"
 msgid "DLMY.App (URL Shortener)"
 msgstr "DLMY.App (raccourcisseur d'URL)"
 
-#: gettext/gettext-lib-pro.php:68 gettext/gettext-lib-pro.php:214
+#: gettext/gettext-lib-pro.php:68 gettext/gettext-lib-pro.php:213
 #: lib/pro/admin/advanced.php:412 lib/pro/util/shorten.php:356
 msgctxt "option label"
 msgid "DLMY.App API Key"
@@ -2498,7 +2498,7 @@ msgctxt "metabox title"
 msgid "Ow.ly (URL Shortener)"
 msgstr "Ow.ly (raccourcisseur d'URL)"
 
-#: gettext/gettext-lib-pro.php:70 gettext/gettext-lib-pro.php:216
+#: gettext/gettext-lib-pro.php:70 gettext/gettext-lib-pro.php:215
 #: lib/pro/admin/advanced.php:422 lib/pro/util/shorten.php:380
 msgctxt "option label"
 msgid "Ow.ly API Key"
@@ -2509,7 +2509,7 @@ msgctxt "metabox title"
 msgid "YOURLS (URL Shortener)"
 msgstr "YOURLS (raccourcisseur d'URL)"
 
-#: gettext/gettext-lib-pro.php:72 gettext/gettext-lib-pro.php:218
+#: gettext/gettext-lib-pro.php:72 gettext/gettext-lib-pro.php:217
 #: lib/pro/admin/advanced.php:432 lib/pro/util/shorten.php:421
 msgctxt "option label"
 msgid "YOURLS API URL"
@@ -2958,10 +2958,10 @@ msgstr "Clé d'API manquante."
 #: gettext/gettext-lib-pro.php:185 gettext/gettext-lib-pro.php:186
 #: gettext/gettext-lib-pro.php:187 gettext/gettext-lib-pro.php:189
 #: gettext/gettext-lib-pro.php:190 gettext/gettext-lib-pro.php:191
-#: gettext/gettext-lib-pro.php:193 gettext/gettext-lib-pro.php:275
-#: gettext/gettext-lib-pro.php:277 gettext/gettext-lib-pro.php:279
-#: gettext/gettext-lib-pro.php:280 gettext/gettext-lib-pro.php:281
-#: gettext/gettext-lib-pro.php:283 lib/pro/com/bitly.php:60
+#: gettext/gettext-lib-pro.php:193 gettext/gettext-lib-pro.php:274
+#: gettext/gettext-lib-pro.php:276 gettext/gettext-lib-pro.php:278
+#: gettext/gettext-lib-pro.php:279 gettext/gettext-lib-pro.php:280
+#: gettext/gettext-lib-pro.php:282 lib/pro/com/bitly.php:60
 #: lib/pro/com/bitly.php:68 lib/pro/com/bitly.php:110 lib/pro/com/bitly.php:170
 #: lib/pro/com/bitly.php:176 lib/pro/com/bitly.php:188
 #: lib/pro/ext/dlmyapp.php:56 lib/pro/ext/dlmyapp.php:62
@@ -2974,7 +2974,7 @@ msgid "%1$s shortener API error: %2$s"
 msgstr "Erreur d'API de raccourcissement %1$s: %2$s"
 
 #: gettext/gettext-lib-pro.php:181 gettext/gettext-lib-pro.php:188
-#: gettext/gettext-lib-pro.php:192 gettext/gettext-lib-pro.php:282
+#: gettext/gettext-lib-pro.php:192 gettext/gettext-lib-pro.php:281
 #: lib/pro/com/bitly.php:186 lib/pro/ext/dlmyapp.php:72
 #: lib/pro/ext/owly.php:201 lib/pro/ext/yourls.php:216
 msgid "JSON response decode error code %d."
@@ -2999,261 +2999,256 @@ msgstr "La <a href=\"%1$s\">fonction PHP %2$s</a> n'est pas disponible."
 msgid "Please contact your hosting provider to have the missing PHP function installed."
 msgstr "SVP contacter votre hébergeur pour installer la fonction PHP manquante."
 
-#: gettext/gettext-lib-pro.php:203 lib/post.php:1027
-#: lib/pro/media/youtube.php:186
-msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
-msgstr "Erreur lors de la récupération du contenu de <a href=\"%1$s\">%1$s</a>."
-
-#: gettext/gettext-lib-pro.php:204 lib/pro/media/upscale.php:248
+#: gettext/gettext-lib-pro.php:203 lib/pro/media/upscale.php:248
 msgid "Failed to upscale image ID %1$s of %2$s by %3$s from %4$s to %5$s for the %6$s image size (exceeds %7$s maximum upscale setting)."
 msgstr "L'image avec l'ID %1$s de %2$s ne peut pas être agrandie par %3$s de %4$s à %5$s pour les dimensions de %6$s (dépasse le maximum défini de %7$s)."
 
-#: gettext/gettext-lib-pro.php:205 lib/pro/media/upscale.php:256
+#: gettext/gettext-lib-pro.php:204 lib/pro/media/upscale.php:256
 msgid "Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the %6$s image size."
 msgstr "L'image avec l'ID %1$s de %2$s a été agrandie par %3$s de %4$s à %5$s pour les dimensions de %6$s."
 
-#: gettext/gettext-lib-pro.php:206 gettext/gettext-lib-pro.php:209
+#: gettext/gettext-lib-pro.php:205 gettext/gettext-lib-pro.php:208
 #: lib/pro/media/ngg.php:142 lib/pro/media/ngg.php:1567
 msgid "NextGEN Gallery"
 msgstr "NextGEN Gallery"
 
-#: gettext/gettext-lib-pro.php:207 lib/pro/media/ngg.php:143
+#: gettext/gettext-lib-pro.php:206 lib/pro/media/ngg.php:143
 msgid "image ID %s"
 msgstr "ID d'image %s"
 
-#: gettext/gettext-lib-pro.php:208 gettext/gettext-lib-pro.php:229
+#: gettext/gettext-lib-pro.php:207 gettext/gettext-lib-pro.php:228
 #: lib/pro/media/ngg.php:145 lib/pro/util/check-img-dims.php:110
 msgid "%1$s %2$s ignored - the resulting resized image of %3$s is too small for the required %4$s image dimensions."
 msgstr "L'%2$s de %1$s a été ignoré - l'image redimensionnée résultante de %3$s est trop petite pour les dimensions requis par %4$s."
 
 #. translators: %1$s is the class::method name.
-#: gettext/gettext-lib-pro.php:210 lib/pro/seo/wpseo.php:44
+#: gettext/gettext-lib-pro.php:209 lib/pro/seo/wpseo.php:44
 msgid "The Yoast SEO <code>%1$s</code> method is missing &ndash; if you are using an older version of Yoast SEO, please update now."
 msgstr "La méthode Yoast SEO <code>%1$s</code> est manquante &ndash; si vous utilisez une ancienne version de Yoast SEO, veuillez la mettre à jour maintenant."
 
-#: gettext/gettext-lib-pro.php:211 gettext/gettext-lib-pro.php:213
-#: gettext/gettext-lib-pro.php:215 gettext/gettext-lib-pro.php:217
+#: gettext/gettext-lib-pro.php:210 gettext/gettext-lib-pro.php:212
+#: gettext/gettext-lib-pro.php:214 gettext/gettext-lib-pro.php:216
 #: lib/pro/util/shorten.php:329 lib/pro/util/shorten.php:355
 #: lib/pro/util/shorten.php:379 lib/pro/util/shorten.php:420
 msgid "The \"%s\" option value is empty and required."
 msgstr "La valeur de l'option \"%s\" est vide et requise."
 
-#: gettext/gettext-lib-pro.php:219 gettext/gettext-lib-pro.php:221
-#: gettext/gettext-lib-pro.php:258 lib/conflict.php:118 lib/loader.php:180
+#: gettext/gettext-lib-pro.php:218 gettext/gettext-lib-pro.php:220
+#: gettext/gettext-lib-pro.php:257 lib/conflict.php:118 lib/loader.php:180
 #: lib/loader.php:194 lib/pro/review/yotpowc.php:204
 #: lib/pro/util/shorten.php:464 lib/pro/util/shorten.php:501
 msgid "%s error:"
 msgstr "Erreur %s:"
 
 #. translators: %s is the service id.
-#: gettext/gettext-lib-pro.php:220 lib/pro/util/shorten.php:467
+#: gettext/gettext-lib-pro.php:219 lib/pro/util/shorten.php:467
 msgid "Incomplete API options to instantiate the \"%s\" shortening service."
 msgstr "Options d'API incomplètes pour instancier le service de raccourcissement \"%s\"."
 
 #. translators: %s is the shortening service id.
-#: gettext/gettext-lib-pro.php:222 lib/pro/util/shorten.php:504
+#: gettext/gettext-lib-pro.php:221 lib/pro/util/shorten.php:504
 msgid "The URL shortening library file for \"%s\" is missing and required."
 msgstr "Le fichier de bibliothèque de raccourcissement d'URL pour \"%s\" est manquant et requis."
 
-#: gettext/gettext-lib-pro.php:223 lib/pro/util/wpseo-meta.php:157
+#: gettext/gettext-lib-pro.php:222 lib/pro/util/wpseo-meta.php:157
 msgid "Imported Yoast SEO \"%1$s\" metadata from post ID %2$d."
 msgstr "Importation de métadonnée Yoast SEO \"%1$s\" de l'ID d'article %2$d."
 
-#: gettext/gettext-lib-pro.php:224 lib/pro/util/wpseo-meta.php:295
+#: gettext/gettext-lib-pro.php:223 lib/pro/util/wpseo-meta.php:295
 msgid "Imported Yoast SEO \"%1$s\" metadata from term ID %2$d."
 msgstr "Importation de métadonnée Yoast SEO \"%1$s\" de l'ID du terme %2$d."
 
-#: gettext/gettext-lib-pro.php:225 lib/pro/util/wpseo-meta.php:396
+#: gettext/gettext-lib-pro.php:224 lib/pro/util/wpseo-meta.php:396
 msgid "Imported Yoast SEO \"%1$s\" metadata from user ID %2$d."
 msgstr "Importation de métadonnée Yoast SEO \"%1$s\" de l'ID d'utilisateur %2$d."
 
-#: gettext/gettext-lib-pro.php:226 lib/pro/util/check-img-dims.php:84
+#: gettext/gettext-lib-pro.php:225 lib/pro/util/check-img-dims.php:84
 msgid "full size original"
 msgstr "originale pleine grandeur"
 
-#: gettext/gettext-lib-pro.php:228 lib/media.php:1990
+#: gettext/gettext-lib-pro.php:227 lib/media.php:2434
 #: lib/pro/util/check-img-dims.php:107
 msgid "image ID %1$s (%2$s)"
 msgstr "ID d'image %1$s (%2$s)"
 
-#: gettext/gettext-lib-pro.php:230 lib/pro/util/check-img-dims.php:171
+#: gettext/gettext-lib-pro.php:229 lib/pro/util/check-img-dims.php:171
 msgid "Image %1$s in content ignored - the image width and height is too small for the required %2$s image dimensions."
 msgstr "L'image %1$s du contenu ignorée - la largeur et la hauteur de l'image sont insuffisante pour les dimensions requises par %2$s."
 
-#: gettext/gettext-lib-pro.php:231 lib/pro/util/check-img-dims.php:173
+#: gettext/gettext-lib-pro.php:230 lib/pro/util/check-img-dims.php:173
 msgid "%1$s includes an additional 'data-wp-pid' attribute for WordPress Media Library images - if this image was selected from the Media Library before %1$s was activated, try removing and adding the image back to your content."
 msgstr "%1$s inclut un attribut supplémentaire 'data-wp-pid' pour les images de la médiathèque WordPress - si cette image a été sélectionnée dans la médiathèque avant l'activation de %1$s, essayez de supprimer et de rajouter l'image à votre contenu."
 
 #. translators: %s is the Events Calendar plugin name
-#: gettext/gettext-lib-pro.php:232 lib/pro/event/the-events-calendar.php:51
+#: gettext/gettext-lib-pro.php:231 lib/pro/event/the-events-calendar.php:51
 msgctxt "option value"
 msgid "[%s Venue]"
 msgstr "[Lieu de %s]"
 
 #. translators: %s is the Events Calendar plugin name
-#: gettext/gettext-lib-pro.php:233 lib/pro/event/the-events-calendar.php:59
+#: gettext/gettext-lib-pro.php:232 lib/pro/event/the-events-calendar.php:59
 msgctxt "option value"
 msgid "[%s Organizer]"
 msgstr "[Organisation de %s]"
 
-#: gettext/gettext-lib-pro.php:234 lib/pro/form/gravityview.php:54
+#: gettext/gettext-lib-pro.php:233 lib/pro/form/gravityview.php:54
 msgctxt "metabox title"
 msgid "Single Entry Integration"
 msgstr "Intégration d'entrée unique"
 
-#: gettext/gettext-lib-pro.php:235 lib/pro/form/gravityview.php:82
+#: gettext/gettext-lib-pro.php:234 lib/pro/form/gravityview.php:82
 msgctxt "option label"
 msgid "Title Field ID"
 msgstr "ID champ de titre"
 
-#: gettext/gettext-lib-pro.php:236 lib/pro/form/gravityview.php:86
+#: gettext/gettext-lib-pro.php:235 lib/pro/form/gravityview.php:86
 msgctxt "option label"
 msgid "Description Field ID"
 msgstr "ID champ de description"
 
-#: gettext/gettext-lib-pro.php:237 lib/pro/form/gravityview.php:90
+#: gettext/gettext-lib-pro.php:236 lib/pro/form/gravityview.php:90
 msgctxt "option label"
 msgid "Post Image Field ID"
 msgstr "ID champ image d'article"
 
-#: gettext/gettext-lib-pro.php:238 gettext/gettext-lib-pro.php:248
+#: gettext/gettext-lib-pro.php:237 gettext/gettext-lib-pro.php:247
 #: lib/conflict-seo.php:49 lib/pro/rating/rate-my-post.php:64
 #: lib/pro/rating/wppostratings.php:62
 msgid "Plugin conflict detected:"
 msgstr "Conflit d'extension détecté:"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:240 lib/pro/rating/wppostratings.php:65
+#: gettext/gettext-lib-pro.php:239 lib/pro/rating/wppostratings.php:65
 msgid "Enable Google Rich Snippets?"
 msgstr "Enable Google Rich Snippets?"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:242 lib/pro/rating/wppostratings.php:71
+#: gettext/gettext-lib-pro.php:241 lib/pro/rating/wppostratings.php:71
 msgid "WP-PostRatings"
 msgstr "WP-PostRatings"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:244 lib/pro/rating/wppostratings.php:73
+#: gettext/gettext-lib-pro.php:243 lib/pro/rating/wppostratings.php:73
 msgid "Ratings"
 msgstr "Ratings"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:246 lib/pro/rating/wppostratings.php:75
+#: gettext/gettext-lib-pro.php:245 lib/pro/rating/wppostratings.php:75
 msgid "Ratings Options"
 msgstr "Ratings Options"
 
-#: gettext/gettext-lib-pro.php:247 gettext/gettext-lib-pro.php:257
+#: gettext/gettext-lib-pro.php:246 gettext/gettext-lib-pro.php:256
 #: lib/pro/rating/rate-my-post.php:84 lib/pro/rating/wppostratings.php:82
 msgid "Please disable the %1$s option in the %2$s settings page."
 msgstr "SVP désactiver l'option %1$s dans la page de réglages %2$s."
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:250 lib/pro/rating/rate-my-post.php:67
+#: gettext/gettext-lib-pro.php:249 lib/pro/rating/rate-my-post.php:67
 msgid "Type of structured data for rich snippets"
 msgstr "Type of structured data for rich snippets"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:252 lib/pro/rating/rate-my-post.php:73
+#: gettext/gettext-lib-pro.php:251 lib/pro/rating/rate-my-post.php:73
 msgid "Rate my Post"
 msgstr "Rate my Post"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:254 lib/conflict-seo.php:411
+#: gettext/gettext-lib-pro.php:253 lib/conflict-seo.php:411
 #: lib/pro/rating/rate-my-post.php:75
 msgid "Settings"
 msgstr "Settings"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:256 lib/pro/rating/rate-my-post.php:77
+#: gettext/gettext-lib-pro.php:255 lib/pro/rating/rate-my-post.php:77
 msgid "Rating Widget Settings"
 msgstr "Rating Widget Settings"
 
 #. translators: %s is "App Key".
 #. translators: %s is "Secret Token".
-#: gettext/gettext-lib-pro.php:259 gettext/gettext-lib-pro.php:260
+#: gettext/gettext-lib-pro.php:258 gettext/gettext-lib-pro.php:259
 #: lib/pro/review/yotpowc.php:216 lib/pro/review/yotpowc.php:236
 msgid "Yotpo for WooCommerce \"%s\" setting value is empty."
 msgstr "La valeur de réglage \"%s\" de Yotpo pour WooCommerce est vide."
 
 #. translators: %s is "wc_yotpo_compatible()".
-#: gettext/gettext-lib-pro.php:261 lib/pro/review/yotpowc.php:256
+#: gettext/gettext-lib-pro.php:260 lib/pro/review/yotpowc.php:256
 msgid "Yotpo for WooCommerce %s function is missing."
 msgstr "La fonction %s de Yotpo pour WooCommerce est manquante."
 
 #. translators: %s is "wc_yotpo_compatible()".
-#: gettext/gettext-lib-pro.php:262 lib/pro/review/yotpowc.php:277
+#: gettext/gettext-lib-pro.php:261 lib/pro/review/yotpowc.php:277
 msgid "Yotpo for WooCommerce %s function returned false."
 msgstr "La fonction %s de Yotpo pour WooCommerce a retourné la valeur false."
 
 #. translators: %s is "yotpo-social-reviews-for-woocommerce".
-#: gettext/gettext-lib-pro.php:263 lib/pro/review/yotpowc.php:305
+#: gettext/gettext-lib-pro.php:262 lib/pro/review/yotpowc.php:305
 msgid "\"%s\" plugin not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders."
 msgstr "L'extension \"%s\" est introuvable dans les dossiers WPMU_PLUGIN_DIR ou WP_PLUGIN_DIR."
 
 #. translators: %s is the API library file path.
-#: gettext/gettext-lib-pro.php:264 lib/pro/review/yotpowc.php:327
+#: gettext/gettext-lib-pro.php:263 lib/pro/review/yotpowc.php:327
 msgid "Yotpo for WooCommerce API library file \"%s\" not found."
 msgstr "Le fichier \"%s\" de bibliothèque API de Yotpo pour WooCommerce est introuvable."
 
 #. translators: %s is the API library file path.
-#: gettext/gettext-lib-pro.php:265 lib/pro/review/yotpowc.php:354
+#: gettext/gettext-lib-pro.php:264 lib/pro/review/yotpowc.php:354
 msgid "Yotpo for WooCommerce \"%s\" class does not exist."
 msgstr "La classe \"%s\" de Yotpo pour WooCommerce n'existe pas."
 
-#: gettext/gettext-lib-pro.php:266 lib/pro/review/shopperapproved.php:169
+#: gettext/gettext-lib-pro.php:265 lib/pro/review/shopperapproved.php:169
 msgid "getting shopper approved ratings and reviews"
 msgstr "obtention des notes et critiques de shopper approved"
 
-#: gettext/gettext-lib-pro.php:267 gettext/gettext-lib-pro.php:270
+#: gettext/gettext-lib-pro.php:266 gettext/gettext-lib-pro.php:269
 #: lib/pro/review/shopperapproved.php:362 lib/pro/review/stamped.php:335
 msgid "There has been a previous error connecting to %s for caching."
 msgstr "Il y a eu une erreur précédente lors de la connexion à %s pour mise en cache."
 
-#: gettext/gettext-lib-pro.php:268 gettext/gettext-lib-pro.php:271
+#: gettext/gettext-lib-pro.php:267 gettext/gettext-lib-pro.php:270
 #: lib/pro/review/shopperapproved.php:365 lib/pro/review/stamped.php:338
 msgid "Requests to retrieve and cache this URL are ignored for another %d second(s)"
 msgstr "Les demandes de récupération et de mise en cache de cette URL sont ignorées pendant un autre %d seconde(s)."
 
-#: gettext/gettext-lib-pro.php:269 lib/pro/review/stamped.php:169
+#: gettext/gettext-lib-pro.php:268 lib/pro/review/stamped.php:169
 msgid "getting stamp.io ratings and reviews"
 msgstr "obtention des notes et critiques de stamp.io"
 
 #. translators: %s is the Job Manager plugin name
-#: gettext/gettext-lib-pro.php:272 lib/pro/job/wpjobmanager.php:51
+#: gettext/gettext-lib-pro.php:271 lib/pro/job/wpjobmanager.php:51
 msgctxt "option value"
 msgid "[%s Company]"
 msgstr "[Compagnie de %s]"
 
 #. translators: %s is the Job Manager plugin name
-#: gettext/gettext-lib-pro.php:273 lib/pro/job/wpjobmanager.php:59
+#: gettext/gettext-lib-pro.php:272 lib/pro/job/wpjobmanager.php:59
 msgctxt "option value"
 msgid "[%s Location]"
 msgstr "[Emplacement de %s]"
 
-#: gettext/gettext-lib-pro.php:274 lib/pro/com/bitly.php:58
+#: gettext/gettext-lib-pro.php:273 lib/pro/com/bitly.php:58
 msgid "Group name \"%s\" not found in the Bitly API response data."
 msgstr "Nom de groupe \"%s\" introuvable dans les données fournies par l'API Bitly."
 
-#: gettext/gettext-lib-pro.php:276 lib/pro/com/bitly.php:66
+#: gettext/gettext-lib-pro.php:275 lib/pro/com/bitly.php:66
 msgid "Groups property missing from the Bitly API response data."
 msgstr "Propriété des groupes absente dans les données fournies par l'API Bitly."
 
-#: gettext/gettext-lib-pro.php:278 lib/pro/com/bitly.php:108
+#: gettext/gettext-lib-pro.php:277 lib/pro/com/bitly.php:108
 msgid "Link property value is empty."
 msgstr "La valeur de la propriété du lien est vide."
 
-#: gettext/gettext-lib-pro.php:284 lib/pro/social/buddypress.php:91
+#: gettext/gettext-lib-pro.php:283 lib/pro/social/buddypress.php:91
 #: lib/std/social/buddypress.php:54
 msgctxt "option label"
 msgid "BuddyPress Member Bio Field Name"
 msgstr "Nom du champ biographique de membre BuddyPress"
 
-#: gettext/gettext-lib-pro.php:285 lib/pro/social/buddypress.php:108
+#: gettext/gettext-lib-pro.php:284 lib/pro/social/buddypress.php:108
 #: lib/std/social/buddypress.php:71
 msgid "The BuddyPress member profile page does not include the <em>Biographical Info</em> text from the WordPress user profile. If you've created an additional BuddyPress Profile Field for members to enter their profile description, enter the field name here (example: Biographical Info, About Me, etc.)."
 msgstr "La page de profil du membre BuddyPress n'inclut pas le texte <em>À propos de vous</em> du profil utilisateur WordPress. Si vous avez créé un champ de profil BuddyPress supplémentaire pour que les membres puissent entrer leur description de profil, entrez le nom du champ ici (exemple: Informations biographiques, À propos de moi, etc.)."
 
-#: gettext/gettext-lib-pro.php:286 lib/edit.php:427 lib/page.php:1277
+#: gettext/gettext-lib-pro.php:285 lib/edit.php:427 lib/page.php:1277
 #: lib/pro/social/buddypress.php:664
 msgctxt "default description"
 msgid "No Description."
@@ -4676,12 +4671,12 @@ msgid "https://developer.wordpress.org/reference/functions/image_make_intermedia
 msgstr "https://developer.wordpress.org/reference/functions/image_make_intermediate_size/"
 
 #: lib/media.php:1026 lib/post.php:532 lib/register.php:323 lib/term.php:473
-#: lib/user.php:453 lib/util.php:825 lib/util.php:3119
+#: lib/user.php:453 lib/util.php:825 lib/util.php:3123
 msgid "%s warning:"
 msgstr "Alerte %s:"
 
 #: lib/media.php:1027 lib/post.php:533 lib/term.php:474 lib/user.php:454
-#: lib/util.php:826 lib/util.php:3120
+#: lib/util.php:826 lib/util.php:3124
 msgid "longer than recommended max of %1$.3f secs"
 msgstr "supérieur au max recommandé de %1$.3f secs"
 
@@ -4693,15 +4688,15 @@ msgstr "Fonction WordPress lente détectée - %1$s a pris %2$.3f secs pour crée
 msgid "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr "Corruption possible de %1$s détecté - la <a href=\"%2$s\">fonction WordPress %3$s</a> n'a pas pu créer la taille d'image \"%4$s\" (%5$s) à partir de %6$s."
 
-#: lib/media.php:2006
+#: lib/media.php:2450
 msgid "image URL %s"
 msgstr "URL d'image %s"
 
-#: lib/media.php:2059
+#: lib/media.php:2503
 msgid "%1$s %2$s ignored - the resulting resized image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr "L'%2$s de %1$s a été ignoré - l'image redimensionnée résultante de %3$s a une <strong>proportion égale ou supérieur a %4$d:1 permise par la norme %5$s</strong>."
 
-#: lib/media.php:2094
+#: lib/media.php:2538
 msgid "%1$s %2$s ignored - the resulting resized image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>."
 msgstr "L'%2$s de %1$s a été ignoré - l'image redimensionnée résultante de %3$s est <strong>plus petite que le minimum %4$s permise par la norme %5$s</strong>."
 
@@ -5117,8 +5112,8 @@ msgid "An image ID for your site's default image (ie. when an image is required,
 msgstr "Un ID d'image pour l'image par défaut de votre site (c'est-à-dire lorsqu'une image est requise et qu'aucune autre image n'est disponible)."
 
 #: lib/messages.php:692 lib/messages.php:708
-msgid "The default image is used for archive pages and as a fallback for posts and pages that do not have a suitable image featured, attached, or in their content."
-msgstr "L'image par défaut est utilisée pour les pages d'archive et comme solution de repli pour les articles et pages qui n'ont pas d'image en vedette, attaché, ou dans leur contenu."
+msgid "The default image is used for archive pages (ie. blog, category, and tag archive page) and as a fallback for posts and pages that do not have a suitable image featured, attached, or in their content."
+msgstr "L'image par défaut est utilisée pour les pages d'archive (c'est-à-dire la page d'archive de blog, de catégorie et d'étiquettes) et comme solution de repli pour les articles et les pages qui n'ont pas d'image en vedette, attaché, ou dans leur contenu."
 
 #: lib/messages.php:700
 msgid "You can enter a default image URL instead of choosing an image ID."
@@ -6882,7 +6877,7 @@ msgstr "Archive pour %s."
 #: lib/page.php:1151
 msgctxt "default description"
 msgid "Tag archive for %s."
-msgstr "Archive de tags pour %s."
+msgstr "Archive d'étiquette pour %s."
 
 #: lib/page.php:1164
 msgctxt "default description"
@@ -6942,7 +6937,7 @@ msgstr "article"
 msgid "Slow WordPress function detected - %1$s took %2$.3f secs to get children of post ID %3$d (%4$s)."
 msgstr "Fonction WordPress lente détectée - %1$s a pris %2$.3f secs pour obtenir les enfants de l'ID d'article %3$d (%4$s)."
 
-#: lib/post.php:736 lib/post.php:1384 lib/schema.php:3365 lib/term.php:588
+#: lib/post.php:736 lib/post.php:1384 lib/schema.php:3382 lib/term.php:588
 #: lib/user.php:585
 msgid "checking meta tags"
 msgstr "vérification des balises méta"
@@ -6978,6 +6973,10 @@ msgstr "SVP envisager d'améliorer la vitesse de votre site."
 #: lib/post.php:1013
 msgid "As an added benefit, a faster site will also improve ranking in search results."
 msgstr "Comme avantage supplémentaire, un site plus rapide améliore également le classement dans les résultats de recherche."
+
+#: lib/post.php:1027
+msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
+msgstr "Erreur lors de la récupération du contenu de <a href=\"%1$s\">%1$s</a>."
 
 #: lib/post.php:1041
 msgid "An %1$s tag was not found in <a href=\"%2$s\">%2$s</a>."
@@ -8024,147 +8023,147 @@ msgstr "Erreur de lecture du fichier %s pour la liste des rubriques d'article."
 msgid "Error reading the %s file for the product categories list."
 msgstr "Erreur de lecture du fichier %s pour de la liste des catégories de produit."
 
-#: lib/util.php:1534
+#: lib/util.php:1538
 msgid "The <code>%1$s</code> request argument is not HTML or a valid URL."
 msgstr "L'argument de requête à <code>%1$s</code> n'est pas du HTML ou une URL valide."
 
-#: lib/util.php:1558
+#: lib/util.php:1562
 msgid "Error getting HTML from <a href=\"%1$s\">%1$s</a>."
 msgstr "Erreur lors de l'obtention du code HTML de <a href=\"%1$s\">%1$s</a>."
 
-#: lib/util.php:1588
+#: lib/util.php:1592
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr "La page Web récupéré de <a href=\"%1$s\">%1$s</a> est vide."
 
 #. translators: %1$s is the class name.
-#: lib/util.php:1783
+#: lib/util.php:1790
 msgid "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting provider to have the missing class installed."
 msgstr "La classe PHP <code>%1$s</code> est manquante &ndash; contactez votre fournisseur d'hébergement pour installer la classe manquante."
 
 #. translators: %1$s is the function name.
-#: lib/util.php:1797
+#: lib/util.php:1804
 msgid "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting provider to have the missing function installed."
 msgstr "La fonction PHP <code>%1$s</code> est manquante &ndash; contactez votre fournisseur d'hébergement pour installer la fonction manquante."
 
-#: lib/util.php:3121
+#: lib/util.php:3125
 msgid "Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the \"%2$s\" filter (%3$s)."
 msgstr "Crochet(s) de filtre lent détecté - WordPress a pris %1$.3f secs pour exécuter le filtre \"%2$s\" (%3$s)."
 
-#: lib/util.php:3137
+#: lib/util.php:3141
 msgid "Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds to execute. This is longer than the recommended maximum of %3$.3f seconds and may affect page load time. Please consider reviewing third-party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr "Crochet(s) de filtre lent détecté - le filtre WordPress %1$s a pris %2$.3f secondes pour exécuter. Ceci est plus long que le maximum recommandé de %3$.3f secondes et peut affecter le temps de chargement de la page. S'il vous plaît envisagez d'examiner les fonctions d'extensions de tiers partie et de thème accrochées au filtre WordPress %1$s pour du code PHP lent et/ou sous-optimal."
 
-#: lib/util.php:3139
+#: lib/util.php:3143
 msgid "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the filter) may provide more information on the specific hook(s) or PHP code affecting performance."
 msgstr "Si vous activez l'extension %1$s et effacez le cache de %2$s (pour ré-appliquer le filtre), vous obtiendrez peut-être plus d'informations sur les crochets spécifiques ou le code PHP affectant les performances."
 
-#: lib/util.php:3519
+#: lib/util.php:3522
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr "Débogueur de partage Facebook"
 
-#: lib/util.php:3520
+#: lib/util.php:3523
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr "Open Graph"
 
-#: lib/util.php:3524
+#: lib/util.php:3527
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr "Outil de débogage des microdonnées Facebook"
 
-#: lib/util.php:3525
+#: lib/util.php:3528
 msgctxt "validator type"
 msgid "Microdata"
 msgstr "Microdonnées"
 
-#: lib/util.php:3529
+#: lib/util.php:3532
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr "PageSpeed Insights de Google"
 
-#: lib/util.php:3530
+#: lib/util.php:3533
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr "Vitesse de page"
 
-#: lib/util.php:3534
+#: lib/util.php:3537
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr "Test de résultats enrichis Google"
 
-#: lib/util.php:3535
+#: lib/util.php:3538
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr "Résultats riches"
 
-#: lib/util.php:3539
+#: lib/util.php:3542
 msgctxt "option label"
 msgid "Google Structured Data Test (Deprecated)"
 msgstr "Test de données structurées Google (obsolète)"
 
-#: lib/util.php:3540
+#: lib/util.php:3543
 msgctxt "validator type"
 msgid "Structured Data"
 msgstr "Données structurées"
 
-#: lib/util.php:3544
+#: lib/util.php:3547
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr "Inspecteur d'article LinkedIn"
 
-#: lib/util.php:3545
+#: lib/util.php:3548
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr "Données oEmbed"
 
-#: lib/util.php:3549
+#: lib/util.php:3552
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr "Validateur Pinterest épingles riches"
 
-#: lib/util.php:3550
+#: lib/util.php:3553
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr "Épingles riches"
 
-#: lib/util.php:3554
+#: lib/util.php:3557
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr "Vérificateur de carte Twitter"
 
-#: lib/util.php:3555
+#: lib/util.php:3558
 msgctxt "validator type"
 msgid "Twitter Card"
 msgstr "Carte Twitter"
 
-#: lib/util.php:3560
+#: lib/util.php:3563
 msgctxt "option label"
 msgid "The AMP Project Validator"
 msgstr "Le validateur de projet AMP"
 
-#: lib/util.php:3561
+#: lib/util.php:3564
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr "Balisage AMP"
 
-#: lib/util.php:3565
+#: lib/util.php:3568
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr "Validateur W3C de balisage"
 
-#: lib/util.php:3566
+#: lib/util.php:3569
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr "Balisage HTML"
 
 #. translators: %1$s is an action message, %2$s is the module or post type name.
-#: lib/util.php:3716
+#: lib/util.php:3719
 msgid "%1$s for this %2$s"
 msgstr "%1$s pour cet %2$s"
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3726
+#: lib/util.php:3729
 msgid "%1$s for %2$s ID %3$d"
 msgstr "%1$s pour %2$s ID %3$d"
 
