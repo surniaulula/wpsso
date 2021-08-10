@@ -689,7 +689,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = __( 'An image ID for your site\'s default image (ie. when an image is required, and no other image is available).', 'wpsso' ) . ' ';
 
-							$text .= __( 'The default image is used for archive pages (ie. blog, category, tag archive page) and as a fallback for posts and pages that do not have a suitable image featured, attached, or in their content.', 'wpsso' ) . ' ';
+							$text .= __( 'The default image is used for archive pages (ie. blog, category, and tag archive page) and as a fallback for posts and pages that do not have a suitable image featured, attached, or in their content.', 'wpsso' ) . ' ';
 
 							$text .= '<em>' . __( 'This field is disabled if a custom image URL is entered.', 'wpsso' ) . '</em>';
 

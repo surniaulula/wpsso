@@ -12,7 +12,7 @@ Requires PHP: 7.0
 Requires At Least: 5.0
 Tested Up To: 5.8
 WC Tested Up To: 5.5.2
-Stable Tag: 8.35.2
+Stable Tag: 8.35.3
 
 Rank higher and improve click-through-rates by presenting your content at its best on social sites and in search results.
 
@@ -334,7 +334,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Updated the `WpssoMedia->add_og_video_from_url()` method to ise the itemprop duration value.
+	* Updated the `WpssoMedia->add_og_video_from_url()` method to include the itemprop video duration value.
 	* Deprecated the `WpssoProMediaYoutube->add_og_video_from_data()` method since Google has removed access to the https://www.youtube.com/get_video_info API.
 * **Requires At Least**
 	* PHP v7.0.

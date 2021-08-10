@@ -660,7 +660,7 @@ msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
 #: gettext/gettext-lib-com.php:36 gettext/gettext-lib-pro.php:11
-#: gettext/gettext-lib-pro.php:227 lib/com/form.php:789 lib/media.php:872
+#: gettext/gettext-lib-pro.php:226 lib/com/form.php:789 lib/media.php:872
 #: lib/media.php:1006 lib/media.php:2424 lib/pro/admin/advanced.php:90
 #: lib/pro/util/check-img-dims.php:104 lib/std/admin/advanced.php:90
 msgid "Media Library"
@@ -2736,7 +2736,7 @@ msgctxt "metabox title"
 msgid "Bitly (URL Shortener)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:64 gettext/gettext-lib-pro.php:212
+#: gettext/gettext-lib-pro.php:64 gettext/gettext-lib-pro.php:211
 #: lib/pro/admin/advanced.php:394 lib/pro/util/shorten.php:330
 msgctxt "option label"
 msgid "Bitly Generic Access Token"
@@ -2757,7 +2757,7 @@ msgctxt "metabox title"
 msgid "DLMY.App (URL Shortener)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:68 gettext/gettext-lib-pro.php:214
+#: gettext/gettext-lib-pro.php:68 gettext/gettext-lib-pro.php:213
 #: lib/pro/admin/advanced.php:412 lib/pro/util/shorten.php:356
 msgctxt "option label"
 msgid "DLMY.App API Key"
@@ -2768,7 +2768,7 @@ msgctxt "metabox title"
 msgid "Ow.ly (URL Shortener)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:70 gettext/gettext-lib-pro.php:216
+#: gettext/gettext-lib-pro.php:70 gettext/gettext-lib-pro.php:215
 #: lib/pro/admin/advanced.php:422 lib/pro/util/shorten.php:380
 msgctxt "option label"
 msgid "Ow.ly API Key"
@@ -2779,7 +2779,7 @@ msgctxt "metabox title"
 msgid "YOURLS (URL Shortener)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:72 gettext/gettext-lib-pro.php:218
+#: gettext/gettext-lib-pro.php:72 gettext/gettext-lib-pro.php:217
 #: lib/pro/admin/advanced.php:432 lib/pro/util/shorten.php:421
 msgctxt "option label"
 msgid "YOURLS API URL"
@@ -3238,10 +3238,10 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:185 gettext/gettext-lib-pro.php:186
 #: gettext/gettext-lib-pro.php:187 gettext/gettext-lib-pro.php:189
 #: gettext/gettext-lib-pro.php:190 gettext/gettext-lib-pro.php:191
-#: gettext/gettext-lib-pro.php:193 gettext/gettext-lib-pro.php:275
-#: gettext/gettext-lib-pro.php:277 gettext/gettext-lib-pro.php:279
-#: gettext/gettext-lib-pro.php:280 gettext/gettext-lib-pro.php:281
-#: gettext/gettext-lib-pro.php:283 lib/pro/com/bitly.php:60
+#: gettext/gettext-lib-pro.php:193 gettext/gettext-lib-pro.php:274
+#: gettext/gettext-lib-pro.php:276 gettext/gettext-lib-pro.php:278
+#: gettext/gettext-lib-pro.php:279 gettext/gettext-lib-pro.php:280
+#: gettext/gettext-lib-pro.php:282 lib/pro/com/bitly.php:60
 #: lib/pro/com/bitly.php:68 lib/pro/com/bitly.php:110 lib/pro/com/bitly.php:170
 #: lib/pro/com/bitly.php:176 lib/pro/com/bitly.php:188
 #: lib/pro/ext/dlmyapp.php:56 lib/pro/ext/dlmyapp.php:62
@@ -3254,7 +3254,7 @@ msgid "%1$s shortener API error: %2$s"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:181 gettext/gettext-lib-pro.php:188
-#: gettext/gettext-lib-pro.php:192 gettext/gettext-lib-pro.php:282
+#: gettext/gettext-lib-pro.php:192 gettext/gettext-lib-pro.php:281
 #: lib/pro/com/bitly.php:186 lib/pro/ext/dlmyapp.php:72
 #: lib/pro/ext/owly.php:201 lib/pro/ext/yourls.php:216
 msgid "JSON response decode error code %d."
@@ -3281,33 +3281,28 @@ msgid ""
 "installed."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:203 lib/post.php:1027
-#: lib/pro/media/youtube.php:196
-msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
-msgstr ""
-
-#: gettext/gettext-lib-pro.php:204 lib/pro/media/upscale.php:248
+#: gettext/gettext-lib-pro.php:203 lib/pro/media/upscale.php:248
 msgid ""
 "Failed to upscale image ID %1$s of %2$s by %3$s from %4$s to %5$s for the "
 "%6$s image size (exceeds %7$s maximum upscale setting)."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:205 lib/pro/media/upscale.php:256
+#: gettext/gettext-lib-pro.php:204 lib/pro/media/upscale.php:256
 msgid ""
 "Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the "
 "%6$s image size."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:206 gettext/gettext-lib-pro.php:209
+#: gettext/gettext-lib-pro.php:205 gettext/gettext-lib-pro.php:208
 #: lib/pro/media/ngg.php:142 lib/pro/media/ngg.php:1567
 msgid "NextGEN Gallery"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:207 lib/pro/media/ngg.php:143
+#: gettext/gettext-lib-pro.php:206 lib/pro/media/ngg.php:143
 msgid "image ID %s"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:208 gettext/gettext-lib-pro.php:229
+#: gettext/gettext-lib-pro.php:207 gettext/gettext-lib-pro.php:228
 #: lib/pro/media/ngg.php:145 lib/pro/util/check-img-dims.php:110
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s is too small for the "
@@ -3315,64 +3310,64 @@ msgid ""
 msgstr ""
 
 #. translators: %1$s is the class::method name.
-#: gettext/gettext-lib-pro.php:210 lib/pro/seo/wpseo.php:44
+#: gettext/gettext-lib-pro.php:209 lib/pro/seo/wpseo.php:44
 msgid ""
 "The Yoast SEO <code>%1$s</code> method is missing &ndash; if you are using "
 "an older version of Yoast SEO, please update now."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:211 gettext/gettext-lib-pro.php:213
-#: gettext/gettext-lib-pro.php:215 gettext/gettext-lib-pro.php:217
+#: gettext/gettext-lib-pro.php:210 gettext/gettext-lib-pro.php:212
+#: gettext/gettext-lib-pro.php:214 gettext/gettext-lib-pro.php:216
 #: lib/pro/util/shorten.php:329 lib/pro/util/shorten.php:355
 #: lib/pro/util/shorten.php:379 lib/pro/util/shorten.php:420
 msgid "The \"%s\" option value is empty and required."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:219 gettext/gettext-lib-pro.php:221
-#: gettext/gettext-lib-pro.php:258 lib/conflict.php:118 lib/loader.php:180
+#: gettext/gettext-lib-pro.php:218 gettext/gettext-lib-pro.php:220
+#: gettext/gettext-lib-pro.php:257 lib/conflict.php:118 lib/loader.php:180
 #: lib/loader.php:194 lib/pro/review/yotpowc.php:204
 #: lib/pro/util/shorten.php:464 lib/pro/util/shorten.php:501
 msgid "%s error:"
 msgstr ""
 
 #. translators: %s is the service id.
-#: gettext/gettext-lib-pro.php:220 lib/pro/util/shorten.php:467
+#: gettext/gettext-lib-pro.php:219 lib/pro/util/shorten.php:467
 msgid "Incomplete API options to instantiate the \"%s\" shortening service."
 msgstr ""
 
 #. translators: %s is the shortening service id.
-#: gettext/gettext-lib-pro.php:222 lib/pro/util/shorten.php:504
+#: gettext/gettext-lib-pro.php:221 lib/pro/util/shorten.php:504
 msgid "The URL shortening library file for \"%s\" is missing and required."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:223 lib/pro/util/wpseo-meta.php:157
+#: gettext/gettext-lib-pro.php:222 lib/pro/util/wpseo-meta.php:157
 msgid "Imported Yoast SEO \"%1$s\" metadata from post ID %2$d."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:224 lib/pro/util/wpseo-meta.php:295
+#: gettext/gettext-lib-pro.php:223 lib/pro/util/wpseo-meta.php:295
 msgid "Imported Yoast SEO \"%1$s\" metadata from term ID %2$d."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:225 lib/pro/util/wpseo-meta.php:396
+#: gettext/gettext-lib-pro.php:224 lib/pro/util/wpseo-meta.php:396
 msgid "Imported Yoast SEO \"%1$s\" metadata from user ID %2$d."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:226 lib/pro/util/check-img-dims.php:84
+#: gettext/gettext-lib-pro.php:225 lib/pro/util/check-img-dims.php:84
 msgid "full size original"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:228 lib/media.php:2434
+#: gettext/gettext-lib-pro.php:227 lib/media.php:2434
 #: lib/pro/util/check-img-dims.php:107
 msgid "image ID %1$s (%2$s)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:230 lib/pro/util/check-img-dims.php:171
+#: gettext/gettext-lib-pro.php:229 lib/pro/util/check-img-dims.php:171
 msgid ""
 "Image %1$s in content ignored - the image width and height is too small for "
 "the required %2$s image dimensions."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:231 lib/pro/util/check-img-dims.php:173
+#: gettext/gettext-lib-pro.php:230 lib/pro/util/check-img-dims.php:173
 msgid ""
 "%1$s includes an additional 'data-wp-pid' attribute for WordPress Media "
 "Library images - if this image was selected from the Media Library before "
@@ -3380,172 +3375,172 @@ msgid ""
 msgstr ""
 
 #. translators: %s is the Events Calendar plugin name
-#: gettext/gettext-lib-pro.php:232 lib/pro/event/the-events-calendar.php:51
+#: gettext/gettext-lib-pro.php:231 lib/pro/event/the-events-calendar.php:51
 msgctxt "option value"
 msgid "[%s Venue]"
 msgstr ""
 
 #. translators: %s is the Events Calendar plugin name
-#: gettext/gettext-lib-pro.php:233 lib/pro/event/the-events-calendar.php:59
+#: gettext/gettext-lib-pro.php:232 lib/pro/event/the-events-calendar.php:59
 msgctxt "option value"
 msgid "[%s Organizer]"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:234 lib/pro/form/gravityview.php:54
+#: gettext/gettext-lib-pro.php:233 lib/pro/form/gravityview.php:54
 msgctxt "metabox title"
 msgid "Single Entry Integration"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:235 lib/pro/form/gravityview.php:82
+#: gettext/gettext-lib-pro.php:234 lib/pro/form/gravityview.php:82
 msgctxt "option label"
 msgid "Title Field ID"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:236 lib/pro/form/gravityview.php:86
+#: gettext/gettext-lib-pro.php:235 lib/pro/form/gravityview.php:86
 msgctxt "option label"
 msgid "Description Field ID"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:237 lib/pro/form/gravityview.php:90
+#: gettext/gettext-lib-pro.php:236 lib/pro/form/gravityview.php:90
 msgctxt "option label"
 msgid "Post Image Field ID"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:238 gettext/gettext-lib-pro.php:248
+#: gettext/gettext-lib-pro.php:237 gettext/gettext-lib-pro.php:247
 #: lib/conflict-seo.php:49 lib/pro/rating/rate-my-post.php:64
 #: lib/pro/rating/wppostratings.php:62
 msgid "Plugin conflict detected:"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:240 lib/pro/rating/wppostratings.php:65
+#: gettext/gettext-lib-pro.php:239 lib/pro/rating/wppostratings.php:65
 msgid "Enable Google Rich Snippets?"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:242 lib/pro/rating/wppostratings.php:71
+#: gettext/gettext-lib-pro.php:241 lib/pro/rating/wppostratings.php:71
 msgid "WP-PostRatings"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:244 lib/pro/rating/wppostratings.php:73
+#: gettext/gettext-lib-pro.php:243 lib/pro/rating/wppostratings.php:73
 msgid "Ratings"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:246 lib/pro/rating/wppostratings.php:75
+#: gettext/gettext-lib-pro.php:245 lib/pro/rating/wppostratings.php:75
 msgid "Ratings Options"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:247 gettext/gettext-lib-pro.php:257
+#: gettext/gettext-lib-pro.php:246 gettext/gettext-lib-pro.php:256
 #: lib/pro/rating/rate-my-post.php:84 lib/pro/rating/wppostratings.php:82
 msgid "Please disable the %1$s option in the %2$s settings page."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:250 lib/pro/rating/rate-my-post.php:67
+#: gettext/gettext-lib-pro.php:249 lib/pro/rating/rate-my-post.php:67
 msgid "Type of structured data for rich snippets"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:252 lib/pro/rating/rate-my-post.php:73
+#: gettext/gettext-lib-pro.php:251 lib/pro/rating/rate-my-post.php:73
 msgid "Rate my Post"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:254 lib/conflict-seo.php:411
+#: gettext/gettext-lib-pro.php:253 lib/conflict-seo.php:411
 #: lib/pro/rating/rate-my-post.php:75
 msgid "Settings"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:256 lib/pro/rating/rate-my-post.php:77
+#: gettext/gettext-lib-pro.php:255 lib/pro/rating/rate-my-post.php:77
 msgid "Rating Widget Settings"
 msgstr ""
 
 #. translators: %s is "App Key".
 #. translators: %s is "Secret Token".
-#: gettext/gettext-lib-pro.php:259 gettext/gettext-lib-pro.php:260
+#: gettext/gettext-lib-pro.php:258 gettext/gettext-lib-pro.php:259
 #: lib/pro/review/yotpowc.php:216 lib/pro/review/yotpowc.php:236
 msgid "Yotpo for WooCommerce \"%s\" setting value is empty."
 msgstr ""
 
 #. translators: %s is "wc_yotpo_compatible()".
-#: gettext/gettext-lib-pro.php:261 lib/pro/review/yotpowc.php:256
+#: gettext/gettext-lib-pro.php:260 lib/pro/review/yotpowc.php:256
 msgid "Yotpo for WooCommerce %s function is missing."
 msgstr ""
 
 #. translators: %s is "wc_yotpo_compatible()".
-#: gettext/gettext-lib-pro.php:262 lib/pro/review/yotpowc.php:277
+#: gettext/gettext-lib-pro.php:261 lib/pro/review/yotpowc.php:277
 msgid "Yotpo for WooCommerce %s function returned false."
 msgstr ""
 
 #. translators: %s is "yotpo-social-reviews-for-woocommerce".
-#: gettext/gettext-lib-pro.php:263 lib/pro/review/yotpowc.php:305
+#: gettext/gettext-lib-pro.php:262 lib/pro/review/yotpowc.php:305
 msgid ""
 "\"%s\" plugin not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders."
 msgstr ""
 
 #. translators: %s is the API library file path.
-#: gettext/gettext-lib-pro.php:264 lib/pro/review/yotpowc.php:327
+#: gettext/gettext-lib-pro.php:263 lib/pro/review/yotpowc.php:327
 msgid "Yotpo for WooCommerce API library file \"%s\" not found."
 msgstr ""
 
 #. translators: %s is the API library file path.
-#: gettext/gettext-lib-pro.php:265 lib/pro/review/yotpowc.php:354
+#: gettext/gettext-lib-pro.php:264 lib/pro/review/yotpowc.php:354
 msgid "Yotpo for WooCommerce \"%s\" class does not exist."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:266 lib/pro/review/shopperapproved.php:169
+#: gettext/gettext-lib-pro.php:265 lib/pro/review/shopperapproved.php:169
 msgid "getting shopper approved ratings and reviews"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:267 gettext/gettext-lib-pro.php:270
+#: gettext/gettext-lib-pro.php:266 gettext/gettext-lib-pro.php:269
 #: lib/pro/review/shopperapproved.php:362 lib/pro/review/stamped.php:335
 msgid "There has been a previous error connecting to %s for caching."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:268 gettext/gettext-lib-pro.php:271
+#: gettext/gettext-lib-pro.php:267 gettext/gettext-lib-pro.php:270
 #: lib/pro/review/shopperapproved.php:365 lib/pro/review/stamped.php:338
 msgid ""
 "Requests to retrieve and cache this URL are ignored for another %d second(s)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:269 lib/pro/review/stamped.php:169
+#: gettext/gettext-lib-pro.php:268 lib/pro/review/stamped.php:169
 msgid "getting stamp.io ratings and reviews"
 msgstr ""
 
 #. translators: %s is the Job Manager plugin name
-#: gettext/gettext-lib-pro.php:272 lib/pro/job/wpjobmanager.php:51
+#: gettext/gettext-lib-pro.php:271 lib/pro/job/wpjobmanager.php:51
 msgctxt "option value"
 msgid "[%s Company]"
 msgstr ""
 
 #. translators: %s is the Job Manager plugin name
-#: gettext/gettext-lib-pro.php:273 lib/pro/job/wpjobmanager.php:59
+#: gettext/gettext-lib-pro.php:272 lib/pro/job/wpjobmanager.php:59
 msgctxt "option value"
 msgid "[%s Location]"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:274 lib/pro/com/bitly.php:58
+#: gettext/gettext-lib-pro.php:273 lib/pro/com/bitly.php:58
 msgid "Group name \"%s\" not found in the Bitly API response data."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:276 lib/pro/com/bitly.php:66
+#: gettext/gettext-lib-pro.php:275 lib/pro/com/bitly.php:66
 msgid "Groups property missing from the Bitly API response data."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:278 lib/pro/com/bitly.php:108
+#: gettext/gettext-lib-pro.php:277 lib/pro/com/bitly.php:108
 msgid "Link property value is empty."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:284 lib/pro/social/buddypress.php:91
+#: gettext/gettext-lib-pro.php:283 lib/pro/social/buddypress.php:91
 #: lib/std/social/buddypress.php:54
 msgctxt "option label"
 msgid "BuddyPress Member Bio Field Name"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:285 lib/pro/social/buddypress.php:108
+#: gettext/gettext-lib-pro.php:284 lib/pro/social/buddypress.php:108
 #: lib/std/social/buddypress.php:71
 msgid ""
 "The BuddyPress member profile page does not include the <em>Biographical "
@@ -3555,7 +3550,7 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:286 lib/edit.php:427 lib/page.php:1277
+#: gettext/gettext-lib-pro.php:285 lib/edit.php:427 lib/page.php:1277
 #: lib/pro/social/buddypress.php:664
 msgctxt "default description"
 msgid "No Description."
@@ -5681,11 +5676,11 @@ msgid ""
 "and no other image is available)."
 msgstr ""
 
-#: lib/messages.php:692
+#: lib/messages.php:692 lib/messages.php:708
 msgid ""
-"The default image is used for archive pages (ie. blog, category, tag archive "
-"page) and as a fallback for posts and pages that do not have a suitable "
-"image featured, attached, or in their content."
+"The default image is used for archive pages (ie. blog, category, and tag "
+"archive page) and as a fallback for posts and pages that do not have a "
+"suitable image featured, attached, or in their content."
 msgstr ""
 
 #: lib/messages.php:700
@@ -5701,13 +5696,6 @@ msgstr ""
 
 #: lib/messages.php:704
 msgid "The image should be at least %s or more in width and height."
-msgstr ""
-
-#: lib/messages.php:708
-msgid ""
-"The default image is used for archive pages (ie. blog, category, and tag "
-"archive page) and as a fallback for posts and pages that do not have a "
-"suitable image featured, attached, or in their content."
 msgstr ""
 
 #: lib/messages.php:719
@@ -8124,6 +8112,10 @@ msgstr ""
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
+msgstr ""
+
+#: lib/post.php:1027
+msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
 #: lib/post.php:1041
