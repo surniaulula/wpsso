@@ -759,11 +759,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				foreach ( WpssoConfig::$cf[ 'opt' ][ 'site_verify_meta_names' ] as $site_verify => $meta_name ) {
 
-					if ( ! empty( $opts[ $site_verify ] ) ) {
-
-						$opts[ 'add_meta_name_' . $meta_name ]         = 1;
-						$opts[ 'add_meta_name_' . $meta_name . ':is' ] = 'disabled';
-					}
+					$opts[ 'add_meta_name_' . $meta_name ]         = empty( $opts[ $site_verify ] ) ? 0 : 1;
+					$opts[ 'add_meta_name_' . $meta_name . ':is' ] = 'disabled';
 				}
 
 				/**
