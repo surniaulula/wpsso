@@ -122,8 +122,11 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 
 			if ( apply_filters( 'wpsso_add_link_rel_shortlink', $add_link_rel_shortlink, $mod ) ) {
 
-				$shortlink   = '';
+				/**
+				 * Shortlinks are used by social sites, so use the sharing URL instead of the canonical URL.
+				 */
 				$sharing_url = $this->p->util->get_sharing_url( $mod, $add_page = true );
+				$shortlink   = '';
 
 				if ( $mod[ 'is_post' ] && $mod[ 'id' ] ) {
 
@@ -136,9 +139,6 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 						$this->p->debug->log( 'SucomUtilWP::wp_get_shortlink() = ' . $shortlink );
 					}
 
-				/**
-				 * Shortlinks are used by social sites, so use the sharing URL instead of the canonical URL.
-				 */
 				} elseif ( ! empty( $sharing_url ) ) {	// Just in case.
 
 					if ( $this->p->debug->enabled ) {
@@ -147,7 +147,6 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 					}
 
 					$shortener = $this->p->options[ 'plugin_shortener' ];
-
 					$shortlink = apply_filters( 'wpsso_get_short_url', $sharing_url, $shortener, $mod, $is_main = true );
 				}
 

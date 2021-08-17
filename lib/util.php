@@ -1948,16 +1948,17 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( is_admin() ) {
 
-				$request_url = $sharing_url;
+				$request_url = $this->get_canonical_url( $mod, $add_page );
 
 			} else {
 
-				$request_url = self::get_prot() . '://' . $_SERVER[ 'SERVER_NAME' ] . $_SERVER[ 'REQUEST_URI' ];
+				$request_url = self::get_url();
 			}
 
 			if ( empty( $atts[ 'short_url' ] ) ) {
 
 				$shortener = $this->p->options[ 'plugin_shortener' ];
+
 				$short_url = apply_filters( 'wpsso_get_short_url', $sharing_url, $shortener, $mod, $is_main = true );
 
 			} else {
@@ -2454,22 +2455,30 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				}
 
 				$url = apply_filters( 'wpsso_archive_page_url', $url, $mod );
-
 			}
 
 			/**
 			 * Use the current URL as a fallback for themes and plugins that create public content and don't use the
-			 * standard WordPress functions / variables and/or are not properly integrated with WordPress (don't use
-			 * custom post types, taxonomies, terms, etc.).
+			 * standard WordPress functions / variables and/or are not properly integrated with WordPress (ie. they do
+			 * not use custom post types, taxonomies, terms, etc.).
 			 */
 			if ( empty ( $url ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'falling back to request url' );
+					$this->p->debug->log( 'falling back to server request url' );
 				}
 
-				$url = $this->get_request_url( $mod );
+				/**
+				 * Remove tracking query arguments used by facebook, google, etc.
+				 */
+				$url = preg_replace( '/([\?&])(' .
+					'fb_action_ids|fb_action_types|fb_source|fb_aggregation_id|' . 
+					'utm_source|utm_medium|utm_campaign|utm_term|utm_content|' .
+					'gclid|pk_campaign|pk_kwd' .
+					')=[^&]*&?/i', '$1', self::get_url() );
+
+				$url = apply_filters( 'wpsso_server_request_url', $url );
 			}
 
 			/**
@@ -2502,35 +2511,14 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 		private function get_request_url() {
 
-			$url = self::get_prot() . '://' . $_SERVER[ 'SERVER_NAME' ] . $_SERVER[ 'REQUEST_URI' ];
-
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'server request url = ' . $url );
 			}
 
-			/**
-			 * Remove tracking query arguments used by facebook, google, etc.
-			 */
-			$url = preg_replace( '/([\?&])(' .
-				'fb_action_ids|fb_action_types|fb_source|fb_aggregation_id|' . 
-				'utm_source|utm_medium|utm_campaign|utm_term|utm_content|' .
-				'gclid|pk_campaign|pk_kwd' .
-				')=[^&]*&?/i', '$1', $url );
-
-			$url = apply_filters( 'wpsso_server_request_url', $url );
-
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'server request url (filtered) = ' . $url );
-			}
-
-			/**
-			 * Disable the head markup transient cache and URL shortening if the URL contains a query argument.
-			 */
-			if ( false !== strpos( $url, '?' ) ) {
-
-				$this->cache->expire_zero_filters( $disable_short = true );
 			}
 
 			return $url;
@@ -2737,7 +2725,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			} else {	// Example: file/
 
-				$base = self::get_prot() . '://' . $_SERVER[ 'SERVER_NAME' ] . $_SERVER[ 'REQUEST_URI' ];
+				$base = self::get_url();
 
 				if ( false !== strpos( $base, '?' ) ) {
 

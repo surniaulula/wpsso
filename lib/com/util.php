@@ -1209,6 +1209,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $local_cache[ $url ] = false;
 		}
 
+		public static function get_url() {
+
+			return self::get_prot() . '://' . $_SERVER[ 'SERVER_NAME' ] . $_SERVER[ 'REQUEST_URI' ];
+		}
+
 		public static function get_prot( $url = '' ) {
 
 			if ( ! empty( $url ) ) {

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.35.3\n"
+"Project-Id-Version: WPSSO Core 8.35.4-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -598,7 +598,7 @@ msgid ""
 msgstr ""
 
 #: gettext/gettext-lib-com.php:20 gettext/gettext-lib-com.php:22
-#: lib/com/cache.php:513 lib/com/cache.php:679 lib/util-cache.php:214
+#: lib/com/cache.php:513 lib/com/cache.php:679 lib/util-cache.php:227
 msgid "Error removing cache file %s."
 msgstr ""
 
@@ -2737,7 +2737,7 @@ msgid "Bitly (URL Shortener)"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:64 gettext/gettext-lib-pro.php:211
-#: lib/pro/admin/advanced.php:394 lib/pro/util/shorten.php:330
+#: lib/pro/admin/advanced.php:394 lib/pro/util/shorten.php:326
 msgctxt "option label"
 msgid "Bitly Generic Access Token"
 msgstr ""
@@ -2758,7 +2758,7 @@ msgid "DLMY.App (URL Shortener)"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:68 gettext/gettext-lib-pro.php:213
-#: lib/pro/admin/advanced.php:412 lib/pro/util/shorten.php:356
+#: lib/pro/admin/advanced.php:412 lib/pro/util/shorten.php:352
 msgctxt "option label"
 msgid "DLMY.App API Key"
 msgstr ""
@@ -2769,7 +2769,7 @@ msgid "Ow.ly (URL Shortener)"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:70 gettext/gettext-lib-pro.php:215
-#: lib/pro/admin/advanced.php:422 lib/pro/util/shorten.php:380
+#: lib/pro/admin/advanced.php:422 lib/pro/util/shorten.php:376
 msgctxt "option label"
 msgid "Ow.ly API Key"
 msgstr ""
@@ -2780,7 +2780,7 @@ msgid "YOURLS (URL Shortener)"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:72 gettext/gettext-lib-pro.php:217
-#: lib/pro/admin/advanced.php:432 lib/pro/util/shorten.php:421
+#: lib/pro/admin/advanced.php:432 lib/pro/util/shorten.php:417
 msgctxt "option label"
 msgid "YOURLS API URL"
 msgstr ""
@@ -3318,25 +3318,25 @@ msgstr ""
 
 #: gettext/gettext-lib-pro.php:210 gettext/gettext-lib-pro.php:212
 #: gettext/gettext-lib-pro.php:214 gettext/gettext-lib-pro.php:216
-#: lib/pro/util/shorten.php:329 lib/pro/util/shorten.php:355
-#: lib/pro/util/shorten.php:379 lib/pro/util/shorten.php:420
+#: lib/pro/util/shorten.php:325 lib/pro/util/shorten.php:351
+#: lib/pro/util/shorten.php:375 lib/pro/util/shorten.php:416
 msgid "The \"%s\" option value is empty and required."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:218 gettext/gettext-lib-pro.php:220
 #: gettext/gettext-lib-pro.php:257 lib/conflict.php:118 lib/loader.php:180
 #: lib/loader.php:194 lib/pro/review/yotpowc.php:204
-#: lib/pro/util/shorten.php:464 lib/pro/util/shorten.php:501
+#: lib/pro/util/shorten.php:460 lib/pro/util/shorten.php:497
 msgid "%s error:"
 msgstr ""
 
 #. translators: %s is the service id.
-#: gettext/gettext-lib-pro.php:219 lib/pro/util/shorten.php:467
+#: gettext/gettext-lib-pro.php:219 lib/pro/util/shorten.php:463
 msgid "Incomplete API options to instantiate the \"%s\" shortening service."
 msgstr ""
 
 #. translators: %s is the shortening service id.
-#: gettext/gettext-lib-pro.php:221 lib/pro/util/shorten.php:504
+#: gettext/gettext-lib-pro.php:221 lib/pro/util/shorten.php:500
 msgid "The URL shortening library file for \"%s\" is missing and required."
 msgstr ""
 
@@ -5009,27 +5009,27 @@ msgctxt "submit button"
 msgid "Validate %s"
 msgstr ""
 
-#: lib/head.php:546
+#: lib/head.php:570
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:555
+#: lib/head.php:579
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:564
+#: lib/head.php:588
 msgid "adding meta name meta tags"
 msgstr ""
 
-#: lib/head.php:573
+#: lib/head.php:597
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:595
+#: lib/head.php:619
 msgid "adding schema meta tags"
 msgstr ""
 
-#: lib/head.php:604
+#: lib/head.php:628
 msgid "adding schema json-ld markup"
 msgstr ""
 
@@ -5096,12 +5096,12 @@ msgid ""
 msgstr ""
 
 #: lib/media.php:1026 lib/post.php:532 lib/register.php:323 lib/term.php:473
-#: lib/user.php:453 lib/util.php:825 lib/util.php:3123
+#: lib/user.php:453 lib/util.php:825 lib/util.php:3111
 msgid "%s warning:"
 msgstr ""
 
 #: lib/media.php:1027 lib/post.php:533 lib/term.php:474 lib/user.php:454
-#: lib/util.php:826 lib/util.php:3124
+#: lib/util.php:826 lib/util.php:3112
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
@@ -8921,8 +8921,8 @@ msgstr ""
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1581 lib/user.php:1684 lib/util-cache.php:169
-#: lib/util-cache.php:732
+#: lib/user.php:1581 lib/user.php:1684 lib/util-cache.php:182
+#: lib/util-cache.php:745
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
@@ -9037,46 +9037,46 @@ msgid ""
 "another one."
 msgstr ""
 
-#: lib/util-cache.php:117
+#: lib/util-cache.php:130
 msgid ""
 "Aborting task to clear the cache - another identical task is still running."
 msgstr ""
 
-#: lib/util-cache.php:131
+#: lib/util-cache.php:144
 msgid "A task to clear the cache was started at %s."
 msgstr ""
 
-#: lib/util-cache.php:167
+#: lib/util-cache.php:180
 msgid ""
 "%1$d cached files, %2$d transient cache objects, %3$d column metadata, and "
 "the WordPress object cache have been cleared."
 msgstr ""
 
-#: lib/util-cache.php:173
+#: lib/util-cache.php:186
 msgid ""
 "A background task will begin shortly to refresh the post, term and user "
 "transient cache objects."
 msgstr ""
 
-#: lib/util-cache.php:245
+#: lib/util-cache.php:258
 msgid "Failed to open the cache folder %s for reading."
 msgstr ""
 
-#: lib/util-cache.php:429
+#: lib/util-cache.php:442
 msgid "The cache for <strong>%s</strong> has also been cleared."
 msgstr ""
 
-#: lib/util-cache.php:649
+#: lib/util-cache.php:662
 msgid ""
 "Aborting task to refresh the transient cache - another identical task is "
 "still running."
 msgstr ""
 
-#: lib/util-cache.php:663
+#: lib/util-cache.php:676
 msgid "A task to refresh the transient cache was started at %s."
 msgstr ""
 
-#: lib/util-cache.php:729
+#: lib/util-cache.php:742
 msgid ""
 "The transient cache for %1$d posts, %2$d terms and %3$d users has been "
 "refreshed."
@@ -9237,13 +9237,13 @@ msgid ""
 "provider to have the missing function installed."
 msgstr ""
 
-#: lib/util.php:3125
+#: lib/util.php:3113
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3141
+#: lib/util.php:3129
 msgid ""
 "Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds "
 "to execute. This is longer than the recommended maximum of %3$.3f seconds "
@@ -9252,120 +9252,120 @@ msgid ""
 "sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3143
+#: lib/util.php:3131
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3522
+#: lib/util.php:3510
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr ""
 
-#: lib/util.php:3523
+#: lib/util.php:3511
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/util.php:3527
+#: lib/util.php:3515
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr ""
 
-#: lib/util.php:3528
+#: lib/util.php:3516
 msgctxt "validator type"
 msgid "Microdata"
 msgstr ""
 
-#: lib/util.php:3532
+#: lib/util.php:3520
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr ""
 
-#: lib/util.php:3533
+#: lib/util.php:3521
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr ""
 
-#: lib/util.php:3537
+#: lib/util.php:3525
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/util.php:3538
+#: lib/util.php:3526
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr ""
 
-#: lib/util.php:3542
+#: lib/util.php:3530
 msgctxt "option label"
 msgid "Google Structured Data Test (Deprecated)"
 msgstr ""
 
-#: lib/util.php:3543
+#: lib/util.php:3531
 msgctxt "validator type"
 msgid "Structured Data"
 msgstr ""
 
-#: lib/util.php:3547
+#: lib/util.php:3535
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/util.php:3548
+#: lib/util.php:3536
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/util.php:3552
+#: lib/util.php:3540
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/util.php:3553
+#: lib/util.php:3541
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr ""
 
-#: lib/util.php:3557
+#: lib/util.php:3545
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/util.php:3558
+#: lib/util.php:3546
 msgctxt "validator type"
 msgid "Twitter Card"
 msgstr ""
 
-#: lib/util.php:3563
+#: lib/util.php:3551
 msgctxt "option label"
 msgid "The AMP Project Validator"
 msgstr ""
 
-#: lib/util.php:3564
+#: lib/util.php:3552
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr ""
 
-#: lib/util.php:3568
+#: lib/util.php:3556
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr ""
 
-#: lib/util.php:3569
+#: lib/util.php:3557
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name.
-#: lib/util.php:3719
+#: lib/util.php:3707
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3729
+#: lib/util.php:3717
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 

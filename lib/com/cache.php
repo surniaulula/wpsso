@@ -1157,7 +1157,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				case 'raw':
 
 					if ( false !== $this->get_cache_data( $cache_salt, $cache_type, $exp_secs, $pre_ext ) ) {
-					
+
 						return true;
 					}
 

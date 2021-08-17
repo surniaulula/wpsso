@@ -41,7 +41,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			/**
-			 * If a caching plugin or service is active, disable the head markup cache.
+			 * If a caching plugin or service is active, reduce the head markup cache expiration.
 			 */
 			if ( ! empty( $this->p->avail[ 'cache' ][ 'any' ] ) ) {
 
@@ -464,7 +464,31 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			/**
+			 * Disable head and content cache if the request URL contains an unknown/extra query string.
+			 */
+			if ( ! is_admin() ) {
+
+				$request_url = SucomUtil::get_url();
+
+				if ( $request_url !== $canonical_url && false !== strpos( $request_url, '?' ) ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'query string in request url - disabling head and content cache' );
+					}
+
+					$this->p->util->add_plugin_filters( $this, array(
+						'cache_expire_head_markup' => '__return_zero',	// Used by WpssoHead->get_head_array().
+						'cache_expire_the_content' => '__return_zero',	// Used by WpssoPage->get_the_content().
+					) );
+				}
+			}
+
+			/**
 			 * Setup variables for transient cache.
+			 *
+			 * Note that get_cache_exp_secs() will return 0 for some pre-defined conditions in the $mod array (404,
+			 * attachment, date, and search).
 			 */
 			$cache_md5_pre  = 'wpsso_h_';	// Transient prefix for head markup.
 			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'transient', $mod );

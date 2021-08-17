@@ -322,6 +322,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.35.4-dev.1 (2020/08/17)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added automatic select/deselect site verification meta tags if/when verification IDs are entered in the plugin settings.
+* **Bugfixes**
+	* Fixed automatic disabling of the head and content cache if the request URL constains an unknown/extra query string.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.0.
+	* WordPress v5.0.
+
 **Version 8.35.3 (2021/08/10)**
 
 * **New Features**
@@ -1450,6 +1464,10 @@ This release adds a new SSO &gt; Features Status page and integration module for
 	* WordPress v4.2.
 
 == Upgrade Notice ==
+
+= 8.35.4-dev.1 =
+
+(2021/08/17) Fixed automatic disabling of the head and content cache if the request URL constains an unknown/extra query string.
 
 = 8.35.3 =
 
