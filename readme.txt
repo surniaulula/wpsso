@@ -331,7 +331,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed automatic disabling of the head and content cache if the request URL contains an unknown/extra query string.
 * **Developer Notes**
-	* None.
+	* Added a new `SucomUtil::get_url()` method to get the complete request URL.
+	* Deprecated the `WpssoUtilCache->expire_zero_filters()` method.
 * **Requires At Least**
 	* PHP v7.0.
 	* WordPress v5.0.

@@ -1926,7 +1926,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		 */
 		public function get_og_type_reviews( $mod_id, $mt_pre = 'product', $rating_meta = 'rating', $worst_rating = 1, $best_rating = 5 ) {
 
-			_deprecated_function( __METHOD__ . '()', '2021/01/19', __CLASS__ . '::get_mt_reviews()' );	// Deprecation message.
+			_deprecated_function( __METHOD__ . '()', '2021/01/19', $replacement = __CLASS__ . '::get_mt_reviews()' );	// Deprecation message.
 
 			return $this->get_mt_reviews( $mod_id, $mt_pre, $rating_meta, $worst_rating, $best_rating );
 		}

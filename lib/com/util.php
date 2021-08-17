@@ -1159,7 +1159,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function is_mobile() {
 
-			_deprecated_function( __METHOD__ . '()', '2020/10/02', '' );	// Deprecation message.
+			_deprecated_function( __METHOD__ . '()', '2020/10/02', $replacement = '' );	// Deprecation message.
 
 			return null;
 		}
@@ -1169,7 +1169,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function is_desktop() {
 
-			_deprecated_function( __METHOD__ . '()', '2020/10/02', '' );	// Deprecation message.
+			_deprecated_function( __METHOD__ . '()', '2020/10/02', $replacement = '' );	// Deprecation message.
 
 			return null;
 		}
@@ -1622,7 +1622,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function get_open_close( array $opts, $key_day_o, $key_midday_close, $key_midday_o, $key_day_c ) {
 
-			_deprecated_function( __METHOD__ . '()', '2020/10/20', __CLASS__ . '::get_opts_open_close_hm_tz()' );	// Deprecation message.
+			_deprecated_function( __METHOD__ . '()', '2020/10/20', $replacement = __CLASS__ . '::get_opts_open_close_hm_tz()' );	// Deprecation message.
 
 			return self::get_opts_open_close_hm_tz( $opts, $key_day_o, $key_midday_close, $key_midday_o, $key_day_c );
 		}
@@ -1707,7 +1707,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		/**
 		 * The $key_pattern value must be a string.
 		 *
-		 * The $replace value can be an associative array of $pattern => $replacement.
+		 * The $replace value can be an associative array of 'pattern' => 'replacement'.
 		 *
 		 * Use reference for $input argument to allow unset of keys if $remove is true.
 		 */
@@ -2252,7 +2252,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function get_mt_media_url( array $assoc, $media_pre = 'og:image', $mt_suffixes = null ) {
 
-			_deprecated_function( __METHOD__ . '()', '2020/08/10', __CLASS__ . '::get_first_mt_media_url()' );	// Deprecation message.
+			_deprecated_function( __METHOD__ . '()', '2020/08/10', $replacement = __CLASS__ . '::get_first_mt_media_url()' );	// Deprecation message.
 
 			return self::get_first_mt_media_url( $assoc, $media_pre, $mt_suffixes );
 		}
@@ -2924,7 +2924,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function is_archive_page() {
 
-			_deprecated_function( __METHOD__ . '()', '2020/12/09', '' );	// Deprecation message.
+			_deprecated_function( __METHOD__ . '()', '2020/12/09', $replacement = '' );	// Deprecation message.
 
 			return apply_filters( 'sucom_is_archive_page', is_archive() );
 		}
@@ -4037,7 +4037,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function get_atts_css_attr( array $atts, $css_name, $css_extra = '' ) {
 
-			_deprecated_function( __METHOD__ . '()', '2020/04/14', '' );	// Deprecation message.
+			_deprecated_function( __METHOD__ . '()', '2020/04/14', $replacement = '' );	// Deprecation message.
 
 			return '';
 		}
@@ -4047,7 +4047,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function get_atts_src_id( array $atts, $src_name ) {
 
-			_deprecated_function( __METHOD__ . '()', '2020/04/14', '' );	// Deprecation message.
+			_deprecated_function( __METHOD__ . '()', '2020/04/14', $replacement = '' );	// Deprecation message.
 
 			return '';
 		}
@@ -4173,7 +4173,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function get_site_url( array $opts = array(), $mixed = 'current' ) {
 
-			_deprecated_function( __METHOD__ . '()', '2021/12/16', __CLASS__ . '::get_home_url()' );	// Deprecation message.
+			_deprecated_function( __METHOD__ . '()', '2021/12/16', $replacement = __CLASS__ . '::get_home_url()' );	// Deprecation message.
 
 			return self::get_home_url( $opts, $mixed );
 		}
@@ -4459,7 +4459,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function get_lib_stub_action( $lib_id ) {
 
-			_deprecated_function( __METHOD__ . '()', '2020/03/23', '' );	// Deprecation message.
+			_deprecated_function( __METHOD__ . '()', '2020/03/23', $replacement = '' );	// Deprecation message.
 
 			return array( $lib_id, false, false );
 		}

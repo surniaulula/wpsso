@@ -1086,7 +1086,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		 */
 		public function get_notice_system() {
 
-			_deprecated_function( __METHOD__ . '()', '2021/01/19', __CLASS__ . '::get_tb_types_showing()' );	// Deprecation message.
+			_deprecated_function( __METHOD__ . '()', '2021/01/19', $replacement = __CLASS__ . '::get_tb_types_showing()' );	// Deprecation message.
 
 			return $this->get_tb_types_showing();
 		}

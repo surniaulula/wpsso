@@ -1057,7 +1057,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		 */
 		public static function reset_metabox_prefs( $pagehook, $box_ids = array(), $meta_name = '', $context = '', $force = false ) {
 
-			_deprecated_function( __METHOD__ . '()', '2020/07/20', '' );	// Deprecation message.
+			_deprecated_function( __METHOD__ . '()', '2020/07/20', $replacement = '' );	// Deprecation message.
 		}
 
 		/**

@@ -105,7 +105,7 @@ if ( ! function_exists( 'wpsso_is_mobile' ) ) {
 
 	function wpsso_is_mobile() {
 
-		_deprecated_function( __FUNCTION__ . '()', '2020/10/02', '' );	// Deprecation message.
+		_deprecated_function( __FUNCTION__ . '()', '2020/10/02', $replacement = '' );	// Deprecation message.
 
 		return null;
 	}
@@ -148,7 +148,7 @@ if ( ! function_exists( 'wpsso_clear_all_cache' ) ) {
 
 	function wpsso_clear_all_cache( $clear_other = false ) {
 
-		_deprecated_function( __FUNCTION__ . '()', '2020/05/05', 'wpsso_clear_cache()' );	// Deprecation message.
+		_deprecated_function( __FUNCTION__ . '()', '2020/05/05', $replacement = 'wpsso_clear_cache()' );	// Deprecation message.
 
 		return wpsso_clear_cache( $clear_other );
 	}

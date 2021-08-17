@@ -763,5 +763,13 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			return 1;
 		}
+
+		/**
+		 * Deprecated on 2020/08/17.
+		 */
+		public function expire_zero_filters( $disable_short = false ) {
+
+			_deprecated_function( __METHOD__ . '()', '2021/07/17', $replacement = '' );	// Deprecation message.
+		}
 	}
 }
