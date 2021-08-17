@@ -329,7 +329,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* Added automatic select/deselect site verification meta tags if/when verification IDs are entered in the plugin settings.
 * **Bugfixes**
-	* Fixed automatic disabling of the head and content cache if the request URL constains an unknown/extra query string.
+	* Fixed automatic disabling of the head and content cache if the request URL contains an unknown/extra query string.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -1467,7 +1467,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 = 8.35.4-dev.1 =
 
-(2021/08/17) Fixed automatic disabling of the head and content cache if the request URL constains an unknown/extra query string.
+(2021/08/17) Fixed automatic disabling of the head and content cache if the request URL contains an unknown/extra query string.
 
 = 8.35.3 =
 
