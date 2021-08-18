@@ -461,6 +461,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 
 				return array();
+
+			} elseif ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'canonical url = ' . $canonical_url );
 			}
 
 			/**
@@ -470,11 +474,16 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 				$request_url = SucomUtil::get_url();
 
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'request url = ' . $request_url );
+				}
+
 				if ( $request_url !== $canonical_url && false !== strpos( $request_url, '?' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'query string in request url - disabling head and content cache' );
+						$this->p->debug->log( 'extra query in request url - disabling head and content cache' );
 					}
 
 					$this->p->util->add_plugin_filters( $this, array(
@@ -499,7 +508,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'canonical url = ' . $canonical_url );
 				$this->p->debug->log( 'cache expire = ' . $cache_exp_secs );
 				$this->p->debug->log( 'cache salt = ' . $cache_salt );
 				$this->p->debug->log( 'cache id = ' . $cache_id );

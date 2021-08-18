@@ -2469,14 +2469,21 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					$this->p->debug->log( 'falling back to server request url' );
 				}
 
+				$url = self::get_url();
+
 				/**
-				 * Remove tracking query arguments used by facebook, google, etc.
+				 * Maybe remove tracking query arguments used by facebook, google, etc.
 				 */
-				$url = preg_replace( '/([\?&])(' .
-					'fb_action_ids|fb_action_types|fb_source|fb_aggregation_id|' . 
+				$remove_args = 'fb_action_ids|fb_action_types|fb_source|fb_aggregation_id|' . 
 					'utm_source|utm_medium|utm_campaign|utm_term|utm_content|' .
-					'gclid|pk_campaign|pk_kwd' .
-					')=[^&]*&?/i', '$1', self::get_url() );
+					'gclid|pk_campaign|pk_kwd';
+
+				$remove_args = apply_filters( 'wpsso_server_request_remove_args', $remove_args );
+
+				if ( $remove_args ) {	// Just in case.
+
+					$url = rtrim( preg_replace( '/([\?&])(' . $remove_args . ')=[^&]*/i', '$1', $url ), '?&' );
+				}
 
 				$url = apply_filters( 'wpsso_server_request_url', $url );
 			}
