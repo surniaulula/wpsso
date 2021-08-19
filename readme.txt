@@ -322,7 +322,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.35.4-rc.3 (2020/08/19)**
+**Version 8.35.4 (2020/08/19)**
 
 * **New Features**
 	* None.
@@ -1467,7 +1467,7 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.35.4-rc.3 =
+= 8.35.4 =
 
 (2021/08/19) Updated the deprecated Google Structured Data Testing tool URL. Added automatic select/deselect site verification meta tags. Fixed automatic disabling of the head and content cache if the request URL contains an unknown/extra query string.
 

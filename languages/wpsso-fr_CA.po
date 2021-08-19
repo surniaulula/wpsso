@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 8.35.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-08-19 06:59-0700\n"
+"PO-Revision-Date: 2021-08-19 15:24-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -5881,7 +5881,7 @@ msgstr "Analyse le contenu de la page Web et suggère des moyens de rendre la pa
 
 #: lib/messages.php:2045
 msgid "Check the webpage structured data markup for <a href=\"%s\">Google Rich Result types</a> (Job posting, Product, Recipe, etc.)."
-msgstr "Vérifiez le balisage des données structurées de la page Web pour les types de résultats enrichis Google (offre d'emploi, recette, etc.)."
+msgstr "Vérifiez le balisage des données structurées de la page Web pour les <a href=\"%s\">types de résultats enrichis Google</a> (offre d'emploi, produit, recette, etc.)."
 
 #: lib/messages.php:2045 lib/messages.php:2079
 msgid "https://developers.google.com/search/docs/guides/search-gallery"
