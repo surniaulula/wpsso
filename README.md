@@ -282,7 +282,7 @@
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/w3c-says-there-is-no-attribute-property/">W3C says "there is no attribute 'property'"</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-are-some-html-elements-missing-misaligned-different/">Why are some HTML elements missing or misaligned?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/">Why does Facebook show the wrong image / text?</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-does-google-structured-data-testing-tool-show-errors/">Why does Google Structured Data Test Tool show errors?</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-does-google-structured-data-testing-tool-show-errors/">Why does the Schema Markup Validator show errors?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/">Why shouldn't I upload small images to the media library?</a></li>
 </ul>
 

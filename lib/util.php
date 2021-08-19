@@ -3483,7 +3483,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return trim( $text );
 		}
 
-		public function get_validators( array $mod, $allow_clipboard = true ) {
+		public function get_validators( array $mod, $use_clipboard = true ) {
 
 			/**
 			 * We do not want to validate settings pages in the back-end, so only provide validators for known objects
@@ -3507,12 +3507,17 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$have_amp        = $mod[ 'is_post' ] && $mod[ 'id' ] && function_exists( 'amp_get_permalink' ) ? true : false;
-			$have_clipboard  = $allow_clipboard && method_exists( 'SucomForm', 'get_no_input_clipboard' ) ? true : false;
+			$have_clipboard  = $use_clipboard && method_exists( 'SucomForm', 'get_no_input_clipboard' ) ? true : false;
 			$have_json       = empty( $this->p->avail[ 'p' ][ 'schema' ] ) || empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ?  false : true;
 			$amp_url_enc     = $have_amp ? urlencode( amp_get_permalink( $mod[ 'id' ] ) ) : '';
 			$sharing_url_enc = urlencode( $sharing_url );
 
 			$validators = array(
+				'amp' => $mod[ 'is_post' ] ? array(	// Only show AMP validator for post objects.
+					'title' => _x( 'The AMP Project Validator', 'option label', 'wpsso' ),
+					'type'  => _x( 'AMP Markup', 'validator type', 'wpsso' ) . ( $have_amp ? '' : ' **' ),
+					'url'   => $have_amp ? 'https://validator.ampproject.org/#url=' . $amp_url_enc : '',
+				) : array(),
 				'facebook-debugger' => array(
 					'title' => _x( 'Facebook Sharing Debugger', 'option label', 'wpsso' ),
 					'type'  => _x( 'Open Graph', 'validator type', 'wpsso' ),
@@ -3553,11 +3558,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					'type'      => _x( 'Twitter Card', 'validator type', 'wpsso' ),
 					'url'       => 'https://cards-dev.twitter.com/validator',
 					'extra_msg' => SucomForm::get_no_input_clipboard( $sharing_url ),
-				) : array(),
-				'amp' => $mod[ 'is_post' ] ? array(	// Only show AMP validator for post objects.
-					'title' => _x( 'The AMP Project Validator', 'option label', 'wpsso' ),
-					'type'  => _x( 'AMP Markup', 'validator type', 'wpsso' ) . ( $have_amp ? '' : ' **' ),
-					'url'   => $have_amp ? 'https://validator.ampproject.org/#url=' . $amp_url_enc : '',
 				) : array(),
 				'w3c' => array(
 					'title' => _x( 'W3C Markup Validator', 'option label', 'wpsso' ),

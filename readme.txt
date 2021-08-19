@@ -256,7 +256,7 @@ Activate any of the free complementary add-on(s) you require:
 * [W3C says "there is no attribute 'property'"](https://wpsso.com/docs/plugins/wpsso/faqs/w3c-says-there-is-no-attribute-property/)
 * [Why are some HTML elements missing or misaligned?](https://wpsso.com/docs/plugins/wpsso/faqs/why-are-some-html-elements-missing-misaligned-different/)
 * [Why does Facebook show the wrong image / text?](https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/)
-* [Why does Google Structured Data Test Tool show errors?](https://wpsso.com/docs/plugins/wpsso/faqs/why-does-google-structured-data-testing-tool-show-errors/)
+* [Why does the Schema Markup Validator show errors?](https://wpsso.com/docs/plugins/wpsso/faqs/why-does-google-structured-data-testing-tool-show-errors/)
 * [Why shouldn't I upload small images to the media library?](https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/)
 
 <h3>Notes and Documentation</h3>
@@ -322,12 +322,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.35.4-rc.2 (2020/08/18)**
+**Version 8.35.4-rc.3 (2020/08/19)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Updated the deprecated Google Structured Data Test tool URL to the Schema Markup Validator tool URL.
+	* Updated the deprecated Google Structured Data Testing tool URL to the Schema Markup Validator tool URL.
 	* Added automatic select/deselect site verification meta tags if/when verification IDs are entered in the plugin settings.
 * **Bugfixes**
 	* Fixed automatic disabling of the head and content cache if the request URL contains an unknown/extra query string.
@@ -1467,9 +1467,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.35.4-rc.2 =
+= 8.35.4-rc.3 =
 
-(2021/08/18) Updated the deprecated Google Structured Data Test tool URL. Added automatic select/deselect site verification meta tags. Fixed automatic disabling of the head and content cache if the request URL contains an unknown/extra query string.
+(2021/08/19) Updated the deprecated Google Structured Data Testing tool URL. Added automatic select/deselect site verification meta tags. Fixed automatic disabling of the head and content cache if the request URL contains an unknown/extra query string.
 
 = 8.35.3 =
 

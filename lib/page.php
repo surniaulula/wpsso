@@ -65,7 +65,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$mod = $this->p->page->get_mod( $use_post );	// Get post/term/user ID, module name, and module object reference.
 
-			$validators = $this->p->util->get_validators( $mod, $allow_clipboard = false );
+			$validators = $this->p->util->get_validators( $mod, $use_clipboard = false );
 
 			if ( ! empty( $validators ) ) {
 
