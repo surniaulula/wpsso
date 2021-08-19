@@ -3533,11 +3533,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					'type'  => _x( 'Rich Results', 'validator type', 'wpsso' ) . ( $have_json ? '' : ' *' ),
 					'url'   => $have_json ? 'https://search.google.com/test/rich-results?url=' . $sharing_url_enc : '',
 				),
-				'google-testing-tool' => array(
-					'title' => _x( 'Google Structured Data Test (Deprecated)', 'option label', 'wpsso' ),
-					'type'  => _x( 'Structured Data', 'validator type', 'wpsso' ) . ( $have_json ? '' : ' *' ),
-					'url'   => $have_json ? 'https://search.google.com/structured-data/testing-tool/u/0/#url=' . $sharing_url_enc : '',
-				),
 				'linkedin' => array(
 					'title' => _x( 'LinkedIn Post Inspector', 'option label', 'wpsso' ),
 					'type'  => _x( 'oEmbed Data', 'validator type', 'wpsso' ),
@@ -3547,6 +3542,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					'title' => _x( 'Pinterest Rich Pins Validator', 'option label', 'wpsso' ),
 					'type'  => _x( 'Rich Pins', 'validator type', 'wpsso' ),
 					'url'   => 'https://developers.pinterest.com/tools/url-debugger/?link=' . $sharing_url_enc,
+				),
+				'schema-markup-validator' => array(
+					'title' => _x( 'Schema Markup Validator', 'option label', 'wpsso' ),
+					'type'  => _x( 'Schema Markup', 'validator type', 'wpsso' ) . ( $have_json ? '' : ' *' ),
+					'url'   => $have_json ? 'https://validator.schema.org/#url=' . $sharing_url_enc : '',
 				),
 				'twitter' => $have_clipboard ? array(
 					'title'     => _x( 'Twitter Card Validator', 'option label', 'wpsso' ),

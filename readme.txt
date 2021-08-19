@@ -322,11 +322,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.35.4-rc.1 (2020/08/18)**
+**Version 8.35.4-rc.2 (2020/08/18)**
 
 * **New Features**
 	* None.
 * **Improvements**
+	* Updated the deprecated Google Structured Data Test tool URL to the Schema Markup Validator tool URL.
 	* Added automatic select/deselect site verification meta tags if/when verification IDs are entered in the plugin settings.
 * **Bugfixes**
 	* Fixed automatic disabling of the head and content cache if the request URL contains an unknown/extra query string.
@@ -1466,9 +1467,9 @@ This release adds a new SSO &gt; Features Status page and integration module for
 
 == Upgrade Notice ==
 
-= 8.35.4-rc.1 =
+= 8.35.4-rc.2 =
 
-(2021/08/18) Added automatic select/deselect site verification meta tags if/when verification IDs are entered in the plugin settings. Fixed automatic disabling of the head and content cache if the request URL contains an unknown/extra query string.
+(2021/08/18) Updated the deprecated Google Structured Data Test tool URL. Added automatic select/deselect site verification meta tags. Fixed automatic disabling of the head and content cache if the request URL contains an unknown/extra query string.
 
 = 8.35.3 =
 

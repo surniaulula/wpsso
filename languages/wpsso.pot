@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.35.4-rc.1\n"
+"Project-Id-Version: WPSSO Core 8.35.4-rc.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -198,13 +198,13 @@ msgid ""
 "<strong>Not sure if your theme templates already provide markup for Google "
 "rich results?</strong> Submit a post or page URL from your website to the <a "
 "href=\"https://search.google.com/test/rich-results\">Google Rich Results "
-"Test Tool</a> or the <a href=\"https://search.google.com/structured-data/"
-"testing-tool/u/0/\">Google Structured Data Test Tool</a>, and compare the "
-"results before / after enabling the <a href=\"https://wordpress.org/plugins/"
-"wpsso-schema-json-ld/\">WPSSO Schema JSON-LD Markup add-on</a>. Between "
-"checks, don't forget to clear the cache of any caching plugin or service you "
-"may be using, along with clearing the WPSSO cache in the <em><strong>SSO "
-"&gt; Tools and Actions</strong></em> settings page. ;-)"
+"Test Tool</a> or the <a href=\"https://validator.schema.org/\">Schema Markup "
+"Validator</a>, and compare the results before / after enabling the <a href="
+"\"https://wordpress.org/plugins/wpsso-schema-json-ld/\">WPSSO Schema JSON-LD "
+"Markup add-on</a>. Between checks, don't forget to clear the cache of any "
+"caching plugin or service you may be using, along with clearing the WPSSO "
+"cache in the <em><strong>SSO &gt; Tools and Actions</strong></em> settings "
+"page. ;-)"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:30
@@ -241,16 +241,16 @@ msgid ""
 "If you have activated the <a href=\"https://wordpress.org/plugins/wpsso-"
 "schema-json-ld/\">WPSSO Schema JSON-LD Markup add-on</a>, you can also "
 "submit URLs to the <a href=\"https://search.google.com/test/rich-results"
-"\">Google Rich Results Test Tool</a> or the <a href=\"https://search.google."
-"com/structured-data/testing-tool/u/0/\">Google Structured Data Test Tool</"
-"a>. WPSSO Core includes all the meta tags that social sites need, along with "
-"Schema markup for Google's Knowledge Graph in the site home page, but to "
-"create Schema markup for your post / page content, you must activate the "
-"WPSSO Schema JSON-LD Markup add-on. Some Schema types may also require "
-"additional organization and/or location information from the <a href="
-"\"https://wordpress.org/plugins/wpsso-organization/\">WPSSO Organization "
-"Markup add-on</a> and/or <a href=\"https://wordpress.org/plugins/wpsso-plm/"
-"\">WPSSO Place and Local SEO Markup add-on</a>."
+"\">Google Rich Results Test Tool</a> or the <a href=\"https://validator."
+"schema.org/\">Schema Markup Validator</a>. WPSSO Core includes all the meta "
+"tags that social sites need, along with Schema markup for Google's Knowledge "
+"Graph in the site home page, but to create Schema markup for your post / "
+"page content, you must activate the WPSSO Schema JSON-LD Markup add-on. Some "
+"Schema types may also require additional organization and/or location "
+"information from the <a href=\"https://wordpress.org/plugins/wpsso-"
+"organization/\">WPSSO Organization Markup add-on</a> and/or <a href="
+"\"https://wordpress.org/plugins/wpsso-plm/\">WPSSO Place and Local SEO "
+"Markup add-on</a>."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:33
@@ -410,32 +410,27 @@ msgstr ""
 #: gettext/gettext-html-setup.php:50
 msgctxt "html list item"
 msgid ""
-"<a href=\"https://search.google.com/structured-data/testing-tool/u/0/"
-"\">Google Structured Data Test Tool</a> - although deprecated, this tool "
-"provides additional validation for Schema types beyond the limited <a href="
-"\"https://developers.google.com/search/docs/guides/search-gallery"
-"\">selection of Google Rich Result types</a>."
-msgstr ""
-
-#: gettext/gettext-html-setup.php:51
-msgctxt "html list item"
-msgid ""
 "<a href=\"https://www.linkedin.com/post-inspector/inspect/\">LinkedIn Post "
 "Inspector</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:52
+#: gettext/gettext-html-setup.php:51
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://developers.pinterest.com/tools/url-debugger/\">Pinterest "
 "Rich Pins Validator</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:53
+#: gettext/gettext-html-setup.php:52
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://cards-dev.twitter.com/validator\">Twitter Card Validator</"
 "a>"
+msgstr ""
+
+#: gettext/gettext-html-setup.php:53
+msgctxt "html list item"
+msgid "<a href=\"https://validator.schema.org/\">Schema Markup Validator</a>"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:54
@@ -9301,32 +9296,32 @@ msgstr ""
 
 #: lib/util.php:3537
 msgctxt "option label"
-msgid "Google Structured Data Test (Deprecated)"
+msgid "LinkedIn Post Inspector"
 msgstr ""
 
 #: lib/util.php:3538
 msgctxt "validator type"
-msgid "Structured Data"
+msgid "oEmbed Data"
 msgstr ""
 
 #: lib/util.php:3542
 msgctxt "option label"
-msgid "LinkedIn Post Inspector"
+msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
 #: lib/util.php:3543
 msgctxt "validator type"
-msgid "oEmbed Data"
+msgid "Rich Pins"
 msgstr ""
 
 #: lib/util.php:3547
 msgctxt "option label"
-msgid "Pinterest Rich Pins Validator"
+msgid "Schema Markup Validator"
 msgstr ""
 
 #: lib/util.php:3548
 msgctxt "validator type"
-msgid "Rich Pins"
+msgid "Schema Markup"
 msgstr ""
 
 #: lib/util.php:3552
