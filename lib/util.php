@@ -3366,7 +3366,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( true === $cleanup_html ) {
 
-				$text = $this->cleanup_html_tags( $text );				// Remove any remaining html tags.
+				$text = $this->cleanup_html_tags( $text );	// Remove any remaining html tags.
 			}
 
 			$charset = get_bloginfo( 'charset' );
@@ -3377,39 +3377,35 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				if ( mb_strlen( $trailing ) > $maxlen ) {
 
-					$trailing = mb_substr( $trailing, 0, $maxlen );			// Trim the trailing string, if too long.
+					$trailing = mb_substr( $trailing, 0, $maxlen );	// Trim the trailing string, if too long.
 				}
 
 				if ( mb_strlen( $text ) > $maxlen ) {
 
 					$text = mb_substr( $text, 0, $maxlen - mb_strlen( $trailing ) );
-					$text = trim( preg_replace( '/[^ ]*$/', '', $text ) );		// Remove trailing bits of words.
-					$text = preg_replace( '/[,\.]*$/', '', $text );			// Remove trailing puntuation.
+					$text = trim( preg_replace( '/[^ ]*$/', '', $text ) );	// Remove trailing bits of words.
+					$text = preg_replace( '/[,\.]*$/', '', $text );	// Remove trailing puntuation.
 
 				} else {
-					$trailing = '';							// Truncate trailing string if text is less than maxlen.
+
+					$trailing = '';	// Truncate trailing string if text is less than maxlen.
 				}
 
-				$text = $text . $trailing;						// Trim and add trailing string (if provided).
+				$text = $text . $trailing;	// Trim and add trailing string (if provided).
 			}
 
-			$text = preg_replace( '/&nbsp;/', ' ', $text );					// Just in case.
+			$text = preg_replace( '/&nbsp;/', ' ', $text );	// Just in case.
 
 			return $text;
 		}
 
 		public function cleanup_html_tags( $text, $strip_tags = true, $use_img_alt = false ) {
 
-			$alt_text = '';
-
-			$alt_prefix = isset( $this->p->options[ 'plugin_img_alt_prefix' ] ) ?
-				$this->p->options[ 'plugin_img_alt_prefix' ] : 'Image:';
-
-			$text = self::strip_shortcodes( $text );					// Remove any remaining shortcodes.
-			$text = preg_replace( '/[\s\n\r]+/s', ' ', $text );				// Put everything on one line.
-			$text = preg_replace( '/<\?.*\?'.'>/U', ' ', $text );				// Remove php.
+			$text = self::strip_shortcodes( $text );	// Remove any remaining shortcodes.
+			$text = preg_replace( '/[\s\n\r]+/s', ' ', $text );	// Put everything on one line.
+			$text = preg_replace( '/<\?.*\?'.'>/U', ' ', $text );	// Remove php.
 			$text = preg_replace( '/<script\b[^>]*>(.*)<\/script>/Ui', ' ', $text );	// Remove javascript.
-			$text = preg_replace( '/<style\b[^>]*>(.*)<\/style>/Ui', ' ', $text );		// Remove inline stylesheets.
+			$text = preg_replace( '/<style\b[^>]*>(.*)<\/style>/Ui', ' ', $text );	// Remove inline stylesheets.
 
 			/**
 			 * Maybe remove text between ignore markers.
@@ -3442,10 +3438,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				/**
 				 * Possibly use img alt strings if no text.
 				 */
-				if ( $text_stripped === '' && $use_img_alt ) {
+				if ( '' === $text_stripped && $use_img_alt && false !== strpos( $text, '<img ' ) ) {
 
-					if ( false !== strpos( $text, '<img ' ) &&
-						preg_match_all( '/<img [^>]*alt=["\']([^"\'>]*)["\']/Ui', $text, $all_matches, PREG_PATTERN_ORDER ) ) {
+					$alt_text   = '';
+					$alt_prefix = SucomUtil::get_key_value( 'plugin_img_alt_prefix', $this->p->options );
+
+					if ( preg_match_all( '/<img [^>]*alt=["\']([^"\'>]*)["\']/Ui', $text, $all_matches, PREG_PATTERN_ORDER ) ) {
 
 						foreach ( $all_matches[ 1 ] as $alt ) {
 
@@ -3456,7 +3454,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 								$alt = empty( $alt_prefix ) ? $alt : $alt_prefix . ' ' . $alt;
 
 								/**
-								 * Add a period after the image alt text if missing.
+								 * Maybe add a period after the image alt text.
 								 */
 								$alt_text .= ( strpos( $alt, '.' ) + 1 ) === strlen( $alt ) ? $alt . ' ' : $alt . '. ';
 							}
@@ -3471,6 +3469,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					$text = $alt_text;
 
 				} else {
+
 					$text = $text_stripped;
 				}
 			}

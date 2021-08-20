@@ -241,6 +241,11 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'pub-facebook':
 
+					$table_rows[ 'fb_site_verify' ] = '' .
+						$this->form->get_th_html( _x( 'Facebook Domain Verification ID', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'fb_site_verify' ) . 
+						'<td>' . $this->form->get_input( 'fb_site_verify', $css_class = 'api_key' ) . '</td>';
+
 					$table_rows[ 'fb_publisher_url' ] = '' . 
 						$this->form->get_th_html_locale( _x( 'Facebook Business Page URL', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'fb_publisher_url' ) . 
@@ -251,7 +256,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 							$css_class = '', $css_id = 'fb_author_field' ) . 
 						'<td>' . $this->form->get_select( 'fb_author_field', $user_contacts ) . '</td>';
 
-					$table_rows[ 'fb_app_id' ] = $this->form->get_tr_hide( 'basic', 'fb_app_id' ) . 
+					$table_rows[ 'fb_app_id' ] = $this->form->get_tr_hide( 'basic', 'fb_app_id' ) .
 						$this->form->get_th_html( _x( 'Facebook Application ID', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'fb_app_id' ) . 
 						'<td>' . $this->form->get_input( 'fb_app_id', $css_class = 'api_key' ) . '</td>';

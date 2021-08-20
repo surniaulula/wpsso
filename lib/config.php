@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.35.4',	// Plugin version.
-					'opt_version' => '801',		// Increment when changing default option values.
+					'version'     => '8.35.5-dev.1',	// Plugin version.
+					'opt_version' => '802',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Rank higher and improve click-through-rates by presenting your content at its best on social sites and in search results - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled.',
@@ -1451,6 +1451,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'ahrefs_site_verify' => '',		// Ahrefs Website Verification ID.
 					'baidu_site_verify'  => '',		// Baidu Website Verification ID.
+					'fb_site_verify'     => '',		// Facebook Domain Verification ID.
 					'g_site_verify'      => '',		// Google Website Verification ID.
 					'bing_site_verify'   => '',		// Microsoft Bing Website Verification ID.
 					'p_site_verify'      => '',		// Pinterest Website Verification ID.
@@ -1690,8 +1691,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_filter_title'         => 0,			// Use Filtered "SEO" Title.
 					'plugin_filter_content'       => 0,			// Use Filtered Content.
 					'plugin_filter_excerpt'       => 0,			// Use Filtered Excerpt.
-					'plugin_p_strip'              => 1,			// Content Starts at 1st Paragraph.
-					'plugin_use_img_alt'          => 1,			// Use Image Alt if No Content.
 					'plugin_img_alt_prefix'       => 'Image:',		// Content Image Alt Prefix.
 					'plugin_img_alt_prefix#es_ES' => 'Imagen:',		// Content Image Alt Prefix (es_ES).
 					'plugin_img_alt_prefix#fr_BE' => 'Image:',		// Content Image Alt Prefix (fr_BE).
@@ -2036,6 +2035,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'site_verify_meta_names' => array(
 					'ahrefs_site_verify' => 'ahrefs-site-verification',	// Ahrefs Website Verification ID.
 					'baidu_site_verify'  => 'baidu-site-verification',	// Baidu Website Verification ID.
+					'fb_site_verify'     => 'facebook-domain-verification',	// Facebook Domain Verification ID.
 					'g_site_verify'      => 'google-site-verification',	// Google Website Verification ID.
 					'bing_site_verify'   => 'msvalidate.01',		// Microsoft Bing Website Verification ID.
 					'p_site_verify'      => 'p:domain_verify',		// Pinterest Website Verification ID.
@@ -2358,7 +2358,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'height'   => 'auto',
 					),
 					'og_type' => array(
-						'header'   => 'OG Type',
+						'header'   => 'Open Graph',
 						'mt_name'  => 'og:type',
 						'meta_key' => '_wpsso_head_info_og_type',
 						'orderby'  => 'meta_value',
@@ -2375,7 +2375,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'height'    => '40px',
 					),
 					'og_desc' => array(
-						'header'   => 'SSO Desc',
+						'header'   => 'SSO Description',
 						'mt_name'  => 'og:description',
 						'meta_key' => '_wpsso_head_info_og_desc',
 						'localized' => true,

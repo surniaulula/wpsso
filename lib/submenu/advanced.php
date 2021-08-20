@@ -76,7 +76,6 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				'interface'   => _x( 'Interface', 'metabox tab', 'wpsso' ),
 				'integration' => _x( 'Integration', 'metabox tab', 'wpsso' ),
 				'image_sizes' => _x( 'Image Sizes', 'metabox tab', 'wpsso' ),
-				'cache'       => _x( 'Caching', 'metabox tab', 'wpsso' ),
 			) );
 
 			foreach ( $tabs as $tab_key => $title ) {

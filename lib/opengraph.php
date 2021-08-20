@@ -444,15 +444,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			/**
-			 * Facebook app id meta tag.
-			 */
-			if ( ! isset( $mt_og[ 'fb:app_id' ] ) ) {
-
-				$mt_og[ 'fb:app_id' ] = $this->p->options[ 'fb_app_id' ];
-			}
-
-			/**
 			 * Facebook admins meta tag.
+			 *
+			 * Deprecated since 2020/10/23
 			 */
 			if ( ! isset( $mt_og[ 'fb:admins' ] ) ) {
 
@@ -463,6 +457,14 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						$mt_og[ 'fb:admins' ][] = trim( $fb_admin );
 					}
 				}
+			}
+
+			/**
+			 * Facebook app id meta tag.
+			 */
+			if ( ! isset( $mt_og[ 'fb:app_id' ] ) ) {
+
+				$mt_og[ 'fb:app_id' ] = $this->p->options[ 'fb_app_id' ];
 			}
 
 			/**

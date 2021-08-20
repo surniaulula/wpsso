@@ -891,22 +891,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_p_strip':		// Content Starts at 1st Paragraph.
-
-							$text = sprintf( __( 'If a post, page, or custom post type does not have an excerpt, %s will use the content text to create a description value.', 'wpsso' ), $info[ 'short' ] ) . ' ';
-
-							$text .= __( 'When this option is enabled, all text before the first paragraph tag in the content will be ignored.', 'wpsso' ) . ' ';
-
-							$text .= __( 'The option is enabled by default since WordPress should provide correct paragraph tags in the content.', 'wpsso' );
-
-							break;
-
-						case 'tooltip-plugin_use_img_alt':	// Use Image Alt if No Content.
-
-							$text = sprintf( __( 'If the content text is comprised entirely of HTML tags (which must be removed to create a text-only description), %1$s can extract and use the image %2$s attributes it finds, instead of returning an empty description.', 'wpsso' ), $info[ 'short' ], '<em>alt</em>' );
-
-							break;
-
 						case 'tooltip-plugin_img_alt_prefix':	// Content Image Alt Prefix.
 
 							$text = sprintf( __( 'When the text from image %1$s attributes is used, %2$s can prefix the attribute text with an optional string (for example, "Image:").', 'wpsso' ), '<em>alt</em>', $info[ 'short' ] ) . ' ';
@@ -1267,6 +1251,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					switch ( $msg_key ) {
 
+						case 'tooltip-fb_site_verify':		// Facebook Domain Verification ID.
+
+							$text = sprintf( __( 'To <a href="%s">verify your domain with Facebook</a>, enter the "facebook-domain-verification" meta tag <code>content</code> value here (enter only the verification ID value, not the whole HTML tag).', 'wpsso' ), 'https://developers.facebook.com/docs/sharing/domain-verification/verifying-your-domain/' );
+
+							break;
+
 						case 'tooltip-fb_publisher_url':	// Facebook Business Page URL (localized).
 
 							$publisher_url_label = _x( $this->p->cf[ 'form' ][ 'social_accounts' ][ 'fb_publisher_url' ], 'option value', 'wpsso' );
@@ -1325,8 +1315,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							$text = sprintf( __( 'To verify your website ownership with <a href="%1$s">Google\'s Search Console</a>, select the <em>Settings</em> left-side menu option in the Search Console, then <em>Ownership and verification</em>, and then choose the <em>HTML tag</em> method.', 'wpsso' ), 'https://search.google.com/search-console' ) . ' ';
 
 							$text .= __( 'Enter the "google-site-verification" meta tag <code>content</code> value here (enter only the verification ID value, not the whole HTML tag).', 'wpsso' );
-
-							$text .= $this->maybe_html_tag_disabled_text( $parts = array( 'meta', 'name', 'google-site-verification' ) );
 
 							break;
 					}

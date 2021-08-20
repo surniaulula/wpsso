@@ -69,8 +69,8 @@ if ( ! class_exists( 'WpssoSiteSubmenuSiteAdvanced' ) && class_exists( 'WpssoAdm
 			$metabox_id = 'plugin';
 
 			$tabs = apply_filters( 'wpsso_site_advanced_' . $metabox_id . '_tabs', array(
-				'settings' => _x( 'Plugin Admin', 'metabox tab', 'wpsso' ),
-				'cache'    => _x( 'Caching', 'metabox tab', 'wpsso' ),
+				'settings'    => _x( 'Plugin Admin', 'metabox tab', 'wpsso' ),
+				'integration' => _x( 'Integration', 'metabox tab', 'wpsso' ),
 			) );
 
 			$table_rows = array();

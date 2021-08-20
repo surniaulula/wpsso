@@ -24,9 +24,8 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$this->p->util->add_plugin_filters( $this, array(
 				'plugin_interface_rows'         => 2,	// Advanced Settings > Interface tab.
-				'plugin_integration_rows'       => 2,	// Advanced Settings > Integration tab.
+				'plugin_integration_rows'       => 3,	// Advanced Settings > Integration tab.
 				'plugin_image_sizes_rows'       => 2,	// Advanced Settings > Image Sizes tab.
-				'plugin_cache_rows'             => 3,	// Advanced Settings > Caching tab.
 				'services_media_rows'           => 2,	// Service APIs > Media Services tab.
 				'services_shortening_rows'      => 2,	// Service APIs > Shortening Services tab.
 				'services_ratings_reviews_rows' => 2,	// Service APIs > Ratings and Reviews tab.
@@ -142,9 +141,9 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/**
 		 * Advanced Settings > Integration tab.
 		 */
-		public function filter_plugin_integration_rows( $table_rows, $form ) {
+		public function filter_plugin_integration_rows( $table_rows, $form, $network = false ) {
 
-			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
+			$table_rows[] = '<td colspan="4">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
 			$table_rows[ 'plugin_document_title' ] = '' .
 				$form->get_th_html( _x( 'Webpage Document Title', 'option label', 'wpsso' ),
@@ -155,27 +154,20 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$table_rows[ 'plugin_filter_title' ] = '' . 
 				$form->get_th_html( _x( 'Use Filtered "SEO" Title', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_filter_title' ) . 
-				$form->get_no_td_checkbox( 'plugin_filter_title', _x( 'not recommended', 'option comment', 'wpsso' ) );
+				$form->get_no_td_checkbox( 'plugin_filter_title',
+					_x( 'not recommended', 'option comment', 'wpsso' ) );
 
 			$table_rows[ 'plugin_filter_content' ] = '' . 
 				$form->get_th_html( _x( 'Use Filtered Content', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_filter_content' ) . 
-				$form->get_no_td_checkbox( 'plugin_filter_content', _x( 'recommended (see help text)', 'option comment', 'wpsso' ) );
+				$form->get_no_td_checkbox( 'plugin_filter_content',
+					_x( 'recommended (see help text)', 'option comment', 'wpsso' ) );
 
 			$table_rows[ 'plugin_filter_excerpt' ] = '' . 
 				$form->get_th_html( _x( 'Use Filtered Excerpt', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_filter_excerpt' ) . 
-				$form->get_no_td_checkbox( 'plugin_filter_excerpt', _x( 'recommended if using shortcodes in excerpts', 'option comment', 'wpsso' ) );
-
-			$table_rows[ 'plugin_p_strip' ] = $form->get_tr_hide( 'basic', 'plugin_p_strip' ) .
-				$form->get_th_html( _x( 'Content Starts at 1st Paragraph', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_p_strip' ) . 
-				$form->get_no_td_checkbox( 'plugin_p_strip' );
-
-			$table_rows[ 'plugin_use_img_alt' ] = $form->get_tr_hide( 'basic', 'plugin_use_img_alt' ) .
-				$form->get_th_html( _x( 'Use Image Alt if No Content', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_use_img_alt' ) . 
-				$form->get_no_td_checkbox( 'plugin_use_img_alt' );
+				$form->get_no_td_checkbox( 'plugin_filter_excerpt',
+					_x( 'recommended if shortcodes in excerpts', 'option comment', 'wpsso' ) );
 
 			$table_rows[ 'plugin_img_alt_prefix' ] = '' . 
 				$form->get_th_html_locale( _x( 'Content Image Alt Prefix', 'option label', 'wpsso' ),
@@ -232,9 +224,24 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					$css_class = '', $css_id = 'plugin_upscale_img_max' ) . 
 				'<td class="blank">' . $form->get_no_input( 'plugin_upscale_img_max', $css_class = 'short' ) . ' %</td>';
 
+			$table_rows[ 'plugin_clear_post_terms' ] = $form->get_tr_hide( 'basic', 'plugin_clear_post_terms' ) . 
+				$form->get_th_html( _x( 'Clear Term Cache for Published Post', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_clear_post_terms' ) . 
+				$form->get_no_td_checkbox( 'plugin_clear_post_terms' ) . 
+				WpssoAdmin::get_option_site_use( 'plugin_clear_post_terms', $form, $network );
+
+			$table_rows[ 'plugin_clear_for_comment' ] = $form->get_tr_hide( 'basic', 'plugin_clear_for_comment' ) . 
+				$form->get_th_html( _x( 'Clear Post Cache for New Comment', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_clear_for_comment' ) . 
+				$form->get_no_td_checkbox( 'plugin_clear_for_comment' ) . 
+				WpssoAdmin::get_option_site_use( 'plugin_clear_for_comment', $form, $network );
+
 			/**
-			 * Read Yoast SEO social meta.
+			 * Plugin and theme integration options.
 			 */
+			$table_rows[ 'subsection_plugin_theme_integration' ] = '' .
+				'<td colspan="4" class="subsection"><h4>' . _x( 'Plugin and Theme Integration', 'metabox title', 'wpsso' ) . '</h4></td>';
+
 			$table_rows[ 'plugin_wpseo_social_meta' ] = '' .
 				$form->get_th_html( _x( 'Import Yoast SEO Social Meta', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_wpseo_social_meta' ) . 
@@ -300,34 +307,6 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		}
 
 		/**
-		 * Advanced Settings > Caching tab.
-		 */
-		public function filter_plugin_cache_rows( $table_rows, $form, $network = false ) {
-
-			$table_rows[] = '<td colspan="' . ( $network ? 4 : 2 ) . '">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
-
-			$table_rows[ 'plugin_clear_short_urls' ] = $form->get_tr_hide( 'basic', 'plugin_clear_short_urls' ) . 
-				$form->get_th_html( _x( 'Clear Short URLs on Clear Cache', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_clear_short_urls' ) . 
-				$form->get_no_td_checkbox( 'plugin_clear_short_urls' ) . 
-				WpssoAdmin::get_option_site_use( 'plugin_clear_short_urls', $form, $network );
-
-			$table_rows[ 'plugin_clear_post_terms' ] = $form->get_tr_hide( 'basic', 'plugin_clear_post_terms' ) . 
-				$form->get_th_html( _x( 'Clear Term Cache for Published Post', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_clear_post_terms' ) . 
-				$form->get_no_td_checkbox( 'plugin_clear_post_terms' ) . 
-				WpssoAdmin::get_option_site_use( 'plugin_clear_post_terms', $form, $network );
-
-			$table_rows[ 'plugin_clear_for_comment' ] = $form->get_tr_hide( 'basic', 'plugin_clear_for_comment' ) . 
-				$form->get_th_html( _x( 'Clear Post Cache for New Comment', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_clear_for_comment' ) . 
-				$form->get_no_td_checkbox( 'plugin_clear_for_comment' ) . 
-				WpssoAdmin::get_option_site_use( 'plugin_clear_for_comment', $form, $network );
-
-			return $table_rows;
-		}
-
-		/**
 		 * Service APIs > Media Services tab.
 		 */
 		public function filter_services_media_rows( $table_rows, $form ) {
@@ -376,6 +355,11 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					$css_class = '', $css_id = 'plugin_min_shorten' ) . 
 				'<td class="blank">' . $form->get_no_input( 'plugin_min_shorten', $css_class = 'short' ) . ' ' .
 				_x( 'characters', 'option comment', 'wpsso' ) . '</td>';
+
+			$table_rows[ 'plugin_clear_short_urls' ] = '' .
+				$form->get_th_html( _x( 'Clear Short URLs on Clear Cache', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_clear_short_urls' ) . 
+				$form->get_no_td_checkbox( 'plugin_clear_short_urls' );
 
 			$table_rows[ 'plugin_wp_shortlink' ] = $form->get_tr_hide( 'basic', 'plugin_wp_shortlink' ) .
 				$form->get_th_html( _x( 'Use Short URL for WP Shortlink', 'option label', 'wpsso' ),
@@ -427,7 +411,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/**
 		 * Document Types > Open Graph tab.
 		 */
-		public function filter_doc_types_og_types_rows( array $table_rows, $form ) {
+		public function filter_doc_types_og_types_rows( $table_rows, $form ) {
 
 			$og_types = $this->p->og->get_og_types_select();
 
@@ -504,7 +488,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/**
 		 * Document Types > Schema tab.
 		 */
-		public function filter_doc_types_schema_types_rows( array $table_rows, $form ) {
+		public function filter_doc_types_schema_types_rows( $table_rows, $form ) {
 
 			$schema_types = $this->p->schema->get_schema_types_select( $context = 'settings' );
 

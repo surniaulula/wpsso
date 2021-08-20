@@ -29,8 +29,8 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'og_publisher_url'               => 'fb_publisher_url',
 					'add_meta_property_og:video'     => 'add_meta_property_og:video:url',
 					'twitter_shortener'              => 'plugin_shortener',
-					'og_desc_strip'                  => 'plugin_p_strip',
-					'og_desc_alt'                    => 'plugin_use_img_alt',
+					'og_desc_strip'                  => '',
+					'og_desc_alt'                    => '',
 					'add_meta_name_twitter:data1'    => '',
 					'add_meta_name_twitter:label1'   => '',
 					'add_meta_name_twitter:data2'    => '',
@@ -448,6 +448,11 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'plugin_select_cache_exp'    => '',
 					'plugin_short_url_cache_exp' => '',
 					'plugin_types_cache_exp'     => '',
+				),
+				801 => array(
+					'fb_admins'          => '',	// Deprecated since 2020/10/23.
+					'plugin_p_strip'     => '',
+					'plugin_use_img_alt' => '',
 				),
 			),
 		);

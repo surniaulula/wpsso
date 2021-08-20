@@ -91,6 +91,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				case 'fb_app_id':
 				case 'fb_app_secret':
+				case 'fb_site_verify':			// Facebook Domain Verification ID.
 				case 'g_site_verify':			// Google Website Verification ID.
 				case 'p_site_verify':			// Pinterest Website Verification ID.
 				case 'plugin_stamped_key_public':	// Stamped.io API Key Public.
@@ -290,7 +291,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				/**
 				 * Strip leading URLs off facebook usernames.
 				 */
-				case 'fb_admins':
+				case 'fb_admins':	// Deprecated since 2020/10/23.
 
 					return 'url_base';
 

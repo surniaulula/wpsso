@@ -2025,8 +2025,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function get_mt_og_seed() {
 
 			return array(
-				'fb:app_id'       => null,
 				'fb:admins'       => null,
+				'fb:app_id'       => null,
 				'og:type'         => null,
 				'og:url'          => null,
 				'og:locale'       => null,

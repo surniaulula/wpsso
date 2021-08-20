@@ -540,7 +540,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/**
 			 * Remove shortcodes, etc., but don't strip html tags.
 			 */
-			$quote_text = $this->p->util->cleanup_html_tags( $quote_text, false );
+			$quote_text = $this->p->util->cleanup_html_tags( $quote_text, $strip_tags = false );
 
 			return apply_filters( 'wpsso_quote', $quote_text, $mod );
 		}
@@ -1089,7 +1089,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 							$desc_text = $this->get_the_content( $mod, $read_cache, $md_key );
 
 							/**
-							 * Ignore everything before the first paragraph if true.
+							 * Ignore everything before the first paragraph.
 							 */
 							if ( empty( $desc_text ) ) {
 
@@ -1100,21 +1100,18 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 							} else {
 
-								if ( $this->p->options[ 'plugin_p_strip' ] ) {
+								if ( $this->p->debug->enabled ) {
 
-									if ( $this->p->debug->enabled ) {
-
-										$this->p->debug->log( 'removing text before the first paragraph' );
-									}
-
-									/**
-									 * U = Inverts the "greediness" of quantifiers so that they are not greedy by default.
-									 * i = Letters in the pattern match both upper and lower case letters. 
-									 *
-									 * See http://php.net/manual/en/reference.pcre.pattern.modifiers.php.
-									 */
-									$desc_text = preg_replace( '/^.*<p[^>]*>/Ui', '', $desc_text );
+									$this->p->debug->log( 'removing text before the first paragraph' );
 								}
+
+								/**
+								 * U = Inverts the "greediness" of quantifiers so that they are not greedy by default.
+								 * i = Letters in the pattern match both upper and lower case letters. 
+								 *
+								 * See http://php.net/manual/en/reference.pcre.pattern.modifiers.php.
+								 */
+								$desc_text = preg_replace( '/^.*<p[^>]*>/Ui', '', $desc_text );
 							}
 						}
 
@@ -1253,7 +1250,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			$strlen_pre_cleanup = $this->p->debug->enabled ? strlen( $desc_text ) : 0;
 
-			$desc_text = $this->p->util->cleanup_html_tags( $desc_text, true, $this->p->options[ 'plugin_use_img_alt' ] );
+			$desc_text = $this->p->util->cleanup_html_tags( $desc_text, $strip_tags = true, $use_img_alt = true );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1964,7 +1961,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				$text = preg_replace( '/<pre[^>]*>.*<\/pre>/Us', '', $text );
 
-				$text = $this->p->util->cleanup_html_tags( $text, true, $this->p->options[ 'plugin_use_img_alt' ] );
+				$text = $this->p->util->cleanup_html_tags( $text, $strip_tags = true, $use_img_alt = true );
 			}
 
 			return $text;
