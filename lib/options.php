@@ -508,7 +508,23 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			if ( empty( $this->cache_site_defaults ) || empty( self::$cache_allowed ) ) {
 
-				$this->cache_site_defaults = $this->p->cf[ 'opt' ][ 'site_defaults' ];
+				/**
+				 * Automatically include all advanced plugin options. 
+				 */
+				$this->cache_site_defaults = SucomUtil::preg_grep_keys( '/^plugin_/', $this->p->cf[ 'opt' ][ 'defaults' ] );
+
+				/**
+				 * Add a default "Site Use" value.
+				 */
+				foreach ( $this->cache_site_defaults as $key => $val ) {
+
+					if ( false === strpos( $key, ':' ) ) {	// Just in case.
+
+						$this->cache_site_defaults[ $key . ':use' ] = 'default';
+					}
+				}
+
+				$this->cache_site_defaults = array_merge( $this->cache_site_defaults, $this->p->cf[ 'opt' ][ 'site_defaults' ] );
 			}
 
 			if ( $force_filter || empty( $this->cache_site_defaults[ 'options_filtered' ] ) ) {

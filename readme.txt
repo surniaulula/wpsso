@@ -322,7 +322,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.35.5-dev.1 (2021/08/20)**
+**Version 8.35.5-dev.2 (2021/08/20)**
 
 * **New Features**
 	* None.
@@ -889,7 +889,7 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 
 == Upgrade Notice ==
 
-= 8.35.5-dev.1 =
+= 8.35.5-dev.2 =
 
 (2021/08/20) Added a new "Facebook Domain Verification ID" option. Updated the Integration and Caching tabs in the Advanced Settings page.
 

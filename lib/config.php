@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.35.5-dev.1',	// Plugin version.
-					'opt_version' => '802',		// Increment when changing default option values.
+					'version'     => '8.35.5-dev.2',	// Plugin version.
+					'opt_version' => '803',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Rank higher and improve click-through-rates by presenting your content at its best on social sites and in search results - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled.',
@@ -1721,10 +1721,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_wpseo_social_meta'    => 0,			// Import Yoast SEO Social Meta.
 					'plugin_wpseo_show_import'    => 1,			// Show Yoast SEO Import Details.
 
-					/**
-					 * Advanced Settings > Caching tab.
-					 */
-					'plugin_clear_short_urls'    => 0,			// Clear Short URLs on Clear Cache.
 					'plugin_clear_post_terms'    => 1,			// Clear Term Cache for Published Post.
 					'plugin_clear_for_comment'   => 1,			// Clear Post Cache for New Comment.
 
@@ -1745,8 +1741,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Advanced Settings > Shortening Services tab.
 					 */
 					'plugin_shortener'                    => 'none',	// URL Shortening Service.
-					'plugin_wp_shortlink'                 => 1,		// Use Short URL for WP Shortlink.
 					'plugin_min_shorten'                  => 23,		// Minimum URL Length to Shorten.
+					'plugin_clear_short_urls'             => 0,		// Clear Short URLs on Clear Cache.
+					'plugin_wp_shortlink'                 => 1,		// Use Short URL for WP Shortlink.
 					'plugin_bitly_access_token'           => '',		// Bitly Generic Access Token.
 					'plugin_bitly_domain'                 => '',		// Bitly Short Domain (Optional).
 					'plugin_bitly_group_name'             => '',		// Bitly Group Name (Optional).
@@ -1914,32 +1911,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 				/**
 				 * Multisite options.
+				 *
+				 * Automatically includes all advanced plugin options. 
+				 *
+				 * See the WpssoOptions->get_site_defaults() method.
 				 */
 				'site_defaults' => array(
 					'options_version'  => '',		// Example: -wpsso512pro-wpssoum3gpl
 					'options_filtered' => 0,
-
-					/**
-					 * Advanced Settings > Plugin Admin tab.
-					 */
-					'plugin_clean_on_uninstall'     => 0,			// Remove Settings on Uninstall.
-					'plugin_clean_on_uninstall:use' => 'default',
-					'plugin_cache_disable'          => 0,			// Disable Cache for Debugging.
-					'plugin_cache_disable:use'      => 'default',
-					'plugin_debug_html'             => 0,			// Add HTML Debug Messages.
-					'plugin_debug_html:use'         => 'default',
-					'plugin_load_mofiles'           => 0,			// Use Local Plugin Translations.
-					'plugin_load_mofiles:use'       => 'default',
-
-					/**
-					 * Advanced Settings > Caching tab.
-					 */
-					'plugin_clear_short_urls'        => 0,			// Clear Short URLs on Clear Cache.
-					'plugin_clear_short_urls:use'    => 'default',
-					'plugin_clear_post_terms'        => 1,			// Clear Term Cache for Published Post.
-					'plugin_clear_post_terms:use'    => 'default',
-					'plugin_clear_for_comment'       => 1,			// Clear Post Cache for New Comment.
-					'plugin_clear_for_comment:use'   => 'default',
 				),
 
 				/**
@@ -2452,8 +2431,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'all'   => 'All Options',
 				),
 				'site_option_use' => array(
-					'default' => 'New activation',
-					'empty'   => 'If empty',
+					'default' => 'New Activation',
+					'empty'   => 'If Empty',
 					'force'   => 'Always',
 				),
 				'script_locations' => array(
