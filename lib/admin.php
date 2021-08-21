@@ -3072,9 +3072,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$table_rows[ 'plugin_clean_on_uninstall' ] = '' .
 				$form->get_th_html( _x( 'Remove Settings on Uninstall', 'option label', 'wpsso' ), $css_class = '', $css_id = 'plugin_clean_on_uninstall' ) . 
-				'<td>' .
-				$form->get_checkbox( 'plugin_clean_on_uninstall' ) .
-				'</td>' .
+				'<td>' . $form->get_checkbox( 'plugin_clean_on_uninstall' ) . '</td>' .
 				self::get_option_site_use( 'plugin_clean_on_uninstall', $form, $network, $is_enabled = true );
 
 			$table_rows[ 'plugin_load_mofiles' ] = '' .

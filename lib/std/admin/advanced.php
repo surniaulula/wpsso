@@ -23,9 +23,9 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$this->p =& $plugin;
 
 			$this->p->util->add_plugin_filters( $this, array(
-				'plugin_interface_rows'         => 2,	// Advanced Settings > Interface tab.
 				'plugin_integration_rows'       => 3,	// Advanced Settings > Integration tab.
 				'plugin_image_sizes_rows'       => 2,	// Advanced Settings > Image Sizes tab.
+				'plugin_interface_rows'         => 2,	// Advanced Settings > Interface tab.
 				'services_media_rows'           => 2,	// Service APIs > Media Services tab.
 				'services_shortening_rows'      => 2,	// Service APIs > Shortening Services tab.
 				'services_ratings_reviews_rows' => 2,	// Service APIs > Ratings and Reviews tab.
@@ -42,6 +42,188 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'head_tags_seo_other_rows'      => 3,	// HTML Tags > SEO / Other tab.
 				'advanced_wp_sitemaps_rows'     => 3,	// WordPress Sitemaps metabox.
 			), $prio = 20 );
+		}
+
+		/**
+		 * Advanced Settings > Integration tab.
+		 */
+		public function filter_plugin_integration_rows( $table_rows, $form, $network = false ) {
+
+			$table_rows[] = '<td colspan="4">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
+
+			$table_rows[ 'plugin_document_title' ] = '' .
+				$form->get_th_html( _x( 'Webpage Document Title', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_document_title' ) .
+				'<td class="blank">' . $form->get_no_select( 'plugin_document_title',  $this->p->cf[ 'form' ][ 'document_title' ] ) .
+				$this->p->msgs->maybe_title_tag_disabled() . '</td>' .
+				WpssoAdmin::get_option_site_use( 'plugin_document_title', $form, $network );
+
+			$table_rows[ 'plugin_filter_title' ] = '' . 
+				$form->get_th_html( _x( 'Use Filtered "SEO" Title', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_filter_title' ) . 
+				$form->get_no_td_checkbox( 'plugin_filter_title', _x( 'not recommended', 'option comment', 'wpsso' ) ) .
+				WpssoAdmin::get_option_site_use( 'plugin_filter_title', $form, $network );
+
+			$table_rows[ 'plugin_filter_content' ] = '' . 
+				$form->get_th_html( _x( 'Use Filtered Content', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_filter_content' ) . 
+				$form->get_no_td_checkbox( 'plugin_filter_content', _x( 'recommended (see help text)', 'option comment', 'wpsso' ) ) .
+				WpssoAdmin::get_option_site_use( 'plugin_filter_content', $form, $network );
+
+			$table_rows[ 'plugin_filter_excerpt' ] = '' . 
+				$form->get_th_html( _x( 'Use Filtered Excerpt', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_filter_excerpt' ) . 
+				$form->get_no_td_checkbox( 'plugin_filter_excerpt', _x( 'recommended if shortcodes in excerpts', 'option comment', 'wpsso' ) ) .
+				WpssoAdmin::get_option_site_use( 'plugin_filter_excerpt', $form, $network );
+
+			$table_rows[ 'plugin_img_alt_prefix' ] = '' . 
+				$form->get_th_html_locale( _x( 'Content Image Alt Prefix', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_img_alt_prefix' ) . 
+				'<td class="blank">' . SucomUtil::get_key_value( 'plugin_img_alt_prefix', $form->options ) . '</td>' .
+				WpssoAdmin::get_option_site_use( 'plugin_img_alt_prefix', $form, $network );
+
+			$table_rows[ 'plugin_p_cap_prefix' ] = '' . 
+				$form->get_th_html_locale( _x( 'WP Caption Text Prefix', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_p_cap_prefix' ) . 
+				'<td class="blank">' . SucomUtil::get_key_value( 'plugin_p_cap_prefix', $form->options ) . '</td>' .
+				WpssoAdmin::get_option_site_use( 'plugin_p_cap_prefix', $form, $network );
+
+			$table_rows[ 'plugin_no_title_text' ] = '' . 
+				$form->get_th_html_locale( _x( 'No Title Text', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_no_title_text' ) . 
+				'<td class="blank">' . SucomUtil::get_key_value( 'plugin_no_title_text', $form->options ) . '</td>' .
+				WpssoAdmin::get_option_site_use( 'plugin_no_title_text', $form, $network );
+
+			$table_rows[ 'plugin_no_desc_text' ] = '' . 
+				$form->get_th_html_locale( _x( 'No Description Text', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_no_desc_text' ) . 
+				'<td class="blank">' . SucomUtil::get_key_value( 'plugin_no_desc_text', $form->options ) . '</td>' .
+				WpssoAdmin::get_option_site_use( 'plugin_no_desc_text', $form, $network );
+
+			$table_rows[ 'plugin_page_excerpt' ] = '' . 
+				$form->get_th_html( _x( 'Enable Excerpt for Pages', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_page_excerpt' ) . 
+				$form->get_no_td_checkbox( 'plugin_page_excerpt' ) .
+				WpssoAdmin::get_option_site_use( 'plugin_page_excerpt', $form, $network );
+
+			$table_rows[ 'plugin_page_tags' ] = $form->get_tr_hide( 'basic', 'plugin_page_tags' ) .
+				$form->get_th_html( _x( 'Enable Tags for Pages', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_page_tags' ) . 
+				$form->get_no_td_checkbox( 'plugin_page_tags' ) .
+				WpssoAdmin::get_option_site_use( 'plugin_page_tags', $form, $network );
+
+			$table_rows[ 'plugin_new_user_is_person' ] = '' . 
+				$form->get_th_html( _x( 'Add Person Role for New Users', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_new_user_is_person' ) . 
+				$form->get_no_td_checkbox( 'plugin_new_user_is_person' ) .
+				WpssoAdmin::get_option_site_use( 'plugin_new_user_is_person', $form, $network );
+
+			$table_rows[ 'plugin_check_head' ] = $form->get_tr_hide( 'basic', 'plugin_check_head' ) .
+				$form->get_th_html( _x( 'Check for Duplicate Meta Tags', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_check_head' ) . 
+				$form->get_no_td_checkbox( 'plugin_check_head' ) .
+				WpssoAdmin::get_option_site_use( 'plugin_check_head', $form, $network );
+
+			$table_rows[ 'plugin_check_img_dims' ] = '' . 
+				$form->get_th_html( _x( 'Enforce Image Dimension Checks', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_check_img_dims' ) . 
+				$form->get_no_td_checkbox( 'plugin_check_img_dims', _x( 'recommended', 'option comment', 'wpsso' ) ) .
+				WpssoAdmin::get_option_site_use( 'plugin_check_img_dims', $form, $network );
+
+			$table_rows[ 'plugin_upscale_images' ] = '' . 
+				$form->get_th_html( _x( 'Upscale Media Library Images', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_upscale_images' ) . 
+				$form->get_no_td_checkbox( 'plugin_upscale_images' ) .
+				WpssoAdmin::get_option_site_use( 'plugin_upscale_images', $form, $network );
+
+			$table_rows[ 'plugin_upscale_img_max' ] = $form->get_tr_hide( 'basic', 'plugin_upscale_img_max' ) .
+				$form->get_th_html( _x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_upscale_img_max' ) . 
+				'<td class="blank">' . $form->get_no_input( 'plugin_upscale_img_max', $css_class = 'short' ) . ' %</td>' .
+				WpssoAdmin::get_option_site_use( 'plugin_upscale_img_max', $form, $network );
+
+			$table_rows[ 'plugin_clear_post_terms' ] = $form->get_tr_hide( 'basic', 'plugin_clear_post_terms' ) . 
+				$form->get_th_html( _x( 'Clear Term Cache for Published Post', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_clear_post_terms' ) . 
+				$form->get_no_td_checkbox( 'plugin_clear_post_terms' ) . 
+				WpssoAdmin::get_option_site_use( 'plugin_clear_post_terms', $form, $network );
+
+			$table_rows[ 'plugin_clear_for_comment' ] = $form->get_tr_hide( 'basic', 'plugin_clear_for_comment' ) . 
+				$form->get_th_html( _x( 'Clear Post Cache for New Comment', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_clear_for_comment' ) . 
+				$form->get_no_td_checkbox( 'plugin_clear_for_comment' ) . 
+				WpssoAdmin::get_option_site_use( 'plugin_clear_for_comment', $form, $network );
+
+			/**
+			 * Plugin and theme integration options.
+			 */
+			$table_rows[ 'subsection_plugin_theme_integration' ] = '' .
+				'<td colspan="4" class="subsection"><h4>' . _x( 'Plugin and Theme Integration', 'metabox title', 'wpsso' ) . '</h4></td>';
+
+			$table_rows[ 'plugin_wpseo_social_meta' ] = '' .
+				$form->get_th_html( _x( 'Import Yoast SEO Social Meta', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_wpseo_social_meta' ) . 
+				$form->get_no_td_checkbox( 'plugin_wpseo_social_meta' ) .
+				WpssoAdmin::get_option_site_use( 'plugin_wpseo_social_meta', $form, $network );
+
+			$table_rows[ 'plugin_wpseo_show_import' ] = $form->get_tr_hide( 'basic', 'plugin_wpseo_show_import' ) .
+				$form->get_th_html( _x( 'Show Yoast SEO Import Details', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_wpseo_show_import' ) .
+				$form->get_no_td_checkbox( 'plugin_wpseo_show_import' ) .
+				WpssoAdmin::get_option_site_use( 'plugin_wpseo_show_import', $form, $network );
+
+			return $table_rows;
+		}
+
+		/**
+		 * Advanced Settings > Image Sizes tab.
+		 */
+		public function filter_plugin_image_sizes_rows( $table_rows, $form ) {
+
+			if ( $info_msg = $this->p->msgs->get( 'info-image_dimensions' ) ) {
+
+				$table_rows[ 'info-image_dimensions' ] = '<td colspan="2">' . $info_msg . '</td>';
+			}
+
+			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
+
+			$json_req_msg   = $this->p->msgs->maybe_ext_required( 'wpssojson' );
+			$p_img_disabled = empty( $this->p->options[ 'p_add_img_html' ] ) ? true : false;
+			$p_img_msg      = $p_img_disabled ? $this->p->msgs->p_img_disabled( $extra_css_class = 'inline' ) : '';
+
+			$table_rows[ 'og_img_size' ] = '' .
+				$form->get_th_html( _x( 'Open Graph (Facebook and oEmbed)', 'option label', 'wpsso' ), '', 'og_img_size' ) . 
+				'<td class="blank">' . $form->get_no_input_image_dimensions( 'og_img' ) . '</td>';
+
+			$table_rows[ 'p_img_size' ] = ( $p_img_disabled ? $form->get_tr_hide( 'basic' ) : '' ) .
+				$form->get_th_html( _x( 'Pinterest Pin It', 'option label', 'wpsso' ), '', 'p_img_size' ) . 
+				'<td class="blank">' . $form->get_no_input_image_dimensions( 'p_img', $p_img_disabled ) . $p_img_msg . '</td>';
+
+			$table_rows[ 'schema_01x01_img_size' ] = '' .
+				$form->get_th_html( _x( 'Schema 1:1 (Google)', 'option label', 'wpsso' ), '', 'schema_1x1_img_size' ) . 
+				'<td class="blank">' . $form->get_no_input_image_dimensions( 'schema_1x1_img' ) . $json_req_msg . '</td>';
+
+			$table_rows[ 'schema_04x03_img_size' ] = '' .
+				$form->get_th_html( _x( 'Schema 4:3 (Google)', 'option label', 'wpsso' ), '', 'schema_4x3_img_size' ) . 
+				'<td class="blank">' . $form->get_no_input_image_dimensions( 'schema_4x3_img' ) . $json_req_msg . '</td>';
+
+			$table_rows[ 'schema_16x09_img_size' ] = '' .
+				$form->get_th_html( _x( 'Schema 16:9 (Google)', 'option label', 'wpsso' ), '', 'schema_16x9_img_size' ) . 
+				'<td class="blank">' . $form->get_no_input_image_dimensions( 'schema_16x9_img' ) . $json_req_msg . '</td>';
+
+			$table_rows[ 'schema_thumb_img_size' ] = '' .
+				$form->get_th_html( _x( 'Schema Thumbnail', 'option label', 'wpsso' ), '', 'schema_thumb_img_size' ) . 
+				'<td class="blank">' . $form->get_no_input_image_dimensions( 'thumb_img' ) . '</td>';
+
+			$table_rows[ 'tc_00_sum_img_size' ] = '' .
+				$form->get_th_html( _x( 'Twitter Summary Card', 'option label', 'wpsso' ), '', 'tc_sum_img_size' ) . 
+				'<td class="blank">' . $form->get_no_input_image_dimensions( 'tc_sum_img' ) . '</td>';
+
+			$table_rows[ 'tc_01_lrg_img_size' ] = '' .
+				$form->get_th_html( _x( 'Twitter Large Image Summary Card', 'option label', 'wpsso' ), '', 'tc_lrg_img_size' ) . 
+				'<td class="blank">' . $form->get_no_input_image_dimensions( 'tc_lrg_img' ) . '</td>';
+
+			return $table_rows;
 		}
 
 		/**
@@ -134,176 +316,6 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'<td>' . $form->get_no_input( 'plugin_col_def_width', 'short' ) .
 				_x( 'and max width', 'option comment', 'wpsso' ) . ' ' .
 				$form->get_no_input( 'plugin_col_def_width_max', 'short' ) . '</td>';
-
-			return $table_rows;
-		}
-
-		/**
-		 * Advanced Settings > Integration tab.
-		 */
-		public function filter_plugin_integration_rows( $table_rows, $form, $network = false ) {
-
-			$table_rows[] = '<td colspan="4">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
-
-			$table_rows[ 'plugin_document_title' ] = '' .
-				$form->get_th_html( _x( 'Webpage Document Title', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_document_title' ) .
-				'<td class="blank">' . $form->get_no_select( 'plugin_document_title',  $this->p->cf[ 'form' ][ 'document_title' ] ) .
-					$this->p->msgs->maybe_title_tag_disabled() . '</td>';
-
-			$table_rows[ 'plugin_filter_title' ] = '' . 
-				$form->get_th_html( _x( 'Use Filtered "SEO" Title', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_filter_title' ) . 
-				$form->get_no_td_checkbox( 'plugin_filter_title',
-					_x( 'not recommended', 'option comment', 'wpsso' ) );
-
-			$table_rows[ 'plugin_filter_content' ] = '' . 
-				$form->get_th_html( _x( 'Use Filtered Content', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_filter_content' ) . 
-				$form->get_no_td_checkbox( 'plugin_filter_content',
-					_x( 'recommended (see help text)', 'option comment', 'wpsso' ) );
-
-			$table_rows[ 'plugin_filter_excerpt' ] = '' . 
-				$form->get_th_html( _x( 'Use Filtered Excerpt', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_filter_excerpt' ) . 
-				$form->get_no_td_checkbox( 'plugin_filter_excerpt',
-					_x( 'recommended if shortcodes in excerpts', 'option comment', 'wpsso' ) );
-
-			$table_rows[ 'plugin_img_alt_prefix' ] = '' . 
-				$form->get_th_html_locale( _x( 'Content Image Alt Prefix', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_img_alt_prefix' ) . 
-				'<td class="blank">' . SucomUtil::get_key_value( 'plugin_img_alt_prefix', $form->options ) . '</td>';
-
-			$table_rows[ 'plugin_p_cap_prefix' ] = '' . 
-				$form->get_th_html_locale( _x( 'WP Caption Text Prefix', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_p_cap_prefix' ) . 
-				'<td class="blank">' . SucomUtil::get_key_value( 'plugin_p_cap_prefix', $form->options ) . '</td>';
-
-			$table_rows[ 'plugin_no_title_text' ] = '' . 
-				$form->get_th_html_locale( _x( 'No Title Text', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_no_title_text' ) . 
-				'<td class="blank">' . SucomUtil::get_key_value( 'plugin_no_title_text', $form->options ) . '</td>';
-
-			$table_rows[ 'plugin_no_desc_text' ] = '' . 
-				$form->get_th_html_locale( _x( 'No Description Text', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_no_desc_text' ) . 
-				'<td class="blank">' . SucomUtil::get_key_value( 'plugin_no_desc_text', $form->options ) . '</td>';
-
-			$table_rows[ 'plugin_page_excerpt' ] = '' . 
-				$form->get_th_html( _x( 'Enable Excerpt for Pages', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_page_excerpt' ) . 
-				$form->get_no_td_checkbox( 'plugin_page_excerpt' );
-
-			$table_rows[ 'plugin_page_tags' ] = $form->get_tr_hide( 'basic', 'plugin_page_tags' ) .
-				$form->get_th_html( _x( 'Enable Tags for Pages', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_page_tags' ) . 
-				$form->get_no_td_checkbox( 'plugin_page_tags' );
-
-			$table_rows[ 'plugin_new_user_is_person' ] = '' . 
-				$form->get_th_html( _x( 'Add Person Role for New Users', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_new_user_is_person' ) . 
-				$form->get_no_td_checkbox( 'plugin_new_user_is_person' );
-
-			$table_rows[ 'plugin_check_head' ] = $form->get_tr_hide( 'basic', 'plugin_check_head' ) .
-				$form->get_th_html( _x( 'Check for Duplicate Meta Tags', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_check_head' ) . 
-				$form->get_no_td_checkbox( 'plugin_check_head' );
-
-			$table_rows[ 'plugin_check_img_dims' ] = '' . 
-				$form->get_th_html( _x( 'Enforce Image Dimension Checks', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_check_img_dims' ) . 
-				$form->get_no_td_checkbox( 'plugin_check_img_dims', _x( 'recommended', 'option comment', 'wpsso' ) );
-
-			$table_rows[ 'plugin_upscale_images' ] = '' . 
-				$form->get_th_html( _x( 'Upscale Media Library Images', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_upscale_images' ) . 
-				$form->get_no_td_checkbox( 'plugin_upscale_images' );
-
-			$table_rows[ 'plugin_upscale_img_max' ] = $form->get_tr_hide( 'basic', 'plugin_upscale_img_max' ) .
-				$form->get_th_html( _x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_upscale_img_max' ) . 
-				'<td class="blank">' . $form->get_no_input( 'plugin_upscale_img_max', $css_class = 'short' ) . ' %</td>';
-
-			$table_rows[ 'plugin_clear_post_terms' ] = $form->get_tr_hide( 'basic', 'plugin_clear_post_terms' ) . 
-				$form->get_th_html( _x( 'Clear Term Cache for Published Post', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_clear_post_terms' ) . 
-				$form->get_no_td_checkbox( 'plugin_clear_post_terms' ) . 
-				WpssoAdmin::get_option_site_use( 'plugin_clear_post_terms', $form, $network );
-
-			$table_rows[ 'plugin_clear_for_comment' ] = $form->get_tr_hide( 'basic', 'plugin_clear_for_comment' ) . 
-				$form->get_th_html( _x( 'Clear Post Cache for New Comment', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_clear_for_comment' ) . 
-				$form->get_no_td_checkbox( 'plugin_clear_for_comment' ) . 
-				WpssoAdmin::get_option_site_use( 'plugin_clear_for_comment', $form, $network );
-
-			/**
-			 * Plugin and theme integration options.
-			 */
-			$table_rows[ 'subsection_plugin_theme_integration' ] = '' .
-				'<td colspan="4" class="subsection"><h4>' . _x( 'Plugin and Theme Integration', 'metabox title', 'wpsso' ) . '</h4></td>';
-
-			$table_rows[ 'plugin_wpseo_social_meta' ] = '' .
-				$form->get_th_html( _x( 'Import Yoast SEO Social Meta', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_wpseo_social_meta' ) . 
-				$form->get_no_td_checkbox( 'plugin_wpseo_social_meta' ) .
-				WpssoAdmin::get_option_site_use( 'plugin_wpseo_social_meta', $form, $network );
-
-			$table_rows[ 'plugin_wpseo_show_import' ] = $form->get_tr_hide( 'basic', 'plugin_wpseo_show_import' ) .
-				$form->get_th_html( _x( 'Show Yoast SEO Import Details', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_wpseo_show_import' ) .
-				$form->get_no_td_checkbox( 'plugin_wpseo_show_import' ) .
-				WpssoAdmin::get_option_site_use( 'plugin_wpseo_show_import', $form, $network );
-
-			return $table_rows;
-		}
-
-		/**
-		 * Advanced Settings > Image Sizes tab.
-		 */
-		public function filter_plugin_image_sizes_rows( $table_rows, $form ) {
-
-			if ( $info_msg = $this->p->msgs->get( 'info-image_dimensions' ) ) {
-
-				$table_rows[ 'info-image_dimensions' ] = '<td colspan="2">' . $info_msg . '</td>';
-			}
-
-			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
-
-			$json_req_msg   = $this->p->msgs->maybe_ext_required( 'wpssojson' );
-			$p_img_disabled = empty( $this->p->options[ 'p_add_img_html' ] ) ? true : false;
-			$p_img_msg      = $p_img_disabled ? $this->p->msgs->p_img_disabled( $extra_css_class = 'inline' ) : '';
-
-			$table_rows[ 'og_img_size' ] = '' .
-				$form->get_th_html( _x( 'Open Graph (Facebook and oEmbed)', 'option label', 'wpsso' ), '', 'og_img_size' ) . 
-				'<td class="blank">' . $form->get_no_input_image_dimensions( 'og_img' ) . '</td>';
-
-			$table_rows[ 'p_img_size' ] = ( $p_img_disabled ? $form->get_tr_hide( 'basic' ) : '' ) .
-				$form->get_th_html( _x( 'Pinterest Pin It', 'option label', 'wpsso' ), '', 'p_img_size' ) . 
-				'<td class="blank">' . $form->get_no_input_image_dimensions( 'p_img', $p_img_disabled ) . $p_img_msg . '</td>';
-
-			$table_rows[ 'schema_01x01_img_size' ] = '' .
-				$form->get_th_html( _x( 'Schema 1:1 (Google)', 'option label', 'wpsso' ), '', 'schema_1x1_img_size' ) . 
-				'<td class="blank">' . $form->get_no_input_image_dimensions( 'schema_1x1_img' ) . $json_req_msg . '</td>';
-
-			$table_rows[ 'schema_04x03_img_size' ] = '' .
-				$form->get_th_html( _x( 'Schema 4:3 (Google)', 'option label', 'wpsso' ), '', 'schema_4x3_img_size' ) . 
-				'<td class="blank">' . $form->get_no_input_image_dimensions( 'schema_4x3_img' ) . $json_req_msg . '</td>';
-
-			$table_rows[ 'schema_16x09_img_size' ] = '' .
-				$form->get_th_html( _x( 'Schema 16:9 (Google)', 'option label', 'wpsso' ), '', 'schema_16x9_img_size' ) . 
-				'<td class="blank">' . $form->get_no_input_image_dimensions( 'schema_16x9_img' ) . $json_req_msg . '</td>';
-
-			$table_rows[ 'schema_thumb_img_size' ] = '' .
-				$form->get_th_html( _x( 'Schema Thumbnail', 'option label', 'wpsso' ), '', 'schema_thumb_img_size' ) . 
-				'<td class="blank">' . $form->get_no_input_image_dimensions( 'thumb_img' ) . '</td>';
-
-			$table_rows[ 'tc_00_sum_img_size' ] = '' .
-				$form->get_th_html( _x( 'Twitter Summary Card', 'option label', 'wpsso' ), '', 'tc_sum_img_size' ) . 
-				'<td class="blank">' . $form->get_no_input_image_dimensions( 'tc_sum_img' ) . '</td>';
-
-			$table_rows[ 'tc_01_lrg_img_size' ] = '' .
-				$form->get_th_html( _x( 'Twitter Large Image Summary Card', 'option label', 'wpsso' ), '', 'tc_lrg_img_size' ) . 
-				'<td class="blank">' . $form->get_no_input_image_dimensions( 'tc_lrg_img' ) . '</td>';
 
 			return $table_rows;
 		}

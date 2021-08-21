@@ -437,9 +437,13 @@ table.sucom-settings th.short p {
 }
 
 table.sucom-settings th.site-use {
-	width:55px;
-	min-width:55px;
+	width:60px;
+	min-width:60px;
 	white-space:nowrap;
+}
+
+table.sucom-settings td.site-use {
+	width:200px;
 }
 
 table.sucom-settings td.nowrap,
@@ -724,7 +728,7 @@ table.sucom-settings td select.long_name {
 	width:320px;
 }
 
-table.sucom-settings td select.site-use { width:14em; }
+table.sucom-settings td select.site-use { width:200px; }
 
 table.sucom-settings td select.wide { width:100%; }
 

@@ -3,20 +3,6 @@
 /**
  * Extract of translatable strings from lib/pro/.
  */
-_x( 'Options to Show by Default', 'option label', 'wpsso' );
-_x( 'Validators', 'toolbar menu title', 'wpsso' );
-_x( 'Show %s Toolbar Menu', 'option label', 'wpsso' );
-_x( 'Show %s Metabox', 'option label', 'wpsso' );
-__( 'Posts, Pages, and Custom Post Types', 'wpsso' );
-__( 'Media Library', 'wpsso' );
-__( 'Categories, Tags, and Custom Taxonomies', 'wpsso' );
-// translators: Please ignore - translation uses a different text domain.
-__( 'Users' );
-_x( 'Additional Item List Columns', 'option label', 'wpsso' );
-_x( 'Title / Name Column Width', 'option label', 'wpsso' );
-_x( 'and max width', 'option comment', 'wpsso' );
-_x( 'Default for Posts / Pages List', 'option label', 'wpsso' );
-_x( 'and max width', 'option comment', 'wpsso' );
 _x( 'Webpage Document Title', 'option label', 'wpsso' );
 _x( 'Use Filtered "SEO" Title', 'option label', 'wpsso' );
 _x( 'not recommended', 'option comment', 'wpsso' );
@@ -50,6 +36,20 @@ _x( 'Schema 16:9 (Google)', 'option label', 'wpsso' );
 _x( 'Schema Thumbnail', 'option label', 'wpsso' );
 _x( 'Twitter Summary Card', 'option label', 'wpsso' );
 _x( 'Twitter Large Image Summary Card', 'option label', 'wpsso' );
+_x( 'Options to Show by Default', 'option label', 'wpsso' );
+_x( 'Validators', 'toolbar menu title', 'wpsso' );
+_x( 'Show %s Toolbar Menu', 'option label', 'wpsso' );
+_x( 'Show %s Metabox', 'option label', 'wpsso' );
+__( 'Posts, Pages, and Custom Post Types', 'wpsso' );
+__( 'Media Library', 'wpsso' );
+__( 'Categories, Tags, and Custom Taxonomies', 'wpsso' );
+// translators: Please ignore - translation uses a different text domain.
+__( 'Users' );
+_x( 'Additional Item List Columns', 'option label', 'wpsso' );
+_x( 'Title / Name Column Width', 'option label', 'wpsso' );
+_x( 'and max width', 'option comment', 'wpsso' );
+_x( 'Default for Posts / Pages List', 'option label', 'wpsso' );
+_x( 'and max width', 'option comment', 'wpsso' );
 _x( 'Gravatar is Default Author Image', 'option label', 'wpsso' );
 _x( 'Gravatar Image Size', 'option label', 'wpsso' );
 _x( 'Check for Embedded Media', 'option label', 'wpsso' );

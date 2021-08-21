@@ -457,87 +457,6 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 			),
 		);
 
-		private static $rename_site_keys_by_ext = array(
-			'wpsso' => array(
-				500 => array(
-					'plugin_tid'              => 'plugin_wpsso_tid',
-					'plugin_ignore_small_img' => 'plugin_check_img_dims',
-					'plugin_file_cache_exp'   => '',
-					'plugin_object_cache_exp' => '',
-					'plugin_cache_info'       => '',
-					'plugin_verify_certs'     => '',
-				),
-				539 => array(
-					'plugin_shorten_cache_exp' => '',
-				),
-				580 => array(
-					'plugin_shortcodes' => '',
-					'plugin_widgets'    => '',
-				),
-				602 => array(
-					'plugin_preserve' => '',
-				),
-				651 => array(
-					'plugin_honor_force_ssl' => '',
-				),
-				686 => array(
-					'plugin_wpssoam_tid' => '',	// Deprecated on 2019/11/14.
-					'plugin_wpssorrssb_tid' => '',	// Deprecated on 2019/11/06.
-					'plugin_wpssotie_tid' => '',	// Deprecated on 2019/11/21.
-				),
-				700 => array(
-					'plugin_topics_cache_exp' => '',
-				),
-				703 => array(
-					'plugin_clear_all_refresh' => '',
-				),
-				711 => array(
-					'plugin_term_title_prefix' => '',
-				),
-				718 => array(
-					'plugin_list_cache_exp' => '',
-				),
-				723 => array(
-					'plugin_product_attr_brand'         => 'plugin_attr_product_brand',
-					'plugin_product_attr_color'         => 'plugin_attr_product_color',
-					'plugin_product_attr_condition'     => 'plugin_attr_product_condition',
-					'plugin_product_attr_depth_value'   => 'plugin_attr_product_depth_value',
-					'plugin_product_attr_gtin14'        => 'plugin_attr_product_gtin14',
-					'plugin_product_attr_gtin13'        => 'plugin_attr_product_gtin13',
-					'plugin_product_attr_gtin12'        => 'plugin_attr_product_gtin12',
-					'plugin_product_attr_gtin8'         => 'plugin_attr_product_gtin8',
-					'plugin_product_attr_gtin'          => 'plugin_attr_product_gtin',
-					'plugin_product_attr_isbn'          => 'plugin_attr_product_isbn',
-					'plugin_product_attr_material'      => 'plugin_attr_product_material',
-					'plugin_product_attr_mfr_part_no'   => 'plugin_attr_product_mfr_part_no',
-					'plugin_product_attr_size'          => 'plugin_attr_product_size',
-					'plugin_product_attr_target_gender' => 'plugin_attr_product_target_gender',
-					'plugin_product_attr_volume_value'  => 'plugin_attr_product_fluid_volume_value',
-				),
-				725 => array(
-					'plugin_attr_product_volume_value' => 'plugin_attr_product_fluid_volume_value',
-					'plugin_cf_product_volume_value'   => 'plugin_cf_product_fluid_volume_value',
-				),
-				773 => array(
-					'plugin_debug' => 'plugin_debug_html',
-				),
-				793 => array(
-					'plugin_clear_on_activate'   => '',	// Deprecated on 2021/06/22.
-					'plugin_clear_on_deactivate' => '',	// Deprecated on 2021/06/22.
-				),
-				800 => array(
-					'plugin_apiresp_cache_exp'   => '',
-					'plugin_cache_attach_page'   => '',
-					'plugin_content_cache_exp'   => '',
-					'plugin_head_cache_exp'      => '',
-					'plugin_imgsize_cache_exp'   => '',
-					'plugin_select_cache_exp'    => '',
-					'plugin_short_url_cache_exp' => '',
-					'plugin_types_cache_exp'     => '',
-				),
-			),
-		);
-
 		public function __construct( &$plugin ) {
 
 			$this->p =& $plugin;
@@ -553,16 +472,37 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 		 */
 		public function options( $opts_name, &$opts = array(), $defs = array(), $network = false ) {
 
+			if ( constant( 'WPSSO_OPTIONS_NAME' ) === $opts_name ) {
+			
+				$is_site_options = false;
+
+			} elseif ( constant( 'WPSSO_SITE_OPTIONS_NAME' ) === $opts_name ) {
+
+				$is_site_options = true;
+
+			} else {	// Nothing to do.
+				
+				return $opts;
+			}
+
 			/**
 			 * Save / create the current options version number for version checks to follow.
 			 */
 			$prev_version = empty( $opts[ 'plugin_wpsso_opt_version' ] ) ? 0 : $opts[ 'plugin_wpsso_opt_version' ];
 
-			if ( $opts_name === constant( 'WPSSO_OPTIONS_NAME' ) ) {
+			/**
+			 * Maybe renamed some option keys.
+			 */
+			$keys_by_ext = $is_site_options ?
+				apply_filters( 'wpsso_rename_site_options_keys', self::$rename_keys_by_ext ) :
+				apply_filters( 'wpsso_rename_options_keys', self::$rename_keys_by_ext );
 
-				$keys_by_ext = apply_filters( 'wpsso_rename_options_keys', self::$rename_keys_by_ext );
+			$opts = $this->p->util->rename_options_by_ext( $opts, $keys_by_ext );
 
-				$opts = $this->p->util->rename_options_by_ext( $opts, $keys_by_ext );
+			/**
+			 * Maybe update some option values.
+			 */
+			if ( ! $is_site_options ) {
 
 				/**
 				 * Check for schema type IDs to be renamed.
@@ -638,8 +578,8 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				}
 
 				/**
-				 * Enable og:image and og:video meta tags, and disable the og:image:url
-				 * and og:video:url meta tags, which are functionally identical.
+				 * Enable og:image and og:video meta tags, and disable the og:image:url and og:video:url meta tags,
+				 * which are functionally identical.
 				 */
 				if ( $prev_version > 0 && $prev_version <= 591 ) {
 
@@ -749,7 +689,6 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				 */
 				$this->p->schema->get_schema_types_array( $flatten = true, $read_cache = false );
 
-
 				/**
 				 * Remove the options from deprecated add-ons.
 				 */
@@ -809,27 +748,16 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 
 					delete_post_meta_by_key( '_wpsso_wprecipemaker' );
 				}
-
-				/**
-				 * Maybe add any new / missing options keys.
-				 */
-				$opts = array_merge( $defs, $opts );
-
-				$opts = apply_filters( 'wpsso_upgraded_options', $opts, $defs );
-
-			} elseif ( $opts_name === constant( 'WPSSO_SITE_OPTIONS_NAME' ) ) {
-
-				$keys_by_ext = apply_filters( 'wpsso_rename_site_options_keys', self::$rename_site_keys_by_ext );
-
-				$opts = $this->p->util->rename_options_by_ext( $opts, $keys_by_ext );
-
-				/**
-				 * Maybe add any new / missing site options keys.
-				 */
-				$opts = array_merge( $defs, $opts );
-
-				$opts = apply_filters( 'wpsso_upgraded_site_options', $opts, $defs );
 			}
+
+			/**
+			 * Maybe add any new / missing options keys.
+			 */
+			$opts = array_merge( $defs, $opts );
+
+			$opts = $is_site_options ?
+				apply_filters( 'wpsso_upgraded_site_options', $opts, $defs ) :
+				apply_filters( 'wpsso_upgraded_options', $opts, $defs );
 
 			return $opts;
 		}
