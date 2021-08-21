@@ -8291,7 +8291,7 @@ msgstr ""
 msgid "adding schema person"
 msgstr ""
 
-#: lib/schema-single.php:1996
+#: lib/schema-single.php:1994
 msgid "adding schema place"
 msgstr ""
 

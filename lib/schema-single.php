@@ -417,9 +417,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$event_opts = apply_filters( 'wpsso_get_event_options', false, $mod, $event_id );
 
 			/**
-			 * Add metadata defaults and custom values to the $type_opts array.
+			 * Add metadata defaults and custom values to the $event_opts array.
 			 *
-			 * $type_opts can be false, an empty array, or an array of one or more options.
+			 * Automatically renames 'schema_event_*' options from the Document SSO metabox to 'event_*'.
 			 */
 			SucomUtil::add_type_opts_md_pad( $event_opts, $mod, array( 'event' => 'schema_event' ) );
 
@@ -721,9 +721,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$job_opts = apply_filters( 'wpsso_get_job_options', false, $mod, $job_id );
 
 			/**
-			 * Add metadata defaults and custom values to the $type_opts array.
+			 * Add metadata defaults and custom values to the $job_opts array.
 			 *
-			 * $type_opts can be false, an empty array, or an array of one or more options.
+			 * Automatically renames 'schema_job_*' options from the Document SSO metabox to 'job_*'.
 			 */
 			SucomUtil::add_type_opts_md_pad( $job_opts, $mod, array( 'job' => 'schema_job' ) );
 
@@ -1959,9 +1959,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$place_opts = apply_filters( 'wpsso_get_place_options', false, $mod, $place_id );
 
 			/**
-			 * Add metadata defaults and custom values to the $type_opts array.
-			 *
-			 * $type_opts can be false, an empty array, or an array of one or more options.
+			 * Add metadata defaults and custom values to the $place_opts array.
 			 *
 			 * Skip this method as we do not have any default or custom 'schema_place' options in the Document SSO metabox.
 			 *
