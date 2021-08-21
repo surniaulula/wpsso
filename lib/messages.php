@@ -1011,7 +1011,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_product_include_vat':	// Include VAT in Product Prices.
 
-							$text = __( 'Get product prices from e-Commerce plugins with VAT included.', 'wpsso' ) . ' ';
+							$text = __( 'Retrieve product prices from e-Commerce plugins with VAT included.', 'wpsso' ) . ' ';
 
 							break;
 

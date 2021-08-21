@@ -1840,7 +1840,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						'person_url'       => $user_mod[ 'obj' ]->get_author_website( $person_id, 'url' ),	// Returns a single URL string.
 						'person_name'      => $user_mod[ 'obj' ]->get_author_meta( $person_id, $wpsso->options[ 'seo_author_name' ] ),
 						'person_desc'      => $user_desc,
-						'person_job_title' => $user_mod[ 'obj' ]->get_options( $person_id, 'schema_person_job_title' ),
+						'person_job_title' => $user_mod[ 'obj' ]->get_author_meta( $person_id, 'job_title' ),
 						'person_og_image'  => $user_mod[ 'obj' ]->get_og_images( $num = 1, $size_names = 'schema', $person_id, false ),
 						'person_sameas'    => $user_sameas,
 					);

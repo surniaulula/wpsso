@@ -111,9 +111,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				}
 
 				add_filter( 'manage_users_columns', array( $this, 'add_user_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
-
 				add_filter( 'manage_users_sortable_columns', array( $this, 'add_sortable_columns' ), 10, 1 );
-
 				add_filter( 'manage_users_custom_column', array( $this, 'get_column_content' ), 10, 3 );
 
 				/**
@@ -130,32 +128,27 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				add_action( 'get_user_metadata', array( $this, 'check_sortable_meta' ), 10, 4 );
 
 				/**
-				 * Exit here if not a user or profile page.
+				 * Hooks when editing a user.
 				 */
-				$user_id = SucomUtil::get_request_value( 'user_id' );	// Uses sanitize_text_field.
+				add_action( 'edit_user_profile', array( $this, 'show_metabox_section' ), 20, 1 );
 
-				if ( empty( $user_id ) ) {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'exiting early: empty user_id' );
-					}
-
-					return;
-				}
+				add_action( 'edit_user_profile_update', array( $this, 'save_about_section' ), -1000, 1 );
+				add_action( 'edit_user_profile_update', array( $this, 'sanitize_submit_cm' ), -200, 1 );
+				add_action( 'edit_user_profile_update', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY, 1 );	// Default is -100.
+				add_action( 'edit_user_profile_update', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 1 );	// Default is -10.
 
 				/**
-				 * Hooks for user and profile editing.
+				 * Hooks when editing personal profile.
 				 */
-				add_action( 'edit_user_profile', array( $this, 'show_metabox_section' ), 20 );
+				add_action( 'personal_options_update', array( $this, 'save_about_section' ), -1000, 1 );
+				add_action( 'personal_options_update', array( $this, 'sanitize_submit_cm' ), -200, 1 );
+				add_action( 'personal_options_update', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY, 1 );	// Default is -100.
+				add_action( 'personal_options_update', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY, 1 );	// Default is -10.
 
-				add_action( 'edit_user_profile_update', array( $this, 'sanitize_submit_cm' ), -200 );
-				add_action( 'edit_user_profile_update', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );	// Default is -100.
-				add_action( 'edit_user_profile_update', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );	// Default is -10.
-
-				add_action( 'personal_options_update', array( $this, 'sanitize_submit_cm' ), -200 );
-				add_action( 'personal_options_update', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );	// Default is -100.
-				add_action( 'personal_options_update', array( $this, 'clear_cache' ), WPSSO_META_CACHE_PRIORITY );	// Default is -10.
+				/**
+				 * Use the 'show_password_fields' filter as an action to get more information about the user.
+				 */
+				add_filter( 'show_password_fields', array( $this, 'show_about_section' ), -1000, 2 );
 			}
 		}
 
@@ -359,8 +352,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$this->md_cache_disabled = true;	// Disable local cache for get_defaults() and get_options().
 
-			$mod = $this->get_mod( $user_id );
-
+			$mod  = $this->get_mod( $user_id );
 			$opts = $this->get_submit_opts( $user_id );
 
 			/**
@@ -372,7 +364,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			$opts = apply_filters( 'wpsso_save_md_options', $opts, $mod );
-
 			$opts = apply_filters( 'wpsso_save_user_options', $opts, $user_id, $rel_id, $mod );
 
 			if ( empty( $opts ) ) {
@@ -698,6 +689,52 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					$metabox_context, $metabox_prio, $callback_args );
 		}
 
+		/**
+		 * Show the additional fields for the user profile About Yourself / About the user sections.
+		 *
+		 * Use the 'show_password_fields' filter as an action to get more information about the user.
+		 */
+		public function show_about_section( $show_password_fields, $user_obj ) {
+
+			if ( ! isset( $user_obj->ID ) ) {	// Just in case.
+
+				return;
+			}
+
+			if ( ! current_user_can( 'edit_user', $user_obj->ID ) ) {	// Just in case.
+
+				return;
+			}
+
+			foreach ( $this->p->cf[ 'opt' ][ 'user_about' ] as $input_type => $arr ) {
+
+				foreach ( $arr as $key => $label ) {
+
+					$val = get_user_meta( $user_obj->ID, $key, $single = true );
+
+					echo '<tr>';
+
+					echo '<th><label for="' . $key . '">' . esc_html( _x( $label, 'option label', 'wpsso' ) ) . '</label></th><td>';
+
+					switch ( $input_type ) {
+
+						case 'text':
+
+							echo '<input type="text" class="regular-text" name="' . $key . '" id="' . $key . '" value="' . esc_attr( $val ) . '">';
+
+							break;
+					}
+		
+					echo '</td></tr>';
+				}
+			}
+
+			/**
+			 * This is a filter, so return the original / unchanged filter value.
+			 */
+			return $show_password_fields;
+		}
+
 		public function show_metabox_section( $user_obj ) {
 
 			if ( ! isset( $user_obj->ID ) ) {	// Just in case.
@@ -705,7 +742,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				return;
 			}
 
-			if ( ! current_user_can( 'edit_user', $user_obj->ID ) ) {
+			if ( ! current_user_can( 'edit_user', $user_obj->ID ) ) {	// Just in case.
 
 				return;
 			}
@@ -772,13 +809,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$mb_container_id = 'wpsso_metabox_' . $metabox_id . '_inside';
 
 			$metabox_html = "\n" . '<div id="' . $mb_container_id . '">';
-
 			$metabox_html .= $this->p->util->metabox->get_tabbed( $metabox_id, $tabs, $table_rows, $tabbed_args );
-
 			$metabox_html .= apply_filters( $mb_container_id . '_footer', '', $mod );
-
 			$metabox_html .= '</div><!-- #'. $mb_container_id . ' -->' . "\n";
-
 			$metabox_html .= $this->get_metabox_javascript( $mb_container_id );
 
 			if ( $this->p->debug->enabled ) {
@@ -868,9 +901,31 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				__( '(not a Facebook Pages URL)', 'wpsso' ) . '</span>';
 		}
 
+		/**
+		 * Save the additional fields for the user profile About Yourself / About the user sections.
+		 */
+		public function save_about_section( $user_id ) {
+
+			if ( ! current_user_can( 'edit_user', $user_id ) ) {	// Just in case.
+
+				return;
+			}
+
+			foreach ( $this->p->cf[ 'opt' ][ 'user_about' ] as $input_type => $arr ) {
+
+				foreach ( $arr as $key => $label ) {
+
+					if ( isset( $_POST[ $key ] ) ) {
+
+						update_user_meta( $user_id, $key, $_POST[ $key ] );
+					}
+				}
+			}
+		}
+
 		public function sanitize_submit_cm( $user_id ) {
 
-			if ( ! current_user_can( 'edit_user', $user_id ) ) {
+			if ( ! current_user_can( 'edit_user', $user_id ) ) {	// Just in case.
 
 				return;
 			}

@@ -364,7 +364,6 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 
 			$opts = apply_filters( 'wpsso_save_md_options', $opts, $mod );
-
 			$opts = apply_filters( 'wpsso_save_term_options', $opts, $term_id, $term_tax_id, $mod );
 
 			if ( empty( $opts ) ) {
