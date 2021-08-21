@@ -322,11 +322,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.36.0-b.1 (2021/08/21)**
+**Version 8.36.0-b.2 (2021/08/21)**
 
 * **New Features**
 	* None.
 * **Improvements**
+	* Added a new "Job Title" input field to the user profile About Yourself / About the user sections.
+	* Added a 'jobTitle' property for Schema Person markup of WordPress users.
 	* Added a new SSO > General Settings > Social and Search Sites > Facebook > Facebook Domain Verification ID option.
 	* Moved the SSO > Advanced Settings > Plugin Settings > Caching tab options to the Integration tab and removed the Caching tab.
 	* Added the SSO > Advanced Settings > Plugin Settings > Integration tab in the network admin SSO settings.
@@ -890,9 +892,9 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 
 == Upgrade Notice ==
 
-= 8.36.0-b.1 =
+= 8.36.0-b.2 =
 
-(2021/08/21) Added a new "Facebook Domain Verification ID" option. Updated the Integration and Caching tabs in the Advanced Settings page.
+(2021/08/21) Added a new "Job Title" input field to the user editing page. Added a new "Facebook Domain Verification ID" option. Updated the Integration and Caching tabs in the Advanced Settings page.
 
 = 8.35.4 =
 
