@@ -69,7 +69,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				if ( $this->p->options[ 'plugin_shortener' ] !== 'none' ) {
 
-					$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_cache',
+					$settings_page_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_services-tab_shortening',
 						_x( 'Clear Short URLs on Clear Cache', 'option label', 'wpsso' ) );
 
 					echo '<p class="status-msg smaller left">';

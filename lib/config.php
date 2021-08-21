@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'     => '8.35.5-dev.3',	// Plugin version.
-					'opt_version' => '804',		// Increment when changing default option values.
+					'opt_version' => '805',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Rank higher and improve click-through-rates by presenting your content at its best on social sites and in search results - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled.',
@@ -1718,11 +1718,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_check_img_dims'       => 0,			// Enforce Image Dimension Checks.
 					'plugin_upscale_images'       => 0,			// Upscale Media Library Images.
 					'plugin_upscale_img_max'      => 33,			// Maximum Image Upscale Percent.
-					'plugin_wpseo_social_meta'    => 0,			// Import Yoast SEO Social Meta.
-					'plugin_wpseo_show_import'    => 1,			// Show Yoast SEO Import Details.
-
 					'plugin_clear_post_terms'    => 1,			// Clear Term Cache for Published Post.
 					'plugin_clear_for_comment'   => 1,			// Clear Post Cache for New Comment.
+
+					/**
+					 * Advanced Settings > Integration tab (Plugin and Theme Integration).
+					 */
+					'plugin_wpseo_social_meta'    => 0,			// Import Yoast SEO Social Meta.
+					'plugin_wpseo_show_import'    => 1,			// Show Yoast SEO Import Details.
+					'plugin_product_include_vat'  => 0,			// Include VAT in Product Prices.
 
 					/**
 					 * Advanced Settings > Media Services tab.

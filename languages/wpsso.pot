@@ -654,10 +654,10 @@ msgid "from"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:36 gettext/gettext-lib-pro.php:44
-#: gettext/gettext-lib-pro.php:225 lib/com/form.php:789 lib/media.php:872
-#: lib/media.php:1006 lib/media.php:2424 lib/pro/admin/advanced.php:275
-#: lib/pro/util/check-img-dims.php:104 lib/std/admin/advanced.php:271
+#: gettext/gettext-lib-com.php:36 gettext/gettext-lib-pro.php:45
+#: gettext/gettext-lib-pro.php:226 lib/com/form.php:789 lib/media.php:872
+#: lib/media.php:1006 lib/media.php:2424 lib/pro/admin/advanced.php:281
+#: lib/pro/util/check-img-dims.php:104 lib/std/admin/advanced.php:277
 msgid "Media Library"
 msgstr ""
 
@@ -978,20 +978,20 @@ msgid "Your SSO"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:53 gettext/gettext-lib-config.php:62
-#: lib/admin-head.php:258 lib/messages.php:3361
+#: lib/admin-head.php:258 lib/messages.php:3364
 msgctxt "lib file description"
 msgid "Advanced Settings"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:54 gettext/gettext-lib-config.php:63
-#: lib/messages.php:2872
+#: lib/messages.php:2875
 msgctxt "lib file description"
 msgid "Complementary Add-ons"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:55 gettext/gettext-lib-config.php:64
-#: lib/messages.php:2289 lib/messages.php:2850 lib/messages.php:2859
-#: lib/messages.php:2875
+#: lib/messages.php:2292 lib/messages.php:2853 lib/messages.php:2862
+#: lib/messages.php:2878
 msgctxt "lib file description"
 msgid "Premium Licenses"
 msgstr ""
@@ -1021,7 +1021,7 @@ msgctxt "lib file description"
 msgid "General Settings"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:65 lib/messages.php:2914
+#: gettext/gettext-lib-config.php:65 lib/messages.php:2917
 msgctxt "lib file description"
 msgid "Tools and Actions"
 msgstr ""
@@ -1500,12 +1500,12 @@ msgctxt "option value"
 msgid "default is %s"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:154 lib/messages.php:3278
+#: gettext/gettext-lib-config.php:154 lib/messages.php:3281
 msgctxt "option value"
 msgid "checked"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:155 lib/messages.php:3279
+#: gettext/gettext-lib-config.php:155 lib/messages.php:3282
 msgctxt "option value"
 msgid "unchecked"
 msgstr ""
@@ -2412,14 +2412,14 @@ msgid "Use Filtered \"SEO\" Title"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:8 gettext/gettext-lib-pro.php:24
-#: gettext/gettext-lib-pro.php:119 lib/pro/admin/advanced.php:68
+#: gettext/gettext-lib-pro.php:120 lib/pro/admin/advanced.php:68
 #: lib/pro/admin/advanced.php:144 lib/pro/admin/general.php:55
 #: lib/std/admin/advanced.php:64
 msgctxt "option comment"
 msgid "not recommended"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:9 lib/messages.php:2733
+#: gettext/gettext-lib-pro.php:9 lib/messages.php:2736
 #: lib/pro/admin/advanced.php:72 lib/std/admin/advanced.php:68
 msgctxt "option label"
 msgid "Use Filtered Content"
@@ -2491,15 +2491,15 @@ msgctxt "option label"
 msgid "Check for Duplicate Meta Tags"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:21 gettext/gettext-lib-pro.php:116
-#: lib/messages.php:2651 lib/messages.php:2762 lib/pro/admin/advanced.php:134
+#: gettext/gettext-lib-pro.php:21 gettext/gettext-lib-pro.php:117
+#: lib/messages.php:2654 lib/messages.php:2765 lib/pro/admin/advanced.php:134
 #: lib/pro/admin/general.php:46 lib/std/admin/advanced.php:128
 #: lib/std/admin/general.php:44
 msgctxt "option label"
 msgid "Enforce Image Dimension Checks"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:22 gettext/gettext-lib-pro.php:117
+#: gettext/gettext-lib-pro.php:22 gettext/gettext-lib-pro.php:118
 #: lib/pro/admin/advanced.php:137 lib/pro/admin/general.php:49
 #: lib/std/admin/advanced.php:130 lib/std/admin/general.php:46
 #: lib/submenu/general.php:346 lib/submenu/general.php:352
@@ -2507,15 +2507,15 @@ msgctxt "option comment"
 msgid "recommended"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:23 gettext/gettext-lib-pro.php:118
-#: lib/messages.php:2645 lib/pro/admin/advanced.php:141
+#: gettext/gettext-lib-pro.php:23 gettext/gettext-lib-pro.php:119
+#: lib/messages.php:2648 lib/pro/admin/advanced.php:141
 #: lib/pro/admin/general.php:52 lib/std/admin/advanced.php:134
 #: lib/std/admin/general.php:49
 msgctxt "option label"
 msgid "Upscale Media Library Images"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:25 lib/messages.php:2648
+#: gettext/gettext-lib-pro.php:25 lib/messages.php:2651
 #: lib/pro/admin/advanced.php:148 lib/std/admin/advanced.php:140
 msgctxt "option label"
 msgid "Maximum Image Upscale Percent"
@@ -2551,546 +2551,552 @@ msgctxt "option label"
 msgid "Show Yoast SEO Import Details"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:31 lib/opengraph.php:60
-#: lib/pro/admin/advanced.php:201 lib/std/admin/advanced.php:195
+#: gettext/gettext-lib-pro.php:31 lib/pro/admin/advanced.php:184
+#: lib/std/admin/advanced.php:176
+msgctxt "option label"
+msgid "Include VAT in Product Prices"
+msgstr ""
+
+#: gettext/gettext-lib-pro.php:32 lib/opengraph.php:60
+#: lib/pro/admin/advanced.php:207 lib/std/admin/advanced.php:201
 msgctxt "option label"
 msgid "Open Graph (Facebook and oEmbed)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:32 lib/pinterest.php:127
-#: lib/pro/admin/advanced.php:205 lib/std/admin/advanced.php:199
+#: gettext/gettext-lib-pro.php:33 lib/pinterest.php:127
+#: lib/pro/admin/advanced.php:211 lib/std/admin/advanced.php:205
 msgctxt "option label"
 msgid "Pinterest Pin It"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:33 lib/pro/admin/advanced.php:209
-#: lib/schema.php:71 lib/std/admin/advanced.php:203
+#: gettext/gettext-lib-pro.php:34 lib/pro/admin/advanced.php:215
+#: lib/schema.php:71 lib/std/admin/advanced.php:209
 msgctxt "option label"
 msgid "Schema 1:1 (Google)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:34 lib/pro/admin/advanced.php:213
-#: lib/schema.php:76 lib/std/admin/advanced.php:207
+#: gettext/gettext-lib-pro.php:35 lib/pro/admin/advanced.php:219
+#: lib/schema.php:76 lib/std/admin/advanced.php:213
 msgctxt "option label"
 msgid "Schema 4:3 (Google)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:35 lib/pro/admin/advanced.php:217
-#: lib/schema.php:81 lib/std/admin/advanced.php:211
+#: gettext/gettext-lib-pro.php:36 lib/pro/admin/advanced.php:223
+#: lib/schema.php:81 lib/std/admin/advanced.php:217
 msgctxt "option label"
 msgid "Schema 16:9 (Google)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:36 lib/pro/admin/advanced.php:221
-#: lib/schema.php:86 lib/std/admin/advanced.php:215
+#: gettext/gettext-lib-pro.php:37 lib/pro/admin/advanced.php:227
+#: lib/schema.php:86 lib/std/admin/advanced.php:221
 msgctxt "option label"
 msgid "Schema Thumbnail"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:37 lib/pro/admin/advanced.php:225
-#: lib/std/admin/advanced.php:219 lib/twittercard.php:42
+#: gettext/gettext-lib-pro.php:38 lib/pro/admin/advanced.php:231
+#: lib/std/admin/advanced.php:225 lib/twittercard.php:42
 msgctxt "option label"
 msgid "Twitter Summary Card"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:38 lib/pro/admin/advanced.php:229
-#: lib/std/admin/advanced.php:223 lib/twittercard.php:47
+#: gettext/gettext-lib-pro.php:39 lib/pro/admin/advanced.php:235
+#: lib/std/admin/advanced.php:229 lib/twittercard.php:47
 msgctxt "option label"
 msgid "Twitter Large Image Summary Card"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:39 lib/pro/admin/advanced.php:241
-#: lib/std/admin/advanced.php:237
+#: gettext/gettext-lib-pro.php:40 lib/pro/admin/advanced.php:247
+#: lib/std/admin/advanced.php:243
 msgctxt "option label"
 msgid "Options to Show by Default"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:40 lib/messages.php:806 lib/page.php:73
-#: lib/pro/admin/advanced.php:244 lib/std/admin/advanced.php:240
+#: gettext/gettext-lib-pro.php:41 lib/messages.php:806 lib/page.php:73
+#: lib/pro/admin/advanced.php:250 lib/std/admin/advanced.php:246
 msgctxt "toolbar menu title"
 msgid "Validators"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:41 lib/pro/admin/advanced.php:247
-#: lib/std/admin/advanced.php:243
+#: gettext/gettext-lib-pro.php:42 lib/pro/admin/advanced.php:253
+#: lib/std/admin/advanced.php:249
 msgctxt "option label"
 msgid "Show %s Toolbar Menu"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:42 lib/pro/admin/advanced.php:257
-#: lib/std/admin/advanced.php:253
+#: gettext/gettext-lib-pro.php:43 lib/pro/admin/advanced.php:263
+#: lib/std/admin/advanced.php:259
 msgctxt "option label"
 msgid "Show %s Metabox"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:43 lib/pro/admin/advanced.php:274
-#: lib/std/admin/advanced.php:270
+#: gettext/gettext-lib-pro.php:44 lib/pro/admin/advanced.php:280
+#: lib/std/admin/advanced.php:276
 msgid "Posts, Pages, and Custom Post Types"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:45 lib/pro/admin/advanced.php:276
-#: lib/std/admin/advanced.php:272
+#: gettext/gettext-lib-pro.php:46 lib/pro/admin/advanced.php:282
+#: lib/std/admin/advanced.php:278
 msgid "Categories, Tags, and Custom Taxonomies"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:47 lib/pro/admin/advanced.php:278
-#: lib/std/admin/advanced.php:274
+#: gettext/gettext-lib-pro.php:48 lib/pro/admin/advanced.php:284
+#: lib/std/admin/advanced.php:280
 msgid "Users"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:48 lib/pro/admin/advanced.php:303
-#: lib/std/admin/advanced.php:299
+#: gettext/gettext-lib-pro.php:49 lib/pro/admin/advanced.php:309
+#: lib/std/admin/advanced.php:305
 msgctxt "option label"
 msgid "Additional Item List Columns"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:49 lib/pro/admin/advanced.php:311
-#: lib/std/admin/advanced.php:307
+#: gettext/gettext-lib-pro.php:50 lib/pro/admin/advanced.php:317
+#: lib/std/admin/advanced.php:313
 msgctxt "option label"
 msgid "Title / Name Column Width"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:50 gettext/gettext-lib-pro.php:52
-#: lib/pro/admin/advanced.php:314 lib/pro/admin/advanced.php:320
-#: lib/std/admin/advanced.php:310 lib/std/admin/advanced.php:317
+#: gettext/gettext-lib-pro.php:51 gettext/gettext-lib-pro.php:53
+#: lib/pro/admin/advanced.php:320 lib/pro/admin/advanced.php:326
+#: lib/std/admin/advanced.php:316 lib/std/admin/advanced.php:323
 msgctxt "option comment"
 msgid "and max width"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:51 lib/pro/admin/advanced.php:317
-#: lib/std/admin/advanced.php:314
+#: gettext/gettext-lib-pro.php:52 lib/pro/admin/advanced.php:323
+#: lib/std/admin/advanced.php:320
 msgctxt "option label"
 msgid "Default for Posts / Pages List"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:53 gettext/gettext-lib-pro.php:120
-#: lib/pro/admin/advanced.php:331 lib/pro/admin/general.php:58
-#: lib/std/admin/advanced.php:331 lib/std/admin/general.php:54
+#: gettext/gettext-lib-pro.php:54 gettext/gettext-lib-pro.php:121
+#: lib/pro/admin/advanced.php:337 lib/pro/admin/general.php:58
+#: lib/std/admin/advanced.php:337 lib/std/admin/general.php:54
 msgctxt "option label"
 msgid "Gravatar is Default Author Image"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:54 lib/pro/admin/advanced.php:336
-#: lib/std/admin/advanced.php:336
+#: gettext/gettext-lib-pro.php:55 lib/pro/admin/advanced.php:342
+#: lib/std/admin/advanced.php:342
 msgctxt "option label"
 msgid "Gravatar Image Size"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:55 gettext/gettext-lib-pro.php:124
-#: lib/pro/admin/advanced.php:348 lib/pro/admin/general.php:98
-#: lib/std/admin/advanced.php:348 lib/std/admin/general.php:93
+#: gettext/gettext-lib-pro.php:56 gettext/gettext-lib-pro.php:125
+#: lib/pro/admin/advanced.php:354 lib/pro/admin/general.php:98
+#: lib/std/admin/advanced.php:354 lib/std/admin/general.php:93
 msgctxt "option label"
 msgid "Check for Embedded Media"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:56 lib/pro/admin/advanced.php:363
-#: lib/std/admin/advanced.php:363
+#: gettext/gettext-lib-pro.php:57 lib/pro/admin/advanced.php:369
+#: lib/std/admin/advanced.php:369
 msgctxt "option label"
 msgid "URL Shortening Service"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:57 lib/pro/admin/advanced.php:368
-#: lib/std/admin/advanced.php:368
+#: gettext/gettext-lib-pro.php:58 lib/pro/admin/advanced.php:374
+#: lib/std/admin/advanced.php:374
 msgctxt "option label"
 msgid "Minimum URL Length to Shorten"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:58 lib/pro/admin/advanced.php:371
-#: lib/std/admin/advanced.php:371
+#: gettext/gettext-lib-pro.php:59 lib/pro/admin/advanced.php:377
+#: lib/std/admin/advanced.php:377
 msgctxt "option comment"
 msgid "characters"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:59 lib/pro/admin/advanced.php:374
-#: lib/std/admin/advanced.php:374 lib/submenu/tools.php:73
+#: gettext/gettext-lib-pro.php:60 lib/pro/admin/advanced.php:380
+#: lib/std/admin/advanced.php:380 lib/submenu/tools.php:73
 msgctxt "option label"
 msgid "Clear Short URLs on Clear Cache"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:60 lib/pro/admin/advanced.php:379
-#: lib/std/admin/advanced.php:379
+#: gettext/gettext-lib-pro.php:61 lib/pro/admin/advanced.php:385
+#: lib/std/admin/advanced.php:385
 msgctxt "option label"
 msgid "Use Short URL for WP Shortlink"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:61 lib/pro/admin/advanced.php:384
-#: lib/std/admin/advanced.php:384
+#: gettext/gettext-lib-pro.php:62 lib/pro/admin/advanced.php:390
+#: lib/std/admin/advanced.php:390
 msgctxt "option label"
 msgid "Add \"%s\" HTML Tag"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:62 lib/pro/admin/advanced.php:393
+#: gettext/gettext-lib-pro.php:63 lib/pro/admin/advanced.php:399
 msgctxt "metabox title"
 msgid "Bitly (URL Shortener)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:63 gettext/gettext-lib-pro.php:210
-#: lib/pro/admin/advanced.php:396 lib/pro/util/shorten.php:326
+#: gettext/gettext-lib-pro.php:64 gettext/gettext-lib-pro.php:211
+#: lib/pro/admin/advanced.php:402 lib/pro/util/shorten.php:326
 msgctxt "option label"
 msgid "Bitly Generic Access Token"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:64 lib/pro/admin/advanced.php:400
+#: gettext/gettext-lib-pro.php:65 lib/pro/admin/advanced.php:406
 msgctxt "option label"
 msgid "Bitly Short Domain (Optional)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:65 lib/pro/admin/advanced.php:404
+#: gettext/gettext-lib-pro.php:66 lib/pro/admin/advanced.php:410
 msgctxt "option label"
 msgid "Bitly Group Name (Optional)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:66 lib/pro/admin/advanced.php:411
+#: gettext/gettext-lib-pro.php:67 lib/pro/admin/advanced.php:417
 msgctxt "metabox title"
 msgid "DLMY.App (URL Shortener)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:67 gettext/gettext-lib-pro.php:212
-#: lib/pro/admin/advanced.php:414 lib/pro/util/shorten.php:352
+#: gettext/gettext-lib-pro.php:68 gettext/gettext-lib-pro.php:213
+#: lib/pro/admin/advanced.php:420 lib/pro/util/shorten.php:352
 msgctxt "option label"
 msgid "DLMY.App API Key"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:68 lib/pro/admin/advanced.php:421
+#: gettext/gettext-lib-pro.php:69 lib/pro/admin/advanced.php:427
 msgctxt "metabox title"
 msgid "Ow.ly (URL Shortener)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:69 gettext/gettext-lib-pro.php:214
-#: lib/pro/admin/advanced.php:424 lib/pro/util/shorten.php:376
+#: gettext/gettext-lib-pro.php:70 gettext/gettext-lib-pro.php:215
+#: lib/pro/admin/advanced.php:430 lib/pro/util/shorten.php:376
 msgctxt "option label"
 msgid "Ow.ly API Key"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:70 lib/pro/admin/advanced.php:431
+#: gettext/gettext-lib-pro.php:71 lib/pro/admin/advanced.php:437
 msgctxt "metabox title"
 msgid "YOURLS (URL Shortener)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:71 gettext/gettext-lib-pro.php:216
-#: lib/pro/admin/advanced.php:434 lib/pro/util/shorten.php:417
+#: gettext/gettext-lib-pro.php:72 gettext/gettext-lib-pro.php:217
+#: lib/pro/admin/advanced.php:440 lib/pro/util/shorten.php:417
 msgctxt "option label"
 msgid "YOURLS API URL"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:72 lib/pro/admin/advanced.php:438
+#: gettext/gettext-lib-pro.php:73 lib/pro/admin/advanced.php:444
 msgctxt "option label"
 msgid "YOURLS Username"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:73 lib/pro/admin/advanced.php:442
+#: gettext/gettext-lib-pro.php:74 lib/pro/admin/advanced.php:448
 msgctxt "option label"
 msgid "YOURLS Password"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:74 lib/pro/admin/advanced.php:446
+#: gettext/gettext-lib-pro.php:75 lib/pro/admin/advanced.php:452
 msgctxt "option label"
 msgid "YOURLS Token"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:75 lib/messages.php:2786
-#: lib/pro/admin/advanced.php:460 lib/std/admin/advanced.php:402
+#: gettext/gettext-lib-pro.php:76 lib/messages.php:2789
+#: lib/pro/admin/advanced.php:466 lib/std/admin/advanced.php:408
 msgctxt "option label"
 msgid "Ratings and Reviews Service"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:76 lib/pro/admin/advanced.php:465
-#: lib/std/admin/advanced.php:407
+#: gettext/gettext-lib-pro.php:77 lib/pro/admin/advanced.php:471
+#: lib/std/admin/advanced.php:413
 msgctxt "option label"
 msgid "Maximum Number of Reviews"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:77 lib/pro/admin/advanced.php:470
-#: lib/std/admin/advanced.php:412
+#: gettext/gettext-lib-pro.php:78 lib/pro/admin/advanced.php:476
+#: lib/std/admin/advanced.php:418
 msgctxt "option label"
 msgid "Maximum Age of Reviews"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:78 lib/pro/admin/advanced.php:473
-#: lib/std/admin/advanced.php:415
+#: gettext/gettext-lib-pro.php:79 lib/pro/admin/advanced.php:479
+#: lib/std/admin/advanced.php:421
 msgctxt "option comment"
 msgid "months"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:79 lib/pro/admin/advanced.php:476
-#: lib/std/admin/advanced.php:418
+#: gettext/gettext-lib-pro.php:80 lib/pro/admin/advanced.php:482
+#: lib/std/admin/advanced.php:424
 msgctxt "option label"
 msgid "Get Reviews for Post Types"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:80 lib/pro/admin/advanced.php:484
+#: gettext/gettext-lib-pro.php:81 lib/pro/admin/advanced.php:490
 msgctxt "metabox title"
 msgid "Shopper Approved (Ratings and Reviews)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:81 lib/pro/admin/advanced.php:487
+#: gettext/gettext-lib-pro.php:82 lib/pro/admin/advanced.php:493
 msgctxt "option label"
 msgid "Shopper Approved Site ID"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:82 lib/pro/admin/advanced.php:492
+#: gettext/gettext-lib-pro.php:83 lib/pro/admin/advanced.php:498
 msgctxt "option label"
 msgid "Shopper Approved API Token"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:83 lib/messages.php:2791
-#: lib/pro/admin/advanced.php:500
+#: gettext/gettext-lib-pro.php:84 lib/messages.php:2794
+#: lib/pro/admin/advanced.php:506
 msgctxt "metabox title"
 msgid "Stamped.io (Ratings and Reviews)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:84 lib/pro/admin/advanced.php:503
+#: gettext/gettext-lib-pro.php:85 lib/pro/admin/advanced.php:509
 msgctxt "option label"
 msgid "Stamped.io Store Hash"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:85 lib/pro/admin/advanced.php:508
+#: gettext/gettext-lib-pro.php:86 lib/pro/admin/advanced.php:514
 msgctxt "option label"
 msgid "Stamped.io API Key Public"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:86 gettext/gettext-lib-pro.php:97
-#: lib/pro/admin/advanced.php:526 lib/pro/admin/advanced.php:601
-#: lib/std/admin/advanced.php:438 lib/std/admin/advanced.php:515
+#: gettext/gettext-lib-pro.php:87 gettext/gettext-lib-pro.php:98
+#: lib/pro/admin/advanced.php:532 lib/pro/admin/advanced.php:607
+#: lib/std/admin/advanced.php:444 lib/std/admin/advanced.php:521
 msgctxt "option label"
 msgid "Type for Page Homepage"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:87 gettext/gettext-lib-pro.php:98
-#: lib/pro/admin/advanced.php:527 lib/pro/admin/advanced.php:602
-#: lib/std/admin/advanced.php:439 lib/std/admin/advanced.php:516
+#: gettext/gettext-lib-pro.php:88 gettext/gettext-lib-pro.php:99
+#: lib/pro/admin/advanced.php:533 lib/pro/admin/advanced.php:608
+#: lib/std/admin/advanced.php:445 lib/std/admin/advanced.php:522
 msgctxt "option label"
 msgid "Type for Posts Homepage"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:88 gettext/gettext-lib-pro.php:99
-#: lib/pro/admin/advanced.php:528 lib/pro/admin/advanced.php:603
-#: lib/std/admin/advanced.php:440 lib/std/admin/advanced.php:517
+#: gettext/gettext-lib-pro.php:89 gettext/gettext-lib-pro.php:100
+#: lib/pro/admin/advanced.php:534 lib/pro/admin/advanced.php:609
+#: lib/std/admin/advanced.php:446 lib/std/admin/advanced.php:523
 msgctxt "option label"
 msgid "Type for User Profiles"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:89 gettext/gettext-lib-pro.php:100
-#: lib/pro/admin/advanced.php:529 lib/pro/admin/advanced.php:604
-#: lib/std/admin/advanced.php:441 lib/std/admin/advanced.php:518
+#: gettext/gettext-lib-pro.php:90 gettext/gettext-lib-pro.php:101
+#: lib/pro/admin/advanced.php:535 lib/pro/admin/advanced.php:610
+#: lib/std/admin/advanced.php:447 lib/std/admin/advanced.php:524
 msgctxt "option label"
 msgid "Type for Search Results"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:90 gettext/gettext-lib-pro.php:101
-#: lib/pro/admin/advanced.php:530 lib/pro/admin/advanced.php:605
-#: lib/std/admin/advanced.php:442 lib/std/admin/advanced.php:519
+#: gettext/gettext-lib-pro.php:91 gettext/gettext-lib-pro.php:102
+#: lib/pro/admin/advanced.php:536 lib/pro/admin/advanced.php:611
+#: lib/std/admin/advanced.php:448 lib/std/admin/advanced.php:525
 msgctxt "option label"
 msgid "Type for Other Archive"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:91 gettext/gettext-lib-pro.php:92
-#: gettext/gettext-lib-pro.php:95 gettext/gettext-lib-pro.php:102
-#: gettext/gettext-lib-pro.php:103 gettext/gettext-lib-pro.php:106
-#: lib/pro/admin/advanced.php:554 lib/pro/admin/advanced.php:560
-#: lib/pro/admin/advanced.php:580 lib/pro/admin/advanced.php:644
-#: lib/pro/admin/advanced.php:658 lib/pro/admin/advanced.php:686
-#: lib/std/admin/advanced.php:466 lib/std/admin/advanced.php:472
-#: lib/std/admin/advanced.php:492 lib/std/admin/advanced.php:558
-#: lib/std/admin/advanced.php:572 lib/std/admin/advanced.php:600
+#: gettext/gettext-lib-pro.php:92 gettext/gettext-lib-pro.php:93
+#: gettext/gettext-lib-pro.php:96 gettext/gettext-lib-pro.php:103
+#: gettext/gettext-lib-pro.php:104 gettext/gettext-lib-pro.php:107
+#: lib/pro/admin/advanced.php:560 lib/pro/admin/advanced.php:566
+#: lib/pro/admin/advanced.php:586 lib/pro/admin/advanced.php:650
+#: lib/pro/admin/advanced.php:664 lib/pro/admin/advanced.php:692
+#: lib/std/admin/advanced.php:472 lib/std/admin/advanced.php:478
+#: lib/std/admin/advanced.php:498 lib/std/admin/advanced.php:564
+#: lib/std/admin/advanced.php:578 lib/std/admin/advanced.php:606
 msgctxt "option comment"
 msgid "for %s"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:93 gettext/gettext-lib-pro.php:104
-#: lib/pro/admin/advanced.php:560 lib/pro/admin/advanced.php:658
-#: lib/std/admin/advanced.php:472 lib/std/admin/advanced.php:572
+#: gettext/gettext-lib-pro.php:94 gettext/gettext-lib-pro.php:105
+#: lib/pro/admin/advanced.php:566 lib/pro/admin/advanced.php:664
+#: lib/std/admin/advanced.php:478 lib/std/admin/advanced.php:578
 msgctxt "option comment"
 msgid "Post Type Archive Page"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:94 gettext/gettext-lib-pro.php:105
-#: lib/pro/admin/advanced.php:563 lib/pro/admin/advanced.php:662
-#: lib/std/admin/advanced.php:475 lib/std/admin/advanced.php:576
+#: gettext/gettext-lib-pro.php:95 gettext/gettext-lib-pro.php:106
+#: lib/pro/admin/advanced.php:569 lib/pro/admin/advanced.php:668
+#: lib/std/admin/advanced.php:481 lib/std/admin/advanced.php:582
 msgctxt "option label"
 msgid "Type by Post Type"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:96 gettext/gettext-lib-pro.php:107
-#: lib/pro/admin/advanced.php:584 lib/pro/admin/advanced.php:690
-#: lib/std/admin/advanced.php:496 lib/std/admin/advanced.php:604
+#: gettext/gettext-lib-pro.php:97 gettext/gettext-lib-pro.php:108
+#: lib/pro/admin/advanced.php:590 lib/pro/admin/advanced.php:696
+#: lib/std/admin/advanced.php:502 lib/std/admin/advanced.php:610
 msgctxt "option label"
 msgid "Type by Taxonomy"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:108 gettext/gettext-lib-pro.php:111
-#: lib/pro/admin/advanced.php:702 lib/pro/admin/advanced.php:754
-#: lib/std/admin/advanced.php:618 lib/std/admin/advanced.php:673
+#: gettext/gettext-lib-pro.php:109 gettext/gettext-lib-pro.php:112
+#: lib/pro/admin/advanced.php:708 lib/pro/admin/advanced.php:760
+#: lib/std/admin/advanced.php:624 lib/std/admin/advanced.php:679
 msgctxt "column title"
 msgid "Show"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:109 gettext/gettext-lib-pro.php:112
-#: lib/messages.php:1940 lib/messages.php:1942 lib/messages.php:1954
-#: lib/messages.php:2402 lib/pro/admin/advanced.php:704
-#: lib/pro/admin/advanced.php:756 lib/std/admin/advanced.php:620
-#: lib/std/admin/advanced.php:675
+#: gettext/gettext-lib-pro.php:110 gettext/gettext-lib-pro.php:113
+#: lib/messages.php:1943 lib/messages.php:1945 lib/messages.php:1957
+#: lib/messages.php:2405 lib/pro/admin/advanced.php:710
+#: lib/pro/admin/advanced.php:762 lib/std/admin/advanced.php:626
+#: lib/std/admin/advanced.php:681
 msgctxt "column title"
 msgid "Contact Field ID"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:110 gettext/gettext-lib-pro.php:113
-#: lib/messages.php:1948 lib/messages.php:2404 lib/pro/admin/advanced.php:706
-#: lib/pro/admin/advanced.php:758 lib/std/admin/advanced.php:622
-#: lib/std/admin/advanced.php:677
+#: gettext/gettext-lib-pro.php:111 gettext/gettext-lib-pro.php:114
+#: lib/messages.php:1951 lib/messages.php:2407 lib/pro/admin/advanced.php:712
+#: lib/pro/admin/advanced.php:764 lib/std/admin/advanced.php:628
+#: lib/std/admin/advanced.php:683
 msgctxt "column title"
 msgid "Contact Field Label"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:114 lib/pro/admin/advanced.php:930
-#: lib/std/admin/advanced.php:853
+#: gettext/gettext-lib-pro.php:115 lib/pro/admin/advanced.php:936
+#: lib/std/admin/advanced.php:859
 msgid ""
 "An SEO plugin has been detected - some basic SEO meta tags have been "
 "unchecked and disabled automatically."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:115 lib/pro/admin/advanced.php:1002
-#: lib/std/admin/advanced.php:925
+#: gettext/gettext-lib-pro.php:116 lib/pro/admin/advanced.php:1008
+#: lib/std/admin/advanced.php:931
 msgctxt "option label"
 msgid "Include in Sitemaps"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:121 lib/pro/admin/general.php:75
+#: gettext/gettext-lib-pro.php:122 lib/pro/admin/general.php:75
 #: lib/std/admin/general.php:73
 msgctxt "option label"
 msgid "Maximum Videos to Include"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:122 lib/pro/admin/general.php:81
+#: gettext/gettext-lib-pro.php:123 lib/pro/admin/general.php:81
 #: lib/std/admin/general.php:78
 msgctxt "option label"
 msgid "Include Video Preview Images"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:123 lib/pro/admin/general.php:86
+#: gettext/gettext-lib-pro.php:124 lib/pro/admin/general.php:86
 #: lib/std/admin/general.php:82
 msgctxt "option label"
 msgid "Force Autoplay when Possible"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:125 lib/pro/admin/edit.php:60
+#: gettext/gettext-lib-pro.php:126 lib/pro/admin/edit.php:60
 #: lib/std/admin/edit.php:56
 msgctxt "metabox title"
 msgid "Product Information (Basic)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:126 lib/messages.php:3145
+#: gettext/gettext-lib-pro.php:127 lib/messages.php:3148
 #: lib/pro/admin/edit.php:70 lib/std/admin/edit.php:70
 msgctxt "option label"
 msgid "Product Type"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:127 lib/messages.php:3141
+#: gettext/gettext-lib-pro.php:128 lib/messages.php:3144
 #: lib/pro/admin/edit.php:85 lib/std/admin/edit.php:78
 msgctxt "option label"
 msgid "Product Brand"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:128 lib/messages.php:3209
+#: gettext/gettext-lib-pro.php:129 lib/messages.php:3212
 #: lib/pro/admin/edit.php:92 lib/std/admin/edit.php:86
 msgctxt "option label"
 msgid "Product Price"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:130 lib/pro/admin/edit.php:98
+#: gettext/gettext-lib-pro.php:131 lib/pro/admin/edit.php:98
 #: lib/std/admin/edit.php:91
 msgid "for simple or main product"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:131 lib/messages.php:3137
+#: gettext/gettext-lib-pro.php:132 lib/messages.php:3140
 #: lib/pro/admin/edit.php:103 lib/std/admin/edit.php:97
 msgctxt "option label"
 msgid "Product Availability"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:132 lib/messages.php:3154
+#: gettext/gettext-lib-pro.php:133 lib/messages.php:3157
 #: lib/pro/admin/edit.php:111 lib/std/admin/edit.php:106
 msgctxt "option label"
 msgid "Product Condition"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:133 lib/messages.php:3201
+#: gettext/gettext-lib-pro.php:134 lib/messages.php:3204
 #: lib/pro/admin/edit.php:119 lib/std/admin/edit.php:115
 msgctxt "option label"
 msgid "Product Material"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:134 lib/messages.php:3150
+#: gettext/gettext-lib-pro.php:135 lib/messages.php:3153
 #: lib/pro/admin/edit.php:126 lib/std/admin/edit.php:123
 msgctxt "option label"
 msgid "Product Color"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:135 lib/messages.php:3221
+#: gettext/gettext-lib-pro.php:136 lib/messages.php:3224
 #: lib/pro/admin/edit.php:133 lib/std/admin/edit.php:131
 msgctxt "option label"
 msgid "Product Target Gender"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:136 lib/messages.php:3217
+#: gettext/gettext-lib-pro.php:137 lib/messages.php:3220
 #: lib/pro/admin/edit.php:141 lib/std/admin/edit.php:140
 msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:137 lib/messages.php:3230
+#: gettext/gettext-lib-pro.php:138 lib/messages.php:3233
 #: lib/pro/admin/edit.php:148 lib/std/admin/edit.php:148
 msgctxt "option label"
 msgid "Product Weight"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:138 lib/messages.php:3213
+#: gettext/gettext-lib-pro.php:139 lib/messages.php:3216
 #: lib/pro/admin/edit.php:156 lib/std/admin/edit.php:157
 msgctxt "option label"
 msgid "Product SKU"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:139 lib/messages.php:3205
+#: gettext/gettext-lib-pro.php:140 lib/messages.php:3208
 #: lib/pro/admin/edit.php:163 lib/std/admin/edit.php:165
 msgctxt "option label"
 msgid "Product MPN"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:140 lib/messages.php:3192
+#: gettext/gettext-lib-pro.php:141 lib/messages.php:3195
 #: lib/pro/admin/edit.php:170 lib/std/admin/edit.php:173
 msgctxt "option label"
 msgid "Product ISBN"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:141 gettext/gettext-lib-pro.php:160
+#: gettext/gettext-lib-pro.php:142 gettext/gettext-lib-pro.php:161
 #: lib/pro/admin/edit.php:181 lib/pro/admin/edit.php:385
 #: lib/std/admin/edit.php:184 lib/std/admin/edit.php:407
 msgctxt "metabox title"
 msgid "Schema JSON-LD Markup / Google Rich Results"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:142 lib/pro/admin/edit.php:218
+#: gettext/gettext-lib-pro.php:143 lib/pro/admin/edit.php:218
 #: lib/std/admin/edit.php:217
 msgctxt "metabox title"
 msgid "Default Priority Media"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:143 lib/pro/admin/edit.php:223
+#: gettext/gettext-lib-pro.php:144 lib/pro/admin/edit.php:223
 #: lib/std/admin/edit.php:225
 msgctxt "metabox title"
 msgid "Priority Image Information"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:144 lib/pro/admin/edit.php:228
+#: gettext/gettext-lib-pro.php:145 lib/pro/admin/edit.php:228
 #: lib/std/admin/edit.php:231
 msgctxt "option label"
 msgid "Maximum Images"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:145 gettext/gettext-lib-pro.php:156
-#: gettext/gettext-lib-pro.php:158 lib/pro/admin/edit.php:234
+#: gettext/gettext-lib-pro.php:146 gettext/gettext-lib-pro.php:157
+#: gettext/gettext-lib-pro.php:159 lib/pro/admin/edit.php:234
 #: lib/pro/admin/edit.php:319 lib/pro/admin/edit.php:365
 #: lib/std/admin/edit.php:238 lib/std/admin/edit.php:338
 #: lib/std/admin/edit.php:386
@@ -3098,8 +3104,8 @@ msgctxt "option label"
 msgid "Image ID"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:146 gettext/gettext-lib-pro.php:157
-#: gettext/gettext-lib-pro.php:159 lib/pro/admin/edit.php:240
+#: gettext/gettext-lib-pro.php:147 gettext/gettext-lib-pro.php:158
+#: gettext/gettext-lib-pro.php:160 lib/pro/admin/edit.php:240
 #: lib/pro/admin/edit.php:327 lib/pro/admin/edit.php:373
 #: lib/std/admin/edit.php:245 lib/std/admin/edit.php:347
 #: lib/std/admin/edit.php:395
@@ -3107,130 +3113,130 @@ msgctxt "option label"
 msgid "or an Image URL"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:147 lib/pro/admin/edit.php:247
+#: gettext/gettext-lib-pro.php:148 lib/pro/admin/edit.php:247
 #: lib/std/admin/edit.php:252
 msgctxt "metabox title"
 msgid "Priority Video Information"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:148 lib/pro/admin/edit.php:251
+#: gettext/gettext-lib-pro.php:149 lib/pro/admin/edit.php:251
 #: lib/std/admin/edit.php:260
 msgctxt "option label"
 msgid "Include Preview Images"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:149 lib/pro/admin/edit.php:258
+#: gettext/gettext-lib-pro.php:150 lib/pro/admin/edit.php:258
 #: lib/std/admin/edit.php:268
 msgctxt "option label"
 msgid "Maximum Videos"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:150 lib/pro/admin/edit.php:265
+#: gettext/gettext-lib-pro.php:151 lib/pro/admin/edit.php:265
 #: lib/std/admin/edit.php:276
 msgctxt "option label"
 msgid "Video Dimensions"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:151 lib/messages.php:3252
+#: gettext/gettext-lib-pro.php:152 lib/messages.php:3255
 #: lib/pro/admin/edit.php:271 lib/std/admin/edit.php:283
 msgctxt "option label"
 msgid "Video Embed HTML"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:152 lib/pro/admin/edit.php:277
+#: gettext/gettext-lib-pro.php:153 lib/pro/admin/edit.php:277
 #: lib/std/admin/edit.php:290
 msgctxt "option label"
 msgid "or a Video URL"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:153 lib/pro/admin/edit.php:284
+#: gettext/gettext-lib-pro.php:154 lib/pro/admin/edit.php:284
 #: lib/std/admin/edit.php:298
 msgctxt "option label"
 msgid "Video Name (Title)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:154 lib/pro/admin/edit.php:292
+#: gettext/gettext-lib-pro.php:155 lib/pro/admin/edit.php:292
 #: lib/std/admin/edit.php:306
 msgctxt "option label"
 msgid "Video Description"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:155 lib/pro/admin/edit.php:313
+#: gettext/gettext-lib-pro.php:156 lib/pro/admin/edit.php:313
 #: lib/std/admin/edit.php:326
 msgctxt "metabox title"
 msgid "Pinterest Pin It"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:161 lib/pro/ecom/woocommerce.php:58
+#: gettext/gettext-lib-pro.php:162 lib/pro/ecom/woocommerce.php:58
 msgid ""
 "Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; "
 "Advanced &gt; Page setup</a> section."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:162 lib/pro/ecom/woocommerce.php:61
+#: gettext/gettext-lib-pro.php:163 lib/pro/ecom/woocommerce.php:61
 msgid ""
 "Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; "
 "Products &gt; General</a> section."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:164 lib/pro/ecom/woocommerce.php:65
+#: gettext/gettext-lib-pro.php:165 lib/pro/ecom/woocommerce.php:65
 msgid "My account page"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:166 lib/pro/ecom/woocommerce.php:66
+#: gettext/gettext-lib-pro.php:167 lib/pro/ecom/woocommerce.php:66
 msgid "Cart page"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:168 lib/pro/ecom/woocommerce.php:67
+#: gettext/gettext-lib-pro.php:169 lib/pro/ecom/woocommerce.php:67
 msgid "Checkout page"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:170 lib/pro/ecom/woocommerce.php:68
+#: gettext/gettext-lib-pro.php:171 lib/pro/ecom/woocommerce.php:68
 msgid "Shop page"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:171 lib/pro/ecom/woocommerce.php:73
+#: gettext/gettext-lib-pro.php:172 lib/pro/ecom/woocommerce.php:73
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:172 lib/pro/ecom/woocommerce.php:690
+#: gettext/gettext-lib-pro.php:173 lib/pro/ecom/woocommerce.php:690
 msgid ""
 "The rating and review counts provided by WooCommerce for product ID %d are "
 "invalid."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:173 lib/pro/ecom/woocommerce.php:693
+#: gettext/gettext-lib-pro.php:174 lib/pro/ecom/woocommerce.php:693
 msgid ""
 "The average rating is %.2f, but the rating count is %d and the review count "
 "is %d."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:174 lib/pro/ecom/woocommerce.php:696
+#: gettext/gettext-lib-pro.php:175 lib/pro/ecom/woocommerce.php:696
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:175 lib/pro/ecom/woocommerce.php:1343
+#: gettext/gettext-lib-pro.php:176 lib/pro/ecom/woocommerce.php:1343
 msgid "World"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:176 lib/pro/ext/owly.php:63
+#: gettext/gettext-lib-pro.php:177 lib/pro/ext/owly.php:63
 msgid "API key missing."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:177 gettext/gettext-lib-pro.php:178
-#: gettext/gettext-lib-pro.php:179 gettext/gettext-lib-pro.php:181
-#: gettext/gettext-lib-pro.php:182 gettext/gettext-lib-pro.php:183
-#: gettext/gettext-lib-pro.php:184 gettext/gettext-lib-pro.php:185
-#: gettext/gettext-lib-pro.php:186 gettext/gettext-lib-pro.php:188
-#: gettext/gettext-lib-pro.php:189 gettext/gettext-lib-pro.php:190
-#: gettext/gettext-lib-pro.php:192 gettext/gettext-lib-pro.php:273
-#: gettext/gettext-lib-pro.php:275 gettext/gettext-lib-pro.php:277
-#: gettext/gettext-lib-pro.php:278 gettext/gettext-lib-pro.php:279
-#: gettext/gettext-lib-pro.php:281 lib/pro/com/bitly.php:60
+#: gettext/gettext-lib-pro.php:178 gettext/gettext-lib-pro.php:179
+#: gettext/gettext-lib-pro.php:180 gettext/gettext-lib-pro.php:182
+#: gettext/gettext-lib-pro.php:183 gettext/gettext-lib-pro.php:184
+#: gettext/gettext-lib-pro.php:185 gettext/gettext-lib-pro.php:186
+#: gettext/gettext-lib-pro.php:187 gettext/gettext-lib-pro.php:189
+#: gettext/gettext-lib-pro.php:190 gettext/gettext-lib-pro.php:191
+#: gettext/gettext-lib-pro.php:193 gettext/gettext-lib-pro.php:274
+#: gettext/gettext-lib-pro.php:276 gettext/gettext-lib-pro.php:278
+#: gettext/gettext-lib-pro.php:279 gettext/gettext-lib-pro.php:280
+#: gettext/gettext-lib-pro.php:282 lib/pro/com/bitly.php:60
 #: lib/pro/com/bitly.php:68 lib/pro/com/bitly.php:110 lib/pro/com/bitly.php:170
 #: lib/pro/com/bitly.php:176 lib/pro/com/bitly.php:188
 #: lib/pro/ext/dlmyapp.php:56 lib/pro/ext/dlmyapp.php:62
@@ -3242,27 +3248,27 @@ msgstr ""
 msgid "%1$s shortener API error: %2$s"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:180 gettext/gettext-lib-pro.php:187
-#: gettext/gettext-lib-pro.php:191 gettext/gettext-lib-pro.php:280
+#: gettext/gettext-lib-pro.php:181 gettext/gettext-lib-pro.php:188
+#: gettext/gettext-lib-pro.php:192 gettext/gettext-lib-pro.php:281
 #: lib/pro/com/bitly.php:186 lib/pro/ext/dlmyapp.php:72
 #: lib/pro/ext/owly.php:201 lib/pro/ext/yourls.php:216
 msgid "JSON response decode error code %d."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:193 gettext/gettext-lib-pro.php:196
-#: gettext/gettext-lib-pro.php:199 lib/pro/media/slideshare.php:197
+#: gettext/gettext-lib-pro.php:194 gettext/gettext-lib-pro.php:197
+#: gettext/gettext-lib-pro.php:200 lib/pro/media/slideshare.php:197
 #: lib/pro/media/vimeo.php:171 lib/pro/media/wistia.php:332
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:194 gettext/gettext-lib-pro.php:197
-#: gettext/gettext-lib-pro.php:200 lib/pro/media/slideshare.php:198
+#: gettext/gettext-lib-pro.php:195 gettext/gettext-lib-pro.php:198
+#: gettext/gettext-lib-pro.php:201 lib/pro/media/slideshare.php:198
 #: lib/pro/media/vimeo.php:172 lib/pro/media/wistia.php:333
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:195 gettext/gettext-lib-pro.php:198
-#: gettext/gettext-lib-pro.php:201 lib/conflict.php:224
+#: gettext/gettext-lib-pro.php:196 gettext/gettext-lib-pro.php:199
+#: gettext/gettext-lib-pro.php:202 lib/conflict.php:224
 #: lib/pro/media/slideshare.php:201 lib/pro/media/vimeo.php:175
 #: lib/pro/media/wistia.php:336
 msgid ""
@@ -3270,28 +3276,28 @@ msgid ""
 "installed."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:202 lib/pro/media/upscale.php:248
+#: gettext/gettext-lib-pro.php:203 lib/pro/media/upscale.php:248
 msgid ""
 "Failed to upscale image ID %1$s of %2$s by %3$s from %4$s to %5$s for the "
 "%6$s image size (exceeds %7$s maximum upscale setting)."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:203 lib/pro/media/upscale.php:256
+#: gettext/gettext-lib-pro.php:204 lib/pro/media/upscale.php:256
 msgid ""
 "Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the "
 "%6$s image size."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:204 gettext/gettext-lib-pro.php:207
+#: gettext/gettext-lib-pro.php:205 gettext/gettext-lib-pro.php:208
 #: lib/pro/media/ngg.php:142 lib/pro/media/ngg.php:1567
 msgid "NextGEN Gallery"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:205 lib/pro/media/ngg.php:143
+#: gettext/gettext-lib-pro.php:206 lib/pro/media/ngg.php:143
 msgid "image ID %s"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:206 gettext/gettext-lib-pro.php:227
+#: gettext/gettext-lib-pro.php:207 gettext/gettext-lib-pro.php:228
 #: lib/pro/media/ngg.php:145 lib/pro/util/check-img-dims.php:110
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s is too small for the "
@@ -3299,64 +3305,64 @@ msgid ""
 msgstr ""
 
 #. translators: %1$s is the class::method name.
-#: gettext/gettext-lib-pro.php:208 lib/pro/seo/wpseo.php:44
+#: gettext/gettext-lib-pro.php:209 lib/pro/seo/wpseo.php:44
 msgid ""
 "The Yoast SEO <code>%1$s</code> method is missing &ndash; if you are using "
 "an older version of Yoast SEO, please update now."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:209 gettext/gettext-lib-pro.php:211
-#: gettext/gettext-lib-pro.php:213 gettext/gettext-lib-pro.php:215
+#: gettext/gettext-lib-pro.php:210 gettext/gettext-lib-pro.php:212
+#: gettext/gettext-lib-pro.php:214 gettext/gettext-lib-pro.php:216
 #: lib/pro/util/shorten.php:325 lib/pro/util/shorten.php:351
 #: lib/pro/util/shorten.php:375 lib/pro/util/shorten.php:416
 msgid "The \"%s\" option value is empty and required."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:217 gettext/gettext-lib-pro.php:219
-#: gettext/gettext-lib-pro.php:256 lib/conflict.php:118 lib/loader.php:180
+#: gettext/gettext-lib-pro.php:218 gettext/gettext-lib-pro.php:220
+#: gettext/gettext-lib-pro.php:257 lib/conflict.php:118 lib/loader.php:180
 #: lib/loader.php:194 lib/pro/review/yotpowc.php:204
 #: lib/pro/util/shorten.php:460 lib/pro/util/shorten.php:497
 msgid "%s error:"
 msgstr ""
 
 #. translators: %s is the service id.
-#: gettext/gettext-lib-pro.php:218 lib/pro/util/shorten.php:463
+#: gettext/gettext-lib-pro.php:219 lib/pro/util/shorten.php:463
 msgid "Incomplete API options to instantiate the \"%s\" shortening service."
 msgstr ""
 
 #. translators: %s is the shortening service id.
-#: gettext/gettext-lib-pro.php:220 lib/pro/util/shorten.php:500
+#: gettext/gettext-lib-pro.php:221 lib/pro/util/shorten.php:500
 msgid "The URL shortening library file for \"%s\" is missing and required."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:221 lib/pro/util/wpseo-meta.php:157
+#: gettext/gettext-lib-pro.php:222 lib/pro/util/wpseo-meta.php:157
 msgid "Imported Yoast SEO \"%1$s\" metadata from post ID %2$d."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:222 lib/pro/util/wpseo-meta.php:295
+#: gettext/gettext-lib-pro.php:223 lib/pro/util/wpseo-meta.php:295
 msgid "Imported Yoast SEO \"%1$s\" metadata from term ID %2$d."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:223 lib/pro/util/wpseo-meta.php:396
+#: gettext/gettext-lib-pro.php:224 lib/pro/util/wpseo-meta.php:396
 msgid "Imported Yoast SEO \"%1$s\" metadata from user ID %2$d."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:224 lib/pro/util/check-img-dims.php:84
+#: gettext/gettext-lib-pro.php:225 lib/pro/util/check-img-dims.php:84
 msgid "full size original"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:226 lib/media.php:2434
+#: gettext/gettext-lib-pro.php:227 lib/media.php:2434
 #: lib/pro/util/check-img-dims.php:107
 msgid "image ID %1$s (%2$s)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:228 lib/pro/util/check-img-dims.php:171
+#: gettext/gettext-lib-pro.php:229 lib/pro/util/check-img-dims.php:171
 msgid ""
 "Image %1$s in content ignored - the image width and height is too small for "
 "the required %2$s image dimensions."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:229 lib/pro/util/check-img-dims.php:173
+#: gettext/gettext-lib-pro.php:230 lib/pro/util/check-img-dims.php:173
 msgid ""
 "%1$s includes an additional 'data-wp-pid' attribute for WordPress Media "
 "Library images - if this image was selected from the Media Library before "
@@ -3364,172 +3370,172 @@ msgid ""
 msgstr ""
 
 #. translators: %s is the Events Calendar plugin name
-#: gettext/gettext-lib-pro.php:230 lib/pro/event/the-events-calendar.php:51
+#: gettext/gettext-lib-pro.php:231 lib/pro/event/the-events-calendar.php:51
 msgctxt "option value"
 msgid "[%s Venue]"
 msgstr ""
 
 #. translators: %s is the Events Calendar plugin name
-#: gettext/gettext-lib-pro.php:231 lib/pro/event/the-events-calendar.php:59
+#: gettext/gettext-lib-pro.php:232 lib/pro/event/the-events-calendar.php:59
 msgctxt "option value"
 msgid "[%s Organizer]"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:232 lib/pro/form/gravityview.php:54
+#: gettext/gettext-lib-pro.php:233 lib/pro/form/gravityview.php:54
 msgctxt "metabox title"
 msgid "Single Entry Integration"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:233 lib/pro/form/gravityview.php:82
+#: gettext/gettext-lib-pro.php:234 lib/pro/form/gravityview.php:82
 msgctxt "option label"
 msgid "Title Field ID"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:234 lib/pro/form/gravityview.php:86
+#: gettext/gettext-lib-pro.php:235 lib/pro/form/gravityview.php:86
 msgctxt "option label"
 msgid "Description Field ID"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:235 lib/pro/form/gravityview.php:90
+#: gettext/gettext-lib-pro.php:236 lib/pro/form/gravityview.php:90
 msgctxt "option label"
 msgid "Post Image Field ID"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:236 gettext/gettext-lib-pro.php:246
+#: gettext/gettext-lib-pro.php:237 gettext/gettext-lib-pro.php:247
 #: lib/conflict-seo.php:49 lib/pro/rating/rate-my-post.php:64
 #: lib/pro/rating/wppostratings.php:62
 msgid "Plugin conflict detected:"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:238 lib/pro/rating/wppostratings.php:65
+#: gettext/gettext-lib-pro.php:239 lib/pro/rating/wppostratings.php:65
 msgid "Enable Google Rich Snippets?"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:240 lib/pro/rating/wppostratings.php:71
+#: gettext/gettext-lib-pro.php:241 lib/pro/rating/wppostratings.php:71
 msgid "WP-PostRatings"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:242 lib/pro/rating/wppostratings.php:73
+#: gettext/gettext-lib-pro.php:243 lib/pro/rating/wppostratings.php:73
 msgid "Ratings"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:244 lib/pro/rating/wppostratings.php:75
+#: gettext/gettext-lib-pro.php:245 lib/pro/rating/wppostratings.php:75
 msgid "Ratings Options"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:245 gettext/gettext-lib-pro.php:255
+#: gettext/gettext-lib-pro.php:246 gettext/gettext-lib-pro.php:256
 #: lib/pro/rating/rate-my-post.php:84 lib/pro/rating/wppostratings.php:82
 msgid "Please disable the %1$s option in the %2$s settings page."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:248 lib/pro/rating/rate-my-post.php:67
+#: gettext/gettext-lib-pro.php:249 lib/pro/rating/rate-my-post.php:67
 msgid "Type of structured data for rich snippets"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:250 lib/pro/rating/rate-my-post.php:73
+#: gettext/gettext-lib-pro.php:251 lib/pro/rating/rate-my-post.php:73
 msgid "Rate my Post"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:252 lib/conflict-seo.php:411
+#: gettext/gettext-lib-pro.php:253 lib/conflict-seo.php:411
 #: lib/pro/rating/rate-my-post.php:75
 msgid "Settings"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:254 lib/pro/rating/rate-my-post.php:77
+#: gettext/gettext-lib-pro.php:255 lib/pro/rating/rate-my-post.php:77
 msgid "Rating Widget Settings"
 msgstr ""
 
 #. translators: %s is "App Key".
 #. translators: %s is "Secret Token".
-#: gettext/gettext-lib-pro.php:257 gettext/gettext-lib-pro.php:258
+#: gettext/gettext-lib-pro.php:258 gettext/gettext-lib-pro.php:259
 #: lib/pro/review/yotpowc.php:216 lib/pro/review/yotpowc.php:236
 msgid "Yotpo for WooCommerce \"%s\" setting value is empty."
 msgstr ""
 
 #. translators: %s is "wc_yotpo_compatible()".
-#: gettext/gettext-lib-pro.php:259 lib/pro/review/yotpowc.php:256
+#: gettext/gettext-lib-pro.php:260 lib/pro/review/yotpowc.php:256
 msgid "Yotpo for WooCommerce %s function is missing."
 msgstr ""
 
 #. translators: %s is "wc_yotpo_compatible()".
-#: gettext/gettext-lib-pro.php:260 lib/pro/review/yotpowc.php:277
+#: gettext/gettext-lib-pro.php:261 lib/pro/review/yotpowc.php:277
 msgid "Yotpo for WooCommerce %s function returned false."
 msgstr ""
 
 #. translators: %s is "yotpo-social-reviews-for-woocommerce".
-#: gettext/gettext-lib-pro.php:261 lib/pro/review/yotpowc.php:305
+#: gettext/gettext-lib-pro.php:262 lib/pro/review/yotpowc.php:305
 msgid ""
 "\"%s\" plugin not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders."
 msgstr ""
 
 #. translators: %s is the API library file path.
-#: gettext/gettext-lib-pro.php:262 lib/pro/review/yotpowc.php:327
+#: gettext/gettext-lib-pro.php:263 lib/pro/review/yotpowc.php:327
 msgid "Yotpo for WooCommerce API library file \"%s\" not found."
 msgstr ""
 
 #. translators: %s is the API library file path.
-#: gettext/gettext-lib-pro.php:263 lib/pro/review/yotpowc.php:354
+#: gettext/gettext-lib-pro.php:264 lib/pro/review/yotpowc.php:354
 msgid "Yotpo for WooCommerce \"%s\" class does not exist."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:264 lib/pro/review/shopperapproved.php:169
+#: gettext/gettext-lib-pro.php:265 lib/pro/review/shopperapproved.php:169
 msgid "getting shopper approved ratings and reviews"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:265 gettext/gettext-lib-pro.php:268
+#: gettext/gettext-lib-pro.php:266 gettext/gettext-lib-pro.php:269
 #: lib/pro/review/shopperapproved.php:362 lib/pro/review/stamped.php:335
 msgid "There has been a previous error connecting to %s for caching."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:266 gettext/gettext-lib-pro.php:269
+#: gettext/gettext-lib-pro.php:267 gettext/gettext-lib-pro.php:270
 #: lib/pro/review/shopperapproved.php:365 lib/pro/review/stamped.php:338
 msgid ""
 "Requests to retrieve and cache this URL are ignored for another %d second(s)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:267 lib/pro/review/stamped.php:169
+#: gettext/gettext-lib-pro.php:268 lib/pro/review/stamped.php:169
 msgid "getting stamp.io ratings and reviews"
 msgstr ""
 
 #. translators: %s is the Job Manager plugin name
-#: gettext/gettext-lib-pro.php:270 lib/pro/job/wpjobmanager.php:51
+#: gettext/gettext-lib-pro.php:271 lib/pro/job/wpjobmanager.php:51
 msgctxt "option value"
 msgid "[%s Company]"
 msgstr ""
 
 #. translators: %s is the Job Manager plugin name
-#: gettext/gettext-lib-pro.php:271 lib/pro/job/wpjobmanager.php:59
+#: gettext/gettext-lib-pro.php:272 lib/pro/job/wpjobmanager.php:59
 msgctxt "option value"
 msgid "[%s Location]"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:272 lib/pro/com/bitly.php:58
+#: gettext/gettext-lib-pro.php:273 lib/pro/com/bitly.php:58
 msgid "Group name \"%s\" not found in the Bitly API response data."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:274 lib/pro/com/bitly.php:66
+#: gettext/gettext-lib-pro.php:275 lib/pro/com/bitly.php:66
 msgid "Groups property missing from the Bitly API response data."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:276 lib/pro/com/bitly.php:108
+#: gettext/gettext-lib-pro.php:277 lib/pro/com/bitly.php:108
 msgid "Link property value is empty."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:282 lib/pro/social/buddypress.php:91
+#: gettext/gettext-lib-pro.php:283 lib/pro/social/buddypress.php:91
 #: lib/std/social/buddypress.php:54
 msgctxt "option label"
 msgid "BuddyPress Member Bio Field Name"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:283 lib/pro/social/buddypress.php:108
+#: gettext/gettext-lib-pro.php:284 lib/pro/social/buddypress.php:108
 #: lib/std/social/buddypress.php:71
 msgid ""
 "The BuddyPress member profile page does not include the <em>Biographical "
@@ -3539,7 +3545,7 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:284 lib/edit.php:427 lib/page.php:1274
+#: gettext/gettext-lib-pro.php:285 lib/edit.php:427 lib/page.php:1274
 #: lib/pro/social/buddypress.php:664
 msgctxt "default description"
 msgid "No Description."
@@ -3550,12 +3556,12 @@ msgctxt "metabox tab"
 msgid "Customize"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:740 lib/messages.php:2614
+#: lib/abstracts/wp-meta.php:740 lib/messages.php:2617
 msgctxt "metabox tab"
 msgid "Priority Media"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:744 lib/messages.php:2465
+#: lib/abstracts/wp-meta.php:744 lib/messages.php:2468
 msgctxt "metabox tab"
 msgid "Robots Meta"
 msgstr ""
@@ -3674,17 +3680,17 @@ msgid_plural "Please install these updates at your earliest convenience."
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/admin-head.php:257 lib/messages.php:3360
+#: lib/admin-head.php:257 lib/messages.php:3363
 msgctxt "menu title"
 msgid "SSO"
 msgstr ""
 
-#: lib/admin-head.php:259 lib/messages.php:3362 lib/submenu/advanced.php:43
+#: lib/admin-head.php:259 lib/messages.php:3365 lib/submenu/advanced.php:43
 msgctxt "metabox title"
 msgid "HTML Tags"
 msgstr ""
 
-#: lib/admin-head.php:260 lib/messages.php:3363 lib/submenu/advanced.php:207
+#: lib/admin-head.php:260 lib/messages.php:3366 lib/submenu/advanced.php:207
 msgctxt "metabox tab"
 msgid "SEO / Other"
 msgstr ""
@@ -3974,7 +3980,7 @@ msgstr ""
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
-#: lib/admin.php:1146 lib/options.php:1208 lib/register.php:155
+#: lib/admin.php:1146 lib/options.php:1219 lib/register.php:155
 msgid "A background task will begin shortly to clear all caches."
 msgstr ""
 
@@ -4311,7 +4317,7 @@ msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:3053 lib/options.php:1313
+#: lib/admin.php:3053 lib/options.php:1324
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
@@ -4341,57 +4347,57 @@ msgctxt "option comment"
 msgid "in %s"
 msgstr ""
 
-#: lib/admin.php:3148
+#: lib/admin.php:3146
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:3356
+#: lib/admin.php:3351
 msgid "Return to %s"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:3387
+#: lib/admin.php:3382
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
 #. translators: %1$s is the URL, %2$s is the short plugin name.
-#: lib/admin.php:3408
+#: lib/admin.php:3403
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-"
 "ons</a> to check if newer versions are available."
 msgstr ""
 
 #. translators: %1$s is the URL.
-#: lib/admin.php:3417
+#: lib/admin.php:3412
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for WordPress "
 "(plugins, themes and translations)</a> to check if newer versions are "
 "available."
 msgstr ""
 
-#: lib/admin.php:3567
+#: lib/admin.php:3562
 msgid "Please select a %1$s settings file to import."
 msgstr ""
 
-#: lib/admin.php:3574
+#: lib/admin.php:3569
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr ""
 
-#: lib/admin.php:3581
+#: lib/admin.php:3576
 msgid ""
 "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr ""
 
-#: lib/admin.php:3595
+#: lib/admin.php:3590
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr ""
 
-#: lib/admin.php:3605
+#: lib/admin.php:3600
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr ""
 
-#: lib/admin.php:3615
+#: lib/admin.php:3610
 msgid "Import of plugin and add-on settings is complete."
 msgstr ""
 
@@ -4840,7 +4846,7 @@ msgctxt "metabox title"
 msgid "Book Information"
 msgstr ""
 
-#: lib/edit.php:251 lib/messages.php:3117
+#: lib/edit.php:251 lib/messages.php:3120
 msgctxt "option label"
 msgid "Book ISBN"
 msgstr ""
@@ -4875,7 +4881,7 @@ msgctxt "option comment"
 msgid "do not index images on this webpage"
 msgstr ""
 
-#: lib/edit.php:296 lib/messages.php:2463
+#: lib/edit.php:296 lib/messages.php:2466
 msgctxt "option label"
 msgid "No Index"
 msgstr ""
@@ -5551,36 +5557,36 @@ msgid ""
 "salary, etc.)."
 msgstr ""
 
-#: lib/messages.php:572 lib/messages.php:1477
+#: lib/messages.php:572 lib/messages.php:1480
 msgid "Select the %1$s type for a static front page."
 msgstr ""
 
 #: lib/messages.php:574 lib/messages.php:584 lib/messages.php:594
-#: lib/messages.php:604 lib/messages.php:614 lib/messages.php:1479
-#: lib/messages.php:1489 lib/messages.php:1499 lib/messages.php:1509
-#: lib/messages.php:1519
+#: lib/messages.php:604 lib/messages.php:614 lib/messages.php:1482
+#: lib/messages.php:1492 lib/messages.php:1502 lib/messages.php:1512
+#: lib/messages.php:1522
 msgid "The default %1$s type is \"%2$s\"."
 msgstr ""
 
-#: lib/messages.php:582 lib/messages.php:1487
+#: lib/messages.php:582 lib/messages.php:1490
 msgid "Select the %1$s type for a blog (non-static) front page."
 msgstr ""
 
-#: lib/messages.php:592 lib/messages.php:1497
+#: lib/messages.php:592 lib/messages.php:1500
 msgid "Select the %1$s type for user / author pages."
 msgstr ""
 
-#: lib/messages.php:602 lib/messages.php:1507
+#: lib/messages.php:602 lib/messages.php:1510
 msgid "Select the %1$s type for search results pages."
 msgstr ""
 
-#: lib/messages.php:612 lib/messages.php:1517
+#: lib/messages.php:612 lib/messages.php:1520
 msgid ""
 "Select the %1$s type for other archive pages (example: date-based archive "
 "pages)."
 msgstr ""
 
-#: lib/messages.php:620 lib/messages.php:1525
+#: lib/messages.php:620 lib/messages.php:1528
 msgid "Select the %1$s type for each WordPress post type."
 msgstr ""
 
@@ -5615,8 +5621,8 @@ msgid ""
 "default is %d characters)."
 msgstr ""
 
-#: lib/messages.php:651 lib/messages.php:1339 lib/messages.php:1469
-#: lib/messages.php:1644
+#: lib/messages.php:651 lib/messages.php:1342 lib/messages.php:1472
+#: lib/messages.php:1647
 msgid "The maximum length must be at least %d characters or more."
 msgstr ""
 
@@ -5640,7 +5646,7 @@ msgid ""
 "webpage."
 msgstr ""
 
-#: lib/messages.php:672 lib/messages.php:1436
+#: lib/messages.php:672 lib/messages.php:1439
 msgid ""
 "If you select \"0\", then no images will be included (<strong>not "
 "recommended</strong>)."
@@ -5812,7 +5818,7 @@ msgstr ""
 msgid "Your theme does not support the <a href=\"%s\">WordPress Title Tag</a>."
 msgstr ""
 
-#: lib/messages.php:855 lib/messages.php:3339
+#: lib/messages.php:855 lib/messages.php:3342
 msgid "https://codex.wordpress.org/Title_Tag"
 msgstr ""
 
@@ -5846,20 +5852,20 @@ msgid ""
 "plugins to modify the title value provided to %2$s."
 msgstr ""
 
-#: lib/messages.php:880 lib/messages.php:2739
+#: lib/messages.php:880 lib/messages.php:2742
 msgid ""
 "The use of WordPress content filters allows %s to fully render your content "
 "text for meta tag descriptions and detect additional images and/or embedded "
 "videos provided by shortcodes."
 msgstr ""
 
-#: lib/messages.php:882 lib/messages.php:2743
+#: lib/messages.php:882 lib/messages.php:2746
 msgid ""
 "Many themes and plugins have badly coded content filters, so this option is "
 "disabled by default."
 msgstr ""
 
-#: lib/messages.php:884 lib/messages.php:2745
+#: lib/messages.php:884 lib/messages.php:2748
 msgid ""
 "If you use shortcodes in your content text, this option should be enabled - "
 "IF YOU EXPERIENCE WEBPAGE LAYOUT OR PERFORMANCE ISSUES AFTER ENABLING THIS "
@@ -5951,12 +5957,12 @@ msgid ""
 "plugin is updated, when another %2$d checks are performed."
 msgstr ""
 
-#: lib/messages.php:959 lib/messages.php:2654
+#: lib/messages.php:959 lib/messages.php:2657
 msgctxt "lib file description"
 msgid "Image Sizes"
 msgstr ""
 
-#: lib/messages.php:961 lib/messages.php:2770
+#: lib/messages.php:961 lib/messages.php:2773
 msgid ""
 "Content authors often upload small featured images, without knowing that "
 "WordPress creates resized images based on predefined image sizes, so this "
@@ -5971,13 +5977,13 @@ msgid ""
 "minimum requirements are ignored."
 msgstr ""
 
-#: lib/messages.php:965 lib/messages.php:2768
+#: lib/messages.php:965 lib/messages.php:2771
 msgid ""
 "Providing social and search sites with perfectly resized images is highly "
 "recommended, so this option should be enabled if possible."
 msgstr ""
 
-#: lib/messages.php:967 lib/messages.php:2631 lib/messages.php:2772
+#: lib/messages.php:967 lib/messages.php:2634 lib/messages.php:2775
 msgid ""
 "See <a href=\"%s\">Why shouldn't I upload small images to the media library?"
 "</a> for more information on WordPress image sizes."
@@ -6022,82 +6028,63 @@ msgid ""
 "height, the image will not be upscaled."
 msgstr ""
 
-#: lib/messages.php:995
-msgid ""
-"Import the Yoast SEO custom social meta text for Posts, Terms, and Users."
-msgstr ""
-
 #: lib/messages.php:997
-msgid ""
-"This option is checked by default if the Yoast SEO plugin is active, or if "
-"no SEO plugin is active and Yoast SEO settings are found in the database."
-msgstr ""
-
-#: lib/messages.php:1003
-msgid ""
-"Show notification messages for imported Yoast SEO custom social meta text "
-"for Posts, Terms, and Users."
-msgstr ""
-
-#: lib/messages.php:1014
-msgctxt "option comment"
-msgid "disabled"
-msgstr ""
-
-#: lib/messages.php:1016
-msgid ""
-"Clear shortened URLs when clearing the %1$s transient cache (default is "
-"%2$s)."
-msgstr ""
-
-#: lib/messages.php:1018
-msgid ""
-"Shortened URLs are cached for %1$s seconds (%2$s) to minimize external "
-"service API calls."
-msgstr ""
-
-#: lib/messages.php:1020
-msgid ""
-"Note that clearing and then re-updating all shortened URLs at once may "
-"exceed API limits imposed by your shortening service provider."
-msgstr ""
-
-#: lib/messages.php:1028
 msgid ""
 "When a published post, page, or custom post type is updated, automatically "
 "clear the cache of its selected terms (default is %s)."
 msgstr ""
 
-#: lib/messages.php:1036
+#: lib/messages.php:1005
 msgid ""
 "Automatically clear the post cache when a new comment is added, or the "
 "status of an existing comment is changed (default is %s)."
 msgstr ""
 
-#: lib/messages.php:1047
+#: lib/messages.php:1011
+msgid ""
+"Import the Yoast SEO custom social meta text for Posts, Terms, and Users."
+msgstr ""
+
+#: lib/messages.php:1013
+msgid ""
+"This option is checked by default if the Yoast SEO plugin is active, or if "
+"no SEO plugin is active and Yoast SEO settings are found in the database."
+msgstr ""
+
+#: lib/messages.php:1019
+msgid ""
+"Show notification messages for imported Yoast SEO custom social meta text "
+"for Posts, Terms, and Users."
+msgstr ""
+
+#: lib/messages.php:1025
+msgid "Get product prices from e-Commerce plugins with VAT included."
+msgstr ""
+
+#: lib/messages.php:1036
 msgid ""
 "A customized image for each author can be selected in the WordPress user "
 "profile %s metabox."
 msgstr ""
 
-#: lib/messages.php:1049
+#: lib/messages.php:1038
 msgid ""
 "If a custom image has not been selected, fallback to using their Gravatar "
 "image."
 msgstr ""
 
-#: lib/messages.php:1055
+#: lib/messages.php:1044
 msgid "The requested Gravatar image width and height."
 msgstr ""
 
-#: lib/messages.php:1057
+#: lib/messages.php:1046
 msgid ""
 "You may choose an image size from 1px up to 2048px, however note that many "
 "users have lower resolution images, so choosing a larger size may result in "
 "pixelation and lower-quality images."
 msgstr ""
 
-#: lib/messages.php:1063
+#: lib/messages.php:1052
 msgid ""
 "Check the content for embedded media URLs from supported media providers "
 "(Vimeo, Wistia, YouTube, etc.). If a supported media URL is found, an API "
@@ -6106,235 +6093,258 @@ msgid ""
 "width / height, etc.)."
 msgstr ""
 
-#: lib/messages.php:1072
+#: lib/messages.php:1061
 msgid ""
 "A preferred URL shortening service used for the <code>%s</code> HTML tag "
 "value, Schema markup, and social sharing buttons."
 msgstr ""
 
-#: lib/messages.php:1078
+#: lib/messages.php:1067
 msgid ""
 "Shorten URLs longer than this length (the default suggested by Twitter is %d "
 "characters)."
 msgstr ""
 
-#: lib/messages.php:1084
+#: lib/messages.php:1075
+msgctxt "option comment"
+msgid "disabled"
+msgstr ""
+
+#: lib/messages.php:1077
+msgid ""
+"Clear shortened URLs when clearing the %1$s transient cache (default is "
+"%2$s)."
+msgstr ""
+
+#: lib/messages.php:1079
+msgid ""
+"Shortened URLs are cached for %1$s seconds (%2$s) to minimize external "
+"service API calls."
+msgstr ""
+
+#: lib/messages.php:1081
+msgid ""
+"Note that clearing and then re-updating all shortened URLs at once may "
+"exceed API limits imposed by your shortening service provider."
+msgstr ""
+
+#: lib/messages.php:1087
 msgid ""
 "Use the selected URL shortening service to replace the WordPress <code>%s</"
 "code> function value."
 msgstr ""
 
-#: lib/messages.php:1090
+#: lib/messages.php:1093
 msgid ""
 "Use the selected URL shortening service to replace the WordPress <code>%s</"
 "code> HTML tag."
 msgstr ""
 
-#: lib/messages.php:1096
+#: lib/messages.php:1099
 msgid ""
 "The Bitly shortening service requires a Generic Access Token to shorten URLs."
 msgstr ""
 
-#: lib/messages.php:1098
+#: lib/messages.php:1101
 msgid ""
 "<a href=\"%s\">You can create a Generic Access Token in your Bitly profile "
 "settings</a> and enter its value here."
 msgstr ""
 
-#: lib/messages.php:1104
+#: lib/messages.php:1107
 msgid ""
 "An optional Bitly short domain to use - either bit.ly, j.mp, bitly.com, or "
 "another custom short domain."
 msgstr ""
 
-#: lib/messages.php:1106
+#: lib/messages.php:1109
 msgid ""
 "If no value is entered here, the short domain selected in your Bitly account "
 "settings will be used."
 msgstr ""
 
-#: lib/messages.php:1112
+#: lib/messages.php:1115
 msgid ""
 "An optional <a href=\"%s\">Bitly group name to organize your Bitly account "
 "links</a>."
 msgstr ""
 
-#: lib/messages.php:1119
+#: lib/messages.php:1122
 msgid ""
 "The DLMY.App secret API Key can be found in the DLMY.App user account &gt; "
 "Tools &gt; Developer API webpage."
 msgstr ""
 
-#: lib/messages.php:1125
+#: lib/messages.php:1128
 msgid ""
 "To use Ow.ly as your preferred shortening service, you must provide the Ow."
 "ly API Key for this website (complete this form to <a href=\"%s\">Request Ow."
 "ly API Access</a>)."
 msgstr ""
 
-#: lib/messages.php:1131
+#: lib/messages.php:1134
 msgid ""
 "The URL to <a href=\"%1$s\">Your Own URL Shortener</a> (YOURLS) shortening "
 "service."
 msgstr ""
 
-#: lib/messages.php:1136
+#: lib/messages.php:1139
 msgid ""
 "If <a href=\"%1$s\">Your Own URL Shortener</a> (YOURLS) shortening service "
 "is private, enter a configured username (see YOURLS Token for an alternative "
 "to the username / password options)."
 msgstr ""
 
-#: lib/messages.php:1142
+#: lib/messages.php:1145
 msgid ""
 "If <a href=\"%1$s\">Your Own URL Shortener</a> (YOURLS) shortening service "
 "is private, enter a configured user password (see YOURLS Token for an "
 "alternative to the username / password options)."
 msgstr ""
 
-#: lib/messages.php:1148
+#: lib/messages.php:1151
 msgid ""
 "If <a href=\"%1$s\">Your Own URL Shortener</a> (YOURLS) shortening service "
 "is private, you can use a token string for authentication instead of a "
 "username / password combination."
 msgstr ""
 
-#: lib/messages.php:1157
+#: lib/messages.php:1160
 msgid ""
 "An external service API used to retrieve ratings and reviews for meta tags "
 "and Schema markup."
 msgstr ""
 
-#: lib/messages.php:1163
+#: lib/messages.php:1166
 msgid "The maximum number of reviews retrieved from the service API."
 msgstr ""
 
-#: lib/messages.php:1169
+#: lib/messages.php:1172
 msgid "The maximum age of reviews retrieved from the service API."
 msgstr ""
 
-#: lib/messages.php:1175
+#: lib/messages.php:1178
 msgid ""
 "Get ratings and reviews for the selected post types from the service API."
 msgstr ""
 
-#: lib/messages.php:1182
+#: lib/messages.php:1185
 msgid ""
 "Your unique Shopper Approved site ID and API token values are required to "
 "retrieve ratings and reviews from the Shopper Approved service API."
 msgstr ""
 
-#: lib/messages.php:1184
+#: lib/messages.php:1187
 msgid ""
 "<a href=\"%s\">Login to your Shopper Approved account and go to the API "
 "Dashboard</a>, then scroll down to find your Site ID and API Token."
 msgstr ""
 
-#: lib/messages.php:1191
+#: lib/messages.php:1194
 msgid ""
 "Your unique Stamped.io store hash and API public key values are required to "
 "retrieve ratings and reviews from the Stamped.io service API."
 msgstr ""
 
-#: lib/messages.php:1202
+#: lib/messages.php:1205
 msgid ""
 "Enter the name of a product attribute available in your e-commerce plugin."
 msgstr ""
 
-#: lib/messages.php:1204
+#: lib/messages.php:1207
 msgid ""
 "The product attribute name allows %s to request the attribute value from "
 "your e-commerce plugin."
 msgstr ""
 
-#: lib/messages.php:1206
+#: lib/messages.php:1209
 msgid "The default attribute name is \"%s\"."
 msgstr ""
 
-#: lib/messages.php:1224
+#: lib/messages.php:1227
 msgid ""
 "If your theme or another plugin provides a custom field (aka metadata) for "
 "%1$s, you may enter its custom field name here."
 msgstr ""
 
 #. translators: %1$s is the metabox name, %2$s is the option name.
-#: lib/messages.php:1227
+#: lib/messages.php:1230
 msgid ""
 "If a custom field matching this name is found, its value will be imported "
 "for the %1$s \"%2$s\" option."
 msgstr ""
 
-#: lib/messages.php:1233
+#: lib/messages.php:1236
 msgid ""
 "Note that the \"%1$s\" option provides multiple input fields - the custom "
 "field value will be split on newline characters, and each line will be "
 "assigned to an individual input field."
 msgstr ""
 
-#: lib/messages.php:1256
+#: lib/messages.php:1259
 msgid ""
 "To <a href=\"%s\">verify your domain with Facebook</a>, enter the \"facebook-"
 "domain-verification\" meta tag <code>content</code> value here (enter only "
 "the verification ID value, not the whole HTML tag)."
 msgstr ""
 
-#: lib/messages.php:1264
+#: lib/messages.php:1267
 msgid ""
 "If you have a <a href=\"%1$s\">Facebook page for your business</a>, you may "
 "enter its URL here."
 msgstr ""
 
-#: lib/messages.php:1264
+#: lib/messages.php:1267
 msgid "https://www.facebook.com/business"
 msgstr ""
 
-#: lib/messages.php:1266
+#: lib/messages.php:1269
 msgid ""
 "The %s will be included in Open Graph <em>article</em> meta tags and the "
 "website's Schema Organization markup."
 msgstr ""
 
-#: lib/messages.php:1268 lib/messages.php:1567 lib/messages.php:1636
-#: lib/messages.php:1703 lib/messages.php:1730 lib/messages.php:1757
-#: lib/messages.php:1784 lib/messages.php:1811 lib/messages.php:1838
-#: lib/messages.php:1865 lib/messages.php:1892 lib/messages.php:1919
+#: lib/messages.php:1271 lib/messages.php:1570 lib/messages.php:1639
+#: lib/messages.php:1706 lib/messages.php:1733 lib/messages.php:1760
+#: lib/messages.php:1787 lib/messages.php:1814 lib/messages.php:1841
+#: lib/messages.php:1868 lib/messages.php:1895 lib/messages.php:1922
 msgid ""
 "Google Search may use this URL to display additional information about the "
 "website, business, or company in its search results."
 msgstr ""
 
-#: lib/messages.php:1276
+#: lib/messages.php:1279
 msgid ""
 "Choose a contact field from the WordPress profile page to use for the "
 "Facebook / Open Graph %s meta tag value."
 msgstr ""
 
-#: lib/messages.php:1278
+#: lib/messages.php:1281
 msgid "The suggested value is the \"%s\" user profile contact field."
 msgstr ""
 
-#: lib/messages.php:1284
+#: lib/messages.php:1287
 msgid "https://developers.facebook.com/docs/development/create-an-app"
 msgstr ""
 
-#: lib/messages.php:1286
+#: lib/messages.php:1289
 msgid ""
 "If you have a Facebook App ID for your WebSite App, enter it here (see <a "
 "href=\"%s\">Create an App</a> for help on creating a Facebook App ID for "
 "your WebSite)."
 msgstr ""
 
-#: lib/messages.php:1292
+#: lib/messages.php:1295
 msgid "Facebook does not understand all WordPress locale values."
 msgstr ""
 
-#: lib/messages.php:1294
+#: lib/messages.php:1297
 msgid ""
 "If the Facebook debugger returns an error parsing the %s meta tag, you "
 "should choose an alternate Facebook language for that WordPress locale."
 msgstr ""
 
-#: lib/messages.php:1315
+#: lib/messages.php:1318
 msgid ""
 "To verify your website ownership with <a href=\"%1$s\">Google's Search "
 "Console</a>, select the <em>Settings</em> left-side menu option in the "
@@ -6342,554 +6352,554 @@ msgid ""
 "the <em>HTML tag</em> method."
 msgstr ""
 
-#: lib/messages.php:1317
+#: lib/messages.php:1320
 msgid ""
 "Enter the \"google-site-verification\" meta tag <code>content</code> value "
 "here (enter only the verification ID value, not the whole HTML tag)."
 msgstr ""
 
-#: lib/messages.php:1331
+#: lib/messages.php:1334
 msgid "Select a name format for author meta tags and/or Schema Person markup."
 msgstr ""
 
-#: lib/messages.php:1337
+#: lib/messages.php:1340
 msgid ""
 "The maximum length for the SEO description meta tag value (the default is %d "
 "characters)."
 msgstr ""
 
-#: lib/messages.php:1365
+#: lib/messages.php:1368
 msgid ""
 "Suggest a maximum of number characters for the textual snippet in search "
 "results."
 msgstr ""
 
-#: lib/messages.php:1367
+#: lib/messages.php:1370
 msgid ""
 "This does not affect image or video previews, or apply to text in Schema "
 "markup."
 msgstr ""
 
-#: lib/messages.php:1376
+#: lib/messages.php:1379
 msgid "Suggest a maximum size for the image preview in search results."
 msgstr ""
 
-#: lib/messages.php:1380
+#: lib/messages.php:1383
 msgid "%s = No image preview will be shown."
 msgstr ""
 
-#: lib/messages.php:1384
+#: lib/messages.php:1387
 msgid "%s = A default image preview size may be used."
 msgstr ""
 
-#: lib/messages.php:1388
+#: lib/messages.php:1391
 msgid ""
 "%s = A larger image preview size, up to the width of the viewport, may be "
 "used."
 msgstr ""
 
-#: lib/messages.php:1401
+#: lib/messages.php:1404
 msgid ""
 "Suggest a maximum of number seconds for video snippets in search results."
 msgstr ""
 
-#: lib/messages.php:1405
+#: lib/messages.php:1408
 msgid ""
 "0 = Shows a static image for videos, if image previews are allowed in search "
 "results."
 msgstr ""
 
-#: lib/messages.php:1407
+#: lib/messages.php:1410
 msgid "-1 = No limit."
 msgstr ""
 
-#: lib/messages.php:1432
+#: lib/messages.php:1435
 msgid ""
 "The maximum number of images to include in the Schema main entity markup for "
 "the webpage."
 msgstr ""
 
-#: lib/messages.php:1434
+#: lib/messages.php:1437
 msgid ""
 "Each image will be included in three different sizes for Google (1:1, 4:3, "
 "and 16:9)."
 msgstr ""
 
-#: lib/messages.php:1450
+#: lib/messages.php:1453
 msgid ""
 "The %1$s image dimensions used for Schema meta tags and JSON-LD markup (the "
 "default dimensions are %2$s)."
 msgstr ""
 
-#: lib/messages.php:1452
+#: lib/messages.php:1455
 msgid "The minimum image width required by Google is %dpx."
 msgstr ""
 
-#: lib/messages.php:1461
+#: lib/messages.php:1464
 msgid ""
 "The image dimensions used for the Schema \"%1$s\" property and the \"%2$s\" "
 "tag (the default dimensions are %3$s)."
 msgstr ""
 
-#: lib/messages.php:1467
+#: lib/messages.php:1470
 msgid ""
 "The maximum length for the Schema description value (the default is %d "
 "characters)."
 msgstr ""
 
-#: lib/messages.php:1531
+#: lib/messages.php:1534
 msgid "Select the Schema type for each WordPress taxonomy."
 msgstr ""
 
-#: lib/messages.php:1553
+#: lib/messages.php:1556
 msgid ""
 "To <a href=\"%s\">claim your website with Pinterest</a>: Edit your account "
 "settings on Pinterest, select the \"Claim\" section, enter your website URL, "
 "then click the \"Claim\" button."
 msgstr ""
 
-#: lib/messages.php:1555
+#: lib/messages.php:1558
 msgid ""
 "Choose \"Add HTML tag\" and enter the \"p:domain_verify\" meta tag "
 "<code>content</code> value here (enter only the verification ID string, not "
 "the meta tag HTML)."
 msgstr ""
 
-#: lib/messages.php:1563
+#: lib/messages.php:1566
 msgid ""
 "If you have a <a href=\"%1$s\">Pinterest page for your business</a>, you may "
 "enter its URL here."
 msgstr ""
 
-#: lib/messages.php:1563
+#: lib/messages.php:1566
 msgid "https://business.pinterest.com/"
 msgstr ""
 
-#: lib/messages.php:1565 lib/messages.php:1701 lib/messages.php:1728
-#: lib/messages.php:1755 lib/messages.php:1782 lib/messages.php:1809
-#: lib/messages.php:1836 lib/messages.php:1863 lib/messages.php:1890
-#: lib/messages.php:1917
+#: lib/messages.php:1568 lib/messages.php:1704 lib/messages.php:1731
+#: lib/messages.php:1758 lib/messages.php:1785 lib/messages.php:1812
+#: lib/messages.php:1839 lib/messages.php:1866 lib/messages.php:1893
+#: lib/messages.php:1920
 msgid "The %s will be included in the website's Schema Organization markup."
 msgstr ""
 
-#: lib/messages.php:1573
+#: lib/messages.php:1576
 msgid ""
 "Add a %s attribute to the site header and Gravatar images to prevent the "
 "Pinterest Pin It browser button from suggesting these images."
 msgstr ""
 
-#: lib/messages.php:1579 lib/messages.php:3474 lib/submenu/general.php:355
+#: lib/messages.php:1582 lib/messages.php:3477 lib/submenu/general.php:355
 msgctxt "option label"
 msgid "Add Hidden Image for Pinterest"
 msgstr ""
 
-#: lib/messages.php:1581
+#: lib/messages.php:1584
 msgid ""
 "%1$s can add a %2$s attribute to resized images from the WordPress Media "
 "Library."
 msgstr ""
 
-#: lib/messages.php:1583
+#: lib/messages.php:1586
 msgid ""
 "This prevents the Pinterest Pin It browser button from suggesting images "
 "that may be too small."
 msgstr ""
 
-#: lib/messages.php:1585
+#: lib/messages.php:1588
 msgid ""
 "When enabling this option, you should also enable the \"%s\" option to "
 "provide an image for the Pin It browser button."
 msgstr ""
 
-#: lib/messages.php:1591
+#: lib/messages.php:1594
 msgid ""
 "%s can add an extra hidden image in the WordPress post / page content for "
 "the Pinterest Pin It browser button."
 msgstr ""
 
-#: lib/messages.php:1593
+#: lib/messages.php:1596
 msgid ""
 "Although generally recommended, this option is unchecked by default since "
 "the extra image can affect page load speed (the image cannot be lazy loaded)."
 msgstr ""
 
-#: lib/messages.php:1595
+#: lib/messages.php:1598
 msgid ""
 "If your website visitors use the Pinterest Pin It browser button, you may "
 "enable this option, otherwise leave it unchecked."
 msgstr ""
 
-#: lib/messages.php:1601
+#: lib/messages.php:1604
 msgid ""
 "The maximum length used for the Pinterest Pin It browser button description "
 "(the default is %d characters)."
 msgstr ""
 
-#: lib/messages.php:1609
+#: lib/messages.php:1612
 msgid ""
 "The dimensions used for the Pinterest Pin It browser button image (the "
 "default dimensions are %s)."
 msgstr ""
 
-#: lib/messages.php:1632
+#: lib/messages.php:1635
 msgid ""
 "If you have a <a href=\"%1$s\">Twitter @username for your business</a> (not "
 "your personal Twitter @username), you may enter its name here."
 msgstr ""
 
-#: lib/messages.php:1632
+#: lib/messages.php:1635
 msgid "https://business.twitter.com/"
 msgstr ""
 
-#: lib/messages.php:1634
+#: lib/messages.php:1637
 msgid ""
 "The %s will be included in in Twitter Card meta tags and the website's "
 "Schema Organization markup."
 msgstr ""
 
-#: lib/messages.php:1642
+#: lib/messages.php:1645
 msgid ""
 "The maximum length for the Twitter Card description value (the default is %d "
 "characters)."
 msgstr ""
 
-#: lib/messages.php:1664
+#: lib/messages.php:1667
 msgid ""
 "The image dimensions for the <a href=\"%1$s\">Summary Card</a> (should be at "
 "least %2$s and less than %3$s)."
 msgstr ""
 
-#: lib/messages.php:1664 lib/messages.php:1674
+#: lib/messages.php:1667 lib/messages.php:1677
 msgid "1MB"
 msgstr ""
 
-#: lib/messages.php:1666 lib/messages.php:1676
+#: lib/messages.php:1669 lib/messages.php:1679
 msgid "The default image dimensions are %s."
 msgstr ""
 
-#: lib/messages.php:1674
+#: lib/messages.php:1677
 msgid ""
 "The image dimensions for the <a href=\"%1$s\">Large Image Summary Card</a> "
 "(must be larger than %2$s and less than %3$s)."
 msgstr ""
 
-#: lib/messages.php:1699
+#: lib/messages.php:1702
 msgid ""
 "If you have an <a href=\"%1$s\">Intagram profile for your business</a>, you "
 "may enter its URL here."
 msgstr ""
 
-#: lib/messages.php:1699
+#: lib/messages.php:1702
 msgid "https://business.instagram.com/getting-started"
 msgstr ""
 
-#: lib/messages.php:1726
+#: lib/messages.php:1729
 msgid ""
 "If you have a <a href=\"%1$s\">LinkedIn page for your business</a>, you may "
 "enter its URL here."
 msgstr ""
 
-#: lib/messages.php:1726
+#: lib/messages.php:1729
 msgid "https://business.linkedin.com/marketing-solutions/linkedin-pages"
 msgstr ""
 
-#: lib/messages.php:1753
+#: lib/messages.php:1756
 msgid ""
 "If you have a <a href=\"%1$s\">Medium page for your business</a>, you may "
 "enter its URL here."
 msgstr ""
 
-#: lib/messages.php:1753
+#: lib/messages.php:1756
 msgid "https://medium.com/"
 msgstr ""
 
-#: lib/messages.php:1780
+#: lib/messages.php:1783
 msgid ""
 "If you have a <a href=\"%1$s\">Myspace page for your business</a>, you may "
 "enter its URL here."
 msgstr ""
 
-#: lib/messages.php:1780
+#: lib/messages.php:1783
 msgid "https://myspace.com/"
 msgstr ""
 
-#: lib/messages.php:1807
+#: lib/messages.php:1810
 msgid ""
 "If you have a <a href=\"%1$s\">Soundcloud page for your business</a>, you "
 "may enter its URL here."
 msgstr ""
 
-#: lib/messages.php:1807
+#: lib/messages.php:1810
 msgid "https://soundcloud.com/"
 msgstr ""
 
-#: lib/messages.php:1834
+#: lib/messages.php:1837
 msgid ""
 "If you have a <a href=\"%1$s\">TikTok page for your business</a>, you may "
 "enter its URL here."
 msgstr ""
 
-#: lib/messages.php:1834
+#: lib/messages.php:1837
 msgid "https://tiktok.com/"
 msgstr ""
 
-#: lib/messages.php:1861
+#: lib/messages.php:1864
 msgid ""
 "If you have a <a href=\"%1$s\">Tumblr page for your business</a>, you may "
 "enter its URL here."
 msgstr ""
 
-#: lib/messages.php:1861
+#: lib/messages.php:1864
 msgid "https://tumblr.com/"
 msgstr ""
 
-#: lib/messages.php:1888
+#: lib/messages.php:1891
 msgid ""
 "If you have a <a href=\"%1$s\">Wikipedia page for your organization</a>, you "
 "may enter its URL here."
 msgstr ""
 
-#: lib/messages.php:1888
+#: lib/messages.php:1891
 msgid "https://en.wikipedia.org/wiki/Wikipedia:FAQ/Organizations"
 msgstr ""
 
-#: lib/messages.php:1915
+#: lib/messages.php:1918
 msgid ""
 "If you have a <a href=\"%1$s\">YouTube channel for your business</a>, you "
 "may enter its URL here."
 msgstr ""
 
-#: lib/messages.php:1915
+#: lib/messages.php:1918
 msgid "https://youtube.com/"
 msgstr ""
 
-#: lib/messages.php:1940 lib/messages.php:2402
+#: lib/messages.php:1943 lib/messages.php:2405
 msgid ""
 "You should not modify the <em>%1$s</em> column unless you have a <em>very</"
 "em> good reason to do so."
 msgstr ""
 
-#: lib/messages.php:1942
+#: lib/messages.php:1945
 msgid ""
 "As an example, to match the <em>%1$s</em> of a theme or other plugin, you "
 "might change \"%2$s\" to \"%3$s\" or some other value."
 msgstr ""
 
-#: lib/messages.php:1948
+#: lib/messages.php:1951
 msgid ""
 "The <em>%1$s</em> column is for display purposes only and can be changed as "
 "you wish."
 msgstr ""
 
-#: lib/messages.php:1954
+#: lib/messages.php:1957
 msgid "The built-in WordPress <em>%1$s</em> column cannot be modified."
 msgstr ""
 
-#: lib/messages.php:1984
+#: lib/messages.php:1987
 msgid ""
 "Validate the HTML syntax and conformance of the AMP (aka Accelerated Mobile "
 "Pages) webpage."
 msgstr ""
 
-#: lib/messages.php:1988
+#: lib/messages.php:1991
 msgid ""
 "Note that an AMP plugin is required to create AMP webpages for WordPress."
 msgstr ""
 
-#: lib/messages.php:1999
+#: lib/messages.php:2002
 msgid "All social sites (except for LinkedIn) read Open Graph meta tags."
 msgstr ""
 
-#: lib/messages.php:2001
+#: lib/messages.php:2004
 msgid ""
 "The Facebook debugger allows you to validate Open Graph meta tags and "
 "refresh Facebook's cache."
 msgstr ""
 
-#: lib/messages.php:2003
+#: lib/messages.php:2006
 msgid ""
 "The Facebook debugger is the most reliable validation tool for Open Graph "
 "meta tags."
 msgstr ""
 
-#: lib/messages.php:2013
+#: lib/messages.php:2016
 msgid ""
 "The Facebook catalog microdata debug tool allows you to validate the "
 "structured data used to indicate key information about the items on your "
 "website, such as their name, description and prices."
 msgstr ""
 
-#: lib/messages.php:2023
+#: lib/messages.php:2026
 msgid ""
 "Analyzes the webpage content and suggests ways to make the webpage faster "
 "for better ranking in search results."
 msgstr ""
 
-#: lib/messages.php:2033
+#: lib/messages.php:2036
 msgid ""
 "Check the webpage structured data markup for <a href=\"%s\">Google Rich "
 "Result types</a> (Job posting, Product, Recipe, etc.)."
 msgstr ""
 
-#: lib/messages.php:2033 lib/messages.php:2067
+#: lib/messages.php:2036 lib/messages.php:2070
 msgid "https://developers.google.com/search/docs/guides/search-gallery"
 msgstr ""
 
-#: lib/messages.php:2035
+#: lib/messages.php:2038
 msgid ""
 "To test and validate Schema markup beyond the limited subset of Google Rich "
 "Result types, use the Schema Markup Validator."
 msgstr ""
 
-#: lib/messages.php:2045
+#: lib/messages.php:2048
 msgid "Refresh LinkedIn's cache and validate the webpage oEmbed data."
 msgstr ""
 
-#: lib/messages.php:2055
+#: lib/messages.php:2058
 msgid ""
 "Validate Rich Pin markup and submit a request to show Rich Pin markup in "
 "zoomed pins."
 msgstr ""
 
-#: lib/messages.php:2065
+#: lib/messages.php:2068
 msgid ""
 "Validate the webpage Schema JSON-LD, Microdata and RDFa structured data "
 "markup."
 msgstr ""
 
-#: lib/messages.php:2067
+#: lib/messages.php:2070
 msgid ""
 "This tool provides additional validation for Schema types beyond the limited "
 "subset of <a href=\"%s\">Google Rich Result types</a>."
 msgstr ""
 
-#: lib/messages.php:2077
+#: lib/messages.php:2080
 msgid ""
 "The Twitter Card validator does not (currently) accept query arguments - "
 "paste the following URL in the Twitter Card validator \"Card URL\" input "
 "field:"
 msgstr ""
 
-#: lib/messages.php:2087
+#: lib/messages.php:2090
 msgid ""
 "Validate the HTML syntax and HTML 5 conformance of your meta tags and theme "
 "templates."
 msgstr ""
 
-#: lib/messages.php:2089
+#: lib/messages.php:2092
 msgid ""
 "Validating your theme templates is important - theme templates with serious "
 "errors can prevent social and search crawlers from understanding the webpage "
 "structure."
 msgstr ""
 
-#: lib/messages.php:2106 lib/messages.php:3513
+#: lib/messages.php:2109 lib/messages.php:3516
 msgid "Schema markup is disabled."
 msgstr ""
 
-#: lib/messages.php:2117
+#: lib/messages.php:2120
 msgid "Activate the %s add-on for Google structured data markup."
 msgstr ""
 
-#: lib/messages.php:2127
+#: lib/messages.php:2130
 msgid "Activate an AMP plugin to create and validate AMP pages."
 msgstr ""
 
-#: lib/messages.php:2142
+#: lib/messages.php:2145
 msgid ""
 "The example image container uses the minimum recommended Facebook image "
 "dimensions of %s."
 msgstr ""
 
-#: lib/messages.php:2146
+#: lib/messages.php:2149
 msgid ""
 "You can edit images in the <a href=\"%s\">WordPress Media Library</a> to "
 "select a preferred cropping area (ie. top or bottom), along with optimizing "
 "the social and SEO texts for the image."
 msgstr ""
 
-#: lib/messages.php:2156
+#: lib/messages.php:2159
 msgid "The oEmbed HTML is created by the <code>%s</code> template."
 msgstr ""
 
-#: lib/messages.php:2182
+#: lib/messages.php:2185
 msgid ""
 "Schema FAQPage markup is a collection of Questions and Answers, and "
 "WordPress manages a collection of related content in two different ways:"
 msgstr ""
 
-#: lib/messages.php:2184
+#: lib/messages.php:2187
 msgid ""
 "Schema FAQPage can be a parent page with Schema Question child pages, or a "
 "taxonomy (ie. categories, tags or custom taxonomies) term with Schema "
 "Question posts / pages assigned to that term."
 msgstr ""
 
-#: lib/messages.php:2198
+#: lib/messages.php:2201
 msgid ""
 "Google requires that Schema QAPage markup include one or more user submitted "
 "and upvoted answers."
 msgstr ""
 
-#: lib/messages.php:2200
+#: lib/messages.php:2203
 msgid ""
 "The Schema QAPage document title is a summary of the question and the "
 "content text is the complete question."
 msgstr ""
 
-#: lib/messages.php:2219
+#: lib/messages.php:2222
 msgid ""
 "Schema Question can be a child page of a Schema FAQPage parent, or assigned "
 "to a Schema FAQPage taxonomy term."
 msgstr ""
 
-#: lib/messages.php:2222
+#: lib/messages.php:2225
 msgid ""
 "The Schema Question document title is a summary of the question and the "
 "content text is the complete answer for that question."
 msgstr ""
 
-#: lib/messages.php:2238
+#: lib/messages.php:2241
 msgid ""
 "You can edit images in the <a href=\"%s\">WordPress Media Library</a> to "
 "select a preferred cropping area (ie. top or bottom), along with optimizing "
 "the image social and SEO texts."
 msgstr ""
 
-#: lib/messages.php:2252
+#: lib/messages.php:2255
 msgid ""
 "The robots meta tag lets you utilize a granular, webpage-specific approach "
 "to controlling how an individual webpage should be indexed and served to "
 "users in Google Search results."
 msgstr ""
 
-#: lib/messages.php:2270 lib/messages.php:2293
+#: lib/messages.php:2273 lib/messages.php:2296
 msgid ""
 "After purchasing the %1$s plugin or any complementary %2$s add-on, you'll "
 "receive an email with a unique Authentication ID for the plugin or add-on "
 "you purchased."
 msgstr ""
 
-#: lib/messages.php:2272
+#: lib/messages.php:2275
 msgid ""
 "Enter the Authentication ID in the option field corresponding to the plugin "
 "or add-on you purchased."
 msgstr ""
 
-#: lib/messages.php:2274
+#: lib/messages.php:2277
 msgid ""
 "Don't forget that the %1$s add-on must be installed and active to check for "
 "%2$s version updates."
 msgstr ""
 
-#: lib/messages.php:2295
+#: lib/messages.php:2298
 msgid ""
 "You may enter each Authentication ID on this page <em>to define a value for "
 "all sites within the network</em> - or enter Authentication IDs individually "
 "on each site's %1$s settings page."
 msgstr ""
 
-#: lib/messages.php:2297
+#: lib/messages.php:2300
 msgid ""
 "If you enter Authentication IDs in this network settings page, <em>please "
 "make sure you have purchased enough licenses for all sites within the "
@@ -6898,7 +6908,7 @@ msgid ""
 "that %1$s add-on."
 msgstr ""
 
-#: lib/messages.php:2299
+#: lib/messages.php:2302
 msgid ""
 "<strong>WordPress uses the default blog to install and/or update plugins "
 "from the Network Admin interface</strong> - to update the %1$s and its %2$s "
@@ -6906,174 +6916,174 @@ msgid ""
 "the default blog is licensed."
 msgstr ""
 
-#: lib/messages.php:2309
+#: lib/messages.php:2312
 msgid ""
 "These options allow you to customize the product attribute names (aka "
 "attribute labels) that %s can use to request additional product information "
 "from your e-commerce plugin."
 msgstr ""
 
-#: lib/messages.php:2311
+#: lib/messages.php:2314
 msgid ""
 "Note that these are product attribute names that you can create in your e-"
 "commerce plugin and not their values."
 msgstr ""
 
-#: lib/messages.php:2315
+#: lib/messages.php:2318
 msgid ""
 "Do not enter product attribute values here &ndash; these options are for "
 "product attribute names only."
 msgstr ""
 
-#: lib/messages.php:2319
+#: lib/messages.php:2322
 msgid ""
 "You can create the following product attribute names and enter their "
 "corresponding values in your e-commerce plugin."
 msgstr ""
 
-#: lib/messages.php:2327 lib/messages.php:2370
+#: lib/messages.php:2330 lib/messages.php:2373
 msgid "An active WooCommerce plugin has been detected."
 msgstr ""
 
-#: lib/messages.php:2331
+#: lib/messages.php:2334
 msgid ""
 "Please note that WooCommerce creates a selector on the purchase page for "
 "product attributes used for variations."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/messages.php:2334
+#: lib/messages.php:2337
 msgid "Used for variations"
 msgstr ""
 
-#: lib/messages.php:2336
+#: lib/messages.php:2339
 msgid ""
 "Enabling the WooCommerce \"%s\" attribute option may not be suitable for "
 "some product attributes (like GTIN, ISBN, and MPN)."
 msgstr ""
 
-#: lib/messages.php:2338 lib/messages.php:2378
+#: lib/messages.php:2341 lib/messages.php:2381
 msgid ""
 "We suggest using a supported third-party plugin to manage Brand, GTIN, ISBN, "
 "and MPN values for variations."
 msgstr ""
 
-#: lib/messages.php:2353
+#: lib/messages.php:2356
 msgid ""
 "These options allow you to customize the custom field names (aka metadata "
 "names) that %s can use to get additional information about your content."
 msgstr ""
 
-#: lib/messages.php:2357
+#: lib/messages.php:2360
 msgid ""
 "Do not enter custom field values here &ndash; these options are for custom "
 "field names only."
 msgstr ""
 
-#: lib/messages.php:2361
+#: lib/messages.php:2364
 msgid ""
 "Use the following custom field names when creating custom fields for your "
 "posts, pages, and custom post types."
 msgstr ""
 
-#: lib/messages.php:2374
+#: lib/messages.php:2377
 msgid ""
 "Note that product attributes from WooCommerce have precedence over custom "
 "field values."
 msgstr ""
 
-#: lib/messages.php:2376
+#: lib/messages.php:2379
 msgid ""
 "Refer to the <a href=\"%s\">WooCommerce integration notes</a> for "
 "information on setting up product attributes and custom fields."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/messages.php:2390 lib/users/add-person.php:173
+#: lib/messages.php:2393 lib/users/add-person.php:173
 msgid "Contact Info"
 msgstr ""
 
-#: lib/messages.php:2398
+#: lib/messages.php:2401
 msgid ""
 "These options allow you to customize the list of contact fields shown in the "
 "%1$s section of <a href=\"%2$s\">the user profile page</a>."
 msgstr ""
 
-#: lib/messages.php:2400
+#: lib/messages.php:2403
 msgid ""
 "%1$s uses the Facebook and Twitter contact field values in its meta tags and "
 "Schema markup."
 msgstr ""
 
-#: lib/messages.php:2404
+#: lib/messages.php:2407
 msgid ""
 "The <em>%1$s</em> column on the other hand is for display purposes only and "
 "can be changed as you wish."
 msgstr ""
 
-#: lib/messages.php:2410
+#: lib/messages.php:2413
 msgid ""
 "Do not enter your contact information here &ndash; these options are for "
 "contact field ids and labels only."
 msgstr ""
 
-#: lib/messages.php:2412
+#: lib/messages.php:2415
 msgid ""
 "Enter your personal contact information in <a href=\"%1$s\">the user profile "
 "page</a>."
 msgstr ""
 
 #. translators: %1$s is the plugin name, %2$s is <head>.
-#: lib/messages.php:2429
+#: lib/messages.php:2432
 msgid ""
 "%1$s adds the following Facebook, Open Graph, Twitter, Schema, Pinterest, "
 "and SEO HTML tags to the %2$s section of your webpages."
 msgstr ""
 
-#: lib/messages.php:2431
+#: lib/messages.php:2434
 msgid ""
 "If your theme or another plugin already creates one or more of these HTML "
 "tags, you can uncheck them here to prevent duplicates from being added."
 msgstr ""
 
 #. translators: %1$s is "link rel canonical", %2$s is "meta name description", and %3$s is "meta name robots".
-#: lib/messages.php:2434
+#: lib/messages.php:2437
 msgid ""
 "Please note that the %1$s HTML tag is disabled by default (as themes often "
 "include this HTML tag in their header templates), and the %2$s and %3$s HTML "
 "tags are disabled automatically if a known SEO plugin is detected."
 msgstr ""
 
-#: lib/messages.php:2448
+#: lib/messages.php:2451
 msgid ""
 "%s and WordPress create image files for social sites and search engines "
 "based on the following image dimensions and crop settings."
 msgstr ""
 
-#: lib/messages.php:2450
+#: lib/messages.php:2453
 msgid ""
 "Image sizes that use the same dimensions and crop settings will create just "
 "one image file."
 msgstr ""
 
-#: lib/messages.php:2452
+#: lib/messages.php:2455
 msgid ""
 "The default dimensions and crop settings from %1$s create only %2$s image "
 "files from an original full size image (provided the original image is large "
 "enough or image upscaling has been enabled)."
 msgstr ""
 
-#: lib/messages.php:2452
+#: lib/messages.php:2455
 msgid "five"
 msgstr ""
 
-#: lib/messages.php:2471
+#: lib/messages.php:2474
 msgid ""
 "These options allow you to customize the post and taxonomy types included in "
 "the <a href=\"%s\">WordPress sitemap XML</a>."
 msgstr ""
 
-#: lib/messages.php:2475
+#: lib/messages.php:2478
 msgid ""
 "To <strong>exclude</strong> individual posts, pages, custom post types, "
 "taxonomy terms (categories, tags, etc.), or user profile pages from the "
@@ -7081,155 +7091,155 @@ msgid ""
 "%2$s &gt; %3$s tab."
 msgstr ""
 
-#: lib/messages.php:2506
+#: lib/messages.php:2509
 msgid "Purchase the %1$s plugin to upgrade and get the following features."
 msgstr ""
 
-#: lib/messages.php:2511
+#: lib/messages.php:2514
 msgid "Purchase the %1$s add-on to upgrade and get the following features."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/messages.php:2534
+#: lib/messages.php:2537
 msgid "Product data"
 msgstr ""
 
-#: lib/messages.php:2538
+#: lib/messages.php:2541
 msgid ""
 "Disabled product information fields show values imported from the "
 "WooCommerce %s metabox."
 msgstr ""
 
-#: lib/messages.php:2540
+#: lib/messages.php:2543
 msgid ""
 "Edit product information in the WooCommerce %s metabox to update the default "
 "values."
 msgstr ""
 
-#: lib/messages.php:2548
+#: lib/messages.php:2551
 msgid ""
 "An e-commerce plugin is active &ndash; disabled product information fields "
 "show values imported from the e-commerce plugin."
 msgstr ""
 
-#: lib/messages.php:2559
+#: lib/messages.php:2562
 msgid ""
 "An e-commerce plugin is active &ndash; product information may be imported "
 "by the %s plugin."
 msgstr ""
 
-#: lib/messages.php:2578
+#: lib/messages.php:2581
 msgctxt "plugin action link"
 msgid "Get More Licenses"
 msgstr ""
 
-#: lib/messages.php:2582
+#: lib/messages.php:2585
 msgctxt "plugin action link"
 msgid "Purchase %s Plugin"
 msgstr ""
 
-#: lib/messages.php:2586
+#: lib/messages.php:2589
 msgctxt "plugin action link"
 msgid "Purchase %s Add-on"
 msgstr ""
 
-#: lib/messages.php:2621
+#: lib/messages.php:2624
 msgid ""
 "Please note that a correctly sized image improves click-through-rates by "
 "presenting your content at its best on social sites and in search results."
 msgstr ""
 
-#: lib/messages.php:2625
+#: lib/messages.php:2628
 msgid ""
 "A larger image can be uploaded and/or selected in the %1$s metabox under the "
 "%2$s tab."
 msgstr ""
 
-#: lib/messages.php:2629
+#: lib/messages.php:2632
 msgid "Consider replacing the original image with a higher resolution version."
 msgstr ""
 
-#: lib/messages.php:2658
+#: lib/messages.php:2661
 msgid ""
 "Additional information shown only to users with Administrative privileges:"
 msgstr ""
 
-#: lib/messages.php:2664
+#: lib/messages.php:2667
 msgid "Replace the original image with a higher resolution version."
 msgstr ""
 
-#: lib/messages.php:2668
+#: lib/messages.php:2671
 msgid "Select a larger image under the %1$s &gt; %2$s tab."
 msgstr ""
 
-#: lib/messages.php:2673
+#: lib/messages.php:2676
 msgid "Enable the %s option."
 msgstr ""
 
-#: lib/messages.php:2677
+#: lib/messages.php:2680
 msgid "Increase the %s option value."
 msgstr ""
 
-#: lib/messages.php:2687
+#: lib/messages.php:2690
 msgid "Update image size dimensions in the %s settings page."
 msgstr ""
 
-#: lib/messages.php:2691
+#: lib/messages.php:2694
 msgid "Disable the %s option (not recommended)."
 msgstr ""
 
-#: lib/messages.php:2707
+#: lib/messages.php:2710
 msgid ""
 "An Open Graph image meta tag could not be generated from this webpage "
 "content or its custom %s metabox settings. Facebook <em>requires at least "
 "one image meta tag</em> to render shared content correctly."
 msgstr ""
 
-#: lib/messages.php:2715
+#: lib/messages.php:2718
 msgid ""
 "An Open Graph description meta tag could not be generated from this webpage "
 "content or its custom %s metabox settings. Facebook <em>requires a "
 "description meta tag</em> to render shared content correctly."
 msgstr ""
 
-#: lib/messages.php:2723
+#: lib/messages.php:2726
 msgid ""
 "A Schema \"image\" property could not be generated from this webpage content "
 "or its custom %s metabox settings. Google <em>requires at least one \"image"
 "\" property</em> for this Schema type."
 msgstr ""
 
-#: lib/messages.php:2737 lib/messages.php:2766
+#: lib/messages.php:2740 lib/messages.php:2769
 msgid "The %1$s advanced option is currently disabled."
 msgstr ""
 
-#: lib/messages.php:2751 lib/messages.php:2778
+#: lib/messages.php:2754 lib/messages.php:2781
 msgid "Note that the %1$s option is an advanced %2$s feature."
 msgstr ""
 
-#: lib/messages.php:2790
+#: lib/messages.php:2793
 msgid ""
 "WooCommerce product reviews are not compatible with the selected %s service "
 "API."
 msgstr ""
 
-#: lib/messages.php:2793
+#: lib/messages.php:2796
 msgid ""
 "Please choose another %1$s or <a href=\"%2$s\">disable the product reviews "
 "in WooCommerce</a>."
 msgstr ""
 
-#: lib/messages.php:2804
+#: lib/messages.php:2807
 msgid "The %1$s constant definition in your %2$s file contains a variable."
 msgstr ""
 
-#: lib/messages.php:2806
+#: lib/messages.php:2809
 msgid ""
 "WordPress uses the %1$s constant to provide a single unique canonical URL "
 "for each webpage and Media Library content."
 msgstr ""
 
-#: lib/messages.php:2808
+#: lib/messages.php:2811
 msgid ""
 "A changing %1$s value will create different canonical URLs in your webpages, "
 "leading to duplicate content penalties from Google, incorrect social share "
@@ -7237,57 +7247,57 @@ msgid ""
 "certificate errors."
 msgstr ""
 
-#: lib/messages.php:2810
+#: lib/messages.php:2813
 msgid ""
 "Please update your %1$s file and provide a fixed, non-variable value for the "
 "%2$s constant."
 msgstr ""
 
-#: lib/messages.php:2824
+#: lib/messages.php:2827
 msgid ""
 "At least one of your theme header templates does not offer a recognized way "
 "to modify the head HTML tag attributes."
 msgstr ""
 
-#: lib/messages.php:2826
+#: lib/messages.php:2829
 msgid ""
 "Adding the document Schema item type to the head HTML tag attributes is "
 "important for Pinterest."
 msgstr ""
 
-#: lib/messages.php:2830
+#: lib/messages.php:2833
 msgid ""
 "It is also important for Google in cases where Schema markup describing the "
 "content is not available in the webpage (for example, when the complementary "
 "WPSSO JSON add-on is not active)."
 msgstr ""
 
-#: lib/messages.php:2835
+#: lib/messages.php:2838
 msgid ""
 "The %1$s HTML tag in your header template(s) should include a function, "
 "action, or filter for its attributes."
 msgstr ""
 
-#: lib/messages.php:2837
+#: lib/messages.php:2840
 msgid ""
 "%1$s can update your header template(s) automatically and change the "
 "existing %2$s HTML tag to:"
 msgstr ""
 
-#: lib/messages.php:2841
+#: lib/messages.php:2844
 msgid ""
 "<b><a href=\"%1$s\">Click here to update header template(s) automatically</"
 "a></b> (recommended) or update the template(s) manually."
 msgstr ""
 
-#: lib/messages.php:2852
+#: lib/messages.php:2855
 msgid ""
 "An Authentication ID has been entered for %1$s but the plugin is not "
 "installed - you can install and activate the %2$s version from the %3$s "
 "settings page."
 msgstr ""
 
-#: lib/messages.php:2861
+#: lib/messages.php:2864
 msgid ""
 "An Authentication ID has been entered for %1$s in the %2$s settings page but "
 "the %3$s version is not installed - don't forget to update the plugin to "
@@ -7295,536 +7305,536 @@ msgid ""
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/messages.php:2880
+#: lib/messages.php:2883
 msgid "Plugins"
 msgstr ""
 
-#: lib/messages.php:2884
+#: lib/messages.php:2887
 msgid ""
 "At least one Authentication ID has been entered in the %1$s settings page, "
 "but the %2$s add-on is not active."
 msgstr ""
 
-#: lib/messages.php:2888
+#: lib/messages.php:2891
 msgid ""
 "This complementary add-on is required to update and enable the %1$s plugin "
 "and its %2$s add-ons."
 msgstr ""
 
-#: lib/messages.php:2892
+#: lib/messages.php:2895
 msgid "Install and activate the %1$s add-on from the %2$s settings page."
 msgstr ""
 
-#: lib/messages.php:2896
+#: lib/messages.php:2899
 msgid ""
 "The %1$s add-on can be activated from the WordPress %2$s page - please "
 "activate this complementary add-on now."
 msgstr ""
 
-#: lib/messages.php:2899
+#: lib/messages.php:2902
 msgid ""
 "When the %1$s add-on is active, one or more %2$s updates may be available "
 "for the %3$s plugin and its add-on(s)."
 msgstr ""
 
-#: lib/messages.php:2911
+#: lib/messages.php:2914
 msgctxt "submit button"
 msgid "Check for Plugin Updates"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/messages.php:2918
+#: lib/messages.php:2921
 msgid "Dashboard"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/messages.php:2920
+#: lib/messages.php:2923
 msgid "Updates"
 msgstr ""
 
-#: lib/messages.php:2922
+#: lib/messages.php:2925
 msgid ""
 "%1$s version %2$s requires the use of %3$s version %4$s or newer (version "
 "%5$s is currently installed)."
 msgstr ""
 
 #. translators: %1$s is the WPSSO Update Manager add-on name.
-#: lib/messages.php:2925
+#: lib/messages.php:2928
 msgid ""
 "If an update for the %1$s add-on is not available under the WordPress %2$s "
 "page, use the <em>%3$s</em> button in the %4$s settings page to force an "
 "immediate refresh of the plugin update information."
 msgstr ""
 
-#: lib/messages.php:2931 lib/register.php:332
+#: lib/messages.php:2934 lib/register.php:332
 msgid ""
 "You are using %1$s version %2$s - <a href=\"%3$s\">this %1$s version is "
 "outdated, unsupported, possibly insecure</a>, and may lack important updates "
 "and features."
 msgstr ""
 
-#: lib/messages.php:2933
+#: lib/messages.php:2936
 msgid ""
 "If possible, please update to the latest %1$s stable release (or at least "
 "version %2$s)."
 msgstr ""
 
-#: lib/messages.php:2952
+#: lib/messages.php:2955
 msgid "Premium plugin support."
 msgstr ""
 
-#: lib/messages.php:2960
+#: lib/messages.php:2963
 msgid "The %s plugin includes:"
 msgstr ""
 
-#: lib/messages.php:2964
+#: lib/messages.php:2967
 msgid ""
 "Integration with third-party plugins and service APIs (WooCommerce, Yoast "
 "SEO, YouTube, Bitly, and many more)."
 msgstr ""
 
-#: lib/messages.php:2966
+#: lib/messages.php:2969
 msgid "Detection of embedded videos in content text."
 msgstr ""
 
-#: lib/messages.php:2968
+#: lib/messages.php:2971
 msgid "Provides Twitter Player Card meta tags."
 msgstr ""
 
-#: lib/messages.php:2970
+#: lib/messages.php:2973
 msgid "Upscaling of images and URL shortening."
 msgstr ""
 
-#: lib/messages.php:2972
+#: lib/messages.php:2975
 msgid ""
 "<a href=\"%s\">Customize advanced settings</a>, including image sizes, cache "
 "expiry, video services, shortening services, document types, contact fields, "
 "product attributes, custom fields, and more."
 msgstr ""
 
-#: lib/messages.php:2982 lib/messages.php:3000 lib/messages.php:3016
+#: lib/messages.php:2985 lib/messages.php:3003 lib/messages.php:3019
 msgid "The %s add-on includes:"
 msgstr ""
 
-#: lib/messages.php:2986
+#: lib/messages.php:2989
 msgid ""
 "Additional Schema options in the %s metabox to customize creative works, "
 "events, how-tos, job postings, movies, products, recipes, reviews, and many "
 "more."
 msgstr ""
 
-#: lib/messages.php:3004
+#: lib/messages.php:3007
 msgid "Allows managing the details of multiple organizations."
 msgstr ""
 
-#: lib/messages.php:3006
+#: lib/messages.php:3009
 msgid "Offers an organization selector for the %s add-on."
 msgstr ""
 
-#: lib/messages.php:3020
+#: lib/messages.php:3023
 msgid ""
 "A %1$s tab in the %2$s metabox to select a place or customize place "
 "information."
 msgstr ""
 
-#: lib/messages.php:3021
+#: lib/messages.php:3024
 msgctxt "metabox tab"
 msgid "Schema Place"
 msgstr ""
 
-#: lib/messages.php:3033 lib/messages.php:3043
+#: lib/messages.php:3036 lib/messages.php:3046
 msgid ""
 "<strong>Development of %1$s is driven by user requests</strong> - we welcome "
 "all your comments and suggestions."
 msgstr ""
 
-#: lib/messages.php:3053
+#: lib/messages.php:3056
 msgid ""
 "It would help tremendously if you could rate the following plugins on "
 "WordPress.org!"
 msgstr ""
 
-#: lib/messages.php:3059
+#: lib/messages.php:3062
 msgid ""
 "New ratings are an excellent way to ensure the continued success of your "
 "favorite plugins."
 msgstr ""
 
-#: lib/messages.php:3065
+#: lib/messages.php:3068
 msgid ""
 "Without new ratings, plugins and add-ons that you depend on could be "
 "discontinued prematurely."
 msgstr ""
 
-#: lib/messages.php:3067
+#: lib/messages.php:3070
 msgid "Don't let that happen!"
 msgstr ""
 
-#: lib/messages.php:3069
+#: lib/messages.php:3072
 msgid ""
 "Rate your active plugins today - it only takes a few seconds to rate a "
 "plugin!"
 msgstr ""
 
 #. translators: %s is the wordpress.org URL for the WPSSO User Locale Selector add-on.
-#: lib/messages.php:3090
+#: lib/messages.php:3093
 msgid ""
 "This option is localized - <a href=\"%s\">you may change the WordPress "
 "locale</a> to define alternate values for different languages."
 msgstr ""
 
-#: lib/messages.php:3113
+#: lib/messages.php:3116
 msgctxt "option label"
 msgid "Microdata Type URLs"
 msgstr ""
 
-#: lib/messages.php:3114
+#: lib/messages.php:3117
 msgctxt "tooltip fragment"
 msgid "additional microdata type URLs"
 msgstr ""
 
-#: lib/messages.php:3118 lib/messages.php:3193
+#: lib/messages.php:3121 lib/messages.php:3196
 msgctxt "tooltip fragment"
 msgid "an ISBN code (aka International Standard Book Number)"
 msgstr ""
 
-#: lib/messages.php:3121
+#: lib/messages.php:3124
 msgctxt "option label"
 msgid "How-To Steps"
 msgstr ""
 
-#: lib/messages.php:3122
+#: lib/messages.php:3125
 msgctxt "tooltip fragment"
 msgid "how-to steps"
 msgstr ""
 
-#: lib/messages.php:3125
+#: lib/messages.php:3128
 msgctxt "option label"
 msgid "How-To Supplies"
 msgstr ""
 
-#: lib/messages.php:3126
+#: lib/messages.php:3129
 msgctxt "tooltip fragment"
 msgid "how-to supplies"
 msgstr ""
 
-#: lib/messages.php:3129
+#: lib/messages.php:3132
 msgctxt "option label"
 msgid "How-To Tools"
 msgstr ""
 
-#: lib/messages.php:3130
+#: lib/messages.php:3133
 msgctxt "tooltip fragment"
 msgid "how-to tools"
 msgstr ""
 
-#: lib/messages.php:3133
+#: lib/messages.php:3136
 msgctxt "option label"
 msgid "Image URL"
 msgstr ""
 
-#: lib/messages.php:3134
+#: lib/messages.php:3137
 msgctxt "tooltip fragment"
 msgid "an image URL"
 msgstr ""
 
-#: lib/messages.php:3138
+#: lib/messages.php:3141
 msgctxt "tooltip fragment"
 msgid "a product availability"
 msgstr ""
 
-#: lib/messages.php:3142
+#: lib/messages.php:3145
 msgctxt "tooltip fragment"
 msgid "a product brand"
 msgstr ""
 
-#: lib/messages.php:3146
+#: lib/messages.php:3149
 msgctxt "tooltip fragment"
 msgid "a <a href=\"%s\">Google product type</a>"
 msgstr ""
 
-#: lib/messages.php:3147
+#: lib/messages.php:3150
 msgid ""
 "https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt"
 msgstr ""
 
-#: lib/messages.php:3151
+#: lib/messages.php:3154
 msgctxt "tooltip fragment"
 msgid "a product color"
 msgstr ""
 
-#: lib/messages.php:3155
+#: lib/messages.php:3158
 msgctxt "tooltip fragment"
 msgid "a product condition"
 msgstr ""
 
-#: lib/messages.php:3158
+#: lib/messages.php:3161
 msgctxt "option label"
 msgid "Product Currency"
 msgstr ""
 
-#: lib/messages.php:3159
+#: lib/messages.php:3162
 msgctxt "tooltip fragment"
 msgid "a product currency"
 msgstr ""
 
-#: lib/messages.php:3162
+#: lib/messages.php:3165
 msgctxt "option label"
 msgid "Product Depth"
 msgstr ""
 
-#: lib/messages.php:3163
+#: lib/messages.php:3166
 msgctxt "tooltip fragment"
 msgid "a product depth (in %s)"
 msgstr ""
 
-#: lib/messages.php:3167
+#: lib/messages.php:3170
 msgctxt "option label"
 msgid "Product GTIN-14"
 msgstr ""
 
-#: lib/messages.php:3168
+#: lib/messages.php:3171
 msgctxt "tooltip fragment"
 msgid "a product GTIN-14 code (aka ITF-14)"
 msgstr ""
 
-#: lib/messages.php:3171
+#: lib/messages.php:3174
 msgctxt "option label"
 msgid "Product GTIN-13 (EAN)"
 msgstr ""
 
-#: lib/messages.php:3172
+#: lib/messages.php:3175
 msgctxt "tooltip fragment"
 msgid "a product GTIN-13 code (aka 13-digit ISBN codes or EAN/UCC-13)"
 msgstr ""
 
-#: lib/messages.php:3175
+#: lib/messages.php:3178
 msgctxt "option label"
 msgid "Product GTIN-12 (UPC)"
 msgstr ""
 
-#: lib/messages.php:3176
+#: lib/messages.php:3179
 msgctxt "tooltip fragment"
 msgid ""
 "a product GTIN-12 code (12-digit GS1 identification key composed of a UPC "
 "company prefix, item reference, and check digit)"
 msgstr ""
 
-#: lib/messages.php:3179
+#: lib/messages.php:3182
 msgctxt "option label"
 msgid "Product GTIN-8"
 msgstr ""
 
-#: lib/messages.php:3180
+#: lib/messages.php:3183
 msgctxt "tooltip fragment"
 msgid "a product GTIN-8 code (aka EAN/UCC-8 or 8-digit EAN)"
 msgstr ""
 
-#: lib/messages.php:3183
+#: lib/messages.php:3186
 msgctxt "option label"
 msgid "Product GTIN"
 msgstr ""
 
-#: lib/messages.php:3184
+#: lib/messages.php:3187
 msgctxt "tooltip fragment"
 msgid "a product GTIN code (GTIN-8, GTIN-12/UPC, GTIN-13/EAN, or GTIN-14)"
 msgstr ""
 
-#: lib/messages.php:3187
+#: lib/messages.php:3190
 msgctxt "option label"
 msgid "Product Height"
 msgstr ""
 
-#: lib/messages.php:3188
+#: lib/messages.php:3191
 msgctxt "tooltip fragment"
 msgid "a product height (in %s)"
 msgstr ""
 
-#: lib/messages.php:3196
+#: lib/messages.php:3199
 msgctxt "option label"
 msgid "Product Length"
 msgstr ""
 
-#: lib/messages.php:3197
+#: lib/messages.php:3200
 msgctxt "tooltip fragment"
 msgid "a product length (in %s)"
 msgstr ""
 
-#: lib/messages.php:3202
+#: lib/messages.php:3205
 msgctxt "tooltip fragment"
 msgid "a product material"
 msgstr ""
 
-#: lib/messages.php:3206
+#: lib/messages.php:3209
 msgctxt "tooltip fragment"
 msgid "a Manufacturer Part Number (MPN)"
 msgstr ""
 
-#: lib/messages.php:3210
+#: lib/messages.php:3213
 msgctxt "tooltip fragment"
 msgid "a product price"
 msgstr ""
 
-#: lib/messages.php:3214
+#: lib/messages.php:3217
 msgctxt "tooltip fragment"
 msgid "a Stock-Keeping Unit (SKU)"
 msgstr ""
 
-#: lib/messages.php:3218
+#: lib/messages.php:3221
 msgctxt "tooltip fragment"
 msgid "a product size"
 msgstr ""
 
-#: lib/messages.php:3222
+#: lib/messages.php:3225
 msgctxt "tooltip fragment"
 msgid "a product target gender"
 msgstr ""
 
-#: lib/messages.php:3225
+#: lib/messages.php:3228
 msgctxt "option label"
 msgid "Product Fluid Volume"
 msgstr ""
 
-#: lib/messages.php:3226
+#: lib/messages.php:3229
 msgctxt "tooltip fragment"
 msgid "a product fluid volume (in %s)"
 msgstr ""
 
-#: lib/messages.php:3231
+#: lib/messages.php:3234
 msgctxt "tooltip fragment"
 msgid "a product weight (in %s)"
 msgstr ""
 
-#: lib/messages.php:3235
+#: lib/messages.php:3238
 msgctxt "option label"
 msgid "Product Width"
 msgstr ""
 
-#: lib/messages.php:3236
+#: lib/messages.php:3239
 msgctxt "tooltip fragment"
 msgid "a product width (in %s)"
 msgstr ""
 
-#: lib/messages.php:3240
+#: lib/messages.php:3243
 msgctxt "option label"
 msgid "Recipe Ingredients"
 msgstr ""
 
-#: lib/messages.php:3241
+#: lib/messages.php:3244
 msgctxt "tooltip fragment"
 msgid "recipe ingredients"
 msgstr ""
 
-#: lib/messages.php:3244
+#: lib/messages.php:3247
 msgctxt "option label"
 msgid "Recipe Instructions"
 msgstr ""
 
-#: lib/messages.php:3245
+#: lib/messages.php:3248
 msgctxt "tooltip fragment"
 msgid "recipe instructions"
 msgstr ""
 
-#: lib/messages.php:3248
+#: lib/messages.php:3251
 msgctxt "option label"
 msgid "Same-As URLs"
 msgstr ""
 
-#: lib/messages.php:3249
+#: lib/messages.php:3252
 msgctxt "tooltip fragment"
 msgid "additional Same-As URLs"
 msgstr ""
 
-#: lib/messages.php:3253
+#: lib/messages.php:3256
 msgctxt "tooltip fragment"
 msgid "video embed HTML code (not a URL)"
 msgstr ""
 
-#: lib/messages.php:3256
+#: lib/messages.php:3259
 msgctxt "option label"
 msgid "Video URL"
 msgstr ""
 
-#: lib/messages.php:3257
+#: lib/messages.php:3260
 msgctxt "tooltip fragment"
 msgid "a video URL (not HTML code)"
 msgstr ""
 
 #. translators: %s is is the short add-on name.
-#: lib/messages.php:3309
+#: lib/messages.php:3312
 msgctxt "option comment"
 msgid "%s required"
 msgstr ""
 
-#: lib/messages.php:3322
+#: lib/messages.php:3325
 msgctxt "option comment"
 msgid "note that video preview images are enabled (and included first)"
 msgstr ""
 
-#: lib/messages.php:3338
+#: lib/messages.php:3341
 msgid "<a href=\"%s\">WordPress Title Tag</a> not supported by theme"
 msgstr ""
 
-#: lib/messages.php:3365
+#: lib/messages.php:3368
 msgid "Note that the <code>%s</code> HTML tag is currently disabled."
 msgstr ""
 
-#: lib/messages.php:3367
+#: lib/messages.php:3370
 msgid "You can re-enable this option under the %s tab."
 msgstr ""
 
-#: lib/messages.php:3375
+#: lib/messages.php:3378
 msgctxt "option comment"
 msgid "note that video preview images are included first"
 msgstr ""
 
-#: lib/messages.php:3398
+#: lib/messages.php:3401
 msgid ""
 "Video discovery and service API modules are provided with the %s version."
 msgstr ""
 
 #. translators: %s is is the add-on name (and a link to the add-on page).
-#: lib/messages.php:3419
+#: lib/messages.php:3422
 msgid ""
 "Activate the %s add-on<br/>if you require additional options for Schema "
 "markup and structured data."
 msgstr ""
 
-#: lib/messages.php:3451
+#: lib/messages.php:3454
 msgctxt "option value"
 msgid "uncropped"
 msgstr ""
 
-#: lib/messages.php:3451
+#: lib/messages.php:3454
 msgctxt "option value"
 msgid "cropped"
 msgstr ""
 
-#: lib/messages.php:3461
+#: lib/messages.php:3464
 msgid "head cache is disabled (caching plugin or service detected)."
 msgstr ""
 
 #. translators: %s is the option name, linked to its settings page.
-#: lib/messages.php:3477
+#: lib/messages.php:3480
 msgid "Modifications disabled (%s option is unchecked)."
 msgstr ""
 
-#: lib/messages.php:3489
+#: lib/messages.php:3492
 msgid "Robots meta tag is disabled."
 msgstr ""
 
-#: lib/messages.php:3491 lib/messages.php:3515 lib/messages.php:3550
+#: lib/messages.php:3494 lib/messages.php:3518 lib/messages.php:3553
 #: lib/util-metabox.php:226
 msgid "No options available."
 msgstr ""
 
 #. translators: %s is the meta tag name (aka meta name canonical).
-#: lib/messages.php:3538
+#: lib/messages.php:3541
 msgid ""
 "Modifications disabled (<code>%s</code> tag disabled or SEO plugin detected)."
 msgstr ""
 
-#: lib/messages.php:3548
+#: lib/messages.php:3551
 msgid "WordPress sitemaps are disabled."
 msgstr ""
 
@@ -7861,124 +7871,124 @@ msgid ""
 "default value."
 msgstr ""
 
-#: lib/options.php:1029
+#: lib/options.php:1040
 msgid ""
 "Option keys \"%1$s\" (%2$d) and \"%3$s\" (%4$d) have an aspect ratio of "
 "%5$s:1, which not equal to the required image ratio of %6$s:1."
 msgstr ""
 
-#: lib/options.php:1038
+#: lib/options.php:1049
 msgid ""
 "Option keys \"%1$s\" (%2$d) and \"%3$s\" (%4$d) have an aspect ratio of "
 "%5$s:1, which is equal to / or greater than the maximum image ratio of "
 "%6$s:1."
 msgstr ""
 
-#: lib/options.php:1046
+#: lib/options.php:1057
 msgid "These options have been reset to their default values."
 msgstr ""
 
-#: lib/options.php:1080
+#: lib/options.php:1091
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length - "
 "the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:1207
+#: lib/options.php:1218
 msgid "Plugin settings have been upgraded and saved."
 msgstr ""
 
-#: lib/options.php:1342
+#: lib/options.php:1353
 msgid "The %s image dimensions cannot be determined."
 msgstr ""
 
-#: lib/options.php:1345
+#: lib/options.php:1356
 msgid ""
 "Please make sure this site can access %s using the PHP getimagesize() "
 "function."
 msgstr ""
 
-#: lib/options.php:1350
+#: lib/options.php:1361
 msgid "The %1$s image dimensions are %2$s and must be exactly %3$s."
 msgstr ""
 
-#: lib/options.php:1353
+#: lib/options.php:1364
 msgid "Please correct the %s banner image."
 msgstr ""
 
-#: lib/options.php:1387
+#: lib/options.php:1398
 msgid ""
 "The value of option \"%s\" must be alpha-numeric - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1388
+#: lib/options.php:1399
 msgid ""
 "The value of option \"%s\" must be blank or numeric - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1389
+#: lib/options.php:1400
 msgid ""
 "The value of option \"%s\" must be a CSS color code - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1390
+#: lib/options.php:1401
 msgid ""
 "The value of option \"%s\" must be a comma-delimited list of URL(s) - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:1391
+#: lib/options.php:1402
 msgid ""
 "The value of option \"%s\" must be a yyyy-mm-dd date - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1392
+#: lib/options.php:1403
 msgid ""
 "The value of option \"%s\" must be HTML code - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1393
+#: lib/options.php:1404
 msgid ""
 "The value of option \"%s\" must be an image ID - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1394
+#: lib/options.php:1405
 msgid ""
 "The value of option \"%s\" must be a valid image URL - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1395
+#: lib/options.php:1406
 msgid ""
 "The value of option \"%s\" cannot be an empty string - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1396
+#: lib/options.php:1407
 msgid ""
 "The value of option \"%s\" must be numeric - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1397
+#: lib/options.php:1408
 msgid ""
 "The value of option \"%1$s\" must be equal to or greather than %2$s - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:1398
+#: lib/options.php:1409
 msgid ""
 "The value of option \"%s\" must be a hh:mm time - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1399
+#: lib/options.php:1410
 msgid ""
 "The value of option \"%s\" must be a valid URL - resetting this option to "
 "its default value."

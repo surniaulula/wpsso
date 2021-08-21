@@ -3139,19 +3139,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( $network ) {
 
-				$wpsso =& Wpsso::get_instance();
-
-				$pkg_info = $wpsso->admin->get_pkg_info();	// Returns an array from cache.
-
+				$wpsso      =& Wpsso::get_instance();
+				$pkg_info   = $wpsso->admin->get_pkg_info();	// Returns an array from cache.
 				$is_enabled = $is_enabled || $pkg_info[ 'wpsso' ][ 'pp' ] ? true : false;
 
 				$html .= $form->get_th_html( _x( 'Site Use', 'option label (very short)', 'wpsso' ), 'site-use' );
-
 				$html .= $is_enabled ? '<td class="site-use">' : '<td class="blank site-use">';
-
 				$html .= $is_enabled ? $form->get_select( $name . ':use', WpssoConfig::$cf[ 'form' ][ 'site_option_use' ], $css_class = 'site-use' ) :
 					$form->get_no_select( $name . ':use', WpssoConfig::$cf[ 'form' ][ 'site_option_use' ], $css_class = 'site-use' );
-
 				$html .= '</td>';
 			}
 

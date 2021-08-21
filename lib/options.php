@@ -772,7 +772,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				/**
-				 * Check for website verification IDs. If we have an ID, then make sure the tag is enabled.
+				 * Check for website verification IDs and enable/disable meta tags as required.
 				 */
 				foreach ( WpssoConfig::$cf[ 'opt' ][ 'site_verify_meta_names' ] as $site_verify => $meta_name ) {
 
@@ -869,6 +869,17 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			$opts[ 'site_org_schema_type' ]    = $site_org_type_id;
 			$opts[ 'site_org_schema_type:is' ] = 'disabled';
+
+			/**
+			 * Include VAT in Product Prices.
+			 *
+			 * Allow the WPSSO_PRODUCT_PRICE_INCLUDE_VAT constant to override the 'plugin_product_include_vat' value.
+			 */
+			if ( defined( 'WPSSO_PRODUCT_PRICE_INCLUDE_VAT' ) ) {
+
+				$opts[ 'plugin_product_include_vat' ]    = WPSSO_PRODUCT_PRICE_INCLUDE_VAT ? 1 : 0;
+				$opts[ 'plugin_product_include_vat:is' ] = 'disabled';
+			}
 
 			/**
 			 * Save options and show reminders.

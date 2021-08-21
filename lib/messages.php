@@ -990,6 +990,22 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
+						case 'tooltip-plugin_clear_post_terms':		// Clear Term Cache for Published Post.
+
+							$def_checked = $this->get_def_checked( 'plugin_clear_post_terms' );
+
+							$text = sprintf( __( 'When a published post, page, or custom post type is updated, automatically clear the cache of its selected terms (default is %s).', 'wpsso' ), $def_checked );
+
+							break;
+
+						case 'tooltip-plugin_clear_for_comment':	// Clear Post Cache for New Comment.
+
+							$def_checked = $this->get_def_checked( 'plugin_clear_for_comment' );
+
+							$text = sprintf( __( 'Automatically clear the post cache when a new comment is added, or the status of an existing comment is changed (default is %s).', 'wpsso' ), $def_checked );
+
+							break;
+
 						case 'tooltip-plugin_wpseo_social_meta':	// Import Yoast SEO Social Meta.
 
 							$text = __( 'Import the Yoast SEO custom social meta text for Posts, Terms, and Users.', 'wpsso' ) . ' ';
@@ -1004,36 +1020,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						/**
-						 * Caching settings.
-						 */
-						case 'tooltip-plugin_clear_short_urls':		// Clear Short URLs on Clear Cache.
+						case 'tooltip-plugin_product_include_vat':	// Include VAT in Product Prices.
 
-							$def_checked     = $this->get_def_checked( 'plugin_clear_short_urls' );
-							$cache_exp_secs  = $this->p->util->get_cache_exp_secs( $cache_md5_pre = 'wpsso_s_' );
-							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : _x( 'disabled', 'option comment', 'wpsso' );
-
-							$text = sprintf( __( 'Clear shortened URLs when clearing the %1$s transient cache (default is %2$s).', 'wpsso' ), $info[ 'short' ], $def_checked ) . ' ';
-
-							$text .= sprintf( __( 'Shortened URLs are cached for %1$s seconds (%2$s) to minimize external service API calls.', 'wpsso' ), $cache_exp_secs, $cache_exp_human ) . ' ';
-
-							$text .= '<strong>' . __( 'Note that clearing and then re-updating all shortened URLs at once may exceed API limits imposed by your shortening service provider.', 'wpsso' ) . '</strong>';
-
-							break;
-
-						case 'tooltip-plugin_clear_post_terms':		// Clear Term Cache for Published Post.
-
-							$def_checked = $this->get_def_checked( 'plugin_clear_post_terms' );
-
-							$text = sprintf( __( 'When a published post, page, or custom post type is updated, automatically clear the cache of its selected terms (default is %s).', 'wpsso' ), $def_checked );
-
-							break;
-
-						case 'tooltip-plugin_clear_for_comment':	// Clear Post Cache for New Comment.
-
-							$def_checked = $this->get_def_checked( 'plugin_clear_for_comment' );
-
-							$text = sprintf( __( 'Automatically clear the post cache when a new comment is added, or the status of an existing comment is changed (default is %s).', 'wpsso' ), $def_checked );
+							$text = __( 'Get product prices from e-Commerce plugins with VAT included.', 'wpsso' ) . ' ';
 
 							break;
 
@@ -1076,6 +1065,20 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_min_shorten':	// Minimum URL Length to Shorten.
 
 							$text = sprintf( __( 'Shorten URLs longer than this length (the default suggested by Twitter is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'plugin_min_shorten' ) );
+
+							break;
+
+						case 'tooltip-plugin_clear_short_urls':		// Clear Short URLs on Clear Cache.
+
+							$def_checked     = $this->get_def_checked( 'plugin_clear_short_urls' );
+							$cache_exp_secs  = $this->p->util->get_cache_exp_secs( $cache_md5_pre = 'wpsso_s_' );
+							$cache_exp_human = $cache_exp_secs ? human_time_diff( 0, $cache_exp_secs ) : _x( 'disabled', 'option comment', 'wpsso' );
+
+							$text = sprintf( __( 'Clear shortened URLs when clearing the %1$s transient cache (default is %2$s).', 'wpsso' ), $info[ 'short' ], $def_checked ) . ' ';
+
+							$text .= sprintf( __( 'Shortened URLs are cached for %1$s seconds (%2$s) to minimize external service API calls.', 'wpsso' ), $cache_exp_secs, $cache_exp_human ) . ' ';
+
+							$text .= '<strong>' . __( 'Note that clearing and then re-updating all shortened URLs at once may exceed API limits imposed by your shortening service provider.', 'wpsso' ) . '</strong>';
 
 							break;
 

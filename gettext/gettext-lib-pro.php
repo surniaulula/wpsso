@@ -28,6 +28,7 @@ _x( 'Clear Post Cache for New Comment', 'option label', 'wpsso' );
 _x( 'Plugin and Theme Integration', 'metabox title', 'wpsso' );
 _x( 'Import Yoast SEO Social Meta', 'option label', 'wpsso' );
 _x( 'Show Yoast SEO Import Details', 'option label', 'wpsso' );
+_x( 'Include VAT in Product Prices', 'option label', 'wpsso' );
 _x( 'Open Graph (Facebook and oEmbed)', 'option label', 'wpsso' );
 _x( 'Pinterest Pin It', 'option label', 'wpsso' );
 _x( 'Schema 1:1 (Google)', 'option label', 'wpsso' );

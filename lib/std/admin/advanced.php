@@ -172,6 +172,12 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$form->get_no_td_checkbox( 'plugin_wpseo_show_import' ) .
 				WpssoAdmin::get_option_site_use( 'plugin_wpseo_show_import', $form, $network );
 
+			$table_rows[ 'plugin_product_include_vat' ] = '' .
+				$form->get_th_html( _x( 'Include VAT in Product Prices', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_product_include_vat' ) .
+				$form->get_no_td_checkbox( 'plugin_product_include_vat' ) .
+				WpssoAdmin::get_option_site_use( 'plugin_product_include_vat', $form, $network );
+
 			return $table_rows;
 		}
 
