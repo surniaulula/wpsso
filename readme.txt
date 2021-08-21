@@ -331,6 +331,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Moved the SSO > Advanced Settings > Plugin Settings > Caching tab options to the Integration tab and removed the Caching tab.
 	* Added the SSO > Advanced Settings > Plugin Settings > Integration tab in the network admin SSO settings.
 	* Added a "Plugin and Theme Integration" section under the SSO > Advanced Settings > Plugin Settings > Integration tab.
+	* Added a new "Include VAT in Product Prices" option under the SSO > Advanced Settings > Plugin Settings > Integration tab.
 * **Bugfixes**
 	* Fixed the 'Content Image Alt Prefix' option use for non default locales.
 * **Developer Notes**
