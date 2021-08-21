@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.36.0-dev.3',	// Plugin version.
+					'version'     => '8.36.0-b.1',	// Plugin version.
 					'opt_version' => '805',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1691,6 +1691,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_filter_title'         => 0,			// Use Filtered "SEO" Title.
 					'plugin_filter_content'       => 0,			// Use Filtered Content.
 					'plugin_filter_excerpt'       => 0,			// Use Filtered Excerpt.
+					'plugin_page_excerpt'         => 0,			// Enable Excerpt for Pages.
+					'plugin_page_tags'            => 0,			// Enable Tags for Pages.
+					'plugin_new_user_is_person'   => 0,			// Add Person Role for New Users.
+					'plugin_clear_post_terms'     => 1,			// Clear Term Cache when Publishing.
+					'plugin_clear_for_comment'    => 1,			// Clear Post Cache for New Comment.
+					'plugin_check_img_dims'       => 0,			// Enforce Image Dimension Checks.
+					'plugin_upscale_images'       => 0,			// Upscale Media Library Images.
+					'plugin_upscale_img_max'      => 33,			// Maximum Image Upscale Percent.
 					'plugin_img_alt_prefix'       => 'Image:',		// Content Image Alt Prefix.
 					'plugin_img_alt_prefix#es_ES' => 'Imagen:',		// Content Image Alt Prefix (es_ES).
 					'plugin_img_alt_prefix#fr_BE' => 'Image:',		// Content Image Alt Prefix (fr_BE).
@@ -1711,22 +1719,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_no_desc_text#fr_BE'   => 'Aucune description.',	// No Description Text (fr_BE).
 					'plugin_no_desc_text#fr_CA'   => 'Aucune description.',	// No Description Text (fr_CA).
 					'plugin_no_desc_text#fr_FR'   => 'Aucune description.',	// No Description Text (fr_FR).
-					'plugin_page_excerpt'         => 0,			// Enable Excerpt for Pages.
-					'plugin_page_tags'            => 0,			// Enable Tags for Pages.
-					'plugin_new_user_is_person'   => 0,			// Add Person Role for New Users.
-					'plugin_check_head'           => 1,			// Check for Duplicate Meta Tags.
-					'plugin_check_img_dims'       => 0,			// Enforce Image Dimension Checks.
-					'plugin_upscale_images'       => 0,			// Upscale Media Library Images.
-					'plugin_upscale_img_max'      => 33,			// Maximum Image Upscale Percent.
-					'plugin_clear_post_terms'    => 1,			// Clear Term Cache for Published Post.
-					'plugin_clear_for_comment'   => 1,			// Clear Post Cache for New Comment.
 
 					/**
 					 * Advanced Settings > Integration tab (Plugin and Theme Integration).
 					 */
+					'plugin_check_head'           => 1,			// Check for Duplicate Meta Tags.
+					'plugin_product_include_vat'  => 0,			// Include VAT in Product Prices.
 					'plugin_wpseo_social_meta'    => 0,			// Import Yoast SEO Social Meta.
 					'plugin_wpseo_show_import'    => 1,			// Show Yoast SEO Import Details.
-					'plugin_product_include_vat'  => 0,			// Include VAT in Product Prices.
 
 					/**
 					 * Advanced Settings > Media Services tab.

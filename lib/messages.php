@@ -891,6 +891,85 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
+						case 'tooltip-plugin_page_excerpt':	// Enable Excerpt for Pages.
+
+							$text = __( 'Enable the WordPress excerpt metabox for Pages.', 'wpsso' ) . ' ';
+
+							$text .= sprintf( __( 'An excerpt is an optional hand-crafted summary of your content, that %s can also use as a default description value for meta tags and Schema markup.', 'wpsso' ), $info[ 'short' ] );
+
+							break;
+
+						case 'tooltip-plugin_page_tags':	// Enable Tags for Pages.
+
+							$text = __( 'Enable the WordPress tags metabox for Pages.', 'wpsso' ) . ' ';
+
+							$text .= __( 'WordPress tags are optional keywords about the content subject, often used for searches and "tag clouds".', 'wpsso' ) . ' ';
+
+							$text .= sprintf( __( '%s can convert WordPress tags into hashtags for some social sites.', 'wpsso' ), $info[ 'short' ] );
+
+							break;
+
+						case 'tooltip-plugin_new_user_is_person':	// Add Person Role for New Users.
+
+							$text = sprintf( __( 'Automatically add the "%s" role when a new user is created.', 'wpsso' ), _x( 'Person', 'user role', 'wpsso' ) ) . ' ';
+
+							$text .= sprintf( __( 'You may also consider activating <a href="%s">a plugin from WordPress.org to manage user roles and their members</a>.', 'wpsso' ), 'https://wordpress.org/plugins/search/user+role/' );
+
+							break;
+
+						case 'tooltip-plugin_clear_post_terms':		// Clear Term Cache when Publishing.
+
+							$def_checked = $this->get_def_checked( 'plugin_clear_post_terms' );
+
+							$text = sprintf( __( 'When a published post, page, or custom post type is updated, automatically clear the cache of its selected terms (default is %s).', 'wpsso' ), $def_checked );
+
+							break;
+
+						case 'tooltip-plugin_clear_for_comment':	// Clear Post Cache for New Comment.
+
+							$def_checked = $this->get_def_checked( 'plugin_clear_for_comment' );
+
+							$text = sprintf( __( 'Automatically clear the post cache when a new comment is added, or the status of an existing comment is changed (default is %s).', 'wpsso' ), $def_checked );
+
+							break;
+
+						case 'tooltip-plugin_check_img_dims':	// Enforce Image Dimension Checks.
+
+							$image_sizes_tab_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_image_sizes',
+								_x( 'Image Sizes', 'lib file description', 'wpsso' ) );
+
+							$text = __( 'Content authors often upload small featured images, without knowing that WordPress creates resized images based on predefined image sizes, so this option is disabled by default.', 'wpsso' ) . ' ';
+
+							$text .= sprintf( __( 'See <a href="%s">Why shouldn\'t I upload small images to the media library?</a> for more information on WordPress image sizes.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/' ). ' ';
+
+							$text .= sprintf( __( 'When this option is enabled, full size images used for meta tags and Schema markup must be equal to (or larger) than the image dimensions you\'ve selected in the %s settings page - images that do not meet or exceed the minimum requirements are ignored.', 'wpsso' ), $image_sizes_tab_link ) . ' ';
+
+							$text .= '<strong>' . __( 'Providing social and search sites with perfectly resized images is highly recommended, so this option should be enabled if possible.', 'wpsso' ) . '</strong> ';
+
+							break;
+
+						case 'tooltip-plugin_upscale_images':	// Upscale Media Library Images.
+
+							$text = __( 'WordPress does not upscale (enlarge) images - WordPress can only create smaller images from larger full size originals.', 'wpsso' ) . ' ';
+
+							$text .= __( 'Upscaled images do not look as sharp or clear, and if upscaled too much, will look fuzzy and unappealing - not something you want to promote on social and search sites.', 'wpsso' ) . ' ';
+
+							$text .= sprintf( __( '%1$s includes an optional module to allow upscaling of WordPress Media Library images (up to a maximum upscale percentage).', 'wpsso' ), $wpsso_name_pro ) . ' ';
+
+							$text .= '<strong>' . __( 'Do not enable this option unless you want to publish lower quality images on social and search sites.', 'wpsso' ) . '</strong>';
+
+							break;
+
+						case 'tooltip-plugin_upscale_img_max':	// Maximum Image Upscale Percent.
+
+							$upscale_max = $this->p->opt->get_defaults( 'plugin_upscale_img_max' );
+
+							$text = sprintf( __( 'When upscaling of %1$s image sizes is allowed, %2$s can make sure smaller images are not upscaled beyond reason, which would publish very low quality / fuzzy images on social and search sites (the default maximum is %3$s%%).', 'wpsso' ), $info[ 'short' ], $wpsso_name_pro, $upscale_max ) . ' ';
+
+							$text .= __( 'If an image needs to be upscaled beyond this maximum, in either width or height, the image will not be upscaled.', 'wpsso' );
+
+							break;
+
 						case 'tooltip-plugin_img_alt_prefix':	// Content Image Alt Prefix.
 
 							$text = sprintf( __( 'When the text from image %1$s attributes is used, %2$s can prefix the attribute text with an optional string (for example, "Image:").', 'wpsso' ), '<em>alt</em>', $info[ 'short' ] ) . ' ';
@@ -919,32 +998,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_page_excerpt':	// Enable Excerpt for Pages.
-
-							$text = __( 'Enable the WordPress excerpt metabox for Pages.', 'wpsso' ) . ' ';
-
-							$text .= sprintf( __( 'An excerpt is an optional hand-crafted summary of your content, that %s can also use as a default description value for meta tags and Schema markup.', 'wpsso' ), $info[ 'short' ] );
-
-							break;
-
-						case 'tooltip-plugin_page_tags':	// Enable Tags for Pages.
-
-							$text = __( 'Enable the WordPress tags metabox for Pages.', 'wpsso' ) . ' ';
-
-							$text .= __( 'WordPress tags are optional keywords about the content subject, often used for searches and "tag clouds".', 'wpsso' ) . ' ';
-
-							$text .= sprintf( __( '%s can convert WordPress tags into hashtags for some social sites.', 'wpsso' ), $info[ 'short' ] );
-
-							break;
-
-						case 'tooltip-plugin_new_user_is_person':	// Add Person Role for New Users.
-
-							$text = sprintf( __( 'Automatically add the "%s" role when a new user is created.', 'wpsso' ), _x( 'Person', 'user role', 'wpsso' ) ) . ' ';
-
-							$text .= sprintf( __( 'You may also consider activating <a href="%s">a plugin from WordPress.org to manage user roles and their members</a>.', 'wpsso' ), 'https://wordpress.org/plugins/search/user+role/' );
-
-							break;
-
+						/**
+						 * Integration settings (Plugin and Theme Integration).
+						 */
 						case 'tooltip-plugin_check_head':	// Check for Duplicate Meta Tags.
 
 							$check_head_count = SucomUtil::get_const( 'WPSSO_DUPE_CHECK_HEADER_COUNT', 5 );
@@ -953,56 +1009,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_check_img_dims':	// Enforce Image Dimension Checks.
+						case 'tooltip-plugin_product_include_vat':	// Include VAT in Product Prices.
 
-							$image_sizes_tab_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_image_sizes',
-								_x( 'Image Sizes', 'lib file description', 'wpsso' ) );
-
-							$text = __( 'Content authors often upload small featured images, without knowing that WordPress creates resized images based on predefined image sizes, so this option is disabled by default.', 'wpsso' ) . ' ';
-
-							$text .= sprintf( __( 'When this option is enabled, full size images used for meta tags and Schema markup must be equal to (or larger) than the image dimensions you\'ve selected in the %s settings page - images that do not meet or exceed the minimum requirements are ignored.', 'wpsso' ), $image_sizes_tab_link ) . ' ';
-
-							$text .= __( 'Providing social and search sites with perfectly resized images is highly recommended, so this option should be enabled if possible.', 'wpsso' ) . ' ';
-
-							$text .= sprintf( __( 'See <a href="%s">Why shouldn\'t I upload small images to the media library?</a> for more information on WordPress image sizes.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/' ). ' ';
-
-							break;
-
-						case 'tooltip-plugin_upscale_images':	// Upscale Media Library Images.
-
-							$text = __( 'WordPress does not upscale (enlarge) images - WordPress can only create smaller images from larger full size originals.', 'wpsso' ) . ' ';
-
-							$text .= __( 'Upscaled images do not look as sharp or clear, and if upscaled too much, will look fuzzy and unappealing - not something you want to promote on social and search sites.', 'wpsso' ) . ' ';
-
-							$text .= sprintf( __( '%1$s includes an optional module to allow upscaling of WordPress Media Library images (up to a maximum upscale percentage).', 'wpsso' ), $wpsso_name_pro ) . ' ';
-
-							$text .= '<strong>' . __( 'Do not enable this option unless you want to publish lower quality images on social and search sites.', 'wpsso' ) . '</strong>';
-
-							break;
-
-						case 'tooltip-plugin_upscale_img_max':	// Maximum Image Upscale Percent.
-
-							$upscale_max = $this->p->opt->get_defaults( 'plugin_upscale_img_max' );
-
-							$text = sprintf( __( 'When upscaling of %1$s image sizes is allowed, %2$s can make sure smaller images are not upscaled beyond reason, which would publish very low quality / fuzzy images on social and search sites (the default maximum is %3$s%%).', 'wpsso' ), $info[ 'short' ], $wpsso_name_pro, $upscale_max ) . ' ';
-
-							$text .= __( 'If an image needs to be upscaled beyond this maximum, in either width or height, the image will not be upscaled.', 'wpsso' );
-
-							break;
-
-						case 'tooltip-plugin_clear_post_terms':		// Clear Term Cache for Published Post.
-
-							$def_checked = $this->get_def_checked( 'plugin_clear_post_terms' );
-
-							$text = sprintf( __( 'When a published post, page, or custom post type is updated, automatically clear the cache of its selected terms (default is %s).', 'wpsso' ), $def_checked );
-
-							break;
-
-						case 'tooltip-plugin_clear_for_comment':	// Clear Post Cache for New Comment.
-
-							$def_checked = $this->get_def_checked( 'plugin_clear_for_comment' );
-
-							$text = sprintf( __( 'Automatically clear the post cache when a new comment is added, or the status of an existing comment is changed (default is %s).', 'wpsso' ), $def_checked );
+							$text = __( 'Get product prices from e-Commerce plugins with VAT included.', 'wpsso' ) . ' ';
 
 							break;
 
@@ -1017,12 +1026,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-plugin_wpseo_show_import':	// Show Yoast SEO Import Details.
 
 							$text = __( 'Show notification messages for imported Yoast SEO custom social meta text for Posts, Terms, and Users.', 'wpsso' ) . ' ';
-
-							break;
-
-						case 'tooltip-plugin_product_include_vat':	// Include VAT in Product Prices.
-
-							$text = __( 'Get product prices from e-Commerce plugins with VAT included.', 'wpsso' ) . ' ';
 
 							break;
 

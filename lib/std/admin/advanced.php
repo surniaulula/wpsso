@@ -76,6 +76,54 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$form->get_no_td_checkbox( 'plugin_filter_excerpt', _x( 'recommended if shortcodes in excerpts', 'option comment', 'wpsso' ) ) .
 				WpssoAdmin::get_option_site_use( 'plugin_filter_excerpt', $form, $network );
 
+			$table_rows[ 'plugin_page_excerpt' ] = '' . 
+				$form->get_th_html( _x( 'Enable Excerpt for Pages', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_page_excerpt' ) . 
+				$form->get_no_td_checkbox( 'plugin_page_excerpt' ) .
+				WpssoAdmin::get_option_site_use( 'plugin_page_excerpt', $form, $network );
+
+			$table_rows[ 'plugin_page_tags' ] = $form->get_tr_hide( 'basic', 'plugin_page_tags' ) .
+				$form->get_th_html( _x( 'Enable Tags for Pages', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_page_tags' ) . 
+				$form->get_no_td_checkbox( 'plugin_page_tags' ) .
+				WpssoAdmin::get_option_site_use( 'plugin_page_tags', $form, $network );
+
+			$table_rows[ 'plugin_new_user_is_person' ] = '' . 
+				$form->get_th_html( _x( 'Add Person Role for New Users', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_new_user_is_person' ) . 
+				$form->get_no_td_checkbox( 'plugin_new_user_is_person' ) .
+				WpssoAdmin::get_option_site_use( 'plugin_new_user_is_person', $form, $network );
+
+			$table_rows[ 'plugin_clear_post_terms' ] = $form->get_tr_hide( 'basic', 'plugin_clear_post_terms' ) . 
+				$form->get_th_html( _x( 'Clear Term Cache when Publishing', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_clear_post_terms' ) . 
+				$form->get_no_td_checkbox( 'plugin_clear_post_terms' ) . 
+				WpssoAdmin::get_option_site_use( 'plugin_clear_post_terms', $form, $network );
+
+			$table_rows[ 'plugin_clear_for_comment' ] = $form->get_tr_hide( 'basic', 'plugin_clear_for_comment' ) . 
+				$form->get_th_html( _x( 'Clear Post Cache for New Comment', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_clear_for_comment' ) . 
+				$form->get_no_td_checkbox( 'plugin_clear_for_comment' ) . 
+				WpssoAdmin::get_option_site_use( 'plugin_clear_for_comment', $form, $network );
+
+			$table_rows[ 'plugin_check_img_dims' ] = '' . 
+				$form->get_th_html( _x( 'Enforce Image Dimension Checks', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_check_img_dims' ) . 
+				$form->get_no_td_checkbox( 'plugin_check_img_dims', _x( 'recommended (see help text)', 'option comment', 'wpsso' ) ) .
+				WpssoAdmin::get_option_site_use( 'plugin_check_img_dims', $form, $network );
+
+			$table_rows[ 'plugin_upscale_images' ] = '' . 
+				$form->get_th_html( _x( 'Upscale Media Library Images', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_upscale_images' ) . 
+				$form->get_no_td_checkbox( 'plugin_upscale_images' ) .
+				WpssoAdmin::get_option_site_use( 'plugin_upscale_images', $form, $network );
+
+			$table_rows[ 'plugin_upscale_img_max' ] = $form->get_tr_hide( 'basic', 'plugin_upscale_img_max' ) .
+				$form->get_th_html( _x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_upscale_img_max' ) . 
+				'<td class="blank">' . $form->get_no_input( 'plugin_upscale_img_max', $css_class = 'short' ) . ' %</td>' .
+				WpssoAdmin::get_option_site_use( 'plugin_upscale_img_max', $form, $network );
+
 			$table_rows[ 'plugin_img_alt_prefix' ] = '' . 
 				$form->get_th_html_locale( _x( 'Content Image Alt Prefix', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_img_alt_prefix' ) . 
@@ -100,23 +148,11 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'<td class="blank">' . SucomUtil::get_key_value( 'plugin_no_desc_text', $form->options ) . '</td>' .
 				WpssoAdmin::get_option_site_use( 'plugin_no_desc_text', $form, $network );
 
-			$table_rows[ 'plugin_page_excerpt' ] = '' . 
-				$form->get_th_html( _x( 'Enable Excerpt for Pages', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_page_excerpt' ) . 
-				$form->get_no_td_checkbox( 'plugin_page_excerpt' ) .
-				WpssoAdmin::get_option_site_use( 'plugin_page_excerpt', $form, $network );
-
-			$table_rows[ 'plugin_page_tags' ] = $form->get_tr_hide( 'basic', 'plugin_page_tags' ) .
-				$form->get_th_html( _x( 'Enable Tags for Pages', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_page_tags' ) . 
-				$form->get_no_td_checkbox( 'plugin_page_tags' ) .
-				WpssoAdmin::get_option_site_use( 'plugin_page_tags', $form, $network );
-
-			$table_rows[ 'plugin_new_user_is_person' ] = '' . 
-				$form->get_th_html( _x( 'Add Person Role for New Users', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_new_user_is_person' ) . 
-				$form->get_no_td_checkbox( 'plugin_new_user_is_person' ) .
-				WpssoAdmin::get_option_site_use( 'plugin_new_user_is_person', $form, $network );
+			/**
+			 * Plugin and theme integration options.
+			 */
+			$table_rows[ 'subsection_plugin_theme_integration' ] = '' .
+				'<td colspan="4" class="subsection"><h4>' . _x( 'Plugin and Theme Integration', 'metabox title', 'wpsso' ) . '</h4></td>';
 
 			$table_rows[ 'plugin_check_head' ] = $form->get_tr_hide( 'basic', 'plugin_check_head' ) .
 				$form->get_th_html( _x( 'Check for Duplicate Meta Tags', 'option label', 'wpsso' ),
@@ -124,41 +160,11 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$form->get_no_td_checkbox( 'plugin_check_head' ) .
 				WpssoAdmin::get_option_site_use( 'plugin_check_head', $form, $network );
 
-			$table_rows[ 'plugin_check_img_dims' ] = '' . 
-				$form->get_th_html( _x( 'Enforce Image Dimension Checks', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_check_img_dims' ) . 
-				$form->get_no_td_checkbox( 'plugin_check_img_dims', _x( 'recommended', 'option comment', 'wpsso' ) ) .
-				WpssoAdmin::get_option_site_use( 'plugin_check_img_dims', $form, $network );
-
-			$table_rows[ 'plugin_upscale_images' ] = '' . 
-				$form->get_th_html( _x( 'Upscale Media Library Images', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_upscale_images' ) . 
-				$form->get_no_td_checkbox( 'plugin_upscale_images' ) .
-				WpssoAdmin::get_option_site_use( 'plugin_upscale_images', $form, $network );
-
-			$table_rows[ 'plugin_upscale_img_max' ] = $form->get_tr_hide( 'basic', 'plugin_upscale_img_max' ) .
-				$form->get_th_html( _x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_upscale_img_max' ) . 
-				'<td class="blank">' . $form->get_no_input( 'plugin_upscale_img_max', $css_class = 'short' ) . ' %</td>' .
-				WpssoAdmin::get_option_site_use( 'plugin_upscale_img_max', $form, $network );
-
-			$table_rows[ 'plugin_clear_post_terms' ] = $form->get_tr_hide( 'basic', 'plugin_clear_post_terms' ) . 
-				$form->get_th_html( _x( 'Clear Term Cache for Published Post', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_clear_post_terms' ) . 
-				$form->get_no_td_checkbox( 'plugin_clear_post_terms' ) . 
-				WpssoAdmin::get_option_site_use( 'plugin_clear_post_terms', $form, $network );
-
-			$table_rows[ 'plugin_clear_for_comment' ] = $form->get_tr_hide( 'basic', 'plugin_clear_for_comment' ) . 
-				$form->get_th_html( _x( 'Clear Post Cache for New Comment', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_clear_for_comment' ) . 
-				$form->get_no_td_checkbox( 'plugin_clear_for_comment' ) . 
-				WpssoAdmin::get_option_site_use( 'plugin_clear_for_comment', $form, $network );
-
-			/**
-			 * Plugin and theme integration options.
-			 */
-			$table_rows[ 'subsection_plugin_theme_integration' ] = '' .
-				'<td colspan="4" class="subsection"><h4>' . _x( 'Plugin and Theme Integration', 'metabox title', 'wpsso' ) . '</h4></td>';
+			$table_rows[ 'plugin_product_include_vat' ] = '' .
+				$form->get_th_html( _x( 'Include VAT in Product Prices', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_product_include_vat' ) .
+				$form->get_no_td_checkbox( 'plugin_product_include_vat' ) .
+				WpssoAdmin::get_option_site_use( 'plugin_product_include_vat', $form, $network );
 
 			$table_rows[ 'plugin_wpseo_social_meta' ] = '' .
 				$form->get_th_html( _x( 'Import Yoast SEO Social Meta', 'option label', 'wpsso' ),
@@ -171,12 +177,6 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					$css_class = '', $css_id = 'plugin_wpseo_show_import' ) .
 				$form->get_no_td_checkbox( 'plugin_wpseo_show_import' ) .
 				WpssoAdmin::get_option_site_use( 'plugin_wpseo_show_import', $form, $network );
-
-			$table_rows[ 'plugin_product_include_vat' ] = '' .
-				$form->get_th_html( _x( 'Include VAT in Product Prices', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_product_include_vat' ) .
-				$form->get_no_td_checkbox( 'plugin_product_include_vat' ) .
-				WpssoAdmin::get_option_site_use( 'plugin_product_include_vat', $form, $network );
 
 			return $table_rows;
 		}
