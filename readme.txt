@@ -322,7 +322,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.35.5-dev.3 (2021/08/21)**
+**Version 8.36.0-dev.3 (2021/08/21)**
 
 * **New Features**
 	* None.
@@ -333,7 +333,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a "Plugin and Theme Integration" section under the SSO > Advanced Settings > Plugin Settings > Integration tab.
 	* Added a new "Include VAT in Product Prices" option under the SSO > Advanced Settings > Plugin Settings > Integration tab.
 * **Bugfixes**
-	* Fixed the 'Content Image Alt Prefix' option use for non default locales.
+	* Fixed the "Content Image Alt Prefix" option use for non default locales.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -890,7 +890,7 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 
 == Upgrade Notice ==
 
-= 8.35.5-dev.3 =
+= 8.36.0-dev.3 =
 
 (2021/08/21) Added a new "Facebook Domain Verification ID" option. Updated the Integration and Caching tabs in the Advanced Settings page.
 
