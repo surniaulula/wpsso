@@ -148,7 +148,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				/**
 				 * Use the 'show_password_fields' filter as an action to get more information about the user.
 				 */
-				add_filter( 'show_password_fields', array( $this, 'show_about_section' ), -1000, 2 );
+				add_filter( 'show_password_fields', array( $this, 'pre_password_fields' ), -1000, 2 );
 			}
 		}
 
@@ -694,21 +694,42 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		 *
 		 * Use the 'show_password_fields' filter as an action to get more information about the user.
 		 */
-		public function show_about_section( $show_password_fields, $user_obj ) {
+		public function pre_password_fields( $show_password_fields, $user_obj ) {
 
 			if ( ! isset( $user_obj->ID ) ) {	// Just in case.
 
-				return;
+				/**
+				 * This is a filter, so return the original / unchanged filter value.
+				 */
+				return $show_password_fields;
 			}
 
 			if ( ! current_user_can( 'edit_user', $user_obj->ID ) ) {	// Just in case.
 
-				return;
+				/**
+				 * This is a filter, so return the original / unchanged filter value.
+				 */
+				return $show_password_fields;
 			}
+
+			$this->show_about_section( $user_obj->ID );	// Echo the additional input fields.
+
+			/**
+			 * This is a filter, so return the original / unchanged filter value.
+			 */
+			return $show_password_fields;
+		}
+
+		public function show_about_section( $user_id = 0 ) {
 
 			foreach ( $this->p->cf[ 'opt' ][ 'user_about' ] as $key => $label ) {
 
-				$val = get_user_meta( $user_obj->ID, $key, $single = true );
+				$val = '';
+
+				if ( $user_id ) {	// 0 when adding a new user.
+
+					$val = get_user_meta( $user_id, $key, $single = true );
+				}
 
 				echo '<tr>';
 
@@ -728,11 +749,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 	
 				echo '</td></tr>';
 			}
-
-			/**
-			 * This is a filter, so return the original / unchanged filter value.
-			 */
-			return $show_password_fields;
 		}
 
 		public function show_metabox_section( $user_obj ) {

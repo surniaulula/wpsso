@@ -4014,7 +4014,7 @@ msgstr ""
 
 #: lib/admin.php:1208 lib/admin.php:1219 lib/messages.php:914
 #: lib/submenu/tools.php:58 lib/submenu/tools.php:103 lib/user.php:57
-#: lib/user.php:1567 lib/user.php:1675 lib/user.php:1806
+#: lib/user.php:1583 lib/user.php:1691 lib/user.php:1822
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -8881,68 +8881,68 @@ msgid ""
 "authored by user ID %3$d (%4$s)."
 msgstr ""
 
-#: lib/user.php:901
+#: lib/user.php:917
 msgid "(not a Facebook Pages URL)"
 msgstr ""
 
-#: lib/user.php:1018
+#: lib/user.php:1034
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:1019
+#: lib/user.php:1035
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:1020
+#: lib/user.php:1036
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1362
+#: lib/user.php:1378
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/user.php:1586
+#: lib/user.php:1602
 msgid ""
 "Aborting task to add the %1$s role to content creators - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1601
+#: lib/user.php:1617
 msgid "A task to add the %1$s role for content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1643
+#: lib/user.php:1659
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1645 lib/user.php:1748 lib/util-cache.php:182
+#: lib/user.php:1661 lib/user.php:1764 lib/util-cache.php:182
 #: lib/util-cache.php:745
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
-#: lib/user.php:1694
+#: lib/user.php:1710
 msgid ""
 "Aborting task to remove the %1$s role from all users - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1709
+#: lib/user.php:1725
 msgid "A task to remove the %1$s role from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1746
+#: lib/user.php:1762
 msgid "The %1$s role has been removed from %2$d content creators."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
 #: lib/users/add-person.php:46 lib/users/add-person.php:87
-#: lib/users/add-person.php:269
+#: lib/users/add-person.php:271
 msgid "You need a higher level of permission."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
 #: lib/users/add-person.php:48 lib/users/add-person.php:89
-#: lib/users/add-person.php:271
+#: lib/users/add-person.php:273
 msgid "Sorry, you are not allowed to create users."
 msgstr ""
 
@@ -8991,41 +8991,41 @@ msgstr ""
 msgid "Biographical Info"
 msgstr ""
 
-#: lib/users/add-person.php:222
+#: lib/users/add-person.php:224
 msgid "Add the Person"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/users/add-person.php:332
+#: lib/users/add-person.php:334
 msgid "<strong>Error</strong>: Please enter a username."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/users/add-person.php:338
+#: lib/users/add-person.php:340
 msgid ""
 "<strong>Error</strong>: This username is invalid because it uses illegal "
 "characters. Please enter a valid username."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/users/add-person.php:344
+#: lib/users/add-person.php:346
 msgid ""
 "<strong>Error</strong>: This username is already registered. Please choose "
 "another one."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/users/add-person.php:350
+#: lib/users/add-person.php:352
 msgid "<strong>Error</strong>: Sorry, that username is not allowed."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/users/add-person.php:362
+#: lib/users/add-person.php:364
 msgid "<strong>Error</strong>: The email address isn&#8217;t correct."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/users/add-person.php:368
+#: lib/users/add-person.php:370
 msgid ""
 "<strong>Error</strong>: This email is already registered, please choose "
 "another one."

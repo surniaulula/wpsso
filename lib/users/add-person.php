@@ -217,6 +217,8 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 					<td><textarea name="description" id="description" rows="5" cols="30"><?php echo $attr[ 'description' ] ?></textarea></td>
 				</tr>
 
+				<?php $this->p->user->show_about_section(); ?>
+
 			</table>
 
 			<?php submit_button( __( 'Add the Person', 'wpsso' ), 'primary', 'createuser', true, array( 'id' => 'createusersub' ) ); ?>
@@ -376,6 +378,8 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			$user_id = wp_insert_user( $user );
+
+			$this->p->user->save_about_section( $user_id );
 
 			return $user_id;
 		}
