@@ -1836,13 +1836,18 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					}
 
 					$local_cache_person_opts[ $person_id ] = array(
-						'person_type'      => 'person',
-						'person_url'       => $user_mod[ 'obj' ]->get_author_website( $person_id, 'url' ),	// Returns a single URL string.
-						'person_name'      => $user_mod[ 'obj' ]->get_author_meta( $person_id, $wpsso->options[ 'seo_author_name' ] ),
-						'person_desc'      => $user_desc,
-						'person_job_title' => $user_mod[ 'obj' ]->get_author_meta( $person_id, 'job_title' ),
-						'person_og_image'  => $user_mod[ 'obj' ]->get_og_images( $num = 1, $size_names = 'schema', $person_id, false ),
-						'person_sameas'    => $user_sameas,
+						'person_type'       => 'person',
+						'person_url'        => $user_mod[ 'obj' ]->get_author_website( $person_id, 'url' ),	// Returns a single URL string.
+						'person_name'       => $user_mod[ 'obj' ]->get_author_meta( $person_id, $wpsso->options[ 'seo_author_name' ] ),
+						'person_first_name' => $user_mod[ 'obj' ]->get_author_meta( $person_id, 'first_name' ),
+						'person_last_name'  => $user_mod[ 'obj' ]->get_author_meta( $person_id, 'last_name' ),
+						'person_addl_name'  => $user_mod[ 'obj' ]->get_author_meta( $person_id, 'additional_name' ),
+						'person_prefix'     => $user_mod[ 'obj' ]->get_author_meta( $person_id, 'honorific_prefix' ),
+						'person_suffix'     => $user_mod[ 'obj' ]->get_author_meta( $person_id, 'honorific_suffix' ),
+						'person_desc'       => $user_desc,
+						'person_job_title'  => $user_mod[ 'obj' ]->get_author_meta( $person_id, 'job_title' ),
+						'person_og_image'   => $user_mod[ 'obj' ]->get_og_images( $num = 1, $size_names = 'schema', $person_id, false ),
+						'person_sameas'     => $user_sameas,
 					);
 
 					/**
@@ -1872,12 +1877,17 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$json_ret = WpssoSchema::get_schema_type_context( $person_type_url );
 
 			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $person_opts, array(
-				'url'         => 'person_url',
-				'name'        => 'person_name',
-				'description' => 'person_desc',
-				'jobTitle'    => 'person_job_title',
-				'email'       => 'person_email',
-				'telephone'   => 'person_phone',
+				'url'             => 'person_url',
+				'name'            => 'person_name',
+				'givenName'       => 'person_first_name',
+				'familyName'      => 'person_last_name',
+				'additionalName'  => 'person_addl_name',
+				'honorificPrefix' => 'person_prefix',
+				'honorificSuffix' => 'person_suffix',
+				'description'     => 'person_desc',
+				'jobTitle'        => 'person_job_title',
+				'email'           => 'person_email',
+				'telephone'       => 'person_phone',
 			) );
 
 			/**

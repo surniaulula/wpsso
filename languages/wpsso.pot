@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.36.0-b.3\n"
+"Project-Id-Version: WPSSO Core 8.36.0-b.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4014,7 +4014,7 @@ msgstr ""
 
 #: lib/admin.php:1208 lib/admin.php:1219 lib/messages.php:914
 #: lib/submenu/tools.php:58 lib/submenu/tools.php:103 lib/user.php:57
-#: lib/user.php:1590 lib/user.php:1698 lib/user.php:1829
+#: lib/user.php:1605 lib/user.php:1713 lib/user.php:1844
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -8286,7 +8286,7 @@ msgstr ""
 msgid "adding schema person"
 msgstr ""
 
-#: lib/schema-single.php:1994
+#: lib/schema-single.php:2004
 msgid "adding schema place"
 msgstr ""
 
@@ -8881,56 +8881,64 @@ msgid ""
 "authored by user ID %3$d (%4$s)."
 msgstr ""
 
-#: lib/user.php:920
+#: lib/user.php:757
+msgid "Example: Dr, Mrs, Mr."
+msgstr ""
+
+#: lib/user.php:763
+msgid "Example: M.D., PhD."
+msgstr ""
+
+#: lib/user.php:935
 msgid "(not a Facebook Pages URL)"
 msgstr ""
 
-#: lib/user.php:1041
+#: lib/user.php:1056
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:1042
+#: lib/user.php:1057
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:1043
+#: lib/user.php:1058
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1385
+#: lib/user.php:1400
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/user.php:1609
+#: lib/user.php:1624
 msgid ""
 "Aborting task to add the %1$s role to content creators - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1624
+#: lib/user.php:1639
 msgid "A task to add the %1$s role for content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1666
+#: lib/user.php:1681
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1668 lib/user.php:1771 lib/util-cache.php:182
+#: lib/user.php:1683 lib/user.php:1786 lib/util-cache.php:182
 #: lib/util-cache.php:745
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
-#: lib/user.php:1717
+#: lib/user.php:1732
 msgid ""
 "Aborting task to remove the %1$s role from all users - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1732
+#: lib/user.php:1747
 msgid "A task to remove the %1$s role from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1769
+#: lib/user.php:1784
 msgid "The %1$s role has been removed from %2$d content creators."
 msgstr ""
 

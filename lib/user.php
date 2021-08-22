@@ -690,7 +690,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		/**
-		 * Show additional fields for the user profile About Yourself / About the user sections.
+		 * Show additional fields in the user profile About Yourself / About the user sections.
 		 *
 		 * Hooked to the 'show_password_fields' filter (not an action).
 		 */
@@ -721,7 +721,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		/**
-		 * Called by WpssoUser->pre_password_fields() and WpssoUsersAddPerson->show_post_body_setting_form().
+		 * Called by the WpssoUser->pre_password_fields() and WpssoUsersAddPerson->show_post_body_setting_form() methods.
 		 */
 		public function show_about_section( $user_id = 0 ) {
 
@@ -743,13 +743,28 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					/**
 					 * Regular text input fields.
 					 */
-					case 'job_title':
+					default:
 
 						echo '<input type="text" class="regular-text" name="' . $key . '" id="' . $key . '" value="' . esc_attr( $val ) . '">';
 
 						break;
 				}
 	
+				switch ( $key ) {
+
+					case 'honorific_prefix':
+
+						echo '<p class="description">' . __( 'Example: Dr, Mrs, Mr.', 'wpsso' ) . '</p>';
+
+						break;
+
+					case 'honorific_suffix':
+				
+						echo '<p class="description">' . __( 'Example: M.D., PhD.', 'wpsso' ) . '</p>';
+
+						break;
+				}
+
 				echo '</td></tr>';
 			}
 		}
@@ -945,7 +960,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 						 *
 						 * See https://developer.wordpress.org/themes/theme-security/data-sanitization-escaping/.
 						 */
-						case 'job_title':
+						default:
 
 							update_user_meta( $user_id, $key, sanitize_text_field( $_POST[ $key ] ) );
 
