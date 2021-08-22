@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.36.0-b.2',	// Plugin version.
+					'version'     => '8.36.0-b.3',	// Plugin version.
 					'opt_version' => '805',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1929,9 +1929,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * Additional fields for the user profile About Yourself / About the user sections.
 				 */
 				'user_about' => array(
-					'text' => array(
-						'job_title' => 'Job Title',
-					),
+					'job_title' => 'Job Title',
 				),
 
 				/**

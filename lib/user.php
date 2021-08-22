@@ -706,27 +706,27 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				return;
 			}
 
-			foreach ( $this->p->cf[ 'opt' ][ 'user_about' ] as $input_type => $arr ) {
+			foreach ( $this->p->cf[ 'opt' ][ 'user_about' ] as $key => $label ) {
 
-				foreach ( $arr as $key => $label ) {
+				$val = get_user_meta( $user_obj->ID, $key, $single = true );
 
-					$val = get_user_meta( $user_obj->ID, $key, $single = true );
+				echo '<tr>';
 
-					echo '<tr>';
+				echo '<th><label for="' . $key . '">' . esc_html( _x( $label, 'option label', 'wpsso' ) ) . '</label></th><td>';
 
-					echo '<th><label for="' . $key . '">' . esc_html( _x( $label, 'option label', 'wpsso' ) ) . '</label></th><td>';
+				switch ( $key ) {
 
-					switch ( $input_type ) {
+					/**
+					 * Regular text input fields.
+					 */
+					case 'job_title':
 
-						case 'text':
+						echo '<input type="text" class="regular-text" name="' . $key . '" id="' . $key . '" value="' . esc_attr( $val ) . '">';
 
-							echo '<input type="text" class="regular-text" name="' . $key . '" id="' . $key . '" value="' . esc_attr( $val ) . '">';
-
-							break;
-					}
-		
-					echo '</td></tr>';
+						break;
 				}
+	
+				echo '</td></tr>';
 			}
 
 			/**
@@ -911,13 +911,22 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				return;
 			}
 
-			foreach ( $this->p->cf[ 'opt' ][ 'user_about' ] as $input_type => $arr ) {
+			foreach ( $this->p->cf[ 'opt' ][ 'user_about' ] as $key => $label ) {
 
-				foreach ( $arr as $key => $label ) {
+				if ( isset( $_POST[ $key ] ) ) {
 
-					if ( isset( $_POST[ $key ] ) ) {
+					switch ( $key ) {
 
-						update_user_meta( $user_id, $key, $_POST[ $key ] );
+						/**
+						 * Regular text input fields.
+						 *
+						 * See https://developer.wordpress.org/themes/theme-security/data-sanitization-escaping/.
+						 */
+						case 'job_title':
+
+							update_user_meta( $user_id, $key, sanitize_text_field( $_POST[ $key ] ) );
+
+							break;
 					}
 				}
 			}
