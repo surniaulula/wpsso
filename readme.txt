@@ -322,7 +322,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.36.0-b.2 (2021/08/21)**
+**Version 8.36.0-b.3 (2021/08/22)**
 
 * **New Features**
 	* None.
@@ -892,9 +892,9 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 
 == Upgrade Notice ==
 
-= 8.36.0-b.2 =
+= 8.36.0-b.3 =
 
-(2021/08/21) Added a new "Job Title" input field to the user editing page. Added a new "Facebook Domain Verification ID" option. Updated the Integration and Caching tabs in the Advanced Settings page.
+(2021/08/22) Added a new "Job Title" input field to the user editing page. Added a new "Facebook Domain Verification ID" option. Updated the Integration and Caching tabs in the Advanced Settings page.
 
 = 8.35.4 =
 
