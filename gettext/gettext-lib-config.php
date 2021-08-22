@@ -101,6 +101,10 @@ _x( 'Shipping delivery time estimates for WooCommerce shipping zones, methods, a
 _x( 'SSO (Social and Search Optimization)', 'menu title', 'wpsso' );
 _x( 'SSO', 'notice title', 'wpsso' );
 _x( 'Document SSO (Social and Search Optimization)', 'metabox title', 'wpsso' );
+_x( 'Job Title', 'option label', 'wpsso' );
+_x( 'Honorific Prefix', 'option label', 'wpsso' );
+_x( 'Honorific Suffix', 'option label', 'wpsso' );
+_x( 'Middle or Additional Name', 'option label', 'wpsso' );
 _x( 'Facebook User URL', 'option value', 'wpsso' );
 _x( 'Instagram URL', 'option value', 'wpsso' );
 _x( 'LinkedIn URL', 'option value', 'wpsso' );
