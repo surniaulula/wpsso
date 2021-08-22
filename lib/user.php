@@ -690,16 +690,16 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		/**
-		 * Show the additional fields for the user profile About Yourself / About the user sections.
+		 * Show additional fields for the user profile About Yourself / About the user sections.
 		 *
-		 * Use the 'show_password_fields' filter as an action to get more information about the user.
+		 * Hooked to the 'show_password_fields' filter (not an action).
 		 */
 		public function pre_password_fields( $show_password_fields, $user_obj ) {
 
 			if ( ! isset( $user_obj->ID ) ) {	// Just in case.
 
 				/**
-				 * This is a filter, so return the original / unchanged filter value.
+				 * This is a filter, so return the filter value unchanged.
 				 */
 				return $show_password_fields;
 			}
@@ -707,7 +707,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			if ( ! current_user_can( 'edit_user', $user_obj->ID ) ) {	// Just in case.
 
 				/**
-				 * This is a filter, so return the original / unchanged filter value.
+				 * This is a filter, so return the filter value unchanged.
 				 */
 				return $show_password_fields;
 			}
@@ -715,11 +715,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$this->show_about_section( $user_obj->ID );	// Echo the additional input fields.
 
 			/**
-			 * This is a filter, so return the original / unchanged filter value.
+			 * This is a filter, so return the filter value unchanged.
 			 */
 			return $show_password_fields;
 		}
 
+		/**
+		 * Called by WpssoUser->pre_password_fields() and WpssoUsersAddPerson->show_post_body_setting_form().
+		 */
 		public function show_about_section( $user_id = 0 ) {
 
 			foreach ( $this->p->cf[ 'opt' ][ 'user_about' ] as $key => $label ) {
@@ -919,6 +922,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		/**
 		 * Save the additional fields for the user profile About Yourself / About the user sections.
+		 *
+		 * Hooked to the 'edit_user_profile_update' and 'personal_options_update' actions.
+		 *
+		 * Also called by the WpssoUsersAddPerson->add_person() method.
 		 */
 		public function save_about_section( $user_id ) {
 
