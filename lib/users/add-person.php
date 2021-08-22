@@ -141,8 +141,7 @@ if ( ! class_exists( 'WpssoUsersAddPerson' ) && class_exists( 'WpssoAdmin' ) ) {
 					<td>
 						<input name="user_login" type="text" id="user_login" value="<?php echo $attr[ 'user_login' ]; ?>"
 							aria-required="true" autocapitalize="none" autocorrect="off" maxlength="60" />
-						<p><span class="description"><?php _e( 'Usernames cannot be changed (without a plugin).',
-							'wpsso' ); ?></span></p>
+						<p class="description"><?php _e( 'Usernames cannot be changed (without a plugin).', 'wpsso' ); ?></p>
 					</td>
 
 				</tr>
