@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.36.0-rc.1',	// Plugin version.
+					'version'     => '8.36.0-rc.2',	// Plugin version.
 					'opt_version' => '806',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -166,7 +166,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							),
 						),
 						'profile' => array(
-							'your-sso' => 'Your SSO',
+							'your-sso' => 'Profile SSO (Social and Search Optimization)',
 						),
 						'sitesubmenu' => array(
 							'site-advanced' => 'Advanced Settings',
@@ -2346,7 +2346,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'meta' => array(			// Post, term, user add_meta_box() settings.
 				'id'    => 'sso',
-				'title' => 'Document SSO (Social and Search Optimization)',
+				'title' => 'Document SSO',
 			),
 			'edit' => array(			// Post, term, user lists.
 				'columns' => array(

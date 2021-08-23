@@ -49,7 +49,7 @@ _x( '(feature) Enforce Image Dimension Checks', 'lib file description', 'wpsso' 
 _x( '(plugin) Co-Authors Plus', 'lib file description', 'wpsso' );
 _x( '(feature) URL Shortening Service', 'lib file description', 'wpsso' );
 _x( '(feature) Import Yoast SEO Social Meta', 'lib file description', 'wpsso' );
-_x( 'Your SSO', 'lib file description', 'wpsso' );
+_x( 'Profile SSO (Social and Search Optimization)', 'lib file description', 'wpsso' );
 _x( 'Advanced Settings', 'lib file description', 'wpsso' );
 _x( 'Complementary Add-ons', 'lib file description', 'wpsso' );
 _x( 'Premium Licenses', 'lib file description', 'wpsso' );
@@ -100,7 +100,7 @@ _x( 'WPSSO Shipping Delivery Time for WooCommerce', 'plugin name', 'wpsso' );
 _x( 'Shipping delivery time estimates for WooCommerce shipping zones, methods, and classes.', 'plugin description', 'wpsso' );
 _x( 'SSO (Social and Search Optimization)', 'menu title', 'wpsso' );
 _x( 'SSO', 'notice title', 'wpsso' );
-_x( 'Document SSO (Social and Search Optimization)', 'metabox title', 'wpsso' );
+_x( 'Document SSO', 'metabox title', 'wpsso' );
 _x( 'Job Title', 'option label', 'wpsso' );
 _x( 'Honorific Prefix', 'option label', 'wpsso' );
 _x( 'Honorific Suffix', 'option label', 'wpsso' );

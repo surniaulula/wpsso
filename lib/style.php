@@ -460,7 +460,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				}
 				table.wp-list-table > thead > tr > th.column-posts.num,
 				table.wp-list-table > tbody > tr > td.column-posts.num {	/* Counter. */
-					width:75px;
+					width:80px;
 				}
 				table.wp-list-table > thead > tr > th.column-featured,
 				table.wp-list-table > tbody > tr > td.column-featured {

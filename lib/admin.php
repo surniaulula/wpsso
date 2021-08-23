@@ -1402,12 +1402,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 * Settings page header.
 			 */
 			echo '<div id="wpsso-setting-page-header">' . "\n";
-			echo '<h1>';
-			echo $dashicon_html . ' ';
-			echo $this->menu_name;
-			echo ' <span class="qualifier">(';
-			echo $pkg_info[ $this->menu_ext ][ 'short_dist' ];
-			echo ')</span></h1>' . "\n";
+			echo '<h1>' . $dashicon_html . ' '. $this->menu_name . '</h1>' . "\n";
 			echo '</div><!-- #wpsso-setting-page-header -->' . "\n";
 
 			/**
