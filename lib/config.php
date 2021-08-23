@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.36.0-b.4',	// Plugin version.
+					'version'     => '8.36.0-b.5',	// Plugin version.
 					'opt_version' => '805',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1828,6 +1828,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'wp_cm_yim_enabled'           => 1,
 
 					/**
+					 * Advanced Settings > About the User metabox.
+					 */
+					'plugin_user_about_job_title'        => 1,	// Job Title.
+					'plugin_user_about_honorific_prefix' => 1,	// Honorific Prefix.
+					'plugin_user_about_honorific_suffix' => 1,	// Honorific Suffix.
+					'plugin_user_about_additional_name'  => 1,	// Middle or Additional Name.
+
+					/**
 					 * Advanced Settings > Product Attributes tab.
 					 */
 					'plugin_attr_product_brand'              => 'Brand',		// Brand Attribute Name.
@@ -1926,16 +1934,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 
 				/**
-				 * Additional fields for the user profile About Yourself / About the user sections.
-				 */
-				'user_about' => array(
-					'job_title'        => 'Job Title',
-					'honorific_prefix' => 'Honorific Prefix',
-					'honorific_suffix' => 'Honorific Suffix',
-					'additional_name'  => 'Middle or Additional Name',
-				),
-
-				/**
 				 * Contact method options prefix.
 				 */
 				'cm_prefix' => array(
@@ -2023,6 +2021,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'schema_recipe_instruction_img_id_lib',
 					),
 					'schema_sameas_url'         => true,	// Same-As URLs.
+				),
+
+				/**
+				 * Additional fields for the user profile About Yourself / About the user sections.
+				 */
+				'user_about' => array(
+					'job_title'        => 'Job Title',
+					'honorific_prefix' => 'Honorific Prefix',
+					'honorific_suffix' => 'Honorific Suffix',
+					'additional_name'  => 'Middle or Additional Name',
 				),
 
 				'site_verify_meta_names' => array(

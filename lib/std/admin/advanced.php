@@ -33,6 +33,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'doc_types_schema_types_rows'   => 2,	// Document Types > Open Graph tab.
 				'cm_custom_contacts_rows'       => 2,	// Contact Fields > Custom Contacts tab.
 				'cm_default_contacts_rows'      => 2,	// Contact Fields > Default Contacts tab.
+				'advanced_user_about_rows'      => 2,	// About the User metabox.
 				'metadata_product_attrs_rows'   => 2,	// Metadata > Product Attributes tab.
 				'metadata_custom_fields_rows'   => 2,	// Metadata > Custom Fields tab.
 				'head_tags_facebook_rows'       => 3,	// HTML Tags > Facebook tab.
@@ -620,7 +621,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$table_rows[] = '<td colspan="4">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
-			$table_rows[] = '<td></td>' . 
+			$table_rows[] = '<th></th>' .
 				$form->get_th_html( _x( 'Show', 'column title', 'wpsso' ),
 					$css_class = 'checkbox left', 'custom-cm-show-checkbox' ) . 
 				$form->get_th_html( _x( 'Contact Field ID', 'column title', 'wpsso' ),
@@ -659,7 +660,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					$form->get_tr_hide( 'basic', array( $cm_enabled_key, $cm_name_key, $cm_label_key ) ) : '';
 
 				$table_rows[] = $tr_html .
-					$form->get_th_html( $opt_label, $css_class = 'medium' ) . 
+					$form->get_th_html( $opt_label ) . 
 					$form->get_no_td_checkbox( $cm_enabled_key, $comment = '', $extra_css_class = 'checkbox' ) . 
 					'<td class="blank medium">' . $form->get_no_input( $cm_name_key, $css_class = 'medium' ) . '</td>' . 
 					'<td class="blank wide">' . $form->get_no_input_locale( $cm_label_key ) . '</td>';
@@ -675,7 +676,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$table_rows[] = '<td colspan="4">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
-			$table_rows[] = '<td></td>' . 
+			$table_rows[] = '<th></th>' .
 				$form->get_th_html( _x( 'Show', 'column title', 'wpsso' ),
 					$css_class = 'checkbox left', 'custom-cm-show-checkbox' ) . 
 				$form->get_th_html( _x( 'Contact Field ID', 'column title', 'wpsso' ),
@@ -701,10 +702,37 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					continue;
 				}
 
-				$table_rows[] = $form->get_th_html( $opt_label, $css_class = 'medium' ) . 
+				$table_rows[] = '' .
+					$form->get_th_html( $opt_label ) . 
 					$form->get_no_td_checkbox( $cm_enabled_key, $comment = '', $extra_css_class = 'checkbox' ) . 
 					'<td class="medium">' . $form->get_no_input( $cm_name_key, $css_class = 'medium' ) . '</td>' . 
 					'<td class="blank wide">' . $form->get_no_input_locale( $cm_label_key ) . '</td>';
+			}
+
+			return $table_rows;
+		}
+
+		/**
+		 * About the User metabox.
+		 */
+		public function filter_advanced_user_about_rows( $table_rows, $form ) {
+
+			$table_rows[] = '<td colspan="3">' . $this->p->msgs->get( 'info-user-about' ) . '</td>';
+
+			$table_rows[] = '<td colspan="3">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
+
+			$table_rows[] = '<th></th>' .
+				$form->get_th_html( _x( 'Show', 'column title', 'wpsso' ),
+					$css_class = 'checkbox left', $css_id = 'user-about-show-checkbox' ) .
+				'<td class="wide"></td>';
+
+			foreach ( $this->p->cf[ 'opt' ][ 'user_about' ] as $key => $opt_label ) {
+
+				$opt_key = 'plugin_user_about_' . $key;
+
+				$table_rows[ $opt_key ] = '' .
+					$form->get_th_html( _x( $opt_label, 'option label', 'wpsso' ), '', $opt_key ) . 
+					$form->get_no_td_checkbox( $opt_key, $comment = '', $extra_css_class = 'checkbox' );
 			}
 
 			return $table_rows;
@@ -727,6 +755,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					$form->get_th_html( _x( $opt_label, 'option label', 'wpsso' ), '', $opt_key ) . 
 					'<td class="blank">' . $form->get_no_input( $opt_key ) . $cmt_transl . '</td>';
 			}
+
 			return $table_rows;
 		}
 
@@ -926,6 +955,8 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 				return $table_rows;
 			}
+
+			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
 			$table_rows[ 'plugin_sitemaps_for' ] = '' .
 				$form->get_th_html( _x( 'Include in Sitemaps', 'option label', 'wpsso' ),

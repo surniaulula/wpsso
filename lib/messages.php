@@ -2308,11 +2308,63 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
+						case 'info-cm':
+
+							// translators: Please ignore - translation uses a different text domain.
+							$section_label = __( 'Contact Info' );
+
+							$profile_page_url = get_admin_url( $blog_id = null, 'profile.php' );
+
+							$text = '<blockquote class="top-info">';
+
+							$text .= '<p>';
+
+							$text .= sprintf( __( 'These options allow you to customize contact fields shown in the "%1$s" section of <a href="%2$s">the user profile page</a>.', 'wpsso' ), $section_label, $profile_page_url ) . ' ';
+
+							$text .= __( 'Contact information from the user profile can be included in meta tags and Schema markup.', 'wpsso' ) . ' ';
+
+							$text .= '<strong>' . sprintf( __( 'You should not modify the <em>%1$s</em> column unless you have a <em>very</em> good reason to do so.', 'wpsso' ), _x( 'Contact Field ID', 'column title', 'wpsso' ) ) . '</strong> ';
+
+							$text .= sprintf( __( 'The %1$s column is for display purposes only and can be changed as you wish.', 'wpsso' ), _x( 'Contact Field Label', 'column title', 'wpsso' ) ) . ' ';
+
+							$text .= '</p> <p>';
+
+							$text .= '<center>';
+
+							$text .= '<strong>' . __( 'Do not enter your contact information here &ndash; these options are for contact field ids and labels only.', 'wpsso' ) . '</strong><br/>';
+
+							$text .= sprintf( __( 'Enter your personal contact information in <a href="%1$s">the user profile page</a>.', 'wpsso' ), $profile_page_url );
+
+							$text .= '</center>';
+
+							$text .= '</p>';
+
+							$text .= '</blockquote>';
+
+							break;
+
+						case 'info-user-about':
+
+							// translators: Please ignore - translation uses a different text domain.
+							$section_label = __( 'About Yourself' );
+
+							$profile_page_url = get_admin_url( $blog_id = null, 'profile.php' );
+
+							$text = '<blockquote class="top-info"><p>';
+
+							$text .= sprintf( __( 'These options allow you to customize additional fields shown in the "%1$s" section of <a href="%2$s">the user profile page</a>.', 'wpsso' ), $section_label, $profile_page_url ) . ' ';
+
+							$text .= __( 'This additional user profile information can be included in meta tags and Schema markup.', 'wpsso' ) . ' ';
+
+							$text .= '</blockquote>';
+
+							break;
+
 						case 'info-product-attrs':
 
 							$text = '<blockquote class="top-info"><p>';
 
-							$text .= sprintf( __( 'These options allow you to customize the product attribute names (aka attribute labels) that %s can use to request additional product information from your e-commerce plugin.', 'wpsso' ), $wpsso_name_pro ) . ' ';
+							$text .= sprintf( __( 'These options allow you to customize product attribute names (aka attribute labels) that %s can use to request additional product information from your e-commerce plugin.', 'wpsso' ), $wpsso_name_pro ) . ' ';
 
 							$text .= __( 'Note that these are product attribute names that you can create in your e-commerce plugin and not their values.', 'wpsso' ) . ' ';
 
@@ -2356,7 +2408,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '<p>';
 
-							$text .= sprintf( __( 'These options allow you to customize the custom field names (aka metadata names) that %s can use to get additional information about your content.', 'wpsso' ), $wpsso_name_pro ) . ' ';
+							$text .= sprintf( __( 'These options allow you to customize custom field names (aka metadata names) that %s can use to get additional information about your content.', 'wpsso' ), $wpsso_name_pro ) . ' ';
 
 							$text .= '</p> <p><center><strong>';
 
@@ -2385,41 +2437,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 								$text .= '</center></p>';
 							}
-
-							$text .= '</blockquote>';
-
-							break;
-
-						case 'info-cm':
-
-							// translators: Please ignore - translation uses a different text domain.
-							$contact_info = __( 'Contact Info' );
-
-							$profile_page_url = get_admin_url( $blog_id = null, 'profile.php' );
-
-							$text = '<blockquote class="top-info">';
-
-							$text .= '<p>';
-
-							$text .= sprintf( __( 'These options allow you to customize the list of contact fields shown in the %1$s section of <a href="%2$s">the user profile page</a>.', 'wpsso' ), $contact_info, $profile_page_url ) . ' ';
-
-							$text .= sprintf( __( '%1$s uses the Facebook and Twitter contact field values in its meta tags and Schema markup.', 'wpsso' ), $info[ 'short' ] ) . ' ';
-
-							$text .= '<strong>' . sprintf( __( 'You should not modify the <em>%1$s</em> column unless you have a <em>very</em> good reason to do so.', 'wpsso' ), _x( 'Contact Field ID', 'column title', 'wpsso' ) ) . '</strong> ';
-
-							$text .= sprintf( __( 'The <em>%1$s</em> column on the other hand is for display purposes only and can be changed as you wish.', 'wpsso' ), _x( 'Contact Field Label', 'column title', 'wpsso' ) ) . ' ';
-
-							$text .= '</p> <p>';
-
-							$text .= '<center>';
-
-							$text .= '<strong>' . __( 'Do not enter your contact information here &ndash; these options are for contact field ids and labels only.', 'wpsso' ) . '</strong><br/>';
-
-							$text .= sprintf( __( 'Enter your personal contact information in <a href="%1$s">the user profile page</a>.', 'wpsso' ), $profile_page_url );
-
-							$text .= '</center>';
-
-							$text .= '</p>';
 
 							$text .= '</blockquote>';
 
@@ -2474,7 +2491,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '<p>';
 
-							$text .= sprintf( __( 'These options allow you to customize the post and taxonomy types included in the <a href="%s">WordPress sitemap XML</a>.', 'wpsso' ), $sitemap_url ) . ' ';
+							$text .= sprintf( __( 'These options allow you to customize post and taxonomy types included in the <a href="%s">WordPress sitemap XML</a>.', 'wpsso' ), $sitemap_url ) . ' ';
 
 							$text .= '</p><p>';
 

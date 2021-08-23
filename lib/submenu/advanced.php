@@ -39,6 +39,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				'services'       => _x( 'Service APIs', 'metabox title', 'wpsso' ),
 				'doc_types'      => _x( 'Document Types', 'metabox title', 'wpsso' ),
 				'contact_fields' => _x( 'Contact Fields', 'metabox title', 'wpsso' ),
+				'user_about'     => _x( 'About the User', 'metabox title', 'wpsso' ),
 				'metadata'       => _x( 'Metadata', 'metabox title', 'wpsso' ),
 				'head_tags'      => _x( 'HTML Tags', 'metabox title', 'wpsso' ),
 				'wp_sitemaps'    => _x( 'WordPress Sitemaps', 'metabox title', 'wpsso' ),
@@ -164,8 +165,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				);
 			}
 
-			$this->p->util->metabox->do_table( array( '<td>' . $info_msg . '</td>' ),
-				$class_href_key = 'metabox-info metabox-' . $metabox_id . '-info' );
+			$this->p->util->metabox->do_table( array( '<td>' . $info_msg . '</td>' ), $class_href_key = 'metabox-info metabox-' . $metabox_id . '-info' );
 
 			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
 		}
@@ -217,8 +217,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				);
 			}
 
-			$this->p->util->metabox->do_table( array( '<td>' . $info_msg . '</td>' ),
-				$class_href_key = 'metabox-info metabox-' . $metabox_id . '-info' );
+			$this->p->util->metabox->do_table( array( '<td>' . $info_msg . '</td>' ), $class_href_key = 'metabox-info metabox-' . $metabox_id . '-info' );
 
 			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
 		}

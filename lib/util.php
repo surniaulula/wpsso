@@ -1935,9 +1935,16 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$mod = $this->p->page->get_mod( $mod );
 			}
 
-			if ( empty( $atts[ 'url' ] ) ) {
+			if ( isset( $atts[ 'add_page' ] ) ) {
 
-				$add_page = isset( $atts[ 'add_page' ] ) ? $atts[ 'add_page' ] : true;
+				$add_page = $atts[ 'add_page' ];
+
+			} else {
+
+				$add_page = true;
+			}
+
+			if ( empty( $atts[ 'url' ] ) ) {
 
 				$sharing_url = $this->get_sharing_url( $mod, $add_page );
 

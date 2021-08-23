@@ -1756,6 +1756,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$metabox_id  = $mb[ 'args' ][ 'metabox_id' ];
 				$filter_name = 'wpsso_' . $page_id . '_' . $metabox_id . '_rows';
 
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'applying filter ' . $filter_name );
+				}
+
 				$table_rows = array_merge(
 					$this->get_table_rows( $page_id, $metabox_id ),
 					(array) apply_filters( $filter_name, array(), $this->form, $network = false )
