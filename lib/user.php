@@ -759,13 +759,13 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 					case 'honorific_prefix':
 
-						echo '<p class="description">' . __( 'Example: Dr, Mrs, Mr.', 'wpsso' ) . '</p>';
+						echo '<p class="description">' . __( 'Examples: Dr, Mrs, Mr.', 'wpsso' ) . '</p>';
 
 						break;
 
 					case 'honorific_suffix':
 				
-						echo '<p class="description">' . __( 'Example: M.D., PhD.', 'wpsso' ) . '</p>';
+						echo '<p class="description">' . __( 'Examples: CPA, Esq., M.D., P.E., PhD., PMP, RN', 'wpsso' ) . '</p>';
 
 						break;
 				}
