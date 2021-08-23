@@ -727,6 +727,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			foreach ( $this->p->cf[ 'opt' ][ 'user_about' ] as $key => $label ) {
 
+				if ( empty( $this->p->options[ 'plugin_user_about_' . $key ] ) ) {
+
+					continue;
+				}
+
 				$val = '';
 
 				if ( $user_id ) {	// 0 when adding a new user.
@@ -950,6 +955,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			foreach ( $this->p->cf[ 'opt' ][ 'user_about' ] as $key => $label ) {
+
+				if ( empty( $this->p->options[ 'plugin_user_about_' . $key ] ) ) {
+
+					continue;
+				}
 
 				if ( isset( $_POST[ $key ] ) ) {
 

@@ -4036,7 +4036,7 @@ msgstr ""
 
 #: lib/admin.php:1208 lib/admin.php:1219 lib/messages.php:914
 #: lib/submenu/tools.php:58 lib/submenu/tools.php:103 lib/user.php:57
-#: lib/user.php:1605 lib/user.php:1713 lib/user.php:1844
+#: lib/user.php:1615 lib/user.php:1723 lib/user.php:1854
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -8924,64 +8924,64 @@ msgid ""
 "authored by user ID %3$d (%4$s)."
 msgstr ""
 
-#: lib/user.php:757
+#: lib/user.php:762
 msgid "Example: Dr, Mrs, Mr."
 msgstr ""
 
-#: lib/user.php:763
+#: lib/user.php:768
 msgid "Example: M.D., PhD."
 msgstr ""
 
-#: lib/user.php:935
+#: lib/user.php:940
 msgid "(not a Facebook Pages URL)"
 msgstr ""
 
-#: lib/user.php:1056
+#: lib/user.php:1066
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:1057
+#: lib/user.php:1067
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:1058
+#: lib/user.php:1068
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1400
+#: lib/user.php:1410
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/user.php:1624
+#: lib/user.php:1634
 msgid ""
 "Aborting task to add the %1$s role to content creators - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1639
+#: lib/user.php:1649
 msgid "A task to add the %1$s role for content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1681
+#: lib/user.php:1691
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1683 lib/user.php:1786 lib/util-cache.php:182
+#: lib/user.php:1693 lib/user.php:1796 lib/util-cache.php:182
 #: lib/util-cache.php:745
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
-#: lib/user.php:1732
+#: lib/user.php:1742
 msgid ""
 "Aborting task to remove the %1$s role from all users - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1747
+#: lib/user.php:1757
 msgid "A task to remove the %1$s role from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1784
+#: lib/user.php:1794
 msgid "The %1$s role has been removed from %2$d content creators."
 msgstr ""
 
