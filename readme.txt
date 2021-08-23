@@ -322,7 +322,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.36.0-rc.1 (2021/08/23)**
+**Version 8.36.0-rc.2 (2021/08/23)**
 
 * **New Features**
 	* Added new input fields to the user profile About Yourself / About the user sections:
@@ -900,7 +900,7 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 
 == Upgrade Notice ==
 
-= 8.36.0-rc.1 =
+= 8.36.0-rc.2 =
 
 (2021/08/23) Added new input fields to the user editing page. Added a new "Facebook Domain Verification ID" option. Updated the Integration and Caching tabs in the Advanced Settings page (Premium version).
 
