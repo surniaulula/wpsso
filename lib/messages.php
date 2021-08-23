@@ -196,7 +196,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-meta-canonical_url':	// Canonical URL.
 
-							$text = sprintf( __( 'A customized URL used for the "%1$s" head tag.', 'wpsso' ), 'link rel canonical' ) . ' ';
+							$text = sprintf( __( 'A customized URL used for the "%s" head tag.', 'wpsso' ), 'link rel canonical' ) . ' ';
 
 							$text .= __( 'Please make sure the custom URL you enter here is functional and redirects correctly.', 'wpsso' );
 
@@ -293,7 +293,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-meta-og_vid_dimensions':	// Video Dimensions.
 
-							$text = sprintf( __( 'The %1$s video API modules can offer default video width and height values, provided that information is available from the service API.', 'wpsso' ), $wpsso_name_pro ) . ' ';
+							$text = sprintf( __( 'The %s video API modules can offer default video width and height values, provided that information is available from the service API.', 'wpsso' ), $wpsso_name_pro ) . ' ';
 
 							$text .= __( 'If the default video width and/or height values are incorrect, you may adjust their values here.', 'wpsso' );
 
@@ -318,7 +318,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-meta-og_vid_title':	// Video Name (Title).
 						case 'tooltip-meta-og_vid_desc':	// Video Description.
 
-							$text = sprintf( __( 'The %1$s video API modules can offer a default video name / title and description, provided that information is available from the service API.', 'wpsso' ), $wpsso_name_pro ) . ' ';
+							$text = sprintf( __( 'The %s video API modules can offer a default video name / title and description, provided that information is available from the service API.', 'wpsso' ), $wpsso_name_pro ) . ' ';
 
 							$text .= __( 'The video name / title and description will be used in the video Schema JSON-LD markup (add-on required).', 'wpsso' );
 
@@ -569,7 +569,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$def_type = $this->p->opt->get_defaults( 'og_type_for_home_page' );
 
-							$text = sprintf( __( 'Select the %1$s type for a static front page.', 'wpsso' ), 'Open Graph' ) . ' ';
+							$text = sprintf( __( 'Select the %s type for a static front page.', 'wpsso' ), 'Open Graph' ) . ' ';
 
 							$text .= sprintf( __( 'The default %1$s type is "%2$s".', 'wpsso' ), 'Open Graph', $def_type  );
 
@@ -579,7 +579,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$def_type = $this->p->opt->get_defaults( 'og_type_for_home_posts' );
 
-							$text = sprintf( __( 'Select the %1$s type for a blog (non-static) front page.', 'wpsso' ), 'Open Graph' ) . ' ';
+							$text = sprintf( __( 'Select the %s type for a blog (non-static) front page.', 'wpsso' ), 'Open Graph' ) . ' ';
 
 							$text .= sprintf( __( 'The default %1$s type is "%2$s".', 'wpsso' ), 'Open Graph', $def_type  );
 
@@ -589,7 +589,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$def_type = $this->p->opt->get_defaults( 'og_type_for_user_page' );
 
-							$text = sprintf( __( 'Select the %1$s type for user / author pages.', 'wpsso' ), 'Open Graph' ) . ' ';
+							$text = sprintf( __( 'Select the %s type for user / author pages.', 'wpsso' ), 'Open Graph' ) . ' ';
 
 							$text .= sprintf( __( 'The default %1$s type is "%2$s".', 'wpsso' ), 'Open Graph', $def_type  );
 
@@ -599,7 +599,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$def_type = $this->p->opt->get_defaults( 'og_type_for_search_page' );
 
-							$text = sprintf( __( 'Select the %1$s type for search results pages.', 'wpsso' ), 'Open Graph' ) . ' ';
+							$text = sprintf( __( 'Select the %s type for search results pages.', 'wpsso' ), 'Open Graph' ) . ' ';
 
 							$text .= sprintf( __( 'The default %1$s type is "%2$s".', 'wpsso' ), 'Open Graph', $def_type  );
 
@@ -609,7 +609,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$def_type = $this->p->opt->get_defaults( 'og_type_for_archive_page' );
 
-							$text = sprintf( __( 'Select the %1$s type for other archive pages (example: date-based archive pages).', 'wpsso' ), 'Open Graph' ) . ' ';
+							$text = sprintf( __( 'Select the %s type for other archive pages (example: date-based archive pages).', 'wpsso' ), 'Open Graph' ) . ' ';
 
 							$text .= sprintf( __( 'The default %1$s type is "%2$s".', 'wpsso' ), 'Open Graph', $def_type  );
 
@@ -617,7 +617,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-og_type_for_ptn':		// Type by Post Type.
 
-							$text = sprintf( __( 'Select the %1$s type for each WordPress post type.', 'wpsso' ), 'Open Graph' ) . ' ';
+							$text = sprintf( __( 'Select the %s type for each WordPress post type.', 'wpsso' ), 'Open Graph' ) . ' ';
 
 							$text .= __( 'Please note that each Open Graph type has a unique set of meta tags, so by selecting "website" here (for example), you would be excluding all "article" related meta tags (<code>article:author</code>, <code>article:section</code>, etc.).', 'wpsso' );
 
@@ -793,7 +793,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
-							$text = sprintf( __( 'You can select the default set of options to display in settings pages and the %1$s metabox.', 'wpsso' ), $mb_title ) . ' ';
+							$text = sprintf( __( 'You can select the default set of options to display in settings pages and the %s metabox.', 'wpsso' ), $mb_title ) . ' ';
 
 							$text .= __( 'The basic view shows the most commonly used options, and includes a link to temporarily show all options when desired.', 'wpsso' ) . ' ';
 
@@ -861,7 +861,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= sprintf( __( '%1$s can provide a customized value for the %2$s HTML tag.', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'name' ], '<code>&amp;lt;title&amp;gt;</code>' ) . ' ';
 
-							$text .= sprintf( __( 'The %1$s HTML tag value is used by web browsers to display the current webpage title in the browser tab.', 'wpsso' ), '<code>&amp;lt;title&amp;gt;</code>' ) . ' ';
+							$text .= sprintf( __( 'The %s HTML tag value is used by web browsers to display the current webpage title in the browser tab.', 'wpsso' ), '<code>&amp;lt;title&amp;gt;</code>' ) . ' ';
 
 							break;
 
@@ -869,7 +869,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$def_checked = $this->get_def_checked( 'plugin_filter_title' );
 
-							$text = sprintf( __( 'The title value provided by WordPress to %1$s may include modifications from themes and/or other SEO plugins (appending the site name or expanding inline variables, for example, is a common practice).', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'name' ] ) . ' ';
+							$text = sprintf( __( 'The title value provided by WordPress to %s may include modifications from themes and/or other SEO plugins (appending the site name or expanding inline variables, for example, is a common practice).', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'name' ] ) . ' ';
 
 							$text .= sprintf( __( 'Uncheck this option to always use the original unmodified title value from WordPress (default is %1$s) or enable this option to allow themes and plugins to modify the title value provided to %2$s.', 'wpsso' ), $def_checked, $pkg_info[ 'wpsso' ][ 'name' ] ) . ' ';
 
@@ -954,7 +954,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= __( 'Upscaled images do not look as sharp or clear, and if upscaled too much, will look fuzzy and unappealing - not something you want to promote on social and search sites.', 'wpsso' ) . ' ';
 
-							$text .= sprintf( __( '%1$s includes an optional module to allow upscaling of WordPress Media Library images (up to a maximum upscale percentage).', 'wpsso' ), $wpsso_name_pro ) . ' ';
+							$text .= sprintf( __( '%s includes an optional module to allow upscaling of WordPress Media Library images (up to a maximum upscale percentage).', 'wpsso' ), $wpsso_name_pro ) . ' ';
 
 							$text .= '<strong>' . __( 'Do not enable this option unless you want to publish lower quality images on social and search sites.', 'wpsso' ) . '</strong>';
 
@@ -1134,24 +1134,24 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-plugin_yourls_api_url':	// YOURLS API URL.
 
-							$text = sprintf( __( 'The URL to <a href="%1$s">Your Own URL Shortener</a> (YOURLS) shortening service.', 'wpsso' ), 'https://yourls.org/' );
+							$text = sprintf( __( 'The URL to <a href="%s">Your Own URL Shortener</a> (YOURLS) shortening service.', 'wpsso' ), 'https://yourls.org/' );
 							break;
 
 						case 'tooltip-plugin_yourls_username':	// YOURLS Username.
 
-							$text = sprintf( __( 'If <a href="%1$s">Your Own URL Shortener</a> (YOURLS) shortening service is private, enter a configured username (see YOURLS Token for an alternative to the username / password options).', 'wpsso' ), 'https://yourls.org/' );
+							$text = sprintf( __( 'If <a href="%s">Your Own URL Shortener</a> (YOURLS) shortening service is private, enter a configured username (see YOURLS Token for an alternative to the username / password options).', 'wpsso' ), 'https://yourls.org/' );
 
 							break;
 
 						case 'tooltip-plugin_yourls_password':	// YOURLS Password.
 
-							$text = sprintf( __( 'If <a href="%1$s">Your Own URL Shortener</a> (YOURLS) shortening service is private, enter a configured user password (see YOURLS Token for an alternative to the username / password options).', 'wpsso' ), 'https://yourls.org/' );
+							$text = sprintf( __( 'If <a href="%s">Your Own URL Shortener</a> (YOURLS) shortening service is private, enter a configured user password (see YOURLS Token for an alternative to the username / password options).', 'wpsso' ), 'https://yourls.org/' );
 
 							break;
 
 						case 'tooltip-plugin_yourls_token':	// YOURLS Token.
 
-							$text = sprintf( __( 'If <a href="%1$s">Your Own URL Shortener</a> (YOURLS) shortening service is private, you can use a token string for authentication instead of a username / password combination.', 'wpsso' ), 'https://yourls.org/' );
+							$text = sprintf( __( 'If <a href="%s">Your Own URL Shortener</a> (YOURLS) shortening service is private, you can use a token string for authentication instead of a username / password combination.', 'wpsso' ), 'https://yourls.org/' );
 
 							break;
 
@@ -1227,7 +1227,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							if ( ! empty( $cf_frags ) ) {	// Just in case.
 
-								$text = sprintf( __( 'If your theme or another plugin provides a custom field (aka metadata) for %1$s, you may enter its custom field name here.', 'wpsso' ), $cf_frags[ 'desc' ] ) . ' ';
+								$text = sprintf( __( 'If your theme or another plugin provides a custom field (aka metadata) for %s, you may enter its custom field name here.', 'wpsso' ), $cf_frags[ 'desc' ] ) . ' ';
 
 								// translators: %1$s is the metabox name, %2$s is the option name.
 								$text .= sprintf( __( 'If a custom field matching this name is found, its value will be imported for the %1$s "%2$s" option.', 'wpsso' ), $mb_title, $cf_frags[ 'label' ] ) . ' ';
@@ -1236,7 +1236,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 									$text .= '</br></br>';
 
-									$text .= sprintf( __( 'Note that the "%1$s" option provides multiple input fields - the custom field value will be split on newline characters, and each line will be assigned to an individual input field.', 'wpsso' ), $cf_frags[ 'label' ] );
+									$text .= sprintf( __( 'Note that the "%s" option provides multiple input fields - the custom field value will be split on newline characters, and each line will be assigned to an individual input field.', 'wpsso' ), $cf_frags[ 'label' ] );
 								}
 							}
 
@@ -1267,7 +1267,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$publisher_url_label = _x( $this->p->cf[ 'form' ][ 'social_accounts' ][ 'fb_publisher_url' ], 'option value', 'wpsso' );
 
-							$text = sprintf( __( 'If you have a <a href="%1$s">Facebook page for your business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://www.facebook.com/business', 'wpsso' ) ) . ' ';
+							$text = sprintf( __( 'If you have a <a href="%s">Facebook page for your business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://www.facebook.com/business', 'wpsso' ) ) . ' ';
 
 							$text .= sprintf( __( 'The %s will be included in Open Graph <em>article</em> meta tags and the website\'s Schema Organization markup.', 'wpsso' ), $publisher_url_label ) . ' ';
 
@@ -1318,7 +1318,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-g_site_verify':	// Google Website Verification ID.
 
-							$text = sprintf( __( 'To verify your website ownership with <a href="%1$s">Google\'s Search Console</a>, select the <em>Settings</em> left-side menu option in the Search Console, then <em>Ownership and verification</em>, and then choose the <em>HTML tag</em> method.', 'wpsso' ), 'https://search.google.com/search-console' ) . ' ';
+							$text = sprintf( __( 'To verify your website ownership with <a href="%s">Google\'s Search Console</a>, select the <em>Settings</em> left-side menu option in the Search Console, then <em>Ownership and verification</em>, and then choose the <em>HTML tag</em> method.', 'wpsso' ), 'https://search.google.com/search-console' ) . ' ';
 
 							$text .= __( 'Enter the "google-site-verification" meta tag <code>content</code> value here (enter only the verification ID value, not the whole HTML tag).', 'wpsso' );
 
@@ -1480,7 +1480,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$def_type = $this->p->opt->get_defaults( 'schema_type_for_home_page' );
 
-							$text = sprintf( __( 'Select the %1$s type for a static front page.', 'wpsso' ), 'Schema' ) . ' ';
+							$text = sprintf( __( 'Select the %s type for a static front page.', 'wpsso' ), 'Schema' ) . ' ';
 
 							$text .= sprintf( __( 'The default %1$s type is "%2$s".', 'wpsso' ), 'Schema', $def_type  );
 
@@ -1490,7 +1490,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$def_type = $this->p->opt->get_defaults( 'schema_type_for_home_posts' );
 
-							$text = sprintf( __( 'Select the %1$s type for a blog (non-static) front page.', 'wpsso' ), 'Schema' ) . ' ';
+							$text = sprintf( __( 'Select the %s type for a blog (non-static) front page.', 'wpsso' ), 'Schema' ) . ' ';
 
 							$text .= sprintf( __( 'The default %1$s type is "%2$s".', 'wpsso' ), 'Schema', $def_type  );
 
@@ -1500,7 +1500,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$def_type = $this->p->opt->get_defaults( 'schema_type_for_user_page' );
 
-							$text = sprintf( __( 'Select the %1$s type for user / author pages.', 'wpsso' ), 'Schema' ) . ' ';
+							$text = sprintf( __( 'Select the %s type for user / author pages.', 'wpsso' ), 'Schema' ) . ' ';
 
 							$text .= sprintf( __( 'The default %1$s type is "%2$s".', 'wpsso' ), 'Schema', $def_type  );
 
@@ -1510,7 +1510,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$def_type = $this->p->opt->get_defaults( 'schema_type_for_search_page' );
 
-							$text = sprintf( __( 'Select the %1$s type for search results pages.', 'wpsso' ), 'Schema' ) . ' ';
+							$text = sprintf( __( 'Select the %s type for search results pages.', 'wpsso' ), 'Schema' ) . ' ';
 
 							$text .= sprintf( __( 'The default %1$s type is "%2$s".', 'wpsso' ), 'Schema', $def_type  );
 
@@ -1520,7 +1520,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$def_type = $this->p->opt->get_defaults( 'schema_type_for_archive_page' );
 
-							$text = sprintf( __( 'Select the %1$s type for other archive pages (example: date-based archive pages).', 'wpsso' ), 'Schema' ) . ' ';
+							$text = sprintf( __( 'Select the %s type for other archive pages (example: date-based archive pages).', 'wpsso' ), 'Schema' ) . ' ';
 
 							$text .= sprintf( __( 'The default %1$s type is "%2$s".', 'wpsso' ), 'Schema', $def_type  );
 
@@ -1528,7 +1528,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-schema_type_for_ptn':	// Type by Post Type.
 
-							$text = sprintf( __( 'Select the %1$s type for each WordPress post type.', 'wpsso' ), 'Schema' );
+							$text = sprintf( __( 'Select the %s type for each WordPress post type.', 'wpsso' ), 'Schema' );
 
 							break;
 
@@ -1566,7 +1566,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$publisher_url_label = _x( $this->p->cf[ 'form' ][ 'social_accounts' ][ 'p_publisher_url' ], 'option value', 'wpsso' );
 
-							$text = sprintf( __( 'If you have a <a href="%1$s">Pinterest page for your business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://business.pinterest.com/', 'wpsso' ) ) . ' ';
+							$text = sprintf( __( 'If you have a <a href="%s">Pinterest page for your business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://business.pinterest.com/', 'wpsso' ) ) . ' ';
 
 							$text .= sprintf( __( 'The %s will be included in the website\'s Schema Organization markup.', 'wpsso' ), $publisher_url_label ) . ' ';
 
@@ -1635,7 +1635,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$publisher_url_label = _x( $this->p->cf[ 'form' ][ 'social_accounts' ][ 'tc_site' ], 'option value', 'wpsso' );
 
-							$text = sprintf( __( 'If you have a <a href="%1$s">Twitter @username for your business</a> (not your personal Twitter @username), you may enter its name here.', 'wpsso' ), __( 'https://business.twitter.com/', 'wpsso' ) ) . ' ';
+							$text = sprintf( __( 'If you have a <a href="%s">Twitter @username for your business</a> (not your personal Twitter @username), you may enter its name here.', 'wpsso' ), __( 'https://business.twitter.com/', 'wpsso' ) ) . ' ';
 
 							$text .= sprintf( __( 'The %s will be included in in Twitter Card meta tags and the website\'s Schema Organization markup.', 'wpsso' ), $publisher_url_label ) . ' ';
 
@@ -1702,7 +1702,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$publisher_url_label = _x( $this->p->cf[ 'form' ][ 'social_accounts' ][ 'instagram_publisher_url' ], 'option value', 'wpsso' );
 
-							$text = sprintf( __( 'If you have an <a href="%1$s">Intagram profile for your business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://business.instagram.com/getting-started', 'wpsso' ) ) . ' ';
+							$text = sprintf( __( 'If you have an <a href="%s">Intagram profile for your business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://business.instagram.com/getting-started', 'wpsso' ) ) . ' ';
 
 							$text .= sprintf( __( 'The %s will be included in the website\'s Schema Organization markup.', 'wpsso' ), $publisher_url_label ) . ' ';
 
@@ -1729,7 +1729,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$publisher_url_label = _x( $this->p->cf[ 'form' ][ 'social_accounts' ][ 'linkedin_publisher_url' ], 'option value', 'wpsso' );
 
-							$text = sprintf( __( 'If you have a <a href="%1$s">LinkedIn page for your business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://business.linkedin.com/marketing-solutions/linkedin-pages', 'wpsso' ) ) . ' ';
+							$text = sprintf( __( 'If you have a <a href="%s">LinkedIn page for your business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://business.linkedin.com/marketing-solutions/linkedin-pages', 'wpsso' ) ) . ' ';
 
 							$text .= sprintf( __( 'The %s will be included in the website\'s Schema Organization markup.', 'wpsso' ), $publisher_url_label ) . ' ';
 
@@ -1756,7 +1756,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$publisher_url_label = _x( $this->p->cf[ 'form' ][ 'social_accounts' ][ 'medium_publisher_url' ], 'option value', 'wpsso' );
 
-							$text = sprintf( __( 'If you have a <a href="%1$s">Medium page for your business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://medium.com/', 'wpsso' ) ) . ' ';
+							$text = sprintf( __( 'If you have a <a href="%s">Medium page for your business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://medium.com/', 'wpsso' ) ) . ' ';
 
 							$text .= sprintf( __( 'The %s will be included in the website\'s Schema Organization markup.', 'wpsso' ), $publisher_url_label ) . ' ';
 
@@ -1783,7 +1783,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$publisher_url_label = _x( $this->p->cf[ 'form' ][ 'social_accounts' ][ 'myspace_publisher_url' ], 'option value', 'wpsso' );
 
-							$text = sprintf( __( 'If you have a <a href="%1$s">Myspace page for your business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://myspace.com/', 'wpsso' ) ) . ' ';
+							$text = sprintf( __( 'If you have a <a href="%s">Myspace page for your business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://myspace.com/', 'wpsso' ) ) . ' ';
 
 							$text .= sprintf( __( 'The %s will be included in the website\'s Schema Organization markup.', 'wpsso' ), $publisher_url_label ) . ' ';
 
@@ -1810,7 +1810,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$publisher_url_label = _x( $this->p->cf[ 'form' ][ 'social_accounts' ][ 'sc_publisher_url' ], 'option value', 'wpsso' );
 
-							$text = sprintf( __( 'If you have a <a href="%1$s">Soundcloud page for your business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://soundcloud.com/', 'wpsso' ) ) . ' ';
+							$text = sprintf( __( 'If you have a <a href="%s">Soundcloud page for your business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://soundcloud.com/', 'wpsso' ) ) . ' ';
 
 							$text .= sprintf( __( 'The %s will be included in the website\'s Schema Organization markup.', 'wpsso' ), $publisher_url_label ) . ' ';
 
@@ -1837,7 +1837,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$publisher_url_label = _x( $this->p->cf[ 'form' ][ 'social_accounts' ][ 'tiktok_publisher_url' ], 'option value', 'wpsso' );
 
-							$text = sprintf( __( 'If you have a <a href="%1$s">TikTok page for your business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://tiktok.com/', 'wpsso' ) ) . ' ';
+							$text = sprintf( __( 'If you have a <a href="%s">TikTok page for your business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://tiktok.com/', 'wpsso' ) ) . ' ';
 
 							$text .= sprintf( __( 'The %s will be included in the website\'s Schema Organization markup.', 'wpsso' ), $publisher_url_label ) . ' ';
 
@@ -1864,7 +1864,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$publisher_url_label = _x( $this->p->cf[ 'form' ][ 'social_accounts' ][ 'tumblr_publisher_url' ], 'option value', 'wpsso' );
 
-							$text = sprintf( __( 'If you have a <a href="%1$s">Tumblr page for your business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://tumblr.com/', 'wpsso' ) ) . ' ';
+							$text = sprintf( __( 'If you have a <a href="%s">Tumblr page for your business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://tumblr.com/', 'wpsso' ) ) . ' ';
 
 							$text .= sprintf( __( 'The %s will be included in the website\'s Schema Organization markup.', 'wpsso' ), $publisher_url_label ) . ' ';
 
@@ -1891,7 +1891,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$publisher_url_label = _x( $this->p->cf[ 'form' ][ 'social_accounts' ][ 'wikipedia_publisher_url' ], 'option value', 'wpsso' );
 
-							$text = sprintf( __( 'If you have a <a href="%1$s">Wikipedia page for your organization</a>, you may enter its URL here.', 'wpsso' ), __( 'https://en.wikipedia.org/wiki/Wikipedia:FAQ/Organizations', 'wpsso' ) ) . ' ';
+							$text = sprintf( __( 'If you have a <a href="%s">Wikipedia page for your organization</a>, you may enter its URL here.', 'wpsso' ), __( 'https://en.wikipedia.org/wiki/Wikipedia:FAQ/Organizations', 'wpsso' ) ) . ' ';
 
 							$text .= sprintf( __( 'The %s will be included in the website\'s Schema Organization markup.', 'wpsso' ), $publisher_url_label ) . ' ';
 
@@ -1918,7 +1918,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$publisher_url_label = _x( $this->p->cf[ 'form' ][ 'social_accounts' ][ 'yt_publisher_url' ], 'option value', 'wpsso' );
 
-							$text = sprintf( __( 'If you have a <a href="%1$s">YouTube channel for your business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://youtube.com/', 'wpsso' ) ) . ' ';
+							$text = sprintf( __( 'If you have a <a href="%s">YouTube channel for your business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://youtube.com/', 'wpsso' ) ) . ' ';
 
 							$text .= sprintf( __( 'The %s will be included in the website\'s Schema Organization markup.', 'wpsso' ), $publisher_url_label ) . ' ';
 
@@ -1943,7 +1943,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-custom-cm-field-id':
 
-							$text .= '<strong>' . sprintf( __( 'You should not modify the <em>%1$s</em> column unless you have a <em>very</em> good reason to do so.', 'wpsso' ), _x( 'Contact Field ID', 'column title', 'wpsso' ) ) . '</strong> ';
+							$text .= '<strong>' . sprintf( __( 'You should not modify the <em>%s</em> column unless you have a <em>very</em> good reason to do so.', 'wpsso' ), _x( 'Contact Field ID', 'column title', 'wpsso' ) ) . '</strong> ';
 
 							$text .= sprintf( __( 'As an example, to match the <em>%1$s</em> of a theme or other plugin, you might change "%2$s" to "%3$s" or some other value.', 'wpsso' ), _x( 'Contact Field ID', 'column title', 'wpsso' ), 'facebook', 'fb' );
 
@@ -1951,13 +1951,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-custom-cm-field-label':
 
-							$text = sprintf( __( 'The <em>%1$s</em> column is for display purposes only and can be changed as you wish.', 'wpsso' ), _x( 'Contact Field Label', 'column title', 'wpsso' ) );
+							$text = sprintf( __( 'The %s column is for display purposes only and can be changed as you wish.', 'wpsso' ), _x( 'Contact Field Label', 'column title', 'wpsso' ) );
 
 							break;
 
 						case 'tooltip-wp-cm-field-id':
 
-							$text = sprintf( __( 'The built-in WordPress <em>%1$s</em> column cannot be modified.', 'wpsso' ), _x( 'Contact Field ID', 'column title', 'wpsso' ) );
+							$text = sprintf( __( 'The built-in WordPress <em>%s</em> column cannot be modified.', 'wpsso' ), _x( 'Contact Field ID', 'column title', 'wpsso' ) );
 
 							break;
 
@@ -2323,9 +2323,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= __( 'Contact information from the user profile can be included in meta tags and Schema markup.', 'wpsso' ) . ' ';
 
-							$text .= '<strong>' . sprintf( __( 'You should not modify the <em>%1$s</em> column unless you have a <em>very</em> good reason to do so.', 'wpsso' ), _x( 'Contact Field ID', 'column title', 'wpsso' ) ) . '</strong> ';
+							$text .= '<strong>' . sprintf( __( 'You should not modify the <em>%s</em> column unless you have a <em>very</em> good reason to do so.', 'wpsso' ), _x( 'Contact Field ID', 'column title', 'wpsso' ) ) . '</strong> ';
 
-							$text .= sprintf( __( 'The %1$s column is for display purposes only and can be changed as you wish.', 'wpsso' ), _x( 'Contact Field Label', 'column title', 'wpsso' ) ) . ' ';
+							$text .= sprintf( __( 'The %s column is for display purposes only and can be changed as you wish.', 'wpsso' ), _x( 'Contact Field Label', 'column title', 'wpsso' ) ) . ' ';
 
 							$text .= '</p> <p>';
 
@@ -2333,7 +2333,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= '<strong>' . __( 'Do not enter your contact information here &ndash; these options are for contact field ids and labels only.', 'wpsso' ) . '</strong><br/>';
 
-							$text .= sprintf( __( 'Enter your personal contact information in <a href="%1$s">the user profile page</a>.', 'wpsso' ), $profile_page_url );
+							$text .= sprintf( __( 'Enter your personal contact information in <a href="%s">the user profile page</a>.', 'wpsso' ), $profile_page_url );
 
 							$text .= '</center>';
 
@@ -2526,12 +2526,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						if ( 'wpsso' === $plugin_id ) {
 
-							$text .= sprintf( __( 'Purchase the %1$s plugin to upgrade and get the following features.', 'wpsso' ),
+							$text .= sprintf( __( 'Purchase the %s plugin to upgrade and get the following features.', 'wpsso' ),
 								$info[ 'short_pro' ] );
 
 						} else {
 
-							$text .= sprintf( __( 'Purchase the %1$s add-on to upgrade and get the following features.', 'wpsso' ),
+							$text .= sprintf( __( 'Purchase the %s add-on to upgrade and get the following features.', 'wpsso' ),
 								$info[ 'short_pro' ] );
 						}
 
@@ -2757,7 +2757,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text = '<p class="top">';
 
-						$text .= '<b>' . sprintf( __( 'The %1$s advanced option is currently disabled.', 'wpsso' ), $option_link ) . '</b> ';
+						$text .= '<b>' . sprintf( __( 'The %s advanced option is currently disabled.', 'wpsso' ), $option_link ) . '</b> ';
 
 						$text .= sprintf( __( 'The use of WordPress content filters allows %s to fully render your content text for meta tag descriptions and detect additional images and/or embedded videos provided by shortcodes.', 'wpsso' ), $wpsso_name );
 
@@ -2786,7 +2786,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text = '<p class="top">';
 
-						$text .= '<b>' . sprintf( __( 'The %1$s advanced option is currently disabled.', 'wpsso' ), $option_link ) . '</b> ';
+						$text .= '<b>' . sprintf( __( 'The %s advanced option is currently disabled.', 'wpsso' ), $option_link ) . '</b> ';
 
 						$text .= __( 'Providing social and search sites with perfectly resized images is highly recommended, so this option should be enabled if possible.', 'wpsso' ) . ' ';
 
@@ -2826,9 +2826,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text = sprintf( __( 'The %1$s constant definition in your %2$s file contains a variable.', 'wpsso' ), $const_html, $cfg_php_html ) . ' ';
 
-						$text .= sprintf( __( 'WordPress uses the %1$s constant to provide a single unique canonical URL for each webpage and Media Library content.', 'wpsso' ), $const_html ) . ' ';
+						$text .= sprintf( __( 'WordPress uses the %s constant to provide a single unique canonical URL for each webpage and Media Library content.', 'wpsso' ), $const_html ) . ' ';
 
-						$text .= sprintf( __( 'A changing %1$s value will create different canonical URLs in your webpages, leading to duplicate content penalties from Google, incorrect social share counts, possible broken media links, mixed content issues, and SSL certificate errors.', 'wpsso' ), $const_html ) . ' ';
+						$text .= sprintf( __( 'A changing %s value will create different canonical URLs in your webpages, leading to duplicate content penalties from Google, incorrect social share counts, possible broken media links, mixed content issues, and SSL certificate errors.', 'wpsso' ), $const_html ) . ' ';
 
 						$text .= sprintf( __( 'Please update your %1$s file and provide a fixed, non-variable value for the %2$s constant.', 'wpsso' ), $cfg_php_html, $const_html );
 
@@ -2855,13 +2855,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= '</p> <p>';
 
-						$text .= sprintf( __( 'The %1$s HTML tag in your header template(s) should include a function, action, or filter for its attributes.', 'wpsso' ), $tag_code ) . ' ';
+						$text .= sprintf( __( 'The %s HTML tag in your header template(s) should include a function, action, or filter for its attributes.', 'wpsso' ), $tag_code ) . ' ';
 
 						$text .= sprintf( __( '%1$s can update your header template(s) automatically and change the existing %2$s HTML tag to:', 'wpsso' ), $info[ 'short' ], $tag_code );
 
 						$text .= '</p>' . $php_code . '<p>';
 
-						$text .= sprintf( __( '<b><a href="%1$s">Click here to update header template(s) automatically</a></b> (recommended) or update the template(s) manually.', 'wpsso' ), $action_url );
+						$text .= sprintf( __( '<b><a href="%s">Click here to update header template(s) automatically</a></b> (recommended) or update the template(s) manually.', 'wpsso' ), $action_url );
 
 						$text .= '</p>';
 
@@ -3053,17 +3053,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text = '<p>';
 
-						$text .= sprintf( __( '<strong>Development of %1$s is driven by user requests</strong> - we welcome all your comments and suggestions.', 'wpsso' ), $info[ 'short' ] ) . ' ;-)';
-
-						$text .= '</p>';
-
-						break;
-
-					case 'column-help-support':
-
-						$text = '<p>';
-
-						$text .= sprintf( __( '<strong>Development of %1$s is driven by user requests</strong> - we welcome all your comments and suggestions.', 'wpsso' ), $info[ 'short' ] ) . ' ;-)';
+						$text .= sprintf( __( '<strong>Development of %s is driven by user requests</strong> - we welcome all your comments and suggestions.', 'wpsso' ), $info[ 'short' ] ) . ' ;-)';
 
 						$text .= '</p>';
 
