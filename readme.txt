@@ -322,28 +322,28 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.36.0-b.4 (2021/08/22)**
+**Version 8.36.0-b.5 (2021/08/23)**
 
 * **New Features**
-	* None.
-* **Improvements**
 	* Added new input fields to the user profile About Yourself / About the user sections:
 		* Job Title
 		* Honorific Prefix
 		* Honorific Suffix
 		* Middle or Additional Name
+	* Added a new "About the User" metabox in the SSO > Advanced Settings page (Premium version).
+* **Improvements**
 	* Added new properties for Schema Person markup of WordPress users:
 		* 'jobTitle'
 		* 'honorificPrefix'
 		* 'honorificSuffix'
 		* 'additionalName'
 	* Added a new SSO > General Settings > Social and Search Sites > Facebook > Facebook Domain Verification ID option.
-	* Moved the SSO > Advanced Settings > Plugin Settings > Caching tab options to the Integration tab and removed the Caching tab.
-	* Added the SSO > Advanced Settings > Plugin Settings > Integration tab in the network admin SSO settings.
-	* Added a "Plugin and Theme Integration" section under the SSO > Advanced Settings > Plugin Settings > Integration tab.
-	* Added a new "Include VAT in Product Prices" option under the SSO > Advanced Settings > Plugin Settings > Integration tab.
+	* Moved the SSO > Advanced Settings > Plugin Settings > Caching tab options to the Integration tab and removed the Caching tab (Premium version).
+	* Added the SSO > Advanced Settings > Plugin Settings > Integration tab in the network admin SSO settings (Premium version).
+	* Added a "Plugin and Theme Integration" section under the SSO > Advanced Settings > Plugin Settings > Integration tab (Premium version).
+	* Added a new "Include VAT in Product Prices" option under the SSO > Advanced Settings > Plugin Settings > Integration tab (Premium version).
 * **Bugfixes**
-	* Fixed the "Content Image Alt Prefix" option use for non default locales.
+	* Fixed the "Content Image Alt Prefix" option value for non-default locales.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -900,9 +900,9 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 
 == Upgrade Notice ==
 
-= 8.36.0-b.4 =
+= 8.36.0-b.5 =
 
-(2021/08/22) Added new input fields to the user editing page. Added a new "Facebook Domain Verification ID" option. Updated the Integration and Caching tabs in the Advanced Settings page.
+(2021/08/23) Added new input fields to the user editing page. Added a new "Facebook Domain Verification ID" option. Updated the Integration and Caching tabs in the Advanced Settings page (Premium version).
 
 = 8.35.4 =
 
