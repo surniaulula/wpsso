@@ -174,12 +174,26 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
 
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'checking for schema_organization_org_id metadata option value' );
+				}
+
+				/**
+				 * Maybe get a different organization ID from the "Select an Organization" option (provided by the
+				 * WPSSO JSON add-on).
+				 */
 				$org_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_organization_org_id', $filter_opts = true, $pad_opts = true );
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'schema_organization_org_id = ' . $org_id );
+				}
 			}
 
 			if ( null === $org_id || 'none' === $org_id ) {	// Allow for $org_id = 0.
 
-				if ( $mod[ 'is_home' ] ) {	// Static or index page.
+				if ( ! empty( $mod[ 'is_home' ] ) ) {	// Static or index page.
 
 					$org_id = 'site';
 
@@ -199,9 +213,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 */
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'possibly inherit the schema type' );
+				if ( ! empty( $json_data ) ) {
 
-				$this->p->debug->log_arr( '$json_data', $json_data );
+					$this->p->debug->log( 'possibly inherit the schema type' );
+
+					$this->p->debug->log_arr( '$json_data', $json_data );
+				}
 			}
 
 			$json_ret = self::get_data_context( $json_data );	// Returns array() if no schema type found.
@@ -1810,6 +1827,24 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'org_place_id'          => $wpsso->options[ 'site_org_place_id' ],
 				'org_sameas'            => $org_sameas,
 			);
+
+			if ( ! empty( $mixed[ 'is_home' ] ) ) {	// Static or index home page.
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( 'checking for a home page site schema type ID' );
+				}
+
+				if ( ! empty( $mixed[ 'obj' ] ) ) {	// Just in case.
+
+					$org_type = $mixed[ 'obj' ]->get_options( $mixed[ 'id' ], 'schema_type' );
+
+					if ( ! empty( $org_type ) ) {
+
+						$org_opts[ 'org_schema_type' ] = $org_type;
+					}
+				}
+			}
 
 			return $org_opts;
 		}
@@ -3659,6 +3694,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( $wpsso->debug->enabled ) {
 
+				$wpsso->debug->mark();
+
 				$wpsso->debug->log_args( array( 
 					'type_id'  => $type_id,
 					'type_url' => $type_url,
@@ -3688,11 +3725,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( empty( $json_data[ '@id' ] ) ) {
 
-					$wpsso->debug->log( '@id property is empty' );
+					$wpsso->debug->log( 'input @id property is empty' );
 
 				} else {
 
-					$wpsso->debug->log( '@id property is ' . $json_data[ '@id' ] );
+					$wpsso->debug->log( 'input @id property is ' . $json_data[ '@id' ] );
 				}
 			}
 
@@ -3752,7 +3789,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				 */
 				if ( false === strpos( $id_url, $id_anchor . $type_id ) ) {
 
-					$id_url .= $type_id;
+					$id_url = trim( $id_url, $id_delim ) . $id_delim . $type_id;
 				}
 
 				unset( $json_data[ '@id' ] );	// Just in case.
@@ -3780,7 +3817,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( $wpsso->debug->enabled ) {
 
-				$wpsso->debug->log( 'new @id property is ' . $json_data[ '@id' ] );
+				$wpsso->debug->log( 'returned @id property is ' . $json_data[ '@id' ] );
 			}
 
 			return true;

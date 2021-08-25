@@ -33,7 +33,7 @@ function sucomInitMetabox( container_id, doing_ajax ) {
 	jQuery( table_id + ' textarea' ).blur( sucomMarkChanged ).change( sucomMarkChanged );
 	jQuery( table_id + ' select' ).blur( sucomMarkChanged ).change( sucomMarkChanged );
 
-	jQuery( document ).on( 'click', table_id + ' input[type="checkbox"][data-group]', function( event ) {
+	jQuery( document ).on( 'click', table_id + ' input[type="checkbox"][data-group]', function() {
 
 		var actor      = jQuery( this );
 		var checked    = actor.prop( 'checked' );
@@ -210,7 +210,7 @@ function sucomSchemaTypeOgType() {
 
 			select_og_type.prop( 'disabled', false );
 
-			if ( def_og_type_id.length > 0 ) {
+			if ( def_og_type_id.length ) {
 
 				if ( def_og_type_id !== og_type_id ) {
 
@@ -384,7 +384,7 @@ function sucomTabs( metabox_name, tab_name ) {
 		 */
 		var editor_content = jQuery( 'div.interface-interface-skeleton__content' );	// Page might be a visual editor container.
 
-		if ( ! editor_content.length ) {	// Scrolling is allowed if the visual editor container length is not 0.
+		if ( ! editor_content.length ) {	// Scrolling is allowed if the visual editor container length is 0.
 
 			sucomScrollIntoView( scroll_to_tab_id );
 		}
@@ -448,7 +448,6 @@ function sucomScrollIntoView( container_id ) {
 	if ( editor_content.length ) {	// This is a visual editor page.
 
 		var editor_top    = jQuery( 'div.edit-post-visual-editor' ).offset().top;	// Block editor section.
-		var metaboxes_top = jQuery( 'div.edit-post-layout__metaboxes' ).offset().top;	// Metabox section.
 		var footer_offset = jQuery( 'div.interface-interface-skeleton__footer' ).height();
 
 		toolbar_offset   = editor_content.offset().top;	// Just under the 'interface-interface-skeleton__header'.
@@ -552,7 +551,7 @@ function sucomDisableUnchanged( container_id ) {
 
 		var checkbox_name = jQuery( this ).attr( 'name' );
 
-		if ( checkbox_name.length > 0 ) {
+		if ( 'undefined' !== typeof checkbox_name && checkbox_name.length ) {
 
 			/**
 			 * When disabling a checkbox, also disable it's associated hidden input field.

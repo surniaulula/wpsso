@@ -33,20 +33,20 @@ h1 > div.dashicons-before::before {
 	padding:0;
 }
 
-.has-side-info-column {
+.has-side-column {
 	display:table		!important;
 	visibility:visible	!important;
 	width:100%;
 }
 
-.has-side-info-column #poststuff {
+.has-side-column #poststuff {
 	display:table-cell	!important;
 	visibility:visible	!important;
 	vertical-align:top;
 	width:100%;
 }
 
-#side-info-column {
+#side-column {
 	display:table-cell	!important;
 	visibility:visible	!important;
 	vertical-align:top;
@@ -55,7 +55,7 @@ h1 > div.dashicons-before::before {
 	padding:10px 0 0 10px;
 }
 
-#side-info-column .side-info-box {
+#side-column .side-box {
 	display:block		!important;
 	visibility:visible	!important;
 	padding:0;
@@ -65,38 +65,38 @@ h1 > div.dashicons-before::before {
 	min-height:50px;
 }
 
-#side-info-column .side-info-header h2 {
+#side-column .side-box-header h2 {
 	margin-top:0;
 }
 
-#side-info-column .side-info-icon {
+#side-column .side-box-icon {
 	text-align:center;
 	margin:10px 0;
 }
 
-#side-info-column .side-info-content ul {
+#side-column .side-box-content ul {
 	list-style-type:disc;
 	margin:10px 0 10px 20px;
 }
 
-#side-info-column .side-info-content ul li {
+#side-column .side-box-content ul li {
 	margin-bottom:10px;
 }
 
-#side-info-column .button-primary,
-#side-info-column .button-secondary {
+#side-column .button-primary,
+#side-column .button-secondary {
 	width:100%;
 	margin:10px 0 5px 0;
 }
 
 @media screen and ( max-width:1400px ) {
 
-	#side-info-column {
+	#side-column {
 		width:245px;
 		min-width:245px;
 	}
 
-	#side-info-column .side-info-box {
+	#side-column .side-box {
 		width:245px;
 		min-width:245px;
 	}
@@ -107,20 +107,20 @@ h1 > div.dashicons-before::before {
  */
 @media screen and ( max-width:1200px ) {
 
-	.has-side-info-column {
+	.has-side-column {
 		display:block !important;
 	}
 
-	.has-side-info-column #poststuff {
+	.has-side-column #poststuff {
 		display:block !important;
 	}
 
-	#side-info-column {
+	#side-column {
 		display:block !important;
 		width:100%;
 	}
 
-	#side-info-column .side-info-box {
+	#side-column .side-box {
 		float:left;
 		width:33%;
 		min-height:580px;
@@ -128,11 +128,11 @@ h1 > div.dashicons-before::before {
 		padding:10px;
 	}
 
-	#side-info-column .side-info-header h2 {
+	#side-column .side-box-header h2 {
 		text-align:center;
 	}
 
-	#side-info-column .side-info-content p {
+	#side-column .side-box-content p {
 		text-align:center;
 	}
 }

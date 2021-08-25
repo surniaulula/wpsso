@@ -450,9 +450,12 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'plugin_types_cache_exp'     => '',
 				),
 				801 => array(
-					'fb_admins'          => '',	// Deprecated since 2020/10/23.
+					'fb_admins'          => '',	// Deprecated on 2020/10/23.
 					'plugin_p_strip'     => '',
 					'plugin_use_img_alt' => '',
+				),
+				806 => array(
+					'plugin_wpssoorg_tid'    => '',	// Deprecated on 2021/08/25.
 				),
 			),
 		);
@@ -742,7 +745,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				}
 
 				/**
-				 * Deprecated since 2021/05/28.
+				 * Deprecated on 2021/05/28.
 				 */
 				if ( $prev_version > 0 && $prev_version <= 785 ) {
 

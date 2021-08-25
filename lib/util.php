@@ -2046,7 +2046,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * Deprecated since 2020/12/09.
+		 * Deprecated on 2020/12/09.
 		 */
 		public function get_page_mod( $use_post = false, $mod = false, $wp_obj = false ) {
 

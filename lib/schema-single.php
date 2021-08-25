@@ -1509,6 +1509,13 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 					return 0;
 				}
+
+			} else {
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log_arr( '$org_opts', $org_opts );
+				}
 			}
 
 			/**
@@ -1708,8 +1715,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * If the organization is a local business, then convert the organization markup to local business.
 			 */
-			if ( ! empty( $org_type_id ) && $org_type_id !== 'organization' && 
-				$wpsso->schema->is_schema_type_child( $org_type_id, 'local.business' ) ) {
+			if ( ! empty( $org_type_id ) && 'organization' !== $org_type_id && $wpsso->schema->is_schema_type_child( $org_type_id, 'local.business' ) ) {
 
 				WpssoSchema::organization_to_localbusiness( $json_ret );
 			}

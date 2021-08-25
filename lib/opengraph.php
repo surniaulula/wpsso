@@ -446,7 +446,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			/**
 			 * Facebook admins meta tag.
 			 *
-			 * Deprecated since 2020/10/23
+			 * Deprecated on 2020/10/23
 			 */
 			if ( ! isset( $mt_og[ 'fb:admins' ] ) ) {
 

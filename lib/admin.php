@@ -243,7 +243,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/**
-		 * Deprecated since 2020/11/25.
+		 * Deprecated on 2020/11/25.
 		 */
 		public function plugin_pkg_info() {
 
@@ -842,11 +842,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( $action !== 'plugin_information' ) {				// This filter only provides plugin data.
+			if ( $action !== 'plugin_information' ) {	// This filter only provides plugin data.
 
 				return $result;
 
-			} elseif ( empty( $args->slug ) ) {					// Make sure we have a slug in the request.
+			} elseif ( empty( $args->slug ) ) {	// Make sure we have a slug in the request.
 
 				return $result;
 
@@ -859,21 +859,21 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return $result;
 			}
 
-			$ext = $this->p->cf[ '*' ][ 'slug' ][ $args->slug ];			// Get the add-on acronym to read its config.
+			$ext = $this->p->cf[ '*' ][ 'slug' ][ $args->slug ];	// Get the add-on acronym to read its config.
 
-			if ( empty( $this->p->cf[ 'plugin' ][ $ext ] ) ) {			// Make sure we have a config for that acronym.
+			if ( empty( $this->p->cf[ 'plugin' ][ $ext ] ) ) {	// Make sure we have a config for that acronym.
 
 				return $result;
 			}
 
 			$plugin_data = $this->get_plugin_data( $ext, $read_cache = true );	// Get plugin data from the plugin readme.
 
-			if ( empty( $plugin_data ) ) {						// Make sure we have some data to return.
+			if ( empty( $plugin_data ) ) {	// Make sure we have some data to return.
 
 				return $result;
 			}
 
-			$plugin_data->external = true;						// Let WordPress known that this is not a wordpress.org plugin.
+			$plugin_data->external = true;	// Let WordPress known that this is not a wordpress.org plugin.
 
 			return $plugin_data;
 		}
@@ -1390,7 +1390,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			$pkg_info        = $this->get_pkg_info();	// Returns an array from cache.
-			$side_info_boxes = $this->get_side_info_boxes();
+			$side_col_boxes = $this->get_side_col_boxes();
 			$dashicon_html   = $this->get_menu_dashicon_html( $this->menu_id );
 
 			/**
@@ -1408,7 +1408,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			/**
 			 * Settings page content.
 			 */
-			echo '<div id="wpsso-setting-page-content" class="' . ( empty( $side_info_boxes ) ? 'no' : 'has' ) . '-side-info-column">' . "\n";
+			echo '<div id="wpsso-setting-page-content" class="' . ( empty( $side_col_boxes ) ? 'no' : 'has' ) . '-side-column">' . "\n";
 
 			/**
 			 * Metaboxes.
@@ -1426,20 +1426,20 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			/**
 			 * Information boxes.
 			 */
-			if ( ! empty( $side_info_boxes ) ) {
+			if ( ! empty( $side_col_boxes ) ) {
 
-				echo '<div id="side-info-column">' . "\n";
+				echo '<div id="side-column">' . "\n";
 
-				foreach ( $side_info_boxes as $info_box ) {
+				foreach ( $side_col_boxes as $box ) {
 
-					echo '<table class="sucom-settings wpsso side-info-box">' . "\n";
+					echo '<table class="sucom-settings wpsso side-box">' . "\n";
 					echo '<tr><td>' . "\n";
-					echo $info_box;
+					echo $box;
 					echo '</td></tr>' . "\n";
-					echo '</table><!-- .side-info-box -->' . "\n";
+					echo '</table><!-- .side-box -->' . "\n";
 				}
 
-				echo '</div><!-- #side-info-column -->' . "\n";
+				echo '</div><!-- #side-column -->' . "\n";
 			}
 
 			echo '</div><!-- #wpsso-setting-page-content -->' . "\n";
@@ -1488,17 +1488,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected function show_post_body_setting_form() {
 
 			$menu_hookname = SucomUtil::sanitize_hookname( $this->menu_id );
-
-			$form_css_id = 'wpsso_setting_form_' . $menu_hookname;
+			$form_css_id   = 'wpsso_setting_form_' . $menu_hookname;
 
 			switch ( $this->menu_lib ) {
 
 				case 'profile':
 
-					$user_id = get_current_user_id();
-
-					$user_obj = get_user_to_edit( $user_id );
-
+					$user_id     = get_current_user_id();
+					$user_obj    = get_user_to_edit( $user_id );
 					$admin_color = get_user_option( 'admin_color', $user_id );	// Note that $user_id is the second argument.
 
 					if ( empty( $admin_color ) ) {
@@ -1587,25 +1584,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			do_meta_boxes( $this->pagehook, $context = 'normal', $object = null );
 
-			$action_name = 'wpsso_form_content_metaboxes_' . $menu_hookname;
+			/**
+			 * Hooked by WpssoSubmenuDashboard->action_form_content_metaboxes_dashboard().
+			 */
+			do_action( 'wpsso_form_content_metaboxes_' . $menu_hookname, $this->pagehook );
 
-			do_action( $action_name, $this->pagehook );
-
-			if ( $this->menu_lib === 'profile' ) {
-
-				$submit_label_transl = _x( 'Save All Profile Settings', 'submit button', 'wpsso' );
-
-			} else {
-
-				$submit_label_transl = _x( 'Save All Plugin Settings', 'submit button', 'wpsso' );
-			}
-
-			echo $this->get_form_buttons( $submit_label_transl );
+			echo $this->get_form_buttons();
 
 			echo '</form>', "\n";
 		}
 
-		protected function get_side_info_boxes() {
+		protected function get_side_col_boxes() {
 
 			static $local_cache = null;
 
@@ -1633,35 +1622,42 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					continue;
 				}
 
-				$info_box = '<div class="side-info-header">' . "\n";
+				$box = '<div class="side-box-header">' . "\n";
 				// translators: %s is the Premium add-on short name.
-				$info_box .= '<h2>' . sprintf( __( 'Upgrade to %s', 'wpsso' ), $pkg_info[ $ext ][ 'short_pro' ] ) . '</h2>' . "\n";
-				$info_box .= '</div><!-- .side-info-header -->' . "\n";
+				$box .= '<h2>' . sprintf( __( 'Upgrade to %s', 'wpsso' ), $pkg_info[ $ext ][ 'short_pro' ] ) . '</h2>' . "\n";
+				$box .= '</div><!-- .side-box-header -->' . "\n";
 
-				$info_box .= '<div class="side-info-icon">' . "\n";
-				$info_box .= $this->get_ext_img_icon( $ext ) . "\n";
-				$info_box .= '</div><!-- .side-info-icon -->' . "\n";
+				$box .= '<div class="side-box-icon">' . "\n";
+				$box .= $this->get_ext_img_icon( $ext ) . "\n";
+				$box .= '</div><!-- .side-box-icon -->' . "\n";
 
-				$info_box .= '<div class="side-info-content has-buttons">' . "\n";
-				$info_box .= $this->p->msgs->get( 'column-purchase-' . $ext, $info ) . "\n";
-				$info_box .= '</div><!-- .side-info-content -->' . "\n";
+				$box .= '<div class="side-box-content has-buttons">' . "\n";
+				$box .= $this->p->msgs->get( 'column-purchase-' . $ext, $info ) . "\n";
+				$box .= '</div><!-- .side-box-content -->' . "\n";
 
-				$info_box .= '<div class="side-info-buttons">' . "\n";
-				$info_box .= $this->form->get_button( sprintf( _x( 'Get %s', 'submit button', 'wpsso' ), $pkg_info[ $ext ][ 'short_pro' ] ),
+				$box .= '<div class="side-box-buttons">' . "\n";
+				$box .= $this->form->get_button( sprintf( _x( 'Get %s', 'submit button', 'wpsso' ), $pkg_info[ $ext ][ 'short_pro' ] ),
 					'button-secondary', 'column-purchase', $info[ 'url' ][ 'purchase' ], true ) . "\n";
-				$info_box .= '</div><!-- .side-info-buttons -->' . "\n";
+				$box .= '</div><!-- .side-box-buttons -->' . "\n";
 
-				$local_cache[] = $info_box;
+				$local_cache[] = $box;
 			}
 
 			return $local_cache;
 		}
 
-		protected function get_form_buttons( $submit_label_transl = '' ) {
+		/**
+		 * Called by WpssoAdmin->show_post_body_setting_form() and WpssoSubmenuTools->show_post_body_setting_form().
+		 */
+		protected function get_form_buttons() {
 
-			if ( empty( $submit_label_transl ) ) {	// Just in case.
+			if ( $this->menu_lib === 'profile' ) {
 
-				$submit_label_transl = _x( 'Save All Plugin Settings', 'submit button', 'wpsso' );
+				$submit_label_transl = _x( 'Save Profile Settings', 'submit button', 'wpsso' );
+
+			} else {
+
+				$submit_label_transl = _x( 'Save Plugin Settings', 'submit button', 'wpsso' );
 			}
 
 			$change_show_next_key     = SucomUtil::next_key( WpssoUser::show_opts(), $this->p->cf[ 'form' ][ 'show_options' ] );
@@ -1669,10 +1665,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$change_show_label_transl = sprintf( _x( 'Change to "%s" View', 'submit button', 'wpsso' ), $change_show_name_transl );
 
 			/**
-			 * A default two dimentional array of button rows for settings pages.
-			 *
-			 * The 'submit' button will be assigned a class of 'button-primary', while all other 1st row buttons will
-			 * be 'button-secondary button-highlight'. The 2nd+ row buttons will be assigned a class of
+			 * The 'submit' button will be assigned a class of 'button-primary' and all other first row buttons will be
+			 * 'button-secondary button-highlight'. The second+ row of buttons will be assigned a class of
 			 * 'button-secondary'.
 			 */
 			$form_button_rows = array(
@@ -1682,11 +1676,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				),
 			);
 
+			/**
+			 * Note that the WpssoSubmenuTools->filter_form_button_rows() filter returns a completely new array.
+			 */
 			$form_button_rows = apply_filters( 'wpsso_form_button_rows', $form_button_rows,
 				$this->menu_id, $this->menu_name, $this->menu_lib, $this->menu_ext );
 
-			$row_num = 0;
-
+			$row_num      = 0;
 			$buttons_html = '';
 
 			foreach ( $form_button_rows as $key => $buttons_row ) {
@@ -3031,8 +3027,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$owner_roles = $this->p->cf[ 'wp' ][ 'roles' ][ 'owner' ];
-			$site_owners = SucomUtilWP::get_roles_user_select( $owner_roles );
+			$owner_roles     = $this->p->cf[ 'wp' ][ 'roles' ][ 'owner' ];
+			$site_owners     = SucomUtilWP::get_roles_user_select( $owner_roles );
+			$plm_req_msg     = $this->p->msgs->maybe_ext_required( 'wpssoplm' );
+			$plm_disable     = empty( $plm_req_msg ) ? false : true;
+			$plm_place_names = $this->p->util->get_form_cache( 'place_names', true );
 
 			$table_rows[ 'site_pub_schema_type' ] = '' . 
 				$this->form->get_th_html( _x( 'WebSite Publisher Type', 'option label', 'wpsso' ), $css_class = '', $css_id = 'site_pub_schema_type' ) . 
@@ -3052,6 +3051,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$form->get_th_html_locale( '<a href="https://developers.google.com/search/docs/data-types/article#logo-guidelines">' .
 				_x( 'Organization Banner URL', 'option label', 'wpsso' ) . '</a>', $css_class = '', $css_id = 'site_org_banner_url' ) . 
 				'<td>' . $form->get_input_locale( 'site_org_banner_url', $css_class = 'wide is_required' ) . '</td>';
+
+			$table_rows[ 'site_org_place_id' ] = $form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
+				$this->form->get_th_html( _x( 'Organization Location', 'option label', 'wpsso-organization' ),
+					$css_class = '', $css_id = 'site_org_place_id' ) . 
+				'<td>' . $this->form->get_select( 'site_org_place_id', $plm_place_names,
+					$css_class = 'long_name', $css_id = '', $is_assoc = true, $plm_disable ) . $plm_req_msg . '</td>';
 		}
 
 		/**
@@ -3101,19 +3106,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/**
-		 * Deprecated since 2020/04/28.
+		 * Deprecated on 2020/04/28.
 		 */
 		public function add_advanced_product_attr_table_rows( array &$table_rows, $form ) {
 		}
 
 		/**
-		 * Deprecated since 2021/03/10.
+		 * Deprecated on 2021/03/10.
 		 */
 		public function add_advanced_product_attrs_table_rows( array &$table_rows, $form ) {
 		}
 
 		/**
-		 * Deprecated since 2021/03/10.
+		 * Deprecated on 2021/03/10.
 		 */
 		public function add_advanced_custom_fields_table_rows( array &$table_rows, $form ) {
 		}

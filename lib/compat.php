@@ -397,7 +397,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 		}
 
 		/**
-		 * Deprecated since 2020/04/28 by Yoast SEO v14.0.
+		 * Deprecated on 2020/04/28 by Yoast SEO v14.0.
 		 *
 		 * Disable Yoast SEO social meta tags.
 		 */

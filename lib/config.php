@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.36.0',	// Plugin version.
-					'opt_version' => '806',		// Increment when changing default option values.
+					'version'     => '8.36.1-dev.1',	// Plugin version.
+					'opt_version' => '807',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Rank higher and improve click-through-rates by presenting your content at its best on social sites and in search results - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled.',
@@ -526,7 +526,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'desc'        => 'Customize the Schema Organization markup for your website and create additional Schema Organizations (publisher, organizer, etc.).',
 					'slug'        => 'wpsso-organization',
 					'base'        => 'wpsso-organization/wpsso-organization.php',
-					'update_auth' => 'tid',
+					'update_auth' => '',		// No premium version.
 
 					/**
 					 * URLs or relative paths to plugin banners and icons.
@@ -577,9 +577,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'install'   => 'https://wpsso.com/docs/plugins/wpsso-organization/installation/',
 						'faqs'      => '',
 						'notes'     => '',
-						'support'   => 'https://surniaulula.com/support/create_ticket/',		// Premium support ticket.
-						'purchase'  => 'https://wpsso.com/extend/plugins/wpsso-organization/',		// Purchase page.
-						'info'      => 'https://wpsso.com/extend/plugins/wpsso-organization/info/',	// License information.
+						'support'   => '',	// Premium support ticket.
+						'purchase'  => '',	// Purchase page.
+						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-organization/update/',
 						'latest'    => '',	// Optional.
 					),

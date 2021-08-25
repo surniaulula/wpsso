@@ -291,7 +291,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				/**
 				 * Strip leading URLs off facebook usernames.
 				 */
-				case 'fb_admins':	// Deprecated since 2020/10/23.
+				case 'fb_admins':	// Deprecated on 2020/10/23.
 
 					return 'url_base';
 

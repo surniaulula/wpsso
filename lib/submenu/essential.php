@@ -132,21 +132,6 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 						$this->add_schema_publisher_type_table_rows( $table_rows, $this->form );
 					}
 
-					$table_rows[ 'fb_publisher_url' ] = '' . 
-						$this->form->get_th_html_locale( _x( 'Facebook Business Page URL', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'fb_publisher_url' ) .
-						'<td>' . $this->form->get_input_locale( 'fb_publisher_url', $css_class = 'wide' ) . '</td>';
-
-					$table_rows[ 'p_publisher_url' ] = '' . 
-						$this->form->get_th_html_locale( _x( 'Pinterest Company Page URL', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'p_publisher_url' ) .
-						'<td>' . $this->form->get_input_locale( 'p_publisher_url', $css_class = 'wide' ) . '</td>';
-
-					$table_rows[ 'tc_site' ] = '' . 
-						$this->form->get_th_html_locale( _x( 'Twitter Business @username', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'tc_site' ) .
-						'<td>' . $this->form->get_input_locale( 'tc_site' ) . '</td>';
-
 					break;
 			}
 
