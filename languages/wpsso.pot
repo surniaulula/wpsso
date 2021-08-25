@@ -1816,17 +1816,17 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:229
 msgctxt "option value"
-msgid "Twitter Business @username"
+msgid "TikTok Business Page URL"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:230
 msgctxt "option value"
-msgid "TikTok Business Page URL"
+msgid "Tumblr Business Page URL"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:231
 msgctxt "option value"
-msgid "Tumblr Business Page URL"
+msgid "Twitter Business @username"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:232
