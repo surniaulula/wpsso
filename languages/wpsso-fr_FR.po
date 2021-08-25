@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.36.0\n"
+"Project-Id-Version: WPSSO Core 8.36.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-08-23 13:19-0700\n"
+"PO-Revision-Date: 2021-08-25 10:27-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3723,330 +3723,335 @@ msgstr "Les valeurs d'option localisées (%s) sont utilisées uniquement pour le
 msgid "Profile updated."
 msgstr "Profil mis à jour."
 
-#: lib/admin.php:1596
-msgctxt "submit button"
-msgid "Save All Profile Settings"
-msgstr "Enregistrer les réglages"
-
-#: lib/admin.php:1600 lib/admin.php:1664
-msgctxt "submit button"
-msgid "Save All Plugin Settings"
-msgstr "Enregistrer les réglages"
-
 #. translators: %s is the Premium add-on short name.
-#: lib/admin.php:1638
+#: lib/admin.php:1627
 msgid "Upgrade to %s"
 msgstr "Passer à %s"
 
-#: lib/admin.php:1650
+#: lib/admin.php:1639
 msgctxt "submit button"
 msgid "Get %s"
 msgstr "Obtenir %s"
 
-#: lib/admin.php:1669 lib/submenu/tools.php:146
+#: lib/admin.php:1656
+msgctxt "submit button"
+msgid "Save Profile Settings"
+msgstr "Enregistrer réglages du profil"
+
+#: lib/admin.php:1660
+msgctxt "submit button"
+msgid "Save Plugin Settings"
+msgstr "Enregistrer réglages d'extension"
+
+#: lib/admin.php:1665 lib/submenu/tools.php:146
 msgctxt "submit button"
 msgid "Change to \"%s\" View"
 msgstr "Passer l'affichage \"%s\""
 
-#: lib/admin.php:1770
+#: lib/admin.php:1766
 msgid "Missing page ID or metabox ID to create the metabox table."
 msgstr "ID de page ou ID de métabox manquant pour créer la table de métabox."
 
-#: lib/admin.php:1787
+#: lib/admin.php:1783
 msgid "%s Database Transients"
 msgstr "Objets transitoires %s de la base de données"
 
-#: lib/admin.php:1792
+#: lib/admin.php:1788
 msgid "Count"
 msgstr "Nombre"
 
-#: lib/admin.php:1793
+#: lib/admin.php:1789
 msgid "MB"
 msgstr "Mo"
 
-#: lib/admin.php:1794
+#: lib/admin.php:1790
 msgid "Expiration"
 msgstr "Expiration"
 
-#: lib/admin.php:1875 lib/admin.php:1876
+#: lib/admin.php:1871 lib/admin.php:1872
 msgid "Not Available"
 msgstr "Non disponible"
 
-#: lib/admin.php:1923
+#: lib/admin.php:1919
 msgctxt "option label"
 msgid "Installed"
 msgstr "Installé"
 
-#: lib/admin.php:1931
+#: lib/admin.php:1927
 msgctxt "option label"
 msgid "Stable"
 msgstr "Stable"
 
-#: lib/admin.php:1935
+#: lib/admin.php:1931
 msgctxt "option label"
 msgid "Latest"
 msgstr "Dernière"
 
-#: lib/admin.php:1950
+#: lib/admin.php:1946
 msgid "View %s changelog..."
 msgstr "Voir le changelog %s…"
 
-#: lib/admin.php:2064
+#: lib/admin.php:2060
 msgid "<a href=\"%s\">Frequently Asked Questions</a>"
 msgstr "<a href=\"%s\">Foire aux questions</a>"
 
-#: lib/admin.php:2069
+#: lib/admin.php:2065
 msgid "<a href=\"%s\">Notes and Documentation</a>"
 msgstr "<a href=\"%s\">Notes et documentation</a>"
 
-#: lib/admin.php:2074
+#: lib/admin.php:2070
 msgid "<a href=\"%s\">Priority Support Ticket</a>"
 msgstr "<a href=\"%s\">Billet de soutien prioritaire</a>"
 
-#: lib/admin.php:2075
+#: lib/admin.php:2071
 msgid "Premium version"
 msgstr "Version Premium"
 
-#: lib/admin.php:2079
+#: lib/admin.php:2075
 msgid "<a href=\"%s\">Community Support Forum</a>"
 msgstr "<a href=\"%s\">Forum de soutien communautaire</a>"
 
-#: lib/admin.php:2099
+#: lib/admin.php:2095
 msgid "Rate your active plugins:"
 msgstr "Notez vos extensions actives:"
 
-#: lib/admin.php:2152
+#: lib/admin.php:2148
 msgid "Feature is disabled."
 msgstr "Fonctionnalité désactivée."
 
-#: lib/admin.php:2153
+#: lib/admin.php:2149
 msgid "Feature is not active."
 msgstr "Fonctionnalité n'est pas active."
 
-#: lib/admin.php:2154
+#: lib/admin.php:2150
 msgid "Feature is active."
 msgstr "Fonctionnalité est active."
 
-#: lib/admin.php:2155 lib/admin.php:2156
+#: lib/admin.php:2151 lib/admin.php:2152
 msgid "Feature is recommended but not active."
 msgstr "Fonctionnalité recommandée mais pas active."
 
-#: lib/admin.php:2222
+#: lib/admin.php:2218
 msgid "Service API module"
 msgstr "Module de service API"
 
-#: lib/admin.php:2229
+#: lib/admin.php:2225
 msgid "HTML tag and markup module"
 msgstr "Module de balisage et balises HTML"
 
-#: lib/admin.php:2236
+#: lib/admin.php:2232
 msgid "Additional functionality module"
 msgstr "Module fonctionnalités supplémentaires"
 
-#: lib/admin.php:2243
+#: lib/admin.php:2239
 msgid "Plugin integration module"
 msgstr "Module d'intégration d'extension"
 
-#: lib/admin.php:2250
+#: lib/admin.php:2246
 msgid "Markup property module"
 msgstr "Module de propriété de balisage"
 
-#: lib/admin.php:2257
+#: lib/admin.php:2253
 msgid "Sharing functionality module"
 msgstr "Module fonctionnalité de partage"
 
-#: lib/admin.php:2411
+#: lib/admin.php:2407
 msgctxt "option label"
 msgid "%s Authentication ID"
 msgstr "ID d'authentification %s"
 
-#: lib/admin.php:2425
+#: lib/admin.php:2421
 msgctxt "option label"
 msgid "Support and Updates Expire"
 msgstr "Support et mises à jour expire"
 
-#: lib/admin.php:2426
+#: lib/admin.php:2422
 msgctxt "option label"
 msgid "License Information"
 msgstr "Informations de licence"
 
-#: lib/admin.php:2435
+#: lib/admin.php:2431
 msgctxt "option value"
 msgid "Not available"
 msgstr "Non disponible"
 
-#: lib/admin.php:2441
+#: lib/admin.php:2437
 msgctxt "option value"
 msgid "Never (Nontransferable Lifetime License)"
 msgstr "Jamais (licence à vie non transférable)"
 
-#: lib/admin.php:2449
+#: lib/admin.php:2445
 msgid "%s site addresses registered"
 msgstr "%s adresses web de sites enregistrées"
 
-#: lib/admin.php:2461
+#: lib/admin.php:2457
 msgid "%d of %d site addresses registered"
 msgstr "%d de %d adresses web de sites enregistrées"
 
-#: lib/admin.php:2543
+#: lib/admin.php:2539
 msgid "Fetching %s notifications..."
 msgstr "Récupération des notifications %s..."
 
-#: lib/admin.php:2653
+#: lib/admin.php:2649
 msgid "The Site Address URL value has been changed from %1$s to %2$s."
 msgstr "La valeur de l'URL d'adresse web du site est passée de %1$s à %2$s."
 
-#: lib/admin.php:2864
+#: lib/admin.php:2860
 msgid "The WordPress <a href=\"%1$s\">Search Engine Visibility</a> option is set to allow search engines and social sites to access this site, but your <a href=\"%2$s\">Site Address URL</a> value is an IP address (%3$s)."
 msgstr "L'option WordPress <a href=\"%1$s\">Visibilité des moteurs de recherche</a> est définie pour permettre aux moteurs de recherche et aux sites sociaux d'accéder à ce site, mais la valeur de votre <a href=\"%2$s\">URL d'adresse web du site</a> est une adresse IP (%3$s)."
 
-#: lib/admin.php:2866
+#: lib/admin.php:2862
 msgid "Please update your Search Engine Visibility option to discourage search engines from indexing this site, or use a fully qualified domain name as your Site Address URL."
 msgstr "Veuillez mettre à jour votre option de visibilité des moteurs de recherche pour décourager les moteurs de recherche d'indexer ce site, ou utiliser un nom de domaine complet comme URL d'adresse web de site."
 
-#: lib/admin.php:2895
+#: lib/admin.php:2891
 msgid "No header templates found in the parent or child theme directories."
 msgstr "Aucun modèle d'en-tête trouvés dans le répertoire de thème parent ou enfant."
 
-#: lib/admin.php:2915
+#: lib/admin.php:2911
 msgid "No <code>%1$s</code> HTML tag found in the <code>%2$s</code> template."
 msgstr "Aucune balise HTML <code>%1$s</code> trouvée dans le modèle <code>%2$s</code> ."
 
-#: lib/admin.php:2926
+#: lib/admin.php:2922
 msgid "Error copying <code>%1$s</code> to <code>%2$s</code>."
 msgstr "Erreur lors de la copie de <code>%1$s</code> vers <code>%2$s</code> ."
 
-#: lib/admin.php:2938
+#: lib/admin.php:2934
 msgid "Failed to open template file <code>%s</code> for writing."
 msgstr "Échec d'ouverture du fichier de modèle <code>%s</code> en écriture."
 
-#: lib/admin.php:2946
+#: lib/admin.php:2942
 msgid "The <code>%s</code> template has been successfully modified and saved."
 msgstr "Le modèle <code>%s</code> a été modifié et enregistré avec succès."
 
-#: lib/admin.php:2949
+#: lib/admin.php:2945
 msgid "A backup copy of the original template has been saved as <code>%s</code> in the same folder."
 msgstr "Une copie de sauvegarde du modèle d'origine a été enregistrée en tant que <code>%s</code> dans le même dossier."
 
-#: lib/admin.php:2958
+#: lib/admin.php:2954
 msgid "Failed to write the <code>%s</code> template."
 msgstr "Échec d'écriture du modèle <code>%s</code> ."
 
-#: lib/admin.php:2961
+#: lib/admin.php:2957
 msgid "You may need to restore the original template saved as <code>%s</code> in the same folder."
 msgstr "Vous devrez peut-être restaurer le modèle d'origine enregistré en tant que <code>%s</code> dans le même dossier."
 
-#: lib/admin.php:3012
+#: lib/admin.php:3008
 msgctxt "option label"
 msgid "Author / Person Name Format"
 msgstr "Format du nom d'auteur"
 
-#: lib/admin.php:3016
+#: lib/admin.php:3012
 msgctxt "option label"
 msgid "Schema Max. Images to Include"
 msgstr "Images Schéma max. a inclure"
 
-#: lib/admin.php:3023
+#: lib/admin.php:3019
 msgctxt "option label"
 msgid "Schema Description Max. Length"
 msgstr "Longueur max. description Schéma"
 
-#: lib/admin.php:3024 lib/edit.php:317 lib/submenu/general.php:301
+#: lib/admin.php:3020 lib/edit.php:317 lib/submenu/general.php:301
 #: lib/submenu/general.php:313 lib/submenu/general.php:388
 msgctxt "option comment"
 msgid "characters or less"
 msgstr "caractères ou moins"
 
-#: lib/admin.php:3038
+#: lib/admin.php:3037
 msgctxt "option label"
 msgid "WebSite Publisher Type"
 msgstr "Type d'éditeur du site Web"
 
-#: lib/admin.php:3043
+#: lib/admin.php:3042
 msgctxt "option label"
 msgid "WebSite Publisher (Person)"
 msgstr "Éditeur du site Web (personne)"
 
-#: lib/admin.php:3048
+#: lib/admin.php:3047
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr "URL logo de organisation"
 
-#: lib/admin.php:3053 lib/options.php:1324
+#: lib/admin.php:3052 lib/options.php:1324
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr "URL bannière d'organisation"
 
-#: lib/admin.php:3074
+#: lib/admin.php:3056
+msgctxt "option label"
+msgid "Organization Location"
+msgstr "Emplacement de l'organisation"
+
+#: lib/admin.php:3079
 msgctxt "option label"
 msgid "Remove Settings on Uninstall"
 msgstr "Supprimer les réglages lors de la désinstallation"
 
-#: lib/admin.php:3079
+#: lib/admin.php:3084
 msgctxt "option label"
 msgid "Use Local Plugin Translations"
 msgstr "Utiliser les traductions locale"
 
-#: lib/admin.php:3087
+#: lib/admin.php:3092
 msgctxt "option label"
 msgid "Disable Cache for Debugging"
 msgstr "Désactiver le cache pour débogage"
 
-#: lib/admin.php:3095
+#: lib/admin.php:3100
 msgctxt "option label"
 msgid "Add HTML Debug Messages"
 msgstr "Ajouter messages de débogage HTML"
 
-#: lib/admin.php:3129
+#: lib/admin.php:3134
 msgctxt "option comment"
 msgid "in %s"
 msgstr "en %s"
 
-#: lib/admin.php:3146
+#: lib/admin.php:3151
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr "Util. par site"
 
-#: lib/admin.php:3351
+#: lib/admin.php:3356
 msgid "Return to %s"
 msgstr "Retour à %s"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:3382
+#: lib/admin.php:3387
 msgid "Plugin <strong>activated</strong>."
 msgstr "Extension <strong>activé</strong>."
 
 #. translators: %1$s is the URL, %2$s is the short plugin name.
-#: lib/admin.php:3403
+#: lib/admin.php:3408
 msgid "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-ons</a> to check if newer versions are available."
 msgstr "Vous pouvez <a href=\"%1$s\">actualiser les informations de mise à jour pour %2$s et ses ajouts</a> afin de vérifier si des versions plus récentes sont disponibles."
 
 #. translators: %1$s is the URL.
-#: lib/admin.php:3412
+#: lib/admin.php:3417
 msgid "You may <a href=\"%1$s\">refresh the update information for WordPress (plugins, themes and translations)</a> to check if newer versions are available."
 msgstr "Vous pouvez <a href=\"%1$s\">actualiser les informations de mise jour pour WordPress (extensions, thèmes et traductions)</a> afin de vérifier si des versions plus récentes sont disponibles."
 
-#: lib/admin.php:3562
+#: lib/admin.php:3567
 msgid "Please select a %1$s settings file to import."
 msgstr "Veuillez sélectionner un fichier de réglages %1$s à importer."
 
-#: lib/admin.php:3569
+#: lib/admin.php:3574
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr "Le fichier de réglages %1$s à importer doit être un type mime \"%2$s\"."
 
-#: lib/admin.php:3576
+#: lib/admin.php:3581
 msgid "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr "Le fichier de réglages %1$s dépasse le maximum autorisé de %2$d octets."
 
-#: lib/admin.php:3590
+#: lib/admin.php:3595
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr "Le fichier de réglages %1$s semble vide ou corrompu."
 
-#: lib/admin.php:3600
+#: lib/admin.php:3605
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr "Le fichier de réglages %1$s n'a pas pu être décodé dans un tableau de réglages."
 
-#: lib/admin.php:3610
+#: lib/admin.php:3615
 msgid "Import of plugin and add-on settings is complete."
 msgstr "L'importation des réglages d'extension et ajouts est terminée."
 
@@ -4986,28 +4991,28 @@ msgid "Editor"
 msgstr "Éditeur"
 
 #: lib/messages.php:486
-msgid "Unfortunately, Google does not recognize all Schema Organization sub-types as valid organizations."
-msgstr "Malheureusement, Google ne reconnaît pas tous les sous-types de Schéma Organisation comme des organisations valides."
-
-#: lib/messages.php:488
-msgid "The default Schema type ID for the WebSite organization is \"%s\"."
-msgstr "L'ID de type de Schéma par défaut pour l'organisation du site Web est \"%s\"."
-
-#: lib/messages.php:490
-msgid "You should not change this default value unless you are confident that Google will recognize your preferred Schema Organization sub-type as a valid organization."
-msgstr "Vous ne devez pas modifier cette valeur par défaut, sauf si vous êtes certain que Google reconnaîtra votre sous-type de Schéma Organisation souhaité comme une organisation valide."
-
-#: lib/messages.php:492
-msgid "To select a different organization type ID for the WebSite, define the %s constant with your preferred type ID (note that this is a Schema type ID, not a Schema type URL)."
-msgstr "Pour choisir un ID de type d'organisation différent pour le site Web, définissez la constante %s avec l'ID de type souhaité (notez qu'il s'agit d'un ID de type de Schéma, pas d'une URL de type de Schéma)."
-
-#: lib/messages.php:498
 msgid "A URL for this organization's logo image that Google can show in its search results and <em>Knowledge Graph</em>."
 msgstr "L'URL pour l'image du logo de cette organisation que Google peut afficher dans ces résultats de recherche et <em>Knowledge Graph</em>."
 
-#: lib/messages.php:504
+#: lib/messages.php:492
 msgid "A URL for this organization's banner image - <strong>measuring exactly 600x60px</strong> - that Google News can show for Schema Article type content from this publisher."
 msgstr "L'URL d'image de bannière pour cette organisation - <strong>mesurant exactement 600x60px</strong> - que Google News peut afficher pour le contenu Schéma d'Article de cet éditeur."
+
+#: lib/messages.php:498
+msgid "Google does not recognize all Schema Organization sub-types as valid organizations."
+msgstr "Google ne reconnaît pas tous les sous-types de Schéma Organisation comme des organisations valides."
+
+#: lib/messages.php:500
+msgid "The default Schema type ID for the WebSite organization is \"%s\"."
+msgstr "L'ID de type de Schéma par défaut pour l'organisation du site Web est \"%s\"."
+
+#: lib/messages.php:502
+msgid "You should not change this default value unless you are confident that Google will recognize your preferred Schema Organization sub-type as a valid organization."
+msgstr "Vous ne devez pas modifier cette valeur par défaut, sauf si vous êtes certain que Google reconnaîtra votre sous-type de Schéma Organisation souhaité comme une organisation valide."
+
+#: lib/messages.php:504
+msgid "To select a different organization type ID for the WebSite, define the %s constant with your preferred type ID (note that this is a Schema type ID, not a Schema type URL)."
+msgstr "Pour choisir un ID de type d'organisation différent pour le site Web, définissez la constante %s avec l'ID de type souhaité (notez qu'il s'agit d'un ID de type de Schéma, pas d'une URL de type de Schéma)."
 
 #: lib/messages.php:515
 msgid "Select an optional location for this organization (requires the %s add-on)."
@@ -5018,7 +5023,7 @@ msgid "Individual sites/blogs may use this value as a default (when the plugin i
 msgstr "Les sites/blogs individuels peuvent utiliser cette valeur par défaut (quand l'extension est activée pour la première fois), si la valeur de l'option du site/blog est vide, ou forcer chaque site/blog a utiliser cette valeur spécifique."
 
 #: lib/messages.php:540
-msgid "The section that describes the content of the articles on your site."
+msgid "The section that best describes the content of articles on your site."
 msgstr "Le rubrique qui décrit le mieux le contenu des articles de votre site."
 
 #: lib/messages.php:542
@@ -6968,7 +6973,7 @@ msgstr "article"
 msgid "Slow WordPress function detected - %1$s took %2$.3f secs to get children of post ID %3$d (%4$s)."
 msgstr "Fonction WordPress lente détectée - %1$s a pris %2$.3f secs pour obtenir les enfants de l'ID d'article %3$d (%4$s)."
 
-#: lib/post.php:734 lib/post.php:1382 lib/schema.php:3382 lib/term.php:587
+#: lib/post.php:734 lib/post.php:1382 lib/schema.php:3417 lib/term.php:587
 #: lib/user.php:576
 msgid "checking meta tags"
 msgstr "vérification des balises méta"
@@ -7132,43 +7137,43 @@ msgstr "%1$s nécessite %2$s version %3$s ou supérieure et a été désactivé.
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr "SVP mettre à jour %1$s avant d'essayer de réactiver l'extension %2$s."
 
-#: lib/schema-single.php:1529
+#: lib/schema-single.php:1536
 msgid "adding schema organization"
 msgstr "ajout de schéma d'organisation"
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1593
+#: lib/schema-single.php:1600
 msgid "An organization logo image is missing and required for the \"%1$s\" organization Schema %2$s markup."
 msgstr "Une image de logo d'organisation est manquante et requise pour le balisage de Schéma %2$s de l'organisation \"%1$s\"."
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1596
+#: lib/schema-single.php:1603
 msgid "An organization banner image (600x60px) is missing and required for the \"%1$s\" organization Schema %2$s markup."
 msgstr "Une image de bannière d'organisation (600x60px) est manquante et requise pour le balisage de Schéma %2$s de l'organisation \"%1$s\"."
 
 #. translators: %1$s is the organization name, %2$s is 'site' (translated) or 'ID #'.
-#: lib/schema-single.php:1599
+#: lib/schema-single.php:1606
 msgid "Please enter the missing image URL in the \"%1$s\" %2$s organization settings."
 msgstr "Veuillez fournir l'URL de l'image manquante dans les paramètres de l'organisation %2$s \"%1$s\"."
 
 #. translators: site, as in the "site organization settings".
-#: lib/schema-single.php:1621
+#: lib/schema-single.php:1628
 msgid "site"
 msgstr "site"
 
-#: lib/schema-single.php:1802
+#: lib/schema-single.php:1808
 msgid "adding schema person"
 msgstr "ajout de schéma de personne"
 
-#: lib/schema-single.php:2004
+#: lib/schema-single.php:2010
 msgid "adding schema place"
 msgstr "ajout de schéma d'endroit"
 
-#: lib/schema.php:668
+#: lib/schema.php:685
 msgid "adding schema"
 msgstr "ajout de schéma"
 
-#: lib/schema.php:1860
+#: lib/schema.php:1895
 msgid "adding schema %s #%d image"
 msgstr "ajout d'image #%d pour Schéma %s"
 
@@ -7388,21 +7393,6 @@ msgctxt "option label"
 msgid "or Default Image URL"
 msgstr "ou URL d'image par défaut"
 
-#: lib/submenu/essential.php:136 lib/submenu/general.php:250
-msgctxt "option label"
-msgid "Facebook Business Page URL"
-msgstr "URL page d'affaires Facebook"
-
-#: lib/submenu/essential.php:141 lib/submenu/general.php:338
-msgctxt "option label"
-msgid "Pinterest Company Page URL"
-msgstr "URL page d'entreprise Pinterest"
-
-#: lib/submenu/essential.php:146 lib/submenu/general.php:380
-msgctxt "option label"
-msgid "Twitter Business @username"
-msgstr "@usager d'affaires Twitter"
-
 #: lib/submenu/general.php:40
 msgctxt "metabox title"
 msgid "General Settings"
@@ -7500,6 +7490,11 @@ msgctxt "option label"
 msgid "Facebook Domain Verification ID"
 msgstr "ID de vérif. du domaine pour Facebook"
 
+#: lib/submenu/general.php:250
+msgctxt "option label"
+msgid "Facebook Business Page URL"
+msgstr "URL page d'affaires Facebook"
+
 #: lib/submenu/general.php:255
 msgctxt "option label"
 msgid "Author Profile URL Field"
@@ -7545,6 +7540,11 @@ msgctxt "option label"
 msgid "Pinterest Website Verification ID"
 msgstr "ID de vérif. du site Web pour Pinterest"
 
+#: lib/submenu/general.php:338
+msgctxt "option label"
+msgid "Pinterest Company Page URL"
+msgstr "URL page d'entreprise Pinterest"
+
 #: lib/submenu/general.php:343
 msgctxt "option label"
 msgid "Add \"nopin\" to Site Header Image"
@@ -7574,6 +7574,11 @@ msgstr "Sommaire"
 msgctxt "option value"
 msgid "Summary Large Image"
 msgstr "Sommaire grande image"
+
+#: lib/submenu/general.php:380
+msgctxt "option label"
+msgid "Twitter Business @username"
+msgstr "@usager d'affaires Twitter"
 
 #: lib/submenu/general.php:385
 msgctxt "option label"
@@ -7755,7 +7760,6 @@ msgid "Slow WordPress function detected - %1$s took %2$.3f secs to get posts aut
 msgstr "Fonction WordPress lente détectée - %1$s a pris %2$.3f secs pour obtenir les articles de l'ID d'utilisateur %3$d (%4$s)."
 
 #: lib/user.php:762
-#| msgid "Example: Dr, Mrs, Mr."
 msgid "Examples: Dr, Mrs, Mr."
 msgstr "Exemples: Dr, Mrs, Mr."
 
