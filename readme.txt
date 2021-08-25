@@ -322,6 +322,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.36.1-dev.1 (2021/08/25)**
+
+* **New Features**
+	* Deprecated the WPSSO ORG Premium add-on.
+* **Improvements**
+	* Added a new "Organization Location" option under the SSO > General Settings > Social and Search Sites > Google tab.
+* **Bugfixes**
+	* Fixed support for a home page custom Schema Type from the Document SSO metabox when getting the site organization options.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.0.
+	* WordPress v5.0.
+
 **Version 8.36.0 (2021/08/24)**
 
 * **New Features**
@@ -899,6 +913,10 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 	* WordPress v4.5.
 
 == Upgrade Notice ==
+
+= 8.36.1-dev.1 =
+
+(2021/08/25) Deprecated the WPSSO ORG Premium add-on. Added a new "Organization Location" option. Fixed support for a home page custom Schema Type when getting the site organization options.
 
 = 8.36.0 =
 
