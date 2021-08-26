@@ -228,11 +228,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$this->p->debug->log( 'using plugin settings to determine og type' );
 				}
 
-				if ( $mod[ 'is_home' ] ) {	// Static or index page.
+				if ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).
 
 					$type_id = $default_key;
 
-					if ( $mod[ 'is_home_page' ] ) {
+					if ( $mod[ 'is_home_page' ] ) {	// Static front page (singular post).
 
 						$type_id = $this->get_og_type_id_for_name( 'home_page' );
 

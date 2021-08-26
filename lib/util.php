@@ -2363,7 +2363,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				$url = apply_filters( 'wpsso_post_url', $url, $mod );
 
-			} elseif ( $mod[ 'is_home' ] ) {
+			} elseif ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).
 
 				if ( 'page' === get_option( 'show_on_front' ) ) {	// 'show_on_front' = posts | page.
 
@@ -2606,7 +2606,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					} else {
 
-						if ( $mod[ 'is_home_page' ] ) {	// Static home page (have post ID).
+						if ( $mod[ 'is_home_page' ] ) {	// Static front page (singular post).
 
 							$base = $wp_rewrite->using_index_permalinks() ? 'index.php/' : '/';
 

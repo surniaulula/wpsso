@@ -154,9 +154,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			'is_comment'           => false,	// Is comment module.
 			'is_date'              => false,
 			'is_day'               => false,
-			'is_home'              => false,	// Home page (index or static)
-			'is_home_page'         => false,	// Static front page.
-			'is_home_posts'        => false,	// Static posts page or latest posts.
+			'is_home'              => false,	// Home page (static or blog archive).
+			'is_home_page'         => false,	// Static front page (singular post).
+			'is_home_posts'        => false,	// Static posts page or blog archive page.
 			'is_month'             => false,
 			'is_post'              => false,	// Is post module.
 			'is_post_type_archive' => false,	// Post is an archive.
@@ -234,7 +234,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			/**
 			 * Post elements.
 			 */
-			$mod[ 'is_home' ] = true;
+			$mod[ 'is_home' ] = true;	// Home page (static or blog archive).
 
 			return $mod;
 		}

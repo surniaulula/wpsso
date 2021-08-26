@@ -370,9 +370,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( is_home() ) {
 
-					$mod[ 'is_home' ] = true;
+					$mod[ 'is_home' ] = true;	// Home page (static or blog archive).
 
-					$mod[ 'is_home_posts' ] = true;
+					$mod[ 'is_home_posts' ] = true;		// Static posts page or blog archive page.
 
 				} elseif ( is_404() ) {
 
@@ -438,7 +438,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				$wp_query = new WP_Query( $mod[ 'query_vars' ] );
 
-				if ( $mod[ 'is_home_posts' ] ) {
+				if ( $mod[ 'is_home_posts' ] ) {	// Static posts page or blog archive page.
 
 					$wp_query->is_home = true;
 				}
@@ -1195,7 +1195,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					$desc_text = apply_filters( 'wpsso_user_archive_description', $desc_text, $mod, $user_obj );
 
-				} elseif ( $mod[ 'is_home_posts' ] ) {
+				} elseif ( $mod[ 'is_home_posts' ] ) {	// Static posts page or blog archive page.
 
 					$desc_text = SucomUtil::get_site_description( $this->p->options );
 
@@ -1503,7 +1503,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				$title_text = apply_filters( 'wpsso_user_archive_title', $title_text, $mod, $user_obj );
 
-			} elseif ( $mod[ 'is_home' ] ) {
+			} elseif ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).
 
 				$title_text = SucomUtil::get_site_name( $this->p->options );
 

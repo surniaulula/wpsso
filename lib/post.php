@@ -222,9 +222,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 * WpssoPost elements.
 			 */
 			$mod[ 'is_post' ]       = true;
-			$mod[ 'is_home_page' ]  = SucomUtil::is_home_page( $post_id );
-			$mod[ 'is_home_posts' ] = $mod[ 'is_home_page' ] ? false : SucomUtil::is_home_posts( $post_id );
-			$mod[ 'is_home' ]       = $mod[ 'is_home_page' ] || $mod[ 'is_home_posts' ] ? true : false;
+			$mod[ 'is_home_page' ]  = SucomUtil::is_home_page( $post_id );						// Static front page (singular post).
+			$mod[ 'is_home_posts' ] = $mod[ 'is_home_page' ] ? false : SucomUtil::is_home_posts( $post_id );	// Static posts page or blog archive page.
+			$mod[ 'is_home' ]       = $mod[ 'is_home_page' ] || $mod[ 'is_home_posts' ] ? true : false;		// Home page (static or blog archive).
 
 			if ( $mod[ 'id' ] ) {	// Just in case.
 

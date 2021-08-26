@@ -2755,7 +2755,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( ! is_numeric( $mod[ 'id' ] ) || ! $mod[ 'id' ] > 0 ) {
 
-				if ( ! empty( $mod[ 'is_home' ] ) ) {
+				if ( ! empty( $mod[ 'is_home' ] ) ) {	// Home page (static or blog archive).
 
 					$mod_salt .= '_home';
 				}

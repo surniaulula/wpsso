@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.36.1-dev.1\n"
+"Project-Id-Version: WPSSO Core 8.36.1-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -8101,7 +8101,7 @@ msgid ""
 "post ID %3$d (%4$s)."
 msgstr ""
 
-#: lib/post.php:734 lib/post.php:1382 lib/schema.php:3417 lib/term.php:587
+#: lib/post.php:734 lib/post.php:1382 lib/schema.php:3420 lib/term.php:587
 #: lib/user.php:576
 msgid "checking meta tags"
 msgstr ""
@@ -8327,11 +8327,11 @@ msgstr ""
 msgid "adding schema place"
 msgstr ""
 
-#: lib/schema.php:685
+#: lib/schema.php:688
 msgid "adding schema"
 msgstr ""
 
-#: lib/schema.php:1895
+#: lib/schema.php:1898
 msgid "adding schema %s #%d image"
 msgstr ""
 
@@ -9147,91 +9147,91 @@ msgid "show these rows now"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/util-woocommerce.php:252
+#: lib/util-woocommerce.php:257
 msgid "mm"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/util-woocommerce.php:255
+#: lib/util-woocommerce.php:260
 msgid "cm"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/util-woocommerce.php:258
+#: lib/util-woocommerce.php:263
 msgid "m"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/util-woocommerce.php:261
+#: lib/util-woocommerce.php:266
 msgid "in"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/util-woocommerce.php:264
+#: lib/util-woocommerce.php:269
 msgid "yd"
 msgstr ""
 
-#: lib/util-woocommerce.php:298
+#: lib/util-woocommerce.php:303
 msgid "ml"
 msgstr ""
 
-#: lib/util-woocommerce.php:299
+#: lib/util-woocommerce.php:304
 msgid "cl"
 msgstr ""
 
-#: lib/util-woocommerce.php:300
+#: lib/util-woocommerce.php:305
 msgid "l"
 msgstr ""
 
-#: lib/util-woocommerce.php:301
+#: lib/util-woocommerce.php:306
 msgid "kl"
 msgstr ""
 
-#: lib/util-woocommerce.php:302
+#: lib/util-woocommerce.php:307
 msgid "US tsp"
 msgstr ""
 
-#: lib/util-woocommerce.php:303
+#: lib/util-woocommerce.php:308
 msgid "US tbsp"
 msgstr ""
 
-#: lib/util-woocommerce.php:304
+#: lib/util-woocommerce.php:309
 msgid "US fl oz"
 msgstr ""
 
-#: lib/util-woocommerce.php:305
+#: lib/util-woocommerce.php:310
 msgid "US cup"
 msgstr ""
 
-#: lib/util-woocommerce.php:306
+#: lib/util-woocommerce.php:311
 msgid "US pt"
 msgstr ""
 
-#: lib/util-woocommerce.php:307
+#: lib/util-woocommerce.php:312
 msgid "US qt"
 msgstr ""
 
-#: lib/util-woocommerce.php:308
+#: lib/util-woocommerce.php:313
 msgid "US gal"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/util-woocommerce.php:507
+#: lib/util-woocommerce.php:512
 msgid "g"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/util-woocommerce.php:510
+#: lib/util-woocommerce.php:515
 msgid "kg"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/util-woocommerce.php:513
+#: lib/util-woocommerce.php:518
 msgid "oz"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/util-woocommerce.php:516
+#: lib/util-woocommerce.php:521
 msgid "lbs"
 msgstr ""
 

@@ -193,7 +193,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( null === $org_id || 'none' === $org_id ) {	// Allow for $org_id = 0.
 
-				if ( ! empty( $mod[ 'is_home' ] ) ) {	// Static or index page.
+				if ( ! empty( $mod[ 'is_home' ] ) ) {	// Home page (static or blog archive).
 
 					$org_id = 'site';
 
@@ -259,7 +259,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( empty( $user_id ) || 'none' === $user_id ) {
 
-				if ( $mod[ 'is_home' ] ) {	// Static or index page.
+				if ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).
 
 					$user_id = $this->p->options[ 'site_pub_person_id' ];	// 'none' by default.
 
@@ -308,7 +308,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/**
 			 * Override author's website url and use the og url instead.
 			 */
-			if ( $mod[ 'is_home' ] ) {
+			if ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).
 
 				$json_ret[ 'url' ] = SucomUtil::get_home_url( $this->p->options, $mod );
 			}
@@ -364,7 +364,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/**
 			 * Include Schema Organization or Person, and WebSite markup on the home page.
 			 */
-			if ( $mod[ 'is_home' ] ) {	// Static or index home page.
+			if ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).
 
 				switch ( $this->p->options[ 'site_pub_schema_type' ] ) {
 
@@ -594,10 +594,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$json_data = apply_filters( $valid_filter_name, $json_data, $mod, $mt_og, $page_type_id, $is_main );
 					}
 
+				/**
+				 * Home page (static or blog archive).
+				 */
 				} elseif ( $mod[ 'is_home' ] && method_exists( $this, $method_filter_name ) ) {
 
 					/**
-					 * $is_main is always false for method.
+					 * $is_main is always false for methods.
 					 */
 					$json_data = call_user_func( array( $this, $method_filter_name ), $json_data, $mod, $mt_og, $page_type_id, false );
 				}
@@ -859,9 +862,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$filter_name = '';
 
-				if ( $mod[ 'is_home' ] ) {	// Static or index page.
+				if ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).
 
-					if ( $mod[ 'is_home_page' ] ) {
+					if ( $mod[ 'is_home_page' ] ) {	// Static front page (singular post).
 
 						$type_id = $this->get_schema_type_id_for_name( 'home_page' );
 
@@ -1828,7 +1831,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'org_sameas'            => $org_sameas,
 			);
 
-			if ( ! empty( $mixed[ 'is_home' ] ) ) {	// Static or index home page.
+			if ( ! empty( $mixed[ 'is_home' ] ) ) {	// Home page (static or blog archive).
 
 				if ( $wpsso->debug->enabled ) {
 

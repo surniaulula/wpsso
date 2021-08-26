@@ -112,6 +112,11 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 
 			$available_variations = array();
 
+			if ( 'variable' !== $this->get_product_type( $product ) ) {	// Nothing to do.
+
+				return $available_variations;
+			}
+
 			foreach ( $product->get_children() as $child_id ) {
 
 				$variation = wc_get_product( $child_id );
@@ -523,6 +528,50 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 		public static function get_weight( $weight, $to_unit, $from_unit = '' ) {
 
 			return wc_get_weight( $weight, $to_unit, $from_unit );
+		}
+
+		/**
+		 * Check if a simple product, variable product or any of its variations, has a meta data value.
+		 *
+		 * Called by the WpssoWcmdWooCommerce->filter_product_enable_dimensions_display() and
+		 * WpssoWcmdWooCommerce->filter_display_product_attributes() methods.
+		 */
+		public function has_meta( $product, $meta_key ) {
+
+			static $local_cache = array();
+
+			$product_id = $this->get_product_id( $product );
+
+			if ( isset( $local_cache[ $product_id ][ $meta_key ] ) ) {	// Already checked.
+
+				return $local_cache[ $product_id ][ $meta_key ];
+			}
+
+			$meta_val = $product->get_meta( $meta_key, $single = true );
+
+			if ( '' !== $meta_val ) {
+
+				return $local_cache[ $product_id ][ $meta_key ] = true;
+			}
+
+			$available_vars = $this->get_available_variations( $product );	// Always returns an array.
+
+			foreach ( $available_vars as $num => $variation ) {
+
+				$var_id = $variation[ 'variation_id' ];
+
+				if ( $var_obj = $this->get_product( $var_id ) ) {
+
+					$meta_val = $var_obj->get_meta( $meta_key, $single = true );
+					
+					if ( '' !== $meta_val ) {
+				
+						return $local_cache[ $product_id ][ $meta_key ] = true;
+					}
+				}
+			}
+
+			return $local_cache[ $product_id ][ $meta_key ] = false;
 		}
 	}
 }
