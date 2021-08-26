@@ -322,7 +322,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.36.1-dev.1 (2021/08/25)**
+**Version 8.36.1-dev.2 (2021/08/26)**
 
 * **New Features**
 	* Deprecated the WPSSO ORG Premium add-on.
@@ -331,7 +331,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed support for a home page custom Schema Type from the Document SSO metabox when getting the site organization options.
 * **Developer Notes**
-	* None.
+	* Added a new `WpssoUtilWooCommerce->has_meta()` method for the WPSSO WCMD add-on.
 * **Requires At Least**
 	* PHP v7.0.
 	* WordPress v5.0.
@@ -914,9 +914,9 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 
 == Upgrade Notice ==
 
-= 8.36.1-dev.1 =
+= 8.36.1-dev.2 =
 
-(2021/08/25) Deprecated the WPSSO ORG Premium add-on. Added a new "Organization Location" option. Fixed support for a home page custom Schema Type when getting the site organization options.
+(2021/08/26) Deprecated the WPSSO ORG Premium add-on. Added a new "Organization Location" option. Fixed support for a home page custom Schema Type when getting the site organization options.
 
 = 8.36.0 =
 
