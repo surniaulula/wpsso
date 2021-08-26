@@ -322,7 +322,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.36.1-b.1 (2021/08/26)**
+**Version 8.36.1-rc.1 (2021/08/27)**
 
 * **New Features**
 	* Deprecated the WPSSO ORG Premium add-on.
@@ -914,9 +914,9 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 
 == Upgrade Notice ==
 
-= 8.36.1-b.1 =
+= 8.36.1-rc.1 =
 
-(2021/08/26) Deprecated the WPSSO ORG Premium add-on. Added a new "Organization Location" option. Fixed support for a home page custom Schema Type when getting the site organization options.
+(2021/08/27) Deprecated the WPSSO ORG Premium add-on. Added a new "Organization Location" option. Fixed support for a home page custom Schema Type when getting the site organization options.
 
 = 8.36.0 =
 
