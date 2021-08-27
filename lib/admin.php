@@ -3027,32 +3027,46 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$owner_roles     = $this->p->cf[ 'wp' ][ 'roles' ][ 'owner' ];
-			$site_owners     = SucomUtilWP::get_roles_user_select( $owner_roles );
-			$plm_req_msg     = $this->p->msgs->maybe_ext_required( 'wpssoplm' );
-			$plm_disable     = empty( $plm_req_msg ) ? false : true;
-			$plm_place_names = $this->p->util->get_form_cache( 'place_names', true );
+			$owner_roles      = $this->p->cf[ 'wp' ][ 'roles' ][ 'owner' ];
+			$site_owners      = SucomUtilWP::get_roles_user_select( $owner_roles );
+			$plm_req_msg      = $this->p->msgs->maybe_ext_required( 'wpssoplm' );
+			$plm_disable      = empty( $plm_req_msg ) ? false : true;
+			$plm_place_names  = $this->p->util->get_form_cache( 'place_names', $add_none = true );
+			$org_types_select = $this->p->util->get_form_cache( 'org_types_select', $add_none = false );
 
 			$table_rows[ 'site_pub_schema_type' ] = '' . 
 				$this->form->get_th_html( _x( 'WebSite Publisher Type', 'option label', 'wpsso' ), $css_class = '', $css_id = 'site_pub_schema_type' ) . 
 				'<td>' . $this->form->get_select( 'site_pub_schema_type', $this->p->cf[ 'form' ][ 'publisher_types' ], $css_class = '', $css_id = '',
 					$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_change_unhide_rows' ) ) . '</td>';
 
+			/**
+			 * Website person.
+			 */
 			$table_rows[ 'site_pub_person_id' ] = $form->get_tr_on_change( 'site_pub_schema_type', 'person' ) . 
 				$this->form->get_th_html( _x( 'WebSite Publisher (Person)', 'option label', 'wpsso' ), '', 'site_pub_person_id' ) . 
 				'<td>' . $this->form->get_select( 'site_pub_person_id', $site_owners, $css_class = '', $css_id = '', $is_assoc = true ) . '</td>';
 
-			$table_rows[ 'site_org_logo_url' ] = $form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
+			/**
+			 * Website organization.
+			 */
+			$table_rows[ 'site_org_logo_url' ] = '' .
 				$form->get_th_html_locale( '<a href="https://developers.google.com/structured-data/customize/logos">' .
 				_x( 'Organization Logo URL', 'option label', 'wpsso' ) . '</a>', $css_class = '', $css_id = 'site_org_logo_url' ) . 
 				'<td>' . $form->get_input_locale( 'site_org_logo_url', $css_class = 'wide is_required' ) . '</td>';
 
-			$table_rows[ 'site_org_banner_url' ] = $form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
+			$table_rows[ 'site_org_banner_url' ] = '' .
 				$form->get_th_html_locale( '<a href="https://developers.google.com/search/docs/data-types/article#logo-guidelines">' .
 				_x( 'Organization Banner URL', 'option label', 'wpsso' ) . '</a>', $css_class = '', $css_id = 'site_org_banner_url' ) . 
 				'<td>' . $form->get_input_locale( 'site_org_banner_url', $css_class = 'wide is_required' ) . '</td>';
 
-			$table_rows[ 'site_org_place_id' ] = $form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
+			$table_rows[ 'site_org_schema_type' ] = $this->form->get_tr_hide( 'basic', 'site_org_schema_type' ) .
+				$this->form->get_th_html( _x( 'Organization Schema Type', 'option label', 'wpsso-organization' ),
+					$css_class = '', $css_id = 'site_org_schema_type' ) . 
+				'<td>' . $this->form->get_select( 'site_org_schema_type', $org_types_select, $css_class = 'schema_type', $css_id = '',
+					$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
+						$event_args = 'schema_org_types' ) . '</td>';
+
+			$table_rows[ 'site_org_place_id' ] = '' .
 				$this->form->get_th_html( _x( 'Organization Location', 'option label', 'wpsso-organization' ),
 					$css_class = '', $css_id = 'site_org_place_id' ) . 
 				'<td>' . $this->form->get_select( 'site_org_place_id', $plm_place_names,

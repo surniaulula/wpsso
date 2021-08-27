@@ -559,9 +559,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
+						case 'tooltip-og_def_country':		// Default Country.
+
+							$text = __( 'The country by default when adding new place or location information.', 'wpsso' );
+
+							break;
+
 						case 'tooltip-og_def_currency':		// Default Currency.
 
-							$text = __( 'The default currency used for money related options (product price, job salary, etc.).', 'wpsso' );
+							$text = __( 'The currency by default for money related options (product price, job salary, etc.).', 'wpsso' );
 
 							break;
 

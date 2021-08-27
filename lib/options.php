@@ -212,8 +212,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'site_name':
 				case 'site_name_alt':
 				case 'site_desc':
-				case 'og_def_article_section':
-				case 'og_def_product_category':
 				case 'og_title':
 				case 'og_desc':
 				case 'seo_desc':
@@ -255,6 +253,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'site_org_place_id':		// Example: 'none' or place ID.
 				case 'site_org_schema_type':		// Example: 'organization' or a sub-type.
 				case 'fb_author_field':
+				case 'og_def_article_section':
+				case 'og_def_product_category':
+				case 'og_def_country':
+				case 'og_def_currency':
 				case 'og_def_img_id_lib': 		// Example: 'wp' or 'ngg' media library name.
 				case 'og_img_id_lib': 			// Example: 'wp' or 'ngg' media library name.
 				case 'plugin_shortener':		// Example: 'none' or name of shortener

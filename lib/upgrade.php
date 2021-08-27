@@ -457,6 +457,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				806 => array(
 					'plugin_wpssoorg_tid'    => '',	// Deprecated on 2021/08/25.
 				),
+				808 => array(
+					'plm_def_country' => 'og_def_country',
+				),
 			),
 		);
 

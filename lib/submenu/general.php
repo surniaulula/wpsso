@@ -167,9 +167,11 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 							) .
 						'</td>';
 
-					/**
-					 * Default currency.
-					 */
+					$table_rows[ 'og_def_country' ] = '' . 
+						$this->form->get_th_html( _x( 'Default Country', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'og_def_country' ) . 
+						'<td>' . $this->form->get_select_country( 'og_def_country' ) . '</td>';
+
 					$table_rows[ 'og_def_currency' ] = '' .
 						$this->form->get_th_html( _x( 'Default Currency', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'og_def_currency' ) .

@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.36.1',	// Plugin version.
-					'opt_version' => '807',		// Increment when changing default option values.
+					'version'     => '8.36.2-dev.1',	// Plugin version.
+					'opt_version' => '808',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Rank higher and improve click-through-rates by presenting your content at its best on social sites and in search results - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled.',
@@ -1256,6 +1256,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_def_img_id_lib'       => 'wp',
 					'og_def_img_url'          => '',		// or Default Image URL.
 					'og_def_product_category' => 'none',		// Default Product Type.
+					'og_def_country'          => 'none',		// Default Country.
 					'og_def_currency'         => 'USD',		// Default Currency.
 					'og_img_width'            => 1200,
 					'og_img_height'           => 630,
