@@ -322,12 +322,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.36.2-dev.1 (TBD)**
+**Version 8.36.2-dev.1 (2021/08/27)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added a new "Organization Schema Type" option under the SSO > General Settings > Social and Search Sites > Google tab.
+	* Added a new "Default Country" option under the SSO &gt; General Settings &gt; General Settings &gt; Site Information tab.
+	* Added a new "Organization Schema Type" option under the SSO &gt; General Settings &gt; Social and Search Sites &gt; Google tab.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -341,7 +342,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* Deprecated the WPSSO ORG Premium add-on.
 * **Improvements**
-	* Added a new "Organization Location" option under the SSO > General Settings > Social and Search Sites > Google tab.
+	* Added a new "Organization Location" option under the SSO &gt; General Settings &gt; Social and Search Sites &gt; Google tab.
 * **Bugfixes**
 	* Fixed support for a home page custom Schema Type from the Document SSO metabox when getting the site organization options.
 * **Developer Notes**
@@ -358,18 +359,18 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Honorific Prefix
 		* Honorific Suffix
 		* Middle or Additional Name
-	* Added a new "About the User" metabox in the SSO > Advanced Settings page (Premium version).
+	* Added a new "About the User" metabox in the SSO &gt; Advanced Settings page (Premium version).
 * **Improvements**
 	* Added new properties for Schema Person markup of WordPress users:
 		* 'jobTitle'
 		* 'honorificPrefix'
 		* 'honorificSuffix'
 		* 'additionalName'
-	* Added a new SSO > General Settings > Social and Search Sites > Facebook > Facebook Domain Verification ID option.
-	* Moved the SSO > Advanced Settings > Plugin Settings > Caching tab options to the Integration tab and removed the Caching tab (Premium version).
-	* Added the SSO > Advanced Settings > Plugin Settings > Integration tab in the network admin SSO settings (Premium version).
-	* Added a "Plugin and Theme Integration" section under the SSO > Advanced Settings > Plugin Settings > Integration tab (Premium version).
-	* Added a new "Include VAT in Product Prices" option under the SSO > Advanced Settings > Plugin Settings > Integration tab (Premium version).
+	* Added a new SSO &gt; General Settings &gt; Social and Search Sites &gt; Facebook &gt; Facebook Domain Verification ID option.
+	* Moved the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Caching tab options to the Integration tab and removed the Caching tab (Premium version).
+	* Added the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Integration tab in the network admin SSO settings (Premium version).
+	* Added a "Plugin and Theme Integration" section under the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Integration tab (Premium version).
+	* Added a new "Include VAT in Product Prices" option under the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Integration tab (Premium version).
 * **Bugfixes**
 	* Fixed the "Content Image Alt Prefix" option value for non-default locales.
 * **Developer Notes**
@@ -930,7 +931,7 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 
 = 8.36.2-dev.1 =
 
-(TBD) None.
+(2021/08/27) Added new options in the SSO &gt; General Settings page.
 
 = 8.36.1 =
 
