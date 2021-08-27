@@ -207,7 +207,7 @@ Activate any of the free complementary add-on(s) you require:
 * [WPSSO FAQ Manager](https://wordpress.org/plugins/wpsso-faq/) to manage FAQ categories with Question and Answer pages.
 * [WPSSO Inherit Parent Metadata](https://wordpress.org/plugins/wpsso-inherit-parent-meta/) to inherit featured and custom images.
 * [WPSSO Mobile App Meta Tags](https://wordpress.org/plugins/wpsso-am/) to manage mobile App information.
-* [WPSSO Organization Markup](https://wordpress.org/plugins/wpsso-organization/) to manage multiple Organizations.
+* [WPSSO Organization Markup](https://wordpress.org/plugins/wpsso-organization/) to manage multiple organizations.
 * [WPSSO Place and Local SEO Markup](https://wordpress.org/plugins/wpsso-plm/) to manage multiple locations.
 * [WPSSO Product Metadata for WooCommerce](https://wordpress.org/plugins/wpsso-wc-metadata/) to add GTIN, GTIN-8, GTIN-12 (UPC), GTIN-13 (EAN), GTIN-14, ISBN, MPN, depth, and volume for WooCommerce products and variations.
 * [WPSSO Ratings and Reviews](https://wordpress.org/plugins/wpsso-ratings-and-reviews/) to add ratings in WordPress comments.
