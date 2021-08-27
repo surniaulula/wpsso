@@ -327,7 +327,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added a new "Organization Schema Type" option under the SSO > General Settings > Social and Search Sites > Google tab.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
