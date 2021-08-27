@@ -458,7 +458,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'plugin_wpssoorg_tid'    => '',	// Deprecated on 2021/08/25.
 				),
 				808 => array(
-					'plm_def_country' => 'og_def_country',
+					'plm_def_country' => 'og_def_country',	// Moved to WPSSO Core on 2021/08/27.
 				),
 			),
 		);
