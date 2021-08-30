@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.36.2-dev.2',	// Plugin version.
-					'opt_version' => '809',		// Increment when changing default option values.
+					'version'     => '8.36.2-dev.3',	// Plugin version.
+					'opt_version' => '810',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Rank higher and improve click-through-rates by presenting your content at its best on social sites and in search results - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled.',
@@ -590,7 +590,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'desc'        => 'Manage Schema Places and Local SEO for Facebook / Open Graph, Pinterest, and Google Local Business.',
 					'slug'        => 'wpsso-plm',
 					'base'        => 'wpsso-plm/wpsso-plm.php',
-					'update_auth' => 'tid',
+					'update_auth' => '',		// No premium version.
 
 					/**
 					 * URLs or relative paths to plugin banners and icons.
@@ -641,9 +641,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'install'   => 'https://wpsso.com/docs/plugins/wpsso-plm/installation/',
 						'faqs'      => '',
 						'notes'     => '',
-						'support'   => 'https://surniaulula.com/support/create_ticket/',	// Premium support ticket.
-						'purchase'  => 'https://wpsso.com/extend/plugins/wpsso-plm/',		// Purchase page.
-						'info'      => 'https://wpsso.com/extend/plugins/wpsso-plm/info/',	// License information.
+						'support'   => '',	// Premium support ticket.
+						'purchase'  => '',	// Purchase page.
+						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-plm/update/',
 						'latest'    => '',	// Optional.
 					),

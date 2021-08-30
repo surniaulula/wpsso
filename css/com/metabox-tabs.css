@@ -293,7 +293,7 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\e808";	/* .icon-picture */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_oembed::before {			/* oEmbed tab. */
+.sucom-tablink-icon.sucom-tablink-href_oembed::before {			/* Document SSO > oEmbed tab. */
 	content:"\f2c3";	/* .icon-id-card-o */
 }
 
@@ -305,7 +305,7 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\f1e1";	/* .icon-share-squared */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_other_organizations::before {	/* Other Organizations tab. */
+.sucom-tablink-icon.sucom-tablink-href_other::before {			/* SSO > Organizations > Other Organizations tab. */
 	content:"\f0f7";	/* .icon-building */
 }
 
@@ -317,11 +317,11 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\f0d3";	/* .icon-pinterest-squared */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_place::before {			/* Schema Place tab. */
+.sucom-tablink-icon.sucom-tablink-href_place::before {			/* SSO > Places > Manage Places tab. */
 	content:"\e806";	/* .icon-location */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_preview::before {		/* Preview tab. */
+.sucom-tablink-icon.sucom-tablink-href_preview::before {		/* Document SSO > Preview tab. */
 	content:"\e805";	/* .icon-eye */
 }
 

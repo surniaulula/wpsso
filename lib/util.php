@@ -1109,10 +1109,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( ! isset( self::$form_cache[ $key ] ) ) {
 
-				self::$form_cache[ $key ] = null;		// Create key for default filter.
-			}
-
-			if ( self::$form_cache[ $key ] === null ) {
+				self::$form_cache[ $key ] = array();	// Create key for default filter.
 
 				if ( $this->p->debug->enabled ) {
 
@@ -1123,9 +1120,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					case 'half_hours':
 
-						/**
-						 * Returns an array of times without a 'none' value.
-						 */
 						self::$form_cache[ $key ] = self::get_hours_range( $start_secs = 0, $end_secs = DAY_IN_SECONDS,
 							$step_secs = 60 * 30, $label_format = 'H:i' );
 
@@ -1133,9 +1127,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					case 'quarter_hours':
 
-						/**
-						 * Returns an array of times without a 'none' value.
-						 */
 						self::$form_cache[ $key ] = self::get_hours_range( $start_secs = 0, $end_secs = DAY_IN_SECONDS,
 							$step_secs = 60 * 15, $label_format = 'H:i' );
 
@@ -1181,9 +1172,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						break;
 
-					case 'org_site_names':
+					case 'org_names':
 
-						self::$form_cache[ $key ] = array( 'site' => '[WebSite Organization]' );
+						self::$form_cache[ $key ] = array( 'site' => $this->p->cf[ 'form' ][ 'org_select' ][ 'site' ] );
 
 						self::$form_cache[ $key ] = apply_filters( 'wpsso_form_cache_' . $key, self::$form_cache[ $key ] );
 
@@ -1191,10 +1182,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					case 'person_names':
 
-						/**
-						 * $add_none is always false since this method may add a 'none' array element as well.
-						 */
-						self::$form_cache[ $key ] = WpssoUser::get_person_names( false );
+						self::$form_cache[ $key ] = WpssoUser::get_person_names();
 
 						break;
 
@@ -1215,35 +1203,41 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						break;
 
+					case 'place_names_custom':
+
+						$this->get_form_cache( 'place_names' );
+
+						self::$form_cache[ $key ] = array( 'custom' => $this->p->cf[ 'form' ][ 'place_select' ][ 'custom' ] ) +
+							self::$form_cache[ 'place_names' ];
+
+						break;
+
+					case 'place_names':
+
+						self::$form_cache[ $key ] = apply_filters( 'wpsso_form_cache_' . $key, self::$form_cache[ $key ] );
+
+						break;
+
 					default:
 
-						self::$form_cache[ $key ] = apply_filters( 'wpsso_form_cache_' . $key,
-							self::$form_cache[ $key ] );
+						self::$form_cache[ $key ] = apply_filters( 'wpsso_form_cache_' . $key, self::$form_cache[ $key ] );
 
 						break;
 				}
 
 			} elseif ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'returning existing form cache entry for ' . $key );
+				$this->p->debug->log( 'using existing form cache entry for ' . $key );
 			}
 
-			if ( isset( self::$form_cache[ $key ][ 'none' ] ) ) {
+			if ( isset( self::$form_cache[ $key ][ 'none' ] ) ) {	// Just in case.
 
 				unset( self::$form_cache[ $key ][ 'none' ] );
 			}
 
 			if ( $add_none ) {
 
-				$none = array( 'none' => '[None]' );
-
-				if ( is_array( self::$form_cache[ $key ] ) ) {
-
-					return $none + self::$form_cache[ $key ];
-
-				}
-
-				return $none;
+				return array( 'none' => '[None]' ) + self::$form_cache[ $key ];
 			}
 
 			return self::$form_cache[ $key ];
