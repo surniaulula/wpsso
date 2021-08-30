@@ -322,7 +322,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.36.2-dev.1 (2021/08/27)**
+**Version 8.36.2-dev.2 (2021/08/30)**
 
 * **New Features**
 	* None.
@@ -929,9 +929,9 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 
 == Upgrade Notice ==
 
-= 8.36.2-dev.1 =
+= 8.36.2-dev.2 =
 
-(2021/08/27) Added new options in the SSO &gt; General Settings page.
+(2021/08/30) Added new options in the SSO &gt; General Settings page.
 
 = 8.36.1 =
 
