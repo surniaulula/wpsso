@@ -58,7 +58,7 @@ function sucomInitMetabox( container_id, doing_ajax ) {
 	} );
 
 	/**
-	 * The 'sucom_init_metabox' event is hooked by sucomInitAdminMedia(), sucomInitToolTips(), and plmPlaceSchemaType().
+	 * The 'sucom_init_metabox' event is hooked by sucomInitAdminMedia(), sucomInitToolTips().
 	 */
 	jQuery( document ).trigger( 'sucom_init_metabox', [ container_id, doing_ajax ] );
 
@@ -241,7 +241,7 @@ function sucomSchemaOrgId() {
 	var select_schema_org   = jQuery( this );
 	var select_schema_place = jQuery( 'select#select_schema_place_id' );
 
-	sucomMaybeDisableOther( select_schema_org, select_schema_place );
+	sucomSelectDisableOther( select_schema_org, select_schema_place );
 }
 
 /**
@@ -252,10 +252,10 @@ function sucomSchemaPlaceId() {
 	var select_schema_place = jQuery( this );
 	var select_schema_org   = jQuery( 'select#select_schema_organization_id' );
 
-	sucomMaybeDisableOther( select_schema_place, select_schema_org );
+	sucomSelectDisableOther( select_schema_place, select_schema_org );
 }
 
-function sucomMaybeDisableOther( main_obj, other_obj ) {
+function sucomSelectDisableOther( main_obj, other_obj ) {
 
 	var main_val    = main_obj.val();
 	var other_val   = other_obj.val();
