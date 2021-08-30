@@ -22,8 +22,20 @@ function sucomInitMetabox( container_id, doing_ajax ) {
 	/**
 	 * When the Schema type is changed, maybe update the Open Graph type.
 	 */
-	jQuery( table_id + ' select#select_og_schema_type' ).show( sucomSchemaTypeOgType );
-	jQuery( table_id + ' select#select_og_schema_type' ).change( sucomSchemaTypeOgType );
+	jQuery( table_id + ' select#select_og_schema_type' ).show( sucomOgSchemaType );
+	jQuery( table_id + ' select#select_og_schema_type' ).change( sucomOgSchemaType );
+
+	/**
+	 * When an Organization ID is selected, disable the Place ID.
+	 */
+	jQuery( table_id + ' select#select_schema_organization_id' ).show( sucomSchemaOrgId );
+	jQuery( table_id + ' select#select_schema_organization_id' ).change( sucomSchemaOrgId );
+
+	/**
+	 * When a Place ID is selected, disable the Organization ID.
+	 */
+	jQuery( table_id + ' select#select_schema_place_id' ).show( sucomSchemaPlaceId );
+	jQuery( table_id + ' select#select_schema_place_id' ).change( sucomSchemaPlaceId );
 
 	/**
 	 * Add a "changed" the options class when their value might have changed. 
@@ -57,7 +69,7 @@ function sucomInitMetabox( container_id, doing_ajax ) {
 
 		jQuery( table_id + ' tr' ).each( function() {
 
-			if ( jQuery( this ).css( 'display' ) !== 'none' ) {
+			if ( 'none' !== jQuery( this ).css( 'display' ) ) {
 
 				jQuery( this ).show();
 			}
@@ -101,7 +113,7 @@ function sucomSelectLoadJson( select_id, json_name ) {
 
 	var default_value   = container.data( 'default-value' );
 	var default_text    = container.data( 'default-text' );
-	var pre_selected    = container.val();
+	var selected_val    = container.val();
 	var select_opt_html = ''
 
 	/**
@@ -116,7 +128,7 @@ function sucomSelectLoadJson( select_id, json_name ) {
 
 		select_opt_html += '<option value="' + option_value + '"';
 
-		if ( option_value == pre_selected ) {	/* Allow numeric string/integer comparison. */
+		if ( option_value == selected_val ) {	/* Allow numeric string/integer comparison. */
 
 			select_opt_html += ' selected="selected"';
 		}
@@ -158,24 +170,24 @@ function sucomEscAttr ( string ) {
 /**
  * When the Schema type is changed, maybe update the Open Graph type.
  */
-function sucomSchemaTypeOgType() {
+function sucomOgSchemaType() {
 
 	var select_schema_type = jQuery( this );
-	var schema_type_id     = select_schema_type.val();
+	var schema_type_val    = select_schema_type.val();
 
 	var ajaxData = {
-		action: sucomAdminPageL10n._ajax_actions[ 'schema_type_og_type' ],
-		schema_type: schema_type_id,
+		action: sucomAdminPageL10n._ajax_actions[ 'schema_type_og_type' ],	// Returns schema_og_type_val.
+		schema_type: schema_type_val,
 		_ajax_nonce: sucomAdminPageL10n._ajax_nonce,
 	}
 
-	jQuery.post( ajaxurl, ajaxData, function( schema_og_type_id ) {
+	jQuery.post( ajaxurl, ajaxData, function( schema_og_type_val ) {
 
-		var select_og_type = jQuery( 'select#select_og_type' );
-		var og_type_linked = jQuery( 'div#og_type_linked' );	/* May not exist. */
-		var og_type_option = jQuery( 'select#select_og_type option' );
-		var og_type_id     = select_og_type.val();
-		var def_og_type_id = select_og_type.attr( 'data-default-value' );
+		var select_og_type  = jQuery( 'select#select_og_type' );
+		var og_type_linked  = jQuery( 'div#og_type_linked' );	/* May not exist. */
+		var og_type_option  = jQuery( 'select#select_og_type option' );
+		var og_type_val     = select_og_type.val();
+		var def_og_type_val = select_og_type.data( 'default-value' );
 
 		if ( og_type_linked.length ) {
 
@@ -186,21 +198,21 @@ function sucomSchemaTypeOgType() {
 		 * If we have an associated Open Graph type for this Schema type, then update the Open Graph value and disable the
 		 * select.
 		 */
-		if ( schema_og_type_id ) {
+		if ( schema_og_type_val ) {	// Can be false.
 
 			var schema_type_label = sucomAdminPageL10n._option_labels[ 'schema_type' ];
 			var linked_to_label   = sucomAdminPageL10n._linked_to_transl.formatUnicorn( schema_type_label );
 
 			select_og_type.after( '<div id="og_type_linked" class="dashicons dashicons-admin-links linked_to_label" title="' + linked_to_label + '"></div>' );
 
-			select_og_type.prop( 'disabled', true );
+			if ( schema_og_type_val !== og_type_val ) {
 
-			if ( schema_og_type_id !== og_type_id ) {
+				og_type_option.removeAttr( 'selected' ).filter( '[value=' + schema_og_type_val + ']' ).attr( 'selected', true )
 
-				og_type_option.removeAttr( 'selected' ).filter( '[value=' + schema_og_type_id + ']' ).attr( 'selected', true )
-
-				select_og_type.trigger( 'load_json' ).val( schema_og_type_id ).trigger( 'change' );
+				select_og_type.trigger( 'load_json' ).val( schema_og_type_val ).trigger( 'change' );
 			}
+
+			select_og_type.prop( 'disabled', true );
 
 		/**
 		 * If we don't have an associated Open Graph type for this Schema type, then if previously disabled, reenable and
@@ -208,23 +220,67 @@ function sucomSchemaTypeOgType() {
 		 */
 		} else if ( og_type_linked.length ) {
 
-			select_og_type.prop( 'disabled', false );
+			if ( def_og_type_val.length ) {
 
-			if ( def_og_type_id.length ) {
+				if ( def_og_type_val !== og_type_val ) {
 
-				if ( def_og_type_id !== og_type_id ) {
-
-					select_og_type.trigger( 'load_json' ).val( def_og_type_id ).trigger( 'change' );
+					select_og_type.trigger( 'load_json' ).val( def_og_type_val ).trigger( 'change' );
 				}
 			}
+
+			select_og_type.prop( 'disabled', false );
 		}
 	} );
 }
 
+/**
+ * When an Organization ID is selected, disable the Place ID.
+ */
+function sucomSchemaOrgId() {
+
+	var select_schema_org   = jQuery( this );
+	var select_schema_place = jQuery( 'select#select_schema_place_id' );
+
+	sucomMaybeDisableOther( select_schema_org, select_schema_place );
+}
+
+/**
+ * When a Place ID is selected, disable the Organization ID.
+ */
+function sucomSchemaPlaceId() {
+
+	var select_schema_place = jQuery( this );
+	var select_schema_org   = jQuery( 'select#select_schema_organization_id' );
+
+	sucomMaybeDisableOther( select_schema_place, select_schema_org );
+}
+
+function sucomMaybeDisableOther( main_obj, other_obj ) {
+
+	var main_val    = main_obj.val();
+	var other_val   = other_obj.val();
+
+	if ( 'none' !== main_val ) {
+	
+		if ( 'none' !== other_val ) {
+
+			other_val = 'none';
+
+			other_obj.trigger( 'load_json' ).val( other_val ).trigger( 'change' );
+		}
+
+		other_obj.prop( 'disabled', true );
+
+	} else {
+
+		other_obj.prop( 'disabled', false );
+	}
+}
+
 function sucomTextLen( container_id ) {
 
-	var text       = jQuery.trim( sucomClean( jQuery( '#' + container_id ).val() ) );
-	var text_len   = text.length;
+	var text_val   = jQuery.trim( sucomClean( jQuery( '#' + container_id ).val() ) );
+	var text_len   = text_val.length;
 	var min_len    = Number( jQuery( '#' + container_id ).attr( 'minLength' ) );
 	var warn_len   = Number( jQuery( '#' + container_id ).attr( 'warnLength' ) );
 	var max_len    = Number( jQuery( '#' + container_id ).attr( 'maxLength' ) );
