@@ -1241,14 +1241,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					return $none + self::$form_cache[ $key ];
 
-				} else {
-
-					return $none;
 				}
 
-			} else {
-				return self::$form_cache[ $key ];
+				return $none;
 			}
+
+			return self::$form_cache[ $key ];
 		}
 
 		/**

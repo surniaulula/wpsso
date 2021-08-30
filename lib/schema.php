@@ -176,18 +176,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'checking for schema_organization_org_id metadata option value' );
+					$this->p->debug->log( 'checking for schema_organization_id metadata option value' );
 				}
 
 				/**
 				 * Maybe get a different organization ID from the "Select an Organization" option (provided by the
 				 * WPSSO JSON add-on).
 				 */
-				$org_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_organization_org_id', $filter_opts = true, $pad_opts = true );
+				$org_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_organization_id', $filter_opts = true, $pad_opts = true );
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'schema_organization_org_id = ' . $org_id );
+					$this->p->debug->log( 'schema_organization_id = ' . $org_id );
 				}
 			}
 
@@ -1510,6 +1510,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						'movie'          => 'movie',
 						'organization'   => 'organization',
 						'person'         => 'person',
+						'place'          => 'place',
 						'product'        => 'product',
 						'qa'             => 'webpage.qa',
 						'question'       => 'question',
