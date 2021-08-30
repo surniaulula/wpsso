@@ -322,7 +322,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.36.2-dev.3 (2021/08/30)**
+**Version 8.37.0-dev.3 (2021/08/30)**
 
 * **New Features**
 	* Deprecated the WPSSO PLM Premium add-on.
@@ -332,7 +332,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added a jQuery enable/disable link between the '#select_schema_organization_id' and '#select_schema_place_id' options.
 * **Requires At Least**
 	* PHP v7.0.
 	* WordPress v5.0.
@@ -929,7 +929,7 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 
 == Upgrade Notice ==
 
-= 8.36.2-dev.3 =
+= 8.37.0-dev.3 =
 
 (2021/08/30) Deprecated the WPSSO PLM Premium add-on. Added new options in the SSO &gt; General Settings page.
 
