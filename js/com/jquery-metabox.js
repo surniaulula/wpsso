@@ -241,7 +241,7 @@ function sucomSchemaOrgId() {
 	var select_schema_org   = jQuery( this );
 	var select_schema_place = jQuery( 'select#select_schema_place_id' );
 
-	sucomSelectDisableOther( select_schema_org, select_schema_place );
+	sucomSelectUniquePair( select_schema_org, select_schema_place );
 }
 
 /**
@@ -252,28 +252,28 @@ function sucomSchemaPlaceId() {
 	var select_schema_place = jQuery( this );
 	var select_schema_org   = jQuery( 'select#select_schema_organization_id' );
 
-	sucomSelectDisableOther( select_schema_place, select_schema_org );
+	sucomSelectUniquePair( select_schema_place, select_schema_org );
 }
 
-function sucomSelectDisableOther( main_obj, other_obj ) {
+function sucomSelectUniquePair( select_main, select_other ) {
 
-	var main_val    = main_obj.val();
-	var other_val   = other_obj.val();
+	var main_val    = select_main.val();
+	var other_val   = select_other.val();
 
-	if ( 'none' !== main_val ) {
+	if ( 'none' !== main_val ) {	// If the main select has a value.
 	
-		if ( 'none' !== other_val ) {
+		if ( 'none' !== other_val ) {	// Maybe set the other select value to 'none'.
 
 			other_val = 'none';
 
-			other_obj.trigger( 'load_json' ).val( other_val ).trigger( 'change' );
+			select_other.trigger( 'load_json' ).val( other_val ).trigger( 'change' );
 		}
 
-		other_obj.prop( 'disabled', true );
+		select_other.prop( 'disabled', true );	// Disable the other select.
 
 	} else {
 
-		other_obj.prop( 'disabled', false );
+		select_other.prop( 'disabled', false );	// Re-enable the other select.
 	}
 }
 

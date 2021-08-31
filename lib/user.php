@@ -352,7 +352,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$this->md_cache_disabled = true;	// Disable local cache for get_defaults() and get_options().
 
-			$mod  = $this->get_mod( $user_id );
+			$mod = $this->get_mod( $user_id );
+
 			$opts = $this->get_submit_opts( $user_id );
 
 			/**
@@ -364,6 +365,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			$opts = apply_filters( 'wpsso_save_md_options', $opts, $mod );
+
 			$opts = apply_filters( 'wpsso_save_user_options', $opts, $user_id, $rel_id, $mod );
 
 			if ( empty( $opts ) ) {

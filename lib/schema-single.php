@@ -1667,11 +1667,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					/**
 					 * Check for a custom place id that might have precedence.
 					 *
-					 * 'plm_place_id' can be 'none', 'custom', or numeric (including 0).
+					 * 'schema_place_id' can be 'none', 'custom', or numeric (including 0).
 					 */
 					if ( ! empty( $mod[ 'obj' ] ) ) {
 
-						$place_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'plm_place_id' );
+						$place_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_place_id' );
 
 					} else {
 
@@ -1686,7 +1686,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 						if ( $wpsso->debug->enabled ) {
 
-							$wpsso->debug->log( 'overriding org_place_id ' . $org_opts[ 'org_place_id' ] . ' with plm_place_id ' . $place_id );
+							$wpsso->debug->log( 'overriding org_place_id ' . $org_opts[ 'org_place_id' ] . ' with schema_place_id ' . $place_id );
 						}
 					}
 

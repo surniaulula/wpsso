@@ -158,7 +158,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'plugin_upscale_img_max':		// Maximum Image Upscale Percent.
 				case ( preg_match( '/_(len|warn)$/', $base_key ) ? true : false ):
 
-					return 'pos_integer';	// Ala 'pos_int'.
+					return 'pos_integer';	// Aka 'pos_int'.
 
 				/**
 				 * Must be numeric (blank and zero are ok).

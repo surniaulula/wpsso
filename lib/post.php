@@ -395,7 +395,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$this->p->debug->log( 'applying get_md_options filters' );
 					}
 
-					$md_opts = (array) apply_filters( 'wpsso_get_md_options', $md_opts, $mod );
+					$md_opts = apply_filters( 'wpsso_get_md_options', $md_opts, $mod );
 
 					/**
 					 * Since WPSSO Core v4.31.0.
@@ -409,7 +409,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$this->p->debug->log( 'applying get_post_options filters for post ID ' . $post_id . ' metadata' );
 					}
 
-					$md_opts = (array) apply_filters( 'wpsso_get_post_options', $md_opts, $post_id, $mod );
+					$md_opts = apply_filters( 'wpsso_get_post_options', $md_opts, $post_id, $mod );
 
 					/**
 					 * Since WPSSO Core v8.2.0.
@@ -440,7 +440,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$this->md_cache_disabled = true;	// Disable local cache for get_defaults() and get_options().
 
-			$mod  = $this->get_mod( $post_id );
+			$mod = $this->get_mod( $post_id );
+
 			$opts = $this->get_submit_opts( $post_id );
 
 			/**
@@ -452,6 +453,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			$opts = apply_filters( 'wpsso_save_md_options', $opts, $mod );
+
 			$opts = apply_filters( 'wpsso_save_post_options', $opts, $post_id, $rel_id, $mod );
 
 			if ( empty( $opts ) ) {
