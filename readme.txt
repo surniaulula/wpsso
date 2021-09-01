@@ -322,13 +322,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.37.0-dev.4 (2021/08/31)**
+**Version 8.37.0-dev.5 (2021/08/31)**
 
 * **New Features**
 	* Deprecated the WPSSO PLM Premium add-on.
 * **Improvements**
-	* Added a new "Default Country" option under the SSO &gt; General Settings &gt; General Settings &gt; Site Information tab.
+	* Added new "Default Country" and "Default Timezone" options under the SSO &gt; General Settings &gt; General Settings &gt; Site Information tab.
 	* Added a new "Organization Schema Type" option under the SSO &gt; General Settings &gt; Social and Search Sites &gt; Google tab.
+	* Removed the "Author / Person Name Format" option under the SSO &gt; General Settings &gt; Social and Search Sites &gt; Google tab.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -929,7 +930,7 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 
 == Upgrade Notice ==
 
-= 8.37.0-dev.4 =
+= 8.37.0-dev.5 =
 
 (2021/08/31) Deprecated the WPSSO PLM Premium add-on. Added new options in the SSO &gt; General Settings page.
 
