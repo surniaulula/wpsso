@@ -3004,10 +3004,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$this->add_schema_publisher_type_table_rows( $table_rows, $form );
 
-			$table_rows[ 'seo_author_name' ] = $form->get_tr_hide( 'basic', 'seo_author_name' ) . 
-				$form->get_th_html( _x( 'Author / Person Name Format', 'option label', 'wpsso' ), $css_class = '', $css_id = 'seo_author_name' ) . 
-				'<td>' . $form->get_select( 'seo_author_name', $this->p->cf[ 'form' ][ 'user_name_fields' ] ) . '</td>';
-
 			$table_rows[ 'schema_img_max' ] = $form->get_tr_hide( 'basic', 'schema_img_max' ) . 
 				$form->get_th_html( _x( 'Schema Max. Images to Include', 'option label', 'wpsso' ), $css_class = '', $css_id = 'schema_img_max' ) . 
 				'<td>' .

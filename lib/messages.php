@@ -561,13 +561,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-og_def_country':		// Default Country.
 
-							$text = __( 'The country by default when adding new place or location information.', 'wpsso' );
+							$text = __( 'The default country when adding place or location information.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-og_def_timezone':		// Default Timezone.
+
+							$text = __( 'The default timezone when adding place or location information.', 'wpsso' );
 
 							break;
 
 						case 'tooltip-og_def_currency':		// Default Currency.
 
-							$text = __( 'The currency by default for money related options (product price, job salary, etc.).', 'wpsso' );
+							$text = __( 'The default currency for money related options (product price, job salary, etc.).', 'wpsso' );
 
 							break;
 
@@ -675,7 +681,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = __( 'The maximum number of images to include in the Open Graph meta tags for the webpage.', 'wpsso' ) . ' ';
 
-							$text .= __( 'If you select "0", then no images will be included (<strong>not recommended</strong>).', 'wpsso' ) . ' ';
+							$text .= __( 'If you select "0", then no images will be included (not recommended).', 'wpsso' ) . ' ';
 
 							$text .= __( 'If no images are available in the Open Graph meta tags, social sites may choose any random image from the webpage, including headers, thumbnails, ads, etc.', 'wpsso' );
 
@@ -1338,12 +1344,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					switch ( $msg_key ) {
 
-						case 'tooltip-seo_author_name':		// Author / Person Name Format.
-
-							$text =  __( 'Select a name format for author meta tags and/or Schema Person markup.', 'wpsso' );
-
-							break;
-
 						case 'tooltip-seo_desc_max_len':	// Description Meta Tag Max. Length.
 
 							$text = sprintf( __( 'The maximum length for the SEO description meta tag value (the default is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'seo_desc_max_len' ) ) . ' ';
@@ -1445,7 +1445,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= __( 'Each image will be included in three different sizes for Google (1:1, 4:3, and 16:9).', 'wpsso' ) . ' ';
 
-							$text .= __( 'If you select "0", then no images will be included (<strong>not recommended</strong>).', 'wpsso' ) . ' ';
+							$text .= __( 'If you select "0", then no images will be included (not recommended).', 'wpsso' ) . ' ';
 
 							break;
 

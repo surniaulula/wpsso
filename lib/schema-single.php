@@ -1844,7 +1844,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					$local_cache_person_opts[ $person_id ] = array(
 						'person_type'       => 'person',
 						'person_url'        => $user_mod[ 'obj' ]->get_author_website( $person_id, 'url' ),	// Returns a single URL string.
-						'person_name'       => $user_mod[ 'obj' ]->get_author_meta( $person_id, $wpsso->options[ 'seo_author_name' ] ),
+						'person_name'       => $user_mod[ 'obj' ]->get_author_meta( $person_id, 'display_name' ),
 						'person_first_name' => $user_mod[ 'obj' ]->get_author_meta( $person_id, 'first_name' ),
 						'person_last_name'  => $user_mod[ 'obj' ]->get_author_meta( $person_id, 'last_name' ),
 						'person_addl_name'  => $user_mod[ 'obj' ]->get_author_meta( $person_id, 'additional_name' ),

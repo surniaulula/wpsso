@@ -62,7 +62,7 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 
 				if ( isset( $mt_og[ 'og:type' ] ) && 'article' === $mt_og[ 'og:type' ] ) {
 
-					$mt_name[ 'author' ] = $this->p->user->get_author_meta( $author_id, $this->p->options[ 'seo_author_name' ] );
+					$mt_name[ 'author' ] = $this->p->user->get_author_meta( $author_id, 'display_name' );
 
 				} elseif ( $this->p->debug->enabled ) {
 

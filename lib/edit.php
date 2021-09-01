@@ -42,7 +42,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 				'metabox_sso_oembed_rows'   => 4,
 				'metabox_sso_head_rows'     => 4,
 				'metabox_sso_validate_rows' => 4,
-			), $min_int );
+			), $min_int );	// Run before any add-on filters.
 		}
 
 		public function filter_metabox_sso_edit_rows( $table_rows, $form, $head_info, $mod ) {

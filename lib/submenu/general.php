@@ -172,6 +172,11 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 							$css_class = '', $css_id = 'og_def_country' ) . 
 						'<td>' . $this->form->get_select_country( 'og_def_country' ) . '</td>';
 
+					$table_rows[ 'og_def_timezone' ] = '' . 
+						$this->form->get_th_html( _x( 'Default Timezone', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'og_def_timezone' ) . 
+						'<td>' . $this->form->get_select_timezone( 'og_def_timezone' ) . '</td>';
+
 					$table_rows[ 'og_def_currency' ] = '' .
 						$this->form->get_th_html( _x( 'Default Currency', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'og_def_currency' ) .

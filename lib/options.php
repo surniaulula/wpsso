@@ -256,6 +256,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'og_def_article_section':
 				case 'og_def_product_category':
 				case 'og_def_country':
+				case 'og_def_timezone':
 				case 'og_def_currency':
 				case 'og_def_img_id_lib': 		// Example: 'wp' or 'ngg' media library name.
 				case 'og_img_id_lib': 			// Example: 'wp' or 'ngg' media library name.

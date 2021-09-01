@@ -716,8 +716,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						/**
 						 * Non-standard / internal meta tag used for display purposes.
 						 */
-						$mt_og[ 'article:author:name' ] = $this->p->user->get_author_meta( $mod[ 'post_author' ],
-							$this->p->options[ 'seo_author_name' ] );
+						$mt_og[ 'article:author:name' ] = $this->p->user->get_author_meta( $mod[ 'post_author' ], 'display_name' );
 
 						/**
 						 * An array of author URLs.
