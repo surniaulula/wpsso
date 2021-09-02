@@ -322,7 +322,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.37.0-b.1 (2021/09/01)**
+**Version 8.37.0-b.2 (2021/09/02)**
 
 * **New Features**
 	* Deprecated the WPSSO PLM Premium add-on.
@@ -930,9 +930,9 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 
 == Upgrade Notice ==
 
-= 8.37.0-b.1 =
+= 8.37.0-b.2 =
 
-(2021/09/01) Deprecated the WPSSO PLM Premium add-on. Added new options in the SSO &gt; General Settings page.
+(2021/09/02) Deprecated the WPSSO PLM Premium add-on. Added new options in the SSO &gt; General Settings page.
 
 = 8.36.1 =
 
