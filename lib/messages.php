@@ -275,7 +275,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = __( 'A customized image ID to include first, before any featured, attached, or content images.', 'wpsso' ) . ' ';
 
-							$text .= '<em>' . __( 'This field is disabled if a custom image URL is entered.', 'wpsso' ) . '</em>';
+							$text .= '<em>' . __( 'This option is disabled if a custom image URL is entered.', 'wpsso' ) . '</em>';
 
 						 	break;
 
@@ -287,7 +287,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= $fb_img_rec . ' ';
 
-							$text .= '<em>' . __( 'This field is disabled if a custom image ID is selected.', 'wpsso' ) . '</em>';
+							$text .= '<em>' . __( 'This option is disabled if a custom image ID is selected.', 'wpsso' ) . '</em>';
 
 							break;
 
@@ -328,7 +328,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = __( 'A customized image ID for the Pinterest Pin It browser button.', 'wpsso' ) . ' ';
 
-							$text .= '<em>' . __( 'This field is disabled if a custom image URL is entered.', 'wpsso' ) . '</em>';
+							$text .= '<em>' . __( 'This option is disabled if a custom image URL is entered.', 'wpsso' ) . '</em>';
 
 						 	break;
 
@@ -336,7 +336,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = __( 'A customized image URL (instead of an image ID) for the Pinterest Pin It browser button.', 'wpsso' ) . ' ';
 
-							$text .= '<em>' . __( 'This field is disabled if a custom image ID is selected.', 'wpsso' ) . '</em>';
+							$text .= '<em>' . __( 'This option is disabled if a custom image ID is selected.', 'wpsso' ) . '</em>';
 
 						 	break;
 
@@ -344,7 +344,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = __( 'A customized image ID to include first in the Schema meta tags and JSON-LD markup.', 'wpsso' ) . ' ';
 
-							$text .= '<em>' . __( 'This field is disabled if a custom image URL is entered.', 'wpsso' ) . '</em>';
+							$text .= '<em>' . __( 'This option is disabled if a custom image URL is entered.', 'wpsso' ) . '</em>';
 
 						 	break;
 
@@ -352,7 +352,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = __( 'A customized image URL (instead of an image ID) to include first in the Schema meta tags and JSON-LD markup.', 'wpsso' ) . ' ';
 
-							$text .= '<em>' . __( 'This field is disabled if a custom image ID is selected.', 'wpsso' ) . '</em>';
+							$text .= '<em>' . __( 'This option is disabled if a custom image ID is selected.', 'wpsso' ) . '</em>';
 
 						 	break;
 
@@ -361,7 +361,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = __( 'A customized image ID for the Twitter Card image.', 'wpsso' ) . ' ';
 
-							$text .= '<em>' . __( 'This field is disabled if a custom image URL is entered.', 'wpsso' ) . '</em>';
+							$text .= '<em>' . __( 'This option is disabled if a custom image URL is entered.', 'wpsso' ) . '</em>';
 
 						 	break;
 
@@ -370,7 +370,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text = __( 'A customized image URL (instead of an image ID) for the Twitter Card image.', 'wpsso' ) . ' ';
 
-							$text .= '<em>' . __( 'This field is disabled if a custom image ID is selected.', 'wpsso' ) . '</em>';
+							$text .= '<em>' . __( 'This option is disabled if a custom image ID is selected.', 'wpsso' ) . '</em>';
 
 						 	break;
 
@@ -561,13 +561,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						case 'tooltip-og_def_country':		// Default Country.
 
-							$text = __( 'The default country when adding place or location information.', 'wpsso' );
+							$text = __( 'The default country when entering information about a place or location.', 'wpsso' );
 
 							break;
 
 						case 'tooltip-og_def_timezone':		// Default Timezone.
 
-							$text = __( 'The default timezone when adding place or location information.', 'wpsso' );
+							$text = __( 'The default timezone when entering information about a place or location.', 'wpsso' );
 
 							break;
 
@@ -703,7 +703,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= __( 'The default image is used for archive pages (ie. blog, category, and tag archive page) and as a fallback for posts and pages that do not have a suitable image featured, attached, or in their content.', 'wpsso' ) . ' ';
 
-							$text .= '<em>' . __( 'This field is disabled if a custom image URL is entered.', 'wpsso' ) . '</em>';
+							$text .= '<em>' . __( 'This option is disabled if a custom image URL is entered.', 'wpsso' ) . '</em>';
 
 							break;
 
@@ -719,7 +719,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= __( 'The default image is used for archive pages (ie. blog, category, and tag archive page) and as a fallback for posts and pages that do not have a suitable image featured, attached, or in their content.', 'wpsso' ) . ' ';
 
-							$text .= '<em>' . __( 'This field is disabled if a custom image ID is selected.', 'wpsso' ) . '</em>';
+							$text .= '<em>' . __( 'This option is disabled if a custom image ID is selected.', 'wpsso' ) . '</em>';
 
 							break;
 

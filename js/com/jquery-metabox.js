@@ -253,12 +253,27 @@ function sucomSchemaPlaceId() {
 	var select_schema_org   = jQuery( 'select#select_schema_organization_id' );
 
 	sucomSelectUniquePair( select_schema_place, select_schema_org );
+
+	var main_val = select_schema_place.val();
+
+	/**
+	 * The Schema Type option can be overwritten (and disabled) by the Schema Type of the selected place, so re-enable if the
+	 * place value is changed to 'none'.
+	 *
+	 * See WpssoPlmFiltersOptions->update_md_opts().
+	 */
+	if ( 'none' === main_val ) {
+
+		var select_schema_type = jQuery( 'select#select_og_schema_type' );
+
+		select_schema_type.prop( 'disabled', false );	// Re-enable the Schema Type option.
+	}
 }
 
 function sucomSelectUniquePair( select_main, select_other ) {
 
-	var main_val    = select_main.val();
-	var other_val   = select_other.val();
+	var main_val  = select_main.val();
+	var other_val = select_other.val();
 
 	if ( 'none' !== main_val ) {	// If the main select has a value.
 	

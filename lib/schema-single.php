@@ -2100,8 +2100,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 					if ( ! empty( $order_url ) ) {	// Just in case.
 
-						$json_ret[ 'potentialAction' ][] = WpssoSchema::get_schema_type_context(
-							'https://schema.org/OrderAction', array( 'target' => $order_url ) );
+						$json_ret[ 'potentialAction' ][] = WpssoSchema::get_schema_type_context( 'https://schema.org/OrderAction',
+							array( 'target' => $order_url ) );
 					}
 				}
 			}

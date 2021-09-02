@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.37.0-b.1\n"
+"Project-Id-Version: WPSSO Core 8.37.0-b.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -5328,7 +5328,7 @@ msgstr ""
 
 #: lib/messages.php:278 lib/messages.php:331 lib/messages.php:347
 #: lib/messages.php:364 lib/messages.php:706
-msgid "This field is disabled if a custom image URL is entered."
+msgid "This option is disabled if a custom image URL is entered."
 msgstr ""
 
 #: lib/messages.php:284
@@ -5345,7 +5345,7 @@ msgstr ""
 
 #: lib/messages.php:290 lib/messages.php:339 lib/messages.php:355
 #: lib/messages.php:373 lib/messages.php:722
-msgid "This field is disabled if a custom image ID is selected."
+msgid "This option is disabled if a custom image ID is selected."
 msgstr ""
 
 #: lib/messages.php:296
@@ -5579,11 +5579,13 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:564
-msgid "The default country when adding place or location information."
+msgid ""
+"The default country when entering information about a place or location."
 msgstr ""
 
 #: lib/messages.php:570
-msgid "The default timezone when adding place or location information."
+msgid ""
+"The default timezone when entering information about a place or location."
 msgstr ""
 
 #: lib/messages.php:576
