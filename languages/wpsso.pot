@@ -3567,7 +3567,7 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:286 lib/edit.php:427 lib/page.php:1274
+#: gettext/gettext-lib-pro.php:286 lib/edit.php:426 lib/page.php:1274
 #: lib/pro/social/buddypress.php:664
 msgctxt "default description"
 msgid "No Description."
@@ -4313,7 +4313,7 @@ msgctxt "option label"
 msgid "Schema Description Max. Length"
 msgstr ""
 
-#: lib/admin.php:3016 lib/edit.php:317 lib/submenu/general.php:308
+#: lib/admin.php:3016 lib/edit.php:316 lib/submenu/general.php:308
 #: lib/submenu/general.php:320 lib/submenu/general.php:395
 msgctxt "option comment"
 msgid "characters or less"
@@ -4839,194 +4839,194 @@ msgctxt "option label"
 msgid "Search Description"
 msgstr ""
 
-#: lib/edit.php:192 lib/edit.php:407
+#: lib/edit.php:191 lib/edit.php:406
 msgctxt "option label"
 msgid "Sharing URL"
 msgstr ""
 
-#: lib/edit.php:200 lib/edit.php:403
+#: lib/edit.php:199 lib/edit.php:402
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
 
-#: lib/edit.php:213
+#: lib/edit.php:212
 msgctxt "metabox title"
 msgid "Article Information"
 msgstr ""
 
-#: lib/edit.php:218
+#: lib/edit.php:217
 msgctxt "option label"
 msgid "Article Section"
 msgstr ""
 
-#: lib/edit.php:233
+#: lib/edit.php:232
 msgctxt "option label"
 msgid "Est. Reading Time"
 msgstr ""
 
-#: lib/edit.php:236
+#: lib/edit.php:235
 msgid "minute(s)"
 msgstr ""
 
-#: lib/edit.php:246
+#: lib/edit.php:245
 msgctxt "metabox title"
 msgid "Book Information"
 msgstr ""
 
-#: lib/edit.php:251 lib/messages.php:3136
+#: lib/edit.php:250 lib/messages.php:3136
 msgctxt "option label"
 msgid "Book ISBN"
 msgstr ""
 
-#: lib/edit.php:278
+#: lib/edit.php:277
 msgctxt "option label"
 msgid "No Archive"
 msgstr ""
 
-#: lib/edit.php:281
+#: lib/edit.php:280
 msgctxt "option comment"
 msgid "do not show a cached link in search results"
 msgstr ""
 
-#: lib/edit.php:284
+#: lib/edit.php:283
 msgctxt "option label"
 msgid "No Follow"
 msgstr ""
 
-#: lib/edit.php:287
+#: lib/edit.php:286
 msgctxt "option comment"
 msgid "do not follow links on this webpage"
 msgstr ""
 
-#: lib/edit.php:290
+#: lib/edit.php:289
 msgctxt "option label"
 msgid "No Image Index"
 msgstr ""
 
-#: lib/edit.php:293
+#: lib/edit.php:292
 msgctxt "option comment"
 msgid "do not index images on this webpage"
 msgstr ""
 
-#: lib/edit.php:296 lib/messages.php:2492
+#: lib/edit.php:295 lib/messages.php:2492
 msgctxt "option label"
 msgid "No Index"
 msgstr ""
 
-#: lib/edit.php:299
+#: lib/edit.php:298
 msgctxt "option comment"
 msgid "do not show this webpage in search results"
 msgstr ""
 
-#: lib/edit.php:302
+#: lib/edit.php:301
 msgctxt "option label"
 msgid "No Snippet"
 msgstr ""
 
-#: lib/edit.php:305
+#: lib/edit.php:304
 msgctxt "option comment"
 msgid "do not show a text snippet or a video preview in search results"
 msgstr ""
 
-#: lib/edit.php:308
+#: lib/edit.php:307
 msgctxt "option label"
 msgid "No Translate"
 msgstr ""
 
-#: lib/edit.php:311
+#: lib/edit.php:310
 msgctxt "option comment"
 msgid "do not offer translation of this webpage in search results"
 msgstr ""
 
-#: lib/edit.php:314
+#: lib/edit.php:313
 msgctxt "option label"
 msgid "Snippet Max. Length"
 msgstr ""
 
-#: lib/edit.php:317 lib/edit.php:328 lib/submenu/general.php:320
+#: lib/edit.php:316 lib/edit.php:327 lib/submenu/general.php:320
 #: lib/submenu/general.php:333
 msgctxt "option comment"
 msgid "-1 for no limit"
 msgstr ""
 
-#: lib/edit.php:320
+#: lib/edit.php:319
 msgctxt "option label"
 msgid "Image Preview Size"
 msgstr ""
 
-#: lib/edit.php:325
+#: lib/edit.php:324
 msgctxt "option label"
 msgid "Video Max. Previews"
 msgstr ""
 
-#: lib/edit.php:328 lib/submenu/general.php:333
+#: lib/edit.php:327 lib/submenu/general.php:333
 msgctxt "option comment"
 msgid "seconds"
 msgstr ""
 
-#: lib/edit.php:382
+#: lib/edit.php:381
 msgctxt "preview image error"
 msgid "Image Size Smaller<br/>than Suggested Minimum<br/>of %s"
 msgstr ""
 
-#: lib/edit.php:391
+#: lib/edit.php:390
 msgctxt "preview image error"
 msgid "Image Size Unknown<br/>or Not Available"
 msgstr ""
 
-#: lib/edit.php:398
+#: lib/edit.php:397
 msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/edit.php:411
+#: lib/edit.php:410
 msgctxt "option label"
 msgid "Shortlink URL"
 msgstr ""
 
-#: lib/edit.php:415
+#: lib/edit.php:414
 msgctxt "option label"
 msgid "Facebook / Open Graph Example"
 msgstr ""
 
-#: lib/edit.php:424 lib/page.php:1572
+#: lib/edit.php:423 lib/page.php:1572
 msgctxt "default title"
 msgid "No Title"
 msgstr ""
 
-#: lib/edit.php:461
+#: lib/edit.php:460
 msgctxt "option label"
 msgid "oEmbed JSON URL"
 msgstr ""
 
-#: lib/edit.php:465
+#: lib/edit.php:464
 msgctxt "option label"
 msgid "oEmbed XML URL"
 msgstr ""
 
-#: lib/edit.php:469
+#: lib/edit.php:468
 msgctxt "option label"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/edit.php:479
+#: lib/edit.php:478
 msgid "(see below)"
 msgstr ""
 
-#: lib/edit.php:489
+#: lib/edit.php:488
 msgid "No oEmbed data found."
 msgstr ""
 
-#: lib/edit.php:493
+#: lib/edit.php:492
 msgctxt "option label"
 msgid "oEmbed HTML"
 msgstr ""
 
-#: lib/edit.php:503
+#: lib/edit.php:502
 msgid "No oEmbed HTML found."
 msgstr ""
 
-#: lib/edit.php:630
+#: lib/edit.php:629
 msgctxt "submit button"
 msgid "Validate %s"
 msgstr ""
@@ -5235,7 +5235,7 @@ msgstr ""
 #: lib/messages.php:191
 msgid ""
 "A customized sharing URL for Facebook / Open Graph and Pinterest Rich Pin "
-"meta tags, Schema markup, and social sharing add-ons."
+"meta tags, Schema sameAs property, and social sharing buttons add-on."
 msgstr ""
 
 #: lib/messages.php:193 lib/messages.php:201
@@ -5245,7 +5245,9 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:199
-msgid "A customized URL used for the \"%s\" head tag."
+msgid ""
+"A customized URL used for the \"%s\" head tag (if enabled) and Schema url "
+"property."
 msgstr ""
 
 #: lib/messages.php:208 lib/submenu/essential.php:116

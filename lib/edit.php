@@ -187,7 +187,6 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 						$seo_desc_max_len, $def_seo_desc, $seo_desc_disabled ) . ' ' . $seo_desc_msg,
 				),
 				'sharing_url' => array(
-					'tr_class' => $form->get_css_class_hide( 'basic', 'sharing_url' ),
 					'th_class' => 'medium',
 					'label'    => _x( 'Sharing URL', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-sharing_url',
@@ -195,7 +194,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 						$max_len = 0, $def_sharing_url ),
 				),
 				'canonical_url' => array(
-					'tr_class' => $canonical_url_disabled ? 'hide_in_basic' : $form->get_css_class_hide( 'basic', 'canonical_url' ),
+					'tr_class' => $canonical_url_disabled ? 'hide_in_basic' : '',
 					'th_class' => 'medium',
 					'label'    => _x( 'Canonical URL', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-canonical_url',
