@@ -376,9 +376,7 @@ if ( ! function_exists( 'wpsso_get_short_url' ) ) {
 
 		$canonical_url = $wpsso->util->get_canonical_url( $mod, $add_page );
 
-		$service_id = $wpsso->options[ 'plugin_shortener' ];
-
-		return apply_filters( 'wpsso_get_short_url', $canonical_url, $service_id, $mod );
+		return $wpsso->util->shorten_url( $canonical_url, $mod );
 	}
 }
 
@@ -388,7 +386,7 @@ if ( ! function_exists( 'wpsso_get_post_short_url' ) ) {
 
 		$mod = wpsso_get_post_mod( $post_id );
 
-		return wpsso_get_short_url( $mod );
+		return wpsso_get_short_url( $mod, $add_page = false );
 	}
 }
 

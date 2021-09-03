@@ -1918,9 +1918,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		public function get_inline_variables() {
 
 			return array(
-				'%%request_url%%',
 				'%%canonical_url%%',
 				'%%sharing_url%%',
+				'%%request_url%%',
 				'%%short_url%%',
 				'%%sitename%%',
 				'%%sitealtname%%',
@@ -1945,67 +1945,44 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$mod = $this->p->page->get_mod( $mod );
 			}
 
-			/**
-			 * Request URL.
-			 */
-			if ( is_admin() ) {
-
-				$request_url = $this->get_canonical_url( $mod, $add_page );
-
-			} else {
-
-				$request_url = self::get_url( $remove_tracking = true );
-			}
-
-			/**
-			 * Canonical URL.
-			 */
-			if ( isset( $atts[ 'add_page' ] ) ) {
-
-				$add_page = $atts[ 'add_page' ];
-
-			} else {
-
-				$add_page = true;
-			}
-
-			if ( empty( $atts[ 'url' ] ) ) {
-
-				$canonical_url = $this->get_canonical_url( $mod, $add_page );
-
-			} else {
-
-				$canonical_url = $atts[ 'url' ];
-			}
-
-			/**
-			 * Short URL.
-			 */
-			if ( empty( $atts[ 'short_url' ] ) ) {
-
-				$shortener = $this->p->options[ 'plugin_shortener' ];
-
-				$short_url = apply_filters( 'wpsso_get_short_url', $canonical_url, $shortener, $mod, $is_main = true );
-
-			} else {
-
-				$short_url = $atts[ 'short_url' ];
-			}
-
-			$sharing_url = $canonical_url;	// Deprecated since 2021/09/03.
-			$sitename    = self::get_site_name( $this->p->options, $mod );
-			$sitealtname = self::get_site_name_alt( $this->p->options, $mod );
-			$sitedesc    = self::get_site_description( $this->p->options, $mod );
+			$add_page      = isset( $atts[ 'add_page' ] ) ? $atts[ 'add_page' ] : true;
+			$canonical_url = empty( $atts[ 'url' ] ) ? $canonical_url = $this->get_canonical_url( $mod, $add_page ) : $atts[ 'url' ];
+			$sharing_url   = $canonical_url;	// Deprecated since 2021/09/03.
+			$request_url   = is_admin() ? $canonical_url : self::get_url( $remove_tracking = true );
+			$short_url     = empty( $atts[ 'short_url' ] ) ? $this->shorten_url( $canonical_url, $mod ) : $atts[ 'short_url' ];
+			$sitename      = self::get_site_name( $this->p->options, $mod );
+			$sitealtname   = self::get_site_name_alt( $this->p->options, $mod );
+			$sitedesc      = self::get_site_description( $this->p->options, $mod );
 
 			return array(
-				$request_url,		// %%request_url%%
 				$canonical_url,		// %%canonical_url%%
 				$sharing_url,		// %%sharing_url%%
+				$request_url,		// %%request_url%%
 				$short_url,		// %%short_url%%
 				$sitename,		// %%sitename%%
 				$sitealtname,		// %%sitealtname%%
 				$sitedesc,		// %%sitedesc%%
 			);
+		}
+
+		public function shorten_url( $long_url, $mod ) {
+
+			$shortener = isset( $this->p->options[ 'plugin_shortener' ] ) ? $this->p->options[ 'plugin_shortener' ] : 'none';
+
+			if ( ! empty( $shortener ) && 'none' !== $shortener ) {
+
+				$short_url = apply_filters( 'wpsso_get_short_url', $long_url, $shortener, $mod );
+		
+				/**
+				 * Make sure the returned URL is valid.
+				 */
+				if ( false !== filter_var( $short_url, FILTER_VALIDATE_URL ) ) {
+
+					return $short_url;
+				}
+			}
+
+			return $long_url;
 		}
 
 		/**

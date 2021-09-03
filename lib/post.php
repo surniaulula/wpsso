@@ -24,8 +24,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 	class WpssoPost extends WpssoWpMeta {
 
-		private static $saved_shortlink_url = null;	// Used by get_sharing_shortlink() and maybe_restore_shortlink().
-		private static $cache_shortlinks    = array();	// Used by get_sharing_shortlink() and maybe_restore_shortlink().
+		private static $saved_shortlink_url = null;	// Used by get_canonical_shortlink() and maybe_restore_shortlink().
+		private static $cache_shortlinks    = array();	// Used by get_canonical_shortlink() and maybe_restore_shortlink().
 
 		public function __construct( &$plugin ) {
 
@@ -175,7 +175,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$min_int = SucomUtil::get_min_int();
 					$max_int = SucomUtil::get_max_int();
 
-					add_filter( 'pre_get_shortlink', array( $this, 'get_sharing_shortlink' ), $min_int, 4 );
+					add_filter( 'pre_get_shortlink', array( $this, 'get_canonical_shortlink' ), $min_int, 4 );
 					add_filter( 'pre_get_shortlink', array( $this, 'maybe_restore_shortlink' ), $max_int, 4 );
 
 					if ( function_exists( 'wpme_get_shortlink_handler' ) ) {
@@ -1704,7 +1704,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		 *
 		 * The wp_shortlink_wp_head() function calls wp_get_shortlink( 0, 'query' );
 		 */
-		public function get_sharing_shortlink( $shortlink = false, $post_id = 0, $context = 'post', $allow_slugs = true ) {
+		public function get_canonical_shortlink( $shortlink = false, $post_id = 0, $context = 'post', $allow_slugs = true ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1722,8 +1722,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'returning shortlink (from static cache) = ' . 
-						self::$cache_shortlinks[ $post_id ][ $context ][ $allow_slugs ] );
+					$this->p->debug->log( 'returning shortlink from static cache = ' . self::$cache_shortlinks[ $post_id ][ $context ][ $allow_slugs ] );
 				}
 
 				return self::$saved_shortlink_url = self::$cache_shortlinks[ $post_id ][ $context ][ $allow_slugs ];
@@ -1743,8 +1742,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			/**
-			 * The WordPress link-template.php functions call wp_get_shortlink() with a post ID of 0. Recreate the same
-			 * code here to get a real post ID and create a default shortlink (if required).
+			 * The WordPress link-template.php functions call wp_get_shortlink() with a post ID of 0. Use the same
+			 * WordPress code to get a real post ID and create a default shortlink (if required).
 			 */
 			if ( 0 === $post_id ) {
 
@@ -1840,7 +1839,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				return $shortlink;	// Return original shortlink.
 
-			} elseif ( $mod[ 'post_status' ] === 'auto-draft' ) {
+			} elseif ( 'auto-draft' === $mod[ 'post_status' ] ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -1849,7 +1848,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				return $shortlink;	// Return original shortlink.
 
-			} elseif ( $mod[ 'post_status' ] === 'trash' ) {
+			} elseif ( 'trash' === $mod[ 'post_status' ] ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -1861,13 +1860,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = false );
 
-			$short_url = apply_filters( 'wpsso_get_short_url', $canonical_url, $this->p->options[ 'plugin_shortener' ], $mod );
+			$short_url = $this->p->util->shorten_url( $canonical_url, $mod );
 
-			if ( false === filter_var( $short_url, FILTER_VALIDATE_URL ) ) {	// Invalid url.
+			if ( $short_url === $canonical_url ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: invalid short URL (' . $short_url . ') returned by filters' );
+					$this->p->debug->log( 'exiting early: shortened URL same as canonical URL' );
 				}
 
 				return $shortlink;	// Return original shortlink.
@@ -1878,7 +1877,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->log( 'returning shortlink = ' . $short_url );
 			}
 
-			return self::$saved_shortlink_url = self::$cache_shortlinks[ $post_id ][ $context ][ $allow_slugs ] = $short_url;	// Success - return short url.
+			return self::$saved_shortlink_url = self::$cache_shortlinks[ $post_id ][ $context ][ $allow_slugs ] = $short_url;
 		}
 
 		public function maybe_restore_shortlink( $shortlink = false, $post_id = 0, $context = 'post', $allow_slugs = true ) {

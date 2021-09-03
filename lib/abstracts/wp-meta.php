@@ -2053,7 +2053,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		/**
 		 * WpssoPost class specific methods.
 		 */
-		public function get_sharing_shortlink( $shortlink = false, $mod_id = 0, $context = 'post', $allow_slugs = true ) {
+		public function get_canonical_shortlink( $shortlink = false, $mod_id = 0, $context = 'post', $allow_slugs = true ) {
 
 			return self::must_be_extended( $ret_val = '' );
 		}

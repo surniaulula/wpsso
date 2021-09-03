@@ -141,12 +141,10 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'using wpsso_get_short_url filters to get shortlink' );
+						$this->p->debug->log( 'calling WpssoUtil->shorten_url() to shorten the canonical URL' );
 					}
 
-					$shortener = $this->p->options[ 'plugin_shortener' ];
-
-					$shortlink = apply_filters( 'wpsso_get_short_url', $canonical_url, $shortener, $mod, $is_main = true );
+					$shortlink = $this->p->util->shorten_url( $canonical_url, $mod );
 				}
 
 				if ( empty( $shortlink ) ) {

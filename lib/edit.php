@@ -341,7 +341,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 
 			} else {
 
-				$shortlink_url = apply_filters( 'wpsso_get_short_url', $canonical_url, $this->p->options[ 'plugin_shortener' ], $mod );
+				$shortlink_url = $this->p->util->shorten_url( $canonical_url, $mod );
 			}
 
 			$have_sizes = isset( $head_info[ 'og:image:width' ] ) && $head_info[ 'og:image:width' ] > 0 && 

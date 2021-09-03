@@ -91,7 +91,7 @@
 
 'wpsso_get_post_options' ( array $options, $post_id, array $mod )
 
-'wpsso_get_short_url' ( $long_url, $service_id, $mod, $is_main = false )
+'wpsso_get_short_url' ( $url, $service, $mod )
 
 'wpsso_get_site_defaults' ( $defaults )
 
