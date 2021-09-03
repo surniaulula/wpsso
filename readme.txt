@@ -321,7 +321,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.37.1-dev.1 (2021/09/03)**
+**Version 8.37.1-dev.2 (2021/09/03)**
 
 * **New Features**
 	* None.
@@ -330,7 +330,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Renamed `WpssoUtil->get_type_url()` to `WpssoUtil->get_md_key_url()`.
+	* Added a new `WpssoUtil->shorten_url()` method.
+	* Deprecated the `WpssoUtil->get_sharing_url()` method.
+	* Renamed the `WpssoUtil->get_type_url()` method to `WpssoUtil->get_md_key_url()`.
 * **Requires At Least**
 	* PHP v7.0.
 	* WordPress v5.0.
@@ -943,7 +945,7 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 
 == Upgrade Notice ==
 
-= 8.37.1-dev.1 =
+= 8.37.1-dev.2 =
 
 (2021/09/03) Removed the "Sharing URL" option in the Document SSO metabox.
 
