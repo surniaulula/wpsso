@@ -472,7 +472,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 */
 			if ( ! is_admin() ) {
 
-				$request_url = SucomUtil::get_url();
+				$request_url = SucomUtil::get_url( $remove_tracking = true );
 
 				if ( $this->p->debug->enabled ) {
 

@@ -122,11 +122,9 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 
 			if ( apply_filters( 'wpsso_add_link_rel_shortlink', $add_link_rel_shortlink, $mod ) ) {
 
-				/**
-				 * Shortlinks are used by social sites, so use the sharing URL instead of the canonical URL.
-				 */
-				$sharing_url = $this->p->util->get_sharing_url( $mod, $add_page = true );
-				$shortlink   = '';
+				$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = true );
+
+				$shortlink = '';
 
 				if ( $mod[ 'is_post' ] && $mod[ 'id' ] ) {
 
@@ -139,7 +137,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 						$this->p->debug->log( 'SucomUtilWP::wp_get_shortlink() = ' . $shortlink );
 					}
 
-				} elseif ( ! empty( $sharing_url ) ) {	// Just in case.
+				} elseif ( ! empty( $canonical_url ) ) {	// Just in case.
 
 					if ( $this->p->debug->enabled ) {
 
@@ -147,7 +145,8 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 					}
 
 					$shortener = $this->p->options[ 'plugin_shortener' ];
-					$shortlink = apply_filters( 'wpsso_get_short_url', $sharing_url, $shortener, $mod, $is_main = true );
+
+					$shortlink = apply_filters( 'wpsso_get_short_url', $canonical_url, $shortener, $mod, $is_main = true );
 				}
 
 				if ( empty( $shortlink ) ) {
@@ -157,11 +156,11 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 						$this->p->debug->log( 'skipping shortlink: short url is empty' );
 					}
 
-				} elseif ( $shortlink === $sharing_url ) {
+				} elseif ( $shortlink === $canonical_url ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'skipping shortlink: short url is identical to sharing url' );
+						$this->p->debug->log( 'skipping shortlink: short url is identical to canonical url' );
 					}
 
 				} else {

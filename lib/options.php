@@ -311,7 +311,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 *	'plugin_cf_review_item_image_url'       = ''
 				 */
 				case 'home_url':
-				case 'sharing_url':
 				case 'canonical_url':
 				case 'fb_page_url':
 				case 'og_vid_url':

@@ -27,8 +27,6 @@ wpsso_get_post_place_options( $post_id, $type_id = 'custom' );
 
 wpsso_get_post_primary_category( $post_id, $tax_slug = 'category' );
 
-wpsso_get_sharing_url( $mod = false, $add_page = true );
-
 wpsso_get_short_url( $mod = false, $add_page = true );
 
 wpsso_get_term_mod( $term_id );

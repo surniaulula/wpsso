@@ -466,7 +466,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			$metadata_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX', 5 );
 
-			$def_sharing_url = $wpsso->util->get_sharing_url( $mod );
+			$def_canonical_url = $wpsso->util->get_canonical_url( $mod );
 
 			foreach ( range( 0, $metadata_offers_max - 1, 1 ) as $key_num ) {
 
@@ -505,10 +505,10 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 						if ( $wpsso->debug->enabled ) {
 
-							$wpsso->debug->log( 'setting offer_url to ' . $def_sharing_url );
+							$wpsso->debug->log( 'setting offer_url to ' . $def_canonical_url );
 						}
 
-						$offer_opts[ 'offer_url' ] = $def_sharing_url;
+						$offer_opts[ 'offer_url' ] = $def_canonical_url;
 					}
 
 					if ( ! isset( $offer_opts[ 'offer_valid_from_date' ] ) ) {
@@ -1531,9 +1531,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			if ( is_admin() ) {
 
-				$sharing_url = $wpsso->util->get_sharing_url( $mod );
+				$canonical_url = $wpsso->util->get_canonical_url( $mod );
 
-				$wpsso->util->maybe_set_ref( $sharing_url, $mod, __( 'adding schema organization', 'wpsso' ) );
+				$wpsso->util->maybe_set_ref( $canonical_url, $mod, __( 'adding schema organization', 'wpsso' ) );
 			}
 
 			/**
@@ -1732,7 +1732,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			if ( is_admin() ) {
 
-				$wpsso->util->maybe_unset_ref( $sharing_url );
+				$wpsso->util->maybe_unset_ref( $canonical_url );
 			}
 
 			if ( empty( $list_element ) ) {		// Add a single item.
@@ -1772,7 +1772,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Maybe get options from integration modules (example: WpssoProEventTheEventsCalendar).
 			 */
 			$person_opts = apply_filters( 'wpsso_get_person_options', false, $mod, $person_id );
-			$sharing_url = '';
+
+			$canonical_url = '';
 
 			if ( empty( $person_opts ) ) {
 
@@ -1798,7 +1799,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 					$user_mod = $wpsso->user->get_mod( $person_id );
 
-					$local_cache_person_urls[ $person_id ] = $wpsso->util->get_sharing_url( $user_mod );
+					$local_cache_person_urls[ $person_id ] = $wpsso->util->get_canonical_url( $user_mod );
 
 					/**
 					 * Set the reference values for admin notices.
@@ -1866,7 +1867,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 
 				$person_opts = $local_cache_person_opts[ $person_id ];
-				$sharing_url = $local_cache_person_urls[ $person_id ];
+
+				$canonical_url = $local_cache_person_urls[ $person_id ];
 			}
 
 			if ( $wpsso->debug->enabled ) {
@@ -1925,11 +1927,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$json_ret = apply_filters( 'wpsso_json_data_single_person', $json_ret, $mod, $person_id );
 
 			/**
-			 * Update the '@id' string based on the $sharing_url and the $person_type_id.
+			 * Update the '@id' string based on the $canonical_url and the $person_type_id.
 			 *
 			 * Encode the URL part of the '@id' string to hide the WordPress login username.
 			 */
-			WpssoSchema::update_data_id( $json_ret, $person_type_id, $sharing_url, $hash_url = true );
+			WpssoSchema::update_data_id( $json_ret, $person_type_id, $canonical_url, $hash_url = true );
 
 			if ( empty( $list_element ) ) {		// Add a single item.
 
@@ -2005,9 +2007,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			if ( is_admin() ) {
 
-				$sharing_url = $wpsso->util->get_sharing_url( $mod );
+				$canonical_url = $wpsso->util->get_canonical_url( $mod );
 
-				$wpsso->util->maybe_set_ref( $sharing_url, $mod, __( 'adding schema place', 'wpsso' ) );
+				$wpsso->util->maybe_set_ref( $canonical_url, $mod, __( 'adding schema place', 'wpsso' ) );
 			}
 
 			/**
@@ -2131,7 +2133,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			if ( is_admin() ) {
 
-				$wpsso->util->maybe_unset_ref( $sharing_url );
+				$wpsso->util->maybe_unset_ref( $canonical_url );
 			}
 
 			if ( empty( $list_element ) ) {		// Add a single item.

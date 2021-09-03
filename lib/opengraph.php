@@ -486,7 +486,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 */
 			if ( ! isset( $mt_og[ 'og:url' ] ) ) {
 
-				$mt_og[ 'og:url' ] = $this->p->util->get_sharing_url( $mod );
+				$mt_og[ 'og:url' ] = $this->p->util->get_canonical_url( $mod, $add_page = true );
 
 			} elseif ( $this->p->debug->enabled ) {
 

@@ -872,21 +872,24 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * Called from several class __construct() methods to hook their filters.
+		 * Called by several class __construct() methods to hook their filters.
 		 */
 		public function add_plugin_filters( $class, $filters, $prio = 10, $ext = '' ) {
 
-			$this->add_plugin_hooks( 'filter', $class, $filters, $prio, $ext );
+			$this->add_plugin_hooks( $type = 'filter', $class, $filters, $prio, $ext );
 		}
 
 		/**
-		 * Called from several class __construct() methods to hook their actions.
+		 * Called by several class __construct() methods to hook their actions.
 		 */
 		public function add_plugin_actions( $class, $actions, $prio = 10, $ext = '' ) {
 
-			$this->add_plugin_hooks( 'action', $class, $actions, $prio, $ext );
+			$this->add_plugin_hooks( $type = 'action', $class, $actions, $prio, $ext );
 		}
 
+		/**
+		 * $type = 'filter' or 'action'.
+		 */
 		private function add_plugin_hooks( $type, $class, $hook_list, $prio, $ext = '' ) {
 
 			$ext = $ext === '' ? $this->p->id : $ext;
@@ -905,6 +908,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				/**
 				 * Example:
+				 *
 				 * 	'json_data_https_schema_org_website' => 5
 				 */
 				if ( is_int( $val ) ) {
@@ -932,6 +936,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				/**
 				 * Example:
+				 *
 				 * 	'add_schema_meta_array' => '__return_false'
 				 */
 				} elseif ( is_string( $val ) ) {
@@ -959,6 +964,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				/**
 				 * Example:
+				 *
 				 * 	'json_data_https_schema_org_article' => array(
 				 *		'json_data_https_schema_org_article'     => 5,
 				 *		'json_data_https_schema_org_newsarticle' => 5,
@@ -1842,20 +1848,28 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * Allow the variables and values array to be extended.
+		 * Deprecated on 2021/09/03.
+		 */
+		public function replace_inline_vars( $content, $mod = false, array $atts = array(), array $extra = array() ) {
+
+			return $this->replace_inline_variables( $content, $mod, $atts, $extra );
+		}
+
+		/**
+		 * Replace default and extra inline variables in the content text.
 		 *
 		 * $atts can be an associative array with additional information ('url', 'short_url', 'add_page', etc.).
 		 *
 		 * $extra can be an associative array with key/value pairs to be replaced.
 		 */
-		public function replace_inline_vars( $content, $mod = false, array $atts = array(), array $extra = array() ) {
+		public function replace_inline_variables( $content, $mod = false, array $atts = array(), array $extra = array() ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
 			}
 
-			if ( strpos( $content, '%%' ) === false ) {
+			if ( false === strpos( $content, '%%' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -1880,28 +1894,32 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$mod = $this->p->page->get_mod( $mod );
 			}
 
-			$replace_vars = $this->get_inline_vars();
-			$replace_vals = $this->get_inline_vals( $mod, $atts );
+			$variables = $this->get_inline_variables();
+
+			$values = $this->get_inline_values( $mod, $atts );
 
 			if ( ! empty( $extra ) && self::is_assoc( $extra ) ) {
 
 				foreach ( $extra as $match => $replace ) {
 
-					$replace_vars[] = '%%' . $match . '%%';
-					$replace_vals[] = $replace;
+					$variables[] = '%%' . $match . '%%';
+
+					$values[] = $replace;
 				}
 			}
 
-			ksort( $replace_vars );
-			ksort( $replace_vals );
+			ksort( $variables );
 
-			return str_replace( $replace_vars, $replace_vals, $content );
+			ksort( $values );
+
+			return str_replace( $variables, $values, $content );
 		}
 
-		public function get_inline_vars() {
+		public function get_inline_variables() {
 
 			return array(
 				'%%request_url%%',
+				'%%canonical_url%%',
 				'%%sharing_url%%',
 				'%%short_url%%',
 				'%%sitename%%',
@@ -1910,7 +1928,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			);
 		}
 
-		public function get_inline_vals( $mod = false, &$atts = array() ) {
+		public function get_inline_values( $mod = false, &$atts = array() ) {
 
 			/**
 			 * The $mod array argument is preferred but not required.
@@ -1927,6 +1945,21 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$mod = $this->p->page->get_mod( $mod );
 			}
 
+			/**
+			 * Request URL.
+			 */
+			if ( is_admin() ) {
+
+				$request_url = $this->get_canonical_url( $mod, $add_page );
+
+			} else {
+
+				$request_url = self::get_url( $remove_tracking = true );
+			}
+
+			/**
+			 * Canonical URL.
+			 */
 			if ( isset( $atts[ 'add_page' ] ) ) {
 
 				$add_page = $atts[ 'add_page' ];
@@ -1938,39 +1971,35 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( empty( $atts[ 'url' ] ) ) {
 
-				$sharing_url = $this->get_sharing_url( $mod, $add_page );
+				$canonical_url = $this->get_canonical_url( $mod, $add_page );
 
 			} else {
 
-				$sharing_url = $atts[ 'url' ];
+				$canonical_url = $atts[ 'url' ];
 			}
 
-			if ( is_admin() ) {
-
-				$request_url = $this->get_canonical_url( $mod, $add_page );
-
-			} else {
-
-				$request_url = self::get_url();
-			}
-
+			/**
+			 * Short URL.
+			 */
 			if ( empty( $atts[ 'short_url' ] ) ) {
 
 				$shortener = $this->p->options[ 'plugin_shortener' ];
 
-				$short_url = apply_filters( 'wpsso_get_short_url', $sharing_url, $shortener, $mod, $is_main = true );
+				$short_url = apply_filters( 'wpsso_get_short_url', $canonical_url, $shortener, $mod, $is_main = true );
 
 			} else {
 
 				$short_url = $atts[ 'short_url' ];
 			}
 
+			$sharing_url = $canonical_url;	// Deprecated since 2021/09/03.
 			$sitename    = self::get_site_name( $this->p->options, $mod );
 			$sitealtname = self::get_site_name_alt( $this->p->options, $mod );
 			$sitedesc    = self::get_site_description( $this->p->options, $mod );
 
 			return array(
 				$request_url,		// %%request_url%%
+				$canonical_url,		// %%canonical_url%%
 				$sharing_url,		// %%sharing_url%%
 				$short_url,		// %%short_url%%
 				$sitename,		// %%sitename%%
@@ -2209,7 +2238,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( empty( $mod[ 'canonical_url' ] ) ) {
 
-				$url = $this->get_type_url( $type = 'canonical', $mod, $add_page );
+				$url = $this->get_md_key_url( $md_key = 'canonical_url', $mod, $add_page );
 
 			} else {
 
@@ -2220,27 +2249,13 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * The $mod array argument is preferred but not required.
-		 *
-		 * $mod = true | false | post_id | $mod array
+		 * Deprecated on 2021/09/03.
 		 */
 		public function get_sharing_url( $mod = false, $add_page = true ) {
 
-			if ( $this->p->debug->enabled ) {
+			_deprecated_function( __METHOD__ . '()', '2021/09/03', $replacement = '' );	// Deprecation message.
 
-				$this->p->debug->mark();
-			}
-
-			if ( empty( $mod[ 'sharing_url' ] ) ) {
-
-				$url = $this->get_type_url( $type = 'sharing', $mod, $add_page );
-
-			} else {
-
-				$url = $mod[ 'sharing_url' ];
-			}
-
-			return $url;
+			return $this->get_canonical_url( $mod, $add_page );
 		}
 
 		/**
@@ -2248,18 +2263,20 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 *
 		 * $mod = true | false | post_id | $mod array
 		 */
-		private function get_type_url( $type, $mod, $add_page = true ) {
+		public function get_md_key_url( $md_key, $mod, $add_page = true ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_args( array(
-					'type'     => $type,
+					'md_key'   => $md_key,
 					'mod'      => $mod,
 					'add_page' => $add_page,
 				) );
 			}
 
 			$url = false;
+
+			$md_key = sanitize_text_field( $md_key );	// Just in case.
 
 			if ( ! is_array( $mod ) ) {
 
@@ -2280,7 +2297,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( ! empty( $mod[ 'name' ] ) && ! empty( $mod[ 'id' ] ) ) {
 
-				$cache_salt = self::get_mod_salt( $mod ) . '_type:' . (string) $type . '_add_page:' . (string) $add_page;
+				$cache_salt = self::get_mod_salt( $mod ) . '_md_key:' . $md_key . '_add_page:' . $add_page;
 
 				if ( ! empty( $local_cache[ $cache_salt ] ) ) {
 
@@ -2311,14 +2328,14 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
 
-						$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $type . '_url' );	// Returns null if an index key is not found.
+						$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $md_key );	// Returns null if an index key is not found.
 					}
 
 					if ( ! empty( $url ) ) {	// Must be a non-empty string.
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'custom post ' . $type . '_url = ' . $url );
+							$this->p->debug->log( 'custom post ' . $md_key . ' = ' . $url );
 						}
 
 					} elseif ( 'publish' !== $mod[ 'post_status' ] ) {
@@ -2381,14 +2398,14 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					if ( ! empty( $mod[ 'obj' ] ) ) {
 
-						$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $type . '_url' );	// Returns null if an index key is not found.
+						$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $md_key );	// Returns null if an index key is not found.
 					}
 
 					if ( ! empty( $url ) ) {	// Must be a non-empty string.
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'custom term ' . $type . '_url = ' . $url );
+							$this->p->debug->log( 'custom term ' . $md_key . ' = ' . $url );
 						}
 
 					} else {
@@ -2407,14 +2424,14 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					if ( ! empty( $mod[ 'obj' ] ) ) {
 
-						$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $type . '_url' );	// Returns null if an index key is not found.
+						$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $md_key );	// Returns null if an index key is not found.
 					}
 
 					if ( ! empty( $url ) ) {	// Must be a non-empty string.
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'custom user ' . $type . '_url = ' . $url );
+							$this->p->debug->log( 'custom user ' . $md_key . ' = ' . $url );
 						}
 
 					} else {
@@ -2468,21 +2485,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					$this->p->debug->log( 'falling back to server request url' );
 				}
 
-				$url = self::get_url();
-
-				/**
-				 * Maybe remove tracking query arguments used by facebook, google, etc.
-				 */
-				$remove_args = 'fb_action_ids|fb_action_types|fb_source|fb_aggregation_id|' . 
-					'utm_source|utm_medium|utm_campaign|utm_term|utm_content|' .
-					'gclid|pk_campaign|pk_kwd';
-
-				$remove_args = apply_filters( 'wpsso_server_request_remove_args', $remove_args );
-
-				if ( $remove_args ) {	// Just in case.
-
-					$url = rtrim( preg_replace( '/([\?&])(' . $remove_args . ')=[^&]*/i', '$1', $url ), '?&' );
-				}
+				$url = self::get_url( $remove_tracking = true );
 
 				$url = apply_filters( 'wpsso_server_request_url', $url );
 			}
@@ -2505,26 +2508,13 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$url = $this->get_url_paged( $url, $mod, $add_page );
 
-			$url = apply_filters( 'wpsso_' . $type . '_url', $url, $mod, $add_page );
+			$filter_name = SucomUtil::sanitize_hookname( 'wpsso_' . $md_key );
+
+			$url = apply_filters( $filter_name, $url, $mod, $add_page );
 
 			if ( ! empty( $cache_salt ) ) {
 
 				$local_cache[ $cache_salt ] = $url;
-			}
-
-			return $url;
-		}
-
-		private function get_request_url() {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'server request url = ' . $url );
-			}
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'server request url (filtered) = ' . $url );
 			}
 
 			return $url;
@@ -2731,7 +2721,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			} else {	// Example: file/
 
-				$base = self::get_url();
+				$base = self::get_url( $remove_tracking = true );
 
 				if ( false !== strpos( $base, '?' ) ) {
 
@@ -3492,23 +3482,23 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				return array();
 			}
 
-			$sharing_url = $this->p->util->get_sharing_url( $mod, $add_page = true );
+			$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = true );
 
-			if ( empty( $sharing_url ) ) {	// Just in case.
+			if ( empty( $canonical_url ) ) {	// Just in case.
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: get_sharing_url() returned an empty string' );
+					$this->p->debug->log( 'exiting early: get_canonical_url() returned an empty string' );
 				}
 
 				return array();
 			}
 
-			$have_amp        = $mod[ 'is_post' ] && $mod[ 'id' ] && function_exists( 'amp_get_permalink' ) ? true : false;
-			$have_clipboard  = $use_clipboard && method_exists( 'SucomForm', 'get_no_input_clipboard' ) ? true : false;
-			$have_json       = empty( $this->p->avail[ 'p' ][ 'schema' ] ) || empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ?  false : true;
-			$amp_url_enc     = $have_amp ? urlencode( amp_get_permalink( $mod[ 'id' ] ) ) : '';
-			$sharing_url_enc = urlencode( $sharing_url );
+			$have_amp          = $mod[ 'is_post' ] && $mod[ 'id' ] && function_exists( 'amp_get_permalink' ) ? true : false;
+			$have_clipboard    = $use_clipboard && method_exists( 'SucomForm', 'get_no_input_clipboard' ) ? true : false;
+			$have_json         = empty( $this->p->avail[ 'p' ][ 'schema' ] ) || empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ?  false : true;
+			$amp_url_enc       = $have_amp ? urlencode( amp_get_permalink( $mod[ 'id' ] ) ) : '';
+			$canonical_url_enc = urlencode( $canonical_url );
 
 			$validators = array(
 				'amp' => $mod[ 'is_post' ] ? array(	// Only show AMP validator for post objects.
@@ -3519,48 +3509,48 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				'facebook-debugger' => array(
 					'title' => _x( 'Facebook Sharing Debugger', 'option label', 'wpsso' ),
 					'type'  => _x( 'Open Graph', 'validator type', 'wpsso' ),
-					'url'   => 'https://developers.facebook.com/tools/debug/?q=' . $sharing_url_enc,
+					'url'   => 'https://developers.facebook.com/tools/debug/?q=' . $canonical_url_enc,
 				),
 				'facebook-microdata' => array(
 					'title' => _x( 'Facebook Microdata Debug Tool', 'option label', 'wpsso' ),
 					'type'  => _x( 'Microdata', 'validator type', 'wpsso' ),
-					'url'   => 'https://business.facebook.com/ads/microdata/debug?url=' . $sharing_url_enc,
+					'url'   => 'https://business.facebook.com/ads/microdata/debug?url=' . $canonical_url_enc,
 				),
 				'google-page-speed' => array(
 					'title' => _x( 'Google PageSpeed Insights', 'option label', 'wpsso' ),
 					'type'  => _x( 'PageSpeed', 'validator type', 'wpsso' ),
-					'url'   => 'https://developers.google.com/speed/pagespeed/insights/?url=' . $sharing_url_enc,
+					'url'   => 'https://developers.google.com/speed/pagespeed/insights/?url=' . $canonical_url_enc,
 				),
 				'google-rich-results' => array(
 					'title' => _x( 'Google Rich Results Test', 'option label', 'wpsso' ),
 					'type'  => _x( 'Rich Results', 'validator type', 'wpsso' ) . ( $have_json ? '' : ' *' ),
-					'url'   => $have_json ? 'https://search.google.com/test/rich-results?url=' . $sharing_url_enc : '',
+					'url'   => $have_json ? 'https://search.google.com/test/rich-results?url=' . $canonical_url_enc : '',
 				),
 				'linkedin' => array(
 					'title' => _x( 'LinkedIn Post Inspector', 'option label', 'wpsso' ),
 					'type'  => _x( 'oEmbed Data', 'validator type', 'wpsso' ),
-					'url'   => 'https://www.linkedin.com/post-inspector/inspect/' . $sharing_url_enc,
+					'url'   => 'https://www.linkedin.com/post-inspector/inspect/' . $canonical_url_enc,
 				),
 				'pinterest' => array(
 					'title' => _x( 'Pinterest Rich Pins Validator', 'option label', 'wpsso' ),
 					'type'  => _x( 'Rich Pins', 'validator type', 'wpsso' ),
-					'url'   => 'https://developers.pinterest.com/tools/url-debugger/?link=' . $sharing_url_enc,
+					'url'   => 'https://developers.pinterest.com/tools/url-debugger/?link=' . $canonical_url_enc,
 				),
 				'schema-markup-validator' => array(
 					'title' => _x( 'Schema Markup Validator', 'option label', 'wpsso' ),
 					'type'  => _x( 'Schema Markup', 'validator type', 'wpsso' ) . ( $have_json ? '' : ' *' ),
-					'url'   => $have_json ? 'https://validator.schema.org/#url=' . $sharing_url_enc : '',
+					'url'   => $have_json ? 'https://validator.schema.org/#url=' . $canonical_url_enc : '',
 				),
 				'twitter' => $have_clipboard ? array(
 					'title'     => _x( 'Twitter Card Validator', 'option label', 'wpsso' ),
 					'type'      => _x( 'Twitter Card', 'validator type', 'wpsso' ),
 					'url'       => 'https://cards-dev.twitter.com/validator',
-					'extra_msg' => SucomForm::get_no_input_clipboard( $sharing_url ),
+					'extra_msg' => SucomForm::get_no_input_clipboard( $canonical_url ),
 				) : array(),
 				'w3c' => array(
 					'title' => _x( 'W3C Markup Validator', 'option label', 'wpsso' ),
 					'type'  => _x( 'HTML Markup', 'validator type', 'wpsso' ),
-					'url'   => 'https://validator.w3.org/nu/?doc=' . $sharing_url_enc,
+					'url'   => 'https://validator.w3.org/nu/?doc=' . $canonical_url_enc,
 				),
 			);
 
@@ -3664,7 +3654,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 *	adding schema organization for this page
 		 *	adding schema organization for page ID 123
 		 */
-		public function maybe_set_ref( $sharing_url = null, $mod = false, $msg_transl = '' ) {
+		public function maybe_set_ref( $canonical_url = null, $mod = false, $msg_transl = '' ) {
 
 			static $is_admin = null;
 
@@ -3678,19 +3668,19 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				return false;
 			}
 
-			if ( empty( $sharing_url ) ) {
+			if ( empty( $canonical_url ) ) {
 
-				$sharing_url = $this->get_sharing_url( $mod );
+				$canonical_url = $this->get_canonical_url( $mod );
 			}
 
 			if ( empty( $msg_transl ) ) {
 
-				return $this->p->notice->set_ref( $sharing_url, $mod );
+				return $this->p->notice->set_ref( $canonical_url, $mod );
 			}
 
 			if ( empty( $mod[ 'id' ] ) ) {
 
-				return $this->p->notice->set_ref( $sharing_url, $mod, $msg_transl );
+				return $this->p->notice->set_ref( $canonical_url, $mod, $msg_transl );
 			}
 
 			if ( $mod[ 'is_post' ] && $mod[ 'post_type_label' ] ) {
@@ -3714,17 +3704,17 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				/**
 				 * Exclude the $mod array to avoid adding an 'Edit' link to the notice message.
 				 */
-				return $this->p->notice->set_ref( $sharing_url, false, $msg_transl );
+				return $this->p->notice->set_ref( $canonical_url, false, $msg_transl );
 
 			}
 
 			// translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
 			$msg_transl = sprintf( __( '%1$s for %2$s ID %3$d', 'wpsso' ), $msg_transl, $name_transl, $mod[ 'id' ] );
 
-			return $this->p->notice->set_ref( $sharing_url, $mod, $msg_transl );
+			return $this->p->notice->set_ref( $canonical_url, $mod, $msg_transl );
 		}
 
-		public function maybe_unset_ref( $sharing_url ) {
+		public function maybe_unset_ref( $canonical_url ) {
 
 			static $is_admin = null;
 
@@ -3738,7 +3728,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				return false;
 			}
 
-			return $this->p->notice->unset_ref( $sharing_url );
+			return $this->p->notice->unset_ref( $canonical_url );
 		}
 
 		public function get_cache_exp_secs( $cache_md5_pre, $cache_type = 'transient', $mod = false ) {

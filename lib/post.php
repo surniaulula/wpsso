@@ -169,7 +169,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'adding pre_get_shortlink filters to shorten the sharing url' );
+						$this->p->debug->log( 'adding pre_get_shortlink filters to shorten the url' );
 					}
 
 					$min_int = SucomUtil::get_min_int();
@@ -907,7 +907,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( ini_get( 'open_basedir' ) ) {	// Cannot follow redirects.
 
-				$check_url = $this->p->util->get_sharing_url( $post_id, $add_page = false );
+				$check_url = $this->p->util->get_canonical_url( $post_id, $add_page = false );
 
 			} else {
 
@@ -1537,7 +1537,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( ini_get( 'open_basedir' ) ) {
 
-				$check_url = $this->p->util->get_sharing_url( $post_id, $add_page = false );
+				$check_url = $this->p->util->get_canonical_url( $post_id, $add_page = false );
 
 			} else {
 
@@ -1700,7 +1700,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		/**
 		 * WpssoPost class specific methods.
 		 *
-		 * Filters the wp shortlink for a post - returns the shortened sharing URL.
+		 * Filters the wp shortlink for a post - returns the shortened canonical URL.
 		 *
 		 * The wp_shortlink_wp_head() function calls wp_get_shortlink( 0, 'query' );
 		 */
@@ -1859,9 +1859,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return $shortlink;	// Return original shortlink.
 			}
 
-			$sharing_url = $this->p->util->get_sharing_url( $mod, $add_page = false );
+			$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = false );
 
-			$short_url = apply_filters( 'wpsso_get_short_url', $sharing_url, $this->p->options[ 'plugin_shortener' ], $mod );
+			$short_url = apply_filters( 'wpsso_get_short_url', $canonical_url, $this->p->options[ 'plugin_shortener' ], $mod );
 
 			if ( false === filter_var( $short_url, FILTER_VALIDATE_URL ) ) {	// Invalid url.
 

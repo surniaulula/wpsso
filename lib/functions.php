@@ -362,9 +362,9 @@ if ( ! function_exists( 'wpsso_get_sharing_url' ) ) {
 
 	function wpsso_get_sharing_url( $mod = false, $add_page = true ) {
 
-		$wpsso =& Wpsso::get_instance();
+		_deprecated_function( __METHOD__ . '()', '2021/09/03', $replacement = '' );	// Deprecation message.
 
-		return $wpsso->util->get_sharing_url( $mod, $add_page );
+		return $wpsso->util->get_canonical_url( $mod, $add_page );
 	}
 }
 
@@ -374,11 +374,11 @@ if ( ! function_exists( 'wpsso_get_short_url' ) ) {
 
 		$wpsso =& Wpsso::get_instance();
 
-		$sharing_url = $wpsso->util->get_sharing_url( $mod, $add_page );
+		$canonical_url = $wpsso->util->get_canonical_url( $mod, $add_page );
 
 		$service_id = $wpsso->options[ 'plugin_shortener' ];
 
-		return apply_filters( 'wpsso_get_short_url', $sharing_url, $service_id, $mod );
+		return apply_filters( 'wpsso_get_short_url', $canonical_url, $service_id, $mod );
 	}
 }
 

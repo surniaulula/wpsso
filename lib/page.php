@@ -1685,7 +1685,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			$filter_content = empty( $this->p->options[ 'plugin_filter_content' ] ) ? false : true;
-			$canonical_url  = $this->p->util->get_sharing_url( $mod );
+			$canonical_url  = $this->p->util->get_canonical_url( $mod );
 			$cache_md5_pre  = 'wpsso_c_';
 			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'wp_cache' );
 			$cache_salt     = __METHOD__ . '(' . SucomUtil::get_mod_salt( $mod, $canonical_url ) . ')';

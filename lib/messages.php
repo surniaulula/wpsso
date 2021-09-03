@@ -186,17 +186,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-sharing_url':	// Sharing URL.
-
-							$text = __( 'A customized sharing URL for Facebook / Open Graph and Pinterest Rich Pin meta tags, Schema sameAs property, and social sharing buttons add-on.', 'wpsso' ) . ' ';
-
-							$text .= __( 'Please make sure the custom URL you enter here is functional and redirects correctly.', 'wpsso' );
-
-						 	break;
-
 						case 'tooltip-meta-canonical_url':	// Canonical URL.
 
-							$text = sprintf( __( 'A customized URL used for the "%s" head tag (if enabled) and Schema url property.', 'wpsso' ), 'link rel canonical' ) . ' ';
+							$text = __( 'A customized URL for meta tags and Schema markup.', 'wpsso' ) . ' ';
 
 							$text .= __( 'Please make sure the custom URL you enter here is functional and redirects correctly.', 'wpsso' );
 

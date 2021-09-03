@@ -1894,9 +1894,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						 */
 						if ( is_admin() ) {
 
-							$sharing_url = $wpsso->util->get_sharing_url( $mod );
+							$canonical_url = $wpsso->util->get_canonical_url( $mod );
 
-							$wpsso->notice->set_ref( $sharing_url, $mod, sprintf( __( 'adding schema %s #%d image',
+							$wpsso->notice->set_ref( $canonical_url, $mod, sprintf( __( 'adding schema %s #%d image',
 								'wpsso-schema-json-ld' ), $prop_name, $md_num + 1 ) );
 						}
 
@@ -1912,7 +1912,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						 */
 						if ( is_admin() ) {
 
-							$wpsso->notice->unset_ref( $sharing_url );
+							$wpsso->notice->unset_ref( $canonical_url );
 						}
 					}
 
@@ -2398,11 +2398,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$item_count++;
 
-				$post_sharing_url = $wpsso->util->get_sharing_url( $post_mod );
+				$post_canonical_url = $wpsso->util->get_canonical_url( $post_mod );
 
 				$post_json_data = self::get_schema_type_context( 'https://schema.org/ListItem', array(
 					'position' => $item_count,
-					'url'      => $post_sharing_url,
+					'url'      => $post_canonical_url,
 				) );
 
 				if ( $wpsso->debug->enabled ) {

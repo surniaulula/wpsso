@@ -185,9 +185,9 @@
 
 'wpsso_post_archive_title' ( $title_text, $mod, $post_type_obj )
 
-'wpsso_post_cache_transient_keys' ( $transient_keys, $mod, $sharing_url, $mod_salt )
+'wpsso_post_cache_transient_keys' ( $transient_keys, $mod, $canonical_url, $mod_salt )
 
-'wpsso_post_cache_wp_cache_keys' ( $wp_cache_keys, $mod, $sharing_url, $mod_salt )
+'wpsso_post_cache_wp_cache_keys' ( $wp_cache_keys, $mod, $canonical_url, $mod_salt )
 
 'wpsso_post_document_meta_tabs' ( $tabs, $mod, $metabox_id )
 
@@ -261,8 +261,6 @@
 
 'wpsso_server_request_url' ( $url, $mod )
 
-'wpsso_sharing_url' ( $url, $mod, $add_page )
-
 'wpsso_show_validate_toolbar' ( $bool )
 
 'wpsso_social_accounts' ( (array) $social_accounts )
@@ -279,9 +277,9 @@
 
 'wpsso_term_archive_title' ( $title_text, $mod, $term_obj )
 
-'wpsso_term_cache_transient_keys' ( $transient_keys, $mod, $sharing_url, $mod_salt )
+'wpsso_term_cache_transient_keys' ( $transient_keys, $mod, $canonical_url, $mod_salt )
 
-'wpsso_term_cache_wp_cache_keys' ( $wp_cache_keys, $mod, $sharing_url, $mod_salt )
+'wpsso_term_cache_wp_cache_keys' ( $wp_cache_keys, $mod, $canonical_url, $mod_salt )
 
 'wpsso_term_document_meta_tabs' ( $tabs, $mod, $metabox_id )
 
@@ -305,9 +303,9 @@
 
 'wpsso_user_archive_title' ( $title_text, $mod, $user_obj )
 
-'wpsso_user_cache_transient_keys' ( $transient_keys, $mod, $sharing_url, $mod_salt )
+'wpsso_user_cache_transient_keys' ( $transient_keys, $mod, $canonical_url, $mod_salt )
 
-'wpsso_user_cache_wp_cache_keys' ( $wp_cache_keys, $mod, $sharing_url, $mod_salt )
+'wpsso_user_cache_wp_cache_keys' ( $wp_cache_keys, $mod, $canonical_url, $mod_salt )
 
 'wpsso_user_document_meta_tabs' ( $tabs, $mod, $metabox_id )
 

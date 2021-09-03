@@ -89,7 +89,6 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			$def_p_img_desc    = $p_img_disabled ? '' : $this->p->page->get_description( $p_img_desc_max_len, $dots, $mod, $read_cache, $maybe_hashtags );
 			$def_tc_desc       = $this->p->page->get_description( $tc_desc_max_len, $dots, $mod, $read_cache );
 			$def_seo_desc      = $seo_desc_disabled ? '' : $this->p->page->get_description( $seo_desc_max_len, $dots, $mod, $read_cache, $no_hashtags );
-			$def_sharing_url   = $this->p->util->get_sharing_url( $mod, $add_page = false );
 			$def_canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = false );
 			$def_reading_mins  = $this->p->page->get_reading_mins( $mod );
 
@@ -185,13 +184,6 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					'tooltip'  => 'meta-seo_desc',
 					'content'  => $form->get_textarea( 'seo_desc', $css_class = '', $css_id = '',
 						$seo_desc_max_len, $def_seo_desc, $seo_desc_disabled ) . ' ' . $seo_desc_msg,
-				),
-				'sharing_url' => array(
-					'th_class' => 'medium',
-					'label'    => _x( 'Sharing URL', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-sharing_url',
-					'content'  => $form->get_input( 'sharing_url', $css_class = 'wide', $css_id = '',
-						$max_len = 0, $def_sharing_url ),
 				),
 				'canonical_url' => array(
 					'tr_class' => $canonical_url_disabled ? 'hide_in_basic' : '',
@@ -340,9 +332,8 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			$og_prev_height   = 315;
 			$og_prev_img_html = '';
 
-			$image_url        = SucomUtil::get_first_mt_media_url( $head_info );
-			$sharing_url      = $this->p->util->get_sharing_url( $mod, $add_page = false );
-			$canonical_url    = $this->p->util->get_canonical_url( $mod, $add_page = false );
+			$image_url     = SucomUtil::get_first_mt_media_url( $head_info );
+			$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = false );
 
 			if ( $mod[ 'is_post' ] ) {
 
@@ -350,7 +341,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 
 			} else {
 
-				$shortlink_url = apply_filters( 'wpsso_get_short_url', $sharing_url, $this->p->options[ 'plugin_shortener' ], $mod );
+				$shortlink_url = apply_filters( 'wpsso_get_short_url', $canonical_url, $this->p->options[ 'plugin_shortener' ], $mod );
 			}
 
 			$have_sizes = isset( $head_info[ 'og:image:width' ] ) && $head_info[ 'og:image:width' ] > 0 && 
@@ -401,10 +392,6 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			$table_rows[] = '' . 
 				$form->get_th_html( _x( 'Canonical URL', 'option label', 'wpsso' ), $css_class = 'medium nowrap' ) . 
 				'<td>' . SucomForm::get_no_input_clipboard( $canonical_url ) . '</td>';
-
-			$table_rows[] = '' .
-				$form->get_th_html( _x( 'Sharing URL', 'option label', 'wpsso' ), $css_class = 'medium nowrap' ) . 
-				'<td>' . SucomForm::get_no_input_clipboard( $sharing_url ) . '</td>';
 
 			$table_rows[] = '' .
 				$form->get_th_html( _x( 'Shortlink URL', 'option label', 'wpsso' ), $css_class = 'medium nowrap' ) . 

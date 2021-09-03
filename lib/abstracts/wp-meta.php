@@ -139,6 +139,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'tc_sum_img_id_pre' => 'tc_sum_img_id_lib',
 					'schema_img_id_pre' => 'schema_img_id_lib',
 				),
+				812 => array(
+					'sharing_url' => '',
+				),
 			),
 		);
 
@@ -304,7 +307,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'p_img_desc'      => '',			// Pinterest Description.
 					'tc_desc'         => '',			// Twitter Card Description.
 					'seo_desc'        => '',			// Search Description.
-					'sharing_url'     => '',			// Sharing URL.
 					'canonical_url'   => '',			// Canonical URL.
 
 					/**
@@ -1955,10 +1957,10 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			$comment_mod = $this->p->comment->get_mod( $comment_obj->comment_ID );
 
-			$sharing_url  = $this->p->util->get_sharing_url( $comment_mod );
+			$canonical_url  = $this->p->util->get_canonical_url( $comment_mod );
 
 			$mt_ret[ $mt_pre . ':review:id' ]           = $comment_mod[ 'id' ];
-			$mt_ret[ $mt_pre . ':review:url' ]          = $sharing_url;
+			$mt_ret[ $mt_pre . ':review:url' ]          = $canonical_url;
 			$mt_ret[ $mt_pre . ':review:title' ]        = '';
 			$mt_ret[ $mt_pre . ':review:content' ]      = get_comment_excerpt( $comment_mod[ 'id' ] );
 			$mt_ret[ $mt_pre . ':review:created_time' ] = mysql2date( 'c', $comment_obj->comment_date_gmt );
@@ -2006,7 +2008,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				 */
 				if ( is_admin() ) {
 
-					$this->p->util->maybe_set_ref( $sharing_url, $comment_mod, __( 'adding schema images', 'wpsso' ) );
+					$this->p->util->maybe_set_ref( $canonical_url, $comment_mod, __( 'adding schema images', 'wpsso' ) );
 				}
 
 				$size_names = $this->p->util->get_image_size_names( 'full' );	// Always returns an array.
@@ -2041,7 +2043,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				 */
 				if ( is_admin() ) {
 
-					$this->p->util->maybe_unset_ref( $sharing_url );
+					$this->p->util->maybe_unset_ref( $canonical_url );
 				}
 			}
 

@@ -1209,9 +1209,51 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $local_cache[ $url ] = false;
 		}
 
-		public static function get_url() {
+		/**
+		 * Return the current request URL and remove tracking query arguments by default.
+		 */
+		public static function get_url( $remove_tracking = true ) {
 
-			return self::get_prot() . '://' . $_SERVER[ 'SERVER_NAME' ] . $_SERVER[ 'REQUEST_URI' ];
+			$url = self::get_prot() . '://' . $_SERVER[ 'SERVER_NAME' ] . $_SERVER[ 'REQUEST_URI' ];
+
+			/**
+			 * Maybe remove tracking query arguments used by facebook, google, etc.
+			 */
+			if ( $remove_tracking ) {
+
+				static $tracking_args = null;
+
+				if ( null === $tracking_args ) {	// Do only once.
+
+					$tracking_args = array(
+						'fb_action_ids',
+						'fb_action_types',
+						'fb_source',
+						'fb_aggregation_id',
+						'utm_source',
+						'utm_medium',
+						'utm_campaign',
+						'utm_term',
+						'utm_content',
+						'gclid',
+						'pk_campaign',
+						'pk_kwd',
+					);
+	
+					$tracking_args = (array) apply_filters( 'sucom_remove_tracking_args', $tracking_args );
+
+					$tracking_args = array_flip( $tracking_args );	// Move values to keys.
+
+					$tracking_args = array_fill_keys( array_keys( $tracking_args ), false );	// Set all values to false.
+				}
+
+				if ( ! empty( $tracking_args ) ) {	// Just in case.
+
+					$url = add_query_arg( $tracking_args, $url );	// Remove all keys with false values.
+				}
+			}
+
+			return $url;
 		}
 
 		public static function get_prot( $url = '' ) {
