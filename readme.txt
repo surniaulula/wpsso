@@ -270,7 +270,6 @@ Activate any of the free complementary add-on(s) you require:
 			* [Detect YouTube URL Links as Videos](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/detect-youtube-url-links-as-videos/)
 			* [Modify the "article:tag" Keywords / Names](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-articletag-keywords-names/)
 			* [Modify the Default Article Section List](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-default-article-sections-list/)
-			* [Modify the Sharing URL](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-sharing-url/)
 			* [Remove / Fix 'hentry' Errors in your Theme Templates](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/remove-hentry-from-theme-templates/)
 			* [Strip Additional Shortcodes](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/strip-additional-shortcodes/)
 			* [Use the REQUEST_URI for Post URLs](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/use-the-request_uri-for-post-urls/)
@@ -321,6 +320,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 <p>Under the SSO &gt; Update Manager settings page, select the "Development and Up" version filter for WPSSO Core and all its extensions (to satisfy any version dependencies). Save the plugin settings, and click the "Check for Plugin Updates" button to fetch the latest / current WPSSO version information. When new Development versions are available, they will automatically appear under your WordPress Dashboard &gt; Updates page. You can always re-select the "Stable / Production" version filter at any time to re-install the last stable / production version of a plugin.</p>
 
 <h3>Changelog / Release Notes</h3>
+
+**Version 8.37.1-dev.1 (2021/09/03)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Removed the "Sharing URL" option in the Document SSO metabox.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Renamed `WpssoUtil->get_type_url()` to `WpssoUtil->get_md_key_url()`.
+* **Requires At Least**
+	* PHP v7.0.
+	* WordPress v5.0.
 
 **Version 8.37.0 (2021/09/02)**
 
@@ -929,6 +942,10 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 	* WordPress v4.5.
 
 == Upgrade Notice ==
+
+= 8.37.1-dev.1 =
+
+(2021/09/03) Removed the "Sharing URL" option in the Document SSO metabox.
 
 = 8.37.0 =
 
