@@ -756,7 +756,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 						break;
 				}
-	
+
 				switch ( $key ) {
 
 					case 'honorific_prefix':
@@ -766,7 +766,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 						break;
 
 					case 'honorific_suffix':
-				
+
 						echo '<p class="description">' . __( 'Examples: CPA, Esq., M.D., P.E., PhD., PMP, RN', 'wpsso' ) . '</p>';
 
 						break;

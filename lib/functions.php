@@ -382,6 +382,16 @@ if ( ! function_exists( 'wpsso_get_short_url' ) ) {
 	}
 }
 
+if ( ! function_exists( 'wpsso_get_post_short_url' ) ) {
+
+	function wpsso_get_post_short_url( $post_id ) {
+
+		$mod = wpsso_get_post_mod( $post_id );
+
+		return wpsso_get_short_url( $mod );
+	}
+}
+
 if ( ! function_exists( 'wpsso_get_post_event_options' ) ) {
 
 	function wpsso_get_post_event_options( $post_id, $type_id = false ) {

@@ -479,7 +479,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 		public function options( $opts_name, &$opts = array(), $defs = array(), $network = false ) {
 
 			if ( constant( 'WPSSO_OPTIONS_NAME' ) === $opts_name ) {
-			
+
 				$is_site_options = false;
 
 			} elseif ( constant( 'WPSSO_SITE_OPTIONS_NAME' ) === $opts_name ) {
@@ -487,7 +487,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				$is_site_options = true;
 
 			} else {	// Nothing to do.
-				
+
 				return $opts;
 			}
 

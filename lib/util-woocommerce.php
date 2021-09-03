@@ -563,9 +563,9 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 				if ( $var_obj = $this->get_product( $var_id ) ) {
 
 					$meta_val = $var_obj->get_meta( $meta_key, $single = true );
-					
+
 					if ( '' !== $meta_val ) {
-				
+
 						return $local_cache[ $product_id ][ $meta_key ] = true;
 					}
 				}

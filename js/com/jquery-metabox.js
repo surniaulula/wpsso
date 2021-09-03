@@ -276,7 +276,7 @@ function sucomSelectUniquePair( select_main, select_other ) {
 	var other_val = select_other.val();
 
 	if ( 'none' !== main_val ) {	// If the main select has a value.
-	
+
 		if ( 'none' !== other_val ) {	// Maybe set the other select value to 'none'.
 
 			other_val = 'none';

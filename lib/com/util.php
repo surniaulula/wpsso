@@ -4179,9 +4179,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Website (aka Home) Address URL.
-		 *
-		 * Returns a custom site address URL or the default site address URL (aka the 'home' URL).
+		 * Returns the website URL (ie. the home page, WP_HOME value) from the options array, or the WordPress
+		 * get_home_url() value.
 		 *
 		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 */
@@ -4198,7 +4197,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * WordPress Address URL.
+		 * Returns the WordPress installation URL (ie. the blog page, WP_SITEURL value) from the options array, or the
+		 * WordPress get_site_url() value.
+		 *
+		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 */
 		public static function get_wp_url( array $opts = array(), $mixed = 'current' ) {
 
