@@ -6901,8 +6901,8 @@ msgstr ""
 
 #: lib/messages.php:2276
 msgid ""
-"Enter the Authentication ID in the option field corresponding to the plugin "
-"or add-on you purchased."
+"Enter the Authentication ID you received in the option field corresponding "
+"to the plugin or add-on you purchased."
 msgstr ""
 
 #: lib/messages.php:2278

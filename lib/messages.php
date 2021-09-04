@@ -2273,7 +2273,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= sprintf( __( 'After purchasing the %1$s plugin or any complementary %2$s add-on, you\'ll receive an email with a unique Authentication ID for the plugin or add-on you purchased.', 'wpsso' ), $wpsso_name_pro, $dist_pro ) . ' ';
 
-							$text .=  __( 'Enter the Authentication ID in the option field corresponding to the plugin or add-on you purchased.', 'wpsso' ) . ' ';
+							$text .=  __( 'Enter the Authentication ID you received in the option field corresponding to the plugin or add-on you purchased.', 'wpsso' ) . ' ';
 
 							$text .= sprintf( __( 'Don\'t forget that the %1$s add-on must be installed and active to check for %2$s version updates.', 'wpsso' ), $um_addon_link, $dist_pro ) . ' ;-)';
 
