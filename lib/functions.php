@@ -348,48 +348,6 @@ if ( ! function_exists( 'wpsso_get_user_og_image_url' ) ) {
 	}
 }
 
-if ( ! function_exists( 'wpsso_get_canonical_url' ) ) {
-
-	function wpsso_get_canonical_url( $mod = false, $add_page = true ) {
-
-		$wpsso =& Wpsso::get_instance();
-
-		return $wpsso->util->get_canonical_url( $mod, $add_page );
-	}
-}
-
-if ( ! function_exists( 'wpsso_get_sharing_url' ) ) {
-
-	function wpsso_get_sharing_url( $mod = false, $add_page = true ) {
-
-		_deprecated_function( __METHOD__ . '()', '2021/09/03', $replacement = '' );	// Deprecation message.
-
-		return $wpsso->util->get_canonical_url( $mod, $add_page );
-	}
-}
-
-if ( ! function_exists( 'wpsso_get_short_url' ) ) {
-
-	function wpsso_get_short_url( $mod = false, $add_page = true ) {
-
-		$wpsso =& Wpsso::get_instance();
-
-		$canonical_url = $wpsso->util->get_canonical_url( $mod, $add_page );
-
-		return $wpsso->util->shorten_url( $canonical_url, $mod );
-	}
-}
-
-if ( ! function_exists( 'wpsso_get_post_short_url' ) ) {
-
-	function wpsso_get_post_short_url( $post_id ) {
-
-		$mod = wpsso_get_post_mod( $post_id );
-
-		return wpsso_get_short_url( $mod, $add_page = false );
-	}
-}
-
 if ( ! function_exists( 'wpsso_get_post_event_options' ) ) {
 
 	function wpsso_get_post_event_options( $post_id, $type_id = false ) {
@@ -472,5 +430,69 @@ if ( ! function_exists( 'wpsso_get_post_primary_category' ) ) {
 		$mod = wpsso_get_post_mod( $post_id );
 
 		return $wpsso->post->get_primary_term_id( $mod, $tax_slug );
+	}
+}
+
+/**
+ * Functions to get the canonical, post, and sharing URLs.
+ */
+if ( ! function_exists( 'wpsso_get_canonical_url' ) ) {
+
+	function wpsso_get_canonical_url( $mod = false, $add_page = true ) {
+
+		$wpsso =& Wpsso::get_instance();
+
+		return $wpsso->util->get_canonical_url( $mod, $add_page );
+	}
+}
+
+if ( ! function_exists( 'wpsso_get_canonical_short_url' ) ) {
+
+	function wpsso_get_canonical_short_url( $mod = false, $add_page = true ) {
+
+		$wpsso =& Wpsso::get_instance();
+
+		return $wpsso->util->get_canonical_short_url( $mod, $add_page );
+	}
+}
+
+if ( ! function_exists( 'wpsso_get_post_short_url' ) ) {
+
+	function wpsso_get_post_short_url( $post_id ) {
+
+		$mod = wpsso_get_post_mod( $post_id );
+
+		return wpsso_get_canonical_short_url( $mod, $add_page = false );
+	}
+}
+
+if ( ! function_exists( 'wpsso_get_sharing_url' ) ) {
+
+	function wpsso_get_sharing_url( $mod = false, $add_page = true, $md_key = '' ) {
+
+		return $wpsso->util->get_sharing_url( $mod, $add_page, $md_key );
+	}
+}
+
+if ( ! function_exists( 'wpsso_get_sharing_short_url' ) ) {
+
+	function wpsso_get_sharing_short_url( $mod = false, $add_page = true, $md_key = '' ) {
+
+		$wpsso =& Wpsso::get_instance();
+
+		return $wpsso->util->get_sharing_short_url( $mod, $add_page, $md_key );
+	}
+}
+
+/**
+ * Deprecated on 2021/09/04.
+ */
+if ( ! function_exists( 'wpsso_get_short_url' ) ) {
+
+	function wpsso_get_short_url( $mod = false, $add_page = true ) {
+
+		_deprecated_function( __FUNCTION__ . '()', '2021/09/04', $replacement = 'wpsso_get_canonical_short_url' );	// Deprecation message.
+
+		return wpsso_get_canonical_short_url( $mod, $add_page );
 	}
 }

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.37.1-dev.3\n"
+"Project-Id-Version: WPSSO Core 8.37.1-dev.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3567,7 +3567,7 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:286 lib/edit.php:413 lib/page.php:1274
+#: gettext/gettext-lib-pro.php:286 lib/edit.php:413 lib/page.php:1279
 #: lib/pro/social/buddypress.php:664
 msgctxt "default description"
 msgid "No Description."
@@ -4984,7 +4984,7 @@ msgctxt "option label"
 msgid "Facebook / Open Graph Example"
 msgstr ""
 
-#: lib/edit.php:410 lib/page.php:1572
+#: lib/edit.php:410 lib/page.php:1577
 msgctxt "default title"
 msgid "No Title"
 msgstr ""
@@ -5113,12 +5113,12 @@ msgid ""
 msgstr ""
 
 #: lib/media.php:1026 lib/post.php:532 lib/register.php:323 lib/term.php:473
-#: lib/user.php:446 lib/util.php:825 lib/util.php:3087
+#: lib/user.php:446 lib/util.php:825 lib/util.php:3098
 msgid "%s warning:"
 msgstr ""
 
 #: lib/media.php:1027 lib/post.php:533 lib/term.php:474 lib/user.php:447
-#: lib/util.php:826 lib/util.php:3088
+#: lib/util.php:826 lib/util.php:3099
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
@@ -8024,60 +8024,60 @@ msgid ""
 "its default value."
 msgstr ""
 
-#: lib/page.php:1058 lib/page.php:1063 lib/page.php:1177
+#: lib/page.php:1063 lib/page.php:1068 lib/page.php:1182
 msgctxt "default description"
 msgid "Archive for %s."
 msgstr ""
 
-#: lib/page.php:1148
+#: lib/page.php:1153
 msgctxt "default description"
 msgid "Tag archive for %s."
 msgstr ""
 
-#: lib/page.php:1161
+#: lib/page.php:1166
 msgctxt "default description"
 msgid "Category archive for %s."
 msgstr ""
 
-#: lib/page.php:1193
+#: lib/page.php:1198
 msgctxt "default description"
 msgid "Authored by %s."
 msgstr ""
 
-#: lib/page.php:1211
+#: lib/page.php:1216
 msgid "Search Results for &#8220;%s&#8221;"
 msgstr ""
 
-#: lib/page.php:1221
+#: lib/page.php:1226
 msgctxt "default description"
 msgid "Yearly archive for %s."
 msgstr ""
 
-#: lib/page.php:1227
+#: lib/page.php:1232
 msgctxt "default description"
 msgid "Monthly archive for %s."
 msgstr ""
 
-#: lib/page.php:1233
+#: lib/page.php:1238
 msgctxt "default description"
 msgid "Daily archive for %s."
 msgstr ""
 
-#: lib/page.php:1240
+#: lib/page.php:1245
 msgctxt "default description"
 msgid "Archive page."
 msgstr ""
 
-#: lib/page.php:1438 lib/page.php:1442
+#: lib/page.php:1443 lib/page.php:1447
 msgctxt "default title"
 msgid "%s Archive"
 msgstr ""
 
-#: lib/page.php:1524
+#: lib/page.php:1529
 msgid "Search Results %1$s %2$s"
 msgstr ""
 
-#: lib/page.php:1652
+#: lib/page.php:1657
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] ""
@@ -9284,13 +9284,13 @@ msgid ""
 "provider to have the missing function installed."
 msgstr ""
 
-#: lib/util.php:3089
+#: lib/util.php:3100
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3105
+#: lib/util.php:3116
 msgid ""
 "Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds "
 "to execute. This is longer than the recommended maximum of %3$.3f seconds "
@@ -9299,120 +9299,120 @@ msgid ""
 "sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3107
+#: lib/util.php:3118
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3485
+#: lib/util.php:3496
 msgctxt "option label"
 msgid "The AMP Project Validator"
 msgstr ""
 
-#: lib/util.php:3486
+#: lib/util.php:3497
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr ""
 
-#: lib/util.php:3490
+#: lib/util.php:3501
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr ""
 
-#: lib/util.php:3491
+#: lib/util.php:3502
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/util.php:3495
+#: lib/util.php:3506
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr ""
 
-#: lib/util.php:3496
+#: lib/util.php:3507
 msgctxt "validator type"
 msgid "Microdata"
 msgstr ""
 
-#: lib/util.php:3500
+#: lib/util.php:3511
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr ""
 
-#: lib/util.php:3501
+#: lib/util.php:3512
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr ""
 
-#: lib/util.php:3505
+#: lib/util.php:3516
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/util.php:3506
+#: lib/util.php:3517
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr ""
 
-#: lib/util.php:3510
+#: lib/util.php:3521
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/util.php:3511
+#: lib/util.php:3522
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/util.php:3515
+#: lib/util.php:3526
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/util.php:3516
+#: lib/util.php:3527
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr ""
 
-#: lib/util.php:3520
+#: lib/util.php:3531
 msgctxt "option label"
 msgid "Schema Markup Validator"
 msgstr ""
 
-#: lib/util.php:3521
+#: lib/util.php:3532
 msgctxt "validator type"
 msgid "Schema Markup"
 msgstr ""
 
-#: lib/util.php:3525
+#: lib/util.php:3536
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/util.php:3526
+#: lib/util.php:3537
 msgctxt "validator type"
 msgid "Twitter Card"
 msgstr ""
 
-#: lib/util.php:3531
+#: lib/util.php:3542
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr ""
 
-#: lib/util.php:3532
+#: lib/util.php:3543
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name.
-#: lib/util.php:3682
+#: lib/util.php:3693
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3692
+#: lib/util.php:3703
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 

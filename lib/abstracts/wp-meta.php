@@ -926,15 +926,15 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				return null;
 			}
 
-			if ( false === $md_key ) {					// Return the whole options array.
+			if ( false === $md_key ) {	// Return the whole options array.
 
 				$md_val = $this->get_options( $mod_id, $md_key, $filter_opts );
 
-			} elseif ( true === $md_key ) {					// True is not valid for a custom meta key.
+			} elseif ( true === $md_key ) {	// True is not valid for a custom meta key.
 
 				$md_val = null;
 
-			} else {							// Return the first matching index value.
+			} else {	// Return the first matching index value.
 
 				if ( is_array( $md_key ) ) {
 
@@ -942,20 +942,20 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				} else {
 
-					$check_md_keys = array( $md_key );		// Convert a string to an array.
+					$check_md_keys = array( $md_key );	// Convert a string to an array.
 				}
 
 				foreach ( $check_md_keys as $md_key ) {
 
-					if ( 'none' === $md_key ) {			// Special index keyword - stop here.
+					if ( 'none' === $md_key ) {	// Special index keyword - stop here.
 
 						return null;
 
-					} elseif ( empty( $md_key ) ) {			// Skip empty array keys.
+					} elseif ( empty( $md_key ) ) {	// Skip empty array keys.
 
 						continue;
 
-					} elseif ( is_array( $md_key ) ) {		// An array of arrays is not valid.
+					} elseif ( is_array( $md_key ) ) {	// An array of arrays is not valid.
 
 						continue;
 
@@ -979,7 +979,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				}
 			}
 
-			if ( $md_val !== null ) {
+			if ( null !== $md_val ) {
 
 				if ( $this->p->debug->enabled ) {
 

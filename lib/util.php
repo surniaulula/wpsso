@@ -2201,62 +2201,16 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return apply_filters( 'wpsso_oembed_data', $data, $mod, $width );
 		}
 
-		/**
-		 * The $mod array argument is preferred but not required.
-		 *
-		 * $mod = true | false | post_id | $mod array
-		 */
-		public function get_canonical_url( $mod = false, $add_page = true ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			if ( empty( $mod[ 'canonical_url' ] ) ) {
-
-				$url = $this->get_md_url( $md_key = 'canonical_url', $mod, $add_page );
-
-			} else {
-
-				$url = $mod[ 'canonical_url' ];
-			}
-
-			return $url;
-		}
-
-		/**
-		 * Deprecated on 2021/09/03.
-		 */
-		public function get_sharing_url( $mod = false, $add_page = true ) {
-
-			_deprecated_function( __METHOD__ . '()', '2021/09/03', $replacement = '' );	// Deprecation message.
-
-			return $this->get_canonical_url( $mod, $add_page );
-		}
-
-		/**
-		 * Get a customized URL from the metadata options using an its key (ie. 'canonical_url'), otherwise fallback and
-		 * return the canonical URL.
-		 *
-		 * The $mod array argument is preferred but not required.
-		 *
-		 * $mod = true | false | post_id | $mod array
-		 */
-		public function get_md_url( $md_key, $mod, $add_page = true ) {
+		public function get_sharing_url( $mod = false, $add_page = true, $md_key = '' ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_args( array(
-					'md_key'   => $md_key,
 					'mod'      => $mod,
 					'add_page' => $add_page,
+					'md_key'   => $md_key,
 				) );
 			}
-
-			$url = false;
-
-			$md_key = sanitize_text_field( $md_key );	// Just in case.
 
 			if ( ! is_array( $mod ) ) {
 
@@ -2267,6 +2221,59 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				$mod = $this->p->page->get_mod( $mod );
 			}
+
+			$url = null;
+
+			if ( is_object( $mod[ 'obj' ] ) ) {	// Just in case.
+			
+				$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $md_key );	// Returns null if an index key is not found.
+			}
+
+			if ( empty( $url ) ) {
+
+				$url = $this->get_canonical_url( $mod, $add_page );
+			}
+
+			$url = apply_filters( 'wpsso_sharing_url', $url, $mod, $add_page, $md_key );
+
+			return $url;
+		}
+
+		public function get_sharing_short_url( $mod = false, $add_page = true, $md_key = '' ) {
+
+			$url = $this->get_sharing_url( $mod, $add_page, $md_key );
+
+			return $this->shorten_url( $url, $mod );
+		}
+
+		/**
+		 * The $mod array argument is preferred but not required.
+		 *
+		 * $mod = true | false | post_id | $mod array
+		 */
+		public function get_canonical_url( $mod = false, $add_page = true ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_args( array(
+					'mod'      => $mod,
+					'add_page' => $add_page,
+				) );
+			}
+
+			if ( ! is_array( $mod ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
+				}
+
+				$mod = $this->p->page->get_mod( $mod );
+			}
+
+			$url = null;
+
+			$md_key = 'canonical_url';
 
 			/**
 			 * Optimize and return the URL from local cache if possible.
@@ -2488,9 +2495,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$url = $this->get_url_paged( $url, $mod, $add_page );
 
-			$filter_name = SucomUtil::sanitize_hookname( 'wpsso_' . $md_key );
-
-			$url = apply_filters( $filter_name, $url, $mod, $add_page );
+			$url = apply_filters( 'wpsso_canonical_url', $url, $mod, $add_page );
 
 			if ( ! empty( $cache_salt ) ) {
 
@@ -2500,13 +2505,19 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $url;
 		}
 
+		public function get_canonical_short_url( $mod = false, $add_page = true ) {
+
+			$url = $this->get_canonical_url( $mod, $add_page );
+
+			return $this->shorten_url( $url, $mod );
+		}
+
 		private function get_url_paged( $url, array $mod, $add_page ) {
 
 			if ( empty( $url ) || empty( $add_page ) ) {	// Just in case.
 
 				return $url;	// Nothing to do.
 			}
-
 
 			if ( $mod[ 'is_post' ] ) {
 

@@ -261,6 +261,8 @@
 
 'wpsso_server_request_url' ( $url, $mod )
 
+'wpsso_sharing_url' ( $url, $mod, $add_page, $md_key )
+
 'wpsso_show_validate_toolbar' ( $bool )
 
 'wpsso_social_accounts' ( (array) $social_accounts )

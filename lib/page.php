@@ -745,7 +745,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		 *
 		 * $md_key = true | false | string | array
 		 *
-		 * Use $title_sep = false to avoid adding parent names in the term title.
+		 * Use a $title_sep value of false to avoid adding parent names in the term title. $md_key can be a metadata
+		 * options key, or an array of keys in order of preference (ie. from more specific to less specific). Example:
+		 * array( 'seo_title', 'og_title' ).
 		 */
 		public function get_title( $max_len = 70, $dots = '', $mod = false, $read_cache = true,
 			$add_hashtags = false, $do_encode = true, $md_key = 'og_title', $title_sep = null ) {
@@ -779,15 +781,15 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$mod = $this->p->page->get_mod( $mod );
 			}
 
-			if ( false === $md_key ) {			// False would return the complete meta array.
+			if ( false === $md_key ) {	// False would return the complete meta array.
 
 				$md_key = '';
 
-			} elseif ( true === $md_key ) {			// True signals use of the standard / fallback value.
+			} elseif ( true === $md_key ) {	// True signals use of the standard / fallback value.
 
 				$md_key = array( 'og_title' );
 
-			} elseif ( ! is_array( $md_key ) ) {		// Use fallback by default - get_options_multi() will do array_uniq().
+			} elseif ( ! is_array( $md_key ) ) {	// Use fallback by default - get_options_multi() will do array_uniq().
 
 				$md_key = array( $md_key, 'og_title' );
 			}
@@ -930,6 +932,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		 * $mod = true | false | post_id | array.
 		 *
 		 * $md_key = true | false | string | array.
+		 *
+		 * $md_key can be a metadata options key, or an array of keys in order of preference (ie. from more specific to
+		 * less specific). Example: array( 'seo_desc', 'og_desc' ).
 		 */
 		public function get_description( $max_len = 160, $dots = '...', $mod = false, $read_cache = true,
 			$add_hashtags = true, $do_encode = true, $md_key = 'og_desc' ) {
@@ -964,11 +969,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$mod = $this->p->page->get_mod( $mod );
 			}
 
-			if ( false === $md_key ) {		// False would return the complete meta array.
+			if ( false === $md_key ) {	// False would return the complete meta array.
 
 				$md_key = '';
 
-			} elseif ( true === $md_key ) {		// True signals use of the standard / fallback value.
+			} elseif ( true === $md_key ) {	// True signals use of the standard / fallback value.
 
 				$md_key = array( 'og_desc' );
 
