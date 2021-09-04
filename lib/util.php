@@ -2215,7 +2215,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( empty( $mod[ 'canonical_url' ] ) ) {
 
-				$url = $this->get_md_key_url( $md_key = 'canonical_url', $mod, $add_page );
+				$url = $this->get_md_url( $md_key = 'canonical_url', $mod, $add_page );
 
 			} else {
 
@@ -2236,11 +2236,14 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
+		 * Get a customized URL from the metadata options using an its key (ie. 'canonical_url'), otherwise fallback and
+		 * return the canonical URL.
+		 *
 		 * The $mod array argument is preferred but not required.
 		 *
 		 * $mod = true | false | post_id | $mod array
 		 */
-		public function get_md_key_url( $md_key, $mod, $add_page = true ) {
+		public function get_md_url( $md_key, $mod, $add_page = true ) {
 
 			if ( $this->p->debug->enabled ) {
 
