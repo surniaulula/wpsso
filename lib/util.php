@@ -1850,19 +1850,19 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		/**
 		 * Deprecated on 2021/09/03.
 		 */
-		public function replace_inline_vars( $content, $mod = false, array $atts = array(), array $extra = array() ) {
+		public function replace_inline_vars( $content, $mod = false, array $atts = array(), array $extras = array() ) {
 
-			return $this->replace_inline_variables( $content, $mod, $atts, $extra );
+			return $this->replace_inline_variables( $content, $mod, $atts, $extras );
 		}
 
 		/**
 		 * Replace default and extra inline variables in the content text.
 		 *
-		 * $atts can be an associative array with additional information ('url', 'short_url', 'add_page', etc.).
+		 * $atts can be an associative array with additional information ('canonical_url', 'canonical_short_url', 'add_page', etc.).
 		 *
-		 * $extra can be an associative array with key/value pairs to be replaced.
+		 * $extras can be an associative array with key/value pairs to be replaced.
 		 */
-		public function replace_inline_variables( $content, $mod = false, array $atts = array(), array $extra = array() ) {
+		public function replace_inline_variables( $content, $mod = false, array $atts = array(), array $extras = array() ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1898,13 +1898,21 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$values = $this->get_inline_values( $mod, $atts );
 
-			if ( ! empty( $extra ) && self::is_assoc( $extra ) ) {
+			if ( ! empty( $extras ) && self::is_assoc( $extras ) ) {
 
-				foreach ( $extra as $match => $replace ) {
+				foreach ( $extras as $match => $val ) {
 
 					$variables[] = '%%' . $match . '%%';
 
-					$values[] = $replace;
+					$values[] = $val;
+				}
+			}
+
+			if ( ! empty( $atts[ 'rawurlencode' ] ) ) {
+
+				foreach ( $values as $num => $val ) {
+
+					$values[ $num ] = rawurlencode( $val );
 				}
 			}
 
@@ -1919,16 +1927,18 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			return array(
 				'%%canonical_url%%',
+				'%%canonical_short_url%%',
 				'%%sharing_url%%',
+				'%%sharing_short_url%%',
+				'%%short_url%%',	// Aka %%sharing_short_url%% - Required for old WPSSO RRSSB templates.
 				'%%request_url%%',
-				'%%short_url%%',
 				'%%sitename%%',
 				'%%sitealtname%%',
 				'%%sitedesc%%',
 			);
 		}
 
-		public function get_inline_values( $mod = false, &$atts = array() ) {
+		public function get_inline_values( $mod = false, $atts = array() ) {
 
 			/**
 			 * The $mod array argument is preferred but not required.
@@ -1945,20 +1955,24 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$mod = $this->p->page->get_mod( $mod );
 			}
 
-			$add_page      = isset( $atts[ 'add_page' ] ) ? $atts[ 'add_page' ] : true;
-			$canonical_url = empty( $atts[ 'url' ] ) ? $canonical_url = $this->get_canonical_url( $mod, $add_page ) : $atts[ 'url' ];
-			$sharing_url   = $canonical_url;	// Deprecated since 2021/09/03.
-			$request_url   = is_admin() ? $canonical_url : self::get_url( $remove_tracking = true );
-			$short_url     = empty( $atts[ 'short_url' ] ) ? $this->shorten_url( $canonical_url, $mod ) : $atts[ 'short_url' ];
-			$sitename      = self::get_site_name( $this->p->options, $mod );
-			$sitealtname   = self::get_site_name_alt( $this->p->options, $mod );
-			$sitedesc      = self::get_site_description( $this->p->options, $mod );
+			$add_page            = isset( $atts[ 'add_page' ] ) ? $atts[ 'add_page' ] : true;
+			$opt_pre             = isset( $atts[ 'opt_pre' ] ) ? $atts[ 'opt_pre' ] : '';
+			$canonical_url       = empty( $atts[ 'canonical_url' ] ) ? $this->get_canonical_url( $mod, $add_page ) : $atts[ 'canonical_url' ];
+			$canonical_short_url = empty( $atts[ 'canonical_short_url' ] ) ? $this->get_canonical_short_url( $mod, $add_page ) : $atts[ 'canonical_short_url' ];
+			$sharing_url         = empty( $atts[ 'sharing_url' ] ) ? $this->get_sharing_url( $mod, $add_page, $opt_pre ) : $atts[ 'sharing_url' ];
+			$sharing_short_url   = empty( $atts[ 'sharing_short_url' ] ) ? $this->get_sharing_short_url( $mod, $add_page, $opt_pre ) : $atts[ 'sharing_short_url' ];
+			$request_url         = is_admin() ? $canonical_url : self::get_url( $remove_tracking = true );
+			$sitename            = self::get_site_name( $this->p->options, $mod );
+			$sitealtname         = self::get_site_name_alt( $this->p->options, $mod );
+			$sitedesc            = self::get_site_description( $this->p->options, $mod );
 
 			return array(
 				$canonical_url,		// %%canonical_url%%
+				$canonical_short_url,	// %%canonical_short_url%%
 				$sharing_url,		// %%sharing_url%%
+				$sharing_short_url,	// %%sharing_short_url%%
+				$sharing_short_url,	// %%short_url%% - Required for old WPSSO RRSSB templates.
 				$request_url,		// %%request_url%%
-				$short_url,		// %%short_url%%
 				$sitename,		// %%sitename%%
 				$sitealtname,		// %%sitealtname%%
 				$sitedesc,		// %%sitedesc%%
@@ -2201,14 +2215,14 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return apply_filters( 'wpsso_oembed_data', $data, $mod, $width );
 		}
 
-		public function get_sharing_url( $mod = false, $add_page = true, $md_key = '' ) {
+		public function get_sharing_url( $mod = false, $add_page = true, $opt_pre = '' ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_args( array(
 					'mod'      => $mod,
 					'add_page' => $add_page,
-					'md_key'   => $md_key,
+					'opt_pre'  => $opt_pre,
 				) );
 			}
 
@@ -2224,9 +2238,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$url = null;
 
-			if ( is_object( $mod[ 'obj' ] ) ) {	// Just in case.
+			if ( ! empty( $opt_pre ) ) {
+
+				if ( is_object( $mod[ 'obj' ] ) ) {	// Just in case.
 			
-				$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $md_key );	// Returns null if an index key is not found.
+					$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $opt_pre . '_sharing_url' );	// Returns null if an index key is not found.
+				}
 			}
 
 			if ( empty( $url ) ) {
@@ -2234,14 +2251,14 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$url = $this->get_canonical_url( $mod, $add_page );
 			}
 
-			$url = apply_filters( 'wpsso_sharing_url', $url, $mod, $add_page, $md_key );
+			$url = apply_filters( 'wpsso_sharing_url', $url, $mod, $add_page, $opt_pre );
 
 			return $url;
 		}
 
-		public function get_sharing_short_url( $mod = false, $add_page = true, $md_key = '' ) {
+		public function get_sharing_short_url( $mod = false, $add_page = true, $opt_pre = '' ) {
 
-			$url = $this->get_sharing_url( $mod, $add_page, $md_key );
+			$url = $this->get_sharing_url( $mod, $add_page, $opt_pre );
 
 			return $this->shorten_url( $url, $mod );
 		}
@@ -2273,8 +2290,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$url = null;
 
-			$md_key = 'canonical_url';
-
 			/**
 			 * Optimize and return the URL from local cache if possible.
 			 */
@@ -2284,7 +2299,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( ! empty( $mod[ 'name' ] ) && ! empty( $mod[ 'id' ] ) ) {
 
-				$cache_salt = self::get_mod_salt( $mod ) . '_md_key:' . $md_key . '_add_page:' . $add_page;
+				$cache_salt = self::get_mod_salt( $mod ) . '_add_page:' . $add_page;
 
 				if ( ! empty( $local_cache[ $cache_salt ] ) ) {
 
@@ -2315,14 +2330,14 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
 
-						$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $md_key );	// Returns null if an index key is not found.
+						$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'canonical_url' );	// Returns null if an index key is not found.
 					}
 
 					if ( ! empty( $url ) ) {	// Must be a non-empty string.
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'custom post ' . $md_key . ' = ' . $url );
+							$this->p->debug->log( 'custom post canonical_url = ' . $url );
 						}
 
 					} elseif ( 'publish' !== $mod[ 'post_status' ] ) {
@@ -2385,14 +2400,14 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					if ( ! empty( $mod[ 'obj' ] ) ) {
 
-						$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $md_key );	// Returns null if an index key is not found.
+						$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'canonical_url' );	// Returns null if an index key is not found.
 					}
 
 					if ( ! empty( $url ) ) {	// Must be a non-empty string.
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'custom term ' . $md_key . ' = ' . $url );
+							$this->p->debug->log( 'custom term canonical_url = ' . $url );
 						}
 
 					} else {
@@ -2411,14 +2426,14 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					if ( ! empty( $mod[ 'obj' ] ) ) {
 
-						$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $md_key );	// Returns null if an index key is not found.
+						$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'canonical_url' );	// Returns null if an index key is not found.
 					}
 
 					if ( ! empty( $url ) ) {	// Must be a non-empty string.
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'custom user ' . $md_key . ' = ' . $url );
+							$this->p->debug->log( 'custom user canonical_url = ' . $url );
 						}
 
 					} else {

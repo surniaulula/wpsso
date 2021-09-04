@@ -861,7 +861,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( false !== strpos( $title_text, '%%' ) ) {
 
-				$title_text = $this->p->util->replace_inline_vars( $title_text, $mod );
+				$title_text = $this->p->util->replace_inline_variables( $title_text, $mod );
 			}
 
 			/**
@@ -1285,7 +1285,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( false !== strpos( $desc_text, '%%' ) ) {
 
-				$desc_text = $this->p->util->replace_inline_vars( $desc_text, $mod );
+				$desc_text = $this->p->util->replace_inline_variables( $desc_text, $mod );
 			}
 
 			/**
