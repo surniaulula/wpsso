@@ -468,19 +468,19 @@ if ( ! function_exists( 'wpsso_get_post_short_url' ) ) {
 
 if ( ! function_exists( 'wpsso_get_sharing_url' ) ) {
 
-	function wpsso_get_sharing_url( $mod = false, $add_page = true, $md_key = '' ) {
+	function wpsso_get_sharing_url( $mod = false, $add_page = true, $atts = array() ) {
 
-		return $wpsso->util->get_sharing_url( $mod, $add_page, $md_key );
+		return $wpsso->util->get_sharing_url( $mod, $add_page, $atts );
 	}
 }
 
 if ( ! function_exists( 'wpsso_get_sharing_short_url' ) ) {
 
-	function wpsso_get_sharing_short_url( $mod = false, $add_page = true, $md_key = '' ) {
+	function wpsso_get_sharing_short_url( $mod = false, $add_page = true, $atts = array() ) {
 
 		$wpsso =& Wpsso::get_instance();
 
-		return $wpsso->util->get_sharing_short_url( $mod, $add_page, $md_key );
+		return $wpsso->util->get_sharing_short_url( $mod, $add_page, $atts );
 	}
 }
 

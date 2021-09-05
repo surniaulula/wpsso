@@ -206,7 +206,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 				/**
 				 * Clear All Caches and Short URLs.
 				 */
-				if ( $this->p->options[ 'plugin_shortener' ] !== 'none' ) {
+				if ( 'none' !== $this->p->options[ 'plugin_shortener' ] ) {
 
 					if ( empty( $this->p->options[ 'plugin_clear_short_urls' ] ) ) {
 

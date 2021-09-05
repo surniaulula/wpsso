@@ -1491,6 +1491,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				unset( $new_values );
 			}
 
+			unset( $values[ 'none' ] );	// Just in case.
+
 			$values = array( 'none' => '[None]' ) + $values;
 
 			return $this->get_select( $name, $values, $css_class, $css_id, $is_assoc = true, $is_disabled, $selected, $event_names, $event_args );

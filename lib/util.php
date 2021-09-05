@@ -1956,11 +1956,10 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$add_page            = isset( $atts[ 'add_page' ] ) ? $atts[ 'add_page' ] : true;
-			$opt_pre             = isset( $atts[ 'opt_pre' ] ) ? $atts[ 'opt_pre' ] : '';
 			$canonical_url       = empty( $atts[ 'canonical_url' ] ) ? $this->get_canonical_url( $mod, $add_page ) : $atts[ 'canonical_url' ];
 			$canonical_short_url = empty( $atts[ 'canonical_short_url' ] ) ? $this->get_canonical_short_url( $mod, $add_page ) : $atts[ 'canonical_short_url' ];
-			$sharing_url         = empty( $atts[ 'sharing_url' ] ) ? $this->get_sharing_url( $mod, $add_page, $opt_pre ) : $atts[ 'sharing_url' ];
-			$sharing_short_url   = empty( $atts[ 'sharing_short_url' ] ) ? $this->get_sharing_short_url( $mod, $add_page, $opt_pre ) : $atts[ 'sharing_short_url' ];
+			$sharing_url         = empty( $atts[ 'sharing_url' ] ) ? $this->get_sharing_url( $mod, $add_page, $atts ) : $atts[ 'sharing_url' ];
+			$sharing_short_url   = empty( $atts[ 'sharing_short_url' ] ) ? $this->get_sharing_short_url( $mod, $add_page, $atts ) : $atts[ 'sharing_short_url' ];
 			$request_url         = is_admin() ? $canonical_url : self::get_url( $remove_tracking = true );
 			$sitename            = self::get_site_name( $this->p->options, $mod );
 			$sitealtname         = self::get_site_name_alt( $this->p->options, $mod );
@@ -2215,50 +2214,36 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return apply_filters( 'wpsso_oembed_data', $data, $mod, $width );
 		}
 
-		public function get_sharing_url( $mod = false, $add_page = true, $opt_pre = '' ) {
+		public function get_sharing_url( $mod = false, $add_page = true, $atts = array() ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_args( array(
 					'mod'      => $mod,
 					'add_page' => $add_page,
-					'opt_pre'  => $opt_pre,
+					'atts'     => $atts,
 				) );
 			}
 
-			if ( ! is_array( $mod ) ) {
+			$url = $this->get_canonical_url( $mod, $add_page );
 
-				if ( $this->p->debug->enabled ) {
+			if ( ! empty( $atts[ 'utm_source' ] ) && ! empty( $atts[ 'utm_medium' ] ) && ! empty( $atts[ 'utm_campaign' ] ) ) {
 
-					$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
-				}
-
-				$mod = $this->p->page->get_mod( $mod );
+				$url = add_query_arg( array(
+					'utm_medium'   => $atts[ 'utm_medium' ],	// Example: 'social'.
+					'utm_source'   => $atts[ 'utm_source' ],	// Example: 'facebook'.
+					'utm_campaign' => $atts[ 'utm_campain' ],	// Example: 'book-launch'
+					'utm_content'  => isset( $atts[ 'utm_content' ] ) ? $atts[ 'utm_content' ] : false,	// Example: 'content-bottom'
+					'utm_term'     => isset( $atts[ 'utm_term' ] ) ? $atts[ 'utm_term' ] : false,
+				), $url );
 			}
 
-			$url = null;
-
-			if ( ! empty( $opt_pre ) ) {
-
-				if ( is_object( $mod[ 'obj' ] ) ) {	// Just in case.
-			
-					$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $opt_pre . '_sharing_url' );	// Returns null if an index key is not found.
-				}
-			}
-
-			if ( empty( $url ) ) {
-
-				$url = $this->get_canonical_url( $mod, $add_page );
-			}
-
-			$url = apply_filters( 'wpsso_sharing_url', $url, $mod, $add_page, $opt_pre );
-
-			return $url;
+			return apply_filters( 'wpsso_sharing_url', $url, $mod, $add_page, $atts );
 		}
 
-		public function get_sharing_short_url( $mod = false, $add_page = true, $opt_pre = '' ) {
+		public function get_sharing_short_url( $mod = false, $add_page = true, $atts = array() ) {
 
-			$url = $this->get_sharing_url( $mod, $add_page, $opt_pre );
+			$url = $this->get_sharing_url( $mod, $add_page, $atts );
 
 			return $this->shorten_url( $url, $mod );
 		}

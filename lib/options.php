@@ -100,6 +100,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					return 'api_key';
 
 				/**
+				 * Applies sanitize_title_with_dashes().
+				 */
+				case ( preg_match( '/_utm_(medium|source|campaign|content|term)$/', $base_key ) ? true : false ):
+
+					return 'dashed';
+
+				/**
 				 * Empty or 'none' string, or color as #000000.
 				 */
 				case ( false !== strpos( $base_key, '_color_' ) ? true : false ):
@@ -1380,7 +1387,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			/**
-			 * Hooked by several add-ons.
+			 * Hooked by WpssoOptions->filter_option_type() and several add-ons.
 			 */
 			$option_type = apply_filters( 'wpsso_option_type', false, $base_key, $network, $mod );
 
@@ -1495,6 +1502,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$opt_val = preg_replace( '/^ID-/', '', $opt_val );	// Just in case.
 
 					break;
+
+				/**
+				 * Applies sanitize_title_with_dashes().
+				 */
+				case 'dashed':
+
+					$opt_val = trim( sanitize_title_with_dashes( $opt_val ) );
 
 				/**
 				 * Must be blank or integer / numeric.
@@ -1742,6 +1756,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'ok_blank':
 
 					if ( '' !== $opt_val ) {
+
 						$opt_val = trim( $opt_val );
 					}
 
