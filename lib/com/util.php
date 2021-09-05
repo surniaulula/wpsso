@@ -1388,7 +1388,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return (int) $use_post;
 			}
 
-			return true;
+			return $default;
 		}
 
 		public static function sanitize_file_path( $file_path ) {
