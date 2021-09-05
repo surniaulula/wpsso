@@ -321,7 +321,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.38.0-dev.5 (2021/09/04)**
+**Version 8.38.0-dev.6 (2021/09/05)**
 
 * **New Features**
 	* None.
@@ -945,9 +945,9 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 
 == Upgrade Notice ==
 
-= 8.38.0-dev.5 =
+= 8.38.0-dev.6 =
 
-(2021/09/04) Removed the "Sharing URL" option in the Document SSO metabox.
+(2021/09/05) Removed the "Sharing URL" option in the Document SSO metabox.
 
 = 8.37.0 =
 
