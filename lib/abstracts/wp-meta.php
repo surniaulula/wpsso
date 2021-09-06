@@ -603,7 +603,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			if ( false !== $md_key ) {
 
-				if ( ! isset( $md_opts[ $md_key ] ) || $md_opts[ $md_key ] === '' ) {
+				if ( ! isset( $md_opts[ $md_key ] ) || '' === $md_opts[ $md_key ] ) {
 
 					if ( $this->p->debug->enabled ) {
 

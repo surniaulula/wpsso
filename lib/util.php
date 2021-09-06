@@ -2236,8 +2236,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				'utm_content',
 				'utm_term',
 			) as $q ) {
-				
-				$utm[ $q ] = isset( $atts[ $q ] ) ? $atts[ $q ] : false;
+
+				/**
+				 * Ignore 0, false, null, and '' (empty string) values.
+				 */
+				$utm[ $q ] = empty( $atts[ $q ] ) ? false : $atts[ $q ];
 			}
 
 			$utm = apply_filters( 'wpsso_sharing_utm_args', $utm, $mod );
