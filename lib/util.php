@@ -2227,21 +2227,36 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$url = $this->get_canonical_url( $mod, $add_page );
 
+			$utm = array();
+
+			foreach ( array(
+				'utm_medium',
+				'utm_source',
+				'utm_campaign',
+				'utm_content',
+				'utm_term',
+			) as $q ) {
+				
+				$utm[ $q ] = isset( $atts[ $q ] ) ? $atts[ $q ] : false;
+			}
+
+			$utm = apply_filters( 'wpsso_sharing_utm_args', $utm, $mod );
+
 			/**
-			 * To add tracking query arguments we need at least 'utm_source', 'utm_medium', and 'utm_campaign'.
+			 * To add UTM tracking query arguments we need at least 'utm_source', 'utm_medium', and 'utm_campaign'.
 			 */
-			if ( ! empty( $atts[ 'utm_source' ] ) && ! empty( $atts[ 'utm_medium' ] ) && ! empty( $atts[ 'utm_campaign' ] ) ) {
+			if ( ! empty( $utm[ 'utm_source' ] ) && ! empty( $utm[ 'utm_medium' ] ) && ! empty( $utm[ 'utm_campaign' ] ) ) {
 
 				$url = add_query_arg( array(
-					'utm_medium'   => $atts[ 'utm_medium' ],	// Example: 'social'.
-					'utm_source'   => $atts[ 'utm_source' ],	// Example: 'facebook'.
-					'utm_campaign' => $atts[ 'utm_campaign' ],	// Example: 'book-launch'
-					'utm_content'  => isset( $atts[ 'utm_content' ] ) ? $atts[ 'utm_content' ] : false,	// Example: 'content-bottom'
-					'utm_term'     => isset( $atts[ 'utm_term' ] ) ? $atts[ 'utm_term' ] : false,
+					'utm_medium'   => $utm[ 'utm_medium' ],		// Example: 'social'.
+					'utm_source'   => $utm[ 'utm_source' ],		// Example: 'facebook'.
+					'utm_campaign' => $utm[ 'utm_campaign' ],	// Example: 'book-launch'
+					'utm_content'  => $utm[ 'utm_content' ],	// Example: 'wpsso-rrssb-content-bottom'
+					'utm_term'     => $utm[ 'utm_term' ],
 				), $url );
 			}
 
-			return apply_filters( 'wpsso_sharing_url', $url, $mod, $add_page, $atts );
+			return apply_filters( 'wpsso_sharing_url', $url, $mod, $add_page );
 		}
 
 		public function get_sharing_short_url( $mod = false, $add_page = true, $atts = array() ) {

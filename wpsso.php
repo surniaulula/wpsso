@@ -15,7 +15,7 @@
  * Requires At Least: 5.0
  * Tested Up To: 5.8
  * WC Tested Up To: 5.6.0
- * Version: 8.38.0-dev.7
+ * Version: 8.38.0-dev.8
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -594,6 +594,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$classnames = $this->get_lib_classnames( 'shortcode' );	// Always returns an array.
 
 			foreach ( $classnames as $id => $classname ) {
+
 				$this->sc[ $id ] = new $classname( $this );
 			}
 
