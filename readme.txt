@@ -321,7 +321,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.38.0-dev.6 (2021/09/05)**
+**Version 8.38.0-dev.7 (2021/09/05)**
 
 * **New Features**
 	* None.
@@ -330,9 +330,22 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added a new `WpssoUtil->shorten_url()` method.
-	* Removed the `WpssoUtil->get_type_url()` method.
-	* Replaced the `wpsso_get_short_url()` function by `wpsso_get_canonical_short_url()`.
+	* Added new '%%canonical_url%%', '%%canonical_short_url%%', and '%%sharing_short_url%%' inline variables.
+	* Changes to methods:
+		* Added a new `WpssoUtil->shorten_url()` method.
+		* Added a new '$atts' (third) argument to the `WpssoUtil->get_sharing_url()` method.
+		* Renamed the `WpssoPost->get_sharing_shortlink()` method to `WpssoPost->get_canonical_shortlink()`.
+		* Renamed the `WpssoUtil->replace_inline_vars()` method to `WpssoUtil->replace_inline_variables()`.
+		* Renamed the `WpssoUtil->get_inline_vars()` method to `WpssoUtil->get_inline_variables()`.
+		* Renamed the `WpssoUtil->get_inline_vals()` method to `WpssoUtil->get_inline_values()`.
+		* Removed the `WpssoUtil->get_type_url()` private method.
+		* Updated the `SucomForm->get_th_html()` method to get tooltips only for the CSS id.
+		* Updated the `SucomUtil->get_url()` method to remove common tracking query arguments by default.
+	* Changes to functions:
+		* Added a new `wpsso_get_canonical_short_url()` function.
+		* Added a new `wpsso_get_sharing_short_url()` function.
+		* Added a new `wpsso_get_post_canonical_short_url()` function.
+		* Renamed the `wpsso_get_short_url()` function to `wpsso_get_canonical_short_url()`.
 * **Requires At Least**
 	* PHP v7.0.
 	* WordPress v5.0.
@@ -945,7 +958,7 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 
 == Upgrade Notice ==
 
-= 8.38.0-dev.6 =
+= 8.38.0-dev.7 =
 
 (2021/09/05) Removed the "Sharing URL" option in the Document SSO metabox.
 
