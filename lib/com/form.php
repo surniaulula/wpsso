@@ -240,17 +240,16 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_th_html( $label = '', $css_class = '', $css_id = '', $atts = array() ) {
 
-			$input_class = SucomUtil::sanitize_css_class( $css_class );
-			$input_id    = SucomUtil::sanitize_css_id( $css_id );
+			$input_class  = SucomUtil::sanitize_css_class( $css_class );
+			$input_id     = SucomUtil::sanitize_css_id( $css_id );
+			$tooltip_text = '';
 
-			if ( isset( $this->p->msgs ) ) {	// Just in case.
+			if ( ! empty( $css_id ) ) {
+			
+				if ( isset( $this->p->msgs ) ) {	// Just in case.
 
-				$tooltip_index = empty( $css_id ) ? 'tooltip-' . $label : $tooltip_index = 'tooltip-' . $css_id;
-				$tooltip_text  = $this->p->msgs->get( $tooltip_index, $atts );	// Text is esc_attr().
-
-			} else {
-
-				$tooltip_text = '';
+					$tooltip_text = $this->p->msgs->get( 'tooltip-' . $css_id, $atts );	// Text is esc_attr().
+				}
 			}
 
 			if ( isset( $atts[ 'is_locale' ] ) ) {

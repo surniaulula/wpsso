@@ -118,9 +118,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			/**
 			 * All tooltips
 			 */
-			if ( strpos( $msg_key, 'tooltip-' ) === 0 ) {
+			if ( 0 === strpos( $msg_key, 'tooltip-' ) ) {
 
-				if ( strpos( $msg_key, 'tooltip-meta-' ) === 0 ) {
+				if ( 0 === strpos( $msg_key, 'tooltip-meta-' ) ) {
 
 					switch ( $msg_key ) {
 
@@ -433,7 +433,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				/**
 				 * Site settings
 				 */
-				} elseif ( strpos( $msg_key, 'tooltip-site_' ) === 0 ) {
+				} elseif ( 0 === strpos( $msg_key, 'tooltip-site_' ) ) {
 
 					switch ( $msg_key ) {
 
@@ -520,7 +520,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				/**
 				 * Open Graph settings
 				 */
-				} elseif ( strpos( $msg_key, 'tooltip-og_' ) === 0 ) {
+				} elseif ( 0 === strpos( $msg_key, 'tooltip-og_' ) ) {
 
 					switch ( $msg_key ) {
 
@@ -750,7 +750,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				/**
 				 * Advanced plugin settings.
 				 */
-				} elseif ( strpos( $msg_key, 'tooltip-plugin_' ) === 0 ) {
+				} elseif ( 0 === strpos( $msg_key, 'tooltip-plugin_' ) ) {
 
 					switch ( $msg_key ) {
 
@@ -1257,7 +1257,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				/**
 				 * Facebook settings.
 				 */
-				} elseif ( strpos( $msg_key, 'tooltip-fb_' ) === 0 ) {
+				} elseif ( 0 === strpos( $msg_key, 'tooltip-fb_' ) ) {
 
 					switch ( $msg_key ) {
 
@@ -1316,7 +1316,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				/**
 				 * Google settings.
 				 */
-				} elseif ( strpos( $msg_key, 'tooltip-g_' ) === 0 ) {
+				} elseif ( 0 === strpos( $msg_key, 'tooltip-g_' ) ) {
 
 					switch ( $msg_key ) {
 
@@ -1332,7 +1332,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				/**
 				 * SEO settings.
 				 */
-				} elseif ( strpos( $msg_key, 'tooltip-seo_' ) === 0 ) {
+				} elseif ( 0 === strpos( $msg_key, 'tooltip-seo_' ) ) {
 
 					switch ( $msg_key ) {
 
@@ -1357,7 +1357,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				/**
 				 * Robots settings.
 				 */
-				} elseif ( strpos( $msg_key, 'tooltip-robots_' ) === 0 ) {
+				} elseif ( 0 === strpos( $msg_key, 'tooltip-robots_' ) ) {
 
 					switch ( $msg_key ) {
 
@@ -1427,7 +1427,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				/**
 				 * Schema settings.
 				 */
-				} elseif ( strpos( $msg_key, 'tooltip-schema_' ) === 0 ) {
+				} elseif ( 0 === strpos( $msg_key, 'tooltip-schema_' ) ) {
 
 					switch ( $msg_key ) {
 
@@ -1548,7 +1548,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				/**
 				 * Pinterest settings.
 				 */
-				} elseif ( strpos( $msg_key, 'tooltip-p_' ) === 0 ) {
+				} elseif ( 0 === strpos( $msg_key, 'tooltip-p_' ) ) {
 
 					switch ( $msg_key ) {
 
@@ -1625,7 +1625,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				/**
 				 * Twitter settings.
 				 */
-				} elseif ( strpos( $msg_key, 'tooltip-tc_' ) === 0 ) {
+				} elseif ( 0 === strpos( $msg_key, 'tooltip-tc_' ) ) {
 
 					switch ( $msg_key ) {
 
@@ -1692,7 +1692,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				/**
 				 * Instagram settings.
 				 */
-				} elseif ( strpos( $msg_key, 'tooltip-instagram_' ) === 0 ) {
+				} elseif ( 0 === strpos( $msg_key, 'tooltip-instagram_' ) ) {
 
 					switch ( $msg_key ) {
 
@@ -1719,7 +1719,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				/**
 				 * LinkedIn settings.
 				 */
-				} elseif ( strpos( $msg_key, 'tooltip-linkedin_' ) === 0 ) {
+				} elseif ( 0 === strpos( $msg_key, 'tooltip-linkedin_' ) ) {
 
 					switch ( $msg_key ) {
 
@@ -1746,7 +1746,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				/**
 				 * Medium settings.
 				 */
-				} elseif ( strpos( $msg_key, 'tooltip-medium_' ) === 0 ) {
+				} elseif ( 0 === strpos( $msg_key, 'tooltip-medium_' ) ) {
 
 					switch ( $msg_key ) {
 
@@ -1773,7 +1773,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				/**
 				 * Myspace settings.
 				 */
-				} elseif ( strpos( $msg_key, 'tooltip-myspace_' ) === 0 ) {
+				} elseif ( 0 === strpos( $msg_key, 'tooltip-myspace_' ) ) {
 
 					switch ( $msg_key ) {
 
@@ -1800,7 +1800,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				/**
 				 * Soundcloud settings.
 				 */
-				} elseif ( strpos( $msg_key, 'tooltip-sc_' ) === 0 ) {
+				} elseif ( 0 === strpos( $msg_key, 'tooltip-sc_' ) ) {
 
 					switch ( $msg_key ) {
 
@@ -1827,7 +1827,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				/**
 				 * TikTok settings.
 				 */
-				} elseif ( strpos( $msg_key, 'tooltip-tiktok_' ) === 0 ) {
+				} elseif ( 0 === strpos( $msg_key, 'tooltip-tiktok_' ) ) {
 
 					switch ( $msg_key ) {
 
@@ -1854,7 +1854,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				/**
 				 * Tumblr settings.
 				 */
-				} elseif ( strpos( $msg_key, 'tooltip-tumblr_' ) === 0 ) {
+				} elseif ( 0 === strpos( $msg_key, 'tooltip-tumblr_' ) ) {
 
 					switch ( $msg_key ) {
 
@@ -1881,7 +1881,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				/**
 				 * Wikipedia settings.
 				 */
-				} elseif ( strpos( $msg_key, 'tooltip-wikipedia_' ) === 0 ) {
+				} elseif ( 0 === strpos( $msg_key, 'tooltip-wikipedia_' ) ) {
 
 					switch ( $msg_key ) {
 
@@ -1908,7 +1908,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				/**
 				 * YouTube settings.
 				 */
-				} elseif ( strpos( $msg_key, 'tooltip-yt_' ) === 0 ) {
+				} elseif ( 0 === strpos( $msg_key, 'tooltip-yt_' ) ) {
 
 					switch ( $msg_key ) {
 
@@ -1931,6 +1931,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							break;
 
 						}	// End of tooltip-yt switch.
+
+				/**
+				 * Social sharing buttons.
+				 */
+				} elseif ( 0 === strpos( $msg_key, 'tooltip-buttons_' ) ) {
+	
+					$text = apply_filters( 'wpsso_messages_tooltip_buttons', $text, $msg_key, $info );
 
 				/**
 				 * All other settings.
@@ -1972,9 +1979,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			/**
 			 * Misc informational messages.
 			 */
-			} elseif ( strpos( $msg_key, 'info-' ) === 0 ) {
+			} elseif ( 0 === strpos( $msg_key, 'info-' ) ) {
 
-				if ( strpos( $msg_key, 'info-meta-' ) === 0 ) {
+				if ( 0 === strpos( $msg_key, 'info-meta-' ) ) {
 
 					switch ( $msg_key ) {
 
@@ -2509,10 +2516,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					}	// End of info switch.
 				}
+
 			/**
 			 * Misc pro messages
 			 */
-			} elseif ( strpos( $msg_key, 'pro-' ) === 0 ) {
+			} elseif ( 0 === strpos( $msg_key, 'pro-' ) ) {
 
 				switch ( $msg_key ) {
 
@@ -2960,11 +2968,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text = apply_filters( 'wpsso_messages_notice', $text, $msg_key, $info );
 
 						break;
-			}
+				}
+
 			/**
 			 * Misc sidebox messages
 			 */
-			} elseif ( strpos( $msg_key, 'column-' ) === 0 ) {
+			} elseif ( 0 === strpos( $msg_key, 'column-' ) ) {
 
 				$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
@@ -3005,41 +3014,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text .= '<ul>';
 
 						$text .= ' <li>' . sprintf( __( 'Additional Schema options in the %s metabox to customize creative works, events, how-tos, job postings, movies, products, recipes, reviews, and many more.', 'wpsso' ), $mb_title ) . '</li>';
-
-						$text .= $li_support_link;
-
-						$text .= '</ul>';
-
-						break;
-
-					case 'column-purchase-wpssoorg':
-
-						$json_info       = $this->p->cf[ 'plugin' ][ 'wpssojson' ];
-						$json_info_name  = _x( $json_info[ 'name' ], 'plugin name', 'wpsso' );
-						$json_addon_link = $this->p->util->get_admin_url( 'addons#wpssojson', $json_info_name );
-
-						$text = '<p><strong>' . sprintf( __( 'The %s add-on includes:', 'wpsso' ), $info[ 'name_pro' ] ) . '</strong></p>';
-
-						$text .= '<ul>';
-
-						$text .= ' <li>' . __( 'Allows managing the details of multiple organizations.', 'wpsso' ) . '</li>';
-
-						$text .= ' <li>' . sprintf( __( 'Offers an organization selector for the %s add-on.', 'wpsso' ), $json_addon_link ) . '</li>';
-
-						$text .= $li_support_link;
-
-						$text .= '</ul>';
-
-						break;
-
-					case 'column-purchase-wpssoplm':
-
-						$text = '<p><strong>' . sprintf( __( 'The %s add-on includes:', 'wpsso' ), $info[ 'name_pro' ] ) . '</strong></p>';
-
-						$text .= '<ul>';
-
-						$text .= ' <li>' . sprintf( __( 'A %1$s tab in the %2$s metabox to select a place or customize place information.',
-							'wpsso' ), _x( 'Schema Place', 'metabox tab', 'wpsso' ), $mb_title ) . '</li>';
 
 						$text .= $li_support_link;
 
@@ -3101,7 +3075,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				$text .= ' ' . sprintf( __( 'This option is localized - <a href="%s">you may change the WordPress locale</a> to define alternate values for different languages.', 'wpsso' ), 'https://wordpress.org/plugins/wpsso-user-locale/' );
 			}
 
-			if ( strpos( $msg_key, 'tooltip-' ) === 0 && ! empty( $text ) ) {
+			if ( 0 === strpos( $msg_key, 'tooltip-' ) && ! empty( $text ) ) {
 
 				$text = '<span class="' . $this->p->cf[ 'form' ][ 'tooltip_class' ] . '" data-help="' . esc_attr( $text ) . '">' .
 					'<span class="' . $this->p->cf[ 'form' ][ 'tooltip_class' ] . '-icon"></span></span>';
@@ -3437,7 +3411,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 			if ( is_string( $ext ) ) {
 
-				if ( strpos( $ext, $this->p->id ) !== 0 ) {
+				if ( 0 !== strpos( $ext, $this->p->id ) ) {
 
 					$ext = $this->p->id . $ext;
 				}

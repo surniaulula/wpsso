@@ -1850,7 +1850,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		/**
 		 * Deprecated on 2021/09/03.
 		 */
-		public function replace_inline_vars( $content, $mod = false, array $atts = array(), array $extras = array() ) {
+		public function replace_inline_vars( $content, $mod = false, $atts = array(), $extras = array() ) {
 
 			return $this->replace_inline_variables( $content, $mod, $atts, $extras );
 		}
@@ -1862,7 +1862,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 *
 		 * $extras can be an associative array with key/value pairs to be replaced.
 		 */
-		public function replace_inline_variables( $content, $mod = false, array $atts = array(), array $extras = array() ) {
+		public function replace_inline_variables( $content, $mod = false, $atts = array(), $extras = array() ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -2227,12 +2227,15 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$url = $this->get_canonical_url( $mod, $add_page );
 
+			/**
+			 * To add tracking query arguments we need at least 'utm_source', 'utm_medium', and 'utm_campaign'.
+			 */
 			if ( ! empty( $atts[ 'utm_source' ] ) && ! empty( $atts[ 'utm_medium' ] ) && ! empty( $atts[ 'utm_campaign' ] ) ) {
 
 				$url = add_query_arg( array(
 					'utm_medium'   => $atts[ 'utm_medium' ],	// Example: 'social'.
 					'utm_source'   => $atts[ 'utm_source' ],	// Example: 'facebook'.
-					'utm_campaign' => $atts[ 'utm_campain' ],	// Example: 'book-launch'
+					'utm_campaign' => $atts[ 'utm_campaign' ],	// Example: 'book-launch'
 					'utm_content'  => isset( $atts[ 'utm_content' ] ) ? $atts[ 'utm_content' ] : false,	// Example: 'content-bottom'
 					'utm_term'     => isset( $atts[ 'utm_term' ] ) ? $atts[ 'utm_term' ] : false,
 				), $url );

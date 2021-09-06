@@ -1,0 +1,17 @@
+
+%%canonical_url%%
+
+%%canonical_short_url%%
+
+%%sharing_url%%
+
+%%sharing_short_url%%
+
+%%request_url%%
+
+%%sitename%%
+
+%%sitealtname%%
+
+%%sitedesc%%
+

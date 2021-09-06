@@ -13,6 +13,8 @@ wpsso_get_mod_og_image_url( array $mod, $size_name = 'thumbnail' );
 
 wpsso_get_page_mod( $use_post = false );
 
+wpsso_get_post_canonical_short_url( $post_id );
+
 wpsso_get_post_event_options( $post_id, $type_id = false );
 
 wpsso_get_post_job_options( $post_id, $type_id = false );
@@ -28,8 +30,6 @@ wpsso_get_post_organization_options( $post_id, $type_id = 'site' );
 wpsso_get_post_place_options( $post_id, $type_id = 'custom' );
 
 wpsso_get_post_primary_category( $post_id, $tax_slug = 'category' );
-
-wpsso_get_post_short_url( $post_id );
 
 wpsso_get_sharing_url( $mod = false, $add_page = true, $atts = array() );
 
