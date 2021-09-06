@@ -1510,6 +1510,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					$opt_val = trim( sanitize_title_with_dashes( $opt_val ) );
 
+					break;
+
 				/**
 				 * Must be blank or integer / numeric.
 				 */
