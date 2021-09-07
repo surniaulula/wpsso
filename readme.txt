@@ -55,8 +55,6 @@ WPSSO can be your only social and search optimization plugin, or combined to imp
 
 &#x2605;&#x2605;&#x2605;&#x2605;&#x2605; - "This plugin makes getting sites structured data ready extremely easy, and it works flawlessly without any issues. It shows messages on the top bar every step of the way to alert you of any issues until everything is set up correctly. It made all my ecommerce products pass Google's validation tests. Great work." - [marguy1](https://wordpress.org/support/topic/excellent-plugin-6825/)
 
-&#x2605;&#x2605;&#x2605;&#x2605;&#x2605; - "This plugin has been a lifesaver in terms of making our images and links and descriptions look beautiful everywhere we post them! It’s so easy to use and the preview functions are incredibly helpful." - [lotusblooms](https://wordpress.org/support/topic/love-this-plugin-789/)
-
 &#x2605;&#x2605;&#x2605;&#x2605;&#x2605; - "What a fantastic plugin. If you want to fix all the errors in search console for structured data, this is the plugin to use. Love it." - [goviral](https://wordpress.org/support/topic/makes-schema-so-easy/)
 
 &#x2605;&#x2605;&#x2605;&#x2605;&#x2605; - "This plugin saves me so much time, and it has really lifted my SERP rankings. Most of my keywords I now rank 1-3 position. I also noticed after about a week that my impressions have gone up at least 75%. I upgraded to the pro version which gave me even more options." - [playnstocks](https://wordpress.org/support/topic/excellent-plugin-and-support-200/)
@@ -287,8 +285,8 @@ Activate any of the free complementary add-on(s) you require:
 
 == Screenshots ==
 
-01. The essential settings page offers a quick and easy setup.
-02. You can easily customize the details of articles, events, e-Commerce products, recipes, reviews, and much more.
+01. The essential and general settings pages provide a fast and easy setup.
+02. Easily customize the details of articles, events, e-Commerce products, recipes, reviews, and much more.
 03. The preview tab allows you to quickly preview an example social share.
 
 == Changelog ==
@@ -321,7 +319,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.38.0-rc.1 (2021/09/07)**
+**Version 8.38.0-rc.2 (2021/09/07)**
 
 * **New Features**
 	* None.
@@ -900,65 +898,9 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 	* PHP v7.0.
 	* WordPress v4.5.
 
-**Version 8.19.4 (2021/01/17)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* None.
-* **Bugfixes**
-	* Fixed relocation of toolbar notices in WooCommerce 4.9.0 product pages.
-* **Developer Notes**
-	* None.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v4.5.
-
-**Version 8.19.3 (2021/01/16)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* None.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Updated the jQuery event to update toolbar notices from `on( 'ready' )` to `on( 'load' )`.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v4.5.
-
-**Version 8.19.2 (2021/01/11)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* None.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Updated `jQuery( document ).ready()` calls to `jQuery( document ).on( 'ready' )`.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v4.5.
-
-**Version 8.19.1 (2021/01/07)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Sorted transient labels in the SSO &gt; Dashboard &gt; Cache Status metabox.
-* **Bugfixes**
-	* Fix to allow the new "Disable Cache for Debugging" option to be changed in the Standard version.
-* **Developer Notes**
-	* None.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v4.5.
-
 == Upgrade Notice ==
 
-= 8.38.0-rc.1 =
+= 8.38.0-rc.2 =
 
 (2021/09/07) Removed the "Sharing URL" option in the Document SSO metabox.
 
@@ -1085,20 +1027,4 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 = 8.20.0 =
 
 (2021/01/21) Added support for images in WooCommerce product reviews (Premium version). Fixed jQuery "document ready" event incompatibility with the block editor.
-
-= 8.19.4 =
-
-(2021/01/17) Fixed relocation of toolbar notices in WooCommerce 4.9.0 product pages.
-
-= 8.19.3 =
-
-(2021/01/16) Updated the jQuery event to update toolbar notices.
-
-= 8.19.2 =
-
-(2021/01/11) Updated `jQuery( document ).ready()` calls to `jQuery( document ).on( 'ready' )`.
-
-= 8.19.1 =
-
-(2021/01/07) Fix to allow the new "Disable Cache for Debugging" option to be changed in the Standard version.
 
