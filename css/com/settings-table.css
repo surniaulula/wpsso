@@ -26,7 +26,7 @@ table.sucom-settings {
 	width:100%;
 	padding:15px 10px 20px 10px;	/* Use padding to prevent horizontal bar from showing. */
 	margin:0;
-	border-spacing:12px;
+	border-spacing:10px;
 	border-collapse:separate;
 	-webkit-box-sizing:border-box;
 	-moz-box-sizing:border-box;
@@ -137,10 +137,6 @@ table.sucom-settings td.subsection.top h5,
 
 table.sucom-settings p {
 	line-height:1.8em;
-}
-
-table.sucom-settings.html-content-metabox p {
-	line-height:1.6em;
 }
 
 table.sucom-settings pre {
@@ -367,19 +363,19 @@ table.sucom-settings td span.ext-req-msg a {
 	font-style:italic;
 	font-weight:normal;
 	text-align:left;
-	margin-left:2px;
+	margin-left:4px;
 }
 
 table.sucom-settings td span.option-info,
 table.sucom-settings td span.option-info a {
 	color:#00f;
-	margin-left:2px;
+	margin-left:4px;
 }
 
 table.sucom-settings td span.option-warning,
 table.sucom-settings td span.option-warning a {
 	color:#f00;
-	margin-left:2px;
+	margin-left:4px;
 }
 
 table.sucom-settings td a.ext-anchor {
@@ -610,6 +606,7 @@ table.sucom-settings td.blank select,
 table.sucom-settings td.blank textarea {
 	color:#999;
 	background-color:#f9f9f9;
+	font-size:1em;
 }
 
 table.sucom-settings th.textinfo {
@@ -640,9 +637,10 @@ table.sucom-settings td div.multi_container.mixed_multi.single_line {
 
 table.sucom-settings td div.multi_number {
 	display:table-cell;
-	width:20px;
-	min-width:20px;
+	min-width:1.5em;
 	vertical-align:top;
+	text-align:right;
+	padding-right:4px;
 }
 
 table.sucom-settings td div.multi_input {
@@ -677,16 +675,11 @@ table.sucom-settings td p.multi_label.first_label {
 table.sucom-settings td select,
 table.sucom-settings td input,
 table.sucom-settings td textarea {
-	margin:0 2px 0 0; 	/* Margin spacing for option comments. */
+	margin:2px;
 	vertical-align:middle;
 	-webkit-box-sizing:border-box;
 	-moz-box-sizing:border-box;
 	box-sizing:border-box;
-}
-
-table.sucom-settings td input.width,
-table.sucom-settings td input.height {
-	margin:0 2px;
 }
 
 table.sucom-settings td textarea { width:100%; }
@@ -694,9 +687,7 @@ table.sucom-settings td textarea { width:100%; }
 table.sucom-settings td select { width:255px; }	/* Default width. */
 
 table.sucom-settings td select.crop-area,
-div.postbox table.sucom-settings td select.crop-area {
-	width:82px;
-}
+div.postbox table.sucom-settings td select.crop-area { width:82px; }
 
 table.sucom-settings td select.xshort { width:60px; }
 
@@ -716,31 +707,24 @@ table.sucom-settings td select.year { width:125px; }
 
 table.sucom-settings td select.medium { width:180px; }
 
-table.sucom-settings td select.timezone { width:220px; }
-
 table.sucom-settings td select.update_filter { width:220px; }
 
 table.sucom-settings td select.og_type,
 table.sucom-settings td select.schema_type,
 table.sucom-settings td select.primary_term_id,
 table.sucom-settings td select.article_section,
-table.sucom-settings td select.long_name {
-	width:320px;
-}
+table.sucom-settings td select.long_name { width:320px; }
 
 table.sucom-settings td select.site-use { width:200px; }
 
 table.sucom-settings td select.wide { width:100%; }
 
-table.sucom-settings td input[type="hidden"] {
-	padding:0;
-	margin:0;
-}
+table.sucom-settings td input[type="hidden"] { padding:0; margin:0; }
 
 table.sucom-settings td input[type="text"] { width:255px; }	/* Default width. */
 
 table.sucom-settings td input[type="text"].datepicker {
-	width:120px;
+	width:110px;
 	text-align:center;
 }
 
@@ -780,9 +764,7 @@ table.sucom-settings td input[type="text"].api_key { width:400px; font-family:"C
 
 table.sucom-settings td input[type="text"].wide { width:100%; }
 
-table.sucom-settings td input[type="checkbox"] { margin:0 4px 0 0; }
-
-table.sucom-settings td.blank input[type="checkbox"] { margin:2px 8px 2px 2px; }
+table.sucom-settings td input[type="checkbox"] { margin:0px 8px 0px 0px; }
 
 table.sucom-settings td input[type="button"] { margin:0; }
 
@@ -1086,18 +1068,6 @@ table.sucom-settings .preview_by {
 }
 
 /**
- * Document SSO tabs.
- */
-div.auto-draft div.sucom-tabset_sso table.sucom-settings {
-	border-spacing:12px;	/* 12px by default. */
-}
-
-div.auto-draft div.sucom-tabset_sso table.sucom-settings tr td {
-	padding:1px;
-	border:none;
-}
-
-/**
  * Document SSO > oEmbed tab.
  */
 div.sucom-tabset_sso-tab_oembed table.sucom-settings tr td.wide {
@@ -1126,7 +1096,7 @@ table.sucom-settings .oembed_container > iframe {
  * Document SSO > eEmbed tab.
  */
 div.sucom-tabset_sso-tab_oembed table.sucom-settings {
-	border-spacing:12px 6px;	/* 12px by default. */
+	border-spacing:10px 5px;	/* 10px by default. */
 }
 
 /**
@@ -1174,7 +1144,7 @@ div.sucom-tabset_sso-tab_validate table.sucom-settings {
  */
 table.sucom-settings.column-metabox {
 	border-spacing:2px;
-	padding:25px 30px;
+	padding:20px 30px;
 }
 
 table.sucom-settings.column-metabox .column-metabox-buttons {
@@ -1195,18 +1165,13 @@ table.sucom-settings.column-metabox ul {
 	color:#555;
 	list-style-type:circle;
 	list-style-position:outside;	/* Default. */
-	margin:15px 0 25px 30px;
+	margin:10px 0 20px 30px;
 }
 
 table.sucom-settings.column-metabox ol {
 	color:#555;
 	list-style-position:outside;	/* Default. */
-	margin:15px 0 25px 30px;
-}
-
-table.sucom-settings.column-metabox ul > li,
-table.sucom-settings.column-metabox ol > li {
-	margin:10px 0;
+	margin:10px 0 20px 30px;
 }
 
 table.sucom-settings.column-metabox.cache-status .cache-count,
@@ -1301,8 +1266,6 @@ table.sucom-settings.html-content-metabox {
 }
 
 table.sucom-settings.html-content-metabox td p {
-	font-size:1.05em;
-	color:#333;
 	margin:20px 0;
 }
 
