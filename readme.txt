@@ -285,9 +285,9 @@ Activate any of the free complementary add-on(s) you require:
 
 == Screenshots ==
 
-01. The essential and general settings pages provide a fast and easy setup.
-02. Easily customize the details of articles, events, e-Commerce products, recipes, reviews, and much more.
-03. The preview tab allows you to quickly preview an example social share.
+01. The Essential and General Settings pages provide a simple, fast, and easy setup.
+02. The Document SSO metabox allows you to easily customize the details of articles, events, products, recipes, reviews, and much more.
+03. The Preview and oEmbed tabs allow you to quickly preview an example social share.
 
 == Changelog ==
 
