@@ -460,6 +460,13 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'plugin_wpssoplm_tid' => '',			// Deprecated on 2021/08/30.
 					'seo_author_name'     => '',			// Deprecated on 2021/09/01.
 				),
+				814 => array(
+					'add_5_star_rating'          => '',	// Deprecated on 2021/09/08.
+					'plugin_col_title_width'     => '',	// Deprecated on 2021/09/08.
+					'plugin_col_title_width_max' => '',	// Deprecated on 2021/09/08.
+					'plugin_col_def_width'       => '',	// Deprecated on 2021/09/08.
+					'plugin_col_def_width_max'   => '',	// Deprecated on 2021/09/08.
+				),
 			),
 		);
 

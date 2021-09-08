@@ -2991,31 +2991,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			_deprecated_function( __METHOD__ . '()', '2020/07/01', $replacement = '' );	// Deprecation message.
 		}
 
+		/**
+		 * Deprecated on 2021/09/08.
+		 */
 		public function add_schema_item_props_table_rows( array &$table_rows, $form ) {
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			$max_media_items = $this->p->cf[ 'form' ][ 'max_media_items' ];
-
-			$json_req_msg = $this->p->msgs->maybe_ext_required( 'wpssojson' );
-
-			$this->add_schema_publisher_type_table_rows( $table_rows, $form );
-
-			$table_rows[ 'schema_img_max' ] = $form->get_tr_hide( 'basic', 'schema_img_max' ) . 
-				$form->get_th_html( _x( 'Schema Max. Images to Include', 'option label', 'wpsso' ), $css_class = '', $css_id = 'schema_img_max' ) . 
-				'<td>' .
-				$form->get_select( 'schema_img_max', range( 0, $max_media_items ), $css_class = 'short', $css_id = '', $is_assoc = true ) .
-				$this->p->msgs->maybe_preview_images_first() .
-				'</td>';
-
-			$table_rows[ 'schema_desc_max_len' ] = $form->get_tr_hide( 'basic', 'schema_desc_max_len' ) . 
-				$form->get_th_html( _x( 'Schema Description Max. Length', 'option label', 'wpsso' ), '', 'schema_desc_max_len' ) . 
-				'<td>' . $form->get_input( 'schema_desc_max_len', 'chars' ) . ' ' . _x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
+			_deprecated_function( __METHOD__ . '()', '2021/09/08', $replacement = '' );	// Deprecation message.
 		}
 
+		/**
+		 * Called from the Essential and General Settings pages.
+		 */
 		public function add_schema_publisher_type_table_rows( array &$table_rows, $form ) {
 
 			if ( $this->p->debug->enabled ) {

@@ -92,7 +92,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			$tabs = apply_filters( 'wpsso_general_' . $metabox_id . '_tabs', array(
 				'facebook'    => _x( 'Facebook', 'metabox tab', 'wpsso' ),
-				'google'      => _x( 'Google', 'metabox tab', 'wpsso' ),
+				'google'      => _x( 'Google / Schema', 'metabox tab', 'wpsso' ),
 				'pinterest'   => _x( 'Pinterest', 'metabox tab', 'wpsso' ),
 				'twitter'     => _x( 'Twitter', 'metabox tab', 'wpsso' ),
 				'other_sites' => _x( 'Other Sites', 'metabox tab', 'wpsso' ),
@@ -226,7 +226,8 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						$this->form->get_th_html( _x( 'Maximum Images to Include', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'og_img_max' ) . 
 						'<td>' .
-						$this->form->get_select( 'og_img_max', range( 0, $max_media_items ), 'short', '', true ) . 
+						$this->form->get_select( 'og_img_max', range( 0, $max_media_items ),
+							$css_class = 'short', $css_id = '', $is_assoc = true ) . 
 						$this->p->msgs->maybe_preview_images_first() .
 						'</td>';
 
@@ -283,7 +284,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					}
 
 					/**
-					 * Google settings.
+					 * Google / Schema settings.
 					 */
 					$table_rows[ 'g_site_verify' ] = '' .
 						$this->form->get_th_html( _x( 'Google Website Verification ID', 'option label', 'wpsso' ),
@@ -293,7 +294,40 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					/**
 					 * Schema settings.
 					 */
-					$this->add_schema_item_props_table_rows( $table_rows, $this->form );
+					$this->add_schema_publisher_type_table_rows( $table_rows, $this->form );	// Also used in the Essential Settings page.
+
+					$table_rows[ 'schema_img_max' ] = $this->form->get_tr_hide( 'basic', 'schema_img_max' ) . 
+						$this->form->get_th_html( _x( 'Schema Max. Images to Include', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'schema_img_max' ) . 
+						'<td>' .
+						$this->form->get_select( 'schema_img_max', range( 0, $max_media_items ),
+							$css_class = 'short', $css_id = '', $is_assoc = true ) .
+						$this->p->msgs->maybe_preview_images_first() .
+						'</td>';
+
+					$table_rows[ 'schema_aggr_offers' ] = $this->form->get_tr_hide( 'basic', 'schema_aggr_offers' ) .
+						$this->form->get_th_html( _x( 'Aggregate Offers by Currency', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'schema_aggr_offers' ) . 
+						'<td>' . $this->form->get_checkbox( 'schema_aggr_offers' ) . ' ' .
+						sprintf( _x( 'incompatible with <a href="%s">price drop appearance</a>', 'option comment', 'wpsso' ),
+							'https://developers.google.com/search/docs/data-types/product#price-drop' ) . '</td>';
+
+					$table_rows[ 'schema_add_text_prop' ] = $this->form->get_tr_hide( 'basic', 'schema_add_text_prop' ) .
+						$this->form->get_th_html( _x( 'Add Text / Article Body Properties', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'schema_add_text_prop' ) . 
+						'<td>' . $this->form->get_checkbox( 'schema_add_text_prop' ) . '</td>';
+
+					$table_rows[ 'schema_text_max_len' ] = $this->form->get_tr_hide( 'basic', 'schema_text_max_len' ) . 
+						$this->form->get_th_html( _x( 'Text / Article Body Max. Length', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'schema_text_max_len' ) . 
+						'<td>' . $this->form->get_input( 'schema_text_max_len', $css_class = 'chars' ) . ' ' .
+						_x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
+
+					$table_rows[ 'schema_desc_max_len' ] = $this->form->get_tr_hide( 'basic', 'schema_desc_max_len' ) . 
+						$this->form->get_th_html( _x( 'Schema Description Max. Length', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'schema_desc_max_len' ) . 
+						'<td>' . $this->form->get_input( 'schema_desc_max_len', 'chars' ) . ' ' .
+						_x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
 
 					/**
 					 * SEO settings.

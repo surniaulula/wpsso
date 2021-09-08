@@ -266,7 +266,7 @@ table.sucom-settings table.plugin-list-columns th {
 }
 
 table.sucom-settings td {
-	line-height:1.8em;
+	line-height:1.6em;
 	vertical-align:top;
 }
 
@@ -304,7 +304,7 @@ table.sucom-settings table.plugin-list-columns td.underline {
 
 table.sucom-settings td p {
 	color:#555;
-	margin:0 0 10px 0;
+	margin:0 0 4px 0;
 }
 
 table.sucom-settings table.plugin-list-columns td p {
@@ -318,7 +318,6 @@ table.sucom-settings td p.pro-feature-msg {
 	font-style:italic;
 	line-height:1.4em;
 	text-align:center;
-	margin:0 0 5px 0;
 }
 
 table.sucom-settings td p.pro-feature-msg a {
@@ -331,10 +330,6 @@ table.sucom-settings td p.pro-feature-msg strong {
 
 table.sucom-settings td p.status-msg.smaller {
 	font-size:0.85em;
-}
-
-table.sucom-settings td p.status-msg.smaller.disabled {
-	margin:0 5px;
 }
 
 table.sucom-settings td p.centered {
@@ -581,7 +576,6 @@ table.sucom-settings td.validate input.button-secondary[type="button"] {
 table.sucom-settings th.blank,
 table.sucom-settings td.blank {
 	color:#999;
-	padding:2px 4px;
 	min-width:100px;
 	min-height:1em;
 	background-color:#f9f9f9;
@@ -764,8 +758,6 @@ table.sucom-settings td input[type="text"].api_key { width:400px; font-family:"C
 
 table.sucom-settings td input[type="text"].wide { width:100%; }
 
-table.sucom-settings td input[type="checkbox"] { margin:0px 8px 0px 0px; }
-
 table.sucom-settings td input[type="button"] { margin:0; }
 
 table.sucom-settings td input[type="button"].button-primary,
@@ -789,17 +781,17 @@ table.sucom-settings td div.linked_to_label {
  */
 table.sucom-settings td div.input_vertical_list > span {
 	display:block;
-	margin:0 0 5px 0;
+	margin:0 0 4px 0;
 	line-height:2em;
 }
 
 table.sucom-settings td div.input_vertical_list input[type="checkbox"] {
-	margin-top:0;
+	margin-right:4px;
 }
 
 table.sucom-settings td span.wp-picker-input-wrap input {
 	vertical-align:middle;
-	margin:0 5px;
+	margin:0 4px;
 }
 
 table.sucom-settings td.summary,
@@ -844,7 +836,6 @@ table.sucom-settings td.checkbox,
 table.sucom-settings th.checkbox,
 table.sucom-settings td.checkbox.blank {
 	text-align:center;
-	padding:0 2px;
 }
 
 table.sucom-settings th.checkbox.left {

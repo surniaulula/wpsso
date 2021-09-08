@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.38.0',	// Plugin version.
-					'opt_version' => '813',		// Increment when changing default option values.
+					'version'     => '8.39.0-dev.1',	// Plugin version.
+					'opt_version' => '815',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Rank higher and improve click-through-rates by presenting your content at its best on social sites and in search results - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled.',
@@ -1276,7 +1276,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_vid_prev_img'         => 1,			// Include Video Preview Images.
 
 					/**
-					 * Open Graph options for default taxonomy and post types.
+					 * Advanced Settings > Document Types > Open Graph tab.
+					 *
+					 * Standard WordPress taxonomy and post types.
 					 */
 					'og_type_for_archive_page'      => 'website',
 					'og_type_for_attachment'        => 'website',
@@ -1293,7 +1295,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_type_for_user_page'         => 'profile',
 
 					/**
-					 * Open Graph options for custom taxonomy and post types.
+					 * Advanced Settings > Document Types > Open Graph tab.
+					 *
+					 * Custom taxonomy and post types.
 					 */
 					'og_type_for_article'                => 'article',
 					'og_type_for_book'                   => 'book',
@@ -1352,11 +1356,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_16x9_img_crop'   => 1,
 					'schema_16x9_img_crop_x' => 'center',
 					'schema_16x9_img_crop_y' => 'center',
-					'schema_desc_max_len'    => 300,	// Schema Description Max. Length (hard limit).
 					'schema_img_max'         => 1,		// Schema Max. Images to Include.
+					'schema_aggr_offers'     => 0,		// Aggregate Offers by Currency.
+					'schema_add_text_prop'   => 1,		// Add Text / Article Body Properties.
+					'schema_text_max_len'    => 10000,	// Text / Article Body Max. Length.
+					'schema_desc_max_len'    => 300,	// Schema Description Max. Length (hard limit).
 
 					/**
-					 * Schema options for default taxonomy and post types.
+					 * Advanced Settings > Document Types > Schema tab.
+					 *
+					 * Standard WordPress taxonomy and post types.
 					 */
 					'schema_type_for_archive_page'      => 'item.list',
 					'schema_type_for_attachment'        => 'webpage',
@@ -1372,7 +1381,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_user_page'         => 'webpage.profile',
 
 					/**
-					 * Schema options for custom taxonomy and post types.
+					 * Advanced Settings > Document Types > Schema tab.
+					 *
+					 * Custom taxonomy and post types.
 					 */
 					'schema_type_for_article'                => 'article',
 					'schema_type_for_book'                   => 'book',
@@ -1401,6 +1412,24 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_tribe_events'           => 'event',		// For The Events Calendar.
 					'schema_type_for_webpage'                => 'webpage',
 					'schema_type_for_website'                => 'website',
+
+					/**
+					 * Advanced Settings > Schema Defaults metabox.
+					 */
+					'schema_def_family_friendly'           => 'none',		// Default Family Friendly.
+					'schema_def_pub_org_id'                => 'none',		// Default Publisher (Org).
+					'schema_def_pub_person_id'             => 'none',		// Default Publisher (Person).
+					'schema_def_prov_org_id'               => 'none',		// Default Service Prov. (Org).
+					'schema_def_prov_person_id'            => 'none',		// Default Service Prov. (Person).
+					'schema_def_event_location_id'         => 'none',		// Default Physical Venue.
+					'schema_def_event_organizer_org_id'    => 'none',		// Default Organizer (Org).
+					'schema_def_event_organizer_person_id' => 'none',		// Default Organizer (Person).
+					'schema_def_event_performer_org_id'    => 'none',		// Default Performer (Org).
+					'schema_def_event_performer_person_id' => 'none',		// Default Performer (Person).
+					'schema_def_job_hiring_org_id'         => 'none',		// Default Hiring (Org).
+					'schema_def_job_location_id'           => 'none',		// Default Job Location.
+					'schema_def_job_location_type'         => 'none',		// Default Job Location Type.
+					'schema_def_review_item_type'          => 'creative.work',	// Default Subject Webpage Type.
 
 					/**
 					 * SEO options.
@@ -1664,7 +1693,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_add_to_tribe_events'           => 1,		// For The Events Calendar.
 					'plugin_add_to_tribe-ea-record'        => 1,		// For The Events Calendar.
 					'plugin_add_to_user_page'              => 1,
-					'plugin_schema_type_col_media'         => 0,		// Additional Item List Columns.
+					'plugin_schema_type_col_media'         => 0,		// Additional List Table Columns.
 					'plugin_schema_type_col_post'          => 1,
 					'plugin_schema_type_col_term'          => 0,
 					'plugin_schema_type_col_user'          => 0,
@@ -1680,10 +1709,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_og_desc_col_post'              => 1,
 					'plugin_og_desc_col_term'              => 1,
 					'plugin_og_desc_col_user'              => 1,
-					'plugin_col_title_width'               => '30%',	// Title / Name Column Width.
-					'plugin_col_title_width_max'           => '15vw',
-					'plugin_col_def_width'                 => '15%',	// Default for Posts / Pages List.
-					'plugin_col_def_width_max'             => '15vw',
 
 					/**
 					 * Advanced Settings > Integration tab.

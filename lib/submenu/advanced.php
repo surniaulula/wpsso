@@ -38,6 +38,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				'plugin'         => _x( 'Plugin Settings', 'metabox title', 'wpsso' ),
 				'services'       => _x( 'Service APIs', 'metabox title', 'wpsso' ),
 				'doc_types'      => _x( 'Document Types', 'metabox title', 'wpsso' ),
+				'def_schema'     => _x( 'Schema Defaults', 'metabox title', 'wpsso' ),
 				'contact_fields' => _x( 'Contact Fields', 'metabox title', 'wpsso' ),
 				'user_about'     => _x( 'About the User', 'metabox title', 'wpsso' ),
 				'metadata'       => _x( 'Metadata', 'metabox title', 'wpsso' ),
@@ -134,6 +135,39 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 					$this->get_table_rows( $metabox_id, $tab_key ),
 					(array) apply_filters( $filter_name, array(), $this->form, $network = false )
 				);
+			}
+
+			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
+		}
+
+		public function show_metabox_def_schema() {
+
+			$metabox_id = 'def_schema';
+
+			$tabs = apply_filters( 'wpsso_advanced_' . $metabox_id . '_tabs', array(
+				'creative_work' => _x( 'Creative Work', 'metabox tab', 'wpsso-schema-json-ld' ),
+				'event'         => _x( 'Event', 'metabox tab', 'wpsso-schema-json-ld' ),
+				'job_posting'   => _x( 'Job Posting', 'metabox tab', 'wpsso-schema-json-ld' ),
+				'review'        => _x( 'Review', 'metabox tab', 'wpsso-schema-json-ld' ),
+			) );
+
+			$table_rows = array();
+
+			foreach ( $tabs as $tab_key => $title ) {
+
+				if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
+
+					$table_rows[ $tab_key ] = $this->p->msgs->get_schema_disabled_rows( $table_rows[ $tab_key ] );
+
+				} else {
+
+					$filter_name = SucomUtil::sanitize_hookname( 'wpsso_' . $metabox_id . '_' . $tab_key . '_rows' );
+
+					$table_rows[ $tab_key ] = array_merge(
+						$this->get_table_rows( $metabox_id, $tab_key ),
+						(array) apply_filters( $filter_name, array(), $this->form, $network = false )
+					);
+				}
 			}
 
 			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );

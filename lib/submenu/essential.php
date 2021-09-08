@@ -129,7 +129,7 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 
 					if ( ! empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
 
-						$this->add_schema_publisher_type_table_rows( $table_rows, $this->form );
+						$this->add_schema_publisher_type_table_rows( $table_rows, $this->form );	// Also used in the General Settings page.
 					}
 
 					break;

@@ -823,29 +823,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-plugin_show_columns':	// Additional Item List Columns.
+						case 'tooltip-plugin_show_columns':	// Additional List Table Columns.
 
-							$text = __( 'Additional columns can be included in admin list tables to show the Schema type ID, Open Graph image, etc.', 'wpsso' ) . ' ';
+							$text = __( 'Additional columns can be included in admin list tables for posts, pages, etc.', 'wpsso' ) . ' ';
 
-							$text .= __( 'When a column is enabled, <strong>each user can still hide that column</strong> by using the <em>Screen Options</em> tab on the list table page.', 'wpsso' );
-
-							break;
-
-						case 'tooltip-plugin_col_title_width':	// Title / Name Column Width.
-
-							$text .= __( 'WordPress does not define a column width for its Title column, which can create display issues when showing list tables with additional columns.', 'wpsso' ) . ' ';
-
-							$text .= __( 'This option allows you to define a custom width for the Title column, to prevent these kinds of issues.', 'wpsso' ) . ' ';
-
-							break;
-
-						case 'tooltip-plugin_col_def_width':	// Default for Posts / Pages List.
-
-							$text .= __( 'A default column width for the admin Posts and Pages list table.', 'wpsso' ) . ' ';
-
-							$text .= __( 'All columns should have a width defined, but some third-party plugins do not provide width information for their columns.', 'wpsso' ) . ' ';
-
-							$text .= __( 'This option offers a way to set a generic width for all Posts and Pages list table columns.', 'wpsso' ) . ' ';
+							$text .= __( 'Users can also hide enabled columns by using the <em>Screen Options</em> tab on these admin list table pages.', 'wpsso' );
 
 							break;
 
@@ -1431,16 +1413,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					switch ( $msg_key ) {
 
-						case 'tooltip-schema_img_max':		// Schema Max. Images to Include.
-
-							$text = __( 'The maximum number of images to include in the Schema main entity markup for the webpage.', 'wpsso' ) . ' ';
-
-							$text .= __( 'Each image will be included in three different sizes for Google (1:1, 4:3, and 16:9).', 'wpsso' ) . ' ';
-
-							$text .= __( 'If you select "0", then no images will be included (not recommended).', 'wpsso' ) . ' ';
-
-							break;
-
 						case 'tooltip-schema_1x1_img_size':	// Schema 1:1 (Google) Image Size.
 						case 'tooltip-schema_4x3_img_size':	// Schema 4:3 (Google) Image Size.
 						case 'tooltip-schema_16x9_img_size':	// Schema 16:9 (Google) Image Size.
@@ -1462,9 +1434,39 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$def_img_dims = $this->get_def_img_dims( 'thumb' );
 
-							$text = sprintf( __( 'The image dimensions used for the Schema "%1$s" property and the "%2$s" tag (the default dimensions are %3$s).', 'wpsso' ), 'thumbnailUrl', 'meta name thumbnail', $def_img_dims );
+							$text = sprintf( __( 'The image dimensions used for the Schema "%1$s" property and the "%2$s" HTML tag (the default dimensions are %3$s).', 'wpsso' ), 'thumbnailUrl', 'meta name thumbnail', $def_img_dims );
 
 							break;
+
+						case 'tooltip-schema_img_max':		// Schema Max. Images to Include.
+
+							$text = __( 'The maximum number of images to include in the Schema main entity markup for the webpage.', 'wpsso' ) . ' ';
+
+							$text .= __( 'Each image will be included in three different sizes for Google (1:1, 4:3, and 16:9).', 'wpsso' ) . ' ';
+
+							$text .= __( 'If you select "0", then no images will be included (not recommended).', 'wpsso' ) . ' ';
+
+							break;
+
+						case 'tooltip-schema_aggr_offers':		// Aggregate Offers by Currency.
+
+							$text = __( 'Aggregate (ie. group) product offers by currency.', 'wpsso' ) . ' ';
+
+							$text .= sprintf( __( 'Note that to be eligible for <a href="%s">price drop appearance in Google search results</a>, product offers cannot be aggregated.', 'wpsso' ), 'https://developers.google.com/search/docs/data-types/product#price-drop' );
+
+				 			break;
+
+						case 'tooltip-schema_add_text_prop':		// Add Text / Article Body Properties.
+
+							$text = __( 'Add a "text" or "articleBody" property to Schema CreativeWork markup with the complete textual content of the post / page.', 'wpsso' );
+
+						 	break;
+
+						case 'tooltip-schema_text_max_len':		// Text / Article Body Max. Length.
+
+							$text = sprintf( __( 'The maximum length of the Schema CreativeWork "text" or "articleBody" property values (the default is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'schema_text_max_len' ) );
+
+				 			break;
 
 						case 'tooltip-schema_desc_max_len':		// Schema Description Max. Length.
 

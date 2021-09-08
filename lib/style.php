@@ -362,12 +362,12 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			 * List table columns.
 			 */
 			foreach ( array(
-				'.column-title' => 'plugin_col_title_width',
-				'.column-name'  => 'plugin_col_title_width',
-				''              => 'plugin_col_def_width',
-			) as $css_class => $opt_key ) {
+				'.column-title' => 'width:30%; max-width:15vw;',
+				'.column-name'  => 'width:30%; max-width:15vw;',
+				''              => 'width:15%; max-width:15vw;',
+			) as $css_class => $width_css ) {
 
-				$custom_style_css .= "\n@media screen and ( min-width:783px ) {\n";
+				$custom_style_css .= "\n@media screen and ( min-width:783px ) {\n";	// Open code block.
 
 				switch ( $css_class ) {
 
@@ -376,7 +376,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 						$custom_style_css .= "\ttable.wp-list-table.posts > thead > tr > th,\n";
 						$custom_style_css .= "\ttable.wp-list-table.posts > tbody > tr > td,\n";
 						$custom_style_css .= "\ttable.wp-list-table.pages > thead > tr > th,\n";
-						$custom_style_css .= "\ttable.wp-list-table.pages > tbody > tr > td {\n";
+						$custom_style_css .= "\ttable.wp-list-table.pages > tbody > tr > td {\n";	// Open code block.
 
 						break;
 
@@ -387,25 +387,14 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 						$custom_style_css .= "\t" . 'table.wp-list-table.pages > thead > tr > th' . $css_class . ",\n";
 						$custom_style_css .= "\t" . 'table.wp-list-table.pages > tbody > tr > td' . $css_class . ",\n";
 						$custom_style_css .= "\t" . 'table.wp-list-table > thead > tr > th' . $css_class . ",\n";
-						$custom_style_css .= "\t" . 'table.wp-list-table > tbody > tr > td' . $css_class . " {\n";
+						$custom_style_css .= "\t" . 'table.wp-list-table > tbody > tr > td' . $css_class . " {\n";	// Open code block.
 
 						break;
 				}
 
-				foreach ( array(
-					'width'     => '',
-					'min-width' => '_min',
-					'max-width' => '_max',
-				) as $css_name => $opt_suffix ) {
-
-					if ( ! empty( $this->p->options[ $opt_key . $opt_suffix ] ) ) {
-
-						$custom_style_css .= "\t\t" . $css_name . ':' . $this->p->options[ $opt_key . $opt_suffix ] . ";\n";
-					}
-				}
-
-				$custom_style_css .= "\t}\n";
-				$custom_style_css .= "}\n";
+				$custom_style_css .= "\t\t" . $width_css . "\n";
+				$custom_style_css .= "\t}\n";	// Close code block.
+				$custom_style_css .= "}\n";	// Close code block.
 			}
 
 			$custom_style_css .= '

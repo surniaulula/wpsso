@@ -233,10 +233,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'product_mfr_part_no':		// Product MPN.
 				case 'product_retailer_part_no':	// Product SKU.
 				case 'product_size':
-				case 'plugin_col_title_width':
-				case 'plugin_col_title_width_max':
-				case 'plugin_col_def_width':
-				case 'plugin_col_def_width_max':
 				case 'plugin_img_alt_prefix':		// Content Image Alt Prefix.
 				case 'plugin_p_cap_prefix':		// WP Caption Text Prefix.
 				case 'plugin_bitly_access_token':	// Bitly Generic Access Token.
@@ -268,10 +264,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'og_def_img_id_lib': 		// Example: 'wp' or 'ngg' media library name.
 				case 'og_img_id_lib': 			// Example: 'wp' or 'ngg' media library name.
 				case 'plugin_shortener':		// Example: 'none' or name of shortener
-				case 'plugin_col_def_width':
-				case 'plugin_col_def_width_max':
-				case 'plugin_col_title_width':
-				case 'plugin_col_title_width_max':
 				case 'plugin_no_title_text':		// No Title Text.
 				case 'plugin_no_desc_text':		// No Description Text.
 				case 'product_avail':			// Select option with 'none' as default.
