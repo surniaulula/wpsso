@@ -319,6 +319,22 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 8.39.0-dev.1 (2021/09/08)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Moved all options from the WPSSO JSON add-on settings page to the SSO &gt; General and Advanced Settings pages.
+	* Removed the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Interface &gt; Title / Name Column Width option.
+	* Removed the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Interface &gt; Default for Posts / Pages List option.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.0.
+	* WordPress v5.0.
+
 **Version 8.38.0 (2021/09/07)**
 
 * **New Features**
@@ -340,7 +356,6 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Updated the `SucomForm->get_th_html()` method to get tooltips only for the CSS id.
 		* Updated the `SucomUtil->get_url()` method to remove common tracking query arguments by default.
 	* Changes to functions:
-		* Added a new `wpsso_get_canonical_short_url()` function.
 		* Added a new `wpsso_get_sharing_short_url()` function.
 		* Added a new `wpsso_get_post_canonical_short_url()` function.
 		* Renamed the `wpsso_get_short_url()` function to `wpsso_get_canonical_short_url()`.
@@ -899,6 +914,10 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 	* WordPress v4.5.
 
 == Upgrade Notice ==
+
+= 8.39.0-dev.1 =
+
+(2021/09/08) Moved all options from the WPSSO JSON add-on settings page to the SSO &gt; General and Advanced Settings pages.
 
 = 8.38.0 =
 
