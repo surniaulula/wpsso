@@ -1896,8 +1896,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 							$canonical_url = $wpsso->util->get_canonical_url( $mod );
 
-							$wpsso->notice->set_ref( $canonical_url, $mod, sprintf( __( 'adding schema %s #%d image',
-								'wpsso-schema-json-ld' ), $prop_name, $md_num + 1 ) );
+							$wpsso->notice->set_ref( $canonical_url, $mod, sprintf( __( 'adding schema %s #%d image', 'wpsso' ),
+								$prop_name, $md_num + 1 ) );
 						}
 
 						/**

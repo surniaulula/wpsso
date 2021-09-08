@@ -145,10 +145,10 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			$metabox_id = 'def_schema';
 
 			$tabs = apply_filters( 'wpsso_advanced_' . $metabox_id . '_tabs', array(
-				'creative_work' => _x( 'Creative Work', 'metabox tab', 'wpsso-schema-json-ld' ),
-				'event'         => _x( 'Event', 'metabox tab', 'wpsso-schema-json-ld' ),
-				'job_posting'   => _x( 'Job Posting', 'metabox tab', 'wpsso-schema-json-ld' ),
-				'review'        => _x( 'Review', 'metabox tab', 'wpsso-schema-json-ld' ),
+				'creative_work' => _x( 'Creative Work', 'metabox tab', 'wpsso' ),
+				'event'         => _x( 'Event', 'metabox tab', 'wpsso' ),
+				'job_posting'   => _x( 'Job Posting', 'metabox tab', 'wpsso' ),
+				'review'        => _x( 'Review', 'metabox tab', 'wpsso' ),
 			) );
 
 			$table_rows = array();
