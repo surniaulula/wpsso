@@ -2282,7 +2282,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							$text .= __( 'Schema FAQPage markup is a collection of Questions and Answers, and WordPress manages a collection of related content in two different ways:', 'wpsso' ) . ' ';
 
-							$text .= __( 'Schema FAQPage can be a parent page with Schema Question child pages, or a taxonomy (ie. categories, tags or custom taxonomies) term with Schema Question posts / pages assigned to that term.', 'wpsso' ) . ' ';
+							$text .= __( 'Schema FAQPage can be a parent page with Schema Question child pages, or a taxonomy term (ie. categories, tags or custom taxonomies) with Schema Question posts / pages assigned to that term.', 'wpsso' ) . ' ';
 
 							$text .= '</p>';
 
@@ -2317,7 +2317,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 							 */
 							if ( empty( $this->p->avail[ 'p_ext' ][ 'faq' ] ) ) {
 
-								$text .= __( 'Schema Question can be a child page of a Schema FAQPage parent, or assigned to a Schema FAQPage taxonomy term.', 'wpsso' ) . ' ';
+								$text .= __( 'The Schema Question type can be a child page of a Schema FAQPage parent, or assigned to a Schema FAQPage taxonomy term.', 'wpsso' ) . ' ';
 							}
 
 							$text .= __( 'The Schema Question document title is a summary of the question and the content text is the complete answer for that question.', 'wpsso' ) . ' ';

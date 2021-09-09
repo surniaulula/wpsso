@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.39.0-dev.1\n"
+"Project-Id-Version: WPSSO Core 8.39.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -6963,7 +6963,7 @@ msgstr ""
 #: lib/messages.php:2285
 msgid ""
 "Schema FAQPage can be a parent page with Schema Question child pages, or a "
-"taxonomy (ie. categories, tags or custom taxonomies) term with Schema "
+"taxonomy term (ie. categories, tags or custom taxonomies) with Schema "
 "Question posts / pages assigned to that term."
 msgstr ""
 
@@ -6981,8 +6981,8 @@ msgstr ""
 
 #: lib/messages.php:2320
 msgid ""
-"Schema Question can be a child page of a Schema FAQPage parent, or assigned "
-"to a Schema FAQPage taxonomy term."
+"The Schema Question type can be a child page of a Schema FAQPage parent, or "
+"assigned to a Schema FAQPage taxonomy term."
 msgstr ""
 
 #: lib/messages.php:2323
