@@ -1223,22 +1223,22 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'opt' => array(
 				'defaults' => array(
-					'options_version'              => '',			// Example: -wpsso512pro-wpssoum3gpl
-					'options_filtered'             => 0,
+					'options_version'  => '',	// Example: -wpsso512pro-wpssoum3gpl
+					'options_filtered' => 0,
 
 					/**
 					 * Site options.
 					 */
-					'site_name'                    => '',			// (localized)
-					'site_name_alt'                => '',			// (localized)
-					'site_desc'                    => '',			// (localized)
-					'home_url'                     => '',
-					'site_org_banner_url'          => '',
-					'site_org_logo_url'            => '',
-					'site_org_place_id'            => 'none',
-					'site_org_schema_type'         => 'organization',	// Organization Schema Type.
-					'site_pub_schema_type'         => 'organization',	// WebSite Publisher Type.
-					'site_pub_person_id'           => 'none',		// WebSite Publisher (Person).
+					'site_name'            => '',			// WebSite Name (localized).
+					'site_name_alt'        => '',			// WebSite Alternate Name (localized).
+					'site_desc'            => '',			// WebSite Description (localized).
+					'home_url'             => '',			// WebSite URL (localized).
+					'site_org_logo_url'    => '',			// Organization Logo URL (localized)
+					'site_org_banner_url'  => '',			// Organization Banner URL (localized).
+					'site_org_schema_type' => 'organization',	// Organization Schema Type.
+					'site_org_place_id'    => 'none',		// Organization Location.
+					'site_pub_person_id'   => 'none',		// WebSite Publisher (Person).
+					'site_pub_schema_type' => 'organization',	// WebSite Publisher Type.
 
 					/**
 					 * Facebook options.

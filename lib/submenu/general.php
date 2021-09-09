@@ -131,6 +131,11 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'<td>' . $this->form->get_input_locale( 'site_name', $css_class = 'long_name', $css_id = '',
 							$len = 0, $def_site_name ) . '</td>';
 
+					$table_rows[ 'site_name_alt' ] = '' .
+						$this->form->get_th_html_locale( _x( 'WebSite Alternate Name', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'site_name_alt' ) . 
+						'<td>' . $this->form->get_input_locale( 'site_name_alt', $css_class = 'long_name' ) . '</td>';
+
 					$table_rows[ 'site_desc' ] = '' . 
 						$this->form->get_th_html_locale( _x( 'WebSite Description', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'site_desc' ) . 

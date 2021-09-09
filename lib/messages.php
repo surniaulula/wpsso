@@ -437,39 +437,22 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					switch ( $msg_key ) {
 
-						case 'tooltip-site_name':
+						case 'tooltip-site_name':	// WebSite Name.
 
 							$text = sprintf( __( 'The website name is used for the Facebook / Open Graph and Pinterest Rich Pin %s meta tag.',
 								'wpsso' ), '<code>og:site_name</code>' ) . ' ';
 
 							break;
 
-						case 'tooltip-site_name_alt':
+						case 'tooltip-site_name_alt':	// WebSite Alternate Name.
 
 							$text = __( 'An optional alternate name for your website that you want Google to consider.', 'wpsso' );
 
 							break;
 
-						case 'tooltip-site_desc':
+						case 'tooltip-site_desc':	// WebSite URL.
 
 							$text = __( 'The website description is used for the WordPress blog (non-static) front page.', 'wpsso' );
-
-							break;
-
-						case 'tooltip-site_pub_schema_type':	// WebSite Publisher Type.
-
-							$text .= __( 'Select a Schema type for the publisher of content for this website.', 'wpsso' ) . ' ';
-
-							$text .= __( 'Traditionally, the Schema Organization type is selected for business websites, where-as the Schema Person type is selected for personal websites.', 'wpsso' );
-
-							break;
-
-						case 'tooltip-site_pub_person_id':	// WebSite Publisher (Person).
-
-							$text = __( 'Select a user profile for the Schema Person publisher markup.', 'wpsso' ) . ' ';
-
-							$text .= sprintf( __( 'The available Person list includes users with the "%1$s" or "%2$s" role.', 'wpsso' ),
-								_x( 'Administrator', 'user role', 'wpsso' ), _x( 'Editor', 'user role', 'wpsso' ) );
 
 							break;
 
@@ -497,16 +480,34 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
-						case 'tooltip-site_org_place_id':
+						case 'tooltip-site_org_place_id':	// Organization Location.
 
 							if ( isset( $this->p->cf[ 'plugin' ][ 'wpssoplm' ] ) ) {
 
-								$plm_info       = $this->p->cf[ 'plugin' ][ 'wpssoplm' ];
+								$plm_info = $this->p->cf[ 'plugin' ][ 'wpssoplm' ];
+
 								$plm_addon_link = $this->p->util->get_admin_url( 'addons#wpssoplm', $plm_info[ 'short' ] );
 
 								$text = sprintf( __( 'Select an optional location for this organization (requires the %s add-on).',
 									'wpsso' ), $plm_addon_link );
 							}
+
+							break;
+
+						case 'tooltip-site_pub_person_id':	// WebSite Publisher (Person).
+
+							$text = __( 'Select a user profile for the Schema Person publisher markup.', 'wpsso' ) . ' ';
+
+							$text .= sprintf( __( 'The available Person list includes users with the "%1$s" or "%2$s" role.', 'wpsso' ),
+								_x( 'Administrator', 'user role', 'wpsso' ), _x( 'Editor', 'user role', 'wpsso' ) );
+
+							break;
+
+						case 'tooltip-site_pub_schema_type':	// WebSite Publisher Type.
+
+							$text .= __( 'Select a Schema type for the publisher of content for this website.', 'wpsso' ) . ' ';
+
+							$text .= __( 'Traditionally, the Schema Organization type is selected for business websites, where-as the Schema Person type is selected for personal websites.', 'wpsso' );
 
 							break;
 
