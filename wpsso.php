@@ -13,7 +13,7 @@
  * Description: Rank higher and improve click-through-rates by presenting your content at its best on social sites and in search results - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled.
  * Requires PHP: 7.0
  * Requires At Least: 5.0
- * Tested Up To: 5.8
+ * Tested Up To: 5.8.1
  * WC Tested Up To: 5.6.0
  * Version: 8.39.0-dev.1
  *

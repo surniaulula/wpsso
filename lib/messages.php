@@ -525,7 +525,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					switch ( $msg_key ) {
 
 						/**
-						 * Site Information tab.
+						 * SSO > General Settings > Site Information tab.
 						 */
 						case 'tooltip-og_def_article_section':	// Default Article Section.
 
@@ -569,6 +569,120 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
+						/**
+						 * SSO > General Settings > Titles / Descriptions tab.
+						 */
+						case 'tooltip-og_title_sep':		// Title Separator.
+
+							$text = sprintf( __( 'One or more characters used to separate values (category parent names, page numbers, etc.) within the Facebook / Open Graph title string (the default is a hyphen "%s" character).', 'wpsso' ), $this->p->opt->get_defaults( 'og_title_sep' ) );
+
+							break;
+
+						case 'tooltip-og_title_max_len':	// Title Max. Length.
+
+							$text = sprintf( __( 'The maximum length for the Facebook / Open Graph title value (the default is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'og_title_max_len' ) );
+
+							break;
+
+						case 'tooltip-og_desc_max_len':		// Description Max. Length.
+
+							$text = sprintf( __( 'The maximum length for the Facebook / Open Graph description value (the default is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'og_desc_max_len' ) ) . ' ';
+
+							$text .= sprintf( __( 'The maximum length must be at least %d characters or more.', 'wpsso' ), $this->p->cf[ 'head' ][ 'limit_min' ][ 'og_desc_len' ] );
+
+							break;
+
+						case 'tooltip-og_desc_hashtags':	// Description Hashtags.
+
+							$text = __( 'The maximum number of tag names (converted to hashtags) to include in the Facebook / Open Graph description.', 'wpsso' ) . ' ';
+
+							$text .= __( 'Each tag name is converted to lowercase with whitespaces removed.', 'wpsso' ) . ' ';
+
+							$text .= __( 'Select "0" to disable the addition of hashtags.', 'wpsso' );
+
+							break;
+
+						/**
+						 * SSO > General Settings > Images tab.
+						 */
+						case 'tooltip-og_img_max':		// Maximum Images to Include.
+
+							$text = __( 'The maximum number of images to include in the Open Graph meta tags for the webpage.', 'wpsso' ) . ' ';
+
+							$text .= __( 'If you select "0", then no images will be included (not recommended).', 'wpsso' ) . ' ';
+
+							$text .= __( 'If no images are available in the Open Graph meta tags, social sites may choose any random image from the webpage, including headers, thumbnails, ads, etc.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-og_img_size':		// Open Graph (Facebook and oEmbed) Image Size.
+
+							$def_img_dims = $this->get_def_img_dims( 'og' );
+
+							$text = sprintf( __( 'The image dimensions used for Facebook / Open Graph meta tags and oEmbed markup (the default dimensions are %s).', 'wpsso' ), $def_img_dims ) . ' ';
+
+							$text .= $fb_img_rec;
+
+							break;
+
+						case 'tooltip-og_def_img_id':		// Default Image ID.
+
+							$text = __( 'An image ID for your site\'s default image (ie. when an image is required, and no other image is available).', 'wpsso' ) . ' ';
+
+							$text .= __( 'The default image is used for archive pages (ie. blog, category, and tag archive page) and as a fallback for posts and pages that do not have a suitable image featured, attached, or in their content.', 'wpsso' ) . ' ';
+
+							$text .= '<em>' . __( 'This option is disabled if a custom image URL is entered.', 'wpsso' ) . '</em>';
+
+							break;
+
+						case 'tooltip-og_def_img_url':		// or Default Image URL.
+
+							$text = __( 'You can enter a default image URL instead of choosing an image ID.', 'wpsso' ) . ' ';
+
+							$text .= __( 'The image URL option allows you to use an image outside of a managed collection (WordPress Media Library or NextGEN Gallery), and/or a smaller logo style image.', 'wpsso' ) . ' ';
+
+							$text .= sprintf( __( 'The image should be at least %s or more in width and height.', 'wpsso' ),
+								$this->p->cf[ 'head' ][ 'limit_min' ][ 'og_img_width' ] . 'x' .
+									$this->p->cf[ 'head' ][ 'limit_min' ][ 'og_img_height' ] . 'px' ) . ' ';
+
+							$text .= __( 'The default image is used for archive pages (ie. blog, category, and tag archive page) and as a fallback for posts and pages that do not have a suitable image featured, attached, or in their content.', 'wpsso' ) . ' ';
+
+							$text .= '<em>' . __( 'This option is disabled if a custom image ID is selected.', 'wpsso' ) . '</em>';
+
+							break;
+
+						/**
+						 * SSO > General Settings > Videos tab.
+						 */
+						case 'tooltip-og_vid_max':		// Maximum Videos to Include.
+
+							$text = __( 'The maximum number of embedded videos to include in meta tags and Schema markup.', 'wpsso' );
+
+							break;
+
+						case 'tooltip-og_vid_prev_img':		// Include Video Preview Images.
+
+							$text = __( 'Include video preview images in meta tags and Schema markup.', 'wpsso' ) . ' ';
+
+							$text .= __( 'When video preview images are enabled and a preview image is available, it will be included in meta tags and Schema markup before any other image (custom, featured, attached, or content image).', 'wpsso' );
+
+							break;
+
+						case 'tooltip-og_vid_autoplay':		// Force Autoplay when Possible.
+
+							$text = __( 'If possible, add or modify the video URL "autoplay" argument for videos in meta tags and Schema markup.', 'wpsso' );
+
+							break;
+
+						default:
+
+							$text = apply_filters( 'wpsso_messages_tooltip_og', $text, $msg_key, $info );
+
+							break;
+
+						/**
+						 * SSO > Advanced Settings > Document Types > Open Graph tab.
+						 */
 						case 'tooltip-og_type_for_home_page':	// Type for Page Homepage.
 
 							$def_type = $this->p->opt->get_defaults( 'og_type_for_home_page' );
@@ -630,117 +744,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						case 'tooltip-og_type_for_ttn':		// Type by Taxonomy.
 
 							$text = __( 'Select the Open Graph type for each WordPress taxonomy.', 'wpsso' );
-
-							break;
-
-						/**
-						 * Titles / Descriptions tab.
-						 */
-						case 'tooltip-og_title_sep':		// Title Separator.
-
-							$text = sprintf( __( 'One or more characters used to separate values (category parent names, page numbers, etc.) within the Facebook / Open Graph title string (the default is a hyphen "%s" character).', 'wpsso' ), $this->p->opt->get_defaults( 'og_title_sep' ) );
-
-							break;
-
-						case 'tooltip-og_title_max_len':	// Title Max. Length.
-
-							$text = sprintf( __( 'The maximum length for the Facebook / Open Graph title value (the default is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'og_title_max_len' ) );
-
-							break;
-
-						case 'tooltip-og_desc_max_len':		// Description Max. Length.
-
-							$text = sprintf( __( 'The maximum length for the Facebook / Open Graph description value (the default is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'og_desc_max_len' ) ) . ' ';
-
-							$text .= sprintf( __( 'The maximum length must be at least %d characters or more.', 'wpsso' ), $this->p->cf[ 'head' ][ 'limit_min' ][ 'og_desc_len' ] );
-
-							break;
-
-						case 'tooltip-og_desc_hashtags':	// Description Hashtags.
-
-							$text = __( 'The maximum number of tag names (converted to hashtags) to include in the Facebook / Open Graph description.', 'wpsso' ) . ' ';
-
-							$text .= __( 'Each tag name is converted to lowercase with whitespaces removed.', 'wpsso' ) . ' ';
-
-							$text .= __( 'Select "0" to disable the addition of hashtags.', 'wpsso' );
-
-							break;
-
-						/**
-						 * Images tab.
-						 */
-						case 'tooltip-og_img_max':		// Maximum Images to Include.
-
-							$text = __( 'The maximum number of images to include in the Open Graph meta tags for the webpage.', 'wpsso' ) . ' ';
-
-							$text .= __( 'If you select "0", then no images will be included (not recommended).', 'wpsso' ) . ' ';
-
-							$text .= __( 'If no images are available in the Open Graph meta tags, social sites may choose any random image from the webpage, including headers, thumbnails, ads, etc.', 'wpsso' );
-
-							break;
-
-						case 'tooltip-og_img_size':		// Open Graph (Facebook and oEmbed) Image Size.
-
-							$def_img_dims = $this->get_def_img_dims( 'og' );
-
-							$text = sprintf( __( 'The image dimensions used for Facebook / Open Graph meta tags and oEmbed markup (the default dimensions are %s).', 'wpsso' ), $def_img_dims ) . ' ';
-
-							$text .= $fb_img_rec;
-
-							break;
-
-						case 'tooltip-og_def_img_id':		// Default Image ID.
-
-							$text = __( 'An image ID for your site\'s default image (ie. when an image is required, and no other image is available).', 'wpsso' ) . ' ';
-
-							$text .= __( 'The default image is used for archive pages (ie. blog, category, and tag archive page) and as a fallback for posts and pages that do not have a suitable image featured, attached, or in their content.', 'wpsso' ) . ' ';
-
-							$text .= '<em>' . __( 'This option is disabled if a custom image URL is entered.', 'wpsso' ) . '</em>';
-
-							break;
-
-						case 'tooltip-og_def_img_url':		// or Default Image URL.
-
-							$text = __( 'You can enter a default image URL instead of choosing an image ID.', 'wpsso' ) . ' ';
-
-							$text .= __( 'The image URL option allows you to use an image outside of a managed collection (WordPress Media Library or NextGEN Gallery), and/or a smaller logo style image.', 'wpsso' ) . ' ';
-
-							$text .= sprintf( __( 'The image should be at least %s or more in width and height.', 'wpsso' ),
-								$this->p->cf[ 'head' ][ 'limit_min' ][ 'og_img_width' ] . 'x' .
-									$this->p->cf[ 'head' ][ 'limit_min' ][ 'og_img_height' ] . 'px' ) . ' ';
-
-							$text .= __( 'The default image is used for archive pages (ie. blog, category, and tag archive page) and as a fallback for posts and pages that do not have a suitable image featured, attached, or in their content.', 'wpsso' ) . ' ';
-
-							$text .= '<em>' . __( 'This option is disabled if a custom image ID is selected.', 'wpsso' ) . '</em>';
-
-							break;
-
-						/**
-						 * Videos tab.
-						 */
-						case 'tooltip-og_vid_max':		// Maximum Videos to Include.
-
-							$text = __( 'The maximum number of embedded videos to include in meta tags and Schema markup.', 'wpsso' );
-
-							break;
-
-						case 'tooltip-og_vid_prev_img':		// Include Video Preview Images.
-
-							$text = __( 'Include video preview images in meta tags and Schema markup.', 'wpsso' ) . ' ';
-
-							$text .= __( 'When video preview images are enabled and a preview image is available, it will be included in meta tags and Schema markup before any other image (custom, featured, attached, or content image).', 'wpsso' );
-
-							break;
-
-						case 'tooltip-og_vid_autoplay':		// Force Autoplay when Possible.
-
-							$text = __( 'If possible, add or modify the video URL "autoplay" argument for videos in meta tags and Schema markup.', 'wpsso' );
-
-							break;
-
-						default:
-
-							$text = apply_filters( 'wpsso_messages_tooltip_og', $text, $msg_key, $info );
 
 							break;
 
@@ -1476,6 +1479,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 							break;
 
+						/**
+						 * SSO > Advanced Settings > Document Types > Schema tab.
+						 */
 						case 'tooltip-schema_type_for_home_page':	// Type for Page Homepage.
 
 							$def_type = $this->p->opt->get_defaults( 'schema_type_for_home_page' );
@@ -1538,6 +1544,88 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 
 							break;
+
+						/**
+						 * SSO > Advanced Settings > Schema Defaults metabox.
+						 */
+						case 'tooltip-schema_def_family_friendly':		// Default Family Friendly.
+
+							$text = __( 'Select a default family friendly value for the Schema CreativeWork type and/or its sub-types (Article, BlogPosting, WebPage, etc).', 'wpsso' );
+
+						 	break;
+
+						case 'tooltip-schema_def_pub_org_id':			// Default Publisher (Org).
+		
+							$text = __( 'Select a default publisher organization for the Schema CreativeWork type and/or its sub-types (Article, BlogPosting, WebPage, etc).', 'wpsso' );
+		
+						 	break;
+		
+						case 'tooltip-schema_def_pub_person_id':		// Default Publisher (Person).
+		
+							$text = __( 'Select a default publisher person for the Schema CreativeWork type and/or its sub-types (Article, BlogPosting, WebPage, etc).', 'wpsso' );
+		
+						 	break;
+		
+						case 'tooltip-schema_def_prov_org_id':			// Default Service Prov. (Org).
+						case 'tooltip-schema_def_prov_person_id':		// Default Service Prov. (Person).
+		
+							$text = __( 'Select a default service provider, service operator or service performer (example: "Netflix").', 'wpsso' );
+		
+						 	break;
+		
+						case 'tooltip-schema_def_event_location_id':		// Default Physical Venue.
+		
+							$text = __( 'Select a default venue for the Schema Event type.', 'wpsso' );
+		
+						 	break;
+		
+						case 'tooltip-schema_def_event_organizer_org_id':	// Default Organizer (Org).
+		
+							$text = __( 'Select a default organizer (organization) for the Schema Event type.', 'wpsso' );
+		
+						 	break;
+		
+						case 'tooltip-schema_def_event_organizer_person_id':	// Default Organizer (Person).
+		
+							$text = __( 'Select a default organizer (person) for the Schema Event type.', 'wpsso' );
+		
+						 	break;
+		
+						case 'tooltip-schema_def_event_performer_org_id':	// Default Performer (Org).
+		
+							$text = __( 'Select a default performer (organization) for the Schema Event type.', 'wpsso' );
+		
+						 	break;
+		
+						case 'tooltip-schema_def_event_performer_person_id':	// Default Performer (Person).
+		
+							$text = __( 'Select a default performer (person) for the Schema Event type.', 'wpsso' );
+		
+						 	break;
+		
+						case 'tooltip-schema_def_job_hiring_org_id':		// Default Job Hiring (Org).
+		
+							$text = __( 'Select a default organization for the Schema JobPosting hiring organization.', 'wpsso' );
+		
+						 	break;
+		
+						case 'tooltip-schema_def_job_location_id':		// Default Job Location.
+		
+							$text = __( 'Select a default location for the Schema JobPosting job location.', 'wpsso' );
+		
+						 	break;
+		
+						case 'tooltip-schema_def_job_location_type':		// Default Job Location Type.
+		
+							$text = sprintf( __( 'Select a default optional Google approved location type (see <a href="%s">Google\'s Job Posting guidelines</a> for more information).', 'wpsso' ), 'https://developers.google.com/search/docs/data-types/job-postings' );
+		
+						 	break;
+
+						case 'tooltip-schema_def_review_item_type':		// Default Subject Webpage Type.
+		
+							$text = __( 'Select a default Schema type for the Schema Review subject URL.', 'wpsso' );
+		
+						 	break;
 
 						default:
 
