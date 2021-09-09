@@ -1363,8 +1363,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		/**
 		 * Note that an empty string or a null is sanitized as false.
+		 *
+		 * Used by the wpssorrssb_get_sharing_buttons() function and the WpssoRrssbShortcodeSharing->do_shortcode() method.
 		 */
-		public static function sanitize_use_post( $mixed, $default = false ) {
+		public static function sanitize_use_post( $mixed, $default = true ) {
 
 			if ( is_array( $mixed ) ) {
 
