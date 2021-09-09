@@ -10,7 +10,7 @@ Tags: woocommerce, rich snippets, seo, schema, open graph, facebook, linkedin, t
 Contributors: jsmoriss
 Requires PHP: 7.0
 Requires At Least: 5.0
-Tested Up To: 5.8
+Tested Up To: 5.8.1
 WC Tested Up To: 5.6.0
 Stable Tag: 8.38.0
 
