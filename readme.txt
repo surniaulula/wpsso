@@ -324,6 +324,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
+	* Added a new SSO &gt; General Settings &gt; WebSite Alternate Name option.
 	* Moved all options from the WPSSO JSON add-on settings page to the SSO &gt; General and Advanced Settings pages.
 	* Removed the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Interface &gt; Title / Name Column Width option.
 	* Removed the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Interface &gt; Default for Posts / Pages List option.
