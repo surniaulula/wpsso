@@ -107,14 +107,14 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'plugin_verify_certs'            => '',
 				),
 				514 => array(
-					'rp_publisher_url' => 'p_publisher_url',
+					'rp_publisher_url' => 'pin_publisher_url',
 					'rp_author_name'   => '',
-					'rp_img_width'     => 'p_img_width',
-					'rp_img_height'    => 'p_img_height',
-					'rp_img_crop'      => 'p_img_crop',
-					'rp_img_crop_x'    => 'p_img_crop_x',
-					'rp_img_crop_y'    => 'p_img_crop_y',
-					'rp_dom_verify'    => 'p_site_verify',
+					'rp_img_width'     => 'pin_img_width',
+					'rp_img_height'    => 'pin_img_height',
+					'rp_img_crop'      => 'pin_img_crop',
+					'rp_img_crop_x'    => 'pin_img_crop_x',
+					'rp_img_crop_y'    => 'pin_img_crop_y',
+					'rp_dom_verify'    => 'pin_site_verify',
 				),
 				525 => array(
 					'add_meta_itemprop_url'               => 'add_link_itemprop_url',
@@ -270,7 +270,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'schema_article_amp16x9_img_crop_y' => 'schema_16x9_img_crop_y',
 				),
 				671 => array(
-					'p_dom_verify' => 'p_site_verify',
+					'p_dom_verify' => 'pin_site_verify',
 				),
 				673 => array(
 					'add_link_itemprop_author.url'                             => '',
@@ -303,11 +303,6 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				),
 				674 => array(
 					'instgram_publisher_url' => 'instagram_publisher_url',
-				),
-				686 => array(
-					'plugin_wpssoam_tid'    => '',	// Deprecated on 2019/11/14.
-					'plugin_wpssorrssb_tid' => '',	// Deprecated on 2019/11/06.
-					'plugin_wpssotie_tid'   => '',	// Deprecated on 2019/11/21.
 				),
 				692 => array(
 					'plugin_cf_product_mpn'   => 'plugin_cf_product_mfr_part_no',
@@ -456,8 +451,6 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				),
 				811 => array(
 					'plm_def_country'     => 'og_def_country',	// Moved to WPSSO Core on 2021/08/27.
-					'plugin_wpssoorg_tid' => '',			// Deprecated on 2021/08/25.
-					'plugin_wpssoplm_tid' => '',			// Deprecated on 2021/08/30.
 					'seo_author_name'     => '',			// Deprecated on 2021/09/01.
 				),
 				814 => array(
@@ -466,6 +459,25 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'plugin_col_title_width_max' => '',	// Deprecated on 2021/09/08.
 					'plugin_col_def_width'       => '',	// Deprecated on 2021/09/08.
 					'plugin_col_def_width_max'   => '',	// Deprecated on 2021/09/08.
+				),
+				815 => array(
+					'plugin_wpssoam_tid'         => '',	// Deprecated on 2019/11/14.
+					'plugin_wpssoorg_tid'        => '',	// Deprecated on 2021/08/25.
+					'plugin_wpssoplm_tid'        => '',	// Deprecated on 2021/08/30.
+					'plugin_wpssorrssb_tid'      => '',	// Deprecated on 2019/11/06.
+					'plugin_wpssotie_tid'        => '',	// Deprecated on 2019/11/21.
+					'p_site_verify'              => 'pin_site_verify',
+					'p_publisher_url'            => 'pin_publisher_url',
+					'p_add_nopin_header_img_tag' => 'pin_add_nopin_header_img_tag',
+					'p_add_nopin_media_img_tag'  => 'pin_add_nopin_media_img_tag',
+					'p_add_img_html'             => 'pin_add_img_html',
+					'p_img_width'                => 'pin_img_width',
+					'p_img_height'               => 'pin_img_height',
+					'p_img_crop'                 => 'pin_img_crop',
+					'p_img_crop_x'               => 'pin_img_crop_x',
+					'p_img_crop_y'               => 'pin_img_crop_y',
+					'p_img_desc_max_len'         => 'pin_img_desc_max_len',
+					'p_img_desc_warn_len'        => 'pin_img_desc_warn_len',
 				),
 			),
 		);

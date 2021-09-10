@@ -53,11 +53,11 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			$maybe_hashtags = true;
 			$do_encode      = true;
 
-			$p_img_disabled         = empty( $this->p->options[ 'p_add_img_html' ] ) ? true : false;
+			$pin_img_disabled       = empty( $this->p->options[ 'pin_add_img_html' ] ) ? true : false;
 			$seo_desc_disabled      = empty( $this->p->options[ 'add_meta_name_description' ] ) ? true : false;
 			$canonical_url_disabled = empty( $this->p->options[ 'add_link_rel_canonical' ] ) ? true : false;
 
-			$p_img_msg         = $p_img_disabled ? $this->p->msgs->p_img_disabled() : '';
+			$pin_img_msg       = $pin_img_disabled ? $this->p->msgs->pin_img_disabled() : '';
 			$seo_desc_msg      = $seo_desc_disabled ? $this->p->msgs->seo_option_disabled( 'meta name description' ) : '';
 			$canonical_url_msg = $canonical_url_disabled ? $this->p->msgs->seo_option_disabled( 'link rel canonical' ) : '';
 
@@ -72,21 +72,21 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			/**
 			 * Maximum option lengths.
 			 */
-			$og_title_max_len    = $this->p->options[ 'og_title_max_len' ];
-			$og_title_warn_len   = $this->p->options[ 'og_title_warn_len' ];
-			$og_desc_max_len     = $this->p->options[ 'og_desc_max_len' ];
-			$og_desc_warn_len    = $this->p->options[ 'og_desc_warn_len' ];
-			$p_img_desc_max_len  = $this->p->options[ 'p_img_desc_max_len' ];
-			$p_img_desc_warn_len = $this->p->options[ 'p_img_desc_warn_len' ];
-			$tc_desc_max_len     = $this->p->options[ 'tc_desc_max_len' ];
-			$seo_desc_max_len    = $this->p->options[ 'seo_desc_max_len' ];		// Description Meta Tag Max. Length.
+			$og_title_max_len      = $this->p->options[ 'og_title_max_len' ];
+			$og_title_warn_len     = $this->p->options[ 'og_title_warn_len' ];
+			$og_desc_max_len       = $this->p->options[ 'og_desc_max_len' ];
+			$og_desc_warn_len      = $this->p->options[ 'og_desc_warn_len' ];
+			$pin_img_desc_max_len  = $this->p->options[ 'pin_img_desc_max_len' ];
+			$pin_img_desc_warn_len = $this->p->options[ 'pin_img_desc_warn_len' ];
+			$tc_desc_max_len       = $this->p->options[ 'tc_desc_max_len' ];
+			$seo_desc_max_len      = $this->p->options[ 'seo_desc_max_len' ];		// Description Meta Tag Max. Length.
 
 			/**
 			 * Default option values.
 			 */
 			$def_og_title      = $this->p->page->get_title( $og_title_max_len, $dots, $mod, $read_cache, $no_hashtags, $do_encode, 'none' );
 			$def_og_desc       = $this->p->page->get_description( $og_desc_max_len, $dots, $mod, $read_cache, $maybe_hashtags, $do_encode, 'none' );
-			$def_p_img_desc    = $p_img_disabled ? '' : $this->p->page->get_description( $p_img_desc_max_len, $dots, $mod, $read_cache, $maybe_hashtags );
+			$def_pin_img_desc  = $pin_img_disabled ? '' : $this->p->page->get_description( $pin_img_desc_max_len, $dots, $mod, $read_cache, $maybe_hashtags );
 			$def_tc_desc       = $this->p->page->get_description( $tc_desc_max_len, $dots, $mod, $read_cache );
 			$def_seo_desc      = $seo_desc_disabled ? '' : $this->p->page->get_description( $seo_desc_max_len, $dots, $mod, $read_cache, $no_hashtags );
 			$def_canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = false );
@@ -161,14 +161,14 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					'content'  => $form->get_textarea( 'og_desc', $css_class = '', $css_id = '',
 						array( 'max' => $og_desc_max_len, 'warn' => $og_desc_warn_len ), $def_og_desc ),
 				),
-				'p_img_desc' => array(
-					'tr_class' => $p_img_disabled ? 'hide_in_basic' : '',
+				'pin_img_desc' => array(
+					'tr_class' => $pin_img_disabled ? 'hide_in_basic' : '',
 					'th_class' => 'medium',
 					'label'    => _x( 'Pinterest Description', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-p_img_desc',
-					'content'  => $form->get_textarea( 'p_img_desc', $css_class = '', $css_id = '',
-						array( 'max' => $p_img_desc_max_len, 'warn' => $p_img_desc_warn_len ),
-							$def_p_img_desc, $p_img_disabled ) . ' ' . $p_img_msg,
+					'tooltip'  => 'meta-pin_img_desc',
+					'content'  => $form->get_textarea( 'pin_img_desc', $css_class = '', $css_id = '',
+						array( 'max' => $pin_img_desc_max_len, 'warn' => $pin_img_desc_warn_len ),
+							$def_pin_img_desc, $pin_img_disabled ) . ' ' . $pin_img_msg,
 				),
 				'tc_desc' => array(
 					'th_class' => 'medium',

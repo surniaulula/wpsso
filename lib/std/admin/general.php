@@ -67,7 +67,7 @@ if ( ! class_exists( 'WpssoStdAdminGeneral' ) ) {
 
 			$max_media_items = $this->p->cf[ 'form' ][ 'max_media_items' ];
 
-			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature_video_api( 'wpsso' ) . '</td>';
+			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature_video_api() . '</td>';
 
 			$table_rows[ 'og_vid_max' ] = $form->get_tr_hide( 'basic', 'og_vid_max' ) . 
 				$form->get_th_html( _x( 'Maximum Videos to Include', 'option label', 'wpsso' ), null, 'og_vid_max' ) . 
@@ -76,7 +76,7 @@ if ( ! class_exists( 'WpssoStdAdminGeneral' ) ) {
 
 			$table_rows[ 'og_vid_prev_img' ] = '' . 
 				$form->get_th_html( _x( 'Include Video Preview Images', 'option label', 'wpsso' ), null, 'og_vid_prev_img' ) . 
-				$form->get_no_td_checkbox( 'og_vid_prev_img', $this->p->msgs->preview_images_first() );
+				$form->get_no_td_checkbox( 'og_vid_prev_img', $this->p->msgs->preview_images_are_first() );
 
 			$table_rows[ 'og_vid_autoplay' ] = '' . 
 				$form->get_th_html( _x( 'Force Autoplay when Possible', 'option label', 'wpsso' ), null, 'og_vid_autoplay' ) . 

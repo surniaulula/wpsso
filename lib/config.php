@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.39.0-dev.3',	// Plugin version.
-					'opt_version' => '815',		// Increment when changing default option values.
+					'version'     => '8.39.0-dev.4',	// Plugin version.
+					'opt_version' => '816',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Rank higher and improve click-through-rates by presenting your content at its best on social sites and in search results - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled.',
@@ -1319,17 +1319,17 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Pinterest options.
 					 */
-					'p_publisher_url'            => '',
-					'p_add_nopin_header_img_tag' => 1,			// Add "nopin" to Site Header Image.
-					'p_add_nopin_media_img_tag'  => 0,			// Add Pinterest "nopin" to Images.
-					'p_add_img_html'             => 0,			// Add Hidden Image for Pinterest.
-					'p_img_width'                => 1200,
-					'p_img_height'               => 1800,
-					'p_img_crop'                 => 0,
-					'p_img_crop_x'               => 'center',
-					'p_img_crop_y'               => 'center',
-					'p_img_desc_max_len'         => 300,			// Image Description Max. Length (hard limit).
-					'p_img_desc_warn_len'        => 100,			// Image Description Max. Length (soft limit).
+					'pin_publisher_url'            => '',
+					'pin_add_nopin_header_img_tag' => 1,			// Add "nopin" to Site Header Image.
+					'pin_add_nopin_media_img_tag'  => 0,			// Add Pinterest "nopin" to Images.
+					'pin_add_img_html'             => 0,			// Add Hidden Image for Pinterest.
+					'pin_img_width'                => 1200,
+					'pin_img_height'               => 1800,
+					'pin_img_crop'                 => 0,
+					'pin_img_crop_x'               => 'center',
+					'pin_img_crop_y'               => 'center',
+					'pin_img_desc_max_len'         => 300,			// Image Description Max. Length (hard limit).
+					'pin_img_desc_warn_len'        => 100,			// Image Description Max. Length (soft limit).
 
 					/**
 					 * Robots options.
@@ -1484,7 +1484,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'fb_site_verify'     => '',		// Facebook Domain Verification ID.
 					'g_site_verify'      => '',		// Google Website Verification ID.
 					'bing_site_verify'   => '',		// Microsoft Bing Website Verification ID.
-					'p_site_verify'      => '',		// Pinterest Website Verification ID.
+					'pin_site_verify'    => '',		// Pinterest Website Verification ID.
 					'yandex_site_verify' => '',		// Yandex Website Verification ID.
 
 					/**
@@ -2065,7 +2065,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'fb_site_verify'     => 'facebook-domain-verification',	// Facebook Domain Verification ID.
 					'g_site_verify'      => 'google-site-verification',	// Google Website Verification ID.
 					'bing_site_verify'   => 'msvalidate.01',		// Microsoft Bing Website Verification ID.
-					'p_site_verify'      => 'p:domain_verify',		// Pinterest Website Verification ID.
+					'pin_site_verify'    => 'p:domain_verify',		// Pinterest Website Verification ID.
 					'yandex_site_verify' => 'yandex-verification',		// Yandex Website Verification ID.
 				),
 			),
@@ -2592,7 +2592,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'linkedin_publisher_url'  => 'LinkedIn Business Page URL',
 					'medium_publisher_url'    => 'Medium Business Page URL',
 					'myspace_publisher_url'   => 'Myspace Business Page URL',
-					'p_publisher_url'         => 'Pinterest Business Page URL',
+					'pin_publisher_url'       => 'Pinterest Business Page URL',
 					'sc_publisher_url'        => 'Soundcloud Business Page URL',
 					'tiktok_publisher_url'    => 'TikTok Business Page URL',
 					'tumblr_publisher_url'    => 'Tumblr Business Page URL',

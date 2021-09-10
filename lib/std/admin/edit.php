@@ -252,14 +252,14 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'label'        => _x( 'Priority Video Information', 'metabox title', 'wpsso' )
 				),
 				'pro_feature_msg_video_api' => array(
-					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature_video_api( 'wpsso' ) . '</td>',
+					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature_video_api() . '</td>',
 				),
 				'og_vid_prev_img' => array(
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Include Preview Images', 'option label', 'wpsso' ),
 					'tooltip'  => 'og_vid_prev_img',	// Use the tooltip from plugin settings.
-					'content'  => $form->get_no_checkbox( 'og_vid_prev_img' ) . $this->p->msgs->preview_images_first(),
+					'content'  => $form->get_no_checkbox( 'og_vid_prev_img' ) . $this->p->msgs->preview_images_are_first(),
 				),
 				'og_vid_max' => $mod[ 'is_post' ] ? array(
 					'tr_class' => $form->get_css_class_hide( 'basic', 'og_vid_max' ),
@@ -312,12 +312,12 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			/**
 			 * Pinterest Pin It.
 			 */
-			$size_name      = 'wpsso-pinterest';
-			$media_request  = array( 'pid', 'img_url' );
-			$media_info     = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = array( 'schema', 'og' ) );
-			$p_img_disabled = empty( $this->p->options[ 'p_add_img_html' ] ) ? true : false;
-			$p_img_msg      = $p_img_disabled ? $this->p->msgs->p_img_disabled() : '';
-			$row_class      = ! $p_img_disabled && $form->in_options( '/^p_img_/' ) ? '' : 'hide_in_basic';
+			$size_name        = 'wpsso-pinterest';
+			$media_request    = array( 'pid', 'img_url' );
+			$media_info       = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = array( 'schema', 'og' ) );
+			$pin_img_disabled = empty( $this->p->options[ 'pin_add_img_html' ] ) ? true : false;
+			$pin_img_msg      = $pin_img_disabled ? $this->p->msgs->pin_img_disabled() : '';
+			$row_class        = ! $pin_img_disabled && $form->in_options( '/^pin_img_/' ) ? '' : 'hide_in_basic';
 
 			$form_rows[ 'subsection_pinterest' ] = array(
 				'tr_class' => $row_class,
@@ -331,22 +331,22 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
 			);
 
-			$form_rows[ 'p_img_id' ] = array(
+			$form_rows[ 'pin_img_id' ] = array(
 				'tr_class' => $row_class,
 				'th_class' => 'medium',
 				'td_class' => 'blank',
 				'label'    => _x( 'Image ID', 'option label', 'wpsso' ),
-				'tooltip'  => 'meta-p_img_id',
-				'content'  => $form->get_no_input_image_upload( 'p_img', $media_info[ 'pid' ] ),
+				'tooltip'  => 'meta-pin_img_id',
+				'content'  => $form->get_no_input_image_upload( 'pin_img', $media_info[ 'pid' ] ),
 			);
 
-			$form_rows[ 'p_img_url' ] = array(
+			$form_rows[ 'pin_img_url' ] = array(
 				'tr_class' => $row_class,
 				'th_class' => 'medium',
 				'td_class' => 'blank',
 				'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
-				'tooltip'  => 'meta-p_img_url',
-				'content'  => $form->get_no_input_holder( $media_info[ 'img_url' ], $css_class = 'wide' ) . ' ' . $p_img_msg,
+				'tooltip'  => 'meta-pin_img_url',
+				'content'  => $form->get_no_input_holder( $media_info[ 'img_url' ], $css_class = 'wide' ) . ' ' . $pin_img_msg,
 			);
 
 			/**

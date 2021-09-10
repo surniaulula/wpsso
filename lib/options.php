@@ -93,7 +93,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'fb_app_secret':
 				case 'fb_site_verify':			// Facebook Domain Verification ID.
 				case 'g_site_verify':			// Google Website Verification ID.
-				case 'p_site_verify':			// Pinterest Website Verification ID.
+				case 'pin_site_verify':			// Pinterest Website Verification ID.
 				case 'plugin_stamped_key_public':	// Stamped.io API Key Public.
 				case ( preg_match( '/_api_key$/', $base_key ) ? true : false ):
 
@@ -313,7 +313,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'canonical_url':
 				case 'fb_page_url':
 				case 'og_vid_url':
-				case 'p_publisher_url':
+				case 'pin_publisher_url':
 				case 'plugin_yourls_api_url':
 				case 'schema_addl_type_url':
 				case 'schema_sameas_url':

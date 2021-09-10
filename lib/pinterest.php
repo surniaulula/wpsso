@@ -42,7 +42,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 			add_filter( 'get_avatar', array( $this, 'get_avatar_image_tag' ), 10, 5 );
 			add_filter( 'get_image_tag', array( $this, 'get_image_tag' ), 10, 6 );
 
-			if ( ! empty( $this->p->options[ 'p_add_img_html' ] ) ) {
+			if ( ! empty( $this->p->options[ 'pin_add_img_html' ] ) ) {
 
 				$this->p->util->add_plugin_filters( $this, array( 
 					'plugin_image_sizes' => 1,
@@ -56,7 +56,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 
 			global $allowedposttags;
 
-			if ( ! empty( $this->p->options[ 'p_add_nopin_media_img_tag' ] ) ) {
+			if ( ! empty( $this->p->options[ 'pin_add_nopin_media_img_tag' ] ) ) {
 
 				$allowedposttags[ 'img' ][ 'data-pin-nopin' ] = true;
 			}
@@ -67,7 +67,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 		 */
 		public function add_attachment_image_attributes( $attr, $attach ) {
 
-			if ( ! empty( $this->p->options[ 'p_add_nopin_media_img_tag' ] ) ) {
+			if ( ! empty( $this->p->options[ 'pin_add_nopin_media_img_tag' ] ) ) {
 
 				$attr[ 'data-pin-nopin' ] = 'nopin';
 			}
@@ -80,7 +80,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 		 */
 		public function get_header_image_tag( $html, $header, $attr ) {
 
-			if ( ! empty( $this->p->options[ 'p_add_nopin_header_img_tag' ] ) ) {
+			if ( ! empty( $this->p->options[ 'pin_add_nopin_header_img_tag' ] ) ) {
 
 				$html = SucomUtil::insert_html_tag_attributes( $html, array( 'data-pin-nopin' => 'nopin' ) );
 			}
@@ -97,7 +97,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 		 */
 		public function get_avatar_image_tag( $html, $id_or_email, $size_px, $default_type, $alt ) {
 
-			if ( ! empty( $this->p->options[ 'p_add_nopin_header_img_tag' ] ) ) {
+			if ( ! empty( $this->p->options[ 'pin_add_nopin_header_img_tag' ] ) ) {
 
 				$html = SucomUtil::insert_html_tag_attributes( $html, array( 'data-pin-nopin' => 'nopin' ) );
 			}
@@ -110,7 +110,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 		 */
 		public function get_image_tag( $html, $id, $alt, $title, $align, $size ) {
 
-			if ( ! empty( $this->p->options[ 'p_add_nopin_media_img_tag' ] ) ) {
+			if ( ! empty( $this->p->options[ 'pin_add_nopin_media_img_tag' ] ) ) {
 
 				$html = SucomUtil::insert_html_tag_attributes( $html, array( 'data-pin-nopin' => 'nopin' ) );
 			}
@@ -120,9 +120,9 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 
 		public function filter_plugin_image_sizes( array $sizes ) {
 
-			if ( ! empty( $this->p->options[ 'p_add_img_html' ] ) ) {	// Just in case.
+			if ( ! empty( $this->p->options[ 'pin_add_img_html' ] ) ) {	// Just in case.
 
-				$sizes[ 'p' ] = array(		// Option prefix.
+				$sizes[ 'pin' ] = array(	// Option prefix.
 					'name'         => 'pinterest',
 					'label_transl' => _x( 'Pinterest Pin It', 'option label', 'wpsso' ),
 				);
@@ -197,7 +197,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 
 			$size_name = 'wpsso-pinterest';
 
-			$mt_images = $this->p->og->get_all_images( 1, $size_name, $mod, false, $md_pre = array( 'p', 'schema', 'og' ) );
+			$mt_images = $this->p->og->get_all_images( 1, $size_name, $mod, false, $md_pre = array( 'pin', 'schema', 'og' ) );
 
 			$image_url = SucomUtil::get_first_mt_media_url( $mt_images );
 
@@ -217,9 +217,9 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 					$this->p->debug->log( 'adding image URL for pinterest = ' . $image_url );
 				}
 
-				$data_pin_desc = $this->p->page->get_description( $this->p->options[ 'p_img_desc_max_len' ],
+				$data_pin_desc = $this->p->page->get_description( $this->p->options[ 'pin_img_desc_max_len' ],
 					$dots = '...', $mod, $read_cache = true, $add_hashtags = true, $do_encode = true,
-						$md_key = array( 'p_img_desc', 'og_desc' ) );
+						$md_key = array( 'pin_img_desc', 'og_desc' ) );
 
 				if ( $this->p->debug->enabled ) {
 

@@ -41,14 +41,14 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'schema_recipe_calories' => 'schema_recipe_nutri_cal',
 				),
 				514 => array(
-					'rp_img_id'     => 'p_img_id',
-					'rp_img_id_pre' => 'p_img_id_lib',
+					'rp_img_id'     => 'pin_img_id',
+					'rp_img_id_pre' => 'pin_img_id_lib',
 					'rp_img_width'  => '',
 					'rp_img_height' => '',
 					'rp_img_crop'   => '',
 					'rp_img_crop_x' => '',
 					'rp_img_crop_y' => '',
-					'rp_img_url'    => 'p_img_url',
+					'rp_img_url'    => 'pin_img_url',
 				),
 				537 => array(
 					'schema_add_type_url' => 'schema_addl_type_url_0',
@@ -134,13 +134,18 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				),
 				786 => array(
 					'og_img_id_pre'     => 'og_img_id_lib',
-					'p_img_id_pre'      => 'p_img_id_lib',
+					'p_img_id_pre'      => 'pin_img_id_lib',
 					'tc_lrg_img_id_pre' => 'tc_lrg_img_id_lib',
 					'tc_sum_img_id_pre' => 'tc_sum_img_id_lib',
 					'schema_img_id_pre' => 'schema_img_id_lib',
 				),
 				812 => array(
 					'sharing_url' => '',
+				),
+				815 => array(
+					'p_img_id'     => 'pin_img_id',
+					'p_img_id_lib' => 'pin_img_id_lib',
+					'p_img_url'    => 'pin_img_url',
 				),
 			),
 		);
@@ -304,7 +309,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'primary_term_id' => $def_primary_term_id,	// Primary Category.
 					'og_title'        => '',			// Default Title.
 					'og_desc'         => '',			// Default Description.
-					'p_img_desc'      => '',			// Pinterest Description.
+					'pin_img_desc'    => '',			// Pinterest Description.
 					'tc_desc'         => '',			// Twitter Card Description.
 					'seo_desc'        => '',			// Search Description.
 					'canonical_url'   => '',			// Canonical URL.
@@ -359,14 +364,14 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'og_vid_desc'     => '',	// Custom value for first video.
 
 					/**
-					 * Pinterest.
+					 * Pinterest priority image.
 					 */
-					'p_img_id'     => '',
-					'p_img_id_lib' => $def_img_id_lib,
-					'p_img_url'    => '',
+					'pin_img_id'     => '',
+					'pin_img_id_lib' => $def_img_id_lib,
+					'pin_img_url'    => '',
 
 					/**
-					 * Twitter Card.
+					 * Twitter Card priority image.
 					 */
 					'tc_lrg_img_id'     => '',
 					'tc_lrg_img_id_lib' => $def_img_id_lib,
@@ -377,7 +382,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'tc_sum_img_url'    => '',
 
 					/**
-					 * Schema JSON-LD Markup / Google Rich Results.
+					 * Schema JSON-LD Markup / Google Rich Results priority image.
 					 */
 					'schema_img_max'    => isset( $opts[ 'schema_img_max' ] ) ? (int) $opts[ 'schema_img_max' ] : 1,	// 1 by default.
 					'schema_img_id'     => '',
@@ -1191,7 +1196,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			/**
 			 * Check image size options (id, prefix, width, height, crop, etc.).
 			 */
-			foreach ( array( 'og', 'p', 'schema', 'tc_lrg', 'tc_sum' ) as $md_pre ) {
+			foreach ( array( 'og', 'pin', 'schema', 'tc_lrg', 'tc_sum' ) as $md_pre ) {
 
 				/**
 				 * If there's no image ID, then remove the image ID library prefix.

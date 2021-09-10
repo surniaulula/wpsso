@@ -375,41 +375,41 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'pub-pinterest':
 
-					$table_rows[ 'p_site_verify' ] = '' .
+					$table_rows[ 'pin_site_verify' ] = '' .
 						$this->form->get_th_html( _x( 'Pinterest Website Verification ID', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'p_site_verify' ) . 
-						'<td>' . $this->form->get_input( 'p_site_verify', 'api_key' ) . '</td>';
+							$css_class = '', $css_id = 'pin_site_verify' ) . 
+						'<td>' . $this->form->get_input( 'pin_site_verify', 'api_key' ) . '</td>';
 
-					$table_rows[ 'p_publisher_url' ] = '' . 
+					$table_rows[ 'pin_publisher_url' ] = '' . 
 						$this->form->get_th_html_locale( _x( 'Pinterest Company Page URL', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'p_publisher_url' ) . 
-						'<td>' . $this->form->get_input_locale( 'p_publisher_url', $css_class = 'wide' ) . '</td>';
+							$css_class = '', $css_id = 'pin_publisher_url' ) . 
+						'<td>' . $this->form->get_input_locale( 'pin_publisher_url', $css_class = 'wide' ) . '</td>';
 
-					$table_rows[ 'p_add_nopin_header_img_tag' ] = $this->form->get_tr_hide( 'basic', 'p_add_nopin_header_img_tag' ) . 
+					$table_rows[ 'pin_add_nopin_header_img_tag' ] = $this->form->get_tr_hide( 'basic', 'pin_add_nopin_header_img_tag' ) . 
 						$this->form->get_th_html( _x( 'Add "nopin" to Site Header Image', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'p_add_nopin_header_img_tag' ) . 
-						'<td>' . $this->form->get_checkbox( 'p_add_nopin_header_img_tag' ) .' ' .
+							$css_class = '', $css_id = 'pin_add_nopin_header_img_tag' ) . 
+						'<td>' . $this->form->get_checkbox( 'pin_add_nopin_header_img_tag' ) .' ' .
 						_x( 'recommended', 'option comment', 'wpsso' ) . '</td>';
 
-					$table_rows[ 'p_add_nopin_media_img_tag' ] = '' . 
+					$table_rows[ 'pin_add_nopin_media_img_tag' ] = '' . 
 						$this->form->get_th_html( _x( 'Add Pinterest "nopin" to Images', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'p_add_nopin_media_img_tag' ) . 
-						'<td>' . $this->form->get_checkbox( 'p_add_nopin_media_img_tag' ) . ' ' .
+							$css_class = '', $css_id = 'pin_add_nopin_media_img_tag' ) . 
+						'<td>' . $this->form->get_checkbox( 'pin_add_nopin_media_img_tag' ) . ' ' .
 						_x( 'recommended', 'option comment', 'wpsso' ) . '</td>';
 
-					$table_rows[ 'p_add_img_html' ] = '' . 
+					$table_rows[ 'pin_add_img_html' ] = '' . 
 						$this->form->get_th_html( _x( 'Add Hidden Image for Pinterest', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'p_add_img_html' ) . 
-						'<td>' . $this->form->get_checkbox( 'p_add_img_html' ) . ' ' .
+							$css_class = '', $css_id = 'pin_add_img_html' ) . 
+						'<td>' . $this->form->get_checkbox( 'pin_add_img_html' ) . ' ' .
 						_x( 'recommended (see help text for caveats)', 'option comment', 'wpsso' ) . '</td>';
 
-					$table_rows[ 'p_img_desc_max_len' ] = $this->form->get_tr_hide( 'basic', 'p_img_desc_max_len' ) . 
+					$table_rows[ 'pin_img_desc_max_len' ] = $this->form->get_tr_hide( 'basic', 'pin_img_desc_max_len' ) . 
 						$this->form->get_th_html( _x( 'Image Description Max. Length', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'p_img_desc_max_len' ) . 
+							$css_class = '', $css_id = 'pin_img_desc_max_len' ) . 
 						'<td>' .
-						$this->form->get_input( 'p_img_desc_max_len', $css_class = 'chars' ) . ' ' . 
+						$this->form->get_input( 'pin_img_desc_max_len', $css_class = 'chars' ) . ' ' . 
 						_x( 'characters or less (hard limit), and warn at', 'option comment', 'wpsso' ) . ' ' . 
-						$this->form->get_input( 'p_img_desc_warn_len', $css_class = 'chars' ) . ' ' . 
+						$this->form->get_input( 'pin_img_desc_warn_len', $css_class = 'chars' ) . ' ' . 
 						_x( 'characters (soft limit)', 'option comment', 'wpsso' ) . 
 						'</td>';
 

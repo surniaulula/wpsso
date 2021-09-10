@@ -107,7 +107,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		public function set_util_instances( &$plugin ) {
 
 			/**
-			 * WpssoUtilCache.
+			 * Instantiate WpssoUtilCache.
 			 */
 			if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
@@ -117,7 +117,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$this->cache = new WpssoUtilCache( $plugin, $this );
 
 			/**
-			 * WpssoUtilCustomFields.
+			 * Instantiate WpssoUtilCustomFields.
 			 */
 			if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 
@@ -127,7 +127,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$this->cf = new WpssoUtilCustomFields( $plugin, $this );
 
 			/**
-			 * WpssoUtilMetabox.
+			 * Instantiate WpssoUtilMetabox.
 			 */
 			if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 
@@ -137,7 +137,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$this->metabox = new WpssoUtilMetabox( $plugin );
 
 			/**
-			 * WpssoUtilReg.
+			 * Instantiate WpssoUtilReg.
 			 */
 			if ( ! class_exists( 'WpssoUtilReg' ) ) { // Since WPSSO Core v6.13.1.
 
@@ -147,7 +147,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$this->reg = new WpssoUtilReg( $plugin );
 
 			/**
-			 * WpssoUtilReg.
+			 * Instantiate WpssoUtilReg.
 			 */
 			if ( ! class_exists( 'WpssoUtilRobots' ) ) { // Since WPSSO Core v6.13.1.
 
@@ -157,7 +157,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$this->robots = new WpssoUtilRobots( $plugin );
 
 			/**
-			 * WpssoUtilWooCommerce.
+			 * Instantiate WpssoUtilWooCommerce.
 			 */
 			if ( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) {
 

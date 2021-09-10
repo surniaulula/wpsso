@@ -221,17 +221,17 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
-			$json_req_msg   = $this->p->msgs->maybe_ext_required( 'wpssojson' );
-			$p_img_disabled = empty( $this->p->options[ 'p_add_img_html' ] ) ? true : false;
-			$p_img_msg      = $p_img_disabled ? $this->p->msgs->p_img_disabled( $extra_css_class = 'inline' ) : '';
+			$json_req_msg     = $this->p->msgs->maybe_ext_required( 'wpssojson' );
+			$pin_img_disabled = empty( $this->p->options[ 'pin_add_img_html' ] ) ? true : false;
+			$pin_img_msg      = $pin_img_disabled ? $this->p->msgs->pin_img_disabled( $extra_css_class = 'inline' ) : '';
 
 			$table_rows[ 'og_img_size' ] = '' .
 				$form->get_th_html( _x( 'Open Graph (Facebook and oEmbed)', 'option label', 'wpsso' ), '', 'og_img_size' ) . 
 				'<td class="blank">' . $form->get_no_input_image_dimensions( 'og_img' ) . '</td>';
 
-			$table_rows[ 'p_img_size' ] = ( $p_img_disabled ? $form->get_tr_hide( 'basic' ) : '' ) .
-				$form->get_th_html( _x( 'Pinterest Pin It', 'option label', 'wpsso' ), '', 'p_img_size' ) . 
-				'<td class="blank">' . $form->get_no_input_image_dimensions( 'p_img', $p_img_disabled ) . $p_img_msg . '</td>';
+			$table_rows[ 'pin_img_size' ] = ( $pin_img_disabled ? $form->get_tr_hide( 'basic' ) : '' ) .
+				$form->get_th_html( _x( 'Pinterest Pin It', 'option label', 'wpsso' ), '', 'pin_img_size' ) . 
+				'<td class="blank">' . $form->get_no_input_image_dimensions( 'pin_img', $pin_img_disabled ) . $pin_img_msg . '</td>';
 
 			$table_rows[ 'schema_01x01_img_size' ] = '' .
 				$form->get_th_html( _x( 'Schema 1:1 (Google)', 'option label', 'wpsso' ), '', 'schema_1x1_img_size' ) . 
