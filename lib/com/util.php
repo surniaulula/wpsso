@@ -1239,7 +1239,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 						'pk_campaign',
 						'pk_kwd',
 					);
-	
+
 					$tracking_args = (array) apply_filters( 'sucom_remove_tracking_args', $tracking_args );
 
 					$tracking_args = array_flip( $tracking_args );	// Move values to keys.

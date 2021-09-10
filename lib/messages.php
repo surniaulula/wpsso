@@ -28,7 +28,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 		protected $dist_std   = '';
 		protected $fb_prefs   = '';
 
-		private $meta;	// WpssoMessagesMeta class object.
+		private $meta = null;	// WpssoMessagesMeta class object.
 
 		/**
 		 * Instantiated by Wpsso->set_objects() when is_admin() is true.
@@ -41,13 +41,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 				$this->p->debug->mark();
 			}
-
-			/**
-			 * Instantiate WpssoMessagesMeta.
-			 */
-			require_once WPSSO_PLUGINDIR . 'lib/messages-meta.php';
-
-			$this->meta = new WpssoMessagesMeta( $plugin );
 		}
 
 		/**
@@ -142,6 +135,16 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				 * Document SSO metabox tooltips.
 				 */
 				if ( 0 === strpos( $msg_key, 'tooltip-meta-' ) ) {
+
+					/**
+					 * Instantiate WpssoMessagesMeta only when needed.
+					 */
+					if ( null === $this->meta ) {
+
+						require_once WPSSO_PLUGINDIR . 'lib/messages-meta.php';
+
+						$this->meta = new WpssoMessagesMeta( $this->p );
+					}
 
 					$text = $this->meta->get( $msg_key, $info );
 
@@ -570,7 +573,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 								$text .= '<br/><br/>';
 							}
 
-							$text .= sprintf( __( '%1$s can provide a customized value for the %2$s HTML tag.', 'wpsso' ), $this->wpsso_name, '<code>&amp;lt;title&amp;gt;</code>' ) . ' ';
+							$text .= sprintf( __( '%1$s can provide a customized value for the %2$s HTML tag.', 'wpsso' ), $this->p_name, '<code>&amp;lt;title&amp;gt;</code>' ) . ' ';
 
 							$text .= sprintf( __( 'The %s HTML tag value is used by web browsers to display the current webpage title in the browser tab.', 'wpsso' ), '<code>&amp;lt;title&amp;gt;</code>' ) . ' ';
 
@@ -1284,76 +1287,76 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						 	break;
 
 						case 'tooltip-schema_def_pub_org_id':			// Default Publisher (Org).
-		
+
 							$text = __( 'Select a default publisher organization for the Schema CreativeWork type and/or its sub-types (Article, BlogPosting, WebPage, etc).', 'wpsso' );
-		
+
 						 	break;
-		
+
 						case 'tooltip-schema_def_pub_person_id':		// Default Publisher (Person).
-		
+
 							$text = __( 'Select a default publisher person for the Schema CreativeWork type and/or its sub-types (Article, BlogPosting, WebPage, etc).', 'wpsso' );
-		
+
 						 	break;
-		
+
 						case 'tooltip-schema_def_prov_org_id':			// Default Service Prov. (Org).
 						case 'tooltip-schema_def_prov_person_id':		// Default Service Prov. (Person).
-		
+
 							$text = __( 'Select a default service provider, service operator or service performer (example: "Netflix").', 'wpsso' );
-		
+
 						 	break;
-		
+
 						case 'tooltip-schema_def_event_location_id':		// Default Physical Venue.
-		
+
 							$text = __( 'Select a default venue for the Schema Event type.', 'wpsso' );
-		
+
 						 	break;
-		
+
 						case 'tooltip-schema_def_event_organizer_org_id':	// Default Organizer (Org).
-		
+
 							$text = __( 'Select a default organizer (organization) for the Schema Event type.', 'wpsso' );
-		
+
 						 	break;
-		
+
 						case 'tooltip-schema_def_event_organizer_person_id':	// Default Organizer (Person).
-		
+
 							$text = __( 'Select a default organizer (person) for the Schema Event type.', 'wpsso' );
-		
+
 						 	break;
-		
+
 						case 'tooltip-schema_def_event_performer_org_id':	// Default Performer (Org).
-		
+
 							$text = __( 'Select a default performer (organization) for the Schema Event type.', 'wpsso' );
-		
+
 						 	break;
-		
+
 						case 'tooltip-schema_def_event_performer_person_id':	// Default Performer (Person).
-		
+
 							$text = __( 'Select a default performer (person) for the Schema Event type.', 'wpsso' );
-		
+
 						 	break;
-		
+
 						case 'tooltip-schema_def_job_hiring_org_id':		// Default Job Hiring (Org).
-		
+
 							$text = __( 'Select a default organization for the Schema JobPosting hiring organization.', 'wpsso' );
-		
+
 						 	break;
-		
+
 						case 'tooltip-schema_def_job_location_id':		// Default Job Location.
-		
+
 							$text = __( 'Select a default location for the Schema JobPosting job location.', 'wpsso' );
-		
+
 						 	break;
-		
+
 						case 'tooltip-schema_def_job_location_type':		// Default Job Location Type.
-		
+
 							$text = sprintf( __( 'Select a default optional Google approved location type (see <a href="%s">Google\'s Job Posting guidelines</a> for more information).', 'wpsso' ), 'https://developers.google.com/search/docs/data-types/job-postings' );
-		
+
 						 	break;
 
 						case 'tooltip-schema_def_review_item_type':		// Default Subject Webpage Type.
-		
+
 							$text = __( 'Select a default Schema type for the Schema Review subject URL.', 'wpsso' );
-		
+
 						 	break;
 
 						default:
@@ -1752,11 +1755,32 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					}	// End of tooltip-yt switch.
 
 				/**
-				 * Social sharing buttons.
+				 * WPSSO AM add-on.
+				 */
+				} elseif ( 0 === strpos( $msg_key, 'tooltip-am_' ) ) {
+
+					$text = apply_filters( 'wpsso_messages_tooltip_am', $text, $msg_key, $info );
+
+				/**
+				 * WPSSO RRSSB add-on.
 				 */
 				} elseif ( 0 === strpos( $msg_key, 'tooltip-buttons_' ) ) {
-	
+
 					$text = apply_filters( 'wpsso_messages_tooltip_buttons', $text, $msg_key, $info );
+
+				/**
+				 * WPSSO ORG add-on.
+				 */
+				} elseif ( 0 === strpos( $msg_key, 'tooltip-org_' ) ) {
+
+					$text = apply_filters( 'wpsso_messages_tooltip_org', $text, $msg_key, $info );
+
+				/**
+				 * WPSSO PLM add-on.
+				 */
+				} elseif ( 0 === strpos( $msg_key, 'tooltip-plm_' ) ) {
+
+					$text = apply_filters( 'wpsso_messages_tooltip_plm', $text, $msg_key, $info );
 
 				/**
 				 * All other settings.

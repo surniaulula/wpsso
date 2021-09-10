@@ -580,6 +580,7 @@ table.sucom-settings td.blank {
 	min-height:1em;
 	background-color:#f9f9f9;
 	border:1px dotted #e3e3e3;
+	padding-right:5px;
 }
 
 table.sucom-settings table.business_hours td.blank {
@@ -598,9 +599,12 @@ table.sucom-settings td.blank strong {
 table.sucom-settings td.blank input[type="text"],
 table.sucom-settings td.blank select,
 table.sucom-settings td.blank textarea {
+	font-size:1em;
 	color:#999;
 	background-color:#f9f9f9;
-	font-size:1em;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
 }
 
 table.sucom-settings th.textinfo {
@@ -618,7 +622,6 @@ table.sucom-settings th.textinfo p {
 table.sucom-settings td div.multi_container {
 	display:table;
 	border-spacing:0;
-	margin:2px 0 2px 0;
 }
 
 table.sucom-settings td div.multi_container.mixed_multi {
@@ -659,11 +662,7 @@ table.sucom-settings td div.multi_input p.recipe_instruction_section {
 table.sucom-settings td p.multi_label {
 	font-size:0.9em;
 	font-weight:600;
-	margin:5px 0 2px 0;
-}
-
-table.sucom-settings td p.multi_label.first_label {
-	margin-top:0;
+	margin:2px 0 0 0;
 }
 
 table.sucom-settings td select,
@@ -920,6 +919,13 @@ table.sucom-settings #info-meta-social-preview {
 }
 
 /**
+ * Document SSO metabox.
+ */
+.sucom-tabset_sso table.sucom-settings {
+	padding-right:0;
+}
+
+/**
  * Document SSO > Preview tab.
  */
 table.sucom-settings .preview_container {
@@ -1087,14 +1093,14 @@ table.sucom-settings .oembed_container > iframe {
  * Document SSO > eEmbed tab.
  */
 div.sucom-tabset_sso-tab_oembed table.sucom-settings {
-	border-spacing:10px 5px;	/* 10px by default. */
+	border-spacing:10px 5px;
 }
 
 /**
  * Document SSO > Markup tab.
  */
 div.sucom-tabset_sso-tab_head table.sucom-settings {
-	border-spacing:8px 2px;	/* 12px by default. */
+	border-spacing:8px 2px;
 	padding:12px 4px;
 }
 
@@ -1127,11 +1133,11 @@ div.sucom-tabset_sso-tab_head table.sucom-settings tr td {
  * Document SSO > Validate tab.
  */
 div.sucom-tabset_sso-tab_validate table.sucom-settings {
-	border-spacing:10px;	/* 12px by default. */
+	border-spacing:10px;
 }
 
 /**
- * SSO > Dashboard and Features Status pages.
+ * SSO > Dashboard page.
  */
 table.sucom-settings.column-metabox {
 	border-spacing:2px;

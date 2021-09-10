@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoMessagesMetaOpenGraph' ) ) {
 		protected $p;	// Wpsso class object.
 
 		/**
-		 * Instantiated by WpssoMessagesMeta->__construct().
+		 * Instantiated by WpssoMessagesMeta->get() only when needed.
 		 */
 		public function __construct( &$plugin ) {
 

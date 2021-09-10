@@ -1985,7 +1985,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			if ( ! empty( $shortener ) && 'none' !== $shortener ) {
 
 				$short_url = apply_filters( 'wpsso_get_short_url', $long_url, $shortener, $mod );
-		
+
 				/**
 				 * Make sure the returned URL is valid.
 				 */

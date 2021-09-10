@@ -21,11 +21,11 @@ if ( ! class_exists( 'WpssoMessagesMeta' ) ) {
 
 		protected $p;		// Wpsso class object.
 
-		private $og;		// WpssoMessagesMetaOpenGraph class object.
-		private $schema;	// WpssoMessagesMetaSchema class object.
+		private $og = null;	// WpssoMessagesMetaOpenGraph class object.
+		private $schema = null;	// WpssoMessagesMetaSchema class object.
 
 		/**
-		 * Instantiated by WpssoMessages->__construct().
+		 * Instantiated by WpssoMessages->get() only when needed.
 		 */
 		public function __construct( &$plugin ) {
 
@@ -35,29 +35,35 @@ if ( ! class_exists( 'WpssoMessagesMeta' ) ) {
 
 				$this->p->debug->mark();
 			}
-
-			/**
-			 * Instantiate WpssoMessagesMetaOpenGraph.
-			 */
-			require_once WPSSO_PLUGINDIR . 'lib/messages-meta-opengraph.php';
-
-			$this->og = new WpssoMessagesMetaOpenGraph( $plugin );
-
-			/**
-			 * Instantiate WpssoMessagesMetaSchema.
-			 */
-			require_once WPSSO_PLUGINDIR . 'lib/messages-meta-schema.php';
-
-			$this->schema = new WpssoMessagesMetaSchema( $plugin );
 		}
 
 		public function get( $msg_key = false, $info = array() ) {
 
 			if ( 0 === strpos( $msg_key, 'tooltip-meta-og_' ) ) {
 
+				/**
+				 * Instantiate WpssoMessagesMetaOpenGraph only when needed.
+				 */
+				if ( null === $this->og ) {
+
+					require_once WPSSO_PLUGINDIR . 'lib/messages-meta-opengraph.php';
+
+					$this->og = new WpssoMessagesMetaOpenGraph( $this->p );
+				}
+
 				return $this->og->get( $msg_key, $info );
 
 			} elseif ( 0 === strpos( $msg_key, 'tooltip-meta-schema_' ) ) {
+
+				/**
+				 * Instantiate WpssoMessagesMetaSchema only when needed.
+				 */
+				if ( null === $this->schema ) {
+
+					require_once WPSSO_PLUGINDIR . 'lib/messages-meta-schema.php';
+	
+					$this->schema = new WpssoMessagesMetaSchema( $this->p );
+				}
 
 				return $this->schema->get( $msg_key, $info );
 			}
@@ -65,7 +71,7 @@ if ( ! class_exists( 'WpssoMessagesMeta' ) ) {
 			$text = '';
 
 			switch ( $msg_key ) {
-					
+
 				case 'tooltip-meta-primary_term_id':	// Primary Category.
 
 					$text .= __( 'Select a primary category for breadcrumbs.' );

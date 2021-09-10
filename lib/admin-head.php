@@ -60,13 +60,13 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 			if ( $update_count > 0 ) {
 
-				$wpsso_info = $this->p->cf[ 'plugin' ][ 'wpsso' ];
+				$p_info = $this->p->cf[ 'plugin' ][ 'wpsso' ];
 
 				$notice_key = 'have-updates-for-wpsso';
 
 				$notice_msg = sprintf( _n( 'There is <a href="%1$s">%2$d pending update for the %3$s plugin and its add-on(s)</a>.',
 					'There are <a href="%1$s">%2$d pending updates for the %3$s plugin and its add-on(s)</a>.', $update_count, 'wpsso' ),
-						self_admin_url( 'update-core.php' ), $update_count, $wpsso_info[ 'short' ] ) . ' ';
+						self_admin_url( 'update-core.php' ), $update_count, $p_info[ 'short' ] ) . ' ';
 
 				$notice_msg .= _n( 'Please install this update at your earliest convenience.',
 					'Please install these updates at your earliest convenience.', $update_count, 'wpsso' );
@@ -500,10 +500,10 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $ext_info ) {
 
-				$wpsso_info        = $this->p->cf[ 'plugin' ][ 'wpsso' ];
-				$wpsso_name_transl = _x( $wpsso_info[ 'name' ], 'plugin name', 'wpsso' );
-				$ext_name_transl   = _x( $ext_info[ 'name' ], 'plugin name', 'wpsso' );
-				$ext_desc_transl   = _x( $ext_info[ 'desc' ], 'plugin description', 'wpsso' );
+				$p_info          = $this->p->cf[ 'plugin' ][ 'wpsso' ];
+				$p_name_transl   = _x( $p_info[ 'name' ], 'plugin name', 'wpsso' );
+				$ext_name_transl = _x( $ext_info[ 'name' ], 'plugin name', 'wpsso' );
+				$ext_desc_transl = _x( $ext_info[ 'desc' ], 'plugin description', 'wpsso' );
 
 				/**
 				 * Make sure the plugin is installed (ie. it has a version number).
@@ -613,7 +613,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				$notice_msg .= '<p>';
 
 				$notice_msg .= sprintf( __( 'We\'ve put many years of time and effort into making %s and its add-ons the best possible.', 'wpsso' ),
-					$wpsso_name_transl ) . ' ';
+					$p_name_transl ) . ' ';
 
 				$notice_msg .= '</p>' . "\n";
 
@@ -676,16 +676,16 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				return 0;
 			}
 
-			$form               = $this->p->admin->get_form_object( 'wpsso' );
-			$user_id            = get_current_user_id();
-			$wpsso_info         = $this->p->cf[ 'plugin' ][ 'wpsso' ];
-			$wpsso_name_transl  = _x( $wpsso_info[ 'name' ], 'plugin name', 'wpsso' );
-			$wpsso_purchase_url = $wpsso_info[ 'url' ][ 'purchase' ];
-			$wp_plugin_link     = '<a href="' . $wpsso_info[ 'url' ][ 'home' ] . '">' . $wpsso_name_transl . '</a>';
-			$dist_pro_transl    = _x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' );
-			$dist_std_transl    = _x( $this->p->cf[ 'dist' ][ 'std' ], 'distribution name', 'wpsso' );
-			$notice_key         = 'timed-notice-wpsso-pro-purchase-notice';
-			$dismiss_time       = true;	// Allow the notice to be dismissed forever.
+			$form            = $this->p->admin->get_form_object( 'wpsso' );
+			$user_id         = get_current_user_id();
+			$p_info          = $this->p->cf[ 'plugin' ][ 'wpsso' ];
+			$p_name_transl   = _x( $p_info[ 'name' ], 'plugin name', 'wpsso' );
+			$p_purchase_url  = $p_info[ 'url' ][ 'purchase' ];
+			$wp_plugin_link  = '<a href="' . $p_info[ 'url' ][ 'home' ] . '">' . $p_name_transl . '</a>';
+			$dist_pro_transl = _x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' );
+			$dist_std_transl = _x( $this->p->cf[ 'dist' ][ 'std' ], 'distribution name', 'wpsso' );
+			$notice_key      = 'timed-notice-wpsso-pro-purchase-notice';
+			$dismiss_time    = true;	// Allow the notice to be dismissed forever.
 
 			/**
 			 * The action buttons.
@@ -696,14 +696,14 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 			$purchase_clicked = '<p><b>' . __( 'Awesome!', 'wpsso' ) . '</b> ' .
 				sprintf( __( 'Thank you for encouraging and supporting the continued development of %s.',
-					'wpsso' ), $wpsso_name_transl ) . '</p>';
+					'wpsso' ), $p_name_transl ) . '</p>';
 
 			$no_thanks_clicked = '<p>' . __( 'Thank you.', 'wpsso' ) . ' ' . 
 				sprintf( __( 'Hopefully you\'ll change your mind in the future and help support the continued development of %s.',
-					'wpsso' ), $wpsso_name_transl ) . '</p>';
+					'wpsso' ), $p_name_transl ) . '</p>';
 
 			$purchase_button  = '<div class="notice-single-button">' .
-				$form->get_button( $purchase_label, 'button-primary dismiss-on-click', '', $wpsso_purchase_url,
+				$form->get_button( $purchase_label, 'button-primary dismiss-on-click', '', $p_purchase_url,
 					true, false, array( 'dismiss-msg' => $purchase_clicked ) ) . '</div>';
 
 			$no_thanks_button  = '<div class="notice-single-button">' .
@@ -731,7 +731,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			$notice_msg .= '</p><p>';
 
 			$notice_msg .= sprintf( __( 'We\'ve put many years of time and effort into making %s and its add-ons the best possible.', 'wpsso' ),
-				$wpsso_name_transl ) . ' ';
+				$p_name_transl ) . ' ';
 
 			$notice_msg .= sprintf( __( 'I hope you\'ve enjoyed all the new features, improvements and updates over the past %s.', 'wpsso' ),
 				$months_ago_transl );

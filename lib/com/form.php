@@ -245,7 +245,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$tooltip_text = '';
 
 			if ( ! empty( $css_id ) ) {
-			
+
 				if ( isset( $this->p->msgs ) ) {	// Just in case.
 
 					$tooltip_text = $this->p->msgs->get( 'tooltip-' . $css_id, $atts );	// Text is esc_attr().
