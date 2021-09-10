@@ -319,7 +319,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.39.0-dev.4 (2021/09/09)**
+**Version 8.39.0-dev.6 (2021/09/09)**
 
 * **New Features**
 	* None.
@@ -334,6 +334,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new WpssoMessagesMeta class.
 	* Added a new WpssoMessagesMetaOpenGraph class.
 	* Added a new WpssoMessagesMetaSchema class.
+	* Moved all WPSSO JSON add-on tooltips to the WPSSO Core plugin.
 	* Renamed Pinterest option keys from 'p_*' to 'pin_*'.
 * **Requires At Least**
 	* PHP v7.0.
@@ -919,7 +920,7 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 
 == Upgrade Notice ==
 
-= 8.39.0-dev.4 =
+= 8.39.0-dev.6 =
 
 (2021/09/09) Moved all options from the WPSSO JSON add-on settings page to the SSO &gt; General and Advanced Settings pages.
 
