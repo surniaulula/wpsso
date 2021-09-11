@@ -127,6 +127,8 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 							) .
 						'</td>';
 
+					$table_rows[] = '<td colspan="2"><h5>' . __( 'Publisher Information', 'wpsso' ) . '</h5></td>';
+
 					if ( ! empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
 
 						$this->add_schema_publisher_type_table_rows( $table_rows, $this->form );	// Also used in the General Settings page.

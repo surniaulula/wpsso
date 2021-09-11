@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 8.39.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-09-11 12:11-0700\n"
+"PO-Revision-Date: 2021-09-11 15:06-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -4017,8 +4017,8 @@ msgstr "Type d'éditeur du site Web"
 
 #: lib/admin.php:3028
 msgctxt "option label"
-msgid "WebSite Publisher (Person)"
-msgstr "Éditeur du site Web (personne)"
+msgid "WebSite Publisher Person"
+msgstr "Éditeur du site Web"
 
 #: lib/admin.php:3036
 msgctxt "option label"
@@ -6394,12 +6394,12 @@ msgid "Select an optional location for this organization (requires the %s add-on
 msgstr "Choisissez un emplacement optionnel pour cette organisation (requiert l'ajout %s)."
 
 #: lib/messages-tooltip-site.php:101
-msgid "Select a user profile for the Schema Person publisher markup."
-msgstr "Sélectionnez un profil utilisateur pour le balisage d'éditeur de Schéma Person."
+msgid "Select a user for the Schema Person publisher markup."
+msgstr "Sélectionnez un utilisateur pour le balisage d'éditeur de Schema Person."
 
 #: lib/messages-tooltip-site.php:103
-msgid "The available Person list includes users with the \"%1$s\" or \"%2$s\" role."
-msgstr "La liste des personnes disponibles inclut les utilisateurs avec le rôle \"%1$s\" ou \"%2$s\"."
+msgid "The available Person list includes all users in the %1$s or %2$s roles."
+msgstr "La liste des personnes disponibles inclut tous les utilisateurs dans les rôles %1$s ou %2$s."
 
 #: lib/messages-tooltip-site.php:104
 msgctxt "user role"
@@ -7957,6 +7957,10 @@ msgstr "ID d'image par défaut"
 msgctxt "option label"
 msgid "or Default Image URL"
 msgstr "ou URL d'image par défaut"
+
+#: lib/submenu/essential.php:130
+msgid "Publisher Information"
+msgstr "Informations sur l'éditeur"
 
 #: lib/submenu/general.php:40
 msgctxt "metabox title"

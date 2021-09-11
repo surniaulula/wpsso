@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.39.0-b.2\n"
+"Project-Id-Version: WPSSO Core 8.39.0-rc.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4384,7 +4384,7 @@ msgstr ""
 
 #: lib/admin.php:3028
 msgctxt "option label"
-msgid "WebSite Publisher (Person)"
+msgid "WebSite Publisher Person"
 msgstr ""
 
 #: lib/admin.php:3036
@@ -7386,12 +7386,11 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip-site.php:101
-msgid "Select a user profile for the Schema Person publisher markup."
+msgid "Select a user for the Schema Person publisher markup."
 msgstr ""
 
 #: lib/messages-tooltip-site.php:103
-msgid ""
-"The available Person list includes users with the \"%1$s\" or \"%2$s\" role."
+msgid "The available Person list includes all users in the %1$s or %2$s roles."
 msgstr ""
 
 #: lib/messages-tooltip-site.php:104
@@ -9219,6 +9218,10 @@ msgstr ""
 #: lib/submenu/essential.php:111 lib/submenu/general.php:245
 msgctxt "option label"
 msgid "or Default Image URL"
+msgstr ""
+
+#: lib/submenu/essential.php:130
+msgid "Publisher Information"
 msgstr ""
 
 #: lib/submenu/general.php:40

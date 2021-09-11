@@ -96,11 +96,11 @@ if ( ! class_exists( 'WpssoMessagesTooltipSite' ) ) {
 
 					break;
 
-				case 'tooltip-site_pub_person_id':	// WebSite Publisher (Person).
+				case 'tooltip-site_pub_person_id':	// WebSite Publisher Person.
 
-					$text = __( 'Select a user profile for the Schema Person publisher markup.', 'wpsso' ) . ' ';
+					$text = __( 'Select a user for the Schema Person publisher markup.', 'wpsso' ) . ' ';
 
-					$text .= sprintf( __( 'The available Person list includes users with the "%1$s" or "%2$s" role.', 'wpsso' ),
+					$text .= sprintf( __( 'The available Person list includes all users in the %1$s or %2$s roles.', 'wpsso' ),
 						_x( 'Administrator', 'user role', 'wpsso' ), _x( 'Editor', 'user role', 'wpsso' ) );
 
 					break;

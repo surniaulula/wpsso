@@ -145,11 +145,6 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				561 => array(
 					'plugin_shortlink' => 'plugin_wp_shortlink',
 				),
-
-				/**
-				 * 'schema_add_home_organization' and 'schema_add_home_person' will be unset in self::options()
-				 * after determining a new 'site_pub_schema_type' value (either 'organization' or 'person').
-				 */
 				569 => array(
 					'plugin_cf_add_type_urls'  => 'plugin_cf_addl_type_urls',
 					'schema_organization_json' => 'schema_add_home_organization',
@@ -343,11 +338,6 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'plugin_add_to_term' => '',	// Replaced by "plugin_add_to_tax_{tax_slug}" options.
 					'plugin_add_to_user' => 'plugin_add_to_user_page',
 				),
-
-				/**
-				 * 'schema_add_home_organization' and 'schema_add_home_person' will be unset in self::options()
-				 * after determining a new 'site_pub_schema_type' value (either 'organization' or 'person').
-				 */
 				744 => array(
 					'schema_banner_url'     => 'site_org_banner_url',
 					'schema_home_person_id' => 'site_pub_person_id',

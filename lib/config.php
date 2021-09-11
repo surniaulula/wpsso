@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '8.39.0-b.2',	// Plugin version.
+					'version'     => '8.39.0-rc.1',	// Plugin version.
 					'opt_version' => '816',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1237,7 +1237,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'site_org_banner_url'  => '',			// Organization Banner URL (localized).
 					'site_org_schema_type' => 'organization',	// Organization Schema Type.
 					'site_org_place_id'    => 'none',		// Organization Location.
-					'site_pub_person_id'   => 'none',		// WebSite Publisher (Person).
+					'site_pub_person_id'   => 'none',		// WebSite Publisher Person.
 					'site_pub_schema_type' => 'organization',	// WebSite Publisher Type.
 
 					/**
