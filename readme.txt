@@ -319,7 +319,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 8.39.0-b.1 (2021/09/11)**
+**Version 8.39.0-b.2 (2021/09/11)**
 
 * **New Features**
 	* None.
@@ -926,7 +926,7 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 
 == Upgrade Notice ==
 
-= 8.39.0-b.1 =
+= 8.39.0-b.2 =
 
 (2021/09/11) Moved all options from the WPSSO JSON add-on settings page to the SSO &gt; General and Advanced Settings pages.
 
