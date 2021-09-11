@@ -749,8 +749,8 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					if ( $mod[ 'is_public' ] ) {	// Since WPSSO Core v7.0.0.
 
 						$tabs[ 'robots' ]   = _x( 'Robots Meta', 'metabox tab', 'wpsso' );	// Since WPSSO Core v8.4.0.
-						$tabs[ 'preview' ]  = _x( 'Preview', 'metabox tab', 'wpsso' );
-						$tabs[ 'oembed' ]   = _x( 'oEmbed', 'metabox tab', 'wpsso' );
+						$tabs[ 'social' ]   = _x( 'Social Preview', 'metabox tab', 'wpsso' );
+						$tabs[ 'oembed' ]   = _x( 'oEmbed Preview', 'metabox tab', 'wpsso' );
 						$tabs[ 'head' ]     = _x( 'Head Markup', 'metabox tab', 'wpsso' );
 						$tabs[ 'validate' ] = _x( 'Validators', 'metabox tab', 'wpsso' );
 					}
@@ -788,7 +788,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			 *
 			 *	get_table_rows_sso_edit_tab()
 			 *	get_table_rows_sso_media_tab()
-			 *	get_table_rows_sso_preview_tab()
+			 *	get_table_rows_sso_social_tab()
 			 *	get_table_rows_sso_oembed_tab()
 			 *	get_table_rows_sso_head_tab()
 			 *	get_table_rows_sso_validate_tab()

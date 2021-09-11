@@ -38,7 +38,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			$this->p->util->add_plugin_filters( $this, array( 
 				'metabox_sso_edit_rows'     => 4,
 				'metabox_sso_robots_rows'   => 4,
-				'metabox_sso_preview_rows'  => 4,
+				'metabox_sso_social_rows'   => 4,
 				'metabox_sso_oembed_rows'   => 4,
 				'metabox_sso_head_rows'     => 4,
 				'metabox_sso_validate_rows' => 4,
@@ -321,7 +321,10 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			return $table_rows;
 		}
 
-		public function filter_metabox_sso_preview_rows( $table_rows, $form, $head_info, $mod ) {
+		/**
+		 * Social Preview tab content.
+		 */
+		public function filter_metabox_sso_social_rows( $table_rows, $form, $head_info, $mod ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -354,7 +357,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 
 				if ( $have_sizes ) {
 
-					$og_prev_img_html .= '<div class="preview_img" style=" background-size:' ;
+					$og_prev_img_html .= '<div class="fb_preview_img" style=" background-size:' ;
 
 					if ( $is_sufficient ) {
 
@@ -377,14 +380,14 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 
 				} else {
 
-					$og_prev_img_html .= '<div class="preview_img" style="background-image:url(' . $image_url . ');" />';
+					$og_prev_img_html .= '<div class="fb_preview_img" style="background-image:url(' . $image_url . ');" />';
 					$og_prev_img_html .= '<p>' . _x( 'Image Size Unknown<br/>or Not Available', 'preview image error', 'wpsso' ) . '</p>';
 					$og_prev_img_html .= '</div>';
 				}
 
 			} else {
 
-				$og_prev_img_html .= '<div class="preview_img">';
+				$og_prev_img_html .= '<div class="fb_preview_img">';
 				$og_prev_img_html .= '<p>' . _x( 'No Open Graph Image Found', 'preview image error', 'wpsso' ) . '</p>';
 				$og_prev_img_html .= '</div>';
 			}
@@ -401,33 +404,36 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 				_x( 'Facebook / Open Graph Example', 'option label', 'wpsso' ) . '</h4></td>';
 
 			$table_rows[] = '' .
-				'<td colspan="2" class="preview_container">
-					<div class="preview_box_border">
-						<div class="preview_box">
+				'<td colspan="2" class="fb_preview_container">
+					<div class="fb_preview_box_border">
+						<div class="fb_preview_box">
 							' . $og_prev_img_html . '
-							<div class="preview_txt">
-								<div class="preview_title">' . ( empty( $head_info[ 'og:title' ] ) ?
+							<div class="fb_preview_text">
+								<div class="fb_preview_title">' . ( empty( $head_info[ 'og:title' ] ) ?
 									_x( 'No Title', 'default title', 'wpsso' ) : $head_info[ 'og:title' ] ) . 
-								'</div><!-- .preview_title -->
-								<div class="preview_desc">' . ( empty( $head_info[ 'og:description' ] ) ?
+								'</div><!-- .fb_preview_title -->
+								<div class="fb_preview_desc">' . ( empty( $head_info[ 'og:description' ] ) ?
 									_x( 'No Description.', 'default description', 'wpsso' ) : $head_info[ 'og:description' ] ) . 
-								'</div><!-- .preview_desc -->
-								<div class="preview_by">' . 
+								'</div><!-- .fb_preview_desc -->
+								<div class="fb_preview_by">' . 
 									$_SERVER[ 'SERVER_NAME' ] . 
 									( empty( $this->p->options[ 'add_meta_property_article:author' ] ) ||
 										empty( $head_info[ 'article:author:name' ] ) ?
 											'' : ' | By ' . $head_info[ 'article:author:name' ] ) . 
-								'</div><!-- .preview_by -->
-							</div><!-- .preview_txt -->
-						</div><!-- .preview_box -->
-					</div><!-- .preview_box_border -->
-				</td><!-- .preview_container -->';
+								'</div><!-- .fb_preview_by -->
+							</div><!-- .fb_preview_text -->
+						</div><!-- .fb_preview_box -->
+					</div><!-- .fb_preview_box_border -->
+				</td><!-- .fb_preview_container -->';
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'info-meta-social-preview' ) . '</td>';
 
 			return $table_rows;
 		}
 
+		/**
+		 * oEmbed Preview tab content.
+		 */
 		public function filter_metabox_sso_oembed_rows( $table_rows, $form, $head_info, $mod ) {
 
 			if ( $this->p->debug->enabled ) {

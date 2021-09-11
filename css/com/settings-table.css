@@ -926,32 +926,32 @@ table.sucom-settings #info-meta-social-preview {
 }
 
 /**
- * Document SSO > Preview tab.
+ * Document SSO > Social Preview tab.
  */
-table.sucom-settings .preview_container {
+table.sucom-settings .fb_preview_container {
 	border:1px dotted #e0e0e0;
 	background-color:#e9eaed;
 	height:400px;	/* Set a minimum height. */
 	padding:10px;
 }
 
-table.sucom-settings .preview_box_border,
-table.sucom-settings .preview_box {
+table.sucom-settings .fb_preview_box_border,
+table.sucom-settings .fb_preview_box {
 	background-color:#fff;
 	border:1px solid rgba(0, 0, 0, 0.1);
 	margin:0 auto;
 }
 
-table.sucom-settings .preview_box_border {
+table.sucom-settings .fb_preview_box_border {
 	padding:40px 20px;
 }
 
-table.sucom-settings .preview_box {
+table.sucom-settings .fb_preview_box {
 	width:600px;
 	overflow:hidden;
 }
 
-table.sucom-settings .preview_img {
+table.sucom-settings .fb_preview_img {
 	background-size:cover;
 	width:600px;
 	height:315px;
@@ -963,13 +963,13 @@ table.sucom-settings .preview_img {
 	padding:0;
 }
 
-table.sucom-settings td.short .preview_img {
+table.sucom-settings td.short .fb_preview_img {
 	background-size:cover;
 	width:150px;
 	height:150px;
 }
 
-table.sucom-settings .preview_img p {
+table.sucom-settings .fb_preview_img p {
 	color:#000000;
 	text-shadow:0 0 5px #e4f2fd;
 	font-size:2em;
@@ -982,7 +982,7 @@ table.sucom-settings .preview_img p {
 	transform:translateY(-50%);
 }
 
-table.sucom-settings .preview_txt {
+table.sucom-settings .fb_preview_text {
 	color:#141823;
 	direction:ltr;
 	font-family:"Helvetica", "Arial", "Lucida Grande", "Tahoma", "Verdana", sans-serif;
@@ -994,7 +994,7 @@ table.sucom-settings .preview_txt {
 	word-wrap:break-word;
 }
 
-table.sucom-settings .preview_title {
+table.sucom-settings .fb_preview_title {
 	color:#141823;
 	direction:ltr;
 	font-family:"Georgia", "Lucida Grande", "Tahoma", "Verdana", "Arial", sans-serif;
@@ -1017,7 +1017,7 @@ table.sucom-settings .preview_title {
 	-moz-text-decoration-style:solid;
 }
 
-table.sucom-settings .preview_desc {
+table.sucom-settings .fb_preview_desc {
 	color:#141823;
 	direction:ltr;
 	font-family:"Helvetica";
@@ -1031,7 +1031,7 @@ table.sucom-settings .preview_desc {
 	word-wrap:break-word;
 }
 
-table.sucom-settings .preview_by {
+table.sucom-settings .fb_preview_by {
 	color:#9197A3;
 	direction:ltr;
 	font-family:"Helvetica", "Arial", "Lucida Grande", "Tahoma", "Verdana", sans-serif;
@@ -1050,15 +1050,15 @@ table.sucom-settings .preview_by {
 
 @media screen and ( max-width:1330px ) {
 
-	#poststuff .columns-2 table.sucom-settings .preview_box_border {
+	#poststuff .columns-2 table.sucom-settings .fb_preview_box_border {
 		width:440px;
 	}
 
-	#poststuff .columns-2 table.sucom-settings .preview_box {
+	#poststuff .columns-2 table.sucom-settings .fb_preview_box {
 		width:400px;
 	}
 
-	#poststuff .columns-2 table.sucom-settings .preview_img {
+	#poststuff .columns-2 table.sucom-settings .fb_preview_img {
 		width:400px;
 		height:210px;
 	}

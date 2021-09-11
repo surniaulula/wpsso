@@ -293,7 +293,7 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\e808";	/* .icon-picture */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_oembed::before {			/* Document SSO > oEmbed tab. */
+.sucom-tablink-icon.sucom-tablink-href_oembed::before {			/* Document SSO > oEmbed Preview tab. */
 	content:"\f2c3";	/* .icon-id-card-o */
 }
 
@@ -321,7 +321,7 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\e806";	/* .icon-location */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_preview::before {		/* Document SSO > Preview tab. */
+.sucom-tablink-icon.sucom-tablink-href_social::before {			/* Document SSO > Social Preview tab. */
 	content:"\e805";	/* .icon-eye */
 }
 

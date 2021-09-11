@@ -3636,7 +3636,7 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:296 lib/edit.php:413 lib/page.php:1279
+#: gettext/gettext-lib-pro.php:296 lib/edit.php:416 lib/page.php:1279
 #: lib/pro/social/buddypress.php:664
 msgctxt "default description"
 msgid "No Description."
@@ -3659,12 +3659,12 @@ msgstr ""
 
 #: lib/abstracts/wp-meta.php:752
 msgctxt "metabox tab"
-msgid "Preview"
+msgid "Social Preview"
 msgstr ""
 
 #: lib/abstracts/wp-meta.php:753
 msgctxt "metabox tab"
-msgid "oEmbed"
+msgid "oEmbed Preview"
 msgstr ""
 
 #: lib/abstracts/wp-meta.php:754
@@ -4897,7 +4897,7 @@ msgctxt "option label"
 msgid "Search Description"
 msgstr ""
 
-#: lib/edit.php:191 lib/edit.php:393
+#: lib/edit.php:191 lib/edit.php:396
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
@@ -5024,69 +5024,69 @@ msgctxt "option comment"
 msgid "seconds"
 msgstr ""
 
-#: lib/edit.php:372
+#: lib/edit.php:375
 msgctxt "preview image error"
 msgid "Image Size Smaller<br/>than Suggested Minimum<br/>of %s"
 msgstr ""
 
-#: lib/edit.php:381
+#: lib/edit.php:384
 msgctxt "preview image error"
 msgid "Image Size Unknown<br/>or Not Available"
 msgstr ""
 
-#: lib/edit.php:388
+#: lib/edit.php:391
 msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/edit.php:397
+#: lib/edit.php:400
 msgctxt "option label"
 msgid "Shortlink URL"
 msgstr ""
 
-#: lib/edit.php:401
+#: lib/edit.php:404
 msgctxt "option label"
 msgid "Facebook / Open Graph Example"
 msgstr ""
 
-#: lib/edit.php:410 lib/page.php:1577
+#: lib/edit.php:413 lib/page.php:1577
 msgctxt "default title"
 msgid "No Title"
 msgstr ""
 
-#: lib/edit.php:447
+#: lib/edit.php:453
 msgctxt "option label"
 msgid "oEmbed JSON URL"
 msgstr ""
 
-#: lib/edit.php:451
+#: lib/edit.php:457
 msgctxt "option label"
 msgid "oEmbed XML URL"
 msgstr ""
 
-#: lib/edit.php:455
+#: lib/edit.php:461
 msgctxt "option label"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/edit.php:465
+#: lib/edit.php:471
 msgid "(see below)"
 msgstr ""
 
-#: lib/edit.php:475
+#: lib/edit.php:481
 msgid "No oEmbed data found."
 msgstr ""
 
-#: lib/edit.php:479
+#: lib/edit.php:485
 msgctxt "option label"
 msgid "oEmbed HTML"
 msgstr ""
 
-#: lib/edit.php:489
+#: lib/edit.php:495
 msgid "No oEmbed HTML found."
 msgstr ""
 
-#: lib/edit.php:620
+#: lib/edit.php:626
 msgctxt "submit button"
 msgid "Validate %s"
 msgstr ""
