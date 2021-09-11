@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 8.39.0-b.1\n"
+"Project-Id-Version: WPSSO Core 8.39.0-b.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -5654,7 +5654,7 @@ msgid ""
 "As an example, a Schema type of \"Article\" will change the Open Graph type "
 "to \"article\", a Schema type of \"Place\" will change the Open Graph type "
 "to \"place\", a Schema type of \"Product\" will change the Open Graph type "
-"to \"product\",  etc."
+"to \"product\", etc."
 msgstr ""
 
 #: lib/messages-tooltip-meta-opengraph.php:55
