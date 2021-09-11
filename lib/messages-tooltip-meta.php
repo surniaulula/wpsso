@@ -19,7 +19,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 
 	class WpssoMessagesTooltipMeta extends WpssoMessages {
 
-		protected $p;		// Wpsso class object.
+		protected $p;	// Wpsso class object.
 
 		private $og = null;	// WpssoMessagesTooltipMetaOpenGraph class object.
 		private $schema = null;	// WpssoMessagesTooltipMetaSchema class object.

@@ -1090,18 +1090,10 @@ table.sucom-settings .oembed_container > iframe {
 }
 
 /**
- * Document SSO > eEmbed tab.
- */
-div.sucom-tabset_sso-tab_oembed table.sucom-settings {
-	border-spacing:10px 5px;
-}
-
-/**
  * Document SSO > Markup tab.
  */
 div.sucom-tabset_sso-tab_head table.sucom-settings {
-	border-spacing:8px 2px;
-	padding:12px 4px;
+	border-spacing:2px;
 }
 
 div.sucom-tabset_sso-tab_head table.sucom-settings tr th,
@@ -1130,18 +1122,15 @@ div.sucom-tabset_sso-tab_head table.sucom-settings tr td {
 }
 
 /**
- * Document SSO > Validate tab.
- */
-div.sucom-tabset_sso-tab_validate table.sucom-settings {
-	border-spacing:10px;
-}
-
-/**
  * SSO > Dashboard page.
  */
 table.sucom-settings.column-metabox {
 	border-spacing:2px;
 	padding:20px 30px;
+}
+
+table.sucom-settings.column-metabox p {
+	margin:0 0 10px 0;
 }
 
 table.sucom-settings.column-metabox .column-metabox-buttons {
@@ -1205,10 +1194,6 @@ table.sucom-settings.column-metabox th.version-label {
 table.sucom-settings.column-metabox td.version-number {
 	color:#555;
 	padding:2px 4px;
-}
-
-table.sucom-settings.column-metabox td.latest-notice {
-	padding-bottom:10px;	/* td HTML tag uses padding instead of margin. */
 }
 
 table.sucom-settings.column-metabox td.latest-notice p {

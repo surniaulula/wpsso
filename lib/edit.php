@@ -512,47 +512,51 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 
 				if ( 1 === count( $parts ) ) {
 
-					if ( 0 === strpos( $parts[0], '<script ' ) ) {
+					if ( 0 === strpos( $parts[ 0 ], '<meta name="wpsso-' ) ) {
+
+						continue;
+
+					} elseif ( 0 === strpos( $parts[ 0 ], '<script ' ) ) {
 
 						$script_class = 'script';
 
-					} elseif ( 0 === strpos( $parts[0], '<noscript ' ) ) {
+					} elseif ( 0 === strpos( $parts[ 0 ], '<noscript ' ) ) {
 
 						$script_class = 'noscript';
 					}
 
-					$table_rows[] = '<td colspan="5" class="html ' . $script_class . '"><pre>' . esc_html( $parts[0] ) . '</pre></td>';
+					$table_rows[] = '<td colspan="5" class="html ' . $script_class . '"><pre>' . esc_html( $parts[ 0 ] ) . '</pre></td>';
 
-					if ( 'script' === $script_class || 0 === strpos( $parts[0], '</noscript>' ) ) {
+					if ( 'script' === $script_class || 0 === strpos( $parts[ 0 ], '</noscript>' ) ) {
 
 						$script_class = '';
 					}
 
-				} elseif ( isset( $parts[5] ) ) {
+				} elseif ( isset( $parts[ 5 ] ) ) {
 
 					/**
 					 * Skip meta tags with reserved values but display empty values.
 					 */
-					if ( $parts[5] === WPSSO_UNDEF || $parts[5] === (string) WPSSO_UNDEF ) {
+					if ( $parts[ 5 ] === WPSSO_UNDEF || $parts[ 5 ] === (string) WPSSO_UNDEF ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( $parts[3] . ' value is ' . WPSSO_UNDEF . ' (skipped)' );
+							$this->p->debug->log( $parts[ 3 ] . ' value is ' . WPSSO_UNDEF . ' (skipped)' );
 						}
 
 						continue;
 					}
 
-					if ( $parts[1] === 'meta' && $parts[2] === 'itemprop' && strpos( $parts[3], '.' ) !== 0 ) {
+					if ( $parts[ 1 ] === 'meta' && $parts[ 2 ] === 'itemprop' && strpos( $parts[ 3 ], '.' ) !== 0 ) {
 
-						$match_name = preg_replace( '/^.*\./', '', $parts[3] );
+						$match_name = preg_replace( '/^.*\./', '', $parts[ 3 ] );
 
 					} else {
 
-						$match_name = $parts[3];
+						$match_name = $parts[ 3 ];
 					}
 
-					$opt_name    = strtolower( 'add_' . $parts[1] . '_' . $parts[2] . '_' . $parts[3] );
+					$opt_name    = strtolower( 'add_' . $parts[ 1 ] . '_' . $parts[ 2 ] . '_' . $parts[ 3 ] );
 					$opt_exists  = isset( $this->p->options[ $opt_name ] ) ? true : false;
 					$opt_enabled = empty( $this->p->options[ $opt_name ] ) ? false : true;
 
@@ -586,11 +590,11 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					$tr_class .= $opt_exists ? ' is_standard' : ' is_internal';
 
 					$table_rows[] = '<tr class="' . trim( $tr_class ) . '">' .
-					'<th class="xshort">' . $parts[ 1 ] . '</th>' . 
-					'<th class="xshort">' . $parts[ 2 ] . '</th>' . 
-					'<td class="">' . ( empty( $parts[ 6 ] ) ? '' : '<!-- ' . $parts[ 6 ] . ' -->' ) . $match_name . '</td>' . 
-					'<th class="xshort">' . $parts[ 4 ] . '</th>' . 
-					'<td class="wide">' . SucomUtil::maybe_link_url( $parts[5] ) . '</td>';
+						'<th class="xshort">' . $parts[ 1 ] . '</th>' . 
+						'<th class="xshort">' . $parts[ 2 ] . '</th>' . 
+						'<td class="">' . ( empty( $parts[ 6 ] ) ? '' : '<!-- ' . $parts[ 6 ] . ' -->' ) . $match_name . '</td>' . 
+						'<th class="xshort">' . $parts[ 4 ] . '</th>' . 
+						'<td class="wide">' . SucomUtil::maybe_link_url( $parts[ 5 ] ) . '</td>';
 				}
 			}
 
