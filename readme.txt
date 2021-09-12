@@ -333,6 +333,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Added new classes:
 		* WpssoMessagesTooltip
+		* WpssoMessagesTooltipInfo
+		* WpssoMessagesTooltipInfoMeta
 		* WpssoMessagesTooltipMeta
 		* WpssoMessagesTooltipMetaOpenGraph
 		* WpssoMessagesTooltipMetaSchema
