@@ -343,7 +343,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* WpssoMessagesTooltipSchema
 		* WpssoMessagesTooltipSite
 	* Moved all WPSSO JSON add-on tooltips to the WPSSO Core plugin.
-	* Renamed Pinterest option keys from 'p_*' to 'pin_*'.
+	* Renamed Pinterest option keys from 'p_\*' to 'pin_\*'.
 * **Requires At Least**
 	* PHP v7.0.
 	* WordPress v5.0.
