@@ -3637,7 +3637,7 @@ msgid ""
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:296 lib/edit.php:416 lib/page.php:1279
-#: lib/pro/social/buddypress.php:664
+#: lib/pro/social/buddypress.php:663
 msgctxt "default description"
 msgid "No Description."
 msgstr ""
