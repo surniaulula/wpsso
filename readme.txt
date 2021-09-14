@@ -319,6 +319,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 9.0.0-dev.1 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.0.
+	* WordPress v5.0.
+
 **Version 8.39.0 (2021/09/11)**
 
 * **New Features**
@@ -927,6 +941,10 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 	* WordPress v4.5.
 
 == Upgrade Notice ==
+
+= 9.0.0-dev.1 =
+
+(TBD) None.
 
 = 8.39.0 =
 
