@@ -395,7 +395,7 @@ if ( ! class_exists( 'WpssoMessagesInfo' ) ) {
 
 					break;
 
-			}	// End of info switch.
+			}	// End of 'info' switch.
 
 			return $text;
 		}

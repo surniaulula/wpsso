@@ -210,7 +210,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 									$text .= sprintf( __( 'Disabled product information fields show values imported from the WooCommerce %s metabox.', 'wpsso' ), $wc_mb_name ) . '<br/>';
 
-									$text .= sprintf( __( 'Edit product information in the WooCommerce %s metabox to update the default values.', 'wpsso' ), $wc_mb_name );
+									$text .= sprintf( __( 'You can edit product information in the WooCommerce %s metabox to update these default values.', 'wpsso' ), $wc_mb_name );
 
 									$text .= '</p>';
 

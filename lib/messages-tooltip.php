@@ -186,7 +186,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 						break;
 
-				}	// End of tooltip-fb switch.
+				}	// End of 'tooltip-fb' switch.
 
 			/**
 			 * Google settings.
@@ -209,7 +209,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 						break;
 
-				}	// End of tooltip-g switch.
+				}	// End of 'tooltip-g' switch.
 
 			/**
 			 * SEO settings.
@@ -234,7 +234,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 						break;
 
-				}	// End of tooltip-seo switch.
+				}	// End of 'tooltip-seo' switch.
 
 			/**
 			 * Robots settings.
@@ -302,7 +302,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 						break;
 
-				}	// End of tooltip-robots switch.
+				}	// End of 'tooltip-robots' switch.
 
 				$text .= $this->maybe_html_tag_disabled_text( $parts = array( 'meta', 'name', 'robots' ) );
 
@@ -381,7 +381,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 						break;
 
-				}	// End of tooltip-p switch.
+				}	// End of 'tooltip-p' switch.
 
 			/**
 			 * Twitter settings.
@@ -448,7 +448,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 						break;
 
-				}	// End of tooltip-tc switch.
+				}	// End of 'tooltip-tc' switch.
 
 			/**
 			 * Instagram settings.
@@ -475,7 +475,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 						break;
 
-				}	// End of tooltip-instagram switch.
+				}	// End of 'tooltip-instagram' switch.
 
 			/**
 			 * LinkedIn settings.
@@ -502,7 +502,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 						break;
 
-				}	// End of tooltip-linkedin switch.
+				}	// End of 'tooltip-linkedin' switch.
 
 			/**
 			 * Medium settings.
@@ -529,7 +529,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 						break;
 
-				}	// End of tooltip-medium switch.
+				}	// End of 'tooltip-medium' switch.
 
 			/**
 			 * Myspace settings.
@@ -556,7 +556,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 						break;
 
-				}	// End of tooltip-myspace switch.
+				}	// End of 'tooltip-myspace' switch.
 
 			/**
 			 * Soundcloud settings.
@@ -583,7 +583,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 						break;
 
-				}	// End of tooltip-sc switch.
+				}	// End of 'tooltip-sc' switch.
 
 			/**
 			 * TikTok settings.
@@ -610,7 +610,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 						break;
 
-				}	// End of tooltip-tiktok switch.
+				}	// End of 'tooltip-tiktok' switch.
 
 			/**
 			 * Tumblr settings.
@@ -637,7 +637,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 						break;
 
-				}	// End of tooltip-tumblr switch.
+				}	// End of 'tooltip-tumblr' switch.
 
 			/**
 			 * Wikipedia settings.
@@ -664,7 +664,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 						break;
 
-				}	// End of tooltip-wikipedia switch.
+				}	// End of 'tooltip-wikipedia' switch.
 
 			/**
 			 * YouTube settings.
@@ -691,7 +691,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 						break;
 
-				}	// End of tooltip-yt switch.
+				}	// End of 'tooltip-yt' switch.
 
 			/**
 			 * WPSSO AM add-on.

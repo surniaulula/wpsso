@@ -265,7 +265,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 
 					break;
 
-			}	// End of tooltip-meta switch.
+			}	// End of 'tooltip-meta' switch.
 
 			return $text;
 		}

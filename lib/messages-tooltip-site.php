@@ -125,7 +125,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSite' ) ) {
 
 					break;
 
-			}	// End of tooltip-site switch.
+			}	// End of 'tooltip-site' switch.
 
 			return $text;
 		}

@@ -141,7 +141,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaOpenGraph' ) ) {
 
 					break;
 
-			}	// End of tooltip-meta-og switch.
+			}	// End of 'tooltip-meta-og' switch.
 
 			return $text;
 		}

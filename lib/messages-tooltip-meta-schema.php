@@ -261,7 +261,9 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
-					}	// End of 'tooltip-meta-schema_event switch.
+					}	// End of 'tooltip-meta-schema_event' switch.
+
+					break;	// End of 'tooltip-meta-schema_event' case.
 
 				case ( 0 === strpos( $msg_key, 'tooltip-meta-schema_howto_' ) ? true : false ):
 
@@ -305,7 +307,9 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
-					}	// End of 'tooltip-meta-schema_howto switch.
+					}	// End of 'tooltip-meta-schema_howto' switch.
+
+					break;	// End of 'tooltip-meta-schema_howto' case.
 
 				case ( 0 === strpos( $msg_key, 'tooltip-meta-schema_job_' ) ? true : false ):
 
@@ -359,7 +363,9 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
-					}	// End of 'tooltip-meta-schema_job switch.
+					}	// End of 'tooltip-meta-schema_job' switch.
+
+					break;	// End of 'tooltip-meta-schema_job' case.
 
 				case ( 0 === strpos( $msg_key, 'tooltip-meta-schema_movie_' ) ? true : false ):
 
@@ -389,7 +395,9 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
-					}	// End of 'tooltip-meta-schema_movie switch.
+					}	// End of 'tooltip-meta-schema_movie' switch.
+
+					break;	// End of 'tooltip-meta-schema_movie' case.
 
 				case 'tooltip-meta-schema_organization_id':
 
@@ -551,7 +559,9 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
-					}	// End of 'tooltip-meta-schema_recipe switch.
+					}	// End of 'tooltip-meta-schema_recipe' switch.
+
+					break;	// End of 'tooltip-meta-schema_recipe' case.
 
 				case ( 0 === strpos( $msg_key, 'tooltip-meta-schema_review_' ) ? true : false ):
 
@@ -721,7 +731,9 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
-					}	// End of 'tooltip-meta-schema_review switch.
+					}	// End of 'tooltip-meta-schema_review' switch.
+
+					break;	// End of 'tooltip-meta-schema_review' case.
 
 				case 'tooltip-meta-schema_software_app_cat':	// Application Category.
 
@@ -759,7 +771,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 					break;
 
-			}	// End of tooltip-meta-schema switch.
+			}	// End of 'tooltip-meta-schema' switch.
 
 			return $text;
 		}

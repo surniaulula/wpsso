@@ -517,7 +517,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
-			}	// End of tooltip-plugin switch.
+			}	// End of 'tooltip-plugin' switch.
 
 			return $text;
 		}

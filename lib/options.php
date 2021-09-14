@@ -57,7 +57,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 		public function filter_option_type( $type, $base_key, $network, $mod ) {
 
-			if ( ! empty( $type ) ) {
+			if ( ! empty( $type ) ) {	// Return early if we already have a type.
 
 				return $type;
 			}
@@ -171,6 +171,49 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 * Must be numeric (blank and zero are ok).
 				 */
 				case 'book_isbn':
+				case 'schema_book_audio_duration_days':		// Audiobook Duration.
+				case 'schema_book_audio_duration_hours':
+				case 'schema_book_audio_duration_mins':
+				case 'schema_book_audio_duration_secs':
+				case 'schema_event_offer_price':
+				case 'schema_howto_prep_days':			// How-To Preparation Time.
+				case 'schema_howto_prep_hours':
+				case 'schema_howto_prep_mins':
+				case 'schema_howto_prep_secs':
+				case 'schema_howto_total_days':			// How-To Total Time.
+				case 'schema_howto_total_hours':
+				case 'schema_howto_total_mins':
+				case 'schema_howto_total_secs':
+				case 'schema_job_salary':			// Job Base Salary.
+				case 'schema_movie_duration_days':		// Movie Runtime.
+				case 'schema_movie_duration_hours':
+				case 'schema_movie_duration_mins':
+				case 'schema_movie_duration_secs':
+				case 'schema_recipe_cook_days':			// Recipe Cooking Time.
+				case 'schema_recipe_cook_hours':
+				case 'schema_recipe_cook_mins':
+				case 'schema_recipe_cook_secs':
+				case 'schema_recipe_nutri_cal':
+				case 'schema_recipe_nutri_prot':
+				case 'schema_recipe_nutri_fib':
+				case 'schema_recipe_nutri_carb':
+				case 'schema_recipe_nutri_sugar':
+				case 'schema_recipe_nutri_sod':
+				case 'schema_recipe_nutri_fat':
+				case 'schema_recipe_nutri_sat_fat':
+				case 'schema_recipe_nutri_unsat_fat':
+				case 'schema_recipe_nutri_chol':
+				case 'schema_recipe_prep_days':			// Recipe Preparation Time.
+				case 'schema_recipe_prep_hours':
+				case 'schema_recipe_prep_mins':
+				case 'schema_recipe_prep_secs':
+				case 'schema_recipe_total_days':		// Recipe Total Time.
+				case 'schema_recipe_total_hours':
+				case 'schema_recipe_total_mins':
+				case 'schema_recipe_total_secs':
+				case 'schema_review_rating':
+				case 'schema_review_rating_from':
+				case 'schema_review_rating_to':
 				case 'product_depth_value':
 				case 'product_fluid_volume_value':
 				case 'product_gtin14':
@@ -222,10 +265,45 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'og_title':
 				case 'og_desc':
 				case 'seo_desc':
-				case 'schema_desc':
 				case 'tc_desc':
 				case 'pin_desc':
 				case 'article_section':
+				case 'schema_title':				// Name (Title).
+				case 'schema_title_alt':			// Alternate Name.
+				case 'schema_desc':				// Description.
+				case 'schema_headline':				// Headline.
+				case 'schema_text':				// Full Text.
+				case 'schema_copyright_year':			// Copyright Year.
+				case 'schema_event_offer_name':
+				case 'schema_howto_step':			// How-To Step Name.
+				case 'schema_howto_step_text':			// How-To Step Description.
+				case 'schema_howto_supply':			// How-To Supplies.
+				case 'schema_howto_tool':			// How-To Tools.
+				case 'schema_howto_yield':			// How-To Makes.
+				case 'schema_job_title':			// Job Title.
+				case 'schema_job_currency':			// Job Base Salary Currency.
+				case 'schema_movie_actor_person_name':		// Movie Cast Names.
+				case 'schema_movie_director_person_name':	// Movie Director Names.
+				case 'schema_recipe_cook_method':
+				case 'schema_recipe_course':
+				case 'schema_recipe_cuisine':
+				case 'schema_recipe_ingredient':		// Recipe Ingredients.
+				case 'schema_recipe_instruction':		// Recipe Instructions.
+				case 'schema_recipe_instruction_text':		// Recipe Instruction Description.
+				case 'schema_recipe_nutri_serv':
+				case 'schema_recipe_yield':			// Recipe Makes.
+				case 'schema_review_rating_alt_name':
+				case 'schema_review_claim_reviewed':
+				case 'schema_review_item_name':					// Reviewed Subject Name.
+				case 'schema_review_item_desc':					// Reviewed Subject Description.
+				case 'schema_review_item_cw_book_isbn':				// Reviewed Book ISBN.
+				case 'schema_review_item_cw_author_name':			// Reviewed C.W. Author Name.
+				case 'schema_review_item_cw_movie_actor_person_name':		// Reviewed Movie Cast Names.
+				case 'schema_review_item_cw_movie_director_person_name':	// Reviewed Movie Director Names.
+				case 'schema_review_item_software_app_cat':
+				case 'schema_review_item_software_app_os':
+				case 'schema_software_app_cat':
+				case 'schema_software_app_os':
 				case 'product_category':
 				case 'product_brand':
 				case 'product_color':
@@ -251,6 +329,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					return 'one_line';
 
 				/**
+				 * CSV strings that can be blank (line breaks are removed).
+				 */
+				case 'schema_keywords':				// Keywords.
+
+					return 'csv_blank';
+
+				/**
 				 * Options that cannot be blank.
 				 */
 				case 'site_org_place_id':		// Example: 'none' or place ID.
@@ -261,15 +346,54 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'og_def_country':
 				case 'og_def_timezone':
 				case 'og_def_currency':
-				case 'og_def_img_id_lib': 		// Example: 'wp' or 'ngg' media library name.
-				case 'og_img_id_lib': 			// Example: 'wp' or 'ngg' media library name.
-				case 'plugin_shortener':		// Example: 'none' or name of shortener
-				case 'plugin_no_title_text':		// No Title Text.
-				case 'plugin_no_desc_text':		// No Description Text.
-				case 'product_avail':			// Select option with 'none' as default.
-				case 'product_condition':		// Select option with 'none' as default.
-				case 'product_target_gender':		// Select option with 'none' as default.
-				case 'robots_max_image_preview':	// Image Preview Size.
+				case 'og_def_img_id_lib': 			// Example: 'wp' or 'ngg' media library name.
+				case 'og_img_id_lib': 				// Example: 'wp' or 'ngg' media library name.
+				case 'plugin_shortener':			// Example: 'none' or name of shortener
+				case 'plugin_no_title_text':			// No Title Text.
+				case 'plugin_no_desc_text':			// No Description Text.
+				case 'schema_def_event_location_id':		// Default Physical Venue.
+				case 'schema_def_event_organizer_org_id':	// Default Organizer (Org).
+				case 'schema_def_event_organizer_person_id':	// Default Organizer (Person).
+				case 'schema_def_event_performer_org_id':	// Default Performer (Org).
+				case 'schema_def_event_performer_person_id':	// Default Performer (Person).
+				case 'schema_def_family_friendly':		// Default Family Friendly.
+				case 'schema_def_job_hiring_org_id':		// Default Hiring Organization.
+				case 'schema_def_job_location_id':		// Default Job Location.
+				case 'schema_def_job_location_type':		// Default Job Location Type.
+				case 'schema_def_prov_org_id':			// Default Service Prov. (Org).
+				case 'schema_def_prov_person_id':		// Default Service Prov. (Person).
+				case 'schema_def_pub_org_id':			// Default Publisher (Org).
+				case 'schema_def_pub_person_id':		// Default Publisher (Person).
+				case 'schema_def_review_item_type':		// Default Subject Webpage Type.
+				case 'schema_event_lang':			// Event Language.
+				case 'schema_event_location_id':		// Event Physical Venue.
+				case 'schema_event_offer_currency':
+				case 'schema_event_offer_avail':
+				case 'schema_event_organizer_org_id':		// Event Organizer (Org).
+				case 'schema_event_organizer_person_id':	// Event Organizer (Person).
+				case 'schema_event_performer_org_id':		// Event Performer (Org).
+				case 'schema_event_performer_person_id':	// Event Performer (Person).
+				case 'schema_event_attendance':			// Event Attendance.
+				case 'schema_event_status':			// Event Status.
+				case 'schema_family_friendly':			// Family Friendly.
+				case 'schema_job_hiring_org_id':		// Hiring Organization.
+				case 'schema_job_location_id':			// Job Location.
+				case 'schema_job_location_type':		// Job Location Type.
+				case 'schema_job_salary_currency':		// Job Base Salary Currency.
+				case 'schema_job_salary_period':		// Job Base Salary per Year, Month, Week, Hour.
+				case 'schema_lang':				// Language.
+				case 'schema_movie_prodco_org_id':		// Production Company.
+				case 'schema_prov_org_id':			// Service Prov. (Org).
+				case 'schema_prov_person_id':			// Service Prov. (Person).
+				case 'schema_pub_org_id':			// Publisher (Org).
+				case 'schema_pub_person_id':			// Publisher (Person).
+				case 'schema_review_item_type':			// Reviewed Subject Webpage Type.
+				case 'schema_review_item_cw_author_type':	// Reviewed Subject Author Type.
+				case 'schema_type':				// Schema Type.
+				case 'product_avail':				// Select option with 'none' as default.
+				case 'product_condition':			// Select option with 'none' as default.
+				case 'product_target_gender':			// Select option with 'none' as default.
+				case 'robots_max_image_preview':		// Image Preview Size.
 				case ( false !== strpos( $base_key, '_crop_x' ) ? true : false ):
 				case ( false !== strpos( $base_key, '_crop_y' ) ? true : false ):
 				case ( false !== strpos( $base_key, '_type_for_' ) ? true : false ):	// Example: 'og_type_for_.*' or 'schema_type_for_.*'.
@@ -315,8 +439,15 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'og_vid_url':
 				case 'pin_publisher_url':
 				case 'plugin_yourls_api_url':
-				case 'schema_addl_type_url':
-				case 'schema_sameas_url':
+				case 'schema_addl_type_url':			// Microdata Type URLs.
+				case 'schema_sameas_url':			// Same-As URLs.
+				case 'schema_ispartof_url':			// Is Part of URL.
+				case 'schema_license_url':			// License URL.
+				case 'schema_event_online_url':			// Event Online URL.
+				case 'schema_review_item_url':			// Reviewed Subject Webpage URL.
+				case 'schema_review_item_sameas_url':		// Reviewed Subject Same-As URL.
+				case 'schema_review_item_cw_author_url':	// Reviewed Subject Author URL.
+				case 'schema_review_claim_first_url':		// First Appearance URL.
 				case ( strpos( $base_key, '_url' ) && isset( $this->p->cf[ 'form' ][ 'social_accounts' ][ $base_key ] ) ? true : false ):
 
 					return 'url';

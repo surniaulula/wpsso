@@ -263,7 +263,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipOpenGraph' ) ) {
 
 					break;
 
-			}	// End of tooltip-og switch.
+			}	// End of 'tooltip-og' switch.
 
 			return $text;
 		}

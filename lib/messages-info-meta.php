@@ -224,7 +224,7 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 
 				 	break;
 
-			}	// End of info-meta switch.
+			}	// End of 'info-meta' switch.
 
 			return $text;
 		}
