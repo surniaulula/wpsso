@@ -333,6 +333,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* PHP v7.0.
 	* WordPress v5.0.
 
+**Version 8.39.1 (2021/09/14)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed incorrectly assigned Document SSO metabox option tooltips.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.0.
+	* WordPress v5.0.
+
 **Version 8.39.0 (2021/09/11)**
 
 * **New Features**
@@ -945,6 +959,10 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 = 9.0.0-dev.1 =
 
 (TBD) None.
+
+= 8.39.1 =
+
+(2021/09/14) Fixed incorrectly assigned Document SSO metabox option tooltips.
 
 = 8.39.0 =
 
