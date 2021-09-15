@@ -442,10 +442,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			/**
 			 * Init additional class objects.
-			 *
-			 * $activate added in WPSSO Core v3.7.0.
-			 * $is_admin replaced $activate in WPSSO Core v8.8.0.
-			 * $doing_ajax and $doing_cron added in WPSSO Core v8.8.0.
 			 */
 			do_action( 'wpsso_init_objects', $is_admin, $doing_ajax, $doing_cron );
 

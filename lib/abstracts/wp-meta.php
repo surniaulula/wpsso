@@ -278,7 +278,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			$md_defs =& $local_cache[ $mod_id ];	// Shortcut variable name.
 
-			if ( ! WpssoOptions::can_cache() || empty( $md_defs[ 'options_filtered' ] ) ) {
+			if ( ! WpssoOptions::is_cache_allowed() || empty( $md_defs[ 'options_filtered' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -701,7 +701,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					}
 				}
 
-				if ( WpssoOptions::can_cache() ) {
+				if ( WpssoOptions::is_cache_allowed() ) {
 
 					if ( $this->p->debug->enabled ) {
 
