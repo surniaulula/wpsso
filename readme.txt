@@ -328,7 +328,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Deprecated the 'wpsso_add_schema_head_attributes' filter.
+	* Deprecated the 'wpsso_add_schema_meta_array' filter.
+	* Deprecated the 'wpsso_add_schema_noscript_aggregaterating' filter.
+	* Deprecated the 'wpsso_schema_meta_itemprop' filter.
+	* Deprecated the `WPSSO_HEAD_ATTR_FILTER_NAME` constant.
+	* Deprecated the `WPSSO_HEAD_ATTR_FILTER_PRIO` constants.
+	* Deprecated the `WpssoAdmin->check_tmpl_head_attributes()` method.
 * **Requires At Least**
 	* PHP v7.0.
 	* WordPress v5.0.
