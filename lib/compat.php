@@ -110,11 +110,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			 */
 			if ( ! empty( $this->p->avail[ 'seo' ][ 'rank-math' ] ) ) {
 
-				$this->p->util->add_plugin_filters( $this, array( 
-					'admin_page_style_css_rank_math' => array(	// Class method.
-						'admin_page_style_css' => 1,		// Filter name.
-					),
-				) );
+				$this->p->util->add_plugin_filters( $this, array( 'admin_page_style_css_rank_math' => array( 'admin_page_style_css' => 1 ) ) );
 			}
 
 			/**
@@ -140,11 +136,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 
 				add_action( 'admin_init', array( $this, 'cleanup_wpseo_notifications' ), 15 );
 
-				$this->p->util->add_plugin_filters( $this, array( 
-					'admin_page_style_css_wpseo' => array(		// Class method.
-						'admin_page_style_css' => 1,		// Filter name.
-					),
-				) );
+				$this->p->util->add_plugin_filters( $this, array( 'admin_page_style_css_wpseo' => array( 'admin_page_style_css' => 1 ) ) );
 			}
 		}
 
@@ -176,6 +168,8 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			if ( ! empty( $this->p->avail[ 'seo' ][ 'rank-math' ] ) ) {
 
 				add_action( 'rank_math/head', array( $this, 'cleanup_rank_math_actions' ), -2000 );
+
+				add_filter( 'rank_math/json_ld', array( $this, 'cleanup_rank_math_json_ld' ), PHP_INT_MAX );
 			}
 
 			/**
@@ -197,12 +191,6 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				if ( method_exists( 'Yoast\WP\SEO\Integrations\Front_End_Integration', 'get_presenters' ) ) {
 
 					add_filter( 'wpseo_frontend_presenters', array( $this, 'cleanup_wpseo_frontend_presenters' ), 1000 );
-
-				} else {
-
-					add_action( 'template_redirect', array( $this, 'cleanup_wpseo_actions' ), 1000 );
-
-					add_action( 'amp_post_template_head', array( $this, 'cleanup_wpseo_actions' ), -2000 );
 				}
 			}
 		}
@@ -362,7 +350,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 		/**
 		 * Since Yoast SEO v14.0.
 		 *
-		 * Disable Yoast SEO social meta tags.
+		 * Disable Yoast SEO social meta tags and Schema markup.
 		 */
 		public function cleanup_wpseo_frontend_presenters( $presenters ) {
 
@@ -371,11 +359,20 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				$this->p->debug->mark();
 			}
 
+			$remove = array( 'Open_Graph', 'Twitter' );
+
+			if ( $this->p->avail[ 'p' ][ 'schema' ] ) {
+
+				$remove[] = 'Schema';
+			}
+
+			$remove_preg = '/(' . implode( '|', $remove ) . ')/';
+
 			foreach ( $presenters as $num => $obj ) {
 
 				$class_name = get_class( $obj );
 
-				if ( preg_match( '/(Open_Graph|Twitter)/', $class_name ) ) {
+				if ( preg_match( $remove_preg, $class_name ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
@@ -397,58 +394,8 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 		}
 
 		/**
-		 * Deprecated on 2020/04/28 by Yoast SEO v14.0.
-		 *
-		 * Disable Yoast SEO social meta tags.
+		 * Disable Rank Math Facebook and Twitter meta tags.
 		 */
-		public function cleanup_wpseo_actions() {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-
-			if ( isset( $GLOBALS[ 'wpseo_og' ] ) && is_object( $GLOBALS[ 'wpseo_og' ] ) ) {
-
-				if ( false !== ( $prio = has_action( 'wpseo_head', array( $GLOBALS[ 'wpseo_og' ], 'opengraph' ) ) ) ) {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'removing wpseo_head action for opengraph' );
-					}
-
-					$ret = remove_action( 'wpseo_head', array( $GLOBALS[ 'wpseo_og' ], 'opengraph' ), $prio );
-				}
-			}
-
-			if ( class_exists( 'WPSEO_Twitter' ) ) {
-
-				if ( false !== ( $prio = has_action( 'wpseo_head', array( 'WPSEO_Twitter', 'get_instance' ) ) ) ) {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'removing wpseo_head action for twitter' );
-					}
-
-					$ret = remove_action( 'wpseo_head', array( 'WPSEO_Twitter', 'get_instance' ), $prio );
-				}
-			}
-
-			if ( isset( WPSEO_Frontend::$instance ) ) {
-
-				if ( false !== ( $prio = has_action( 'wpseo_head', array( WPSEO_Frontend::$instance, 'publisher' ) ) ) ) {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'removing wpseo_head action for publisher' );
-					}
-
-					$ret = remove_action( 'wpseo_head', array( WPSEO_Frontend::$instance, 'publisher' ), $prio );
-				}
-			}
-		}
-
 		public function cleanup_rank_math_actions() {
 
 			if ( $this->p->debug->enabled ) {
@@ -462,6 +409,29 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			remove_all_actions( 'rank_math/opengraph/facebook' );
 
 			remove_all_actions( 'rank_math/opengraph/twitter' );
+		}
+
+		/**
+		 * Disable Rank Math Schema markup.
+		 */
+		public function cleanup_rank_math_json_ld( $data ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			/**
+			 * Remove everything except for the BreadcrumbList markup.
+			 *
+			 * The WPSSO BC add-on removes the BreadcrumbList markup.
+			 */
+			if ( $this->p->avail[ 'p' ][ 'schema' ] ) {
+
+				return SucomUtil::preg_grep_keys( '/^BreadcrumbList$/', $data );
+			}
+
+			return $data;
 		}
 
 		public function remove_snap_og_meta_tags_holder() {
@@ -556,6 +526,9 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			return $text;
 		}
 
+		/**
+		 * Fix Rank Math CSS on back-end pages.
+		 */
 		public function filter_admin_page_style_css_rank_math( $custom_style_css ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -581,9 +554,23 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				.rank-math-tabs-content .setting-panel-social { display: none; }
 			';
 
+			/**
+			 * The "Schema" metabox tab and its options cannot be disabled, so hide them instead.
+			 */
+			if ( $this->p->avail[ 'p' ][ 'schema' ] ) {
+			
+				$custom_style_css .= '
+					.rank-math-tabs > div > a[href="#setting-panel-richsnippet"] { display: none; }
+					.rank-math-tabs-content .setting-panel-richsnippet { display: none; }
+				';
+			}
+
 			return $custom_style_css;
 		}
 
+		/**
+		 * Fix Yoast SEO CSS on back-end pages.
+		 */
 		public function filter_admin_page_style_css_wpseo( $custom_style_css ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -616,6 +603,17 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 					width:8em;	/* Leave room for the sort arrow. */
 				}
 			';
+
+			/**
+			 * The "Schema" metabox tab and its options cannot be disabled, so hide them instead.
+			 */
+			if ( $this->p->avail[ 'p' ][ 'schema' ] ) {
+
+				$custom_style_css .= '
+					#wpseo-meta-tab-schema { display: none; }
+					#wpseo-meta-section-schema { display: none; }
+				';
+			}
 
 			return $custom_style_css;
 		}
