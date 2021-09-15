@@ -121,13 +121,16 @@ if ( ! function_exists( 'wpsso_get_is_functions' ) ) {
 	}
 }
 
+/**
+ * Deprecated on 2021/09/15.
+ */
 if ( ! function_exists( 'wpsso_schema_attributes' ) ) {
 
 	function wpsso_schema_attributes( $attr = '' ) {
 
-		$wpsso =& Wpsso::get_instance();
+		_deprecated_function( __FUNCTION__ . '()', '2021/09/15', $replacement = '' );	// Deprecation message.
 
-		echo $wpsso->meta_item->filter_head_attributes( $attr );
+		echo $attr;
 	}
 }
 

@@ -1035,19 +1035,6 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		}
 
 		/**
-		 * HTML Tags > Schema tab.
-		 */
-		public function filter_head_tags_schema_rows( $table_rows, $form, $network = false ) {
-
-			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
-
-				return $this->p->msgs->get_schema_disabled_rows( $table_rows );
-			}
-
-			return $this->get_head_tags_rows( $table_rows, $form, $network, array( '/^add_(meta|link)_(itemprop)_(.+)$/' ) );
-		}
-
-		/**
 		 * HTML Tags > SEO / Other tab.
 		 */
 		public function filter_head_tags_seo_other_rows( $table_rows, $form, $network = false ) {

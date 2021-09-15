@@ -484,39 +484,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						break;
 
-					case 'notice-header-tmpl-no-head-attr':
-
-						$filter_name = 'head_attributes';
-						$tag_code    = '<code>&lt;head&gt;</code>';
-						$php_code    = '<pre><code>&lt;head &lt;?php do_action( &#39;add_head_attributes&#39; ); ?&gt;&gt;</code></pre>';
-						$action_url  = wp_nonce_url( $this->p->util->get_admin_url( '?wpsso-action=modify_tmpl_head_attributes' ),
-							WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
-
-						$text = '<p class="top">';
-
-						$text .= __( 'At least one of your theme header templates does not offer a recognized way to modify the head HTML tag attributes.', 'wpsso' ) . ' ';
-
-						$text .= __( 'Adding the document Schema item type to the head HTML tag attributes is important for Pinterest.', 'wpsso' ) . ' ';
-
-						if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
-
-							$text .= __( 'It is also important for Google in cases where Schema markup describing the content is not available in the webpage (for example, when the complementary WPSSO JSON add-on is not active).', 'wpsso' ) . ' ';
-						}
-
-						$text .= '</p> <p>';
-
-						$text .= sprintf( __( 'The %s HTML tag in your header template(s) should include a function, action, or filter for its attributes.', 'wpsso' ), $tag_code ) . ' ';
-
-						$text .= sprintf( __( '%1$s can update your header template(s) automatically and change the existing %2$s HTML tag to:', 'wpsso' ), $info[ 'short' ], $tag_code );
-
-						$text .= '</p>' . $php_code . '<p>';
-
-						$text .= sprintf( __( '<b><a href="%s">Click here to update header template(s) automatically</a></b> (recommended) or update the template(s) manually.', 'wpsso' ), $action_url );
-
-						$text .= '</p>';
-
-						break;
-
 					case 'notice-pro-not-installed':
 
 						$licenses_page_link = $this->p->util->get_admin_url( 'licenses',

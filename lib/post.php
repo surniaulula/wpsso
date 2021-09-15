@@ -442,15 +442,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$mod = $this->get_mod( $post_id );
 
-			$opts = $this->get_submit_opts( $post_id );
-
 			/**
-			 * Just in case - do not save the SEO description if an SEO plugin is active.
+			 * Merge and check submitted post, term, and user metabox options.
 			 */
-			if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
-
-				unset( $opts[ 'seo_desc' ] );
-			}
+			$opts = $this->get_submit_opts( $mod );
 
 			$opts = apply_filters( 'wpsso_save_md_options', $opts, $mod );
 
@@ -459,7 +454,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			if ( empty( $opts ) ) {
 
 				return delete_post_meta( $post_id, WPSSO_META_NAME );
-
 			}
 
 			return update_post_meta( $post_id, WPSSO_META_NAME, $opts );

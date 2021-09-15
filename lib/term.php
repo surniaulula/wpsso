@@ -332,6 +332,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				$this->p->debug->mark();
 			}
 
+			/**
+			 * Make sure the current user can submit and same metabox options.
+			 */
 			if ( ! $this->user_can_save( $term_id, $term_tax_id ) ) {
 
 				return;
@@ -344,24 +347,12 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			 */
 			$term = get_term_by( 'term_taxonomy_id', $term_tax_id, $tax_slug = '' );
 
-			if ( is_object( $term ) ) {	// Just in case.
-
-				$mod = $this->get_mod( $term_id, $term->term_taxonomy_id );
-
-			} else {
-
-				$mod = $this->get_mod( $term_id );
-			}
-
-			$opts = $this->get_submit_opts( $term_id );
+			$mod = is_object( $term ) ? $this->get_mod( $term_id, $term->term_taxonomy_id ) : $mod = $this->get_mod( $term_id );
 
 			/**
-			 * Just in case - do not save the SEO description if an SEO plugin is active.
+			 * Merge and check submitted post, term, and user metabox options.
 			 */
-			if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
-
-				unset( $opts[ 'seo_desc' ] );
-			}
+			$opts = $this->get_submit_opts( $mod );
 
 			$opts = apply_filters( 'wpsso_save_md_options', $opts, $mod );
 
@@ -369,14 +360,10 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( empty( $opts ) ) {
 
-				self::delete_term_meta( $term_id, WPSSO_META_NAME );
-
-			} else {
-
-				self::update_term_meta( $term_id, WPSSO_META_NAME, $opts );
+				return self::delete_term_meta( $term_id, WPSSO_META_NAME );
 			}
 
-			return $term_id;
+			return self::update_term_meta( $term_id, WPSSO_META_NAME, $opts );
 		}
 
 		public function delete_options( $term_id, $term_tax_id = false ) {

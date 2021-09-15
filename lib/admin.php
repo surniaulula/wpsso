@@ -132,7 +132,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				add_action( 'admin_menu', array( $this, 'add_admin_submenus' ), WPSSO_ADD_SUBMENU_PRIORITY );
 
 				add_action( 'admin_init', array( $this, 'add_plugins_page_upgrade_notice' ) );
-				add_action( 'admin_init', array( $this, 'check_tmpl_head_attributes' ), 20 );
 				add_action( 'admin_init', array( $this, 'check_wp_config_constants' ), 10 );
 				add_action( 'admin_init', array( $this, 'register_setting' ) );
 
@@ -1269,12 +1268,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 								$this->p->notice->upd( $notice_msg, $user_id );
 							}
-
-							break;
-
-						case 'modify_tmpl_head_attributes':
-
-							$this->modify_tmpl_head_attributes();
 
 							break;
 
@@ -2705,103 +2698,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return strcmp( $a, $b );				// Fallback to sorting like WordPress.
 		}
 
+		/**
+		 * Deprecated on 2021/09/15.
+		 */
 		public function check_tmpl_head_attributes() {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			/**
-			 * If Schema markup is disabled, do not add an itemtype to the <head> HTML tag.
-			 *
-			 * See WpssoMetaItem->__construct().
-			 */
-			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'schema markup is disabled' );
-				}
-
-			/**
-			 * Hooked by the WPSSO JSON add-on to disable Schema head attributes.
-			 */
-			} elseif ( ! apply_filters( 'wpsso_add_schema_head_attributes', true ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'schema head attributes are disabled' );
-				}
-
-			} else {
-
-				$filter_name = SucomUtil::get_const( 'WPSSO_HEAD_ATTR_FILTER_NAME', 'head_attributes' );
-
-				/**
-				 * Skip if not using the default filter name of 'head_attributes'.
-				 */
-				if ( 'head_attributes' !== $filter_name ) {	// Can be empty or 'none'.
-
-					return;
-				}
-
-				/**
-				 * Skip if previous check is already successful.
-				 */
-				if ( $passed = get_option( WPSSO_TMPL_HEAD_CHECK_NAME, $default = false ) ) {
-
-					return;
-				}
-
-				/**
-				 * Skip if we will be modifying the header templates.
-				 */
-				$action_query = 'wpsso-action';
-
-				$action_value = SucomUtil::get_request_value( $action_query ) ;	// POST or GET with sanitize_text_field().
-
-				if ( 'modify_tmpl_head_attributes' === $action_value ) {	// Just in case.
-
-					return;
-				}
-
-				/**
-				 * Skip if already dismissed.
-				 */
-				$notice_key = 'notice-header-tmpl-no-head-attr-' . SucomUtilWP::get_theme_slug_version();
-
-				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
-
-					/**
-					 * Get parent and child theme template file paths.
-					 */
-					$header_files = SucomUtilWP::get_theme_header_file_paths();
-
-					foreach ( $header_files as $tmpl_base => $tmpl_file ) {
-
-						$stripped_php = SucomUtil::get_stripped_php( $tmpl_file );
-
-						if ( empty( $stripped_php ) ) {	// Empty string or false.
-
-							continue;
-
-						} elseif ( false !== strpos( $stripped_php, '<head>' ) ) {
-
-							$notice_msg = $this->p->msgs->get( 'notice-header-tmpl-no-head-attr' );
-
-							$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
-
-							return;	// Stop here.
-						}
-					}
-
-					/**
-					 * Mark all template head checks as complete.
-					 */
-					update_option( WPSSO_TMPL_HEAD_CHECK_NAME, $passed = true, $autoload = false );
-				}
-			}
 		}
 
 		public function check_wp_config_constants() {
@@ -2873,106 +2773,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 * Mark all WordPress config checks as complete.
 			 */
 			update_option( WPSSO_WP_CONFIG_CHECK_NAME, $passed = true, $autoload = false );
-		}
-
-		/**
-		 * Called by WpssoAdmin->load_setting_page().
-		 */
-		private function modify_tmpl_head_attributes() {
-
-			$modified = false;
-
-			$header_files = SucomUtilWP::get_theme_header_file_paths();
-
-			$head_action_php = '<head <?php do_action( \'add_head_attributes\' ); ?' . '>>';	// Breakup the closing php string for vim.
-
-			if ( empty( $header_files ) ) {
-
-				$this->p->notice->err( __( 'No header templates found in the parent or child theme directories.', 'wpsso' ) );
-
-				return;	// Exit early.
-			}
-
-			foreach ( $header_files as $tmpl_base => $tmpl_file ) {
-
-				$tmpl_base = basename( $tmpl_file );
-
-				$backup_file = $tmpl_file . '~backup-' . date( 'Ymd-His' );
-
-				$backup_base = basename( $backup_file );
-
-				$stripped_php = SucomUtil::get_stripped_php( $tmpl_file );
-
-				/**
-				 * Double check in case of reloads etc.
-				 */
-				if ( empty( $stripped_php ) || strpos( $stripped_php, '<head>' ) === false ) {
-
-					$this->p->notice->err( sprintf( __( 'No <code>%1$s</code> HTML tag found in the <code>%2$s</code> template.',
-						'wpsso' ), '&lt;head&gt;', $tmpl_file ) );
-
-					continue;
-				}
-
-				/**
-				 * Make a backup of the original.
-				 */
-				if ( ! copy( $tmpl_file, $backup_file ) ) {
-
-					$this->p->notice->err( sprintf( __( 'Error copying <code>%1$s</code> to <code>%2$s</code>.',
-						'wpsso' ), $tmpl_file, $backup_base ) );
-
-					continue;
-				}
-
-				$tmpl_contents = file_get_contents( $tmpl_file );
-
-				$tmpl_contents = str_replace( '<head>', $head_action_php, $tmpl_contents );
-
-				if ( ! $tmpl_fh = @fopen( $tmpl_file, 'wb' ) ) {
-
-					$this->p->notice->err( sprintf( __( 'Failed to open template file <code>%s</code> for writing.',
-						'wpsso' ), $tmpl_file ) );
-
-					continue;
-				}
-
-				if ( fwrite( $tmpl_fh, $tmpl_contents ) ) {
-
-					$notice_msg = sprintf( __( 'The <code>%s</code> template has been successfully modified and saved.',
-						'wpsso' ), $tmpl_file ) . ' ';
-
-					$notice_msg .= sprintf( __( 'A backup copy of the original template has been saved as <code>%s</code> in the same folder.',
-						'wpsso' ), $backup_base );
-
-					$this->p->notice->upd( $notice_msg );
-
-					$modified = true;
-
-				} else {
-
-					$notice_msg = sprintf( __( 'Failed to write the <code>%s</code> template.',
-						'wpsso' ), $tmpl_file ) . ' ';
-
-					$notice_msg .= sprintf( __( 'You may need to restore the original template saved as <code>%s</code> in the same folder.',
-						'wpsso' ), $backup_base );
-
-					$this->p->notice->err( $notice_msg );
-				}
-
-				fclose( $tmpl_fh );
-			}
-
-			if ( $modified ) {
-
-				$admin_roles = $this->p->cf[ 'wp' ][ 'roles' ][ 'admin' ];
-
-				$user_ids = SucomUtilWP::get_roles_user_ids( $admin_roles );
-
-				$notice_key = 'notice-header-tmpl-no-head-attr-' . SucomUtilWP::get_theme_slug_version();
-
-				$this->p->notice->clear_key( $notice_key, $user_ids );	// Just in case.
-			}
 		}
 
 		/**

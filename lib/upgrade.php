@@ -117,8 +117,8 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'rp_dom_verify'    => 'pin_site_verify',
 				),
 				525 => array(
-					'add_meta_itemprop_url'               => 'add_link_itemprop_url',
-					'add_meta_itemprop_image'             => 'add_link_itemprop_image',
+					'add_meta_itemprop_url'               => '',
+					'add_meta_itemprop_image'             => '',
 					'add_meta_itemprop_image.url'         => '',
 					'add_meta_itemprop_author.url'        => '',
 					'add_meta_itemprop_author.image'      => '',
@@ -468,6 +468,27 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'p_img_crop_y'               => 'pin_img_crop_y',
 					'p_img_desc_max_len'         => 'pin_img_desc_max_len',
 					'p_img_desc_warn_len'        => 'pin_img_desc_warn_len',
+				),
+				816 => array(
+					'add_link_itemprop_url'                         => '',	// Deprecated on 2021/09/15.
+					'add_link_itemprop_image'                       => '',	// Deprecated on 2021/09/15.
+					'add_link_itemprop_thumbnailurl'                => '',	// Deprecated on 2021/09/15.
+					'add_link_itemprop_hasmenu'                     => '',	// Deprecated on 2021/09/15.
+					'add_meta_itemprop_name'                        => '',	// Deprecated on 2021/09/15.
+					'add_meta_itemprop_alternatename'               => '',	// Deprecated on 2021/09/15.
+					'add_meta_itemprop_description'                 => '',	// Deprecated on 2021/09/15.
+					'add_meta_itemprop_aggregaterating.ratingvalue' => '',	// Deprecated on 2021/09/15.
+					'add_meta_itemprop_aggregaterating.ratingcount' => '',	// Deprecated on 2021/09/15.
+					'add_meta_itemprop_aggregaterating.worstrating' => '',	// Deprecated on 2021/09/15.
+					'add_meta_itemprop_aggregaterating.bestrating'  => '',	// Deprecated on 2021/09/15.
+					'add_meta_itemprop_aggregaterating.reviewcount' => '',	// Deprecated on 2021/09/15.
+					'add_meta_itemprop_address'                     => '',	// Deprecated on 2021/09/15.
+					'add_meta_itemprop_telephone'                   => '',	// Deprecated on 2021/09/15.
+					'add_meta_itemprop_currenciesaccepted'          => '',	// Deprecated on 2021/09/15.
+					'add_meta_itemprop_paymentaccepted'             => '',	// Deprecated on 2021/09/15.
+					'add_meta_itemprop_pricerange'                  => '',	// Deprecated on 2021/09/15.
+					'add_meta_itemprop_acceptsreservations'         => '',	// Deprecated on 2021/09/15.
+					'add_meta_itemprop_servescuisine'               => '',	// Deprecated on 2021/09/15.
 				),
 			),
 		);

@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'     => '9.0.0-dev.1',	// Plugin version.
-					'opt_version' => '816',		// Increment when changing default option values.
+					'opt_version' => '818',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Rank higher and improve click-through-rates by presenting your content at its best on social sites and in search results - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled.',
@@ -1635,27 +1635,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_name_twitter:label2'                      => 1,
 					'add_meta_name_twitter:data2'                       => 1,
 					'add_meta_name_yandex-verification'                 => 1,	// Yandex Website Verification ID.
-
-					/**
-					 * Link itemprop.
-					 */
-					'add_link_itemprop_url'          => 1,
-					'add_link_itemprop_image'        => 1,
-					'add_link_itemprop_thumbnailurl' => 1,
-
-					/**
-					 * Meta itemprop.
-					 *
-					 * Note that meta itemprop values should not be URLs - use link itemprop for URLs.
-					 */
-					'add_meta_itemprop_name'                        => 1,
-					'add_meta_itemprop_alternatename'               => 1,
-					'add_meta_itemprop_description'                 => 1,
-					'add_meta_itemprop_aggregaterating.ratingvalue' => 1,
-					'add_meta_itemprop_aggregaterating.ratingcount' => 1,
-					'add_meta_itemprop_aggregaterating.worstrating' => 1,
-					'add_meta_itemprop_aggregaterating.bestrating'  => 1,
-					'add_meta_itemprop_aggregaterating.reviewcount' => 1,
 
 					/**
 					 * Advanced Settings > Plugin Admin tab.
@@ -3526,15 +3505,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'organization' => array(
 							'airline'                  => 'https://schema.org/Airline',
 							'corporation'              => 'https://schema.org/Corporation',
-							'educational.organization' => array(
-								'college.or.university'    => 'https://schema.org/CollegeOrUniversity',
-								'educational.organization' => 'https://schema.org/EducationalOrganization',
-								'elementary.school'        => 'https://schema.org/ElementarySchool',
-								'high.school'              => 'https://schema.org/HighSchool',
-								'middle.school'            => 'https://schema.org/MiddleSchool',
-								'preschool'                => 'https://schema.org/Preschool',
-								'school'                   => 'https://schema.org/School',
-							),
+							// 'educational.organization' array added by WpssoSchema::add_schema_type_xrefs().
 							'government.organization' => 'https://schema.org/GovernmentOrganization',
 							// 'local.business' array added by WpssoSchema::add_schema_type_xrefs().
 							'medical.organization'    => array(
@@ -3589,6 +3560,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'airport'                 => 'https://schema.org/Airport',
 								'aquarium'                => 'https://schema.org/Aquarium',
 								'beach'                   => 'https://schema.org/Beach',
+								'boat.terminal'           => 'https://schema.org/BoatTerminal',
 								'bridge'                  => 'https://schema.org/Bridge',
 								'bus.station'             => 'https://schema.org/BusStation',
 								'bus.stop'                => 'https://schema.org/BusStop',
@@ -3596,6 +3568,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'cemetary'                => 'https://schema.org/Cemetery',
 								'civic.structure'         => 'https://schema.org/CivicStructure',
 								'crematorium'             => 'https://schema.org/Crematorium',
+								'educational.organization' => array(
+									'college.or.university'    => 'https://schema.org/CollegeOrUniversity',
+									'educational.organization' => 'https://schema.org/EducationalOrganization',
+									'elementary.school'        => 'https://schema.org/ElementarySchool',
+									'high.school'              => 'https://schema.org/HighSchool',
+									'middle.school'            => 'https://schema.org/MiddleSchool',
+									'preschool'                => 'https://schema.org/Preschool',
+									'school'                   => 'https://schema.org/School',
+								),
 								'event.venue'             => 'https://schema.org/EventVenue',
 								'fire.station'            => 'https://schema.org/FireStation',
 								'government.building'     => 'https://schema.org/GovernmentBuilding',
@@ -3610,6 +3591,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'playground'              => 'https://schema.org/Playground',
 								'rv.park'                 => 'https://schema.org/RVPark',
 								'police.station'          => 'https://schema.org/PoliceStation',
+								'public.toilet'           => 'https://schema.org/PublicToilet',
 								'stadium.or.arena'        => 'https://schema.org/StadiumOrArena',
 								'subway.station'          => 'https://schema.org/SubwayStation',
 								'taxi.stand'              => 'https://schema.org/TaxiStand',
@@ -4334,7 +4316,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Meta tags and markup.
 			 */
 			require_once WPSSO_PLUGINDIR . 'lib/link-rel.php';
-			require_once WPSSO_PLUGINDIR . 'lib/meta-item.php';
 			require_once WPSSO_PLUGINDIR . 'lib/meta-name.php';
 			require_once WPSSO_PLUGINDIR . 'lib/oembed.php';
 			require_once WPSSO_PLUGINDIR . 'lib/opengraph.php';

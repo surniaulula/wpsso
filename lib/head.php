@@ -608,6 +608,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$this->p->util->maybe_unset_ref( $canonical_url );
 
+			/**
+			 * Schema json scripts.
+			 */
 			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
@@ -615,24 +618,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					$this->p->debug->log( 'schema markup is disabled' );
 				}
 
-				$mt_item = array();
-
 				$schema_scripts = array();
 
 			} else {
 
-				/**
-				 * Schema itemprop meta tags.
-				 */
-				$this->p->util->maybe_set_ref( $canonical_url, $mod, __( 'adding schema meta tags', 'wpsso' ) );
-
-				$mt_item = $this->p->meta_item->get_array( $mod, $mt_og );
-
-				$this->p->util->maybe_unset_ref( $canonical_url );
-
-				/**
-				 * Schema json scripts.
-				 */
 				$this->p->util->maybe_set_ref( $canonical_url, $mod, __( 'adding schema json-ld markup', 'wpsso' ) );
 
 				$schema_scripts = $this->p->schema->get_array( $mod, $mt_og );
@@ -658,7 +647,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->get_mt_array( $tag = 'link', $type = 'rel', $link_rel, $mod ),
 				$this->get_mt_array( $tag = 'meta', $type = 'property', $mt_og, $mod ),
 				$this->get_mt_array( $tag = 'meta', $type = 'name', $mt_tc, $mod ),
-				$this->get_mt_array( $tag = 'meta', $type = 'itemprop', $mt_item, $mod ),
 				$this->get_mt_array( $tag = 'meta', $type = 'name', $mt_name, $mod ),	// SEO description is last.
 				$schema_scripts,
 				array(

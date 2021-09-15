@@ -29,8 +29,6 @@
 
 'wpsso_add_link_rel_shortlink' ( $bool, $mod )
 
-'wpsso_add_schema_head_attributes' ( $bool )
-
 'wpsso_add_schema_meta_array' ( $bool )
 
 'wpsso_archive_page_description' ( $desc_text, $mod )
@@ -234,8 +232,6 @@
 'wpsso_save_term_options' ( $opts, $term_id, $term_tax_id, $mod )
 
 'wpsso_save_user_options' ( $opts, $term_id, false, $mod )
-
-'wpsso_schema_meta_itemprop' ( $mt_schema, $mod, $mt_og, $page_type_id )
 
 'wpsso_schema_type_for_default' ( $type_id = 'webpage', $mod )
 

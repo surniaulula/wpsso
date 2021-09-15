@@ -1064,30 +1064,30 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $table_rows;
 		}
 
-		public function get_head_info( $mod_id, $read_cache = true ) {
+		/**
+		 * Note that WpssoWpMeta->check_sortable_meta() passes the $mod array instead of an ID.
+		 */
+		public function get_head_info( $mod, $read_cache = true ) {
 
 			static $local_cache = array();
 
-			if ( is_array( $mod_id ) ) {
+			/**
+			 * The $mod array argument is preferred but not required.
+			 */
+			if ( ! is_array( $mod ) ) {
 
-				$mod = $mod_id;
-
-				$mod_id = $mod[ 'id' ];
-
-			} else {
-
-				$mod = $this->get_mod( $mod_id );
+				$mod = $this->get_mod( $mod );
 			}
 
-			if ( isset( $local_cache[ $mod_id ] ) ) {
+			if ( isset( $local_cache[ $mod[ 'id' ] ] ) ) {
 
-				return $local_cache[ $mod_id ];
+				return $local_cache[ $mod[ 'id' ] ];
 			}
 
 			$head_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache );
 			$head_info = $this->p->head->extract_head_info( $mod, $head_tags );
 
-			return $local_cache[ $mod_id ] = $head_info;
+			return $local_cache[ $mod[ 'id' ] ] = $head_info;
 		}
 
 		public function get_head_info_thumb_bg_img( $head_info, $mod, $md_pre = 'og', $mt_pre = 'og' ) {
@@ -1280,23 +1280,26 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		 */
 		protected function clear_mod_cache( array $mod ) {
 
-			$canonical_url = $this->p->util->get_canonical_url( $mod );
-
-			$mod_salt = SucomUtil::get_mod_salt( $mod, $canonical_url );
+			$head_pre       = 'wpsso_h_';
+			$head_method    = 'WpssoHead::get_head_array';
+			$content_pre    = 'wpsso_c_';
+			$content_method = 'WpssoPage::get_the_content';
+			$canonical_url  = $this->p->util->get_canonical_url( $mod );
+			$mod_salt       = SucomUtil::get_mod_salt( $mod, $canonical_url );
 
 			$cache_types = array(
 				'transient' => array(
 					array(
-						'id'   => 'wpsso_h_' . md5( 'WpssoHead::get_head_array(' . $mod_salt . ')' ),
-						'pre'  => 'wpsso_h_',
-						'salt' => 'WpssoHead::get_head_array(' . $mod_salt . ')',
+						'id'   => $head_pre . md5( $head_method . '(' . $mod_salt . ')' ),
+						'pre'  => $head_pre,
+						'salt' => $head_method . '(' . $mod_salt . ')',
 					)
 				),
 				'wp_cache' => array(
 					array(
-						'id'   => 'wpsso_c_' . md5( 'WpssoPage::get_the_content(' . $mod_salt . ')' ),
-						'pre'  => 'wpsso_c_',
-						'salt' => 'WpssoPage::get_the_content(' . $mod_salt . ')',
+						'id'   => $content_pre . md5( $content_method . '(' . $mod_salt . ')' ),
+						'pre'  => $content_pre,
+						'salt' => $content_method . '(' . $mod_salt . ')',
 					),
 				),
 			);
@@ -1311,6 +1314,75 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			$cleared_ids = array();
 
 			foreach ( $cache_types as $type_name => $type_keys ) {
+
+				/**
+				 * Clear post date, term, and author archive pages.
+				 */
+				if ( $mod[ 'is_post' ] && $mod[ 'id' ] ) {
+
+					$post_id = $mod[ 'id' ];
+
+					/**
+					 * Clear date based archive pages.
+					 */
+					$year  = get_the_time( 'Y', $post_id );
+					$month = get_the_time( 'm', $post_id );
+					$day   = get_the_time( 'd', $post_id );
+
+					$home_url  = home_url( '/' );
+					$year_url  = get_year_link( $year );
+					$month_url = get_month_link( $year, $month );
+					$day_url   = get_day_link( $year, $month, $day );
+
+					foreach ( array( $home_url, $year_url, $month_url, $day_url ) as $date_url ) {
+
+						$transient_keys[] = array(
+							'id'   => $head_pre . md5( $head_method . '(url:' . $date_url . ')' ),
+							'pre'  => $head_pre,
+							'salt' => $head_method . '(url:' . $date_url . ')',
+						);
+					}
+
+					/**
+					 * Clear term archive pages.
+					 */
+					$post_taxonomies = get_post_taxonomies( $post_id );
+
+					foreach ( $post_taxonomies as $tax_slug ) {
+
+						$post_terms = wp_get_post_terms( $post_id, $tax_slug );	// Returns WP_Error if taxonomy does not exist.
+
+						if ( is_array( $post_terms ) ) {
+
+							foreach ( $post_terms as $term_obj ) {
+
+								$term_mod           = $this->p->term->get_mod( $term_obj->term_id );
+								$term_canonical_url = $this->p->util->get_canonical_url( $term_mod );
+								$term_mod_salt      = SucomUtil::get_mod_salt( $term_mod, $term_canonical_url );
+
+								$transient_keys[] = array(
+									'id'   => $head_pre . md5( $head_method . '(' . $term_mod_salt . ')' ),
+									'pre'  => $head_pre,
+									'salt' => $head_method . '(' . $term_mod_salt . ')',
+								);
+							}
+						}
+					}
+
+					/**
+					 * Clear author archive page page.
+					 */
+					$author_id          = get_post_field( 'post_author', $post_id );
+					$user_mod           = $this->p->user->get_mod( $author_id );
+					$user_canonical_url = $this->p->util->get_canonical_url( $user_mod );
+					$user_mod_salt      = SucomUtil::get_mod_salt( $user_mod, $user_canonical_url );
+
+					$transient_keys[] = array(
+						'id'   => $head_pre . md5( $head_method . '(' . $user_mod_salt . ')' ),
+						'pre'  => $head_pre,
+						'salt' => $head_method . '(' . $user_mod_salt . ')',
+					);
+				}
 
 				/**
 				 * Example: 'wpsso_post_cache_transient_keys'.
@@ -1340,7 +1412,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 						$cache_id = $cache_key = $mixed;
 					}
 
-					if ( isset( $cleared_ids[ $type_name ][ $cache_id ] ) ) {	// skip duplicate cache ids
+					if ( isset( $cleared_ids[ $type_name ][ $cache_id ] ) ) {	// Skip duplicate cache ids.
 
 						continue;
 					}
@@ -1422,9 +1494,19 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return true;
 		}
 
-		protected function get_submit_opts( $mod_id ) {
+		/**
+		 * Merge and check submitted post, term, and user metabox options.
+		 */
+		protected function get_submit_opts( $mod ) {
 
-			$mod     = $this->get_mod( $mod_id );
+			/**
+			 * The $mod array argument is preferred but not required.
+			 */
+			if ( ! is_array( $mod ) ) {
+
+				$mod = $this->get_mod( $mod );
+			}
+
 			$md_defs = $this->get_defaults( $mod[ 'id' ] );
 			$md_prev = $this->get_options( $mod[ 'id' ] );
 
@@ -1455,6 +1537,14 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			$md_opts = $this->p->opt->sanitize( $md_opts, $md_defs, $network = false, $mod );
 
 			/**
+			 * Do not save the SEO description if an SEO plugin is active.
+			 */
+			if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
+
+				unset( $opts[ 'seo_desc' ] );
+			}
+
+			/**
 			 * Check image size options (id, prefix, width, height, crop, etc.).
 			 */
 			foreach ( array( 'og', 'pin', 'schema', 'tc_lrg', 'tc_sum' ) as $md_pre ) {
@@ -1475,7 +1565,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			}
 
 			/**
-			 * Remove empty strings, "use plugin settings", or "same as default" option values.
+			 * Remove empty or default values.
 			 *
 			 * Use strict comparison to manage conversion (don't allow string to integer conversion, for example).
 			 */
@@ -1570,6 +1660,163 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				}
 
 				unset( $md_renum_opts );
+			}
+
+			/**
+			 * Check for default recipe values.
+			 */
+			foreach ( SucomUtil::preg_grep_keys( '/^schema_recipe_(prep|cook|total)_(days|hours|mins|secs)$/', $md_opts ) as $md_key => $value ) {
+
+				$md_opts[ $md_key ] = (int) $value;
+
+				if ( $md_opts[ $md_key ] === $md_defs[ $md_key ] ) {
+
+					unset( $md_opts[ $md_key ] );
+				}
+			}
+
+			/**
+			 * A review rating must be greater than 0.
+			 */
+			if ( isset( $md_opts[ 'schema_review_rating' ] ) && $md_opts[ 'schema_review_rating' ] > 0 ) {
+
+				/**
+				 * Fallback to the default values if the from/to is empty.
+				 */
+				foreach ( array(
+					'schema_review_rating_from',
+					'schema_review_rating_to',
+				) as $md_key ) {
+
+					if ( empty( $md_opts[ $md_key ] ) && isset( $md_defs[ $md_key ] ) ) {
+
+						$md_opts[ $md_key ] = $md_defs[ $md_key ];
+					}
+				}
+
+			} else {
+
+				foreach ( array(
+					'schema_review_rating',
+					'schema_review_rating_from',
+					'schema_review_rating_to',
+				) as $md_key ) {
+
+					unset( $md_opts[ $md_key ] );
+				}
+			}
+
+			/**
+			 * Check and maybe fix missing event date, time, and timezone values.
+			 */
+			foreach ( array(
+				'schema_event_start',
+				'schema_event_end',
+				'schema_event_previous',
+			) as $md_pre ) {
+
+				/**
+				 * Unset date / time if same as the default value.
+				 */
+				foreach ( array( 'date', 'time', 'timezone' ) as $md_ext ) {
+
+					if ( isset( $md_opts[ $md_pre . '_' . $md_ext ] ) &&
+						( $md_opts[ $md_pre . '_' . $md_ext ] === $md_defs[ $md_pre . '_' . $md_ext ] ||
+							$md_opts[ $md_pre . '_' . $md_ext ] === 'none' ) ) {
+
+						unset( $md_opts[ $md_pre . '_' . $md_ext ] );
+					}
+				}
+
+				if ( empty( $md_opts[ $md_pre . '_date' ] ) && empty( $md_opts[ $md_pre . '_time' ] ) ) {	// No date or time.
+
+					unset( $md_opts[ $md_pre . '_date' ] );
+					unset( $md_opts[ $md_pre . '_time' ] );
+					unset( $md_opts[ $md_pre . '_timezone' ] );
+
+				} elseif ( ! empty( $md_opts[ $md_pre . '_date' ] ) && empty( $md_opts[ $md_pre . '_time' ] ) ) {	// Date with no time.
+
+					$md_opts[ $md_pre . '_time' ] = '00:00';
+
+				} elseif ( empty( $md_opts[ $md_pre . '_date' ] ) && ! empty( $md_opts[ $md_pre . '_time' ] ) ) {	// Time with no date.
+
+					if ( 'schema_event_previous' === $md_pre ) {
+
+						unset( $md_opts[ $md_pre . '_date' ] );
+						unset( $md_opts[ $md_pre . '_time' ] );
+						unset( $md_opts[ $md_pre . '_timezone' ] );
+
+					} else {
+
+						$md_opts[ $md_pre . '_date' ] = gmdate( 'Y-m-d', time() );
+					}
+				}
+			}
+
+			/**
+			 * Events with a previous start date must have "rescheduled" as their status.
+			 *
+			 * A rescheduled event, without a previous start date, is also invalid.
+			 */
+			if ( ! empty( $md_opts[ 'schema_event_previous_date' ] ) ) {
+
+				$md_opts[ 'schema_event_status' ]    = 'https://schema.org/EventRescheduled';
+				$md_opts[ 'schema_event_status:is' ] = 'disabled';
+
+			} elseif ( isset( $md_opts[ 'schema_event_status' ] ) && 'https://schema.org/EventRescheduled' === $md_opts[ 'schema_event_status' ] ) {
+
+				$md_opts[ 'schema_event_status' ] = 'https://schema.org/EventScheduled';
+			}
+
+			/**
+			 * Check offer options to make sure they have at least a name or a price.
+			 */
+			$metadata_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX', 5 );
+
+			foreach( array(
+				'schema_event',
+				'schema_review_item_product',
+				'schema_review_item_software_app',
+			) as $md_pre ) {
+
+				foreach ( range( 0, $metadata_offers_max - 1, 1 ) as $key_num ) {
+
+					$is_valid_offer = false;
+
+					foreach ( array(
+						$md_pre . '_offer_name',
+						$md_pre . '_offer_price'
+					) as $md_offer_pre ) {
+
+						if ( isset( $md_opts[ $md_offer_pre . '_' . $key_num] ) && $md_opts[ $md_offer_pre . '_' . $key_num] !== '' ) {
+
+							$is_valid_offer = true;
+						}
+					}
+
+					if ( ! $is_valid_offer ) {
+
+						unset( $md_opts[ $md_pre . '_offer_currency_' . $key_num] );
+						unset( $md_opts[ $md_pre . '_offer_avail_' . $key_num] );
+					}
+				}
+			}
+
+			/**
+			 * Check for invalid Schema type combinations (ie. a claim review of a claim review).
+			 */
+			if ( isset( $md_opts[ 'schema_type' ] ) && 'review.claim' === $md_opts[ 'schema_type' ] ) {
+
+				if ( isset( $md_opts[ 'schema_review_item_type' ] ) && 'review.claim' === $md_opts[ 'schema_review_item_type' ] ) {
+
+					$md_opts[ 'schema_review_item_type' ] = $this->p->options[ 'schema_def_review_item_type' ];
+
+					$notice_msg = __( 'A claim review cannot be the subject of another claim review.', 'wpsso' ) . ' ';
+
+					$notice_msg .= __( 'Please select a subject webpage type that better describes the subject of the webpage (ie. the content) being reviewed.', 'wpsso' );
+
+					$this->p->notice->err( $notice_msg );
+				}
 			}
 
 			/**

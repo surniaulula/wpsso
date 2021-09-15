@@ -345,6 +345,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->mark();
 			}
 
+			/**
+			 * Make sure the current user can submit and same metabox options.
+			 */
 			if ( ! $this->user_can_save( $user_id, $rel_id ) ) {
 
 				return;
@@ -354,15 +357,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$mod = $this->get_mod( $user_id );
 
-			$opts = $this->get_submit_opts( $user_id );
-
 			/**
-			 * Just in case - do not save the SEO description if an SEO plugin is active.
+			 * Merge and check submitted post, term, and user metabox options.
 			 */
-			if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
-
-				unset( $opts[ 'seo_desc' ] );
-			}
+			$opts = $this->get_submit_opts( $mod );
 
 			$opts = apply_filters( 'wpsso_save_md_options', $opts, $mod );
 
@@ -370,14 +368,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( empty( $opts ) ) {
 
-				delete_user_meta( $user_id, WPSSO_META_NAME );
-
-			} else {
-
-				update_user_meta( $user_id, WPSSO_META_NAME, $opts );
+				return delete_user_meta( $user_id, WPSSO_META_NAME );
 			}
 
-			return $user_id;
+			return update_user_meta( $user_id, WPSSO_META_NAME, $opts );
 		}
 
 		public function delete_options( $user_id, $rel_id = false ) {

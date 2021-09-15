@@ -237,7 +237,6 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				'facebook'   => _x( 'Facebook', 'metabox tab', 'wpsso' ),
 				'open_graph' => _x( 'Open Graph', 'metabox tab', 'wpsso' ),
 				'twitter'    => _x( 'Twitter', 'metabox tab', 'wpsso' ),
-				'schema'     => _x( 'Schema', 'metabox tab', 'wpsso' ),
 				'seo_other'  => _x( 'SEO / Other', 'metabox tab', 'wpsso' ),
 			) );
 

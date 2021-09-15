@@ -66,7 +66,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		 * Library class object variables for meta tags and markup.
 		 */
 		public $link_rel;	// WpssoLinkRel class object.
-		public $meta_item;	// WpssoMetaItem class object.
 		public $meta_name;	// WpssoMetaName class object.
 		public $oembed;		// WpssoOembed class object.
 		public $og;		// WpssoOpenGraph class object.
@@ -414,7 +413,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			 *
 			 *	$head
 			 *	$link_rel
-			 *	$meta_item
 			 *	$meta_name
 			 *	$og
 			 *	$pinterest
@@ -424,7 +422,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			 */
 			$this->head      = new WpssoHead( $this );
 			$this->link_rel  = new WpssoLinkRel( $this );		// Link relation tags.
-			$this->meta_item = new WpssoMetaItem( $this );		// Meta itemprop tags.
 			$this->meta_name = new WpssoMetaName( $this );		// Meta name tags.
 			$this->oembed    = new WpssoOembed( $this );		// Oembed response data.
 			$this->og        = new WpssoOpenGraph( $this );		// Open Graph meta tags.

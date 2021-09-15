@@ -428,7 +428,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 *
 				 *	'add_meta_property_og:image:secure_url' = 1
 				 *	'add_meta_property_og:video:secure_url' = 1
-				 *	'add_meta_itemprop_url'                 = 1
 				 *	'plugin_cf_img_url'                     = ''
 				 *	'plugin_cf_vid_url'                     = ''
 				 *	'plugin_cf_review_item_image_url'       = ''
@@ -553,9 +552,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$this->cache_defaults[ 'fb_author_field' ] = $this->p->options[ 'plugin_cm_fb_name' ];
 
 				/**
-				 * Import Yoast SEO Social Meta.
+				 * Maybe import Yoast SEO social meta.
 				 *
-				 * Enabled by default if the Yoast SEO plugin is active, or if no SEO plugin is active and Yoast
+				 * Enabled by default if the Yoast SEO plugin is active, or if no SEO plugin is active but Yoast
 				 * SEO settings are found in the database.
 				 */
 				if ( ! empty( $this->p->avail[ 'seo' ][ 'wpseo' ] ) ) {	// Yoast SEO is active.
@@ -570,9 +569,34 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 				}
 
+				/**
+				 * Define the default organization or person ID for Knowledge Graph markup in the home page.
+				 */
+				switch ( $this->p->options[ 'site_pub_schema_type' ] ) {
+
+					case 'person':
+
+						$defs[ 'schema_def_pub_org_id' ]    = 'none';
+						$defs[ 'schema_def_pub_person_id' ] = $this->p->options[ 'site_pub_person_id' ];
+
+						break;
+
+					case 'organization':
+					default:
+
+						$defs[ 'schema_def_pub_org_id' ]    = 'site';
+						$defs[ 'schema_def_pub_person_id' ] = 'none';
+
+						break;
+				}
+
+				/**
+				 * If there's an update authentication method available, make sure the option key for its value
+				 * exists.
+				 */
 				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-					if ( ! empty( $info[ 'update_auth' ] ) && $info[ 'update_auth' ]!== 'none' ) {	// Just in case.
+					if ( ! empty( $info[ 'update_auth' ] ) && 'none' !== $info[ 'update_auth' ] ) {	// Just in case.
 
 						$this->cache_defaults[ 'plugin_' . $ext . '_' . $info[ 'update_auth' ] ] = '';
 					}
@@ -927,7 +951,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							$defs = $this->get_defaults();
 						}
 
-						$advanced_preg = '/^(plugin_.*|add_meta_(property_|name_twitter:).*|.*_img_(width|height|crop|crop_x|crop_y))$/';
+						$advanced_preg = '/^(plugin_.*|add_meta_(property_|name_twitter:).*|.*_img_(width|height|crop|crop_x|crop_y)|schema_def_.*)$/';
 						$advanced_opts = SucomUtil::preg_grep_keys( $advanced_preg, $defs );
 						$advanced_opts = SucomUtil::preg_grep_keys( '/^plugin_.*_tid$/', $advanced_opts, $invert = true );
 

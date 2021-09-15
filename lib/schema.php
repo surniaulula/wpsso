@@ -3906,7 +3906,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$thing =& $schema_types[ 'thing' ];	// Quick ref variable for the 'thing' array.
 
 			/**
-			 * Thing > Intangible > Enumeration
+			 * Thing > Intangible > Enumeration.
 			 */
 			$thing[ 'intangible' ][ 'enumeration' ][ 'specialty' ][ 'medical.specialty' ] =&
 				$thing[ 'intangible' ][ 'enumeration' ][ 'medical.enumeration' ][ 'medical.specialty' ];
@@ -3915,7 +3915,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$thing[ 'intangible' ][ 'enumeration' ][ 'payment.method' ][ 'payment.card' ];
 
 			/**
-			 * Thing > Organization > Local Business
+			 * Thing > Organization > Educational Organization.
+			 */
+			$thing[ 'organization' ][ 'educational.organization' ] =& $thing[ 'place' ][ 'civic.structure' ][ 'educational.organization' ];
+
+			/**
+			 * Thing > Organization > Local Business.
 			 */
 			$thing[ 'organization' ][ 'local.business' ] =& $thing[ 'place' ][ 'local.business' ];
 		}
