@@ -46,7 +46,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			$this->p->util->add_plugin_actions( $this, array(
 				'init_objects' => 0,
-			) );
+			), $prio = 1000 );
 		}
 
 		/**
