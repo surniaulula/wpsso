@@ -93,6 +93,11 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 					 */
 					if ( 'admin' === $sub_dir && ! $is_admin ) {
 
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( $ext . ' lib/' . $type_dir . ' skipped' );
+						}
+
 						continue;
 					}
 

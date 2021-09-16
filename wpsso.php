@@ -117,7 +117,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			add_action( 'widgets_init', array( $this, 'register_widgets' ), 10 );				// Runs at init 1.
 			add_action( 'init', array( $this, 'set_options' ), WPSSO_INIT_OPTIONS_PRIORITY );		// Runs at init 9.
 			add_action( 'init', array( $this, 'set_objects' ), WPSSO_INIT_OBJECTS_PRIORITY );		// Runs at init 10.
-			add_action( 'init', array( $this, 'init_hooks' ), WPSSO_INIT_HOOKS_PRIORITY );			// Runs at init 11.
+			add_action( 'init', array( $this, 'init_json_filters' ), WPSSO_INIT_JSON_FILTERS_PRIORITY );	// Runs at init 11.
 			add_action( 'init', array( $this, 'init_shortcodes' ), WPSSO_INIT_SHORTCODES_PRIORITY );	// Runs at init 11.
 			add_action( 'init', array( $this, 'init_plugin' ), WPSSO_INIT_PLUGIN_PRIORITY );		// Runs at init 12.
 
@@ -152,6 +152,9 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		 */
 		public function register_widgets() {
 
+			/**
+			 * Load lib/widget/* library files.
+			 */
 			$classnames = $this->get_lib_classnames( 'widget' );	// Always returns an array.
 
 			foreach ( $classnames as $id => $classname ) {
@@ -552,25 +555,36 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		/**
 		 * Runs at init priority 11.
 		 */
-		public function init_hooks() {
+		public function init_json_filters() {
 
 			if ( $this->debug->enabled ) {
 
-				$this->debug->mark( 'init hooks' );	// Begin timer.
+				$this->debug->mark( 'init json filters' );	// Begin timer.
 			}
 
-			foreach ( array( 'filters' ) as $type_dir ) {
+			/**
+			 * Load lib/json-filters/* library files.
+			 */
+			if ( $this->avail[ 'p' ][ 'schema' ] ) {
 
-				$classnames = $this->get_lib_classnames( $type_dir );	// Always returns an array.
+				$classnames = $this->get_lib_classnames( 'json-filters' );	// Always returns an array.
 
 				foreach ( $classnames as $id => $classname ) {
-					new $classname( $this );	// Variable assignment is not required.
+
+					new $classname( $this );
+				}
+
+			} else {
+
+				if ( $this->debug->enabled ) {
+
+					$this->debug->log( 'schema markup is disabled' );
 				}
 			}
 
 			if ( $this->debug->enabled ) {
 
-				$this->debug->mark( 'init hooks' );	// End timer.
+				$this->debug->mark( 'init json filters' );	// End timer.
 			}
 		}
 
@@ -584,6 +598,9 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$this->debug->mark( 'init shortcodes' );	// Begin timer.
 			}
 
+			/**
+			 * Load lib/shortcode/* library files.
+			 */
 			$classnames = $this->get_lib_classnames( 'shortcode' );	// Always returns an array.
 
 			foreach ( $classnames as $id => $classname ) {

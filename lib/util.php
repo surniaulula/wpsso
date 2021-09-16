@@ -3508,7 +3508,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$have_amp          = $mod[ 'is_post' ] && $mod[ 'id' ] && function_exists( 'amp_get_permalink' ) ? true : false;
 			$have_clipboard    = $use_clipboard && method_exists( 'SucomForm', 'get_no_input_clipboard' ) ? true : false;
-			$have_json         = empty( $this->p->avail[ 'p' ][ 'schema' ] ) || empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ?  false : true;
+			$have_schema       = $this->p->avail[ 'p' ][ 'schema' ] ?  true : false;
 			$amp_url_enc       = $have_amp ? urlencode( amp_get_permalink( $mod[ 'id' ] ) ) : '';
 			$canonical_url_enc = urlencode( $canonical_url );
 
@@ -3535,8 +3535,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				),
 				'google-rich-results' => array(
 					'title' => _x( 'Google Rich Results Test', 'option label', 'wpsso' ),
-					'type'  => _x( 'Rich Results', 'validator type', 'wpsso' ) . ( $have_json ? '' : ' *' ),
-					'url'   => $have_json ? 'https://search.google.com/test/rich-results?url=' . $canonical_url_enc : '',
+					'type'  => _x( 'Rich Results', 'validator type', 'wpsso' ) . ( $have_schema ? '' : ' *' ),
+					'url'   => $have_schema ? 'https://search.google.com/test/rich-results?url=' . $canonical_url_enc : '',
 				),
 				'linkedin' => array(
 					'title' => _x( 'LinkedIn Post Inspector', 'option label', 'wpsso' ),
@@ -3550,8 +3550,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				),
 				'schema-markup-validator' => array(
 					'title' => _x( 'Schema Markup Validator', 'option label', 'wpsso' ),
-					'type'  => _x( 'Schema Markup', 'validator type', 'wpsso' ) . ( $have_json ? '' : ' *' ),
-					'url'   => $have_json ? 'https://validator.schema.org/#url=' . $canonical_url_enc : '',
+					'type'  => _x( 'Schema Markup', 'validator type', 'wpsso' ) . ( $have_schema ? '' : ' *' ),
+					'url'   => $have_schema ? 'https://validator.schema.org/#url=' . $canonical_url_enc : '',
 				),
 				'twitter' => $have_clipboard ? array(
 					'title'     => _x( 'Twitter Card Validator', 'option label', 'wpsso' ),

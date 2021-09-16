@@ -134,6 +134,59 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 				$this->p->debug->mark();
 			}
 
+			$features[ '(code) Facebook / Open Graph Meta Tags' ] = array(
+				'label_transl' => _x( '(code) Facebook / Open Graph Meta Tags', 'lib file description', 'wpsso' ),
+				'status'       => class_exists( 'wpssoopengraph' ) ? 'on' : 'recommended',
+			);
+
+			$features[ '(code) Link Relation Canonical Tag' ] = array(
+				'label_transl' => _x( '(code) Link Relation Canonical Tag', 'lib file description', 'wpsso' ),
+				'status'       => empty( $this->p->options[ 'add_link_rel_canonical' ] ) ? 'off' : 'on',
+			);
+
+			$features[ '(code) Link Relation Shortlink Tag' ] = array(
+				'label_transl' => _x( '(code) Link Relation Shortlink Tag', 'lib file description', 'wpsso' ),
+				'status'       => empty( $this->p->options[ 'add_link_rel_shortlink' ] ) ? 'off' : 'on',
+			);
+
+			$features[ '(code) oEmbed Response Enhancements' ] = array(
+				'label_transl' => _x( '(code) oEmbed Response Enhancements', 'lib file description', 'wpsso' ),
+				'status'       => class_exists( 'WpssoOembed' ) && function_exists( 'get_oembed_response_data' ) ? 'on' : 'recommended',
+			);
+
+			$features[ '(code) Pinterest Hidden Content Image' ] = array(
+				'label_transl' => _x( '(code) Pinterest Hidden Content Image', 'lib file description', 'wpsso' ),
+				'label_url'    => $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_pinterest' ),
+				'status'       => empty( $this->p->options[ 'pin_add_img_html' ] ) ? 'off' : 'on',
+			);
+
+			$features[ '(code) SEO Description Meta Tag' ] = array(
+				'label_transl' => _x( '(code) SEO Description Meta Tag', 'lib file description', 'wpsso' ),
+				'status'       => empty( $this->p->options[ 'add_meta_name_description' ] ) ? 'off' : 'on',
+			);
+
+			$features[ '(code) SEO Robots Meta Tags' ] = array(
+				'label_transl' => _x( '(code) SEO Robots Meta Tags', 'lib file description', 'wpsso' ),
+				'status'       => empty( $this->p->options[ 'add_meta_name_robots' ] ) ? 'off' : 'on',
+			);
+
+			$features[ '(code) Twitter Card Meta Tags' ] = array(
+				'label_transl' => _x( '(code) Twitter Card Meta Tags', 'lib file description', 'wpsso' ),
+				'status'       => class_exists( 'WpssoTwitterCard' ) ? 'on' : 'recommended',
+			);
+
+			$features[ '(code) WP Sitemaps Enhancements' ] = array(
+				'label_transl' => _x( '(code) WP Sitemaps Enhancements', 'lib file description', 'wpsso' ),
+				'status'       => SucomUtilWP::sitemaps_enabled() ? 'on' : 'off',
+			);
+
+			return $this->filter_status_std_features_schema( $features, $ext, $info );
+		}
+
+		public function filter_status_std_features_schema( $features, $ext, $info ) {
+
+			$google_tab_url = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_google' );
+
 			if ( $this->p->avail[ 'p' ][ 'schema' ] ) {
 
 				$org_status    = 'organization' === $this->p->options[ 'site_pub_schema_type' ] ? 'on' : 'off';
@@ -147,18 +200,15 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 				$knowl_status  = 'disabled';
 			}
 
-			$features[ '(code) Facebook / Open Graph Meta Tags' ] = array(
-				'label_transl' => _x( '(code) Facebook / Open Graph Meta Tags', 'lib file description', 'wpsso' ),
-				'status'       => class_exists( 'wpssoopengraph' ) ? 'on' : 'recommended',
-			);
-
 			$features[ '(code) Knowledge Graph Organization Markup' ] = array(
 				'label_transl' => _x( '(code) Knowledge Graph Organization Markup', 'lib file description', 'wpsso' ),
+				'label_url'    => $google_tab_url,
 				'status'       => $org_status,
 			);
 
 			$features[ '(code) Knowledge Graph Person Markup' ] = array(
 				'label_transl' => _x( '(code) Knowledge Graph Person Markup', 'lib file description', 'wpsso' ),
+				'label_url'    => $google_tab_url,
 				'status'       => $person_status,
 			);
 
@@ -167,38 +217,43 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 				'status'       => $knowl_status,
 			);
 
-			$features[ '(code) Link Relation URL Tags' ] = array(
-				'label_transl' => _x( '(code) Link Relation URL Tags', 'lib file description', 'wpsso' ),
-				'status'       => class_exists( 'WpssoLinkRel' ) ? 'on' : 'recommended',
-			);
+			foreach ( array( 'json-filters' ) as $type_dir ) {
 
-			/**
-			 * get_oembed_response_data() is available since WP v4.4.
-			 */
-			$features[ '(code) oEmbed Response Enhancements' ] = array(
-				'label_transl' => _x( '(code) oEmbed Response Enhancements', 'lib file description', 'wpsso' ),
-				'status'       => class_exists( 'WpssoOembed' ) && function_exists( 'get_oembed_response_data' ) ? 'on' : 'recommended',
-			);
+				if ( empty( $info[ 'lib' ][ $type_dir ] ) ) {	// Just in case.
 
-			$features[ '(code) Pinterest / SEO Meta Name Tags' ] = array(
-				'label_transl' => _x( '(code) Pinterest / SEO Meta Name Tags', 'lib file description', 'wpsso' ),
-				'status'       => class_exists( 'WpssoMetaName' ) ? 'on' : 'recommended',
-			);
+					continue;
+				}
 
-			$features[ '(code) Post, Term, and User Robots Meta' ] = array(
-				'label_transl' => _x( '(code) Post, Term, and User Robots Meta', 'lib file description', 'wpsso' ),
-				'status'       => empty( $this->p->options[ 'add_meta_name_robots' ] ) ? 'off' : 'on',
-			);
+				foreach ( $info[ 'lib' ][ $type_dir ] as $sub_dir => $libs ) {
 
-			$features[ '(code) Twitter Card Meta Tags' ] = array(
-				'label_transl' => _x( '(code) Twitter Card Meta Tags', 'lib file description', 'wpsso' ),
-				'status'       => class_exists( 'WpssoTwitterCard' ) ? 'on' : 'recommended',
-			);
+					if ( is_array( $libs ) ) {
 
-			$features[ '(code) WP Sitemaps Enhancements' ] = array(
-				'label_transl' => _x( '(code) WP Sitemaps Enhancements', 'lib file description', 'wpsso' ),
-				'status'       => SucomUtilWP::sitemaps_enabled() ? 'on' : 'off',
-			);
+						if ( 'admin' === $sub_dir ) { // Skip status for admin menus and tabs.
+
+							continue;
+						}
+
+						foreach ( $libs as $id => $label ) {
+
+							$label_transl = _x( $label, 'lib file description', 'wpsso' );
+
+							$classname = SucomUtil::sanitize_classname( 'wpsso' . $type_dir . $sub_dir . $id, $allow_underscore = false );
+
+							if ( preg_match( '/^(.*) \[schema_type:(.+)\]$/', $label_transl, $match ) ) {
+
+								$count = $this->p->schema->count_schema_type_children( $match[ 2 ] );
+
+								$label_transl = $match[ 1 ] . ' ' . sprintf( __( '(%d sub-types)', 'wpsso' ), $count );
+							}
+
+							$features[ $label ] = array(
+								'label_transl' => $label_transl,
+								'status'       => class_exists( $classname ) ? 'on' : 'disabled',
+							);
+						}
+					}
+				}
+			}
 
 			return $features;
 		}
