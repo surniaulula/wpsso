@@ -324,10 +324,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Deprecated the head attributes check in theme header templates.
+	* Deprecated the Schema link and meta itemprop tags.
+	* Removed the SSO &gt; Advanced Settings &gt; HTML Tags &gt; Schema tab.
+	* Moved the Schema JSON data filters from the WPSSO JSON add-on to the WPSSO Core plugin.
+	* Moved the Document SSO &gt; Customize &gt; Schema JSON-LD Markup / Google Rich Results section from the WPSSO JSON add-on to the WPSSO Core plugin (Free / Standard version).
 * **Bugfixes**
-	* None.
+	* Fixed caching of option defaults array once plugin objects have been initialized.
 * **Developer Notes**
+	* Added a new WpssoOptionsFilters class.
 	* Deprecated the 'wpsso_add_schema_head_attributes' filter.
 	* Deprecated the 'wpsso_add_schema_meta_array' filter.
 	* Deprecated the 'wpsso_add_schema_noscript_aggregaterating' filter.
@@ -964,7 +969,7 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 
 = 9.0.0-dev.1 =
 
-(TBD) None.
+(TBD) Moved the Schema JSON data filters from the WPSSO JSON add-on to the WPSSO Core plugin.
 
 = 8.39.1 =
 
