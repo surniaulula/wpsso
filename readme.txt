@@ -324,21 +324,25 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Deprecated the head attributes check in theme header templates.
 	* Deprecated the Schema link and meta itemprop tags.
+	* Deprecated the head attributes check in theme header templates.
 	* Removed the SSO &gt; Advanced Settings &gt; HTML Tags &gt; Schema tab.
 	* Moved the Schema JSON data filters from the WPSSO JSON add-on to the WPSSO Core plugin.
 	* Moved the Document SSO &gt; Customize &gt; Schema JSON-LD Markup / Google Rich Results section from the WPSSO JSON add-on to the WPSSO Core plugin (Free / Standard version).
 * **Bugfixes**
 	* Fixed caching of option defaults array once plugin objects have been initialized.
+	* Fixed missing 'areaServed' property in Schema LocalBusiness markup for places / locations.
 * **Developer Notes**
 	* Added a new WpssoOptionsFilters class.
-	* Deprecated the 'wpsso_add_schema_head_attributes' filter.
-	* Deprecated the 'wpsso_add_schema_meta_array' filter.
-	* Deprecated the 'wpsso_add_schema_noscript_aggregaterating' filter.
-	* Deprecated the 'wpsso_schema_meta_itemprop' filter.
-	* Deprecated the `WPSSO_HEAD_ATTR_FILTER_NAME` constant.
-	* Deprecated the `WPSSO_HEAD_ATTR_FILTER_PRIO` constants.
+	* Removed the `WpssoMetaItem` class.
+	* Removed the `WpssoSchemaNoScript` class.
+	* Removed the 'wpsso_add_schema_head_attributes' filter.
+	* Removed the 'wpsso_add_schema_meta_array' filter.
+	* Removed the 'wpsso_add_schema_noscript_aggregaterating' filter.
+	* Removed the 'wpsso_add_schema_noscript_array' filter.
+	* Removed the 'wpsso_schema_meta_itemprop' filter.
+	* Removed the `WPSSO_HEAD_ATTR_FILTER_NAME` constant.
+	* Removed the `WPSSO_HEAD_ATTR_FILTER_PRIO` constant.
 	* Deprecated the `WpssoAdmin->check_tmpl_head_attributes()` method.
 * **Requires At Least**
 	* PHP v7.0.
