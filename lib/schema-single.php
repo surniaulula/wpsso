@@ -2103,7 +2103,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 							'servesCuisine'       => 'place_cuisine',
 						) as $prop_name => $opt_key ) {
 	
-							if ( $opt_key === 'place_accept_res' ) {
+							if ( 'place_accept_res' === $opt_key ) {
 	
 								$json_ret[ $prop_name ] = empty( $place_opts[ $opt_key ] ) ? 'false' : 'true';
 	

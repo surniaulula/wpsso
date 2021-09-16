@@ -40,17 +40,20 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeLocalBusiness' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$json_ret = array();
-
 			/**
-			 * Skip reading place meta tags if not main schema type or if there are no place meta tags.
+			 * Skip if not the main schema types or there are no place meta tags.
 			 */
-			$read_mt_place = false;
+			if ( ! $is_main || ! preg_grep( '/^place:/', array_keys( $mt_og ) ) ) {
 
-			if ( $is_main && preg_grep( '/^place:/', array_keys( $mt_og ) ) ) {
+				if ( $this->p->debug->enabled ) {
 
-				$read_mt_place = true;
+					$this->p->debug->log( 'exiting early: not main or no place meta tags');
+				}
+
+				return $json_data;
 			}
+
+			$json_ret = array();
 
 			/**
 			 * Property:
@@ -58,34 +61,28 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeLocalBusiness' ) ) {
 			 * 	paymentAccepted
 			 * 	priceRange
 			 */
-			if ( $read_mt_place ) {
-
-				WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $mt_og, array(
-					'currenciesAccepted' => 'place:business:currencies_accepted',	// Example: USD, CAD.
-					'paymentAccepted'    => 'place:business:payment_accepted',	// Example: Cash, Credit Card.
-					'priceRange'         => 'place:business:price_range',		// Example: $$.
-				) );
-			}
+			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $mt_og, array(
+				'currenciesAccepted' => 'place:business:currencies_accepted',	// Example: USD, CAD.
+				'paymentAccepted'    => 'place:business:payment_accepted',	// Example: Cash, Credit Card.
+				'priceRange'         => 'place:business:price_range',		// Example: $$.
+			) );
 
 			/**
 			 * Property:
 			 *	areaServerd as https://schema.org/GeoShape
 			 */
-			if ( $read_mt_place ) {
+			if ( ! empty( $mt_og[ 'place:location:latitude' ] ) &&
+				! empty( $mt_og[ 'place:location:longitude' ] ) &&
+					! empty( $mt_og[ 'place:business:service_radius' ] ) ) {
 
-				if ( ! empty( $mt_og[ 'place:location:latitude' ] ) &&
-					! empty( $mt_og[ 'place:location:longitude' ] ) &&
-						! empty( $mt_og[ 'place:business:service_radius' ] ) ) {
+				$json_ret[ 'areaServed' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/GeoShape', array(
+					'circle' => $mt_og[ 'place:location:latitude' ] . ' ' . $mt_og[ 'place:location:longitude' ] . ' ' .
+						$mt_og[ 'place:business:service_radius' ]
+				) );
 
-					$json_ret[ 'areaServed' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/GeoShape', array(
-						'circle' => $mt_og[ 'place:location:latitude' ] . ' ' . $mt_og[ 'place:location:longitude' ] . ' ' .
-							$mt_og[ 'place:business:service_radius' ]
-					) );
+			} elseif ( $this->p->debug->enabled ) {
 
-				} elseif ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'no place:location meta tags found for area served' );
-				}
+				$this->p->debug->log( 'no place:location meta tags found for area served' );
 			}
 
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );

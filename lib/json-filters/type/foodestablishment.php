@@ -51,8 +51,27 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeFoodEstablishment' ) ) {
 				$this->p->debug->mark();
 			}
 
+			/**
+			 * Skip if not the main schema types or there are no place meta tags.
+			 */
+			if ( ! $is_main || ! preg_grep( '/^place:/', array_keys( $mt_og ) ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: not main or no place meta tags');
+				}
+
+				return $json_data;
+			}
+
 			$json_ret = array();
 
+			/**
+			 * Property:
+			 * 	acceptsReservations
+			 * 	hasMenu
+			 * 	servesCuisine
+			 */
 			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $mt_og, array( 
 				'acceptsReservations' => 'place:business:accepts_reservations',	// True or false.
 				'hasMenu'             => 'place:business:menu_url',
