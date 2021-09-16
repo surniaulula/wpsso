@@ -2702,6 +2702,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 * Deprecated on 2021/09/15.
 		 */
 		public function check_tmpl_head_attributes() {
+
+			_deprecated_function( __METHOD__ . '()', '2021/09/16', $replacement = '' );	// Deprecation message.
 		}
 
 		public function check_wp_config_constants() {

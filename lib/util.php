@@ -937,7 +937,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				/**
 				 * Example:
 				 *
-				 * 	'add_schema_meta_array' => '__return_false'
+				 * 	'wpsso_filter_hook_name' => '__return_false'
 				 */
 				} elseif ( is_string( $val ) ) {
 

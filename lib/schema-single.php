@@ -2021,9 +2021,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'alternateName'      => 'place_name_alt',
 				'description'        => 'place_desc',
 				'telephone'          => 'place_phone',
-				'currenciesAccepted' => 'place_currencies_accepted',
-				'paymentAccepted'    => 'place_payment_accepted',
-				'priceRange'         => 'place_price_range',
 			) );
 
 			/**
@@ -2071,39 +2068,64 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$json_ret[ 'openingHoursSpecification' ] = $opening_hours_spec;
 			}
 
-			/**
-			 * FoodEstablishment schema type properties
-			 */
 			if ( ! empty( $place_opts[ 'place_schema_type' ] ) && $place_opts[ 'place_schema_type' ] !== 'none' ) {
 
-				if ( $wpsso->schema->is_schema_type_child( $place_opts[ 'place_schema_type' ], 'food.establishment' ) ) {
+				/**
+				 * LocalBusiness schema type properties.
+				 */
+				if ( $wpsso->schema->is_schema_type_child( $place_opts[ 'place_schema_type' ], 'local.business' ) ) {
 
-					foreach ( array(
-						'acceptsReservations' => 'place_accept_res',
-						'hasMenu'             => 'place_menu_url',
-						'servesCuisine'       => 'place_cuisine',
-					) as $prop_name => $opt_key ) {
+					WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $place_opts, array(
+						'currenciesAccepted' => 'place_currencies_accepted',
+						'paymentAccepted'    => 'place_payment_accepted',
+						'priceRange'         => 'place_price_range',
+					) );
 
-						if ( $opt_key === 'place_accept_res' ) {
+					if ( ! empty( $place_opts[ 'place_latitude' ] ) &&
+						! empty( $place_opts[ 'place_longitude' ] ) &&
+							! empty( $place_opts[ 'place_service_radius' ] ) ) {
 
-							$json_ret[ $prop_name ] = empty( $place_opts[ $opt_key ] ) ? 'false' : 'true';
-
-						} elseif ( isset( $place_opts[ $opt_key ] ) ) {
-
-							$json_ret[ $prop_name ] = $place_opts[ $opt_key ];
-						}
+						$json_ret[ 'areaServed' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/GeoShape', array(
+							'circle' => $place_opts[ 'place_latitude' ] . ' ' .
+								$place_opts[ 'place_longitude' ] . ' ' .
+								$place_opts[ 'place_service_radius' ]
+						) );
 					}
-				}
-			}
 
-			if ( ! empty( $place_opts[ 'place_order_urls' ] ) ) {
+					/**
+					 * FoodEstablishment schema type properties.
+					 */
+					if ( $wpsso->schema->is_schema_type_child( $place_opts[ 'place_schema_type' ], 'food.establishment' ) ) {
+	
+						foreach ( array(
+							'acceptsReservations' => 'place_accept_res',
+							'hasMenu'             => 'place_menu_url',
+							'servesCuisine'       => 'place_cuisine',
+						) as $prop_name => $opt_key ) {
+	
+							if ( $opt_key === 'place_accept_res' ) {
+	
+								$json_ret[ $prop_name ] = empty( $place_opts[ $opt_key ] ) ? 'false' : 'true';
+	
+							} elseif ( isset( $place_opts[ $opt_key ] ) ) {
+	
+								$json_ret[ $prop_name ] = $place_opts[ $opt_key ];
+							}
+						}
+				
+						if ( ! empty( $place_opts[ 'place_order_urls' ] ) ) {
+	
+							foreach ( SucomUtil::explode_csv( $place_opts[ 'place_order_urls' ] ) as $order_url ) {
+	
+								if ( empty( $order_url ) ) {	// Just in case.
 
-				foreach ( SucomUtil::explode_csv( $place_opts[ 'place_order_urls' ] ) as $order_url ) {
-
-					if ( ! empty( $order_url ) ) {	// Just in case.
-
-						$json_ret[ 'potentialAction' ][] = WpssoSchema::get_schema_type_context( 'https://schema.org/OrderAction',
-							array( 'target' => $order_url ) );
+									continue;
+								}
+	
+								$json_ret[ 'potentialAction' ][] = WpssoSchema::get_schema_type_context( 'https://schema.org/OrderAction',
+									array( 'target' => $order_url ) );
+							}
+						}
 					}
 				}
 			}

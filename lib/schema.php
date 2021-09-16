@@ -30,7 +30,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 	class WpssoSchema {
 
 		private $p;		// Wpsso class object.
-		private $noscript;	// WpssoSchemaNoScript class object.
 
 		private $types_cache = array();	// Schema types array cache.
 
@@ -44,16 +43,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$this->p->debug->mark();
 			}
-
-			/**
-			 * Instantiate the WpssoSchemaNoScript class object.
-			 */
-			if ( ! class_exists( 'WpssoSchemaNoScript' ) ) {
-
-				require_once WPSSO_PLUGINDIR . 'lib/schema-noscript.php';
-			}
-
-			$this->noscript = new WpssoSchemaNoScript( $plugin );
 
 			$this->p->util->add_plugin_filters( $this, array( 
 				'plugin_image_sizes'   => 1,
