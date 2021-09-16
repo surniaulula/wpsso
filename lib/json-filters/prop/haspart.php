@@ -18,6 +18,9 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 
 		private static $meta_key = '_wpsso_json_haspart';
 
+		/**
+		 * Instantiated by Wpsso->init_json_filters().
+		 */
 		public function __construct( &$plugin ) {
 
 			$this->p =& $plugin;

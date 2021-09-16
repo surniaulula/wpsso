@@ -38,6 +38,16 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				$this->p->debug->mark();
 			}
 
+			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'schema markup is disabled' );
+				}
+
+				return $table_rows;
+			}
+
 			/**
 			 * Select arrays.
 			 */

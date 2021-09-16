@@ -16,6 +16,9 @@ if ( ! class_exists( 'WpssoJsonFiltersTypePerson' ) ) {
 
 		private $p;	// Wpsso class object.
 
+		/**
+		 * Instantiated by Wpsso->init_json_filters().
+		 */
 		public function __construct( &$plugin ) {
 
 			$this->p =& $plugin;
