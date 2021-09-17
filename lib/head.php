@@ -38,6 +38,18 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( ! empty( $this->p->avail[ 'amp' ][ 'any' ] ) ) {
 
 				add_action( 'amp_post_template_head', array( $this, 'show_head' ), WPSSO_HEAD_PRIORITY );
+			
+				if ( $this->p->avail[ 'p' ][ 'schema' ] ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'disabling amp_post_template_metadata' );
+					}
+
+					$max_int = SucomUtil::get_max_int();
+
+					add_filter( 'amp_post_template_metadata', '__return_empty_array', $max_int );
+				}
 			}
 
 			/**

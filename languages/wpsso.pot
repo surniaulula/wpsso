@@ -4584,13 +4584,13 @@ msgid ""
 msgstr ""
 
 #. translators: %s is the Events Calendar plugin name
-#: gettext/gettext-lib-pro.php:417 lib/pro/event/the-events-calendar.php:51
+#: gettext/gettext-lib-pro.php:417 lib/pro/event/the-events-calendar.php:53
 msgctxt "option value"
 msgid "[%s Venue]"
 msgstr ""
 
 #. translators: %s is the Events Calendar plugin name
-#: gettext/gettext-lib-pro.php:418 lib/pro/event/the-events-calendar.php:59
+#: gettext/gettext-lib-pro.php:418 lib/pro/event/the-events-calendar.php:61
 msgctxt "option value"
 msgid "[%s Organizer]"
 msgstr ""
@@ -4720,13 +4720,13 @@ msgid "getting stamp.io ratings and reviews"
 msgstr ""
 
 #. translators: %s is the Job Manager plugin name
-#: gettext/gettext-lib-pro.php:457 lib/pro/job/wpjobmanager.php:51
+#: gettext/gettext-lib-pro.php:457 lib/pro/job/wpjobmanager.php:53
 msgctxt "option value"
 msgid "[%s Company]"
 msgstr ""
 
 #. translators: %s is the Job Manager plugin name
-#: gettext/gettext-lib-pro.php:458 lib/pro/job/wpjobmanager.php:59
+#: gettext/gettext-lib-pro.php:458 lib/pro/job/wpjobmanager.php:61
 msgctxt "option value"
 msgid "[%s Location]"
 msgstr ""
@@ -6206,23 +6206,23 @@ msgctxt "submit button"
 msgid "Validate %s"
 msgstr ""
 
-#: lib/head.php:578
+#: lib/head.php:590
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:587
+#: lib/head.php:599
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:596
+#: lib/head.php:608
 msgid "adding meta name meta tags"
 msgstr ""
 
-#: lib/head.php:605
+#: lib/head.php:617
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:625
+#: lib/head.php:637
 msgid "adding schema json-ld markup"
 msgstr ""
 
@@ -9749,7 +9749,7 @@ msgid ""
 "post ID %3$d (%4$s)."
 msgstr ""
 
-#: lib/post.php:730 lib/post.php:1326 lib/schema.php:3408 lib/term.php:575
+#: lib/post.php:730 lib/post.php:1326 lib/schema.php:3417 lib/term.php:575
 #: lib/user.php:572
 msgid "checking meta tags"
 msgstr ""
@@ -9959,11 +9959,11 @@ msgstr ""
 msgid "adding schema place"
 msgstr ""
 
-#: lib/schema.php:677
+#: lib/schema.php:686
 msgid "adding schema"
 msgstr ""
 
-#: lib/schema.php:1886
+#: lib/schema.php:1895
 msgid "adding schema %s #%d image"
 msgstr ""
 

@@ -58,7 +58,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 
 			if ( ! empty( $this->p->avail[ 'seo' ][ 'aioseop' ] ) ) {
 
-				add_filter( 'aioseo_schema_disable', '__return_true', 10, 1 );
+				add_filter( 'aioseo_schema_disable', '__return_true', 1000 );
 			}
 
 			/**
@@ -69,16 +69,15 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				/**
 				 * Filter for the get_option() and update_option() functions.
 				 */
-				add_filter( 'option_wr2x_retina_sizes', array( $this, 'update_wr2x_retina_sizes' ), 10, 1 );
+				add_filter( 'option_wr2x_retina_sizes', array( $this, 'update_wr2x_retina_sizes' ), 1000, 1 );
 
-				add_filter( 'pre_update_option_wr2x_retina_sizes', array( $this, 'update_wr2x_retina_sizes' ), 10, 1 );
+				add_filter( 'pre_update_option_wr2x_retina_sizes', array( $this, 'update_wr2x_retina_sizes' ), 1000, 1 );
 			}
 
 			/**
 			 * Yoast SEO.
 			 */
-			if ( ! empty( $this->p->avail[ 'seo' ][ 'wpseo' ] ) ||
-				! empty( $this->p->options[ 'plugin_wpseo_social_meta' ] ) ) {	// Import Yoast SEO Social Meta.
+			if ( ! empty( $this->p->avail[ 'seo' ][ 'wpseo' ] ) || ! empty( $this->p->options[ 'plugin_wpseo_social_meta' ] ) ) {
 
 				$this->p->util->add_plugin_filters( $this, array( 
 					'wpseo_replace_vars' => 2,
