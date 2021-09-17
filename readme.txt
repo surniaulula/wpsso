@@ -333,7 +333,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fixed caching of option defaults array once plugin objects have been initialized.
 	* Fixed missing 'areaServed' property in Schema LocalBusiness markup for places / locations.
 * **Developer Notes**
-	* Added a new WpssoOptionsFilters class.
+	* Added a new `WpssoOptionsFilters` class.
+	* Added a new `WpssoConfig::get_social_accounts()` method.
 	* Removed the `WpssoMetaItem` class.
 	* Removed the `WpssoSchemaNoScript` class.
 	* Removed the 'wpsso_add_schema_head_attributes' filter.
