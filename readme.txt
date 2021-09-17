@@ -319,7 +319,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.0.0-dev.1 (TBD)**
+**Version 9.0.0-dev.1 (2021/09/17)**
 
 * **New Features**
 	* None.
@@ -328,7 +328,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Deprecated the head attributes check in theme header templates.
 	* Removed the SSO &gt; Advanced Settings &gt; HTML Tags &gt; Schema tab.
 	* Moved the Schema JSON data filters from the WPSSO JSON add-on to the WPSSO Core plugin.
-	* Moved the Document SSO &gt; Customize &gt; Schema JSON-LD Markup / Google Rich Results section from the WPSSO JSON add-on to the WPSSO Core plugin (Free / Standard version).
+	* Moved the Document SSO &gt; Schema JSON-LD Markup / Google Rich Results sections from the WPSSO JSON add-on to the WPSSO Core plugin.
 * **Bugfixes**
 	* Fixed caching of option defaults array once plugin objects have been initialized.
 	* Fixed missing 'areaServed' property in Schema LocalBusiness markup for places / locations.
@@ -974,7 +974,7 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 
 = 9.0.0-dev.1 =
 
-(TBD) Moved the Schema JSON data filters from the WPSSO JSON add-on to the WPSSO Core plugin.
+(2021/09/17) Moved the Schema JSON data filters from the WPSSO JSON add-on to the WPSSO Core plugin.
 
 = 8.39.1 =
 
