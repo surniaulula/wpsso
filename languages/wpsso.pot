@@ -3195,8 +3195,8 @@ msgid "Show"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:120 gettext/gettext-lib-pro.php:123
-#: lib/messages-info.php:212 lib/messages-tooltip.php:745
-#: lib/messages-tooltip.php:747 lib/messages-tooltip.php:759
+#: lib/messages-info.php:212 lib/messages-tooltip.php:766
+#: lib/messages-tooltip.php:768 lib/messages-tooltip.php:780
 #: lib/pro/admin/advanced.php:865 lib/pro/admin/advanced.php:918
 #: lib/std/admin/advanced.php:797 lib/std/admin/advanced.php:852
 msgctxt "column title"
@@ -3204,7 +3204,7 @@ msgid "Contact Field ID"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:121 gettext/gettext-lib-pro.php:124
-#: lib/messages-info.php:214 lib/messages-tooltip.php:753
+#: lib/messages-info.php:214 lib/messages-tooltip.php:774
 #: lib/pro/admin/advanced.php:867 lib/pro/admin/advanced.php:920
 #: lib/std/admin/advanced.php:799 lib/std/admin/advanced.php:854
 msgctxt "column title"
@@ -6598,13 +6598,13 @@ msgid ""
 "Schema markup."
 msgstr ""
 
-#: lib/messages-info.php:212 lib/messages-tooltip.php:745
+#: lib/messages-info.php:212 lib/messages-tooltip.php:766
 msgid ""
 "You should not modify the <em>%s</em> column unless you have a <em>very</em> "
 "good reason to do so."
 msgstr ""
 
-#: lib/messages-info.php:214 lib/messages-tooltip.php:753
+#: lib/messages-info.php:214 lib/messages-tooltip.php:774
 msgid ""
 "The %s column is for display purposes only and can be changed as you wish."
 msgstr ""
@@ -7668,7 +7668,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip-opengraph.php:107 lib/messages-tooltip-schema.php:102
-#: lib/messages-tooltip.php:226 lib/messages-tooltip.php:412
+#: lib/messages-tooltip.php:247 lib/messages-tooltip.php:433
 msgid "The maximum length must be at least %d characters or more."
 msgstr ""
 
@@ -8564,35 +8564,32 @@ msgid ""
 "every site/blog to use this specific value."
 msgstr ""
 
-#: lib/messages-tooltip.php:141
+#: lib/messages-tooltip.php:143
 msgid ""
-"To <a href=\"%s\">verify your domain with Facebook</a>, enter the \"facebook-"
-"domain-verification\" meta tag <code>content</code> value here (enter only "
-"the verification ID value, not the whole HTML tag)."
-msgstr ""
-
-#: lib/messages-tooltip.php:149
-msgid ""
-"If you have a <a href=\"%s\">Facebook page for your business</a>, you may "
+"If you have a <a href=\"%s\">Behance profile for your business</a>, you may "
 "enter its URL here."
 msgstr ""
 
-#: lib/messages-tooltip.php:149
-msgid "https://www.facebook.com/business"
+#: lib/messages-tooltip.php:143
+msgid "https://www.behance.net/"
 msgstr ""
 
-#: lib/messages-tooltip.php:151
-msgid ""
-"The %s will be included in Open Graph <em>article</em> meta tags and the "
-"website's Schema Organization markup."
+#: lib/messages-tooltip.php:145 lib/messages-tooltip.php:352
+#: lib/messages-tooltip.php:490 lib/messages-tooltip.php:518
+#: lib/messages-tooltip.php:546 lib/messages-tooltip.php:574
+#: lib/messages-tooltip.php:602 lib/messages-tooltip.php:630
+#: lib/messages-tooltip.php:658 lib/messages-tooltip.php:686
+#: lib/messages-tooltip.php:714
+msgid "The %s will be included in the website's Schema Organization markup."
 msgstr ""
 
-#: lib/messages-tooltip.php:153 lib/messages-tooltip.php:333
-#: lib/messages-tooltip.php:403 lib/messages-tooltip.php:471
-#: lib/messages-tooltip.php:499 lib/messages-tooltip.php:527
-#: lib/messages-tooltip.php:555 lib/messages-tooltip.php:583
-#: lib/messages-tooltip.php:611 lib/messages-tooltip.php:639
-#: lib/messages-tooltip.php:667 lib/messages-tooltip.php:695
+#: lib/messages-tooltip.php:147 lib/messages-tooltip.php:174
+#: lib/messages-tooltip.php:354 lib/messages-tooltip.php:424
+#: lib/messages-tooltip.php:492 lib/messages-tooltip.php:520
+#: lib/messages-tooltip.php:548 lib/messages-tooltip.php:576
+#: lib/messages-tooltip.php:604 lib/messages-tooltip.php:632
+#: lib/messages-tooltip.php:660 lib/messages-tooltip.php:688
+#: lib/messages-tooltip.php:716
 msgid ""
 "Google Search may use this URL to display additional information about the "
 "website, business, or company in its search results."
@@ -8600,36 +8597,59 @@ msgstr ""
 
 #: lib/messages-tooltip.php:162
 msgid ""
+"To <a href=\"%s\">verify your domain with Facebook</a>, enter the \"facebook-"
+"domain-verification\" meta tag <code>content</code> value here (enter only "
+"the verification ID value, not the whole HTML tag)."
+msgstr ""
+
+#: lib/messages-tooltip.php:170
+msgid ""
+"If you have a <a href=\"%s\">Facebook page for your business</a>, you may "
+"enter its URL here."
+msgstr ""
+
+#: lib/messages-tooltip.php:170
+msgid "https://www.facebook.com/business"
+msgstr ""
+
+#: lib/messages-tooltip.php:172
+msgid ""
+"The %s will be included in Open Graph <em>article</em> meta tags and the "
+"website's Schema Organization markup."
+msgstr ""
+
+#: lib/messages-tooltip.php:183
+msgid ""
 "Choose a contact field from the WordPress profile page to use for the "
 "Facebook / Open Graph %s meta tag value."
 msgstr ""
 
-#: lib/messages-tooltip.php:164
+#: lib/messages-tooltip.php:185
 msgid "The suggested value is the \"%s\" user profile contact field."
 msgstr ""
 
-#: lib/messages-tooltip.php:170
+#: lib/messages-tooltip.php:191
 msgid "https://developers.facebook.com/docs/development/create-an-app"
 msgstr ""
 
-#: lib/messages-tooltip.php:172
+#: lib/messages-tooltip.php:193
 msgid ""
 "If you have a Facebook App ID for your WebSite App, enter it here (see <a "
 "href=\"%s\">Create an App</a> for help on creating a Facebook App ID for "
 "your WebSite)."
 msgstr ""
 
-#: lib/messages-tooltip.php:178
+#: lib/messages-tooltip.php:199
 msgid "Facebook does not understand all WordPress locale values."
 msgstr ""
 
-#: lib/messages-tooltip.php:180
+#: lib/messages-tooltip.php:201
 msgid ""
 "If the Facebook debugger returns an error parsing the %s meta tag, you "
 "should choose an alternate Facebook language for that WordPress locale."
 msgstr ""
 
-#: lib/messages-tooltip.php:201
+#: lib/messages-tooltip.php:222
 msgid ""
 "To verify your website ownership with <a href=\"%s\">Google's Search "
 "Console</a>, select the <em>Settings</em> left-side menu option in the "
@@ -8637,294 +8657,286 @@ msgid ""
 "the <em>HTML tag</em> method."
 msgstr ""
 
-#: lib/messages-tooltip.php:203
+#: lib/messages-tooltip.php:224
 msgid ""
 "Enter the \"google-site-verification\" meta tag <code>content</code> value "
 "here (enter only the verification ID value, not the whole HTML tag)."
 msgstr ""
 
-#: lib/messages-tooltip.php:224
+#: lib/messages-tooltip.php:245
 msgid ""
 "The maximum length for the SEO description meta tag value (the default is %d "
 "characters)."
 msgstr ""
 
-#: lib/messages-tooltip.php:252
+#: lib/messages-tooltip.php:273
 msgid ""
 "Suggest a maximum of number characters for the textual snippet in search "
 "results."
 msgstr ""
 
-#: lib/messages-tooltip.php:254
+#: lib/messages-tooltip.php:275
 msgid ""
 "This does not affect image or video previews, or apply to text in Schema "
 "markup."
 msgstr ""
 
-#: lib/messages-tooltip.php:263
+#: lib/messages-tooltip.php:284
 msgid "Suggest a maximum size for the image preview in search results."
 msgstr ""
 
-#: lib/messages-tooltip.php:267
+#: lib/messages-tooltip.php:288
 msgid "%s = No image preview will be shown."
 msgstr ""
 
-#: lib/messages-tooltip.php:271
+#: lib/messages-tooltip.php:292
 msgid "%s = A default image preview size may be used."
 msgstr ""
 
-#: lib/messages-tooltip.php:275
+#: lib/messages-tooltip.php:296
 msgid ""
 "%s = A larger image preview size, up to the width of the viewport, may be "
 "used."
 msgstr ""
 
-#: lib/messages-tooltip.php:288
+#: lib/messages-tooltip.php:309
 msgid ""
 "Suggest a maximum of number seconds for video snippets in search results."
 msgstr ""
 
-#: lib/messages-tooltip.php:292
+#: lib/messages-tooltip.php:313
 msgid ""
 "0 = Shows a static image for videos, if image previews are allowed in search "
 "results."
 msgstr ""
 
-#: lib/messages-tooltip.php:294
+#: lib/messages-tooltip.php:315
 msgid "-1 = No limit."
 msgstr ""
 
-#: lib/messages-tooltip.php:319
+#: lib/messages-tooltip.php:340
 msgid ""
 "To <a href=\"%s\">claim your website with Pinterest</a>: Edit your account "
 "settings on Pinterest, select the \"Claim\" section, enter your website URL, "
 "then click the \"Claim\" button."
 msgstr ""
 
-#: lib/messages-tooltip.php:321
+#: lib/messages-tooltip.php:342
 msgid ""
 "Choose \"Add HTML tag\" and enter the \"p:domain_verify\" meta tag "
 "<code>content</code> value here (enter only the verification ID string, not "
 "the meta tag HTML)."
 msgstr ""
 
-#: lib/messages-tooltip.php:329
+#: lib/messages-tooltip.php:350
 msgid ""
 "If you have a <a href=\"%s\">Pinterest page for your business</a>, you may "
 "enter its URL here."
 msgstr ""
 
-#: lib/messages-tooltip.php:329
+#: lib/messages-tooltip.php:350
 msgid "https://business.pinterest.com/"
 msgstr ""
 
-#: lib/messages-tooltip.php:331 lib/messages-tooltip.php:469
-#: lib/messages-tooltip.php:497 lib/messages-tooltip.php:525
-#: lib/messages-tooltip.php:553 lib/messages-tooltip.php:581
-#: lib/messages-tooltip.php:609 lib/messages-tooltip.php:637
-#: lib/messages-tooltip.php:665 lib/messages-tooltip.php:693
-msgid "The %s will be included in the website's Schema Organization markup."
-msgstr ""
-
-#: lib/messages-tooltip.php:340
+#: lib/messages-tooltip.php:361
 msgid ""
 "Add a %s attribute to the site header and Gravatar images to prevent the "
 "Pinterest Pin It browser button from suggesting these images."
 msgstr ""
 
-#: lib/messages-tooltip.php:346 lib/messages.php:800
+#: lib/messages-tooltip.php:367 lib/messages.php:800
 #: lib/submenu/general.php:401
 msgctxt "option label"
 msgid "Add Hidden Image for Pinterest"
 msgstr ""
 
-#: lib/messages-tooltip.php:348
+#: lib/messages-tooltip.php:369
 msgid ""
 "%1$s can add a %2$s attribute to resized images from the WordPress Media "
 "Library."
 msgstr ""
 
-#: lib/messages-tooltip.php:350
+#: lib/messages-tooltip.php:371
 msgid ""
 "This prevents the Pinterest Pin It browser button from suggesting images "
 "that may be too small."
 msgstr ""
 
-#: lib/messages-tooltip.php:352
+#: lib/messages-tooltip.php:373
 msgid ""
 "When enabling this option, you should also enable the \"%s\" option to "
 "provide an image for the Pin It browser button."
 msgstr ""
 
-#: lib/messages-tooltip.php:358
+#: lib/messages-tooltip.php:379
 msgid ""
 "%s can add an extra hidden image in the WordPress post / page content for "
 "the Pinterest Pin It browser button."
 msgstr ""
 
-#: lib/messages-tooltip.php:360
+#: lib/messages-tooltip.php:381
 msgid ""
 "Although generally recommended, this option is unchecked by default since "
 "the extra image can affect page load speed (the image cannot be lazy loaded)."
 msgstr ""
 
-#: lib/messages-tooltip.php:362
+#: lib/messages-tooltip.php:383
 msgid ""
 "If your website visitors use the Pinterest Pin It browser button, you may "
 "enable this option, otherwise leave it unchecked."
 msgstr ""
 
-#: lib/messages-tooltip.php:368
+#: lib/messages-tooltip.php:389
 msgid ""
 "The maximum length used for the Pinterest Pin It browser button description "
 "(the default is %d characters)."
 msgstr ""
 
-#: lib/messages-tooltip.php:376
+#: lib/messages-tooltip.php:397
 msgid ""
 "The dimensions used for the Pinterest Pin It browser button image (the "
 "default dimensions are %s)."
 msgstr ""
 
-#: lib/messages-tooltip.php:399
+#: lib/messages-tooltip.php:420
 msgid ""
 "If you have a <a href=\"%s\">Twitter @username for your business</a> (not "
 "your personal Twitter @username), you may enter its name here."
 msgstr ""
 
-#: lib/messages-tooltip.php:399
+#: lib/messages-tooltip.php:420
 msgid "https://business.twitter.com/"
 msgstr ""
 
-#: lib/messages-tooltip.php:401
+#: lib/messages-tooltip.php:422
 msgid ""
 "The %s will be included in in Twitter Card meta tags and the website's "
 "Schema Organization markup."
 msgstr ""
 
-#: lib/messages-tooltip.php:410
+#: lib/messages-tooltip.php:431
 msgid ""
 "The maximum length for the Twitter Card description value (the default is %d "
 "characters)."
 msgstr ""
 
-#: lib/messages-tooltip.php:432
+#: lib/messages-tooltip.php:453
 msgid ""
 "The image dimensions for the <a href=\"%1$s\">Summary Card</a> (should be at "
 "least %2$s and less than %3$s)."
 msgstr ""
 
-#: lib/messages-tooltip.php:432 lib/messages-tooltip.php:442
+#: lib/messages-tooltip.php:453 lib/messages-tooltip.php:463
 msgid "1MB"
 msgstr ""
 
-#: lib/messages-tooltip.php:434 lib/messages-tooltip.php:444
+#: lib/messages-tooltip.php:455 lib/messages-tooltip.php:465
 msgid "The default image dimensions are %s."
 msgstr ""
 
-#: lib/messages-tooltip.php:442
+#: lib/messages-tooltip.php:463
 msgid ""
 "The image dimensions for the <a href=\"%1$s\">Large Image Summary Card</a> "
 "(must be larger than %2$s and less than %3$s)."
 msgstr ""
 
-#: lib/messages-tooltip.php:467
+#: lib/messages-tooltip.php:488
 msgid ""
 "If you have an <a href=\"%s\">Intagram profile for your business</a>, you "
 "may enter its URL here."
 msgstr ""
 
-#: lib/messages-tooltip.php:467
+#: lib/messages-tooltip.php:488
 msgid "https://business.instagram.com/getting-started"
 msgstr ""
 
-#: lib/messages-tooltip.php:495
+#: lib/messages-tooltip.php:516
 msgid ""
 "If you have a <a href=\"%s\">LinkedIn page for your business</a>, you may "
 "enter its URL here."
 msgstr ""
 
-#: lib/messages-tooltip.php:495
+#: lib/messages-tooltip.php:516
 msgid "https://business.linkedin.com/marketing-solutions/linkedin-pages"
 msgstr ""
 
-#: lib/messages-tooltip.php:523
+#: lib/messages-tooltip.php:544
 msgid ""
 "If you have a <a href=\"%s\">Medium page for your business</a>, you may "
 "enter its URL here."
 msgstr ""
 
-#: lib/messages-tooltip.php:523
+#: lib/messages-tooltip.php:544
 msgid "https://medium.com/"
 msgstr ""
 
-#: lib/messages-tooltip.php:551
+#: lib/messages-tooltip.php:572
 msgid ""
 "If you have a <a href=\"%s\">Myspace page for your business</a>, you may "
 "enter its URL here."
 msgstr ""
 
-#: lib/messages-tooltip.php:551
+#: lib/messages-tooltip.php:572
 msgid "https://myspace.com/"
 msgstr ""
 
-#: lib/messages-tooltip.php:579
+#: lib/messages-tooltip.php:600
 msgid ""
 "If you have a <a href=\"%s\">Soundcloud page for your business</a>, you may "
 "enter its URL here."
 msgstr ""
 
-#: lib/messages-tooltip.php:579
+#: lib/messages-tooltip.php:600
 msgid "https://soundcloud.com/"
 msgstr ""
 
-#: lib/messages-tooltip.php:607
+#: lib/messages-tooltip.php:628
 msgid ""
 "If you have a <a href=\"%s\">TikTok page for your business</a>, you may "
 "enter its URL here."
 msgstr ""
 
-#: lib/messages-tooltip.php:607
+#: lib/messages-tooltip.php:628
 msgid "https://tiktok.com/"
 msgstr ""
 
-#: lib/messages-tooltip.php:635
+#: lib/messages-tooltip.php:656
 msgid ""
 "If you have a <a href=\"%s\">Tumblr page for your business</a>, you may "
 "enter its URL here."
 msgstr ""
 
-#: lib/messages-tooltip.php:635
+#: lib/messages-tooltip.php:656
 msgid "https://tumblr.com/"
 msgstr ""
 
-#: lib/messages-tooltip.php:663
+#: lib/messages-tooltip.php:684
 msgid ""
 "If you have a <a href=\"%s\">Wikipedia page for your organization</a>, you "
 "may enter its URL here."
 msgstr ""
 
-#: lib/messages-tooltip.php:663
+#: lib/messages-tooltip.php:684
 msgid "https://en.wikipedia.org/wiki/Wikipedia:FAQ/Organizations"
 msgstr ""
 
-#: lib/messages-tooltip.php:691
+#: lib/messages-tooltip.php:712
 msgid ""
 "If you have a <a href=\"%s\">YouTube channel for your business</a>, you may "
 "enter its URL here."
 msgstr ""
 
-#: lib/messages-tooltip.php:691
+#: lib/messages-tooltip.php:712
 msgid "https://youtube.com/"
 msgstr ""
 
-#: lib/messages-tooltip.php:747
+#: lib/messages-tooltip.php:768
 msgid ""
 "As an example, to match the <em>%1$s</em> of a theme or other plugin, you "
 "might change \"%2$s\" to \"%3$s\" or some other value."
 msgstr ""
 
-#: lib/messages-tooltip.php:759
+#: lib/messages-tooltip.php:780
 msgid "The built-in WordPress <em>%s</em> column cannot be modified."
 msgstr ""
 

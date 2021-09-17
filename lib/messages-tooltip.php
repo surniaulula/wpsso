@@ -130,6 +130,27 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 				return $this->site->get( $msg_key, $info );
 
 			/**
+			 * Behance settings.
+			 */
+			} elseif ( 0 === strpos( $msg_key, 'tooltip-behance_' ) ) {
+
+				switch ( $msg_key ) {
+
+					case 'tooltip-behance_publisher_url':
+
+						if ( $publisher_url_label = WpssoConfig::get_social_accounts( 'behance_publisher_url' ) ) {
+
+							$text = sprintf( __( 'If you have a <a href="%s">Behance profile for your business</a>, you may enter its URL here.', 'wpsso' ), __( 'https://www.behance.net/', 'wpsso' ) ) . ' ';
+
+							$text .= sprintf( __( 'The %s will be included in the website\'s Schema Organization markup.', 'wpsso' ), $publisher_url_label ) . ' ';
+
+							$text .= __( 'Google Search may use this URL to display additional information about the website, business, or company in its search results.', 'wpsso' );
+						}
+
+						break;
+				}
+
+			/**
 			 * Facebook settings.
 			 */
 			} elseif ( 0 === strpos( $msg_key, 'tooltip-fb_' ) ) {
