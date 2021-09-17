@@ -127,11 +127,11 @@
 
 'wpsso_ngg_tags' ( $tags, $pid )
 
-'wpsso_og_add_mt_offers' ( $bool = false, $mod )
+'wpsso_og_add_mt_offers' ( $bool = true, $mod )
 
 'wpsso_og_add_mt_rating' ( $bool = true, $mod )
 
-'wpsso_og_add_mt_reviews' ( $bool = false, $mod )
+'wpsso_og_add_mt_reviews' ( $bool = true, $mod )
 
 'wpsso_og_add_wc_mt_rating' ( $bool, $mod )	// True if 'woocommerce_enable_review_rating' option is 'yes'.
 

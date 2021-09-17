@@ -55,6 +55,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			$this->conflict_check_squirrlyseo();	// Squirrly SEO.
 			$this->conflict_check_wpmetaseo();	// WP Meta SEO.
 			$this->conflict_check_wpseo();		// Yoast SEO.
+			$this->conflict_check_wpseo_wc();	// Yoast WooCommerce SEO.
 		}
 
 		/**
@@ -265,7 +266,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 		 */
 		private function conflict_check_seoultimate() {
 
-			if ( ! $this->p->avail[ 'seo' ][ 'seoultimate' ] ) {
+			if ( empty( $this->p->avail[ 'seo' ][ 'seoultimate' ] ) ) {
 
 				return;
 			}
@@ -619,6 +620,42 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 				$notice_msg_transl = __( 'Please disable the %1$s option in the %2$s settings.', 'wpsso' );
 
 				$this->p->notice->err( $this->notice_pre . sprintf( $notice_msg_transl, $label_transl, $settings_link ) );
+			}
+		}
+
+		/**
+		 * Yoast WooCommerce SEO.
+		 */
+		private function conflict_check_wpseo_wc() {
+
+			if ( empty( $this->p->avail[ 'seo' ][ 'wpseo-wc' ] ) ) {
+
+				return;
+
+			} elseif ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
+
+				return;
+			}
+
+			$pkg_info = $this->p->admin->get_pkg_info();	// Returns an array from cache.
+
+			$wpseo_wc_label = 'Yoast WooCommerce SEO';
+
+			if ( ! empty( $pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
+
+				$plugins_url = is_multisite() ? network_admin_url( 'plugins.php', null ) : get_admin_url( $blog_id = null, 'plugins.php' );
+
+				$plugins_url = add_query_arg( array( 's' => 'yoast seo' ), $plugins_url );
+
+				$notice_msg = sprintf( __( 'The %1$s plugin provides much better Schema markup for WooCommerce products than the %2$s plugin.', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'short_pro' ], $wpseo_wc_label ) . ' ';
+
+				$notice_msg .= sprintf( __( 'There is absolutely no advantage in continuing to use the %1$s plugin.', 'wpsso' ), $wpseo_wc_label ) . ' ';
+
+				$notice_msg .= sprintf( __( 'To avoid adding incorrect and confusing Schema markup to your webpages, <a href="%1$s">please deactivate the %2$s plugin immediately</a>.' ), $plugins_url, $wpseo_wc_label );
+
+				$notice_key = 'deactivate-wpseo-woocommerce';
+
+				$this->p->notice->err( $notice_msg, null, $notice_key );
 			}
 		}
 	}

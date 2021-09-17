@@ -1108,58 +1108,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			/**
-			 * Check the stripped webpage HTML for ld+json script(s) and if not found, then suggest enabling the WPSSO JSON add-on.
-			 */
-			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'schema markup is disabled' );
-				}
-
-			} elseif ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'checking the stripped webpage html for ld+json script(s)' );
-				}
-
-				$scripts_json = SucomUtil::get_json_scripts( $html_stripped, $do_decode = false );	// Return the json encoded containers.
-
-				if ( ! empty( $scripts_json ) && is_array( $scripts_json ) ) {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( count( $scripts_json ) . ' application/ld+json script(s) found in the webpage' );
-					}
-
-					// Nothing to do.
-
-				} elseif ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'no application/ld+json script(s) found in the webpage' );
-					}
-
-					if ( $is_admin ) {
-
-						$json_addon_link = $this->p->util->get_admin_url( 'addons#wpssojson', $this->p->cf[ 'plugin' ][ 'wpssojson' ][ 'name' ] );
-
-						$notice_msg = sprintf( __( 'The webpage at %1$s does not include any Schema JSON-LD script(s).', 'wpsso' ), '<a href="' . $check_url . '">' . $check_url_htmlenc . '</a>' ) . ' ';
-
-						$notice_msg .= __( 'Complete and accurate Schema JSON-LD markup is highly recommended for better ranking and click-through rates in search results.', 'wpsso' ) . ' ';
-
-						$notice_msg .= sprintf( __( 'Consider activating the %1$s add-on to include Schema JSON-LD markup for Google Rich Results.', 'wpsso' ), $json_addon_link );
-
-						$notice_key = 'application-ld-json-script-not-found';
-
-						$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
-					}
-				}
-			}
-
-			/**
 			 * Check the stripped webpage HTML for duplicate html tags.
 			 */
 			if ( $this->p->debug->enabled ) {

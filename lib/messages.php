@@ -87,7 +87,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			/**
 			 * Set a lowercase acronym.
 			 *
-			 * Example plugin IDs: wpsso, wpssojson, wpssoum, etc.
+			 * Example plugin IDs: wpsso, wpssoum, etc.
 			 */
 			$info[ 'plugin_id' ] = $plugin_id = isset( $info[ 'plugin_id' ] ) ? $info[ 'plugin_id' ] : $this->p->id;
 
@@ -617,20 +617,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						break;
 
-					case 'column-purchase-wpssojson':
-
-						$text = '<p><strong>' . sprintf( __( 'The %s add-on includes:', 'wpsso' ), $info[ 'name_pro' ] ) . '</strong></p>';
-
-						$text .= '<ul>';
-
-						$text .= ' <li>' . sprintf( __( 'Additional Schema options in the %s metabox to customize creative works, events, how-tos, job postings, movies, products, recipes, reviews, and many more.', 'wpsso' ), $mb_title ) . '</li>';
-
-						$text .= $li_support_link;
-
-						$text .= '</ul>';
-
-						break;
-
 					case 'column-help-support':
 
 						$text = '<p>';
@@ -770,12 +756,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 			list( $ext, $p_ext ) = $this->ext_p_ext( $ext );
 
-			if ( empty( $ext ) ) {
+			if ( ! empty( $ext ) ) {	// Just in case.
 
-				return '';
+				return $this->get( 'pro-feature-msg', array( 'plugin_id' => $ext ) );
 			}
 
-			return $this->get( 'pro-feature-msg', array( 'plugin_id' => $ext ) );
+			return '';
 		}
 
 		public function pro_feature_video_api() {
@@ -790,28 +776,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 			$html .= '</p>';
 
-			return $html . $this->get( 'pro-feature-msg' );
-		}
-
-		public function more_schema_options() {
-
-			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
-
-				return $this->schema_disabled();
-
-			}
-
-			$json_info = $this->p->cf[ 'plugin' ][ 'wpssojson' ];
-
-			$json_info_name = _x( $json_info[ 'name' ], 'plugin name', 'wpsso' );
-
-			$json_addon_link = $this->p->util->get_admin_url( 'addons#wpssojson', $json_info_name );
-
-			// translators: %s is is the add-on name (and a link to the add-on page).
-			$text = sprintf( __( 'Activate the %s add-on<br/>if you require additional options for Schema markup and structured data.',
-				'wpsso' ), $json_addon_link );
-
-			return '<p class="status-msg">' . $text . '</p>';
+			return $html;
 		}
 
 		/**

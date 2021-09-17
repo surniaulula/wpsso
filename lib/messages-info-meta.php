@@ -159,9 +159,7 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 				 	break;
 
 				/**
-				 * Called at the bottom of the Document SSO > Validate tab.
-				 *
-				 * Return an empty string if there are no special status messages. 
+				 * Called at the bottom of the Document SSO > Validators tab.
 				 */
 				case 'info-meta-validate-info':
 
@@ -170,17 +168,6 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 						$text .= '<p class="status-msg left">* ';
 
 						$text .= __( 'Schema markup is disabled.', 'wpsso' );
-
-						$text .= '</p>';
-
-					} elseif ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
-
-						$json_info       = $this->p->cf[ 'plugin' ][ 'wpssojson' ];
-						$json_addon_link = $this->p->util->get_admin_url( 'addons#wpssojson', $json_info[ 'short' ] );
-
-						$text .= '<p class="status-msg left">* ';
-
-						$text .= sprintf( __( 'Activate the %s add-on for Google structured data markup.', 'wpsso' ), $json_addon_link );
 
 						$text .= '</p>';
 					}

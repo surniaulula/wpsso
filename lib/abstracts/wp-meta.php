@@ -1541,7 +1541,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			 */
 			if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
 
-				unset( $opts[ 'seo_desc' ] );
+				unset( $md_opts[ 'seo_desc' ] );
 			}
 
 			/**

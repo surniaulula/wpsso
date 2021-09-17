@@ -16,9 +16,9 @@ if ( ! class_exists( 'SucomAddOn' ) ) {
 
 		protected $p;	// Plugin class object.
 
-		protected $ext   = '';		// Add-on lowercase classname. Example: 'wpssojson'.
-		protected $p_ext = '';		// Add-on lowercase acronym. Example: 'json'.
-		protected $cf    = array();	// Add-on config array. Example: WpssoJsonConfig::$cf.
+		protected $ext   = '';		// Add-on lowercase classname, for example: 'wpssoum'.
+		protected $p_ext = '';		// Add-on lowercase acronym, for example: 'um'.
+		protected $cf    = array();	// Add-on config array, for example: WpssoUmConfig::$cf.
 
 		protected $did_plugin_notices = false;	// True when $this->init_plugin_notices() has run.
 

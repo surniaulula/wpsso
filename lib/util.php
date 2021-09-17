@@ -3508,7 +3508,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$have_amp          = $mod[ 'is_post' ] && $mod[ 'id' ] && function_exists( 'amp_get_permalink' ) ? true : false;
 			$have_clipboard    = $use_clipboard && method_exists( 'SucomForm', 'get_no_input_clipboard' ) ? true : false;
-			$have_schema       = $this->p->avail[ 'p' ][ 'schema' ] ?  true : false;
+			$have_schema       = $this->p->avail[ 'p' ][ 'schema' ] ? true : false;
 			$amp_url_enc       = $have_amp ? urlencode( amp_get_permalink( $mod[ 'id' ] ) ) : '';
 			$canonical_url_enc = urlencode( $canonical_url );
 

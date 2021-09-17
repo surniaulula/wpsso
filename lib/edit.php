@@ -623,13 +623,20 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					continue;
 				}
 
+				/**
+				 * Example extra message string: SucomForm::get_no_input_clipboard( $canonical_url )
+				 */
+				$extra_msg = isset( $el[ 'extra_msg' ] ) ? $el[ 'extra_msg' ] : '';
+
 				$button_label = sprintf( _x( 'Validate %s', 'submit button', 'wpsso' ), $el[ 'type' ] );
 
-				$table_rows[ 'validate_' . $key ] = $form->get_th_html( $el[ 'title' ], $css_class = 'medium' ) .
-					'<td class="validate">' . $this->p->msgs->get( 'info-meta-validate-' . $key ) . 
-						( isset( $el[ 'extra_msg' ] ) ? $el[ 'extra_msg' ] : '' ) . '</td>' .
+				$is_disabled = empty( $el[ 'url' ] ) ? true : false;
+
+				$table_rows[ 'validate_' . $key ] = '' .
+					$form->get_th_html( $el[ 'title' ], $css_class = 'medium' ) .
+					'<td class="validate">' . $this->p->msgs->get( 'info-meta-validate-' . $key ) . $extra_msg . '</td>' .
 					'<td class="validate">' . $form->get_button( $button_label, $css_class = 'button-secondary', $css_id = '',
-						$el[ 'url' ], $newtab = true, $is_disabled = empty( $el[ 'url' ] ) ? true : false ) . '</td>';
+						$el[ 'url' ], $newtab = true, $is_disabled ) . '</td>';
 			}
 
 			$table_rows[ 'validate_info' ] = '<td class="validate" colspan="3">' . $this->p->msgs->get( 'info-meta-validate-info' ) . '</td>';

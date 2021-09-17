@@ -301,39 +301,25 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 			$pkg_info = $this->p->admin->get_pkg_info();	// Returns an array from cache.
 
-			if ( empty( $pkg_info[ 'wpsso' ][ 'pp' ] ) || empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
+			if ( empty( $pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
 
-				$notice_key = 'suggest-wpssojson-for-woocommerce';
+				$notice_key = 'suggest-premium-for-woocommerce';
 
 				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
 
 					$action_links = array();	// Init a new action array for the notice message.
 
-					if ( empty( $pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
+					$action_links[] = $this->get_purchase_plugin_link( 'wpsso' );
 
-						$action_links[] = $this->get_purchase_plugin_link( 'wpsso', __( '(required for WooCommerce integration)', 'wpsso' ) );
-					}
+					$notice_msg = __( 'Note that WooCommerce offers incomplete Schema markup for Google Rich Results by default.', 'wpsso' ) . ' ';
 
-					if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
+					$notice_msg .= sprintf( __( 'The %1$s plugin provides a perfect solution by offering complete product meta tags for Facebook, Pinterest, and complete Schema product markup for Google Rich Results - including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'name_pro' ] ) . ' ';
 
-						$action_links[] = $this->get_install_activate_addon_link( 'wpssojson' );
-					}
+					$notice_msg .= '<ul><li>' . implode( $glue = '</li> <li>', $action_links ) . '</li></ul>' . ' ';
 
-					if ( ! empty( $action_links ) ) {
+					$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
 
-						$json_info        = $this->p->cf[ 'plugin' ][ 'wpssojson' ];
-						$json_name_transl = _x( $json_info[ 'name' ], 'plugin name', 'wpsso' );
-
-						$notice_msg = __( 'Note that WooCommerce offers incomplete Schema markup for Google Rich Results by default.', 'wpsso' ) . ' ';
-
-						$notice_msg .= sprintf( __( 'The %1$s plugin and its %2$s add-on provide a solution by offering complete product meta tags for Facebook / Pinterest and complete Schema product markup for Google Rich Results - including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'name_pro' ], $json_name_transl ) . ' ';
-
-						$notice_msg .= '<ul><li>' . implode( $glue = '</li> <li>', $action_links ) . '</li></ul>' . ' ';
-
-						$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
-
-						$notice_shown++;
-					}
+					$notice_shown++;
 				}
 			}
 
@@ -352,11 +338,6 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 						$action_links[] = $this->get_purchase_plugin_link( 'wpsso', __( '(required for WooCommerce integration)', 'wpsso' ) );
 					}
 
-					if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
-
-						$action_links[] = $this->get_install_activate_addon_link( 'wpssojson' );
-					}
-
 					$action_links[] = $this->get_install_activate_addon_link( 'wpssowcmd' );
 
 					$wcmd_info        = $this->p->cf[ 'plugin' ][ 'wpssowcmd' ];
@@ -364,17 +345,9 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 					$notice_msg = __( 'Schema Product markup for Google Rich Results requires at least one unique product ID, like the product MPN (Manufacturer Part Number), UPC, EAN, GTIN, or ISBN.', 'wpsso' ) . ' ';
 
-					$notice_msg .= __( 'The product SKU (Stock Keeping Unit) from WooCommerce is not a unique product ID.', 'wpsso' ) . ' ';
+					$notice_msg .= __( 'The product SKU (Stock Keeping Unit) from WooCommerce is not a valid unique product ID.', 'wpsso' ) . ' ';
 
 					$notice_msg .= sprintf( __( 'If you\'re not already using a plugin to manage unique product IDs for WooCommerce, you should activate the %s add-on.', 'wpsso' ), $wcmd_name_transl ) . ' ';
-
-					if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
-
-						$json_info        = $this->p->cf[ 'plugin' ][ 'wpssojson' ];
-						$json_name_transl = _x( $json_info[ 'name' ], 'plugin name', 'wpsso' );
-
-						$notice_msg .= sprintf( __( 'Note that you will also need to activate the %s add-on to include this information in Schema markup for Google Rich Results.', 'wpsso' ), $json_name_transl ) . ' ';
-					}
 
 					$notice_msg .= '<ul><li>' . implode( $glue = '</li> <li>', $action_links ) . '</li></ul>' . ' ';
 
@@ -403,28 +376,14 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 							$action_links[] = $this->get_purchase_plugin_link( 'wpsso', __( '(required for WooCommerce integration)', 'wpsso' ) );
 						}
 
-						if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
-
-							$action_links[] = $this->get_install_activate_addon_link( 'wpssojson' );
-						}
-
 						$action_links[] = $this->get_install_activate_addon_link( 'wpssowcsdt' );
 
 						$wcsdt_info        = $this->p->cf[ 'plugin' ][ 'wpssowcsdt' ];
 						$wcsdt_name_transl = _x( $wcsdt_info[ 'name' ], 'plugin name', 'wpsso' );
 
-						$notice_msg = sprintf( __( 'Product shipping features are enabled in WooCommerce, but the %s add-on is not active.',
-							'wpsso' ), $wcsdt_name_transl ) . ' ';
+						$notice_msg = sprintf( __( 'Product shipping features are enabled in WooCommerce, but the %s add-on is not active.', 'wpsso' ), $wcsdt_name_transl ) . ' ';
 
 						$notice_msg .= __( 'Adding shipping details to your Schema Product markup is especially important if you offer free or low-cost shipping options as this will make your products more appealing in Google search results.', 'wpsso' ) . ' ';
-
-						if ( empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
-
-							$json_info        = $this->p->cf[ 'plugin' ][ 'wpssojson' ];
-							$json_name_transl = _x( $json_info[ 'name' ], 'plugin name', 'wpsso' );
-
-							$notice_msg .= sprintf( __( 'Note that you will also need to activate the %s add-on to include this information in Schema markup for Google Rich Results.', 'wpsso' ), $json_name_transl ) . ' ';
-						}
 
 						$notice_msg .= '<ul><li>' . implode( $glue = '</li> <li>', $action_links ) . '</li></ul>' . ' ';
 
