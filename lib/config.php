@@ -4645,7 +4645,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					$local_cache[ $k ] = _x( $label, 'option value', 'wpsso' );
 				}
 
-				asort( $local_cache );	// Sort by label (after translation) and maintain key association.
+				uasort( $local_cache, 'strnatcmp' );	// Sort by label after translation and maintain key association.
 			}
 
 			if ( false !== $key ) {
