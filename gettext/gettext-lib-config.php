@@ -253,6 +253,7 @@ _x( 'YOURLS', 'option value', 'wpsso' );
 _x( '[None]', 'option value', 'wpsso' );
 _x( 'Shopper Approved', 'option value', 'wpsso' );
 _x( 'Stamped.io', 'option value', 'wpsso' );
+_x( 'Behance Business Page URL', 'option value', 'wpsso' );
 _x( 'Facebook Business Page URL', 'option value', 'wpsso' );
 _x( 'Instagram Business Profile URL', 'option value', 'wpsso' );
 _x( 'LinkedIn Business Page URL', 'option value', 'wpsso' );

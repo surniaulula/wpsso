@@ -58,11 +58,7 @@ if ( ! class_exists( 'WpssoSubmenuSocialPages' ) && class_exists( 'WpssoAdmin' )
 
 				case 'social_pages-social_accounts':
 
-					$social_accounts = apply_filters( 'wpsso_social_accounts', $this->p->cf[ 'form' ][ 'social_accounts' ] );
-
-					asort( $social_accounts );	// Sort by label (after translation) and maintain key association.
-
-					foreach ( $social_accounts as $social_key => $label ) {
+					foreach ( WpssoConfig::get_social_accounts() as $social_key => $label ) {
 
 						$table_rows[ $social_key ] = '' . 
 						$this->form->get_th_html_locale( _x( $label, 'option value', 'wpsso' ), $css_class = 'nowrap', $social_key ) . 

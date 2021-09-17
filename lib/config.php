@@ -2606,6 +2606,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * Social account keys and labels for Organization SameAs.
 				 */
 				'social_accounts' => array(
+					'behance_publisher_url'   => 'Behance Business Page URL',
 					'fb_publisher_url'        => 'Facebook Business Page URL',
 					'instagram_publisher_url' => 'Instagram Business Profile URL',
 					'linkedin_publisher_url'  => 'LinkedIn Business Page URL',
@@ -4400,6 +4401,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			return $success;
 		}
 
+		/**
+		 * Since WPSSO Core v4.18.1.
+		 */
 		public static function get_cache_dir() {
 
 			if ( defined( 'WPSSO_CACHE_DIR' ) ) {
@@ -4428,6 +4432,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			return false;
 		}
 
+		/**
+		 * Since WPSSO Core v4.18.1.
+		 */
 		public static function get_cache_url() {
 
 			if ( defined( 'WPSSO_CACHE_URL' ) ) {
@@ -4459,6 +4466,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			return false;
 		}
 
+		/**
+		 * Since WPSSO Core v4.18.1.
+		 */
 		private static function is_cache_dir( $dir ) {
 
 			$dir = trailingslashit( $dir );		// Just in case.
@@ -4515,7 +4525,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			/**
 			 * Sort the array by plugin name and maintain index association.
 			 */
-			uasort( $cf[ 'plugin' ], array( 'self', 'sort_by_name_key' ) );
+			uasort( $cf[ 'plugin' ], array( 'self', 'sort_plugin_by_name_key' ) );
 
 			reset( $cf[ 'plugin' ] );	// Just in case.
 
@@ -4532,7 +4542,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			return $cf[ 'plugin' ];
 		}
 
-		private static function sort_by_name_key( $a, $b ) {
+		private static function sort_plugin_by_name_key( $a, $b ) {
 
 			if ( isset( $a[ 'name' ] ) && isset( $b[ 'name' ] ) ) {
 
@@ -4593,6 +4603,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		 * Since WPSSO Core v7.8.0.
 		 *
 		 * Returns false, a slashed directory path, or the file path.
+		 *
+		 * Use $is_dir = true when specifically checking for a sub-folder path.
 		 */
 		public static function get_ext_file_path( $ext, $file_name = '', $is_dir = false ) {
 
@@ -4615,6 +4627,38 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			}
 
 			return false;
+		}
+
+		/**
+		 * Since WPSSO Core v9.0.0.
+		 */
+		public static function get_social_accounts( $key = false ) {
+
+			static $local_cache = null;
+
+			if ( null === $local_cache ) {
+
+				$local_cache = (array) apply_filters( 'wpsso_social_accounts', self::$cf[ 'form' ][ 'social_accounts' ] );
+
+				foreach ( $local_cache as $k => $label ) {
+
+					$local_cache[ $k ] = _x( $label, 'option value', 'wpsso' );
+				}
+
+				asort( $local_cache );	// Sort by label (after translation) and maintain key association.
+			}
+
+			if ( false !== $key ) {
+
+				if ( isset( $local_cache[ $key ] ) ) {	// Just in case.
+
+					return $local_cache[ $key ];
+				}
+
+				return null;
+			}
+
+			return $local_cache;
 		}
 	}
 }

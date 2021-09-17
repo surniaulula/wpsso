@@ -1777,11 +1777,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			$social_accounts = apply_filters( 'wpsso_social_accounts', $wpsso->cf[ 'form' ][ 'social_accounts' ] );
-
 			$org_sameas = array();
 
-			foreach ( $social_accounts as $social_key => $social_label ) {
+			foreach ( WpssoConfig::get_social_accounts() as $social_key => $social_label ) {
 
 				$url = SucomUtil::get_key_value( $social_key, $wpsso->options, $mixed );	// Localized value.
 
