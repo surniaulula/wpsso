@@ -319,7 +319,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.0.0-dev.1 (2021/09/17)**
+**Version 9.0.0-dev.2 (2021/09/18)**
 
 * **New Features**
 	* None.
@@ -972,9 +972,9 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 
 == Upgrade Notice ==
 
-= 9.0.0-dev.1 =
+= 9.0.0-dev.2 =
 
-(2021/09/17) Moved the Schema JSON data filters from the WPSSO JSON add-on to the WPSSO Core plugin.
+(2021/09/18) Moved the Schema JSON data filters from the WPSSO JSON add-on to the WPSSO Core plugin.
 
 = 8.39.1 =
 
