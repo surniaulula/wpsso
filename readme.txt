@@ -733,7 +733,7 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 * **Bugfixes**
 	* Fixed the missing jQuery sucomTextLen() function calls to display text limits after saving/updating in the block editor.
 * **Developer Notes**
-	* Removed the WpssoEdit->filter_metabox_sso_media_rows() method.
+	* Removed the `WpssoEdit->filter_metabox_sso_media_rows()` method.
 	* Renamed Schema image option keys ratio delimiter from '_' to 'x'.
 * **Requires At Least**
 	* PHP v7.0.
