@@ -35,7 +35,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			$this->p->util->add_plugin_filters( $this, array(
 				'metabox_sso_edit_rows'  => 4,
 				'metabox_sso_media_rows' => 4,
-			), $prio = -10000 );	// Run first.
+			), $prio = -1000 );	// Run before any add-ons.
 
 			/**
 			 * Since WPSSO Core v9.0.0.
@@ -50,13 +50,9 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			} else {
 
 				$this->p->util->add_plugin_filters( $this, array( 
-					'metabox_sso_edit_schema_rows'  => array(
-						'metabox_sso_edit_rows' => 4,
-					),
-					'metabox_sso_media_schema_rows' => array(
-						'metabox_sso_media_rows' => 4,
-					),
-				), $prio = 10000 );	// Run last.
+					'metabox_sso_edit_schema_rows'  => array( 'metabox_sso_edit_rows' => 4 ),
+					'metabox_sso_media_schema_rows' => array( 'metabox_sso_media_rows' => 4 ),
+				), $prio = 2000 );	// Run after older WPSSO JSON add-ons.
 			}
 		}
 
