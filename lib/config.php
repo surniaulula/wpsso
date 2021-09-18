@@ -131,7 +131,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'pro' => array(
 							'admin' => array(
 								'advanced' => 'Advanced Settings Filters',
-								'edit'     => 'Edit Metabox Filters',
+								'edit'     => 'SSO Metabox Edit Filters',
 								'general'  => 'General Settings Filters',
 							),
 							'ecom' => array(
@@ -216,7 +216,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'std' => array(
 							'admin' => array(
 								'advanced' => 'Advanced Settings Filters',
-								'edit'     => 'Edit Metabox Filters',
+								'edit'     => 'SSO Metabox Edit Filters',
 								'general'  => 'General Settings Filters',
 							),
 							'social' => array(

@@ -35,7 +35,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			$this->p->util->add_plugin_filters( $this, array(
 				'metabox_sso_edit_rows'  => 4,
 				'metabox_sso_media_rows' => 4,
-			), $prio = -1000 );	// Run before any add-ons.
+			), $prio = -1000 );	// Run before add-ons.
 
 			/**
 			 * Since WPSSO Core v9.0.0.
