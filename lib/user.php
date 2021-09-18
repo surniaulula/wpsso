@@ -899,33 +899,24 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			/**
 			 * Loop through each social website option prefix.
 			 */
-			if ( ! empty( $this->p->cf[ 'opt' ][ 'cm_prefix' ] ) && is_array( $this->p->cf[ 'opt' ][ 'cm_prefix' ] ) ) {
+			foreach ( $this->p->cf[ 'opt' ][ 'cm_prefix' ] as $id => $opt_pre ) {
 
-				foreach ( $this->p->cf[ 'opt' ][ 'cm_prefix' ] as $id => $opt_pre ) {
+				$cm_enabled_key = 'plugin_cm_' . $opt_pre . '_enabled';
+				$cm_name_key    = 'plugin_cm_' . $opt_pre . '_name';
+				$cm_label_key   = 'plugin_cm_' . $opt_pre . '_label';
 
-					$cm_enabled_key = 'plugin_cm_' . $opt_pre . '_enabled';
-					$cm_name_key    = 'plugin_cm_' . $opt_pre . '_name';
-					$cm_label_key   = 'plugin_cm_' . $opt_pre . '_label';
+				if ( ! empty( $this->p->options[ $cm_enabled_key ] ) && ! empty( $this->p->options[ $cm_name_key ] ) ) {
 
-					/**
-					 * Not all social websites have a contact fields, so check.
-					 */
-					if ( isset( $this->p->options[ $cm_name_key ] ) ) {
+					$cm_label_value = SucomUtil::get_key_value( $cm_label_key, $this->p->options );
 
-						if ( ! empty( $this->p->options[ $cm_enabled_key ] ) && ! empty( $this->p->options[ $cm_name_key ] ) ) {
+					if ( ! empty( $cm_label_value ) ) {
 
-							$cm_label_value = SucomUtil::get_key_value( $cm_label_key, $this->p->options );
-
-							if ( ! empty( $cm_label_value ) ) {	// Just in case.
-
-								$fields[ $this->p->options[ $cm_name_key ] ] = $cm_label_value;
-							}
-						}
+						$fields[ $this->p->options[ $cm_name_key ] ] = $cm_label_value;
 					}
 				}
 			}
 
-			asort( $fields );	// Sort associative array by value.
+			uasort( $fields, 'strnatcmp' );	// Sort associative array by value.
 
 			return $fields;
 		}

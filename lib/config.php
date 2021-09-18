@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.0.0-dev.1',	// Plugin version.
-					'opt_version' => '818',		// Increment when changing default option values.
+					'version'     => '9.0.0-dev.2',	// Plugin version.
+					'opt_version' => '819',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Rank higher and improve click-through-rates by presenting your content at its best on social sites and in search results - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled.',
@@ -1819,6 +1819,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings > Custom Contacts tab.
 					 */
+					'plugin_cm_behance_name'      => 'behance',
+					'plugin_cm_behance_label'     => 'Behance Profile URL',
+					'plugin_cm_behance_enabled'   => 1,
 					'plugin_cm_fb_name'           => 'facebook',
 					'plugin_cm_fb_label'          => 'Facebook User URL',
 					'plugin_cm_fb_enabled'        => 1,
@@ -1979,9 +1982,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 
 				/**
-				 * Contact method options prefix.
+				 * Contact method and social options prefix.
+				 *
+				 * The options prefix is used for contact method options (for example, 'plugin_cm_fb_enabled') and
+				 * social sharing buttons options (for example, 'fb_utm_source').
 				 */
 				'cm_prefix' => array(
+					'behance'     => 'behance',
 					'email'       => 'email',
 					'facebook'    => 'fb',
 					'twitter'     => 'twitter',
@@ -2606,7 +2613,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * Social account keys and labels for Organization SameAs.
 				 */
 				'social_accounts' => array(
-					'behance_publisher_url'   => 'Behance Business Page URL',
+					'behance_publisher_url'   => 'Behance Business Profile URL',
 					'fb_publisher_url'        => 'Facebook Business Page URL',
 					'instagram_publisher_url' => 'Instagram Business Profile URL',
 					'linkedin_publisher_url'  => 'LinkedIn Business Page URL',
@@ -4645,7 +4652,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					$local_cache[ $k ] = _x( $label, 'option value', 'wpsso' );
 				}
 
-				uasort( $local_cache, 'strnatcmp' );	// Sort by label after translation and maintain key association.
+				uasort( $local_cache, 'strnatcmp' );	// Sort associative array by value (ie. the translated label).
 			}
 
 			if ( false !== $key ) {

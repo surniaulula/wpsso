@@ -792,48 +792,24 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$table_rows[] = '<td colspan="4">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
 			$table_rows[] = '<th></th>' .
-				$form->get_th_html( _x( 'Show', 'column title', 'wpsso' ),
-					$css_class = 'checkbox left', 'custom-cm-show-checkbox' ) . 
-				$form->get_th_html( _x( 'Contact Field ID', 'column title', 'wpsso' ),
-					$css_class = 'medium left', 'custom-cm-field-id' ) . 
-				$form->get_th_html_locale( _x( 'Contact Field Label', 'column title', 'wpsso' ),
-					$css_class = 'wide left', 'custom-cm-field-label' );
+				$form->get_th_html( _x( 'Show', 'column title', 'wpsso' ), $css_class = 'checkbox left', 'custom-cm-show-checkbox' ) . 
+				$form->get_th_html( _x( 'Contact Field ID', 'column title', 'wpsso' ), $css_class = 'medium left', 'custom-cm-field-id' ) . 
+				$form->get_th_html_locale( _x( 'Contact Field Label', 'column title', 'wpsso' ), $css_class = 'wide left', 'custom-cm-field-label' );
 
-			$sorted_opt_pre = $this->p->cf[ 'opt' ][ 'cm_prefix' ];
-
-			ksort( $sorted_opt_pre );
-
-			foreach ( $sorted_opt_pre as $cm_id => $opt_pre ) {
+			foreach ( $this->p->cf[ 'opt' ][ 'cm_prefix' ] as $cm_id => $opt_pre ) {
 
 				$cm_enabled_key = 'plugin_cm_' . $opt_pre . '_enabled';
 				$cm_name_key    = 'plugin_cm_' . $opt_pre . '_name';
 				$cm_label_key   = 'plugin_cm_' . $opt_pre . '_label';
 
-				/**
-				 * Not all social sites have a contact method field.
-				 */
-				if ( ! isset( $form->options[ $cm_enabled_key ] ) ) {
+				if ( isset( $form->options[ $cm_enabled_key ] ) ) {
 
-					continue;
+					$table_rows[] = '' .
+						$form->get_th_html( ucfirst( $cm_id ) ) .
+						$form->get_no_td_checkbox( $cm_enabled_key, $comment = '', $extra_css_class = 'checkbox' ) . 
+						'<td class="blank medium">' . $form->get_no_input( $cm_name_key, $css_class = 'medium' ) . '</td>' . 
+						'<td class="blank wide">' . $form->get_no_input_locale( $cm_label_key ) . '</td>';
 				}
-
-				/**
-				 * Additional labels may be defined by social sharing add-ons.
-				 */
-				$opt_label = empty( $this->p->cf[ '*' ][ 'lib' ][ 'share' ][ $cm_id ] ) ?
-					ucfirst( $cm_id ) : $this->p->cf[ '*' ][ 'lib' ][ 'share' ][ $cm_id ];
-
-				/**
-				 * Hide by default if the contact method is not enabled by default.
-				 */
-				$tr_html = empty( $form->defaults[ $cm_enabled_key ] ) ?
-					$form->get_tr_hide( 'basic', array( $cm_enabled_key, $cm_name_key, $cm_label_key ) ) : '';
-
-				$table_rows[] = $tr_html .
-					$form->get_th_html( $opt_label ) . 
-					$form->get_no_td_checkbox( $cm_enabled_key, $comment = '', $extra_css_class = 'checkbox' ) . 
-					'<td class="blank medium">' . $form->get_no_input( $cm_name_key, $css_class = 'medium' ) . '</td>' . 
-					'<td class="blank wide">' . $form->get_no_input_locale( $cm_label_key ) . '</td>';
 			}
 
 			return $table_rows;

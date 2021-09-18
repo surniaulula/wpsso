@@ -97,7 +97,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			add_filter( 'http_request_host_is_external', array( $this, 'allow_safe_hosts' ), 1000, 3 );
 
 			/**
-			 * Provide plugin data / information from the readme.txt for additional add-ons. Don't hook the
+			 * Provides plugin data / information from the readme.txt for additional add-ons. Don't hook the
 			 * 'plugins_api_result' filter if the update manager is active as it provides more complete plugin data
 			 * than what's available from the readme.txt.
 			 */
@@ -832,7 +832,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/**
-		 * Provide plugin data / information from the readme.txt for additional add-ons.
+		 * Provides plugin data / information from the readme.txt for additional add-ons.
 		 */
 		public function external_plugin_data( $result, $action = null, $args = null ) {
 
