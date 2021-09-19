@@ -442,8 +442,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					 * All Schema Types.
 					 */
 					'schema_type'      => $def_schema_type,	// Schema Type.
-					'schema_title'     => '',		// Name (Title).
+					'schema_title'     => '',		// Name / Title.
 					'schema_title_alt' => '',		// Alternate Name.
+					'schema_bc_title'  => '',		// Breadcrumb Name.
 					'schema_desc'      => '',		// Description.
 
 					/**

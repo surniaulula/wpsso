@@ -43,7 +43,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 				/**
 				 * Document SSO > Customize tab.
 				 */
-				case 'tooltip-meta-schema_title':	// Name (Title).
+				case 'tooltip-meta-schema_title':	// Name / Title.
 
 					$text = __( 'A customized name / title for the Schema "name" property.', 'wpsso' );
 
@@ -52,6 +52,12 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 				case 'tooltip-meta-schema_title_alt':	// Alternate Name.
 
 					$text = __( 'A customized alternate name / title for the Schema "alternateName" property.', 'wpsso' );
+
+				 	break;
+
+				case 'tooltip-meta-schema_bc_title':	// Breadcrumb Name.
+
+					$text = __( 'A short title used for the Schema and/or HTML breadcrumb item name.', 'wpsso' );
 
 				 	break;
 

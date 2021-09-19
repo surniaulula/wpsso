@@ -196,7 +196,7 @@ _x( 'at', 'option value', 'wpsso' );
 _x( 'tz', 'option value', 'wpsso' );
 _x( '[WordPress Title]', 'option value', 'wpsso' );
 _x( 'Document SSO Default Title', 'option value', 'wpsso' );
-_x( 'Document SSO Schema Name (Title)', 'option value', 'wpsso' );
+_x( 'Document SSO Schema Name / Title', 'option value', 'wpsso' );
 _x( 'Document SSO Schema Alternate Name', 'option value', 'wpsso' );
 _x( 'SSO Toolbar Notices', 'option value', 'wpsso' );
 _x( 'WP Admin Notices', 'option value', 'wpsso' );

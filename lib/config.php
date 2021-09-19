@@ -2492,7 +2492,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'document_title' => array(	// Webpage Document Title.
 					'wp_title'         => '[WordPress Title]',
 					'og_title'         => 'Document SSO Default Title',
-					'schema_title'     => 'Document SSO Schema Name (Title)',
+					'schema_title'     => 'Document SSO Schema Name / Title',
 					'schema_title_alt' => 'Document SSO Schema Alternate Name',
 				),
 				'notice_systems' => array(

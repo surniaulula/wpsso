@@ -126,7 +126,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaOpenGraph' ) ) {
 
 				 	break;
 
-				case 'tooltip-meta-og_vid_title':	// Video Name (Title).
+				case 'tooltip-meta-og_vid_title':	// Video Name / Title.
 				case 'tooltip-meta-og_vid_desc':	// Video Description.
 
 					$text = sprintf( __( 'The %s video API modules can offer a default video name / title and description, provided that information is available from the service API.', 'wpsso' ), $this->p_name_pro ) . ' ';
