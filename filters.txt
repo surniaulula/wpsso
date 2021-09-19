@@ -23,6 +23,8 @@
 
 'sucom_strip_shortcodes' ( $preg_array )
 
+'wpsso_{post_type}_tag_taxonomy' ( $taxonomy = 'post_tag', $mod )
+
 'wpsso_add_head_html' ( $bool, $mod )
 
 'wpsso_add_link_rel_canonical' ( $bool, $mod )
@@ -60,8 +62,6 @@
 'wpsso_category_archive_description' ( $desc_text, $mod, $term_obj )
 
 'wpsso_check_post_head' ( $bool, $post_id, $post_obj )
-
-'wpsso_columns_post_{post_type_name}' ( true )
 
 'wpsso_content_accept_img_dims' ( $accept, $img_url, $img_width, $img_height, $size_name, $mod )
 

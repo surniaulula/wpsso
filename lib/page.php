@@ -2158,26 +2158,27 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $mod[ 'is_post' ] ) {
 
-					foreach ( wp_get_post_tags( $mod[ 'id' ] ) as $tag_obj ) {
+					if ( $mod[ 'post_type' ] ) {	// Just in case.
 
-						if ( ! empty( $tag_obj->name ) ) {
+						$filter_name = SucomUtil::sanitize_hookname( 'wpsso_' . $mod[ 'post_type' ] . '_tag_taxonomy' );
 
-							$tags[] = $tag_obj->name;
-						}
+						$taxonomy = apply_filters( $filter_name, 'post_tag', $mod );
+
+						$tags = wp_get_post_terms( $mod[ 'id' ], $taxonomy, $args = array( 'fields' => 'names' ) );
 					}
 				}
 
 				$tags = array_unique( $tags );
 			}
 
-			$tags = $local_cache[ $mod[ 'name' ] ][ $mod[ 'id' ] ] = apply_filters( 'wpsso_tag_names', $tags, $mod );
+			$tags = apply_filters( 'wpsso_tag_names', $tags, $mod );
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_arr( 'tags', $tags );
 			}
 
-			return $tags;
+			return $local_cache[ $mod[ 'name' ] ][ $mod[ 'id' ] ] = $tags;
 		}
 
 		/**
