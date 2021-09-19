@@ -427,18 +427,24 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 							$css_class = '', $css_id = 'tc_site' ) . 
 						'<td>' . $this->form->get_input_locale( 'tc_site' ) . '</td>';
 
+					$table_rows[ 'tc_title_max_len' ] = $this->form->get_tr_hide( 'basic', 'tc_title_max_len' ) . 
+						$this->form->get_th_html( _x( 'Twitter Card Title Max. Length', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'tc_title_max_len' ) . 
+						'<td>' . $this->form->get_input( 'tc_title_max_len', $css_class = 'chars' ) . ' ' . 
+						_x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
+
 					$table_rows[ 'tc_desc_max_len' ] = $this->form->get_tr_hide( 'basic', 'tc_desc_max_len' ) . 
 						$this->form->get_th_html( _x( 'Twitter Card Description Max. Length', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'tc_desc_max_len' ) . 
 						'<td>' . $this->form->get_input( 'tc_desc_max_len', $css_class = 'chars' ) . ' ' . 
 						_x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
 
-					$table_rows[ 'tc_type_singular' ] = $this->form->get_tr_hide( 'basic', 'tc_type_singular' ) . 
-						$this->form->get_th_html( _x( 'Twitter Card for Post / Page Image', 'option label', 'wpsso' ),
+					$table_rows[ 'tc_type_singular' ] = '' .
+						$this->form->get_th_html( _x( 'Twitter Card for Singular with Image', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'tc_type_singular' ) . 
 						'<td>' . $this->form->get_select( 'tc_type_singular', $tc_types ) . '</td>';
 
-					$table_rows[ 'tc_type_default' ] = $this->form->get_tr_hide( 'basic', 'tc_type_default' ) . 
+					$table_rows[ 'tc_type_default' ] = '' .
 						$this->form->get_th_html( _x( 'Twitter Card Type by Default', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'tc_type_default' ) . 
 						'<td>' . $this->form->get_select( 'tc_type_default', $tc_types ) . '</td>';

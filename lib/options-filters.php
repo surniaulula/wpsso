@@ -394,7 +394,8 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'og_title':
 				case 'og_desc':
 				case 'seo_desc':
-				case 'tc_desc':
+				case 'tc_title':	// Twitter Card Title.
+				case 'tc_desc':		// Twitter Card Description.
 				case 'pin_desc':
 				case 'article_section':
 				case 'product_category':

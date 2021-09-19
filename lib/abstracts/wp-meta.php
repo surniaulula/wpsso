@@ -349,6 +349,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'og_title'        => '',			// Default Title.
 					'og_desc'         => '',			// Default Description.
 					'pin_img_desc'    => '',			// Pinterest Description.
+					'tc_title'        => '',			// Twitter Card Title.
 					'tc_desc'         => '',			// Twitter Card Description.
 					'seo_desc'        => '',			// Search Description.
 					'canonical_url'   => '',			// Canonical URL.

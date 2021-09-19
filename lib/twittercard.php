@@ -82,8 +82,9 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 			if ( ! isset( $mt_tc[ 'twitter:title' ] ) ) {
 
-				$mt_tc[ 'twitter:title' ] = $this->p->page->get_title( $max_len = 70, $dots = '...', $mod, $read_cache = true,
-					$add_hashtags = false, $do_encode = true, $md_key = 'og_title' );
+				$mt_tc[ 'twitter:title' ] = $this->p->page->get_title( $this->p->options[ 'tc_title_max_len' ],
+					$dots = '...', $mod, $read_cache = true, $add_hashtags = false, $do_encode = true,
+						$md_key = array( 'tc_title', 'og_title' ) );
 			}
 
 			if ( ! isset( $mt_tc[ 'twitter:description' ] ) ) {

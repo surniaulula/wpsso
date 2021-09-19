@@ -84,6 +84,12 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 
 				 	break;
 
+				case 'tooltip-meta-tc_title':		// Twitter Card Title.
+
+					$text = __( 'A customized title for the Twitter Card title meta tag (all Twitter Card formats).', 'wpsso' );
+
+				 	break;
+
 				case 'tooltip-meta-tc_desc':		// Twitter Card Description.
 
 					$text = __( 'A customized description for the Twitter Card description meta tag (all Twitter Card formats).', 'wpsso' );

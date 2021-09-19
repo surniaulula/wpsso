@@ -426,6 +426,12 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 						break;
 
+					case 'tooltip-tc_title_max_len':	// Twitter Card Title Max. Length.
+
+						$text = sprintf( __( 'The maximum length for the Twitter Card title value (the default is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'tc_title_max_len' ) );
+
+						break;
+
 					case 'tooltip-tc_desc_max_len':	// Twitter Card Description Max. Length.
 
 						$text = sprintf( __( 'The maximum length for the Twitter Card description value (the default is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'tc_desc_max_len' ) ) . ' ';
@@ -436,7 +442,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 					case 'tooltip-tc_type_singular':
 
-						$text = 'The Twitter Card type for posts / pages with a custom, featured, and/or attached image.';
+						$text = 'The Twitter Card type for singular content (posts, pages, or custom post types) with a custom, featured, and/or attached image.';
 
 						break;
 

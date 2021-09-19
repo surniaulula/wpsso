@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 9.0.0-dev.3\n"
+"Project-Id-Version: WPSSO Core 9.0.0-dev.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3194,8 +3194,8 @@ msgid "Show"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:119 gettext/gettext-lib-pro.php:122
-#: lib/messages-info.php:212 lib/messages-tooltip.php:766
-#: lib/messages-tooltip.php:768 lib/messages-tooltip.php:780
+#: lib/messages-info.php:212 lib/messages-tooltip.php:772
+#: lib/messages-tooltip.php:774 lib/messages-tooltip.php:786
 #: lib/pro/admin/advanced.php:858 lib/pro/admin/advanced.php:888
 #: lib/std/admin/advanced.php:790 lib/std/admin/advanced.php:822
 msgctxt "column title"
@@ -3203,7 +3203,7 @@ msgid "Contact Field ID"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:120 gettext/gettext-lib-pro.php:123
-#: lib/messages-info.php:214 lib/messages-tooltip.php:774
+#: lib/messages-info.php:214 lib/messages-tooltip.php:780
 #: lib/pro/admin/advanced.php:859 lib/pro/admin/advanced.php:890
 #: lib/std/admin/advanced.php:791 lib/std/admin/advanced.php:824
 msgctxt "column title"
@@ -3796,7 +3796,7 @@ msgctxt "metabox title"
 msgid "Book Subject Information"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:231 lib/edit.php:242 lib/messages.php:939
+#: gettext/gettext-lib-pro.php:231 lib/edit.php:251 lib/messages.php:939
 #: lib/pro/admin/edit.php:812
 msgctxt "option label"
 msgid "Book ISBN"
@@ -4549,15 +4549,15 @@ msgstr ""
 msgid "The URL shortening library file for \"%s\" is missing and required."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:407 lib/pro/util/wpseo-meta.php:157
+#: gettext/gettext-lib-pro.php:407 lib/pro/util/wpseo-meta.php:158
 msgid "Imported Yoast SEO \"%1$s\" metadata from post ID %2$d."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:408 lib/pro/util/wpseo-meta.php:295
+#: gettext/gettext-lib-pro.php:408 lib/pro/util/wpseo-meta.php:297
 msgid "Imported Yoast SEO \"%1$s\" metadata from term ID %2$d."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:409 lib/pro/util/wpseo-meta.php:396
+#: gettext/gettext-lib-pro.php:409 lib/pro/util/wpseo-meta.php:398
 msgid "Imported Yoast SEO \"%1$s\" metadata from user ID %2$d."
 msgstr ""
 
@@ -4759,62 +4759,62 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:470 lib/edit.php:416 lib/page.php:1279
+#: gettext/gettext-lib-pro.php:470 lib/edit.php:425 lib/page.php:1279
 #: lib/pro/social/buddypress.php:663
 msgctxt "default description"
 msgid "No Description."
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1008
+#: lib/abstracts/wp-meta.php:1009
 msgctxt "metabox tab"
 msgid "Customize"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1009 lib/messages.php:287
+#: lib/abstracts/wp-meta.php:1010 lib/messages.php:287
 msgctxt "metabox tab"
 msgid "Priority Media"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1013 lib/messages-info.php:374
+#: lib/abstracts/wp-meta.php:1014 lib/messages-info.php:374
 msgctxt "metabox tab"
 msgid "Robots Meta"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1014
+#: lib/abstracts/wp-meta.php:1015
 msgctxt "metabox tab"
 msgid "Social Preview"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1015
+#: lib/abstracts/wp-meta.php:1016
 msgctxt "metabox tab"
 msgid "oEmbed Preview"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1016
+#: lib/abstracts/wp-meta.php:1017
 msgctxt "metabox tab"
 msgid "Head Markup"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1017
+#: lib/abstracts/wp-meta.php:1018
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1487
+#: lib/abstracts/wp-meta.php:1488
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1815 lib/json-filters/type/claimreview.php:77
+#: lib/abstracts/wp-meta.php:1816 lib/json-filters/type/claimreview.php:77
 msgid "A claim review cannot be the subject of another claim review."
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1817
+#: lib/abstracts/wp-meta.php:1818
 msgid ""
 "Please select a subject webpage type that better describes the subject of "
 "the webpage (ie. the content) being reviewed."
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:2525
+#: lib/abstracts/wp-meta.php:2526
 msgid "adding schema images"
 msgstr ""
 
@@ -5972,236 +5972,241 @@ msgid ""
 "social sites to access your site."
 msgstr ""
 
-#: lib/edit.php:118
+#: lib/edit.php:120
 msgctxt "option label"
 msgid "Preferred Cropping"
 msgstr ""
 
-#: lib/edit.php:124 lib/script.php:378
+#: lib/edit.php:126 lib/script.php:378
 msgctxt "option label"
 msgid "Schema Type"
 msgstr ""
 
-#: lib/edit.php:138
+#: lib/edit.php:140
 msgctxt "option label"
 msgid "Open Graph Type"
 msgstr ""
 
-#: lib/edit.php:145
+#: lib/edit.php:147
 msgctxt "option label"
 msgid "Primary Category"
 msgstr ""
 
-#: lib/edit.php:152
+#: lib/edit.php:154
 msgctxt "option label"
 msgid "Default Title"
 msgstr ""
 
-#: lib/edit.php:159
+#: lib/edit.php:161
 msgctxt "option label"
 msgid "Default Description"
 msgstr ""
 
-#: lib/edit.php:167
+#: lib/edit.php:169
 msgctxt "option label"
 msgid "Pinterest Description"
 msgstr ""
 
-#: lib/edit.php:175
+#: lib/edit.php:177
+msgctxt "option label"
+msgid "Twitter Card Title"
+msgstr ""
+
+#: lib/edit.php:184
 msgctxt "option label"
 msgid "Twitter Card Description"
 msgstr ""
 
-#: lib/edit.php:183
+#: lib/edit.php:192
 msgctxt "option label"
 msgid "Search Description"
 msgstr ""
 
-#: lib/edit.php:191 lib/edit.php:396
+#: lib/edit.php:200 lib/edit.php:405
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
 
-#: lib/edit.php:204
+#: lib/edit.php:213
 msgctxt "metabox title"
 msgid "Article Information"
 msgstr ""
 
-#: lib/edit.php:209
+#: lib/edit.php:218
 msgctxt "option label"
 msgid "Article Section"
 msgstr ""
 
-#: lib/edit.php:224
+#: lib/edit.php:233
 msgctxt "option label"
 msgid "Est. Reading Time"
 msgstr ""
 
-#: lib/edit.php:227
+#: lib/edit.php:236
 msgid "minute(s)"
 msgstr ""
 
-#: lib/edit.php:237
+#: lib/edit.php:246
 msgctxt "metabox title"
 msgid "Book Information"
 msgstr ""
 
-#: lib/edit.php:269
+#: lib/edit.php:278
 msgctxt "option label"
 msgid "No Archive"
 msgstr ""
 
-#: lib/edit.php:272
+#: lib/edit.php:281
 msgctxt "option comment"
 msgid "do not show a cached link in search results"
 msgstr ""
 
-#: lib/edit.php:275
+#: lib/edit.php:284
 msgctxt "option label"
 msgid "No Follow"
 msgstr ""
 
-#: lib/edit.php:278
+#: lib/edit.php:287
 msgctxt "option comment"
 msgid "do not follow links on this webpage"
 msgstr ""
 
-#: lib/edit.php:281
+#: lib/edit.php:290
 msgctxt "option label"
 msgid "No Image Index"
 msgstr ""
 
-#: lib/edit.php:284
+#: lib/edit.php:293
 msgctxt "option comment"
 msgid "do not index images on this webpage"
 msgstr ""
 
-#: lib/edit.php:287 lib/messages-info.php:372
+#: lib/edit.php:296 lib/messages-info.php:372
 msgctxt "option label"
 msgid "No Index"
 msgstr ""
 
-#: lib/edit.php:290
+#: lib/edit.php:299
 msgctxt "option comment"
 msgid "do not show this webpage in search results"
 msgstr ""
 
-#: lib/edit.php:293
+#: lib/edit.php:302
 msgctxt "option label"
 msgid "No Snippet"
 msgstr ""
 
-#: lib/edit.php:296
+#: lib/edit.php:305
 msgctxt "option comment"
 msgid "do not show a text snippet or a video preview in search results"
 msgstr ""
 
-#: lib/edit.php:299
+#: lib/edit.php:308
 msgctxt "option label"
 msgid "No Translate"
 msgstr ""
 
-#: lib/edit.php:302
+#: lib/edit.php:311
 msgctxt "option comment"
 msgid "do not offer translation of this webpage in search results"
 msgstr ""
 
-#: lib/edit.php:305
+#: lib/edit.php:314
 msgctxt "option label"
 msgid "Snippet Max. Length"
 msgstr ""
 
-#: lib/edit.php:308 lib/submenu/general.php:329 lib/submenu/general.php:335
+#: lib/edit.php:317 lib/submenu/general.php:329 lib/submenu/general.php:335
 #: lib/submenu/general.php:347 lib/submenu/general.php:359
-#: lib/submenu/general.php:434
+#: lib/submenu/general.php:434 lib/submenu/general.php:440
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
 
-#: lib/edit.php:308 lib/edit.php:319 lib/submenu/general.php:359
+#: lib/edit.php:317 lib/edit.php:328 lib/submenu/general.php:359
 #: lib/submenu/general.php:372
 msgctxt "option comment"
 msgid "-1 for no limit"
 msgstr ""
 
-#: lib/edit.php:311
+#: lib/edit.php:320
 msgctxt "option label"
 msgid "Image Preview Size"
 msgstr ""
 
-#: lib/edit.php:316
+#: lib/edit.php:325
 msgctxt "option label"
 msgid "Video Max. Previews"
 msgstr ""
 
-#: lib/edit.php:319 lib/submenu/general.php:372
+#: lib/edit.php:328 lib/submenu/general.php:372
 msgctxt "option comment"
 msgid "seconds"
 msgstr ""
 
-#: lib/edit.php:375
+#: lib/edit.php:384
 msgctxt "preview image error"
 msgid "Image Size Smaller<br/>than Suggested Minimum<br/>of %s"
 msgstr ""
 
-#: lib/edit.php:384
+#: lib/edit.php:393
 msgctxt "preview image error"
 msgid "Image Size Unknown<br/>or Not Available"
 msgstr ""
 
-#: lib/edit.php:391
+#: lib/edit.php:400
 msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/edit.php:400
+#: lib/edit.php:409
 msgctxt "option label"
 msgid "Shortlink URL"
 msgstr ""
 
-#: lib/edit.php:404
+#: lib/edit.php:413
 msgctxt "option label"
 msgid "Facebook / Open Graph Example"
 msgstr ""
 
-#: lib/edit.php:413 lib/page.php:1577
+#: lib/edit.php:422 lib/page.php:1577
 msgctxt "default title"
 msgid "No Title"
 msgstr ""
 
-#: lib/edit.php:453
+#: lib/edit.php:462
 msgctxt "option label"
 msgid "oEmbed JSON URL"
 msgstr ""
 
-#: lib/edit.php:457
+#: lib/edit.php:466
 msgctxt "option label"
 msgid "oEmbed XML URL"
 msgstr ""
 
-#: lib/edit.php:461
+#: lib/edit.php:470
 msgctxt "option label"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/edit.php:471
+#: lib/edit.php:480
 msgid "(see below)"
 msgstr ""
 
-#: lib/edit.php:481
+#: lib/edit.php:490
 msgid "No oEmbed data found."
 msgstr ""
 
-#: lib/edit.php:485
+#: lib/edit.php:494
 msgctxt "option label"
 msgid "oEmbed HTML"
 msgstr ""
 
-#: lib/edit.php:495
+#: lib/edit.php:504
 msgid "No oEmbed HTML found."
 msgstr ""
 
-#: lib/edit.php:631
+#: lib/edit.php:640
 msgctxt "submit button"
 msgid "Validate %s"
 msgstr ""
@@ -6598,13 +6603,13 @@ msgid ""
 "Schema markup."
 msgstr ""
 
-#: lib/messages-info.php:212 lib/messages-tooltip.php:766
+#: lib/messages-info.php:212 lib/messages-tooltip.php:772
 msgid ""
 "You should not modify the <em>%s</em> column unless you have a <em>very</em> "
 "good reason to do so."
 msgstr ""
 
-#: lib/messages-info.php:214 lib/messages-tooltip.php:774
+#: lib/messages-info.php:214 lib/messages-tooltip.php:780
 msgid ""
 "The %s column is for display purposes only and can be changed as you wish."
 msgstr ""
@@ -6842,8 +6847,8 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip-meta-opengraph.php:89
-#: lib/messages-tooltip-meta-schema.php:762 lib/messages-tooltip-meta.php:176
-#: lib/messages-tooltip-meta.php:193 lib/messages-tooltip-opengraph.php:150
+#: lib/messages-tooltip-meta-schema.php:762 lib/messages-tooltip-meta.php:182
+#: lib/messages-tooltip-meta.php:199 lib/messages-tooltip-opengraph.php:150
 msgid "This option is disabled if a custom image URL is entered."
 msgstr ""
 
@@ -6860,8 +6865,8 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip-meta-opengraph.php:101
-#: lib/messages-tooltip-meta-schema.php:770 lib/messages-tooltip-meta.php:184
-#: lib/messages-tooltip-meta.php:202 lib/messages-tooltip-opengraph.php:166
+#: lib/messages-tooltip-meta-schema.php:770 lib/messages-tooltip-meta.php:190
+#: lib/messages-tooltip-meta.php:208 lib/messages-tooltip-opengraph.php:166
 msgid "This option is disabled if a custom image ID is selected."
 msgstr ""
 
@@ -7470,138 +7475,144 @@ msgstr ""
 
 #: lib/messages-tooltip-meta.php:89
 msgid ""
+"A customized title for the Twitter Card title meta tag (all Twitter Card "
+"formats)."
+msgstr ""
+
+#: lib/messages-tooltip-meta.php:95
+msgid ""
 "A customized description for the Twitter Card description meta tag (all "
 "Twitter Card formats)."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:95
+#: lib/messages-tooltip-meta.php:101
 msgid "A customized description for the SEO description meta tag."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:103
+#: lib/messages-tooltip-meta.php:109
 msgid "A customized URL for meta tags and Schema markup."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:105
+#: lib/messages-tooltip-meta.php:111
 msgid ""
 "Please make sure the custom URL you enter here is functional and redirects "
 "correctly."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:112 lib/submenu/essential.php:116
+#: lib/messages-tooltip-meta.php:118 lib/submenu/essential.php:116
 #: lib/submenu/general.php:146
 msgctxt "option label"
 msgid "Default Article Section"
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:114
+#: lib/messages-tooltip-meta.php:120
 msgid ""
 "A customized section for this article, which may be different than the %s "
 "option value."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:117
+#: lib/messages-tooltip-meta.php:123
 msgid "Select \"[None]\" if you prefer to exclude the %s meta tag."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:124
+#: lib/messages-tooltip-meta.php:130
 msgid "The estimated reading time (in minutes) for this article."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:126
+#: lib/messages-tooltip-meta.php:132
 msgid "A value of 0 minutes disables the estimated reading time meta tags."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:134
+#: lib/messages-tooltip-meta.php:140
 msgid "The value of %s can be used in meta tags and Schema markup."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:141 lib/submenu/general.php:161
+#: lib/messages-tooltip-meta.php:147 lib/submenu/general.php:161
 msgctxt "option label"
 msgid "Default Product Type"
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:143
+#: lib/messages-tooltip-meta.php:149
 msgid ""
 "A custom Google product type, which may be different than the %s option "
 "value."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:149
+#: lib/messages-tooltip-meta.php:155
 msgid ""
 "Your selection will be used for Schema product markup and the %s meta tag."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:152
+#: lib/messages-tooltip-meta.php:158
 msgid ""
 "Select \"[None]\" if you prefer to exclude the product type from Schema "
 "markup and meta tags."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:163
+#: lib/messages-tooltip-meta.php:169
 msgid ""
 "The value of %s can be used in meta tags and Schema markup for simple "
 "products."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:165
+#: lib/messages-tooltip-meta.php:171
 msgid ""
 "When e-commerce product variations are available, the value from each "
 "variation will be used instead."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:167
+#: lib/messages-tooltip-meta.php:173
 msgid ""
 "This option may be disabled when a supported e-commerce plugin is the "
 "authoritative source of this data."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:174
+#: lib/messages-tooltip-meta.php:180
 msgid "A customized image ID for the Pinterest Pin It browser button."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:182
+#: lib/messages-tooltip-meta.php:188
 msgid ""
 "A customized image URL (instead of an image ID) for the Pinterest Pin It "
 "browser button."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:191
+#: lib/messages-tooltip-meta.php:197
 msgid "A customized image ID for the Twitter Card image."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:200
+#: lib/messages-tooltip-meta.php:206
 msgid ""
 "A customized image URL (instead of an image ID) for the Twitter Card image."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:211
+#: lib/messages-tooltip-meta.php:217
 msgid "Do not show a cached link in search results."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:220
+#: lib/messages-tooltip-meta.php:226
 msgid "Do not follow links on this webpage."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:229
+#: lib/messages-tooltip-meta.php:235
 msgid "Do not index images on this webpage."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:238
+#: lib/messages-tooltip-meta.php:244
 msgid "Do not show this webpage in search results."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:247
+#: lib/messages-tooltip-meta.php:253
 msgid "Do not show a text snippet or a video preview in search results."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:249
+#: lib/messages-tooltip-meta.php:255
 msgid ""
 "Google may still show a static image thumbnail (if available) when it "
 "determines that using an image provides a better user-experience."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:258
+#: lib/messages-tooltip-meta.php:264
 msgid "Do not offer translation of this webpage in search results."
 msgstr ""
 
@@ -7672,7 +7683,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip-opengraph.php:107 lib/messages-tooltip-schema.php:102
-#: lib/messages-tooltip.php:247 lib/messages-tooltip.php:433
+#: lib/messages-tooltip.php:247 lib/messages-tooltip.php:439
 msgid "The maximum length must be at least %d characters or more."
 msgstr ""
 
@@ -8565,21 +8576,21 @@ msgid "https://www.behance.net/"
 msgstr ""
 
 #: lib/messages-tooltip.php:145 lib/messages-tooltip.php:352
-#: lib/messages-tooltip.php:490 lib/messages-tooltip.php:518
-#: lib/messages-tooltip.php:546 lib/messages-tooltip.php:574
-#: lib/messages-tooltip.php:602 lib/messages-tooltip.php:630
-#: lib/messages-tooltip.php:658 lib/messages-tooltip.php:686
-#: lib/messages-tooltip.php:714
+#: lib/messages-tooltip.php:496 lib/messages-tooltip.php:524
+#: lib/messages-tooltip.php:552 lib/messages-tooltip.php:580
+#: lib/messages-tooltip.php:608 lib/messages-tooltip.php:636
+#: lib/messages-tooltip.php:664 lib/messages-tooltip.php:692
+#: lib/messages-tooltip.php:720
 msgid "The %s will be included in the website's Schema Organization markup."
 msgstr ""
 
 #: lib/messages-tooltip.php:147 lib/messages-tooltip.php:174
 #: lib/messages-tooltip.php:354 lib/messages-tooltip.php:424
-#: lib/messages-tooltip.php:492 lib/messages-tooltip.php:520
-#: lib/messages-tooltip.php:548 lib/messages-tooltip.php:576
-#: lib/messages-tooltip.php:604 lib/messages-tooltip.php:632
-#: lib/messages-tooltip.php:660 lib/messages-tooltip.php:688
-#: lib/messages-tooltip.php:716
+#: lib/messages-tooltip.php:498 lib/messages-tooltip.php:526
+#: lib/messages-tooltip.php:554 lib/messages-tooltip.php:582
+#: lib/messages-tooltip.php:610 lib/messages-tooltip.php:638
+#: lib/messages-tooltip.php:666 lib/messages-tooltip.php:694
+#: lib/messages-tooltip.php:722
 msgid ""
 "Google Search may use this URL to display additional information about the "
 "website, business, or company in its search results."
@@ -8806,127 +8817,133 @@ msgstr ""
 
 #: lib/messages-tooltip.php:431
 msgid ""
+"The maximum length for the Twitter Card title value (the default is %d "
+"characters)."
+msgstr ""
+
+#: lib/messages-tooltip.php:437
+msgid ""
 "The maximum length for the Twitter Card description value (the default is %d "
 "characters)."
 msgstr ""
 
-#: lib/messages-tooltip.php:453
+#: lib/messages-tooltip.php:459
 msgid ""
 "The image dimensions for the <a href=\"%1$s\">Summary Card</a> (should be at "
 "least %2$s and less than %3$s)."
 msgstr ""
 
-#: lib/messages-tooltip.php:453 lib/messages-tooltip.php:463
+#: lib/messages-tooltip.php:459 lib/messages-tooltip.php:469
 msgid "1MB"
 msgstr ""
 
-#: lib/messages-tooltip.php:455 lib/messages-tooltip.php:465
+#: lib/messages-tooltip.php:461 lib/messages-tooltip.php:471
 msgid "The default image dimensions are %s."
 msgstr ""
 
-#: lib/messages-tooltip.php:463
+#: lib/messages-tooltip.php:469
 msgid ""
 "The image dimensions for the <a href=\"%1$s\">Large Image Summary Card</a> "
 "(must be larger than %2$s and less than %3$s)."
 msgstr ""
 
-#: lib/messages-tooltip.php:488
+#: lib/messages-tooltip.php:494
 msgid ""
 "If you have an <a href=\"%s\">Intagram profile for your business</a>, you "
 "may enter its URL here."
 msgstr ""
 
-#: lib/messages-tooltip.php:488
+#: lib/messages-tooltip.php:494
 msgid "https://business.instagram.com/getting-started"
 msgstr ""
 
-#: lib/messages-tooltip.php:516
+#: lib/messages-tooltip.php:522
 msgid ""
 "If you have a <a href=\"%s\">LinkedIn page for your business</a>, you may "
 "enter its URL here."
 msgstr ""
 
-#: lib/messages-tooltip.php:516
+#: lib/messages-tooltip.php:522
 msgid "https://business.linkedin.com/marketing-solutions/linkedin-pages"
 msgstr ""
 
-#: lib/messages-tooltip.php:544
+#: lib/messages-tooltip.php:550
 msgid ""
 "If you have a <a href=\"%s\">Medium page for your business</a>, you may "
 "enter its URL here."
 msgstr ""
 
-#: lib/messages-tooltip.php:544
+#: lib/messages-tooltip.php:550
 msgid "https://medium.com/"
 msgstr ""
 
-#: lib/messages-tooltip.php:572
+#: lib/messages-tooltip.php:578
 msgid ""
 "If you have a <a href=\"%s\">Myspace page for your business</a>, you may "
 "enter its URL here."
 msgstr ""
 
-#: lib/messages-tooltip.php:572
+#: lib/messages-tooltip.php:578
 msgid "https://myspace.com/"
 msgstr ""
 
-#: lib/messages-tooltip.php:600
+#: lib/messages-tooltip.php:606
 msgid ""
 "If you have a <a href=\"%s\">Soundcloud page for your business</a>, you may "
 "enter its URL here."
 msgstr ""
 
-#: lib/messages-tooltip.php:600
+#: lib/messages-tooltip.php:606
 msgid "https://soundcloud.com/"
 msgstr ""
 
-#: lib/messages-tooltip.php:628
+#: lib/messages-tooltip.php:634
 msgid ""
 "If you have a <a href=\"%s\">TikTok page for your business</a>, you may "
 "enter its URL here."
 msgstr ""
 
-#: lib/messages-tooltip.php:628
+#: lib/messages-tooltip.php:634
 msgid "https://tiktok.com/"
 msgstr ""
 
-#: lib/messages-tooltip.php:656
+#: lib/messages-tooltip.php:662
 msgid ""
 "If you have a <a href=\"%s\">Tumblr page for your business</a>, you may "
 "enter its URL here."
 msgstr ""
 
-#: lib/messages-tooltip.php:656
+#: lib/messages-tooltip.php:662
 msgid "https://tumblr.com/"
 msgstr ""
 
-#: lib/messages-tooltip.php:684
+#: lib/messages-tooltip.php:690
 msgid ""
 "If you have a <a href=\"%s\">Wikipedia page for your organization</a>, you "
 "may enter its URL here."
 msgstr ""
 
-#: lib/messages-tooltip.php:684
+#: lib/messages-tooltip.php:690
 msgid "https://en.wikipedia.org/wiki/Wikipedia:FAQ/Organizations"
 msgstr ""
 
-#: lib/messages-tooltip.php:712
+#: lib/messages-tooltip.php:718
 msgid ""
 "If you have a <a href=\"%s\">YouTube channel for your business</a>, you may "
 "enter its URL here."
 msgstr ""
 
-#: lib/messages-tooltip.php:712
+#: lib/messages-tooltip.php:718
 msgid "https://youtube.com/"
 msgstr ""
 
-#: lib/messages-tooltip.php:768
+#: lib/messages-tooltip.php:774
 msgid ""
 "As an example, to match the <em>%1$s</em> of a theme or other plugin, you "
 "might change \"%2$s\" to \"%3$s\" or some other value."
 msgstr ""
 
-#: lib/messages-tooltip.php:780
+#: lib/messages-tooltip.php:786
 msgid "The built-in WordPress <em>%s</em> column cannot be modified."
 msgstr ""
 
@@ -10448,35 +10465,40 @@ msgstr ""
 
 #: lib/submenu/general.php:431
 msgctxt "option label"
-msgid "Twitter Card Description Max. Length"
+msgid "Twitter Card Title Max. Length"
 msgstr ""
 
 #: lib/submenu/general.php:437
 msgctxt "option label"
-msgid "Twitter Card for Post / Page Image"
+msgid "Twitter Card Description Max. Length"
 msgstr ""
 
-#: lib/submenu/general.php:442
+#: lib/submenu/general.php:443
+msgctxt "option label"
+msgid "Twitter Card for Singular with Image"
+msgstr ""
+
+#: lib/submenu/general.php:448
 msgctxt "option label"
 msgid "Twitter Card Type by Default"
 msgstr ""
 
-#: lib/submenu/general.php:451
+#: lib/submenu/general.php:457
 msgctxt "option label"
 msgid "Ahrefs Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:456
+#: lib/submenu/general.php:462
 msgctxt "option label"
 msgid "Baidu Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:461
+#: lib/submenu/general.php:467
 msgctxt "option label"
 msgid "Bing Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:466
+#: lib/submenu/general.php:472
 msgctxt "option label"
 msgid "Yandex Website Verification ID"
 msgstr ""
@@ -10584,39 +10606,39 @@ msgstr ""
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
-#: lib/twittercard.php:197
+#: lib/twittercard.php:198
 msgctxt "metabox title"
 msgid "Twitter App Card"
 msgstr ""
 
-#: lib/twittercard.php:205
+#: lib/twittercard.php:206
 msgctxt "metabox title"
 msgid "Twitter Player Card"
 msgstr ""
 
-#: lib/twittercard.php:213
+#: lib/twittercard.php:214
 msgctxt "metabox title"
 msgid "Twitter Summary Card"
 msgstr ""
 
-#: lib/twittercard.php:221
+#: lib/twittercard.php:222
 msgctxt "metabox title"
 msgid "Twitter Large Image Summary Card"
 msgstr ""
 
-#: lib/twittercard.php:643
+#: lib/twittercard.php:644
 msgid "Written by"
 msgstr ""
 
-#: lib/twittercard.php:652
+#: lib/twittercard.php:653
 msgid "Est. reading time"
 msgstr ""
 
-#: lib/twittercard.php:663
+#: lib/twittercard.php:664
 msgid "Price"
 msgstr ""
 
-#: lib/twittercard.php:681
+#: lib/twittercard.php:682
 msgid "Availability"
 msgstr ""
 

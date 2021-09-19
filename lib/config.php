@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.0.0-dev.3',	// Plugin version.
-					'opt_version' => '820',		// Increment when changing default option values.
+					'version'     => '9.0.0-dev.4',	// Plugin version.
+					'opt_version' => '821',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Rank higher and improve click-through-rates by presenting your content at its best on social sites and in search results - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled.',
@@ -1480,6 +1480,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Twitter Card options.
 					 */
 					'tc_site'           => '',				// Twitter Business @username (localized).
+					'tc_title_max_len'  => 70,				// Twitter Card Title Max. Length (hard limit).
 					'tc_desc_max_len'   => 200,				// Twitter Card Description Max. Length (hard limit).
 					'tc_type_singular'  => 'summary_large_image',		// Twitter Card for Post / Page Image.
 					'tc_type_default'   => 'summary',			// Twitter Card Type by Default.
