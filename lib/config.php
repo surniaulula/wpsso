@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.0.0-dev.2',	// Plugin version.
-					'opt_version' => '819',		// Increment when changing default option values.
+					'version'     => '9.0.0-dev.3',	// Plugin version.
+					'opt_version' => '820',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Rank higher and improve click-through-rates by presenting your content at its best on social sites and in search results - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled.',
@@ -1737,7 +1737,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_filter_content'       => 0,			// Use Filtered Content.
 					'plugin_filter_excerpt'       => 0,			// Use Filtered Excerpt.
 					'plugin_page_excerpt'         => 0,			// Enable Excerpt for Pages.
-					'plugin_page_tags'            => 0,			// Enable Tags for Pages.
 					'plugin_new_user_is_person'   => 0,			// Add Person Role for New Users.
 					'plugin_clear_post_terms'     => 1,			// Clear Term Cache when Publishing.
 					'plugin_clear_for_comment'    => 1,			// Clear Post Cache for New Comment.
@@ -3501,7 +3500,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 										'service.loan.or.credit' => 'https://schema.org/LoanOrCredit',
 									),
 									// 'payment.card' array added by WpssoSchema::add_schema_type_xrefs().
-									'service.payment'      => 'https://schema.org/PaymentService',
+									'service.payment' => 'https://schema.org/PaymentService',
 								),
 								'service.food'       => 'https://schema.org/FoodService',
 								'service.government' => 'https://schema.org/GovernmentService',

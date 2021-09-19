@@ -2090,6 +2090,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$max_hashtags = $this->p->options[ 'og_desc_hashtags' ];
 
 			} else {	// Just in case.
+
 				return '';
 			}
 
@@ -2110,10 +2111,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( ! empty( $tags ) ) {
 
-					/**
-					 * Remove special character incompatible with Twitter.
-					 */
-					$hashtags = SucomUtil::array_to_hashtags( $tags );
+					$hashtags = SucomUtil::array_to_hashtags( $tags );	// Remove special characters incompatible with Twitter.
 
 					if ( $this->p->debug->enabled ) {
 

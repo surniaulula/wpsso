@@ -168,16 +168,6 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
-				case 'tooltip-plugin_page_tags':	// Enable Tags for Pages.
-
-					$text = __( 'Enable the WordPress tags metabox for Pages.', 'wpsso' ) . ' ';
-
-					$text .= __( 'WordPress tags are optional keywords about the content subject, often used for searches and "tag clouds".', 'wpsso' ) . ' ';
-
-					$text .= sprintf( __( '%s can convert WordPress tags into hashtags for some social sites.', 'wpsso' ), $info[ 'short' ] );
-
-					break;
-
 				case 'tooltip-plugin_new_user_is_person':	// Add Person Role for New Users.
 
 					$text = sprintf( __( 'Automatically add the "%s" role when a new user is created.', 'wpsso' ), _x( 'Person', 'user role', 'wpsso' ) ) . ' ';

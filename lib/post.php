@@ -44,14 +44,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				add_post_type_support( 'page', array( 'excerpt' ) );
 			}
 
-			/**
-			 * Maybe enable WP post tags for pages.
-			 */
-			if ( ! empty( $this->p->options[ 'plugin_page_tags' ] ) ) {
-
-				register_taxonomy_for_object_type( 'post_tag', 'page' );
-			}
-
 			add_action( 'wp_loaded', array( $this, 'add_wp_hooks' ) );
 		}
 

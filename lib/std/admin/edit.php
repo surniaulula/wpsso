@@ -35,7 +35,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			$this->p->util->add_plugin_filters( $this, array(
 				'metabox_sso_edit_rows'  => 4,
 				'metabox_sso_media_rows' => 4,
-			), $prio = -1000 );	// Run before add-ons.
+			), $prio = 500 );	// Run before older WPSSO JSON add-ons.
 
 			/**
 			 * Since WPSSO Core v9.0.0.
@@ -50,9 +50,9 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			} else {
 
 				$this->p->util->add_plugin_filters( $this, array( 
-					'metabox_sso_edit_schema_rows'  => array( 'metabox_sso_edit_rows' => 4 ),
+					'metabox_sso_edit_schema_rows'  => array( 'metabox_sso_edit_rows'  => 4 ),
 					'metabox_sso_media_schema_rows' => array( 'metabox_sso_media_rows' => 4 ),
-				), $prio = 2000 );	// Run after older WPSSO JSON add-ons.
+				), $prio = 1500 );	// Run after older WPSSO JSON add-ons.
 			}
 		}
 
@@ -98,7 +98,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 
 				if ( $this->p->check->pp( 'wpssojson' ) ) {	// Nothing to do.
 
-					return $table_rows;
+					return apply_filters( 'wpsso_metabox_sso_edit_schema_rows', $table_rows, $form, $head_info, $mod );
 				}
 
 				$json_version = WpssoJsonConfig::get_version();
@@ -1420,7 +1420,9 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				),
 			);
 
-			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
+			$table_rows = $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
+
+			return apply_filters( 'wpsso_metabox_sso_edit_schema_rows', $table_rows, $form, $head_info, $mod );
 		}
 
 		public function filter_metabox_sso_media_rows( $table_rows, $form, $head_info, $mod ) {
@@ -1663,7 +1665,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 
 				if ( $this->p->check->pp( 'wpssojson' ) ) {	// Nothing to do.
 
-					return $table_rows;
+					return apply_filters( 'wpsso_metabox_sso_media_schema_rows', $table_rows, $form, $head_info, $mod );
 				}
 
 				$json_version = WpssoJsonConfig::get_version();
@@ -1713,7 +1715,9 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				),
 			);
 
-			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
+			$table_rows = $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
+
+			return apply_filters( 'wpsso_metabox_sso_media_schema_rows', $table_rows, $form, $head_info, $mod );
 		}
 
 		private function get_input_time_dhms( $form ) {
