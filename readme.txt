@@ -319,13 +319,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.0.0-dev.2 (2021/09/18)**
+**Version 9.0.0-dev.3 (2021/09/19)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Deprecated the Schema link and meta itemprop tags.
 	* Deprecated the head attributes check in theme header templates.
+	* Removed the SSO &gt; Advanced Settings &gt; Integration &gt; Enable Tags for Pages option.
 	* Removed the SSO &gt; Advanced Settings &gt; HTML Tags &gt; Schema tab.
 	* Moved the Schema JSON data filters from the WPSSO JSON add-on to the WPSSO Core plugin.
 	* Moved the Document SSO &gt; Schema JSON-LD Markup / Google Rich Results sections from the WPSSO JSON add-on to the WPSSO Core plugin.
@@ -972,9 +973,9 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 
 == Upgrade Notice ==
 
-= 9.0.0-dev.2 =
+= 9.0.0-dev.3 =
 
-(2021/09/18) Moved the Schema JSON data filters from the WPSSO JSON add-on to the WPSSO Core plugin.
+(2021/09/19) Moved the Schema JSON data filters from the WPSSO JSON add-on to the WPSSO Core plugin.
 
 = 8.39.1 =
 
