@@ -319,7 +319,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.0.0-dev.4 (2021/09/19)**
+**Version 9.0.0-dev.5 (2021/09/19)**
 
 * **New Features**
 	* None.
@@ -336,6 +336,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fixed caching of option defaults array once plugin objects have been initialized.
 	* Fixed missing 'areaServed' property in Schema LocalBusiness markup for places / locations.
 * **Developer Notes**
+	* Added a new 'wpsso_{post_type}_tag_taxonomy' filter.
 	* Added a new `WpssoOptionsFilters` class.
 	* Added a new `WpssoConfig::get_social_accounts()` method.
 	* Removed the `WpssoMetaItem` class.
@@ -975,7 +976,7 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 
 == Upgrade Notice ==
 
-= 9.0.0-dev.4 =
+= 9.0.0-dev.5 =
 
 (2021/09/19) Added a Document SSO &gt; Twitter Card Title option. Refactored the Rank Math integration module (Premium version). Moved Schema JSON data filters from WPSSO JSON to WPSSO Core.
 
