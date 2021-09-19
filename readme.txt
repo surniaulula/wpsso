@@ -319,11 +319,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.0.0-dev.3 (2021/09/19)**
+**Version 9.0.0-dev.4 (2021/09/19)**
 
 * **New Features**
 	* None.
 * **Improvements**
+	* Added a Document SSO &gt; Customize &gt; Twitter Card Title option.
+	* Refactored the Rank Math integration module to read Google, Facebook, and Twitter metadata (Premium version).
 	* Deprecated the Schema link and meta itemprop tags.
 	* Deprecated the head attributes check in theme header templates.
 	* Removed the SSO &gt; Advanced Settings &gt; Integration &gt; Enable Tags for Pages option.
@@ -973,9 +975,9 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 
 == Upgrade Notice ==
 
-= 9.0.0-dev.3 =
+= 9.0.0-dev.4 =
 
-(2021/09/19) Moved the Schema JSON data filters from the WPSSO JSON add-on to the WPSSO Core plugin.
+(2021/09/19) Added a Document SSO &gt; Twitter Card Title option. Refactored the Rank Math integration module (Premium version). Moved Schema JSON data filters from WPSSO JSON to WPSSO Core.
 
 = 8.39.1 =
 
