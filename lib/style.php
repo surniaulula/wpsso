@@ -417,6 +417,8 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				}
 				table.wp-list-table > thead > tr > th.column-tags,
 				table.wp-list-table > tbody > tr > td.column-tags,
+				table.wp-list-table > thead > tr > th.column-taxonomy-page_tag,
+				table.wp-list-table > tbody > tr > td.column-taxonomy-page_tag,
 				table.wp-list-table > thead > tr > th.column-product_tag,
 				table.wp-list-table > tbody > tr > td.column-product_tag {
 					width:15%;

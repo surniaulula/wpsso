@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'     => '9.0.0-dev.7',	// Plugin version.
-					'opt_version' => '821',		// Increment when changing default option values.
+					'opt_version' => '822',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Rank higher and improve click-through-rates by presenting your content at its best on social sites and in search results - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled.',
@@ -1649,7 +1649,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_add_to_tribe-ea-record'        => 1,		// For The Events Calendar.
 					'plugin_add_to_user_page'              => 1,
 					'plugin_schema_type_col_media'         => 0,		// Additional List Table Columns.
-					'plugin_schema_type_col_post'          => 1,
+					'plugin_schema_type_col_post'          => 0,
 					'plugin_schema_type_col_term'          => 0,
 					'plugin_schema_type_col_user'          => 0,
 					'plugin_og_type_col_media'             => 0,
@@ -1661,9 +1661,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_og_img_col_term'               => 1,
 					'plugin_og_img_col_user'               => 1,
 					'plugin_og_desc_col_media'             => 1,
-					'plugin_og_desc_col_post'              => 1,
-					'plugin_og_desc_col_term'              => 1,
-					'plugin_og_desc_col_user'              => 1,
+					'plugin_og_desc_col_post'              => 0,
+					'plugin_og_desc_col_term'              => 0,
+					'plugin_og_desc_col_user'              => 0,
 
 					/**
 					 * Advanced Settings > Integration tab.
