@@ -815,6 +815,70 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'latest'    => '',	// Optional.
 					),
 				),
+				'wpssossc' => array(			// Plugin acronym.
+					'short'       => 'WPSSO SSC',	// Short plugin name.
+					'name'        => 'WPSSO Schema Shortcode',
+					'desc'        => 'Schema shortcode.',
+					'slug'        => 'wpsso-schema-shortcode',
+					'base'        => 'wpsso-schema-shortcode/wpsso-schema-shortcode.php',
+					'update_auth' => '',		// No premium version.
+
+					/**
+					 * URLs or relative paths to plugin banners and icons.
+					 */
+					'assets' => array(
+
+						/**
+						 * Banner image array keys are 'low' and 'high'.
+						 */
+						'banners' => array(
+							'low'  => 'https://surniaulula.github.io/wpsso-schema-shortcode/assets/banner-772x250.jpg',
+							'high' => 'https://surniaulula.github.io/wpsso-schema-shortcode/assets/banner-1544x500.jpg',
+						),
+
+						/**
+						 * Icon image array keys are '1x' and '2x'.
+						 */
+						'icons' => array(
+							'1x' => 'https://surniaulula.github.io/wpsso-schema-shortcode/assets/icon-128x128.png',
+							'2x' => 'https://surniaulula.github.io/wpsso-schema-shortcode/assets/icon-256x256.png',
+						),
+					),
+					'hosts' => array(
+						'wp_org' => true,
+						'github' => true,
+						'wpsso'  => true,
+					),
+					'url' => array(
+
+						/**
+						 * WordPress.org.
+						 */
+						'home'   => 'https://wordpress.org/plugins/wpsso-schema-shortcode/',
+						'forum'  => 'https://wordpress.org/support/plugin/wpsso-schema-shortcode',
+						'review' => 'https://wordpress.org/support/plugin/wpsso-schema-shortcode/reviews/?rate=5#new-post',
+
+						/**
+						 * GitHub.com.
+						 */
+						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-schema-shortcode/master/readme.txt',
+						'setup_html' => '',
+
+						/**
+						 * WPSSO.com.
+						 */
+						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-schema-shortcode/changelog/',
+						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-schema-shortcode/',
+						'install'   => 'https://wpsso.com/docs/plugins/wpsso-schema-shortcode/installation/',
+						'faqs'      => '',
+						'notes'     => '',
+						'support'   => '',	// Premium support ticket.
+						'purchase'  => '',	// Purchase page.
+						'info'      => '',	// License information.
+						'update'    => 'https://wpsso.com/extend/plugins/wpsso-schema-shortcode/update/',
+						'latest'    => '',	// Optional.
+					),
+				),
 				'wpssossm' => array(			// Plugin acronym.
 					'short'       => 'WPSSO SSM',	// Short plugin name.
 					'name'        => 'WPSSO Strip Schema Microdata',
