@@ -141,7 +141,7 @@ The WPSSO Core Standard plugin is designed to satisfy the requirements of most s
 
 **[Premium]** Customize the post and taxonomy types included in the WordPress sitemap XML.
 
-**[Premium]** Complete Schema JSON-LD markup for WooCommerce products ([WPSSO JSON add-on required](https://wordpress.org/plugins/wpsso-schema-json-ld/)).
+**[Premium]** Complete Schema JSON-LD markup for WooCommerce products.
 
 **[Premium]** Integrates with other plugins and service APIs for additional image, video, e-Commerce product details, SEO settings, etc. The following modules are included with the Premium version and automatically loaded if/when the supported plugins and/or services are required.
 
@@ -212,7 +212,6 @@ Activate any of the free complementary add-on(s) you require:
 * [WPSSO REST API](https://wordpress.org/plugins/wpsso-rest-api/) to add meta tags and Schema markup in REST API queries.
 * [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/) to add responsive share buttons.
 * [WPSSO Schema Breadcrumbs Markup](https://wordpress.org/plugins/wpsso-breadcrumbs/) to add Breadcrumbs markup for Google.
-* [WPSSO Schema JSON-LD Markup](https://wordpress.org/plugins/wpsso-schema-json-ld/) to provide Google with Schema markup in its preferred format.
 * [WPSSO Shipping Delivery Time for WooCommerce](https://wordpress.org/plugins/wpsso-wc-shipping-delivery-time/) to provide Google with shipping rates and delivery time estimates.
 * [WPSSO Strip Schema Microdata](https://wordpress.org/plugins/wpsso-strip-schema-microdata/) to strip incorrect markup from templates.
 * [WPSSO Tune WP Image Editors](https://wordpress.org/plugins/wpsso-tune-image-editors/) for better looking WordPress thumbnails.

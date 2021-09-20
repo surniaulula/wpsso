@@ -150,7 +150,7 @@
 
 <p><strong>[Premium]</strong> Customize the post and taxonomy types included in the WordPress sitemap XML.</p>
 
-<p><strong>[Premium]</strong> Complete Schema JSON-LD markup for WooCommerce products (<a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO JSON add-on required</a>).</p>
+<p><strong>[Premium]</strong> Complete Schema JSON-LD markup for WooCommerce products.</p>
 
 <p><strong>[Premium]</strong> Integrates with other plugins and service APIs for additional image, video, e-Commerce product details, SEO settings, etc. The following modules are included with the Premium version and automatically loaded if/when the supported plugins and/or services are required.</p>
 
@@ -227,7 +227,6 @@
 <li><a href="https://wordpress.org/plugins/wpsso-rest-api/">WPSSO REST API</a> to add meta tags and Schema markup in REST API queries.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-rrssb/">WPSSO Ridiculously Responsive Social Sharing Buttons</a> to add responsive share buttons.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-breadcrumbs/">WPSSO Schema Breadcrumbs Markup</a> to add Breadcrumbs markup for Google.</li>
-<li><a href="https://wordpress.org/plugins/wpsso-schema-json-ld/">WPSSO Schema JSON-LD Markup</a> to provide Google with Schema markup in its preferred format.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-wc-shipping-delivery-time/">WPSSO Shipping Delivery Time for WooCommerce</a> to provide Google with shipping rates and delivery time estimates.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-strip-schema-microdata/">WPSSO Strip Schema Microdata</a> to strip incorrect markup from templates.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-tune-image-editors/">WPSSO Tune WP Image Editors</a> for better looking WordPress thumbnails.</li>
