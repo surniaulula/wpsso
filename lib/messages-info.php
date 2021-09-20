@@ -17,24 +17,12 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 
 if ( ! class_exists( 'WpssoMessagesInfo' ) ) {
 
+	/**
+	 * Instantiated by WpssoMessages->get() only when needed.
+	 */
 	class WpssoMessagesInfo extends WpssoMessages {
 
-		protected $p;	// Wpsso class object.
-
 		private $meta = null;	// WpssoMessagesInfoMeta class object.
-
-		/**
-		 * Instantiated by WpssoMessages->get() only when needed.
-		 */
-		public function __construct( &$plugin ) {
-
-			$this->p =& $plugin;
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-		}
 
 		public function get( $msg_key = false, $info = array() ) {
 
@@ -159,11 +147,11 @@ if ( ! class_exists( 'WpssoMessagesInfo' ) ) {
 
 					$text .= '<p>';
 
-					$text .= sprintf( __( 'After purchasing the %1$s plugin or any complementary %2$s add-on, you\'ll receive an email with a unique Authentication ID for the plugin or add-on you purchased.', 'wpsso' ), $this->p_name_pro, $this->dist_pro ) . ' ';
+					$text .= sprintf( __( 'After purchasing a %1$s license pack, you\'ll receive an email with %2$s installation instructions and your unique Authentication ID for the license pack.', 'wpsso' ), $this->p_name_pro, $this->dist_pro ) . ' ';
 
-					$text .=  __( 'Enter the Authentication ID you received in the option field corresponding to the plugin or add-on you purchased.', 'wpsso' ) . ' ';
+					$text .=  __( 'Enter the Authentication ID in the option field bellow.', 'wpsso' ) . ' ';
 
-					$text .= sprintf( __( 'Don\'t forget that the %1$s add-on must be installed and active to check for %2$s version updates.', 'wpsso' ), $um_addon_link, $this->dist_pro ) . ' ;-)';
+					$text .= sprintf( __( 'As mentioned in the installation instructions, don\'t forget that the %1$s add-on must be installed and active to enable %2$s features and get %2$s updates.', 'wpsso' ), $um_addon_link, $this->dist_pro );
 
 					$text .= '</p>';
 
@@ -177,18 +165,25 @@ if ( ! class_exists( 'WpssoMessagesInfo' ) ) {
 					$um_info      = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
 					$um_info_name = _x( $um_info[ 'name' ], 'plugin name', 'wpsso' );
 
-					$licenses_page_link = $this->p->util->get_admin_url( 'licenses',
-						_x( 'Premium Licenses', 'lib file description', 'wpsso' ) );
+					$licenses_page_link = $this->p->util->get_admin_url( 'licenses', _x( 'Premium Licenses', 'lib file description', 'wpsso' ) );
 
 					$text = '<blockquote class="top-info">';
 
-					$text .= '<p>' . sprintf( __( 'After purchasing the %1$s plugin or any complementary %2$s add-on, you\'ll receive an email with a unique Authentication ID for the plugin or add-on you purchased.', 'wpsso' ), $this->p_name_pro, $this->dist_pro ) . ' ';
+					$text .= '<p>';
 
-					$text .= sprintf( __( 'You may enter each Authentication ID on this page <em>to define a value for all sites within the network</em> - or enter Authentication IDs individually on each site\'s %1$s settings page.', 'wpsso' ), $licenses_page_link ) . '</p>';
+					$text .= sprintf( __( 'After purchasing a %1$s license pack, you\'ll receive an email with %2$s installation instructions and your unique Authentication ID for the license pack.', 'wpsso' ), $this->p_name_pro, $this->dist_pro ) . ' ';
 
-					$text.= '<p>' . sprintf( __( 'If you enter Authentication IDs in this network settings page, <em>please make sure you have purchased enough licenses for all sites within the network</em> - for example, to license a %1$s add-on for 10 sites, you would need an Authentication ID from a 10 license pack purchase (or better) of that %1$s add-on.', 'wpsso' ), $this->dist_pro ) . '</p>';
+					$text .= sprintf( __( 'You may enter the Authentication ID on this page <em>to define a value for all sites within the network</em> or enter the Authentication ID individually on each site\'s %1$s settings page.', 'wpsso' ), $licenses_page_link );
+					
+					$text .= '</p>';
 
-					$text .= '<p>' . sprintf( __( '<strong>WordPress uses the default blog to install and/or update plugins from the Network Admin interface</strong> - to update the %1$s and its %2$s add-ons, please make sure the %3$s add-on is active on the default blog, and the default blog is licensed.', 'wpsso' ), $this->p_name_pro, $this->dist_pro, $um_info_name ) . '</p>';
+					$text .= '<p>';
+					
+					$text .= sprintf( __( 'If you enter an Authentication ID in this network settings page, <em>make sure you have purchased enough licenses for all sites within the network</em> - for example, to license the %1$s plugin for 10 sites, you would need an Authentication ID for a 10 license pack or better.', 'wpsso' ), $this->p_name_pro ) . ' ';
+
+					$text .= sprintf( __( '<strong>Note that WordPress uses the default blog to install and/or update plugins from the Network Admin interface</strong> - to update the %1$s, make sure the %2$s add-on is active on the default blog and the default blog is licensed.', 'wpsso' ), $this->p_name_pro, $um_info_name );
+					
+					$text .= '</p>';
 
 					$text .= '</blockquote>';
 

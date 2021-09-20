@@ -17,22 +17,10 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 
 if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 
+	/**
+	 * Instantiated by WpssoMessagesInfo->get() only when needed.
+	 */
 	class WpssoMessagesInfoMeta extends WpssoMessages {
-
-		protected $p;	// Wpsso class object.
-
-		/**
-		 * Instantiated by WpssoMessagesInfo->get() only when needed.
-		 */
-		public function __construct( &$plugin ) {
-
-			$this->p =& $plugin;
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-		}
 
 		public function get( $msg_key = false, $info = array() ) {
 

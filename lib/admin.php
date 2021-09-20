@@ -1263,8 +1263,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 								WpssoUser::save_pref( array( 'show_opts' => $show_opts_key ) );
 
-								$notice_msg = sprintf( __( 'Option preference saved - viewing "%s" by default.', 'wpsso' ),
-									$show_name_transl );
+								$notice_msg = sprintf( __( 'Option preference saved - viewing "%s" by default.', 'wpsso' ), $show_name_transl );
 
 								$this->p->notice->upd( $notice_msg, $user_id );
 							}
@@ -1280,8 +1279,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							$this->p->opt->save_options( WPSSO_OPTIONS_NAME, $opts, $network = false );
 
-							$this->p->notice->upd( __( 'Image size settings have been reloaded with their default values and saved.',
-								'wpsso' ) );
+							$this->p->notice->upd( __( 'Image size settings have been reloaded with their default values and saved.', 'wpsso' ) );
 
 							break;
 

@@ -504,7 +504,10 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 					continue;	// Get the next plugin.
 
-				} elseif ( $ext_reg[ $ext . '_activate_time' ] > $week_ago_secs ) {	// Activated less than a week ago.
+				/**
+				 * Activated less than a week ago.
+				 */
+				} elseif ( $ext_reg[ $ext . '_activate_time' ] > $week_ago_secs ) {
 
 					continue;	// Get the next plugin.
 
@@ -523,7 +526,8 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 					continue;	// Get the next plugin.
 				}
 
-				$wp_plugin_link      = '<a href="' . $ext_info[ 'url' ][ 'home' ] . '">' . $ext_name_transl . '</a>';
+				$wp_plugin_link = '<a href="' . $ext_info[ 'url' ][ 'home' ] . '">' . $ext_name_transl . '</a>';
+
 				$wp_plugin_link_desc = $wp_plugin_link . ' (' . trim( $ext_desc_transl, '.' ) . ')';
 
 				/**
@@ -561,38 +565,25 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 				$notice_msg .= '<div style="display:table-cell;vertical-align:top;">';
 
-				$notice_msg .= '<p>';
+				$notice_msg .= '<p><strong>';
 
-				$notice_msg .= '<b>' . __( 'Fantastic!', 'wpsso' ) . '</b> ';
+				$notice_msg .= sprintf( __( 'Now that you\'ve been using %s for a while, you can rate it on WordPress.org!', 'wpsso' ), $wp_plugin_link ) . ' ';
 
-				$notice_msg .= sprintf( __( 'You\'ve been using %s for a while now, which is awesome!', 'wpsso' ), $wp_plugin_link_desc );
-
-				$notice_msg .= '</p>' . "\n";
-
-				$notice_msg .= '<p>';
-
-				$notice_msg .= sprintf( __( 'We\'ve put many years of time and effort into making %s and its add-ons the best possible.', 'wpsso' ),
-					$p_name_transl ) . ' ';
-
-				$notice_msg .= '</p>' . "\n";
-
-				/**
-				 * See the 'column-rate-review' message.
-				 */
-				$notice_msg .= '<p><b>';
-
-				$notice_msg .= sprintf( __( 'Now that you\'ve been using %s for a while, it would help tremendously if you could rate it on WordPress.org.',
-					'wpsso' ), $wp_plugin_link ) . ' ';
+				$notice_msg .= '</strong></p><p>';
 
 				$notice_msg .= __( 'Great ratings are an excellent way to ensure the continued development of your favorite plugins.', 'wpsso' ) . ' ';
 
-				$notice_msg .= '</b></p>' . "\n";
+				$notice_msg .= '</p><p>';
 
-				$notice_msg .= '<p>';
+				$notice_msg .= __( 'Without new ratings, plugins and add-ons that you and your site depend on could be discontinued prematurely.', 'wpsso' ) . ' ';
 
-				$notice_msg .= __( 'Without your rating, a plugin you value and depend on could be deprecated prematurely.', 'wpsso' ) . ' ';
+				$notice_msg .= '</p><p>';
 
-				$notice_msg .= sprintf( __( 'Don\'t let that happen - rate %s now!', 'wpsso' ), $wp_plugin_link ) . ' ';
+				$notice_msg .= __( 'Don\'t let that happen!', 'wpsso' ) . ' ';
+
+				$notice_msg .= __( 'Rate your active plugins today - it only takes a few seconds to rate a plugin!', 'wpsso' ) . ' ';
+				
+				$notice_msg .= convert_smilies( ';-)' );
 
 				$notice_msg .= '</p>' . "\n";
 

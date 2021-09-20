@@ -17,25 +17,13 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 
 if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 
+	/**
+	 * Instantiated by WpssoMessagesTooltip->get() only when needed.
+	 */
 	class WpssoMessagesTooltipMeta extends WpssoMessages {
 
-		protected $p;	// Wpsso class object.
-
-		private $og = null;	// WpssoMessagesTooltipMetaOpenGraph class object.
+		private $og     = null;	// WpssoMessagesTooltipMetaOpenGraph class object.
 		private $schema = null;	// WpssoMessagesTooltipMetaSchema class object.
-
-		/**
-		 * Instantiated by WpssoMessagesTooltip->get() only when needed.
-		 */
-		public function __construct( &$plugin ) {
-
-			$this->p =& $plugin;
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-		}
 
 		public function get( $msg_key = false, $info = array() ) {
 

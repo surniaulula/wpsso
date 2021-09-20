@@ -17,22 +17,10 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 
 if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
+	/**
+	 * Instantiated by WpssoMessagesTooltip->get() only when needed.
+	 */
 	class WpssoMessagesTooltipSchema extends WpssoMessages {
-
-		protected $p;	// Wpsso class object.
-
-		/**
-		 * Instantiated by WpssoMessagesTooltip->get() only when needed.
-		 */
-		public function __construct( &$plugin ) {
-
-			$this->p =& $plugin;
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-		}
 
 		public function get( $msg_key = false, $info = array() ) {
 

@@ -46,6 +46,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 		public function conflict_checks() {
 
+			$this->conflict_check_addon();
 			$this->conflict_check_db();
 			$this->conflict_check_php();
 			$this->conflict_check_vc();
@@ -62,6 +63,31 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 			$this->seo = new WpssoConflictSeo( $this->p );
 
 			$this->seo->conflict_checks();
+		}
+
+		private function conflict_check_addon() {
+
+			if ( ! empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
+				
+				$pkg_info = $this->p->admin->get_pkg_info();	// Returns an array from cache.
+
+				if ( empty( $pkg_info[ 'wpssojson' ][ 'pp' ] ) ) {	// Standard version.
+
+					$plugins_url = is_multisite() ? network_admin_url( 'plugins.php', null ) : get_admin_url( $blog_id = null, 'plugins.php' );
+				
+					$plugins_url = add_query_arg( array( 's' => 'wpsso-schema-json-ld' ), $plugins_url );
+				
+					$notice_msg = sprintf( __( 'The %1$s add-on has been deprecated.', 'wpsso' ), $pkg_info[ 'wpssojson' ][ 'name' ] ) . ' ';
+
+					$notice_msg .= sprintf( __( 'Its settings and features have been integrated into the %2$s plugin.', 'wpsso' ), $pkg_info[ 'wpssojson' ][ 'name' ], $pkg_info[ 'wpsso' ][ 'name' ] ) . ' ';
+
+					$notice_msg .= sprintf( __( '<a href="%1$s">Please deactivate the %2$s add-on immediately</a>.', 'wpsso' ), $plugins_url, $pkg_info[ 'wpssojson' ][ 'name' ] ) . ' ';
+
+					$notice_key = 'deactivate-wpsso-schema-json-ld';
+				
+					$this->p->notice->err( $notice_msg, null, $notice_key );
+				}
+			}
 		}
 
 		private function conflict_check_db() {
