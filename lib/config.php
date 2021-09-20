@@ -845,18 +845,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 					),
 					'hosts' => array(
-						'wp_org' => true,
+						'wp_org' => false,
 						'github' => true,
 						'wpsso'  => true,
 					),
 					'url' => array(
-
-						/**
-						 * WordPress.org.
-						 */
-						'home'   => 'https://wordpress.org/plugins/wpsso-schema-shortcode/',
-						'forum'  => 'https://wordpress.org/support/plugin/wpsso-schema-shortcode',
-						'review' => 'https://wordpress.org/support/plugin/wpsso-schema-shortcode/reviews/?rate=5#new-post',
 
 						/**
 						 * GitHub.com.
@@ -867,6 +860,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						/**
 						 * WPSSO.com.
 						 */
+						'home'      => 'https://wpsso.com/extend/plugins/wpsso-schema-shortcode/',
+						'forum'     => '',
+						'review'    => '',
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-schema-shortcode/changelog/',
 						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-schema-shortcode/',
 						'install'   => 'https://wpsso.com/docs/plugins/wpsso-schema-shortcode/installation/',
@@ -876,7 +872,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-schema-shortcode/update/',
-						'latest'    => '',	// Optional.
+						'latest'    => 'https://wpsso.com/extend/plugins/wpsso-schema-shortcode/latest/',
 					),
 				),
 				'wpssossm' => array(			// Plugin acronym.
@@ -1117,8 +1113,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						 * WPSSO.com.
 						 */
 						'home'      => 'https://wpsso.com/extend/plugins/wpsso-um/',
-						'forum'  => '',
-						'review' => '',
+						'forum'     => '',
+						'review'    => '',
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-um/changelog/',
 						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-um/',
 						'install'   => 'https://wpsso.com/docs/plugins/wpsso-um/installation/',
