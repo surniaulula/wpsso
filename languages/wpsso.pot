@@ -4433,7 +4433,7 @@ msgstr ""
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:361 lib/pro/ecom/woocommerce.php:1349
+#: gettext/gettext-lib-pro.php:361 lib/pro/ecom/woocommerce.php:1333
 msgid "World"
 msgstr ""
 
