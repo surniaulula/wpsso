@@ -567,7 +567,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 				$notice_msg .= '<p><strong>';
 
-				$notice_msg .= sprintf( __( 'Now that you\'ve been using %s for a while, you can rate it on WordPress.org!', 'wpsso' ), $wp_plugin_link ) . ' ';
+				$notice_msg .= sprintf( __( 'Now that you\'ve been using %s for a while, you can rate the plugin on WordPress.org!', 'wpsso' ), $wp_plugin_link ) . ' ';
 
 				$notice_msg .= '</strong></p><p>';
 

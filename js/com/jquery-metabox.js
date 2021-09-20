@@ -490,7 +490,7 @@ function sucomScrollIntoView( container_id ) {
 		return false;
 	}
 
-	var wpbody    = jQuery( 'div#wpbody' );	// Located bellow the admin toolbar.
+	var wpbody    = jQuery( 'div#wpbody' );	// Located below the admin toolbar.
 	var container = jQuery( container_id );
 
 	if ( ! wpbody.length || ! container.length ) {

@@ -79,7 +79,7 @@ msgstr ""
 msgctxt "html paragraph"
 msgid ""
 "<strong>If you use the WooCommerce plugin, don't forget to check the <a href="
-"\"#documentation-and-resources\">Documentation and Resources section bellow</"
+"\"#documentation-and-resources\">Documentation and Resources section below</"
 "a> for additional integration notes specific to WooCommerce.</strong>"
 msgstr ""
 
@@ -303,7 +303,7 @@ msgid ""
 "WPSSO Core is a powerful application and social framework that can read "
 "content, image, and video information from a variety of sources, including "
 "data from third-party plugins and services. It's worth noting the most "
-"common questions and issues bellow, along with their solutions:"
+"common questions and issues below, along with their solutions:"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:38
@@ -4664,7 +4664,7 @@ msgstr ""
 #. translators: %s is "Secret Token".
 #: gettext/gettext-lib-pro.php:444 gettext/gettext-lib-pro.php:445
 #: lib/pro/review/yotpowc.php:217 lib/pro/review/yotpowc.php:237
-msgid "Yotpo for WooCommerce \"%s\" setting value is empty."
+msgid "Yotpo for WooCommerce \"%s\" option value is empty."
 msgstr ""
 
 #. translators: %s is "wc_yotpo_compatible()".
@@ -5031,7 +5031,8 @@ msgstr ""
 
 #: lib/admin-head.php:570
 msgid ""
-"Now that you've been using %s for a while, you can rate it on WordPress.org!"
+"Now that you've been using %s for a while, you can rate the plugin on "
+"WordPress.org!"
 msgstr ""
 
 #: lib/admin-head.php:574 lib/messages.php:630
@@ -5879,7 +5880,7 @@ msgid "The %1$s add-on has been deprecated."
 msgstr ""
 
 #: lib/conflict.php:82
-msgid "Its settings and features have been integrated into the %2$s plugin."
+msgid "Its settings and features have been integrated into the %1$s plugin."
 msgstr ""
 
 #: lib/conflict.php:84
@@ -6557,7 +6558,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages-info.php:152
-msgid "Enter the Authentication ID in the option field bellow."
+msgid "Enter the Authentication ID in the option field below."
 msgstr ""
 
 #: lib/messages-info.php:154

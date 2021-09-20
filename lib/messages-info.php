@@ -149,7 +149,7 @@ if ( ! class_exists( 'WpssoMessagesInfo' ) ) {
 
 					$text .= sprintf( __( 'After purchasing a %1$s license pack, you\'ll receive an email with %2$s installation instructions and your unique Authentication ID for the license pack.', 'wpsso' ), $this->p_name_pro, $this->dist_pro ) . ' ';
 
-					$text .=  __( 'Enter the Authentication ID in the option field bellow.', 'wpsso' ) . ' ';
+					$text .=  __( 'Enter the Authentication ID in the option field below.', 'wpsso' ) . ' ';
 
 					$text .= sprintf( __( 'As mentioned in the installation instructions, don\'t forget that the %1$s add-on must be installed and active to enable %2$s features and get %2$s updates.', 'wpsso' ), $um_addon_link, $this->dist_pro );
 

@@ -79,7 +79,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				
 					$notice_msg = sprintf( __( 'The %1$s add-on has been deprecated.', 'wpsso' ), $pkg_info[ 'wpssojson' ][ 'name' ] ) . ' ';
 
-					$notice_msg .= sprintf( __( 'Its settings and features have been integrated into the %2$s plugin.', 'wpsso' ), $pkg_info[ 'wpssojson' ][ 'name' ], $pkg_info[ 'wpsso' ][ 'name' ] ) . ' ';
+					$notice_msg .= sprintf( __( 'Its settings and features have been integrated into the %1$s plugin.', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'name' ] ) . ' ';
 
 					$notice_msg .= sprintf( __( '<a href="%1$s">Please deactivate the %2$s add-on immediately</a>.', 'wpsso' ), $plugins_url, $pkg_info[ 'wpssojson' ][ 'name' ] ) . ' ';
 

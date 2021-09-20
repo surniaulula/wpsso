@@ -103,7 +103,7 @@ h1 > div.dashicons-before::before {
 }
 
 /**
- * Move the side info boxes bellow the metaboxes.
+ * Move the side info boxes below the metaboxes.
  */
 @media screen and ( max-width:1200px ) {
 
