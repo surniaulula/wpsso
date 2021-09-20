@@ -118,8 +118,6 @@ _x( 'WPSSO REST API', 'plugin name', 'wpsso' );
 _x( 'Extends the WordPress REST API post, term, and user query results with an array of meta tags and Schema JSON-LD markup.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Ridiculously Responsive Social Sharing Buttons', 'plugin name', 'wpsso' );
 _x( 'Ridiculously Responsive (SVG) Social Sharing Buttons for your content, excerpts, CSS sidebar, widget, shortcode, templates, and editor.', 'plugin description', 'wpsso' );
-_x( 'WPSSO Schema Shortcode', 'plugin name', 'wpsso' );
-_x( 'Schema shortcode.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Strip Schema Microdata', 'plugin name', 'wpsso' );
 _x( 'Remove Schema Microdata and RDFa from the webpage for better Google Rich Results using Schema JSON-LD markup.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Tune WP Image Editors', 'plugin name', 'wpsso' );

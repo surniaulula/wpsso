@@ -1223,14 +1223,14 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'header'   => 'h5',
 					'label'    => _x( 'Product Information', 'metabox title', 'wpsso' ),
 				),
-				'product_category' => array(
+				'schema_product_category' => array(
 					'tr_class' => $schema_type_row_class[ 'product' ],
 					'th_class' => 'medium',
 					'label'    => _x( 'Product Type', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_category',
 					'content'  => $form->get_no_select( 'product_category', $product_categories, $css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),
-				'product_brand' => array(
+				'schema_product_brand' => array(
 					'tr_class' => $schema_type_row_class[ 'product' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
@@ -1238,7 +1238,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tooltip'  => 'meta-product_brand',
 					'content'  => $form->get_no_input( 'product_brand', $css_class = '', $css_id = '', $holder = true ),
 				),
-				'product_price' => array(
+				'schema_product_price' => array(
 					'tr_class' => $schema_type_row_class[ 'product' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
@@ -1249,7 +1249,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 							( empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ? '' :
 								' ' . __( 'for simple or main product' ) ),
 				),
-				'product_avail' => array(
+				'schema_product_avail' => array(
 					'tr_class' => $schema_type_row_class[ 'product' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
@@ -1258,7 +1258,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'content'  => $form->get_no_select( 'product_avail', $this->p->cf[ 'form' ][ 'item_availability' ],
 						$css_class = '', $css_id = '', $is_assoc = true ),
 				),
-				'product_condition' => array(
+				'schema_product_condition' => array(
 					'tr_class' => $schema_type_row_class[ 'product' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
@@ -1267,7 +1267,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'content'  => $form->get_no_select( 'product_condition', $this->p->cf[ 'form' ][ 'item_condition' ],
 						$css_class = '', $css_id = '', $is_assoc = true ),
 				),
-				'product_material' => array(
+				'schema_product_material' => array(
 					'tr_class' => $schema_type_row_class[ 'product' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
@@ -1275,7 +1275,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tooltip'  => 'meta-product_material',
 					'content'  => $form->get_no_input( 'product_material', $css_class = '', $css_id = '', $holder = true ),
 				),
-				'product_color' => array(
+				'schema_product_color' => array(
 					'tr_class' => $schema_type_row_class[ 'product' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
@@ -1283,7 +1283,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tooltip'  => 'meta-product_color',
 					'content'  => $form->get_no_input( 'product_color', $css_class = '', $css_id = '', $holder = true ),
 				),
-				'product_target_gender' => array(
+				'schema_product_target_gender' => array(
 					'tr_class' => $schema_type_row_class[ 'product' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
@@ -1292,7 +1292,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'content'  => $form->get_no_select( 'product_target_gender', $this->p->cf[ 'form' ][ 'audience_gender' ],
 						$css_class = 'gender', $css_id = '', $is_assoc = true ),
 				),
-				'product_size' => array(
+				'schema_product_size' => array(
 					'tr_class' => $schema_type_row_class[ 'product' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
@@ -1300,7 +1300,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tooltip'  => 'meta-product_size',
 					'content'  => $form->get_no_input( 'product_size', $css_class = '', $css_id = '', $holder = true ),
 				),
-				'product_weight_value' => array(
+				'schema_product_weight_value' => array(
 					'tr_class' => $schema_type_row_class[ 'product' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
@@ -1309,7 +1309,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'content'  => $form->get_no_input( 'product_weight_value', $css_class = '', $css_id = '', $holder = true ) .
 						WpssoAdmin::get_option_unit_comment( 'product_weight_value' ),
 				),
-				'product_length_value' => array(
+				'schema_product_length_value' => array(
 					'tr_class' => $schema_type_row_class[ 'product' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
@@ -1318,7 +1318,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'content'  => $form->get_no_input( 'product_length_value', '', $css_id = '', $holder = true ) .
 						WpssoAdmin::get_option_unit_comment( 'product_length_value' ),
 				),
-				'product_width_value' => array(
+				'schema_product_width_value' => array(
 					'tr_class' => $schema_type_row_class[ 'product' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
@@ -1327,7 +1327,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'content'  => $form->get_no_input( 'product_width_value', '', $css_id = '', $holder = true ) .
 						WpssoAdmin::get_option_unit_comment( 'product_width_value' ),
 				),
-				'product_height_value' => array(
+				'schema_product_height_value' => array(
 					'tr_class' => $schema_type_row_class[ 'product' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
@@ -1336,7 +1336,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'content'  => $form->get_no_input( 'product_height_value', '', $css_id = '', $holder = true ) .
 						WpssoAdmin::get_option_unit_comment( 'product_height_value' ),
 				),
-				'product_depth_value' => array(
+				'schema_product_depth_value' => array(
 					'tr_class' => $schema_type_row_class[ 'product' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
@@ -1345,7 +1345,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'content'  => $form->get_no_input( 'product_depth_value', '', $css_id = '', $holder = true ) .
 						WpssoAdmin::get_option_unit_comment( 'product_depth_value' ),
 				),
-				'product_fluid_volume_value' => array(
+				'schema_product_fluid_volume_value' => array(
 					'tr_class' => $schema_type_row_class[ 'product' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
@@ -1354,7 +1354,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'content'  => $form->get_no_input( 'product_fluid_volume_value', '', $css_id = '', $holder = true ) .
 						WpssoAdmin::get_option_unit_comment( 'product_fluid_volume_value' ),
 				),
-				'product_retailer_part_no' => array(
+				'schema_product_retailer_part_no' => array(
 					'tr_class' => $schema_type_row_class[ 'product' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
@@ -1362,7 +1362,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tooltip'  => 'meta-product_retailer_part_no',
 					'content'  => $form->get_no_input( 'product_retailer_part_no', $css_class = '', $css_id = '', $holder = true ),
 				),
-				'product_mfr_part_no' => array(
+				'schema_product_mfr_part_no' => array(
 					'tr_class' => $schema_type_row_class[ 'product' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
@@ -1370,7 +1370,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tooltip'  => 'meta-product_mfr_part_no',
 					'content'  => $form->get_no_input( 'product_mfr_part_no', $css_class = '', $css_id = '', $holder = true ),
 				),
-				'product_gtin14' => array(
+				'schema_product_gtin14' => array(
 					'tr_class' => $schema_type_row_class[ 'product' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
@@ -1378,7 +1378,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tooltip'  => 'meta-product_gtin14',
 					'content'  => $form->get_no_input( 'product_gtin14', '', $css_id = '', $holder = true ),
 				),
-				'product_gtin13' => array(
+				'schema_product_gtin13' => array(
 					'tr_class' => $schema_type_row_class[ 'product' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
@@ -1386,7 +1386,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tooltip'  => 'meta-product_gtin13',
 					'content'  => $form->get_no_input( 'product_gtin13', '', $css_id = '', $holder = true ),
 				),
-				'product_gtin12' => array(
+				'schema_product_gtin12' => array(
 					'tr_class' => $schema_type_row_class[ 'product' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
@@ -1394,7 +1394,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tooltip'  => 'meta-product_gtin12',
 					'content'  => $form->get_no_input( 'product_gtin12', '', $css_id = '', $holder = true ),
 				),
-				'product_gtin8' => array(
+				'schema_product_gtin8' => array(
 					'tr_class' => $schema_type_row_class[ 'product' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
@@ -1402,7 +1402,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tooltip'  => 'meta-product_gtin8',
 					'content'  => $form->get_no_input( 'product_gtin8', '', $css_id = '', $holder = true ),
 				),
-				'product_gtin' => array(
+				'schema_product_gtin' => array(
 					'tr_class' => $schema_type_row_class[ 'product' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
@@ -1410,7 +1410,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tooltip'  => 'meta-product_gtin',
 					'content'  => $form->get_no_input( 'product_gtin', '', $css_id = '', $holder = true ),
 				),
-				'product_isbn' => array(
+				'schema_product_isbn' => array(
 					'tr_class' => $schema_type_row_class[ 'product' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
