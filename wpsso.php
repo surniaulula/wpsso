@@ -15,7 +15,7 @@
  * Requires At Least: 5.0
  * Tested Up To: 5.8.1
  * WC Tested Up To: 5.6.0
- * Version: 9.0.0-dev.5
+ * Version: 9.0.0-dev.6
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -605,6 +605,10 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			foreach ( $classnames as $id => $classname ) {
 
+				/**
+				 * Note that the 'schema' shortcode object array element is used by the
+				 * WpssoSscFilters->filter_json_data_graph_element() method.
+				 */
 				$this->sc[ $id ] = new $classname( $this );
 			}
 

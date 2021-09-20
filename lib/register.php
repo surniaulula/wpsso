@@ -338,5 +338,47 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				);
 			}
 		}
+
+		public static function register_taxonomy_page_tag() {
+
+			$labels = array(
+				'name'                       => __( 'Page Tags', 'wpsso' ),
+				'singular_name'              => __( 'Page Tag', 'wpsso' ),
+				'menu_name'                  => _x( 'Page Tags', 'admin menu name', 'wpsso' ),
+				'all_items'                  => __( 'All Page Tags', 'wpsso' ),
+				'edit_item'                  => __( 'Edit Page Tag', 'wpsso' ),
+				'view_item'                  => __( 'View Page Tag', 'wpsso' ),
+				'update_item'                => __( 'Update Page Tag', 'wpsso' ),
+				'add_new_item'               => __( 'Add New Page Tag', 'wpsso' ),
+				'new_item_name'              => __( 'New Page Tag Name', 'wpsso' ),
+				'parent_item'                => __( 'Parent Page Tag', 'wpsso' ),
+				'parent_item_colon'          => __( 'Parent Page Tag:', 'wpsso' ),
+				'search_items'               => __( 'Search Page Tags', 'wpsso' ),
+				'popular_items'              => __( 'Popular Page Tags', 'wpsso' ),
+				'separate_items_with_commas' => __( 'Separate page tags with commas', 'wpsso' ),
+				'add_or_remove_items'        => __( 'Add or remove page tags', 'wpsso' ),
+				'choose_from_most_used'      => __( 'Choose from the most used', 'wpsso' ),
+				'not_found'                  => __( 'No page tags found.', 'wpsso' ),
+				'back_to_items'              => __( '← Back to page tags', 'wpsso' ),
+			);
+
+			$args = array(
+				'label'              => _x( 'Page Tags', 'Taxonomy label', 'wpsso' ),
+				'labels'             => $labels,
+				'public'             => false,
+				'publicly_queryable' => false,
+				'show_ui'            => true,
+				'show_in_menu'       => true,
+				'show_in_nav_menus'  => true,
+				'show_admin_column'  => true,
+				'show_in_quick_edit' => true,
+				'show_in_rest'       => true,	// Show this taxonomy in the block editor.
+				'show_tagcloud'      => false,
+				'description'        => _x( 'Tags for the page post type.', 'Taxonomy description', 'wpsso' ),
+				'hierarchical'       => false,
+			);
+
+			register_taxonomy( WPSSO_PAGE_TAG_TAXONOMY, array( 'page' ), $args );
+		}
 	}
 }

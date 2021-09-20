@@ -162,9 +162,17 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 				case 'tooltip-plugin_page_excerpt':	// Enable Excerpt for Pages.
 
-					$text = __( 'Enable the WordPress excerpt metabox for Pages.', 'wpsso' ) . ' ';
+					$text = __( 'Enable the WordPress Excerpt metabox when editing a Page.', 'wpsso' ) . ' ';
 
-					$text .= sprintf( __( 'An excerpt is an optional hand-crafted summary of your content, that %s can also use as a default description value for meta tags and Schema markup.', 'wpsso' ), $info[ 'short' ] );
+					$text .= sprintf( __( 'An excerpt is an optional hand-crafted summary of your content that %s can use as a default description for meta tags and Schema markup.', 'wpsso' ), $info[ 'short' ] );
+
+					break;
+
+				case 'tooltip-plugin_page_tags':	// Enable Tags for Pages.
+
+					$text = __( 'Register a non-public Page Tags taxonomy and enable a WordPress Page Tags metabox when editing a Page.', 'wpsso' ) . ' ';
+
+					$text .= sprintf( __( '%s can convert WordPress tags into Schema keywords and hashtags for social sites.', 'wpsso' ), $info[ 'short' ] );
 
 					break;
 

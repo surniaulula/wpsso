@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.0.0-dev.5',	// Plugin version.
+					'version'     => '9.0.0-dev.6',	// Plugin version.
 					'opt_version' => '821',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -492,71 +492,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-inherit-parent-meta/update/',
-						'latest'    => '',	// Optional.
-					),
-				),
-				'wpssojson' => array(			// Plugin acronym.
-					'short'       => 'WPSSO JSON',	// Short plugin name.
-					'name'        => 'WPSSO Schema JSON-LD Markup',
-					'desc'        => 'Google Rich Results with JSON-LD structured data for Articles, Carousels, Events, FAQ pages, How-tos, Local SEO, Products, Recipes, Ratings, Reviews, and more.',
-					'slug'        => 'wpsso-schema-json-ld',
-					'base'        => 'wpsso-schema-json-ld/wpsso-schema-json-ld.php',
-					'update_auth' => 'tid',
-
-					/**
-					 * URLs or relative paths to plugin banners and icons.
-					 */
-					'assets' => array(
-
-						/**
-						 * Banner image array keys are 'low' and 'high'.
-						 */
-						'banners' => array(
-							'low'  => 'https://surniaulula.github.io/wpsso-schema-json-ld/assets/banner-772x250.jpg',
-							'high' => 'https://surniaulula.github.io/wpsso-schema-json-ld/assets/banner-1544x500.jpg',
-						),
-
-						/**
-						 * Icon image array keys are '1x' and '2x'.
-						 */
-						'icons' => array(
-							'1x' => 'https://surniaulula.github.io/wpsso-schema-json-ld/assets/icon-128x128.png',
-							'2x' => 'https://surniaulula.github.io/wpsso-schema-json-ld/assets/icon-256x256.png',
-						),
-					),
-					'hosts' => array(
-						'wp_org' => true,
-						'github' => true,
-						'wpsso'  => true,
-					),
-					'url' => array(
-
-						/**
-						 * WordPress.org.
-						 */
-						'home'   => 'https://wordpress.org/plugins/wpsso-schema-json-ld/',
-						'forum'  => 'https://wordpress.org/support/plugin/wpsso-schema-json-ld',
-						'review' => 'https://wordpress.org/support/plugin/wpsso-schema-json-ld/reviews/?rate=5#new-post',
-
-						/**
-						 * GitHub.com.
-						 */
-						'readme_txt'     => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-schema-json-ld/master/readme.txt',
-						'setup_html'     => '',
-						'shortcode_html' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-schema-json-ld/master/html/shortcode.html',
-
-						/**
-						 * WPSSO.com.
-						 */
-						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-schema-json-ld/changelog/',
-						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-schema-json-ld/',
-						'install'   => 'https://wpsso.com/docs/plugins/wpsso-schema-json-ld/installation/',
-						'faqs'      => 'https://wpsso.com/docs/plugins/wpsso-schema-json-ld/faqs/',
-						'notes'     => 'https://wpsso.com/docs/plugins/wpsso-schema-json-ld/notes/',
-						'support'   => 'https://surniaulula.com/support/create_ticket/',		// Premium support ticket.
-						'purchase'  => 'https://wpsso.com/extend/plugins/wpsso-schema-json-ld/',	// Purchase page.
-						'info'      => 'https://wpsso.com/extend/plugins/wpsso-schema-json-ld/info/',	// License information.
-						'update'    => 'https://wpsso.com/extend/plugins/wpsso-schema-json-ld/update/',
 						'latest'    => '',	// Optional.
 					),
 				),
@@ -1738,6 +1673,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_filter_content'       => 0,			// Use Filtered Content.
 					'plugin_filter_excerpt'       => 0,			// Use Filtered Excerpt.
 					'plugin_page_excerpt'         => 0,			// Enable Excerpt for Pages.
+					'plugin_page_tags'            => 0,			// Enable Tags for Pages.
 					'plugin_new_user_is_person'   => 0,			// Add Person Role for New Users.
 					'plugin_clear_post_terms'     => 1,			// Clear Term Cache when Publishing.
 					'plugin_clear_for_comment'    => 1,			// Clear Post Cache for New Comment.
@@ -4287,6 +4223,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_TMPL_HEAD_CHECK_NAME' ]  = 'wpsso_tmpl_head_check';
 			$var_const[ 'WPSSO_WP_CONFIG_CHECK_NAME' ]  = 'wpsso_wp_config_check';
 			$var_const[ 'WPSSO_REVIEW_IMAGE_IDS_NAME' ] = 'reviews-images';
+			$var_const[ 'WPSSO_PAGE_TAG_TAXONOMY' ]     = 'page_tag';
 
 			/**
 			 * Hook priorities.

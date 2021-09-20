@@ -1259,18 +1259,21 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$this->p->debug->mark();
 			}
 
+			$sections = array();
+
+			if ( ! defined( 'WPSSO_ARTICLE_SECTIONS_LIST' ) || empty( WPSSO_ARTICLE_SECTIONS_LIST ) ) {
+
+				return $sections;
+			}
+
+			$text_list_file = self::get_file_path_locale( WPSSO_ARTICLE_SECTIONS_LIST );
 			$cache_md5_pre  = 'wpsso_f_';
 			$cache_exp_secs = MONTH_IN_SECONDS;
-			$text_list_file = self::get_file_path_locale( WPSSO_ARTICLE_SECTIONS_LIST );
+			$cache_salt     = __METHOD__ . '(' . $text_list_file . ')';
+			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 
 			if ( $cache_exp_secs > 0 ) {
 
-				/**
-				 * Note that cache_id is a unique identifier for the cached data and should be 45 characters or
-				 * less in length. If using a site transient, it should be 40 characters or less in length.
-				 */
-				$cache_salt = __METHOD__ . '(' . $text_list_file . ')';
-				$cache_id   = $cache_md5_pre . md5( $cache_salt );
 
 				if ( $this->p->debug->enabled ) {
 
@@ -1317,10 +1320,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			foreach ( $raw_sections as $num => $section_name ) {
 
-				/**
-				 * Skip comment lines.
-				 */
-				if ( 0 === strpos( $section_name, '#' ) ) {
+				if ( 0 === strpos( $section_name, '#' ) ) {	// Skip comment lines.
 
 					continue;
 				}
@@ -1363,18 +1363,19 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$this->p->debug->mark();
 			}
 
+			$categories = array();
+
+			if ( ! defined( 'WPSSO_PRODUCT_CATEGORIES_LIST' ) || empty( WPSSO_PRODUCT_CATEGORIES_LIST ) ) {
+
+				return $sections;
+			}
+			$text_list_file = self::get_file_path_locale( WPSSO_PRODUCT_CATEGORIES_LIST );
 			$cache_md5_pre  = 'wpsso_f_';
 			$cache_exp_secs = MONTH_IN_SECONDS;
-			$text_list_file = self::get_file_path_locale( WPSSO_PRODUCT_CATEGORIES_LIST );
+			$cache_salt     = __METHOD__ . '(' . $text_list_file . ')';
+			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 
 			if ( $cache_exp_secs > 0 ) {
-
-				/**
-				 * Note that cache_id is a unique identifier for the cached data and should be 45 characters or
-				 * less in length. If using a site transient, it should be 40 characters or less in length.
-				 */
-				$cache_salt = __METHOD__ . '(' . $text_list_file . ')';
-				$cache_id   = $cache_md5_pre . md5( $cache_salt );
 
 				if ( $this->p->debug->enabled ) {
 
@@ -1420,10 +1421,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			foreach ( $raw_categories as $num => $category_id_name ) {
 
-				/**
-				 * Skip comment lines.
-				 */
-				if ( 0 === strpos( $category_id_name, '#' ) ) {
+				if ( 0 === strpos( $category_id_name, '#' ) ) {	// Skip comment lines.
 
 					continue;
 				}

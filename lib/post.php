@@ -37,11 +37,32 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			/**
-			 * Maybe enable WP post excerpt for pages.
+			 * Maybe enable excerpts for pages.
 			 */
 			if ( ! empty( $this->p->options[ 'plugin_page_excerpt' ] ) ) {
 
 				add_post_type_support( 'page', array( 'excerpt' ) );
+			}
+
+			/**
+			 * Maybe register tags for pages.
+			 */
+			if ( $page_tag_taxonomy = SucomUtil::get_const( 'WPSSO_PAGE_TAG_TAXONOMY' ) ) {
+		
+				if ( ! empty( $this->p->options[ 'plugin_page_tags' ] ) ) {
+
+					if ( ! taxonomy_exists( $page_tag_taxonomy ) ) {
+
+						WpssoRegister::register_taxonomy_page_tag();
+					}
+
+				} else {
+
+					if ( taxonomy_exists( $page_tag_taxonomy ) ) {
+
+						unregister_taxonomy( $page_tag_taxonomy );
+					}
+				}
 			}
 
 			add_action( 'wp_loaded', array( $this, 'add_wp_hooks' ) );

@@ -110,6 +110,12 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$form->get_no_td_checkbox( 'plugin_page_excerpt' ) .
 				WpssoAdmin::get_option_site_use( 'plugin_page_excerpt', $form, $network );
 
+			$table_rows[ 'plugin_page_tags' ] = '' .
+				$form->get_th_html( _x( 'Enable Tags for Pages', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_page_tags' ) . 
+				$form->get_no_td_checkbox( 'plugin_page_tags' ) .
+				WpssoAdmin::get_option_site_use( 'plugin_page_tags', $form, $network );
+
 			$table_rows[ 'plugin_new_user_is_person' ] = '' . 
 				$form->get_th_html( _x( 'Add Person Role for New Users', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_new_user_is_person' ) . 

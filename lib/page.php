@@ -2145,6 +2145,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				return $local_cache[ $mod[ 'name' ] ][ $mod[ 'id' ] ];
 			}
 
+			/**
+			 * The 'wpsso_tag_names_seed' filter is hooked by the WpssoProEcomEdd, WpssoProEcomWoocommerce, and
+			 * WpssoProForumBbpress classes.
+			 */
 			$tags = apply_filters( 'wpsso_tag_names_seed', array(), $mod );
 
 			if ( ! empty( $tags ) ) {
@@ -2158,11 +2162,24 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $mod[ 'is_post' ] ) {
 
-					if ( $mod[ 'post_type' ] ) {	// Just in case.
+					if ( 'post' === $mod[ 'post_type' ] ) {
 
-						$filter_name = SucomUtil::sanitize_hookname( 'wpsso_' . $mod[ 'post_type' ] . '_tag_taxonomy' );
+						$taxonomy = 'post_tag';
 
-						$taxonomy = apply_filters( $filter_name, 'post_tag', $mod );
+					} elseif ( 'page' === $mod[ 'post_type' ] && ! empty( $this->p->options[ 'plugin_page_tags' ] ) ) {
+
+						$taxonomy = SucomUtil::get_const( 'WPSSO_PAGE_TAG_TAXONOMY' );
+
+					} else {
+
+						$taxonomy = '';
+					}
+
+					$filter_name = SucomUtil::sanitize_hookname( 'wpsso_' . $mod[ 'post_type' ] . '_tag_taxonomy' );
+
+					$taxonomy = apply_filters( $filter_name, $taxonomy, $mod );
+
+					if ( ! empty( $taxonomy ) ) {
 
 						$tags = wp_get_post_terms( $mod[ 'id' ], $taxonomy, $args = array( 'fields' => 'names' ) );
 					}
