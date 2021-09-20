@@ -272,6 +272,7 @@
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-an-http-error-when-uploading-images/">How can I fix an HTTP error when uploading images?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-have-smaller-dimensions-for-the-default-image/">How can I have smaller dimensions for the default image?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-see-what-the-facebook-crawler-sees/">How can I see what the Facebook crawler sees?</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-create-a-schema-faqpage/">How do I create a Schema FAQPage?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-enable-wordpress-wp_debug/">How do I enable WordPress WP_DEBUG?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-fix-google-structured-data-hatom-errors/">How do I fix Google Structured Data &gt; hatom errors?</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-remove-duplicate-meta-tags/">How do I remove duplicate meta tags?</a></li>
@@ -298,25 +299,13 @@
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/">Filter Examples</a>
 
 <ul>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/define-a-custom-post-type-cpt-as-a-product/">Define a Custom Post Type (CPT) as a Product</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/detect-youtube-url-links-as-videos/">Detect YouTube URL Links as Videos</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-articletag-keywords-names/">Modify the "article:tag" Keywords / Names</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/exclude-schema-markup-by-post-type/">Exclude Schema Markup by Post Type</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/fix-hentry-errors-in-your-theme-templates/">Fix 'hentry' Errors in your Theme Templates</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-aggregaterating-property/">Modify the aggregateRating Property</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-default-article-sections-list/">Modify the Default Article Section List</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/remove-hentry-from-theme-templates/">Remove / Fix 'hentry' Errors in your Theme Templates</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/strip-additional-shortcodes/">Strip Additional Shortcodes</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/use-the-request_uri-for-post-urls/">Use the REQUEST_URI for Post URLs</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/working-with-pre-defined-meta-tags-and-custom-post-types/">Working with Pre-defined Meta Tags and Custom Post Types</a></li>
+<li><a href="https://wpsso.com/docs/plugins/wpsso-schema-json-ld/notes/developer/filters/examples/set-a-custom-field-value-to-a-schema-property/">Set a Custom Field Value to a Schema Property</a></li>
 </ul></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/by-category/">Filters by Category</a>
-
-<ul>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/by-category/head/">Head Filters</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/by-category/media/">Media Filters</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/by-category/open-graph/">Facebook / Open Graph Filters</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/by-category/twitter-card/">Twitter Card Filters</a></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/by-category/webpage/">Webpage Filters</a></li>
-</ul></li>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/other/">Other Filters</a></li>
 </ul></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/developer/the-mod-variable/">The $mod Variable</a></li>
 </ul></li>

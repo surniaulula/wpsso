@@ -246,6 +246,7 @@ Activate any of the free complementary add-on(s) you require:
 * [How can I fix an HTTP error when uploading images?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-an-http-error-when-uploading-images/)
 * [How can I have smaller dimensions for the default image?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-have-smaller-dimensions-for-the-default-image/)
 * [How can I see what the Facebook crawler sees?](https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-see-what-the-facebook-crawler-sees/)
+* [How do I create a Schema FAQPage?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-create-a-schema-faqpage/)
 * [How do I enable WordPress WP_DEBUG?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-enable-wordpress-wp_debug/)
 * [How do I fix Google Structured Data &gt; hatom errors?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-fix-google-structured-data-hatom-errors/)
 * [How do I remove duplicate meta tags?](https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-remove-duplicate-meta-tags/)
@@ -264,21 +265,12 @@ Activate any of the free complementary add-on(s) you require:
 	* [Filters](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/)
 		* [All Filters](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/all/)
 		* [Filter Examples](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/)
-			* [Define a Custom Post Type (CPT) as a Product](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/define-a-custom-post-type-cpt-as-a-product/)
 			* [Detect YouTube URL Links as Videos](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/detect-youtube-url-links-as-videos/)
-			* [Modify the "article:tag" Keywords / Names](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-articletag-keywords-names/)
+			* [Exclude Schema Markup by Post Type](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/exclude-schema-markup-by-post-type/)
+			* [Fix 'hentry' Errors in your Theme Templates](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/fix-hentry-errors-in-your-theme-templates/)
+			* [Modify the aggregateRating Property](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-aggregaterating-property/)
 			* [Modify the Default Article Section List](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/modify-the-default-article-sections-list/)
-			* [Remove / Fix 'hentry' Errors in your Theme Templates](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/remove-hentry-from-theme-templates/)
-			* [Strip Additional Shortcodes](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/strip-additional-shortcodes/)
-			* [Use the REQUEST_URI for Post URLs](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/use-the-request_uri-for-post-urls/)
-			* [Working with Pre-defined Meta Tags and Custom Post Types](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/working-with-pre-defined-meta-tags-and-custom-post-types/)
-		* [Filters by Category](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/by-category/)
-			* [Head Filters](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/by-category/head/)
-			* [Media Filters](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/by-category/media/)
-			* [Facebook / Open Graph Filters](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/by-category/open-graph/)
-			* [Twitter Card Filters](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/by-category/twitter-card/)
-			* [Webpage Filters](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/by-category/webpage/)
-		* [Other Filters](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/other/)
+			* [Set a Custom Field Value to a Schema Property](https://wpsso.com/docs/plugins/wpsso-schema-json-ld/notes/developer/filters/examples/set-a-custom-field-value-to-a-schema-property/)
 	* [The $mod Variable](https://wpsso.com/docs/plugins/wpsso/notes/developer/the-mod-variable/)
 * [Inline Variables](https://wpsso.com/docs/plugins/wpsso/notes/inline-variables/)
 * [Multisite / Network Support](https://wpsso.com/docs/plugins/wpsso/notes/multisite-network-support/)
@@ -319,16 +311,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.0.0-dev.5 (2021/09/19)**
+**Version 9.0.0-dev.6 (2021/09/20)**
 
 * **New Features**
-	* None.
+	* Updated the SSO &gt; Advanced Settings &gt; Integration &gt; Enable Tags for Pages feature to register a non-public Page Tags taxonomy.
 * **Improvements**
 	* Added a Document SSO &gt; Customize &gt; Twitter Card Title option.
 	* Refactored the Rank Math integration module to read Google, Facebook, and Twitter metadata (Premium version).
 	* Deprecated the Schema link and meta itemprop tags.
 	* Deprecated the head attributes check in theme header templates.
-	* Removed the SSO &gt; Advanced Settings &gt; Integration &gt; Enable Tags for Pages option.
 	* Removed the SSO &gt; Advanced Settings &gt; HTML Tags &gt; Schema tab.
 	* Moved the Schema JSON data filters from the WPSSO JSON add-on to the WPSSO Core plugin.
 	* Moved the Document SSO &gt; Schema JSON-LD Markup / Google Rich Results sections from the WPSSO JSON add-on to the WPSSO Core plugin.
@@ -976,9 +967,9 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 
 == Upgrade Notice ==
 
-= 9.0.0-dev.5 =
+= 9.0.0-dev.6 =
 
-(2021/09/19) Added a Document SSO &gt; Twitter Card Title option. Refactored the Rank Math integration module (Premium version). Moved Schema JSON data filters from WPSSO JSON to WPSSO Core.
+(2021/09/20) Added a Document SSO &gt; Twitter Card Title option. Refactored the Rank Math integration module (Premium version). Moved Schema JSON data filters from WPSSO JSON to WPSSO Core.
 
 = 8.39.1 =
 
