@@ -310,7 +310,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.0.0-dev.7 (2021/09/20)**
+**Version 9.0.0-dev.8 (2021/09/21)**
 
 * **New Features**
 	* Updated the SSO &gt; Advanced Settings &gt; Integration &gt; Enable Tags for Pages feature to register a non-public Page Tags taxonomy.
@@ -325,6 +325,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed caching of option defaults array once plugin objects have been initialized.
 	* Fixed missing 'areaServed' property in Schema LocalBusiness markup for places / locations.
+	* Fixed the saving of selected option colors using `wpColorPicker()`.
 * **Developer Notes**
 	* Added a new 'wpsso_{post_type}_tag_taxonomy' filter.
 	* Added a new `WpssoOptionsFilters` class.
@@ -966,9 +967,9 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 
 == Upgrade Notice ==
 
-= 9.0.0-dev.7 =
+= 9.0.0-dev.8 =
 
-(2021/09/20) Added a Document SSO &gt; Twitter Card Title option. Refactored the Rank Math integration module (Premium version). Moved Schema JSON data filters from WPSSO JSON to WPSSO Core.
+(2021/09/21) Added a Document SSO &gt; Twitter Card Title option. Refactored the Rank Math integration module (Premium version). Moved Schema JSON data filters from WPSSO JSON to WPSSO Core.
 
 = 8.39.1 =
 
