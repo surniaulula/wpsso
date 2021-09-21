@@ -68,6 +68,7 @@ if ( ! class_exists( 'SucomAddOn' ) ) {
 		 * All WPSSO Core objects are instantiated and configured.
 		 *
 		 * $is_admin and $doing_ajax available since WPSSO Core v7.10.0.
+		 *
 		 * $doing_cron available since WPSSO Core v8.8.0.
 		 */
 		public function init_plugin_notices( $is_admin = false, $doing_ajax = false, $doing_cron = false ) {

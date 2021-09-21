@@ -654,7 +654,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			/**
-			 * Sort the options to re-order 0, 1, 10, 2 as 0, 1, 2, 10.
+			 * Sort the options to re-order 0, 1, 10, 2 suffixes as 0, 1, 2, 10.
 			 */
 			SucomUtil::natksort( $opts );
 
@@ -834,6 +834,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				$this->refresh_image_url_sizes( $opts );	// $opts passed by reference.
 			}
+
+			/**
+			 * The options array should not contain any numeric keys.
+			 */
+			SucomUtil::delete_numeric_keys( $opts );
 
 			return $opts;
 		}
@@ -1437,6 +1442,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				case 'color':
 				case 'date':	// Empty or 'none' string, or date as yyyy-mm-dd.
 				case 'time':	// Empty or 'none' string, or time as hh:mm or hh:mm:ss.
+
+					$fmt = false;
 
 					$opt_val = trim( $opt_val );
 

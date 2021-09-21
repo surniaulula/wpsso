@@ -89,7 +89,8 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				$deps = array( 'jquery', 'jquery-qtip' ), $this->version, $in_footer = true );
 
 			wp_register_script( 'sucom-metabox', WPSSO_URLPATH . 'js/com/jquery-metabox.' . $this->file_ext,
-				$deps = array( 'jquery', 'jquery-ui-datepicker', 'wp-color-picker', 'sucom-admin-page' ), $this->version, $in_footer = true );
+				$deps = array( 'jquery', 'jquery-ui-datepicker', 'wp-color-picker', 'sucom-admin-page' ),
+					$this->version, $in_footer = true );
 
 			wp_register_script( 'sucom-admin-media', WPSSO_URLPATH . 'js/com/jquery-admin-media.' . $this->file_ext,
 				$deps = array( 'jquery', 'jquery-ui-core' ), $this->version, $in_footer = true );

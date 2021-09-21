@@ -795,6 +795,11 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				apply_filters( 'wpsso_upgraded_site_options', $opts, $defs ) :
 				apply_filters( 'wpsso_upgraded_options', $opts, $defs );
 
+			/**
+			 * The options array should not contain any numeric keys.
+			 */
+			SucomUtil::delete_numeric_keys( $opts );
+
 			return $opts;
 		}
 	}

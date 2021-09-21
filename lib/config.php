@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.0.0-dev.7',	// Plugin version.
-					'opt_version' => '822',		// Increment when changing default option values.
+					'version'     => '9.0.0-dev.8',	// Plugin version.
+					'opt_version' => '824',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Rank higher and improve click-through-rates by presenting your content at its best on social sites and in search results - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled.',
@@ -210,8 +210,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 						'sitesubmenu' => array(
 							'site-advanced' => 'Advanced Settings',
-							'site-addons'   => 'Complementary Add-ons',
 							'site-licenses' => 'Premium Licenses',
+							'site-addons'   => 'Complementary Add-ons',
 						),
 						'std' => array(
 							'admin' => array(
@@ -230,8 +230,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'dashboard'      => 'Dashboard',
 							'general'        => 'General Settings',
 							'advanced'       => 'Advanced Settings',
-							'addons'         => 'Complementary Add-ons',
 							'licenses'       => 'Premium Licenses',
+							'addons'         => 'Complementary Add-ons',
 							'tools'          => 'Tools and Actions',
 						),
 						'users' => array(
@@ -2036,7 +2036,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '4.6.0-dev.7',	// Minimum update manager version (soft limit).
+				'rec_version' => '4.6.0-dev.8',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
 					48  => 'Every two days',

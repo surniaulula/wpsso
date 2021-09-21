@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 9.0.0-dev.7\n"
+"Project-Id-Version: WPSSO Core 9.0.0-dev.8\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -514,13 +514,13 @@ msgid ""
 "the media library?</a>"
 msgstr ""
 
-#: gettext/gettext-lib-abstracts-com.php:6 lib/abstracts/com/add-on.php:178
+#: gettext/gettext-lib-abstracts-com.php:6 lib/abstracts/com/add-on.php:179
 msgid ""
 "The %1$s add-on requires the %2$s plugin - please activate the missing "
 "plugin."
 msgstr ""
 
-#: gettext/gettext-lib-abstracts-com.php:7 lib/abstracts/com/add-on.php:196
+#: gettext/gettext-lib-abstracts-com.php:7 lib/abstracts/com/add-on.php:197
 msgid ""
 "The %1$s add-on requires %2$s version %3$s or newer (version %4$s is "
 "currently installed)."
@@ -642,27 +642,27 @@ msgctxt "option label"
 msgid "User Profiles"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:33 lib/com/form.php:777
+#: gettext/gettext-lib-com.php:33 lib/com/form.php:779
 msgctxt "option comment"
 msgid "crop"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:34 gettext/gettext-lib-pro.php:214
-#: lib/com/form.php:778 lib/pro/admin/edit.php:674 lib/std/admin/edit.php:714
+#: lib/com/form.php:780 lib/pro/admin/edit.php:674 lib/std/admin/edit.php:714
 msgctxt "option comment"
 msgid "from"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
 #: gettext/gettext-lib-com.php:36 gettext/gettext-lib-pro.php:45
-#: gettext/gettext-lib-pro.php:412 lib/com/form.php:788 lib/media.php:872
+#: gettext/gettext-lib-pro.php:412 lib/com/form.php:790 lib/media.php:872
 #: lib/media.php:1006 lib/media.php:2424 lib/pro/admin/advanced.php:315
 #: lib/pro/util/check-img-dims.php:104 lib/std/admin/advanced.php:306
 msgid "Media Library"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:38 lib/com/form.php:881 lib/script.php:431
+#: gettext/gettext-lib-com.php:38 lib/com/form.php:883 lib/script.php:432
 msgid "Select Image"
 msgstr ""
 
@@ -1156,16 +1156,16 @@ msgid "Advanced Settings"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:88 gettext/gettext-lib-config.php:97
-#: lib/messages.php:508
-msgctxt "lib file description"
-msgid "Complementary Add-ons"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:89 gettext/gettext-lib-config.php:98
 #: lib/messages-info.php:168 lib/messages.php:486 lib/messages.php:495
 #: lib/messages.php:511
 msgctxt "lib file description"
 msgid "Premium Licenses"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:89 gettext/gettext-lib-config.php:98
+#: lib/messages.php:508
+msgctxt "lib file description"
+msgid "Complementary Add-ons"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:91
@@ -5206,7 +5206,7 @@ msgstr ""
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
-#: lib/admin.php:1145 lib/options.php:943 lib/register.php:155
+#: lib/admin.php:1145 lib/options.php:948 lib/register.php:155
 msgid "A background task will begin shortly to clear all caches."
 msgstr ""
 
@@ -5491,7 +5491,7 @@ msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:2841 lib/options.php:1043
+#: lib/admin.php:2841 lib/options.php:1048
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
@@ -5984,7 +5984,7 @@ msgctxt "option label"
 msgid "Preferred Cropping"
 msgstr ""
 
-#: lib/edit.php:126 lib/script.php:378
+#: lib/edit.php:126 lib/script.php:379
 msgctxt "option label"
 msgid "Schema Type"
 msgstr ""
@@ -9581,101 +9581,101 @@ msgid ""
 "the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:942
+#: lib/options.php:947
 msgid "Plugin settings have been upgraded and saved."
 msgstr ""
 
-#: lib/options.php:1072
+#: lib/options.php:1077
 msgid "The %s image dimensions cannot be determined."
 msgstr ""
 
-#: lib/options.php:1075
+#: lib/options.php:1080
 msgid ""
 "Please make sure this site can access %s using the PHP getimagesize() "
 "function."
 msgstr ""
 
-#: lib/options.php:1080
+#: lib/options.php:1085
 msgid "The %1$s image dimensions are %2$s and must be exactly %3$s."
 msgstr ""
 
-#: lib/options.php:1083
+#: lib/options.php:1088
 msgid "Please correct the %s banner image."
 msgstr ""
 
-#: lib/options.php:1117
+#: lib/options.php:1122
 msgid ""
 "The value of option \"%s\" must be alpha-numeric - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1118
+#: lib/options.php:1123
 msgid ""
 "The value of option \"%s\" must be blank or numeric - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1119
+#: lib/options.php:1124
 msgid ""
 "The value of option \"%s\" must be a CSS color code - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1120
+#: lib/options.php:1125
 msgid ""
 "The value of option \"%s\" must be a comma-delimited list of URL(s) - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:1121
+#: lib/options.php:1126
 msgid ""
 "The value of option \"%s\" must be a yyyy-mm-dd date - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1122
+#: lib/options.php:1127
 msgid ""
 "The value of option \"%s\" must be HTML code - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1123
+#: lib/options.php:1128
 msgid ""
 "The value of option \"%s\" must be an image ID - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1124
+#: lib/options.php:1129
 msgid ""
 "The value of option \"%s\" must be a valid image URL - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1125
+#: lib/options.php:1130
 msgid ""
 "The value of option \"%s\" cannot be an empty string - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1126
+#: lib/options.php:1131
 msgid ""
 "The value of option \"%s\" must be numeric - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1127
+#: lib/options.php:1132
 msgid ""
 "The value of option \"%1$s\" must be equal to or greather than %2$s - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:1128
+#: lib/options.php:1133
 msgid ""
 "The value of option \"%s\" must be a hh:mm time - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1129
+#: lib/options.php:1134
 msgid ""
 "The value of option \"%s\" must be a valid URL - resetting this option to "
 "its default value."
@@ -10052,39 +10052,39 @@ msgstr ""
 msgid "adding schema %s #%d image"
 msgstr ""
 
-#: lib/script.php:385
+#: lib/script.php:386
 msgid "No %s notifications."
 msgstr ""
 
-#: lib/script.php:389
+#: lib/script.php:390
 msgid "Copy notifications to clipboard."
 msgstr ""
 
-#: lib/script.php:412
+#: lib/script.php:413
 msgid "Copied to clipboard."
 msgstr ""
 
-#: lib/script.php:413
+#: lib/script.php:414
 msgid "Value linked to {0} option"
 msgstr ""
 
-#: lib/script.php:414
+#: lib/script.php:415
 msgid "{0} of {1} characters minimum"
 msgstr ""
 
-#: lib/script.php:415
+#: lib/script.php:416
 msgid "{0} of {1} characters required"
 msgstr ""
 
-#: lib/script.php:416
+#: lib/script.php:417
 msgid "{0} of {1} characters maximum"
 msgstr ""
 
-#: lib/script.php:417
+#: lib/script.php:418
 msgid "{0} characters"
 msgstr ""
 
-#: lib/script.php:419
+#: lib/script.php:420
 msgid "There are {0} important error messages under the %s notification icon."
 msgstr ""
 

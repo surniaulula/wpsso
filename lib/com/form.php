@@ -710,7 +710,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html .= $is_disabled ? ' disabled="disabled"' : ' name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '"';
 			$html .= empty( $input_class ) ? '' : ' class="' . $input_class . '"';
 			$html .= empty( $input_id ) ? '' : ' id="text_' . $input_id . '"';
-			$html .= ' placeholder="#000000" value="' . esc_attr( $input_value ) . '" />';
+			$html .= ' placeholder="#000000" value="' . esc_attr( $input_value ) . '"';
+			$html .= ' data-default-color="' . esc_attr( $input_value ) . '"';
+			$html .= '/>';
 
 			return $html;
 		}

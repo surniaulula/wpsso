@@ -88,7 +88,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			$def_og_title      = $this->p->page->get_title( $og_title_max_len, $dots, $mod, $read_cache, $no_hashtags, $do_encode, 'none' );
 			$def_og_desc       = $this->p->page->get_description( $og_desc_max_len, $dots, $mod, $read_cache, $maybe_hashtags, $do_encode, 'none' );
 			$def_pin_img_desc  = $pin_img_disabled ? '' : $this->p->page->get_description( $pin_img_desc_max_len, $dots, $mod, $read_cache, $maybe_hashtags );
-			$def_tc_title      = $this->p->page->get_description( $tc_title_max_len, $dots, $mod, $read_cache );
+			$def_tc_title      = $this->p->page->get_title( $tc_title_max_len, $dots, $mod, $read_cache );
 			$def_tc_desc       = $this->p->page->get_description( $tc_desc_max_len, $dots, $mod, $read_cache );
 			$def_seo_desc      = $seo_desc_disabled ? '' : $this->p->page->get_description( $seo_desc_max_len, $dots, $mod, $read_cache, $no_hashtags );
 			$def_canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = false );

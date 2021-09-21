@@ -16,7 +16,7 @@ function sucomInitMetabox( container_id, doing_ajax ) {
 		table_id = container_id + ' ' + table_id;
 	}
 
-	jQuery( table_id + ' input.colorpicker' ).wpColorPicker();
+	jQuery( table_id + ' input.colorpicker' ).wpColorPicker({ change: sucomColorChanged });
 	jQuery( table_id + ' input.datepicker' ).datepicker( { dateFormat:'yy-mm-dd' } );
 
 	/**
@@ -598,6 +598,19 @@ function sucomSelectChangeRedirect( name, value, redirect_url ) {
 function sucomMarkChanged() {
 
 	jQuery( this ).addClass( 'changed' );
+}
+
+/**
+ * A callback function for the wpColorPicker, which does not automatically update the input field value on changes.
+ */
+function sucomColorChanged( e, ui ) {
+
+	var input = jQuery( this );
+	var value = ui.color.toString();
+
+	input.attr( 'value', value );
+
+	input.addClass( 'changed' );
 }
 
 /**

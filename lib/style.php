@@ -59,7 +59,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			 */
 			wp_register_style( 'jquery-ui.js', 'https://ajax.googleapis.com/ajax/libs/jqueryui/' . 
 				$this->p->cf[ 'jquery-ui' ][ 'version' ] . '/themes/smoothness/jquery-ui.css',
-					$depts = array(), $this->p->cf[ 'jquery-ui' ][ 'version' ] );
+					$deps = array(), $this->p->cf[ 'jquery-ui' ][ 'version' ] );
 
 			/**
 			 * Register styles for option help popup.
@@ -67,25 +67,25 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			 * See http://qtip2.com/download.
 			 */
 			wp_register_style( 'jquery-qtip.js', WPSSO_URLPATH . 'css/ext/jquery-qtip.' . $this->file_ext,
-				$depts = array(), $this->p->cf[ 'jquery-qtip' ][ 'version' ] );
+				$deps = array(), $this->p->cf[ 'jquery-qtip' ][ 'version' ] );
 
 			/**
 			 * Register styles for settings pages.
 			 */
 			wp_register_style( 'sucom-settings-page', WPSSO_URLPATH . 'css/com/settings-page.' . $this->file_ext,
-				$depts = array(), $this->version );
+				$deps = array(), $this->version );
 
 			/**
 			 * Register styles for settings tables.
 			 */
 			wp_register_style( 'sucom-settings-table', WPSSO_URLPATH . 'css/com/settings-table.' . $this->file_ext,
-				$depts = array(), $this->version );
+				$deps = array(), $this->version );
 
 			/**
 			 * Register styles for metabox tabs.
 			 */
 			wp_register_style( 'sucom-metabox-tabs', WPSSO_URLPATH . 'css/com/metabox-tabs.' . $this->file_ext,
-				$depts = array( 'wp-color-picker' ), $this->version );
+				$deps = array( 'wp-color-picker' ), $this->version );
 
 			/**
 			 * Only load stylesheets we need.
@@ -203,7 +203,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			}
 
 			wp_register_style( 'sucom-admin-page', WPSSO_URLPATH . 'css/com/admin-page.' . $this->file_ext,
-				$depts = array(), $this->version );
+				$deps = array(), $this->version );
 
 			if ( $this->use_cache ) {
 

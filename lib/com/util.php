@@ -1748,6 +1748,17 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return uksort( $arr, 'strnatcmp' );
 		}
 
+		public static function delete_numeric_keys( &$arr ) {
+
+			foreach ( array_keys( $arr ) as $key ) {
+
+				if ( is_numeric( $key ) ) {
+
+					unset( $arr[ $key ] );
+				}
+			}
+		}
+
 		/**
 		 * The $key_pattern value must be a string.
 		 *
@@ -2732,9 +2743,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				foreach ( $opts_md_pre as $opt_key => $md_pre ) {
 
-					$md_defs = SucomUtil::preg_grep_keys( '/^' . $md_pre . '_/', $md_defs, false, $opt_key . '_' );
+					$md_defs = self::preg_grep_keys( '/^' . $md_pre . '_/', $md_defs, false, $opt_key . '_' );
 
-					$md_opts = SucomUtil::preg_grep_keys( '/^' . $md_pre . '_/', $md_opts, false, $opt_key . '_' );
+					$md_opts = self::preg_grep_keys( '/^' . $md_pre . '_/', $md_opts, false, $opt_key . '_' );
 
 					if ( is_array( $type_opts ) ) {
 
