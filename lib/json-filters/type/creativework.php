@@ -121,7 +121,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeCreativeWork' ) ) {
 				if ( is_array( $md_opts ) ) {	// Just in case.
 
 					foreach ( SucomUtil::preg_grep_keys( '/^schema_ispartof_url_([0-9]+)$/',
-						$md_opts, $invert = false, $replace = true ) as $num => $ispartof_url ) {
+						$md_opts, $invert = false, $replace = '$1' ) as $num => $ispartof_url ) {
 
 						if ( empty( $md_opts[ 'schema_ispartof_type_' . $num ] ) ) {
 

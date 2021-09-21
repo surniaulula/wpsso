@@ -1743,70 +1743,75 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $found;
 		}
 
-		public static function natksort( &$arr ) {
+		public static function natksort( &$assoc_arr ) {
 
-			return uksort( $arr, 'strnatcmp' );
+			return uksort( $assoc_arr, 'strnatcmp' );
 		}
 
-		public static function delete_numeric_keys( &$arr ) {
+		public static function unset_numeric_keys( &$assoc_arr ) {
 
-			foreach ( array_keys( $arr ) as $key ) {
+			foreach ( array_keys( $assoc_arr ) as $key ) {
 
 				if ( is_numeric( $key ) ) {
 
-					unset( $arr[ $key ] );
+					unset( $assoc_arr[ $key ] );
 				}
+			}
+		}
+
+		public static function unset_from_assoc( &$assoc_arr1, $assoc_arr2 ) {
+
+			foreach ( array_keys( $assoc_arr2 ) as $key ) {
+
+				unset( $assoc_arr1[ $key ] );
 			}
 		}
 
 		/**
-		 * The $key_pattern value must be a string.
+		 * The $key_preg value must be a string.
 		 *
-		 * The $replace value can be an associative array of 'pattern' => 'replacement'.
-		 *
-		 * Use reference for $input argument to allow unset of keys if $remove is true.
+		 * The $replace value can be a string or an associative array of 'pattern' => 'replacement'.
 		 */
-		public static function preg_grep_keys( $key_pattern, array &$input, $invert = false, $replace = false, $remove = false ) {
+		public static function preg_grep_keys( $key_preg, array $in_arr, $invert = false, $replace = false ) {
 
-			$invert = $invert ? PREG_GREP_INVERT : null;
+			$matched_keys = preg_grep( $key_preg, array_keys( $in_arr ), $invert ? PREG_GREP_INVERT : null );
 
-			$matched_keys = preg_grep( $key_pattern, array_keys( $input ), $invert );
+			if ( empty( $matched_keys ) && $invert ) {	// Nothing to do.
 
+				return $in_arr;
+			}
+
+			/**
+		 	 * The $replace value can be a string or an associative array of 'pattern' => 'replacement'.
+			 */
 			if ( is_array( $replace ) ) {
 
-				$preg_patterns = array_keys( $replace );
-
-				$preg_replacements = array_values( $replace );
+				$patterns     = array_keys( $replace );
+				$replacements = array_values( $replace );
 
 			} else {
 
-				$preg_patterns = $key_pattern;
-
-				$preg_replacements = $replace;
+				$patterns     = $key_preg;
+				$replacements = $replace;
 			}
 
-			$new_array  = array();
+			$out_arr  = array();
 
 			foreach ( $matched_keys as $key ) {
 
-				if ( false !== $replace ) {	// Can be an empty string.
+				if ( false === $replace ) {	// Element key remains unchanged.
 
-					$fixed = preg_replace( $preg_patterns, $preg_replacements, $key );
-
-					$new_array[ $fixed ] = $input[ $key ];
+					$out_arr[ $key ] = $in_arr[ $key ];
 
 				} else {
 
-					$new_array[ $key ] = $input[ $key ];
-				}
+					$fixed = preg_replace( $patterns, $replacements, $key );
 
-				if ( $remove ) {
-
-					unset( $input[ $key ] );
+					$out_arr[ $fixed ] = $in_arr[ $key ];
 				}
 			}
 
-			return $new_array;
+			return $out_arr;
 		}
 
 		public static function next_key( $needle, array &$input, $loop = true ) {
@@ -1833,18 +1838,18 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		/**
 		 * Move an associative array element to the end.
 		 */
-		public static function move_to_end( array &$arr, $key ) {
+		public static function move_to_end( array &$assoc_arr, $key ) {
 
-			if ( array_key_exists( $key, $arr ) ) {
+			if ( array_key_exists( $key, $assoc_arr ) ) {
 
-				$val = $arr[ $key ];
+				$val = $assoc_arr[ $key ];
 
-				unset( $arr[ $key ] );
+				unset( $assoc_arr[ $key ] );
 
-				$arr[ $key ] = $val;
+				$assoc_arr[ $key ] = $val;
 			}
 
-			return $arr;
+			return $assoc_arr;
 		}
 
 		public static function move_to_front( array &$arr, $key ) {
@@ -2743,9 +2748,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				foreach ( $opts_md_pre as $opt_key => $md_pre ) {
 
-					$md_defs = self::preg_grep_keys( '/^' . $md_pre . '_/', $md_defs, false, $opt_key . '_' );
+					$md_defs = self::preg_grep_keys( '/^' . $md_pre . '_/', $md_defs, $invert = false, $opt_key . '_' );
 
-					$md_opts = self::preg_grep_keys( '/^' . $md_pre . '_/', $md_opts, false, $opt_key . '_' );
+					$md_opts = self::preg_grep_keys( '/^' . $md_pre . '_/', $md_opts, $invert = false, $opt_key . '_' );
 
 					if ( is_array( $type_opts ) ) {
 

@@ -1130,7 +1130,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$metas = $this->p->util->get_html_head_meta( $html_stripped, $query = '/html/head/link|/html/head/meta', $libxml_errors = true );
 
-			$check_opts = SucomUtil::preg_grep_keys( '/^add_/', $this->p->options, false, '' );
+			$check_opts = SucomUtil::preg_grep_keys( '/^add_/', $this->p->options, $invert = false, $replace = '' );
 
 			$conflicts_msg = __( 'Conflict detected - your theme or another plugin is adding %1$s to the head section of this webpage.', 'wpsso' );
 

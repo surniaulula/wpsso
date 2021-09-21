@@ -803,7 +803,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * Add single employment type options (value must be non-empty).
 			 */
-			foreach ( SucomUtil::preg_grep_keys( '/^job_empl_type_(.*)(:is)?$/U', $job_opts, false, '$1' ) as $empl_type => $checked ) {
+			foreach ( SucomUtil::preg_grep_keys( '/^job_empl_type_(.*)(:is)?$/U', $job_opts, $invert = false, $replace = '$1' ) as $empl_type => $checked ) {
 
 				if ( ! empty( $checked ) ) {
 

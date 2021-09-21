@@ -63,7 +63,12 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			/**
 			 * Read and unset pre-defined twitter card values in the open graph meta tag array.
 			 */
-			$mt_tc = SucomUtil::preg_grep_keys( '/^twitter:/', $mt_og, $invert = false, $replace = false, $remove = true );
+			$mt_tc = SucomUtil::preg_grep_keys( '/^twitter:/', $mt_og );
+
+			if ( ! empty( $mt_tc ) ) {
+
+				SucomUtil::unset_from_assoc( $mt_og, $mt_tc );
+			}
 
 			$mt_tc = apply_filters( 'wpsso_tc_seed', $mt_tc, $mod );
 

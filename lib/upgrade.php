@@ -543,9 +543,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				/**
 				 * Check for schema type IDs to be renamed.
 				 */
-				$keys_preg = 'schema_type_.*|site_org_schema_type|org_schema_type|plm_place_schema_type';
+				$schema_type_keys_preg = '/^(schema_type_.*|site_org_schema_type|org_schema_type|plm_place_schema_type)(_[0-9]+)?$/';
 
-				foreach ( SucomUtil::preg_grep_keys( '/^(' . $keys_preg . ')(_[0-9]+)?$/', $opts ) as $key => $val ) {
+				foreach ( SucomUtil::preg_grep_keys( $schema_type_keys_preg, $opts ) as $key => $val ) {
 
 					if ( ! empty( $this->p->cf[ 'head' ][ 'schema_renamed' ][ $val ] ) ) {
 
@@ -798,7 +798,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 			/**
 			 * The options array should not contain any numeric keys.
 			 */
-			SucomUtil::delete_numeric_keys( $opts );
+			SucomUtil::unset_numeric_keys( $opts );
 
 			return $opts;
 		}

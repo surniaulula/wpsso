@@ -838,7 +838,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			/**
 			 * The options array should not contain any numeric keys.
 			 */
-			SucomUtil::delete_numeric_keys( $opts );
+			SucomUtil::unset_numeric_keys( $opts );
 
 			return $opts;
 		}

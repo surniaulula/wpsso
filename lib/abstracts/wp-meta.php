@@ -794,9 +794,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			/**
 			 * Check for schema type IDs that need to be renamed.
 			 */
-			$schema_type_keys_preg = 'schema_type|plm_place_schema_type';
+			$schema_type_keys_preg = '/^(schema_type|plm_place_schema_type)(_[0-9]+)?$/';
 
-			foreach ( SucomUtil::preg_grep_keys( '/^(' . $schema_type_keys_preg . ')(_[0-9]+)?$/', $md_opts ) as $md_key => $md_val ) {
+			foreach ( SucomUtil::preg_grep_keys( $schema_type_keys_preg, $md_opts ) as $md_key => $md_val ) {
 
 				if ( ! empty( $this->p->cf[ 'head' ][ 'schema_renamed' ][ $md_val ] ) ) {
 
