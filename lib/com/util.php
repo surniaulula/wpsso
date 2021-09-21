@@ -1672,7 +1672,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Returns an empty array or an associative array of open => close hours with timezone offset.
+		 * Returns an empty array or an associative array of open => close hours, including a timezone offset.
+		 *
+		 * $open_close = Array (
+		 *	[08:00-07:00] => 17:00-07:00
+		 * )
+		 *
+		 * -07:00 is a timezone offset.
 		 */
 		public static function get_opts_open_close_hm_tz( array $opts, $key_day_o, $key_midday_c, $key_midday_o, $key_day_c, $key_tz = '' ) {
 

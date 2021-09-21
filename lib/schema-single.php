@@ -1260,9 +1260,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				 * Property:
 				 *	businessDays as https://schema.org/OpeningHoursSpecification
 				 */
-				$opening_hours_spec = self::get_opening_hours_data( $delivery_opts, $opt_prefix = 'shipdept' );
-
-				if ( ! empty( $opening_hours_spec ) ) {
+				if ( $opening_hours_spec = self::get_opening_hours_data( $delivery_opts, $opt_prefix = 'shipdept' ) ) {
 
 					$delivery_time[ 'businessDays' ] = $opening_hours_spec;
 				}
@@ -1361,6 +1359,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		}
 
 		/**
+		 * Returns an array or false if there are no open/close hours.
+		 *
 		 * Example $opts = Array (
 		 * 	[shipdept_rel] => http://adm.surniaulula.com/produit/a-variable-product/
 		 * 	[shipdept_timezone] => America/Vancouver
@@ -1400,7 +1400,13 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			foreach ( $weekdays as $day_name => $day_label ) {
 
 				/**
-				 * Returns an empty array or an associative array of open => close hours with timezone offset.
+				 * Returns an empty array or an associative array of open => close hours, including a timezone offset.
+				 *
+				 * $open_close = Array (
+				 *	[08:00-07:00] => 17:00-07:00
+				 * )
+				 *
+				 * -07:00 is a timezone offset.
 				 */
 				$open_close = SucomUtil::get_opts_open_close_hm_tz(
 					$opts,
@@ -1450,7 +1456,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
-			return $opening_hours_spec;
+			return empty( $opening_hours_spec ) ? false : $opening_hours_spec;
 		}
 
 		/**
@@ -2061,9 +2067,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Property:
 			 *	openingHoursSpecification as https://schema.org/OpeningHoursSpecification
 			 */
-			$opening_hours_spec = self::get_opening_hours_data( $place_opts, $opt_prefix = 'place' );
-
-			if ( ! empty( $opening_hours_spec ) ) {
+			if ( $opening_hours_spec = self::get_opening_hours_data( $place_opts, $opt_prefix = 'place' ) ) {
 
 				$json_ret[ 'openingHoursSpecification' ] = $opening_hours_spec;
 			}

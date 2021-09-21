@@ -10006,41 +10006,41 @@ msgctxt "Taxonomy description"
 msgid "Tags for the page post type."
 msgstr ""
 
-#: lib/schema-single.php:1536
+#: lib/schema-single.php:1542
 msgid "adding schema organization"
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1600
+#: lib/schema-single.php:1606
 msgid ""
 "An organization logo image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1603
+#: lib/schema-single.php:1609
 msgid ""
 "An organization banner image (600x60px) is missing and required for the "
 "\"%1$s\" organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s is 'site' (translated) or 'ID #'.
-#: lib/schema-single.php:1606
+#: lib/schema-single.php:1612
 msgid ""
 "Please enter the missing image URL in the \"%1$s\" %2$s organization "
 "settings."
 msgstr ""
 
 #. translators: site, as in the "site organization settings".
-#: lib/schema-single.php:1628
+#: lib/schema-single.php:1634
 msgid "site"
 msgstr ""
 
-#: lib/schema-single.php:1809
+#: lib/schema-single.php:1815
 msgid "adding schema person"
 msgstr ""
 
-#: lib/schema-single.php:2012
+#: lib/schema-single.php:2018
 msgid "adding schema place"
 msgstr ""
 

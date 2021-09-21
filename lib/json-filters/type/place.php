@@ -76,6 +76,17 @@ if ( ! class_exists( 'WpssoJsonFiltersTypePlace' ) ) {
 
 			/**
 			 * Property:
+			 *	telephone
+			 */
+			if ( $read_mt_place ) {
+
+				WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $mt_og, array(
+					'telephone' => 'place:telephone',
+				) );
+			}
+
+			/**
+			 * Property:
 			 *	address as https://schema.org/PostalAddress
 			 *
 			 * <meta property="place:street_address" content="1234 Some Road"/>
@@ -89,51 +100,17 @@ if ( ! class_exists( 'WpssoJsonFiltersTypePlace' ) ) {
 
 				$postal_address = array();
 
-				foreach ( array(
-					'name'                => 'name',
-					'streetAddress'       => 'street_address',
-					'postOfficeBoxNumber' => 'po_box_number',
-					'addressLocality'     => 'locality',
-					'addressRegion'       => 'region',
-					'postalCode'          => 'postal_code',
-					'addressCountry'      => 'country_name',
-				) as $prop_name => $mt_suffix ) {
-
-					if ( isset( $mt_og[ 'place:' . $mt_suffix ] ) ) {
-
-						$postal_address[ $prop_name ] = $mt_og[ 'place:' . $mt_suffix ];
-					}
-				}
-
-				if ( ! empty( $postal_address ) ) {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'adding place address meta tags for postal address' );
-					}
+				if ( WpssoSchema::add_data_itemprop_from_assoc( $postal_address, $mt_og, array(
+					'name'                => 'place:name',
+					'streetAddress'       => 'place:street_address',
+					'postOfficeBoxNumber' => 'place:po_box_number',
+					'addressLocality'     => 'place:locality',
+					'addressRegion'       => 'place:region',
+					'postalCode'          => 'place:postal_code',
+					'addressCountry'      => 'place:country_name',
+				) ) ) {
 
 					$json_ret[ 'address' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/PostalAddress', $postal_address );
-
-				} elseif ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'no place address meta tags found for postal address' );
-				}
-			}
-
-			/**
-			 * Property:
-			 *	telephone
-			 */
-			if ( $read_mt_place ) {
-
-				foreach ( array(
-					'telephone' => 'telephone',
-				) as $prop_name => $og_key ) {
-
-					if ( isset( $mt_og[ 'place:' . $og_key ] ) ) {
-
-						$json_ret[ $prop_name ] = $mt_og[ 'place:' . $og_key ];
-					}
 				}
 			}
 
@@ -152,29 +129,13 @@ if ( ! class_exists( 'WpssoJsonFiltersTypePlace' ) ) {
 
 				$geo_coords = array();
 
-				foreach ( array(
-					'elevation' => 'altitude',
-					'latitude'  => 'latitude',
-					'longitude' => 'longitude',
-				) as $prop_name => $mt_suffix ) {
-
-					if ( isset( $mt_og[ 'place:location:' . $mt_suffix ] ) ) {	// Prefer the place location meta tags.
-
-						$geo_coords[ $prop_name ] = $mt_og[ 'place:location:' . $mt_suffix ];
-
-					} elseif ( isset( $mt_og[ 'og:' . $mt_suffix ] ) ) {
-
-						$geo_coords[ $prop_name ] = $mt_og[ 'og:' . $mt_suffix ];
-					}
-				}
-
-				if ( ! empty( $geo_coords ) ) {
+				if ( WpssoSchema::add_data_itemprop_from_assoc( $geo_coords, $mt_og, array(
+					'latitude'  => 'place:location:latitude',
+					'longitude' => 'place:location:longitude',
+					'elevation' => 'place:location:altitude',
+				) ) ) {
 
 					$json_ret[ 'geo' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/GeoCoordinates', $geo_coords );
-
-				} elseif ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'no place:location meta tags found for geo coordinates' );
 				}
 			}
 
@@ -184,7 +145,10 @@ if ( ! class_exists( 'WpssoJsonFiltersTypePlace' ) ) {
 			 */
 			if ( $read_mt_place ) {
 
-				$replace = array( '/^place:opening_hours:/' => 'place_', '/:/' => '_' );
+				$replace = array(
+					'/^place:opening_hours:/' => 'place_',
+					'/:/'                     => '_',
+				);
 
 				$place_opts = SucomUtil::preg_grep_keys( '/^place:opening_hours:/', $mt_og, $invert = false, $replace );
 
@@ -195,16 +159,10 @@ if ( ! class_exists( 'WpssoJsonFiltersTypePlace' ) ) {
 						$place_opts[ 'place_rel' ] = $mt_og[ 'og:url' ];
 					}
 
-					$opening_hours_spec = WpssoSchemaSingle::get_opening_hours_data( $place_opts, $opt_prefix = 'place' );
-
-					if ( ! empty( $opening_hours_spec ) ) {
+					if ( $opening_hours_spec = WpssoSchemaSingle::get_opening_hours_data( $place_opts, $opt_prefix = 'place' ) ) {
 
 						$json_ret[ 'openingHoursSpecification' ] = $opening_hours_spec;
 					}
-
-				} elseif ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'no place:opening_hours meta tags for opening hours specification' );
 				}
 			}
 
