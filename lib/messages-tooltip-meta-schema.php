@@ -103,20 +103,20 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 				 	break;
 
-				case 'tooltip-meta-schema_pub_org_id':	// Publisher (Org).
+				case 'tooltip-meta-schema_pub_org_id':	// Publisher Org.
 
 					$text = __( 'Select a publisher organization for the Schema CreativeWork type and/or its sub-types (Article, BlogPosting, WebPage, etc).', 'wpsso' );
 
 				 	break;
 
-				case 'tooltip-meta-schema_pub_person_id':	// Publisher (Person).
+				case 'tooltip-meta-schema_pub_person_id':	// Publisher Person.
 
 					$text = __( 'Select a publisher person for the Schema CreativeWork type and/or its sub-types (Article, BlogPosting, WebPage, etc).', 'wpsso' );
 
 				 	break;
 
-				case 'tooltip-meta-schema_prov_org_id':	// Service Prov. (Org).
-				case 'tooltip-meta-schema_prov_person_id':	// Service Prov. (Person).
+				case 'tooltip-meta-schema_prov_org_id':	// Service Prov. Org.
+				case 'tooltip-meta-schema_prov_person_id':	// Service Prov. Person.
 
 					$text = __( 'Select a service provider, service operator or service performer (example: "Netflix").', 'wpsso' );
 
@@ -168,25 +168,25 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-schema_event_organizer_org_id':	// Organizer (Org).
+						case 'tooltip-meta-schema_event_organizer_org_id':	// Organizer Org.
 
 							$text = __( 'Select an organizer (organization) for the event.', 'wpsso' );
 
 						 	break;
 
-						case 'tooltip-meta-schema_event_organizer_person_id':	// Organizer (Person).
+						case 'tooltip-meta-schema_event_organizer_person_id':	// Organizer Person.
 
 							$text = __( 'Select an organizer (person) for the event.', 'wpsso' );
 
 						 	break;
 
-						case 'tooltip-meta-schema_event_performer_org_id':	// Performer (Org).
+						case 'tooltip-meta-schema_event_performer_org_id':	// Performer Org.
 
 							$text = __( 'Select a performer (organization) for the event.', 'wpsso' );
 
 						 	break;
 
-						case 'tooltip-meta-schema_event_performer_person_id':	// Performer (Person).
+						case 'tooltip-meta-schema_event_performer_person_id':	// Performer Person.
 
 							$text = __( 'Select a performer (person) for the event.', 'wpsso' );
 

@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.0.0-dev.8',	// Plugin version.
+					'version'     => '9.0.0-b.1',	// Plugin version.
 					'opt_version' => '824',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1392,16 +1392,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Advanced Settings > Schema Defaults metabox.
 					 */
 					'schema_def_family_friendly'           => 'none',		// Default Family Friendly.
-					'schema_def_pub_org_id'                => 'none',		// Default Publisher (Org).
-					'schema_def_pub_person_id'             => 'none',		// Default Publisher (Person).
-					'schema_def_prov_org_id'               => 'none',		// Default Service Prov. (Org).
-					'schema_def_prov_person_id'            => 'none',		// Default Service Prov. (Person).
+					'schema_def_pub_org_id'                => 'none',		// Default Publisher Org.
+					'schema_def_pub_person_id'             => 'none',		// Default Publisher Person.
+					'schema_def_prov_org_id'               => 'none',		// Default Service Prov. Org.
+					'schema_def_prov_person_id'            => 'none',		// Default Service Prov. Person.
 					'schema_def_event_location_id'         => 'none',		// Default Physical Venue.
-					'schema_def_event_organizer_org_id'    => 'none',		// Default Organizer (Org).
-					'schema_def_event_organizer_person_id' => 'none',		// Default Organizer (Person).
-					'schema_def_event_performer_org_id'    => 'none',		// Default Performer (Org).
-					'schema_def_event_performer_person_id' => 'none',		// Default Performer (Person).
-					'schema_def_job_hiring_org_id'         => 'none',		// Default Hiring (Org).
+					'schema_def_event_organizer_org_id'    => 'none',		// Default Organizer Org.
+					'schema_def_event_organizer_person_id' => 'none',		// Default Organizer Person.
+					'schema_def_event_performer_org_id'    => 'none',		// Default Performer Org.
+					'schema_def_event_performer_person_id' => 'none',		// Default Performer Person.
+					'schema_def_job_hiring_org_id'         => 'none',		// Default Hiring Org.
 					'schema_def_job_location_id'           => 'none',		// Default Job Location.
 					'schema_def_job_location_type'         => 'none',		// Default Job Location Type.
 					'schema_def_review_item_type'          => 'creative.work',	// Default Subject Webpage Type.
@@ -2036,7 +2036,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '4.6.0-dev.8',	// Minimum update manager version (soft limit).
+				'rec_version' => '4.6.0-b.1',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
 					48  => 'Every two days',

@@ -459,10 +459,10 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'schema_family_friendly' => $opts[ 'schema_def_family_friendly' ],	// Family Friendly.
 					'schema_copyright_year'  => $def_copyright_year,			// Copyright Year.
 					'schema_license_url'     => '',						// License URL.
-					'schema_prov_org_id'     => $opts[ 'schema_def_prov_org_id' ],		// Service Prov. (Org).
-					'schema_prov_person_id'  => $opts[ 'schema_def_prov_person_id' ],	// Service Prov. (Person).
-					'schema_pub_org_id'      => $opts[ 'schema_def_pub_org_id' ],		// Publisher (Org).
-					'schema_pub_person_id'   => $opts[ 'schema_def_pub_person_id' ],	// Publisher (Person).
+					'schema_prov_org_id'     => $opts[ 'schema_def_prov_org_id' ],		// Service Prov. Org.
+					'schema_prov_person_id'  => $opts[ 'schema_def_prov_person_id' ],	// Service Prov. Person.
+					'schema_pub_org_id'      => $opts[ 'schema_def_pub_org_id' ],		// Publisher Org.
+					'schema_pub_person_id'   => $opts[ 'schema_def_pub_person_id' ],	// Publisher Person.
 	
 					/**
 					 * Schema Audiobook.
@@ -479,10 +479,10 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'schema_event_attendance'            => 'https://schema.org/OfflineEventAttendanceMode',	// Event Attendance.
 					'schema_event_online_url'            => '',							// Event Online URL.
 					'schema_event_location_id'           => $opts[ 'schema_def_event_location_id' ],		// Event Physical Venue.
-					'schema_event_organizer_org_id'      => $opts[ 'schema_def_event_organizer_org_id' ],		// Organizer (Org).
-					'schema_event_organizer_person_id'   => $opts[ 'schema_def_event_organizer_person_id' ],	// Organizer (Person).
-					'schema_event_performer_org_id'      => $opts[ 'schema_def_event_performer_org_id' ],		// Performer (Org).
-					'schema_event_performer_person_id'   => $opts[ 'schema_def_event_performer_person_id' ],	// Performer (Person).
+					'schema_event_organizer_org_id'      => $opts[ 'schema_def_event_organizer_org_id' ],		// Organizer Org.
+					'schema_event_organizer_person_id'   => $opts[ 'schema_def_event_organizer_person_id' ],	// Organizer Person.
+					'schema_event_performer_org_id'      => $opts[ 'schema_def_event_performer_org_id' ],		// Performer Org.
+					'schema_event_performer_person_id'   => $opts[ 'schema_def_event_performer_person_id' ],	// Performer Person.
 					'schema_event_status'                => 'https://schema.org/EventScheduled',			// Event Status.
 					'schema_event_start_date'            => '',							// Event Start (Date).
 					'schema_event_start_time'            => 'none',							// Event Start (Time).

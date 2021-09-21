@@ -172,27 +172,27 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					 * Options that cannot be blank.
 					 */
 					case 'schema_def_event_location_id':		// Default Physical Venue.
-					case 'schema_def_event_organizer_org_id':	// Default Organizer (Org).
-					case 'schema_def_event_organizer_person_id':	// Default Organizer (Person).
-					case 'schema_def_event_performer_org_id':	// Default Performer (Org).
-					case 'schema_def_event_performer_person_id':	// Default Performer (Person).
+					case 'schema_def_event_organizer_org_id':	// Default Organizer Org.
+					case 'schema_def_event_organizer_person_id':	// Default Organizer Person.
+					case 'schema_def_event_performer_org_id':	// Default Performer Org.
+					case 'schema_def_event_performer_person_id':	// Default Performer Person.
 					case 'schema_def_family_friendly':		// Default Family Friendly.
 					case 'schema_def_job_hiring_org_id':		// Default Hiring Organization.
 					case 'schema_def_job_location_id':		// Default Job Location.
 					case 'schema_def_job_location_type':		// Default Job Location Type.
-					case 'schema_def_prov_org_id':			// Default Service Prov. (Org).
-					case 'schema_def_prov_person_id':		// Default Service Prov. (Person).
-					case 'schema_def_pub_org_id':			// Default Publisher (Org).
-					case 'schema_def_pub_person_id':		// Default Publisher (Person).
+					case 'schema_def_prov_org_id':			// Default Service Prov. Org.
+					case 'schema_def_prov_person_id':		// Default Service Prov. Person.
+					case 'schema_def_pub_org_id':			// Default Publisher Org.
+					case 'schema_def_pub_person_id':		// Default Publisher Person.
 					case 'schema_def_review_item_type':		// Default Subject Webpage Type.
 					case 'schema_event_lang':			// Event Language.
 					case 'schema_event_location_id':		// Event Physical Venue.
 					case 'schema_event_offer_currency':
 					case 'schema_event_offer_avail':
-					case 'schema_event_organizer_org_id':		// Event Organizer (Org).
-					case 'schema_event_organizer_person_id':	// Event Organizer (Person).
-					case 'schema_event_performer_org_id':		// Event Performer (Org).
-					case 'schema_event_performer_person_id':	// Event Performer (Person).
+					case 'schema_event_organizer_org_id':		// Event Organizer Org.
+					case 'schema_event_organizer_person_id':	// Event Organizer Person.
+					case 'schema_event_performer_org_id':		// Event Performer Org.
+					case 'schema_event_performer_person_id':	// Event Performer Person.
 					case 'schema_event_attendance':			// Event Attendance.
 					case 'schema_event_status':			// Event Status.
 					case 'schema_family_friendly':			// Family Friendly.
@@ -203,10 +203,10 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_job_salary_period':		// Job Base Salary per Year, Month, Week, Hour.
 					case 'schema_lang':				// Language.
 					case 'schema_movie_prodco_org_id':		// Production Company.
-					case 'schema_prov_org_id':			// Service Prov. (Org).
-					case 'schema_prov_person_id':			// Service Prov. (Person).
-					case 'schema_pub_org_id':			// Publisher (Org).
-					case 'schema_pub_person_id':			// Publisher (Person).
+					case 'schema_prov_org_id':			// Service Prov. Org.
+					case 'schema_prov_person_id':			// Service Prov. Person.
+					case 'schema_pub_org_id':			// Publisher Org.
+					case 'schema_pub_person_id':			// Publisher Person.
 					case 'schema_review_item_type':			// Reviewed Subject Webpage Type.
 					case 'schema_review_item_cw_author_type':	// Reviewed Subject Author Type.
 					case 'schema_type':				// Schema Type.

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 9.0.0-dev.8\n"
+"Project-Id-Version: WPSSO Core 9.0.0-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -347,8 +347,8 @@ msgctxt "html paragraph"
 msgid ""
 "<strong>Note that WooCommerce offers incomplete Schema markup for Google "
 "Rich Results by default.</strong> The <a href=\"https://wpsso.com/extend/"
-"plugins/wpsso/\">WPSSO Core Premium plugin</a> provides a perfect solution "
-"by offering complete product meta tags for Facebook, Pinterest, and complete "
+"plugins/wpsso/\">WPSSO Core Premium plugin</a> provides a better solution by "
+"offering complete product meta tags for Facebook, Pinterest, and complete "
 "Schema product markup for Google Rich Results - including additional product "
 "images, product variations, product information (brand, color, condition, "
 "EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, volume, "
@@ -3102,25 +3102,25 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:106 lib/pro/admin/advanced.php:733
 #: lib/std/admin/advanced.php:645
 msgctxt "option label"
-msgid "Default Publisher (Org)"
+msgid "Default Publisher Org."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:107 lib/pro/admin/advanced.php:739
 #: lib/std/admin/advanced.php:652
 msgctxt "option label"
-msgid "Default Publisher (Person)"
+msgid "Default Publisher Person"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:108 lib/pro/admin/advanced.php:746
 #: lib/std/admin/advanced.php:659
 msgctxt "option label"
-msgid "Default Service Prov. (Org)"
+msgid "Default Service Prov. Org."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:109 lib/pro/admin/advanced.php:752
 #: lib/std/admin/advanced.php:666
 msgctxt "option label"
-msgid "Default Service Prov. (Person)"
+msgid "Default Service Prov. Person"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:110 lib/pro/admin/advanced.php:771
@@ -3132,25 +3132,25 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:111 lib/pro/admin/advanced.php:777
 #: lib/std/admin/advanced.php:696
 msgctxt "option label"
-msgid "Default Organizer (Org)"
+msgid "Default Organizer Org."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:112 lib/pro/admin/advanced.php:783
 #: lib/std/admin/advanced.php:703
 msgctxt "option label"
-msgid "Default Organizer (Person)"
+msgid "Default Organizer Person"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:113 lib/pro/admin/advanced.php:790
 #: lib/std/admin/advanced.php:710
 msgctxt "option label"
-msgid "Default Performer (Org)"
+msgid "Default Performer Org."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:114 lib/pro/admin/advanced.php:796
 #: lib/std/admin/advanced.php:717
 msgctxt "option label"
-msgid "Default Performer (Person)"
+msgid "Default Performer Person"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:115 lib/pro/admin/advanced.php:815
@@ -3339,25 +3339,25 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:152 lib/pro/admin/edit.php:286
 #: lib/std/admin/edit.php:299
 msgctxt "option label"
-msgid "Publisher (Org)"
+msgid "Publisher Org."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:153 lib/pro/admin/edit.php:294
 #: lib/std/admin/edit.php:308
 msgctxt "option label"
-msgid "Publisher (Person)"
+msgid "Publisher Person"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:154 lib/pro/admin/edit.php:304
 #: lib/std/admin/edit.php:317
 msgctxt "option label"
-msgid "Service Prov. (Org)"
+msgid "Service Prov. Org."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:155 lib/pro/admin/edit.php:312
 #: lib/std/admin/edit.php:326
 msgctxt "option label"
-msgid "Service Prov. (Person)"
+msgid "Service Prov. Person"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:156 lib/pro/admin/edit.php:327
@@ -3974,25 +3974,25 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:266 lib/pro/admin/edit.php:1076
 #: lib/std/admin/edit.php:969
 msgctxt "option label"
-msgid "Organizer (Org)"
+msgid "Organizer Org."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:267 lib/pro/admin/edit.php:1084
 #: lib/std/admin/edit.php:978
 msgctxt "option label"
-msgid "Organizer (Person)"
+msgid "Organizer Person"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:268 lib/pro/admin/edit.php:1094
 #: lib/std/admin/edit.php:987
 msgctxt "option label"
-msgid "Performer (Org)"
+msgid "Performer Org."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:269 lib/pro/admin/edit.php:1102
 #: lib/std/admin/edit.php:996
 msgctxt "option label"
-msgid "Performer (Person)"
+msgid "Performer Person"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:270 lib/pro/admin/edit.php:1112
@@ -4947,10 +4947,10 @@ msgstr ""
 
 #: lib/admin-head.php:316
 msgid ""
-"The %1$s plugin provides a perfect solution by offering complete product "
-"meta tags for Facebook, Pinterest, and complete Schema product markup for "
-"Google Rich Results - including additional product images, product "
-"variations, product information (brand, color, condition, EAN, dimensions, "
+"The %1$s plugin provides a better solution by offering complete product meta "
+"tags for Facebook, Pinterest, and complete Schema product markup for Google "
+"Rich Results - including additional product images, product variations, "
+"product information (brand, color, condition, EAN, dimensions, "
 "GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, volume, weight, etc), "
 "product reviews, product ratings, sale start / end dates, sale prices, pre-"
 "tax prices, VAT prices, shipping rates, shipping times, and much, much more."
@@ -5884,7 +5884,7 @@ msgid "Its settings and features have been integrated into the %1$s plugin."
 msgstr ""
 
 #: lib/conflict.php:84
-msgid "<a href=\"%1$s\">Please deactivate the %2$s add-on immediately</a>."
+msgid "<a href=\"%1$s\">Please deactivate and delete the %2$s add-on</a>."
 msgstr ""
 
 #: lib/conflict.php:118

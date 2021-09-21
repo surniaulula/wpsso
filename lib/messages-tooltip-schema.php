@@ -166,20 +166,20 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 				 	break;
 
-				case 'tooltip-schema_def_pub_org_id':			// Default Publisher (Org).
+				case 'tooltip-schema_def_pub_org_id':			// Default Publisher Org.
 
 					$text = __( 'Select a default publisher organization for the Schema CreativeWork type and/or its sub-types (Article, BlogPosting, WebPage, etc).', 'wpsso' );
 
 				 	break;
 
-				case 'tooltip-schema_def_pub_person_id':		// Default Publisher (Person).
+				case 'tooltip-schema_def_pub_person_id':		// Default Publisher Person.
 
 					$text = __( 'Select a default publisher person for the Schema CreativeWork type and/or its sub-types (Article, BlogPosting, WebPage, etc).', 'wpsso' );
 
 				 	break;
 
-				case 'tooltip-schema_def_prov_org_id':			// Default Service Prov. (Org).
-				case 'tooltip-schema_def_prov_person_id':		// Default Service Prov. (Person).
+				case 'tooltip-schema_def_prov_org_id':			// Default Service Prov. Org.
+				case 'tooltip-schema_def_prov_person_id':		// Default Service Prov. Person.
 
 					$text = __( 'Select a default service provider, service operator or service performer (example: "Netflix").', 'wpsso' );
 
@@ -191,31 +191,31 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 				 	break;
 
-				case 'tooltip-schema_def_event_organizer_org_id':	// Default Organizer (Org).
+				case 'tooltip-schema_def_event_organizer_org_id':	// Default Organizer Org.
 
 					$text = __( 'Select a default organizer (organization) for the Schema Event type.', 'wpsso' );
 
 				 	break;
 
-				case 'tooltip-schema_def_event_organizer_person_id':	// Default Organizer (Person).
+				case 'tooltip-schema_def_event_organizer_person_id':	// Default Organizer Person.
 
 					$text = __( 'Select a default organizer (person) for the Schema Event type.', 'wpsso' );
 
 				 	break;
 
-				case 'tooltip-schema_def_event_performer_org_id':	// Default Performer (Org).
+				case 'tooltip-schema_def_event_performer_org_id':	// Default Performer Org.
 
 					$text = __( 'Select a default performer (organization) for the Schema Event type.', 'wpsso' );
 
 				 	break;
 
-				case 'tooltip-schema_def_event_performer_person_id':	// Default Performer (Person).
+				case 'tooltip-schema_def_event_performer_person_id':	// Default Performer Person.
 
 					$text = __( 'Select a default performer (person) for the Schema Event type.', 'wpsso' );
 
 				 	break;
 
-				case 'tooltip-schema_def_job_hiring_org_id':		// Default Job Hiring (Org).
+				case 'tooltip-schema_def_job_hiring_org_id':		// Default Job Hiring Org.
 
 					$text = __( 'Select a default organization for the Schema JobPosting hiring organization.', 'wpsso' );
 

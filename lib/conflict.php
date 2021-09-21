@@ -81,7 +81,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 					$notice_msg .= sprintf( __( 'Its settings and features have been integrated into the %1$s plugin.', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'name' ] ) . ' ';
 
-					$notice_msg .= sprintf( __( '<a href="%1$s">Please deactivate the %2$s add-on immediately</a>.', 'wpsso' ), $plugins_url, $pkg_info[ 'wpssojson' ][ 'name' ] ) . ' ';
+					$notice_msg .= sprintf( __( '<a href="%1$s">Please deactivate and delete the %2$s add-on</a>.', 'wpsso' ), $plugins_url, $pkg_info[ 'wpssojson' ][ 'name' ] ) . ' ';
 
 					$notice_key = 'deactivate-wpsso-schema-json-ld';
 				
