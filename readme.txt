@@ -313,6 +313,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 9.0.0-b.2 (2021/09/22)**
 
 * **New Features**
+	* Discontinued / deprecated the WPSSO JSON add-on:
+		* The <code>&#91;schema&#93;</code> shortcode was moved to a new WPSSO Schema Shortcode add-on.
+		* All other features of the WPSSO Schema JSON-LD Markup add-on were merged into the WPSSO Core plugin.
 	* Updated the SSO &gt; Advanced Settings &gt; Integration &gt; Enable Tags for Pages feature to register a non-public Page Tags taxonomy.
 * **Improvements**
 	* Added a Document SSO &gt; Customize &gt; Twitter Card Title option.
@@ -320,7 +323,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Deprecated the Schema link and meta itemprop tags.
 	* Deprecated the head attributes check in theme header templates.
 	* Removed the SSO &gt; Advanced Settings &gt; HTML Tags &gt; Schema tab.
-	* Moved the Schema JSON data filters from the WPSSO JSON add-on to the WPSSO Core plugin.
+	* Moved the Schema data filters from the WPSSO JSON add-on to the WPSSO Core plugin.
 	* Moved the Document SSO &gt; Schema JSON-LD Markup / Google Rich Results sections from the WPSSO JSON add-on to the WPSSO Core plugin.
 * **Bugfixes**
 	* None.
@@ -349,10 +352,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* Fixed caching of option defaults array once plugin objects have been initialized.
-	* Fixed missing 'areaServed' property in Schema LocalBusiness markup for places / locations.
-	* Fixed the saving of selected option colors using `wpColorPicker()`.
-	* Fixed an undefined `$mt_ret` variable error in lib/util.php.
+	* Backported some bugfixes from WPSSO Core v9.0.0:
+		* Fixed caching of option defaults array once plugin objects have been initialized.
+		* Fixed missing 'areaServed' property in Schema LocalBusiness markup for places / locations.
+		* Fixed the saving of selected option colors using `wpColorPicker()`.
+		* Fixed an undefined `$mt_ret` variable error in lib/util.php.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -984,11 +988,11 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 
 = 9.0.0-b.2 =
 
-(2021/09/22) Added a Document SSO &gt; Twitter Card Title option. Refactored the Rank Math integration module (Premium version). Moved Schema JSON data filters from WPSSO JSON to WPSSO Core.
+(2021/09/22) Added a Document SSO &gt; Twitter Card Title option. Refactored the Rank Math integration module (Premium version). Moved Schema data filters from WPSSO JSON to WPSSO Core.
 
 = 8.39.2 =
 
-(2021/09/22) Fixed an undefined `$mt_ret` variable error in lib/util.php.
+(2021/09/22) Backported some bugfixes from WPSSO Core v9.0.0.
 
 = 8.39.1 =
 
