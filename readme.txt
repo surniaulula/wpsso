@@ -310,7 +310,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.0.0-b.2 (2021/09/21)**
+**Version 9.0.0-b.2 (2021/09/22)**
 
 * **New Features**
 	* Updated the SSO &gt; Advanced Settings &gt; Integration &gt; Enable Tags for Pages feature to register a non-public Page Tags taxonomy.
@@ -969,7 +969,7 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 
 = 9.0.0-b.2 =
 
-(2021/09/21) Added a Document SSO &gt; Twitter Card Title option. Refactored the Rank Math integration module (Premium version). Moved Schema JSON data filters from WPSSO JSON to WPSSO Core.
+(2021/09/22) Added a Document SSO &gt; Twitter Card Title option. Refactored the Rank Math integration module (Premium version). Moved Schema JSON data filters from WPSSO JSON to WPSSO Core.
 
 = 8.39.1 =
 
