@@ -2,12 +2,12 @@
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
-<tr><th align="right" valign="top" nowrap>Summary</th><td>Rank higher and improve click-through-rates by presenting your content at its best on social sites and in search results.</td></tr>
+<tr><th align="right" valign="top" nowrap>Summary</th><td>Rank higher and improve click through rates by presenting your content at its best on social sites and in search results.</td></tr>
 <tr><th align="right" valign="top" nowrap>Stable Version</th><td>8.39.1</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires PHP</th><td>7.0 or newer</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires WordPress</th><td>5.0 or newer</td></tr>
 <tr><th align="right" valign="top" nowrap>Tested Up To WordPress</th><td>5.8.1</td></tr>
-<tr><th align="right" valign="top" nowrap>Tested Up To WooCommerce</th><td>5.6.0</td></tr>
+<tr><th align="right" valign="top" nowrap>Tested Up To WooCommerce</th><td>5.7.0</td></tr>
 <tr><th align="right" valign="top" nowrap>Contributors</th><td>jsmoriss</td></tr>
 <tr><th align="right" valign="top" nowrap>License</th><td><a href="https://www.gnu.org/licenses/gpl.txt">GPLv3</a></td></tr>
 <tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>woocommerce, rich snippets, seo, schema, open graph, facebook, linkedin, twitter, google, pinterest, xml sitemap</td></tr>
@@ -17,7 +17,7 @@
 
 <h3 class="top">THE MOST ADVANCED STRUCTURED DATA PLUGIN FOR WORDPRESS</h3>
 
-<p><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"> WPSSO helps you rank higher and improves click-through-rates by presenting your content at its best on social sites and in search results - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled.</p>
+<p><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"> WPSSO helps you rank higher and improves click through rates by presenting your content at its best on social sites and in search results - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled.</p>
 
 <p><strong>WPSSO provides meta tags and structured data markup for:</strong></p>
 

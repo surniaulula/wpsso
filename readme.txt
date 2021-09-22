@@ -11,16 +11,16 @@ Contributors: jsmoriss
 Requires PHP: 7.0
 Requires At Least: 5.0
 Tested Up To: 5.8.1
-WC Tested Up To: 5.6.0
+WC Tested Up To: 5.7.0
 Stable Tag: 8.39.1
 
-Rank higher and improve click-through-rates by presenting your content at its best on social sites and in search results.
+Rank higher and improve click through rates by presenting your content at its best on social sites and in search results.
 
 == Description ==
 
 <h3 class="top">THE MOST ADVANCED STRUCTURED DATA PLUGIN FOR WORDPRESS</h3>
 
-<p><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"> WPSSO helps you rank higher and improves click-through-rates by presenting your content at its best on social sites and in search results - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled.</p>
+<p><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"> WPSSO helps you rank higher and improves click through rates by presenting your content at its best on social sites and in search results - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled.</p>
 
 <p><strong>WPSSO provides meta tags and structured data markup for:</strong></p>
 
@@ -310,7 +310,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.0.0-b.1 (2021/09/21)**
+**Version 9.0.0-b.2 (2021/09/21)**
 
 * **New Features**
 	* Updated the SSO &gt; Advanced Settings &gt; Integration &gt; Enable Tags for Pages feature to register a non-public Page Tags taxonomy.
@@ -967,7 +967,7 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 
 == Upgrade Notice ==
 
-= 9.0.0-b.1 =
+= 9.0.0-b.2 =
 
 (2021/09/21) Added a Document SSO &gt; Twitter Card Title option. Refactored the Rank Math integration module (Premium version). Moved Schema JSON data filters from WPSSO JSON to WPSSO Core.
 
