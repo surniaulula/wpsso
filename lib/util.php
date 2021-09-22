@@ -1653,9 +1653,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				@$doc->loadHTML( $html );	// Load HTML and ignore errors.
 			}
 
-			$xpath   = new DOMXPath( $doc );
-			$metas   = $xpath->query( $query );
-			$met_ret = array();
+			$xpath  = new DOMXPath( $doc );
+			$metas  = $xpath->query( $query );
+			$mt_ret = array();
 
 			foreach ( $metas as $m ) {
 
