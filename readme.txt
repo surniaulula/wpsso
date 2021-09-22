@@ -323,10 +323,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Moved the Schema JSON data filters from the WPSSO JSON add-on to the WPSSO Core plugin.
 	* Moved the Document SSO &gt; Schema JSON-LD Markup / Google Rich Results sections from the WPSSO JSON add-on to the WPSSO Core plugin.
 * **Bugfixes**
-	* Fixed caching of option defaults array once plugin objects have been initialized.
-	* Fixed missing 'areaServed' property in Schema LocalBusiness markup for places / locations.
-	* Fixed the saving of selected option colors using `wpColorPicker()`.
-	* Fixed an undefined $mt_ret variable error in lib/util.php.
+	* None.
 * **Developer Notes**
 	* Added a new 'wpsso_{post_type}_tag_taxonomy' filter.
 	* Added a new `WpssoOptionsFilters` class.
@@ -341,6 +338,23 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Removed the `WPSSO_HEAD_ATTR_FILTER_NAME` constant.
 	* Removed the `WPSSO_HEAD_ATTR_FILTER_PRIO` constant.
 	* Deprecated the `WpssoAdmin->check_tmpl_head_attributes()` method.
+* **Requires At Least**
+	* PHP v7.0.
+	* WordPress v5.0.
+
+**Version 8.39.2 (2021/09/22)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed caching of option defaults array once plugin objects have been initialized.
+	* Fixed missing 'areaServed' property in Schema LocalBusiness markup for places / locations.
+	* Fixed the saving of selected option colors using `wpColorPicker()`.
+	* Fixed an undefined `$mt_ret` variable error in lib/util.php.
+* **Developer Notes**
+	* None.
 * **Requires At Least**
 	* PHP v7.0.
 	* WordPress v5.0.
@@ -971,6 +985,10 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 = 9.0.0-b.2 =
 
 (2021/09/22) Added a Document SSO &gt; Twitter Card Title option. Refactored the Rank Math integration module (Premium version). Moved Schema JSON data filters from WPSSO JSON to WPSSO Core.
+
+= 8.39.2 =
+
+(2021/09/22) Fixed an undefined `$mt_ret` variable error in lib/util.php.
 
 = 8.39.1 =
 
