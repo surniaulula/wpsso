@@ -481,7 +481,6 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fixed caching of option defaults array once plugin objects have been initialized.
 	* Fixed missing 'areaServed' property in Schema LocalBusiness markup for places / locations.
 	* Fixed the saving of selected option colors using `wpColorPicker()`.
-	* Fixed an undefined $mt_ret variable error in lib/util.php.
 * **Developer Notes**
 	* Added a new 'wpsso_{post_type}_tag_taxonomy' filter.
 	* Added a new `WpssoOptionsFilters` class.
