@@ -99,7 +99,7 @@ _x( 'Complementary Add-ons', 'lib file description', 'wpsso' );
 _x( 'Tools and Actions', 'lib file description', 'wpsso' );
 _x( 'Add Person', 'lib file description', 'wpsso' );
 _x( 'WPSSO Core', 'plugin name', 'wpsso' );
-_x( 'Rank higher and improve click-through-rates by presenting your content at its best on social sites and in search results - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled.', 'plugin description', 'wpsso' );
+_x( 'Rank higher and improve click through rates by presenting your content at its best on social sites and in search results - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Mobile App Meta Tags', 'plugin name', 'wpsso' );
 _x( 'Apple Store / iTunes and Google Play App meta tags for Apple\'s mobile Safari banner and Twitter\'s App Card.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Schema Breadcrumbs Markup', 'plugin name', 'wpsso' );
@@ -121,7 +121,7 @@ _x( 'Ridiculously Responsive (SVG) Social Sharing Buttons for your content, exce
 _x( 'WPSSO Strip Schema Microdata', 'plugin name', 'wpsso' );
 _x( 'Remove Schema Microdata and RDFa from the webpage for better Google Rich Results using Schema JSON-LD markup.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Tune WP Image Editors', 'plugin name', 'wpsso' );
-_x( 'Improves the appearance of WordPress images for better click-through-rates from social and search sites.', 'plugin description', 'wpsso' );
+_x( 'Improves the appearance of WordPress images for better click through rates from social and search sites.', 'plugin description', 'wpsso' );
 _x( 'WPSSO User Locale Selector', 'plugin name', 'wpsso' );
 _x( 'Quick and easy locale / language / region selector for the WordPress admin toolbar.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Update Manager', 'plugin name', 'wpsso' );

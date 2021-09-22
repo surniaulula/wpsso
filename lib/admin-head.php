@@ -311,9 +311,9 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 					$action_links[] = $this->get_purchase_plugin_link( 'wpsso' );
 
-					$notice_msg = __( 'Note that WooCommerce offers incomplete Schema markup for Google Rich Results by default.', 'wpsso' ) . ' ';
+					$notice_msg = __( 'Note that WooCommerce by default provides incomplete Schema markup for Google Rich Results.', 'wpsso' ) . ' ';
 
-					$notice_msg .= sprintf( __( 'The %1$s plugin provides a better solution by offering complete product meta tags for Facebook, Pinterest, and complete Schema product markup for Google Rich Results - including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'name_pro' ] ) . ' ';
+					$notice_msg .= sprintf( __( '%1$s offers a better solution by providing complete product meta tags for Facebook, Pinterest, and complete Schema product markup for Google Rich Results - including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'name_pro' ] ) . ' ';
 
 					$notice_msg .= '<ul><li>' . implode( $glue = '</li> <li>', $action_links ) . '</li></ul>' . ' ';
 

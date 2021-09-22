@@ -21,11 +21,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.0.0-b.1',	// Plugin version.
+					'version'     => '9.0.0-b.2',	// Plugin version.
 					'opt_version' => '824',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
-					'desc'        => 'Rank higher and improve click-through-rates by presenting your content at its best on social sites and in search results - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled.',
+					'desc'        => 'Rank higher and improve click through rates by presenting your content at its best on social sites and in search results - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled.',
 					'slug'        => 'wpsso',
 					'base'        => 'wpsso/wpsso.php',
 					'update_auth' => 'tid',
@@ -882,7 +882,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssotie' => array(			// Plugin acronym.
 					'short'       => 'WPSSO TIE',	// Short plugin name.
 					'name'        => 'WPSSO Tune WP Image Editors',
-					'desc'        => 'Improves the appearance of WordPress images for better click-through-rates from social and search sites.',
+					'desc'        => 'Improves the appearance of WordPress images for better click through rates from social and search sites.',
 					'slug'        => 'wpsso-tune-image-editors',
 					'base'        => 'wpsso-tune-image-editors/wpsso-tune-image-editors.php',
 					'update_auth' => '',		// No premium version.
@@ -2036,7 +2036,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '4.6.0-b.1',	// Minimum update manager version (soft limit).
+				'rec_version' => '4.6.0-b.2',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
 					48  => 'Every two days',

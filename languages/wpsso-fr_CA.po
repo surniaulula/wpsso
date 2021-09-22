@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 9.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-09-20 13:03-0700\n"
+"PO-Revision-Date: 2021-09-22 07:27-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -195,8 +195,8 @@ msgstr "Les <a href=\"https://wpsso.com/docs/plugins/wpsso/installation/integrat
 
 #: gettext/gettext-html-setup.php:42
 msgctxt "html paragraph"
-msgid "<strong>Note that WooCommerce offers incomplete Schema markup for Google Rich Results by default.</strong> The <a href=\"https://wpsso.com/extend/plugins/wpsso/\">WPSSO Core Premium plugin</a> provides a perfect solution by offering complete product meta tags for Facebook, Pinterest, and complete Schema product markup for Google Rich Results - including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more."
-msgstr "<strong>Notez que WooCommerce offre un balisage de Schéma incomplet par défaut pour les résultats enrichis Google.</strong> L'<a href=\"https://wpsso.com/extend/plugins/wpsso/\">extension WPSSO Core Premium</a> fournit une solution parfaite en offrant des balises méta de produit complètes pour Facebook, Pinterest, et un balisage de produit de Schéma complet pour les résultats enrichis Google - y compris des images de produit supplémentaires, des variantes de produit, des informations additionnelles sur le produit (marque, couleur, état, EAN, dimensions, GTIN-8/12/13/14, ISBN, matériel, MPN, taille, SKU, volume, poids, etc.), critiques de produits, évaluations de produits, dates de début / fin de vente, prix de vente, prix hors taxes, prix avec TVA, tarifs d'expédition, délais d'expédition et bien plus encore."
+msgid "<strong>Note that WooCommerce by default provides incomplete Schema markup for Google Rich Results.</strong> <a href=\"https://wpsso.com/extend/plugins/wpsso/\">WPSSO Core Premium</a> offers a better solution by providing complete product meta tags for Facebook, Pinterest, and complete Schema product markup for Google Rich Results - including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more."
+msgstr "<strong>Notez que WooCommerce fournit par défaut un balisage de schéma incomplet pour les résultats riches de Google.</strong> <a href=\"https://wpsso.com/extend/plugins/wpsso/\">WPSSO Core Premium</a> offre une meilleure solution en fournissant des balises méta de produit complètes pour Facebook, Pinterest, et un balisage de produit de Schéma complet pour les résultats enrichis Google - y compris des images de produit supplémentaires, des variantes de produit, des informations additionnelles sur le produit (marque, couleur, état, EAN, dimensions, GTIN-8/12/13/14, ISBN, matériel, MPN, taille, SKU, volume, poids, etc.), critiques de produits, évaluations de produits, dates de début / fin de vente, prix de vente, prix hors taxes, prix avec TVA, tarifs d'expédition, délais d'expédition et bien plus encore."
 
 #: gettext/gettext-html-setup.php:43
 msgctxt "html list item"
@@ -308,11 +308,11 @@ msgctxt "html list item"
 msgid "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/\">Why shouldn't I upload small images to the media library?</a>"
 msgstr "<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/\">Pourquoi ne devrais-je pas télécharger de petites images dans la médiathèque?</a>"
 
-#: gettext/gettext-lib-abstracts-com.php:6 lib/abstracts/com/add-on.php:178
+#: gettext/gettext-lib-abstracts-com.php:6 lib/abstracts/com/add-on.php:179
 msgid "The %1$s add-on requires the %2$s plugin - please activate the missing plugin."
 msgstr "L'ajout %1$s nécessite l'extension %2$s - veuillez activer l'extension manquante."
 
-#: gettext/gettext-lib-abstracts-com.php:7 lib/abstracts/com/add-on.php:196
+#: gettext/gettext-lib-abstracts-com.php:7 lib/abstracts/com/add-on.php:197
 msgid "The %1$s add-on requires %2$s version %3$s or newer (version %4$s is currently installed)."
 msgstr "L'ajout %1$s nécessite %2$s version %3$s ou plus récente (la version %4$s est actuellement installée)."
 
@@ -422,27 +422,27 @@ msgctxt "option label"
 msgid "User Profiles"
 msgstr "Profils utilisateurs"
 
-#: gettext/gettext-lib-com.php:33 lib/com/form.php:777
+#: gettext/gettext-lib-com.php:33 lib/com/form.php:779
 msgctxt "option comment"
 msgid "crop"
 msgstr "recadrer"
 
 #: gettext/gettext-lib-com.php:34 gettext/gettext-lib-pro.php:214
-#: lib/com/form.php:778 lib/pro/admin/edit.php:674 lib/std/admin/edit.php:714
+#: lib/com/form.php:780 lib/pro/admin/edit.php:674 lib/std/admin/edit.php:714
 msgctxt "option comment"
 msgid "from"
 msgstr "de"
 
 #. translators: Please ignore - translation uses a different text domain.
 #: gettext/gettext-lib-com.php:36 gettext/gettext-lib-pro.php:45
-#: gettext/gettext-lib-pro.php:412 lib/com/form.php:788 lib/media.php:872
+#: gettext/gettext-lib-pro.php:412 lib/com/form.php:790 lib/media.php:872
 #: lib/media.php:1006 lib/media.php:2424 lib/pro/admin/advanced.php:315
 #: lib/pro/util/check-img-dims.php:104 lib/std/admin/advanced.php:306
 msgid "Media Library"
 msgstr "la médiathèque"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:38 lib/com/form.php:881 lib/script.php:431
+#: gettext/gettext-lib-com.php:38 lib/com/form.php:883 lib/script.php:432
 msgid "Select Image"
 msgstr "Choisir l'image"
 
@@ -924,17 +924,17 @@ msgid "Advanced Settings"
 msgstr "Réglages avancés"
 
 #: gettext/gettext-lib-config.php:88 gettext/gettext-lib-config.php:97
-#: lib/messages.php:508
-msgctxt "lib file description"
-msgid "Complementary Add-ons"
-msgstr "Ajouts complémentaires"
-
-#: gettext/gettext-lib-config.php:89 gettext/gettext-lib-config.php:98
 #: lib/messages-info.php:168 lib/messages.php:486 lib/messages.php:495
 #: lib/messages.php:511
 msgctxt "lib file description"
 msgid "Premium Licenses"
 msgstr "Licences Premium"
+
+#: gettext/gettext-lib-config.php:89 gettext/gettext-lib-config.php:98
+#: lib/messages.php:508
+msgctxt "lib file description"
+msgid "Complementary Add-ons"
+msgstr "Ajouts complémentaires"
 
 #: gettext/gettext-lib-config.php:91
 msgctxt "lib file description"
@@ -978,7 +978,7 @@ msgstr "WPSSO Core"
 
 #: gettext/gettext-lib-config.php:102
 msgctxt "plugin description"
-msgid "Rank higher and improve click-through-rates by presenting your content at its best on social sites and in search results - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled."
+msgid "Rank higher and improve click through rates by presenting your content at its best on social sites and in search results - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled."
 msgstr "Classez-vous plus haut et améliorez les taux de clics en présentant votre contenu à son meilleur sur les sites sociaux et dans les résultats de recherche - quelle que soit la manière dont les URL sont partagées, re-partagées, envoyées par message, publiées, intégrées ou explorées."
 
 #: gettext/gettext-lib-config.php:103
@@ -1088,8 +1088,8 @@ msgstr "WPSSO ajuster les éditeurs d'image WP"
 
 #: gettext/gettext-lib-config.php:124
 msgctxt "plugin description"
-msgid "Improves the appearance of WordPress images for better click-through-rates from social and search sites."
-msgstr "Améliore l'apparence des images WordPress pour de meilleurs taux de clics des sites sociaux et de recherche."
+msgid "Improves the appearance of WordPress images for better click through rates from social and search sites."
+msgstr "Améliore l'apparence des images WordPress pour de meilleurs taux de clics sur les sites sociaux et de recherche."
 
 #: gettext/gettext-lib-config.php:125
 msgctxt "plugin name"
@@ -2839,26 +2839,26 @@ msgstr "Favorable à la famille par défaut"
 #: gettext/gettext-lib-pro.php:106 lib/pro/admin/advanced.php:733
 #: lib/std/admin/advanced.php:645
 msgctxt "option label"
-msgid "Default Publisher (Org)"
-msgstr "Éditeur par défaut (org)"
+msgid "Default Publisher Org."
+msgstr "Org. éditeur par défaut"
 
 #: gettext/gettext-lib-pro.php:107 lib/pro/admin/advanced.php:739
 #: lib/std/admin/advanced.php:652
 msgctxt "option label"
-msgid "Default Publisher (Person)"
-msgstr "Éditeur par défaut (personne)"
+msgid "Default Publisher Person"
+msgstr "Personne éditeur par défaut"
 
 #: gettext/gettext-lib-pro.php:108 lib/pro/admin/advanced.php:746
 #: lib/std/admin/advanced.php:659
 msgctxt "option label"
-msgid "Default Service Prov. (Org)"
-msgstr "Fournisseur de service par défaut (org)"
+msgid "Default Service Prov. Org."
+msgstr "Org. fournisseur de service par défaut"
 
 #: gettext/gettext-lib-pro.php:109 lib/pro/admin/advanced.php:752
 #: lib/std/admin/advanced.php:666
 msgctxt "option label"
-msgid "Default Service Prov. (Person)"
-msgstr "Fournisseur de service par défaut (personne)"
+msgid "Default Service Prov. Person"
+msgstr "Personne fournisseur de service par défaut"
 
 #: gettext/gettext-lib-pro.php:110 lib/pro/admin/advanced.php:771
 #: lib/std/admin/advanced.php:689
@@ -2869,26 +2869,26 @@ msgstr "Lieu physique par défaut pour l'événement"
 #: gettext/gettext-lib-pro.php:111 lib/pro/admin/advanced.php:777
 #: lib/std/admin/advanced.php:696
 msgctxt "option label"
-msgid "Default Organizer (Org)"
-msgstr "Organisateur par défaut (org)"
+msgid "Default Organizer Org."
+msgstr "Org. organisateur par défaut"
 
 #: gettext/gettext-lib-pro.php:112 lib/pro/admin/advanced.php:783
 #: lib/std/admin/advanced.php:703
 msgctxt "option label"
-msgid "Default Organizer (Person)"
-msgstr "Organisateur par défaut (personne)"
+msgid "Default Organizer Person"
+msgstr "Personne organisateur par défaut"
 
 #: gettext/gettext-lib-pro.php:113 lib/pro/admin/advanced.php:790
 #: lib/std/admin/advanced.php:710
 msgctxt "option label"
-msgid "Default Performer (Org)"
-msgstr "Interprète par défaut (org)"
+msgid "Default Performer Org."
+msgstr "Org. interprète par défaut"
 
 #: gettext/gettext-lib-pro.php:114 lib/pro/admin/advanced.php:796
 #: lib/std/admin/advanced.php:717
 msgctxt "option label"
-msgid "Default Performer (Person)"
-msgstr "Interprète par défaut (personne)"
+msgid "Default Performer Person"
+msgstr "Personne interprète par défaut"
 
 #: gettext/gettext-lib-pro.php:115 lib/pro/admin/advanced.php:815
 #: lib/std/admin/advanced.php:739
@@ -3074,26 +3074,26 @@ msgstr "URL de licence"
 #: gettext/gettext-lib-pro.php:152 lib/pro/admin/edit.php:286
 #: lib/std/admin/edit.php:299
 msgctxt "option label"
-msgid "Publisher (Org)"
-msgstr "Éditeur (org)"
+msgid "Publisher Org."
+msgstr "Org. éditeur"
 
 #: gettext/gettext-lib-pro.php:153 lib/pro/admin/edit.php:294
 #: lib/std/admin/edit.php:308
 msgctxt "option label"
-msgid "Publisher (Person)"
-msgstr "Éditeur (personne)"
+msgid "Publisher Person"
+msgstr "Personne éditeur"
 
 #: gettext/gettext-lib-pro.php:154 lib/pro/admin/edit.php:304
 #: lib/std/admin/edit.php:317
 msgctxt "option label"
-msgid "Service Prov. (Org)"
-msgstr "Fournisseur de service (org)"
+msgid "Service Prov. Org."
+msgstr "Org. fournisseur de service"
 
 #: gettext/gettext-lib-pro.php:155 lib/pro/admin/edit.php:312
 #: lib/std/admin/edit.php:326
 msgctxt "option label"
-msgid "Service Prov. (Person)"
-msgstr "Fournisseur de service (personne)"
+msgid "Service Prov. Person"
+msgstr "Personne fournisseur de service"
 
 #: gettext/gettext-lib-pro.php:156 lib/pro/admin/edit.php:327
 #: lib/std/admin/edit.php:339
@@ -3709,26 +3709,26 @@ msgstr "Lieu physique pour l'événement"
 #: gettext/gettext-lib-pro.php:266 lib/pro/admin/edit.php:1076
 #: lib/std/admin/edit.php:969
 msgctxt "option label"
-msgid "Organizer (Org)"
-msgstr "Organisateur (org)"
+msgid "Organizer Org."
+msgstr "Org. organisateur"
 
 #: gettext/gettext-lib-pro.php:267 lib/pro/admin/edit.php:1084
 #: lib/std/admin/edit.php:978
 msgctxt "option label"
-msgid "Organizer (Person)"
-msgstr "Organisateur (personne)"
+msgid "Organizer Person"
+msgstr "Personne organisateur"
 
 #: gettext/gettext-lib-pro.php:268 lib/pro/admin/edit.php:1094
 #: lib/std/admin/edit.php:987
 msgctxt "option label"
-msgid "Performer (Org)"
-msgstr "Interprète (org)"
+msgid "Performer Org."
+msgstr "Org. interprète"
 
 #: gettext/gettext-lib-pro.php:269 lib/pro/admin/edit.php:1102
 #: lib/std/admin/edit.php:996
 msgctxt "option label"
-msgid "Performer (Person)"
-msgstr "Interprète (personne)"
+msgid "Performer Person"
+msgstr "Personne interprète"
 
 #: gettext/gettext-lib-pro.php:270 lib/pro/admin/edit.php:1112
 #: lib/std/admin/edit.php:1005
@@ -4634,12 +4634,12 @@ msgid "If another SEO plugin or your theme templates are not adding the <code>%1
 msgstr "Si une autre extension SEO ou vos modèles de thème n'ajoutent pas la balise HTML <code>%1$s</code> à vos pages Web, vous pouvez réactiver cette option sous l'onglet %2$s."
 
 #: lib/admin-head.php:314
-msgid "Note that WooCommerce offers incomplete Schema markup for Google Rich Results by default."
-msgstr "Notez que WooCommerce propose par défaut un balisage de Schéma incomplet pour les résultats enrichis Google."
+msgid "Note that WooCommerce by default provides incomplete Schema markup for Google Rich Results."
+msgstr "Notez que WooCommerce fournit par défaut un balisage de schéma incomplet pour les résultats riches de Google."
 
 #: lib/admin-head.php:316
-msgid "The %1$s plugin provides a perfect solution by offering complete product meta tags for Facebook, Pinterest, and complete Schema product markup for Google Rich Results - including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more."
-msgstr "L'extension %1$s fournit une solution parfaite en offrant des balises méta de produit complètes pour Facebook, Pinterest, et un balisage de produit de Schéma complet pour les résultats enrichis Google - y compris des images de produit supplémentaires, des variantes de produit, des informations additionnelles sur le produit (marque, couleur, état, EAN, dimensions, GTIN-8/12/13/14, ISBN, matériel, MPN, taille, SKU, volume, poids, etc.), critiques de produits, évaluations de produits, dates de début / fin de vente, prix de vente, prix hors taxes, prix avec TVA, tarifs d'expédition, délais d'expédition et bien plus encore."
+msgid "%1$s offers a better solution by providing complete product meta tags for Facebook, Pinterest, and complete Schema product markup for Google Rich Results - including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more."
+msgstr "%1$s offre une meilleure solution en fournissant des balises méta de produit complètes pour Facebook, Pinterest, et un balisage de produit de Schéma complet pour les résultats enrichis Google - y compris des images de produit supplémentaires, des variantes de produit, des informations additionnelles sur le produit (marque, couleur, état, EAN, dimensions, GTIN-8/12/13/14, ISBN, matériel, MPN, taille, SKU, volume, poids, etc.), critiques de produits, évaluations de produits, dates de début / fin de vente, prix de vente, prix hors taxes, prix avec TVA, tarifs d'expédition, délais d'expédition et bien plus encore."
 
 #: lib/admin-head.php:338 lib/admin-head.php:376
 msgid "(required for WooCommerce integration)"
@@ -4860,7 +4860,7 @@ msgstr "Les réglages réseau ont été sauvegardés."
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr "La validation du jeton nonce pour l'action %1$s \"%2$s\" a échoué."
 
-#: lib/admin.php:1145 lib/options.php:943 lib/register.php:155
+#: lib/admin.php:1145 lib/options.php:948 lib/register.php:155
 msgid "A background task will begin shortly to clear all caches."
 msgstr "Une tâche en arrière-plan va commencer sous peu pour vider tous les caches."
 
@@ -5129,7 +5129,7 @@ msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr "URL logo de organisation"
 
-#: lib/admin.php:2841 lib/options.php:1043
+#: lib/admin.php:2841 lib/options.php:1048
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr "URL bannière d'organisation"
@@ -5510,8 +5510,8 @@ msgid "Its settings and features have been integrated into the %1$s plugin."
 msgstr "Ses réglages et fonctionnalités ont été intégrés dans l'extension %1$s."
 
 #: lib/conflict.php:84
-msgid "<a href=\"%1$s\">Please deactivate the %2$s add-on immediately</a>."
-msgstr "<a href=\"%1$s\">Veuillez désactiver l'ajout %2$s immédiatement</a>."
+msgid "<a href=\"%1$s\">Please deactivate and delete the %2$s add-on</a>."
+msgstr "<a href=\"%1$s\">Veuillez désactiver et supprimer l'ajout %2$s</a>."
 
 #: lib/conflict.php:118
 msgid "Your database is configured for a \"%1$s\" size of %2$d bytes, which is less than the recommended minimum value of %3$d bytes (a common default value is %4$d bytes)."
@@ -5582,7 +5582,7 @@ msgctxt "option label"
 msgid "Preferred Cropping"
 msgstr "Recadrage préféré"
 
-#: lib/edit.php:126 lib/script.php:378
+#: lib/edit.php:126 lib/script.php:379
 msgctxt "option label"
 msgid "Schema Type"
 msgstr "Type de Schéma"
@@ -7915,7 +7915,7 @@ msgid "Purchase %s Add-on"
 msgstr "Acheter l'ajout %s"
 
 #: lib/messages.php:292
-msgid "Please note that a correctly sized image improves click-through-rates by presenting your content at its best on social sites and in search results."
+msgid "Please note that a correctly sized image improves click through rates by presenting your content at its best on social sites and in search results."
 msgstr "Notez qu'une image correctement dimensionnée améliore les taux de clics en présentant votre contenu à son meilleur sur les sites sociaux et dans les résultats de recherche."
 
 #: lib/messages.php:296
@@ -8393,75 +8393,75 @@ msgstr "Ces options ont été réinitialisées à leurs valeurs par défaut."
 msgid "The Facebook App ID must be numeric and 32 characters or less in length - the value of \"%s\" is not valid."
 msgstr "L'ID d'application Facebook doit être numérique et 32 ​​caractères ou moins de longueur - la valeur \"%s\" n'est pas valide."
 
-#: lib/options.php:942
+#: lib/options.php:947
 msgid "Plugin settings have been upgraded and saved."
 msgstr "Les réglages ont été mis à jour et sauvegardés."
 
-#: lib/options.php:1072
+#: lib/options.php:1077
 msgid "The %s image dimensions cannot be determined."
 msgstr "Les dimensions de l'image %s ne peuvent pas être déterminées."
 
-#: lib/options.php:1075
+#: lib/options.php:1080
 msgid "Please make sure this site can access %s using the PHP getimagesize() function."
 msgstr "Assurez-vous que ce site peut accéder à %s en utilisant la fonction PHP getimagesize()."
 
-#: lib/options.php:1080
+#: lib/options.php:1085
 msgid "The %1$s image dimensions are %2$s and must be exactly %3$s."
 msgstr "Les dimensions de l'image %1$s sont %2$s et doivent être exactement %3$s."
 
-#: lib/options.php:1083
+#: lib/options.php:1088
 msgid "Please correct the %s banner image."
 msgstr "Veuillez corriger l'image bannière %s."
 
-#: lib/options.php:1117
+#: lib/options.php:1122
 msgid "The value of option \"%s\" must be alpha-numeric - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être alphanumérique - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1118
+#: lib/options.php:1123
 msgid "The value of option \"%s\" must be blank or numeric - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être vide ou numérique - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1119
+#: lib/options.php:1124
 msgid "The value of option \"%s\" must be a CSS color code - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être un code de couleur CSS - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1120
+#: lib/options.php:1125
 msgid "The value of option \"%s\" must be a comma-delimited list of URL(s) - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être une liste d'URLs délimitée par des virgules - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1121
+#: lib/options.php:1126
 msgid "The value of option \"%s\" must be a yyyy-mm-dd date - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être une date yyyy-mm-dd - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1122
+#: lib/options.php:1127
 msgid "The value of option \"%s\" must be HTML code - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être du code HTML - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1123
+#: lib/options.php:1128
 msgid "The value of option \"%s\" must be an image ID - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être un ID d'image - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1124
+#: lib/options.php:1129
 msgid "The value of option \"%s\" must be a valid image URL - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être une URL d'image valide - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1125
+#: lib/options.php:1130
 msgid "The value of option \"%s\" cannot be an empty string - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" ne peut pas être un chaine de caractère vide - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1126
+#: lib/options.php:1131
 msgid "The value of option \"%s\" must be numeric - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être numérique - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1127
+#: lib/options.php:1132
 msgid "The value of option \"%1$s\" must be equal to or greather than %2$s - resetting this option to its default value."
 msgstr "La valeur de l'option \"%1$s\" doit être égal ou supérieur à %2$s - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1128
+#: lib/options.php:1133
 msgid "The value of option \"%s\" must be a hh:mm time - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être une heure hh:mm - l'option est remise à sa valeur par défaut."
 
-#: lib/options.php:1129
+#: lib/options.php:1134
 msgid "The value of option \"%s\" must be a valid URL - resetting this option to its default value."
 msgstr "La valeur de l'option \"%s\" doit être une URL valide - l'option est remise à sa valeur par défaut."
 
@@ -8768,35 +8768,35 @@ msgctxt "Taxonomy description"
 msgid "Tags for the page post type."
 msgstr "Étiquettes pour le type de publication de page."
 
-#: lib/schema-single.php:1536
+#: lib/schema-single.php:1542
 msgid "adding schema organization"
 msgstr "ajout de schéma d'organisation"
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1600
+#: lib/schema-single.php:1606
 msgid "An organization logo image is missing and required for the \"%1$s\" organization Schema %2$s markup."
 msgstr "Une image de logo d'organisation est manquante et requise pour le balisage de Schéma %2$s de l'organisation \"%1$s\"."
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1603
+#: lib/schema-single.php:1609
 msgid "An organization banner image (600x60px) is missing and required for the \"%1$s\" organization Schema %2$s markup."
 msgstr "Une image de bannière d'organisation (600x60px) est manquante et requise pour le balisage de Schéma %2$s de l'organisation \"%1$s\"."
 
 #. translators: %1$s is the organization name, %2$s is 'site' (translated) or 'ID #'.
-#: lib/schema-single.php:1606
+#: lib/schema-single.php:1612
 msgid "Please enter the missing image URL in the \"%1$s\" %2$s organization settings."
 msgstr "Veuillez fournir l'URL de l'image manquante dans les paramètres de l'organisation %2$s \"%1$s\"."
 
 #. translators: site, as in the "site organization settings".
-#: lib/schema-single.php:1628
+#: lib/schema-single.php:1634
 msgid "site"
 msgstr "site"
 
-#: lib/schema-single.php:1809
+#: lib/schema-single.php:1815
 msgid "adding schema person"
 msgstr "ajout de schéma de personne"
 
-#: lib/schema-single.php:2012
+#: lib/schema-single.php:2018
 msgid "adding schema place"
 msgstr "ajout de schéma d'endroit"
 
@@ -8808,39 +8808,39 @@ msgstr "ajout de schéma"
 msgid "adding schema %s #%d image"
 msgstr "ajout d'image #%d pour Schéma %s"
 
-#: lib/script.php:385
+#: lib/script.php:386
 msgid "No %s notifications."
 msgstr "Aucune notification %s."
 
-#: lib/script.php:389
+#: lib/script.php:390
 msgid "Copy notifications to clipboard."
 msgstr "Copier les notifications dans le presse-papiers."
 
-#: lib/script.php:412
+#: lib/script.php:413
 msgid "Copied to clipboard."
 msgstr "Copié au presse-papiers."
 
-#: lib/script.php:413
+#: lib/script.php:414
 msgid "Value linked to {0} option"
 msgstr "Valeur liée à l'option {0}"
 
-#: lib/script.php:414
+#: lib/script.php:415
 msgid "{0} of {1} characters minimum"
 msgstr "{0} de {1} caractères minimum"
 
-#: lib/script.php:415
+#: lib/script.php:416
 msgid "{0} of {1} characters required"
 msgstr "{0} de {1} caractères requis"
 
-#: lib/script.php:416
+#: lib/script.php:417
 msgid "{0} of {1} characters maximum"
 msgstr "{0} de {1} caractères maximum"
 
-#: lib/script.php:417
+#: lib/script.php:418
 msgid "{0} characters"
 msgstr "{0} caractères"
 
-#: lib/script.php:419
+#: lib/script.php:420
 msgid "There are {0} important error messages under the %s notification icon."
 msgstr "Il y a {0} messages d'erreur importants sous l'icône de notification %s."
 
@@ -9424,39 +9424,39 @@ msgstr "Fonction WordPress lente détectée - %1$s a pris %2$.3f secs pour obten
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr "Privilèges insuffisants pour enregistrer les réglages pour l'ID du terme %1$s."
 
-#: lib/twittercard.php:198
+#: lib/twittercard.php:203
 msgctxt "metabox title"
 msgid "Twitter App Card"
 msgstr "Carte app de Twitter"
 
-#: lib/twittercard.php:206
+#: lib/twittercard.php:211
 msgctxt "metabox title"
 msgid "Twitter Player Card"
 msgstr "Carte joueur de Twitter"
 
-#: lib/twittercard.php:214
+#: lib/twittercard.php:219
 msgctxt "metabox title"
 msgid "Twitter Summary Card"
 msgstr "Carte sommaire de Twitter"
 
-#: lib/twittercard.php:222
+#: lib/twittercard.php:227
 msgctxt "metabox title"
 msgid "Twitter Large Image Summary Card"
 msgstr "Carte Twitter sommaire grande image"
 
-#: lib/twittercard.php:644
+#: lib/twittercard.php:649
 msgid "Written by"
 msgstr "Écrit par"
 
-#: lib/twittercard.php:653
+#: lib/twittercard.php:658
 msgid "Est. reading time"
 msgstr "Temps de lecture est."
 
-#: lib/twittercard.php:664
+#: lib/twittercard.php:669
 msgid "Price"
 msgstr "Prix"
 
-#: lib/twittercard.php:682
+#: lib/twittercard.php:687
 msgid "Availability"
 msgstr "Disponibilité"
 
@@ -9962,7 +9962,7 @@ msgid "https://wpsso.com/extend/plugins/wpsso/"
 msgstr "https://wpsso.com/extend/plugins/wpsso/"
 
 #. Description of the plugin/theme
-msgid "Rank higher and improve click-through-rates by presenting your content at its best on social sites and in search results - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled."
+msgid "Rank higher and improve click through rates by presenting your content at its best on social sites and in search results - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled."
 msgstr "Classez-vous plus haut et améliorez les taux de clics en présentant votre contenu à son meilleur sur les sites sociaux et dans les résultats de recherche - quelle que soit la manière dont les URL sont partagées, re-partagées, envoyées par message, publiées, intégrées ou explorées."
 
 #. Author of the plugin/theme
