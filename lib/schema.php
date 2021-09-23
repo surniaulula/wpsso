@@ -133,8 +133,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/**
 			 * Potential Action (SearchAction, OrderAction, etc.)
 			 *
-			 * The 'wpsso_json_prop_https_schema_org_potentialaction' filter may already be applied by the WPSSO JSON
-			 * add-on, so do not re-apply it here.
+			 * The 'wpsso_json_prop_https_schema_org_potentialaction' filter may already be applied by the JSON data
+			 * filters, so do not re-apply it here.
 			 *
 			 * Hook the 'wpsso_json_ld_search_url' filter and return false if you wish to disable / skip the Potential
 			 * Action property.
@@ -178,8 +178,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 				/**
-				 * Maybe get a different organization ID from the "Select an Organization" option (provided by the
-				 * WPSSO JSON add-on).
+				 * Maybe get a different organization ID from the "Select an Organization" option.
 				 */
 				$org_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_organization_id', $filter_opts = true, $pad_opts = true );
 

@@ -271,7 +271,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 		}
 
 		/**
-		 * Suggest activating the WPSSO JSON add-on for better Schema markup.
+		 * Suggest purchasing the WPSSO Core Premium plugin and activating WooCommerce related add-ons.
 		 *
 		 * These private notice functions should return the number of notices shown.
 		 */
@@ -383,7 +383,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 						$notice_msg = sprintf( __( 'Product shipping features are enabled in WooCommerce, but the %s add-on is not active.', 'wpsso' ), $wcsdt_name_transl ) . ' ';
 
-						$notice_msg .= __( 'Adding shipping details to your Schema Product markup is especially important if you offer free or low-cost shipping options as this will make your products more appealing in Google search results.', 'wpsso' ) . ' ';
+						$notice_msg .= __( 'Adding shipping details to your Schema Product markup is important if you offer free or low-cost shipping options, as this will make your products more appealing in Google search results.', 'wpsso' ) . ' ';
 
 						$notice_msg .= '<ul><li>' . implode( $glue = '</li> <li>', $action_links ) . '</li></ul>' . ' ';
 

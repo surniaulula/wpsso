@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 9.0.0-rc.1\n"
+"Project-Id-Version: WPSSO Core 9.0.0-rc.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -54,20 +54,15 @@ msgstr ""
 
 #: gettext/gettext-html-setup.php:14
 msgctxt "html header"
-msgid "Frequently Asked Questions"
+msgid "BuddyPress Integration"
 msgstr ""
 
 #: gettext/gettext-html-setup.php:15
 msgctxt "html header"
-msgid "BuddyPress Integration"
-msgstr ""
-
-#: gettext/gettext-html-setup.php:16
-msgctxt "html header"
 msgid "WooCommerce Integration"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:17
+#: gettext/gettext-html-setup.php:16
 msgctxt "html paragraph"
 msgid ""
 "Taking the time to read this guide and review the <em><strong>SSO &gt; "
@@ -75,7 +70,7 @@ msgid ""
 "rankings in Google search results."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:18
+#: gettext/gettext-html-setup.php:17
 msgctxt "html paragraph"
 msgid ""
 "<strong>If you use the WooCommerce plugin, don't forget to check the <a href="
@@ -83,7 +78,7 @@ msgid ""
 "a> for additional integration notes specific to WooCommerce.</strong>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:19
+#: gettext/gettext-html-setup.php:18
 msgctxt "html paragraph"
 msgid ""
 "If you haven't already done so, create a Facebook Page and Twitter account "
@@ -95,12 +90,12 @@ msgid ""
 "highlight your business / website social pages)."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:20
+#: gettext/gettext-html-setup.php:19
 msgctxt "html paragraph"
 msgid "<strong>Related information:</strong>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:21
+#: gettext/gettext-html-setup.php:20
 msgctxt "html paragraph"
 msgid ""
 "Ask your content authors to enter their Facebook and Twitter contact "
@@ -110,7 +105,7 @@ msgid ""
 "profile</em>."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:22
+#: gettext/gettext-html-setup.php:21
 msgctxt "html paragraph"
 msgid ""
 "Review the website description on the <em><strong>SSO &gt; Essential "
@@ -120,7 +115,7 @@ msgid ""
 "image, or an image available in their content."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:23
+#: gettext/gettext-html-setup.php:22
 msgctxt "html paragraph"
 msgid ""
 "<strong>Do not forget to submit a few example posts / pages to the "
@@ -129,7 +124,7 @@ msgid ""
 "post / page to their validation tool."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:24
+#: gettext/gettext-html-setup.php:23
 msgctxt "html paragraph"
 msgid ""
 "WPSSO Core and its complementary add-ons attempt to keep notifications to a "
@@ -140,7 +135,7 @@ msgid ""
 "system in the admin toolbar."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:25
+#: gettext/gettext-html-setup.php:24
 msgctxt "html paragraph"
 msgid ""
 "Look for the SSO notification icon in the admin toolbar - by default, it "
@@ -150,7 +145,7 @@ msgid ""
 "content shown in the current webpage."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:26
+#: gettext/gettext-html-setup.php:25
 msgctxt "html paragraph"
 msgid ""
 "Schema (aka \"Schema.org\") is a collaborative, community lead standard for "
@@ -158,63 +153,57 @@ msgid ""
 "is associated with a set of properties. The types are arranged in a "
 "hierarchy and <a href=\"https://schema.org/docs/schemas.html\">the current "
 "Schema vocabulary consists of 779 types and 1390 properties</a>. The Schema "
-"vocabulary can be used with many different encodings, including meta tags, "
-"RDFa, Microdata, and JSON-LD. WPSSO Core adds Schema markup to webpages "
-"using meta tags for Pinterest and other social crawlers. The <a href="
-"\"https://wordpress.org/plugins/wpsso-schema-json-ld/\">WPSSO Schema JSON-LD "
-"Markup add-on</a> is required to provide additional markup using JSON-LD "
-"encoding for Google and other search engines."
+"vocabulary can be used with many different encodings, including HTML meta "
+"tags, RDFa, Microdata, and JSON-LD. WPSSO Core adds Schema markup to "
+"webpages using the latest (and preferred) JSON-LD encoding format for Google "
+"and other search engines."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:27
+#: gettext/gettext-html-setup.php:26
 msgctxt "html paragraph"
 msgid ""
 "<a href=\"https://developers.google.com/search/docs/guides/intro-structured-"
 "data\">Google Rich Results are a set of requirements for a small selection "
 "of Schema types</a>, which includes specific images dimensions, a limited "
-"set of values for some Schema properties, limited Schema types for some "
-"property relations, and more. Google Rich Results require several layers of "
-"related markup (aka a multi-dimensional arrays) that must be expressed using "
-"JSON-LD in the webpage head section (preferred by Google), or with RDFa / "
-"Microdata markup in theme templates (deprecated standards)."
+"set of values for some Schema properties, and limited Schema types for some "
+"property relations. Google Rich Results require several layers of related "
+"markup (aka a multi-dimensional arrays) that must be expressed using JSON-LD "
+"in the webpage head section (preferred by Google), or with RDFa / Microdata "
+"markup in theme templates (deprecated standard)."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:27
+msgctxt "html paragraph"
+msgid ""
+"If your theme templates include incomplete or incorrect RDFa / Microdata "
+"markup (a common problem), you should enable the <a href=\"https://wordpress."
+"org/plugins/wpsso-strip-schema-microdata/\">WPSSO Strip Schema Microdata add-"
+"on</a> to also remove the incomplete or incorrect Microdata markup. Schema "
+"markup provided by WPSSO Core will include a '#sso/' value in the Schema "
+"\"@id\" property, making it easy to tell which Schema markup is provided by "
+"WPSSO Core, and which is not."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:28
 msgctxt "html paragraph"
 msgid ""
-"If your theme templates do not provide RDFa / Microdata markup for Google "
-"Rich Results, you should enable the <a href=\"https://wordpress.org/plugins/"
-"wpsso-schema-json-ld/\">WPSSO Schema JSON-LD Markup add-on</a>. If your "
-"theme templates include incomplete or incorrect RDFa / Microdata markup (a "
-"common problem), you should enable both the WPSSO Schema JSON-LD Markup add-"
-"on and the <a href=\"https://wordpress.org/plugins/wpsso-strip-schema-"
-"microdata/\">WPSSO Strip Schema Microdata add-on</a> to also remove the "
-"incomplete or incorrect Microdata markup."
+"Submit the home page URL, along with a post, page, and archive page URL to "
+"the <a href=\"https://validator.w3.org/\">W3C Markup Validator</a> to verify "
+"the HTML of your theme templates. Social and search engine crawlers expect "
+"properly formatted HTML that conforms to current HTML / XHTML standards. If "
+"your webpages contain serious HTML markup errors, social and search crawlers "
+"may be unable to read your meta tags and Schema markup. You should report "
+"any template HTML markup errors to your theme author."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:29
 msgctxt "html paragraph"
 msgid ""
-"<strong>Not sure if your theme templates already provide markup for Google "
-"rich results?</strong> Submit a post or page URL from your website to the <a "
-"href=\"https://search.google.com/test/rich-results\">Google Rich Results "
-"Test Tool</a> or the <a href=\"https://validator.schema.org/\">Schema Markup "
-"Validator</a>, and compare the results before / after enabling the <a href="
-"\"https://wordpress.org/plugins/wpsso-schema-json-ld/\">WPSSO Schema JSON-LD "
-"Markup add-on</a>. Between checks, don't forget to clear the cache of any "
-"caching plugin or service you may be using, along with clearing the WPSSO "
-"cache in the <em><strong>SSO &gt; Tools and Actions</strong></em> settings "
-"page. ;-)"
-msgstr ""
-
-#: gettext/gettext-html-setup.php:30
-msgctxt "html paragraph"
-msgid ""
-"Submit a few sample posts, pages, etc. to the <a href=\"https://developers."
-"facebook.com/tools/debug/\">Facebook Sharing Debugger</a> to verify your "
-"Open Graph meta tags. A link to the Facebook debugger is available under the "
-"Validate tab in the Document SSO metabox (on post, term, and user editing "
-"pages). Submitting a URL to the Facebook debugger can also be used to clear "
+"Submit a few post and page URLs to the <a href=\"https://developers.facebook."
+"com/tools/debug/\">Facebook Sharing Debugger</a> to verify your Open Graph "
+"meta tags. A link to the Facebook debugger is available under the Validate "
+"tab in the Document SSO metabox (on post, term, and user editing pages). "
+"Submitting a URL to the Facebook debugger can also be used to clear "
 "Facebook's cache (after clicking the \"Fetch new scrape information\" "
 "button). If you're validating older posts / pages, pre-dating the activation "
 "of WPSSO Core, note that <a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/"
@@ -223,54 +212,35 @@ msgid ""
 "scrape information."
 msgstr ""
 
+#: gettext/gettext-html-setup.php:30
+msgctxt "html paragraph"
+msgid ""
+"Submit an example post and/or page to the <a href=\"http://developers."
+"pinterest.com/rich_pins/validator/\">Pinterest Rich Pins Validator</a>. Note "
+"that the Pinterest validator recognizes only known Rich Pin types (article, "
+"recipe, product, etc.) - your home page and WordPress archive pages are "
+"generally not valid Rich Pin types. If you haven't already requested Rich "
+"Pin approval from Pinterest for your website, you can submit a request when "
+"validating your first example post or page."
+msgstr ""
+
 #: gettext/gettext-html-setup.php:31
 msgctxt "html paragraph"
 msgid ""
-"Submit an example post or page to the <a href=\"http://developers.pinterest."
-"com/rich_pins/validator/\">Pinterest Rich Pins Validator</a>. Note that the "
-"Pinterest validator recognizes only known Rich Pin types (article, recipe, "
-"product, etc.) - your home page and WordPress archive pages are generally "
-"not valid Rich Pin types. If you haven't already requested Rich Pin approval "
-"from Pinterest for your website, you can submit a request when validating "
-"your first example post or page."
+"Submit the home page URL, along with a post, page, and archive page URL to "
+"the <a href=\"https://search.google.com/test/rich-results\">Google Rich "
+"Results Test Tool</a> or the <a href=\"https://validator.schema.org/"
+"\">Schema Markup Validator</a>. If any information is missing from the "
+"Schema markup, use the Document SSO metabox in the WordPress editing page to "
+"complete the missing information."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:32
 msgctxt "html paragraph"
-msgid ""
-"If you have activated the <a href=\"https://wordpress.org/plugins/wpsso-"
-"schema-json-ld/\">WPSSO Schema JSON-LD Markup add-on</a>, you can also "
-"submit URLs to the <a href=\"https://search.google.com/test/rich-results"
-"\">Google Rich Results Test Tool</a> or the <a href=\"https://validator."
-"schema.org/\">Schema Markup Validator</a>. WPSSO Core includes all the meta "
-"tags that social sites need, along with Schema markup for Google's Knowledge "
-"Graph in the site home page, but to create Schema markup for your post / "
-"page content, you must activate the WPSSO Schema JSON-LD Markup add-on. Some "
-"Schema types may also require additional organization and/or location "
-"information from the <a href=\"https://wordpress.org/plugins/wpsso-"
-"organization/\">WPSSO Organization Markup add-on</a> and/or <a href="
-"\"https://wordpress.org/plugins/wpsso-plm/\">WPSSO Place and Local SEO "
-"Markup add-on</a>."
-msgstr ""
-
-#: gettext/gettext-html-setup.php:33
-msgctxt "html paragraph"
-msgid ""
-"Submit a few index / archive webpages and post / page URLs to the <a href="
-"\"https://validator.w3.org/\">W3C Markup Validator</a> to verify the HTML of "
-"your theme templates. Social and search engine crawlers expect properly "
-"formatted HTML that conforms to current HTML / XHTML standards. If your "
-"webpages contain serious HTML markup errors, social and search crawlers may "
-"be unable to read your meta tags and Schema markup. You should report any "
-"template HTML markup errors to your theme author."
-msgstr ""
-
-#: gettext/gettext-html-setup.php:34
-msgctxt "html paragraph"
 msgid "<strong>Validators:</strong>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:35
+#: gettext/gettext-html-setup.php:33
 msgctxt "html paragraph"
 msgid ""
 "On most WordPress admin pages you'll find a \"Screen Options\" drop-down tab "
@@ -282,7 +252,7 @@ msgid ""
 "<em><strong>SSO &gt; Advanced Settings &gt; Interface</strong></em> tab."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:36
+#: gettext/gettext-html-setup.php:34
 msgctxt "html paragraph"
 msgid ""
 "When editing a post, page, category, tag, user profile, etc., you'll find a "
@@ -290,38 +260,14 @@ msgid ""
 "texts, images, and videos. The Document SSO metabox shows a different set of "
 "options based on the content type selected (ie. Schema type or Open Graph "
 "type), allowing you to customize the details of articles, events, e-Commerce "
-"products, recipes, reviews, and more. The \"Preview\" tab shows how this "
-"webpage might look when shared on Facebook, the \"Head Markup\" tab shows a "
-"complete list of meta tags and Schema markup created by the WPSSO Core "
-"plugin and its add-ons, and the \"Validate\" tab allows you to submit the "
-"current webpage URL to several test and validation tools (mentioned above)."
+"products, recipes, reviews, and more. The \"Social Preview\" tab shows how "
+"this webpage might look when shared on Facebook, the \"Head Markup\" tab "
+"shows a complete list of meta tags and Schema markup created by the WPSSO "
+"Core plugin, and the \"Validators\" tab allows you to submit the current "
+"webpage URL to several test and validation tools (mentioned above)."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:37
-msgctxt "html paragraph"
-msgid ""
-"WPSSO Core is a powerful application and social framework that can read "
-"content, image, and video information from a variety of sources, including "
-"data from third-party plugins and services. It's worth noting the most "
-"common questions and issues below, along with their solutions:"
-msgstr ""
-
-#: gettext/gettext-html-setup.php:38
-msgctxt "html paragraph"
-msgid ""
-"More <a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/\">Frequently Asked "
-"Questions</a>..."
-msgstr ""
-
-#: gettext/gettext-html-setup.php:39
-msgctxt "html paragraph"
-msgid ""
-"Comments and suggestions to improve the plugin are always welcome - please "
-"<a href=\"https://surniaulula.com/support/create_ticket/\">open a ticket if "
-"you have any ideas or comments you would like to share with us</a>."
-msgstr ""
-
-#: gettext/gettext-html-setup.php:40
+#: gettext/gettext-html-setup.php:35
 msgctxt "html paragraph"
 msgid ""
 "BuddyPress was not originally created as a WordPress plugin, and "
@@ -332,7 +278,7 @@ msgid ""
 "issues."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:41
+#: gettext/gettext-html-setup.php:36
 msgctxt "html paragraph"
 msgid ""
 "The <a href=\"https://wpsso.com/docs/plugins/wpsso/installation/integration/"
@@ -342,7 +288,7 @@ msgid ""
 "size, etc."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:42
+#: gettext/gettext-html-setup.php:37
 msgctxt "html paragraph"
 msgid ""
 "<strong>Note that WooCommerce by default provides incomplete Schema markup "
@@ -357,89 +303,89 @@ msgid ""
 "much, much more."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:43
+#: gettext/gettext-html-setup.php:38
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://www.facebook.com/business/learn/set-up-facebook-page"
 "\">Setup a Facebook Business Page</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:44
+#: gettext/gettext-html-setup.php:39
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://business.twitter.com/en/basics/create-a-twitter-business-"
 "profile.html\">Create a Twitter Business Profile</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:45
+#: gettext/gettext-html-setup.php:40
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://business.google.com/create\">Add or claim your business on "
 "Google My Business</a> (recommended)"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:46
+#: gettext/gettext-html-setup.php:41
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://www.pinterest.com/business/create/\">Create a Pinterest "
 "Business Account</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:47
+#: gettext/gettext-html-setup.php:42
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://developers.facebook.com/tools/debug/\">Facebook Sharing "
 "Debugger</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:48
+#: gettext/gettext-html-setup.php:43
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://business.facebook.com/ads/microdata/debug\">Facebook "
 "Microdata Debug Tool</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:49
+#: gettext/gettext-html-setup.php:44
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://search.google.com/test/rich-results\">Google Rich Results "
 "Test</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:50
+#: gettext/gettext-html-setup.php:45
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://www.linkedin.com/post-inspector/inspect/\">LinkedIn Post "
 "Inspector</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:51
+#: gettext/gettext-html-setup.php:46
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://developers.pinterest.com/tools/url-debugger/\">Pinterest "
 "Rich Pins Validator</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:52
+#: gettext/gettext-html-setup.php:47
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://cards-dev.twitter.com/validator\">Twitter Card Validator</"
 "a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:53
+#: gettext/gettext-html-setup.php:48
 msgctxt "html list item"
 msgid "<a href=\"https://validator.schema.org/\">Schema Markup Validator</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:54
+#: gettext/gettext-html-setup.php:49
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://validator.w3.org/\">W3C Markup Validator</a> - recommended "
 "to check your theme templates for HTML markup issues."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:55
+#: gettext/gettext-html-setup.php:50
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://developers.google.com/speed/pagespeed/insights/\">Google "
@@ -447,7 +393,7 @@ msgid ""
 "checks (results influence SEO ranking)."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:56
+#: gettext/gettext-html-setup.php:51
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://support.google.com/webmasters/answer/7451184\">Google's "
@@ -455,63 +401,18 @@ msgid ""
 "understand Google SEO ranking factors."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:57
+#: gettext/gettext-html-setup.php:52
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://www.webpagetest.org/\">Webpage Performance Test with "
 "Waterfall</a> - recommended to check and diagnose basic performance issues."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:58
+#: gettext/gettext-html-setup.php:53
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://www.ssllabs.com/ssltest/\">SSL Server Test by SSL Labs</a> "
 "- recommended test for any site using https."
-msgstr ""
-
-#: gettext/gettext-html-setup.php:59
-msgctxt "html list item"
-msgid ""
-"<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-do-i-fix-google-"
-"structured-data-hatom-errors/\">How do I fix Google Structured Data &gt; "
-"hatom errors?</a>"
-msgstr ""
-
-#: gettext/gettext-html-setup.php:60
-msgctxt "html list item"
-msgid ""
-"<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-"
-"detect-select-images/\">How does WPSSO Core find and select images?</a>"
-msgstr ""
-
-#: gettext/gettext-html-setup.php:61
-msgctxt "html list item"
-msgid ""
-"<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/how-does-wpsso-find-"
-"detect-select-videos/\">How does WPSSO Core find and select videos?</a>"
-msgstr ""
-
-#: gettext/gettext-html-setup.php:62
-msgctxt "html list item"
-msgid ""
-"<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-are-some-html-"
-"elements-missing-misaligned-different/\">Why are some HTML elements missing "
-"or misaligned?</a>"
-msgstr ""
-
-#: gettext/gettext-html-setup.php:63
-msgctxt "html list item"
-msgid ""
-"<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-"
-"the-wrong-image-text/\">Why does Facebook show the wrong image or text?</a>"
-msgstr ""
-
-#: gettext/gettext-html-setup.php:64
-msgctxt "html list item"
-msgid ""
-"<a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-"
-"small-images-to-the-media-library/\">Why shouldn't I upload small images to "
-"the media library?</a>"
 msgstr ""
 
 #: gettext/gettext-lib-abstracts-com.php:6 lib/abstracts/com/add-on.php:179
@@ -4987,9 +4888,9 @@ msgstr ""
 
 #: lib/admin-head.php:386
 msgid ""
-"Adding shipping details to your Schema Product markup is especially "
-"important if you offer free or low-cost shipping options as this will make "
-"your products more appealing in Google search results."
+"Adding shipping details to your Schema Product markup is important if you "
+"offer free or low-cost shipping options, as this will make your products "
+"more appealing in Google search results."
 msgstr ""
 
 #. translators: %1$s is a URL, %2$s is the plugin name, and %3$s is a pre-translated comment.
@@ -9758,7 +9659,7 @@ msgid ""
 "post ID %3$d (%4$s)."
 msgstr ""
 
-#: lib/post.php:743 lib/post.php:1339 lib/schema.php:3417 lib/term.php:575
+#: lib/post.php:743 lib/post.php:1339 lib/schema.php:3416 lib/term.php:575
 #: lib/user.php:572
 msgid "checking meta tags"
 msgstr ""
@@ -10051,11 +9952,11 @@ msgstr ""
 msgid "adding schema place"
 msgstr ""
 
-#: lib/schema.php:686
+#: lib/schema.php:685
 msgid "adding schema"
 msgstr ""
 
-#: lib/schema.php:1895
+#: lib/schema.php:1894
 msgid "adding schema %s #%d image"
 msgstr ""
 

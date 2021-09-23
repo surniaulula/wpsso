@@ -137,9 +137,9 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 		}
 
 		/**
-		 * The output from this method is provided to the WPSSO JSON add-on, so be careful when removing array elements. If
-		 * you need to remove array elements after the Schema JSON-LD markup has been created, but before the meta tags
-		 * have been generated, use the WpssoOpenGraph->sanitize_mt_array() method.
+		 * The output from this method is provided to the JSON data filters, so be careful when removing any array
+		 * elements. If you need to remove array elements after the Schema JSON-LD markup has been created, but before the
+		 * meta tags have been generated, use the WpssoOpenGraph->sanitize_mt_array() method.
 		 */
 		public function filter_og_data_https_ogp_me_ns_article( array $mt_og, array $mod ) {
 
@@ -152,9 +152,9 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 		}
 
 		/**
-		 * The output from this method is provided to the WPSSO JSON add-on, so be careful when removing array elements. If
-		 * you need to remove array elements after the Schema JSON-LD markup has been created, but before the meta tags
-		 * have been generated, use the WpssoOpenGraph->sanitize_mt_array() method.
+		 * The output from this method is provided to the JSON data filters, so be careful when removing any array
+		 * elements. If you need to remove array elements after the Schema JSON-LD markup has been created, but before the
+		 * meta tags have been generated, use the WpssoOpenGraph->sanitize_mt_array() method.
 		 */
 		public function filter_og_data_https_ogp_me_ns_book( array $mt_og, array $mod ) {
 
@@ -170,9 +170,9 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 		}
 
 		/**
-		 * The output from this method is provided to the WPSSO JSON add-on, so be careful when removing array elements. If
-		 * you need to remove array elements after the Schema JSON-LD markup has been created, but before the meta tags
-		 * have been generated, use the WpssoOpenGraph->sanitize_mt_array() method.
+		 * The output from this method is provided to the JSON data filters, so be careful when removing any array
+		 * elements. If you need to remove array elements after the Schema JSON-LD markup has been created, but before the
+		 * meta tags have been generated, use the WpssoOpenGraph->sanitize_mt_array() method.
 		 */
 		public function filter_og_data_https_ogp_me_ns_product( array $mt_og, array $mod ) {
 
