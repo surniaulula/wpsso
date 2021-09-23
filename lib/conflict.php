@@ -71,17 +71,18 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				
 				$pkg_info = $this->p->admin->get_pkg_info();	// Returns an array from cache.
 
-				if ( empty( $pkg_info[ 'wpssojson' ][ 'pp' ] ) ) {	// Standard version.
+				if ( ! empty( $pkg_info[ 'wpsso' ][ 'pp' ] ) || empty( $pkg_info[ 'wpssojson' ][ 'pp' ] ) ) {
 
 					$plugins_url = is_multisite() ? network_admin_url( 'plugins.php', null ) : get_admin_url( $blog_id = null, 'plugins.php' );
-				
 					$plugins_url = add_query_arg( array( 's' => 'wpsso-schema-json-ld' ), $plugins_url );
 				
-					$notice_msg = sprintf( __( 'The %1$s add-on has been deprecated.', 'wpsso' ), $pkg_info[ 'wpssojson' ][ 'name' ] ) . ' ';
+					$notice_msg = sprintf( __( 'The %1$s add-on has been discontinued / deprecated.', 'wpsso' ), $pkg_info[ 'wpssojson' ][ 'name' ] ) . ' ';
 
-					$notice_msg .= sprintf( __( 'Its settings and features have been integrated into the %1$s plugin.', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'name' ] ) . ' ';
+					$notice_msg .= sprintf( __( 'The %1$s shortcode was migrated to the new WPSSO Schema Shortcode add-on.', 'wpsso' ), '<code>&#91;schema&#93;</code>' ) . ' ';
 
-					$notice_msg .= sprintf( __( '<a href="%1$s">Please deactivate and delete the %2$s add-on</a>.', 'wpsso' ), $plugins_url, $pkg_info[ 'wpssojson' ][ 'name' ] ) . ' ';
+					$notice_msg .= sprintf( __( 'All other add-on features of the %1$s add-on were integrated into the %2$s plugin.', 'wpsso' ), $pkg_info[ 'wpssojson' ][ 'name' ], $pkg_info[ 'wpsso' ][ 'name' ] ) . ' ';
+
+					$notice_msg .= sprintf( __( '<a href="%1$s">You can now deactivate and delete the %2$s add-on</a>.', 'wpsso' ), $plugins_url, $pkg_info[ 'wpssojson' ][ 'name' ] );
 
 					$notice_key = 'deactivate-wpsso-schema-json-ld';
 				

@@ -644,7 +644,6 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			if ( ! empty( $pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
 
 				$plugins_url = is_multisite() ? network_admin_url( 'plugins.php', null ) : get_admin_url( $blog_id = null, 'plugins.php' );
-
 				$plugins_url = add_query_arg( array( 's' => 'yoast seo' ), $plugins_url );
 
 				$notice_msg = sprintf( __( 'The %1$s plugin provides much better Schema markup for WooCommerce products than the %2$s plugin.', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'short_pro' ], $wpseo_wc_label ) . ' ';

@@ -2699,6 +2699,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				 */
 				if ( load_textdomain( $plugin_slug, $wp_mopath ) || load_textdomain( $plugin_slug, $plugin_mopath ) ) {
 
+					$this->p->notice->set_label_transl();	// Update the notice label.
+
 					return $local_cache[ $new_locale ][ $plugin_slug ] = true;
 				}
 			}

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 9.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-09-22 07:27-0700\n"
+"PO-Revision-Date: 2021-09-23 05:44-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -4202,7 +4202,7 @@ msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr "La <a href=\"%1$s\">fonction PHP %2$s</a> n'est pas disponible."
 
 #: gettext/gettext-lib-pro.php:382 gettext/gettext-lib-pro.php:385
-#: gettext/gettext-lib-pro.php:388 lib/conflict.php:250
+#: gettext/gettext-lib-pro.php:388 lib/conflict.php:251
 #: lib/pro/media/slideshare.php:201 lib/pro/media/vimeo.php:175
 #: lib/pro/media/wistia.php:336
 msgid "Please contact your hosting provider to have the missing PHP function installed."
@@ -4243,7 +4243,7 @@ msgid "The \"%s\" option value is empty and required."
 msgstr "La valeur de l'option \"%s\" est vide et requise."
 
 #: gettext/gettext-lib-pro.php:404 gettext/gettext-lib-pro.php:406
-#: gettext/gettext-lib-pro.php:443 lib/conflict.php:144 lib/loader.php:185
+#: gettext/gettext-lib-pro.php:443 lib/conflict.php:145 lib/loader.php:185
 #: lib/loader.php:199 lib/pro/review/yotpowc.php:205
 #: lib/pro/util/shorten.php:460 lib/pro/util/shorten.php:497
 msgid "%s error:"
@@ -5489,91 +5489,95 @@ msgstr "Réglages généraux"
 msgid "Features"
 msgstr "Fonctionnalités"
 
-#: lib/conflict-seo.php:650
+#: lib/conflict-seo.php:649
 msgid "The %1$s plugin provides much better Schema markup for WooCommerce products than the %2$s plugin."
 msgstr "L'extension %1$s fournit un bien meilleur balisage de Schéma pour les produits WooCommerce que l'extension %2$s."
 
-#: lib/conflict-seo.php:652
+#: lib/conflict-seo.php:651
 msgid "There is absolutely no advantage in continuing to use the %1$s plugin."
 msgstr "Il n'y a absolument aucun avantage à continuer à utiliser l'extension %1$s."
 
-#: lib/conflict-seo.php:654
+#: lib/conflict-seo.php:653
 msgid "To avoid adding incorrect and confusing Schema markup to your webpages, <a href=\"%1$s\">please deactivate the %2$s plugin immediately</a>."
 msgstr "Pour éviter d'ajouter un balisage de Schéma incorrect et déroutant à vos pages Web, <a href=\"%1$s\">veuillez désactiver immédiatement l'extension %2$s</a>."
 
-#: lib/conflict.php:80
-msgid "The %1$s add-on has been deprecated."
-msgstr "L'ajout %1$s est obsolète."
+#: lib/conflict.php:79
+msgid "The %1$s add-on has been discontinued / deprecated."
+msgstr "L'ajout %1$s est abandonné / obsolète."
 
-#: lib/conflict.php:82
-msgid "Its settings and features have been integrated into the %1$s plugin."
-msgstr "Ses réglages et fonctionnalités ont été intégrés dans l'extension %1$s."
+#: lib/conflict.php:81
+msgid "The %1$s shortcode was migrated to the new WPSSO Schema Shortcode add-on."
+msgstr "Le code court %1$s a été migré vers le nouvel ajout WPSSO Schema Shortcode."
 
-#: lib/conflict.php:84
-msgid "<a href=\"%1$s\">Please deactivate and delete the %2$s add-on</a>."
-msgstr "<a href=\"%1$s\">Veuillez désactiver et supprimer l'ajout %2$s</a>."
+#: lib/conflict.php:83
+msgid "All other add-on features of the %1$s add-on were integrated into the %2$s plugin."
+msgstr "Toutes les autres fonctionnalités de l'ajout %1$s ont été intégrées dans l'extension %2$s."
 
-#: lib/conflict.php:118
+#: lib/conflict.php:85
+msgid "<a href=\"%1$s\">You can now deactivate and delete the %2$s add-on</a>."
+msgstr "<a href=\"%1$s\">Vous pouvez désactiver et supprimer l'ajout %2$s</a>."
+
+#: lib/conflict.php:119
 msgid "Your database is configured for a \"%1$s\" size of %2$d bytes, which is less than the recommended minimum value of %3$d bytes (a common default value is %4$d bytes)."
 msgstr "Votre base de données est configurée pour une taille \"%1$s\" de %2$d octets, ce qui est inférieure à la valeur minimale recommandée de %3$d octets (la valeur par défaut courante est %4$d octets)."
 
-#: lib/conflict.php:120
+#: lib/conflict.php:121
 msgid "Please contact your hosting provider and have the \"%1$s\" database option adjusted to a larger and safer value."
 msgstr "SVP contacter votre hébergeur pour que l'option de base de données \"%1$s\" soit ajustée à une valeur plus grande et plus sûre."
 
-#: lib/conflict.php:122
+#: lib/conflict.php:123
 msgid "See the %1$s sections %2$s and %3$s for more information on this database option."
 msgstr "Voir les sections %2$s et %3$s de %1$s pour plus d'informations sur cette option de base de données."
 
-#: lib/conflict.php:190
+#: lib/conflict.php:191
 msgid "WordPress is configured to use the %1$s image editing class but the <a href=\"%2$s\">PHP %3$s extension module</a> is not loaded:"
 msgstr "WordPress est configuré pour utiliser la classe d'édition d'image %1$s mais le <a href=\"%2$s\">module d'extension PHP %3$s</a> n'est pas chargé:"
 
-#: lib/conflict.php:194
+#: lib/conflict.php:195
 msgid "The <a href=\"%1$s\">PHP %2$s extension module</a> is not loaded:"
 msgstr "Le <a href=\"%1$s\">module d'extension PHP %2$s</a> n'est pas chargé:"
 
-#: lib/conflict.php:201
+#: lib/conflict.php:202
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> for \"%3$s\" returned false."
 msgstr "La <a href=\"%1$s\">fonction PHP %2$s</a> pour \"%3$s\" retourne faux."
 
-#: lib/conflict.php:202
+#: lib/conflict.php:203
 msgid "https://secure.php.net/manual/en/function.extension-loaded.php"
 msgstr "https://secure.php.net/manual/fr/function.extension-loaded.php"
 
-#: lib/conflict.php:212
+#: lib/conflict.php:213
 msgid "Note that the ImageMagick application and the PHP \"%1$s\" extension are two different products - this error is for the PHP \"%1$s\" extension, not the ImageMagick application."
 msgstr "Notez que l'application ImageMagick et l'extension PHP \"%1$s\" sont deux produits différents - cette erreur est pour l'extension PHP \"%1$s\", et non l'application ImageMagick."
 
-#: lib/conflict.php:215
+#: lib/conflict.php:216
 msgid "Please contact your hosting provider to have the missing PHP \"%1$s\" extension installed and enabled."
 msgstr "SVP contacter votre hébergeur pour installer et activer l'extension PHP \"%1$s\" manquante."
 
-#: lib/conflict.php:231
+#: lib/conflict.php:232
 msgid "The <a href=\"%1$s\">PHP %2$s extension module</a> is loaded but the %3$s class is missing."
 msgstr "Le <a href=\"%1$s\">module d'extension PHP %2$s</a> est chargé mais la classe %3$s est manquante."
 
-#: lib/conflict.php:233
+#: lib/conflict.php:234
 msgid "Please contact your hosting provider to have the missing PHP class installed."
 msgstr "SVP contacter votre hébergeur pour installer la classe PHP manquante."
 
-#: lib/conflict.php:248
+#: lib/conflict.php:249
 msgid "The <a href=\"%1$s\">PHP %2$s extension module</a> is loaded but the %3$s function is missing."
 msgstr "Le <a href=\"%1$s\">module d'extension PHP %2$s</a> est chargé mais la fonction %3$s est manquante."
 
-#: lib/conflict.php:285
+#: lib/conflict.php:286
 msgid "An issue with WPBakery Visual Composer has been detected."
 msgstr "Un problème avec WPBakery Visual Composer a été détecté."
 
-#: lib/conflict.php:287
+#: lib/conflict.php:288
 msgid "WPBakery Visual Composer version %s and older are known to have a bug in their jQuery event handling code."
 msgstr "WPBakery Visual Composer version %s et versions antérieures sont connus pour avoir un bogue dans leur code de gestion des événements jQuery."
 
-#: lib/conflict.php:289
+#: lib/conflict.php:290
 msgid "To avoid jQuery crashing on show / hide jQuery events, please update your version of WPBakery Visual Composer immediately."
 msgstr "Pour éviter le plantage de jQuery lors de l'affichage / masquage des événements jQuery, veuillez mettre à jour votre version de WPBakery Visual Composer immédiatement."
 
-#: lib/conflict.php:314
+#: lib/conflict.php:315
 msgid "The WordPress <a href=\"%s\">Search Engine Visibility</a> option is set to discourage search engines and social sites from indexing this site. This is not compatible with the purpose of optimizing your content for social and search engines - please uncheck the option to allow search engines and social sites to access your site."
 msgstr "L'option de WordPress <a href=\"%s\">Visibilité pour les moteurs de recherche</a> est définie afin de demander aux moteurs de recherche et robots sociaux de ne pas indexer ce site. Cela n'est pas compatible avec le but d'optimiser votre contenu pour les moteurs de recherche et les réseaux sociaux - veuillez décocher cette option pour autoriser les moteurs de recherche et robots sociaux d'accéder votre site."
 

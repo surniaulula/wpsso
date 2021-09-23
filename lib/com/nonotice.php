@@ -16,6 +16,8 @@ if ( ! class_exists( 'SucomNoNotice' ) ) {
 		public $enabled = false;
 
 		public function __construct() {}
+		public function set_textdomain() {}
+		public function set_label_transl() {}
 		public function is_enabled() { return false; }
 		public function enable() {}
 		public function disable() {}

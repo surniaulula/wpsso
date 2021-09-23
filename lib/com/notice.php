@@ -83,14 +83,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			/**
 			 * Set the text domain.
 			 */
-			if ( null !== $text_domain ) {
-
-				$this->text_domain = $text_domain;
-
-			} elseif ( ! empty( $this->p->cf[ 'plugin' ][ $this->plugin_id ][ 'text_domain' ] ) ) {
-
-				$this->text_domain = $this->p->cf[ 'plugin' ][ $this->plugin_id ][ 'text_domain' ];
-			}
+			$this->set_textdomain( $text_domain );
 
 			/**
 			 * Set the dismiss key name.
@@ -119,6 +112,30 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			/**
 			 * Set the translated notice label.
 			 */
+			$this->set_label_transl( $label_transl );
+
+			/**
+			 * Determine if the DEV constant is defined.
+			 */
+			$this->doing_dev = SucomUtil::get_const( $this->plugin_ucid . '_DEV' );
+
+			$this->use_cache = $this->doing_dev ? false : true;	// Read/save minimized CSS from/to transient cache.
+		}
+
+		public function set_textdomain( $text_domain = null ) {
+
+			if ( null !== $text_domain ) {
+
+				$this->text_domain = $text_domain;
+
+			} elseif ( ! empty( $this->p->cf[ 'plugin' ][ $this->plugin_id ][ 'text_domain' ] ) ) {
+
+				$this->text_domain = $this->p->cf[ 'plugin' ][ $this->plugin_id ][ 'text_domain' ];
+			}
+		}
+
+		public function set_label_transl( $label_transl = false ) {
+
 			if ( false !== $label_transl ) {
 
 				$this->label_transl = $label_transl;
@@ -132,13 +149,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 				$this->label_transl = __( 'Notice', $this->text_domain );
 			}
-
-			/**
-			 * Determine if the DEV constant is defined.
-			 */
-			$this->doing_dev = SucomUtil::get_const( $this->plugin_ucid . '_DEV' );
-
-			$this->use_cache = $this->doing_dev ? false : true;	// Read/save minimized CSS from/to transient cache.
 		}
 
 		/**
