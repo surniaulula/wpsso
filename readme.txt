@@ -310,7 +310,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.0.0-rc.1 (2021/09/23)**
+**Version 9.0.0-rc.2 (2021/09/23)**
 
 * **New Features**
 	* Discontinued / deprecated the WPSSO JSON add-on:
@@ -989,7 +989,7 @@ Please note that the WP Ultimate Recipe plugin is deprecated and support for thi
 
 == Upgrade Notice ==
 
-= 9.0.0-rc.1 =
+= 9.0.0-rc.2 =
 
 (2021/09/23) Added a Document SSO &gt; Twitter Card Title option. Refactored the Rank Math integration module (Premium version). Moved Schema data filters from WPSSO JSON to WPSSO Core.
 
