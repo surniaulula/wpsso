@@ -503,10 +503,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 			}
 		}
 
-		/**
-		 * The $defs argument accepts output from functions, so don't force reference.
-		 */
-		public function options( $opts_name, &$opts = array(), $defs = array(), $network = false ) {
+		public function options( $opts_name, $opts = array(), $defs = array(), $network = false ) {
 
 			if ( constant( 'WPSSO_OPTIONS_NAME' ) === $opts_name ) {
 
@@ -721,11 +718,6 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				}
 
 				/**
-				 * Refresh the schema types transient cache.
-				 */
-				$this->p->schema->get_schema_types_array( $flatten = true, $read_cache = false );
-
-				/**
 				 * Remove the options from deprecated add-ons.
 				 */
 				if ( $prev_version > 0 && $prev_version <= 765 ) {
@@ -799,6 +791,11 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 			 * The options array should not contain any numeric keys.
 			 */
 			SucomUtil::unset_numeric_keys( $opts );
+
+			/**
+			 * Refresh the schema types transient cache.
+			 */
+			$this->p->schema->get_schema_types_array( $flatten = true, $read_cache = false );
 
 			return $opts;
 		}
