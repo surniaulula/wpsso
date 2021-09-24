@@ -585,7 +585,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
 				$li_support_text = __( 'Premium plugin support.', 'wpsso' );
-				$li_support_link = empty( $info[ 'url' ][ 'support' ] ) ? '' : '<li><a href="' . $info[ 'url' ][ 'support' ] . '">' . $li_support_text . '</a></li>';
+				$li_support_link = empty( $info[ 'url' ][ 'support' ] ) ? '' :
+					'<li><strong><a href="' . $info[ 'url' ][ 'support' ] . '">' . $li_support_text . '</a></strong></li>';
 
 				switch ( $msg_key ) {
 
@@ -597,17 +598,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= '<ul>';
 
-						$text .= ' <li>' . __( 'Integration with third-party plugins and service APIs (WooCommerce, Yoast SEO, YouTube, Bitly, and many more).', 'wpsso' ) . '</li>';
-
-						$text .= ' <li>' . __( 'Detection of embedded videos in content text.', 'wpsso' ) . '</li>';
-
-						$text .= ' <li>' . __( 'Provides Twitter Player Card meta tags.', 'wpsso' ) . '</li>';
-
-						$text .= ' <li>' . __( 'Upscaling of images and URL shortening.', 'wpsso' ) . '</li>';
-
-						$text .= ' <li>' . sprintf( __( '<a href="%s">Customize advanced settings</a>, including image sizes, cache expiry, video services, shortening services, document types, contact fields, product attributes, custom fields, and more.', 'wpsso' ), $advanced_page_url ) . '</li>';
-
 						$text .= $li_support_link;
+
+						$text .= '<li>' . sprintf( __( '<strong><a href="%s">Customize advanced settings</a></strong>, including image sizes, cache expiry, video services, shortening services, document types, contact fields, product attributes, custom fields, and more.', 'wpsso' ), $advanced_page_url ) . '</li>';
+
+						$text .= '<li>' . sprintf( __( '<strong>Additional Schema options</strong> in the %s metabox to customize creative works, events, how-tos, job postings, movies, products, recipes, reviews, and more.', 'wpsso' ), $mb_title ) . '</li>';
+
+						$text .= '<li><strong>' . sprintf( __( 'Reads data from %d third-party plugins and service APIs.', 'wpsso' ), 45 ) . '</strong></li>';
 
 						$text .= '</ul>';
 
