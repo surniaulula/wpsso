@@ -229,14 +229,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			static $local_cache = array();
 
 			/**
-			 * Do not add $pad_opts to the $cache_id string.
+			 * Use $term_id and $filter_opts to create the cache ID string, but do not add $pad_opts.
 			 */
 			$cache_id = SucomUtil::get_assoc_salt( array( 'id' => $term_id, 'filter' => $filter_opts ) );
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'local cache_id is ' . $cache_id );
-			}
 
 			/**
 			 * Maybe initialize the cache.

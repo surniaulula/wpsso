@@ -1080,7 +1080,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 */
 		public function get_schema_types_array( $flatten = true, $read_cache = true ) {
 
-			if ( false === $read_cache ) {
+			if ( ! $read_cache ) {
 
 				$this->types_cache[ 'filtered' ]  = null;
 				$this->types_cache[ 'flattened' ] = null;
@@ -1097,7 +1097,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$cache_salt = __METHOD__;
 					$cache_id   = $cache_md5_pre . md5( $cache_salt );
 
-					if ( false === $read_cache ) {
+					if ( $read_cache ) {
 
 						$this->types_cache = get_transient( $cache_id );	// Returns false when not found.
 
@@ -1386,7 +1386,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
-		 * Check if the Schema type requires a specific hard-coded Open Graph type.
+		 * Check if the Schema type matches a pre-defined Open Graph type.
 		 *
 		 * For example, a Schema place sub-type would return 'place' for the Open Graph type.
 		 *

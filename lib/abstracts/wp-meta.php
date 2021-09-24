@@ -1979,20 +1979,30 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			}
 
 			/**
+			 * Retrieves the cache contents from the cache by key and group.
+			 *
 			 * WordPress stores data using a post, term, or user ID, along with a group string.
 			 *
 			 * Example: wp_cache_get( 1, 'user_meta' );
 			 *
 			 * Returns (bool|mixed) false on failure to retrieve contents or the cache contents on success.
 			 *
-			 * $found (bool) (Optional) whether the key was found in the cache (passed by reference). Disambiguates a
-			 * return of false, a storable value. Default null.
+			 * $found (bool) Whether the key was found in the cache (passed by reference) - disambiguates a return of false.
 			 */
 			$metadata = wp_cache_get( $mod[ 'id' ], $mod[ 'name' ] . '_meta', $force = false, $found );
 
 			if ( ! $found ) {
 
+				/**
+				 * Updates the metadata cache for the specified objects.
+				 *
+				 * $meta_type (string) Type of object metadata is for. Accepts 'post', 'comment', 'term', 'user',
+				 * or any other object type with an associated meta table.  
+				 *
+				 * Returns (array|false) metadata cache for the specified objects, or false on failure.
+				 */
 				$metadata = update_meta_cache( $mod[ 'name' ], array( $mod[ 'id' ] ) );
+
 				$metadata = $metadata[ $mod[ 'id' ] ];
 			}
 

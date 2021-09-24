@@ -465,7 +465,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.0.0-rc.2 (2021/09/23)**
+**Version 9.0.0-rc.3 (2021/09/24)**
 
 * **New Features**
 	* Discontinued / deprecated the WPSSO JSON add-on:
@@ -485,6 +485,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fixed missing 'areaServed' property in Schema LocalBusiness markup for places / locations.
 	* Fixed the saving of selected option colors using `wpColorPicker()`.
 	* Fixed an undefined `$mt_ret` variable error in lib/util.php.
+	* Fixed reading of transient cache in `WpssoSchema->get_schema_types_array()`.
 * **Developer Notes**
 	* Added a new 'wpsso_{post_type}_tag_taxonomy' filter.
 	* Added a new `WpssoOptionsFilters` class.
@@ -505,7 +506,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.0.0-rc.2 =
+= 9.0.0-rc.3 =
 
-(2021/09/23) Added a Document SSO &gt; Twitter Card Title option. Refactored the Rank Math integration module (Premium version). Moved Schema data filters from WPSSO JSON to WPSSO Core.
+(2021/09/24) Added a Document SSO &gt; Twitter Card Title option. Refactored the Rank Math integration module (Premium version). Moved Schema data filters from WPSSO JSON to WPSSO Core.
 

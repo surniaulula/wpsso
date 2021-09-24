@@ -2181,9 +2181,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
-			 * Check if the post type or Schema type requires a specific hard-coded Open Graph type.
-			 */
 			if ( empty( $md_opts[ 'og_type:is' ] ) ) {
 
 				if ( $og_type = $this->p->post->get_post_type_og_type( $mod ) ) {

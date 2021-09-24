@@ -320,53 +320,62 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			$comments_added = 0;
 
-			if ( $comment_id && $cmt = get_comment( $comment_id ) ) {	// Just in case.
+			if ( empty( $comment_id ) ) {	// Just in case.
 
-				/**
-				 * If not adding a list element, inherit the existing schema type url (if one exists).
-				 */
-				if ( ! $list_element && false !== ( $comment_type_url = WpssoSchema::get_data_type_url( $json_data ) ) ) {
+				return $comments_added;
+			}
 
-					if ( $wpsso->debug->enabled ) {
+			$cmt = get_comment( $comment_id );
 
-						$wpsso->debug->log( 'using inherited schema type url = ' . $comment_type_url );
-					}
+			if ( empty( $cmt ) ) {
 
-				} else {
+				return $comments_added;
+			}
 
-					$comment_type_url = 'https://schema.org/Comment';
+			/**
+			 * If not adding a list element, inherit the existing schema type url (if one exists).
+			 */
+			if ( ! $list_element && false !== ( $comment_type_url = WpssoSchema::get_data_type_url( $json_data ) ) ) {
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( 'using inherited schema type url = ' . $comment_type_url );
 				}
 
-				$json_ret = WpssoSchema::get_schema_type_context( $comment_type_url, array(
-					'url'         => get_comment_link( $cmt->comment_ID ),
-					'dateCreated' => mysql2date( 'c', $cmt->comment_date_gmt ),
-					'description' => get_comment_excerpt( $cmt->comment_ID ),
-					'author'      => WpssoSchema::get_schema_type_context( 'https://schema.org/Person', array(
-						'name' => $cmt->comment_author,
-					) ),
-				) );
+			} else {
 
-				$comments_added++;
+				$comment_type_url = 'https://schema.org/Comment';
+			}
 
-				$replies_added = self::add_comment_reply_data( $json_ret[ 'comment' ], $mod, $cmt->comment_ID );
+			$json_ret = WpssoSchema::get_schema_type_context( $comment_type_url, array(
+				'url'         => get_comment_link( $cmt->comment_ID ),
+				'dateCreated' => mysql2date( 'c', $cmt->comment_date_gmt ),
+				'description' => get_comment_excerpt( $cmt->comment_ID ),
+				'author'      => WpssoSchema::get_schema_type_context( 'https://schema.org/Person', array(
+					'name' => $cmt->comment_author,
+				) ),
+			) );
 
-				if ( empty( $list_element ) ) {		// Add a single item.
+			$comments_added++;
 
-					$json_data = $json_ret;
+			$replies_added = self::add_comment_reply_data( $json_ret[ 'comment' ], $mod, $cmt->comment_ID );
 
-				} elseif ( is_array( $json_data ) ) {	// Just in case.
+			if ( empty( $list_element ) ) {		// Add a single item.
 
-					if ( SucomUtil::is_assoc( $json_data ) ) {	// Converting from associative to array element.
+				$json_data = $json_ret;
 
-						$json_data = array( $json_data );
-					}
+			} elseif ( is_array( $json_data ) ) {	// Just in case.
 
-					$json_data[] = $json_ret;		// Add an item to the list.
+				if ( SucomUtil::is_assoc( $json_data ) ) {	// Converting from associative to array element.
 
-				} else {
-
-					$json_data = array( $json_ret );	// Add an item to the list.
+					$json_data = array( $json_data );
 				}
+
+				$json_data[] = $json_ret;	// Add an item to the list.
+
+			} else {
+
+				$json_data = array( $json_ret );	// Add an item to the list.
 			}
 
 			return $comments_added;	// Return count of comments added.
