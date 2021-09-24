@@ -6,12 +6,12 @@ Domain Path: /languages
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 Assets URI: https://surniaulula.github.io/wpsso/assets/
-Tags: woocommerce, rich snippets, seo, schema, open graph, facebook, linkedin, twitter, google, pinterest, xml sitemap
+Tags: woocommerce, rich snippets, seo, schema, open graph, video seo, image seo, rich results, knowledge graph, xml sitemap
 Contributors: jsmoriss
 Requires PHP: 7.0
 Requires At Least: 5.0
 Tested Up To: 5.8.1
-WC Tested Up To: 5.7.1
+WC Tested Up To: 5.7.0
 Stable Tag: 8.39.1
 
 Rank higher and improve click through rates by presenting your content at its best on social sites and in search results.
@@ -27,27 +27,45 @@ Rank higher and improve click through rates by presenting your content at its be
 <ul>
 	<li>Facebook / Open Graph</li>
 	<li>Google Knowledge Graph</li>
-	<li>Google Rich Results (aka Rich Snippets)</li>
+	<li>Google Rich Results (aka Rich Snippets, Structured Data)</li>
 	<li>LinkedIn / oEmbed Data</li>
 	<li>Mobile Web Browsers</li>
 	<li>Pinterest Rich Pins</li>
 	<li>Twitter Cards</li>
 	<li>Schema.org Markup (for 500+ Schema Types)</li>
+	<li>Slack</li>
 	<li>WhatsApp and Messaging Apps</li>
-	<li>WordPress REST API and More!</li>
+	<li>WordPress REST API</li>
+	<li>And so much more!</li>
 </ul>
 
-<p><strong>WPSSO reads existing content, plugin, and service API data:</strong></p>
+<p><strong>Supports over 500 different Schema (aka Schema.org) types and sub-types:</strong></p>
 
-There's no need to manually re-enter descriptions, titles, product information, or re-select images and videos! WPSSO can read your existing WordPress content, plugin data, and fetch data from remote service APIs (Bitly, Facebook, Shopper Approved, Stamped.io, Vimeo, Wistia, YouTube, and many more).
+WPSSO provides comprehensive Schema JSON-LD markup for posts, pages, custom post types, terms (category, tags, etc.), custom taxonomies, user profile pages, search result pages, archive pages, and Accelerated Mobile Pages (AMP) pages - including image SEO, video SEO, local business, organization, publisher, person, author and co-authors, extensive e-Commerce product markup, product variations, product ratings, aggregate ratings, reviews, recipe information, event details, collection pages, profile pages, search pages, FAQ pages, item lists for Google's Rich Results Carousel, and much more.
 
-WPSSO can be your only social and search optimization plugin, or combined to improve the structured data of another SEO plugin (like All in One SEO Pack, Jetpack SEO Tools, Rank Math SEO, SEO Ultimate, SEOPress, The SEO Framework, WP Meta SEO, Yoast SEO, and more).
+<p><strong>WPSSO reads your existing content, plugin, and service API data:</strong></p>
 
-<p><strong>WPSSO is FAST, reliable, and coded for performance:</strong></p>
+There's no need to manually re-enter descriptions, titles, product information, or re-select images and videos! WPSSO can read all your existing WordPress content, including custom posts and taxonomies, enhanced user profile data, Media Library image and video information, third-party plugin data, and remote service APIs (Bitly, Facebook, Shopper Approved, Stamped.io, Vimeo, Wistia, YouTube, and many more).
 
-<p>WPSSO is coded for SPEED and QUALITY ASSURANCE with advanced caching techniques, media optimization (ie. image and video SEO, 1:1, 4:3, and 16:9 images for Google, etc.), template validations, discreet contextual notices, and much more.</p>
+<p><strong>Use WPSSO by itself or extend another SEO plugin:</strong></p>
 
-<p>No cartoons or fancy marketing - just fast and reliable code. &#x1F609;</p>
+WPSSO can be your only social and search optimization plugin, or can improve the structured data of another third-party SEO plugin (like All in One SEO Pack, Jetpack SEO Tools, Rank Math SEO, SEO Ultimate, SEOPress, The SEO Framework, WP Meta SEO, Yoast SEO, and more).
+
+<p><strong>Fixes Google Search Console and Schema Markup Validator errors, including:</strong></p>
+
+* A value for the headline field is required.
+* A value for the image field is required.
+* A value for the logo field is required.
+* A value for the publisher field is required.
+* The aggregateRating field is recommended.
+* The brand field is recommended.
+* The headline field is recommended.
+* The image field is recommended.
+* The mainEntityOfPage field is recommended.
+* The review field is recommended.
+* This Product is missing a global identifier (e.g. isbn, mpn or gtin8).
+* No global identifier provided (e.g. gtin mpn isbn).
+* Not a known valid target type for the itemReviewed property.
 
 <h3>Users Love the WPSSO Core Plugin</h3>
 
@@ -61,11 +79,9 @@ WPSSO can be your only social and search optimization plugin, or combined to imp
 
 <h3>WPSSO Core Plugin Features</h3>
 
-Provides meta tags and Schema markup for WordPress posts / pages, plugin and theme custom post types, taxonomies, search results, shop pages, and much more.
+Provides accurate and comprehensive meta tags and Schema markup for WordPress posts / pages, custom post types, taxonomies, search results, shop pages, and much more.
 
 Enhances the WordPress oEmbed data for LinkedIn, Discord, Drupal, Squarespace, and others.
-
-Includes additional article and product meta tags for Slack.
 
 Offers optimized image sizes for social sites and search engines:
 
@@ -77,6 +93,10 @@ Offers optimized image sizes for social sites and search engines:
 * Schema Thumbnail
 * Twitter Summary Card
 * Twitter Large Image Summary Card
+
+Provides Schema ImageObject markup with image data from the WordPress Media Library (name, alternateName, alternativeHeadline, caption, description, fileFormat, uploadDate, and more).
+
+Provides Schema VideoObject markup with video data from WPSSO Core Premium service APIs (Facebook, Slideshare, Soundcloud, Vimeo, Wistia, YouTube) including the 'embedUrl' and 'contentUrl' properties for Google.
 
 Built-in compatibility with AMP plugins:
 
@@ -118,30 +138,167 @@ Built-in compatibility for advanced WordPress configurations:
 * WordPress MU Domain Mapping
 * Network / Multisite Installations
 
-Includes advanced QUALITY ASSURANCE features and options:
-
-* Checks and warns of any missing PHP modules.
-* Checks third-party plugin settings for possible conflicts.
-* Checks for minimum / maximum image dimensions and aspect ratios.
-* Shows notices for missing and required images.
-* Validates theme header templates for correct HTML markup.
-* Verifies webpage HTML for duplicate meta tags.
-
 The WPSSO Core Standard plugin is designed to satisfy the requirements of most standard WordPress sites. If your site requires additional third-party plugin and service API integration, like WooCommerce shops, embedded video support, or advanced customization features, then you may want to get the [WPSSO Core Premium plugin](https://wpsso.com/extend/plugins/wpsso/) for those additional features.
-
-**[Premium]** Detection of embedded videos in content text with API support for Facebook, Slideshare, Vimeo, Wistia, and Youtube videos.
 
 **[Premium]** Support for the Twitter [Player Card](https://dev.twitter.com/cards/types/player) for embedded videos.
 
-**[Premium]** Optional upscaling of small images to satisfy minimum image size requirements for social sharing and Schema markup.
+**[Premium]** Detection of embedded videos in content text with API support for Facebook, Slideshare, Vimeo, Wistia, and Youtube videos.
+
+**[Premium]** Upscaling of smaller images to satisfy minimum size requirements for social sites and Google Rich Results (aka aka Rich Snippets, Structured Data).
 
 **[Premium]** URL shortening with Bitly, DLMY.App, Google, Ow.ly, TinyURL, or YOURLS.
 
-**[Premium]** Customize the default Open Graph and Schema document type for posts, pages, custom post types, taxonomy terms (categories, tags, etc.), and user profile pages.
+**[Premium]** Customize default Open Graph and Schema types for posts, pages, custom post types, taxonomy terms, and user profile pages.
 
-**[Premium]** Customize the post and taxonomy types included in the WordPress sitemap XML.
+**[Premium]** Customize post and taxonomy types included in the WordPress sitemap XML.
 
-**[Premium]** Complete Schema JSON-LD markup for WooCommerce products.
+**[Premium]** Offers the most complete Schema JSON-LD markup for WooCommerce:
+
+WooCommerce by default provides incomplete Schema markup for Google Rich Results. WPSSO Core Premium offers a better solution by providing complete product meta tags for Facebook, Pinterest, and complete Schema product markup for Google Rich Results - including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.
+
+**[Premium]** Additional customizable Schema options in the Document SSO metabox:
+
+* All Schema Types
+	* Name / Title
+	* Alternate Name
+	* Description
+	* Microdata Type URLs
+	* Same-As URLs
+* Creative Work Information
+	* Is Part of URL
+	* Headline
+	* Full Text
+	* Keywords
+	* Language
+	* Family Friendly
+	* Copyright Year
+	* License URL
+	* Publisher Org.
+	* Publisher Person
+	* Service Provider Org.
+	* Service Provider Person
+* Event Information
+	* Event Language
+	* Event Attendance
+	* Event Online URL
+	* Event Physical Venue
+	* Event Organizer Org.
+	* Event Organizer Person
+	* Event Performer Org.
+	* Event Performer Person
+	* Event Start (date, time, timezone)
+	* Event End (date, time, timezone)
+	* Event Offers Start (date, time, timezone)
+	* Event Offers End (date, time, timezone)
+	* Event Offers (name, price, currency, availability)
+* How-To
+	* How-To Makes 
+	* How-To Preparation Time 
+	* How-To Total Time 
+	* How-To Supplies 
+	* How-To Tools 
+	* How-To Steps (section name, section description, step name, direction text and image)
+* Job Posting Information
+	* Job Title
+	* Hiring Organization
+	* Job Location
+	* Job Location Type
+	* Base Salary
+	* Employment Type
+	* Jpb Posting Expires
+* Movie Information
+	* Cast Names
+	* Director Names
+	* Production Company
+	* Movie Runtime
+* Organization Information
+	* Select an Organization
+* Person Information
+	* Select a Person
+* Product Information
+	* Product Availability
+	* Product Brand
+	* Product Color
+	* Product Condition
+	* Product Depth
+	* Product Fluid Volume
+	* Product GTIN-14
+	* Product GTIN-13 (EAN)
+	* Product GTIN-12 (UPC)
+	* Product GTIN-8
+	* Product GTIN
+	* Product ISBN
+	* Product Length
+	* Product Material
+	* Product MPN
+	* Product Price
+	* Product Size
+	* Product SKU
+	* Product Target Gender
+	* Product Type
+	* Product Weight
+	* Product Width
+* QA Page Information
+	* QA Heading
+* Recipe Information
+	* Recipe Cuisine 
+	* Recipe Course 
+	* Recipe Makes 
+	* Cooking Method 
+	* Preparation Time 
+	* Cooking Time 
+	* Total Time 
+	* Recipe Ingredients 
+	* Recipe Instructions 
+	* Nutrition Information per Serving 
+		* Serving Size
+		* Calories
+		* Protein
+		* Fiber
+		* Carbohydrates
+		* Sugar
+		* Sodium
+		* Fat
+		* Saturated Fat
+		* Unsaturated Fat
+		* Trans Fat
+		* Cholesterol
+* Review Information
+	* Review Rating 
+	* Rating Value Name
+	* Subject of the Review
+		* Subject Webpage Type 
+		* Subject Webpage URL 
+		* Subject Same-As URL 
+		* Subject Name 
+		* Subject Description 
+		* Subject Image ID or URL 
+		* Claim Subject Information (for Claim Review)
+			* Short Summary of Claim
+			* First Appearance URL
+		* Creative Work Subject Information
+			* C.W. Author Type
+			* C.W. Author Name
+			* C.W. Author URL
+			* C.W. Published Date
+			* C.W. Created Date
+		* Book Subject Information
+			* Book ISBN
+		* Movie Subject Information
+			* Movie Cast Names
+			* Movie Director Names
+		* Product Subject Information
+			* Product Brand
+			* Product Offers (name, price, currency, availability)
+			* Product SKU
+			* Product MPN
+		* Software App Subject Information
+			* Operating System
+			* Application Category
+			* Software App Offers (name, price, currency, availability)
+* Software Application Information
+	* Operating System
+	* Application Category
 
 **[Premium]** Integrates with other plugins and service APIs for additional image, video, e-Commerce product details, SEO settings, etc. The following modules are included with the Premium version and automatically loaded if/when the supported plugins and/or services are required.
 
@@ -198,23 +355,21 @@ The WPSSO Core Standard plugin is designed to satisfy the requirements of most s
 
 <h3>Free Complementary Add-ons</h3>
 
-<p><strong>Do you need even more advanced or unique features?</strong></p>
-
-Activate any of the free complementary add-on(s) you require:
+Do you need even more advanced features? Activate any of the free complementary add-on(s) you require:
 
 * [WPSSO FAQ Manager](https://wordpress.org/plugins/wpsso-faq/) to manage FAQ categories with Question and Answer pages.
 * [WPSSO Inherit Parent Metadata](https://wordpress.org/plugins/wpsso-inherit-parent-meta/) to inherit featured and custom images.
 * [WPSSO Mobile App Meta Tags](https://wordpress.org/plugins/wpsso-am/) to manage mobile App information.
 * [WPSSO Organization Markup](https://wordpress.org/plugins/wpsso-organization/) to manage multiple organizations.
-* [WPSSO Place and Local SEO Markup](https://wordpress.org/plugins/wpsso-plm/) to manage multiple locations.
+* [WPSSO Place and Local SEO Markup](https://wordpress.org/plugins/wpsso-plm/) to manage multiple places and locations.
 * [WPSSO Product Metadata for WooCommerce](https://wordpress.org/plugins/wpsso-wc-metadata/) to add GTIN, GTIN-8, GTIN-12 (UPC), GTIN-13 (EAN), GTIN-14, ISBN, MPN, depth, and volume for WooCommerce products and variations.
 * [WPSSO Ratings and Reviews](https://wordpress.org/plugins/wpsso-ratings-and-reviews/) to add ratings in WordPress comments.
 * [WPSSO REST API](https://wordpress.org/plugins/wpsso-rest-api/) to add meta tags and Schema markup in REST API queries.
-* [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/) to add responsive share buttons.
+* [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/) to add responsive social sharing buttons.
 * [WPSSO Schema Breadcrumbs Markup](https://wordpress.org/plugins/wpsso-breadcrumbs/) to add Breadcrumbs markup for Google.
 * [WPSSO Shipping Delivery Time for WooCommerce](https://wordpress.org/plugins/wpsso-wc-shipping-delivery-time/) to provide Google with shipping rates and delivery time estimates.
 * [WPSSO Strip Schema Microdata](https://wordpress.org/plugins/wpsso-strip-schema-microdata/) to strip incorrect markup from templates.
-* [WPSSO Tune WP Image Editors](https://wordpress.org/plugins/wpsso-tune-image-editors/) for better looking WordPress thumbnails.
+* [WPSSO Tune WP Image Editors](https://wordpress.org/plugins/wpsso-tune-image-editors/) for better looking WordPress thumbnail images.
 * [WPSSO User Locale Selector](https://wordpress.org/plugins/wpsso-user-locale/) to switch languages quickly and easily.
 
 == Installation ==
@@ -310,7 +465,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.0.0-rc.3 (2021/09/24)**
+**Version 9.0.0 (2021/09/24)**
 
 * **New Features**
 	* Discontinued / deprecated the WPSSO JSON add-on:
@@ -349,788 +504,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* PHP v7.0.
 	* WordPress v5.0.
 
-**Version 8.39.2 (2021/09/22)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* None.
-* **Bugfixes**
-	* Backported bugfixes from WPSSO Core v9.0.0:
-		* Fixed caching of option defaults array once plugin objects have been initialized.
-		* Fixed missing 'areaServed' property in Schema LocalBusiness markup for places / locations.
-		* Fixed the saving of selected option colors using `wpColorPicker()`.
-		* Fixed an undefined `$mt_ret` variable error in lib/util.php.
-* **Developer Notes**
-	* None.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v5.0.
-
-**Version 8.39.1 (2021/09/14)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* None.
-* **Bugfixes**
-	* Fixed incorrectly assigned Document SSO metabox option tooltips.
-* **Developer Notes**
-	* None.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v5.0.
-
-**Version 8.39.0 (2021/09/11)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Added a new SSO &gt; General Settings &gt; WebSite Alternate Name option.
-	* Moved all options from the WPSSO JSON add-on settings page to the SSO &gt; General and Advanced Settings pages.
-	* Removed the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Interface &gt; Title / Name Column Width option.
-	* Removed the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Interface &gt; Default for Posts / Pages List option.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Added new classes:
-		* WpssoMessagesTooltip
-		* WpssoMessagesTooltipInfo
-		* WpssoMessagesTooltipInfoMeta
-		* WpssoMessagesTooltipMeta
-		* WpssoMessagesTooltipMetaOpenGraph
-		* WpssoMessagesTooltipMetaSchema
-		* WpssoMessagesTooltipOpenGraph
-		* WpssoMessagesTooltipPlugin
-		* WpssoMessagesTooltipSchema
-		* WpssoMessagesTooltipSite
-	* Moved all WPSSO JSON add-on tooltips to the WPSSO Core plugin.
-	* Renamed Pinterest option keys from 'p_\*' to 'pin_\*'.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v5.0.
-
-**Version 8.38.0 (2021/09/07)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Removed the "Sharing URL" option in the Document SSO metabox.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Added new '%%canonical_url%%', '%%canonical_short_url%%', and '%%sharing_short_url%%' inline variables.
-	* Changes to methods:
-		* Added a new `WpssoUtil->shorten_url()` method.
-		* Added a new '$atts' (third) argument to the `WpssoUtil->get_sharing_url()` method.
-		* Renamed the `WpssoPost->get_sharing_shortlink()` method to `WpssoPost->get_canonical_shortlink()`.
-		* Renamed the `WpssoUtil->replace_inline_vars()` method to `WpssoUtil->replace_inline_variables()`.
-		* Renamed the `WpssoUtil->get_inline_vars()` method to `WpssoUtil->get_inline_variables()`.
-		* Renamed the `WpssoUtil->get_inline_vals()` method to `WpssoUtil->get_inline_values()`.
-		* Removed the `WpssoUtil->get_type_url()` private method.
-		* Updated the `SucomForm->get_th_html()` method to get tooltips only for the CSS id.
-		* Updated the `SucomUtil->get_url()` method to remove common tracking query arguments by default.
-	* Changes to functions:
-		* Added a new `wpsso_get_sharing_short_url()` function.
-		* Added a new `wpsso_get_post_canonical_short_url()` function.
-		* Renamed the `wpsso_get_short_url()` function to `wpsso_get_canonical_short_url()`.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v5.0.
-
-**Version 8.37.0 (2021/09/02)**
-
-* **New Features**
-	* Deprecated the WPSSO PLM Premium add-on.
-* **Improvements**
-	* Added new "Default Country" and "Default Timezone" options under the SSO &gt; General Settings &gt; General Settings &gt; Site Information tab.
-	* Added a new "Organization Schema Type" option under the SSO &gt; General Settings &gt; Social and Search Sites &gt; Google tab.
-	* Removed the "Author / Person Name Format" option under the SSO &gt; General Settings &gt; Social and Search Sites &gt; Google tab.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Added a jQuery enable/disable link between the '#select_schema_organization_id' and '#select_schema_place_id' options.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v5.0.
-
-**Version 8.36.1 (2021/08/27)**
-
-* **New Features**
-	* Deprecated the WPSSO ORG Premium add-on.
-* **Improvements**
-	* Added a new "Organization Location" option under the SSO &gt; General Settings &gt; Social and Search Sites &gt; Google tab.
-* **Bugfixes**
-	* Fixed support for a home page custom Schema Type from the Document SSO metabox when getting the site organization options.
-* **Developer Notes**
-	* Added a new `WpssoUtilWooCommerce->has_meta()` method for the WPSSO WCMD add-on.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v5.0.
-
-**Version 8.36.0 (2021/08/24)**
-
-* **New Features**
-	* Added new input fields to the user profile About Yourself / About the user sections:
-		* Job Title
-		* Honorific Prefix
-		* Honorific Suffix
-		* Middle or Additional Name
-	* Added a new "About the User" metabox in the SSO &gt; Advanced Settings page (Premium version).
-* **Improvements**
-	* Added new properties for Schema Person markup of WordPress users:
-		* 'jobTitle'
-		* 'honorificPrefix'
-		* 'honorificSuffix'
-		* 'additionalName'
-	* Added a new SSO &gt; General Settings &gt; Social and Search Sites &gt; Facebook &gt; Facebook Domain Verification ID option.
-	* Moved the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Caching tab options to the Integration tab and removed the Caching tab (Premium version).
-	* Added the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Integration tab in the network admin SSO settings (Premium version).
-	* Added a "Plugin and Theme Integration" section under the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Integration tab (Premium version).
-	* Added a new "Include VAT in Product Prices" option under the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Integration tab (Premium version).
-* **Bugfixes**
-	* Fixed the "Content Image Alt Prefix" option value for non-default locales.
-* **Developer Notes**
-	* None.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v5.0.
-
-**Version 8.35.4 (2021/08/19)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Updated the deprecated Google Structured Data Testing tool URL to the Schema Markup Validator tool URL.
-	* Added automatic select/deselect site verification meta tags if/when verification IDs are entered in the plugin settings.
-* **Bugfixes**
-	* Fixed automatic disabling of the head and content cache if the request URL contains an unknown/extra query string.
-* **Developer Notes**
-	* Added a new `SucomUtil::get_url()` method to get the complete request URL.
-	* Deprecated the `WpssoUtilCache->expire_zero_filters()` method.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v5.0.
-
-**Version 8.35.3 (2021/08/10)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Added optional throttling by host when retrieving URLs for caching.
-	* Added 3 second throttling in the YouTube integration module (Premium version).
-	* Added support for the "Product brand taxonomy" option value in the YITH WooCommerce Brands Add-on integration module (Premium version).
-	* Added support for the 'yith_wcbr_taxonomy_slug' filter in the YITH WooCommerce Brands Add-on integration module (Premium version).
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Updated the `WpssoMedia->add_og_video_from_url()` method to include the itemprop video duration value.
-	* Deprecated the `WpssoProMediaYoutube->add_og_video_from_data()` method since Google has removed access to the https://www.youtube.com/get_video_info API.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v5.0.
-
-**Version 8.35.2 (2021/07/26)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Added support for the current page number when adding Schema comments.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Added a new `WPSSO_SCHEMA_COMMENTS_MAX` constant (default is 50).
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v5.0.
-
-**Version 8.35.1 (2021/07/24)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Added support for the WooCommerce product `is_on_backorder()` method (Premium version).
-	* Minor http header filter and form input placeholder handling improvements.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Added error reporting in `WpssoProEcomWoocommerceBrandsCommon` for cases where `get_the_terms()` returns an error.
-	* Refactored the `WpssoAdmin->add_expect_header()` method to handle badly coded headers created by other plugins.
-	* Refactored the `SucomForm->get_placeholder_attrs()` method to skip pre-populating input values for license Authentication IDs.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v5.0.
-
-**Version 8.35.0 (2021/07/10)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Updated the SSO &gt; Dashboard &gt; Cache Status metabox.
-	* Removed the following options from the SSO &gt; Advanced Settings &gt; Caching tab:
-		* Head Markup Cache Expiry
-		* Filtered Content Cache Expiry
-		* Image URL Info Cache Expiry
-		* API Response Cache Expiry
-		* Short URL Cache Expiry
-		* Schema Index Cache Expiry
-		* Form Selects Cache Expiry
-		* Cache Attachment Markup
-		* Cache Date Archive Markup
-* **Bugfixes**
-	* Fix for possible critical error when creating a new order in WooCommerce with The SEO Framework plugin.
-* **Developer Notes**
-	* Refactored the `WpssoAdmin->show_metabox_cache_status()` method.
-	* Refactored and renamed the `WpssoHead->get_mt_mark()` method to `get_mt_data()`.
-	* Refactored the `WpssoUtil->get_cache_exp_secs()` method for the new 'conditional_values' config element.
-	* Added an 'is_attachment' element to the `$mod` array (true for attachment post types).
-	* Added new functions for filter hooks in lib/functions.php:
-		* `__return_hour_in_seconds()`
-		* `__return_day_in_seconds()`
-		* `__return_week_in_seconds()`
-		* `__return_month_in_seconds()`
-		* `__return_year_in_seconds()`
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v5.0.
-
-**Version 8.34.0 (2021/07/01)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* To prevent multiple layers of caching, the head markup cache is now disabled if a caching plugin or service is detected.
-	* Renamed the SSO &gt; General Settings &gt; Content and Text tab to Titles / Descriptions.
-	* Removed the SSO &gt; General Settings &gt; Authorship tab.
-* **Bugfixes**
-	* Fixed the video query arguments for YouTube's latest API requirements (Premium version).
-	* Fixed video detection for the block editor 'wp-block-embed' block.
-* **Developer Notes**
-	* Renamed the 'og_author_field' options key to 'fb_author_field'.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v5.0.
-
-**Version 8.33.0 (2021/06/27)**
-
-* **New Features**
-	* Added a new integration module for Stamped.io ratings and reviews in the WPSSO Core Premium plugin.
-* **Improvements**
-	* Added new options under the SSO &gt; Advanced Settings &gt; Service APIs &gt; Ratings and Reviews tab:
-		* Ratings and Reviews Service
-		* Stamped.io Store Hash
-		* Stamped.io API Key Public
-	* Renamed the "Video API Info Cache Expiry" option to "API Response Cache Expiry".
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Added supported caching plugins to the array returned by `WpssoCheck->get_avail()`.
-	* Renamed the 'wpsso_cache_expire_video_info' filter to 'wpsso_cache_expire_api_response'.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v4.5.
-
-**Version 8.32.0 (2021/06/23)**
-
-* **New Features**
-	* Added a new SSO &gt; Advanced Settings &gt; Caching &gt; Cache Attachment Markup option.
-* **Improvements**
-	* Removed the "Clear All Caches on Activate" option (now always enabled).
-	* Removed the "Clear All Caches on Deactivate" option (now always disabled for WPSSO Core and always enabled for add-ons).
-* **Bugfixes**
-	* Fix to remove the Document SSO metabox from the WooCommerce orders and coupons editing pages.
-* **Developer Notes**
-	* Added new constants:
-		* `WPSSO_CACHE_REFRESH_MAX_TIME`
-		* `WPSSO_CACHE_REFRESH_SLEEP_TIME`
-	* Added `_deprecated_function()` calls to all deprecated functions and methods.
-	* Refactored the `WpssoUtil->get_cache_exp_secs()` method.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v4.5.
-
-**Version 8.31.0 (2021/06/18)**
-
-* **New Features**
-	* Added a new SSO &gt; Advanced Settings &gt; Caching &gt; Cache Date Archive Markup option.
-* **Improvements**
-	* Added a snackbar reminder in the block editor in case there are any important error messages under the SSO notification icon.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* None.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v4.5.
-
-**Version 8.30.2 (2021/06/16)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Moved the SSO &gt; Features metaboxes to the SSO &gt; Dashboard page.
-	* Added an error notice message in case the `is_admin_bar_showing()` function returns false.
-* **Bugfixes**
-	* Fixed a non-working and duplicated copy-to-clipboard icon issue.
-* **Developer Notes**
-	* None.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v4.5.
-
-**Version 8.30.1 (2021/06/12)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* None.
-* **Bugfixes**
-	* Fixed the missing text length message for textarea fields in the Document SSO metabox.
-* **Developer Notes**
-	* None.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v4.5.
-
-**Version 8.30.0 (2021/06/08)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Added a thumbnail to all Image ID options.
-	* Updated the YouTube video API URL query arguments (Premium version).
-* **Bugfixes**
-	* Fixed an HTTP 404 error for YouTube video API calls (Premium version).
-* **Developer Notes**
-	* Added new `SucomUtil::sanitize_css_class()` and `SucomUtil::sanitize_css_id()` methods.
-	* Renamed all '\*_img_id_pre' option keys to '\*_img_id_lib'.
-	* Refactored the `WpssoMedia::get_default_images()` method.
-	* Refactored almost all methods in the SucomForm class.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v4.5.
-
-**Version 8.29.0 (2021/05/30)**
-
-Please note that the WP Ultimate Recipe plugin is deprecated and support for this plugin has been removed from the Premium version.
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Removed the deprecated WP Ultimate Recipe integration module (Premium version).
-	* Updated the WP Recipe Maker integration module to include instruction sections and images (Premium version).
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* None.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v4.5.
-
-**Version 8.28.2 (2021/05/15)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Added cache refresh when a WooCommerce product changes on the front-end - for example, from in stock to out of stock (Premium version).
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Added a hook for the 'woocommerce_after_product_object_save' action in the WooCommerce integration module (Premium version).
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v4.5.
-
-**Version 8.28.1 (2021/05/05)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Updated the SSO &gt; Advanced &gt; Plugin Settings &gt; Image Sizes tab information text.
-	* Moved Priority Media default image selection to Premium version.
-* **Bugfixes**
-	* Fixed the missing jQuery sucomTextLen() function calls to display text limits after saving/updating in the block editor.
-* **Developer Notes**
-	* Removed the `WpssoEdit->filter_metabox_sso_media_rows()` method.
-	* Renamed Schema image option keys ratio delimiter from '_' to 'x'.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v4.5.
-
-**Version 8.28.0 (2021/04/30)**
-
-* **New Features**
-	* Added a new SSO &gt; Advanced Settings &gt; WordPress Sitemaps metabox with options to customize the post and taxonomy types included in the WordPress sitemap XML.
-* **Improvements**
-	* Updated the metabox tabs jQuery to scroll the tabbed container into view if/when necessary.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* None.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v4.5.
-
-**Version 8.27.0 (2021/04/24)**
-
-* **New Features**
-	* Removed support for the rtMedia plugin (Premium version).
-* **Improvements**
-	* Fine-tuned the CSS for settings and Document SSO metabox tabs.
-	* Renamed the "SSO" menu item to "SSO (Social and Search Optimization)".
-* **Bugfixes**
-	* Fixed merging of new plugin / add-on options keys during update.
-* **Developer Notes**
-	* Refactored the Yoast SEO integration module (Premium version).
-	* Added a new 'wpsso_wpseo_replace_vars' filter for the Yoast SEO integration modules.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v4.5.
-
-**Version 8.26.3 (2021/04/17)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Included support for custom post types that do not appear in the WordPress menu.
-	* Allowed 'expired' posts to have an 'article:published_time' meta tag (expired posts are assumed to have been previously published).
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Added debug messages to the WpssoPost, WpssoTerm, and WpssoUser `add_meta_boxes()` method.
-	* Added a new `SucomUtilWP::get_available_languages()` method.
-	* Added a new `SucomForm->get_checklist_post_tax_user()` method.
-	* Refactored the `SucomForm->get_checklist_post_types()` method.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v4.5.
-
-**Version 8.26.2 (2021/04/13)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Added a new SSO &gt; Tools and Actions &gt; Clear Failed URL Connections button.
-* **Bugfixes**
-	* Fixed the default size values included in help text for the Pinterest Pin It image size option.
-* **Developer Notes**
-	* Refactored the `WpssoUtilCache->clear_cache_files()` method.
-	* Added a new `WpssoUtilCache->count_cache_files()` method.
-	* Added a new `WpssoUtilCache->get_cache_files()` method.
-	* Added a new `WpssoUtilCache->clear_ignored_urls()` method.
-	* Added a new `WpssoUtilCache->count_ignored_urls()` method.
-	* Added a new `SucomCache->clear_ignored_urls()` method.
-	* Added a new `SucomCache->count_ignored_urls()` method.
-	* Added a new `SucomCache->get_ignored_urls()` method.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v4.5.
-
-**Version 8.26.1 (2021/04/02)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Moved the SSO &gt; Image Sizes settings to the SSO &gt; Advanced Settings &gt; Image Sizes tab.
-	* Moved the SSO &gt; Document Types settings to the SSO &gt; Advanced Settings &gt; Document Types metabox.
-	* Removed the Add Pinterest "nopin" to Images option from the SSO &gt; Essential Settings page (available in General Settings).
-	* Removed the Add Hidden Image for Pinterest option from the SSO &gt; Essential Settings page (available in General Settings).
-* **Bugfixes**
-	* Fixed an incorrect prefix for site verification meta tag names.
-* **Developer Notes**
-	* Added a new 'wpsso_og_add_wc_mt_rating' filter.
-	* Added a new 'wpsso_og_add_wc_mt_reviews' filter.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v4.5.
-
-**Version 8.25.2 (2021/03/30)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Added a 'wpsso_add_schema_head_attributes' filter check (true by default) before validating theme header templates.
-* **Bugfixes**
-	* Fixed plugin option pattern matching for taxonomy names ending with '_time'.
-* **Developer Notes**
-	* Added a PHP class object check before getting the post content reading time.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v4.5.
-
-**Version 8.25.1 (2021/03/19)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Added an `is_embed()` check for the robots 'noindex' default.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* None.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v4.5.
-
-**Version 8.25.0 (2021/03/11)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Added a new option in the Document SSO metabox for Open Graph articles:
-		* Est. Reading Time
-	* Added a new option under the SSO &gt; Advanced Settings &gt; Plugin Admin tab:
-		* Use Local Plugin Translations
-	* Added new options under the SSO &gt; General Settings &gt; Social and Search Sites &gt; Other Sites tab:
-		* Ahrefs Website Verification ID
-		* Baidu Website Verification ID
-		* Bing Website Verification ID
-		* Yandex Website Verification ID
-	* Moved customization of image sizes to the Premium version. 
-* **Bugfixes**
-	* Fixed plugin conflict detection with All In One SEO v4.0.
-* **Developer Notes**
-	* None.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v4.5.
-
-**Version 8.24.0 (2021/03/04)**
-
-* **New Features**
-	* Added theme templates for iframe embed content with additional support for custom image URLs.
-* **Improvements**
-	* None.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Added a new lib/theme-compat/embed.php template.
-	* Added a new lib/theme-compat/embed-content.php template.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v4.5.
-
-**Version 8.23.0 (2021/02/25)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Added business page URL options in the SSO &gt; Social Pages settings page:
-		* Medium Business Page URL
-		* TikTok Business Page URL
-	* Added custom contact options in the SSO &gt; Advanced settings page (Premium version):
-		* Medium URL
-		* TikTok URL
-	* Updated the banners and icons of WPSSO Core and its add-ons.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* None.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v4.5.
-
-**Version 8.22.0 (2021/02/09)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* None.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Updated product offer methods in `WpssoSchema` for WPSSO JSON v4.14.0:
-		* Added a new `add_offers_data()` method.
-		* Renamed the `add_aggregate_offer_data()` method to `add_offers_aggregate_data()`.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v4.5.
-
-**Version 8.21.0 (2021/01/30)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* None.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Added new functions to retrieve Facebook / Open Graph image URLs:
-		* `wpsso_get_mod_og_image_url()`
-		* `wpsso_get_post_og_image_url()`
-		* `wpsso_get_term_og_image_url()`
-		* `wpsso_get_user_og_image_url()`
-	* Added a new `SucomUtil::get_first_og_image_url()` method.
-	* Refactored error handling and error messages in URL shortening classes (Premium version).
-	* Refactored the `WpssoErrorException` class and added a new `SucomErrorException` class.
-	* Refactored the `WpssoCache->add_ignored_url()` method to report cURL and SSL error messages.
-	* Removed the 'wpsso_version_updates' action.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v4.5.
-
-**Version 8.20.0 (2021/01/21)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Added support for images in WooCommerce product reviews (Premium version).
-* **Bugfixes**
-	* Fixed jQuery "document ready" event incompatibility with the block editor.
-* **Developer Notes**
-	* Added a new `WpssoComment` class in lib/comment.php.
-	* Added support for 'is_comment' in `WpssoUtil->get_type_url()`.
-	* Added support for 'reviews-images' comment metadata in `WpssoWpMeta->get_mt_comment_review()`.
-	* Renamed `WpssoPost->get_og_type_reviews()` to `WpssoPost->get_mt_reviews()`.
-	* Moved `WpssoPost->get_og_comment_review()` to `WpssoWpMeta->get_mt_comment_review()`.
-	* Changed `jQuery( document ).on( 'ready' )` event handlers to `jQuery()` for jQuery v3.0 compatibility.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v4.5.
-
 == Upgrade Notice ==
 
-= 9.0.0-rc.3 =
+= 9.0.0 =
 
 (2021/09/24) Added a Document SSO &gt; Twitter Card Title option. Refactored the Rank Math integration module (Premium version). Moved Schema data filters from WPSSO JSON to WPSSO Core.
-
-= 8.39.2 =
-
-(2021/09/22) Backported bugfixes from WPSSO Core v9.0.0.
-
-= 8.39.1 =
-
-(2021/09/14) Fixed incorrectly assigned Document SSO metabox option tooltips.
-
-= 8.39.0 =
-
-(2021/09/11) Moved all options from the WPSSO JSON add-on settings page to the SSO &gt; General and Advanced Settings pages.
-
-= 8.38.0 =
-
-(2021/09/07) Removed the "Sharing URL" option in the Document SSO metabox.
-
-= 8.37.0 =
-
-(2021/09/02) Deprecated the WPSSO PLM Premium add-on. Added new options in the SSO &gt; General Settings page.
-
-= 8.36.1 =
-
-(2021/08/27) Deprecated the WPSSO ORG Premium add-on. Added a new "Organization Location" option. Fixed support for a home page custom Schema Type when getting the site organization options.
-
-= 8.36.0 =
-
-(2021/08/24) Added new input fields to the user editing page. Added a new "Facebook Domain Verification ID" option. Updated the Integration and Caching tabs in the Advanced Settings page (Premium version).
-
-= 8.35.4 =
-
-(2021/08/19) Updated the deprecated Google Structured Data Testing tool URL. Added automatic select/deselect site verification meta tags. Fixed automatic disabling of the head and content cache if the request URL contains an unknown/extra query string.
-
-= 8.35.3 =
-
-(2021/08/10) Updated the YouTube integration module (Premium version). Updated the YITH WooCommerce Brands Add-on integration module (Premium version).
-
-= 8.35.2 =
-
-(2021/07/26) Added support for the current page number when adding Schema comments.
-
-= 8.35.1 =
-
-(2021/07/24) Added support for the WooCommerce product `is_on_backorder()` method (Premium version).
-
-= 8.35.0 =
-
-(2021/07/10) Updated the SSO &gt; Dashboard &gt; Cache Status metabox. Removed options from the SSO &gt; Advanced Settings &gt; Caching tab. Fix for possible critical error when creating a new order in WooCommerce with The SEO Framework plugin.
-
-= 8.34.0 =
-
-(2021/07/01) Fixed the video query arguments for YouTube's latest API requirements (Premium version). Fixed video detection for the block editor 'wp-block-embed' block.
-
-= 8.33.0 =
-
-(2021/06/27) Added a new integration module for Stamped.io ratings and reviews in the WPSSO Core Premium plugin.
-
-= 8.32.0 =
-
-(2021/06/23) Added a new SSO &gt; Advanced Settings &gt; Caching &gt; Cache Attachment Markup option. Fix to remove the Document SSO metabox from the WooCommerce orders and coupons editing pages.
-
-= 8.31.0 =
-
-(2021/06/18) Added a snackbar reminder in the block editor in case there are any important error messages under the SSO notification icon. Added a new SSO &gt; Advanced Settings &gt; Caching &gt; Cache Date Archive Markup option.
-
-= 8.30.2 =
-
-(2021/06/16) Fixed a non-working and duplicated copy-to-clipboard icon issue. Moved the SSO &gt; Features metaboxes to the SSO &gt; Dashboard page.
-
-= 8.30.1 =
-
-(2021/06/12) Fixed the missing text length message for textarea fields in the Document SSO metabox.
-
-= 8.30.0 =
-
-(2021/06/08) Added a thumbnail to all Image ID options. Updated the YouTube video API URL query arguments (Premium version).
-
-= 8.29.0 =
-
-(2021/05/30) Removed the deprecated WP Ultimate Recipe integration module (Premium version). Updated the WP Recipe Maker integration module to include instruction sections and images (Premium version).
-
-= 8.28.2 =
-
-(2021/05/15) Added cache refresh when a WooCommerce product changes on the front-end - for example, from in stock to out of stock (Premium version).
-
-= 8.28.1 =
-
-(2021/05/05) Fixed the missing jQuery sucomTextLen() function calls to display text limits after saving/updating in the block editor.
-
-= 8.28.0 =
-
-(2021/04/30) Added a new SSO &gt; Advanced Settings &gt; WordPress Sitemaps metabox with options to customize the post and taxonomy types included in the WordPress sitemap XML.
-
-= 8.27.0 =
-
-(2021/04/24) Removed support for the rtMedia plugin (Premium version). Refactored the Yoast SEO integration module (Premium version). Fixed merging of new plugin / add-on options keys during update.
-
-= 8.26.3 =
-
-(2021/04/17) Included support for custom post types that do not appear in the WordPress menu. Allowed 'expired' posts to have an 'article:published_time' meta tag.
-
-= 8.26.2 =
-
-(2021/04/13) Added a new SSO &gt; Tools and Actions &gt; Clear Failed URL Connections button.
-
-= 8.26.1 =
-
-(2021/04/02) Moved the SSO &gt; Image Sizes and SSO &gt; Document Types settings to the SSO &gt; Advanced Settings page.
-
-= 8.25.2 =
-
-(2021/03/30) Added a 'wpsso_add_schema_head_attributes' filter check (true by default) before validating theme header templates.
-
-= 8.25.1 =
-
-(2021/03/19) Added an `is_embed()` check for the robots 'noindex' default.
-
-= 8.25.0 =
-
-(2021/03/11) Added new options in the Document SSO metabox and settings pages. Fixed plugin conflict detection with All In One SEO v4.0.
-
-= 8.24.0 =
-
-(2021/03/04) Added theme templates for iframe embed content with additional support for custom image URLs.
-
-= 8.23.0 =
-
-(2021/02/25) Added new business page URL and custom contact options. Updated the banners and icons of WPSSO Core and its add-ons.
-
-= 8.22.0 =
-
-(2021/02/09) Updated product offer methods in `WpssoSchema` for WPSSO JSON v4.14.0.
-
-= 8.21.0 =
-
-(2021/01/30) Added new functions to retrieve Facebook / Open Graph image URLs. Refactored error handling and error messages in URL shortening classes (Premium version). Removed the 'wpsso_version_updates' action.
-
-= 8.20.0 =
-
-(2021/01/21) Added support for images in WooCommerce product reviews (Premium version). Fixed jQuery "document ready" event incompatibility with the block editor.
 
