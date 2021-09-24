@@ -48,7 +48,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 * Maybe register tags for pages.
 			 */
 			if ( $page_tag_taxonomy = SucomUtil::get_const( 'WPSSO_PAGE_TAG_TAXONOMY' ) ) {
-		
+
 				if ( ! empty( $this->p->options[ 'plugin_page_tags' ] ) ) {
 
 					if ( ! taxonomy_exists( $page_tag_taxonomy ) ) {

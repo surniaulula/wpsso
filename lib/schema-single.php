@@ -2109,32 +2109,32 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					 * FoodEstablishment schema type properties.
 					 */
 					if ( $wpsso->schema->is_schema_type_child( $place_opts[ 'place_schema_type' ], 'food.establishment' ) ) {
-	
+
 						foreach ( array(
 							'acceptsReservations' => 'place_accept_res',
 							'hasMenu'             => 'place_menu_url',
 							'servesCuisine'       => 'place_cuisine',
 						) as $prop_name => $opt_key ) {
-	
+
 							if ( 'place_accept_res' === $opt_key ) {
-	
+
 								$json_ret[ $prop_name ] = empty( $place_opts[ $opt_key ] ) ? 'false' : 'true';
-	
+
 							} elseif ( isset( $place_opts[ $opt_key ] ) ) {
-	
+
 								$json_ret[ $prop_name ] = $place_opts[ $opt_key ];
 							}
 						}
-				
+
 						if ( ! empty( $place_opts[ 'place_order_urls' ] ) ) {
-	
+
 							foreach ( SucomUtil::explode_csv( $place_opts[ 'place_order_urls' ] ) as $order_url ) {
-	
+
 								if ( empty( $order_url ) ) {	// Just in case.
 
 									continue;
 								}
-	
+
 								$json_ret[ 'potentialAction' ][] = WpssoSchema::get_schema_type_context( 'https://schema.org/OrderAction',
 									array( 'target' => $order_url ) );
 							}

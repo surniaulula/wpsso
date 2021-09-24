@@ -5781,8 +5781,7 @@ msgid "The %1$s add-on has been discontinued / deprecated."
 msgstr ""
 
 #: lib/conflict.php:81
-msgid ""
-"The %1$s shortcode was migrated to the new WPSSO Schema Shortcode add-on."
+msgid "The %1$s shortcode was migrated to a new WPSSO Schema Shortcode add-on."
 msgstr ""
 
 #: lib/conflict.php:83

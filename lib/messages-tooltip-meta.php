@@ -51,7 +51,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 				if ( null === $this->schema ) {
 
 					require_once WPSSO_PLUGINDIR . 'lib/messages-tooltip-meta-schema.php';
-	
+
 					$this->schema = new WpssoMessagesTooltipMetaSchema( $this->p );
 				}
 

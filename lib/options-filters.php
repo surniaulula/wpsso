@@ -51,15 +51,15 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				return $type;
 
 			} elseif ( 0 === strpos( $base_key, 'schema_' ) ) {
-			
+
 				switch ( $base_key ) {
-				
+
 					/**
 					 * Cast as integer (zero and -1 is ok).
 					 */
 					case 'schema_img_max':			// Schema Max. Images to Include.
 					case 'schema_vid_max':
-					
+
 						return 'integer';	// Aka 'int'.
 
 					/**
@@ -108,16 +108,16 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_review_rating':
 					case 'schema_review_rating_from':
 					case 'schema_review_rating_to':
-	
+
 						return 'blank_num';
-	
+
 					/**
 					 * Empty string or an image ID.
 					 */
 					case 'schema_img_id':
-	
+
 						return 'img_id';
-	
+
 					/**
 					 * Text strings that can be blank (line breaks are removed).
 					 */
@@ -158,16 +158,16 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_review_item_software_app_os':
 					case 'schema_software_app_cat':
 					case 'schema_software_app_os':
-	
+
 						return 'one_line';
-	
+
 					/**
 					 * CSV strings that can be blank (line breaks are removed).
 					 */
 					case 'schema_keywords':	// Keywords.
-	
+
 						return 'csv_blank';
-	
+
 					/**
 					 * Options that cannot be blank.
 					 */
@@ -210,16 +210,16 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_review_item_type':			// Reviewed Subject Webpage Type.
 					case 'schema_review_item_cw_author_type':	// Reviewed Subject Author Type.
 					case 'schema_type':				// Schema Type.
-	
+
 						return 'not_blank';
-	
+
 					/**
 					 * Empty string or image URL.
 					 */
 					case 'schema_img_url':
-	
+
 						return 'img_url';
-	
+
 					/**
 					 * Empty string or a URL.
 					 */
@@ -232,7 +232,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_review_item_sameas_url':		// Reviewed Subject Same-As URL.
 					case 'schema_review_item_cw_author_url':	// Reviewed Subject Author URL.
 					case 'schema_review_claim_first_url':		// First Appearance URL.
-	
+
 						return 'url';
 				}
 			}

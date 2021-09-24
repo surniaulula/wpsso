@@ -582,7 +582,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				$notice_msg .= __( 'Don\'t let that happen!', 'wpsso' ) . ' ';
 
 				$notice_msg .= __( 'Rate your active plugins today - it only takes a few seconds to rate a plugin!', 'wpsso' ) . ' ';
-				
+
 				$notice_msg .= convert_smilies( ';-)' );
 
 				$notice_msg .= '</p>' . "\n";

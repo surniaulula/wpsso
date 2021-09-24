@@ -557,7 +557,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			 * The "Schema" metabox tab and its options cannot be disabled, so hide them instead.
 			 */
 			if ( $this->p->avail[ 'p' ][ 'schema' ] ) {
-			
+
 				$custom_style_css .= '
 					.rank-math-tabs > div > a[href="#setting-panel-richsnippet"] { display: none; }
 					.rank-math-tabs-content .setting-panel-richsnippet { display: none; }

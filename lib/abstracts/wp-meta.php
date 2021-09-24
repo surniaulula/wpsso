@@ -463,7 +463,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'schema_prov_person_id'  => $opts[ 'schema_def_prov_person_id' ],	// Service Prov. Person.
 					'schema_pub_org_id'      => $opts[ 'schema_def_pub_org_id' ],		// Publisher Org.
 					'schema_pub_person_id'   => $opts[ 'schema_def_pub_person_id' ],	// Publisher Person.
-	
+
 					/**
 					 * Schema Audiobook.
 					 */
@@ -471,7 +471,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'schema_book_audio_duration_hours' => 0,	// Audiobook Duration (Hours).
 					'schema_book_audio_duration_mins'  => 0,	// Audiobook Duration (Mins).
 					'schema_book_audio_duration_secs'  => 0,	// Audiobook Duration (Secs).
-	
+
 					/**
 					 * Schema Event.
 					 */
@@ -499,7 +499,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'schema_event_offers_end_date'       => '',							// Event Offers End (Date).
 					'schema_event_offers_end_time'       => 'none',							// Event Offers End (Time).
 					'schema_event_offers_end_timezone'   => $timezone,						// Event Offers End (Timezone).
-	
+
 					/**
 					 * Schema How-To.
 					 */
@@ -512,7 +512,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'schema_howto_total_mins'  => 0,	// How-To Total Time (Mins).
 					'schema_howto_total_secs'  => 0,	// How-To Total Time (Secs).
 					'schema_howto_yield'       => '',	// How-To Yield.
-	
+
 					/**
 					 * Schema Job Posting.
 					 */
@@ -534,7 +534,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'schema_job_expire_date'          => '',					// Job Posting Expires (Date).
 					'schema_job_expire_time'          => 'none',					// Job Posting Expires (Time).
 					'schema_job_expire_timezone'      => $timezone,					// Job Posting Expires (Timezone).
-	
+
 					/**
 					 * Schema Movie.
 					 */
@@ -543,27 +543,27 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'schema_movie_duration_hours' => 0,		// Movie Runtime (Hours).
 					'schema_movie_duration_mins'  => 0,		// Movie Runtime (Mins).
 					'schema_movie_duration_secs'  => 0,		// Movie Runtime (Secs).
-	
+
 					/**
 					 * Schema Organization.
 					 */
 					'schema_organization_id' => 'none',	// Organization.
-	
+
 					/**
 					 * Schema Person.
 					 */
 					'schema_person_id' => 'none',	// Person.
-	
+
 					/**
 					 * Schema Place.
 					 */
 					'schema_place_id' => 'none',	// Place.
-	
+
 					/**
 					 * Schema QA Page.
 					 */
 					'schema_qa_desc' => '',		// QA Heading.
-	
+
 					/**
 					 * Schema Recipe.
 					 */
@@ -582,7 +582,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'schema_recipe_total_hours' => 0,	// How-To Total Time (Hours).
 					'schema_recipe_total_mins'  => 0,	// How-To Total Time (Mins).
 					'schema_recipe_total_secs'  => 0,	// How-To Total Time (Secs).
-	
+
 					/**
 					 * Schema Recipe - Nutrition Information.
 					 */
@@ -599,7 +599,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'schema_recipe_nutri_unsat_fat' => '',	// Unsaturated Fat.
 					'schema_recipe_nutri_chol'      => '',	// Cholesterol.
 					'schema_recipe_yield'           => '',	// Recipe Yield.
-	
+
 					/**
 					 * Schema Review.
 					 */
@@ -607,7 +607,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'schema_review_rating_from'     => '1',		// Review Rating (From).
 					'schema_review_rating_to'       => '5',		// Review Rating (To).
 					'schema_review_rating_alt_name' => '',		// Rating Value Name.
-	
+
 					/**
 					 * Schema Reviewed Subject.
 					 */
@@ -615,7 +615,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'schema_review_item_url'  => '',					// Subject Webpage URL.
 					'schema_review_item_name' => '',					// Subject Name.
 					'schema_review_item_desc' => '',					// Subject Description.
-	
+
 					/**
 					 * Schema Reviewed Subject: Creative Work.
 					 */
@@ -628,31 +628,31 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'schema_review_item_cw_created_date'     => '',		// C.W. Created Date.
 					'schema_review_item_cw_created_time'     => 'none',	// C.W. Created Time.
 					'schema_review_item_cw_created_timezone' => $timezone,	// C.W. Created Timezone.
-	
+
 					/**
 					 * Schema Reviewed Subject: Book.
 					 */
 					'schema_review_item_cw_book_isbn' => '',	// Book ISBN.
-	
+
 					/**
 					 * Schema Reviewed Subject: Product.
 					 */
 					'schema_review_item_product_brand'            => '',	// Product Brand.
 					'schema_review_item_product_retailer_part_no' => '',	// Product SKU.
 					'schema_review_item_product_mfr_part_no'      => '',	// Product MPN.
-	
+
 					/**
 					 * Schema Reviewed Subject: Software Application.
 					 */
 					'schema_review_item_software_app_cat' => '',	// Application Category.
 					'schema_review_item_software_app_os'  => '',	// Operating System.
-	
+
 					/**
 					 * Schema Claim Review.
 					 */
 					'schema_review_claim_reviewed'  => '',	// Short Summary of Claim.
 					'schema_review_claim_first_url' => '',	// First Appearance URL.
-	
+
 					/**
 					 * Schema Software Application.
 					 */
