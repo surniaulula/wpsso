@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 9.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-09-24 10:11-0700\n"
+"PO-Revision-Date: 2021-09-24 10:14-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -131,7 +131,7 @@ msgstr "Soumettez l'URL de la page d'accueil, ainsi qu'une URL d'article et de p
 #: gettext/gettext-html-setup.php:29
 msgctxt "html paragraph"
 msgid "Submit a few post and page URLs to the <a href=\"https://developers.facebook.com/tools/debug/\">Facebook Sharing Debugger</a> to verify your Open Graph meta tags. A link to the Facebook debugger is available under the Validate tab in the Document SSO metabox (on post, term, and user editing pages). Submitting a URL to the Facebook debugger can also be used to clear Facebook's cache (after clicking the \"Fetch new scrape information\" button). If you're validating older posts / pages, pre-dating the activation of WPSSO Core, note that <a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/\">Facebook may continue to use the old meta tag values from its cache</a>, even after fetching the new scrape information."
-msgstr "Soumettez quelques URL d'articles et de page au <a href=\"https://developers.facebook.com/tools/debug/\">Débogueur de partage Facebook</a> pour vérifier vos balises méta Open Graph. Un lien vers le débogueur Facebook est disponible sous l'onglet Valider dans la métabox SSO du document (sur les pages de publication, de terme et d'édition utilisateur). La soumission d'une URL au débogueur Facebook peut également être utilisée pour vider le cache de Facebook (après avoir cliqué sur le bouton \"Fetch new scrape information\"). Si vous validez des articles / pages plus anciens, antérieurs à l'activation de WPSSO Core, notez que <a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show- the-wrong-image-text/\">Facebook peut continuer à utiliser les anciennes valeurs des balises méta de son cache</a>, même après avoir récupéré les nouvelles informations."
+msgstr "Soumettez quelques URL d'articles et de page au <a href=\"https://developers.facebook.com/tools/debug/\">Débogueur de partage Facebook</a> pour vérifier vos balises méta Open Graph. Un lien vers le débogueur Facebook est disponible sous l'onglet Valider dans la métabox SSO du document (sur les pages de publication, de terme et d'édition utilisateur). La soumission d'une URL au débogueur Facebook peut également être utilisée pour vider le cache de Facebook (après avoir cliqué sur le bouton \"Fetch new scrape information\"). Si vous validez des articles / pages plus anciens, antérieurs à l'activation de WPSSO Core, notez que <a href=\"https://wpsso.com/docs/plugins/wpsso/faqs/why-does-facebook-show-the-wrong-image-text/\">Facebook peut continuer à utiliser les anciennes valeurs des balises méta de son cache</a>, même après avoir récupéré les nouvelles informations."
 
 #: gettext/gettext-html-setup.php:30
 msgctxt "html paragraph"
