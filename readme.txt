@@ -22,12 +22,12 @@ Rank higher and improve click through rates by presenting your content at its be
 
 <p><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"> WPSSO helps you rank higher and improves click through rates by presenting your content at its best on social sites and in search results - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled.</p>
 
-<p><strong>WPSSO provides meta tags and structured data markup for:</strong></p>
+<p><strong>Provides structured data markup for:</strong></p>
 
 <ul>
 	<li>Facebook / Open Graph</li>
 	<li>Google Knowledge Graph</li>
-	<li>Google Rich Results (aka Rich Snippets, Structured Data)</li>
+	<li>Google Rich Results (aka Rich Snippets)</li>
 	<li>LinkedIn / oEmbed Data</li>
 	<li>Mobile Web Browsers</li>
 	<li>Pinterest Rich Pins</li>
@@ -36,14 +36,14 @@ Rank higher and improve click through rates by presenting your content at its be
 	<li>Slack</li>
 	<li>WhatsApp and Messaging Apps</li>
 	<li>WordPress REST API</li>
-	<li>And so much more!</li>
+	<li>And More!</li>
 </ul>
 
 <p><strong>Supports over 500 different Schema types and sub-types:</strong></p>
 
 WPSSO provides comprehensive Schema JSON-LD markup for posts, pages, custom post types, terms (category, tags, etc.), custom taxonomies, user profile pages, search result pages, archive pages, and Accelerated Mobile Pages (AMP) pages - including image SEO, video SEO, local business, organization, publisher, person, author and co-authors, extensive e-Commerce product markup, product variations, product ratings, aggregate ratings, reviews, recipe information, event details, collection pages, profile pages, search pages, FAQ pages, item lists for Google's Rich Results Carousel, and much more.
 
-<p><strong>WPSSO reads your existing content, plugin, and service API data:</strong></p>
+<p><strong>Reads your existing content, plugin, and service API data:</strong></p>
 
 There's no need to manually re-enter descriptions, titles, product information, or re-select images and videos! WPSSO can read all your existing WordPress content, including custom posts and taxonomies, enhanced user profile data, Media Library image and video information, third-party plugin data, and remote service APIs (Bitly, Facebook, Shopper Approved, Stamped.io, Vimeo, Wistia, YouTube, and many more).
 
@@ -144,7 +144,7 @@ The WPSSO Core Standard plugin is designed to satisfy the requirements of most s
 
 **[Premium]** Detection of embedded videos in content text with API support for Facebook, Slideshare, Vimeo, Wistia, and Youtube videos.
 
-**[Premium]** Upscaling of smaller images to satisfy minimum size requirements for social sites and Google Rich Results (aka aka Rich Snippets, Structured Data).
+**[Premium]** Upscaling of smaller images to satisfy minimum size requirements for social sites and Google Rich Results (aka aka Rich Snippets).
 
 **[Premium]** URL shortening with Bitly, DLMY.App, Google, Ow.ly, TinyURL, or YOURLS.
 
