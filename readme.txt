@@ -12,7 +12,7 @@ Requires PHP: 7.0
 Requires At Least: 5.0
 Tested Up To: 5.8.1
 WC Tested Up To: 5.7.0
-Stable Tag: 8.39.1
+Stable Tag: 9.0.0
 
 Rank higher and improve click through rates by presenting your content at its best on social sites and in search results.
 
@@ -39,7 +39,7 @@ Rank higher and improve click through rates by presenting your content at its be
 	<li>And so much more!</li>
 </ul>
 
-<p><strong>Supports over 500 different Schema (aka Schema.org) types and sub-types:</strong></p>
+<p><strong>Supports over 500 different Schema types and sub-types:</strong></p>
 
 WPSSO provides comprehensive Schema JSON-LD markup for posts, pages, custom post types, terms (category, tags, etc.), custom taxonomies, user profile pages, search result pages, archive pages, and Accelerated Mobile Pages (AMP) pages - including image SEO, video SEO, local business, organization, publisher, person, author and co-authors, extensive e-Commerce product markup, product variations, product ratings, aggregate ratings, reviews, recipe information, event details, collection pages, profile pages, search pages, FAQ pages, item lists for Google's Rich Results Carousel, and much more.
 

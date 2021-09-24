@@ -3,7 +3,7 @@
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
 <tr><th align="right" valign="top" nowrap>Summary</th><td>Rank higher and improve click through rates by presenting your content at its best on social sites and in search results.</td></tr>
-<tr><th align="right" valign="top" nowrap>Stable Version</th><td>8.39.1</td></tr>
+<tr><th align="right" valign="top" nowrap>Stable Version</th><td>9.0.0</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires PHP</th><td>7.0 or newer</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires WordPress</th><td>5.0 or newer</td></tr>
 <tr><th align="right" valign="top" nowrap>Tested Up To WordPress</th><td>5.8.1</td></tr>
@@ -36,7 +36,7 @@
     <li>And so much more!</li>
 </ul>
 
-<p><strong>Supports over 500 different Schema (aka Schema.org) types and sub-types:</strong></p>
+<p><strong>Supports over 500 different Schema types and sub-types:</strong></p>
 
 <p>WPSSO provides comprehensive Schema JSON-LD markup for posts, pages, custom post types, terms (category, tags, etc.), custom taxonomies, user profile pages, search result pages, archive pages, and Accelerated Mobile Pages (AMP) pages - including image SEO, video SEO, local business, organization, publisher, person, author and co-authors, extensive e-Commerce product markup, product variations, product ratings, aggregate ratings, reviews, recipe information, event details, collection pages, profile pages, search pages, FAQ pages, item lists for Google's Rich Results Carousel, and much more.</p>
 
