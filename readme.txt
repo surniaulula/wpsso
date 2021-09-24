@@ -469,7 +469,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 * **New Features**
 	* Discontinued / deprecated the WPSSO JSON add-on:
-		* The <code>&#91;schema&#93;</code> shortcode was migrated to the new WPSSO Schema Shortcode add-on.
+		* The <code>&#91;schema&#93;</code> shortcode was migrated to a new WPSSO Schema Shortcode add-on.
 		* All other features of the WPSSO Schema JSON-LD Markup add-on were integrated into the WPSSO Core v9.0.0 plugin.
 	* Updated the SSO &gt; Advanced Settings &gt; Integration &gt; Enable Tags for Pages feature to register a non-public Page Tags taxonomy.
 * **Improvements**
