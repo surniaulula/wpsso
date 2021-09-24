@@ -486,6 +486,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fixed the saving of selected option colors using `wpColorPicker()`.
 	* Fixed an undefined `$mt_ret` variable error in lib/util.php.
 	* Fixed reading of transient cache in `WpssoSchema->get_schema_types_array()`.
+	* Fixed saving of the "Primary Category" option value when the default category ID is 1.
 * **Developer Notes**
 	* Added a new 'wpsso_{post_type}_tag_taxonomy' filter.
 	* Added a new `WpssoOptionsFilters` class.
