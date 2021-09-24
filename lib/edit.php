@@ -146,8 +146,8 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Primary Category', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-primary_term_id',
-					'content'  => $form->get_select( 'primary_term_id', $primary_terms, $css_class = 'primary_term_id', $css_id = '',
-						$is_assoc = true, $is_disabled = false, $selected = true ),
+					'content'  => $form->get_select( 'primary_term_id', $primary_terms,
+						$css_class = 'primary_term_id', $css_id = '', $is_assoc = true ),
 				) : array(),
 				'og_title' => array(
 					'th_class' => 'medium',
