@@ -302,7 +302,7 @@ WooCommerce by default provides incomplete Schema markup for Google Rich Results
 
 **[Premium]** Integrates with other plugins and service APIs for additional image, video, e-Commerce product details, SEO settings, etc. The following modules are included with the Premium version and automatically loaded if/when the supported plugins and/or services are required.
 
-* **Reads data from third-party plugins:** 
+* **Reads data from 30 third-party plugins:** 
 
 	* All in One SEO Pack
 	* bbPress
@@ -335,7 +335,7 @@ WooCommerce by default provides incomplete Schema markup for Google Rich Results
 	* Yoast SEO
 	* Yotpo Social Reviews for WooCommerce
 
-* **Reads data from remote service APIs:**
+* **Reads data from 15 remote service APIs:**
 
 	* Bitly
 	* DLMY.App

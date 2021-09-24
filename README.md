@@ -377,7 +377,7 @@
 <p><strong>[Premium]</strong> Integrates with other plugins and service APIs for additional image, video, e-Commerce product details, SEO settings, etc. The following modules are included with the Premium version and automatically loaded if/when the supported plugins and/or services are required.</p>
 
 <ul>
-<li><p><strong>Reads data from third-party plugins:</strong></p>
+<li><p><strong>Reads data from 30 third-party plugins:</strong></p>
 
 <ul>
 <li>All in One SEO Pack</li>
@@ -411,7 +411,7 @@
 <li>Yoast SEO</li>
 <li>Yotpo Social Reviews for WooCommerce</li>
 </ul></li>
-<li><p><strong>Reads data from remote service APIs:</strong></p>
+<li><p><strong>Reads data from 15 remote service APIs:</strong></p>
 
 <ul>
 <li>Bitly</li>
