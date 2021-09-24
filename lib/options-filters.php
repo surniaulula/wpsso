@@ -57,7 +57,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					/**
 					 * Cast as integer (zero and -1 is ok).
 					 */
-					case 'schema_img_max':			// Schema Max. Images to Include.
+					case 'schema_img_max':		// Schema Max. Images to Include.
 					case 'schema_vid_max':
 
 						return 'integer';	// Aka 'int'.
@@ -320,9 +320,10 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				/**
 				 * Cast as integer (zero and -1 is ok).
 				 */
-				case 'og_img_max':			// Maximum Images to Include.
-				case 'og_vid_max':
+				case 'og_img_max':			// Maximum Images.
+				case 'og_vid_max':			// Maximum Videos.
 				case 'og_desc_hashtags': 
+				case 'primary_term_id':			// Primary Category.
 				case ( preg_match( '/_(cache_exp|caption_hashtags|filter_prio)$/', $base_key ) ? true : false ):
 				case ( preg_match( '/_(img|logo|banner)_url(:width|:height)$/', $base_key ) ? true : false ):
 
