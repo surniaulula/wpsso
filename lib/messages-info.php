@@ -147,7 +147,7 @@ if ( ! class_exists( 'WpssoMessagesInfo' ) ) {
 
 					$text .= '<p>';
 
-					$text .= sprintf( __( 'After purchasing a %1$s license pack, you\'ll receive an email with %2$s installation instructions and your unique Authentication ID for the license pack.', 'wpsso' ), $this->p_name_pro, $this->dist_pro ) . ' ';
+					$text .= sprintf( __( 'After purchasing a %1$s license pack, you will receive an email with %2$s installation instructions and your unique Authentication ID for the license pack.', 'wpsso' ), $this->p_name_pro, $this->dist_pro ) . ' ';
 
 					$text .=  __( 'Enter the Authentication ID in the option field below.', 'wpsso' ) . ' ';
 
@@ -171,17 +171,17 @@ if ( ! class_exists( 'WpssoMessagesInfo' ) ) {
 
 					$text .= '<p>';
 
-					$text .= sprintf( __( 'After purchasing a %1$s license pack, you\'ll receive an email with %2$s installation instructions and your unique Authentication ID for the license pack.', 'wpsso' ), $this->p_name_pro, $this->dist_pro ) . ' ';
+					$text .= sprintf( __( 'After purchasing a %1$s license pack, you will receive an email with %2$s installation instructions and your unique Authentication ID for the license pack.', 'wpsso' ), $this->p_name_pro, $this->dist_pro ) . ' ';
 
-					$text .= sprintf( __( 'You may enter the Authentication ID on this page <em>to define a value for all sites within the network</em> or enter the Authentication ID individually on each site\'s %1$s settings page.', 'wpsso' ), $licenses_page_link );
+					$text .= sprintf( __( 'You may enter the Authentication ID in this settings page to define a value for all sites within the network, or enter the Authentication ID individually in each site\'s %1$s settings page.', 'wpsso' ), $licenses_page_link ) . ' ';
 
-					$text .= '</p>';
+					$text .= sprintf( __( 'If you enter an Authentication ID in this settings page, make sure you have purchased enough licenses for all sites within the network - for example, to license the %1$s plugin for 10 sites, you would need an Authentication ID for a 10 license pack or better.', 'wpsso' ), $this->p_name_pro ) . ' ';
 
-					$text .= '<p>';
+					$text .= '</p><p>';
 
-					$text .= sprintf( __( 'If you enter an Authentication ID in this network settings page, <em>make sure you have purchased enough licenses for all sites within the network</em> - for example, to license the %1$s plugin for 10 sites, you would need an Authentication ID for a 10 license pack or better.', 'wpsso' ), $this->p_name_pro ) . ' ';
+					$text .= sprintf( __( 'WordPress uses the default blog (ie. BLOG_ID_CURRENT_SITE) to manage updates in the network admin interface, which means the default blog must be licensed to install %1$s updates.', 'wpsso' ), $this->dist_pro ) . ' ';
 
-					$text .= sprintf( __( '<strong>Note that WordPress uses the default blog to install and/or update plugins from the Network Admin interface</strong> - to update the %1$s, make sure the %2$s add-on is active on the default blog and the default blog is licensed.', 'wpsso' ), $this->p_name_pro, $um_info_name );
+					$text .= sprintf( __( 'To update the %1$s plugin, make sure the %2$s add-on is active on the default blog, and the default blog is licensed.', 'wpsso' ), $this->p_name_pro, $um_info_name );
 
 					$text .= '</p>';
 

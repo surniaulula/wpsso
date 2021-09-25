@@ -1780,7 +1780,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function preg_grep_keys( $key_preg, array $in_arr, $invert = false, $replace = false ) {
 
-			$matched_keys = preg_grep( $key_preg, array_keys( $in_arr ), $invert ? PREG_GREP_INVERT : null );
+			if ( empty( $in_arr ) ) {	// Nothing to do.
+
+				return $in_arr;
+			}
+
+			$in_arr_keys = array_keys( $in_arr );
+
+			$matched_keys = preg_grep( $key_preg, $in_arr_keys, $invert ? PREG_GREP_INVERT : null );
 
 			if ( empty( $matched_keys ) && $invert ) {	// Nothing to do.
 
