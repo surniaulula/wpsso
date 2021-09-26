@@ -44,7 +44,7 @@
 
 <p>There's no need to manually re-enter descriptions, titles, product information, or re-select images and videos! WPSSO can read all your existing WordPress content, including custom posts and taxonomies, enhanced user profile data, Media Library image and video information, third-party plugin data, and remote service APIs (Bitly, Facebook, Shopper Approved, Stamped.io, Vimeo, Wistia, YouTube, and many more).</p>
 
-<p><strong>Use WPSSO by itself or extend another SEO plugin:</strong></p>
+<p><strong>Use WPSSO Core by itself or extend another SEO plugin:</strong></p>
 
 <p>WPSSO can be your only social and search optimization plugin, or can improve the structured data of another third-party SEO plugin (like All in One SEO Pack, Jetpack SEO Tools, Rank Math SEO, SEO Ultimate, SEOPress, The SEO Framework, WP Meta SEO, Yoast SEO, and more).</p>
 
