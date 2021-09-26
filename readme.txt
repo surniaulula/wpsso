@@ -20,7 +20,7 @@ Rank higher and improve click through rates by presenting your content at its be
 
 <h3 class="top">THE MOST ADVANCED STRUCTURED DATA PLUGIN FOR WORDPRESS</h3>
 
-<p><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"> WPSSO helps you rank higher and improves click through rates by presenting your content at its best on social sites and in search results - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled.</p>
+<p><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"> WPSSO helps you rank higher and improves click through rates by presenting your content at its best on <strong>social sites</strong> and in <strong>search results</strong> - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled.</p>
 
 <p><strong>Provides structured data markup for:</strong></p>
 
