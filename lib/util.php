@@ -1850,6 +1850,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 */
 		public function replace_inline_vars( $content, $mod = false, $atts = array(), $extras = array() ) {
 
+			_deprecated_function( __METHOD__ . '()', '2021/09/03', $replacement = __CLASS__ . '::replace_inline_variables()' );	// Deprecation message.
+
 			return $this->replace_inline_variables( $content, $mod, $atts, $extras );
 		}
 

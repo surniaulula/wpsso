@@ -734,6 +734,16 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			return '<span class="option-warning">' . $text . '</span>';
 		}
 
+		/**
+		 * Deprecated on 2021/09/10.
+		 */
+		public function preview_images_first() {
+
+			_deprecated_function( __METHOD__ . '()', '2021/09/10', $replacement = __CLASS__ . '::preview_images_are_first()' );	// Deprecation message.
+
+			return $this->preview_images_are_first();
+		}
+
 		public function preview_images_are_first() {
 
 			$html = ' ' . _x( 'note that video preview images are included first', 'option comment', 'wpsso' );

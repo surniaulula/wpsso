@@ -246,6 +246,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 */
 		public function plugin_pkg_info() {
 
+			_deprecated_function( __METHOD__ . '()', '2020/11/25', $replacement = __CLASS__ . '::get_pkg_info()' );	// Deprecation message.
+
 			return $this->get_pkg_info();
 		}
 
@@ -2905,18 +2907,24 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 * Deprecated on 2020/04/28.
 		 */
 		public function add_advanced_product_attr_table_rows( array &$table_rows, $form ) {
+
+			_deprecated_function( __METHOD__ . '()', '2020/04/28', $replacement = '' );	// Deprecation message.
 		}
 
 		/**
 		 * Deprecated on 2021/03/10.
 		 */
 		public function add_advanced_product_attrs_table_rows( array &$table_rows, $form ) {
+
+			_deprecated_function( __METHOD__ . '()', '2021/03/10', $replacement = '' );	// Deprecation message.
 		}
 
 		/**
 		 * Deprecated on 2021/03/10.
 		 */
 		public function add_advanced_custom_fields_table_rows( array &$table_rows, $form ) {
+
+			_deprecated_function( __METHOD__ . '()', '2021/03/10', $replacement = '' );	// Deprecation message.
 		}
 
 		public static function get_option_unit_comment( $opt_key ) {
