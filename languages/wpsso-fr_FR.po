@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 9.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-09-25 09:11-0700\n"
+"PO-Revision-Date: 2021-09-27 06:14-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -5975,8 +5975,8 @@ msgid "You can edit images in the <a href=\"%s\">WordPress Media Library</a> to 
 msgstr "Vous pouvez éditer les images dans la <a href=\"%s\">médiathèque WordPress</a> pour sélectionner une zone de recadrage préférée (comme exemple, en haut ou en bas) et optimiser les textes sociaux et SEO de l'image."
 
 #: lib/messages-info-meta.php:196
-msgid "The oEmbed HTML is created by the <code>%s</code> template."
-msgstr "Le HTML oEmbed est créé par le modèle <code>%s</code>."
+msgid "The oEmbed HTML is provided by the <code>%s</code> template."
+msgstr "Le HTML oEmbed est fourni par le modèle <code>%s</code>."
 
 #: lib/messages-info.php:62
 msgid "Schema FAQPage markup is a collection of Questions and Answers, and WordPress manages a collection of related content in two different ways:"
