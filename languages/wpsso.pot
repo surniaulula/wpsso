@@ -6403,7 +6403,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages-info-meta.php:196
-msgid "The oEmbed HTML is created by the <code>%s</code> template."
+msgid "The oEmbed HTML is provided by the <code>%s</code> template."
 msgstr ""
 
 #: lib/messages-info.php:62
