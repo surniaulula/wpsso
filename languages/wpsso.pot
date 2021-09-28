@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 9.0.0\n"
+"Project-Id-Version: WPSSO Core 9.0.1-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -563,7 +563,7 @@ msgid "Media Library"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:38 lib/com/form.php:883 lib/script.php:432
+#: gettext/gettext-lib-com.php:38 lib/com/form.php:883 lib/script.php:428
 msgid "Select Image"
 msgstr ""
 
@@ -4659,56 +4659,56 @@ msgctxt "default description"
 msgid "No Description."
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1009
+#: lib/abstracts/wp-meta.php:1005
 msgctxt "metabox tab"
 msgid "Customize"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1010 lib/messages.php:285
+#: lib/abstracts/wp-meta.php:1006 lib/messages.php:285
 msgctxt "metabox tab"
 msgid "Priority Media"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1014 lib/messages-info.php:369
+#: lib/abstracts/wp-meta.php:1010 lib/messages-info.php:369
 msgctxt "metabox tab"
 msgid "Robots Meta"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1015
+#: lib/abstracts/wp-meta.php:1011
 msgctxt "metabox tab"
 msgid "Social Preview"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1016
+#: lib/abstracts/wp-meta.php:1012
 msgctxt "metabox tab"
 msgid "oEmbed Preview"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1017
+#: lib/abstracts/wp-meta.php:1013
 msgctxt "metabox tab"
 msgid "Head Markup"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1018
+#: lib/abstracts/wp-meta.php:1014
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1488
+#: lib/abstracts/wp-meta.php:1484
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1816 lib/json-filters/type/claimreview.php:77
+#: lib/abstracts/wp-meta.php:1812 lib/json-filters/type/claimreview.php:77
 msgid "A claim review cannot be the subject of another claim review."
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1818
+#: lib/abstracts/wp-meta.php:1814
 msgid ""
 "Please select a subject webpage type that better describes the subject of "
 "the webpage (ie. the content) being reviewed."
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:2536
+#: lib/abstracts/wp-meta.php:2532
 msgid "adding schema images"
 msgstr ""
 
@@ -5142,7 +5142,7 @@ msgstr ""
 #: lib/admin.php:1209 lib/admin.php:1220
 #: lib/messages-tooltip-meta-schema.php:404 lib/messages-tooltip-plugin.php:169
 #: lib/submenu/tools.php:58 lib/submenu/tools.php:103 lib/user.php:57
-#: lib/user.php:1597 lib/user.php:1705 lib/user.php:1836
+#: lib/user.php:1605 lib/user.php:1713 lib/user.php:1844
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -9206,7 +9206,7 @@ msgid "Robots meta tag is disabled."
 msgstr ""
 
 #: lib/messages.php:816 lib/messages.php:840 lib/messages.php:875
-#: lib/util-metabox.php:226
+#: lib/util-metabox.php:234
 msgid "No options available."
 msgstr ""
 
@@ -9778,7 +9778,7 @@ msgstr ""
 msgid "Save a draft or publish to display these options."
 msgstr ""
 
-#: lib/post.php:1583
+#: lib/post.php:1587
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -9957,7 +9957,7 @@ msgstr ""
 msgid "adding schema %s #%d image"
 msgstr ""
 
-#: lib/script.php:386
+#: lib/script.php:388
 msgid "No %s notifications."
 msgstr ""
 
@@ -9965,31 +9965,31 @@ msgstr ""
 msgid "Copy notifications to clipboard."
 msgstr ""
 
-#: lib/script.php:413
+#: lib/script.php:409
 msgid "Copied to clipboard."
 msgstr ""
 
-#: lib/script.php:414
+#: lib/script.php:410
 msgid "Value linked to {0} option"
 msgstr ""
 
-#: lib/script.php:415
+#: lib/script.php:411
 msgid "{0} of {1} characters minimum"
 msgstr ""
 
-#: lib/script.php:416
+#: lib/script.php:412
 msgid "{0} of {1} characters required"
 msgstr ""
 
-#: lib/script.php:417
+#: lib/script.php:413
 msgid "{0} of {1} characters maximum"
 msgstr ""
 
-#: lib/script.php:418
+#: lib/script.php:414
 msgid "{0} characters"
 msgstr ""
 
-#: lib/script.php:420
+#: lib/script.php:416
 msgid "There are {0} important error messages under the %s notification icon."
 msgstr ""
 
@@ -10573,7 +10573,7 @@ msgid ""
 "term ID %3$d in taxonomy %4$s (%5$s)."
 msgstr ""
 
-#: lib/term.php:842
+#: lib/term.php:846
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -10632,56 +10632,56 @@ msgstr ""
 msgid "Examples: CPA, Esq., M.D., P.E., PhD., PMP, RN"
 msgstr ""
 
-#: lib/user.php:922
+#: lib/user.php:930
 msgid "(not a Facebook Pages URL)"
 msgstr ""
 
-#: lib/user.php:1048
+#: lib/user.php:1056
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:1049
+#: lib/user.php:1057
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:1050
+#: lib/user.php:1058
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1392
+#: lib/user.php:1400
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/user.php:1616
+#: lib/user.php:1624
 msgid ""
 "Aborting task to add the %1$s role to content creators - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1631
+#: lib/user.php:1639
 msgid "A task to add the %1$s role for content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1673
+#: lib/user.php:1681
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1675 lib/user.php:1778 lib/util-cache.php:182
+#: lib/user.php:1683 lib/user.php:1786 lib/util-cache.php:182
 #: lib/util-cache.php:745
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
-#: lib/user.php:1724
+#: lib/user.php:1732
 msgid ""
 "Aborting task to remove the %1$s role from all users - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1739
+#: lib/user.php:1747
 msgid "A task to remove the %1$s role from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1776
+#: lib/user.php:1784
 msgid "The %1$s role has been removed from %2$d content creators."
 msgstr ""
 
@@ -10827,22 +10827,22 @@ msgid ""
 "refreshed."
 msgstr ""
 
-#: lib/util-metabox.php:258
+#: lib/util-metabox.php:266
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util-metabox.php:261
+#: lib/util-metabox.php:269
 msgctxt "option comment"
 msgid "show these options now"
 msgstr ""
 
-#: lib/util-metabox.php:266
+#: lib/util-metabox.php:274
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util-metabox.php:269
+#: lib/util-metabox.php:277
 msgctxt "option comment"
 msgid "show these rows now"
 msgstr ""

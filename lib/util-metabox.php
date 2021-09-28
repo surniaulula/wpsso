@@ -107,14 +107,22 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 
 			$metabox_html .= '</div><!-- .' . $class_metabox_tabs . ' -->' . "\n";
 
-			/**
-			 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
-			 */
-			$metabox_html .= '<script>';
-			$metabox_html .= $doing_ajax ? '' : 'jQuery( document ).on( \'ready\', function(){ ';
-			$metabox_html .= 'sucomTabs( \'' . $metabox_id . '\', \'' . $default_tab . '\' );';
-			$metabox_html .= $doing_ajax ? '' : '});';
-			$metabox_html .= '</script>' . "\n";
+			if ( $doing_ajax ) {
+			
+				$metabox_html .= '<!-- adding tabs javascript for ajax call -->' . "\n";
+				$metabox_html .= '<script>';
+				$metabox_html .= 'sucomTabs( \'' . $metabox_id . '\', \'' . $default_tab . '\' );';
+				$metabox_html .= '</script>' . "\n";
+
+			} else {
+
+				$metabox_html .= '<!-- adding tabs javascript for page load -->' . "\n";
+				$metabox_html .= '<script>';
+				$metabox_html .= 'jQuery( document ).on( \'ready\', function(){ ';
+				$metabox_html .= 'sucomTabs( \'' . $metabox_id . '\', \'' . $default_tab . '\' );';
+				$metabox_html .= '});';
+				$metabox_html .= '</script>' . "\n";
+			}
 
 			return $metabox_html;
 		}

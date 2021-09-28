@@ -86,39 +86,42 @@ function sucomUpdateContainers( pluginId, cfgName ) {
 
 	var cfg = window[ cfgName ];
 
-	if ( jQuery.isArray( cfg._mb_container_ids ) ) {
+	if ( jQuery.isArray( cfg._metabox_postbox_ids ) ) {
 
 		var post_id = getCurrentPostId();
 
-		for ( var container_key in cfg._mb_container_ids ) {
+		for ( var postbox_key in cfg._metabox_postbox_ids ) {
 
-			var container_id = cfg._mb_container_ids[ container_key ];
+			var postbox_id = cfg._metabox_postbox_ids[ postbox_key ];
 
-			var ajax_action_update_container = 'get_container_id_' + container_id;
+			if ( postbox_id ) {
 
-			/**
-			 * Just in case - sanitize the WP ajax action filter name.
-			 */
-			ajax_action_update_container = ajax_action_update_container.toLowerCase();
-			ajax_action_update_container = ajax_action_update_container.replace( /[:\/\-\. ]+/g, '_' );
-			ajax_action_update_container = ajax_action_update_container.replace( /[^a-z0-9_\-]/g, '' );
-
-			var ajaxData = {
-				action: ajax_action_update_container,
-				post_id: post_id,
-				_ajax_nonce: cfg._ajax_nonce,
-			}
-
-			jQuery.post( ajaxurl, ajaxData, function( html ) {
+				var ajax_action_update_postbox = 'get_metabox_postbox_id_' + postbox_id + '_inside';
 
 				/**
-				 * The returned HTML includes javascript to call the sucomInitMetabox() function.
+				 * Just in case - sanitize the WP ajax action filter name.
 				 */
-				if ( html ) {
-
-					jQuery( '#' + container_id ).replaceWith( html );
+				ajax_action_update_postbox = ajax_action_update_postbox.toLowerCase();
+				ajax_action_update_postbox = ajax_action_update_postbox.replace( /[:\/\-\. ]+/g, '_' );
+				ajax_action_update_postbox = ajax_action_update_postbox.replace( /[^a-z0-9_\-]/g, '' );
+	
+				var ajaxData = {
+					action: ajax_action_update_postbox,
+					post_id: post_id,
+					_ajax_nonce: cfg._ajax_nonce,
 				}
-			} );
+
+				jQuery.post( ajaxurl, ajaxData, function( html ) {
+
+					/**
+					 * The returned HTML includes javascript to call the sucomInitMetabox() function.
+					 */
+					if ( html ) {
+	
+						jQuery( '#' + postbox_id + '.postbox div.inside' ).replaceWith( '<div class="inside">' + html + '</div>' );
+					}
+				} );
+			}
 		}
 	}
 }

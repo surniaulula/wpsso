@@ -4,9 +4,6 @@ jQuery( function(){
 	sucomInitMetabox();
 });
 
-/**
- * Example: container_id = '#sucom_metabox_sso_inside'
- */
 function sucomInitMetabox( container_id, doing_ajax ) {
 
 	var table_id = 'table.sucom-settings';

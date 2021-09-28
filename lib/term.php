@@ -753,11 +753,15 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			$metabox_html .= $this->p->util->metabox->get_tabbed( $metabox_id, $tabs, $table_rows, $tabbed_args );
 
+			$metabox_html .= '<!-- ' . $mb_container_id . '_footer begin -->' . "\n";
+
 			$metabox_html .= apply_filters( $mb_container_id . '_footer', '', $mod );
 
-			$metabox_html .= '</div><!-- #'. $mb_container_id . ' -->' . "\n";
+			$metabox_html .= '<!-- ' . $mb_container_id . '_footer end -->' . "\n";
 
 			$metabox_html .= $this->get_metabox_javascript( $mb_container_id );
+
+			$metabox_html .= '</div><!-- #'. $mb_container_id . ' -->' . "\n";
 
 			if ( $this->p->debug->enabled ) {
 

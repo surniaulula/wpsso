@@ -967,11 +967,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			if ( $doing_ajax ) {
 
-				$metabox_html .= '<!-- metabox javascript for ajax call -->' . "\n";
-
-				/**
-				 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
-				 */
+				$metabox_html .= '<!-- init metabox javascript for ajax call -->' . "\n";
 				$metabox_html .= '<script>sucomInitMetabox( \'' . $container_id . '\', true );</script>' . "\n";
 			}
 

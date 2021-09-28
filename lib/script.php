@@ -375,18 +375,18 @@ EOF;
 		 */
 		public function get_admin_page_script_data() {
 
-			$option_labels = array(
+			$option_labels = apply_filters( 'wpsso_admin_page_script_data_option_labels', array(
 				'schema_type' => _x( 'Schema Type', 'option label', 'wpsso' ),
-			);
+			) );
 
-			$metabox_id       = $this->p->cf[ 'meta' ][ 'id' ];
-			$mb_container_id  = 'wpsso_metabox_' . $metabox_id . '_inside';
-			$mb_container_ids = apply_filters( 'wpsso_metabox_container_ids', array( $mb_container_id ) );
+			$metabox_postbox_ids = apply_filters( 'wpsso_admin_page_script_data_metabox_postbox_ids', array(
+				'wpsso_' . $this->p->cf[ 'meta' ][ 'id' ],
+			) );
 
-			$no_notices_transl = sprintf( __( 'No %s notifications.', 'wpsso' ), $this->p->cf[ 'menu' ][ 'title' ] );
-			$no_notices_html   = '<div class="ab-item ab-empty-item">' . $no_notices_transl . '</div>';
-
+			$tb_types_showing    = $this->p->notice->get_tb_types_showing();
 			$notice_text_id      = 'wpsso_' . uniqid();	// CSS id of hidden notice text container.
+			$no_notices_transl   = sprintf( __( 'No %s notifications.', 'wpsso' ), $this->p->cf[ 'menu' ][ 'title' ] );
+			$no_notices_html     = '<div class="ab-item ab-empty-item">' . $no_notices_transl . '</div>';
 			$copy_notices_transl = __( 'Copy notifications to clipboard.', 'wpsso' );
 			$copy_notices_html   = '<div class="wpsso-notice notice notice-alt notice-copy" style="display:block !important;">' .
 				'<div class="notice-message">' .
@@ -394,21 +394,17 @@ EOF;
 				'</div><!-- .notice-message -->' .
 				'</div><!-- .notice-copy -->';
 
-			$option_labels = apply_filters( 'wpsso_admin_page_script_data_option_labels', $option_labels );
-
-			$tb_types_showing = $this->p->notice->get_tb_types_showing();
-
 			return array(
-				'_ajax_nonce'         => wp_create_nonce( WPSSO_NONCE_NAME ),
-				'_ajax_actions'       => array(
+				'_ajax_nonce'   => wp_create_nonce( WPSSO_NONCE_NAME ),
+				'_ajax_actions' => array(
 					'get_notices_json'    => 'wpsso_get_notices_json',
 					'schema_type_og_type' => 'wpsso_schema_type_og_type',
 				),
 				'_option_labels'         => $option_labels,
-				'_mb_container_ids'      => $mb_container_ids,	// Metabox ids to update when block editor saves.
-				'_tb_types_showing'      => $tb_types_showing,	// Maybe null, true, false, or array.
+				'_metabox_postbox_ids'   => $metabox_postbox_ids,	// Metabox postbox ids to update when the block editor saves.
+				'_tb_types_showing'      => $tb_types_showing,		// Maybe null, true, false, or array.
+				'_notice_text_id'        => $notice_text_id,		// CSS id of hidden notice text container.
 				'_no_notices_html'       => $no_notices_html,
-				'_notice_text_id'        => $notice_text_id,	// CSS id of hidden notice text container.
 				'_copy_notices_html'     => $copy_notices_html,
 				'_copy_clipboard_transl' => __( 'Copied to clipboard.', 'wpsso' ),
 				'_linked_to_transl'      => __( 'Value linked to {0} option', 'wpsso' ),

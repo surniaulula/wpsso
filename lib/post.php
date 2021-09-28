@@ -86,9 +86,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				$metabox_id = $this->p->cf[ 'meta' ][ 'id' ];
 
-				$mb_container_id = 'wpsso_metabox_' . $metabox_id . '_inside';
+				$action_name = 'wp_ajax_get_metabox_postbox_id_wpsso_' . $metabox_id . '_inside';
 
-				add_action( 'wp_ajax_get_container_id_' . $mb_container_id, array( $this, 'ajax_get_metabox_document_meta' ) );
+				add_action( $action_name, array( $this, 'ajax_get_metabox_document_meta' ) );
 
 				if ( ! empty( $_GET ) || basename( $_SERVER[ 'PHP_SELF' ] ) === 'post-new.php' ) {
 
@@ -1399,11 +1399,15 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$metabox_html .= $this->p->util->metabox->get_tabbed( $metabox_id, $tabs, $table_rows, $tabbed_args );
 
+			$metabox_html .= '<!-- ' . $mb_container_id . '_footer begin -->' . "\n";
+
 			$metabox_html .= apply_filters( $mb_container_id . '_footer', '', $mod );
 
-			$metabox_html .= '</div><!-- #'. $mb_container_id . ' -->' . "\n";
+			$metabox_html .= '<!-- ' . $mb_container_id . '_footer end -->' . "\n";
 
 			$metabox_html .= $this->get_metabox_javascript( $mb_container_id );
+
+			$metabox_html .= '</div><!-- #'. $mb_container_id . ' -->' . "\n";
 
 			if ( $this->p->debug->enabled ) {
 
