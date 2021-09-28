@@ -465,6 +465,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 9.0.1-dev.1 (2021/09/28)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Optimized the metabox container update in the block editor.
+* **Requires At Least**
+	* PHP v7.0.
+	* WordPress v5.0.
+
 **Version 9.0.0 (2021/09/24)**
 
 * **New Features**
@@ -506,6 +520,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.0.
 
 == Upgrade Notice ==
+
+= 9.0.1-dev.1 =
+
+(2021/09/28) Optimized the metabox container update in the block editor.
 
 = 9.0.0 =
 
