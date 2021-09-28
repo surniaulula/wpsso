@@ -36,11 +36,11 @@
     <li>And More!</li>
 </ul>
 
-<p><strong>Supports over 500 different Schema types and sub-types:</strong></p>
+<p><strong>Supports over 500 different Schema types:</strong></p>
 
-<p>WPSSO provides comprehensive Schema JSON-LD markup for posts, pages, custom post types, terms (category, tags, etc.), custom taxonomies, user profile pages, search result pages, archive pages, and Accelerated Mobile Pages (AMP) pages - including image SEO, video SEO, local business, organization, publisher, person, author and co-authors, extensive e-Commerce product markup, product variations, product ratings, aggregate ratings, reviews, recipe information, event details, collection pages, profile pages, search pages, FAQ pages, item lists for Google's Rich Results Carousel, and much more.</p>
+<p>WPSSO provides comprehensive Schema markup for posts, pages, custom post types, terms (category, tags, etc.), custom taxonomies, user profile pages, search result pages, archive pages, and Accelerated Mobile Pages (AMP) pages - including image SEO, video SEO, local business, organization, publisher, person, author and co-authors, extensive e-Commerce product markup, product variations, product ratings, aggregate ratings, reviews, recipe information, event details, collection pages, profile pages, search pages, FAQ pages, item lists for Google's Rich Results Carousel, and much more.</p>
 
-<p><strong>Reads your existing content, plugin, and service API data:</strong></p>
+<p><strong>Reads existing content, plugin, and service API data:</strong></p>
 
 <p>There's no need to manually re-enter descriptions, titles, product information, or re-select images and videos! WPSSO can read all your existing WordPress content, including custom posts and taxonomies, enhanced user profile data, Media Library image and video information, third-party plugin data, and remote service APIs (Bitly, Facebook, Shopper Approved, Stamped.io, Vimeo, Wistia, YouTube, and many more).</p>
 
@@ -161,9 +161,11 @@
 
 <p><strong>[Premium]</strong> Customize post and taxonomy types included in the WordPress sitemap XML.</p>
 
-<p><strong>[Premium]</strong> Offers the most complete Schema JSON-LD markup for WooCommerce:</p>
+<p><strong>[Premium]</strong> Schema JSON-LD markup for WooCommerce Products:</p>
 
-<p>WooCommerce by default provides incomplete Schema markup for Google Rich Results. WPSSO Core Premium offers a better solution by providing complete product meta tags for Facebook, Pinterest, and complete Schema product markup for Google Rich Results - including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.</p>
+<p>The WooCommerce plugin does not provide sufficient Schema JSON-LD markup for Google Rich Results.</p>
+
+<p>The WPSSO Core Premium plugin reads WooCommerce product data and provides complete Schema JSON-LD product markup for Google Rich Results, including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.</p>
 
 <p><strong>[Premium]</strong> Additional customizable Schema options in the Document SSO metabox:</p>
 
