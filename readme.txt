@@ -51,7 +51,7 @@ There's no need to manually re-enter descriptions, titles, product information, 
 
 WPSSO can be your only social and search optimization plugin, or can improve the structured data of another third-party SEO plugin (like All in One SEO Pack, Jetpack SEO Tools, Rank Math SEO, SEO Ultimate, SEOPress, The SEO Framework, WP Meta SEO, Yoast SEO, and more).
 
-<p><strong>Fixes Google Search Console and Schema Markup Validator errors, including:</strong></p>
+<p><strong>Fixes Google Search and Schema Markup Validator errors, including:</strong></p>
 
 * A value for the headline field is required.
 * A value for the image field is required.
