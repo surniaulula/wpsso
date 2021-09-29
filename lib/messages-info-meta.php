@@ -115,7 +115,7 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 
 					$text .= '</p><p>';
 
-					$text .= __( 'Note that the Schema CreativeWork type (and its sub-types) includes a \'video\' property for VideoObject markup but other Schema types may not (like Event, Job Posting, Place, Product, and Brand).', 'wpsso' ) . ' ';
+					$text .= __( 'Note that the Schema CreativeWork type (and its sub-types) has a \'video\' property for VideoObject markup, but other Schema types (like Event, Job Posting, Place, Product, and Brand) do not have a \'video\' property.', 'wpsso' );
 
 					$text .= '</p>' . "\n";
 

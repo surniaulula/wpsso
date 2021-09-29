@@ -1,9 +1,9 @@
 
-<p>WPSSO Core is multisite aware and provides Network settings pages in the Network admin interface. You can install WPSSO Core as a "Must Use" plugin (in the mu-plugins/ folder), Network Activate the plugin, or Activate it on individual blogs (aka sites).</p>
+<p>WPSSO Core is multisite aware and provides settings pages in the network admin interface. You can install WPSSO Core as a "Must Use" plugin (in the mu-plugins/ folder), network activate the plugin, or activate it on individual network blogs (aka sites).</p>
 
 <h3>License Management</h3>
 
-<p>Premium version licensing can be managed Network-wide by providing an Authentication ID for all Network blogs, or an Authentication ID (possibly different ones) can be entered individually in each blog's <em>Premium Licenses</em> settings page.</p>
+<p>Premium version licensing can be managed network-wide by providing an Authentication ID for all network blogs, or an Authentication ID (possibly different ones) can be entered individually in each blog's <em>Premium Licenses</em> settings page.</p>
 
 <blockquote>
 
@@ -11,7 +11,7 @@
 	
 </blockquote>
 
-<p>Blog ID 1 is usually the default Network blog, but this can be changed using a few constants in the <code>wp-config.php</code> file. The default constants provided by WordPress during a multisite Network install may look like this (this is only an example - your actual network settings may differ):</p>
+<p>Blog ID 1 is usually the default network blog, but this can be changed using a few constants in the <code>wp-config.php</code> file. The default constants provided by WordPress during a multisite network install may look like this (this is only an example - your actual network settings may differ):</p>
 
 <pre>
 define( 'MULTISITE', true );
@@ -22,5 +22,5 @@ define( 'SITE_ID_CURRENT_SITE', 1 );
 define( 'BLOG_ID_CURRENT_SITE', 1 );
 </pre>
 
-<p>To change the Network default blog ID, you must update the <code>BLOG_ID_CURRENT_SITE</code> and <code>PATH_CURRENT_SITE</code> constants for sub-folder multisites, or <code>BLOG_ID_CURRENT_SITE</code> and <code>DOMAIN_CURRENT_SITE</code> for sub-domain multisites (and <code>SUBDOMAIN_INSTALL</code> would be true in that case).</p>
+<p>To change the network default blog ID, you must update the <code>BLOG_ID_CURRENT_SITE</code> and <code>PATH_CURRENT_SITE</code> constants for sub-folder multisites, or <code>BLOG_ID_CURRENT_SITE</code> and <code>DOMAIN_CURRENT_SITE</code> for sub-domain multisites (and <code>SUBDOMAIN_INSTALL</code> would be true in that case).</p>
 
