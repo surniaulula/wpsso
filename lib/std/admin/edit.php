@@ -72,7 +72,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 
 				$json_version = WpssoJsonConfig::get_version();
 
-				if ( version_compare( $json_version, '5.0.0-dev.1', '<' ) ) {
+				if ( version_compare( $json_version, '5.0.0', '<' ) ) {
 
 					$table_rows[ 'subsection_schema' ] = '<td class="subsection" colspan="2"><h4>' .
 						_x( 'Schema JSON-LD Markup / Google Rich Results', 'metabox title', 'wpsso' ) . '</h4></td>';
@@ -103,7 +103,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 
 				$json_version = WpssoJsonConfig::get_version();
 
-				if ( version_compare( $json_version, '5.0.0-dev.1', '<' ) ) {
+				if ( version_compare( $json_version, '5.0.0', '<' ) ) {
 
 					$table_rows = SucomUtil::preg_grep_keys( $this->old_schema_preg, $table_rows, $invert = true );
 				}
@@ -1442,7 +1442,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 
 			$form_rows = array(
 				'info_priority_media' => array(
-					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'info-priority-media' ) . '</td>',
+					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'info-meta-priority-media' ) . '</td>',
 				),
 				'subsection_opengraph' => array(
 					'td_class' => 'subsection top',
@@ -1639,7 +1639,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 
 				$json_version = WpssoJsonConfig::get_version();
 
-				if ( version_compare( $json_version, '5.0.0-dev.1', '<' ) ) {
+				if ( version_compare( $json_version, '5.0.0', '<' ) ) {
 
 					$table_rows[ 'subsection_schema' ] = '<td class="subsection" colspan="2"><h4>' .
 						_x( 'Schema JSON-LD Markup / Google Rich Results', 'metabox title', 'wpsso' ) . '</h4></td>';
@@ -1670,7 +1670,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 
 				$json_version = WpssoJsonConfig::get_version();
 
-				if ( version_compare( $json_version, '5.0.0-dev.1', '<' ) ) {
+				if ( version_compare( $json_version, '5.0.0', '<' ) ) {
 
 					$table_rows = SucomUtil::preg_grep_keys( $this->old_schema_preg, $table_rows, $invert = true );
 				}

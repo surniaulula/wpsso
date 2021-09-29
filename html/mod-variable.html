@@ -1,5 +1,5 @@
 
-<p>The $mod variable is defined early in the WPSSO Core load process and is passed to most methods and filters. The name $mod is short for "module" and it defines essential array values for four WPSSO Core module types:</p>
+<p>The <code>$mod</code> variable is defined early in the WPSSO Core load process and is passed to most methods and filters. The <code>$mod</code> variable name is short for "module" and it defines essential reference values for different WordPress and WPSSO object types:</p>
 
 <ul>
 	<li>comment</li>
@@ -8,7 +8,7 @@
 	<li>user</li>
 </ul>
 
-<p>An example $mod array for a post:</p>
+<p>An example <code>$mod</code> array for a post:</p>
 
 <pre class="lang:php decode:true">Array (
     [id] =&gt; 2717
@@ -51,11 +51,11 @@
 <pre class="lang:php decode:true">
 if ( $mod[ 'is_post' ] ) {
 
-    $value = get_post_meta( $mod[ 'id' ], 'example_meta_name', $single = true );
+    $value = get_post_meta( $mod[ 'id' ], '_example_meta_name', $single = true );
 }
 </pre>
 
-<p>The 'obj' element can be used to call module object methods. Here's an example to get a custom Open Graph description value (if one has been defined):</p>
+<p>The 'obj' element can be used to call object methods. Here's an example to get a custom Open Graph description value (if one has been defined):</p>
 
 <pre class="lang:php decode:true">
 $og_desc = $mod[ 'obj' ]-&gt;get_options( $mod[ 'id' ], 'og_desc' );

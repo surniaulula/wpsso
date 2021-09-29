@@ -105,15 +105,15 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			$form_rows = array(
 				'info_schema_faq' => array(
 					'tr_class'  => $schema_type_row_class[ 'faq' ],
-					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'info-schema-faq' ) . '</td>',
+					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'info-meta-schema-faq' ) . '</td>',
 				),
 				'info_schema_qa' => array(
 					'tr_class'  => $schema_type_row_class[ 'qa' ],
-					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'info-schema-qa' ) . '</td>',
+					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'info-meta-schema-qa' ) . '</td>',
 				),
 				'info_schema_question' => array(
 					'tr_class'  => $schema_type_row_class[ 'question' ],
-					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'info-schema-question' ) . '</td>',
+					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'info-meta-schema-question' ) . '</td>',
 				),
 				'attach_img_crop' => $mod[ 'is_attachment' ] && wp_attachment_is_image( $mod[ 'id' ] ) ? array(
 					'th_class' => 'medium',
@@ -272,7 +272,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 				return $this->p->msgs->get_robots_disabled_rows( $table_rows );
 			}
 
-			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'info-robots-meta' ) . '</td>';
+			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'info-meta-robots-meta' ) . '</td>';
 
 			$table_rows[ 'robots_noarchive' ] = '' .
 			$form->get_th_html( _x( 'No Archive', 'option label', 'wpsso' ),
@@ -497,7 +497,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 
 				$table_rows[] = '<td colspan="2" class="oembed_container">' . $oembed_html . '</td><!-- .oembed_container -->';
 
-				$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'info-meta-oembed-html' ) . '</td>';
+				$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'info-meta-oembed-footer' ) . '</td>';
 
 			} else {
 
@@ -648,7 +648,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 						$el[ 'url' ], $newtab = true, $is_disabled ) . '</td>';
 			}
 
-			$table_rows[ 'validate_info' ] = '<td class="validate" colspan="3">' . $this->p->msgs->get( 'info-meta-validate-info' ) . '</td>';
+			$table_rows[ 'validate_info' ] = '<td class="validate" colspan="3">' . $this->p->msgs->get( 'info-meta-validate-footer' ) . '</td>';
 
 			return $table_rows;
 		}

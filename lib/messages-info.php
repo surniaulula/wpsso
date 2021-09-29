@@ -45,99 +45,7 @@ if ( ! class_exists( 'WpssoMessagesInfo' ) ) {
 
 			switch ( $msg_key ) {
 
-				case 'info-schema-faq':
-
-					/**
-					 * If the WPSSO FAQ add-on is active, avoid showing possible duplicate and confusing information.
-					 */
-					if ( ! empty( $this->p->avail[ 'p_ext' ][ 'faq' ] ) ) {
-
-						break;
-					}
-
-					$text = '<blockquote class="top-info">';
-
-					$text .= '<p>';
-
-					$text .= __( 'Schema FAQPage markup is a collection of Questions and Answers, and WordPress manages a collection of related content in two different ways:', 'wpsso' ) . ' ';
-
-					$text .= __( 'Schema FAQPage can be a parent page with Schema Question child pages, or a taxonomy term (ie. categories, tags or custom taxonomies) with Schema Question posts / pages assigned to that term.', 'wpsso' ) . ' ';
-
-					$text .= '</p>';
-
-					$text .= '</blockquote>';
-
-					break;
-
-				case 'info-schema-qa':
-
-					$text = '<blockquote class="top-info">';
-
-					$text .= '<p>';
-
-					$text .= __( 'Google requires that Schema QAPage markup include one or more user submitted and upvoted answers.', 'wpsso' ) . ' ';
-
-					$text .= __( 'The Schema QAPage document title is a summary of the question and the content text is the complete question.', 'wpsso' ) . ' ';
-
-					$text .= '</p>';
-
-					$text .= '</blockquote>';
-
-					break;
-
-				case 'info-schema-question':
-
-					$text = '<blockquote class="top-info">';
-
-					$text .= '<p>';
-
-					/**
-					 * If the WPSSO FAQ add-on is active, avoid showing possible duplicate and confusing information.
-					 */
-					if ( empty( $this->p->avail[ 'p_ext' ][ 'faq' ] ) ) {
-
-						$text .= __( 'The Schema Question type can be a child page of a Schema FAQPage parent, or assigned to a Schema FAQPage taxonomy term.', 'wpsso' ) . ' ';
-					}
-
-					$text .= __( 'The Schema Question document title is a summary of the question and the content text is the complete answer for that question.', 'wpsso' ) . ' ';
-
-					$text .= '</p>';
-
-					$text .= '</blockquote>';
-
-					break;
-
-				case 'info-priority-media':
-
-					$upload_page_url = get_admin_url( $blog_id = null, 'upload.php' );
-
-					$text = '<blockquote class="top-info">';
-
-					$text .= '<p>';
-
-					$text .= sprintf( __( 'You can edit images in the <a href="%s">WordPress Media Library</a> to select a preferred cropping area (ie. top or bottom), along with optimizing the image social and SEO texts.', 'wpsso' ), $upload_page_url );
-
-					$text .= '</p>' . "\n";
-
-					$text .= '</blockquote>';
-
-					break;
-
-				case 'info-robots-meta':
-
-					$text = '<blockquote class="top-info">';
-
-					$text .= '<p>';
-
-					$text .= __( 'The robots meta tag lets you utilize a granular, webpage-specific approach to controlling how an individual webpage should be indexed and served to users in Google Search results.', 'wpsso' ) . ' ';
-
-					$text .= '</p>';
-
-					$text .= '</blockquote>';
-
-				 	break;
-
-				case 'info-plugin-tid':		// Shown in the Licenses settings page.
+				case 'info-plugin-tid':
 
 					$um_info       = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
 					$um_info_name  = _x( $um_info[ 'name' ], 'plugin name', 'wpsso' );
@@ -160,7 +68,7 @@ if ( ! class_exists( 'WpssoMessagesInfo' ) ) {
 
 					break;
 
-				case 'info-plugin-tid-network':	// Shown in the Network Licenses settings page.
+				case 'info-plugin-tid-network':
 
 					$um_info      = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
 					$um_info_name = _x( $um_info[ 'name' ], 'plugin name', 'wpsso' );

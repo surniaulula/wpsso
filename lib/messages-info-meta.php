@@ -29,7 +29,153 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 			switch ( $msg_key ) {
 
 				/**
-				 * Validate tab.
+				 * Customize tab.
+				 */
+				case 'info-meta-schema-faq':
+
+					/**
+					 * Avoid showing possible duplicate and confusing information.
+					 */
+					if ( empty( $this->p->avail[ 'p_ext' ][ 'faq' ] ) ) {
+
+						$faq_info      = $this->p->cf[ 'plugin' ][ 'wpssofaq' ];
+						$faq_info_name = _x( $faq_info[ 'name' ], 'plugin name', 'wpsso' );
+
+						$text = '<blockquote class="top-info">';
+
+						$text .= '<p>';
+	
+						$text .= __( 'Schema FAQPage markup is a collection of Questions and Answers, and WordPress manages a collection of related content in two different ways:', 'wpsso' ) . ' ';
+	
+						$text .= __( 'Schema FAQPage can be a parent page with Schema Question child pages, or a taxonomy term (ie. categories, tags or custom taxonomies) with Schema Question pages assigned to that term.', 'wpsso' ) . ' ';
+	
+						$text .= sprintf( __( 'Note that using the %1$s add-on is often the easiest and preferred way to manage FAQ categories and Question pages.', 'wpsso' ), $faq_info_name ) . ' ';
+
+						$text .= '</p>';
+	
+						$text .= '</blockquote>';
+					}
+
+					break;
+
+				case 'info-meta-schema-qa':
+
+					$text = '<blockquote class="top-info">';
+
+					$text .= '<p>';
+
+					$text .= __( 'Google requires that Schema QAPage markup include one or more user submitted and upvoted answers.', 'wpsso' ) . ' ';
+
+					$text .= __( 'The Schema QAPage document title is a summary of the question and the content text is the complete question.', 'wpsso' ) . ' ';
+
+					$text .= '</p>';
+
+					$text .= '</blockquote>';
+
+					break;
+
+				case 'info-meta-schema-question':
+
+					$text = '<blockquote class="top-info">';
+
+					$text .= '<p>';
+
+					$text .= __( 'The Schema Question document title is a summary of the question and the content text is the complete answer for that question.', 'wpsso' ) . ' ';
+
+					/**
+					 * Avoid showing possible duplicate and confusing information.
+					 */
+					if ( empty( $this->p->avail[ 'p_ext' ][ 'faq' ] ) ) {
+
+						$faq_info      = $this->p->cf[ 'plugin' ][ 'wpssofaq' ];
+						$faq_info_name = _x( $faq_info[ 'name' ], 'plugin name', 'wpsso' );
+
+						$text .= __( 'The Schema Question type can be a child page of a Schema FAQPage parent, or assigned to a Schema FAQPage taxonomy term.', 'wpsso' ) . ' ';
+						$text .= sprintf( __( 'Note that using the %1$s add-on is often the easiest and preferred way to manage FAQ categories and Question pages.', 'wpsso' ), $faq_info_name ) . ' ';
+					}
+
+					$text .= '</p>';
+
+					$text .= '</blockquote>';
+
+					break;
+
+				/**
+				 * Priority Media tab.
+				 */
+				case 'info-meta-priority-media':
+
+					$upload_page_url = get_admin_url( $blog_id = null, 'upload.php' );
+
+					$text = '<blockquote class="top-info">';
+
+					$text .= '<p>';
+
+					$text .= sprintf( __( 'You can edit images in the <a href="%s">WordPress Media Library</a> to select a preferred cropping area (ie. top or bottom), along with optimizing the image social and SEO texts.', 'wpsso' ), $upload_page_url ) . ' ';
+
+					$text .= '</p><p>';
+
+					$text .= __( 'Note that the Schema CreativeWork type (and its sub-types) includes a \'video\' property for VideoObject markup but other Schema types may not (like Event, Job Posting, Place, Product, and Brand).', 'wpsso' ) . ' ';
+
+					$text .= '</p>' . "\n";
+
+					$text .= '</blockquote>';
+
+					break;
+
+				/**
+				 * Robots Meta tab.
+				 */
+				case 'info-meta-robots-meta':
+
+					$text = '<blockquote class="top-info">';
+
+					$text .= '<p>';
+
+					$text .= __( 'The robots meta tag lets you utilize a granular, webpage-specific approach to controlling how an individual webpage should be indexed and served to users in Google Search results.', 'wpsso' ) . ' ';
+
+					$text .= '</p>';
+
+					$text .= '</blockquote>';
+
+				 	break;
+
+				/**
+				 * Social Preview tab.
+				 */
+				case 'info-meta-social-preview':
+
+					$upload_page_url = get_admin_url( $blog_id = null, 'upload.php' );
+
+					$fb_img_dims = '600x315px';
+
+				 	$text = '<p class="status-msg">';
+
+					$text .= sprintf( __( 'The example image container uses the minimum recommended Facebook image dimensions of %s.', 'wpsso' ), $fb_img_dims ) . ' ';
+
+					$text .= '<br/>' . "\n";
+
+					$text .= sprintf( __( 'You can edit images in the <a href="%s">WordPress Media Library</a> to select a preferred cropping area (ie. top or bottom), along with optimizing the social and SEO texts for the image.', 'wpsso' ), $upload_page_url );
+
+					$text .= '</p>' . "\n";
+
+				 	break;
+
+				/**
+				 * oEmbed Preview tab.
+				 */
+				case 'info-meta-oembed-footer':
+
+				 	$text = '<p class="status-msg">';
+
+					$text .= sprintf( __( 'The oEmbed HTML is provided by the <code>%s</code> template.', 'wpsso' ), 'wpsso/embed-content' );
+
+					$text .= '</p>';
+
+				 	break;
+
+				/**
+				 * Validators tab.
 				 */
 				case 'info-meta-validate-amp':
 
@@ -146,10 +292,7 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 
 				 	break;
 
-				/**
-				 * Called at the bottom of the Document SSO > Validators tab.
-				 */
-				case 'info-meta-validate-info':
+				case 'info-meta-validate-footer':
 
 					if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
 
@@ -168,34 +311,6 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 
 						$text .= '</p>';
 					}
-
-				 	break;
-
-				case 'info-meta-social-preview':
-
-					$upload_page_url = get_admin_url( $blog_id = null, 'upload.php' );
-
-					$fb_img_dims = '600x315px';
-
-				 	$text = '<p class="status-msg">';
-
-					$text .= sprintf( __( 'The example image container uses the minimum recommended Facebook image dimensions of %s.', 'wpsso' ), $fb_img_dims ) . ' ';
-
-					$text .= '<br/>' . "\n";
-
-					$text .= sprintf( __( 'You can edit images in the <a href="%s">WordPress Media Library</a> to select a preferred cropping area (ie. top or bottom), along with optimizing the social and SEO texts for the image.', 'wpsso' ), $upload_page_url );
-
-					$text .= '</p>' . "\n";
-
-				 	break;
-
-				case 'info-meta-oembed-html':
-
-				 	$text = '<p class="status-msg">';
-
-					$text .= sprintf( __( 'The oEmbed HTML is provided by the <code>%s</code> template.', 'wpsso' ), 'wpsso/embed-content' );
-
-					$text .= '</p>';
 
 				 	break;
 
