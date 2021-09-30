@@ -12,7 +12,7 @@ Requires PHP: 7.0
 Requires At Least: 5.0
 Tested Up To: 5.8.1
 WC Tested Up To: 5.7.0
-Stable Tag: 9.0.0
+Stable Tag: 9.0.1
 
 Rank higher and improve click through rates by presenting your content at its best on social sites and in search results.
 
