@@ -467,7 +467,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.0.1-b.1 (2021/09/29)**
+**Version 9.0.1-rc.1 (2021/09/30)**
 
 * **New Features**
 	* None.
@@ -524,9 +524,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.0.1-b.1 =
+= 9.0.1-rc.1 =
 
-(2021/09/29) Updated the SSO &gt; Setup Guide text. Updated information text in the Document SSO metabox.
+(2021/09/30) Updated the SSO &gt; Setup Guide text. Updated information text in the Document SSO metabox.
 
 = 9.0.0 =
 
