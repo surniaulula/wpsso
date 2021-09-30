@@ -104,7 +104,7 @@ function sucomUpdateContainers( pluginId, cfgName ) {
 				ajax_action_update_postbox = ajax_action_update_postbox.toLowerCase();
 				ajax_action_update_postbox = ajax_action_update_postbox.replace( /[:\/\-\. ]+/g, '_' );
 				ajax_action_update_postbox = ajax_action_update_postbox.replace( /[^a-z0-9_\-]/g, '' );
-	
+
 				var ajaxData = {
 					action: ajax_action_update_postbox,
 					post_id: post_id,
@@ -117,7 +117,7 @@ function sucomUpdateContainers( pluginId, cfgName ) {
 					 * The returned HTML includes javascript to call the sucomInitMetabox() function.
 					 */
 					if ( html ) {
-	
+
 						jQuery( '#' + postbox_id + '.postbox div.inside' ).replaceWith( '<div class="inside">' + html + '</div>' );
 					}
 				} );

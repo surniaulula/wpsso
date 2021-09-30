@@ -108,7 +108,7 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 			$metabox_html .= '</div><!-- .' . $class_metabox_tabs . ' -->' . "\n";
 
 			if ( $doing_ajax ) {
-			
+
 				$metabox_html .= '<!-- adding tabs javascript for ajax call -->' . "\n";
 				$metabox_html .= '<script>';
 				$metabox_html .= 'sucomTabs( \'' . $metabox_id . '\', \'' . $default_tab . '\' );';
