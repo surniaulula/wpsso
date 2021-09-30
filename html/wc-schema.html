@@ -23,9 +23,7 @@
 	</figure>
 </div>
 
-<p>WooCommerce is a popular e-commerce plugin that offers a lot of flexibility, with a solid and well designed codebase, but <strong>WooCommerce is not an SEO plugin</strong>, so its Schema markup for search engines is very basic, and its social meta tags for Facebook, Twitter, and other social sites are non-existent.</p>
-
-<p>You may have found your way here after sharing a product URL on Facebook, Pinterest, Twitter or another social site, or testing a product page using the <a href="https://search.google.com/test/rich-results">Google Rich Results Test Tool</a> or the <a href="https://validator.schema.org/">Schema Markup Validator</a>, and being unimpressed with the minimal Schema markup provided by the WooCommerce plugin. The following guide provides a quick and easy way to improve your WooCommerce product meta tags and Schema markup, which will improve your search engine ranking, the information shown in search results and on social sites, and your click through rates from search results and social sites.</p>
+<p>WooCommerce is a popular e-commerce plugin with a solid and well designed codebase, but <strong>WooCommerce is not an SEO plugin</strong> - its Schema markup for search engines is minimal, and its social meta tags for Facebook, Twitter, and other social sites are non-existent. This guide provides quick and easy solutions to fix your WooCommerce product meta tags and Schema markup, which will improve your search engine ranking, the information shown in search results and social sites, and your click through rates.</p>
 
 <h3>Common Warnings for WooCommerce Markup</h3>
 
@@ -42,7 +40,9 @@
 	<li><strong>Missing field "deliveryTime".</strong></li>
 </ul>
 
-<p>The <em>aggregateRating</em> warning from WooCommerce's Schema markup can be addressed by having your customers leave one or more reviews for each of your products. Unfortunately, WooCommerce will only include the <strong>last review</strong> in the Schema Product markup, which may not reflect the total <em>aggregateRating</em> values. All product reviews (ie. that have a rating value) and comments (ie. that do not have a rating value) are combined by WooCommerce into a separate, disconnected Schema JSON-LD block for reviews, no matter if a review or comment has a rating value or not. The following values should also be included in the Schema markup when available, but WooCommerce cannot manage this information without several third-party plugins and complex filters for its default Schema markup.</p>
+<p>The <em>aggregateRating</em> warning from WooCommerce's Schema markup can be addressed by having your customers leave one or more reviews for each of your products. Unfortunately WooCommerce will only include the <strong>last review</strong> in the Schema Product markup, which may not reflect the total <em>aggregateRating</em> values. All product reviews (ie. that have a rating value) and comments (ie. that do not have a rating value) are combined by WooCommerce into a separate and disconnected Schema JSON-LD block.</p>
+
+<p>The following product information should also be included in the Schema markup, when available, but WooCommerce cannot manage this information without third-party plugins and complex filters to modify its default Schema markup:</p>
 
 <ul>
 	<li><strong>Brand</strong></li>
@@ -64,11 +64,11 @@
 	</figure>
 </div>
 
-<p>The <a href="https://wpsso.com/extend/plugins/wpsso/">WPSSO Core Premium plugin</a> addresses all the Schema markup weaknesses of WooCommerce, and includes additional Schema product properties for Google - not to mention complete social meta tags for Facebook, LinkedIn, Pinterest, Twitter, and more.</p>
+<p>The <a href="https://wpsso.com/extend/plugins/wpsso/">WPSSO Core Premium plugin</a> addresses all the Schema markup weaknesses of WooCommerce, and includes complete social meta tags for Facebook, LinkedIn, Pinterest, Twitter, and more.</p>
 
-<p>WooCommerce provides only a single product offer in its Schema markup - even for variable products with different pricing - while WPSSO includes all product variation offers with complete product details for each offer (description, images, mpn, sku, gtin, item condition, availability, price, currency, VAT added, shipping delievery times, weight, width, height, length, fluid volume, and more). WPSSO can also include product prices with or without VAT, and if your products have reviews (ie. with a star rating) and comments (ie. no rating value), they will be classified properly - added to the Schema Product markup as "reviews" and "comments" respectively.</p>
+<p>WooCommerce provides only a single product offer in its Schema markup - even for variable products with different pricing - while WPSSO Core includes all product variation offers, with complete product details for each offer (description, images, mpn, sku, gtin, item condition, availability, price, currency, VAT added, shipping delievery times, weight, width, height, length, fluid volume, and more). WPSSO Core can also include product prices with or without VAT, and if your products have reviews (ie. with a star rating) and comments (ie. no rating value), they will be classified properly - added to the Schema Product markup as "reviews" and "comments" respectively.</p>
 
-<p>WPSSO supports many additional WooCommerce product attributes as well, including:</p>
+<p>WPSSO Core supports many additional WooCommerce product attributes as well, including:</p>
 
 <ul>
 	<li><strong>Brand</strong></li>
@@ -88,7 +88,7 @@
 	<li><strong>Volume</strong></li>
 </ul>
 
-<p>See the <a href="https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/">WooCommerce integration notes</a> for details on different ways you can include this product information in your WooCommerce shop (ie. using an add-on for WPSSO Core, a supported third-party plugin, WooCommerce Product Attributes, WordPress Custom Fields, or customized values in the Document SSO metabox).</p>
+<p>See the <a href="https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/">WooCommerce integration notes</a> for details on different ways you can include this product information in your WooCommerce shop (ie. using an add-on for WPSSO Core, a supported third-party plugin, WooCommerce product attributes, WordPress custom fields, or custom values in the Document SSO metabox).</p>
 
 <h4>Do you ship products?</h4>
 
@@ -110,7 +110,7 @@
 
 	<li><p><strong>Have a look through the <a href="https://wpsso.com/docs/plugins/wpsso/installation/a-setup-guide/"><em>SSO &gt; Setup Guide</em></a> for optimization and setting suggestions.</strong></p></li>
 
-	<li><p><strong>For information on managing additional WooCommerce product information</strong>, see the <a href="https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/">WooCommerce integration notes.</a></p></li>
+	<li><p><strong>For information on managing additional WooCommerce product information</strong>, see the <a href="https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/">WooCommerce integration notes</a>.</p></li>
 
 	<li><p>In case you have any questions or issues, you can also <a href="https://surniaulula.com/support/">open a ticket on the Premium Support site</a>.</p></li>
 
