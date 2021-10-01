@@ -533,6 +533,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					return;
 			}
 
+			/**
+			 * Define parent::$head_tags and signal to other 'current_screen' actions that this is a valid term page.
+			 */
+			parent::$head_tags = array();
+
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'term ID = ' . $this->query_term_id );
@@ -542,8 +547,6 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				$this->p->debug->log( 'locale mod = ' . SucomUtil::get_locale( $mod ) );
 				$this->p->debug->log( SucomUtil::pretty_array( $mod ) );
 			}
-
-			parent::$head_tags = array();
 
 			if ( $this->query_term_id && ! empty( $this->p->options[ 'plugin_add_to_tax_' . $this->query_tax_slug ] ) ) {
 
@@ -558,6 +561,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				 * $read_cache is false to generate notices etc.
 				 */
 				parent::$head_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache = false );
+
 				parent::$head_info = $this->p->head->extract_head_info( $mod, parent::$head_tags );
 
 				/**

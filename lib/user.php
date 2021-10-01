@@ -530,6 +530,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					return;
 			}
 
+			/**
+			 * Define parent::$head_tags and signal to other 'current_screen' actions that this is a valid user page.
+			 */
+			parent::$head_tags = array();
+
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'user ID = ' . $user_id );
@@ -539,8 +544,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->log( 'locale mod = ' . SucomUtil::get_locale( $mod ) );
 				$this->p->debug->log( SucomUtil::pretty_array( $mod ) );
 			}
-
-			parent::$head_tags = array();
 
 			if ( $user_id && ! empty( $this->p->options[ 'plugin_add_to_user_page' ] ) ) {
 
@@ -555,6 +558,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				 * $read_cache is false to generate notices etc.
 				 */
 				parent::$head_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache = false );
+
 				parent::$head_info = $this->p->head->extract_head_info( $mod, parent::$head_tags );
 
 				/**

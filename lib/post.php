@@ -657,18 +657,22 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return;
 			}
 
+			/**
+			 * Define parent::$head_tags and signal to other 'current_screen' actions that this is a valid post page.
+			 */
+			parent::$head_tags = array();
+
 			$mod = $this->get_mod( $post_id );
 
 			if ( $this->p->debug->enabled ) {
 
+				$this->p->debug->log( 'post ID = ' . $post_id );
 				$this->p->debug->log( 'home url = ' . get_option( 'home' ) );
 				$this->p->debug->log( 'locale default = ' . SucomUtil::get_locale( 'default' ) );
 				$this->p->debug->log( 'locale current = ' . SucomUtil::get_locale( 'current' ) );
 				$this->p->debug->log( 'locale mod = ' . SucomUtil::get_locale( $mod ) );
 				$this->p->debug->log( SucomUtil::pretty_array( $mod ) );
 			}
-
-			parent::$head_tags = array();
 
 			if ( 'auto-draft' === $post_obj->post_status ) {
 
@@ -714,6 +718,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 * $read_cache is false to generate notices etc.
 				 */
 				parent::$head_tags = $this->p->head->get_head_array( $post_id, $mod, $read_cache = false );
+
 				parent::$head_info = $this->p->head->extract_head_info( $mod, parent::$head_tags );
 
 				/**
@@ -1310,6 +1315,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 * $read_cache is false to generate notices etc.
 			 */
 			parent::$head_tags = $this->p->head->get_head_array( $post_id, $mod, $read_cache = false );
+
 			parent::$head_info = $this->p->head->extract_head_info( $mod, parent::$head_tags );
 
 			/**
