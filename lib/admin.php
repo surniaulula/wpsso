@@ -1146,7 +1146,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							$notice_msg = __( 'A background task will begin shortly to clear all caches.', 'wpsso' );
 
-							$this->p->notice->upd( $notice_msg, $user_id );
+							$notice_key = 'task-will-begin-to-clear-all-caches';	// Common key to prevent duplicate clear all caches messages.
+
+							$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
 
 							break;
 
@@ -1156,7 +1158,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							$notice_msg = __( 'A background task will begin shortly to clear all caches and short URLs.', 'wpsso' );
 
-							$this->p->notice->upd( $notice_msg, $user_id );
+							$notice_key = 'task-will-begin-to-clear-all-caches';	// Common key to prevent duplicate clear all caches messages.
+
+							$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
 
 							break;
 

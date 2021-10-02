@@ -149,12 +149,19 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			/**
 			 * Clear all caches on activate.
 			 */
+			$user_id = get_current_user_id();
+
+			$this->p->util->cache->schedule_clear( $user_id );
+
 			$short = WpssoConfig::$cf[ 'plugin' ][ 'wpsso' ][ 'short' ];
 
-			$this->p->notice->upd( '<strong>' . sprintf( __( 'The %s plugin has been activated.', 'wpsso' ), $short ) . '</strong> ' .
-				__( 'A background task will begin shortly to clear all caches.', 'wpsso' ) );
+			$notice_msg = '<strong>' . sprintf( __( 'The %s plugin has been activated.', 'wpsso' ), $short ) . '</strong> ';
 
-			$this->p->util->cache->schedule_clear( $user_id = get_current_user_id() );
+			$notice_msg .= __( 'A background task will begin shortly to clear all caches.', 'wpsso' );
+
+			$notice_key = 'task-will-begin-to-clear-all-caches';	// Common key to prevent duplicate clear all caches messages.
+
+			$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
 
 			/**
 			 * End of plugin activation.
