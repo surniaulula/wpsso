@@ -41,7 +41,7 @@ Rank higher and improve click through rates by presenting your content at its be
 
 <p><strong>Reads WordPress, plugin, and remote API data:</strong></p>
 
-There's no need to create or select templates, manually re-enter descriptions, titles, product information, or reselect images and videos. WPSSO can read all your existing WordPress content, including custom post types and taxonomies, enhanced user profile data, Media Library image and video information, third-party plugin data, and remote service APIs (Bitly, Facebook, Shopper Approved, Stamped.io, Vimeo, Wistia, YouTube, and many more).
+There's no need to create or select templates, manually reenter descriptions, titles, product information, or reselect images and videos. WPSSO can read all your existing WordPress content, including custom post types and taxonomies, enhanced user profile data, Media Library image and video information, third-party plugin data, and remote service APIs (Bitly, Facebook, Shopper Approved, Stamped.io, Vimeo, Wistia, YouTube, and many more).
 
 <p><strong>Supports over 500 different Schema types:</strong></p>
 
