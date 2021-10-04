@@ -299,9 +299,13 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 				case 'tooltip-plugin_gravatar_size':	// Gravatar Image Size.
 
-					$text = __( 'The requested Gravatar image width and height.', 'wpsso' ) . ' ';
+					$def_value = $this->p->opt->get_defaults( 'plugin_gravatar_size' );
 
-					$text .= __( 'You may choose an image size from 1px up to 2048px, however note that many users have lower resolution images, so choosing a larger size may result in pixelation and lower-quality images.', 'wpsso' );
+					$text = __( 'The requested Gravatar image width and height (a number from 1 to 2048).', 'wpsso' ) . ' ';
+
+					$text .= __( 'Note that users often upload low resolution images to Gravatar, so choosing a larger image size may result in pixelation and lower-quality images.', 'wpsso' ) . ' ';
+
+					$text .= sprintf( __( 'The default Gravatar image size is %d pixels.', 'wpsso' ), $def_value );
 
 					break;
 
@@ -322,7 +326,9 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 				case 'tooltip-plugin_min_shorten':	// Minimum URL Length to Shorten.
 
-					$text = sprintf( __( 'Shorten URLs longer than this length (the default suggested by Twitter is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'plugin_min_shorten' ) );
+					$def_value = $this->p->opt->get_defaults( 'plugin_min_shorten' );
+
+					$text = sprintf( __( 'Shorten URLs longer than this length (the default suggested by Twitter is %d characters).', 'wpsso' ), $def_value );
 
 					break;
 

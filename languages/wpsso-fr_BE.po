@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 9.0.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-10-02 11:03-0700\n"
+"PO-Revision-Date: 2021-10-04 07:48-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2426,7 +2426,7 @@ msgctxt "option label"
 msgid "Open Graph (Facebook and oEmbed)"
 msgstr "Open Graph (Facebook et oEmbed)"
 
-#: gettext/gettext-lib-pro.php:33 lib/pinterest.php:127
+#: gettext/gettext-lib-pro.php:33 lib/pinterest.php:123
 #: lib/pro/admin/advanced.php:244 lib/std/admin/advanced.php:233
 msgctxt "option label"
 msgid "Pinterest Pin It"
@@ -4438,19 +4438,19 @@ msgctxt "metabox tab"
 msgid "Validators"
 msgstr "Validateurs"
 
-#: lib/abstracts/wp-meta.php:1484
+#: lib/abstracts/wp-meta.php:1486
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr "La validation du jeton nonce pour le formulaire soumis a échoué (mise à jour ignorée)."
 
-#: lib/abstracts/wp-meta.php:1812 lib/json-filters/type/claimreview.php:77
+#: lib/abstracts/wp-meta.php:1814 lib/json-filters/type/claimreview.php:77
 msgid "A claim review cannot be the subject of another claim review."
 msgstr "Un examen d'évaluation ne peut pas être le sujet d'un autre examen d'évaluation."
 
-#: lib/abstracts/wp-meta.php:1814
+#: lib/abstracts/wp-meta.php:1816
 msgid "Please select a subject webpage type that better describes the subject of the webpage (ie. the content) being reviewed."
 msgstr "SVP sélectionner un type de page Web du sujet qui décrit mieux le sujet de la page Web (c'est-à-dire le contenu) en cours de révision."
 
-#: lib/abstracts/wp-meta.php:2532
+#: lib/abstracts/wp-meta.php:2548
 msgid "adding schema images"
 msgstr "ajout d'images schéma"
 
@@ -7225,145 +7225,149 @@ msgstr "Une image personnalisée pour chaque auteur peut être sélectionnée da
 msgid "If a custom image has not been selected, fallback to using their Gravatar image."
 msgstr "Si une image personnalisée n'a pas été sélectionnée, utilisez leur image Gravatar."
 
-#: lib/messages-tooltip-plugin.php:302
-msgid "The requested Gravatar image width and height."
-msgstr "La largeur et la hauteur de l'image Gravatar demandées."
-
 #: lib/messages-tooltip-plugin.php:304
-msgid "You may choose an image size from 1px up to 2048px, however note that many users have lower resolution images, so choosing a larger size may result in pixelation and lower-quality images."
-msgstr "Vous pouvez choisir une taille d'image de 1px à 2048px, mais notez que de nombreux utilisateurs ont des images de résolution inférieure, donc choisir une taille plus grande peut entraîner une pixellisation d'image et des images de qualité inférieure."
+msgid "The requested Gravatar image width and height (a number from 1 to 2048)."
+msgstr "La largeur et la hauteur de l'image Gravatar demandées (un nombre de 1 à 2048)."
 
-#: lib/messages-tooltip-plugin.php:310
+#: lib/messages-tooltip-plugin.php:306
+msgid "Note that users often upload low resolution images to Gravatar, so choosing a larger image size may result in pixelation and lower-quality images."
+msgstr "Notez que les utilisateurs téléchargent souvent des images à basse résolution sur Gravatar, donc choisir une taille d'image plus grande peut entraîner une pixellisation et des images de qualité inférieure."
+
+#: lib/messages-tooltip-plugin.php:308
+msgid "The default Gravatar image size is %d pixels."
+msgstr "La taille d'image Gravatar par défaut est %d pixels."
+
+#: lib/messages-tooltip-plugin.php:314
 msgid "Check the content for embedded media URLs from supported media providers (Vimeo, Wistia, YouTube, etc.). If a supported media URL is found, an API connection to the provider will be made to retrieve information about the media (preview image URL, flash player URL, oembed player URL, the video width / height, etc.)."
 msgstr "Chercher le contenu pour des URLs de médias intégrées des fournisseurs de médias connus (Vimeo, Wistia, YouTube, etc.). Si un URL de média connu est trouvée, une connexion API au fournisseur sera effectuée pour récupérer des informations sur le média (URL d'image de pré-visualisation, URL du média Flash, la largeur / hauteur du vidéo, etc.)."
 
-#: lib/messages-tooltip-plugin.php:319
+#: lib/messages-tooltip-plugin.php:323
 msgid "A preferred URL shortening service used for the <code>%s</code> HTML tag value, Schema markup, and social sharing buttons."
 msgstr "Un service de raccourcissement d'URL préféré utilisé pour la valeur de la balise HTML <code>%s</code>, le balisage de Schéma et les boutons de partage social."
 
-#: lib/messages-tooltip-plugin.php:325
+#: lib/messages-tooltip-plugin.php:331
 msgid "Shorten URLs longer than this length (the default suggested by Twitter is %d characters)."
 msgstr "Raccourcir les URL plus longue que cette longueur (la valeur par défaut proposée par Twitter est %d caractères)."
 
-#: lib/messages-tooltip-plugin.php:333
+#: lib/messages-tooltip-plugin.php:339
 msgctxt "option comment"
 msgid "disabled"
 msgstr "désactivé"
 
-#: lib/messages-tooltip-plugin.php:335
+#: lib/messages-tooltip-plugin.php:341
 msgid "Clear shortened URLs when clearing the %1$s transient cache (default is %2$s)."
 msgstr "Effacez les URL raccourcies lors du vidange du cache transitoire %1$s (%2$s par défaut)."
 
-#: lib/messages-tooltip-plugin.php:337
+#: lib/messages-tooltip-plugin.php:343
 msgid "Shortened URLs are cached for %1$s seconds (%2$s) to minimize external service API calls."
 msgstr "Les URL raccourcies sont mises en cache pendant %1$s secondes (%2$s) pour minimiser les appels d'API de service externe."
 
-#: lib/messages-tooltip-plugin.php:339
+#: lib/messages-tooltip-plugin.php:345
 msgid "Note that clearing and then re-updating all shortened URLs at once may exceed API limits imposed by your shortening service provider."
 msgstr "Notez que le vidage puis la mise à jour de toutes les URL raccourcies à la fois peut dépasser les limites d'API imposées par votre fournisseur de services de raccourcissement."
 
-#: lib/messages-tooltip-plugin.php:345
+#: lib/messages-tooltip-plugin.php:351
 msgid "Use the selected URL shortening service to replace the WordPress <code>%s</code> function value."
 msgstr "Utiliser le service de raccourcissement d'URL sélectionné pour remplacer la valeur de la fonction <code>%s</code> de WordPress."
 
-#: lib/messages-tooltip-plugin.php:351
+#: lib/messages-tooltip-plugin.php:357
 msgid "Use the selected URL shortening service to replace the WordPress <code>%s</code> HTML tag."
 msgstr "Utiliser le service de raccourcissement d'URL sélectionné pour remplacer la balise HTML <code>%s</code> de WordPress."
 
-#: lib/messages-tooltip-plugin.php:357
+#: lib/messages-tooltip-plugin.php:363
 msgid "The Bitly shortening service requires a Generic Access Token to shorten URLs."
 msgstr "Le service de raccourcissement Bitly nécessite un jeton d'accès générique pour raccourcir les URL."
 
-#: lib/messages-tooltip-plugin.php:359
+#: lib/messages-tooltip-plugin.php:365
 msgid "<a href=\"%s\">You can create a Generic Access Token in your Bitly profile settings</a> and enter its value here."
 msgstr "<a href=\"%s\"> Vous pouvez créer un jeton d'accès générique dans vos paramètres de profil Bitly</a> et entrer sa valeur ici."
 
-#: lib/messages-tooltip-plugin.php:365
+#: lib/messages-tooltip-plugin.php:371
 msgid "An optional Bitly short domain to use - either bit.ly, j.mp, bitly.com, or another custom short domain."
 msgstr "Un domaine court optionnel pour Bitly - soit bit.ly, j.mp, bitly.com, ou un autre domaine court personnalisé."
 
-#: lib/messages-tooltip-plugin.php:367
+#: lib/messages-tooltip-plugin.php:373
 msgid "If no value is entered here, the short domain selected in your Bitly account settings will be used."
 msgstr "Si aucune valeur n'est entrée ici, le domaine court sélectionné dans les paramètres de votre compte Bitly sera utilisé."
 
-#: lib/messages-tooltip-plugin.php:373
+#: lib/messages-tooltip-plugin.php:379
 msgid "An optional <a href=\"%s\">Bitly group name to organize your Bitly account links</a>."
 msgstr "Un <a href=\"%s\">nom de groupe Bitly facultatif pour organiser les liens de votre compte Bitly</a>."
 
-#: lib/messages-tooltip-plugin.php:380
+#: lib/messages-tooltip-plugin.php:386
 msgid "The DLMY.App secret API Key can be found in the DLMY.App user account &gt; Tools &gt; Developer API webpage."
 msgstr "La clé API secrète DLMY.App peut être trouvée dans la page Web du compte utilisateur DLMY.App &gt; Outils &gt; API de développeur."
 
-#: lib/messages-tooltip-plugin.php:386
+#: lib/messages-tooltip-plugin.php:392
 msgid "To use Ow.ly as your preferred shortening service, you must provide the Ow.ly API Key for this website (complete this form to <a href=\"%s\">Request Ow.ly API Access</a>)."
 msgstr "Pour utiliser Ow.ly comme votre service de raccourcissement préféré, vous devez fournir la clé API Ow.ly pour ce site Web (remplissez ce formulaire pour <a href=\"%s\">demander un accès API Ow.ly</a>)."
 
-#: lib/messages-tooltip-plugin.php:392
+#: lib/messages-tooltip-plugin.php:398
 msgid "The URL to <a href=\"%s\">Your Own URL Shortener</a> (YOURLS) shortening service."
 msgstr "L'URL du service de raccourcissement de lien <a href=\"%s\">Your Own URL Shortener</a> (YOURLS)."
 
-#: lib/messages-tooltip-plugin.php:397
+#: lib/messages-tooltip-plugin.php:403
 msgid "If <a href=\"%s\">Your Own URL Shortener</a> (YOURLS) shortening service is private, enter a configured username (see YOURLS Token for an alternative to the username / password options)."
 msgstr "Si le service <a href=\"%s\">Your Own URL Shortener</a> (YOURLS) est privé, entrez un nom d'utilisateur YOURLS configuré (voir l'option Jeton YOURLS pour un alternatif au nom d'utilisateur / mot de passe)."
 
-#: lib/messages-tooltip-plugin.php:403
+#: lib/messages-tooltip-plugin.php:409
 msgid "If <a href=\"%s\">Your Own URL Shortener</a> (YOURLS) shortening service is private, enter a configured user password (see YOURLS Token for an alternative to the username / password options)."
 msgstr "Si le service <a href=\"%s\">Your Own URL Shortener</a> (YOURLS) est privé, entrez un mot de passe d'utilisateur YOURLS configuré (voir l'option Jeton YOURLS pour un alternatif au nom d' utilisateur / mot de passe)."
 
-#: lib/messages-tooltip-plugin.php:409
+#: lib/messages-tooltip-plugin.php:415
 msgid "If <a href=\"%s\">Your Own URL Shortener</a> (YOURLS) shortening service is private, you can use a token string for authentication instead of a username / password combination."
 msgstr "Si le service <a href=\"%s\">Your Own URL Shortener</a> (YOURLS) est privé, vous pouvez utiliser un jeton d'authentification YOURLS au lieu d'un nom d'utilisateur et mot de passe."
 
-#: lib/messages-tooltip-plugin.php:418
+#: lib/messages-tooltip-plugin.php:424
 msgid "An external service API used to retrieve ratings and reviews for meta tags and Schema markup."
 msgstr "Une API de service externe utilisée pour récupérer les notes et les critiques pour les balises méta et le balisage de Schéma."
 
-#: lib/messages-tooltip-plugin.php:424
+#: lib/messages-tooltip-plugin.php:430
 msgid "The maximum number of reviews retrieved from the service API."
 msgstr "Le nombre maximal de critiques récupérés à partir de l'API de service."
 
-#: lib/messages-tooltip-plugin.php:430
+#: lib/messages-tooltip-plugin.php:436
 msgid "The maximum age of reviews retrieved from the service API."
 msgstr "L'âge maximal des critiques récupérés à partir de l'API de service."
 
-#: lib/messages-tooltip-plugin.php:436
+#: lib/messages-tooltip-plugin.php:442
 msgid "Get ratings and reviews for the selected post types from the service API."
 msgstr "Obtenir les notes et les critiques pour les types d'articles sélectionnés à partir de l'API de service."
 
-#: lib/messages-tooltip-plugin.php:443
+#: lib/messages-tooltip-plugin.php:449
 msgid "Your unique Shopper Approved site ID and API token values are required to retrieve ratings and reviews from the Shopper Approved service API."
 msgstr "Votre ID de site et de jeton d'API de Shopper Approved sont nécessaires pour récupérer les notes et critiques de l'API de service Shopper Approved."
 
-#: lib/messages-tooltip-plugin.php:445
+#: lib/messages-tooltip-plugin.php:451
 msgid "<a href=\"%s\">Login to your Shopper Approved account and go to the API Dashboard</a>, then scroll down to find your Site ID and API Token."
 msgstr "<a href=\"%s\">Connectez-vous à votre compte Shopper Approved et accédez au tableau de bord API</a>, puis faites défiler vers le bas pour trouver votre ID de site et votre jeton d'API."
 
-#: lib/messages-tooltip-plugin.php:452
+#: lib/messages-tooltip-plugin.php:458
 msgid "Your unique Stamped.io store hash and API public key values are required to retrieve ratings and reviews from the Stamped.io service API."
 msgstr "Le hachage unique pour votre magasin et la clé publique d'API de Stamped.io sont nécessaires pour récupérer les notes et les critiques de l'API de service Stamped.io."
 
-#: lib/messages-tooltip-plugin.php:463
+#: lib/messages-tooltip-plugin.php:469
 msgid "Enter the name of a product attribute available in your e-commerce plugin."
 msgstr "Entrez le nom d'un attribut de produit disponible dans votre extension de commerce électronique."
 
-#: lib/messages-tooltip-plugin.php:465
+#: lib/messages-tooltip-plugin.php:471
 msgid "The product attribute name allows %s to request the attribute value from your e-commerce plugin."
 msgstr "Le nom d'attribut du produit permet à %s de demander la valeur de l'attribut à votre extension de e-commerce."
 
-#: lib/messages-tooltip-plugin.php:467
+#: lib/messages-tooltip-plugin.php:473
 msgid "The default attribute name is \"%s\"."
 msgstr "Le nom d'attribut par défaut est \"%s\"."
 
-#: lib/messages-tooltip-plugin.php:485
+#: lib/messages-tooltip-plugin.php:491
 msgid "If your theme or another plugin provides a custom field (aka metadata) for %s, you may enter its custom field name here."
 msgstr "Si votre thème ou une autre extension fournit un champ personnalisé (aka métadonnées) pour %s, vous pouvez entrer son nom de champ personnalisé ici."
 
 #. translators: %1$s is the metabox name, %2$s is the option name.
-#: lib/messages-tooltip-plugin.php:488
+#: lib/messages-tooltip-plugin.php:494
 msgid "If a custom field matching this name is found, its value will be imported for the %1$s \"%2$s\" option."
 msgstr "Si un champ personnalisé correspondant à ce nom est trouvé, sa valeur sera importée pour l'option %1$s \"%2$s\"."
 
-#: lib/messages-tooltip-plugin.php:494
+#: lib/messages-tooltip-plugin.php:500
 msgid "Note that the \"%s\" option provides multiple input fields - the custom field value will be split on newline characters, and each line will be assigned to an individual input field."
 msgstr "Notez que l'option \"%s\" offre plusieurs champs de saisie - la valeur du champ personnalisé sera divisée sur les caractères de nouvelle ligne et chaque ligne sera affectée à un champ de saisie individuel."
 

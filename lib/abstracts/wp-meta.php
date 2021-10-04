@@ -1383,7 +1383,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				}
 
 				/**
-				 * Example: 'wpsso_post_cache_transient_keys'.
+				 * Example filter names:
+				 *
+				 *	'wpsso_post_cache_transient_keys'
 				 */
 				$filter_name = 'wpsso_' . $mod[ 'name' ] . '_cache_' . $type_name . '_keys';
 
@@ -2269,6 +2271,13 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				return $mt_images;
 			}
 
+			/**
+			 * Example filter names:
+			 *
+			 *	'wpsso_post_image_ids'
+			 *	'wpsso_term_image_ids'
+			 *	'wpsso_user_image_ids'
+			 */
 			$filter_name = 'wpsso_' . $mod[ 'name' ] . '_image_ids';
 
 			$image_ids = apply_filters( $filter_name, array(), $size_names, $mod[ 'id' ], $mod );
@@ -2291,6 +2300,13 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				}
 			}
 
+			/**
+			 * Example filter names:
+			 *
+			 *	'wpsso_post_image_urls'
+			 *	'wpsso_term_image_urls'
+			 *	'wpsso_user_image_urls'
+			 */
 			$filter_name = 'wpsso_' . $mod[ 'name' ] . '_image_urls';
 
 			$image_urls = apply_filters( $filter_name, array(), $size_names, $mod[ 'id' ], $mod );

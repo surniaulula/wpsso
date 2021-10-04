@@ -4516,6 +4516,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $ret;
 		}
 
+		/**
+		 * Add one or more attributes to the HTML tag.
+		 *
+		 * Example HTML tag:
+		 *
+		 *	$html argument = '<img src="/image.jpg">
+		 *
+		 *	$html returned = '<img src="/image.jpg" data-pin-nopin="nopin">'
+		 */
 		public static function insert_html_tag_attributes( $html, array $attr_names_values ) {
 
 			foreach ( $attr_names_values as $attr_name => $attr_value ) {

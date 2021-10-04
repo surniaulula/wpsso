@@ -39,7 +39,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 
 			add_filter( 'wp_get_attachment_image_attributes', array( $this, 'add_attachment_image_attributes' ), 10, 2 );
 			add_filter( 'get_header_image_tag', array( $this, 'get_header_image_tag' ), 10, 3 );
-			add_filter( 'get_avatar', array( $this, 'get_avatar_image_tag' ), 10, 5 );
+			add_filter( 'get_avatar', array( $this, 'get_avatar_image_tag' ), 10, 6 );
 			add_filter( 'get_image_tag', array( $this, 'get_image_tag' ), 10, 6 );
 
 			if ( ! empty( $this->p->options[ 'pin_add_img_html' ] ) ) {
@@ -89,13 +89,9 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 		}
 
 		/**
-		 * $html = apply_filters( 'get_avatar', $html, $id_or_email, $size_px, $default_type, $alt );
-		 *
-		 * The $data_args filter hook argument is available since WP v4.2.0:
-		 *
 		 * $html = apply_filters( 'get_avatar', $html, $id_or_email, $size_px, $default_type, $alt, $data_args );
 		 */
-		public function get_avatar_image_tag( $html, $id_or_email, $size_px, $default_type, $alt ) {
+		public function get_avatar_image_tag( $html, $id_or_email, $size_px, $default_type, $alt, $data_args ) {
 
 			if ( ! empty( $this->p->options[ 'pin_add_nopin_header_img_tag' ] ) ) {
 
