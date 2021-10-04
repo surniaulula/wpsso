@@ -36,17 +36,13 @@
     <li>And More!</li>
 </ul>
 
+<p><strong>Reads WordPress, plugin, and remote API data:</strong></p>
+
+<p>There's no need to create templates, manually re-enter descriptions, titles, product information, or re-select images and videos. WPSSO can read all your existing WordPress content, including custom posts and taxonomies, enhanced user profile data, Media Library image and video information, third-party plugin data, and remote service APIs (Bitly, Facebook, Shopper Approved, Stamped.io, Vimeo, Wistia, YouTube, and many more).</p>
+
 <p><strong>Supports over 500 different Schema types:</strong></p>
 
 <p>WPSSO provides comprehensive Schema markup for posts, pages, custom post types, terms (category, tags, etc.), custom taxonomies, user profile pages, search result pages, archive pages, and Accelerated Mobile Pages (AMP) pages - including image SEO, video SEO, local business, organization, publisher, person, author and co-authors, extensive e-Commerce product markup, product variations, product ratings, aggregate ratings, reviews, recipe information, event details, collection pages, profile pages, search pages, FAQ pages, item lists for Google's Rich Results Carousel, and much more.</p>
-
-<p><strong>Reads existing content, plugin, and service API data:</strong></p>
-
-<p>There's no need to manually re-enter descriptions, titles, product information, or re-select images and videos! WPSSO can read all your existing WordPress content, including custom posts and taxonomies, enhanced user profile data, Media Library image and video information, third-party plugin data, and remote service APIs (Bitly, Facebook, Shopper Approved, Stamped.io, Vimeo, Wistia, YouTube, and many more).</p>
-
-<p><strong>Use WPSSO Core by itself or extend another SEO plugin:</strong></p>
-
-<p>WPSSO can be your only social and search optimization plugin, or can improve the structured data of another third-party SEO plugin (like All in One SEO Pack, Jetpack SEO Tools, Rank Math SEO, SEO Ultimate, SEOPress, The SEO Framework, WP Meta SEO, Yoast SEO, and more).</p>
 
 <p><strong>Fixes Google Search and Schema Markup Validator errors, including:</strong></p>
 
@@ -65,6 +61,10 @@
 <li>No global identifier provided (e.g. gtin mpn isbn).</li>
 <li>Not a known valid target type for the itemReviewed property.</li>
 </ul>
+
+<p><strong>Use WPSSO by itself or extend another SEO plugin:</strong></p>
+
+<p>WPSSO can be your only social and search optimization plugin, or can improve the structured data of another third-party SEO plugin (like All in One SEO Pack, Jetpack SEO Tools, Rank Math SEO, SEO Ultimate, SEOPress, The SEO Framework, WP Meta SEO, Yoast SEO, and more).</p>
 
 <h3>Users Love the WPSSO Core Plugin</h3>
 
