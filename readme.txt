@@ -41,7 +41,7 @@ Rank higher and improve click through rates by presenting your content at its be
 
 <p><strong>Reads WordPress, plugin, and remote API data:</strong></p>
 
-There's no need to create templates, manually re-enter descriptions, titles, product information, or re-select images and videos. WPSSO can read all your existing WordPress content, including custom post types and taxonomies, enhanced user profile data, Media Library image and video information, third-party plugin data, and remote service APIs (Bitly, Facebook, Shopper Approved, Stamped.io, Vimeo, Wistia, YouTube, and many more).
+There's no need to create or select templates, manually re-enter descriptions, titles, product information, or reselect images and videos. WPSSO can read all your existing WordPress content, including custom post types and taxonomies, enhanced user profile data, Media Library image and video information, third-party plugin data, and remote service APIs (Bitly, Facebook, Shopper Approved, Stamped.io, Vimeo, Wistia, YouTube, and many more).
 
 <p><strong>Supports over 500 different Schema types:</strong></p>
 
@@ -463,7 +463,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <p>Development, alpha, beta, and release candidate updates are available for Premium users.</p>
 
-<p>Under the SSO &gt; Update Manager settings page, select the "Development and Up" version filter for WPSSO Core and all its extensions (to satisfy any version dependencies). Save the plugin settings, and click the "Check for Plugin Updates" button to fetch the latest / current WPSSO version information. When new Development versions are available, they will automatically appear under your WordPress Dashboard &gt; Updates page. You can always re-select the "Stable / Production" version filter at any time to re-install the last stable / production version of a plugin.</p>
+<p>Under the SSO &gt; Update Manager settings page, select the "Development and Up" version filter for WPSSO Core and all its extensions (to satisfy any version dependencies). Save the plugin settings, and click the "Check for Plugin Updates" button to fetch the latest / current WPSSO version information. When new Development versions are available, they will automatically appear under your WordPress Dashboard &gt; Updates page. You can always reselect the "Stable / Production" version filter at any time to re-install the last stable / production version of a plugin.</p>
 
 <h3>Changelog / Release Notes</h3>
 
