@@ -156,9 +156,9 @@ The WPSSO Core Standard plugin is designed to satisfy the requirements of most s
 
 **[Premium]** Schema JSON-LD markup for WooCommerce Products:
 
-The WooCommerce plugin does not provide sufficient Schema JSON-LD markup for Google Rich Results.
+> The WooCommerce plugin does not provide sufficient Schema JSON-LD markup for Google Rich Results.
 
-The WPSSO Core Premium plugin reads WooCommerce product data and provides complete Schema Product JSON-LD markup for Google Rich Results, including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.
+> The WPSSO Core Premium plugin reads WooCommerce product data and provides complete Schema Product JSON-LD markup for Google Rich Results, including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.
 
 **[Premium]** Additional customizable Schema options in the Document SSO metabox:
 
