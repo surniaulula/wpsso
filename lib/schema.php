@@ -2422,6 +2422,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		/**
 		 * $size_names can be null, a string, or an array.
+		 *
+		 * $add_video can be true, false, or a string (property name).
 		 */
 		public static function add_media_data( &$json_data, $mod, $mt_og, $size_names = 'schema', $add_video = true ) {
 
@@ -2468,21 +2470,23 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$wpsso->debug->log( 'adding all video(s)' );
 				}
 
+				$vid_prop = is_string( $add_video ) ? $add_video : 'video';
+
 				$vid_added = 0;
 
 				if ( ! empty( $mt_og[ 'og:video' ] ) ) {
 
 					if ( $wpsso->debug->enabled ) {
 
-						$wpsso->debug->log( 'adding videos to json data' );
+						$wpsso->debug->log( 'adding videos to json data "' . $vid_prop . '" property' );
 					}
 
-					$vid_added = self::add_videos_data_mt( $json_data[ 'video' ], $mt_og[ 'og:video' ], 'og:video' );
+					$vid_added = self::add_videos_data_mt( $json_data[ $vid_prop ], $mt_og[ 'og:video' ], 'og:video' );
 				}
 
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log( $vid_added . ' videos added' );
+					$wpsso->debug->log( $vid_added . ' videos added to "' . $vid_prop . '" property' );
 				}
 
 			} elseif ( $wpsso->debug->enabled ) {

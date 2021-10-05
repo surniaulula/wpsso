@@ -45,13 +45,9 @@ if ( ! class_exists( 'WpssoJsonFiltersTypePlace' ) ) {
 			/**
 			 * Property:
 			 *	image as https://schema.org/ImageObject
+			 *	subjectOf as https://schema.org/VideoObject
 			 */
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'adding image property for place (videos disabled)' );
-			}
-
-			WpssoSchema::add_media_data( $json_ret, $mod, $mt_og, $size_names = 'schema', $add_video = false );
+			WpssoSchema::add_media_data( $json_ret, $mod, $mt_og, $size_names = 'schema', $add_video = 'subjectOf' );
 
 			/**
 			 * Skip reading place meta tags if not main schema type or if there are no place meta tags.
