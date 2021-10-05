@@ -144,16 +144,15 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					case 'person':
 
-						$defs[ 'schema_def_pub_org_id' ]    = 'none';
-						$defs[ 'schema_def_pub_person_id' ] = $this->p->options[ 'site_pub_person_id' ];
+						$this->cache_defaults[ 'schema_def_pub_org_id' ]    = 'none';
+						$this->cache_defaults[ 'schema_def_pub_person_id' ] = $this->p->options[ 'site_pub_person_id' ];
 
 						break;
 
 					case 'organization':
-					default:
 
-						$defs[ 'schema_def_pub_org_id' ]    = 'site';
-						$defs[ 'schema_def_pub_person_id' ] = 'none';
+						$this->cache_defaults[ 'schema_def_pub_org_id' ]    = 'site';
+						$this->cache_defaults[ 'schema_def_pub_person_id' ] = 'none';
 
 						break;
 				}

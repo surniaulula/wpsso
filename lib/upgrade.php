@@ -776,6 +776,29 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 
 					delete_post_meta_by_key( '_wpsso_wprecipemaker' );
 				}
+
+				/**
+				 * Fix default publisher.
+				 */
+				if ( $prev_version > 0 && $prev_version <= 827 ) {
+
+					switch ( $opts[ 'site_pub_schema_type' ] ) {
+
+						case 'person':
+
+							$opts[ 'schema_def_pub_org_id' ]    = 'none';
+							$opts[ 'schema_def_pub_person_id' ] = $opts[ 'site_pub_person_id' ];
+
+							break;
+
+						case 'organization':
+
+							$opts[ 'schema_def_pub_org_id' ]    = 'site';
+							$opts[ 'schema_def_pub_person_id' ] = 'none';
+
+							break;
+					}
+				}
 			}
 
 			/**
