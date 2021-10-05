@@ -1038,30 +1038,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return apply_filters( 'wpsso_' . $mod[ 'name' ] . '_document_meta_tabs', $tabs, $mod, $metabox_id );
 		}
 
-		public function get_table_rows( $metabox_id, $tab_key, array $head_info, array $mod ) {
-
-			$table_rows  = array();
-
-			/**
-			 * Call the following methods:
-			 *
-			 *	get_table_rows_sso_edit_tab()
-			 *	get_table_rows_sso_media_tab()
-			 *	get_table_rows_sso_social_tab()
-			 *	get_table_rows_sso_oembed_tab()
-			 *	get_table_rows_sso_head_tab()
-			 *	get_table_rows_sso_validate_tab()
-			 */
-			$method_name = 'get_table_rows_' . $metabox_id . '_' . $tab_key . '_tab';
-
-			if ( method_exists( $this->edit, $method_name ) ) {
-
-				$table_rows = call_user_func( array( $this->edit, $method_name ), $this->form, $head_info, $mod );
-			}
-
-			return $table_rows;
-		}
-
 		/**
 		 * Note that WpssoWpMeta->check_sortable_meta() passes the $mod array instead of an ID.
 		 */

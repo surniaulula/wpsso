@@ -4680,21 +4680,21 @@ msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1486
+#: lib/abstracts/wp-meta.php:1462
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1814 lib/json-filters/type/claimreview.php:77
+#: lib/abstracts/wp-meta.php:1790 lib/json-filters/type/claimreview.php:77
 msgid "A claim review cannot be the subject of another claim review."
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1816
+#: lib/abstracts/wp-meta.php:1792
 msgid ""
 "Please select a subject webpage type that better describes the subject of "
 "the webpage (ie. the content) being reviewed."
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:2543
+#: lib/abstracts/wp-meta.php:2519
 msgid "adding schema images"
 msgstr ""
 
@@ -6074,39 +6074,39 @@ msgctxt "default title"
 msgid "No Title"
 msgstr ""
 
-#: lib/edit.php:462
+#: lib/edit.php:461
 msgctxt "option label"
 msgid "oEmbed JSON URL"
 msgstr ""
 
-#: lib/edit.php:466
+#: lib/edit.php:465
 msgctxt "option label"
 msgid "oEmbed XML URL"
 msgstr ""
 
-#: lib/edit.php:470
+#: lib/edit.php:469
 msgctxt "option label"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/edit.php:480
+#: lib/edit.php:479
 msgid "(see below)"
 msgstr ""
 
-#: lib/edit.php:490
+#: lib/edit.php:489
 msgid "No oEmbed data found."
 msgstr ""
 
-#: lib/edit.php:494
+#: lib/edit.php:493
 msgctxt "option label"
 msgid "oEmbed HTML"
 msgstr ""
 
-#: lib/edit.php:504
+#: lib/edit.php:503
 msgid "No oEmbed HTML found."
 msgstr ""
 
-#: lib/edit.php:640
+#: lib/edit.php:639
 msgctxt "submit button"
 msgid "Validate %s"
 msgstr ""

@@ -450,13 +450,12 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$oembed_data    = false;
-			$oembed_html    = '';
-			$oembed_width   = 600;
-
-			$json_url    = $this->p->util->get_oembed_url( $mod, 'json' );
-			$xml_url     = $this->p->util->get_oembed_url( $mod, 'xml' );
-			$oembed_data = $this->p->util->get_oembed_data( $mod, $oembed_width );
+			$oembed_data  = false;
+			$oembed_html  = '';
+			$oembed_width = 600;
+			$json_url     = $this->p->util->get_oembed_url( $mod, 'json' );
+			$xml_url      = $this->p->util->get_oembed_url( $mod, 'xml' );
+			$oembed_data  = $this->p->util->get_oembed_data( $mod, $oembed_width );
 
 			$table_rows[] = '' .
 				$form->get_th_html( _x( 'oEmbed JSON URL', 'option label', 'wpsso' ), $css_class = 'medium' ) . 
