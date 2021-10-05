@@ -477,7 +477,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fixed the Document SSO &gt; Publisher Org. option value.
 	* Fixed the Advanced Settings &gt; Default Publisher Org. option value.
 * **Developer Notes**
-	* None.
+	* Standardized `get_table_rows()` calls and filters in 'submenu' and 'sitesubmenu' classes.
 * **Requires At Least**
 	* PHP v7.0.
 	* WordPress v5.0.
