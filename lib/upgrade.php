@@ -782,21 +782,24 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				 */
 				if ( $prev_version > 0 && $prev_version <= 827 ) {
 
-					switch ( $opts[ 'site_pub_schema_type' ] ) {
+					if ( 'none' === $opts[ 'schema_def_pub_org_id' ] && 'none' === $opts[ 'schema_def_pub_person_id' ] ) {
 
-						case 'person':
+						switch ( $opts[ 'site_pub_schema_type' ] ) {
 
-							$opts[ 'schema_def_pub_org_id' ]    = 'none';
-							$opts[ 'schema_def_pub_person_id' ] = $opts[ 'site_pub_person_id' ];
+							case 'person':
 
-							break;
+								$opts[ 'schema_def_pub_org_id' ]    = 'none';
+								$opts[ 'schema_def_pub_person_id' ] = $opts[ 'site_pub_person_id' ];
 
-						case 'organization':
+								break;
 
-							$opts[ 'schema_def_pub_org_id' ]    = 'site';
-							$opts[ 'schema_def_pub_person_id' ] = 'none';
+							case 'organization':
 
-							break;
+								$opts[ 'schema_def_pub_org_id' ]    = 'site';
+								$opts[ 'schema_def_pub_person_id' ] = 'none';
+
+								break;
+						}
 					}
 				}
 			}
