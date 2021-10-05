@@ -467,12 +467,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.0.2-b.1 (2021/10/05)**
+**Version 9.1.0-rc.1 (2021/10/05)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added Schema VideoObject markup for Schema Event, Place, and Product in the 'subjectOf' property.
 * **Bugfixes**
 	* Fixed the Document SSO &gt; Publisher Org. option value.
 	* Fixed the Advanced Settings &gt; Default Publisher Org. option value.
@@ -539,9 +539,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.0.2-b.1 =
+= 9.1.0-rc.1 =
 
-(2021/10/05) Fixed the Document SSO &gt; Publisher Org. and the Advanced Settings &gt; Default Publisher Org. option value.
+(2021/10/05) Fixed the Document SSO &gt; Publisher Org. and the Advanced Settings &gt; Default Publisher Org. option value. Added Schema VideoObject markup for Schema Event, Place, and Product in the 'subjectOf' property.
 
 = 9.0.1 =
 
