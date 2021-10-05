@@ -1847,11 +1847,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				$wpsso =& Wpsso::get_instance();
 
 				$local_cache = (array) apply_filters( 'wpsso_get_sortable_columns', $wpsso->cf[ 'edit' ][ 'columns' ] );
-
-				if ( $wpsso->debug->enabled ) {
-
-					$wpsso->debug->log_arr( 'sortable columns', $local_cache );
-				}
 			}
 
 			if ( false !== $col_key ) {

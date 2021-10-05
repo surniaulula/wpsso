@@ -621,11 +621,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$post_id = empty( $post_obj->ID ) ? 0 : $post_obj->ID;
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'post ID = ' . $post_id );
-			}
-
 			/**
 			 * Make sure we have at least a post type and status.
 			 */

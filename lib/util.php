@@ -422,13 +422,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$doing_ajax = SucomUtilWP::doing_ajax();
-
-				if ( ! $doing_ajax ) {
-
-					$this->p->debug->log_arr( 'get_image_sizes', $this->get_image_sizes() );
-				}
-
 				$this->p->debug->mark( 'define image sizes' );	// End timer.
 			}
 		}
@@ -1013,11 +1006,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				}
 
 				$post_type_names = SucomUtilWP::get_post_types( $output = 'names' );
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log_arr( '$post_type_names', $post_type_names );
-				}
 
 				foreach ( $post_type_names as $name ) {
 
