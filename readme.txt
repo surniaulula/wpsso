@@ -467,7 +467,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.0.2-dev.1 (2021/10/05)**
+**Version 9.0.2-b.1 (2021/10/05)**
 
 * **New Features**
 	* None.
@@ -539,7 +539,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.0.2-dev.1 =
+= 9.0.2-b.1 =
 
 (2021/10/05) Fixed the Document SSO &gt; Publisher Org. and the Advanced Settings &gt; Default Publisher Org. option value.
 
