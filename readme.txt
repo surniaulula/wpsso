@@ -469,7 +469,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.1.0-rc.2 (2021/10/06)**
+**Version 9.1.0 (2021/10/06)**
 
 * **New Features**
 	* None.
@@ -543,7 +543,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.1.0-rc.2 =
+= 9.1.0 =
 
 (2021/10/06) Fixed the Document SSO &gt; Publisher Org. and the Advanced Settings &gt; Default Publisher Org. option value. Added Schema Event, Place, and Product 'subjectOf' property for videos.
 
