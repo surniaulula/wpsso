@@ -469,17 +469,19 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.1.0-rc.1 (2021/10/05)**
+**Version 9.1.0-rc.2 (2021/10/06)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added Schema VideoObject markup for Schema Event, Place, and Product in the 'subjectOf' property.
+	* Added Schema Event, Place, and Product 'subjectOf' property for videos.
 * **Bugfixes**
 	* Fixed the Document SSO &gt; Publisher Org. option value.
 	* Fixed the Advanced Settings &gt; Default Publisher Org. option value.
 * **Developer Notes**
 	* Standardized `get_table_rows()` calls and filters in 'submenu' and 'sitesubmenu' classes.
+	* Refactored the `WpssoProMediaGravatar->filter_user_image_urls()` method.
+	* Removed the unused `WpssoWpMeta->get_table_rows()` method.
 * **Requires At Least**
 	* PHP v7.0.
 	* WordPress v5.0.
@@ -541,9 +543,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.1.0-rc.1 =
+= 9.1.0-rc.2 =
 
-(2021/10/05) Fixed the Document SSO &gt; Publisher Org. and the Advanced Settings &gt; Default Publisher Org. option value. Added Schema VideoObject markup for Schema Event, Place, and Product in the 'subjectOf' property.
+(2021/10/06) Fixed the Document SSO &gt; Publisher Org. and the Advanced Settings &gt; Default Publisher Org. option value. Added Schema Event, Place, and Product 'subjectOf' property for videos.
 
 = 9.0.1 =
 
