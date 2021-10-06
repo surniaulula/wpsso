@@ -358,7 +358,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$remove = array( 'Open_Graph', 'Twitter' );
+			$remove = array( 'Open_Graph', 'Slack', 'Twitter' );
 
 			if ( $this->p->avail[ 'p' ][ 'schema' ] ) {
 
