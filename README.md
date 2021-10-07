@@ -36,11 +36,11 @@
     <li>And More!</li>
 </ul>
 
-<p><strong>Reads WordPress, plugin, and remote API data:</strong></p>
+<p><strong>Uses WordPress, plugin, and remote API data:</strong></p>
 
-<p>There's no need to create or select templates, manually reenter descriptions, titles, product information, or reselect images and videos.</p>
+<p>There's no need to select or create templates, manually reenter descriptions, titles, product information, or reselect images and videos.</p>
 
-<p>WPSSO can read your existing WordPress content, including custom post types and taxonomies, enhanced user profile data, Media Library image and video information, third-party plugin data, and remote service APIs (Bitly, Facebook, Shopper Approved, Stamped.io, Vimeo, Wistia, YouTube, and many more).</p>
+<p>WPSSO can use your existing WordPress content, including custom post types and taxonomies, enhanced user profile data, Media Library image and video information, third-party plugin data, and remote service APIs (Bitly, Facebook, Shopper Approved, Stamped.io, Vimeo, Wistia, YouTube, and many more).</p>
 
 <p><strong>Supports over 500 different Schema types:</strong></p>
 
