@@ -1,4 +1,4 @@
-=== WPSSO Core | Meta Tags, oEmbed, REST API, Rich Pins, Rich Results, Schema JSON-LD and More ===
+=== WPSSO Core | Meta Tags, oEmbed, REST API, Rich Pins, Rich Results, Rich Snippets, Schema JSON-LD and More ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
