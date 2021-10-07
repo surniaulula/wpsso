@@ -10016,7 +10016,7 @@ msgctxt "metabox tab"
 msgid "Integration"
 msgstr ""
 
-#: lib/sitesubmenu/site-licenses.php:54 lib/submenu/licenses.php:42
+#: lib/sitesubmenu/site-licenses.php:54 lib/submenu/licenses.php:67
 msgctxt "metabox title"
 msgid "Plugin and Add-on Licenses"
 msgstr ""
