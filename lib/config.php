@@ -1069,7 +1069,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'wpssowcmd' => array(			// Plugin acronym.
 					'short'       => 'WPSSO WCMD',	// Short plugin name.
-					'name'        => 'WPSSO Product Metadata for WooCommerce',
+					'name'        => 'WPSSO Product Metadata for WooCommerce SEO',
 					'desc'        => 'GTIN, GTIN-8, GTIN-12 (UPC), GTIN-13 (EAN), GTIN-14, ISBN, MPN, depth, and volume for WooCommerce products and variations.',
 					'slug'        => 'wpsso-wc-metadata',
 					'base'        => 'wpsso-wc-metadata/wpsso-wc-metadata.php',
@@ -1133,7 +1133,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'wpssowcsdt' => array(			// Plugin acronym.
 					'short'       => 'WPSSO WCSDT',	// Short plugin name.
-					'name'        => 'WPSSO Shipping Delivery Time for WooCommerce',
+					'name'        => 'WPSSO Shipping Delivery Time for WooCommerce SEO',
 					'desc'        => 'Shipping delivery time estimates for WooCommerce shipping zones, methods, and classes.',
 					'slug'        => 'wpsso-wc-shipping-delivery-time',
 					'base'        => 'wpsso-wc-shipping-delivery-time/wpsso-wc-shipping-delivery-time.php',

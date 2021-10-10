@@ -1259,7 +1259,7 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:129
 msgctxt "plugin name"
-msgid "WPSSO Product Metadata for WooCommerce"
+msgid "WPSSO Product Metadata for WooCommerce SEO"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:130
@@ -1271,7 +1271,7 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:131
 msgctxt "plugin name"
-msgid "WPSSO Shipping Delivery Time for WooCommerce"
+msgid "WPSSO Shipping Delivery Time for WooCommerce SEO"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:132
