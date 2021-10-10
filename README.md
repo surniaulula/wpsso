@@ -19,6 +19,10 @@
 
 <p><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"> WPSSO helps you rank higher and improves click through rates by presenting your content at its best on <strong>social sites</strong> and in <strong>search results</strong> - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled.</p>
 
+<blockquote>
+  <p>The <a href="https://surniaulula.com/2021/apps/wordpress/plugins/wordpress-seo-plugin-performance-report-for-q4-2021/">SEO Plugin Performance Report for Q4 2021</a> is out! See where WPSSO Core ranks compared to other popular SEO plugins!</p>
+</blockquote>
+
 <p><strong>Provides structured data markup for:</strong></p>
 
 <ul>
