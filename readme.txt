@@ -39,6 +39,23 @@ Advanced WordPress SEO structured data plugin to present your content at its bes
 	<li>WhatsApp and Messaging Apps</li>
 	<li>WordPress REST API</li>
 	<li>WordPress XML Sitemaps</li>
+	<li>**&#91;Premium&#93;** Third-party plugins, including:</li>
+	<ul>
+		<li>All in One SEO Pack</li>
+		<li>bbPress</li>
+		<li>BuddyPress</li>
+		<li>Easy Digital Downloads</li>
+		<li>NextGEN Gallery</li>
+		<li>SEOPress</li>
+		<li>Simple Job Board</li>
+		<li>The Events Calendar</li>
+		<li>The SEO Framework</li>
+		<li>WooCommerce</li>
+		<li>WP Job Manager</li>
+		<li>WP Meta SEO</li>
+		<li>WP Recipe Maker</li>
+		<li>Yoast SEO</li>
+	<ul>
 	<li>And More!</li>
 </ul>
 
@@ -145,25 +162,25 @@ Built-in compatibility for advanced WordPress configurations:
 
 The WPSSO Core Standard plugin is designed to satisfy the requirements of most standard WordPress sites. If your site requires additional third-party plugin and service API integration, like WooCommerce shops, embedded video support, or advanced customization features, then you may want to get the [WPSSO Core Premium plugin](https://wpsso.com/extend/plugins/wpsso/) for those additional features.
 
-**[Premium]** Support for the Twitter [Player Card](https://dev.twitter.com/cards/types/player) for embedded videos.
+**&#91;Premium&#93;** Support for the Twitter [Player Card](https://dev.twitter.com/cards/types/player) for embedded videos.
 
-**[Premium]** Detection of embedded videos in content text with API support for Facebook, Slideshare, Vimeo, Wistia, and Youtube videos.
+**&#91;Premium&#93;** Detection of embedded videos in content text with API support for Facebook, Slideshare, Vimeo, Wistia, and Youtube videos.
 
-**[Premium]** Upscaling of smaller images to satisfy minimum size requirements for social sites and Google Rich Results (aka aka Rich Snippets).
+**&#91;Premium&#93;** Upscaling of smaller images to satisfy minimum size requirements for social sites and Google Rich Results (aka aka Rich Snippets).
 
-**[Premium]** URL shortening with Bitly, DLMY.App, Google, Ow.ly, TinyURL, or YOURLS.
+**&#91;Premium&#93;** URL shortening with Bitly, DLMY.App, Google, Ow.ly, TinyURL, or YOURLS.
 
-**[Premium]** Customize default Open Graph and Schema types for posts, pages, custom post types, taxonomy terms, and user profile pages.
+**&#91;Premium&#93;** Customize default Open Graph and Schema types for posts, pages, custom post types, taxonomy terms, and user profile pages.
 
-**[Premium]** Customize post and taxonomy types included in the WordPress sitemap XML.
+**&#91;Premium&#93;** Customize post and taxonomy types included in the WordPress sitemap XML.
 
-**[Premium]** Complete Schema JSON-LD markup for WooCommerce SEO:
+**&#91;Premium&#93;** Complete Schema JSON-LD markup for WooCommerce SEO:
 
 > The WooCommerce plugin does not provide sufficient Schema JSON-LD markup for Google Rich Results.
 
 > The WPSSO Core Premium plugin reads WooCommerce product data and provides complete Schema Product JSON-LD markup for Google Rich Results, including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.
 
-**[Premium]** Customizable Schema options in the Document SSO metabox:
+**&#91;Premium&#93;** Customizable Schema options in the Document SSO metabox:
 
 * All Schema Types
 	* Name / Title
@@ -307,7 +324,7 @@ The WPSSO Core Standard plugin is designed to satisfy the requirements of most s
 	* Operating System
 	* Application Category
 
-**[Premium]** Integrates with other plugins and service APIs for additional image, video, e-Commerce product details, SEO settings, etc. The following modules are included with the Premium version and automatically loaded if/when the supported plugins and/or services are required.
+**&#91;Premium&#93;** Integrates with other plugins and service APIs for additional image, video, e-Commerce product details, SEO settings, etc. The following modules are included with the Premium version and automatically loaded if/when the supported plugins and/or services are required.
 
 * **Reads data from 30 third-party plugins:** 
 
