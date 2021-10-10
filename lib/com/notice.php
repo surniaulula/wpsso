@@ -762,7 +762,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 				if ( ! empty( $this->p->debug->enabled ) ) {
 
-					$this->p->debug->log( 'exiting early: doing block editor' );
+					$this->p->debug->log( 'exiting early: doing block editor is true' );
 				}
 
 				return;

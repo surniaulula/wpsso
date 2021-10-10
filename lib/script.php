@@ -60,6 +60,21 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				$this->p->debug->mark();
 			}
 
+			if ( ! SucomUtilWP::doing_block_editor() ) {
+
+				if ( ! empty( $this->p->debug->enabled ) ) {
+
+					$this->p->debug->log( 'exiting early: doing block editor is false' );
+				}
+
+				return;
+			}
+
+			if ( ! empty( $this->p->debug->enabled ) ) {
+
+				$this->p->debug->log( 'doing block editor is true' );
+			}
+
 			/**
 			 * The 'sucom-block-editor-admin' script, with its 'wp-edit-post' dependency, must be loaded in the footer
 			 * to work around a bug in the NextGEN Gallery featured image picker. If the script is loaded in the
@@ -241,12 +256,15 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 				if ( ! empty( $this->p->debug->enabled ) ) {
 
-					$this->p->debug->log( 'exiting early: doing block editor' );
+					$this->p->debug->log( 'exiting early: doing block editor is true' );
 				}
 
-				echo '<!-- ' . __METHOD__ . ' exiting early: block editor will update toolbar notices -->' . "\n\n";
-
 				return;
+			}
+
+			if ( ! empty( $this->p->debug->enabled ) ) {
+
+				$this->p->debug->log( 'doing block editor is false' );
 			}
 
 			/**
