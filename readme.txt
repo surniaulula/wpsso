@@ -6,7 +6,7 @@ Domain Path: /languages
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 Assets URI: https://surniaulula.github.io/wpsso/assets/
-Tags: woocommerce, open graph, seo, schema, image seo, video seo, google search, rich results, knowledge graph, xml sitemap
+Tags: woocommerce, open graph, meta tags, schema, rich results, seo, image seo, video seo, google search, knowledge graph, xml sitemap
 Contributors: jsmoriss
 Requires PHP: 7.0
 Requires At Least: 5.0
@@ -22,7 +22,7 @@ Advanced WordPress SEO structured data plugin to present your content at its bes
 
 <p><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"> WPSSO helps you rank higher and improves click through rates by presenting your content at its best on <strong>social sites</strong> and in <strong>search results</strong> - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled.</p>
 
-> **The [SEO Plugin Performance Report for Q4 2021](https://surniaulula.com/2021/apps/wordpress/plugins/wordpress-seo-plugin-performance-report-for-q4-2021/) ranks all the popular plugins for 2021 and 2022. See where the WPSSO Core plugin ranks compared with all the other popular WordPress SEO plugins!**
+> **The [SEO Plugin Performance Report for Q4 2021](https://surniaulula.com/2021/apps/wordpress/plugins/wordpress-seo-plugin-performance-report-for-q4-2021/) ranks all the popular plugins for 2021 and 2022. See where the WPSSO Core plugin ranks compared with all other popular WordPress SEO plugins!**
 
 <p><strong>Provides structured data markup for:</strong></p>
 
@@ -38,6 +38,7 @@ Advanced WordPress SEO structured data plugin to present your content at its bes
 	<li>Slack</li>
 	<li>WhatsApp and Messaging Apps</li>
 	<li>WordPress REST API</li>
+	<li>WordPress XML Sitemaps</li>
 	<li>And More!</li>
 </ul>
 
