@@ -1,4 +1,4 @@
-=== WPSSO Core | Meta Tags, oEmbed, REST API, Rich Pins, Rich Results, Rich Snippets, Schema JSON-LD and More ===
+=== WPSSO Core | The Most Advanced Structured Data Plugin for Wordpress ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -15,10 +15,11 @@ WC Tested Up To: 5.7.0
 Stable Tag: 9.1.0
 
 Rank higher and improve click through rates by presenting your content at its best on social sites and in search results.
+Boost your ranking and click through rates by presenting your content at its best on social sites and in search results.
 
 == Description ==
 
-<h3 class="top">THE MOST ADVANCED STRUCTURED DATA PLUGIN FOR WORDPRESS</h3>
+<h3 class="top">The Most Advanced Structured Data Plugin for Wordpress</h3>
 
 <p><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"> WPSSO helps you rank higher and improves click through rates by presenting your content at its best on <strong>social sites</strong> and in <strong>search results</strong> - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled.</p>
 
