@@ -1098,9 +1098,9 @@ msgstr ""
 #: gettext/gettext-lib-config.php:102
 msgctxt "plugin description"
 msgid ""
-"Rank higher and improve click through rates by presenting your content at "
-"its best on social sites and in search results - no matter how URLs are "
-"shared, re-shared, messaged, posted, embedded, or crawled."
+"Advanced WordPress SEO structured data plugin to present your content at its "
+"best on social sites and in search results - no matter how URLs are shared, "
+"re-shared, messaged, posted, embedded, or crawled."
 msgstr ""
 
 #: gettext/gettext-lib-config.php:103
@@ -11160,9 +11160,9 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"Rank higher and improve click through rates by presenting your content at "
-"its best on social sites and in search results - no matter how URLs are "
-"shared, re-shared, messaged, posted, embedded, or crawled."
+"Advanced WordPress SEO structured data plugin to present your content at its "
+"best on social sites and in search results - no matter how URLs are shared, "
+"re-shared, messaged, posted, embedded, or crawled."
 msgstr ""
 
 #. Author of the plugin/theme
