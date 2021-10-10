@@ -1,4 +1,4 @@
-=== WPSSO Core | The Most Advanced Structured Data Plugin for Wordpress ===
+=== WPSSO Core | The Social and SEO Plugin for Advanced Structured Data ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -14,8 +14,7 @@ Tested Up To: 5.8.1
 WC Tested Up To: 5.7.0
 Stable Tag: 9.1.0
 
-Rank higher and improve click through rates by presenting your content at its best on social sites and in search results.
-Boost your ranking and click through rates by presenting your content at its best on social sites and in search results.
+Advanced WordPress SEO structured data plugin to present your content at its best on social sites and in search results.
 
 == Description ==
 
