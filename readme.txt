@@ -55,7 +55,7 @@ Advanced WordPress SEO structured data plugin to present your content at its bes
 		<li>WP Meta SEO</li>
 		<li>WP Recipe Maker</li>
 		<li>Yoast SEO</li>
-	<ul>
+	</ul>
 	<li>And More!</li>
 </ul>
 

@@ -25,9 +25,7 @@
 
 <p><strong>Provides structured data markup for:</strong></p>
 
-<p>&lt;</p>
-
-<p>ul>
+<ul>
     <li>Facebook / Open Graph</li>
     <li>Google Knowledge Graph</li>
     <li>Google Rich Results (aka Rich Snippets)</li>
@@ -40,7 +38,7 @@
     <li>WhatsApp and Messaging Apps</li>
     <li>WordPress REST API</li>
     <li>WordPress XML Sitemaps</li>
-    <li><strong>&#91;Premium&#93;</strong> Third-party plugins, including:</li>
+    <li>**&#91;Premium&#93;** Third-party plugins, including:</li>
     <ul>
         <li>All in One SEO Pack</li>
         <li>bbPress</li>
@@ -56,9 +54,9 @@
         <li>WP Meta SEO</li>
         <li>WP Recipe Maker</li>
         <li>Yoast SEO</li>
-    <ul>
+    </ul>
     <li>And More!</li>
-</ul></p>
+</ul>
 
 <p><strong>Uses WordPress, plugin, and remote API data:</strong></p>
 
