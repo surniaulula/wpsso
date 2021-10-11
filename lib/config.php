@@ -25,7 +25,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'opt_version' => '828',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
-					'desc'        => 'Advanced WordPress SEO structured data plugin to present your content at its best on social sites and in search results - no matter how URLs are shared, re-shared, messaged, posted, embedded, or crawled.',
+					'desc'        => 'Advanced WordPress SEO structured data plugin to present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
 					'slug'        => 'wpsso',
 					'base'        => 'wpsso/wpsso.php',
 					'update_auth' => 'tid',
