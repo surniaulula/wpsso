@@ -62,13 +62,22 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 
 			if ( SucomUtil::is_post_page() ) {
 
+				$src = WPSSO_URLPATH . 'js/block-editor-admin.' . $this->file_ext;
+
 				/**
-				 * The 'sucom-block-editor-admin' script, with its 'wp-edit-post' dependency, must be loaded in the footer
-				 * to work around a bug in the NextGEN Gallery featured image picker. If the script is loaded in the
-				 * header, with a dependency on 'wp-edit-post', the NextGEN Gallery featured image picker does not load.
+				 * The 'wp-editor' dependency should not be enqueued together with the new widgets block editor.
 				 */
-				wp_register_script( 'sucom-block-editor-admin', WPSSO_URLPATH . 'js/block-editor-admin.' . $this->file_ext,
-					$deps = array( 'wp-data', 'wp-editor', 'wp-edit-post', 'sucom-metabox' ), $this->version, $in_footer = true );
+				$deps = array( 'wp-data', 'wp-editor', 'wp-edit-post', 'sucom-metabox' );
+
+				/**
+				 * The 'sucom-block-editor-admin' script, with its 'wp-edit-post' dependency, must be loaded in the
+				 * footer to work around a bug in the NextGEN Gallery featured image picker. If the script is
+				 * loaded in the header, with a dependency on 'wp-edit-post', the NextGEN Gallery featured image
+				 * picker does not load.
+				 */
+				$in_footer = true;
+
+				wp_register_script( 'sucom-block-editor-admin', $src, $deps, $this->version, $in_footer );
 
 				wp_enqueue_script( 'sucom-block-editor-admin' );
 			}

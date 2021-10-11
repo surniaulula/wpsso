@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 9.1.0\n"
+"Project-Id-Version: WPSSO Core 9.1.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-10-10 17:08-0700\n"
+"PO-Revision-Date: 2021-10-11 08:46-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -382,7 +382,7 @@ msgid "Media Library"
 msgstr "la médiathèque"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:38 lib/com/form.php:883 lib/script.php:446
+#: gettext/gettext-lib-com.php:38 lib/com/form.php:883 lib/script.php:443
 msgid "Select Image"
 msgstr "Choisir l'image"
 
@@ -1054,7 +1054,7 @@ msgstr "Gestionnaire de mise à jour pour l'extension WPSSO Core Premium et ses 
 #: gettext/gettext-lib-config.php:129
 msgctxt "plugin name"
 msgid "WPSSO Product Metadata for WooCommerce SEO"
-msgstr "WPSSO métadonnées de produit pour SEO WooCommerce"
+msgstr "WPSSO métadonnées de produit pour le SEO WooCommerce"
 
 #: gettext/gettext-lib-config.php:130
 msgctxt "plugin description"
@@ -1064,7 +1064,7 @@ msgstr "GTIN, GTIN-8, GTIN-12 (UPC), GTIN-13 (EAN), GTIN-14, ISBN, MPN, profonde
 #: gettext/gettext-lib-config.php:131
 msgctxt "plugin name"
 msgid "WPSSO Shipping Delivery Time for WooCommerce SEO"
-msgstr "WPSSO délai de livraison d'expédition pour SEO WooCommerce"
+msgstr "WPSSO délai de livraison d'expédition pour le SEO WooCommerce"
 
 #: gettext/gettext-lib-config.php:132
 msgctxt "plugin description"
@@ -5526,7 +5526,7 @@ msgctxt "option label"
 msgid "Preferred Cropping"
 msgstr "Recadrage préféré"
 
-#: lib/edit.php:126 lib/script.php:397
+#: lib/edit.php:126 lib/script.php:394
 msgctxt "option label"
 msgid "Schema Type"
 msgstr "Type de Schéma"
@@ -8760,39 +8760,39 @@ msgstr "ajout de schéma"
 msgid "adding schema %s #%d image"
 msgstr "ajout d'image #%d pour Schéma %s"
 
-#: lib/script.php:406
+#: lib/script.php:403
 msgid "No %s notifications."
 msgstr "Aucune notification %s."
 
-#: lib/script.php:408
+#: lib/script.php:405
 msgid "Copy notifications to clipboard."
 msgstr "Copier les notifications dans le presse-papiers."
 
-#: lib/script.php:427
+#: lib/script.php:424
 msgid "Copied to clipboard."
 msgstr "Copié au presse-papiers."
 
-#: lib/script.php:428
+#: lib/script.php:425
 msgid "Value linked to {0} option"
 msgstr "Valeur liée à l'option {0}"
 
-#: lib/script.php:429
+#: lib/script.php:426
 msgid "{0} of {1} characters minimum"
 msgstr "{0} de {1} caractères minimum"
 
-#: lib/script.php:430
+#: lib/script.php:427
 msgid "{0} of {1} characters required"
 msgstr "{0} de {1} caractères requis"
 
-#: lib/script.php:431
+#: lib/script.php:428
 msgid "{0} of {1} characters maximum"
 msgstr "{0} de {1} caractères maximum"
 
-#: lib/script.php:432
+#: lib/script.php:429
 msgid "{0} characters"
 msgstr "{0} caractères"
 
-#: lib/script.php:434
+#: lib/script.php:431
 msgid "There are {0} important error messages under the %s notification icon."
 msgstr "Il y a {0} messages d'erreur importants sous l'icône de notification %s."
 

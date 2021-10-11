@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 9.1.0\n"
+"Project-Id-Version: WPSSO Core 9.1.1-rc.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -549,7 +549,7 @@ msgid "Media Library"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:38 lib/com/form.php:883 lib/script.php:434
+#: gettext/gettext-lib-com.php:38 lib/com/form.php:883 lib/script.php:443
 msgid "Select Image"
 msgstr ""
 
@@ -5877,7 +5877,7 @@ msgctxt "option label"
 msgid "Preferred Cropping"
 msgstr ""
 
-#: lib/edit.php:126 lib/script.php:385
+#: lib/edit.php:126 lib/script.php:394
 msgctxt "option label"
 msgid "Schema Type"
 msgstr ""
@@ -9960,39 +9960,39 @@ msgstr ""
 msgid "adding schema %s #%d image"
 msgstr ""
 
-#: lib/script.php:394
+#: lib/script.php:403
 msgid "No %s notifications."
 msgstr ""
 
-#: lib/script.php:396
+#: lib/script.php:405
 msgid "Copy notifications to clipboard."
 msgstr ""
 
-#: lib/script.php:415
+#: lib/script.php:424
 msgid "Copied to clipboard."
 msgstr ""
 
-#: lib/script.php:416
+#: lib/script.php:425
 msgid "Value linked to {0} option"
 msgstr ""
 
-#: lib/script.php:417
+#: lib/script.php:426
 msgid "{0} of {1} characters minimum"
 msgstr ""
 
-#: lib/script.php:418
+#: lib/script.php:427
 msgid "{0} of {1} characters required"
 msgstr ""
 
-#: lib/script.php:419
+#: lib/script.php:428
 msgid "{0} of {1} characters maximum"
 msgstr ""
 
-#: lib/script.php:420
+#: lib/script.php:429
 msgid "{0} characters"
 msgstr ""
 
-#: lib/script.php:422
+#: lib/script.php:431
 msgid "There are {0} important error messages under the %s notification icon."
 msgstr ""
 
