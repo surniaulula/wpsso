@@ -472,7 +472,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.1.1-rc.1 (2021/10/11)**
+**Version 9.1.1 (2021/10/11)**
 
 * **New Features**
 	* None.
@@ -560,7 +560,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.1.1-rc.1 =
+= 9.1.1 =
 
 (2021/10/11) Fixed unnecessary loading of the 'sucom-block-editor-admin' script in the WordPress widgets editing page.
 
