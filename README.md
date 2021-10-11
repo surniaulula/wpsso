@@ -1,4 +1,4 @@
-<h1>WPSSO Core</h1><h3>The Most Advanced WordPress SEO Structured Data Plugin</h3>
+<h1>WPSSO Core</h1><h3>Meta Tags, oEmbed, REST API, Rich Pins, Rich Results, Schema JSON-LD and More</h3>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
