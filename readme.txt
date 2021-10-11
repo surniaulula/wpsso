@@ -472,6 +472,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 9.1.1-rc.1 (2021/10/11)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed unnecessary loading of the 'sucom-block-editor-admin' script in the WordPress widgets editing page.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.0.
+	* WordPress v5.0.
+
 **Version 9.1.0 (2021/10/06)**
 
 * **New Features**
@@ -545,6 +559,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.0.
 
 == Upgrade Notice ==
+
+= 9.1.1-rc.1 =
+
+(2021/10/11) Fixed unnecessary loading of the 'sucom-block-editor-admin' script in the WordPress widgets editing page.
 
 = 9.1.0 =
 
