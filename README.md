@@ -16,7 +16,7 @@
 <h2>Description</h2>
 
 <blockquote class="top">
-    <p><strong>The [SEO Plugin Performance Report for Q4 2021](https://surniaulula.com/2021/apps/wordpress/plugins/wordpress-seo-plugin-performance-report-for-q4-2021/) ranks all the popular plugins for 2021 and 2022. See where the WPSSO Core plugin ranks compared with all other popular WordPress SEO plugins!</strong></p>
+    <p><strong>The <a href="https://surniaulula.com/2021/apps/wordpress/plugins/wordpress-seo-plugin-performance-report-for-q4-2021/">SEO Plugin Performance Report for Q4 2021</a> ranks all the popular plugins for 2021 and 2022. See where the WPSSO Core plugin ranks compared with all other popular WordPress SEO plugins!</strong></p>
 </blockquote>
 
 <h3>The Most Advanced WordPress SEO Structured Data Plugin</h3>
