@@ -365,6 +365,11 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				$remove[] = 'Schema';
 			}
 
+			if ( $this->p->check->pp() ) {
+
+				$remove[] = 'WooCommerce';
+			}
+
 			$remove_preg = '/(' . implode( '|', $remove ) . ')/';
 
 			foreach ( $presenters as $num => $obj ) {

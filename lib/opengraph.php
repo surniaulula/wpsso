@@ -429,8 +429,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$has_pp = $this->p->check->pp();
-
 			$max_nums = $this->p->util->get_max_nums( $mod );
 
 			/**
@@ -590,7 +588,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$this->p->debug->log( 'getting videos for og:video meta tag' );
 				}
 
-				if ( ! $has_pp ) {
+				if ( ! $this->p->check->pp() ) {
 
 					if ( $this->p->debug->enabled ) {
 
@@ -972,9 +970,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			$mt_videos =& $local_cache[ $cache_salt ];
 
-			$has_pp = $this->p->check->pp();
-
-			if ( ! $has_pp ) {
+			if ( ! $this->p->check->pp() ) {
 
 				if ( $this->p->debug->enabled ) {
 
