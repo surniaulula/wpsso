@@ -474,6 +474,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 9.1.2-dev.1 (2021/10/12)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added a compatibility filter for Yoast WooCommerce SEO presenters.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.0.
+	* WordPress v5.0.
+
 **Version 9.1.1 (2021/10/11)**
 
 * **New Features**
@@ -561,6 +575,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.0.
 
 == Upgrade Notice ==
+
+= 9.1.2-dev.1 =
+
+(2021/10/12) Added a compatibility filter for Yoast WooCommerce SEO presenters.
 
 = 9.1.1 =
 
