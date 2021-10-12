@@ -2183,6 +2183,13 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			if ( empty( $md_opts[ 'og_type:is' ] ) ) {
 
+				/**
+				 * Check if the post type matches a pre-defined Open Graph type.
+				 *
+				 * For example, a post type of 'organization' would return 'website' for the Open Graph type.
+				 *
+				 * Returns false or an Open Graph type string.
+				 */
 				if ( $og_type = $this->p->post->get_post_type_og_type( $mod ) ) {
 
 					$md_opts[ 'og_type' ]    = $og_type;
@@ -2196,6 +2203,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					} else {
 
+						/**
+						 * Get the default Schema type ID.
+						 */
 						$type_id = $this->p->schema->get_mod_schema_type( $mod, $get_id = true, $use_mod_opts = false );
 					}
 
