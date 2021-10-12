@@ -308,9 +308,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark( 'checking options' );	// Begin timer.
-
-				$this->p->debug->log( '$options_name = ' . $options_name );
-				$this->p->debug->log( '$network = ' . $network );
 			}
 
 			/**

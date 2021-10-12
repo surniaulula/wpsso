@@ -486,7 +486,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$licenses_page_text = _x( 'Premium Licenses', 'lib file description', 'wpsso' );
 						$licenses_page_link = $this->p->util->get_admin_url( 'licenses', $licenses_page_text );
 
-						$text = sprintf( __( 'An Authentication ID has been entered for %1$s but the plugin is not installed - you can install and activate the %2$s version from the %3$s settings page.', 'wpsso' ), '<b>' . $info[ 'name' ] . '</b>', $this->dist_pro, $licenses_page_link ) . ' ;-)';
+						$text = sprintf( __( 'An Authentication ID for %1$s has been entered in the %2$s settings page, but the plugin has not been installed yet - you can install and activate the %3$s plugin from the %2$s settings page.', 'wpsso' ), '<b>' . $info[ 'name' ] . '</b>', $licenses_page_link, $this->dist_pro ) . ' ;-)';
 
 						break;
 
@@ -495,7 +495,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$licenses_page_text = _x( 'Premium Licenses', 'lib file description', 'wpsso' );
 						$licenses_page_link = $this->p->util->get_admin_url( 'licenses', $licenses_page_text );
 
-						$text = sprintf( __( 'An Authentication ID has been entered for %1$s in the %2$s settings page but the %3$s version is not installed - don\'t forget to update the plugin to install the latest %3$s version.', 'wpsso' ), '<b>' . $info[ 'name' ] . '</b>', $licenses_page_link, $this->dist_pro ) . ' ;-)';
+						$text = sprintf( __( 'An Authentication ID for %1$s has been entered in the %2$s settings page, but the %3$s version has not been installed yet - don\'t forget to update the plugin to install the latest %3$s version.', 'wpsso' ), '<b>' . $info[ 'name' ] . '</b>', $licenses_page_link, $this->dist_pro ) . ' ;-)';
 
 						break;
 

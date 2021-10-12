@@ -1098,6 +1098,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network = true );
 			$opts = apply_filters( 'wpsso_save_setting_options', $opts, $network = true, $upgrading = false );
 
+			/**
+			 * Update the current options with any changes.
+			 */
+			$this->p->site_options = $opts;
+
 			update_site_option( WPSSO_SITE_OPTIONS_NAME, $opts );
 
 			$this->p->notice->upd( '<strong>' . __( 'Network plugin settings have been saved.', 'wpsso' ) . '</strong>' );
