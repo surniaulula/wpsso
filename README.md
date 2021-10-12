@@ -38,7 +38,7 @@
     <li>WhatsApp and Messaging Apps</li>
     <li>WordPress REST API</li>
     <li>WordPress XML Sitemaps</li>
-    <li><strong>&#91;Premium&#93;</strong> WooCommerce SEO and More</li>
+    <li><strong>&#91;Premium&#93;</strong> WooCommerce SEO and More!</li>
 </ul>
 
 <p><strong>Uses WordPress, plugin, and remote API data:</strong></p>
