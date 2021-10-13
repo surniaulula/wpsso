@@ -474,7 +474,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.1.2-dev.1 (2021/10/12)**
+**Version 9.1.2-dev.2 (2021/10/13)**
 
 * **New Features**
 	* None.
@@ -576,9 +576,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.1.2-dev.1 =
+= 9.1.2-dev.2 =
 
-(2021/10/12) Added a compatibility filter for Yoast WooCommerce SEO presenters.
+(2021/10/13) Added a compatibility filter for Yoast WooCommerce SEO presenters.
 
 = 9.1.1 =
 
