@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.1.2-dev.1',	// Plugin version.
+					'version'     => '9.1.2-dev.2',	// Plugin version.
 					'opt_version' => '828',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2800,17 +2800,23 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 				/**
 				 * Hard-code the Open Graph type based on the WordPress post type.
+				 *
+				 * Example, if the post type is 'product', hard-code the Open Graph type to 'product'.
 				 */
 				'og_type_by_post_type' => array(
 					'book'         => 'book',
+					'download'     => 'product',
 					'organization' => 'website',
 					'place'        => 'place',
 					'product'      => 'product',
 					'profile'      => 'profile',
+					'question'     => 'article',
 				),
 
 				/**
 				 * Hard-code the Open Graph type based on the Schema type.
+				 *
+				 * Example, if the Schema type is 'product', hard-code the Open Graph type to 'product'.
 				 */
 				'og_type_by_schema_type' => array(
 					'article'              => 'article',
@@ -2818,6 +2824,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'place'                => 'place',	// Check for Schema place before Schema organization.
 					'organization'         => 'website',	// Check for Schema place before Schema organization.
 					'product'              => 'product',
+					'question'             => 'article',
 					'review'               => 'article',
 					'software.application' => 'product',
 					'webpage.profile'      => 'profile',

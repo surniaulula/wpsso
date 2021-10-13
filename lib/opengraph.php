@@ -65,14 +65,14 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 		public function filter_get_post_options( $md_opts, $post_id, $mod ) {
 
-			$this->update_post_md_opts( $md_opts, $post_id, $mod );	// Modifies the $md_opts array.
+			$this->maybe_update_post_og_type( $md_opts, $post_id, $mod );	// Modifies the $md_opts array.
 
 			return $md_opts;
 		}
 
 		public function filter_save_post_options( $md_opts, $post_id, $rel_id, $mod ) {
 
-			$this->update_post_md_opts( $md_opts, $post_id, $mod );	// Modifies the $md_opts array.
+			$this->maybe_update_post_og_type( $md_opts, $post_id, $mod );	// Modifies the $md_opts array.
 
 			return $md_opts;
 		}
@@ -2170,7 +2170,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 		}
 
-		private function update_post_md_opts( &$md_opts, $post_id, $mod ) {
+		private function maybe_update_post_og_type( &$md_opts, $post_id, $mod ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -2193,18 +2193,21 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				} else {
 
+					/**
+					 * Use the saved Schema type or get the default Schema type.
+					 */
 					if ( isset( $md_opts[ 'schema_type' ] ) ) {
 
 						$type_id = $md_opts[ 'schema_type' ];
 
 					} else {
 
-						/**
-						 * Get the default Schema type ID.
-						 */
-						$type_id = $this->p->schema->get_mod_schema_type( $mod, $get_id = true, $use_mod_opts = false );
+						$type_id = $this->p->schema->get_mod_schema_type_id( $mod, $use_mod_opts = false );
 					}
 
+					/**
+					 * Check if the Schema type matches a pre-defined Open Graph type.
+					 */
 					if ( $og_type = $this->p->schema->get_schema_type_og_type( $type_id ) ) {
 
 						$md_opts[ 'og_type' ]    = $og_type;
