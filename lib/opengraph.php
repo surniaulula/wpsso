@@ -65,14 +65,25 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 		public function filter_get_post_options( $md_opts, $post_id, $mod ) {
 
-			$this->maybe_update_post_og_type( $md_opts, $post_id, $mod );	// Modifies the $md_opts array.
+			if ( is_admin() ) {	// Keep processing on the front-end to a minimum.
+
+				/**
+				 * If the Open Graph type isn't already hard-coded (ie. 'disabled' === 'og_type:is' ), then using
+				 * the post type and Schema type, check for a possible hard-coded Open Graph type.
+				 */
+				$md_opts = $this->maybe_update_post_og_type( $md_opts, $post_id, $mod );
+			}
 
 			return $md_opts;
 		}
 
 		public function filter_save_post_options( $md_opts, $post_id, $rel_id, $mod ) {
 
-			$this->maybe_update_post_og_type( $md_opts, $post_id, $mod );	// Modifies the $md_opts array.
+			/**
+			 * If the Open Graph type isn't already hard-coded (ie. 'disabled' === 'og_type:is' ), then using the post
+			 * type and Schema type, check for a possible hard-coded Open Graph type.
+			 */
+			$md_opts = $this->maybe_update_post_og_type( $md_opts, $post_id, $mod );
 
 			return $md_opts;
 		}
@@ -2170,7 +2181,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 		}
 
-		private function maybe_update_post_og_type( &$md_opts, $post_id, $mod ) {
+		/**
+		 * If the Open Graph type isn't already hard-coded (ie. 'disabled' === 'og_type:is' ), then using the post type and
+		 * Schema type, check for a possible hard-coded Open Graph type.
+		 */
+		private function maybe_update_post_og_type( $md_opts, $post_id, $mod ) {
 
 			if ( $this->p->debug->enabled ) {
 

@@ -461,7 +461,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			/**
-			 * The canonical URL is optional for SucomUtil::get_mod_salt(), but required for get_head_cache_index().
+			 * The canonical URL is optional for SucomUtil::get_mod_salt().
 			 */
 			$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = true );
 
