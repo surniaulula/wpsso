@@ -2389,7 +2389,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$ext_name_transl = _x( $info[ 'name' ], 'plugin name', 'wpsso' );
 				$ext_name_html   = '<h4>' . htmlentities( $ext_name_transl, ENT_QUOTES, $charset, $double_encode = false ) . '</h4>';
 				$placeholder     = strtoupper( $ext . '-PP-0000000000000000' );
-				$home_url	 = class_exists( 'SucomUpdateUtilWP' ) ? SucomUpdateUtilWP::raw_home_url() : SucomUtilWP::raw_home_url();
+				$home_url	 = SucomUtilWP::raw_get_home_url();
 				$home_url_edit   = '(<a href="' . get_admin_url( $blog_id = null, 'options-general.php' ) . '">' . __( 'Edit', 'wpsso' ) . '</a>)';
 				$home_path       = preg_replace( '/^[a-z]+:\/\//', '', $home_url );	// Remove the protocol prefix.
 				$table_rows      = array();
@@ -2585,19 +2585,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			global $wp_version;
 
-			$footer_html = '<div class="admin-footer-host">';
+			$home_url  = strtolower( SucomUtilWP::raw_get_home_url() );
+			$home_path = preg_replace( '/^[a-z]+:\/\//', '', $home_url );
 
-			$home_url = strtolower( SucomUtilWP::raw_get_home_url() );
-
-			$host_name = preg_replace( '/^[a-z]+:\/\//', '', $home_url );
-
-			$footer_html .= $host_name . '<br/>';
-
-			$footer_html .= 'WordPress ' . $wp_version . '<br/>';
-
-			$footer_html .= 'PHP ' . phpversion() . '<br/>';
-
-			$footer_html .= '</div>';
+			$footer_html = '<div class="admin-footer-host">' .
+				$home_path . '<br/>' .
+				'WordPress ' . $wp_version . '<br/>' .
+				'PHP ' . phpversion() . '<br/>' .
+				'</div>';
 
 			return $footer_html;
 		}

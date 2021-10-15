@@ -344,9 +344,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				case 'added':
 
 					$total_secs = sprintf( '%f secs', $args );
-					$home_url   = SucomUtilWP::raw_home_url();
+					$home_url   = SucomUtilWP::raw_get_home_url();
+					$home_path  = preg_replace( '/^[a-z]+:\/\//', '', $home_url );	// Remove the protocol prefix.
 
-					return '<meta name="wpsso-' . $type . '" content="' . date( 'c' ) . ' in ' . $total_secs .  ' for ' . $home_url . '">' . "\n";
+					return '<meta name="wpsso-' . $type . '" content="' . date( 'c' ) . ' in ' . $total_secs .  ' for ' . $home_path . '">' . "\n";
 
 				case 'begin':
 				case 'end':
