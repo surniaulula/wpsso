@@ -474,7 +474,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.1.2-rc.2 (2021/10/15)**
+**Version 9.1.2 (2021/10/15)**
 
 * **New Features**
 	* None.
@@ -577,7 +577,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.1.2-rc.2 =
+= 9.1.2 =
 
 (2021/10/15) Added a "Site Address to Register" information field. Added a compatibility filter for Yoast WooCommerce SEO presenters. Fixed a possible Schema type conflict for the site organization.
 
