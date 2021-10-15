@@ -5308,49 +5308,49 @@ msgstr ""
 msgid "Sharing functionality module"
 msgstr ""
 
-#: lib/admin.php:2407
+#: lib/admin.php:2408
 msgctxt "option label"
 msgid "%s Authentication ID"
 msgstr ""
 
-#: lib/admin.php:2412
+#: lib/admin.php:2413
 msgctxt "option label"
-msgid "Register Site Address (URL)"
-msgstr ""
-
-#: lib/admin.php:2422
-msgctxt "option label"
-msgid "Support and Updates Expire"
+msgid "Site Address to Register"
 msgstr ""
 
 #: lib/admin.php:2423
 msgctxt "option label"
+msgid "Support and Updates Expire"
+msgstr ""
+
+#: lib/admin.php:2424
+msgctxt "option label"
 msgid "License Information"
 msgstr ""
 
-#: lib/admin.php:2432
+#: lib/admin.php:2433
 msgctxt "option value"
 msgid "Not available"
 msgstr ""
 
-#: lib/admin.php:2438
+#: lib/admin.php:2439
 msgctxt "option value"
 msgid "Never (Nontransferable Lifetime License)"
 msgstr ""
 
-#: lib/admin.php:2446
+#: lib/admin.php:2447
 msgid "%s site addresses registered"
 msgstr ""
 
-#: lib/admin.php:2458
+#: lib/admin.php:2459
 msgid "%d of %d site addresses registered"
 msgstr ""
 
-#: lib/admin.php:2540
+#: lib/admin.php:2541
 msgid "Fetching %s notifications..."
 msgstr ""
 
-#: lib/admin.php:2650
+#: lib/admin.php:2651
 msgid "The Site Address URL value has been changed from %1$s to %2$s."
 msgstr ""
 

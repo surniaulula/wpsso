@@ -2389,8 +2389,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$ext_name_transl = _x( $info[ 'name' ], 'plugin name', 'wpsso' );
 				$ext_name_html   = '<h4>' . htmlentities( $ext_name_transl, ENT_QUOTES, $charset, $double_encode = false ) . '</h4>';
 				$placeholder     = strtoupper( $ext . '-PP-0000000000000000' );
-				$site_addr	 = class_exists( 'SucomUpdateUtilWP' ) ? SucomUpdateUtilWP::raw_home_url() : SucomUtilWP::raw_home_url();
-				$site_addr_edit  = '(<a href="' . get_admin_url( $blog_id = null, 'options-general.php' ) . '">' . __( 'Edit', 'wpsso' ) . '</a>)';
+				$home_url	 = class_exists( 'SucomUpdateUtilWP' ) ? SucomUpdateUtilWP::raw_home_url() : SucomUtilWP::raw_home_url();
+				$home_url_edit   = '(<a href="' . get_admin_url( $blog_id = null, 'options-general.php' ) . '">' . __( 'Edit', 'wpsso' ) . '</a>)';
+				$home_path       = preg_replace( '/^[a-z]+:\/\//', '', $home_url );	// Remove the protocol prefix.
 				$table_rows      = array();
 
 				/**
@@ -2408,9 +2409,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					'<td width="100%">' . $this->form->get_input( 'plugin_' . $ext . '_tid', $css_class = 'tid mono', $css_id = '', $len = 0,
 						$placeholder, $is_disabled = false, ++$tabindex ) . '</td>';
 
-				$table_rows[ 'site_addr' ] = '' .
-					'<th class="medium nowrap">' . _x( 'Register Site Address (URL)', 'option label', 'wpsso' ) . '</th>' .
-					'<td width="100%">' . $site_addr . ' ' . $site_addr_edit . '</td>';
+				$table_rows[ 'home_url' ] = '' .
+					'<th class="medium nowrap">' . _x( 'Site Address to Register', 'option label', 'wpsso' ) . '</th>' .
+					'<td width="100%">' . $home_path . ' ' . $home_url_edit . '</td>';
 
 				if ( $network ) {
 
@@ -2588,7 +2589,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$home_url = strtolower( SucomUtilWP::raw_get_home_url() );
 
-			$host_name = preg_replace( '/^[^:]*:\/\//', '', $home_url );
+			$host_name = preg_replace( '/^[a-z]+:\/\//', '', $home_url );
 
 			$footer_html .= $host_name . '<br/>';
 
@@ -2764,7 +2765,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( preg_match( '/^([a-z]+):\/\/([0-9\.]+)(:[0-9]+)?$/', $home_url ) ) {
 
 					$general_settings_url = get_admin_url( $blog_id = null, 'options-general.php' );
-
 					$reading_settings_url = get_admin_url( $blog_id = null, 'options-reading.php' );
 
 					$notice_msg = sprintf( __( 'The WordPress <a href="%1$s">Search Engine Visibility</a> option is set to allow search engines and social sites to access this site, but your <a href="%2$s">Site Address URL</a> value is an IP address (%3$s).', 'wpsso' ), $reading_settings_url, $general_settings_url, $home_url ) . ' ';
