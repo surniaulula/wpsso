@@ -481,7 +481,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* Refactored the `SucomUtilWP` class methods for WordPress v5.8.1.
 * **Bugfixes**
-	* None.
+	* Fixed a possible condition where WP_HOME was used for the Site Address when a new site was created in a network / multisite setup.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -593,7 +593,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 9.2.0-rc.1 =
 
-(2021/10/15) Refactored the `SucomUtilWP` class methods for WordPress v5.8.1.
+(2021/10/15) Fixed a possible condition where WP_HOME was used for the Site Address when a new site was created in a network / multisite setup. Refactored the `SucomUtilWP` class methods for WordPress v5.8.1.
 
 = 9.1.2 =
 
