@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 9.1.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-10-15 12:20-0700\n"
+"PO-Revision-Date: 2021-10-15 15:18-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -5047,118 +5047,118 @@ msgstr "%d de %d adresses web de sites enregistrées"
 msgid "Fetching %s notifications..."
 msgstr "Récupération des notifications %s..."
 
-#: lib/admin.php:2651
+#: lib/admin.php:2646
 msgid "The Site Address URL value has been changed from %1$s to %2$s."
 msgstr "La valeur de l'URL d'adresse web du site est passée de %1$s à %2$s."
 
-#: lib/admin.php:2770
+#: lib/admin.php:2765
 msgid "The WordPress <a href=\"%1$s\">Search Engine Visibility</a> option is set to allow search engines and social sites to access this site, but your <a href=\"%2$s\">Site Address URL</a> value is an IP address (%3$s)."
 msgstr "L'option WordPress <a href=\"%1$s\">Visibilité des moteurs de recherche</a> est définie pour permettre aux moteurs de recherche et aux sites sociaux d'accéder à ce site, mais la valeur de votre <a href=\"%2$s\">URL d'adresse web du site</a> est une adresse IP (%3$s)."
 
-#: lib/admin.php:2772
+#: lib/admin.php:2767
 msgid "Please update your Search Engine Visibility option to discourage search engines from indexing this site, or use a fully qualified domain name as your Site Address URL."
 msgstr "Veuillez mettre à jour votre option de visibilité des moteurs de recherche pour décourager les moteurs de recherche d'indexer ce site, ou utiliser un nom de domaine complet comme URL d'adresse web de site."
 
-#: lib/admin.php:2830
+#: lib/admin.php:2825
 msgctxt "option label"
 msgid "WebSite Publisher Type"
 msgstr "Type d'éditeur du site Web"
 
-#: lib/admin.php:2838
+#: lib/admin.php:2833
 msgctxt "option label"
 msgid "WebSite Publisher Person"
 msgstr "Éditeur du site Web"
 
-#: lib/admin.php:2846
+#: lib/admin.php:2841
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr "URL logo de organisation"
 
-#: lib/admin.php:2851 lib/options.php:1051
+#: lib/admin.php:2846 lib/options.php:1051
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr "URL bannière d'organisation"
 
-#: lib/admin.php:2855
+#: lib/admin.php:2850
 msgctxt "option label"
 msgid "Organization Schema Type"
 msgstr "Type de Schéma d'organisation"
 
-#: lib/admin.php:2862
+#: lib/admin.php:2857
 msgctxt "option label"
 msgid "Organization Location"
 msgstr "Emplacement de l'organisation"
 
-#: lib/admin.php:2885
+#: lib/admin.php:2880
 msgctxt "option label"
 msgid "Remove Settings on Uninstall"
 msgstr "Supprimer les réglages lors de la désinstallation"
 
-#: lib/admin.php:2890
+#: lib/admin.php:2885
 msgctxt "option label"
 msgid "Use Local Plugin Translations"
 msgstr "Utiliser les traductions locale"
 
-#: lib/admin.php:2898
+#: lib/admin.php:2893
 msgctxt "option label"
 msgid "Disable Cache for Debugging"
 msgstr "Désactiver le cache pour débogage"
 
-#: lib/admin.php:2906
+#: lib/admin.php:2901
 msgctxt "option label"
 msgid "Add HTML Debug Messages"
 msgstr "Ajouter messages de débogage HTML"
 
-#: lib/admin.php:2946
+#: lib/admin.php:2941
 msgctxt "option comment"
 msgid "in %s"
 msgstr "en %s"
 
-#: lib/admin.php:2963
+#: lib/admin.php:2958
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr "Util. par site"
 
-#: lib/admin.php:3168
+#: lib/admin.php:3163
 msgid "Return to %s"
 msgstr "Retour à %s"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:3199
+#: lib/admin.php:3194
 msgid "Plugin <strong>activated</strong>."
 msgstr "Extension <strong>activé</strong>."
 
 #. translators: %1$s is the URL, %2$s is the short plugin name.
-#: lib/admin.php:3220
+#: lib/admin.php:3215
 msgid "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-ons</a> to check if newer versions are available."
 msgstr "Vous pouvez <a href=\"%1$s\">actualiser les informations de mise à jour pour %2$s et ses ajouts</a> afin de vérifier si des versions plus récentes sont disponibles."
 
 #. translators: %1$s is the URL.
-#: lib/admin.php:3229
+#: lib/admin.php:3224
 msgid "You may <a href=\"%1$s\">refresh the update information for WordPress (plugins, themes and translations)</a> to check if newer versions are available."
 msgstr "Vous pouvez <a href=\"%1$s\">actualiser les informations de mise jour pour WordPress (extensions, thèmes et traductions)</a> afin de vérifier si des versions plus récentes sont disponibles."
 
-#: lib/admin.php:3379
+#: lib/admin.php:3374
 msgid "Please select a %1$s settings file to import."
 msgstr "Veuillez sélectionner un fichier de réglages %1$s à importer."
 
-#: lib/admin.php:3386
+#: lib/admin.php:3381
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr "Le fichier de réglages %1$s à importer doit être un type mime \"%2$s\"."
 
-#: lib/admin.php:3393
+#: lib/admin.php:3388
 msgid "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr "Le fichier de réglages %1$s dépasse le maximum autorisé de %2$d octets."
 
-#: lib/admin.php:3407
+#: lib/admin.php:3402
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr "Le fichier de réglages %1$s semble vide ou corrompu."
 
-#: lib/admin.php:3417
+#: lib/admin.php:3412
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr "Le fichier de réglages %1$s n'a pas pu être décodé dans un tableau de réglages."
 
-#: lib/admin.php:3427
+#: lib/admin.php:3422
 msgid "Import of plugin and add-on settings is complete."
 msgstr "L'importation des réglages d'extension et ajouts est terminée."
 
@@ -5765,23 +5765,23 @@ msgctxt "submit button"
 msgid "Validate %s"
 msgstr "Validation %s"
 
-#: lib/head.php:590
+#: lib/head.php:591
 msgid "adding open graph meta tags"
 msgstr "ajout de balises méta open graph"
 
-#: lib/head.php:599
+#: lib/head.php:600
 msgid "adding twitter card meta tags"
 msgstr "ajout de balises méta carte twitter"
 
-#: lib/head.php:608
+#: lib/head.php:609
 msgid "adding meta name meta tags"
 msgstr "ajout de balises nom de méta"
 
-#: lib/head.php:617
+#: lib/head.php:618
 msgid "adding link relation tags"
 msgstr "ajout de balises de relation de lien"
 
-#: lib/head.php:637
+#: lib/head.php:638
 msgid "adding schema json-ld markup"
 msgstr "ajout de balisage de schéma json-ld"
 
@@ -5926,95 +5926,99 @@ msgstr "Vous pouvez éditer les images dans la <a href=\"%s\">médiathèque Word
 msgid "Note that the Schema CreativeWork type (and its sub-types) has a 'video' property for VideoObject markup, but other Schema types (like Event, Job Posting, Place, Product, and Brand) do not have a 'video' property."
 msgstr "Notez que le type de Schéma CreativeWork (et ses sous-types) ont une propriété 'video' pour le balisage VideoObject, mais d'autres types de Schéma (comme Event, Job Posting, Place, Product et Brand) n'ont pas de propriété 'video'."
 
-#: lib/messages-info-meta.php:135
+#: lib/messages-info-meta.php:120
+msgid "In these cases, assuming the video(s) are about the content subject, they will be added to a 'subjectOf' property instead."
+msgstr "Dans ces cas, en supposant que la ou les vidéos concernent le sujet du contenu, elles seront plutôt ajoutées à une propriété 'subjectOf'."
+
+#: lib/messages-info-meta.php:137
 msgid "The robots meta tag lets you utilize a granular, webpage-specific approach to controlling how an individual webpage should be indexed and served to users in Google Search results."
 msgstr "La balise meta robots permet d'utiliser une approche granulaire et spécifique à la page Web, pour contrôler la manière dont une page Web individuelle est indexé et servi aux utilisateurs dans les résultats de recherche Google."
 
-#: lib/messages-info-meta.php:154
+#: lib/messages-info-meta.php:156
 msgid "The example image container uses the minimum recommended Facebook image dimensions of %s."
 msgstr "Le conteneur d'image de cet exemple utilise les dimensions d'image Facebook recommandées minimales de %s."
 
-#: lib/messages-info-meta.php:158
+#: lib/messages-info-meta.php:160
 msgid "You can edit images in the <a href=\"%s\">WordPress Media Library</a> to select a preferred cropping area (ie. top or bottom), along with optimizing the social and SEO texts for the image."
 msgstr "Vous pouvez éditer les images dans la <a href=\"%s\">médiathèque WordPress</a> pour sélectionner une zone de recadrage préférée (comme exemple, en haut ou en bas) et optimiser les textes sociaux et SEO de l'image."
 
-#: lib/messages-info-meta.php:171
+#: lib/messages-info-meta.php:173
 msgid "The oEmbed HTML is provided by the <code>%s</code> template."
 msgstr "Le HTML oEmbed est fourni par le modèle <code>%s</code>."
 
-#: lib/messages-info-meta.php:184
+#: lib/messages-info-meta.php:186
 msgid "Validate the HTML syntax and conformance of the AMP (aka Accelerated Mobile Pages) webpage."
 msgstr "Validez la syntaxe HTML et la conformité de la page Web AMP (également appelée pages mobiles accélérées)."
 
-#: lib/messages-info-meta.php:188
+#: lib/messages-info-meta.php:190
 msgid "Note that an AMP plugin is required to create AMP webpages for WordPress."
 msgstr "Notez qu'une extension AMP est requise pour créer des pages Web AMP pour WordPress."
 
-#: lib/messages-info-meta.php:199
+#: lib/messages-info-meta.php:201
 msgid "All social sites (except for LinkedIn) read Open Graph meta tags."
 msgstr "Tous les sites sociaux (à l'exception de LinkedIn) lisent les balises méta Open Graph."
 
-#: lib/messages-info-meta.php:201
+#: lib/messages-info-meta.php:203
 msgid "The Facebook debugger allows you to validate Open Graph meta tags and refresh Facebook's cache."
 msgstr "Le débogueur Facebook vous permet de valider les balises méta Open Graph et de rafraîchir le cache de Facebook."
 
-#: lib/messages-info-meta.php:203
+#: lib/messages-info-meta.php:205
 msgid "The Facebook debugger is the most reliable validation tool for Open Graph meta tags."
 msgstr "Le débogueur Facebook est l'outil de validation le plus fiable pour les balises méta Open Graph."
 
-#: lib/messages-info-meta.php:213
+#: lib/messages-info-meta.php:215
 msgid "The Facebook catalog microdata debug tool allows you to validate the structured data used to indicate key information about the items on your website, such as their name, description and prices."
 msgstr "L'outil de débogage des microdonnées pour le catalogue Facebook vous permet de valider les données structurées utilisées pour indiquer les informations clés des itemes de votre site Web, telles que leur nom, leur description et leurs prix."
 
-#: lib/messages-info-meta.php:223
+#: lib/messages-info-meta.php:225
 msgid "Analyzes the webpage content and suggests ways to make the webpage faster for better ranking in search results."
 msgstr "Analyse le contenu de la page Web et suggère des moyens de rendre la page Web plus rapide pour un meilleur classement dans les résultats de recherche."
 
-#: lib/messages-info-meta.php:233
+#: lib/messages-info-meta.php:235
 msgid "Check the webpage structured data markup for <a href=\"%s\">Google Rich Result types</a> (Job posting, Product, Recipe, etc.)."
 msgstr "Vérifiez le balisage des données structurées de la page Web pour les <a href=\"%s\">types de résultats enrichis Google</a> (offre d'emploi, produit, recette, etc.)."
 
-#: lib/messages-info-meta.php:233 lib/messages-info-meta.php:267
+#: lib/messages-info-meta.php:235 lib/messages-info-meta.php:269
 msgid "https://developers.google.com/search/docs/guides/search-gallery"
 msgstr "https://developers.google.com/search/docs/guides/search-gallery"
 
-#: lib/messages-info-meta.php:235
+#: lib/messages-info-meta.php:237
 msgid "To test and validate Schema markup beyond the limited subset of Google Rich Result types, use the Schema Markup Validator."
 msgstr "Pour tester et valider le balisage de Schéma au-delà du sous-ensemble limité de types de résultats enrichis Google, utilisez le validateur de balisage de Schéma."
 
-#: lib/messages-info-meta.php:245
+#: lib/messages-info-meta.php:247
 msgid "Refresh LinkedIn's cache and validate the webpage oEmbed data."
 msgstr "Actualisez le cache de LinkedIn et validez les données oEmbed de la page Web."
 
-#: lib/messages-info-meta.php:255
+#: lib/messages-info-meta.php:257
 msgid "Validate Rich Pin markup and submit a request to show Rich Pin markup in zoomed pins."
 msgstr "Validez le balisage Rich Pin et soumettez une demande pour afficher le balisage Rich Pin dans les épingles agrandies."
 
-#: lib/messages-info-meta.php:265
+#: lib/messages-info-meta.php:267
 msgid "Validate the webpage Schema JSON-LD, Microdata and RDFa structured data markup."
 msgstr "Valider le balisage des données structurées Schéma JSON-LD, Microdata et RDFa de la page Web."
 
-#: lib/messages-info-meta.php:267
+#: lib/messages-info-meta.php:269
 msgid "This tool provides additional validation for Schema types beyond the limited subset of <a href=\"%s\">Google Rich Result types</a>."
 msgstr "Cet outil fournit une validation supplémentaire pour les types de schéma au-delà du sous-ensemble limité des <a href=\"%s\">types de résultats enrichis Google</a>."
 
-#: lib/messages-info-meta.php:277
+#: lib/messages-info-meta.php:279
 msgid "The Twitter Card validator does not (currently) accept query arguments - paste the following URL in the Twitter Card validator \"Card URL\" input field:"
 msgstr "Le validateur de carte Twitter n'accepte pas (actuellement) les arguments de requête - collez l'URL suivante dans le champ de saisie \"Card URL\" du validateur de carte Twitter:"
 
-#: lib/messages-info-meta.php:287
+#: lib/messages-info-meta.php:289
 msgid "Validate the HTML syntax and HTML 5 conformance of your meta tags and theme templates."
 msgstr "Validez la syntaxe HTML et la conformité HTML 5 de vos balises méta et modèles de thème."
 
-#: lib/messages-info-meta.php:289
+#: lib/messages-info-meta.php:291
 msgid "Validating your theme templates is important - theme templates with serious errors can prevent social and search crawlers from understanding the webpage structure."
 msgstr "La validation de vos modèles de thème est importante - les modèles de thème avec de erreurs graves peuvent empêcher les robots sociaux et de recherche de comprendre la structure de la page Web."
 
-#: lib/messages-info-meta.php:301 lib/messages.php:839
+#: lib/messages-info-meta.php:303 lib/messages.php:839
 msgid "Schema markup is disabled."
 msgstr "Le balisage de Schéma est désactivé."
 
-#: lib/messages-info-meta.php:310
+#: lib/messages-info-meta.php:312
 msgid "Activate an AMP plugin to create and validate AMP pages."
 msgstr "Activez une extension AMP pour créer et valider les pages AMP."
 
