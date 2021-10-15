@@ -1547,24 +1547,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				'org_sameas'            => $org_sameas,
 			);
 
-			if ( ! empty( $mixed[ 'is_home' ] ) ) {	// Home page (static or blog archive).
-
-				if ( $wpsso->debug->enabled ) {
-
-					$wpsso->debug->log( 'checking for a home page site schema type ID' );
-				}
-
-				if ( ! empty( $mixed[ 'obj' ] ) ) {	// Just in case.
-
-					$org_type = $mixed[ 'obj' ]->get_options( $mixed[ 'id' ], 'schema_type' );
-
-					if ( ! empty( $org_type ) ) {
-
-						$org_opts[ 'org_schema_type' ] = $org_type;
-					}
-				}
-			}
-
 			return $org_opts;
 		}
 
