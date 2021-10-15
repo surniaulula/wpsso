@@ -479,7 +479,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Refactored the `SucomUtilWP` class methods for WordPress v5.8.1.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -593,7 +593,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 9.2.0-rc.1 =
 
-(2021/10/15) None.
+(2021/10/15) Refactored the `SucomUtilWP` class methods for WordPress v5.8.1.
 
 = 9.1.2 =
 
