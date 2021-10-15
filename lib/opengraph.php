@@ -69,7 +69,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				/**
 				 * If the Open Graph type isn't already hard-coded (ie. 'disabled' === 'og_type:is' ), then using
-				 * the post type and Schema type, check for a possible hard-coded Open Graph type.
+				 * the post type and the Schema type, check for a possible hard-coded Open Graph type.
 				 */
 				$md_opts = $this->maybe_update_post_og_type( $md_opts, $post_id, $mod );
 			}
@@ -81,7 +81,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			/**
 			 * If the Open Graph type isn't already hard-coded (ie. 'disabled' === 'og_type:is' ), then using the post
-			 * type and Schema type, check for a possible hard-coded Open Graph type.
+			 * type and the Schema type, check for a possible hard-coded Open Graph type.
 			 */
 			$md_opts = $this->maybe_update_post_og_type( $md_opts, $post_id, $mod );
 
@@ -2183,7 +2183,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 		/**
 		 * If the Open Graph type isn't already hard-coded (ie. 'disabled' === 'og_type:is' ), then using the post type and
-		 * Schema type, check for a possible hard-coded Open Graph type.
+		 * the Schema type, check for a possible hard-coded Open Graph type.
 		 */
 		private function maybe_update_post_og_type( $md_opts, $post_id, $mod ) {
 
