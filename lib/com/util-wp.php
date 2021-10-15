@@ -473,8 +473,6 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		 */
 		public static function raw_get_site_url( $blog_id = null, $path = '', $scheme = null ) {
 
-			$opt_name = 'siteurl';
-
 			if ( empty( $blog_id ) || ! is_multisite() ) {
 
 				$url = self::raw_do_option( $action = 'get', $opt_name = 'siteurl' );	// Returns false by default.
