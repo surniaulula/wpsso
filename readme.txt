@@ -474,7 +474,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.1.2-rc.1 (2021/10/15)**
+**Version 9.1.2-rc.2 (2021/10/15)**
 
 * **New Features**
 	* None.
@@ -576,7 +576,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.1.2-rc.1 =
+= 9.1.2-rc.2 =
 
 (2021/10/15) Added a compatibility filter for Yoast WooCommerce SEO presenters to avoid conflicting markup. Fixed a possible Schema type conflict for the site organization with a custom home page Schema type.
 
