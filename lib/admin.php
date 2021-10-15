@@ -2389,7 +2389,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$ext_name_transl = _x( $info[ 'name' ], 'plugin name', 'wpsso' );
 				$ext_name_html   = '<h4>' . htmlentities( $ext_name_transl, ENT_QUOTES, $charset, $double_encode = false ) . '</h4>';
 				$placeholder     = strtoupper( $ext . '-PP-0000000000000000' );
+				$blog_id         = get_current_blog_id();
+				$home_url        = SucomUtilWP::raw_get_home_url();
+				$home_path       = preg_replace( '/^[a-z]+:\/\//', '', $home_url );	// Remove the protocol prefix.
 				$table_rows      = array();
+
+				$home_url_edit_link = '(<a href="' . ( is_multisite() ?
+					network_admin_url( 'site-settings.php?id=' . $blog_id ) :
+					get_admin_url( $blog_id, 'options-general.php' ) ) . '">' . __( 'Edit', 'wpsso' ) . '</a>)';
 
 				/**
 				 * Plugin name, description and links
@@ -2406,19 +2413,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					'<td width="100%">' . $this->form->get_input( 'plugin_' . $ext . '_tid', $css_class = 'tid mono', $css_id = '', $len = 0,
 						$placeholder, $is_disabled = false, ++$tabindex ) . '</td>';
 
+				$table_rows[ 'home_url' ] = '' .
+					'<th class="medium nowrap">' . _x( 'Site Address to Register', 'option label', 'wpsso' ) . '</th>' .
+					'<td width="100%">' . $home_path . ' ' . $home_url_edit_link . '</td>';
+
 				if ( $network ) {
 
 					$table_rows[ 'site_use' ] = self::get_option_site_use( 'plugin_' . $ext . '_tid', $this->form, $network, $is_enabled = true );
 
 				} elseif ( ! empty( $this->p->options[ 'plugin_' . $ext . '_tid' ] ) && class_exists( 'SucomUpdate' ) ) {
-
-					$home_url      = SucomUtilWP::raw_get_home_url();
-					$home_url_edit = '(<a href="' . get_admin_url( $blog_id = null, 'options-general.php' ) . '">' . __( 'Edit', 'wpsso' ) . '</a>)';
-					$home_path     = preg_replace( '/^[a-z]+:\/\//', '', $home_url );	// Remove the protocol prefix.
-
-					$table_rows[ 'home_url' ] = '' .
-						'<th class="medium nowrap">' . _x( 'Site Address to Register', 'option label', 'wpsso' ) . '</th>' .
-						'<td width="100%">' . $home_path . ' ' . $home_url_edit . '</td>';
 
 					$show_update_opts = array(
 						'exp_date' => _x( 'Support and Updates Expire', 'option label', 'wpsso' ),
