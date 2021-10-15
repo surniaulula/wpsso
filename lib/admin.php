@@ -2389,8 +2389,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$ext_name_transl = _x( $info[ 'name' ], 'plugin name', 'wpsso' );
 				$ext_name_html   = '<h4>' . htmlentities( $ext_name_transl, ENT_QUOTES, $charset, $double_encode = false ) . '</h4>';
 				$placeholder     = strtoupper( $ext . '-PP-0000000000000000' );
-
-				$table_rows = array();
+				$site_addr	 = class_exists( 'SucomUpdateUtilWP' ) ? SucomUpdateUtilWP::raw_home_url() : SucomUtilWP::raw_home_url();
+				$site_addr_edit  = '(<a href="' . get_admin_url( $blog_id = null, 'options-general.php' ) . '">' . __( 'Edit', 'wpsso' ) . '</a>)';
+				$table_rows      = array();
 
 				/**
 				 * Plugin name, description and links
@@ -2402,12 +2403,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				/**
 				 * Plugin authentication ID and license information.
 				 */
-				$table_rows[ 'plugin_tid' ] = $this->form->get_th_html( sprintf( _x( '%s Authentication ID',
-					'option label', 'wpsso' ), $info[ 'short' ] ), 'medium nowrap' );
-
-				$table_rows[ 'plugin_tid' ] .= '<td width="100%">' .
-					$this->form->get_input( 'plugin_' . $ext . '_tid', $css_class = 'tid mono', $css_id = '', $len = 0,
+				$table_rows[ 'plugin_tid' ] = '' .
+					$this->form->get_th_html( sprintf( _x( '%s Authentication ID', 'option label', 'wpsso' ), $info[ 'short' ] ), 'medium nowrap' ) .
+					'<td width="100%">' . $this->form->get_input( 'plugin_' . $ext . '_tid', $css_class = 'tid mono', $css_id = '', $len = 0,
 						$placeholder, $is_disabled = false, ++$tabindex ) . '</td>';
+
+				$table_rows[ 'site_addr' ] = '' .
+					'<th class="medium nowrap">' . _x( 'Register Site Address (URL)', 'option label', 'wpsso' ) . '</th>' .
+					'<td width="100%">' . $site_addr . ' ' . $site_addr_edit . '</td>';
 
 				if ( $network ) {
 
@@ -2435,7 +2438,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 								$val = _x( 'Never (Nontransferable Lifetime License)', 'option value', 'wpsso' );
 							}
 
-						} elseif ( $key === 'qty_used' ) {
+						} elseif ( 'qty_used' === $key ) {
 
 							/**
 							 * The default 'qty_used' value is a 'n/n' string.

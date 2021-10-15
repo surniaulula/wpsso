@@ -511,7 +511,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$licenses_page_text = _x( 'Premium Licenses', 'lib file description', 'wpsso' );
 						$licenses_page_link = $this->p->util->get_admin_url( 'licenses', $licenses_page_text );
 
-						$plugins_page_url = get_admin_url( $blog_id = null, 'plugins.php' );
+						$search_url = get_admin_url( $blog_id = null, 'plugins.php' );
+						$search_url = add_query_arg( array( 's' => $um_info[ 'slug' ] ), $search_url );
 
 						$text = '<p>';
 
@@ -525,11 +526,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						if ( 'notice-um-add-on-required' === $msg_key ) {
 
-							$text .= sprintf( __( 'You may install and activate the %1$s add-on from the %2$s settings page.', 'wpsso' ), $um_info_name, $addons_page_link ) . ' ';
+							$text .= sprintf( __( 'You can install and activate the %1$s add-on from the %2$s settings page.', 'wpsso' ), $um_info_name, $addons_page_link ) . ' ';
 
 						} else {
 
-							$text .= sprintf( __( 'The %1$s add-on can be activated from <a href="%2$s">the WordPress Plugins page</a>.', 'wpsso' ), $um_info_name, $plugins_page_url ) . ' ';
+							$text .= sprintf( __( 'You can activate the %1$s add-on from <a href="%2$s">the WordPress Plugins page</a>.', 'wpsso' ), $um_info_name, $search_url ) . ' ';
 						}
 
 						$text .= '</p><p>';
