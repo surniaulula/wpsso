@@ -479,6 +479,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
+	* Added a "Site Address to Register" information field to the SSO &gt; Premium Licenses settings page.
 	* Added a compatibility filter for Yoast WooCommerce SEO presenters to avoid conflicting markup.
 * **Bugfixes**
 	* Fixed a possible Schema type conflict for the site organization with a custom home page Schema type.
@@ -578,7 +579,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 9.1.2-rc.2 =
 
-(2021/10/15) Added a compatibility filter for Yoast WooCommerce SEO presenters to avoid conflicting markup. Fixed a possible Schema type conflict for the site organization with a custom home page Schema type.
+(2021/10/15) Added a "Site Address to Register" information field. Added a compatibility filter for Yoast WooCommerce SEO presenters. Fixed a possible Schema type conflict for the site organization.
 
 = 9.1.1 =
 
