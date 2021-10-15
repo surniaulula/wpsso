@@ -2632,6 +2632,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->mark();
 			}
 
+			/**
+			 * Ignore irrelevant changes.
+			 */
+			$old_value = untrailingslashit( strtolower( $old_value ) );
+			$new_value = untrailingslashit( strtolower( $new_value ) );
+
 			if ( $old_value === $new_value ) {	// Nothing to do.
 
 				return;	// Stop here.
