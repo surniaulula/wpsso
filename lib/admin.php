@@ -2406,7 +2406,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						implode( $glue = ' | ', $ext_links ) . '</div>' ) . '</td>';
 
 				/**
-				 * Plugin authentication ID and license information.
+				 * Plugin authentication ID.
 				 */
 				$table_rows[ 'plugin_tid' ] = '' .
 					$this->form->get_th_html( sprintf( _x( '%s Authentication ID', 'option label', 'wpsso' ), $info[ 'short' ] ), 'medium nowrap' ) .
@@ -2418,6 +2418,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$table_rows[ 'site_use' ] = self::get_option_site_use( 'plugin_' . $ext . '_tid', $this->form, $network, $is_enabled = true );
 				}
 
+				/**
+				 * License information.
+				 */
 				$table_rows[ 'home_url' ] = '' .
 					'<th class="medium nowrap">' . _x( 'WordPress Site Address', 'option label', 'wpsso' ) . '</th>' .
 					'<td width="100%">' . $home_path . ' ' . $home_url_edit_link . '</td>';

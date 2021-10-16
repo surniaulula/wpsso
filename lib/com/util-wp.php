@@ -425,6 +425,27 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			if ( empty( $blog_id ) || ! $is_multisite ) {
 
+				/**
+				 * The WordPress _config_wp_home() function is hooked to the 'option_home' filter in order to
+				 * override the database value. Since we're not using the default filters, check for WP_HOME or
+				 * WP_SITEURL and update the stored database value if necessary.
+				 *
+				 * The homepage of the website:
+				 *
+				 *	WP_HOME
+				 *	home_url()
+				 *	get_home_url()
+				 *	Site Address (URL)
+				 *	http://example.com
+				 *
+				 * The WordPress installation (ie. where you can reach the site by adding /wp-admin):
+				 *
+				 *	WP_SITEURL
+				 *	site_url()
+				 *	get_site_url()
+				 *	WordPress Address (URL)
+				 *	http://example.com/wp/
+				 */
 				if ( ! $is_multisite && defined( 'WP_HOME' ) && WP_HOME ) {
 
 					$url = untrailingslashit( WP_HOME );
@@ -493,6 +514,27 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			if ( empty( $blog_id ) || ! $is_multisite ) {
 
+				/**
+				 * The WordPress _config_wp_home() function is hooked to the 'option_home' filter in order to
+				 * override the database value. Since we're not using the default filters, check for WP_HOME or
+				 * WP_SITEURL and update the stored database value if necessary.
+				 *
+				 * The homepage of the website:
+				 *
+				 *	WP_HOME
+				 *	home_url()
+				 *	get_home_url()
+				 *	Site Address (URL)
+				 *	http://example.com
+				 *
+				 * The WordPress installation (ie. where you can reach the site by adding /wp-admin):
+				 *
+				 *	WP_SITEURL
+				 *	site_url()
+				 *	get_site_url()
+				 *	WordPress Address (URL)
+				 *	http://example.com/wp/
+				 */
 				if ( ! $is_multisite && defined( 'WP_SITEURL' ) && WP_SITEURL ) {
 
 					$url = untrailingslashit( WP_SITEURL );
