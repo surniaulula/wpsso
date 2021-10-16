@@ -56,19 +56,19 @@ WPSSO provides comprehensive Schema markup for posts, pages, custom post types, 
 
 <p><strong>Fixes Google Search and Schema Markup Validator errors, including:</strong></p>
 
-* A value for the headline field is required.
-* A value for the image field is required.
-* A value for the logo field is required.
-* A value for the publisher field is required.
-* The aggregateRating field is recommended.
-* The brand field is recommended.
-* The headline field is recommended.
-* The image field is recommended.
-* The mainEntityOfPage field is recommended.
-* The review field is recommended.
-* This Product is missing a global identifier (e.g. isbn, mpn or gtin8).
-* No global identifier provided (e.g. gtin mpn isbn).
-* Not a known valid target type for the itemReviewed property.
+* *A value for the headline field is required.*
+* *A value for the image field is required.*
+* *A value for the logo field is required.*
+* *A value for the publisher field is required.*
+* *The aggregateRating field is recommended.*
+* *The brand field is recommended.*
+* *The headline field is recommended.*
+* *The image field is recommended.*
+* *The mainEntityOfPage field is recommended.*
+* *The review field is recommended.*
+* *This Product is missing a global identifier (e.g. isbn, mpn or gtin8).*
+* *No global identifier provided (e.g. gtin mpn isbn).*
+* *Not a known valid target type for the itemReviewed property.*
 
 <p><strong>Use WPSSO by itself or extend another SEO plugin:</strong></p>
 

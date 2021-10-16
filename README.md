@@ -54,19 +54,19 @@
 <p><strong>Fixes Google Search and Schema Markup Validator errors, including:</strong></p>
 
 <ul>
-<li>A value for the headline field is required.</li>
-<li>A value for the image field is required.</li>
-<li>A value for the logo field is required.</li>
-<li>A value for the publisher field is required.</li>
-<li>The aggregateRating field is recommended.</li>
-<li>The brand field is recommended.</li>
-<li>The headline field is recommended.</li>
-<li>The image field is recommended.</li>
-<li>The mainEntityOfPage field is recommended.</li>
-<li>The review field is recommended.</li>
-<li>This Product is missing a global identifier (e.g. isbn, mpn or gtin8).</li>
-<li>No global identifier provided (e.g. gtin mpn isbn).</li>
-<li>Not a known valid target type for the itemReviewed property.</li>
+<li><em>A value for the headline field is required.</em></li>
+<li><em>A value for the image field is required.</em></li>
+<li><em>A value for the logo field is required.</em></li>
+<li><em>A value for the publisher field is required.</em></li>
+<li><em>The aggregateRating field is recommended.</em></li>
+<li><em>The brand field is recommended.</em></li>
+<li><em>The headline field is recommended.</em></li>
+<li><em>The image field is recommended.</em></li>
+<li><em>The mainEntityOfPage field is recommended.</em></li>
+<li><em>The review field is recommended.</em></li>
+<li><em>This Product is missing a global identifier (e.g. isbn, mpn or gtin8).</em></li>
+<li><em>No global identifier provided (e.g. gtin mpn isbn).</em></li>
+<li><em>Not a known valid target type for the itemReviewed property.</em></li>
 </ul>
 
 <p><strong>Use WPSSO by itself or extend another SEO plugin:</strong></p>
