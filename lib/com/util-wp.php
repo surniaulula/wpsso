@@ -421,15 +421,31 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		 */
 		public static function raw_get_home_url( $blog_id = null, $path = '', $scheme = null ) {
 
-			if ( empty( $blog_id ) || ! is_multisite() ) {
+			$is_multisite = is_multisite();
 
-				$url = self::raw_do_option( $action = 'get', $opt_name = 'home' );	// Returns false by default.
+			if ( empty( $blog_id ) || ! $is_multisite ) {
+
+				if ( ! $is_multisite && defined( 'WP_HOME' ) && WP_HOME ) {
+
+					$url = untrailingslashit( WP_HOME );
+
+					$db_url = self::raw_do_option( $action = 'get', $opt_name = 'home' );
+
+					if ( $db_url !== $url ) {
+
+						self::raw_do_option( $action = 'update', $opt_name = 'home', $url );
+					}
+
+				} else {
+
+					$url = self::raw_do_option( $action = 'get', $opt_name = 'home' );
+				}
 
 			} else {
 
 				switch_to_blog( $blog_id );
 
-				$url = self::raw_do_option( $action = 'get', $opt_name = 'home' );	// Returns false by default.
+				$url = self::raw_do_option( $action = 'get', $opt_name = 'home' );
 
 				restore_current_blog();
 			}
@@ -473,15 +489,31 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		 */
 		public static function raw_get_site_url( $blog_id = null, $path = '', $scheme = null ) {
 
-			if ( empty( $blog_id ) || ! is_multisite() ) {
+			$is_multisite = is_multisite();
 
-				$url = self::raw_do_option( $action = 'get', $opt_name = 'siteurl' );	// Returns false by default.
+			if ( empty( $blog_id ) || ! $is_multisite ) {
+
+				if ( ! $is_multisite && defined( 'WP_SITEURL' ) && WP_SITEURL ) {
+
+					$url = untrailingslashit( WP_SITEURL );
+
+					$db_url = self::raw_do_option( $action = 'get', $opt_name = 'siteurl' );
+
+					if ( $db_url !== $url ) {
+
+						self::raw_do_option( $action = 'update', $opt_name = 'siteurl', $url );
+					}
+
+				} else {
+
+					$url = self::raw_do_option( $action = 'get', $opt_name = 'siteurl' );
+				}
 
 			} else {
 
 				switch_to_blog( $blog_id );
 
-				$url = self::raw_do_option( $action = 'get', $opt_name = 'siteurl' );	// Returns false by default.
+				$url = self::raw_do_option( $action = 'get', $opt_name = 'siteurl' );
 
 				restore_current_blog();
 			}
