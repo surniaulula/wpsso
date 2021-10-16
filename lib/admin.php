@@ -2391,7 +2391,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$placeholder     = strtoupper( $ext . '-PP-0000000000000000' );
 				$blog_id         = get_current_blog_id();
 				$home_url        = SucomUtilWP::raw_get_home_url();
-				$home_path       = preg_replace( '/^[a-z]+:\/\//', '', $home_url );	// Remove the protocol prefix.
+				$home_path       = preg_replace( '/^[a-z]+:\/\//i', '', $home_url );	// Remove the protocol prefix.
 				$table_rows      = array();
 
 				$home_url_edit_link = '(<a href="' . ( is_multisite() ?
@@ -2589,8 +2589,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			global $wp_version;
 
-			$home_url  = strtolower( SucomUtilWP::raw_get_home_url() );
-			$home_path = preg_replace( '/^[a-z]+:\/\//', '', $home_url );
+			$home_url  = SucomUtilWP::raw_get_home_url();
+			$home_path = preg_replace( '/^[a-z]+:\/\//i', '', $home_url );
 
 			$footer_html = '<div class="admin-footer-host">' .
 				$home_path . '<br/>' .
@@ -2767,7 +2767,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$home_url = SucomUtilWP::raw_get_home_url();
 
-				if ( preg_match( '/^([a-z]+):\/\/([0-9\.]+)(:[0-9]+)?$/', $home_url ) ) {
+				if ( preg_match( '/^([a-z]+):\/\/([0-9\.]+)(:[0-9]+)?$/i', $home_url ) ) {
 
 					$general_settings_url = get_admin_url( $blog_id = null, 'options-general.php' );
 					$reading_settings_url = get_admin_url( $blog_id = null, 'options-reading.php' );

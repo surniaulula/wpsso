@@ -345,7 +345,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 					$total_secs = sprintf( '%f secs', $args );
 					$home_url   = SucomUtilWP::raw_get_home_url();
-					$home_path  = preg_replace( '/^[a-z]+:\/\//', '', $home_url );	// Remove the protocol prefix.
+					$home_path  = preg_replace( '/^[a-z]+:\/\//i', '', $home_url );	// Remove the protocol prefix.
 
 					return '<meta name="wpsso-' . $type . '" content="' . date( 'c' ) . ' in ' . $total_secs .  ' for ' . $home_path . '">' . "\n";
 
