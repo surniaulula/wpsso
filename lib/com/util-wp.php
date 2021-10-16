@@ -407,7 +407,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		/**
 		 * Unfiltered version of home_url() from wordpress/wp-includes/link-template.php
 		 *
-		 * Last synchronized with WordPress v5.8.1 on 2020/10/15.
+		 * Last synchronized with WordPress v5.8.1 on 2021/10/15.
 		 */
 		public static function raw_home_url( $path = '', $scheme = null ) {
 
@@ -417,7 +417,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		/**
 		 * Unfiltered version of get_home_url() from wordpress/wp-includes/link-template.php
 		 *
-		 * Last synchronized with WordPress v5.8.1 on 2020/10/15.
+		 * Last synchronized with WordPress v5.8.1 on 2021/10/15.
 		 */
 		public static function raw_get_home_url( $blog_id = null, $path = '', $scheme = null ) {
 
@@ -475,7 +475,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		/**
 		 * Unfiltered version of site_url() from wordpress/wp-includes/link-template.php
 		 *
-		 * Last synchronized with WordPress v5.8.1 on 2020/10/15.
+		 * Last synchronized with WordPress v5.8.1 on 2021/10/15.
 		 */
 		public static function raw_site_url( $path = '', $scheme = null ) {
 
@@ -485,7 +485,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		/**
 		 * Unfiltered version of get_site_url() from wordpress/wp-includes/link-template.php
 		 *
-		 * Last synchronized with WordPress v5.8.1 on 2020/10/15.
+		 * Last synchronized with WordPress v5.8.1 on 2021/10/15.
 		 */
 		public static function raw_get_site_url( $blog_id = null, $path = '', $scheme = null ) {
 
@@ -531,7 +531,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		/**
 		 * Unfiltered version of set_url_scheme() from wordpress/wp-includes/link-template.php
 		 *
-		 * Last synchronized with WordPress v5.8.1 on 2020/10/15.
+		 * Last synchronized with WordPress v5.8.1 on 2021/10/15.
 		 */
 		private static function raw_set_url_scheme( $url, $scheme = null ) {
 
