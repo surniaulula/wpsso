@@ -474,7 +474,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.2.0-rc.1 (2021/10/15)**
+**Version 9.2.0 (2021/10/15)**
 
 * **New Features**
 	* None.
@@ -591,7 +591,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.2.0-rc.1 =
+= 9.2.0 =
 
 (2021/10/15) Fixed a possible condition where WP_HOME could be used for the Site Address URL when a new site was created in a network / multisite setup.
 
