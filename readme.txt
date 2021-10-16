@@ -474,7 +474,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.2.0 (2021/10/15)**
+**Version 9.2.0 (2021/10/16)**
 
 * **New Features**
 	* None.
@@ -593,7 +593,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 9.2.0 =
 
-(2021/10/15) Fixed a condition where WP_HOME could be used for the Site Address URL for non-default sites in a multisite setup.
+(2021/10/16) Fixed a condition where WP_HOME could be used for the Site Address URL for non-default sites in a multisite setup.
 
 = 9.1.2 =
 
