@@ -2399,14 +2399,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					get_admin_url( $blog_id, 'options-general.php' ) ) . '">' . __( 'Edit', 'wpsso' ) . '</a>)';
 
 				/**
-				 * Plugin name, description and links
+				 * Plugin name, description, and action links.
 				 */
 				$table_rows[ 'plugin_name' ] = '<td colspan="2" class="ext-info-plugin-name" id="ext-info-plugin-name-' . $ext . '">' .
 					$ext_name_html . ( empty( $ext_links ) ? '' : '<div class="row-actions visible">' .
 						implode( $glue = ' | ', $ext_links ) . '</div>' ) . '</td>';
 
 				/**
-				 * Plugin authentication ID.
+				 * Authentication ID.
 				 */
 				$table_rows[ 'plugin_tid' ] = '' .
 					$this->form->get_th_html( sprintf( _x( '%s Authentication ID', 'option label', 'wpsso' ), $info[ 'short' ] ), 'medium nowrap' ) .
