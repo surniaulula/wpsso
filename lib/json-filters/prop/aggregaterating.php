@@ -28,46 +28,8 @@ if ( ! class_exists( 'WpssoJsonFiltersPropAggregateRating' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
-			 * The official Schema standard provides 'aggregateRating' and 'review' properties for these types:
-			 *
-			 * 	Brand
-			 * 	CreativeWork
-			 * 	Event
-			 * 	Offer
-			 * 	Organization
-			 * 	Place
-			 * 	Product
-			 * 	Service 
-			 *
-			 * Unfortunately, Google only supports 'aggregateRating' and 'review' properties for these types:
-			 *
-			 *	Book
-			 *	Course
-			 *	Event
-			 *	HowTo (includes the Recipe sub-type)
-			 *	LocalBusiness
-			 *	Movie
-			 *	Product
-			 *	SoftwareApplication
-			 *
-			 * And the 'review' property for these types:
-			 *
-			 *	CreativeWorkSeason
-			 *	CreativeWorkSeries
-			 *	Episode
-			 *	Game
-			 *	MediaObject
-			 *	MusicPlaylist
-			 * 	MusicRecording
-			 *	Organization
-			 */
-			$rating_filters = array(
-				'json_data_https_schema_org_thing' => 5,
-			);
-
 			$this->p->util->add_plugin_filters( $this, array(
-				'json_data_https_schema_org_thing_aggregaterating' => $rating_filters,
+				'json_data_https_schema_org_thing' => 5,
 			), $prio = 10000 );
 		}
 
@@ -75,8 +37,41 @@ if ( ! class_exists( 'WpssoJsonFiltersPropAggregateRating' ) ) {
 		 * Automatically include an aggregateRating property based on the Open Graph rating meta tags.
 		 *
 		 * $page_type_id is false and $is_main is true when called as part of a collection page part.
+		 *
+		 * The Schema standard provides 'aggregateRating' and 'review' properties for these types:
+		 *
+		 * 	Brand
+		 * 	CreativeWork
+		 * 	Event
+		 * 	Offer
+		 * 	Organization
+		 * 	Place
+		 * 	Product
+		 * 	Service 
+		 *
+		 * Unfortunately, Google supports 'aggregateRating' and 'review' properties only for these types:
+		 *
+		 *	Book
+		 *	Course
+		 *	Event
+		 *	HowTo (includes Recipe)
+		 *	LocalBusiness
+		 *	Movie
+		 *	Product
+		 *	SoftwareApplication
+		 *
+		 * And the 'review' property only for these additional types:
+		 *
+		 *	CreativeWorkSeason
+		 *	CreativeWorkSeries
+		 *	Episode
+		 *	Game
+		 *	MediaObject
+		 *	MusicPlaylist
+		 * 	MusicRecording
+		 *	Organization
 		 */
-		public function filter_json_data_https_schema_org_thing_aggregaterating( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
+		public function filter_json_data_https_schema_org_thing( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
 
 			if ( $this->p->debug->enabled ) {
 

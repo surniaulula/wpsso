@@ -6136,14 +6136,14 @@ msgstr ""
 msgid "adding schema json-ld markup"
 msgstr ""
 
-#: lib/json-filters/prop/aggregaterating.php:192
+#: lib/json-filters/prop/aggregaterating.php:187
 msgid ""
 "An aggregate rating value for this markup has been ignored - <a href=\"%1$s"
 "\">Google does not allow an aggregate rating value for the Schema %2$s type</"
 "a>."
 msgstr ""
 
-#: lib/json-filters/prop/review.php:216
+#: lib/json-filters/prop/review.php:211
 msgid ""
 "Reviews for this markup have been ignored - <a href=\"%1$s\">Google does not "
 "allow reviews for the Schema %2$s type</a>."

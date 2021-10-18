@@ -3579,12 +3579,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						unset( $json_data[ $prop_name ] );
 					}
 				}
-
-				return $json_data;
-
-			} else {
-				return $json_data;
 			}
+
+			return $json_data;
 		}
 
 		public static function get_id_anchor() {

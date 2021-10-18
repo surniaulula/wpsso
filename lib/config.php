@@ -3908,7 +3908,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 
 				/**
-				 * The official Schema standard provides 'aggregateRating' and 'review' properties for these types:
+				 * The Schema standard provides 'aggregateRating' and 'review' properties for these types:
 				 *
 				 * 	Brand
 				 * 	CreativeWork
@@ -3919,18 +3919,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * 	Product
 				 * 	Service 
 				 *
-				 * Unfortunately, Google only supports 'aggregateRating' and 'review' properties for these types:
+				 * Unfortunately, Google supports 'aggregateRating' and 'review' properties only for these types:
 				 *
 				 *	Book
 				 *	Course
 				 *	Event
-				 *	HowTo (includes the Recipe sub-type)
+				 *	HowTo (includes Recipe)
 				 *	LocalBusiness
 				 *	Movie
 				 *	Product
 				 *	SoftwareApplication
 				 *
-				 * And the 'review' property for these types:
+				 * And the 'review' property only for these additional types:
 				 *
 				 *	CreativeWorkSeason
 				 *	CreativeWorkSeries
