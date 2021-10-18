@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.2.0',	// Plugin version.
+					'version'     => '9.2.1-dev.1',	// Plugin version.
 					'opt_version' => '828',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -230,8 +230,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'dashboard'      => 'Dashboard',
 							'general'        => 'General Settings',
 							'advanced'       => 'Advanced Settings',
-							'licenses'       => 'Premium Licenses',
 							'addons'         => 'Complementary Add-ons',
+							'licenses'       => 'Premium Licenses',
 							'tools'          => 'Tools and Actions',
 						),
 						'users' => array(

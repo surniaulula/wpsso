@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 9.2.0\n"
+"Project-Id-Version: WPSSO Core 9.2.1-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1042,14 +1042,14 @@ msgctxt "lib file description"
 msgid "Advanced Settings"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:88 gettext/gettext-lib-config.php:97
+#: gettext/gettext-lib-config.php:88 gettext/gettext-lib-config.php:98
 #: lib/messages-info.php:76 lib/messages.php:486 lib/messages.php:495
 #: lib/messages.php:511
 msgctxt "lib file description"
 msgid "Premium Licenses"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:89 gettext/gettext-lib-config.php:98
+#: gettext/gettext-lib-config.php:89 gettext/gettext-lib-config.php:97
 #: lib/messages.php:508
 msgctxt "lib file description"
 msgid "Complementary Add-ons"
@@ -5093,7 +5093,7 @@ msgstr ""
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
-#: lib/admin.php:1152 lib/options.php:949 lib/register.php:160
+#: lib/admin.php:1152 lib/options.php:949 lib/register.php:162
 msgid "A background task will begin shortly to clear all caches."
 msgstr ""
 
@@ -6235,7 +6235,7 @@ msgid ""
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1026 lib/post.php:522 lib/register.php:330 lib/term.php:455
+#: lib/media.php:1026 lib/post.php:522 lib/register.php:332 lib/term.php:455
 #: lib/user.php:435 lib/util.php:818 lib/util.php:3109
 msgid "%s warning:"
 msgstr ""
@@ -9129,7 +9129,7 @@ msgid ""
 "immediate refresh of the plugin update information."
 msgstr ""
 
-#: lib/messages.php:568 lib/register.php:339
+#: lib/messages.php:568 lib/register.php:341
 msgid ""
 "You are using %1$s version %2$s - <a href=\"%3$s\">this %1$s version is "
 "outdated, unsupported, possibly insecure</a>, and may lack important updates "
@@ -9830,97 +9830,97 @@ msgstr ""
 msgid "Invalid user ID."
 msgstr ""
 
-#: lib/register.php:158
+#: lib/register.php:160
 msgid "The %s plugin has been activated."
 msgstr ""
 
-#: lib/register.php:332 lib/register.php:341
+#: lib/register.php:334 lib/register.php:343
 msgid "%1$s requires %2$s version %3$s or higher and has been deactivated."
 msgstr ""
 
-#: lib/register.php:343
+#: lib/register.php:345
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
-#: lib/register.php:352
-msgid "Page Tags"
-msgstr ""
-
-#: lib/register.php:353
-msgid "Page Tag"
-msgstr ""
-
 #: lib/register.php:354
-msgctxt "admin menu name"
 msgid "Page Tags"
 msgstr ""
 
 #: lib/register.php:355
-msgid "All Page Tags"
+msgid "Page Tag"
 msgstr ""
 
 #: lib/register.php:356
-msgid "Edit Page Tag"
+msgctxt "admin menu name"
+msgid "Page Tags"
 msgstr ""
 
 #: lib/register.php:357
-msgid "View Page Tag"
+msgid "All Page Tags"
 msgstr ""
 
 #: lib/register.php:358
-msgid "Update Page Tag"
+msgid "Edit Page Tag"
 msgstr ""
 
 #: lib/register.php:359
-msgid "Add New Page Tag"
+msgid "View Page Tag"
 msgstr ""
 
 #: lib/register.php:360
-msgid "New Page Tag Name"
+msgid "Update Page Tag"
 msgstr ""
 
 #: lib/register.php:361
-msgid "Parent Page Tag"
+msgid "Add New Page Tag"
 msgstr ""
 
 #: lib/register.php:362
-msgid "Parent Page Tag:"
+msgid "New Page Tag Name"
 msgstr ""
 
 #: lib/register.php:363
-msgid "Search Page Tags"
+msgid "Parent Page Tag"
 msgstr ""
 
 #: lib/register.php:364
-msgid "Popular Page Tags"
+msgid "Parent Page Tag:"
 msgstr ""
 
 #: lib/register.php:365
-msgid "Separate page tags with commas"
+msgid "Search Page Tags"
 msgstr ""
 
 #: lib/register.php:366
-msgid "Add or remove page tags"
+msgid "Popular Page Tags"
 msgstr ""
 
 #: lib/register.php:367
-msgid "Choose from the most used"
+msgid "Separate page tags with commas"
 msgstr ""
 
 #: lib/register.php:368
-msgid "No page tags found."
+msgid "Add or remove page tags"
 msgstr ""
 
 #: lib/register.php:369
+msgid "Choose from the most used"
+msgstr ""
+
+#: lib/register.php:370
+msgid "No page tags found."
+msgstr ""
+
+#: lib/register.php:371
 msgid "← Back to page tags"
 msgstr ""
 
-#: lib/register.php:373
+#: lib/register.php:375
 msgctxt "Taxonomy label"
 msgid "Page Tags"
 msgstr ""
 
-#: lib/register.php:384
+#: lib/register.php:386
 msgctxt "Taxonomy description"
 msgid "Tags for the page post type."
 msgstr ""
