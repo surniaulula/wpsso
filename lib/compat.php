@@ -283,9 +283,6 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				$info = $this->p->cf[ 'plugin' ][ $this->p->id ];
 				$name = $this->p->cf[ 'plugin' ][ $this->p->id ][ 'name' ];
 
-				/**
-				 * Since WordPress SEO v4.0.
-				 */
 				if ( method_exists( 'Yoast_Notification_Center', 'get_notification_by_id' ) ) {
 
 					$notif_id     = 'wpseo-conflict-' . md5( $info[ 'base' ] );

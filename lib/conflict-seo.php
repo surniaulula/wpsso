@@ -68,11 +68,11 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 				return;
 			}
 
-			$min_version = '4.0.16';
-
 			/**
 			 * Check for minimum supported version.
 			 */
+			$min_version = '4.0.16';
+
 			if ( ! defined( 'AIOSEO_VERSION' ) || version_compare( AIOSEO_VERSION, $min_version, '<' ) ) {
 
 				$notice_msg_transl = __( 'The %1$s plugin is too old - please update the %1$s plugin to version %2$s or newer.', 'wpsso' );
@@ -457,6 +457,20 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 		private function conflict_check_wpseo() {
 
 			if ( empty( $this->p->avail[ 'seo' ][ 'wpseo' ] ) ) {
+
+				return;
+			}
+
+			/**
+			 * Check for minimum supported version.
+			 */
+			$min_version = '14.0';
+
+			if ( ! defined( 'WPSEO_VERSION' ) || version_compare( WPSEO_VERSION, $min_version, '<' ) ) {
+
+				$notice_msg_transl = __( 'The %1$s plugin is too old - please update the %1$s plugin to version %2$s or newer.', 'wpsso' );
+
+				$this->p->notice->err( $this->notice_pre . sprintf( $notice_msg_transl, __( 'Yoast SEO', 'wordpress-seo' ), $min_version ) );
 
 				return;
 			}
