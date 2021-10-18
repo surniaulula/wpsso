@@ -474,6 +474,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 9.2.1-dev.1 (2021/10/18)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added a minimum version check when the Yoast SEO plugin is active.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.0.
+	* WordPress v5.0.
+
 **Version 9.2.0 (2021/10/16)**
 
 * **New Features**
@@ -590,6 +604,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.0.
 
 == Upgrade Notice ==
+
+= 9.2.1-dev.1 =
+
+(2021/10/18) Added a minimum version check when the Yoast SEO plugin is active.
 
 = 9.2.0 =
 
