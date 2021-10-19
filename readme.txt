@@ -22,9 +22,9 @@ Advanced WordPress SEO structured data plugin to present your content at its bes
 	<p><strong>The <a href="https://surniaulula.com/2021/apps/wordpress/plugins/wordpress-seo-plugin-performance-report-for-q4-2021/">SEO Plugin Performance Report for Q4 2021</a> ranks all the popular plugins for 2021 and 2022 - see where the WPSSO Core plugin ranks compared with all other popular WordPress SEO plugins!</strong></p>
 </blockquote>
 
-<!-- about -->
-
 <h3>The Most Advanced WordPress SEO Structured Data Plugin</h3>
+
+<!-- about -->
 
 <p>WPSSO helps you rank higher and improves click through rates by presenting your content at its best on <strong>social sites</strong> and in <strong>search results</strong> - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</p>
 
