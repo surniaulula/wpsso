@@ -1409,14 +1409,56 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return count( $children );
 		}
 
-		public static function get_data_context( $json_data ) {
+		/**
+		 * Since WPSSO Core v9.2.1.
+		 */
+		public function allow_aggregate_rating( $page_type_id ) {
 
-			if ( false !== ( $type_url = self::get_data_type_url( $json_data ) ) ) {
+			foreach ( $this->p->cf[ 'head' ][ 'schema_aggregate_rating_parents' ] as $parent_id ) {
 
-				return self::get_schema_type_context( $type_url );
+				if ( $this->is_schema_type_child( $page_type_id, $parent_id ) ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'aggregate rating for schema type ' . $page_type_id . ' is allowed' );
+					}
+
+					return true;
+				}
 			}
 
-			return array();
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'aggregate rating for schema type ' . $page_type_id . ' not allowed' );
+			}
+
+			return false;
+		}
+
+		/**
+		 * Since WPSSO Core v9.2.1.
+		 */
+		public function allow_review( $page_type_id ) {
+
+			foreach ( $this->p->cf[ 'head' ][ 'schema_review_parents' ] as $parent_id ) {
+
+				if ( $this->is_schema_type_child( $page_type_id, $parent_id ) ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'review for schema type ' . $page_type_id . ' is allowed' );
+					}
+
+					return true;
+				}
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'review for schema type ' . $page_type_id . ' not allowed' );
+			}
+
+			return false;
 		}
 
 		/**
@@ -1469,6 +1511,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$type_url = set_url_scheme( $type_url, 'https' );	// Just in case.
 
 			return $type_url;
+		}
+
+		public static function get_data_context( $json_data ) {
+
+			if ( false !== ( $type_url = self::get_data_type_url( $json_data ) ) ) {
+
+				return self::get_schema_type_context( $type_url );
+			}
+
+			return array();
 		}
 
 		public static function get_context_extension_url( array $json_data ) {

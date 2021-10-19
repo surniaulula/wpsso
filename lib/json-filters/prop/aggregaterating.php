@@ -49,7 +49,7 @@ if ( ! class_exists( 'WpssoJsonFiltersPropAggregateRating' ) ) {
 		 * 	Product
 		 * 	Service 
 		 *
-		 * Unfortunately, Google supports 'aggregateRating' and 'review' properties only for these types:
+		 * Unfortunately Google allows the 'aggregateRating' property only for these types:
 		 *
 		 *	Book
 		 *	Course
@@ -60,16 +60,24 @@ if ( ! class_exists( 'WpssoJsonFiltersPropAggregateRating' ) ) {
 		 *	Product
 		 *	SoftwareApplication
 		 *
-		 * And the 'review' property only for these additional types:
+		 * And the 'review' property only for these types:
 		 *
+		 *	Book
+		 *	Course
 		 *	CreativeWorkSeason
 		 *	CreativeWorkSeries
 		 *	Episode
+		 *	Event
 		 *	Game
+		 *	HowTo (includes Recipe)
+		 *	LocalBusiness
 		 *	MediaObject
+		 *	Movie
 		 *	MusicPlaylist
 		 * 	MusicRecording
 		 *	Organization
+		 *	Product
+		 *	SoftwareApplication
 		 */
 		public function filter_json_data_https_schema_org_thing( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
 
@@ -171,7 +179,7 @@ if ( ! class_exists( 'WpssoJsonFiltersPropAggregateRating' ) ) {
 			/**
 			 * Make sure aggregate ratings are allowed by Google for this Schema type.
 			 */
-			if ( ! $this->allow_aggregate_rating( $page_type_id ) ) {
+			if ( ! $this->p->schema->allow_aggregate_rating( $page_type_id ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -192,29 +200,6 @@ if ( ! class_exists( 'WpssoJsonFiltersPropAggregateRating' ) ) {
 			}
 
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );
-		}
-
-		private function allow_aggregate_rating( $page_type_id ) {
-
-			foreach ( $this->p->cf[ 'head' ][ 'schema_aggregate_rating_parents' ] as $parent_id ) {
-
-				if ( $this->p->schema->is_schema_type_child( $page_type_id, $parent_id ) ) {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'aggregate rating for schema type ' . $page_type_id . ' is allowed' );
-					}
-
-					return true;
-				}
-			}
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'aggregate rating for schema type ' . $page_type_id . ' not allowed' );
-			}
-
-			return false;
 		}
 	}
 }

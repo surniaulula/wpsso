@@ -49,7 +49,7 @@ if ( ! class_exists( 'WpssoJsonFiltersPropReview' ) ) {
 		 * 	Product
 		 * 	Service 
 		 *
-		 * Unfortunately, Google supports 'aggregateRating' and 'review' properties only for these types:
+		 * Unfortunately Google allows the 'aggregateRating' property only for these types:
 		 *
 		 *	Book
 		 *	Course
@@ -60,16 +60,24 @@ if ( ! class_exists( 'WpssoJsonFiltersPropReview' ) ) {
 		 *	Product
 		 *	SoftwareApplication
 		 *
-		 * And the 'review' property only for these additional types:
+		 * And the 'review' property only for these types:
 		 *
+		 *	Book
+		 *	Course
 		 *	CreativeWorkSeason
 		 *	CreativeWorkSeries
 		 *	Episode
+		 *	Event
 		 *	Game
+		 *	HowTo (includes Recipe)
+		 *	LocalBusiness
 		 *	MediaObject
+		 *	Movie
 		 *	MusicPlaylist
 		 * 	MusicRecording
 		 *	Organization
+		 *	Product
+		 *	SoftwareApplication
 		 */
 		public function filter_json_data_https_schema_org_thing( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
 
