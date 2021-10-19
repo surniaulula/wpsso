@@ -12,7 +12,7 @@ Requires PHP: 7.0
 Requires At Least: 5.0
 Tested Up To: 5.8.1
 WC Tested Up To: 5.8.0
-Stable Tag: 9.2.0
+Stable Tag: 9.2.1
 
 Advanced WordPress SEO structured data plugin to present your content at its best on social sites and in search results.
 
