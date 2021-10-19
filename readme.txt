@@ -478,7 +478,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.2.1-rc.1 (2021/10/19)**
+**Version 9.2.1 (2021/10/19)**
 
 * **New Features**
 	* None.
@@ -609,7 +609,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.2.1-rc.1 =
+= 9.2.1 =
 
 (2021/10/19) Added a minimum version check when the Yoast SEO plugin is active.
 
