@@ -611,7 +611,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 9.2.1-rc.1 =
 
-(2021/10/19) Added a minimum version check when the Yoast SEO plugin is active. Moved `allow_aggregate_rating()` and `allow_review()` filter methods to the `WpssoSchema` class.
+(2021/10/19) Added a minimum version check when the Yoast SEO plugin is active.
 
 = 9.2.0 =
 
