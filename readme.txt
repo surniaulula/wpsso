@@ -24,9 +24,9 @@ Advanced WordPress SEO structured data plugin to present your content at its bes
 
 <h3>The Most Advanced WordPress SEO Structured Data Plugin</h3>
 
-<p><img class="readme-icon" src="https://surniaulula.github.io/wpsso/assets/icon-256x256.png"> WPSSO helps you rank higher and improves click through rates by presenting your content at its best on <strong>social sites</strong> and in <strong>search results</strong> - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</p>
+<p>WPSSO helps you rank higher and improves click through rates by presenting your content at its best on <strong>social sites</strong> and in <strong>search results</strong> - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</p>
 
-<p style="clear:left;"><strong>Provides structured data markup for:</strong></p>
+<p><strong>Provides structured data markup for:</strong></p>
 
 <ul>
 	<li>Facebook / Open Graph</li>
@@ -474,7 +474,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.2.1-b.1 (2021/10/18)**
+**Version 9.2.1-b.2 (2021/10/19)**
 
 * **New Features**
 	* None.
@@ -605,9 +605,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.2.1-b.1 =
+= 9.2.1-b.2 =
 
-(2021/10/18) Added a minimum version check when the Yoast SEO plugin is active.
+(2021/10/19) Added a minimum version check when the Yoast SEO plugin is active.
 
 = 9.2.0 =
 
