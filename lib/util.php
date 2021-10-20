@@ -2679,15 +2679,18 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( $new_locale && $new_locale !== $current_locale ) {
 
-				$rel_path      = $plugin_slug . '/languages/';
-				$mofile        = $plugin_slug . '-' . $new_locale . '.mo';
-				$wp_mopath     = WP_LANG_DIR . '/plugins/' . $mofile;
-				$plugin_mopath = WP_PLUGIN_DIR . '/' . $rel_path . $mofile;
+				$rel_lang_path    = $plugin_slug . '/languages/';
+				$mofile           = $plugin_slug . '-' . $new_locale . '.mo';
+				$wp_mopath        = defined( 'WP_LANG_DIR' ) ? WP_LANG_DIR . '/plugins/' . $mofile : false;
+				$mu_plugin_mopath = defined( 'WPMU_PLUGIN_DIR' ) ? WPMU_PLUGIN_DIR . '/' . $rel_lang_path . $mofile : false;
+				$plugin_mopath    = defined( 'WP_PLUGIN_DIR' ) ? WP_PLUGIN_DIR . '/' . $rel_lang_path . $mofile : false;
 
 				/**
 				 * Try to load from the WordPress languages directory first.
 				 */
-				if ( load_textdomain( $plugin_slug, $wp_mopath ) || load_textdomain( $plugin_slug, $plugin_mopath ) ) {
+				if ( ( $wp_mopath && load_textdomain( $plugin_slug, $wp_mopath ) ) ||
+					( $mu_plugin_mopath && load_textdomain( $plugin_slug, $mu_plugin_mopath ) ) ||
+					( $plugin_mopath && load_textdomain( $plugin_slug, $plugin_mopath ) ) ) {
 
 					$this->p->notice->set_label_transl();	// Update the notice label.
 

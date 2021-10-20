@@ -28,8 +28,6 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeWebsite' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$max_int = SucomUtil::get_max_int();
-
 			/**
 			 * Use the WpssoSchema method / filter.
 			 */
@@ -42,7 +40,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeWebsite' ) ) {
 			 */
 			if ( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) {
 
-				add_filter( 'woocommerce_structured_data_website', '__return_empty_array', $max_int );
+				add_filter( 'woocommerce_structured_data_website', '__return_empty_array', PHP_INT_MAX );
 			}
 		}
 	}

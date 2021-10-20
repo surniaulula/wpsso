@@ -165,8 +165,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			$do_once = true;
 
-			$max_int = defined( 'PHP_INT_MAX' ) ? PHP_INT_MAX : 2147483647;	// Since PHP 5.0.2.
-
 			if ( is_admin() ) {
 
 				add_action( 'wp_ajax_' . $this->plugin_id . '_dismiss_notice', array( $this, 'ajax_dismiss_notice' ) );
@@ -175,7 +173,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				/**
 				 * The 'in_admin_header' action executes at the beginning of the content section in an admin page.
 				 */
-				add_action( 'in_admin_header', array( $this, 'admin_header_notices' ), $max_int );
+				add_action( 'in_admin_header', array( $this, 'admin_header_notices' ), PHP_INT_MAX );
 
 				add_action( 'admin_footer', array( $this, 'admin_footer_script' ) );
 

@@ -46,9 +46,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						$this->p->debug->log( 'disabling amp_post_template_metadata' );
 					}
 
-					$max_int = SucomUtil::get_max_int();
-
-					add_filter( 'amp_post_template_metadata', '__return_empty_array', $max_int );
+					add_filter( 'amp_post_template_metadata', '__return_empty_array', PHP_INT_MAX );
 				}
 			}
 

@@ -28,8 +28,6 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeProduct' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$max_int = SucomUtil::get_max_int();
-
 			$this->p->util->add_plugin_filters( $this, array(
 				'json_data_https_schema_org_product' => 5,
 			) );
@@ -39,7 +37,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeProduct' ) ) {
 			 */
 			if ( $this->p->avail[ 'ecom' ][ 'edd' ] ) {
 
-				add_filter( 'edd_add_schema_microdata', '__return_false', $max_int );
+				add_filter( 'edd_add_schema_microdata', '__return_false', PHP_INT_MAX );
 			}
 
 			/**
@@ -47,8 +45,8 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeProduct' ) ) {
 			 */
 			if ( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) {
 
-				add_filter( 'woocommerce_structured_data_product', '__return_empty_array', $max_int );
-				add_filter( 'woocommerce_structured_data_review', '__return_empty_array', $max_int );
+				add_filter( 'woocommerce_structured_data_product', '__return_empty_array', PHP_INT_MAX );
+				add_filter( 'woocommerce_structured_data_review', '__return_empty_array', PHP_INT_MAX );
 			}
 		}
 

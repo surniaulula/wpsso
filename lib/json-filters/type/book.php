@@ -28,8 +28,6 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeBook' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$max_int = SucomUtil::get_max_int();
-
 			$this->p->util->add_plugin_filters( $this, array(
 				'json_data_https_schema_org_book' => 5,
 			) );

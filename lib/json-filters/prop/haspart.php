@@ -30,8 +30,6 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$max_int = SucomUtil::get_max_int();
-
 			/**
 			 * The Schema 'hasPart' property is only valid for the CreativeWork type.
 			 */
@@ -47,7 +45,7 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 				$this->p->debug->log( 'added maybe_comment_json_scripts filter hook for the_content' );
 			}
 
-			add_filter( 'the_content', array( $this, 'maybe_comment_json_scripts' ), $max_int );
+			add_filter( 'the_content', array( $this, 'maybe_comment_json_scripts' ), PHP_INT_MAX );
 		}
 
 		public function filter_content_html_script_application_ld_json( $html, $mod ) {

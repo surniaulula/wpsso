@@ -15,7 +15,7 @@
  * Requires At Least: 5.0
  * Tested Up To: 5.8.1
  * WC Tested Up To: 5.8.0
- * Version: 9.2.1
+ * Version: 9.3.0-dev.1
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -98,7 +98,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			require_once $plugin_dir . 'lib/config.php';
 
-			$this->cf = WpssoConfig::get_config( $apply_filters = false );
+			$this->cf = WpssoConfig::get_config();
 
 			WpssoConfig::set_constants( __FILE__ );
 
@@ -140,11 +140,13 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		}
 
 		/**
-		 * Runs at init priority -10 and called by activate_plugin() as well.
+		 * Force a refresh of the plugin config.
+		 *
+		 * Runs at init priority -10 and called by WpssoRegister->activate_plugin() as well.
 		 */
 		public function set_config( $activate = false ) {
 
-			$this->cf = WpssoConfig::get_config( $apply_filters = true );
+			$this->cf = WpssoConfig::get_config( $read_cache = false );
 		}
 
 		/**
@@ -164,7 +166,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		}
 
 		/**
-		 * Runs at init priority 9. Called by activate_plugin() as well.
+		 * Runs at init priority 9. Called by WpssoRegister->activate_plugin() as well.
 		 */
 		public function set_options( $activate = false ) {
 
@@ -268,7 +270,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		}
 
 		/**
-		 * Runs at init priority 10. Called by activate_plugin() as well.
+		 * Runs at init priority 10. Called by WpssoRegister->activate_plugin() as well.
 		 */
 		public function set_objects( $activate = false ) {
 

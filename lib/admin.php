@@ -78,9 +78,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->pageref_url = esc_url_raw( urldecode( $_GET[ 'wpsso_pageref_url' ] ) );
 			}
 
-			add_action( 'activated_plugin', array( $this, 'reset_admin_check_options' ), 10 );
-			add_action( 'after_switch_theme', array( $this, 'reset_admin_check_options' ), 10 );
-			add_action( 'upgrader_process_complete', array( $this, 'reset_admin_check_options' ), 10 );
+			add_action( 'activated_plugin', array( $this, 'activated_plugin' ), 10, 2 );
+			add_action( 'after_switch_theme', array( $this, 'after_switch_theme' ), 10, 2 );
+			add_action( 'upgrader_process_complete', array( $this, 'upgrader_process_complete' ), 10, 2 );
 			add_action( 'update_option_home', array( $this, 'site_address_changed' ), PHP_INT_MAX, 3 );
 			add_action( 'sucom_update_option_home', array( $this, 'site_address_changed' ), PHP_INT_MAX, 3 );
 
@@ -156,6 +156,102 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					add_action( 'admin_bar_menu', array( $this, 'add_admin_tb_notices_menu_item' ), WPSSO_TB_NOTICE_MENU_ORDER );
 				}
 			}
+		}
+
+		/**
+		 * Since WPSSO Core v9.3.0.
+		 *
+		 * This action is run by WordPress after any plugin is activated.
+		 *
+		 * If a plugin is silently activated (such as during an update), this action does not run. 
+		 */
+		public function activated_plugin( $plugin_base, $network_activation ) {
+
+			$this->p->reg->reset_admin_check_options();
+		}
+
+		/**
+		 * Since WPSSO Core v9.3.0.
+		 *
+		 * This action is run by WordPress multiple times and the parameters differ according to the context (ie. if the
+		 * old theme exists or not). If the old theme is missing, the parameter will be the slug of the old theme.
+		 */
+		public function after_switch_theme( $old_name, $old_theme ) {
+
+			$this->p->reg->reset_admin_check_options();
+		}
+
+		/**
+		 * Since WPSSO Core v9.3.0.
+		 *
+		 * This action is run by WordPress when the upgrader process is complete.
+		 */
+		public function upgrader_process_complete( $wp_upgrader_obj, $hook_extra ) {
+
+			$this->p->reg->reset_admin_check_options();
+
+			if ( ! empty( $hook_extra[ 'action' ] ) && ! empty( $hook_extra[ 'type' ] ) && ! empty( $hook_extra[ 'plugins' ] ) ) {
+
+				if ( 'update' === $hook_extra[ 'action' ] && 'plugin' === $hook_extra[ 'type' ] && is_array( $hook_extra[ 'plugins' ] ) ) {
+
+					foreach ( $hook_extra[ 'plugins' ] as $plugin_base ) {
+
+						if ( 0 === strpos( $plugin_base, 'wpsso' ) ) {	// Matches the WPSSO Core plugin or its add-on.
+
+							$this->p->set_config();	// Force a refresh of the plugin config.
+
+							break;	// Stop here.
+						}
+					}
+				}
+			}
+		}
+
+		/**
+		 * Since WPSSO Core v8.5.1.
+		 *
+		 * Called when the WordPress Settings > Site Address URL or the WP_HOME constant value is changed.
+		 */
+		public function site_address_changed( $old_value, $new_value, $option = 'home' ) {
+
+			static $do_once = null;
+
+			if ( true === $do_once ) {
+
+				return;	// Stop here.
+			}
+
+			$do_once = true;
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			/**
+			 * Standardize old and new values for string comparison.
+			 */
+			$old_value = untrailingslashit( strtolower( $old_value ) );
+
+			$new_value = untrailingslashit( strtolower( $new_value ) );
+
+			if ( $old_value === $new_value ) {	// Nothing to do.
+
+				return;	// Stop here.
+			}
+
+			$user_id = get_current_user_id();
+
+			if ( ! $user_id ) {	// Nobody there.
+
+				return;	// Stop here.
+			}
+
+			$notice_msg = sprintf( __( 'The Site Address URL value has been changed from %1$s to %2$s.', 'wpsso' ), $old_value, $new_value );
+
+			$notice_key = __FUNCTION__ . '_' . $old_value . '_' . $new_value;
+
+			$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
 		}
 
 		public function load_network_menu_objects() {
@@ -560,8 +656,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		protected function add_menu_page( $menu_slug ) {
 
-			global $wp_version;
-
 			$pkg_info    = $this->get_pkg_info();	// Returns an array from cache.
 			$page_title  = $pkg_info[ 'wpsso' ][ 'short_dist' ] . ' - ' . $this->menu_name;
 			$menu_title  = _x( $this->p->cf[ 'menu' ][ 'title' ], 'menu title', 'wpsso' );
@@ -604,11 +698,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			/**
-			 * WordPress version 3.8 or better is required for dashicons.
+			 * Add dashicons to the SSO menu items.
 			 */
-			global $wp_version;
-
-			if ( ( $menu_lib === 'submenu' || $menu_lib === 'sitesubmenu' ) && version_compare( $wp_version, '3.8', '>=' ) ) {
+			if ( ( $menu_lib === 'submenu' || $menu_lib === 'sitesubmenu' ) ) {
 
 				$css_class     = trim( 'wpsso-menu-item wpsso-' . $menu_id . ' ' . $css_class );
 				$dashicon_html = $this->get_menu_dashicon_html( $menu_id, $css_class );
@@ -2603,65 +2695,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				'</div>';
 
 			return $footer_html;
-		}
-
-		/**
-		 * Called by the 'activated_plugin', 'after_switch_theme', and 'upgrader_process_complete' actions, along with the
-		 * WpssoRegister->deactivate_plugin() method.
-		 */
-		public static function reset_admin_check_options() {
-
-			delete_option( WPSSO_POST_CHECK_COUNT_NAME );
-
-			delete_option( WPSSO_TMPL_HEAD_CHECK_NAME );
-
-			delete_option( WPSSO_WP_CONFIG_CHECK_NAME );
-		}
-
-		/**
-		 * Since WPSSO Core v8.5.1.
-		 *
-		 * Called when the WordPress Settings > Site Address URL or the WP_HOME constant value is changed.
-		 */
-		public function site_address_changed( $old_value, $new_value, $option = 'home' ) {
-
-			static $do_once = null;
-
-			if ( true === $do_once ) {
-
-				return;	// Stop here.
-			}
-
-			$do_once = true;
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			/**
-			 * Ignore irrelevant changes.
-			 */
-			$old_value = untrailingslashit( strtolower( $old_value ) );
-			$new_value = untrailingslashit( strtolower( $new_value ) );
-
-			if ( $old_value === $new_value ) {	// Nothing to do.
-
-				return;	// Stop here.
-			}
-
-			$user_id = get_current_user_id();
-
-			if ( ! $user_id ) {	// Nobody there.
-
-				return;	// Stop here.
-			}
-
-			$notice_msg = sprintf( __( 'The Site Address URL value has been changed from %1$s to %2$s.', 'wpsso' ), $old_value, $new_value );
-
-			$notice_key = __FUNCTION__ . '_' . $old_value . '_' . $new_value;
-
-			$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
 		}
 
 		/**

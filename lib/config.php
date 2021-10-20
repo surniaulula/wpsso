@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.2.1',	// Plugin version.
+					'version'     => '9.3.0-dev.1',	// Plugin version.
 					'opt_version' => '828',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2036,7 +2036,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '4.8.0',	// Minimum update manager version (soft limit).
+				'rec_version' => '4.9.0-dev.1',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
 					48  => 'Every two days',
@@ -4006,17 +4006,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			return $add_slug ? $info[ 'slug' ] . '-' . $info[ 'version' ] : $info[ 'version' ];
 		}
 
-		/**
-		 * WpccoConfig::get_config() is called very early, so don't apply filters by default.
-		 *
-		 * The method is called with $apply_filters = true at WordPress 'init' priority -10, after set_constants() and
-		 * require_libs() have been called, but before any plugin / add-on class objects have been defined.
-		 */
-		public static function get_config( $apply_filters = false, $read_cache = true ) {
+		public static function get_config( $read_cache = true ) {
 
-			if ( ! empty( self::$cf[ 'config_filtered' ] ) && $read_cache ) {
+			if ( $read_cache ) {
 
-				return self::$cf;
+				if ( ! empty( self::$cf[ 'config_filtered' ] ) ) {	// Only if already filtered.
+
+					return self::$cf;
+				}
 			}
 
 			self::$cf[ '*' ] = array(
@@ -4025,72 +4022,79 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'pro' => array(),
 					'std' => array(),
 				),
-				'version' => '',		// -wpsso3.29.0pro-wpssoplm1.5.1pro-wpssoum1.4.0gpl
+				'version' => '',	// -wpsso3.29.0pro-wpssoplm1.5.1pro-wpssoum1.4.0gpl
 			);
 
 			self::$cf[ 'opt' ][ 'version' ] = '';	// -wpsso416pro-wpssoplm8pro
 
+			self::$cf[ 'config_filtered' ] = false;
+
 			/**
-			 * Just in case - don't apply filters if the constants have not been defined yet.
+			 * Wpsso->__construct calls WpssoConfig::get_config() before WpssoConfig::set_constants(), so use
+			 * 'WPSSO_VERSION' as a signal to skip applying filters until later.
 			 */
-			if ( $apply_filters && defined( 'WPSSO_VERSION' ) ) {
+			if ( ! defined( 'WPSSO_VERSION' ) ) {
+			
+				return self::$cf;
+			}
 
-				self::$cf[ 'config_filtered' ] = true;	// Set before calling filter to prevent recursion.
+			/**
+			 * Apply filters to have add-ons include their config.
+			 */
+			if ( empty( self::$cf[ 'config_filtered' ] ) ) {
 
-				/**
-				 * Apply filters to have add-ons include their config.
-				 *
-				 * $plugin_version was added in WPSSO Core v3.33.6 and removed in v8.7.1.
-				 */
 				self::$cf = apply_filters( 'wpsso_get_config', self::$cf );
+			}
 
-				/**
-				 * Parse the complete config and define some reference values.
-				 */
-				$pro_disable = defined( 'WPSSO_PRO_DISABLE' ) && WPSSO_PRO_DISABLE ? true : false;
+			self::$cf[ 'config_filtered' ] = true;
 
-				foreach ( self::$cf[ 'plugin' ] as $ext => $info ) {
+			$pro_disable = defined( 'WPSSO_PRO_DISABLE' ) && WPSSO_PRO_DISABLE ? true : false;
 
-					$pkg_dir = 'std';
+			foreach ( self::$cf[ 'plugin' ] as $ext => $info ) {
 
-					if ( defined( $ext_dir_const = strtoupper( $ext ) . '_PLUGINDIR' ) &&
-						is_dir( constant( $ext_dir_const ) . 'lib/pro/' ) && ! $pro_disable ) {
+				$pkg_dir = 'std';
+
+				if ( ! $pro_disable ) {
+				
+					$ext_dir = self::get_ext_dir( $ext, $read_cache );
+
+					if ( is_dir( $ext_dir . 'lib/pro/' ) ) {
 
 						$pkg_dir = 'pro';
 					}
-
-					if ( isset( $info[ 'slug' ] ) ) {
-
-						self::$cf[ '*' ][ 'slug' ][ $info[ 'slug' ] ] = $ext;
-					}
-
-					if ( isset( $info[ 'base' ] ) ) {
-
-						self::$cf[ '*' ][ 'base' ][ $info[ 'base' ] ] = $ext;
-					}
-
-					if ( isset( $info[ 'lib' ] ) && is_array( $info[ 'lib' ] ) ) {
-
-						self::$cf[ '*' ][ 'lib' ] = SucomUtil::array_merge_recursive_distinct( self::$cf[ '*' ][ 'lib' ], $info[ 'lib' ] );
-					}
-
-					if ( isset( $info[ 'version' ] ) ) {
-
-						self::$cf[ '*' ][ 'version' ] .= '-' . $ext . $info[ 'version' ] . $pkg_dir;
-					}
-
-					if ( isset( $info[ 'opt_version' ] ) ) {
-
-						self::$cf[ 'opt' ][ 'version' ] .= '-' . $ext . $info[ 'opt_version' ] . $pkg_dir;
-					}
-
-					/**
-					 * Maybe complete relative paths in the image arrays.
-					 */
-					$plugins_url_base = trailingslashit( plugins_url( '', $info[ 'base' ] ) );
-
-					array_walk_recursive( self::$cf[ 'plugin' ][ $ext ][ 'assets' ], array( __CLASS__, 'maybe_prefix_base_url' ), $plugins_url_base );
 				}
+
+				if ( isset( $info[ 'slug' ] ) ) {
+
+					self::$cf[ '*' ][ 'slug' ][ $info[ 'slug' ] ] = $ext;
+				}
+
+				if ( isset( $info[ 'base' ] ) ) {
+
+					self::$cf[ '*' ][ 'base' ][ $info[ 'base' ] ] = $ext;
+				}
+
+				if ( isset( $info[ 'lib' ] ) && is_array( $info[ 'lib' ] ) ) {
+
+					self::$cf[ '*' ][ 'lib' ] = SucomUtil::array_merge_recursive_distinct( self::$cf[ '*' ][ 'lib' ], $info[ 'lib' ] );
+				}
+
+				if ( isset( $info[ 'version' ] ) ) {
+
+					self::$cf[ '*' ][ 'version' ] .= '-' . $ext . $info[ 'version' ] . $pkg_dir;
+				}
+
+				if ( isset( $info[ 'opt_version' ] ) ) {
+
+					self::$cf[ 'opt' ][ 'version' ] .= '-' . $ext . $info[ 'opt_version' ] . $pkg_dir;
+				}
+
+				/**
+				 * Maybe complete relative paths in the image arrays.
+				 */
+				$plugins_url_base = trailingslashit( plugins_url( '', $info[ 'base' ] ) );
+
+				array_walk_recursive( self::$cf[ 'plugin' ][ $ext ][ 'assets' ], array( __CLASS__, 'maybe_prefix_base_url' ), $plugins_url_base );
 			}
 
 			return self::$cf;
@@ -4230,11 +4234,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_DISMISS_NAME' ]          = 'wpsso_dismissed';
 			$var_const[ 'WPSSO_META_NAME' ]             = '_wpsso_meta';
 			$var_const[ 'WPSSO_META_ATTACHED_NAME' ]    = '_wpsso_meta_attached';
-			$var_const[ 'WPSSO_OPTIONS_NAME' ]          = 'wpsso_options';
-			$var_const[ 'WPSSO_POST_CHECK_COUNT_NAME' ] = 'wpsso_post_check_count';
 			$var_const[ 'WPSSO_PREF_NAME' ]             = '_wpsso_pref';
+			$var_const[ 'WPSSO_OPTIONS_NAME' ]          = 'wpsso_options';
 			$var_const[ 'WPSSO_REG_TS_NAME' ]           = 'wpsso_timestamps';
 			$var_const[ 'WPSSO_SITE_OPTIONS_NAME' ]     = 'wpsso_site_options';
+			$var_const[ 'WPSSO_POST_CHECK_COUNT_NAME' ] = 'wpsso_post_check_count';
 			$var_const[ 'WPSSO_TMPL_HEAD_CHECK_NAME' ]  = 'wpsso_tmpl_head_check';
 			$var_const[ 'WPSSO_WP_CONFIG_CHECK_NAME' ]  = 'wpsso_wp_config_check';
 			$var_const[ 'WPSSO_REVIEW_IMAGE_IDS_NAME' ] = 'reviews-images';
@@ -4516,13 +4520,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		 *
 		 * Returns false or a slashed directory path.
 		 */
-		public static function get_ext_dir( $ext ) {
+		public static function get_ext_dir( $ext, $read_cache = true ) {
 
 			static $local_cache = array();
 
-			if ( isset( $local_cache[ $ext ] ) ) {
+			if ( $read_cache ) {
 
-				return $local_cache[ $ext ];
+				if ( isset( $local_cache[ $ext ] ) ) {
+
+					return $local_cache[ $ext ];
+				}
 			}
 
 			/**
@@ -4561,7 +4568,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		/**
 		 * Since WPSSO Core v7.8.0.
 		 *
-		 * Returns false, a slashed directory path, or the file path.
+		 * Returns false, a slashed directory path, or the file name path.
 		 *
 		 * Use $is_dir = true when specifically checking for a sub-folder path.
 		 */

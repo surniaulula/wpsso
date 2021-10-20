@@ -41,8 +41,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			$this->ns = new WpssoOpenGraphNS( $plugin );
 
-			$max_int = SucomUtil::get_max_int();
-
 			$this->p->util->add_plugin_filters( $this, array(
 				'plugin_image_sizes' => 1,
 			) );
@@ -50,7 +48,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			$this->p->util->add_plugin_filters( $this, array(
 				'get_post_options'  => 3,
 				'save_post_options' => 4,
-			), $max_int );
+			), PHP_INT_MAX );
 		}
 
 		public function filter_plugin_image_sizes( array $sizes ) {

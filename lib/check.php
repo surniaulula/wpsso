@@ -1022,17 +1022,17 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			return $local_cache;
 		}
 
+		public function get_ext_auth_type( $ext ) {
+
+			return empty( $this->p->cf[ 'plugin' ][ $ext ][ 'update_auth' ] ) ? 'none' : $this->p->cf[ 'plugin' ][ $ext ][ 'update_auth' ];
+		}
+
 		public function get_ext_auth_id( $ext ) {
 
 			$ext_auth_type = $this->get_ext_auth_type( $ext );
 			$ext_auth_key  = 'plugin_' . $ext . '_' . $ext_auth_type;
 
 			return empty( $this->p->options[ $ext_auth_key ] ) ? '' : $this->p->options[ $ext_auth_key ];
-		}
-
-		public function get_ext_auth_type( $ext ) {
-
-			return empty( $this->p->cf[ 'plugin' ][ $ext ][ 'update_auth' ] ) ? 'none' : $this->p->cf[ 'plugin' ][ $ext ][ 'update_auth' ];
 		}
 
 		private function is_opt_enabled( $key, $val = null ) {

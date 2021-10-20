@@ -122,7 +122,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 
 			$this->check_required( WpssoConfig::$cf );
 
-			$this->p->set_config( $activate = true );  // Apply filters and define the $cf[ '*' ] array.
+			$this->p->set_config( $activate = true );  // Force a refresh of the plugin config.
 
 			$this->p->set_options( $activate = true ); // Read / create options and site_options.
 
@@ -196,10 +196,16 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				closedir( $dh );
 			}
 
-			if ( class_exists( 'WpssoAdmin' ) ) {	// Just in case.
+			$this->reset_admin_check_options();
+		}
 
-				WpssoAdmin::reset_admin_check_options();
-			}
+		public function reset_admin_check_options() {
+
+			delete_option( WPSSO_POST_CHECK_COUNT_NAME );
+
+			delete_option( WPSSO_TMPL_HEAD_CHECK_NAME );
+
+			delete_option( WPSSO_WP_CONFIG_CHECK_NAME );
 		}
 
 		/**

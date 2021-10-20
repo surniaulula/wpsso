@@ -33,8 +33,6 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$max_int = SucomUtil::get_max_int();
-
 			add_action( 'init', array( $this, 'allow_img_data_attributes' ) );
 
 			add_filter( 'wp_get_attachment_image_attributes', array( $this, 'add_attachment_image_attributes' ), 10, 2 );
@@ -48,7 +46,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 					'plugin_image_sizes' => 1,
 				) );
 
-				add_filter( 'the_content', array( $this, 'get_pinterest_img_html' ), $max_int );
+				add_filter( 'the_content', array( $this, 'get_pinterest_img_html' ), PHP_INT_MAX );
 			}
 		}
 

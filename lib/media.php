@@ -38,14 +38,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$max_int = SucomUtil::get_max_int();
-
 			add_action( 'init', array( $this, 'allow_img_data_attributes' ) );
 			add_action( 'post-upload-ui', array( $this, 'show_post_upload_ui_message' ) );
 
 			add_filter( 'editor_max_image_size', array( $this, 'maybe_adjust_max_image_size' ), 10, 3 );
 			add_filter( 'image_make_intermediate_size', array( $this, 'maybe_update_image_filename' ), -5000, 1 );
-			add_filter( 'wp_image_resize_identical_dimensions', array( $this, 'maybe_resize_fuzzy_dimensions' ), $max_int, 1 );
+			add_filter( 'wp_image_resize_identical_dimensions', array( $this, 'maybe_resize_fuzzy_dimensions' ), PHP_INT_MAX, 1 );
 			add_filter( 'wp_get_attachment_image_attributes', array( $this, 'add_attachment_image_attributes' ), 10, 2 );
 			add_filter( 'get_image_tag', array( $this, 'get_image_tag' ), 10, 6 );
 		}
