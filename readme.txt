@@ -483,11 +483,18 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added a 'upgrader_process_complete' action hook to refresh the WPSSO config when add-ons are updated.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Moved `WpssoAdmin::reset_admin_check_options()` to `WpssoRegister->reset_admin_check_options()`.
+	* Refactored the `WpssoConfig::get_config()` method to remove the `$apply_filters` argument.
+	* Refactored the `WpssoConfig::get_ext_dir()` method to add a `$read_cache` argument (true by default).
+	* Refactored the `WpssoUtil->maybe_load_textdomain()` method to add support for `WPMU_PLUGIN_DIR`.
+	* Refactored the `SucomPlugin::get_active_plugins()` method.
+	* Refactored the `SucomPlugin::is_plugin_installed()` method.
+	* Refactored the `SucomPlugin::get_plugins()` method to add a `$read_cache` argument (true by default).
+	* Deprecated the `SucomPlugin::clear_plugins_cache()` method.
 * **Requires At Least**
 	* PHP v7.0.
 	* WordPress v5.0.
@@ -625,7 +632,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 9.3.0-dev.1 =
 
-(2021/10/20) None.
+(2021/10/20) Added a 'upgrader_process_complete' action hook to refresh the WPSSO config when add-ons are updated.
 
 = 9.2.1 =
 
