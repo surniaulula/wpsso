@@ -189,22 +189,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function upgrader_process_complete( $wp_upgrader_obj, $hook_extra ) {
 
 			$this->p->reg->reset_admin_check_options();
-
-			if ( ! empty( $hook_extra[ 'action' ] ) && ! empty( $hook_extra[ 'type' ] ) && ! empty( $hook_extra[ 'plugins' ] ) ) {
-
-				if ( 'update' === $hook_extra[ 'action' ] && 'plugin' === $hook_extra[ 'type' ] && is_array( $hook_extra[ 'plugins' ] ) ) {
-
-					foreach ( $hook_extra[ 'plugins' ] as $plugin_base ) {
-
-						if ( 0 === strpos( $plugin_base, 'wpsso' ) ) {	// Matches the WPSSO Core plugin or its add-on.
-
-							$this->p->set_config();	// Force a refresh of the plugin config.
-
-							break;	// Stop here.
-						}
-					}
-				}
-			}
 		}
 
 		/**
