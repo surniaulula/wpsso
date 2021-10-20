@@ -889,6 +889,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		/**
 		 * Returns an array of schema type ids with gparent, parent, child (in that order).
+		 *
+		 * $use_cache is false when calling get_schema_type_child_family() recursively.
 		 */
 		public function get_schema_type_child_family( $child_id, $use_cache = true, &$child_family = array() ) {
 
@@ -923,6 +925,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( $parent_id !== $child_id )	{		// Prevent infinite loops.
 
+						/**
+						 * $use_cache is false for recursive calls.
+						 */
 						$this->get_schema_type_child_family( $parent_id, $child_use_cache = false, $child_family );
 					}
 				}
@@ -945,6 +950,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		/**
 		 * Returns an array of schema type ids with child, parent, gparent (in that order).
+		 *
+		 * $use_cache is false when calling get_schema_type_children() recursively.
 		 */
 		public function get_schema_type_children( $type_id, $use_cache = true, &$children = array() ) {
 
@@ -981,6 +988,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( $parent_id === $type_id ) {
 
+						/**
+						 * $use_cache is false for recursive calls.
+						 */
 						$this->get_schema_type_children( $child_id, $child_use_cache = false, $children );
 					}
 				}

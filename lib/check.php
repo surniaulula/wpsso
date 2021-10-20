@@ -882,7 +882,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							if ( ( ! empty( $chk[ 'class' ] ) && class_exists( $chk[ 'class' ] ) ) ||
 								( ! empty( $chk[ 'function' ] ) && function_exists( $chk[ 'function' ] ) ) ||
-								( ! empty( $chk[ 'plugin' ] ) && SucomPlugin::is_plugin_active( $chk[ 'plugin' ], $use_cache = true ) ) ) {
+								( ! empty( $chk[ 'plugin' ] ) && SucomPlugin::is_plugin_active( $chk[ 'plugin' ] ) ) ) {
 
 								$version = false;
 

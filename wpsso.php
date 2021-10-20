@@ -920,7 +920,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			/**
 			 * Show active plugins.
 			 */
-			$active_plugins = SucomPlugin::get_active_plugins( $use_cache = true );
+			$active_plugins = SucomPlugin::get_active_plugins();
 
 			$this->debug->show_html( print_r( $active_plugins, true ), 'active plugins' );
 

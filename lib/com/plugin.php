@@ -209,22 +209,22 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 		 */
 		public static function is_slug_active( $plugin_slug ) {
 
-			static $local_cache = array();						// Associative array of true/false values.
+			static $local_cache = array();	// Associative array of true/false values.
 
 			if ( isset( $local_cache[ $plugin_slug ] ) ) {
 
 				return $local_cache[ $plugin_slug ];
 
-			} elseif ( empty( $plugin_slug ) ) {					// Just in case.
+			} elseif ( empty( $plugin_slug ) ) {	// Just in case.
 
 				return $local_cache[ $plugin_slug ] = false;
 			}
 
-			foreach ( self::get_active_plugins( $read_cache = true ) as $plugin_base => $active ) {
+			foreach ( self::get_active_plugins() as $plugin_base => $active ) {
 
 				if ( strpos( $plugin_base, $plugin_slug . '/' ) === 0 ) {	// Plugin slug found.
 
-					return $local_cache[ $plugin_slug ] = true;		// Stop here.
+					return $local_cache[ $plugin_slug ] = true;	// Stop here.
 				}
 			}
 

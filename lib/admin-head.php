@@ -97,7 +97,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 						if ( empty( $pkg_info[ $ext ][ 'pdir' ] ) ) {
 
-							if ( ! empty( $ext_info[ 'base' ] ) && ! SucomPlugin::is_plugin_installed( $ext_info[ 'base' ], $use_cache = true ) ) {
+							if ( ! empty( $ext_info[ 'base' ] ) && ! SucomPlugin::is_plugin_installed( $ext_info[ 'base' ] ) ) {
 
 								$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-installed', array( 'plugin_id' => $ext ) ) );
 
@@ -131,7 +131,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				/**
 				 * Check if update manager is installed.
 				 */
-				} elseif ( SucomPlugin::is_plugin_installed( $um_info[ 'base' ], $use_cache = true ) ) {
+				} elseif ( SucomPlugin::is_plugin_installed( $um_info[ 'base' ] ) ) {
 
 					$this->p->notice->nag( $this->p->msgs->get( 'notice-um-activate-add-on' ) );
 
@@ -419,7 +419,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 			$ext_name_transl = _x( $ext_info[ 'name' ], 'plugin name', 'wpsso' );
 
-			if ( SucomPlugin::is_plugin_installed( $ext_info[ 'base' ], $use_cache = true ) ) {
+			if ( SucomPlugin::is_plugin_installed( $ext_info[ 'base' ] ) ) {
 
 				$search_url = is_multisite() ? network_admin_url( 'plugins.php', null ) : get_admin_url( $blog_id = null, 'plugins.php' );
 				$search_url = add_query_arg( array( 's' => $ext_info[ 'slug' ] ), $search_url );

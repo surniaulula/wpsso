@@ -809,7 +809,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					'height'    => $this->p->cf[ 'wp' ][ 'tb_iframe' ][ 'height' ],
 				), $install_url );
 
-				if ( SucomPlugin::is_plugin_installed( $info[ 'base' ], $use_cache = true ) ) {
+				if ( SucomPlugin::is_plugin_installed( $info[ 'base' ] ) ) {
 
 					if ( SucomPlugin::have_plugin_update( $info[ 'base' ] ) ) {
 
