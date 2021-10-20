@@ -478,12 +478,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.3.0-dev.1 (2021/10/20)**
+**Version 9.3.0-dev.2 (2021/10/20)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added a 'upgrader_process_complete' action hook to refresh the WPSSO config when add-ons are updated.
+	* Refactored several methods to offer selective local caching.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -633,9 +633,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.3.0-dev.1 =
+= 9.3.0-dev.2 =
 
-(2021/10/20) Added a 'upgrader_process_complete' action hook to refresh the WPSSO config when add-ons are updated.
+(2021/10/20) Refactored several methods to offer selective local caching.
 
 = 9.2.1 =
 
