@@ -483,7 +483,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Refactored several methods to offer selective local caching.
+	* Refactored several methods to offer selective local caching (on by default).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -635,7 +635,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 9.3.0-dev.3 =
 
-(2021/10/20) Refactored several methods to offer selective local caching.
+(2021/10/20) Refactored several methods to offer selective local caching (on by default).
 
 = 9.2.1 =
 
