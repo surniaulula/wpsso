@@ -487,6 +487,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
+	* Added a new `WpssoAdmin->activated_plugin()` method.
+	* Added a new `WpssoAdmin->after_switch_theme()` method.
+	* Added a new `WpssoAdmin->upgrader_process_complete()` method.
 	* Moved `WpssoAdmin::reset_admin_check_options()` to `WpssoRegister->reset_admin_check_options()`.
 	* Refactored the `WpssoConfig::get_config()` method to remove the `$apply_filters` argument.
 	* Refactored the `WpssoConfig::get_ext_dir()` method to add a `$read_cache` argument (true by default).
