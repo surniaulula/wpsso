@@ -368,14 +368,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			$version_changed = false;
 			$defs            = null;	// Optimize and only get array when needed.
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( '$is_new_options = ' . $is_new_options );
-				$this->p->debug->log( '$current_version = ' . $current_version );
-				$this->p->debug->log( '$latest_version = ' . $latest_version );
-				$this->p->debug->log( '$options_changed = ' . $options_changed );
-			}
-
 			if ( ! $is_new_options ) {
 
 				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
@@ -869,14 +861,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			$current_version = $is_new_options ? 0 : $opts[ 'options_version' ];	// Example: -wpsso512pro-wpssoum3gpl
 			$latest_version  = $this->p->cf[ 'opt' ][ 'version' ];
 			$upgrading       = $is_new_options || $current_version !== $latest_version ? true : false;
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( '$is_new_options = ' . $is_new_options );
-				$this->p->debug->log( '$current_version = ' . $current_version );
-				$this->p->debug->log( '$latest_version = ' . $latest_version );
-				$this->p->debug->log( '$upgrading = ' . $upgrading );
-			}
 
 			$opts = apply_filters( 'wpsso_save_setting_options', $opts, $network, $upgrading );
 

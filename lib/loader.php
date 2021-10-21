@@ -95,7 +95,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( $ext . ' lib/' . $type_dir . ' skipped' );
+							$this->p->debug->log( $ext . ' lib/' . $type_dir . '/' . $sub_dir . '/ skipped' );
 						}
 
 						continue;

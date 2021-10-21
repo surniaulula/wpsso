@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.3.0-b.1',	// Plugin version.
+					'version'     => '9.3.0-b.2',	// Plugin version.
 					'opt_version' => '829',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2036,7 +2036,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '4.9.0-dev.3',	// Minimum update manager version (soft limit).
+				'rec_version' => '4.9.0',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
 					48  => 'Every two days',
@@ -4030,8 +4030,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			self::$cf[ 'config_filtered' ] = false;
 
 			/**
-			 * Wpsso->__construct calls WpssoConfig::get_config() before WpssoConfig::set_constants(), so use
-			 * 'WPSSO_VERSION' as a signal to skip applying filters until later.
+			 * Wpsso->__construct() calls WpssoConfig::get_config() before WpssoConfig::set_constants(), which defines
+			 * 'WPSSO_VERSION', so use 'WPSSO_VERSION' as a signal to skip applying filters until later.
 			 */
 			if ( ! defined( 'WPSSO_VERSION' ) ) {
 			

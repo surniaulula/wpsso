@@ -1754,6 +1754,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return uksort( $assoc_arr, 'strnatcmp' );
 		}
 
+		/**
+		 * Since 2021/09/17.
+		 */
 		public static function unset_numeric_keys( &$assoc_arr ) {
 
 			foreach ( array_keys( $assoc_arr ) as $key ) {
