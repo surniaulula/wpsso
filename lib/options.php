@@ -862,6 +862,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				return false;
 			}
 
+			/**
+			 * $upgrading will be true when the options version, not the plugin version, is being upgraded.
+			 */
 			$is_new_options  = empty( $opts[ 'options_version' ] ) ? true : false;	// Example: -wpsso512pro-wpssoum3gpl
 			$current_version = $is_new_options ? 0 : $opts[ 'options_version' ];	// Example: -wpsso512pro-wpssoum3gpl
 			$latest_version  = $this->p->cf[ 'opt' ][ 'version' ];
