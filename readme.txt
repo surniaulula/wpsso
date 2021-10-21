@@ -478,12 +478,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.3.0-dev.3 (2021/10/20)**
+**Version 9.3.0-b.1 (2021/10/21)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Refactored several methods to offer selective local caching (on by default).
+	* Refactored several methods to offer selective local caching (enabled by default).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -491,9 +491,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new `WpssoAdmin->after_switch_theme()` method.
 	* Added a new `WpssoAdmin->upgrader_process_complete()` method.
 	* Moved `WpssoAdmin::reset_admin_check_options()` to `WpssoRegister->reset_admin_check_options()`.
+	* Refactored the `WpssoUtil->maybe_load_textdomain()` method to add support for `WPMU_PLUGIN_DIR`.
 	* Refactored the `WpssoConfig::get_config()` method to remove the `$apply_filters` argument.
 	* Refactored the `WpssoConfig::get_ext_dir()` method to add a `$read_cache` argument (true by default).
-	* Refactored the `WpssoUtil->maybe_load_textdomain()` method to add support for `WPMU_PLUGIN_DIR`.
 	* Refactored the `SucomPlugin::get_active_plugins()` method.
 	* Refactored the `SucomPlugin::is_plugin_installed()` method.
 	* Refactored the `SucomPlugin::get_plugins()` method to add a `$read_cache` argument (true by default).
@@ -633,9 +633,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.3.0-dev.3 =
+= 9.3.0-b.1 =
 
-(2021/10/20) Refactored several methods to offer selective local caching (on by default).
+(2021/10/21) Refactored several methods to offer selective local caching.
 
 = 9.2.1 =
 
