@@ -478,7 +478,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.3.0-rc.2 (2021/10/23)**
+**Version 9.3.0 (2021/10/23)**
 
 * **New Features**
 	* None.
@@ -633,7 +633,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.3.0-rc.2 =
+= 9.3.0 =
 
 (2021/10/23) Refactored several methods to offer selective local caching.
 
