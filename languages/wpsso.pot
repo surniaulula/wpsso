@@ -1098,9 +1098,8 @@ msgstr ""
 #: gettext/gettext-lib-config.php:102
 msgctxt "plugin description"
 msgid ""
-"Advanced WordPress SEO structured data plugin to present your content at its "
-"best on social sites and in search results - no matter how URLs are shared, "
-"reshared, messaged, posted, embedded, or crawled."
+"Present your content at its best in search results and on social sites - no "
+"matter how URLs are shared, reshared, messaged, posted, embedded, or crawled."
 msgstr ""
 
 #: gettext/gettext-lib-config.php:103
@@ -11171,9 +11170,8 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"Advanced WordPress SEO structured data plugin to present your content at its "
-"best on social sites and in search results - no matter how URLs are shared, "
-"reshared, messaged, posted, embedded, or crawled."
+"Present your content at its best in search results and on social sites - no "
+"matter how URLs are shared, reshared, messaged, posted, embedded, or crawled."
 msgstr ""
 
 #. Author of the plugin/theme
