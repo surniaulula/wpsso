@@ -1,4 +1,4 @@
-=== WPSSO Core | Open Graph, Google Rich Results, Pinterest Rich Pins, Schema JSON-LD, Twitter Cards, WooCommerce SEO and More ===
+=== WPSSO Core | The Most Advanced Structured Data Plugin ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -14,11 +14,11 @@ Tested Up To: 5.8.1
 WC Tested Up To: 5.8.0
 Stable Tag: 9.3.0
 
-Advanced WordPress SEO structured data plugin to present your content at its best on social sites and in search results.
+The most advanced structured data plugin to present your content at its best on social sites and in search results.
 
 == Description ==
 
-<h3 class="top">The Most Advanced WordPress SEO Structured Data Plugin</h3>
+<h3 class="top">The Most Advanced Structured Data Plugin</h3>
 
 <!-- about -->
 
