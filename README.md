@@ -1,8 +1,8 @@
-<h1>WPSSO Core</h1><h3>The Most Advanced Structured Data Plugin</h3>
+<h1>WPSSO Core</h1><h3>Advanced Structured Data Plugin for WordPress SEO and SMO</h3>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
-<tr><th align="right" valign="top" nowrap>Summary</th><td>The most advanced structured data plugin to present your content at its best on social sites and in search results.</td></tr>
+<tr><th align="right" valign="top" nowrap>Summary</th><td>Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawl</td></tr>
 <tr><th align="right" valign="top" nowrap>Stable Version</th><td>9.3.0</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires PHP</th><td>7.0 or newer</td></tr>
 <tr><th align="right" valign="top" nowrap>Requires WordPress</th><td>5.0 or newer</td></tr>
@@ -15,19 +15,19 @@
 
 <h2>Description</h2>
 
-<h3 class="top">The Most Advanced Structured Data Plugin</h3>
+<h3 class="top">Advanced Structured Data Plugin for WordPress SEO and SMO</h3>
 
 <!-- about -->
 
-<p>WPSSO helps you rank higher and improves click through rates by presenting your content at its best on <strong>social sites</strong> and in <strong>search results</strong> - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</p>
+<p class="summary">WPSSO helps you rank higher and improves click through rates by presenting your content at its best in <strong>search results</strong> and on <strong>social sites</strong> - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</p>
 
 <p><strong>Provides structured data markup for:</strong></p>
 
 <ul>
-    <li>Facebook / Open Graph</li>
+    <li>Facebook Open Graph</li>
     <li>Google Knowledge Graph</li>
     <li>Google Rich Results (aka Rich Snippets)</li>
-    <li>LinkedIn / oEmbed Data</li>
+    <li>LinkedIn oEmbed Data</li>
     <li>Mobile Web Browsers</li>
     <li>Pinterest Rich Pins</li>
     <li>Twitter Cards</li>

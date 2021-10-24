@@ -1,4 +1,4 @@
-=== WPSSO Core | The Most Advanced Structured Data Plugin ===
+=== WPSSO Core | Advanced Structured Data Plugin for WordPress SEO and SMO ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -14,23 +14,23 @@ Tested Up To: 5.8.1
 WC Tested Up To: 5.8.0
 Stable Tag: 9.3.0
 
-The most advanced structured data plugin to present your content at its best on social sites and in search results.
+Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
 
 == Description ==
 
-<h3 class="top">The Most Advanced Structured Data Plugin</h3>
+<h3 class="top">Advanced Structured Data Plugin for WordPress SEO and SMO</h3>
 
 <!-- about -->
 
-<p>WPSSO helps you rank higher and improves click through rates by presenting your content at its best on <strong>social sites</strong> and in <strong>search results</strong> - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</p>
+<p class="summary">WPSSO helps you rank higher and improves click through rates by presenting your content at its best in <strong>search results</strong> and on <strong>social sites</strong> - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</p>
 
 <p><strong>Provides structured data markup for:</strong></p>
 
 <ul>
-	<li>Facebook / Open Graph</li>
+	<li>Facebook Open Graph</li>
 	<li>Google Knowledge Graph</li>
 	<li>Google Rich Results (aka Rich Snippets)</li>
-	<li>LinkedIn / oEmbed Data</li>
+	<li>LinkedIn oEmbed Data</li>
 	<li>Mobile Web Browsers</li>
 	<li>Pinterest Rich Pins</li>
 	<li>Twitter Cards</li>
