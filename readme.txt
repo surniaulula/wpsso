@@ -39,7 +39,6 @@ Present your content at its best in search results and on social sites - no matt
 	<li>WhatsApp and Messaging Apps</li>
 	<li>WordPress REST API</li>
 	<li>WordPress XML Sitemaps</li>
-	<li><strong>&#91;Premium&#93;</strong> WooCommerce SEO and More!</li>
 </ul>
 
 <!-- /about -->
