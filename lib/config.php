@@ -1226,20 +1226,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Open Graph options.
 					 */
-					'og_def_article_section'  => 'none',		// Default Article Section.
-					'og_def_img_id'           => '',		// Default Image ID.
+					'og_def_article_section'  => 'none',	// Default Article Section.
+					'og_def_img_id'           => '',	// Default Image ID.
 					'og_def_img_id_lib'       => 'wp',
-					'og_def_img_url'          => '',		// or Default Image URL.
-					'og_def_product_category' => 'none',		// Default Product Type.
-					'og_def_country'          => 'none',		// Default Country.
-					'og_def_timezone'         => 'UTC',		// Default Timezone.
-					'og_def_currency'         => 'USD',		// Default Currency.
+					'og_def_img_url'          => '',	// or Default Image URL.
+					'og_def_product_category' => 'none',	// Default Product Type.
+					'og_def_country'          => 'none',	// Default Country.
+					'og_def_timezone'         => 'UTC',	// Default Timezone.
+					'og_def_currency'         => 'USD',	// Default Currency.
 					'og_img_width'            => 1200,
 					'og_img_height'           => 630,
 					'og_img_crop'             => 1,
 					'og_img_crop_x'           => 'center',
 					'og_img_crop_y'           => 'center',
-					'og_img_max'              => 1,			// Maximum Images to Include.
+					'og_img_max'              => 1,		// Maximum Images to Include.
 					'og_title_sep'            => '-',
 					'og_title_max_len'        => 70,
 					'og_title_warn_len'       => 40,
@@ -1248,7 +1248,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_desc_hashtags'        => 0,
 					'og_vid_max'              => 1,
 					'og_vid_autoplay'         => 1,
-					'og_vid_prev_img'         => 1,			// Include Video Preview Images.
+					'og_vid_prev_img'         => 1,		// Include Video Preview Images.
 
 					/**
 					 * Advanced Settings > Document Types > Open Graph tab.
@@ -1295,16 +1295,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Pinterest options.
 					 */
 					'pin_publisher_url'            => '',
-					'pin_add_nopin_header_img_tag' => 1,			// Add "nopin" to Site Header Image.
-					'pin_add_nopin_media_img_tag'  => 0,			// Add Pinterest "nopin" to Images.
-					'pin_add_img_html'             => 0,			// Add Hidden Image for Pinterest.
+					'pin_add_nopin_header_img_tag' => 1,		// Add "nopin" to Site Header Image.
+					'pin_add_nopin_media_img_tag'  => 0,		// Add Pinterest "nopin" to Images.
+					'pin_add_img_html'             => 0,		// Add Hidden Image for Pinterest.
 					'pin_img_width'                => 1200,
 					'pin_img_height'               => 1800,
 					'pin_img_crop'                 => 0,
 					'pin_img_crop_x'               => 'center',
 					'pin_img_crop_y'               => 'center',
-					'pin_img_desc_max_len'         => 300,			// Image Description Max. Length (hard limit).
-					'pin_img_desc_warn_len'        => 100,			// Image Description Max. Length (soft limit).
+					'pin_img_desc_max_len'         => 300,		// Image Description Max. Length (hard limit).
+					'pin_img_desc_warn_len'        => 100,		// Image Description Max. Length (soft limit).
 
 					/**
 					 * Robots options.
@@ -1409,16 +1409,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * SEO options.
 					 */
-					'seo_desc_max_len' => 180,				// Description Meta Tag Max. Length (hard limit).
+					'seo_desc_max_len' => 180,	// Description Meta Tag Max. Length (hard limit).
 
 					/**
 					 * Twitter Card options.
 					 */
-					'tc_site'           => '',				// Twitter Business @username (localized).
-					'tc_title_max_len'  => 70,				// Twitter Card Title Max. Length (hard limit).
-					'tc_desc_max_len'   => 200,				// Twitter Card Description Max. Length (hard limit).
-					'tc_type_singular'  => 'summary_large_image',		// Twitter Card for Post / Page Image.
-					'tc_type_default'   => 'summary',			// Twitter Card Type by Default.
+					'tc_site'           => '',			// Twitter Business @username (localized).
+					'tc_title_max_len'  => 70,			// Twitter Card Title Max. Length (hard limit).
+					'tc_desc_max_len'   => 200,			// Twitter Card Description Max. Length (hard limit).
+					'tc_type_singular'  => 'summary_large_image',	// Twitter Card for Post / Page Image.
+					'tc_type_default'   => 'summary',		// Twitter Card Type by Default.
 					'tc_sum_img_width'  => 1200,
 					'tc_sum_img_height' => 630,
 					'tc_sum_img_crop'   => 1,
@@ -1455,13 +1455,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Website verification IDs.
 					 */
-					'ahrefs_site_verify' => '',		// Ahrefs Website Verification ID.
-					'baidu_site_verify'  => '',		// Baidu Website Verification ID.
-					'fb_site_verify'     => '',		// Facebook Domain Verification ID.
-					'g_site_verify'      => '',		// Google Website Verification ID.
-					'bing_site_verify'   => '',		// Microsoft Bing Website Verification ID.
-					'pin_site_verify'    => '',		// Pinterest Website Verification ID.
-					'yandex_site_verify' => '',		// Yandex Website Verification ID.
+					'ahrefs_site_verify' => '',	// Ahrefs Website Verification ID.
+					'baidu_site_verify'  => '',	// Baidu Website Verification ID.
+					'fb_site_verify'     => '',	// Facebook Domain Verification ID.
+					'g_site_verify'      => '',	// Google Website Verification ID.
+					'bing_site_verify'   => '',	// Microsoft Bing Website Verification ID.
+					'pin_site_verify'    => '',	// Pinterest Website Verification ID.
+					'yandex_site_verify' => '',	// Yandex Website Verification ID.
 
 					/**
 					 * Enable / disable individual head HTML tags.
@@ -1615,10 +1615,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings > Plugin Admin tab.
 					 */
-					'plugin_clean_on_uninstall' => 0,			// Remove Settings on Uninstall.
-					'plugin_cache_disable'      => 0,			// Disable Cache for Debugging.
-					'plugin_debug_html'         => 0,			// Add HTML Debug Messages.
-					'plugin_load_mofiles'       => 0,			// Use Local Plugin Translations.
+					'plugin_clean_on_uninstall' => 0,	// Remove Settings on Uninstall.
+					'plugin_cache_disable'      => 0,	// Disable Cache for Debugging.
+					'plugin_debug_html'         => 0,	// Add HTML Debug Messages.
+					'plugin_load_mofiles'       => 0,	// Use Local Plugin Translations.
 
 					/**
 					 * Advanced Settings > Interface tab.
@@ -1704,40 +1704,40 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings > Integration tab (Plugin and Theme Integration).
 					 */
-					'plugin_check_head'           => 1,			// Check for Duplicate Meta Tags.
-					'plugin_product_include_vat'  => 0,			// Include VAT in Product Prices.
-					'plugin_wpseo_social_meta'    => 0,			// Import Yoast SEO Social Meta.
-					'plugin_wpseo_show_import'    => 1,			// Show Yoast SEO Import Details.
+					'plugin_check_head'          => 1,	// Check for Duplicate Meta Tags.
+					'plugin_product_include_vat' => 0,	// Include VAT in Product Prices.
+					'plugin_wpseo_social_meta'   => 0,	// Import Yoast SEO Social Meta.
+					'plugin_wpseo_show_import'   => 1,	// Show Yoast SEO Import Details.
 
 					/**
 					 * Advanced Settings > Media Services tab.
 					 */
-					'plugin_gravatar_api'                 => 1,		// Gravatar is Default Author Image.
-					'plugin_gravatar_size'                => 1200,		// Gravatar Image Size.
-					'plugin_facebook_api'                 => 1,		// Check for Embedded Media: Facebook Videos.
-					'plugin_slideshare_api'               => 1,		// Check for Embedded Media: Slideshare Presentations.
-					'plugin_soundcloud_api'               => 1,		// Check for Embedded Media: Soundcloud Tracks.
-					'plugin_vimeo_api'                    => 1,		// Check for Embedded Media: Vimeo Videos.
-					'plugin_wistia_api'                   => 1,		// Check for Embedded Media: Wistia Videos.
-					'plugin_wpvideo_api'                  => 1,		// Check for Embedded Media: WordPress Video Shortcode.
-					'plugin_youtube_api'                  => 1,		// Check for Embedded Media: Youtube Videos and Playlists.
+					'plugin_gravatar_api'   => 1,		// Gravatar is Default Author Image.
+					'plugin_gravatar_size'  => 1200,	// Gravatar Image Size.
+					'plugin_facebook_api'   => 1,		// Check for Embedded Media: Facebook Videos.
+					'plugin_slideshare_api' => 1,		// Check for Embedded Media: Slideshare Presentations.
+					'plugin_soundcloud_api' => 1,		// Check for Embedded Media: Soundcloud Tracks.
+					'plugin_vimeo_api'      => 1,		// Check for Embedded Media: Vimeo Videos.
+					'plugin_wistia_api'     => 1,		// Check for Embedded Media: Wistia Videos.
+					'plugin_wpvideo_api'    => 1,		// Check for Embedded Media: WordPress Video Shortcode.
+					'plugin_youtube_api'    => 1,		// Check for Embedded Media: Youtube Videos and Playlists.
 
 					/**
 					 * Advanced Settings > Shortening Services tab.
 					 */
-					'plugin_shortener'                    => 'none',	// URL Shortening Service.
-					'plugin_min_shorten'                  => 23,		// Minimum URL Length to Shorten.
-					'plugin_clear_short_urls'             => 0,		// Clear Short URLs on Clear Cache.
-					'plugin_wp_shortlink'                 => 1,		// Use Short URL for WP Shortlink.
-					'plugin_bitly_access_token'           => '',		// Bitly Generic Access Token.
-					'plugin_bitly_domain'                 => '',		// Bitly Short Domain (Optional).
-					'plugin_bitly_group_name'             => '',		// Bitly Group Name (Optional).
-					'plugin_dlmyapp_api_key'              => '',		// DLMY.App API Key.
-					'plugin_owly_api_key'                 => '',		// Ow.ly API Key.
-					'plugin_yourls_api_url'               => '',		// YOURLS API URL.
-					'plugin_yourls_username'              => '',		// YOURLS Username.
-					'plugin_yourls_password'              => '',		// YOURLS Password.
-					'plugin_yourls_token'                 => '',		// YOURLS Token.
+					'plugin_shortener'          => 'none',	// URL Shortening Service.
+					'plugin_min_shorten'        => 23,	// Minimum URL Length to Shorten.
+					'plugin_clear_short_urls'   => 0,	// Clear Short URLs on Clear Cache.
+					'plugin_wp_shortlink'       => 1,	// Use Short URL for WP Shortlink.
+					'plugin_bitly_access_token' => '',	// Bitly Generic Access Token.
+					'plugin_bitly_domain'       => '',	// Bitly Short Domain (Optional).
+					'plugin_bitly_group_name'   => '',	// Bitly Group Name (Optional).
+					'plugin_dlmyapp_api_key'    => '',	// DLMY.App API Key.
+					'plugin_owly_api_key'       => '',	// Ow.ly API Key.
+					'plugin_yourls_api_url'     => '',	// YOURLS API URL.
+					'plugin_yourls_username'    => '',	// YOURLS Username.
+					'plugin_yourls_password'    => '',	// YOURLS Password.
+					'plugin_yourls_token'       => '',	// YOURLS Token.
 
 					/**
 					 * Advanced Settings > Ratings and Reviews tab.
@@ -1801,15 +1801,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings > Default Contacts tab.
 					 */
-					'wp_cm_aim_name'              => 'aim',
-					'wp_cm_aim_label'             => 'AIM',
-					'wp_cm_aim_enabled'           => 1,
-					'wp_cm_jabber_name'           => 'jabber',
-					'wp_cm_jabber_label'          => 'Google Talk',
-					'wp_cm_jabber_enabled'        => 1,
-					'wp_cm_yim_name'              => 'yim',
-					'wp_cm_yim_label'             => 'Yahoo Messenger',
-					'wp_cm_yim_enabled'           => 1,
+					'wp_cm_aim_name'       => 'aim',
+					'wp_cm_aim_label'      => 'AIM',
+					'wp_cm_aim_enabled'    => 1,
+					'wp_cm_jabber_name'    => 'jabber',
+					'wp_cm_jabber_label'   => 'Google Talk',
+					'wp_cm_jabber_enabled' => 1,
+					'wp_cm_yim_name'       => 'yim',
+					'wp_cm_yim_label'      => 'Yahoo Messenger',
+					'wp_cm_yim_enabled'    => 1,
 
 					/**
 					 * Advanced Settings > About the User metabox.
@@ -1841,67 +1841,67 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings > Custom Fields tab.
 					 */
-					'plugin_cf_addl_type_urls'             => '',		// Microdata Type URLs Custom Field.
-					'plugin_cf_book_isbn'                  => '',		// Book ISBN Custom Field.
-					'plugin_cf_howto_steps'                => '',		// How-To Steps Custom Field.
-					'plugin_cf_howto_supplies'             => '',		// How-To Supplies Custom Field.
-					'plugin_cf_howto_tools'                => '',		// How-To Tools Custom Field.
-					'plugin_cf_img_url'                    => '',		// Image URL Custom Field.
-					'plugin_cf_product_avail'              => '',		// Product Availability Custom Field.
-					'plugin_cf_product_brand'              => '',		// Product Brand Custom Field.
-					'plugin_cf_product_category'           => '',		// Product Type ID Custom Field.
-					'plugin_cf_product_color'              => '',		// Product Color Custom Field.
-					'plugin_cf_product_condition'          => '',		// Product Condition Custom Field.
-					'plugin_cf_product_currency'           => '',		// Product Currency Custom Field.
-					'plugin_cf_product_depth_value'        => '',		// Product Depth Custom Field.
-					'plugin_cf_product_fluid_volume_value' => '',		// Product Fluid Volume Custom Field.
-					'plugin_cf_product_gtin14'             => '',		// Product GTIN-14 Custom Field.
-					'plugin_cf_product_gtin13'             => '',		// Product GTIN-13 (EAN) Custom Field.
-					'plugin_cf_product_gtin12'             => '',		// Product GTIN-12 (UPC) Custom Field.
-					'plugin_cf_product_gtin8'              => '',		// Product GTIN-8 Custom Field.
-					'plugin_cf_product_gtin'               => '',		// Product GTIN Custom Field.
-					'plugin_cf_product_height_value'       => '',		// Product Height Custom Field.
-					'plugin_cf_product_isbn'               => '',		// Product ISBN Custom Field.
-					'plugin_cf_product_length_value'       => '',		// Product Length Custom Field.
-					'plugin_cf_product_material'           => '',		// Product Material Custom Field.
-					'plugin_cf_product_mfr_part_no'        => '',		// Product MPN Custom Field.
-					'plugin_cf_product_price'              => '',		// Product Price Custom Field.
-					'plugin_cf_product_retailer_part_no'   => '',		// Product SKU Custom Field.
-					'plugin_cf_product_size'               => '',		// Product Size Custom Field.
-					'plugin_cf_product_target_gender'      => '',		// Product Target Gender Custom Field.
-					'plugin_cf_product_weight_value'       => '',		// Product Weight Custom Field.
-					'plugin_cf_product_width_value'        => '',		// Product Width Custom Field.
-					'plugin_cf_recipe_ingredients'         => '',		// Recipe Ingredients Custom Field.
-					'plugin_cf_recipe_instructions'        => '',		// Recipe Instructions Custom Field.
-					'plugin_cf_sameas_urls'                => '',		// Same-As URLs Custom Field.
-					'plugin_cf_vid_url'                    => '',		// Video URL Custom Field.
-					'plugin_cf_vid_embed'                  => '',		// Video Embed HTML Custom Field.
+					'plugin_cf_addl_type_urls'             => '',	// Microdata Type URLs Custom Field.
+					'plugin_cf_book_isbn'                  => '',	// Book ISBN Custom Field.
+					'plugin_cf_howto_steps'                => '',	// How-To Steps Custom Field.
+					'plugin_cf_howto_supplies'             => '',	// How-To Supplies Custom Field.
+					'plugin_cf_howto_tools'                => '',	// How-To Tools Custom Field.
+					'plugin_cf_img_url'                    => '',	// Image URL Custom Field.
+					'plugin_cf_product_avail'              => '',	// Product Availability Custom Field.
+					'plugin_cf_product_brand'              => '',	// Product Brand Custom Field.
+					'plugin_cf_product_category'           => '',	// Product Type ID Custom Field.
+					'plugin_cf_product_color'              => '',	// Product Color Custom Field.
+					'plugin_cf_product_condition'          => '',	// Product Condition Custom Field.
+					'plugin_cf_product_currency'           => '',	// Product Currency Custom Field.
+					'plugin_cf_product_depth_value'        => '',	// Product Depth Custom Field.
+					'plugin_cf_product_fluid_volume_value' => '',	// Product Fluid Volume Custom Field.
+					'plugin_cf_product_gtin14'             => '',	// Product GTIN-14 Custom Field.
+					'plugin_cf_product_gtin13'             => '',	// Product GTIN-13 (EAN) Custom Field.
+					'plugin_cf_product_gtin12'             => '',	// Product GTIN-12 (UPC) Custom Field.
+					'plugin_cf_product_gtin8'              => '',	// Product GTIN-8 Custom Field.
+					'plugin_cf_product_gtin'               => '',	// Product GTIN Custom Field.
+					'plugin_cf_product_height_value'       => '',	// Product Height Custom Field.
+					'plugin_cf_product_isbn'               => '',	// Product ISBN Custom Field.
+					'plugin_cf_product_length_value'       => '',	// Product Length Custom Field.
+					'plugin_cf_product_material'           => '',	// Product Material Custom Field.
+					'plugin_cf_product_mfr_part_no'        => '',	// Product MPN Custom Field.
+					'plugin_cf_product_price'              => '',	// Product Price Custom Field.
+					'plugin_cf_product_retailer_part_no'   => '',	// Product SKU Custom Field.
+					'plugin_cf_product_size'               => '',	// Product Size Custom Field.
+					'plugin_cf_product_target_gender'      => '',	// Product Target Gender Custom Field.
+					'plugin_cf_product_weight_value'       => '',	// Product Weight Custom Field.
+					'plugin_cf_product_width_value'        => '',	// Product Width Custom Field.
+					'plugin_cf_recipe_ingredients'         => '',	// Recipe Ingredients Custom Field.
+					'plugin_cf_recipe_instructions'        => '',	// Recipe Instructions Custom Field.
+					'plugin_cf_sameas_urls'                => '',	// Same-As URLs Custom Field.
+					'plugin_cf_vid_url'                    => '',	// Video URL Custom Field.
+					'plugin_cf_vid_embed'                  => '',	// Video Embed HTML Custom Field.
 
 					/**
 					 * Advanced Settings > WordPress Sitemaps metabox.
 					 */
 					'plugin_sitemaps_for_article'                => 1,
 					'plugin_sitemaps_for_attachment'             => 0,
-					'plugin_sitemaps_for_download'               => 1,		// For Easy Digital Downloads.
+					'plugin_sitemaps_for_download'               => 1,	// For Easy Digital Downloads.
 					'plugin_sitemaps_for_organization'           => 1,
 					'plugin_sitemaps_for_page'                   => 1,
 					'plugin_sitemaps_for_place'                  => 1,
 					'plugin_sitemaps_for_post'                   => 1,
-					'plugin_sitemaps_for_product'                => 1,		// For WooCommerce, etc.
+					'plugin_sitemaps_for_product'                => 1,	// For WooCommerce, etc.
 					'plugin_sitemaps_for_question'               => 1,
-					'plugin_sitemaps_for_reply'                  => 0,		// For Bbpress
+					'plugin_sitemaps_for_reply'                  => 0,	// For Bbpress
 					'plugin_sitemaps_for_tax_category'           => 1,
 					'plugin_sitemaps_for_tax_faq_category'       => 1,
 					'plugin_sitemaps_for_tax_link_category'      => 1,
 					'plugin_sitemaps_for_tax_post_tag'           => 1,
-					'plugin_sitemaps_for_tax_product_brand'      => 1,		// For WooCommerce Brands.
-					'plugin_sitemaps_for_tax_product_cat'        => 1,		// For WooCommerce.
-					'plugin_sitemaps_for_tax_product_tag'        => 1,		// For WooCommerce.
-					'plugin_sitemaps_for_tax_pwb-brand'          => 1,		// For Perfect WooCommerce Brands Add-on.
-					'plugin_sitemaps_for_tax_yith_product_brand' => 1,		// For YITH WooCommerce Brands Add-on.
-					'plugin_sitemaps_for_topic'                  => 0,		// For Bbpress
-					'plugin_sitemaps_for_tribe_events'           => 1,		// For The Events Calendar.
-					'plugin_sitemaps_for_tribe-ea-record'        => 1,		// For The Events Calendar.
+					'plugin_sitemaps_for_tax_product_brand'      => 1,	// For WooCommerce Brands.
+					'plugin_sitemaps_for_tax_product_cat'        => 1,	// For WooCommerce.
+					'plugin_sitemaps_for_tax_product_tag'        => 1,	// For WooCommerce.
+					'plugin_sitemaps_for_tax_pwb-brand'          => 1,	// For Perfect WooCommerce Brands Add-on.
+					'plugin_sitemaps_for_tax_yith_product_brand' => 1,	// For YITH WooCommerce Brands Add-on.
+					'plugin_sitemaps_for_topic'                  => 0,	// For Bbpress
+					'plugin_sitemaps_for_tribe_events'           => 1,	// For The Events Calendar.
+					'plugin_sitemaps_for_tribe-ea-record'        => 1,	// For The Events Calendar.
 					'plugin_sitemaps_for_user_page'              => 1,
 				),
 
