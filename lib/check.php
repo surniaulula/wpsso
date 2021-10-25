@@ -54,7 +54,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			),
 			'util' => array(
 				'autoptimize' => 'Autoptimize',
-				'elementor'   => 'Elementor',
 				'jetpack'     => 'Jetpack',
 			),
 		);
@@ -845,7 +844,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 								 */
 								case 'elementor':
 
-									$chk[ 'const' ] = 'ELEMENTOR_VERSION';
+									$chk[ 'constant' ] = 'ELEMENTOR_VERSION';
 
 									break;
 

@@ -81,6 +81,7 @@ _x( '(plugin) Yoast SEO', 'lib file description', 'wpsso' );
 _x( '(plugin) BuddyPress', 'lib file description', 'wpsso' );
 _x( '(feature) Enforce Image Dimension Checks', 'lib file description', 'wpsso' );
 _x( '(plugin) Co-Authors Plus', 'lib file description', 'wpsso' );
+_x( '(plugin) Elementor Website Builder', 'lib file description', 'wpsso' );
 _x( '(feature) URL Shortening Service', 'lib file description', 'wpsso' );
 _x( '(feature) Import Yoast SEO Social Meta', 'lib file description', 'wpsso' );
 _x( 'Profile SSO (Social and Search Optimization)', 'lib file description', 'wpsso' );

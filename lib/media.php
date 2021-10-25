@@ -1362,8 +1362,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			/**
 			 * Detect standard video tags.
 			 *
-			 * Hook the 'wpsso_content_videos' filter for additional html5 / javascript embed methods.
-			 *
 			 * $media[ 1 ] = The tag matched (ie. figure, iframe, or embed).
 			 * $media[ 2 ] = The attribute matched.
 			 * $media[ 3 ] = The video URL.
@@ -1409,99 +1407,45 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			/**
-			 * Elementor widget video.
-			 * 
-			 * Example:
-			 *
-			 * 	<div class="elementor-element elementor-element-5c62c7a elementor-aspect-ratio-169 elementor-widget elementor-widget-video" data-id="5c62c7a" data-element_type="widget" data-settings="{"youtube_url":"https:\/\/www.youtube.com\/watch?v=vfeYTg4POxw","modestbranding":"yes","yt_privacy":"yes","video_type":"youtube","controls":"yes","aspect_ratio":"169"}" data-widget_type="video.default">
-			 */
-			if ( preg_match_all( '/<(div)[^<>]*? class=[\'"][^\'"]*(elementor-widget-video)[^\'"]*[\'"][^<>]* data-settings=[\'"]([^ ]+)[\'"][^<>]*>/i',
-				$content, $html_tag_matches, PREG_SET_ORDER ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( count( $html_tag_matches ) . ' <div/> elementor widget video tag(s) found' );
-				}
-
-				foreach ( $html_tag_matches as $match_num => $media ) {
-
-					$media[ 3 ] = html_entity_decode( $media[ 3 ] );	// Just in case.
-
-					$json_decoded = json_decode( $media[ 3 ], $assoc = true );
-
-					if ( ! empty( $json_decoded[ 'video_type' ] ) ) {	// Example: 'youtube'.
-
-						$video_type = $json_decoded[ 'video_type' ];
-
-						if ( ! empty( $json_decoded[ $video_type . '_url' ] ) ) {	// Example: 'youtube_url'.
-
-							$media[ 3 ] = $json_decoded[ $video_type . '_url' ];
-
-							$all_matches[] = $media;
-						}
-					}
-				}
-
-			} else {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'no <div/> elementor widget video html tag(s) found' );
-				}
-			}
-
-			/**
 			 * Get video details for standard video tags.
 			 *
 			 * $media[ 1 ] = The tag matched (ie. figure, iframe, or embed).
 			 * $media[ 2 ] = The attribute matched.
 			 * $media[ 3 ] = The video URL.
 			 */
-			if ( ! empty( $all_matches ) ) {
-
-				$content_vid_max = SucomUtil::get_const( 'WPSSO_CONTENT_VIDEOS_MAX_LIMIT', 5 );
-
-				if ( count( $all_matches ) > $content_vid_max ) {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'limiting matches returned from ' . count( $all_matches ) . ' to ' . $content_vid_max );
-					}
-
-					$all_matches = array_splice( $all_matches, 0, $content_vid_max );
-				}
+			if ( is_array( $all_matches ) ) {	// Just in case.
 
 				foreach ( $all_matches as $match_num => $media ) {
 
 					if ( $this->p->debug->enabled ) {
-
+	
 						$this->p->debug->log( '<' . $media[ 1 ] . '/> video html tag found ' . $media[ 2 ] . ' = ' . $media[ 3 ] );
 					}
-
+	
 					if ( ! empty( $media[ 3 ] ) ) {
-
+	
 						if ( ! $check_dupes || $this->p->util->is_uniq_url( $media[ 3 ], 'content_video' ) ) {
-
+	
 							$args = array(
 								'url'    => $media[ 3 ],
 								'width'  => preg_match( '/ width=[\'"]?([0-9]+)[\'"]?/i', $media[ 0 ], $match ) ? $match[ 1 ] : WPSSO_UNDEF,
 								'height' => preg_match( '/ height=[\'"]?([0-9]+)[\'"]?/i', $media[ 0 ], $match ) ? $match[ 1 ] : WPSSO_UNDEF,
 							);
-
+	
 							/**
 							 * Returns a single video associative array.
 							 */
 							$mt_single_video = $this->get_video_details( $args, $check_dupes );
-
+	
 							if ( ! empty( $mt_single_video ) ) {
-
+	
 								if ( $this->p->util->push_max( $mt_videos, $mt_single_video, $num ) ) {
-
+	
 									if ( $this->p->debug->enabled ) {
-
+	
 										$this->p->debug->log( 'returning ' . count( $mt_videos ) . ' videos' );
 									}
-
+	
 									return $mt_videos;
 								}
 							}
@@ -1512,6 +1456,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			/**
 			 * Additional filters / modules may detect other embedded video markup.
+			 *
+			 * Video API 'wpsso_content_videos' filter hook priorities:
+			 *
+			 * 	 30 = Wistia
+			 * 	 40 = Slideshare
+			 * 	100 = Wpvideo
+			 * 	110 = Elementor
 			 */
 			$filter_name = 'wpsso_content_videos';	// No need to sanitize.
 
@@ -1522,64 +1473,52 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$this->p->debug->log( 'applying ' . $filter_name . ' filters' );
 				}
 
-				/**
-				 * Must return false or an array of associative arrays.
-				 */
-				if ( false !== ( $all_matches = apply_filters( $filter_name, false, $content ) ) ) {
+				$all_matches = apply_filters( $filter_name, array(), $content );
 
-					if ( is_array( $all_matches ) ) {
+				if ( is_array( $all_matches ) ) {	// Just in case.
 
-						if ( $this->p->debug->enabled ) {
+					if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( count( $all_matches ) . ' videos returned by ' . $filter_name . ' filters' );
-						}
+						$this->p->debug->log( count( $all_matches ) . ' videos returned by ' . $filter_name . ' filters' );
+					}
 
-						foreach ( $all_matches as $match_num => $args ) {
+					foreach ( $all_matches as $match_num => $args ) {
 
-							if ( is_array( $args ) ) { // Just in case.
+						if ( is_array( $args ) ) { // Just in case.
 
-								if ( ! empty( $args[ 'url' ] ) ) {
+							if ( ! empty( $args[ 'url' ] ) ) {
 
-									if ( ! $check_dupes || $this->p->util->is_uniq_url( $args[ 'url' ], 'content_video' ) ) {
+								if ( ! $check_dupes || $this->p->util->is_uniq_url( $args[ 'url' ], 'content_video' ) ) {
 
-										/**
-										 * Returns a single video associative array.
-										 */
-										$mt_single_video = $this->get_video_details( $args, $check_dupes );
+									/**
+									 * Returns a single video associative array.
+									 */
+									$mt_single_video = $this->get_video_details( $args, $check_dupes );
 
-										if ( ! empty( $mt_single_video ) ) {
+									if ( ! empty( $mt_single_video ) ) {
 
-											if ( $this->p->util->push_max( $mt_videos, $mt_single_video, $num ) ) {
+										if ( $this->p->util->push_max( $mt_videos, $mt_single_video, $num ) ) {
 
-												if ( $this->p->debug->enabled ) {
+											if ( $this->p->debug->enabled ) {
 
-													$this->p->debug->log( 'returning ' . count( $mt_videos ) . ' videos' );
-												}
-
-												return $mt_videos;
+												$this->p->debug->log( 'returning ' . count( $mt_videos ) . ' videos' );
 											}
+
+											return $mt_videos;
 										}
 									}
-
-								} elseif ( $this->p->debug->enabled ) {
-
-									$this->p->debug->log( 'args url missing from videos array element #' . $match_num );
 								}
 
 							} elseif ( $this->p->debug->enabled ) {
 
-								$this->p->debug->log( 'videos array element #' . $match_num . ' is not a media array' );
+								$this->p->debug->log( 'args url missing from videos array element #' . $match_num );
 							}
+
+						} elseif ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'videos array element #' . $match_num . ' is not a media array' );
 						}
-
-					} elseif ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( $filter_name . ' filter did not return false or an array' );
 					}
-
-				} elseif ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( $filter_name . ' filter returned false (no videos found)' );
 				}
 			}
 
@@ -1603,6 +1542,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->p->debug->mark();
 			}
 
+			if ( empty( $args[ 'url' ] ) ) {	// Just in case.
+
+				return array();
+			}
+
 			/**
 			 * Make sure we have all array keys defined.
 			 */
@@ -1616,16 +1560,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				'api'      => '',
 			), $args );
 
-			if ( empty( $args[ 'url' ] ) ) {
-
-				return array();
-			}
-
-			$mt_single_video = array_merge( SucomUtil::get_mt_video_seed(), array(
-				'og:video:width'  => $args[ 'width' ],	// Default width.
-				'og:video:height' => $args[ 'height' ],	// Default height.
-			) );
-
 			/**
 			 * Maybe filter using a specific API library hook, for example: 'wpsso_video_details_wpvideo'.
 			 */
@@ -1637,7 +1571,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			/**
-			 * Video API 'wpsso_content_videos' and 'wpsso_video_details' filter hook priorities:
+			 * Video API 'wpsso_video_details' filter hook priorities:
 			 *
 			 * 	 10 = Youtube
 			 * 	 20 = Vimeo
@@ -1647,9 +1581,22 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 * 	 80 = Soundcloud
 			 * 	100 = Wpvideo
 			 */
-			if ( false === has_filter( $filter_name ) ) {	// Nothing to do.
+			if ( false === has_filter( $filter_name ) ) {	// Just in case.
 
 				return array();
+			}
+
+			/**
+			 * Create and filter an associative array of video details.
+			 */
+			$mt_single_video = array_merge( SucomUtil::get_mt_video_seed(), array(
+				'og:video:width'  => $args[ 'width' ],	// Default width.
+				'og:video:height' => $args[ 'height' ],	// Default height.
+			) );
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'applying ' . $filter_name . ' filters' );
 			}
 
 			$mt_single_video = apply_filters( $filter_name, $mt_single_video, $args );

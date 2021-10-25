@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.4.0-dev.1',	// Plugin version.
+					'version'     => '9.4.0-dev.2',	// Plugin version.
 					'opt_version' => '829',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -201,6 +201,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'util' => array(
 								'check-img-dims' => '(feature) Enforce Image Dimension Checks',
 								'coauthors'      => '(plugin) Co-Authors Plus',
+								'elementor'      => '(plugin) Elementor Website Builder',
 								'shorten'        => '(feature) URL Shortening Service',
 								'wpseo-meta'     => '(feature) Import Yoast SEO Social Meta',
 							),
@@ -4198,7 +4199,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_CONTENT_BLOCK_FILTER_OUTPUT' ] = true;		// Monitor and fix incorrectly coded filter hooks.
 			$var_const[ 'WPSSO_CONTENT_FILTERS_MAX_TIME' ]    = 1.00;		// Issue a warning if the content filter takes longer than 1 second.
 			$var_const[ 'WPSSO_CONTENT_IMAGES_MAX_LIMIT' ]    = 5;			// Maximum number of images extracted from the content.
-			$var_const[ 'WPSSO_CONTENT_VIDEOS_MAX_LIMIT' ]    = 5;			// Maximum number of videos extracted from the content.
 			$var_const[ 'WPSSO_DUPE_CHECK_HEADER_COUNT' ]     = 3;			// Maximum number of times to check for duplicates.
 			$var_const[ 'WPSSO_DUPE_CHECK_TIMEOUT_TIME' ]     = 3.00;		// Hard-limit - most crawlers time-out after 3 seconds.
 			$var_const[ 'WPSSO_DUPE_CHECK_WARNING_TIME' ]     = 2.50;		// Issue a warning if getting shortlink took more than 2.5 seconds.
