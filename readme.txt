@@ -332,7 +332,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.4.0-dev.3 (2021/10/25)**
+**Version 9.4.0-dev.4 (2021/10/25)**
 
 * **New Features**
 	* None.
@@ -501,7 +501,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.4.0-dev.3 =
+= 9.4.0-dev.4 =
 
 (2021/10/25) Added support for the Elementor Website Builder video widget and the 'elementor/editor/after_save' action.
 
