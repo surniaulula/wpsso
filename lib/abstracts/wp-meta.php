@@ -2406,7 +2406,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					/**
 					 * Returns a single video associative array.
 					 */
-					$mt_single_video = $this->p->media->get_video_details( $args, $check_dupes, true );
+					$mt_single_video = $this->p->media->get_video_details( $args, $check_dupes, $fallback = true );
 
 					if ( ! empty( $mt_single_video ) ) {
 

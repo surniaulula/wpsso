@@ -1593,6 +1593,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 		/**
 		 * Returns a single video associative array.
+		 *
+		 * $fallback = true when called from WpssoWpMeta->get_og_videos().
 		 */
 		public function get_video_details( array $args, $check_dupes = true, $fallback = false ) {
 
@@ -1619,20 +1621,36 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return array();
 			}
 
-			$filter_name = 'wpsso_video_details';	// No need to sanitize.
+			$mt_single_video = array_merge( SucomUtil::get_mt_video_seed(), array(
+				'og:video:width'  => $args[ 'width' ],	// Default width.
+				'og:video:height' => $args[ 'height' ],	// Default height.
+			) );
 
 			/**
-			 * Maybe filter using a specific API library hook.
+			 * Maybe filter using a specific API library hook, for example: 'wpsso_video_details_wpvideo'.
 			 */
+			$filter_name = 'wpsso_video_details';	// No need to sanitize.
+
 			if ( ! empty( $args[ 'api' ] ) ) {
 
 				$filter_name .= '_' . SucomUtil::sanitize_hookname( $args[ 'api' ] );
 			}
 
-			$mt_single_video = array_merge( SucomUtil::get_mt_video_seed(), array(
-				'og:video:width'  => $args[ 'width' ],	// Default width.
-				'og:video:height' => $args[ 'height' ],	// Default height.
-			) );
+			/**
+			 * Video API 'wpsso_content_videos' and 'wpsso_video_details' filter hook priorities:
+			 *
+			 * 	 10 = Youtube
+			 * 	 20 = Vimeo
+			 * 	 30 = Wistia
+			 * 	 40 = Slideshare
+			 * 	 60 = Facebook
+			 * 	 80 = Soundcloud
+			 * 	100 = Wpvideo
+			 */
+			if ( false === has_filter( $filter_name ) ) {	// Nothing to do.
+
+				return array();
+			}
 
 			$mt_single_video = apply_filters( $filter_name, $mt_single_video, $args );
 

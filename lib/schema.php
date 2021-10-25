@@ -582,11 +582,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				/**
 				 * Add website, organization, and person markup to home page.
 				 */
-				if ( has_filter( $data_filter_name ) ) {
+				if ( false !== has_filter( $data_filter_name ) ) {
 
 					$json_data = apply_filters( $data_filter_name, $json_data, $mod, $mt_og, $page_type_id, $is_main );
 
-					if ( has_filter( $valid_filter_name ) ) {
+					if ( false !== has_filter( $valid_filter_name ) ) {
 
 						$json_data = apply_filters( $valid_filter_name, $json_data, $mod, $mt_og, $page_type_id, $is_main );
 					}
