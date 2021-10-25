@@ -514,20 +514,23 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							 */
 							$filter_name = SucomUtil::sanitize_hookname( 'wpsso_get_content_' . $tag_name . '_' . $attr_name );
 
-							if ( $this->p->debug->enabled ) {
+							if ( false !== has_filter( $filter_name ) ) {
 
-								$this->p->debug->log( 'applying ' . $filter_name . ' filters' );
+								if ( $this->p->debug->enabled ) {
+
+									$this->p->debug->log( 'applying ' . $filter_name . ' filters' );
+								}
+
+								list(
+									$mt_single_image[ 'og:image:url' ],
+									$mt_single_image[ 'og:image:width' ],
+									$mt_single_image[ 'og:image:height' ],
+									$mt_single_image[ 'og:image:cropped' ],
+									$mt_single_image[ 'og:image:id' ],
+									$mt_single_image[ 'og:image:alt' ],
+									$mt_single_image[ 'og:image:size_name' ],
+								) = apply_filters( $filter_name, self::reset_image_src_args(), $attr_value, $size_name, false );
 							}
-
-							list(
-								$mt_single_image[ 'og:image:url' ],
-								$mt_single_image[ 'og:image:width' ],
-								$mt_single_image[ 'og:image:height' ],
-								$mt_single_image[ 'og:image:cropped' ],
-								$mt_single_image[ 'og:image:id' ],
-								$mt_single_image[ 'og:image:alt' ],
-								$mt_single_image[ 'og:image:size_name' ],
-							) = apply_filters( $filter_name, self::reset_image_src_args(), $attr_value, $size_name, false );
 
 							break;
 
@@ -559,8 +562,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 								$size_info = $this->p->util->get_size_info( $size_name );
 
-								$mt_single_image[ 'og:image:url' ] = 'https://secure.gravatar.com/avatar/' . $match[ 1 ] .
-									'.jpg?s=' . $size_info[ 'width' ] . '&d=404&r=G';
+								$mt_single_image[ 'og:image:url' ] = 'https://secure.gravatar.com/avatar/' .
+									$match[ 1 ] . '.jpg?s=' . $size_info[ 'width' ] . '&d=404&r=G';
 
 								$mt_single_image[ 'og:image:width' ] = $size_info[ 'width' ] > WPSSO_GRAVATAR_IMAGE_SIZE_MAX ?
 									WPSSO_GRAVATAR_IMAGE_SIZE_MAX : $size_info[ 'width' ];
@@ -588,8 +591,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 								if ( $this->p->debug->enabled ) {
 
-									$this->p->debug->log( 'using attribute value for og:image = ' . $attr_value . 
-										' (' . WPSSO_UNDEF . 'x' . WPSSO_UNDEF . ')' );
+									$this->p->debug->log( 'using attribute value for og:image = ' .
+										$attr_value . ' (' . WPSSO_UNDEF . 'x' . WPSSO_UNDEF . ')' );
 								}
 
 								$mt_single_image = array(
@@ -668,8 +671,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 									' (' . $mt_single_image[ 'og:image:width' ] . 'x' . $mt_single_image[ 'og:image:height' ] . ')' );
 							}
 
-							if ( ! apply_filters( 'wpsso_content_accept_img_dims', $img_within_limits, $mt_single_image,
-								$size_name, $attr_name, $content_passed ) ) {
+							if ( ! apply_filters( 'wpsso_content_accept_img_dims', $img_within_limits,
+								$mt_single_image, $size_name, $attr_name, $content_passed ) ) {
 
 								$mt_single_image = array();
 							}

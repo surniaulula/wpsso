@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 9.4.0-dev.2\n"
+"Project-Id-Version: WPSSO Core 9.4.0-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -542,8 +542,8 @@ msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
 #: gettext/gettext-lib-com.php:36 gettext/gettext-lib-pro.php:45
-#: gettext/gettext-lib-pro.php:412 lib/com/form.php:790 lib/media.php:870
-#: lib/media.php:1004 lib/media.php:2441 lib/pro/admin/advanced.php:315
+#: gettext/gettext-lib-pro.php:412 lib/com/form.php:790 lib/media.php:873
+#: lib/media.php:1007 lib/media.php:2444 lib/pro/admin/advanced.php:315
 #: lib/pro/util/check-img-dims.php:104 lib/std/admin/advanced.php:306
 msgid "Media Library"
 msgstr ""
@@ -4449,7 +4449,7 @@ msgstr ""
 msgid "full size original"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:413 lib/media.php:2451
+#: gettext/gettext-lib-pro.php:413 lib/media.php:2454
 #: lib/pro/util/check-img-dims.php:107
 msgid "image ID %1$s (%2$s)"
 msgstr ""
@@ -6202,77 +6202,77 @@ msgid ""
 "all %1$d image sizes): %2$d by %3$d pixels."
 msgstr ""
 
-#: lib/media.php:663
+#: lib/media.php:666
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:874
+#: lib/media.php:877
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:875 lib/media.php:1055
+#: lib/media.php:878 lib/media.php:1058
 msgid ""
 "You may consider regenerating the sizes of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
 "org</a>."
 msgstr ""
 
-#: lib/media.php:892
+#: lib/media.php:895
 msgid ""
 "Possible %1$s corruption detected - the full size image dimensions for <a "
 "href=\"%2$s\">image ID %3$s</a> are missing from the image metadata returned "
 "by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:914
+#: lib/media.php:917
 msgid ""
 "Possible %1$s corruption detected - the full size image file path for <a "
 "href=\"%2$s\">image ID %3$s</a> is missing from the image metadata returned "
 "by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:1006
+#: lib/media.php:1009
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1024 lib/post.php:522 lib/register.php:338 lib/term.php:455
+#: lib/media.php:1027 lib/post.php:522 lib/register.php:338 lib/term.php:455
 #: lib/user.php:435 lib/util.php:818 lib/util.php:3112
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1025 lib/post.php:523 lib/term.php:456 lib/user.php:436
+#: lib/media.php:1028 lib/post.php:523 lib/term.php:456 lib/user.php:436
 #: lib/util.php:819 lib/util.php:3113
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
-#: lib/media.php:1026
+#: lib/media.php:1029
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to make image size "
 "\"%3$s\" from %4$s (%5$s)."
 msgstr ""
 
-#: lib/media.php:1053
+#: lib/media.php:1056
 msgid ""
 "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s "
 "function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr ""
 
-#: lib/media.php:2467
+#: lib/media.php:2470
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:2520
+#: lib/media.php:2523
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:2555
+#: lib/media.php:2558
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
