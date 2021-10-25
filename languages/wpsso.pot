@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 9.3.0\n"
+"Project-Id-Version: WPSSO Core 9.4.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -489,27 +489,27 @@ msgid ""
 "library installed."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:23 lib/com/cache.php:932
+#: gettext/gettext-lib-com.php:23 lib/com/cache.php:934
 msgid "Cache file %s is not readable."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:24 lib/com/cache.php:953
+#: gettext/gettext-lib-com.php:24 lib/com/cache.php:955
 msgid "Failed to open the cache file %s for reading."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:25 lib/com/cache.php:1057
+#: gettext/gettext-lib-com.php:25 lib/com/cache.php:1059
 msgid "Failed to create the %s cache folder."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:26 lib/com/cache.php:1071
+#: gettext/gettext-lib-com.php:26 lib/com/cache.php:1073
 msgid "Cache folder %s is not writable."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:27 lib/com/cache.php:1085
+#: gettext/gettext-lib-com.php:27 lib/com/cache.php:1087
 msgid "Failed to open the cache file %s for writing."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:28 lib/com/cache.php:1114
+#: gettext/gettext-lib-com.php:28 lib/com/cache.php:1116
 msgid "Failed writing data to cache file %s."
 msgstr ""
 
@@ -543,7 +543,7 @@ msgstr ""
 #. translators: Please ignore - translation uses a different text domain.
 #: gettext/gettext-lib-com.php:36 gettext/gettext-lib-pro.php:45
 #: gettext/gettext-lib-pro.php:412 lib/com/form.php:790 lib/media.php:870
-#: lib/media.php:1004 lib/media.php:2422 lib/pro/admin/advanced.php:315
+#: lib/media.php:1004 lib/media.php:2476 lib/pro/admin/advanced.php:315
 #: lib/pro/util/check-img-dims.php:104 lib/std/admin/advanced.php:306
 msgid "Media Library"
 msgstr ""
@@ -4350,20 +4350,20 @@ msgstr ""
 
 #: gettext/gettext-lib-pro.php:380 gettext/gettext-lib-pro.php:383
 #: gettext/gettext-lib-pro.php:386 lib/pro/media/slideshare.php:197
-#: lib/pro/media/vimeo.php:171 lib/pro/media/wistia.php:332
+#: lib/pro/media/vimeo.php:171 lib/pro/media/wistia.php:333
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:381 gettext/gettext-lib-pro.php:384
 #: gettext/gettext-lib-pro.php:387 lib/pro/media/slideshare.php:198
-#: lib/pro/media/vimeo.php:172 lib/pro/media/wistia.php:333
+#: lib/pro/media/vimeo.php:172 lib/pro/media/wistia.php:334
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:382 gettext/gettext-lib-pro.php:385
 #: gettext/gettext-lib-pro.php:388 lib/conflict.php:251
 #: lib/pro/media/slideshare.php:201 lib/pro/media/vimeo.php:175
-#: lib/pro/media/wistia.php:336
+#: lib/pro/media/wistia.php:337
 msgid ""
 "Please contact your hosting provider to have the missing PHP function "
 "installed."
@@ -4444,7 +4444,7 @@ msgstr ""
 msgid "full size original"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:413 lib/media.php:2432
+#: gettext/gettext-lib-pro.php:413 lib/media.php:2486
 #: lib/pro/util/check-img-dims.php:107
 msgid "image ID %1$s (%2$s)"
 msgstr ""
@@ -6256,18 +6256,18 @@ msgid ""
 "function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr ""
 
-#: lib/media.php:2448
+#: lib/media.php:2502
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:2501
+#: lib/media.php:2555
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:2536
+#: lib/media.php:2590
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."

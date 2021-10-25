@@ -54,6 +54,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 			),
 			'util' => array(
 				'autoptimize' => 'Autoptimize',
+				'elementor'   => 'Elementor',
 				'jetpack'     => 'Jetpack',
 			),
 		);
@@ -836,6 +837,15 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 								case 'coauthors':
 
 									$chk[ 'plugin' ] = 'co-authors-plus/co-authors-plus.php';
+
+									break;
+
+								/**
+								 * Elementor.
+								 */
+								case 'elementor':
+
+									$chk[ 'const' ] = 'ELEMENTOR_VERSION';
 
 									break;
 

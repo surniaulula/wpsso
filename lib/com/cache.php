@@ -775,7 +775,9 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			}
 
 			/**
-			 * Define cURL options provided by the $curl_opts method arguent (empty by default). Example:
+			 * Define cURL options provided by the $curl_opts method arguent (empty by default).
+			 *
+			 * Example:
 			 *
 			 *	$curl_opts = array(
 			 *		'CURLOPT_USERAGENT' => 'facebookexternalhit/1.1 (+http://www.facebook.com/externalhit_uatext.php)',

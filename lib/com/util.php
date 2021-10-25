@@ -935,6 +935,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				 * Create an array of currency abbrev => abbrev values.
 				 */
 				foreach ( self::$currencies as $key => $value ) {
+
 					$local_cache[ $key ] = $key;	// Example: USD => USD
 				}
 

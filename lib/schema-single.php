@@ -1138,7 +1138,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 								 * Note that wildcards and ranges cannot be mixed, and ranges only
 								 * work with postal codes that are numeric (ie. US zip codes). 
 								 *
-								 * Examples:
+								 * Example:
 								 *
 								 *	H*
 								 *	96200...96600

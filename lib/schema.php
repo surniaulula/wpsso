@@ -2304,14 +2304,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/**
 		 * Called by the Blog, CollectionPage, ProfilePage, and SearchResultsPage filters.
 		 *
-		 * Examples:
+		 * Example:
 		 *
 		 *	$prop_type_ids = array( 'mentions' => false )
 		 *
 		 *	$prop_type_ids = array( 'blogPosting' => 'blog.posting' )
 		 *
-		 * The 6th argument used to be $posts_per_page (now $prop_type_ids) and 7th argument $prop_type_ids (now
-		 * $deprecated).
+		 * The 6th argument used to be $posts_per_page (now $prop_type_ids).
+		 * The 7th argument used to be $prop_type_ids (now $deprecated).
 		 *
 		 * Do not cast $prop_type_ids as an array to allow for backwards compatibility.
 		 */

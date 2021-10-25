@@ -1363,18 +1363,23 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 * Detect standard video tags.
 			 *
 			 * Hook the 'wpsso_content_videos' filter for additional html5 / javascript embed methods.
+			 *
+			 * $media[ 1 ] = The tag matched (ie. figure, iframe, or embed).
+			 * $media[ 2 ] = The attribute matched.
+			 * $media[ 3 ] = The video URL.
 			 */
-			$figure_block_matches = array();
-			$iframe_embed_matches = array();
+			$all_matches = array();
 
 			if ( preg_match_all( '/<(figure) class="(wp-block-embed[^ "]*) [^"]+"><div class="wp-block-embed__wrapper">' . 
 				' *([^ \'"<>]+\/(embed\/|embed_code\/|player\/|swf\/|v\/|videos?\/|video\.php\?)[^ \'"<>]+) *<\/div><\/figure>/i',
-					$content, $figure_block_matches, PREG_SET_ORDER ) ) {
+					$content, $html_tag_matches, PREG_SET_ORDER ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( count( $figure_block_matches ) . ' <figure/> video html tag(s) found' );
+					$this->p->debug->log( count( $html_tag_matches ) . ' <figure/> video html tag(s) found' );
 				}
+			
+				$all_matches = array_merge( $all_matches, $html_tag_matches );
 
 			} else {
 
@@ -1386,12 +1391,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( preg_match_all( '/<(iframe|embed)[^<>]*? (data-lazy-src|data-share-src|data-src|src)=[\'"]' . 
 				'([^ \'"<>]+\/(embed\/|embed_code\/|player\/|swf\/|v\/|videos?\/|video\.php\?)[^ \'"<>]+)[\'"][^<>]*>/i',
-					$content, $iframe_embed_matches, PREG_SET_ORDER ) ) {
+					$content, $html_tag_matches, PREG_SET_ORDER ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( count( $iframe_embed_matches ) . ' <iframe|embed/> video html tag(s) found' );
+					$this->p->debug->log( count( $html_tag_matches ) . ' <iframe|embed/> video html tag(s) found' );
 				}
+
+				$all_matches = array_merge( $all_matches, $html_tag_matches );
 
 			} else {
 
@@ -1401,8 +1408,55 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 			}
 
-			$all_matches = array_merge( $iframe_embed_matches, $figure_block_matches );
+			/**
+			 * Elementor widget video.
+			 * 
+			 * Example:
+			 *
+			 * 	<div class="elementor-element elementor-element-5c62c7a elementor-aspect-ratio-169 elementor-widget elementor-widget-video" data-id="5c62c7a" data-element_type="widget" data-settings="{"youtube_url":"https:\/\/www.youtube.com\/watch?v=vfeYTg4POxw","modestbranding":"yes","yt_privacy":"yes","video_type":"youtube","controls":"yes","aspect_ratio":"169"}" data-widget_type="video.default">
+			 */
+			if ( preg_match_all( '/<(div)[^<>]*? class=[\'"][^\'"]*(elementor-widget-video)[^\'"]*[\'"][^<>]* data-settings=[\'"]([^ ]+)[\'"][^<>]*>/i',
+				$content, $html_tag_matches, PREG_SET_ORDER ) ) {
 
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( count( $html_tag_matches ) . ' <div/> elementor widget video tag(s) found' );
+				}
+
+				foreach ( $html_tag_matches as $match_num => $media ) {
+
+					$media[ 3 ] = html_entity_decode( $media[ 3 ] );	// Just in case.
+
+					$json_decoded = json_decode( $media[ 3 ], $assoc = true );
+
+					if ( ! empty( $json_decoded[ 'video_type' ] ) ) {	// Example: 'youtube'.
+
+						$video_type = $json_decoded[ 'video_type' ];
+
+						if ( ! empty( $json_decoded[ $video_type . '_url' ] ) ) {	// Example: 'youtube_url'.
+
+							$media[ 3 ] = $json_decoded[ $video_type . '_url' ];
+
+							$all_matches[] = $media;
+						}
+					}
+				}
+
+			} else {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'no <div/> elementor widget video html tag(s) found' );
+				}
+			}
+
+			/**
+			 * Get video details for standard video tags.
+			 *
+			 * $media[ 1 ] = The tag matched (ie. figure, iframe, or embed).
+			 * $media[ 2 ] = The attribute matched.
+			 * $media[ 3 ] = The video URL.
+			 */
 			if ( ! empty( $all_matches ) ) {
 
 				$content_vid_max = SucomUtil::get_const( 'WPSSO_CONTENT_VIDEOS_MAX_LIMIT', 5 );
@@ -1417,7 +1471,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$all_matches = array_splice( $all_matches, 0, $content_vid_max );
 				}
 
-				foreach ( $all_matches as $media ) {
+				foreach ( $all_matches as $match_num => $media ) {
 
 					if ( $this->p->debug->enabled ) {
 

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 9.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-10-21 08:13-0700\n"
+"PO-Revision-Date: 2021-10-24 17:06-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -918,8 +918,8 @@ msgstr "WPSSO Core"
 
 #: gettext/gettext-lib-config.php:102
 msgctxt "plugin description"
-msgid "Advanced WordPress SEO structured data plugin to present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled."
-msgstr "Extension de données structurées avancée WordPress SEO pour présenter votre contenu à son meilleur sur les sites sociaux et dans les résultats de recherche - quelle que soit la manière dont les URL sont partagées, repartagées, envoyées par message, publiées, intégrées ou explorées."
+msgid "Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled."
+msgstr "Présentez votre contenu à son meilleur sur les sites sociaux et dans les résultats de recherche - quelle que soit la manière dont les URL sont partagées, repartagées, envoyées par message, publiées, intégrées ou explorées."
 
 #: gettext/gettext-lib-config.php:103
 msgctxt "plugin name"
@@ -9923,8 +9923,8 @@ msgid "https://wpsso.com/extend/plugins/wpsso/"
 msgstr "https://wpsso.com/extend/plugins/wpsso/"
 
 #. Description of the plugin/theme
-msgid "Advanced WordPress SEO structured data plugin to present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled."
-msgstr "Extension de données structurées avancée WordPress SEO pour présenter votre contenu à son meilleur sur les sites sociaux et dans les résultats de recherche - quelle que soit la manière dont les URL sont partagées, repartagées, envoyées par message, publiées, intégrées ou explorées."
+msgid "Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled."
+msgstr "Présentez votre contenu à son meilleur sur les sites sociaux et dans les résultats de recherche - quelle que soit la manière dont les URL sont partagées, repartagées, envoyées par message, publiées, intégrées ou explorées."
 
 #. Author of the plugin/theme
 msgid "JS Morisset"

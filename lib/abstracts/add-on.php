@@ -25,7 +25,7 @@ if ( ! class_exists( 'WpssoAddOn' ) ) {
 		protected $p_ext = '';		// Add-on lowercase acronym, for example: 'um'.
 		protected $cf    = array();	// Add-on config array, for example: WpssoUmConfig::$cf.
 
-		public $reg;	// Add-on register class object. Example: WpssoJsonRegister.
+		public $reg;	// Add-on register class object, for example: WpssoUmRegister.
 
 		public function __construct( $plugin_file, $classname ) {
 
