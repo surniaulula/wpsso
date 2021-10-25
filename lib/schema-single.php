@@ -56,7 +56,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
-			list( $image_type_id, $image_type_url ) = self::get_type_id_url( $json_data, $type_opts = false,
+			list( $image_type_id, $image_type_url ) = self::get_type_id_url_list( $json_data, $type_opts = false,
 				$opt_key = 'image_type', $def_type_id = 'image.object', $list_element );
 
 			$json_ret = WpssoSchema::get_schema_type_context( $image_type_url, array( 'url' => SucomUtil::esc_url_encode( $image_url ) ) );
@@ -253,7 +253,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
-			list( $video_type_id, $video_type_url ) = self::get_type_id_url( $json_data, $type_opts = false,
+			list( $video_type_id, $video_type_url ) = self::get_type_id_url_list( $json_data, $type_opts = false,
 				$opt_key = false, $def_type_id = 'video.object', $list_element );
 
 			$json_ret = WpssoSchema::get_schema_type_context( $video_type_url, array( 'url' => SucomUtil::esc_url_encode( $media_url ) ) );
@@ -573,7 +573,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
-			list( $event_type_id, $event_type_url ) = self::get_type_id_url( $json_data, $event_opts,
+			list( $event_type_id, $event_type_url ) = self::get_type_id_url_list( $json_data, $event_opts,
 				$opt_key = 'event_type', $def_type_id = 'event', $list_element );
 
 			/**
@@ -771,7 +771,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
-			list( $job_type_id, $job_type_url ) = self::get_type_id_url( $json_data, $job_opts,
+			list( $job_type_id, $job_type_url ) = self::get_type_id_url_list( $json_data, $job_opts,
 				$opt_key = 'job_type', $def_type_id = 'job.posting', $list_element );
 
 			/**
@@ -1536,7 +1536,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
-			list( $org_type_id, $org_type_url ) = self::get_type_id_url( $json_data, $org_opts,
+			list( $org_type_id, $org_type_url ) = self::get_type_id_url_list( $json_data, $org_opts,
 				$opt_key = 'org_schema_type', $def_type_id = 'organization', $list_element );
 
 			$json_ret = WpssoSchema::get_schema_type_context( $org_type_url );
@@ -1706,6 +1706,27 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					}
 
 					self::add_place_data( $json_ret[ 'location' ], $mod, $place_id, $place_list_el = false );
+
+					/**
+					 * Check to make sure the organization location is not itself an organization.
+					 *
+					 * if ( ! empty( $json_ret[ 'location' ] ) ) {	// Just in case.
+					 *
+					 * $place_type_id = WpssoSchema::get_data_type_id( $json_ret[ 'location' ] );
+					 *
+					 *	if ( ! empty( $place_type_id ) ) {	// Just in case.
+					 *
+					 *		if ( 'place' !== $place_type_id ) {
+					 *
+					 *			if ( $wpsso->schema->is_schema_type_child( $place_type_id, 'organization' ) ) {
+					 *
+					 *				 $json_ret[ 'location' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/Place',
+					 *				 	$json_ret[ 'location' ] );
+					 *			}
+					 *		}
+					 *	}
+					 * }
+					 */
 				}
 			}
 
@@ -1730,9 +1751,15 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * If the organization is a local business, then convert the organization markup to local business.
 			 */
-			if ( ! empty( $org_type_id ) && 'organization' !== $org_type_id && $wpsso->schema->is_schema_type_child( $org_type_id, 'local.business' ) ) {
+			if ( ! empty( $org_type_id ) ) {	// Just in case.
+			
+				if ( 'organization' !== $org_type_id ) {
+				
+					if ( $wpsso->schema->is_schema_type_child( $org_type_id, 'local.business' ) ) {
 
-				WpssoSchema::organization_to_localbusiness( $json_ret );
+						WpssoSchema::organization_to_localbusiness( $json_ret );
+					}
+				}
 			}
 
 			$json_ret = apply_filters( 'wpsso_json_data_single_organization', $json_ret, $mod, $org_id );
@@ -1894,7 +1921,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
-			list( $person_type_id, $person_type_url ) = self::get_type_id_url( $json_data, $person_opts,
+			list( $person_type_id, $person_type_url ) = self::get_type_id_url_list( $json_data, $person_opts,
 				$opt_key = 'person_type', $def_type_id = 'person', $list_element );
 
 			$json_ret = WpssoSchema::get_schema_type_context( $person_type_url );
@@ -2012,7 +2039,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
-			list( $place_type_id, $place_type_url ) = self::get_type_id_url( $json_data, $place_opts, $opt_key = 'place_schema_type',
+			list( $place_type_id, $place_type_url ) = self::get_type_id_url_list( $json_data, $place_opts, $opt_key = 'place_schema_type',
 				$def_type_id = 'place', $list_element );
 
 			$json_ret = WpssoSchema::get_schema_type_context( $place_type_url );
@@ -2195,7 +2222,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		/**
 		 * If not adding a list element, then inherit the existing schema type url (if one exists).
 		 */
-		private static function get_type_id_url( $json_data, $type_opts, $opt_key, $def_type_id, $list_element = false ) {
+		private static function get_type_id_url_list( $json_data, $type_opts, $opt_key, $def_type_id, $list_element = false ) {
 
 			$wpsso =& Wpsso::get_instance();
 

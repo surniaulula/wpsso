@@ -1483,6 +1483,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 *	)
 		 * )
 		 */
+		public static function get_data_type_id( $json_data, $default_id = false ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			$type_url = self::get_data_type_url( $json_data );
+
+			return $wpsso->schema->get_schema_type_url_id( $type_url, $default_id );
+		}
+
 		public static function get_data_type_url( $json_data ) {
 
 			$type_url = false;
