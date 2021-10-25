@@ -84,11 +84,11 @@
 
 <h3>WPSSO Core Plugin Features</h3>
 
-<p>Provides accurate and comprehensive meta tags and Schema markup for WordPress posts / pages, custom post types, taxonomies, search results, shop pages, and much more.</p>
+<p><strong>Provides accurate and comprehensive meta tags and Schema markup</strong> for WordPress posts / pages, custom post types, taxonomies, search results, shop pages, and much more.</p>
 
-<p>Enhances the WordPress oEmbed data for LinkedIn, Discord, Drupal, Squarespace, and others.</p>
+<p><strong>Extends the WordPress oEmbed data</strong> for LinkedIn, Discord, Drupal, Squarespace, and others.</p>
 
-<p>Offers optimized image sizes for social sites and search engines:</p>
+<p><strong>Offers optimized image sizes</strong> for social sites and search engines:</p>
 
 <ul>
 <li>Open Graph (Facebook and oEmbed)</li>
@@ -101,18 +101,16 @@
 <li>Twitter Large Image Summary Card</li>
 </ul>
 
-<p>Provides Schema ImageObject markup with image data from the WordPress Media Library (name, alternateName, alternativeHeadline, caption, description, fileFormat, uploadDate, and more).</p>
+<p><strong>Provides complete Schema ImageObject markup</strong>, including name, alternateName, alternativeHeadline, caption, description, fileFormat, uploadDate, and much more.</p>
 
-<p>Provides Schema VideoObject markup with video data from WPSSO Core Premium service APIs (Facebook, Slideshare, Soundcloud, Vimeo, Wistia, YouTube) including the 'embedUrl' and 'contentUrl' properties for Google.</p>
-
-<p>Built-in compatibility with AMP plugins:</p>
+<p><strong>Built-in compatibility with AMP plugins</strong>:</p>
 
 <ul>
 <li><a href="https://wordpress.org/plugins/amp/">AMP</a></li>
 <li><a href="https://wordpress.org/plugins/accelerated-mobile-pages/">AMP for WP</a></li>
 </ul>
 
-<p>Built-in compatibility with caching and optimization plugins:</p>
+<p><strong>Built-in compatibility with caching and optimization plugins</strong>:</p>
 
 <ul>
 <li>Autoptimize</li>
@@ -130,7 +128,7 @@
 <li>WP Super Cache</li>
 </ul>
 
-<p>Built-in compatibility with popular SEO plugins:</p>
+<p><strong>Built-in compatibility with popular SEO plugins</strong>:</p>
 
 <ul>
 <li>All in One SEO Pack</li>
@@ -146,7 +144,7 @@
 <li>Yoast WooCommerce SEO</li>
 </ul>
 
-<p>Built-in compatibility for advanced WordPress configurations:</p>
+<p><strong>Built-in compatibility for advanced WordPress configurations</strong>:</p>
 
 <ul>
 <li>WordPress MU Domain Mapping</li>
@@ -158,6 +156,8 @@
 <p><strong>&#91;Premium&#93;</strong> Support for the Twitter <a href="https://dev.twitter.com/cards/types/player">Player Card</a> for embedded videos.</p>
 
 <p><strong>&#91;Premium&#93;</strong> Detection of embedded videos in content text with API support for Facebook, Slideshare, Vimeo, Wistia, and Youtube videos.</p>
+
+<p><strong>&#91;Premium&#93;</strong> Provides complete Schema VideoObject markup, including the embedUrl and contentUrl properties for Google.</p>
 
 <p><strong>&#91;Premium&#93;</strong> Upscaling of smaller images to satisfy minimum size requirements for social sites and Google Rich Results (aka aka Rich Snippets).</p>
 

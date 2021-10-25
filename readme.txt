@@ -85,11 +85,11 @@ WPSSO can be your only social and search optimization plugin, or can improve the
 
 <h3>WPSSO Core Plugin Features</h3>
 
-Provides accurate and comprehensive meta tags and Schema markup for WordPress posts / pages, custom post types, taxonomies, search results, shop pages, and much more.
+**Provides accurate and comprehensive meta tags and Schema markup** for WordPress posts / pages, custom post types, taxonomies, search results, shop pages, and much more.
 
-Enhances the WordPress oEmbed data for LinkedIn, Discord, Drupal, Squarespace, and others.
+**Extends the WordPress oEmbed data** for LinkedIn, Discord, Drupal, Squarespace, and others.
 
-Offers optimized image sizes for social sites and search engines:
+**Offers optimized image sizes** for social sites and search engines:
 
 * Open Graph (Facebook and oEmbed)
 * Pinterest Pin It
@@ -100,16 +100,14 @@ Offers optimized image sizes for social sites and search engines:
 * Twitter Summary Card
 * Twitter Large Image Summary Card
 
-Provides Schema ImageObject markup with image data from the WordPress Media Library (name, alternateName, alternativeHeadline, caption, description, fileFormat, uploadDate, and more).
+**Provides complete Schema ImageObject markup**, including name, alternateName, alternativeHeadline, caption, description, fileFormat, uploadDate, and much more.
 
-Provides Schema VideoObject markup with video data from WPSSO Core Premium service APIs (Facebook, Slideshare, Soundcloud, Vimeo, Wistia, YouTube) including the 'embedUrl' and 'contentUrl' properties for Google.
-
-Built-in compatibility with AMP plugins:
+**Built-in compatibility with AMP plugins**:
 
 * [AMP](https://wordpress.org/plugins/amp/)
 * [AMP for WP](https://wordpress.org/plugins/accelerated-mobile-pages/)
 
-Built-in compatibility with caching and optimization plugins:
+**Built-in compatibility with caching and optimization plugins**:
 
 * Autoptimize
 * Cache Enabler
@@ -125,7 +123,7 @@ Built-in compatibility with caching and optimization plugins:
 * WP Rocket Cache
 * WP Super Cache
 
-Built-in compatibility with popular SEO plugins:
+**Built-in compatibility with popular SEO plugins**:
 
 * All in One SEO Pack
 * Jetpack SEO
@@ -139,7 +137,7 @@ Built-in compatibility with popular SEO plugins:
 * Yoast SEO
 * Yoast WooCommerce SEO
 
-Built-in compatibility for advanced WordPress configurations:
+**Built-in compatibility for advanced WordPress configurations**:
 
 * WordPress MU Domain Mapping
 * Network / Multisite Installations
@@ -149,6 +147,8 @@ The WPSSO Core Standard plugin is designed to satisfy the requirements of most s
 **&#91;Premium&#93;** Support for the Twitter [Player Card](https://dev.twitter.com/cards/types/player) for embedded videos.
 
 **&#91;Premium&#93;** Detection of embedded videos in content text with API support for Facebook, Slideshare, Vimeo, Wistia, and Youtube videos.
+
+**&#91;Premium&#93;** Provides complete Schema VideoObject markup, including the embedUrl and contentUrl properties for Google.
 
 **&#91;Premium&#93;** Upscaling of smaller images to satisfy minimum size requirements for social sites and Google Rich Results (aka aka Rich Snippets).
 
