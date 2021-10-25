@@ -1057,7 +1057,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * Add the seller organization data.
 			 */
-			self::add_organization_data( $offer[ 'seller' ], $mod, $org_id = 'site', $org_logo_key = 'org_logo_url', $org_list_el = false );
+			self::add_organization_data( $offer[ 'seller' ], $mod, $org_id = 'site', $org_logo_key = '', $org_list_el = false );
 
 			$offer = apply_filters( 'wpsso_json_data_single_offer', $offer, $mod );
 
@@ -1471,11 +1471,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		/**
 		 * $org_id can be 'none', 'site', or a number (including 0).
 		 *
-		 * $org_logo_key can be an empty string, 'org_logo_url', or 'org_banner_url' (600x60px image) for Articles.
+		 * $org_logo_key can be empty, 'org_logo_url', or 'org_banner_url' (600x60px image) for Articles.
 		 *
 		 * Do not provide localized option names - the method will fetch the localized values.
 		 */
-		public static function add_organization_data( &$json_data, $mod, $org_id = 'site', $org_logo_key = 'org_logo_url', $list_element = false ) {
+		public static function add_organization_data( &$json_data, $mod, $org_id = 'site', $org_logo_key = '', $list_element = false ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -1583,7 +1583,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * Organization logo.
 			 *
-			 * $org_logo_key can be false, 'org_logo_url' (default), or 'org_banner_url' (600x60px image) for Articles.
+			 * $org_logo_key can be empty, 'org_logo_url', or 'org_banner_url' (600x60px image) for Articles.
 			 */
 			if ( ! empty( $org_logo_key ) ) {
 

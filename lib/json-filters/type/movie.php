@@ -84,7 +84,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeMovie' ) ) {
 
 				$md_val = $md_opts[ 'schema_movie_prodco_org_id' ];
 
-				WpssoSchemaSingle::add_organization_data( $json_ret[ 'productionCompany' ], $mod, $md_val, 'org_logo_url', $list_element = true );
+				WpssoSchemaSingle::add_organization_data( $json_ret[ 'productionCompany' ], $mod, $md_val, $org_logo_key = '', $list_element = true );
 			}
 
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );

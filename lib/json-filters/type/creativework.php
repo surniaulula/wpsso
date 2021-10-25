@@ -89,7 +89,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeCreativeWork' ) ) {
 
 						if ( strpos( $md_key, '_org_id' ) ) {
 
-							$org_logo_key = 'org_logo_url';	// Default logo image.
+							$org_logo_key = '';	// No logo image by default.
 
 							if ( 'publisher' === $prop_name ) {
 							
@@ -99,14 +99,6 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeCreativeWork' ) ) {
 								if ( $is_article ) {
 								
 									$org_logo_key = 'org_banner_url';
-
-								/**
-								 * Avoid duplicating the home page Organization @id and the website
-								 * publisher Organization @id.
-								 */
-								} elseif ( $is_website ) {
-
-									$org_logo_key = '';
 								}
 							}
 
