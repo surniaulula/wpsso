@@ -47,7 +47,6 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeThing' ) ) {
 
 				$this->p->debug->mark();
 			}
-
 			$page_type_url = $this->p->schema->get_schema_type_url( $page_type_id );
 
 			$json_ret = WpssoSchema::get_schema_type_context( $page_type_url );
@@ -91,7 +90,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeThing' ) ) {
 				$this->p->debug->log( 'getting url (fragment anchor or canonical url)' );
 			}
 
-			if ( empty( $mod[ 'is_public' ] ) ) {				// Since WPSSO Core v7.0.0.
+			if ( empty( $mod[ 'is_public' ] ) ) {	// Since WPSSO Core v7.0.0.
 
 				$json_ret[ 'url' ] = WpssoUtil::get_fragment_anchor( $mod );	// Since WPSSO Core v7.0.0.
 

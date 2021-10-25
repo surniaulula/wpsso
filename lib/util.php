@@ -3420,9 +3420,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$text = preg_replace( '/([\w])<\/(button|dt|h[0-9]+|li|th)>/i', '$1. ', $text );
 
 				/**
-				 * Replace paragraph tags with a space.
+				 * Replace list and paragraph tags with a space.
 				 */
-				$text = preg_replace( '/(<p>|<p[^>]+>|<\/p>)/i', ' ', $text );
+				$text = preg_replace( '/(<li[^>]*>|<p[^>]*>|<\/p>)/i', ' ', $text );
 
 				/**
 				 * Remove remaining html tags.

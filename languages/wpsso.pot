@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 9.4.0-dev.4\n"
+"Project-Id-Version: WPSSO Core 9.4.0-dev.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -9674,7 +9674,7 @@ msgid ""
 "post ID %3$d (%4$s)."
 msgstr ""
 
-#: lib/post.php:726 lib/post.php:1323 lib/schema.php:3193 lib/term.php:574
+#: lib/post.php:726 lib/post.php:1323 lib/schema.php:3139 lib/term.php:574
 #: lib/user.php:571
 msgid "checking meta tags"
 msgstr ""
@@ -9967,11 +9967,11 @@ msgstr ""
 msgid "adding schema place"
 msgstr ""
 
-#: lib/schema.php:685
+#: lib/schema.php:631
 msgid "adding schema"
 msgstr ""
 
-#: lib/schema.php:1667
+#: lib/schema.php:1613
 msgid "adding schema %s #%d image"
 msgstr ""
 

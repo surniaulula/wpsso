@@ -31,7 +31,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeWebsite' ) ) {
 			/**
 			 * Use the WpssoSchema method / filter.
 			 */
-			$this->p->util->add_plugin_filters( $this->p->schema, array(
+			$this->p->util->add_plugin_filters( $this, array(
 				'json_data_https_schema_org_website' => 5,
 			) );
 
@@ -42,6 +42,65 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeWebsite' ) ) {
 
 				add_filter( 'woocommerce_structured_data_website', '__return_empty_array', PHP_INT_MAX );
 			}
+		}
+
+		/**
+		 * https://schema.org/WebSite for Google
+		 */
+		public function filter_json_data_https_schema_org_website( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			/**
+			 * Remove some properties from the creativework filter.
+			 */
+			unset( $json_data[ 'dateCreated' ], $json_data[ 'datePublished' ], $json_data[ 'dateModified' ], $json_data[ 'copyrightYear' ] );
+
+			$json_ret = WpssoSchema::get_schema_type_context( 'https://schema.org/WebSite', array(
+				'url' => SucomUtil::get_home_url( $this->p->options, $mod ),
+			) );
+
+			foreach ( array(
+				'name'          => SucomUtil::get_site_name( $this->p->options, $mod ),
+				'alternateName' => SucomUtil::get_site_name_alt( $this->p->options, $mod ),
+				'description'   => SucomUtil::get_site_description( $this->p->options, $mod ),
+			) as $key => $value ) {
+
+				if ( ! empty( $value ) ) {
+
+					$json_ret[ $key ] = $value;
+				}
+			}
+
+			/**
+			 * Potential Action (SearchAction, OrderAction, etc.)
+			 *
+			 * The 'wpsso_json_prop_https_schema_org_potentialaction' filter may already be applied by the JSON data
+			 * filters, so do not re-apply it here.
+			 *
+			 * Hook the 'wpsso_json_ld_search_url' filter and return false if you wish to disable / skip the Potential
+			 * Action property.
+			 */
+			$search_url = SucomUtil::esc_url_encode( get_bloginfo( 'url' ) ) . '?s={search_term_string}';
+
+			$search_url = apply_filters( 'wpsso_json_ld_search_url', $search_url );
+
+			if ( ! empty( $search_url ) ) {
+
+				$json_ret[ 'potentialAction' ][] = WpssoSchema::get_schema_type_context( 'https://schema.org/SearchAction', array(
+					'target'      => $search_url,
+					'query-input' => 'required name=search_term_string',
+				) );
+
+			} elseif ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'skipping search action: search url is empty' );
+			}
+
+			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );
 		}
 	}
 }

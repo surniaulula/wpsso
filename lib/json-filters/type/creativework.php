@@ -70,6 +70,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeCreativeWork' ) ) {
 			if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
 
 				$is_article = $this->p->schema->is_schema_type_child( $page_type_id, 'article' );
+				$is_website = $this->p->schema->is_schema_type_child( $page_type_id, 'website' );
 
 				/**
 				 * The meta data key is unique, but the Schema property name may be repeated to add more than one
@@ -90,12 +91,23 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeCreativeWork' ) ) {
 
 							$org_logo_key = 'org_logo_url';	// Default logo image.
 
-							/**
-							 * Google requires a banner image for publisher logos.
-							 */
-							if ( 'publisher' === $prop_name && $is_article ) {
+							if ( 'publisher' === $prop_name ) {
+							
+								/**
+								 * Google requires a banner image for publisher logos.
+								 */
+								if ( $is_article ) {
+								
+									$org_logo_key = 'org_banner_url';
 
-								$org_logo_key = 'org_banner_url';
+								/**
+								 * Avoid duplicating the home page Organization @id and the website
+								 * publisher Organization @id.
+								 */
+								} elseif ( $is_website ) {
+
+									$org_logo_key = '';
+								}
 							}
 
 							WpssoSchemaSingle::add_organization_data( $json_ret[ $prop_name ], $mod, $md_val, $org_logo_key, $list_element = true );
