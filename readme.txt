@@ -317,6 +317,7 @@ The WPSSO Core Standard plugin is designed to satisfy the requirements of most s
 	* BuddyPress
 	* Co-Authors Plus
 	* Easy Digital Downloads
+	* Elementor Website Builder
 	* Gravity Forms + GravityView
 	* NextCellent Gallery - NextGEN Legacy
 	* NextGEN Gallery
@@ -473,12 +474,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.4.0-dev.1 (2021/10/25)**
+**Version 9.4.0-dev.2 (2021/10/25)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added support for the Elementor Website Builder video widget.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -642,9 +643,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.4.0-dev.1 =
+= 9.4.0-dev.2 =
 
-(2021/10/25) None.
+(2021/10/25) Added support for the Elementor Website Builder video widget.
 
 = 9.3.0 =
 
