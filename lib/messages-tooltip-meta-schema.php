@@ -103,7 +103,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 				 	break;
 
-				case 'tooltip-meta-schema_pub_org_id':	// Publisher Org.
+				case 'tooltip-meta-schema_pub_org_id':		// Publisher Org.
 
 					$text = __( 'Select a publisher organization for the Schema CreativeWork type and/or its sub-types (Article, BlogPosting, WebPage, etc).', 'wpsso' );
 
@@ -115,7 +115,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 				 	break;
 
-				case 'tooltip-meta-schema_prov_org_id':	// Service Prov. Org.
+				case 'tooltip-meta-schema_prov_org_id':		// Service Prov. Org.
 				case 'tooltip-meta-schema_prov_person_id':	// Service Prov. Person.
 
 					$text = __( 'Select a service provider, service operator or service performer (example: "Netflix").', 'wpsso' );
@@ -653,31 +653,31 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_item_cw_author_type':	// Reviewed C.W. Author Type.
+						case 'tooltip-meta-schema_review_item_cw_author_type':	// Reviewed CreativeWork Author Type.
 
 							$text .= __( 'The creative work author can be a person or an organization.', 'wpsso' );
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_item_cw_author_name':	// Reviewed C.W. Author Name.
+						case 'tooltip-meta-schema_review_item_cw_author_name':	// Reviewed CreativeWork Author Name.
 
 							$text = __( 'Enter the name of the author for this creative work.', 'wpsso' ) . ' ';
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_item_cw_author_url':	// Reviewed C.W. Author URL.
+						case 'tooltip-meta-schema_review_item_cw_author_url':	// Reviewed CreativeWork Author URL.
 
 							$text = __( 'The home page of the author, or another definitive URL that provides information about the author, such as the person or organization\'s Wikipedia or Wikidata page.', 'wpsso' );
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_item_cw_pub':	// Reviewed C.W. Publish Date
+						case 'tooltip-meta-schema_review_item_cw_pub':	// Reviewed CreativeWork Publish Date
 
 							$text = __( 'The date when this creative work was published or became popular / entered public discourse (for example, when it became popular on social networks).', 'wpsso' );
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_item_cw_created':	// Reviewed C.W. Created Date.
+						case 'tooltip-meta-schema_review_item_cw_created':	// Reviewed CreativeWork Created Date.
 
 							$text = __( 'The date when this creative work was created.', 'wpsso' );
 

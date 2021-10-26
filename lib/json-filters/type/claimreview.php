@@ -33,6 +33,15 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeClaimReview' ) ) {
 			) );
 		}
 
+		/**
+		 * Note that ClaimReview inherits the following properties from Review:
+		 *
+		 *	dateCreated
+		 *	datePublished
+		 *	dateModified
+		 *	author
+		 *	contributor
+		 */
 		public function filter_json_data_https_schema_org_claimreview( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -41,6 +50,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeClaimReview' ) ) {
 			}
 
 			$json_ret = array();
+			$md_opts  = array();
 
 			if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
 
@@ -48,9 +58,6 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeClaimReview' ) ) {
 					(array) $mod[ 'obj' ]->get_defaults( $mod[ 'id' ] ),
 					(array) $mod[ 'obj' ]->get_options( $mod[ 'id' ] )	// Returns empty string if no meta found.
 				) );
-
-			} else {
-				$md_opts = array();
 			}
 
 			/**

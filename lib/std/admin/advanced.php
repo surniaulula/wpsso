@@ -19,7 +19,6 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		private $html_tag_shown = array();	// Cache for HTML tags already shown.
 		private $og_types       = null;
 		private $schema_types   = null;
-		private $org_req_msg    = null;
 		private $org_names      = null;
 		private $person_names   = null;
 		private $plm_req_msg    = null;
@@ -66,7 +65,6 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$this->og_types     = $this->p->og->get_og_types_select();
 			$this->schema_types = $this->p->schema->get_schema_types_select( $context = 'settings' );
-			$this->org_req_msg  = $this->p->msgs->maybe_ext_required( 'wpssoorg' );
 			$this->org_names    = $this->p->util->get_form_cache( 'org_names', $add_none = true );
 			$this->person_names = $this->p->util->get_form_cache( 'person_names', $add_none = true );
 			$this->plm_req_msg  = $this->p->msgs->maybe_ext_required( 'wpssoplm' );
@@ -668,7 +666,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					'label'    => _x( 'Default Publisher Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_pub_org_id',
 					'content'  => $form->get_no_select( 'schema_def_pub_org_id', $this->org_names,
-						$css_class = 'long_name', $css_id = '', $is_assoc = true ) . $this->org_req_msg,
+						$css_class = 'long_name', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_pub_person_id' => array(
 					'td_class' => 'blank',
@@ -682,7 +680,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					'label'    => _x( 'Default Service Prov. Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_prov_org_id',
 					'content'  => $form->get_no_select( 'schema_def_prov_org_id', $this->org_names,
-						$css_class = 'long_name', $css_id = '', $is_assoc = true ) . $this->org_req_msg,
+						$css_class = 'long_name', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_prov_person_id' => array(
 					'td_class' => 'blank',
@@ -725,7 +723,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					'label'    => _x( 'Default Organizer Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_event_organizer_org_id',
 					'content'  => $form->get_no_select( 'schema_def_event_organizer_org_id', $this->org_names,
-						$css_class = 'long_name', $css_id = '', $is_assoc = true ) . $this->org_req_msg,
+						$css_class = 'long_name', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_event_organizer_person_id' => array(
 					'td_class' => 'blank',
@@ -739,7 +737,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					'label'    => _x( 'Default Performer Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_event_performer_org_id',
 					'content'  => $form->get_no_select( 'schema_def_event_performer_org_id', $this->org_names,
-						$css_class = 'long_name', $css_id = '', $is_assoc = true ) . $this->org_req_msg,
+						$css_class = 'long_name', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_event_performer_person_id' => array(
 					'td_class' => 'blank',
@@ -768,7 +766,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					'label'    => _x( 'Default Hiring Organization', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_job_hiring_org_id',
 					'content'  => $form->get_no_select( 'schema_def_job_hiring_org_id', $this->org_names,
-						$css_class = 'long_name', $css_id = '', $is_assoc = true ) . $this->org_req_msg,
+						$css_class = 'long_name', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_job_location_id' => array(
 					'td_class' => 'blank',

@@ -103,18 +103,6 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			 * Metabox form rows.
 			 */
 			$form_rows = array(
-				'info_schema_faq' => array(
-					'tr_class'  => $schema_type_row_class[ 'faq' ],
-					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'info-meta-schema-faq' ) . '</td>',
-				),
-				'info_schema_qa' => array(
-					'tr_class'  => $schema_type_row_class[ 'qa' ],
-					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'info-meta-schema-qa' ) . '</td>',
-				),
-				'info_schema_question' => array(
-					'tr_class'  => $schema_type_row_class[ 'question' ],
-					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'info-meta-schema-question' ) . '</td>',
-				),
 				'attach_img_crop' => $mod[ 'is_attachment' ] && wp_attachment_is_image( $mod[ 'id' ] ) ? array(
 					'th_class' => 'medium',
 					'label'    => _x( 'Preferred Cropping', 'option label', 'wpsso' ),

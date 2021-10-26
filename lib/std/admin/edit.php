@@ -140,21 +140,8 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			$def_schema_text      = $this->p->page->get_text( $schema_text_max_len, '', $mod, $read_cache, $no_hashtags, $do_encode, $md_key = 'none' );
 			$def_schema_keywords  = $this->p->page->get_keywords( $mod, $read_cache, $md_key = 'none' );
 
-			/**
-			 * Organization variables.
-			 */
-			$org_req_msg = $this->p->msgs->maybe_ext_required( 'wpssoorg' );
-			$org_disable = empty( $org_req_msg ) ? false : true;
-			$org_names   = $this->p->util->get_form_cache( 'org_names', $add_none = true );
-
-			/**
-			 * Person variables.
-			 */
-			$person_names = $this->p->util->get_form_cache( 'person_names', $add_none = true );
-
-			/**
-			 * Place variables.
-			 */
+			$org_names          = $this->p->util->get_form_cache( 'org_names', $add_none = true );
+			$person_names       = $this->p->util->get_form_cache( 'person_names', $add_none = true );
 			$plm_req_msg        = $this->p->msgs->maybe_ext_required( 'wpssoplm' );
 			$plm_disable        = empty( $plm_req_msg ) ? false : true;
 			$place_names        = $this->p->util->get_form_cache( 'place_names', $add_none = true );
@@ -174,6 +161,18 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'subsection',
 					'header'   => 'h4',
 					'label'    => _x( 'Schema JSON-LD Markup / Google Rich Results', 'metabox title', 'wpsso' )
+				),
+				'info_schema_faq' => array(
+					'tr_class'  => $schema_type_row_class[ 'faq' ],
+					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'info-meta-schema-faq' ) . '</td>',
+				),
+				'info_schema_qa' => array(
+					'tr_class'  => $schema_type_row_class[ 'qa' ],
+					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'info-meta-schema-qa' ) . '</td>',
+				),
+				'info_schema_question' => array(
+					'tr_class'  => $schema_type_row_class[ 'question' ],
+					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'info-meta-schema-question' ) . '</td>',
 				),
 				'pro_feature_msg_schema' => array(
 					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
@@ -298,7 +297,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'label'    => _x( 'Publisher Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_pub_org_id',
 					'content'  => $form->get_no_select( 'schema_pub_org_id', $org_names,
-						$css_class = 'long_name', $css_id = '', $is_assoc = true ) . $org_req_msg,
+						$css_class = 'long_name', $css_id = '', $is_assoc = true ),
 				),
 				'schema_pub_person_id' => array(
 					'tr_class' => $schema_type_row_class[ 'creative_work' ],
@@ -316,7 +315,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'label'    => _x( 'Service Prov. Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_prov_org_id',
 					'content'  => $form->get_no_select( 'schema_prov_org_id', $org_names,
-						$css_class = 'long_name', $css_id = '', $is_assoc = true ) . $org_req_msg,
+						$css_class = 'long_name', $css_id = '', $is_assoc = true ),
 				),
 				'schema_prov_person_id' => array(
 					'tr_class' => $schema_type_row_class[ 'creative_work' ],
@@ -726,7 +725,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'label'    => _x( 'Production Company', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_movie_prodco_org_id',
 					'content'  => $form->get_no_select( 'schema_movie_prodco_org_id', $org_names,
-						$css_class = 'long_name', $css_id = '', $is_assoc = true ) . $org_req_msg,
+						$css_class = 'long_name', $css_id = '', $is_assoc = true ),
 				),
 				'schema_movie_duration_time' => array(
 					'tr_class' => $schema_type_row_class[ 'movie' ],
@@ -854,7 +853,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tr_class' => 'hide_schema_type ' . $schema_review_item_type_row_class[ 'creative_work' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
-					'label'    => _x( 'C.W. Author Type', 'option label', 'wpsso' ),
+					'label'    => _x( 'Author Type', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_review_item_cw_author_type',
 					'content'  => $form->get_no_select( 'schema_review_item_cw_author_type', $this->p->cf[ 'form' ][ 'author_types' ] ),
 				),
@@ -862,7 +861,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tr_class' => 'hide_schema_type ' . $schema_review_item_type_row_class[ 'creative_work' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
-					'label'    => _x( 'C.W. Author Name', 'option label', 'wpsso' ),
+					'label'    => _x( 'Author Name', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_review_item_cw_author_name',
 					'content'  => $form->get_no_input_value( $value = '', $css_class = 'wide' ),
 				),
@@ -870,7 +869,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tr_class' => 'hide_schema_type ' . $schema_review_item_type_row_class[ 'creative_work' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
-					'label'    => _x( 'C.W. Author URL', 'option label', 'wpsso' ),
+					'label'    => _x( 'Author URL', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_review_item_cw_author_url',
 					'content'  => $form->get_no_input_value( $value = '', $css_class = 'wide' ),
 				),
@@ -878,7 +877,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tr_class' => 'hide_schema_type ' . $schema_review_item_type_row_class[ 'creative_work' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
-					'label'    => _x( 'C.W. Published Date', 'option label', 'wpsso' ),
+					'label'    => _x( 'Published Date', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_review_item_cw_pub',
 					'content'  => $form->get_no_date_time_tz( 'schema_review_item_cw_pub' ),
 				),
@@ -886,7 +885,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tr_class' => 'hide_schema_type ' . $schema_review_item_type_row_class[ 'creative_work' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
-					'label'    => _x( 'C.W. Created Date', 'option label', 'wpsso' ),
+					'label'    => _x( 'Created Date', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_review_item_cw_created',
 					'content'  => $form->get_no_date_time_tz( 'schema_review_item_cw_created' ),
 				),
@@ -1011,7 +1010,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'label'    => _x( 'Organizer Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_event_organizer_org_id',
 					'content'  => $form->get_no_select( 'schema_event_organizer_org_id', $org_names,
-						$css_class = 'long_name', $css_id = '', $is_assoc = true ) . $org_req_msg,
+						$css_class = 'long_name', $css_id = '', $is_assoc = true ),
 				),
 				'schema_event_organizer_person_id' => array(
 					'tr_class' => $schema_type_row_class[ 'event' ],
@@ -1029,7 +1028,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'label'    => _x( 'Performer Org.', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_event_performer_org_id',
 					'content'  => $form->get_no_select( 'schema_event_performer_org_id', $org_names,
-						$css_class = 'long_name', $css_id = '', $is_assoc = true ) . $org_req_msg,
+						$css_class = 'long_name', $css_id = '', $is_assoc = true ),
 				),
 				'schema_event_performer_person_id' => array(
 					'tr_class' => $schema_type_row_class[ 'event' ],
@@ -1148,7 +1147,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'label'    => _x( 'Hiring Organization', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_job_hiring_org_id',
 					'content'  => $form->get_no_select( 'schema_job_hiring_org_id', $org_names,
-						$css_class = 'long_name', $css_id = '', $is_assoc = true ) . $org_req_msg,
+						$css_class = 'long_name', $css_id = '', $is_assoc = true ),
 				),
 				'schema_job_location_id' => array(
 					'tr_class' => $schema_type_row_class[ 'job_posting' ],
@@ -1212,7 +1211,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'label'    => _x( 'Select an Organization', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_organization_id',
 					'content'  => $form->get_no_select( 'schema_organization_id', $org_names,
-						$css_class = 'long_name', $css_id = '', $is_assoc = true ) . $org_req_msg,
+						$css_class = 'long_name', $css_id = '', $is_assoc = true ),
 				),
 
 				/**

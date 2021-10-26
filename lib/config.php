@@ -1396,9 +1396,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 					/**
 					 * Advanced Settings > Schema Defaults > Creative Work tab.
+					 *
+					 * Note that 'schema_def_pub_org_id' may be updated, in the WpssoOptions->get_defaults()
+					 * method, based on the 'site_pub_schema_type' value.
 					 */
 					'schema_def_family_friendly' => 'none',	// Default Family Friendly.
-					'schema_def_pub_org_id'      => 'none',	// Default Publisher Org.
+					'schema_def_pub_org_id'      => 'site',	// Default Publisher Org.
 					'schema_def_pub_person_id'   => 'none',	// Default Publisher Person.
 					'schema_def_prov_org_id'     => 'none',	// Default Service Prov. Org.
 					'schema_def_prov_person_id'  => 'none',	// Default Service Prov. Person.

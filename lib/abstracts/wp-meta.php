@@ -608,15 +608,15 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					/**
 					 * Schema Reviewed Subject: Creative Work.
 					 */
-					'schema_review_item_cw_author_type'      => 'none',	// C.W. Author Type.
-					'schema_review_item_cw_author_name'      => '',		// C.W. Author Name.
-					'schema_review_item_cw_author_url'       => '',		// C.W. Author URL.
-					'schema_review_item_cw_pub_date'         => '',		// C.W. Publish Date.
-					'schema_review_item_cw_pub_time'         => 'none',	// C.W. Publish Time.
-					'schema_review_item_cw_pub_timezone'     => $timezone,	// C.W. Publish Timezone.
-					'schema_review_item_cw_created_date'     => '',		// C.W. Created Date.
-					'schema_review_item_cw_created_time'     => 'none',	// C.W. Created Time.
-					'schema_review_item_cw_created_timezone' => $timezone,	// C.W. Created Timezone.
+					'schema_review_item_cw_author_type'      => 'none',	// Author Type.
+					'schema_review_item_cw_author_name'      => '',		// Author Name.
+					'schema_review_item_cw_author_url'       => '',		// Author URL.
+					'schema_review_item_cw_pub_date'         => '',		// Publish Date.
+					'schema_review_item_cw_pub_time'         => 'none',	// Publish Time.
+					'schema_review_item_cw_pub_timezone'     => $timezone,	// Publish Timezone.
+					'schema_review_item_cw_created_date'     => '',		// Created Date.
+					'schema_review_item_cw_created_time'     => 'none',	// Created Time.
+					'schema_review_item_cw_created_timezone' => $timezone,	// Created Timezone.
 
 					/**
 					 * Schema Reviewed Subject: Book.
@@ -2384,8 +2384,8 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 					$args = array(
 						'url'      => $url,
-						'width'    => WPSSO_UNDEF,
-						'height'   => WPSSO_UNDEF,
+						'width'    => null,
+						'height'   => null,
 						'type'     => '',
 						'prev_url' => '',
 						'post_id'  => null,

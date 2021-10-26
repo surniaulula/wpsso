@@ -48,11 +48,6 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeWebsite' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
-			 * Remove some properties from the creativework filter.
-			 */
-			unset( $json_data[ 'dateCreated' ], $json_data[ 'datePublished' ], $json_data[ 'dateModified' ], $json_data[ 'copyrightYear' ] );
-
 			$json_ret = WpssoSchema::get_schema_type_context( 'https://schema.org/WebSite', array(
 				'url' => SucomUtil::get_home_url( $this->p->options, $mod ),
 			) );

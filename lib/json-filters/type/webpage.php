@@ -42,6 +42,25 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeWebpage' ) ) {
 
 			$json_ret = array();
 
+			/**
+			 * Property:
+			 *      dateCreated
+			 *      datePublished
+			 *      dateModified
+			 */
+			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $mt_og, array(
+				'dateCreated'   => 'article:published_time',	// In WordPress, created and published times are the same.
+				'datePublished' => 'article:published_time',
+				'dateModified'  => 'article:modified_time',
+			) );
+
+			/**
+			 * Property:
+			 *      author as https://schema.org/Person
+			 *      contributor as https://schema.org/Person
+			 */
+			WpssoSchema::add_author_coauthor_data( $json_ret, $mod );
+
 			$crumb_data = (array) apply_filters( 'wpsso_json_prop_https_schema_org_breadcrumb', array(), $mod, $mt_og, $page_type_id, $is_main );
 
 			if ( ! empty( $crumb_data ) ) {

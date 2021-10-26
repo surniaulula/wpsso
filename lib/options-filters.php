@@ -150,9 +150,9 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_review_claim_reviewed':
 					case 'schema_review_item_name':					// Reviewed Subject Name.
 					case 'schema_review_item_desc':					// Reviewed Subject Description.
-					case 'schema_review_item_cw_author_name':			// Reviewed C.W. Author Name.
-					case 'schema_review_item_cw_movie_actor_person_name':		// Reviewed Movie Cast Names.
-					case 'schema_review_item_cw_movie_director_person_name':	// Reviewed Movie Director Names.
+					case 'schema_review_item_cw_author_name':			// Reviewed Subject Author Name.
+					case 'schema_review_item_cw_movie_actor_person_name':		// Reviewed Subject Movie Cast Names.
+					case 'schema_review_item_cw_movie_director_person_name':	// Reviewed Subject Movie Director Names.
 					case 'schema_review_item_software_app_cat':
 					case 'schema_review_item_software_app_os':
 					case 'schema_software_app_cat':
@@ -360,7 +360,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'product_width_value':
 				case 'plugin_stamped_store_hash':	// Stamped.io Store Hash.
 				case 'schema_book_isbn':		// Book ISBN.
-				case 'schema_review_item_cw_book_isbn':	// Reviewed Book ISBN.
+				case 'schema_review_item_cw_book_isbn':	// Reviewed Subject Book ISBN.
 
 					return 'blank_num';
 

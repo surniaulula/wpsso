@@ -637,8 +637,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 								/**
 								 * No use checking / retrieving the image size twice.
 								 */
-								if ( $mt_single_image[ 'og:image:width' ] === WPSSO_UNDEF &&
-									$mt_single_image[ 'og:image:height' ] === WPSSO_UNDEF ) {
+								if ( WPSSO_UNDEF === $mt_single_image[ 'og:image:width' ] &&
+									WPSSO_UNDEF === $mt_single_image[ 'og:image:height' ] ) {
 
 									$check_size_limits = false;
 									$img_within_limits = false;
@@ -1431,8 +1431,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 	
 							$args = array(
 								'url'    => $media[ 3 ],
-								'width'  => preg_match( '/ width=[\'"]?([0-9]+)[\'"]?/i', $media[ 0 ], $match ) ? $match[ 1 ] : WPSSO_UNDEF,
-								'height' => preg_match( '/ height=[\'"]?([0-9]+)[\'"]?/i', $media[ 0 ], $match ) ? $match[ 1 ] : WPSSO_UNDEF,
+								'width'  => preg_match( '/ width=[\'"]?([0-9]+)[\'"]?/i', $media[ 0 ], $match ) ? $match[ 1 ] : null,
+								'height' => preg_match( '/ height=[\'"]?([0-9]+)[\'"]?/i', $media[ 0 ], $match ) ? $match[ 1 ] : null,
 							);
 	
 							/**
@@ -1555,8 +1555,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 */
 			$args = array_merge( array(
 				'url'      => '',
-				'width'    => WPSSO_UNDEF,
-				'height'   => WPSSO_UNDEF,
+				'width'    => null,
+				'height'   => null,
 				'type'     => '',
 				'prev_url' => '',
 				'post_id'  => null,
@@ -2456,7 +2456,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			} elseif ( false !== strpos( $img_mixed, '://' ) ) {
 
-				if ( $img_width === WPSSO_UNDEF || $img_height === WPSSO_UNDEF ) {
+				if ( WPSSO_UNDEF === $img_width || WPSSO_UNDEF === $img_height ) {
 
 					list(
 						$img_width,
@@ -2473,7 +2473,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			/**
 			 * Exit silently if the image width and/or height is not valid.
 			 */
-			if ( $img_width === WPSSO_UNDEF || $img_height === WPSSO_UNDEF ) {
+			if ( WPSSO_UNDEF === $img_width || WPSSO_UNDEF === $img_height ) {
 
 				if ( $this->p->debug->enabled ) {
 

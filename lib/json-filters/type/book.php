@@ -40,11 +40,6 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeBook' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
-			 * Remove some properties from the creativework filter.
-			 */
-			unset( $json_data[ 'dateCreated' ], $json_data[ 'datePublished' ], $json_data[ 'dateModified' ] );
-
 			$json_ret = array();
 
 			WpssoSchemaSingle::add_book_data( $json_ret, $mod, $book_id = false, $list_element = false );

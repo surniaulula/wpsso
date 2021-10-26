@@ -33,6 +33,15 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeQAPage' ) ) {
 			) );
 		}
 
+		/**
+		 * Note that QAPage inherits the following properties from WebPage:
+		 *
+		 *	dateCreate
+		 *	datePublished
+		 *	dateModified
+		 *	author
+		 *	contributor
+		 */
 		public function filter_json_data_https_schema_org_qapage( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -59,13 +68,17 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeQAPage' ) ) {
 			) );
 
 			/**
-			 * The 'description' property describes the question. If the question has a group heading then this may be
-			 * an appropriate place to call out what that heading is.
+			 * The 'description' property describes the question.
+			 *
+			 * If the question has a group heading then this may be an appropriate place to call out what that heading is.
 			 */
 			if ( ! empty( $mod[ 'obj' ] ) ) {
 
 				$question[ 'description' ] = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_qa_desc' );
 
+				/**
+				 * If we have an accepted answer, then add the 'description' group heading to the accepted answer.
+				 */
 				if ( ! empty( $question[ 'acceptedAnswer' ] ) ) {
 
 					$question[ 'acceptedAnswer' ][ 'description' ] = $question[ 'description' ];

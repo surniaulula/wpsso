@@ -80,7 +80,7 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 
 					$text .= '<p>';
 
-					$text .= __( 'The Schema Question document title is a summary of the question and the content text is the complete answer for that question.', 'wpsso' ) . ' ';
+					$text .= __( 'The Schema Question document title is a summary of the question, the description is a summary of the answer, and the content text is the complete answer.', 'wpsso' ) . ' ';
 
 					/**
 					 * Avoid showing possible duplicate and confusing information.
