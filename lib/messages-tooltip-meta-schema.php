@@ -134,11 +134,43 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 				 	break;
 
-				case 'tooltip-meta-schema_book_audio_duration_time':	// Audiobook Duration.
+				case ( 0 === strpos( $msg_key, 'tooltip-meta-schema_book_' ) ? true : false ):
 
-					$text = __( 'The total duration of the audio recording.', 'wpsso' );
+					switch ( $msg_key ) {
 
-				 	break;
+						case 'tooltip-meta-schema_book_isbn':		// Book ISBN.
+
+							$text = __( 'The ISBN code (aka International Standard Book Number) of the book.', 'wpsso' );
+
+						 	break;
+
+						case 'tooltip-meta-schema_book_format':		// Book Format.
+
+							$text = __( 'The publication format of the book.', 'wpsso' );
+
+						 	break;
+
+						case 'tooltip-meta-schema_book_edition':	// Book Edition.
+
+							$text = __( 'The edition of the book.', 'wpsso' );
+
+						 	break;
+
+						case 'tooltip-meta-schema_book_pages':		// Number of Pages.
+
+							$text = __( 'The number of pages in the book.', 'wpsso' );
+
+						 	break;
+
+						case 'tooltip-meta-schema_book_audio_duration_time':	// Audiobook Duration.
+
+							$text = __( 'The total duration of the audio book.', 'wpsso' );
+
+						 	break;
+
+					}	// End of 'tooltip-meta-schema_book' switch.
+
+					break;	// End of 'tooltip-meta-schema_book' case.
 
 				case ( 0 === strpos( $msg_key, 'tooltip-meta-schema_event_' ) ? true : false ):
 
@@ -152,7 +184,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						case 'tooltip-meta-schema_event_attendance':	// Event Attendance.
 
-							$text = __( 'Select whether the event occurs online, offline at a physical location, or a mix of both online and offline.', 'wpsso' );
+							$text = __( 'Select if the event occurs online, offline at a physical location, or a mix of both online and offline.', 'wpsso' );
 
 						 	break;
 

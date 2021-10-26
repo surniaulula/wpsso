@@ -150,7 +150,6 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_review_claim_reviewed':
 					case 'schema_review_item_name':					// Reviewed Subject Name.
 					case 'schema_review_item_desc':					// Reviewed Subject Description.
-					case 'schema_review_item_cw_book_isbn':				// Reviewed Book ISBN.
 					case 'schema_review_item_cw_author_name':			// Reviewed C.W. Author Name.
 					case 'schema_review_item_cw_movie_actor_person_name':		// Reviewed Movie Cast Names.
 					case 'schema_review_item_cw_movie_director_person_name':	// Reviewed Movie Director Names.
@@ -171,6 +170,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					/**
 					 * Options that cannot be blank.
 					 */
+					case 'schema_def_book_format':			// Default Format.
 					case 'schema_def_event_location_id':		// Default Physical Venue.
 					case 'schema_def_event_organizer_org_id':	// Default Organizer Org.
 					case 'schema_def_event_organizer_person_id':	// Default Organizer Person.
@@ -309,6 +309,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'reading_mins':
 				case 'robots_max_snippet':		// Snippet Max. Length.
 				case 'robots_max_video_preview':	// Video Max. Previews.
+				case 'schema_book_pages':		// Number of Pages.
 
 					if ( empty( $mod[ 'name' ] ) ) {	// Must be an interger for plugin settings (ie. no module).
 
@@ -344,7 +345,6 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				/**
 				 * Must be numeric (blank and zero are ok).
 				 */
-				case 'book_isbn':
 				case 'product_depth_value':
 				case 'product_fluid_volume_value':
 				case 'product_gtin14':
@@ -353,12 +353,14 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'product_gtin8':
 				case 'product_gtin':
 				case 'product_height_value':
-				case 'product_isbn':
+				case 'product_isbn':			// Product ISBN.
 				case 'product_length_value':
 				case 'product_price':
 				case 'product_weight_value':
 				case 'product_width_value':
 				case 'plugin_stamped_store_hash':	// Stamped.io Store Hash.
+				case 'schema_book_isbn':		// Book ISBN.
+				case 'schema_review_item_cw_book_isbn':	// Reviewed Book ISBN.
 
 					return 'blank_num';
 
@@ -420,6 +422,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'plugin_yourls_token':
 				case ( 0 === strpos( $base_key, 'plugin_cf_' ) ? true : false ):		// Value is the name of a meta key.
 				case ( 0 === strpos( $base_key, 'plugin_attr_product_' ) ? true : false ):	// Value is the name of a product attribute.
+				case 'schema_book_edition':		// Book Edition.
 
 					return 'one_line';
 

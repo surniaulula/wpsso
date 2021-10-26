@@ -147,6 +147,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'p_img_id_lib' => 'pin_img_id_lib',
 					'p_img_url'    => 'pin_img_url',
 				),
+				829 => array(
+					'book_isbn' => 'schema_book_isbn',
+				),
 			),
 		);
 
@@ -310,23 +313,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					$timezone = 'UTC';
 				}
 
-				/**
-				 * Default copyright year.
-				 *
-				 * Note that WordPress may return -0001 for the year of a draft post.
-				 */
-				$def_copyright_year  = '';
-
-				if ( $mod[ 'is_post' ] ) {
-
-					$def_copyright_year = trim( get_post_time( 'Y', $gmt = true, $mod[ 'id' ] ) );
-
-					if ( '-0001' === $def_copyright_year ) {
-
-						$def_copyright_year = '';
-					}
-				}
-
 				$md_defs = array(
 					'options_filtered'  => 0,
 					'options_version'   => '',
@@ -359,11 +345,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					 */
 					'article_section' => isset( $opts[ 'og_def_article_section' ] ) ? $opts[ 'og_def_article_section' ] : 'none',
 					'reading_mins'    => $def_reading_mins,
-
-					/**
-					 * Open Graph book type.
-					 */
-					'book_isbn' => '',
 
 					/**
 					 * Open Graph and Schema product type.
@@ -457,12 +438,20 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'schema_keywords'        => '',						// Keywords.
 					'schema_lang'            => $def_lang,					// Language.
 					'schema_family_friendly' => $opts[ 'schema_def_family_friendly' ],	// Family Friendly.
-					'schema_copyright_year'  => $def_copyright_year,			// Copyright Year.
+					'schema_copyright_year'  => '',						// Copyright Year.
 					'schema_license_url'     => '',						// License URL.
 					'schema_prov_org_id'     => $opts[ 'schema_def_prov_org_id' ],		// Service Prov. Org.
 					'schema_prov_person_id'  => $opts[ 'schema_def_prov_person_id' ],	// Service Prov. Person.
 					'schema_pub_org_id'      => $opts[ 'schema_def_pub_org_id' ],		// Publisher Org.
 					'schema_pub_person_id'   => $opts[ 'schema_def_pub_person_id' ],	// Publisher Person.
+
+					/**
+					 * Schema Book.
+					 */
+					'schema_book_isbn'    => '',					// Book ISBN.
+					'schema_book_format'  => $opts[ 'schema_def_book_format' ],	// Book Format.
+					'schema_book_edition' => '',					// Book Edition.
+					'schema_book_pages'   => '',					// Number of Pages.
 
 					/**
 					 * Schema Audiobook.
@@ -476,7 +465,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					 * Schema Event.
 					 */
 					'schema_event_lang'                  => $def_lang,						// Event Language.
-					'schema_event_attendance'            => 'https://schema.org/OfflineEventAttendanceMode',	// Event Attendance.
+					'schema_event_attendance'            => $opts[ 'schema_def_event_attendance' ],			// Event Attendance.
 					'schema_event_online_url'            => '',							// Event Online URL.
 					'schema_event_location_id'           => $opts[ 'schema_def_event_location_id' ],		// Event Physical Venue.
 					'schema_event_organizer_org_id'      => $opts[ 'schema_def_event_organizer_org_id' ],		// Organizer Org.

@@ -142,6 +142,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			$metabox_id = 'def_schema';
 
 			$tabs = apply_filters( 'wpsso_advanced_' . $metabox_id . '_tabs', array(
+				'book'          => _x( 'Book', 'metabox tab', 'wpsso' ),
 				'creative_work' => _x( 'Creative Work', 'metabox tab', 'wpsso' ),
 				'event'         => _x( 'Event', 'metabox tab', 'wpsso' ),
 				'job_posting'   => _x( 'Job Posting', 'metabox tab', 'wpsso' ),

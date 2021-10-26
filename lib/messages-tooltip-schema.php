@@ -158,34 +158,52 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 					break;
 
 				/**
-				 * SSO > Advanced Settings > Schema Defaults metabox.
+				 * SSO > Advanced Settings > Schema Defaults > Book tab.
 				 */
-				case 'tooltip-schema_def_family_friendly':		// Default Family Friendly.
+				case 'tooltip-schema_def_book_format':		// Default Format.
+
+					$text = __( 'Select a default format type for the Schema Book type.', 'wpsso' );
+
+				 	break;
+
+				/**
+				 * SSO > Advanced Settings > Schema Defaults > Creative Work tab.
+				 */
+				case 'tooltip-schema_def_family_friendly':	// Default Family Friendly.
 
 					$text = __( 'Select a default family friendly value for the Schema CreativeWork type and/or its sub-types (Article, BlogPosting, WebPage, etc).', 'wpsso' );
 
 				 	break;
 
-				case 'tooltip-schema_def_pub_org_id':			// Default Publisher Org.
+				case 'tooltip-schema_def_pub_org_id':		// Default Publisher Org.
 
 					$text = __( 'Select a default publisher organization for the Schema CreativeWork type and/or its sub-types (Article, BlogPosting, WebPage, etc).', 'wpsso' );
 
 				 	break;
 
-				case 'tooltip-schema_def_pub_person_id':		// Default Publisher Person.
+				case 'tooltip-schema_def_pub_person_id':	// Default Publisher Person.
 
 					$text = __( 'Select a default publisher person for the Schema CreativeWork type and/or its sub-types (Article, BlogPosting, WebPage, etc).', 'wpsso' );
 
 				 	break;
 
-				case 'tooltip-schema_def_prov_org_id':			// Default Service Prov. Org.
-				case 'tooltip-schema_def_prov_person_id':		// Default Service Prov. Person.
+				case 'tooltip-schema_def_prov_org_id':		// Default Service Prov. Org.
+				case 'tooltip-schema_def_prov_person_id':	// Default Service Prov. Person.
 
 					$text = __( 'Select a default service provider, service operator or service performer (example: "Netflix").', 'wpsso' );
 
 				 	break;
 
-				case 'tooltip-schema_def_event_location_id':		// Default Physical Venue.
+				/**
+				 * SSO > Advanced Settings > Schema Defaults > Event tab.
+				 */
+				case 'tooltip-schema_def_event_attendance':	// Event Attendance.
+
+					$text = __( 'Select a default attendance for the Schema Event type.', 'wpsso' );
+
+				 	break;
+
+				case 'tooltip-schema_def_event_location_id':	// Default Physical Venue.
 
 					$text = __( 'Select a default venue for the Schema Event type.', 'wpsso' );
 
@@ -215,25 +233,31 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 				 	break;
 
-				case 'tooltip-schema_def_job_hiring_org_id':		// Default Job Hiring Org.
+				/**
+				 * SSO > Advanced Settings > Schema Defaults > Job Posting tab.
+				 */
+				case 'tooltip-schema_def_job_hiring_org_id':	// Default Job Hiring Org.
 
 					$text = __( 'Select a default organization for the Schema JobPosting hiring organization.', 'wpsso' );
 
 				 	break;
 
-				case 'tooltip-schema_def_job_location_id':		// Default Job Location.
+				case 'tooltip-schema_def_job_location_id':	// Default Job Location.
 
 					$text = __( 'Select a default location for the Schema JobPosting job location.', 'wpsso' );
 
 				 	break;
 
-				case 'tooltip-schema_def_job_location_type':		// Default Job Location Type.
+				case 'tooltip-schema_def_job_location_type':	// Default Job Location Type.
 
 					$text = sprintf( __( 'Select a default optional Google approved location type (see <a href="%s">Google\'s Job Posting guidelines</a> for more information).', 'wpsso' ), 'https://developers.google.com/search/docs/data-types/job-postings' );
 
 				 	break;
 
-				case 'tooltip-schema_def_review_item_type':		// Default Subject Webpage Type.
+				/**
+				 * SSO > Advanced Settings > Schema Defaults > Review tab.
+				 */
+				case 'tooltip-schema_def_review_item_type':	// Default Subject Webpage Type.
 
 					$text = __( 'Select a default Schema type for the Schema Review subject URL.', 'wpsso' );
 

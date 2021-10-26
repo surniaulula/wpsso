@@ -139,7 +139,6 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			$def_schema_desc      = $this->p->page->get_description( $schema_desc_max_len, $dots, $mod, $read_cache, $no_hashtags, $do_encode, $schema_desc_keys );
 			$def_schema_text      = $this->p->page->get_text( $schema_text_max_len, '', $mod, $read_cache, $no_hashtags, $do_encode, $md_key = 'none' );
 			$def_schema_keywords  = $this->p->page->get_keywords( $mod, $read_cache, $md_key = 'none' );
-			$def_copyright_year   = $mod[ 'is_post' ] ? trim( get_post_time( 'Y', $gmt = true, $mod[ 'id' ] ) ) : '';
 
 			/**
 			 * Organization variables.
@@ -282,7 +281,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Copyright Year', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_copyright_year',
-					'content'  => $form->get_no_input_value( $def_copyright_year, $css_class = 'year' ),
+					'content'  => $form->get_no_input_value( '', $css_class = 'year' ),
 				),
 				'schema_license_url' => array(
 					'tr_class' => $schema_type_row_class[ 'creative_work' ],
@@ -330,6 +329,49 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				),
 
 				/**
+				 * Schema Creative Work / Book.
+				 */
+				'subsection_book' => array(
+					'tr_class' => $schema_type_row_class[ 'book' ],
+					'td_class' => 'subsection',
+					'header'   => 'h5',
+					'label'    => _x( 'Book Information', 'metabox title', 'wpsso' )
+				),
+				'schema_book_isbn' => array(		// Open Graph meta tag book:isbn.
+					'tr_class' => $schema_type_row_class[ 'book' ],
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Book ISBN', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_book_isbn',
+					'content'  => $form->get_no_input( 'schema_book_isbn', $css_class = '', $css_id = '', $holder = true ),
+				),
+				'schema_book_format' => array(
+					'tr_class' => $schema_type_row_class[ 'book' ],
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Book Format', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_book_format',
+					'content'  => $form->get_no_select( 'schema_book_format', $this->p->cf[ 'form' ][ 'book_format' ],
+						$css_class = '', $css_id = '', $is_assoc = true ),
+				),
+				'schema_book_edition' => array(
+					'tr_class' => $schema_type_row_class[ 'book' ],
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Book Edition', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_book_edition',
+					'content'  => $form->get_no_input_value( '' ),
+				),
+				'schema_book_pages' => array(
+					'tr_class' => $schema_type_row_class[ 'book' ],
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Number of Pages', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_book_pages',
+					'content'  => $form->get_no_input_value( '', $css_class = 'short' ),
+				),
+
+				/**
 				 * Schema Creative Work / Book / Audiobook.
 				 */
 				'subsection_schema_book_audio' => array(
@@ -362,7 +404,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'How-To Makes', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_howto_yield',
-					'content'  => $form->get_no_input_value( $value = '', 'long_name' ),
+					'content'  => $form->get_no_input_value( $value = '', $css_class = 'long_name' ),
 				),
 				'schema_howto_prep_time' => array(
 					'tr_class' => $schema_type_row_class[ 'how_to' ],
@@ -386,7 +428,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'How-To Supplies', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_howto_supplies',
-					'content'  => $form->get_no_input_value( $value = '', 'long_name', $css_id = '', '', $repeat = 5 ),
+					'content'  => $form->get_no_input_value( $value = '', $css_class = 'long_name', $css_id = '', '', $repeat = 5 ),
 				),
 				'schema_howto_tools' => array(
 					'tr_class' => $schema_type_row_class[ 'how_to' ],
@@ -394,7 +436,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'How-To Tools', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_howto_tools',
-					'content'  => $form->get_no_input_value( $value = '', 'long_name', $css_id = '', '', $repeat = 5 ),
+					'content'  => $form->get_no_input_value( $value = '', $css_class = 'long_name', $css_id = '', '', $repeat = 5 ),
 				),
 				'schema_howto_steps' => array(
 					'tr_class' => $schema_type_row_class[ 'how_to' ],
@@ -444,7 +486,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Recipe Cuisine', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_cuisine',
-					'content'  => $form->get_no_input_value( $value = '', 'long_name' ),
+					'content'  => $form->get_no_input_value( $value = '', $css_class = 'long_name' ),
 				),
 				'schema_recipe_course' => array(
 					'tr_class' => $schema_type_row_class[ 'recipe' ],
@@ -452,7 +494,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Recipe Course', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_course',
-					'content'  => $form->get_no_input_value( $value = '', 'long_name' ),
+					'content'  => $form->get_no_input_value( $value = '', $css_class = 'long_name' ),
 				),
 				'schema_recipe_yield' => array(
 					'tr_class' => $schema_type_row_class[ 'recipe' ],
@@ -460,7 +502,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Recipe Makes', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_yield',
-					'content'  => $form->get_no_input_value( $value = '', 'long_name' ),
+					'content'  => $form->get_no_input_value( $value = '', $css_class = 'long_name' ),
 				),
 				'schema_recipe_cook_method' => array(
 					'tr_class' => $schema_type_row_class[ 'recipe' ],
@@ -468,7 +510,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Cooking Method', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_cook_method',
-					'content'  => $form->get_no_input_value( $value = '', 'long_name' ),
+					'content'  => $form->get_no_input_value( $value = '', $css_class = 'long_name' ),
 				),
 				'schema_recipe_prep_time' => array(
 					'tr_class' => $schema_type_row_class[ 'recipe' ],
@@ -500,7 +542,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Recipe Ingredients', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_ingredients',
-					'content'  => $form->get_no_input_value( $value = '', 'long_name', $css_id = '', '', $repeat = 5 ),
+					'content'  => $form->get_no_input_value( $value = '', $css_class = 'long_name', $css_id = '', '', $repeat = 5 ),
 				),
 				'schema_recipe_instructions' => array(
 					'tr_class' => $schema_type_row_class[ 'recipe' ],
@@ -550,7 +592,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Serving Size', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_nutri_serv',
-					'content'  => $form->get_no_input_value( $value = '', 'long_name is_required' ),
+					'content'  => $form->get_no_input_value( $value = '', $css_class = 'long_name is_required' ),
 				),
 				'schema_recipe_nutri_cal' => array(
 					'tr_class' => $schema_type_row_class[ 'recipe' ],

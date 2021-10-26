@@ -40,7 +40,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeQuestion' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$question = array();
+			$json_ret = array();
 
 			/**
 			 * Answer:
@@ -64,9 +64,9 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeQuestion' ) ) {
 
 			$accepted_answer[ 'upvoteCount' ] = 0;
 
-			$question[ 'acceptedAnswer' ] = $accepted_answer;
+			$json_ret[ 'acceptedAnswer' ] = $accepted_answer;
 
-			$question[ 'answerCount' ] = 1;
+			$json_ret[ 'answerCount' ] = 1;
 
 			/**
 			 * Question:
@@ -75,18 +75,18 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeQuestion' ) ) {
 			 */
 			if ( isset( $json_data[ 'name' ] ) ) {	// Just in case.
 
-				$question[ 'text' ] = $json_data[ 'name' ];
+				$json_ret[ 'text' ] = $json_data[ 'name' ];
 			}
 
 			/**
 			 * 'description' = This property describes the question. If the question has a group heading then this may
 			 * 	be an appropriate place to call out what that heading is.
 			 */
-			unset( $question[ 'description' ], $json_data[ 'description' ] );
+			unset( $json_ret[ 'description' ], $json_data[ 'description' ] );
 
-			unset( $question[ 'acceptedAnswer' ][ 'description' ] );
+			unset( $json_ret[ 'acceptedAnswer' ][ 'description' ] );
 
-			return WpssoSchema::return_data_from_filter( $json_data, $question, $is_main );
+			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );
 		}
 	}
 }

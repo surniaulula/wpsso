@@ -235,23 +235,6 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					'content'  => $form->get_input( 'reading_mins', $css_class = 'xshort', $css_id = '', 0, $def_reading_mins ) . ' ' .
 						__( 'minute(s)', 'wpsso' ),
 				),
-
-				/**
-				 * Open Graph Book type.
-				 */
-				'subsection_og_book' => array(
-					'tr_class' => 'hide_og_type hide_og_type_book',
-					'td_class' => 'subsection',
-					'header'   => 'h5',
-					'label'    => _x( 'Book Information', 'metabox title', 'wpsso' )
-				),
-				'og_book_isbn' => array(		// Open Graph meta tag book:isbn.
-					'tr_class' => 'hide_og_type hide_og_type_book',
-					'th_class' => 'medium',
-					'label'    => _x( 'Book ISBN', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-book_isbn',
-					'content'  => $form->get_input( 'book_isbn', $css_class = '', $css_id = '', array( 'min' => 10, 'max' => 13 ) ),
-				),
 			);
 
 			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );

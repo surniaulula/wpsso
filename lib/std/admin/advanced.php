@@ -38,6 +38,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'services_ratings_reviews_rows' => 2,	// Service APIs > Ratings and Reviews tab.
 				'doc_types_og_types_rows'       => 2,	// Document Types > Schema tab.
 				'doc_types_schema_types_rows'   => 2,	// Document Types > Open Graph tab.
+				'def_schema_book_rows'          => 2,	// Schema Defaults > Book tab.
 				'def_schema_creative_work_rows' => 2,	// Schema Defaults > Creative Work tab.
 				'def_schema_event_rows'         => 2,	// Schema Defaults > Event tab.
 				'def_schema_job_posting_rows'   => 2,	// Schema Defaults > Job Posting tab.
@@ -625,6 +626,28 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
+		public function filter_def_schema_book_rows( $table_rows, $form ) {
+
+			$this->maybe_set_vars();
+
+			$form_rows = array(
+				'wpssojson_pro_feature_msg' => array(
+					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
+				),
+				'schema_def_book_format' => array(
+					'td_class' => 'blank',
+					'label'    => _x( 'Default Format', 'option label', 'wpsso' ),
+					'tooltip'  => 'schema_def_book_format',
+					'content'  => $form->get_no_select( 'schema_def_book_format', $this->p->cf[ 'form' ][ 'book_format' ],
+						$css_class = '', $css_id = '', $is_assoc = true ),
+				),
+			);
+
+			$table_rows = $form->get_md_form_rows( $table_rows, $form_rows );
+
+			return $table_rows;
+		}
+
 		public function filter_def_schema_creative_work_rows( $table_rows, $form ) {
 
 			$this->maybe_set_vars();
@@ -675,7 +698,6 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
-
 		public function filter_def_schema_event_rows( $table_rows, $form ) {
 
 			$this->maybe_set_vars();
@@ -683,6 +705,13 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$form_rows = array(
 				'wpssojson_pro_feature_msg' => array(
 					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
+				),
+				'schema_def_event_attendance' => array(
+					'td_class' => 'blank',
+					'label'    => _x( 'Default Attendance', 'option label', 'wpsso' ),
+					'tooltip'  => 'schema_def_event_attendance',
+					'content'  => $form->get_no_select( 'schema_def_event_attendance', $this->p->cf[ 'form' ][ 'event_attendance' ],
+						$css_class = '', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_event_location_id' => array(
 					'td_class' => 'blank',

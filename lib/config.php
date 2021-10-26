@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.4.0-b.1',	// Plugin version.
+					'version'     => '9.4.0-b.2',	// Plugin version.
 					'opt_version' => '829',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1390,22 +1390,40 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_website'                => 'website',
 
 					/**
-					 * Advanced Settings > Schema Defaults metabox.
+					 * Advanced Settings > Schema Defaults > Book tab.
 					 */
-					'schema_def_family_friendly'           => 'none',		// Default Family Friendly.
-					'schema_def_pub_org_id'                => 'none',		// Default Publisher Org.
-					'schema_def_pub_person_id'             => 'none',		// Default Publisher Person.
-					'schema_def_prov_org_id'               => 'none',		// Default Service Prov. Org.
-					'schema_def_prov_person_id'            => 'none',		// Default Service Prov. Person.
-					'schema_def_event_location_id'         => 'none',		// Default Physical Venue.
-					'schema_def_event_organizer_org_id'    => 'none',		// Default Organizer Org.
-					'schema_def_event_organizer_person_id' => 'none',		// Default Organizer Person.
-					'schema_def_event_performer_org_id'    => 'none',		// Default Performer Org.
-					'schema_def_event_performer_person_id' => 'none',		// Default Performer Person.
-					'schema_def_job_hiring_org_id'         => 'none',		// Default Hiring Org.
-					'schema_def_job_location_id'           => 'none',		// Default Job Location.
-					'schema_def_job_location_type'         => 'none',		// Default Job Location Type.
-					'schema_def_review_item_type'          => 'creative.work',	// Default Subject Webpage Type.
+					'schema_def_book_format' => 'none',	// Default Format.
+
+					/**
+					 * Advanced Settings > Schema Defaults > Creative Work tab.
+					 */
+					'schema_def_family_friendly' => 'none',	// Default Family Friendly.
+					'schema_def_pub_org_id'      => 'none',	// Default Publisher Org.
+					'schema_def_pub_person_id'   => 'none',	// Default Publisher Person.
+					'schema_def_prov_org_id'     => 'none',	// Default Service Prov. Org.
+					'schema_def_prov_person_id'  => 'none',	// Default Service Prov. Person.
+
+					/**
+					 * Advanced Settings > Schema Defaults > Event tab.
+					 */
+					'schema_def_event_attendance'          => 'https://schema.org/OfflineEventAttendanceMode',	// Default Attendance.
+					'schema_def_event_location_id'         => 'none',						// Default Physical Venue.
+					'schema_def_event_organizer_org_id'    => 'none',						// Default Organizer Org.
+					'schema_def_event_organizer_person_id' => 'none',						// Default Organizer Person.
+					'schema_def_event_performer_org_id'    => 'none',						// Default Performer Org.
+					'schema_def_event_performer_person_id' => 'none',						// Default Performer Person.
+
+					/**
+					 * Advanced Settings > Schema Defaults > Job Posting tab.
+					 */
+					'schema_def_job_hiring_org_id' => 'none',	// Default Hiring Org.
+					'schema_def_job_location_id'   => 'none',	// Default Job Location.
+					'schema_def_job_location_type' => 'none',	// Default Job Location Type.
+
+					/**
+					 * Advanced Settings > Schema Defaults > Review tab.
+					 */
+					'schema_def_review_item_type' => 'creative.work',	// Default Subject Webpage Type.
 
 					/**
 					 * SEO options.
@@ -1953,7 +1971,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 */
 				'cf_md_index' => array(
 					'plugin_cf_addl_type_urls'             => 'schema_addl_type_url',	// Microdata Type URLs Custom Field.
-					'plugin_cf_book_isbn'                  => 'book_isbn',
+					'plugin_cf_book_isbn'                  => 'schema_book_isbn',
 					'plugin_cf_howto_steps'                => 'schema_howto_step',		// How-To Steps Custom Field.
 					'plugin_cf_howto_supplies'             => 'schema_howto_supply',	// How-To Supplies Custom Field.
 					'plugin_cf_howto_tools'                => 'schema_howto_tool',		// How-To Tools Custom Field.
@@ -2684,7 +2702,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'https://schema.org/EBook'           => 'eBook',
 					'https://schema.org/GraphicNovel'    => 'Graphic Novel',
 					'https://schema.org/Hardcover'       => 'Hardcover',
-					'https://schema.org/Paperback '      => 'Paperback',
+					'https://schema.org/Paperback'       => 'Paperback',
 				),
 
 				/**
@@ -2713,7 +2731,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'none'                                          => '[None]',
 					'https://schema.org/MixedEventAttendanceMode'   => 'Mixed',
 					'https://schema.org/OnlineEventAttendanceMode'  => 'Online',
-					'https://schema.org/OfflineEventAttendanceMode' => 'Physical Location',	// Default.
+					'https://schema.org/OfflineEventAttendanceMode' => 'Physical Location',
 				),
 
 				/**
@@ -2879,7 +2897,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'book' => array(
 						'book:author'       => '',
-						'book:isbn'         => 'book_isbn',
+						'book:isbn'         => 'schema_book_isbn',
 						'book:release_date' => '',
 						'book:tag'          => '',
 					),

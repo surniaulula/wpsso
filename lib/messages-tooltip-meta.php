@@ -121,14 +121,6 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 
 				 	break;
 
-				case 'tooltip-meta-book_isbn':		// Book ISBN.
-
-					$cf_frags = $this->get_cf_tooltip_fragments( preg_replace( '/^tooltip-meta-/', '', $msg_key ) );
-
-					$text = sprintf( __( 'The value of %s can be used in meta tags and Schema markup.', 'wpsso' ), $cf_frags[ 'desc' ] );
-
-				 	break;
-
 				case 'tooltip-meta-product_category':	// Product Type.
 
 					$option_link = $this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_site',

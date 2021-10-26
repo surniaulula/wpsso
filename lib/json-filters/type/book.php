@@ -40,13 +40,14 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeBook' ) ) {
 				$this->p->debug->mark();
 			}
 
+			/**
+			 * Remove some properties from the creativework filter.
+			 */
+			unset( $json_data[ 'dateCreated' ], $json_data[ 'datePublished' ], $json_data[ 'dateModified' ] );
+
 			$json_ret = array();
 
-			$og_type = $mt_og[ 'og:type' ];
-
-			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $mt_og, array(
-				'isbn' => $og_type . ':isbn',
-			) );
+			WpssoSchemaSingle::add_book_data( $json_ret, $mod, $book_id = false, $list_element = false );
 
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );
 		}

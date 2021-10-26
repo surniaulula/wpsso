@@ -163,9 +163,6 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( ! isset( $mt_og[ 'book:author' ] ) ) {
-			}
-
 			return $mt_og;
 		}
 
