@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 9.4.0-dev.5\n"
+"Project-Id-Version: WPSSO Core 9.4.0-dev.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -9674,7 +9674,7 @@ msgid ""
 "post ID %3$d (%4$s)."
 msgstr ""
 
-#: lib/post.php:726 lib/post.php:1323 lib/schema.php:3139 lib/term.php:574
+#: lib/post.php:726 lib/post.php:1323 lib/schema.php:2984 lib/term.php:574
 #: lib/user.php:571
 msgid "checking meta tags"
 msgstr ""
@@ -9929,49 +9929,49 @@ msgctxt "Taxonomy description"
 msgid "Tags for the page post type."
 msgstr ""
 
-#: lib/schema-single.php:1551
+#: lib/schema-single.php:1549
 msgid "adding schema organization"
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1615
+#: lib/schema-single.php:1613
 msgid ""
 "An organization logo image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1618
+#: lib/schema-single.php:1616
 msgid ""
 "An organization banner image (600x60px) is missing and required for the "
 "\"%1$s\" organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s is 'site' (translated) or 'ID #'.
-#: lib/schema-single.php:1621
+#: lib/schema-single.php:1619
 msgid ""
 "Please enter the missing image URL in the \"%1$s\" %2$s organization "
 "settings."
 msgstr ""
 
 #. translators: site, as in the "site organization settings".
-#: lib/schema-single.php:1643
+#: lib/schema-single.php:1641
 msgid "site"
 msgstr ""
 
-#: lib/schema-single.php:1851
+#: lib/schema-single.php:1828
 msgid "adding schema person"
 msgstr ""
 
-#: lib/schema-single.php:2054
+#: lib/schema-single.php:2031
 msgid "adding schema place"
 msgstr ""
 
-#: lib/schema.php:631
+#: lib/schema.php:476
 msgid "adding schema"
 msgstr ""
 
-#: lib/schema.php:1613
+#: lib/schema.php:1458
 msgid "adding schema %s #%d image"
 msgstr ""
 

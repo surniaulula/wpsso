@@ -104,161 +104,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $md_opts;
 		}
 
-		/**
-		 * https://schema.org/Organization social markup for Google
-		 */
-		public function filter_json_data_https_schema_org_organization( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			$org_id = 'none';
-
-			if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'checking for schema_organization_id metadata option value' );
-				}
-
-				/**
-				 * Maybe get a different organization ID from the "Select an Organization" option.
-				 */
-				$org_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_organization_id', $filter_opts = true, $pad_opts = true );
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'schema_organization_id = ' . $org_id );
-				}
-			}
-
-			if ( null === $org_id || 'none' === $org_id ) {	// Allow for $org_id = 0.
-
-				if ( ! empty( $mod[ 'is_home' ] ) ) {	// Home page (static or blog archive).
-
-					$org_id = 'site';
-
-				} else {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'exiting early: organization id is null or "none"' );
-					}
-
-					return $json_data;
-				}
-			}
-
-			/**
-			 * Possibly inherit the schema type.
-			 */
-			if ( $this->p->debug->enabled ) {
-
-				if ( ! empty( $json_data ) ) {
-
-					$this->p->debug->log( 'possibly inherit the schema type' );
-
-					$this->p->debug->log_arr( '$json_data', $json_data );
-				}
-			}
-
-			$json_ret = self::get_data_context( $json_data );	// Returns array() if no schema type found.
-
-		 	/**
-			 * $org_id can be 'none', 'site', or a number (including 0).
-			 *
-		 	 * $org_logo_key can be empty, 'org_logo_url', or 'org_banner_url' (600x60px image) for Articles.
-			 *
-			 * Do not provide localized option names - the method will fetch the localized values.
-			 */
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'adding data for organization id = ' . $org_id );
-			}
-
-			WpssoSchemaSingle::add_organization_data( $json_ret, $mod, $org_id, $org_logo_key = 'org_logo_url', $list_element = false );
-
-			return self::return_data_from_filter( $json_data, $json_ret, $is_main );
-		}
-
-		/**
-		 * https://schema.org/Person social markup for Google
-		 */
-		public function filter_json_data_https_schema_org_person( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			$user_id = 'none';
-
-			if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
-
-				$user_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_person_id', $filter_opts = true, $pad_opts = true );
-			}
-
-			if ( empty( $user_id ) || 'none' === $user_id ) {
-
-				if ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).
-
-					$user_id = $this->p->options[ 'site_pub_person_id' ];	// 'none' by default.
-
-				} elseif ( $mod[ 'is_user' ] ) {
-
-					$user_id = $mod[ 'id' ];	// Could be false.
-
-				} else {
-
-					$user_id = 'none';
-				}
-
-				if ( empty( $user_id ) || 'none' === $user_id ) {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'exiting early: user ID is empty or "none"' );
-					}
-
-					return $json_data;
-				}
-			}
-
-			/**
-			 * Possibly inherit the schema type.
-			 */
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'possibly inherit the schema type' );
-
-				$this->p->debug->log_arr( '$json_data', $json_data );
-			}
-
-			$json_ret = self::get_data_context( $json_data );	// Returns array() if no schema type found.
-
-		 	/**
-			 * $user_id can be 'none' or a number (including 0).
-			 */
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'adding data for person id = ' . $user_id );
-			}
-
-			WpssoSchemaSingle::add_person_data( $json_ret, $mod, $user_id, $list_element = false );
-
-			/**
-			 * Override author's website url and use the og url instead.
-			 */
-			if ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).
-
-				$json_ret[ 'url' ] = SucomUtil::get_home_url( $this->p->options, $mod );
-			}
-
-			return self::return_data_from_filter( $json_data, $json_ret, $is_main );
-		}
-
 		public function has_json_data_filter( array $mod, $type_url = '' ) {
 
 			$filter_name = $this->get_json_data_filter( $mod, $type_url );
@@ -3409,6 +3254,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		/**
 		 * Returns false on error.
+		 *
+		 * $type_id can be a string, or an array.
 		 */
 		public static function update_data_id( &$json_data, $type_id, $type_url = false, $hash_url = false ) {
 
@@ -3424,6 +3271,22 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				) );
 			}
 
+			static $id_anchor = null;
+			static $id_delim  = null;
+
+			if ( null === $id_anchor || null === $id_delim ) {	// Optimize and call just once.
+
+				$id_anchor = self::get_id_anchor();
+				$id_delim  = self::get_id_delim();
+			}
+
+			if ( is_array( $type_id ) ) {
+
+				$type_id = implode( $id_delim, $type_id );
+			}
+
+			$type_id = rtrim( $type_id, $id_delim );	// Just in case.
+
 			if ( empty( $type_id ) ) {
 
 				if ( $wpsso->debug->enabled ) {
@@ -3432,15 +3295,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 				return false;
-			}
-
-			static $id_anchor = null;
-			static $id_delim  = null;
-
-			if ( null === $id_anchor || null === $id_delim ) {	// Optimize and call just once.
-
-				$id_anchor = self::get_id_anchor();
-				$id_delim  = self::get_id_delim();
 			}
 
 			if ( $wpsso->debug->enabled ) {
@@ -3496,7 +3350,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				/**
 				 * Maybe remove an anchor ID from the begining of the type ID string.
 				 */
-				$type_id = preg_replace( '/^' . preg_quote( $id_anchor, '/' ) . '/', '', $type_id );
+				if ( 0 === strpos( $type_id, $id_anchor ) ) {
+
+					$type_id = substr( $type_id, strlen( $id_anchor ) - 1 );
+				}
+
+				/**
+				 * Standardize the $type_id string.
+				 */
+				$type_id = preg_replace( '/[-_\. ]+/', '-', $type_id );
 
 				/**
 				 * Check if we already have an anchor ID in the URL.

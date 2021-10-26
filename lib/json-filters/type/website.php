@@ -28,9 +28,6 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeWebsite' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
-			 * Use the WpssoSchema method / filter.
-			 */
 			$this->p->util->add_plugin_filters( $this, array(
 				'json_data_https_schema_org_website' => 5,
 			) );
@@ -44,9 +41,6 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeWebsite' ) ) {
 			}
 		}
 
-		/**
-		 * https://schema.org/WebSite for Google
-		 */
 		public function filter_json_data_https_schema_org_website( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
 
 			if ( $this->p->debug->enabled ) {

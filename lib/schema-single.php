@@ -253,8 +253,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
-			list( $video_type_id, $video_type_url ) = self::get_type_id_url_list( $json_data, $type_opts = false,
-				$opt_key = false, $def_type_id = 'video.object', $list_element );
+			list( $video_type_id, $video_type_url ) = self::get_type_id_url_list( $json_data,
+				$type_opts = false, $opt_key = false, $def_type_id = 'video.object', $list_element );
 
 			$json_ret = WpssoSchema::get_schema_type_context( $video_type_url, array( 'url' => SucomUtil::esc_url_encode( $media_url ) ) );
 
@@ -692,7 +692,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * Update the @id string based on $json_ret[ 'url' ], $event_type_id, and $event_id values.
 			 */
-			WpssoSchema::update_data_id( $json_ret, $event_type_id . '/' . $event_id );
+			WpssoSchema::update_data_id( $json_ret, array( $event_type_id, $event_id ) );
 
 			if ( empty( $list_element ) ) {		// Add a single item.
 
@@ -771,8 +771,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
-			list( $job_type_id, $job_type_url ) = self::get_type_id_url_list( $json_data, $job_opts,
-				$opt_key = 'job_type', $def_type_id = 'job.posting', $list_element );
+			list( $job_type_id, $job_type_url ) = self::get_type_id_url_list( $json_data,
+				$job_opts, $opt_key = 'job_type', $def_type_id = 'job.posting', $list_element );
 
 			/**
 			 * Begin Schema job markup creation.
@@ -862,7 +862,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * Update the @id string based on $json_ret[ 'url' ], $job_type_id, and $job_id values.
 			 */
-			WpssoSchema::update_data_id( $json_ret, $job_type_id . '/' . $job_id );
+			WpssoSchema::update_data_id( $json_ret, array( $job_type_id, $job_id ) );
 
 			if ( empty( $list_element ) ) {		// Add a single item.
 
@@ -1057,7 +1057,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * Add the seller organization data.
 			 */
-			self::add_organization_data( $offer[ 'seller' ], $mod, $org_id = 'site', $org_logo_key = '', $org_list_el = false );
+			self::add_organization_data( $offer[ 'seller' ], $mod, $org_id = 'site', $org_logo_key = 'org_logo_url', $org_list_el = false );
 
 			$offer = apply_filters( 'wpsso_json_data_single_offer', $offer, $mod );
 
@@ -1176,13 +1176,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 							if  ( ! empty( $dest_opts[ 'destination_rel' ] ) ) {
 
-								WpssoSchema::update_data_id( $defined_region,
-									$dest_opts[ 'destination_id' ], $dest_opts[ 'destination_rel' ] );
+								WpssoSchema::update_data_id( $defined_region, $dest_opts[ 'destination_id' ], $dest_opts[ 'destination_rel' ] );
 
 							} else {
 
-								WpssoSchema::update_data_id( $defined_region,
-									$dest_opts[ 'destination_id' ], $offer_url );
+								WpssoSchema::update_data_id( $defined_region, $dest_opts[ 'destination_id' ], $offer_url );
 							}
 						}
 
@@ -1475,7 +1473,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		 *
 		 * Do not provide localized option names - the method will fetch the localized values.
 		 */
-		public static function add_organization_data( &$json_data, $mod, $org_id = 'site', $org_logo_key = '', $list_element = false ) {
+		public static function add_organization_data( &$json_data, $mod, $org_id = 'site', $org_logo_key = 'org_logo_url', $list_element = false ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -1536,8 +1534,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
-			list( $org_type_id, $org_type_url ) = self::get_type_id_url_list( $json_data, $org_opts,
-				$opt_key = 'org_schema_type', $def_type_id = 'organization', $list_element );
+			list( $org_type_id, $org_type_url ) = self::get_type_id_url_list( $json_data,
+				$org_opts, $opt_key = 'org_schema_type', $def_type_id = 'organization', $list_element );
 
 			$json_ret = WpssoSchema::get_schema_type_context( $org_type_url );
 
@@ -1706,27 +1704,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					}
 
 					self::add_place_data( $json_ret[ 'location' ], $mod, $place_id, $place_list_el = false );
-
-					/**
-					 * Check to make sure the organization location is not itself an organization.
-					 *
-					 * if ( ! empty( $json_ret[ 'location' ] ) ) {	// Just in case.
-					 *
-					 * $place_type_id = WpssoSchema::get_data_type_id( $json_ret[ 'location' ] );
-					 *
-					 *	if ( ! empty( $place_type_id ) ) {	// Just in case.
-					 *
-					 *		if ( 'place' !== $place_type_id ) {
-					 *
-					 *			if ( $wpsso->schema->is_schema_type_child( $place_type_id, 'organization' ) ) {
-					 *
-					 *				 $json_ret[ 'location' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/Place',
-					 *				 	$json_ret[ 'location' ] );
-					 *			}
-					 *		}
-					 *	}
-					 * }
-					 */
 				}
 			}
 
@@ -1765,9 +1742,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$json_ret = apply_filters( 'wpsso_json_data_single_organization', $json_ret, $mod, $org_id );
 
 			/**
-			 * Update the @id string based on $json_ret[ 'url' ], $org_type_id, and $org_id values.
+			 * Update the @id string based on $json_ret[ 'url' ], $org_type_id, $org_id, and $org_logo_key values.
 			 */
-			WpssoSchema::update_data_id( $json_ret, $org_type_id . '/' . $org_id . '/' . $org_logo_key );
+			WpssoSchema::update_data_id( $json_ret, array( $org_type_id, $org_id, $org_logo_key ) );
 
 			/**
 			 * Restore previous reference values for admin notices.
@@ -2188,7 +2165,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * Update the @id string based on $json_ret[ 'url' ], $place_type_id, and $place_id values.
 			 */
-			WpssoSchema::update_data_id( $json_ret, $place_type_id . '/' . $place_id );
+			WpssoSchema::update_data_id( $json_ret, array( $place_type_id, $place_id ) );
 
 			/**
 			 * Restore previous reference values for admin notices.

@@ -70,7 +70,6 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeCreativeWork' ) ) {
 			if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
 
 				$is_article = $this->p->schema->is_schema_type_child( $page_type_id, 'article' );
-				$is_website = $this->p->schema->is_schema_type_child( $page_type_id, 'website' );
 
 				/**
 				 * The meta data key is unique, but the Schema property name may be repeated to add more than one
@@ -89,13 +88,10 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeCreativeWork' ) ) {
 
 						if ( strpos( $md_key, '_org_id' ) ) {
 
-							$org_logo_key = '';	// No logo image by default.
+							$org_logo_key = 'org_logo_url';
 
 							if ( 'publisher' === $prop_name ) {
 							
-								/**
-								 * Google requires a banner image for publisher logos.
-								 */
 								if ( $is_article ) {
 								
 									$org_logo_key = 'org_banner_url';
