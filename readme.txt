@@ -338,7 +338,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added an integration module for the Elementor Website Builder plugin.
 * **Improvements**
 	* Added support for the Elementor video widget.
-	* Added support for the 'elementor/editor/after_save' action to clear post cache.
+	* Added support for the 'elementor/editor/after_save' action to clear the post cache.
 	* Added 'knowledge-graph' to the home page Schema Organization '@id' value.
 	* Removed Schema CreativeWork properties from the Schema WebSite sub-type markup:
 		* 'dateCreated'
