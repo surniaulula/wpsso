@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 9.4.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-10-25 13:02-0700\n"
+"PO-Revision-Date: 2021-10-26 07:48-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1429,18 +1429,18 @@ msgstr "Toutes les options"
 
 #: gettext/gettext-lib-config.php:204
 msgctxt "option value"
-msgid "New Activation"
-msgstr "Nouvelle activation"
+msgid "First Activation"
+msgstr "Première activation"
 
 #: gettext/gettext-lib-config.php:205
 msgctxt "option value"
-msgid "If Empty"
-msgstr "Si vide"
+msgid "If Option Is Empty"
+msgstr "Si l’option est vide"
 
 #: gettext/gettext-lib-config.php:206
 msgctxt "option value"
-msgid "Always"
-msgstr "Toujours"
+msgid "Always Force Value"
+msgstr "Toujours forcer la valeur"
 
 #: gettext/gettext-lib-config.php:207 gettext/gettext-lib-config.php:210
 #: gettext/gettext-lib-config.php:214 gettext/gettext-lib-config.php:219
@@ -8499,7 +8499,7 @@ msgstr "article"
 msgid "Slow WordPress function detected - %1$s took %2$.3f secs to get children of post ID %3$d (%4$s)."
 msgstr "Fonction WordPress lente détectée - %1$s a pris %2$.3f secs pour obtenir les enfants de l'ID d'article %3$d (%4$s)."
 
-#: lib/post.php:726 lib/post.php:1323 lib/schema.php:3184 lib/term.php:574
+#: lib/post.php:726 lib/post.php:1323 lib/schema.php:2984 lib/term.php:574
 #: lib/user.php:571
 msgid "checking meta tags"
 msgstr "vérification des balises méta"
@@ -8734,43 +8734,43 @@ msgctxt "Taxonomy description"
 msgid "Tags for the page post type."
 msgstr "Étiquettes pour le type de publication de page."
 
-#: lib/schema-single.php:1551
+#: lib/schema-single.php:1549
 msgid "adding schema organization"
 msgstr "ajout de schéma d'organisation"
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1615
+#: lib/schema-single.php:1613
 msgid "An organization logo image is missing and required for the \"%1$s\" organization Schema %2$s markup."
 msgstr "Une image de logo d'organisation est manquante et requise pour le balisage de Schéma %2$s de l'organisation \"%1$s\"."
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1618
+#: lib/schema-single.php:1616
 msgid "An organization banner image (600x60px) is missing and required for the \"%1$s\" organization Schema %2$s markup."
 msgstr "Une image de bannière d'organisation (600x60px) est manquante et requise pour le balisage de Schéma %2$s de l'organisation \"%1$s\"."
 
 #. translators: %1$s is the organization name, %2$s is 'site' (translated) or 'ID #'.
-#: lib/schema-single.php:1621
+#: lib/schema-single.php:1619
 msgid "Please enter the missing image URL in the \"%1$s\" %2$s organization settings."
 msgstr "Veuillez fournir l'URL de l'image manquante dans les paramètres de l'organisation %2$s \"%1$s\"."
 
 #. translators: site, as in the "site organization settings".
-#: lib/schema-single.php:1643
+#: lib/schema-single.php:1641
 msgid "site"
 msgstr "site"
 
-#: lib/schema-single.php:1824
+#: lib/schema-single.php:1828
 msgid "adding schema person"
 msgstr "ajout de schéma de personne"
 
-#: lib/schema-single.php:2027
+#: lib/schema-single.php:2031
 msgid "adding schema place"
 msgstr "ajout de schéma d'endroit"
 
-#: lib/schema.php:685
+#: lib/schema.php:476
 msgid "adding schema"
 msgstr "ajout de schéma"
 
-#: lib/schema.php:1658
+#: lib/schema.php:1458
 msgid "adding schema %s #%d image"
 msgstr "ajout d'image #%d pour Schéma %s"
 
@@ -9892,29 +9892,29 @@ msgstr "%1$s pour cet %2$s"
 msgid "%1$s for %2$s ID %3$d"
 msgstr "%1$s pour %2$s ID %3$d"
 
-#: wpsso.php:524
+#: wpsso.php:523
 msgid "WP debug logging mode is active - debug messages are being sent to the WordPress debug log."
 msgstr "Le mode débogage WP est actif - des messages de débogage sont envoyés dans le fichier de débogage WordPress."
 
-#: wpsso.php:536
+#: wpsso.php:535
 msgid "HTML debug mode is active - debug messages are being added to webpages as hidden HTML comments."
 msgstr "Le mode de débogage HTML est actif - des messages de débogage sont ajoutés aux pages Web en commentaires HTML masqués."
 
 #. translators: %s is the short plugin name.
-#: wpsso.php:543
+#: wpsso.php:542
 msgid "Debug mode can generate thousands of runtime messages during page load, which may degrade website performance."
 msgstr "Le mode de débogage peut générer des milliers de messages d'exécution lors du chargement d'une page, ce qui peut dégrader les performances du site Web."
 
-#: wpsso.php:545
+#: wpsso.php:544
 msgid "Don't forget to disable debug mode when debugging is complete."
 msgstr "N'oubliez pas de désactiver le mode de débogage lorsque le débogage est terminé."
 
-#: wpsso.php:790
+#: wpsso.php:789
 msgctxt "option comment"
 msgid "%s constant is true"
 msgstr "constante %s est vraie"
 
-#: wpsso.php:793
+#: wpsso.php:792
 msgctxt "option comment"
 msgid "%s constant is false"
 msgstr "constante %s est fausse"
