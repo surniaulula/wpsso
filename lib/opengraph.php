@@ -1986,6 +1986,13 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			foreach ( $og_type_mt_md as $mt_name => $md_key ) {
 
+				$og_def_md_key = 'og_def_' . $md_key;
+
+				if ( 'product_currency' === $md_key ) {
+				
+					$og_def_md_key = 'og_def_currency';
+				}
+
 				/**
 				 * Use a custom value if one is available - ignore empty strings and 'none'.
 				 */
@@ -2012,8 +2019,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					 *	'product:weight:value'       => 'product_weight_value',
 					 *	'product:width:value'        => 'product_width_value',
 					 */
-					} elseif ( preg_match( '/^(.*):value$/', $mt_name, $mt_match ) && 
-						preg_match( '/^[^_]+_(.*)_value$/', $md_key, $unit_match ) ) {
+					} elseif ( preg_match( '/^(.*):value$/', $mt_name, $mt_match ) && preg_match( '/^[^_]+_(.*)_value$/', $md_key, $unit_match ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
@@ -2066,17 +2072,16 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						$this->p->debug->log( $mt_name . ' value kept = ' . $mt_og[ $mt_name ] );
 					}
 
-				} elseif ( isset( $this->p->options[ 'og_def_' . $md_key ] ) ) {
+				} elseif ( isset( $this->p->options[ $og_def_md_key ] ) ) {
 
-					if ( $this->p->options[ 'og_def_' . $md_key ] !== 'none' ) {
+					if ( $this->p->options[ $og_def_md_key ] !== 'none' ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( $mt_name . ' from options default = ' .
-								$this->p->options[ 'og_def_' . $md_key ] );
+							$this->p->debug->log( $mt_name . ' from options = ' . $this->p->options[ $og_def_md_key ] );
 						}
 
-						$mt_og[ $mt_name ] = $this->p->options[ 'og_def_' . $md_key ];
+						$mt_og[ $mt_name ] = $this->p->options[ $og_def_md_key ];
 					}
 
 				} else {
