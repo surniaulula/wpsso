@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.4.0-dev.6',	// Plugin version.
+					'version'     => '9.4.0-b.1',	// Plugin version.
 					'opt_version' => '829',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2441,10 +2441,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'basic' => 'Basic Options',
 					'all'   => 'All Options',
 				),
-				'site_option_use' => array(
-					'default' => 'New Activation',
-					'empty'   => 'If Empty',
-					'force'   => 'Always',
+				'site_option_use' => array(	// Site Use.
+					'default' => 'First Activation',
+					'empty'   => 'If Option Is Empty',
+					'force'   => 'Always Force Value',
 				),
 				'script_locations' => array(
 					'none'   => '[None]',

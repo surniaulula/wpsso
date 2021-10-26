@@ -15,7 +15,7 @@
  * Requires At Least: 5.0
  * Tested Up To: 5.8.1
  * WC Tested Up To: 5.8.0
- * Version: 9.4.0-dev.6
+ * Version: 9.4.0-b.1
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -225,7 +225,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 					$blog_id = get_current_blog_id();
 
-					$defined_constants = get_defined_constants( true );	// $categorize is true.
+					$defined_constants = get_defined_constants( $categorize = true );
 
 					foreach ( $this->site_options as $key => $val ) {
 
@@ -238,8 +238,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 							switch ( $this->site_options[ $key . ':use' ] ) {
 
-								case'always':
-								case'force':
+								case 'force':
 
 									$this->options[ $key ] = $this->site_options[ $key ];
 

@@ -178,7 +178,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 						if ( isset( $this->cache_defaults[ $site_opt_key ] ) && isset( $this->p->site_options[ $site_opt_key . ':use' ] ) ) {
 
-							if ( $this->p->site_options[ $site_opt_key . ':use' ] === 'default' ) {
+							if ( 'default' === $this->p->site_options[ $site_opt_key . ':use' ] ) {
 
 								$this->cache_defaults[ $site_opt_key ] = $this->p->site_options[ $site_opt_key ];
 							}
