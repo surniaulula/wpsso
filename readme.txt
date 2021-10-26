@@ -332,19 +332,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.4.0-dev.5 (2021/10/25)**
+**Version 9.4.0-dev.6 (2021/10/26)**
 
 * **New Features**
-	* None.
+	* Added an integration module for the Elementor Website Builder plugin.
 * **Improvements**
-	* Added support for the Elementor Website Builder video widget and the 'elementor/editor/after_save' action.
-	* Removed default Schema CreativeWork properties from the WebSite markup:
+	* Added support for the Elementor video widget.
+	* Added support for the 'elementor/editor/after_save' action to clear post cache.
+	* Added 'knowledge-graph' to the home page Schema Organization '@id' value.
+	* Removed Schema CreativeWork properties from the Schema WebSite sub-type markup:
 		* 'dateCreated'
 		* 'datePublished'
 		* 'dateModified'
 		* 'copyrightYear'
 * **Bugfixes**
-	* None.
+	* Fixed home page Schema Organization logo detection by Google.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -506,9 +508,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.4.0-dev.5 =
+= 9.4.0-dev.6 =
 
-(2021/10/25) Added support for the Elementor Website Builder video widget and the 'elementor/editor/after_save' action.
+(2021/10/26) Added an integration module for the Elementor Website Builder plugin. Fixed home page Schema Organization logo detection by Google.
 
 = 9.3.0 =
 
