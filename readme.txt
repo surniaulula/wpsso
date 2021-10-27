@@ -339,12 +339,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* Added support for the Elementor video widget.
 	* Added support for the 'elementor/editor/after_save' action to clear the post cache.
-	* Added 'knowledge-graph' to the home page Schema Organization '@id' value.
-	* Removed some inherited Schema CreativeWork properties from the Schema WebSite sub-type markup:
-		* 'dateCreated'
-		* 'datePublished'
-		* 'dateModified'
-		* 'copyrightYear'
+	* Added 'knowledge-graph' to the home page Schema Organization '@id' value for Google.
 	* Added new options under the Document SSO &gt; Customize tab:
 		* Book Author Type
 		* Book Author Name
@@ -355,6 +350,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Book Format
 		* Number of Pages
 		* Book ISBN
+	* Moved addition of some Schema CreativeWork properties to its sub-types (Article, QAPage, Question, Review, and WebPage):
+		* 'dateCreated'
+		* 'datePublished'
+		* 'dateModified'
 * **Bugfixes**
 	* Fixed home page Schema Organization logo detection by Google.
 	* Fixed missing product currency when the default currency is selected in the Document SSO metabox.
@@ -521,7 +520,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 9.4.0-b.3 =
 
-(2021/10/27) Added an integration module for the Elementor Website Builder plugin. Fixed home page Schema Organization logo detection by Google. Fixed missing product currency when the default currency is selected in the Document SSO metabox.
+(2021/10/27) Added integration module for Elementor Website Builder plugin. Fixed home page Schema Organization logo. Fixed missing product currency. Added options under the Document SSO &gt; Customize tab.
 
 = 9.3.0 =
 
