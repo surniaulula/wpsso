@@ -346,10 +346,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* 'dateModified'
 		* 'copyrightYear'
 	* Added new options under the Document SSO &gt; Customize tab:
-		* Book ISBN
-		* Book Format
+		* Book Author Type
+		* Book Author Name
+		* Book Author URL
+		* Book Published Date
+		* Book Created Date
 		* Book Edition
+		* Book Format
 		* Number of Pages
+		* Book ISBN
 * **Bugfixes**
 	* Fixed home page Schema Organization logo detection by Google.
 	* Fixed missing product currency when the default currency is selected in the Document SSO metabox.
