@@ -19,7 +19,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 	class WpssoSchemaSingle {
 
-		public static function add_book_data( &$json_data, array $mod, $book_id = false, $list_element = false ) {
+		public static function add_book_data( &$json_data, array $mod, $book_id = false, $def_type_id = 'book', $list_element = false ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -51,9 +51,15 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/**
+			 * If not adding a list element, inherit the existing schema type url (if one exists).
+			 */
+			list( $book_type_id, $book_type_url ) = self::get_type_id_url_list( $json_data, $book_opts,
+				$opt_key = 'book_type', $def_type_id, $list_element );
+
+			/**
 			 * Begin Schema book markup creation.
 			 */
-			$json_ret = WpssoSchema::get_schema_type_context( 'https://schema.org/Book' );
+			$json_ret = WpssoSchema::get_schema_type_context( $book_type_url );
 
 			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $book_opts, array(
 				'isbn'          => 'book_isbn',
@@ -61,6 +67,41 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'bookEdition'   => 'book_edition',
 				'numberOfPages' => 'book_pages',
 			) );
+
+			/**
+			 * The author type value should be either 'organization' or 'person'.
+			 */
+			if ( WpssoSchema::is_valid_key( $book_opts, 'book_author_type' ) ) {	// Not null, an empty string, or 'none'.
+
+				$author_type_url = $wpsso->schema->get_schema_type_url( $book_opts[ 'book_author_type' ] );
+
+				$json_ret[ 'author' ] = WpssoSchema::get_schema_type_context( $author_type_url );
+
+				WpssoSchema::add_data_itemprop_from_assoc( $json_ret[ 'author' ], $book_opts, array(
+					'name' => 'book_author_name',
+				) );
+
+				if ( ! empty( $book_opts[ 'book_author_url' ] ) ) {
+
+					$json_ret[ 'author' ][ 'sameAs' ][] = SucomUtil::esc_url_encode( $book_opts[ 'book_author_url' ] );
+				}
+			}
+
+			/**
+			 * Add the creative work published date, if one is available.
+			 */
+			if ( $date = WpssoSchema::get_opts_date_iso( $book_opts, 'book_pub' ) ) {
+
+				$json_ret[ 'datePublished' ] = $date;
+			}
+
+			/**
+			 * Add the creative work created date, if one is available.
+			 */
+			if ( $date = WpssoSchema::get_opts_date_iso( $book_opts, 'book_created' ) ) {
+
+				$json_ret[ 'dateCreated' ] = $date;
+			}
 
 			if ( empty( $list_element ) ) {		// Add a single item.
 
@@ -830,587 +871,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			return 1;	// Return count of jobs added.
-		}
-
-		/**
-		 * Note that $mt_offer could be the $mt_og array with minimal product meta tags.
-		 */
-		public static function get_offer_data( array $mod, array $mt_offer ) {
-
-			$wpsso =& Wpsso::get_instance();
-
-			if ( $wpsso->debug->enabled ) {
-
-				$wpsso->debug->mark();
-			}
-
-			$offer = WpssoSchema::get_schema_type_context( 'https://schema.org/Offer' );
-
-			/**
-			 * Note that 'og:url' may be provided instead of 'product:url'.
-			 *
-			 * Note that there is no Schema 'ean' property.
-			 *
-			 * Note that there is no Schema 'size' property.
-			 */
-			WpssoSchema::add_data_itemprop_from_assoc( $offer, $mt_offer, array( 
-				'url'             => 'product:url',
-				'name'            => 'product:title',
-				'description'     => 'product:description',
-				'category'        => 'product:category',		// See https://developers.facebook.com/docs/marketing-api/catalog/reference/.
-				'sku'             => 'product:retailer_part_no',	// Product SKU.
-				'mpn'             => 'product:mfr_part_no',		// Product MPN.
-				'gtin14'          => 'product:gtin14',			// Valid for both products and offers.
-				'gtin13'          => 'product:gtin13',			// Valid for both products and offers.
-				'gtin12'          => 'product:gtin12',			// Valid for both products and offers.
-				'gtin8'           => 'product:gtin8',			// Valid for both products and offers.
-				'gtin'            => 'product:gtin',			// Valid for both products and offers.
-				'availability'    => 'product:availability',		// Only valid for offers.
-				'itemCondition'   => 'product:condition',
-				'price'           => 'product:price:amount',
-				'priceCurrency'   => 'product:price:currency',
-				'priceValidUntil' => 'product:sale_price_dates:end',
-			) );
-
-			/**
-			 * Fallback to the 'og:url' value, if one is available.
-			 */
-			if ( empty( $offer[ 'url' ] ) && ! empty( $mt_offer[ 'og:url' ] ) ) {
-
-				$offer[ 'url' ] = $mt_offer[ 'og:url' ];
-			}
-
-			if ( false === $offer ) {	// Just in case.
-
-				if ( $wpsso->debug->enabled ) {
-
-					$wpsso->debug->log( 'exiting early: missing basic product meta tags' );
-				}
-
-				return false;
-			}
-
-			/**
-			 * Convert a numeric category ID to its Google product type string.
-			 */
-			WpssoSchema::check_prop_value_category( $offer );
-
-			WpssoSchema::check_prop_value_gtin( $offer );
-
-			/**
-			 * Prevents a missing property warning from the Google validator.
-			 */
-			if ( empty( $offer[ 'priceValidUntil' ] ) ) {
-
-				/**
-				 * By default, define normal product prices (not on sale) as valid for 1 year.
-				 */
-				$valid_max_time  = SucomUtil::get_const( 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME', MONTH_IN_SECONDS );
-
-				/**
-				 * Only define once for all offers to allow for (maybe) a common value in the AggregateOffer markup.
-				 */
-				static $price_valid_until = null;
-
-				if ( null === $price_valid_until ) {
-
-					$price_valid_until = gmdate( 'c', time() + $valid_max_time );
-				}
-
-				$offer[ 'priceValidUntil' ] = $price_valid_until;
-			}
-
-			$quantity = WpssoSchema::get_data_itemprop_from_assoc( $mt_offer, array( 
-				'value'    => 'product:quantity:value',
-				'minValue' => 'product:quantity:minimum',
-				'maxValue' => 'product:quantity:maximum',
-				'unitCode' => 'product:quantity:unit_code',	// UN/CEFACT Common Code (3 characters).
-				'unitText' => 'product:quantity:unit_text',
-			) );
-
-			if ( false !== $quantity ) {
-
-				if ( ! isset( $quantity[ 'value' ] ) ) {
-
-					if ( isset( $quantity[ 'minValue' ] ) && isset( $quantity[ 'maxValue' ] ) &&
-						$quantity[ 'minValue' ] === $quantity[ 'maxValue' ] ) {
-
-						$quantity[ 'value' ] = $quantity[ 'minValue' ];
-
-						unset( $quantity[ 'minValue' ], $quantity[ 'maxValue' ] );
-					}
-				}
-
-				$offer[ 'eligibleQuantity' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/QuantitativeValue', $quantity );
-			}
-
-			$price_spec = WpssoSchema::get_data_itemprop_from_assoc( $mt_offer, array( 
-				'price'                 => 'product:price:amount',
-				'priceCurrency'         => 'product:price:currency',
-				'validFrom'             => 'product:sale_price_dates:start',
-				'validThrough'          => 'product:sale_price_dates:end',
-				'valueAddedTaxIncluded' => 'product:price:vat_included',
-			) );
-
-			if ( false !== $price_spec ) {
-
-				if ( isset( $offer[ 'eligibleQuantity' ] ) ) {
-
-					$price_spec[ 'eligibleQuantity' ] = $offer[ 'eligibleQuantity' ];
-				}
-
-				$offer[ 'priceSpecification' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/PriceSpecification', $price_spec );
-			}
-
-			if ( empty( $mt_offer[ 'product:shipping_offers' ] ) ) {
-
-				if ( $wpsso->debug->enabled ) {
-
-					$wpsso->debug->log( 'product shipping offers is empty' );
-				}
-
-			} elseif ( is_array( $mt_offer[ 'product:shipping_offers' ] ) ) {
-
-				foreach ( $mt_offer[ 'product:shipping_offers' ] as $opt_num => $shipping_opts ) {
-
-					if ( ! is_array( $shipping_opts ) ) {	// Just in case.
-
-						if ( $wpsso->debug->enabled ) {
-
-							$wpsso->debug->log( 'skipping shipping #' . $opt_num . ': not an array' );
-						}
-
-						continue;
-					}
-
-					$shipping_details = WpssoSchemaSingle::get_shipping_offer_data( $mod, $shipping_opts, $offer[ 'url' ] );
-
-					if ( false === $shipping_details ) {
-
-						continue;
-					}
-
-					$offer[ 'shippingDetails' ][] = $shipping_details;
-				}
-
-			} else {
-
-				if ( $wpsso->debug->enabled ) {
-
-					$wpsso->debug->log( 'product shipping offers is not an array' );
-				}
-			}
-
-			/**
-			 * Add the seller organization data.
-			 */
-			self::add_organization_data( $offer[ 'seller' ], $mod, $org_id = 'site', $org_logo_key = 'org_logo_url', $org_list_el = false );
-
-			$offer = apply_filters( 'wpsso_json_data_single_offer', $offer, $mod );
-
-			return $offer;
-		}
-
-		/**
-		 * Returns OfferShippingDetails with shippingDestination and shippingRate properties.
-		 *
-		 * See https://developers.google.com/search/docs/data-types/product#shipping-details-best-practices.
-		 */
-		public static function get_shipping_offer_data( array $mod, array $shipping_opts, $offer_url = '' ) {
-
-			$wpsso =& Wpsso::get_instance();
-
-			if ( $wpsso->debug->enabled ) {
-
-				$wpsso->debug->mark();
-			}
-
-			$shipping_offer = WpssoSchema::get_schema_type_context( 'https://schema.org/OfferShippingDetails' );
-
-			/**
-			 * An @id property is added at the end of this method, from the combination of the 'shipping_id' and
-			 * $offer_url values.
-			 */
-			WpssoSchema::add_data_itemprop_from_assoc( $shipping_offer, $shipping_opts, array( 
-				'name' => 'shipping_name',
-			) );
-
-			if ( isset( $shipping_opts[ 'shipping_destinations' ] ) ) {
-
-				/**
-				 * Each destination options array can include an array of countries, a single country, or a single
-				 * country and state - all with postal code limits, if any were found above.
-				 *
-				 * See https://developers.google.com/search/docs/data-types/product#shipping-details-best-practices.
-				 */
-				$dest_keys = array(
-					'country_code' => 'addressCountry',	// Can be a string or an array.
-					'region_code'  => 'addressRegion',
-					'postal_code'  => 'postalCode',		// Can be a string or an array.
-				);
-
-				foreach ( $shipping_opts[ 'shipping_destinations' ] as $dest_num => $dest_opts ) {
-
-					$defined_region = array();
-
-					/**
-					 * For each option key, assign its value to the associated Schema property name.
-					 *
-					 * If the option key is a postal code array, then check each value for a wildcard or range.
-					 * If a wildcard or range is found, then assign its value to the postalCodeRange property
-					 * instead.
-					 */
-					foreach ( $dest_opts as $opt_key => $val ) {
-
-						if ( ! isset( $dest_keys[ $opt_key ] ) ) {	// Make sure we have a Schema property name.
-
-							continue;
-						}
-
-						$prop_name = $dest_keys[ $opt_key ];
-
-						/**
-						 * Check for wildcards and ranges in postal codes.
-						 */
-						if ( 'postal_code' === $opt_key ) {
-
-							if ( ! is_array( $val ) ) {	// Just in case.
-
-								$val = array( $val );
-							}
-
-							foreach ( $val as $num => $postal_code ) {
-
-								/**
-								 * Note that wildcards and ranges cannot be mixed, and ranges only
-								 * work with postal codes that are numeric (ie. US zip codes). 
-								 *
-								 * Example:
-								 *
-								 *	H*
-								 *	96200...96600
-								 */
-								if ( preg_match( '/^(.+)\*+$/', $postal_code, $matches ) ||
-									preg_match( '/^(.+)\.\.\.(.+)$/', $postal_code, $matches ) ) {
-
-									$postal_code_range = WpssoSchema::get_schema_type_context(
-										'https://schema.org/PostalCodeRangeSpecification',
-										array( 'postalCodeBegin' => $matches[ 1 ] )
-									);
-
-									if ( isset( $matches[ 2 ] ) ) {
-
-										$postal_code_range[ 'postalCodeEnd' ] = $matches[ 2 ];
-									}
-
-									$defined_region[ 'postalCodeRange' ][] = $postal_code_range;
-
-								} elseif ( ! empty( $postal_code ) ) {
-
-									$defined_region[ 'postalCode' ][] = $postal_code;
-								}
-							}
-
-						} else {
-
-							$defined_region[ $prop_name ] = $val;
-						}
-					}
-
-					if ( ! empty( $defined_region ) ) {
-
-						if  ( ! empty( $dest_opts[ 'destination_id' ] ) ) {
-
-							if  ( ! empty( $dest_opts[ 'destination_rel' ] ) ) {
-
-								WpssoSchema::update_data_id( $defined_region, $dest_opts[ 'destination_id' ], $dest_opts[ 'destination_rel' ] );
-
-							} else {
-
-								WpssoSchema::update_data_id( $defined_region, $dest_opts[ 'destination_id' ], $offer_url );
-							}
-						}
-
-						$shipping_offer[ 'shippingDestination' ][] = WpssoSchema::get_schema_type_context(
-							'https://schema.org/DefinedRegion', $defined_region );
-					}
-				}
-			}
-
-			if ( isset( $shipping_opts[ 'shipping_rate' ] ) ) {
-
-				/**
-				 * See https://developers.google.com/search/docs/data-types/product#shipping-details-best-practices.
-				 */
-				$shipping_rate_keys = array(
-					'shipping_rate_name'     => 'name',
-					'shipping_rate_cost'     => 'value',
-					'shipping_rate_currency' => 'currency',
-				);
-
-				$shipping_rate = array();
-
-				foreach ( $shipping_opts[ 'shipping_rate' ] as $opt_key => $val ) {
-
-					if ( isset( $shipping_rate_keys[ $opt_key ] ) ) {
-
-						$shipping_rate[ $shipping_rate_keys[ $opt_key ] ] = $val;
-					}
-				}
-
-				if ( ! empty( $shipping_rate ) ) {
-
-					$shipping_offer[ 'shippingRate' ] = WpssoSchema::get_schema_type_context(
-						'https://schema.org/MonetaryAmount', $shipping_rate );
-				}
-			}
-
-			/**
-			 * Example $shipping_opts[ 'delivery_time' ] = Array (
-			 * 	[shipdept_rel] => http://adm.surniaulula.com/produit/a-variable-product/
-			 * 	[shipdept_timezone] => America/Vancouver
-			 * 	[shipdept_midday_close] => 12:00
-			 * 	[shipdept_midday_open] => 13:00
-			 * 	[shipdept_cutoff] => 16:00
-			 * 	[shipdept_day_sunday_open] => none
-			 * 	[shipdept_day_sunday_close] => none
-			 * 	[shipdept_day_monday_open] => 09:00
-			 * 	[shipdept_day_monday_close] => 17:00
-			 * 	[shipdept_day_tuesday_open] => 09:00
-			 * 	[shipdept_day_tuesday_close] => 17:00
-			 * 	[shipdept_day_wednesday_open] => 09:00
-			 * 	[shipdept_day_wednesday_close] => 17:00
-			 * 	[shipdept_day_thursday_open] => 09:00
-			 * 	[shipdept_day_thursday_close] => 17:00
-			 * 	[shipdept_day_friday_open] => 09:00
-			 * 	[shipdept_day_friday_close] => 17:00
-			 * 	[shipdept_day_saturday_open] => none
-			 * 	[shipdept_day_saturday_close] => none
-			 * 	[shipdept_day_publicholidays_open] => 09:00
-			 * 	[shipdept_day_publicholidays_close] => 12:00
-			 *  	[handling_rel] => http://adm.surniaulula.com/produit/a-variable-product/
-			 * 	[handling_maximum] => 1.5
-			 * 	[handling_unit_code] => DAY
-			 * 	[handling_unit_text] => d
-			 * 	[handling_name] => Days
-			 * 	[transit_rel] => http://adm.surniaulula.com/produit/a-variable-product/
-			 * 	[transit_minimum] => 5
-			 * 	[transit_maximum] => 7
-			 * 	[transit_unit_code] => DAY
-			 * 	[transit_unit_text] => d
-			 * 	[transit_name] => Days
-			 * )
-			 */
-			if ( isset( $shipping_opts[ 'delivery_time' ] ) ) {
-
-				$delivery_opts =& $shipping_opts[ 'delivery_time' ];
-
-				/**
-				 * See https://schema.org/ShippingDeliveryTime.
-				 */
-				$delivery_time = array();
-
-				/**
-				 * Property:
-				 *	businessDays as https://schema.org/OpeningHoursSpecification
-				 */
-				if ( $opening_hours_spec = self::get_opening_hours_data( $delivery_opts, $opt_prefix = 'shipdept' ) ) {
-
-					$delivery_time[ 'businessDays' ] = $opening_hours_spec;
-				}
-
-				$cutoff_tz = SucomUtil::get_opts_hm_tz( $delivery_opts, $key_hm = 'shipdept_cutoff', $key_tz = 'shipdept_timezone' );
-
-				if ( ! empty( $cutoff_tz ) ) {
-
-					$delivery_time[ 'cutoffTime' ] = $cutoff_tz;
-				}
-
-				foreach ( array(
-					'handling' => 'handlingTime',
-					'transit'  => 'transitTime'
-				) as $delivery_opt_pre => $delivery_prop_name ) {
-
-					$quant_id = 'qv';
-					$quantity = array();
-
-					foreach( array(
-						$delivery_opt_pre . '_name'      => 'name',
-						$delivery_opt_pre . '_minimum'   => 'minValue',
-						$delivery_opt_pre . '_maximum'   => 'maxValue',
-						$delivery_opt_pre . '_unit_code' => 'unitCode',	// UN/CEFACT Common Code (3 characters).
-						$delivery_opt_pre . '_unit_text' => 'unitText',
-					) as $opt_key => $quant_prop_name ) {
-
-						if ( isset( $delivery_opts[ $opt_key ] ) ) {
-
-							/**
-							 * Skip the name and unit text for the quantity @id value.
-							 */
-							if ( 'name' !== $quant_prop_name && 'unitText' !== $quant_prop_name ) {
-
-								$quant_id .= '-' . $delivery_opts[ $opt_key ];
-							}
-
-							$quantity[ $quant_prop_name ] = $delivery_opts[ $opt_key ];
-
-						} else {
-
-							$quant_id .= '--';
-						}
-					}
-
-					if ( ! empty( $quantity ) ) {
-
-						if ( ! isset( $quantity[ 'value' ] ) ) {
-
-							if ( isset( $quantity[ 'minValue' ] ) && isset( $quantity[ 'maxValue' ] ) &&
-								$quantity[ 'minValue' ] === $quantity[ 'maxValue' ] ) {
-
-								$quantity[ 'value' ] = $quantity[ 'minValue' ];
-
-								unset( $quantity[ 'minValue' ], $quantity[ 'maxValue' ] );
-							}
-						}
-
-						if ( ! empty( $quantity[ 'unitCode' ] ) ) {
-
-							$quant_id = strtolower( $quant_id );
-
-							$quant_rel = empty( $delivery_opts[ $delivery_opt_pre . '_rel' ] ) ?
-								$offer_url : $delivery_opts[ $delivery_opt_pre . '_rel' ];
-
-							WpssoSchema::update_data_id( $quantity, $quant_id, $quant_rel );
-						}
-
-						$delivery_time[ $delivery_prop_name ] = WpssoSchema::get_schema_type_context(
-							'https://schema.org/QuantitativeValue', $quantity );
-					}
-				}
-
-				if ( ! empty( $delivery_time ) ) {
-
-					$shipping_offer[ 'deliveryTime' ] = WpssoSchema::get_schema_type_context(
-						'https://schema.org/ShippingDeliveryTime', $delivery_time );
-				}
-			}
-
-			if  ( ! empty( $shipping_opts[ 'shipping_id' ] ) ) {
-
-				if  ( ! empty( $shipping_opts[ 'shipping_rel' ] ) ) {
-
-					WpssoSchema::update_data_id( $shipping_offer, $shipping_opts[ 'shipping_id' ], $shipping_opts[ 'shipping_rel' ] );
-
-				} else {
-
-					WpssoSchema::update_data_id( $shipping_offer, $shipping_opts[ 'shipping_id' ], $offer_url );
-				}
-			}
-
-			$shipping_offer = apply_filters( 'wpsso_json_data_single_shipping_offer', $shipping_offer, $mod );
-
-			return $shipping_offer;
-		}
-
-		/**
-		 * Returns an array or false if there are no open/close hours.
-		 *
-		 * Example $opts = Array (
-		 * 	[shipdept_rel] => http://adm.surniaulula.com/produit/a-variable-product/
-		 * 	[shipdept_timezone] => America/Vancouver
-		 * 	[shipdept_midday_close] => 12:00
-		 * 	[shipdept_midday_open] => 13:00
-		 * 	[shipdept_cutoff] => 16:00
-		 * 	[shipdept_day_sunday_open] => none
-		 * 	[shipdept_day_sunday_close] => none
-		 * 	[shipdept_day_monday_open] => 09:00
-		 * 	[shipdept_day_monday_close] => 17:00
-		 * 	[shipdept_day_tuesday_open] => 09:00
-		 * 	[shipdept_day_tuesday_close] => 17:00
-		 * 	[shipdept_day_wednesday_open] => 09:00
-		 * 	[shipdept_day_wednesday_close] => 17:00
-		 * 	[shipdept_day_thursday_open] => 09:00
-		 * 	[shipdept_day_thursday_close] => 17:00
-		 * 	[shipdept_day_friday_open] => 09:00
-		 * 	[shipdept_day_friday_close] => 17:00
-		 * 	[shipdept_day_saturday_open] => none
-		 * 	[shipdept_day_saturday_close] => none
-		 * 	[shipdept_day_publicholidays_open] => 09:00
-		 * 	[shipdept_day_publicholidays_close] => 12:00
-		 * )
-		 */
-		public static function get_opening_hours_data( array $opts, $opt_prefix = 'place' ) {
-
-			$wpsso =& Wpsso::get_instance();
-
-			$weekdays =& $wpsso->cf[ 'form' ][ 'weekdays' ];
-
-			$place_id = empty( $opts[ $opt_prefix . '_id' ] ) ? false : $opts[ $opt_prefix . '_id' ];
-
-			$hours_rel = empty( $opts[ $opt_prefix . '_rel' ] ) ? false : $opts[ $opt_prefix . '_rel' ];
-
-			$opening_hours_spec = array();
-
-			foreach ( $weekdays as $day_name => $day_label ) {
-
-				/**
-				 * Returns an empty array or an associative array of open => close hours, including a timezone offset.
-				 *
-				 * $open_close = Array (
-				 *	[08:00-07:00] => 17:00-07:00
-				 * )
-				 *
-				 * -07:00 is a timezone offset.
-				 */
-				$open_close = SucomUtil::get_opts_open_close_hm_tz(
-					$opts,
-					$opt_prefix . '_day_' . $day_name . '_open',
-					$opt_prefix . '_midday_close',
-					$opt_prefix . '_midday_open',
-					$opt_prefix . '_day_' . $day_name . '_close',
-					$opt_prefix . '_timezone'
-				);
-
-				if ( ! empty( $open_close ) ) {
-
-					$num = 0;
-
-					foreach ( $open_close as $open => $close ) {
-
-						$weekday_spec = array(
-							'@context'  => 'https://schema.org',
-							'@type'     => 'OpeningHoursSpecification',
-							'dayOfWeek' => $day_label,
-							'opens'     => $open,
-							'closes'    => $close,
-						);
-
-						foreach ( array(
-							'validFrom'    => $opt_prefix . '_season_from_date',
-							'validThrough' => $opt_prefix . '_season_to_date',
-						) as $prop_name => $opt_key ) {
-
-							if ( isset( $opts[ $opt_key ] ) && '' !== $opts[ $opt_key ] ) {
-
-								$weekday_spec[ $prop_name ] = $opts[ $opt_key ];
-							}
-						}
-
-						if ( ! empty( $hours_rel ) ) {
-
-							$hours_id = $opt_prefix . '-' . ( false !== $place_id ? $place_id . '-' : '' ) . $day_name . '-' . $num;
-
-							WpssoSchema::update_data_id( $weekday_spec, $hours_id, $hours_rel );
-						}
-
-						$opening_hours_spec[] = $weekday_spec;
-
-						$num++;
-					}
-				}
-			}
-
-			return empty( $opening_hours_spec ) ? false : $opening_hours_spec;
 		}
 
 		/**
@@ -2261,6 +1721,587 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		}
 
 		/**
+		 * Note that $mt_offer could be the $mt_og array with minimal product meta tags.
+		 */
+		public static function get_offer_data( array $mod, array $mt_offer ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->mark();
+			}
+
+			$offer = WpssoSchema::get_schema_type_context( 'https://schema.org/Offer' );
+
+			/**
+			 * Note that 'og:url' may be provided instead of 'product:url'.
+			 *
+			 * Note that there is no Schema 'ean' property.
+			 *
+			 * Note that there is no Schema 'size' property.
+			 */
+			WpssoSchema::add_data_itemprop_from_assoc( $offer, $mt_offer, array( 
+				'url'             => 'product:url',
+				'name'            => 'product:title',
+				'description'     => 'product:description',
+				'category'        => 'product:category',		// See https://developers.facebook.com/docs/marketing-api/catalog/reference/.
+				'sku'             => 'product:retailer_part_no',	// Product SKU.
+				'mpn'             => 'product:mfr_part_no',		// Product MPN.
+				'gtin14'          => 'product:gtin14',			// Valid for both products and offers.
+				'gtin13'          => 'product:gtin13',			// Valid for both products and offers.
+				'gtin12'          => 'product:gtin12',			// Valid for both products and offers.
+				'gtin8'           => 'product:gtin8',			// Valid for both products and offers.
+				'gtin'            => 'product:gtin',			// Valid for both products and offers.
+				'availability'    => 'product:availability',		// Only valid for offers.
+				'itemCondition'   => 'product:condition',
+				'price'           => 'product:price:amount',
+				'priceCurrency'   => 'product:price:currency',
+				'priceValidUntil' => 'product:sale_price_dates:end',
+			) );
+
+			/**
+			 * Fallback to the 'og:url' value, if one is available.
+			 */
+			if ( empty( $offer[ 'url' ] ) && ! empty( $mt_offer[ 'og:url' ] ) ) {
+
+				$offer[ 'url' ] = $mt_offer[ 'og:url' ];
+			}
+
+			if ( false === $offer ) {	// Just in case.
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( 'exiting early: missing basic product meta tags' );
+				}
+
+				return false;
+			}
+
+			/**
+			 * Convert a numeric category ID to its Google product type string.
+			 */
+			WpssoSchema::check_prop_value_category( $offer );
+
+			WpssoSchema::check_prop_value_gtin( $offer );
+
+			/**
+			 * Prevents a missing property warning from the Google validator.
+			 */
+			if ( empty( $offer[ 'priceValidUntil' ] ) ) {
+
+				/**
+				 * By default, define normal product prices (not on sale) as valid for 1 year.
+				 */
+				$valid_max_time  = SucomUtil::get_const( 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME', MONTH_IN_SECONDS );
+
+				/**
+				 * Only define once for all offers to allow for (maybe) a common value in the AggregateOffer markup.
+				 */
+				static $price_valid_until = null;
+
+				if ( null === $price_valid_until ) {
+
+					$price_valid_until = gmdate( 'c', time() + $valid_max_time );
+				}
+
+				$offer[ 'priceValidUntil' ] = $price_valid_until;
+			}
+
+			$quantity = WpssoSchema::get_data_itemprop_from_assoc( $mt_offer, array( 
+				'value'    => 'product:quantity:value',
+				'minValue' => 'product:quantity:minimum',
+				'maxValue' => 'product:quantity:maximum',
+				'unitCode' => 'product:quantity:unit_code',	// UN/CEFACT Common Code (3 characters).
+				'unitText' => 'product:quantity:unit_text',
+			) );
+
+			if ( false !== $quantity ) {
+
+				if ( ! isset( $quantity[ 'value' ] ) ) {
+
+					if ( isset( $quantity[ 'minValue' ] ) && isset( $quantity[ 'maxValue' ] ) &&
+						$quantity[ 'minValue' ] === $quantity[ 'maxValue' ] ) {
+
+						$quantity[ 'value' ] = $quantity[ 'minValue' ];
+
+						unset( $quantity[ 'minValue' ], $quantity[ 'maxValue' ] );
+					}
+				}
+
+				$offer[ 'eligibleQuantity' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/QuantitativeValue', $quantity );
+			}
+
+			$price_spec = WpssoSchema::get_data_itemprop_from_assoc( $mt_offer, array( 
+				'price'                 => 'product:price:amount',
+				'priceCurrency'         => 'product:price:currency',
+				'validFrom'             => 'product:sale_price_dates:start',
+				'validThrough'          => 'product:sale_price_dates:end',
+				'valueAddedTaxIncluded' => 'product:price:vat_included',
+			) );
+
+			if ( false !== $price_spec ) {
+
+				if ( isset( $offer[ 'eligibleQuantity' ] ) ) {
+
+					$price_spec[ 'eligibleQuantity' ] = $offer[ 'eligibleQuantity' ];
+				}
+
+				$offer[ 'priceSpecification' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/PriceSpecification', $price_spec );
+			}
+
+			if ( empty( $mt_offer[ 'product:shipping_offers' ] ) ) {
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( 'product shipping offers is empty' );
+				}
+
+			} elseif ( is_array( $mt_offer[ 'product:shipping_offers' ] ) ) {
+
+				foreach ( $mt_offer[ 'product:shipping_offers' ] as $opt_num => $shipping_opts ) {
+
+					if ( ! is_array( $shipping_opts ) ) {	// Just in case.
+
+						if ( $wpsso->debug->enabled ) {
+
+							$wpsso->debug->log( 'skipping shipping #' . $opt_num . ': not an array' );
+						}
+
+						continue;
+					}
+
+					$shipping_details = WpssoSchemaSingle::get_shipping_offer_data( $mod, $shipping_opts, $offer[ 'url' ] );
+
+					if ( false === $shipping_details ) {
+
+						continue;
+					}
+
+					$offer[ 'shippingDetails' ][] = $shipping_details;
+				}
+
+			} else {
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( 'product shipping offers is not an array' );
+				}
+			}
+
+			/**
+			 * Add the seller organization data.
+			 */
+			self::add_organization_data( $offer[ 'seller' ], $mod, $org_id = 'site', $org_logo_key = 'org_logo_url', $org_list_el = false );
+
+			$offer = apply_filters( 'wpsso_json_data_single_offer', $offer, $mod );
+
+			return $offer;
+		}
+
+		/**
+		 * Returns OfferShippingDetails with shippingDestination and shippingRate properties.
+		 *
+		 * See https://developers.google.com/search/docs/data-types/product#shipping-details-best-practices.
+		 */
+		public static function get_shipping_offer_data( array $mod, array $shipping_opts, $offer_url = '' ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->mark();
+			}
+
+			$shipping_offer = WpssoSchema::get_schema_type_context( 'https://schema.org/OfferShippingDetails' );
+
+			/**
+			 * An @id property is added at the end of this method, from the combination of the 'shipping_id' and
+			 * $offer_url values.
+			 */
+			WpssoSchema::add_data_itemprop_from_assoc( $shipping_offer, $shipping_opts, array( 
+				'name' => 'shipping_name',
+			) );
+
+			if ( isset( $shipping_opts[ 'shipping_destinations' ] ) ) {
+
+				/**
+				 * Each destination options array can include an array of countries, a single country, or a single
+				 * country and state - all with postal code limits, if any were found above.
+				 *
+				 * See https://developers.google.com/search/docs/data-types/product#shipping-details-best-practices.
+				 */
+				$dest_keys = array(
+					'country_code' => 'addressCountry',	// Can be a string or an array.
+					'region_code'  => 'addressRegion',
+					'postal_code'  => 'postalCode',		// Can be a string or an array.
+				);
+
+				foreach ( $shipping_opts[ 'shipping_destinations' ] as $dest_num => $dest_opts ) {
+
+					$defined_region = array();
+
+					/**
+					 * For each option key, assign its value to the associated Schema property name.
+					 *
+					 * If the option key is a postal code array, then check each value for a wildcard or range.
+					 * If a wildcard or range is found, then assign its value to the postalCodeRange property
+					 * instead.
+					 */
+					foreach ( $dest_opts as $opt_key => $val ) {
+
+						if ( ! isset( $dest_keys[ $opt_key ] ) ) {	// Make sure we have a Schema property name.
+
+							continue;
+						}
+
+						$prop_name = $dest_keys[ $opt_key ];
+
+						/**
+						 * Check for wildcards and ranges in postal codes.
+						 */
+						if ( 'postal_code' === $opt_key ) {
+
+							if ( ! is_array( $val ) ) {	// Just in case.
+
+								$val = array( $val );
+							}
+
+							foreach ( $val as $num => $postal_code ) {
+
+								/**
+								 * Note that wildcards and ranges cannot be mixed, and ranges only
+								 * work with postal codes that are numeric (ie. US zip codes). 
+								 *
+								 * Example:
+								 *
+								 *	H*
+								 *	96200...96600
+								 */
+								if ( preg_match( '/^(.+)\*+$/', $postal_code, $matches ) ||
+									preg_match( '/^(.+)\.\.\.(.+)$/', $postal_code, $matches ) ) {
+
+									$postal_code_range = WpssoSchema::get_schema_type_context(
+										'https://schema.org/PostalCodeRangeSpecification',
+										array( 'postalCodeBegin' => $matches[ 1 ] )
+									);
+
+									if ( isset( $matches[ 2 ] ) ) {
+
+										$postal_code_range[ 'postalCodeEnd' ] = $matches[ 2 ];
+									}
+
+									$defined_region[ 'postalCodeRange' ][] = $postal_code_range;
+
+								} elseif ( ! empty( $postal_code ) ) {
+
+									$defined_region[ 'postalCode' ][] = $postal_code;
+								}
+							}
+
+						} else {
+
+							$defined_region[ $prop_name ] = $val;
+						}
+					}
+
+					if ( ! empty( $defined_region ) ) {
+
+						if  ( ! empty( $dest_opts[ 'destination_id' ] ) ) {
+
+							if  ( ! empty( $dest_opts[ 'destination_rel' ] ) ) {
+
+								WpssoSchema::update_data_id( $defined_region, $dest_opts[ 'destination_id' ], $dest_opts[ 'destination_rel' ] );
+
+							} else {
+
+								WpssoSchema::update_data_id( $defined_region, $dest_opts[ 'destination_id' ], $offer_url );
+							}
+						}
+
+						$shipping_offer[ 'shippingDestination' ][] = WpssoSchema::get_schema_type_context(
+							'https://schema.org/DefinedRegion', $defined_region );
+					}
+				}
+			}
+
+			if ( isset( $shipping_opts[ 'shipping_rate' ] ) ) {
+
+				/**
+				 * See https://developers.google.com/search/docs/data-types/product#shipping-details-best-practices.
+				 */
+				$shipping_rate_keys = array(
+					'shipping_rate_name'     => 'name',
+					'shipping_rate_cost'     => 'value',
+					'shipping_rate_currency' => 'currency',
+				);
+
+				$shipping_rate = array();
+
+				foreach ( $shipping_opts[ 'shipping_rate' ] as $opt_key => $val ) {
+
+					if ( isset( $shipping_rate_keys[ $opt_key ] ) ) {
+
+						$shipping_rate[ $shipping_rate_keys[ $opt_key ] ] = $val;
+					}
+				}
+
+				if ( ! empty( $shipping_rate ) ) {
+
+					$shipping_offer[ 'shippingRate' ] = WpssoSchema::get_schema_type_context(
+						'https://schema.org/MonetaryAmount', $shipping_rate );
+				}
+			}
+
+			/**
+			 * Example $shipping_opts[ 'delivery_time' ] = Array (
+			 * 	[shipdept_rel] => http://adm.surniaulula.com/produit/a-variable-product/
+			 * 	[shipdept_timezone] => America/Vancouver
+			 * 	[shipdept_midday_close] => 12:00
+			 * 	[shipdept_midday_open] => 13:00
+			 * 	[shipdept_cutoff] => 16:00
+			 * 	[shipdept_day_sunday_open] => none
+			 * 	[shipdept_day_sunday_close] => none
+			 * 	[shipdept_day_monday_open] => 09:00
+			 * 	[shipdept_day_monday_close] => 17:00
+			 * 	[shipdept_day_tuesday_open] => 09:00
+			 * 	[shipdept_day_tuesday_close] => 17:00
+			 * 	[shipdept_day_wednesday_open] => 09:00
+			 * 	[shipdept_day_wednesday_close] => 17:00
+			 * 	[shipdept_day_thursday_open] => 09:00
+			 * 	[shipdept_day_thursday_close] => 17:00
+			 * 	[shipdept_day_friday_open] => 09:00
+			 * 	[shipdept_day_friday_close] => 17:00
+			 * 	[shipdept_day_saturday_open] => none
+			 * 	[shipdept_day_saturday_close] => none
+			 * 	[shipdept_day_publicholidays_open] => 09:00
+			 * 	[shipdept_day_publicholidays_close] => 12:00
+			 *  	[handling_rel] => http://adm.surniaulula.com/produit/a-variable-product/
+			 * 	[handling_maximum] => 1.5
+			 * 	[handling_unit_code] => DAY
+			 * 	[handling_unit_text] => d
+			 * 	[handling_name] => Days
+			 * 	[transit_rel] => http://adm.surniaulula.com/produit/a-variable-product/
+			 * 	[transit_minimum] => 5
+			 * 	[transit_maximum] => 7
+			 * 	[transit_unit_code] => DAY
+			 * 	[transit_unit_text] => d
+			 * 	[transit_name] => Days
+			 * )
+			 */
+			if ( isset( $shipping_opts[ 'delivery_time' ] ) ) {
+
+				$delivery_opts =& $shipping_opts[ 'delivery_time' ];
+
+				/**
+				 * See https://schema.org/ShippingDeliveryTime.
+				 */
+				$delivery_time = array();
+
+				/**
+				 * Property:
+				 *	businessDays as https://schema.org/OpeningHoursSpecification
+				 */
+				if ( $opening_hours_spec = self::get_opening_hours_data( $delivery_opts, $opt_prefix = 'shipdept' ) ) {
+
+					$delivery_time[ 'businessDays' ] = $opening_hours_spec;
+				}
+
+				$cutoff_tz = SucomUtil::get_opts_hm_tz( $delivery_opts, $key_hm = 'shipdept_cutoff', $key_tz = 'shipdept_timezone' );
+
+				if ( ! empty( $cutoff_tz ) ) {
+
+					$delivery_time[ 'cutoffTime' ] = $cutoff_tz;
+				}
+
+				foreach ( array(
+					'handling' => 'handlingTime',
+					'transit'  => 'transitTime'
+				) as $delivery_opt_pre => $delivery_prop_name ) {
+
+					$quant_id = 'qv';
+					$quantity = array();
+
+					foreach( array(
+						$delivery_opt_pre . '_name'      => 'name',
+						$delivery_opt_pre . '_minimum'   => 'minValue',
+						$delivery_opt_pre . '_maximum'   => 'maxValue',
+						$delivery_opt_pre . '_unit_code' => 'unitCode',	// UN/CEFACT Common Code (3 characters).
+						$delivery_opt_pre . '_unit_text' => 'unitText',
+					) as $opt_key => $quant_prop_name ) {
+
+						if ( isset( $delivery_opts[ $opt_key ] ) ) {
+
+							/**
+							 * Skip the name and unit text for the quantity @id value.
+							 */
+							if ( 'name' !== $quant_prop_name && 'unitText' !== $quant_prop_name ) {
+
+								$quant_id .= '-' . $delivery_opts[ $opt_key ];
+							}
+
+							$quantity[ $quant_prop_name ] = $delivery_opts[ $opt_key ];
+
+						} else {
+
+							$quant_id .= '--';
+						}
+					}
+
+					if ( ! empty( $quantity ) ) {
+
+						if ( ! isset( $quantity[ 'value' ] ) ) {
+
+							if ( isset( $quantity[ 'minValue' ] ) && isset( $quantity[ 'maxValue' ] ) &&
+								$quantity[ 'minValue' ] === $quantity[ 'maxValue' ] ) {
+
+								$quantity[ 'value' ] = $quantity[ 'minValue' ];
+
+								unset( $quantity[ 'minValue' ], $quantity[ 'maxValue' ] );
+							}
+						}
+
+						if ( ! empty( $quantity[ 'unitCode' ] ) ) {
+
+							$quant_id = strtolower( $quant_id );
+
+							$quant_rel = empty( $delivery_opts[ $delivery_opt_pre . '_rel' ] ) ?
+								$offer_url : $delivery_opts[ $delivery_opt_pre . '_rel' ];
+
+							WpssoSchema::update_data_id( $quantity, $quant_id, $quant_rel );
+						}
+
+						$delivery_time[ $delivery_prop_name ] = WpssoSchema::get_schema_type_context(
+							'https://schema.org/QuantitativeValue', $quantity );
+					}
+				}
+
+				if ( ! empty( $delivery_time ) ) {
+
+					$shipping_offer[ 'deliveryTime' ] = WpssoSchema::get_schema_type_context(
+						'https://schema.org/ShippingDeliveryTime', $delivery_time );
+				}
+			}
+
+			if  ( ! empty( $shipping_opts[ 'shipping_id' ] ) ) {
+
+				if  ( ! empty( $shipping_opts[ 'shipping_rel' ] ) ) {
+
+					WpssoSchema::update_data_id( $shipping_offer, $shipping_opts[ 'shipping_id' ], $shipping_opts[ 'shipping_rel' ] );
+
+				} else {
+
+					WpssoSchema::update_data_id( $shipping_offer, $shipping_opts[ 'shipping_id' ], $offer_url );
+				}
+			}
+
+			$shipping_offer = apply_filters( 'wpsso_json_data_single_shipping_offer', $shipping_offer, $mod );
+
+			return $shipping_offer;
+		}
+
+		/**
+		 * Returns an array or false if there are no open/close hours.
+		 *
+		 * Example $opts = Array (
+		 * 	[shipdept_rel] => http://adm.surniaulula.com/produit/a-variable-product/
+		 * 	[shipdept_timezone] => America/Vancouver
+		 * 	[shipdept_midday_close] => 12:00
+		 * 	[shipdept_midday_open] => 13:00
+		 * 	[shipdept_cutoff] => 16:00
+		 * 	[shipdept_day_sunday_open] => none
+		 * 	[shipdept_day_sunday_close] => none
+		 * 	[shipdept_day_monday_open] => 09:00
+		 * 	[shipdept_day_monday_close] => 17:00
+		 * 	[shipdept_day_tuesday_open] => 09:00
+		 * 	[shipdept_day_tuesday_close] => 17:00
+		 * 	[shipdept_day_wednesday_open] => 09:00
+		 * 	[shipdept_day_wednesday_close] => 17:00
+		 * 	[shipdept_day_thursday_open] => 09:00
+		 * 	[shipdept_day_thursday_close] => 17:00
+		 * 	[shipdept_day_friday_open] => 09:00
+		 * 	[shipdept_day_friday_close] => 17:00
+		 * 	[shipdept_day_saturday_open] => none
+		 * 	[shipdept_day_saturday_close] => none
+		 * 	[shipdept_day_publicholidays_open] => 09:00
+		 * 	[shipdept_day_publicholidays_close] => 12:00
+		 * )
+		 */
+		public static function get_opening_hours_data( array $opts, $opt_prefix = 'place' ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			$weekdays =& $wpsso->cf[ 'form' ][ 'weekdays' ];
+
+			$place_id = empty( $opts[ $opt_prefix . '_id' ] ) ? false : $opts[ $opt_prefix . '_id' ];
+
+			$hours_rel = empty( $opts[ $opt_prefix . '_rel' ] ) ? false : $opts[ $opt_prefix . '_rel' ];
+
+			$opening_hours_spec = array();
+
+			foreach ( $weekdays as $day_name => $day_label ) {
+
+				/**
+				 * Returns an empty array or an associative array of open => close hours, including a timezone offset.
+				 *
+				 * $open_close = Array (
+				 *	[08:00-07:00] => 17:00-07:00
+				 * )
+				 *
+				 * -07:00 is a timezone offset.
+				 */
+				$open_close = SucomUtil::get_opts_open_close_hm_tz(
+					$opts,
+					$opt_prefix . '_day_' . $day_name . '_open',
+					$opt_prefix . '_midday_close',
+					$opt_prefix . '_midday_open',
+					$opt_prefix . '_day_' . $day_name . '_close',
+					$opt_prefix . '_timezone'
+				);
+
+				if ( ! empty( $open_close ) ) {
+
+					$num = 0;
+
+					foreach ( $open_close as $open => $close ) {
+
+						$weekday_spec = array(
+							'@context'  => 'https://schema.org',
+							'@type'     => 'OpeningHoursSpecification',
+							'dayOfWeek' => $day_label,
+							'opens'     => $open,
+							'closes'    => $close,
+						);
+
+						foreach ( array(
+							'validFrom'    => $opt_prefix . '_season_from_date',
+							'validThrough' => $opt_prefix . '_season_to_date',
+						) as $prop_name => $opt_key ) {
+
+							if ( isset( $opts[ $opt_key ] ) && '' !== $opts[ $opt_key ] ) {
+
+								$weekday_spec[ $prop_name ] = $opts[ $opt_key ];
+							}
+						}
+
+						if ( ! empty( $hours_rel ) ) {
+
+							$hours_id = $opt_prefix . '-' . ( false !== $place_id ? $place_id . '-' : '' ) . $day_name . '-' . $num;
+
+							WpssoSchema::update_data_id( $weekday_spec, $hours_id, $hours_rel );
+						}
+
+						$opening_hours_spec[] = $weekday_spec;
+
+						$num++;
+					}
+				}
+			}
+
+			return empty( $opening_hours_spec ) ? false : $opening_hours_spec;
+		}
+
+		/**
 		 * If not adding a list element, then inherit the existing schema type url (if one exists).
 		 */
 		private static function get_type_id_url_list( $json_data, $type_opts, $opt_key, $def_type_id, $list_element = false ) {
@@ -2286,7 +2327,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				/**
 				 * $type_opts may be false, null, or an array.
 				 */
-				if ( empty( $type_opts[ $opt_key ] ) || $type_opts[ $opt_key ] === 'none' ) {
+				if ( empty( $type_opts[ $opt_key ] ) || 'none' === $type_opts[ $opt_key ] ) {
 
 					$single_type_id   = $def_type_id;
 					$single_type_url  = $wpsso->schema->get_schema_type_url( $def_type_id );

@@ -609,28 +609,28 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					/**
 					 * Schema Reviewed Subject.
 					 */
-					'schema_review_item_type' => $opts[ 'schema_def_review_item_type' ],	// Subject Webpage Type.
-					'schema_review_item_url'  => '',					// Subject Webpage URL.
 					'schema_review_item_name' => '',					// Subject Name.
 					'schema_review_item_desc' => '',					// Subject Description.
+					'schema_review_item_type' => $opts[ 'schema_def_review_item_type' ],	// Subject Webpage Type.
+					'schema_review_item_url'  => '',					// Subject Webpage URL.
 
 					/**
 					 * Schema Reviewed Subject: Creative Work.
 					 */
-					'schema_review_item_cw_author_type'      => 'none',	// Author Type.
-					'schema_review_item_cw_author_name'      => '',		// Author Name.
-					'schema_review_item_cw_author_url'       => '',		// Author URL.
-					'schema_review_item_cw_pub_date'         => '',		// Publish Date.
-					'schema_review_item_cw_pub_time'         => 'none',	// Publish Time.
-					'schema_review_item_cw_pub_timezone'     => $timezone,	// Publish Timezone.
-					'schema_review_item_cw_created_date'     => '',		// Created Date.
-					'schema_review_item_cw_created_time'     => 'none',	// Created Time.
-					'schema_review_item_cw_created_timezone' => $timezone,	// Created Timezone.
+					'schema_review_item_cw_author_type'      => 'none',	// Subject Author Type.
+					'schema_review_item_cw_author_name'      => '',		// Subject Author Name.
+					'schema_review_item_cw_author_url'       => '',		// Subject Author URL.
+					'schema_review_item_cw_pub_date'         => '',		// Subject Publish Date.
+					'schema_review_item_cw_pub_time'         => 'none',	// Subject Publish Time.
+					'schema_review_item_cw_pub_timezone'     => $timezone,	// Subject Publish Timezone.
+					'schema_review_item_cw_created_date'     => '',		// Subject Created Date.
+					'schema_review_item_cw_created_time'     => 'none',	// Subject Created Time.
+					'schema_review_item_cw_created_timezone' => $timezone,	// Subject Created Timezone.
 
 					/**
 					 * Schema Reviewed Subject: Book.
 					 */
-					'schema_review_item_cw_book_isbn' => '',	// Book ISBN.
+					'schema_review_item_cw_book_isbn' => '',	// Subject Book ISBN.
 
 					/**
 					 * Schema Reviewed Subject: Product.
@@ -1779,17 +1779,24 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			/**
 			 * Check for invalid Schema type combinations (ie. a claim review of a claim review).
 			 */
-			if ( isset( $md_opts[ 'schema_type' ] ) && 'review.claim' === $md_opts[ 'schema_type' ] ) {
+			if ( isset( $md_opts[ 'schema_type' ] ) ) {	// Just in case.
+			
+				if ( 'book.audio' === $md_opts[ 'schema_type' ] ) {
 
-				if ( isset( $md_opts[ 'schema_review_item_type' ] ) && 'review.claim' === $md_opts[ 'schema_review_item_type' ] ) {
+					$md_opts[ 'schema_book_format' ] = 'https://schema.org/AudiobookFormat';
 
-					$md_opts[ 'schema_review_item_type' ] = $this->p->options[ 'schema_def_review_item_type' ];
+				} elseif ( 'review.claim' === $md_opts[ 'schema_type' ] ) {
 
-					$notice_msg = __( 'A claim review cannot be the subject of another claim review.', 'wpsso' ) . ' ';
+					if ( isset( $md_opts[ 'schema_review_item_type' ] ) && 'review.claim' === $md_opts[ 'schema_review_item_type' ] ) {
 
-					$notice_msg .= __( 'Please select a subject webpage type that better describes the subject of the webpage (ie. the content) being reviewed.', 'wpsso' );
+						$md_opts[ 'schema_review_item_type' ] = $this->p->options[ 'schema_def_review_item_type' ];
 
-					$this->p->notice->err( $notice_msg );
+						$notice_msg = __( 'A claim review cannot be the subject of another claim review.', 'wpsso' ) . ' ';
+
+						$notice_msg .= __( 'Please select a subject webpage type that better describes the subject of the webpage (ie. the content) being reviewed.', 'wpsso' );
+
+						$this->p->notice->err( $notice_msg );
+					}
 				}
 			}
 

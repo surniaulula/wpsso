@@ -138,6 +138,36 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 					switch ( $msg_key ) {
 
+						case 'tooltip-meta-schema_book_author_type':	// Book Author Type.
+
+							$text .= __( 'The creative work author can be a person or an organization.', 'wpsso' );
+
+						 	break;
+
+						case 'tooltip-meta-schema_book_author_name':	// Book Author Name.
+
+							$text = __( 'Enter the name of the author for this creative work.', 'wpsso' ) . ' ';
+
+						 	break;
+
+						case 'tooltip-meta-schema_book_author_url':	// Book Author URL.
+
+							$text = __( 'The home page of the author, or another definitive URL that provides information about the author, such as the person or organization\'s Wikipedia or Wikidata page.', 'wpsso' );
+
+						 	break;
+
+						case 'tooltip-meta-schema_book_pub':		// Book Publish Date
+
+							$text = __( 'The date when this creative work was published or entered public discourse.', 'wpsso' );
+
+						 	break;
+
+						case 'tooltip-meta-schema_book_created':	// Book Created Date.
+
+							$text = __( 'The date when this creative work was created.', 'wpsso' );
+
+						 	break;
+
 						case 'tooltip-meta-schema_book_edition':	// Book Edition.
 
 							$text = __( 'The edition of the book.', 'wpsso' );
@@ -593,7 +623,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 					switch ( $msg_key ) {
 
-						case 'tooltip-meta-schema_review_rating':		// Review Rating
+						case 'tooltip-meta-schema_review_rating':		// Review: Review Rating
 
 							$text = __( 'A rating for the subject being reviewed, along with the low / high rating scale (default is 1 to 5).', 'wpsso' ) . ' ';
 
@@ -601,43 +631,43 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_rating_alt_name':	// Rating Value Name
+						case 'tooltip-meta-schema_review_rating_alt_name':	// Review: Rating Value Name
 
 							$text = __( 'An alternate name for the rating value (example: False, Misleading, Accurate, etc.).', 'wpsso' );
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_item_type':		// Reviewed Subject Webpage Type.
-
-							$text = __( 'A Schema type for the subject of the webpage (ie. the content) being reviewed.', 'wpsso' );
-
-						 	break;
-
-						case 'tooltip-meta-schema_review_item_url':		// Reviewed Subject Webpage URL.
-
-							$text = __( 'A webpage URL for the subject of the review.', 'wpsso' );
-
-						 	break;
-
-						case 'tooltip-meta-schema_review_item_sameas_url':	// Reviewed Subject Same-As URL.
-
-							$text = $this->p->msgs->get( 'tooltip-meta-schema_sameas_url' );
-
-						 	break;
-
-						case 'tooltip-meta-schema_review_item_name':		// Reviewed Subject Name.
+						case 'tooltip-meta-schema_review_item_name':		// Review: Subject Name.
 
 							$text = __( 'A name for the subject of the review.', 'wpsso' );
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_item_desc':		// Reviewed Subject Description.
+						case 'tooltip-meta-schema_review_item_desc':		// Review: Subject Description.
 
 							$text = __( 'A description for the subject of the review.', 'wpsso' );
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_item_img_id':		// Reviewed Subject Image ID.
+						case 'tooltip-meta-schema_review_item_type':		// Review: Subject Webpage Type.
+
+							$text = __( 'A Schema type for the subject of the webpage (ie. the content) being reviewed.', 'wpsso' );
+
+						 	break;
+
+						case 'tooltip-meta-schema_review_item_url':		// Review: Subject Webpage URL.
+
+							$text = __( 'A webpage URL for the subject of the review.', 'wpsso' );
+
+						 	break;
+
+						case 'tooltip-meta-schema_review_item_sameas_url':	// Review: Subject Same-As URL.
+
+							$text = $this->p->msgs->get( 'tooltip-meta-schema_sameas_url' );
+
+						 	break;
+
+						case 'tooltip-meta-schema_review_item_img_id':		// Review: Subject Image ID.
 
 							$text = __( 'An image ID showing the subject of the review.', 'wpsso' ) . ' ';
 
@@ -645,7 +675,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_item_img_url':		// Reviewed Subject Image URL.
+						case 'tooltip-meta-schema_review_item_img_url':		// Review: Subject Image URL.
 
 							$text = __( 'An image URL (instead of an image ID) showing the subject of the review.', 'wpsso' ) . ' ';
 
@@ -653,79 +683,79 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_item_cw_author_type':	// Reviewed Subject Author Type.
+						case 'tooltip-meta-schema_review_item_cw_author_type':	// Review: Subject Author Type.
 
 							$text .= __( 'The creative work author can be a person or an organization.', 'wpsso' );
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_item_cw_author_name':	// Reviewed Subject Author Name.
+						case 'tooltip-meta-schema_review_item_cw_author_name':	// Review: Subject Author Name.
 
 							$text = __( 'Enter the name of the author for this creative work.', 'wpsso' ) . ' ';
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_item_cw_author_url':	// Reviewed Subject Author URL.
+						case 'tooltip-meta-schema_review_item_cw_author_url':	// Review: Subject Author URL.
 
 							$text = __( 'The home page of the author, or another definitive URL that provides information about the author, such as the person or organization\'s Wikipedia or Wikidata page.', 'wpsso' );
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_item_cw_pub':		// Reviewed Subject Publish Date
+						case 'tooltip-meta-schema_review_item_cw_pub':		// Review: Subject Publish Date
 
-							$text = __( 'The date when this creative work was published or became popular / entered public discourse (for example, when it became popular on social networks).', 'wpsso' );
+							$text = __( 'The date when this creative work was published or entered public discourse.', 'wpsso' );
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_item_cw_created':	// Reviewed Subject Created Date.
+						case 'tooltip-meta-schema_review_item_cw_created':	// Review: Subject Created Date.
 
 							$text = __( 'The date when this creative work was created.', 'wpsso' );
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_item_cw_book_isbn':	// Reviewed Book ISBN.
+						case 'tooltip-meta-schema_review_item_cw_book_isbn':	// Review: Subject Book ISBN.
 
 							$text = __( 'The ISBN code (aka International Standard Book Number) for the book being reviewed.', 'wpsso' );
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_item_cw_movie_actor_person_names':	// Reviewed Movie Cast Names.
+						case 'tooltip-meta-schema_review_item_cw_movie_actor_person_names':	// Review: Movie Cast Names.
 
 							$text = $this->p->msgs->get( 'tooltip-meta-schema_movie_actor_person_names' );
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_item_cw_movie_director_person_names':	// Reviewed Movie Director Names.
+						case 'tooltip-meta-schema_review_item_cw_movie_director_person_names':	// Review: Movie Director Names.
 
 							$text = $this->p->msgs->get( '', 'tooltip-meta-schema_movie_director_person_names' );
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_item_product_brand':	// Reviewed Product Brand.
+						case 'tooltip-meta-schema_review_item_product_brand':	// Review: Subject Product Brand.
 
 							$text = __( 'The brand name of the product being reviewed.', 'wpsso' );
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_item_product_offers':	// Reviewed Product Offers.
+						case 'tooltip-meta-schema_review_item_product_offers':	// Review: Subject Product Offers.
 
 							$text = __( 'One or more offers for the product being reviewed, including the offer name, price and currency.', 'wpsso' );
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_item_product_retailer_part_no':	// Reviewed Product SKU.
+						case 'tooltip-meta-schema_review_item_product_retailer_part_no':	// Review: Subject Product SKU.
 
 							$text = __( 'The SKU (aka Stock-Keeping Unit) of the product being reviewed.', 'wpsso' );
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_item_product_mfr_part_no':	// Reviewed Product MPN.
+						case 'tooltip-meta-schema_review_item_product_mfr_part_no':	// Review: Subject Product MPN.
 
 							$text = __( 'The MPN (aka Manufacturer Part Number) of the product being reviewed.', 'wpsso' );
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_item_software_app_offers':	// Reviewed Software App Offers.
+						case 'tooltip-meta-schema_review_item_software_app_offers':	// Review: Software App Offers.
 
 							$text = __( 'One or more offers for the software application being reviewed, including the offer name, price and currency.', 'wpsso' );
 

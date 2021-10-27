@@ -124,6 +124,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_title':				// Name / Title.
 					case 'schema_title_alt':			// Alternate Name.
 					case 'schema_bc_title':				// Breadcrumb Name.
+					case 'schema_book_author_name':			// Book Author Name.
 					case 'schema_desc':				// Description.
 					case 'schema_headline':				// Headline.
 					case 'schema_text':				// Full Text.
@@ -148,11 +149,11 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_recipe_yield':			// Recipe Makes.
 					case 'schema_review_rating_alt_name':
 					case 'schema_review_claim_reviewed':
-					case 'schema_review_item_name':					// Reviewed Subject Name.
-					case 'schema_review_item_desc':					// Reviewed Subject Description.
-					case 'schema_review_item_cw_author_name':			// Reviewed Subject Author Name.
-					case 'schema_review_item_cw_movie_actor_person_name':		// Reviewed Subject Movie Cast Names.
-					case 'schema_review_item_cw_movie_director_person_name':	// Reviewed Subject Movie Director Names.
+					case 'schema_review_item_name':					// Review: Subject Name.
+					case 'schema_review_item_desc':					// Review: Subject Description.
+					case 'schema_review_item_cw_author_name':			// Review: Subject Author Name.
+					case 'schema_review_item_cw_movie_actor_person_name':		// Review: Subject Movie Cast Names.
+					case 'schema_review_item_cw_movie_director_person_name':	// Review: Subject Movie Director Names.
 					case 'schema_review_item_software_app_cat':
 					case 'schema_review_item_software_app_os':
 					case 'schema_software_app_cat':
@@ -170,6 +171,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					/**
 					 * Options that cannot be blank.
 					 */
+					case 'schema_book_author_type':			// Book Author Type.
 					case 'schema_def_book_format':			// Default Format.
 					case 'schema_def_event_location_id':		// Default Physical Venue.
 					case 'schema_def_event_organizer_org_id':	// Default Organizer Org.
@@ -207,8 +209,8 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_prov_person_id':			// Service Prov. Person.
 					case 'schema_pub_org_id':			// Publisher Org.
 					case 'schema_pub_person_id':			// Publisher Person.
-					case 'schema_review_item_type':			// Reviewed Subject Webpage Type.
-					case 'schema_review_item_cw_author_type':	// Reviewed Subject Author Type.
+					case 'schema_review_item_type':			// Review: Subject Webpage Type.
+					case 'schema_review_item_cw_author_type':	// Review: Subject Author Type.
 					case 'schema_type':				// Schema Type.
 
 						return 'not_blank';
@@ -224,14 +226,15 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					 * Empty string or a URL.
 					 */
 					case 'schema_addl_type_url':			// Microdata Type URLs.
-					case 'schema_sameas_url':			// Same-As URLs.
+					case 'schema_book_author_url':			// Book Author URL.
 					case 'schema_ispartof_url':			// Is Part of URL.
 					case 'schema_license_url':			// License URL.
 					case 'schema_event_online_url':			// Event Online URL.
-					case 'schema_review_item_url':			// Reviewed Subject Webpage URL.
-					case 'schema_review_item_sameas_url':		// Reviewed Subject Same-As URL.
-					case 'schema_review_item_cw_author_url':	// Reviewed Subject Author URL.
+					case 'schema_review_item_url':			// Review: Subject Webpage URL.
+					case 'schema_review_item_sameas_url':		// Review: Subject Same-As URL.
+					case 'schema_review_item_cw_author_url':	// Review: Subject Author URL.
 					case 'schema_review_claim_first_url':		// First Appearance URL.
+					case 'schema_sameas_url':			// Same-As URLs.
 
 						return 'url';
 				}
@@ -360,7 +363,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'product_width_value':
 				case 'plugin_stamped_store_hash':	// Stamped.io Store Hash.
 				case 'schema_book_isbn':		// Book ISBN.
-				case 'schema_review_item_cw_book_isbn':	// Reviewed Subject Book ISBN.
+				case 'schema_review_item_cw_book_isbn':	// Review: Subject Book ISBN.
 
 					return 'blank_num';
 

@@ -332,6 +332,38 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tooltip'  => 'meta-schema_book_author_type',
 					'content'  => $form->get_no_select( 'schema_book_author_type', $this->p->cf[ 'form' ][ 'author_types' ] ),
 				),
+				'schema_book_author_name' => array(
+					'tr_class' => $schema_type_row_class[ 'book' ],
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Book Author Name', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_book_author_name',
+					'content'  => $form->get_no_input_value( $value = '', $css_class = 'wide' ),
+				),
+				'schema_book_author_url' => array(
+					'tr_class' => $schema_type_row_class[ 'book' ],
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Book Author URL', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_book_author_url',
+					'content'  => $form->get_no_input_value( $value = '', $css_class = 'wide' ),
+				),
+				'schema_book_pub' => array(
+					'tr_class' => $schema_type_row_class[ 'book' ],
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Book Published Date', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_book_pub',
+					'content'  => $form->get_no_date_time_tz( 'schema_book_pub' ),
+				),
+				'schema_book_created' => array(
+					'tr_class' => $schema_type_row_class[ 'book' ],
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Book Created Date', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_book_created',
+					'content'  => $form->get_no_date_time_tz( 'schema_book_created' ),
+				),
 				'schema_book_edition' => array(
 					'tr_class' => $schema_type_row_class[ 'book' ],
 					'th_class' => 'medium',
@@ -743,38 +775,6 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'header'   => 'h4',
 					'label'    => _x( 'Subject of the Review', 'metabox title', 'wpsso' ),
 				),
-				'schema_review_item_type' => array(
-					'tr_class' => $schema_type_row_class[ 'review' ],
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'Subject Webpage Type', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-schema_review_item_type',
-					'content'  => $form->get_no_select( 'schema_review_item_type', $schema_types,
-						$css_class = 'schema_type', $css_id = '', $is_assoc = true,
-							$selected = false, $event_names = array( 'on_focus_load_json', 'on_show_unhide_rows' ),
-								$event_args = array(
-									'json_var'  => 'schema_types',
-									'exp_secs'  => WPSSO_CACHE_SELECT_JSON_EXP_SECS,	// Create and read from a javascript URL.
-									'is_transl' => true,					// No label translation required.
-									'is_sorted' => true,					// No label sorting required.
-								) ),
-				),
-				'schema_review_item_url' => array(
-					'tr_class' => $schema_type_row_class[ 'review' ],
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'Subject Webpage URL', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-schema_review_item_url',
-					'content'  => $form->get_no_input_value( $value = '', $css_class = 'wide is_required' ),
-				),
-				'schema_review_item_sameas_url' => array(
-					'tr_class' => $form->get_css_class_hide_prefix( 'basic', 'schema_review_item_sameas_url' ),
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'Subject Same-As URLs', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-schema_review_item_sameas_url',
-					'content'  => $form->get_no_input_value( $value = '', $css_class = 'wide', $css_id = '', '', $repeat = 2 ),
-				),
 				'schema_review_item_name' => array(
 					'tr_class' => $schema_type_row_class[ 'review' ],
 					'th_class' => 'medium',
@@ -806,6 +806,38 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_review_item_img_url',
 					'content'  => $form->get_no_input_value( $value = '' ),
+				),
+				'schema_review_item_type' => array(
+					'tr_class' => $schema_type_row_class[ 'review' ],
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Subject Webpage Type', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_review_item_type',
+					'content'  => $form->get_no_select( 'schema_review_item_type', $schema_types,
+						$css_class = 'schema_type', $css_id = '', $is_assoc = true,
+							$selected = false, $event_names = array( 'on_focus_load_json', 'on_show_unhide_rows' ),
+								$event_args = array(
+									'json_var'  => 'schema_types',
+									'exp_secs'  => WPSSO_CACHE_SELECT_JSON_EXP_SECS,	// Create and read from a javascript URL.
+									'is_transl' => true,					// No label translation required.
+									'is_sorted' => true,					// No label sorting required.
+								) ),
+				),
+				'schema_review_item_url' => array(
+					'tr_class' => $schema_type_row_class[ 'review' ],
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Subject Webpage URL', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_review_item_url',
+					'content'  => $form->get_no_input_value( $value = '', $css_class = 'wide is_required' ),
+				),
+				'schema_review_item_sameas_url' => array(
+					'tr_class' => $form->get_css_class_hide_prefix( 'basic', 'schema_review_item_sameas_url' ),
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Subject Same-As URLs', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_review_item_sameas_url',
+					'content'  => $form->get_no_input_value( $value = '', $css_class = 'wide', $css_id = '', '', $repeat = 2 ),
 				),
 
 				/**
@@ -1185,7 +1217,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Brand', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_brand',
-					'content'  => $form->get_no_input( 'product_brand', $css_class = '', $css_id = '', $holder = true ),
+					'content'  => $form->get_no_input( 'product_brand', $css_class = 'wide', $css_id = '', $holder = true ),
 				),
 				'schema_product_price' => array(
 					'tr_class' => $schema_type_row_class[ 'product' ],

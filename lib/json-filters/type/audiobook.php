@@ -41,18 +41,9 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeAudiobook' ) ) {
 			}
 
 			$json_ret = array();
+			$md_opts  = array();
 
-			if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
-
-				$md_opts = SucomUtil::get_opts_begin( 'schema_book_audio_', array_merge( 
-					(array) $mod[ 'obj' ]->get_defaults( $mod[ 'id' ] ),
-					(array) $mod[ 'obj' ]->get_options( $mod[ 'id' ] )	// Returns empty string if no meta found.
-				) );
-
-			} else {
-
-				$md_opts = array();
-			}
+			SucomUtil::add_type_opts_md_pad( $md_opts, $mod );
 
 			/**
 			 * Property:

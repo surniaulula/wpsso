@@ -41,11 +41,9 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeSoftwareApplication' ) ) {
 			}
 
 			$json_ret = array();
+			$md_opts  = array();
 
-			if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
-
-				$md_opts = SucomUtil::get_opts_begin( 'schema_software_app_', (array) $mod[ 'obj' ]->get_options( $mod[ 'id' ] ) );
-			}
+			SucomUtil::add_type_opts_md_pad( $md_opts, $mod );
 
 			/**
 			 * Property:

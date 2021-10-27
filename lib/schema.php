@@ -800,7 +800,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $children;
 		}
 
-		public static function get_schema_type_context( $type_url, array $json_data = array() ) {
+		public static function get_schema_type_context( $type_url, $json_data = array() ) {
 
 			if ( preg_match( '/^(.+:\/\/.+)\/([^\/]+)$/', $type_url, $match ) ) {
 
@@ -839,15 +839,21 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					'@type'    => $type_value,
 				);
 
-				$json_data = array_merge(
-					$json_head,	// Keep @id, @context, and @type top-most.
-					$json_data,
-					$json_values
-				);
+				/**
+				 * Include $json_head first to keep @id, @context, and @type top-most.
+				 */
+				if ( is_array( $json_data ) ) {	// Just in case.
 
-				if ( empty( $json_data[ '@id' ] ) ) {
+					$json_data = array_merge( $json_head, $json_data, $json_values );
 
-					unset( $json_data[ '@id' ] );
+					if ( empty( $json_data[ '@id' ] ) ) {
+
+						unset( $json_data[ '@id' ] );
+					}
+
+				} else {
+
+					return $json_values;
 				}
 			}
 
@@ -1464,7 +1470,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						 */
 						$mt_images = $wpsso->media->get_mt_opts_images( $md_opts, $size_names = 'schema', $opt_prefix . '_img', $md_num );
 
-						WpssoSchema::add_images_data_mt( $step_images, $mt_images );
+						self::add_images_data_mt( $step_images, $mt_images );
 
 						/**
 						 * Restore previous reference values for admin notices.
@@ -1480,7 +1486,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					 */
 					if ( ! empty( $md_opts[ $opt_prefix . '_section_' . $md_num ] ) ) {
 
-						$json_data[ $prop_name ][ $step_idx ] = WpssoSchema::get_schema_type_context( 'https://schema.org/HowToSection',
+						$json_data[ $prop_name ][ $step_idx ] = self::get_schema_type_context( 'https://schema.org/HowToSection',
 							array(
 								'name'            => $md_val,
 								'description'     => $step_text,
@@ -1508,7 +1514,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					 */
 					} else {
 
-						$step_arr = WpssoSchema::get_schema_type_context( 'https://schema.org/HowToStep',
+						$step_arr = self::get_schema_type_context( 'https://schema.org/HowToStep',
 							array(
 								'position' => $step_pos,
 								'name'     => $md_val,		// The step name.
@@ -1539,6 +1545,238 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						}
 
 						$step_pos++;
+					}
+				}
+			}
+		}
+
+		public static function add_item_reviewed_data( &$json_data, $mod, $md_opts ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->mark();
+			}
+
+			if ( self::is_valid_key( $md_opts, 'schema_review_item_type' ) ) {	// Not null, an empty string, or 'none'.
+
+				$type_id = $md_opts[ 'schema_review_item_type' ];
+
+			} else {
+
+				$type_id = 'thing';
+			}
+
+			$type_url = $wpsso->schema->get_schema_type_url( $type_id );
+
+			$json_data = self::get_schema_type_context( $type_url, $json_data );
+
+			WpssoSchema::add_data_itemprop_from_assoc( $json_data, $md_opts, array(
+				'url'         => 'schema_review_item_url',
+				'name'        => 'schema_review_item_name',
+				'description' => 'schema_review_item_desc',
+			) );
+
+			foreach ( SucomUtil::preg_grep_keys( '/^schema_review_item_sameas_url_[0-9]+$/', $md_opts ) as $url ) {
+
+				$json_data[ 'sameAs' ][] = SucomUtil::esc_url_encode( $url );
+			}
+
+			WpssoSchema::check_prop_value_sameas( $json_data );
+
+			/**
+			 * Set reference values for admin notices.
+			 */
+			if ( is_admin() ) {
+
+				$canonical_url = $wpsso->util->get_canonical_url( $mod );
+
+				$wpsso->util->maybe_set_ref( $canonical_url, $mod, __( 'adding reviewed subject image', 'wpsso' ) );
+			}
+
+			/**
+			 * Add the item images.
+			 *
+			 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
+			 */
+			$mt_images = $wpsso->media->get_mt_opts_images( $md_opts, $size_names = 'schema', $img_pre = 'schema_review_item_img' );
+
+			WpssoSchema::add_images_data_mt( $json_data[ 'image' ], $mt_images );
+
+			if ( empty( $json_data[ 'image' ] ) ) {
+
+				unset( $json_data[ 'image' ] );	// Prevent null assignment.
+
+			} elseif ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( $json_data[ 'image' ] );
+			}
+
+			/**
+			 * Restore previous reference values for admin notices.
+			 */
+			if ( is_admin() ) {
+
+				$wpsso->util->maybe_unset_ref( $canonical_url );
+			}
+
+			/**
+			 * Item Reviewed: Creative Work
+			 */
+			if ( $wpsso->schema->is_schema_type_child( $type_id, 'creative.work' ) ) {
+
+				/**
+				 * The author type value should be either 'organization' or 'person'.
+				 */
+				if ( self::is_valid_key( $md_opts, 'schema_review_item_cw_author_type' ) ) {	// Not null, an empty string, or 'none'.
+
+					$author_type_url = $wpsso->schema->get_schema_type_url( $md_opts[ 'schema_review_item_cw_author_type' ] );
+
+					$json_data[ 'author' ] = self::get_schema_type_context( $author_type_url );
+
+					self::add_data_itemprop_from_assoc( $json_data[ 'author' ], $md_opts, array(
+						'name' => 'schema_review_item_cw_author_name',
+					) );
+
+					if ( ! empty( $md_opts[ 'schema_review_item_cw_author_url' ] ) ) {
+
+						$json_data[ 'author' ][ 'sameAs' ][] = SucomUtil::esc_url_encode( $md_opts[ 'schema_review_item_cw_author_url' ] );
+					}
+				}
+
+				/**
+				 * Add the creative work published date, if one is available.
+				 */
+				if ( $date = self::get_opts_date_iso( $md_opts, 'schema_review_item_cw_pub' ) ) {
+
+					$json_data[ 'datePublished' ] = $date;
+				}
+
+				/**
+				 * Add the creative work created date, if one is available.
+				 */
+				if ( $date = self::get_opts_date_iso( $md_opts, 'schema_review_item_cw_created' ) ) {
+
+					$json_data[ 'dateCreated' ] = $date;
+				}
+
+				/**
+				 * Item Reviewed: Creative Work > Book
+				 */
+				if ( $wpsso->schema->is_schema_type_child( $type_id, 'book' ) ) {
+
+					self::add_data_itemprop_from_assoc( $json_data, $md_opts, array(
+						'isbn' => 'schema_review_item_cw_book_isbn',
+					) );
+
+				/**
+				 * Item Reviewed: Creative Work > Movie
+				 */
+				} elseif ( $wpsso->schema->is_schema_type_child( $type_id, 'movie' ) ) {
+
+					/**
+					 * Property:
+					 * 	actor (supersedes actors)
+					 */
+					self::add_person_names_data( $json_data, 'actor', $md_opts, 'schema_review_item_cw_movie_actor_person_name' );
+
+					/**
+					 * Property:
+					 * 	director
+					 */
+					self::add_person_names_data( $json_data, 'director', $md_opts, 'schema_review_item_cw_movie_director_person_name' );
+
+				/**
+				 * Item Reviewed: Creative Work > Software Application
+				 */
+				} elseif ( $wpsso->schema->is_schema_type_child( $type_id, 'software.application' ) ) {
+
+					self::add_data_itemprop_from_assoc( $json_data, $md_opts, array(
+						'applicationCategory'  => 'schema_review_item_software_app_cat',
+						'operatingSystem'      => 'schema_review_item_software_app_os',
+					) );
+
+					$metadata_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX', 5 );
+
+					foreach ( range( 0, $metadata_offers_max - 1, 1 ) as $key_num ) {
+
+						$offer_opts = SucomUtil::preg_grep_keys( '/^schema_review_item_software_app_(offer_.*)_' . $key_num. '$/',
+							$md_opts, $invert = false, $replace = '$1' );
+
+						/**
+						 * Must have at least an offer name and price.
+						 */
+						if ( isset( $offer_opts[ 'offer_name' ] ) && isset( $offer_opts[ 'offer_price' ] ) ) {
+
+							if ( false !== ( $offer = self::get_data_itemprop_from_assoc( $offer_opts, array( 
+								'name'          => 'offer_name',
+								'price'         => 'offer_price',
+								'priceCurrency' => 'offer_currency',
+								'availability'  => 'offer_avail',	// In stock, Out of stock, Pre-order, etc.
+							) ) ) ) {
+
+								/**
+								 * Avoid Google validator warnings.
+								 */
+								$offer[ 'url' ]             = $json_data[ 'url' ];
+								$offer[ 'priceValidUntil' ] = gmdate( 'c', time() + MONTH_IN_SECONDS );
+
+								/**
+								 * Add the offer.
+								 */
+								$json_data[ 'offers' ][] = self::get_schema_type_context( 'https://schema.org/Offer', $offer );
+							}
+						}
+					}
+				}
+
+			/**
+			 * Item Reviewed: Product
+			 */
+			} elseif ( $wpsso->schema->is_schema_type_child( $type_id, 'product' ) ) {
+
+				self::add_data_itemprop_from_assoc( $json_data, $md_opts, array(
+					'sku'  => 'schema_review_item_product_retailer_part_no',
+					'mpn'  => 'schema_review_item_product_mfr_part_no',
+				) );
+
+				/**
+				 * Add the product brand.
+				 */
+				$single_brand = self::get_data_itemprop_from_assoc( $md_opts, array( 
+					'name' => 'schema_review_item_product_brand',
+				) );
+
+				if ( false !== $single_brand ) {	// Just in case.
+
+					$json_data[ 'brand' ] = self::get_schema_type_context( 'https://schema.org/Brand', $single_brand );
+				}
+
+				$metadata_offers_max = SucomUtil::get_const( 'WPSSO_SCHEMA_METADATA_OFFERS_MAX', 5 );
+
+				foreach ( range( 0, $metadata_offers_max - 1, 1 ) as $key_num ) {
+
+					$offer_opts = SucomUtil::preg_grep_keys( '/^schema_review_item_product_(offer_.*)_' . $key_num. '$/',
+						$md_opts, $invert = false, $replace = '$1' );
+
+					/**
+					 * Must have at least an offer name and price.
+					 */
+					if ( isset( $offer_opts[ 'offer_name' ] ) && isset( $offer_opts[ 'offer_price' ] ) ) {
+
+						if ( false !== ( $offer = self::get_data_itemprop_from_assoc( $offer_opts, array( 
+							'name'          => 'offer_name',
+							'price'         => 'offer_price',
+							'priceCurrency' => 'offer_currency',
+							'availability'  => 'offer_avail',	// In stock, Out of stock, Pre-order, etc.
+						) ) ) ) {
+
+							/**
+							 * Add the offer.
+							 */
+							$json_data[ 'offers' ][] = self::get_schema_type_context( 'https://schema.org/Offer', $offer );
+						}
 					}
 				}
 			}
@@ -1584,7 +1822,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				 */
 				if ( ! empty( $mt_offer[ 'og:image' ] ) ) {
 
-					WpssoSchema::add_images_data_mt( $single_offer[ 'image' ], $mt_offer[ 'og:image' ] );
+					self::add_images_data_mt( $single_offer[ 'image' ], $mt_offer[ 'og:image' ] );
 				}
 
 				/**
@@ -1646,7 +1884,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				 */
 				if ( ! empty( $mt_offer[ 'og:image' ] ) ) {
 
-					WpssoSchema::add_images_data_mt( $single_offer[ 'image' ], $mt_offer[ 'og:image' ] );
+					self::add_images_data_mt( $single_offer[ 'image' ], $mt_offer[ 'og:image' ] );
 				}
 
 				/**

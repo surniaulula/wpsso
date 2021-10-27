@@ -2755,27 +2755,32 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 *
 		 * $type_opts can be false, an empty array, or an array of one or more options.
 		 */
-		public static function add_type_opts_md_pad( &$type_opts, array $mod, array $opts_md_pre ) {
+		public static function add_type_opts_md_pad( &$type_opts, array $mod, array $opts_md_pre = array() ) {
 
 			if ( is_object( $mod[ 'obj' ] ) ) {	// Just in case.
 
 				$md_defs = (array) $mod[ 'obj' ]->get_defaults( $mod[ 'id' ] );
-
 				$md_opts = (array) $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
 
-				foreach ( $opts_md_pre as $opt_key => $md_pre ) {
+				if ( empty( $opts_md_pre ) ) {	// Nothing to rename.
 
-					$md_defs = self::preg_grep_keys( '/^' . $md_pre . '_/', $md_defs, $invert = false, $opt_key . '_' );
+					$type_opts = array_merge( $md_defs, $md_opts );
 
-					$md_opts = self::preg_grep_keys( '/^' . $md_pre . '_/', $md_opts, $invert = false, $opt_key . '_' );
+				} else {
 
-					if ( is_array( $type_opts ) ) {
+					foreach ( $opts_md_pre as $opt_key => $md_pre ) {
 
-						$type_opts = array_merge( $md_defs, $type_opts, $md_opts );
+						$md_defs = self::preg_grep_keys( '/^' . $md_pre . '_/', $md_defs, $invert = false, $opt_key . '_' );
+						$md_opts = self::preg_grep_keys( '/^' . $md_pre . '_/', $md_opts, $invert = false, $opt_key . '_' );
 
-					} else {
+						if ( is_array( $type_opts ) ) {
 
-						$type_opts = array_merge( $md_defs, $md_opts );
+							$type_opts = array_merge( $md_defs, $type_opts, $md_opts );
+
+						} else {
+
+							$type_opts = array_merge( $md_defs, $md_opts );
+						}
 					}
 				}
 			}
