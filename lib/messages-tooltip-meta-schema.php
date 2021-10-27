@@ -138,9 +138,9 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 					switch ( $msg_key ) {
 
-						case 'tooltip-meta-schema_book_isbn':		// Book ISBN.
+						case 'tooltip-meta-schema_book_edition':	// Book Edition.
 
-							$text = __( 'The ISBN code (aka International Standard Book Number) of the book.', 'wpsso' );
+							$text = __( 'The edition of the book.', 'wpsso' );
 
 						 	break;
 
@@ -150,15 +150,15 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-schema_book_edition':	// Book Edition.
-
-							$text = __( 'The edition of the book.', 'wpsso' );
-
-						 	break;
-
 						case 'tooltip-meta-schema_book_pages':		// Number of Pages.
 
 							$text = __( 'The number of pages in the book.', 'wpsso' );
+
+						 	break;
+
+						case 'tooltip-meta-schema_book_isbn':		// Book ISBN.
+
+							$text = __( 'The ISBN code (aka International Standard Book Number) of the book.', 'wpsso' );
 
 						 	break;
 
@@ -593,7 +593,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 					switch ( $msg_key ) {
 
-						case 'tooltip-meta-schema_review_rating':	// Review Rating
+						case 'tooltip-meta-schema_review_rating':		// Review Rating
 
 							$text = __( 'A rating for the subject being reviewed, along with the low / high rating scale (default is 1 to 5).', 'wpsso' ) . ' ';
 
@@ -607,13 +607,13 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_item_type':	// Reviewed Subject Webpage Type.
+						case 'tooltip-meta-schema_review_item_type':		// Reviewed Subject Webpage Type.
 
 							$text = __( 'A Schema type for the subject of the webpage (ie. the content) being reviewed.', 'wpsso' );
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_item_url':	// Reviewed Subject Webpage URL.
+						case 'tooltip-meta-schema_review_item_url':		// Reviewed Subject Webpage URL.
 
 							$text = __( 'A webpage URL for the subject of the review.', 'wpsso' );
 
@@ -625,19 +625,19 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_item_name':	// Reviewed Subject Name.
+						case 'tooltip-meta-schema_review_item_name':		// Reviewed Subject Name.
 
 							$text = __( 'A name for the subject of the review.', 'wpsso' );
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_item_desc':	// Reviewed Subject Description.
+						case 'tooltip-meta-schema_review_item_desc':		// Reviewed Subject Description.
 
 							$text = __( 'A description for the subject of the review.', 'wpsso' );
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_item_img_id':	// Reviewed Subject Image ID.
+						case 'tooltip-meta-schema_review_item_img_id':		// Reviewed Subject Image ID.
 
 							$text = __( 'An image ID showing the subject of the review.', 'wpsso' ) . ' ';
 
@@ -645,7 +645,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_item_img_url':	// Reviewed Subject Image URL.
+						case 'tooltip-meta-schema_review_item_img_url':		// Reviewed Subject Image URL.
 
 							$text = __( 'An image URL (instead of an image ID) showing the subject of the review.', 'wpsso' ) . ' ';
 
@@ -653,31 +653,31 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_item_cw_author_type':	// Reviewed CreativeWork Author Type.
+						case 'tooltip-meta-schema_review_item_cw_author_type':	// Reviewed Subject Author Type.
 
 							$text .= __( 'The creative work author can be a person or an organization.', 'wpsso' );
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_item_cw_author_name':	// Reviewed CreativeWork Author Name.
+						case 'tooltip-meta-schema_review_item_cw_author_name':	// Reviewed Subject Author Name.
 
 							$text = __( 'Enter the name of the author for this creative work.', 'wpsso' ) . ' ';
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_item_cw_author_url':	// Reviewed CreativeWork Author URL.
+						case 'tooltip-meta-schema_review_item_cw_author_url':	// Reviewed Subject Author URL.
 
 							$text = __( 'The home page of the author, or another definitive URL that provides information about the author, such as the person or organization\'s Wikipedia or Wikidata page.', 'wpsso' );
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_item_cw_pub':	// Reviewed CreativeWork Publish Date
+						case 'tooltip-meta-schema_review_item_cw_pub':		// Reviewed Subject Publish Date
 
 							$text = __( 'The date when this creative work was published or became popular / entered public discourse (for example, when it became popular on social networks).', 'wpsso' );
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_item_cw_created':	// Reviewed CreativeWork Created Date.
+						case 'tooltip-meta-schema_review_item_cw_created':	// Reviewed Subject Created Date.
 
 							$text = __( 'The date when this creative work was created.', 'wpsso' );
 
@@ -731,7 +731,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_claim_reviewed':	// Short Summary of Claim
+						case 'tooltip-meta-schema_review_claim_reviewed':		// Short Summary of Claim
 
 							$text = __( 'A short summary of specific claim(s) being reviewed in the Schema ClaimReview content.', 'wpsso' ) . ' ';
 
@@ -739,7 +739,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_claim_first_url':	// First Appearance URL
+						case 'tooltip-meta-schema_review_claim_first_url':		// First Appearance URL
 
 							$text = __( 'An optional webpage URL where this specific claim first appeared.', 'wpsso' );
 
@@ -751,7 +751,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_item_software_app_os':	// Reviews Software App Operating System.
+						case 'tooltip-meta-schema_review_item_software_app_os':		// Reviews Software App Operating System.
 
 							$text = $this->p->msgs->get( 'tooltip-meta-schema_software_app_os' );
 

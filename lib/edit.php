@@ -194,12 +194,6 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 				/**
 				 * Open Graph Article type.
 				 */
-				'subsection_og_article' => array(
-					'tr_class' => 'hide_og_type hide_og_type_article',
-					'td_class' => 'subsection',
-					'header'   => 'h5',
-					'label'    => _x( 'Article Information', 'metabox title', 'wpsso' )
-				),
 				'og_article_section' => array(
 					'tr_class' => 'hide_og_type hide_og_type_article',
 					'th_class' => 'medium',

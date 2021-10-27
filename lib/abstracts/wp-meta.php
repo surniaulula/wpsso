@@ -448,13 +448,22 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					/**
 					 * Schema Book.
 					 */
-					'schema_book_isbn'    => '',					// Book ISBN.
-					'schema_book_format'  => $opts[ 'schema_def_book_format' ],	// Book Format.
-					'schema_book_edition' => '',					// Book Edition.
-					'schema_book_pages'   => '',					// Number of Pages.
+					'schema_book_author_type'      => 'none',				// Author Type.
+					'schema_book_author_name'      => '',					// Author Name.
+					'schema_book_author_url'       => '',					// Author URL.
+					'schema_book_pub_date'         => '',					// Publish Date.
+					'schema_book_pub_time'         => 'none',				// Publish Time.
+					'schema_book_pub_timezone'     => $timezone,				// Publish Timezone.
+					'schema_book_created_date'     => '',					// Created Date.
+					'schema_book_created_time'     => 'none',				// Created Time.
+					'schema_book_created_timezone' => $timezone,				// Created Timezone.
+					'schema_book_edition'          => '',					// Book Edition.
+					'schema_book_format'           => $opts[ 'schema_def_book_format' ],	// Book Format.
+					'schema_book_pages'            => '',					// Number of Pages.
+					'schema_book_isbn'             => '',					// Book ISBN.
 
 					/**
-					 * Schema Audiobook.
+					 * Schema Book > Audiobook.
 					 */
 					'schema_book_audio_duration_days'  => 0,	// Audiobook Duration (Days).
 					'schema_book_audio_duration_hours' => 0,	// Audiobook Duration (Hours).
