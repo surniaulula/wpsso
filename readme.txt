@@ -332,7 +332,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.4.0-b.2 (2021/10/26)**
+**Version 9.4.0-b.3 (2021/10/27)**
 
 * **New Features**
 	* Added an integration module for the Elementor Website Builder plugin.
@@ -514,9 +514,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.4.0-b.2 =
+= 9.4.0-b.3 =
 
-(2021/10/26) Added an integration module for the Elementor Website Builder plugin. Fixed home page Schema Organization logo detection by Google. Fixed missing product currency when the default currency is selected in the Document SSO metabox.
+(2021/10/27) Added an integration module for the Elementor Website Builder plugin. Fixed home page Schema Organization logo detection by Google. Fixed missing product currency when the default currency is selected in the Document SSO metabox.
 
 = 9.3.0 =
 
