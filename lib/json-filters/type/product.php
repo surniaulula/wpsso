@@ -182,11 +182,6 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeProduct' ) ) {
 
 					if ( $single_offer = WpssoSchemaSingle::get_offer_data( $mod, $mt_og ) ) {
 
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log_arr( '$single_offer', $single_offer );
-						}
-
 						$json_ret[ 'offers' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/Offer', $single_offer );
 
 					} elseif ( $this->p->debug->enabled ) {

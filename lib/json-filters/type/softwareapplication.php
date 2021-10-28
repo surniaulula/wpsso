@@ -80,7 +80,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeSoftwareApplication' ) ) {
 				 * Property:
 				 * 	offers as https://schema.org/Offer
 				 */
-				if ( empty( $mt_og[ 'product:offers' ] ) ) {
+				if ( empty( $mt_og[ 'product:offers' ] ) ) {	// No product variations.
 
 					if ( $this->p->debug->enabled ) {
 
@@ -98,7 +98,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeSoftwareApplication' ) ) {
 
 					} elseif ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'returned $single_offer is empty' );
+						$this->p->debug->log( 'returned single offer is empty' );
 					}
 
 				/**
@@ -119,6 +119,13 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeSoftwareApplication' ) ) {
 					} else {
 
 						WpssoSchema::add_offers_aggregate_data( $json_ret, $mod, $mt_og[ 'product:offers' ] );
+					}
+
+				} else {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'product offers is not an array' );
 					}
 				}
 
