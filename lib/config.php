@@ -2845,10 +2845,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'book'                 => 'book',
 					'place'                => 'place',	// Check for Schema place before Schema organization.
 					'organization'         => 'website',	// Check for Schema place before Schema organization.
-					'product'              => 'product',
+					'product'              => 'product',	// Allows for product offer options.
 					'question'             => 'article',
 					'review'               => 'article',
-					'software.application' => 'product',
+					'software.application' => 'product',	// Allows for product offer options.
 					'webpage.profile'      => 'profile',
 				),
 
