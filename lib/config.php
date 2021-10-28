@@ -2354,11 +2354,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 				),
 			),
-			'meta' => array(			// Post, term, user add_meta_box() settings.
+			'meta' => array(	// Post, term, user add_meta_box() settings.
 				'id'    => 'sso',
 				'title' => 'Document SSO',
 			),
-			'edit' => array(			// Post, term, user lists.
+			'edit' => array(	// Post, term, user lists.
 				'columns' => array(
 					'schema_type' => array(
 						'header'   => 'Schema',

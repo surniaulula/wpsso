@@ -1057,6 +1057,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			}
 
 			$head_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache );
+
 			$head_info = $this->p->head->extract_head_info( $mod, $head_tags );
 
 			return $local_cache[ $mod[ 'id' ] ] = $head_info;
