@@ -168,7 +168,7 @@ The WPSSO Core Standard plugin is designed to satisfy the requirements of most s
 
 **&#91;Premium&#93;** Integrates with other plugins and service APIs for additional image, video, e-Commerce product details, SEO settings, etc. The following modules are included with the Premium version and automatically loaded if/when the supported plugins and/or services are required.
 
-* **Reads data from 30 third-party plugins:** 
+* **Reads data from 31 third-party plugins:** 
 
 	* All in One SEO Pack
 	* bbPress
@@ -332,7 +332,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.4.0-rc.1 (2021/10/28)**
+**Version 9.4.0 (2021/10/28)**
 
 * **New Features**
 	* Added an integration module for the Elementor Website Builder plugin.
@@ -518,7 +518,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.4.0-rc.1 =
+= 9.4.0 =
 
 (2021/10/28) Added integration module for Elementor Website Builder plugin. Fixed home page Schema Organization logo. Fixed missing product currency. Added options under the Document SSO &gt; Customize tab.
 
