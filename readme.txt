@@ -220,9 +220,9 @@ The WPSSO Core Standard plugin is designed to satisfy the requirements of most s
 	* Your Own URL Shortener (YOURLS)
 	* YouTube Videos and Playlists
 
-<h3>Free Complementary Add-ons</h3>
+<h3>Complementary Add-ons for WPSSO Core</h3>
 
-Do you need even more advanced features? Activate any of the free complementary add-on(s) you require:
+Do you need more specialized or advanced features? Activate any of these free complementary add-on(s):
 
 * [WPSSO FAQ Manager](https://wordpress.org/plugins/wpsso-faq/) to manage FAQ categories with Question and Answer pages.
 * [WPSSO Inherit Parent Metadata](https://wordpress.org/plugins/wpsso-inherit-parent-meta/) to inherit featured and custom images.

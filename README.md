@@ -236,9 +236,9 @@
 </ul></li>
 </ul>
 
-<h3>Free Complementary Add-ons</h3>
+<h3>Complementary Add-ons for WPSSO Core</h3>
 
-<p>Do you need even more advanced features? Activate any of the free complementary add-on(s) you require:</p>
+<p>Do you need more specialized or advanced features? Activate any of these free complementary add-on(s):</p>
 
 <ul>
 <li><a href="https://wordpress.org/plugins/wpsso-faq/">WPSSO FAQ Manager</a> to manage FAQ categories with Question and Answer pages.</li>
