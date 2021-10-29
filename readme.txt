@@ -241,6 +241,11 @@ Activate any of these free complementary add-on(s):
 * [WPSSO Tune WP Image Editors](https://wordpress.org/plugins/wpsso-tune-image-editors/) for better looking WordPress thumbnail images.
 * [WPSSO User Locale Selector](https://wordpress.org/plugins/wpsso-user-locale/) to switch languages quickly and easily.
 
+<h3>Additional Add-ons for WPSSO Core Premium</h3>
+
+* [WPSSO Add Five Stars](https://wpsso.com/extend/plugins/wpsso-add-five-stars/) if the Schema markup does not already have an 'aggregateRating' property.
+* [WPSSO Schema Shortcode](https://wpsso.com/extend/plugins/wpsso-schema-shortcode/) for advanced Schema markup of content sections.
+
 == Installation ==
 
 <h3 class="top">Install and Uninstall</h3>
