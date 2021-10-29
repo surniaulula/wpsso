@@ -2077,8 +2077,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		/**
 		 * Pass a single or two dimension image array in $mt_images.
+		 *
+		 * Calls WpssoSchemaSingle::add_image_data_mt() to add each single image element.
 		 */
-		public static function add_images_data_mt( &$json_data, &$mt_images, $media_pre = 'og:image' ) {
+		public static function add_images_data_mt( &$json_data, $mt_images, $media_pre = 'og:image', $resize = false ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -2089,19 +2091,48 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$images_added = 0;
 
-			if ( isset( $mt_images[ 0 ] ) && is_array( $mt_images[ 0 ] ) ) {	// 2 dimensional array.
+			if ( empty( $mt_images ) || ! is_array( $mt_images ) ) {
 
-				foreach ( $mt_images as $mt_single_image ) {
+				return $images_added;
+			}
+
+			/**
+			 * Maybe convert single image array to array of image arrays.
+			 */
+			if ( ! isset( $mt_images[ 0 ] ) || ! is_array( $mt_images[ 0 ] ) ) {
+
+				$mt_images = array( $mt_images );
+			}
+
+			$resized_pids = array();	// Avoid adding the same image ID more than once.
+
+			foreach ( $mt_images as $mt_single_image ) {
+
+				/**
+				 * Get the image ID and create a Schema images array.
+				 */
+				if ( $resize && $pid = $wpsso->og->get_media_value( array( $mt_single_image ), 'og:image:id' ) ) {
+
+					if ( empty( $resized_pids[ $pid ] ) ) {	// Skip image IDs already added.
+
+						$resized_pids[ $pid ] = true;
+
+						$mt_resized = $wpsso->media->get_mt_pid_images( $pid, $size_names = 'schema', $check_dupes = false, $mt_pre = 'og' );
+
+						/**
+						 * Recurse this method, but make sure $resize is false so we don't re-execute this
+						 * section of code (creating an infinite loop).
+						 */
+						$images_added += self::add_images_data_mt( $json_data, $mt_resized, $media_pre, $resize = false );
+					}
+
+				} else {	// No resize or no image ID found.
 
 					$images_added += WpssoSchemaSingle::add_image_data_mt( $json_data, $mt_single_image, $media_pre, $list_element = true );
 				}
-
-			} elseif ( is_array( $mt_images ) ) {
-
-				$images_added += WpssoSchemaSingle::add_image_data_mt( $json_data, $mt_images, $media_pre, $list_element = true );
 			}
 
-			return $images_added;	// Return count of images added.
+			return $images_added;
 		}
 
 		/**

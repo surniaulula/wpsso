@@ -526,6 +526,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		}
 
 		/**
+		 * This method converts an 'og:image' array into Schema ImageObject data.
+		 *
 		 * Pass a single dimension image array in $mt_single.
 		 */
 		public static function add_image_data_mt( &$json_data, $mt_single, $media_pre = 'og:image', $list_element = true ) {
@@ -1902,30 +1904,17 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			self::add_organization_data( $offer[ 'seller' ], $mod, $org_id = 'site', $org_logo_key = 'org_logo_url', $org_list_el = false );
 
+			/**
+			 * Maybe add images provided in the $mt_og or $mt_offer array.
+			 */
 			if ( $add_images ) {
 
-				if ( isset( $mt_offer[ 'og:image' ][ 0 ] ) && is_array( $mt_offer[ 'og:image' ][ 0 ] ) ) {	// 2 dimensional array.
+				if ( ! empty( $mt_offer[ 'og:image' ] ) ) {	// Just in case.
 
-					$offer_pids = array();	// Avoid duplicates, just in case.
-
-					foreach ( $mt_offer[ 'og:image' ] as $mt_single_image ) {
-
-						if ( $pid = $wpsso->og->get_media_value( array( $mt_single_image ), 'og:image:id' ) ) {
-
-							$offer_pids[ $pid ] = true;
-						}
-					}
-
-					foreach ( $offer_pids as $pid => $bool ) {
-
-						$mt_images = $wpsso->media->get_mt_pid_images( $pid, $size_names = 'schema', $check_dupes = false, $mt_pre = 'og' );
-
-						WpssoSchema::add_images_data_mt( $offer[ 'image' ], $mt_images );
-					}
-
-				} elseif ( ! empty( $mt_offer[ 'og:image' ] ) ) {
-
-					WpssoSchema::add_images_data_mt( $offer[ 'image' ], $mt_offer[ 'og:image' ] );
+					/**
+					 * The provided image will be sized for opengraph so use $resize = true.
+					 */
+					WpssoSchema::add_images_data_mt( $offer[ 'image' ], $mt_offer[ 'og:image' ], $media_pre = 'og:image', $resize = true );
 				}
 			}
 

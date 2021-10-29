@@ -121,9 +121,10 @@ if ( ! class_exists( 'WpssoJsonFiltersPropReview' ) ) {
 
 					foreach ( $mt_og[ $og_type . ':reviews' ] as $mt_review ) {
 
-						$single_review = array();
-
-						$mt_pre = $og_type . ':review';
+						$mt_pre         = $og_type . ':review';
+						$media_pre      = $og_type . ':review:image';
+						$cmt_id_key     = $og_type . ':review:id';
+						$single_review  = array();
 
 						if ( is_array( $mt_review ) && false !== ( $single_review = WpssoSchema::get_data_itemprop_from_assoc( $mt_review, array( 
 							'url'         => $mt_pre . ':url',
@@ -145,9 +146,6 @@ if ( ! class_exists( 'WpssoJsonFiltersPropReview' ) ) {
 
 							if ( ! empty( $mt_review[ $mt_pre . ':author:name' ] ) ) {
 
-								/**
-								 * Returns false if no meta tags found.
-								 */
 								if ( false !== ( $author_data = WpssoSchema::get_data_itemprop_from_assoc( $mt_review, array(
 									'name' => $mt_pre . ':author:name',
 								) ) ) ) {
@@ -157,10 +155,13 @@ if ( ! class_exists( 'WpssoJsonFiltersPropReview' ) ) {
 								}
 							}
 
-							if ( ! empty( $mt_review[ $mt_pre . ':id' ] ) ) {
+							/**
+							 * If we have a comment ID then add any replies to the comment.
+							 */
+							if ( ! empty( $mt_review[ $cmt_id_key ] ) ) {
 
 								$replies_added = WpssoSchemaSingle::add_comment_reply_data( $single_review[ 'comment' ],
-									$mod, $mt_review[ $mt_pre . ':id' ] );
+									$mod, $mt_review[ $cmt_id_key ] );
 
 								if ( ! $replies_added ) {
 
@@ -168,10 +169,9 @@ if ( ! class_exists( 'WpssoJsonFiltersPropReview' ) ) {
 								}
 							}
 
-							if ( ! empty( $mt_review[ $mt_pre . ':image' ] ) ) {
+							if ( ! empty( $mt_review[ $media_pre ] ) ) {
 
-								WpssoSchema::add_images_data_mt( $single_review[ 'image' ],
-									$mt_review[ $mt_pre . ':image' ], $mt_pre .':image' );
+								WpssoSchema::add_images_data_mt( $single_review[ 'image' ], $mt_review[ $media_pre ], $media_pre );
 							}
 
 							/**
