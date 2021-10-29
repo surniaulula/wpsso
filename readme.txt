@@ -336,7 +336,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.4.1-dev.1 (2021/10/29)**
+**Version 9.4.1-dev.2 (2021/10/29)**
 
 * **New Features**
 	* None.
@@ -536,7 +536,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.4.1-dev.1 =
+= 9.4.1-dev.2 =
 
 (2021/10/29) Fixed Open Graph and Schema image sizes for WooCommerce product offers (aka variations).
 
