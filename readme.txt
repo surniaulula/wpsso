@@ -226,7 +226,6 @@ Do you need even more specialized features?
 
 Activate any of these free complementary add-on(s):
 
-* [WPSSO Add Five Stars](https://wpsso.com/extend/plugins/wpsso-add-five-stars/) if the Schema markup does not already have a rating.
 * [WPSSO FAQ Manager](https://wordpress.org/plugins/wpsso-faq/) to manage FAQ categories with Question and Answer pages.
 * [WPSSO Inherit Parent Metadata](https://wordpress.org/plugins/wpsso-inherit-parent-meta/) to inherit featured and custom images.
 * [WPSSO Mobile App Meta Tags](https://wordpress.org/plugins/wpsso-am/) to manage mobile App information.
@@ -237,11 +236,12 @@ Activate any of these free complementary add-on(s):
 * [WPSSO REST API](https://wordpress.org/plugins/wpsso-rest-api/) to add meta tags and Schema markup in REST API queries.
 * [WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/) to add responsive social sharing buttons.
 * [WPSSO Schema Breadcrumbs Markup](https://wordpress.org/plugins/wpsso-breadcrumbs/) to add Breadcrumbs markup for Google.
-* [WPSSO Schema Shortcode](https://wpsso.com/extend/plugins/wpsso-schema-shortcode/) for customized Schema markup of content sections.
 * [WPSSO Shipping Delivery Time for WooCommerce SEO](https://wordpress.org/plugins/wpsso-wc-shipping-delivery-time/) to provide Google with shipping rates and delivery time estimates for WooCommerce products and variations.
 * [WPSSO Strip Schema Microdata](https://wordpress.org/plugins/wpsso-strip-schema-microdata/) to strip incorrect markup from templates.
 * [WPSSO Tune WP Image Editors](https://wordpress.org/plugins/wpsso-tune-image-editors/) for better looking WordPress thumbnail images.
 * [WPSSO User Locale Selector](https://wordpress.org/plugins/wpsso-user-locale/) to switch languages quickly and easily.
+* **&#91;Premium&#93;** [WPSSO Add Five Stars](https://wpsso.com/extend/plugins/wpsso-add-five-stars/) if the Schema markup does not already have a rating.
+* **&#91;Premium&#93;** [WPSSO Schema Shortcode](https://wpsso.com/extend/plugins/wpsso-schema-shortcode/) for customized Schema markup of content sections.
 
 == Installation ==
 
@@ -335,6 +335,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 <p>Under the SSO &gt; Update Manager settings page, select the "Development and Up" (for example) version filter for the WPSSO Core plugin and/or its add-ons. Save the plugin settings and click the "Check for Plugin Updates" button to fetch the latest version information. When new development versions are available, they will automatically appear under your WordPress Dashboard &gt; Updates page. You can always reselect the "Stable / Production" version filter at any time to reinstall the latest stable version.</p>
 
 <h3>Changelog / Release Notes</h3>
+
+**Version 9.4.1-dev.1 (2021/10/29)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.0.
+	* WordPress v5.0.
 
 **Version 9.4.0 (2021/10/28)**
 
@@ -521,6 +535,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.0.
 
 == Upgrade Notice ==
+
+= 9.4.1-dev.1 =
+
+(2021/10/29) None.
 
 = 9.4.0 =
 

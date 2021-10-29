@@ -243,7 +243,6 @@
 <p>Activate any of these free complementary add-on(s):</p>
 
 <ul>
-<li><a href="https://wpsso.com/extend/plugins/wpsso-add-five-stars/">WPSSO Add Five Stars</a> if the Schema markup does not already have a rating.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-faq/">WPSSO FAQ Manager</a> to manage FAQ categories with Question and Answer pages.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-inherit-parent-meta/">WPSSO Inherit Parent Metadata</a> to inherit featured and custom images.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-am/">WPSSO Mobile App Meta Tags</a> to manage mobile App information.</li>
@@ -254,11 +253,12 @@
 <li><a href="https://wordpress.org/plugins/wpsso-rest-api/">WPSSO REST API</a> to add meta tags and Schema markup in REST API queries.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-rrssb/">WPSSO Ridiculously Responsive Social Sharing Buttons</a> to add responsive social sharing buttons.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-breadcrumbs/">WPSSO Schema Breadcrumbs Markup</a> to add Breadcrumbs markup for Google.</li>
-<li><a href="https://wpsso.com/extend/plugins/wpsso-schema-shortcode/">WPSSO Schema Shortcode</a> for customized Schema markup of content sections.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-wc-shipping-delivery-time/">WPSSO Shipping Delivery Time for WooCommerce SEO</a> to provide Google with shipping rates and delivery time estimates for WooCommerce products and variations.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-strip-schema-microdata/">WPSSO Strip Schema Microdata</a> to strip incorrect markup from templates.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-tune-image-editors/">WPSSO Tune WP Image Editors</a> for better looking WordPress thumbnail images.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-user-locale/">WPSSO User Locale Selector</a> to switch languages quickly and easily.</li>
+<li><strong>&#91;Premium&#93;</strong> <a href="https://wpsso.com/extend/plugins/wpsso-add-five-stars/">WPSSO Add Five Stars</a> if the Schema markup does not already have a rating.</li>
+<li><strong>&#91;Premium&#93;</strong> <a href="https://wpsso.com/extend/plugins/wpsso-schema-shortcode/">WPSSO Schema Shortcode</a> for customized Schema markup of content sections.</li>
 </ul>
 
 
