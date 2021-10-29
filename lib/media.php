@@ -1244,7 +1244,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			) = $this->get_attachment_image_src( $pid, $size_name, $check_dupes );
 		}
 
-		/**
+		/*
 		 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
 		 *
 		 * $size_name can also be false to ignore image IDs and only use image URLs.
@@ -1379,7 +1379,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					$this->p->debug->log( count( $html_tag_matches ) . ' <figure/> video html tag(s) found' );
 				}
-			
+
 				$all_matches = array_merge( $all_matches, $html_tag_matches );
 
 			} else {
@@ -1421,34 +1421,34 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				foreach ( $all_matches as $match_num => $media ) {
 
 					if ( $this->p->debug->enabled ) {
-	
+
 						$this->p->debug->log( '<' . $media[ 1 ] . '/> video html tag found ' . $media[ 2 ] . ' = ' . $media[ 3 ] );
 					}
-	
+
 					if ( ! empty( $media[ 3 ] ) ) {
-	
+
 						if ( ! $check_dupes || $this->p->util->is_uniq_url( $media[ 3 ], 'content_video' ) ) {
-	
+
 							$args = array(
 								'url'    => $media[ 3 ],
 								'width'  => preg_match( '/ width=[\'"]?([0-9]+)[\'"]?/i', $media[ 0 ], $match ) ? $match[ 1 ] : null,
 								'height' => preg_match( '/ height=[\'"]?([0-9]+)[\'"]?/i', $media[ 0 ], $match ) ? $match[ 1 ] : null,
 							);
-	
+
 							/**
 							 * Returns a single video associative array.
 							 */
 							$mt_single_video = $this->get_video_details( $args, $check_dupes );
-	
+
 							if ( ! empty( $mt_single_video ) ) {
-	
+
 								if ( $this->p->util->push_max( $mt_videos, $mt_single_video, $num ) ) {
-	
+
 									if ( $this->p->debug->enabled ) {
-	
+
 										$this->p->debug->log( 'returning ' . count( $mt_videos ) . ' videos' );
 									}
-	
+
 									return $mt_videos;
 								}
 							}

@@ -232,13 +232,13 @@ if ( ! function_exists( 'wpsso_get_user_mod' ) ) {
  *
  *	Array (
  *		[og:image:secure_url] =>
- *		[og:image:url]        => http://adm.surniaulula.com/wp-content/uploads/2013/03/captain-america-150x150.jpg
- *		[og:image:width]      => 150
- *		[og:image:height]     => 150
+ *		[og:image:url]        => http://adm.surniaulula.com/wp-content/uploads/2013/03/captain-america-1200x630.jpg
+ *		[og:image:width]      => 1200
+ *		[og:image:height]     => 630
  *		[og:image:cropped]    => 1
  *		[og:image:id]         => 1261
  *		[og:image:alt]        => Captain America
- *		[og:image:size_name]  => wpsso-schema
+ *		[og:image:size_name]  => wpsso-opengraph
  *	)
  *
  * You can use the SucomUtil::get_first_og_image_url() method to get an image URL from the returned array.

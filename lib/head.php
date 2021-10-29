@@ -165,7 +165,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		 *
 		 * Save meta tag values for later sorting in list tables.
 		 */
-		public function extract_head_info( array $mod, array $head_mt ) {
+		public function extract_head_info( $mod = false, array $head_mt ) {
 
 			$head_info = array();
 
@@ -207,8 +207,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			/**
-			 * Save the first image and video information found. Assumes array key order defined by
-			 * SucomUtil::get_mt_image_seed() and SucomUtil::get_mt_video_seed().
+			 * Save the first image and video information found.
+			 *
+			 * Assumes array key order defined by SucomUtil::get_mt_image_seed() and SucomUtil::get_mt_video_seed().
 			 */
 			foreach ( array( 'og:image', 'og:video', 'p:image' ) as $mt_pre ) {
 
@@ -278,45 +279,48 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			/**
-			 * Save meta tag values for later sorting in list tables.
+			 * Maybe save meta tag values for later sorting in list tables.
 			 */
-			$sortable_cols = WpssoWpMeta::get_sortable_columns();
+			if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 
-			foreach ( $sortable_cols as $col_key => $col_info ) {
+				$sortable_cols = WpssoWpMeta::get_sortable_columns();
 
-				if ( empty( $col_info[ 'meta_key' ] ) || strpos( $col_info[ 'meta_key' ], '_wpsso_head_info_' ) !== 0 ) {
+				foreach ( $sortable_cols as $col_key => $col_info ) {
 
-					continue;
-				}
+					if ( empty( $col_info[ 'meta_key' ] ) || strpos( $col_info[ 'meta_key' ], '_wpsso_head_info_' ) !== 0 ) {
 
-				$meta_value = 'none';
-
-				if ( ! empty( $col_info[ 'mt_name' ]  ) ) {
-
-					if ( 'og:image' === $col_info[ 'mt_name' ] ) {	// Get the image thumbnail HTML.
-
-						if ( $media_html = $mod[ 'obj' ]->get_head_info_thumb_bg_img( $head_info, $mod ) ) {
-
-							/**
-							 * Example:
-							 *
-							 *	<div class="wp-thumb-bg-img" style="background-image:url(https://.../thumbnail.jpg);"></div>
-							 */
-							$meta_value = $media_html;
-						}
-
-					} elseif ( isset( $head_info[ $col_info[ 'mt_name' ] ] ) ) {
-
-						$meta_value = $head_info[ $col_info[ 'mt_name' ] ];
+						continue;
 					}
+
+					$meta_value = 'none';
+
+					if ( ! empty( $col_info[ 'mt_name' ]  ) ) {
+
+						if ( 'og:image' === $col_info[ 'mt_name' ] ) {	// Get the image thumbnail HTML.
+
+							if ( $media_html = $mod[ 'obj' ]->get_head_info_thumb_bg_img( $head_info, $mod ) ) {
+
+								/**
+								 * Example:
+								 *
+								 *	<div class="wp-thumb-bg-img" style="background-image:url(https://.../thumbnail.jpg);"></div>
+								 */
+								$meta_value = $media_html;
+							}
+
+						} elseif ( isset( $head_info[ $col_info[ 'mt_name' ] ] ) ) {
+
+							$meta_value = $head_info[ $col_info[ 'mt_name' ] ];
+						}
+					}
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'updating meta for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' ' . $col_key . ' = ' . $meta_value );
+					}
+
+					$mod[ 'obj' ]->update_sortable_meta( $mod[ 'id' ], $col_key, $meta_value );
 				}
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'updating meta for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' ' . $col_key . ' = ' . $meta_value );
-				}
-
-				$mod[ 'obj' ]->update_sortable_meta( $mod[ 'id' ], $col_key, $meta_value );
 			}
 
 			return $head_info;

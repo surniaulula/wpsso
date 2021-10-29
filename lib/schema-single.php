@@ -1136,9 +1136,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * If the organization is a local business, then convert the organization markup to local business.
 			 */
 			if ( ! empty( $org_type_id ) ) {	// Just in case.
-			
+
 				if ( 'organization' !== $org_type_id ) {
-				
+
 					if ( $wpsso->schema->is_schema_type_child( $org_type_id, 'local.business' ) ) {
 
 						WpssoSchema::organization_to_localbusiness( $json_ret );
@@ -1723,13 +1723,13 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		/**
 		 * Note that $mt_offer could be the $mt_og array with minimal product meta tags.
 		 */
-		public static function get_offer_data( array $mod, array $mt_offer ) {
+		public static function get_offer_data( array $mod, array $mt_offer, $add_images = true ) {
 
 			$wpsso =& Wpsso::get_instance();
 
 			if ( $wpsso->debug->enabled ) {
 
-				$wpsso->debug->mark();
+				$wpsso->debug->log_arr( '$mt_offer', $mt_offer );
 			}
 
 			$offer = WpssoSchema::get_schema_type_context( 'https://schema.org/Offer' );
@@ -1784,6 +1784,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			WpssoSchema::check_prop_value_category( $offer );
 
 			WpssoSchema::check_prop_value_gtin( $offer );
+
+			/**
+			 * Make sure we have a price currency value.
+			 */
+			if ( empty( $offer[ 'priceCurrency' ] ) ) {
+
+				$offer[ 'priceCurrency' ] = $wpsso->options[ 'og_def_currency' ];
+			}
 
 			/**
 			 * Prevents a missing property warning from the Google validator.
@@ -1893,6 +1901,33 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Add the seller organization data.
 			 */
 			self::add_organization_data( $offer[ 'seller' ], $mod, $org_id = 'site', $org_logo_key = 'org_logo_url', $org_list_el = false );
+
+			if ( $add_images ) {
+
+				if ( isset( $mt_offer[ 'og:image' ][ 0 ] ) && is_array( $mt_offer[ 'og:image' ][ 0 ] ) ) {	// 2 dimensional array.
+
+					$offer_pids = array();	// Avoid duplicates, just in case.
+
+					foreach ( $mt_offer[ 'og:image' ] as $mt_single_image ) {
+
+						if ( $pid = $wpsso->og->get_media_value( array( $mt_single_image ), 'og:image:id' ) ) {
+
+							$offer_pids[ $pid ] = true;
+						}
+					}
+
+					foreach ( $offer_pids as $pid => $bool ) {
+
+						$mt_images = $wpsso->media->get_mt_pid_images( $pid, $size_names = 'schema', $check_dupes = false, $mt_pre = 'og' );
+
+						WpssoSchema::add_images_data_mt( $offer[ 'image' ], $mt_images );
+					}
+
+				} elseif ( ! empty( $mt_offer[ 'og:image' ] ) ) {
+
+					WpssoSchema::add_images_data_mt( $offer[ 'image' ], $mt_offer[ 'og:image' ] );
+				}
+			}
 
 			$offer = apply_filters( 'wpsso_json_data_single_offer', $offer, $mod );
 

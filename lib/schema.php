@@ -1572,7 +1572,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$json_data = self::get_schema_type_context( $type_url, $json_data );
 
-			WpssoSchema::add_data_itemprop_from_assoc( $json_data, $md_opts, array(
+			self::add_data_itemprop_from_assoc( $json_data, $md_opts, array(
 				'url'         => 'schema_review_item_url',
 				'name'        => 'schema_review_item_name',
 				'description' => 'schema_review_item_desc',
@@ -1583,7 +1583,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$json_data[ 'sameAs' ][] = SucomUtil::esc_url_encode( $url );
 			}
 
-			WpssoSchema::check_prop_value_sameas( $json_data );
+			self::check_prop_value_sameas( $json_data );
 
 			/**
 			 * Set reference values for admin notices.
@@ -1602,7 +1602,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 */
 			$mt_images = $wpsso->media->get_mt_opts_images( $md_opts, $size_names = 'schema', $img_pre = 'schema_review_item_img' );
 
-			WpssoSchema::add_images_data_mt( $json_data[ 'image' ], $mt_images );
+			self::add_images_data_mt( $json_data[ 'image' ], $mt_images );
 
 			if ( empty( $json_data[ 'image' ] ) ) {
 
@@ -1810,27 +1810,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					continue;
 				}
 
-				$single_offer = WpssoSchemaSingle::get_offer_data( $mod, $mt_offer );
+				$single_offer = WpssoSchemaSingle::get_offer_data( $mod, $mt_offer, $add_images = true );
 
 				if ( false === $single_offer ) {
 
 					continue;
-				}
-
-				/**
-				 * Trust the offer image size and add it directly.
-				 */
-				if ( ! empty( $mt_offer[ 'og:image' ] ) ) {
-
-					self::add_images_data_mt( $single_offer[ 'image' ], $mt_offer[ 'og:image' ] );
-				}
-
-				/**
-				 * Make sure we have a price currency value.
-				 */
-				if ( empty( $single_offer[ 'priceCurrency' ] ) ) {
-
-					$single_offer[ 'priceCurrency' ] = $wpsso->options[ 'og_def_currency' ];
 				}
 
 				$json_data[ 'offers' ][] = self::get_schema_type_context( 'https://schema.org/Offer', $single_offer );
@@ -1872,7 +1856,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					continue;
 				}
 
-				$single_offer = WpssoSchemaSingle::get_offer_data( $mod, $mt_offer );
+				$single_offer = WpssoSchemaSingle::get_offer_data( $mod, $mt_offer, $add_images = true );
 
 				if ( false === $single_offer ) {
 
@@ -1880,21 +1864,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 				/**
-				 * Trust the offer image size and add it directly.
-				 */
-				if ( ! empty( $mt_offer[ 'og:image' ] ) ) {
-
-					self::add_images_data_mt( $single_offer[ 'image' ], $mt_offer[ 'og:image' ] );
-				}
-
-				/**
-				 * Make sure we have a price currency value.
-				 */
-				$price_currency = isset( $single_offer[ 'priceCurrency' ] ) ? $single_offer[ 'priceCurrency' ] : $wpsso->options[ 'og_def_currency' ];
-
-				/**
 				 * Keep track of the lowest and highest price by currency.
 				 */
+				$price_currency = $single_offer[ 'priceCurrency' ];	// Shortcut variable.
+
 				if ( isset( $single_offer[ 'price' ] ) ) {	// Just in case.
 
 					if ( ! isset( $aggr_prices[ $price_currency ][ 'lowPrice' ] ) ||
@@ -1993,6 +1966,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			return self::add_offers_aggregate_data( $json_data, $mod, $mt_offers );
 		}
+
+
 
 		/**
 		 * $user_id is optional and takes precedence over the $mod post_author value.
@@ -2240,9 +2215,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * Property:
 			 *	image as https://schema.org/ImageObject
 			 */
-			$img_added  = 0;
-			$max_nums   = $wpsso->util->get_max_nums( $mod, 'schema' );
-			$mt_images  = $wpsso->og->get_all_images( $max_nums[ 'schema_img_max' ], $size_names, $mod, $check_dupes = true, $md_pre = 'schema' );
+			$img_added = 0;
+			$max_nums  = $wpsso->util->get_max_nums( $mod, 'schema' );
+			$mt_images = $wpsso->og->get_all_images( $max_nums[ 'schema_img_max' ], $size_names, $mod, $check_dupes = true, $md_pre = 'schema' );
 
 			if ( ! empty( $mt_images ) ) {
 

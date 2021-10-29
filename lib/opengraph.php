@@ -1989,7 +1989,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$og_def_md_key = 'og_def_' . $md_key;
 
 				if ( 'product_currency' === $md_key ) {
-				
+
 					$og_def_md_key = 'og_def_currency';
 				}
 

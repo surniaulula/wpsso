@@ -180,7 +180,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeProduct' ) ) {
 						$this->p->debug->log( 'getting single offer data' );
 					}
 
-					if ( $single_offer = WpssoSchemaSingle::get_offer_data( $mod, $mt_og ) ) {
+					if ( $single_offer = WpssoSchemaSingle::get_offer_data( $mod, $mt_og, $add_images = false ) ) {
 
 						$json_ret[ 'offers' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/Offer', $single_offer );
 
@@ -232,6 +232,11 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeProduct' ) ) {
 			 *	image as https://schema.org/ImageObject
 			 *	subjectOf as https://schema.org/VideoObject
 			 */
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'adding image and subjectOf video properties for product' );
+			}
+
 			WpssoSchema::add_media_data( $json_ret, $mod, $mt_og, $size_names = 'schema', $add_video = 'subjectOf' );
 
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );

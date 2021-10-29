@@ -47,6 +47,11 @@ if ( ! class_exists( 'WpssoJsonFiltersTypePlace' ) ) {
 			 *	image as https://schema.org/ImageObject
 			 *	subjectOf as https://schema.org/VideoObject
 			 */
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'adding image and subjectOf video properties for place' );
+			}
+
 			WpssoSchema::add_media_data( $json_ret, $mod, $mt_og, $size_names = 'schema', $add_video = 'subjectOf' );
 
 			/**

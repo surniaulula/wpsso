@@ -130,7 +130,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 			static $local_cache = array();					// Associative array of true/false values.
 
 			if ( $read_cache ) {
-			
+
 				if ( isset( $local_cache[ $plugin_base ] ) ) {
 
 					return $local_cache[ $plugin_base ];

@@ -4056,7 +4056,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * 'WPSSO_VERSION', so use 'WPSSO_VERSION' as a signal to skip applying filters until later.
 			 */
 			if ( ! defined( 'WPSSO_VERSION' ) ) {
-			
+
 				return self::$cf;
 			}
 
@@ -4077,7 +4077,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				$pkg_dir = 'std';
 
 				if ( ! $pro_disable ) {
-				
+
 					$ext_dir = self::get_ext_dir( $ext, $read_cache );
 
 					if ( is_dir( $ext_dir . 'lib/pro/' ) ) {

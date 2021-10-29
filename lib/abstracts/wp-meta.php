@@ -1781,7 +1781,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			 * Check for invalid Schema type combinations (ie. a claim review of a claim review).
 			 */
 			if ( isset( $md_opts[ 'schema_type' ] ) ) {	// Just in case.
-			
+
 				if ( 'book.audio' === $md_opts[ 'schema_type' ] ) {
 
 					$md_opts[ 'schema_book_format' ] = 'https://schema.org/AudiobookFormat';

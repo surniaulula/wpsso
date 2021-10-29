@@ -67,6 +67,11 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeCreativeWork' ) ) {
 			 *      image as https://schema.org/ImageObject
 			 *      video as https://schema.org/VideoObject
 			 */
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'adding image and video properties for creativework' );
+			}
+
 			WpssoSchema::add_media_data( $json_ret, $mod, $mt_og, $size_names = 'schema', $add_video = true );
 
 			WpssoSchema::check_required( $json_ret, $mod, array( 'image' ) );
@@ -100,9 +105,9 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeCreativeWork' ) ) {
 							$org_logo_key = 'org_logo_url';
 
 							if ( 'publisher' === $prop_name ) {
-							
+
 								if ( $is_article ) {
-								
+
 									$org_logo_key = 'org_banner_url';
 								}
 							}

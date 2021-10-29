@@ -33,6 +33,9 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeSoftwareApplication' ) ) {
 			) );
 		}
 
+		/**
+		 * Note that SoftwareApplication is a sub-type of CreativeWork, which includes image and video properties.
+		 */
 		public function filter_json_data_https_schema_org_softwareapplication( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -87,7 +90,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeSoftwareApplication' ) ) {
 						$this->p->debug->log( 'getting single offer data' );
 					}
 
-					if ( $single_offer = WpssoSchemaSingle::get_offer_data( $mod, $mt_og ) ) {
+					if ( $single_offer = WpssoSchemaSingle::get_offer_data( $mod, $mt_og, $add_images = false ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
