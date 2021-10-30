@@ -57,6 +57,15 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$opt_key = 'book_type', $def_type_id, $list_element );
 
 			/**
+			 * Maybe remove values related to the WordPress post object.
+			 */
+			unset( $json_data[ 'author' ] );
+			unset( $json_data[ 'contributor' ] );
+			unset( $json_data[ 'dateCreated' ] );
+			unset( $json_data[ 'datePublished' ] );
+			unset( $json_data[ 'dateModified' ] );
+
+			/**
 			 * Begin Schema book markup creation.
 			 */
 			$json_ret = WpssoSchema::get_schema_type_context( $book_type_url );

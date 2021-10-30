@@ -43,6 +43,15 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeSoftwareApplication' ) ) {
 				$this->p->debug->mark();
 			}
 
+			/**
+			 * Maybe remove values related to the WordPress post object.
+			 */
+			unset( $json_data[ 'author' ] );
+			unset( $json_data[ 'contributor' ] );
+			unset( $json_data[ 'dateCreated' ] );
+			unset( $json_data[ 'datePublished' ] );
+			unset( $json_data[ 'dateModified' ] );
+
 			$json_ret = array();
 			$md_opts  = array();
 

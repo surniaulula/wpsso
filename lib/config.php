@@ -2899,7 +2899,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'article:tag'             => '',		// An array of keywords relevant to the article.
 					),
 					'book' => array(
-						'book:author'       => '',
+						'book:author'       => 'schema_book_author_url',
 						'book:isbn'         => 'schema_book_isbn',
 						'book:release_date' => '',
 						'book:tag'          => '',

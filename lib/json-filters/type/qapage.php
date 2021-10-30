@@ -33,15 +33,6 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeQAPage' ) ) {
 			) );
 		}
 
-		/**
-		 * Note that QAPage inherits the following properties from WebPage:
-		 *
-		 *	dateCreate
-		 *	datePublished
-		 *	dateModified
-		 *	author
-		 *	contributor
-		 */
 		public function filter_json_data_https_schema_org_qapage( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
 
 			if ( $this->p->debug->enabled ) {

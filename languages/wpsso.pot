@@ -4270,7 +4270,7 @@ msgstr ""
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:353 lib/pro/ecom/woocommerce.php:1331
+#: gettext/gettext-lib-pro.php:353 lib/pro/ecom/woocommerce.php:1320
 msgid "World"
 msgstr ""
 
@@ -4641,7 +4641,7 @@ msgstr ""
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1796 lib/json-filters/type/claimreview.php:78
+#: lib/abstracts/wp-meta.php:1796 lib/json-filters/type/claimreview.php:69
 msgid "A claim review cannot be the subject of another claim review."
 msgstr ""
 
@@ -6096,7 +6096,7 @@ msgid ""
 "allow reviews for the Schema %2$s type</a>."
 msgstr ""
 
-#: lib/json-filters/type/claimreview.php:80
+#: lib/json-filters/type/claimreview.php:71
 msgid ""
 "CreativeWork will be used instead as the Schema type for the subject of the "
 "webpage (ie. the content) being reviewed."
@@ -9893,41 +9893,41 @@ msgctxt "Taxonomy description"
 msgid "Tags for the page post type."
 msgstr ""
 
-#: lib/schema-single.php:958
+#: lib/schema-single.php:967
 msgid "adding schema organization"
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1022
+#: lib/schema-single.php:1031
 msgid ""
 "An organization logo image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1025
+#: lib/schema-single.php:1034
 msgid ""
 "An organization banner image (600x60px) is missing and required for the "
 "\"%1$s\" organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s is 'site' (translated) or 'ID #'.
-#: lib/schema-single.php:1028
+#: lib/schema-single.php:1037
 msgid ""
 "Please enter the missing image URL in the \"%1$s\" %2$s organization "
 "settings."
 msgstr ""
 
 #. translators: site, as in the "site organization settings".
-#: lib/schema-single.php:1050
+#: lib/schema-single.php:1059
 msgid "site"
 msgstr ""
 
-#: lib/schema-single.php:1237
+#: lib/schema-single.php:1246
 msgid "adding schema person"
 msgstr ""
 
-#: lib/schema-single.php:1440
+#: lib/schema-single.php:1449
 msgid "adding schema place"
 msgstr ""
 

@@ -33,15 +33,6 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeClaimReview' ) ) {
 			) );
 		}
 
-		/**
-		 * Note that ClaimReview inherits the following properties from Review:
-		 *
-		 *	dateCreated
-		 *	datePublished
-		 *	dateModified
-		 *	author
-		 *	contributor
-		 */
 		public function filter_json_data_https_schema_org_claimreview( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
 
 			if ( $this->p->debug->enabled ) {
