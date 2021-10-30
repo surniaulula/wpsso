@@ -1944,6 +1944,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 *		'product:height:units'            => '',
 			 *		'product:is_product_shareable'    => '',
 			 *		'product:isbn'                    => 'product_isbn',
+			 *		'product:item_group_id'           => '',
 			 *		'product:length:value'            => 'product_length_value',
 			 *		'product:length:units'            => '',
 			 *		'product:material'                => 'product_material',

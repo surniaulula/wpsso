@@ -2145,71 +2145,71 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				/**
 				 * Product part numbers.
 				 */
-				$mt_pre . ':id'                              => '',	// Non-standard / internal meta tag.
-				$mt_pre . ':retailer_item_id'                => '',	// Product ID.
-				$mt_pre . ':retailer_part_no'                => '',	// Product SKU.
-				$mt_pre . ':mfr_part_no'                     => '',	// Product MPN.
-				$mt_pre . ':ean'                             => '',	// aka EAN, EAN-13, GTIN-13.
-				$mt_pre . ':gtin14'                          => '',	// Non-standard / internal meta tag.
-				$mt_pre . ':gtin13'                          => '',	// Non-standard / internal meta tag.
-				$mt_pre . ':gtin12'                          => '',	// Non-standard / internal meta tag.
-				$mt_pre . ':gtin8'                           => '',	// Non-standard / internal meta tag.
-				$mt_pre . ':gtin'                            => '',	// Non-standard / internal meta tag.
-				$mt_pre . ':isbn'                            => '',
-				$mt_pre . ':upc'                             => '',	// Aka the UPC, UPC-A, UPC, GTIN-12.
+				$mt_pre . ':item_group_id'    => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':retailer_item_id' => '',	// Product ID.
+				$mt_pre . ':retailer_part_no' => '',	// Product SKU.
+				$mt_pre . ':mfr_part_no'      => '',	// Product MPN.
+				$mt_pre . ':ean'              => '',	// aka EAN, EAN-13, GTIN-13.
+				$mt_pre . ':gtin14'           => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':gtin13'           => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':gtin12'           => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':gtin8'            => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':gtin'             => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':isbn'             => '',
+				$mt_pre . ':upc'              => '',	// Aka the UPC, UPC-A, UPC, GTIN-12.
 
 				/**
 				 * Product attributes and descriptions.
 				 */
-				$mt_pre . ':url'                             => '',	// Non-standard / internal meta tag.
-				$mt_pre . ':age_group'                       => '',
-				$mt_pre . ':availability'                    => '',
-				$mt_pre . ':brand'                           => '',
-				$mt_pre . ':category'                        => '',	// Product category ID. See https://developers.facebook.com/docs/marketing-api/catalog/reference/.
-				$mt_pre . ':color'                           => '',
-				$mt_pre . ':condition'                       => '',
-				$mt_pre . ':expiration_time'                 => '',
-				$mt_pre . ':is_product_shareable'            => '',
-				$mt_pre . ':material'                        => '',
-				$mt_pre . ':pattern'                         => '',
-				$mt_pre . ':plural_title'                    => '',
-				$mt_pre . ':product_link'                    => '',
-				$mt_pre . ':purchase_limit'                  => '',
-				$mt_pre . ':quantity:value'                  => '',	// Non-standard / internal meta tag.
-				$mt_pre . ':quantity:minimum'                => '',	// Non-standard / internal meta tag.
-				$mt_pre . ':quantity:maximum'                => '',	// Non-standard / internal meta tag.
-				$mt_pre . ':quantity:unit_code'              => '',	// Non-standard / internal meta tag.
-				$mt_pre . ':quantity:unit_text'              => '',	// Non-standard / internal meta tag.
-				$mt_pre . ':retailer'                        => '',
-				$mt_pre . ':retailer_category'               => '',
-				$mt_pre . ':retailer_title'                  => '',
-				$mt_pre . ':target_gender'                   => '',
+				$mt_pre . ':url'                  => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':age_group'            => '',
+				$mt_pre . ':availability'         => '',
+				$mt_pre . ':brand'                => '',
+				$mt_pre . ':category'             => '',	// Product category ID. See https://developers.facebook.com/docs/marketing-api/catalog/reference/.
+				$mt_pre . ':color'                => '',
+				$mt_pre . ':condition'            => '',
+				$mt_pre . ':expiration_time'      => '',
+				$mt_pre . ':is_product_shareable' => '',
+				$mt_pre . ':material'             => '',
+				$mt_pre . ':pattern'              => '',
+				$mt_pre . ':plural_title'         => '',
+				$mt_pre . ':product_link'         => '',
+				$mt_pre . ':purchase_limit'       => '',
+				$mt_pre . ':quantity:value'       => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':quantity:minimum'     => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':quantity:maximum'     => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':quantity:unit_code'   => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':quantity:unit_text'   => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':retailer'             => '',
+				$mt_pre . ':retailer_category'    => '',
+				$mt_pre . ':retailer_title'       => '',
+				$mt_pre . ':target_gender'        => '',
 
 				/**
 				 * Product ratings and reviews.
 				 */
-				$mt_pre . ':rating:average'                  => '',	// Non-standard / internal meta tag.
-				$mt_pre . ':rating:count'                    => '',	// Non-standard / internal meta tag.
-				$mt_pre . ':rating:worst'                    => '',	// Non-standard / internal meta tag.
-				$mt_pre . ':rating:best'                     => '',	// Non-standard / internal meta tag.
-				$mt_pre . ':review:count'                    => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':rating:average' => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':rating:count'   => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':rating:worst'   => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':rating:best'    => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':review:count'   => '',	// Non-standard / internal meta tag.
 
 				/**
 				 * Product size and weight.
 				 */
-				$mt_pre . ':size'                            => '',
-				$mt_pre . ':depth:value'                     => '',	// Non-standard / internal meta tag.
-				$mt_pre . ':depth:units'                     => '',	// Non-standard / internal meta tag (units after value).
-				$mt_pre . ':height:value'                    => '',	// Non-standard / internal meta tag.
-				$mt_pre . ':height:units'                    => '',	// Non-standard / internal meta tag (units after value).
-				$mt_pre . ':length:value'                    => '',	// Non-standard / internal meta tag.
-				$mt_pre . ':length:units'                    => '',	// Non-standard / internal meta tag (units after value).
-				$mt_pre . ':fluid_volume:value'              => '',	// Non-standard / internal meta tag.
-				$mt_pre . ':fluid_volume:units'              => '',	// Non-standard / internal meta tag (units after value).
-				$mt_pre . ':weight:value'                    => '',
-				$mt_pre . ':weight:units'                    => '',
-				$mt_pre . ':width:value'                     => '',	// Non-standard / internal meta tag.
-				$mt_pre . ':width:units'                     => '',	// Non-standard / internal meta tag (units after value).
+				$mt_pre . ':size'               => '',
+				$mt_pre . ':depth:value'        => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':depth:units'        => '',	// Non-standard / internal meta tag (units after value).
+				$mt_pre . ':height:value'       => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':height:units'       => '',	// Non-standard / internal meta tag (units after value).
+				$mt_pre . ':length:value'       => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':length:units'       => '',	// Non-standard / internal meta tag (units after value).
+				$mt_pre . ':fluid_volume:value' => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':fluid_volume:units' => '',	// Non-standard / internal meta tag (units after value).
+				$mt_pre . ':weight:value'       => '',
+				$mt_pre . ':weight:units'       => '',
+				$mt_pre . ':width:value'        => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':width:units'        => '',	// Non-standard / internal meta tag (units after value).
 
 				/**
 				 * Product prices and shipping.

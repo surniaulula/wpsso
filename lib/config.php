@@ -3000,6 +3000,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'product:height:units'            => '',			// Non-standard / internal meta tag.
 						'product:is_product_shareable'    => '',
 						'product:isbn'                    => 'product_isbn',
+						'product:item_group_id'           => '',			// Non-standard / internal meta tag.
 						'product:length:value'            => 'product_length_value',	// Non-standard / internal meta tag.
 						'product:length:units'            => '',			// Non-standard / internal meta tag.
 						'product:material'                => 'product_material',
