@@ -343,7 +343,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* Added support for '%%title%%', '%%page%%', '%%pagenumber%%', '%%pagetotal%%', and '%%sep%%' inline variables.
 * **Bugfixes**
-	* None.
+	* Fixed missing 'author' in Schema CreativeWork markup.
 * **Developer Notes**
 	* Added a new `WpssoUtilInline` class.
 	* Replaced `WpssoUtil->replace_inline_variables()` by `WpssoUtil->inline->replace_variables()`.
@@ -385,10 +385,6 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Book Format
 		* Number of Pages
 		* Book ISBN
-	* Moved addition of some Schema CreativeWork properties to its sub-types (Article, QAPage, Question, Review, and WebPage):
-		* 'dateCreated'
-		* 'datePublished'
-		* 'dateModified'
 * **Bugfixes**
 	* Fixed home page Schema Organization logo detection by Google.
 	* Fixed missing product currency when the default currency is selected in the Document SSO metabox.
