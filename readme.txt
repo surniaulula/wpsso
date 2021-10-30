@@ -349,6 +349,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Replaced `WpssoUtil->replace_inline_variables()` by `WpssoUtil->inline->replace_variables()`.
 	* Replaced `WpssoUtil->get_inline_variables()` by `WpssoUtil->inline->get_variables()`.
 	* Replaced `WpssoUtil->get_inline_values()` by `WpssoUtil->inline->get_values()`.
+	* Restored the Schema CreativeWork properties moved in WPSSO Core v9.4.0:
+		* 'dateCreated'
+		* 'datePublished'
+		* 'dateModified'
+		* 'author'
+		* 'contributor'
 * **Requires At Least**
 	* PHP v7.0.
 	* WordPress v5.0.
@@ -385,6 +391,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Book Format
 		* Number of Pages
 		* Book ISBN
+	* Moved addition of some Schema CreativeWork properties to its sub-types (Article, QAPage, Question, Review, and WebPage):
+		* 'dateCreated'
+		* 'datePublished'
+		* 'dateModified'
+		* 'author'
+		* 'contributor'
 * **Bugfixes**
 	* Fixed home page Schema Organization logo detection by Google.
 	* Fixed missing product currency when the default currency is selected in the Document SSO metabox.
