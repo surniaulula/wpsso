@@ -179,10 +179,10 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			/**
 			 * Common elements.
 			 */
-			$mod[ 'id' ]          = is_numeric( $term_id ) ? (int) $term_id : 0;	// Cast as integer.
-			$mod[ 'name' ]        = 'term';
-			$mod[ 'name_transl' ] = _x( 'term', 'module name', 'wpsso' );
-			$mod[ 'obj' ]         =& $this;
+			$mod[ 'id' ]            = is_numeric( $term_id ) ? (int) $term_id : 0;	// Cast as integer.
+			$mod[ 'name' ]          = 'term';
+			$mod[ 'name_transl' ]   = _x( 'term', 'module name', 'wpsso' );
+			$mod[ 'obj' ]           =& $this;
 
 			/**
 			 * WpssoTerm elements.

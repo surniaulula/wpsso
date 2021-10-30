@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 9.4.1\n"
+"Project-Id-Version: WPSSO Core 9.5.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4596,62 +4596,62 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:462 lib/edit.php:390 lib/page.php:1279
+#: gettext/gettext-lib-pro.php:462 lib/edit.php:390 lib/page.php:1282
 #: lib/pro/social/buddypress.php:663
 msgctxt "default description"
 msgid "No Description."
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1003
+#: lib/abstracts/wp-meta.php:1004
 msgctxt "metabox tab"
 msgid "Customize"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1004 lib/messages.php:285
+#: lib/abstracts/wp-meta.php:1005 lib/messages.php:285
 msgctxt "metabox tab"
 msgid "Priority Media"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1008 lib/messages-info.php:277
+#: lib/abstracts/wp-meta.php:1009 lib/messages-info.php:277
 msgctxt "metabox tab"
 msgid "Robots Meta"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1009
+#: lib/abstracts/wp-meta.php:1010
 msgctxt "metabox tab"
 msgid "Social Preview"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1010
+#: lib/abstracts/wp-meta.php:1011
 msgctxt "metabox tab"
 msgid "oEmbed Preview"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1011
+#: lib/abstracts/wp-meta.php:1012
 msgctxt "metabox tab"
 msgid "Head Markup"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1012
+#: lib/abstracts/wp-meta.php:1013
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1461
+#: lib/abstracts/wp-meta.php:1462
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1795 lib/json-filters/type/claimreview.php:78
+#: lib/abstracts/wp-meta.php:1796 lib/json-filters/type/claimreview.php:78
 msgid "A claim review cannot be the subject of another claim review."
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1797
+#: lib/abstracts/wp-meta.php:1798
 msgid ""
 "Please select a subject webpage type that better describes the subject of "
 "the webpage (ie. the content) being reviewed."
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:2525
+#: lib/abstracts/wp-meta.php:2526
 msgid "adding schema images"
 msgstr ""
 
@@ -6021,7 +6021,7 @@ msgctxt "option label"
 msgid "Facebook / Open Graph Example"
 msgstr ""
 
-#: lib/edit.php:387 lib/page.php:1577
+#: lib/edit.php:387 lib/page.php:1580
 msgctxt "default title"
 msgid "No Title"
 msgstr ""
@@ -6179,12 +6179,12 @@ msgid ""
 msgstr ""
 
 #: lib/media.php:1027 lib/post.php:522 lib/register.php:338 lib/term.php:455
-#: lib/user.php:435 lib/util.php:818 lib/util.php:3112
+#: lib/user.php:435 lib/util.php:829 lib/util.php:3073
 msgid "%s warning:"
 msgstr ""
 
 #: lib/media.php:1028 lib/post.php:523 lib/term.php:456 lib/user.php:436
-#: lib/util.php:819 lib/util.php:3113
+#: lib/util.php:830 lib/util.php:3074
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
@@ -9568,60 +9568,60 @@ msgid ""
 "its default value."
 msgstr ""
 
-#: lib/page.php:1063 lib/page.php:1068 lib/page.php:1182
+#: lib/page.php:1066 lib/page.php:1071 lib/page.php:1185
 msgctxt "default description"
 msgid "Archive for %s."
 msgstr ""
 
-#: lib/page.php:1153
+#: lib/page.php:1156
 msgctxt "default description"
 msgid "Tag archive for %s."
 msgstr ""
 
-#: lib/page.php:1166
+#: lib/page.php:1169
 msgctxt "default description"
 msgid "Category archive for %s."
 msgstr ""
 
-#: lib/page.php:1198
+#: lib/page.php:1201
 msgctxt "default description"
 msgid "Authored by %s."
 msgstr ""
 
-#: lib/page.php:1216
+#: lib/page.php:1219
 msgid "Search Results for &#8220;%s&#8221;"
 msgstr ""
 
-#: lib/page.php:1226
+#: lib/page.php:1229
 msgctxt "default description"
 msgid "Yearly archive for %s."
 msgstr ""
 
-#: lib/page.php:1232
+#: lib/page.php:1235
 msgctxt "default description"
 msgid "Monthly archive for %s."
 msgstr ""
 
-#: lib/page.php:1238
+#: lib/page.php:1241
 msgctxt "default description"
 msgid "Daily archive for %s."
 msgstr ""
 
-#: lib/page.php:1245
+#: lib/page.php:1248
 msgctxt "default description"
 msgid "Archive page."
 msgstr ""
 
-#: lib/page.php:1443 lib/page.php:1447
+#: lib/page.php:1446 lib/page.php:1450
 msgctxt "default title"
 msgid "%s Archive"
 msgstr ""
 
-#: lib/page.php:1529
+#: lib/page.php:1532
 msgid "Search Results %1$s %2$s"
 msgstr ""
 
-#: lib/page.php:1657
+#: lib/page.php:1665
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] ""
@@ -10818,6 +10818,10 @@ msgid ""
 "refreshed."
 msgstr ""
 
+#: lib/util-inline.php:171
+msgid "Page %1$d of %2$d"
+msgstr ""
+
 #: lib/util-metabox.php:266
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
@@ -10927,59 +10931,59 @@ msgstr ""
 msgid "lbs"
 msgstr ""
 
-#: lib/util.php:539
+#: lib/util.php:550
 msgid "cropped"
 msgstr ""
 
-#: lib/util.php:539
+#: lib/util.php:550
 msgid "uncropped"
 msgstr ""
 
-#: lib/util.php:820
+#: lib/util.php:831
 msgid "Slow PHP function detected - %1$s took %2$.3f secs for %3$s (%4$s)."
 msgstr ""
 
-#: lib/util.php:1297
+#: lib/util.php:1308
 msgid "Error reading the %s file for the article sections list."
 msgstr ""
 
-#: lib/util.php:1398
+#: lib/util.php:1409
 msgid "Error reading the %s file for the product categories list."
 msgstr ""
 
-#: lib/util.php:1522
+#: lib/util.php:1533
 msgid "The <code>%1$s</code> request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1546
+#: lib/util.php:1557
 msgid "Error getting HTML from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/util.php:1576
+#: lib/util.php:1587
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
 #. translators: %1$s is the class name.
-#: lib/util.php:1774
+#: lib/util.php:1785
 msgid ""
 "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting "
 "provider to have the missing class installed."
 msgstr ""
 
 #. translators: %1$s is the function name.
-#: lib/util.php:1788
+#: lib/util.php:1799
 msgid ""
 "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting "
 "provider to have the missing function installed."
 msgstr ""
 
-#: lib/util.php:3114
+#: lib/util.php:3075
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:3130
+#: lib/util.php:3091
 msgid ""
 "Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds "
 "to execute. This is longer than the recommended maximum of %3$.3f seconds "
@@ -10988,120 +10992,120 @@ msgid ""
 "sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:3132
+#: lib/util.php:3093
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3510
+#: lib/util.php:3471
 msgctxt "option label"
 msgid "The AMP Project Validator"
 msgstr ""
 
-#: lib/util.php:3511
+#: lib/util.php:3472
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr ""
 
-#: lib/util.php:3515
+#: lib/util.php:3476
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr ""
 
-#: lib/util.php:3516
+#: lib/util.php:3477
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/util.php:3520
+#: lib/util.php:3481
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr ""
 
-#: lib/util.php:3521
+#: lib/util.php:3482
 msgctxt "validator type"
 msgid "Microdata"
 msgstr ""
 
-#: lib/util.php:3525
+#: lib/util.php:3486
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr ""
 
-#: lib/util.php:3526
+#: lib/util.php:3487
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr ""
 
-#: lib/util.php:3530
+#: lib/util.php:3491
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/util.php:3531
+#: lib/util.php:3492
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr ""
 
-#: lib/util.php:3535
+#: lib/util.php:3496
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/util.php:3536
+#: lib/util.php:3497
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/util.php:3540
+#: lib/util.php:3501
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/util.php:3541
+#: lib/util.php:3502
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr ""
 
-#: lib/util.php:3545
+#: lib/util.php:3506
 msgctxt "option label"
 msgid "Schema Markup Validator"
 msgstr ""
 
-#: lib/util.php:3546
+#: lib/util.php:3507
 msgctxt "validator type"
 msgid "Schema Markup"
 msgstr ""
 
-#: lib/util.php:3550
+#: lib/util.php:3511
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/util.php:3551
+#: lib/util.php:3512
 msgctxt "validator type"
 msgid "Twitter Card"
 msgstr ""
 
-#: lib/util.php:3556
+#: lib/util.php:3517
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr ""
 
-#: lib/util.php:3557
+#: lib/util.php:3518
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name.
-#: lib/util.php:3707
+#: lib/util.php:3668
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3717
+#: lib/util.php:3678
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 

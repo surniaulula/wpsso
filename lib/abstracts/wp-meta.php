@@ -159,6 +159,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			'name_transl'          => false,	// Module name translated.
 			'obj'                  => false,	// Module object.
 			'query_vars'           => array(),	// Defined by WpssoPage->get_mod().
+			'max_num_pages'        => 0,		// Defined by WpssoPage->get_mod().
 			'is_404'               => false,
 			'is_archive'           => false,
 			'is_attachment'        => false,	// Post type is 'attachment'.

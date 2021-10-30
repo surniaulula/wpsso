@@ -71,6 +71,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 		public $cache;		// WpssoUtilCache.
 		public $cf;		// WpssoUtilCustomFields.
+		public $inline;		// WpssoUtilInline.
 		public $metabox;	// WpssoUtilMetabox.
 		public $reg;		// WpssoUtilReg.
 		public $robots;		// WpssoUtilRobots.
@@ -127,6 +128,16 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$this->cf = new WpssoUtilCustomFields( $plugin, $this );
 
 			/**
+			 * Instantiate WpssoUtilInline.
+			 */
+			if ( ! class_exists( 'WpssoUtilInline' ) ) {
+
+				require_once WPSSO_PLUGINDIR . 'lib/util-inline.php';
+			}
+
+			$this->inline = new WpssoUtilInline( $plugin, $this );
+
+			/**
 			 * Instantiate WpssoUtilMetabox.
 			 */
 			if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
@@ -139,7 +150,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			/**
 			 * Instantiate WpssoUtilReg.
 			 */
-			if ( ! class_exists( 'WpssoUtilReg' ) ) { // Since WPSSO Core v6.13.1.
+			if ( ! class_exists( 'WpssoUtilReg' ) ) {
 
 				require_once WPSSO_PLUGINDIR . 'lib/util-reg.php';
 			}
@@ -1838,132 +1849,39 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 */
 		public function replace_inline_vars( $content, $mod = false, $atts = array(), $extras = array() ) {
 
-			_deprecated_function( __METHOD__ . '()', '2021/09/03', $replacement = __CLASS__ . '::replace_inline_variables()' );	// Deprecation message.
+			_deprecated_function( __METHOD__ . '()', '2021/09/03', $replacement = __CLASS__ . '->inline->replace_variables()' );	// Deprecation message.
 
-			return $this->replace_inline_variables( $content, $mod, $atts, $extras );
+			return $this->inline->replace_variables( $content, $mod, $atts, $extras );
 		}
 
 		/**
-		 * Replace default and extra inline variables in the content text.
-		 *
-		 * $atts can be an associative array with additional information ('canonical_url', 'canonical_short_url', 'add_page', etc.).
-		 *
-		 * $extras can be an associative array with key/value pairs to be replaced.
+		 * Deprecated on 2021/10/30.
 		 */
 		public function replace_inline_variables( $content, $mod = false, $atts = array(), $extras = array() ) {
 
-			if ( $this->p->debug->enabled ) {
+			_deprecated_function( __METHOD__ . '()', '2021/10/30', $replacement = __CLASS__ . '->inline->replace_variables()' );	// Deprecation message.
 
-				$this->p->debug->mark();
-			}
-
-			if ( false === strpos( $content, '%%' ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: no inline vars' );
-				}
-
-				return $content;
-			}
-
-			/**
-			 * The $mod array argument is preferred but not required.
-			 *
-			 * $mod = true | false | post_id | $mod array
-			 */
-			if ( ! is_array( $mod ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
-				}
-
-				$mod = $this->p->page->get_mod( $mod );
-			}
-
-			$variables = $this->get_inline_variables();
-
-			$values = $this->get_inline_values( $mod, $atts );
-
-			if ( ! empty( $extras ) && self::is_assoc( $extras ) ) {
-
-				foreach ( $extras as $match => $val ) {
-
-					$variables[] = '%%' . $match . '%%';
-
-					$values[] = $val;
-				}
-			}
-
-			if ( ! empty( $atts[ 'rawurlencode' ] ) ) {
-
-				foreach ( $values as $num => $val ) {
-
-					$values[ $num ] = rawurlencode( $val );
-				}
-			}
-
-			ksort( $variables );
-
-			ksort( $values );
-
-			return str_replace( $variables, $values, $content );
+			return $this->inline->replace_variables( $content, $mod, $atts, $extras );
 		}
 
+		/**
+		 * Deprecated on 2021/10/30.
+		 */
 		public function get_inline_variables() {
 
-			return array(
-				'%%canonical_url%%',
-				'%%canonical_short_url%%',
-				'%%sharing_url%%',
-				'%%sharing_short_url%%',
-				'%%short_url%%',	// Aka %%sharing_short_url%% - Required for old WPSSO RRSSB templates.
-				'%%request_url%%',
-				'%%sitename%%',
-				'%%sitealtname%%',
-				'%%sitedesc%%',
-			);
+			_deprecated_function( __METHOD__ . '()', '2021/10/30', $replacement = __CLASS__ . '->inline->get_variables()' );	// Deprecation message.
+
+			return $this->inline->get_variables();
 		}
 
+		/**
+		 * Deprecated on 2021/10/30.
+		 */
 		public function get_inline_values( $mod = false, $atts = array() ) {
 
-			/**
-			 * The $mod array argument is preferred but not required.
-			 *
-			 * $mod = true | false | post_id | $mod array
-			 */
-			if ( ! is_array( $mod ) ) {
+			_deprecated_function( __METHOD__ . '()', '2021/10/30', $replacement = __CLASS__ . '->inline->get_values()' );	// Deprecation message.
 
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
-				}
-
-				$mod = $this->p->page->get_mod( $mod );
-			}
-
-			$add_page            = isset( $atts[ 'add_page' ] ) ? $atts[ 'add_page' ] : true;
-			$canonical_url       = empty( $atts[ 'canonical_url' ] ) ? $this->get_canonical_url( $mod, $add_page ) : $atts[ 'canonical_url' ];
-			$canonical_short_url = empty( $atts[ 'canonical_short_url' ] ) ? $this->get_canonical_short_url( $mod, $add_page ) : $atts[ 'canonical_short_url' ];
-			$sharing_url         = empty( $atts[ 'sharing_url' ] ) ? $this->get_sharing_url( $mod, $add_page, $atts ) : $atts[ 'sharing_url' ];
-			$sharing_short_url   = empty( $atts[ 'sharing_short_url' ] ) ? $this->get_sharing_short_url( $mod, $add_page, $atts ) : $atts[ 'sharing_short_url' ];
-			$request_url         = is_admin() ? $canonical_url : self::get_url( $remove_tracking = true );
-			$sitename            = self::get_site_name( $this->p->options, $mod );
-			$sitealtname         = self::get_site_name_alt( $this->p->options, $mod );
-			$sitedesc            = self::get_site_description( $this->p->options, $mod );
-
-			return array(
-				$canonical_url,		// %%canonical_url%%
-				$canonical_short_url,	// %%canonical_short_url%%
-				$sharing_url,		// %%sharing_url%%
-				$sharing_short_url,	// %%sharing_short_url%%
-				$sharing_short_url,	// %%short_url%% - Required for old WPSSO RRSSB templates.
-				$request_url,		// %%request_url%%
-				$sitename,		// %%sitename%%
-				$sitealtname,		// %%sitealtname%%
-				$sitedesc,		// %%sitedesc%%
-			);
+			return $this->inline->get_values( $mod, $atts );
 		}
 
 		public function shorten_url( $long_url, $mod ) {
@@ -2536,55 +2454,41 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				} elseif ( $mod[ 'id' ] ) {
 
-					if ( is_numeric( $add_page ) ) {
+					$page_number = $this->get_page_number( $mod, $add_page );
 
-						$page_in_page = $add_page;
+					if ( $page_number > 1 ) {
 
-					} else {
+						$page_total = $this->get_page_total( $mod );
 
-						$page_in_page = isset( $mod[ 'query_vars' ][ 'page' ] ) ? $mod[ 'query_vars' ][ 'page' ] : 1;
-					}
+						if ( $page_number > $page_total ) {	// Just in case.
 
-					if ( $page_in_page > 1 ) {
+							$page_number = $page_total;
+						}
 
 						global $wp_rewrite;
 
-						$post_obj = self::get_post_object( $mod[ 'id' ] );
+						if ( ! $wp_rewrite->using_permalinks() || false !== strpos( $url, '?' ) ) {
 
-						$total_pages = substr_count( $post_obj->post_content, '<!--nextpage-->' ) + 1;
+							$url = add_query_arg( 'page', $page_number, $url );
 
-						if ( $total_pages && $page_in_page <= $total_pages ) {
+						} else {
 
-							if ( ! $wp_rewrite->using_permalinks() || false !== strpos( $url, '?' ) ) {
-
-								$url = add_query_arg( 'page', $page_in_page, $url );
-
-							} else {
-
-								$url = user_trailingslashit( trailingslashit( $url ) . $page_in_page );
-							}
+							$url = user_trailingslashit( trailingslashit( $url ) . $page_number );
 						}
 					}
 				}
 
 			} else {
 
-				if ( is_numeric( $add_page ) ) {
+				$page_number = $this->get_page_number( $mod, $add_page );
 
-					$paged = $add_page;
-
-				} else {
-
-					$paged = isset( $mod[ 'query_vars' ][ 'paged' ] ) ? $mod[ 'query_vars' ][ 'paged' ] : 1;
-				}
-
-				if ( $paged > 1 ) {
+				if ( $page_number > 1 ) {
 
 					global $wp_rewrite;
 
 					if ( ! $wp_rewrite->using_permalinks() !== strpos( $url, '?' ) ) {
 
-						$url = add_query_arg( 'paged', $paged, $url );
+						$url = add_query_arg( 'paged', $page_number, $url );
 
 					} else {
 
@@ -2600,7 +2504,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 							}
 						}
 
-						$url = user_trailingslashit( trailingslashit( $url ) . trailingslashit( $wp_rewrite->pagination_base ) . $paged );
+						$url = user_trailingslashit( trailingslashit( $url ) . trailingslashit( $wp_rewrite->pagination_base ) . $page_number );
 					}
 
 					if ( $this->p->debug->enabled ) {
@@ -2611,6 +2515,63 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			return $url;
+		}
+
+		public function get_page_number( $mod = false, $add_page = true ) {
+
+			if ( ! is_array( $mod ) ) {	// Just in case.
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
+				}
+
+				$mod = $this->p->page->get_mod( $mod );
+			}
+
+			$page_number = 1;
+
+			if ( is_numeric( $add_page ) ) {
+
+				$page_number = $add_page;
+
+			} elseif ( isset( $mod[ 'query_vars' ][ 'page' ] ) ) {	// Can be 0.
+			
+				$page_number = $mod[ 'query_vars' ][ 'page' ];
+			}
+
+			return $page_number > 1 ? $page_number : 1;	// Always return a positive number.
+		}
+
+		public function get_page_total( $mod = false ) {
+
+			if ( ! is_array( $mod ) ) {	// Just in case.
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
+				}
+
+				$mod = $this->p->page->get_mod( $mod );
+			}
+
+			$total_pages = 1;
+
+			if ( $mod[ 'is_post' ] ) {
+
+				if ( ! empty( $mod[ 'id' ] ) ) {
+
+					$post_obj = self::get_post_object( $mod[ 'id' ] );
+
+					$total_pages = substr_count( $post_obj->post_content, '<!--nextpage-->' ) + 1;
+				}
+
+			} elseif ( isset( $mod[ 'max_num_pages' ] ) ) {	// Can be 0.
+			
+				$page_number = $mod[ 'max_num_pages' ];
+			}
+
+			return $total_pages > 1 ? $total_pages : 1;	// Always return a positive number.
 		}
 
 		private function check_url_string( $url, $context ) {

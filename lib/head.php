@@ -865,7 +865,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 */
 			if ( false !== strpos( $value, '%%' ) ) {
 
-				$value = $this->p->util->replace_inline_variables( $value, $mod );
+				$value = $this->p->util->inline->replace_variables( $value, $mod );
 			}
 
 			static $last_secure_url = null;

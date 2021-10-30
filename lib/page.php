@@ -362,7 +362,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			global $wp_query;
 
-			$mod[ 'query_vars' ] = $wp_query->query_vars;
+			$mod[ 'query_vars' ]    = $wp_query->query_vars;
+			$mod[ 'max_num_pages' ] = empty( $wp_query->max_num_pages ) ? 0 : $wp_query->max_num_pages;
 
 			$mod[ 'use_post' ] = $use_post;
 
@@ -861,7 +862,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( false !== strpos( $title_text, '%%' ) ) {
 
-				$title_text = $this->p->util->replace_inline_variables( $title_text, $mod );
+				$title_text = $this->p->util->inline->replace_variables( $title_text, $mod, $atts = array(
+					'title_sep' => $title_sep,
+				) );
 			}
 
 			/**
@@ -909,7 +912,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( ! empty( $hashtags ) ) {
 
-				$title_text = trim( $title_text . ' ' . $hashtags );	// Trim in case text is empty.
+				$title_text = trim( $title_text . ' ' . $hashtags );	// Trim in case title text is empty.
 			}
 
 			if ( $do_encode ) {
@@ -1285,7 +1288,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( false !== strpos( $desc_text, '%%' ) ) {
 
-				$desc_text = $this->p->util->replace_inline_variables( $desc_text, $mod );
+				$desc_text = $this->p->util->inline->replace_variables( $desc_text, $mod );
 			}
 
 			/**
@@ -1597,6 +1600,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 * Trim excess separator.
 			 */
 			if ( ! empty( $title_sep ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'trimming separator "' . $title_sep . '" from title string' );
+				}
 
 				$title_text = preg_replace( '/ *' . preg_quote( $title_sep, '/' ) . ' *$/', '', $title_text );
 			}
