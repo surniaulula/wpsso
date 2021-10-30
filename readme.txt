@@ -336,6 +336,23 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 9.5.0-dev.1 (2021/10/30)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added support for '%%title%%', '%%page%%', '%%pagenumber%%', '%%pagetotal%%', and '%%sep%%' inline variables.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new `WpssoUtilInline` class.
+	* Replaced `WpssoUtil->replace_inline_variables()` by `WpssoUtil->inline->replace_variables()`.
+	* Replaced `WpssoUtil->get_inline_variables()` by `WpssoUtil->inline->get_variables()`.
+	* Replaced `WpssoUtil->get_inline_values()` by `WpssoUtil->inline->get_values()`.
+* **Requires At Least**
+	* PHP v7.0.
+	* WordPress v5.0.
+
 **Version 9.4.1 (2021/10/30)**
 
 * **New Features**
@@ -535,6 +552,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.0.
 
 == Upgrade Notice ==
+
+= 9.5.0-dev.1 =
+
+(2021/10/30) Added support for '%%title%%', '%%page%%', '%%pagenumber%%', '%%pagetotal%%', and '%%sep%%' inline variables. Added a new `WpssoUtilInline` class.
 
 = 9.4.1 =
 
