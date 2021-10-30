@@ -12,7 +12,7 @@ Requires PHP: 7.0
 Requires At Least: 5.0
 Tested Up To: 5.8.1
 WC Tested Up To: 5.8.0
-Stable Tag: 9.4.0
+Stable Tag: 9.4.1
 
 Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
 
@@ -343,7 +343,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* Fixed Open Graph and Schema image sizes for WooCommerce product offers (aka variations).
+	* Fixed Open Graph and Schema image sizes for WooCommerce product offers (Premium version).
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -538,7 +538,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 9.4.1 =
 
-(2021/10/30) Fixed Open Graph and Schema image sizes for WooCommerce product offers (aka variations).
+(2021/10/30) Fixed Open Graph and Schema image sizes for WooCommerce product offers (Premium version).
 
 = 9.4.0 =
 
