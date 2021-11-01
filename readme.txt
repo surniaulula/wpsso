@@ -352,6 +352,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Removed the SSO &gt; Advanced Settings &gt; Clear Post Cache for New Comment option (now always enabled).
 * **Bugfixes**
 	* Fixed missing 'author' in Schema CreativeWork markup.
+	* Fixed inheritance of custom images for WooCommerce product offers (Premium version).
 * **Developer Notes**
 	* Added a new `WpssoUtilInline` class.
 	* Replaced `WpssoUtil->replace_inline_variables()` by `WpssoUtil->inline->replace_variables()`.
@@ -571,7 +572,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 9.5.0-dev.2 =
 
-(2021/11/01) Fixed missing 'author' in Schema CreativeWork markup. Discontinued the WPSSO IPM add-on. Added support for new inline variables.
+(2021/11/01) Fixed missing 'author' in Schema CreativeWork markup. Fixed inheritance of custom images for WooCommerce product offers (Premium version). Discontinued the WPSSO IPM add-on. Added support for new inline variables.
 
 = 9.4.1 =
 
