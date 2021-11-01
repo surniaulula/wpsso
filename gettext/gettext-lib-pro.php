@@ -13,8 +13,6 @@ _x( 'recommended if shortcodes in excerpts', 'option comment', 'wpsso' );
 _x( 'Enable Excerpt for Pages', 'option label', 'wpsso' );
 _x( 'Enable Tags for Pages', 'option label', 'wpsso' );
 _x( 'Add Person Role for New Users', 'option label', 'wpsso' );
-_x( 'Clear Term Cache when Publishing', 'option label', 'wpsso' );
-_x( 'Clear Post Cache for New Comment', 'option label', 'wpsso' );
 _x( 'Enforce Image Dimension Checks', 'option label', 'wpsso' );
 _x( 'recommended (see help text)', 'option comment', 'wpsso' );
 _x( 'Upscale Media Library Images', 'option label', 'wpsso' );

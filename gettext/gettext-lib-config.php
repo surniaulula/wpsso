@@ -107,8 +107,6 @@ _x( 'WPSSO Schema Breadcrumbs Markup', 'plugin name', 'wpsso' );
 _x( 'Schema BreadcrumbList markup in JSON-LD format for Google Rich Results.', 'plugin description', 'wpsso' );
 _x( 'WPSSO FAQ Manager', 'plugin name', 'wpsso' );
 _x( 'Create FAQ and Question / Answer Pages with optional shortcodes to include FAQs and Questions / Answers in your content.', 'plugin description', 'wpsso' );
-_x( 'WPSSO Inherit Parent Metadata', 'plugin name', 'wpsso' );
-_x( 'Inherit featured and custom images from parents for posts, pages, custom post types, categories, tags, and custom taxonomies.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Organization Markup', 'plugin name', 'wpsso' );
 _x( 'Customize the Schema Organization markup for your website and create additional Schema Organizations (publisher, organizer, etc.).', 'plugin description', 'wpsso' );
 _x( 'WPSSO Place and Local SEO Markup', 'plugin name', 'wpsso' );

@@ -78,8 +78,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$is_admin = is_admin();	// Only check once.
-
+			$is_admin   = is_admin();	// Only check once.
 			$doing_ajax = SucomUtilWP::doing_ajax();
 
 			if ( $is_admin ) {
@@ -153,15 +152,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					}
 				}
 
+				/**
+				 * Column filters.
+				 */
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'adding column filters for media library' );
 				}
 
 				add_filter( 'manage_media_columns', array( $this, 'add_media_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
-
 				add_filter( 'manage_upload_sortable_columns', array( $this, 'add_sortable_columns' ), 10, 1 );
-
 				add_action( 'manage_media_custom_column', array( $this, 'show_column_content' ), 10, 2 );
 
 				/**
@@ -173,7 +173,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				/**
 				 * Maybe create or update the post column content.
 				 */
-				add_filter( 'get_post_metadata', array( $this, 'check_sortable_meta' ), 10, 4 );
+				add_filter( 'get_post_metadata', array( $this, 'check_sortable_meta' ), 1000, 4 );
 			}
 
 			if ( ! empty( $this->p->options[ 'plugin_shortener' ] ) && $this->p->options[ 'plugin_shortener' ] !== 'none' ) {
@@ -202,6 +202,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					}
 				}
 			}
+
+			/**
+			 * Maybe inherit a featured image from the post/page parent.
+			 */
+			add_filter( 'get_post_metadata', array( $this, 'get_post_metadata_thumbnail_id' ), 100, 4 );
+			add_filter( 'update_post_metadata', array( $this, 'update_post_metadata_thumbnail_id' ), 100, 5 );
 		}
 
 		/**
@@ -382,6 +388,28 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					}
 
 					$md_opts = apply_filters( 'wpsso_import_custom_fields', $md_opts, get_post_meta( $post_id ) );
+
+					/**
+					 * Since WPSSO Core v9.5.0.
+					 *
+					 * Override options with those of the parents.
+					 */
+					if ( $this->p->debug->enabled ) {
+	
+						$this->p->debug->log( 'merging parent metadata options' );
+					}
+	
+					$parent_opts = $this->get_parent_md_opts( $mod );
+	
+					if ( $this->p->debug->enabled ) {
+	
+						$this->p->debug->log_arr( '$parent_opts', $parent_opts );
+					}
+	
+					if ( ! empty( $parent_opts ) ) {
+
+						$md_opts = array_merge( $md_opts, $parent_opts );
+					}
 
 					/**
 					 * Since WPSSO Core v7.1.0.
@@ -574,6 +602,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			echo $this->get_column_content( '', $column_name, $post_id );
+		}
+
+		public function get_update_meta_cache( $obj_id, $meta_type = 'post' ) {
+
+			return parent::get_update_meta_cache( $obj_id, $meta_type = 'post' );
 		}
 
 		/**
@@ -1499,20 +1532,17 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 */
 			if ( 'publish' === $post_status ) {
 
-				if ( ! empty( $this->p->options[ 'plugin_clear_post_terms' ] ) ) {
+				$post_taxonomies = get_post_taxonomies( $post_id );
 
-					$post_taxonomies = get_post_taxonomies( $post_id );
+				foreach ( $post_taxonomies as $tax_slug ) {
 
-					foreach ( $post_taxonomies as $tax_slug ) {
+					$post_terms = wp_get_post_terms( $post_id, $tax_slug );	// Returns WP_Error if taxonomy does not exist.
 
-						$post_terms = wp_get_post_terms( $post_id, $tax_slug );	// Returns WP_Error if taxonomy does not exist.
+					if ( is_array( $post_terms ) ) {
 
-						if ( is_array( $post_terms ) ) {
+						foreach ( $post_terms as $term_obj ) {
 
-							foreach ( $post_terms as $term_obj ) {
-
-								$this->p->term->clear_cache( $term_obj->term_id, $term_obj->term_taxonomy_id );
-							}
+							$this->p->term->clear_cache( $term_obj->term_id, $term_obj->term_taxonomy_id );
 						}
 					}
 				}
@@ -1851,6 +1881,76 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			return $shortlink;
+		}
+
+		/**
+		 * See get_metadata_raw() in wordpress/wp-includes/meta.php:570.
+		 * See metadata_exists() in wordpress/wp-includes/meta.php:683.
+		 */
+		public function get_post_metadata_thumbnail_id( $check = null, $obj_id, $meta_key, $single ) {
+
+			if ( '_thumbnail_id' !== $meta_key ) {
+
+				return $check;
+			}
+
+			$metadata = $this->p->post->get_update_meta_cache( $obj_id );
+
+			/**
+			 * If the meta key already has a value, then no need to check the parents.
+			 */
+			if ( ! empty( $metadata[ $meta_key ] ) ) {
+
+				return $check;
+			}
+
+			/**
+			 * Start with the parent and work our way up - return the first value found.
+			 */
+			foreach ( get_post_ancestors( $obj_id ) as $parent_id ) {
+
+				$metadata = $this->p->post->get_update_meta_cache( $parent_id );
+
+				if ( ! empty( $metadata[ $meta_key ][ 0 ] ) ) {	// Parent has a meta key value.
+
+					if ( $single ) {
+
+						return maybe_unserialize( $metadata[ $meta_key ][ 0 ] );
+					}
+
+					return array_map( 'maybe_unserialize', $metadata[ $meta_key ] );
+				}
+			}
+
+			return $check;
+		}
+
+		public function update_post_metadata_thumbnail_id( $check = null, $obj_id, $meta_key, $meta_value, $prev_value ) {
+
+			if ( '_thumbnail_id' !== $meta_key ) {
+
+				return $check;
+			}
+
+			if ( '' === $prev_value ) {	// No existing previous value.
+
+				foreach ( get_post_ancestors( $obj_id ) as $parent_id ) {
+
+					$metadata = $this->p->post->get_update_meta_cache( $parent_id );
+
+					if ( ! empty( $metadata[ $meta_key ][ 0 ] ) ) {	// Parent has a meta key value.
+
+						$parent_value = maybe_unserialize( $metadata[ $meta_key ][ 0 ] );
+
+						if ( $meta_value == $parent_value ) {	// Allow integer to numeric string comparison.
+
+							return false;	// Do not save the meta key value.
+						}
+					}
+				}
+			}
+
+			return $check;
 		}
 
 		/**

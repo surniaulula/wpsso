@@ -1734,7 +1734,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		/**
 		 * Note that $mt_offer could be the $mt_og array with minimal product meta tags.
 		 */
-		public static function get_offer_data( array $mod, array $mt_offer, $add_images = true ) {
+		public static function get_offer_data( array $mod, array $mt_offer ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -1914,17 +1914,15 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			self::add_organization_data( $offer[ 'seller' ], $mod, $org_id = 'site', $org_logo_key = 'org_logo_url', $org_list_el = false );
 
 			/**
-			 * Maybe add images provided in the $mt_og or $mt_offer array.
+			 * Maybe add images to the $mt_og or $mt_offer array.
 			 */
-			if ( $add_images ) {
+			if ( ! empty( $mt_offer[ 'product:retailer_item_id' ] ) && is_numeric( $mt_offer[ 'product:retailer_item_id' ] ) ) {	// Just in case.
 
-				if ( ! empty( $mt_offer[ 'og:image' ] ) ) {	// Just in case.
+				$post_id = $mt_offer[ 'product:retailer_item_id' ];
 
-					/**
-					 * The provided image will be sized for opengraph so use $resize = true.
-					 */
-					WpssoSchema::add_images_data_mt( $offer[ 'image' ], $mt_offer[ 'og:image' ], $media_pre = 'og:image', $resize = true );
-				}
+				$offer_mod = $wpsso->post->get_mod( $post_id );
+			
+				WpssoSchema::add_media_data( $offer, $offer_mod, $mt_offer, $size_names = 'schema', $add_video = 'false' );
 			}
 
 			$offer = apply_filters( 'wpsso_json_data_single_offer', $offer, $mod );

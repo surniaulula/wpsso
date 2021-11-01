@@ -490,6 +490,10 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'add_meta_itemprop_acceptsreservations'         => '',	// Deprecated on 2021/09/15.
 					'add_meta_itemprop_servescuisine'               => '',	// Deprecated on 2021/09/15.
 				),
+				831 => array(
+					'plugin_clear_post_terms'  => '',	// Deprecated on 2021/11/01.
+					'plugin_clear_for_comment' => '',	// Deprecated on 2021/11/01.
+				),
 			),
 		);
 

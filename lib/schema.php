@@ -1810,7 +1810,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					continue;
 				}
 
-				$single_offer = WpssoSchemaSingle::get_offer_data( $mod, $mt_offer, $add_images = true );
+				$single_offer = WpssoSchemaSingle::get_offer_data( $mod, $mt_offer );
 
 				if ( false === $single_offer ) {
 
@@ -1856,7 +1856,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					continue;
 				}
 
-				$single_offer = WpssoSchemaSingle::get_offer_data( $mod, $mt_offer, $add_images = true );
+				$single_offer = WpssoSchemaSingle::get_offer_data( $mod, $mt_offer );
 
 				if ( false === $single_offer ) {
 
@@ -2229,6 +2229,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
+		 * $mt_og can be the main webpage open graph array or a product $mt_offer array.
+		 *
 		 * $size_names can be null, a string, or an array.
 		 *
 		 * $add_video can be true, false, or a string (property name).
@@ -2247,7 +2249,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 *	image as https://schema.org/ImageObject
 			 */
 			$img_added = 0;
-			$max_nums  = $wpsso->util->get_max_nums( $mod, 'schema' );
+
+			$max_nums = $wpsso->util->get_max_nums( $mod, 'schema' );
+
 			$mt_images = $wpsso->og->get_all_images( $max_nums[ 'schema_img_max' ], $size_names, $mod, $check_dupes = true, $md_pre = 'schema' );
 
 			if ( ! empty( $mt_images ) ) {

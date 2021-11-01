@@ -99,7 +99,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeSoftwareApplication' ) ) {
 						$this->p->debug->log( 'getting single offer data' );
 					}
 
-					if ( $single_offer = WpssoSchemaSingle::get_offer_data( $mod, $mt_og, $add_images = false ) ) {
+					if ( $single_offer = WpssoSchemaSingle::get_offer_data( $mod, $mt_og ) ) {
 
 						if ( $this->p->debug->enabled ) {
 

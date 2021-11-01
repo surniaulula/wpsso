@@ -909,11 +909,16 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 * original number to get all possible videos (from its cache), then maybe limit the number of preview
 			 * images if necessary.
 			 */
-			$max_nums  = $this->p->util->get_max_nums( $mod );
-			$mt_videos = $this->get_all_videos( $max_nums[ 'og_vid_max' ], $mod, $check_dupes, $md_pre, $force_prev );
-			$mt_images = array();
+			$max_nums = $this->p->util->get_max_nums( $mod );
 
+			$mt_videos = $this->get_all_videos( $max_nums[ 'og_vid_max' ], $mod, $check_dupes, $md_pre, $force_prev );
+
+			/**
+			 * Clear previously seen image URLs.
+			 */
 			$this->p->util->clear_uniq_urls( array( 'preview' ) );
+
+			$mt_images = array();
 
 			foreach ( $mt_videos as $mt_single_video ) {
 
@@ -989,11 +994,14 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				return $mt_videos;	// Return an empty array.
 			}
 
+			/**
+			 * Clear previously seen videos URLs.
+			 */
+			$this->p->util->clear_uniq_urls( array( 'video', 'content_video', 'video_details' ) );
+
 			$use_prev = $this->p->options[ 'og_vid_prev_img' ];
 
 			$num_diff = SucomUtil::count_diff( $mt_videos, $num );
-
-			$this->p->util->clear_uniq_urls( array( 'video', 'content_video', 'video_details' ) );
 
 			/**
 			 * Get video information and preview enable/disable option from the post/term/user meta.
@@ -1308,14 +1316,17 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				return array();
 			}
 
+			/**
+			 * Clear previously seen image URLs.
+			 */
+			$this->p->util->clear_uniq_urls( $size_name );
+
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'getting ' . $num . ' images for size name ' . $size_name );
 			}
 
 			$mt_ret = array();
-
-			$this->p->util->clear_uniq_urls( $size_name );	// Clear cache for $size_name context.
 
 			if ( $mod[ 'is_post' ] ) {
 

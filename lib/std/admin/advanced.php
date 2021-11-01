@@ -121,18 +121,6 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$form->get_no_td_checkbox( 'plugin_new_user_is_person' ) .
 				WpssoAdmin::get_option_site_use( 'plugin_new_user_is_person', $form, $network );
 
-			$table_rows[ 'plugin_clear_post_terms' ] = $form->get_tr_hide( 'basic', 'plugin_clear_post_terms' ) . 
-				$form->get_th_html( _x( 'Clear Term Cache when Publishing', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_clear_post_terms' ) . 
-				$form->get_no_td_checkbox( 'plugin_clear_post_terms' ) . 
-				WpssoAdmin::get_option_site_use( 'plugin_clear_post_terms', $form, $network );
-
-			$table_rows[ 'plugin_clear_for_comment' ] = $form->get_tr_hide( 'basic', 'plugin_clear_for_comment' ) . 
-				$form->get_th_html( _x( 'Clear Post Cache for New Comment', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_clear_for_comment' ) . 
-				$form->get_no_td_checkbox( 'plugin_clear_for_comment' ) . 
-				WpssoAdmin::get_option_site_use( 'plugin_clear_for_comment', $form, $network );
-
 			$table_rows[ 'plugin_check_img_dims' ] = '' . 
 				$form->get_th_html( _x( 'Enforce Image Dimension Checks', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_check_img_dims' ) . 

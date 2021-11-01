@@ -286,6 +286,28 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					$mod = $this->get_mod( $term_id );
 
 					/**
+					 * Since WPSSO Core v9.5.0.
+					 *
+					 * Override options with those of the parents.
+					 */
+					if ( $this->p->debug->enabled ) {
+	
+						$this->p->debug->log( 'merging parent metadata options' );
+					}
+	
+					$parent_opts = $this->get_parent_md_opts( $mod );
+	
+					if ( $this->p->debug->enabled ) {
+	
+						$this->p->debug->log_arr( '$parent_opts', $parent_opts );
+					}
+	
+					if ( ! empty( $parent_opts ) ) {
+
+						$md_opts = array_merge( $md_opts, $parent_opts );
+					}
+
+					/**
 					 * Since WPSSO Core v7.1.0.
 					 */
 					if ( $this->p->debug->enabled ) {
@@ -487,6 +509,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 
 			return $this->add_column_headings( $columns, $list_type = 'term' );
+		}
+
+		public function get_update_meta_cache( $obj_id, $meta_type = 'term' ) {
+
+			return parent::get_update_meta_cache( $obj_id, $meta_type = 'term' );
 		}
 
 		/**

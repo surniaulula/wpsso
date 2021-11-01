@@ -282,11 +282,20 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			$md_defs =& $local_cache[ $mod_id ];	// Shortcut variable name.
 
-			if ( ! WpssoOptions::is_cache_allowed() || empty( $md_defs[ 'options_filtered' ] ) ) {
+			$is_cache_allowed = WpssoOptions::is_cache_allowed() ? true : false;
+			$options_filtered = empty( $md_defs[ 'options_filtered' ] ) ? false : true;
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'is_cache_allowed is ' . ( $is_cache_allowed ? 'true' : 'false' ) );
+				$this->p->debug->log( 'options_filtered is ' . ( $options_filtered ? 'true' : 'false' ) );
+			}
+
+			if ( ! $is_cache_allowed || ! $options_filtered  ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'get_md_defaults filter allowed' );
+					$this->p->debug->log( 'get_md_defaults filters allowed' );
 				}
 
 				$mod = $this->get_mod( $mod_id );
@@ -702,7 +711,29 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					}
 				}
 
-				if ( WpssoOptions::is_cache_allowed() ) {
+				/**
+				 * Since WPSSO Core v9.5.0.
+				 *
+				 * Override options with those of the parents to prevent saving inherited options.
+				 */
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'merging parent metadata options' );
+				}
+
+				$parent_opts = $this->get_parent_md_opts( $mod );
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log_arr( '$parent_opts', $parent_opts );
+				}
+
+				if ( ! empty( $parent_opts ) ) {
+
+					$md_defs = array_merge( $md_defs, $parent_opts );
+				}
+
+				if ( $is_cache_allowed ) {
 
 					if ( $this->p->debug->enabled ) {
 
@@ -738,7 +769,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			} elseif ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'get_md_defaults filter skipped' );
+				$this->p->debug->log( 'get_md_defaults filters skipped' );
 			}
 
 			if ( false !== $md_key ) {
@@ -769,7 +800,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		protected function is_upgrade_options_required( $md_opts ) {
 
 			/**
-			 * Example: 'options_version' = '-wpsso774std-wpssojson43std-wpssoum7std'.
+			 * Example:
+			 *
+			 * 	'options_version' = '-wpsso774std-wpssoum7std'.
 			 */
 			if ( isset( $md_opts[ 'options_version' ] ) && $md_opts[ 'options_version' ] !== $this->p->cf[ 'opt' ][ 'version' ] ) {
 
@@ -971,6 +1004,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			}
 
 			return $metabox_html;
+		}
+
+		public function load_meta_page( $screen = false ) {
+			
+			return self::must_be_extended();
 		}
 
 		/**
@@ -1280,8 +1318,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			/**
 			 * WordPress stores data using a post, term, or user ID, along with a group string.
-			 *
-			 * Example: wp_cache_get( 1, 'user_meta' );
 			 */
 			$cleared_count = wp_cache_delete( $mod[ 'id' ], $mod[ 'name' ] . '_meta' );
 
@@ -1956,31 +1992,8 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			/**
 			 * Retrieves the cache contents from the cache by key and group.
-			 *
-			 * WordPress stores data using a post, term, or user ID, along with a group string.
-			 *
-			 * Example: wp_cache_get( 1, 'user_meta' );
-			 *
-			 * Returns (bool|mixed) false on failure to retrieve contents or the cache contents on success.
-			 *
-			 * $found (bool) Whether the key was found in the cache (passed by reference) - disambiguates a return of false.
 			 */
-			$metadata = wp_cache_get( $mod[ 'id' ], $mod[ 'name' ] . '_meta', $force = false, $found );
-
-			if ( ! $found ) {
-
-				/**
-				 * Updates the metadata cache for the specified objects.
-				 *
-				 * $meta_type (string) Type of object metadata is for. Accepts 'post', 'comment', 'term', 'user',
-				 * or any other object type with an associated meta table.  
-				 *
-				 * Returns (array|false) metadata cache for the specified objects, or false on failure.
-				 */
-				$metadata = update_meta_cache( $mod[ 'name' ], array( $mod[ 'id' ] ) );
-
-				$metadata = $metadata[ $mod[ 'id' ] ];
-			}
+			$metadata = $mod[ 'obj' ]->get_update_meta_cache( $mod[ 'id' ] );
 
 			if ( ! empty( $metadata[ $col_info[ 'meta_key' ] ] ) ) {
 
@@ -1988,9 +2001,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			}
 
 			/**
-			 * $value is an empty string by default. If wp_cache_get() or update_meta_cache() do not return a value for
-			 * this meta key, then $value will still be an empty string. If this meta key is localized, and the locale
-			 * key does not exist in the array, then fetch a new / updated array value.
+			 * $value is an empty string by default. If $this->get_update_meta_cache() did not return a value for this
+			 * meta key, then $value will still be an empty string. If this meta key is localized, and the locale key
+			 * does not exist in the array, then fetch a new / updated array value.
 			 */
 			if ( '' === $value || ( $locale && ! isset( $value[ $locale ] ) ) ) {
 
@@ -2154,6 +2167,90 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		}
 
 		/**
+		 * Retrieves or updates the metadata cache by key and group.
+		 *
+		 * Usually called by an extended class (WpssoComment, WpssoPost, WpssoTerm, or WpssoUser), which hardcodes the
+		 * $meta_type value to 'comment', 'post', 'term', or 'user'.
+		 */
+		public function get_update_meta_cache( $obj_id, $meta_type = '' ) {
+
+			if ( empty( $meta_type ) ) {	// Just in case.
+				
+				return array();
+			}
+
+			/**
+			 * WordPress stores data using a post, term, or user ID, along with a group string.
+			 *
+			 * Example: wp_cache_get( 1, 'user_meta' );
+			 *
+			 * Returns (bool|mixed) false on failure to retrieve contents or the cache contents on success.
+			 *
+			 * $found (bool) Whether the key was found in the cache (passed by reference) - disambiguates a return of false.
+			 */
+			$metadata = wp_cache_get( $obj_id, $meta_type . '_meta', $force = false, $found );
+
+			if ( $found ) {
+
+				return $metadata;
+			}
+
+			/**
+			 * $meta_type (string) Type of object metadata is for. Accepts 'post', 'comment', 'term', 'user',
+			 * or any other object type with an associated meta table.  
+			 *
+			 * Returns (array|false) metadata cache for the specified objects, or false on failure.
+			 */
+			$metadata = update_meta_cache( $meta_type, array( $obj_id ) );
+
+			return $metadata[ $obj_id ];
+		}
+
+		/**
+		 * Return merged custom options from the post or term parents.
+		 */
+		public function get_parent_md_opts( $mod ) {
+
+			$md_opts = array();
+
+			$inherit_opts = $this->p->cf[ 'form' ][ 'inherit_md_opts' ];	// Since WPSSO Core v9.5.0.
+
+			if ( $mod[ 'is_post' ] ) {
+
+				$parent_ids = get_ancestors( $mod[ 'id' ], $mod[ 'post_type' ], 'post_type' );
+
+			} elseif ( $mod[ 'is_term' ] ) {
+
+				$parent_ids = get_ancestors( $mod[ 'id' ], $mod[ 'tax_slug' ], 'taxonomy' );
+
+			} else {
+
+				$parent_ids = array();
+			}
+
+			/**
+			 * Merge the custom options array top-down, so we merge the closest parent last.
+			 */
+			$parent_ids = array_reverse( $parent_ids );
+
+			foreach ( $parent_ids as $parent_id ) {
+
+				$metadata = $mod[ 'obj' ]->get_update_meta_cache( $parent_id );
+
+				if ( isset( $metadata[ WPSSO_META_NAME ][ 0 ] ) ) {
+
+					$parent_opts = maybe_unserialize( $metadata[ WPSSO_META_NAME ][ 0 ] );
+
+					$parent_opts = array_intersect_key( $parent_opts, $inherit_opts );
+
+					$md_opts = array_merge( $md_opts, $parent_opts );
+				}
+			}
+
+			return $md_opts;
+		}
+
+		/**
 		 * Returns an array of single image associative arrays.
 		 *
 		 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
@@ -2201,12 +2298,12 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				}
 
 				$pid = $this->get_options( $mod[ 'id' ], $opt_pre . '_img_id' );
-				$pre = $this->get_options( $mod[ 'id' ], $opt_pre . '_img_id_lib' );
+				$lib = $this->get_options( $mod[ 'id' ], $opt_pre . '_img_id_lib' );
 				$url = $this->get_options( $mod[ 'id' ], $opt_pre . '_img_url' );
 
 				if ( $pid > 0 ) {
 
-					$pid = 'ngg' === $pre ? 'ngg-' . $pid : $pid;
+					$pid = 'ngg' === $lib ? 'ngg-' . $pid : $pid;
 
 					if ( $this->p->debug->enabled ) {
 
@@ -2528,7 +2625,10 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				$size_names = $this->p->util->get_image_size_names( 'full' );	// Always returns an array.
 
-				$this->p->util->clear_uniq_urls( $size_names );	// Reset previously seen image URLs.
+				/**
+				 * Clear previously seen image URLs.
+				 */
+				$this->p->util->clear_uniq_urls( $size_names );
 
 				foreach ( $image_ids as $pid ) {
 
@@ -2548,7 +2648,10 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					}
 				}
 
-				if ( ! empty( $mt_ret[ $mt_pre . ':review:image' ] ) ) {	// No need to clear of no images were found.
+				/**
+				 * No need to clear of no images were found.
+				 */
+				if ( ! empty( $mt_ret[ $mt_pre . ':review:image' ] ) ) {
 
 					$this->p->util->clear_uniq_urls( $size_names );
 				}

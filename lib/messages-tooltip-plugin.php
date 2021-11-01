@@ -172,22 +172,6 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
-				case 'tooltip-plugin_clear_post_terms':		// Clear Term Cache when Publishing.
-
-					$def_checked = $this->get_def_checked( 'plugin_clear_post_terms' );
-
-					$text = sprintf( __( 'When a published post, page, or custom post type is updated, automatically clear the cache of its selected terms (default is %s).', 'wpsso' ), $def_checked );
-
-					break;
-
-				case 'tooltip-plugin_clear_for_comment':	// Clear Post Cache for New Comment.
-
-					$def_checked = $this->get_def_checked( 'plugin_clear_for_comment' );
-
-					$text = sprintf( __( 'Automatically clear the post cache when a new comment is added, or the status of an existing comment is changed (default is %s).', 'wpsso' ), $def_checked );
-
-					break;
-
 				case 'tooltip-plugin_check_img_dims':	// Enforce Image Dimension Checks.
 
 					$image_sizes_tab_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_image_sizes',

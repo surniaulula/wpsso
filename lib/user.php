@@ -469,6 +469,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $this->add_column_headings( $columns, $list_type = 'user' );
 		}
 
+		public function get_update_meta_cache( $obj_id, $meta_type = 'user' ) {
+
+			return parent::get_update_meta_cache( $obj_id, $meta_type = 'user' );
+		}
+
 		/**
 		 * Hooked into the current_screen action.
 		 *

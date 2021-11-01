@@ -33,23 +33,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( ! empty( $this->p->options[ 'plugin_clear_for_comment' ] ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'adding clear cache for comment actions' );
-				}
-
-				/**
-				 * Fires when a comment is inserted into the database.
-				 */
-				add_action ( 'comment_post', array( $this, 'clear_cache_for_new_comment' ), 1000, 2 );
-
-				/**
-				 * Fires before transitioning a comment's status.
-				 */
-				add_action ( 'wp_set_comment_status', array( $this, 'clear_cache_for_comment_status' ), 1000, 2 );
-			}
+			add_action ( 'clean_comment_cache', array( $this, 'clean_comment_cache' ), 1000, 1 );
 		}
 
 		/**
@@ -90,50 +74,24 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 			return $local_cache[ $comment_id ] = apply_filters( 'wpsso_get_comment_mod', $mod, $comment_id );
 		}
 
-		public function clear_cache_for_comment_status( $comment_id, $comment_status ) {
+		public function clean_comment_cache( $comment_id ) {
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
+			if ( empty( $comment_id ) ) {	// Just in case.
+				
+				return;
 			}
 
-			if ( $comment_id ) {	// Just in case.
+			$comment = get_comment( $comment_id );
 
-				if ( ( $comment = get_comment( $comment_id ) ) && $comment->comment_post_ID ) {
+			if ( ! empty( $comment->comment_post_ID ) ) {	// Just in case.
 
-					$post_id = $comment->comment_post_ID;
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'clearing post_id ' . $post_id . ' cache for comment_id ' . $comment_id );
-					}
-
-					$this->p->post->clear_cache( $post_id );
-				}
+				$this->p->post->clear_cache( $comment->comment_post_ID );
 			}
 		}
 
-		public function clear_cache_for_new_comment( $comment_id, $comment_approved ) {
+		public function get_update_meta_cache( $obj_id, $meta_type = 'comment' ) {
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			if ( $comment_id && $comment_approved === 1 ) {
-
-				if ( ( $comment = get_comment( $comment_id ) ) && $comment->comment_post_ID ) {
-
-					$post_id = $comment->comment_post_ID;
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'clearing post_id ' . $post_id . ' cache for comment_id ' . $comment_id );
-					}
-
-					$this->p->post->clear_cache( $post_id );
-				}
-			}
+			return parent::get_update_meta_cache( $obj_id, $meta_type = 'comment' );
 		}
 
 		/**

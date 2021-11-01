@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.5.0-dev.1',	// Plugin version.
-					'opt_version' => '830',		// Increment when changing default option values.
+					'version'     => '9.5.0-dev.2',	// Plugin version.
+					'opt_version' => '832',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -429,70 +429,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-faq/update/',
-						'latest'    => '',	// Optional.
-					),
-				),
-				'wpssoipm' => array(			// Plugin acronym.
-					'short'       => 'WPSSO IPM',	// Short plugin name.
-					'name'        => 'WPSSO Inherit Parent Metadata',
-					'desc'        => 'Inherit featured and custom images from parents for posts, pages, custom post types, categories, tags, and custom taxonomies.',
-					'slug'        => 'wpsso-inherit-parent-meta',
-					'base'        => 'wpsso-inherit-parent-meta/wpsso-inherit-parent-meta.php',
-					'update_auth' => '',		// No premium version.
-
-					/**
-					 * URLs or relative paths to plugin banners and icons.
-					 */
-					'assets' => array(
-
-						/**
-						 * Banner image array keys are 'low' and 'high'.
-						 */
-						'banners' => array(
-							'low'  => 'https://surniaulula.github.io/wpsso-inherit-parent-meta/assets/banner-772x250.jpg',
-							'high' => 'https://surniaulula.github.io/wpsso-inherit-parent-meta/assets/banner-1544x500.jpg',
-						),
-
-						/**
-						 * Icon image array keys are '1x' and '2x'.
-						 */
-						'icons' => array(
-							'1x' => 'https://surniaulula.github.io/wpsso-inherit-parent-meta/assets/icon-128x128.png',
-							'2x' => 'https://surniaulula.github.io/wpsso-inherit-parent-meta/assets/icon-256x256.png',
-						),
-					),
-					'hosts' => array(
-						'wp_org' => true,
-						'github' => true,
-						'wpsso'  => true,
-					),
-					'url' => array(
-
-						/**
-						 * WordPress.org.
-						 */
-						'home'   => 'https://wordpress.org/plugins/wpsso-inherit-parent-meta/',
-						'forum'  => 'https://wordpress.org/support/plugin/wpsso-inherit-parent-meta',
-						'review' => 'https://wordpress.org/support/plugin/wpsso-inherit-parent-meta/reviews/?rate=5#new-post',
-
-						/**
-						 * GitHub.com.
-						 */
-						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-inherit-parent-meta/master/readme.txt',
-						'setup_html' => '',
-
-						/**
-						 * WPSSO.com.
-						 */
-						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-inherit-parent-meta/changelog/',
-						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-inherit-parent-meta/',
-						'install'   => 'https://wpsso.com/docs/plugins/wpsso-inherit-parent-meta/installation/',
-						'faqs'      => '',
-						'notes'     => '',
-						'support'   => '',	// Premium support ticket.
-						'purchase'  => '',	// Purchase page.
-						'info'      => '',	// License information.
-						'update'    => 'https://wpsso.com/extend/plugins/wpsso-inherit-parent-meta/update/',
 						'latest'    => '',	// Optional.
 					),
 				),
@@ -1697,8 +1633,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_page_excerpt'         => 0,			// Enable Excerpt for Pages.
 					'plugin_page_tags'            => 0,			// Enable Tags for Pages.
 					'plugin_new_user_is_person'   => 0,			// Add Person Role for New Users.
-					'plugin_clear_post_terms'     => 1,			// Clear Term Cache when Publishing.
-					'plugin_clear_for_comment'    => 1,			// Clear Post Cache for New Comment.
 					'plugin_check_img_dims'       => 0,			// Enforce Image Dimension Checks.
 					'plugin_upscale_images'       => 0,			// Upscale Media Library Images.
 					'plugin_upscale_img_max'      => 33,			// Maximum Image Upscale Percent.
@@ -2658,6 +2592,28 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_attr_product_target_gender'      => 'Target Gender Attribute Name',
 				),
 
+				/**
+				 * Used with array_intersect_key() to determine which metadata options can be inherited.
+				 */
+				'inherit_md_opts' => array(
+					'og_img_max'        => null,
+					'og_img_id'         => null,
+					'og_img_id_lib'     => null,
+					'og_img_url'        => null,
+					'pin_img_id'        => null,
+					'pin_img_id_lib'    => null,
+					'pin_img_url'       => null,
+					'tc_lrg_img_id'     => null,
+					'tc_lrg_img_id_lib' => null,
+					'tc_lrg_img_url'    => null,
+					'tc_sum_img_id'     => null,
+					'tc_sum_img_id_lib' => null,
+					'tc_sum_img_url'    => null,
+					'schema_img_max'    => null,
+					'schema_img_id'     => null,
+					'schema_img_id_lib' => null,
+					'schema_img_url'    => null,
+				),
 				/**
 				 * Validated on 2020/08/17.
 				 *

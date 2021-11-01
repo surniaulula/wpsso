@@ -1120,8 +1120,12 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		 */
 		private function get_notice_html( $msg_type, array &$payload, $notice_alt = false ) {
 
-			$charset        = get_bloginfo( 'charset' );
-			$css_class_type = $notice_alt ? 'notice notice-alt' : 'notice';
+			/**
+			 * Add 'inline' in toolbar notices to prevent WordPress from moving the notice.
+			 *
+			 * See wordpress/wp-admin/js/common.js:1083
+			 */
+			$notice_type    = $notice_alt ? 'inline notice notice-alt' : 'notice';
 			$notice_display = 'block';
 
 			switch ( $msg_type ) {
@@ -1140,7 +1144,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				case 'error':
 
 					$msg_type  = 'err';
-					$css_class = $css_class_type . ' notice-error error';
+					$css_class = $notice_type . ' notice-error error';
 
 					break;
 
@@ -1148,7 +1152,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				case 'warning':
 
 					$msg_type  = 'warn';
-					$css_class = $css_class_type . ' notice-warning';
+					$css_class = $notice_type . ' notice-warning';
 
 					break;
 
@@ -1156,7 +1160,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				case 'info':
 
 					$msg_type  = 'inf';
-					$css_class = $css_class_type . ' notice-info';
+					$css_class = $notice_type . ' notice-info';
 
 					break;
 
@@ -1164,23 +1168,21 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				case 'updated':
 
 					$msg_type  = 'upd';
-					$css_class = $css_class_type . ' notice-success updated';
+					$css_class = $notice_type . ' notice-success updated';
 
 					break;
 
 				default:	// Unknown $msg_type.
 
 					$msg_type  = 'unknown';
-					$css_class = $css_class_type;
+					$css_class = $notice_type;
 
 					break;
 			}
 
-			$css_id_attr = empty( $payload[ 'notice_key' ] ) ? '' : ' id="' . $msg_type . '-' . $payload[ 'notice_key' ] . '"';
-
+			$css_id_attr    = empty( $payload[ 'notice_key' ] ) ? '' : ' id="' . $msg_type . '-' . $payload[ 'notice_key' ] . '"';
 			$is_dismissible = empty( $payload[ 'dismiss_time' ] ) ? false : true;
-
-			$data_attr = '';
+			$data_attr      = '';
 
 			if ( $is_dismissible ) {
 
