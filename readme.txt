@@ -336,12 +336,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.5.0-dev.1 (2021/10/30)**
+**Version 9.5.0-dev.2 (2021/11/01)**
 
 * **New Features**
-	* None.
+	* Discontinued the WPSSO IPM add-on:
+		* All features of the WPSSO Inherit Parent Metadata add-on were integrated into the WPSSO Core v9.5.0 plugin.
 * **Improvements**
-	* Added support for '%%title%%', '%%page%%', '%%pagenumber%%', '%%pagetotal%%', and '%%sep%%' inline variables.
+	* Added support for new inline variables:
+		* `%%title%%`
+		* `%%page%%`
+		* `%%pagenumber%%`
+		* `%%pagetotal%%`
+		* `%%sep%%`
+	* Removed the SSO &gt; Advanced Settings &gt; Clear Term Cache when Publishing option (now always enabled).
+	* Removed the SSO &gt; Advanced Settings &gt; Clear Post Cache for New Comment option (now always enabled).
 * **Bugfixes**
 	* Fixed missing 'author' in Schema CreativeWork markup.
 * **Developer Notes**
@@ -522,7 +530,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 9.0.0 (2021/09/24)**
 
 * **New Features**
-	* Discontinued / deprecated the WPSSO JSON add-on:
+	* Discontinued the WPSSO JSON add-on:
 		* The <code>&#91;schema&#93;</code> shortcode was migrated to a new WPSSO Schema Shortcode add-on.
 		* All other features of the WPSSO Schema JSON-LD Markup add-on were integrated into the WPSSO Core v9.0.0 plugin.
 	* Updated the SSO &gt; Advanced Settings &gt; Integration &gt; Enable Tags for Pages feature to register a non-public Page Tags taxonomy.
@@ -561,9 +569,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.5.0-dev.1 =
+= 9.5.0-dev.2 =
 
-(2021/10/30) Added support for '%%title%%', '%%page%%', '%%pagenumber%%', '%%pagetotal%%', and '%%sep%%' inline variables. Added a new `WpssoUtilInline` class.
+(2021/11/01) Fixed missing 'author' in Schema CreativeWork markup. Discontinued the WPSSO IPM add-on. Added support for new inline variables.
 
 = 9.4.1 =
 
