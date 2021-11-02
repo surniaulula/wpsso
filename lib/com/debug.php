@@ -164,11 +164,11 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 
 			if ( is_array( $mixed ) ) {
 
-				$this->log( $prefix . ' ' . trim( print_r( SucomUtil::pretty_array( $mixed, false ), true ) ), $class_seq, $func_seq );
+				$this->log( $prefix . ' = ' . trim( print_r( SucomUtil::pretty_array( $mixed, false ), true ) ), $class_seq, $func_seq );
 
 			} else {
 
-				$this->log( $prefix . ' ' . $mixed, $class_seq, $func_seq );
+				$this->log( $prefix . ' = ' . $mixed, $class_seq, $func_seq );
 			}
 		}
 

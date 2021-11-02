@@ -738,7 +738,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			if ( ! empty( $this->p->debug->enabled ) ) {
 
-				$this->p->debug->log_arr( 'notice_types', $notice_types );
+				$this->p->debug->log_arr( '$notice_types', $notice_types );
 			}
 
 			if ( empty( $notice_types ) ) {	// Just in case.

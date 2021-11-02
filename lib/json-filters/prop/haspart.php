@@ -30,14 +30,9 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
-			 * The Schema 'hasPart' property is only valid for the CreativeWork type.
-			 */
 			$this->p->util->add_plugin_filters( $this, array(
-				'content_html_script_application_ld_json'         => 2,
-				'json_data_https_schema_org_creativework_haspart' => array(
-					'json_data_https_schema_org_creativework' => 5,
-				),
+				'content_html_script_application_ld_json' => 2,
+				'json_data_https_schema_org_creativework' => 5,
 			), $prio = 10000 );
 
 			if ( $this->p->debug->enabled ) {
@@ -45,9 +40,15 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 				$this->p->debug->log( 'added maybe_comment_json_scripts filter hook for the_content' );
 			}
 
+			/**
+			 * Comment json-ld scripts saved in the self::$meta_key metadata array.
+			 */
 			add_filter( 'the_content', array( $this, 'maybe_comment_json_scripts' ), PHP_INT_MAX );
 		}
 
+		/**
+		 * Applied by the WpssoFaqShortcodeFaq->do_shortcode() and WpssoFaqShortcodeQuestion->do_shortcode() methods.
+		 */
 		public function filter_content_html_script_application_ld_json( $html, $mod ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -65,10 +66,19 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 			return $html;
 		}
 
-		/**
-		 * Check the post content and add any schema json scripts found as 'hasPart' in the $json_data.
-		 */
-		public function filter_json_data_https_schema_org_creativework_haspart( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
+		public function filter_json_data_https_schema_org_creativework( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			$prop_data = array( 'hasPart' => array() );
+
+			return $this->filter_json_data_post_content_json_ld_scripts( $json_data, $prop_data, $mod, $mt_og, $page_type_id, $is_main );
+		}
+
+		private function filter_json_data_post_content_json_ld_scripts( $json_data, $prop_data, $mod, $mt_og, $page_type_id, $is_main ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -77,101 +87,109 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 
 			if ( ! $is_main ) {
 
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: json data is not the main entity' );
+				}
+
+				return $json_data;
+
+			} elseif ( ! $mod[ 'is_post' ] ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: no content to check for module type ' . $mod[ 'name' ] );
+				}
+
+				return $json_data;
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'getting the content for post id ' . $mod[ 'id' ] );
+			}
+
+			$content = $this->p->page->get_the_content( $mod, $read_cache = true, $md_key = '', $flatten = false );
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'getting json-ld scripts from the content' );
+			}
+
+			$scripts_data = SucomUtil::get_json_scripts( $content, $do_decode = true );	// Return the decoded json data.
+
+			if ( empty( $scripts_data ) ) {	// Nothing to do.
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: no json-ld scripts in content' );
+				}
+
 				return $json_data;
 			}
 
 			$json_ret = array();
 
-			$data_props = array(
-				'hasPart'  => array(),
-			);
-
 			/**
-			 * Move any existing properties in $json_data (from shortcodes, for example) so we can filter them and add
-			 * new ones.
+			 * Save existing properties in $json_data so we can filter them and add new ones.
 			 */
-			foreach ( $data_props as $prop_name => $prop_values ) {
+			foreach ( $prop_data as $prop_name => $prop_values ) {
 
 				if ( isset( $json_data[ $prop_name ] ) ) {
 
-					if ( isset( $json_data[ $prop_name ][0] ) ) {	// Has an array of types.
+					if ( $this->p->debug->enabled ) {
 
-						$data_props[ $prop_name ] = $json_data[ $prop_name ];
+						$this->p->debug->log( 'saving ' . $prop_name . ' property value(s)' );
+					}
+
+					if ( isset( $json_data[ $prop_name ][ 0 ] ) ) {	// Has an array of types.
+
+						$prop_data[ $prop_name ] = $json_data[ $prop_name ];
 
 					} elseif ( ! empty( $json_data[ $prop_name ] ) ) {
 
-						$data_props[ $prop_name ][] = $json_data[ $prop_name ];	// Markup for a single type.
+						$prop_data[ $prop_name ][] = $json_data[ $prop_name ];	// Markup for a single type.
 					}
 
 					unset( $json_data[ $prop_name ] );
 				}
 			}
 
-			if ( $mod[ 'is_post' ] ) {
+			$md5_added = array();	// Initialize an empty md5 array.
 
-				$content = $this->p->page->get_the_content( $mod, $read_cache = true, $md_key = '', $flatten = false );
+			foreach ( $scripts_data as $single_md5 => $single_data ) {
 
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'getting json scripts from the content' );
-				}
-
-				$scripts_data = SucomUtil::get_json_scripts( $content, $do_decode = true );	// Return the decoded json data.
-
-				if ( empty( $scripts_data ) ) {
+				if ( is_array( $single_data ) ) {	// Just in case.
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'no json scripts found in the content' );
+						$this->p->debug->log_arr( 'adding single data for $single_md5 ' . $single_md5, $single_data );
 					}
+
+					$this->maybe_add_single_data( $md5_added, $prop_data, $single_md5, $single_data, $page_type_id );
 
 				} else {
 
-					$md5_added = array();	// Initialize an empty md5 array.
+					if ( $this->p->debug->enabled ) {
 
-					foreach ( $scripts_data as $single_md5 => $single_data ) {
+						$this->p->debug->log( 'skipped ' . $single_md5 . ': single data is not an array' );
 
-						if ( is_array( $single_data ) ) {	// Just in case.
-
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log_arr( 'adding single data for $single_md5 ' . $single_md5, $single_data );
-							}
-
-							$this->maybe_add_single_data( $md5_added, $data_props, $single_md5, $single_data );
-
-						} else {
-
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'skipped ' . $single_md5 . ': single data is not an array' );
-								$this->p->debug->log( $single_data );
-							}
-						}
-					}
-
-					if ( empty( $md5_added ) ) {
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'deleting ' . self::$meta_key . ' post meta' );
-						}
-
-						delete_post_meta( $mod[ 'id' ], self::$meta_key );
-
-					} else {
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log_arr( 'saving $md5_added to ' . self::$meta_key . ' post meta', $md5_added );
-						}
-
-						update_post_meta( $mod[ 'id' ], self::$meta_key, $md5_added );
+						$this->p->debug->log( $single_data );
 					}
 				}
 			}
 
-			foreach ( $data_props as $prop_name => $prop_values ) {
+			if ( ! empty( $md5_added ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log_arr( 'saving $md5_added to ' . self::$meta_key . ' post meta', $md5_added );
+				}
+
+				update_post_meta( $mod[ 'id' ], self::$meta_key, $md5_added );
+			}
+
+			foreach ( $prop_data as $prop_name => $prop_values ) {
 
 				$filter_name = 'wpsso_json_prop_https_schema_org_' . strtolower( $prop_name );
 
@@ -199,21 +217,20 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 		}
 
 		/**
-		 * This method will recurse for each @graph element, including nested @graph elements (ie. @graph within another
-		 * @graph).
+		 * Recurse for each @graph element, including nested @graph elements (ie. @graph within another @graph).
 		 */
-		private function maybe_add_single_data( array &$md5_added, array &$data_props, $single_md5, array $single_data, $default_context = null ) {
+		private function maybe_add_single_data( array &$md5_added, array &$prop_data, $single_md5, array $single_data, $page_type_id, $def_context = null ) {
 
-			if ( null === $default_context ) {
+			if ( null === $def_context ) {
 
-				$default_context = empty( $single_data[ '@context' ] ) ? 'https://schema.org' : $single_data[ '@context' ];
+				$def_context = empty( $single_data[ '@context' ] ) ? 'https://schema.org' : $single_data[ '@context' ];
 			}
 
 			if ( isset( $single_data[ 0 ] ) ) {
 
 				foreach ( $single_data as $array_key => $array_data ) {
 
-					$this->maybe_add_single_data( $md5_added, $data_props, $single_md5, $array_data, $default_context );
+					$this->maybe_add_single_data( $md5_added, $prop_data, $single_md5, $array_data, $page_type_id, $def_context );
 				}
 
 			} elseif ( isset( $single_data[ '@graph' ] ) ) {
@@ -222,17 +239,17 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 
 					if ( '@context' === $graph_key ) {	// Nested @graph.
 
-						$default_context = $graph_data;
+						$def_context = $graph_data;
 
 						continue;
 
 					} elseif ( '@graph' === $graph_key ) {
 
-						$this->maybe_add_single_data( $md5_added, $data_props, $single_md5, $graph_data, $default_context );
+						$this->maybe_add_single_data( $md5_added, $prop_data, $single_md5, $graph_data, $page_type_id, $def_context );
 
 					} elseif ( is_numeric( $graph_key ) ) {
 
-						$this->maybe_add_single_data( $md5_added, $data_props, $single_md5, $graph_data, $default_context );
+						$this->maybe_add_single_data( $md5_added, $prop_data, $single_md5, $graph_data, $page_type_id, $def_context );
 					}
 				}
 
@@ -240,27 +257,35 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 
 				if ( empty( $single_data[ '@context' ] ) ) {	// Just in case.
 
-					$single_data[ '@context' ] = $default_context;
+					$single_data[ '@context' ] = $def_context;
 				}
 
 				$type_url = WpssoSchema::get_data_type_url( $single_data );
-
 				$type_ids = $this->p->schema->get_schema_type_url_ids( $type_url );
 
 				foreach ( $type_ids as $child_id ) {
 
-					if ( $this->p->schema->is_schema_type_child( $child_id, 'creative.work' ) ) {
+					if ( isset( $prop_data[ 'hasPart' ] ) ) {
+			
+						/**
+						 * The hasPart property value must be a Schema CreativeWork type or sub-type.
+						 */
+						if ( $this->p->schema->is_schema_type_child( $child_id, 'creative.work' ) ) {
 
-						$data_props[ 'hasPart' ][] = WpssoSchema::get_schema_type_context( $type_url, $single_data );
+							$prop_data[ 'hasPart' ][] = WpssoSchema::get_schema_type_context( $type_url, $single_data );
 
-						$md5_added[ $single_md5 ] = true;
-
-						break;
+							$md5_added[ $single_md5 ] = true;
+						
+							break;	// Child id is valid - no need to check the other child ids.
+						}
 					}
 				}
 			}
 		}
 
+		/**
+		 * Comment json-ld scripts saved in the self::$meta_key metadata array.
+		 */
 		public function maybe_comment_json_scripts( $content ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -298,16 +323,21 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: no json scripts added' );
+					$this->p->debug->log( 'exiting early: no json-ld scripts in ' . self::$meta_key . ' metadata for post id ' . $post_id );
 				}
 
 				return $content;
+
 			}
 
 			if ( $this->p->debug->enabled ) {
 
+				$this->p->debug->log( 'read and deleted ' . self::$meta_key . ' metadata for post id ' . $post_id );
+
 				$this->p->debug->log_arr( '$md5_added', $md5_added );
 			}
+
+			delete_post_meta( $post_id, self::$meta_key );
 
 			/**
 			 * Removes HTML comments from the content, and returns any "application/ld+json" encoded arrays:
@@ -320,7 +350,7 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: no json scripts found in the content' );
+					$this->p->debug->log( 'exiting early: no json-ld scripts in content' );
 				}
 
 				return $content;
@@ -348,11 +378,12 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 					$single_json_encoded = '<!-- ' . $single_json_encoded . ' -->' . "\n";
 
 				} else {
+
 					$single_json_encoded = '';
 				}
 
-				$success = "\n" . '<!-- json script ' . $single_md5 . ' added to Schema hasPart and commented -->' . "\n";
-				$failure = "\n" . '<!-- json script ' . $single_md5 . ' added to Schema hasPart but not found in content -->' . "\n";
+				$success = "\n" . '<!-- json-ld script ' . $single_md5 . ' added to Schema markup and commented -->' . "\n";
+				$failure = "\n" . '<!-- json-ld script ' . $single_md5 . ' added to Schema markup but not found in content -->' . "\n";
 
 				$content = str_replace( $single_json, $success . $single_json_encoded, $content, $count );
 
@@ -360,14 +391,14 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'json script ' . $single_md5 . ' successfully commented' );
+						$this->p->debug->log( 'json-ld script ' . $single_md5 . ' successfully commented' );
 					}
 
 				} else {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'json script ' . $single_md5 . ' not found in content' );
+						$this->p->debug->log( 'json-ld script ' . $single_md5 . ' not found in content' );
 					}
 
 					$content = $failure . $single_json_encoded . $content;
