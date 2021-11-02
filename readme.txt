@@ -227,7 +227,6 @@ Do you need even more specialized features?
 Activate any of these free complementary add-on(s):
 
 * [WPSSO FAQ Manager](https://wordpress.org/plugins/wpsso-faq/) to manage FAQ categories with Question and Answer pages.
-* [WPSSO Inherit Parent Metadata](https://wordpress.org/plugins/wpsso-inherit-parent-meta/) to inherit featured and custom images.
 * [WPSSO Mobile App Meta Tags](https://wordpress.org/plugins/wpsso-am/) to manage mobile App information.
 * [WPSSO Organization Markup](https://wordpress.org/plugins/wpsso-organization/) to manage multiple organizations.
 * [WPSSO Place and Local SEO Markup](https://wordpress.org/plugins/wpsso-plm/) to manage multiple places and locations.
@@ -336,7 +335,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.5.0-dev.2 (2021/11/01)**
+**Version 9.5.0-b.1 (2021/11/02)**
 
 * **New Features**
 	* Discontinued the WPSSO IPM add-on:
@@ -570,9 +569,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.5.0-dev.2 =
+= 9.5.0-b.1 =
 
-(2021/11/01) Fixed missing 'author' in Schema CreativeWork markup. Fixed inheritance of custom images for WooCommerce product offers (Premium version). Discontinued the WPSSO IPM add-on. Added support for new inline variables.
+(2021/11/02) Fixed missing 'author' in Schema CreativeWork markup. Fixed inheritance of custom images for WooCommerce product offers (Premium version). Discontinued the WPSSO IPM add-on. Added support for new inline variables.
 
 = 9.4.1 =
 
