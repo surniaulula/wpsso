@@ -335,7 +335,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.5.0-b.1 (2021/11/02)**
+**Version 9.5.0-rc.1 (2021/11/02)**
 
 * **New Features**
 	* Discontinued the WPSSO IPM add-on:
@@ -569,7 +569,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.5.0-b.1 =
+= 9.5.0-rc.1 =
 
 (2021/11/02) Fixed missing 'author' in Schema CreativeWork markup. Fixed inheritance of custom images for WooCommerce product offers (Premium version). Discontinued the WPSSO IPM add-on. Added support for new inline variables.
 
