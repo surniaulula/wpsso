@@ -3011,9 +3011,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return apply_filters( 'sucom_is_archive_page', is_archive() );
 		}
 
+		/**
+		 * $use_post can be true, false, a numeric post ID, or a post object.
+		 */
 		public static function is_home_page( $use_post = false ) {
 
-			$ret = false;
+			$is_home_page = false;
 
 			/**
 			 * Fallback to null so $use_post = 0 does not match.
@@ -3024,20 +3027,20 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				if ( is_numeric( $use_post ) && (int) $use_post === $post_id ) {
 
-					$ret = true;
+					$is_home_page = true;
 
 				} elseif ( self::get_post_object( $use_post, 'id' ) === $post_id ) {
 
-					$ret = true;
+					$is_home_page = true;
 				}
 			}
 
-			return apply_filters( 'sucom_is_home_page', $ret, $use_post );
+			return apply_filters( 'sucom_is_home_page', $is_home_page, $use_post );
 		}
 
 		public static function is_home_posts( $use_post = false ) {
 
-			$ret = false;
+			$is_home_posts = false;
 
 			/**
 			 * Fallback to null so $use_post = 0 does not match.
@@ -3046,18 +3049,18 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( is_numeric( $use_post ) && (int) $use_post === $post_id ) {
 
-				$ret = true;
+				$is_home_posts = true;
 
 			} elseif ( $post_id > 0 && self::get_post_object( $use_post, 'id' ) === $post_id ) {
 
-				$ret = true;
+				$is_home_posts = true;
 
 			} elseif ( false === $use_post && is_home() && is_front_page() ) {
 
-				$ret = true;
+				$is_home_posts = true;
 			}
 
-			return apply_filters( 'sucom_is_home_posts', $ret, $use_post );
+			return apply_filters( 'sucom_is_home_posts', $is_home_posts, $use_post );
 		}
 
 		public static function is_auto_draft( array $mod ) {
@@ -3248,15 +3251,25 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return apply_filters( 'sucom_is_post_page', $ret, $use_post );
 		}
 
+		/**
+		 * $post_type can be the post type string, or the post type object.
+		 */
 		public static function is_post_type_archive( $post_type, $post_slug ) {
 
 			$is_post_type_archive = false;
 
 			if ( ! empty( $post_type ) && ! empty( $post_slug ) ) {	// Just in case.
 
-				$post_type_obj = get_post_type_object( $post_type );
+				if ( is_object( $post_type ) ) {
 
-				if ( ! empty( $post_type_obj->has_archive ) ) {
+					$post_type_obj =& $post_type;
+
+				} else {
+
+					$post_type_obj = get_post_type_object( $post_type );
+				}
+
+				if ( ! empty( $post_type_obj->has_archive ) ) {	// just in case.
 
 					$archive_slug = $post_type_obj->has_archive;
 
