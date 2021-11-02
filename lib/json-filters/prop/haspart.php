@@ -32,6 +32,7 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 
 			$this->p->util->add_plugin_filters( $this, array(
 				'content_html_script_application_ld_json' => 2,
+				'json_data_https_schema_org_thing'        => 5,
 				'json_data_https_schema_org_creativework' => 5,
 			), $prio = 10000 );
 
@@ -64,6 +65,27 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 			}
 
 			return $html;
+		}
+
+		/**
+		 * Cleanup self::$meta_key here in case the Schema type has changed from CreativeWork to something else.
+		 */
+		public function filter_json_data_https_schema_org_thing( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
+
+			if ( $is_main ) {
+
+				if ( $mod[ 'is_post' ] ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'deleting ' . self::$meta_key . ' metadata for post id ' . $mod[ 'id' ] );
+					}
+			
+					delete_post_meta( $mod[ 'id' ], self::$meta_key );
+				}
+			}
+
+			return $json_data;
 		}
 
 		public function filter_json_data_https_schema_org_creativework( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
@@ -183,7 +205,7 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log_arr( 'saving $md5_added to ' . self::$meta_key . ' post meta', $md5_added );
+					$this->p->debug->log_arr( '$md5_added', $md5_added );
 				}
 
 				update_post_meta( $mod[ 'id' ], self::$meta_key, $md5_added );
@@ -332,12 +354,8 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'read and deleted ' . self::$meta_key . ' metadata for post id ' . $post_id );
-
 				$this->p->debug->log_arr( '$md5_added', $md5_added );
 			}
-
-			delete_post_meta( $post_id, self::$meta_key );
 
 			/**
 			 * Removes HTML comments from the content, and returns any "application/ld+json" encoded arrays:
