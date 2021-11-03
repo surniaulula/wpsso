@@ -1081,19 +1081,20 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			/**
 			 * Get custom video information from post/term/user meta data for the FIRST video.
 			 *
-			 * If $md_pre is 'none' (special index keyword), then don't load any custom video information. The
-			 * og:video:title and og:video:description meta tags are not standard and their values will only appear in
-			 * Schema markup.
+			 * If $md_pre is 'none' (special index keyword), then don't load any custom video information.
+			 *
+			 * The og:video:title and og:video:description meta tags are not standard and their values will only appear in Schema markup.
 			 */
 			if ( ! empty( $mod[ 'obj' ] ) && $md_pre !== 'none' ) {
 
 				foreach ( $mt_videos as &$mt_single_video ) {	// Uses reference.
 
 					foreach ( array(
-						'og_vid_width'  => 'og:video:width',
-						'og_vid_height' => 'og:video:height',
-						'og_vid_title'  => 'og:video:title',
-						'og_vid_desc'   => 'og:video:description',
+						'og_vid_title'      => 'og:video:title',
+						'og_vid_desc'       => 'og:video:description',
+						'og_vid_width'      => 'og:video:width',
+						'og_vid_height'     => 'og:video:height',
+						'og_vid_stream_url' => 'og:video:stream_url',
 					) as $md_key => $mt_name ) {
 
 						/**
@@ -1606,6 +1607,12 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					case 'vid_height':
 
 						$media_info[ $key ] = $this->get_media_value( $mt_videos, $mt_pre . ':video:height' );
+
+						break;
+
+					case 'vid_stream_url':
+
+						$media_info[ $key ] = $this->get_media_value( $mt_videos, $mt_pre . ':video:stream_url' );
 
 						break;
 

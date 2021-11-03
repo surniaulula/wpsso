@@ -397,12 +397,13 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					/**
 					 * Open Graph priority video.
 					 */
-					'og_vid_embed'    => '',
-					'og_vid_url'      => '',
-					'og_vid_width'    => '',	// Custom value for first video.
-					'og_vid_height'   => '',	// Custom value for first video.
-					'og_vid_title'    => '',	// Custom value for first video.
-					'og_vid_desc'     => '',	// Custom value for first video.
+					'og_vid_embed'      => '',
+					'og_vid_url'        => '',
+					'og_vid_title'      => '',
+					'og_vid_desc'       => '',
+					'og_vid_width'      => '',
+					'og_vid_height'     => '',
+					'og_vid_stream_url' => '',
 
 					/**
 					 * Pinterest priority image.

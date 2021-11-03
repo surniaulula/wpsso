@@ -57,19 +57,23 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 				case 'tooltip-meta-schema_addl_type_url':	// Microdata Type URLs.
 
-					$text = sprintf( __( 'Additional (and optional) type URLs for the item, typically used to specify more precise types from an external vocabulary in microdata syntax. For example, an additional Schema type URL for a product item could be http://www.productontology.org/id/Hammer (see %s for more examples).', 'wpsso' ), '<a href="http://www.productontology.org/">The Product Types Ontology</a>' );
+					$text = __( 'Additional microdata type URL(s) for the content, typically used to specify more precise type(s) from an external vocabulary.', 'wpsso' ) . ' ';
+					
+					$text .= sprintf( __( 'For example, an additional microdata type URL for a Schema Product type could be %1$s (see %2$s for more examples).', 'wpsso' ), 'http://www.productontology.org/id/Hammer', __( '<a href="http://www.productontology.org/">The Product Types Ontology</a>', 'wpsso' ) );
 
 				 	break;
 
 				case 'tooltip-meta-schema_sameas_url':	// Same-As URLs.
 
-					$text = __( 'Additional (and optional) webpage reference URLs that unambiguously indicate the item\'s identity. For example, the URL of the item\'s Wikipedia page, Wikidata entry, IMDB page, official website, etc.', 'wpsso' );
+					$text = __( 'Additional webpage reference URL(s) that unambiguously indicates the content\'s identity.', 'wpsso' ) . ' ';
+					
+					$text .= __( 'For example, the URL for the content\'s Wikipedia page, Wikidata entry, IMDB page, official website, etc.', 'wpsso' );
 
 				 	break;
 
 				case 'tooltip-meta-schema_ispartof_url':	// Is Part of URL.
 
-					$text = __( 'Optional URLs to other Schema CreativeWorks that this content is a part of.', 'wpsso' );
+					$text = __( 'URL(s) to other Schema CreativeWork(s) that this content is a part of.', 'wpsso' );
 
 				 	break;
 

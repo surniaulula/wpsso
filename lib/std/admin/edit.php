@@ -199,7 +199,6 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'content'  => $form->get_no_textarea_value( $def_schema_desc, $css_class = '', $css_id = '', $schema_desc_max_len ),
 				),
 				'schema_addl_type_url' => array(
-					'tr_class' => $form->get_css_class_hide_prefix( 'basic', 'schema_addl_type_url' ),
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Microdata Type URLs', 'option label', 'wpsso' ),
@@ -207,7 +206,6 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'content'  => $form->get_no_input_value( $value = '', $css_class = 'wide', $css_id = '', '', $repeat = 2 ),
 				),
 				'schema_sameas_url' => array(
-					'tr_class' => $form->get_css_class_hide_prefix( 'basic', 'schema_sameas_url' ),
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Same-As URLs', 'option label', 'wpsso' ),
@@ -832,7 +830,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'content'  => $form->get_no_input_value( $value = '', $css_class = 'wide is_required' ),
 				),
 				'schema_review_item_sameas_url' => array(
-					'tr_class' => $form->get_css_class_hide_prefix( 'basic', 'schema_review_item_sameas_url' ),
+					'tr_class' => $schema_type_row_class[ 'review' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Subject Same-As URLs', 'option label', 'wpsso' ),
@@ -1089,8 +1087,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 							'select_options' => $this->p->cf[ 'form' ][ 'item_availability' ],
 							'select_default' => 'https://schema.org/InStock',
 						),
-					), $css_class = 'single_line', $css_id = 'schema_event_offer',
-						$start_num = 0, $max_input = 2, $show_first = 2 ),
+					), $css_class = 'single_line', $css_id = 'schema_event_offer', $start_num = 0, $max_input = 2, $show_first = 2 ),
 				),
 
 				/**
@@ -1452,9 +1449,9 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'content'  => $form->get_no_input_holder( $media_info[ 'img_url' ], $css_class = 'wide' ),
 				),
 				'subsection_priority_video' => array(
-					'td_class'     => 'subsection',
-					'header'       => 'h5',
-					'label'        => _x( 'Priority Video Information', 'metabox title', 'wpsso' )
+					'td_class' => 'subsection',
+					'header'   => 'h5',
+					'label'    => _x( 'Priority Video Information', 'metabox title', 'wpsso' )
 				),
 				'pro_feature_msg_video_api' => array(
 					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature_video_api() . '</td>',
@@ -1464,38 +1461,47 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Video Embed HTML', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-og_vid_embed',
-					'content'  => $form->get_no_textarea_value( $value = '' ),	// The Standard plugin does not include video modules.
+					'content'  => $form->get_no_textarea_value( $value = '' ),
 				),
 				'og_vid_url' => array(
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'or a Video URL', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-og_vid_url',
-					'content'  => $form->get_no_input_value( $value = '', $css_class = 'wide' ),	// The Standard plugin does not include video modules.
+					'content'  => $form->get_no_input_value( $value = '', $css_class = 'wide' ),
+				),
+				'subsection_priority_video_info' => array(
+					'td_class' => 'subsection',
+					'header'   => 'h5',
+					'label'    => _x( 'Video Information from Video API', 'metabox title', 'wpsso' )
+				),
+				'og_vid_title' => array(
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Video Name / Title', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-og_vid_title',
+					'content'  => $form->get_no_input_value( $value = '', $css_class = 'wide' ),
+				),
+				'og_vid_desc' => array(
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Video Description', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-og_vid_desc',
+					'content'  => $form->get_no_textarea_value( '' ),
 				),
 				'og_vid_dimensions' => array(
-					'tr_class' => $form->get_css_class_hide_vid_dim( 'basic', 'og_vid' ),
 					'th_class' => 'medium',
 					'td_class' => 'blank',
 					'label'    => _x( 'Video Dimensions', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-og_vid_dimensions',
 					'content'  => $form->get_no_input_video_dimensions( 'og_vid' ),
 				),
-				'og_vid_title' => array(
-					'tr_class' => $form->get_css_class_hide( 'basic', 'og_vid_title' ),
+				'og_vid_stream_url' => array(
 					'th_class' => 'medium',
 					'td_class' => 'blank',
-					'label'    => _x( 'Video Name / Title', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-og_vid_title',
-					'content'  => $form->get_no_input_value( $value = '', $css_class = 'wide' ),	// The Standard plugin does not include video modules.
-				),
-				'og_vid_desc' => array(
-					'tr_class' => $form->get_css_class_hide( 'basic', 'og_vid_desc' ),
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'Video Description', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-og_vid_desc',
-					'content'  => $form->get_no_textarea_value( '' ),	// The Standard plugin does not include video modules.
+					'label'    => _x( 'Video Stream URL', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-vid_stream_url',
+					'content'  => $form->get_no_input_value( $value = '', $css_class = 'wide' ),
 				),
 			);
 

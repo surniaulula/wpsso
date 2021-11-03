@@ -968,8 +968,16 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					continue;
 				}
 
-				$el_attr = 'onFocus="if ( jQuery(\'input#text_' . $input_id_prev . '\').val().length )' .
-					' { jQuery(\'div#multi_' . $input_id_next . '\').show(); }"';
+				if ( $start_num == $key_num ) {
+
+					$el_attr = 'onFocus="jQuery(\'div#multi_' . $input_id_next . '\').show();"';
+
+				} else {
+				
+					$el_attr = 'onFocus="if ( jQuery(\'input#text_' . $input_id_prev . '\').val().length )' .
+						' { jQuery(\'div#multi_' . $input_id_next . '\').show(); } else' .
+						' { jQuery(\'input#text_' . $input_id_prev . '\').focus(); }"';
+				}
 
 				$html .= '<div';
 				$html .= ' class="multi_container input_multi"';
