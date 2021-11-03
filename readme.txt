@@ -340,11 +340,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Image and video related changes in the Document SSO metabox:
+		* Show (ie. unhide) the Twitter Card and Pinterest options by default under the Priority Media tab.
+		* Moved the following options from the Priority Media tab to the Customize tab:
+			* Maximum Images
+			* Maximum Videos
+			* Include Video Previews
+	* Removed the SSO &gt; General Settings &gt; Google &gt; Schema Max. Images to Include option. Schema markup now uses the default Maximum Images to Include option value from the SSO &gt; General Settings &gt; Images tab.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Renamed the 'plugin_upscale_img_max' options key to 'plugin_upscale_pct_max'.
 * **Requires At Least**
 	* PHP v7.0.
 	* WordPress v5.0.
@@ -585,7 +591,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 9.5.1-dev.1 =
 
-(2021/11/03) None.
+(2021/11/03) Image and video related changes in the Document SSO metabox.
 
 = 9.5.0 =
 
