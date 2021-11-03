@@ -117,8 +117,8 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 		protected function get_table_rows( $metabox_id, $tab_key ) {
 
 			$table_rows      = array();
-			$max_media_items = $this->p->cf[ 'form' ][ 'max_media_items' ];
 			$user_contacts   = $this->p->user->get_form_contact_fields();
+			$max_media_items = $this->p->cf[ 'form' ][ 'max_media_items' ];
 
 			switch ( $metabox_id . '-' . $tab_key ) {
 
@@ -304,15 +304,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					 * Schema settings.
 					 */
 					$this->add_schema_publisher_type_table_rows( $table_rows, $this->form );	// Also used in the Essential Settings page.
-
-					$table_rows[ 'schema_img_max' ] = $this->form->get_tr_hide( 'basic', 'schema_img_max' ) . 
-						$this->form->get_th_html( _x( 'Schema Max. Images to Include', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'schema_img_max' ) . 
-						'<td>' .
-						$this->form->get_select( 'schema_img_max', range( 0, $max_media_items ),
-							$css_class = 'short', $css_id = '', $is_assoc = true ) .
-						$this->p->msgs->maybe_preview_images_first() .
-						'</td>';
 
 					$table_rows[ 'schema_aggr_offers' ] = $this->form->get_tr_hide( 'basic', 'schema_aggr_offers' ) .
 						$this->form->get_th_html( _x( 'Aggregate Offers by Currency', 'option label', 'wpsso' ),

@@ -133,11 +133,11 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$form->get_no_td_checkbox( 'plugin_upscale_images' ) .
 				WpssoAdmin::get_option_site_use( 'plugin_upscale_images', $form, $network );
 
-			$table_rows[ 'plugin_upscale_img_max' ] = $form->get_tr_hide( 'basic', 'plugin_upscale_img_max' ) .
+			$table_rows[ 'plugin_upscale_pct_max' ] = $form->get_tr_hide( 'basic', 'plugin_upscale_pct_max' ) .
 				$form->get_th_html( _x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_upscale_img_max' ) . 
-				'<td class="blank">' . $form->get_no_input( 'plugin_upscale_img_max', $css_class = 'short' ) . ' %</td>' .
-				WpssoAdmin::get_option_site_use( 'plugin_upscale_img_max', $form, $network );
+					$css_class = '', $css_id = 'plugin_upscale_pct_max' ) . 
+				'<td class="blank">' . $form->get_no_input( 'plugin_upscale_pct_max', $css_class = 'short' ) . ' %</td>' .
+				WpssoAdmin::get_option_site_use( 'plugin_upscale_pct_max', $form, $network );
 
 			$table_rows[ 'plugin_img_alt_prefix' ] = '' . 
 				$form->get_th_html_locale( _x( 'Content Image Alt Prefix', 'option label', 'wpsso' ),

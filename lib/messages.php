@@ -713,7 +713,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 			if ( ! empty( $this->form->options[ 'og_vid_prev_img' ] ) ) {
 
-				$text .= ' ' . _x( 'note that video preview images are enabled (and included first)', 'option comment', 'wpsso' );
+				$text .= ' ' . _x( 'video preview images are enabled (and included first)', 'option comment', 'wpsso' );
 			}
 
 			return $text;
@@ -747,7 +747,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 		public function preview_images_are_first() {
 
-			$html = ' ' . _x( 'note that video preview images are included first', 'option comment', 'wpsso' );
+			$html = ' ' . _x( 'video preview images are included first', 'option comment', 'wpsso' );
 
 			return $html;
 		}

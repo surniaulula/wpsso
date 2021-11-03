@@ -2588,8 +2588,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				$img_info = (array) self::get_image_src_args();
 
-				$upscale_img_max     = apply_filters( 'wpsso_image_upscale_max', $this->p->options[ 'plugin_upscale_img_max' ], $img_info );
-				$upscale_multiplier  = 1 + ( $upscale_img_max / 100 );
+				$upscale_pct_max     = apply_filters( 'wpsso_image_upscale_max', $this->p->options[ 'plugin_upscale_pct_max' ], $img_info );
+				$upscale_multiplier  = 1 + ( $upscale_pct_max / 100 );
 				$upscale_full_width  = round( $full_width * $upscale_multiplier );
 				$upscale_full_height = round( $full_height * $upscale_multiplier );
 

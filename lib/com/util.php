@@ -2263,7 +2263,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':video:upload_date'     => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':video:thumbnail_url'   => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':video:embed_url'       => '',	// Non-standard / internal meta tag.
-				$mt_pre . ':video:stream_url'      => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':video:stream_url'      => '',	// Non-standard / internal meta tag. VideoObject contentUrl.
 				$mt_pre . ':video:has_image'       => false,	// Non-standard / internal meta tag.
 				$mt_pre . ':video:title'           => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':video:description'     => '',	// Non-standard / internal meta tag.

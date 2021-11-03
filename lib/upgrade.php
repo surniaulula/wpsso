@@ -494,6 +494,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'plugin_clear_post_terms'  => '',	// Deprecated on 2021/11/01.
 					'plugin_clear_for_comment' => '',	// Deprecated on 2021/11/01.
 				),
+				832 => array(
+					'upscale_img_max'  => 'upscale_pct_max',	// Renamed on 2021/11/03.
+				),
 			),
 		);
 

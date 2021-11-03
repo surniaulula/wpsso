@@ -111,7 +111,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipOpenGraph' ) ) {
 				 */
 				case 'tooltip-og_img_max':		// Maximum Images to Include.
 
-					$text = __( 'The maximum number of images to include in the Open Graph meta tags for the webpage.', 'wpsso' ) . ' ';
+					$text = __( 'The maximum number of images to include for the webpage meta tags and Schema markup.', 'wpsso' ) . ' ';
 
 					$text .= __( 'If you select "0", then no images will be included (not recommended).', 'wpsso' ) . ' ';
 

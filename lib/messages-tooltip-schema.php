@@ -53,16 +53,6 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 					break;
 
-				case 'tooltip-schema_img_max':		// Schema Max. Images to Include.
-
-					$text = __( 'The maximum number of images to include in the Schema main entity markup for the webpage.', 'wpsso' ) . ' ';
-
-					$text .= __( 'Each image will be included in three different sizes for Google (1:1, 4:3, and 16:9).', 'wpsso' ) . ' ';
-
-					$text .= __( 'If you select "0", then no images will be included (not recommended).', 'wpsso' ) . ' ';
-
-					break;
-
 				case 'tooltip-schema_aggr_offers':		// Aggregate Offers by Currency.
 
 					$text = __( 'Aggregate (ie. group) product offers by currency.', 'wpsso' ) . ' ';

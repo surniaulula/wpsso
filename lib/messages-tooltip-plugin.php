@@ -199,9 +199,9 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
-				case 'tooltip-plugin_upscale_img_max':	// Maximum Image Upscale Percent.
+				case 'tooltip-plugin_upscale_pct_max':	// Maximum Image Upscale Percent.
 
-					$upscale_max = $this->p->opt->get_defaults( 'plugin_upscale_img_max' );
+					$upscale_max = $this->p->opt->get_defaults( 'plugin_upscale_pct_max' );
 
 					$text = sprintf( __( 'When upscaling of %1$s image sizes is allowed, %2$s can make sure smaller images are not upscaled beyond reason, which would publish very low quality / fuzzy images on social and search sites (the default maximum is %3$s%%).', 'wpsso' ), $info[ 'short' ], $this->p_name_pro, $upscale_max ) . ' ';
 

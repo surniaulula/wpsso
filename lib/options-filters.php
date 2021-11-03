@@ -57,7 +57,6 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					/**
 					 * Cast as integer (zero and -1 is ok).
 					 */
-					case 'schema_img_max':		// Schema Max. Images to Include.
 					case 'schema_vid_max':
 
 						return 'integer';	// Aka 'int'.
@@ -340,7 +339,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'plugin_min_shorten':		// Minimum URL Length to Shorten.
 				case 'plugin_ratings_reviews_num_max':	// Maximum Number of Reviews.
 				case 'plugin_ratings_reviews_age_max':	// Maximum Age of Reviews.
-				case 'plugin_upscale_img_max':		// Maximum Image Upscale Percent.
+				case 'plugin_upscale_pct_max':		// Maximum Image Upscale Percent.
 				case ( preg_match( '/_(len|warn)$/', $base_key ) ? true : false ):
 
 					return 'pos_integer';	// Aka 'pos_int'.

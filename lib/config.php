@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.5.0',	// Plugin version.
-					'opt_version' => '832',		// Increment when changing default option values.
+					'version'     => '9.5.1-dev.1',	// Plugin version.
+					'opt_version' => '833',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1268,7 +1268,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_16x9_img_crop'   => 1,
 					'schema_16x9_img_crop_x' => 'center',
 					'schema_16x9_img_crop_y' => 'center',
-					'schema_img_max'         => 1,		// Schema Max. Images to Include.
 					'schema_aggr_offers'     => 0,		// Aggregate Offers by Currency.
 					'schema_add_text_prop'   => 1,		// Add Text / Article Body Properties.
 					'schema_text_max_len'    => 10000,	// Text / Article Body Max. Length.
@@ -1635,7 +1634,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_new_user_is_person'   => 0,			// Add Person Role for New Users.
 					'plugin_check_img_dims'       => 0,			// Enforce Image Dimension Checks.
 					'plugin_upscale_images'       => 0,			// Upscale Media Library Images.
-					'plugin_upscale_img_max'      => 33,			// Maximum Image Upscale Percent.
+					'plugin_upscale_pct_max'      => 33,			// Maximum Image Upscale Percent.
 					'plugin_img_alt_prefix'       => 'Image:',		// Content Image Alt Prefix.
 					'plugin_img_alt_prefix#es_ES' => 'Imagen:',		// Content Image Alt Prefix (es_ES).
 					'plugin_img_alt_prefix#fr_BE' => 'Image:',		// Content Image Alt Prefix (fr_BE).
@@ -2332,7 +2331,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'form' => array(
 				'max_hashtags'    => 5,
-				'max_media_items' => 10,
+				'max_media_items' => 5,
 				'tooltip_class'   => 'sucom-tooltip',
 				'yes_no' => array(
 					1 => 'Yes',
@@ -2596,7 +2595,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * Used with array_intersect_key() to determine which metadata options can be inherited.
 				 */
 				'inherit_md_opts' => array(
-					'og_img_max'        => null,
+					'og_img_max'        => null,	// Maximum Images.
 					'og_img_id'         => null,
 					'og_img_id_lib'     => null,
 					'og_img_url'        => null,
@@ -2609,7 +2608,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'tc_sum_img_id'     => null,
 					'tc_sum_img_id_lib' => null,
 					'tc_sum_img_url'    => null,
-					'schema_img_max'    => null,
 					'schema_img_id'     => null,
 					'schema_img_id_lib' => null,
 					'schema_img_url'    => null,

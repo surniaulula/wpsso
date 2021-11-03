@@ -68,6 +68,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			$schema_types     = $this->p->schema->get_schema_types_select( $context = 'meta' );
 			$primary_terms    = $this->p->post->get_primary_terms( $mod, $tax_slug = 'category', $output = 'names' );
 			$article_sections = $this->p->util->get_article_sections();
+			$max_media_items  = $this->p->cf[ 'form' ][ 'max_media_items' ];
 
 			/**
 			 * Maximum option lengths.
@@ -190,6 +191,27 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					'content'  => $form->get_input( 'canonical_url', $css_class = 'wide', $css_id = '',
 						$max_len = 0, $def_canonical_url, $canonical_url_disabled ) . ' ' . $canonical_url_msg,
 				),
+				'og_img_max' => $mod[ 'is_post' ] ? array(
+					'tr_class' => $form->get_css_class_hide( 'basic', 'og_img_max' ),
+					'th_class' => 'medium',
+					'label'    => _x( 'Maximum Images', 'option label', 'wpsso' ),
+					'tooltip'  => 'og_img_max',	// Use tooltip message from settings.
+					'content'  => $form->get_select( 'og_img_max', range( 0, $max_media_items ), $css_class = 'medium' ),
+				) : '',	// Placeholder if not a post module.
+				'og_vid_max' => $mod[ 'is_post' ] ? array(
+					'tr_class' => $form->get_css_class_hide( 'basic', 'og_vid_max' ),
+					'th_class' => 'medium',
+					'label'    => _x( 'Maximum Videos', 'option label', 'wpsso' ),
+					'tooltip'  => 'og_vid_max',	// Use the tooltip from plugin settings.
+					'content'  => $form->get_select( 'og_vid_max', range( 0, $max_media_items ), $css_class = 'medium' ),
+				) : '',	// Add a placeholder if not a post module.
+				'og_vid_prev_img' => $mod[ 'is_post' ] ? array(
+					'tr_class' => $form->get_css_class_hide( 'basic', 'og_vid_prev_img' ),
+					'th_class' => 'medium',
+					'label'    => _x( 'Include Video Previews', 'option label', 'wpsso' ),
+					'tooltip'  => 'og_vid_prev_img',	// Use the tooltip from plugin settings.
+					'content'  => $form->get_checkbox( 'og_vid_prev_img' ) . $this->p->msgs->preview_images_are_first(),
+				) : '',	// Add a placeholder if not a post module.
 
 				/**
 				 * Open Graph Article type.

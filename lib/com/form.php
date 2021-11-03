@@ -1070,7 +1070,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			$filter_name = SucomUtil::sanitize_hookname( $this->plugin_id . '_form_select_' . $name );
-			$values      = apply_filters( $filter_name, $values );
+
+			$values = apply_filters( $filter_name, $values );
 
 			if ( ! is_array( $values ) ) {
 
@@ -1162,36 +1163,20 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$label_transl = $label;
 				}
 
-				switch ( $name ) {
+				if ( 0 === $label ) {
 
-					case 'og_img_max':
-					case 'schema_img_max':
+					if ( preg_match( '/_img_max/', $name ) ) {
 
-						if ( 0 === $label ) {
+						$label_transl .= ' ' . $this->get_value_transl( '(no images)' );
 
-							$label_transl .= ' ' . $this->get_value_transl( '(no images)' );
-						}
+					} elseif ( preg_match( '/_vid_max/', $name ) ) {
 
-						break;
+						$label_transl .= ' ' . $this->get_value_transl( '(no videos)' );
+					}
 
-					case 'og_vid_max':
-					case 'schema_vid_max':
+				} elseif ( '' ===  $label || 'none' === $label || '[None]' === $label ) {
 
-						if ( 0 === $label ) {
-
-							$label_transl .= ' ' . $this->get_value_transl( '(no videos)' );
-						}
-
-						break;
-
-					default:
-
-						if ( '' ===  $label || 'none' === $label || '[None]' === $label ) {	// Just in case.
-
-							$label_transl = $this->get_value_transl( '[None]' );
-						}
-
-						break;
+					$label_transl = $this->get_value_transl( '[None]' );
 				}
 
 				/**
@@ -2553,6 +2538,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			if ( preg_match( '/^(.*?)((_[0-9]+)?(#[a-zA-Z_]+)?)$/', $name_prefix, $matches ) ) {
 
 				$name_prefix = $matches[ 1 ];
+
 				$name_suffix = $matches[ 2 ];
 			}
 

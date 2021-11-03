@@ -1416,10 +1416,9 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			/**
 			 * Default priority media.
 			 */
-			$max_media_items = $this->p->cf[ 'form' ][ 'max_media_items' ];
-			$size_name       = 'wpsso-opengraph';
-			$media_request   = array( 'pid', 'img_url' );
-			$media_info      = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = 'none' );
+			$size_name     = 'wpsso-opengraph';
+			$media_request = array( 'pid', 'img_url' );
+			$media_info    = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = 'none' );
 
 			$form_rows = array(
 				'info_priority_media' => array(
@@ -1438,14 +1437,6 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'header'   => 'h5',
 					'label'    => _x( 'Priority Image Information', 'metabox title', 'wpsso' )
 				),
-				'og_img_max' => $mod[ 'is_post' ] ? array(
-					'tr_class' => $form->get_css_class_hide( 'basic', 'og_img_max' ),
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'Maximum Images', 'option label', 'wpsso' ),
-					'tooltip'  => 'og_img_max',		// Use tooltip message from settings.
-					'content'  => $form->get_select( 'og_img_max', range( 0, $max_media_items ), $css_class = 'medium' ),
-				) : '',	// Placeholder if not a post module.
 				'og_img_id' => array(
 					'th_class' => 'medium',
 					'td_class' => 'blank',
@@ -1468,29 +1459,6 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				'pro_feature_msg_video_api' => array(
 					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature_video_api() . '</td>',
 				),
-				'og_vid_prev_img' => array(
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'Include Preview Images', 'option label', 'wpsso' ),
-					'tooltip'  => 'og_vid_prev_img',	// Use the tooltip from plugin settings.
-					'content'  => $form->get_no_checkbox( 'og_vid_prev_img' ) . $this->p->msgs->preview_images_are_first(),
-				),
-				'og_vid_max' => $mod[ 'is_post' ] ? array(
-					'tr_class' => $form->get_css_class_hide( 'basic', 'og_vid_max' ),
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'Maximum Videos', 'option label', 'wpsso' ),
-					'tooltip'  => 'og_vid_max',	// Use the tooltip from plugin settings.
-					'content'  => $form->get_no_select( 'og_vid_max', range( 0, $max_media_items ), $css_class = 'medium' ),
-				) : '',	// Add a placeholder if not a post module.
-				'og_vid_dimensions' => array(
-					'tr_class' => $form->get_css_class_hide_vid_dim( 'basic', 'og_vid' ),
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'Video Dimensions', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-og_vid_dimensions',
-					'content'  => $form->get_no_input_video_dimensions( 'og_vid' ),
-				),
 				'og_vid_embed' => array(
 					'th_class' => 'medium',
 					'td_class' => 'blank',
@@ -1504,6 +1472,14 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'label'    => _x( 'or a Video URL', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-og_vid_url',
 					'content'  => $form->get_no_input_value( $value = '', $css_class = 'wide' ),	// The Standard plugin does not include video modules.
+				),
+				'og_vid_dimensions' => array(
+					'tr_class' => $form->get_css_class_hide_vid_dim( 'basic', 'og_vid' ),
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Video Dimensions', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-og_vid_dimensions',
+					'content'  => $form->get_no_input_video_dimensions( 'og_vid' ),
 				),
 				'og_vid_title' => array(
 					'tr_class' => $form->get_css_class_hide( 'basic', 'og_vid_title' ),
@@ -1531,22 +1507,18 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			$media_info       = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = array( 'schema', 'og' ) );
 			$pin_img_disabled = empty( $this->p->options[ 'pin_add_img_html' ] ) ? true : false;
 			$pin_img_msg      = $pin_img_disabled ? $this->p->msgs->pin_img_disabled() : '';
-			$row_class        = ! $pin_img_disabled && $form->in_options( '/^pin_img_/' ) ? '' : 'hide_in_basic';
 
 			$form_rows[ 'subsection_pinterest' ] = array(
-				'tr_class' => $row_class,
 				'td_class' => 'subsection',
 				'header'   => 'h4',
 				'label'    => _x( 'Pinterest Pin It', 'metabox title', 'wpsso' ),
 			);
 
 			$form_rows[ 'pro_feature_msg_pinterest' ] = array(
-				'tr_class'  => $row_class,
 				'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
 			);
 
 			$form_rows[ 'pin_img_id' ] = array(
-				'tr_class' => $row_class,
 				'th_class' => 'medium',
 				'td_class' => 'blank',
 				'label'    => _x( 'Image ID', 'option label', 'wpsso' ),
@@ -1555,7 +1527,6 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			);
 
 			$form_rows[ 'pin_img_url' ] = array(
-				'tr_class' => $row_class,
 				'th_class' => 'medium',
 				'td_class' => 'blank',
 				'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
@@ -1572,50 +1543,56 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			 */
 			list( $card_type, $card_label, $size_name, $tc_prefix ) = $this->p->tc->get_card_info( $mod, $head_info );
 
-			if ( ! empty( $size_name ) ) {
-
-				$media_request = array( 'pid', 'img_url' );
-				$media_info    = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = 'og' );
-				$row_class     = $form->in_options( '/^' . $tc_prefix . '_img_/' ) ? '' : 'hide_in_basic';
+			if ( ! empty( $card_label ) ) {
 
 				$form_rows[ 'subsection_tc' ] = array(
-					'tr_class' => $row_class,
 					'td_class' => 'subsection',
 					'header'   => 'h4',
 					'label'    => $card_label,
 				);
 
-				$form_rows[ 'pro_feature_msg_tc' ] = array(
-					'tr_class'  => $row_class,
-					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
-				);
+				if ( empty( $size_name ) ) {
 
-				$form_rows[ $tc_prefix . '_img_id' ] = array(
-					'tr_class' => $row_class,
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'Image ID', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-' . $tc_prefix . '_img_id',
-					'content'  => $form->get_no_input_image_upload( $tc_prefix . '_img', $media_info[ 'pid' ] ),
-				);
+					$form_rows[ 'subsection_tc_msg' ] = array(
+						'table_row' => '<td colspan="2"><p class="status-msg">' .
+							sprintf( __( 'No priority media options for the %s.', 'wpsso' ),
+								$card_label ) . '</p></td>',
+					);
 
-				$form_rows[ $tc_prefix . '_img_url' ] = array(
-					'tr_class' => $row_class,
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-' . $tc_prefix . '_img_url',
-					'content'  => $form->get_no_input_holder( $media_info[ 'img_url' ], $css_class = 'wide' ),
-				);
+				} else {
+
+					$media_request = array( 'pid', 'img_url' );
+					$media_info    = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = 'og' );
+	
+					$form_rows[ 'pro_feature_msg_tc' ] = array(
+						'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
+					);
+	
+					$form_rows[ $tc_prefix . '_img_id' ] = array(
+						'th_class' => 'medium',
+						'td_class' => 'blank',
+						'label'    => _x( 'Image ID', 'option label', 'wpsso' ),
+						'tooltip'  => 'meta-' . $tc_prefix . '_img_id',
+						'content'  => $form->get_no_input_image_upload( $tc_prefix . '_img', $media_info[ 'pid' ] ),
+					);
+	
+					$form_rows[ $tc_prefix . '_img_url' ] = array(
+						'th_class' => 'medium',
+						'td_class' => 'blank',
+						'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
+						'tooltip'  => 'meta-' . $tc_prefix . '_img_url',
+						'content'  => $form->get_no_input_holder( $media_info[ 'img_url' ], $css_class = 'wide' ),
+					);
+				}
 			}
-
-			$table_rows = $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
-
+	
 			/**
 			 * Since WPSSO Core v9.0.0.
 			 *
 			 * Provides backwards compatibility for older WPSSO JSON add-ons.
 			 */
+			$table_rows = $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
+
 			if ( ! empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
 
 				$json_version = WpssoJsonConfig::get_version();
@@ -1657,11 +1634,10 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				}
 			}
 
-			$max_media_items = $this->p->cf[ 'form' ][ 'max_media_items' ];
-			$size_names      = $this->p->util->get_image_size_names( 'schema' );	// Always returns an array.
-			$size_name       = reset( $size_names );
-			$media_request   = array( 'pid', 'img_url' );
-			$media_info      = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = 'og' );
+			$size_names    = $this->p->util->get_image_size_names( 'schema' );	// Always returns an array.
+			$size_name     = reset( $size_names );
+			$media_request = array( 'pid', 'img_url' );
+			$media_info    = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = 'og' );
 
 			$form_rows = array(
 				'subsection_schema' => array(
@@ -1672,14 +1648,6 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				'pro_feature_msg_schema' => array(
 					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
 				),
-				'schema_img_max' => $mod[ 'is_post' ] ? array(
-					'tr_class' => $form->get_css_class_hide( 'basic', 'schema_img_max' ),
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'Maximum Images', 'option label', 'wpsso' ),
-					'tooltip'  => 'schema_img_max',	// Use tooltip message from settings.
-					'content'  => $form->get_no_select( 'schema_img_max', range( 0, $max_media_items ), $css_class = 'medium' ),
-				) : '',	// Add a placeholder if not a post module.
 				'schema_img_id' => array(
 					'th_class' => 'medium',
 					'td_class' => 'blank',

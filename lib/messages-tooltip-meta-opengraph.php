@@ -90,17 +90,9 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaOpenGraph' ) ) {
 
 					break;
 
-				case 'tooltip-meta-og_vid_dimensions':	// Video Dimensions.
-
-					$text = sprintf( __( 'The %s video API modules can offer default video width and height values, provided that information is available from the service API.', 'wpsso' ), $this->p_name_pro ) . ' ';
-
-					$text .= __( 'If the default video width and/or height values are incorrect, you may adjust their values here.', 'wpsso' );
-
-				 	break;
-
 				case 'tooltip-meta-og_vid_embed':	// Video Embed HTML.
 
-					$text = __( 'Custom video embed HTML for the first video in the Facebook / Open Graph and Twitter Card meta tags, and in the Schema JSON-LD markup.', 'wpsso' ) . ' ';
+					$text = __( 'Video embed HTML code (ie. figure, iframe, or embed HTML code) for the first video included in the meta tags and Schema JSON-LD markup.', 'wpsso' ) . ' ';
 
 					$text .= __( 'If the video is from a recognized external video service, an API connection will be made to retrieve additional information about the video.', 'wpsso' );
 
@@ -108,18 +100,17 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaOpenGraph' ) ) {
 
 				case 'tooltip-meta-og_vid_url':		// or a Video URL.
 
-					$text = __( 'A customized video URL for the first video in the Facebook / Open Graph and Twitter Card meta tags, and in the Schema JSON-LD markup.', 'wpsso' ) . ' ';
+					$text = __( 'A video URL for the first video included in the meta tags and Schema JSON-LD markup.', 'wpsso' ) . ' ';
 
 					$text .= __( 'If the video is from a recognized external video service, an API connection will be made to retrieve additional information about the video.', 'wpsso' );
 
 				 	break;
 
+				case 'tooltip-meta-og_vid_dimensions':	// Video Dimensions.
 				case 'tooltip-meta-og_vid_title':	// Video Name / Title.
 				case 'tooltip-meta-og_vid_desc':	// Video Description.
 
-					$text = sprintf( __( 'The %s video API modules can offer a default video name / title and description, provided that information is available from the service API.', 'wpsso' ), $this->p_name_pro ) . ' ';
-
-					$text .= __( 'The video name / title and description will be used in the video Schema JSON-LD markup (add-on required).', 'wpsso' );
+					$text = sprintf( __( 'The %s video APIs can include additional information about a video (ie. dimensions, name / title, and description), provided that information is available from the video service API, or the information has been entered manually here.', 'wpsso' ), $this->p_name_pro ) . ' ';
 
 					break;
 

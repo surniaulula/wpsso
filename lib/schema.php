@@ -2250,9 +2250,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 */
 			$img_added = 0;
 
-			$max_nums = $wpsso->util->get_max_nums( $mod, 'schema' );
+			$max_nums = $wpsso->util->get_max_nums( $mod, 'og' );
 
-			$mt_images = $wpsso->og->get_all_images( $max_nums[ 'schema_img_max' ], $size_names, $mod, $check_dupes = true, $md_pre = 'schema' );
+			$mt_images = $wpsso->og->get_all_images( $max_nums[ 'og_img_max' ], $size_names, $mod, $check_dupes = true, $md_pre = 'schema' );
 
 			if ( ! empty( $mt_images ) ) {
 

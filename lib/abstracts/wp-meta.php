@@ -349,6 +349,10 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'tc_desc'         => '',			// Twitter Card Description.
 					'seo_desc'        => '',			// Search Description.
 					'canonical_url'   => '',			// Canonical URL.
+					'og_img_max'      => isset( $opts[ 'og_img_max' ] ) ? (int) $opts[ 'og_img_max' ] : 1,	// 1 by default.
+					'og_vid_max'      => isset( $opts[ 'og_vid_max' ] ) ? (int) $opts[ 'og_vid_max' ] : 1,	// 1 by default.
+					'og_vid_prev_img' => empty( $opts[ 'og_vid_prev_img' ] ) ? 0 : 1,	// Enabled by default.
+					'og_vid_autoplay' => empty( $opts[ 'og_vid_autoplay' ] ) ? 0 : 1,	// Enabled by default.
 
 					/**
 					 * Open Graph article type.
@@ -386,7 +390,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					/**
 					 * Open Graph priority image.
 					 */
-					'og_img_max'    => isset( $opts[ 'og_img_max' ] ) ? (int) $opts[ 'og_img_max' ] : 1,	// 1 by default.
 					'og_img_id'     => '',
 					'og_img_id_lib' => $def_img_id_lib,
 					'og_img_url'    => '',
@@ -394,13 +397,10 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					/**
 					 * Open Graph priority video.
 					 */
-					'og_vid_max'      => isset( $opts[ 'og_vid_max' ] ) ? (int) $opts[ 'og_vid_max' ] : 1,	// 1 by default.
-					'og_vid_autoplay' => empty( $opts[ 'og_vid_autoplay' ] ) ? 0 : 1,	// Enabled by default.
-					'og_vid_prev_img' => empty( $opts[ 'og_vid_prev_img' ] ) ? 0 : 1,	// Enabled by default.
-					'og_vid_width'    => '',	// Custom value for first video.
-					'og_vid_height'   => '',	// Custom value for first video.
 					'og_vid_embed'    => '',
 					'og_vid_url'      => '',
+					'og_vid_width'    => '',	// Custom value for first video.
+					'og_vid_height'   => '',	// Custom value for first video.
 					'og_vid_title'    => '',	// Custom value for first video.
 					'og_vid_desc'     => '',	// Custom value for first video.
 
@@ -425,7 +425,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					/**
 					 * Schema JSON-LD Markup / Google Rich Results priority image.
 					 */
-					'schema_img_max'    => isset( $opts[ 'schema_img_max' ] ) ? (int) $opts[ 'schema_img_max' ] : 1,	// 1 by default.
 					'schema_img_id'     => '',
 					'schema_img_id_lib' => $def_img_id_lib,
 					'schema_img_url'    => '',

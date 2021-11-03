@@ -31,6 +31,9 @@ if ( ! class_exists( 'WpssoStdAdminGeneral' ) ) {
 			) );
 		}
 
+		/**
+		 * SSO > General Settings > Images tab.
+		 */
 		public function filter_og_images_rows( $table_rows, $form ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -58,6 +61,9 @@ if ( ! class_exists( 'WpssoStdAdminGeneral' ) ) {
 			return $table_rows;
 		}
 
+		/**
+		 * SSO > General Settings > Videos tab.
+		 */
 		public function filter_og_videos_rows( $table_rows, $form ) {
 
 			if ( $this->p->debug->enabled ) {
