@@ -335,14 +335,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.5.1-dev.1 (2021/11/03)**
+**Version 9.6.0-dev.2 (2021/11/03)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Image and video related changes in the Document SSO metabox:
-		* Show (ie. unhide) the Twitter Card and Pinterest options by default under the Priority Media tab.
-		* Moved the following options from the Priority Media tab to the Customize tab:
+	* Changes under the Document SSO &gt; Priority Media tab:
+		* Added a new Video Stream URL option.
+		* Show the Twitter Card and Pinterest options by default.
+		* Moved the following options to the Customize tab:
 			* Maximum Images
 			* Maximum Videos
 			* Include Video Previews
@@ -589,9 +590,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.5.1-dev.1 =
+= 9.6.0-dev.2 =
 
-(2021/11/03) Image and video related changes in the Document SSO metabox.
+(2021/11/03) Image and video related changes to options in the Document SSO metabox.
 
 = 9.5.0 =
 
