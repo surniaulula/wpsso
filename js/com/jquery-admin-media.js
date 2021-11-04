@@ -87,7 +87,7 @@ function sucomShowLibraryImage( t, e ) {
 	
 			if ( img_id ) {	// Disable if we have a value (not just a placeholder).
 	
-				jQuery( '#' + img_url_css_id ).val( '' );
+				jQuery( '#' + img_url_css_id ).val( '' );	// Remove the value (and reset to placeholder).
 				jQuery( '#' + img_url_css_id ).prop( 'disabled', true );
 
 			} else {	// Re-enable if we don't have a value.
