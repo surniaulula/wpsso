@@ -335,7 +335,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.6.0-dev.2 (2021/11/03)**
+**Version 9.6.0-b.1 (2021/11/04)**
 
 * **New Features**
 	* None.
@@ -349,7 +349,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 			* Include Video Previews
 	* Removed the SSO &gt; General Settings &gt; Google &gt; Schema Max. Images to Include option. Schema markup now uses the default Maximum Images to Include option value from the SSO &gt; General Settings &gt; Images tab.
 * **Bugfixes**
-	* None.
+	* Fixed the disabled "or an Image URL" options under the Document SSO &gt; Priority Media tab.
 * **Developer Notes**
 	* Renamed the 'plugin_upscale_img_max' options key to 'plugin_upscale_pct_max'.
 * **Requires At Least**
@@ -590,9 +590,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.6.0-dev.2 =
+= 9.6.0-b.1 =
 
-(2021/11/03) Image and video related changes to options in the Document SSO metabox.
+(2021/11/04) Image and video related changes to options in the Document SSO metabox. Fixed the disabled "or an Image URL" options under the Document SSO &gt; Priority Media tab.
 
 = 9.5.0 =
 
