@@ -335,7 +335,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.6.0-b.2 (2021/11/04)**
+**Version 9.6.0-b.3 (2021/11/04)**
 
 * **New Features**
 	* None.
@@ -590,7 +590,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.6.0-b.2 =
+= 9.6.0-b.3 =
 
 (2021/11/04) Image and video related changes to options in the Document SSO metabox. Fixed the disabled "or an Image URL" options under the Document SSO &gt; Priority Media tab.
 
