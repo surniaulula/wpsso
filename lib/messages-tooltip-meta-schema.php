@@ -67,7 +67,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 					$text = __( 'Additional webpage reference URL(s) that unambiguously indicates the content\'s identity.', 'wpsso' ) . ' ';
 					
-					$text .= __( 'For example, the URL for the content\'s Wikipedia page, Wikidata entry, IMDB page, official website, etc.', 'wpsso' );
+					$text .= __( 'For example, the URL for the content subject\'s Wikipedia page, Wikidata entry, IMDB page, official website, etc.', 'wpsso' );
 
 				 	break;
 

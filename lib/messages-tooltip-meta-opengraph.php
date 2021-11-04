@@ -110,7 +110,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaOpenGraph' ) ) {
 				case 'tooltip-meta-og_vid_desc':	// Video Description.
 				case 'tooltip-meta-og_vid_dimensions':	// Video Dimensions.
 
-					$text = sprintf( __( 'The %s video APIs can include additional information about a video (ie. name / title, description, dimensions, stream URL, etc.), provided that information is available from the video service API, or the information has been entered here manually.', 'wpsso' ), $this->p_name_pro ) . ' ';
+					$text = sprintf( __( 'The %s video APIs can include additional information about a video (ie. name / title, description, dimensions, stream URL, etc.), provided that this information is available from the video service API, or the information has been entered here manually.', 'wpsso' ), $this->p_name_pro ) . ' ';
 
 					break;
 
@@ -118,7 +118,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaOpenGraph' ) ) {
 
 					$text = $this->get( 'tooltip-meta-og_vid_title' ) . ' ';
 
-					$text .= __( 'The stream URL should be the publicly available URL to a video file (mkv, mp4, etc.) or video stream (not a webpage).', 'wpsso' ) . ' ';
+					$text .= __( 'The stream URL should be a publicly available URL to the video file (mkv, mp4, etc.) or video data stream (not an HTML webpage).', 'wpsso' ) . ' ';
 
 					$text .= __( 'The stream URL will be used for the Schema contentUrl property value in the Schema VideoObject markup.', 'wpsso' ) . ' ';
 

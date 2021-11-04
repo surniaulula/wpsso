@@ -200,7 +200,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 				}
 
 				/**
-				 * Check if the value should be split into multiple numeric options. If not, then just get the
+				 * Check if the value should be split into multiple numeric options, and if not, then just get the
 				 * first value from the $values array.
 				 */
 				if ( empty( $this->p->cf[ 'opt' ][ 'cf_md_multi' ][ $md_key ] ) ) {

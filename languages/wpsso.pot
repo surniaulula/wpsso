@@ -4576,56 +4576,56 @@ msgctxt "default description"
 msgid "No Description."
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1042
+#: lib/abstracts/wp-meta.php:1025
 msgctxt "metabox tab"
 msgid "Customize"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1043 lib/messages.php:285
+#: lib/abstracts/wp-meta.php:1026 lib/messages.php:285
 msgctxt "metabox tab"
 msgid "Priority Media"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1047 lib/messages-info.php:277
+#: lib/abstracts/wp-meta.php:1030 lib/messages-info.php:277
 msgctxt "metabox tab"
 msgid "Robots Meta"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1048
+#: lib/abstracts/wp-meta.php:1031
 msgctxt "metabox tab"
 msgid "Social Preview"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1049
+#: lib/abstracts/wp-meta.php:1032
 msgctxt "metabox tab"
 msgid "oEmbed Preview"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1050
+#: lib/abstracts/wp-meta.php:1033
 msgctxt "metabox tab"
 msgid "Head Markup"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1051
+#: lib/abstracts/wp-meta.php:1034
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1498
+#: lib/abstracts/wp-meta.php:1481
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1832 lib/json-filters/type/claimreview.php:69
+#: lib/abstracts/wp-meta.php:1815 lib/json-filters/type/claimreview.php:69
 msgid "A claim review cannot be the subject of another claim review."
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1834
+#: lib/abstracts/wp-meta.php:1817
 msgid ""
 "Please select a subject webpage type that better describes the subject of "
 "the webpage (ie. the content) being reviewed."
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:2623
+#: lib/abstracts/wp-meta.php:2606
 msgid "adding schema images"
 msgstr ""
 
@@ -6756,15 +6756,15 @@ msgstr ""
 #: lib/messages-tooltip-meta-opengraph.php:113
 msgid ""
 "The %s video APIs can include additional information about a video (ie. "
-"name / title, description, dimensions, stream URL, etc.), provided that "
+"name / title, description, dimensions, stream URL, etc.), provided that this "
 "information is available from the video service API, or the information has "
 "been entered here manually."
 msgstr ""
 
 #: lib/messages-tooltip-meta-opengraph.php:121
 msgid ""
-"The stream URL should be the publicly available URL to a video file (mkv, "
-"mp4, etc.) or video stream (not a webpage)."
+"The stream URL should be a publicly available URL to the video file (mkv, "
+"mp4, etc.) or video data stream (not an HTML webpage)."
 msgstr ""
 
 #: lib/messages-tooltip-meta-opengraph.php:123
@@ -6816,8 +6816,8 @@ msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:70
 msgid ""
-"For example, the URL for the content's Wikipedia page, Wikidata entry, IMDB "
-"page, official website, etc."
+"For example, the URL for the content subject's Wikipedia page, Wikidata "
+"entry, IMDB page, official website, etc."
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:76
