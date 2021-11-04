@@ -1474,6 +1474,20 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return $mt_ret;
 		}
 
+		public function get_md_image_url( $name, $size_name, array $mod, $form, $md_pre = 'og' ) {
+
+			if ( ! empty( $form->options[ $name ] ) ) {
+
+				$media_request = array( 'pid', 'img_url' );
+
+				$media_info = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre );
+
+				return $media_info[ 'img_url' ];
+			}
+
+			return '';
+		}
+
 		/**
 		 * The returned array can include a varying number of elements, depending on the $request value.
 		 * 

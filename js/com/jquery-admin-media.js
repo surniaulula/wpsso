@@ -83,10 +83,17 @@ function sucomShowLibraryImage( t, e ) {
 
 	if ( 'wp' === img_lib_value && jQuery.isNumeric( img_id_thumb ) ) {
 
-		if ( img_id && img_url_css_id ) {	// Only disable if we have a value (not just a placeholder).
+		if ( img_url_css_id ) {
+	
+			if ( img_id ) {	// Disable if we have a value (not just a placeholder).
+	
+				jQuery( '#' + img_url_css_id ).val( '' );
+				jQuery( '#' + img_url_css_id ).prop( 'disabled', true );
 
-			jQuery( '#' + img_url_css_id ).val( '' ).change();
-			jQuery( '#' + img_url_css_id ).prop( 'disabled', true );
+			} else {	// Re-enable if we don't have a value.
+
+				jQuery( '#' + img_url_css_id ).prop( 'disabled', false );
+			}
 		}
 
 		var q = new wp.media.model.Attachment.get( img_id_thumb );

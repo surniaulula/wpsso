@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 9.6.0-b.2\n"
+"Project-Id-Version: WPSSO Core 9.6.0-b.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3121,7 +3121,7 @@ msgid "Force Autoplay when Possible"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:137 gettext/gettext-lib-pro.php:326
-#: lib/pro/admin/edit.php:163 lib/pro/admin/edit.php:1642
+#: lib/pro/admin/edit.php:163 lib/pro/admin/edit.php:1644
 #: lib/std/admin/edit.php:82 lib/std/admin/edit.php:167
 #: lib/std/admin/edit.php:1578 lib/std/admin/edit.php:1620
 msgctxt "metabox title"
@@ -3348,8 +3348,8 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:313 gettext/gettext-lib-pro.php:324
 #: gettext/gettext-lib-pro.php:327 gettext/gettext-lib-pro.php:330
 #: lib/pro/admin/edit.php:459 lib/pro/admin/edit.php:551
-#: lib/pro/admin/edit.php:1503 lib/pro/admin/edit.php:1595
-#: lib/pro/admin/edit.php:1646 lib/pro/admin/edit.php:1687
+#: lib/pro/admin/edit.php:1505 lib/pro/admin/edit.php:1597
+#: lib/pro/admin/edit.php:1648 lib/pro/admin/edit.php:1689
 #: lib/std/admin/edit.php:484 lib/std/admin/edit.php:584
 #: lib/std/admin/edit.php:1444 lib/std/admin/edit.php:1549
 #: lib/std/admin/edit.php:1628 lib/std/admin/edit.php:1674
@@ -3620,8 +3620,8 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:224 gettext/gettext-lib-pro.php:314
 #: gettext/gettext-lib-pro.php:325 gettext/gettext-lib-pro.php:328
 #: gettext/gettext-lib-pro.php:331 lib/pro/admin/edit.php:755
-#: lib/pro/admin/edit.php:1509 lib/pro/admin/edit.php:1602
-#: lib/pro/admin/edit.php:1652 lib/pro/admin/edit.php:1693
+#: lib/pro/admin/edit.php:1511 lib/pro/admin/edit.php:1604
+#: lib/pro/admin/edit.php:1654 lib/pro/admin/edit.php:1695
 #: lib/std/admin/edit.php:808 lib/std/admin/edit.php:1451
 #: lib/std/admin/edit.php:1557 lib/std/admin/edit.php:1635
 #: lib/std/admin/edit.php:1681
@@ -4097,96 +4097,96 @@ msgctxt "option label"
 msgid "Product ISBN"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:311 lib/pro/admin/edit.php:1494
+#: gettext/gettext-lib-pro.php:311 lib/pro/admin/edit.php:1496
 #: lib/std/admin/edit.php:1431
 msgctxt "metabox title"
 msgid "Default Priority Media"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:312 lib/pro/admin/edit.php:1499
+#: gettext/gettext-lib-pro.php:312 lib/pro/admin/edit.php:1501
 #: lib/std/admin/edit.php:1439
 msgctxt "metabox title"
 msgid "Priority Image Information"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:315 lib/pro/admin/edit.php:1516
+#: gettext/gettext-lib-pro.php:315 lib/pro/admin/edit.php:1518
 #: lib/std/admin/edit.php:1458
 msgctxt "metabox title"
 msgid "Priority Video Information"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:316 lib/messages.php:1074
-#: lib/pro/admin/edit.php:1520 lib/std/admin/edit.php:1466
+#: lib/pro/admin/edit.php:1522 lib/std/admin/edit.php:1466
 msgctxt "option label"
 msgid "Video Embed HTML"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:317 lib/pro/admin/edit.php:1526
+#: gettext/gettext-lib-pro.php:317 lib/pro/admin/edit.php:1528
 #: lib/std/admin/edit.php:1473
 msgctxt "option label"
 msgid "or a Video URL"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:318 lib/pro/admin/edit.php:1533
+#: gettext/gettext-lib-pro.php:318 lib/pro/admin/edit.php:1535
 #: lib/std/admin/edit.php:1480
 msgctxt "metabox title"
 msgid "Video Information from Video API"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:319 lib/pro/admin/edit.php:1537
+#: gettext/gettext-lib-pro.php:319 lib/pro/admin/edit.php:1539
 #: lib/std/admin/edit.php:1485
 msgctxt "option label"
 msgid "Video Name / Title"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:320 lib/pro/admin/edit.php:1544
+#: gettext/gettext-lib-pro.php:320 lib/pro/admin/edit.php:1546
 #: lib/std/admin/edit.php:1492
 msgctxt "option label"
 msgid "Video Description"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:321 lib/pro/admin/edit.php:1551
+#: gettext/gettext-lib-pro.php:321 lib/pro/admin/edit.php:1553
 #: lib/std/admin/edit.php:1499
 msgctxt "option label"
 msgid "Video Stream URL"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:322 lib/pro/admin/edit.php:1557
+#: gettext/gettext-lib-pro.php:322 lib/pro/admin/edit.php:1559
 #: lib/std/admin/edit.php:1506
 msgctxt "option label"
 msgid "Video Dimensions"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:323 lib/pro/admin/edit.php:1584
+#: gettext/gettext-lib-pro.php:323 lib/pro/admin/edit.php:1586
 #: lib/std/admin/edit.php:1533
 msgid "No priority media options for the %s."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:329 lib/pro/admin/edit.php:1683
+#: gettext/gettext-lib-pro.php:329 lib/pro/admin/edit.php:1685
 #: lib/std/admin/edit.php:1666
 msgctxt "metabox title"
 msgid "Pinterest Pin It"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:332 lib/pro/admin/edit.php:1713
+#: gettext/gettext-lib-pro.php:332 lib/pro/admin/edit.php:1715
 #: lib/std/admin/edit.php:1701
 msgctxt "option comment"
 msgid "days"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:333 lib/pro/admin/edit.php:1714
+#: gettext/gettext-lib-pro.php:333 lib/pro/admin/edit.php:1716
 #: lib/std/admin/edit.php:1702
 msgctxt "option comment"
 msgid "hours"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:334 lib/pro/admin/edit.php:1715
+#: gettext/gettext-lib-pro.php:334 lib/pro/admin/edit.php:1717
 #: lib/std/admin/edit.php:1703
 msgctxt "option comment"
 msgid "mins"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:335 lib/pro/admin/edit.php:1716
+#: gettext/gettext-lib-pro.php:335 lib/pro/admin/edit.php:1718
 #: lib/std/admin/edit.php:1704
 msgctxt "option comment"
 msgid "secs"

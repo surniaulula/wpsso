@@ -910,7 +910,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_input_image_url( $name_prefix, $url = '', $is_disabled = false ) {
 
-			return $this->get_input_media_url( $name_prefix, $media_suffix = 'id', $url, $is_disabled );
+			return $this->get_input_media_url( $name_prefix, $primary_suffix = 'id', $url, $is_disabled );
 		}
 
 		public function get_input_video_dimensions( $name_prefix, $media_info = array(), $is_disabled = false ) {
@@ -933,7 +933,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_input_video_url( $name_prefix, $url = '', $is_disabled = false ) {
 
-			return $this->get_input_media_url( $name_prefix, $media_suffix = 'embed', $url, $is_disabled );
+			return $this->get_input_media_url( $name_prefix, $primary_suffix = 'embed', $url, $is_disabled );
 		}
 
 		public function get_input_multi( $name, $css_class = '', $css_id = '', $start_num = 0, $max_input = 20, $show_first = 5, $is_disabled = false ) {
@@ -2151,7 +2151,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$name_prefix = SucomUtil::get_key_locale( $name_prefix, $this->options );
 
-			return $this->get_input_video_url( $name_prefix, $media_suffix = 'embed', $url, $is_disabled );
+			return $this->get_input_video_url( $name_prefix, $primary_suffix = 'embed', $url, $is_disabled );
 		}
 
 		public function get_select_locale( $name, $values = array(), $css_class = '', $css_id = '',
@@ -2518,7 +2518,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_no_input_video_url_locale( $name_prefix, $url = '' ) {
 
-			return $this->get_input_video_url_locale( $name_prefix, $media_suffix = 'embed', $url, $is_disabled = true );
+			return $this->get_input_video_url_locale( $name_prefix, $primary_suffix = 'embed', $url, $is_disabled = true );
 		}
 
 		public function get_no_select_locale( $name, $values = array(), $css_class = '', $css_id = '',
@@ -2590,25 +2590,32 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return 0;	// No change.
 		}
 
-		private function get_input_media_url( $name_prefix, $media_suffix = 'id', $url = '', $is_disabled = false ) {
+		private function get_input_media_url( $name_prefix, $primary_suffix = 'id', $url = '', $is_disabled = false ) {
 
 			list( $name_prefix, $name_suffix ) = $this->split_name_locale( $name_prefix );
 
-			$input_name_media_locale = $name_prefix . '_' . $media_suffix . $name_suffix;
-			$input_name_url_locale   = $name_prefix . '_url' . $name_suffix;
-			$input_media_value       = $this->get_options_locale( $input_name_media_locale );
+			$input_name_dep_locale = $name_prefix . '_' . $primary_suffix . $name_suffix;
+			$input_name_dep_value  = $this->get_options_locale( $input_name_dep_locale );
+			$input_name_url_locale = $name_prefix . '_url' . $name_suffix;
+			$custom_fallback_url   = '';   
+
+			if ( is_array( $url ) ) {
+
+				list( $url, $custom_fallback_url ) = $url;
+			}
+
+			$holder = SucomUtil::esc_url_encode( $url );
 
 			/**
-			 * Disable the image / video URL option if we have an image ID / video embed.
+			 * Disable the image URL option if we have an image ID.
+			 *
+			 * Disable the video URL option if we have video embed HTML.
 			 */
-			if ( ! empty( $input_media_value ) ) {
+			if ( ! empty( $input_name_dep_value ) ) {
 
-				$holder      = '';
+				$holder = SucomUtil::esc_url_encode( $custom_fallback_url );
+
 				$is_disabled = true;
-
-			} else {
-
-				$holder = SucomUtil::esc_url_encode( $url );
 			}
 
 			return $this->get_input( $input_name_url_locale, $css_class = 'wide', $css_id = '', $len = 0, $holder, $is_disabled );
@@ -2672,20 +2679,28 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$js_if_empty = 'if ( this.value == \'\' ) this.value = \'' . esc_js( $holder ) . '\';';
 			}
 
-			$js_if_same  = 'if ( this.value == \'' . esc_js( $holder ) . '\' ) this.value = \'\';';
+			$js_if_same = 'if ( this.value == \'' . esc_js( $holder ) . '\' ) this.value = \'\';';
 
 			$html = ' placeholder="' . esc_attr( $holder ) . '"';
+
+			/**
+			 * If the value is an empty string, then set the value to the placeholder.
+			 */
 			$html .= $js_if_empty ? ' onClick="' . $js_if_empty . '"' : '';
 			$html .= $js_if_empty ? ' onFocus="' . $js_if_empty . '"' : '';
-			$html .= $js_if_same ? ' onBlur="' . $js_if_same . '"' : '';
-
-			if ( $type === 'input' ) {
-
-				$html .= $js_if_same ? ' onKeyPress="if ( event.keyCode === 13 ) { ' . $js_if_same . ' }"' : '';
-			}
-
 			$html .= $js_if_empty ? ' onMouseEnter="' . $js_if_empty . '"' : '';
+
+			/**
+			 * If the value is the placeholder, then set the value to an empty string.
+			 */
+			$html .= $js_if_same ? ' onChange="' . $js_if_same . '"' : '';
+			$html .= $js_if_same ? ' onBlur="' . $js_if_same . '"' : '';
 			$html .= $js_if_same ? ' onMouseLeave="' . $js_if_same . '"' : '';
+
+			/**
+			 * Check for the enter key, which submits the current form in an input field.
+			 */
+			$html .= $js_if_same && 'input' === $type ? ' onKeyPress="if ( event.keyCode === 13 ) { ' . $js_if_same . ' }"' : '';
 
 			return $html;
 		}
