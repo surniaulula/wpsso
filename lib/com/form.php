@@ -653,14 +653,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			if ( ! is_array( $len ) ) {	// A non-array value defaults to a max length.
 
-				if ( empty( $len ) ) {
-
-					$len = array();
-
-				} else {
-
-					$len = array( 'max' => $len );
-				}
+				$len = empty( $len ) ? $len = array() : array( 'max' => $len );
 			}
 
 			$html .= '<input type="text" name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '"';
@@ -2590,35 +2583,36 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return 0;	// No change.
 		}
 
-		private function get_input_media_url( $name_prefix, $primary_suffix = 'id', $url = '', $is_disabled = false ) {
+		private function get_input_media_url( $name_prefix, $primary_suffix = 'id', $holder = '', $is_disabled = false ) {
 
 			list( $name_prefix, $name_suffix ) = $this->split_name_locale( $name_prefix );
 
-			$input_name_dep_locale = $name_prefix . '_' . $primary_suffix . $name_suffix;
-			$input_name_dep_value  = $this->get_options_locale( $input_name_dep_locale );
-			$input_name_url_locale = $name_prefix . '_url' . $name_suffix;
-			$custom_fallback_url   = '';   
+			$name = $name_prefix . '_url' . $name_suffix;
 
-			if ( is_array( $url ) ) {
+			$primary_name  = $name_prefix . '_' . $primary_suffix . $name_suffix;
+			$primary_value = $this->get_options_locale( $primary_name );
 
-				list( $url, $custom_fallback_url ) = $url;
-			}
+			if ( ! empty( $primary_value ) ) {
 
-			$holder = SucomUtil::esc_url_encode( $url );
-
-			/**
-			 * Disable the image URL option if we have an image ID.
-			 *
-			 * Disable the video URL option if we have video embed HTML.
-			 */
-			if ( ! empty( $input_name_dep_value ) ) {
-
-				$holder = SucomUtil::esc_url_encode( $custom_fallback_url );
+				$this->options[ $name ] = '';
 
 				$is_disabled = true;
 			}
 
-			return $this->get_input( $input_name_url_locale, $css_class = 'wide', $css_id = '', $len = 0, $holder, $is_disabled );
+			$html        = '';
+			$holder      = $this->get_placeholder_sanitized( $name, $holder );
+			$value       = $this->in_options( $name ) ? $this->options[ $name ] : '';
+			$input_class = SucomUtil::sanitize_css_class( $css_class = 'wide' );
+			$input_id    = SucomUtil::sanitize_css_id( $name );
+
+			$html .= '<input type="text" name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '"';
+			$html .= $is_disabled ? ' disabled="disabled"' : '';
+			$html .= empty( $input_class ) ? '' : ' class="' . $input_class . '"';	// Already sanitized.
+			$html .= empty( $input_id ) ? '' : ' id="text_' . $input_id . '"';	// Already sanitized.
+			$html .= $this->get_placeholder_attrs( $type = 'input', $holder, $name );
+			$html .= ' value="' . esc_attr( $value ) . '" />' . "\n";
+
+			return $html;
 		}
 
 		private function get_placeholder_sanitized( $name, $holder = '' ) {

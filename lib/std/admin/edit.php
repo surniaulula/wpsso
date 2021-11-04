@@ -1418,7 +1418,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			 * Default priority media.
 			 */
 			$size_name     = 'wpsso-opengraph';
-			$media_request = array( 'pid', 'img_url' );
+			$media_request = array( 'pid' );
 			$media_info    = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = 'none' );
 
 			$form_rows = array(
@@ -1450,7 +1450,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-og_img_url',
-					'content'  => $form->get_no_input_holder( $media_info[ 'img_url' ], $css_class = 'wide' ),
+					'content'  => $form->get_no_input_value( '', $css_class = 'wide' ),
 				),
 				'subsection_priority_video' => array(
 					'td_class' => 'subsection',
@@ -1536,7 +1536,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 
 				} else {
 
-					$media_request = array( 'pid', 'img_url' );
+					$media_request = array( 'pid' );
 					$media_info    = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = 'og' );
 	
 					$form_rows[ 'pro_feature_msg_tc' ] = array(
@@ -1556,7 +1556,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 						'td_class' => 'blank',
 						'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
 						'tooltip'  => 'meta-' . $tc_prefix . '_img_url',
-						'content'  => $form->get_no_input_holder( $media_info[ 'img_url' ], $css_class = 'wide' ),
+						'content'  => $form->get_no_input_value( '', $css_class = 'wide' ),
 					);
 				}
 			}
@@ -1610,7 +1610,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			}
 
 			$size_name     = 'wpsso-schema-1x1';
-			$media_request = array( 'pid', 'img_url' );
+			$media_request = array( 'pid' );
 			$media_info    = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = 'og' );
 
 			$form_rows = array(
@@ -1634,7 +1634,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_img_url',
-					'content'  => $form->get_no_input_value( $value = '', $css_class = 'wide', $css_id = '', $media_info[ 'img_url' ] ),
+					'content'  => $form->get_no_input_value( $value = '', $css_class = 'wide' ),
 				),
 			);
 
@@ -1654,7 +1654,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			 * Pinterest Pin It.
 			 */
 			$size_name        = 'wpsso-pinterest';
-			$media_request = array( 'pid', 'img_url' );
+			$media_request = array( 'pid' );
 			$media_info       = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = array( 'schema', 'og' ) );
 			$pin_img_disabled = empty( $this->p->options[ 'pin_add_img_html' ] ) ? true : false;
 			$pin_img_msg      = $pin_img_disabled ? $this->p->msgs->pin_img_disabled() : '';
@@ -1680,7 +1680,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-pin_img_url',
-					'content'  => $form->get_no_input_holder( $media_info[ 'img_url' ], $css_class = 'wide' ) . ' ' . $pin_img_msg,
+					'content'  => $form->get_no_input_value( '', $css_class = 'wide' ) . ' ' . $pin_img_msg,
 				),
 			);
 
