@@ -10,7 +10,7 @@ Tags: woocommerce, open graph, meta tags, schema, rich results, seo, image seo, 
 Contributors: jsmoriss
 Requires PHP: 7.0
 Requires At Least: 5.0
-Tested Up To: 5.8.1
+Tested Up To: 5.8.2
 WC Tested Up To: 5.8.0
 Stable Tag: 9.5.0
 
