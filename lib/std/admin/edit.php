@@ -54,6 +54,10 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'metabox_sso_media_schema_rows' => array( 'metabox_sso_media_rows' => 4 ),
 				), $prio = 1500 );	// Run after older WPSSO JSON add-ons.
 			}
+
+			$this->p->util->add_plugin_filters( $this, array( 
+				'metabox_sso_media_pinterest_rows' => array( 'metabox_sso_media_rows' => 4 ),
+			), $prio = 2000 );	// Run after the Schema options filters.
 		}
 
 		public function filter_metabox_sso_edit_rows( $table_rows, $form, $head_info, $mod ) {
@@ -1506,41 +1510,6 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			);
 
 			/**
-			 * Pinterest Pin It.
-			 */
-			$size_name        = 'wpsso-pinterest';
-			$media_request = array( 'pid', 'img_url' );
-			$media_info       = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = array( 'schema', 'og' ) );
-			$pin_img_disabled = empty( $this->p->options[ 'pin_add_img_html' ] ) ? true : false;
-			$pin_img_msg      = $pin_img_disabled ? $this->p->msgs->pin_img_disabled() : '';
-
-			$form_rows[ 'subsection_pinterest' ] = array(
-				'td_class' => 'subsection',
-				'header'   => 'h4',
-				'label'    => _x( 'Pinterest Pin It', 'metabox title', 'wpsso' ),
-			);
-
-			$form_rows[ 'pro_feature_msg_pinterest' ] = array(
-				'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
-			);
-
-			$form_rows[ 'pin_img_id' ] = array(
-				'th_class' => 'medium',
-				'td_class' => 'blank',
-				'label'    => _x( 'Image ID', 'option label', 'wpsso' ),
-				'tooltip'  => 'meta-pin_img_id',
-				'content'  => $form->get_no_input_image_upload( 'pin_img', $media_info[ 'pid' ] ),
-			);
-
-			$form_rows[ 'pin_img_url' ] = array(
-				'th_class' => 'medium',
-				'td_class' => 'blank',
-				'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
-				'tooltip'  => 'meta-pin_img_url',
-				'content'  => $form->get_no_input_holder( $media_info[ 'img_url' ], $css_class = 'wide' ) . ' ' . $pin_img_msg,
-			);
-
-			/**
 			 * Twitter Card.
 			 *
 			 * App and Player cards do not have a $size_name.
@@ -1640,8 +1609,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				}
 			}
 
-			$size_names    = $this->p->util->get_image_size_names( 'schema' );	// Always returns an array.
-			$size_name     = reset( $size_names );
+			$size_name     = 'wpsso-schema-1x1';
 			$media_request = array( 'pid', 'img_url' );
 			$media_info    = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = 'og' );
 
@@ -1673,6 +1641,52 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			$table_rows = $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
 
 			return apply_filters( 'wpsso_metabox_sso_media_schema_rows', $table_rows, $form, $head_info, $mod );
+		}
+
+		public function filter_metabox_sso_media_pinterest_rows( $table_rows, $form, $head_info, $mod ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			/**
+			 * Pinterest Pin It.
+			 */
+			$size_name        = 'wpsso-pinterest';
+			$media_request = array( 'pid', 'img_url' );
+			$media_info       = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = array( 'schema', 'og' ) );
+			$pin_img_disabled = empty( $this->p->options[ 'pin_add_img_html' ] ) ? true : false;
+			$pin_img_msg      = $pin_img_disabled ? $this->p->msgs->pin_img_disabled() : '';
+
+			$form_rows = array(
+				'subsection_pinterest' => array(
+					'td_class' => 'subsection',
+					'header'   => 'h4',
+					'label'    => _x( 'Pinterest Pin It', 'metabox title', 'wpsso' ),
+				),
+				'pro_feature_msg_pinterest' => array(
+					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
+				),
+				'pin_img_id' => array(
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Image ID', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-pin_img_id',
+					'content'  => $form->get_no_input_image_upload( 'pin_img', $media_info[ 'pid' ] ),
+				),
+				'pin_img_url' => array(
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-pin_img_url',
+					'content'  => $form->get_no_input_holder( $media_info[ 'img_url' ], $css_class = 'wide' ) . ' ' . $pin_img_msg,
+				),
+			);
+
+			$table_rows = $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
+
+			return apply_filters( 'wpsso_metabox_sso_media_pinterest_rows', $table_rows, $form, $head_info, $mod );
 		}
 
 		private function get_input_time_dhms( $form ) {
