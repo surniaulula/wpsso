@@ -1092,9 +1092,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					foreach ( array(
 						'og_vid_title'      => 'og:video:title',
 						'og_vid_desc'       => 'og:video:description',
+						'og_vid_stream_url' => 'og:video:stream_url',
 						'og_vid_width'      => 'og:video:width',
 						'og_vid_height'     => 'og:video:height',
-						'og_vid_stream_url' => 'og:video:stream_url',
 					) as $md_key => $mt_name ) {
 
 						/**
@@ -1598,6 +1598,12 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 						break;
 
+					case 'vid_stream_url':
+
+						$media_info[ $key ] = $this->get_media_value( $mt_videos, $mt_pre . ':video:stream_url' );
+
+						break;
+
 					case 'vid_width':
 
 						$media_info[ $key ] = $this->get_media_value( $mt_videos, $mt_pre . ':video:width' );
@@ -1607,12 +1613,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					case 'vid_height':
 
 						$media_info[ $key ] = $this->get_media_value( $mt_videos, $mt_pre . ':video:height' );
-
-						break;
-
-					case 'vid_stream_url':
-
-						$media_info[ $key ] = $this->get_media_value( $mt_videos, $mt_pre . ':video:stream_url' );
 
 						break;
 

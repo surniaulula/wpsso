@@ -968,7 +968,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					continue;
 				}
 
-				if ( $start_num == $key_num ) {
+				if ( $start_num === $key_num ) {
 
 					$el_attr = 'onFocus="jQuery(\'div#multi_' . $input_id_next . '\').show();"';
 

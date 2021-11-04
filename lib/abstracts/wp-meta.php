@@ -401,9 +401,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'og_vid_url'        => '',
 					'og_vid_title'      => '',
 					'og_vid_desc'       => '',
+					'og_vid_stream_url' => '',
 					'og_vid_width'      => '',
 					'og_vid_height'     => '',
-					'og_vid_stream_url' => '',
 
 					/**
 					 * Pinterest priority image.

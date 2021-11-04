@@ -59,17 +59,19 @@ function sucomMaybeShowUpload( t, e ) {
 
 function sucomShowLibraryImage( t, e ) {
 
-	var img_id_value   = jQuery( t ).val();
 	var img_lib_css_id = jQuery( t ).attr( 'data-img-lib-css-id' );
 	var img_url_css_id = jQuery( t ).attr( 'data-img-url-css-id' );
 	var preview_css_id = jQuery( t ).attr( 'data-preview-css-id' );
 
-	if ( ! img_id_value ) {
+	var img_id       = jQuery( t ).val();
+	var img_id_thumb = img_id;
 
-		img_id_value = jQuery( t ).attr( 'placeholder' );
+	if ( ! img_id_thumb ) {	// Fallback to the placeholder image ID if we don't have a value.
+
+		img_id_thumb = jQuery( t ).attr( 'placeholder' );
 	}
 
-	if ( ! img_id_value || ! img_lib_css_id || ! preview_css_id ) {	// Nothing to do.
+	if ( ! img_id_thumb || ! img_lib_css_id || ! preview_css_id ) {	// Nothing to do.
 
 		return;
 	}
@@ -79,15 +81,15 @@ function sucomShowLibraryImage( t, e ) {
 
 	preview_container.empty();	// Remove any old image preview.
 
-	if ( 'wp' === img_lib_value && jQuery.isNumeric( img_id_value ) ) {
+	if ( 'wp' === img_lib_value && jQuery.isNumeric( img_id_thumb ) ) {
 
-		if ( img_url_css_id ) {
+		if ( img_id && img_url_css_id ) {	// Only disable if we have a value (not just a placeholder).
 
 			jQuery( '#' + img_url_css_id ).val( '' ).change();
 			jQuery( '#' + img_url_css_id ).prop( 'disabled', true );
 		}
 
-		var q = new wp.media.model.Attachment.get( img_id_value );
+		var q = new wp.media.model.Attachment.get( img_id_thumb );
 
 		q.fetch( { success:function( ret ) {
 
@@ -138,12 +140,12 @@ function sucomSelectLibraryImage( t, e ) {
 
 	window.sucom_image_upload_media.on( 'open', function() {
 
-		var img_id_value = jQuery( t ).attr( 'data-wp-img-id' );
+		var img_id = jQuery( t ).attr( 'data-wp-img-id' );
 
-		if ( img_id_value && jQuery.isNumeric( img_id_value ) ) {
+		if ( img_id && jQuery.isNumeric( img_id ) ) {
 
 			var selection  = window.sucom_image_upload_media.state().get( 'selection' );
-			var attachment = wp.media.attachment( img_id_value );
+			var attachment = wp.media.attachment( img_id );
 
 			selection.add( attachment ? [ attachment ] : [] );
 		}

@@ -1678,14 +1678,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $mt_single, array(
 				'name'         => $media_pre . ':title',
 				'description'  => $media_pre . ':description',
+				'embedUrl'     => $media_pre . ':embed_url',
+				'contentUrl'   => $media_pre . ':stream_url',
 				'fileFormat'   => $media_pre . ':type',	// Mime type.
 				'width'        => $media_pre . ':width',
 				'height'       => $media_pre . ':height',
 				'duration'     => $media_pre . ':duration',
 				'uploadDate'   => $media_pre . ':upload_date',
 				'thumbnailUrl' => $media_pre . ':thumbnail_url',
-				'embedUrl'     => $media_pre . ':embed_url',
-				'contentUrl'   => $media_pre . ':stream_url',
 			) );
 
 			if ( ! empty( $mt_single[ $media_pre . ':has_image' ] ) ) {
