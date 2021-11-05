@@ -335,7 +335,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.6.0-rc.1 (2021/11/04)**
+**Version 9.6.0 (2021/11/05)**
 
 * **New Features**
 	* None.
@@ -590,9 +590,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.6.0-rc.1 =
+= 9.6.0 =
 
-(2021/11/04) Document SSO &gt; Priority Media tab options changes. Fixed the disabled "or an Image URL" options in the Document SSO metabox.
+(2021/11/05) Document SSO &gt; Priority Media tab options changes. Fixed the disabled "or an Image URL" options in the Document SSO metabox.
 
 = 9.5.0 =
 
