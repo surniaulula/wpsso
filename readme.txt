@@ -335,19 +335,19 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.6.0-b.4 (2021/11/04)**
+**Version 9.6.0-rc.1 (2021/11/04)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Changes under the Document SSO &gt; Priority Media tab:
+	* Document SSO &gt; Priority Media tab options changes:
 		* Added a new Video Stream URL option.
 		* Show the Twitter Card and Pinterest options by default.
 		* Moved the following options to the Customize tab:
 			* Maximum Images
 			* Maximum Videos
 			* Include Video Previews
-	* Removed the SSO &gt; General Settings &gt; Google &gt; Schema Max. Images to Include option. Schema markup now uses the default Maximum Images to Include option value from the SSO &gt; General Settings &gt; Images tab.
+	* Removed the SSO &gt; General Settings &gt; Google &gt; Schema Max. Images to Include option. Schema markup will use the default Maximum Images to Include option value from the SSO &gt; General Settings &gt; Images tab.
 * **Bugfixes**
 	* Fixed the disabled "or an Image URL" options under the Document SSO &gt; Priority Media tab.
 * **Developer Notes**
@@ -590,9 +590,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.6.0-b.4 =
+= 9.6.0-rc.1 =
 
-(2021/11/04) Image and video related changes to options in the Document SSO metabox. Fixed the disabled "or an Image URL" options under the Document SSO &gt; Priority Media tab.
+(2021/11/04) Document SSO &gt; Priority Media tab options changes. Fixed the disabled "or an Image URL" options in the Document SSO metabox.
 
 = 9.5.0 =
 
