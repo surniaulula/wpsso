@@ -1645,8 +1645,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $user_id ) {
 
-				$notice_msg = sprintf( __( 'A task to add the %1$s role for content creators was started at %2$s.',
-					'wpsso' ), $role_label, gmdate( 'c' ) );
+				$notice_msg = sprintf( __( 'A task to add the %1$s role for content creators was started at %2$s.', 'wpsso' ), $role_label, gmdate( 'c' ) );
 
 				$this->p->notice->upd( $notice_msg, $user_id, $notice_key . '-begin' );
 			}

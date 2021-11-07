@@ -1478,8 +1478,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				if ( is_admin() ) {
 
-					$this->p->notice->err( __( 'Nonce token validation failed for the submitted form (update ignored).',
-						'wpsso' ) );
+					$this->p->notice->err( __( 'Nonce token validation failed for the submitted form (update ignored).', 'wpsso' ) );
 				}
 
 				return false;

@@ -692,7 +692,8 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			}
 
 			$size_names = array( 'thumbnail', 'wpsso-opengraph' );
-			$post_ids   = call_user_func( array( 'wpssopost', 'get_public_ids' ) );	// Call static method.
+
+			$post_ids = call_user_func( array( 'wpssopost', 'get_public_ids' ) );	// Call static method.
 
 			foreach ( $post_ids as $post_id ) {
 
