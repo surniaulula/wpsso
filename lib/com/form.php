@@ -794,7 +794,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$def_id_value  = $this->get_defaults_locale( $input_name_id_locale );
 			$def_lib_value = $this->get_defaults_locale( $input_name_lib_locale );
 
-			$holder = $def_id_value ? $def_id_value : $holder;
+			$holder = $holder && $def_id_value ? $def_id_value : $holder;
 
 			$img_id_value  = $this->get_options_locale( $input_name_id_locale );
 			$img_lib_value = $this->get_options_locale( $input_name_lib_locale, $def_lib_value );
@@ -822,6 +822,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				'img-lib-css-id' => 'select_' . $img_lib_css_id,
 			);
 
+			if ( 0 === strpos( $holder, 'ngg-' ) ) {
+
+				$selected_lib = 'ngg';
+
+				$holder = preg_replace( '/^ngg-/', '', $holder );
+			}
+
 			if ( 'wp' === $img_lib_value ) {
 
 				if ( $img_id_value ) {
@@ -837,13 +844,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			if ( 'ngg' === $img_lib_value || ! empty( $this->p->avail[ 'media' ][ 'ngg' ] ) ) {
 
 				$img_libs[ 'ngg' ] = 'NextGEN Gallery';
-			}
-
-			if ( 0 === strpos( $holder, 'ngg-' ) ) {
-
-				$holder = preg_replace( '/^ngg-/', '', $holder );
-
-				$selected_lib = 'ngg';
 			}
 
 			$img_libs_count    = count( $img_libs );
@@ -866,7 +866,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				unset( $this->options[ $input_name_id_locale ] );
 				unset( $this->options[ $input_name_lib_locale ] );
 
-				$holder = '';
+				$holder = '';	// Just in case.
 
 				$input_disabled = true;
 			}
