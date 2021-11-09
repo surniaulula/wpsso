@@ -335,16 +335,22 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.7.0-dev.1 (TBD)**
+**Version 9.7.0-dev.1 (2021/11/09)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added new options in the Document SSO metabox:
+		* Product Pattern
+		* Product Size Type
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added new filter hooks:
+		* 'wpsso_cache_cleared_notice'
+		* 'wpsso_cache_refreshed_notice'
+	* Added a new `WpssoOpenGraph->get_product_retailer_category()` method.
+	* Added a new `WpssoOpenGraph->get_product_retailer_categories()` method.
 * **Requires At Least**
 	* PHP v7.0.
 	* WordPress v5.0.
@@ -606,7 +612,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 9.7.0-dev.1 =
 
-(TBD) None.
+(2021/11/09) Added new options in the Document SSO metabox:
 
 = 9.6.0 =
 
