@@ -698,8 +698,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				/**
 				 * Since WPSSO Core v9.5.0.
-				 *
-				 * Override options with those of the parents to prevent saving inherited options.
 				 */
 				if ( $this->p->debug->enabled ) {
 
@@ -708,14 +706,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				$parent_opts = $this->get_parent_md_opts( $mod );
 
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log_arr( '$parent_opts', $parent_opts );
-				}
-
 				if ( ! empty( $parent_opts ) ) {
 
-					$md_defs = array_merge( $md_defs, $parent_opts );
+					$md_defs = array_merge( $md_defs, $parent_opts );	// Overwrite defaults with parent options.
 				}
 
 				if ( $is_cache_allowed ) {

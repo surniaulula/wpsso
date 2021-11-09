@@ -777,7 +777,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		public function get_input_image_upload( $name_prefix, $img_id_holder = '', $is_disabled = false, $input_name_id_attr = '' ) {
+		public function get_input_image_upload( $name_prefix, $holder = '', $is_disabled = false, $input_name_id_attr = '' ) {
 
 			// translators: Please ignore - translation uses a different text domain.
 			$img_libs     = array( 'wp' => __( 'Media Library' ) );
@@ -791,8 +791,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$input_disabled = 'disabled' === $this->get_options( $input_name_id_locale . ':is' ) ? true : $is_disabled;
 
+			$def_id_value  = $this->get_defaults_locale( $input_name_id_locale );
+			$def_lib_value = $this->get_defaults_locale( $input_name_lib_locale );
+
+			$holder = $def_id_value ? $def_id_value : $holder;
+
 			$img_id_value  = $this->get_options_locale( $input_name_id_locale );
-			$img_lib_value = $this->get_options_locale( $input_name_lib_locale );
+			$img_lib_value = $this->get_options_locale( $input_name_lib_locale, $def_lib_value );
 			$img_url_value = $this->get_options_locale( $input_name_url_locale );
 
 			$upload_css_class  = 'sucom_image_upload_button button';
@@ -819,30 +824,26 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			if ( 'wp' === $img_lib_value ) {
 
-				if ( ! empty( $img_id_value ) ) {
+				if ( $img_id_value ) {
 
 					$upload_button_data[ 'wp-img-id' ] = $img_id_value;
 
-				} elseif ( ! empty( $img_id_holder ) ) {
+				} elseif ( $holder ) {
 
-					$upload_button_data[ 'wp-img-id' ] = $img_id_holder;
+					$upload_button_data[ 'wp-img-id' ] = $holder;
 				}
-			}
-
-			if ( 0 === strpos( $img_id_holder, 'ngg-' ) ) {
-
-				$img_id_holder = preg_replace( '/^ngg-/', '', $img_id_holder );
-
-				$selected_lib = 'ngg';
-
-			} elseif ( ! empty( $img_id_holder ) ) {
-
-				$selected_lib = 'wp';
 			}
 
 			if ( 'ngg' === $img_lib_value || ! empty( $this->p->avail[ 'media' ][ 'ngg' ] ) ) {
 
 				$img_libs[ 'ngg' ] = 'NextGEN Gallery';
+			}
+
+			if ( 0 === strpos( $holder, 'ngg-' ) ) {
+
+				$holder = preg_replace( '/^ngg-/', '', $holder );
+
+				$selected_lib = 'ngg';
 			}
 
 			$img_libs_count    = count( $img_libs );
@@ -865,7 +866,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				unset( $this->options[ $input_name_id_locale ] );
 				unset( $this->options[ $input_name_lib_locale ] );
 
-				$img_id_holder = '';
+				$holder = '';
 
 				$input_disabled = true;
 			}
@@ -889,7 +890,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$input_name_lib_attr );
 
 			$input_id = $this->get_input( $input_name_id_locale, $img_id_css_class, $img_id_css_id,
-				$len = 0, $img_id_holder, $input_disabled, $tabidx = null, $input_name_id_attr );
+				$len = 0, $holder, $input_disabled, $tabidx = null, $input_name_id_attr );
 
 			$html = '<div class="sucom_image_upload">';
 			$html .= $select_lib . ' ';

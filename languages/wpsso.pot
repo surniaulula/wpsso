@@ -550,7 +550,7 @@ msgid "Media Library"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:38 lib/com/form.php:876 lib/script.php:443
+#: gettext/gettext-lib-com.php:38 lib/com/form.php:877 lib/script.php:443
 msgid "Select Image"
 msgstr ""
 
@@ -4640,56 +4640,56 @@ msgctxt "default description"
 msgid "No Description."
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1027
+#: lib/abstracts/wp-meta.php:1020
 msgctxt "metabox tab"
 msgid "Customize"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1028 lib/messages.php:285
+#: lib/abstracts/wp-meta.php:1021 lib/messages.php:285
 msgctxt "metabox tab"
 msgid "Priority Media"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1032 lib/messages-info.php:277
+#: lib/abstracts/wp-meta.php:1025 lib/messages-info.php:277
 msgctxt "metabox tab"
 msgid "Robots Meta"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1033
+#: lib/abstracts/wp-meta.php:1026
 msgctxt "metabox tab"
 msgid "Social Preview"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1034
+#: lib/abstracts/wp-meta.php:1027
 msgctxt "metabox tab"
 msgid "oEmbed Preview"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1035
+#: lib/abstracts/wp-meta.php:1028
 msgctxt "metabox tab"
 msgid "Head Markup"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1036
+#: lib/abstracts/wp-meta.php:1029
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1483
+#: lib/abstracts/wp-meta.php:1476
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1816 lib/json-filters/type/claimreview.php:69
+#: lib/abstracts/wp-meta.php:1809 lib/json-filters/type/claimreview.php:69
 msgid "A claim review cannot be the subject of another claim review."
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1818
+#: lib/abstracts/wp-meta.php:1811
 msgid ""
 "Please select a subject webpage type that better describes the subject of "
 "the webpage (ie. the content) being reviewed."
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:2609
+#: lib/abstracts/wp-meta.php:2602
 msgid "adding schema images"
 msgstr ""
 
@@ -5092,7 +5092,7 @@ msgstr ""
 msgid "Network plugin settings have been saved."
 msgstr ""
 
-#: lib/admin.php:1216 lib/post.php:835 lib/term.php:650 lib/user.php:626
+#: lib/admin.php:1216 lib/post.php:828 lib/term.php:645 lib/user.php:626
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -6239,12 +6239,12 @@ msgid ""
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1027 lib/post.php:559 lib/register.php:350 lib/term.php:477
+#: lib/media.php:1027 lib/post.php:552 lib/register.php:350 lib/term.php:472
 #: lib/user.php:435 lib/util.php:833 lib/util.php:3077
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1028 lib/post.php:560 lib/term.php:478 lib/user.php:436
+#: lib/media.php:1028 lib/post.php:553 lib/term.php:473 lib/user.php:436
 #: lib/util.php:834 lib/util.php:3078
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
@@ -9700,135 +9700,135 @@ msgctxt "module name"
 msgid "post"
 msgstr ""
 
-#: lib/post.php:561
+#: lib/post.php:554
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to get children of "
 "post ID %3$d (%4$s)."
 msgstr ""
 
-#: lib/post.php:768 lib/post.php:1365 lib/schema.php:3231 lib/term.php:601
+#: lib/post.php:761 lib/post.php:1358 lib/schema.php:3231 lib/term.php:596
 #: lib/user.php:576
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/post.php:973
+#: lib/post.php:966
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:1006
+#: lib/post.php:999
 msgid "The webpage HTML retrieved from %1$s is %2$s bytes."
 msgstr ""
 
-#: lib/post.php:1008
+#: lib/post.php:1001
 msgid ""
 "This exceeds the maximum limit of %1$s bytes imposed by the Google crawler."
 msgstr ""
 
-#: lib/post.php:1010
+#: lib/post.php:1003
 msgid ""
 "If you do not reduce the webpage HTML size, Google will refuse to crawl this "
 "webpage."
 msgstr ""
 
-#: lib/post.php:1040
+#: lib/post.php:1033
 msgid "Retrieving the webpage HTML for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:1042
+#: lib/post.php:1035
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:1044
+#: lib/post.php:1037
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:1045
+#: lib/post.php:1038
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:1059
+#: lib/post.php:1052
 msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:1073
+#: lib/post.php:1066
 msgid "An %1$s tag was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1088
+#: lib/post.php:1081
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1105
+#: lib/post.php:1098
 msgid ""
 "The %1$s meta tags and Schema markup section was not found in <a href=\"%2$s"
 "\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1107
+#: lib/post.php:1100
 msgid "Does a caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:1138
+#: lib/post.php:1131
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section - "
 "this could be an indication of a problem with PHP's PCRE library, or an "
 "optimization plugin or service corrupting the webpage HTML markup."
 msgstr ""
 
-#: lib/post.php:1140
+#: lib/post.php:1133
 msgid ""
 "You may consider updating or having your hosting provider update your PHP "
 "installation and its PCRE library."
 msgstr ""
 
-#: lib/post.php:1160
+#: lib/post.php:1153
 msgid ""
 "Conflict detected - your theme or another plugin is adding %1$s to the head "
 "section of this webpage."
 msgstr ""
 
-#: lib/post.php:1178
+#: lib/post.php:1171
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1178
+#: lib/post.php:1171
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML document - please review the <a href=\"%1$s\">W3C Markup "
 "Validator</a> results and correct any syntax errors."
 msgstr ""
 
-#: lib/post.php:1216
+#: lib/post.php:1209
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1218
+#: lib/post.php:1211
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1226
+#: lib/post.php:1219
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1230
+#: lib/post.php:1223
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1234
+#: lib/post.php:1227
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1421
+#: lib/post.php:1414
 msgid "Save a draft or publish to display these options."
 msgstr ""
 
-#: lib/post.php:1627
+#: lib/post.php:1620
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -10621,13 +10621,13 @@ msgctxt "module name"
 msgid "term"
 msgstr ""
 
-#: lib/term.php:479
+#: lib/term.php:474
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to get posts for "
 "term ID %3$d in taxonomy %4$s (%5$s)."
 msgstr ""
 
-#: lib/term.php:877
+#: lib/term.php:872
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 

@@ -399,8 +399,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					/**
 					 * Since WPSSO Core v9.5.0.
-					 *
-					 * Override options with those of the parents.
 					 */
 					if ( $this->p->debug->enabled ) {
 
@@ -409,14 +407,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					$parent_opts = $this->get_parent_md_opts( $mod );
 
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log_arr( '$parent_opts', $parent_opts );
-					}
-
 					if ( ! empty( $parent_opts ) ) {
 
-						$md_opts = array_merge( $md_opts, $parent_opts );
+						$md_opts = array_merge( $parent_opts, $md_opts );	// Overwrite parent with child options.
 					}
 
 					/**
