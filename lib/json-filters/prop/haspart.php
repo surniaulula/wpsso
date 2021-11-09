@@ -80,7 +80,7 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 
 						$this->p->debug->log( 'deleting ' . self::$meta_key . ' metadata for post id ' . $mod[ 'id' ] );
 					}
-			
+
 					delete_post_meta( $mod[ 'id' ], self::$meta_key );
 				}
 			}
@@ -288,7 +288,7 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 				foreach ( $type_ids as $child_id ) {
 
 					if ( isset( $prop_data[ 'hasPart' ] ) ) {
-			
+
 						/**
 						 * The hasPart property value must be a Schema CreativeWork type or sub-type.
 						 */
@@ -297,7 +297,7 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 							$prop_data[ 'hasPart' ][] = WpssoSchema::get_schema_type_context( $type_url, $single_data );
 
 							$md5_added[ $single_md5 ] = true;
-						
+
 							break;	// Child id is valid - no need to check the other child ids.
 						}
 					}

@@ -291,17 +291,17 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					 * Override options with those of the parents.
 					 */
 					if ( $this->p->debug->enabled ) {
-	
+
 						$this->p->debug->log( 'merging parent metadata options' );
 					}
-	
+
 					$parent_opts = $this->get_parent_md_opts( $mod );
-	
+
 					if ( $this->p->debug->enabled ) {
-	
+
 						$this->p->debug->log_arr( '$parent_opts', $parent_opts );
 					}
-	
+
 					if ( ! empty( $parent_opts ) ) {
 
 						$md_opts = array_merge( $md_opts, $parent_opts );
@@ -569,8 +569,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 				$this->p->debug->log( 'term ID = ' . $this->query_term_id );
 				$this->p->debug->log( 'home url = ' . get_option( 'home' ) );
+				$this->p->debug->log( 'locale current = ' . SucomUtil::get_locale() );
 				$this->p->debug->log( 'locale default = ' . SucomUtil::get_locale( 'default' ) );
-				$this->p->debug->log( 'locale current = ' . SucomUtil::get_locale( 'current' ) );
 				$this->p->debug->log( 'locale mod = ' . SucomUtil::get_locale( $mod ) );
 				$this->p->debug->log( SucomUtil::pretty_array( $mod ) );
 			}

@@ -280,11 +280,11 @@ if ( ! class_exists( 'WpssoMessagesInfo' ) ) {
 
 					$text .= '<p>';
 
-					$text .= sprintf( __( 'These options allow you to customize post and taxonomy types included in the <a href="%s">WordPress sitemap XML</a>.', 'wpsso' ), $sitemap_url ) . ' ';
+					$text .= sprintf( __( '%1$s extends the built-in WordPress sitemap XML, <a href="%2$s">available since WordPress version 5.5</a>.', 'wpsso' ), $info[ 'short' ], __( 'https://make.wordpress.org/core/2020/07/22/new-xml-sitemaps-functionality-in-wordpress-5-5/', 'wpsso' ) ) . ' ';
 
-					$text .= '</p><p>';
+					$text .= sprintf( __( 'These options allow you to customize the post and taxonomy types included in the <a href="%s">WordPress sitemap XML</a>.', 'wpsso' ), $sitemap_url ) . ' ';
 
-					$text .= sprintf( __( 'To <strong>exclude</strong> individual posts, pages, custom post types, taxonomy terms (categories, tags, etc.), or user profile pages from the WordPress sitemap XML, enable the <strong>%1$s</strong> option under their %2$s &gt; %3$s tab.', 'wpsso' ), $no_index_label, $mb_title, $robots_tab ) . ' ';
+					$text .= sprintf( __( 'To <strong>exclude</strong> individual posts, pages, custom post types, taxonomy terms (categories, tags, etc.), or user profile pages from the WordPress sitemap XML, enable the <strong>%1$s</strong> option under their individual %2$s &gt; %3$s tabs.', 'wpsso' ), $no_index_label, $mb_title, $robots_tab ) . ' ';
 
 					$text .= '</p>';
 

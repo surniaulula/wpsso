@@ -215,20 +215,26 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 		private static function uninstall_plugin() {
 
 			$blog_id = get_current_blog_id();
-
-			$opts = get_option( WPSSO_OPTIONS_NAME, array() );
+			$opts    = get_option( WPSSO_OPTIONS_NAME, array() );
 
 			if ( ! empty( $opts[ 'plugin_clean_on_uninstall' ] ) ) {
 
 				delete_option( WPSSO_REG_TS_NAME );
-
 				delete_option( WPSSO_OPTIONS_NAME );
+
+				$col_meta_keys = WpssoWpMeta::get_column_meta_keys();
+
+				foreach ( $col_meta_keys as $col_key => $meta_key ) {
+
+					delete_metadata( $meta_type = 'post', $object_id = null, $meta_key, $meta_value = null, $delete_all = true );
+				}
+
+				delete_metadata( $meta_type = 'post', $object_id = null, '_wpsso_wpproductreview', $meta_value = null, $delete_all = true );
 
 				/**
 				 * Delete post settings and meta.
 				 */
 				delete_metadata( $meta_type = 'post', $object_id = null, WPSSO_META_NAME, $meta_value = null, $delete_all = true );
-
 				delete_metadata( $meta_type = 'post', $object_id = null, WPSSO_META_ATTACHED_NAME, $meta_value = null, $delete_all = true );
 
 				/**
@@ -236,18 +242,25 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				 */
 				foreach ( WpssoTerm::get_public_ids() as $term_id ) {
 
-					WpssoTerm::delete_term_meta( $term_id, WPSSO_META_NAME );
+					foreach ( $col_meta_keys as $col_key => $meta_key ) {
 
+						WpssoTerm::delete_term_meta( $term_id, $meta_key );
+					}
+
+					WpssoTerm::delete_term_meta( $term_id, WPSSO_META_NAME );
 					WpssoTerm::delete_term_meta( $term_id, WPSSO_META_ATTACHED_NAME );
 				}
 
 				/**
 				 * Delete user settings and meta.
 				 */
+				foreach ( $col_meta_keys as $col_key => $meta_key ) {
+
+					delete_metadata( $meta_type = 'user', $object_id = null, $meta_key, $meta_value = null, $delete_all = true );
+				}
+
 				delete_metadata( $meta_type = 'user', $object_id = null, WPSSO_META_NAME, $meta_value = null, $delete_all = true );
-
 				delete_metadata( $meta_type = 'user', $object_id = null, WPSSO_META_ATTACHED_NAME, $meta_value = null, $delete_all = true );
-
 				delete_metadata( $meta_type = 'user', $object_id = null, WPSSO_PREF_NAME, $meta_value = null, $delete_all = true );
 
 				while ( $blog_user_ids = SucomUtil::get_user_ids( $blog_id, '', 1000 ) ) {	// Get a maximum of 1000 user IDs at a time.
@@ -255,7 +268,6 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 					foreach ( $blog_user_ids as $user_id ) {
 
 						delete_user_meta( $user_id, WPSSO_DISMISS_NAME );
-
 						delete_user_option( $user_id, WPSSO_DISMISS_NAME );
 
 						WpssoUser::delete_metabox_prefs( $user_id );

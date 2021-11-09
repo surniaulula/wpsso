@@ -879,7 +879,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		 *
 		 * If $exp_secs is false, then get but do not save the data.
 		 */
-		private function get_cache_data( $cache_salt, $cache_type = 'file', $exp_secs = null, $pre_ext = '' ) {
+		public function get_cache_data( $cache_salt, $cache_type = 'file', $exp_secs = null, $pre_ext = '' ) {
 
 			$cache_data = false;
 
@@ -987,9 +987,10 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 		/**
 		 * If $exp_secs is null, then use the default expiration time.
+		 *
 		 * If $exp_secs is false, then get but do not save the data.
 		 */
-		private function save_cache_data( $cache_salt, &$cache_data = '', $cache_type = 'file', $exp_secs = null, $pre_ext = '' ) {
+		public function save_cache_data( $cache_salt, $cache_data = '', $cache_type = 'file', $exp_secs = null, $pre_ext = '' ) {
 
 			$data_saved = false;
 

@@ -103,6 +103,10 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			add_action( 'wp', array( $this, 'add_plugin_image_sizes' ), -100 );				// Front-end compatibility.
 			add_action( 'admin_init', array( $this, 'add_plugin_image_sizes' ), -100 );			// Back-end + AJAX compatibility.
 			add_action( 'rest_api_init', array( $this, 'add_plugin_image_sizes' ), -100 );			// REST API compatibility.
+
+			add_action( 'switch_locale', array( 'SucomUtil', 'refresh_current_locale_cache' ) );
+			add_action( 'restore_previous_locale', array( 'SucomUtil', 'refresh_current_locale_cache' ) );
+			add_action( 'change_locale', array( 'SucomUtil', 'refresh_current_locale_cache' ) );
 		}
 
 		public function set_util_instances( &$plugin ) {
@@ -2536,7 +2540,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$page_number = $add_page;
 
 			} elseif ( isset( $mod[ 'query_vars' ][ 'page' ] ) ) {	// Can be 0.
-			
+
 				$page_number = $mod[ 'query_vars' ][ 'page' ];
 			}
 
@@ -2567,7 +2571,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				}
 
 			} elseif ( isset( $mod[ 'max_num_pages' ] ) ) {	// Can be 0.
-			
+
 				$page_number = $mod[ 'max_num_pages' ];
 			}
 
@@ -3538,7 +3542,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 *		[product:gtin8]              => GTIN-8
 		 *		[product:material]           => Material
 		 *		[product:mfr_part_no]        => MPN
+		 *		[product:pattern]            => Pattern
 		 *		[product:size]               => Size
+		 *		[product:size_type]          => Size Type
 		 *		[product:target_gender]      => Gender
 		 *		[product:fluid_volume:value] => Volume
 		 *	)
@@ -3554,8 +3560,10 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 *		[product_gtin14]             => GTIN-12
 		 *		[product_gtin8]              => GTIN-8
 		 *		[product_material]           => Material
+		 *		[product_pattern]            => Pattern
 		 *		[product_mfr_part_no]        => MPN
 		 *		[product_size]               => Size
+		 *		[product_size_type]          => Size Type
 		 *		[product_target_gender]      => Gender
 		 *		[product_fluid_volume_value] => Volume
 		 *	)

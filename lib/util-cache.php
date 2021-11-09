@@ -163,7 +163,6 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			$cleared_files      = $this->clear_cache_files();
 			$cleared_ignored    = $this->clear_ignored_urls();
-			$cleared_col_meta   = $this->clear_column_meta();
 			$cleared_transients = $this->clear_db_transients( $clear_short, $key_prefix = 'wpsso_' );
 
 			wp_cache_flush();	// Clear non-database transients as well.
@@ -173,18 +172,23 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			 */
 			$cleared_other_msg = $clear_other ? $this->clear_other() : '';
 
-			if ( $user_id ) {
+			/**
+			 * The 'wpsso_cache_cleared_notice' filter allows add-ons to execute refresh tasks and append a notice message.
+			 */
+			$notice_msg = sprintf( __( '%1$d cached files, %2$d transient cache objects, and the WordPress object cache have been cleared.',
+				'wpsso' ), $cleared_files, $cleared_transients ) . ' ' . $cleared_other_msg . ' ';
+
+			$notice_msg = apply_filters( 'wpsso_cache_cleared_notice', $notice_msg, $user_id, $clear_other, $clear_short, $refresh );
+
+			if ( $user_id && $notice_msg ) {
 
 				$mtime_total = microtime( $get_float = true ) - $mtime_start;
-
-				$notice_msg = sprintf( __( '%1$d cached files, %2$d transient cache objects, %3$d column metadata, and the WordPress object cache have been cleared.', 'wpsso' ), $cleared_files, $cleared_transients, $cleared_col_meta ) . ' ' . $cleared_other_msg . ' ';
 
 				$notice_msg .= sprintf( __( 'The total execution time for this task was %0.3f seconds.', 'wpsso' ), $mtime_total ) . ' ';
 
 				if ( $refresh ) {
 
-					$notice_msg .= '<strong>' . __( 'A background task will begin shortly to refresh the post, term and user transient cache objects.',
-						'wpsso' ) . '</strong>';
+					$notice_msg .= '<strong>' . __( 'A background task will begin shortly to refresh the post, term and user transient cache objects.', 'wpsso' ) . '</strong>';
 				}
 
 				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
@@ -377,62 +381,12 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			return $count;
 		}
 
+		/**
+		 * Deprecated on 2021/11/09.
+		 */
 		public function clear_column_meta() {
 
-			$count = 0;
-
-			$col_meta_keys = WpssoWpMeta::get_column_meta_keys();
-
-			/**
-			 * Delete post meta.
-			 */
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'deleting post column meta' );
-			}
-
-			foreach ( $col_meta_keys as $col_key => $meta_key ) {
-
-				$count += SucomUtilWP::count_metadata( $meta_type = 'post', $meta_key );
-
-				delete_metadata( $meta_type = 'post', $object_id = null, $meta_key, $meta_value = null, $delete_all = true );
-			}
-
-			/**
-			 * Delete term meta.
-			 */
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'deleting term column meta' );
-			}
-
-			foreach ( $col_meta_keys as $col_key => $meta_key ) {
-
-				foreach ( WpssoTerm::get_public_ids() as $term_id ) {
-
-					if ( WpssoTerm::delete_term_meta( $term_id, $meta_key ) ) {
-
-						$count++;
-					}
-				}
-			}
-
-			/**
-			 * Delete user meta.
-			 */
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'deleting user column meta' );
-			}
-
-			foreach ( $col_meta_keys as $col_key => $meta_key ) {
-
-				$count += SucomUtilWP::count_metadata( $meta_type = 'user', $meta_key );
-
-				delete_metadata( $meta_type = 'user', $object_id = null, $meta_key, $meta_value = null, $delete_all = true );
-			}
-
-			return $count;
+			_deprecated_function( __METHOD__ . '()', '2021/11/09', $replacement = '' );	// Deprecation message.
 		}
 
 		public function clear_other() {
@@ -736,15 +690,23 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 				}
 			}
 
-			if ( $user_id ) {
+			/**
+			 * The 'wpsso_cache_refreshed_notice' filter allows add-ons to execute refresh tasks and append a notice message.
+			 */
+			$notice_msg = sprintf( __( 'The transient cache for %1$d posts, %2$d terms, and %3$d users has been refreshed.',
+				'wpsso' ), $total_count[ 'post' ], $total_count[ 'term' ], $total_count[ 'user' ] ) . ' ';
+
+			$notice_msg = apply_filters( 'wpsso_cache_refreshed_notice', $notice_msg, $user_id, $read_cache );
+
+			if ( $user_id && $notice_msg ) {
 
 				$mtime_total = microtime( $get_float = true ) - $mtime_start;
 
-				$notice_msg = sprintf( __( 'The transient cache for %1$d posts, %2$d terms and %3$d users has been refreshed.',
-					'wpsso' ), $total_count[ 'post' ], $total_count[ 'term' ], $total_count[ 'user' ] ) . ' ';
-
 				$notice_msg .= sprintf( __( 'The total execution time for this task was %0.3f seconds.', 'wpsso' ), $mtime_total );
 
+error_log( $notice_msg );
+error_log( $user_id );
+error_log( $notice_key );
 				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 			}
 

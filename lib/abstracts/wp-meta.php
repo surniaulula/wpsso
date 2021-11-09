@@ -290,7 +290,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				$def_primary_term_id = $this->p->post->get_default_term_id( $mod, $tax_slug = 'category' );	// Returns term ID or false.
 				$def_reading_mins    = $this->p->page->get_reading_mins( $mod );
 				$def_img_id_lib      = empty( $opts[ 'og_def_img_id_lib' ] ) ? '' : $opts[ 'og_def_img_id_lib' ];
-				$def_lang            = SucomUtil::get_locale( $mod, $read_cache = false );	// Locale for post, term, or user.
+				$def_lang            = SucomUtil::get_locale( $mod, $read_cache = false );	// Get locale for post, term, or user object.
 				$job_locations_max   = SucomUtil::get_const( 'WPSSO_SCHEMA_JOB_LOCATIONS_MAX', 5 );
 
 				/**
@@ -352,10 +352,12 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					'product_currency'         => empty( $opts[ 'og_def_currency' ] ) ? 'USD' : $opts[ 'og_def_currency' ],
 					'product_avail'            => 'none',
 					'product_condition'        => 'none',
-					'product_material'         => '',
 					'product_color'            => '',
+					'product_material'         => '',
+					'product_pattern'          => '',
 					'product_target_gender'    => 'none',
 					'product_size'             => '',
+					'product_size_type'        => 'none',
 					'product_weight_value'     => '',
 					'product_length_value'     => '',
 					'product_width_value'      => '',
@@ -990,7 +992,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		}
 
 		public function load_meta_page( $screen = false ) {
-			
+
 			return self::must_be_extended();
 		}
 
@@ -1845,9 +1847,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			if ( null === $local_cache ) {
 
-				$wpsso =& Wpsso::get_instance();
+				$cf = WpssoConfig::get_config();
 
-				$local_cache = (array) apply_filters( 'wpsso_get_sortable_columns', $wpsso->cf[ 'edit' ][ 'columns' ] );
+				$columns = $cf[ 'edit' ][ 'columns' ];
+
+				$local_cache = (array) apply_filters( 'wpsso_get_sortable_columns', $columns );
 			}
 
 			if ( false !== $col_key ) {
@@ -1965,7 +1969,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			}
 
 			$value  = '';
-			$locale = empty( $col_info[ 'localized' ] ) ? '' : SucomUtil::get_locale( $mixed = 'current', $read_cache = true );
+			$locale = empty( $col_info[ 'localized' ] ) ? '' : SucomUtil::get_locale();
 
 			if ( empty( $col_info[ 'meta_key' ] ) ) {	// Just in case.
 
@@ -2037,7 +2041,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				} elseif ( ! empty( $col_info[ 'localized' ] ) ) {	// Values stored by locale.
 
-					$locale = SucomUtil::get_locale( $mixed = 'current', $read_cache = true );
+					$locale = SucomUtil::get_locale();
 
 					if ( empty( $metadata[ $locale ] ) ) {
 
@@ -2069,7 +2073,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 					if ( ! empty( $col_info[ 'localized' ] ) ) {	// Values stored by locale.
 
-						$locale   = SucomUtil::get_locale( $mixed = 'current', $read_cache = true );
+						$locale   = SucomUtil::get_locale();
 						$content  = array( $locale => $content );
 						$metadata = static::get_meta( $mod_id, $col_info[ 'meta_key' ], $single = true );
 
@@ -2157,7 +2161,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		public function get_update_meta_cache( $obj_id, $meta_type = '' ) {
 
 			if ( empty( $meta_type ) ) {	// Just in case.
-				
+
 				return array();
 			}
 

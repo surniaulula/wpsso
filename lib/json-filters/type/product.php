@@ -63,14 +63,12 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeProduct' ) ) {
 			 * Note that there is no Schema 'availability' property for the 'product:availability' value.
 			 *
 			 * Note that there is no Schema 'ean' property for the 'product:ean' value.
-			 *
-			 * Note that there is no Schema 'size' property for the 'product:size' value.
 			 */
 			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $mt_og, array(
 				'url'           => 'product:url',
 				'name'          => 'product:title',
 				'description'   => 'product:description',
-				'category'      => 'product:category',		// See https://developers.facebook.com/docs/marketing-api/catalog/reference/.
+				'category'      => 'product:category',		// The product category ID according to the Google product taxonomy.
 				'sku'           => 'product:retailer_part_no',	// Product SKU.
 				'mpn'           => 'product:mfr_part_no',	// Product MPN.
 				'gtin14'        => 'product:gtin14',		// Valid for both products and offers.
@@ -81,6 +79,8 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeProduct' ) ) {
 				'itemCondition' => 'product:condition',
 				'color'         => 'product:color',
 				'material'      => 'product:material',
+				'pattern'       => 'product:pattern',
+				'size'          => 'product:size',
 			) );
 
 			/**
@@ -144,7 +144,6 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeProduct' ) ) {
 			 * 	'depth'        => 'product:depth:value',
 			 * 	'height'       => 'product:height:value',
 			 * 	'length'       => 'product:length:value',
-			 * 	'size'         => 'product:size',
 			 * 	'fluid_volume' => 'product:fluid_volume:value',
 			 * 	'weight'       => 'product:weight:value',
 			 * 	'width'        => 'product:width:value',
@@ -154,7 +153,6 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeProduct' ) ) {
 				'depth'        => 'product:depth:value',
 				'height'       => 'product:height:value',
 				'length'       => 'product:length:value',
-				'size'         => 'product:size',
 				'fluid_volume' => 'product:fluid_volume:value',
 				'weight'       => 'product:weight:value',
 				'width'        => 'product:width:value',

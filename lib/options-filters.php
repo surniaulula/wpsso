@@ -407,7 +407,9 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'product_brand':
 				case 'product_color':
 				case 'product_currency':
+				case 'product_material':
 				case 'product_mfr_part_no':		// Product MPN.
+				case 'product_pattern':
 				case 'product_retailer_part_no':	// Product SKU.
 				case 'product_size':
 				case 'plugin_img_alt_prefix':		// Content Image Alt Prefix.
@@ -446,6 +448,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'plugin_no_desc_text':			// No Description Text.
 				case 'product_avail':				// Select option with 'none' as default.
 				case 'product_condition':			// Select option with 'none' as default.
+				case 'product_size_type':			// Select option with 'none' as default.
 				case 'product_target_gender':			// Select option with 'none' as default.
 				case 'robots_max_image_preview':		// Image Preview Size.
 				case ( false !== strpos( $base_key, '_crop_x' ) ? true : false ):

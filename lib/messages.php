@@ -197,9 +197,21 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						} else {
 
-							if ( ! empty( $this->pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
+							if ( empty( $this->pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
 
-								if ( ! empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ) {
+								$text = '<p class="pro-feature-msg">';
+
+								$text .= empty( $url[ 'purchase' ] ) ? '' : '<a href="' . $url[ 'purchase' ] . '">';
+
+								$text .= sprintf( __( 'An e-commerce plugin is active &ndash; product information may be imported by the %s plugin.', 'wpsso' ), $this->p_name_pro );
+
+								$text .= empty( $url[ 'purchase' ] ) ? '' : '</a>';
+
+								$text .= '</p>';
+
+							} elseif ( ! empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ) {
+
+								if ( 'product' === $info[ 'mod' ][ 'post_type' ] ) {
 
 									// translators: Please ignore - translation uses a different text domain.
 									$wc_mb_name = '<strong>' . __( 'Product data', 'woocommerce' ) . '</strong>';
@@ -211,25 +223,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 									$text .= sprintf( __( 'You can edit product information in the WooCommerce %s metabox to update these default values.', 'wpsso' ), $wc_mb_name );
 
 									$text .= '</p>';
-
-								} else {
-
-									$text = '<p class="pro-feature-msg">';
-
-									$text .= __( 'An e-commerce plugin is active &ndash; disabled product information fields show values imported from the e-commerce plugin.', 'wpsso' );
-
-									$text .= '</p>';
 								}
 
 							} else {
 
 								$text = '<p class="pro-feature-msg">';
 
-								$text .= empty( $url[ 'purchase' ] ) ? '' : '<a href="' . $url[ 'purchase' ] . '">';
-
-								$text .= sprintf( __( 'An e-commerce plugin is active &ndash; product information may be imported by the %s plugin.', 'wpsso' ), $this->p_name_pro );
-
-								$text .= empty( $url[ 'purchase' ] ) ? '' : '</a>';
+								$text .= __( 'An e-commerce plugin is active &ndash; disabled product information fields may show values imported from the e-commerce plugin.', 'wpsso' );
 
 								$text .= '</p>';
 							}
@@ -1027,6 +1027,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'label' => _x( 'Product MPN', 'option label', 'wpsso' ),
 						'desc'  => _x( 'a Manufacturer Part Number (MPN)', 'tooltip fragment', 'wpsso' ),
 					),
+					'product_pattern' => array(
+						'label' => _x( 'Product Pattern', 'option label', 'wpsso' ),
+						'desc'  => _x( 'a product pattern', 'tooltip fragment', 'wpsso' ),
+					),
 					'product_price' => array(
 						'label' => _x( 'Product Price', 'option label', 'wpsso' ),
 						'desc'  => _x( 'a product price', 'tooltip fragment', 'wpsso' ),
@@ -1038,6 +1042,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					'product_size' => array(
 						'label' => _x( 'Product Size', 'option label', 'wpsso' ),
 						'desc'  => _x( 'a product size', 'tooltip fragment', 'wpsso' ),
+					),
+					'product_size_type' => array(
+						'label' => _x( 'Product Size Type', 'option label', 'wpsso' ),
+						'desc'  => _x( 'a product size type', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_target_gender' => array(
 						'label' => _x( 'Product Target Gender', 'option label', 'wpsso' ),

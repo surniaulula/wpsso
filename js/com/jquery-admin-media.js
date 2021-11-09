@@ -84,9 +84,9 @@ function sucomShowLibraryImage( t, e ) {
 	if ( 'wp' === img_lib_value && jQuery.isNumeric( img_id_thumb ) ) {
 
 		if ( img_url_css_id ) {
-	
+
 			if ( img_id ) {	// Disable if we have a value (not just a placeholder).
-	
+
 				jQuery( '#' + img_url_css_id ).val( '' );	// Remove the value (and reset to placeholder).
 				jQuery( '#' + img_url_css_id ).prop( 'disabled', true );
 

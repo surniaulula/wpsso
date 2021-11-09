@@ -43,6 +43,8 @@
 
 'wpsso_attached_images' ( $mt_ret, $num, $size_name, $post_id, $check_dupes )
 
+'wpsso_cache_cleared_notice' ( $notice_msg, $user_id, $clear_other, $clear_short, $refresh )
+
 'wpsso_cache_expire_api_response' ( $secs, $cache_type, $mod )
 
 'wpsso_cache_expire_head_markup' ( $secs, $cache_type, $mod )
@@ -54,6 +56,8 @@
 'wpsso_cache_expire_short_url' ( $secs, $cache_type, $mod )
 
 'wpsso_cache_expire_the_content' ( $secs, $cache_type, $mod )
+
+'wpsso_cache_refreshed_notice' ( $notice_msg, $user_id, $read_cache )
 
 'wpsso_canonical_url' ( $url, $mod, $add_page )
 

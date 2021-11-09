@@ -130,6 +130,8 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 						'wpsso' ), $option_link ) . ' ';
 
 					/**
+					 * The product category ID according to the Google product taxonomy.
+					 *
 					 * See https://developers.facebook.com/docs/marketing-api/catalog/reference/.
 					 */
 					$text .= sprintf( __( 'Your selection will be used for Schema product markup and the %s meta tag.',

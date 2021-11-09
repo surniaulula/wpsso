@@ -1806,6 +1806,84 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		}
 
 		/**
+		 * Returns a string.
+		 */
+		public function get_product_retailer_category( $mod ) {
+
+			$retailer_categories = $this->get_product_retailer_categories( $mod, $lists_max = 1 );
+
+			return isset( $retailer_categories[ 0 ] ) ? $retailer_categories[ 0 ] : '';
+		}
+
+		/**
+		 * Returns an array of strings.
+		 */
+		public function get_product_retailer_categories( $mod, $lists_max = 1 ) {
+
+			/**
+			 * Returns an associative array of term IDs and their names or objects.
+			 *
+			 * The primary or default term ID will be included as the first array element.
+			 */
+			$post_terms = $this->p->post->get_primary_terms( $mod, $tax_slug = 'category', $output = 'objects' );
+
+			/**
+			 * The 'wpsso_primary_tax_slug' filter is hooked by the EDD and WooCommerce integration modules.
+			 */
+			$primary_tax_slug = apply_filters( 'wpsso_primary_tax_slug', $tax_slug = 'category', $mod );
+
+			$category_names = array();
+
+			foreach ( $post_terms as $parent_term_obj ) {
+
+				$parent_term_id = $parent_term_obj->term_id;
+
+				$ancestor_ids = get_ancestors( $parent_term_id, $primary_tax_slug, 'taxonomy' );
+
+				if ( empty( $ancestor_ids ) || ! is_array( $ancestor_ids ) ) {
+
+					$ancestor_ids = array( $parent_term_id );	// Just do the parent term.
+
+				} else {
+
+					$ancestor_ids = array_reverse( $ancestor_ids );	// Add ancestors in reverse order.
+
+					$ancestor_ids[] = $parent_term_id;	// Add parent term last.
+				}
+
+				foreach ( $ancestor_ids as $term_id ) {
+
+					$term_mod = $this->p->term->get_mod( $term_id );
+
+					$title_keys = array( 'schema_bc_title', 'schema_title', 'og_title' );
+
+					/**
+					 * Use $title_sep = false to avoid adding parent names in the term title.
+					 */
+					$title_sep  = false;	// Do not add a separator.
+
+					$category_names[ $parent_term_id ][ $term_id ] = $this->p->page->get_title( $max_len = 0,
+						$dots = '', $term_mod, $read_cache = true, $add_hashtags = false, $do_encode = true,
+							$title_keys, $title_sep );
+				}
+			}
+
+			if ( $lists_max ) {
+
+				$category_names = array_slice( $category_names, 0, $lists_max );
+			}
+
+			$retailer_categories = array();
+
+			foreach ( $category_names as $parent_term_id => $term_ids ) {
+
+				$retailer_categories[] = implode( ' > ', $term_ids );
+			}
+
+			return $retailer_categories;
+		}
+
+		/**
 		 * Called by WpssoHead::get_head_array() before merging all meta tag arrays.
 		 *
 		 * Unset mis-matched og_type meta tags using the 'og_type_mt' array as a reference. For example, remove all
@@ -1960,7 +2038,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 *		'product:gtin'                    => 'product_gtin',
 			 *		'product:height:value'            => 'product_height_value',
 			 *		'product:height:units'            => '',
-			 *		'product:is_product_shareable'    => '',
 			 *		'product:isbn'                    => 'product_isbn',
 			 *		'product:item_group_id'           => '',
 			 *		'product:length:value'            => 'product_length_value',
@@ -1969,19 +2046,15 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 *		'product:mfr_part_no'             => 'product_mfr_part_no',
 			 *		'product:original_price:amount'   => '',
 			 *		'product:original_price:currency' => '',
-			 *		'product:pattern'                 => '',
-			 *		'product:plural_title'            => '',
+			 *		'product:pattern'                 => 'product_pattern',
 			 *		'product:pretax_price:amount'     => '',
 			 *		'product:pretax_price:currency'   => '',
 			 *		'product:price:amount'            => 'product_price',
 			 *		'product:price:currency'          => 'product_currency',
-			 *		'product:product_link'            => '',
 			 *		'product:purchase_limit'          => '',
-			 *		'product:retailer'                => '',
 			 *		'product:retailer_category'       => '',
 			 *		'product:retailer_item_id'        => '',
 			 *		'product:retailer_part_no'        => 'product_retailer_part_no',
-			 *		'product:retailer_title'          => '',
 			 *		'product:sale_price:amount'       => '',
 			 *		'product:sale_price:currency'     => '',
 			 *		'product:sale_price_dates:start'  => '',
@@ -1991,6 +2064,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 *		'product:shipping_weight:value'   => '',
 			 *		'product:shipping_weight:units'   => '',
 			 *		'product:size'                    => 'product_size',
+			 *		'product:size_type'               => 'product_size_type',
 			 *		'product:target_gender'           => 'product_target_gender',
 			 *		'product:upc'                     => 'product_gtin12',
 			 *		'product:fluid_volume:value'      => 'product_fluid_volume_value',

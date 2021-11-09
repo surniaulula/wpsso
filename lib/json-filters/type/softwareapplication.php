@@ -75,10 +75,6 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeSoftwareApplication' ) ) {
 				$json_ret[ 'operatingSystem' ] = (string) $md_opts[ 'schema_software_app_os' ];
 			}
 
-			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $mt_og, array( 
-				'material' => 'product:material',
-			) );
-
 			/**
 			 * Prevent recursion for an itemOffered within a Schema Offer.
 			 */

@@ -169,11 +169,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 * post, term, and user edit tables.
 				 */
 				add_action( 'parse_query', array( $this, 'set_column_orderby' ), 10, 1 );
-
-				/**
-				 * Maybe create or update the post column content.
-				 */
-				add_filter( 'get_post_metadata', array( $this, 'check_sortable_meta' ), 1000, 4 );
 			}
 
 			if ( ! empty( $this->p->options[ 'plugin_shortener' ] ) && $this->p->options[ 'plugin_shortener' ] !== 'none' ) {
@@ -208,6 +203,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 */
 			add_filter( 'get_post_metadata', array( $this, 'get_post_metadata_thumbnail_id' ), 100, 4 );
 			add_filter( 'update_post_metadata', array( $this, 'update_post_metadata_thumbnail_id' ), 100, 5 );
+
+			/**
+			 * Maybe create or update the post column content.
+			 */
+			add_filter( 'get_post_metadata', array( $this, 'check_sortable_meta' ), 1000, 4 );
 		}
 
 		/**
@@ -403,17 +403,17 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 * Override options with those of the parents.
 					 */
 					if ( $this->p->debug->enabled ) {
-	
+
 						$this->p->debug->log( 'merging parent metadata options' );
 					}
-	
+
 					$parent_opts = $this->get_parent_md_opts( $mod );
-	
+
 					if ( $this->p->debug->enabled ) {
-	
+
 						$this->p->debug->log_arr( '$parent_opts', $parent_opts );
 					}
-	
+
 					if ( ! empty( $parent_opts ) ) {
 
 						$md_opts = array_merge( $md_opts, $parent_opts );
@@ -499,7 +499,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		/**
 		 * Get all publicly accessible post IDs.
 		 *
-		 * These may include post IDs from non-public post types.
+		 * These may include post IDs from non-public post types and different languages.
+		 *
+		 * Use $extra_args = array( 'suppress_filters' => false ) to allow WPML (and others) to filter posts for the current language.
 		 */
 		public static function get_public_ids( array $extra_args = array() ) {
 
@@ -703,8 +705,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				$this->p->debug->log( 'post ID = ' . $post_id );
 				$this->p->debug->log( 'home url = ' . get_option( 'home' ) );
+				$this->p->debug->log( 'locale current = ' . SucomUtil::get_locale() );
 				$this->p->debug->log( 'locale default = ' . SucomUtil::get_locale( 'default' ) );
-				$this->p->debug->log( 'locale current = ' . SucomUtil::get_locale( 'current' ) );
 				$this->p->debug->log( 'locale mod = ' . SucomUtil::get_locale( $mod ) );
 				$this->p->debug->log( SucomUtil::pretty_array( $mod ) );
 			}
@@ -1510,9 +1512,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			foreach ( $col_meta_keys as $col_key => $meta_key ) {
 
 				delete_post_meta( $post_id, $meta_key );
-
-				delete_post_meta( $post_id, '_wpsso_wpproductreview' );	// Re-created automatically.
 			}
+
+			delete_post_meta( $post_id, '_wpsso_wpproductreview' );	// Re-created automatically.
 
 			$permalink = get_permalink( $post_id );
 
@@ -1892,6 +1894,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		/**
 		 * See get_metadata_raw() in wordpress/wp-includes/meta.php:570.
+		 *
 		 * See metadata_exists() in wordpress/wp-includes/meta.php:683.
 		 */
 		public function get_post_metadata_thumbnail_id( $check = null, $obj_id, $meta_key, $single ) {

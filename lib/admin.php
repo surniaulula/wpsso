@@ -1445,7 +1445,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 */
 		protected function maybe_show_language_notice() {
 
-			$current_locale = SucomUtil::get_locale( 'current' );
+			$current_locale = SucomUtil::get_locale();
 			$default_locale = SucomUtil::get_locale( 'default' );
 
 			if ( $current_locale && $default_locale && $current_locale !== $default_locale ) {

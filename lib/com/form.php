@@ -966,7 +966,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					$el_attr = 'onFocus="jQuery(\'div#multi_' . $input_id_next . '\').show();"';
 
 				} else {
-				
+
 					$el_attr = 'onFocus="if ( jQuery(\'input#text_' . $input_id_prev . '\').val().length )' .
 						' { jQuery(\'div#multi_' . $input_id_next . '\').show(); } else' .
 						' { jQuery(\'input#text_' . $input_id_prev . '\').focus(); }"';
@@ -2760,7 +2760,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 					/**
 					 * Array values may be localized, so include the current locale in the cache salt string.
 					 */
-					$cache_salt = $event_json_var . '_locale:' . SucomUtil::get_locale( 'current' );
+					$cache_salt = $event_json_var . '_locale:' . SucomUtil::get_locale();
 
 					/**
 					 * Returns false on error.

@@ -77,7 +77,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 		public function clean_comment_cache( $comment_id ) {
 
 			if ( empty( $comment_id ) ) {	// Just in case.
-				
+
 				return;
 			}
 

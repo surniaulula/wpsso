@@ -263,12 +263,12 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 
 				case 'advanced-wp_sitemaps':
 
+					$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'info-' . $tab_key ) . '</td>';
+
 					if ( ! SucomUtilWP::sitemaps_enabled() ) {	// Nothing to do.
 
 						return $this->p->msgs->get_wp_sitemaps_disabled_rows( $table_rows );
 					}
-
-					$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'info-' . $tab_key ) . '</td>';
 
 					break;
 			}

@@ -1756,7 +1756,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'url'             => 'product:url',
 				'name'            => 'product:title',
 				'description'     => 'product:description',
-				'category'        => 'product:category',		// See https://developers.facebook.com/docs/marketing-api/catalog/reference/.
+				'category'        => 'product:category',		// The product category ID according to the Google product taxonomy.
 				'sku'             => 'product:retailer_part_no',	// Product SKU.
 				'mpn'             => 'product:mfr_part_no',		// Product MPN.
 				'gtin14'          => 'product:gtin14',			// Valid for both products and offers.
@@ -1921,7 +1921,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$post_id = $mt_offer[ 'product:retailer_item_id' ];
 
 				$offer_mod = $wpsso->post->get_mod( $post_id );
-			
+
 				WpssoSchema::add_media_data( $offer, $offer_mod, $mt_offer, $size_names = 'schema', $add_video = 'false' );
 			}
 

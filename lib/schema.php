@@ -2911,7 +2911,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * 	'fluid_volume' => 'product:fluid_volume:value',
 		 * 	'height'       => 'product:height:value',
 		 * 	'length'       => 'product:length:value',
-		 * 	'size'         => 'product:size',
 		 * 	'weight'       => 'product:weight:value',
 		 * 	'width'        => 'product:width:value',
 		 * );

@@ -1215,7 +1215,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function get_url( $remove_tracking = true ) {
 
-			$url = self::get_prot() . '://' . $_SERVER[ 'SERVER_NAME' ] . $_SERVER[ 'REQUEST_URI' ];
+			$url = esc_url_raw( self::get_prot() . '://' . $_SERVER[ 'SERVER_NAME' ] . $_SERVER[ 'REQUEST_URI' ] );
 
 			/**
 			 * Maybe remove tracking query arguments used by facebook, google, etc.
@@ -1473,6 +1473,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$name = preg_replace( '/[#:\/\-\. ]+/', '_', $name );
 
+			$name = rtrim( $name, '_' );
+
 			return self::sanitize_key( $name );
 		}
 
@@ -1483,9 +1485,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return self::sanitize_key( $name );
 		}
 
+		public static function sanitize_locale( $locale ) {
+
+			return preg_replace( '/[^a-zA-Z_]/', '', $locale );
+		}
+
 		/**
-		 * Unlike the WordPress sanitize_key() function, this method allows for a colon and (optionally) upper case
-		 * characters.
+		 * Unlike the WordPress sanitize_key() function, this method allows for a colon and upper case characters.
 		 */
 		public static function sanitize_key( $key, $allow_upper = false ) {
 
@@ -2145,7 +2151,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				/**
 				 * Product part numbers.
 				 */
-				$mt_pre . ':item_group_id'    => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':item_group_id'    => '',	// Product variant group ID.
 				$mt_pre . ':retailer_item_id' => '',	// Product ID.
 				$mt_pre . ':retailer_part_no' => '',	// Product SKU.
 				$mt_pre . ':mfr_part_no'      => '',	// Product MPN.
@@ -2161,29 +2167,26 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				/**
 				 * Product attributes and descriptions.
 				 */
-				$mt_pre . ':url'                  => '',	// Non-standard / internal meta tag.
-				$mt_pre . ':age_group'            => '',
-				$mt_pre . ':availability'         => '',
-				$mt_pre . ':brand'                => '',
-				$mt_pre . ':category'             => '',	// Product category ID. See https://developers.facebook.com/docs/marketing-api/catalog/reference/.
-				$mt_pre . ':color'                => '',
-				$mt_pre . ':condition'            => '',
-				$mt_pre . ':expiration_time'      => '',
-				$mt_pre . ':is_product_shareable' => '',
-				$mt_pre . ':material'             => '',
-				$mt_pre . ':pattern'              => '',
-				$mt_pre . ':plural_title'         => '',
-				$mt_pre . ':product_link'         => '',
-				$mt_pre . ':purchase_limit'       => '',
-				$mt_pre . ':quantity:value'       => '',	// Non-standard / internal meta tag.
-				$mt_pre . ':quantity:minimum'     => '',	// Non-standard / internal meta tag.
-				$mt_pre . ':quantity:maximum'     => '',	// Non-standard / internal meta tag.
-				$mt_pre . ':quantity:unit_code'   => '',	// Non-standard / internal meta tag.
-				$mt_pre . ':quantity:unit_text'   => '',	// Non-standard / internal meta tag.
-				$mt_pre . ':retailer'             => '',
-				$mt_pre . ':retailer_category'    => '',
-				$mt_pre . ':retailer_title'       => '',
-				$mt_pre . ':target_gender'        => '',
+				$mt_pre . ':url'                => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':age_group'          => '',
+				$mt_pre . ':availability'       => '',
+				$mt_pre . ':brand'              => '',
+				$mt_pre . ':category'           => '',	// The product category according to the Google product taxonomy.
+				$mt_pre . ':retailer_category'  => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':condition'          => '',
+				$mt_pre . ':expiration_time'    => '',
+				$mt_pre . ':color'              => '',
+				$mt_pre . ':material'           => '',
+				$mt_pre . ':pattern'            => '',
+				$mt_pre . ':purchase_limit'     => '',
+				$mt_pre . ':quantity:value'     => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':quantity:minimum'   => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':quantity:maximum'   => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':quantity:unit_code' => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':quantity:unit_text' => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':target_gender'      => '',
+				$mt_pre . ':size'               => '',
+				$mt_pre . ':size_type'          => '',	// Non-standard / internal meta tag.
 
 				/**
 				 * Product ratings and reviews.
@@ -2195,9 +2198,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':review:count'   => '',	// Non-standard / internal meta tag.
 
 				/**
-				 * Product size and weight.
+				 * Product measurements and weight.
 				 */
-				$mt_pre . ':size'               => '',
 				$mt_pre . ':depth:value'        => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':depth:units'        => '',	// Non-standard / internal meta tag (units after value).
 				$mt_pre . ':height:value'       => '',	// Non-standard / internal meta tag.
@@ -2341,7 +2343,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( ! is_array( $mt_suffixes ) ) {	// Array of meta tag suffixes to use.
 
-				$mt_suffixes = array( ':secure_url', ':url', '', ':embed_url' );
+				$mt_suffixes = array( ':secure_url', ':url', '', ':embed_url', ':stream_url' );
 			}
 
 			/**
@@ -2391,7 +2393,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				if ( ! empty( $matches[ 2 ] ) ) {	// Just in case.
 
-					$file_path_locale = $matches[ 1 ] . '-' . self::get_locale( 'current' ) . $matches[ 2 ];
+					$file_path_locale = $matches[ 1 ] . '-' . self::get_locale() . $matches[ 2 ];
 
 					if ( file_exists( $file_path_locale ) ) {
 
@@ -2620,8 +2622,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_multi_key_locale( $prefix, array &$opts, $add_none = false ) {
 
+			$current = self::get_locale();			// Uses a static cache.
 			$default = self::get_locale( 'default' );	// Uses a static cache.
-			$current = self::get_locale( 'current' );	// Uses a static cache.
 			$matches = self::preg_grep_keys( '/^' . $prefix . '_([0-9]+)(#.*)?$/', $opts );
 			$results = array();
 
@@ -2659,6 +2661,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			return $results;
+		}
+
+		public static function refresh_current_locale_cache() {
+
+			self::get_locale( $mixed = 'current', $read_cache = false );
 		}
 
 		/**
@@ -2732,22 +2739,22 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_available_locales() {
 
-			$available_locales = SucomUtilWP::get_available_languages();	// Uses a local static cache.
+			$avail_locales = SucomUtilWP::get_available_languages();	// Uses a local static cache.
 
 			$default_locale = self::get_locale( 'default' );	// Uses a static cache.
 
-			if ( ! is_array( $available_locales ) ) {		// Just in case.
+			if ( ! is_array( $avail_locales ) ) {	// Just in case.
 
-				$available_locales = array( $default_locale );
+				$avail_locales = array( $default_locale );
 
-			} elseif ( ! in_array( $default_locale, $available_locales ) ) {	// Just in case.
+			} elseif ( ! in_array( $default_locale, $avail_locales ) ) {	// Just in case.
 
-				$available_locales[] = $default_locale;
+				$avail_locales[] = $default_locale;
 			}
 
-			sort( $available_locales );
+			sort( $avail_locales );
 
-			return apply_filters( 'sucom_available_locales', $available_locales );
+			return apply_filters( 'sucom_available_locales', $avail_locales );
 		}
 
 		/**

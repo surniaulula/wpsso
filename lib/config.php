@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.6.0',	// Plugin version.
+					'version'     => '9.7.0-dev.1',	// Plugin version.
 					'opt_version' => '833',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1497,25 +1497,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_property_product:condition'               => 1,
 					'add_meta_property_product:ean'                     => 1,
 					'add_meta_property_product:expiration_time'         => 1,
-					'add_meta_property_product:is_product_shareable'    => 1,
 					'add_meta_property_product:isbn'                    => 1,
+					'add_meta_property_product:item_group_id'           => 1,
 					'add_meta_property_product:material'                => 1,
 					'add_meta_property_product:mfr_part_no'             => 1,
 					'add_meta_property_product:original_price:amount'   => 1,
 					'add_meta_property_product:original_price:currency' => 1,
 					'add_meta_property_product:pattern'                 => 1,
-					'add_meta_property_product:plural_title'            => 1,
 					'add_meta_property_product:pretax_price:amount'     => 1,
 					'add_meta_property_product:pretax_price:currency'   => 1,
 					'add_meta_property_product:price:amount'            => 1,
 					'add_meta_property_product:price:currency'          => 1,
-					'add_meta_property_product:product_link'            => 1,
 					'add_meta_property_product:purchase_limit'          => 1,
-					'add_meta_property_product:retailer'                => 1,
-					'add_meta_property_product:retailer_category'       => 1,
 					'add_meta_property_product:retailer_item_id'        => 1,
 					'add_meta_property_product:retailer_part_no'        => 1,
-					'add_meta_property_product:retailer_title'          => 1,
 					'add_meta_property_product:sale_price:amount'       => 1,
 					'add_meta_property_product:sale_price:currency'     => 1,
 					'add_meta_property_product:sale_price_dates:start'  => 1,
@@ -1790,7 +1785,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_attr_product_isbn'               => 'ISBN',		// ISBN Attribute Name.
 					'plugin_attr_product_material'           => 'Material',		// Material Attribute Name.
 					'plugin_attr_product_mfr_part_no'        => 'MPN',		// MPN Attribute Name.
+					'plugin_attr_product_pattern'            => 'Pattern',		// Pattern Attribute Name.
 					'plugin_attr_product_size'               => 'Size',		// Size Attribute Name.
+					'plugin_attr_product_size_type'          => 'Size Type',	// Size Type Attribute Name.
 					'plugin_attr_product_target_gender'      => 'Gender',		// Target Gender Attribute Name.
 
 					/**
@@ -1820,9 +1817,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_length_value'       => '',	// Product Length Custom Field.
 					'plugin_cf_product_material'           => '',	// Product Material Custom Field.
 					'plugin_cf_product_mfr_part_no'        => '',	// Product MPN Custom Field.
+					'plugin_cf_product_pattern'            => '',	// Product Pattern Custom Field.
 					'plugin_cf_product_price'              => '',	// Product Price Custom Field.
 					'plugin_cf_product_retailer_part_no'   => '',	// Product SKU Custom Field.
 					'plugin_cf_product_size'               => '',	// Product Size Custom Field.
+					'plugin_cf_product_size_type'          => '',	// Product Size Type Custom Field.
 					'plugin_cf_product_target_gender'      => '',	// Product Target Gender Custom Field.
 					'plugin_cf_product_weight_value'       => '',	// Product Weight Custom Field.
 					'plugin_cf_product_width_value'        => '',	// Product Width Custom Field.
@@ -1930,8 +1929,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_length_value'       => 'product_length_value',	// Product Length Custom Field.
 					'plugin_cf_product_material'           => 'product_material',
 					'plugin_cf_product_mfr_part_no'        => 'product_mfr_part_no',
+					'plugin_cf_product_pattern'            => 'product_pattern',
 					'plugin_cf_product_price'              => 'product_price',
 					'plugin_cf_product_size'               => 'product_size',
+					'plugin_cf_product_size_type'          => 'product_size_type',
 					'plugin_cf_product_retailer_part_no'   => 'product_retailer_part_no',
 					'plugin_cf_product_target_gender'      => 'product_target_gender',
 					'plugin_cf_product_weight_value'       => 'product_weight_value',	// Product Weight Custom Field.
@@ -1991,7 +1992,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '4.9.0',	// Minimum update manager version (soft limit).
+				'rec_version' => '4.9.1-dev.1',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
 					48  => 'Every two days',
@@ -2557,8 +2558,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_length_value'       => 'Product Length Custom Field',
 					'plugin_cf_product_material'           => 'Product Material Custom Field',
 					'plugin_cf_product_mfr_part_no'        => 'Product MPN Custom Field',
+					'plugin_cf_product_pattern'            => 'Product Pattern Custom Field',
 					'plugin_cf_product_price'              => 'Product Price Custom Field',
 					'plugin_cf_product_size'               => 'Product Size Custom Field',
+					'plugin_cf_product_size_type'          => 'Product Size Type Custom Field',
 					'plugin_cf_product_retailer_part_no'   => 'Product SKU Custom Field',
 					'plugin_cf_product_target_gender'      => 'Product Target Gender Custom Field',
 					'plugin_cf_product_weight_value'       => 'Product Weight Custom Field',
@@ -2587,7 +2590,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_attr_product_isbn'               => 'ISBN Attribute Name',
 					'plugin_attr_product_material'           => 'Material Attribute Name',
 					'plugin_attr_product_mfr_part_no'        => 'MPN Attribute Name',
+					'plugin_attr_product_pattern'            => 'Pattern Attribute Name',
 					'plugin_attr_product_size'               => 'Size Attribute Name',
+					'plugin_attr_product_size_type'          => 'Size Type Attribute Name',
 					'plugin_attr_product_target_gender'      => 'Target Gender Attribute Name',
 				),
 
@@ -2745,6 +2750,21 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'job_location_type' => array(
 					'none'        => '[None]',
 					'TELECOMMUTE' => 'Telecommute (100% Remote)',
+				),
+
+				/**
+				 * Validated on 2021/11/09.
+				 *
+				 * See https://support.google.com/merchants/answer/6324497?hl=en&ref_topic=6324338
+				 */
+				'size_type' => array(
+					'none'      => '[None]',
+					'regular'   => 'Regular',
+					'petite'    => 'Petite',
+					'plus'      => 'Plus',
+					'tall'      => 'Tall',
+					'big'       => 'Big',
+					'maternity' => 'Maternity',
 				),
 			),
 			'head' => array(
@@ -2938,7 +2958,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'product:age_group'               => '',
 						'product:availability'            => 'product_avail',
 						'product:brand'                   => 'product_brand',
-						'product:category'                => 'product_category',
+						'product:category'                => 'product_category',	// The product category ID according to the Google product taxonomy.
 						'product:color'                   => 'product_color',
 						'product:condition'               => 'product_condition',
 						'product:depth:value'             => 'product_depth_value',	// Non-standard / internal meta tag.
@@ -2952,28 +2972,23 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'product:gtin'                    => 'product_gtin',		// Non-standard / internal meta tag.
 						'product:height:value'            => 'product_height_value',	// Non-standard / internal meta tag.
 						'product:height:units'            => '',			// Non-standard / internal meta tag.
-						'product:is_product_shareable'    => '',
 						'product:isbn'                    => 'product_isbn',
-						'product:item_group_id'           => '',			// Non-standard / internal meta tag.
+						'product:item_group_id'           => '',			// Product variant group ID.
 						'product:length:value'            => 'product_length_value',	// Non-standard / internal meta tag.
 						'product:length:units'            => '',			// Non-standard / internal meta tag.
 						'product:material'                => 'product_material',
 						'product:mfr_part_no'             => 'product_mfr_part_no',	// Product MPN.
 						'product:original_price:amount'   => '',			// Used by WooCommerce module.
 						'product:original_price:currency' => '',			// Used by WooCommerce module.
-						'product:pattern'                 => '',
-						'product:plural_title'            => '',
+						'product:pattern'                 => 'product_pattern',
 						'product:pretax_price:amount'     => '',			// Used by WooCommerce module.
 						'product:pretax_price:currency'   => '',			// Used by WooCommerce module.
 						'product:price:amount'            => 'product_price',
 						'product:price:currency'          => 'product_currency',
-						'product:product_link'            => '',
 						'product:purchase_limit'          => '',
-						'product:retailer'                => '',
-						'product:retailer_category'       => '',
+						'product:retailer_category'       => '',			// Non-standard / internal meta tag.
 						'product:retailer_item_id'        => '',				// Product ID. 
 						'product:retailer_part_no'        => 'product_retailer_part_no',	// Product SKU.
-						'product:retailer_title'          => '',
 						'product:sale_price:amount'       => '',			// Used by WooCommerce module.
 						'product:sale_price:currency'     => '',			// Used by WooCommerce module.
 						'product:sale_price_dates:start'  => '',			// Used by WooCommerce module.
@@ -2983,6 +2998,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'product:shipping_weight:value'   => '',
 						'product:shipping_weight:units'   => '',
 						'product:size'                    => 'product_size',
+						'product:size_type'               => 'product_size_type',	// Non-standard / internal meta tag.
 						'product:target_gender'           => 'product_target_gender',
 						'product:upc'                     => 'product_gtin12',
 						'product:fluid_volume:value'      => 'product_fluid_volume_value',	// Non-standard / internal meta tag.
@@ -3056,7 +3072,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 		'https://schema.org/OutOfStock'          => 'out of stock',
 				 		'https://schema.org/PreOrder'            => 'available for order',
 			 			'https://schema.org/PreSale'             => 'available for order',
-				 		'https://schema.org/SoldOut'             => 'available for order',
+				 		'https://schema.org/SoldOut'             => 'out of stock',
 					),
 
 					/**
@@ -4145,8 +4161,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			/**
 			 * Create a unique md5 query name from the config array and the local wp nonce key.
 			 */
-			$var_const[ 'WPSSO_NONCE_NAME' ] = md5( var_export( self::$cf[ 'plugin' ][ 'wpsso' ], $return = true ) .
-				( defined( 'NONCE_KEY' ) ? NONCE_KEY : '' ) );
+			$var_const[ 'WPSSO_NONCE_NAME' ] = md5( ( defined( 'NONCE_KEY' ) ? NONCE_KEY : '' ) .
+				var_export( self::$cf[ 'plugin' ][ 'wpsso' ], $return = true ) );
 
 			if ( defined( 'WPSSO_PLUGINDIR' ) ) {
 

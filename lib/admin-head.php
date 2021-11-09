@@ -311,9 +311,11 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 					$action_links[] = $this->get_purchase_plugin_link( 'wpsso' );
 
+					$prod_info_msg = __( 'brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, pattern, size, SKU, volume, weight, etc', 'wpsso' );
+
 					$notice_msg = __( 'The WooCommerce plugin does not provide sufficient Schema JSON-LD markup for Google Rich Results.', 'wpsso' ) . ' ';
 
-					$notice_msg .= sprintf( __( 'The %1$s plugin reads WooCommerce product data and provides complete Schema Product JSON-LD markup for Google Rich Results, including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'name_pro' ] ) . ' ';
+					$notice_msg .= sprintf( __( 'The %1$s plugin reads WooCommerce product data and provides complete Schema Product JSON-LD markup for Google Rich Results, including additional product images, product variations, product information (%2$s), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'name_pro' ], $prod_info_msg ) . ' ';
 
 					$notice_msg .= '<ul><li>' . implode( $glue = '</li> <li>', $action_links ) . '</li></ul>' . ' ';
 

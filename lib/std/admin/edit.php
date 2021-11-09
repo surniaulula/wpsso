@@ -1249,6 +1249,14 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'content'  => $form->get_no_select( 'product_condition', $this->p->cf[ 'form' ][ 'item_condition' ],
 						$css_class = '', $css_id = '', $is_assoc = true ),
 				),
+				'schema_product_color' => array(
+					'tr_class' => $schema_type_row_class[ 'product' ],
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Product Color', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-product_color',
+					'content'  => $form->get_no_input( 'product_color', $css_class = '', $css_id = '', $holder = true ),
+				),
 				'schema_product_material' => array(
 					'tr_class' => $schema_type_row_class[ 'product' ],
 					'th_class' => 'medium',
@@ -1257,13 +1265,13 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tooltip'  => 'meta-product_material',
 					'content'  => $form->get_no_input( 'product_material', $css_class = '', $css_id = '', $holder = true ),
 				),
-				'schema_product_color' => array(
+				'schema_product_pattern' => array(
 					'tr_class' => $schema_type_row_class[ 'product' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
-					'label'    => _x( 'Product Color', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-product_color',
-					'content'  => $form->get_no_input( 'product_color', $css_class = '', $css_id = '', $holder = true ),
+					'label'    => _x( 'Product Pattern', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-product_pattern',
+					'content'  => $form->get_no_input( 'product_pattern', $css_class = '', $css_id = '', $holder = true ),
 				),
 				'schema_product_target_gender' => array(
 					'tr_class' => $schema_type_row_class[ 'product' ],
@@ -1281,6 +1289,15 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'label'    => _x( 'Product Size', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_size',
 					'content'  => $form->get_no_input( 'product_size', $css_class = '', $css_id = '', $holder = true ),
+				),
+				'schema_product_size_type' => array(
+					'tr_class' => $schema_type_row_class[ 'product' ],
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Product Size Type', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-product_size_type',
+					'content'  => $form->get_no_select( 'product_size_type', $this->p->cf[ 'form' ][ 'size_type' ],
+						$css_class = 'gender', $css_id = '', $is_assoc = true ),
 				),
 				'schema_product_weight_value' => array(
 					'tr_class' => $schema_type_row_class[ 'product' ],
@@ -1538,11 +1555,11 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 
 					$media_request = array( 'pid' );
 					$media_info    = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = 'og' );
-	
+
 					$form_rows[ 'pro_feature_msg_tc' ] = array(
 						'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
 					);
-	
+
 					$form_rows[ $tc_prefix . '_img_id' ] = array(
 						'th_class' => 'medium',
 						'td_class' => 'blank',
@@ -1550,7 +1567,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 						'tooltip'  => 'meta-' . $tc_prefix . '_img_id',
 						'content'  => $form->get_no_input_image_upload( $tc_prefix . '_img', $media_info[ 'pid' ] ),
 					);
-	
+
 					$form_rows[ $tc_prefix . '_img_url' ] = array(
 						'th_class' => 'medium',
 						'td_class' => 'blank',
@@ -1560,7 +1577,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					);
 				}
 			}
-	
+
 			/**
 			 * Since WPSSO Core v9.0.0.
 			 *
