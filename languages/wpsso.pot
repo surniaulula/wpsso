@@ -1048,17 +1048,17 @@ msgctxt "lib file description"
 msgid "Advanced Settings"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:89 gettext/gettext-lib-config.php:99
+#: gettext/gettext-lib-config.php:89 gettext/gettext-lib-config.php:98
+#: lib/messages.php:508
+msgctxt "lib file description"
+msgid "Plugin Add-ons"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:90 gettext/gettext-lib-config.php:99
 #: lib/messages-info.php:76 lib/messages.php:486 lib/messages.php:495
 #: lib/messages.php:511
 msgctxt "lib file description"
 msgid "Premium Licenses"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:90 gettext/gettext-lib-config.php:98
-#: lib/messages.php:508
-msgctxt "lib file description"
-msgid "Complementary Add-ons"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:92
@@ -1257,9 +1257,7 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:129
 msgctxt "plugin description"
-msgid ""
-"Update Manager for the WPSSO Core Premium plugin and its Premium "
-"complementary add-ons."
+msgid "Update Manager for the WPSSO Core Premium plugin."
 msgstr ""
 
 #: gettext/gettext-lib-config.php:130
@@ -5019,7 +5017,7 @@ msgstr ""
 
 #: lib/admin.php:756
 msgctxt "plugin action link"
-msgid "Complementary Add-ons"
+msgid "Plugin Add-ons"
 msgstr ""
 
 #: lib/admin.php:764
@@ -6715,7 +6713,7 @@ msgstr ""
 
 #: lib/messages-info.php:283
 msgid ""
-"%1$s extends the built-in WordPress sitemap XML, <a href=\"%2$s\">available "
+"%1$s extends the built-in WordPress sitemaps XML, <a href=\"%2$s\">available "
 "since WordPress version 5.5</a>."
 msgstr ""
 
@@ -6728,14 +6726,14 @@ msgstr ""
 #: lib/messages-info.php:285
 msgid ""
 "These options allow you to customize the post and taxonomy types included in "
-"the <a href=\"%s\">WordPress sitemap XML</a>."
+"the <a href=\"%s\">WordPress sitemaps XML</a>."
 msgstr ""
 
 #: lib/messages-info.php:287
 msgid ""
 "To <strong>exclude</strong> individual posts, pages, custom post types, "
 "taxonomy terms (categories, tags, etc.), or user profile pages from the "
-"WordPress sitemap XML, enable the <strong>%1$s</strong> option under their "
+"WordPress sitemaps XML, enable the <strong>%1$s</strong> option under their "
 "individual %2$s &gt; %3$s tabs."
 msgstr ""
 
@@ -10061,7 +10059,7 @@ msgstr ""
 
 #: lib/sitesubmenu/site-addons.php:80
 msgctxt "metabox title"
-msgid "Complementary Add-ons for %s"
+msgid "Plugin Add-ons for %s"
 msgstr ""
 
 #: lib/sitesubmenu/site-advanced.php:50
@@ -10086,7 +10084,7 @@ msgstr ""
 
 #: lib/submenu/addons.php:65
 msgctxt "metabox title"
-msgid "Complementary Add-ons"
+msgid "Free Plugin Add-ons"
 msgstr ""
 
 #: lib/submenu/advanced.php:38

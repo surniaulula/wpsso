@@ -1487,7 +1487,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function sanitize_locale( $locale ) {
 
-			return preg_replace( '/[^a-zA-Z_]/', '', $locale );
+			$locale = str_replace( '-', '_', $locale );	// Convert 'en-US' to 'en_US'.
+
+			$locale = preg_replace( '/[^a-zA-Z_]/', '', $locale );
+
+			return $locale;
 		}
 
 		/**

@@ -505,7 +505,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$um_info      = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
 						$um_info_name = _x( $um_info[ 'name' ], 'plugin name', 'wpsso' );
 
-						$addons_page_text = _x( 'Complementary Add-ons', 'lib file description', 'wpsso' );
+						$addons_page_text = _x( 'Plugin Add-ons', 'lib file description', 'wpsso' );
 						$addons_page_link = $this->p->util->get_admin_url( 'addons#wpssoum', $addons_page_text );
 
 						$licenses_page_text = _x( 'Premium Licenses', 'lib file description', 'wpsso' );

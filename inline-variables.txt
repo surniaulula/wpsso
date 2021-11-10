@@ -15,3 +15,13 @@
 
 %%sitedesc%%
 
+%%sep%%
+
+%%title%%
+
+%%pagenumber%%
+
+%%pagetotal%%
+
+%%page%%
+

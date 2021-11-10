@@ -210,8 +210,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 						'sitesubmenu' => array(
 							'site-advanced' => 'Advanced Settings',
+							'site-addons'   => 'Plugin Add-ons',
 							'site-licenses' => 'Premium Licenses',
-							'site-addons'   => 'Complementary Add-ons',
 						),
 						'std' => array(
 							'admin' => array(
@@ -230,7 +230,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'dashboard'      => 'Dashboard',
 							'general'        => 'General Settings',
 							'advanced'       => 'Advanced Settings',
-							'addons'         => 'Complementary Add-ons',
+							'addons'         => 'Plugin Add-ons',
 							'licenses'       => 'Premium Licenses',
 							'tools'          => 'Tools and Actions',
 						),
@@ -998,7 +998,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssoum' => array(			// Plugin acronym.
 					'short'       => 'WPSSO UM',	// Short plugin name.
 					'name'        => 'WPSSO Update Manager',
-					'desc'        => 'Update Manager for the WPSSO Core Premium plugin and its Premium complementary add-ons.',
+					'desc'        => 'Update Manager for the WPSSO Core Premium plugin.',
 					'slug'        => 'wpsso-um',
 					'base'        => 'wpsso-um/wpsso-um.php',
 					'update_auth' => '',		// No premium version.

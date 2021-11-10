@@ -753,7 +753,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						$action_links[] = '<a href="' . $settings_page_url . '">' . _x( 'Plugin Settings', 'plugin action link', 'wpsso' ) . '</a>';
 					}
 
-					$action_links[] = '<a href="' . $addons_page_url . '">' . _x( 'Complementary Add-ons', 'plugin action link', 'wpsso' ) . '</a>';
+					$action_links[] = '<a href="' . $addons_page_url . '">' . _x( 'Plugin Add-ons', 'plugin action link', 'wpsso' ) . '</a>';
 
 					break;
 
