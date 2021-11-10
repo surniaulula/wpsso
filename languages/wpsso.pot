@@ -5270,7 +5270,7 @@ msgid "<a href=\"%s\">Priority Support Ticket</a>"
 msgstr ""
 
 #: lib/admin.php:2145
-msgid "Premium version"
+msgid "Premium edition"
 msgstr ""
 
 #: lib/admin.php:2149

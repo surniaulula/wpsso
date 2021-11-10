@@ -2142,7 +2142,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( ! empty( $info[ 'url' ][ 'support' ] ) && $pkg_info[ $ext ][ 'pp' ] ) {
 
 					$action_links[] = sprintf( __( '<a href="%s">Priority Support Ticket</a>', 'wpsso' ), $info[ 'url' ][ 'support' ] ) . 
-						' (' . __( 'Premium version', 'wpsso' ) . ')';
+						' (' . __( 'Premium edition', 'wpsso' ) . ')';
 
 				} elseif ( ! empty( $info[ 'url' ][ 'forum' ] ) ) {
 
@@ -2445,7 +2445,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $ext_sorted as $ext => $info ) {
 
-				if ( empty( $info[ 'update_auth' ] ) ) {	// Only show plugins with Premium versions.
+				if ( empty( $info[ 'update_auth' ] ) ) {	// Only show plugins with Premium editions.
 
 					unset( $ext_sorted[ $ext ] );
 				}

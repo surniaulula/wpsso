@@ -492,7 +492,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 									break;
 
 								/**
-								 * Premium version feature / option.
+								 * Premium edition feature / option.
 								 */
 								case 'facebook':	// Check for Embedded Media: Facebook Videos.
 								case 'slideshare':	// Check for Embedded Media: Slideshare Presentations.
@@ -507,7 +507,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 									break;
 
 								/**
-								 * Premium version feature / option.
+								 * Premium edition feature / option.
 								 */
 								case 'gravatar':	// Gravatar is Default Author Image.
 
@@ -516,7 +516,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 									break;
 
 								/**
-								 * Premium version feature / option.
+								 * Premium edition feature / option.
 								 */
 								case 'upscale':	// Upscale Media Library Images.
 
@@ -820,7 +820,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 									break;
 
 								/**
-								 * Premium version feature / option.
+								 * Premium edition feature / option.
 								 */
 								case 'check-img-dims':	// Enforce Image Dimension Checks.
 
@@ -860,7 +860,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 									break;
 
 								/**
-								 * Premium version feature / option.
+								 * Premium edition feature / option.
 								 */
 								case 'shorten':	// URL Shortening Service.
 
@@ -869,7 +869,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 									break;
 
 								/**
-								 * Premium version feature / option.
+								 * Premium edition feature / option.
 								 */
 								case 'wpseo-meta':	// Import Yoast SEO Social Meta.
 
