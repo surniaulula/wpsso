@@ -177,7 +177,7 @@
   <p>The WPSSO Core Premium plugin reads WooCommerce product data and provides complete Schema Product JSON-LD markup for Google Rich Results, including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, pattern, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.</p>
 </blockquote>
 
-<p><strong>&#91;Premium&#93;</strong> Integrates with other plugins and service APIs for additional image, video, e-Commerce product details, SEO settings, etc. The following modules are included with the Premium version and automatically loaded if/when the supported plugins and/or services are required.</p>
+<p><strong>&#91;Premium&#93;</strong> Integrates with other plugins and service APIs for additional image, video, e-Commerce product details, SEO settings, etc. The following modules are included with the Premium edition and automatically loaded if/when the supported plugins and/or services are required.</p>
 
 <ul>
 <li><p><strong>Reads data from 31 third-party plugins:</strong></p>

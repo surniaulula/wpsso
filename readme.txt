@@ -166,7 +166,7 @@ The WPSSO Core Standard plugin is designed to satisfy the requirements of most s
 
 > The WPSSO Core Premium plugin reads WooCommerce product data and provides complete Schema Product JSON-LD markup for Google Rich Results, including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, pattern, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.
 
-**&#91;Premium&#93;** Integrates with other plugins and service APIs for additional image, video, e-Commerce product details, SEO settings, etc. The following modules are included with the Premium version and automatically loaded if/when the supported plugins and/or services are required.
+**&#91;Premium&#93;** Integrates with other plugins and service APIs for additional image, video, e-Commerce product details, SEO settings, etc. The following modules are included with the Premium edition and automatically loaded if/when the supported plugins and/or services are required.
 
 * **Reads data from 31 third-party plugins:** 
 
@@ -323,7 +323,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * {bugfix} = Backwards-compatible bug fixes or small improvements.
 * {stage}.{level} = Pre-production release: dev &lt; a (alpha) &lt; b (beta) &lt; rc (release candidate).
 
-<h3>Standard Version Repositories</h3>
+<h3>Standard Edition Repositories</h3>
 
 * [GitHub](https://surniaulula.github.io/wpsso/)
 * [WordPress.org](https://plugins.trac.wordpress.org/browser/wpsso/)
@@ -393,7 +393,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Removed the SSO &gt; Advanced Settings &gt; Clear Post Cache for New Comment option (now always enabled).
 * **Bugfixes**
 	* Fixed missing 'author' in Schema CreativeWork markup.
-	* Fixed inheritance of custom images for WooCommerce product offers (Premium version).
+	* Fixed inheritance of custom images for WooCommerce product offers (Premium edition).
 * **Developer Notes**
 	* Added a new `WpssoUtilInline` class.
 	* Replaced `WpssoUtil->replace_inline_variables()` by `WpssoUtil->inline->replace_variables()`.
@@ -416,7 +416,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* Fixed Open Graph and Schema image sizes for WooCommerce product offers (Premium version).
+	* Fixed Open Graph and Schema image sizes for WooCommerce product offers (Premium edition).
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -578,7 +578,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Updated the SSO &gt; Advanced Settings &gt; Integration &gt; Enable Tags for Pages feature to register a non-public Page Tags taxonomy.
 * **Improvements**
 	* Added a Document SSO &gt; Customize &gt; Twitter Card Title option.
-	* Refactored the Rank Math integration module to read Google, Facebook, and Twitter metadata (Premium version).
+	* Refactored the Rank Math integration module to read Google, Facebook, and Twitter metadata (Premium edition).
 	* Deprecated the Schema link and meta itemprop tags.
 	* Deprecated the head attributes check in theme header templates.
 	* Removed the SSO &gt; Advanced Settings &gt; HTML Tags &gt; Schema tab.
@@ -621,11 +621,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 9.5.0 =
 
-(2021/11/02) Fixed missing 'author' in Schema CreativeWork markup. Fixed inheritance of custom images for WooCommerce product offers (Premium version). Discontinued the WPSSO IPM add-on. Added support for new inline variables.
+(2021/11/02) Fixed missing 'author' in Schema CreativeWork markup. Fixed inheritance of custom images for WooCommerce product offers (Premium edition). Discontinued the WPSSO IPM add-on. Added support for new inline variables.
 
 = 9.4.1 =
 
-(2021/10/30) Fixed Open Graph and Schema image sizes for WooCommerce product offers (Premium version).
+(2021/10/30) Fixed Open Graph and Schema image sizes for WooCommerce product offers (Premium edition).
 
 = 9.4.0 =
 
@@ -661,5 +661,5 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 9.0.0 =
 
-(2021/09/24) Added a Document SSO &gt; Twitter Card Title option. Refactored the Rank Math integration module (Premium version). Moved Schema data filters from WPSSO JSON to WPSSO Core.
+(2021/09/24) Added a Document SSO &gt; Twitter Card Title option. Refactored the Rank Math integration module (Premium edition). Moved Schema data filters from WPSSO JSON to WPSSO Core.
 
