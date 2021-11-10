@@ -335,16 +335,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.7.0-dev.1 (2021/11/09)**
+**Version 9.7.0-dev.2 (2021/11/09)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added new options in the Document SSO metabox:
+	* Added new Product options in the Document SSO metabox:
 		* Product Pattern
 		* Product Size Type
 * **Bugfixes**
-	* None.
+	* Fixed incorrect parent-child inheritance of custom metadata.
 * **Developer Notes**
 	* Added new filter hooks:
 		* 'wpsso_cache_cleared_notice'
@@ -610,9 +610,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.7.0-dev.1 =
+= 9.7.0-dev.2 =
 
-(2021/11/09) Added new options in the Document SSO metabox:
+(2021/11/09) Fixed incorrect parent-child inheritance of custom metadata. Added new Product options in the Document SSO metabox.
 
 = 9.6.0 =
 
