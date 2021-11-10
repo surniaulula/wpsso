@@ -123,22 +123,16 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 
 				case 'tooltip-meta-product_category':	// Product Type.
 
-					$option_link = $this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_site',
-						_x( 'Default Product Type', 'option label', 'wpsso' ) );
+					$option_link = $this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_site', _x( 'Default Product Type', 'option label', 'wpsso' ) );
 
-					$text = sprintf( __( 'A custom Google product type, which may be different than the %s option value.',
-						'wpsso' ), $option_link ) . ' ';
+					$text = sprintf( __( 'A custom Google product type, which may be different than the %s option value.', 'wpsso' ), $option_link ) . ' ';
 
-					/**
-					 * The product category ID according to the Google product taxonomy.
-					 *
-					 * See https://developers.facebook.com/docs/marketing-api/catalog/reference/.
-					 */
-					$text .= sprintf( __( 'Your selection will be used for Schema product markup and the %s meta tag.',
-						'wpsso' ), '<code>product:category</code>' ) . ' ';
+					$text .= sprintf( __( 'Your selection will be used for Schema product markup and the %s meta tag.', 'wpsso' ), '<code>product:category</code>' ) . ' ';
 
-					$text .= __( 'Select "[None]" if you prefer to exclude the product type from Schema markup and meta tags.',
-						'wpsso' );
+					$text .= __( 'Select "[None]" if you prefer to exclude the product type from Schema markup and meta tags.', 'wpsso' ) . ' ';
+
+					// translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a Google product type'.
+					$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s</a>.', 'wpsso' ), __( 'https://support.google.com/merchants/answer/6324436', 'wpsso' ), _x( 'a Google product type', 'tooltip fragment', 'wpsso' ) );
 
 				 	break;
 
@@ -148,11 +142,21 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 
 					if ( ! empty( $cf_frags ) ) {	// Just in case.
 
-						$text = sprintf( __( 'The value of %s can be used in meta tags and Schema markup for simple products.', 'wpsso' ), $cf_frags[ 'desc' ] ) . ' ';
+						// translators: %s is a singular item reference, for example 'a product size type'.
+						$text = sprintf( __( 'A custom value for %s can be provided for the main product markup.', 'wpsso' ), $cf_frags[ 'desc' ] ) . ' ';
 
-						$text .= __( 'When e-commerce product variations are available, the value from each variation will be used instead.', 'wpsso' ) . ' ';
+						$text .= __( 'When product variations are available (from an e-commerce plugin), the value from each product variation will supersede this one.', 'wpsso' ) . ' ';
 
-						$text .= __( 'This option may be disabled when a supported e-commerce plugin is the authoritative source of this data.', 'wpsso' );
+						// translators: %s is the option label.
+						$text .= sprintf( __( 'The <strong>%s</strong> option may be disabled when an e-commerce plugin is the authoritative source for this value.', 'wpsso' ), $cf_frags[ 'label' ] ) . ' ';
+
+						$text .= __( 'In this case, you should update the product information in the e-commerce plugin to update this value.', 'wpsso' ) . ' ';
+
+						if ( ! empty( $cf_frags[ 'about' ] ) ) {
+						
+							// translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product size'.
+							$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s</a>.', 'wpsso' ), $cf_frags[ 'about' ], $cf_frags[ 'desc' ] );
+						}
 					}
 
 				 	break;

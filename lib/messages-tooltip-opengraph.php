@@ -45,15 +45,12 @@ if ( ! class_exists( 'WpssoMessagesTooltipOpenGraph' ) ) {
 
 					$text = __( 'The Google product type that best describes the products on your site.', 'wpsso' ) . ' ';
 
-					/**
-					 * The product category ID according to the Google product taxonomy.
-					 *
-					 * See https://developers.facebook.com/docs/marketing-api/catalog/reference/.
-					 */
-					$text .= sprintf( __( 'Your selection will be used by default for Schema product markup and the %s meta tag.',
-						'wpsso' ), '<code>product:category</code>' ) . ' ';
+					$text .= sprintf( __( 'Your selection will be used by default for Schema product markup and the %s meta tag.', 'wpsso' ), '<code>product:category</code>' ) . ' ';
 
-					$text .= __( 'Select "[None]" if you prefer to exclude the product type from Schema markup and meta tags by default (you can still select a custom product type when editing a product).', 'wpsso' );
+					$text .= __( 'Select "[None]" if you prefer to exclude the product type from Schema markup and meta tags by default (you can still select a custom product type when editing a product).', 'wpsso' ) . ' ';
+
+					// translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a Google product type'.
+					$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s</a>.', 'wpsso' ), __( 'https://support.google.com/merchants/answer/6324436', 'wpsso' ), _x( 'a Google product type', 'tooltip fragment', 'wpsso' ) );
 
 					break;
 
