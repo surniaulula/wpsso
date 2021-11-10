@@ -2385,11 +2385,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$ext_num++;
 
-				$ext_links       = $this->get_ext_action_links( $ext, $info, $tabindex );
-				$ext_name_transl = _x( $info[ 'name' ], 'plugin name', 'wpsso' );
-				$ext_name_html   = '<h4>' . htmlentities( $ext_name_transl, ENT_QUOTES, $charset, $double_encode = false ) . '</h4>';
-				$ext_desc_transl = _x( $info[ 'desc' ], 'plugin description', 'wpsso' );
-				$ext_desc_html   = '<p>' . htmlentities( $ext_desc_transl, ENT_QUOTES, $charset, $double_encode = false ) . '</p>';
+				$ext_links        = $this->get_ext_action_links( $ext, $info, $tabindex );
+				$ext_name_transl  = _x( $info[ 'name' ], 'plugin name', 'wpsso' );
+				$ext_short_transl = _x( $info[ 'short' ], 'plugin name', 'wpsso' );
+				$ext_short_html   = htmlentities( $ext_short_transl, ENT_QUOTES, $charset, $double_encode = false ) . ' &mdash; ';
+				$ext_name_html    = '<h4>' . $ext_short_html . htmlentities( $ext_name_transl, ENT_QUOTES, $charset, $double_encode = false ) . '</h4>';
+				$ext_desc_transl  = _x( $info[ 'desc' ], 'plugin description', 'wpsso' );
+				$ext_desc_html    = '<p>' . htmlentities( $ext_desc_transl, ENT_QUOTES, $charset, $double_encode = false ) . '</p>';
 
 				$table_rows = array();
 
