@@ -240,6 +240,7 @@ Activate any of these free plugin add-on(s):
 * [WPSSO Strip Schema Microdata](https://wordpress.org/plugins/wpsso-strip-schema-microdata/) to strip incorrect markup from templates.
 * [WPSSO Tune WP Image Editors](https://wordpress.org/plugins/wpsso-tune-image-editors/) for better looking WordPress thumbnail images.
 * [WPSSO User Locale Selector](https://wordpress.org/plugins/wpsso-user-locale/) to switch languages quickly and easily.
+* **&#91;Premium&#93;** [WPSSO Google Merchant Feed](https://wpsso.com/extend/plugins/wpsso-google-merchant-feed/) for your WooCommerce, Easy Digital Downloads, and Custom Products.
 * **&#91;Premium&#93;** [WPSSO Schema Shortcode](https://wpsso.com/extend/plugins/wpsso-schema-shortcode/) for customized Schema markup of content sections.
 
 == Installation ==
@@ -335,7 +336,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.7.0-dev.2 (2021/11/10)**
+**Version 9.7.0-b.1 (2021/11/10)**
 
 * **New Features**
 	* None.
@@ -610,7 +611,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.7.0-dev.2 =
+= 9.7.0-b.1 =
 
 (2021/11/10) Fixed incorrect parent-child inheritance of custom metadata. Added new Product options in the Document SSO metabox.
 
