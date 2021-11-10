@@ -156,7 +156,7 @@ The WPSSO Core Standard plugin is designed to satisfy the requirements of most s
 
 **&#91;Premium&#93;** Customize default Open Graph and Schema types for posts, pages, custom post types, taxonomy terms, and user profile pages.
 
-**&#91;Premium&#93;** Customize post and taxonomy types included in the WordPress sitemap XML.
+**&#91;Premium&#93;** Customize post and taxonomy types included in the WordPress sitemaps XML.
 
 **&#91;Premium&#93;** Customizable additional Schema options in the Document SSO metabox.
 
@@ -220,12 +220,13 @@ The WPSSO Core Standard plugin is designed to satisfy the requirements of most s
 	* Your Own URL Shortener (YOURLS)
 	* YouTube Videos and Playlists
 
-<h3>Complementary Add-ons for WPSSO Core</h3>
+<h3>Plugin Add-ons for WPSSO Core</h3>
 
 Do you need even more specialized features?
 
-Activate any of these free complementary add-on(s):
+Activate any of these free plugin add-on(s):
 
+* [WPSSO Add Five Stars](https://wordpress.ord/plugins/wpsso-add-five-stars/) if the Schema markup does not already have a rating.
 * [WPSSO FAQ Manager](https://wordpress.org/plugins/wpsso-faq/) to manage FAQ categories with Question and Answer pages.
 * [WPSSO Mobile App Meta Tags](https://wordpress.org/plugins/wpsso-am/) to manage mobile App information.
 * [WPSSO Organization Markup](https://wordpress.org/plugins/wpsso-organization/) to manage multiple organizations.
@@ -239,7 +240,6 @@ Activate any of these free complementary add-on(s):
 * [WPSSO Strip Schema Microdata](https://wordpress.org/plugins/wpsso-strip-schema-microdata/) to strip incorrect markup from templates.
 * [WPSSO Tune WP Image Editors](https://wordpress.org/plugins/wpsso-tune-image-editors/) for better looking WordPress thumbnail images.
 * [WPSSO User Locale Selector](https://wordpress.org/plugins/wpsso-user-locale/) to switch languages quickly and easily.
-* **&#91;Premium&#93;** [WPSSO Add Five Stars](https://wpsso.com/extend/plugins/wpsso-add-five-stars/) if the Schema markup does not already have a rating.
 * **&#91;Premium&#93;** [WPSSO Schema Shortcode](https://wpsso.com/extend/plugins/wpsso-schema-shortcode/) for customized Schema markup of content sections.
 
 == Installation ==
