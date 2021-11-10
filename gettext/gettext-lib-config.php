@@ -101,6 +101,8 @@ _x( 'Tools and Actions', 'lib file description', 'wpsso' );
 _x( 'Add Person', 'lib file description', 'wpsso' );
 _x( 'WPSSO Core', 'plugin name', 'wpsso' );
 _x( 'Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.', 'plugin description', 'wpsso' );
+_x( 'WPSSO Add Five Stars', 'plugin name', 'wpsso' );
+_x( 'Add a 5 star rating and review from the site organization if the Schema markup does not already have an \'aggregateRating\' property.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Mobile App Meta Tags', 'plugin name', 'wpsso' );
 _x( 'Apple Store / iTunes and Google Play App meta tags for Apple\'s mobile Safari banner and Twitter\'s App Card.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Schema Breadcrumbs Markup', 'plugin name', 'wpsso' );

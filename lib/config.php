@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.7.0-dev.1',	// Plugin version.
+					'version'     => '9.7.0-dev.2',	// Plugin version.
 					'opt_version' => '833',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -85,7 +85,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase'  => 'https://wpsso.com/extend/plugins/wpsso/',		// Purchase page.
 						'info'      => 'https://wpsso.com/extend/plugins/wpsso/info/',		// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso/update/',
-						'latest'    => '',	// Optional.
 					),
 					'lib' => array(
 						'json-filters' => array(
@@ -240,6 +239,69 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 					),
 				),
+				'wpssoafs' => array(			// Plugin acronym.
+					'short'       => 'WPSSO AFS',	// Short plugin name.
+					'name'        => 'WPSSO Add Five Stars',
+					'desc'        => 'Add a 5 star rating and review from the site organization if the Schema markup does not already have an \'aggregateRating\' property.',
+					'slug'        => 'wpsso-add-five-stars',
+					'base'        => 'wpsso-add-five-stars/wpsso-add-five-stars.php',
+					'update_auth' => '',		// No premium version.
+
+					/**
+					 * URLs or relative paths to plugin banners and icons.
+					 */
+					'assets' => array(
+
+						/**
+						 * Banner image array keys are 'low' and 'high'.
+						 */
+						'banners' => array(
+							'low'  => 'https://surniaulula.github.io/wpsso-add-five-stars/assets/banner-772x250.jpg',
+							'high' => 'https://surniaulula.github.io/wpsso-add-five-stars/assets/banner-1544x500.jpg',
+						),
+
+						/**
+						 * Icon image array keys are '1x' and '2x'.
+						 */
+						'icons' => array(
+							'1x' => 'https://surniaulula.github.io/wpsso-add-five-stars/assets/icon-128x128.png',
+							'2x' => 'https://surniaulula.github.io/wpsso-add-five-stars/assets/icon-256x256.png',
+						),
+					),
+					'hosts' => array(
+						'wp_org' => true,
+						'github' => true,
+						'wpsso'  => true,
+					),
+					'url' => array(
+
+						/**
+						 * WordPress.org.
+						 */
+						'home'   => 'https://wordpress.org/plugins/wpsso-add-five-stars/',
+						'forum'  => 'https://wordpress.org/support/plugin/wpsso-add-five-stars',
+						'review' => 'https://wordpress.org/support/plugin/wpsso-add-five-stars/reviews/?rate=5#new-post',
+
+						/**
+						 * GitHub.com.
+						 */
+						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-add-five-stars/master/readme.txt',
+						'setup_html' => '',
+
+						/**
+						 * WPSSO.com.
+						 */
+						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-add-five-stars/changelog/',
+						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-add-five-stars/',
+						'install'   => 'https://wpsso.com/docs/plugins/wpsso-add-five-stars/installation/',
+						'faqs'      => '',
+						'notes'     => '',
+						'support'   => '',	// Premium support ticket.
+						'purchase'  => '',	// Purchase page.
+						'info'      => '',	// License information.
+						'update'    => 'https://wpsso.com/extend/plugins/wpsso-add-five-stars/update/',
+					),
+				),
 				'wpssoam' => array(			// Plugin acronym.
 					'short'       => 'WPSSO AM',	// Short plugin name.
 					'name'        => 'WPSSO Mobile App Meta Tags',
@@ -301,7 +363,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-am/update/',
-						'latest'    => '',	// Optional.
 					),
 				),
 				'wpssobc' => array(			// Plugin acronym.
@@ -365,7 +426,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-breadcrumbs/update/',
-						'latest'    => '',	// Optional.
 					),
 				),
 				'wpssofaq' => array(			// Plugin acronym.
@@ -429,7 +489,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-faq/update/',
-						'latest'    => '',	// Optional.
 					),
 				),
 				'wpssoorg' => array(			// Plugin acronym.
@@ -493,11 +552,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-organization/update/',
-						'latest'    => '',	// Optional.
 					),
 				),
 				'wpssoplm' => array(			// Plugin acronym.
-					'short'       => 'WPSSO PLM',		// Short plugin name.
+					'short'       => 'WPSSO PLM',	// Short plugin name.
 					'name'        => 'WPSSO Place and Local SEO Markup',
 					'desc'        => 'Manage Schema Places and Local SEO for Facebook / Open Graph, Pinterest, and Google Local Business.',
 					'slug'        => 'wpsso-plm',
@@ -557,7 +615,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-plm/update/',
-						'latest'    => '',	// Optional.
 					),
 				),
 				'wpssorar' => array(			// Plugin acronym.
@@ -621,7 +678,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-ratings-and-reviews/update/',
-						'latest'    => '',	// Optional.
 					),
 				),
 				'wpssorest' => array(			// Plugin acronym.
@@ -685,7 +741,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-rest-api/update/',
-						'latest'    => '',	// Optional.
 					),
 				),
 				'wpssorrssb' => array(			// Plugin acronym.
@@ -749,7 +804,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-rrssb/update/',
-						'latest'    => '',	// Optional.
 					),
 				),
 				'wpssossm' => array(			// Plugin acronym.
@@ -813,7 +867,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-strip-schema-microdata/update/',
-						'latest'    => '',	// Optional.
 					),
 				),
 				'wpssotie' => array(			// Plugin acronym.
@@ -877,7 +930,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-tune-image-editors/update/',
-						'latest'    => '',	// Optional.
 					),
 				),
 				'wpssoul' => array(			// Plugin acronym.
@@ -941,7 +993,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-user-locale/update/',
-						'latest'    => '',	// Optional.
 					),
 				),
 				'wpssoum' => array(			// Plugin acronym.
@@ -1001,7 +1052,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-um/update/',
-						'latest'    => 'https://wpsso.com/extend/plugins/wpsso-um/latest/',
 					),
 				),
 				'wpssowcmd' => array(			// Plugin acronym.
@@ -1065,7 +1115,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-wc-metadata/update/',
-						'latest'    => '',	// Optional.
 					),
 				),
 				'wpssowcsdt' => array(			// Plugin acronym.
@@ -1129,7 +1178,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-wc-shipping-delivery-time/update/',
-						'latest'    => '',	// Optional.
 					),
 				),
 			),
@@ -1992,7 +2040,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '4.9.1-dev.1',	// Minimum update manager version (soft limit).
+				'rec_version' => '4.10.0-dev.2',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
 					48  => 'Every two days',
