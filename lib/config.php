@@ -2803,7 +2803,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				/**
 				 * Validated on 2021/11/09.
 				 *
-				 * See https://support.google.com/merchants/answer/6324497?hl=en&ref_topic=6324338
+				 * See https://support.google.com/merchants/answer/6324497.
 				 */
 				'size_type' => array(
 					'none'      => '[None]',

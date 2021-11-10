@@ -9385,7 +9385,7 @@ msgid "a product GTIN-14 code (aka ITF-14)"
 msgstr ""
 
 #: lib/messages.php:991 lib/messages.php:996 lib/messages.php:1001
-#: lib/messages.php:1011 lib/messages.php:1020
+#: lib/messages.php:1006 lib/messages.php:1011 lib/messages.php:1020
 msgid "https://support.google.com/merchants/answer/6324461"
 msgstr ""
 
@@ -9404,11 +9404,6 @@ msgstr ""
 #: lib/messages.php:1005
 msgctxt "tooltip fragment"
 msgid "a product GTIN-8 code (aka EAN/UCC-8 or 8-digit EAN)"
-msgstr ""
-
-#: lib/messages.php:1006
-msgctxt "wpsso"
-msgid "https://support.google.com/merchants/answer/6324461"
 msgstr ""
 
 #: lib/messages.php:1010

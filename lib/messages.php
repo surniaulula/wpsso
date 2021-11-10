@@ -1003,7 +1003,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					'product_gtin8' => array(
 						'label' => _x( 'Product GTIN-8', 'option label', 'wpsso' ),
 						'desc'  => _x( 'a product GTIN-8 code (aka EAN/UCC-8 or 8-digit EAN)', 'tooltip fragment', 'wpsso' ),
-						'about' => _x( 'https://support.google.com/merchants/answer/6324461', 'wpsso' ),
+						'about' => __( 'https://support.google.com/merchants/answer/6324461', 'wpsso' ),
 					),
 					'product_gtin' => array(
 						'label' => _x( 'Product GTIN', 'option label', 'wpsso' ),

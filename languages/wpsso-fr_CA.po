@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 9.7.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-11-10 11:51-0800\n"
+"PO-Revision-Date: 2021-11-10 12:35-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -8260,7 +8260,7 @@ msgid "a product GTIN-14 code (aka ITF-14)"
 msgstr "un code de produit GTIN-14 (ITF-14)"
 
 #: lib/messages.php:991 lib/messages.php:996 lib/messages.php:1001
-#: lib/messages.php:1011 lib/messages.php:1020
+#: lib/messages.php:1006 lib/messages.php:1011 lib/messages.php:1020
 msgid "https://support.google.com/merchants/answer/6324461"
 msgstr "https://support.google.com/merchants/answer/6324461?hl=fr"
 
@@ -8278,11 +8278,6 @@ msgstr "un code de produit GTIN-12 (clé d'identification GS1 à 12 chiffres com
 msgctxt "tooltip fragment"
 msgid "a product GTIN-8 code (aka EAN/UCC-8 or 8-digit EAN)"
 msgstr "un code de produit GTIN-8 (EAN / UCC-8 ou EAN à 8 chiffres)"
-
-#: lib/messages.php:1006
-msgctxt "wpsso"
-msgid "https://support.google.com/merchants/answer/6324461"
-msgstr "https://support.google.com/merchants/answer/6324461?hl=fr"
 
 #: lib/messages.php:1010
 msgctxt "tooltip fragment"
