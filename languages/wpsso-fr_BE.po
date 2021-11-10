@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 9.7.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-11-10 12:35-0800\n"
+"PO-Revision-Date: 2021-11-10 13:54-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -4969,8 +4969,8 @@ msgid "<a href=\"%s\">Priority Support Ticket</a>"
 msgstr "<a href=\"%s\">Billet de soutien prioritaire</a>"
 
 #: lib/admin.php:2145
-msgid "Premium version"
-msgstr "Version Premium"
+msgid "Premium edition"
+msgstr "Édition Premium"
 
 #: lib/admin.php:2149
 msgid "<a href=\"%s\">Community Support Forum</a>"
