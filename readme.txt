@@ -336,7 +336,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.7.0-b.1 (2021/11/10)**
+**Version 9.7.0-rc.1 (2021/11/10)**
 
 * **New Features**
 	* None.
@@ -611,7 +611,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.7.0-b.1 =
+= 9.7.0-rc.1 =
 
 (2021/11/10) Fixed incorrect parent-child inheritance of custom metadata. Added new Product options in the Document SSO metabox.
 
