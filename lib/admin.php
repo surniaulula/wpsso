@@ -132,7 +132,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				add_action( 'admin_menu', array( $this, 'add_admin_submenus' ), WPSSO_ADD_SUBMENU_PRIORITY );
 
 				add_action( 'admin_init', array( $this, 'add_plugins_page_upgrade_notice' ) );
-				add_action( 'admin_init', array( $this, 'check_wp_config_constants' ), 10 );
 				add_action( 'admin_init', array( $this, 'register_setting' ) );
 
 				if ( is_multisite() ) {
@@ -623,6 +622,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( ! empty( $info[ 'base' ] ) ) {
 
+					/**
+					 * Fires at the end of the update message container in each row of the plugins list table.
+					 *
+					 * See wordpress/wp-admin/includes/update.php:587.
+					 */
 					add_action( 'in_plugin_update_message-' . $info[ 'base' ], array( $this, 'show_upgrade_notice' ), 10, 2 );
 				}
 			}
@@ -2741,76 +2745,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function check_tmpl_head_attributes() {
 
 			_deprecated_function( __METHOD__ . '()', '2021/09/16', $replacement = '' );	// Deprecation message.
-		}
-
-		public function check_wp_config_constants() {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			$user_id = get_current_user_id();
-
-			if ( ! $user_id ) {	// Nobody there.
-
-				return;	// Stop here.
-			}
-
-			/**
-			 * Skip if previous check is already successful.
-			 */
-			if ( $passed = get_option( WPSSO_WP_CONFIG_CHECK_NAME, $default = false ) ) {
-
-				return;	// Stop here.
-			}
-
-			if ( $file_path = SucomUtilWP::get_wp_config_file_path() ) {
-
-				$stripped_php = SucomUtil::get_stripped_php( $file_path );
-
-				if ( preg_match( '/define\( *[\'"]WP_HOME[\'"][^\)]*\$/', $stripped_php ) ) {
-
-					$notice_key = 'notice-wp-config-php-variable-home';
-
-					$notice_msg = $this->p->msgs->get( $notice_key );
-
-					$this->p->notice->err( $notice_msg, $user_id, $notice_key );
-
-					return;	// Stop here.
-				}
-			}
-
-			/**
-			 * Since WPSSO Core v8.5.1.
-			 */
-			$is_public = get_option( 'blog_public' );
-
-			if ( $is_public ) {
-
-				$home_url = SucomUtilWP::raw_get_home_url();
-
-				if ( preg_match( '/^([a-z]+):\/\/([0-9\.]+)(:[0-9]+)?$/i', $home_url ) ) {
-
-					$general_settings_url = get_admin_url( $blog_id = null, 'options-general.php' );
-					$reading_settings_url = get_admin_url( $blog_id = null, 'options-reading.php' );
-
-					$notice_msg = sprintf( __( 'The WordPress <a href="%1$s">Search Engine Visibility</a> option is set to allow search engines and social sites to access this site, but your <a href="%2$s">Site Address URL</a> value is an IP address (%3$s).', 'wpsso' ), $reading_settings_url, $general_settings_url, $home_url ) . ' ';
-
-					$notice_msg .= __( 'Please update your Search Engine Visibility option to discourage search engines from indexing this site, or use a fully qualified domain name as your Site Address URL.', 'wpsso' );
-
-					$notice_key = 'notice-wp-config-home-url-ip-address';
-
-					$this->p->notice->warn( $notice_msg, $user_id, $notice_key );
-
-					return;	// Stop here.
-				}
-			}
-
-			/**
-			 * Mark all WordPress config checks as complete.
-			 */
-			update_option( WPSSO_WP_CONFIG_CHECK_NAME, $passed = true, $autoload = false );
 		}
 
 		/**

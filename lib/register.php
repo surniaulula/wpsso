@@ -144,7 +144,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 			/**
 			 * Register plugin install, activation, update times.
 			 */
-			$version = WpssoConfig::$cf[ 'plugin' ][ 'wpsso' ][ 'version' ];
+			$version = WpssoConfig::get_version();
 
 			WpssoUtilReg::update_ext_version( 'wpsso', $version );
 

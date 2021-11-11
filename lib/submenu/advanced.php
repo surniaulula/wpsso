@@ -43,7 +43,6 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				'user_about'     => _x( 'About the User', 'metabox title', 'wpsso' ),
 				'metadata'       => _x( 'Metadata', 'metabox title', 'wpsso' ),
 				'head_tags'      => _x( 'HTML Tags', 'metabox title', 'wpsso' ),
-				'wp_sitemaps'    => _x( 'WordPress Sitemaps', 'metabox title', 'wpsso' ),
 			) as $metabox_id => $metabox_title ) {
 
 				$metabox_screen  = $this->pagehook;
@@ -258,17 +257,6 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				case 'plugin-settings':
 
 					$this->add_advanced_plugin_settings_table_rows( $table_rows, $this->form );
-
-					break;
-
-				case 'advanced-wp_sitemaps':
-
-					$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'info-' . $tab_key ) . '</td>';
-
-					if ( ! SucomUtilWP::sitemaps_enabled() ) {	// Nothing to do.
-
-						return $this->p->msgs->get_wp_sitemaps_disabled_rows( $table_rows );
-					}
 
 					break;
 			}

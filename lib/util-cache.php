@@ -704,9 +704,6 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 				$notice_msg .= sprintf( __( 'The total execution time for this task was %0.3f seconds.', 'wpsso' ), $mtime_total );
 
-error_log( $notice_msg );
-error_log( $user_id );
-error_log( $notice_key );
 				$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 			}
 
