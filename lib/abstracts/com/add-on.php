@@ -164,21 +164,24 @@ if ( ! class_exists( 'SucomAddOn' ) ) {
 					$req_name = $req_info[ 'name' ];
 				}
 
-				if ( ! empty( $req_info[ 'plugin_class' ] ) && ! class_exists( $req_info[ 'plugin_class' ] ) ) {
-
-					$this->init_textdomain();	// If not already loaded, load the textdomain now.
-
-					$notice_msg = __( 'The %1$s add-on requires the %2$s plugin.', $text_domain );
-
-					$req_info[ 'notice' ] = sprintf( $notice_msg, $addon_name, $req_name );
-
-				} elseif ( ! empty( $req_info[ 'version_const' ] ) && defined( $req_info[ 'version_const' ] ) ) {
+				/**
+				 * Check for plugin version first, then check for plugin existence.
+				 */
+				if ( ! empty( $req_info[ 'version_const' ] ) && defined( $req_info[ 'version_const' ] ) ) {
 
 					$req_info[ 'version' ] = constant( $req_info[ 'version_const' ] );
 
 				} elseif ( ! empty( $req_info[ 'version_global' ] ) && isset( $GLOBALS[ $req_info[ 'version_global' ] ] ) ) {
 
 					$req_info[ 'version' ] = $GLOBALS[ $req_info[ 'version_global' ] ];
+				
+				} elseif ( ! empty( $req_info[ 'plugin_class' ] ) && ! class_exists( $req_info[ 'plugin_class' ] ) ) {
+
+					$this->init_textdomain();	// If not already loaded, load the textdomain now.
+
+					$notice_msg = __( 'The %1$s add-on requires the %2$s plugin.', $text_domain );
+
+					$req_info[ 'notice' ] = sprintf( $notice_msg, $addon_name, $req_name );
 				}
 
 				/**
