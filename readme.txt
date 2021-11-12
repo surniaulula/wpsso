@@ -156,8 +156,6 @@ The WPSSO Core Standard plugin is designed to satisfy the requirements of most s
 
 **&#91;Premium&#93;** Customize default Open Graph and Schema types for posts, pages, custom post types, taxonomy terms, and user profile pages.
 
-**&#91;Premium&#93;** Customize post and taxonomy types included in the WordPress sitemaps XML.
-
 **&#91;Premium&#93;** Customizable additional Schema options in the Document SSO metabox.
 
 **&#91;Premium&#93;** Complete Schema JSON-LD markup for WooCommerce SEO:
@@ -336,16 +334,19 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.8.0-dev.1 (TBD)**
+**Version 9.8.0-dev.2 (2021/11/12)**
 
 * **New Features**
-	* None.
+	* Moved the WordPress Sitemaps features to a new WPSSO WP Sitemaps add-on.
 * **Improvements**
-	* None.
+	* Updated the Yoast SEO integration modules to import / filter the 'noindex' value (Premium edition).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added a new `WpssoAdminHeadSuggest` class.
+	* Added a new 'wpsso_robots_is_noindex' filter.
+	* Refactored the `WpssoUtilRobots->get_directives()` method.
+	* Refactored the `WpssoUtilRobots->is_noindex()` method.
 * **Requires At Least**
 	* PHP v7.0.
 	* WordPress v5.0.
@@ -625,9 +626,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.8.0-dev.1 =
+= 9.8.0-dev.2 =
 
-(TBD) None.
+(2021/11/12) Moved the WordPress Sitemaps features to a new WPSSO WP Sitemaps add-on. Updated the Yoast SEO integration modules.
 
 = 9.7.0 =
 
