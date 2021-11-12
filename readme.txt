@@ -1,4 +1,4 @@
-=== WPSSO Core | Advanced Structured Data Plugin for WordPress SEO and SMO ===
+=== WPSSO Core | The Structured Data Plugin for WordPress SEO and SMO ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -18,7 +18,7 @@ Present your content at its best in search results and on social sites - no matt
 
 == Description ==
 
-<h3 class="top">Advanced Structured Data Plugin for WordPress SEO and SMO</h3>
+<h3 class="top">The Structured Data Plugin for WordPress SEO and SMO</h3>
 
 <!-- about -->
 
@@ -238,7 +238,7 @@ Activate any of these free plugin add-on(s):
 * [WPSSO Strip Schema Microdata](https://wordpress.org/plugins/wpsso-strip-schema-microdata/) to strip incorrect markup from templates.
 * [WPSSO Tune WP Image Editors](https://wordpress.org/plugins/wpsso-tune-image-editors/) for better looking WordPress thumbnail images.
 * [WPSSO User Locale Selector](https://wordpress.org/plugins/wpsso-user-locale/) to switch languages quickly and easily.
-* **&#91;Premium&#93;** [WPSSO Google Merchant Feed](https://wpsso.com/extend/plugins/wpsso-google-merchant-feed/) for your WooCommerce, Easy Digital Downloads, and Custom Products.
+* **&#91;Premium&#93;** [WPSSO Google Merchant Feed](https://wpsso.com/extend/plugins/wpsso-google-merchant-feed/) for your WooCommerce, Easy Digital Downloads, and custom products.
 * **&#91;Premium&#93;** [WPSSO Schema Shortcode](https://wpsso.com/extend/plugins/wpsso-schema-shortcode/) for customized Schema markup of content sections.
 
 == Installation ==

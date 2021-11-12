@@ -1,4 +1,4 @@
-<h1>WPSSO Core</h1><h3>Advanced Structured Data Plugin for WordPress SEO and SMO</h3>
+<h1>WPSSO Core</h1><h3>The Structured Data Plugin for WordPress SEO and SMO</h3>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
@@ -15,7 +15,7 @@
 
 <h2>Description</h2>
 
-<h3 class="top">Advanced Structured Data Plugin for WordPress SEO and SMO</h3>
+<h3 class="top">The Structured Data Plugin for WordPress SEO and SMO</h3>
 
 <!-- about -->
 
@@ -255,7 +255,7 @@
 <li><a href="https://wordpress.org/plugins/wpsso-strip-schema-microdata/">WPSSO Strip Schema Microdata</a> to strip incorrect markup from templates.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-tune-image-editors/">WPSSO Tune WP Image Editors</a> for better looking WordPress thumbnail images.</li>
 <li><a href="https://wordpress.org/plugins/wpsso-user-locale/">WPSSO User Locale Selector</a> to switch languages quickly and easily.</li>
-<li><strong>&#91;Premium&#93;</strong> <a href="https://wpsso.com/extend/plugins/wpsso-google-merchant-feed/">WPSSO Google Merchant Feed</a> for your WooCommerce, Easy Digital Downloads, and Custom Products.</li>
+<li><strong>&#91;Premium&#93;</strong> <a href="https://wpsso.com/extend/plugins/wpsso-google-merchant-feed/">WPSSO Google Merchant Feed</a> for your WooCommerce, Easy Digital Downloads, and custom products.</li>
 <li><strong>&#91;Premium&#93;</strong> <a href="https://wpsso.com/extend/plugins/wpsso-schema-shortcode/">WPSSO Schema Shortcode</a> for customized Schema markup of content sections.</li>
 </ul>
 
