@@ -165,7 +165,7 @@ if ( ! class_exists( 'SucomAddOn' ) ) {
 				}
 
 				/**
-				 * Check for plugin version first, then check for plugin existence.
+				 * Optimize and check for plugin version first, then check for plugin existence.
 				 */
 				if ( ! empty( $req_info[ 'version_const' ] ) && defined( $req_info[ 'version_const' ] ) ) {
 
