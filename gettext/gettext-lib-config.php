@@ -3,8 +3,8 @@
 /**
  * Extract of translatable strings from lib/config.php.
  */
-_x( 'Premium', 'distribution name', 'wpsso' );
-_x( 'Standard', 'distribution name', 'wpsso' );
+_x( 'Premium', 'package name', 'wpsso' );
+_x( 'Standard', 'package name', 'wpsso' );
 _x( '(code) Schema Type Article [schema_type:article]', 'lib file description', 'wpsso' );
 _x( '(code) Schema Type Audiobook [schema_type:book.audio]', 'lib file description', 'wpsso' );
 _x( '(code) Schema Type Blog [schema_type:blog]', 'lib file description', 'wpsso' );
@@ -131,6 +131,8 @@ _x( 'WPSSO Product Metadata for WooCommerce SEO', 'plugin name', 'wpsso' );
 _x( 'GTIN, GTIN-8, GTIN-12 (UPC), GTIN-13 (EAN), GTIN-14, ISBN, MPN, depth, and volume for WooCommerce products and variations.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Shipping Delivery Time for WooCommerce SEO', 'plugin name', 'wpsso' );
 _x( 'Shipping delivery time estimates for WooCommerce shipping zones, methods, and classes.', 'plugin description', 'wpsso' );
+_x( 'WPSSO WP Sitemaps', 'plugin name', 'wpsso' );
+_x( 'Select post and taxonomy types included in the WordPress sitemaps XML and exclude "No Index" content.', 'plugin description', 'wpsso' );
 _x( 'SSO (Social and Search Optimization)', 'menu title', 'wpsso' );
 _x( 'SSO', 'notice title', 'wpsso' );
 _x( 'Document SSO', 'metabox title', 'wpsso' );

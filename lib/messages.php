@@ -21,12 +21,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 		protected $p;	// Wpsso class object.
 
-		protected $pkg_info   = array();
-		protected $p_name     = '';
-		protected $p_name_pro = '';
-		protected $dist_pro   = '';
-		protected $dist_std   = '';
-		protected $fb_prefs   = '';
+		protected $pkg_info        = array();
+		protected $p_name          = '';
+		protected $p_name_pro      = '';
+		protected $pkg_pro_transl  = '';
+		protected $pkg_std_transl  = '';
+		protected $fb_prefs_transl = '';
 
 		private $info    = null;	// WpssoMessagesInfo class object.
 		private $tooltip = null;	// WpssoMessagesTooltip class object.
@@ -53,12 +53,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 			if ( empty( $this->pkg_info ) ) {
 
-				$this->pkg_info   = $this->p->admin->get_pkg_info();	// Returns an array from cache.
-				$this->p_name     = $this->pkg_info[ 'wpsso' ][ 'name' ];
-				$this->p_name_pro = $this->pkg_info[ 'wpsso' ][ 'name_pro' ];
-				$this->dist_pro   = _x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' );
-				$this->dist_std   = _x( $this->p->cf[ 'dist' ][ 'std' ], 'distribution name', 'wpsso' );
-				$this->fb_prefs   = __( 'Facebook prefers images of 1200x630px cropped (for Retina and high-PPI displays), 600x315px cropped as a recommended minimum, and ignores images smaller than 200x200px.', 'wpsso' );
+				$this->pkg_info        = $this->p->admin->get_pkg_info();	// Returns an array from cache.
+				$this->p_name          = $this->pkg_info[ 'wpsso' ][ 'name' ];
+				$this->p_name_pro      = $this->pkg_info[ 'wpsso' ][ 'name_pro' ];
+				$this->pkg_pro_transl  = _x( $this->p->cf[ 'packages' ][ 'pro' ], 'package name', 'wpsso' );
+				$this->pkg_std_transl  = _x( $this->p->cf[ 'packages' ][ 'std' ], 'package name', 'wpsso' );
+				$this->fb_prefs_transl = __( 'Facebook prefers images of 1200x630px cropped (for Retina and high-PPI displays), 600x315px cropped as a recommended minimum, and ignores images smaller than 200x200px.', 'wpsso' );
 			}
 		}
 
@@ -120,7 +120,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					if ( ! isset( $info[ $info_key . '_pro' ] ) ) {
 
-						$info[ $info_key . '_pro' ] = SucomUtil::get_dist_name( $info[ $info_key ], $this->dist_pro );
+						$info[ $info_key . '_pro' ] = SucomUtil::get_dist_name( $info[ $info_key ], $this->pkg_pro_transl );
 					}
 				}
 			}
@@ -250,11 +250,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						} elseif ( $info[ 'ext' ] === $plugin_id ) {
 
-							$text = sprintf( _x( 'Purchase %s Plugin', 'plugin action link', 'wpsso' ), $this->dist_pro );
+							$text = sprintf( _x( 'Purchase %s Plugin', 'plugin action link', 'wpsso' ), $this->pkg_pro_transl );
 
 						} else {
 
-							$text = sprintf( _x( 'Purchase %s Add-on', 'plugin action link', 'wpsso' ), $this->dist_pro );
+							$text = sprintf( _x( 'Purchase %s Add-on', 'plugin action link', 'wpsso' ), $this->pkg_pro_transl );
 						}
 
 						if ( ! empty( $info[ 'url' ] ) ) {
@@ -486,7 +486,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$licenses_page_text = _x( 'Premium Licenses', 'lib file description', 'wpsso' );
 						$licenses_page_link = $this->p->util->get_admin_url( 'licenses', $licenses_page_text );
 
-						$text = sprintf( __( 'An Authentication ID for %1$s has been entered in the %2$s settings page, but the plugin has not been installed yet - you can install and activate the %3$s plugin from the %2$s settings page.', 'wpsso' ), '<b>' . $info[ 'name' ] . '</b>', $licenses_page_link, $this->dist_pro ) . ' ;-)';
+						$text = sprintf( __( 'An Authentication ID for %1$s has been entered in the %2$s settings page, but the plugin has not been installed yet - you can install and activate the %3$s plugin from the %2$s settings page.', 'wpsso' ), '<b>' . $info[ 'name' ] . '</b>', $licenses_page_link, $this->pkg_pro_transl ) . ' ;-)';
 
 						break;
 
@@ -495,7 +495,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$licenses_page_text = _x( 'Premium Licenses', 'lib file description', 'wpsso' );
 						$licenses_page_link = $this->p->util->get_admin_url( 'licenses', $licenses_page_text );
 
-						$text = sprintf( __( 'An Authentication ID for %1$s has been entered in the %2$s settings page, but the %3$s version has not been installed yet - don\'t forget to update the plugin to install the latest %3$s version.', 'wpsso' ), '<b>' . $info[ 'name' ] . '</b>', $licenses_page_link, $this->dist_pro ) . ' ;-)';
+						$text = sprintf( __( 'An Authentication ID for %1$s has been entered in the %2$s settings page, but the %3$s version has not been installed yet - don\'t forget to update the plugin to install the latest %3$s version.', 'wpsso' ), '<b>' . $info[ 'name' ] . '</b>', $licenses_page_link, $this->pkg_pro_transl ) . ' ;-)';
 
 						break;
 
@@ -520,7 +520,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= '</p><p>';
 
-						$text .= sprintf( __( 'The %1$s add-on is required to enable %2$s features and get %2$s updates.', 'wpsso' ), $um_info_name, $this->dist_pro ) . ' ';
+						$text .= sprintf( __( 'The %1$s add-on is required to enable %2$s features and get %2$s updates.', 'wpsso' ), $um_info_name, $this->pkg_pro_transl ) . ' ';
 
 						$text .= '</p><p>';
 
@@ -535,7 +535,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= '</p><p>';
 
-						$text .= sprintf( __( 'Once the %1$s add-on is active, %2$s updates may be available for the %3$s plugin.', 'wpsso' ), $um_info_name, $this->dist_pro, $this->p_name_pro );
+						$text .= sprintf( __( 'Once the %1$s add-on is active, %2$s updates may be available for the %3$s plugin.', 'wpsso' ), $um_info_name, $this->pkg_pro_transl, $this->p_name_pro );
 
 						$text .= '</p>';
 

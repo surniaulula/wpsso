@@ -4221,14 +4221,14 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $val;
 		}
 
-		public static function get_dist_name( $name, $type ) {
+		public static function get_dist_name( $name, $pkg ) {
 
-			if ( false !== strpos( $name, $type ) ) {
+			if ( false !== strpos( $name, $pkg ) ) {
 
-				$name = preg_replace( '/^(.*) ' . $type . '( [\[\(].+[\)\]])?$/U', '$1$2', $name );
+				$name = preg_replace( '/^(.*) ' . $pkg . '( [\[\(].+[\)\]])?$/U', '$1$2', $name );
 			}
 
-			return preg_replace( '/^(.*)( [\[\(].+[\)\]])?$/U', '$1 ' . $type . '$2', $name );
+			return preg_replace( '/^(.*)( [\[\(].+[\)\]])?$/U', '$1 ' . $pkg . '$2', $name );
 		}
 
 		/**

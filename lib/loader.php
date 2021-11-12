@@ -67,11 +67,13 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 				$type_dir = $this->p->check->pp( $ext, true, WPSSO_UNDEF, true, -1 ) === 1 ? 'pro' : 'std';
 
-				if ( ! isset( $info[ 'lib' ][ $type_dir ] ) ) {
+				$GLOBALS[ $ext . '_pkg_' . $type_dir ] = true;
+
+				if ( empty( $info[ 'lib' ][ $type_dir ] ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( $ext . ' lib/' . $type_dir . ' not defined' );
+						$this->p->debug->log( $ext . ' lib/' . $type_dir . ' is empty' );
 					}
 
 					continue;

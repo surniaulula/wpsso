@@ -124,7 +124,6 @@ _x( 'Contact Field ID', 'column title', 'wpsso' );
 _x( 'Contact Field Label', 'column title', 'wpsso' );
 _x( 'Show', 'column title', 'wpsso' );
 __( 'An SEO plugin has been detected - some basic SEO meta tags have been unchecked and disabled automatically.', 'wpsso' );
-_x( 'Include in Sitemaps', 'option label', 'wpsso' );
 _x( 'Enforce Image Dimension Checks', 'option label', 'wpsso' );
 _x( 'recommended', 'option comment', 'wpsso' );
 _x( 'Upscale Media Library Images', 'option label', 'wpsso' );

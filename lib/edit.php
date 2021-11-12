@@ -254,65 +254,65 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 				$this->p->debug->mark();
 			}
 
+			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'info-meta-robots-meta' ) . '</td>';
+
 			if ( empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
 
 				return $this->p->msgs->get_robots_disabled_rows( $table_rows );
 			}
 
-			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'info-meta-robots-meta' ) . '</td>';
-
 			$table_rows[ 'robots_noarchive' ] = '' .
-			$form->get_th_html( _x( 'No Archive', 'option label', 'wpsso' ),
-				$css_class = 'medium', $css_id = 'meta-robots_noarchive' ) . 
-			'<td>' . $form->get_checkbox( 'robots_noarchive' ) . ' ' .
-			_x( 'do not show a cached link in search results', 'option comment', 'wpsso' ) . '</td>';
+				$form->get_th_html( _x( 'No Archive', 'option label', 'wpsso' ),
+					$css_class = 'medium', $css_id = 'meta-robots_noarchive' ) . 
+				'<td>' . $form->get_checkbox( 'robots_noarchive' ) . ' ' .
+				_x( 'do not show a cached link in search results', 'option comment', 'wpsso' ) . '</td>';
 
 			$table_rows[ 'robots_nofollow' ] = '' .
-			$form->get_th_html( _x( 'No Follow', 'option label', 'wpsso' ),
-				$css_class = 'medium', $css_id = 'meta-robots_nofollow' ) . 
-			'<td>' . $form->get_checkbox( 'robots_nofollow' ) . ' ' .
-			_x( 'do not follow links on this webpage', 'option comment', 'wpsso' ) . '</td>';
+				$form->get_th_html( _x( 'No Follow', 'option label', 'wpsso' ),
+					$css_class = 'medium', $css_id = 'meta-robots_nofollow' ) . 
+				'<td>' . $form->get_checkbox( 'robots_nofollow' ) . ' ' .
+				_x( 'do not follow links on this webpage', 'option comment', 'wpsso' ) . '</td>';
 
 			$table_rows[ 'robots_noimageindex' ] = '' .
-			$form->get_th_html( _x( 'No Image Index', 'option label', 'wpsso' ),
-				$css_class = 'medium', $css_id = 'meta-robots_noimageindex' ) . 
-			'<td>' . $form->get_checkbox( 'robots_noimageindex' ) . ' ' .
-			_x( 'do not index images on this webpage', 'option comment', 'wpsso' ) . '</td>';
+				$form->get_th_html( _x( 'No Image Index', 'option label', 'wpsso' ),
+					$css_class = 'medium', $css_id = 'meta-robots_noimageindex' ) . 
+				'<td>' . $form->get_checkbox( 'robots_noimageindex' ) . ' ' .
+				_x( 'do not index images on this webpage', 'option comment', 'wpsso' ) . '</td>';
 
 			$table_rows[ 'robots_noindex' ] = '' .
-			$form->get_th_html( _x( 'No Index', 'option label', 'wpsso' ),
-				$css_class = 'medium', $css_id = 'meta-robots_noindex' ) . 
-			'<td>' . $form->get_checkbox( 'robots_noindex' ) . ' ' .
-			_x( 'do not show this webpage in search results', 'option comment', 'wpsso' ) . '</td>';
+				$form->get_th_html( _x( 'No Index', 'option label', 'wpsso' ),
+					$css_class = 'medium', $css_id = 'meta-robots_noindex' ) . 
+				'<td>' . $form->get_checkbox( 'robots_noindex' ) . ' ' .
+				_x( 'do not show this webpage in search results', 'option comment', 'wpsso' ) . '</td>';
 
 			$table_rows[ 'robots_nosnippet' ] = '' .
-			$form->get_th_html( _x( 'No Snippet', 'option label', 'wpsso' ),
-				$css_class = 'medium', $css_id = 'meta-robots_nosnippet' ) . 
-			'<td>' . $form->get_checkbox( 'robots_nosnippet' ) . ' ' .
-			_x( 'do not show a text snippet or a video preview in search results', 'option comment', 'wpsso' ) . '</td>';
+				$form->get_th_html( _x( 'No Snippet', 'option label', 'wpsso' ),
+					$css_class = 'medium', $css_id = 'meta-robots_nosnippet' ) . 
+				'<td>' . $form->get_checkbox( 'robots_nosnippet' ) . ' ' .
+				_x( 'do not show a text snippet or a video preview in search results', 'option comment', 'wpsso' ) . '</td>';
 
 			$table_rows[ 'robots_notranslate' ] = '' .
-			$form->get_th_html( _x( 'No Translate', 'option label', 'wpsso' ),
-				$css_class = 'medium', $css_id = 'meta-robots_notranslate' ) . 
-			'<td>' . $form->get_checkbox( 'robots_notranslate' ) . ' ' .
-			_x( 'do not offer translation of this webpage in search results', 'option comment', 'wpsso' ) . '</td>';
+				$form->get_th_html( _x( 'No Translate', 'option label', 'wpsso' ),
+					$css_class = 'medium', $css_id = 'meta-robots_notranslate' ) . 
+				'<td>' . $form->get_checkbox( 'robots_notranslate' ) . ' ' .
+				_x( 'do not offer translation of this webpage in search results', 'option comment', 'wpsso' ) . '</td>';
 
 			$table_rows[ 'robots_max_snippet' ] = '' .
-			$form->get_th_html( _x( 'Snippet Max. Length', 'option label', 'wpsso' ),
-				$css_class = 'medium', $css_id = 'robots_max_snippet' ) .	// Use the tooltip from plugin settings. 
-			'<td>' . $form->get_input( 'robots_max_snippet', $css_class = 'chars', $css_id = '', $len = 0, $holder = true ) . ' ' .
-			_x( 'characters or less', 'option comment', 'wpsso' ) . ' (' . _x( '-1 for no limit', 'option comment', 'wpsso' ) . ')</td>';
+				$form->get_th_html( _x( 'Snippet Max. Length', 'option label', 'wpsso' ),
+					$css_class = 'medium', $css_id = 'robots_max_snippet' ) .	// Use the tooltip from plugin settings. 
+				'<td>' . $form->get_input( 'robots_max_snippet', $css_class = 'chars', $css_id = '', $len = 0, $holder = true ) . ' ' .
+				_x( 'characters or less', 'option comment', 'wpsso' ) . ' (' . _x( '-1 for no limit', 'option comment', 'wpsso' ) . ')</td>';
 
 			$table_rows[ 'robots_max_image_preview' ] = '' .
-			$form->get_th_html( _x( 'Image Preview Size', 'option label', 'wpsso' ),
-				$css_class = 'medium', $css_id = 'robots_max_image_preview' ) .	// Use the tooltip from plugin settings.
-			'<td>' . $form->get_select( 'robots_max_image_preview', $this->p->cf[ 'form' ][ 'robots_max_image_preview' ] ) . '</td>';
+				$form->get_th_html( _x( 'Image Preview Size', 'option label', 'wpsso' ),
+					$css_class = 'medium', $css_id = 'robots_max_image_preview' ) .	// Use the tooltip from plugin settings.
+				'<td>' . $form->get_select( 'robots_max_image_preview', $this->p->cf[ 'form' ][ 'robots_max_image_preview' ] ) . '</td>';
 
 			$table_rows[ 'robots_max_video_preview' ] = '' .
-			$form->get_th_html( _x( 'Video Max. Previews', 'option label', 'wpsso' ),
-				$css_class = 'medium', $css_id = 'robots_max_video_preview' ) .	// Use the tooltip from plugin settings.
-			'<td>' . $form->get_input( 'robots_max_video_preview', $css_class = 'chars', $css_id = '', $len = 0, $holder = true ) .
-			_x( 'seconds', 'option comment', 'wpsso' ) . ' (' . _x( '-1 for no limit', 'option comment', 'wpsso' ) . ')</td>';
+				$form->get_th_html( _x( 'Video Max. Previews', 'option label', 'wpsso' ),
+					$css_class = 'medium', $css_id = 'robots_max_video_preview' ) .	// Use the tooltip from plugin settings.
+				'<td>' . $form->get_input( 'robots_max_video_preview', $css_class = 'chars', $css_id = '', $len = 0, $holder = true ) .
+				_x( 'seconds', 'option comment', 'wpsso' ) . ' (' . _x( '-1 for no limit', 'option comment', 'wpsso' ) . ')</td>';
 
 			return $table_rows;
 		}

@@ -84,7 +84,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaOpenGraph' ) ) {
 
 					$text .= __( 'Make sure your custom image is large enough or it may be ignored by social website(s).', 'wpsso' ) . ' ';
 
-					$text .= $this->fb_prefs . ' ';
+					$text .= $this->fb_prefs_transl . ' ';
 
 					$text .= '<em>' . __( 'This option is disabled if a custom image ID is selected.', 'wpsso' ) . '</em>';
 

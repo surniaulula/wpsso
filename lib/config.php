@@ -15,14 +15,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 	class WpssoConfig {
 
 		public static $cf = array(
-			'dist' => array(
+			'packages' => array(
 				'pro' => 'Premium',
 				'std' => 'Standard',
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.8.0-dev.1',	// Plugin version.
-					'opt_version' => '833',		// Increment when changing default option values.
+					'version'     => '9.8.0-dev.2',	// Plugin version.
+					'opt_version' => '834',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1178,6 +1178,65 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-wc-shipping-delivery-time/update/',
+					),
+				),
+				'wpssowpsm' => array(			// Plugin acronym.
+					'short'       => 'WPSSO WPSM',	// Short plugin name.
+					'name'        => 'WPSSO WP Sitemaps',
+					'desc'        => 'Select post and taxonomy types included in the WordPress sitemaps XML and exclude "No Index" content.',
+					'slug'        => 'wpsso-wp-sitemaps',
+					'base'        => 'wpsso-wp-sitemaps/wpsso-wp-sitemaps.php',
+					'update_auth' => '',		// No premium version.
+
+					/**
+					 * URLs or relative paths to plugin banners and icons.
+					 */
+					'assets' => array(
+
+						/**
+						 * Banner image array keys are 'low' and 'high'.
+						 */
+						'banners' => array(
+							'low'  => 'https://surniaulula.github.io/wpsso-wp-sitemaps/assets/banner-772x250.jpg',
+							'high' => 'https://surniaulula.github.io/wpsso-wp-sitemaps/assets/banner-1544x500.jpg',
+						),
+
+						/**
+						 * Icon image array keys are '1x' and '2x'.
+						 */
+						'icons' => array(
+							'1x' => 'https://surniaulula.github.io/wpsso-wp-sitemaps/assets/icon-128x128.png',
+							'2x' => 'https://surniaulula.github.io/wpsso-wp-sitemaps/assets/icon-256x256.png',
+						),
+					),
+					'hosts' => array(
+						'wp_org' => false,
+						'github' => true,
+						'wpsso'  => true,
+					),
+					'url' => array(
+
+						/**
+						 * GitHub.com.
+						 */
+						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-wp-sitemaps/master/readme.txt',
+						'setup_html' => '',
+
+						/**
+						 * WPSSO.com.
+						 */
+						'home'      => 'https://wpsso.com/extend/plugins/wpsso-wp-sitemaps/',
+						'forum'     => '',
+						'review'    => '',
+						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-wp-sitemaps/changelog/',
+						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-wp-sitemaps/',
+						'install'   => 'https://wpsso.com/docs/plugins/wpsso-wp-sitemaps/installation/',
+						'faqs'      => '',
+						'notes'     => '',
+						'support'   => '',	// Premium support ticket.
+						'purchase'  => '',	// Purchase page.
+						'info'      => '',	// License information.
+						'update'    => 'https://wpsso.com/extend/plugins/wpsso-wp-sitemaps/update/',
 					),
 				),
 			),

@@ -347,21 +347,21 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$ext_stat    = ( $ext_pp ? 'L' : ( $ext_pdir ? 'U' : 'S' ) ) . ( $ext_auth_id ? '*' : '' );
 
 				$info_name_transl = _x( $info[ 'name' ], 'plugin name', 'wpsso' );
-				$dist_pro_transl  = _x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' );
-				$dist_std_transl  = _x( $this->p->cf[ 'dist' ][ 'std' ], 'distribution name', 'wpsso' );
+				$pkg_pro_transl   = _x( $this->p->cf[ 'packages' ][ 'pro' ], 'package name', 'wpsso' );
+				$pkg_std_transl   = _x( $this->p->cf[ 'packages' ][ 'std' ], 'package name', 'wpsso' );
 
-				$pkg_info[ $ext ][ 'pdir' ]       = $ext_pdir;
-				$pkg_info[ $ext ][ 'pp' ]         = $ext_pp;
-				$pkg_info[ $ext ][ 'dist' ]       = $ext_pp ? $dist_pro_transl : $dist_std_transl;
-				$pkg_info[ $ext ][ 'short' ]      = $info[ 'short' ];
-				$pkg_info[ $ext ][ 'short_dist' ] = $info[ 'short' ] . ' ' . $pkg_info[ $ext ][ 'dist' ];
-				$pkg_info[ $ext ][ 'short_pro' ]  = $info[ 'short' ] . ' ' . $dist_pro_transl;
-				$pkg_info[ $ext ][ 'short_std' ]  = $info[ 'short' ] . ' ' . $dist_std_transl;
-				$pkg_info[ $ext ][ 'gen' ]        = $info[ 'short' ] . ( isset( $info[ 'version' ] ) ? ' ' . $info[ 'version' ] . '/' . $ext_stat : '' );
-				$pkg_info[ $ext ][ 'name' ]       = $info_name_transl;
-				$pkg_info[ $ext ][ 'name_dist' ]  = SucomUtil::get_dist_name( $info_name_transl, $pkg_info[ $ext ][ 'dist' ] );
-				$pkg_info[ $ext ][ 'name_pro' ]   = SucomUtil::get_dist_name( $info_name_transl, $dist_pro_transl );
-				$pkg_info[ $ext ][ 'name_std' ]   = SucomUtil::get_dist_name( $info_name_transl, $dist_std_transl );
+				$pkg_info[ $ext ][ 'pdir' ]      = $ext_pdir;
+				$pkg_info[ $ext ][ 'pp' ]        = $ext_pp;
+				$pkg_info[ $ext ][ 'pkg' ]       = $ext_pp ? $pkg_pro_transl : $pkg_std_transl;
+				$pkg_info[ $ext ][ 'short' ]     = $info[ 'short' ];
+				$pkg_info[ $ext ][ 'short_pkg' ] = $info[ 'short' ] . ' ' . $pkg_info[ $ext ][ 'pkg' ];
+				$pkg_info[ $ext ][ 'short_pro' ] = $info[ 'short' ] . ' ' . $pkg_pro_transl;
+				$pkg_info[ $ext ][ 'short_std' ] = $info[ 'short' ] . ' ' . $pkg_std_transl;
+				$pkg_info[ $ext ][ 'gen' ]       = $info[ 'short' ] . ( isset( $info[ 'version' ] ) ? ' ' . $info[ 'version' ] . '/' . $ext_stat : '' );
+				$pkg_info[ $ext ][ 'name' ]      = $info_name_transl;
+				$pkg_info[ $ext ][ 'name_pkg' ]  = SucomUtil::get_dist_name( $info_name_transl, $pkg_info[ $ext ][ 'pkg' ] );
+				$pkg_info[ $ext ][ 'name_pro' ]  = SucomUtil::get_dist_name( $info_name_transl, $pkg_pro_transl );
+				$pkg_info[ $ext ][ 'name_std' ]  = SucomUtil::get_dist_name( $info_name_transl, $pkg_std_transl );
 			}
 
 			return self::$pkg_cache = $pkg_info;
@@ -645,7 +645,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected function add_menu_page( $menu_slug ) {
 
 			$pkg_info    = $this->get_pkg_info();	// Returns an array from cache.
-			$page_title  = $pkg_info[ 'wpsso' ][ 'short_dist' ] . ' - ' . $this->menu_name;
+			$page_title  = $pkg_info[ 'wpsso' ][ 'short_pkg' ] . ' - ' . $this->menu_name;
 			$menu_title  = _x( $this->p->cf[ 'menu' ][ 'title' ], 'menu title', 'wpsso' );
 			$cf_wp_admin = $this->p->cf[ 'wp' ][ 'admin' ];
 			$capability  = isset( $cf_wp_admin[ $this->menu_lib ][ 'cap' ] ) ? $cf_wp_admin[ $this->menu_lib ][ 'cap' ] : 'manage_options';
@@ -700,7 +700,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			$pkg_info    = $this->get_pkg_info();	// Returns an array from cache.
-			$page_title  = $pkg_info[ $menu_ext ][ 'short_dist' ] . ' - ' . $menu_name;
+			$page_title  = $pkg_info[ $menu_ext ][ 'short_pkg' ] . ' - ' . $menu_name;
 			$cf_wp_admin = $this->p->cf[ 'wp' ][ 'admin' ];
 			$capability  = isset( $cf_wp_admin[ $menu_lib ][ 'cap' ] ) ? $cf_wp_admin[ $menu_lib ][ 'cap' ] : 'manage_options';
 			$menu_slug   = 'wpsso-' . $menu_id;
@@ -837,7 +837,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$action_links[] = '<a href="' . $info[ 'url' ][ 'support' ] . '"' .
 					( false !== $tabindex ? ' tabindex="' . ++$tabindex . '"' : '' ) . '>' .
 						sprintf( _x( '%s Support', 'plugin action link', 'wpsso' ),
-							_x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' ) ) . '</a>';
+							_x( $this->p->cf[ 'packages' ][ 'pro' ], 'package name', 'wpsso' ) ) . '</a>';
 
 			} elseif ( ! empty( $info[ 'url' ][ 'forum' ] ) ) {
 
@@ -1982,7 +1982,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						$td_style_attr = 'style="background-color:#f00;"';	// Red background.
 
-					} elseif ( preg_match( '/[a-z]/', $plugin_version ) ) {	// Current but not stable (alpha chars in version).
+					} elseif ( preg_match( '/[a-z]/', $plugin_version ) ) {		// Current but not stable (alpha chars in version).
 
 						$td_style_attr = 'style="background-color:#ff0;"';	// Yellow background.
 
@@ -2449,7 +2449,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $ext_sorted as $ext => $info ) {
 
-				if ( empty( $info[ 'update_auth' ] ) ) {	// Only show plugins with Premium editions.
+				if ( empty( $info[ 'update_auth' ] ) ) {	// Only show plugins with Premium packages.
 
 					unset( $ext_sorted[ $ext ] );
 				}
@@ -2656,9 +2656,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$footer_html = '<div class="admin-footer-ext">';
 
-			if ( isset( $pkg_info[ $this->menu_ext ][ 'name_dist' ] ) ) {
+			if ( isset( $pkg_info[ $this->menu_ext ][ 'name_pkg' ] ) ) {
 
-				$footer_html .= $pkg_info[ $this->menu_ext ][ 'name_dist' ] . '<br/>';
+				$footer_html .= $pkg_info[ $this->menu_ext ][ 'name_pkg' ] . '<br/>';
 			}
 
 			if ( isset( $pkg_info[ $this->menu_ext ][ 'gen' ] ) ) {
@@ -3181,7 +3181,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				// translators: %1$s is the URL, %2$s is the short plugin name.
 				$notice_transl = __( 'You may <a href="%1$s">refresh the update information for %2$s and its add-ons</a> to check if newer versions are available.', 'wpsso' );
 
-				$notice_msg = sprintf( $notice_transl, $check_url, $pkg_info[ 'wpsso' ][ 'short_dist' ] );
+				$notice_msg = sprintf( $notice_transl, $check_url, $pkg_info[ 'wpsso' ][ 'short_pkg' ] );
 
 			} elseif ( empty( $_GET[ 'force-check' ] ) ) {
 

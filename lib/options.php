@@ -975,7 +975,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				'og_type_for'                => 'article',	// Advanced Settings > Document Types > Open Graph > Type by Post Type.
 				'plugin_add_to'              => 1,		// Advanced Settings > Plugin Settings > Interface > Show Document SSO Metabox.
 				'plugin_ratings_reviews_for' => 0,		// Advanced Settings > Service APIs > Ratings and Reviews > Get Reviews for Post Type.
-				'plugin_sitemaps_for'        => 1,		// Advanced Settings > WordPress Sitemaps > Post Types > Include Post Type.
 				'schema_type_for'            => 'webpage',	// Advanced Settings > Document Types > Schema > Type by Post Type.
 			) );
 
@@ -988,9 +987,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			$this->p->util->add_taxonomy_names( $opts, array(
-				'og_type_for_tax'     => 'website',	// Advanced Settings > Document Types > Open Graph > Type by Taxonomy.
-				'plugin_add_to_tax'   => 1,		// Advanced Settings > Plugin Settings > Interface > Show Document SSO Metabox.
-				'schema_type_for_tax' => 'item.list',	// Advanced Settings > Document Types > Schema > Type by Taxonomy.
+				'og_type_for_tax'         => 'website',		// Advanced Settings > Document Types > Open Graph > Type by Taxonomy.
+				'plugin_add_to_tax'       => 1,			// Advanced Settings > Plugin Settings > Interface > Show Document SSO Metabox.
+				'schema_type_for_tax'     => 'item.list',	// Advanced Settings > Document Types > Schema > Type by Taxonomy.
 			) );
 		}
 

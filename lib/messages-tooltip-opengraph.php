@@ -124,7 +124,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipOpenGraph' ) ) {
 
 					$text = sprintf( __( 'The image dimensions used for Facebook / Open Graph meta tags and oEmbed markup (the default dimensions are %s).', 'wpsso' ), $def_img_dims ) . ' ';
 
-					$text .= $this->fb_prefs;
+					$text .= $this->fb_prefs_transl;
 
 					break;
 

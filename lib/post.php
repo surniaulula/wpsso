@@ -2049,7 +2049,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		 *
 		 * Returns an associative array of term IDs and their names or objects.
 		 *
-		 * The primary or default term ID will be included as the first array element.
+		 * If the custom primary or default term ID exists in the post terms array, it will be moved to the top.
 		 */
 		public function get_primary_terms( array $mod, $tax_slug = 'category', $output = 'objects' ) {
 
@@ -2075,11 +2075,24 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					if ( $primary_term_obj ) {
 
-						$post_terms = wp_get_post_terms( $post_id, $primary_tax_slug, $args = array( 'exclude' => array( $primary_term_id ) ) );
+						$post_terms = wp_get_post_terms( $post_id, $primary_tax_slug );
 
 						if ( ! empty( $post_terms ) && is_array( $post_terms ) ) {	// Have one or more terms and taxonomy exists.
 
-							$post_terms = array_merge( array( $primary_term_obj ), $post_terms );
+							/**
+							 * If the primary or default term ID exists in the post terms array, move it to the top.
+							 */
+							foreach ( $post_terms as $num => $term_obj ) {
+
+								if ( $primary_term_obj->term_id === $term_obj->term_id ) {
+
+									unset( $post_terms[ $num ] );
+							
+									$post_terms = array_merge( array( $primary_term_obj ), $post_terms );
+
+									break;	// No need to continue.
+								}
+							}
 
 						} else {
 

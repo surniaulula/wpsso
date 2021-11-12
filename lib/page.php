@@ -178,6 +178,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 		/**
 		 * Determine and return the post/user/term module array.
+		 *
+		 * If any custom modifications are required to the WP_Query 'query_vars', they should be done before the 'wp_head'
+		 * action is triggered. The WpssoHead->show_head() method calls WpssoPage->get_mod() to determine the current
+		 * WordPress object (comment, post, term, or user), if any, and saves the 'query_vars' value for WordPress archive
+		 * queries.
 		 */
 		public function get_mod( $use_post = false, $mod = false, $wp_obj = false ) {
 
@@ -362,7 +367,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			global $wp_query;
 
-			$mod[ 'query_vars' ]    = $wp_query->query_vars;
+			$mod[ 'query_vars' ] = $wp_query->query_vars;
+
 			$mod[ 'max_num_pages' ] = empty( $wp_query->max_num_pages ) ? 0 : $wp_query->max_num_pages;
 
 			$mod[ 'use_post' ] = $use_post;

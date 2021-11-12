@@ -1823,7 +1823,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			/**
 			 * Returns an associative array of term IDs and their names or objects.
 			 *
-			 * The primary or default term ID will be included as the first array element.
+			 * If the custom primary or default term ID exists in the post terms array, it will be moved to the top.
 			 */
 			$post_terms = $this->p->post->get_primary_terms( $mod, $tax_slug = 'category', $output = 'objects' );
 

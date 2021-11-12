@@ -1586,9 +1586,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			 */
 			if ( false === $selected ) {
 
-				if ( empty( $this->options[ $name ] ) || 
-					( 'none' !== $this->options[ $name ] && 
-						2 !== strlen( $this->options[ $name ] ) ) ) {
+				if ( empty( $this->options[ $name ] ) || ( 'none' !== $this->options[ $name ] && 2 !== strlen( $this->options[ $name ] ) ) ) {
 
 					$selected = $this->defaults[ $name ];
 				}

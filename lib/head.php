@@ -30,6 +30,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->mark();
 			}
 
+			/**
+			 * If any custom modifications are required to the WP_Query 'query_vars', they should be done before the
+			 * 'wp_head' action is triggered. The WpssoHead->show_head() method calls WpssoPage->get_mod() to determine
+			 * the current WordPress object (comment, post, term, or user), if any, and saves the 'query_vars' value
+			 * for WordPress archive queries.
+			 */
 			add_action( 'wp_head', array( $this, 'show_head' ), WPSSO_HEAD_PRIORITY );
 
 			/**
@@ -111,6 +117,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 		/**
 		 * Called by 'wp_head' and 'amp_post_template_head' actions.
+		 *
+		 * If any custom modifications are required to the WP_Query 'query_vars', they should be done before the 'wp_head'
+		 * action is triggered. The WpssoHead->show_head() method calls WpssoPage->get_mod() to determine the current
+		 * WordPress object (comment, post, term, or user), if any, and saves the 'query_vars' value for WordPress archive
+		 * queries.
 		 */
 		public function show_head() {
 

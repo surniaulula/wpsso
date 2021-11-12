@@ -535,30 +535,30 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				return 0;
 			}
 
-			$form            = $this->p->admin->get_form_object( 'wpsso' );
-			$user_id         = get_current_user_id();
-			$p_info          = $this->p->cf[ 'plugin' ][ 'wpsso' ];
-			$p_name_transl   = _x( $p_info[ 'name' ], 'plugin name', 'wpsso' );
-			$p_purchase_url  = $p_info[ 'url' ][ 'purchase' ];
-			$wp_plugin_link  = '<a href="' . $p_info[ 'url' ][ 'home' ] . '">' . $p_name_transl . '</a>';
-			$dist_pro_transl = _x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' );
-			$dist_std_transl = _x( $this->p->cf[ 'dist' ][ 'std' ], 'distribution name', 'wpsso' );
-			$notice_key      = 'timed-notice-wpsso-pro-purchase-notice';
-			$dismiss_time    = true;	// Allow the notice to be dismissed forever.
+			$form           = $this->p->admin->get_form_object( 'wpsso' );
+			$user_id        = get_current_user_id();
+			$p_info         = $this->p->cf[ 'plugin' ][ 'wpsso' ];
+			$p_name_transl  = _x( $p_info[ 'name' ], 'plugin name', 'wpsso' );
+			$p_purchase_url = $p_info[ 'url' ][ 'purchase' ];
+			$wp_plugin_link = '<a href="' . $p_info[ 'url' ][ 'home' ] . '">' . $p_name_transl . '</a>';
+			$pkg_pro_transl = _x( $this->p->cf[ 'packages' ][ 'pro' ], 'package name', 'wpsso' );
+			$pkg_std_transl = _x( $this->p->cf[ 'packages' ][ 'std' ], 'package name', 'wpsso' );
+			$notice_key     = 'timed-notice-wpsso-pro-purchase-notice';
+			$dismiss_time   = true;	// Allow the notice to be dismissed forever.
 
 			/**
 			 * The action buttons.
 			 */
-			$purchase_label = sprintf( __( 'Yes! I\'d like to get the %s version!', 'wpsso' ), $dist_pro_transl );
+			$purchase_label = sprintf( __( 'Yes! I\'d like to get the %s edition!', 'wpsso' ), $pkg_pro_transl );
 
-			$no_thanks_label = sprintf( __( 'No thanks. I\'ll stay with the %s version.', 'wpsso' ), $dist_std_transl );
+			$no_thanks_label = sprintf( __( 'No thanks. I\'ll stay with the %s edition.', 'wpsso' ), $pkg_std_transl );
 
 			$purchase_clicked = '<p><b>' . __( 'Awesome!', 'wpsso' ) . '</b> ' .
 				sprintf( __( 'Thank you for encouraging and supporting the continued development of %s.',
 					'wpsso' ), $p_name_transl ) . '</p>';
 
 			$no_thanks_clicked = '<p>' . __( 'Thank you.', 'wpsso' ) . ' ' . 
-				sprintf( __( 'Hopefully you\'ll change your mind in the future and help support the continued development of %s.',
+				sprintf( __( 'Hopefully you\'ll change your mind and help support the continued development of %s.',
 					'wpsso' ), $p_name_transl ) . '</p>';
 
 			$purchase_button  = '<div class="notice-single-button">' .
@@ -584,21 +584,17 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 			$notice_msg .= '<b>' . __( 'Fantastic!', 'wpsso' ) . '</b> ';
 
-			$notice_msg .= sprintf( __( 'You\'ve been using %1$s for more than %2$s now, which is awesome!', 'wpsso' ),
-				$wp_plugin_link, $months_ago_transl );
+			$notice_msg .= sprintf( __( 'You\'ve been using %1$s for more than %2$s now, which is awesome!', 'wpsso' ), $wp_plugin_link, $months_ago_transl );
 
 			$notice_msg .= '</p><p>';
 
-			$notice_msg .= sprintf( __( 'We\'ve put many years of time and effort into making %s and its add-ons the best possible.', 'wpsso' ),
-				$p_name_transl ) . ' ';
+			$notice_msg .= sprintf( __( 'We\'ve put many years of time and effort into making %s and its add-ons the best possible.', 'wpsso' ), $p_name_transl ) . ' ';
 
-			$notice_msg .= sprintf( __( 'I hope you\'ve enjoyed all the new features, improvements and updates over the past %s.', 'wpsso' ),
-				$months_ago_transl );
+			$notice_msg .= sprintf( __( 'I hope you\'ve enjoyed all the new features, improvements and updates over the past %s.', 'wpsso' ), $months_ago_transl );
 
 			$notice_msg .= '</p><p>';
 
-			$notice_msg .= sprintf( __( 'Have you thought about purchasing the %s version? It comes with a lot of great extra features!', 'wpsso' ),
-				$dist_pro_transl );
+			$notice_msg .= sprintf( __( 'Have you thought about purchasing the %s edition? It comes with a lot of great extra features!', 'wpsso' ), $pkg_pro_transl );
 
 			$notice_msg .= '</p>';
 

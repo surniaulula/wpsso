@@ -723,7 +723,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$metabox_context = 'normal';
 
 			echo "\n" . '<!-- wpsso term metabox section begin -->' . "\n";
-			echo '<h3>' . $pkg_info[ 'wpsso' ][ 'short_dist' ] . '</h3>' . "\n";
+			echo '<h3>' . $pkg_info[ 'wpsso' ][ 'short_pkg' ] . '</h3>' . "\n";
 			echo '<div id="poststuff" class="wpsso-metaboxes metabox-holder">' . "\n";
 
 			do_meta_boxes( $metabox_screen, $metabox_context, $term_obj );

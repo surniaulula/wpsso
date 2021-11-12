@@ -75,37 +75,68 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 
 		public function get_directives( array $mod ) {
 
+			$md_opts = array();
+
 			$directives = self::get_default_directives();
 
 			/**
-			 * Maybe get post, term, and user meta.
+			 * Ignore custom options if the robots meta tag is disabled.
 			 */
-			if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
+			if ( ! empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
 
-				$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
+				if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 
-			} else {
-
-				$md_opts = array();
+					$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
+				}
 			}
 
-			foreach ( $directives as $directive_key => $directive_value ) {
+			foreach ( $directives as $directive_key => $default_value ) {
+
+				$value = null;
 
 				$opt_key = str_replace( '-', '_', 'robots_' . $directive_key );	// Convert dashes to underscores.
 
 				/**
-				 * Maybe use a custom directive value for this webpage.
+				 * Ignore custom options if the robots meta tag is disabled.
 				 */
-				if ( isset( $md_opts[ $opt_key ] ) ) {
+				if ( ! empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
+			
+					if ( isset( $md_opts[ $opt_key ] ) ) {
 
-					self::set_directive( $directive_key, $md_opts[ $opt_key ], $directives );
+						$value = $md_opts[ $opt_key ];
+					}
+				}
 
 				/**
-				 * Maybe read a default value from the plugin settings.
+				 * Fallback to a default value.
 				 */
-				} elseif ( isset( $this->p->options[ $opt_key ] ) ) {
+				if ( null === $value ) {
 
-					self::set_directive( $directive_key, $this->p->options[ $opt_key ], $directives );
+					/**
+					 * Get the default value from the plugin settings for these options:
+					 *
+					 *	'robots_max_snippet'       => -1,
+					 *	'robots_max_image_preview' => 'large',
+					 *	'robots_max_video_preview' => -1,
+					 */
+					if ( isset( $this->p->options[ $opt_key ] ) ) {
+
+						$value = $this->p->options[ $opt_key ];
+
+					} else {
+
+						$value = $default_value;
+					}
+				}
+
+				if ( 'noindex' === $directive_key ) {
+
+					$value = apply_filters( 'wpsso_robots_is_noindex', $value, $mod );
+				}
+
+				if ( $default_value !== $value ) {
+
+					self::set_directive( $directive_key, $value, $directives );
 				}
 			}
 
@@ -114,24 +145,51 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 			 */
 			self::sanitize_directives( $directives );
 
-			return $directives;
+			return apply_filters( 'wpsso_robots_directives', $directives, $mod );
 		}
 
-		public function is_noindex( $mod_name, $mod_id ) {
+		/**
+		 * $mixed can be a $mod array, or the name of a module (ie. 'post', 'term', etc.).
+		 */
+		public function is_noindex( $mixed, $mod_id = null ) {
 
-			if ( $mod_name && $mod_id && isset( $this->p->$mod_name ) ) {	// Just in case.
+			$is_noindex = null;
 
-				$md_opts = $this->p->$mod_name->get_options( $mod_id );
+			$mod = false;
 
-				if ( isset( $md_opts[ 'robots_noindex' ] ) ) {
+			if ( ! empty( $mixed[ 'obj' ] ) ) {
 
-					return $md_opts[ 'robots_noindex' ] ? true : false;
+				$mod =& $mixed;
+
+			} elseif ( is_string( $mixed ) && isset( $this->p->$mixed ) && $mod_id ) {	// Just in case.
+
+				$mod = $this->p->$mixed->get_mod( $mod_id );
+			}
+
+			/**
+			 * Ignore custom options if the robots meta tag is disabled.
+			 */
+			if ( ! empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
+
+				if ( $mod ) {	// Not false.
+
+					$md_opts = $mod[ 'obj' ]->get_options( $mod_id );
+
+					if ( isset( $md_opts[ 'robots_noindex' ] ) ) {
+
+						$is_noindex = $md_opts[ 'robots_noindex' ] ? true : false;
+					}
 				}
 			}
 
-			$directives = self::get_default_directives();
+			if ( null === $is_noindex ) {	// No custom options found.
 
-			return $directives[ 'noindex' ] ? true : false;
+				$directives = self::get_default_directives();
+
+				$is_noindex = $directives[ 'noindex' ] ? true : false;
+			}
+
+			return apply_filters( 'wpsso_robots_is_noindex', $is_noindex, $mod );
 		}
 	}
 }

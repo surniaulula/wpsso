@@ -55,11 +55,11 @@ if ( ! class_exists( 'WpssoMessagesInfo' ) ) {
 
 					$text .= '<p>';
 
-					$text .= sprintf( __( 'After purchasing a %1$s license pack, you will receive an email with %2$s installation instructions and your unique Authentication ID for the license pack.', 'wpsso' ), $this->p_name_pro, $this->dist_pro ) . ' ';
+					$text .= sprintf( __( 'After purchasing a %1$s license pack, you will receive an email with %2$s installation instructions and your unique Authentication ID for the license pack.', 'wpsso' ), $this->p_name_pro, $this->pkg_pro_transl ) . ' ';
 
 					$text .=  __( 'Enter the Authentication ID in the option field below.', 'wpsso' ) . ' ';
 
-					$text .= sprintf( __( 'As mentioned in the installation instructions, don\'t forget that the %1$s add-on must be installed and active to enable %2$s features and get %2$s updates.', 'wpsso' ), $um_addon_link, $this->dist_pro );
+					$text .= sprintf( __( 'As mentioned in the installation instructions, don\'t forget that the %1$s add-on must be installed and active to enable %2$s features and get %2$s updates.', 'wpsso' ), $um_addon_link, $this->pkg_pro_transl );
 
 					$text .= '</p>';
 
@@ -79,7 +79,7 @@ if ( ! class_exists( 'WpssoMessagesInfo' ) ) {
 
 					$text .= '<p>';
 
-					$text .= sprintf( __( 'After purchasing a %1$s license pack, you will receive an email with %2$s installation instructions and your unique Authentication ID for the license pack.', 'wpsso' ), $this->p_name_pro, $this->dist_pro ) . ' ';
+					$text .= sprintf( __( 'After purchasing a %1$s license pack, you will receive an email with %2$s installation instructions and your unique Authentication ID for the license pack.', 'wpsso' ), $this->p_name_pro, $this->pkg_pro_transl ) . ' ';
 
 					$text .= sprintf( __( 'You may enter the Authentication ID in this settings page to define a value for all sites within the network, or enter the Authentication ID individually in each site\'s %1$s settings page.', 'wpsso' ), $licenses_page_link ) . ' ';
 
@@ -87,7 +87,7 @@ if ( ! class_exists( 'WpssoMessagesInfo' ) ) {
 
 					$text .= '</p><p>';
 
-					$text .= sprintf( __( 'WordPress uses the default blog (ie. BLOG_ID_CURRENT_SITE) to manage updates in the network admin interface, which means the default blog must be licensed to install %1$s updates.', 'wpsso' ), $this->dist_pro ) . ' ';
+					$text .= sprintf( __( 'WordPress uses the default blog (ie. BLOG_ID_CURRENT_SITE) to manage updates in the network admin interface, which means the default blog must be licensed to install %1$s updates.', 'wpsso' ), $this->pkg_pro_transl ) . ' ';
 
 					$text .= sprintf( __( 'To update the %1$s plugin, make sure the %2$s add-on is active on the default blog, and the default blog is licensed.', 'wpsso' ), $this->p_name_pro, $um_info_name );
 
@@ -262,29 +262,6 @@ if ( ! class_exists( 'WpssoMessagesInfo' ) ) {
 					$text .= __( 'Image sizes that use the same dimensions and crop settings will create just one image file.', 'wpsso' ) . ' ';
 
 					$text .= sprintf( __( 'The default dimensions and crop settings from %1$s create only %2$s image files from an original full size image (provided the original image is large enough or image upscaling has been enabled).', 'wpsso' ), $info[ 'short' ], __( 'five', 'wpsso' ) );
-
-					$text .= '</p>';
-
-					$text .= '</blockquote>';
-
-					break;
-
-				case 'info-wp_sitemaps':
-
-					$sitemap_url    = get_site_url( $blog_id = null, $path = '/wp-sitemap.xml' );
-					$no_index_label = _x( 'No Index', 'option label', 'wpsso' );
-					$mb_title       = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
-					$robots_tab     = _x( 'Robots Meta', 'metabox tab', 'wpsso' );
-
-					$text = '<blockquote class="top-info">';
-
-					$text .= '<p>';
-
-					$text .= sprintf( __( '%1$s extends the built-in WordPress sitemaps XML, <a href="%2$s">available since WordPress version 5.5</a>.', 'wpsso' ), $info[ 'short' ], __( 'https://make.wordpress.org/core/2020/07/22/new-xml-sitemaps-functionality-in-wordpress-5-5/', 'wpsso' ) ) . ' ';
-
-					$text .= sprintf( __( 'These options allow you to customize the post and taxonomy types included in the <a href="%s">WordPress sitemaps XML</a>.', 'wpsso' ), $sitemap_url ) . ' ';
-
-					$text .= sprintf( __( 'To <strong>exclude</strong> individual posts, pages, custom post types, taxonomy terms (categories, tags, etc.), or user profile pages from the WordPress sitemaps XML, enable the <strong>%1$s</strong> option under their individual %2$s &gt; %3$s tabs.', 'wpsso' ), $no_index_label, $mb_title, $robots_tab ) . ' ';
 
 					$text .= '</p>';
 

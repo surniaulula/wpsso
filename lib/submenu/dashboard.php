@@ -89,8 +89,8 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 
 			$metabox_ids = array();
 
-			$dist_pro_name = _x( $this->p->cf[ 'dist' ][ 'pro' ], 'distribution name', 'wpsso' );
-			$dist_std_name = _x( $this->p->cf[ 'dist' ][ 'std' ], 'distribution name', 'wpsso' );
+			$pkg_pro_transl = _x( $this->p->cf[ 'packages' ][ 'pro' ], 'package name', 'wpsso' );
+			$pkg_std_transl = _x( $this->p->cf[ 'packages' ][ 'std' ], 'package name', 'wpsso' );
 
 			/**
 			 * Don't include the 'cache_status' metabox if we're using an external object cache.
@@ -105,8 +105,8 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 			$metabox_ids[ 'rate_review' ]  = _x( 'Your Rating is Important', 'metabox title', 'wpsso' );
 			$metabox_ids[ 'help_support' ] = _x( 'Help and Support', 'metabox title', 'wpsso' );
 			$metabox_ids[ 'version_info' ] = _x( 'Version Information', 'metabox title', 'wpsso' );
-			$metabox_ids[ 'status_std' ]   = sprintf( _x( '%s Features', 'metabox title', 'wpsso' ), $dist_std_name );
-			$metabox_ids[ 'status_pro' ]   = sprintf( _x( '%s Features', 'metabox title', 'wpsso' ), $dist_pro_name );
+			$metabox_ids[ 'status_std' ]   = sprintf( _x( '%s Features', 'metabox title', 'wpsso' ), $pkg_std_transl );
+			$metabox_ids[ 'status_pro' ]   = sprintf( _x( '%s Features', 'metabox title', 'wpsso' ), $pkg_pro_transl );
 
 			$max_cols = 2;
 

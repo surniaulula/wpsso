@@ -227,6 +227,10 @@
 
 'wpsso_robots_content' ( $content, $mod, $directives )
 
+'wpsso_robots_directives' ( $directives, $mod )
+
+'wpsso_robots_is_noindex' ( $is_noindex, $mod )
+
 'wpsso_save_setting_options' ( $opts, $network, $upgrading )
 
 'wpsso_save_post_options' ( $opts, $post_id, $rel_id, $mod )
