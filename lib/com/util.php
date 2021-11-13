@@ -2972,19 +2972,22 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function restore_checkboxes( &$opts ) {
 
-			/**
-			 * Unchecked checkboxes are not provided, so re-create them here based on hidden values.
-			 */
-			$checkbox = self::preg_grep_keys( '/^is_checkbox_/', $opts, $invert = false, $replace = '' );
+			if ( is_array( $opts ) ) {	// Just in case.
 
-			foreach ( $checkbox as $key => $val ) {
+				/**
+				 * Unchecked checkboxes are not provided, so re-create them here based on hidden values.
+				 */
+				$checkbox = self::preg_grep_keys( '/^is_checkbox_/', $opts, $invert = false, $replace = '' );
 
-				if ( ! array_key_exists( $key, $opts ) ) {
-
-					$opts[ $key ] = 0; // Add missing checkbox as empty.
+				foreach ( $checkbox as $key => $val ) {
+	
+					if ( ! array_key_exists( $key, $opts ) ) {
+	
+						$opts[ $key ] = 0; // Add missing checkbox as empty.
+					}
+	
+					unset ( $opts[ 'is_checkbox_' . $key] );
 				}
-
-				unset ( $opts[ 'is_checkbox_' . $key] );
 			}
 
 			return $opts;

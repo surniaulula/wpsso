@@ -1071,17 +1071,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function registered_setting_sanitation( $opts ) {
 
 			/**
-			 * Just in case - make sure we do not return or save empty settings.
-			 */
-			if ( ! is_array( $opts ) ) {
-
-				$opts = $this->p->options;
-			}
-
-			/**
 			 * Clear any old notices for the current user before sanitation checks.
 			 */
 			$this->p->notice->clear();
+
+			/**
+			 * Make sure the input is an array.
+			 */
+			if ( ! is_array( $opts ) ) {
+
+				$opts = array();
+			}
 
 			$def_opts = $this->p->opt->get_defaults();
 
@@ -1171,9 +1171,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 */
 			$this->p->notice->clear();
 
+			/**
+			 * Make sure the input is an array.
+			 */
+			$opts = array();
+
+			if ( isset( $_POST[ WPSSO_SITE_OPTIONS_NAME ] ) && is_array( $_POST[ WPSSO_SITE_OPTIONS_NAME ] ) ) {
+			
+				$opts = $_POST[ WPSSO_SITE_OPTIONS_NAME ];
+			}
+
 			$def_opts = $this->p->opt->get_site_defaults();
 
-			$opts = SucomUtil::restore_checkboxes( $_POST[ WPSSO_SITE_OPTIONS_NAME ] );
+			$opts = SucomUtil::restore_checkboxes( $opts );
 			$opts = array_merge( $this->p->site_options, $opts );
 			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network = true );
 			$opts = apply_filters( 'wpsso_save_setting_options', $opts, $network = true, $upgrading = false );
