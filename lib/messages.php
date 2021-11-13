@@ -871,7 +871,16 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 		 */
 		public function wp_sitemaps_disabled() {
 
-			$html = '<p class="status-msg">' . __( 'WordPress sitemaps are disabled.', 'wpsso' ) . '</p>';
+			$html = '';
+
+			$is_public = get_option( 'blog_public' );
+
+			if ( ! $is_public ) {
+			
+				$html .= '<p class="status-msg">' . __( 'WordPress is set to discourage search engines from indexing this site.', 'wpsso' ) . '</p>';
+			}
+
+			$html .= '<p class="status-msg">' . __( 'WordPress sitemaps are disabled.', 'wpsso' ) . '</p>';
 
 			$html .= '<p class="status-msg">' . __( 'No options available.', 'wpsso' ) . '</p>';
 

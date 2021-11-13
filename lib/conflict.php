@@ -322,8 +322,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 		private function conflict_check_wp() {
 
-			$is_production = function_exists( 'wp_get_environment_type' ) &&	// Since WP v5.5.
-				'production' === wp_get_environment_type() ? true : false;
+			$is_production = function_exists( 'wp_get_environment_type' ) && 'production' === wp_get_environment_type() ? true : false;	// Since WP v5.5.
 
 			$is_public = get_option( 'blog_public' );
 
