@@ -4767,27 +4767,22 @@ msgctxt "lib file description"
 msgid "(code) Twitter Card Meta Tags"
 msgstr ""
 
-#: lib/admin-filters.php:179
-msgctxt "lib file description"
-msgid "(code) WP Sitemaps Enhancements"
-msgstr ""
-
-#: lib/admin-filters.php:204
+#: lib/admin-filters.php:199
 msgctxt "lib file description"
 msgid "(code) Knowledge Graph Organization Markup"
 msgstr ""
 
-#: lib/admin-filters.php:210
+#: lib/admin-filters.php:205
 msgctxt "lib file description"
 msgid "(code) Knowledge Graph Person Markup"
 msgstr ""
 
-#: lib/admin-filters.php:216
+#: lib/admin-filters.php:211
 msgctxt "lib file description"
 msgid "(code) Knowledge Graph WebSite Markup"
 msgstr ""
 
-#: lib/admin-filters.php:246
+#: lib/admin-filters.php:241
 msgid "(%d sub-types)"
 msgstr ""
 

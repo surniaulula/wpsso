@@ -175,11 +175,6 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 				'status'       => class_exists( 'WpssoTwitterCard' ) ? 'on' : 'recommended',
 			);
 
-			$features[ '(code) WP Sitemaps Enhancements' ] = array(
-				'label_transl' => _x( '(code) WP Sitemaps Enhancements', 'lib file description', 'wpsso' ),
-				'status'       => SucomUtilWP::sitemaps_enabled() ? 'on' : 'off',
-			);
-
 			return $this->filter_status_std_features_schema( $features, $ext, $info );
 		}
 
