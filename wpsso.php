@@ -86,6 +86,8 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $site_options = array();	// Multisite options.
 		public $sc           = array();	// Shortcodes.
 
+		private $is_pp = null;		// Since WPSSO Core v9.8.0.
+
 		private static $instance = null;	// Wpsso class object.
 
 		/**
@@ -272,8 +274,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		 */
 		public function set_objects( $activate = false ) {
 
-			$is_admin   = is_admin() ? true : false;
-			$doing_ajax = defined( 'DOING_AJAX' ) ? DOING_AJAX : false;
+			$is_admin   = is_admin();
 			$doing_cron = defined( 'DOING_CRON' ) ? DOING_CRON : false;
 			$debug_log  = false;
 			$debug_html = false;
@@ -311,6 +312,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			 */
 			$this->check = new WpssoCheck( $this );
 
+			$this->is_pp = $this->check->is_pp();		// Since WPSSO Core v9.8.0.
 			$this->avail = $this->check->get_avail();	// Uses $this->options for availability checks.
 
 			/**
@@ -445,7 +447,9 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			/**
 			 * Init additional class objects.
 			 */
-			do_action( 'wpsso_init_objects', $is_admin, $doing_ajax, $doing_cron );
+			do_action( 'wpsso_init_objects' );
+
+			do_action( 'wpsso_init_objects_' . ( $this->is_pp ? 'pro' : 'std' ) );
 
 			if ( $this->debug->enabled ) {
 
@@ -627,10 +631,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$this->debug->mark( 'init plugin' );	// Begin timer.
 			}
 
-			$is_admin   = is_admin() ? true : false;	// Only check once.
-			$doing_ajax = defined( 'DOING_AJAX' ) ? DOING_AJAX : false;
-			$doing_cron = defined( 'DOING_CRON' ) ? DOING_CRON : false;
-
 			if ( $this->debug->enabled ) {
 
 				$min_int = SucomUtil::get_min_int();
@@ -707,11 +707,8 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			/**
 			 * All WPSSO Core objects are instantiated and configured.
-			 *
-			 * $is_admin and $doing_ajax added in WPSSO Core v7.10.0.
-			 * $doing_cron added in WPSSO Core v8.8.0.
 			 */
-			do_action( 'wpsso_init_plugin', $is_admin, $doing_ajax, $doing_cron );
+			do_action( 'wpsso_init_plugin' );
 
 			if ( $this->debug->enabled ) {
 
@@ -799,8 +796,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 		public function get_lib_classnames( $type_dir ) {
 
-			$is_admin = is_admin();
-
+			$is_admin   = is_admin();
 			$classnames = array();
 
 			foreach ( $this->cf[ 'plugin' ] as $ext => $info ) {

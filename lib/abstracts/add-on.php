@@ -67,25 +67,24 @@ if ( ! class_exists( 'WpssoAddOn' ) ) {
 			/**
 			 * WPSSO action hooks.
 			 */
-			if ( method_exists( $this, 'init_textdomain' ) ) {
+			foreach ( array(
+				'init_textdomain'    => 0,
+				'init_objects'       => 0,
+				'init_objects_std'   => 0,
+				'init_objects_pro'   => 0,
+				'init_check_options' => 0,
+			) as $method => $args ) {
 
-				add_action( 'wpsso_init_textdomain', array( $this, 'init_textdomain' ), $prio, 0 );
-			}
+				if ( method_exists( $this, $method ) ) {
 
-			if ( method_exists( $this, 'init_objects' ) ) {
-
-				add_action( 'wpsso_init_objects', array( $this, 'init_objects' ), $prio, 1 );
-			}
-
-			if ( method_exists( $this, 'init_check_options' ) ) {	// May exist only in some add-ons.
-
-				add_action( 'wpsso_init_check_options', array( $this, 'init_check_options' ), $prio, 0 );
+					add_action( 'wpsso_' . $method, array( $this, $method ), $prio, $args );
+				}
 			}
 
 			/**
 			 * The SucomAddon->init_plugin_notices() method adds toolbar notices for any missing requirements.
 			 */
-			add_action( 'wpsso_init_plugin', array( $this, 'init_plugin_notices' ), $prio, 2 );
+			add_action( 'wpsso_init_plugin', array( $this, 'init_plugin_notices' ), $prio, 0 );
 
 			/**
 			 * If SucomAddon->init_plugin_notices() is not executed, then show any missing requirements using the

@@ -402,11 +402,11 @@ msgid ""
 "- recommended test for any site using https."
 msgstr ""
 
-#: gettext/gettext-lib-abstracts-com.php:6 lib/abstracts/com/add-on.php:182
+#: gettext/gettext-lib-abstracts-com.php:6 lib/abstracts/com/add-on.php:180
 msgid "The %1$s add-on requires the %2$s plugin."
 msgstr ""
 
-#: gettext/gettext-lib-abstracts-com.php:7 lib/abstracts/com/add-on.php:198
+#: gettext/gettext-lib-abstracts-com.php:7 lib/abstracts/com/add-on.php:196
 msgid ""
 "The %1$s add-on requires %2$s version %3$s or newer (version %4$s is "
 "currently installed)."
@@ -5154,7 +5154,7 @@ msgstr ""
 #: lib/admin.php:1308 lib/admin.php:1319
 #: lib/messages-tooltip-meta-schema.php:470 lib/messages-tooltip-plugin.php:169
 #: lib/submenu/tools.php:58 lib/submenu/tools.php:103 lib/user.php:57
-#: lib/user.php:1614 lib/user.php:1721 lib/user.php:1852
+#: lib/user.php:1613 lib/user.php:1720 lib/user.php:1851
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -9861,7 +9861,7 @@ msgstr ""
 msgid "Save a draft or publish to display these options."
 msgstr ""
 
-#: lib/post.php:1620
+#: lib/post.php:1618
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -10655,7 +10655,7 @@ msgid ""
 "term ID %3$d in taxonomy %4$s (%5$s)."
 msgstr ""
 
-#: lib/term.php:872
+#: lib/term.php:870
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -10714,56 +10714,56 @@ msgstr ""
 msgid "Examples: CPA, Esq., M.D., P.E., PhD., PMP, RN"
 msgstr ""
 
-#: lib/user.php:939
+#: lib/user.php:938
 msgid "(not a Facebook Pages URL)"
 msgstr ""
 
-#: lib/user.php:1065
+#: lib/user.php:1064
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:1066
+#: lib/user.php:1065
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:1067
+#: lib/user.php:1066
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1409
+#: lib/user.php:1408
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/user.php:1633
+#: lib/user.php:1632
 msgid ""
 "Aborting task to add the %1$s role to content creators - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1648
+#: lib/user.php:1647
 msgid "A task to add the %1$s role for content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1689
+#: lib/user.php:1688
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1691 lib/user.php:1794 lib/util-cache.php:187
+#: lib/user.php:1690 lib/user.php:1793 lib/util-cache.php:187
 #: lib/util-cache.php:705
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
-#: lib/user.php:1740
+#: lib/user.php:1739
 msgid ""
 "Aborting task to remove the %1$s role from all users - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1755
+#: lib/user.php:1754
 msgid "A task to remove the %1$s role from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1792
+#: lib/user.php:1791
 msgid "The %1$s role has been removed from %2$d content creators."
 msgstr ""
 
@@ -11200,35 +11200,35 @@ msgstr ""
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 
-#: wpsso.php:521
+#: wpsso.php:525
 msgid ""
 "WP debug logging mode is active - debug messages are being sent to the "
 "WordPress debug log."
 msgstr ""
 
-#: wpsso.php:533
+#: wpsso.php:537
 msgid ""
 "HTML debug mode is active - debug messages are being added to webpages as "
 "hidden HTML comments."
 msgstr ""
 
 #. translators: %s is the short plugin name.
-#: wpsso.php:540
+#: wpsso.php:544
 msgid ""
 "Debug mode can generate thousands of runtime messages during page load, "
 "which may degrade website performance."
 msgstr ""
 
-#: wpsso.php:542
+#: wpsso.php:546
 msgid "Don't forget to disable debug mode when debugging is complete."
 msgstr ""
 
-#: wpsso.php:787
+#: wpsso.php:784
 msgctxt "option comment"
 msgid "%s constant is true"
 msgstr ""
 
-#: wpsso.php:790
+#: wpsso.php:787
 msgctxt "option comment"
 msgid "%s constant is false"
 msgstr ""

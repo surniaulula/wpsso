@@ -1419,11 +1419,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					$mod_filter_name = 'wpsso_' . $mod[ 'name' ] . '_' . $tab_key . '_rows';
 
-					$table_rows[ $tab_key ] = (array) apply_filters( $mb_filter_name,
-						array(), $this->form, parent::$head_info, $mod );
+					$table_rows[ $tab_key ] = (array) apply_filters( $mb_filter_name, array(), $this->form, parent::$head_info, $mod );
 
-					$table_rows[ $tab_key ] = (array) apply_filters( $mod_filter_name,
-						$table_rows[ $tab_key ], $this->form, parent::$head_info, $mod );
+					$table_rows[ $tab_key ] = (array) apply_filters( $mod_filter_name, $table_rows[ $tab_key ], $this->form, parent::$head_info, $mod );
 				}
 			}
 

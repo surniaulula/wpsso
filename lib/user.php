@@ -833,14 +833,13 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			foreach ( $tabs as $tab_key => $title ) {
 
-				$mb_filter_name  = 'wpsso_metabox_' . $metabox_id . '_' . $tab_key . '_rows';
+				$mb_filter_name = 'wpsso_metabox_' . $metabox_id . '_' . $tab_key . '_rows';
+
 				$mod_filter_name = 'wpsso_' . $mod[ 'name' ] . '_' . $tab_key . '_rows';
 
-				$table_rows[ $tab_key ] = (array) apply_filters( $mb_filter_name,
-					array(), $this->form, parent::$head_info, $mod );
+				$table_rows[ $tab_key ] = (array) apply_filters( $mb_filter_name, array(), $this->form, parent::$head_info, $mod );
 
-				$table_rows[ $tab_key ] = (array) apply_filters( $mod_filter_name,
-					$table_rows[ $tab_key ], $this->form, parent::$head_info, $mod );
+				$table_rows[ $tab_key ] = (array) apply_filters( $mod_filter_name, $table_rows[ $tab_key ], $this->form, parent::$head_info, $mod );
 			}
 
 			$tabbed_args = array( 'layout' => 'vertical' );
