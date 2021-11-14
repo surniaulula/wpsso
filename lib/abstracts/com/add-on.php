@@ -77,8 +77,6 @@ if ( ! class_exists( 'SucomAddOn' ) ) {
 
 			if ( ! $doing_ajax && $missing_reqs ) {
 
-				$error_pre = sprintf( '%s error:', __METHOD__ );
-
 				foreach ( $missing_reqs as $key => $req_info ) {
 
 					if ( ! empty( $req_info[ 'notice' ] ) ) {
@@ -87,7 +85,7 @@ if ( ! class_exists( 'SucomAddOn' ) ) {
 
 							$this->p->notice->err( $req_info[ 'notice' ] );
 
-							SucomUtil::safe_error_log( $error_pre . ' ' . $req_info[ 'notice' ], $strip_html = true );
+							SucomUtil::safe_error_log( __METHOD__ . ' error: ' . $req_info[ 'notice' ], $strip_html = true );
 						}
 
 						if ( $this->p->debug->enabled ) {
@@ -96,8 +94,6 @@ if ( ! class_exists( 'SucomAddOn' ) ) {
 						}
 					}
 				}
-
-				return;	// Stop here.
 			}
 		}
 
@@ -110,18 +106,16 @@ if ( ! class_exists( 'SucomAddOn' ) ) {
 
 			$missing_reqs = $this->get_missing_requirements();	// Returns false or an array of missing requirements.
 
-			if ( ! $missing_reqs ) {
+			if ( $missing_reqs ) {
 
-				return;	// Stop here.
-			}
+				foreach ( $missing_reqs as $key => $req_info ) {
 
-			foreach ( $missing_reqs as $key => $req_info ) {
-
-				if ( ! empty( $req_info[ 'notice' ] ) ) {
-
-					echo '<div class="notice notice-error error"><p>';
-					echo $req_info[ 'notice' ];
-					echo '</p></div>';
+					if ( ! empty( $req_info[ 'notice' ] ) ) {
+	
+						echo '<div class="notice notice-error error"><p>';
+						echo $req_info[ 'notice' ];
+						echo '</p></div>';
+					}
 				}
 			}
 		}
@@ -147,8 +141,7 @@ if ( ! class_exists( 'SucomAddOn' ) ) {
 				return $local_cache = false;
 			}
 
-			$addon_name = $info[ 'name' ];
-
+			$addon_name  = $info[ 'name' ];
 			$text_domain = $info[ 'text_domain' ];
 
 			foreach ( $info[ 'req' ] as $key => $req_info ) {
@@ -175,11 +168,7 @@ if ( ! class_exists( 'SucomAddOn' ) ) {
 				
 				} elseif ( ! empty( $req_info[ 'plugin_class' ] ) && ! class_exists( $req_info[ 'plugin_class' ] ) ) {
 
-					$this->init_textdomain();	// If not already loaded, load the textdomain now.
-
-					$notice_msg = __( 'The %1$s add-on requires the %2$s plugin.', $text_domain );
-
-					$req_info[ 'notice' ] = sprintf( $notice_msg, $addon_name, $req_name );
+					$req_info[ 'notice' ] = $this->get_requires_plugin_notice( $info, $req_info );
 				}
 
 				/**
@@ -191,19 +180,13 @@ if ( ! class_exists( 'SucomAddOn' ) ) {
 
 						if ( version_compare( $req_info[ 'version' ], $req_info[ 'min_version' ], '<' ) ) {
 
-							$this->init_textdomain();	// If not already loaded, load the textdomain now.
-
-							$notice_msg = __( 'The %1$s add-on requires %2$s version %3$s or newer (version %4$s is currently installed).',
-								$text_domain );
-
-							$req_info[ 'notice' ] = sprintf( $notice_msg, $addon_name, $req_name,
-								$req_info[ 'min_version' ], $req_info[ 'version' ] );
+							$req_info[ 'notice' ] = $this->get_requires_version_notice( $info, $req_info );
 						}
 					}
 				}
 
 				/**
-				 * Possible notice for an insufficient wordpress or plugin version, or a missing plugin.
+				 * Possible notice for wordpress version, plugin version, or missing plugin.
 				 */
 				if ( ! empty( $req_info[ 'notice' ] ) ) {
 
@@ -217,6 +200,34 @@ if ( ! class_exists( 'SucomAddOn' ) ) {
 			}
 
 			return $local_cache;
+		}
+
+		protected function get_requires_plugin_notice( array $info, array $req_info ) {
+
+			$this->init_textdomain();	// If not already loaded, load the textdomain now.
+			
+			$text_domain = $info[ 'text_domain' ];
+			$addon_name  = _x( $info[ 'name' ], 'plugin name', $text_domain );
+			$req_name    = _x( $req_info[ 'name' ], 'plugin name', $text_domain );
+			$req_name    = empty( $req_info[ 'home' ] ) ? $req_name : '<a href="' . $req_info[ 'home' ] . '">' . $req_name . '</a>';
+			$notice_msg  = __( 'The %1$s add-on requires the %2$s plugin.', $text_domain );
+			$notice_msg  = sprintf( $notice_msg, $addon_name, $req_name );
+
+			return $notice_msg;
+		}
+
+		protected function get_requires_version_notice( array $info, array $req_info ) {
+
+			$this->init_textdomain();	// If not already loaded, load the textdomain now.
+
+			$text_domain = $info[ 'text_domain' ];
+			$addon_name  = _x( $info[ 'name' ], 'plugin name', $text_domain );
+			$req_name    = _x( $req_info[ 'name' ], 'plugin name', $text_domain );
+			$req_name    = empty( $req_info[ 'home' ] ) ? $req_name : '<a href="' . $req_info[ 'home' ] . '">' . $req_name . '</a>';
+			$notice_msg  = __( 'The %1$s add-on requires %2$s version %3$s or newer (version %4$s is currently installed).', $text_domain );
+			$notice_msg  = sprintf( $notice_msg, $addon_name, $req_name, $req_info[ 'min_version' ], $req_info[ 'version' ] );
+
+			return $notice_msg;
 		}
 	}
 }
