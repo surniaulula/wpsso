@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.8.0-dev.3',	// Plugin version.
-					'opt_version' => '834',		// Increment when changing default option values.
+					'version'     => '9.8.0-dev.4',	// Plugin version.
+					'opt_version' => '835',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -2072,7 +2072,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '4.10.1-dev.3',	// Minimum update manager version (soft limit).
+				'rec_version' => '4.10.1-dev.4',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
 					48  => 'Every two days',

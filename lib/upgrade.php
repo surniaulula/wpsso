@@ -559,35 +559,32 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 
 				if ( $prev_version > 0 && $prev_version <= 270 ) {
 
-					foreach ( $opts as $key => $val ) {
+					foreach ( SucomUtil::get_opts_begin( 'inc_', $opts ) as $key => $val ) {
 
-						if ( strpos( $key, 'inc_' ) === 0 ) {
+						$new_key = '';
 
-							$new_key = '';
+						switch ( $key ) {
 
-							switch ( $key ) {
+							case ( preg_match( '/^inc_(description|twitter:)/', $key ) ? true : false ):
 
-								case ( preg_match( '/^inc_(description|twitter:)/', $key ) ? true : false ):
+								$new_key = preg_replace( '/^inc_/', 'add_meta_name_', $key );
 
-									$new_key = preg_replace( '/^inc_/', 'add_meta_name_', $key );
+								break;
 
-									break;
+							default:
 
-								default:
+								$new_key = preg_replace( '/^inc_/', 'add_meta_property_', $key );
 
-									$new_key = preg_replace( '/^inc_/', 'add_meta_property_', $key );
+								break;
 
-									break;
-
-							}
-
-							if ( ! empty( $new_key ) ) {
-
-								$opts[ $new_key ] = $val;
-							}
-
-							unset( $opts[ $key ] );
 						}
+
+						if ( ! empty( $new_key ) ) {
+
+							$opts[ $new_key ] = $val;
+						}
+
+						unset( $opts[ $key ] );
 					}
 				}
 
@@ -807,6 +804,21 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 
 								break;
 						}
+					}
+				}
+
+				/**
+				 * Rename 'plugin_sitemaps_for' options to 'wpsm_sitemaps_for' for the WPSSO WP Sitemaps add-on.
+				 */
+				if ( $prev_version > 0 && $prev_version <= 834 ) {
+				
+					foreach ( SucomUtil::get_opts_begin( 'plugin_sitemaps_for', $opts ) as $key => $val ) {
+
+						$new_key = preg_replace( '/^plugin_sitemaps_for/', 'wpsm_sitemaps_for', $key );
+
+						$opts[ $new_key ] = $val;
+
+						unset( $opts[ $key ] );
 					}
 				}
 			}
