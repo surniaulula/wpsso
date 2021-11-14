@@ -347,6 +347,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new 'wpsso_robots_is_noindex' filter.
 	* Refactored the `WpssoUtilRobots->get_directives()` method.
 	* Refactored the `WpssoUtilRobots->is_noindex()` method.
+	* Refactored the `SucomAddOn->get_missing_requirements()` method.
 * **Requires At Least**
 	* PHP v7.0.
 	* WordPress v5.0.
