@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 9.8.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-11-13 19:59-0800\n"
+"PO-Revision-Date: 2021-11-15 09:01-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -161,7 +161,7 @@ msgstr "L'extension WooCommerce ne fournit pas un balisage de Schéma JSON-LD su
 #: gettext/gettext-html-setup.php:35
 msgctxt "html paragraph"
 msgid "The WPSSO Core Premium plugin reads WooCommerce product data and provides complete Schema Product JSON-LD markup for Google Rich Results, including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, pattern, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more."
-msgstr "L'extension WPSSO Core Premium lit les données de produit WooCommerce et fournit un balisage complet de Schéma Produit JSON-LD pour les résultats enrichis Google, y compris des images de produit supplémentaires, des variantes de produit, des informations sur le produit (marque, couleur, état, EAN, dimensions, GTIN-8/12/ 13/14, ISBN, matériel, MPN, motif, taille, SKU, volume, poids, etc), critiques de produits, évaluations de produits, dates de début / fin de vente, prix de vente, prix hors taxes, prix avec TVA, tarifs d'expédition, délais d'expédition et bien plus encore."
+msgstr "L'extension WPSSO Core Premium lit les données de produit WooCommerce et fournit un balisage complet de Schéma Produit JSON-LD pour les résultats enrichis Google, y compris des images de produit supplémentaires, des variantes de produit, des informations sur le produit (marque, couleur, état, EAN, dimensions, GTIN-8/12/ 13/14, ISBN, matériel, MPN, motif, taille, SKU, volume, poids, etc), critiques de produits, notes de produits, dates de début / fin de vente, prix de vente, prix hors taxes, prix avec TVA, tarifs d'expédition, délais d'expédition et bien plus encore."
 
 #: gettext/gettext-html-setup.php:36
 msgctxt "html paragraph"
@@ -248,11 +248,11 @@ msgctxt "html list item"
 msgid "<a href=\"https://www.ssllabs.com/ssltest/\">SSL Server Test by SSL Labs</a> - recommended test for any site using https."
 msgstr "<a href=\"https://www.ssllabs.com/ssltest/\">Test de serveur SSL par SSL Labs</a> - test recommandé pour tout site utilisant https."
 
-#: gettext/gettext-lib-abstracts-com.php:6 lib/abstracts/com/add-on.php:182
+#: gettext/gettext-lib-abstracts-com.php:6 lib/abstracts/com/add-on.php:213
 msgid "The %1$s add-on requires the %2$s plugin."
 msgstr "L'ajout %1$s requiert l'extension %2$s."
 
-#: gettext/gettext-lib-abstracts-com.php:7 lib/abstracts/com/add-on.php:198
+#: gettext/gettext-lib-abstracts-com.php:7 lib/abstracts/com/add-on.php:227
 msgid "The %1$s add-on requires %2$s version %3$s or newer (version %4$s is currently installed)."
 msgstr "L'ajout %1$s nécessite %2$s version %3$s ou plus récente (la version %4$s est actuellement installée)."
 
@@ -4818,7 +4818,7 @@ msgstr "Privilèges insuffisants pour modifier les options de réseau."
 msgid "Network plugin settings have been saved."
 msgstr "Les réglages réseau ont été sauvegardés."
 
-#: lib/admin.php:1230 lib/post.php:828 lib/term.php:645 lib/user.php:626
+#: lib/admin.php:1230 lib/post.php:829 lib/term.php:632 lib/user.php:626
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr "La validation du jeton nonce pour l'action %1$s \"%2$s\" a échoué."
 
@@ -4853,7 +4853,7 @@ msgstr "Une tâche en arrière-plan va commencer sous peu pour ajouter le rôle 
 #: lib/admin.php:1308 lib/admin.php:1319
 #: lib/messages-tooltip-meta-schema.php:470 lib/messages-tooltip-plugin.php:169
 #: lib/submenu/tools.php:58 lib/submenu/tools.php:103 lib/user.php:57
-#: lib/user.php:1614 lib/user.php:1721 lib/user.php:1852
+#: lib/user.php:1613 lib/user.php:1720 lib/user.php:1851
 msgctxt "user role"
 msgid "Person"
 msgstr "Personne"
@@ -5810,7 +5810,7 @@ msgstr "Une valeur de note agrégé pour ce balisage a été ignorée - <a href=
 
 #: lib/json-filters/prop/review.php:219
 msgid "Reviews for this markup have been ignored - <a href=\"%1$s\">Google does not allow reviews for the Schema %2$s type</a>."
-msgstr "Les critiques pour ce balisage ont été ignorés - <a href=\"%1$s\">Google n'autorise pas de note agrégé pour le type de Schéma %2$s</a> ."
+msgstr "Les critiques pour ce balisage ont été ignorés - <a href=\"%1$s\">Google n'autorise pas de critiques pour le type de Schéma %2$s</a> ."
 
 #: lib/json-filters/type/claimreview.php:71
 msgid "CreativeWork will be used instead as the Schema type for the subject of the webpage (ie. the content) being reviewed."
@@ -5875,12 +5875,12 @@ msgstr "Corruption possible de %1$s détecté - le chemin du fichier d'image ple
 msgid "https://developer.wordpress.org/reference/functions/image_make_intermediate_size/"
 msgstr "https://developer.wordpress.org/reference/functions/image_make_intermediate_size/"
 
-#: lib/media.php:1027 lib/post.php:552 lib/register.php:350 lib/term.php:472
+#: lib/media.php:1027 lib/post.php:553 lib/register.php:350 lib/term.php:459
 #: lib/user.php:435 lib/util.php:833 lib/util.php:3077
 msgid "%s warning:"
 msgstr "Alerte %s:"
 
-#: lib/media.php:1028 lib/post.php:553 lib/term.php:473 lib/user.php:436
+#: lib/media.php:1028 lib/post.php:554 lib/term.php:460 lib/user.php:436
 #: lib/util.php:834 lib/util.php:3078
 msgid "longer than recommended max of %1$.3f secs"
 msgstr "supérieur au max recommandé de %1$.3f secs"
@@ -6237,7 +6237,7 @@ msgid "A customized image ID to include first, before any featured, attached, or
 msgstr "Un ID d'image personnalisé à inclure en premier, avant l'image à la Une, les images attachées, ou de contenue."
 
 #: lib/messages-tooltip-meta-opengraph.php:77
-#: lib/messages-tooltip-meta-schema.php:816 lib/messages-tooltip-meta.php:168
+#: lib/messages-tooltip-meta-schema.php:817 lib/messages-tooltip-meta.php:168
 #: lib/messages-tooltip-meta.php:185 lib/messages-tooltip-opengraph.php:137
 msgid "This option is disabled if a custom image URL is entered."
 msgstr "Cette option est désactivée si une URL d'image personnalisée est fournie."
@@ -6251,7 +6251,7 @@ msgid "Make sure your custom image is large enough or it may be ignored by socia
 msgstr "Assurez-vous que votre image personnalisée est suffisamment grande ou elle peut être ignorée par les sites sociaux."
 
 #: lib/messages-tooltip-meta-opengraph.php:89
-#: lib/messages-tooltip-meta-schema.php:824 lib/messages-tooltip-meta.php:176
+#: lib/messages-tooltip-meta-schema.php:825 lib/messages-tooltip-meta.php:176
 #: lib/messages-tooltip-meta.php:194 lib/messages-tooltip-opengraph.php:153
 msgid "This option is disabled if a custom image ID is selected."
 msgstr "Cette option est désactivée si un ID d'image personnalisé est sélectionné."
@@ -6362,27 +6362,27 @@ msgid "A license document URL that applies to this content."
 msgstr "URL d'un document de licence qui s'applique à ce contenu."
 
 #: lib/messages-tooltip-meta-schema.php:147
-#: lib/messages-tooltip-meta-schema.php:692
+#: lib/messages-tooltip-meta-schema.php:693
 msgid "The creative work author can be a person or an organization."
 msgstr "L'auteur de l'oeuvre peut être une personne ou une organisation."
 
 #: lib/messages-tooltip-meta-schema.php:153
-#: lib/messages-tooltip-meta-schema.php:698
+#: lib/messages-tooltip-meta-schema.php:699
 msgid "Enter the name of the author for this creative work."
 msgstr "Entrez le nom de l'auteur pour cette oeuvre."
 
 #: lib/messages-tooltip-meta-schema.php:159
-#: lib/messages-tooltip-meta-schema.php:704
+#: lib/messages-tooltip-meta-schema.php:705
 msgid "The home page of the author, or another definitive URL that provides information about the author, such as the person or organization's Wikipedia or Wikidata page."
 msgstr "La page d'accueil de l'auteur ou une autre URL définitive fournissant des informations sur l'auteur, telles que la page Wikipedia ou Wikidata de la personne ou de l'organisation."
 
 #: lib/messages-tooltip-meta-schema.php:165
-#: lib/messages-tooltip-meta-schema.php:710
+#: lib/messages-tooltip-meta-schema.php:711
 msgid "The date when this creative work was published or entered public discourse."
 msgstr "La date à laquelle cette œuvre a été publiée ou est entrée dans le discours public."
 
 #: lib/messages-tooltip-meta-schema.php:171
-#: lib/messages-tooltip-meta-schema.php:716
+#: lib/messages-tooltip-meta-schema.php:717
 msgid "The date when this creative work was created."
 msgstr "La date à laquelle cette oeuvre a été créée."
 
@@ -6689,75 +6689,79 @@ msgstr "Une description du sujet de l'évaluation."
 msgid "A Schema type for the subject of the webpage (ie. the content) being reviewed."
 msgstr "Un type de schéma pour le sujet de la page Web (c'est-à-dire le contenu) en cours d'évaluation."
 
-#: lib/messages-tooltip-meta-schema.php:664
+#: lib/messages-tooltip-meta-schema.php:660 lib/messages-tooltip-schema.php:254
+msgid "Please note that although the Schema standard allows the subject of a review to be any Schema type, <a href=\"%1$s\">Google allows reviews for only a few specific Schema types (and their sub-types)</a>."
+msgstr "Veuillez noter que la norme de Schéma permette que le sujet d'une critique soit n'importe quel type de Schema, <a href=\"%1$s\">Google n'autorise les critiques que pour quelques types de Schémas spécifiques (et leurs sous-types)</a>."
+
+#: lib/messages-tooltip-meta-schema.php:665
 msgid "A webpage URL for the subject of the review."
 msgstr "L'URL de la page Web pour le sujet de l'évaluation."
 
-#: lib/messages-tooltip-meta-schema.php:676
+#: lib/messages-tooltip-meta-schema.php:677
 msgid "An image ID showing the subject of the review."
 msgstr "Un ID d'image montrant le sujet de l'évaluation."
 
-#: lib/messages-tooltip-meta-schema.php:678
+#: lib/messages-tooltip-meta-schema.php:679
 msgid "This option is disabled if a subject image URL is entered."
 msgstr "Cette option est désactivée si une URL d'image de sujet est fournie."
 
-#: lib/messages-tooltip-meta-schema.php:684
+#: lib/messages-tooltip-meta-schema.php:685
 msgid "An image URL (instead of an image ID) showing the subject of the review."
 msgstr "Une URL d'image (au lieu d'un ID d'image) montrant le sujet de l'évaluation."
 
-#: lib/messages-tooltip-meta-schema.php:686
+#: lib/messages-tooltip-meta-schema.php:687
 msgid "This option is disabled if a subject image ID is selected."
 msgstr "Cette option est désactivée si un ID d'image de sujet est sélectionné."
 
-#: lib/messages-tooltip-meta-schema.php:722
+#: lib/messages-tooltip-meta-schema.php:723
 msgid "The ISBN code (aka International Standard Book Number) for the book being reviewed."
 msgstr "Le code ISBN (aussi appelé numéro international normalisé du livre) du livre évalué."
 
-#: lib/messages-tooltip-meta-schema.php:740
+#: lib/messages-tooltip-meta-schema.php:741
 msgid "The brand name of the product being reviewed."
 msgstr "La marque du produit en cours d'évaluation."
 
-#: lib/messages-tooltip-meta-schema.php:746
+#: lib/messages-tooltip-meta-schema.php:747
 msgid "One or more offers for the product being reviewed, including the offer name, price and currency."
 msgstr "Une ou plusieurs offres pour le produit en cours d'évaluation, y compris le nom de l'offre, le prix et la devise."
 
-#: lib/messages-tooltip-meta-schema.php:752
+#: lib/messages-tooltip-meta-schema.php:753
 msgid "The SKU (aka Stock-Keeping Unit) of the product being reviewed."
 msgstr "Le SKU (Stock-Keeping Unit) du produit en cours d'évaluation."
 
-#: lib/messages-tooltip-meta-schema.php:758
+#: lib/messages-tooltip-meta-schema.php:759
 msgid "The MPN (aka Manufacturer Part Number) of the product being reviewed."
 msgstr "Le MPN (ou le numéro de pièce du fabricant) du produit en cours d'évaluation."
 
-#: lib/messages-tooltip-meta-schema.php:764
+#: lib/messages-tooltip-meta-schema.php:765
 msgid "One or more offers for the software application being reviewed, including the offer name, price and currency."
 msgstr "Une ou plusieurs offres pour application logicielle en cours d'évaluation, y compris le nom de l'offre, le prix et la devise."
 
-#: lib/messages-tooltip-meta-schema.php:770
+#: lib/messages-tooltip-meta-schema.php:771
 msgid "A short summary of specific claim(s) being reviewed in the Schema ClaimReview content."
 msgstr "Un bref résumé des déclarations spécifiques évaluées dans le contenu pour le Schéma ClaimReview."
 
-#: lib/messages-tooltip-meta-schema.php:772
+#: lib/messages-tooltip-meta-schema.php:773
 msgid "The summary should be less than 75 characters to minimize wrapping on mobile devices."
 msgstr "Le résumé devrait comporter moins de 75 caractères pour minimiser le retour à la ligne sur les appareils mobiles."
 
-#: lib/messages-tooltip-meta-schema.php:778
+#: lib/messages-tooltip-meta-schema.php:779
 msgid "An optional webpage URL where this specific claim first appeared."
 msgstr "URL facultative d'une page Web ou cette déclaration spécifique est apparue la première foi."
 
-#: lib/messages-tooltip-meta-schema.php:800
+#: lib/messages-tooltip-meta-schema.php:801
 msgid "Type of software application (example: %s, etc.)."
 msgstr "Type d'application logicielle (exemple: %s, etc.)."
 
-#: lib/messages-tooltip-meta-schema.php:806
+#: lib/messages-tooltip-meta-schema.php:807
 msgid "The operating system supported (example: %s, etc.)."
 msgstr "Le système d'exploitation supporté (exemple: %s, etc.)."
 
-#: lib/messages-tooltip-meta-schema.php:814
+#: lib/messages-tooltip-meta-schema.php:815
 msgid "A customized image ID to include first in the Schema meta tags and JSON-LD markup."
 msgstr "Un ID d'image personnalisé à inclure en premier dans les balises méta et balisage JSON-LD de Schéma."
 
-#: lib/messages-tooltip-meta-schema.php:822
+#: lib/messages-tooltip-meta-schema.php:823
 msgid "A customized image URL (instead of an image ID) to include first in the Schema meta tags and JSON-LD markup."
 msgstr "Un URL d'image personnalisé (au lieu d'un ID d'image) à inclure en premier dans les balises méta et balisage JSON-LD de Schéma."
 
@@ -8573,113 +8577,113 @@ msgctxt "module name"
 msgid "post"
 msgstr "article"
 
-#: lib/post.php:554
+#: lib/post.php:555
 msgid "Slow WordPress function detected - %1$s took %2$.3f secs to get children of post ID %3$d (%4$s)."
 msgstr "Fonction WordPress lente détectée - %1$s a pris %2$.3f secs pour obtenir les enfants de l'ID d'article %3$d (%4$s)."
 
-#: lib/post.php:761 lib/post.php:1358 lib/schema.php:3231 lib/term.php:596
+#: lib/post.php:762 lib/post.php:1359 lib/schema.php:3242 lib/term.php:583
 #: lib/user.php:576
 msgid "checking meta tags"
 msgstr "vérification des balises méta"
 
-#: lib/post.php:966
+#: lib/post.php:967
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr "Vérification de balises méta en double pour %1$s..."
 
-#: lib/post.php:999
+#: lib/post.php:1000
 msgid "The webpage HTML retrieved from %1$s is %2$s bytes."
 msgstr "L'HTML de la page Web récupérée de %1$s est %2$s octets."
 
-#: lib/post.php:1001
+#: lib/post.php:1002
 msgid "This exceeds the maximum limit of %1$s bytes imposed by the Google crawler."
 msgstr "Cela dépasse la limite maximale de %1$s octets imposée par le robot d'exploration de Google."
 
-#: lib/post.php:1003
+#: lib/post.php:1004
 msgid "If you do not reduce the webpage HTML size, Google will refuse to crawl this webpage."
 msgstr "Si vous ne réduisez pas la taille du HTML de la page Web, Google refusera d'analyser cette page Web."
 
-#: lib/post.php:1033
+#: lib/post.php:1034
 msgid "Retrieving the webpage HTML for %1$s took %2$s seconds."
 msgstr "Récupérer l'HTML de la page Web pour %1$s a pris %2$s secondes."
 
-#: lib/post.php:1035
+#: lib/post.php:1036
 msgid "This exceeds the recommended limit of %1$s seconds (crawlers often time-out after %2$s seconds)."
 msgstr "Cela dépasse le délai recommandé de %1$s secondes (plusieurs crawlers déconnectent après %2$s secondes)."
 
-#: lib/post.php:1037
+#: lib/post.php:1038
 msgid "Please consider improving the speed of your site."
 msgstr "SVP envisager d'améliorer la vitesse de votre site."
 
-#: lib/post.php:1038
+#: lib/post.php:1039
 msgid "As an added benefit, a faster site will also improve ranking in search results."
 msgstr "Comme avantage supplémentaire, un site plus rapide améliore également le classement dans les résultats de recherche."
 
-#: lib/post.php:1052
+#: lib/post.php:1053
 msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
 msgstr "Erreur lors de la récupération du contenu de <a href=\"%1$s\">%1$s</a>."
 
-#: lib/post.php:1066
+#: lib/post.php:1067
 msgid "An %1$s tag was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr "Une balise %1$s est introuvable dans <a href=\"%2$s\">%2$s</a>."
 
-#: lib/post.php:1081
+#: lib/post.php:1082
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr "Aucune balises HTML %1$s ont été trouvées dans <a href=\"%2$s\">%2$s</a>."
 
-#: lib/post.php:1098
+#: lib/post.php:1099
 msgid "The %1$s meta tags and Schema markup section was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr "La section de balises et balisage de Schéma %1$s n'a pas été trouvé dans <a href=\"%2$s\">%2$s</a>."
 
-#: lib/post.php:1100
+#: lib/post.php:1101
 msgid "Does a caching plugin or service needs to be refreshed?"
 msgstr "Une extension ou un service de mise en cache doit-il être actualisé ?"
 
-#: lib/post.php:1131
+#: lib/post.php:1132
 msgid "The PHP preg_replace() function failed to remove the %1$s meta tag section - this could be an indication of a problem with PHP's PCRE library, or an optimization plugin or service corrupting the webpage HTML markup."
 msgstr "La fonction PHP preg_replace() n’a pas réussi à supprimer la section de balises méta %1$s - cela pourrait être une indication d'un problème avec la bibliothèque PCRE de PHP, ou une extension ou un service d'optimisation corrompant le balisage HTML de la page Web."
 
-#: lib/post.php:1133
+#: lib/post.php:1134
 msgid "You may consider updating or having your hosting provider update your PHP installation and its PCRE library."
 msgstr "Vous pouvez envisager de mettre à jour ou de demander à votre hébergeur de mettre à jour votre installation PHP et sa bibliothèque PCRE."
 
-#: lib/post.php:1153
+#: lib/post.php:1154
 msgid "Conflict detected - your theme or another plugin is adding %1$s to the head section of this webpage."
 msgstr "Conflit détecté - votre thème ou une autre extension ajoute une balise %1$s à l'entête de cette page Web."
 
-#: lib/post.php:1171
+#: lib/post.php:1172
 msgid "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> (no \"link\" or \"meta\" HTML tags were found)."
 msgstr "Une erreur s'est produite lors de l'analyse des balises méta de tête pour <a href=\"%1$s\">%1$s</a> (aucune balise HTML \"link\" ou \"meta\" ont été trouvée)."
 
-#: lib/post.php:1171
+#: lib/post.php:1172
 msgid "The webpage may contain HTML syntax errors preventing PHP from successfully parsing the HTML document - please review the <a href=\"%1$s\">W3C Markup Validator</a> results and correct any syntax errors."
 msgstr "La page Web peut contenir des erreurs de syntaxe HTML empêchant PHP d'analyser correctement le document HTML - veuillez consulter les résultats du <a href=\"%1$s\"> validateur de balisage W3C </a> et corriger les erreurs de syntaxe."
 
-#: lib/post.php:1209
+#: lib/post.php:1210
 msgid "%1$d duplicate meta tags found."
 msgstr "%1$d balises méta en double trouvées."
 
-#: lib/post.php:1211
+#: lib/post.php:1212
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr "Vérification %1$d de %2$d a échoué (réessaie à suivre)..."
 
-#: lib/post.php:1219
+#: lib/post.php:1220
 msgid "Awesome! No duplicate meta tags found."
 msgstr "Génial! Aucune balise méta dupliquée trouvée."
 
-#: lib/post.php:1223
+#: lib/post.php:1224
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr "L'option de débogage est activée - cette vérification sera répétée..."
 
-#: lib/post.php:1227
+#: lib/post.php:1228
 msgid "Check %1$d of %2$d successful..."
 msgstr "Vérification %1$d de %2$d réussi..."
 
 # Ignore the post type to avoid gender issues in the French translation.
-#: lib/post.php:1414
+#: lib/post.php:1415
 msgid "Save a draft or publish to display these options."
 msgstr "Enregistrez un brouillon ou publiez pour afficher ces options."
 
-#: lib/post.php:1620
+#: lib/post.php:1619
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr "Privilèges insuffisants pour enregistrer les réglages pour %1$s ID %2$s."
 
@@ -8848,11 +8852,15 @@ msgstr "ajout de schéma d'endroit"
 msgid "adding schema"
 msgstr "ajout de schéma"
 
-#: lib/schema.php:1464
+#: lib/schema.php:1468
 msgid "adding schema %s #%d image"
 msgstr "ajout d'image #%d pour Schéma %s"
 
-#: lib/schema.php:1595
+#: lib/schema.php:1579
+msgid "Please note that although the Schema standard allows the subject of a review to be any Schema type, <a href=\"%1$s\">Google does not allow reviews for the Schema %2$s type</a>."
+msgstr "Veuillez noter que la norme de Schéma permette que le sujet d'une critique soit n'importe quel type de Schema, <a href=\"%1$s\">Google n'autorise pas de critiques pour le type de Schéma %2$s</a>."
+
+#: lib/schema.php:1606
 msgid "adding reviewed subject image"
 msgstr "ajout d'image pour le sujet de l'évaluation"
 
@@ -9459,11 +9467,11 @@ msgctxt "module name"
 msgid "term"
 msgstr "terme"
 
-#: lib/term.php:474
+#: lib/term.php:461
 msgid "Slow WordPress function detected - %1$s took %2$.3f secs to get posts for term ID %3$d in taxonomy %4$s (%5$s)."
 msgstr "Fonction WordPress lente détectée - %1$s a pris %2$.3f secs pour obtenir les articles de l'ID du terme %3$d de taxonomie %4$s  (%5$s)."
 
-#: lib/term.php:872
+#: lib/term.php:857
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr "Privilèges insuffisants pour enregistrer les réglages pour l'ID du terme %1$s."
 
@@ -9520,52 +9528,52 @@ msgstr "Exemples: Dr, Mrs, Mr."
 msgid "Examples: CPA, Esq., M.D., P.E., PhD., PMP, RN"
 msgstr "Exemples: CPA, Esq., M.D., P.E., PhD., PMP, RN"
 
-#: lib/user.php:939
+#: lib/user.php:938
 msgid "(not a Facebook Pages URL)"
 msgstr "(pas un URL de Pages Facebook)"
 
-#: lib/user.php:1065
+#: lib/user.php:1064
 msgid "AIM"
 msgstr "AIM"
 
-#: lib/user.php:1066
+#: lib/user.php:1065
 msgid "Jabber / Google Talk"
 msgstr "Jabber / Google Talk"
 
-#: lib/user.php:1067
+#: lib/user.php:1066
 msgid "Yahoo Messenger"
 msgstr "Yahoo Messenger"
 
-#: lib/user.php:1409
+#: lib/user.php:1408
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr "Privilèges insuffisants pour enregistrer les réglages pour l'ID d'utilisateur %1$s."
 
-#: lib/user.php:1633
+#: lib/user.php:1632
 msgid "Aborting task to add the %1$s role to content creators - another identical task is still running."
 msgstr "Abandon de la tâche pour ajouter le rôle %1$s aux créateurs de contenu - une autre tâche identique est toujours en cours d'exécution."
 
-#: lib/user.php:1648
+#: lib/user.php:1647
 msgid "A task to add the %1$s role for content creators was started at %2$s."
 msgstr "Une tâche pour ajouter le rôle %1$s aux créateurs de contenu a démarré à %2$s."
 
-#: lib/user.php:1689
+#: lib/user.php:1688
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr "Le rôle %1$s a été ajouté à %2$d créateurs de contenu."
 
-#: lib/user.php:1691 lib/user.php:1794 lib/util-cache.php:187
+#: lib/user.php:1690 lib/user.php:1793 lib/util-cache.php:187
 #: lib/util-cache.php:705
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr "Le temps d'exécution total pour cette tâche était %0.3f secondes."
 
-#: lib/user.php:1740
+#: lib/user.php:1739
 msgid "Aborting task to remove the %1$s role from all users - another identical task is still running."
 msgstr "Abandon de la tâche pour supprimer le rôle %1$s de tous les utilisateurs - une autre tâche identique est toujours en cours d'exécution."
 
-#: lib/user.php:1755
+#: lib/user.php:1754
 msgid "A task to remove the %1$s role from all users was started at %2$s."
 msgstr "Une tâche pour supprimer le rôle %1$s de tous les utilisateurs a démarré à %2$s."
 
-#: lib/user.php:1792
+#: lib/user.php:1791
 msgid "The %1$s role has been removed from %2$d content creators."
 msgstr "Le rôle %1$s a été supprimé de %2$d créateurs de contenu."
 
@@ -9973,29 +9981,29 @@ msgstr "%1$s pour cet %2$s"
 msgid "%1$s for %2$s ID %3$d"
 msgstr "%1$s pour %2$s ID %3$d"
 
-#: wpsso.php:521
+#: wpsso.php:525
 msgid "WP debug logging mode is active - debug messages are being sent to the WordPress debug log."
 msgstr "Le mode débogage WP est actif - des messages de débogage sont envoyés dans le fichier de débogage WordPress."
 
-#: wpsso.php:533
+#: wpsso.php:537
 msgid "HTML debug mode is active - debug messages are being added to webpages as hidden HTML comments."
 msgstr "Le mode de débogage HTML est actif - des messages de débogage sont ajoutés aux pages Web en commentaires HTML masqués."
 
 #. translators: %s is the short plugin name.
-#: wpsso.php:540
+#: wpsso.php:544
 msgid "Debug mode can generate thousands of runtime messages during page load, which may degrade website performance."
 msgstr "Le mode de débogage peut générer des milliers de messages d'exécution lors du chargement d'une page, ce qui peut dégrader les performances du site Web."
 
-#: wpsso.php:542
+#: wpsso.php:546
 msgid "Don't forget to disable debug mode when debugging is complete."
 msgstr "N'oubliez pas de désactiver le mode de débogage lorsque le débogage est terminé."
 
-#: wpsso.php:787
+#: wpsso.php:784
 msgctxt "option comment"
 msgid "%s constant is true"
 msgstr "constante %s est vraie"
 
-#: wpsso.php:790
+#: wpsso.php:787
 msgctxt "option comment"
 msgid "%s constant is false"
 msgstr "constante %s est fausse"

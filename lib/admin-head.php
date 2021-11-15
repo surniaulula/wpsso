@@ -148,13 +148,14 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 			if ( $update_count > 0 ) {
 
-				$p_info = $this->p->cf[ 'plugin' ][ 'wpsso' ];
+				$p_info        = $this->p->cf[ 'plugin' ][ 'wpsso' ];
+				$p_name_transl = _x( $p_info[ 'name' ], 'plugin name', 'wpsso' );
 
 				$notice_key = 'have-updates-for-wpsso';
 
 				$notice_msg = sprintf( _n( 'There is <a href="%1$s">%2$d pending update for the %3$s plugin and its add-on(s)</a>.',
 					'There are <a href="%1$s">%2$d pending updates for the %3$s plugin and its add-on(s)</a>.', $update_count, 'wpsso' ),
-						self_admin_url( 'update-core.php' ), $update_count, $p_info[ 'short' ] ) . ' ';
+						self_admin_url( 'update-core.php' ), $update_count, $p_name_transl ) . ' ';
 
 				$notice_msg .= _n( 'Please install this update at your earliest convenience.',
 					'Please install these updates at your earliest convenience.', $update_count, 'wpsso' );

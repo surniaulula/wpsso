@@ -48,7 +48,42 @@ if ( ! class_exists( 'WpssoAdminHeadSuggest' ) ) {
 				return;	// Stop here.
 			}
 
+			$this->suggest_addons_wp_sitemaps();
 			$this->suggest_addons_woocommerce();
+			$this->suggest_addons_ecommerce();
+		}
+
+		private function suggest_addons_wp_sitemaps() {
+			
+			$notices_shown = 0;
+
+			if ( empty( $this->p->avail[ 'p_ext' ][ 'wpsm' ] ) && SucomUtilWP::sitemaps_enabled() ) {
+
+				$notice_key = 'suggest-wpssowpsm';
+
+				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
+					
+					$action_links = array();	// Init a new action array for the notice message.
+
+					$action_links[] = $this->get_install_activate_addon_link( 'wpssowpsm' );
+
+					$wpsm_info        = $this->p->cf[ 'plugin' ][ 'wpssowpsm' ];
+					$wpsm_name_transl = _x( $wpsm_info[ 'name' ], 'plugin name', 'wpsso' );
+					$sitemaps_url     = get_site_url( $blog_id = null, $path = '/wp-sitemap.xml' );
+
+					$notice_msg = sprintf( __( 'The <a href="%1$s">WordPress sitemaps XML</a> feature is enabled but the %2$s add-on is not active.', 'wpsso' ), $sitemaps_url, $wpsm_name_transl ) . ' ';
+
+					$notice_msg .= __( 'You can activate this add-on to manage post and taxonomy types included in the WordPress sitemaps XML, and exclude any "No Index" posts, pages, custom post types, taxonomy terms (categories, tags, etc.), or user profile pages.', 'wpsso' );
+
+					$notice_msg .= '<ul><li>' . implode( $glue = '</li> <li>', $action_links ) . '</li></ul>' . ' ';
+
+					$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
+
+					$notices_shown++;
+				}
+			}
+
+			return $notices_shown;
 		}
 
 		/**
@@ -58,27 +93,19 @@ if ( ! class_exists( 'WpssoAdminHeadSuggest' ) ) {
 		 */
 		private function suggest_addons_woocommerce() {
 
-			$notice_shown = 0;
+			$notices_shown = 0;
 
-			if ( empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ) {
+			if ( empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ) {	// WooCommerce is not active.
 
-				if ( $this->p->debug->enabled ) {
+				return $notices_shown;
 
-					$this->p->debug->log( 'woocommerce is not active' );
-				}
+			} elseif ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {	// Schema markup is disabled.
 
-				return $notice_shown;
+				return $notices_shown;
 			}
 
-			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'schema markup is disabled' );
-				}
-
-				return $notice_shown;
-			}
+			// translators: Please ignore - translation uses a different text domain.
+			$ecom_plugin_name = __( 'WooCommerce', 'woocommerce' );
 
 			$pkg_info = $this->p->admin->get_pkg_info();	// Returns an array from cache.
 
@@ -94,15 +121,15 @@ if ( ! class_exists( 'WpssoAdminHeadSuggest' ) ) {
 
 					$prod_info_msg = __( 'brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, pattern, size, SKU, volume, weight, etc', 'wpsso' );
 
-					$notice_msg = __( 'The WooCommerce plugin does not provide sufficient Schema JSON-LD markup for Google Rich Results.', 'wpsso' ) . ' ';
+					$notice_msg = sprintf( __( 'The %1$s plugin does not provide sufficient Schema JSON-LD markup for Google Rich Results.', 'wpsso' ), $ecom_plugin_name ) . ' ';
 
-					$notice_msg .= sprintf( __( 'The %1$s plugin reads WooCommerce product data and provides complete Schema Product JSON-LD markup for Google Rich Results, including additional product images, product variations, product information (%2$s), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'name_pro' ], $prod_info_msg ) . ' ';
+					$notice_msg .= sprintf( __( 'The %1$s plugin reads %2$s product data and provides complete Schema Product JSON-LD markup for Google Rich Results, including additional product images, product variations, product information (%3$s), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'name_pro' ], $ecom_plugin_name, $prod_info_msg ) . ' ';
 
 					$notice_msg .= '<ul><li>' . implode( $glue = '</li> <li>', $action_links ) . '</li></ul>' . ' ';
 
 					$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
 
-					$notice_shown++;
+					$notices_shown++;
 				}
 			}
 
@@ -118,7 +145,9 @@ if ( ! class_exists( 'WpssoAdminHeadSuggest' ) ) {
 
 					if ( empty( $pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
 
-						$action_links[] = $this->get_purchase_plugin_link( 'wpsso', __( '(required for WooCommerce integration)', 'wpsso' ) );
+						$required_msg = sprintf( __( '(required for %s integration)', 'wpsso' ), $ecom_plugin_name );
+
+						$action_links[] = $this->get_purchase_plugin_link( 'wpsso', $required_msg );
 					}
 
 					$action_links[] = $this->get_install_activate_addon_link( 'wpssowcmd' );
@@ -128,15 +157,15 @@ if ( ! class_exists( 'WpssoAdminHeadSuggest' ) ) {
 
 					$notice_msg = __( 'Schema Product markup for Google Rich Results requires at least one unique product ID, like the product MPN (Manufacturer Part Number), UPC, EAN, GTIN, or ISBN.', 'wpsso' ) . ' ';
 
-					$notice_msg .= __( 'The product SKU (Stock Keeping Unit) from WooCommerce is not a valid unique product ID.', 'wpsso' ) . ' ';
+					$notice_msg .= sprintf( __( 'The product SKU (Stock Keeping Unit) from %1$s is not a valid unique product ID.', 'wpsso' ), $ecom_plugin_name ) . ' ';
 
-					$notice_msg .= sprintf( __( 'If you\'re not already using a plugin to manage unique product IDs for WooCommerce, you should activate the %s add-on.', 'wpsso' ), $wcmd_name_transl ) . ' ';
+					$notice_msg .= sprintf( __( 'If you\'re not already using a plugin to manage unique product IDs for %1$s, you should activate the %2$s add-on.', 'wpsso' ), $ecom_plugin_name, $wcmd_name_transl ) . ' ';
 
 					$notice_msg .= '<ul><li>' . implode( $glue = '</li> <li>', $action_links ) . '</li></ul>' . ' ';
 
 					$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
 
-					$notice_shown++;
+					$notices_shown++;
 				}
 			}
 
@@ -156,7 +185,9 @@ if ( ! class_exists( 'WpssoAdminHeadSuggest' ) ) {
 
 						if ( empty( $pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
 
-							$action_links[] = $this->get_purchase_plugin_link( 'wpsso', __( '(required for WooCommerce integration)', 'wpsso' ) );
+							$required_msg = sprintf( __( '(required for %s integration)', 'wpsso' ), $ecom_plugin_name );
+
+							$action_links[] = $this->get_purchase_plugin_link( 'wpsso', $required_msg );
 						}
 
 						$action_links[] = $this->get_install_activate_addon_link( 'wpssowcsdt' );
@@ -164,7 +195,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggest' ) ) {
 						$wcsdt_info        = $this->p->cf[ 'plugin' ][ 'wpssowcsdt' ];
 						$wcsdt_name_transl = _x( $wcsdt_info[ 'name' ], 'plugin name', 'wpsso' );
 
-						$notice_msg = sprintf( __( 'Product shipping features are enabled in WooCommerce, but the %s add-on is not active.', 'wpsso' ), $wcsdt_name_transl ) . ' ';
+						$notice_msg = sprintf( __( 'Product shipping features are enabled in %1$s but the %2$s add-on is not active.', 'wpsso' ), $ecom_plugin_name, $wcsdt_name_transl ) . ' ';
 
 						$notice_msg .= __( 'Adding shipping details to your Schema Product markup is important if you offer free or low-cost shipping options, as this will make your products more appealing in Google search results.', 'wpsso' ) . ' ';
 
@@ -172,12 +203,70 @@ if ( ! class_exists( 'WpssoAdminHeadSuggest' ) ) {
 
 						$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
 
-						$notice_shown++;
+						$notices_shown++;
 					}
 				}
 			}
 
-			return $notice_shown;
+			return $notices_shown;
+		}
+
+		private function suggest_addons_ecommerce() {
+
+			$notices_shown = 0;
+
+			if ( ! empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ) {
+			
+				// translators: Please ignore - translation uses a different text domain.
+				$ecom_plugin_name = __( 'WooCommerce', 'woocommerce' );
+
+				$notice_key = 'suggest-wpssogmf-for-woocommerce';
+
+			} elseif ( ! empty( $this->p->avail[ 'ecom' ][ 'edd' ] ) ) {
+
+				// translators: Please ignore - translation uses a different text domain.
+				$ecom_plugin_name = __( 'Easy Digital Downloads', 'easy-digital-downloads' );
+
+				$notice_key = 'suggest-wpssogmf-for-edd';
+
+			} else {	// No active e-commerce plugin.
+
+				return $notices_shown;
+			}
+
+			if ( empty( $this->p->avail[ 'p_ext' ][ 'gmf' ] ) ) {
+
+				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
+
+					$pkg_info = $this->p->admin->get_pkg_info();	// Returns an array from cache.
+
+					$action_links = array();	// Init a new action array for the notice message.
+
+					if ( empty( $pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
+
+						$required_msg = sprintf( __( '(required for %s integration)', 'wpsso' ), $ecom_plugin_name );
+
+						$action_links[] = $this->get_purchase_plugin_link( 'wpsso', $required_msg );
+					}
+
+					$action_links[] = $this->get_install_activate_addon_link( 'wpssogmf' );
+
+					$gmf_info        = $this->p->cf[ 'plugin' ][ 'wpssogmf' ];
+					$gmf_name_transl = _x( $gmf_info[ 'name' ], 'plugin name', 'wpsso' );
+
+					$notice_msg = sprintf( __( 'If you have a Google Merchant account, the %1$s add-on can retrieve product information from %2$s and provide maintenance free XML feeds for each available language (as dictated by Polylang, WPLM, or the installed WordPress languages).', 'wpsso' ), $gmf_name_transl, $pkg_info[ 'wpsso' ][ 'name_pro' ] ) . ' ';
+
+					$notice_msg .= sprintf( __( 'If you\'re not already using a plugin to manage your Google Merchant Feeds, you should activate the %s add-on.', 'wpsso' ), $gmf_name_transl ) . ' ';
+
+					$notice_msg .= '<ul><li>' . implode( $glue = '</li> <li>', $action_links ) . '</li></ul>' . ' ';
+
+					$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
+
+					$notices_shown++;
+				}
+			}
+
+			return $notices_shown;
 		}
 
 		private function get_purchase_plugin_link( $ext, $cmt = '' ) {
@@ -204,6 +293,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggest' ) ) {
 			if ( SucomPlugin::is_plugin_installed( $ext_info[ 'base' ] ) ) {
 
 				$search_url = is_multisite() ? network_admin_url( 'plugins.php', null ) : get_admin_url( $blog_id = null, 'plugins.php' );
+
 				$search_url = add_query_arg( array( 's' => $ext_info[ 'slug' ] ), $search_url );
 
 				return '<a href="' . $search_url . '">' . sprintf( __( 'Activate the %s add-on.', 'wpsso' ), $ext_name_transl ) . '</a>';

@@ -3515,7 +3515,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 *
 		 * $type_id can be a string, or an array.
 		 */
-		public static function update_data_id( &$json_data, $type_id, $type_url = false, $hash_url = false ) {
+		public static function update_data_id( &$json_data, $type_id, $data_url = null, $hash_url = false ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -3525,7 +3525,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$wpsso->debug->log_args( array( 
 					'type_id'  => $type_id,
-					'type_url' => $type_url,
+					'data_url' => $data_url,
+					'hash_url' => $hash_url,
 				) );
 			}
 
@@ -3581,26 +3582,31 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$json_data = array( '@id' => $type_id ) + $json_data;		// Make @id the first value in the array.
 
-			} elseif ( empty( $type_url ) && empty( $json_data[ 'url' ] ) ) {
+			} elseif ( null === $data_url && empty( $json_data[ 'url' ] ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log( 'exiting early: type_url and json_data url are empty' );
+					$wpsso->debug->log( 'exiting early: data_url and json_data url are empty' );
 				}
 
 				return false;
 
 			} else {
 
-				if ( ! empty( $type_url ) ) {
+				$id_url = '';
 
-					$id_url = $type_url;
+				if ( ! empty( $data_url ) ) {
+				
+					if ( is_string( $data_url ) ) {	// Just in case.
+
+						$id_url = $data_url;
+					}
 
 				} elseif ( ! empty( $json_data[ '@id' ] ) ) {
 
 					$id_url = $json_data[ '@id' ];
 
-				} else {
+				} elseif ( ! empty( $json_data[ 'url' ] ) ) {
 
 					$id_url = $json_data[ 'url' ];
 				}

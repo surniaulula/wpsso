@@ -451,8 +451,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 						case 'event_online_url':
 
-							$json_ret[ 'location' ][] = WpssoSchema::get_schema_type_context(
-								'https://schema.org/VirtualLocation', array( 'url' => $event_opts[ $opt_pre ] ) );
+							$json_ret[ $prop_name ][] = WpssoSchema::get_schema_type_context( 'https://schema.org/VirtualLocation',
+								array( 'url' => $event_opts[ $opt_pre ] ) );
 
 							break;
 
@@ -1583,7 +1583,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * Update the @id string based on $json_ret[ 'url' ], $place_type_id, and $place_id values.
 			 */
-			WpssoSchema::update_data_id( $json_ret, array( $place_type_id, $place_id ) );
+			WpssoSchema::update_data_id( $json_ret, array( $place_type_id, $place_id ), $data_url = '' );
 
 			/**
 			 * Restore previous reference values for admin notices.

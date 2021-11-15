@@ -1041,7 +1041,7 @@ msgid "Profile SSO (Social and Search Optimization)"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:88 gettext/gettext-lib-config.php:97
-#: lib/admin-head.php:331 lib/messages.php:921
+#: lib/admin-head.php:332 lib/messages.php:921
 msgctxt "lib file description"
 msgid "Advanced Settings"
 msgstr ""
@@ -4786,77 +4786,116 @@ msgstr ""
 msgid "(%d sub-types)"
 msgstr ""
 
-#: lib/admin-head-suggest.php:95
+#: lib/admin-head-suggest.php:74
+msgid ""
+"The <a href=\"%1$s\">WordPress sitemaps XML</a> feature is enabled but the "
+"%2$s add-on is not active."
+msgstr ""
+
+#: lib/admin-head-suggest.php:76
+msgid ""
+"You can activate this add-on to manage post and taxonomy types included in "
+"the WordPress sitemaps XML, and exclude any \"No Index\" posts, pages, "
+"custom post types, taxonomy terms (categories, tags, etc.), or user profile "
+"pages."
+msgstr ""
+
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin-head-suggest.php:108 lib/admin-head-suggest.php:221
+msgid "WooCommerce"
+msgstr ""
+
+#: lib/admin-head-suggest.php:122
 msgid ""
 "brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, "
 "MPN, pattern, size, SKU, volume, weight, etc"
 msgstr ""
 
-#: lib/admin-head-suggest.php:97
+#: lib/admin-head-suggest.php:124
 msgid ""
-"The WooCommerce plugin does not provide sufficient Schema JSON-LD markup for "
-"Google Rich Results."
+"The %1$s plugin does not provide sufficient Schema JSON-LD markup for Google "
+"Rich Results."
 msgstr ""
 
-#: lib/admin-head-suggest.php:99
+#: lib/admin-head-suggest.php:126
 msgid ""
-"The %1$s plugin reads WooCommerce product data and provides complete Schema "
-"Product JSON-LD markup for Google Rich Results, including additional product "
-"images, product variations, product information (%2$s), product reviews, "
-"product ratings, sale start / end dates, sale prices, pre-tax prices, VAT "
-"prices, shipping rates, shipping times, and much, much more."
+"The %1$s plugin reads %2$s product data and provides complete Schema Product "
+"JSON-LD markup for Google Rich Results, including additional product images, "
+"product variations, product information (%3$s), product reviews, product "
+"ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, "
+"shipping rates, shipping times, and much, much more."
 msgstr ""
 
-#: lib/admin-head-suggest.php:121 lib/admin-head-suggest.php:159
-msgid "(required for WooCommerce integration)"
+#: lib/admin-head-suggest.php:148 lib/admin-head-suggest.php:188
+#: lib/admin-head-suggest.php:247
+msgid "(required for %s integration)"
 msgstr ""
 
-#: lib/admin-head-suggest.php:129
+#: lib/admin-head-suggest.php:158
 msgid ""
 "Schema Product markup for Google Rich Results requires at least one unique "
 "product ID, like the product MPN (Manufacturer Part Number), UPC, EAN, GTIN, "
 "or ISBN."
 msgstr ""
 
-#: lib/admin-head-suggest.php:131
+#: lib/admin-head-suggest.php:160
 msgid ""
-"The product SKU (Stock Keeping Unit) from WooCommerce is not a valid unique "
-"product ID."
+"The product SKU (Stock Keeping Unit) from %1$s is not a valid unique product "
+"ID."
 msgstr ""
 
-#: lib/admin-head-suggest.php:133
+#: lib/admin-head-suggest.php:162
 msgid ""
-"If you're not already using a plugin to manage unique product IDs for "
-"WooCommerce, you should activate the %s add-on."
+"If you're not already using a plugin to manage unique product IDs for %1$s, "
+"you should activate the %2$s add-on."
 msgstr ""
 
-#: lib/admin-head-suggest.php:167
+#: lib/admin-head-suggest.php:198
 msgid ""
-"Product shipping features are enabled in WooCommerce, but the %s add-on is "
-"not active."
+"Product shipping features are enabled in %1$s but the %2$s add-on is not "
+"active."
 msgstr ""
 
-#: lib/admin-head-suggest.php:169
+#: lib/admin-head-suggest.php:200
 msgid ""
 "Adding shipping details to your Schema Product markup is important if you "
 "offer free or low-cost shipping options, as this will make your products "
 "more appealing in Google search results."
 msgstr ""
 
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/admin-head-suggest.php:228
+msgid "Easy Digital Downloads"
+msgstr ""
+
+#: lib/admin-head-suggest.php:257
+msgid ""
+"If you have a Google Merchant account, the %1$s add-on can retrieve product "
+"information from %2$s and provide maintenance free XML feeds for each "
+"available language (as dictated by Polylang, WPLM, or the installed "
+"WordPress languages)."
+msgstr ""
+
+#: lib/admin-head-suggest.php:259
+msgid ""
+"If you're not already using a plugin to manage your Google Merchant Feeds, "
+"you should activate the %s add-on."
+msgstr ""
+
 #. translators: %1$s is a URL, %2$s is the plugin name, and %3$s is a pre-translated comment.
-#: lib/admin-head-suggest.php:192
+#: lib/admin-head-suggest.php:281
 msgid "<a href=\"%1$s\">Purchase the %2$s plugin</a> %3$s."
 msgstr ""
 
-#: lib/admin-head-suggest.php:195
+#: lib/admin-head-suggest.php:284
 msgid "Purchase the %s plugin."
 msgstr ""
 
-#: lib/admin-head-suggest.php:209
+#: lib/admin-head-suggest.php:299
 msgid "Activate the %s add-on."
 msgstr ""
 
-#: lib/admin-head-suggest.php:215
+#: lib/admin-head-suggest.php:305
 msgid "Install and activate the %s add-on."
 msgstr ""
 
@@ -4874,7 +4913,7 @@ msgid ""
 "your Site Address URL."
 msgstr ""
 
-#: lib/admin-head.php:155
+#: lib/admin-head.php:156
 msgid ""
 "There is <a href=\"%1$s\">%2$d pending update for the %3$s plugin and its "
 "add-on(s)</a>."
@@ -4884,136 +4923,136 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/admin-head.php:159
+#: lib/admin-head.php:160
 msgid "Please install this update at your earliest convenience."
 msgid_plural "Please install these updates at your earliest convenience."
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/admin-head.php:330 lib/messages.php:920
+#: lib/admin-head.php:331 lib/messages.php:920
 msgctxt "menu title"
 msgid "SSO"
 msgstr ""
 
-#: lib/admin-head.php:332 lib/messages.php:922 lib/submenu/advanced.php:45
+#: lib/admin-head.php:333 lib/messages.php:922 lib/submenu/advanced.php:45
 msgctxt "metabox title"
 msgid "HTML Tags"
 msgstr ""
 
-#: lib/admin-head.php:333 lib/messages.php:923 lib/submenu/advanced.php:234
+#: lib/admin-head.php:334 lib/messages.php:923 lib/submenu/advanced.php:234
 msgctxt "metabox tab"
 msgid "SEO / Other"
 msgstr ""
 
-#: lib/admin-head.php:335
+#: lib/admin-head.php:336
 msgid ""
 "Please note that the <code>%s</code> HTML tag is currently disabled and a "
 "known SEO plugin has not been detected."
 msgstr ""
 
-#: lib/admin-head.php:337
+#: lib/admin-head.php:338
 msgid ""
 "If another SEO plugin or your theme templates are not adding the <code>%1$s</"
 "code> HTML tag to your webpages, you can re-enable this option under the "
 "%2$s tab."
 msgstr ""
 
-#: lib/admin-head.php:445
+#: lib/admin-head.php:446
 msgid "Yes! Rate %s 5 stars!"
 msgstr ""
 
-#: lib/admin-head.php:447 lib/admin-head.php:459 lib/admin-head.php:556
+#: lib/admin-head.php:448 lib/admin-head.php:460 lib/admin-head.php:557
 msgid "Awesome!"
 msgstr ""
 
-#: lib/admin-head.php:448
+#: lib/admin-head.php:449
 msgid "Thank you for rating the %s plugin!"
 msgstr ""
 
-#: lib/admin-head.php:457
+#: lib/admin-head.php:458
 msgid "I've already rated %s."
 msgstr ""
 
-#: lib/admin-head.php:460
+#: lib/admin-head.php:461
 msgid "Thank you for supporting and encouraging your developers!"
 msgstr ""
 
-#: lib/admin-head.php:479
+#: lib/admin-head.php:480
 msgid ""
 "Now that you've been using %s for a while, you can rate the plugin on "
 "WordPress.org!"
 msgstr ""
 
-#: lib/admin-head.php:483 lib/messages.php:628
+#: lib/admin-head.php:484 lib/messages.php:628
 msgid ""
 "Great ratings are an excellent way to ensure the continued development of "
 "your favorite plugins."
 msgstr ""
 
-#: lib/admin-head.php:487 lib/messages.php:632
+#: lib/admin-head.php:488 lib/messages.php:632
 msgid ""
 "Without new ratings, plugins and add-ons that you and your site depend on "
 "could be discontinued prematurely."
 msgstr ""
 
-#: lib/admin-head.php:491 lib/messages.php:636
+#: lib/admin-head.php:492 lib/messages.php:636
 msgid "Don't let that happen!"
 msgstr ""
 
-#: lib/admin-head.php:493 lib/messages.php:638
+#: lib/admin-head.php:494 lib/messages.php:638
 msgid ""
 "Rate your active plugins today - it only takes a few seconds to rate a "
 "plugin!"
 msgstr ""
 
-#: lib/admin-head.php:531
+#: lib/admin-head.php:532
 msgid "two months"
 msgstr ""
 
-#: lib/admin-head.php:552
+#: lib/admin-head.php:553
 msgid "Yes! I'd like to get the %s edition!"
 msgstr ""
 
-#: lib/admin-head.php:554
+#: lib/admin-head.php:555
 msgid "No thanks. I'll stay with the %s edition."
 msgstr ""
 
-#: lib/admin-head.php:557
+#: lib/admin-head.php:558
 msgid ""
 "Thank you for encouraging and supporting the continued development of %s."
 msgstr ""
 
-#: lib/admin-head.php:560
+#: lib/admin-head.php:561
 msgid "Thank you."
 msgstr ""
 
-#: lib/admin-head.php:561
+#: lib/admin-head.php:562
 msgid ""
 "Hopefully you'll change your mind and help support the continued development "
 "of %s."
 msgstr ""
 
-#: lib/admin-head.php:585
+#: lib/admin-head.php:586
 msgid "Fantastic!"
 msgstr ""
 
-#: lib/admin-head.php:587
+#: lib/admin-head.php:588
 msgid "You've been using %1$s for more than %2$s now, which is awesome!"
 msgstr ""
 
-#: lib/admin-head.php:591
+#: lib/admin-head.php:592
 msgid ""
 "We've put many years of time and effort into making %s and its add-ons the "
 "best possible."
 msgstr ""
 
-#: lib/admin-head.php:593
+#: lib/admin-head.php:594
 msgid ""
 "I hope you've enjoyed all the new features, improvements and updates over "
 "the past %s."
 msgstr ""
 
-#: lib/admin-head.php:597
+#: lib/admin-head.php:598
 msgid ""
 "Have you thought about purchasing the %s edition? It comes with a lot of "
 "great extra features!"
