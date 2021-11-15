@@ -2311,7 +2311,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 							}
 						}
 
-						WpssoSchema::update_data_id( $weekday_spec, array( 'hours', md5( json_encode( $weekday_spec ) ) ), $hours_rel );
+						$hours_id = array( 'hours', md5( json_encode( $weekday_spec ) ) );
+
+						WpssoSchema::update_data_id( $weekday_spec, $hours_id, $hours_rel );
 
 						$opening_hours_spec[] = $weekday_spec;
 					}
