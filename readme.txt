@@ -334,7 +334,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.8.0-rc.2 (2021/11/15)**
+**Version 9.8.0 (2021/11/15)**
 
 * **New Features**
 	* Moved the WordPress Sitemaps features to a new WPSSO WP Sitemaps add-on.
@@ -632,7 +632,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.8.0-rc.2 =
+= 9.8.0 =
 
 (2021/11/15) Moved the WordPress Sitemaps features to a new WPSSO WP Sitemaps add-on. Added Schema Review subject type check. Updated the Yoast SEO integration modules.
 
