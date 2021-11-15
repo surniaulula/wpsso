@@ -28,16 +28,30 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			return false;
 		}
 
+		public static function sitemaps_disabled() {
+
+			return self::sitemaps_enabled() ? false : true;
+		}
+
 		public static function sitemaps_enabled() {
 
-			global $wp_sitemaps;
+			static $locale_cache = null;
 
-			if ( is_callable( array( $wp_sitemaps, 'sitemaps_enabled' ) ) ) {	// Since WP v5.5.
+			if ( null === $locale_cache ) {
 
-				return $wp_sitemaps->sitemaps_enabled();
+				global $wp_sitemaps;
+
+				if ( is_callable( array( $wp_sitemaps, 'sitemaps_enabled' ) ) ) {	// Since WP v5.5.
+
+					$locale_cache = (bool) $wp_sitemaps->sitemaps_enabled();
+
+				} else {
+
+					$locale_cache = false;
+				}
 			}
 
-			return false;
+			return $locale_cache;
 		}
 
 		public static function get_available_languages() {

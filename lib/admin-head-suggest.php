@@ -57,30 +57,40 @@ if ( ! class_exists( 'WpssoAdminHeadSuggest' ) ) {
 			
 			$notices_shown = 0;
 
-			if ( empty( $this->p->avail[ 'p_ext' ][ 'wpsm' ] ) && SucomUtilWP::sitemaps_enabled() ) {
+			if ( ! empty( $this->p->avail[ 'p_ext' ][ 'wpsm' ] ) ) {	// Already active.
+			
+				return $notices_shown;
+			
+			} elseif ( SucomUtilWP::sitemaps_disabled() ) {
 
-				$notice_key = 'suggest-wpssowpsm';
+				return $notices_shown;
 
-				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
+			} elseif ( $this->p->util->robots->is_disabled() ) {
+
+				return $notices_shown;
+			}
+
+			$notice_key = 'suggest-wpssowpsm';
+
+			if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
 					
-					$action_links = array();	// Init a new action array for the notice message.
+				$action_links = array();	// Init a new action array for the notice message.
 
-					$action_links[] = $this->get_install_activate_addon_link( 'wpssowpsm' );
+				$action_links[] = $this->get_install_activate_addon_link( 'wpssowpsm' );
 
-					$wpsm_info        = $this->p->cf[ 'plugin' ][ 'wpssowpsm' ];
-					$wpsm_name_transl = _x( $wpsm_info[ 'name' ], 'plugin name', 'wpsso' );
-					$sitemaps_url     = get_site_url( $blog_id = null, $path = '/wp-sitemap.xml' );
+				$wpsm_info        = $this->p->cf[ 'plugin' ][ 'wpssowpsm' ];
+				$wpsm_name_transl = _x( $wpsm_info[ 'name' ], 'plugin name', 'wpsso' );
+				$sitemaps_url     = get_site_url( $blog_id = null, $path = '/wp-sitemap.xml' );
 
-					$notice_msg = sprintf( __( 'The <a href="%1$s">WordPress sitemaps XML</a> feature (introduced in WordPress v5.5) is enabled, but the %2$s add-on is not active.', 'wpsso' ), $sitemaps_url, $wpsm_name_transl ) . ' ';
+				$notice_msg = sprintf( __( 'The <a href="%1$s">WordPress sitemaps XML</a> feature (introduced in WordPress v5.5) is enabled, but the %2$s add-on is not active.', 'wpsso' ), $sitemaps_url, $wpsm_name_transl ) . ' ';
 
-					$notice_msg .= __( 'You can activate this add-on to manage post and taxonomy types included in the WordPress sitemaps XML, exclude posts, pages, custom post types, taxonomy terms (categories, tags, etc.), or user profile pages marked as "No Index", and enhance the WordPress sitemaps XML with article modification times.', 'wpsso' );
+				$notice_msg .= __( 'You can activate this add-on to manage post and taxonomy types included in the WordPress sitemaps XML, exclude posts, pages, custom post types, taxonomy terms (categories, tags, etc.), and user profiles marked as "No Index", and automatically enhance the WordPress sitemaps XML with article modification times.', 'wpsso' );
 
-					$notice_msg .= '<ul><li>' . implode( $glue = '</li> <li>', $action_links ) . '</li></ul>' . ' ';
+				$notice_msg .= '<ul><li>' . implode( $glue = '</li> <li>', $action_links ) . '</li></ul>' . ' ';
 
-					$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
+				$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
 
-					$notices_shown++;
-				}
+				$notices_shown++;
 			}
 
 			return $notices_shown;
@@ -260,7 +270,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggest' ) ) {
 
 					$notice_msg .= '<ul><li>' . implode( $glue = '</li> <li>', $action_links ) . '</li></ul>' . ' ';
 
-					$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
+					$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
 
 					$notices_shown++;
 				}

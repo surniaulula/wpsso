@@ -256,7 +256,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'info-meta-robots-meta' ) . '</td>';
 
-			if ( empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
+			if ( $this->p->util->robots->is_disabled() ) {
 
 				return $this->p->msgs->get_robots_disabled_rows( $table_rows );
 			}

@@ -167,7 +167,7 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 
 			$features[ '(code) SEO Robots Meta Tags' ] = array(
 				'label_transl' => _x( '(code) SEO Robots Meta Tags', 'lib file description', 'wpsso' ),
-				'status'       => empty( $this->p->options[ 'add_meta_name_robots' ] ) ? 'off' : 'on',
+				'status'       => $this->p->util->robots->is_enabled() ? 'on' : 'off',
 			);
 
 			$features[ '(code) Twitter Card Meta Tags' ] = array(

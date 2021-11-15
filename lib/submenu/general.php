@@ -344,7 +344,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					/**
 					 * Robots settings.
 					 */
-					$robots_disabled = empty( $this->p->options[ 'add_meta_name_robots' ] ) ? true : false;
+					$robots_disabled = $this->p->util->robots->is_disabled();
 
 					$table_rows[ 'robots_max_snippet' ] = $this->form->get_tr_hide( 'basic', 'robots_max_snippet' ) .
 						$this->form->get_th_html( _x( 'Robots Snippet Max. Length', 'option label', 'wpsso' ),

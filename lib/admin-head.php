@@ -323,9 +323,9 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				return;	// Stop here.
 			}
 
-			if ( empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
+			if ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
 
-				if ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
+				if ( $this->p->util->robots->is_disabled() ) {
 
 					$seo_other_tab_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_head_tags-tab_seo_other',
 						_x( 'SSO', 'menu title', 'wpsso' ) . ' &gt; ' .

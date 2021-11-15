@@ -82,7 +82,7 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 			/**
 			 * Ignore custom options if the robots meta tag is disabled.
 			 */
-			if ( ! empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
+			if ( $this->is_enabled() ) {
 
 				if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 
@@ -96,15 +96,9 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 
 				$opt_key = str_replace( '-', '_', 'robots_' . $directive_key );	// Convert dashes to underscores.
 
-				/**
-				 * Ignore custom options if the robots meta tag is disabled.
-				 */
-				if ( ! empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
-			
-					if ( isset( $md_opts[ $opt_key ] ) ) {
+				if ( isset( $md_opts[ $opt_key ] ) ) {
 
-						$value = $md_opts[ $opt_key ];
-					}
+					$value = $md_opts[ $opt_key ];
 				}
 
 				/**
@@ -169,11 +163,11 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 			/**
 			 * Ignore custom options if the robots meta tag is disabled.
 			 */
-			if ( ! empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
+			if ( $this->is_enabled() ) {
 
-				if ( $mod ) {	// Not false.
+				if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 
-					$md_opts = $mod[ 'obj' ]->get_options( $mod_id );
+					$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
 
 					if ( isset( $md_opts[ 'robots_noindex' ] ) ) {
 
@@ -190,6 +184,25 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 			}
 
 			return apply_filters( 'wpsso_robots_is_noindex', $is_noindex, $mod );
+		}
+		
+		public function is_disabled() {
+
+			return $this->is_enabled() ? false : true;
+		}
+
+		public function is_enabled() {
+
+			static $local_cache = null;
+
+			if ( null === $local_cache ) {
+
+				$local_cache = empty( $this->p->options[ 'add_meta_name_robots' ] ) ? false : true;
+
+				$local_cache = (bool) apply_filters( 'wpsso_robots_is_enabled', $local_cache );
+			}
+
+			return $local_cache;
 		}
 	}
 }

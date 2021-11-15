@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 9.8.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-11-15 12:29-0800\n"
+"PO-Revision-Date: 2021-11-15 13:54-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1109,7 +1109,7 @@ msgstr "WPSSO sitemaps WP"
 #: gettext/gettext-lib-config.php:142
 msgctxt "plugin description"
 msgid "Manage post and taxonomy types included in the WordPress sitemaps XML, and exclude content marked as \"No Index\"."
-msgstr "Gérez les types d'article et taxonomie inclus dans le XML sitemaps de WordPress et exclure le contenu marquées comme \"Pas d'indexation\"."
+msgstr "Gérez les types d'article et taxonomie inclus dans le XML des sitemaps WordPress et exclure le contenu marquées comme \"Pas d'indexation\"."
 
 #: gettext/gettext-lib-config.php:143
 msgctxt "menu title"
@@ -4569,83 +4569,83 @@ msgstr "(code) Balisage Knowledge Graph de site Web"
 msgid "(%d sub-types)"
 msgstr "(%d sous-types)"
 
-#: lib/admin-head-suggest.php:74
-msgid "The <a href=\"%1$s\">WordPress sitemaps XML</a> feature is enabled but the %2$s add-on is not active."
-msgstr "La fonctionnalité <a href=\"%1$s\">XML sitemaps de WordPress</a> est activée mais l'ajout %2$s n'est pas actif."
+#: lib/admin-head-suggest.php:85
+msgid "The <a href=\"%1$s\">WordPress sitemaps XML</a> feature (introduced in WordPress v5.5) is enabled, but the %2$s add-on is not active."
+msgstr "La fonctionnalité <a href=\"%1$s\">XML des sitemaps WordPress</a> (introduite dans WordPress v5.5) est activée, mais l'ajout %2$s n'est pas actif."
 
-#: lib/admin-head-suggest.php:76
-msgid "You can activate this add-on to manage post and taxonomy types included in the WordPress sitemaps XML, and exclude posts, pages, custom post types, taxonomy terms (categories, tags, etc.), or user profile pages marked as \"No Index\"."
-msgstr "Vous pouvez activer cet ajout pour gérer es types d'article et taxonomie inclus dans le XML sitemaps de WordPress et exclure les articles, pages, types d'articles personnalisés, termes (catégories, étiquettes, etc.), ou profil d'utilisateurs marquées comme \"Pas d'indexation\"."
+#: lib/admin-head-suggest.php:87
+msgid "You can activate this add-on to manage post and taxonomy types included in the WordPress sitemaps XML, exclude posts, pages, custom post types, taxonomy terms (categories, tags, etc.), and user profiles marked as \"No Index\", and automatically enhance the WordPress sitemaps XML with article modification times."
+msgstr "Vous pouvez activer cet ajout pour gérer les types d'article et taxonomie inclus dans le XML des sitemaps WordPress, exclure les articles, pages, types d'articles personnalisés, termes (catégories, étiquettes, etc.), et profil d'utilisateurs marquées comme \"Pas d'indexation\", et améliorez le XML des sitemaps WordPress automatiquement avec les heures de modification des articles."
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin-head-suggest.php:108 lib/admin-head-suggest.php:221
+#: lib/admin-head-suggest.php:118 lib/admin-head-suggest.php:231
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
-#: lib/admin-head-suggest.php:122
+#: lib/admin-head-suggest.php:132
 msgid "brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, pattern, size, SKU, volume, weight, etc"
 msgstr "marque, couleur, état, EAN, dimensions, GTIN-8/12/ 13/14, ISBN, matériel, MPN, motif, taille, SKU, volume, poids, etc"
 
-#: lib/admin-head-suggest.php:124
+#: lib/admin-head-suggest.php:134
 msgid "The %1$s plugin does not provide sufficient Schema JSON-LD markup for Google Rich Results."
 msgstr "L'extension %1$s ne fournit pas un balisage de Schéma JSON-LD suffisant pour les résultats enrichis Google."
 
-#: lib/admin-head-suggest.php:126
+#: lib/admin-head-suggest.php:136
 msgid "The %1$s plugin reads %2$s product data and provides complete Schema Product JSON-LD markup for Google Rich Results, including additional product images, product variations, product information (%3$s), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more."
 msgstr "L'extension %1$s lit les données de produit %2$s et fournit un balisage complet de Schéma Produit JSON-LD pour les résultats enrichis Google, y compris les images de produit supplémentaires, les variantes de produit, les informations sur le produit (%3$s), critiques de produits, évaluations de produits, dates de début / fin de vente, prix de vente, prix hors taxes, prix avec TVA, tarifs d'expédition, délais d'expédition et bien plus encore."
 
-#: lib/admin-head-suggest.php:148 lib/admin-head-suggest.php:188
-#: lib/admin-head-suggest.php:247
+#: lib/admin-head-suggest.php:158 lib/admin-head-suggest.php:198
+#: lib/admin-head-suggest.php:257
 msgid "(required for %s integration)"
 msgstr "(requis pour l'intégration %s)"
 
-#: lib/admin-head-suggest.php:158
+#: lib/admin-head-suggest.php:168
 msgid "Schema Product markup for Google Rich Results requires at least one unique product ID, like the product MPN (Manufacturer Part Number), UPC, EAN, GTIN, or ISBN."
 msgstr "Le balisage de produit de Schéma pour les résultats enrichis Google nécessite au moins un ID de produit unique, tel que le MPN (numéro de pièce du fabricant), l'UPC, l'EAN, le GTIN ou l'ISBN du produit."
 
-#: lib/admin-head-suggest.php:160
+#: lib/admin-head-suggest.php:170
 msgid "The product SKU (Stock Keeping Unit) from %1$s is not a valid unique product ID."
 msgstr "Le SKU (unité de gestion des stocks) du produit de %1$s n'est pas un ID de produit unique valide."
 
-#: lib/admin-head-suggest.php:162
+#: lib/admin-head-suggest.php:172
 msgid "If you're not already using a plugin to manage unique product IDs for %1$s, you should activate the %2$s add-on."
 msgstr "Si vous n'utilisez pas déjà une extension pour gérer les ID de produit uniques pour %1$s, vous pouvez activer l'ajout %2$s."
 
-#: lib/admin-head-suggest.php:198
+#: lib/admin-head-suggest.php:208
 msgid "Product shipping features are enabled in %1$s but the %2$s add-on is not active."
 msgstr "Les fonctionnalités d'expédition des produits sont activées dans %1$s, mais l'ajout %2$s n'est pas actif."
 
-#: lib/admin-head-suggest.php:200
+#: lib/admin-head-suggest.php:210
 msgid "Adding shipping details to your Schema Product markup is important if you offer free or low-cost shipping options, as this will make your products more appealing in Google search results."
 msgstr "L'ajout des détails d'expédition à votre balisage de produit de Schéma est important si vous proposez des options d'expédition gratuites ou à faible coût, car cela rendra vos produits plus attrayants dans les résultats de recherche Google."
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin-head-suggest.php:228
+#: lib/admin-head-suggest.php:238
 msgid "Easy Digital Downloads"
 msgstr "Easy Digital Downloads"
 
-#: lib/admin-head-suggest.php:257
+#: lib/admin-head-suggest.php:267
 msgid "If you have a Google Merchant account, the %1$s add-on can retrieve product information from %2$s and provide maintenance free XML feeds for each available language (as dictated by Polylang, WPLM, or the installed WordPress languages)."
 msgstr "Si vous avez un compte marchand Google, l'ajout %1$s peut récupérer les informations des produits de %2$s et fournir des flux XML sans maintenance pour chaque langue disponible (déterminé par Polylang, WPLM ou les langues WordPress installées)."
 
-#: lib/admin-head-suggest.php:259
+#: lib/admin-head-suggest.php:269
 msgid "If you're not already using a plugin to manage your Google Merchant Feeds, you should activate the %s add-on."
 msgstr "Si vous n'utilisez pas déjà une extension pour gérer vos flux de marchands Google, vous pouvez activer l'ajout %s."
 
 #. translators: %1$s is a URL, %2$s is the plugin name, and %3$s is a pre-translated comment.
-#: lib/admin-head-suggest.php:281
+#: lib/admin-head-suggest.php:291
 msgid "<a href=\"%1$s\">Purchase the %2$s plugin</a> %3$s."
 msgstr "<a href=\"%1$s\">Acheter l'extension %2$s</a> %3$s."
 
-#: lib/admin-head-suggest.php:284
+#: lib/admin-head-suggest.php:294
 msgid "Purchase the %s plugin."
 msgstr "Acheter l'extension %s."
 
-#: lib/admin-head-suggest.php:299
+#: lib/admin-head-suggest.php:309
 msgid "Activate the %s add-on."
 msgstr "Activer l'ajout %s."
 
-#: lib/admin-head-suggest.php:305
+#: lib/admin-head-suggest.php:315
 msgid "Install and activate the %s add-on."
 msgstr "Installer et activer l'ajout %s."
 

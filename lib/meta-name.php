@@ -35,7 +35,7 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 
 		public function maybe_disable_noindex() {
 
-			if ( ! empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
+			if ( $this->p->util->robots->is_enabled() ) {
 
 				remove_action( 'wp_head', 'noindex', 1 );
 
@@ -109,7 +109,7 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 			/**
 			 * Meta name "robots".
 			 */
-			if ( ! empty( $this->p->options[ 'add_meta_name_robots' ] ) ) {
+			if ( $this->p->util->robots->is_enabled() ) {
 
 				$mt_name[ 'robots' ] = $this->p->util->robots->get_content( $mod );
 			}
