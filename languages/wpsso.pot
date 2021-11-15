@@ -4817,16 +4817,17 @@ msgstr ""
 
 #: lib/admin-head-suggest.php:74
 msgid ""
-"The <a href=\"%1$s\">WordPress sitemaps XML</a> feature is enabled but the "
-"%2$s add-on is not active."
+"The <a href=\"%1$s\">WordPress sitemaps XML</a> feature (introduced in "
+"WordPress v5.5) is enabled, but the %2$s add-on is not active."
 msgstr ""
 
 #: lib/admin-head-suggest.php:76
 msgid ""
 "You can activate this add-on to manage post and taxonomy types included in "
-"the WordPress sitemaps XML, and exclude posts, pages, custom post types, "
+"the WordPress sitemaps XML, exclude posts, pages, custom post types, "
 "taxonomy terms (categories, tags, etc.), or user profile pages marked as "
-"\"No Index\"."
+"\"No Index\", and enhance the WordPress sitemaps XML with article "
+"modification times."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
