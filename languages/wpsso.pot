@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 9.8.0-dev.4\n"
+"Project-Id-Version: WPSSO Core 9.8.0-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -5115,7 +5115,7 @@ msgstr ""
 msgid "Network plugin settings have been saved."
 msgstr ""
 
-#: lib/admin.php:1230 lib/post.php:828 lib/term.php:645 lib/user.php:626
+#: lib/admin.php:1230 lib/post.php:829 lib/term.php:632 lib/user.php:626
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -6248,12 +6248,12 @@ msgid ""
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1027 lib/post.php:552 lib/register.php:350 lib/term.php:472
+#: lib/media.php:1027 lib/post.php:553 lib/register.php:350 lib/term.php:459
 #: lib/user.php:435 lib/util.php:833 lib/util.php:3077
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1028 lib/post.php:553 lib/term.php:473 lib/user.php:436
+#: lib/media.php:1028 lib/post.php:554 lib/term.php:460 lib/user.php:436
 #: lib/util.php:834 lib/util.php:3078
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
@@ -6774,7 +6774,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip-meta-opengraph.php:77
-#: lib/messages-tooltip-meta-schema.php:816 lib/messages-tooltip-meta.php:168
+#: lib/messages-tooltip-meta-schema.php:817 lib/messages-tooltip-meta.php:168
 #: lib/messages-tooltip-meta.php:185 lib/messages-tooltip-opengraph.php:137
 msgid "This option is disabled if a custom image URL is entered."
 msgstr ""
@@ -6792,7 +6792,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip-meta-opengraph.php:89
-#: lib/messages-tooltip-meta-schema.php:824 lib/messages-tooltip-meta.php:176
+#: lib/messages-tooltip-meta-schema.php:825 lib/messages-tooltip-meta.php:176
 #: lib/messages-tooltip-meta.php:194 lib/messages-tooltip-opengraph.php:153
 msgid "This option is disabled if a custom image ID is selected."
 msgstr ""
@@ -6940,17 +6940,17 @@ msgid "A license document URL that applies to this content."
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:147
-#: lib/messages-tooltip-meta-schema.php:692
+#: lib/messages-tooltip-meta-schema.php:693
 msgid "The creative work author can be a person or an organization."
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:153
-#: lib/messages-tooltip-meta-schema.php:698
+#: lib/messages-tooltip-meta-schema.php:699
 msgid "Enter the name of the author for this creative work."
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:159
-#: lib/messages-tooltip-meta-schema.php:704
+#: lib/messages-tooltip-meta-schema.php:705
 msgid ""
 "The home page of the author, or another definitive URL that provides "
 "information about the author, such as the person or organization's Wikipedia "
@@ -6958,13 +6958,13 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:165
-#: lib/messages-tooltip-meta-schema.php:710
+#: lib/messages-tooltip-meta-schema.php:711
 msgid ""
 "The date when this creative work was published or entered public discourse."
 msgstr ""
 
 #: lib/messages-tooltip-meta-schema.php:171
-#: lib/messages-tooltip-meta-schema.php:716
+#: lib/messages-tooltip-meta-schema.php:717
 msgid "The date when this creative work was created."
 msgstr ""
 
@@ -7334,88 +7334,95 @@ msgid ""
 "reviewed."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:664
+#: lib/messages-tooltip-meta-schema.php:660 lib/messages-tooltip-schema.php:254
+msgid ""
+"Please note that although the Schema standard allows the subject of a review "
+"to be any Schema type, <a href=\"%1$s\">Google allows reviews for only a few "
+"specific Schema types (and their sub-types)</a>."
+msgstr ""
+
+#: lib/messages-tooltip-meta-schema.php:665
 msgid "A webpage URL for the subject of the review."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:676
+#: lib/messages-tooltip-meta-schema.php:677
 msgid "An image ID showing the subject of the review."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:678
+#: lib/messages-tooltip-meta-schema.php:679
 msgid "This option is disabled if a subject image URL is entered."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:684
+#: lib/messages-tooltip-meta-schema.php:685
 msgid ""
 "An image URL (instead of an image ID) showing the subject of the review."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:686
+#: lib/messages-tooltip-meta-schema.php:687
 msgid "This option is disabled if a subject image ID is selected."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:722
+#: lib/messages-tooltip-meta-schema.php:723
 msgid ""
 "The ISBN code (aka International Standard Book Number) for the book being "
 "reviewed."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:740
+#: lib/messages-tooltip-meta-schema.php:741
 msgid "The brand name of the product being reviewed."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:746
+#: lib/messages-tooltip-meta-schema.php:747
 msgid ""
 "One or more offers for the product being reviewed, including the offer name, "
 "price and currency."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:752
+#: lib/messages-tooltip-meta-schema.php:753
 msgid "The SKU (aka Stock-Keeping Unit) of the product being reviewed."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:758
+#: lib/messages-tooltip-meta-schema.php:759
 msgid "The MPN (aka Manufacturer Part Number) of the product being reviewed."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:764
+#: lib/messages-tooltip-meta-schema.php:765
 msgid ""
 "One or more offers for the software application being reviewed, including "
 "the offer name, price and currency."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:770
+#: lib/messages-tooltip-meta-schema.php:771
 msgid ""
 "A short summary of specific claim(s) being reviewed in the Schema "
 "ClaimReview content."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:772
+#: lib/messages-tooltip-meta-schema.php:773
 msgid ""
 "The summary should be less than 75 characters to minimize wrapping on mobile "
 "devices."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:778
+#: lib/messages-tooltip-meta-schema.php:779
 msgid "An optional webpage URL where this specific claim first appeared."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:800
+#: lib/messages-tooltip-meta-schema.php:801
 msgid "Type of software application (example: %s, etc.)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:806
+#: lib/messages-tooltip-meta-schema.php:807
 msgid "The operating system supported (example: %s, etc.)."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:814
+#: lib/messages-tooltip-meta-schema.php:815
 msgid ""
 "A customized image ID to include first in the Schema meta tags and JSON-LD "
 "markup."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:822
+#: lib/messages-tooltip-meta-schema.php:823
 msgid ""
 "A customized image URL (instead of an image ID) to include first in the "
 "Schema meta tags and JSON-LD markup."
@@ -9733,135 +9740,135 @@ msgctxt "module name"
 msgid "post"
 msgstr ""
 
-#: lib/post.php:554
+#: lib/post.php:555
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to get children of "
 "post ID %3$d (%4$s)."
 msgstr ""
 
-#: lib/post.php:761 lib/post.php:1358 lib/schema.php:3231 lib/term.php:596
+#: lib/post.php:762 lib/post.php:1359 lib/schema.php:3242 lib/term.php:583
 #: lib/user.php:576
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/post.php:966
+#: lib/post.php:967
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:999
+#: lib/post.php:1000
 msgid "The webpage HTML retrieved from %1$s is %2$s bytes."
 msgstr ""
 
-#: lib/post.php:1001
+#: lib/post.php:1002
 msgid ""
 "This exceeds the maximum limit of %1$s bytes imposed by the Google crawler."
 msgstr ""
 
-#: lib/post.php:1003
+#: lib/post.php:1004
 msgid ""
 "If you do not reduce the webpage HTML size, Google will refuse to crawl this "
 "webpage."
 msgstr ""
 
-#: lib/post.php:1033
+#: lib/post.php:1034
 msgid "Retrieving the webpage HTML for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:1035
+#: lib/post.php:1036
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:1037
+#: lib/post.php:1038
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:1038
+#: lib/post.php:1039
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:1052
+#: lib/post.php:1053
 msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:1066
+#: lib/post.php:1067
 msgid "An %1$s tag was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1081
+#: lib/post.php:1082
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1098
+#: lib/post.php:1099
 msgid ""
 "The %1$s meta tags and Schema markup section was not found in <a href=\"%2$s"
 "\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1100
+#: lib/post.php:1101
 msgid "Does a caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:1131
+#: lib/post.php:1132
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section - "
 "this could be an indication of a problem with PHP's PCRE library, or an "
 "optimization plugin or service corrupting the webpage HTML markup."
 msgstr ""
 
-#: lib/post.php:1133
+#: lib/post.php:1134
 msgid ""
 "You may consider updating or having your hosting provider update your PHP "
 "installation and its PCRE library."
 msgstr ""
 
-#: lib/post.php:1153
+#: lib/post.php:1154
 msgid ""
 "Conflict detected - your theme or another plugin is adding %1$s to the head "
 "section of this webpage."
 msgstr ""
 
-#: lib/post.php:1171
+#: lib/post.php:1172
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1171
+#: lib/post.php:1172
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML document - please review the <a href=\"%1$s\">W3C Markup "
 "Validator</a> results and correct any syntax errors."
 msgstr ""
 
-#: lib/post.php:1209
+#: lib/post.php:1210
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1211
+#: lib/post.php:1212
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1219
+#: lib/post.php:1220
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1223
+#: lib/post.php:1224
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1227
+#: lib/post.php:1228
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1414
+#: lib/post.php:1415
 msgid "Save a draft or publish to display these options."
 msgstr ""
 
-#: lib/post.php:1618
+#: lib/post.php:1619
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -10036,11 +10043,18 @@ msgstr ""
 msgid "adding schema"
 msgstr ""
 
-#: lib/schema.php:1464
+#: lib/schema.php:1468
 msgid "adding schema %s #%d image"
 msgstr ""
 
-#: lib/schema.php:1595
+#: lib/schema.php:1579
+msgid ""
+"Please note that although the Schema standard allows the subject of a review "
+"to be any Schema type, <a href=\"%1$s\">Google does not allow reviews for "
+"the Schema %2$s type</a>."
+msgstr ""
+
+#: lib/schema.php:1606
 msgid "adding reviewed subject image"
 msgstr ""
 
@@ -10649,13 +10663,13 @@ msgctxt "module name"
 msgid "term"
 msgstr ""
 
-#: lib/term.php:474
+#: lib/term.php:461
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to get posts for "
 "term ID %3$d in taxonomy %4$s (%5$s)."
 msgstr ""
 
-#: lib/term.php:870
+#: lib/term.php:857
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 

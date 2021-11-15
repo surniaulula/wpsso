@@ -499,14 +499,15 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		public static function get_public_ids( array $extra_args = array() ) {
 
 			$posts_args = array_merge( array(
-				'has_password'   => false,
-				'order'          => 'DESC',		// Newest first.
-				'orderby'        => 'date',
-				'paged'          => false,
-				'post_status'    => 'publish',		// Only 'publish', not 'auto-draft', 'draft', 'future', 'inherit', 'pending', 'private', or 'trash'.
-				'post_type'      => 'any',		// Return any post, page, or custom post type.
-				'posts_per_page' => -1,			// The number of posts to query for. -1 to request all posts.
-				'no_found_rows'  => true,		// Skip counting total rows found - should be enabled when pagination is not needed.
+				'has_password'     => false,
+				'order'            => 'DESC',		// Newest first.
+				'orderby'          => 'date',
+				'paged'            => false,
+				'post_status'      => 'publish',	// Only 'publish', not 'auto-draft', 'draft', 'future', 'inherit', 'pending', 'private', or 'trash'.
+				'post_type'        => 'any',		// Return any post, page, or custom post type.
+				'posts_per_page'   => -1,		// The number of posts to query for. -1 to request all posts.
+				'no_found_rows'    => true,		// Skip counting total rows found - should be enabled when pagination is not needed.
+				'suppress_filters' => false,		// Allow WPML to filter posts for the current language.
 			), $extra_args, array( 'fields' => 'ids' ) );	// Return an array of post IDs.
 
 			return get_posts( $posts_args );

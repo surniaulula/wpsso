@@ -390,30 +390,17 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		 */
 		public static function get_public_ids( $tax_name = null ) {
 
-			global $wp_version;
-
-			$terms_args = array(
-				'fields' => 'ids',	// 'ids' (returns an array of ids).
-			);
-
-			$add_tax_in_args = version_compare( $wp_version, '4.5.0', '>=' ) ? true : false;
-
 			$public_term_ids = array();
 
 			$tax_names = SucomUtilWP::get_taxonomies( $output = 'names' );
 
+			$terms_args = array( 'fields' => 'ids' );	// Return an array of ids.
+
 			foreach ( $tax_names as $name ) {
 
-				if ( $add_tax_in_args ) {	// Since WP v4.5.
+				$terms_args[ 'taxonomy' ] = $name;
 
-					$terms_args[ 'taxonomy' ] = $name;
-
-					$term_ids = get_terms( $terms_args );
-
-				} else {
-
-					$term_ids = get_terms( $name, $terms_args );
-				}
+				$term_ids = get_terms( $terms_args );
 
 				foreach ( $term_ids as $term_id ) {
 

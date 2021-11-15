@@ -1218,6 +1218,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		/**
 		 * Since WPSSO Core v9.2.1.
+		 *
+		 * Check if Google allows aggregate rarings for this Schema type.
 		 */
 		public function allow_aggregate_rating( $page_type_id ) {
 
@@ -1244,6 +1246,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		/**
 		 * Since WPSSO Core v9.2.1.
+		 *
+		 * Check if Google allows reviews for this Schema type.
 		 */
 		public function allow_review( $page_type_id ) {
 
@@ -1569,6 +1573,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$type_url = $wpsso->schema->get_schema_type_url( $type_id );
+
+			if ( ! $wpsso->schema->allow_review( $type_id ) ) {
+
+				$notice_msg = sprintf( __( 'Please note that although the Schema standard allows the subject of a review to be any Schema type, <a href="%1$s">Google does not allow reviews for the Schema %2$s type</a>.', 'wpsso' ), 'https://developers.google.com/search/docs/data-types/review-snippet', $type_url ) . ' ';
+
+				$wpsso->notice->warn( $notice_msg );
+			}
 
 			$json_data = self::get_schema_type_context( $type_url, $json_data );
 

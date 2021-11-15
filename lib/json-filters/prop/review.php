@@ -203,7 +203,7 @@ if ( ! class_exists( 'WpssoJsonFiltersPropReview' ) ) {
 			/**
 			 * Make sure reviews are allowed by Google for this Schema type.
 			 */
-			if ( ! $this->allow_review( $page_type_id ) ) {
+			if ( ! $this->p->schema->allow_review( $page_type_id ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -223,29 +223,6 @@ if ( ! class_exists( 'WpssoJsonFiltersPropReview' ) ) {
 			}
 
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );
-		}
-
-		private function allow_review( $page_type_id ) {
-
-			foreach ( $this->p->cf[ 'head' ][ 'schema_review_parents' ] as $parent_id ) {
-
-				if ( $this->p->schema->is_schema_type_child( $page_type_id, $parent_id ) ) {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'review for schema type ' . $page_type_id . ' is allowed' );
-					}
-
-					return true;
-				}
-			}
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'review for schema type ' . $page_type_id . ' not allowed' );
-			}
-
-			return false;
 		}
 	}
 }

@@ -2613,8 +2613,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$key_locale = $key . '#' . $locale;
 
 			/**
-			 * The default language may have changed, so if we're using the default, check for a locale version for the
-			 * default language.
+			 * The default language for the WordPress site may have changed in the past, so if we're using the default,
+			 * check for a locale version of the default language.
 			 */
 			if ( $locale === $default ) {
 
@@ -2679,9 +2679,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$cache_index = is_array( $mixed ) ? $mixed[ 'name' ] . '_' . $mixed[ 'id' ] : $mixed;
 
-			if ( $read_cache && isset( self::$cache_locale[ $cache_index ] ) ) {
+			if ( $read_cache ) {
+			
+				if ( isset( self::$cache_locale[ $cache_index ] ) ) {
 
-				return self::$cache_locale[ $cache_index ];
+					return self::$cache_locale[ $cache_index ];
+				}
 			}
 
 			if ( 'default' === $mixed ) {
@@ -2741,24 +2744,80 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return self::$cache_locale[ $cache_index ] = $locale;
 		}
 
+		public static function get_available_feed_locale_names() {
+
+			$locale_names = self::get_available_locale_names();
+
+			$locale_names = apply_filters( 'sucom_available_feed_locale_names', $locale_names );
+
+			return $locale_names;
+		}
+
+		public static function get_available_locale_names() {
+
+			static $local_cache = null;
+
+			if ( null !== $local_cache ) {
+
+				return $local_cache;
+			}
+
+			require_once trailingslashit( ABSPATH ) . 'wp-admin/includes/translation-install.php';
+
+			$translations  = wp_get_available_translations();	// Since WP v4.0.
+			$avail_locales = self::get_available_locales();
+			$local_cache   = array();
+
+			foreach ( $avail_locales as $locale ) {
+
+				if ( isset( $translations[ $locale ][ 'native_name' ] ) ) {
+
+					$native_name = $translations[ $locale ][ 'native_name' ];
+
+				} elseif ( 'en_US' === $locale ) {
+
+					$native_name = 'English (United States)';
+
+				} else {
+
+					$native_name = $locale;
+				}
+
+				$local_cache[ $locale ] = $native_name;
+			}
+
+			$local_cache = apply_filters( 'sucom_available_locale_names', $local_cache );
+
+			return $local_cache;
+		}
+
 		public static function get_available_locales() {
 
-			$avail_locales = SucomUtilWP::get_available_languages();	// Uses a local static cache.
+			static $local_cache = null;
+
+			if ( null !== $local_cache ) {
+
+				return $local_cache;
+			}
+
+			$local_cache = get_available_languages();
 
 			$default_locale = self::get_locale( 'default' );	// Uses a static cache.
 
-			if ( ! is_array( $avail_locales ) ) {	// Just in case.
+			if ( ! is_array( $local_cache ) ) {	// Just in case.
 
-				$avail_locales = array( $default_locale );
+				$local_cache = array( $default_locale );
 
-			} elseif ( ! in_array( $default_locale, $avail_locales ) ) {	// Just in case.
+			} elseif ( ! in_array( $default_locale, $local_cache ) ) {	// Just in case.
 
-				$avail_locales[] = $default_locale;
+				$local_cache[] = $default_locale;
 			}
 
-			sort( $avail_locales );
+			sort( $local_cache );
 
-			return apply_filters( 'sucom_available_locales', $avail_locales );
+			$local_cache = apply_filters( 'sucom_available_locales', $local_cache );
+
+			return $local_cache;
 		}
 
 		/**

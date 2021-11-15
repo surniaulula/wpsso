@@ -40,9 +40,6 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			return false;
 		}
 
-		/**
-		 * Add a layer of static cache to improve the speed of get_available_languages().
-		 */
 		public static function get_available_languages() {
 
 			static $local_cache = null;

@@ -249,7 +249,9 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 				 */
 				case 'tooltip-schema_def_review_item_type':	// Default Subject Webpage Type.
 
-					$text = __( 'Select a default Schema type for the Schema Review subject URL.', 'wpsso' );
+					$text = __( 'Select a default Schema type for the Schema Review subject URL.', 'wpsso' ) . ' ';
+
+					$text .= sprintf( __( 'Please note that although the Schema standard allows the subject of a review to be any Schema type, <a href="%1$s">Google allows reviews for only a few specific Schema types (and their sub-types)</a>.', 'wpsso' ), 'https://developers.google.com/search/docs/data-types/review-snippet' );
 
 				 	break;
 

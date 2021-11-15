@@ -655,8 +655,9 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						case 'tooltip-meta-schema_review_item_type':		// Review: Subject Webpage Type.
 
-							$text = __( 'A Schema type for the subject of the webpage (ie. the content) being reviewed.', 'wpsso' );
+							$text = __( 'A Schema type for the subject of the webpage (ie. the content) being reviewed.', 'wpsso' ) . ' ';
 
+							$text .= sprintf( __( 'Please note that although the Schema standard allows the subject of a review to be any Schema type, <a href="%1$s">Google allows reviews for only a few specific Schema types (and their sub-types)</a>.', 'wpsso' ), 'https://developers.google.com/search/docs/data-types/review-snippet' );
 						 	break;
 
 						case 'tooltip-meta-schema_review_item_url':		// Review: Subject Webpage URL.
