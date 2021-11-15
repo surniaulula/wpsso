@@ -334,17 +334,19 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.8.0-dev.4 (2021/11/14)**
+**Version 9.8.0-b.1 (2021/11/15)**
 
 * **New Features**
 	* Moved the WordPress Sitemaps features to a new WPSSO WP Sitemaps add-on.
 * **Improvements**
+	* Added a check for the Schema type of a review.
 	* Updated the Yoast SEO integration modules to import / filter the 'noindex' value (Premium edition).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
 	* Added a new `WpssoAdminHeadSuggest` class.
 	* Added a new 'wpsso_robots_is_noindex' filter.
+	* Added a new `WpssoUtil->get_available_feed_locale_names()` method (filtered by the Polylang and WPML integration modules).
 	* Refactored the `WpssoUtilRobots->get_directives()` method.
 	* Refactored the `WpssoUtilRobots->is_noindex()` method.
 	* Refactored the `SucomAddOn->get_missing_requirements()` method.
@@ -627,9 +629,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.8.0-dev.4 =
+= 9.8.0-b.1 =
 
-(2021/11/14) Moved the WordPress Sitemaps features to a new WPSSO WP Sitemaps add-on. Updated the Yoast SEO integration modules.
+(2021/11/15) Moved the WordPress Sitemaps features to a new WPSSO WP Sitemaps add-on. Updated the Yoast SEO integration modules.
 
 = 9.7.0 =
 
