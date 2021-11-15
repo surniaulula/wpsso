@@ -2264,8 +2264,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			$weekdays =& $wpsso->cf[ 'form' ][ 'weekdays' ];
 
-			$place_id = isset( $opts[ $opt_prefix . '_id' ] ) ? $opts[ $opt_prefix . '_id' ] : 'custom';
-
 			$hours_rel = isset( $opts[ $opt_prefix . '_rel' ] ) ? $opts[ $opt_prefix . '_rel' ] : '';
 
 			$opening_hours_spec = array();
@@ -2292,8 +2290,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				if ( ! empty( $open_close ) ) {
 
-					$num = 0;
-
 					foreach ( $open_close as $open => $close ) {
 
 						$weekday_spec = array(
@@ -2315,13 +2311,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 							}
 						}
 
-						$hours_id = $opt_prefix . '-' . $place_id . '-' . $day_name . '-' . $num;
-
-						WpssoSchema::update_data_id( $weekday_spec, $hours_id, $hours_rel );
+						WpssoSchema::update_data_id( $weekday_spec, array( 'hours', md5( json_encode( $weekday_spec ) ) ), $hours_rel );
 
 						$opening_hours_spec[] = $weekday_spec;
-
-						$num++;
 					}
 				}
 			}
