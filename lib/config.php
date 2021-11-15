@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.8.0-b.1',	// Plugin version.
+					'version'     => '9.8.0-rc.1',	// Plugin version.
 					'opt_version' => '835',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1183,7 +1183,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssowpsm' => array(			// Plugin acronym.
 					'short'       => 'WPSSO WPSM',	// Short plugin name.
 					'name'        => 'WPSSO WP Sitemaps',
-					'desc'        => 'Manage post and taxonomy types included in the WordPress sitemaps XML, and exclude any "No Index" content.',
+					'desc'        => 'Manage post and taxonomy types included in the WordPress sitemaps XML, and exclude content marked as "No Index".',
 					'slug'        => 'wpsso-wp-sitemaps',
 					'base'        => 'wpsso-wp-sitemaps/wpsso-wp-sitemaps.php',
 					'update_auth' => '',		// No premium version.
@@ -2072,7 +2072,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '4.10.1-b.1',	// Minimum update manager version (soft limit).
+				'rec_version' => '4.10.1-rc.1',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
 					48  => 'Every two days',
