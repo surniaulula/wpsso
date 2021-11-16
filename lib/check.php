@@ -295,7 +295,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									$chk[ 'version_const' ] = 'WC_VERSION';
 
-									$chk[ 'min_version' ] = '3.8.0';	// WooCommerce v3.8.0.
+									$chk[ 'min_version' ] = '5.0.0';
 
 									break;
 
