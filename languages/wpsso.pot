@@ -271,7 +271,7 @@ msgstr ""
 #: gettext/gettext-html-setup.php:35
 msgctxt "html paragraph"
 msgid ""
-"The WPSSO Core Premium plugin reads WooCommerce product data and provides "
+"The WPSSO Core Premium edition reads WooCommerce product data and provides "
 "complete Schema Product JSON-LD markup for Google Rich Results, including "
 "additional product images, product variations, product information (brand, "
 "color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, "
