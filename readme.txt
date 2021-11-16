@@ -154,7 +154,7 @@ WPSSO can be your only social and search optimization plugin, or can be combined
 
 **&#91;Premium&#93;** Integrates with third-party plugins and service APIs for additional image, video, e-Commerce product details, SEO settings, etc.
 
-* **Reads data from 31 third-party plugins:** 
+* **Reads data from several third-party plugins, including:** 
 
 	* All in One SEO Pack
 	* bbPress
@@ -188,7 +188,7 @@ WPSSO can be your only social and search optimization plugin, or can be combined
 	* Yoast SEO
 	* Yotpo Social Reviews for WooCommerce
 
-* **Reads data from 15 remote service APIs:**
+* **Reads data from several remote service APIs, including:**
 
 	* Bitly
 	* DLMY.App
