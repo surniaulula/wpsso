@@ -134,17 +134,15 @@ WPSSO can be your only social and search optimization plugin, or can be combined
 * WordPress MU Domain Mapping
 * Network / Multisite Installations
 
-**&#91;Premium&#93;** Support for the Twitter [Player Card](https://dev.twitter.com/cards/types/player) for embedded videos.
-
 **&#91;Premium&#93;** Detection of embedded videos with API support for Facebook, Slideshare, Vimeo, Wistia, and Youtube videos.
 
-**&#91;Premium&#93;** Provides complete video SEO markup, including the embedUrl and contentUrl properties for Google.
+**&#91;Premium&#93;** Video SEO markup, including the embedUrl and contentUrl properties for Google.
 
-**&#91;Premium&#93;** Optional upscaling of images to satisfy minimum size requirements for social sites and Google Rich Results (aka aka Rich Snippets).
+**&#91;Premium&#93;** Support for the Twitter [Player Card](https://dev.twitter.com/cards/types/player) for embedded videos.
+
+**&#91;Premium&#93;** Optional upscaling to satisfy minimum image size requirements for social sites and Google Rich Results (aka aka Rich Snippets).
 
 **&#91;Premium&#93;** Optional URL shortening with Bitly, DLMY.App, Google, Ow.ly, TinyURL, or YOURLS.
-
-**&#91;Premium&#93;** Customize the default Open Graph and Schema types for posts, pages, custom post types, taxonomy terms, and user profile pages.
 
 **&#91;Premium&#93;** Additional Schema options in the Document SSO metabox.
 
@@ -152,7 +150,7 @@ WPSSO can be your only social and search optimization plugin, or can be combined
 
 * The WPSSO Core Premium edition reads WooCommerce product data and provides complete Schema Product JSON-LD markup for Google Rich Results, including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, pattern, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.
 
-**&#91;Premium&#93;** Integrates with third-party plugins and service APIs for additional image, video, e-Commerce product details, SEO settings, etc. The following modules are offered with the Premium edition and automatically loaded if/when the supported plugins and/or services are required.
+**&#91;Premium&#93;** Integrates with third-party plugins and service APIs for additional image, video, e-Commerce product details, SEO settings, etc.
 
 * **Reads data from 31 third-party plugins:** 
 
