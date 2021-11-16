@@ -45,11 +45,23 @@ Present your content at its best in search results and on social sites - no matt
 
 <p><strong>Reads data from WordPress, plugins, and service APIs:</strong></p>
 
-There's no need to select or create templates, manually reenter descriptions, titles, product information, or reselect images and videos &mdash; WPSSO can use your existing WordPress content, including custom post types and taxonomies, enhanced user profile data, Media Library image and video information, third-party plugin data, and remote service APIs (Bitly, Facebook, Shopper Approved, Stamped.io, Vimeo, Wistia, YouTube, and many more).
+There's no need to select or create templates, manually reenter descriptions, titles, product information, or reselect images and videos &mdash; WPSSO reads your existing WordPress content, including custom post types and taxonomies, enhanced user profile data, Media Library image and video information, third-party plugin data, and service APIs (Bitly, Facebook, Shopper Approved, Stamped.io, Vimeo, Wistia, YouTube, and many more).
 
 <p><strong>Supports over 500 different Schema types and sub-types:</strong></p>
 
 WPSSO provides comprehensive Schema markup for posts, pages, custom post types, terms (category, tags, etc.), custom taxonomies, user profile pages, search result pages, archive pages, and Accelerated Mobile Pages (AMP) pages - including image SEO, video SEO, local business, organization, publisher, person, author and co-authors, extensive e-Commerce product markup, product variations, product ratings, aggregate ratings, reviews, recipe information, event details, collection pages, profile pages, search pages, FAQ pages, item lists for Google's Rich Results Carousel, and much more.
+
+<p><strong>Optimized image sizes for all social sites and search engines:</strong></p>
+
+* Open Graph (Facebook and oEmbed)
+* Pinterest Pin It
+* Schema 1:1 (Google)
+* Schema 4:3 (Google)
+* Schema 16:9 (Google)
+* Schema Thumbnail
+* Twitter Summary Card
+* Twitter Large Image Summary Card
+* Video Preview Images
 
 <p><strong>Fixes all Google Search and Schema Markup Validator errors, including:</strong></p>
 
@@ -75,76 +87,15 @@ WPSSO provides comprehensive Schema markup for posts, pages, custom post types, 
 
 &#x2605;&#x2605;&#x2605;&#x2605;&#x2605; - "This plugin saves me so much time, and it has really lifted my SERP rankings. Most of my keywords I now rank 1-3 position. I also noticed after about a week that my impressions have gone up at least 75%. I upgraded to the pro version which gave me even more options." - [playnstocks](https://wordpress.org/support/topic/excellent-plugin-and-support-200/)
 
-<h3>WPSSO Core Plugin Features</h3>
-
-**Provides comprehensive meta tags and Schema markup**, including complete image SEO markup.
-
-**Extends the WordPress oEmbed data** for LinkedIn, Discord, Drupal, Squarespace, and others.
-
-**Optimized image sizes** for all social sites and search engines:
-
-* Open Graph (Facebook and oEmbed)
-* Pinterest Pin It
-* Schema 1:1 (Google)
-* Schema 4:3 (Google)
-* Schema 16:9 (Google)
-* Schema Thumbnail
-* Twitter Summary Card
-* Twitter Large Image Summary Card
-
-**Built-in compatibility with popular AMP plugins**:
-
-* [AMP](https://wordpress.org/plugins/amp/)
-* [AMP for WP](https://wordpress.org/plugins/accelerated-mobile-pages/)
-
-**Built-in compatibility with caching and optimization plugins**:
-
-* Autoptimize
-* Cache Enabler
-* Comet Cache
-* Hummingbird Cache
-* LiteSpeed Cache
-* Pagely Cache
-* Perfect Images + Retina
-* SiteGround Cache
-* W3 Total Cache (aka W3TC)
-* WP Engine Cache
-* WP Fastest Cache
-* WP Rocket Cache
-* WP Super Cache
-
-**Built-in compatibility with popular SEO plugins**:
-
-WPSSO can be your only social and search optimization plugin, or can be combined to improve the structured data of another SEO plugin.
-
-* All in One SEO Pack
-* Jetpack SEO
-* Rank Math SEO
-* SEO Ultimate
-* SEOPress
-* Slim SEO
-* Squirrly SEO
-* The SEO Framework
-* WP Meta SEO
-* Yoast SEO
-* Yoast WooCommerce SEO
-
-**Built-in compatibility for advanced WordPress configurations**:
-
-* WordPress MU Domain Mapping
-* Network / Multisite Installations
+<h3>WPSSO Core Premium Features</h3>
 
 **&#91;Premium&#93;** Additional Schema options in the Document SSO metabox.
 
-**&#91;Premium&#93;** Detection of embedded videos with API support for Facebook, Slideshare, Vimeo, Wistia, and Youtube videos.
+**&#91;Premium&#93;** Reads video information from Facebook, Slideshare, Vimeo, Wistia, and Youtube.
 
-**&#91;Premium&#93;** Video SEO markup, including the embedUrl and contentUrl properties for Google.
+**&#91;Premium&#93;** Support for the Twitter [Player Card](https://dev.twitter.com/cards/types/player) videos.
 
-**&#91;Premium&#93;** Support for the Twitter [Player Card](https://dev.twitter.com/cards/types/player) for embedded videos.
-
-**&#91;Premium&#93;** Optional upscaling to satisfy minimum image size requirements for social sites and Google Rich Results (aka aka Rich Snippets).
-
-**&#91;Premium&#93;** Optional URL shortening with Bitly, DLMY.App, Google, Ow.ly, TinyURL, or YOURLS.
+**&#91;Premium&#93;** URL shortening with Bitly, DLMY.App, Google, Ow.ly, TinyURL, or YOURLS.
 
 **&#91;Premium&#93;** Schema JSON-LD markup for Better WooCommerce SEO:
 
