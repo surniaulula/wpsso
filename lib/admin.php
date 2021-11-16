@@ -2514,7 +2514,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 * License information.
 				 */
 				$table_rows[ 'home_url' ] = '' .
-					'<th class="medium nowrap">' . _x( 'WordPress Site Address', 'option label', 'wpsso' ) . '</th>' .
+					'<th class="medium nowrap">' . _x( 'Current Site Address', 'option label', 'wpsso' ) . '</th>' .
 					'<td width="100%">' . $home_path . ' ' . $home_url_edit_link . '</td>';
 
 				if ( ! empty( $this->p->options[ 'plugin_' . $ext . '_tid' ] ) && class_exists( 'SucomUpdate' ) ) {

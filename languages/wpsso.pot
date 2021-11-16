@@ -5410,7 +5410,7 @@ msgstr ""
 
 #: lib/admin.php:2517
 msgctxt "option label"
-msgid "WordPress Site Address"
+msgid "Current Site Address"
 msgstr ""
 
 #: lib/admin.php:2523
