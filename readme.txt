@@ -134,8 +134,6 @@ WPSSO can be your only social and search optimization plugin, or can be combined
 * WordPress MU Domain Mapping
 * Network / Multisite Installations
 
-The WPSSO Core Standard plugin is designed to satisfy the requirements of most standard WordPress sites. If your site requires additional third-party plugin and service API integration, like WooCommerce shops, embedded video support, or advanced customization features, then you may want to get the [WPSSO Core Premium plugin](https://wpsso.com/extend/plugins/wpsso/) for those additional features.
-
 **&#91;Premium&#93;** Support for the Twitter [Player Card](https://dev.twitter.com/cards/types/player) for embedded videos.
 
 **&#91;Premium&#93;** Detection of embedded videos with API support for Facebook, Slideshare, Vimeo, Wistia, and Youtube videos.
@@ -152,7 +150,7 @@ The WPSSO Core Standard plugin is designed to satisfy the requirements of most s
 
 **&#91;Premium&#93;** Schema JSON-LD markup for Better WooCommerce SEO:
 
-The WPSSO Core Premium plugin reads WooCommerce product data and provides complete Schema Product JSON-LD markup for Google Rich Results, including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, pattern, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.
+* The WPSSO Core Premium edition reads WooCommerce product data and provides complete Schema Product JSON-LD markup for Google Rich Results, including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, pattern, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.
 
 **&#91;Premium&#93;** Integrates with third-party plugins and service APIs for additional image, video, e-Commerce product details, SEO settings, etc. The following modules are offered with the Premium edition and automatically loaded if/when the supported plugins and/or services are required.
 

@@ -143,8 +143,6 @@
 <li>Network / Multisite Installations</li>
 </ul>
 
-<p>The WPSSO Core Standard plugin is designed to satisfy the requirements of most standard WordPress sites. If your site requires additional third-party plugin and service API integration, like WooCommerce shops, embedded video support, or advanced customization features, then you may want to get the <a href="https://wpsso.com/extend/plugins/wpsso/">WPSSO Core Premium plugin</a> for those additional features.</p>
-
 <p><strong>&#91;Premium&#93;</strong> Support for the Twitter <a href="https://dev.twitter.com/cards/types/player">Player Card</a> for embedded videos.</p>
 
 <p><strong>&#91;Premium&#93;</strong> Detection of embedded videos with API support for Facebook, Slideshare, Vimeo, Wistia, and Youtube videos.</p>
@@ -161,7 +159,9 @@
 
 <p><strong>&#91;Premium&#93;</strong> Schema JSON-LD markup for Better WooCommerce SEO:</p>
 
-<p>The WPSSO Core Premium plugin reads WooCommerce product data and provides complete Schema Product JSON-LD markup for Google Rich Results, including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, pattern, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.</p>
+<ul>
+<li>The WPSSO Core Premium edition reads WooCommerce product data and provides complete Schema Product JSON-LD markup for Google Rich Results, including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, pattern, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.</li>
+</ul>
 
 <p><strong>&#91;Premium&#93;</strong> Integrates with third-party plugins and service APIs for additional image, video, e-Commerce product details, SEO settings, etc. The following modules are offered with the Premium edition and automatically loaded if/when the supported plugins and/or services are required.</p>
 
