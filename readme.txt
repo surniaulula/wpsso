@@ -208,44 +208,6 @@ The WPSSO Core Premium plugin reads WooCommerce product data and provides comple
 	* Your Own URL Shortener (YOURLS)
 	* YouTube Videos and Playlists
 
-<h3>Plugin Add-ons for WPSSO Core</h3>
-
-The WPSSO Core plugin (Standard or Premium editions) satisfies the needs of most sites. If you need additional features, you can activate any of the following free add-ons. They integrate with WPSSO Core seemlessly and will not affect the performance of your site.
-
-[WPSSO Add Five Stars](https://wordpress.ord/plugins/wpsso-add-five-stars/) if the Schema markup does not already have a rating.
-
-[WPSSO FAQ Manager](https://wordpress.org/plugins/wpsso-faq/) to manage FAQ categories with Question and Answer pages.
-
-[WPSSO Google Merchant Feeds](https://wpsso.com/extend/plugins/wpsso-google-merchant-feed/) for your WooCommerce, Easy Digital Downloads, and custom products (WPSSO Core Premium required).
-
-[WPSSO Mobile App Meta Tags](https://wordpress.org/plugins/wpsso-am/) to manage mobile App information.
-
-[WPSSO Organization Markup](https://wordpress.org/plugins/wpsso-organization/) to manage multiple organizations.
-
-[WPSSO Place and Local SEO Markup](https://wordpress.org/plugins/wpsso-plm/) to manage multiple places and locations.
-
-[WPSSO Product Metadata for WooCommerce SEO](https://wordpress.org/plugins/wpsso-wc-metadata/) to manage GTIN, UPC, EAN, ISBN, MPN, depth, and volume for WooCommerce products.
-
-[WPSSO Ratings and Reviews](https://wordpress.org/plugins/wpsso-ratings-and-reviews/) to add ratings in WordPress comments.
-
-[WPSSO REST API](https://wordpress.org/plugins/wpsso-rest-api/) to add meta tags and Schema markup in REST API queries.
-
-[WPSSO Ridiculously Responsive Social Sharing Buttons](https://wordpress.org/plugins/wpsso-rrssb/) to add responsive social sharing buttons.
-
-[WPSSO Schema Breadcrumbs Markup](https://wordpress.org/plugins/wpsso-breadcrumbs/) to add Breadcrumbs markup for Google.
-
-[WPSSO Schema Shortcode](https://wpsso.com/extend/plugins/wpsso-schema-shortcode/) for customized Schema markup of content sections (WPSSO Core Premium required).
-
-[WPSSO Shipping Delivery Time for WooCommerce SEO](https://wordpress.org/plugins/wpsso-wc-shipping-delivery-time/) to provide Google with shipping rates and delivery time estimates for WooCommerce products and variations.
-
-[WPSSO Strip Schema Microdata](https://wordpress.org/plugins/wpsso-strip-schema-microdata/) to fix incorrect markup in theme templates.
-
-[WPSSO Tune WP Image Editors](https://wordpress.org/plugins/wpsso-tune-image-editors/) for better looking WordPress thumbnail images.
-
-[WPSSO User Locale Selector](https://wordpress.org/plugins/wpsso-user-locale/) to switch languages quickly and easily.
-
-[WPSSO WP Sitemaps](https://wordpress.org/plugins/wpsso-wp-sitemaps/) to manage the WordPress sitemaps XML and exclude content marked as "No Index".
-
 == Installation ==
 
 <h3 class="top">Install and Uninstall</h3>
@@ -539,7 +501,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Added a "WordPress Site Address" information field to the SSO &gt; Premium Licenses settings page.
+	* Added a "Current Site Address" information field to the SSO &gt; Premium Licenses settings page.
 	* Added a compatibility filter for Yoast WooCommerce SEO presenters to avoid conflicting markup.
 * **Bugfixes**
 	* Fixed a possible Schema type conflict for the site organization with a custom home page Schema type.
@@ -675,7 +637,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 9.1.2 =
 
-(2021/10/15) Added a "WordPress Site Address" information field. Added a compatibility filter for Yoast WooCommerce SEO presenters. Fixed a possible Schema type conflict for the site organization.
+(2021/10/15) Added a "Current Site Address" information field. Added a compatibility filter for Yoast WooCommerce SEO presenters. Fixed a possible Schema type conflict for the site organization.
 
 = 9.1.1 =
 
