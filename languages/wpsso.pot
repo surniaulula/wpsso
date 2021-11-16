@@ -9272,7 +9272,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:608
-msgid "Reads data from many third-party plugins and service APIs."
+msgid "Reads data from many active plugins and service APIs."
 msgstr ""
 
 #: lib/messages.php:618
@@ -11156,9 +11156,9 @@ msgstr ""
 msgid ""
 "Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds "
 "to execute. This is longer than the recommended maximum of %3$.3f seconds "
-"and may affect page load time. Please consider reviewing third-party plugin "
-"and theme functions hooked into the WordPress %1$s filter for slow and/or "
-"sub-optimal PHP code."
+"and may affect page load time. Please consider reviewing active plugin and "
+"theme functions hooked into the WordPress %1$s filter for slow and/or sub-"
+"optimal PHP code."
 msgstr ""
 
 #: lib/util.php:3097
