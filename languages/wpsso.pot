@@ -9328,7 +9328,7 @@ msgid "Modifications disabled (%s option is unchecked)."
 msgstr ""
 
 #: lib/messages.php:815
-msgid "Robots meta tag is disabled."
+msgid "The robots meta tag is disabled."
 msgstr ""
 
 #: lib/messages.php:817 lib/messages.php:841 lib/messages.php:885

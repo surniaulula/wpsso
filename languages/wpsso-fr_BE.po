@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 9.8.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-11-15 16:49-0800\n"
+"PO-Revision-Date: 2021-11-16 05:27-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -8194,8 +8194,8 @@ msgid "Modifications disabled (%s option is unchecked)."
 msgstr "Modifications désactivées (l'option %s n'est pas cochée)."
 
 #: lib/messages.php:815
-msgid "Robots meta tag is disabled."
-msgstr "Balise méta robots est désactivée."
+msgid "The robots meta tag is disabled."
+msgstr "La balise méta robots est désactivée."
 
 #: lib/messages.php:817 lib/messages.php:841 lib/messages.php:885
 #: lib/util-metabox.php:234

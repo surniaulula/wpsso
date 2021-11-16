@@ -812,7 +812,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 			$seo_tab_url = $this->p->util->get_admin_url( 'advanced#sucom-tabset_head_tags-tab_seo_other' );
 
-			$html = '<p class="status-msg"><a href="' . $seo_tab_url . '">' . __( 'Robots meta tag is disabled.', 'wpsso' ) . '</a></p>';
+			$html = '<p class="status-msg"><a href="' . $seo_tab_url . '">' . __( 'The robots meta tag is disabled.', 'wpsso' ) . '</a></p>';
 
 			$html .= '<p class="status-msg">' . __( 'No options available.', 'wpsso' ) . '</p>';
 
