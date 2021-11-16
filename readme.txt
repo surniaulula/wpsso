@@ -45,13 +45,13 @@ Present your content at its best in search results and on social sites - no matt
 
 <p><strong>Reads data from WordPress, plugins, and service APIs:</strong></p>
 
-There's no need to select or create templates, manually reenter descriptions, titles, product information, or reselect images and videos &mdash; WPSSO reads your existing WordPress content, including custom post types and taxonomies, enhanced user profile data, Media Library image and video information, third-party plugin data, and service APIs (Bitly, Facebook, Shopper Approved, Stamped.io, Vimeo, Wistia, YouTube, and many more).
+There's no need to select or create templates, manually reenter descriptions, titles, product information, or reselect images and videos &mdash; WPSSO reads your existing WordPress content, including custom post types and taxonomies, enhanced user profile data, Media Library image and video information, active plugin data, and service APIs (Bitly, Facebook, Shopper Approved, Stamped.io, Vimeo, Wistia, YouTube, and many more).
 
 <p><strong>Supports over 500 different Schema types and sub-types:</strong></p>
 
 WPSSO provides comprehensive Schema markup for posts, pages, custom post types, terms (category, tags, etc.), custom taxonomies, user profile pages, search result pages, archive pages, and Accelerated Mobile Pages (AMP) pages - including image SEO, video SEO, local business, organization, publisher, person, author and co-authors, extensive e-Commerce product markup, product variations, product ratings, aggregate ratings, reviews, recipe information, event details, collection pages, profile pages, search pages, FAQ pages, item lists for Google's Rich Results Carousel, and much more.
 
-<p><strong>Optimized image sizes for all social sites and search engines:</strong></p>
+<p><strong>Optimized image sizes for social sites and search engines:</strong></p>
 
 * Open Graph (Facebook and oEmbed)
 * Pinterest Pin It
@@ -63,7 +63,7 @@ WPSSO provides comprehensive Schema markup for posts, pages, custom post types, 
 * Twitter Large Image Summary Card
 * Video Preview Images
 
-<p><strong>Fixes all Google Search and Schema Markup Validator errors, including:</strong></p>
+<p><strong>Fixes Google Search and Schema Markup Validator errors, including:</strong></p>
 
 * *A value for the headline field is required.*
 * *A value for the image field is required.*
@@ -103,59 +103,57 @@ WPSSO provides comprehensive Schema markup for posts, pages, custom post types, 
 
 **&#91;Premium&#93;** Google Merchant Feed XML add-on for for WooCommerce, Easy Digital Downloads, and custom products.
 
-**&#91;Premium&#93;** Integrates with third-party plugins and service APIs for additional image, video, e-Commerce product details, SEO settings, etc.
+**&#91;Premium&#93;** Reads data from active plugins, including:
 
-* **Reads data from several third-party plugins, including:** 
+* All in One SEO Pack
+* bbPress
+* BuddyPress
+* Co-Authors Plus
+* Easy Digital Downloads
+* Elementor Website Builder
+* Gravity Forms + GravityView
+* NextCellent Gallery - NextGEN Legacy
+* NextGEN Gallery
+* Perfect WooCommerce Brands
+* Polylang
+* Product GTIN (EAN, UPC, ISBN) for WooCommerce
+* Rate my Post
+* SEOPress
+* Simple Job Board
+* The Events Calendar
+* The SEO Framework
+* WooCommerce
+* WooCommerce Brands
+* WooCommerce Currency Switcher
+* WooCommerce UPC, EAN, and ISBN
+* WooCommerce Show Single Variations
+* WP Job Manager
+* WP Meta SEO
+* WP-PostRatings
+* WP Product Review
+* WP Recipe Maker
+* WPML
+* YITH WooCommerce Brands Add-on
+* Yoast SEO
+* Yotpo Social Reviews for WooCommerce
 
-	* All in One SEO Pack
-	* bbPress
-	* BuddyPress
-	* Co-Authors Plus
-	* Easy Digital Downloads
-	* Elementor Website Builder
-	* Gravity Forms + GravityView
-	* NextCellent Gallery - NextGEN Legacy
-	* NextGEN Gallery
-	* Perfect WooCommerce Brands
-	* Polylang
-	* Product GTIN (EAN, UPC, ISBN) for WooCommerce
-	* Rate my Post
-	* SEOPress
-	* Simple Job Board
-	* The Events Calendar
-	* The SEO Framework
-	* WooCommerce
-	* WooCommerce Brands
-	* WooCommerce Currency Switcher
-	* WooCommerce UPC, EAN, and ISBN
-	* WooCommerce Show Single Variations
-	* WP Job Manager
-	* WP Meta SEO
-	* WP-PostRatings
-	* WP Product Review
-	* WP Recipe Maker
-	* WPML
-	* YITH WooCommerce Brands Add-on
-	* Yoast SEO
-	* Yotpo Social Reviews for WooCommerce
+**&#91;Premium&#93;** Reads data from remote service APIs, including:
 
-* **Reads data from several remote service APIs, including:**
-
-	* Bitly
-	* DLMY.App
-	* Facebook Embedded Videos
-	* Gravatar (Author Image)
-	* Ow.ly
-	* Shopper Approved (Ratings and Reviews)
-	* Slideshare Presentations
-	* Soundcloud Tracks (for the Twitter Player Card)
-	* Stamped.io (Ratings and Reviews)
-	* TinyURL
-	* Vimeo Videos
-	* Wistia Videos
-	* WordPress Video Shortcode (and Self-Hosted Videos)
-	* Your Own URL Shortener (YOURLS)
-	* YouTube Videos and Playlists
+* Bitly
+* DLMY.App
+* Facebook Embedded Videos
+* Gravatar (Author Image)
+* Ow.ly
+* Shopper Approved (Ratings and Reviews)
+* Slideshare Presentations
+* Soundcloud Tracks (for the Twitter Player Card)
+* Stamped.io (Ratings and Reviews)
+* TinyURL
+* Vimeo Videos
+* Wistia Videos
+* WordPress Video Shortcode (and Self-Hosted Videos)
+* Your Own URL Shortener (YOURLS)
+* YouTube Videos and Playlists
 
 == Installation ==
 
