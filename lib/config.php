@@ -1210,11 +1210,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 					),
 					'hosts' => array(
-						'wp_org' => false,
+						'wp_org' => true,
 						'github' => true,
 						'wpsso'  => true,
 					),
 					'url' => array(
+
+						/**
+						 * WordPress.org.
+						 */
+						'home'   => 'https://wordpress.org/plugins/wpsso-wp-sitemaps/',
+						'forum'  => 'https://wordpress.org/support/plugin/wpsso-wp-sitemaps',
+						'review' => 'https://wordpress.org/support/plugin/wpsso-wp-sitemaps/reviews/?rate=5#new-post',
 
 						/**
 						 * GitHub.com.
@@ -1225,9 +1232,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						/**
 						 * WPSSO.com.
 						 */
-						'home'      => 'https://wpsso.com/extend/plugins/wpsso-wp-sitemaps/',
-						'forum'     => '',
-						'review'    => '',
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-wp-sitemaps/changelog/',
 						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-wp-sitemaps/',
 						'install'   => 'https://wpsso.com/docs/plugins/wpsso-wp-sitemaps/installation/',
