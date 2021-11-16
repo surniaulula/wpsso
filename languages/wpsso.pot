@@ -9272,7 +9272,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:608
-msgid "Reads data from %d third-party plugins and service APIs."
+msgid "Reads data from many third-party plugins and service APIs."
 msgstr ""
 
 #: lib/messages.php:618
