@@ -143,6 +143,8 @@
 <li>Network / Multisite Installations</li>
 </ul>
 
+<p><strong>&#91;Premium&#93;</strong> Additional Schema options in the Document SSO metabox.</p>
+
 <p><strong>&#91;Premium&#93;</strong> Detection of embedded videos with API support for Facebook, Slideshare, Vimeo, Wistia, and Youtube videos.</p>
 
 <p><strong>&#91;Premium&#93;</strong> Video SEO markup, including the embedUrl and contentUrl properties for Google.</p>
@@ -153,13 +155,13 @@
 
 <p><strong>&#91;Premium&#93;</strong> Optional URL shortening with Bitly, DLMY.App, Google, Ow.ly, TinyURL, or YOURLS.</p>
 
-<p><strong>&#91;Premium&#93;</strong> Additional Schema options in the Document SSO metabox.</p>
-
 <p><strong>&#91;Premium&#93;</strong> Schema JSON-LD markup for Better WooCommerce SEO:</p>
 
 <ul>
-<li>The WPSSO Core Premium edition reads WooCommerce product data and provides complete Schema Product JSON-LD markup for Google Rich Results, including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, pattern, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.</li>
+<li>The WooCommerce plugin by itself does not provide sufficient Schema JSON-LD markup for Google Rich Results. The WPSSO Core Premium edition reads WooCommerce product data and provides complete Schema Product JSON-LD markup for Google Rich Results, including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, pattern, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.</li>
 </ul>
+
+<p><strong>&#91;Premium&#93;</strong> Google Merchant Feed XML add-on for for WooCommerce, Easy Digital Downloads, and custom products.</p>
 
 <p><strong>&#91;Premium&#93;</strong> Integrates with third-party plugins and service APIs for additional image, video, e-Commerce product details, SEO settings, etc.</p>
 

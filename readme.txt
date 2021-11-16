@@ -134,6 +134,8 @@ WPSSO can be your only social and search optimization plugin, or can be combined
 * WordPress MU Domain Mapping
 * Network / Multisite Installations
 
+**&#91;Premium&#93;** Additional Schema options in the Document SSO metabox.
+
 **&#91;Premium&#93;** Detection of embedded videos with API support for Facebook, Slideshare, Vimeo, Wistia, and Youtube videos.
 
 **&#91;Premium&#93;** Video SEO markup, including the embedUrl and contentUrl properties for Google.
@@ -144,11 +146,11 @@ WPSSO can be your only social and search optimization plugin, or can be combined
 
 **&#91;Premium&#93;** Optional URL shortening with Bitly, DLMY.App, Google, Ow.ly, TinyURL, or YOURLS.
 
-**&#91;Premium&#93;** Additional Schema options in the Document SSO metabox.
-
 **&#91;Premium&#93;** Schema JSON-LD markup for Better WooCommerce SEO:
 
-* The WPSSO Core Premium edition reads WooCommerce product data and provides complete Schema Product JSON-LD markup for Google Rich Results, including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, pattern, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.
+* The WooCommerce plugin by itself does not provide sufficient Schema JSON-LD markup for Google Rich Results. The WPSSO Core Premium edition reads WooCommerce product data and provides complete Schema Product JSON-LD markup for Google Rich Results, including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, pattern, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.
+
+**&#91;Premium&#93;** Google Merchant Feed XML add-on for for WooCommerce, Easy Digital Downloads, and custom products.
 
 **&#91;Premium&#93;** Integrates with third-party plugins and service APIs for additional image, video, e-Commerce product details, SEO settings, etc.
 
