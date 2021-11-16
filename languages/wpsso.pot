@@ -1319,7 +1319,7 @@ msgstr ""
 #: gettext/gettext-lib-config.php:142
 msgctxt "plugin description"
 msgid ""
-"Manage post and taxonomy types included in the WordPress sitemaps XML, and "
+"Manage post and taxonomy types included in the WordPress sitemaps XML and "
 "exclude content marked as \"No Index\"."
 msgstr ""
 
