@@ -302,7 +302,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 9.8.0 (2021/11/16)**
 
 * **New Features**
-	* Moved the WordPress Sitemaps features to a new WPSSO WP Sitemaps add-on.
+	* Moved the WordPress Sitemaps features to a new WPSSO WP Sitemaps XML add-on.
 * **Improvements**
 	* Added Schema Review subject type check, and issue a warning if not supported by Google.
 	* Updated the Yoast SEO integration modules to import or filter the 'noindex' value (Premium edition).
@@ -599,7 +599,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 9.8.0 =
 
-(2021/11/16) Moved the WordPress Sitemaps features to a new WPSSO WP Sitemaps add-on. Added Schema Review subject type check. Updated the Yoast SEO integration modules.
+(2021/11/16) Moved the WordPress Sitemaps features to a new WPSSO WP Sitemaps XML add-on. Added Schema Review subject type check. Updated the Yoast SEO integration modules.
 
 = 9.7.0 =
 
