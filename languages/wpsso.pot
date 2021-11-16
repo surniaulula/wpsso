@@ -635,7 +635,7 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:8
 msgctxt "plugin name"
-msgid "WPSSO Google Merchant Feeds"
+msgid "WPSSO Google Merchant Feeds XML"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:9
@@ -1308,7 +1308,7 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:141
 msgctxt "plugin name"
-msgid "WPSSO WP Sitemaps"
+msgid "WPSSO WP Sitemaps XML"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:142

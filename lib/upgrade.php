@@ -808,7 +808,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				}
 
 				/**
-				 * Rename 'plugin_sitemaps_for' options to 'wpsm_sitemaps_for' for the WPSSO WP Sitemaps add-on.
+				 * Rename 'plugin_sitemaps_for' options to 'wpsm_sitemaps_for' for the WPSSO WPSM add-on.
 				 */
 				if ( $prev_version > 0 && $prev_version <= 834 ) {
 				

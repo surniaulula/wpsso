@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 9.8.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-11-16 08:47-0800\n"
+"PO-Revision-Date: 2021-11-16 12:39-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -459,8 +459,8 @@ msgstr "Standard"
 
 #: gettext/gettext-lib-config.php:8
 msgctxt "plugin name"
-msgid "WPSSO Google Merchant Feeds"
-msgstr "WPSSO flux de marchands Google"
+msgid "WPSSO Google Merchant Feeds XML"
+msgstr "WPSSO XML flux de marchands Google"
 
 #: gettext/gettext-lib-config.php:9
 msgctxt "plugin description"
@@ -1098,13 +1098,13 @@ msgstr "Estimations du délai de livraison pour les zones, méthodes et classes 
 
 #: gettext/gettext-lib-config.php:141
 msgctxt "plugin name"
-msgid "WPSSO WP Sitemaps"
-msgstr "WPSSO sitemaps WP"
+msgid "WPSSO WP Sitemaps XML"
+msgstr "WPSSO XML sitemaps WP"
 
 #: gettext/gettext-lib-config.php:142
 msgctxt "plugin description"
 msgid "Manage post and taxonomy types included in the WordPress sitemaps XML and exclude content marked as \"No Index\"."
-msgstr "Gérez les types d'article et taxonomie inclus dans le XML des sitemaps WordPress et exclure le contenu marquées comme \"Pas d'indexation\"."
+msgstr "Gérez les types d'article et taxonomie inclus dans le XML sitemaps WordPress et exclure le contenu marquées comme \"Pas d'indexation\"."
 
 #: gettext/gettext-lib-config.php:143
 msgctxt "menu title"
