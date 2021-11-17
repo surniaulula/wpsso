@@ -31,7 +31,7 @@ Present your content at its best in search results and on social sites - no matt
 	<li>Google Knowledge Graph</li>
 	<li>Google Merchant Feeds XML (Premium Edition)</li>
 	<li>Google Rich Results (aka Rich Snippets)</li>
-	<li>LinkedIn oEmbed Data</li>
+	<li>oEmbed for LinkedIn, Discord, Drupal, etc.</li>
 	<li>Mobile Web Browsers</li>
 	<li>Pinterest Rich Pins</li>
 	<li>Twitter Cards</li>
