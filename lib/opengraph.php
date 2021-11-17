@@ -132,7 +132,16 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					if ( ! empty( $value ) ) {
 
-						if ( $get_ns && $value !== 'none' ) {	// Return the og type namespace instead.
+						if ( 'none' === $value ) {
+
+							if ( $this->p->debug->enabled ) {
+
+								$this->p->debug->log( 'returning false: column wp_cache is "none"' );
+							}
+
+							$value = false;
+
+						} elseif ( $get_ns ) {	// Return the og type namespace instead.
 
 							$og_type_ns  = $this->p->cf[ 'head' ][ 'og_type_ns' ];
 
@@ -147,7 +156,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 									$this->p->debug->log( 'columns wp_cache value "' . $value . '" not in og type ns' );
 								}
 
-								$value = '';
+								$value = false;
 							}
 						}
 
@@ -190,7 +199,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 							$this->p->debug->log( 'custom type id from meta is empty' );
 						}
 
-					} elseif ( $type_id === 'none' ) {
+					} elseif ( 'none' === $type_id ) {
 
 						if ( $this->p->debug->enabled ) {
 
