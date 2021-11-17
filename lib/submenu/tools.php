@@ -114,6 +114,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			$clear_ignored_urls_label_transl  = sprintf( _x( 'Clear %s Failed URL Connections', 'submit button', 'wpsso' ), $count_ignored_urls );
 			$clear_db_transients_label_transl = _x( 'Clear All Database Transients', 'submit button', 'wpsso' );
 			$refresh_cache_label_transl       = _x( 'Refresh Transient Cache', 'submit button', 'wpsso' );
+			$flush_rewrite_rules_transl       = _x( 'Flush Rewrite Rules', 'submit button', 'wpsso' );
 
 			if ( $this->using_db_cache ) {
 
@@ -157,6 +158,7 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 					'clear_ignored_urls'     => $clear_ignored_urls_label_transl,
 					'clear_db_transients'    => null,
 					'refresh_cache'          => $refresh_cache_label_transl,
+					'flush_rewrite_rules'    => $flush_rewrite_rules_transl,
 				),
 
 				/**

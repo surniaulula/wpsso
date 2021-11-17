@@ -1269,21 +1269,21 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							break;
 
-						case 'clear_db_transients':
-
-							$cleared_count = $this->p->util->cache->clear_db_transients( $clear_short = true, $key_prefix = '' );
-
-							$notice_msg = sprintf( __( '%s database transients have been cleared.', 'wpsso' ), $cleared_count );
-
-							$this->p->notice->upd( $notice_msg, $user_id );
-
-							break;
-
 						case 'clear_ignored_urls':
 
 							$cleared_count = $this->p->util->cache->clear_ignored_urls();
 
 							$notice_msg = sprintf( __( '%s failed URL connections have been cleared.', 'wpsso' ), $cleared_count );
+
+							$this->p->notice->upd( $notice_msg, $user_id );
+
+							break;
+
+						case 'clear_db_transients':
+
+							$cleared_count = $this->p->util->cache->clear_db_transients( $clear_short = true, $key_prefix = '' );
+
+							$notice_msg = sprintf( __( '%s database transients have been cleared.', 'wpsso' ), $cleared_count );
 
 							$this->p->notice->upd( $notice_msg, $user_id );
 
@@ -1300,12 +1300,22 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							break;
 
+						case 'flush_rewrite_rules':
+
+							flush_rewrite_rules();
+
+							$notice_msg = __( 'The WordPress rewrite rules have been flushed.', 'wpsso' );
+
+							$this->p->notice->upd( $notice_msg, $user_id );
+
+							break;
+
 						case 'add_persons':
 
 							$this->p->user->schedule_add_person_role();
 
-							$notice_msg = sprintf( __( 'A background task will begin shortly to add the %s role to content creators.',
-								'wpsso' ), _x( 'Person', 'user role', 'wpsso' ) );
+							$notice_msg = sprintf( __( 'A background task will begin shortly to add the %s role to content creators.', 'wpsso' ),
+								_x( 'Person', 'user role', 'wpsso' ) );
 
 							$this->p->notice->upd( $notice_msg, $user_id );
 
@@ -1315,8 +1325,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							$this->p->user->schedule_remove_person_role();
 
-							$notice_msg = sprintf( __( 'A background task will begin shortly to remove the %s role from all users.',
-								'wpsso' ), _x( 'Person', 'user role', 'wpsso' ) );
+							$notice_msg = sprintf( __( 'A background task will begin shortly to remove the %s role from all users.', 'wpsso' ),
+								_x( 'Person', 'user role', 'wpsso' ) );
 
 							$this->p->notice->upd( $notice_msg, $user_id );
 
