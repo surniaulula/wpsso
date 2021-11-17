@@ -9310,7 +9310,7 @@ msgstr ""
 
 #: lib/messages.php:775
 msgid ""
-"Video discovery and service API modules are provided with the %s version."
+"Video discovery and service API modules are provided with the %s edition."
 msgstr ""
 
 #: lib/messages.php:787

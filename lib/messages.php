@@ -772,7 +772,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 			$html = '<p class="pro-feature-msg">';
 
-			$html .= sprintf( __( 'Video discovery and service API modules are provided with the %s version.', 'wpsso' ), $short_pro );
+			$html .= sprintf( __( 'Video discovery and service API modules are provided with the %s edition.', 'wpsso' ), $short_pro );
 
 			$html .= '</p>';
 

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 9.8.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-11-16 12:39-0800\n"
+"PO-Revision-Date: 2021-11-17 07:40-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -8143,8 +8143,8 @@ msgid "<strong>Additional Schema options</strong> in the %s metabox to customize
 msgstr "<strong>Options de schéma supplémentaires</strong> dans la métabox %s pour personnaliser les œuvres de création, les événements, les procédures, les offres d'emploi, les films, les produits, les recettes, les critiques, etc."
 
 #: lib/messages.php:608
-msgid "Reads data from many third-party plugins and service APIs."
-msgstr "Lit les données de nombreaux extensions tierces et API de services."
+msgid "Reads data from many active plugins and service APIs."
+msgstr "Lit les données de nombreuses extensions actives et API de services."
 
 #: lib/messages.php:618
 msgid "<strong>Development of %s is driven by user requests</strong> - we welcome all your comments and suggestions."
@@ -8176,8 +8176,8 @@ msgid "video preview images are included first"
 msgstr "les images d'aperçu vidéo sont incluses en premier"
 
 #: lib/messages.php:775
-msgid "Video discovery and service API modules are provided with the %s version."
-msgstr "Les modules de découverte vidéo et d'API de service sont fournis avec la version %s."
+msgid "Video discovery and service API modules are provided with the %s edition."
+msgstr "Les modules de découverte vidéo et d'API de service sont fournis avec l'édition %s."
 
 #: lib/messages.php:787
 msgid "head cache is disabled (caching plugin or service detected)."
@@ -9911,8 +9911,8 @@ msgid "Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the 
 msgstr "Crochet(s) de filtre lent détecté - WordPress a pris %1$.3f secs pour exécuter le filtre \"%2$s\" (%3$s)."
 
 #: lib/util.php:3095
-msgid "Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds to execute. This is longer than the recommended maximum of %3$.3f seconds and may affect page load time. Please consider reviewing third-party plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code."
-msgstr "Crochet(s) de filtre lent détecté - le filtre WordPress %1$s a pris %2$.3f secondes pour exécuter. Ceci est plus long que le maximum recommandé de %3$.3f secondes et peut affecter le temps de chargement de la page. S'il vous plaît envisagez d'examiner les fonctions d'extensions de tiers partie et de thème accrochées au filtre WordPress %1$s pour du code PHP lent et/ou sous-optimal."
+msgid "Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds to execute. This is longer than the recommended maximum of %3$.3f seconds and may affect page load time. Please consider reviewing active plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code."
+msgstr "Crochet(s) de filtre lent détecté - le filtre WordPress %1$s a pris %2$.3f secondes pour exécuter. Ceci est plus long que le maximum recommandé de %3$.3f secondes et peut affecter le temps de chargement de la page. S'il vous plaît envisagez d'examiner les fonctions d'extension et de thème actives accrochées au filtre WordPress %1$s pour du code PHP lent et/ou sous-optimal."
 
 #: lib/util.php:3097
 msgid "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the filter) may provide more information on the specific hook(s) or PHP code affecting performance."
