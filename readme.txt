@@ -1,4 +1,4 @@
-=== WPSSO Core | Advanced Structured Data Plugin | Meta Tags, oEmbed, REST, Schema, XML ===
+=== WPSSO Core | Advanced Structured Data Plugin for WordPress | Meta Tags, oEmbed, REST, Schema, XML ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -22,7 +22,7 @@ Present your content at its best in search results and on social sites - no matt
 
 <!-- about -->
 
-<p class="summary">Rank higher and improve your click through rates by presenting your content at its best in <strong>search results</strong> and on <strong>social sites</strong> - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</p>
+<p class="summary">Present your content at its best in <strong>search results</strong> and on <strong>social sites</strong> - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</p>
 
 <p><strong>Provides meta tags and structured data markup for:</strong></p>
 
