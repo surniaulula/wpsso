@@ -45,7 +45,7 @@ Present your content at its best in search results and on social sites - no matt
 
 <p><strong>Reads data from WordPress, plugins, and service APIs:</strong></p>
 
-There's no need to select or create templates, manually reenter descriptions, titles, product information, or reselect images and videos &mdash; WPSSO reads your existing WordPress content, including custom post types and taxonomies, enhanced user profile data, Media Library image and video information, active plugin data, and service APIs (Bitly, Facebook, Shopper Approved, Stamped.io, Vimeo, Wistia, YouTube, and many more).
+There's no need to select or create templates, manually reenter descriptions, titles, product information, or reselect images and videos &mdash; WPSSO reads your existing WordPress content, including custom post types and taxonomies, enhanced user profile data, Media Library image information, and the Premium edition also reads video details, active plugin data, and service APIs (Bitly, Facebook, Shopper Approved, Stamped.io, Vimeo, Wistia, YouTube, and many more).
 
 <p><strong>Supports over 500 different Schema types and sub-types:</strong></p>
 
@@ -73,9 +73,7 @@ WPSSO provides comprehensive Schema markup for posts, pages, custom post types, 
 * *The brand field is recommended.*
 * *The headline field is recommended.*
 * *The image field is recommended.*
-* *The mainEntityOfPage field is recommended.*
 * *The review field is recommended.*
-* *This Product is missing a global identifier (e.g. isbn, mpn or gtin8).*
 * *No global identifier provided (e.g. gtin mpn isbn).*
 * *Not a known valid target type for the itemReviewed property.*
 
@@ -87,13 +85,13 @@ WPSSO provides comprehensive Schema markup for posts, pages, custom post types, 
 
 &#x2605;&#x2605;&#x2605;&#x2605;&#x2605; - "This plugin saves me so much time, and it has really lifted my SERP rankings. Most of my keywords I now rank 1-3 position. I also noticed after about a week that my impressions have gone up at least 75%. I upgraded to the pro version which gave me even more options." - [playnstocks](https://wordpress.org/support/topic/excellent-plugin-and-support-200/)
 
-<h3>WPSSO Core Premium Features</h3>
+<h3>Additional Premium Edition Features</h3>
 
-**&#91;Premium&#93;** Additional Schema options in the Document SSO metabox.
+**&#91;Premium&#93;** Additional options in the Document SSO metabox for the selected Schema type.
 
-**&#91;Premium&#93;** Reads video information from Facebook, Slideshare, Vimeo, Wistia, and Youtube.
+**&#91;Premium&#93;** Reads video details for Facebook, Slideshare, Vimeo, Wistia, and Youtube videos.
 
-**&#91;Premium&#93;** Support for the Twitter [Player Card](https://dev.twitter.com/cards/types/player) videos.
+**&#91;Premium&#93;** Support for Twitter [Player Card](https://dev.twitter.com/cards/types/player) videos.
 
 **&#91;Premium&#93;** URL shortening with Bitly, DLMY.App, Google, Ow.ly, TinyURL, or YOURLS.
 

@@ -42,7 +42,7 @@
 
 <p><strong>Reads data from WordPress, plugins, and service APIs:</strong></p>
 
-<p>There's no need to select or create templates, manually reenter descriptions, titles, product information, or reselect images and videos &mdash; WPSSO reads your existing WordPress content, including custom post types and taxonomies, enhanced user profile data, Media Library image and video information, active plugin data, and service APIs (Bitly, Facebook, Shopper Approved, Stamped.io, Vimeo, Wistia, YouTube, and many more).</p>
+<p>There's no need to select or create templates, manually reenter descriptions, titles, product information, or reselect images and videos &mdash; WPSSO reads your existing WordPress content, including custom post types and taxonomies, enhanced user profile data, Media Library image information, and the Premium edition also reads video details, active plugin data, and service APIs (Bitly, Facebook, Shopper Approved, Stamped.io, Vimeo, Wistia, YouTube, and many more).</p>
 
 <p><strong>Supports over 500 different Schema types and sub-types:</strong></p>
 
@@ -73,9 +73,7 @@
 <li><em>The brand field is recommended.</em></li>
 <li><em>The headline field is recommended.</em></li>
 <li><em>The image field is recommended.</em></li>
-<li><em>The mainEntityOfPage field is recommended.</em></li>
 <li><em>The review field is recommended.</em></li>
-<li><em>This Product is missing a global identifier (e.g. isbn, mpn or gtin8).</em></li>
 <li><em>No global identifier provided (e.g. gtin mpn isbn).</em></li>
 <li><em>Not a known valid target type for the itemReviewed property.</em></li>
 </ul>
@@ -88,13 +86,13 @@
 
 <p>&#x2605;&#x2605;&#x2605;&#x2605;&#x2605; - "This plugin saves me so much time, and it has really lifted my SERP rankings. Most of my keywords I now rank 1-3 position. I also noticed after about a week that my impressions have gone up at least 75%. I upgraded to the pro version which gave me even more options." - <a href="https://wordpress.org/support/topic/excellent-plugin-and-support-200/">playnstocks</a></p>
 
-<h3>WPSSO Core Premium Features</h3>
+<h3>Additional Premium Edition Features</h3>
 
-<p><strong>&#91;Premium&#93;</strong> Additional Schema options in the Document SSO metabox.</p>
+<p><strong>&#91;Premium&#93;</strong> Additional options in the Document SSO metabox for the selected Schema type.</p>
 
-<p><strong>&#91;Premium&#93;</strong> Reads video information from Facebook, Slideshare, Vimeo, Wistia, and Youtube.</p>
+<p><strong>&#91;Premium&#93;</strong> Reads video details for Facebook, Slideshare, Vimeo, Wistia, and Youtube videos.</p>
 
-<p><strong>&#91;Premium&#93;</strong> Support for the Twitter <a href="https://dev.twitter.com/cards/types/player">Player Card</a> videos.</p>
+<p><strong>&#91;Premium&#93;</strong> Support for Twitter <a href="https://dev.twitter.com/cards/types/player">Player Card</a> videos.</p>
 
 <p><strong>&#91;Premium&#93;</strong> URL shortening with Bitly, DLMY.App, Google, Ow.ly, TinyURL, or YOURLS.</p>
 
