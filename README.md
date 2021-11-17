@@ -1,4 +1,4 @@
-<h1>WPSSO Core | Advanced Structured Data Plugin for WordPress</h1><h3>Meta Tags, oEmbed, REST, Schema, XML</h3>
+<h1>WPSSO Core | Advanced Structured Data Plugin</h1><h3>Meta Tags, JSON-LD, oEmbed, REST API, Schema, XML</h3>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
@@ -26,12 +26,13 @@
 <ul>
     <li>Facebook Open Graph</li>
     <li>Google Knowledge Graph</li>
+    <li>Google Merchant Feeds XML (Premium Edition)</li>
     <li>Google Rich Results (aka Rich Snippets)</li>
     <li>LinkedIn oEmbed Data</li>
     <li>Mobile Web Browsers</li>
     <li>Pinterest Rich Pins</li>
     <li>Twitter Cards</li>
-    <li>Schema.org Markup (for 500+ Schema Types)</li>
+    <li>Schema.org JSON-LD Markup</li>
     <li>Slack</li>
     <li>WhatsApp and Messaging Apps</li>
     <li>WordPress REST API</li>
