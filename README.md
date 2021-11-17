@@ -1,4 +1,4 @@
-<h1>WPSSO Core</h1><h3>The Structured Data Plugin for WordPress SEO and SMO</h3>
+<h1>WPSSO Core</h1><h3>Advanced Structured Data Plugin for WordPress</h3>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
@@ -15,7 +15,7 @@
 
 <h2>Description</h2>
 
-<h3 class="top">The Structured Data Plugin for WordPress SEO and SMO</h3>
+<h3 class="top">Advanced Structured Data Plugin for WordPress</h3>
 
 <!-- about -->
 
