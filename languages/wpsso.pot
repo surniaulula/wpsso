@@ -9285,7 +9285,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:607
-msgid "Reads data from many active plugins and service APIs."
+msgid "Reads data from active plugins and service APIs."
 msgstr ""
 
 #: lib/messages.php:617

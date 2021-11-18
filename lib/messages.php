@@ -604,7 +604,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= '<li>' . sprintf( __( '<strong>Additional Schema options</strong> in the %s metabox to customize creative works, events, how-tos, job postings, movies, products, recipes, reviews, and more.', 'wpsso' ), $mb_title ) . '</li>';
 
-						$text .= '<li><strong>' . __( 'Reads data from many active plugins and service APIs.', 'wpsso' ) . '</strong></li>';
+						$text .= '<li><strong>' . __( 'Reads data from active plugins and service APIs.', 'wpsso' ) . '</strong></li>';
 
 						$text .= '</ul>';
 
