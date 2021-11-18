@@ -94,10 +94,6 @@ WPSSO provides comprehensive Schema markup for posts, pages, custom post types, 
 
 **&#91;Premium&#93;** Imports video details for Facebook, Slideshare, Vimeo, Wistia, and Youtube videos.
 
-**&#91;Premium&#93;** Support for Twitter [Player Card](https://dev.twitter.com/cards/types/player) videos.
-
-**&#91;Premium&#93;** URL shortening with Bitly, DLMY.App, Google, Ow.ly, TinyURL, or YOURLS.
-
 **&#91;Premium&#93;** Schema JSON-LD markup for Better WooCommerce SEO:
 
 * The WooCommerce plugin by itself does not provide sufficient Schema JSON-LD markup for Google Rich Results. The WPSSO Core Premium edition reads WooCommerce product data and provides complete Schema Product JSON-LD markup for Google Rich Results, including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, pattern, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.
