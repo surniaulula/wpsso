@@ -1,5 +1,9 @@
 
-<p>The <code>$mod</code> variable is defined early in the WPSSO Core load process and is passed to most methods and filters. The <code>$mod</code> variable name is short for "module" and it defines essential reference values for different WordPress and WPSSO object types:</p>
+<p>The <code>$mod</code> variable is defined early in the WPSSO load process, and is passed to most methods and filters.</p>
+
+<p>The <code>$mod</code> variable name stands for "module" and defines important reference values for the current WPSSO object type.<p>
+
+<p>The WPSSO object type can be one of the following:</p>
 
 <ul>
 	<li>comment</li>
@@ -8,7 +12,7 @@
 	<li>user</li>
 </ul>
 
-<p>An example <code>$mod</code> array for a post:</p>
+<p>Here is an example <code>$mod</code> array for a post:</p>
 
 <pre class="lang:php decode:true">Array (
     [id] =&gt; 2717
@@ -59,5 +63,29 @@ if ( $mod[ 'is_post' ] ) {
 
 <pre class="lang:php decode:true">
 $og_desc = $mod[ 'obj' ]-&gt;get_options( $mod[ 'id' ], 'og_desc' );
+</pre>
+
+<p>WPSSO offers several useful functions for it's methods. For example:</p>
+
+<pre class="lang:php decode:true">
+/**
+ * Get the current webpage module (post, term, user, archive page, etc.).
+ */
+$mod = wpsso_get_page_mod();
+
+/**
+ * Get the module for a post ID.
+ */
+$mod = wpsso_get_post_mod( $post_id );
+
+/**
+ * Get the module for a term ID.
+ */
+$mod = wpsso_get_term_mod( $term_id );
+
+/**
+ * Get the module for a user ID.
+ */
+$mod = wpsso_get_user_mod( $user_id );
 </pre>
 
