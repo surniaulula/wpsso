@@ -191,48 +191,47 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'pro-ecom-product-msg':
 
-						if ( empty( $this->p->avail[ 'ecom' ][ 'any' ] ) ) {	// Just in case.
+						if ( empty( $this->p->avail[ 'ecom' ][ 'any' ] ) ) {	// No e-commerce plugin.
 
 							$text = '';
 
-						} else {
+						} elseif ( empty( $this->pkg_info[ 'wpsso' ][ 'pp' ] ) ) {	// Standard plugin.
 
-							if ( empty( $this->pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
+							$text = '<p class="pro-feature-msg">';
 
-								$text = '<p class="pro-feature-msg">';
+							$text .= empty( $url[ 'purchase' ] ) ? '' : '<a href="' . $url[ 'purchase' ] . '">';
 
-								$text .= empty( $url[ 'purchase' ] ) ? '' : '<a href="' . $url[ 'purchase' ] . '">';
+							$text .= sprintf( __( 'An e-commerce plugin is active &ndash; product information may be imported by the %s plugin.', 'wpsso' ), $this->p_name_pro );
 
-								$text .= sprintf( __( 'An e-commerce plugin is active &ndash; product information may be imported by the %s plugin.', 'wpsso' ), $this->p_name_pro );
+							$text .= empty( $url[ 'purchase' ] ) ? '' : '</a>';
 
-								$text .= empty( $url[ 'purchase' ] ) ? '' : '</a>';
+							$text .= '</p>';
 
-								$text .= '</p>';
+						} elseif ( ! empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ) {	// Premium plugin with WooCommerce.
 
-							} elseif ( ! empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ) {
+							if ( 'product' === $info[ 'mod' ][ 'post_type' ] ) {	// WooCommerce product editing page.
 
-								if ( 'product' === $info[ 'mod' ][ 'post_type' ] ) {
-
-									// translators: Please ignore - translation uses a different text domain.
-									$wc_mb_name = '<strong>' . __( 'Product data', 'woocommerce' ) . '</strong>';
-
-									$text = '<p class="pro-feature-msg">';
-
-									$text .= sprintf( __( 'Disabled product information fields show values imported from the WooCommerce %s metabox.', 'wpsso' ), $wc_mb_name ) . '<br/>';
-
-									$text .= sprintf( __( 'You can edit product information in the WooCommerce %s metabox to update these default values.', 'wpsso' ), $wc_mb_name );
-
-									$text .= '</p>';
-								}
-
-							} else {
+								// translators: Please ignore - translation uses a different text domain.
+								$wc_mb_name = '<strong>' . __( 'Product data', 'woocommerce' ) . '</strong>';
 
 								$text = '<p class="pro-feature-msg">';
 
-								$text .= __( 'An e-commerce plugin is active &ndash; disabled product information fields may show values imported from the e-commerce plugin.', 'wpsso' );
+								$text .= sprintf( __( 'Read-only product options show values imported from the WooCommerce %s metabox for the main product.', 'wpsso' ), $wc_mb_name ) . ' ';
+
+								$text .= sprintf( __( 'You can edit product information in the WooCommerce %s metabox to update these values.', 'wpsso' ), $wc_mb_name ) . ' ';
+
+								$text .= __( 'Information from each product variation will supersede the main product information in each Schema product offer.', 'wpsso' ) . ' ';
 
 								$text .= '</p>';
 							}
+
+						} else {
+
+							$text = '<p class="pro-feature-msg">';
+
+							$text .= __( 'An e-commerce plugin is active &ndash; read-only product information fields may show values imported from the e-commerce plugin.', 'wpsso' );
+
+							$text .= '</p>';
 						}
 
 						break;

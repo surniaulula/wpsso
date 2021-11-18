@@ -282,11 +282,10 @@ _x( 'Job Posting Expires', 'option label', 'wpsso' );
 _x( 'Select an Organization', 'option label', 'wpsso' );
 _x( 'Select a Person', 'option label', 'wpsso' );
 _x( 'Select a Place', 'option label', 'wpsso' );
+_x( 'Main Product Information', 'metabox title', 'wpsso' );
 _x( 'Product Type', 'option label', 'wpsso' );
 _x( 'Product Brand', 'option label', 'wpsso' );
 _x( 'Product Price', 'option label', 'wpsso' );
-// translators: Please ignore - translation uses a different text domain.
-__( 'for simple or main product' );
 _x( 'Product Availability', 'option label', 'wpsso' );
 _x( 'Product Condition', 'option label', 'wpsso' );
 _x( 'Product Color', 'option label', 'wpsso' );

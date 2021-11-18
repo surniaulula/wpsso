@@ -143,12 +143,12 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 					if ( ! empty( $cf_frags ) ) {	// Just in case.
 
 						// translators: %s is a singular item reference, for example 'a product size type'.
-						$text = sprintf( __( 'A custom value for %s can be provided for the main product markup.', 'wpsso' ), $cf_frags[ 'desc' ] ) . ' ';
+						$text = sprintf( __( 'A custom value for %s can be provided for the main product meta tags and Schema markup.', 'wpsso' ), $cf_frags[ 'desc' ] ) . ' ';
 
-						$text .= __( 'When product variations are available (from an e-commerce plugin), the value from each product variation will supersede this one.', 'wpsso' ) . ' ';
+						$text .= __( 'When information from product variations is available, the value from each product variation will supersede the main product information in each Schema product offer.', 'wpsso' ) . ' ';
 
 						// translators: %s is the option label.
-						$text .= sprintf( __( 'The <strong>%s</strong> option may be disabled when an e-commerce plugin is the authoritative source for this value.', 'wpsso' ), $cf_frags[ 'label' ] ) . ' ';
+						$text .= sprintf( __( 'The <strong>%s</strong> option may be read-only when an e-commerce plugin is the authoritative source for this value.', 'wpsso' ), $cf_frags[ 'label' ] ) . ' ';
 
 						$text .= __( 'In this case, you should update the product information in the e-commerce plugin to update this value.', 'wpsso' ) . ' ';
 

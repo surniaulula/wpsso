@@ -1205,6 +1205,12 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				 *
 				 * Note that unlike most schema option names, product options start with 'product_' and not 'schema_'.
 				 */
+				'subsection_schema_product' => array(
+					'tr_class' => $schema_type_row_class[ 'product' ],
+					'td_class' => 'subsection',
+					'header'   => 'h5',
+					'label'    => _x( 'Main Product Information', 'metabox title', 'wpsso' )
+				),
 				'schema_product_category' => array(
 					'tr_class' => $schema_type_row_class[ 'product' ],
 					'th_class' => 'medium',
