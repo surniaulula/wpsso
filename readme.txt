@@ -212,8 +212,6 @@ WPSSO provides comprehensive Schema markup for posts, pages, custom post types, 
 == Screenshots ==
 
 01. The Essential and General Settings pages provide a simple, fast, and easy setup.
-02. The Document SSO metabox allows you to easily customize the details of articles, events, products, recipes, reviews, and much more.
-03. The Preview and oEmbed tabs allow you to quickly preview an example social share.
 
 == Changelog ==
 
