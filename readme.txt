@@ -243,6 +243,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 9.8.1-dev.1 (2021/11/19)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Updated the Google product taxonomy IDs.
+	* Added a new "Flush Rewrite Rules" button in the SSO &gt; Tools and Actions page.
+* **Bugfixes**
+	* Fixed incorrect reenabling of the 'Schema Type' option when purposely disabled for a fixed content type.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 9.8.0 (2021/11/16)**
 
 * **New Features**
@@ -540,6 +555,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.0.
 
 == Upgrade Notice ==
+
+= 9.8.1-dev.1 =
+
+(2021/11/19) Updated the Google product taxonomy IDs. Added a "Flush Rewrite Rules" button. Fixed incorrect reenabling of the 'Schema Type' option when purposely disabled for a fixed content type.
 
 = 9.8.0 =
 
