@@ -398,7 +398,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			if ( ! empty( $post_id ) ) {
 
-				$post_type = get_post_type_object( $post->post_type );
+				$post_type_obj = get_post_type_object( $post->post_type );
 
 				if ( 'page' === $post->post_type &&
 					(int) $post->ID === (int) get_option( 'page_on_front' ) &&
@@ -406,7 +406,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 					$shortlink = self::raw_home_url( '/' );
 
-				} elseif ( ! empty( $post_type->public ) ) {
+				} elseif ( ! empty( $post_type_obj->public ) ) {
 
 					$shortlink = self::raw_home_url( '?p=' . $post_id );
 				}
@@ -1010,20 +1010,20 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 				 */
 				if ( $can_edit_id ) {
 
-					$post_type = get_post_type( $post_id );
+					$post_type_name = get_post_type( $post_id );
 
-					if ( $post_type ) {
+					if ( $post_type_name ) {
 
 						if ( function_exists( 'use_block_editor_for_post_type' ) ) {
 
-							if ( use_block_editor_for_post_type( $post_type ) ) {
+							if ( use_block_editor_for_post_type( $post_type_name ) ) {
 
 								$can_edit_type = true;
 							}
 
 						} elseif ( function_exists( 'gutenberg_can_edit_post_type' ) ) {
 
-							if ( gutenberg_can_edit_post_type( $post_type ) ) {
+							if ( gutenberg_can_edit_post_type( $post_type_name ) ) {
 
 								$can_edit_type = true;
 							}
@@ -1401,6 +1401,9 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			if ( is_object( $mixed ) || is_numeric( $mixed ) ) {
 
+				/**
+				 * Returns the post type name.
+				 */
 				$post_type_name = get_post_type( $mixed );	// Post object or ID.
 
 			} else {
@@ -1424,6 +1427,8 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		}
 
 		/**
+		 * Returns post types registered as 'public' = 1 and 'show_ui' = 1.
+		 *
 		 * $output = objects | names
 		 */
 		public static function get_post_types( $output = 'objects', $sort_by_label = true ) {
@@ -1448,15 +1453,24 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			return apply_filters( 'sucom_get_post_types', $post_types, $output );
 		}
 
-		public static function get_post_type_labels( array $values = array(), $val_prefix = '', $label_prefix = '' ) {
+		public static function get_post_type_labels( array $values = array(), $val_prefix = '', $label_prefix = '', $objects = null ) {
 
-			$objects = self::get_post_types( $output = 'objects' );
+			/**
+			 * Returns post types registered as 'public' = 1 and 'show_ui' = 1.
+			 */
+			if ( null === $objects ) {
 
-			foreach ( $objects as $obj ) {
+				$objects = self::get_post_types( $output = 'objects' );
+			}
 
-				$obj_label = self::get_object_label( $obj );
+			if ( is_array( $objects ) ) {	// Just in case.
 
-				$values[ $val_prefix . $obj->name ] = trim( $label_prefix . ' ' . $obj_label );
+				foreach ( $objects as $obj ) {
+
+					$obj_label = self::get_object_label( $obj );
+
+					$values[ $val_prefix . $obj->name ] = trim( $label_prefix . ' ' . $obj_label );
+				}
 			}
 
 			asort( $values );	// Sort by label.
@@ -1486,15 +1500,21 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			return apply_filters( 'sucom_get_taxonomies', $taxonomies, $output );
 		}
 
-		public static function get_taxonomy_labels( array $values = array(), $val_prefix = '', $label_prefix = '' ) {
+		public static function get_taxonomy_labels( array $values = array(), $val_prefix = '', $label_prefix = '', $objects = null ) {
 
-			$objects = self::get_taxonomies( $output = 'objects' );
+			if ( null === $objects ) {
 
-			foreach ( $objects as $obj ) {
+				$objects = self::get_taxonomies( $output = 'objects' );
+			}
 
-				$obj_label = self::get_object_label( $obj );
+			if ( is_array( $objects ) ) {	// Just in case.
 
-				$values[ $val_prefix . $obj->name ] = trim( $label_prefix . ' ' . $obj_label );
+				foreach ( $objects as $obj ) {
+
+					$obj_label = self::get_object_label( $obj );
+
+					$values[ $val_prefix . $obj->name ] = trim( $label_prefix . ' ' . $obj_label );
+				}
 			}
 
 			asort( $values );	// Sort by label.

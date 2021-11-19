@@ -458,6 +458,9 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			 */
 			$type_select = '';
 
+			/**
+			 * Returns post types registered as 'public' = 1 and 'show_ui' = 1.
+			 */
 			$post_types = SucomUtilWP::get_post_types( $output = 'objects' );
 
 			foreach ( $post_types as $obj ) {
@@ -543,6 +546,10 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			 * Schema Type by Post Type.
 			 */
 			$type_select = '';
+
+			/**
+			 * Returns post types registered as 'public' = 1 and 'show_ui' = 1.
+			 */
 			$post_types  = SucomUtilWP::get_post_types( $output = 'objects' );
 
 			foreach ( $post_types as $obj ) {

@@ -137,7 +137,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					'tooltip'  => 'meta-primary_term_id',
 					'content'  => $form->get_select( 'primary_term_id', $primary_terms,
 						$css_class = 'primary_term_id', $css_id = '', $is_assoc = true ),
-				) : array(),
+				) : '',
 				'og_title' => array(
 					'th_class' => 'medium',
 					'label'    => _x( 'Default Title', 'option label', 'wpsso' ),
@@ -152,7 +152,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					'content'  => $form->get_textarea( 'og_desc', $css_class = '', $css_id = '',
 						array( 'max' => $og_desc_max_len, 'warn' => $og_desc_warn_len ), $def_og_desc ),
 				),
-				'pin_img_desc' => array(
+				'pin_img_desc' => $mod[ 'is_public' ] ? array(
 					'tr_class' => $pin_img_disabled ? 'hide_in_basic' : '',
 					'th_class' => 'medium',
 					'label'    => _x( 'Pinterest Description', 'option label', 'wpsso' ),
@@ -160,63 +160,63 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					'content'  => $form->get_textarea( 'pin_img_desc', $css_class = '', $css_id = '',
 						array( 'max' => $pin_img_desc_max_len, 'warn' => $pin_img_desc_warn_len ),
 							$def_pin_img_desc, $pin_img_disabled ) . ' ' . $pin_img_msg,
-				),
-				'tc_title' => array(
+				) : '',
+				'tc_title' => $mod[ 'is_public' ] ? array(
 					'th_class' => 'medium',
 					'label'    => _x( 'Twitter Card Title', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-tc_title',
 					'content'  => $form->get_input( 'tc_title', $css_class = 'wide', $css_id = '',
 						$tc_title_max_len, $def_tc_title ),
-				),
-				'tc_desc' => array(
+				) : '',
+				'tc_desc' => $mod[ 'is_public' ] ? array(
 					'th_class' => 'medium',
 					'label'    => _x( 'Twitter Card Description', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-tc_desc',
 					'content'  => $form->get_textarea( 'tc_desc', $css_class = '', $css_id = '',
 						$tc_desc_max_len, $def_tc_desc ),
-				),
-				'seo_desc' => array(
+				) : '',
+				'seo_desc' => $mod[ 'is_public' ] ? array(
 					'tr_class' => $seo_desc_disabled ? 'hide_in_basic' : '',
 					'th_class' => 'medium',
 					'label'    => _x( 'Search Description', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-seo_desc',
 					'content'  => $form->get_textarea( 'seo_desc', $css_class = '', $css_id = '',
 						$seo_desc_max_len, $def_seo_desc, $seo_desc_disabled ) . ' ' . $seo_desc_msg,
-				),
-				'canonical_url' => array(
+				) : '',
+				'canonical_url' => $mod[ 'is_public' ] ? array(
 					'tr_class' => $canonical_url_disabled ? 'hide_in_basic' : '',
 					'th_class' => 'medium',
 					'label'    => _x( 'Canonical URL', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-canonical_url',
 					'content'  => $form->get_input( 'canonical_url', $css_class = 'wide', $css_id = '',
 						$max_len = 0, $def_canonical_url, $canonical_url_disabled ) . ' ' . $canonical_url_msg,
-				),
+				) : '',
 				'og_img_max' => $mod[ 'is_post' ] ? array(
 					'tr_class' => $form->get_css_class_hide( 'basic', 'og_img_max' ),
 					'th_class' => 'medium',
 					'label'    => _x( 'Maximum Images', 'option label', 'wpsso' ),
 					'tooltip'  => 'og_img_max',	// Use tooltip message from settings.
 					'content'  => $form->get_select( 'og_img_max', range( 0, $max_media_items ), $css_class = 'medium' ),
-				) : '',	// Placeholder if not a post module.
+				) : '',
 				'og_vid_max' => $mod[ 'is_post' ] ? array(
 					'tr_class' => $form->get_css_class_hide( 'basic', 'og_vid_max' ),
 					'th_class' => 'medium',
 					'label'    => _x( 'Maximum Videos', 'option label', 'wpsso' ),
 					'tooltip'  => 'og_vid_max',	// Use the tooltip from plugin settings.
 					'content'  => $form->get_select( 'og_vid_max', range( 0, $max_media_items ), $css_class = 'medium' ),
-				) : '',	// Add a placeholder if not a post module.
+				) : '',
 				'og_vid_prev_img' => $mod[ 'is_post' ] ? array(
 					'tr_class' => $form->get_css_class_hide( 'basic', 'og_vid_prev_img' ),
 					'th_class' => 'medium',
 					'label'    => _x( 'Include Video Previews', 'option label', 'wpsso' ),
 					'tooltip'  => 'og_vid_prev_img',	// Use the tooltip from plugin settings.
 					'content'  => $form->get_checkbox( 'og_vid_prev_img' ) . $this->p->msgs->preview_images_are_first(),
-				) : '',	// Add a placeholder if not a post module.
+				) : '',
 
 				/**
 				 * Open Graph Article type.
 				 */
-				'og_article_section' => array(
+				'og_article_section' => $mod[ 'is_public' ] ? array(
 					'tr_class' => 'hide_og_type hide_og_type_article',
 					'th_class' => 'medium',
 					'label'    => _x( 'Article Section', 'option label', 'wpsso' ),
@@ -230,15 +230,15 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 								'is_sorted' => true,					// No label sorting required.
 							)
 						),
-				),
-				'og_reading_mins' => array(
+				) : '',
+				'og_reading_mins' => $mod[ 'is_public' ] ? array(
 					'tr_class' => 'hide_og_type hide_og_type_article',
 					'th_class' => 'medium',
 					'label'    => _x( 'Est. Reading Time', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-reading_mins',
 					'content'  => $form->get_input( 'reading_mins', $css_class = 'xshort', $css_id = '', 0, $def_reading_mins ) . ' ' .
 						__( 'minute(s)', 'wpsso' ),
-				),
+				) : '',
 			);
 
 			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );

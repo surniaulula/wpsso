@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.8.0',	// Plugin version.
-					'opt_version' => '835',		// Increment when changing default option values.
+					'version'     => '9.8.1-dev.1',	// Plugin version.
+					'opt_version' => '836',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1701,6 +1701,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_add_to_tax_category'           => 1,
 					'plugin_add_to_tax_faq_category'       => 1,
 					'plugin_add_to_tax_link_category'      => 1,
+					'plugin_add_to_tax_org_category'       => 1,
+					'plugin_add_to_tax_place_category'     => 1,
 					'plugin_add_to_tax_post_tag'           => 1,
 					'plugin_add_to_tax_product_brand'      => 1,		// For WooCommerce Brands.
 					'plugin_add_to_tax_product_cat'        => 1,		// For WooCommerce.
@@ -2327,7 +2329,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'version' => '1.12.1',
 			),
 			'menu' => array(
-				'title'     => 'SSO (Social and Search Optimization)',	// Menu title.
+				'title'     => 'SSO - Social and Search Optimization',	// Menu title.
 				'icon-font' => 'WpssoIcons',				// Icon font family.
 				'icon-code' => '\e81e',					// Icon CSS code.
 				'dashicons' => array(

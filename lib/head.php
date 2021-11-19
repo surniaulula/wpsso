@@ -175,6 +175,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		 * Extract certain key fields for display and sanity checks.
 		 *
 		 * Save meta tag values for later sorting in list tables.
+		 *
+		 * Called by WpssoWpMeta->get_head_info(), WpssoPost->load_meta_page(),
+		 * WpssoPost->ajax_get_metabox_document_meta(), WpssoTerm->load_meta_page(), WpssoUser->load_meta_page(),
+		 * and WpssoUtilCache->refresh_mod_head_meta().
 		 */
 		public function extract_head_info( $mod = false, array $head_mt ) {
 

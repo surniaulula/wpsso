@@ -593,6 +593,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$label_prefix = _x( 'Post Type', 'option label', $this->text_domain );
 
+			/**
+			 * Returns post types registered as 'public' = 1 and 'show_ui' = 1.
+			 */
 			$values = SucomUtilWP::get_post_type_labels( $values = array(), $val_prefix = '', $label_prefix );
 
 			return $this->get_checklist( $name_prefix, $values, $css_class, $css_id, $is_assoc = true, $is_disabled );
@@ -604,6 +607,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$label_prefix = _x( 'Post Type', 'option label', $this->text_domain );
 
+			/**
+			 * Returns post types registered as 'public' = 1 and 'show_ui' = 1.
+			 */
 			$values = SucomUtilWP::get_post_type_labels( $values, $val_prefix = '', $label_prefix );
 
 			$label_prefix = _x( 'Taxonomy', 'option label', $this->text_domain );

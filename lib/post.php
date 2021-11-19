@@ -126,6 +126,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 */
 			if ( $is_admin || $doing_ajax ) {
 
+				/**
+				 * Returns post types registered as 'public' = 1 and 'show_ui' = 1.
+				 */
 				$post_type_names = SucomUtilWP::get_post_types( $output = 'names' );
 
 				if ( is_array( $post_type_names ) ) {

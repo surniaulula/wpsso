@@ -1,16 +1,9 @@
 
 <p>The <code>$mod</code> variable is defined early in the WPSSO load process, and is passed to most methods and filters.</p>
 
-<p>The <code>$mod</code> variable name stands for "module" and defines important reference values for the current WPSSO object type.<p>
+<p>The <code>$mod</code> variable name stands for <em>module</em> and defines important reference values for the current WPSSO object type.<p>
 
-<p>The WPSSO object type can be one of the following:</p>
-
-<ul>
-	<li>comment</li>
-	<li>post</li>
-	<li>term</li>
-	<li>user</li>
-</ul>
+<p>The WPSSO object type can be a comment, post, taxonomy term, or user. An archive does not have an object type since an archive is a collection of object types (ie. a monthly archive is a collection of posts for that month). In this case, <code>$mod[ 'obj' ]</code> will be false and other properties will return true, like <code>$mod[ 'is_archive' ]</code>, <code>$mod[ 'is_date' ]</code>, and <code>$mod[ 'is_month' ]</code> for example.</p>
 
 <p>Here is an example <code>$mod</code> array for a post:</p>
 
@@ -53,7 +46,7 @@
 <p>An example to retrieve custom post meta:</p>
 
 <pre class="lang:php decode:true">
-if ( $mod[ 'is_post' ] ) {
+if ( $mod[ 'is_post' ] && $mod[ 'id' ] ) {
 
     $value = get_post_meta( $mod[ 'id' ], '_example_meta_name', $single = true );
 }

@@ -140,7 +140,7 @@ _x( 'WPSSO Shipping Delivery Time for WooCommerce SEO', 'plugin name', 'wpsso' )
 _x( 'Shipping delivery time estimates for WooCommerce shipping zones, methods, and classes.', 'plugin description', 'wpsso' );
 _x( 'WPSSO WP Sitemaps XML', 'plugin name', 'wpsso' );
 _x( 'Manage post and taxonomy types included in the WordPress sitemaps XML and exclude content marked as "No Index".', 'plugin description', 'wpsso' );
-_x( 'SSO (Social and Search Optimization)', 'menu title', 'wpsso' );
+_x( 'SSO - Social and Search Optimization', 'menu title', 'wpsso' );
 _x( 'SSO', 'notice title', 'wpsso' );
 _x( 'Document SSO', 'metabox title', 'wpsso' );
 _x( 'Job Title', 'option label', 'wpsso' );

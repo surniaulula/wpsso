@@ -1015,11 +1015,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			foreach ( $opt_pre_defs as $opt_pre => $def_val ) {
 
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'checking options for prefix ' . $opt_pre );
-				}
-
+				/**
+				 * Returns post types registered as 'public' = 1 and 'show_ui' = 1.
+				 */
 				$post_type_names = SucomUtilWP::get_post_types( $output = 'names' );
 
 				foreach ( $post_type_names as $name ) {
@@ -1027,11 +1025,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					$opt_key = $opt_pre . '_' . $name;
 
 					if ( ! isset( $opts[ $opt_key ] ) ) {
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'adding ' . $opt_key . ' = ' . $def_val );
-						}
 
 						$opts[ $opt_key ] = $def_val;
 					}
@@ -1083,21 +1076,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			foreach ( $opt_pre_defs as $opt_pre => $def_val ) {
 
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'checking options for prefix ' . $opt_pre );
-				}
-
 				foreach ( SucomUtilWP::get_taxonomies( $output = 'names' ) as $name ) {
 
 					$opt_key = $opt_pre . '_' . $name;
 
 					if ( ! isset( $opts[ $opt_key ] ) ) {
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'adding ' . $opt_key . ' = ' . $def_val );
-						}
 
 						$opts[ $opt_key ] = $def_val;
 					}

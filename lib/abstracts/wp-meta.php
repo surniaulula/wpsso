@@ -322,7 +322,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					/**
 					 * Customize tab.
 					 */
-					'schema_type'     => $def_schema_type,		// Schema Type.
 					'og_type'         => $def_og_type,		// Open Graph Type.
 					'primary_term_id' => $def_primary_term_id,	// Primary Category.
 					'og_title'        => '',			// Default Title.
@@ -1054,18 +1053,22 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		}
 
 		/**
-		 * Note that WpssoWpMeta->check_sortable_meta() passes the $mod array instead of an ID.
+		 * Called by WpssoWpMeta->check_sortable_meta(), WpssoOembed->post_oembed_response_data(),
+		 * WpssoOembed->post_oembed_response_data_rich, WpssoOembed->the_embed_thumbnail_url(),
+		 * WpssoOembed->the_embed_thumbnail_url_image_shape(), WpssoOembed->the_embed_thumbnail_id(), and
+		 * WpssoOembed->the_embed_excerpt().
 		 */
-		public function get_head_info( $mod, $read_cache = true ) {
+		public function get_head_info( $mixed, $read_cache = true ) {
 
 			static $local_cache = array();
 
-			/**
-			 * The $mod array argument is preferred but not required.
-			 */
-			if ( ! is_array( $mod ) ) {
+			if ( is_array( $mixed ) ) {
 
-				$mod = $this->get_mod( $mod );
+				$mod =& $mixed;
+
+			} else {
+
+				$mod = $this->get_mod( $mixed );
 			}
 
 			if ( isset( $local_cache[ $mod[ 'id' ] ] ) ) {
@@ -1080,6 +1083,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $local_cache[ $mod[ 'id' ] ] = $head_info;
 		}
 
+		/**
+		 * Called by WpssoHead->extract_head_info().
+		 */
 		public function get_head_info_thumb_bg_img( $head_info, $mod, $md_pre = 'og', $mt_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
