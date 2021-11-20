@@ -1,4 +1,4 @@
-<h1>WPSSO Core</h1><h3>Advanced Structured Data - Meta Tags, JSON-LD, oEmbed, Pin It, REST API, Rich Results, Schema, XML</h3>
+<h1>WPSSO Core</h1><h3>Advanced Structured Data - JSON-LD, Meta Tags, oEmbed, REST API, Rich Pins, Rich Results, Schema, XML</h3>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
