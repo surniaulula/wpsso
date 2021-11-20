@@ -115,13 +115,14 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					'label'    => _x( 'Schema Type', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-og_schema_type',
 					'content'  => $form->get_select( 'schema_type', $schema_types, $css_class = 'schema_type', $css_id = 'og_schema_type',
-						$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json', 'on_change_unhide_rows' ),
-							$event_args = array(
-								'json_var'  => 'schema_types',
-								'exp_secs'  => WPSSO_CACHE_SELECT_JSON_EXP_SECS,	// Create and read from a javascript URL.
-								'is_transl' => true,					// No label translation required.
-								'is_sorted' => true,					// No label sorting required.
-							)
+						$is_assoc = true, $is_disabled = false, $selected = false,
+							$event_names = array( 'on_focus_load_json', 'on_change_unhide_rows' ),
+								$event_args = array(
+									'json_var'  => 'schema_types',
+									'exp_secs'  => WPSSO_CACHE_SELECT_JSON_EXP_SECS,	// Create and read from a javascript URL.
+									'is_transl' => true,					// No label translation required.
+									'is_sorted' => true,					// No label sorting required.
+								)
 						),
 				),
 				'og_type' => array(
@@ -129,7 +130,8 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					'label'    => _x( 'Open Graph Type', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-og_type',
 					'content'  => $form->get_select( 'og_type', $og_types, $css_class = 'og_type', $css_id = '',
-						$is_assoc = true, $is_disabled = false, $selected = true, $event_names = array( 'on_change_unhide_rows' ) ),
+						$is_assoc = true, $is_disabled = false, $selected = true,
+							$event_names = array( 'on_change_unhide_rows' ) ),
 				),
 				'primary_term_id' => ! empty( $primary_terms ) ? array(	// Show the option if we have post category terms.
 					'th_class' => 'medium',
@@ -138,20 +140,20 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					'content'  => $form->get_select( 'primary_term_id', $primary_terms,
 						$css_class = 'primary_term_id', $css_id = '', $is_assoc = true ),
 				) : '',
-				'og_title' => array(
+				'og_title' => $mod[ 'is_public' ] ? array(
 					'th_class' => 'medium',
 					'label'    => _x( 'Default Title', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-og_title',
 					'content'  => $form->get_input( 'og_title', $css_class = 'wide', $css_id = '',
 						array( 'max' => $og_title_max_len, 'warn' => $og_title_warn_len ), $def_og_title ),
-				),
-				'og_desc' => array(
+				) : '',
+				'og_desc' => $mod[ 'is_public' ] ? array(
 					'th_class' => 'medium',
 					'label'    => _x( 'Default Description', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-og_desc',
 					'content'  => $form->get_textarea( 'og_desc', $css_class = '', $css_id = '',
 						array( 'max' => $og_desc_max_len, 'warn' => $og_desc_warn_len ), $def_og_desc ),
-				),
+				) : '',
 				'pin_img_desc' => $mod[ 'is_public' ] ? array(
 					'tr_class' => $pin_img_disabled ? 'hide_in_basic' : '',
 					'th_class' => 'medium',
@@ -222,13 +224,14 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					'label'    => _x( 'Article Section', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-article_section',
 					'content'  => $form->get_select( 'article_section', $article_sections, $css_class = 'article_section', $css_id = '',
-						$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
-							$event_args = array(
-								'json_var'  => 'article_sections',
-								'exp_secs'  => WPSSO_CACHE_SELECT_JSON_EXP_SECS,	// Create and read from a javascript URL.
-								'is_transl' => true,					// No label translation required.
-								'is_sorted' => true,					// No label sorting required.
-							)
+						$is_assoc = true, $is_disabled = false, $selected = false,
+							$event_names = array( 'on_focus_load_json' ),
+								$event_args = array(
+									'json_var'  => 'article_sections',
+									'exp_secs'  => WPSSO_CACHE_SELECT_JSON_EXP_SECS,	// Create and read from a javascript URL.
+									'is_transl' => true,					// No label translation required.
+									'is_sorted' => true,					// No label sorting required.
+								)
 						),
 				) : '',
 				'og_reading_mins' => $mod[ 'is_public' ] ? array(

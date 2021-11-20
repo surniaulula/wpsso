@@ -33,39 +33,33 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			}
 
 			$this->p->util->add_plugin_filters( $this, array(
-				'metabox_sso_edit_rows'  => 4,
-				'metabox_sso_media_rows' => 4,
+				'metabox_sso_edit_rows'          => 4,		// Backwards compatibility for older WPSSO JSON add-ons.
+				'metabox_sso_media_rows'         => 4,		// Open Graph image and video options.
+				'metabox_sso_media_twitter_rows' => array(	// Twitter Card image options.
+					'metabox_sso_media_rows' => 4,
+				),
 			), $prio = 500 );	// Run before older WPSSO JSON add-ons.
 
-			/**
-			 * Since WPSSO Core v9.0.0.
-			 */
-			if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'skipping schema filters: schema markup is disabled' );
-				}
-
-			} else {
+			if ( ! empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
 
 				$this->p->util->add_plugin_filters( $this, array( 
-					'metabox_sso_edit_schema_rows'  => array( 'metabox_sso_edit_rows'  => 4 ),
-					'metabox_sso_media_schema_rows' => array( 'metabox_sso_media_rows' => 4 ),
+					'metabox_sso_edit_schema_rows'  => array(
+						'metabox_sso_edit_rows'  => 4,
+					),
+					'metabox_sso_media_schema_rows' => array(	// Schema image options.
+						'metabox_sso_media_rows' => 4,
+					),
 				), $prio = 1500 );	// Run after older WPSSO JSON add-ons.
 			}
 
 			$this->p->util->add_plugin_filters( $this, array( 
-				'metabox_sso_media_pinterest_rows' => array( 'metabox_sso_media_rows' => 4 ),
+				'metabox_sso_media_pinterest_rows' => array(	// Pinterest image options.
+					'metabox_sso_media_rows' => 4,
+				),
 			), $prio = 2000 );	// Run after the Schema options filters.
 		}
 
 		public function filter_metabox_sso_edit_rows( $table_rows, $form, $head_info, $mod ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
 
 			/**
 			 * Since WPSSO Core v9.0.0.
@@ -87,11 +81,6 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 		}
 
 		public function filter_metabox_sso_edit_schema_rows( $table_rows, $form, $head_info, $mod ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
 
 			/**
 			 * Since WPSSO Core v9.0.0.
@@ -1432,11 +1421,6 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 
 		public function filter_metabox_sso_media_rows( $table_rows, $form, $head_info, $mod ) {
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
 			/**
 			 * Default priority media.
 			 */
@@ -1533,12 +1517,40 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			);
 
 			/**
-			 * Twitter Card.
+			 * Since WPSSO Core v9.0.0.
 			 *
-			 * App and Player cards do not have a $size_name.
-			 *
-			 * Only show custom image options for the Summary and Summary Large Image cards. 
+			 * Provides backwards compatibility for older WPSSO JSON add-ons.
 			 */
+			$table_rows = $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
+
+			if ( ! empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
+
+				$json_version = WpssoJsonConfig::get_version();
+
+				if ( version_compare( $json_version, '5.0.0', '<' ) ) {
+
+					$table_rows[ 'subsection_schema' ] = '<td class="subsection" colspan="2"><h4>' .
+						_x( 'Schema JSON-LD Markup / Google Rich Results', 'metabox title', 'wpsso' ) . '</h4></td>';
+				}
+			}
+
+			return $table_rows;
+		}
+
+		/**
+		 * Twitter Card
+		 *
+		 * App and Player cards do not have a $size_name.
+		 *
+		 * Only show custom image options for the Summary and Summary Large Image cards. 
+		 */
+		public function filter_metabox_sso_media_twitter_rows( $table_rows, $form, $head_info, $mod ) {
+
+			if ( ! $mod[ 'is_public' ] ) {
+
+				return $table_rows;
+			}
+
 			list( $card_type, $card_label, $size_name, $tc_prefix ) = $this->p->tc->get_card_info( $mod, $head_info );
 
 			if ( ! empty( $card_label ) ) {
@@ -1558,7 +1570,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					);
 
 				} else {
-
+	
 					$media_request = array( 'pid' );
 					$media_info    = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = 'og' );
 
@@ -1584,32 +1596,16 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				}
 			}
 
-			/**
-			 * Since WPSSO Core v9.0.0.
-			 *
-			 * Provides backwards compatibility for older WPSSO JSON add-ons.
-			 */
 			$table_rows = $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
 
-			if ( ! empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
-
-				$json_version = WpssoJsonConfig::get_version();
-
-				if ( version_compare( $json_version, '5.0.0', '<' ) ) {
-
-					$table_rows[ 'subsection_schema' ] = '<td class="subsection" colspan="2"><h4>' .
-						_x( 'Schema JSON-LD Markup / Google Rich Results', 'metabox title', 'wpsso' ) . '</h4></td>';
-				}
-			}
-
-			return $table_rows;
+			return apply_filters( 'wpsso_metabox_sso_media_twitter_rows', $table_rows, $form, $head_info, $mod );
 		}
 
 		public function filter_metabox_sso_media_schema_rows( $table_rows, $form, $head_info, $mod ) {
 
-			if ( $this->p->debug->enabled ) {
+			if ( ! $mod[ 'is_public' ] ) {
 
-				$this->p->debug->mark();
+				return $table_rows;
 			}
 
 			/**
@@ -1666,16 +1662,16 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			return apply_filters( 'wpsso_metabox_sso_media_schema_rows', $table_rows, $form, $head_info, $mod );
 		}
 
+		/**
+		 * Pinterest Pin It.
+		 */
 		public function filter_metabox_sso_media_pinterest_rows( $table_rows, $form, $head_info, $mod ) {
 
-			if ( $this->p->debug->enabled ) {
+			if ( ! $mod[ 'is_public' ] ) {
 
-				$this->p->debug->mark();
+				return $table_rows;
 			}
 
-			/**
-			 * Pinterest Pin It.
-			 */
 			$size_name        = 'wpsso-pinterest';
 			$media_request = array( 'pid' );
 			$media_info       = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = array( 'schema', 'og' ) );

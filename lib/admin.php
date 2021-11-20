@@ -3292,13 +3292,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			ini_set( 'zlib.output_compression', 0 );
 
-			ini_set( 'implicit_flush', 1 );
-
 			if ( function_exists( 'apache_setenv' ) ) {
 
 				apache_setenv( 'no-gzip', 1 );
 			}
 
+			ob_implicit_flush( true );
 			ob_end_flush();
 
 			/**
@@ -3311,10 +3310,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( isset( $_SERVER[ 'HTTPS' ] ) ) {
 
+				$gmt_date = gmdate( 'D, d M Y H:i:s' ) . ' GMT';
+
 				header( 'Pragma: ' );
 				header( 'Cache-Control: ' );
-				header( 'Expires: Mon, 26 Jul 1997 05:00:00 GMT' );
-				header( 'Last-Modified: ' . gmdate( 'D, d M Y H:i:s' ) . ' GMT' );
+				header( 'Expires: ' . $gmt_date );
+				header( 'Last-Modified: ' . $gmt_date );
 				header( 'Cache-Control: no-store, no-cache, must-revalidate' );
 				header( 'Cache-Control: post-check=0, pre-check=0', false );
 
