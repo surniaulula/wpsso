@@ -66,7 +66,7 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 
 					$text .= __( 'Google requires that Schema QAPage markup include one or more user submitted and upvoted answers.', 'wpsso' ) . ' ';
 
-					$text .= __( 'The Schema QAPage document title is a summary of the question and the content text is the complete question.', 'wpsso' ) . ' ';
+					$text .= __( 'The Schema QAPage document name / title is a summary of the question, and the full text is the complete question.', 'wpsso' ) . ' ';
 
 					$text .= '</p>';
 
@@ -80,7 +80,7 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 
 					$text .= '<p>';
 
-					$text .= __( 'The Schema Question document title is a summary of the question, the description is a summary of the answer, and the content text is the complete answer.', 'wpsso' ) . ' ';
+					$text .= __( 'The Schema Question document name / title is a summary of the question, the description is a summary of the answer, and the full text is the complete answer.', 'wpsso' ) . ' ';
 
 					/**
 					 * Avoid showing possible duplicate and confusing information.

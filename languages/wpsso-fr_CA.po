@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 9.8.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-11-20 09:20-0800\n"
+"PO-Revision-Date: 2021-11-20 09:55-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3053,7 +3053,7 @@ msgstr "Manchette"
 #: lib/std/admin/edit.php:232
 msgctxt "option label"
 msgid "Full Text"
-msgstr "Texte intégral"
+msgstr "Texte complet"
 
 #: gettext/gettext-lib-pro.php:145 lib/pro/admin/edit.php:226
 #: lib/std/admin/edit.php:240
@@ -5973,12 +5973,12 @@ msgid "Google requires that Schema QAPage markup include one or more user submit
 msgstr "Google exige que le balisage de Schéma QAPage inclue une ou plusieurs réponses soumises et votées par les utilisateurs."
 
 #: lib/messages-info-meta.php:69
-msgid "The Schema QAPage document title is a summary of the question and the content text is the complete question."
-msgstr "Le titre du document Schéma QAPage est un résumé de la question et le texte du contenu est la question complète."
+msgid "The Schema QAPage document name / title is a summary of the question, and the full text is the complete question."
+msgstr "Le nom / titre du document Schéma QAPage est un résumé de la question, et le texte complet est la question complète."
 
 #: lib/messages-info-meta.php:83
-msgid "The Schema Question document title is a summary of the question, the description is a summary of the answer, and the content text is the complete answer."
-msgstr "Le titre du document Schéma Question est un résumé de la question, la description est un résumé de la réponse et le texte du contenu est la réponse complète."
+msgid "The Schema Question document name / title is a summary of the question, the description is a summary of the answer, and the full text is the complete answer."
+msgstr "Le nom / titre du document Schéma Question est un résumé de la question, la description est un résumé de la réponse, et le texte complet est la réponse complète."
 
 #: lib/messages-info-meta.php:93
 msgid "The Schema Question type can be a child page of a Schema FAQPage parent, or assigned to a Schema FAQPage taxonomy term."

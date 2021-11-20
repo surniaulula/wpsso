@@ -6382,14 +6382,14 @@ msgstr ""
 
 #: lib/messages-info-meta.php:69
 msgid ""
-"The Schema QAPage document title is a summary of the question and the "
-"content text is the complete question."
+"The Schema QAPage document name / title is a summary of the question, and "
+"the full text is the complete question."
 msgstr ""
 
 #: lib/messages-info-meta.php:83
 msgid ""
-"The Schema Question document title is a summary of the question, the "
-"description is a summary of the answer, and the content text is the complete "
+"The Schema Question document name / title is a summary of the question, the "
+"description is a summary of the answer, and the full text is the complete "
 "answer."
 msgstr ""
 
