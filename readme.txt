@@ -1,4 +1,4 @@
-=== WPSSO Core | Advanced Structured Data - Meta Tags, JSON-LD, oEmbed, REST API, Rich Snippets, Schema, XML ===
+=== WPSSO Core | Advanced Structured Data - Meta Tags, JSON-LD, oEmbed, Pin It, REST API, Rich Results, Schema, XML ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
