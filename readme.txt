@@ -243,13 +243,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.8.1-dev.1 (2021/11/19)**
+**Version 9.8.1-b.1 (2021/11/20)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Updated the Google product taxonomy IDs.
 	* Added a new "Flush Rewrite Rules" button in the SSO &gt; Tools and Actions page.
+	* Removed Open Graph, Pinterest, Twitter, and some Schema options in the Document SSO metabox for non-public content.
 * **Bugfixes**
 	* Fixed incorrect reenabling of the 'Schema Type' option when purposely disabled for a fixed content type.
 * **Developer Notes**
@@ -556,9 +557,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.8.1-dev.1 =
+= 9.8.1-b.1 =
 
-(2021/11/19) Updated the Google product taxonomy IDs. Added a "Flush Rewrite Rules" button. Fixed incorrect reenabling of the 'Schema Type' option when purposely disabled for a fixed content type.
+(2021/11/20) Updated the Google product taxonomy IDs. Added a "Flush Rewrite Rules" button. Fixed incorrect reenabling of the 'Schema Type' option when purposely disabled for a fixed content type.
 
 = 9.8.0 =
 
