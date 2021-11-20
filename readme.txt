@@ -243,7 +243,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.8.1-rc.1 (2021/11/20)**
+**Version 9.8.1 (2021/11/20)**
 
 * **New Features**
 	* None.
@@ -557,7 +557,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.8.1-rc.1 =
+= 9.8.1 =
 
 (2021/11/20) Updated the Google product taxonomy IDs. Added a "Flush Rewrite Rules" button. Fixed incorrect reenabling of the 'Schema Type' option when purposely disabled for a fixed content type.
 
