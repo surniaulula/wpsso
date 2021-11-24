@@ -10,16 +10,16 @@ var wasSavingContainer = false;
 wp.data.subscribe( function(){
 
 	var pluginId          = 'wpsso';
-	var cfgName           = 'sucomAdminPageL10n';
+	var adminPageL10n     = 'wpssoAdminPageL10n';
 	var isSavingContainer = isSavingMetaBoxes();
 
 	if ( wasSavingContainer ) {	// Last check was saving post meta.
 
 		if ( ! isSavingContainer ) {	// Saving the post meta is done.
 
-			sucomUpdateContainers( pluginId, cfgName );
+			sucomUpdateContainers( pluginId, adminPageL10n );
 
-			sucomBlockNotices( pluginId, cfgName );
+			sucomBlockNotices( pluginId, adminPageL10n );
 		}
 	}
 
@@ -28,8 +28,8 @@ wp.data.subscribe( function(){
 
 jQuery( function(){
 
-	var pluginId = 'wpsso';
-	var cfgName  = 'sucomAdminPageL10n';
+	var pluginId      = 'wpsso';
+	var adminPageL10n = 'wpssoAdminPageL10n';
 
-	sucomBlockNotices( pluginId, cfgName );
+	sucomBlockNotices( pluginId, adminPageL10n );
 });

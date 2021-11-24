@@ -811,7 +811,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				 * Rename 'plugin_sitemaps_for' options to 'wpsm_sitemaps_for' for the WPSSO WPSM add-on.
 				 */
 				if ( $prev_version > 0 && $prev_version <= 834 ) {
-				
+
 					foreach ( SucomUtil::get_opts_begin( 'plugin_sitemaps_for', $opts ) as $key => $val ) {
 
 						$new_key = preg_replace( '/^plugin_sitemaps_for/', 'wpsm_sitemaps_for', $key );

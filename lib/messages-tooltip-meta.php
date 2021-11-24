@@ -153,7 +153,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 						$text .= __( 'In this case, you should update the product information in the e-commerce plugin to update this value.', 'wpsso' ) . ' ';
 
 						if ( ! empty( $cf_frags[ 'about' ] ) ) {
-						
+
 							// translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product size'.
 							$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s</a>.', 'wpsso' ), $cf_frags[ 'about' ], $cf_frags[ 'desc' ] );
 						}

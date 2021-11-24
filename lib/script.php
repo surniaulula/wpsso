@@ -67,7 +67,7 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				/**
 				 * The 'wp-editor' dependency should not be enqueued together with the new widgets block editor.
 				 */
-				$deps = array( 'wp-data', 'wp-editor', 'wp-edit-post', 'sucom-metabox' );
+				$deps = array( 'wp-data', 'wp-editor', 'wp-edit-post', 'sucom-admin-page' );
 
 				/**
 				 * The 'sucom-block-editor-admin' script, with its 'wp-edit-post' dependency, must be loaded in the
@@ -97,15 +97,32 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			wp_register_script( 'jquery-qtip', WPSSO_URLPATH . 'js/ext/jquery-qtip.' . $this->file_ext,
 				$deps = array( 'jquery' ), $this->p->cf[ 'jquery-qtip' ][ 'version' ], $in_footer = true );
 
-			wp_register_script( 'sucom-tooltips', WPSSO_URLPATH . 'js/com/jquery-tooltips.' . $this->file_ext,
-				$deps = array( 'jquery', 'jquery-qtip' ), $this->version, $in_footer = true );
+			/**
+			 * Provides sucomInitAdminMedia().
+			 */
+			wp_register_script( 'sucom-admin-media', WPSSO_URLPATH . 'js/com/jquery-admin-media.' . $this->file_ext,
+				$deps = array( 'jquery', 'jquery-ui-core' ), $this->version, $in_footer = true );
 
+			wp_localize_script( 'sucom-admin-media', 'sucomAdminMediaL10n', $this->get_admin_media_script_data() );
+
+			/**
+			 * Provides sucomInitMetabox().
+			 */
 			wp_register_script( 'sucom-metabox', WPSSO_URLPATH . 'js/com/jquery-metabox.' . $this->file_ext,
 				$deps = array( 'jquery', 'jquery-ui-datepicker', 'wp-color-picker', 'sucom-admin-page' ),
 					$this->version, $in_footer = true );
 
-			wp_register_script( 'sucom-admin-media', WPSSO_URLPATH . 'js/com/jquery-admin-media.' . $this->file_ext,
-				$deps = array( 'jquery', 'jquery-ui-core' ), $this->version, $in_footer = true );
+			/**
+			 * Provides sucomInitToolTips().
+			 */
+			wp_register_script( 'sucom-tooltips', WPSSO_URLPATH . 'js/com/jquery-tooltips.' . $this->file_ext,
+				$deps = array( 'jquery', 'jquery-qtip' ), $this->version, $in_footer = true );
+
+			/**
+			 * Provides wpssoInitMetabox().
+			 */
+			wp_register_script( 'wpsso-metabox', WPSSO_URLPATH . 'js/jquery-metabox.' . $this->file_ext,
+				$deps = array( 'sucom-metabox' ), $this->version, $in_footer = true );
 
 			/**
 			 * Only load scripts where we need them.
@@ -158,8 +175,9 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 						$this->p->debug->log( 'enqueuing scripts for editing page' );
 					}
 
-					wp_enqueue_script( 'sucom-metabox' );
 					wp_enqueue_script( 'sucom-tooltips' );
+
+					wp_enqueue_script( 'wpsso-metabox' );
 
 					if ( function_exists( 'wp_enqueue_media' ) ) {
 
@@ -178,8 +196,6 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 						}
 
 						wp_enqueue_script( 'sucom-admin-media' );
-
-						wp_localize_script( 'sucom-admin-media', 'sucomAdminMediaL10n', $this->get_admin_media_script_data() );
 
 					} elseif ( $this->p->debug->enabled ) {
 
@@ -271,17 +287,15 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 			 *
 			 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
 			 */
-			?><script>
+			$admin_l10n = $this->p->cf[ 'plugin' ][ 'wpsso' ][ 'admin_l10n' ];
 
-				jQuery( window ).on( 'load', function(){
-
-					if ( 'function' === typeof sucomToolbarNotices ) {
-
-						sucomToolbarNotices( 'wpsso', 'sucomAdminPageL10n' );
-					}
-				});
-
-			</script><?php
+			echo '<script>';
+			echo 'jQuery( window ).on( \'load\', function(){';
+			echo 'if ( \'function\' === typeof sucomToolbarNotices ) {';
+			echo 'sucomToolbarNotices( \'wpsso\', \'' . $admin_l10n . '\' );';
+			echo '}';
+			echo '});';
+			echo '</script>' . "\n";
 		}
 
 		/**
@@ -333,6 +347,19 @@ EOF;
 			}
 		}
 
+		/**
+		 * sucomAdminMediaL10n array for the 'sucom-admin-media' script located in js/com/jquery-admin-media.js.
+		 */
+		public function get_admin_media_script_data() {
+
+			/**
+			 * var sucomAdminMediaL10n array.
+			 */
+			return array(
+				'_select_image' => __( 'Select Image', 'wpsso' ),
+			);
+		}
+
 		public function admin_register_page_scripts( $hook_name ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -340,10 +367,12 @@ EOF;
 				$this->p->debug->log( 'registering script sucom-admin-page' );
 			}
 
+			$admin_l10n = $this->p->cf[ 'plugin' ][ 'wpsso' ][ 'admin_l10n' ];
+
 			wp_register_script( 'sucom-admin-page', WPSSO_URLPATH . 'js/com/jquery-admin-page.' . $this->file_ext,
 				$deps = array( 'jquery' ), $this->version, $in_footer = true );
 
-			wp_localize_script( 'sucom-admin-page', 'sucomAdminPageL10n', $this->get_admin_page_script_data() );
+			wp_localize_script( 'sucom-admin-page', $admin_l10n, $this->get_admin_page_script_data() );
 		}
 
 		/**
@@ -356,9 +385,9 @@ EOF;
 
 			$script_handles = array( 'sucom-admin-page', 'jquery' );
 
-			static $enqueued = null;	// Default value for first execution.
+			static $is_enqueued = null;	// Default value for first execution.
 
-			if ( ! $enqueued ) {	// Re-check the $wp_scripts queue at priority PHP_INT_MAX.
+			if ( ! $is_enqueued ) {	// Re-check the $wp_scripts queue at priority PHP_INT_MAX.
 
 				add_action( 'admin_enqueue_scripts', array( $this, __FUNCTION__ ), PHP_INT_MAX );
 			}
@@ -367,7 +396,7 @@ EOF;
 
 			foreach ( $script_handles as $handle ) {
 
-				if ( ! $enqueued || ! isset( $wp_scripts->queue ) || ! in_array( $handle, $wp_scripts->queue ) ) {
+				if ( ! $is_enqueued || ! isset( $wp_scripts->queue ) || ! in_array( $handle, $wp_scripts->queue ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
@@ -382,13 +411,15 @@ EOF;
 				}
 			}
 
-			$enqueued = true;	// Signal that we've already run once.
+			$is_enqueued = true;	// Signal that we've already run once.
 		}
 
 		/**
-		 * sucomAdminPageL10n.
+		 * The config array for the 'sucom-admin-page' script located in js/com/jquery-admin-page.js.
 		 */
 		public function get_admin_page_script_data() {
+
+			$admin_l10n = $this->p->cf[ 'plugin' ][ 'wpsso' ][ 'admin_l10n' ];
 
 			$option_labels = apply_filters( 'wpsso_admin_page_script_data_option_labels', array(
 				'schema_type' => _x( 'Schema Type', 'option label', 'wpsso' ),
@@ -399,16 +430,25 @@ EOF;
 			) );
 
 			$tb_types_showing    = $this->p->notice->get_tb_types_showing();
-			$notice_text_id      = 'wpsso_' . uniqid();	// CSS id of hidden notice text container.
 			$no_notices_transl   = sprintf( __( 'No %s notifications.', 'wpsso' ), $this->p->cf[ 'menu' ][ 'title' ] );
 			$no_notices_html     = '<div class="ab-item ab-empty-item">' . $no_notices_transl . '</div>';
 			$copy_notices_transl = __( 'Copy notifications to clipboard.', 'wpsso' );
-			$copy_notices_html   = '<div class="wpsso-notice notice notice-alt notice-copy" style="display:block !important;">' .
+			$notice_text_uniqid  = 'wpsso_' . uniqid();	// CSS id of hidden notice text container.
+
+			/**
+			 * Add an 'inline' class to toolbar notices to prevent WordPress from moving the notice.
+			 *
+			 * See wordpress/wp-admin/js/common.js:1083
+			 */
+			$copy_notices_html   = '<div class="wpsso-notice notice notice-alt inline notice-copy" style="display:block !important;">' .
 				'<div class="notice-message">' .
-				'<a href="" onClick="return sucomCopyById( \'' . $notice_text_id . '\' );">' . $copy_notices_transl . '</a>' .
+				'<a href="" onClick="return sucomCopyById( \'' . $notice_text_uniqid . '\', \'' . $admin_l10n . '\' );">' . $copy_notices_transl . '</a>' .
 				'</div><!-- .notice-message -->' .
 				'</div><!-- .notice-copy -->';
 
+			/**
+			 * The config array.
+			 */
 			return array(
 				'_ajax_nonce'   => wp_create_nonce( WPSSO_NONCE_NAME ),
 				'_ajax_actions' => array(
@@ -418,29 +458,19 @@ EOF;
 				'_option_labels'         => $option_labels,
 				'_metabox_postbox_ids'   => $metabox_postbox_ids,	// Metabox postbox ids to update when the block editor saves.
 				'_tb_types_showing'      => $tb_types_showing,		// Maybe null, true, false, or array.
-				'_notice_text_id'        => $notice_text_id,		// CSS id of hidden notice text container.
+				'_notice_text_id'        => $notice_text_uniqid,	// CSS id of hidden notice text container.
 				'_no_notices_html'       => $no_notices_html,
 				'_copy_notices_html'     => $copy_notices_html,
 				'_copy_clipboard_transl' => __( 'Copied to clipboard.', 'wpsso' ),
 				'_linked_to_transl'      => __( 'Value linked to {0} option', 'wpsso' ),
-				'_min_len_transl'        => __( '{0} of {1} characters minimum', 'wpsso' ),
-				'_req_len_transl'        => __( '{0} of {1} characters required', 'wpsso' ),
-				'_max_len_transl'        => __( '{0} of {1} characters maximum', 'wpsso' ),
-				'_len_transl'            => __( '{0} characters', 'wpsso' ),
 				'_count_msgs_transl'     => array(
 					'error' => sprintf( __( 'There are {0} important error messages under the %s notification icon.', 'wpsso' ),
 						$this->p->cf[ 'notice' ][ 'title' ] ),
 				),
-			);
-		}
-
-		/**
-		 * sucomAdminMediaL10n.
-		 */
-		public function get_admin_media_script_data() {
-
-			return array(
-				'_select_image' => __( 'Select Image', 'wpsso' ),
+				'_min_len_transl' => __( '{0} of {1} characters minimum', 'wpsso' ),
+				'_req_len_transl' => __( '{0} of {1} characters required', 'wpsso' ),
+				'_max_len_transl' => __( '{0} of {1} characters maximum', 'wpsso' ),
+				'_len_transl'     => __( '{0} characters', 'wpsso' ),
 			);
 		}
 	}

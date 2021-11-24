@@ -1121,11 +1121,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		private function get_notice_html( $msg_type, array &$payload, $notice_alt = false ) {
 
 			/**
-			 * Add 'inline' in toolbar notices to prevent WordPress from moving the notice.
+			 * Add an 'inline' class in toolbar notices to prevent WordPress from moving the notice.
 			 *
 			 * See wordpress/wp-admin/js/common.js:1083
 			 */
-			$notice_type    = $notice_alt ? 'inline notice notice-alt' : 'notice';
+			$notice_type    = $notice_alt ? 'notice notice-alt inline' : 'notice';
 			$notice_display = 'block';
 
 			switch ( $msg_type ) {

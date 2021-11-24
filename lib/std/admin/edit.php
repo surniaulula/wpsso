@@ -1570,7 +1570,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					);
 
 				} else {
-	
+
 					$media_request = array( 'pid' );
 					$media_info    = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = 'og' );
 

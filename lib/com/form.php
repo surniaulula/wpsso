@@ -26,9 +26,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		private $p;	// Plugin class object.
 
-		private $plugin_id          = null;
+		private $plugin_id          = null;	// Lowercase acronyn for main plugin.
+		private $ext_id             = null;	// Lowercase acronyn for main plugin or add-on.
 		private $opts_name          = null;
-		private $menu_ext           = null;	// Lowercase acronyn for plugin or add-on.
+		private $admin_l10n         = 'sucomAdminPageL10n';
 		private $text_domain        = false;	// Text domain for plugin or add-on.
 		private $def_text_domain    = false;	// Default text domain (fallback).
 		private $show_hide_js_added = false;
@@ -37,7 +38,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public $options  = array();
 		public $defaults = array();
 
-		public function __construct( &$plugin, $opts_name, &$opts, &$def_opts, $menu_ext = '' ) {
+		public function __construct( &$plugin, $opts_name, &$opts, &$def_opts, $ext_id = '' ) {
 
 			$this->p =& $plugin;
 
@@ -52,10 +53,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$this->opts_name =& $opts_name;
 			$this->options   =& $opts;
 			$this->defaults  =& $def_opts;
-			$this->menu_ext  = empty( $menu_ext ) ? $this->plugin_id : $menu_ext;	// Lowercase acronyn for plugin or add-on.
+			$this->ext_id    = empty( $ext_id ) ? $this->plugin_id : $ext_id;	// Lowercase acronyn for plugin or add-on.
 
-			$this->set_text_domain( $this->menu_ext );
-
+			$this->set_admin_l10n();
+			$this->set_text_domain( $this->ext_id );
 			$this->set_default_text_domain( $this->plugin_id );
 		}
 
@@ -139,11 +140,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		}
 
 		/**
-		 * $menu_ext is the lowercase acronyn for the plugin or add-on.
+		 * $ext_id is the lowercase acronyn for the plugin or add-on.
 		 */
-		public function get_menu_ext() {
+		public function get_ext_id() {
 
-			return $this->menu_ext;
+			return $this->ext_id;
 		}
 
 		public function get_text_domain() {
@@ -156,57 +157,81 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $this->def_text_domain;
 		}
 
-		/**
-		 * $menu_ext is the lowercase acronyn for the plugin or add-on.
-		 */
-		public function set_text_domain( $menu_ext ) {
+		public function set_admin_l10n() {
 
-			$this->text_domain = $this->get_plugin_text_domain( $menu_ext );
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'form text domain set to ' . $this->text_domain );
-			}
+			$this->admin_l10n = $this->get_plugin_admin_l10n();
 		}
 
 		/**
-		 * $menu_ext is the lowercase acronyn for the plugin or add-on.
+		 * $ext_id is the lowercase acronyn for the plugin or add-on.
 		 */
-		public function set_default_text_domain( $menu_ext ) {
+		public function set_text_domain( $ext_id ) {
 
-			$this->def_text_domain = $this->get_plugin_text_domain( $menu_ext );
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'form default text domain set to ' . $this->def_text_domain );
-			}
+			$this->text_domain = $this->get_plugin_text_domain( $ext_id );
 		}
 
 		/**
-		 * $menu_ext is the lowercase acronyn for the plugin or add-on.
+		 * Get the text domain for the main plugin.
+		 *
+		 * $plugin_id is the lowercase acronyn for the main plugin.
 		 */
-		public function get_plugin_text_domain( $menu_ext ) {
+		public function set_default_text_domain( $plugin_id ) {
 
-			return isset( $this->p->cf[ 'plugin' ][ $menu_ext ][ 'text_domain' ] ) ?
-				$this->p->cf[ 'plugin' ][ $menu_ext ][ 'text_domain' ] : $menu_ext;
+			$this->def_text_domain = $this->get_plugin_text_domain( $plugin_id );
+		}
+
+		/**
+		 * $ext_id is the lowercase acronyn for the plugin or add-on.
+		 */
+		public function get_plugin_text_domain( $ext_id ) {
+
+			if ( isset( $this->p->cf[ 'plugin' ][ $ext_id ][ 'text_domain' ] ) ) {	// Return the main plugin or add-on text domain.
+			
+				return $this->p->cf[ 'plugin' ][ $ext_id ][ 'text_domain' ];
+			
+			} elseif ( isset( $this->p->cf[ 'plugin' ][ $this->plugin_id ][ 'text_domain' ] ) ) {	// Fallback to the main plugin text domain.
+
+				return $this->p->cf[ 'plugin' ][ $this->plugin_id ][ 'text_domain' ];
+			}
+
+			return $this->def_text_domain;	// Return false or the (previously set) main plugin text domain.
+		}
+
+		public function get_plugin_admin_l10n() {
+
+			if ( isset( $this->p->cf[ 'plugin' ][ $this->plugin_id ][ 'admin_l10n' ] ) ) {
+
+				return $this->p->cf[ 'plugin' ][ $this->plugin_id ][ 'admin_l10n' ];
+			}
+
+			return $this->admin_l10n;
 		}
 
 		public function get_value_transl( $value ) {
 
 			if ( $this->text_domain ) {	// Just in case.
 
-				$value_transl = _x( $value, 'option value', $this->text_domain );	// Lca or ext text domain.
+				/**
+				 * Use the text domain for the main plugin or add-on.
+				 */
+				$value_transl = _x( $value, 'option value', $this->text_domain );
 
 				if ( $value === $value_transl && $this->text_domain !== $this->def_text_domain ) {
 
-					$value_transl = _x( $value, 'option value', $this->def_text_domain );	// Lca text domain.
+					/**
+					 * Use the text domain for the main plugin.
+					 */
+					$value_transl = _x( $value, 'option value', $this->def_text_domain );
 				}
 
 				return $value_transl;
 
 			} elseif ( $this->def_text_domain ) {
 
-				return _x( $value, 'option value', $this->def_text_domain );	// Lca text domain.
+				/**
+				 * Use the text domain for the main plugin.
+				 */
+				return _x( $value, 'option value', $this->def_text_domain );
 			}
 
 			return $value;
@@ -1797,13 +1822,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 							if ( is_string( $event_args ) ) {
 
 								$event_json_var = preg_replace( '/:.$/', '', $event_args );
-								$event_json_var = SucomUtil::sanitize_hookname( $this->plugin_id . '_form_select_' .
-									$event_json_var . '_json' );
+								$event_json_var = $this->plugin_id . '_form_select_' . $event_json_var . '_json';
+								$event_json_var = SucomUtil::sanitize_hookname( $event_json_var );
 
 							} elseif ( ! empty( $event_args[ 'json_var' ] ) ) {
 
-								$event_json_var = SucomUtil::sanitize_hookname( $this->plugin_id . '_form_select_' .
-									$event_args[ 'json_var' ] . '_json' );
+								$event_json_var = $this->plugin_id . '_form_select_' . $event_args[ 'json_var' ] . '_json';
+								$event_json_var = SucomUtil::sanitize_hookname( $event_json_var );
 							}
 						}
 					}
@@ -2236,7 +2261,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		public static function get_no_input_clipboard( $value, $css_class = 'wide', $css_id = '' ) {
+		public function get_no_input_clipboard( $value, $css_class = 'wide', $css_id = '' ) {
 
 			if ( empty( $css_id ) ) {	// Make sure we have an ID string.
 
@@ -2258,7 +2283,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			if ( ! empty( $input_id ) ) {	// Just in case.
 
 				$html = '<div class="no_input_clipboard">';
-				$html .= '<div class="copy_button"><a href="" onClick="return sucomCopyById( \'text_' . $input_id . '\' );">';
+				$html .= '<div class="copy_button"><a href=""' .
+					' onClick="return sucomCopyById( \'text_' . $input_id . '\', \'' . $this->admin_l10n . '\' );">';
 				$html .= '<span class="dashicons dashicons-clipboard"></span>';
 				$html .= '</a></div><!-- .copy_button -->' . "\n";
 				$html .= '<div class="copy_text">' . $input_text . '</div><!-- .copy_text -->' . "\n";
@@ -2717,14 +2743,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			/**
 			 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
 			 */
-
 			$html = '<script>';
 			$html .= $doing_ajax ? '' : 'jQuery( document ).on( \'ready\', function(){';	// Make sure sucomTextLen() is available.
-			$html .= 'jQuery( \'#' . $input_id . '\' ).focus( function(){ sucomTextLen( \'' . $input_id . '\' ); } );';
-			$html .= 'jQuery( \'#' . $input_id . '\' ).keyup( function(){ sucomTextLen( \'' . $input_id . '\' ); } );';
-			$html .= 'jQuery( \'#' . $input_id . '\' ).blur( function(){ sucomTextLenReset( \'' . $input_id . '\' ); } );';
+			$html .= 'jQuery( \'#' . $input_id . '\' ).focus( function(){ sucomTextLen( \'' . $input_id . '\', \'' .  $this->admin_l10n . '\' ); });';
+			$html .= 'jQuery( \'#' . $input_id . '\' ).keyup( function(){ sucomTextLen( \'' . $input_id . '\', \'' .  $this->admin_l10n . '\' ); });';
+			$html .= 'jQuery( \'#' . $input_id . '\' ).blur( function(){ sucomTextLenReset( \'' . $input_id . '\' ); });';
 			$html .= $doing_ajax ? '' : '});';
-			$html .= '</script>';
+			$html .= '</script>' . "\n";
 
 			return $html;
 		}
@@ -2806,12 +2831,12 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			 */
 			$select_id_esc = esc_js( $select_id );
 
-			$html .= '<script>' . "\n";
-			$html .= 'jQuery( \'select#' . $select_id_esc . ':not( .json_loaded )\' ).on( \'mouseenter focus load_json\', function(){' . "\n";
-			$html .= '	if ( \'function\' === typeof sucomSelectLoadJson ) {' . "\n";
-			$html .= '		sucomSelectLoadJson( \'select#' . $select_id_esc . '\', \'' . $event_json_var . '\' );' . "\n";
-			$html .= '	}' . "\n";
-			$html .= '});' . "\n";
+			$html .= '<script>';
+			$html .= 'jQuery( \'select#' . $select_id_esc . ':not( .json_loaded )\' ).on( \'mouseenter focus load_json\', function(){';
+			$html .= 'if ( \'function\' === typeof sucomSelectLoadJson ) {';
+			$html .= 'sucomSelectLoadJson( \'select#' . $select_id_esc . '\', \'' . $event_json_var . '\' );';
+			$html .= '}';
+			$html .= '});';
 			$html .= '</script>' . "\n";
 
 			return $html;

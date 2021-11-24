@@ -393,11 +393,11 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 
 			$table_rows[] = '' . 
 				$form->get_th_html( _x( 'Canonical URL', 'option label', 'wpsso' ), $css_class = 'medium nowrap' ) . 
-				'<td>' . SucomForm::get_no_input_clipboard( $canonical_url ) . '</td>';
+				'<td>' . $form->get_no_input_clipboard( $canonical_url ) . '</td>';
 
 			$table_rows[] = '' .
 				$form->get_th_html( _x( 'Shortlink URL', 'option label', 'wpsso' ), $css_class = 'medium nowrap' ) . 
-				'<td>' . SucomForm::get_no_input_clipboard( $shortlink_url ) . '</td>';
+				'<td>' . $form->get_no_input_clipboard( $shortlink_url ) . '</td>';
 
 			$table_rows[ 'subsection_og_example' ] = '<td colspan="2" class="subsection"><h4>' . 
 				_x( 'Facebook / Open Graph Example', 'option label', 'wpsso' ) . '</h4></td>';
@@ -449,11 +449,11 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 
 			$table_rows[] = '' .
 				$form->get_th_html( _x( 'oEmbed JSON URL', 'option label', 'wpsso' ), $css_class = 'medium' ) . 
-				'<td>' . SucomForm::get_no_input_clipboard( $json_url ) . '</td>';
+				'<td>' . $form->get_no_input_clipboard( $json_url ) . '</td>';
 
 			$table_rows[] = '' .
 				$form->get_th_html( _x( 'oEmbed XML URL', 'option label', 'wpsso' ), $css_class = 'medium' ) . 
-				'<td>' . SucomForm::get_no_input_clipboard( $xml_url ) . '</td>';
+				'<td>' . $form->get_no_input_clipboard( $xml_url ) . '</td>';
 
 			$table_rows[ 'subsection_oembed_data' ] = '<td colspan="2" class="subsection"><h4>' . 
 				_x( 'oEmbed Data', 'option label', 'wpsso' ) . '</h4></td>';
@@ -612,7 +612,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$validators = $this->p->util->get_validators( $mod );
+			$validators = $this->p->util->get_validators( $mod, $form );
 
 			foreach ( $validators as $key => $el ) {
 
@@ -621,14 +621,9 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					continue;
 				}
 
-				/**
-				 * Example extra message string: SucomForm::get_no_input_clipboard( $canonical_url )
-				 */
-				$extra_msg = isset( $el[ 'extra_msg' ] ) ? $el[ 'extra_msg' ] : '';
-
+				$extra_msg    = isset( $el[ 'extra_msg' ] ) ? $el[ 'extra_msg' ] : '';
 				$button_label = sprintf( _x( 'Validate %s', 'submit button', 'wpsso' ), $el[ 'type' ] );
-
-				$is_disabled = empty( $el[ 'url' ] ) ? true : false;
+				$is_disabled  = empty( $el[ 'url' ] ) ? true : false;
 
 				$table_rows[ 'validate_' . $key ] = '' .
 					$form->get_th_html( $el[ 'title' ], $css_class = 'medium' ) .

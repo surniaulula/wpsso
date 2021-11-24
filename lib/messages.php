@@ -875,7 +875,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			$is_public = get_option( 'blog_public' );
 
 			if ( ! $is_public ) {
-			
+
 				$html .= '<p class="status-msg">' . __( 'WordPress is set to discourage search engines from indexing this site.', 'wpsso' ) . '</p>';
 			}
 

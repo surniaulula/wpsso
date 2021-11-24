@@ -2680,7 +2680,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$cache_index = is_array( $mixed ) ? $mixed[ 'name' ] . '_' . $mixed[ 'id' ] : $mixed;
 
 			if ( $read_cache ) {
-			
+
 				if ( isset( self::$cache_locale[ $cache_index ] ) ) {
 
 					return self::$cache_locale[ $cache_index ];
@@ -3039,12 +3039,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$checkbox = self::preg_grep_keys( '/^is_checkbox_/', $opts, $invert = false, $replace = '' );
 
 				foreach ( $checkbox as $key => $val ) {
-	
+
 					if ( ! array_key_exists( $key, $opts ) ) {
-	
+
 						$opts[ $key ] = 0; // Add missing checkbox as empty.
 					}
-	
+
 					unset ( $opts[ 'is_checkbox_' . $key] );
 				}
 			}

@@ -111,7 +111,7 @@ if ( ! class_exists( 'SucomAddOn' ) ) {
 				foreach ( $missing_reqs as $key => $req_info ) {
 
 					if ( ! empty( $req_info[ 'notice' ] ) ) {
-	
+
 						echo '<div class="notice notice-error error"><p>';
 						echo $req_info[ 'notice' ];
 						echo '</p></div>';
@@ -165,7 +165,7 @@ if ( ! class_exists( 'SucomAddOn' ) ) {
 				} elseif ( ! empty( $req_info[ 'version_global' ] ) && isset( $GLOBALS[ $req_info[ 'version_global' ] ] ) ) {
 
 					$req_info[ 'version' ] = $GLOBALS[ $req_info[ 'version_global' ] ];
-				
+
 				} elseif ( ! empty( $req_info[ 'plugin_class' ] ) && ! class_exists( $req_info[ 'plugin_class' ] ) ) {
 
 					$req_info[ 'notice' ] = $this->get_requires_plugin_notice( $info, $req_info );
@@ -205,7 +205,7 @@ if ( ! class_exists( 'SucomAddOn' ) ) {
 		protected function get_requires_plugin_notice( array $info, array $req_info ) {
 
 			$this->init_textdomain();	// If not already loaded, load the textdomain now.
-			
+
 			$text_domain = $info[ 'text_domain' ];
 			$addon_name  = _x( $info[ 'name' ], 'plugin name', $text_domain );
 			$req_name    = _x( $req_info[ 'name' ], 'plugin name', $text_domain );

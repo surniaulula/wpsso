@@ -3424,15 +3424,18 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return trim( $text );
 		}
 
-		public function get_validators( array $mod, $use_clipboard = true ) {
+		public function get_validators( array $mod, $form = null ) {
 
 			/**
-			 * We do not want to validate settings pages in the back-end, so only provide validators for known objects
-			 * (post, term, and user). If we're on the front-end, then allow validating any current webpage URL.
+			 * We do not want to validate settings pages in the back-end, so only provide validators for known modules
+			 * (post, term, and user). If we're on the front-end, validating the current webpage URL is fine.
 			 */
-			if ( empty( $mod[ 'obj' ] ) && is_admin() ) {
+			if ( is_admin() ) {
 
-				return array();
+				if ( empty( $mod[ 'obj' ] ) ) {
+
+					return array();
+				}
 			}
 
 			$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = true );
@@ -3448,7 +3451,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			$have_amp          = $mod[ 'is_post' ] && $mod[ 'id' ] && function_exists( 'amp_get_permalink' ) ? true : false;
-			$have_clipboard    = $use_clipboard && method_exists( 'SucomForm', 'get_no_input_clipboard' ) ? true : false;
 			$have_schema       = $this->p->avail[ 'p' ][ 'schema' ] ? true : false;
 			$amp_url_enc       = $have_amp ? urlencode( amp_get_permalink( $mod[ 'id' ] ) ) : '';
 			$canonical_url_enc = urlencode( $canonical_url );
@@ -3494,12 +3496,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					'type'  => _x( 'Schema Markup', 'validator type', 'wpsso' ) . ( $have_schema ? '' : ' *' ),
 					'url'   => $have_schema ? 'https://validator.schema.org/#url=' . $canonical_url_enc : '',
 				),
-				'twitter' => $have_clipboard ? array(
+				'twitter' => array(
 					'title'     => _x( 'Twitter Card Validator', 'option label', 'wpsso' ),
 					'type'      => _x( 'Twitter Card', 'validator type', 'wpsso' ),
-					'url'       => 'https://cards-dev.twitter.com/validator',
-					'extra_msg' => SucomForm::get_no_input_clipboard( $canonical_url ),
-				) : array(),
+					'url'       => is_object( $form ) ? 'https://cards-dev.twitter.com/validator' : '',
+					'extra_msg' => is_object( $form ) ? $form->get_no_input_clipboard( $canonical_url ) : '',
+				),
 				'w3c' => array(
 					'title' => _x( 'W3C Markup Validator', 'option label', 'wpsso' ),
 					'type'  => _x( 'HTML Markup', 'validator type', 'wpsso' ),

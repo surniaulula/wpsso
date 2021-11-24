@@ -185,7 +185,7 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 
 			return apply_filters( 'wpsso_robots_is_noindex', $is_noindex, $mod );
 		}
-		
+
 		public function is_disabled() {
 
 			return $this->is_enabled() ? false : true;

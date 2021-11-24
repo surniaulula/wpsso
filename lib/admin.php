@@ -563,24 +563,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 *
 		 * $menu_ext is the lowercase acronyn for the plugin or add-on.
 		 */
-		protected function set_form_object( $menu_ext ) {	// $menu_ext required for text_domain.
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-
-				$this->p->debug->log( 'setting form object for ' . $menu_ext );
-			}
-
-			$def_opts = $this->p->opt->get_defaults();
-
-			$this->form = new SucomForm( $this->p, WPSSO_OPTIONS_NAME, $this->p->options, $def_opts, $menu_ext );
-		}
-
-		/**
-		 * $menu_ext is the lowercase acronyn for the plugin or add-on.
-		 */
-		public function &get_form_object( $menu_ext ) {	// $menu_ext required for text_domain.
+		public function &get_form_object( $menu_ext ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -596,17 +579,31 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$this->set_form_object( $menu_ext );
 
-			} elseif ( $this->form->get_menu_ext() !== $menu_ext ) {
+			} elseif ( $this->form->get_ext_id() !== $menu_ext ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'form object text domain does not match' );
+					$this->p->debug->log( 'form object does not match' );
 				}
 
 				$this->set_form_object( $menu_ext );
 			}
 
 			return $this->form;
+		}
+
+		protected function set_form_object( $menu_ext ) {	// $menu_ext required for text_domain.
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+
+				$this->p->debug->log( 'setting form object for ' . $menu_ext );
+			}
+
+			$def_opts = $this->p->opt->get_defaults();
+
+			$this->form = new SucomForm( $this->p, WPSSO_OPTIONS_NAME, $this->p->options, $def_opts, $menu_ext );
 		}
 
 		public function register_setting() {
@@ -1177,7 +1174,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$opts = array();
 
 			if ( isset( $_POST[ WPSSO_SITE_OPTIONS_NAME ] ) && is_array( $_POST[ WPSSO_SITE_OPTIONS_NAME ] ) ) {
-			
+
 				$opts = $_POST[ WPSSO_SITE_OPTIONS_NAME ];
 			}
 

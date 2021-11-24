@@ -2089,7 +2089,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 								if ( $primary_term_obj->term_id === $term_obj->term_id ) {
 
 									unset( $post_terms[ $num ] );
-							
+
 									$post_terms = array_merge( array( $primary_term_obj ), $post_terms );
 
 									break;	// No need to continue.

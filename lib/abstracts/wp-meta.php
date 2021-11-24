@@ -976,8 +976,12 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			if ( $doing_ajax ) {
 
-				$metabox_html .= '<!-- init metabox javascript for ajax call -->' . "\n";
-				$metabox_html .= '<script>sucomInitMetabox( \'' . $container_id . '\', true );</script>' . "\n";
+				/**
+				 * Provide a parent container_id value to initialize a single metabox (when loading a single
+				 * metabox via ajax, for example).
+				 */
+				$metabox_html .= '<!-- init metabox javascript for ajax call -->' . "\n" .
+					'<script>wpssoInitMetabox( \'' . $container_id . '\', true );</script>' . "\n";
 			}
 
 			return $metabox_html;

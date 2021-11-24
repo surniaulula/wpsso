@@ -3596,7 +3596,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$id_url = '';
 
 				if ( ! empty( $data_url ) ) {
-				
+
 					if ( is_string( $data_url ) ) {	// Just in case.
 
 						$id_url = $data_url;

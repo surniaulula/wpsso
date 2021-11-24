@@ -54,13 +54,13 @@ if ( ! class_exists( 'WpssoAdminHeadSuggest' ) ) {
 		}
 
 		private function suggest_addons_wp_sitemaps() {
-			
+
 			$notices_shown = 0;
 
 			if ( ! empty( $this->p->avail[ 'p_ext' ][ 'wpsm' ] ) ) {	// Already active.
-			
+
 				return $notices_shown;
-			
+
 			} elseif ( SucomUtilWP::sitemaps_disabled() ) {
 
 				return $notices_shown;
@@ -73,7 +73,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggest' ) ) {
 			$notice_key = 'suggest-wpssowpsm';
 
 			if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
-					
+
 				$action_links = array();	// Init a new action array for the notice message.
 
 				$action_links[] = $this->get_install_activate_addon_link( 'wpssowpsm' );
@@ -226,7 +226,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggest' ) ) {
 			$notices_shown = 0;
 
 			if ( ! empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ) {
-			
+
 				// translators: Please ignore - translation uses a different text domain.
 				$ecom_plugin_name = __( 'WooCommerce', 'woocommerce' );
 
