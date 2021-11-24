@@ -243,6 +243,27 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 9.9.0-dev.1 (2021/11/24)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Updates to rename the javascript sucomAdminPageL10n variable to wpssoAdminPageL10n:
+		* Added a new 'admin_l10n' element in the plugin config array.
+		* Added a new 'wpsso-metabox' script in 'js/jquery-metabox.js'.
+		* Added a new `SucomForm->set_admin_l10n()` method.
+		* Added a new `SucomForm->get_plugin_admin_l10n()` method.
+		* Updated the `wp_localize_script()` for 'sucom-admin-page' to use the new 'admin_l10n' config value.
+		* Updated `SucomForm::get_no_input_clipboard()` calls to `SucomForm->get_no_input_clipboard()`.
+		* Renamed the `SucomForm->get_menu_ext()` method to `SucomForm->get_ext_id()`.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 9.8.1 (2021/11/20)**
 
 * **New Features**
@@ -556,6 +577,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.0.
 
 == Upgrade Notice ==
+
+= 9.9.0-dev.1 =
+
+(2021/11/24) Updates to rename the javascript sucomAdminPageL10n variable to wpssoAdminPageL10n.
 
 = 9.8.1 =
 
