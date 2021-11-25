@@ -186,9 +186,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_plugin_text_domain( $ext_id ) {
 
 			if ( isset( $this->p->cf[ 'plugin' ][ $ext_id ][ 'text_domain' ] ) ) {	// Return the main plugin or add-on text domain.
-			
+
 				return $this->p->cf[ 'plugin' ][ $ext_id ][ 'text_domain' ];
-			
+
 			} elseif ( isset( $this->p->cf[ 'plugin' ][ $this->plugin_id ][ 'text_domain' ] ) ) {	// Fallback to the main plugin text domain.
 
 				return $this->p->cf[ 'plugin' ][ $this->plugin_id ][ 'text_domain' ];

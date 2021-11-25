@@ -571,7 +571,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				 */
 				parent::$head_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache = false );
 
-				parent::$head_info = $this->p->head->extract_head_info( $mod, parent::$head_tags );
+				parent::$head_info = $this->p->head->extract_head_info( parent::$head_tags, $mod );
 
 				/**
 				 * Check for missing open graph image and description values.
@@ -818,6 +818,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				$mod = $this->get_mod( $term_id );
 			}
 
+			/**
+			 * Clear the term meta.
+			 */
 			$col_meta_keys = parent::get_column_meta_keys();
 
 			foreach ( $col_meta_keys as $col_key => $meta_key ) {
@@ -825,6 +828,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				self::delete_term_meta( $term_id, $meta_key );
 			}
 
+			/**
+			 * Clear the plugin cache.
+			 */
 			$this->clear_mod_cache( $mod );
 		}
 

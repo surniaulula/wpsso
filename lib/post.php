@@ -753,7 +753,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 */
 				parent::$head_tags = $this->p->head->get_head_array( $post_id, $mod, $read_cache = false );
 
-				parent::$head_info = $this->p->head->extract_head_info( $mod, parent::$head_tags );
+				parent::$head_info = $this->p->head->extract_head_info( parent::$head_tags, $mod );
 
 				/**
 				 * Check for missing open graph image and description values.
@@ -1350,7 +1350,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 */
 			parent::$head_tags = $this->p->head->get_head_array( $post_id, $mod, $read_cache = false );
 
-			parent::$head_info = $this->p->head->extract_head_info( $mod, parent::$head_tags );
+			parent::$head_info = $this->p->head->extract_head_info( parent::$head_tags, $mod );
 
 			/**
 			 * Check for missing open graph image and description values.
@@ -1502,6 +1502,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$mod = $this->get_mod( $post_id );
 
+			/**
+			 * Clear the post meta.
+			 */
 			$col_meta_keys = parent::get_column_meta_keys();
 
 			foreach ( $col_meta_keys as $col_key => $meta_key ) {
@@ -1511,6 +1514,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			delete_post_meta( $post_id, '_wpsso_wpproductreview' );	// Re-created automatically.
 
+			/**
+			 * Clear the permalink, canonical / shortlink webpage cache.
+			 */
 			$permalink = get_permalink( $post_id );
 
 			$this->p->cache->clear( $permalink );
@@ -1529,6 +1535,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->cache->clear( $check_url );
 			}
 
+			/**
+			 * Clear the plugin cache.
+			 */
 			$this->clear_mod_cache( $mod );
 
 			/**

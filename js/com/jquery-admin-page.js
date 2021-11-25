@@ -1,51 +1,73 @@
 
-if ( 'function' !== typeof sucomUpdateContainers ) {
+/**
+ * Common library for admin pages.
+ *
+ * Version: 20211125
+ */
+if ( 'undefined' !== typeof wp.data ) {
 
-	function sucomUpdateContainers( pluginId, adminPageL10n ) {
+	var getCurrentPostId = wp.data.select( 'core/editor' ).getCurrentPostId;
+	var createNotice     = wp.data.dispatch( 'core/notices' ).createNotice;
+	var removeNotice     = wp.data.dispatch( 'core/notices' ).removeNotice;
+	var createElement    = wp.element.createElement;
+	var RawHTML          = wp.element.RawHTML;
+}
 
-		var cfg = window[ adminPageL10n ];
+/**
+ * Update block-editor metaboxes.
+ */
+function sucomBlockPostbox( pluginId, adminPageL10n ) {
 
-		if ( ! jQuery.isArray( cfg._metabox_postbox_ids ) ) {
-	
-			console.error( 'sucomUpdateContainers: missing config for _metabox_postbox_ids array' );
+	if ( 'undefined' === typeof wp.data ) return;	// Just in case.
 
-			return;
-		}
+	var cfg = window[ adminPageL10n ];
 
-		var post_id = getCurrentPostId();
+	if ( ! jQuery.isArray( cfg._metabox_postbox_ids ) ) {
 
-		for ( var postbox_key in cfg._metabox_postbox_ids ) {
+		console.error( 'sucomBlockPostbox: missing config for _metabox_postbox_ids array' );
 
-			var postbox_id = cfg._metabox_postbox_ids[ postbox_key ];
+		return;
 
-			if ( postbox_id ) {
+	} else if ( ! cfg._ajax_nonce ) {
 
-				var ajax_action_update_postbox = 'get_metabox_postbox_id_' + postbox_id + '_inside';
+		console.error( 'sucomBlockPostbox: missing config for _ajax_nonce value' );
+
+		return;
+	}
+
+	var post_id = getCurrentPostId();
+
+	for ( var postbox_key in cfg._metabox_postbox_ids ) {
+
+		var postbox_id = cfg._metabox_postbox_ids[ postbox_key ];
+
+		if ( postbox_id ) {
+
+			var ajax_action_update_postbox = 'get_metabox_postbox_id_' + postbox_id + '_inside';
+
+			/**
+			 * Just in case - sanitize the WP ajax action filter name.
+			 */
+			ajax_action_update_postbox = ajax_action_update_postbox.toLowerCase();
+			ajax_action_update_postbox = ajax_action_update_postbox.replace( /[:\/\-\. ]+/g, '_' );
+			ajax_action_update_postbox = ajax_action_update_postbox.replace( /[^a-z0-9_\-]/g, '' );
+
+			var ajaxData = {
+				action: ajax_action_update_postbox,
+				post_id: post_id,
+				_ajax_nonce: cfg._ajax_nonce,
+			}
+
+			jQuery.post( ajaxurl, ajaxData, function( html ) {
 
 				/**
-				 * Just in case - sanitize the WP ajax action filter name.
+				 * The returned HTML includes javascript to call the sucomInitMetabox() function.
 				 */
-				ajax_action_update_postbox = ajax_action_update_postbox.toLowerCase();
-				ajax_action_update_postbox = ajax_action_update_postbox.replace( /[:\/\-\. ]+/g, '_' );
-				ajax_action_update_postbox = ajax_action_update_postbox.replace( /[^a-z0-9_\-]/g, '' );
+				if ( html ) {
 
-				var ajaxData = {
-					action: ajax_action_update_postbox,
-					post_id: post_id,
-					_ajax_nonce: cfg._ajax_nonce,
+					jQuery( '#' + postbox_id + '.postbox div.inside' ).replaceWith( '<div class="inside">' + html + '</div>' );
 				}
-
-				jQuery.post( ajaxurl, ajaxData, function( html ) {
-
-					/**
-					 * The returned HTML includes javascript to call the sucomInitMetabox() function.
-					 */
-					if ( html ) {
-
-						jQuery( '#' + postbox_id + '.postbox div.inside' ).replaceWith( '<div class="inside">' + html + '</div>' );
-					}
-				} );
-			}
+			} );
 		}
 	}
 }
@@ -53,498 +75,473 @@ if ( 'function' !== typeof sucomUpdateContainers ) {
 /**
  * Create block-editor notices first, excluding any toolbar notice types, then update toolbar notices.
  */
-if ( 'function' !== typeof sucomBlockNotices ) {
+function sucomBlockNotices( pluginId, adminPageL10n ) {
 
-	function sucomBlockNotices( pluginId, adminPageL10n ) {
+	if ( 'undefined' === typeof wp.data ) return;	// Just in case.
 
-		var cfg = window[ adminPageL10n ];
+	var cfg = window[ adminPageL10n ];
 
-		if ( 'undefined' === typeof cfg._ajax_actions[ 'get_notices_json' ] ) {
+	if ( 'undefined' === typeof cfg._ajax_actions[ 'get_notices_json' ] ) {
 
-			console.error( 'sucomBlockNotices: missing config for _ajax_actions array \'get_notices_json\' element' );
+		console.error( 'sucomBlockNotices: missing config for _ajax_actions array \'get_notices_json\' element' );
 
-			return;
-		}
-
-		var ajaxData = {
-			action: cfg._ajax_actions[ 'get_notices_json' ],
-			context: 'block_editor',
-			_ajax_nonce: cfg._ajax_nonce,
-			_exclude_types: cfg._tb_types_showing,	// Exclude the toolbar notice types.
-		}
-
-		jQuery.getJSON( ajaxurl, ajaxData, function( data ) {
-
-			/**
-			 * Example data:
-			 *
-			 * Array (
-			 *	[err] => Array (
-			 *		[post-1086-notice-missing-og-image] => Array (
-			 *			[notice_key]   => post-1086-notice-missing-og-image
-			 *			[dismiss_time] =>
-			 *			[dismiss_diff] =>
-			 *			[msg_text]     => <p>Text.</p>
-			 *			[msg_spoken]   => Text.
-			 *			[msg_html]     => <div class="sucom-notice notice notice-alt inline notice-error" id="err-post-1086-notice-missing-og-image" style="display:block;"><div class="notice-label">SSO Notice</div><div class="notice-message">Text.</div></div>
-			 *		)
-			 *	)
-			 * )
-			 */
-			jQuery.each( data, function( noticeType ) {
-
-				jQuery.each( data[ noticeType ], function( noticeKey ) {
-
-					var noticeObj         = false;
-					var noticeStatus      = false;
-					var noticeHtml        = data[ noticeType ][ noticeKey ][ 'msg_html' ];
-					var noticeHtmlElement = createElement( RawHTML, {}, noticeHtml );
-					var noticeSpoken      = data[ noticeType ][ noticeKey ][ 'msg_spoken' ];
-					var noticeDismissable = data[ noticeType ][ noticeKey ][ 'dismiss_time' ] ? true : false;	// True, false, or seconds (0 or more).
-					var noticeHidden      = data[ noticeType ][ noticeKey ][ 'hidden' ] ? true : false;
-
-					if ( noticeType == 'err' ) {
-
-						noticeStatus = 'error';
-
-					} else if ( noticeType == 'warn' ) {
-
-						noticeStatus = 'warning';
-
-					} else if ( noticeType == 'inf' ) {
-
-						noticeStatus      = 'info';
-						noticeDismissable = true;	// Always make info messages dismissible.
-
-					} else if ( noticeType == 'upd' ) {
-
-						noticeStatus      = 'success';
-						noticeDismissable = true;	// Always make success messages dismissible.
-					}
-
-					if ( noticeStatus && ! noticeHidden ) {
-
-						var noticeOptions = {
-							id: noticeKey,
-							spokenMessage: noticeSpoken,
-							isDismissible: noticeDismissable,
-						};
-
-						removeNotice( noticeKey );
-
-						/**
-						 * The current version of the block editor casts the notice message as a string, so we
-						 * cannot give createNotice() an html message or RawHTML element. Until such time as the
-						 * block editor can handle an html notice message, we must give it the "spoken" notice
-						 * message string instead, which is a plain text string.
-						 *
-						 * noticeObj = createNotice( noticeStatus, noticeHtmlElement, noticeOptions );
-						 */
-						noticeObj = createNotice( noticeStatus, noticeSpoken, noticeOptions );
-
-						/**
-						 * Remove the notices class to fix notice-in-notice padding issues for RawHTML elements.
-						 *
-						 * jQuery( 'div.' + pluginId + '-notice' ).parents( 'div.components-notice' ).removeClass( 'components-notice' );
-						 */
-					}
-				} );
-			} );
-
-			sucomToolbarNotices( pluginId, adminPageL10n );
-		} );
+		return;
 	}
-}
 
-if ( 'function' !== typeof sucomToolbarNotices ) {
+	var ajaxData = {
+		action: cfg._ajax_actions[ 'get_notices_json' ],
+		context: 'block_editor',
+		_ajax_nonce: cfg._ajax_nonce,
+		_exclude_types: cfg._tb_types_showing,	// Exclude the toolbar notice types.
+	}
 
-	function sucomToolbarNotices( pluginId, adminPageL10n ) {
-
-		var cfg = window[ adminPageL10n ];
+	jQuery.getJSON( ajaxurl, ajaxData, function( data ) {
 
 		/**
-		 * Just in case - no use getting notices if there's nothing to get.
+		 * Example data:
+		 *
+		 * Array (
+		 *	[err] => Array (
+		 *		[post-1086-notice-missing-og-image] => Array (
+		 *			[notice_key]   => post-1086-notice-missing-og-image
+		 *			[dismiss_time] =>
+		 *			[dismiss_diff] =>
+		 *			[msg_text]     => <p>Text.</p>
+		 *			[msg_spoken]   => Text.
+		 *			[msg_html]     => <div class="sucom-notice notice notice-alt inline notice-error" id="err-post-1086-notice-missing-og-image" style="display:block;"><div class="notice-label">SSO Notice</div><div class="notice-message">Text.</div></div>
+		 *		)
+		 *	)
+		 * )
 		 */
-		if ( ! cfg._tb_types_showing ) return;
+		jQuery.each( data, function( noticeType ) {
 
-		var menuId    = '#wp-admin-bar-' + pluginId + '-toolbar-notices';
-		var subMenuId = '#wp-admin-bar-' + pluginId + '-toolbar-notices-container';
-		var counterId = '#' + pluginId + '-toolbar-notices-count';
+			jQuery.each( data[ noticeType ], function( noticeKey ) {
 
-		var ajaxData = {
-			action: cfg._ajax_actions[ 'get_notices_json' ],
-			context: 'toolbar_notices',
-			_ajax_nonce: cfg._ajax_nonce,
-			_notice_types: cfg._tb_types_showing,
-		}
+				var noticeObj         = false;
+				var noticeStatus      = false;
+				var noticeSpoken      = data[ noticeType ][ noticeKey ][ 'msg_spoken' ];
+				var noticeDismissable = data[ noticeType ][ noticeKey ][ 'dismiss_time' ] ? true : false;	// True, false, or seconds (0 or more).
+				var noticeHidden      = data[ noticeType ][ noticeKey ][ 'hidden' ] ? true : false;
 
-		jQuery.getJSON( ajaxurl, ajaxData, function( data ) {
+				if ( noticeType == 'err' ) {
 
-			var noticeHtml       = '';
-			var noticeText       = '';
-			var noticeTextId     = cfg._notice_text_id;
-			var noticeStatus     = '';
-			var noticeTotalCount = 0;
-			var noticeTypeCount  = {};
-			var noNoticesHtml    = cfg._no_notices_html;
-			var copyNoticesHtml  = cfg._copy_notices_html;
-			var countMsgsTransl  = cfg._count_msgs_transl;
-
-			jQuery.each( data, function( noticeType ) {
-
-				jQuery.each( data[ noticeType ], function( noticeKey ) {
-
-					if ( ! data[ noticeType ][ noticeKey ][ 'hidden' ] ) {
-
-						noticeHtml += data[ noticeType ][ noticeKey ][ 'msg_html' ];
-
-						noticeTypeCount[ noticeType ] = ++noticeTypeCount[ noticeType ] || 1;
-
-						noticeTotalCount++;
-					}
-
-					noticeText += "\n";
-					noticeText += '[' + noticeType + '] ';
-					noticeText += data[ noticeType ][ noticeKey ][ 'notice_label' ];
-					noticeText += ': ';
-					noticeText += sucomStripHtml( data[ noticeType ][ noticeKey ][ 'msg_text' ] );
-					noticeText += "\n";
-				} );
-			} );
-
-			/**
-			 * Cleanup any pre-existing notice classes.
-			 */
-			jQuery( 'body.wp-admin' ).removeClass( 'has-toolbar-notices' );
-			jQuery( menuId ).removeClass( 'has-toolbar-notices' );
-			jQuery( menuId ).removeClass( 'toolbar-notices-error' );
-			jQuery( menuId ).removeClass( 'toolbar-notices-warning' );
-			jQuery( menuId ).removeClass( 'toolbar-notices-info' );
-			jQuery( menuId ).removeClass( 'toolbar-notices-success' );
-
-			if ( noticeHtml ) {
-
-				noticeHtml = '<div style="display:none;" id="' + noticeTextId + '">' + noticeText + '</div>' + copyNoticesHtml + noticeHtml;
-
-				jQuery( subMenuId ).html( noticeHtml );
-
-				jQuery( menuId ).addClass( 'has-toolbar-notices' );
-
-				jQuery( 'body.wp-admin' ).addClass( 'has-toolbar-notices' );
-
-			} else {
-
-				jQuery( subMenuId ).html( noNoticesHtml );
-			}
-
-			jQuery( counterId ).html( noticeTotalCount );
-
-			if ( noticeTotalCount ) {
-
-				var noticeStatus = '';
-
-				if ( noticeTypeCount[ 'err' ] ) {
-
-					noticeCount  = noticeTypeCount[ 'err' ];
 					noticeStatus = 'error';
 
-				} else if ( noticeTypeCount[ 'warn' ] ) {
+				} else if ( noticeType == 'warn' ) {
 
-					noticeCount  = noticeTypeCount[ 'warn' ];
 					noticeStatus = 'warning';
 
-				} else if ( noticeTypeCount[ 'inf' ] ) {
+				} else if ( noticeType == 'inf' ) {
 
-					noticeCount  = noticeTypeCount[ 'inf' ];
-					noticeStatus = 'info';
+					noticeStatus      = 'info';
+					noticeDismissable = true;	// Always make info messages dismissible.
 
-				} else if ( noticeTypeCount[ 'upd' ] ) {
+				} else if ( noticeType == 'upd' ) {
 
-					noticeCount  = noticeTypeCount[ 'upd' ];
-					noticeStatus = 'success';
+					noticeStatus      = 'success';
+					noticeDismissable = true;	// Always make success messages dismissible.
 				}
 
-				jQuery( menuId ).addClass( 'toolbar-notices-' + noticeStatus );
+				if ( noticeStatus && ! noticeHidden ) {
 
-				/**
-				 * countMsgsTransl is an array with one or more noticeStatus keys and their translated message.
-				 *
-				 * Array(
-				 *	'error' => 'There are {0} important error messages under the notification icon.',
-				 * );
-				 */
-				if ( countMsgsTransl[ noticeStatus ] ) {
+					var noticeOptions = {
+						id: noticeKey,
+						spokenMessage: noticeSpoken,
+						isDismissible: noticeDismissable,
+					};
 
-					if ( 'function' === typeof createNotice ) {
+					removeNotice( noticeKey );
 
-						var noticeKey     = 'notice-count-msg-' + noticeStatus;
-						var noticeMessage = countMsgsTransl[ noticeStatus ].formatUnicorn( noticeCount );
+					/**
+					 * The current version of the block editor casts the notice message as a string, so we
+					 * cannot give createNotice() an html message or RawHTML element. Until such time as the
+					 * block editor can handle an html notice message, we must give it the "spoken" notice
+					 * message string instead, which is a plain text string.
+					 *
+					 * var noticeHtml        = data[ noticeType ][ noticeKey ][ 'msg_html' ];
+					 * var noticeHtmlElement = createElement( RawHTML, {}, noticeHtml );
 
-						var noticeOptions = {
-							id: noticeKey,
-							type: 'snackbar',
-							spokenMessage: noticeMessage,
-						};
+					 * noticeObj = createNotice( noticeStatus, noticeHtmlElement, noticeOptions );
+					 */
+					noticeObj = createNotice( noticeStatus, noticeSpoken, noticeOptions );
 
-						removeNotice( noticeKey );
-
-						noticeObj = createNotice( noticeStatus, noticeMessage, noticeOptions );
-					}
+					/**
+					 * Remove the notices class to fix notice-in-notice padding issues for RawHTML elements.
+					 *
+					 * jQuery( 'div.' + pluginId + '-notice' ).parents( 'div.components-notice' ).removeClass( 'components-notice' );
+					 */
 				}
-			}
+			} );
 		} );
-	}
+
+		sucomToolbarNotices( pluginId, adminPageL10n );
+	} );
 }
 
-if ( 'function' !== typeof sucomCopyById ) {
+function sucomToolbarNotices( pluginId, adminPageL10n ) {
 
-	function sucomCopyById( cssId, adminPageL10n ) {
+	var cfg = window[ adminPageL10n ];
 
-		var cfg = window[ adminPageL10n ];
+	/**
+	 * Just in case - no use getting notices if there's nothing to get.
+	 */
+	if ( ! cfg._tb_types_showing ) return;
 
-		if ( 'undefined' === typeof cfg ) {	// Just in case.
-	
-			cfg = {
-				'_copy_clipboard_transl': 'Copied to clipboard.',
-			}
+	var menuId    = '#wp-admin-bar-' + pluginId + '-toolbar-notices';
+	var subMenuId = '#wp-admin-bar-' + pluginId + '-toolbar-notices-container';
+	var counterId = '#' + pluginId + '-toolbar-notices-count';
+
+	var ajaxData = {
+		action: cfg._ajax_actions[ 'get_notices_json' ],
+		context: 'toolbar_notices',
+		_ajax_nonce: cfg._ajax_nonce,
+		_notice_types: cfg._tb_types_showing,
+	}
+
+	jQuery.getJSON( ajaxurl, ajaxData, function( data ) {
+
+		var noticeHtml       = '';
+		var noticeText       = '';
+		var noticeTextId     = cfg._notice_text_id;
+		var noticeStatus     = '';
+		var noticeTotalCount = 0;
+		var noticeTypeCount  = {};
+		var noNoticesHtml    = cfg._no_notices_html;
+		var copyNoticesHtml  = cfg._copy_notices_html;
+		var countMsgsTransl  = cfg._count_msgs_transl;
+
+		jQuery.each( data, function( noticeType ) {
+
+			jQuery.each( data[ noticeType ], function( noticeKey ) {
+
+				if ( ! data[ noticeType ][ noticeKey ][ 'hidden' ] ) {
+
+					noticeHtml += data[ noticeType ][ noticeKey ][ 'msg_html' ];
+
+					noticeTypeCount[ noticeType ] = ++noticeTypeCount[ noticeType ] || 1;
+
+					noticeTotalCount++;
+				}
+
+				noticeText += "\n";
+				noticeText += '[' + noticeType + '] ';
+				noticeText += data[ noticeType ][ noticeKey ][ 'notice_label' ];
+				noticeText += ': ';
+				noticeText += sucomStripHtml( data[ noticeType ][ noticeKey ][ 'msg_text' ] );
+				noticeText += "\n";
+			} );
+		} );
+
+		/**
+		 * Cleanup any pre-existing notice classes.
+		 */
+		jQuery( 'body.wp-admin' ).removeClass( 'has-toolbar-notices' );
+		jQuery( menuId ).removeClass( 'has-toolbar-notices' );
+		jQuery( menuId ).removeClass( 'toolbar-notices-error' );
+		jQuery( menuId ).removeClass( 'toolbar-notices-warning' );
+		jQuery( menuId ).removeClass( 'toolbar-notices-info' );
+		jQuery( menuId ).removeClass( 'toolbar-notices-success' );
+
+		if ( noticeHtml ) {
+
+			noticeHtml = '<div style="display:none;" id="' + noticeTextId + '">' + noticeText + '</div>' + copyNoticesHtml + noticeHtml;
+
+			jQuery( subMenuId ).html( noticeHtml );
+
+			jQuery( menuId ).addClass( 'has-toolbar-notices' );
+
+			jQuery( 'body.wp-admin' ).addClass( 'has-toolbar-notices' );
+
+		} else {
+
+			jQuery( subMenuId ).html( noNoticesHtml );
 		}
 
-		try {
+		jQuery( counterId ).html( noticeTotalCount );
 
-			var copyClipboardTransl = cfg._copy_clipboard_transl;
+		if ( noticeTotalCount ) {
 
-			var elem = document.getElementById( cssId );
+			var noticeStatus = '';
+
+			if ( noticeTypeCount[ 'err' ] ) {
+
+				noticeCount  = noticeTypeCount[ 'err' ];
+				noticeStatus = 'error';
+
+			} else if ( noticeTypeCount[ 'warn' ] ) {
+
+				noticeCount  = noticeTypeCount[ 'warn' ];
+				noticeStatus = 'warning';
+
+			} else if ( noticeTypeCount[ 'inf' ] ) {
+
+				noticeCount  = noticeTypeCount[ 'inf' ];
+				noticeStatus = 'info';
+
+			} else if ( noticeTypeCount[ 'upd' ] ) {
+
+				noticeCount  = noticeTypeCount[ 'upd' ];
+				noticeStatus = 'success';
+			}
+
+			jQuery( menuId ).addClass( 'toolbar-notices-' + noticeStatus );
 
 			/**
-			 * Check for input field value first, then container content.
+			 * countMsgsTransl is an array with one or more noticeStatus keys and their translated message.
+			 *
+			 * Array(
+			 *	'error' => 'There are {0} important error messages under the notification icon.',
+			 * );
 			 */
-			var elemVal = elem.value;
+			if ( countMsgsTransl[ noticeStatus ] ) {
 
-			if ( 'undefined' === elemVal ) {
+				if ( 'function' === typeof createNotice ) {
 
-				elemVal = elem.textContent;
+					var noticeKey     = 'notice-count-msg-' + noticeStatus;
+					var noticeMessage = countMsgsTransl[ noticeStatus ].formatUnicorn( noticeCount );
+
+					var noticeOptions = {
+						id: noticeKey,
+						type: 'snackbar',
+						spokenMessage: noticeMessage,
+					};
+
+					removeNotice( noticeKey );
+
+					noticeObj = createNotice( noticeStatus, noticeMessage, noticeOptions );
+				}
 			}
+		}
+	} );
+}
 
-			var target = document.createElement( 'textarea' );
+function sucomCopyById( cssId, adminPageL10n ) {
 
-			target.id             = 'copy_target_' + cssId;
-			target.style.position = 'absolute';
-			target.style.top      = '0';
-			target.style.left     = '-9999px';
+	var cfg = window[ adminPageL10n ];
 
-			document.body.appendChild( target );
+	if ( 'undefined' === typeof cfg ) {	// Just in case.
 
-			target.textContent = elemVal;
+		cfg = {
+			'_copy_clipboard_transl': 'Copied to clipboard.',
+		}
+	}
 
-			target.focus();
+	try {
 
-			target.setSelectionRange( 0, target.value.length );
+		var copyClipboardTransl = cfg._copy_clipboard_transl;
 
-			document.execCommand( 'copy' );
+		var elem = document.getElementById( cssId );
 
-			target.textContent = '';
+		/**
+		 * Check for input field value first, then container content.
+		 */
+		var elemVal = elem.value;
 
-			alert( copyClipboardTransl );
+		if ( 'undefined' === elemVal ) {
 
-		} catch ( err ) {
-
-			alert( err );
+			elemVal = elem.textContent;
 		}
 
-		return false;	// Prevent the webpage from reloading.
+		var target = document.createElement( 'textarea' );
+
+		target.id             = 'copy_target_' + cssId;
+		target.style.position = 'absolute';
+		target.style.top      = '0';
+		target.style.left     = '-9999px';
+
+		document.body.appendChild( target );
+
+		target.textContent = elemVal;
+
+		target.focus();
+
+		target.setSelectionRange( 0, target.value.length );
+
+		document.execCommand( 'copy' );
+
+		target.textContent = '';
+
+		alert( copyClipboardTransl );
+
+	} catch ( err ) {
+
+		alert( err );
 	}
+
+	return false;	// Prevent the webpage from reloading.
 }
 
 /**
  * Convert some HTML tags to spaces first, strip everything else, then convert multiple spaces to a single space.
  */
-if ( 'function' !== typeof sucomStripHtml ) {
+function sucomStripHtml( html ) {
 
-	function sucomStripHtml( html ) {
+	html = html.replace( /<(p|pre|ul|li|br\/?)( [^<>]*>|>)/gi, ' ' );
 
-		html = html.replace( /<(p|pre|ul|li|br\/?)( [^<>]*>|>)/gi, ' ' );
+	html = html.replace( /<[^<>]*>/gi, '' );
 
-		html = html.replace( /<[^<>]*>/gi, '' );
+	html = html.replace( /\s\s+/gi, ' ' );
 
-		html = html.replace( /\s\s+/gi, ' ' );
-
-		return html;
-	}
+	return html;
 }
 
+function sucomEscAttr ( string ) {
 
-if ( 'function' !== typeof sucomEscAttr ) {
+	var entity_map = {
+		'&': '&amp;',
+		'<': '&lt;',
+		'>': '&gt;',
+		'"': '&quot;',
+		"'": '&apos;',
+	};
 
-	function sucomEscAttr ( string ) {
+	return String( string ).replace( /[&<>"']/g, function ( s ) {
 
-		var entity_map = {
-			'&': '&amp;',
-			'<': '&lt;',
-			'>': '&gt;',
-			'"': '&quot;',
-			"'": '&apos;',
-		};
-
-		return String( string ).replace( /[&<>"']/g, function ( s ) {
-
-			return entity_map[ s ];
-		} );
-	}
+		return entity_map[ s ];
+	} );
 }
 
 /**
  * Hooked to .focus() and .keyup() by SucomForm->get_textlen_script().
  */
-if ( 'function' !== typeof sucomTextLen ) {
+function sucomTextLen( containerId, adminPageL10n ) {
 
-	function sucomTextLen( containerId, adminPageL10n ) {
+	var cfg = window[ adminPageL10n ];
 
-		var cfg = window[ adminPageL10n ];
-	
-		if ( 'undefined' === typeof cfg ) {	// Just in case.
-	
-			cfg = {
-				'_min_len_transl': '{0} of {1} characters minimum',
-				'_req_len_transl': '{0} of {1} characters required',
-				'_max_len_transl': '{0} of {1} characters maximum',
-				'_len_transl'    : '{0} characters',
-			}
+	if ( 'undefined' === typeof cfg ) {	// Just in case.
+
+		cfg = {
+			'_min_len_transl': '{0} of {1} characters minimum',
+			'_req_len_transl': '{0} of {1} characters required',
+			'_max_len_transl': '{0} of {1} characters maximum',
+			'_len_transl'    : '{0} characters',
 		}
-	
-		var text_val = jQuery.trim( sucomTextLenClean( jQuery( '#' + containerId ).val() ) );
-		var text_len = text_val.length;
-		var min_len  = Number( jQuery( '#' + containerId ).attr( 'minLength' ) );
-		var warn_len = Number( jQuery( '#' + containerId ).attr( 'warnLength' ) );
-		var max_len  = Number( jQuery( '#' + containerId ).attr( 'maxLength' ) );
-	
-		/**
-		 * If we have a max length, make sure it's larger than the minimum.
-		 */
-		if ( min_len && max_len && max_len < min_len ) {
-	
-			max_len = min_len;
-		}
-	
-		var len_span_html = sucomTextLenSpan( text_len, max_len, warn_len, min_len );
-		var limit_html    = max_len;
-	
-		if ( min_len ) {
-	
-			if ( ! max_len ) {
-	
-				limit_html = min_len;
-	
-				msg_transl = cfg._min_len_transl;
-	
-			} else {
-	
-				if ( max_len > min_len ) {
-	
-					limit_html = String( min_len ) + '-' + String( max_len );
-				}
-	
-				msg_transl = cfg._req_len_transl;
-			}
-	
-		} else if ( max_len ) {
-	
-			msg_transl = cfg._max_len_transl;
-	
-		} else {
-	
-			msg_transl = cfg._len_transl;
-		}
-	
-		/**
-		 * {0} = len_span_html
-		 * {1} = limit_html
-		 */
-		jQuery( '#' + containerId + '-text-length-message' ).html( '<div class="text_len_msg">' + msg_transl.formatUnicorn( len_span_html, limit_html ) + '</div>' )
 	}
+
+	var text_val = jQuery.trim( sucomTextLenClean( jQuery( '#' + containerId ).val() ) );
+	var text_len = text_val.length;
+	var min_len  = Number( jQuery( '#' + containerId ).attr( 'minLength' ) );
+	var warn_len = Number( jQuery( '#' + containerId ).attr( 'warnLength' ) );
+	var max_len  = Number( jQuery( '#' + containerId ).attr( 'maxLength' ) );
+
+	/**
+	 * If we have a max length, make sure it's larger than the minimum.
+	 */
+	if ( min_len && max_len && max_len < min_len ) {
+
+		max_len = min_len;
+	}
+
+	var len_span_html = sucomTextLenSpan( text_len, max_len, warn_len, min_len );
+	var limit_html    = max_len;
+
+	if ( min_len ) {
+
+		if ( ! max_len ) {
+
+			limit_html = min_len;
+
+			msg_transl = cfg._min_len_transl;
+
+		} else {
+
+			if ( max_len > min_len ) {
+
+				limit_html = String( min_len ) + '-' + String( max_len );
+			}
+
+			msg_transl = cfg._req_len_transl;
+		}
+
+	} else if ( max_len ) {
+
+		msg_transl = cfg._max_len_transl;
+
+	} else {
+
+		msg_transl = cfg._len_transl;
+	}
+
+	/**
+	 * {0} = len_span_html
+	 * {1} = limit_html
+	 */
+	jQuery( '#' + containerId + '-text-length-message' ).html( '<div class="text_len_msg">' + msg_transl.formatUnicorn( len_span_html, limit_html ) + '</div>' )
 }
-	
+
 /**
  * Hooked to .blur() by SucomForm->get_textlen_script().
  */
-if ( 'function' !== typeof sucomTextLenReset ) {
+function sucomTextLenReset( containerId ) {
 
-	function sucomTextLenReset( containerId ) {
-	
-		jQuery( '#' + containerId + '-text-length-message' ).html( '' )
-	}
+	jQuery( '#' + containerId + '-text-length-message' ).html( '' )
 }
-	
-if ( 'function' !== typeof sucomTextLenSpan ) {
 
-	function sucomTextLenSpan( text_len, max_len, warn_len, min_len ) {
-	
-		if ( ! min_len ) {
-	
-			min_len = 0;
-		}
-	
-		if ( ! max_len ) {
-	
-			max_len = 0;
-		}
-	
-		if ( ! warn_len ) {
-	
-			if ( max_len ) {
-	
-				warn_len = max_len - 20;
-	
-			} else {
-	
-				warn_len = 0;
-			}
-		}
-	
-		var css_class = '';
-	
-		if ( min_len && text_len < min_len ) {
-	
-			css_class = 'bad';
-	
-		} else if ( min_len && text_len >= min_len ) {
-	
-			css_class = 'good';
-	
-		} else if ( max_len && text_len >= ( max_len - 5 ) ) {
-	
-			css_class = 'bad';
-	
-		} else if ( warn_len && text_len >= warn_len ) {
-	
-			css_class = 'warn';
-	
+function sucomTextLenSpan( text_len, max_len, warn_len, min_len ) {
+
+	if ( ! min_len ) {
+
+		min_len = 0;
+	}
+
+	if ( ! max_len ) {
+
+		max_len = 0;
+	}
+
+	if ( ! warn_len ) {
+
+		if ( max_len ) {
+
+			warn_len = max_len - 20;
+
 		} else {
-	
-			css_class = 'good';
-		}
-	
-		return '<span class="' + css_class + '">' + text_len + '</span>';
-	}
-}
-	
-if ( 'function' !== typeof sucomTextLenClean ) {
 
-	function sucomTextLenClean( str ) {
-	
-		if ( 'undefined' === typeof str || ! str.length ) {
-	
-			return '';
+			warn_len = 0;
 		}
-	
-		try {
-	
-			str = str.replace( /<\/?[^>]+>/g, '' );
-			str = str.replace( /\[(.+?)\](.+?\[\/\\1\])?/, '' )
-	
-		} catch( err ) {}
-	
-		return str;
 	}
+
+	var css_class = '';
+
+	if ( min_len && text_len < min_len ) {
+
+		css_class = 'bad';
+
+	} else if ( min_len && text_len >= min_len ) {
+
+		css_class = 'good';
+
+	} else if ( max_len && text_len >= ( max_len - 5 ) ) {
+
+		css_class = 'bad';
+
+	} else if ( warn_len && text_len >= warn_len ) {
+
+		css_class = 'warn';
+
+	} else {
+
+		css_class = 'good';
+	}
+
+	return '<span class="' + css_class + '">' + text_len + '</span>';
+}
+
+function sucomTextLenClean( str ) {
+
+	if ( 'undefined' === typeof str || ! str.length ) {
+
+		return '';
+	}
+
+	try {
+
+		str = str.replace( /<\/?[^>]+>/g, '' );
+		str = str.replace( /\[(.+?)\](.+?\[\/\\1\])?/, '' )
+
+	} catch( err ) {}
+
+	return str;
 }
 
 /**
@@ -552,26 +549,23 @@ if ( 'function' !== typeof sucomTextLenClean ) {
  *
  * Replace {0}, {1}, etc. in strings.
  */
-if ( 'function' !== typeof String.prototype.formatUnicorn ) {
+String.prototype.formatUnicorn = function() {
 
-	String.prototype.formatUnicorn = function() {
+	"use strict";
 
-		"use strict";
+	var str = this.toString();
 
-		var str = this.toString();
+	if ( arguments.length ) {
 
-		if ( arguments.length ) {
+		var t = typeof arguments[ 0 ];
+		var key;
+		var args = ( "string" === t || "number" === t ) ? Array.prototype.slice.call( arguments ) : arguments[ 0 ];
 
-			var t = typeof arguments[ 0 ];
-			var key;
-			var args = ( "string" === t || "number" === t ) ? Array.prototype.slice.call( arguments ) : arguments[ 0 ];
+		for ( key in args ) {
 
-			for ( key in args ) {
-
-				str = str.replace( new RegExp( "\\{" + key + "\\}", "gi" ), args[ key ] );
-			}
+			str = str.replace( new RegExp( "\\{" + key + "\\}", "gi" ), args[ key ] );
 		}
-
-		return str;
 	}
+
+	return str;
 }

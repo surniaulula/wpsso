@@ -15,7 +15,7 @@
  * Requires At Least: 5.2
  * Tested Up To: 5.8.2
  * WC Tested Up To: 5.9.0
- * Version: 9.9.0-dev.1
+ * Version: 9.9.0-dev.2
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -80,7 +80,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $id           = 'wpsso';	// Plugin ID (since WPSSO Core v8.14.0).
 		public $m            = array();	// Loaded module objects from core plugin.
 		public $m_ext        = array();	// Loaded module objects from extensions / add-ons.
-		public $cf           = array();	// Config array defined in construct method.
+		public $cf           = array();	// Config array from WpssoConfig::get_config().
 		public $avail        = array();	// Assoc array for third-party plugin checks.
 		public $options      = array();	// Individual blog/site options.
 		public $site_options = array();	// Multisite options.

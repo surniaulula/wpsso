@@ -180,11 +180,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		 * WpssoPost->ajax_get_metabox_document_meta(), WpssoTerm->load_meta_page(), WpssoUser->load_meta_page(),
 		 * and WpssoUtilCache->refresh_mod_head_meta().
 		 */
-		public function extract_head_info( $mod = false, array $head_mt ) {
+		public function extract_head_info( array $head_tags, $mod = false ) {
 
 			$head_info = array();
 
-			foreach ( $head_mt as $mt ) {
+			foreach ( $head_tags as $mt ) {
 
 				if ( ! isset( $mt[ 2 ] ) || ! isset( $mt[ 3 ] ) ) {
 
@@ -235,7 +235,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 				$is_first = false;
 
-				foreach ( $head_mt as $mt ) {
+				foreach ( $head_tags as $mt ) {
 
 					if ( ! isset( $mt[ 2 ] ) || ! isset( $mt[ 3 ] ) ) {
 
@@ -302,7 +302,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 				foreach ( $sortable_cols as $col_key => $col_info ) {
 
-					if ( empty( $col_info[ 'meta_key' ] ) || strpos( $col_info[ 'meta_key' ], '_wpsso_head_info_' ) !== 0 ) {
+					if ( empty( $col_info[ 'meta_key' ] ) ) {
+					
+						continue;
+
+					} elseif ( 0 !== strpos( $col_info[ 'meta_key' ], '_wpsso_head_info_' ) ) {
 
 						continue;
 					}

@@ -1,29 +1,24 @@
 
-var getCurrentPostId   = wp.data.select( 'core/editor' ).getCurrentPostId;
-var isSavingMetaBoxes  = wp.data.select( 'core/edit-post' ).isSavingMetaBoxes;
-var createNotice       = wp.data.dispatch( 'core/notices' ).createNotice;
-var removeNotice       = wp.data.dispatch( 'core/notices' ).removeNotice;
-var createElement      = wp.element.createElement;
-var RawHTML            = wp.element.RawHTML;
-var wasSavingContainer = false;
+var isSavingMetaBoxes = wp.data.select( 'core/edit-post' ).isSavingMetaBoxes;
+var wpssoWasSaving    = false;
 
 wp.data.subscribe( function(){
 
-	var pluginId          = 'wpsso';
-	var adminPageL10n     = 'wpssoAdminPageL10n';
-	var isSavingContainer = isSavingMetaBoxes();
+	var pluginId      = 'wpsso';
+	var adminPageL10n = 'wpssoAdminPageL10n';
+	var wpssoIsSaving = isSavingMetaBoxes();
 
-	if ( wasSavingContainer ) {	// Last check was saving post meta.
+	if ( wpssoWasSaving ) {	// Last check was saving post meta.
 
-		if ( ! isSavingContainer ) {	// Saving the post meta is done.
+		if ( ! wpssoIsSaving ) {	// Saving the post meta is done.
 
-			sucomUpdateContainers( pluginId, adminPageL10n );
+			sucomBlockPostbox( pluginId, adminPageL10n );
 
 			sucomBlockNotices( pluginId, adminPageL10n );
 		}
 	}
 
-	wasSavingContainer = isSavingContainer;
+	wpssoWasSaving = wpssoIsSaving;
 });
 
 jQuery( function(){

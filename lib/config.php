@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.9.0-dev.1',	// Plugin version.
+					'version'     => '9.9.0-dev.2',	// Plugin version.
 					'opt_version' => '836',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2321,14 +2321,27 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 				),
 			),
-			'jquery-qtip' => array(			// http://qtip2.com/download
+
+			/**
+			 * Used by WpssoScript->admin_enqueue_scripts().
+			 *
+			 * See http://qtip2.com/download.
+			 */
+			'jquery-qtip' => array(
 				'label'   => 'jQuery qTip',
 				'version' => '3.0.3',
 			),
-			'jquery-ui' => array(			// https://developers.google.com/speed/libraries/
+
+			/**
+			 * Used by WpssoStyle->admin_enqueue_styles().
+			 *
+			 * See https://developers.google.com/speed/libraries/.
+			 */
+			'jquery-ui' => array(
 				'label'   => 'jQuery UI',
 				'version' => '1.12.1',
 			),
+
 			'menu' => array(
 				'title'     => 'SSO - Social and Search Optimization',	// Menu title.
 				'icon-font' => 'WpssoIcons',				// Icon font family.
@@ -4197,17 +4210,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 			$info =& self::$cf[ 'plugin' ][ 'wpsso' ];
 
+			$nonce_key = defined( 'NONCE_KEY' ) ? NONCE_KEY : '';
+
 			/**
 			 * Define fixed constants.
 			 */
+			define( 'WPSSO_DATA_ID', 'wpsso meta tags and schema markup' );
 			define( 'WPSSO_FILEPATH', $plugin_file );
+			define( 'WPSSO_NONCE_NAME', md5( $nonce_key . var_export( $info, $return = true ) ) );
 			define( 'WPSSO_PLUGINBASE', $info[ 'base' ] );	// Example: wpsso/wpsso.php.
 			define( 'WPSSO_PLUGINDIR', trailingslashit( realpath( dirname( $plugin_file ) ) ) );
 			define( 'WPSSO_PLUGINSLUG', $info[ 'slug' ] );	// Example: wpsso.
 			define( 'WPSSO_UNDEF', -1 );			// Default undefined image width / height value.
 			define( 'WPSSO_URLPATH', trailingslashit( plugins_url( '', $plugin_file ) ) );
 			define( 'WPSSO_VERSION', $info[ 'version' ] );
-			define( 'WPSSO_DATA_ID', 'wpsso meta tags and schema markup' );
 
 			define( 'WPSSO_INIT_CONFIG_PRIORITY', -10 );
 			define( 'WPSSO_INIT_OPTIONS_PRIORITY', 9 );
@@ -4244,12 +4260,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		public static function get_variable_constants() {
 
 			$var_const = array();
-
-			/**
-			 * Create a unique md5 query name from the config array and the local wp nonce key.
-			 */
-			$var_const[ 'WPSSO_NONCE_NAME' ] = md5( ( defined( 'NONCE_KEY' ) ? NONCE_KEY : '' ) .
-				var_export( self::$cf[ 'plugin' ][ 'wpsso' ], $return = true ) );
 
 			if ( defined( 'WPSSO_PLUGINDIR' ) ) {
 

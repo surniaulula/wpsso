@@ -70,16 +70,16 @@ if ( ! class_exists( 'WpssoScript' ) ) {
 				$deps = array( 'wp-data', 'wp-editor', 'wp-edit-post', 'sucom-admin-page' );
 
 				/**
-				 * The 'sucom-block-editor-admin' script, with its 'wp-edit-post' dependency, must be loaded in the
+				 * The 'wpsso-block-editor-admin' script, with its 'wp-edit-post' dependency, must be loaded in the
 				 * footer to work around a bug in the NextGEN Gallery featured image picker. If the script is
 				 * loaded in the header, with a dependency on 'wp-edit-post', the NextGEN Gallery featured image
 				 * picker does not load.
 				 */
 				$in_footer = true;
 
-				wp_register_script( 'sucom-block-editor-admin', $src, $deps, $this->version, $in_footer );
+				wp_register_script( 'wpsso-block-editor-admin', $src, $deps, $this->version, $in_footer );
 
-				wp_enqueue_script( 'sucom-block-editor-admin' );
+				wp_enqueue_script( 'wpsso-block-editor-admin' );
 			}
 		}
 
@@ -370,7 +370,7 @@ EOF;
 			$admin_l10n = $this->p->cf[ 'plugin' ][ 'wpsso' ][ 'admin_l10n' ];
 
 			wp_register_script( 'sucom-admin-page', WPSSO_URLPATH . 'js/com/jquery-admin-page.' . $this->file_ext,
-				$deps = array( 'jquery' ), $this->version, $in_footer = true );
+				$deps = array( 'jquery' ), '20211125', $in_footer = true );
 
 			wp_localize_script( 'sucom-admin-page', $admin_l10n, $this->get_admin_page_script_data() );
 		}

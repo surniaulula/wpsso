@@ -1075,14 +1075,17 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				$mod = $this->get_mod( $mixed );
 			}
 
-			if ( isset( $local_cache[ $mod[ 'id' ] ] ) ) {
+			if ( $read_cache ) {
 
-				return $local_cache[ $mod[ 'id' ] ];
+				if ( isset( $local_cache[ $mod[ 'id' ] ] ) ) {
+
+					return $local_cache[ $mod[ 'id' ] ];
+				}
 			}
 
 			$head_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache );
 
-			$head_info = $this->p->head->extract_head_info( $mod, $head_tags );
+			$head_info = $this->p->head->extract_head_info( $head_tags, $mod );
 
 			return $local_cache[ $mod[ 'id' ] ] = $head_info;
 		}
@@ -1971,7 +1974,8 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$value  = '';
+			$value = '';
+
 			$locale = empty( $col_info[ 'localized' ] ) ? '' : SucomUtil::get_locale();
 
 			if ( empty( $col_info[ 'meta_key' ] ) ) {	// Just in case.
@@ -2021,9 +2025,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			$mod_salt = SucomUtil::get_mod_salt( $mod );
 
-			static $local_prevent_recursion = array();
+			static $local_no_recursion = array();
 
-			if ( isset( $local_prevent_recursion[ $mod_salt ][ $meta_key ] ) ) {
+			if ( isset( $local_no_recursion[ $mod_salt ][ $meta_key ] ) ) {
 
 				return $value;	// Return null.
 			}
@@ -2032,7 +2036,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			if ( ! empty( $col_info ) ) {
 
-				$local_prevent_recursion[ $mod_salt ][ $meta_key ] = true;	// Prevent recursion.
+				$local_no_recursion[ $mod_salt ][ $meta_key ] = true;	// Prevent recursion.
 
 				$metadata = static::get_meta( $mod_id, $meta_key, $single = true );	// Use static method from child.
 
@@ -2057,7 +2061,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					$this->get_head_info( $mod, $read_cache = true );
 				}
 
-				unset( $local_prevent_recursion[ $mod_salt ][ $meta_key ] );
+				unset( $local_no_recursion[ $mod_salt ][ $meta_key ] );
 			}
 
 			return $value;

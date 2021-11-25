@@ -220,11 +220,11 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			return array_merge( $styles, array(
 				'jquery-ui.js',
 				'jquery-qtip.js',
-				'sucom-admin-page',
 				'sucom-metabox-tabs',
 				'sucom-settings-page',
 				'sucom-settings-table',
 				'wp-color-picker',
+				'wpsso-admin-page',
 			) );
 		}
 
@@ -235,11 +235,12 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				'jquery-qtip',
 				'sucom-admin-media',
 				'sucom-admin-page',
-				'sucom-block-editor-admin',
 				'sucom-metabox',
 				'sucom-settings-page',
 				'sucom-tooltips',
 				'wp-color-picker',
+				'wpsso-metabox',
+				'wpsso-block-editor-admin',
 			) );
 		}
 

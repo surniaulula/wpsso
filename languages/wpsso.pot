@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 9.9.0-dev.1\n"
+"Project-Id-Version: WPSSO Core 9.9.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4713,21 +4713,21 @@ msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1486
+#: lib/abstracts/wp-meta.php:1489
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1819 lib/json-filters/type/claimreview.php:69
+#: lib/abstracts/wp-meta.php:1822 lib/json-filters/type/claimreview.php:69
 msgid "A claim review cannot be the subject of another claim review."
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1821
+#: lib/abstracts/wp-meta.php:1824
 msgid ""
 "Please select a subject webpage type that better describes the subject of "
 "the webpage (ie. the content) being reviewed."
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:2612
+#: lib/abstracts/wp-meta.php:2616
 msgid "adding schema images"
 msgstr ""
 
@@ -5222,7 +5222,7 @@ msgstr ""
 #: lib/admin.php:1315 lib/admin.php:1326
 #: lib/messages-tooltip-meta-schema.php:470 lib/messages-tooltip-plugin.php:169
 #: lib/submenu/tools.php:58 lib/submenu/tools.php:103 lib/user.php:57
-#: lib/user.php:1613 lib/user.php:1720 lib/user.php:1851
+#: lib/user.php:1619 lib/user.php:1726 lib/user.php:1857
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -6201,23 +6201,23 @@ msgctxt "submit button"
 msgid "Validate %s"
 msgstr ""
 
-#: lib/head.php:608
+#: lib/head.php:612
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:617
+#: lib/head.php:621
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:626
+#: lib/head.php:630
 msgid "adding meta name meta tags"
 msgstr ""
 
-#: lib/head.php:635
+#: lib/head.php:639
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:655
+#: lib/head.php:659
 msgid "adding schema json-ld markup"
 msgstr ""
 
@@ -9945,7 +9945,7 @@ msgstr ""
 msgid "Save a draft or publish to display these options."
 msgstr ""
 
-#: lib/post.php:1622
+#: lib/post.php:1631
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -10755,7 +10755,7 @@ msgid ""
 "term ID %3$d in taxonomy %4$s (%5$s)."
 msgstr ""
 
-#: lib/term.php:857
+#: lib/term.php:863
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -10830,40 +10830,40 @@ msgstr ""
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1408
+#: lib/user.php:1414
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/user.php:1632
+#: lib/user.php:1638
 msgid ""
 "Aborting task to add the %1$s role to content creators - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1647
+#: lib/user.php:1653
 msgid "A task to add the %1$s role for content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1688
+#: lib/user.php:1694
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1690 lib/user.php:1793 lib/util-cache.php:187
+#: lib/user.php:1696 lib/user.php:1799 lib/util-cache.php:187
 #: lib/util-cache.php:705
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
-#: lib/user.php:1739
+#: lib/user.php:1745
 msgid ""
 "Aborting task to remove the %1$s role from all users - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1754
+#: lib/user.php:1760
 msgid "A task to remove the %1$s role from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1791
+#: lib/user.php:1797
 msgid "The %1$s role has been removed from %2$d content creators."
 msgstr ""
 

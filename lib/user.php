@@ -564,7 +564,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				 */
 				parent::$head_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache = false );
 
-				parent::$head_info = $this->p->head->extract_head_info( $mod, parent::$head_tags );
+				parent::$head_info = $this->p->head->extract_head_info( parent::$head_tags, $mod );
 
 				/**
 				 * Check for missing open graph image and description values.
@@ -1369,6 +1369,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$mod = $this->get_mod( $user_id );
 
+			/**
+			 * Clear the user meta.
+			 */
 			$col_meta_keys = parent::get_column_meta_keys();
 
 			foreach ( $col_meta_keys as $col_key => $meta_key ) {
@@ -1376,6 +1379,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				delete_user_meta( $user_id, $meta_key );
 			}
 
+			/**
+			 * Clear the plugin cache.
+			 */
 			$this->clear_mod_cache( $mod );
 		}
 

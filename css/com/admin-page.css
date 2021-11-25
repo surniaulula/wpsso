@@ -1,12 +1,5 @@
 
 /**
- * User and term metaboxes.
- */
-#poststuff.wpsso-metaboxes {
-	min-width:900px;
-}
-
-/**
  * WordPress edit list table.
  */
 .wp-list-table.media .column-cb,
@@ -77,13 +70,6 @@
 }
 
 /**
- * WooCommerce.
- */
-.woocommerce-page .wpsso-notice.update-nag {
-	margin:90px 20px 0 20px;
-}
-
-/**
  * qTip.
  */
 .sucom-tooltip {
@@ -91,14 +77,6 @@
 	opacity:0.50;
 	filter:alpha(opacity=50);	/* IE8 and earlier. */
 	margin-left:6px;
-}
-
-.sucom-tooltip-icon::before {
-	font-family:"WpssoIcons";
-	font-weight:normal;
-	font-size:1.2em;
-	vertical-align:middle;
-	content:"\f29c";	/* .icon-help-circled-alt */
 }
 
 .qtip.sucom-qtip {

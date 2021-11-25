@@ -202,8 +202,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				$this->p->debug->log( 'enqueueing style sucom-admin-page' );
 			}
 
-			wp_register_style( 'sucom-admin-page', WPSSO_URLPATH . 'css/com/admin-page.' . $this->file_ext,
-				$deps = array(), $this->version );
+			wp_register_style( 'sucom-admin-page', WPSSO_URLPATH . 'css/com/admin-page.' . $this->file_ext, $deps = array(), $this->version );
 
 			if ( $this->use_cache ) {
 
@@ -253,6 +252,13 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 						url("' . WPSSO_URLPATH . 'fonts/star.ttf?' . $this->version . '") format("truetype"),
 						url("' . WPSSO_URLPATH . 'fonts/star.svg?' . $this->version . '#star") format("svg");
 				}
+				.sucom-tooltip-icon::before {
+					font-family:"WpssoIcons";
+					font-size:1.2em;
+					font-weight:normal;
+					vertical-align:middle;
+					content:"\f29c";	/* .icon-question-circle-o */
+				}
 			';
 
 			/**
@@ -293,6 +299,18 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				}
 				.wpsso-notice.update-nag .notice-message li {
 					margin:5px 0 5px 60px;
+				}
+				.woocommerce-page .wpsso-notice.update-nag {
+					margin:90px 20px 0 20px;
+				}
+			';
+
+			/**
+			 * User and term metaboxes.
+			 */
+			$custom_style_css .= '
+				#poststuff.wpsso-metaboxes {
+					min-width:900px;
 				}
 			';
 
