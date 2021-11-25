@@ -4253,16 +4253,25 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return is_string( $mixed ) ? filter_var( $mixed, FILTER_VALIDATE_BOOLEAN ) : (bool) $mixed;
 		}
 
-		public static function minify_css( $css_data, $ext ) {
+		public static function minify_css( $css_data, $filter_prefix = 'sucom' ) {
 
-			if ( ! empty( $css_data ) ) {
+			if ( empty( $css_data ) ) {	// Nothing to do.
 
-				$classname = apply_filters( $ext . '_load_lib', false, 'ext/compressor', 'SuextMinifyCssCompressor' );
+				return $css_data;
+			}
 
-				if ( false !== $classname && class_exists( $classname ) ) {
+			$classname = 'SuextMinifyCssCompressor';
 
-					$css_data = call_user_func( array( $classname, 'process' ), $css_data );
-				}
+			if ( class_exists( $classname ) ) {	// Check if already loaded.
+
+				return $classname::process( $css_data );
+			}
+
+			$classname = apply_filters( $filter_prefix . '_load_lib', false, 'ext/compressor', $classname );
+
+			if ( $classname && class_exists( $classname ) ) {
+
+				return $classname::process( $css_data );
 			}
 
 			return $css_data;

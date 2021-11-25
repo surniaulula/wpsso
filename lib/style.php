@@ -638,10 +638,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 			if ( $this->use_cache ) {
 
-				if ( method_exists( 'SucomUtil', 'minify_css' ) ) {
-
-					$custom_style_css = SucomUtil::minify_css( $custom_style_css, $ext = 'wpsso' );
-				}
+				$custom_style_css = SucomUtil::minify_css( $custom_style_css, $filter_prefix = 'wpsso' );
 
 				set_transient( $cache_id, $custom_style_css, $cache_exp_secs );
 			}

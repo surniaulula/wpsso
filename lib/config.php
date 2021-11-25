@@ -4426,7 +4426,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 */
 			require_once WPSSO_PLUGINDIR . 'lib/abstracts/add-on.php';	// Extends SucomAddOn.
 
-			add_filter( 'wpsso_load_lib', array( 'WpssoConfig', 'load_lib' ), 10, 3 );
+			add_filter( 'wpsso_load_lib', array( __CLASS__, 'load_lib' ), 10, 3 );
 		}
 
 		public static function load_lib( $success = false, $filespec = '', $classname = '' ) {

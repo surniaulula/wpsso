@@ -1773,10 +1773,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			if ( $this->use_cache ) {
 
-				if ( method_exists( 'SucomUtil', 'minify_css' ) ) {
-
-					$custom_style_css = SucomUtil::minify_css( $custom_style_css, $this->plugin_id );
-				}
+				$custom_style_css = SucomUtil::minify_css( $custom_style_css, $this->plugin_id );
 
 				set_transient( $cache_id, $custom_style_css, $cache_exp_secs );
 			}
