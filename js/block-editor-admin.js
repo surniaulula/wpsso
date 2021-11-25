@@ -1,16 +1,17 @@
 
 var isSavingMetaBoxes = wp.data.select( 'core/edit-post' ).isSavingMetaBoxes;
-var wpssoWasSaving    = false;
+var wpssoWasSavingMb  = false;
 
 wp.data.subscribe( function(){
 
-	var pluginId      = 'wpsso';
-	var adminPageL10n = 'wpssoAdminPageL10n';
-	var wpssoIsSaving = isSavingMetaBoxes();
+	var wpssoIsSavingMb = isSavingMetaBoxes();
 
-	if ( wpssoWasSaving ) {	// Last check was saving post meta.
+	if ( wpssoWasSavingMb ) {	// Last check was saving post meta.
 
-		if ( ! wpssoIsSaving ) {	// Saving the post meta is done.
+		if ( ! wpssoIsSavingMb ) {	// Saving the post meta is done.
+
+			var pluginId      = 'wpsso';
+			var adminPageL10n = 'wpssoAdminPageL10n';
 
 			sucomBlockPostbox( pluginId, adminPageL10n );
 
@@ -18,7 +19,7 @@ wp.data.subscribe( function(){
 		}
 	}
 
-	wpssoWasSaving = wpssoIsSaving;
+	wpssoWasSavingMb = wpssoIsSavingMb;
 });
 
 jQuery( function(){
