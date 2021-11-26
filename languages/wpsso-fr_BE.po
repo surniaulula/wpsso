@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 9.8.1\n"
+"Project-Id-Version: WPSSO Core 9.9.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-11-20 09:55-0800\n"
+"PO-Revision-Date: 2021-11-25 06:26-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -342,42 +342,42 @@ msgid "Failed writing data to cache file %s."
 msgstr "Échec d'écriture des données dans le fichier cache %s."
 
 #: gettext/gettext-lib-com.php:29 gettext/gettext-lib-com.php:30
-#: lib/com/form.php:594 lib/com/form.php:608
+#: lib/com/form.php:619 lib/com/form.php:633
 msgctxt "option label"
 msgid "Post Type"
 msgstr "Type d'article"
 
-#: gettext/gettext-lib-com.php:31 lib/com/form.php:615
+#: gettext/gettext-lib-com.php:31 lib/com/form.php:640
 msgctxt "option label"
 msgid "Taxonomy"
 msgstr "Taxonomie"
 
-#: gettext/gettext-lib-com.php:32 lib/com/form.php:619
+#: gettext/gettext-lib-com.php:32 lib/com/form.php:644
 msgctxt "option label"
 msgid "User Profiles"
 msgstr "Profils utilisateurs"
 
-#: gettext/gettext-lib-com.php:33 lib/com/form.php:778
+#: gettext/gettext-lib-com.php:33 lib/com/form.php:803
 msgctxt "option comment"
 msgid "crop"
 msgstr "recadrer"
 
 #: gettext/gettext-lib-com.php:34 gettext/gettext-lib-pro.php:216
-#: lib/com/form.php:779 lib/pro/admin/edit.php:692 lib/std/admin/edit.php:746
+#: lib/com/form.php:804 lib/pro/admin/edit.php:692 lib/std/admin/edit.php:746
 msgctxt "option comment"
 msgid "from"
 msgstr "de"
 
 #. translators: Please ignore - translation uses a different text domain.
 #: gettext/gettext-lib-com.php:36 gettext/gettext-lib-pro.php:43
-#: gettext/gettext-lib-pro.php:400 lib/com/form.php:789 lib/media.php:873
+#: gettext/gettext-lib-pro.php:400 lib/com/form.php:814 lib/media.php:873
 #: lib/media.php:1007 lib/media.php:2444 lib/pro/admin/advanced.php:299
 #: lib/pro/util/check-img-dims.php:104 lib/std/admin/advanced.php:292
 msgid "Media Library"
 msgstr "la médiathèque"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:38 lib/com/form.php:883 lib/script.php:443
+#: gettext/gettext-lib-com.php:38 lib/com/form.php:908 lib/script.php:361
 msgid "Select Image"
 msgstr "Choisir l'image"
 
@@ -4434,54 +4434,54 @@ msgctxt "default description"
 msgid "No Description."
 msgstr "Aucune description."
 
-#: lib/abstracts/wp-meta.php:1019
+#: lib/abstracts/wp-meta.php:1023
 msgctxt "metabox tab"
 msgid "Customize"
 msgstr "Personnaliser"
 
-#: lib/abstracts/wp-meta.php:1020 lib/messages.php:284
+#: lib/abstracts/wp-meta.php:1024 lib/messages.php:284
 msgctxt "metabox tab"
 msgid "Priority Media"
 msgstr "Média prioritaire"
 
-#: lib/abstracts/wp-meta.php:1024
+#: lib/abstracts/wp-meta.php:1028
 msgctxt "metabox tab"
 msgid "Robots Meta"
 msgstr "Méta robots"
 
-#: lib/abstracts/wp-meta.php:1025
+#: lib/abstracts/wp-meta.php:1029
 msgctxt "metabox tab"
 msgid "Social Preview"
 msgstr "Aperçu social"
 
-#: lib/abstracts/wp-meta.php:1026
+#: lib/abstracts/wp-meta.php:1030
 msgctxt "metabox tab"
 msgid "oEmbed Preview"
 msgstr "Aperçu oEmbed"
 
-#: lib/abstracts/wp-meta.php:1027
+#: lib/abstracts/wp-meta.php:1031
 msgctxt "metabox tab"
 msgid "Head Markup"
 msgstr "Balisage d'entête"
 
-#: lib/abstracts/wp-meta.php:1028
+#: lib/abstracts/wp-meta.php:1032
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr "Validateurs"
 
-#: lib/abstracts/wp-meta.php:1482
+#: lib/abstracts/wp-meta.php:1486
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr "La validation du jeton nonce pour le formulaire soumis a échoué (mise à jour ignorée)."
 
-#: lib/abstracts/wp-meta.php:1815 lib/json-filters/type/claimreview.php:69
+#: lib/abstracts/wp-meta.php:1819 lib/json-filters/type/claimreview.php:69
 msgid "A claim review cannot be the subject of another claim review."
 msgstr "Un examen d'évaluation ne peut pas être le sujet d'un autre examen d'évaluation."
 
-#: lib/abstracts/wp-meta.php:1817
+#: lib/abstracts/wp-meta.php:1821
 msgid "Please select a subject webpage type that better describes the subject of the webpage (ie. the content) being reviewed."
 msgstr "SVP sélectionner un type de page Web du sujet qui décrit mieux le sujet de la page Web (c'est-à-dire le contenu) en cours de révision."
 
-#: lib/abstracts/wp-meta.php:2608
+#: lib/abstracts/wp-meta.php:2612
 msgid "adding schema images"
 msgstr "ajout d'images schéma"
 
@@ -5596,7 +5596,7 @@ msgctxt "option label"
 msgid "Preferred Cropping"
 msgstr "Recadrage préféré"
 
-#: lib/edit.php:115 lib/script.php:394
+#: lib/edit.php:115 lib/script.php:423
 msgctxt "option label"
 msgid "Schema Type"
 msgstr "Type de Schéma"
@@ -8919,41 +8919,41 @@ msgstr "Veuillez noter que la norme de Schéma permette que le sujet d'une criti
 msgid "adding reviewed subject image"
 msgstr "ajout d'image pour le sujet de l'évaluation"
 
-#: lib/script.php:403
+#: lib/script.php:432
 msgid "No %s notifications."
 msgstr "Aucune notification %s."
 
-#: lib/script.php:405
+#: lib/script.php:434
 msgid "Copy notifications to clipboard."
 msgstr "Copier les notifications dans le presse-papiers."
 
-#: lib/script.php:424
+#: lib/script.php:462
 msgid "Copied to clipboard."
 msgstr "Copié au presse-papiers."
 
-#: lib/script.php:425
+#: lib/script.php:463
 msgid "Value linked to {0} option"
 msgstr "Valeur liée à l'option {0}"
 
-#: lib/script.php:426
+#: lib/script.php:465
+msgid "There are {0} important error messages under the %s notification icon."
+msgstr "Il y a {0} messages d'erreur importants sous l'icône de notification %s."
+
+#: lib/script.php:468
 msgid "{0} of {1} characters minimum"
 msgstr "{0} de {1} caractères minimum"
 
-#: lib/script.php:427
+#: lib/script.php:469
 msgid "{0} of {1} characters required"
 msgstr "{0} de {1} caractères requis"
 
-#: lib/script.php:428
+#: lib/script.php:470
 msgid "{0} of {1} characters maximum"
 msgstr "{0} de {1} caractères maximum"
 
-#: lib/script.php:429
+#: lib/script.php:471
 msgid "{0} characters"
 msgstr "{0} caractères"
-
-#: lib/script.php:431
-msgid "There are {0} important error messages under the %s notification icon."
-msgstr "Il y a {0} messages d'erreur importants sous l'icône de notification %s."
 
 #: lib/sitesubmenu/site-addons.php:80
 msgctxt "metabox title"
