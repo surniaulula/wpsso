@@ -240,7 +240,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				'sucom-tooltips',
 				'wp-color-picker',
 				'wpsso-metabox',
-				'wpsso-block-editor-admin',
+				'wpsso-block-editor',
 			) );
 		}
 
