@@ -252,6 +252,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
+	* Added a `wpssoBlockEditor` "namespace" to the js/jquery-block-editor.js script.
 	* Updates to rename the javascript sucomAdminPageL10n variable to wpssoAdminPageL10n:
 		* Added a new 'admin_l10n' element in the plugin config array.
 		* Added a new 'wpsso-metabox' script in 'js/jquery-metabox.js'.
