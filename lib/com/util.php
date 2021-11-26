@@ -1362,6 +1362,21 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return (string) $use_post;
 		}
 
+		public static function maybe_unserialize_array( array $arr ) {
+
+			return self::array_map_recursive( 'maybe_unserialize', $arr );
+		}
+
+		public static function array_map_recursive( $func, array $arr ) {
+
+			foreach ( $arr as $key => $el ) {
+
+				$arr[ $key ] = is_array( $el ) ? self::array_map_recursive( $func, $el ) : $func( $el );
+			}
+
+			return $arr;
+		}
+
 		/**
 		 * Note that an empty string or a null is sanitized as false.
 		 *
@@ -4253,25 +4268,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return is_string( $mixed ) ? filter_var( $mixed, FILTER_VALIDATE_BOOLEAN ) : (bool) $mixed;
 		}
 
+		/**
+		 * Wrapper for SuextMinifyCssCompressor class to minify CSS.
+		 */
 		public static function minify_css( $css_data, $filter_prefix = 'sucom' ) {
 
-			if ( empty( $css_data ) ) {	// Nothing to do.
+			if ( ! empty( $css_data ) ) {	// Make sure we have something to minify.
 
-				return $css_data;
-			}
+				$classname = apply_filters( $filter_prefix . '_load_lib', false, 'ext/compressor', 'SuextMinifyCssCompressor' );
 
-			$classname = 'SuextMinifyCssCompressor';
+				if ( 'SuextMinifyCssCompressor' === $classname && class_exists( $classname ) ) {
 
-			if ( class_exists( $classname ) ) {	// Check if already loaded.
-
-				return $classname::process( $css_data );
-			}
-
-			$classname = apply_filters( $filter_prefix . '_load_lib', false, 'ext/compressor', $classname );
-
-			if ( $classname && class_exists( $classname ) ) {
-
-				return $classname::process( $css_data );
+					$css_data = $classname::process( $css_data );
+				}
 			}
 
 			return $css_data;

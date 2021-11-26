@@ -57,7 +57,8 @@ if ( ! class_exists( 'SuextMinifyCssCompressor' ) ) {
 		 *
 		 * @param array $options (currently ignored)
 		 */
-		private function __construct($options) {
+		private function __construct($options)
+		{
 			$this->_options = $options;
 		}
 

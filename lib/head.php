@@ -303,7 +303,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				foreach ( $sortable_cols as $col_key => $col_info ) {
 
 					if ( empty( $col_info[ 'meta_key' ] ) ) {
-					
+
 						continue;
 
 					} elseif ( 0 !== strpos( $col_info[ 'meta_key' ], '_wpsso_head_info_' ) ) {

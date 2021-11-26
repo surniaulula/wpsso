@@ -71,7 +71,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 				$pkg_info = $this->p->admin->get_pkg_info();	// Returns an array from cache.
 
-				if ( ! empty( $pkg_info[ 'wpsso' ][ 'pp' ] ) || empty( $pkg_info[ 'wpssojson' ][ 'pp' ] ) ) {
+				if ( empty( $this->p->options[ 'plugin_wpssojson_tid' ] ) || ! empty( $pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
 
 					$plugins_url = is_multisite() ? network_admin_url( 'plugins.php', null ) : get_admin_url( $blog_id = null, 'plugins.php' );
 					$plugins_url = add_query_arg( array( 's' => 'wpsso-schema-json-ld' ), $plugins_url );

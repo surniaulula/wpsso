@@ -1,31 +1,31 @@
 
-var isSavingMetaBoxes = wp.data.select( 'core/edit-post' ).isSavingMetaBoxes;
-var wpssoWasSavingMb  = false;
+var wpssoBlockAdmin = ( function(){
 
-wp.data.subscribe( function(){
+	var isSavingMetaBoxes = wp.data.select( 'core/edit-post' ).isSavingMetaBoxes;
+	var wasSavingMb       = false;
+	var pluginId          = 'wpsso';
+	var adminPageL10n     = 'wpssoAdminPageL10n';
 
-	var wpssoIsSavingMb = isSavingMetaBoxes();
+	sucomBlockNotices( pluginId, adminPageL10n );					// Update the notices on startup.
 
-	if ( wpssoWasSavingMb ) {	// Last check was saving post meta.
+	return {
+		refreshPostbox: function(){						// Called by wp.data.subscribe().
 
-		if ( ! wpssoIsSavingMb ) {	// Saving the post meta is done.
+			var isSavingMb = isSavingMetaBoxes();				// Check if we're saving metaboxes.
 
-			var pluginId      = 'wpsso';
-			var adminPageL10n = 'wpssoAdminPageL10n';
+			if ( wasSavingMb ) {						// Last check was saving metaboxes.
 
-			sucomBlockPostbox( pluginId, adminPageL10n );
+				if ( ! isSavingMb ) {					// Saving metaboxes is done.
 
-			sucomBlockNotices( pluginId, adminPageL10n );
-		}
+					sucomBlockPostbox( pluginId, adminPageL10n );	// Refresh our metabox(es).
+
+					sucomBlockNotices( pluginId, adminPageL10n );	// Refresh the notices.
+				}
+			}
+
+			wasSavingMb = isSavingMb;
+		},
 	}
+})();
 
-	wpssoWasSavingMb = wpssoIsSavingMb;
-});
-
-jQuery( function(){
-
-	var pluginId      = 'wpsso';
-	var adminPageL10n = 'wpssoAdminPageL10n';
-
-	sucomBlockNotices( pluginId, adminPageL10n );
-});
+wp.data.subscribe( wpssoBlockAdmin.refreshPostbox );

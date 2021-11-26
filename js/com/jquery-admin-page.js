@@ -1,17 +1,10 @@
-
 /**
  * Common library for admin pages.
  *
- * Version: 20211125
+ * Don't forget to update the wp_register_script() arguments for the 'sucom-admin-page' script when updating this version number.
+ *
+ * Version: 20211126
  */
-if ( 'undefined' !== typeof wp.data ) {
-
-	var getCurrentPostId = wp.data.select( 'core/editor' ).getCurrentPostId;
-	var createNotice     = wp.data.dispatch( 'core/notices' ).createNotice;
-	var removeNotice     = wp.data.dispatch( 'core/notices' ).removeNotice;
-	var createElement    = wp.element.createElement;
-	var RawHTML          = wp.element.RawHTML;
-}
 
 /**
  * Update block-editor metaboxes.
@@ -20,7 +13,9 @@ function sucomBlockPostbox( pluginId, adminPageL10n ) {
 
 	if ( 'undefined' === typeof wp.data ) return;	// Just in case.
 
-	var cfg = window[ adminPageL10n ];
+	var getCurrentPostId = wp.data.select( 'core/editor' ).getCurrentPostId;
+	var post_id          = getCurrentPostId();
+	var cfg              = window[ adminPageL10n ];
 
 	if ( ! jQuery.isArray( cfg._metabox_postbox_ids ) ) {
 
@@ -34,8 +29,6 @@ function sucomBlockPostbox( pluginId, adminPageL10n ) {
 
 		return;
 	}
-
-	var post_id = getCurrentPostId();
 
 	for ( var postbox_key in cfg._metabox_postbox_ids ) {
 
@@ -79,7 +72,9 @@ function sucomBlockNotices( pluginId, adminPageL10n ) {
 
 	if ( 'undefined' === typeof wp.data ) return;	// Just in case.
 
-	var cfg = window[ adminPageL10n ];
+	var createNotice  = wp.data.dispatch( 'core/notices' ).createNotice;
+	var removeNotice  = wp.data.dispatch( 'core/notices' ).removeNotice;
+	var cfg           = window[ adminPageL10n ];
 
 	if ( 'undefined' === typeof cfg._ajax_actions[ 'get_notices_json' ] ) {
 
@@ -156,20 +151,21 @@ function sucomBlockNotices( pluginId, adminPageL10n ) {
 					 * The current version of the block editor casts the notice message as a string, so we
 					 * cannot give createNotice() an html message or RawHTML element. Until such time as the
 					 * block editor can handle an html notice message, we must give it the "spoken" notice
-					 * message string instead, which is a plain text string.
+					 * message instead, which is just a plain text string.
 					 *
-					 * var noticeHtml        = data[ noticeType ][ noticeKey ][ 'msg_html' ];
-					 * var noticeHtmlElement = createElement( RawHTML, {}, noticeHtml );
-
-					 * noticeObj = createNotice( noticeStatus, noticeHtmlElement, noticeOptions );
+					 *	var createElement     = wp.element.createElement;
+					 *	var RawHTML           = wp.element.RawHTML;
+					 *	var noticeHtml        = data[ noticeType ][ noticeKey ][ 'msg_html' ];
+					 *	var noticeHtmlElement = createElement( RawHTML, {}, noticeHtml );
+					 *
+					 *	noticeObj = createNotice( noticeStatus, noticeHtmlElement, noticeOptions );
+					 *
+					 * After creating the notice, remove the notices class to fix notice-in-notice padding
+					 * issues for RawHTML elements.
+					 *
+					 *	jQuery( 'div.' + pluginId + '-notice' ).parents( 'div.components-notice' ).removeClass( 'components-notice' );
 					 */
 					noticeObj = createNotice( noticeStatus, noticeSpoken, noticeOptions );
-
-					/**
-					 * Remove the notices class to fix notice-in-notice padding issues for RawHTML elements.
-					 *
-					 * jQuery( 'div.' + pluginId + '-notice' ).parents( 'div.components-notice' ).removeClass( 'components-notice' );
-					 */
 				}
 			} );
 		} );
@@ -295,8 +291,10 @@ function sucomToolbarNotices( pluginId, adminPageL10n ) {
 			 */
 			if ( countMsgsTransl[ noticeStatus ] ) {
 
-				if ( 'function' === typeof createNotice ) {
+				if ( 'undefined' !== typeof wp.data ) {
 
+					var createNotice  = wp.data.dispatch( 'core/notices' ).createNotice;
+					var removeNotice  = wp.data.dispatch( 'core/notices' ).removeNotice;
 					var noticeKey     = 'notice-count-msg-' + noticeStatus;
 					var noticeMessage = countMsgsTransl[ noticeStatus ].formatUnicorn( noticeCount );
 
