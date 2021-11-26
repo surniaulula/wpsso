@@ -18,7 +18,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 if ( ! class_exists( 'SucomUtilMetabox' ) ) {
 
 	class SucomUtilMetabox {
-		
+
 		public static function get_table_metadata( array $metadata, array $skip_keys, $obj, $metabox_id, $key_title = 'Key', $value_title = 'Value' ) {
 
 			$md_filtered = apply_filters( $metabox_id . '_metabox_table_metadata', $metadata, $obj );
