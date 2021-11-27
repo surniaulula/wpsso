@@ -145,8 +145,7 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 			$count_rows     = 0;
 			$hidden_opts    = 0;
 			$hidden_rows    = 0;
-			$user_classname = 'wpssouser';
-			$show_opts      = class_exists( $user_classname ) ? call_user_func( array( $user_classname, 'show_opts' ) ) : 'basic';
+			$user_show_opts = WpssoUser::show_opts();
 
 			foreach ( $table_rows as $key => $row ) {
 
@@ -183,18 +182,21 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 						}
 
 						/**
-						 * If we're here, then we have a table row tag already. Count the number of rows
-						 * and options that are hidden.
+						 * If we're here, then we have a table row tag already.
+						 *
+						 * Count the number of rows and options that are hidden.
 						 */
-						if ( $att === 'class' && ! empty( $show_opts ) &&
-							( $matched = preg_match( '/<tr [^>]*class="[^"]*hide(_row)?_in_' . $show_opts . '[" ]/', $row, $m ) > 0 ) ) {
+						if ( $att === 'class' && ! empty( $user_show_opts ) ) {
 
-							if ( ! isset( $m[ 1 ] ) ) {
+							if ( $matched = preg_match( '/<tr [^>]*class="[^"]*hide(_row)?_in_' . $user_show_opts . '[" ]/', $row, $m ) > 0 ) {
 
-								$hidden_opts += preg_match_all( '/(<th|<tr[^>]*><td)/', $row, $all_matches );
+								if ( ! isset( $m[ 1 ] ) ) {
+
+									$hidden_opts += preg_match_all( '/(<th|<tr[^>]*><td)/', $row, $all_matches );
+								}
+
+								$hidden_rows += $matched;
 							}
-
-							$hidden_rows += $matched;
 						}
 
 						/**
@@ -237,14 +239,14 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 				$count_rows++;
 			}
 
-			$div_class = ( empty( $show_opts ) ? '' : 'sucom-show_' . $show_opts ) . 
+			$div_class = ( empty( $user_show_opts ) ? '' : 'sucom-show_' . $user_show_opts ) . 
 				( empty( $class_tabset ) ? '' : ' ' . $class_tabset ) . 
 				( empty( $class_tabset_mb ) ? '' : ' ' . $class_tabset_mb ) . 
 				( empty( $class_href_key ) ? '' : ' ' . $class_href_key );
 
 			$table_class = 'sucom-settings ' . $this->p->id . 
 				( empty( $class_href_key ) ? '' : ' ' . $class_href_key ) . 
-				( $hidden_rows > 0 && $hidden_rows === $count_rows ? ' hide_in_' . $show_opts : '' );
+				( $hidden_rows > 0 && $hidden_rows === $count_rows ? ' hide_in_' . $user_show_opts : '' );
 
 			$metabox_html .= '<div class="' . $div_class . '">' . "\n";
 			$metabox_html .= $title_transl ? '<h3 class="sucom-metabox-tab_title">' . $title_transl . '</h3>' . "\n" : '';
@@ -258,22 +260,22 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 			$metabox_html .= '</table><!-- .' . $table_class . ' --> ' . "\n";
 			$metabox_html .= '</div><!-- .' . $div_class . ' -->' . "\n\n";
 
-			$show_opts_label = $this->p->cf[ 'form' ][ 'show_options' ][ $show_opts ];
+			$user_show_opts_label = $this->p->cf[ 'form' ][ 'show_options' ][ $user_show_opts ];
 
 			if ( $hidden_opts > 0 ) {
 
 				$metabox_html .= '<div class="hidden_opts_msg ' . $class_tabset . '-msg ' . $class_tabset_mb . '-msg ' . $class_href_key . '-msg">' .
-					sprintf( _x( '%1$d additional options not shown in "%2$s" view', 'option comment', 'wpsso' ), $hidden_opts,
-						_x( $show_opts_label, 'option value', 'wpsso' ) ) .
-					' (<a href="javascript:void(0);" onClick="sucomViewUnhideRows( \'' . $class_href_key . '\', \'' . $show_opts .
+					sprintf( _x( '%1$d additional options not shown in "%2$s" view', 'option comment', 'wpsso' ),
+						$hidden_opts, _x( $user_show_opts_label, 'option value', 'wpsso' ) ) .
+					' (<a href="javascript:void(0);" onClick="sucomViewUnhideRows( \'' . $class_href_key . '\', \'' . $user_show_opts .
 						'\' );">' . _x( 'show these options now', 'option comment', 'wpsso' ) . '</a>)</div>' . "\n";
 
 			} elseif ( $hidden_rows > 0 ) {
 
 				$metabox_html .= '<div class="hidden_opts_msg ' . $class_tabset . '-msg ' . $class_tabset_mb . '-msg ' . $class_href_key . '-msg">' .
-					sprintf( _x( '%1$d additional rows not shown in "%2$s" view', 'option comment', 'wpsso' ), $hidden_rows,
-						_x( $show_opts_label, 'option value', 'wpsso' ) ) .
-					' (<a href="javascript:void(0);" onClick="sucomViewUnhideRows( \'' . $class_href_key . '\', \'' . $show_opts .
+					sprintf( _x( '%1$d additional rows not shown in "%2$s" view', 'option comment', 'wpsso' ),
+						$hidden_rows, _x( $user_show_opts_label, 'option value', 'wpsso' ) ) .
+					' (<a href="javascript:void(0);" onClick="sucomViewUnhideRows( \'' . $class_href_key . '\', \'' . $user_show_opts .
 						'\', \'hide_row_in\' );">' . _x( 'show these rows now', 'option comment', 'wpsso' ) . '</a>)</div>' . "\n";
 			}
 

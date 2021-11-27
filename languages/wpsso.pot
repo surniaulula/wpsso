@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 9.9.0-b.1\n"
+"Project-Id-Version: WPSSO Core 9.9.0-rc.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -9340,7 +9340,7 @@ msgid "The robots meta tag is disabled."
 msgstr ""
 
 #: lib/messages.php:816 lib/messages.php:840 lib/messages.php:884
-#: lib/util-metabox.php:234
+#: lib/util-metabox.php:236
 msgid "No options available."
 msgstr ""
 
@@ -11013,22 +11013,22 @@ msgstr ""
 msgid "Page %1$d of %2$d"
 msgstr ""
 
-#: lib/util-metabox.php:266
+#: lib/util-metabox.php:268
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util-metabox.php:269
+#: lib/util-metabox.php:271
 msgctxt "option comment"
 msgid "show these options now"
 msgstr ""
 
-#: lib/util-metabox.php:274
+#: lib/util-metabox.php:276
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util-metabox.php:277
+#: lib/util-metabox.php:279
 msgctxt "option comment"
 msgid "show these rows now"
 msgstr ""
