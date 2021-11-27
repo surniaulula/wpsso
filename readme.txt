@@ -243,7 +243,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.9.0-b.1 (2021/11/25)**
+**Version 9.9.0-rc.1 (2021/11/27)**
 
 * **New Features**
 	* None.
@@ -579,9 +579,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.9.0-b.1 =
+= 9.9.0-rc.1 =
 
-(2021/11/25) Updates to rename the javascript sucomAdminPageL10n variable to wpssoAdminPageL10n.
+(2021/11/27) Updates to rename the javascript sucomAdminPageL10n variable to wpssoAdminPageL10n.
 
 = 9.8.1 =
 
