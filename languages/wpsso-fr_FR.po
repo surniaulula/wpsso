@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 9.9.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-11-26 12:07-0800\n"
+"PO-Revision-Date: 2021-11-27 06:50-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -8201,7 +8201,7 @@ msgid "The robots meta tag is disabled."
 msgstr "La balise méta robots est désactivée."
 
 #: lib/messages.php:816 lib/messages.php:840 lib/messages.php:884
-#: lib/util-metabox.php:234
+#: lib/util-metabox.php:236
 msgid "No options available."
 msgstr "Aucune options disponibles."
 
@@ -9772,22 +9772,22 @@ msgstr "Le cache transitoires pour %1$d articles, %2$d termes et %3$d utilisateu
 msgid "Page %1$d of %2$d"
 msgstr "Page %1$d de %2$d"
 
-#: lib/util-metabox.php:266
+#: lib/util-metabox.php:268
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr "%1$d options supplémentaires ne figurent pas dans l'affichage \"%2$s\""
 
-#: lib/util-metabox.php:269
+#: lib/util-metabox.php:271
 msgctxt "option comment"
 msgid "show these options now"
 msgstr "afficher ces options maintenant"
 
-#: lib/util-metabox.php:274
+#: lib/util-metabox.php:276
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr "%1$d lignes supplémentaires ne figurent pas dans la vue \"%2$s\""
 
-#: lib/util-metabox.php:277
+#: lib/util-metabox.php:279
 msgctxt "option comment"
 msgid "show these rows now"
 msgstr "afficher ces lignes maintenant"
