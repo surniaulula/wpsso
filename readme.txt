@@ -248,12 +248,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* The Validators menu in the top toolbar is now refreshed when the post/page is saved in the Block Editor.
 	* The Document SSO metabox now shows default options when creating new posts / pages (ie. for the 'auto-draft' status).
+	* The Validators menu in the top toolbar is now refreshed when the post/page is saved in the Block Editor (validation links are shown for published posts).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
 	* Added a 'wp_after_insert_post' hook to create / update the meta tags array for new 'auto-draft' posts.
+	* Added a new jQuery `sucomToolbarValidators()` method in js/com/jquery-admin-page.js.
+	* Updated the jQuery `wpssoBlockEditor.refreshPostbox` function to call `sucomToolbarValidators()`.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -596,7 +598,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 9.10.0-dev.1 =
 
-(2021/11/29) The Document SSO metabox now shows default options when creating new posts / pages (ie. for the 'auto-draft' status).
+(2021/11/29) The Document SSO metabox now shows default options when creating new posts / pages. The Validators menu in the top toolbar is now refreshed when the post/page is saved in the Block Editor.
 
 = 9.9.0 =
 
