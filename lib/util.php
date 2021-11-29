@@ -3427,8 +3427,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		public function get_validators( array $mod, $form = null ) {
 
 			/**
-			 * We do not want to validate settings pages in the back-end, so only provide validators for known modules
-			 * (post, term, and user). If we're on the front-end, validating the current webpage URL is fine.
+			 * We do not want to validate settings pages in the back-end, so validators are only provided for known
+			 * modules (post, term, and user). If we're on the front-end, validating the current webpage URL is fine.
 			 */
 			if ( is_admin() ) {
 

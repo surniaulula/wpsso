@@ -70,51 +70,60 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$mod = $this->p->page->get_mod( $use_post );	// Get post/term/user ID, module name, and module object reference.
 
+			/**
+			 * We do not want to validate settings pages in the back-end, so validators are only provided for known
+			 * modules (post, term, and user). If we're on the front-end, validating the current webpage URL is fine.
+			 */
 			$validators = $this->p->util->get_validators( $mod, $form = null );
 
-			$parent_id  = 'wpsso-validate';
-			$menu_icon  = '<span class="ab-icon dashicons-code-standards"></span>';
-			$menu_title = _x( 'Validators', 'toolbar menu title', 'wpsso' );
-			$menu_items = array();
+			if ( ! empty( $validators ) ) {
 
-			foreach ( $validators as $key => $el ) {
+				$parent_id  = 'wpsso-validate';
+				$menu_icon  = '<span class="ab-icon dashicons-code-standards"></span>';
+				$menu_title = _x( 'Validators', 'toolbar menu title', 'wpsso' );
+				$menu_items = array();
 
-				if ( empty( $el[ 'type' ] ) ) {
-
-					continue;
+				foreach ( $validators as $key => $el ) {
+	
+					if ( empty( $el[ 'type' ] ) ) {
+	
+						continue;
+					}
+	
+					$menu_items[] = array(
+						'id'     => $parent_id . '-' . $key,
+						'title'  => $el[ 'type' ],
+						'parent' => $parent_id,
+						'href'   => $el[ 'url' ],
+						'group'  => false,
+						'meta'   => array(
+							'class'  => empty( $el[ 'url' ] ) ? 'disabled' : '',
+							'target' => '_blank',
+							'title'  => $el[ 'title' ],
+						),
+					);
 				}
-
-				$menu_items[] = array(
-					'id'     => $parent_id . '-' . $key,
-					'title'  => $el[ 'type' ],
-					'parent' => $parent_id,
-					'href'   => $el[ 'url' ],
+	
+				$wp_admin_bar->add_node( array(
+					'id'     => $parent_id,
+					'title'  => $menu_icon . $menu_title,
+					'parent' => false,
+					'href'   => false,
 					'group'  => false,
 					'meta'   => array(
-						'class'  => empty( $el[ 'url' ] ) ? 'disabled' : '',
-						'target' => '_blank',
-						'title'  => $el[ 'title' ],
+						'html' => '<style type="text/css">#wp-admin-bar-wpsso-validate .disabled { opacity:0.5; filter:alpha(opacity=50); }</style>',
 					),
-				);
+				) );
+	
+				foreach ( $menu_items as $menu_item ) {
+	
+					$wp_admin_bar->add_node( $menu_item );
+				}
+	
+				return $parent_id;
 			}
 
-			$wp_admin_bar->add_node( array(
-				'id'     => $parent_id,
-				'title'  => $menu_icon . $menu_title,
-				'parent' => false,
-				'href'   => false,
-				'group'  => false,
-				'meta'   => array(
-					'html' => '<style type="text/css">#wp-admin-bar-wpsso-validate .disabled { opacity:0.5; filter:alpha(opacity=50); }</style>',
-				),
-			) );
-
-			foreach ( $menu_items as $menu_item ) {
-
-				$wp_admin_bar->add_node( $menu_item );
-			}
-
-			return $parent_id;
+			return false;
 		}
 
 		/**

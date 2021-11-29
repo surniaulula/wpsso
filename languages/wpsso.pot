@@ -2761,7 +2761,7 @@ msgid "Options to Show by Default"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:39 lib/messages-tooltip-plugin.php:81
-#: lib/page.php:77 lib/pro/admin/advanced.php:268
+#: lib/page.php:83 lib/pro/admin/advanced.php:268
 #: lib/std/admin/advanced.php:261
 msgctxt "toolbar menu title"
 msgid "Validators"
@@ -4672,7 +4672,7 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:459 lib/edit.php:415 lib/page.php:1293
+#: gettext/gettext-lib-pro.php:459 lib/edit.php:415 lib/page.php:1302
 #: lib/pro/social/buddypress.php:663
 msgctxt "default description"
 msgid "No Description."
@@ -6159,7 +6159,7 @@ msgctxt "option label"
 msgid "Facebook / Open Graph Example"
 msgstr ""
 
-#: lib/edit.php:412 lib/page.php:1591
+#: lib/edit.php:412 lib/page.php:1600
 msgctxt "default title"
 msgid "No Title"
 msgstr ""
@@ -9753,60 +9753,60 @@ msgid ""
 "its default value."
 msgstr ""
 
-#: lib/page.php:1077 lib/page.php:1082 lib/page.php:1196
+#: lib/page.php:1086 lib/page.php:1091 lib/page.php:1205
 msgctxt "default description"
 msgid "Archive for %s."
 msgstr ""
 
-#: lib/page.php:1167
+#: lib/page.php:1176
 msgctxt "default description"
 msgid "Tag archive for %s."
 msgstr ""
 
-#: lib/page.php:1180
+#: lib/page.php:1189
 msgctxt "default description"
 msgid "Category archive for %s."
 msgstr ""
 
-#: lib/page.php:1212
+#: lib/page.php:1221
 msgctxt "default description"
 msgid "Authored by %s."
 msgstr ""
 
-#: lib/page.php:1230
+#: lib/page.php:1239
 msgid "Search Results for &#8220;%s&#8221;"
 msgstr ""
 
-#: lib/page.php:1240
+#: lib/page.php:1249
 msgctxt "default description"
 msgid "Yearly archive for %s."
 msgstr ""
 
-#: lib/page.php:1246
+#: lib/page.php:1255
 msgctxt "default description"
 msgid "Monthly archive for %s."
 msgstr ""
 
-#: lib/page.php:1252
+#: lib/page.php:1261
 msgctxt "default description"
 msgid "Daily archive for %s."
 msgstr ""
 
-#: lib/page.php:1259
+#: lib/page.php:1268
 msgctxt "default description"
 msgid "Archive page."
 msgstr ""
 
-#: lib/page.php:1457 lib/page.php:1461
+#: lib/page.php:1466 lib/page.php:1470
 msgctxt "default title"
 msgid "%s Archive"
 msgstr ""
 
-#: lib/page.php:1543
+#: lib/page.php:1552
 msgid "Search Results %1$s %2$s"
 msgstr ""
 
-#: lib/page.php:1676
+#: lib/page.php:1685
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] ""
