@@ -168,6 +168,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			if ( is_admin() ) {
 
 				add_action( 'wp_ajax_' . $this->plugin_id . '_dismiss_notice', array( $this, 'ajax_dismiss_notice' ) );
+
 				add_action( 'wp_ajax_' . $this->plugin_id . '_get_notices_json', array( $this, 'ajax_get_notices_json' ) );
 
 				/**
@@ -898,7 +899,8 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				return;
 			}
 
-			$user_id      = get_current_user_id();	// Always returns an integer.
+			$user_id = get_current_user_id();	// Always returns an integer.
+
 			$dismiss_info = array();
 
 			if ( empty( $user_id ) || ! current_user_can( 'edit_user', $user_id ) ) {

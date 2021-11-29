@@ -425,10 +425,6 @@ EOF;
 				'schema_type' => _x( 'Schema Type', 'option label', 'wpsso' ),
 			) );
 
-			$metabox_postbox_ids = apply_filters( 'wpsso_admin_page_script_data_metabox_postbox_ids', array(
-				'wpsso_' . $this->p->cf[ 'meta' ][ 'id' ],
-			) );
-
 			$tb_types_showing    = $this->p->notice->get_tb_types_showing();
 			$no_notices_transl   = sprintf( __( 'No %s notifications.', 'wpsso' ), $this->p->cf[ 'menu' ][ 'title' ] );
 			$no_notices_html     = '<div class="ab-item ab-empty-item">' . $no_notices_transl . '</div>';
@@ -449,14 +445,19 @@ EOF;
 			/**
 			 * The config array.
 			 */
+			$metabox_id = $this->p->cf[ 'meta' ][ 'id' ];
+
 			return array(
 				'_ajax_nonce'   => wp_create_nonce( WPSSO_NONCE_NAME ),
 				'_ajax_actions' => array(
-					'get_notices_json'    => 'wpsso_get_notices_json',
-					'schema_type_og_type' => 'wpsso_schema_type_og_type',
+					'schema_type_og_type'  => 'wpsso_schema_type_og_type',
+					'get_notices_json'     => 'wpsso_get_notices_json',
+					'get_validate_submenu' => 'wpsso_get_validate_submenu',
+					'metabox_postboxes'    => array(
+						'wpsso_' . $metabox_id => 'wpsso_get_metabox_postbox_id_' . $metabox_id . '_inside',
+					),
 				),
 				'_option_labels'         => $option_labels,
-				'_metabox_postbox_ids'   => $metabox_postbox_ids,	// Metabox postbox ids to update when the block editor saves.
 				'_tb_types_showing'      => $tb_types_showing,		// Maybe null, true, false, or array.
 				'_notice_text_id'        => $notice_text_uniqid,	// CSS id of hidden notice text container.
 				'_no_notices_html'       => $no_notices_html,

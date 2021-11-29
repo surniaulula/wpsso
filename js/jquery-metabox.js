@@ -56,9 +56,9 @@ function wpssoOgSchemaType() {
 	var adminPageL10n      = 'wpssoAdminPageL10n';
 	var cfg                = window[ adminPageL10n ];
 
-	if ( 'undefined' === typeof cfg._ajax_actions[ 'schema_type_og_type' ] ) {
+	if ( 'undefined' === typeof cfg[ '_ajax_actions' ][ 'schema_type_og_type' ] ) {
 
-		console.error( 'sucomBlockNotices: missing config for _ajax_actions array \'schema_type_og_type\' element' );
+		console.error( 'wpssoOgSchemaType: missing _ajax_actions schema_type_og_type' );
 
 		return;
 	}
@@ -67,9 +67,9 @@ function wpssoOgSchemaType() {
 	var schema_type_val    = select_schema_type.val();
 
 	var ajaxData = {
-		action: cfg._ajax_actions[ 'schema_type_og_type' ],	// Returns schema_og_type_val.
+		action: cfg[ '_ajax_actions' ][ 'schema_type_og_type' ],	// Returns schema_og_type_val.
 		schema_type: schema_type_val,
-		_ajax_nonce: cfg._ajax_nonce,
+		_ajax_nonce: cfg[ '_ajax_nonce' ],
 	}
 
 	jQuery.post( ajaxurl, ajaxData, function( schema_og_type_val ) {
@@ -91,8 +91,8 @@ function wpssoOgSchemaType() {
 		 */
 		if ( schema_og_type_val ) {	// Can be false.
 
-			var schema_type_label = cfg._option_labels[ 'schema_type' ];
-			var linked_to_label   = cfg._linked_to_transl.formatUnicorn( schema_type_label );
+			var schema_type_label = cfg[ '_option_labels' ][ 'schema_type' ];
+			var linked_to_label   = cfg[ '_linked_to_transl' ].formatUnicorn( schema_type_label );
 
 			select_og_type.after( '<div id="og_type_linked" class="dashicons dashicons-admin-links linked_to_label" title="' + linked_to_label + '"></div>' );
 
@@ -145,3 +145,4 @@ function wpssoSchemaPlaceId() {
 
 	sucomSelectUniquePair( select_schema_place, select_schema_org );
 }
+

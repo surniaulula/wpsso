@@ -17,51 +17,59 @@ function sucomBlockPostbox( pluginId, adminPageL10n ) {
 	var post_id          = getCurrentPostId();
 	var cfg              = window[ adminPageL10n ];
 
-	if ( ! jQuery.isArray( cfg._metabox_postbox_ids ) ) {
+	if ( ! cfg[ '_ajax_nonce' ] ) {
 
-		console.error( 'sucomBlockPostbox: missing config for _metabox_postbox_ids array' );
+		console.error( 'sucomBlockPostbox: missing _ajax_nonce' );
 
 		return;
 
-	} else if ( ! cfg._ajax_nonce ) {
+	} else if ( cfg[ '_metabox_postbox_ids' ] ) {	// Backwards compatibility.
 
-		console.error( 'sucomBlockPostbox: missing config for _ajax_nonce value' );
+		cfg[ '_ajax_actions' ] = { 'metabox_postboxes':{} };
+
+		for ( var postbox_key in cfg[ '_metabox_postbox_ids' ] ) {
+
+			var postbox_id = cfg[ '_metabox_postbox_ids' ][ postbox_key ];
+
+			var ajax_action_update_postbox = 'get_metabox_postbox_id_' + postbox_id + '_inside';
+
+			cfg[ '_ajax_actions' ][ 'metabox_postboxes' ][ postbox_id ] = ajax_action_update_postbox;
+		}
+
+	} else if ( ! cfg[ '_ajax_actions' ][ 'metabox_postboxes' ] ) {
+
+		console.error( 'sucomBlockPostbox: missing _ajax_actions metabox_postboxes' );
 
 		return;
 	}
 
-	for ( var postbox_key in cfg._metabox_postbox_ids ) {
+	for ( var postbox_id in cfg[ '_ajax_actions' ][ 'metabox_postboxes' ] ) {
 
-		var postbox_id = cfg._metabox_postbox_ids[ postbox_key ];
+		var ajax_action_update_postbox = cfg[ '_ajax_actions' ][ 'metabox_postboxes' ][ postbox_id ];
 
-		if ( postbox_id ) {
+		/**
+		 * Just in case - sanitize the WP ajax action filter name.
+		 */
+		ajax_action_update_postbox = ajax_action_update_postbox.toLowerCase();
+		ajax_action_update_postbox = ajax_action_update_postbox.replace( /[:\/\-\. ]+/g, '_' );
+		ajax_action_update_postbox = ajax_action_update_postbox.replace( /[^a-z0-9_\-]/g, '' );
 
-			var ajax_action_update_postbox = 'get_metabox_postbox_id_' + postbox_id + '_inside';
+		var ajaxData = {
+			action: ajax_action_update_postbox,
+			post_id: post_id,
+			_ajax_nonce: cfg[ '_ajax_nonce' ],
+		}
+
+		jQuery.post( ajaxurl, ajaxData, function( html ) {
 
 			/**
-			 * Just in case - sanitize the WP ajax action filter name.
+			 * The returned HTML includes javascript to call the sucomInitMetabox() function.
 			 */
-			ajax_action_update_postbox = ajax_action_update_postbox.toLowerCase();
-			ajax_action_update_postbox = ajax_action_update_postbox.replace( /[:\/\-\. ]+/g, '_' );
-			ajax_action_update_postbox = ajax_action_update_postbox.replace( /[^a-z0-9_\-]/g, '' );
+			if ( html ) {
 
-			var ajaxData = {
-				action: ajax_action_update_postbox,
-				post_id: post_id,
-				_ajax_nonce: cfg._ajax_nonce,
+				jQuery( '#' + postbox_id + '.postbox div.inside' ).replaceWith( '<div class="inside">' + html + '</div>' );
 			}
-
-			jQuery.post( ajaxurl, ajaxData, function( html ) {
-
-				/**
-				 * The returned HTML includes javascript to call the sucomInitMetabox() function.
-				 */
-				if ( html ) {
-
-					jQuery( '#' + postbox_id + '.postbox div.inside' ).replaceWith( '<div class="inside">' + html + '</div>' );
-				}
-			} );
-		}
+		} );
 	}
 }
 
@@ -76,18 +84,18 @@ function sucomBlockNotices( pluginId, adminPageL10n ) {
 	var removeNotice  = wp.data.dispatch( 'core/notices' ).removeNotice;
 	var cfg           = window[ adminPageL10n ];
 
-	if ( 'undefined' === typeof cfg._ajax_actions[ 'get_notices_json' ] ) {
+	if ( 'undefined' === typeof cfg[ '_ajax_actions' ][ 'get_notices_json' ] ) {
 
-		console.error( 'sucomBlockNotices: missing config for _ajax_actions array \'get_notices_json\' element' );
+		console.error( 'sucomBlockNotices: missing _ajax_actions get_notices_json' );
 
 		return;
 	}
 
 	var ajaxData = {
-		action: cfg._ajax_actions[ 'get_notices_json' ],
+		action: cfg[ '_ajax_actions' ][ 'get_notices_json' ],
 		context: 'block_editor',
-		_ajax_nonce: cfg._ajax_nonce,
-		_exclude_types: cfg._tb_types_showing,	// Exclude the toolbar notice types.
+		_ajax_nonce: cfg[ '_ajax_nonce' ],
+		_exclude_types: cfg[ '_tb_types_showing' ],	// Exclude the toolbar notice types.
 	}
 
 	jQuery.getJSON( ajaxurl, ajaxData, function( data ) {
@@ -174,6 +182,46 @@ function sucomBlockNotices( pluginId, adminPageL10n ) {
 	} );
 }
 
+function sucomToolbarValidators( pluginId, adminPageL10n ) {
+
+	var getCurrentPostId = wp.data.select( 'core/editor' ).getCurrentPostId;
+	var post_id          = getCurrentPostId();
+	var cfg              = window[ adminPageL10n ];
+
+	if ( ! cfg[ '_ajax_nonce' ] ) {
+
+		console.error( 'sucomBlockPostbox: missing _ajax_nonce' );
+
+		return;
+
+	} else if ( ! cfg[ '_ajax_actions' ][ 'get_validate_submenu' ] ) {
+
+		console.error( 'sucomBlockPostbox: missing _ajax_actions get_validate_submenu' );
+
+		return;
+	}
+
+	var menuId    = '#wp-admin-bar-' + pluginId + '-validate';
+	var subMenuId = '#wp-admin-bar-' + pluginId + '-validate ul.ab-submenu';
+
+	var ajaxData = {
+		action: cfg[ '_ajax_actions' ][ 'get_validate_submenu' ],
+		post_id: post_id,
+		_ajax_nonce: cfg[ '_ajax_nonce' ],
+	}
+
+	jQuery.post( ajaxurl, ajaxData, function( html ) {
+
+		/**
+		 * The returned HTML includes javascript to call the sucomInitMetabox() function.
+		 */
+		if ( html ) {
+
+			jQuery( subMenuId ).replaceWith( html );
+		}
+	} );
+}
+
 function sucomToolbarNotices( pluginId, adminPageL10n ) {
 
 	var cfg = window[ adminPageL10n ];
@@ -181,30 +229,30 @@ function sucomToolbarNotices( pluginId, adminPageL10n ) {
 	/**
 	 * Just in case - no use getting notices if there's nothing to get.
 	 */
-	if ( ! cfg._tb_types_showing ) return;
+	if ( ! cfg[ '_tb_types_showing' ] ) return;
 
 	var menuId    = '#wp-admin-bar-' + pluginId + '-toolbar-notices';
 	var subMenuId = '#wp-admin-bar-' + pluginId + '-toolbar-notices-container';
 	var counterId = '#' + pluginId + '-toolbar-notices-count';
 
 	var ajaxData = {
-		action: cfg._ajax_actions[ 'get_notices_json' ],
+		action: cfg[ '_ajax_actions' ][ 'get_notices_json' ],
 		context: 'toolbar_notices',
-		_ajax_nonce: cfg._ajax_nonce,
-		_notice_types: cfg._tb_types_showing,
+		_ajax_nonce: cfg[ '_ajax_nonce' ],
+		_notice_types: cfg[ '_tb_types_showing' ],
 	}
 
 	jQuery.getJSON( ajaxurl, ajaxData, function( data ) {
 
 		var noticeHtml       = '';
 		var noticeText       = '';
-		var noticeTextId     = cfg._notice_text_id;
+		var noticeTextId     = cfg[ '_notice_text_id' ];
 		var noticeStatus     = '';
 		var noticeTotalCount = 0;
 		var noticeTypeCount  = {};
-		var noNoticesHtml    = cfg._no_notices_html;
-		var copyNoticesHtml  = cfg._copy_notices_html;
-		var countMsgsTransl  = cfg._count_msgs_transl;
+		var noNoticesHtml    = cfg[ '_no_notices_html' ];
+		var copyNoticesHtml  = cfg[ '_copy_notices_html' ];
+		var countMsgsTransl  = cfg[ '_count_msgs_transl' ];
 
 		jQuery.each( data, function( noticeType ) {
 
@@ -326,7 +374,7 @@ function sucomCopyById( cssId, adminPageL10n ) {
 
 	try {
 
-		var copyClipboardTransl = cfg._copy_clipboard_transl;
+		var copyClipboardTransl = cfg[ '_copy_clipboard_transl' ];
 
 		var elem = document.getElementById( cssId );
 
@@ -439,7 +487,7 @@ function sucomTextLen( containerId, adminPageL10n ) {
 
 			limit_html = min_len;
 
-			msg_transl = cfg._min_len_transl;
+			msg_transl = cfg[ '_min_len_transl' ];
 
 		} else {
 
@@ -448,16 +496,16 @@ function sucomTextLen( containerId, adminPageL10n ) {
 				limit_html = String( min_len ) + '-' + String( max_len );
 			}
 
-			msg_transl = cfg._req_len_transl;
+			msg_transl = cfg[ '_req_len_transl' ];
 		}
 
 	} else if ( max_len ) {
 
-		msg_transl = cfg._max_len_transl;
+		msg_transl = cfg[ '_max_len_transl' ];
 
 	} else {
 
-		msg_transl = cfg._len_transl;
+		msg_transl = cfg[ '_len_transl' ];
 	}
 
 	/**

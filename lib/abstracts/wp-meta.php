@@ -1455,26 +1455,24 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 		protected function verify_submit_nonce() {
 
-			if ( empty( $_POST ) ) {
+			if ( empty( $_POST ) ) {	// Nothing to save - nonce not required.
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'empty POST for submit' );
+					$this->p->debug->log( 'submit POST is empty' );
 				}
 
 				return false;
-
 			}
 
 			if ( empty( $_POST[ WPSSO_NONCE_NAME ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'submit POST missing nonce token' );
+					$this->p->debug->log( 'submit POST nonce token missing' );
 				}
 
 				return false;
-
 			}
 
 			if ( ! wp_verify_nonce( $_POST[ WPSSO_NONCE_NAME ], WpssoAdmin::get_nonce_action() ) ) {

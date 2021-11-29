@@ -3155,7 +3155,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( ! empty( $mod[ 'is_post' ] ) ) {
 
-				if ( empty( $mod[ 'post_status' ] ) || $mod[ 'post_status' ] === 'auto-draft' ) {
+				if ( empty( $mod[ 'post_status' ] ) || 'auto-draft' === $mod[ 'post_status' ] ) {
 
 					return true;
 				}

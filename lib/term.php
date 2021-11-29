@@ -164,7 +164,10 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->mark();
+				$this->p->debug->log_args( array(
+					'term_id'  => $term_id,
+					'tax_slug' => $tax_slug,
+				) );
 			}
 
 			static $local_cache = array();
@@ -238,9 +241,19 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			 */
 			if ( ! isset( $local_cache[ $cache_id ] ) ) {
 
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'new local cache id ' . $cache_id );
+				}
+
 				$local_cache[ $cache_id ] = null;
 
 			} elseif ( $this->md_cache_disabled ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'new local cache id ' . $cache_id . '(md cache disabled)' );
+				}
 
 				$local_cache[ $cache_id ] = null;
 			}
@@ -341,13 +354,31 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->mark();
+				$this->p->debug->log_args( array( 
+					'term_id'     => $term_id,
+					'term_tax_id' => $term_tax_id,
+				) );
+			}
+
+			if ( empty( $term_id ) ) {	// Just in case.
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: term id is empty' );
+				}
+
+				return;
 			}
 
 			/**
 			 * Make sure the current user can submit and same metabox options.
 			 */
 			if ( ! $this->user_can_save( $term_id, $term_tax_id ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: user cannot save term id ' . $term_id );
+				}
 
 				return;
 			}
@@ -795,7 +826,10 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->mark();
+				$this->p->debug->log_args( array( 
+					'term_id'     => $term_id,
+					'term_tax_id' => $term_tax_id,
+				) );
 			}
 
 			static $do_once = array();

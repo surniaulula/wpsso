@@ -85,11 +85,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				$metabox_id = $this->p->cf[ 'meta' ][ 'id' ];
 
-				$action_name = 'wp_ajax_get_metabox_postbox_id_wpsso_' . $metabox_id . '_inside';
+				add_action( 'wp_ajax_wpsso_get_metabox_postbox_id_' . $metabox_id . '_inside', array( $this, 'ajax_get_metabox_document_meta' ) );
 
-				add_action( $action_name, array( $this, 'ajax_get_metabox_document_meta' ) );
+				add_action( 'wp_ajax_wpsso_get_validate_submenu', array( $this, 'ajax_get_validate_submenu' ) );
 
-				if ( ! empty( $_GET ) || basename( $_SERVER[ 'PHP_SELF' ] ) === 'post-new.php' ) {
+				if ( ! empty( $_GET ) ) {
 
 					/**
 					 * load_meta_page() priorities: 100 post, 200 user, 300 term.
@@ -106,6 +106,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 * post meta for any post type.
 				 */
 				add_action( 'save_post', array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY );	// Default is -100.
+
+				add_action( 'wp_after_insert_post', array( $this, 'after_insert_post' ), 10, 4 );
 
 				/**
 				 * Don't hook the 'clean_post_cache' action since 'save_post' is run after 'clean_post_cache' and
@@ -220,7 +222,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->mark();
+				$this->p->debug->log_args( array(
+					'post_id' => $post_id,
+				) );
 			}
 
 			static $local_cache = array();
@@ -341,9 +345,19 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 */
 			if ( ! isset( $local_cache[ $cache_id ] ) ) {
 
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'new local cache id ' . $cache_id );
+				}
+
 				$local_cache[ $cache_id ] = null;
 
 			} elseif ( $this->md_cache_disabled ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'new local cache id ' . $cache_id . '(md cache disabled)' );
+				}
 
 				$local_cache[ $cache_id ] = null;
 			}
@@ -458,10 +472,28 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->mark();
+				$this->p->debug->log_args( array(
+					'post_id' => $post_id,
+					'rel_id'  => $rel_id,
+				) );
+			}
+
+			if ( empty( $post_id ) ) {	// Just in case.
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: post id is empty' );
+				}
+
+				return;
 			}
 
 			if ( ! $this->user_can_save( $post_id, $rel_id ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: user cannot save post id ' . $post_id );
+				}
 
 				return;
 			}
@@ -490,6 +522,29 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		public function delete_options( $post_id, $rel_id = false ) {
 
 			return delete_post_meta( $post_id, WPSSO_META_NAME );
+		}
+
+		public function after_insert_post( $post_id, $post_obj, $update, $post_before ) {
+
+			if ( null === $post_before ) {
+
+				if ( false === $update ) {
+
+					if ( isset( $post_obj->post_status ) && 'auto-draft' === $post_obj->post_status ) {
+
+						$mod = $this->get_mod( $post_id );
+
+						/**
+						 * Notices have already been shown before creating a new post object.
+						 *
+						 * $read_cache is false since there shouldn't be a cache entry for a new post.
+						 */
+						parent::$head_tags = $this->p->head->get_head_array( $post_id, $mod, $read_cache = false );
+
+						parent::$head_info = $this->p->head->extract_head_info( parent::$head_tags, $mod );
+					}
+				}
+			}
 		}
 
 		/**
@@ -708,14 +763,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$this->p->debug->log( SucomUtil::pretty_array( $mod ) );
 			}
 
-			if ( 'auto-draft' === $post_obj->post_status ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'head meta skipped: post_status is auto-draft' );
-				}
-
-			} elseif ( 'trash' === $post_obj->post_status ) {
+			if ( 'trash' === $post_obj->post_status ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -1298,6 +1346,84 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$metabox_context, $metabox_prio, $callback_args );
 		}
 
+		public function ajax_get_validate_submenu() {
+
+			$doing_ajax = SucomUtilWP::doing_ajax();
+
+			if ( ! $doing_ajax ) {	// Just in case.
+
+				return;
+			}
+
+			$post_obj = $this->die_or_get_ajax_post_obj();
+
+			require_once ABSPATH . WPINC . '/class-wp-admin-bar.php';
+
+			$admin_bar_class = apply_filters( 'wp_admin_bar_class', 'WP_Admin_Bar' );
+			$ajax_admin_bar  = new $admin_bar_class;
+			$parent_id       = $this->p->page->add_validate_toolbar( $ajax_admin_bar, $post_obj->ID );
+			$nodes           = $ajax_admin_bar->get_nodes();
+			$parent_node     = $nodes[ $parent_id ];
+			$menu_class      = 'ab-submenu' . ( empty( $parent_node->meta[ 'class' ] ) ? '' : $parent_node->meta[ 'class' ] );
+
+			$metabox_html = '<ul id="' . esc_attr( 'wp-admin-bar-' . $parent_node->id . '-default' ) . '"';
+			$metabox_html .= $menu_class ? ' class="' . esc_attr( trim( $menu_class ) ) . '"' : '';
+			$metabox_html .= '>';
+
+			foreach ( $nodes as $key => $node ) {
+
+				if ( $parent_id !== $node->parent ) {
+
+					continue;
+				}
+
+				$has_link              = ! empty( $node->href );
+				$is_parent             = ! empty( $node->children );
+				$is_root_top_item      = 'root-default' === $node->parent;
+				$is_top_secondary_item = 'top-secondary' === $node->parent;
+				$tabindex              = isset( $node->meta[ 'tabindex' ] ) && is_numeric( $node->meta[ 'tabindex' ] ) ? (int) $node->meta[ 'tabindex' ] : '';
+				$aria_attributes       = '' !== $tabindex ? ' tabindex="' . $tabindex . '"' : '';
+				$menu_class            = empty( $node->meta[ 'class' ] ) ? '' : $node->meta[ 'class' ];
+				$arrow                 = '';
+
+				if ( ! $is_root_top_item && ! $is_top_secondary_item && $is_parent ) {
+				
+					$arrow = '<span class="wp-admin-bar-arrow" aria-hidden="true"></span>';
+		                }
+
+				$link = $has_link ?
+					'<a class="ab-item"' . $aria_attributes . ' href="' . esc_url( $node->href ) . '"' :
+					'<div class="ab-item ab-empty-item"' . $aria_attributes;
+
+				$attributes = array( 'onclick', 'target', 'title', 'rel', 'lang', 'dir' );
+
+				foreach ( $attributes as $attribute ) {
+
+					 if ( empty( $node->meta[ $attribute ] ) ) {
+
+						 continue;
+					 }
+
+					$link .= ' ' . $attribute . '="';
+					$link .= 'onclick' === $attribute ? esc_js( $node->meta[ $attribute ] ) : esc_attr( $node->meta[ $attribute ] );
+					$link .= '"';
+				}
+
+				$link .= '>' . $arrow . $node->title;
+				$link .= $has_link ? '</a>' : '</div>';
+
+				$metabox_html .= '<li id="' . esc_attr( 'wp-admin-bar-' . $node->id ) . '"';
+				$metabox_html .= $menu_class ? ' class="' . esc_attr( trim( $menu_class ) ) . '"' : '';
+				$metabox_html .= '>' . $link;
+				$metabox_html .= empty( $node->meta[ 'html' ] ) ? '' : $node->meta[ 'html' ];
+				$metabox_html .=  '</li>' . "\n";
+			}
+
+			$metabox_html .= '</ul>';
+
+			die( $metabox_html );
+		}
+
 		public function ajax_get_metabox_document_meta() {
 
 			$doing_ajax = SucomUtilWP::doing_ajax();
@@ -1305,50 +1431,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			if ( ! $doing_ajax ) {	// Just in case.
 
 				return;
-
-			} elseif ( SucomUtil::get_const( 'DOING_AUTOSAVE' ) ) {
-
-				die( -1 );
 			}
 
-			check_ajax_referer( WPSSO_NONCE_NAME, '_ajax_nonce', true );
+			$post_obj = $this->die_or_get_ajax_post_obj();
 
-			if ( empty( $_POST[ 'post_id' ] ) ) {
-
-				die( -1 );
-			}
-
-			$post_id = $_POST[ 'post_id' ];
-
-			$post_obj = SucomUtil::get_post_object( $post_id );
-
-			if ( ! is_object( $post_obj ) ) {
-
-				die( -1 );
-
-			} elseif ( empty( $post_obj->post_type ) ) {
-
-				die( -1 );
-
-			} elseif ( empty( $post_obj->post_status ) ) {
-
-				die( -1 );
-
-			} elseif ( 'auto-draft' === $post_obj->post_status ) {
-
-				die( -1 );
-
-			} elseif ( 'trash' === $post_obj->post_status ) {
-
-				die( -1 );
-			}
-
-			$mod = $this->get_mod( $post_id );
+			$mod = $this->get_mod( $post_obj->ID );
 
 			/**
 			 * $read_cache is false to generate notices etc.
 			 */
-			parent::$head_tags = $this->p->head->get_head_array( $post_id, $mod, $read_cache = false );
+			parent::$head_tags = $this->p->head->get_head_array( $post_obj->ID, $mod, $read_cache = false );
 
 			parent::$head_info = $this->p->head->extract_head_info( parent::$head_tags, $mod );
 
@@ -1387,6 +1479,63 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			die( $metabox_html );
 		}
 
+		private function die_or_get_ajax_post_obj() {
+
+			$error_msg = false;
+
+			if ( SucomUtil::get_const( 'DOING_AUTOSAVE' ) ) {
+
+				die( -1 );
+			}
+
+			if ( ! check_ajax_referer( WPSSO_NONCE_NAME, '_ajax_nonce', true ) ) {
+
+				$error_msg = __( 'invalid ajax referer nonce value', 'wpsso' );
+			}
+
+			if ( empty( $_POST[ 'post_id' ] ) ) {
+
+				$error_msg = __( 'ajax request missing the post_id', 'wpsso' );
+			}
+
+			if ( ! $error_msg ) {
+
+				$post_id = $_POST[ 'post_id' ];
+
+				$post_obj = SucomUtil::get_post_object( $post_id );
+
+				if ( ! is_object( $post_obj ) ) {
+
+					die( -1 );
+
+				} elseif ( empty( $post_obj->post_type ) ) {
+
+					die( -1 );
+
+				} elseif ( empty( $post_obj->post_status ) ) {
+
+					die( -1 );
+
+				} elseif ( 'trash' === $post_obj->post_status ) {
+
+					die( -1 );
+				}
+			}
+
+			if ( $error_msg ) {
+
+				$stack = debug_backtrace();
+
+				$error_pre = sprintf( __( '%s error:', 'wpsso' ), $stack[ 1 ][ 'function' ] );
+
+				SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
+
+				die( -1 );
+			}
+
+			return $post_obj;
+		}
+
 		public function get_metabox_document_meta( $post_obj ) {
 
 			$metabox_id = $this->p->cf[ 'meta' ][ 'id' ];
@@ -1394,8 +1543,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$tabs       = $this->get_document_meta_tabs( $metabox_id, $mod );
 			$opts       = $this->get_options( $post_obj->ID );
 			$def_opts   = $this->get_defaults( $post_obj->ID );
-
-			$is_auto_draft = SucomUtil::is_auto_draft( $mod );
 
 			$this->p->admin->get_pkg_info();
 
@@ -1412,24 +1559,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			foreach ( $tabs as $tab_key => $title ) {
 
-				if ( $is_auto_draft ) {
+				$mb_filter_name = 'wpsso_metabox_' . $metabox_id . '_' . $tab_key . '_rows';
 
-					$table_rows[ $tab_key ][] = '<td><blockquote class="status-info save-a-draft"><p>' .
-						__( 'Save a draft or publish to display these options.', 'wpsso' ) . '</p></blockquote></td>';
+				$mod_filter_name = 'wpsso_' . $mod[ 'name' ] . '_' . $tab_key . '_rows';
 
-				} else {
+				$table_rows[ $tab_key ] = (array) apply_filters( $mb_filter_name, array(), $this->form, parent::$head_info, $mod );
 
-					$mb_filter_name = 'wpsso_metabox_' . $metabox_id . '_' . $tab_key . '_rows';
-
-					$mod_filter_name = 'wpsso_' . $mod[ 'name' ] . '_' . $tab_key . '_rows';
-
-					$table_rows[ $tab_key ] = (array) apply_filters( $mb_filter_name, array(), $this->form, parent::$head_info, $mod );
-
-					$table_rows[ $tab_key ] = (array) apply_filters( $mod_filter_name, $table_rows[ $tab_key ], $this->form, parent::$head_info, $mod );
-				}
+				$table_rows[ $tab_key ] = (array) apply_filters( $mod_filter_name, $table_rows[ $tab_key ], $this->form, parent::$head_info, $mod );
 			}
 
-			$tabbed_args = array( 'layout' => 'vertical', 'is_auto_draft' => $is_auto_draft );
+			$tabbed_args = array( 'layout' => 'vertical' );
 
 			$mb_container_id = 'wpsso_metabox_' . $metabox_id . '_inside';
 
@@ -1462,7 +1601,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->mark();
+				$this->p->debug->log_args( array(
+					'post_id' => $post_id,
+					'rel_d'   => $rel_id,
+				) );
 			}
 
 			static $do_once = array();
@@ -1474,11 +1616,15 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$do_once[ $post_id ][ $rel_id ] = true;
 
+			if ( empty( $post_id ) ) {	// Just in case.
+
+				return;	// Stop here.
+			}
+
 			$post_status = get_post_status( $post_id );
 
 			switch ( $post_status ) {
 
-				case 'auto-draft':
 				case 'inherit':	// Post revision.
 				case 'trash':
 
@@ -1489,6 +1635,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					return;	// Stop here.
 
+				case 'auto-draft':
 				case 'draft':
 				case 'expired':
 				case 'future':

@@ -539,6 +539,14 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 				} elseif ( isset( $parts[ 5 ] ) ) {
 
 					/**
+					 * Skip the generator meta tags.
+					 */
+					if ( 'meta' === $parts[ 1 ] && 'name' === $parts[ 2 ] && 'generator' === $parts[ 3 ] ) {
+
+						continue;
+					}
+
+					/**
 					 * Skip meta tags with reserved values but display empty values.
 					 */
 					if ( $parts[ 5 ] === WPSSO_UNDEF || $parts[ 5 ] === (string) WPSSO_UNDEF ) {
@@ -551,7 +559,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 						continue;
 					}
 
-					if ( $parts[ 1 ] === 'meta' && $parts[ 2 ] === 'itemprop' && strpos( $parts[ 3 ], '.' ) !== 0 ) {
+					if ( 'meta' === $parts[ 1 ] && 'itemprop' === $parts[ 2 ] && 0 !== strpos( $parts[ 3 ], '.' ) ) {
 
 						$match_name = preg_replace( '/^.*\./', '', $parts[ 3 ] );
 

@@ -62,11 +62,10 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 			}
 
 			extract( array_merge( array(
-				'layout'        => 'horizontal',	// 'horizontal', 'vertical', or 'responsive'.
-				'is_auto_draft' => false,
+				'layout' => 'horizontal',	// 'horizontal', 'vertical', or 'responsive'.
 			), $args ) );
 
-			$class_metabox_tabs .= ' ' . $layout . ( $is_auto_draft ? ' auto-draft' : '' );
+			$class_metabox_tabs .= ' ' . $layout;
 			$metabox_html       .= '<div class="' . $class_metabox_tabs . '"' . ( $container_id ? ' id="' . $container_id . '"' : '' ) . '>' . "\n";
 			$metabox_html       .= '<ul class="' . $class_metabox_tabs . '">';
 

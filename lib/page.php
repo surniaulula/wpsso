@@ -49,14 +49,19 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			add_action( 'pre_get_document_title', array( $this, 'pre_get_document_title' ), 1000 );	// Since WP v4.4.
 		}
 
-		public function add_validate_toolbar( $wp_admin_bar ) {
+		/**
+		 * This method is hooked to the 'admin_bar_menu' action and receives a reference to the $wp_admin_bar variable.
+		 *
+		 * WpssoPost->ajax_get_validate_submenu() also calls this method directly, supplying the post ID in $use_post.
+		 */
+		public function add_validate_toolbar( &$wp_admin_bar, $use_post = false ) {
 
 			if ( ! $user_id = get_current_user_id() ) {	// Just in case.
 
 				return;
 			}
 
-			$use_post = apply_filters( 'wpsso_use_post', false );
+			$use_post = apply_filters( 'wpsso_use_post', $use_post );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -67,49 +72,49 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$validators = $this->p->util->get_validators( $mod, $form = null );
 
-			if ( ! empty( $validators ) ) {
+			$parent_id  = 'wpsso-validate';
+			$menu_icon  = '<span class="ab-icon dashicons-code-standards"></span>';
+			$menu_title = _x( 'Validators', 'toolbar menu title', 'wpsso' );
+			$menu_items = array();
 
-				$menu_icon  = '<span class="ab-icon dashicons-code-standards"></span>';
-				$menu_title = _x( 'Validators', 'toolbar menu title', 'wpsso' );
-				$menu_items = array();
+			foreach ( $validators as $key => $el ) {
 
-				foreach ( $validators as $key => $el ) {
+				if ( empty( $el[ 'type' ] ) ) {
 
-					if ( empty( $el[ 'type' ] ) ) {
-
-						continue;
-					}
-
-					$menu_items[] = array(
-						'id'     => 'wpsso-validate-' . $key,
-						'title'  => $el[ 'type' ],
-						'parent' => 'wpsso-validate',
-						'href'   => $el[ 'url' ],
-						'group'  => false,
-						'meta'   => array(
-							'class'  => empty( $el[ 'url' ] ) ? 'disabled' : '',
-							'target' => '_blank',
-							'title'  => $el[ 'title' ],
-						),
-					);
+					continue;
 				}
 
-				$wp_admin_bar->add_node( array(
-					'id'     => 'wpsso-validate',
-					'title'  => $menu_icon . $menu_title,
-					'parent' => false,
-					'href'   => false,
+				$menu_items[] = array(
+					'id'     => $parent_id . '-' . $key,
+					'title'  => $el[ 'type' ],
+					'parent' => $parent_id,
+					'href'   => $el[ 'url' ],
 					'group'  => false,
 					'meta'   => array(
-						'html' => '<style type="text/css">#wp-admin-bar-wpsso-validate .disabled { opacity:0.5; filter:alpha(opacity=50); }</style>',
+						'class'  => empty( $el[ 'url' ] ) ? 'disabled' : '',
+						'target' => '_blank',
+						'title'  => $el[ 'title' ],
 					),
-				) );
-
-				foreach ( $menu_items as $menu_item ) {
-
-					$wp_admin_bar->add_node( $menu_item );
-				}
+				);
 			}
+
+			$wp_admin_bar->add_node( array(
+				'id'     => $parent_id,
+				'title'  => $menu_icon . $menu_title,
+				'parent' => false,
+				'href'   => false,
+				'group'  => false,
+				'meta'   => array(
+					'html' => '<style type="text/css">#wp-admin-bar-wpsso-validate .disabled { opacity:0.5; filter:alpha(opacity=50); }</style>',
+				),
+			) );
+
+			foreach ( $menu_items as $menu_item ) {
+
+				$wp_admin_bar->add_node( $menu_item );
+			}
+
+			return $parent_id;
 		}
 
 		/**

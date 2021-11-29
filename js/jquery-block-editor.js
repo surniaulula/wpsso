@@ -13,14 +13,13 @@ var wpssoBlockEditor = ( function(){
 
 			var isSavingMb = isSavingMetaBoxes();				// Check if we're saving metaboxes.
 
-			if ( wasSavingMb ) {						// Last check was saving metaboxes.
+			if ( wasSavingMb && ! isSavingMb ) {				// Check if done saving metaboxes.
 
-				if ( ! isSavingMb ) {					// Saving metaboxes is done.
+				sucomBlockPostbox( pluginId, adminPageL10n );		// Refresh our metabox(es).
 
-					sucomBlockPostbox( pluginId, adminPageL10n );	// Refresh our metabox(es).
+				sucomBlockNotices( pluginId, adminPageL10n );		// Refresh the block editor and toolbar notices.
 
-					sucomBlockNotices( pluginId, adminPageL10n );	// Refresh the notices.
-				}
+				sucomToolbarValidators( pluginId, adminPageL10n );	// Refresh the toolbar validators.
 			}
 
 			wasSavingMb = isSavingMb;
@@ -29,3 +28,4 @@ var wpssoBlockEditor = ( function(){
 })();
 
 wp.data.subscribe( wpssoBlockEditor.refreshPostbox );
+

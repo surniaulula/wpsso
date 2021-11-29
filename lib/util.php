@@ -3438,16 +3438,23 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				}
 			}
 
+			$have_url      = true;
 			$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = true );
 
-			if ( empty( $canonical_url ) ) {	// Just in case.
+			if ( empty( $canonical_url ) ) {
 
-				if ( $this->p->debug->enabled ) {
+				$have_url = false;
 
-					$this->p->debug->log( 'exiting early: get_canonical_url() returned an empty string' );
+			} elseif ( ! $mod[ 'is_public' ] ) {
+
+				$have_url = false;
+
+			} elseif ( $mod[ 'is_post' ] ) {
+			
+				if ( 'publish' !== $mod[ 'post_status' ] ) {
+					
+					$have_url = false;
 				}
-
-				return array();
 			}
 
 			$have_amp          = $mod[ 'is_post' ] && $mod[ 'id' ] && function_exists( 'amp_get_permalink' ) ? true : false;
@@ -3456,11 +3463,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$canonical_url_enc = urlencode( $canonical_url );
 
 			$validators = array(
-				'amp' => $mod[ 'is_post' ] ? array(	// Only show AMP validator for post objects.
+				'amp' => array(
 					'title' => _x( 'The AMP Project Validator', 'option label', 'wpsso' ),
-					'type'  => _x( 'AMP Markup', 'validator type', 'wpsso' ) . ( $have_amp ? '' : ' **' ),
+					'type'  => _x( 'AMP Markup', 'validator type', 'wpsso' ) . ( $have_amp ? '' : ' *' ),
 					'url'   => $have_amp ? 'https://validator.ampproject.org/#url=' . $amp_url_enc : '',
-				) : array(),
+				),
 				'facebook-debugger' => array(
 					'title' => _x( 'Facebook Sharing Debugger', 'option label', 'wpsso' ),
 					'type'  => _x( 'Open Graph', 'validator type', 'wpsso' ),
@@ -3478,7 +3485,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				),
 				'google-rich-results' => array(
 					'title' => _x( 'Google Rich Results Test', 'option label', 'wpsso' ),
-					'type'  => _x( 'Rich Results', 'validator type', 'wpsso' ) . ( $have_schema ? '' : ' *' ),
+					'type'  => _x( 'Rich Results', 'validator type', 'wpsso' ) . ( $have_schema ? '' : ' **' ),
 					'url'   => $have_schema ? 'https://search.google.com/test/rich-results?url=' . $canonical_url_enc : '',
 				),
 				'linkedin' => array(
@@ -3508,6 +3515,14 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					'url'   => 'https://validator.w3.org/nu/?doc=' . $canonical_url_enc,
 				),
 			);
+
+			if ( ! $have_url ) {
+
+				foreach ( $validators as $key => $arr ) {
+
+					$validators[ $key ][ 'url' ] = '';
+				}
+			}
 
 			return $validators;
 		}

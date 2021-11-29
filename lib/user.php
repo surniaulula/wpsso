@@ -159,7 +159,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->mark();
+				$this->p->debug->log_args( array(
+					'user_id' => $user_id,
+				) );
 			}
 
 			static $local_cache = array();
@@ -231,9 +233,19 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			 */
 			if ( ! isset( $local_cache[ $cache_id ] ) ) {
 
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'new local cache id ' . $cache_id );
+				}
+
 				$local_cache[ $cache_id ] = null;
 
 			} elseif ( $this->md_cache_disabled ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'new local cache id ' . $cache_id . '(md cache disabled)' );
+				}
 
 				$local_cache[ $cache_id ] = null;
 			}
@@ -337,13 +349,31 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->mark();
+				$this->p->debug->log_args( array(
+					'user_id' => $user_id,
+					'rel_id'  => $rel_id,
+				) );
+			}
+
+			if ( empty( $user_id ) ) {	// Just in case.
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: user id is empty' );
+				}
+
+				return;
 			}
 
 			/**
 			 * Make sure the current user can submit and same metabox options.
 			 */
 			if ( ! $this->user_can_save( $user_id, $rel_id ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: user cannot save user id ' . $user_id );
+				}
 
 				return;
 			}
@@ -1355,7 +1385,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->mark();
+				$this->p->debug->log_args( array(
+					'user_id' => $user_id,
+					'rel_d'   => $rel_id,
+				) );
 			}
 
 			static $do_once = array();

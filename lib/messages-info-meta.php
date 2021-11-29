@@ -296,20 +296,20 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 
 				case 'info-meta-validate-footer':
 
-					if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
+					if ( ! function_exists( 'amp_get_permalink' ) ) {
 
 						$text .= '<p class="status-msg left">* ';
 
-						$text .= __( 'Schema markup is disabled.', 'wpsso' );
+						$text .= __( 'Activate an AMP plugin to create and validate AMP pages.', 'wpsso' );
 
 						$text .= '</p>';
 					}
 
-					if ( ! function_exists( 'amp_get_permalink' ) ) {
+					if ( empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
 
 						$text .= '<p class="status-msg left">** ';
 
-						$text .= __( 'Activate an AMP plugin to create and validate AMP pages.', 'wpsso' );
+						$text .= __( 'Schema markup is disabled.', 'wpsso' );
 
 						$text .= '</p>';
 					}
