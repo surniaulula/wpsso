@@ -243,12 +243,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.10.0-dev.1 (2021/11/29)**
+**Version 9.10.0-dev.2 (2021/11/30)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* The Document SSO metabox now shows default options when creating new posts / pages (ie. for the 'auto-draft' status).
+	* The Document SSO metabox now shows default option values when creating new posts / pages (ie. for the 'auto-draft' status).
 	* The Validators menu in the top toolbar is now refreshed when the post/page is saved in the Block Editor (validation links are shown for published posts).
 * **Bugfixes**
 	* None.
@@ -596,9 +596,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.10.0-dev.1 =
+= 9.10.0-dev.2 =
 
-(2021/11/29) The Document SSO metabox now shows default options when creating new posts / pages. The Validators menu in the top toolbar is now refreshed when the post/page is saved in the Block Editor.
+(2021/11/30) The Document SSO metabox now shows default options when creating new posts / pages. The Validators menu in the top toolbar is now refreshed when the post/page is saved in the Block Editor.
 
 = 9.9.0 =
 
