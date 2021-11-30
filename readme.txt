@@ -249,7 +249,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Improvements**
 	* The Document SSO metabox now shows default option values when creating new posts / pages (ie. for the 'auto-draft' status).
-	* The Validators menu in the top toolbar is now refreshed when the post/page is saved in the Block Editor (validation links are shown for published posts).
+	* The Validators toolbar menu now refreshes when the post/page is saved in the Block Editor (validation links are available for published posts).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -598,7 +598,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 9.10.0-dev.2 =
 
-(2021/11/30) The Document SSO metabox now shows default options when creating new posts / pages. The Validators menu in the top toolbar is now refreshed when the post/page is saved in the Block Editor.
+(2021/11/30) The Document SSO metabox now shows default option values when creating new posts / pages. The Validators toolbar menu now refreshes when the post/page is saved in the Block Editor.
 
 = 9.9.0 =
 
