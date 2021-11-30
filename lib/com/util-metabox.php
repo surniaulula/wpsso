@@ -21,11 +21,12 @@ if ( ! class_exists( 'SucomUtilMetabox' ) ) {
 
 		public static function get_table_metadata( array $metadata, array $skip_keys, $obj, $obj_id, $metabox_id, $admin_l10n, array $titles ) {
 
-			$metabox_id   = sanitize_key( $metabox_id );	// Just in case.
-			$md_filtered  = apply_filters( $metabox_id . '_metabox_table_metadata', $metadata, $obj );
-			$skip_keys    = apply_filters( $metabox_id . '_metabox_table_skip_keys', $skip_keys, $obj );
-			$del_meta_cap = apply_filters( $metabox_id . '_delete_meta_capability', 'manage_options', $obj );
-			$can_del_meta = current_user_can( $del_meta_cap, $obj_id );
+			$metabox_id     = sanitize_key( $metabox_id );	// Just in case.
+			$md_filtered    = apply_filters( $metabox_id . '_metabox_table_metadata', $metadata, $obj );
+			$skip_keys      = apply_filters( $metabox_id . '_metabox_table_skip_keys', $skip_keys, $obj );
+			$del_icon_class = apply_filters( $metabox_id . '_delete_meta_icon_class', 'dashicons dashicons-table-row-delete' );
+			$del_meta_cap   = apply_filters( $metabox_id . '_delete_meta_capability', 'manage_options', $obj );
+			$can_del_meta   = current_user_can( $del_meta_cap, $obj_id );
 
 			$metabox_html = self::get_table_metadata_css( $metabox_id );
 			$metabox_html .= '<table><thead>' . "\n";
@@ -64,7 +65,7 @@ if ( ! class_exists( 'SucomUtilMetabox' ) ) {
 				if ( $can_del_meta ) {
 
 					$metabox_html .= '<td class="del-column">';
-					$metabox_html .= $is_added ? '' : '<span class="dashicons dashicons-table-row-delete" onclick="' . $onclick_js . '"></span>';
+					$metabox_html .= $is_added ? '' : '<span class="' . $del_icon_class . '" onclick="' . $onclick_js . '"></span>';
 					$metabox_html .= '</td>';
 				}
 
@@ -109,14 +110,18 @@ if ( ! class_exists( 'SucomUtilMetabox' ) ) {
 					padding-top:15px;
 					padding-left:0;
 					border:none;
-					width:1.9em;
+					width:2em;
 					color:red;
 				}
 
 				div#' . $metabox_id . '.postbox table .del-column span {
-					font-size:0.9em;
-					width:0.9em;
-					height:0.9em;
+					font-size:1em;
+					width:1em;
+					height:1em;
+				}
+				
+				div#' . $metabox_id . '.postbox table .del-column span:hover {
+					cursor:pointer;
 				}
 
 				div#' . $metabox_id . '.postbox table .key-column {	/* th and td */
