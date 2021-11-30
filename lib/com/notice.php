@@ -1511,7 +1511,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					background-color:inherit;
 				}
 				#wpadminbar #wp-toolbar .has-toolbar-notices #' . $this->plugin_id . '-toolbar-notices-count {
-					color:#fff;
+					color:#fff;			/* White on background color. */
 					background-color:inherit;
 				}
 				#wpadminbar #wp-toolbar .has-toolbar-notices.toolbar-notices-error {
