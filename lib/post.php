@@ -1488,7 +1488,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				die( -1 );
 			}
 
-			if ( ! check_ajax_referer( WPSSO_NONCE_NAME, '_ajax_nonce', true ) ) {
+			if ( ! check_ajax_referer( WPSSO_NONCE_NAME, '_ajax_nonce', $die = false ) ) {
 
 				$error_msg = __( 'invalid ajax referer nonce value', 'wpsso' );
 			}

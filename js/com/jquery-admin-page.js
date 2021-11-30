@@ -18,7 +18,7 @@ function sucomBlockPostbox( pluginId, adminPageL10n ) {
 
 	if ( ! cfg[ '_ajax_nonce' ] ) {
 
-		console.error( 'sucomBlockPostbox: missing _ajax_nonce' );
+		console.error( arguments.callee.name + ': missing _ajax_nonce' );
 
 		return;
 
@@ -39,7 +39,7 @@ function sucomBlockPostbox( pluginId, adminPageL10n ) {
 
 	} else if ( ! cfg[ '_ajax_actions' ][ 'metabox_postboxes' ] ) {
 
-		console.error( 'sucomBlockPostbox: missing _ajax_actions metabox_postboxes' );
+		console.error( arguments.callee.name + ': missing _ajax_actions metabox_postboxes' );
 
 		return;
 	}
@@ -87,13 +87,13 @@ function sucomBlockNotices( pluginId, adminPageL10n ) {
 
 	if ( ! cfg[ '_ajax_nonce' ] ) {
 
-		console.error( 'sucomBlockNotices: missing _ajax_nonce' );
+		console.error( arguments.callee.name + ': missing _ajax_nonce' );
 
 		return;
 
 	} else if ( ! cfg[ '_ajax_actions' ][ 'get_notices_json' ] ) {
 
-		console.error( 'sucomBlockNotices: missing _ajax_actions get_notices_json' );
+		console.error( arguments.callee.name + ': missing _ajax_actions get_notices_json' );
 
 		return;
 	}
@@ -195,13 +195,13 @@ function sucomToolbarNotices( pluginId, adminPageL10n ) {
 
 	if ( ! cfg[ '_ajax_nonce' ] ) {
 
-		console.error( 'sucomToolbarNotices: missing _ajax_nonce' );
+		console.error( arguments.callee.name + ': missing _ajax_nonce' );
 
 		return;
 
 	} else if ( ! cfg[ '_ajax_actions' ][ 'get_notices_json' ] ) {
 
-		console.error( 'sucomToolbarNotices: missing _ajax_actions get_notices_json' );
+		console.error( arguments.callee.name + ': missing _ajax_actions get_notices_json' );
 
 		return;
 
@@ -347,13 +347,13 @@ function sucomToolbarValidators( pluginId, adminPageL10n ) {
 
 	if ( ! cfg[ '_ajax_nonce' ] ) {
 
-		console.error( 'sucomBlockPostbox: missing _ajax_nonce' );
+		console.error( arguments.callee.name + ': missing _ajax_nonce' );
 
 		return;
 
 	} else if ( ! cfg[ '_ajax_actions' ][ 'get_validate_submenu' ] ) {
 
-		console.error( 'sucomBlockPostbox: missing _ajax_actions get_validate_submenu' );
+		console.error( arguments.callee.name + ': missing _ajax_actions get_validate_submenu' );
 
 		return;
 	}
@@ -378,13 +378,54 @@ function sucomToolbarValidators( pluginId, adminPageL10n ) {
 	} );
 }
 
+function sucomDeleteMeta( metaType, objId, metaKey, adminPageL10n ) {
+
+	var cfg = window[ adminPageL10n ];
+
+	var delActionKey = 'delete_' + metaType + '_meta';
+
+	if ( ! cfg[ '_ajax_nonce' ] ) {
+
+		console.error( arguments.callee.name + ': missing _ajax_nonce' );
+
+		return;
+
+	} else if ( ! cfg[ '_ajax_actions' ][ delActionKey ] ) {
+
+		console.error( arguments.callee.name + ': missing _ajax_actions ' + delActionKey );
+
+		return;
+	}
+
+	var ajaxData = {
+		action: cfg[ '_ajax_actions' ][ delActionKey ],
+		obj_id: objId,
+		meta_key: metaKey,
+		_ajax_nonce: cfg[ '_ajax_nonce' ],
+	}
+
+	jQuery.post( ajaxurl, ajaxData, function( hide_container_id ) {
+
+		if ( hide_container_id ) {
+
+			jQuery( '#' + hide_container_id ).hide();
+
+		} else if ( cfg[ '_del_failed_transl' ] ) {
+
+			var failed_msg = cfg[ '_del_failed_transl' ].formatUnicorn( objId, metaKey );
+
+			alert( failed_msg );
+		}
+	} );
+}
+
 function sucomCopyById( cssId, adminPageL10n ) {
 
 	var cfg = window[ adminPageL10n ];
 
 	if ( ! cfg[ '_copy_clipboard_transl' ] ) {
 
-		console.error( 'sucomCopyById: missing _copy_clipboard_transl' );
+		console.error( arguments.callee.name + ': missing _copy_clipboard_transl' );
 
 		return;
 	}

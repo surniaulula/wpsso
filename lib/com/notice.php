@@ -908,7 +908,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				die( -1 );
 			}
 
-			check_ajax_referer( __FILE__, 'dismiss_nonce', true );
+			check_ajax_referer( __FILE__, 'dismiss_nonce', $die = true );
 
 			/**
 			 * Quick sanitation of input values.
@@ -990,7 +990,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				die( -1 );
 			}
 
-			check_ajax_referer( $this->nonce_name, '_ajax_nonce', true );
+			check_ajax_referer( $this->nonce_name, '_ajax_nonce', $die = true );
 
 			$user_id          = get_current_user_id();	// Always returns an integer.
 			$user_dismissed   = $user_id ? get_user_option( $this->dismiss_name, $user_id ) : false;	// Note that $user_id is the second argument.

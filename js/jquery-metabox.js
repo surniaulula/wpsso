@@ -18,7 +18,7 @@ function wpssoInitMetabox( container_id, doing_ajax ) {
 
 	var table_id = 'table.sucom-settings';
 
-	if ( 'undefined' !== typeof container_id && container_id ) {
+	if ( container_id ) {
 
 		table_id = container_id + ' ' + table_id;
 	}
@@ -52,13 +52,13 @@ function wpssoInitMetabox( container_id, doing_ajax ) {
  */
 function wpssoOgSchemaType() {
 
-	var pluginId           = 'wpsso';
-	var adminPageL10n      = 'wpssoAdminPageL10n';
-	var cfg                = window[ adminPageL10n ];
+	var pluginId      = 'wpsso';
+	var adminPageL10n = 'wpssoAdminPageL10n';
+	var cfg           = window[ adminPageL10n ];
 
-	if ( 'undefined' === typeof cfg[ '_ajax_actions' ][ 'schema_type_og_type' ] ) {
+	if ( ! cfg[ '_ajax_actions' ][ 'schema_type_og_type' ] ) {
 
-		console.error( 'wpssoOgSchemaType: missing _ajax_actions schema_type_og_type' );
+		console.error( arguments.callee.name + ': missing _ajax_actions schema_type_og_type' );
 
 		return;
 	}

@@ -19,20 +19,30 @@ if ( ! class_exists( 'SucomUtilMetabox' ) ) {
 
 	class SucomUtilMetabox {
 
-		public static function get_table_metadata( array $metadata, array $skip_keys, $obj, $metabox_id, $key_title = 'Key', $value_title = 'Value' ) {
+		public static function get_table_metadata( array $metadata, array $skip_keys, $obj, $obj_id, $metabox_id, $admin_l10n, array $titles ) {
 
-			$md_filtered = apply_filters( $metabox_id . '_metabox_table_metadata', $metadata, $obj );
-			$skip_keys   = apply_filters( $metabox_id . '_metabox_table_skip_keys', $skip_keys, $obj );
+			$metabox_id   = sanitize_key( $metabox_id );	// Just in case.
+			$md_filtered  = apply_filters( $metabox_id . '_metabox_table_metadata', $metadata, $obj );
+			$skip_keys    = apply_filters( $metabox_id . '_metabox_table_skip_keys', $skip_keys, $obj );
+			$del_meta_cap = apply_filters( $metabox_id . '_delete_meta_capability', 'manage_options', $obj );
+			$can_del_meta = current_user_can( $del_meta_cap, $obj_id );
 
-			$metabox_html   = self::get_table_metadata_css( $metabox_id );
-			$metabox_html   .= '<table><thead><tr><th class="key-column">' . $key_title . '</th>';
-			$metabox_html   .= '<th class="value-column">' . $value_title . '</th></tr></thead><tbody>';
+			$metabox_html = self::get_table_metadata_css( $metabox_id );
+			$metabox_html .= '<table>';
+			$metabox_html .= '<thead>';
+			$metabox_html .= '<tr>';
+			$metabox_html .= '<th class="del-column"></th>';
+			$metabox_html .= '<th class="key-column">' . $titles[ 'key' ] . '</th>';
+			$metabox_html .= '<th class="value-column">' . $titles[ 'value' ] . '</th>';
+			$metabox_html .= '</tr>';
+			$metabox_html .= '</thead>';
+			$metabox_html .= '<tbody>';
 
 			ksort( $md_filtered );
 
 			$row_count = 0;
 
-			foreach( $md_filtered as $key => $el ) {
+			foreach( $md_filtered as $key => $value ) {
 
 				foreach ( $skip_keys as $key_preg ) {
 
@@ -43,22 +53,30 @@ if ( ! class_exists( 'SucomUtilMetabox' ) ) {
 				}
 
 				$row_count++;
-				$is_added = isset( $metadata[ $key ] ) ? false : true;
-				$key_esc  = esc_html( $key );
-				$el       = SucomUtil::maybe_unserialize_array( $el );
-				$el_esc   = esc_html( var_export( $el, true ) );
 
-				$metabox_html .= $is_added ? '<tr class="added-meta">' : '<tr>';
-				$metabox_html .= '<td class="key-column"><div class="key-cell"><pre>' . $key_esc . '</pre></div></td>';
-				$metabox_html .= '<td class="value-column"><div class="value-cell"><pre>' . $el_esc . '</pre></div></td>';
+				$is_added     = isset( $metadata[ $key ] ) ? false : true;
+				$key          = sanitize_key( $key );	// Just in case.
+				$key_esc      = esc_html( $key );
+				$value        = SucomUtil::maybe_unserialize_array( $value );
+				$value_esc    = esc_html( var_export( $value, true ) );
+				$table_row_id = sanitize_key( $metabox_id . '-' . $obj_id . '-' . $key );
+				$onclick_js   = 'sucomDeleteMeta( \'' . $metabox_id . '\', \'' . $obj_id . '\', \'' . $key . '\', \'' . $admin_l10n . '\' );';
+
+				$metabox_html .= $is_added ? '<tr class="added-meta">' : '<tr id="' . $table_row_id . '">'; 
+				$metabox_html .= '<td class="del-column">';
+				$metabox_html .= $is_added ? '' : '<span class="dashicons dashicons-table-row-delete" onclick="' . $onclick_js . '"></span>';
+				$metabox_html .= '</td>';
+				$metabox_html .= '<td class="key-column"><div><pre>' . $key_esc . '</pre></div></td>';
+				$metabox_html .= '<td class="value-column"><div><pre>' . $value_esc . '</pre></div></td>';
 				$metabox_html .= '</tr>' . "\n";
 			}
 
 			if ( ! $row_count ) {
 
 				$metabox_html .= '<tr>';
-				$metabox_html .= '<td class="key-column"><div class="key-cell"><pre>&nbsp;</pre></div></td>';
-				$metabox_html .= '<td class="value-column"><div class="value-cell"><pre>&nbsp;</pre></div></td>';
+				$metabox_html .= '<td class="del-column"><pre>&nbsp;</pre></td>';
+				$metabox_html .= '<td class="key-column"><pre>&nbsp;</pre></td>';
+				$metabox_html .= '<td class="value-column"><pre>&nbsp;</pre></td>';
 				$metabox_html .= '</tr>' . "\n";
 			}
 
@@ -78,12 +96,34 @@ if ( ! class_exists( 'SucomUtilMetabox' ) ) {
 					table-layout:fixed;
 				}
 
-				div#' . $metabox_id . '.postbox table .key-column {
+				div#' . $metabox_id . '.postbox table tr.added-meta td {
+					background-color:#eee;
+				}
+
+				div#' . $metabox_id . '.postbox table tr.added-meta td.del-column {
+					background-color:inherit;
+				}
+
+				div#' . $metabox_id . '.postbox table .del-column {	/* th and td */
+					padding-top:15px;
+					padding-left:0;
+					border:none;
+					width:1.9em;
+					color:red;
+				}
+
+				div#' . $metabox_id . '.postbox table .del-column span {
+					font-size:0.9em;
+					width:0.9em;
+					height:0.9em;
+				}
+
+				div#' . $metabox_id . '.postbox table .key-column {	/* th and td */
 					width:30%;
 				}
 
-				div#' . $metabox_id . '.postbox table tr.added-meta {
-					background-color:#eee;
+				div#' . $metabox_id . '.postbox table .value-column {	/* th and td */
+					width:auto;
 				}
 
 				div#' . $metabox_id . '.postbox table td {

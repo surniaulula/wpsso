@@ -955,7 +955,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				die( -1 );
 			}
 
-			check_ajax_referer( WPSSO_NONCE_NAME, '_ajax_nonce', true );
+			check_ajax_referer( WPSSO_NONCE_NAME, '_ajax_nonce', $die = true );
 
 			$schema_type = sanitize_text_field( filter_input( INPUT_POST, 'schema_type' ) );
 
