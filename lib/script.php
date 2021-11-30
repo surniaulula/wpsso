@@ -370,7 +370,7 @@ EOF;
 			$admin_l10n = $this->p->cf[ 'plugin' ][ 'wpsso' ][ 'admin_l10n' ];
 
 			wp_register_script( 'sucom-admin-page', WPSSO_URLPATH . 'js/com/jquery-admin-page.' . $this->file_ext,
-				$deps = array( 'jquery' ), '20211126', $in_footer = true );
+				$deps = array( 'jquery' ), '20211129', $in_footer = true );
 
 			wp_localize_script( 'sucom-admin-page', $admin_l10n, $this->get_admin_page_script_data() );
 		}

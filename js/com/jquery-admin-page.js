@@ -3,7 +3,7 @@
  *
  * Don't forget to update the wp_register_script() arguments for the 'sucom-admin-page' script when updating this version number.
  *
- * Version: 20211126
+ * Version: 20211129
  */
 
 /**
@@ -182,46 +182,6 @@ function sucomBlockNotices( pluginId, adminPageL10n ) {
 	} );
 }
 
-function sucomToolbarValidators( pluginId, adminPageL10n ) {
-
-	var getCurrentPostId = wp.data.select( 'core/editor' ).getCurrentPostId;
-	var post_id          = getCurrentPostId();
-	var cfg              = window[ adminPageL10n ];
-
-	if ( ! cfg[ '_ajax_nonce' ] ) {
-
-		console.error( 'sucomBlockPostbox: missing _ajax_nonce' );
-
-		return;
-
-	} else if ( ! cfg[ '_ajax_actions' ][ 'get_validate_submenu' ] ) {
-
-		console.error( 'sucomBlockPostbox: missing _ajax_actions get_validate_submenu' );
-
-		return;
-	}
-
-	var menuId    = '#wp-admin-bar-' + pluginId + '-validate';
-	var subMenuId = '#wp-admin-bar-' + pluginId + '-validate ul.ab-submenu';
-
-	var ajaxData = {
-		action: cfg[ '_ajax_actions' ][ 'get_validate_submenu' ],
-		post_id: post_id,
-		_ajax_nonce: cfg[ '_ajax_nonce' ],
-	}
-
-	jQuery.post( ajaxurl, ajaxData, function( html ) {
-
-		/**
-		 * The returned HTML includes javascript to call the sucomInitMetabox() function.
-		 */
-		if ( html ) {
-
-			jQuery( subMenuId ).replaceWith( html );
-		}
-	} );
-}
-
 function sucomToolbarNotices( pluginId, adminPageL10n ) {
 
 	var cfg = window[ adminPageL10n ];
@@ -357,6 +317,46 @@ function sucomToolbarNotices( pluginId, adminPageL10n ) {
 					noticeObj = createNotice( noticeStatus, noticeMessage, noticeOptions );
 				}
 			}
+		}
+	} );
+}
+
+function sucomToolbarValidators( pluginId, adminPageL10n ) {
+
+	var getCurrentPostId = wp.data.select( 'core/editor' ).getCurrentPostId;
+	var post_id          = getCurrentPostId();
+	var cfg              = window[ adminPageL10n ];
+
+	if ( ! cfg[ '_ajax_nonce' ] ) {
+
+		console.error( 'sucomBlockPostbox: missing _ajax_nonce' );
+
+		return;
+
+	} else if ( ! cfg[ '_ajax_actions' ][ 'get_validate_submenu' ] ) {
+
+		console.error( 'sucomBlockPostbox: missing _ajax_actions get_validate_submenu' );
+
+		return;
+	}
+
+	var menuId    = '#wp-admin-bar-' + pluginId + '-validate';
+	var subMenuId = '#wp-admin-bar-' + pluginId + '-validate ul.ab-submenu';
+
+	var ajaxData = {
+		action: cfg[ '_ajax_actions' ][ 'get_validate_submenu' ],
+		post_id: post_id,
+		_ajax_nonce: cfg[ '_ajax_nonce' ],
+	}
+
+	jQuery.post( ajaxurl, ajaxData, function( html ) {
+
+		/**
+		 * The returned HTML includes javascript to call the sucomInitMetabox() function.
+		 */
+		if ( html ) {
+
+			jQuery( subMenuId ).replaceWith( html );
 		}
 	} );
 }
