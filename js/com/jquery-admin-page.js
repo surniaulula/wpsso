@@ -3,7 +3,7 @@
  *
  * Don't forget to update the wp_register_script() arguments for the 'sucom-admin-page' script when updating this version number.
  *
- * Version: 20211129
+ * Version: 20211130-01
  */
 
 /**
@@ -13,9 +13,8 @@ function sucomBlockPostbox( pluginId, adminPageL10n ) {
 
 	if ( 'undefined' === typeof wp.data ) return;	// Just in case.
 
-	var getCurrentPostId = wp.data.select( 'core/editor' ).getCurrentPostId;
-	var post_id          = getCurrentPostId();
-	var cfg              = window[ adminPageL10n ];
+	var post_id = wp.data.select( 'core/editor' ).getCurrentPostId;
+	var cfg     = window[ adminPageL10n ];
 
 	if ( ! cfg[ '_ajax_nonce' ] ) {
 
@@ -25,7 +24,9 @@ function sucomBlockPostbox( pluginId, adminPageL10n ) {
 
 	} else if ( cfg[ '_metabox_postbox_ids' ] ) {	// Backwards compatibility.
 
-		cfg[ '_ajax_actions' ] = { 'metabox_postboxes':{} };
+		if ( 'undefined' === typeof cfg[ '_ajax_actions' ] ) cfg[ '_ajax_actions' ] = {};
+
+		if ( 'undefined' === typeof cfg[ '_ajax_actions' ][ 'metabox_postboxes' ] ) cfg[ '_ajax_actions' ][ 'metabox_postboxes' ] = {};
 
 		for ( var postbox_key in cfg[ '_metabox_postbox_ids' ] ) {
 
@@ -48,7 +49,7 @@ function sucomBlockPostbox( pluginId, adminPageL10n ) {
 		var ajax_action_update_postbox = cfg[ '_ajax_actions' ][ 'metabox_postboxes' ][ postbox_id ];
 
 		/**
-		 * Just in case - sanitize the WP ajax action filter name.
+		 * Sanitize the ajax action filter name.
 		 */
 		ajax_action_update_postbox = ajax_action_update_postbox.toLowerCase();
 		ajax_action_update_postbox = ajax_action_update_postbox.replace( /[:\/\-\. ]+/g, '_' );
@@ -84,7 +85,13 @@ function sucomBlockNotices( pluginId, adminPageL10n ) {
 	var removeNotice  = wp.data.dispatch( 'core/notices' ).removeNotice;
 	var cfg           = window[ adminPageL10n ];
 
-	if ( 'undefined' === typeof cfg[ '_ajax_actions' ][ 'get_notices_json' ] ) {
+	if ( ! cfg[ '_ajax_nonce' ] ) {
+
+		console.error( 'sucomBlockNotices: missing _ajax_nonce' );
+
+		return;
+
+	} else if ( ! cfg[ '_ajax_actions' ][ 'get_notices_json' ] ) {
 
 		console.error( 'sucomBlockNotices: missing _ajax_actions get_notices_json' );
 
@@ -186,10 +193,22 @@ function sucomToolbarNotices( pluginId, adminPageL10n ) {
 
 	var cfg = window[ adminPageL10n ];
 
-	/**
-	 * Just in case - no use getting notices if there's nothing to get.
-	 */
-	if ( ! cfg[ '_tb_types_showing' ] ) return;
+	if ( ! cfg[ '_ajax_nonce' ] ) {
+
+		console.error( 'sucomToolbarNotices: missing _ajax_nonce' );
+
+		return;
+
+	} else if ( ! cfg[ '_ajax_actions' ][ 'get_notices_json' ] ) {
+
+		console.error( 'sucomToolbarNotices: missing _ajax_actions get_notices_json' );
+
+		return;
+
+	} else if ( ! cfg[ '_tb_types_showing' ] ) {	// No toolbar notice types to get.
+	
+		return;
+	}
 
 	var menuId    = '#wp-admin-bar-' + pluginId + '-toolbar-notices';
 	var subMenuId = '#wp-admin-bar-' + pluginId + '-toolbar-notices-container';
@@ -323,9 +342,8 @@ function sucomToolbarNotices( pluginId, adminPageL10n ) {
 
 function sucomToolbarValidators( pluginId, adminPageL10n ) {
 
-	var getCurrentPostId = wp.data.select( 'core/editor' ).getCurrentPostId;
-	var post_id          = getCurrentPostId();
-	var cfg              = window[ adminPageL10n ];
+	var post_id = wp.data.select( 'core/editor' ).getCurrentPostId;
+	var cfg     = window[ adminPageL10n ];
 
 	if ( ! cfg[ '_ajax_nonce' ] ) {
 
@@ -340,7 +358,6 @@ function sucomToolbarValidators( pluginId, adminPageL10n ) {
 		return;
 	}
 
-	var menuId    = '#wp-admin-bar-' + pluginId + '-validate';
 	var subMenuId = '#wp-admin-bar-' + pluginId + '-validate ul.ab-submenu';
 
 	var ajaxData = {
@@ -365,11 +382,11 @@ function sucomCopyById( cssId, adminPageL10n ) {
 
 	var cfg = window[ adminPageL10n ];
 
-	if ( 'undefined' === typeof cfg ) {	// Just in case.
+	if ( ! cfg[ '_copy_clipboard_transl' ] ) {
 
-		cfg = {
-			'_copy_clipboard_transl': 'Copied to clipboard.',
-		}
+		console.error( 'sucomCopyById: missing _copy_clipboard_transl' );
+
+		return;
 	}
 
 	try {
