@@ -28,15 +28,13 @@ if ( ! class_exists( 'SucomUtilMetabox' ) ) {
 			$can_del_meta = current_user_can( $del_meta_cap, $obj_id );
 
 			$metabox_html = self::get_table_metadata_css( $metabox_id );
-			$metabox_html .= '<table>';
-			$metabox_html .= '<thead>';
+			$metabox_html .= '<table><thead>' . "\n";
 			$metabox_html .= '<tr>';
-			$metabox_html .= '<th class="del-column"></th>';
+			$metabox_html .= $can_del_meta ? '<th class="del-column"></th>' : '';
 			$metabox_html .= '<th class="key-column">' . $titles[ 'key' ] . '</th>';
 			$metabox_html .= '<th class="value-column">' . $titles[ 'value' ] . '</th>';
-			$metabox_html .= '</tr>';
-			$metabox_html .= '</thead>';
-			$metabox_html .= '<tbody>';
+			$metabox_html .= '</tr>' . "\n";
+			$metabox_html .= '</thead><tbody>' . "\n";
 
 			ksort( $md_filtered );
 
@@ -61,11 +59,15 @@ if ( ! class_exists( 'SucomUtilMetabox' ) ) {
 				$value_esc    = esc_html( var_export( $value, true ) );
 				$table_row_id = sanitize_key( $metabox_id . '-' . $obj_id . '-' . $key );
 				$onclick_js   = 'sucomDeleteMeta( \'' . $metabox_id . '\', \'' . $obj_id . '\', \'' . $key . '\', \'' . $admin_l10n . '\' );';
-
 				$metabox_html .= $is_added ? '<tr class="added-meta">' : '<tr id="' . $table_row_id . '">'; 
-				$metabox_html .= '<td class="del-column">';
-				$metabox_html .= $is_added ? '' : '<span class="dashicons dashicons-table-row-delete" onclick="' . $onclick_js . '"></span>';
-				$metabox_html .= '</td>';
+
+				if ( $can_del_meta ) {
+
+					$metabox_html .= '<td class="del-column">';
+					$metabox_html .= $is_added ? '' : '<span class="dashicons dashicons-table-row-delete" onclick="' . $onclick_js . '"></span>';
+					$metabox_html .= '</td>';
+				}
+
 				$metabox_html .= '<td class="key-column"><div><pre>' . $key_esc . '</pre></div></td>';
 				$metabox_html .= '<td class="value-column"><div><pre>' . $value_esc . '</pre></div></td>';
 				$metabox_html .= '</tr>' . "\n";
@@ -74,13 +76,12 @@ if ( ! class_exists( 'SucomUtilMetabox' ) ) {
 			if ( ! $row_count ) {
 
 				$metabox_html .= '<tr>';
-				$metabox_html .= '<td class="del-column"><pre>&nbsp;</pre></td>';
-				$metabox_html .= '<td class="key-column"><pre>&nbsp;</pre></td>';
-				$metabox_html .= '<td class="value-column"><pre>&nbsp;</pre></td>';
+				$metabox_html .= '<td class="key-column"><pre></pre></td>';
+				$metabox_html .= '<td class="value-column"><pre></pre></td>';
 				$metabox_html .= '</tr>' . "\n";
 			}
 
-			$metabox_html .= '</tbody></table>';
+			$metabox_html .= '</tbody></table>' . "\n";
 
 			return $metabox_html;
 		}
