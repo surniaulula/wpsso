@@ -243,7 +243,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.10.0-b.3 (2021/12/01)**
+**Version 9.10.0-b.4 (2021/12/01)**
 
 * **New Features**
 	* None.
@@ -600,7 +600,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.10.0-b.3 =
+= 9.10.0-b.4 =
 
 (2021/12/01) The Document SSO metabox now shows default option values when creating new posts / pages. The Validators toolbar menu now refreshes when the post / page is saved in the Block Editor.
 
