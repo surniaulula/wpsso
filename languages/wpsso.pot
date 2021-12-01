@@ -8105,7 +8105,7 @@ msgstr ""
 #: lib/messages-tooltip-plugin.php:197 lib/messages.php:442
 msgid ""
 "See <a href=\"%s\">Why shouldn't I upload small images to the media library?"
-"</a> for more information on WordPress and image sizes."
+"</a> for more information on WordPress and its image sizes."
 msgstr ""
 
 #: lib/messages-tooltip-plugin.php:203
