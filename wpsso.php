@@ -15,7 +15,7 @@
  * Requires At Least: 5.2
  * Tested Up To: 5.8.2
  * WC Tested Up To: 5.9.0
- * Version: 9.10.0-b.3
+ * Version: 9.10.0-b.4
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *

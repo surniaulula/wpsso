@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 9.10.0-b.3\n"
+"Project-Id-Version: WPSSO Core 9.10.0-b.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -8071,21 +8071,21 @@ msgstr ""
 
 #: lib/messages-tooltip-plugin.php:177 lib/messages-tooltip-plugin.php:185
 msgid ""
-"Every post, page, custom post type, category, tag, custom taxonomy term, and "
-"user profile should have at least one image available for its meta tags and "
-"Schema markup."
+"Every <strong>publicly accessible</strong> post, page, custom post type, "
+"category, tag, custom taxonomy term, and user profile should have at least "
+"one image available for its meta tags and Schema markup."
 msgstr ""
 
 #: lib/messages-tooltip-plugin.php:179
 msgid ""
-"Enable this option to make sure child pages without a featured image can "
-"inherit the featured image of their parents."
+"Enable this option to make sure publicly accessible child pages without a "
+"featured image can inherit the featured image of their parents."
 msgstr ""
 
 #: lib/messages-tooltip-plugin.php:187
 msgid ""
-"Enable this option to make sure child pages and terms without custom images "
-"can inherit the custom images of their parents."
+"Enable this option to make sure publicly accessible child pages and terms "
+"without custom images can inherit the custom images of their parents."
 msgstr ""
 
 #: lib/messages-tooltip-plugin.php:193 lib/messages.php:438

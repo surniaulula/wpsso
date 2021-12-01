@@ -174,17 +174,17 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 				case 'tooltip-plugin_inherit_featured':	// Inherit Featured Image.
 
-					$text = __( 'Every post, page, custom post type, category, tag, custom taxonomy term, and user profile should have at least one image available for its meta tags and Schema markup.', 'wpsso' ) . ' ';
+					$text = __( 'Every <strong>publicly accessible</strong> post, page, custom post type, category, tag, custom taxonomy term, and user profile should have at least one image available for its meta tags and Schema markup.', 'wpsso' ) . ' ';
 
-					$text .= __( 'Enable this option to make sure child pages without a featured image can inherit the featured image of their parents.', 'wpsso' ) . ' ';
+					$text .= __( 'Enable this option to make sure publicly accessible child pages without a featured image can inherit the featured image of their parents.', 'wpsso' ) . ' ';
 
 					break;
 
 				case 'tooltip-plugin_inherit_custom':	// Inherit Custom Images.
 
-					$text = __( 'Every post, page, custom post type, category, tag, custom taxonomy term, and user profile should have at least one image available for its meta tags and Schema markup.', 'wpsso' ) . ' ';
+					$text = __( 'Every <strong>publicly accessible</strong> post, page, custom post type, category, tag, custom taxonomy term, and user profile should have at least one image available for its meta tags and Schema markup.', 'wpsso' ) . ' ';
 
-					$text .= __( 'Enable this option to make sure child pages and terms without custom images can inherit the custom images of their parents.', 'wpsso' ) . ' ';
+					$text .= __( 'Enable this option to make sure publicly accessible child pages and terms without custom images can inherit the custom images of their parents.', 'wpsso' ) . ' ';
 
 					break;
 

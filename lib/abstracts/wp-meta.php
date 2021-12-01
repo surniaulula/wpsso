@@ -700,7 +700,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				 *
 				 * Filter 'wpsso_inherit_custom_images' added in WPSSO Core v9.10.0.
 				 */
-				$inherit_custom = empty( $this->p->options[ 'plugin_inherit_custom' ] ) ? false : true;
+				$inherit_custom = empty( $this->p->options[ 'plugin_inherit_custom' ] ) ? false : $mod[ 'is_public' ];
 				$inherit_custom = apply_filters( 'wpsso_inherit_custom_images', $inherit_custom, $mod );
 
 				if ( $inherit_custom ) {

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 9.10.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-12-01 09:14-0800\n"
+"PO-Revision-Date: 2021-12-01 12:32-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -7261,16 +7261,16 @@ msgid "You may also consider activating <a href=\"%s\">a plugin from WordPress.o
 msgstr "Vous pouvez également envisager d'activer <a href=\"%s\">une extension de WordPress.org pour gérer les rôles d'utilisateurs et leurs membres</a>."
 
 #: lib/messages-tooltip-plugin.php:177 lib/messages-tooltip-plugin.php:185
-msgid "Every post, page, custom post type, category, tag, custom taxonomy term, and user profile should have at least one image available for its meta tags and Schema markup."
-msgstr "Chaque article, page, type d'article personnalisé, catégorie, étiquette, terme de taxonomie personnalisé et profil utilisateur doit avoir au moins une image disponible pour ses balises méta et son balisage de Schéma."
+msgid "Every <strong>publicly accessible</strong> post, page, custom post type, category, tag, custom taxonomy term, and user profile should have at least one image available for its meta tags and Schema markup."
+msgstr "Chaque article, page, type d'article personnalisé, catégorie, étiquette, terme de taxonomie personnalisé et profil utilisateur <strong>accessible publiquement</strong> doit avoir au moins une image disponible pour ses balises méta et son balisage de Schéma."
 
 #: lib/messages-tooltip-plugin.php:179
-msgid "Enable this option to make sure child pages without a featured image can inherit the featured image of their parents."
-msgstr "Activez cette option pour vous assurer que les pages enfants sans image vedette peuvent hériter de l'image vedette de leurs parents."
+msgid "Enable this option to make sure publicly accessible child pages without a featured image can inherit the featured image of their parents."
+msgstr "Activez cette option pour vous assurer que les pages enfants accessible publiquement sans image vedette peuvent hériter de l'image vedette de leurs parents."
 
 #: lib/messages-tooltip-plugin.php:187
-msgid "Enable this option to make sure child pages and terms without custom images can inherit the custom images of their parents."
-msgstr "Activez cette option pour vous assurer que les pages enfants et les termes sans images personnalisées peuvent hériter des images personnalisées de leurs parents."
+msgid "Enable this option to make sure publicly accessible child pages and terms without custom images can inherit the custom images of their parents."
+msgstr "Activez cette option pour vous assurer que les pages enfants et les termes accessible publiquement sans images personnalisées peuvent hériter des images personnalisées de leurs parents."
 
 #: lib/messages-tooltip-plugin.php:193 lib/messages.php:438
 msgid "Providing social and search sites with perfectly resized images is highly recommended, so this option should be enabled if possible."

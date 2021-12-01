@@ -419,7 +419,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 *
 					 * Filter 'wpsso_inherit_custom_images' added in WPSSO Core v9.10.0.
 					 */
-					$inherit_custom = empty( $this->p->options[ 'plugin_inherit_custom' ] ) ? false : true;
+					$inherit_custom = empty( $this->p->options[ 'plugin_inherit_custom' ] ) ? false : $mod[ 'is_public' ];
 					$inherit_custom = apply_filters( 'wpsso_inherit_custom_images', $inherit_custom, $mod );
 
 					if ( $inherit_custom ) {
@@ -2078,8 +2078,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * Filter 'wpsso_inherit_featured_image' added in WPSSO Core v9.10.0.
 			 */
-			$inherit_featured = empty( $this->p->options[ 'plugin_inherit_featured' ] ) ? false : true;
-			$inherit_featured = apply_filters( 'wpsso_inherit_featured_image', $inherit_featured, $post_id );
+			$mod = $this->get_mod( $post_id );	// Uses a static local cache.
+
+			$inherit_featured = empty( $this->p->options[ 'plugin_inherit_featured' ] ) ? false : $mod[ 'is_public' ];
+			$inherit_featured = apply_filters( 'wpsso_inherit_featured_image', $inherit_featured, $mod );
 
 			if ( ! $inherit_featured ) {
 
@@ -2133,8 +2135,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * Filter 'wpsso_inherit_featured_image' added in WPSSO Core v9.10.0.
 			 */
-			$inherit_featured = empty( $this->p->options[ 'plugin_inherit_featured' ] ) ? false : true;
-			$inherit_featured = apply_filters( 'wpsso_inherit_featured_image', $inherit_featured, $post_id );
+			$mod = $this->get_mod( $post_id );	// Uses a static local cache.
+
+			$inherit_featured = empty( $this->p->options[ 'plugin_inherit_featured' ] ) ? false : $mod[ 'is_public' ];
+			$inherit_featured = apply_filters( 'wpsso_inherit_featured_image', $inherit_featured, $mod );
 
 			if ( ! $inherit_featured ) {
 

@@ -115,7 +115,7 @@
 
 'wpsso_inherit_custom_images' ( $bool, $mod )
 
-'wpsso_inherit_featured_image' ( $bool, $post_id )
+'wpsso_inherit_featured_image' ( $bool, $mod )
 
 'wpsso_is_functions' ( $is_functions )
 
