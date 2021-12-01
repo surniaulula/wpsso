@@ -89,7 +89,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				add_action( 'wp_ajax_wpsso_get_validate_submenu', array( $this, 'ajax_get_validate_submenu' ) );
 
-				if ( ! empty( $_GET ) ) {
+				if ( ! empty( $_GET ) || basename( $_SERVER[ 'PHP_SELF' ] ) === 'post-new.php' ) {
 
 					/**
 					 * load_meta_page() priorities: 100 post, 200 user, 300 term.
