@@ -822,7 +822,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 								/**
 								 * Premium edition feature / option.
 								 */
-								case 'check-img-dims':	// Enforce Image Dimension Checks.
+								case 'check-img-dims':	// Image Dimension Checks.
 
 									$chk[ 'opt_key' ] = 'plugin_check_img_dims';
 

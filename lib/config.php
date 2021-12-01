@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.10.0-b.1',	// Plugin version.
-					'opt_version' => '836',		// Increment when changing default option values.
+					'version'     => '9.10.0-b.3',	// Plugin version.
+					'opt_version' => '839',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -199,7 +199,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'buddypress' => '(plugin) BuddyPress',
 							),
 							'util' => array(
-								'check-img-dims' => '(feature) Enforce Image Dimension Checks',
+								'check-img-dims' => '(feature) Image Dimension Checks',
 								'coauthors'      => '(plugin) Co-Authors Plus',
 								'elementor'      => '(plugin) Elementor Website Builder',
 								'shorten'        => '(feature) URL Shortening Service',
@@ -1741,7 +1741,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_page_excerpt'         => 0,			// Enable Excerpt for Pages.
 					'plugin_page_tags'            => 0,			// Enable Tags for Pages.
 					'plugin_new_user_is_person'   => 0,			// Add Person Role for New Users.
-					'plugin_check_img_dims'       => 0,			// Enforce Image Dimension Checks.
+					'plugin_inherit_featured'     => 1,			// Inherit Featured Image.
+					'plugin_inherit_custom'       => 1,			// Inherit Custom Images.
+					'plugin_check_img_dims'       => 0,			// Image Dimension Checks.
 					'plugin_upscale_images'       => 0,			// Upscale Media Library Images.
 					'plugin_upscale_pct_max'      => 33,			// Maximum Image Upscale Percent.
 					'plugin_img_alt_prefix'       => 'Image:',		// Content Image Alt Prefix.
@@ -2699,7 +2701,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				/**
 				 * Used with array_intersect_key() to determine which metadata options can be inherited.
 				 */
-				'inherit_md_opts' => array(
+				'inherit_md_image_opts' => array(
 					'og_img_max'        => null,	// Maximum Images.
 					'og_img_id'         => null,
 					'og_img_id_lib'     => null,
@@ -2717,6 +2719,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_img_id_lib' => null,
 					'schema_img_url'    => null,
 				),
+
 				/**
 				 * Validated on 2020/08/17.
 				 *

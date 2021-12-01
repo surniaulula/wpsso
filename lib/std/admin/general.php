@@ -43,15 +43,25 @@ if ( ! class_exists( 'WpssoStdAdminGeneral' ) ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
+			$table_rows[ 'plugin_inherit_featured' ] = '' . 
+				$form->get_th_html( _x( 'Inherit Featured Image', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_inherit_featured' ) . 
+				$form->get_no_td_checkbox( 'plugin_inherit_featured' );
+
+			$table_rows[ 'plugin_inherit_custom' ] = '' . 
+				$form->get_th_html( _x( 'Inherit Custom Images', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_inherit_custom' ) . 
+				$form->get_no_td_checkbox( 'plugin_inherit_custom' );
+
 			$table_rows[ 'plugin_check_img_dims' ] = '' . 
-				$form->get_th_html( _x( 'Enforce Image Dimension Checks', 'option label', 'wpsso' ),
+				$form->get_th_html( _x( 'Image Dimension Checks', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_check_img_dims' ) . 
-				$form->get_no_td_checkbox( 'plugin_check_img_dims', _x( 'recommended', 'option comment', 'wpsso' ) );
+				$form->get_no_td_checkbox( 'plugin_check_img_dims', _x( 'recommended (see help text)', 'option comment', 'wpsso' ) );
 
 			$table_rows[ 'plugin_upscale_images' ] = '' . 
 				$form->get_th_html( _x( 'Upscale Media Library Images', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_upscale_images' ) . 
-				$form->get_no_td_checkbox( 'plugin_upscale_images' );
+				$form->get_no_td_checkbox( 'plugin_upscale_images', _x( 'not recommended', 'option comment', 'wpsso' ) );
 
 			$table_rows[ 'plugin_gravatar_api' ] = '' . 
 				$form->get_th_html( _x( 'Gravatar is Default Author Image', 'option label', 'wpsso' ),

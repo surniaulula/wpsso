@@ -318,7 +318,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 									_x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' ) );
 
 								$image_dim_option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration',
-									_x( 'Enforce Image Dimension Checks', 'option label', 'wpsso' ) );
+									_x( 'Image Dimension Checks', 'option label', 'wpsso' ) );
 
 								$image_sizes_tab_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_image_sizes',
 									_x( 'Image Sizes', 'lib file description', 'wpsso' ) );
@@ -424,11 +424,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						break;
 
 					/**
-					 * Notice shown when saving settings if the "Enforce Image Dimension Checks" option is unchecked.
+					 * Notice shown when saving settings if the "Image Dimension Checks" option is unchecked.
 					 */
 					case 'notice-check-img-dims-disabled':
 
-						$option_text = _x( 'Enforce Image Dimension Checks', 'option label', 'wpsso' );
+						$option_text = _x( 'Image Dimension Checks', 'option label', 'wpsso' );
 						$option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', $option_text );
 
 						$text = '<p class="top">';
@@ -437,9 +437,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= __( 'Providing social and search sites with perfectly resized images is highly recommended, so this option should be enabled if possible.', 'wpsso' ) . ' ';
 
-						$text .= __( 'Content authors often upload small featured images, without knowing that WordPress creates resized images based on predefined image sizes, so this option is disabled by default.', 'wpsso' ) . ' ';
+						$text .= __( 'Content authors often upload small featured images to the Media Library, without knowing that WordPress can create several different image sizes from the original, so this option is disabled by default to avoid excessive warning messages.', 'wpsso' ) . ' ';
 
-						$text .= sprintf( __( 'See <a href="%s">Why shouldn\'t I upload small images to the media library?</a> for more information on WordPress image sizes.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/' ). ' ';
+						$text .= sprintf( __( 'See <a href="%s">Why shouldn\'t I upload small images to the media library?</a> for more information on WordPress and image sizes.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/' ). ' ';
 
 						$text .= '</p>';
 

@@ -697,17 +697,35 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				/**
 				 * Since WPSSO Core v9.5.0.
+				 *
+				 * Filter 'wpsso_inherit_custom_images' added in WPSSO Core v9.10.0.
 				 */
-				if ( $this->p->debug->enabled ) {
+				$inherit_custom = empty( $this->p->options[ 'plugin_inherit_custom' ] ) ? false : true;
+				$inherit_custom = apply_filters( 'wpsso_inherit_custom_images', $inherit_custom, $mod );
 
-					$this->p->debug->log( 'merging parent metadata options' );
-				}
+				if ( $inherit_custom ) {
 
-				$parent_opts = $this->get_parent_md_opts( $mod );
+					if ( $this->p->debug->enabled ) {
 
-				if ( ! empty( $parent_opts ) ) {
+						$this->p->debug->log( 'merging parent metadata image options' );
+					}
 
-					$md_defs = array_merge( $md_defs, $parent_opts );	// Overwrite defaults with parent options.
+					/**
+					 * Return merged custom options from the post or term parents.
+					 */
+					$parent_opts = $this->get_parent_md_image_opts( $mod );
+
+					if ( ! empty( $parent_opts ) ) {
+
+						/**
+						 * Overwrite the default options with any custom options from the parent.
+						 */
+						$md_defs = array_merge( $md_defs, $parent_opts );
+					}
+
+				} elseif ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'merging parent metadata image options is disabled' );
 				}
 
 				if ( $is_cache_allowed ) {
@@ -2200,11 +2218,11 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		/**
 		 * Return merged custom options from the post or term parents.
 		 */
-		public function get_parent_md_opts( $mod ) {
+		public function get_parent_md_image_opts( $mod ) {
 
 			$md_opts = array();
 
-			$inherit_opts = $this->p->cf[ 'form' ][ 'inherit_md_opts' ];	// Since WPSSO Core v9.5.0.
+			$inherit_opts = $this->p->cf[ 'form' ][ 'inherit_md_image_opts' ];
 
 			if ( $mod[ 'is_post' ] ) {
 

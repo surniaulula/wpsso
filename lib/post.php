@@ -416,17 +416,36 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					/**
 					 * Since WPSSO Core v9.5.0.
+					 *
+					 * Filter 'wpsso_inherit_custom_images' added in WPSSO Core v9.10.0.
 					 */
-					if ( $this->p->debug->enabled ) {
+					$inherit_custom = empty( $this->p->options[ 'plugin_inherit_custom' ] ) ? false : true;
+					$inherit_custom = apply_filters( 'wpsso_inherit_custom_images', $inherit_custom, $mod );
 
-						$this->p->debug->log( 'merging parent metadata options' );
-					}
+					if ( $inherit_custom ) {
 
-					$parent_opts = $this->get_parent_md_opts( $mod );
+						if ( $this->p->debug->enabled ) {
 
-					if ( ! empty( $parent_opts ) ) {
+							$this->p->debug->log( 'merging parent metadata image options' );
+						}
 
-						$md_opts = array_merge( $parent_opts, $md_opts );	// Overwrite parent with child options.
+						/**
+						 * Return merged custom options from the post or term parents.
+						 */
+						$parent_opts = $this->get_parent_md_image_opts( $mod );
+
+						if ( ! empty( $parent_opts ) ) {
+
+							/**
+							 * Overwrite parent options with those of the child, allowing only
+							 * undefined child options to be inherited from the parent.
+							 */
+							$md_opts = array_merge( $parent_opts, $md_opts );
+						}
+
+					} elseif ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'merging parent metadata image options is disabled' );
 					}
 
 					/**
@@ -665,9 +684,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			echo $this->get_column_content( '', $column_name, $post_id );
 		}
 
-		public function get_update_meta_cache( $obj_id, $meta_type = 'post' ) {
+		public function get_update_meta_cache( $post_id, $meta_type = 'post' ) {
 
-			return parent::get_update_meta_cache( $obj_id, $meta_type = 'post' );
+			return parent::get_update_meta_cache( $post_id, $meta_type = 'post' );
 		}
 
 		/**
@@ -2044,18 +2063,30 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		/**
-		 * See get_metadata_raw() in wordpress/wp-includes/meta.php:570.
+		 * Maybe inherit a featured image from the post/page parent.
 		 *
+		 * See get_metadata_raw() in wordpress/wp-includes/meta.php:570.
 		 * See metadata_exists() in wordpress/wp-includes/meta.php:683.
 		 */
-		public function get_post_metadata_thumbnail_id( $check = null, $obj_id, $meta_key, $single ) {
+		public function get_post_metadata_thumbnail_id( $check = null, $post_id, $meta_key, $single ) {
 
 			if ( '_thumbnail_id' !== $meta_key ) {
 
 				return $check;
 			}
 
-			$metadata = $this->p->post->get_update_meta_cache( $obj_id );
+			/**
+			 * Filter 'wpsso_inherit_featured_image' added in WPSSO Core v9.10.0.
+			 */
+			$inherit_featured = empty( $this->p->options[ 'plugin_inherit_featured' ] ) ? false : true;
+			$inherit_featured = apply_filters( 'wpsso_inherit_featured_image', $inherit_featured, $post_id );
+
+			if ( ! $inherit_featured ) {
+
+				return $check;
+			}
+
+			$metadata = $this->p->post->get_update_meta_cache( $post_id );
 
 			/**
 			 * If the meta key already has a value, then no need to check the parents.
@@ -2068,7 +2099,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * Start with the parent and work our way up - return the first value found.
 			 */
-			foreach ( get_post_ancestors( $obj_id ) as $parent_id ) {
+			foreach ( get_post_ancestors( $post_id ) as $parent_id ) {
 
 				$metadata = $this->p->post->get_update_meta_cache( $parent_id );
 
@@ -2086,16 +2117,33 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $check;
 		}
 
-		public function update_post_metadata_thumbnail_id( $check = null, $obj_id, $meta_key, $meta_value, $prev_value ) {
+		/**
+		 * When inheriting a featured image from the post/page parent, ignore saving the same thumbnail ID.
+		 *
+		 * See get_metadata_raw() in wordpress/wp-includes/meta.php:570.
+		 * See metadata_exists() in wordpress/wp-includes/meta.php:683.
+		 */
+		public function update_post_metadata_thumbnail_id( $check = null, $post_id, $meta_key, $meta_value, $prev_value ) {
 
 			if ( '_thumbnail_id' !== $meta_key ) {
 
 				return $check;
 			}
 
+			/**
+			 * Filter 'wpsso_inherit_featured_image' added in WPSSO Core v9.10.0.
+			 */
+			$inherit_featured = empty( $this->p->options[ 'plugin_inherit_featured' ] ) ? false : true;
+			$inherit_featured = apply_filters( 'wpsso_inherit_featured_image', $inherit_featured, $post_id );
+
+			if ( ! $inherit_featured ) {
+
+				return $check;
+			}
+
 			if ( '' === $prev_value ) {	// No existing previous value.
 
-				foreach ( get_post_ancestors( $obj_id ) as $parent_id ) {
+				foreach ( get_post_ancestors( $post_id ) as $parent_id ) {
 
 					$metadata = $this->p->post->get_update_meta_cache( $parent_id );
 

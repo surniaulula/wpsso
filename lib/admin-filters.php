@@ -58,16 +58,31 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 			$apis_tab_url  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_apikeys' );
 			$integ_tab_url = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration' );
 
-			$features[ '(feature) Enforce Image Dimension Checks' ][ 'label_url' ] = $integ_tab_url;
+			/**
+			 * pro/util/check-img-dims.php.
+			 */
+			$features[ '(feature) Image Dimension Checks' ][ 'label_url' ] = $integ_tab_url;
 
-			$features[ '(feature) Enforce Image Dimension Checks' ][ 'status' ] = $this->p->options[ 'plugin_check_img_dims' ] ? $status_on : 'recommended';
+			$features[ '(feature) Image Dimension Checks' ][ 'status' ] = $this->p->options[ 'plugin_check_img_dims' ] ? $status_on : 'recommended';
 
+			/**
+			 * pro/util/wpseo-meta.php.
+			 */
 			$features[ '(feature) Import Yoast SEO Social Meta' ][ 'label_url' ] = $integ_tab_url;
 
+			/**
+			 * pro/util/shorten.php.
+			 */
 			$features[ '(feature) URL Shortening Service' ][ 'label_url' ] = $apis_tab_url;
 
+			/**
+			 * pro/media/upscale.php.
+			 */
 			$features[ '(feature) Upscale Media Library Images' ][ 'label_url' ] = $integ_tab_url;
 
+			/**
+			 * SSO > Advanced Settings > Integration > Use Filtered "SEO" Title.
+			 */
 			$features[ '(feature) Use Filtered "SEO" Title' ] = array(
 				'td_class'     => $td_class,
 				'label_transl' => _x( '(feature) Use Filtered "SEO" Title', 'lib file description', 'wpsso' ),
@@ -75,6 +90,9 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 				'status'       => $this->p->options[ 'plugin_filter_title' ] ? $status_on : 'off',
 			);
 
+			/**
+			 * SSO > Advanced Settings > Integration > Use Filtered Content.
+			 */
 			$features[ '(feature) Use Filtered Content' ] = array(
 				'td_class'     => $td_class,
 				'label_transl' => _x( '(feature) Use Filtered Content', 'lib file description', 'wpsso' ),
@@ -82,6 +100,9 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 				'status'       => $this->p->options[ 'plugin_filter_content' ] ? $status_on : 'recommended',
 			);
 
+			/**
+			 * SSO > Advanced Settings > Integration > Use Filtered Excerpt.
+			 */
 			$features[ '(feature) Use Filtered Excerpt' ] = array(
 				'td_class'     => $td_class,
 				'label_transl' => _x( '(feature) Use Filtered Excerpt', 'lib file description', 'wpsso' ),
@@ -89,6 +110,29 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 				'status'       => $this->p->options[ 'plugin_filter_excerpt' ] ? $status_on : 'off',
 			);
 
+			/**
+			 * SSO > Advanced Settings > Integration > Inherit Featured Image.
+			 */
+			$features[ '(feature) Inherit Featured Image' ] = array(
+				'td_class'     => $td_class,
+				'label_transl' => _x( '(feature) Inherit Featured Image', 'lib file description', 'wpsso' ),
+				'label_url'    => $integ_tab_url,
+				'status'       => $this->p->options[ 'plugin_inherit_featured' ] ? $status_on : 'off',
+			);
+
+			/**
+			 * SSO > Advanced Settings > Integration > Inherit Custom Images.
+			 */
+			$features[ '(feature) Inherit Custom Images' ] = array(
+				'td_class'     => $td_class,
+				'label_transl' => _x( '(feature) Inherit Custom Images', 'lib file description', 'wpsso' ),
+				'label_url'    => $integ_tab_url,
+				'status'       => $this->p->options[ 'plugin_inherit_custom' ] ? $status_on : 'off',
+			);
+
+			/**
+			 * SSO > Advanced Settings > Service APIs > Shortening Services tab.
+			 */
 			foreach ( $this->p->cf[ 'form' ][ 'shorteners' ] as $svc_id => $name ) {
 
 				if ( 'none' === $svc_id ) {

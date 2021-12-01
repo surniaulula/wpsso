@@ -120,8 +120,20 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$form->get_no_td_checkbox( 'plugin_new_user_is_person' ) .
 				WpssoAdmin::get_option_site_use( 'plugin_new_user_is_person', $form, $network );
 
+			$table_rows[ 'plugin_inherit_featured' ] = '' . 
+				$form->get_th_html( _x( 'Inherit Featured Image', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_inherit_featured' ) . 
+				$form->get_no_td_checkbox( 'plugin_inherit_featured' ) .
+				WpssoAdmin::get_option_site_use( 'plugin_inherit_featured', $form, $network );
+
+			$table_rows[ 'plugin_inherit_custom' ] = '' . 
+				$form->get_th_html( _x( 'Inherit Custom Images', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_inherit_custom' ) . 
+				$form->get_no_td_checkbox( 'plugin_inherit_custom' ) .
+				WpssoAdmin::get_option_site_use( 'plugin_inherit_featured', $form, $network );
+
 			$table_rows[ 'plugin_check_img_dims' ] = '' . 
-				$form->get_th_html( _x( 'Enforce Image Dimension Checks', 'option label', 'wpsso' ),
+				$form->get_th_html( _x( 'Image Dimension Checks', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_check_img_dims' ) . 
 				$form->get_no_td_checkbox( 'plugin_check_img_dims', _x( 'recommended (see help text)', 'option comment', 'wpsso' ) ) .
 				WpssoAdmin::get_option_site_use( 'plugin_check_img_dims', $form, $network );
@@ -129,7 +141,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$table_rows[ 'plugin_upscale_images' ] = '' . 
 				$form->get_th_html( _x( 'Upscale Media Library Images', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_upscale_images' ) . 
-				$form->get_no_td_checkbox( 'plugin_upscale_images' ) .
+				$form->get_no_td_checkbox( 'plugin_upscale_images', _x( 'not recommended', 'option comment', 'wpsso' ) ) .
 				WpssoAdmin::get_option_site_use( 'plugin_upscale_images', $form, $network );
 
 			$table_rows[ 'plugin_upscale_pct_max' ] = $form->get_tr_hide( 'basic', 'plugin_upscale_pct_max' ) .
@@ -138,28 +150,28 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'<td class="blank">' . $form->get_no_input( 'plugin_upscale_pct_max', $css_class = 'short' ) . ' %</td>' .
 				WpssoAdmin::get_option_site_use( 'plugin_upscale_pct_max', $form, $network );
 
-			$table_rows[ 'plugin_img_alt_prefix' ] = '' . 
+			$table_rows[ 'plugin_img_alt_prefix' ] = $form->get_tr_hide( 'basic', 'plugin_img_alt_prefix' ) .
 				$form->get_th_html_locale( _x( 'Content Image Alt Prefix', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_img_alt_prefix' ) . 
-				'<td class="blank">' . SucomUtil::get_key_value( 'plugin_img_alt_prefix', $form->options ) . '</td>' .
+				'<td class="blank">' . $form->get_no_input_locale( 'plugin_img_alt_prefix', $css_class = 'medium' ) . '</td>' .
 				WpssoAdmin::get_option_site_use( 'plugin_img_alt_prefix', $form, $network );
 
-			$table_rows[ 'plugin_p_cap_prefix' ] = '' . 
+			$table_rows[ 'plugin_p_cap_prefix' ] = $form->get_tr_hide( 'basic', 'plugin_p_cap_prefix' ) .
 				$form->get_th_html_locale( _x( 'WP Caption Text Prefix', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_p_cap_prefix' ) . 
-				'<td class="blank">' . SucomUtil::get_key_value( 'plugin_p_cap_prefix', $form->options ) . '</td>' .
+				'<td class="blank">' . $form->get_no_input_locale( 'plugin_p_cap_prefix', $css_class = 'medium' ) . '</td>' .
 				WpssoAdmin::get_option_site_use( 'plugin_p_cap_prefix', $form, $network );
 
-			$table_rows[ 'plugin_no_title_text' ] = '' . 
+			$table_rows[ 'plugin_no_title_text' ] = $form->get_tr_hide( 'basic', 'plugin_no_title_text' ) .
 				$form->get_th_html_locale( _x( 'No Title Text', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_no_title_text' ) . 
-				'<td class="blank">' . SucomUtil::get_key_value( 'plugin_no_title_text', $form->options ) . '</td>' .
+				'<td class="blank">' . $form->get_no_input_locale( 'plugin_no_title_text', $css_class = 'medium' ) . '</td>' .
 				WpssoAdmin::get_option_site_use( 'plugin_no_title_text', $form, $network );
 
-			$table_rows[ 'plugin_no_desc_text' ] = '' . 
+			$table_rows[ 'plugin_no_desc_text' ] = $form->get_tr_hide( 'basic', 'plugin_no_desc_text' ) .
 				$form->get_th_html_locale( _x( 'No Description Text', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_no_desc_text' ) . 
-				'<td class="blank">' . SucomUtil::get_key_value( 'plugin_no_desc_text', $form->options ) . '</td>' .
+				'<td class="blank">' . $form->get_no_input_locale( 'plugin_no_desc_text', $css_class = 'medium' ) . '</td>' .
 				WpssoAdmin::get_option_site_use( 'plugin_no_desc_text', $form, $network );
 
 			/**

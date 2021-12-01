@@ -301,18 +301,35 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					/**
 					 * Since WPSSO Core v9.5.0.
 					 *
-					 * Override options with those of the parents.
+					 * Filter 'wpsso_inherit_custom_images' added in WPSSO Core v9.10.0.
 					 */
-					if ( $this->p->debug->enabled ) {
+					$inherit_custom = empty( $this->p->options[ 'plugin_inherit_custom' ] ) ? false : true;
+					$inherit_custom = apply_filters( 'wpsso_inherit_custom_images', $inherit_custom, $mod );
 
-						$this->p->debug->log( 'merging parent metadata options' );
-					}
+					if ( $inherit_custom ) {
 
-					$parent_opts = $this->get_parent_md_opts( $mod );
+						if ( $this->p->debug->enabled ) {
 
-					if ( ! empty( $parent_opts ) ) {
+							$this->p->debug->log( 'merging parent metadata image options' );
+						}
 
-						$md_opts = array_merge( $parent_opts, $md_opts );	// Overwrite parent with child options.
+						/**
+						 * Return merged custom options from the post or term parents.
+						 */
+						$parent_opts = $this->get_parent_md_image_opts( $mod );
+
+						if ( ! empty( $parent_opts ) ) {
+
+							/**
+							 * Overwrite parent options with those of the child, allowing only
+							 * undefined child options to be inherited from the parent.
+							 */
+							$md_opts = array_merge( $parent_opts, $md_opts );
+						}
+
+					} elseif ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'merging parent metadata image options is disabled' );
 					}
 
 					/**

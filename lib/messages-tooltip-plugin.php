@@ -172,18 +172,29 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
-				case 'tooltip-plugin_check_img_dims':	// Enforce Image Dimension Checks.
+				case 'tooltip-plugin_inherit_featured':	// Inherit Featured Image.
 
-					$image_sizes_tab_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_image_sizes',
-						_x( 'Image Sizes', 'lib file description', 'wpsso' ) );
+					$text = __( 'Every post, page, custom post type, category, tag, custom taxonomy term, and user profile should have at least one image available for its meta tags and Schema markup.', 'wpsso' ) . ' ';
 
-					$text = __( 'Content authors often upload small featured images, without knowing that WordPress creates resized images based on predefined image sizes, so this option is disabled by default.', 'wpsso' ) . ' ';
+					$text .= __( 'Enable this option to make sure child pages without a featured image can inherit the featured image of their parents.', 'wpsso' ) . ' ';
 
-					$text .= sprintf( __( 'See <a href="%s">Why shouldn\'t I upload small images to the media library?</a> for more information on WordPress image sizes.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/' ). ' ';
+					break;
 
-					$text .= sprintf( __( 'When this option is enabled, full size images used for meta tags and Schema markup must be equal to (or larger) than the image dimensions you\'ve selected in the %s settings page - images that do not meet or exceed the minimum requirements are ignored.', 'wpsso' ), $image_sizes_tab_link ) . ' ';
+				case 'tooltip-plugin_inherit_custom':	// Inherit Custom Images.
 
-					$text .= '<strong>' . __( 'Providing social and search sites with perfectly resized images is highly recommended, so this option should be enabled if possible.', 'wpsso' ) . '</strong> ';
+					$text = __( 'Every post, page, custom post type, category, tag, custom taxonomy term, and user profile should have at least one image available for its meta tags and Schema markup.', 'wpsso' ) . ' ';
+
+					$text .= __( 'Enable this option to make sure child pages and terms without custom images can inherit the custom images of their parents.', 'wpsso' ) . ' ';
+
+					break;
+
+				case 'tooltip-plugin_check_img_dims':	// Image Dimension Checks.
+
+					$text = __( 'Providing social and search sites with perfectly resized images is highly recommended, so this option should be enabled if possible.', 'wpsso' ) . ' ';
+
+					$text .= __( 'Content authors often upload small featured images to the Media Library, without knowing that WordPress can create several different image sizes from the original, so this option is disabled by default to avoid excessive warning messages.', 'wpsso' ) . ' ';
+
+					$text .= sprintf( __( 'See <a href="%s">Why shouldn\'t I upload small images to the media library?</a> for more information on WordPress and image sizes.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/' ). ' ';
 
 					break;
 
