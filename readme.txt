@@ -243,19 +243,23 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.10.0-b.1 (2021/12/01)**
+**Version 9.10.0-b.3 (2021/12/01)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* The Document SSO metabox now shows default option values when creating new post / pages (ie. for the 'auto-draft' status).
 	* The Validators toolbar menu now refreshes when the post / page is saved in the Block Editor (validation links are available for published posts).
+	* Added new options under the SSO &gt; Advanced Settings &gt; Integration tab:
+		* Inherit Featured Image
+		* Inherit Custom Images
 * **Bugfixes**
 	* None.
 * **Developer Notes**
 	* Added a 'wp_after_insert_post' hook to update the default meta tag values for 'auto-draft' posts.
 	* Updated the jQuery `wpssoBlockEditor.refreshPostbox` function to call `sucomToolbarValidators()`.
 	* Added a new jQuery `sucomToolbarValidators()` method in js/com/jquery-admin-page.js.
+	* Added a new 'wpsso_inherit_featured_image' and 'wpsso_inherit_custom_images' filter.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -596,7 +600,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.10.0-b.1 =
+= 9.10.0-b.3 =
 
 (2021/12/01) The Document SSO metabox now shows default option values when creating new posts / pages. The Validators toolbar menu now refreshes when the post / page is saved in the Block Editor.
 
