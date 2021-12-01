@@ -284,6 +284,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 							$mod[ 'is_public' ] = $post_type_obj->public ? true : false;
 						}
 					}
+
+					/**
+					 * The post type might be public, but if the post itself is private, then mark the post as not public.
+					 *
+					 * See https://wordpress.org/support/article/post-status/#default-statuses.
+					 */
+					if ( 'private' === $mod[ 'post_status' ] ) {
+
+						$mod[ 'is_public' ] = false;
+					}
 				}
 			}
 
