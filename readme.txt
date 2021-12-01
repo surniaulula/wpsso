@@ -12,7 +12,7 @@ Requires PHP: 7.2
 Requires At Least: 5.2
 Tested Up To: 5.8.2
 WC Tested Up To: 5.9.0
-Stable Tag: 9.10.0
+Stable Tag: 9.10.1
 
 Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
 
@@ -243,7 +243,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.10.0 (2021/12/01)**
+**Version 9.10.1 (2021/12/01)**
 
 * **New Features**
 	* None.
@@ -600,7 +600,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.10.0 =
+= 9.10.1 =
 
 (2021/12/01) The Document SSO metabox now shows default option values when creating new posts / pages. The Validators toolbar menu now refreshes when the post / page is saved in the Block Editor.
 
