@@ -2669,6 +2669,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function admin_footer_ext( $footer_html ) {
 
+			if ( SucomUtil::get_const( 'WPSSO_ADMIN_FOOTER_DISABLE' ) ) {
+
+				return '';
+			}
+
 			$pkg_info = $this->get_pkg_info();	// Returns an array from cache.
 
 			$footer_html = '<div class="admin-footer-ext">';
@@ -2690,16 +2695,26 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function admin_footer_host( $footer_html ) {
 
+			if ( SucomUtil::get_const( 'WPSSO_ADMIN_FOOTER_DISABLE' ) ) {
+
+				return '';
+			}
+
 			global $wp_version;
 
-			$home_url  = SucomUtilWP::raw_get_home_url();
+			$home_url = SucomUtilWP::raw_get_home_url();
+
 			$home_path = preg_replace( '/^[a-z]+:\/\//i', '', $home_url );
 
-			$footer_html = '<div class="admin-footer-host">' .
-				$home_path . '<br/>' .
-				'WordPress ' . $wp_version . '<br/>' .
-				'PHP ' . phpversion() . '<br/>' .
-				'</div>';
+			$footer_html = '<div class="admin-footer-host">';
+
+			$footer_html .= $home_path . '<br/>';
+
+			$footer_html .= 'WordPress ' . $wp_version . '<br/>';
+
+			$footer_html .= 'PHP ' . phpversion() . '<br/>';
+
+			$footer_html .= '</div>';
 
 			return $footer_html;
 		}
