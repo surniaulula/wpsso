@@ -347,14 +347,12 @@ table.sucom-settings td p.inline {
 
 table.sucom-settings td p.ext-req-msg {
 	display:inline;
-	font-style:italic;
 	font-weight:normal;
 }
 
 table.sucom-settings td span.ext-req-msg,
 table.sucom-settings td span.ext-req-msg a {
 	color:#999;
-	font-style:italic;
 	font-weight:normal;
 	text-align:left;
 	margin-left:4px;
