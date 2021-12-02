@@ -1,10 +1,11 @@
 
-var wpssoBlockEditor = ( function(){
+const wpssoBlockEditor = ( function(){
 
-	var isSavingMetaBoxes = wp.data.select( 'core/edit-post' ).isSavingMetaBoxes;
-	var wasSavingMb       = false;
-	var pluginId          = 'wpsso';
-	var adminPageL10n     = 'wpssoAdminPageL10n';
+	const pluginId          = 'wpsso';
+	const adminPageL10n     = 'wpssoAdminPageL10n';
+	const isSavingMetaBoxes = wp.data.select( 'core/edit-post' ).isSavingMetaBoxes;
+
+	var wasSavingMb = false;
 
 	sucomBlockNotices( pluginId, adminPageL10n );					// Update the notices on startup.
 
