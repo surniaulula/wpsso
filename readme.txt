@@ -211,7 +211,7 @@ WPSSO provides comprehensive Schema markup for posts, pages, custom post types, 
 
 == Screenshots ==
 
-01. The Essential and General Settings pages provide a simple, fast, and easy setup.
+01. The Essential, General, and Advanced settings pages provide all the options you may need, from simple blog sites to advanced e-commerce shops and everything in-between.
 
 == Changelog ==
 
