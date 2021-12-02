@@ -9,6 +9,7 @@ var wpssoBlockEditor = ( function(){
 	sucomBlockNotices( pluginId, adminPageL10n );					// Update the notices on startup.
 
 	return {
+
 		refreshPostbox: function(){						// Called by wp.data.subscribe().
 
 			var isSavingMb = isSavingMetaBoxes();				// Check if we're saving metaboxes.
