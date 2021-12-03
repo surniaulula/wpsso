@@ -98,6 +98,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 */
 					add_action( 'current_screen', array( $this, 'load_meta_page' ), 100, 1 );
 
+					/**
+					 * The 'add_meta_boxes' action fires after all built-in meta boxes have been added.
+					 */
 					add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
 				}
 
@@ -1367,7 +1370,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'adding metabox id wpsso_' . $metabox_id );
+				$this->p->debug->log( 'adding metabox id wpsso_' . $metabox_id . ' for screen ' . $metabox_screen );
 			}
 
 			add_meta_box( 'wpsso_' . $metabox_id, $metabox_title,

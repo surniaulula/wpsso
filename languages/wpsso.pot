@@ -4457,7 +4457,7 @@ msgstr ""
 
 #: gettext/gettext-lib-pro.php:396 gettext/gettext-lib-pro.php:398
 #: gettext/gettext-lib-pro.php:435 lib/conflict.php:169 lib/loader.php:187
-#: lib/loader.php:201 lib/post.php:1558 lib/pro/review/yotpowc.php:205
+#: lib/loader.php:201 lib/post.php:1561 lib/pro/review/yotpowc.php:205
 #: lib/pro/util/shorten.php:460 lib/pro/util/shorten.php:497
 msgid "%s error:"
 msgstr ""
@@ -4518,22 +4518,22 @@ msgctxt "option value"
 msgid "[%s Organizer]"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:411 lib/pro/form/gravityview.php:54
+#: gettext/gettext-lib-pro.php:411 lib/pro/form/gravityview.php:57
 msgctxt "metabox title"
 msgid "Single Entry Integration"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:412 lib/pro/form/gravityview.php:82
+#: gettext/gettext-lib-pro.php:412 lib/pro/form/gravityview.php:85
 msgctxt "option label"
 msgid "Title Field ID"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:413 lib/pro/form/gravityview.php:86
+#: gettext/gettext-lib-pro.php:413 lib/pro/form/gravityview.php:89
 msgctxt "option label"
 msgid "Description Field ID"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:414 lib/pro/form/gravityview.php:90
+#: gettext/gettext-lib-pro.php:414 lib/pro/form/gravityview.php:93
 msgctxt "option label"
 msgid "Post Image Field ID"
 msgstr ""
@@ -5199,7 +5199,7 @@ msgstr ""
 msgid "Network plugin settings have been saved."
 msgstr ""
 
-#: lib/admin.php:1227 lib/post.php:909 lib/term.php:680 lib/user.php:656
+#: lib/admin.php:1227 lib/post.php:912 lib/term.php:683 lib/user.php:656
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -6336,12 +6336,12 @@ msgid ""
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1027 lib/post.php:640 lib/register.php:350 lib/term.php:507
+#: lib/media.php:1027 lib/post.php:643 lib/register.php:350 lib/term.php:510
 #: lib/user.php:465 lib/util.php:833 lib/util.php:3060
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1028 lib/post.php:641 lib/term.php:508 lib/user.php:466
+#: lib/media.php:1028 lib/post.php:644 lib/term.php:511 lib/user.php:466
 #: lib/util.php:834 lib/util.php:3061
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
@@ -9849,144 +9849,144 @@ msgid_plural "%s minutes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/post.php:244
+#: lib/post.php:247
 msgctxt "module name"
 msgid "post"
 msgstr ""
 
-#: lib/post.php:642
+#: lib/post.php:645
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to get children of "
 "post ID %3$d (%4$s)."
 msgstr ""
 
-#: lib/post.php:842 lib/post.php:1483 lib/schema.php:3242 lib/term.php:631
+#: lib/post.php:845 lib/post.php:1486 lib/schema.php:3242 lib/term.php:634
 #: lib/user.php:606
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/post.php:1047
+#: lib/post.php:1050
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:1080
+#: lib/post.php:1083
 msgid "The webpage HTML retrieved from %1$s is %2$s bytes."
 msgstr ""
 
-#: lib/post.php:1082
+#: lib/post.php:1085
 msgid ""
 "This exceeds the maximum limit of %1$s bytes imposed by the Google crawler."
 msgstr ""
 
-#: lib/post.php:1084
+#: lib/post.php:1087
 msgid ""
 "If you do not reduce the webpage HTML size, Google will refuse to crawl this "
 "webpage."
 msgstr ""
 
-#: lib/post.php:1114
+#: lib/post.php:1117
 msgid "Retrieving the webpage HTML for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:1116
+#: lib/post.php:1119
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:1118
+#: lib/post.php:1121
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:1119
+#: lib/post.php:1122
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:1133
+#: lib/post.php:1136
 msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:1147
+#: lib/post.php:1150
 msgid "An %1$s tag was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1162
+#: lib/post.php:1165
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1179
+#: lib/post.php:1182
 msgid ""
 "The %1$s meta tags and Schema markup section was not found in <a href=\"%2$s"
 "\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1181
+#: lib/post.php:1184
 msgid "Does a caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:1212
+#: lib/post.php:1215
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section - "
 "this could be an indication of a problem with PHP's PCRE library, or an "
 "optimization plugin or service corrupting the webpage HTML markup."
 msgstr ""
 
-#: lib/post.php:1214
+#: lib/post.php:1217
 msgid ""
 "You may consider updating or having your hosting provider update your PHP "
 "installation and its PCRE library."
 msgstr ""
 
-#: lib/post.php:1234
+#: lib/post.php:1237
 msgid ""
 "Conflict detected - your theme or another plugin is adding %1$s to the head "
 "section of this webpage."
 msgstr ""
 
-#: lib/post.php:1252
+#: lib/post.php:1255
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1252
+#: lib/post.php:1255
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML document - please review the <a href=\"%1$s\">W3C Markup "
 "Validator</a> results and correct any syntax errors."
 msgstr ""
 
-#: lib/post.php:1290
+#: lib/post.php:1293
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1292
+#: lib/post.php:1295
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1300
+#: lib/post.php:1303
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1304
+#: lib/post.php:1307
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1308
+#: lib/post.php:1311
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1522
+#: lib/post.php:1525
 msgid "invalid ajax referer nonce value"
 msgstr ""
 
-#: lib/post.php:1527
+#: lib/post.php:1530
 msgid "ajax request missing the post_id"
 msgstr ""
 
-#: lib/post.php:1807
+#: lib/post.php:1810
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -10790,18 +10790,18 @@ msgctxt "submit button"
 msgid "Reset Metabox Layout"
 msgstr ""
 
-#: lib/term.php:187
+#: lib/term.php:190
 msgctxt "module name"
 msgid "term"
 msgstr ""
 
-#: lib/term.php:509
+#: lib/term.php:512
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to get posts for "
 "term ID %3$d in taxonomy %4$s (%5$s)."
 msgstr ""
 
-#: lib/term.php:914
+#: lib/term.php:917
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 

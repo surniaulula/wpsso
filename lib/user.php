@@ -88,16 +88,16 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				if ( ! empty( $_GET ) ) {
 
 					/**
-					 * Common to both profile and user editing pages.
-					 */
-					add_action( 'admin_init', array( $this, 'add_meta_boxes' ) );
-
-					/**
 					 * load_meta_page() priorities: 100 post, 200 user, 300 term.
 					 *
 					 * Sets the parent::$head_tags and parent::$head_info class properties.
 					 */
 					add_action( 'current_screen', array( $this, 'load_meta_page' ), 200, 1 );
+
+					/**
+					 * Fires after the 'About the User' settings table on the 'Edit User' screen.
+					 */
+					add_action( 'edit_user_profile', array( $this, 'add_meta_boxes' ) );
 				}
 
 				add_filter( 'views_users', array( $this, 'add_person_view' ) );
@@ -711,7 +711,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'adding metabox id wpsso_' . $metabox_id );
+				$this->p->debug->log( 'adding metabox id wpsso_' . $metabox_id . ' for screen ' . $metabox_screen );
 			}
 
 			add_meta_box( 'wpsso_' . $metabox_id, $metabox_title,

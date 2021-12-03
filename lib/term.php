@@ -134,14 +134,17 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				 */
 				if ( ! empty( $_GET ) ) {
 
-					add_action( 'admin_init', array( $this, 'add_meta_boxes' ) );
-
 					/**
 					 * load_meta_page() priorities: 100 post, 200 user, 300 term
 					 *
 					 * Sets the parent::$head_tags and parent::$head_info class properties.
 					 */
 					add_action( 'current_screen', array( $this, 'load_meta_page' ), 300, 1 );
+
+					/**
+					 * We have a taxonomy $query_tax_slug value, so add the taxonomy term metaboxes.
+					 */
+					add_action( 'admin_init', array( $this, 'add_meta_boxes' ) );
 
 					add_action( $this->query_tax_slug . '_edit_form', array( $this, 'show_metaboxes' ), -100, 1 );
 				}
@@ -733,7 +736,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'adding metabox id wpsso_' . $metabox_id );
+				$this->p->debug->log( 'adding metabox id wpsso_' . $metabox_id . ' for screen ' . $metabox_screen );
 			}
 
 			add_meta_box( 'wpsso_' . $metabox_id, $metabox_title,
