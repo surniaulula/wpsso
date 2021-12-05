@@ -81,6 +81,8 @@
 
 'wpsso_description_seed' ( '', $mod, $add_hashtags, $md_key )
 
+'wpsso_form_select_{option_name}' ( $values )
+
 'wpsso_get_avail' ( $ret )
 
 'wpsso_get_config' ( array $cf )
