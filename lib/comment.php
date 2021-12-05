@@ -33,7 +33,9 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 				$this->p->debug->mark();
 			}
 
-			add_action ( 'clean_comment_cache', array( $this, 'clean_comment_cache' ), 1000, 1 );
+			add_action ( 'comment_post', array( $this, 'clear_cache_comment_post' ), 1000, 2 );
+
+			add_action ( 'transition_comment_status', array( $this, 'clear_cache_transition_comment_status' ), 1000, 3 );
 		}
 
 		/**
@@ -74,18 +76,27 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 			return $local_cache[ $comment_id ] = apply_filters( 'wpsso_get_comment_mod', $mod, $comment_id );
 		}
 
-		public function clean_comment_cache( $comment_id ) {
+		public function clear_cache_comment_post( $comment_id, $comment_approved ) {
 
-			if ( empty( $comment_id ) ) {	// Just in case.
+			if ( $comment_id && $comment_approved ) {
 
-				return;
+				$comment = get_comment( $comment_id );
+				
+				if ( ! empty( $comment->comment_post_ID ) ) {
+
+					$this->p->post->clear_cache( $comment->comment_post_ID );
+				}
 			}
+		}
 
-			$comment = get_comment( $comment_id );
+		public function clear_cache_transition_comment_status( $new_status, $old_status, $comment ) {
 
-			if ( ! empty( $comment->comment_post_ID ) ) {	// Just in case.
+			if ( 'approved' === $new_status || 'approved' === $old_status ) {
 
-				$this->p->post->clear_cache( $comment->comment_post_ID );
+				if ( ! empty( $comment->comment_post_ID ) ) {
+
+					$this->p->post->clear_cache( $comment->comment_post_ID );
+				}
 			}
 		}
 
