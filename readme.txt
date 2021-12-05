@@ -243,6 +243,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 9.10.2-dev.1 (2021/12/05)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed comment cache clearing by using the WordPress 'comment_post' and 'transition_comment_status' action hooks instead of 'clean_comment_cache' (used since WPSSO Core v9.5.0).
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 9.10.1 (2021/12/01)**
 
 * **New Features**
@@ -599,6 +613,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.0.
 
 == Upgrade Notice ==
+
+= 9.10.2-dev.1 =
+
+(2021/12/05) Fixed comment cache clearing by using the WordPress 'comment_post' and 'transition_comment_status' action hooks instead of 'clean_comment_cache' (used since WPSSO Core v9.5.0).
 
 = 9.10.1 =
 
