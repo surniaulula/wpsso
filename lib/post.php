@@ -1419,7 +1419,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$arrow                 = '';
 
 				if ( ! $is_root_top_item && ! $is_top_secondary_item && $is_parent ) {
-				
+
 					$arrow = '<span class="wp-admin-bar-arrow" aria-hidden="true"></span>';
 		                }
 

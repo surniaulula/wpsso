@@ -385,7 +385,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			$obj_id = absint( $obj_id );
 
 			if ( ! $obj_id ) {
-			
+
 				return array();
 			}
 

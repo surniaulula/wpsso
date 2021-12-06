@@ -119,7 +119,7 @@ if ( ! class_exists( 'SucomUtilMetabox' ) ) {
 					width:1em;
 					height:1em;
 				}
-				
+
 				div#' . $metabox_id . '.postbox table .del-column span:hover {
 					cursor:pointer;
 				}

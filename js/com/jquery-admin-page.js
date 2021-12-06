@@ -206,7 +206,7 @@ function sucomToolbarNotices( pluginId, adminPageL10n ) {
 		return;
 
 	} else if ( ! cfg[ '_tb_types_showing' ] ) {	// No toolbar notice types to get.
-	
+
 		return;
 	}
 

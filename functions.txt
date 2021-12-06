@@ -49,3 +49,5 @@ wpsso_get_user_og_image_url( $user_id, $size_name = 'thumbnail' );	// Returns im
 
 wpsso_schema_attributes( $attr = '' );
 
+wpsso_shorten_url( $url );
+

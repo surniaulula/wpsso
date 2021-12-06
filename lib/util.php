@@ -1871,7 +1871,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $this->inline->get_values( $mod, $atts );
 		}
 
-		public function shorten_url( $long_url, $mod ) {
+		public function shorten_url( $long_url, $mod = false ) {
 
 			$shortener = isset( $this->p->options[ 'plugin_shortener' ] ) ? $this->p->options[ 'plugin_shortener' ] : 'none';
 
@@ -1879,10 +1879,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				$short_url = apply_filters( 'wpsso_get_short_url', $long_url, $shortener, $mod );
 
-				/**
-				 * Make sure the returned URL is valid.
-				 */
-				if ( false !== filter_var( $short_url, FILTER_VALIDATE_URL ) ) {
+				if ( false !== filter_var( $short_url, FILTER_VALIDATE_URL ) ) {	// Make sure the returned URL is valid.
 
 					return $short_url;
 				}
@@ -3450,9 +3447,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$have_url = false;
 
 			} elseif ( $mod[ 'is_post' ] ) {
-			
+
 				if ( 'publish' !== $mod[ 'post_status' ] ) {
-					
+
 					$have_url = false;
 				}
 			}

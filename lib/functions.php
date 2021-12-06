@@ -502,3 +502,17 @@ if ( ! function_exists( 'wpsso_get_short_url' ) ) {
 		return wpsso_get_canonical_short_url( $mod, $add_page );
 	}
 }
+
+/**
+ * Shorten any URL using the selected shortening service.
+ */
+if ( ! function_exists( 'wpsso_shorten_url' ) ) {
+
+	function wpsso_shorten_url( $url ) {
+
+		$wpsso =& Wpsso::get_instance();
+
+		return $wpsso->util->shorten_url( $url );
+	}
+}
+

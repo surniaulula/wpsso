@@ -84,12 +84,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$menu_items = array();
 
 				foreach ( $validators as $key => $el ) {
-	
+
 					if ( empty( $el[ 'type' ] ) ) {
-	
+
 						continue;
 					}
-	
+
 					$menu_items[] = array(
 						'id'     => $parent_id . '-' . $key,
 						'title'  => $el[ 'type' ],
@@ -103,7 +103,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						),
 					);
 				}
-	
+
 				$wp_admin_bar->add_node( array(
 					'id'     => $parent_id,
 					'title'  => $menu_icon . $menu_title,
@@ -114,12 +114,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						'html' => '<style type="text/css">#wp-admin-bar-wpsso-validate .disabled { opacity:0.5; filter:alpha(opacity=50); }</style>',
 					),
 				) );
-	
+
 				foreach ( $menu_items as $menu_item ) {
-	
+
 					$wp_admin_bar->add_node( $menu_item );
 				}
-	
+
 				return $parent_id;
 			}
 
