@@ -525,8 +525,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		/**
 		 * $context is 'settings', 'business', 'organization', 'place', or 'meta'.
-		 *
-		 * $mod is provided when get_schema_types_select() is called from a post, term, or user metabox.
 		 */
 		public function get_schema_types_select( $context = null, $schema_types = null ) {
 
@@ -549,15 +547,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$schema_types = SucomUtil::array_flatten( $schema_types );
 
-			if ( defined( 'SORT_STRING' ) ) {	// Just in case.
-
-				ksort( $schema_types, SORT_STRING );
-
-			} else {
-
-				ksort( $schema_types );
-			}
-
 			/**
 			 * $schema_types = Array (
 			 *	[accommodation] => https://schema.org/Accommodation
@@ -573,9 +562,44 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			foreach ( $schema_types as $type_id => $type_url ) {
 
-				$type_url = preg_replace( '/^.*\/\//', '', $type_url );
+				$type_url  = preg_replace( '/^.*\/\//', '', $type_url );
+				$type_name = preg_replace( '/^.*\//U', '', $type_url );
 
-				$select[ $type_id ] = $type_id . ' | ' . $type_url;
+				switch ( $this->p->options[ 'plugin_schema_types_select_format' ] ) {
+
+					case 'id':
+
+						$select[ $type_id ] = $type_id;
+
+						break;
+
+					case 'id_url':
+
+						$select[ $type_id ] = $type_id . ' | ' . $type_url;
+
+						break;
+
+					case 'name_id':
+
+						$select[ $type_id ] = $type_name . ' [' . $type_id . ']';
+
+						break;
+
+					default:
+
+						$select[ $type_id ] = $type_name;
+
+						break;
+				}
+			}
+
+			if ( defined( 'SORT_STRING' ) ) {	// Just in case.
+
+				asort( $select, SORT_STRING );
+
+			} else {
+
+				asort( $select );
 			}
 
 			return $select;

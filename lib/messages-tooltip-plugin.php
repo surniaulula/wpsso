@@ -94,11 +94,23 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
-				case 'tooltip-plugin_show_columns':	// Additional List Table Columns.
+				case 'tooltip-plugin_show_columns':	// WP List Table Columns.
 
 					$text = __( 'Additional columns can be included in admin list tables for posts, pages, etc.', 'wpsso' ) . ' ';
 
 					$text .= __( 'Users can also hide enabled columns by using the <em>Screen Options</em> tab on these admin list table pages.', 'wpsso' );
+
+					break;
+
+				case 'tooltip-plugin_schema_types_select_format':	// Schema Type Select Format.
+
+					$text = __( 'Select a preferred format for the Schema Type drop-down options.', 'wpsso' );
+
+					break;
+
+				case 'tooltip-plugin_og_types_select_format':	// Open Graph Type Select Format.
+
+					$text = __( 'Select a preferred format for the Open Graph Type drop-down options.', 'wpsso' );
 
 					break;
 

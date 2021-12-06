@@ -894,9 +894,35 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			foreach ( $og_type_ns as $type_id => $type_ns ) {
 
-				$type_ns = preg_replace( '/(^.*\/\/|#$)/', '', $type_ns );
+				$type_url  = preg_replace( '/(^.*\/\/|#$)/', '', $type_ns );
+				$type_name = preg_replace( '/(^.*\/ns\/|#$)/U', '', $type_url );
 
-				$select[ $type_id ] = $type_id . ' | ' . $type_ns;
+				switch ( $this->p->options[ 'plugin_og_types_select_format' ] ) {
+
+					case 'id':
+
+						$select[ $type_id ] = $type_id;
+
+						break;
+
+					case 'id_url':
+
+						$select[ $type_id ] = $type_id . ' | ' . $type_url;
+
+						break;
+
+					case 'name_id':
+
+						$select[ $type_id ] = $type_name . ' [' . $type_id . ']';
+
+						break;
+
+					default:
+
+						$select[ $type_id ] = $type_name;
+
+						break;
+				}
 			}
 
 			if ( defined( 'SORT_STRING' ) ) {	// Just in case.

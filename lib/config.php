@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.10.2-dev.2',	// Plugin version.
-					'opt_version' => '839',		// Increment when changing default option values.
+					'version'     => '9.10.2-dev.3',	// Plugin version.
+					'opt_version' => '840',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1714,7 +1714,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_add_to_tribe_events'           => 1,		// For The Events Calendar.
 					'plugin_add_to_tribe-ea-record'        => 1,		// For The Events Calendar.
 					'plugin_add_to_user_page'              => 1,
-					'plugin_schema_type_col_media'         => 0,		// Additional List Table Columns.
+					'plugin_schema_type_col_media'         => 0,		// WP List Table Columns.
 					'plugin_schema_type_col_post'          => 0,
 					'plugin_schema_type_col_term'          => 0,
 					'plugin_schema_type_col_user'          => 0,
@@ -1730,6 +1730,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_og_desc_col_post'              => 0,
 					'plugin_og_desc_col_term'              => 0,
 					'plugin_og_desc_col_user'              => 0,
+					'plugin_og_types_select_format'        => 'name',
+					'plugin_schema_types_select_format'    => 'name',
 
 					/**
 					 * Advanced Settings > Integration tab.
@@ -2544,6 +2546,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'custom' => '[Custom Place]',
 					'new'    => '[New Place]',
 				),
+				'og_schema_types_select_format' => array(
+					'id'      => 'ID',
+					'id_url'  => 'ID | Host/Name',
+					'name_id' => 'Name [ID]',
+					'name'    => 'Name',
+				),
 
 				/**
 				 * Image preferred cropping.
@@ -3250,7 +3258,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'episode.radio'   => 'https://schema.org/RadioEpisode',
 								'episode.tv'      => 'https://schema.org/TVEpisode',
 							),
-							'game'                 => array(
+							'game' => array(
 								'game'       => 'https://schema.org/Game',
 								'video.game' => 'https://schema.org/VideoGame',
 							),
@@ -3260,7 +3268,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							),
 							'map'          => 'https://schema.org/Map',
 							'media.object' => array(
-								'audio.object'       => array(
+								'audio.object' => array(
 									'audio.object' => 'https://schema.org/AudioObject',
 									'book.audio'   => 'https://schema.org/Audiobook',
 								),
@@ -3287,9 +3295,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'publication.volume' => 'https://schema.org/PublicationVolume',
 							'question'           => 'https://schema.org/Question',
 							'review'             => array(
-								'review'                => 'https://schema.org/Review',
-								'review.claim'          => 'https://schema.org/ClaimReview',
-								'review.critic'         => array(
+								'review'        => 'https://schema.org/Review',
+								'review.claim'  => 'https://schema.org/ClaimReview',
+								'review.critic' => array(
 									'review.critic'       => 'https://schema.org/CriticReview',
 									'article.news.review' => 'https://schema.org/ReviewNewsArticle',
 								),
@@ -3312,10 +3320,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'tv.series'            => 'https://schema.org/TVSeries',
 							'visual.artwork'       => 'https://schema.org/VisualArtwork',
 							'webpage'              => array(
-								'webpage'                => 'https://schema.org/WebPage',
-								'webpage.about'          => 'https://schema.org/AboutPage',
-								'webpage.checkout'       => 'https://schema.org/CheckoutPage',
-								'webpage.collection'     => array(
+								'webpage'            => 'https://schema.org/WebPage',
+								'webpage.about'      => 'https://schema.org/AboutPage',
+								'webpage.checkout'   => 'https://schema.org/CheckoutPage',
+								'webpage.collection' => array(
 									'webpage.collection'    => 'https://schema.org/CollectionPage',
 									'webpage.gallery.image' => 'https://schema.org/ImageGallery',
 									'webpage.gallery.video' => 'https://schema.org/VideoGallery',

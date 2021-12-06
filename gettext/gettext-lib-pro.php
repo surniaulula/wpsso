@@ -46,7 +46,9 @@ __( 'Media Library', 'wpsso' );
 __( 'Categories, Tags, and Custom Taxonomies', 'wpsso' );
 // translators: Please ignore - translation uses a different text domain.
 __( 'Users' );
-_x( 'Additional List Table Columns', 'option label', 'wpsso' );
+_x( 'WP List Table Columns', 'option label', 'wpsso' );
+_x( 'Schema Type Select Format', 'option label', 'wpsso' );
+_x( 'Open Graph Type Select Format', 'option label', 'wpsso' );
 _x( 'Gravatar is Default Author Image', 'option label', 'wpsso' );
 _x( 'Gravatar Image Size', 'option label', 'wpsso' );
 _x( 'Check for Embedded Media', 'option label', 'wpsso' );

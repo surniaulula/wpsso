@@ -329,9 +329,19 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$list_cols .= '</table>' . "\n";
 
 			$table_rows[ 'plugin_show_columns' ] = '' .
-				$form->get_th_html( _x( 'Additional List Table Columns', 'option label', 'wpsso' ),
+				$form->get_th_html( _x( 'WP List Table Columns', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_show_columns' ) .
 				'<td>' . $list_cols . '</td>';
+
+			$table_rows[ 'plugin_schema_types_select_format' ] = $form->get_tr_hide( 'basic', 'plugin_schema_types_select_format' ) .
+				$form->get_th_html( _x( 'Schema Type Select Format', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_schema_types_select_format' ) . 
+				'<td>' . $form->get_no_select( 'plugin_schema_types_select_format', $this->p->cf[ 'form' ][ 'og_schema_types_select_format' ] ) . '</td>';
+
+			$table_rows[ 'plugin_og_types_select_format' ] = $form->get_tr_hide( 'basic', 'plugin_og_types_select_format' ) .
+				$form->get_th_html( _x( 'Open Graph Type Select Format', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_og_types_select_format' ) . 
+				'<td>' . $form->get_no_select( 'plugin_og_types_select_format', $this->p->cf[ 'form' ][ 'og_schema_types_select_format' ] ) . '</td>';
 
 			return $table_rows;
 		}
