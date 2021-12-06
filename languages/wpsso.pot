@@ -5573,7 +5573,7 @@ msgstr ""
 msgid "Import of plugin and add-on settings is complete."
 msgstr ""
 
-#: lib/comment.php:65
+#: lib/comment.php:68
 msgctxt "module name"
 msgid "comment"
 msgstr ""
