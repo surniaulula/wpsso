@@ -697,9 +697,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			echo $this->get_column_content( '', $column_name, $post_id );
 		}
 
-		public function get_update_meta_cache( $post_id, $meta_type = 'post' ) {
+		public function get_update_meta_cache( $post_id ) {
 
-			return parent::get_update_meta_cache( $post_id, $meta_type = 'post' );
+			return SucomUtilWP::get_update_meta_cache( $post_id, $meta_type = 'post' );
 		}
 
 		/**
@@ -2101,7 +2101,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return $check;
 			}
 
-			$metadata = $this->p->post->get_update_meta_cache( $post_id );
+			$metadata = $this->get_update_meta_cache( $post_id );
 
 			/**
 			 * If the meta key already has a value, then no need to check the parents.
@@ -2116,7 +2116,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			 */
 			foreach ( get_post_ancestors( $post_id ) as $parent_id ) {
 
-				$metadata = $this->p->post->get_update_meta_cache( $parent_id );
+				$metadata = $this->get_update_meta_cache( $parent_id );
 
 				if ( ! empty( $metadata[ $meta_key ][ 0 ] ) ) {	// Parent has a meta key value.
 
@@ -2162,7 +2162,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				foreach ( get_post_ancestors( $post_id ) as $parent_id ) {
 
-					$metadata = $this->p->post->get_update_meta_cache( $parent_id );
+					$metadata = $this->get_update_meta_cache( $parent_id );
 
 					if ( ! empty( $metadata[ $meta_key ][ 0 ] ) ) {	// Parent has a meta key value.
 

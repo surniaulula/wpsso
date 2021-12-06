@@ -544,9 +544,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			return $this->add_column_headings( $columns, $list_type = 'term' );
 		}
 
-		public function get_update_meta_cache( $obj_id, $meta_type = 'term' ) {
+		public function get_update_meta_cache( $term_id ) {
 
-			return parent::get_update_meta_cache( $obj_id, $meta_type = 'term' );
+			return SucomUtilWP::get_update_meta_cache( $term_id, $meta_type = 'term' );
 		}
 
 		/**

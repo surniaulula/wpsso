@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.10.2-dev.1',	// Plugin version.
+					'version'     => '9.10.2-dev.2',	// Plugin version.
 					'opt_version' => '839',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2295,7 +2295,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'wpsso_r_' => array(
 						'label'  => 'API Response',
-						'value'  => HOUR_IN_SECONDS,
+						'value'  => DAY_IN_SECONDS,
 						'filter' => 'wpsso_cache_expire_api_response',
 					),
 					'wpsso_s_' => array(

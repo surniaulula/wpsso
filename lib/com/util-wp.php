@@ -370,6 +370,60 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		}
 
 		/**
+		 * Retrieves or updates the metadata cache by key and group.
+		 *
+		 * Usually called by an extended class (WpssoComment, WpssoPost, WpssoTerm, or WpssoUser), which hardcodes the
+		 * $meta_type value to 'comment', 'post', 'term', or 'user'.
+		 */
+		public static function get_update_meta_cache( $obj_id, $meta_type ) {
+
+			if ( ! $meta_type || ! is_numeric( $obj_id ) ) {
+
+				return array();
+			}
+
+			$obj_id = absint( $obj_id );
+
+			if ( ! $obj_id ) {
+			
+				return array();
+			}
+
+			/**
+			 * WordPress stores data using a post, term, or user ID, along with a group string.
+			 *
+			 * Example: wp_cache_get( 1, 'user_meta' );
+			 *
+			 * Returns (bool|mixed) false on failure to retrieve contents or the cache contents on success.
+			 *
+			 * $found (bool) Whether the key was found in the cache (passed by reference) - disambiguates a return of false.
+			 */
+			$metadata = wp_cache_get( $obj_id, $meta_type . '_meta', $force = false, $found );
+
+			if ( $found ) {
+
+				return $metadata;
+			}
+
+			/**
+			 * $meta_type (string) Type of object metadata is for. Accepts 'post', 'comment', 'term', 'user',
+			 * or any other object type with an associated meta table.  
+			 *
+			 * Returns (array|false) metadata cache for the specified objects, or false on failure.
+			 */
+			$metadata = update_meta_cache( $meta_type, array( $obj_id ) );
+
+			return $metadata[ $obj_id ];
+		}
+
+		public static function raw_metadata_exists( $meta_type, $obj_id, $meta_key ) {
+
+			$metadata = self::get_update_meta_cache( $obj_id, $meta_type );
+
+			return isset( $metadata[ $obj_id ][ $meta_key ] ) ? true : false;
+		}
+
+		/**
 		 * Unfiltered version of wp_get_shortlink() from wordpress/wp-includes/link-template.php
 		 *
 		 * Last synchronized with WordPress v5.0.3 on 2019/01/29.

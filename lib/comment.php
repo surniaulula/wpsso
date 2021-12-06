@@ -103,9 +103,12 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 			}
 		}
 
-		public function get_update_meta_cache( $obj_id, $meta_type = 'comment' ) {
+		/**
+		 * Retrieves or updates the metadata cache by key and group.
+		 */
+		public function get_update_meta_cache( $comment_id ) {
 
-			return parent::get_update_meta_cache( $obj_id, $meta_type = 'comment' );
+			return SucomUtilWP::get_update_meta_cache( $comment_id, $meta_type = 'comment' );
 		}
 
 		/**

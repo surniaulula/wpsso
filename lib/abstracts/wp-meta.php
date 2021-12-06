@@ -2010,9 +2010,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			}
 
 			/**
-			 * $value is an empty string by default. If $this->get_update_meta_cache() did not return a value for this
-			 * meta key, then $value will still be an empty string. If this meta key is localized, and the locale key
-			 * does not exist in the array, then fetch a new / updated array value.
+			 * $value is an empty string by default. If get_update_meta_cache() did not return a value for this meta
+			 * key, then $value will still be an empty string. If this meta key is localized, and the locale key does
+			 * not exist in the array, then fetch a new / updated array value.
 			 */
 			if ( '' === $value || ( $locale && ! isset( $value[ $locale ] ) ) ) {
 
@@ -2177,42 +2177,10 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 		/**
 		 * Retrieves or updates the metadata cache by key and group.
-		 *
-		 * Usually called by an extended class (WpssoComment, WpssoPost, WpssoTerm, or WpssoUser), which hardcodes the
-		 * $meta_type value to 'comment', 'post', 'term', or 'user'.
 		 */
-		public function get_update_meta_cache( $obj_id, $meta_type = '' ) {
+		public function get_update_meta_cache( $obj_id ) {
 
-			if ( empty( $meta_type ) ) {	// Just in case.
-
-				return array();
-			}
-
-			/**
-			 * WordPress stores data using a post, term, or user ID, along with a group string.
-			 *
-			 * Example: wp_cache_get( 1, 'user_meta' );
-			 *
-			 * Returns (bool|mixed) false on failure to retrieve contents or the cache contents on success.
-			 *
-			 * $found (bool) Whether the key was found in the cache (passed by reference) - disambiguates a return of false.
-			 */
-			$metadata = wp_cache_get( $obj_id, $meta_type . '_meta', $force = false, $found );
-
-			if ( $found ) {
-
-				return $metadata;
-			}
-
-			/**
-			 * $meta_type (string) Type of object metadata is for. Accepts 'post', 'comment', 'term', 'user',
-			 * or any other object type with an associated meta table.  
-			 *
-			 * Returns (array|false) metadata cache for the specified objects, or false on failure.
-			 */
-			$metadata = update_meta_cache( $meta_type, array( $obj_id ) );
-
-			return $metadata[ $obj_id ];
+			return self::must_be_extended( $ret_val = array() );	// Return an empty array.
 		}
 
 		/**

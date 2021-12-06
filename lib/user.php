@@ -499,9 +499,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $this->add_column_headings( $columns, $list_type = 'user' );
 		}
 
-		public function get_update_meta_cache( $obj_id, $meta_type = 'user' ) {
+		public function get_update_meta_cache( $user_id ) {
 
-			return parent::get_update_meta_cache( $obj_id, $meta_type = 'user' );
+			return SucomUtilWP::get_update_meta_cache( $user_id, $meta_type = 'user' );
 		}
 
 		/**
