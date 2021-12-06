@@ -245,6 +245,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 **Version 9.10.2-dev.3 (2021/12/06)**
 
+The default format of Schema and Open Graph types in select drop-downs has changed from "ID | Host/Name" to simply "Name". If you prefer the older format, you can choose different formats under the SSO &gt; Advanced Settings &gt; Interface tab.
+
 * **New Features**
 	* None.
 * **Improvements**
@@ -620,7 +622,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 9.10.2-dev.3 =
 
-(2021/12/06) Added new options under the SSO &gt; Advanced Settings &gt; Interface tab.
+(2021/12/06) The default format of Schema and Open Graph types in select drop-downs has changed from "ID | Host/Name" to simply "Name".
 
 = 9.10.1 =
 
