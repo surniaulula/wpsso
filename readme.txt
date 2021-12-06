@@ -243,17 +243,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.10.2-dev.2 (2021/12/06)**
+**Version 9.10.2-dev.3 (2021/12/06)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added new options under the SSO &gt; Advanced Settings &gt; Interface tab:
+		* Schema Type Select Format
+		* Open Graph Type Select Format
 * **Bugfixes**
-	* Fixed comment cache clearing by using the WordPress 'comment_post' and 'transition_comment_status' action hooks instead of 'clean_comment_cache' (used since WPSSO Core v9.5.0).
+	* None.
 * **Developer Notes**
 	* Added a new `SucomUtilWP::get_update_meta_cache()` method.
 	* Added a new `SucomUtilWP::raw_metadata_exists()` method.
+	* Changed comment cache clearing by using the WordPress 'comment_post' and 'transition_comment_status' action hooks instead of 'clean_comment_cache'.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -615,9 +618,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 9.10.2-dev.2 =
+= 9.10.2-dev.3 =
 
-(2021/12/06) Fixed comment cache clearing by using the WordPress 'comment_post' and 'transition_comment_status' action hooks instead of 'clean_comment_cache' (used since WPSSO Core v9.5.0).
+(2021/12/06) Added new options under the SSO &gt; Advanced Settings &gt; Interface tab.
 
 = 9.10.1 =
 
