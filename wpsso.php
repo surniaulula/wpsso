@@ -15,7 +15,7 @@
  * Requires At Least: 5.2
  * Tested Up To: 5.8.2
  * WC Tested Up To: 5.9.0
- * Version: 9.10.2-dev.3
+ * Version: 9.10.2-dev.4
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -167,7 +167,9 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		}
 
 		/**
-		 * Runs at init priority 9. Called by WpssoRegister->activate_plugin() as well.
+		 * Runs at init priority 9.
+		 *
+		 * Called by WpssoRegister->activate_plugin() as well.
 		 */
 		public function set_options( $activate = false ) {
 
@@ -270,7 +272,9 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		}
 
 		/**
-		 * Runs at init priority 10. Called by WpssoRegister->activate_plugin() as well.
+		 * Runs at init priority 10.
+		 *
+		 * Called by WpssoRegister->activate_plugin() as well.
 		 */
 		public function set_objects( $activate = false ) {
 

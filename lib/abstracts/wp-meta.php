@@ -190,7 +190,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		/**
 		 * Get the $mod object for a post, term, or user ID.
 		 */
-		public function get_mod( $mod_id ) {
+		public function get_mod( $obj_id ) {
 
 			return self::must_be_extended( self::$mod_defaults );
 		}
@@ -242,28 +242,28 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		 *	save_options()
 		 *	delete_options()
 		 */
-		public function get_defaults( $mod_id, $md_key = false ) {
+		public function get_defaults( $obj_id, $md_key = false ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_args( array( 
-					'mod_id' => $mod_id,
+					'obj_id' => $obj_id,
 					'md_key' => $md_key,
 				) );
 			}
 
 			static $local_cache = array();
 
-			if ( ! isset( $local_cache[ $mod_id ] ) ) {
+			if ( ! isset( $local_cache[ $obj_id ] ) ) {
 
-				$local_cache[ $mod_id ] = array();
+				$local_cache[ $obj_id ] = array();
 
 			} elseif ( $this->md_cache_disabled ) {
 
-				$local_cache[ $mod_id ] = array();
+				$local_cache[ $obj_id ] = array();
 			}
 
-			$md_defs =& $local_cache[ $mod_id ];	// Shortcut variable name.
+			$md_defs =& $local_cache[ $obj_id ];	// Shortcut variable name.
 
 			$is_cache_allowed = WpssoOptions::is_cache_allowed() ? true : false;
 			$options_filtered = empty( $md_defs[ 'options_filtered' ] ) ? false : true;
@@ -281,7 +281,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					$this->p->debug->log( 'get_md_defaults filters allowed' );
 				}
 
-				$mod = $this->get_mod( $mod_id );
+				$mod = $this->get_mod( $obj_id );
 
 				$opts =& $this->p->options;		// Shortcut variable name.
 
@@ -780,7 +780,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $md_defs;
 		}
 
-		public function get_options( $mod_id, $md_key = false, $filter_opts = true, $pad_opts = false ) {
+		public function get_options( $obj_id, $md_key = false, $filter_opts = true, $pad_opts = false ) {
 
 			$ret_val = false === $md_key ? array() : null;	// Allow for $md_key = 0.
 
@@ -807,7 +807,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return false;
 		}
 
-		protected function upgrade_options( $md_opts, $mod_id ) {
+		protected function upgrade_options( $md_opts, $obj_id ) {
 
 			/**
 			 * Save / create the current options version number for version checks to follow.
@@ -849,13 +849,13 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 					$meta_key = '_wpsso_' . $directive_key;
 
-					$directive_value = static::get_meta( $mod_id, $meta_key, $single = true );	// Use static method from child.
+					$directive_value = static::get_meta( $obj_id, $meta_key, $single = true );	// Use static method from child.
 
 					if ( '' !== $directive_value ) {
 
 						$md_opts[ $opt_key ] = (int) $directive_value;
 
-						static::delete_meta( $mod_id, $meta_key );	// Use static method from child.
+						static::delete_meta( $obj_id, $meta_key );	// Use static method from child.
 					}
 				}
 			}
@@ -873,13 +873,13 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		/**
 		 * Do not pass $md_opts by reference as the options array may get padded with default values.
 		 */
-		protected function return_options( $mod_id, array $md_opts, $md_key = false, $pad_opts = false ) {
+		protected function return_options( $obj_id, array $md_opts, $md_key = false, $pad_opts = false ) {
 
 			if ( $pad_opts ) {
 
 				if ( empty( $md_opts[ 'options_padded' ] ) ) {
 
-					$md_defs = $this->get_defaults( $mod_id );
+					$md_defs = $this->get_defaults( $obj_id );
 
 					if ( is_array( $md_defs ) ) {	// Just in case.
 
@@ -919,12 +919,22 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $md_opts;
 		}
 
-		public function save_options( $mod_id, $rel_id = false ) {
+		/**
+		 * Extended by WpssoPost->save_options( $post_id, $rel = false );
+		 * Extended by WpssoTerm->save_options( $term_id, $term_tax_id = false );
+		 * Extended by WpssoUser->save_options( $user_id, $rel = false );
+		 */
+		public function save_options( $obj_id, $rel = false ) {
 
 			return self::must_be_extended( $ret_val = false );
 		}
 
-		public function delete_options( $mod_id, $rel_id = false ) {
+		/**
+		 * Extended by WpssoPost->delete_options( $post_id, $rel = false );
+		 * Extended by WpssoTerm->delete_options( $term_id, $term_tax_id = false );
+		 * Extended by WpssoUser->delete_options( $user_id, $rel = false );
+		 */
+		public function delete_options( $obj_id, $rel = false ) {
 
 			return self::must_be_extended( $ret_val = false );
 		}
@@ -964,11 +974,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $posts_mods;
 		}
 
-		public function add_meta_boxes() {
-
-			return self::must_be_extended();
-		}
-
 		public function ajax_get_metabox_document_meta() {
 
 			self::must_be_extended();
@@ -1006,6 +1011,16 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		}
 
 		public function load_meta_page( $screen = false ) {
+
+			return self::must_be_extended();
+		}
+
+		/**
+		 * Extended by WpssoPost->add_meta_boxes( $post_type, $post_obj = false );
+		 * Extended by WpssoTerm->add_meta_boxes( $term_obj, $tax_slug = false );
+		 * Extended by WpssoUser->add_meta_boxes( $user_obj, $rel = false );
+		 */
+		public function add_meta_boxes( $obj, $rel = false ) {
 
 			return self::must_be_extended();
 		}
@@ -1075,10 +1090,13 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		}
 
 		/**
-		 * Called by WpssoWpMeta->check_sortable_meta(), WpssoOembed->post_oembed_response_data(),
-		 * WpssoOembed->post_oembed_response_data_rich, WpssoOembed->the_embed_thumbnail_url(),
-		 * WpssoOembed->the_embed_thumbnail_url_image_shape(), WpssoOembed->the_embed_thumbnail_id(), and
-		 * WpssoOembed->the_embed_excerpt().
+		 * Called by WpssoWpMeta->check_sortable_meta().
+		 * Called by WpssoOembed->post_oembed_response_data().
+		 * Called by WpssoOembed->post_oembed_response_data_rich.
+		 * Called by WpssoOembed->the_embed_thumbnail_url().
+		 * Called by WpssoOembed->the_embed_thumbnail_url_image_shape().
+		 * Called by WpssoOembed->the_embed_thumbnail_id().
+		 * Called by WpssoOembed->the_embed_excerpt().
 		 */
 		public function get_head_info( $mixed, $read_cache = true ) {
 
@@ -1195,27 +1213,27 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		 * is an array, then get the first non-empty option from the options array. This is an easy way to provide a
 		 * fallback value for the first array key. Use 'none' as a key name to skip this fallback behavior.
 		 *
-		 * Example: get_options_multi( $mod_id, array( 'seo_desc', 'og_desc' ) );
+		 * Example: get_options_multi( $obj_id, array( 'seo_desc', 'og_desc' ) );
 		 */
-		public function get_options_multi( $mod_id, $md_key = false, $filter_opts = true ) {
+		public function get_options_multi( $obj_id, $md_key = false, $filter_opts = true ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_args( array( 
-					'mod_id'      => $mod_id,
+					'obj_id'      => $obj_id,
 					'md_key'      => $md_key,
 					'filter_opts' => $filter_opts,
 				) );
 			}
 
-			if ( empty( $mod_id ) ) {
+			if ( empty( $obj_id ) ) {
 
 				return null;
 			}
 
 			if ( false === $md_key ) {	// Return the whole options array.
 
-				$md_val = $this->get_options( $mod_id, $md_key, $filter_opts );
+				$md_val = $this->get_options( $obj_id, $md_key, $filter_opts );
 
 			} elseif ( true === $md_key ) {	// True is not valid for a custom meta key.
 
@@ -1250,10 +1268,10 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'getting id ' . $mod_id . ' option ' . $md_key . ' value' );
+							$this->p->debug->log( 'getting id ' . $obj_id . ' option ' . $md_key . ' value' );
 						}
 
-						if ( ( $md_val = $this->get_options( $mod_id, $md_key, $filter_opts ) ) !== null ) {
+						if ( ( $md_val = $this->get_options( $obj_id, $md_key, $filter_opts ) ) !== null ) {
 
 							if ( $this->p->debug->enabled ) {
 
@@ -1270,7 +1288,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$mod = $this->get_mod( $mod_id );
+					$mod = $this->get_mod( $obj_id );
 
 					$this->p->debug->log( 'custom ' . $mod[ 'name' ] . ' ' . ( false === $md_key ? 'options' : 
 						( is_array( $md_key ) ? implode( $glue = ', ', $md_key ) : $md_key ) ) . ' = ' . 
@@ -1281,23 +1299,20 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $md_val;
 		}
 
-		public function user_can_edit( $mod_id, $rel_id = false ) {
-
-			return self::must_be_extended( $ret_val = false );	// Return false by default.
-		}
-
-		public function user_can_save( $mod_id, $rel_id = false ) {
-
-			return self::must_be_extended( $ret_val = false );	// Return false by default.
-		}
-
-		public function clear_cache( $mod_id, $rel_id = false ) {
+		/**
+		 * Extended by WpssoPost->clear_cache( $post_id, $rel = false );
+		 * Extended by WpssoTerm->clear_cache( $term_id, $term_tax_id = false );
+		 * Extended by WpssoUser->clear_cache( $user_id, $rel = false );
+		 */
+		public function clear_cache( $obj_id, $rel = false ) {
 
 			return self::must_be_extended();
 		}
 
 		/**
-		 * Called by WpssoPost->clear_cache(), WpssoTerm->clear_cache(), and WpssoUser->clear_cache().
+		 * Called by WpssoPost->clear_cache().
+		 * Called by WpssoTerm->clear_cache().
+		 * Called by WpssoUser->clear_cache().
 		 */
 		protected function clear_mod_cache( array $mod ) {
 
@@ -1471,6 +1486,21 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $cleared_count;
 		}
 
+		/**
+		 * Extended by WpssoPost->user_can_save( $post_id, $rel = false );
+		 * Extended by WpssoTerm->user_can_save( $term_id, $term_tax_id = false );
+		 * Extended by WpssoUser->user_can_save( $user_id, $rel = false );
+		 */
+		public function user_can_save( $obj_id, $rel = false ) {
+
+			return self::must_be_extended( $ret_val = false );	// Return false by default.
+		}
+
+		/**
+		 * Called by WpssoPost->user_can_save();
+		 * Called by WpssoTerm->user_can_save();
+		 * Called by WpssoUser->user_can_save();
+		 */
 		protected function verify_submit_nonce() {
 
 			if ( empty( $_POST ) ) {	// Nothing to save - nonce not required.
@@ -1941,9 +1971,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return array();
 		}
 
-		public function get_column_content( $value, $column_name, $mod_id ) {
+		public function get_column_content( $value, $column_name, $obj_id ) {
 
-			if ( empty( $mod_id ) || 0 !== strpos( $column_name, 'wpsso_' ) ) {	// Just in case.
+			if ( empty( $obj_id ) || 0 !== strpos( $column_name, 'wpsso_' ) ) {	// Just in case.
 
 				return $value;
 			}
@@ -1952,7 +1982,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			if ( $col_info = self::get_sortable_columns( $col_key ) ) {
 
-				$mod = $this->get_mod( $mod_id );
+				$mod = $this->get_mod( $obj_id );
 
 				$value = $this->get_column_wp_cache( $mod, $col_info );	// Can return 'none' or an empty string.
 
@@ -1965,7 +1995,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 					foreach( $col_info[ $callbacks_key ] as $input_callback ) {
 
-						$value = call_user_func( $input_callback, $value, $mod_id );
+						$value = call_user_func( $input_callback, $value, $obj_id );
 					}
 				}
 
@@ -1981,7 +2011,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		/**
 		 * Can return 'none' or an empty string.
 		 *
-		 * Called by WpssoPost->get_column_content(), WpssoTerm->get_column_content(), and WpssoUser->get_column_content().
+		 * Called by WpssoPost->get_column_content().
+		 * Called by WpssoTerm->get_column_content().
+		 * Called by WpssoUser->get_column_content().
 		 */
 		public function get_column_wp_cache( array $mod, array $col_info ) {
 
@@ -2030,14 +2062,14 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		/**
 		 * Filters all post, term, and user metadata.
 		 */
-		public function check_sortable_meta( $value, $mod_id, $meta_key, $single ) {
+		public function check_sortable_meta( $value, $obj_id, $meta_key, $single ) {
 
-			if ( empty( $mod_id ) || 0 !== strpos( $meta_key, '_wpsso_head_info_' ) ) {
+			if ( empty( $obj_id ) || 0 !== strpos( $meta_key, '_wpsso_head_info_' ) ) {
 
 				return $value;
 			}
 
-			$mod = $this->get_mod( $mod_id );
+			$mod = $this->get_mod( $obj_id );
 
 			$mod_salt = SucomUtil::get_mod_salt( $mod );
 
@@ -2054,7 +2086,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				$local_no_recursion[ $mod_salt ][ $meta_key ] = true;	// Prevent recursion.
 
-				$metadata = static::get_meta( $mod_id, $meta_key, $single = true );	// Use static method from child.
+				$metadata = static::get_meta( $obj_id, $meta_key, $single = true );	// Use static method from child.
 
 				$do_head_info = false;
 
@@ -2083,9 +2115,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return $value;
 		}
 
-		public function update_sortable_meta( $mod_id, $col_key, $content ) {
+		public function update_sortable_meta( $obj_id, $col_key, $content ) {
 
-			if ( empty( $mod_id ) ) {	// Just in case.
+			if ( empty( $obj_id ) ) {	// Just in case.
 
 				return;
 			}
@@ -2098,7 +2130,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 						$locale   = SucomUtil::get_locale();
 						$content  = array( $locale => $content );
-						$metadata = static::get_meta( $mod_id, $col_info[ 'meta_key' ], $single = true );
+						$metadata = static::get_meta( $obj_id, $col_info[ 'meta_key' ], $single = true );
 
 						if ( is_array( $metadata ) ) {
 
@@ -2106,7 +2138,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 						}
 					}
 
-					static::update_meta( $mod_id, $col_info[ 'meta_key' ], $content );	// Use static method from child.
+					static::update_meta( $obj_id, $col_info[ 'meta_key' ], $content );	// Use static method from child.
 				}
 			}
 		}
@@ -2148,8 +2180,10 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		}
 
 		/**
-		 * Called by WpssoPost->add_post_column_headings(), WpssoPost->add_media_column_headings(),
-		 * WpssoTerm->add_term_column_headings(), and WpssoUser->add_user_column_headings().
+		 * Called by WpssoPost->add_post_column_headings().
+		 * Called by WpssoPost->add_media_column_headings().
+		 * Called by WpssoTerm->add_term_column_headings().
+		 * Called by WpssoUser->add_user_column_headings().
 		 */
 		protected function add_column_headings( $columns, $list_type = '' ) {
 
@@ -2395,14 +2429,14 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		 *
 		 * $md_pre can be a text string or array of prefixes.
 		 */
-		public function get_og_images( $num = 0, $size_names, $mod_id, $check_dupes = true, $md_pre = 'og', $mt_pre = 'og' ) {
+		public function get_og_images( $num = 0, $size_names, $obj_id, $check_dupes = true, $md_pre = 'og', $mt_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
 			}
 
-			$mod = $this->get_mod( $mod_id );
+			$mod = $this->get_mod( $obj_id );
 
 			return $this->get_md_images( $num, $size_names, $mod, $check_dupes, $md_pre, $mt_pre );
 		}
@@ -2412,20 +2446,20 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		 *
 		 * $md_pre can be a text string or array of prefixes.
 		 */
-		public function get_og_videos( $num = 0, $mod_id, $check_dupes = false, $md_pre = 'og', $mt_pre = 'og' ) {
+		public function get_og_videos( $num = 0, $obj_id, $check_dupes = false, $md_pre = 'og', $mt_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_args( array( 
 					'num'         => $num,
-					'mod_id'      => $mod_id,
+					'obj_id'      => $obj_id,
 					'check_dupes' => $check_dupes,
 					'md_pre'      => $md_pre,
 					'mt_pre'      => $mt_pre,
 				), get_class( $this ) );
 			}
 
-			if ( empty( $mod_id ) ) {	// Just in case.
+			if ( empty( $obj_id ) ) {	// Just in case.
 
 				return array();
 
@@ -2434,7 +2468,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				return array();
 			}
 
-			$mod = $this->get_mod( $mod_id );	// Required for get_content_videos().
+			$mod = $this->get_mod( $obj_id );	// Required for get_content_videos().
 
 			$md_pre = is_array( $md_pre ) ? array_merge( $md_pre, array( 'og' ) ) : array( $md_pre, 'og' );
 
@@ -2451,8 +2485,8 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					continue;
 				}
 
-				$html = $this->get_options( $mod_id, $opt_pre . '_vid_embed' );
-				$url  = $this->get_options( $mod_id, $opt_pre . '_vid_url' );
+				$html = $this->get_options( $obj_id, $opt_pre . '_vid_embed' );
+				$url  = $this->get_options( $obj_id, $opt_pre . '_vid_url' );
 
 				if ( $html ) {
 
@@ -2515,17 +2549,17 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		/**
 		 * Deprecated on 2021/01/19.
 		 */
-		public function get_og_type_reviews( $mod_id, $mt_pre = 'product', $rating_meta = 'rating', $worst_rating = 1, $best_rating = 5 ) {
+		public function get_og_type_reviews( $obj_id, $mt_pre = 'product', $rating_meta = 'rating', $worst_rating = 1, $best_rating = 5 ) {
 
 			_deprecated_function( __METHOD__ . '()', '2021/01/19', $replacement = __CLASS__ . '::get_mt_reviews()' );	// Deprecation message.
 
-			return $this->get_mt_reviews( $mod_id, $mt_pre, $rating_meta, $worst_rating, $best_rating );
+			return $this->get_mt_reviews( $obj_id, $mt_pre, $rating_meta, $worst_rating, $best_rating );
 		}
 
 		/**
 		 * Methods that return an associative array of Open Graph meta tags.
 		 */
-		public function get_mt_reviews( $mod_id, $mt_pre = 'product', $rating_meta = 'rating', $worst_rating = 1, $best_rating = 5 ) {
+		public function get_mt_reviews( $obj_id, $mt_pre = 'product', $rating_meta = 'rating', $worst_rating = 1, $best_rating = 5 ) {
 
 			return self::must_be_extended( $ret_val = array() );	// Return an empty array.
 		}
@@ -2648,12 +2682,12 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		/**
 		 * WpssoPost class specific methods.
 		 */
-		public function get_canonical_shortlink( $shortlink = false, $mod_id = 0, $context = 'post', $allow_slugs = true ) {
+		public function get_canonical_shortlink( $shortlink = false, $obj_id = 0, $context = 'post', $allow_slugs = true ) {
 
 			return self::must_be_extended( $ret_val = '' );
 		}
 
-		public function maybe_restore_shortlink( $shortlink = false, $mod_id = 0, $context = 'post', $allow_slugs = true ) {
+		public function maybe_restore_shortlink( $shortlink = false, $obj_id = 0, $context = 'post', $allow_slugs = true ) {
 
 			return self::must_be_extended( $ret_val = '' );
 		}
@@ -2676,9 +2710,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		/**
 		 * Since WPSSO Core v7.6.0.
 		 */
-		public static function get_attached( $mod_id, $attach_type ) {
+		public static function get_attached( $obj_id, $attach_type ) {
 
-			$opts = static::get_meta( $mod_id, WPSSO_META_ATTACHED_NAME, $single = true );		// Use static method from child.
+			$opts = static::get_meta( $obj_id, WPSSO_META_ATTACHED_NAME, $single = true );		// Use static method from child.
 
 			if ( isset( $opts[ $attach_type ] ) ) {
 
@@ -2696,9 +2730,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		 *
 		 * Used by WpssoFaqShortcodeQuestion->do_shortcode().
 		 */
-		public static function add_attached( $mod_id, $attach_type, $attachment_id ) {
+		public static function add_attached( $obj_id, $attach_type, $attachment_id ) {
 
-			$opts = static::get_meta( $mod_id, WPSSO_META_ATTACHED_NAME, $single = true );		// Use static method from child.
+			$opts = static::get_meta( $obj_id, WPSSO_META_ATTACHED_NAME, $single = true );		// Use static method from child.
 
 			if ( ! isset( $opts[ $attach_type ][ $attachment_id ] ) ) {
 
@@ -2709,7 +2743,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				$opts[ $attach_type ][ $attachment_id ] = true;
 
-				return static::update_meta( $mod_id, WPSSO_META_ATTACHED_NAME, $opts );		// Use static method from child.
+				return static::update_meta( $obj_id, WPSSO_META_ATTACHED_NAME, $opts );		// Use static method from child.
 			}
 
 			return false;	// No addition.
@@ -2718,9 +2752,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		/**
 		 * Since WPSSO Core v7.6.0.
 		 */
-		public static function delete_attached( $mod_id, $attach_type, $attachment_id ) {
+		public static function delete_attached( $obj_id, $attach_type, $attachment_id ) {
 
-			$opts = static::get_meta( $mod_id, WPSSO_META_ATTACHED_NAME, $single = true );		// Use static method from child.
+			$opts = static::get_meta( $obj_id, WPSSO_META_ATTACHED_NAME, $single = true );		// Use static method from child.
 
 			if ( isset( $opts[ $attach_type ][ $attachment_id ] ) ) {
 
@@ -2728,10 +2762,10 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				if ( empty( $opts ) ) {	// Cleanup.
 
-					return static::delete_meta( $mod_id, WPSSO_META_ATTACHED_NAME );	// Use static method from child.
+					return static::delete_meta( $obj_id, WPSSO_META_ATTACHED_NAME );	// Use static method from child.
 				}
 
-				return static::update_meta( $mod_id, WPSSO_META_ATTACHED_NAME, $opts );		// Use static method from child.
+				return static::update_meta( $obj_id, WPSSO_META_ATTACHED_NAME, $opts );		// Use static method from child.
 			}
 
 			return false;	// No delete.
@@ -2775,7 +2809,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		 * Always call this method as static::get_meta(), and not self::get_meta(), to execute the method via the child
 		 * class instead of the parent class. This method can also be called via $mod[ 'obj' ]::get_meta().
 		 */
-		public static function get_meta( $mod_id, $meta_key, $single = false ) {
+		public static function get_meta( $obj_id, $meta_key, $single = false ) {
 
 			$ret_val = $single ? '' : array();
 
@@ -2788,7 +2822,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		 * Always call this method as static::update_meta(), and not self::update_meta(), to execute the method via the
 		 * child class instead of the parent class. This method can also be called via $mod[ 'obj' ]::update_meta().
 		 */
-		public static function update_meta( $mod_id, $meta_key, $value ) {
+		public static function update_meta( $obj_id, $meta_key, $value ) {
 
 			return self::must_be_extended( $ret_val = false ); // No update.
 		}
@@ -2799,7 +2833,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		 * Always call this method as staticdelete_meta(), and not selfdelete_meta(), to execute the method via the child
 		 * class instead of the parent class. This method can also be called via $mod[ 'obj' ]delete_meta().
 		 */
-		public static function delete_meta( $mod_id, $meta_key ) {
+		public static function delete_meta( $obj_id, $meta_key ) {
 
 			return self::must_be_extended( $ret_val = false ); // No delete.
 		}

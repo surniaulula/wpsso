@@ -1746,7 +1746,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/**
-		 * Called by WpssoAdmin->show_post_body_setting_form() and WpssoSubmenuTools->show_post_body_setting_form().
+		 * Called by WpssoAdmin->show_post_body_setting_form().
+		 * Called by WpssoSubmenuTools->show_post_body_setting_form().
 		 */
 		protected function get_form_buttons() {
 

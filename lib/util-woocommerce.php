@@ -533,8 +533,8 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 		/**
 		 * Check if a simple product, variable product or any of its variations, has a meta data value.
 		 *
-		 * Called by the WpssoWcmdWooCommerce->filter_product_enable_dimensions_display() and
-		 * WpssoWcmdWooCommerce->filter_display_product_attributes() methods.
+		 * Called by WpssoWcmdWooCommerce->filter_product_enable_dimensions_display().
+		 * Called by WpssoWcmdWooCommerce->filter_display_product_attributes().
 		 */
 		public function has_meta( $product, $meta_key ) {
 

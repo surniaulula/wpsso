@@ -176,9 +176,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		 *
 		 * Save meta tag values for later sorting in list tables.
 		 *
-		 * Called by WpssoWpMeta->get_head_info(), WpssoPost->load_meta_page(),
-		 * WpssoPost->ajax_get_metabox_document_meta(), WpssoTerm->load_meta_page(), WpssoUser->load_meta_page(),
-		 * and WpssoUtilCache->refresh_mod_head_meta().
+		 * Called by WpssoWpMeta->get_head_info().
+		 * Called by WpssoPost->load_meta_page().
+		 * Called by WpssoPost->ajax_get_metabox_document_meta().
+		 * Called by WpssoTerm->load_meta_page().
+		 * Called by WpssoUser->load_meta_page().
+		 * Called by WpssoUtilCache->refresh_mod_head_meta().
 		 */
 		public function extract_head_info( array $head_tags, $mod = false ) {
 
@@ -355,8 +358,8 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 		/**
 		 * Called by WpssoHead->get_head_html() with $type = 'begin' and 'end'.
-		 *
-		 * Called by WpssoPost->check_post_head() and WpssoSsmFilters->strip_schema_microdata() with $type = 'preg'.
+		 * Called by WpssoPost->check_post_head() with $type = 'preg'.
+		 * Called by WpssoSsmFilters->strip_schema_microdata() with $type = 'preg'.
 		 */
 		public function get_mt_data( $type, $args = null ) {
 

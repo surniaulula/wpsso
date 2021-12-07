@@ -101,7 +101,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					/**
 					 * The 'add_meta_boxes' action fires after all built-in meta boxes have been added.
 					 */
-					add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ) );
+					add_action( 'add_meta_boxes', array( $this, 'add_meta_boxes' ), 10, 2 );
 				}
 
 				/**
@@ -219,7 +219,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		/**
-		 * Get the $mod object for a post ID.
+		 * Get the $mod object for a post id.
 		 */
 		public function get_mod( $post_id ) {
 
@@ -422,7 +422,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 */
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying import_custom_fields filters for post ID ' . $post_id . ' metadata' );
+						$this->p->debug->log( 'applying import_custom_fields filters for post id ' . $post_id . ' metadata' );
 					}
 
 					$md_opts = apply_filters( 'wpsso_import_custom_fields', $md_opts, get_post_meta( $post_id ) );
@@ -480,7 +480,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 */
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying get_post_options filters for post ID ' . $post_id . ' metadata' );
+						$this->p->debug->log( 'applying get_post_options filters for post id ' . $post_id . ' metadata' );
 					}
 
 					$md_opts = apply_filters( 'wpsso_get_post_options', $md_opts, $post_id, $mod );
@@ -500,13 +500,15 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $this->return_options( $post_id, $md_opts, $md_key, $pad_opts );
 		}
 
-		public function save_options( $post_id, $rel_id = false ) {
+		/**
+		 * Use $rel = false to extend WpssoWpMeta->save_options().
+		 */
+		public function save_options( $post_id, $rel = false ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_args( array(
 					'post_id' => $post_id,
-					'rel_id'  => $rel_id,
 				) );
 			}
 
@@ -520,7 +522,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return;
 			}
 
-			if ( ! $this->user_can_save( $post_id, $rel_id ) ) {
+			if ( ! $this->user_can_save( $post_id ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -541,7 +543,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$opts = apply_filters( 'wpsso_save_md_options', $opts, $mod );
 
-			$opts = apply_filters( 'wpsso_save_post_options', $opts, $post_id, $rel_id, $mod );
+			$opts = apply_filters( 'wpsso_save_post_options', $opts, $post_id, $rel, $mod );
 
 			if ( empty( $opts ) ) {
 
@@ -551,7 +553,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return update_post_meta( $post_id, WPSSO_META_NAME, $opts );
 		}
 
-		public function delete_options( $post_id, $rel_id = false ) {
+		/**
+		 * Use $rel = false to extend WpssoWpMeta->save_options().
+		 */
+		public function delete_options( $post_id, $rel = false ) {
 
 			return delete_post_meta( $post_id, WPSSO_META_NAME );
 		}
@@ -580,9 +585,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		/**
-		 * Get all publicly accessible post IDs.
+		 * Get all publicly accessible post ids.
 		 *
-		 * These may include post IDs from non-public post types and different languages.
+		 * These may include post ids from non-public post types and different languages.
 		 *
 		 * Use $extra_args = array( 'suppress_filters' => false ) to allow WPML (and others) to filter posts for the current language.
 		 */
@@ -598,15 +603,15 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				'posts_per_page'   => -1,		// The number of posts to query for. -1 to request all posts.
 				'no_found_rows'    => true,		// Skip counting total rows found - should be enabled when pagination is not needed.
 				'suppress_filters' => false,		// Allow WPML to filter posts for the current language.
-			), $extra_args, array( 'fields' => 'ids' ) );	// Return an array of post IDs.
+			), $extra_args, array( 'fields' => 'ids' ) );	// Return an array of post ids.
 
 			return get_posts( $posts_args );
 		}
 
 		/**
-		 * Get post IDs for direct children of a post ID.
+		 * Get post ids for direct children of a post id.
 		 *
-		 * Return an array of post IDs for a given $mod object.
+		 * Return an array of post ids for a given $mod object.
 		 *
 		 * Called by WpssoWpMeta->get_posts_mods().
 		 */
@@ -625,7 +630,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				'post_type'      => 'any',		// Return posts, pages, or any custom post type.
 				'post_parent'    => $mod[ 'id' ],
 				'child_of'       => $mod[ 'id' ],	// Only include direct children.
-			), $extra_args, array( 'fields' => 'ids' ) );	// Return an array of post IDs.
+			), $extra_args, array( 'fields' => 'ids' ) );	// Return an array of post ids.
 
 			if ( $this->p->debug->enabled ) {
 
@@ -647,7 +652,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( sprintf( 'slow WordPress function detected - %1$s took %2$.3f secs to get children of post ID %3$d',
+					$this->p->debug->log( sprintf( 'slow WordPress function detected - %1$s took %2$.3f secs to get children of post id %3$d',
 						$func_name, $mtime_total, $mod[ 'id' ] ) );
 				}
 
@@ -661,7 +666,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( count( $post_ids ) . ' post IDs returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
+				$this->p->debug->log( count( $post_ids ) . ' post ids returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
 			}
 
 			return $post_ids;
@@ -691,7 +696,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( $column_name . ' for post ID ' . $post_id );
+				$this->p->debug->log( $column_name . ' for post id ' . $post_id );
 			}
 
 			echo $this->get_column_content( '', $column_name, $post_id );
@@ -787,7 +792,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'post ID = ' . $post_id );
+				$this->p->debug->log( 'post id = ' . $post_id );
 				$this->p->debug->log( 'home url = ' . get_option( 'home' ) );
 				$this->p->debug->log( 'locale current = ' . SucomUtil::get_locale() );
 				$this->p->debug->log( 'locale default = ' . SucomUtil::get_locale( 'default' ) );
@@ -960,7 +965,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'exiting early: post ID in post object is empty');
+						$this->p->debug->log( 'exiting early: post id in post object is empty');
 					}
 
 					return;	// Stop here.
@@ -1320,26 +1325,19 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 		}
 
-		public function add_meta_boxes() {
+		/**
+		 * Use $post_obj = false to extend WpssoWpMeta->add_meta_boxes().
+		 */
+		public function add_meta_boxes( $post_type, $post_obj = false ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
 			}
 
-			if ( false === ( $post_obj = SucomUtil::get_post_object( true ) ) || empty( $post_obj->post_type ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: invalid post object or empty post type' );
-				}
-
-				return;
-			}
-
 			$post_id = empty( $post_obj->ID ) ? 0 : $post_obj->ID;
 
-			if ( ( 'page' === $post_obj->post_type && ! current_user_can( 'edit_page', $post_id ) ) || ! current_user_can( 'edit_post', $post_id ) ) {
+			if ( ( 'page' === $post_type && ! current_user_can( 'edit_page', $post_id ) ) || ! current_user_can( 'edit_post', $post_id ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -1349,11 +1347,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return;
 			}
 
-			if ( empty( $this->p->options[ 'plugin_add_to_' . $post_obj->post_type ] ) ) {
+			if ( empty( $this->p->options[ 'plugin_add_to_' . $post_type ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: cannot add metabox to post type "' . $post_obj->post_type . '"' );
+					$this->p->debug->log( 'exiting early: cannot add metabox to post type "' . $post_type . '"' );
 				}
 
 				return;
@@ -1361,7 +1359,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$metabox_id      = $this->p->cf[ 'meta' ][ 'id' ];
 			$metabox_title   = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
-			$metabox_screen  = $post_obj->post_type;
+			$metabox_screen  = $post_type;
 			$metabox_context = 'normal';
 			$metabox_prio    = 'default';
 			$callback_args   = array(	// Second argument passed to the callback function / method.
@@ -1627,26 +1625,27 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		/**
-		 * Uses a static cache to clear the cache only once per post ID per page load.
+		 * Uses a static cache to clear the cache only once per post id per page load.
+		 *
+		 * Use $rel = false to extend WpssoWpMeta->clear_cache().
 		 */
-		public function clear_cache( $post_id, $rel_id = false ) {
+		public function clear_cache( $post_id, $rel = false ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_args( array(
 					'post_id' => $post_id,
-					'rel_d'   => $rel_id,
 				) );
 			}
 
 			static $do_once = array();
 
-			if ( isset( $do_once[ $post_id ][ $rel_id ] ) ) {
+			if ( isset( $do_once[ $post_id ] ) ) {
 
 				return;
 			}
 
-			$do_once[ $post_id ][ $rel_id ] = true;
+			$do_once[ $post_id ] = true;
 
 			if ( empty( $post_id ) ) {	// Just in case.
 
@@ -1746,7 +1745,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			/**
-			 * The WPSSO FAQ question shortcode attaches the post ID to the question so the post cache can be cleared
+			 * The WPSSO FAQ question shortcode attaches the post id to the question so the post cache can be cleared
 			 * if/when a question is updated.
 			 */
 			$attached_ids = self::get_attached( $post_id, 'post' );
@@ -1760,7 +1759,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 		}
 
-		public function user_can_save( $post_id, $rel_id = false ) {
+		/**
+		 * Use $rel = false to extend WpssoWpMeta->clear_cache().
+		 */
+		public function user_can_save( $post_id, $rel = false ) {
 
 			$user_can_save = false;
 
@@ -1799,7 +1801,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'insufficient privileges to save settings for ' . $post_type . ' ID ' . $post_id );
+					$this->p->debug->log( 'insufficient privileges to save settings for ' . $post_type . ' id ' . $post_id );
 				}
 
 				/**
@@ -1807,8 +1809,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 */
 				if ( $this->p->notice->is_admin_pre_notices() ) {
 
-					$this->p->notice->err( sprintf( __( 'Insufficient privileges to save settings for %1$s ID %2$s.',
-						'wpsso' ), $post_type, $post_id ) );
+					$this->p->notice->err( sprintf( __( 'Insufficient privileges to save settings for %1$s ID %2$s.', 'wpsso' ), $post_type, $post_id ) );
 				}
 			}
 
@@ -1907,14 +1908,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			/**
-			 * The WordPress link-template.php functions call wp_get_shortlink() with a post ID of 0. Use the same
-			 * WordPress code to get a real post ID and create a default shortlink (if required).
+			 * The WordPress link-template.php functions call wp_get_shortlink() with a post id of 0. Use the same
+			 * WordPress code to get a real post id and create a default shortlink (if required).
 			 */
 			if ( 0 === $post_id ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'provided post ID is 0 (current post)' );
+					$this->p->debug->log( 'provided post id is 0 (current post)' );
 				}
 
 				if ( 'query' === $context && is_singular() ) {	// wp_get_shortlink() uses the same logic.
@@ -1923,7 +1924,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'setting post ID ' . $post_id . ' from queried object' );
+						$this->p->debug->log( 'setting post id ' . $post_id . ' from queried object' );
 					}
 
 				} elseif ( 'post' === $context ) {
@@ -1945,7 +1946,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'setting post ID ' . $post_id . ' from post object' );
+							$this->p->debug->log( 'setting post id ' . $post_id . ' from post object' );
 						}
 					}
 				}
@@ -1954,7 +1955,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'exiting early: unable to determine the post ID' );
+						$this->p->debug->log( 'exiting early: unable to determine the post id' );
 					}
 
 					return $shortlink;	// Return original shortlink.

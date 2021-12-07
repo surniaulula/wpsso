@@ -122,7 +122,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
-		 * Called by WpssoHead::get_head_array().
+		 * Called by WpssoHead->get_head_array().
 		 *
 		 * Pass $mt_og by reference to assign values to the schema:type internal meta tags.
 		 */

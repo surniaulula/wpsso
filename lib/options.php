@@ -959,7 +959,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		/**
 		 * Complete the options array for any custom post types and/or custom taxonomies.
 		 *
-		 * Called by $this->get_defaults() and $this->check_options();
+		 * Called by WpssoOptions->get_defaults().
+		 * Called by WpssoOptions->check_options().
 		 */
 		private function add_post_type_taxonomy_name_options( array &$opts ) {	// Pass by reference is OK.
 

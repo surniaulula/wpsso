@@ -85,6 +85,9 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 			echo '<div style="clear:both;"></div>' . "\n";
 		}
 
+		/**
+		 * Called by the extended WpssoAdmin class.
+		 */
 		protected function add_meta_boxes() {
 
 			$metabox_ids = array();

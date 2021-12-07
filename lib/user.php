@@ -97,7 +97,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					/**
 					 * Fires after the 'About the User' settings table on the 'Edit User' screen.
 					 */
-					add_action( 'edit_user_profile', array( $this, 'add_meta_boxes' ) );
+					add_action( 'edit_user_profile', array( $this, 'add_meta_boxes' ), 10, 1 );
 				}
 
 				add_filter( 'views_users', array( $this, 'add_person_view' ) );
@@ -153,7 +153,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		/**
-		 * Get the $mod object for a user ID.
+		 * Get the $mod object for a user id.
 		 */
 		public function get_mod( $user_id ) {
 
@@ -345,13 +345,15 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $this->return_options( $user_id, $md_opts, $md_key, $pad_opts );
 		}
 
-		public function save_options( $user_id, $rel_id = false ) {
+		/**
+		 * Use $rel = false to extend WpssoWpMeta->save_options().
+		 */
+		public function save_options( $user_id, $rel = false ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_args( array(
 					'user_id' => $user_id,
-					'rel_id'  => $rel_id,
 				) );
 			}
 
@@ -368,7 +370,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			/**
 			 * Make sure the current user can submit and same metabox options.
 			 */
-			if ( ! $this->user_can_save( $user_id, $rel_id ) ) {
+			if ( ! $this->user_can_save( $user_id ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -389,7 +391,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$opts = apply_filters( 'wpsso_save_md_options', $opts, $mod );
 
-			$opts = apply_filters( 'wpsso_save_user_options', $opts, $user_id, $rel_id, $mod );
+			$opts = apply_filters( 'wpsso_save_user_options', $opts, $user_id, $rel, $mod );
 
 			if ( empty( $opts ) ) {
 
@@ -399,13 +401,16 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return update_user_meta( $user_id, WPSSO_META_NAME, $opts );
 		}
 
-		public function delete_options( $user_id, $rel_id = false ) {
+		/**
+		 * Use $rel = false to extend WpssoWpMeta->save_options().
+		 */
+		public function delete_options( $user_id, $rel = false ) {
 
 			return delete_user_meta( $user_id, WPSSO_META_NAME );
 		}
 
 		/**
-		 * Get all publicly accessible user IDs in the 'creator' array.
+		 * Get all publicly accessible user ids in the 'creator' array.
 		 */
 		public static function get_public_ids() {
 
@@ -427,7 +432,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		/**
-		 * Get post IDs authored by a user ID.
+		 * Get post IDs authored by a user id.
 		 *
 		 * Return an array of post IDs for a given $mod object.
 		 *
@@ -469,7 +474,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( sprintf( 'slow WordPress function detected - %1$s took %2$.3f secs to get posts authored by user ID %3$d',
+					$this->p->debug->log( sprintf( 'slow WordPress function detected - %1$s took %2$.3f secs to get posts authored by user id %3$d',
 						$func_name, $mtime_total, $mod[ 'id' ] ) );
 				}
 
@@ -545,9 +550,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				case ( 0 === strpos( $screen->id, 'users_page_' . $this->p->id ) ? true : false ):	// Users settings page.
 
 					/**
-					 * Get the user ID.
+					 * Get the user id.
 					 *
-					 * Returns the current user ID if the 'user_id' query argument is empty.
+					 * Returns the current user id if the 'user_id' query argument is empty.
 					 */
 					$user_id = SucomUtil::get_user_object( false, 'id' );
 
@@ -572,7 +577,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'user ID = ' . $user_id );
+				$this->p->debug->log( 'user id = ' . $user_id );
 				$this->p->debug->log( 'home url = ' . get_option( 'home' ) );
 				$this->p->debug->log( 'locale default = ' . SucomUtil::get_locale() );
 				$this->p->debug->log( 'locale current = ' . SucomUtil::get_locale( 'current' ) );
@@ -671,7 +676,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 		}
 
-		public function add_meta_boxes() {
+		/**
+		 * Use $rel = false to extend WpssoWpMeta->add_meta_boxes().
+		 */
+		public function add_meta_boxes( $user_obj, $rel = false ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1176,14 +1184,14 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			} elseif ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'user ID ' . $user_id . ' is not a WordPress user' );
+				$this->p->debug->log( 'user id ' . $user_id . ' is not a WordPress user' );
 			}
 
 			$author_meta = apply_filters( 'wpsso_get_author_meta', $author_meta, $user_id, $meta_key, $user_exists );
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'user ID ' . $user_id . ' ' . $meta_key . ': ' . $author_meta );
+				$this->p->debug->log( 'user id ' . $user_id . ' ' . $meta_key . ': ' . $author_meta );
 			}
 
 			return $local_cache[ $user_id ][ $meta_key ] = (string) $author_meta;
@@ -1378,24 +1386,26 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $show_opts;
 		}
 
-		public function clear_cache( $user_id, $rel_id = false ) {
+		/**
+		 * Use $rel = false to extend WpssoWpMeta->clear_cache().
+		 */
+		public function clear_cache( $user_id, $rel = false ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_args( array(
 					'user_id' => $user_id,
-					'rel_d'   => $rel_id,
 				) );
 			}
 
 			static $do_once = array();
 
-			if ( isset( $do_once[ $user_id ][ $rel_id ] ) ) {
+			if ( isset( $do_once[ $user_id ] ) ) {
 
 				return;
 			}
 
-			$do_once[ $user_id ][ $rel_id ] = true;
+			$do_once[ $user_id ] = true;
 
 			$mod = $this->get_mod( $user_id );
 
@@ -1415,7 +1425,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$this->clear_mod_cache( $mod );
 		}
 
-		public function user_can_save( $user_id, $rel_id = false ) {
+		/**
+		 * Use $rel = false to extend WpssoWpMeta->clear_cache().
+		 */
+		public function user_can_save( $user_id, $rel = false ) {
 
 			$user_can_save = false;
 
@@ -1429,11 +1442,13 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				return $user_can_save;
 			}
 
-			if ( ! $user_can_save = current_user_can( 'edit_user', $user_id ) ) {
+			$user_can_save = current_user_can( 'edit_user', $user_id );
+
+			if ( ! $user_can_save ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'insufficient privileges to save settings for user ID ' . $user_id );
+					$this->p->debug->log( 'insufficient privileges to save settings for user id ' . $user_id );
 				}
 
 				/**
@@ -1441,8 +1456,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				 */
 				if ( $this->p->notice->is_admin_pre_notices() ) {
 
-					$this->p->notice->err( sprintf( __( 'Insufficient privileges to save settings for user ID %1$s.',
-						'wpsso' ), $user_id ) );
+					$this->p->notice->err( sprintf( __( 'Insufficient privileges to save settings for user ID %1$s.', 'wpsso' ), $user_id ) );
 				}
 			}
 
@@ -1594,7 +1608,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'user ID ' . $user_id . ' is not a WordPress user' );
+					$this->p->debug->log( 'user id ' . $user_id . ' is not a WordPress user' );
 				}
 			}
 
@@ -1602,7 +1616,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'user ID ' . $user_id . ' ' . $meta_key . ' = ' . $website_url );
+				$this->p->debug->log( 'user id ' . $user_id . ' ' . $meta_key . ' = ' . $website_url );
 			}
 
 			return $local_cache[ $user_id ][ $meta_key ] = (string) $website_url;
@@ -1613,7 +1627,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		 */
 		public function schedule_add_person_role( $user_id = null ) {
 
-			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user id.
 			$event_time = time() + 5;	// Add a 5 second event buffer.
 			$event_hook = 'wpsso_add_person_role';
 			$event_args = array( $user_id );
@@ -1644,7 +1658,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user id.
 			$notice_key = 'add-user-roles-status';
 			$role_label = _x( 'Person', 'user role', 'wpsso' );
 
@@ -1736,7 +1750,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		 */
 		public function schedule_remove_person_role( $user_id = null ) {
 
-			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user id.
 			$event_time = time() + 5;	// Add a 5 second event buffer.
 			$event_hook = 'wpsso_remove_person_role';
 			$event_args = array( $user_id );
@@ -1751,7 +1765,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.
+			$user_id    = $this->p->util->maybe_change_user_id( $user_id );	// Maybe change textdomain for user id.
 			$notice_key = 'remove-user-roles-status';
 			$role_label = _x( 'Person', 'user role', 'wpsso' );
 
@@ -1812,7 +1826,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$count = 0;
 
-			while ( $blog_user_ids = SucomUtil::get_user_ids( $blog_id, '', 1000 ) ) {	// Get a maximum of 1000 user IDs at a time.
+			while ( $blog_user_ids = SucomUtil::get_user_ids( $blog_id, '', 1000 ) ) {	// Get a maximum of 1000 user ids at a time.
 
 				foreach ( $blog_user_ids as $id ) {
 

@@ -710,9 +710,6 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			delete_transient( $cache_id );
 		}
 
-		/**
-		 * Called by refresh_cache().
-		 */
 		private function refresh_mod_head_meta( array $mod, $read_cache = false ) {
 
 			$head_tags = $this->p->head->get_head_array( $use_post = false, $mod, $read_cache );

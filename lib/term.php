@@ -26,7 +26,6 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 		private $query_term_id  = 0;
 		private $query_tax_slug = '';
-		private $query_tax_obj  = false;
 
 		public function __construct( &$plugin ) {
 
@@ -73,8 +72,6 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 					$this->p->debug->log( 'query tax slug = ' . $this->query_tax_slug );
 				}
-
-				$this->query_tax_obj = get_taxonomy( $this->query_tax_slug );
 
 				/**
 				 * Add edit table columns.
@@ -141,12 +138,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					 */
 					add_action( 'current_screen', array( $this, 'load_meta_page' ), 300, 1 );
 
-					/**
-					 * We have a taxonomy $query_tax_slug value, so add the taxonomy term metaboxes.
-					 */
-					add_action( 'admin_init', array( $this, 'add_meta_boxes' ) );
+					add_action( $this->query_tax_slug . '_pre_edit_form', array( $this, 'add_meta_boxes' ), 10, 2 );
 
-					add_action( $this->query_tax_slug . '_edit_form', array( $this, 'show_metaboxes' ), -100, 1 );
+					add_action( $this->query_tax_slug . '_edit_form', array( $this, 'show_metaboxes' ), -100, 2 );
 				}
 
 				add_action( 'created_' . $this->query_tax_slug, array( $this, 'save_options' ), WPSSO_META_SAVE_PRIORITY, 2 );	// Default is -100.
@@ -161,7 +155,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		/**
-		 * Get the $mod object for a term ID.
+		 * Get the $mod object for a term id.
 		 */
 		public function get_mod( $term_id, $tax_slug = '' ) {
 
@@ -370,6 +364,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			return $this->return_options( $term_id, $md_opts, $md_key, $pad_opts );
 		}
 
+		/**
+		 * Use $term_tax_id = false to extend WpssoWpMeta->save_options().
+		 */
 		public function save_options( $term_id, $term_tax_id = false ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -405,12 +402,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			$this->md_cache_disabled = true;	// Disable local cache for get_defaults() and get_options().
 
-			/**
-			 * Get first term with matching 'term_taxonomy_id'.
-			 */
-			$term = get_term_by( 'term_taxonomy_id', $term_tax_id, $tax_slug = '' );
+			$term_obj = get_term_by( 'term_taxonomy_id', $term_tax_id, $tax_slug = '' );
 
-			$mod = is_object( $term ) ? $this->get_mod( $term_id, $term->term_taxonomy_id ) : $mod = $this->get_mod( $term_id );
+			$mod = is_object( $term_obj ) ? $this->get_mod( $term_id, $term_obj->taxonomy ) : $mod = $this->get_mod( $term_id );
 
 			/**
 			 * Merge and check submitted post, term, and user metabox options.
@@ -429,15 +423,18 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			return self::update_term_meta( $term_id, WPSSO_META_NAME, $opts );
 		}
 
+		/**
+		 * Use $term_tax_id = false to extend WpssoWpMeta->delete_options().
+		 */
 		public function delete_options( $term_id, $term_tax_id = false ) {
 
 			return self::delete_term_meta( $term_id, WPSSO_META_NAME );
 		}
 
 		/**
-		 * Get all publicly accessible term IDs for a taxonomy slug (optional).
+		 * Get all publicly accessible term ids for a taxonomy slug (optional).
 		 *
-		 * These may include term IDs from non-public taxonomies.
+		 * These may include term ids from non-public taxonomies.
 		 */
 		public static function get_public_ids( $tax_name = null ) {
 
@@ -465,9 +462,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		/**
-		 * Get post IDs for a term ID in a taxonomy slug.
+		 * Get post ids for a term id in a taxonomy slug.
 		 *
-		 * Return an array of post IDs for a given $mod object, including posts in child terms as well.
+		 * Return an array of post ids for a given $mod object, including posts in child terms as well.
 		 *
 		 * Called by WpssoWpMeta->get_posts_mods().
 		 */
@@ -492,7 +489,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 						'include_children' => true
 					)
 				),
-			), $extra_args, array( 'fields' => 'ids' ) );	// Return an array of post IDs.
+			), $extra_args, array( 'fields' => 'ids' ) );	// Return an array of post ids.
 
 			if ( $this->p->debug->enabled ) {
 
@@ -514,7 +511,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( sprintf( 'slow WordPress function detected - %1$s took %2$.3f secs to get posts for term ID %3$d in taxonomy %4$s',
+					$this->p->debug->log( sprintf( 'slow WordPress function detected - %1$s took %2$.3f secs to get posts for term id %3$d in taxonomy %4$s',
 						$func_name, $mtime_total, $mod[ 'id' ], $mod[ 'tax_slug' ] ) );
 				}
 
@@ -528,7 +525,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( count( $post_ids ) . ' post IDs returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
+				$this->p->debug->log( count( $post_ids ) . ' post ids returned in ' . sprintf( '%0.3f secs', $mtime_total ) );
 			}
 
 			return $post_ids;
@@ -600,7 +597,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'term ID = ' . $this->query_term_id );
+				$this->p->debug->log( 'term id = ' . $this->query_term_id );
 				$this->p->debug->log( 'home url = ' . get_option( 'home' ) );
 				$this->p->debug->log( 'locale current = ' . SucomUtil::get_locale() );
 				$this->p->debug->log( 'locale default = ' . SucomUtil::get_locale( 'default' ) );
@@ -698,14 +695,19 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 		}
 
-		public function add_meta_boxes() {
+		/**
+		 * Use $tax_slug = false to extend WpssoWpMeta->add_meta_boxes().
+		 */
+		public function add_meta_boxes( $term_obj, $tax_slug = false ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
 			}
 
-			if ( ! current_user_can( $this->query_tax_obj->cap->edit_terms ) ) {
+			$tax_obj = get_taxonomy( $tax_slug );
+
+			if ( ! current_user_can( $tax_obj->cap->edit_terms ) ) {	// Example: 'edit_categories'.
 
 				if ( $this->p->debug->enabled ) {
 
@@ -713,13 +715,12 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				}
 
 				return;
-			}
 
-			if ( empty( $this->p->options[ 'plugin_add_to_tax_' . $this->query_tax_slug ] ) ) {
+			} elseif ( empty( $this->p->options[ 'plugin_add_to_tax_' . $tax_slug ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: cannot add metabox to taxonomy "' . $this->query_tax_slug . '"' );
+					$this->p->debug->log( 'exiting early: cannot add metabox to taxonomy "' . $tax_slug . '"' );
 				}
 
 				return;
@@ -744,14 +745,15 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					$metabox_context, $metabox_prio, $callback_args );
 		}
 
-		public function show_metaboxes( $term_obj ) {
+		public function show_metaboxes( $term_obj, $tax_slug ) {
 
-			if ( ! current_user_can( $this->query_tax_obj->cap->edit_terms ) ) {
+			$tax_obj = get_taxonomy( $tax_slug );
+
+			if ( ! current_user_can( $tax_obj->cap->edit_terms ) ) {	// Example: 'edit_categories'.
 
 				return;
-			}
 
-			if ( empty( $this->p->options[ 'plugin_add_to_tax_' . $this->query_tax_slug ] ) ) {
+			} elseif ( empty( $this->p->options[ 'plugin_add_to_tax_' . $tax_slug ] ) ) {
 
 				return;
 			}
@@ -838,6 +840,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		 * do_action( "delete_$taxonomy",  $term_id, $tt_id, $deleted_term );
 		 *
 		 * Also called by WpssoPost::clear_cache() to clear the post term cache.
+		 *
+		 * Use $term_tax_id = false to extend WpssoWpMeta->clear_cache().
 		 */
 		public function clear_cache( $term_id, $term_tax_id = false ) {
 
@@ -858,11 +862,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			$do_once[ $term_id ][ $term_tax_id ] = true;
 
-			$taxonomy = get_term_by( 'term_taxonomy_id', $term_tax_id, $tax_slug = '' );
+			$term_obj = get_term_by( 'term_taxonomy_id', $term_tax_id, $tax_slug = '' );
 
-			if ( isset( $taxonomy->slug ) ) {	// Just in case.
+			if ( isset( $tax_obj->slug ) ) {	// Just in case.
 
-				$mod = $this->get_mod( $term_id, $taxonomy->slug );
+				$mod = $this->get_mod( $term_id, $tax_obj->slug );
 
 			} else {
 
@@ -885,6 +889,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$this->clear_mod_cache( $mod );
 		}
 
+		/**
+		 * Use $term_tax_id = false to extend WpssoWpMeta->user_can_save().
+		 */
 		public function user_can_save( $term_id, $term_tax_id = false ) {
 
 			$user_can_save = false;
@@ -899,11 +906,17 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				return $user_can_save;
 			}
 
-			if ( ! $user_can_save = current_user_can( $this->query_tax_obj->cap->edit_terms ) ) {
+			$term_obj = get_term_by( 'term_taxonomy_id', $term_tax_id, $tax_slug = '' );
+
+			$tax_obj = get_taxonomy( $term_obj->taxonomy );
+
+			$user_can_save = current_user_can( $tax_obj->cap->edit_terms );	// Example: 'edit_categories'.
+
+			if ( ! $user_can_save ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'insufficient privileges to save settings for term ID ' . $term_id );
+					$this->p->debug->log( 'insufficient privileges to save settings for term id ' . $term_id );
 				}
 
 				/**
@@ -911,8 +924,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				 */
 				if ( $this->p->notice->is_admin_pre_notices() ) {
 
-					$this->p->notice->err( sprintf( __( 'Insufficient privileges to save settings for term ID %1$s.',
-						'wpsso' ), $term_id ) );
+					$this->p->notice->err( sprintf( __( 'Insufficient privileges to save settings for term ID %1$s.', 'wpsso' ), $term_id ) );
 				}
 			}
 

@@ -3756,11 +3756,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		/**
 		 * Returns for example "#sso-post-123", #sso-term-123-tax-faq-category with a $mod array or "#sso-" without.
 		 *
-		 * Called by:
-		 *
-		 *	WpssoFaqShortcodeFaq->do_shortcode()
-		 *	WpssoFaqShortcodeQuestion->do_shortcode()
-		 *	WpssoJsonFiltersTypeThing->filter_json_data_https_schema_org_thing()
+		 * Called by WpssoFaqShortcodeFaq->do_shortcode().
+		 * Called by WpssoFaqShortcodeQuestion->do_shortcode().
+		 * Called by WpssoJsonFiltersTypeThing->filter_json_data_https_schema_org_thing().
 		 */
 		public static function get_fragment_anchor( $mod = null ) {
 
