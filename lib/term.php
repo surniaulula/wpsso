@@ -760,14 +760,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$metabox_screen  = 'wpsso-term';
 			$metabox_context = 'normal';
 
-			echo "\n" . '<!-- wpsso term metabox section begin -->' . "\n";
-			echo '<h3>' . $pkg_info[ 'wpsso' ][ 'short_pkg' ] . '</h3>' . "\n";
-			echo '<div id="poststuff" class="wpsso-metaboxes metabox-holder">' . "\n";
+			echo '<div class="metabox-holder">' . "\n";
 
 			do_meta_boxes( $metabox_screen, $metabox_context, $term_obj );
 
-			echo "\n" . '</div><!-- #poststuff -->' . "\n";
-			echo '<!-- wpsso term metabox section end -->' . "\n";
+			echo "\n" . '</div><!-- .metabox-holder -->' . "\n";
 		}
 
 		public function ajax_get_metabox_document_meta() {

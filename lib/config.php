@@ -207,7 +207,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							),
 						),
 						'profile' => array(
-							'your-sso' => 'Profile SSO (Social and Search Optimization)',
+							'your-sso' => 'Profile SSO - Social and Search Optimization',
 						),
 						'sitesubmenu' => array(
 							'site-advanced' => 'Advanced Settings',

@@ -306,15 +306,6 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			';
 
 			/**
-			 * User and term metaboxes.
-			 */
-			$custom_style_css .= '
-				#poststuff.wpsso-metaboxes {
-					min-width:900px;
-				}
-			';
-
-			/**
 			 * Admin menu and sub-menu items.
 			 */
 			$custom_style_css .= '

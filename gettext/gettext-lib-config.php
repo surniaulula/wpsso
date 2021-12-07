@@ -93,7 +93,7 @@ _x( '(plugin) Co-Authors Plus', 'lib file description', 'wpsso' );
 _x( '(plugin) Elementor Website Builder', 'lib file description', 'wpsso' );
 _x( '(feature) URL Shortening Service', 'lib file description', 'wpsso' );
 _x( '(feature) Import Yoast SEO Social Meta', 'lib file description', 'wpsso' );
-_x( 'Profile SSO (Social and Search Optimization)', 'lib file description', 'wpsso' );
+_x( 'Profile SSO - Social and Search Optimization', 'lib file description', 'wpsso' );
 _x( 'Advanced Settings', 'lib file description', 'wpsso' );
 _x( 'Plugin Add-ons', 'lib file description', 'wpsso' );
 _x( 'Premium Licenses', 'lib file description', 'wpsso' );

@@ -944,13 +944,13 @@ table.sucom-settings .fb_preview_box_border {
 }
 
 table.sucom-settings .fb_preview_box {
-	width:600px;
+	max-width:600px;
 	overflow:hidden;
 }
 
 table.sucom-settings .fb_preview_img {
 	background-size:cover;
-	width:600px;
+	max-width:600px;
 	height:315px;
 	border-bottom:1px solid rgba(0, 0, 0, 0.1);
 	background-position:center center;

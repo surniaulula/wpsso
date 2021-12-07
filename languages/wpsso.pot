@@ -1076,7 +1076,7 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:96
 msgctxt "lib file description"
-msgid "Profile SSO (Social and Search Optimization)"
+msgid "Profile SSO - Social and Search Optimization"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:97 gettext/gettext-lib-config.php:106
@@ -5274,7 +5274,7 @@ msgstr ""
 #: lib/admin.php:1315 lib/admin.php:1326
 #: lib/messages-tooltip-meta-schema.php:470 lib/messages-tooltip-plugin.php:181
 #: lib/submenu/tools.php:58 lib/submenu/tools.php:103 lib/user.php:57
-#: lib/user.php:1652 lib/user.php:1759 lib/user.php:1890
+#: lib/user.php:1649 lib/user.php:1756 lib/user.php:1887
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -10841,7 +10841,7 @@ msgid ""
 "term ID %3$d in taxonomy %4$s (%5$s)."
 msgstr ""
 
-#: lib/term.php:917
+#: lib/term.php:914
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -10900,56 +10900,56 @@ msgstr ""
 msgid "Examples: CPA, Esq., M.D., P.E., PhD., PMP, RN"
 msgstr ""
 
-#: lib/user.php:968
+#: lib/user.php:965
 msgid "(not a Facebook Pages URL)"
 msgstr ""
 
-#: lib/user.php:1094
+#: lib/user.php:1091
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:1095
+#: lib/user.php:1092
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:1096
+#: lib/user.php:1093
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1447
+#: lib/user.php:1444
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/user.php:1671
+#: lib/user.php:1668
 msgid ""
 "Aborting task to add the %1$s role to content creators - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1686
+#: lib/user.php:1683
 msgid "A task to add the %1$s role for content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1727
+#: lib/user.php:1724
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1729 lib/user.php:1832 lib/util-cache.php:187
+#: lib/user.php:1726 lib/user.php:1829 lib/util-cache.php:187
 #: lib/util-cache.php:705
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
-#: lib/user.php:1778
+#: lib/user.php:1775
 msgid ""
 "Aborting task to remove the %1$s role from all users - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1793
+#: lib/user.php:1790
 msgid "A task to remove the %1$s role from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1830
+#: lib/user.php:1827
 msgid "The %1$s role has been removed from %2$d content creators."
 msgstr ""
 

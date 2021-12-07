@@ -130,7 +130,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				/**
 				 * Hooks when editing a user.
 				 */
-				add_action( 'edit_user_profile', array( $this, 'show_metabox_section' ), 20, 1 );
+				add_action( 'edit_user_profile', array( $this, 'show_metaboxes' ), 20, 1 );
 
 				add_action( 'edit_user_profile_update', array( $this, 'save_about_section' ), -1000, 1 );
 				add_action( 'edit_user_profile_update', array( $this, 'sanitize_submit_cm' ), -200, 1 );
@@ -804,7 +804,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 		}
 
-		public function show_metabox_section( $user_obj ) {
+		public function show_metaboxes( $user_obj ) {
 
 			if ( ! isset( $user_obj->ID ) ) {	// Just in case.
 
@@ -825,14 +825,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$metabox_screen  = 'wpsso-user';
 			$metabox_context = 'normal';
 
-			echo "\n" . '<!-- wpsso user metabox section begin -->' . "\n";
-			echo '<h3>' . $pkg_info[ 'wpsso' ][ 'short_pkg' ] . '</h3>' . "\n";
-			echo '<div id="poststuff" class="wpsso-metaboxes metabox-holder">' . "\n";
+			echo '<div class="metabox-holder">' . "\n";
 
 			do_meta_boxes( $metabox_screen, $metabox_context, $user_obj );
 
-			echo "\n" . '</div><!-- #poststuff -->' . "\n";
-			echo '<!-- wpsso user metabox section end -->' . "\n";
+			echo "\n" . '</div><!-- .metabox-holder -->' . "\n";
 		}
 
 		public function ajax_get_metabox_document_meta() {
