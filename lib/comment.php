@@ -33,11 +33,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
-			 * Note that WpssoRarComment::save_request_comment_rating() is hooked to the 'comment_post' action at priority 10.
-			 */
 			add_action( 'comment_post', array( $this, 'clear_cache_comment_post' ), PHP_INT_MAX, 2 );
-
 			add_action( 'transition_comment_status', array( $this, 'clear_cache_transition_comment_status' ), PHP_INT_MAX, 3 );
 		}
 
