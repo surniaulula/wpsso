@@ -579,6 +579,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 						break;
 
+					case 'id_name':
+
+						$select[ $type_id ] = $type_id . ' | ' . $type_name;
+
+						break;
+
 					case 'name_id':
 
 						$select[ $type_id ] = $type_name . ' [' . $type_id . ']';

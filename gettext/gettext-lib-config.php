@@ -240,6 +240,7 @@ _x( '[Custom Place]', 'option value', 'wpsso' );
 _x( '[New Place]', 'option value', 'wpsso' );
 _x( 'ID', 'option value', 'wpsso' );
 _x( 'ID | Host/Name', 'option value', 'wpsso' );
+_x( 'ID | Name', 'option value', 'wpsso' );
 _x( 'Name [ID]', 'option value', 'wpsso' );
 _x( 'Name', 'option value', 'wpsso' );
 _x( 'Left', 'option value', 'wpsso' );

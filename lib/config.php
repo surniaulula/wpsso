@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.10.2-dev.5',	// Plugin version.
+					'version'     => '9.10.2-b.1',	// Plugin version.
 					'opt_version' => '840',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2549,6 +2549,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'og_schema_types_select_format' => array(
 					'id'      => 'ID',
 					'id_url'  => 'ID | Host/Name',
+					'id_name' => 'ID | Name',
 					'name_id' => 'Name [ID]',
 					'name'    => 'Name',
 				),
