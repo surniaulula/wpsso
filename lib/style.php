@@ -309,6 +309,12 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			 * Admin menu and sub-menu items.
 			 */
 			$custom_style_css .= '
+				#adminmenu #toplevel_page_' . $menu . ' div.wp-menu-name,	/* Prevent excessive word breaks in French. */
+				#adminmenu #toplevel_page_' . $sitemenu . ' div.wp-menu-name {
+					word-break:initial;
+					word-wrap:initial;
+					hyphens:initial;
+				}
 				#adminmenu li.menu-top.toplevel_page_' . $menu . ' div.wp-menu-image::before,
 				#adminmenu li.menu-top.toplevel_page_' . $sitemenu . ' div.wp-menu-image::before,
 				#adminmenu li.menu-top.toplevel_page_' . $menu . ':hover div.wp-menu-image::before,
