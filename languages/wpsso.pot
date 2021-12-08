@@ -6368,7 +6368,7 @@ msgid ""
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1027 lib/post.php:648 lib/register.php:350 lib/term.php:507
+#: lib/media.php:1027 lib/post.php:648 lib/register.php:348 lib/term.php:507
 #: lib/user.php:470 lib/util.php:833 lib/util.php:3057
 msgid "%s warning:"
 msgstr ""
@@ -9326,7 +9326,7 @@ msgid ""
 "immediate refresh of the plugin update information."
 msgstr ""
 
-#: lib/messages.php:567 lib/register.php:359
+#: lib/messages.php:567 lib/register.php:357
 msgid ""
 "You are using %1$s version %2$s - <a href=\"%3$s\">this %1$s version is "
 "outdated, unsupported, possibly insecure</a>, and may lack important updates "
@@ -10026,7 +10026,7 @@ msgstr ""
 msgid "ajax request missing the post_id"
 msgstr ""
 
-#: lib/post.php:1812
+#: lib/post.php:1810
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -10068,93 +10068,93 @@ msgstr ""
 msgid "The %s plugin has been activated."
 msgstr ""
 
-#: lib/register.php:352 lib/register.php:361
+#: lib/register.php:350 lib/register.php:359
 msgid "%1$s requires %2$s version %3$s or higher and has been deactivated."
 msgstr ""
 
-#: lib/register.php:363
+#: lib/register.php:361
 msgid "Please upgrade %1$s before trying to re-activate the %2$s plugin."
 msgstr ""
 
-#: lib/register.php:372
+#: lib/register.php:370
 msgid "Page Tags"
 msgstr ""
 
-#: lib/register.php:373
+#: lib/register.php:371
 msgid "Page Tag"
 msgstr ""
 
-#: lib/register.php:374
+#: lib/register.php:372
 msgctxt "admin menu name"
 msgid "Page Tags"
 msgstr ""
 
-#: lib/register.php:375
+#: lib/register.php:373
 msgid "All Page Tags"
 msgstr ""
 
-#: lib/register.php:376
+#: lib/register.php:374
 msgid "Edit Page Tag"
 msgstr ""
 
-#: lib/register.php:377
+#: lib/register.php:375
 msgid "View Page Tag"
 msgstr ""
 
-#: lib/register.php:378
+#: lib/register.php:376
 msgid "Update Page Tag"
 msgstr ""
 
-#: lib/register.php:379
+#: lib/register.php:377
 msgid "Add New Page Tag"
 msgstr ""
 
-#: lib/register.php:380
+#: lib/register.php:378
 msgid "New Page Tag Name"
 msgstr ""
 
-#: lib/register.php:381
+#: lib/register.php:379
 msgid "Parent Page Tag"
 msgstr ""
 
-#: lib/register.php:382
+#: lib/register.php:380
 msgid "Parent Page Tag:"
 msgstr ""
 
-#: lib/register.php:383
+#: lib/register.php:381
 msgid "Search Page Tags"
 msgstr ""
 
-#: lib/register.php:384
+#: lib/register.php:382
 msgid "Popular Page Tags"
 msgstr ""
 
-#: lib/register.php:385
+#: lib/register.php:383
 msgid "Separate page tags with commas"
 msgstr ""
 
-#: lib/register.php:386
+#: lib/register.php:384
 msgid "Add or remove page tags"
 msgstr ""
 
-#: lib/register.php:387
+#: lib/register.php:385
 msgid "Choose from the most used"
 msgstr ""
 
-#: lib/register.php:388
+#: lib/register.php:386
 msgid "No page tags found."
 msgstr ""
 
-#: lib/register.php:389
+#: lib/register.php:387
 msgid "← Back to page tags"
 msgstr ""
 
-#: lib/register.php:393
+#: lib/register.php:391
 msgctxt "Taxonomy label"
 msgid "Page Tags"
 msgstr ""
 
-#: lib/register.php:404
+#: lib/register.php:402
 msgctxt "Taxonomy description"
 msgid "Tags for the page post type."
 msgstr ""

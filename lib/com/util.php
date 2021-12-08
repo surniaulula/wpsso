@@ -1914,7 +1914,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return self::insert_in_array( $insert = 'after', $arr, $match_key, $mixed, $add_value, $ret_bool = true );
 		}
 
-		private static function insert_in_array( $insert = 'after', array &$arr, $match_key, $mixed, $add_value = null, $ret_bool = false ) {
+		private static function insert_in_array( $insert, array &$arr, $match_key, $mixed, $add_value = null, $ret_bool = false ) {
 
 			$matched = false;
 

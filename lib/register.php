@@ -229,8 +229,6 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 					delete_metadata( $meta_type = 'post', $object_id = null, $meta_key, $meta_value = null, $delete_all = true );
 				}
 
-				delete_metadata( $meta_type = 'post', $object_id = null, '_wpsso_wpproductreview', $meta_value = null, $delete_all = true );
-
 				/**
 				 * Delete post settings and meta.
 				 */

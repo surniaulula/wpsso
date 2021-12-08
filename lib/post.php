@@ -1690,8 +1690,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				delete_post_meta( $post_id, $meta_key );
 			}
 
-			delete_post_meta( $post_id, '_wpsso_wpproductreview' );	// Re-created automatically.
-
 			/**
 			 * Clear the permalink, canonical / shortlink webpage cache.
 			 */
