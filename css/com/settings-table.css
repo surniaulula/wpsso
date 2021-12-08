@@ -258,10 +258,10 @@ table.sucom-settings th span.option_locale {
 table.sucom-settings table.plugin-list-columns th {
 	word-wrap:normal;
 	text-align:center;
-	vertical-align:bottom;
+	vertical-align:top;
 	width:50px;
 	min-width:50px;
-	padding:4px 6px;
+	padding:0 4px 4px 4px;
 	border-bottom:1px dotted #ddd;
 }
 
@@ -294,7 +294,7 @@ table.sucom-settings td.ext-info-plugin-separator {
 
 table.sucom-settings table.plugin-list-columns td {
 	vertical-align:middle;
-	padding:4px 6px;
+	padding:4px;
 }
 
 table.sucom-settings table.plugin-list-columns td.underline {
