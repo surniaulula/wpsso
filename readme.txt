@@ -243,7 +243,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.11.0-b.1 (2021/12/08)**
+**Version 9.11.0-rc.1 (2021/12/08)**
 
 The default format of Schema and Open Graph types in select drop-downs has changed from "ID | Host/Name" to simply "Name". If you prefer the older format, you can choose different formats under the SSO &gt; Advanced Settings &gt; Interface tab.
 
@@ -621,7 +621,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 9.11.0-b.1 =
+= 9.11.0-rc.1 =
 
 (2021/12/08) The default format of Schema and Open Graph types in select drop-downs has changed from "ID | Host/Name" to simply "Name".
 
