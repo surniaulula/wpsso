@@ -77,6 +77,7 @@ if ( ! class_exists( 'SucomUtilMetabox' ) ) {
 			if ( ! $row_count ) {
 
 				$metabox_html .= '<tr>';
+				$metabox_html .= $can_del_meta ? '<td class="del-column"></td>' : '';
 				$metabox_html .= '<td class="key-column"><pre></pre></td>';
 				$metabox_html .= '<td class="value-column"><pre></pre></td>';
 				$metabox_html .= '</tr>' . "\n";

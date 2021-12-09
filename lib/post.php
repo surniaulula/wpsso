@@ -10,14 +10,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
-if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
-
-	die( 'Do. Or do not. There is no try.' );
-}
-
 if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
-	require_once dirname( __FILE__ ) . '/abstracts/wp-meta.php';	// SucomAddOn class.
+	$dir_name = dirname( __FILE__ );
+
+	if ( file_exists( $dir_name . '/abstracts/wp-meta.php' ) ) {
+	
+		require_once $dir_name . '/abstracts/wp-meta.php';
+
+	} elseif ( file_exists( $dir_name . '/wp-meta.php' ) ) {
+	
+		require_once $dir_name . '/wp-meta.php';
+
+	} else {
+	
+		die( 'WpssoWpMeta class not found.' );
+	}
 }
 
 if ( ! class_exists( 'WpssoPost' ) ) {
@@ -569,16 +577,19 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					if ( isset( $post_obj->post_status ) && 'auto-draft' === $post_obj->post_status ) {
 
-						$mod = $this->get_mod( $post_id );
+						if ( ! empty( $this->p->options[ 'plugin_add_to_' . $post_obj->post_type ] ) ) {
 
-						/**
-						 * Notices have already been shown before creating a new post object.
-						 *
-						 * $read_cache is false since there shouldn't be a cache entry for a new post.
-						 */
-						parent::$head_tags = $this->p->head->get_head_array( $post_id, $mod, $read_cache = false );
+							$mod = $this->get_mod( $post_id );
 
-						parent::$head_info = $this->p->head->extract_head_info( parent::$head_tags, $mod );
+							/**
+							 * Notices have already been shown before creating a new post object.
+							 *
+							 * $read_cache is false since there shouldn't be a cache entry for a new post.
+							 */
+							parent::$head_tags = $this->p->head->get_head_array( $post_id, $mod, $read_cache = false );
+	
+							parent::$head_info = $this->p->head->extract_head_info( parent::$head_tags, $mod );
+						}
 					}
 				}
 			}
@@ -1465,43 +1476,46 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$post_obj = $this->die_or_get_ajax_post_obj();
 
-			$mod = $this->get_mod( $post_obj->ID );
+			if ( ! empty( $this->p->options[ 'plugin_add_to_' . $post_obj->post_type ] ) ) {
 
-			/**
-			 * $read_cache is false to generate notices etc.
-			 */
-			parent::$head_tags = $this->p->head->get_head_array( $post_obj->ID, $mod, $read_cache = false );
+				$mod = $this->get_mod( $post_obj->ID );
 
-			parent::$head_info = $this->p->head->extract_head_info( parent::$head_tags, $mod );
-
-			/**
-			 * Check for missing open graph image and description values.
-			 */
-			if ( $mod[ 'is_public' ] && 'publish' === $mod[ 'post_status' ] ) {
-
-				$ref_url = empty( parent::$head_info[ 'og:url' ] ) ? null : parent::$head_info[ 'og:url' ];
-
-				$ref_url = $this->p->util->maybe_set_ref( $ref_url, $mod, __( 'checking meta tags', 'wpsso' ) );
-
-				foreach ( array( 'image', 'description' ) as $mt_suffix ) {
-
-					if ( empty( parent::$head_info[ 'og:' . $mt_suffix ] ) ) {
-
-						/**
-						 * An is_admin() test is required to use the WpssoMessages class.
-						 */
-						if ( $this->p->notice->is_admin_pre_notices() ) {
-
-							$notice_msg = $this->p->msgs->get( 'notice-missing-og-' . $mt_suffix );
-
-							$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-og-' . $mt_suffix;
-
-							$this->p->notice->err( $notice_msg, null, $notice_key );
+				/**
+				 * $read_cache is false to generate notices etc.
+				 */
+				parent::$head_tags = $this->p->head->get_head_array( $post_obj->ID, $mod, $read_cache = false );
+	
+				parent::$head_info = $this->p->head->extract_head_info( parent::$head_tags, $mod );
+	
+				/**
+				 * Check for missing open graph image and description values.
+				 */
+				if ( $mod[ 'is_public' ] && 'publish' === $mod[ 'post_status' ] ) {
+	
+					$ref_url = empty( parent::$head_info[ 'og:url' ] ) ? null : parent::$head_info[ 'og:url' ];
+	
+					$ref_url = $this->p->util->maybe_set_ref( $ref_url, $mod, __( 'checking meta tags', 'wpsso' ) );
+	
+					foreach ( array( 'image', 'description' ) as $mt_suffix ) {
+	
+						if ( empty( parent::$head_info[ 'og:' . $mt_suffix ] ) ) {
+	
+							/**
+							 * An is_admin() test is required to use the WpssoMessages class.
+							 */
+							if ( $this->p->notice->is_admin_pre_notices() ) {
+	
+								$notice_msg = $this->p->msgs->get( 'notice-missing-og-' . $mt_suffix );
+	
+								$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-og-' . $mt_suffix;
+	
+								$this->p->notice->err( $notice_msg, null, $notice_key );
+							}
 						}
 					}
+	
+					$this->p->util->maybe_unset_ref( $ref_url );
 				}
-
-				$this->p->util->maybe_unset_ref( $ref_url );
 			}
 
 			$metabox_html = $this->get_metabox_document_meta( $post_obj );
@@ -1568,11 +1582,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 		public function get_metabox_document_meta( $post_obj ) {
 
-			$metabox_id = $this->p->cf[ 'meta' ][ 'id' ];
-			$mod        = $this->get_mod( $post_obj->ID );
-			$tabs       = $this->get_document_meta_tabs( $metabox_id, $mod );
-			$opts       = $this->get_options( $post_obj->ID );
-			$def_opts   = $this->get_defaults( $post_obj->ID );
+			$metabox_id      = $this->p->cf[ 'meta' ][ 'id' ];
+			$mb_container_id = 'wpsso_metabox_' . $metabox_id . '_inside';
+			$mod             = $this->get_mod( $post_obj->ID );
+			$tabs            = $this->get_document_meta_tabs( $metabox_id, $mod );
+			$opts            = $this->get_options( $post_obj->ID );
+			$def_opts        = $this->get_defaults( $post_obj->ID );
 
 			$this->p->admin->get_pkg_info();
 
@@ -1599,8 +1614,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			$tabbed_args = array( 'layout' => 'vertical' );
-
-			$mb_container_id = 'wpsso_metabox_' . $metabox_id . '_inside';
 
 			$metabox_html = "\n" . '<div id="' . $mb_container_id . '">';
 
