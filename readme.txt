@@ -6,7 +6,7 @@ Domain Path: /languages
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 Assets URI: https://surniaulula.github.io/wpsso/assets/
-Tags: woocommerce, open graph, meta tags, schema, rich results, seo, image seo, video seo, google search, knowledge graph, xml sitemap
+Tags: woocommerce, open graph, meta tags, schema, rich results, image seo, video seo, google search, knowledge graph, xml sitemap
 Contributors: jsmoriss
 Requires PHP: 7.2
 Requires At Least: 5.2
@@ -31,12 +31,15 @@ Present your content at its best in search results and on social sites - no matt
 	<li>Google Knowledge Graph</li>
 	<li>Google Merchant Feeds XML (Premium Edition)</li>
 	<li>Google Rich Results (aka Rich Snippets)</li>
+	<li>Image SEO</li>
+	<li>Local Business SEO</li>
 	<li>Mobile Web Browsers</li>
 	<li>oEmbed for LinkedIn, Discord, Drupal, etc.</li>
 	<li>Pinterest Rich Pins</li>
 	<li>Twitter Cards</li>
 	<li>Schema.org JSON-LD Markup</li>
 	<li>Slack</li>
+	<li>Video SEO (Premium Edition)</li>
 	<li>WhatsApp and Messaging Apps</li>
 	<li>WordPress REST API</li>
 	<li>WordPress Sitemaps XML</li>
