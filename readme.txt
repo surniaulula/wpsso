@@ -1,4 +1,4 @@
-=== WPSSO Core | Advanced Structured Data - Meta Tags, oEmbed, REST API, Rich Pins, Rich Results, Schema JSON-LD, XML ===
+=== WPSSO Core | Complete Structured Data - Meta Tags, oEmbed, REST API, Rich Pins, Rich Results, Schema JSON-LD, XML ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -18,7 +18,7 @@ Present your content at its best in search results and on social sites - no matt
 
 == Description ==
 
-<h3 class="top">Advanced Structured Data Plugin for WordPress</h3>
+<h3 class="top">Complete Structured Data Plugin for WordPress</h3>
 
 <!-- about -->
 
