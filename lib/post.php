@@ -18,7 +18,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 	
 		require_once $dir_name . '/abstracts/wp-meta.php';
 
-	} elseif ( file_exists( $dir_name . '/wp-meta.php' ) ) {
+	} elseif ( file_exists( $dir_name . '/wp-meta.php' ) ) {	// WpssoPost may be in the abstracts folder.
 	
 		require_once $dir_name . '/wp-meta.php';
 
@@ -73,6 +73,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				}
 			}
 
+			/**
+			 * This hook is fired once WP, all plugins, and the theme are fully loaded and instantiated.
+			 */
 			add_action( 'wp_loaded', array( $this, 'add_wp_hooks' ) );
 		}
 
@@ -1403,11 +1406,18 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$admin_bar_class = apply_filters( 'wp_admin_bar_class', 'WP_Admin_Bar' );
 			$ajax_admin_bar  = new $admin_bar_class;
 			$parent_id       = $this->p->page->add_validate_toolbar( $ajax_admin_bar, $post_obj->ID );
-			$nodes           = $ajax_admin_bar->get_nodes();
-			$parent_node     = $nodes[ $parent_id ];
-			$menu_class      = 'ab-submenu' . ( empty( $parent_node->meta[ 'class' ] ) ? '' : $parent_node->meta[ 'class' ] );
+			$metabox_html    = '';
 
-			$metabox_html = '<ul id="' . esc_attr( 'wp-admin-bar-' . $parent_node->id . '-default' ) . '"';
+			if ( empty( $parent_id ) ) {
+			
+				die( $metabox_html );
+			}
+
+			$nodes       = $ajax_admin_bar->get_nodes();
+			$parent_node = $nodes[ $parent_id ];
+			$menu_class  = 'ab-submenu' . ( empty( $parent_node->meta[ 'class' ] ) ? '' : $parent_node->meta[ 'class' ] );
+
+			$metabox_html .= '<ul id="' . esc_attr( 'wp-admin-bar-' . $parent_node->id . '-default' ) . '"';
 			$metabox_html .= $menu_class ? ' class="' . esc_attr( trim( $menu_class ) ) . '"' : '';
 			$metabox_html .= '>';
 

@@ -522,7 +522,7 @@ function sucomTextLen( containerId, adminPageL10n ) {
 		}
 	}
 
-	var text_val = jQuery.trim( sucomTextLenClean( jQuery( '#' + containerId ).val() ) );
+	var text_val = sucomTextLenClean( jQuery( '#' + containerId ).val() );
 	var text_len = text_val.length;
 	var min_len  = Number( jQuery( '#' + containerId ).attr( 'minLength' ) );
 	var warn_len = Number( jQuery( '#' + containerId ).attr( 'warnLength' ) );
@@ -645,7 +645,7 @@ function sucomTextLenClean( str ) {
 
 	} catch( err ) {}
 
-	return str;
+	return str.trim();
 }
 
 /**

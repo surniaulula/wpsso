@@ -3435,22 +3435,22 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				}
 			}
 
-			$have_url      = true;
+			$can_crawl_url = true;
 			$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = true );
 
 			if ( empty( $canonical_url ) ) {
 
-				$have_url = false;
+				$can_crawl_url = false;
 
 			} elseif ( ! $mod[ 'is_public' ] ) {
 
-				$have_url = false;
+				$can_crawl_url = false;
 
 			} elseif ( $mod[ 'is_post' ] ) {
 
 				if ( 'publish' !== $mod[ 'post_status' ] ) {
 
-					$have_url = false;
+					$can_crawl_url = false;
 				}
 			}
 
@@ -3513,7 +3513,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				),
 			);
 
-			if ( ! $have_url ) {
+			if ( ! $can_crawl_url ) {
 
 				foreach ( $validators as $key => $arr ) {
 
