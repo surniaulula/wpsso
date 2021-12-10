@@ -5279,7 +5279,7 @@ msgstr ""
 #: lib/admin.php:1315 lib/admin.php:1326
 #: lib/messages-tooltip-meta-schema.php:470 lib/messages-tooltip-plugin.php:181
 #: lib/submenu/tools.php:58 lib/submenu/tools.php:103 lib/user.php:52
-#: lib/user.php:1658 lib/user.php:1765 lib/user.php:1896
+#: lib/user.php:1651 lib/user.php:1758 lib/user.php:1889
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -6899,8 +6899,8 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip-meta-opengraph.php:77
-#: lib/messages-tooltip-meta-schema.php:817 lib/messages-tooltip-meta.php:168
-#: lib/messages-tooltip-meta.php:185 lib/messages-tooltip-opengraph.php:137
+#: lib/messages-tooltip-meta-schema.php:817 lib/messages-tooltip-meta.php:176
+#: lib/messages-tooltip-meta.php:193 lib/messages-tooltip-opengraph.php:137
 msgid "This option is disabled if a custom image URL is entered."
 msgstr ""
 
@@ -6917,8 +6917,8 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip-meta-opengraph.php:89
-#: lib/messages-tooltip-meta-schema.php:825 lib/messages-tooltip-meta.php:176
-#: lib/messages-tooltip-meta.php:194 lib/messages-tooltip-opengraph.php:153
+#: lib/messages-tooltip-meta-schema.php:825 lib/messages-tooltip-meta.php:184
+#: lib/messages-tooltip-meta.php:202 lib/messages-tooltip-opengraph.php:153
 msgid "This option is disabled if a custom image ID is selected."
 msgstr ""
 
@@ -7553,81 +7553,81 @@ msgid ""
 "Schema meta tags and JSON-LD markup."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:65
+#: lib/messages-tooltip-meta.php:73
 msgid "Select a primary category for breadcrumbs."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:71
+#: lib/messages-tooltip-meta.php:79
 msgid "A customized description for the Pinterest Pin It browser button."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:77
+#: lib/messages-tooltip-meta.php:85
 msgid ""
 "A customized title for the Twitter Card title meta tag (all Twitter Card "
 "formats)."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:83
+#: lib/messages-tooltip-meta.php:91
 msgid ""
 "A customized description for the Twitter Card description meta tag (all "
 "Twitter Card formats)."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:89
+#: lib/messages-tooltip-meta.php:97
 msgid "A customized description for the SEO description meta tag."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:97
+#: lib/messages-tooltip-meta.php:105
 msgid "A customized URL for meta tags and Schema markup."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:99
+#: lib/messages-tooltip-meta.php:107
 msgid ""
 "Please make sure the custom URL you enter here is functional and redirects "
 "correctly."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:106 lib/submenu/essential.php:116
+#: lib/messages-tooltip-meta.php:114 lib/submenu/essential.php:116
 #: lib/submenu/general.php:150
 msgctxt "option label"
 msgid "Default Article Section"
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:108
+#: lib/messages-tooltip-meta.php:116
 msgid ""
 "A customized section for this article, which may be different than the %s "
 "option value."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:111
+#: lib/messages-tooltip-meta.php:119
 msgid "Select \"[None]\" if you prefer to exclude the %s meta tag."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:118
+#: lib/messages-tooltip-meta.php:126
 msgid "The estimated reading time (in minutes) for this article."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:120
+#: lib/messages-tooltip-meta.php:128
 msgid "A value of 0 minutes disables the estimated reading time meta tags."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:126 lib/submenu/general.php:165
+#: lib/messages-tooltip-meta.php:134 lib/submenu/general.php:165
 msgctxt "option label"
 msgid "Default Product Type"
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:128
+#: lib/messages-tooltip-meta.php:136
 msgid ""
 "A custom Google product type, which may be different than the %s option "
 "value."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:130
+#: lib/messages-tooltip-meta.php:138
 msgid ""
 "Your selection will be used for Schema product markup and the %s meta tag."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:132
+#: lib/messages-tooltip-meta.php:140
 msgid ""
 "Select \"[None]\" if you prefer to exclude the product type from Schema "
 "markup and meta tags."
@@ -7636,32 +7636,32 @@ msgstr ""
 #. translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a Google product type'.
 #. translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product size'.
 #. translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a Google product type'.
-#: lib/messages-tooltip-meta.php:135 lib/messages-tooltip-meta.php:158
+#: lib/messages-tooltip-meta.php:143 lib/messages-tooltip-meta.php:166
 #: lib/messages-tooltip-opengraph.php:53
 msgid ""
 "<a href=\"%1$s\">See this webpage for more information about choosing %2$s</"
 "a>."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:135 lib/messages-tooltip-opengraph.php:53
+#: lib/messages-tooltip-meta.php:143 lib/messages-tooltip-opengraph.php:53
 #: lib/messages.php:978
 msgid "https://support.google.com/merchants/answer/6324436"
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:135 lib/messages-tooltip-opengraph.php:53
+#: lib/messages-tooltip-meta.php:143 lib/messages-tooltip-opengraph.php:53
 #: lib/messages.php:977
 msgctxt "tooltip fragment"
 msgid "a Google product type"
 msgstr ""
 
 #. translators: %s is a singular item reference, for example 'a product size type'.
-#: lib/messages-tooltip-meta.php:146
+#: lib/messages-tooltip-meta.php:154
 msgid ""
 "A custom value for %s can be provided for the main product meta tags and "
 "Schema markup."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:148
+#: lib/messages-tooltip-meta.php:156
 msgid ""
 "When information from product variations is available, the value from each "
 "product variation will supersede the main product information in each Schema "
@@ -7669,64 +7669,64 @@ msgid ""
 msgstr ""
 
 #. translators: %s is the option label.
-#: lib/messages-tooltip-meta.php:151
+#: lib/messages-tooltip-meta.php:159
 msgid ""
 "The <strong>%s</strong> option may be read-only when an e-commerce plugin is "
 "the authoritative source for this value."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:153
+#: lib/messages-tooltip-meta.php:161
 msgid ""
 "In this case, you should update the product information in the e-commerce "
 "plugin to update this value."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:166
+#: lib/messages-tooltip-meta.php:174
 msgid "A customized image ID for the Pinterest Pin It browser button."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:174
+#: lib/messages-tooltip-meta.php:182
 msgid ""
 "A customized image URL (instead of an image ID) for the Pinterest Pin It "
 "browser button."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:183
+#: lib/messages-tooltip-meta.php:191
 msgid "A customized image ID for the Twitter Card image."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:192
+#: lib/messages-tooltip-meta.php:200
 msgid ""
 "A customized image URL (instead of an image ID) for the Twitter Card image."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:203
+#: lib/messages-tooltip-meta.php:211
 msgid "Do not show a cached link in search results."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:212
+#: lib/messages-tooltip-meta.php:220
 msgid "Do not follow links on this webpage."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:221
+#: lib/messages-tooltip-meta.php:229
 msgid "Do not index images on this webpage."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:230
+#: lib/messages-tooltip-meta.php:238
 msgid "Do not show this webpage in search results."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:239
+#: lib/messages-tooltip-meta.php:247
 msgid "Do not show a text snippet or a video preview in search results."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:241
+#: lib/messages-tooltip-meta.php:249
 msgid ""
 "Google may still show a static image thumbnail (if available) when it "
 "determines that using an image provides a better user-experience."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:250
+#: lib/messages-tooltip-meta.php:258
 msgid "Do not offer translation of this webpage in search results."
 msgstr ""
 
@@ -10031,7 +10031,7 @@ msgstr ""
 msgid "ajax request missing the post_id"
 msgstr ""
 
-#: lib/post.php:1833
+#: lib/post.php:1827
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -10846,7 +10846,7 @@ msgid ""
 "term ID %3$d in taxonomy %4$s (%5$s)."
 msgstr ""
 
-#: lib/term.php:922
+#: lib/term.php:915
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -10905,56 +10905,56 @@ msgstr ""
 msgid "Examples: CPA, Esq., M.D., P.E., PhD., PMP, RN"
 msgstr ""
 
-#: lib/user.php:968
+#: lib/user.php:961
 msgid "(not a Facebook Pages URL)"
 msgstr ""
 
-#: lib/user.php:1094
+#: lib/user.php:1087
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:1095
+#: lib/user.php:1088
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:1096
+#: lib/user.php:1089
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1454
+#: lib/user.php:1447
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/user.php:1677
+#: lib/user.php:1670
 msgid ""
 "Aborting task to add the %1$s role to content creators - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1692
+#: lib/user.php:1685
 msgid "A task to add the %1$s role for content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1733
+#: lib/user.php:1726
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1735 lib/user.php:1838 lib/util-cache.php:187
+#: lib/user.php:1728 lib/user.php:1831 lib/util-cache.php:187
 #: lib/util-cache.php:705
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
-#: lib/user.php:1784
+#: lib/user.php:1777
 msgid ""
 "Aborting task to remove the %1$s role from all users - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1799
+#: lib/user.php:1792
 msgid "A task to remove the %1$s role from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1836
+#: lib/user.php:1829
 msgid "The %1$s role has been removed from %2$d content creators."
 msgstr ""
 

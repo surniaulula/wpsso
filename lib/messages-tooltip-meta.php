@@ -43,6 +43,14 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 
 				return $this->og->get( $msg_key, $info );
 
+			} elseif ( 0 === strpos( $msg_key, 'tooltip-meta-org_' ) ) {
+
+				return apply_filters( 'wpsso_messages_tooltip_meta_org', $text, $msg_key, $info );
+
+			} elseif ( 0 === strpos( $msg_key, 'tooltip-meta-place_' ) ) {
+
+				return apply_filters( 'wpsso_messages_tooltip_meta_place', $text, $msg_key, $info );
+
 			} elseif ( 0 === strpos( $msg_key, 'tooltip-meta-schema_' ) ) {
 
 				/**

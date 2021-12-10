@@ -725,28 +725,28 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 			 */
 			} elseif ( 0 === strpos( $msg_key, 'tooltip-am_' ) ) {
 
-				$text = apply_filters( 'wpsso_messages_tooltip_am', $text, $msg_key, $info );
+				return apply_filters( 'wpsso_messages_tooltip_am', $text, $msg_key, $info );
 
 			/**
 			 * WPSSO RRSSB add-on.
 			 */
 			} elseif ( 0 === strpos( $msg_key, 'tooltip-buttons_' ) ) {
 
-				$text = apply_filters( 'wpsso_messages_tooltip_buttons', $text, $msg_key, $info );
+				return apply_filters( 'wpsso_messages_tooltip_buttons', $text, $msg_key, $info );
 
 			/**
 			 * WPSSO ORG add-on.
 			 */
 			} elseif ( 0 === strpos( $msg_key, 'tooltip-org_' ) ) {
 
-				$text = apply_filters( 'wpsso_messages_tooltip_org', $text, $msg_key, $info );
+				return apply_filters( 'wpsso_messages_tooltip_org', $text, $msg_key, $info );
 
 			/**
 			 * WPSSO PLM add-on.
 			 */
 			} elseif ( 0 === strpos( $msg_key, 'tooltip-plm_' ) ) {
 
-				$text = apply_filters( 'wpsso_messages_tooltip_plm', $text, $msg_key, $info );
+				return apply_filters( 'wpsso_messages_tooltip_plm', $text, $msg_key, $info );
 
 			/**
 			 * All other tooltips.

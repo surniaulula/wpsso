@@ -842,11 +842,12 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 		public function get_metabox_document_meta( $user_obj ) {
 
-			$metabox_id = $this->p->cf[ 'meta' ][ 'id' ];
-			$mod        = $this->get_mod( $user_obj->ID );
-			$tabs       = $this->get_document_meta_tabs( $metabox_id, $mod );
-			$opts       = $this->get_options( $user_obj->ID );
-			$def_opts   = $this->get_defaults( $user_obj->ID );
+			$metabox_id   = $this->p->cf[ 'meta' ][ 'id' ];
+			$container_id = 'wpsso_metabox_' . $metabox_id . '_inside';
+			$mod          = $this->get_mod( $user_obj->ID );
+			$tabs         = $this->get_document_meta_tabs( $metabox_id, $mod );
+			$opts         = $this->get_options( $user_obj->ID );
+			$def_opts     = $this->get_defaults( $user_obj->ID );
 
 			$this->p->admin->get_pkg_info();	// Returns an array from cache.
 
@@ -863,32 +864,24 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			foreach ( $tabs as $tab_key => $title ) {
 
-				$mb_filter_name = 'wpsso_metabox_' . $metabox_id . '_' . $tab_key . '_rows';
+				$filter_name = 'wpsso_metabox_' . $metabox_id . '_' . $tab_key . '_rows';
+
+				$table_rows[ $tab_key ] = (array) apply_filters( $filter_name, array(), $this->form, parent::$head_info, $mod );
 
 				$mod_filter_name = 'wpsso_' . $mod[ 'name' ] . '_' . $tab_key . '_rows';
-
-				$table_rows[ $tab_key ] = (array) apply_filters( $mb_filter_name, array(), $this->form, parent::$head_info, $mod );
 
 				$table_rows[ $tab_key ] = (array) apply_filters( $mod_filter_name, $table_rows[ $tab_key ], $this->form, parent::$head_info, $mod );
 			}
 
 			$tabbed_args = array( 'layout' => 'vertical' );
 
-			$mb_container_id = 'wpsso_metabox_' . $metabox_id . '_inside';
-
-			$metabox_html = "\n" . '<div id="' . $mb_container_id . '">';
-
+			$metabox_html = "\n" . '<div id="' . $container_id . '">';
 			$metabox_html .= $this->p->util->metabox->get_tabbed( $metabox_id, $tabs, $table_rows, $tabbed_args );
-
-			$metabox_html .= '<!-- ' . $mb_container_id . '_footer begin -->' . "\n";
-
-			$metabox_html .= apply_filters( $mb_container_id . '_footer', '', $mod );
-
-			$metabox_html .= '<!-- ' . $mb_container_id . '_footer end -->' . "\n";
-
-			$metabox_html .= $this->get_metabox_javascript( $mb_container_id );
-
-			$metabox_html .= '</div><!-- #'. $mb_container_id . ' -->' . "\n";
+			$metabox_html .= '<!-- ' . $container_id . '_footer begin -->' . "\n";
+			$metabox_html .= apply_filters( $container_id . '_footer', '', $mod );
+			$metabox_html .= '<!-- ' . $container_id . '_footer end -->' . "\n";
+			$metabox_html .= $this->get_metabox_javascript( $container_id );
+			$metabox_html .= '</div><!-- #'. $container_id . ' -->' . "\n";
 
 			if ( $this->p->debug->enabled ) {
 

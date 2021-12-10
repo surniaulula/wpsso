@@ -3,7 +3,7 @@
  *
  * Don't forget to update the wp_register_script() arguments for the 'sucom-admin-page' script when updating this version number.
  *
- * Version: 20211130-01
+ * Version: 20211210-01
  */
 
 /**
@@ -404,11 +404,13 @@ function sucomDeleteMeta( metaType, objId, metaKey, adminPageL10n ) {
 		_ajax_nonce: cfg[ '_ajax_nonce' ],
 	}
 
-	jQuery.post( ajaxurl, ajaxData, function( hide_container_id ) {
+	jQuery.post( ajaxurl, ajaxData, function( table_row_id ) {
 
-		if ( hide_container_id ) {
+		table_row_id = table_row_id.trim();	// Just in case.
 
-			jQuery( '#' + hide_container_id ).hide();
+		if ( table_row_id ) {
+
+			jQuery( '#' + table_row_id ).hide();
 
 		} else if ( cfg[ '_del_failed_transl' ] ) {
 
