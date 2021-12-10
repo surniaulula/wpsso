@@ -1,11 +1,4 @@
 
-/**
- * Fix for WP v5.5 double underline.
- */
-.edit-post-meta-boxes-area #poststuff #wpsso_sso h2.hndle {
-	border-bottom:none;
-}
-
 #poststuff table.sucom-settings.column-metabox h4,
 #poststuff .inner-sidebar table.sucom-settings h4 {
 	font-size:1em;

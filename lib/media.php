@@ -1291,9 +1291,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $mt_ret;
 		}
 
-		/**
-		 * Used by WpssoOptions->check_banner_image_size() and WpssoOrgFilters->check_banner_image_size().
-		 */
 		public function get_mt_img_pre_url( $opts, $img_pre = 'og_img', $key_num = null, $mt_pre = 'og' ) {
 
 			/**
