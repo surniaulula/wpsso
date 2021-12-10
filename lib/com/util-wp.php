@@ -416,6 +416,28 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $metadata[ $obj_id ];
 		}
 
+		public static function raw_update_post_title( $post_id, $post_title ) {
+
+			if ( wp_is_post_revision( $post_id ) ) {
+
+			        $post_id = wp_is_post_revision( $post_id );
+			}
+
+			if ( ! is_numeric( $post_id ) ) {	// Just in case.
+
+				return false;
+			}
+
+			$post_id    = absint( $post_id );
+			$post_title = sanitize_text_field( $post_title );
+			$post_name  = sanitize_title( $post_title );
+			$where      = array( 'ID' => $post_id );
+
+			global $wpdb;
+
+			return $wpdb->update( $wpdb->posts, array( 'post_title' => $post_title, 'post_name' => $post_name ), $where );
+		}
+
 		public static function raw_metadata_exists( $meta_type, $obj_id, $meta_key ) {
 
 			$metadata = self::get_update_meta_cache( $obj_id, $meta_type );

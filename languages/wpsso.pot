@@ -4725,56 +4725,56 @@ msgctxt "default description"
 msgid "No Description."
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1056
+#: lib/abstracts/wp-meta.php:1064
 msgctxt "metabox tab"
 msgid "Customize"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1057 lib/messages.php:284
+#: lib/abstracts/wp-meta.php:1065 lib/messages.php:284
 msgctxt "metabox tab"
 msgid "Priority Media"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1061
+#: lib/abstracts/wp-meta.php:1069
 msgctxt "metabox tab"
 msgid "Robots Meta"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1062
+#: lib/abstracts/wp-meta.php:1070
 msgctxt "metabox tab"
 msgid "Social Preview"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1063
+#: lib/abstracts/wp-meta.php:1071
 msgctxt "metabox tab"
 msgid "oEmbed Preview"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1064
+#: lib/abstracts/wp-meta.php:1072
 msgctxt "metabox tab"
 msgid "Head Markup"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1065
+#: lib/abstracts/wp-meta.php:1073
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1535
+#: lib/abstracts/wp-meta.php:1543
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1868 lib/json-filters/type/claimreview.php:69
+#: lib/abstracts/wp-meta.php:1876 lib/json-filters/type/claimreview.php:69
 msgid "A claim review cannot be the subject of another claim review."
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1870
+#: lib/abstracts/wp-meta.php:1878
 msgid ""
 "Please select a subject webpage type that better describes the subject of "
 "the webpage (ie. the content) being reviewed."
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:2634
+#: lib/abstracts/wp-meta.php:2642
 msgid "adding schema images"
 msgstr ""
 
@@ -5236,7 +5236,7 @@ msgstr ""
 msgid "Network plugin settings have been saved."
 msgstr ""
 
-#: lib/admin.php:1227 lib/post.php:931 lib/term.php:675 lib/user.php:656
+#: lib/admin.php:1227 lib/post.php:931 lib/term.php:678 lib/user.php:656
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -6373,12 +6373,12 @@ msgid ""
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1027 lib/post.php:662 lib/register.php:348 lib/term.php:502
+#: lib/media.php:1027 lib/post.php:662 lib/register.php:348 lib/term.php:505
 #: lib/user.php:465 lib/util.php:833 lib/util.php:3057
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1028 lib/post.php:663 lib/term.php:503 lib/user.php:466
+#: lib/media.php:1028 lib/post.php:663 lib/term.php:506 lib/user.php:466
 #: lib/util.php:834 lib/util.php:3058
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
@@ -9905,7 +9905,7 @@ msgid ""
 "post ID %3$d (%4$s)."
 msgstr ""
 
-#: lib/post.php:864 lib/post.php:1507 lib/schema.php:3272 lib/term.php:626
+#: lib/post.php:864 lib/post.php:1507 lib/schema.php:3272 lib/term.php:629
 #: lib/user.php:606
 msgid "checking meta tags"
 msgstr ""
@@ -10840,13 +10840,13 @@ msgctxt "module name"
 msgid "term"
 msgstr ""
 
-#: lib/term.php:504
+#: lib/term.php:507
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to get posts for "
 "term ID %3$d in taxonomy %4$s (%5$s)."
 msgstr ""
 
-#: lib/term.php:915
+#: lib/term.php:918
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 

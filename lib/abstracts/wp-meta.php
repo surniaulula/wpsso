@@ -170,8 +170,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			'post_coauthors'       => array(),
 			'post_time'            => false,	// Post published time (ISO 8601 date or false).
 			'post_modified_time'   => false,	// Post modified time (ISO 8601 date or false).
-			'tax_slug'  => '',			// Empty string by default.
-			'tax_label' => false,			// Taxonomy singular name.
+			'term_tax_id'          => false,
+			'tax_slug'             => '',
+			'tax_label'            => false,	// Taxonomy singular name.
 		);
 
 		public function __construct( &$plugin ) {
@@ -751,6 +752,13 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				}
 
 				$md_defs = apply_filters( 'wpsso_get_md_defaults', $md_defs, $mod );
+
+				if ( ! empty( $mod[ 'name' ] ) ) {
+
+					$filter_name = SucomUtil::sanitize_hookname( 'wpsso_get_' . $mod[ 'name' ] . '_defaults' );
+
+					$md_defs = apply_filters( $filter_name, $md_defs, $mod[ 'id' ], $mod[ 'term_tax_id' ], $mod );
+				}
 
 				/**
 				 * Since WPSSO Core v8.2.0.

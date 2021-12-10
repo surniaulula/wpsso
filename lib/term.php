@@ -182,8 +182,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			/**
 			 * WpssoTerm elements.
 			 */
-			$mod[ 'is_term' ]  = true;
-			$mod[ 'tax_slug' ] = SucomUtil::get_term_object( $mod[ 'id' ], (string) $tax_slug, 'taxonomy' );
+			$term_obj = SucomUtil::get_term_object( $mod[ 'id' ], (string) $tax_slug );
+
+			$mod[ 'is_term' ]     = true;
+			$mod[ 'term_tax_id' ] = isset( $term_obj->term_taxonomy_id ) ? (int) $term_obj->term_taxonomy_id : false;
+			$mod[ 'tax_slug' ]    = isset( $term_obj->taxonomy ) ? (string) $term_obj->taxonomy : '';
 
 			if ( $tax_obj = get_taxonomy( $mod[ 'tax_slug' ] ) ) {
 
