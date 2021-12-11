@@ -31,15 +31,12 @@ Present your content at its best in search results and on social sites - no matt
 	<li>Google Knowledge Graph</li>
 	<li>Google Merchant Feeds XML (Premium Edition)</li>
 	<li>Google Rich Results (aka Rich Snippets)</li>
-	<li>Image SEO</li>
-	<li>Local Business SEO</li>
 	<li>Mobile Web Browsers</li>
 	<li>oEmbed for LinkedIn, Discord, Drupal, etc.</li>
 	<li>Pinterest Rich Pins</li>
 	<li>Twitter Cards</li>
 	<li>Schema.org JSON-LD Markup</li>
 	<li>Slack</li>
-	<li>Video SEO (Premium Edition)</li>
 	<li>WhatsApp and Messaging Apps</li>
 	<li>WordPress REST API</li>
 	<li>WordPress Sitemaps XML</li>
@@ -53,7 +50,7 @@ There's no need to select or create templates, manually reenter descriptions, ti
 
 <p><strong>Supports over 500 different Schema types and sub-types:</strong></p>
 
-WPSSO provides comprehensive Schema markup for posts, pages, custom post types, terms (category, tags, etc.), custom taxonomies, user profile pages, search result pages, archive pages, and Accelerated Mobile Pages (AMP) pages - including image SEO, video SEO, local business, organization, publisher, person, author and co-authors, extensive e-Commerce product markup, product variations, product ratings, aggregate ratings, reviews, recipe information, event details, collection pages, profile pages, search pages, FAQ pages, item lists for Google's Rich Results Carousel, and much more.
+WPSSO provides comprehensive Schema markup for posts, pages, custom post types, terms (category, tags, etc.), custom taxonomies, user profile pages, search result pages, archive pages, and Accelerated Mobile Pages (AMP) pages - including image SEO, video SEO, local business SEO, organization, publisher, person, author and co-authors, extensive e-Commerce product markup, product variations, product ratings, aggregate ratings, reviews, recipe information, event details, collection pages, profile pages, search pages, FAQ pages, item lists for Google's Rich Results Carousel, and much more.
 
 <p><strong>Optimized image sizes for social sites and search engines:</strong></p>
 
