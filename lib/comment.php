@@ -10,9 +10,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
+/**
+ * This class may be extended by some add-ons.
+ *
+ * Do not test and die for WPSSO_PLUGINDIR since this would crash the add-ons if WPSSO Core is deactivated.
+ */
 if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
-	require_once dirname( __FILE__ ) . '/abstracts/wp-meta.php';
+	$dir_name = dirname( __FILE__ );
+
+	if ( file_exists( $dir_name . '/abstracts/wp-meta.php' ) ) {
+	
+		require_once $dir_name . '/abstracts/wp-meta.php';
+
+	} else wpdie( 'WpssoWpMeta class not found.' );
 }
 
 if ( ! class_exists( 'WpssoComment' ) ) {

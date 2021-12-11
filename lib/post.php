@@ -10,6 +10,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
+/**
+ * This class may be extended by some add-ons.
+ *
+ * Do not test and die for WPSSO_PLUGINDIR since this would crash the add-ons if WPSSO Core is deactivated.
+ */
 if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 	$dir_name = dirname( __FILE__ );
@@ -18,14 +23,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 	
 		require_once $dir_name . '/abstracts/wp-meta.php';
 
-	} elseif ( file_exists( $dir_name . '/wp-meta.php' ) ) {	// WpssoPost may be in the abstracts folder.
-	
-		require_once $dir_name . '/wp-meta.php';
-
-	} else {
-	
-		die( 'WpssoWpMeta class not found.' );
-	}
+	} else wpdie( 'WpssoWpMeta class not found.' );
 }
 
 if ( ! class_exists( 'WpssoPost' ) ) {
@@ -143,44 +141,19 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			if ( $is_admin || $doing_ajax ) {
 
 				/**
-				 * Returns post types registered as 'public' = 1 and 'show_ui' = 1.
-				 */
-				$post_type_names = SucomUtilWP::get_post_types( $output = 'names' );
-
-				if ( is_array( $post_type_names ) ) {
-
-					foreach ( $post_type_names as $post_type_name ) {
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'adding column filters for post type ' . $post_type_name );
-						}
-
-						/**
-						 * See https://codex.wordpress.org/Plugin_API/Filter_Reference/manage_$post_type_posts_columns.
-						 */
-						add_filter( 'manage_' . $post_type_name . '_posts_columns', array( $this, 'add_post_column_headings' ),
-							WPSSO_ADD_COLUMN_PRIORITY, 1 );
-
-						add_filter( 'manage_edit-' . $post_type_name . '_sortable_columns', array( $this, 'add_sortable_columns' ), 10, 1 );
-
-						/**
-						 * See https://codex.wordpress.org/Plugin_API/Action_Reference/manage_$post_type_posts_custom_column.
-						 */
-						add_action( 'manage_' . $post_type_name . '_posts_custom_column', array( $this, 'show_column_content' ), 10, 2 );
-					}
-				}
-
-				/**
-				 * Column filters.
+				 * Add edit table columns.
 				 */
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'adding column filters for media library' );
+					$this->p->debug->log( 'adding column filters for posts' );
 				}
 
+				add_filter( 'manage_pages_columns', array( $this, 'add_page_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
+				add_filter( 'manage_posts_columns', array( $this, 'add_post_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 2 );
 				add_filter( 'manage_media_columns', array( $this, 'add_media_column_headings' ), WPSSO_ADD_COLUMN_PRIORITY, 1 );
-				add_filter( 'manage_upload_sortable_columns', array( $this, 'add_sortable_columns' ), 10, 1 );
+
+				add_action( 'manage_pages_custom_column', array( $this, 'show_column_content' ), 10, 2 );
+				add_action( 'manage_posts_custom_column', array( $this, 'show_column_content' ), 10, 2 );
 				add_action( 'manage_media_custom_column', array( $this, 'show_column_content' ), 10, 2 );
 
 				/**
@@ -686,32 +659,28 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $post_ids;
 		}
 
-		public function add_post_column_headings( $columns ) {
+		public function add_page_column_headings( $columns ) {
 
-			if ( $this->p->debug->enabled ) {
+			add_filter( 'manage_edit-page_sortable_columns', array( $this, 'add_sortable_columns' ), 10, 1 );
 
-				$this->p->debug->mark();
-			}
+			return $this->add_column_headings( $columns, $list_type = 'post' );
+		}
+
+		public function add_post_column_headings( $columns, $post_type ) {
+
+			add_filter( 'manage_edit-' . $post_type . '_sortable_columns', array( $this, 'add_sortable_columns' ), 10, 1 );
 
 			return $this->add_column_headings( $columns, $list_type = 'post' );
 		}
 
 		public function add_media_column_headings( $columns ) {
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
+			add_filter( 'manage_upload_sortable_columns', array( $this, 'add_sortable_columns' ), 10, 1 );
 
 			return $this->add_column_headings( $columns, $list_type = 'media' );
 		}
 
 		public function show_column_content( $column_name, $post_id ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( $column_name . ' for post id ' . $post_id );
-			}
 
 			echo $this->get_column_content( '', $column_name, $post_id );
 		}

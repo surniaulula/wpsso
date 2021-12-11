@@ -660,10 +660,18 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				$text .= ' ' . sprintf( __( 'This option is localized - <a href="%s">you may change the WordPress locale</a> to define alternate values for different languages.', 'wpsso' ), 'https://wordpress.org/plugins/wpsso-user-locale/' );
 			}
 
-			if ( 0 === strpos( $msg_key, 'tooltip-' ) && ! empty( $text ) ) {
+			if ( ! empty( $text ) ) {
 
-				$text = '<span class="' . $this->p->cf[ 'form' ][ 'tooltip_class' ] . '" data-help="' . esc_attr( $text ) . '">' .
-					'<span class="' . $this->p->cf[ 'form' ][ 'tooltip_class' ] . '-icon"></span></span>';
+				if ( 0 === strpos( $msg_key, 'tooltip-' ) ) {
+
+					$tooltip_class = $this->p->cf[ 'form' ][ 'tooltip_class' ];
+					$tooltip_icon  = '<span class="' . $tooltip_class . '-icon"></span>';
+
+					if ( false === strpos( $text, '<span class="' . $tooltip_class . '"' ) ) {	// Only add the tooltip wrapper once.
+
+						$text = '<span class="' . $tooltip_class . '" data-help="' . esc_attr( $text ) . '">' . $tooltip_icon . '</span>';
+					}
+				}
 			}
 
 			return $text;

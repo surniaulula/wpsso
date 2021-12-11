@@ -2193,24 +2193,21 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 		 * Called by WpssoTerm->add_term_column_headings().
 		 * Called by WpssoUser->add_user_column_headings().
 		 */
-		protected function add_column_headings( $columns, $list_type = '' ) {
+		protected function add_column_headings( $columns, $list_type ) {
 
-			if ( ! empty( $list_type ) ) {
+			foreach ( self::get_column_headers() as $col_key => $col_header ) {
 
-				foreach ( self::get_column_headers() as $col_key => $col_header ) {
+				/**
+				 * Check if the column is enabled globally for the post, media, term, or user edit list.
+				 */
+				if ( ! empty( $this->p->options[ 'plugin_' . $col_key . '_col_' . $list_type ] ) ) {
 
-					/**
-					 * Check if the column is enabled globally for the post, media, term, or user edit list.
-					 */
-					if ( ! empty( $this->p->options[ 'plugin_' . $col_key . '_col_' . $list_type ] ) ) {
+					if ( $this->p->debug->enabled ) {
 
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'adding wpsso_' . $col_key . ' column' );
-						}
-
-						$columns[ 'wpsso_' . $col_key ] = $col_header;
+						$this->p->debug->log( 'adding wpsso_' . $col_key . ' column' );
 					}
+
+					$columns[ 'wpsso_' . $col_key ] = $col_header;
 				}
 			}
 

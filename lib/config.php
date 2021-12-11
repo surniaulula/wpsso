@@ -1729,7 +1729,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_og_desc_col_media'             => 1,
 					'plugin_og_desc_col_post'              => 0,
 					'plugin_og_desc_col_term'              => 0,
-					'plugin_og_desc_col_user'              => 0,
+					'plugin_og_desc_col_user'              => 1,
 					'plugin_og_types_select_format'        => 'name',
 					'plugin_schema_types_select_format'    => 'name',
 

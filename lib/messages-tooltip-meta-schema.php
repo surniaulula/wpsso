@@ -732,7 +732,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						case 'tooltip-meta-schema_review_item_cw_movie_director_person_names':	// Review: Movie Director Names.
 
-							$text = $this->p->msgs->get( '', 'tooltip-meta-schema_movie_director_person_names' );
+							$text = $this->p->msgs->get( 'tooltip-meta-schema_movie_director_person_names' );
 
 						 	break;
 
