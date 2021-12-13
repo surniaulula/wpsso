@@ -39,13 +39,11 @@ if ( ! class_exists( 'WpssoStdSocialBuddypress' ) ) {
 			}
 		}
 
-		public function filter_get_defaults( $def_opts ) {
+		public function filter_get_defaults( $defs ) {
 
-			$bio_const_name = 'WPSSO_BP_MEMBER_BIOGRAPHICAL_FIELD';
+			$defs[ 'plugin_bp_bio_field' ] = SucomUtil::get_const( 'WPSSO_BP_MEMBER_BIOGRAPHICAL_FIELD' );
 
-			$def_opts[ 'plugin_bp_bio_field' ] = SucomUtil::get_const( $bio_const_name );
-
-			return $def_opts;
+			return $defs;
 		}
 
 		public function filter_plugin_integration_rows( $table_rows, $form ) {

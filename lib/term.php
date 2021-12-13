@@ -540,7 +540,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				$this->p->debug->mark();
 			}
 
-			return $this->add_column_headings( $columns, $list_type = 'term' );
+			return $this->add_column_headings( $columns, $opt_suffix = 'tax_' . $this->query_tax_slug );
 		}
 
 		public function get_update_meta_cache( $term_id ) {

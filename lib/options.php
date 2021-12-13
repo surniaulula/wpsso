@@ -92,7 +92,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				/**
 				 * Complete the options array for any custom post types and/or custom taxonomies.
 				 */
-				$this->add_post_type_taxonomy_name_options( $this->cache_defaults );
+				$this->add_custom_post_tax_options( $this->cache_defaults );
 
 				/**
 				 * Translate contact method field labels for current language.
@@ -547,7 +547,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			/**
 			 * Complete the options array for any custom post types and/or custom taxonomies.
 			 */
-			$this->add_post_type_taxonomy_name_options( $opts );
+			$this->add_custom_post_tax_options( $opts );
 
 			/**
 			 * Note that generator meta tags are required for plugin support. If you disable the generator meta
@@ -962,7 +962,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		 * Called by WpssoOptions->get_defaults().
 		 * Called by WpssoOptions->check_options().
 		 */
-		private function add_post_type_taxonomy_name_options( array &$opts ) {	// Pass by reference is OK.
+		private function add_custom_post_tax_options( array &$opts ) {	// Pass by reference is OK.
+
+			$col_headers = WpssoWpMeta::get_column_headers();
 
 			/**
 			 * Add options using a key prefix array and post type names.
@@ -972,12 +974,26 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$this->p->debug->log( 'adding options derived from post type names' );
 			}
 
-			$this->p->util->add_post_type_names( $opts, array(
+			$post_type_names = array(
 				'og_type_for'                => 'article',	// Advanced Settings > Document Types > Open Graph > Type by Post Type.
 				'plugin_add_to'              => 1,		// Advanced Settings > Plugin Settings > Interface > Show Document SSO Metabox.
 				'plugin_ratings_reviews_for' => 0,		// Advanced Settings > Service APIs > Ratings and Reviews > Get Reviews for Post Type.
 				'schema_type_for'            => 'webpage',	// Advanced Settings > Document Types > Schema > Type by Post Type.
-			) );
+			);
+
+			foreach ( $col_headers as $col_key => $col_header ) {
+
+				/**
+				 * Show the Open Graph Image column for post types by default.
+				 */
+				$def_val = 'og_img' === $col_key ? 1 : 0;
+
+				$post_type_names[ 'plugin_' . $col_key . '_col' ] = $def_val;
+			}
+
+			$post_type_names = apply_filters( 'wpsso_add_custom_post_type_names', $post_type_names );
+
+			$this->p->util->add_post_type_names( $opts, $post_type_names );
 
 			/**
 			 * Add options using a key prefix array and term names.
@@ -987,11 +1003,25 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$this->p->debug->log( 'adding options derived from term names' );
 			}
 
-			$this->p->util->add_taxonomy_names( $opts, array(
-				'og_type_for_tax'         => 'website',		// Advanced Settings > Document Types > Open Graph > Type by Taxonomy.
-				'plugin_add_to_tax'       => 1,			// Advanced Settings > Plugin Settings > Interface > Show Document SSO Metabox.
-				'schema_type_for_tax'     => 'item.list',	// Advanced Settings > Document Types > Schema > Type by Taxonomy.
-			) );
+			$taxonomy_names = array(
+				'og_type_for_tax'     => 'website',	// Advanced Settings > Document Types > Open Graph > Type by Taxonomy.
+				'plugin_add_to_tax'   => 1,		// Advanced Settings > Plugin Settings > Interface > Show Document SSO Metabox.
+				'schema_type_for_tax' => 'item.list',	// Advanced Settings > Document Types > Schema > Type by Taxonomy.
+			);
+
+			foreach ( $col_headers as $col_key => $col_header ) {
+
+				/**
+				 * Show the Open Graph Image and Description columns for taxonomies by default.
+				 */
+				$def_val = 'og_img' === $col_key || 'og_desc' === $col_key ? 1 : 0;
+
+				$taxonomy_names[ 'plugin_' . $col_key . '_col_tax' ] = $def_val;
+			}
+
+			$taxonomy_names = apply_filters( 'wpsso_add_custom_taxonomy_names', $taxonomy_names );
+
+			$this->p->util->add_taxonomy_names( $opts, $taxonomy_names );
 		}
 
 		/**

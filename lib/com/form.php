@@ -628,13 +628,59 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_checklist_post_tax_user( $name_prefix, $css_class = 'input_vertical_list', $css_id = '', $is_disabled = false ) {
 
+			$values = $this->get_checklist_post_tax_user_values();
+
+			return $this->get_checklist( $name_prefix, $values, $css_class, $css_id, $is_assoc = true, $is_disabled );
+		}
+
+		public function get_columns_post_tax_user( $name_prefix = 'plugin', $col_headers = array(), $table_class = 'plugin_list_table_cols', $is_disabled = false ) {
+
+			$list_cols = '<table class="' . $table_class . '">' . "\n";
+			$list_cols .= '<tr>';
+
+			foreach ( $col_headers as $col_key => $col_header ) {
+
+				$list_cols .= '<th>' . $col_header . '</th>';
+			}
+
+			$list_cols .= '<td class="underline"></td>';
+			$list_cols .= '</tr>' . "\n";
+
+			$values = $this->get_checklist_post_tax_user_values();
+
+			foreach ( $values as $name_suffix => $label_transl ) {
+
+				$list_cols .= '<tr>';
+
+				foreach ( $col_headers as $col_key => $col_header ) {
+
+					$opt_key = $name_prefix . '_' . $col_key . '_col_' . $name_suffix;
+
+					if ( $this->in_defaults( $opt_key ) ) {	// Just in case.
+
+						$list_cols .= '<td class="checkbox">' . $this->get_checkbox( $opt_key, $css_class = '', $css_id = '', $is_disabled ) . '</td>';
+
+					} else {
+
+						$list_cols .= '<td class="checkbox"></td>';
+					}
+				}
+
+				$list_cols .= '<td' . ( $is_disabled ? ' class="blank"' : '' ) . '><p>' . $label_transl . '</p></td>';
+				$list_cols .= '</tr>' . "\n";
+			}
+
+			$list_cols .= '</table>' . "\n";
+
+			return $list_cols;
+		}
+
+		private function get_checklist_post_tax_user_values() {
+
 			$values = array();
 
 			$label_prefix = _x( 'Post Type', 'option label', $this->text_domain );
 
-			/**
-			 * Returns post types registered as 'public' = 1 and 'show_ui' = 1.
-			 */
 			$values = SucomUtilWP::get_post_type_labels( $values, $val_prefix = '', $label_prefix );
 
 			$label_prefix = _x( 'Taxonomy', 'option label', $this->text_domain );
@@ -645,7 +691,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			asort( $values );	// Sort by label.
 
-			return $this->get_checklist( $name_prefix, $values, $css_class, $css_id, $is_assoc = true, $is_disabled );
+			return $values;
 		}
 
 		public function get_date_time_tz( $name_prefix, $is_disabled = false, $step_mins = 15, $add_none = true ) {
@@ -2238,6 +2284,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public function get_no_checklist_post_tax_user( $name_prefix, $css_class = 'input_vertical_list', $css_id = '' ) {
 
 			return $this->get_checklist_post_tax_user( $name_prefix, $css_class, $css_id, $is_disabled = true );
+		}
+
+		public function get_no_columns_post_tax_user( $name_prefix, $css_class = 'input_vertical_list', $css_id = '' ) {
+
+			return $this->get_columns_post_tax_user( $name_prefix, $css_class, $css_id, $is_disabled = true );
 		}
 
 		public function get_no_date_time_tz( $name_prefix = '' ) {

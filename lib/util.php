@@ -329,28 +329,28 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$image_sizes = apply_filters( 'wpsso_plugin_image_sizes', array() );
 
-			foreach( $image_sizes as $opt_pre => $size_info ) {
+			foreach( $image_sizes as $opt_prefix => $size_info ) {
 
 				if ( ! is_array( $size_info ) ) {	// Just in case.
 
 					continue;
 				}
 
-				foreach ( array( 'width', 'height', 'crop', 'crop_x', 'crop_y' ) as $key ) {
+				foreach ( array( 'width', 'height', 'crop', 'crop_x', 'crop_y' ) as $opt_suffix ) {
 
 					/**
 					 * Value provided by filters.
 					 */
-					if ( isset( $size_info[ $key ] ) ) {
+					if ( isset( $size_info[ $opt_suffix ] ) ) {
 
 						continue;
 
 					/**
 					 * Plugin settings.
 					 */
-					} elseif ( isset( $this->p->options[ $opt_pre . '_img_' . $key ] ) ) {
+					} elseif ( isset( $this->p->options[ $opt_prefix . '_img_' . $opt_suffix ] ) ) {
 
-						$size_info[ $key ] = $this->p->options[ $opt_pre . '_img_' . $key ];
+						$size_info[ $opt_suffix ] = $this->p->options[ $opt_prefix . '_img_' . $opt_suffix ];
 
 					/**
 					 * Default settings.
@@ -367,13 +367,13 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 							$def_opts = $this->p->opt->get_defaults();
 						}
 
-						if ( isset( $def_opts[ $opt_pre . '_img_' . $key ] ) ) {	// Just in case.
+						if ( isset( $def_opts[ $opt_prefix . '_img_' . $opt_suffix ] ) ) {	// Just in case.
 
-							$size_info[ $key ] = $def_opts[ $opt_pre . '_img_' . $key ];
+							$size_info[ $opt_suffix ] = $def_opts[ $opt_prefix . '_img_' . $opt_suffix ];
 
 						} else {
 
-							$size_info[ $key ] = null;
+							$size_info[ $opt_suffix ] = null;
 						}
 					}
 				}
@@ -388,11 +388,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					$new_crop = array( 'center', 'center' );
 
-					foreach ( array( 'crop_x', 'crop_y' ) as $crop_key => $key ) {
+					foreach ( array( 'crop_x', 'crop_y' ) as $crop_key => $opt_suffix ) {
 
-						if ( ! empty( $size_info[ $key ] ) && $size_info[ $key ] !== 'none' ) {
+						if ( ! empty( $size_info[ $opt_suffix ] ) && $size_info[ $opt_suffix ] !== 'none' ) {
 
-							$new_crop[ $crop_key ] = $size_info[ $key ];
+							$new_crop[ $crop_key ] = $size_info[ $opt_suffix ];
 						}
 					}
 
@@ -419,7 +419,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					$this->cache_size_labels[ 'wpsso-' . $size_info[ 'name' ] ] = $size_label;
 
-					$this->cache_size_opts[ 'wpsso-' . $size_info[ 'name' ] ] = $opt_pre;
+					$this->cache_size_opts[ 'wpsso-' . $size_info[ 'name' ] ] = $opt_prefix;
 
 					/**
 					 * Add the image size.
@@ -1011,18 +1011,18 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		/**
 		 * Add options using a key prefix string / array and post type names.
 		 */
-		public function add_post_type_names( array &$opts, array $opt_pre_defs ) {
+		public function add_post_type_names( array &$opts, array $prefix_defaults ) {
 
-			foreach ( $opt_pre_defs as $opt_pre => $def_val ) {
+			foreach ( $prefix_defaults as $opt_prefix => $def_val ) {
 
 				/**
 				 * Returns post types registered as 'public' = 1 and 'show_ui' = 1.
 				 */
 				$post_type_names = SucomUtilWP::get_post_types( $output = 'names' );
 
-				foreach ( $post_type_names as $name ) {
+				foreach ( $post_type_names as $opt_suffix ) {
 
-					$opt_key = $opt_pre . '_' . $name;
+					$opt_key = $opt_prefix . '_' . $opt_suffix;
 
 					if ( ! isset( $opts[ $opt_key ] ) ) {
 
@@ -1072,13 +1072,13 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		/**
 		 * Add options using a key prefix string / array and term names.
 		 */
-		public function add_taxonomy_names( array &$opts, array $opt_pre_defs ) {
+		public function add_taxonomy_names( array &$opts, array $prefix_defaults ) {
 
-			foreach ( $opt_pre_defs as $opt_pre => $def_val ) {
+			foreach ( $prefix_defaults as $opt_prefix => $def_val ) {
 
-				foreach ( SucomUtilWP::get_taxonomies( $output = 'names' ) as $name ) {
+				foreach ( SucomUtilWP::get_taxonomies( $output = 'names' ) as $opt_suffix ) {
 
-					$opt_key = $opt_pre . '_' . $name;
+					$opt_key = $opt_prefix . '_' . $opt_suffix;
 
 					if ( ! isset( $opts[ $opt_key ] ) ) {
 
@@ -2834,11 +2834,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		/**
 		 * Get maximum media values from custom meta or plugin settings.
 		 */
-		public function get_max_nums( array $mod, $opt_pre = 'og' ) {
+		public function get_max_nums( array $mod, $opt_prefix = 'og' ) {
 
 			$max_nums = array();
 
-			$max_opt_keys = array( $opt_pre . '_vid_max', $opt_pre . '_img_max' );
+			$max_opt_keys = array( $opt_prefix . '_vid_max', $opt_prefix . '_img_max' );
 
 			foreach ( $max_opt_keys as $opt_key ) {
 

@@ -96,9 +96,9 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 				case 'tooltip-plugin_show_columns':	// WP List Table Columns.
 
-					$text = __( 'Additional columns can be included in admin list tables for posts, pages, etc.', 'wpsso' ) . ' ';
+					$text = __( 'Additional columns can be included by default in the admin list tables for posts, pages, custom post types, terms (categories and tags), and user profile pages.', 'wpsso' ) . ' ';
 
-					$text .= __( 'Users can also hide enabled columns by using the <em>Screen Options</em> tab on these admin list table pages.', 'wpsso' );
+					$text .= __( 'Users can also hide columns by using the <em>Screen Options</em> tab when viewing admin list tables.', 'wpsso' );
 
 					break;
 

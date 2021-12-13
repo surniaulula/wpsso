@@ -497,6 +497,20 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				832 => array(
 					'upscale_img_max'  => 'upscale_pct_max',	// Renamed on 2021/11/03.
 				),
+				846 => array(
+					'plugin_schema_type_col_post' => '',
+					'plugin_schema_type_col_term' => '',
+					'plugin_schema_type_col_user' => '',
+					'plugin_og_type_col_post'     => '',
+					'plugin_og_type_col_term'     => '',
+					'plugin_og_type_col_user'     => '',
+					'plugin_og_img_col_post'      => '',
+					'plugin_og_img_col_term'      => '',
+					'plugin_og_img_col_user'      => '',
+					'plugin_og_desc_col_post'     => '',
+					'plugin_og_desc_col_term'     => '',
+					'plugin_og_desc_col_user'     => '',
+				),
 			),
 		);
 
@@ -820,6 +834,11 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 
 						unset( $opts[ $key ] );
 					}
+				}
+
+				if ( $prev_version > 0 && $prev_version <= 846 ) {
+
+					$opts = SucomUtil::preg_grep_keys( '/^plugin_.*_col_.*$/', $opts, $invert = true );
 				}
 			}
 

@@ -213,7 +213,7 @@ table.sucom-settings ol > li > ol > li {
 	margin:15px 0 15px 10px;
 }
 
-table.sucom-settings table.plugin-list-columns {
+table.sucom-settings table.plugin_list_table_cols {
 	width:100%;
 }
 
@@ -248,7 +248,7 @@ table.sucom-settings th span.option_locale {
 	font-weight:normal;
 }
 
-table.sucom-settings table.plugin-list-columns th {
+table.sucom-settings table.plugin_list_table_cols th {
 	word-wrap:normal;
 	text-align:center;
 	vertical-align:top;
@@ -285,12 +285,12 @@ table.sucom-settings td.ext-info-plugin-separator {
 	border-bottom:1px dotted #ddd;
 }
 
-table.sucom-settings table.plugin-list-columns td {
+table.sucom-settings table.plugin_list_table_cols td {
 	vertical-align:middle;
 	padding:4px;
 }
 
-table.sucom-settings table.plugin-list-columns td.underline {
+table.sucom-settings table.plugin_list_table_cols td.underline {
 	border-bottom:1px dotted #ddd;
 }
 
@@ -299,7 +299,7 @@ table.sucom-settings td p {
 	margin:0 0 4px 0;
 }
 
-table.sucom-settings table.plugin-list-columns td p {
+table.sucom-settings table.plugin_list_table_cols td p {
 	margin:0;
 }
 

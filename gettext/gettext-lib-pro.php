@@ -41,11 +41,6 @@ _x( 'Options to Show by Default', 'option label', 'wpsso' );
 _x( 'Validators', 'toolbar menu title', 'wpsso' );
 _x( 'Show %s Toolbar Menu', 'option label', 'wpsso' );
 _x( 'Show %s Metabox', 'option label', 'wpsso' );
-__( 'Posts, Pages, and Custom Post Types', 'wpsso' );
-__( 'Media Library', 'wpsso' );
-__( 'Categories, Tags, and Custom Taxonomies', 'wpsso' );
-// translators: Please ignore - translation uses a different text domain.
-__( 'Users' );
 _x( 'WP List Table Columns', 'option label', 'wpsso' );
 _x( 'Schema Type Select Format', 'option label', 'wpsso' );
 _x( 'Open Graph Type Select Format', 'option label', 'wpsso' );

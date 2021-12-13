@@ -663,21 +663,21 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			add_filter( 'manage_edit-page_sortable_columns', array( $this, 'add_sortable_columns' ), 10, 1 );
 
-			return $this->add_column_headings( $columns, $list_type = 'post' );
+			return $this->add_column_headings( $columns, $post_type = 'page' );
 		}
 
 		public function add_post_column_headings( $columns, $post_type ) {
 
 			add_filter( 'manage_edit-' . $post_type . '_sortable_columns', array( $this, 'add_sortable_columns' ), 10, 1 );
 
-			return $this->add_column_headings( $columns, $list_type = 'post' );
+			return $this->add_column_headings( $columns, $post_type );
 		}
 
 		public function add_media_column_headings( $columns ) {
 
 			add_filter( 'manage_upload_sortable_columns', array( $this, 'add_sortable_columns' ), 10, 1 );
 
-			return $this->add_column_headings( $columns, $list_type = 'media' );
+			return $this->add_column_headings( $columns, $post_type = 'attachment' );
 		}
 
 		public function show_column_content( $column_name, $post_id ) {

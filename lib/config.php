@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'     => '9.11.1-dev.1',	// Plugin version.
-					'opt_version' => '840',		// Increment when changing default option values.
+					'opt_version' => '847',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1328,7 +1328,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_type_for_download'               => 'product',	// For Easy Digital Downloads.
 					'og_type_for_organization'           => 'website',
 					'og_type_for_place'                  => 'place',
-					'og_type_for_product'                => 'product', 	// For WooCommerce etc.
+					'og_type_for_product'                => 'product', 	// For WooCommerce.
 					'og_type_for_question'               => 'article',
 					'og_type_for_tax_faq_category'       => 'website',
 					'og_type_for_tax_product_brand'      => 'website',	// For WooCommerce Brands.
@@ -1421,7 +1421,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_other'                  => 'other',
 					'schema_type_for_person'                 => 'person',
 					'schema_type_for_place'                  => 'place',
-					'schema_type_for_product'                => 'product',		// For WooCommerce etc.
+					'schema_type_for_product'                => 'product',		// For WooCommerce.
 					'schema_type_for_qa'                     => 'webpage.qa',
 					'schema_type_for_question'               => 'question',		// For WPSSO FAQ.
 					'schema_type_for_review'                 => 'review',		// For WP Product Review.
@@ -1689,21 +1689,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'plugin_show_opts'                     => 'basic',	// Options to Show by Default.
 					'plugin_show_validate_toolbar'         => 1,		// Show Validators Toolbar Menu.
-					'plugin_add_to_article'                => 1,
 					'plugin_add_to_attachment'             => 1,
 					'plugin_add_to_download'               => 1,		// For Easy Digital Downloads.
-					'plugin_add_to_organization'           => 1,
 					'plugin_add_to_page'                   => 1,
-					'plugin_add_to_place'                  => 1,
 					'plugin_add_to_post'                   => 1,
 					'plugin_add_to_product'                => 1,		// For WooCommerce and other e-commerce plugins.
-					'plugin_add_to_question'               => 1,
 					'plugin_add_to_reply'                  => 0,		// For Bbpress
 					'plugin_add_to_tax_category'           => 1,
 					'plugin_add_to_tax_faq_category'       => 1,
 					'plugin_add_to_tax_link_category'      => 1,
-					'plugin_add_to_tax_org_category'       => 1,
-					'plugin_add_to_tax_place_category'     => 1,
 					'plugin_add_to_tax_post_tag'           => 1,
 					'plugin_add_to_tax_product_brand'      => 1,		// For WooCommerce Brands.
 					'plugin_add_to_tax_product_cat'        => 1,		// For WooCommerce.
@@ -1714,24 +1708,73 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_add_to_tribe_events'           => 1,		// For The Events Calendar.
 					'plugin_add_to_tribe-ea-record'        => 1,		// For The Events Calendar.
 					'plugin_add_to_user_page'              => 1,
-					'plugin_schema_type_col_media'         => 0,		// WP List Table Columns.
-					'plugin_schema_type_col_post'          => 0,
-					'plugin_schema_type_col_term'          => 0,
-					'plugin_schema_type_col_user'          => 0,
-					'plugin_og_type_col_media'             => 0,
+
+					/**
+					 * WP List Table Columns: Schema Type.
+					 */
+					'plugin_schema_type_col_attachment'        => 0,
+					'plugin_schema_type_col_download'          => 0,	// For Easy Digital Downloads.
+					'plugin_schema_type_col_page'              => 0,
+					'plugin_schema_type_col_post'              => 0,
+					'plugin_schema_type_col_product'           => 0,	// For WooCommerce.
+					'plugin_schema_type_col_tax_category'      => 0,
+					'plugin_schema_type_col_tax_faq_category'  => 0,
+					'plugin_schema_type_col_tax_link_category' => 0,
+					'plugin_schema_type_col_tax_post_tag'      => 0,
+					'plugin_schema_type_col_tax_product_cat'   => 0,	// For WooCommerce.
+					'plugin_schema_type_col_tax_product_tag'   => 0,	// For WooCommerce.
+					'plugin_schema_type_col_user_page'         => 0,
+
+					/**
+					 * WP List Table Columns: Open Graph Type.
+					 */
+					'plugin_og_type_col_attachment'        => 0,
+					'plugin_og_type_col_download'          => 0,		// For Easy Digital Downloads.
+					'plugin_og_type_col_page'              => 0,
 					'plugin_og_type_col_post'              => 0,
-					'plugin_og_type_col_term'              => 0,
-					'plugin_og_type_col_user'              => 0,
-					'plugin_og_img_col_media'              => 0,
-					'plugin_og_img_col_post'               => 1,
-					'plugin_og_img_col_term'               => 1,
-					'plugin_og_img_col_user'               => 1,
-					'plugin_og_desc_col_media'             => 1,
+					'plugin_og_type_col_product'           => 0,		// For WooCommerce.
+					'plugin_og_type_col_tax_category'      => 0,
+					'plugin_og_type_col_tax_faq_category'  => 0,
+					'plugin_og_type_col_tax_link_category' => 0,
+					'plugin_og_type_col_tax_post_tag'      => 0,
+					'plugin_og_type_col_tax_product_cat'   => 0,		// For WooCommerce.
+					'plugin_og_type_col_tax_product_tag'   => 0,		// For WooCommerce.
+					'plugin_og_type_col_user_page'         => 0,
+
+					/**
+					 * WP List Table Columns: Open Graph Image.
+					 */
+					'plugin_og_img_col_attachment'        => 0,
+					'plugin_og_img_col_download'          => 1,		// For Easy Digital Downloads.
+					'plugin_og_img_col_page'              => 1,
+					'plugin_og_img_col_post'              => 1,
+					'plugin_og_img_col_product'           => 1,		// For WooCommerce.
+					'plugin_og_img_col_tax_category'      => 1,
+					'plugin_og_img_col_tax_faq_category'  => 1,
+					'plugin_og_img_col_tax_link_category' => 1,
+					'plugin_og_img_col_tax_post_tag'      => 1,
+					'plugin_og_img_col_tax_product_cat'   => 1,		// For WooCommerce.
+					'plugin_og_img_col_tax_product_tag'   => 1,		// For WooCommerce.
+					'plugin_og_img_col_user_page'         => 1,
+
+					/**
+					 * WP List Table Columns: Open Graph Description.
+					 */
+					'plugin_og_desc_col_attachment'        => 1,
+					'plugin_og_desc_col_download'          => 0,		// For Easy Digital Downloads.
+					'plugin_og_desc_col_page'              => 0,
 					'plugin_og_desc_col_post'              => 0,
-					'plugin_og_desc_col_term'              => 0,
-					'plugin_og_desc_col_user'              => 1,
-					'plugin_og_types_select_format'        => 'name',
-					'plugin_schema_types_select_format'    => 'name',
+					'plugin_og_desc_col_product'           => 0,		// For WooCommerce.
+					'plugin_og_desc_col_tax_category'      => 1,
+					'plugin_og_desc_col_tax_faq_category'  => 1,
+					'plugin_og_desc_col_tax_link_category' => 1,
+					'plugin_og_desc_col_tax_post_tag'      => 1,
+					'plugin_og_desc_col_tax_product_cat'   => 1,		// For WooCommerce.
+					'plugin_og_desc_col_tax_product_tag'   => 1,		// For WooCommerce.
+					'plugin_og_desc_col_user_page'         => 1,
+
+					'plugin_og_types_select_format'     => 'name',		// Schema Type Select Format.
+					'plugin_schema_types_select_format' => 'name',		// Open Graph Type Select Format.
 
 					/**
 					 * Advanced Settings > Integration tab.
@@ -1814,7 +1857,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_ratings_reviews_num_max'      => 100,		// Maximum Number of Reviews.
 					'plugin_ratings_reviews_age_max'      => 60,		// Maximum Age of Reviews.
 					'plugin_ratings_reviews_for_download' => 1,		// For Easy Digital Downloads.
-					'plugin_ratings_reviews_for_product'  => 1,		// For WooCommerce, etc.
+					'plugin_ratings_reviews_for_product'  => 1,		// For WooCommerce.
 					'plugin_shopperapproved_site_id'      => '',		// Shopper Approved Site ID.
 					'plugin_shopperapproved_token'        => '',		// Shopper Approved API Token.
 					'plugin_stamped_store_hash'           => '',		// Stamped Store Hash.

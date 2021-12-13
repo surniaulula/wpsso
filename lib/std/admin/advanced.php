@@ -290,48 +290,12 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			/**
 			 * Additional item list columns.
 			 */
-			$list_cols = '<table class="plugin-list-columns">' . "\n" . '<tr>';
-
-			foreach ( WpssoWpMeta::get_column_headers() as $col_key => $col_header ) {
-
-				$list_cols .= '<th>' . $col_header . '</th>';
-			}
-
-			$list_cols .= '<td class="underline"></td></tr>' . "\n";
-
-			foreach ( array(
-				'post'  => __( 'Posts, Pages, and Custom Post Types', 'wpsso' ),
-				'media' => __( 'Media Library', 'wpsso' ),
-				'term'  => __( 'Categories, Tags, and Custom Taxonomies', 'wpsso' ),
-				// translators: Please ignore - translation uses a different text domain.
-				'user'  => __( 'Users' ),
-			) as $mod_name => $mod_label ) {
-
-				$list_cols .= '<tr>';
-
-				foreach ( WpssoWpMeta::get_column_headers() as $col_key => $col_header ) {
-
-					$opt_key = 'plugin_' . $col_key . '_col_' . $mod_name;
-
-					if ( $form->in_defaults( $opt_key ) ) {	// Just in case.
-
-						$list_cols .= $form->get_no_td_checkbox( $opt_key, $comment = '', $extra_css_class = 'checkbox' );	// Narrow column.
-
-					} else {
-
-						$list_cols .= '<td class="checkbox"></td>';
-					}
-				}
-
-				$list_cols .= '<td class="blank"><p>' . $mod_label . '</p></td></tr>' . "\n";
-			}
-
-			$list_cols .= '</table>' . "\n";
+			$col_headers = WpssoWpMeta::get_column_headers();
 
 			$table_rows[ 'plugin_show_columns' ] = '' .
 				$form->get_th_html( _x( 'WP List Table Columns', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_show_columns' ) .
-				'<td>' . $list_cols . '</td>';
+				'<td>' . $form->get_no_columns_post_tax_user( $name_prefix = 'plugin', $col_headers, $table_class = 'plugin_list_table_cols' ) . '</td>';
 
 			$table_rows[ 'plugin_schema_types_select_format' ] = $form->get_tr_hide( 'basic', 'plugin_schema_types_select_format' ) .
 				$form->get_th_html( _x( 'Schema Type Select Format', 'option label', 'wpsso' ),
