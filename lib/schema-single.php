@@ -611,9 +611,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				/**
 				 * Get the image alternate title, if one has been defined in the custom post meta.
 				 */
-				$title_max_len = $wpsso->options[ 'og_title_max_len' ];
+				$title_alt_max_len = $wpsso->options[ 'og_title_max_len' ];
 
-				$json_ret[ 'alternateName' ] = $wpsso->page->get_title( $title_max_len, $dots = '...', $mod,
+				$json_ret[ 'alternateName' ] = $wpsso->page->get_title( $title_alt_max_len, $dots = '...', $mod,
 					$read_cache = true, $add_hashtags = false, $do_encode = true,
 						$md_key = 'schema_title_alt' );
 
@@ -1756,7 +1756,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'url'             => 'product:url',
 				'name'            => 'product:title',
 				'description'     => 'product:description',
-				'category'        => 'product:category',		// The product category ID according to the Google product taxonomy.
+				'category'        => 'product:category',		// Product category ID from Google product taxonomy.
 				'sku'             => 'product:retailer_part_no',	// Product SKU.
 				'mpn'             => 'product:mfr_part_no',		// Product MPN.
 				'gtin14'          => 'product:gtin14',			// Valid for both products and offers.

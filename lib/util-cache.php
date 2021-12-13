@@ -40,9 +40,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			}
 
 			add_action( 'wp_scheduled_delete', array( $this, 'clear_expired_db_transients' ) );
-
 			add_action( 'wpsso_clear_cache', array( $this, 'clear' ), 10, 4 );	// For single scheduled task.
-
 			add_action( 'wpsso_refresh_cache', array( $this, 'refresh' ), 10, 1 );	// For single scheduled task.
 
 			/**

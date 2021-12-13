@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.11.1-dev.1',	// Plugin version.
+					'version'     => '9.11.1-dev.2',	// Plugin version.
 					'opt_version' => '847',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -3113,7 +3113,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'product:age_group'               => '',
 						'product:availability'            => 'product_avail',
 						'product:brand'                   => 'product_brand',
-						'product:category'                => 'product_category',	// The product category ID according to the Google product taxonomy.
+						'product:category'                => 'product_category',	// Product category ID from Google product taxonomy.
 						'product:color'                   => 'product_color',
 						'product:condition'               => 'product_condition',
 						'product:depth:value'             => 'product_depth_value',	// Non-standard / internal meta tag.

@@ -12,8 +12,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * This class may be extended by some add-ons.
- *
- * Do not test and die for WPSSO_PLUGINDIR since this would crash the add-ons if WPSSO Core is deactivated.
  */
 if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
@@ -1741,6 +1739,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$this->p->post->clear_cache( $post_id );
 				}
 			}
+
+			do_action( 'wpsso_clear_post_cache', $post_id );
 		}
 
 		/**

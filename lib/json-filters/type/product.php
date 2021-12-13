@@ -68,7 +68,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeProduct' ) ) {
 				'url'           => 'product:url',
 				'name'          => 'product:title',
 				'description'   => 'product:description',
-				'category'      => 'product:category',		// The product category ID according to the Google product taxonomy.
+				'category'      => 'product:category',		// Product category ID from Google product taxonomy.
 				'sku'           => 'product:retailer_part_no',	// Product SKU.
 				'mpn'           => 'product:mfr_part_no',	// Product MPN.
 				'gtin14'        => 'product:gtin14',		// Valid for both products and offers.
