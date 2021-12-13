@@ -5262,7 +5262,7 @@ msgstr ""
 #: lib/admin.php:1315 lib/admin.php:1326
 #: lib/messages-tooltip-meta-schema.php:470 lib/messages-tooltip-plugin.php:181
 #: lib/submenu/tools.php:58 lib/submenu/tools.php:103 lib/user.php:61
-#: lib/user.php:1661 lib/user.php:1768 lib/user.php:1899
+#: lib/user.php:1663 lib/user.php:1770 lib/user.php:1901
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -10830,7 +10830,7 @@ msgid ""
 "term ID %3$d in taxonomy %4$s (%5$s)."
 msgstr ""
 
-#: lib/term.php:920
+#: lib/term.php:922
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -10905,40 +10905,40 @@ msgstr ""
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1457
+#: lib/user.php:1459
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/user.php:1680
+#: lib/user.php:1682
 msgid ""
 "Aborting task to add the %1$s role to content creators - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1695
+#: lib/user.php:1697
 msgid "A task to add the %1$s role for content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1736
+#: lib/user.php:1738
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1738 lib/user.php:1841 lib/util-cache.php:185
+#: lib/user.php:1740 lib/user.php:1843 lib/util-cache.php:185
 #: lib/util-cache.php:703
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
-#: lib/user.php:1787
+#: lib/user.php:1789
 msgid ""
 "Aborting task to remove the %1$s role from all users - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1802
+#: lib/user.php:1804
 msgid "A task to remove the %1$s role from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1839
+#: lib/user.php:1841
 msgid "The %1$s role has been removed from %2$d content creators."
 msgstr ""
 

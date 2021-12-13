@@ -857,9 +857,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			$term_obj = get_term_by( 'term_taxonomy_id', $term_tax_id, $tax_slug = '' );
 
-			if ( isset( $tax_obj->slug ) ) {	// Just in case.
+			if ( isset( $term_obj->taxonomy ) ) {	// Just in case.
 
-				$mod = $this->get_mod( $term_id, $tax_obj->slug );
+				$mod = $this->get_mod( $term_id, $term_obj->taxonomy );
 
 			} else {
 
@@ -880,6 +880,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			 * Clear the plugin cache.
 			 */
 			$this->clear_mod_cache( $mod );
+
+			do_action( 'wpsso_clear_term_cache', $term_id );
 		}
 
 		/**

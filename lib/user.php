@@ -1421,6 +1421,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			 * Clear the plugin cache.
 			 */
 			$this->clear_mod_cache( $mod );
+
+			do_action( 'wpsso_clear_user_cache', $user_id );
 		}
 
 		/**
