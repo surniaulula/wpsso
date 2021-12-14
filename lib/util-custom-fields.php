@@ -48,9 +48,8 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 		 * The 'import_custom_fields' filter is executed before the 'wpsso_get_md_options' and 'wpsso_get_post_options'
 		 * filters, so values retrieved from custom fields may get overwritten by later filters.
 		 *
-		 * For example, the WooCommerce integration module hooks the 'wpsso_get_post_options' filter and provides
-		 * information about the main / simple product, including any product attributes, and disables these options in the
-		 * Document SSO metabox.
+		 * The 'import_custom_fields' filter is also executed before the 'wpsso_get_md_defaults' and
+		 * 'wpsso_get_post_defaults' filters, so submitted form values that are identical can be removed.
 		 */
 		public function filter_import_custom_fields( array $md_opts, $wp_meta = false, array $cf_meta_keys = array() ) {
 

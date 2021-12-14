@@ -18,7 +18,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 	$dir_name = dirname( __FILE__ );
 
 	if ( file_exists( $dir_name . '/abstracts/wp-meta.php' ) ) {
-	
+
 		require_once $dir_name . '/abstracts/wp-meta.php';
 
 	} else wpdie( 'WpssoWpMeta class not found.' );
@@ -401,6 +401,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 * The 'import_custom_fields' filter is executed before the 'wpsso_get_md_options' and
 					 * 'wpsso_get_post_options' filters, so values retrieved from custom fields may get
 					 * overwritten by later filters.
+					 *
+					 * The 'import_custom_fields' filter is also executed before the 'wpsso_get_md_defaults'
+					 * and 'wpsso_get_post_defaults' filters, so submitted form values that are identical can
+					 * be removed.
+					 *
+					 * See WpssoUtilCustomFields->filter_import_custom_fields().
 					 */
 					if ( $this->p->debug->enabled ) {
 
@@ -561,7 +567,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 							 * $read_cache is false since there shouldn't be a cache entry for a new post.
 							 */
 							parent::$head_tags = $this->p->head->get_head_array( $post_id, $mod, $read_cache = false );
-	
+
 							parent::$head_info = $this->p->head->extract_head_info( parent::$head_tags, $mod );
 						}
 					}
@@ -1376,7 +1382,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$metabox_html    = '';
 
 			if ( empty( $parent_id ) ) {
-			
+
 				die( $metabox_html );
 			}
 
@@ -1461,36 +1467,36 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 * $read_cache is false to generate notices etc.
 				 */
 				parent::$head_tags = $this->p->head->get_head_array( $post_obj->ID, $mod, $read_cache = false );
-	
+
 				parent::$head_info = $this->p->head->extract_head_info( parent::$head_tags, $mod );
-	
+
 				/**
 				 * Check for missing open graph image and description values.
 				 */
 				if ( $mod[ 'is_public' ] && 'publish' === $mod[ 'post_status' ] ) {
-	
+
 					$ref_url = empty( parent::$head_info[ 'og:url' ] ) ? null : parent::$head_info[ 'og:url' ];
-	
+
 					$ref_url = $this->p->util->maybe_set_ref( $ref_url, $mod, __( 'checking meta tags', 'wpsso' ) );
-	
+
 					foreach ( array( 'image', 'description' ) as $mt_suffix ) {
-	
+
 						if ( empty( parent::$head_info[ 'og:' . $mt_suffix ] ) ) {
-	
+
 							/**
 							 * An is_admin() test is required to use the WpssoMessages class.
 							 */
 							if ( $this->p->notice->is_admin_pre_notices() ) {
-	
+
 								$notice_msg = $this->p->msgs->get( 'notice-missing-og-' . $mt_suffix );
-	
+
 								$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-og-' . $mt_suffix;
-	
+
 								$this->p->notice->err( $notice_msg, null, $notice_key );
 							}
 						}
 					}
-	
+
 					$this->p->util->maybe_unset_ref( $ref_url );
 				}
 			}

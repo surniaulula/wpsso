@@ -1715,7 +1715,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$holder      = $this->get_placeholder_sanitized( $name, $holder );
 
 			if ( ! empty( $len[ 'rows' ] ) ) {
-		
+
 				$input_rows = $len[ 'rows' ];
 
 			} elseif ( ! empty( $len[ 'max' ] ) ) {

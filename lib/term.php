@@ -18,7 +18,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 	$dir_name = dirname( __FILE__ );
 
 	if ( file_exists( $dir_name . '/abstracts/wp-meta.php' ) ) {
-	
+
 		require_once $dir_name . '/abstracts/wp-meta.php';
 
 	} else wpdie( 'WpssoWpMeta class not found.' );

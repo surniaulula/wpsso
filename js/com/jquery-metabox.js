@@ -11,18 +11,21 @@ function sucomInitMetabox( container_id, doing_ajax ) {
 		table_id = container_id + ' ' + table_id;
 	}
 
+	/**
+	 * Softly disable input fields using the 'disabled' CSS class instead of using the standard 'disabled' HTML tag attribute
+	 * (which prevents values from being submitted).
+	 */
 	jQuery( table_id + ' input' ).click( sucomBlurDisabled );	// Includes checkbox and radio.
 	jQuery( table_id + ' input' ).focus( sucomBlurDisabled );
 	jQuery( table_id + ' textarea' ).focus( sucomBlurDisabled );
 	jQuery( table_id + ' select' ).focus( sucomBlurDisabled );
 	jQuery( table_id + ' select' ).on( 'mousedown', sucomBlurDisabled );	// Prevents dropdown from appearing.
 
-	jQuery( table_id + ' input.colorpicker' ).wpColorPicker( { change: sucomColorChanged } );
-	jQuery( table_id + ' input.datepicker' ).datepicker( { dateFormat:'yy-mm-dd' } );
-
 	/**
 	 * Add a "changed" the options class when their value might have changed. 
 	 */
+	jQuery( table_id + ' input.colorpicker' ).wpColorPicker( { change:sucomColorChanged } );
+	jQuery( table_id + ' input.datepicker' ).datepicker( { dateFormat:'yy-mm-dd' } );
 	jQuery( table_id + ' input[type="checkbox"]' ).blur( sucomMarkChanged ).change( sucomMarkChanged );
 	jQuery( table_id + ' input[type="text"]' ).blur( sucomMarkChanged ).change( sucomMarkChanged );
 	jQuery( table_id + ' textarea' ).blur( sucomMarkChanged ).change( sucomMarkChanged );
@@ -145,11 +148,9 @@ function sucomSelectUniquePair( main_id, other_id ) {
 
 		if ( 'none' !== other_val ) {	// Maybe set the other select value to 'none'.
 
-			other_val = 'none';
-
-			other.trigger( 'load_json' ).val( other_val ).trigger( 'change' );
+			other.trigger( 'load_json' ).val( 'none' ).trigger( 'change' );
 		}
-	
+
 		other.addClass( 'disabled' );	// Disable the other select.
 
 	} else {
@@ -321,6 +322,10 @@ function sucomSelectChangeRedirect( name, value, redirect_url ) {
         window.location = url.replace( '%%' + name + '%%', value );
 }
 
+/**
+ * Softly disable input fields using the 'disabled' CSS class instead of using the standard 'disabled' HTML tag attribute (which
+ * prevents values from being submitted).
+ */
 function sucomBlurDisabled( event ) {
 
 	var is_disabled = jQuery( this ).hasClass( 'disabled' );
@@ -395,8 +400,6 @@ function sucomDisableUnchanged( container_id ) {
 	jQuery( table_id + ' input[type="text"]:not( .changed )' ).prop( 'disabled', true );
 	jQuery( table_id + ' textarea:not( .changed )' ).prop( 'disabled', true );
 	jQuery( table_id + ' select:not( .changed )' ).prop( 'disabled', true );
-
-	alert( 'OK' );
 }
 
 function sucomToggle( css_id ) {
