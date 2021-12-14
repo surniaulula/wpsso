@@ -243,7 +243,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.11.1-dev.2 (2021/12/13)**
+**Version 9.11.1-dev.3 (2021/12/13)**
 
 * **New Features**
 	* None.
@@ -635,7 +635,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 9.11.1-dev.2 =
+= 9.11.1-dev.3 =
 
 (2021/12/13) Extended the "WP List Table Columns" option with custom post and taxonomy types.
 
