@@ -18,7 +18,7 @@ function wpssoInitMetabox( container_id, doing_ajax ) {
 
 	var table_id = 'table.sucom-settings';
 
-	if ( container_id ) {
+	if ( 'string' === typeof container_id && container_id ) {
 
 		table_id = container_id + ' ' + table_id;
 	}
@@ -103,7 +103,7 @@ function wpssoOgSchemaType() {
 				select_og_type.trigger( 'load_json' ).val( schema_og_type_val ).trigger( 'change' );
 			}
 
-			select_og_type.prop( 'disabled', true );
+			select_og_type.addClass( 'disabled' );
 
 		/**
 		 * If we don't have an associated Open Graph type for this Schema type, then if previously disabled, reenable and
@@ -119,7 +119,7 @@ function wpssoOgSchemaType() {
 				}
 			}
 
-			select_og_type.prop( 'disabled', false );
+			select_og_type.removeClass( 'disabled' );
 		}
 	} );
 }
@@ -129,10 +129,7 @@ function wpssoOgSchemaType() {
  */
 function wpssoSchemaOrgId() {
 
-	var select_schema_org   = jQuery( this );
-	var select_schema_place = jQuery( 'select#select_schema_place_id' );
-
-	sucomSelectUniquePair( select_schema_org, select_schema_place );
+	sucomSelectUniquePair( this, 'select#select_schema_place_id' );
 }
 
 /**
@@ -140,9 +137,6 @@ function wpssoSchemaOrgId() {
  */
 function wpssoSchemaPlaceId() {
 
-	var select_schema_place = jQuery( this );
-	var select_schema_org   = jQuery( 'select#select_schema_organization_id' );
-
-	sucomSelectUniquePair( select_schema_place, select_schema_org );
+	sucomSelectUniquePair( this, 'select#select_schema_organization_id' );
 }
 

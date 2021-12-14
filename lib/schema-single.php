@@ -809,11 +809,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/**
-			 * Add single employment type options (value must be non-empty).
+			 * Add employment type options (value must be non-empty).
 			 */
-			foreach ( SucomUtil::preg_grep_keys( '/^job_empl_type_(.*)(:is)?$/U', $job_opts, $invert = false, $replace = '$1' ) as $empl_type => $checked ) {
+			foreach ( $this->p->cf[ 'form' ][ 'employment_type' ] as $empl_type => $label ) {
 
-				if ( ! empty( $checked ) ) {
+				if ( 'none' !== $empl_type && ! empty( $job_opts[ 'job_empl_type_' . $empl_type ] ) ) {
 
 					$json_ret[ 'employmentType' ][] = $empl_type;
 				}
@@ -1434,8 +1434,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
 			 */
-			list( $place_type_id, $place_type_url ) = self::get_type_id_url_list( $json_data, $place_opts, $opt_key = 'place_schema_type',
-				$def_type_id = 'place', $list_element );
+			list( $place_type_id, $place_type_url ) = self::get_type_id_url_list( $json_data, $place_opts,
+				$opt_key = 'place_schema_type', $def_type_id = 'place', $list_element );
 
 			$json_ret = WpssoSchema::get_schema_type_context( $place_type_url );
 

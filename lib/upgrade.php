@@ -561,7 +561,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				/**
 				 * Check for schema type IDs to be renamed.
 				 */
-				$schema_type_keys_preg = '/^(schema_type_.*|site_org_schema_type|org_schema_type|plm_place_schema_type)(_[0-9]+)?$/';
+				$schema_type_keys_preg = '/^(schema_type_.*|site_org_schema_type|org_schema_type|place_schema_type|plm_place_schema_type)(_[0-9]+)?$/';
 
 				foreach ( SucomUtil::preg_grep_keys( $schema_type_keys_preg, $opts ) as $key => $val ) {
 

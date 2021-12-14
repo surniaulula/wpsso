@@ -253,6 +253,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				) );
 			}
 
+			/**
+			 * Note that the local cache is unique to each child class, so we can simply index by the object ID.
+			 */
 			static $local_cache = array();
 
 			if ( ! isset( $local_cache[ $obj_id ] ) ) {
@@ -744,6 +747,21 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				}
 
 				/**
+				 * The 'import_custom_fields' filter is executed before the 'wpsso_get_md_defaults' and
+				 * 'wpsso_get_post_defaults' filters, so values retrieved from custom fields may get overwritten by
+				 * later filters.
+				 */
+				if ( 'post' === $mod[ 'name' ] ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'applying import_custom_fields filters for post id ' . $mod[ 'id' ] . ' metadata' );
+					}
+
+					$md_defs = apply_filters( 'wpsso_import_custom_fields', $md_defs, get_post_meta( $mod[ 'id' ] ) );
+				}
+
+				/**
 				 * Since WPSSO Core v3.28.0.
 				 */
 				if ( $this->p->debug->enabled ) {
@@ -829,7 +847,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			/**
 			 * Check for schema type IDs that need to be renamed.
 			 */
-			$schema_type_keys_preg = '/^(schema_type|plm_place_schema_type)(_[0-9]+)?$/';
+			$schema_type_keys_preg = '/^(schema_type|place_schema_type|plm_place_schema_type)(_[0-9]+)?$/';
 
 			foreach ( SucomUtil::preg_grep_keys( $schema_type_keys_preg, $md_opts ) as $md_key => $md_val ) {
 
@@ -1816,8 +1834,8 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			 */
 			if ( ! empty( $md_opts[ 'schema_event_previous_date' ] ) ) {
 
-				$md_opts[ 'schema_event_status' ]    = 'https://schema.org/EventRescheduled';
-				$md_opts[ 'schema_event_status:is' ] = 'disabled';
+				$md_opts[ 'schema_event_status' ]          = 'https://schema.org/EventRescheduled';
+				$md_opts[ 'schema_event_status:disabled' ] = true;
 
 			} elseif ( isset( $md_opts[ 'schema_event_status' ] ) && 'https://schema.org/EventRescheduled' === $md_opts[ 'schema_event_status' ] ) {
 

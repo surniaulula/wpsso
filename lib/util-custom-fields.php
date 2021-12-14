@@ -208,9 +208,8 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 					/**
 					 * Get first element of $values array.
 					 */
-					$md_opts[ $md_key ] = reset( $values );
-
-					$md_opts[ $md_key . ':is' ] = 'disabled';
+					$md_opts[ $md_key ]               = reset( $values );
+					$md_opts[ $md_key . ':disabled' ] = true;
 
 					if ( $this->p->debug->enabled ) {
 
@@ -247,9 +246,8 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 					 */
 					foreach ( $values as $num => $val ) {
 
-						$md_opts[ $md_key . '_' . $num ] = $val;
-
-						$md_opts[ $md_key . '_' . $num . ':is' ] = 'disabled';
+						$md_opts[ $md_key . '_' . $num ]               = $val;
+						$md_opts[ $md_key . '_' . $num . ':disabled' ] = true;
 					}
 				}
 			}

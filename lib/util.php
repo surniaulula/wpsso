@@ -3243,7 +3243,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * Rename options array keys, preserving the option modifiers (ie. '_[0-9]', ':is', ':use', and '#.*').
+		 * Rename options array keys, preserving the option modifiers (ie. '_[0-9]', ':disabled', ':use', and '#.*').
 		 */
 		public function rename_options_by_ext( $opts, $keys_by_ext ) {
 
@@ -3280,7 +3280,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					continue;
 				}
 
-				$old_key_preg = '/^' . $old_key . '(:is|:use|#.*|_[0-9]+)?$/';
+				$old_key_preg = '/^' . $old_key . '(:disabled|:use|#.*|_[0-9]+)?$/';
 
 				foreach ( preg_grep( $old_key_preg, array_keys( $opts ) ) as $old_key_matched ) {
 

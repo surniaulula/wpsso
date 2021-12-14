@@ -460,7 +460,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				foreach ( $seo_opts as $opt_key => $def_val ) {
 
-					$opts[ $opt_key . ':is' ] = 'disabled';	// Prevent changes in settings page.
+					$opts[ $opt_key . ':disabled' ] = true;	// Prevent changes in settings page.
 
 					if ( $opts[ $opt_key ] !== $def_val ) {
 
@@ -475,12 +475,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				foreach ( array( 'og:image', 'og:video' ) as $mt_name ) {
 
-					$opts[ 'add_meta_property_' . $mt_name . ':secure_url' ]    = 0;		// Always unchecked.
-					$opts[ 'add_meta_property_' . $mt_name . ':secure_url:is' ] = 'disabled';	// Prevent changes in settings page.
-					$opts[ 'add_meta_property_' . $mt_name . ':url' ]           = 0;		// Always unchecked.
-					$opts[ 'add_meta_property_' . $mt_name . ':url:is' ]        = 'disabled';	// Prevent changes in settings page.
-					$opts[ 'add_meta_property_' . $mt_name ]                    = 1;		// Always checked (canonical URL).
-					$opts[ 'add_meta_property_' . $mt_name . ':is' ]            = 'disabled';	// Prevent changes in settings page.
+					$opts[ 'add_meta_property_' . $mt_name . ':secure_url' ]          = 0;		// Always unchecked.
+					$opts[ 'add_meta_property_' . $mt_name . ':secure_url:disabled' ] = true;	// Prevent changes in settings page.
+					$opts[ 'add_meta_property_' . $mt_name . ':url' ]                 = 0;		// Always unchecked.
+					$opts[ 'add_meta_property_' . $mt_name . ':url:disabled' ]        = true;	// Prevent changes in settings page.
+					$opts[ 'add_meta_property_' . $mt_name ]                          = 1;		// Always checked (canonical URL).
+					$opts[ 'add_meta_property_' . $mt_name . ':disabled' ]            = true;	// Prevent changes in settings page.
 				}
 
 				/**
@@ -488,8 +488,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				foreach ( WpssoConfig::$cf[ 'opt' ][ 'site_verify_meta_names' ] as $site_verify => $meta_name ) {
 
-					$opts[ 'add_meta_name_' . $meta_name ]         = empty( $opts[ $site_verify ] ) ? 0 : 1;
-					$opts[ 'add_meta_name_' . $meta_name . ':is' ] = 'disabled';
+					$opts[ 'add_meta_name_' . $meta_name ]               = empty( $opts[ $site_verify ] ) ? 0 : 1;
+					$opts[ 'add_meta_name_' . $meta_name . ':disabled' ] = true;
 				}
 
 				/**
@@ -553,16 +553,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 * Note that generator meta tags are required for plugin support. If you disable the generator meta
 			 * tags, requests for plugin support will be denied.
 			 */
-			if ( SucomUtil::get_const( 'WPSSO_META_GENERATOR_DISABLE' ) ) {
-
-				$opts[ 'add_meta_name_generator' ] = 0;
-
-			} else {
-
-				$opts[ 'add_meta_name_generator' ] = 1;
-			}
-
-			$opts[ 'add_meta_name_generator:is' ] = 'disabled';
+			$opts[ 'add_meta_name_generator' ]          = SucomUtil::get_const( 'WPSSO_META_GENERATOR_DISABLE' ) ? 0 : 1;
+			$opts[ 'add_meta_name_generator:disabled' ] = true;
 
 			/**
 			 * Google does not recognize all Schema Organization sub-types as valid organization and publisher
@@ -579,8 +571,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$site_org_type_id = 'organization';
 			}
 
-			$opts[ 'site_org_schema_type' ]    = $site_org_type_id;
-			$opts[ 'site_org_schema_type:is' ] = 'disabled';
+			$opts[ 'site_org_schema_type' ]          = $site_org_type_id;
+			$opts[ 'site_org_schema_type:disabled' ] = true;
 
 			/**
 			 * Include VAT in Product Prices.
@@ -589,8 +581,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 */
 			if ( defined( 'WPSSO_PRODUCT_PRICE_INCLUDE_VAT' ) ) {
 
-				$opts[ 'plugin_product_include_vat' ]    = WPSSO_PRODUCT_PRICE_INCLUDE_VAT ? 1 : 0;
-				$opts[ 'plugin_product_include_vat:is' ] = 'disabled';
+				$opts[ 'plugin_product_include_vat' ]          = WPSSO_PRODUCT_PRICE_INCLUDE_VAT ? 1 : 0;
+				$opts[ 'plugin_product_include_vat:disabled' ] = true;
 			}
 
 			/**
@@ -611,6 +603,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 		/**
 		 * Sanitize and validate options, including both the plugin options and custom meta options arrays.
+		 *
+		 * Called by WpssoAdmin->registered_setting_sanitation().
+		 * Called by WpssoAdmin->save_site_options().
+		 * Called by WpssoWpMeta->get_submit_opts().
 		 */
 		public function sanitize( $opts = array(), $defs = array(), $network = false, $mod = false ) {
 
@@ -659,7 +655,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				/**
 				 * Remove multiples, localization, and status for more generic match.
 				 */
-				$base_key = preg_replace( '/(_[0-9]+)?(#.*|:[0-9]+)?$/', '', $opt_key );
+				$base_key = preg_replace( '/(_[0-9]+)?([#:].*)?$/', '', $opt_key );
 
 				/**
 				 * Multi-options and localized options will default to an empty string.
@@ -667,11 +663,18 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$def_val = isset( $defs[ $opt_key ] ) ? $defs[ $opt_key ] : '';
 
 				/**
-				 * Ignore option qualifiers.
+				 * Don't save the disabled option qualifier.
 				 */
-				if ( preg_match( '/:is$/', $base_key ) ) {
+				if ( false !== strpos( $opt_key, ':disabled' ) ) {
 
 					unset( $opts[ $opt_key ] );
+
+				/**
+				 * Skip controller option qualifiers.
+				 */
+				} elseif ( false !== strpos( $opt_key, ':use' ) ) {
+
+					continue;
 
 				/**
 				 * Ignore localized options with an empty string value and no default.
@@ -744,8 +747,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 						case 'limit':
 
-							$opts[ $opt_pre . '_img_crop' ]    = 1;
-							$opts[ $opt_pre . '_img_crop:is' ] = 'disabled';	// Prevent changes in settings page.
+							$opts[ $opt_pre . '_img_crop' ]          = 1;
+							$opts[ $opt_pre . '_img_crop:disabled' ] = true;	// Prevent changes in settings page.
 
 							if ( $img_ratio !== $limit_ratio ) {
 
@@ -833,6 +836,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 		/**
 		 * Save both options and site options.
+		 *
+		 * Called by WpssoAdmin->load_setting_page() for the 'reload_default_image_sizes' action.
+		 * Called by WpssoAdmin->import_plugin_settings_json().
 		 */
 		public function save_options( $options_name, array $opts, $network = false ) {
 
@@ -891,14 +897,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 *
 			 * Avoid saving the disabled status.
 			 *
-			 * Example: add_meta_name_robots:is = 'disabled'
+			 * Example: add_meta_name_robots:disabled = true
 			 */
-			foreach ( preg_grep( '/:is$/', array_keys( $opts ) ) as $key ) {
+			foreach ( preg_grep( '/:disabled$/', array_keys( $opts ) ) as $key ) {
 
-				if ( 'disabled' === $opts[ $key ] ) {
-
-					unset( $opts[ $key ] );
-				}
+				unset( $opts[ $key ] );
 			}
 
 			if ( $network ) {

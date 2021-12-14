@@ -6,12 +6,18 @@ function sucomInitMetabox( container_id, doing_ajax ) {
 
 	var table_id = 'table.sucom-settings';
 
-	if ( 'undefined' !== typeof container_id && container_id ) {
+	if ( 'string' === typeof container_id && container_id ) {
 
 		table_id = container_id + ' ' + table_id;
 	}
 
-	jQuery( table_id + ' input.colorpicker' ).wpColorPicker({ change: sucomColorChanged });
+	jQuery( table_id + ' input' ).click( sucomBlurDisabled );	// Includes checkbox and radio.
+	jQuery( table_id + ' input' ).focus( sucomBlurDisabled );
+	jQuery( table_id + ' textarea' ).focus( sucomBlurDisabled );
+	jQuery( table_id + ' select' ).focus( sucomBlurDisabled );
+	jQuery( table_id + ' select' ).on( 'mousedown', sucomBlurDisabled );	// Prevents dropdown from appearing.
+
+	jQuery( table_id + ' input.colorpicker' ).wpColorPicker( { change: sucomColorChanged } );
 	jQuery( table_id + ' input.datepicker' ).datepicker( { dateFormat:'yy-mm-dd' } );
 
 	/**
@@ -128,10 +134,12 @@ function sucomSelectLoadJson( select_id, json_name ) {
 	container.append( select_opt_html );
 }
 
-function sucomSelectUniquePair( select_main, select_other ) {
+function sucomSelectUniquePair( main_id, other_id ) {
 
-	var main_val  = select_main.val();
-	var other_val = select_other.val();
+	var main      = jQuery( main_id );
+	var other     = jQuery( other_id );
+	var main_val  = main.val();
+	var other_val = other.val();
 
 	if ( 'none' !== main_val ) {	// If the main select has a value.
 
@@ -139,14 +147,14 @@ function sucomSelectUniquePair( select_main, select_other ) {
 
 			other_val = 'none';
 
-			select_other.trigger( 'load_json' ).val( other_val ).trigger( 'change' );
+			other.trigger( 'load_json' ).val( other_val ).trigger( 'change' );
 		}
-
-		select_other.prop( 'disabled', true );	// Disable the other select.
+	
+		other.addClass( 'disabled' );	// Disable the other select.
 
 	} else {
 
-		select_other.prop( 'disabled', false );	// Re-enable the other select.
+		other.removeClass( 'disabled' );	// Re-enable the other select.
 	}
 }
 
@@ -313,6 +321,22 @@ function sucomSelectChangeRedirect( name, value, redirect_url ) {
         window.location = url.replace( '%%' + name + '%%', value );
 }
 
+function sucomBlurDisabled( event ) {
+
+	var is_disabled = jQuery( this ).hasClass( 'disabled' );
+
+	if ( is_disabled ) {
+
+		this.blur();
+
+		window.focus();
+
+		event.preventDefault();
+
+		event.stopPropagation();
+	}
+}
+
 /**
  * Add a "changed" the options class when their value might have changed. 
  */
@@ -343,7 +367,7 @@ function sucomDisableUnchanged( container_id ) {
 
 	var table_id = 'table.sucom-settings';
 
-	if ( 'undefined' !== typeof container_id && container_id ) {
+	if ( 'string' === typeof container_id && container_id ) {
 
 		table_id = container_id + ' ' + table_id;
 	}
@@ -371,6 +395,8 @@ function sucomDisableUnchanged( container_id ) {
 	jQuery( table_id + ' input[type="text"]:not( .changed )' ).prop( 'disabled', true );
 	jQuery( table_id + ' textarea:not( .changed )' ).prop( 'disabled', true );
 	jQuery( table_id + ' select:not( .changed )' ).prop( 'disabled', true );
+
+	alert( 'OK' );
 }
 
 function sucomToggle( css_id ) {

@@ -66,8 +66,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			if ( is_admin() ) {	// Keep processing on the front-end to a minimum.
 
 				/**
-				 * If the Open Graph type isn't already hard-coded (ie. 'disabled' === 'og_type:is' ), then using
-				 * the post type and the Schema type, check for a possible hard-coded Open Graph type.
+				 * If the Open Graph type isn't already hard-coded (ie. ':disabled'), then using the post type and
+				 * the Schema type, check for a possible hard-coded Open Graph type.
 				 */
 				$md_opts = $this->maybe_update_post_og_type( $md_opts, $post_id, $mod );
 			}
@@ -78,8 +78,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		public function filter_save_post_options( $md_opts, $post_id, $rel_id, $mod ) {
 
 			/**
-			 * If the Open Graph type isn't already hard-coded (ie. 'disabled' === 'og_type:is' ), then using the post
-			 * type and the Schema type, check for a possible hard-coded Open Graph type.
+			 * If the Open Graph type isn't already hard-coded (ie. ':disabled'), then using the post type and the
+			 * Schema type, check for a possible hard-coded Open Graph type.
 			 */
 			$md_opts = $this->maybe_update_post_og_type( $md_opts, $post_id, $mod );
 
@@ -2319,8 +2319,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		}
 
 		/**
-		 * If the Open Graph type isn't already hard-coded (ie. 'disabled' === 'og_type:is' ), then using the post type and
-		 * the Schema type, check for a possible hard-coded Open Graph type.
+		 * If the Open Graph type isn't already hard-coded (ie. ':disabled'), then using the post type and the Schema type,
+		 * check for a possible hard-coded Open Graph type.
 		 */
 		private function maybe_update_post_og_type( $md_opts, $post_id, $mod ) {
 
@@ -2329,7 +2329,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( empty( $md_opts[ 'og_type:is' ] ) ) {
+			if ( empty( $md_opts[ 'og_type:disabled' ] ) ) {
 
 				/**
 				 * Check if the post type matches a pre-defined Open Graph type.
@@ -2340,8 +2340,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				 */
 				if ( $og_type = $this->p->post->get_post_type_og_type( $mod ) ) {
 
-					$md_opts[ 'og_type' ]    = $og_type;
-					$md_opts[ 'og_type:is' ] = 'disabled';
+					$md_opts[ 'og_type' ]          = $og_type;
+					$md_opts[ 'og_type:disabled' ] = true;
 
 				} else {
 
@@ -2362,8 +2362,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					 */
 					if ( $og_type = $this->p->schema->get_schema_type_og_type( $type_id ) ) {
 
-						$md_opts[ 'og_type' ]    = $og_type;
-						$md_opts[ 'og_type:is' ] = 'disabled';
+						$md_opts[ 'og_type' ]          = $og_type;
+						$md_opts[ 'og_type:disabled' ] = true;
 					}
 				}
 			}

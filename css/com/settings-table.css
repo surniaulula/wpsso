@@ -26,6 +26,20 @@ table.sucom-settings {
 	box-sizing:border-box;
 }
 
+table.sucom-settings input.disabled,
+table.sucom-settings input:focus.disabled,
+table.sucom-settings input:disabled,
+table.sucom-settings select.disabled,
+table.sucom-settings select:focus.disabled,
+table.sucom-settings select:disabled,
+table.sucom-settings textarea.disabled,
+table.sucom-settings textarea:focus.disabled,
+table.sucom-settings textarea:disabled {
+	cursor:default;
+	color:#ccc;
+	background-color:#f9f9f9;
+}
+
 table.sucom-settings.metabox-cm-info,
 table.sucom-settings.metabox-head_tags-info {
 	padding-bottom:0;
@@ -716,13 +730,6 @@ table.sucom-settings td input[type=text].mono {
 	font-family:"Courier", monospace;
 }
 
-table.sucom-settings td input[type="text"]:disabled,
-table.sucom-settings td select:disabled,
-table.sucom-settings td textarea:disabled {
-	color:#999;
-	background-color:#f9f9f9;
-}
-
 table.sucom-settings td input[type="text"].size { width:55px; }		/* Image size. */
 
 table.sucom-settings td input[type="text"].chars { width:60px; }	/* Character length. */
@@ -755,14 +762,12 @@ table.sucom-settings td input[type="button"].button-secondary { margin:0 5px; }
 table.sucom-settings td input::placeholder,
 table.sucom-settings td textarea::placeholder { color:#ccc; }
 
-table.sucom-settings td input[disabled] { cursor:default; }	/* Keep the default cursor for disabled options. */
-
 table.sucom-settings td div.linked_to_label {
 	display:inline-block;
 	color:#999;
 	font-size:1.2em;
-	padding:2px;
-	vertical-align:bottom;
+	padding:4px;
+	vertical-align:middle;
 }
 
 /**
