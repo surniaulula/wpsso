@@ -1139,7 +1139,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 								 *
 								 * See http://php.net/manual/en/reference.pcre.pattern.modifiers.php.
 								 */
-								$desc_text = preg_replace( '/^.*<p[^>]*>/Ui', '', $desc_text );
+								$desc_text = preg_replace( '/^.*<p[^>]*>/Usi', '', $desc_text );
 							}
 						}
 
