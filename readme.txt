@@ -243,7 +243,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.12.0-dev.3 (2021/12/14)**
+**Version 9.12.0-dev.4 (2021/12/14)**
 
 * **New Features**
 	* None.
@@ -256,6 +256,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new `SucomForm->get_columns_post_tax_user()` method.
 	* Added the 'wpsso_import_custom_fields' filter to the `WpssoWpMeta->get_defaults()` method.
 	* Renamed disabled option key suffix from `":is" = "disabled"` to `":disabled" = true`.
+	* Removed the 'wpsso_schema_types_select' filter.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -638,7 +639,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 9.12.0-dev.3 =
+= 9.12.0-dev.4 =
 
 (2021/12/14) Extended the "WP List Table Columns" option, under the SSO &gt; Advanced Settings &gt; Interface tab, with custom post and taxonomy types.
 
