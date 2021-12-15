@@ -1200,7 +1200,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						self::$form_cache[ $cache_index ] = array(
 							'custom' => $this->p->cf[ 'form' ][ 'place_select' ][ 'custom' ],
-						) + self::$form_cache[ 'place_names' ];
+						) + self::$form_cache[ $cache_index ];
 
 						break;
 
