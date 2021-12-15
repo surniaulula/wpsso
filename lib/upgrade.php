@@ -548,8 +548,8 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 			 * Maybe renamed some option keys.
 			 */
 			$keys_by_ext = $is_site_options ?
-				apply_filters( 'wpsso_rename_site_options_keys', self::$rename_keys_by_ext ) :
-				apply_filters( 'wpsso_rename_options_keys', self::$rename_keys_by_ext );
+				apply_filters( 'wpsso_rename_site_options_keys', self::$rename_keys_by_ext ) :	// Network options filter.
+				apply_filters( 'wpsso_rename_options_keys', self::$rename_keys_by_ext );	
 
 			$opts = $this->p->util->rename_options_by_ext( $opts, $keys_by_ext );
 

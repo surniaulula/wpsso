@@ -133,12 +133,29 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			$def_schema_text      = $this->p->page->get_text( $schema_text_max_len, '', $mod, $read_cache, $no_hashtags, $do_encode, $md_key = 'none' );
 			$def_schema_keywords  = $this->p->page->get_keywords( $mod, $read_cache, $md_key = 'none' );
 
-			$org_names          = $this->p->util->get_form_cache( 'org_names', $add_none = true );
-			$person_names       = $this->p->util->get_form_cache( 'person_names', $add_none = true );
-			$plm_req_msg        = $this->p->msgs->maybe_ext_required( 'wpssoplm' );
-			$plm_disable        = empty( $plm_req_msg ) ? false : true;
-			$place_names        = $this->p->util->get_form_cache( 'place_names', $add_none = true );
-			$place_names_custom = $this->p->util->get_form_cache( 'place_names_custom', $add_none = true );
+			$org_names_rel = array(		// Required to include deprecated settings organization IDs.
+				$form->get_options( 'schema_pub_org_id' ),
+				$form->get_options( 'schema_prov_org_id' ),
+				$form->get_options( 'schema_movie_prodco_org_id' ),
+				$form->get_options( 'schema_event_organizer_org_id' ),
+				$form->get_options( 'schema_event_performer_org_id' ),
+				$form->get_options( 'schema_job_hiring_org_id' ),
+				$form->get_options( 'schema_organization_id' ),
+			);
+			$org_names = $this->p->util->get_form_cache( 'org_names', $add_none = true, $org_names_rel );
+
+			$person_names = $this->p->util->get_form_cache( 'person_names', $add_none = true );
+
+			$place_names_rel = array(	// Required to include deprecated settings place IDs.
+				$form->get_options( 'schema_event_location_id' ),
+				$form->get_options( 'schema_job_location_id' ),
+				$form->get_options( 'schema_place_id' ),
+			);
+			$place_names        = $this->p->util->get_form_cache( 'place_names', $add_none = true, $place_names_rel );
+			$place_names_custom = $this->p->util->get_form_cache( 'place_names_custom', $add_none = true, $place_names_rel );
+
+			$plm_req_msg = $this->p->msgs->maybe_ext_required( 'wpssoplm' );
+			$plm_disable = empty( $plm_req_msg ) ? false : true;
 
 			/**
 			 * Javascript classes to hide/show rows by selected schema type.

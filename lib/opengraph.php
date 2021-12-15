@@ -885,9 +885,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
-			 * Use only supported (aka compat) Open Graph types.
-			 */
 			$og_type_ns = $this->p->cf[ 'head' ][ 'og_type_ns_compat' ];
 
 			$select = array();

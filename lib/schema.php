@@ -523,21 +523,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $this->get_mod_schema_type( $mod, $get_url = true, $use_mod_opts );
 		}
 
-		/**
-		 * $context is 'settings', 'business', 'organization', 'place', or 'meta'.
-		 */
-		public function get_schema_types_select( $context = null, $schema_types = null ) {
+		public function get_schema_types_select( $schema_types = null ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
-			}
-
-			if ( is_array( $context ) ) {	// Backwards compatibility.
-
-				$schema_types = $context;
-
-				$context = null;
 			}
 
 			if ( ! is_array( $schema_types ) ) {
@@ -546,17 +536,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$schema_types = SucomUtil::array_flatten( $schema_types );
-
-			/**
-			 * $schema_types = Array (
-			 *	[accommodation] => https://schema.org/Accommodation
-			 *	.
-			 *	.
-			 *	.
-			 *	[zoo] => https://schema.org/Zoo
-			 * );
-			 */
-			$schema_types = (array) apply_filters( 'wpsso_schema_types_select', $schema_types, $context );
 
 			$select = array();
 

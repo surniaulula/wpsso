@@ -263,8 +263,6 @@
 
 'wpsso_schema_types' ( (array) $schema_types )
 
-'wpsso_schema_types_select' ( (array) $schema_types, $context )	// $context = 'settings', 'business', 'organization', 'place', or 'meta'.
-
 'wpsso_search_url' ( $url, $mod )
 
 'wpsso_server_request_url' ( $url, $mod )

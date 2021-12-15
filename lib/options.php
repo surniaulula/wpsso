@@ -647,32 +647,23 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 */
 			foreach ( $opts as $opt_key => $opt_val ) {
 
-				if ( empty( $opt_key ) ) {
+				if ( empty( $opt_key ) ) {	// Just in case.
 
 					continue;
-				}
 
 				/**
-				 * Remove multiples, localization, and status for more generic match.
+				 * Don't save the ':disabled' option qualifier.
 				 */
-				$base_key = preg_replace( '/(_[0-9]+)?([#:].*)?$/', '', $opt_key );
-
-				/**
-				 * Multi-options and localized options will default to an empty string.
-				 */
-				$def_val = isset( $defs[ $opt_key ] ) ? $defs[ $opt_key ] : '';
-
-				/**
-				 * Don't save the disabled option qualifier.
-				 */
-				if ( false !== strpos( $opt_key, ':disabled' ) ) {
+				} elseif ( false !== strpos( $opt_key, ':disabled' ) ) {
 
 					unset( $opts[ $opt_key ] );
 
+					continue;
+
 				/**
-				 * Skip controller option qualifiers.
+				 * Ignore all other controller qualifiers (ie. ':use', ':width', ':height', etc.).
 				 */
-				} elseif ( false !== strpos( $opt_key, ':use' ) ) {
+				} elseif ( strpos( $opt_key, ':' ) ) {
 
 					continue;
 
@@ -683,10 +674,20 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					unset( $opts[ $opt_key ] );
 
-				} else {
-
-					$opts[ $opt_key ] = $this->check_value( $opt_key, $base_key, $opt_val, $def_val, $network, $mod );
+					continue;
 				}
+
+				/**
+				 * Match the base option name without option numbers and localization.
+				 */
+				$base_key = preg_replace( '/(_[0-9]+)?([#].*)?$/', '', $opt_key );
+
+				/**
+				 * Multi-options and localized options default to an empty string.
+				 */
+				$def_val = isset( $defs[ $opt_key ] ) ? $defs[ $opt_key ] : '';
+
+				$opts[ $opt_key ] = $this->check_value( $opt_key, $base_key, $opt_val, $def_val, $network, $mod );
 			}
 
 			/**
@@ -977,7 +978,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$this->p->debug->log( 'adding options derived from post type names' );
 			}
 
-			$post_type_names = array(
+			$opt_prefixes = array(
 				'og_type_for'                => 'article',	// Advanced Settings > Document Types > Open Graph > Type by Post Type.
 				'plugin_add_to'              => 1,		// Advanced Settings > Plugin Settings > Interface > Show Document SSO Metabox.
 				'plugin_ratings_reviews_for' => 0,		// Advanced Settings > Service APIs > Ratings and Reviews > Get Reviews for Post Type.
@@ -991,12 +992,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				$def_val = 'og_img' === $col_key ? 1 : 0;
 
-				$post_type_names[ 'plugin_' . $col_key . '_col' ] = $def_val;
+				$opt_prefixes[ 'plugin_' . $col_key . '_col' ] = $def_val;
 			}
 
-			$post_type_names = apply_filters( 'wpsso_add_custom_post_type_names', $post_type_names );
+			$opt_prefixes = apply_filters( 'wpsso_add_custom_post_type_options', $opt_prefixes );
 
-			$this->p->util->add_post_type_names( $opts, $post_type_names );
+			$this->p->util->add_post_type_names( $opts, $opt_prefixes );
 
 			/**
 			 * Add options using a key prefix array and term names.
@@ -1006,7 +1007,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$this->p->debug->log( 'adding options derived from term names' );
 			}
 
-			$taxonomy_names = array(
+			$opt_prefixes = array(
 				'og_type_for_tax'     => 'website',	// Advanced Settings > Document Types > Open Graph > Type by Taxonomy.
 				'plugin_add_to_tax'   => 1,		// Advanced Settings > Plugin Settings > Interface > Show Document SSO Metabox.
 				'schema_type_for_tax' => 'item.list',	// Advanced Settings > Document Types > Schema > Type by Taxonomy.
@@ -1019,12 +1020,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				$def_val = 'og_img' === $col_key || 'og_desc' === $col_key ? 1 : 0;
 
-				$taxonomy_names[ 'plugin_' . $col_key . '_col_tax' ] = $def_val;
+				$opt_prefixes[ 'plugin_' . $col_key . '_col_tax' ] = $def_val;
 			}
 
-			$taxonomy_names = apply_filters( 'wpsso_add_custom_taxonomy_names', $taxonomy_names );
+			$opt_prefixes = apply_filters( 'wpsso_add_custom_taxonomy_options', $opt_prefixes );
 
-			$this->p->util->add_taxonomy_names( $opts, $taxonomy_names );
+			$this->p->util->add_taxonomy_names( $opts, $opt_prefixes );
 		}
 
 		/**

@@ -4567,6 +4567,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
+		public static function flatten_mixed( $mixed ) {
+
+			return self::pretty_array( $mixed, $flatten = true );
+		}
+
 		public static function pretty_array( $mixed, $flatten = false ) {
 
 			$ret = '';
