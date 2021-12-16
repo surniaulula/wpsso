@@ -492,12 +492,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-faq/update/',
 					),
 				),
-				'wpssoorg' => array(			// Plugin acronym.
-					'short'       => 'WPSSO ORG',	// Short plugin name.
-					'name'        => 'WPSSO Organization Markup',
-					'desc'        => 'Customize the Schema Organization markup for your website and create additional Schema Organizations (publisher, organizer, etc.).',
-					'slug'        => 'wpsso-organization',
-					'base'        => 'wpsso-organization/wpsso-organization.php',
+				'wpssoopm' => array(			// Plugin acronym.
+					'short'       => 'WPSSO OPM',	// Short plugin name.
+					'name'        => 'WPSSO Organization and Place Manager',
+					'desc'        => 'Manage organizations and places.',
+					'slug'        => 'wpsso-organization-place',
+					'base'        => 'wpsso-organization-place/wpsso-organization-place.php',
 					'update_auth' => '',		// No premium version.
 
 					/**
@@ -509,16 +509,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						 * Banner image array keys are 'low' and 'high'.
 						 */
 						'banners' => array(
-							'low'  => 'https://surniaulula.github.io/wpsso-organization/assets/banner-772x250.jpg',
-							'high' => 'https://surniaulula.github.io/wpsso-organization/assets/banner-1544x500.jpg',
+							'low'  => 'https://surniaulula.github.io/wpsso-organization-place/assets/banner-772x250.jpg',
+							'high' => 'https://surniaulula.github.io/wpsso-organization-place/assets/banner-1544x500.jpg',
 						),
 
 						/**
 						 * Icon image array keys are '1x' and '2x'.
 						 */
 						'icons' => array(
-							'1x' => 'https://surniaulula.github.io/wpsso-organization/assets/icon-128x128.png',
-							'2x' => 'https://surniaulula.github.io/wpsso-organization/assets/icon-256x256.png',
+							'1x' => 'https://surniaulula.github.io/wpsso-organization-place/assets/icon-128x128.png',
+							'2x' => 'https://surniaulula.github.io/wpsso-organization-place/assets/icon-256x256.png',
 						),
 					),
 					'hosts' => array(
@@ -531,91 +531,28 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						/**
 						 * WordPress.org.
 						 */
-						'home'   => 'https://wordpress.org/plugins/wpsso-organization/',
-						'forum'  => 'https://wordpress.org/support/plugin/wpsso-organization',
-						'review' => 'https://wordpress.org/support/plugin/wpsso-organization/reviews/?rate=5#new-post',
+						'home'   => 'https://wordpress.org/plugins/wpsso-organization-place/',
+						'forum'  => 'https://wordpress.org/support/plugin/wpsso-organization-place',
+						'review' => 'https://wordpress.org/support/plugin/wpsso-organization-place/reviews/?rate=5#new-post',
 
 						/**
 						 * GitHub.com.
 						 */
-						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-organization/master/readme.txt',
+						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-organization-place/master/readme.txt',
 						'setup_html' => '',
 
 						/**
 						 * WPSSO.com.
 						 */
-						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-organization/changelog/',
-						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-organization/',
-						'install'   => 'https://wpsso.com/docs/plugins/wpsso-organization/installation/',
+						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-organization-place/changelog/',
+						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-organization-place/',
+						'install'   => 'https://wpsso.com/docs/plugins/wpsso-organization-place/installation/',
 						'faqs'      => '',
 						'notes'     => '',
 						'support'   => '',	// Premium support ticket.
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
-						'update'    => 'https://wpsso.com/extend/plugins/wpsso-organization/update/',
-					),
-				),
-				'wpssoplm' => array(			// Plugin acronym.
-					'short'       => 'WPSSO PLM',	// Short plugin name.
-					'name'        => 'WPSSO Place and Local SEO Markup',
-					'desc'        => 'Manage Schema Places and Local SEO for Facebook / Open Graph, Pinterest, and Google Local Business.',
-					'slug'        => 'wpsso-plm',
-					'base'        => 'wpsso-plm/wpsso-plm.php',
-					'update_auth' => '',		// No premium version.
-
-					/**
-					 * URLs or relative paths to plugin banners and icons.
-					 */
-					'assets' => array(
-
-						/**
-						 * Banner image array keys are 'low' and 'high'.
-						 */
-						'banners' => array(
-							'low'  => 'https://surniaulula.github.io/wpsso-plm/assets/banner-772x250.jpg',
-							'high' => 'https://surniaulula.github.io/wpsso-plm/assets/banner-1544x500.jpg',
-						),
-
-						/**
-						 * Icon image array keys are '1x' and '2x'.
-						 */
-						'icons' => array(
-							'1x' => 'https://surniaulula.github.io/wpsso-plm/assets/icon-128x128.png',
-							'2x' => 'https://surniaulula.github.io/wpsso-plm/assets/icon-256x256.png',
-						),
-					),
-					'hosts' => array(
-						'wp_org' => true,
-						'github' => true,
-						'wpsso'  => true,
-					),
-					'url' => array(
-
-						/**
-						 * WordPress.org.
-						 */
-						'home'   => 'https://wordpress.org/plugins/wpsso-plm/',
-						'forum'  => 'https://wordpress.org/support/plugin/wpsso-plm',
-						'review' => 'https://wordpress.org/support/plugin/wpsso-plm/reviews/?rate=5#new-post',
-
-						/**
-						 * GitHub.com.
-						 */
-						'readme_txt' => 'https://raw.githubusercontent.com/SurniaUlula/wpsso-plm/master/readme.txt',
-						'setup_html' => '',
-
-						/**
-						 * WPSSO.com.
-						 */
-						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-plm/changelog/',
-						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-plm/',
-						'install'   => 'https://wpsso.com/docs/plugins/wpsso-plm/installation/',
-						'faqs'      => '',
-						'notes'     => '',
-						'support'   => '',	// Premium support ticket.
-						'purchase'  => '',	// Purchase page.
-						'info'      => '',	// License information.
-						'update'    => 'https://wpsso.com/extend/plugins/wpsso-plm/update/',
+						'update'    => 'https://wpsso.com/extend/plugins/wpsso-organization-place/update/',
 					),
 				),
 				'wpssorar' => array(			// Plugin acronym.

@@ -47,7 +47,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			$this->p->util->add_plugin_filters( $this, array(
 				'get_post_options'  => 3,
-				'save_post_options' => 4,
 			), PHP_INT_MAX );
 		}
 
@@ -71,17 +70,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				 */
 				$md_opts = $this->maybe_update_post_og_type( $md_opts, $post_id, $mod );
 			}
-
-			return $md_opts;
-		}
-
-		public function filter_save_post_options( $md_opts, $post_id, $rel_id, $mod ) {
-
-			/**
-			 * If the Open Graph type isn't already hard-coded (ie. ':disabled'), then using the post type and the
-			 * Schema type, check for a possible hard-coded Open Graph type.
-			 */
-			$md_opts = $this->maybe_update_post_og_type( $md_opts, $post_id, $mod );
 
 			return $md_opts;
 		}
@@ -2326,7 +2314,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( empty( $md_opts[ 'og_type:disabled' ] ) ) {
+			if ( empty( $md_opts[ 'og_type:disabled' ] ) ) {	// Just in case.
 
 				/**
 				 * Check if the post type matches a pre-defined Open Graph type.
@@ -2337,7 +2325,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				 */
 				if ( $og_type = $this->p->post->get_post_type_og_type( $mod ) ) {
 
-					$md_opts[ 'og_type' ]          = $og_type;
+					$md_opts[ 'og_type' ] = $og_type;
+
 					$md_opts[ 'og_type:disabled' ] = true;
 
 				} else {
@@ -2359,7 +2348,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					 */
 					if ( $og_type = $this->p->schema->get_schema_type_og_type( $type_id ) ) {
 
-						$md_opts[ 'og_type' ]          = $og_type;
+						$md_opts[ 'og_type' ] = $og_type;
+					
 						$md_opts[ 'og_type:disabled' ] = true;
 					}
 				}

@@ -605,13 +605,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 */
 			if ( empty( $mod[ 'name' ] ) ) {
 
-				foreach ( $defs as $opt_key => $def_val ) {
-
-					if ( ! empty( $opt_key ) && ! isset( $opts[ $opt_key ] ) ) {
-
-						$opts[ $opt_key ] = $def_val;
-					}
-				}
+				$opts = array_merge( $defs, $opts );	// Complete the array with default options.
 			}
 
 			/**
@@ -848,7 +842,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			/**
 			 * Add plugin and add-on option versions (ie. 'plugin_checksum', 'opt_checksum', and 'opt_versions').
 			 */
-			$this->p->opt->add_versions( $md_opts );
+			$this->p->opt->add_versions( $opts );
 
 			/**
 			 * Since WPSSO Core v8.5.1.

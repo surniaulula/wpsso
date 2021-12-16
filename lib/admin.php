@@ -1181,7 +1181,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$def_opts = $this->p->opt->get_site_defaults();
 
 			$opts = SucomUtil::restore_checkboxes( $opts );
-			$opts = array_merge( $this->p->site_options, $opts );
+			$opts = array_merge( $this->p->site_options, $opts );	// Complete the array with previous options.
 			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network = true );
 			$opts = apply_filters( 'wpsso_save_setting_options', $opts, $network = true, $upgrading = false );
 

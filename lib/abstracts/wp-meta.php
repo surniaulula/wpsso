@@ -1580,7 +1580,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			 */
 			$md_opts = empty( $_POST[ WPSSO_META_NAME ] ) ? array() : $_POST[ WPSSO_META_NAME ];
 			$md_opts = SucomUtil::restore_checkboxes( $md_opts );
-			$md_opts = array_merge( $md_prev, $md_opts );	// Update the previous options array.
+			$md_opts = array_merge( $md_prev, $md_opts );	// Complete the array with previous options.
 			$md_opts = $this->p->opt->sanitize( $md_opts, $md_defs, $network = false, $mod );
 
 			/**
@@ -1622,9 +1622,12 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 					unset( $md_opts[ $md_key ] );
 
-				} elseif ( isset( $md_defs[ $md_key ] ) && ( $md_val === $md_defs[ $md_key ] || $md_val === (string) $md_defs[ $md_key ] ) ) {
+				} elseif ( is_array( $md_val ) ) {
 
-					unset( $md_opts[ $md_key ] );
+					if ( isset( $md_defs[ $md_key ] ) && $md_val === $md_defs[ $md_key ] ) {
+					
+						unset( $md_opts[ $md_key ] );
+					}
 
 				} elseif ( $md_val === WPSSO_UNDEF || $md_val === (string) WPSSO_UNDEF ) {
 
@@ -1638,6 +1641,13 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 						default:
 
 							unset( $md_opts[ $md_key ] );
+					}
+				
+				} elseif ( isset( $md_defs[ $md_key ] ) ) {
+				
+					if ( $md_val === $md_defs[ $md_key ] || $md_val === (string) $md_defs[ $md_key ] ) {
+
+						unset( $md_opts[ $md_key ] );
 					}
 				}
 			}

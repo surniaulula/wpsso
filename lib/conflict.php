@@ -67,6 +67,21 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 		private function conflict_check_addon() {
 
+			if ( ! empty( $this->p->avail[ 'p_ext' ][ 'ipm' ] ) ) {
+
+				$pkg_info    = $this->p->admin->get_pkg_info();	// Returns an array from cache.
+				$plugins_url = is_multisite() ? network_admin_url( 'plugins.php', null ) : get_admin_url( $blog_id = null, 'plugins.php' );
+				$plugins_url = add_query_arg( array( 's' => 'wpsso-inherit-parent-meta' ), $plugins_url );
+
+				$notice_msg = sprintf( __( 'The %1$s add-on has been discontinued.', 'wpsso' ), $pkg_info[ 'wpssoipm' ][ 'name' ] ) . ' ';
+				$notice_msg .= sprintf( __( 'All features of the %1$s add-on were integrated into the %2$s plugin.', 'wpsso' ), $pkg_info[ 'wpssoipm' ][ 'name' ], $pkg_info[ 'wpsso' ][ 'name' ] ) . ' ';
+				$notice_msg .= sprintf( __( '<a href="%1$s">You can now deactivate and delete the %2$s add-on</a>.', 'wpsso' ), $plugins_url, $pkg_info[ 'wpssoipm' ][ 'name' ] );
+
+				$notice_key = 'deactivate-wpsso-inherit-parent-meta';
+
+				$this->p->notice->err( $notice_msg, null, $notice_key );
+			}
+
 			if ( ! empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
 
 				$pkg_info = $this->p->admin->get_pkg_info();	// Returns an array from cache.
@@ -76,17 +91,10 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 					$plugins_url = is_multisite() ? network_admin_url( 'plugins.php', null ) : get_admin_url( $blog_id = null, 'plugins.php' );
 					$plugins_url = add_query_arg( array( 's' => 'wpsso-schema-json-ld' ), $plugins_url );
 
-					$notice_msg = sprintf( __( 'The %1$s add-on has been discontinued.', 'wpsso' ),
-						$pkg_info[ 'wpssojson' ][ 'name' ] ) . ' ';
-
-					$notice_msg .= sprintf( __( 'The %1$s shortcode was migrated to a new WPSSO Schema Shortcode add-on.', 'wpsso' ),
-						'<code>&#91;schema&#93;</code>' ) . ' ';
-
-					$notice_msg .= sprintf( __( 'All other add-on features of the %1$s add-on were integrated into the %2$s plugin.', 'wpsso' ),
-						$pkg_info[ 'wpssojson' ][ 'name' ], $pkg_info[ 'wpsso' ][ 'name' ] ) . ' ';
-
-					$notice_msg .= sprintf( __( '<a href="%1$s">You can now deactivate and delete the %2$s add-on</a>.', 'wpsso' ),
-						$plugins_url, $pkg_info[ 'wpssojson' ][ 'name' ] );
+					$notice_msg = sprintf( __( 'The %1$s add-on has been discontinued.', 'wpsso' ), $pkg_info[ 'wpssojson' ][ 'name' ] ) . ' ';
+					$notice_msg .= sprintf( __( 'The %1$s shortcode was migrated to a new WPSSO Schema Shortcode add-on.', 'wpsso' ), '<code>&#91;schema&#93;</code>' ) . ' ';
+					$notice_msg .= sprintf( __( 'All other add-on features of the %1$s add-on were integrated into the %2$s plugin.', 'wpsso' ), $pkg_info[ 'wpssojson' ][ 'name' ], $pkg_info[ 'wpsso' ][ 'name' ] ) . ' ';
+					$notice_msg .= sprintf( __( '<a href="%1$s">You can now deactivate and delete the %2$s add-on</a>.', 'wpsso' ), $plugins_url, $pkg_info[ 'wpssojson' ][ 'name' ] );
 
 					$notice_key = 'deactivate-wpsso-schema-json-ld';
 
@@ -94,22 +102,30 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				}
 			}
 
-			if ( ! empty( $this->p->avail[ 'p_ext' ][ 'ipm' ] ) ) {
+			if ( ! empty( $this->p->avail[ 'p_ext' ][ 'org' ] ) ) {
 
 				$pkg_info    = $this->p->admin->get_pkg_info();	// Returns an array from cache.
 				$plugins_url = is_multisite() ? network_admin_url( 'plugins.php', null ) : get_admin_url( $blog_id = null, 'plugins.php' );
-				$plugins_url = add_query_arg( array( 's' => 'wpsso-inherit-parent-meta' ), $plugins_url );
+				$plugins_url = add_query_arg( array( 's' => 'wpsso+organization+markup' ), $plugins_url );
 
-				$notice_msg = sprintf( __( 'The %1$s add-on has been discontinued.', 'wpsso' ),
-					$pkg_info[ 'wpssoipm' ][ 'name' ] ) . ' ';
+				$notice_msg = sprintf( __( 'The %1$s add-on has been deprecated and replaced by the %2$s add-on.', 'wpsso' ), $pkg_info[ 'wpssoorg' ][ 'name' ], $pkg_info[ 'wpssoopm' ][ 'name' ] ) . ' ';
+				$notice_msg .= sprintf( __( 'After installing and activating the %1$s add-on, <a href="%2$s">please deactivate and delete the deprecated %3$s add-on</a>.', 'wpsso' ), $pkg_info[ 'wpssoopm' ][ 'name' ], $plugins_url, $pkg_info[ 'wpssoorg' ][ 'name' ] );
 
-				$notice_msg .= sprintf( __( 'All features of the %1$s add-on were integrated into the %2$s plugin.', 'wpsso' ),
-					$pkg_info[ 'wpssoipm' ][ 'name' ], $pkg_info[ 'wpsso' ][ 'name' ] ) . ' ';
+				$notice_key = 'deactivate-wpsso-organization';
 
-				$notice_msg .= sprintf( __( '<a href="%1$s">You can now deactivate and delete the %2$s add-on</a>.', 'wpsso' ),
-					$plugins_url, $pkg_info[ 'wpssoipm' ][ 'name' ] );
+				$this->p->notice->err( $notice_msg, null, $notice_key );
+			}
 
-				$notice_key = 'deactivate-wpsso-inherit-parent-meta';
+			if ( ! empty( $this->p->avail[ 'p_ext' ][ 'plm' ] ) ) {
+
+				$pkg_info    = $this->p->admin->get_pkg_info();	// Returns an array from cache.
+				$plugins_url = is_multisite() ? network_admin_url( 'plugins.php', null ) : get_admin_url( $blog_id = null, 'plugins.php' );
+				$plugins_url = add_query_arg( array( 's' => 'wpsso-plm' ), $plugins_url );
+
+				$notice_msg = sprintf( __( 'The %1$s add-on has been deprecated and replaced by the %2$s add-on.', 'wpsso' ), $pkg_info[ 'wpssoplm' ][ 'name' ], $pkg_info[ 'wpssoopm' ][ 'name' ] ) . ' ';
+				$notice_msg .= sprintf( __( 'After installing and activating the %1$s add-on, <a href="%2$s">please deactivate and delete the deprecated %3$s add-on</a>.', 'wpsso' ), $pkg_info[ 'wpssoopm' ][ 'name' ], $plugins_url, $pkg_info[ 'wpssoplm' ][ 'name' ] );
+
+				$notice_key = 'deactivate-wpsso-plm';
 
 				$this->p->notice->err( $notice_msg, null, $notice_key );
 			}
