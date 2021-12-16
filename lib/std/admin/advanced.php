@@ -21,7 +21,6 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		private $schema_types   = null;
 		private $org_names      = null;
 		private $person_names   = null;
-		private $plm_req_msg    = null;
 		private $place_names    = null;
 
 		public function __construct( &$plugin ) {
@@ -66,7 +65,6 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$this->schema_types = $this->p->schema->get_schema_types_select( $context = 'settings' );
 			$this->org_names    = $this->p->util->get_form_cache( 'org_names', $add_none = true );
 			$this->person_names = $this->p->util->get_form_cache( 'person_names', $add_none = true );
-			$this->plm_req_msg  = $this->p->msgs->maybe_ext_required( 'wpssoplm' );
 			$this->place_names  = $this->p->util->get_form_cache( 'place_names', $add_none = true );
 		}
 
@@ -219,7 +217,6 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
-			$json_req_msg     = $this->p->msgs->maybe_ext_required( 'wpssojson' );
 			$pin_img_disabled = empty( $this->p->options[ 'pin_add_img_html' ] ) ? true : false;
 			$pin_img_msg      = $pin_img_disabled ? $this->p->msgs->pin_img_disabled( $extra_css_class = 'inline' ) : '';
 
@@ -233,15 +230,15 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$table_rows[ 'schema_01x01_img_size' ] = '' .
 				$form->get_th_html( _x( 'Schema 1:1 (Google)', 'option label', 'wpsso' ), '', 'schema_1x1_img_size' ) . 
-				'<td class="blank">' . $form->get_no_input_image_dimensions( 'schema_1x1_img' ) . $json_req_msg . '</td>';
+				'<td class="blank">' . $form->get_no_input_image_dimensions( 'schema_1x1_img' ) . '</td>';
 
 			$table_rows[ 'schema_04x03_img_size' ] = '' .
 				$form->get_th_html( _x( 'Schema 4:3 (Google)', 'option label', 'wpsso' ), '', 'schema_4x3_img_size' ) . 
-				'<td class="blank">' . $form->get_no_input_image_dimensions( 'schema_4x3_img' ) . $json_req_msg . '</td>';
+				'<td class="blank">' . $form->get_no_input_image_dimensions( 'schema_4x3_img' ) . '</td>';
 
 			$table_rows[ 'schema_16x09_img_size' ] = '' .
 				$form->get_th_html( _x( 'Schema 16:9 (Google)', 'option label', 'wpsso' ), '', 'schema_16x9_img_size' ) . 
-				'<td class="blank">' . $form->get_no_input_image_dimensions( 'schema_16x9_img' ) . $json_req_msg . '</td>';
+				'<td class="blank">' . $form->get_no_input_image_dimensions( 'schema_16x9_img' ) . '</td>';
 
 			$table_rows[ 'schema_thumb_img_size' ] = '' .
 				$form->get_th_html( _x( 'Schema Thumbnail', 'option label', 'wpsso' ), '', 'schema_thumb_img_size' ) . 
@@ -696,7 +693,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					'label'    => _x( 'Default Physical Venue', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_event_location_id',
 					'content'  => $form->get_no_select( 'schema_def_event_location_id', $this->place_names,
-						$css_class = 'long_name', $css_id = '', $is_assoc = true ) . $this->plm_req_msg,
+						$css_class = 'long_name', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_event_organizer_org_id' => array(
 					'td_class' => 'blank',
@@ -753,7 +750,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					'label'    => _x( 'Default Job Location', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_job_location_id',
 					'content'  => $form->get_no_select( 'schema_def_job_location_id', $this->place_names,
-						$css_class = 'long_name', $css_id = '', $is_assoc = true ) . $this->plm_req_msg,
+						$css_class = 'long_name', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_job_location_type' => array(
 					'td_class' => 'blank',

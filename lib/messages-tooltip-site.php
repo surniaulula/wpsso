@@ -72,15 +72,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSite' ) ) {
 
 				case 'tooltip-site_org_place_id':	// Organization Location.
 
-					if ( isset( $this->p->cf[ 'plugin' ][ 'wpssoplm' ] ) ) {
-
-						$plm_info = $this->p->cf[ 'plugin' ][ 'wpssoplm' ];
-
-						$plm_addon_link = $this->p->util->get_admin_url( 'addons#wpssoplm', $plm_info[ 'short' ] );
-
-						$text = sprintf( __( 'Select an optional location for this organization (requires the %s add-on).',
-							'wpsso' ), $plm_addon_link );
-					}
+					$text = __( 'Select an optional location for this organization.', 'wpsso' );
 
 					break;
 

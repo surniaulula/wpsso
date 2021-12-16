@@ -679,8 +679,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 		/**
 		 * If an add-on is not active, return a short message that this add-on is required.
-		 *
-		 * Used by WPSSO Core and several add-ons to get the WPSSO ORG and PLM add-on required message.
 		 */
 		public function maybe_ext_required( $ext ) {
 

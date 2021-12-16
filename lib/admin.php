@@ -2819,9 +2819,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$org_types_select = $this->p->util->get_form_cache( 'org_types_select', $add_none = false );
 			$place_names      = $this->p->util->get_form_cache( 'place_names', $add_none = true );
 
-			$plm_req_msg = $this->p->msgs->maybe_ext_required( 'wpssoplm' );
-			$plm_disable = empty( $plm_req_msg ) ? false : true;
-
 			$table_rows[ 'site_pub_schema_type' ] = '' . 
 				$this->form->get_th_html( _x( 'WebSite Publisher Type', 'option label', 'wpsso' ), $css_class = '', $css_id = 'site_pub_schema_type' ) . 
 				'<td>' . $this->form->get_select( 'site_pub_schema_type', $this->p->cf[ 'form' ][ 'publisher_types' ], $css_class = '', $css_id = '',
@@ -2858,7 +2855,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->form->get_th_html( _x( 'Organization Location', 'option label', 'wpsso-organization' ),
 					$css_class = '', $css_id = 'site_org_place_id' ) . 
 				'<td>' . $this->form->get_select( 'site_org_place_id', $place_names, $css_class = 'long_name', $css_id = '',
-					$is_assoc = true, $plm_disable ) . $plm_req_msg . '</td>';
+					$is_assoc = true ) . '</td>';
 		}
 
 		/**

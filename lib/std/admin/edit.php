@@ -138,9 +138,6 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			$place_names        = $this->p->util->get_form_cache( 'place_names', $add_none = true );
 			$place_names_custom = $this->p->util->get_form_cache( 'place_names_custom', $add_none = true );
 
-			$plm_req_msg = $this->p->msgs->maybe_ext_required( 'wpssoplm' );
-			$plm_disable = empty( $plm_req_msg ) ? false : true;
-
 			/**
 			 * Javascript classes to hide/show rows by selected schema type.
 			 */
@@ -963,7 +960,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'label'    => _x( 'Event Physical Venue', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_event_location_id',
 					'content'  => $form->get_no_select( 'schema_event_location_id', $place_names,
-						$css_class = 'long_name', $css_id = '', $is_assoc = true ) . $plm_req_msg,
+						$css_class = 'long_name', $css_id = '', $is_assoc = true ),
 				),
 				'schema_event_organizer_org_id' => array(
 					'tr_class' => $schema_type_row_class[ 'event' ],
@@ -1111,7 +1108,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'label'    => _x( 'Job Location', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_job_location_id',
 					'content'  => $form->get_no_select( 'schema_job_location_id', $place_names,
-						$css_class = 'long_name', $css_id = '', $is_assoc = true ) . $plm_req_msg,
+						$css_class = 'long_name', $css_id = '', $is_assoc = true ),
 				),
 				'schema_job_location_type' => array(
 					'tr_class' => $schema_type_row_class[ 'job_posting' ],
@@ -1187,7 +1184,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tooltip'  => 'meta-schema_place_id',
 					'content'  => $form->get_no_select( 'schema_place_id', $place_names_custom,
 						$css_class = 'long_name', $css_id = '', $is_assoc = true,
-							 $selected = true, $event_names = 'on_show_unhide_rows' ) . $plm_req_msg,
+							 $selected = true, $event_names = 'on_show_unhide_rows' ),
 				),
 
 				/**
