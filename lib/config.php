@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.12.0-dev.6',	// Plugin version.
-					'opt_version' => '852',		// Increment when changing default option values.
+					'version'     => '9.12.0-b.1',	// Plugin version.
+					'opt_version' => '853',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -495,7 +495,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'wpssoopm' => array(			// Plugin acronym.
 					'short'       => 'WPSSO OPM',	// Short plugin name.
 					'name'        => 'WPSSO Organization and Place Manager',
-					'desc'        => 'Manage organizations and places.',
+					'desc'        => 'Manage Organizations (publisher, organizer, etc.) and Places for Facebook, Pinterest, and Google local business markup.',
 					'slug'        => 'wpsso-organization-place',
 					'base'        => 'wpsso-organization-place/wpsso-organization-place.php',
 					'update_auth' => '',		// No premium version.

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 9.12.0-dev.6\n"
+"Project-Id-Version: WPSSO Core 9.12.0-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1192,7 +1192,9 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:122
 msgctxt "plugin description"
-msgid "Manage organizations and places."
+msgid ""
+"Manage Organizations (publisher, organizer, etc.) and Places for Facebook, "
+"Pinterest, and Google local business markup."
 msgstr ""
 
 #: gettext/gettext-lib-config.php:123
