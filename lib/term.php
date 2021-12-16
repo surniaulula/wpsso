@@ -269,29 +269,34 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				/**
 				 * Check if options need to be upgraded and saved.
 				 */
-				if ( $this->is_upgrade_options_required( $md_opts ) ) {
-
-					$md_opts = $this->upgrade_options( $md_opts, $term_id );
-
-					self::update_term_meta( $term_id, WPSSO_META_NAME, $md_opts );
+				if ( $this->p->opt->is_upgrade_required( $md_opts ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'term_id ' . $term_id . ' settings upgraded' );
+						$this->p->debug->log( 'upgrading term ID ' . $term_id . ' options' );
 					}
+
+					$md_opts = $this->upgrade_options( $md_opts, $term_id );
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'saving term ID ' . $term_id . ' options' );
+					}
+
+					self::update_term_meta( $term_id, WPSSO_META_NAME, $md_opts );
 				}
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log_arr( 'term_id ' . $term_id . ' meta options read', $md_opts );
+					$this->p->debug->log_arr( 'term ID ' . $term_id . ' options read', $md_opts );
 				}
 			}
 
 			if ( $filter_opts ) {
 
-				if ( empty( $md_opts[ 'options_filtered' ] ) ) {
+				if ( empty( $md_opts[ 'opt_filtered' ] ) ) {
 
-					$md_opts[ 'options_filtered' ] = 1;	// Set before calling filters to prevent recursion.
+					$md_opts[ 'opt_filtered' ] = 1;	// Set before calling filters to prevent recursion.
 
 					$mod = $this->get_mod( $term_id );
 

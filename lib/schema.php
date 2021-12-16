@@ -1396,12 +1396,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					continue;
 
-				} elseif ( $social_key === 'tc_site' ) {	// Convert twitter name to url.
+				} elseif ( $social_key === 'tc_site' ) {	// Convert Twitter username to a URL.
 
 					$url = 'https://twitter.com/' . preg_replace( '/^@/', '', $url );
 				}
 
-				if ( false !== filter_var( $url, FILTER_VALIDATE_URL ) ) {
+				if ( false !== filter_var( $url, FILTER_VALIDATE_URL ) ) {	// Just in case.
 
 					$org_sameas[] = $url;
 				}

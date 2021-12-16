@@ -269,21 +269,16 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 			$md_defs =& $local_cache[ $obj_id ];	// Shortcut variable name.
 
-			$is_cache_allowed = WpssoOptions::is_cache_allowed() ? true : false;
-			$options_filtered = empty( $md_defs[ 'options_filtered' ] ) ? false : true;
+			$is_cache_allowed = WpssoOptions::is_cache_allowed();
+			$is_opt_filtered  = WpssoOptions::is_filtered( $md_defs );
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'is_cache_allowed is ' . ( $is_cache_allowed ? 'true' : 'false' ) );
-				$this->p->debug->log( 'options_filtered is ' . ( $options_filtered ? 'true' : 'false' ) );
+				$this->p->debug->log( 'cache allowed is ' . ( $is_cache_allowed ? 'true' : 'false' ) );
+				$this->p->debug->log( 'opt filtered is ' . ( $is_opt_filtered ? 'true' : 'false' ) );
 			}
 
-			if ( ! $is_cache_allowed || ! $options_filtered  ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'get_md_defaults filters allowed' );
-				}
+			if ( ! $is_opt_filtered  ) {
 
 				$mod = $this->get_mod( $obj_id );
 
@@ -311,8 +306,10 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				}
 
 				$md_defs = array(
-					'options_filtered'  => 0,
-					'options_version'   => '',
+					'plugin_checksum'   => '',	// Checksum of plugin versions.
+					'opt_checksum'      => '',	// Checksum of option versions.
+					'opt_versions'      => array(),
+					'opt_filtered'      => 0,
 					'attach_img_crop_x' => 'none',
 					'attach_img_crop_y' => 'none',
 
@@ -732,19 +729,15 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 					$this->p->debug->log( 'merging parent metadata image options is disabled' );
 				}
 
-				if ( $is_cache_allowed ) {
+				/**
+				 * Set before calling filters to prevent recursion.
+				 */
+				if ( $this->p->debug->enabled ) {
 
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'setting options_filtered to 1' );
-					}
-
-					$md_defs[ 'options_filtered' ] = 1;	// Set before calling filter to prevent recursion.
-
-				} elseif ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'options_filtered value unchanged' );
+					$this->p->debug->log( 'setting opt_filtered to 1' );
 				}
+
+				$md_defs[ 'opt_filtered' ] = 1;
 
 				/**
 				 * The 'import_custom_fields' filter is executed before the 'wpsso_get_md_options' and
@@ -793,6 +786,14 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				$md_defs = apply_filters( 'wpsso_sanitize_md_defaults', $md_defs, $mod );
 
+				/**
+				 * Caching is not allowed yet, so re-apply the filters on next method call.
+				 */
+				if ( ! $is_cache_allowed ) {
+
+					$md_defs[ 'opt_filtered' ] = 0;
+				}
+
 			} elseif ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'get_md_defaults filters skipped' );
@@ -818,34 +819,19 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return self::must_be_extended( $ret_val );
 		}
 
-		/**
-		 * Check if options need to be upgraded.
-		 *
-		 * Returns true or false.
-		 */
-		protected function is_upgrade_options_required( $md_opts ) {
-
-			/**
-			 * Example:
-			 *
-			 * 	'options_version' = '-wpsso774std-wpssoum7std'.
-			 */
-			if ( isset( $md_opts[ 'options_version' ] ) && $md_opts[ 'options_version' ] !== $this->p->cf[ 'opt' ][ 'version' ] ) {
-
-				return true;
-			}
-
-			return false;
-		}
-
 		protected function upgrade_options( $md_opts, $obj_id ) {
 
 			/**
-			 * Save / create the current options version number for version checks to follow.
+			 * Get the current options version number for checks to follow.
 			 */
-			$prev_version = empty( $md_opts[ 'plugin_wpsso_opt_version' ] ) ? 0 : $md_opts[ 'plugin_wpsso_opt_version' ];
-			$keys_by_ext   = apply_filters( 'wpsso_rename_md_options_keys', self::$rename_keys_by_ext );
-			$md_opts       = $this->p->util->rename_options_by_ext( $md_opts, $keys_by_ext );
+			$prev_version = $this->p->opt->get_version( $md_opts, 'wpsso' );	// Returns 'opt_version'.
+
+			/**
+			 * Maybe renamed some option keys.
+			 */
+			$version_keys = apply_filters( 'wpsso_rename_md_options_keys', self::$rename_keys_by_ext );
+
+			$md_opts = $this->p->util->rename_options_by_ext( $md_opts, $version_keys );
 
 			/**
 			 * Check for schema type IDs that need to be renamed.
@@ -892,22 +878,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			$md_opts = apply_filters( 'wpsso_upgraded_md_options', $md_opts );
 
 			/**
-			 * Save plugin option version.
+			 * Add plugin and add-on option versions (ie. 'plugin_checksum', 'opt_checksum', and 'opt_versions').
 			 */
-			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
-
-				if ( isset( $info[ 'opt_version' ] ) ) {
-
-					$opt_version_key = 'plugin_' . $ext . '_opt_version';
-
-					$md_opts[ $opt_version_key ] = $info[ 'opt_version' ];
-				}
-			}
-
-			/**
-			 * Mark the new options array as current.
-			 */
-			$md_opts[ 'options_version' ] = $this->p->cf[ 'opt' ][ 'version' ];
+			$this->p->opt->add_versions( $md_opts );
 
 			return $md_opts;
 		}
@@ -1600,23 +1573,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			$md_defs = $this->get_defaults( $mod[ 'id' ] );
 			$md_prev = $this->get_options( $mod[ 'id' ] );
 
-			/**
-			 * Remove plugin version strings.
-			 */
-			$md_unset_keys = array( 'options_filtered', 'options_version' );
-
-			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
-
-				if ( isset( $info[ 'opt_version' ] ) ) {
-
-					$md_unset_keys[] = 'plugin_' . $ext . '_opt_version';
-				}
-			}
-
-			foreach ( $md_unset_keys as $md_key ) {
-
-				unset( $md_defs[ $md_key ], $md_prev[ $md_key ] );
-			}
+			$this->p->opt->remove_versions( $md_prev );	// Remove the option versions array.
 
 			/**
 			 * Merge and sanitize the new options.
@@ -1917,22 +1874,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			}
 
 			/**
-			 * Save plugin option version.
+			 * Add plugin and add-on option versions (ie. 'plugin_checksum', 'opt_checksum', and 'opt_versions').
 			 */
-			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
-
-				if ( isset( $info[ 'opt_version' ] ) ) {
-
-					$opt_version_key = 'plugin_' . $ext . '_opt_version';
-
-					$md_opts[ $opt_version_key ] = $info[ 'opt_version' ];
-				}
-			}
-
-			/**
-			 * Mark the new options array as current.
-			 */
-			$md_opts[ 'options_version' ] = $this->p->cf[ 'opt' ][ 'version' ];
+			$this->p->opt->add_versions( $md_opts );
 
 			return $md_opts;
 		}

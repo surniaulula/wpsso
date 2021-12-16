@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 9.12.0-dev.5\n"
+"Project-Id-Version: WPSSO Core 9.12.0-dev.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4477,7 +4477,7 @@ msgstr ""
 
 #: gettext/gettext-lib-pro.php:393 gettext/gettext-lib-pro.php:395
 #: gettext/gettext-lib-pro.php:432 lib/conflict.php:169 lib/loader.php:187
-#: lib/loader.php:201 lib/post.php:1556 lib/pro/review/yotpowc.php:205
+#: lib/loader.php:201 lib/post.php:1561 lib/pro/review/yotpowc.php:205
 #: lib/pro/util/shorten.php:460 lib/pro/util/shorten.php:497
 msgid "%s error:"
 msgstr ""
@@ -4708,56 +4708,56 @@ msgctxt "default description"
 msgid "No Description."
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1098
+#: lib/abstracts/wp-meta.php:1071
 msgctxt "metabox tab"
 msgid "Customize"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1099 lib/messages.php:284
+#: lib/abstracts/wp-meta.php:1072 lib/messages.php:284
 msgctxt "metabox tab"
 msgid "Priority Media"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1103
+#: lib/abstracts/wp-meta.php:1076
 msgctxt "metabox tab"
 msgid "Robots Meta"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1104
+#: lib/abstracts/wp-meta.php:1077
 msgctxt "metabox tab"
 msgid "Social Preview"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1105
+#: lib/abstracts/wp-meta.php:1078
 msgctxt "metabox tab"
 msgid "oEmbed Preview"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1106
+#: lib/abstracts/wp-meta.php:1079
 msgctxt "metabox tab"
 msgid "Head Markup"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1107
+#: lib/abstracts/wp-meta.php:1080
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1577
+#: lib/abstracts/wp-meta.php:1550
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1910 lib/json-filters/type/claimreview.php:69
+#: lib/abstracts/wp-meta.php:1867 lib/json-filters/type/claimreview.php:69
 msgid "A claim review cannot be the subject of another claim review."
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:1912
+#: lib/abstracts/wp-meta.php:1869
 msgid ""
 "Please select a subject webpage type that better describes the subject of "
 "the webpage (ie. the content) being reviewed."
 msgstr ""
 
-#: lib/abstracts/wp-meta.php:2678
+#: lib/abstracts/wp-meta.php:2622
 msgid "adding schema images"
 msgstr ""
 
@@ -5219,11 +5219,11 @@ msgstr ""
 msgid "Network plugin settings have been saved."
 msgstr ""
 
-#: lib/admin.php:1227 lib/post.php:904 lib/term.php:680 lib/user.php:666
+#: lib/admin.php:1227 lib/post.php:909 lib/term.php:685 lib/user.php:676
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
-#: lib/admin.php:1239 lib/options.php:943 lib/register.php:162
+#: lib/admin.php:1239 lib/options.php:890 lib/register.php:162
 msgid "A background task will begin shortly to clear all caches."
 msgstr ""
 
@@ -5262,7 +5262,7 @@ msgstr ""
 #: lib/admin.php:1315 lib/admin.php:1326
 #: lib/messages-tooltip-meta-schema.php:470 lib/messages-tooltip-plugin.php:181
 #: lib/submenu/tools.php:58 lib/submenu/tools.php:103 lib/user.php:61
-#: lib/user.php:1663 lib/user.php:1770 lib/user.php:1901
+#: lib/user.php:1673 lib/user.php:1780 lib/user.php:1911
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -5499,7 +5499,7 @@ msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:2847 lib/options.php:1095
+#: lib/admin.php:2847 lib/options.php:1142
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
@@ -6356,12 +6356,12 @@ msgid ""
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1027 lib/post.php:639 lib/register.php:348 lib/term.php:507
-#: lib/user.php:475 lib/util.php:833 lib/util.php:3056
+#: lib/media.php:1027 lib/post.php:644 lib/register.php:348 lib/term.php:512
+#: lib/user.php:485 lib/util.php:833 lib/util.php:3056
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1028 lib/post.php:640 lib/term.php:508 lib/user.php:476
+#: lib/media.php:1028 lib/post.php:645 lib/term.php:513 lib/user.php:486
 #: lib/util.php:834 lib/util.php:3057
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
@@ -9663,157 +9663,157 @@ msgctxt "option value"
 msgid "cropped"
 msgstr ""
 
-#: lib/options.php:320
+#: lib/options.php:325
 msgid "WordPress could not find an entry for %s in the options table."
 msgstr ""
 
-#: lib/options.php:324
+#: lib/options.php:329
 msgid ""
 "WordPress returned a non-array value when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:328
+#: lib/options.php:333
 msgid ""
 "WordPress returned an empty array when reading %s from the options table."
 msgstr ""
 
-#: lib/options.php:332
+#: lib/options.php:337
 msgid ""
 "WordPress returned an unknown condition when reading %s from the options "
 "table."
 msgstr ""
 
-#: lib/options.php:351
+#: lib/options.php:356
 msgid ""
 "The plugin settings have been returned to their default values - <a href=\"%s"
 "\">please review and save the new settings</a>."
 msgstr ""
 
 #. translators: %s is the option key name.
-#: lib/options.php:503
+#: lib/options.php:480
 msgid ""
 "Non-standard value found for the \"%s\" option - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:756
+#: lib/options.php:733
 msgid ""
 "Option keys \"%1$s\" (%2$d) and \"%3$s\" (%4$d) have an aspect ratio of "
 "%5$s:1, which not equal to the required image ratio of %6$s:1."
 msgstr ""
 
-#: lib/options.php:765
+#: lib/options.php:742
 msgid ""
 "Option keys \"%1$s\" (%2$d) and \"%3$s\" (%4$d) have an aspect ratio of "
 "%5$s:1, which is equal to / or greater than the maximum image ratio of "
 "%6$s:1."
 msgstr ""
 
-#: lib/options.php:773
+#: lib/options.php:750
 msgid "These options have been reset to their default values."
 msgstr ""
 
-#: lib/options.php:807
+#: lib/options.php:784
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length - "
 "the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:941
+#: lib/options.php:889
 msgid "Plugin settings have been upgraded and saved."
 msgstr ""
 
-#: lib/options.php:1101
+#: lib/options.php:1148
 msgid "The %s image dimensions cannot be determined."
 msgstr ""
 
-#: lib/options.php:1103
+#: lib/options.php:1150
 msgid ""
 "Please make sure this site can access %s using the PHP getimagesize() "
 "function."
 msgstr ""
 
-#: lib/options.php:1108
+#: lib/options.php:1155
 msgid "The %1$s image dimensions are %2$s and must be exactly %3$s."
 msgstr ""
 
-#: lib/options.php:1111
+#: lib/options.php:1158
 msgid "Please correct the %s banner image."
 msgstr ""
 
-#: lib/options.php:1144
+#: lib/options.php:1191
 msgid ""
 "The value of option \"%s\" must be alpha-numeric - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1145
+#: lib/options.php:1192
 msgid ""
 "The value of option \"%s\" must be blank or numeric - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1146
+#: lib/options.php:1193
 msgid ""
 "The value of option \"%s\" must be a CSS color code - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1147
+#: lib/options.php:1194
 msgid ""
 "The value of option \"%s\" must be a comma-delimited list of URL(s) - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:1148
+#: lib/options.php:1195
 msgid ""
 "The value of option \"%s\" must be a yyyy-mm-dd date - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1149
+#: lib/options.php:1196
 msgid ""
 "The value of option \"%s\" must be HTML code - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1150
+#: lib/options.php:1197
 msgid ""
 "The value of option \"%s\" must be an image ID - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1151
+#: lib/options.php:1198
 msgid ""
 "The value of option \"%s\" must be a valid image URL - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1152
+#: lib/options.php:1199
 msgid ""
 "The value of option \"%s\" cannot be an empty string - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1153
+#: lib/options.php:1200
 msgid ""
 "The value of option \"%s\" must be numeric - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1154
+#: lib/options.php:1201
 msgid ""
 "The value of option \"%1$s\" must be equal to or greather than %2$s - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:1155
+#: lib/options.php:1202
 msgid ""
 "The value of option \"%s\" must be a hh:mm time - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1156
+#: lib/options.php:1203
 msgid ""
 "The value of option \"%s\" must be a valid URL - resetting this option to "
 "its default value."
@@ -9883,139 +9883,139 @@ msgctxt "module name"
 msgid "post"
 msgstr ""
 
-#: lib/post.php:641
+#: lib/post.php:646
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to get children of "
 "post ID %3$d (%4$s)."
 msgstr ""
 
-#: lib/post.php:837 lib/post.php:1480 lib/schema.php:3251 lib/term.php:631
-#: lib/user.php:616
+#: lib/post.php:842 lib/post.php:1485 lib/schema.php:3251 lib/term.php:636
+#: lib/user.php:626
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/post.php:1042
+#: lib/post.php:1047
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:1075
+#: lib/post.php:1080
 msgid "The webpage HTML retrieved from %1$s is %2$s bytes."
 msgstr ""
 
-#: lib/post.php:1077
+#: lib/post.php:1082
 msgid ""
 "This exceeds the maximum limit of %1$s bytes imposed by the Google crawler."
 msgstr ""
 
-#: lib/post.php:1079
+#: lib/post.php:1084
 msgid ""
 "If you do not reduce the webpage HTML size, Google will refuse to crawl this "
 "webpage."
 msgstr ""
 
-#: lib/post.php:1109
+#: lib/post.php:1114
 msgid "Retrieving the webpage HTML for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:1111
+#: lib/post.php:1116
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:1113
+#: lib/post.php:1118
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:1114
+#: lib/post.php:1119
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:1128
+#: lib/post.php:1133
 msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:1142
+#: lib/post.php:1147
 msgid "An %1$s tag was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1157
+#: lib/post.php:1162
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1174
+#: lib/post.php:1179
 msgid ""
 "The %1$s meta tags and Schema markup section was not found in <a href=\"%2$s"
 "\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1176
+#: lib/post.php:1181
 msgid "Does a caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:1207
+#: lib/post.php:1212
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section - "
 "this could be an indication of a problem with PHP's PCRE library, or an "
 "optimization plugin or service corrupting the webpage HTML markup."
 msgstr ""
 
-#: lib/post.php:1209
+#: lib/post.php:1214
 msgid ""
 "You may consider updating or having your hosting provider update your PHP "
 "installation and its PCRE library."
 msgstr ""
 
-#: lib/post.php:1229
+#: lib/post.php:1234
 msgid ""
 "Conflict detected - your theme or another plugin is adding %1$s to the head "
 "section of this webpage."
 msgstr ""
 
-#: lib/post.php:1247
+#: lib/post.php:1252
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1247
+#: lib/post.php:1252
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML document - please review the <a href=\"%1$s\">W3C Markup "
 "Validator</a> results and correct any syntax errors."
 msgstr ""
 
-#: lib/post.php:1285
+#: lib/post.php:1290
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1287
+#: lib/post.php:1292
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1295
+#: lib/post.php:1300
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1299
+#: lib/post.php:1304
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1303
+#: lib/post.php:1308
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1520
+#: lib/post.php:1525
 msgid "invalid ajax referer nonce value"
 msgstr ""
 
-#: lib/post.php:1525
+#: lib/post.php:1530
 msgid "ajax request missing the post_id"
 msgstr ""
 
-#: lib/post.php:1802
+#: lib/post.php:1807
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -10824,13 +10824,13 @@ msgctxt "module name"
 msgid "term"
 msgstr ""
 
-#: lib/term.php:509
+#: lib/term.php:514
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to get posts for "
 "term ID %3$d in taxonomy %4$s (%5$s)."
 msgstr ""
 
-#: lib/term.php:922
+#: lib/term.php:927
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -10875,70 +10875,70 @@ msgctxt "module name"
 msgid "user"
 msgstr ""
 
-#: lib/user.php:477
+#: lib/user.php:487
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to get posts "
 "authored by user ID %3$d (%4$s)."
 msgstr ""
 
-#: lib/user.php:805
+#: lib/user.php:815
 msgid "Examples: Dr, Mrs, Mr."
 msgstr ""
 
-#: lib/user.php:811
+#: lib/user.php:821
 msgid "Examples: CPA, Esq., M.D., P.E., PhD., PMP, RN"
 msgstr ""
 
-#: lib/user.php:971
+#: lib/user.php:981
 msgid "(not a Facebook Pages URL)"
 msgstr ""
 
-#: lib/user.php:1097
+#: lib/user.php:1107
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:1098
+#: lib/user.php:1108
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:1099
+#: lib/user.php:1109
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1459
+#: lib/user.php:1469
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/user.php:1682
+#: lib/user.php:1692
 msgid ""
 "Aborting task to add the %1$s role to content creators - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1697
+#: lib/user.php:1707
 msgid "A task to add the %1$s role for content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1738
+#: lib/user.php:1748
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1740 lib/user.php:1843 lib/util-cache.php:185
+#: lib/user.php:1750 lib/user.php:1853 lib/util-cache.php:185
 #: lib/util-cache.php:703
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
-#: lib/user.php:1789
+#: lib/user.php:1799
 msgid ""
 "Aborting task to remove the %1$s role from all users - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1804
+#: lib/user.php:1814
 msgid "A task to remove the %1$s role from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1841
+#: lib/user.php:1851
 msgid "The %1$s role has been removed from %2$d content creators."
 msgstr ""
 
@@ -11265,113 +11265,113 @@ msgid ""
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3463
+#: lib/util.php:3474
 msgctxt "option label"
 msgid "The AMP Project Validator"
 msgstr ""
 
-#: lib/util.php:3464
+#: lib/util.php:3475
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr ""
 
-#: lib/util.php:3468
+#: lib/util.php:3479
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr ""
 
-#: lib/util.php:3469
+#: lib/util.php:3480
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/util.php:3473
+#: lib/util.php:3484
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr ""
 
-#: lib/util.php:3474
+#: lib/util.php:3485
 msgctxt "validator type"
 msgid "Microdata"
 msgstr ""
 
-#: lib/util.php:3478
+#: lib/util.php:3489
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr ""
 
-#: lib/util.php:3479
+#: lib/util.php:3490
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr ""
 
-#: lib/util.php:3483
+#: lib/util.php:3494
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/util.php:3484
+#: lib/util.php:3495
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr ""
 
-#: lib/util.php:3488
+#: lib/util.php:3499
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/util.php:3489
+#: lib/util.php:3500
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/util.php:3493
+#: lib/util.php:3504
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/util.php:3494
+#: lib/util.php:3505
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr ""
 
-#: lib/util.php:3498
+#: lib/util.php:3509
 msgctxt "option label"
 msgid "Schema Markup Validator"
 msgstr ""
 
-#: lib/util.php:3499
+#: lib/util.php:3510
 msgctxt "validator type"
 msgid "Schema Markup"
 msgstr ""
 
-#: lib/util.php:3503
+#: lib/util.php:3514
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/util.php:3504
+#: lib/util.php:3515
 msgctxt "validator type"
 msgid "Twitter Card"
 msgstr ""
 
-#: lib/util.php:3509
+#: lib/util.php:3520
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr ""
 
-#: lib/util.php:3510
+#: lib/util.php:3521
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name.
-#: lib/util.php:3672
+#: lib/util.php:3683
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3682
+#: lib/util.php:3693
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 

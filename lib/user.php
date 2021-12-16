@@ -282,11 +282,21 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				/**
 				 * Check if options need to be upgraded and saved.
 				 */
-				if ( $this->is_upgrade_options_required( $md_opts ) ) {
+				if ( $this->p->opt->is_upgrade_required( $md_opts ) ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'upgrading user ID ' . $user_id . ' options' );
+					}
 
 					$md_opts = $this->upgrade_options( $md_opts, $user_exists_id );
 
 					if ( $user_exists ) {
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'saving user ID ' . $user_id . ' options' );
+						}
 
 						update_user_meta( $user_exists_id, WPSSO_META_NAME, $md_opts );
 
@@ -297,7 +307,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'user_id ' . $user_id . ' settings upgraded' );
+						$this->p->debug->log_arr( 'user ID ' . $user_id . ' options read', $md_opts );
 					}
 				}
 
@@ -309,9 +319,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $filter_opts ) {
 
-				if ( empty( $md_opts[ 'options_filtered' ] ) ) {
+				if ( empty( $md_opts[ 'opt_filtered' ] ) ) {
 
-					$md_opts[ 'options_filtered' ] = 1;	// Set before calling filter to prevent recursion.
+					$md_opts[ 'opt_filtered' ] = 1;	// Set before calling filter to prevent recursion.
 
 					$mod = $this->get_mod( $user_id );
 

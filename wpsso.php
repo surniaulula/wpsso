@@ -15,7 +15,7 @@
  * Requires At Least: 5.2
  * Tested Up To: 5.8.2
  * WC Tested Up To: 6.0.0
- * Version: 9.12.0-dev.5
+ * Version: 9.12.0-dev.6
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -474,7 +474,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$this->debug->log( 'checking ' . WPSSO_OPTIONS_NAME . ' options' );
 			}
 
-			$this->options = $this->opt->check_options( WPSSO_OPTIONS_NAME, $this->options, $network = false, $activate );
+			$this->options = $this->opt->check_options( WPSSO_OPTIONS_NAME, $this->options, $network = false );
 
 			if ( $this->debug->enabled ) {
 
@@ -493,7 +493,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 					$this->debug->log( 'checking ' . WPSSO_SITE_OPTIONS_NAME . ' options' );
 				}
 
-				$this->site_options = $this->opt->check_options( WPSSO_SITE_OPTIONS_NAME, $this->site_options, $network = true, $activate );
+				$this->site_options = $this->opt->check_options( WPSSO_SITE_OPTIONS_NAME, $this->site_options, $network = true );
 
 				if ( $this->debug->enabled ) {
 

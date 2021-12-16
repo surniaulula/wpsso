@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.12.0-dev.5',	// Plugin version.
+					'version'     => '9.12.0-dev.6',	// Plugin version.
 					'opt_version' => '852',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1247,8 +1247,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'opt' => array(
 				'defaults' => array(
-					'options_version'  => '',	// Example: -wpsso512pro-wpssoum3gpl
-					'options_filtered' => 0,
+					'plugin_checksum' => '',	// Checksum of plugin versions.
+					'opt_checksum'    => '',	// Checksum of option versions.
+					'opt_versions'    => array(),
+					'opt_filtered'    => 0,
 
 					/**
 					 * Site options.
@@ -2001,8 +2003,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * See the WpssoOptions->get_site_defaults() method.
 				 */
 				'site_defaults' => array(
-					'options_version'  => '',	// Example: -wpsso512pro-wpssoum3gpl
-					'options_filtered' => 0,
+					'plugin_checksum' => '',	// Checksum of plugin versions.
+					'opt_checksum'    => '',	// Checksum of option versions.
+					'opt_versions'    => array(),
+					'opt_filtered'    => 0,
 				),
 
 				/**

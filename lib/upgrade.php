@@ -540,18 +540,18 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 			}
 
 			/**
-			 * Save / create the current options version number for version checks to follow.
+			 * Get the current options version number for checks to follow.
 			 */
-			$prev_version = empty( $opts[ 'plugin_wpsso_opt_version' ] ) ? 0 : $opts[ 'plugin_wpsso_opt_version' ];
+			$prev_version = $this->p->opt->get_version( $opts, 'wpsso' );	// Returns 'opt_version'.
 
 			/**
 			 * Maybe renamed some option keys.
 			 */
-			$keys_by_ext = $is_site_options ?
+			$version_keys = $is_site_options ?
 				apply_filters( 'wpsso_rename_site_options_keys', self::$rename_keys_by_ext ) :	// Network options filter.
 				apply_filters( 'wpsso_rename_options_keys', self::$rename_keys_by_ext );	
 
-			$opts = $this->p->util->rename_options_by_ext( $opts, $keys_by_ext );
+			$opts = $this->p->util->rename_options_by_ext( $opts, $version_keys );
 
 			/**
 			 * Maybe update some option values.

@@ -3244,25 +3244,36 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		/**
 		 * Rename options array keys, preserving the option modifiers (ie. '_[0-9]', ':disabled', ':use', and '#.*').
 		 */
-		public function rename_options_by_ext( $opts, $keys_by_ext ) {
+		public function rename_options_by_ext( $opts, $version_keys ) {
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				$ext_version_key = 'plugin_' . $ext . '_opt_version';
+				if ( ! isset( $version_keys[ $ext ] ) ) {	// Nothing to do.
 
-				if ( ! isset( $keys_by_ext[ $ext ] ) || ! is_array( $keys_by_ext[ $ext ] ) ||
-					! isset( $info[ 'opt_version' ] ) || empty( $opts[ $ext_version_key ] ) ) {
+					continue;
+
+				} elseif ( ! is_array( $version_keys[ $ext ] ) ) {	// Must be an array of option keys.
+
+					continue;
+
+				} elseif ( ! isset( $info[ 'opt_version' ] ) ) {	// Nothing to compare to.
+
+					continue;
+
+				} elseif ( empty( $opts[ 'opt_versions' ][ $ext ] ) ) {	// No previous options.
 
 					continue;
 				}
 
-				foreach ( $keys_by_ext[ $ext ] as $max_version => $keys ) {
+				$prev_version = $opts[ 'opt_versions' ][ $ext ];
 
-					if ( is_numeric( $max_version ) && is_array( $keys ) && $opts[ $ext_version_key ] <= $max_version ) {
+				foreach ( $version_keys[ $ext ] as $max_version => $opt_keys ) {
 
-						$opts = $this->rename_options_keys( $opts, $keys );
+					if ( is_numeric( $max_version ) && is_array( $opt_keys ) && $prev_version <= $max_version ) {
 
-						$opts[ $ext_version_key ] = $info[ 'opt_version' ];	// Mark as current.
+						$opts = $this->rename_options_keys( $opts, $opt_keys );
+
+						$opts[ 'opt_versions' ][ $ext ] = $info[ 'opt_version' ];	// Mark as current.
 					}
 				}
 			}
@@ -3270,9 +3281,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $opts;
 		}
 
-		public function rename_options_keys( $opts, $keys ) {
+		public function rename_options_keys( $opts, $opt_keys ) {
 
-			foreach ( $keys as $old_key => $new_key ) {
+			foreach ( $opt_keys as $old_key => $new_key ) {
 
 				if ( empty( $old_key ) ) { // Just in case.
 
