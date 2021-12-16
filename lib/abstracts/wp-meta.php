@@ -844,10 +844,8 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			 * Save / create the current options version number for version checks to follow.
 			 */
 			$prev_version = empty( $md_opts[ 'plugin_wpsso_opt_version' ] ) ? 0 : $md_opts[ 'plugin_wpsso_opt_version' ];
-
-			$keys_by_ext = apply_filters( 'wpsso_rename_md_options_keys', self::$rename_keys_by_ext );
-
-			$md_opts = $this->p->util->rename_options_by_ext( $md_opts, $keys_by_ext );
+			$keys_by_ext   = apply_filters( 'wpsso_rename_md_options_keys', self::$rename_keys_by_ext );
+			$md_opts       = $this->p->util->rename_options_by_ext( $md_opts, $keys_by_ext );
 
 			/**
 			 * Check for schema type IDs that need to be renamed.
@@ -894,7 +892,20 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			$md_opts = apply_filters( 'wpsso_upgraded_md_options', $md_opts );
 
 			/**
-			 * Mark options as current.
+			 * Save plugin option version.
+			 */
+			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
+
+				if ( isset( $info[ 'opt_version' ] ) ) {
+
+					$opt_version_key = 'plugin_' . $ext . '_opt_version';
+
+					$md_opts[ $opt_version_key ] = $info[ 'opt_version' ];
+				}
+			}
+
+			/**
+			 * Mark the new options array as current.
 			 */
 			$md_opts[ 'options_version' ] = $this->p->cf[ 'opt' ][ 'version' ];
 
@@ -1906,17 +1917,22 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			}
 
 			/**
-			 * Mark the new options as current.
+			 * Save plugin option version.
 			 */
-			$md_opts[ 'options_version' ] = $this->p->cf[ 'opt' ][ 'version' ];
-
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
 				if ( isset( $info[ 'opt_version' ] ) ) {
 
-					$md_opts[ 'plugin_' . $ext . '_opt_version' ] = $info[ 'opt_version' ];
+					$opt_version_key = 'plugin_' . $ext . '_opt_version';
+
+					$md_opts[ $opt_version_key ] = $info[ 'opt_version' ];
 				}
 			}
+
+			/**
+			 * Mark the new options array as current.
+			 */
+			$md_opts[ 'options_version' ] = $this->p->cf[ 'opt' ][ 'version' ];
 
 			return $md_opts;
 		}

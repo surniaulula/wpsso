@@ -891,7 +891,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 			}
 
-			$opts[ 'options_version' ] = $latest_version;	// Mark the new options array as current.
+			/**
+			 * Mark the new options array as current.
+			 */
+			$opts[ 'options_version' ] = $latest_version;
 
 			/**
 			 * Since WPSSO Core v8.5.1.

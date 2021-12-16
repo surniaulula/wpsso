@@ -1090,7 +1090,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $opts;
 		}
 
-		public function get_form_cache( $name, $add_none = false, $rel = null ) {
+		public function get_form_cache( $name, $add_none = false ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1099,11 +1099,10 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$filter_key  = self::sanitize_key( $name );
 			$filter_name = 'wpsso_form_cache_' . $filter_key;
-			$cache_index = $filter_key . ( null === $rel ? '' : self::sanitize_key( SucomUtil::flatten_mixed( $rel ) ) );
 
-			if ( ! isset( self::$form_cache[ $cache_index ] ) ) {
+			if ( ! isset( self::$form_cache[ $filter_key ] ) ) {
 
-				self::$form_cache[ $cache_index ] = array();	// Create key for default filter.
+				self::$form_cache[ $filter_key ] = array();	// Create key for default filter.
 
 				if ( $this->p->debug->enabled ) {
 
@@ -1114,105 +1113,105 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					case 'half_hours':
 
-						self::$form_cache[ $cache_index ] = self::get_hours_range( $start_secs = 0, $end_secs = DAY_IN_SECONDS,
+						self::$form_cache[ $filter_key ] = self::get_hours_range( $start_secs = 0, $end_secs = DAY_IN_SECONDS,
 							$step_secs = 60 * 30, $label_format = 'H:i' );
 
 						break;
 
 					case 'quarter_hours':
 
-						self::$form_cache[ $cache_index ] = self::get_hours_range( $start_secs = 0, $end_secs = DAY_IN_SECONDS,
+						self::$form_cache[ $filter_key ] = self::get_hours_range( $start_secs = 0, $end_secs = DAY_IN_SECONDS,
 							$step_secs = 60 * 15, $label_format = 'H:i' );
 
 						break;
 
 					case 'all_types':
 
-						self::$form_cache[ $cache_index ] = $this->p->schema->get_schema_types_array( $flatten = false );
+						self::$form_cache[ $filter_key ] = $this->p->schema->get_schema_types_array( $flatten = false );
 
 						break;
 
 					case 'business_types':
 
-						$this->get_form_cache( 'all_types', false, $rel );
+						$this->get_form_cache( 'all_types', false );
 
-						self::$form_cache[ $cache_index ] =& self::$form_cache[ 'all_types' ][ 'thing' ][ 'place' ][ 'local.business' ];
+						self::$form_cache[ $filter_key ] =& self::$form_cache[ 'all_types' ][ 'thing' ][ 'place' ][ 'local.business' ];
 
 						break;
 
 					case 'business_types_select':
 
-						$this->get_form_cache( 'business_types', false, $rel );
+						$this->get_form_cache( 'business_types', false );
 
-						self::$form_cache[ $cache_index ] = $this->p->schema->get_schema_types_select( self::$form_cache[ 'business_types' ] );
+						self::$form_cache[ $filter_key ] = $this->p->schema->get_schema_types_select( self::$form_cache[ 'business_types' ] );
 
 						break;
 
 					case 'org_types':
 
-						$this->get_form_cache( 'all_types', false, $rel );
+						$this->get_form_cache( 'all_types', false );
 
-						self::$form_cache[ $cache_index ] =& self::$form_cache[ 'all_types' ][ 'thing' ][ 'organization' ];
+						self::$form_cache[ $filter_key ] =& self::$form_cache[ 'all_types' ][ 'thing' ][ 'organization' ];
 
 						break;
 
 					case 'org_types_select':
 
-						$this->get_form_cache( 'org_types', false, $rel );
+						$this->get_form_cache( 'org_types', false );
 
-						self::$form_cache[ $cache_index ] = $this->p->schema->get_schema_types_select( self::$form_cache[ 'org_types' ] );
+						self::$form_cache[ $filter_key ] = $this->p->schema->get_schema_types_select( self::$form_cache[ 'org_types' ] );
 
 						break;
 
 					case 'org_names':
 
-						self::$form_cache[ $cache_index ] = array( 'site' => $this->p->cf[ 'form' ][ 'org_select' ][ 'site' ] );
+						self::$form_cache[ $filter_key ] = array( 'site' => $this->p->cf[ 'form' ][ 'org_select' ][ 'site' ] );
 
-						self::$form_cache[ $cache_index ] = apply_filters( $filter_name, self::$form_cache[ $cache_index ], $rel );
+						self::$form_cache[ $filter_key ] = apply_filters( $filter_name, self::$form_cache[ $filter_key ] );
 
 						break;
 
 					case 'person_names':
 
-						self::$form_cache[ $cache_index ] = WpssoUser::get_person_names();
+						self::$form_cache[ $filter_key ] = WpssoUser::get_person_names();
 
 						break;
 
 					case 'place_types':
 
-						$this->get_form_cache( 'all_types', false, $rel );
+						$this->get_form_cache( 'all_types', false );
 
-						self::$form_cache[ $cache_index ] =& self::$form_cache[ 'all_types' ][ 'thing' ][ 'place' ];
+						self::$form_cache[ $filter_key ] =& self::$form_cache[ 'all_types' ][ 'thing' ][ 'place' ];
 
 						break;
 
 					case 'place_types_select':
 
-						$this->get_form_cache( 'place_types', false, $rel );
+						$this->get_form_cache( 'place_types', false );
 
-						self::$form_cache[ $cache_index ] = $this->p->schema->get_schema_types_select( self::$form_cache[ 'place_types' ] );
+						self::$form_cache[ $filter_key ] = $this->p->schema->get_schema_types_select( self::$form_cache[ 'place_types' ] );
 
 						break;
 
 					case 'place_names_custom':
 
-						$this->get_form_cache( 'place_names', false, $rel );
+						$this->get_form_cache( 'place_names', false );
 
-						self::$form_cache[ $cache_index ] = array(
+						self::$form_cache[ $filter_key ] = array(
 							'custom' => $this->p->cf[ 'form' ][ 'place_select' ][ 'custom' ],
-						) + self::$form_cache[ $cache_index ];
+						) + self::$form_cache[ $filter_key ];
 
 						break;
 
 					case 'place_names':
 
-						self::$form_cache[ $cache_index ] = apply_filters( $filter_name, self::$form_cache[ $cache_index ], $rel );
+						self::$form_cache[ $filter_key ] = apply_filters( $filter_name, self::$form_cache[ $filter_key ] );
 
 						break;
 
 					default:
 
-						self::$form_cache[ $cache_index ] = apply_filters( $filter_name, self::$form_cache[ $cache_index ], $rel );
+						self::$form_cache[ $filter_key ] = apply_filters( $filter_name, self::$form_cache[ $filter_key ] );
 
 						break;
 				}
@@ -1222,17 +1221,17 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$this->p->debug->log( 'using existing form cache entry for ' . $filter_key );
 			}
 
-			if ( isset( self::$form_cache[ $cache_index ][ 'none' ] ) ) {	// Just in case.
+			if ( isset( self::$form_cache[ $filter_key ][ 'none' ] ) ) {	// Just in case.
 
-				unset( self::$form_cache[ $cache_index ][ 'none' ] );
+				unset( self::$form_cache[ $filter_key ][ 'none' ] );
 			}
 
 			if ( $add_none ) {
 
-				return array( 'none' => '[None]' ) + self::$form_cache[ $cache_index ];
+				return array( 'none' => '[None]' ) + self::$form_cache[ $filter_key ];
 			}
 
-			return self::$form_cache[ $cache_index ];
+			return self::$form_cache[ $filter_key ];
 		}
 
 		/**

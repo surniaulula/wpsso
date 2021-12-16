@@ -2817,8 +2817,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$owner_roles      = $this->p->cf[ 'wp' ][ 'roles' ][ 'owner' ];
 			$site_owners      = SucomUtilWP::get_roles_user_select( $owner_roles );
 			$org_types_select = $this->p->util->get_form_cache( 'org_types_select', $add_none = false );
-			$place_names_rel  = $form->get_options( 'site_org_place_id' );	// Required to include deprecated settings place IDs.
-			$place_names      = $this->p->util->get_form_cache( 'place_names', $add_none = true, $place_names_rel );
+			$place_names      = $this->p->util->get_form_cache( 'place_names', $add_none = true );
 
 			$plm_req_msg = $this->p->msgs->maybe_ext_required( 'wpssoplm' );
 			$plm_disable = empty( $plm_req_msg ) ? false : true;
