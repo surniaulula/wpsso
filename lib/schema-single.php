@@ -811,7 +811,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * Add employment type options (value must be non-empty).
 			 */
-			foreach ( $this->p->cf[ 'form' ][ 'employment_type' ] as $empl_type => $label ) {
+			foreach ( $wpsso->cf[ 'form' ][ 'employment_type' ] as $empl_type => $label ) {
 
 				if ( 'none' !== $empl_type && ! empty( $job_opts[ 'job_empl_type_' . $empl_type ] ) ) {
 
@@ -2194,8 +2194,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 						if ( ! empty( $quantity[ 'unitCode' ] ) ) {
 
-							$quant_id = strtolower( $quant_id );
-
+							$quant_id  = strtolower( $quant_id );
 							$quant_rel = empty( $delivery_opts[ $delivery_opt_pre . '_rel' ] ) ?
 								$offer_url : $delivery_opts[ $delivery_opt_pre . '_rel' ];
 
@@ -2262,13 +2261,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			$wpsso =& Wpsso::get_instance();
 
-			$weekdays =& $wpsso->cf[ 'form' ][ 'weekdays' ];
-
-			$hours_rel = isset( $opts[ $opt_prefix . '_rel' ] ) ? $opts[ $opt_prefix . '_rel' ] : '';
-
+			$hours_rel          = isset( $opts[ $opt_prefix . '_rel' ] ) ? $opts[ $opt_prefix . '_rel' ] : '';
+			$business_weekdays  = $wpsso->cf[ 'form' ][ 'weekdays' ];
 			$opening_hours_spec = array();
 
-			foreach ( $weekdays as $day_name => $day_label ) {
+			foreach ( $business_weekdays as $day_name => $day_label ) {
 
 				/**
 				 * Returns an empty array or an associative array of open => close hours, including a timezone offset.
