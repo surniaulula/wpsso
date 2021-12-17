@@ -243,7 +243,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.12.2-rc.1 (2021/12/17)**
+**Version 9.12.2 (2021/12/17)**
 
 * **New Features**
 	* None.
@@ -671,7 +671,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 9.12.2-rc.1 =
+= 9.12.2 =
 
 (2021/12/17) Added new methods in `SucomUtilWP` and `WpssoOptions` for the new WPSSO OPM add-on.
 
