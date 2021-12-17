@@ -243,6 +243,24 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 9.12.2-dev.1 (2021/12/17)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new `WpssoOptions->set_version()` method.
+	* Updated / added `SucomUtilWP` static methods:
+		* `raw_update_post()`
+		* `raw_update_post_title()`
+		* `raw_update_post_title_content()`
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 9.12.1 (2021/12/17)**
 
 * **New Features**
@@ -652,6 +670,10 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 	* WordPress v5.0.
 
 == Upgrade Notice ==
+
+= 9.12.2-dev.1 =
+
+(2021/12/17) Added new methods in `SucomUtilWP` and `WpssoOptions`.
 
 = 9.12.1 =
 
