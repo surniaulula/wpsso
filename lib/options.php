@@ -1024,21 +1024,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 		}
 
-		public function remove_versions( array &$opts ) {	// Pass by reference is OK.
-
-			unset(
-				$opts[ 'plugin_checksum' ],
-				$opts[ 'options_version' ],	// Deprecated options checksum key.
-				$opts[ 'opt_checksum' ],
-				$opts[ 'opt_versions' ]
-			);
-
-			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
-
-				unset( $opts[ 'plugin_' . $ext . '_opt_version' ] );	// Deprecated options version key.
-			}
-		}
-
 		/**
 		 * Complete the options array for any custom post types and/or custom taxonomies.
 		 *

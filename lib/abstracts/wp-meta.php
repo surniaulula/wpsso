@@ -1573,8 +1573,6 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			$md_defs = $this->get_defaults( $mod[ 'id' ] );
 			$md_prev = $this->get_options( $mod[ 'id' ] );
 
-			$this->p->opt->remove_versions( $md_prev );	// Remove the option versions array.
-
 			/**
 			 * Merge and sanitize the new options.
 			 */
@@ -1622,7 +1620,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 					unset( $md_opts[ $md_key ] );
 
-				} elseif ( is_array( $md_val ) ) {
+				} elseif ( is_array( $md_val ) ) {	// ie. 'opt_versions' or other array.
 
 					if ( isset( $md_defs[ $md_key ] ) && $md_val === $md_defs[ $md_key ] ) {
 					
@@ -1888,6 +1886,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			 */
 			$this->p->opt->add_versions( $md_opts );
 
+			/**
+			 * Return and apply filters, like 'wpsso_save_md_options' and 'wpsso_save_post_options'.
+			 */
 			return $md_opts;
 		}
 
