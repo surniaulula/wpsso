@@ -135,8 +135,8 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 				} else {
 
-					$notice_msg .= sprintf( __( '<a href="%2$s">Please deactivate and delete the deprecated %3$s add-on</a>.', 'wpsso' ),
-						$addon_link, $plugins_url, $pkg_info[ 'wpssoorg' ][ 'name' ] );
+					$notice_msg .= sprintf( __( '<a href="%1$s">Please deactivate and delete the deprecated %2$s add-on</a>.', 'wpsso' ),
+						$plugins_url, $pkg_info[ 'wpssoorg' ][ 'name' ] );
 				}
 
 				$notice_key = 'deactivate-wpsso-organization';
@@ -162,8 +162,8 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 				} else {
 
-					$notice_msg .= sprintf( __( '<a href="%2$s">Please deactivate and delete the deprecated %3$s add-on</a>.', 'wpsso' ),
-						$addon_link, $plugins_url, $pkg_info[ 'wpssoplm' ][ 'name' ] );
+					$notice_msg .= sprintf( __( '<a href="%1$s">Please deactivate and delete the deprecated %2$s add-on</a>.', 'wpsso' ),
+						$plugins_url, $pkg_info[ 'wpssoplm' ][ 'name' ] );
 				}
 
 				$notice_key = 'deactivate-wpsso-plm';
