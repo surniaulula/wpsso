@@ -4111,10 +4111,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'pro' => array(),
 					'std' => array(),
 				),
-				'version' => '',	// -wpsso3.29.0pro-wpssoplm1.5.1pro-wpssoum1.4.0gpl
+				'version' => '',
 			);
 
-			self::$cf[ 'opt' ][ 'version' ] = '';	// -wpsso416pro-wpssoplm8pro
+			self::$cf[ 'opt' ][ 'version' ] = '';
 
 			self::$cf[ 'config_filtered' ] = false;
 
