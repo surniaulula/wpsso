@@ -243,7 +243,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.12.0-b.1 (2021/12/14)**
+**Version 9.12.0-b.2 (2021/12/16)**
 
 * **New Features**
 	* None.
@@ -639,9 +639,9 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 9.12.0-b.1 =
+= 9.12.0-b.2 =
 
-(2021/12/14) Extended the "WP List Table Columns" option, under the SSO &gt; Advanced Settings &gt; Interface tab, with custom post and taxonomy types.
+(2021/12/16) Extended the "WP List Table Columns" option, under the SSO &gt; Advanced Settings &gt; Interface tab, with custom post and taxonomy types.
 
 = 9.11.0 =
 
