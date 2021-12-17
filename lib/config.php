@@ -4605,7 +4605,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 			if ( isset( $a[ 'name' ] ) && isset( $b[ 'name' ] ) ) {
 
-				return strnatcmp( $a[ 'name' ], $b[ 'name' ] );
+				$a[ 'name' ] = _x( $a[ 'name' ], 'plugin name', 'wpsso' );
+				$b[ 'name' ] = _x( $b[ 'name' ], 'plugin name', 'wpsso' );
+
+				/**
+				 * Case insensitive string comparisons using a "natural order" algorithm.
+				 */
+				return strnatcasecmp( $a[ 'name' ], $b[ 'name' ] );
 			}
 
 			return 0;	// No change.
