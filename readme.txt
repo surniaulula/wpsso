@@ -243,6 +243,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 9.12.1 (2021/12/17)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed incorrect variable usage in `WpssoSchemaSingle::add_job_data()`.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 9.12.0 (2021/12/16)**
 
 * **New Features**
@@ -638,6 +652,10 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 	* WordPress v5.0.
 
 == Upgrade Notice ==
+
+= 9.12.1 =
+
+(2021/12/17) Fixed incorrect variable usage in `WpssoSchemaSingle::add_job_data()`.
 
 = 9.12.0 =
 
