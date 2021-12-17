@@ -1780,7 +1780,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html .= empty( $input_id ) ? '' : ' id="button_' . $input_id . '"';	// Already sanitized.
 			$html .= empty( $url ) || $is_disabled ? '' : $on_click;
 			$html .= empty( $el_attr ) ? '' : ' ' . trim( $el_attr );
-			$html .= ' value="' . esc_attr( wp_kses( $value, array() ) ) . '"/>';
+			$html .= ' value="' . esc_attr( wp_kses( $value, array() ) ) . '"/>';	// KSES (Kses Strips Evil Scripts).
 
 			return $html;
 		}

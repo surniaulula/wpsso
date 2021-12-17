@@ -368,7 +368,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			$defs           = null;	// Optimize and only get array when needed.
 			$save_changes   = false;
-			$is_plugin_upg  = $this->is_plugin_upgraded( $opts );	// Existing plugin versions have changed.
+			$is_plugin_upg  = $this->is_plugin_upgrading( $opts );	// Existing plugin versions have changed.
 			$is_option_upg  = $this->is_upgrade_required( $opts );	// Existing option versions have changed.
 
 			/**
@@ -914,15 +914,50 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			return 0;
 		}
 
+		/**
+		 * Returns true or false.
+		 */
+		public function set_version( array &$opts, $ext, $version = 0 ) {
+
+			if ( $ext ) {
+
+				if ( $version > 0 ) {
+
+					if ( ! isset( $opts[ 'opt_versions' ] ) || ! is_array( $opts[ 'opt_versions' ] ) ) {
+
+						$opts[ 'opt_versions' ] = array();
+					}
+
+					$opts[ 'opt_versions' ][ $ext ] = $version;
+
+				} else {
+
+					unset( $opts[ 'opt_versions' ][ $ext ] );
+				}
+
+				if ( isset( $opts[ 'plugin_' . $ext . '_opt_version' ] ) ) {	// Deprecated options version key.
+
+					unset( $opts[ 'plugin_' . $ext . '_opt_version' ] );
+				}
+
+				return true;
+			}
+
+			return false;
+		}
+
+		/**
+		 * Returns true or false.
+		 */
 		public function is_new_options( array $opts ) {
 
 			return empty( $opts[ 'opt_checksum' ] ) && empty( $opts[ 'options_version' ] ) ? true : false;
 		}
 
 		/**
-		 * Returns false for a new options array ('plugin_checksum' is an empty string by default).
+		 * Returns true or false, false for a new options array ('plugin_checksum' is an empty string by default).
 		 */
-		public function is_plugin_upgraded( array $opts ) {
+		public function is_plugin_upgrading( array $opts ) {
 
 			$cf_checksum = md5( $this->p->cf[ '*' ][ 'version' ] );
 
@@ -937,7 +972,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		}
 
 		/**
-		 * Returns false for a new options array ('opt_checksum' is an empty string by default).
+		 * Returns true or false, false for a new options array ('opt_checksum' is an empty string by default).
 		 */
 		public function is_upgrade_required( array $opts ) {
 
@@ -977,7 +1012,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				if ( isset( $info[ 'opt_version' ] ) ) {
+				if ( isset( $info[ 'opt_version' ] ) ) {	// Just in case.
 
 					$opts[ 'opt_versions' ][ $ext ] = $info[ 'opt_version' ];
 

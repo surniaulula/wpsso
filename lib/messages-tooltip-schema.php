@@ -69,15 +69,20 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 				case 'tooltip-schema_text_max_len':		// Text / Article Body Max. Length.
 
-					$text = sprintf( __( 'The maximum length of the Schema CreativeWork "text" or "articleBody" property values (the default is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'schema_text_max_len' ) );
+					$def_max_len = $this->p->opt->get_defaults( 'schema_text_max_len' );
+
+					$text = sprintf( __( 'The maximum length of the Schema CreativeWork "text" or "articleBody" property values (the default is %d characters).', 'wpsso' ), $def_max_len );
 
 		 			break;
 
 				case 'tooltip-schema_desc_max_len':		// Schema Description Max. Length.
 
-					$text = sprintf( __( 'The maximum length for the Schema description value (the default is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'schema_desc_max_len' ) ) . ' ';
+					$def_max_len   = $this->p->opt->get_defaults( 'schema_desc_max_len' );
+					$limit_min_len = $this->p->cf[ 'head' ][ 'limit_min' ][ 'schema_desc_len' ];
 
-					$text .= sprintf( __( 'The maximum length must be at least %d characters or more.', 'wpsso' ), $this->p->cf[ 'head' ][ 'limit_min' ][ 'schema_desc_len' ] );
+					$text = sprintf( __( 'The maximum length for the Schema description value (the default is %d characters).', 'wpsso' ), $def_max_len ) . ' ';
+
+					$text .= sprintf( __( 'The maximum length must be at least %d characters or more.', 'wpsso' ), $limit_min_len );
 
 					break;
 

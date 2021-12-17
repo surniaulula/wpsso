@@ -77,21 +77,28 @@ if ( ! class_exists( 'WpssoMessagesTooltipOpenGraph' ) ) {
 				 */
 				case 'tooltip-og_title_sep':		// Title Separator.
 
-					$text = sprintf( __( 'One or more characters used to separate values (category parent names, page numbers, etc.) within the Facebook / Open Graph title string (the default is a hyphen "%s" character).', 'wpsso' ), $this->p->opt->get_defaults( 'og_title_sep' ) );
+					$def_sep = $this->p->opt->get_defaults( 'og_title_sep' );
+
+					$text = sprintf( __( 'One or more characters used to separate values (category parent names, page numbers, etc.) within the Facebook / Open Graph title string (the default is a hyphen "%s" character).', 'wpsso' ), $def_sep );
 
 					break;
 
 				case 'tooltip-og_title_max_len':	// Title Max. Length.
 
-					$text = sprintf( __( 'The maximum length for the Facebook / Open Graph title value (the default is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'og_title_max_len' ) );
+					$def_max_len = $this->p->opt->get_defaults( 'og_title_max_len' );
+
+					$text = sprintf( __( 'The maximum length for the Facebook / Open Graph title value (the default is %d characters).', 'wpsso' ), $def_max_len );
 
 					break;
 
 				case 'tooltip-og_desc_max_len':		// Description Max. Length.
 
-					$text = sprintf( __( 'The maximum length for the Facebook / Open Graph description value (the default is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'og_desc_max_len' ) ) . ' ';
+					$def_max_len   = $this->p->opt->get_defaults( 'og_desc_max_len' );
+					$limit_min_len = $this->p->cf[ 'head' ][ 'limit_min' ][ 'og_desc_len' ];
 
-					$text .= sprintf( __( 'The maximum length must be at least %d characters or more.', 'wpsso' ), $this->p->cf[ 'head' ][ 'limit_min' ][ 'og_desc_len' ] );
+					$text = sprintf( __( 'The maximum length for the Facebook / Open Graph description value (the default is %d characters).', 'wpsso' ), $def_max_len ) . ' ';
+
+					$text .= sprintf( __( 'The maximum length must be at least %d characters or more.', 'wpsso' ), $limit_min_len );
 
 					break;
 
@@ -144,9 +151,10 @@ if ( ! class_exists( 'WpssoMessagesTooltipOpenGraph' ) ) {
 
 					$text .= __( 'The image URL option allows you to use an image outside of a managed collection (WordPress Media Library or NextGEN Gallery), and/or a smaller logo style image.', 'wpsso' ) . ' ';
 
-					$text .= sprintf( __( 'The image should be at least %s or more in width and height.', 'wpsso' ),
-						$this->p->cf[ 'head' ][ 'limit_min' ][ 'og_img_width' ] . 'x' .
-							$this->p->cf[ 'head' ][ 'limit_min' ][ 'og_img_height' ] . 'px' ) . ' ';
+					$limit_min_width  = $this->p->cf[ 'head' ][ 'limit_min' ][ 'og_img_width' ];
+					$limit_min_height = $this->p->cf[ 'head' ][ 'limit_min' ][ 'og_img_width' ];
+
+					$text .= sprintf( __( 'The image should be at least %s or more in width and height.', 'wpsso' ), $limit_min_width . 'x' . $limit_min_height . 'px' ) . ' ';
 
 					$text .= __( 'The default image is used for archive pages (ie. blog, category, and tag archive page) and as a fallback for posts and pages that do not have a suitable image featured, attached, or in their content.', 'wpsso' ) . ' ';
 

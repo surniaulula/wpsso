@@ -230,7 +230,9 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 					case 'tooltip-seo_desc_max_len':	// Description Meta Tag Max. Length.
 
-						$text = sprintf( __( 'The maximum length for the SEO description meta tag value (the default is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'seo_desc_max_len' ) ) . ' ';
+						$def_max_len = $this->p->opt->get_defaults( 'seo_desc_max_len' );
+
+						$text = sprintf( __( 'The maximum length for the SEO description meta tag value (the default is %d characters).', 'wpsso' ), $def_max_len ) . ' ';
 
 						$text .= sprintf( __( 'The maximum length must be at least %d characters or more.', 'wpsso' ), $this->p->cf[ 'head' ][ 'limit_min' ][ 'seo_desc_len' ] );
 
@@ -374,7 +376,9 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 					case 'tooltip-pin_img_desc_max_len':		// Image Description Max. Length.
 
-						$text = sprintf( __( 'The maximum length used for the Pinterest Pin It browser button description (the default is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'pin_img_desc_max_len' ) ) . ' ';
+						$def_max_len = $this->p->opt->get_defaults( 'pin_img_desc_max_len' );
+
+						$text = sprintf( __( 'The maximum length used for the Pinterest Pin It browser button description (the default is %d characters).', 'wpsso' ), $def_max_len ) . ' ';
 
 						break;
 
@@ -416,13 +420,17 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 					case 'tooltip-tc_title_max_len':	// Twitter Card Title Max. Length.
 
-						$text = sprintf( __( 'The maximum length for the Twitter Card title value (the default is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'tc_title_max_len' ) );
+						$def_max_len = $this->p->opt->get_defaults( 'tc_title_max_len' );
+
+						$text = sprintf( __( 'The maximum length for the Twitter Card title value (the default is %d characters).', 'wpsso' ), $def_max_len );
 
 						break;
 
 					case 'tooltip-tc_desc_max_len':	// Twitter Card Description Max. Length.
 
-						$text = sprintf( __( 'The maximum length for the Twitter Card description value (the default is %d characters).', 'wpsso' ), $this->p->opt->get_defaults( 'tc_desc_max_len' ) ) . ' ';
+						$def_max_len = $this->p->opt->get_defaults( 'tc_desc_max_len' );
+
+						$text = sprintf( __( 'The maximum length for the Twitter Card description value (the default is %d characters).', 'wpsso' ), $def_max_len ) . ' ';
 
 						$text .= sprintf( __( 'The maximum length must be at least %d characters or more.', 'wpsso' ), $this->p->cf[ 'head' ][ 'limit_min' ][ 'tc_desc_len' ] );
 
