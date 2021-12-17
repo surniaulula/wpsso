@@ -2349,7 +2349,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					if ( $og_type = $this->p->schema->get_schema_type_og_type( $type_id ) ) {
 
 						$md_opts[ 'og_type' ] = $og_type;
-					
+
 						$md_opts[ 'og_type:disabled' ] = true;
 					}
 				}

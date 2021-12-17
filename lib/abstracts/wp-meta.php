@@ -1623,7 +1623,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				} elseif ( is_array( $md_val ) ) {	// ie. 'opt_versions' or other array.
 
 					if ( isset( $md_defs[ $md_key ] ) && $md_val === $md_defs[ $md_key ] ) {
-					
+
 						unset( $md_opts[ $md_key ] );
 					}
 
@@ -1640,9 +1640,9 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 							unset( $md_opts[ $md_key ] );
 					}
-				
+
 				} elseif ( isset( $md_defs[ $md_key ] ) ) {
-				
+
 					if ( $md_val === $md_defs[ $md_key ] || $md_val === (string) $md_defs[ $md_key ] ) {
 
 						unset( $md_opts[ $md_key ] );
