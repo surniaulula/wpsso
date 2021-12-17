@@ -416,7 +416,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $metadata[ $obj_id ];
 		}
 
-		public static function raw_update_post_title( $post_id, $post_title ) {
+		public static function raw_update_post_title( $post_id, $post_title, $post_content = null ) {
 
 			if ( wp_is_post_revision( $post_id ) ) {
 
@@ -428,14 +428,27 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 				return false;
 			}
 
+			global $wpdb;
+
 			$post_id    = absint( $post_id );
 			$post_title = sanitize_text_field( $post_title );
 			$post_name  = sanitize_title( $post_title );
 			$where      = array( 'ID' => $post_id );
 
-			global $wpdb;
+			$args = array(
+				'post_title' => $post_title,
+				'post_name'  => $post_name,
+			);
 
-			return $wpdb->update( $wpdb->posts, array( 'post_title' => $post_title, 'post_name' => $post_name ), $where );
+			/**
+			 * If provided, update the post content as well.
+			 */
+			if ( null !== $post_content ) {
+
+				$args[ 'post_content' ] = $post_content;
+			}
+
+			return $wpdb->update( $wpdb->posts, $args, $where );
 		}
 
 		public static function raw_metadata_exists( $meta_type, $obj_id, $meta_key ) {
