@@ -4481,57 +4481,6 @@ msgctxt "default description"
 msgid "No Description."
 msgstr "Aucune description."
 
-#: lib/abstracts/wp-meta.php:1056
-msgctxt "metabox tab"
-msgid "Customize"
-msgstr "Personnaliser"
-
-#: lib/abstracts/wp-meta.php:1057 lib/messages.php:284
-msgctxt "metabox tab"
-msgid "Priority Media"
-msgstr "Média prioritaire"
-
-#: lib/abstracts/wp-meta.php:1061
-msgctxt "metabox tab"
-msgid "Robots Meta"
-msgstr "Méta robots"
-
-#: lib/abstracts/wp-meta.php:1062
-msgctxt "metabox tab"
-msgid "Social Preview"
-msgstr "Aperçu social"
-
-#: lib/abstracts/wp-meta.php:1063
-msgctxt "metabox tab"
-msgid "oEmbed Preview"
-msgstr "Aperçu oEmbed"
-
-#: lib/abstracts/wp-meta.php:1064
-msgctxt "metabox tab"
-msgid "Head Markup"
-msgstr "Balisage d'entête"
-
-#: lib/abstracts/wp-meta.php:1065
-msgctxt "metabox tab"
-msgid "Validators"
-msgstr "Validateurs"
-
-#: lib/abstracts/wp-meta.php:1535
-msgid "Nonce token validation failed for the submitted form (update ignored)."
-msgstr "La validation du jeton nonce pour le formulaire soumis a échoué (mise à jour ignorée)."
-
-#: lib/abstracts/wp-meta.php:1868 lib/json-filters/type/claimreview.php:69
-msgid "A claim review cannot be the subject of another claim review."
-msgstr "Un examen d'évaluation ne peut pas être le sujet d'un autre examen d'évaluation."
-
-#: lib/abstracts/wp-meta.php:1870
-msgid "Please select a subject webpage type that better describes the subject of the webpage (ie. the content) being reviewed."
-msgstr "SVP sélectionner un type de page Web du sujet qui décrit mieux le sujet de la page Web (c'est-à-dire le contenu) en cours de révision."
-
-#: lib/abstracts/wp-meta.php:2634
-msgid "adding schema images"
-msgstr "ajout d'images schéma"
-
 #: lib/admin-filters.php:88
 msgctxt "lib file description"
 msgid "(feature) Use Filtered \"SEO\" Title"
