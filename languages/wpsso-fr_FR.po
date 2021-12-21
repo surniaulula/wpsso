@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 9.12.2\n"
+"Project-Id-Version: WPSSO Core 9.12.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2021-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2021-12-21 08:24-0800\n"
+"PO-Revision-Date: 2021-12-21 10:29-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -8954,16 +8954,19 @@ msgstr "Une image de bannière d'organisation (600x60px) est manquante et requis
 msgid "Please enter the missing image URL in the \"%1$s\" %2$s organization settings."
 msgstr "Veuillez fournir l'URL de l'image manquante dans les paramètres de l'organisation %2$s \"%1$s\"."
 
-#. translators: site, as in the "site organization settings".
-#: lib/schema-single.php:1059
+#: lib/schema-single.php:1060
 msgid "site"
 msgstr "site"
 
-#: lib/schema-single.php:1246
+#: lib/schema-single.php:1074 lib/schema-single.php:1083
+msgid "ID #%s"
+msgstr "ID #%s"
+
+#: lib/schema-single.php:1256
 msgid "adding schema person"
 msgstr "ajout de schéma de personne"
 
-#: lib/schema-single.php:1449
+#: lib/schema-single.php:1459
 msgid "adding schema place"
 msgstr "ajout de schéma d'endroit"
 

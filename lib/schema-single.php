@@ -1051,30 +1051,39 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 							if ( $notice_msg ) {
 
+								/**
+								 * WebSite organization.
+								 */
 								if ( 'site' === $org_id ) {
 
 									$general_page_link = $wpsso->util->get_admin_url( 'essential' );
+									$org_id_transl     = __( 'site', 'wpsso' );
 
-									// translators: site, as in the "site organization settings".
-									$org_id_transl = __( 'site', 'wpsso' );
-
-									$notice_msg .= ' <a href="' . $general_page_link . '">';
+									$notice_msg .= ' ';
+									$notice_msg .= '<a href="' . $general_page_link . '">';
 									$notice_msg .= sprintf( $org_settings_msg, $json_ret[ 'name' ], $org_id_transl );
 									$notice_msg .= '</a>';
 
+								/**
+								 * WPSSO Organization and Place add-on organization ID.
+								 */
 								} elseif ( 0 === strpos( $org_id, 'org-' ) && ! empty( $wpsso->avail[ 'p_ext' ][ 'opm' ] ) ) {
 
 									$post_id       = substr( $org_id, 4 );
 									$org_page_link = get_edit_post_link( $post_id );
+									$org_id_transl = sprintf( __( 'ID #%s', 'wpsso' ), $post_id );
 
-									$notice_msg .= $org_page_link ? ' <a href="' . $org_page_link . '">' : '';
-									$notice_msg .= sprintf( $org_settings_msg, $json_ret[ 'name' ], 'ID #' . $org_id );
+									$notice_msg .= ' ';
+									$notice_msg .= $org_page_link ? '<a href="' . $org_page_link . '">' : '';
+									$notice_msg .= sprintf( $org_settings_msg, $json_ret[ 'name' ], $org_id_transl );
 									$notice_msg .= $org_page_link ? '</a>' : '';
 
 								} else {
 
+									$org_id_transl = sprintf( __( 'ID #%s', 'wpsso' ), $org_id );
+
 									$notice_msg .= ' ';
-									$notice_msg .= sprintf( $org_settings_msg, $json_ret[ 'name' ], 'ID #' . $org_id );
+									$notice_msg .= sprintf( $org_settings_msg, $json_ret[ 'name' ], $org_id_transl );
 								}
 
 								$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-schema-' . $org_logo_key;
