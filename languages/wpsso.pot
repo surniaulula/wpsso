@@ -10181,11 +10181,11 @@ msgstr ""
 msgid "site"
 msgstr ""
 
-#: lib/schema-single.php:1246
+#: lib/schema-single.php:1247
 msgid "adding schema person"
 msgstr ""
 
-#: lib/schema-single.php:1449
+#: lib/schema-single.php:1450
 msgid "adding schema place"
 msgstr ""
 

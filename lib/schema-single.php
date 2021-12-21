@@ -1062,13 +1062,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 									$notice_msg .= sprintf( $org_settings_msg, $json_ret[ 'name' ], $org_id_transl );
 									$notice_msg .= '</a>';
 
-								} elseif ( ! empty( $wpsso->avail[ 'p_ext' ][ 'org' ] ) ) {
+								} elseif ( 0 === strpos( $org_id, 'org-' ) && ! empty( $wpsso->avail[ 'p_ext' ][ 'opm' ] ) ) {
 
-									$org_page_link = $wpsso->util->get_admin_url( 'org-general#sucom-tabset_org-tab_other_organizations' );
+									$post_id       = substr( $org_id, 4 );
+									$org_page_link = get_edit_post_link( $post_id );
 
-									$notice_msg .= ' <a href="' . $org_page_link . '">';
+									$notice_msg .= $org_page_link ? ' <a href="' . $org_page_link . '">' : '';
 									$notice_msg .= sprintf( $org_settings_msg, $json_ret[ 'name' ], 'ID #' . $org_id );
-									$notice_msg .= '</a>';
+									$notice_msg .= $org_page_link ? '</a>' : '';
 
 								} else {
 
