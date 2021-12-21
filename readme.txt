@@ -243,6 +243,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 9.12.3 (2021/12/21)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added support for the WPSSO OPM add-on when checking for required organization logo / banner images in `WpssoSchemaSingle::add_organization_data()`.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 9.12.2 (2021/12/17)**
 
 * **New Features**
@@ -670,6 +684,10 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 	* WordPress v5.0.
 
 == Upgrade Notice ==
+
+= 9.12.3 =
+
+(2021/12/21) Added support for the WPSSO OPM add-on when checking for required organization logo / banner images.
 
 = 9.12.2 =
 
