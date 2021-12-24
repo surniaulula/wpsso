@@ -669,6 +669,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		/**
+		 * This method is hooked to the 'manage_pages_columns' filter.
+		 *
 		 * See https://core.trac.wordpress.org/browser/tags/5.8.1/src/wp-admin/includes/class-wp-posts-list-table.php#L711.
 		 */
 		public function add_page_column_headings( $columns ) {
@@ -679,8 +681,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		/**
-		 * This method is hooked to 'manage_posts_columns', which should provide both arguments, but provide a default
-		 * $post_type value, just in case.
+		 * This method is hooked to the 'manage_posts_columns' filter.
+		 *
+		 * Some plugins have been known to call the 'manage_posts_columns' filter with only one argument, so include a
+		 * default value for the second argument to avoid a PHP fatal error.
 		 *
 		 * See https://core.trac.wordpress.org/browser/tags/5.8.1/src/wp-admin/includes/class-wp-posts-list-table.php#L722.
 		 */
@@ -692,6 +696,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		/**
+		 * This method is hooked to the 'manage_media_columns' filter.
+		 *
 		 * See https://core.trac.wordpress.org/browser/tags/5.8.1/src/wp-admin/includes/class-wp-media-list-table.php#L366.
 		 */
 		public function add_media_column_headings( $columns ) {
