@@ -594,7 +594,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				'order'            => 'DESC',		// Newest first.
 				'orderby'          => 'date',
 				'paged'            => false,
-				'post_status'      => 'publish',	// Only 'publish', not 'auto-draft', 'draft', 'future', 'inherit', 'pending', 'private', or 'trash'.
+				'post_status'      => 'publish',	// Only 'publish' (not 'auto-draft', 'draft', 'future', 'inherit', 'pending', 'private', or 'trash').
 				'post_type'        => 'any',		// Return any post, page, or custom post type.
 				'posts_per_page'   => -1,		// The number of posts to query for. -1 to request all posts.
 				'no_found_rows'    => true,		// Skip counting total rows found - should be enabled when pagination is not needed.
@@ -668,6 +668,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $post_ids;
 		}
 
+		/**
+		 * See https://core.trac.wordpress.org/browser/tags/5.8.1/src/wp-admin/includes/class-wp-posts-list-table.php#L711.
+		 */
 		public function add_page_column_headings( $columns ) {
 
 			add_filter( 'manage_edit-page_sortable_columns', array( $this, 'add_sortable_columns' ), 10, 1 );
@@ -675,13 +678,22 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $this->add_column_headings( $columns, $post_type = 'page' );
 		}
 
-		public function add_post_column_headings( $columns, $post_type ) {
+		/**
+		 * This method is hooked to 'manage_posts_columns', which should provide both arguments, but provide a default
+		 * $post_type value, just in case.
+		 *
+		 * See https://core.trac.wordpress.org/browser/tags/5.8.1/src/wp-admin/includes/class-wp-posts-list-table.php#L722.
+		 */
+		public function add_post_column_headings( $columns, $post_type = 'post' ) {
 
 			add_filter( 'manage_edit-' . $post_type . '_sortable_columns', array( $this, 'add_sortable_columns' ), 10, 1 );
 
 			return $this->add_column_headings( $columns, $post_type );
 		}
 
+		/**
+		 * See https://core.trac.wordpress.org/browser/tags/5.8.1/src/wp-admin/includes/class-wp-media-list-table.php#L366.
+		 */
 		public function add_media_column_headings( $columns ) {
 
 			add_filter( 'manage_upload_sortable_columns', array( $this, 'add_sortable_columns' ), 10, 1 );

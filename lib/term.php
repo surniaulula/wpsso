@@ -484,7 +484,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				'has_password' => false,
 				'order'        => 'DESC',	// Newest first.
 				'orderby'      => 'date',
-				'post_status'  => 'publish',	// Only 'publish', not 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', or 'trash'.
+				'post_status'  => 'publish',	// Only 'publish' (not 'auto-draft', 'draft', 'future', 'inherit', 'pending', 'private', or 'trash').
 				'post_type'    => 'any',	// Return posts, pages, or any custom post type.
 				'tax_query'    => array(
 				        array(

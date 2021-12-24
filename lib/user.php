@@ -464,7 +464,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				'has_password' => false,
 				'order'        => 'DESC',		// Newest first.
 				'orderby'      => 'date',
-				'post_status'  => 'publish',		// Only 'publish', not 'pending', 'draft', 'auto-draft', 'future', 'private', 'inherit', or 'trash'.
+				'post_status'  => 'publish',		// Only 'publish' (not 'auto-draft', 'draft', 'future', 'inherit', 'pending', 'private', or 'trash').
 				'post_type'    => 'post',		// Return only posts authored by the user.
 				'author'       => $mod[ 'id' ],
 			), $extra_args, array( 'fields' => 'ids' ) );	// Return an array of post IDs.
