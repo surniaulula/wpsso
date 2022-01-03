@@ -15,7 +15,7 @@
  * Requires At Least: 5.2
  * Tested Up To: 5.8.2
  * WC Tested Up To: 6.0.0
- * Version: 9.12.4-dev.1
+ * Version: 9.12.4-dev.2
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -24,7 +24,7 @@
  *      {bugfix}        Backwards-compatible bug fixes or small improvements.
  *      {stage}.{level} Pre-production release: dev < a (alpha) < b (beta) < rc (release candidate).
  *
- * Copyright 2012-2021 Jean-Sebastien Morisset (https://wpsso.com/)
+ * Copyright 2012-2022 Jean-Sebastien Morisset (https://wpsso.com/)
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

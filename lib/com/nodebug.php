@@ -2,7 +2,7 @@
 /**
  * License: GPLv3
  * License URI: https://www.gnu.org/licenses/gpl.txt
- * Copyright 2012-2021 Jean-Sebastien Morisset (https://surniaulula.com/)
+ * Copyright 2012-2022 Jean-Sebastien Morisset (https://surniaulula.com/)
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
