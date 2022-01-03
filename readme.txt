@@ -243,7 +243,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.12.4-dev.1 (2022/01/02)**
+**Version 9.12.4-dev.2 (2022/01/02)**
 
 * **New Features**
 	* None.
@@ -699,7 +699,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 9.12.4-dev.1 =
+= 9.12.4-dev.2 =
 
 (2022/01/02) Added add-on config sanitation checks, in case an add-on config is incomplete.
 
