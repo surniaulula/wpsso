@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.12.4-dev.2',	// Plugin version.
+					'version'     => '9.12.4-dev.3',	// Plugin version.
 					'opt_version' => '853',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2067,7 +2067,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '4.10.3-dev.2',	// Minimum update manager version (soft limit).
+				'rec_version' => '4.10.3-dev.3',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
 					48  => 'Every two days',
@@ -4186,6 +4186,19 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					$plugins_url_base = trailingslashit( plugins_url( '', $info[ 'base' ] ) );
 
 					array_walk_recursive( self::$cf[ 'plugin' ][ $ext ][ 'assets' ], array( __CLASS__, 'maybe_prefix_base_url' ), $plugins_url_base );
+				}
+
+				/**
+				 * Since WPSSO Core v9.12.4.
+				 *
+				 * Provides backwards compatibility for older WPSSO JSON add-ons.
+				 */
+				if ( class_exists( 'WpssoJson' ) ) {
+
+					if ( empty( self::$cf[ 'plugin' ][ 'wpssojson' ][ 'url' ][ 'update' ] ) ) {
+					
+						self::$cf[ 'plugin' ][ 'wpssojson' ][ 'url' ][ 'update' ] = 'https://wpsso.com/extend/plugins/wpsso-schema-json-ld/update/';
+					}
 				}
 			}
 

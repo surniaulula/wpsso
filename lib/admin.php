@@ -1712,7 +1712,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				if ( empty( $info[ 'version' ] ) ) {	// Exclude add-ons that are not installed.
+				if ( empty( $info[ 'version' ] ) ) {	// Exclude add-ons that are not active.
 
 					continue;
 
@@ -2148,7 +2148,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				if ( empty( $info[ 'version' ] ) ) {	// Exclude add-ons that are not installed.
+				if ( empty( $info[ 'version' ] ) ) {	// Exclude add-ons that are not active.
 
 					continue;
 				}
@@ -2198,7 +2198,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				if ( empty( $info[ 'version' ] ) ) {	// Exclude add-ons that are not installed.
+				if ( empty( $info[ 'version' ] ) ) {	// Exclude add-ons that are not active.
 
 					continue;
 				}

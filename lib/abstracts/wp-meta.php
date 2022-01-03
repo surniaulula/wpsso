@@ -875,7 +875,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 				}
 			}
 
-			$md_opts = apply_filters( 'wpsso_upgraded_md_options', $md_opts );
+			$md_opts = (array) apply_filters( 'wpsso_upgraded_md_options', $md_opts );
 
 			/**
 			 * Add plugin and add-on option versions (ie. 'plugin_checksum', 'opt_checksum', and 'opt_versions').
