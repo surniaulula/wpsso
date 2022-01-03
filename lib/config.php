@@ -4196,7 +4196,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				if ( class_exists( 'WpssoJson' ) ) {
 
 					if ( empty( self::$cf[ 'plugin' ][ 'wpssojson' ][ 'url' ][ 'update' ] ) ) {
-					
+
 						self::$cf[ 'plugin' ][ 'wpssojson' ][ 'url' ][ 'update' ] = 'https://wpsso.com/extend/plugins/wpsso-schema-json-ld/update/';
 					}
 				}
