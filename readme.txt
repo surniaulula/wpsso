@@ -248,7 +248,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Added extra config sanitation checks in case an add-on config is incomplete.
+	* Added extra config sanitation in case an add-on config is incomplete.
+	* Added WPSSO JSON update URL to config for older WPSSO JSON versions.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -701,7 +702,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 = 9.12.4-dev.3 =
 
-(2022/01/02) Added extra config sanitation checks in case an add-on config is incomplete.
+(2022/01/02) Added extra config sanitation in case an add-on config is incomplete. Added WPSSO JSON update URL to config for older WPSSO JSON versions.
 
 = 9.12.3 =
 
