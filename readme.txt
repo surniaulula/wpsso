@@ -243,7 +243,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.12.4-rc.1 (2022/01/03)**
+**Version 9.12.4 (2022/01/03)**
 
 * **New Features**
 	* None.
@@ -700,7 +700,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 9.12.4-rc.1 =
+= 9.12.4 =
 
 (2022/01/03) Added extra config sanitation in case an add-on config is incomplete. Added WPSSO JSON update URL to config for older WPSSO JSON versions.
 
