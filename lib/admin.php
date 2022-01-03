@@ -341,6 +341,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
+				if ( empty( $info[ 'name' ] ) ) {	// Just in case.
+
+					continue;
+				}
+
 				$ext_pdir        = $this->p->check->pp( $ext, $li = false );
 				$ext_auth_id     = $this->p->check->get_ext_auth_id( $ext );
 				$ext_pp          = $ext_auth_id && $this->p->check->pp( $ext, $li = true, WPSSO_UNDEF ) === WPSSO_UNDEF ? true : false;
@@ -828,7 +833,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						_x( 'Documentation', 'plugin action link', 'wpsso' ) . '</a>';
 			}
 
-			if ( ! empty( $info[ 'url' ][ 'support' ] ) && $pkg_info[ $ext ][ 'pp' ] ) {
+			if ( ! empty( $info[ 'url' ][ 'support' ] ) && ! empty( $pkg_info[ $ext ][ 'pp' ] ) ) {
 
 				$action_links[] = '<a href="' . $info[ 'url' ][ 'support' ] . '"' .
 					( false !== $tabindex ? ' tabindex="' . ++$tabindex . '"' : '' ) . '>' .
@@ -1707,7 +1712,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				if ( empty( $info[ 'version' ] ) ) {	// Filter out add-ons that are not installed.
+				if ( empty( $info[ 'version' ] ) ) {	// Exclude add-ons that are not installed.
 
 					continue;
 
@@ -2143,7 +2148,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				if ( empty( $info[ 'version' ] ) ) {	// Filter out add-ons that are not installed.
+				if ( empty( $info[ 'version' ] ) ) {	// Exclude add-ons that are not installed.
 
 					continue;
 				}
@@ -2193,7 +2198,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
-				if ( empty( $info[ 'version' ] ) ) {	// Filter out add-ons that are not installed.
+				if ( empty( $info[ 'version' ] ) ) {	// Exclude add-ons that are not installed.
 
 					continue;
 				}
@@ -2403,6 +2408,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '<table class="sucom-settings wpsso addons-metabox" style="padding-bottom:10px">' . "\n";
 
 			foreach ( $ext_sorted as $ext => $info ) {
+
+				if ( empty( $info[ 'name' ] ) ) {
+
+					continue;
+				}
 
 				$ext_num++;
 

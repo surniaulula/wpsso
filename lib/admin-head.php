@@ -172,6 +172,11 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $ext_info ) {
 
+				if ( empty( $ext_info[ 'name' ] ) ) {	// Just in case.
+
+					continue;
+				}
+
 				if ( ! empty( $this->p->options[ 'plugin_' . $ext . '_tid' ] ) ) {
 
 					$have_tid = true;	// Found at least one plugin with an auth id.
@@ -368,6 +373,11 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			$showing_ext = get_transient( $cache_id );	// Returns an empty string or the $notice_key value.
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $ext_info ) {
+
+				if ( empty( $ext_info[ 'name' ] ) ) {	// Just in case.
+
+					continue;
+				}
 
 				$p_info          = $this->p->cf[ 'plugin' ][ 'wpsso' ];
 				$p_name_transl   = _x( $p_info[ 'name' ], 'plugin name', 'wpsso' );

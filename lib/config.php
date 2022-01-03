@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.12.3',	// Plugin version.
+					'version'     => '9.12.4-dev.1',	// Plugin version.
 					'opt_version' => '853',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -4181,9 +4181,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				/**
 				 * Maybe complete relative paths in the image arrays.
 				 */
-				$plugins_url_base = trailingslashit( plugins_url( '', $info[ 'base' ] ) );
+				if ( ! empty( $info[ 'base' ] ) ) {	// Just in case.
 
-				array_walk_recursive( self::$cf[ 'plugin' ][ $ext ][ 'assets' ], array( __CLASS__, 'maybe_prefix_base_url' ), $plugins_url_base );
+					$plugins_url_base = trailingslashit( plugins_url( '', $info[ 'base' ] ) );
+
+					array_walk_recursive( self::$cf[ 'plugin' ][ $ext ][ 'assets' ], array( __CLASS__, 'maybe_prefix_base_url' ), $plugins_url_base );
+				}
 			}
 
 			return self::$cf;

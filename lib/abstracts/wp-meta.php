@@ -819,7 +819,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			return self::must_be_extended( $ret_val );
 		}
 
-		protected function upgrade_options( $md_opts, $obj_id ) {
+		protected function upgrade_options( array $md_opts, $obj_id ) {
 
 			/**
 			 * Get the current options version number for checks to follow.
@@ -880,7 +880,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			/**
 			 * Add plugin and add-on option versions (ie. 'plugin_checksum', 'opt_checksum', and 'opt_versions').
 			 */
-			$this->p->opt->add_versions( $md_opts );
+			$this->p->opt->add_versions( $md_opts );	// Note that $md_opts must be an array.
 
 			return $md_opts;
 		}
@@ -1884,7 +1884,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 			/**
 			 * Add plugin and add-on option versions (ie. 'plugin_checksum', 'opt_checksum', and 'opt_versions').
 			 */
-			$this->p->opt->add_versions( $md_opts );
+			$this->p->opt->add_versions( $md_opts );	// Note that $md_opts must be an array.
 
 			/**
 			 * Return and apply filters, like 'wpsso_save_md_options' and 'wpsso_save_post_options'.

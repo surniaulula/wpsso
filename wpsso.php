@@ -15,7 +15,7 @@
  * Requires At Least: 5.2
  * Tested Up To: 5.8.2
  * WC Tested Up To: 6.0.0
- * Version: 9.12.3
+ * Version: 9.12.4-dev.1
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -860,7 +860,11 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 				foreach ( $this->cf[ 'plugin' ] as $ext => $info ) {
 
-					if ( $info[ 'slug' ] === $domain ) {
+					if ( empty( $info[ 'slug' ] ) ) {	// Just in case.
+
+						continue;
+
+					} elseif ( $domain === $info[ 'slug' ] ) {
 
 						$languages_mofile = 'languages/' . basename( $wp_mofile );
 

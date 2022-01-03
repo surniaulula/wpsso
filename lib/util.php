@@ -3244,7 +3244,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		/**
 		 * Rename options array keys, preserving the option modifiers (ie. '_[0-9]', ':disabled', ':use', and '#.*').
 		 */
-		public function rename_options_by_ext( $opts, $version_keys ) {
+		public function rename_options_by_ext( array $opts, array $version_keys ) {
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
@@ -3281,7 +3281,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $opts;
 		}
 
-		public function rename_options_keys( $opts, $opt_keys ) {
+		public function rename_options_keys( array $opts, array $opt_keys ) {
 
 			foreach ( $opt_keys as $old_key => $new_key ) {
 
