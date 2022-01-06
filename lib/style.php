@@ -413,11 +413,11 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			}
 
 			$custom_style_css .= '
-				table.wp-list-table > thead > tr > td#cb,
-				table.wp-list-table > thead > tr > td.column-cb,
-				table.wp-list-table > thead > tr > td.check-column,
-				table.wp-list-table > tbody > tr > th.check-column,
-				table.wp-list-table > tbody > tr > th.column-cb {
+				table.wp-list-table > thead > tr > td#cb,		/* Note thead with td. */
+				table.wp-list-table > thead > tr > td.column-cb,	/* Note thead with td. */
+				table.wp-list-table > tbody > tr > th.column-cb,	/* Note tbody with th. */
+				table.wp-list-table > thead > tr > td.check-column,	/* Note thead with td. */
+				table.wp-list-table > tbody > tr > th.check-column {	/* Note tbody with th. */
 					width:2.2em;
 				}
 				table.wp-list-table > thead > tr > th.column-author,
@@ -570,9 +570,10 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				}
 			}
 
-			if ( isset( $sortable_cols[ 'og_img' ][ 'width' ] ) ) {
+			if ( isset( $sortable_cols[ 'og_img' ][ 'width' ] ) ) {	// Just in case.
 
 				$custom_style_css .= '
+					table.wp-list-table > thead > tr > th.column-wpsso_og_img,
 					table.wp-list-table > tbody > tr > td.column-wpsso_og_img {
 						max-width:' . $sortable_cols[ 'og_img' ][ 'width' ] . ' !important;
 					}
