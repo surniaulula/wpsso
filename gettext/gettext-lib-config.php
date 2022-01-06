@@ -159,6 +159,7 @@ _x( 'Tumblr URL', 'option value', 'wpsso' );
 _x( 'Twitter @username', 'option value', 'wpsso' );
 _x( 'Wikipedia Page URL', 'option value', 'wpsso' );
 _x( 'YouTube Channel URL', 'option value', 'wpsso' );
+_x( 'Schema Type', 'column header', 'wpsso' );
 _x( 'Schema ID', 'column header', 'wpsso' );
 _x( 'OG ID', 'column header', 'wpsso' );
 _x( 'SSO Image', 'column header', 'wpsso' );
