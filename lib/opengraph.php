@@ -75,11 +75,33 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		}
 
 		/**
-		 * Returns the open graph type id or namespace value.
+		 * Since WPSSO Core v9.13.0.
+		 *
+		 * Returns the open graph type ID.
+		 */
+		public function get_mod_og_type_id( array $mod, $use_mod_opts = true ) {
+
+			return $this->get_mod_og_type( $mod, $get_id = true, $use_mod_opts );
+		}
+
+		/**
+		 * Since WPSSO Core v9.13.0.
+		 *
+		 * Returns the open graph namespace.
+		 */
+		public function get_mod_og_type_ns( array $mod, $use_mod_opts = true ) {
+
+			return $this->get_mod_og_type( $mod, $get_id = false, $use_mod_opts );
+		}
+
+		/**
+		 * Since WPSSO Core v4.10.0.
+		 *
+		 * Returns the open graph type ID or namespace value.
 		 *
 		 * Example: article, product, place, etc.
 		 */
-		public function get_mod_og_type( array $mod, $get_ns = false, $use_mod_opts = true ) {
+		public function get_mod_og_type( array $mod, $get_id = true, $use_mod_opts = true ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -95,7 +117,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 */
 			if ( ! empty( $mod[ 'name' ] ) && ! empty( $mod[ 'id' ] ) ) {
 
-				$cache_salt = SucomUtil::get_mod_salt( $mod ) . '_ns:' . (string) $get_ns . '_opts:' . (string) $use_mod_opts;
+				$cache_salt = SucomUtil::get_mod_salt( $mod ) . '_get_id:' . (string) $get_id . '_opts:' . (string) $use_mod_opts;
 
 				if ( isset( $local_cache[ $cache_salt ] ) ) {
 
@@ -106,65 +128,14 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					return $local_cache[ $cache_salt ];
 
-				} elseif ( is_object( $mod[ 'obj' ] ) && $use_mod_opts ) {	// Check for a column og_type value in wp_cache.
+				} elseif ( $this->p->debug->enabled ) {
 
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'checking for value from column wp_cache' );
-					}
-
-					if ( $col_info = WpssoWpMeta::get_sortable_columns( 'og_type' ) ) {
-
-						$value = $mod[ 'obj' ]->get_column_wp_cache( $mod, $col_info );	// Can return 'none' or empty string.
-					}
-
-					if ( ! empty( $value ) ) {
-
-						if ( 'none' === $value ) {
-
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'returning false: column wp_cache is "none"' );
-							}
-
-							$value = false;
-
-						} elseif ( $get_ns ) {	// Return the og type namespace instead.
-
-							$og_type_ns  = $this->p->cf[ 'head' ][ 'og_type_ns' ];
-
-							if ( ! empty( $og_type_ns[ $value ] ) ) {
-
-								$value = $og_type_ns[ $value ];
-
-							} else {
-
-								if ( $this->p->debug->enabled ) {
-
-									$this->p->debug->log( 'columns wp_cache value "' . $value . '" not in og type ns' );
-								}
-
-								$value = false;
-							}
-						}
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'returning column wp_cache value "' . $value . '"' );
-						}
-
-						return $local_cache[ $cache_salt ] = $value;
-					}
-				}
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'no value found in local cache or column wp_cache' );
+					$this->p->debug->log( 'no value found in local cache' );
 				}
 
 			} elseif ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'skipped cache check: mod name and/or id value is empty' );
+				$this->p->debug->log( 'skipping local cache - mod name or id is empty' );
 			}
 
 			$default_key = apply_filters( 'wpsso_og_type_for_default', 'website', $mod );
@@ -379,7 +350,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$this->p->debug->log( 'returning false: og type id is empty' );
 				}
 
-			} elseif ( $type_id === 'none' ) {
+			} elseif ( 'none' === $type_id ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -393,7 +364,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$this->p->debug->log( 'returning false: og type id "' . $type_id . '" is unknown' );
 				}
 
-			} elseif ( $get_ns ) {	// False by default.
+			} elseif ( ! $get_id ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -476,7 +447,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 */
 			if ( ! isset( $mt_og[ 'og:type' ] ) ) {
 
-				$mt_og[ 'og:type' ] = $this->get_mod_og_type( $mod );
+				$mt_og[ 'og:type' ] = $this->get_mod_og_type_id( $mod );
 
 			} elseif ( $this->p->debug->enabled ) {
 

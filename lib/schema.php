@@ -555,56 +555,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					return $local_cache[ $cache_salt ];
 
-				} elseif ( is_object( $mod[ 'obj' ] ) && $use_mod_opts ) {	// Check for a column schema_type value in wp_cache.
+				} elseif ( $this->p->debug->enabled ) {
 
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'checking for value from column wp_cache' );
-					}
-
-					if ( $col_info = WpssoWpMeta::get_sortable_columns( 'schema_type' ) ) {
-
-						$value = $mod[ 'obj' ]->get_column_wp_cache( $mod, $col_info );	// Can return 'none' or empty string.
-					}
-
-					if ( ! empty( $value ) ) {
-
-						if ( ! $get_id && $value !== 'none' ) {	// Return the schema type url instead.
-
-							$schema_types = $this->get_schema_types_array( $flatten = true );
-
-							if ( ! empty( $schema_types[ $value ] ) ) {
-
-								$value = $schema_types[ $value ];
-
-							} else {
-
-								if ( $this->p->debug->enabled ) {
-
-									$this->p->debug->log( 'columns wp_cache value "' . $value . '" not in schema types' );
-								}
-
-								$value = '';
-							}
-						}
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'returning column wp_cache value "' . $value . '"' );
-						}
-
-						return $local_cache[ $cache_salt ] = $value;
-					}
-				}
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'no value found in local cache or column wp_cache' );
+					$this->p->debug->log( 'no value found in local cache' );
 				}
 
 			} elseif ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'skipping cache check: mod name and/or id value is empty' );
+				$this->p->debug->log( 'skipping local cache - mod name or id is empty' );
 			}
 
 			$default_key  = apply_filters( 'wpsso_schema_type_for_default', 'webpage', $mod );

@@ -482,7 +482,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				table.wp-list-table > tbody > tr > td.column-date,
 				table.wp-list-table > thead > tr > th.column-expirationdate,
 				table.wp-list-table > tbody > tr > td.column-expirationdate {
-					width:7em;
+					width:8em;
 				}
 				table.wp-list-table > thead > tr > th.column-job_position,
 				table.wp-list-table > tbody > tr > td.column-job_position {	/* WP Job Manager. */
@@ -536,73 +536,17 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				table.wp-list-table > tbody > tr > td.column-template {
 				        width:10%;
 				}
-			';
-
-			if ( isset( $sortable_cols[ 'schema_type' ][ 'width' ] ) ) {
-
-				$custom_style_css .= '
-					.column-wpsso_schema_type {
-						width:' . $sortable_cols[ 'schema_type' ][ 'width' ] . ';
-						max-width:' . $sortable_cols[ 'schema_type' ][ 'width' ] . ';
-						white-space:nowrap;
-						overflow:hidden;
-					}
-				';
-			}
-
-			if ( isset( $sortable_cols[ 'og_type' ][ 'width' ] ) ) {
-
-				$custom_style_css .= '
-					.column-wpsso_og_type {
-						width:' . $sortable_cols[ 'og_type' ][ 'width' ] . ' !important;
-						max-width:' . $sortable_cols[ 'og_type' ][ 'width' ] . ' !important;
-						white-space:nowrap;
-						overflow:hidden;
-					}
-				';
-			}
-
-			if ( isset( $sortable_cols[ 'og_img' ][ 'width' ] ) ) {
-
-				$custom_style_css .= '
-					.column-wpsso_og_img {
-						width:' . $sortable_cols[ 'og_img' ][ 'width' ] . ' !important;
-						max-width:' . $sortable_cols[ 'og_img' ][ 'width' ] . ' !important;
-					}
-				';
-
-				if ( isset( $sortable_cols[ 'og_img' ][ 'height' ] ) ) {	// Just in case.
-
-					$custom_style_css .= '
-						.column-wpsso_og_img div.wp-thumb-bg-img {
-							max-width:' . $sortable_cols[ 'og_img' ][ 'width' ] . ' !important;
-							height:' . $sortable_cols[ 'og_img' ][ 'height' ] . ';
-							min-height:' . $sortable_cols[ 'og_img' ][ 'height' ] . ';
-							background-size:' . $sortable_cols[ 'og_img' ][ 'width' ] . ' auto;
-							background-repeat:no-repeat;
-							background-position:center center;
-							overflow:hidden;
-							margin:0;
-							padding:0;
-						}
-					';
-				}
-			}
-
-			$custom_style_css .= '
-				.column-wpsso_og_desc {
-					overflow:hidden;
-				}
-
-				td.column-wpsso_schema_type,
-				td.column-wpsso_og_type,
-				td.column-wpsso_og_desc {
+				table.wp-list-table > tbody > tr > td.column-wpsso_schema_type,
+				table.wp-list-table > tbody > tr > td.column-wpsso_og_type,
+				table.wp-list-table > tbody > tr > td.column-wpsso_og_desc {
 					direction:ltr;
 					font-family:"Helvetica";
 					text-align:left;
 					word-wrap:break-word;
 				}
-
+				table.wp-list-table > tbody > tr > td.column-wpsso_og_desc {
+					overflow:hidden;
+				}
 				@media screen and ( max-width:1295px ) {
 
 					th.column-wpsso_og_desc,
@@ -621,6 +565,32 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 						table.wp-list-table > tbody > tr > td.column-wpsso_' . $col_name . ' {
 							width:' . $col_info[ 'width' ] . ' !important;
 							min-width:' . $col_info[ 'width' ] . ' !important;
+						}
+					';
+				}
+			}
+
+			if ( isset( $sortable_cols[ 'og_img' ][ 'width' ] ) ) {
+
+				$custom_style_css .= '
+					table.wp-list-table > tbody > tr > td.column-wpsso_og_img {
+						max-width:' . $sortable_cols[ 'og_img' ][ 'width' ] . ' !important;
+					}
+				';
+
+				if ( isset( $sortable_cols[ 'og_img' ][ 'height' ] ) ) {	// Just in case.
+
+					$custom_style_css .= '
+						table.wp-list-table > tbody > tr > td.column-wpsso_og_img div.wp-thumb-bg-img {
+							max-width:' . $sortable_cols[ 'og_img' ][ 'width' ] . ' !important;
+							height:' . $sortable_cols[ 'og_img' ][ 'height' ] . ';
+							min-height:' . $sortable_cols[ 'og_img' ][ 'height' ] . ';
+							background-size:' . $sortable_cols[ 'og_img' ][ 'width' ] . ' auto;
+							background-repeat:no-repeat;
+							background-position:center center;
+							overflow:hidden;
+							margin:0;
+							padding:0;
 						}
 					';
 				}

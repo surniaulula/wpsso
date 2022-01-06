@@ -284,7 +284,7 @@ if ( ! class_exists( 'WpssoWpMeta' ) ) {
 
 				$opts =& $this->p->options;		// Shortcut variable name.
 
-				$def_og_type         = $this->p->og->get_mod_og_type( $mod, $get_ns = false, $use_mod_opts = false );
+				$def_og_type         = $this->p->og->get_mod_og_type_id( $mod, $use_mod_opts = false );
 				$def_schema_type     = $this->p->schema->get_mod_schema_type_id( $mod, $use_mod_opts = false );
 				$def_primary_term_id = $this->p->post->get_default_term_id( $mod, $tax_slug = 'category' );	// Returns term ID or false.
 				$def_reading_mins    = $this->p->page->get_reading_mins( $mod );

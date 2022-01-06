@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 9.12.5-dev.1\n"
+"Project-Id-Version: WPSSO Core 9.13.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1413,12 +1413,12 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:162
 msgctxt "column header"
-msgid "Schema"
+msgid "Schema ID"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:163
 msgctxt "column header"
-msgid "Open Graph"
+msgid "OG ID"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:164
@@ -9892,7 +9892,7 @@ msgid ""
 "post ID %3$d (%4$s)."
 msgstr ""
 
-#: lib/post.php:860 lib/post.php:1503 lib/schema.php:3559 lib/term.php:636
+#: lib/post.php:860 lib/post.php:1503 lib/schema.php:3517 lib/term.php:636
 #: lib/user.php:626
 msgid "checking meta tags"
 msgstr ""
@@ -10196,18 +10196,18 @@ msgstr ""
 msgid "adding schema"
 msgstr ""
 
-#: lib/schema.php:1785
+#: lib/schema.php:1743
 msgid "adding schema %s #%d image"
 msgstr ""
 
-#: lib/schema.php:1896
+#: lib/schema.php:1854
 msgid ""
 "Please note that although the Schema standard allows the subject of a review "
 "to be any Schema type, <a href=\"%1$s\">Google does not allow reviews for "
 "the Schema %2$s type</a>."
 msgstr ""
 
-#: lib/schema.php:1923
+#: lib/schema.php:1881
 msgid "adding reviewed subject image"
 msgstr ""
 

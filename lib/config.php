@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.12.5-dev.1',	// Plugin version.
+					'version'     => '9.13.0-dev.1',	// Plugin version.
 					'opt_version' => '853',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2383,15 +2383,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'edit' => array(	// Post, term, user lists.
 				'columns' => array(
 					'schema_type' => array(
-						'header'   => 'Schema',
+						'header'   => 'Schema ID',
 						'mt_name'  => 'schema:type:id',
 						'meta_key' => '_wpsso_head_info_schema_type',
 						'orderby'  => 'meta_value',
-						'width'    => '8em',
+						'width'    => '9em',
 						'height'   => 'auto',
 					),
 					'og_type' => array(
-						'header'   => 'Open Graph',
+						'header'   => 'OG ID',
 						'mt_name'  => 'og:type',
 						'meta_key' => '_wpsso_head_info_og_type',
 						'orderby'  => 'meta_value',
@@ -2408,13 +2408,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'height'    => '40px',
 					),
 					'og_desc' => array(
-						'header'   => 'SSO Description',
-						'mt_name'  => 'og:description',
-						'meta_key' => '_wpsso_head_info_og_desc',
+						'header'    => 'SSO Description',
+						'mt_name'   => 'og:description',
+						'meta_key'  => '_wpsso_head_info_og_desc',
 						'localized' => true,
-						'orderby'  => false,	// Do not offer column sorting.
-						'width'    => '160px',
-						'height'   => 'auto',
+						'orderby'   => true,
+						'width'     => '200px',
+						'height'    => 'auto',
 					),
 				),
 			),
