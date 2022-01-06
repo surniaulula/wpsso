@@ -243,7 +243,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.13.0-b.1 (2022/01/06)**
+**Version 9.13.0-rc.1 (2022/01/06)**
 
 * **New Features**
 	* None.
@@ -720,7 +720,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 9.13.0-b.1 =
+= 9.13.0-rc.1 =
 
 (2022/01/06) WP List Table changes (columns can be enabled/disabled from the SSO &gt; Advanced &gt; Interface tab).
 
