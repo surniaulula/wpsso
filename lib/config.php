@@ -2387,7 +2387,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'mt_name'  => 'schema:type:name',
 						'meta_key' => '_wpsso_head_info_schema_type_name',
 						'orderby'  => 'meta_value',
-						'width'    => '9em',
+						'width'    => '11em',
 						'height'   => 'auto',
 					),
 					'schema_type' => array(
