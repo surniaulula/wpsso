@@ -505,9 +505,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/**
 			 * Returns the schema type URL by default.
 			 * 
-			 * Use $get_url = false to return the schema type ID instead of the URL.
+			 * Use $get_id = false to return the schema type URL instead of the ID.
 			 */
-			return $this->get_mod_schema_type( $mod, $get_url = false, $use_mod_opts );
+			return $this->get_mod_schema_type( $mod, $get_id = true, $use_mod_opts );
 		}
 
 		/**
@@ -518,9 +518,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/**
 			 * Returns the schema type URL by default.
 			 * 
-			 * Use $get_url = false to return the schema type ID instead of the URL.
+			 * Use $get_id = false to return the schema type URL instead of the ID.
 			 */
-			return $this->get_mod_schema_type( $mod, $get_url = true, $use_mod_opts );
+			return $this->get_mod_schema_type( $mod, $get_id = false, $use_mod_opts );
 		}
 
 		public function get_schema_types_select( $schema_types = null ) {
@@ -3778,9 +3778,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/**
 		 * Returns the schema type URL by default.
 		 * 
-		 * Use $get_url = false to return the schema type ID instead of the URL.
+		 * Use $get_id = false to return the schema type URL instead of the ID.
 		 */
-		private function get_mod_schema_type( array $mod, $get_url = true, $use_mod_opts = true ) {
+		public function get_mod_schema_type( array $mod, $get_id = true, $use_mod_opts = true ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -3796,7 +3796,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 */
 			if ( ! empty( $mod[ 'name' ] ) && ! empty( $mod[ 'id' ] ) ) {
 
-				$cache_salt = SucomUtil::get_mod_salt( $mod ) . '_url:' . (string) $get_url . '_opts:' . (string) $use_mod_opts;
+				$cache_salt = SucomUtil::get_mod_salt( $mod ) . '_get_id:' . (string) $get_id . '_opts:' . (string) $use_mod_opts;
 
 				if ( isset( $local_cache[ $cache_salt ] ) ) {
 
@@ -3821,7 +3821,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( ! empty( $value ) ) {
 
-						if ( $get_url && $value !== 'none' ) {	// Return the schema type url instead.
+						if ( ! $get_id && $value !== 'none' ) {	// Return the schema type url instead.
 
 							$schema_types = $this->get_schema_types_array( $flatten = true );
 
@@ -4053,7 +4053,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$this->p->debug->log( 'returning false: schema type id "' . $type_id . '" is unknown' );
 				}
 
-			} elseif ( $get_url ) {	// True by default.
+			} elseif ( ! $get_id ) {
 
 				if ( $this->p->debug->enabled ) {
 
