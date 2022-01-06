@@ -243,12 +243,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.13.0-dev.1 (2022/01/06)**
+**Version 9.13.0-dev.2 (2022/01/06)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* WP List Table changes (columns can be enabled/disabled from the SSO &gt; Advanced &gt; Interface tab):
+		* Added a new 'Schema Type' column.
+		* Renamed the 'Schema' column to 'Schema ID'.
+		* Renamed the 'Open Graph' column to 'OG ID'.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -717,9 +720,9 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 9.13.0-dev.1 =
+= 9.13.0-dev.2 =
 
-(2022/01/06) Refactored the `WpssoSchema->get_mod_schema_type()` method for backwards compatibility with older WPSSO JSON versions.
+(2022/01/06) WP List Table changes (columns can be enabled/disabled from the SSO &gt; Advanced &gt; Interface tab).
 
 = 9.12.4 =
 
