@@ -243,6 +243,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 9.12.5-dev.1 (2022/01/06)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Refactored `WpssoSchema->get_mod_schema_type()` for backwards compatibility with older WPSSO JSON versions.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 9.12.4 (2022/01/03)**
 
 * **New Features**
@@ -699,6 +713,10 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 	* WordPress v5.0.
 
 == Upgrade Notice ==
+
+= 9.12.5-dev.1 =
+
+(2022/01/06) Refactored `WpssoSchema->get_mod_schema_type()` for backwards compatibility with older WPSSO JSON versions.
 
 = 9.12.4 =
 
