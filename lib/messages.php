@@ -701,12 +701,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				return '';
 			}
 
-			// translators: %s is is the short add-on name.
-			$text = sprintf( _x( '%s required', 'option comment', 'wpsso' ), $this->p->cf[ 'plugin' ][ $ext ][ 'short' ] );
+			$ext_name_link = $this->p->util->get_admin_url( 'addons#' . $ext, $this->p->cf[ 'plugin' ][ $ext ][ 'name' ] );
 
-			$text = $this->p->util->get_admin_url( 'addons#' . $ext, $text );
-
-			return ' <span class="ext-req-msg">' . $text . '</span>';
+			return ' ' . sprintf( _x( 'This option requires the %s add-on.', 'wpsso' ), $ext_name_link );
 		}
 
 		/**

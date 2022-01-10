@@ -60,19 +60,17 @@ if ( ! class_exists( 'WpssoMessagesTooltipSite' ) ) {
 
 				case 'tooltip-site_org_schema_type':	// Organization Schema Type.
 
-					$text = __( 'Google does not recognize all Schema Organization sub-types as valid organizations.', 'wpsso' ) . ' ';
-
-					$text .= sprintf( __( 'The default Schema type ID for the WebSite organization is "%s".', 'wpsso' ), 'organization' ) . ' ';
-
-					$text .= sprintf( __( 'You should not change this default value unless you are confident that Google will recognize your preferred Schema Organization sub-type as a valid organization.', 'wpsso' ), 'organization' ) . ' ';
-
-					$text .= sprintf( __( 'To select a different organization type ID for the WebSite, define the %s constant with your preferred type ID (note that this is a Schema type ID, not a Schema type URL).', 'wpsso' ), '<code>WPSSO_SCHEMA_ORGANIZATION_TYPE_ID</code>' );
+					$text = __( 'Google does not recognize most Schema Organization sub-types as valid organizations.', 'wpsso' );
+					
+					$text .= __( 'The site Schema Organization type should be Organization and not a sub-type.', 'wpsso' );
 
 					break;
 
 				case 'tooltip-site_org_place_id':	// Organization Location.
 
 					$text = __( 'Select an optional location for this organization.', 'wpsso' );
+
+					$text .= $this->maybe_ext_required( 'opm' );
 
 					break;
 

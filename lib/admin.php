@@ -1731,7 +1731,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$box .= '</div><!-- .side-box-header -->' . "\n";
 
 				$box .= '<div class="side-box-icon">' . "\n";
-				$box .= $this->get_ext_img_icon( $ext ) . "\n";
+				$box .= $this->get_ext_img_icon( $ext, $icon_px = 128 ) . "\n";
 				$box .= '</div><!-- .side-box-icon -->' . "\n";
 
 				$box .= '<div class="side-box-content has-buttons">' . "\n";
@@ -2404,6 +2404,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$ext_num   = 0;
 			$ext_total = count( $ext_sorted );
 			$charset   = get_bloginfo( 'charset' );
+			$icon_px   = 128;
 
 			echo '<table class="sucom-settings wpsso addons-metabox" style="padding-bottom:10px">' . "\n";
 
@@ -2456,10 +2457,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						$span_rows = count( $table_rows );
 
-						echo '<td class="ext-info-plugin-icon" id="ext-info-plugin-icon-' . $ext . '"' .
-							' width="168" rowspan="' . $span_rows . '" valign="top" align="left">' . "\n";
+						echo '<td class="ext-info-plugin-icon" id="ext-info-plugin-icon-' . $ext . '" rowspan="' . $span_rows . '">' . "\n";
 						echo '<a class="ext-anchor" id="' . $ext . '"></a>' . "\n";	// Add an anchor for the add-on.
-						echo $this->get_ext_img_icon( $ext );
+						echo $this->get_ext_img_icon( $ext, $icon_px );
 						echo '</td>';
 					}
 
@@ -2486,6 +2486,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$ext_num   = 0;
 			$ext_total = count( $ext_sorted );
 			$charset   = get_bloginfo( 'charset' );
+			$icon_px   = 128;
 
 			echo '<table class="sucom-settings wpsso licenses-metabox" style="padding-bottom:10px">' . "\n";
 			echo '<tr><td colspan="3">' . $this->p->msgs->get( 'info-plugin-tid' . ( $network ? '-network' : '' ) ) . '</td></tr>' . "\n";
@@ -2631,9 +2632,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						$span_rows = count( $table_rows );
 
-						echo '<td class="ext-info-plugin-icon" id="ext-info-plugin-icon-' . $ext . '"' .
-							' width="168" rowspan="' . $span_rows . '" valign="top" align="left">' . "\n";
-						echo $this->get_ext_img_icon( $ext );
+						echo '<td class="ext-info-plugin-icon" id="ext-info-plugin-icon-' . $ext . '" rowspan="' . $span_rows . '">' . "\n";
+						echo '<a class="ext-anchor" id="' . $ext . '"></a>' . "\n";	// Add an anchor for the add-on.
+						echo $this->get_ext_img_icon( $ext, $icon_px );
 						echo '</td>';
 					}
 
@@ -3239,7 +3240,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		/**
 		 * Returns a 128x128px image by default.
 		 */
-		public function get_ext_img_icon( $ext, $px = 128 ) {
+		public function get_ext_img_icon( $ext, $icon_px = 128 ) {
 
 			/**
 			 * The default image is a transparent 1px gif.
@@ -3264,7 +3265,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 
-			return '<img ' . $img_src . ' width="' . $px . '" height="' . $px . '" style="width:' . $px . 'px; height:' . $px . 'px;"/>';
+			return '<img ' . $img_src . ' width="' . $icon_px . '" height="' . $icon_px . '" style="width:' . $icon_px . 'px; height:' . $icon_px . 'px;"/>';
 		}
 
 		/**
