@@ -159,7 +159,6 @@
 <li>YouTube Videos and Playlists</li>
 </ul>
 
-
 <h2>Installation</h2>
 
 <h3 class="top">Install and Uninstall</h3>
@@ -183,7 +182,6 @@
 <li><a href="https://wpsso.com/docs/plugins/wpsso/installation/troubleshooting-guide/">Troubleshooting Guide</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/installation/developer-special-buy-one-get-one-free/">Developer Special: Buy one, Get one Free</a></li>
 </ul>
-
 
 <h2>Frequently Asked Questions</h2>
 
@@ -237,5 +235,4 @@
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/inline-variables/">Inline Variables</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/notes/multisite-network-support/">Multisite / Network Support</a></li>
 </ul>
-
 
