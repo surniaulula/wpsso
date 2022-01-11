@@ -243,16 +243,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.13.1-dev.1 (TBD)**
+**Version 9.13.1-dev.1 (2022/01/11)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Updated "Organization Schema Type" option help text.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Refactored the `WpssoMessages->maybe_ext_required()` method.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -736,7 +736,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 = 9.13.1-dev.1 =
 
-(TBD) None.
+(2022/01/11) Updated "Organization Schema Type" option help text.
 
 = 9.13.0 =
 
