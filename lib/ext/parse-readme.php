@@ -45,7 +45,7 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 
 			if ( ! preg_match('|^===(.*)===|', $file_contents, $_title ) ) {
 
-				return array(); // require a title
+				return array(); // Require a title.
 			}
 
 			$title = trim( $_title[ 1 ], '=' );
@@ -367,11 +367,9 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 				$_string = substr( $_string, strlen( $chop ) );
 
 				return trim( $_string );
-
-			} else {
-
-				return trim( $string );
 			}
+
+			return trim( $string );
 		}
 
 		function user_sanitize( $text, $strict = false ) {
