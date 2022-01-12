@@ -243,7 +243,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.13.1-dev.1 (2022/01/11)**
+**Version 9.13.1-dev.2 (2022/01/12)**
 
 * **New Features**
 	* None.
@@ -734,9 +734,9 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 9.13.1-dev.1 =
+= 9.13.1-dev.2 =
 
-(2022/01/11) Updated "Organization Schema Type" option help text.
+(2022/01/12) Updated "Organization Schema Type" option help text.
 
 = 9.13.0 =
 
