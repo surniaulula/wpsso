@@ -703,7 +703,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 			$ext_name_link = $this->p->util->get_admin_url( 'addons#' . $ext, $this->p->cf[ 'plugin' ][ $ext ][ 'name' ] );
 
-			return ' ' . sprintf( _x( 'This option requires the %s add-on.', 'wpsso' ), $ext_name_link );
+			return ' ' . sprintf( _x( 'Activating the %s add-on is recommended for this option.', 'wpsso' ), $ext_name_link );
 		}
 
 		/**

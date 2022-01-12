@@ -461,7 +461,9 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 				case 'tooltip-meta-schema_organization_id':
 
-					$text = __( 'Optionally select a different organization for the Schema Organization item type and/or its sub-type (Airline, Corporation, School, etc). Select "[None]" to use the default organization details.', 'wpsso' );
+					$text = __( 'Select an organization for the Schema Organization markup.', 'wpsso' );
+
+					$text .= $this->maybe_ext_required( 'opm' );
 
 				 	break;
 
@@ -469,13 +471,17 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 					$role_label_transl = _x( 'Person', 'user role', 'wpsso' );
 
-					$text = sprintf( __( 'Select a person from the list of eligible WordPress users. To be included in this list, a user must be member of the WordPress "%s" role.', 'wpsso' ), $role_label_transl );
+					$text = __( 'Select a person for the Schema Person markup.', 'wpsso' ) . ' ';
+
+					$text .= sprintf( __( 'A user must be member of the WordPress "%s" role to be included in this list.', 'wpsso' ), $role_label_transl );
 
 				 	break;
 
 				case 'tooltip-meta-schema_place_id':
 
-					$text = __( 'Select an existing place or enter custom place details below.', 'wpsso' );
+					$text = __( 'Select a place for the Schema Place markup, or enter custom place information below.', 'wpsso' );
+
+					$text .= $this->maybe_ext_required( 'opm' );
 
 					break;
 
