@@ -92,7 +92,7 @@ WPSSO provides comprehensive Schema markup for posts, pages, custom post types, 
 
 **&#91;Premium&#93;** Additional options in the Document SSO metabox for the selected Schema type.
 
-**&#91;Premium&#93;** Imports video details for Facebook, Slideshare, Vimeo, Wistia, and Youtube videos.
+**&#91;Premium&#93;** Imports video information from Facebook, Slideshare, Vimeo, Wistia, and Youtube videos.
 
 **&#91;Premium&#93;** Schema JSON-LD markup for Better WooCommerce SEO:
 
