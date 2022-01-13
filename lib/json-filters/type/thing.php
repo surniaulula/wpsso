@@ -63,7 +63,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeThing' ) ) {
 
 			$json_ret[ 'additionalType' ] = array();
 
-			if ( ! empty( $mod[ 'obj' ] ) ) {
+			if ( $mod[ 'obj' ] && $mod[ 'id' ] ) {
 
 				$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
 
@@ -123,7 +123,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeThing' ) ) {
 					$json_ret[ 'sameAs' ][] = $mt_og[ 'og:url' ];
 				}
 
-				if ( $mod[ 'is_post' ] ) {
+				if ( $mod[ 'is_post' ] && $mod[ 'id' ] ) {
 
 					/**
 					 * Add the permalink, which may be different than the shared URL and the canonical URL.
@@ -200,7 +200,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeThing' ) ) {
 			/**
 			 * Get additional sameAs URLs from the post/term/user custom meta.
 			 */
-			if ( ! empty( $mod[ 'obj' ] ) ) {
+			if ( $mod[ 'obj' ] && $mod[ 'id' ] ) {
 
 				if ( $this->p->debug->enabled ) {
 

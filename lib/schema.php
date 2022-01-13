@@ -436,7 +436,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: no module object name or object id' );
+					$this->p->debug->log( 'exiting early: mod name or id is empty' );
 				}
 
 				return false;
@@ -444,7 +444,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'getting schema type for ' . $mod[ 'name' ] . ' ID ' . $mod[ 'id' ] );
+				$this->p->debug->log( 'getting schema type for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] );
 			}
 
 			$page_type_id = $this->get_mod_schema_type_id( $mod );
@@ -542,7 +542,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/**
 			 * Optimize and cache post/term/user schema type values.
 			 */
-			if ( ! empty( $mod[ 'name' ] ) && ! empty( $mod[ 'id' ] ) ) {
+			if ( $mod[ 'obj' ] && $mod[ 'id' ] ) {
 
 				$cache_salt = SucomUtil::get_mod_salt( $mod ) . '_get_id:' . (string) $get_id . '_opts:' . (string) $use_mod_opts;
 
@@ -562,7 +562,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			} elseif ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'skipping local cache - mod name or id is empty' );
+				$this->p->debug->log( 'skipping local cache - mod object or id is empty' );
 			}
 
 			$default_key  = apply_filters( 'wpsso_schema_type_for_default', 'webpage', $mod );
@@ -574,7 +574,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 */
 			if ( $use_mod_opts ) {
 
-				if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
+				if ( $mod[ 'obj' ] && $mod[ 'id' ] ) {	// Just in case.
 
 					$type_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_type' );	// Returns null if an index key is not found.
 
@@ -608,7 +608,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				} elseif ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'skipping custom type id - mod object is empty' );
+					$this->p->debug->log( 'skipping custom type id - mod object or id is empty' );
 				}
 
 			} elseif ( $this->p->debug->enabled ) {

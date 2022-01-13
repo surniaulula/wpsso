@@ -115,7 +115,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			/**
 			 * Optimize and cache post/term/user og type values.
 			 */
-			if ( ! empty( $mod[ 'name' ] ) && ! empty( $mod[ 'id' ] ) ) {
+			if ( $mod[ 'obj' ] && $mod[ 'id' ] ) {
 
 				$cache_salt = SucomUtil::get_mod_salt( $mod ) . '_get_id:' . (string) $get_id . '_opts:' . (string) $use_mod_opts;
 
@@ -135,7 +135,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			} elseif ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'skipping local cache - mod name or id is empty' );
+				$this->p->debug->log( 'skipping local cache - mod object or id is empty' );
 			}
 
 			$default_key = apply_filters( 'wpsso_og_type_for_default', 'website', $mod );
@@ -147,7 +147,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 */
 			if ( $use_mod_opts ) {
 
-				if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
+				if ( $mod[ 'obj' ] && $mod[ 'id' ] ) {	// Just in case.
 
 					$type_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'og_type' );	// Returns null if index key not found.
 
@@ -181,7 +181,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				} elseif ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'skipping custom type id: mod object is empty' );
+					$this->p->debug->log( 'skipping custom type id: mod object or id is empty' );
 				}
 
 			} elseif ( $this->p->debug->enabled ) {
@@ -664,7 +664,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				/**
 				 * Optimize and call get_options() only once. Returns an empty string if no meta found.
 				 */
-				$md_opts = empty( $mod[ 'obj' ] ) ? array() : (array) $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
+				$md_opts = $mod[ 'obj' ] && $mod[ 'id' ] ? (array) $mod[ 'obj' ]->get_options( $mod[ 'id' ] ) : array();
 
 				/**
 				 * Add post/term/user meta data to the Open Graph meta tags.
@@ -1003,7 +1003,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			/**
 			 * Get video information and preview enable/disable option from the post/term/user meta.
 			 */
-			if ( ! empty( $mod[ 'obj' ] ) ) {
+			if ( $mod[ 'obj' ] && $mod[ 'id' ] ) {
 
 				/**
 				 * Note that get_options() returns null if an index key is not found.
@@ -1082,7 +1082,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 *
 			 * The og:video:title and og:video:description meta tags are not standard and their values will only appear in Schema markup.
 			 */
-			if ( ! empty( $mod[ 'obj' ] ) && $md_pre !== 'none' ) {
+			if ( $mod[ 'obj' ] && $mod[ 'id' ] && $md_pre !== 'none' ) {
 
 				foreach ( $mt_videos as &$mt_single_video ) {	// Uses reference.
 
@@ -1326,7 +1326,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			$mt_ret = array();
 
-			if ( $mod[ 'is_post' ] ) {
+			if ( $mod[ 'is_post' ] && $mod[ 'id' ] ) {
 
 				if ( $mod[ 'is_attachment' ] && wp_attachment_is_image( $mod[ 'id' ] ) ) {
 
@@ -1426,7 +1426,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				 *
 				 * Unless $md_pre is 'none', get_og_images() will fallback to using the 'og' custom meta.
 				 */
-				if ( ! empty( $mod[ 'obj' ] ) ) {	// Term or user.
+				if ( $mod[ 'obj' ] && $mod[ 'id' ] ) {	// Term or user.
 
 					$mt_images = $mod[ 'obj' ]->get_og_images( $num, $size_name, $mod[ 'id' ], $check_dupes, $md_pre );
 

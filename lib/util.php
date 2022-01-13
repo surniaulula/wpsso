@@ -1986,7 +1986,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( $mod[ 'is_post' ] ) {
 
-				if ( ! empty( $mod[ 'id' ] ) ) {
+				if ( ! empty( $mod[ 'id' ] ) ) {	// Just in case.
 
 					if ( 'publish' !== $mod[ 'post_status' ] ) {
 
@@ -2966,7 +2966,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 */
 			if ( ! empty( $mod[ 'is_post' ] ) ) {
 
-				if ( ! empty( $mod[ 'id' ] ) ) {
+				if ( ! empty( $mod[ 'id' ] ) ) {	// Just in case.
 
 					if ( ! isset( $post->ID ) || $post->ID !== $mod[ 'id' ] ) {
 
