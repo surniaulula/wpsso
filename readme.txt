@@ -98,7 +98,7 @@ WPSSO provides comprehensive Schema markup for posts, pages, custom post types, 
 
 > The WooCommerce plugin alone does not provide sufficient Schema markup for Google Rich Results. The WPSSO Core Premium edition reads WooCommerce product data and provides complete Schema Product JSON-LD markup for Google Rich Results, including product image galleries, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, pattern, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.
 
-**&#91;Premium&#93;** Google Merchant Feed XML add-on for for WooCommerce, Easy Digital Downloads, and custom products.
+**&#91;Premium&#93;** An optional Google Merchant Feed XML add-on for for WooCommerce, Easy Digital Downloads, and Document SSO metabox custom products.
 
 **&#91;Premium&#93;** Reads data from active plugins, including:
 
