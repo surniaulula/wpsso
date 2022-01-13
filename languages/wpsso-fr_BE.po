@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 9.13.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2022-01-12 09:50-0800\n"
+"PO-Revision-Date: 2022-01-13 10:04-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -155,8 +155,8 @@ msgstr "BuddyPress n'a pas été créé comme extension WordPress à l'origine, 
 
 #: gettext/gettext-html-setup.php:34
 msgctxt "html paragraph"
-msgid "The WooCommerce plugin by itself does not provide sufficient Schema JSON-LD markup for Google Rich Results. The WPSSO Core Premium edition reads WooCommerce product data and provides complete Schema Product JSON-LD markup for Google Rich Results, including additional product images, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, pattern, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more."
-msgstr "L'extension WooCommerce en elle-même ne fournit pas un balisage Schema JSON-LD suffisant pour les résultats enrichis Google. L'édition WPSSO Core Premium lit les données de produit WooCommerce et fournit un balisage complet de Schéma Produit JSON-LD pour les résultats enrichis Google, y compris des images de produit supplémentaires, des variantes de produit, des informations sur le produit (marque, couleur, état, EAN, dimensions, GTIN-8/12/ 13/14, ISBN, matériel, MPN, motif, taille, SKU, volume, poids, etc), critiques de produits, notes de produits, dates de début / fin de vente, prix de vente, prix hors taxes, prix avec TVA, tarifs d'expédition, délais d'expédition et bien plus encore."
+msgid "The WooCommerce plugin alone does not provide sufficient Schema markup for Google Rich Results. The WPSSO Core Premium edition reads WooCommerce product data and provides complete Schema Product JSON-LD markup for Google Rich Results, including product image galleries, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, pattern, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more."
+msgstr "L'extension WooCommerce à elle seule ne fournit pas un balisage de Schéma suffisant pour les résultats enrichis Google. L'édition WPSSO Core Premium lit les données de produit WooCommerce et fournit un balisage complet de Schéma Produit JSON-LD pour les résultats enrichis Google, y compris les galeries d'images de produits, des variantes de produit, des informations sur le produit (marque, couleur, état, EAN, dimensions, GTIN-8/12/ 13/14, ISBN, matériel, MPN, motif, taille, SKU, volume, poids, etc), critiques de produits, notes de produits, dates de début / fin de vente, prix de vente, prix hors taxes, prix avec TVA, tarifs d'expédition, délais d'expédition et bien plus encore."
 
 #: gettext/gettext-html-setup.php:35
 msgctxt "html paragraph"
@@ -5978,12 +5978,12 @@ msgid "https://developer.wordpress.org/reference/functions/image_make_intermedia
 msgstr "https://developer.wordpress.org/reference/functions/image_make_intermediate_size/"
 
 #: lib/media.php:1027 lib/post.php:644 lib/register.php:348 lib/term.php:512
-#: lib/user.php:485 lib/util.php:833 lib/util.php:3056
+#: lib/user.php:485 lib/util.php:831 lib/util.php:3056
 msgid "%s warning:"
 msgstr "Alerte %s:"
 
 #: lib/media.php:1028 lib/post.php:645 lib/term.php:513 lib/user.php:486
-#: lib/util.php:834 lib/util.php:3057
+#: lib/util.php:832 lib/util.php:3057
 msgid "longer than recommended max of %1$.3f secs"
 msgstr "supérieur au max recommandé de %1$.3f secs"
 
@@ -9953,15 +9953,15 @@ msgstr "once"
 msgid "lbs"
 msgstr "livre"
 
-#: lib/util.php:554
+#: lib/util.php:552
 msgid "cropped"
 msgstr "recadrée"
 
-#: lib/util.php:554
+#: lib/util.php:552
 msgid "uncropped"
 msgstr "non recadrée"
 
-#: lib/util.php:835
+#: lib/util.php:833
 msgid "Slow PHP function detected - %1$s took %2$.3f secs for %3$s (%4$s)."
 msgstr "Fonction PHP lente détectée - %1$s a pris %2$.3f secs pour %3$s (%4$s)."
 
