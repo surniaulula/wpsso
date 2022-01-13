@@ -243,6 +243,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 9.13.2-dev.1 (2022/01/13)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed possible incorrect addition of sameAs URLs for post objects with an ID of 0.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 9.13.1 (2022/01/13)**
 
 * **New Features**
@@ -734,6 +748,10 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 	* WordPress v5.0.
 
 == Upgrade Notice ==
+
+= 9.13.2-dev.1 =
+
+(2022/01/13) Fixed possible incorrect addition of sameAs URLs for post objects with an ID of 0.
 
 = 9.13.1 =
 
