@@ -115,20 +115,27 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeThing' ) ) {
 
 				if ( ! empty( $mt_og[ 'og:url' ] ) ) {
 
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'sameAs og URL = ' . $mt_og[ 'og:url' ] );
+					}
+
 					$json_ret[ 'sameAs' ][] = $mt_og[ 'og:url' ];
 				}
 
 				if ( $mod[ 'is_post' ] ) {
 
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'getting post permalink' );
-					}
-
 					/**
 					 * Add the permalink, which may be different than the shared URL and the canonical URL.
 					 */
-					$json_ret[ 'sameAs' ][] = get_permalink( $mod[ 'id' ] );
+					$permalink = get_permalink( $mod[ 'id' ] );
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'sameAs permalink URL = ' . $permalink );
+					}
+
+					$json_ret[ 'sameAs' ][] = $permalink;
 
 					/**
 					 * Add the shortlink / short URL, but only if the link rel shortlink tag is enabled.
@@ -137,12 +144,14 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeThing' ) ) {
 
 					if ( apply_filters( 'wpsso_add_link_rel_shortlink', $add_link_rel_shortlink, $mod ) ) {
 
+						$shortlink = wp_get_shortlink( $mod[ 'id' ], 'post' );
+
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'getting post shortlink' );
+							$this->p->debug->log( 'sameAs shortlink URL = ' . $shortlink );
 						}
 
-						$json_ret[ 'sameAs' ][] = wp_get_shortlink( $mod[ 'id' ], 'post' );
+						$json_ret[ 'sameAs' ][] = $shortlink;
 
 						/**
 						 * Some themes and plugins have been known to hook the WordPress 'get_shortlink' filter 
@@ -155,7 +164,17 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeThing' ) ) {
 						 *
 						 * $context = 'blog', 'post' (default), 'media', or 'query'
 						 */
-						$json_ret[ 'sameAs' ][] = SucomUtilWP::wp_get_shortlink( $mod[ 'id' ], $context = 'post' );
+						$raw_shortlink = SucomUtilWP::wp_get_shortlink( $mod[ 'id' ], $context = 'post' );
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'sameAs (maybe raw) shortlink URL = ' . $raw_shortlink );
+						}
+
+						if ( $shortlink !== $raw_shortlink ) {
+
+							$json_ret[ 'sameAs' ][] = $raw_shortlink;
+						}
 					}
 				}
 
@@ -164,12 +183,12 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeThing' ) ) {
 				 */
 				if ( ! empty( $mt_og[ 'og:url' ] ) ) {	// Just in case.
 
+					$short_url = $this->p->util->shorten_url( $mt_og[ 'og:url' ], $mod );
+
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'getting short url for ' . $mt_og[ 'og:url' ] );
+						$this->p->debug->log( 'sameAs short URL = ' . $short_url );
 					}
-
-					$short_url = $this->p->util->shorten_url( $mt_og[ 'og:url' ], $mod );
 
 					if ( $short_url !== $mt_og[ 'og:url' ] ) {	// Just in case.
 
@@ -185,7 +204,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeThing' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'getting custom URLs' );
+					$this->p->debug->log( 'getting options for sameAs custom URLs' );
 				}
 
 				$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
@@ -194,13 +213,28 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeThing' ) ) {
 
 					foreach ( SucomUtil::preg_grep_keys( '/^schema_sameas_url_[0-9]+$/', $md_opts ) as $url ) {
 
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'sameAs custom URL = ' . $url );
+						}
+
 						$json_ret[ 'sameAs' ][] = SucomUtil::esc_url_encode( $url );
 					}
 				}
 			}
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'applying sameAs property filter' );
+			}
+
 			$json_ret[ 'sameAs' ] = (array) apply_filters( 'wpsso_json_prop_https_schema_org_sameas',
 				$json_ret[ 'sameAs' ], $mod, $mt_og, $page_type_id, $is_main );
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'calling check_prop_value_sameas()' );
+			}
 
 			WpssoSchema::check_prop_value_sameas( $json_ret );
 
