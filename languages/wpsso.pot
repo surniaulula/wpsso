@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 9.13.1-dev.2\n"
+"Project-Id-Version: WPSSO Core 9.13.1-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -6369,12 +6369,12 @@ msgid ""
 msgstr ""
 
 #: lib/media.php:1027 lib/post.php:644 lib/register.php:348 lib/term.php:512
-#: lib/user.php:485 lib/util.php:833 lib/util.php:3056
+#: lib/user.php:485 lib/util.php:831 lib/util.php:3056
 msgid "%s warning:"
 msgstr ""
 
 #: lib/media.php:1028 lib/post.php:645 lib/term.php:513 lib/user.php:486
-#: lib/util.php:834 lib/util.php:3057
+#: lib/util.php:832 lib/util.php:3057
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
@@ -11196,15 +11196,15 @@ msgstr ""
 msgid "lbs"
 msgstr ""
 
-#: lib/util.php:554
+#: lib/util.php:552
 msgid "cropped"
 msgstr ""
 
-#: lib/util.php:554
+#: lib/util.php:552
 msgid "uncropped"
 msgstr ""
 
-#: lib/util.php:835
+#: lib/util.php:833
 msgid "Slow PHP function detected - %1$s took %2$.3f secs for %3$s (%4$s)."
 msgstr ""
 
