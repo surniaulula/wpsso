@@ -243,16 +243,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.13.1-dev.2 (2022/01/12)**
+**Version 9.13.1-b.1 (2022/01/13)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Updated "Organization Schema Type" option help text.
 * **Bugfixes**
-	* None.
+	* Fixed the addition of WPSSO OPM places in the Document SSO metabox "Select a Place" option.
 * **Developer Notes**
 	* Refactored the `WpssoMessages->maybe_ext_required()` method.
+	* Refactored the `WpssoUtil->get_form_cache()` method to replace `self::$form_cache` with a static `$local_cache` variable.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -734,9 +735,9 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 9.13.1-dev.2 =
+= 9.13.1-b.1 =
 
-(2022/01/12) Updated "Organization Schema Type" option help text.
+(2022/01/13) Fixed the addition of WPSSO OPM places in the Document SSO metabox "Select a Place" option. Updated "Organization Schema Type" option help text.
 
 = 9.13.0 =
 
