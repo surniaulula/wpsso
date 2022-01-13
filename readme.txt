@@ -243,7 +243,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.13.1-b.1 (2022/01/13)**
+**Version 9.13.1-rc.1 (2022/01/13)**
 
 * **New Features**
 	* None.
@@ -735,7 +735,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 9.13.1-b.1 =
+= 9.13.1-rc.1 =
 
 (2022/01/13) Fixed the addition of WPSSO OPM places in the Document SSO metabox "Select a Place" option. Updated "Organization Schema Type" option help text.
 
