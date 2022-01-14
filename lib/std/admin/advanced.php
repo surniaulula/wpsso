@@ -202,11 +202,11 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$form->get_no_td_checkbox( 'plugin_import_wpseo_meta' ) .
 				WpssoAdmin::get_option_site_use( 'plugin_import_wpseo_meta', $form, $network );
 
-			$table_rows[ 'plugin_show_meta_import' ] = $form->get_tr_hide( 'basic', 'plugin_show_meta_import' ) .
+			$table_rows[ 'plugin_show_import_details' ] = $form->get_tr_hide( 'basic', 'plugin_show_import_details' ) .
 				$form->get_th_html( _x( 'Show Metadata Import Details', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_show_meta_import' ) .
-				$form->get_no_td_checkbox( 'plugin_show_meta_import' ) .
-				WpssoAdmin::get_option_site_use( 'plugin_show_meta_import', $form, $network );
+					$css_class = '', $css_id = 'plugin_show_import_details' ) .
+				$form->get_no_td_checkbox( 'plugin_show_import_details' ) .
+				WpssoAdmin::get_option_site_use( 'plugin_show_import_details', $form, $network );
 
 			return $table_rows;
 		}

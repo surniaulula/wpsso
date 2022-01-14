@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'     => '9.14.0-dev.2',	// Plugin version.
-					'opt_version' => '854',		// Increment when changing default option values.
+					'opt_version' => '855',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -226,10 +226,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							),
 						),
 						'submenu' => array(
+							'dashboard'      => 'Dashboard',
 							'essential'      => 'Essential Settings',
 							'social-pages'   => 'Social Pages',
 							'setup'          => 'Setup Guide',
-							'dashboard'      => 'Dashboard',
 							'general'        => 'General Settings',
 							'advanced'       => 'Advanced Settings',
 							'addons'         => 'Plugin Add-ons',
@@ -1759,7 +1759,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_product_include_vat'      => 0,	// Include VAT in Product Prices.
 					'plugin_import_seoframework_meta' => 0,	// Import SEO Framework Metadata.
 					'plugin_import_wpseo_meta'        => 0,	// Import Yoast SEO Metadata.
-					'plugin_show_meta_import'         => 1,	// Show Metadata Import Details.
+					'plugin_show_import_details'      => 1,	// Show Metadata Import Details.
 
 					/**
 					 * Advanced Settings > Media Services tab.

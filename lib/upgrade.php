@@ -512,9 +512,8 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'plugin_og_desc_col_user'     => '',
 				),
 				853 => array(
-					'plugin_seoframework_social_meta' => 'plugin_import_seoframework_meta',	//Renamed on 2022/01/14.
-					'plugin_wpseo_social_meta'        => 'plugin_import_wpseo_meta',	//Renamed on 2022/01/14.
-					'plugin_wpseo_show_import'        => 'plugin_show_meta_import',		//Renamed on 2022/01/14.
+					'plugin_wpseo_social_meta' => 'plugin_import_wpseo_meta',	// Renamed on 2022/01/14.
+					'plugin_wpseo_show_import' => 'plugin_show_import_details',	// Renamed on 2022/01/14.
 				),
 			),
 		);
