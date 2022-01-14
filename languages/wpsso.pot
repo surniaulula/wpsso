@@ -1103,22 +1103,22 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:102
 msgctxt "lib file description"
-msgid "Essential Settings"
+msgid "Dashboard"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:103
 msgctxt "lib file description"
-msgid "Social Pages"
+msgid "Essential Settings"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:104
 msgctxt "lib file description"
-msgid "Setup Guide"
+msgid "Social Pages"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:105
 msgctxt "lib file description"
-msgid "Dashboard"
+msgid "Setup Guide"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:106
@@ -8272,8 +8272,8 @@ msgstr ""
 
 #: lib/messages-tooltip-plugin.php:302
 msgid ""
-"Show notification messages for imported SEO metadata for posts, pages, "
-"custom post types, terms, and users."
+"Show notification messages for imported metadata for posts, pages, custom "
+"post types, terms, and users."
 msgstr ""
 
 #: lib/messages-tooltip-plugin.php:313
