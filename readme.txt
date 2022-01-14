@@ -243,7 +243,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.14.0-dev.2 (2022/01/14)**
+**Version 9.14.0-dev.3 (2022/01/14)**
 
 * **New Features**
 	* Added a new "Import SEO Framework Metadata" option under the SSO &gt; Advanced Settings &gt; Integration tab.
@@ -251,14 +251,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Renamed the "Import Yoast SEO Social Meta" option to "Import Yoast SEO Metadata".
 	* Renamed the "Show Yoast SEO Import Details" option to "Show Metadata Import Details".
 * **Bugfixes**
-	* Fixed possible incorrect addition of sameAs URLs for post objects with an ID of 0.
+	* Fixed incorrect addition of sameAs URLs for post ID 0.
 * **Developer Notes**
-	* Renamed the 'plugin_wpseo_social_meta' options key to 'plugin_import_wpseo_meta'.
-	* Renamed the 'plugin_wpseo_show_import' options key to 'plugin_show_import_details'.
-	* Renamed the lib/abstracts/ folder to lib/abstract/.
+	* Added a new `WpssoProUtilAbstractSeoMeta` abstract class.
+	* Added a new `WpssoProUtilSeoFrameworkMeta` class to import The SEO Framework metadata.
+	* Refactored the `WpssoProUtilWpseoMeta` class to import Yoast SEO metadata.
+	* Renamed lib/abstracts/ folder to lib/abstract/.
 	* Renamed the `SucomAddOn` class to `SucomAbstractAddOn`.
 	* Renamed the `WpssoAddOn` class to `WpssoAbstractAddOn`.
 	* Renamed the `WpssoWpMeta` class to `WpssoAbstractWpMeta`.
+	* Renamed the 'plugin_wpseo_social_meta' options key to 'plugin_import_wpseo_meta'.
+	* Renamed the 'plugin_wpseo_show_import' options key to 'plugin_show_import_details'.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -755,9 +758,9 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 9.14.0-dev.2 =
+= 9.14.0-dev.3 =
 
-(2022/01/14) Fixed possible incorrect addition of sameAs URLs for post objects with an ID of 0. Renamed the lib/abstracts/ folder and its classes.
+(2022/01/14) Added a new "Import SEO Framework Metadata" option. Fixed incorrect addition of sameAs URLs for post ID 0. Renamed lib/abstracts/ folder and its classes.
 
 = 9.13.1 =
 
