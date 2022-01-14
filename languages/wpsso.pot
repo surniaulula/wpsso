@@ -4501,12 +4501,12 @@ msgid "Imported %1$s \"%2$s\" metadata from post ID %3$d."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:399 gettext/gettext-lib-pro.php:409
-#: lib/pro/util/seoframework-meta.php:225 lib/pro/util/wpseo-meta.php:278
+#: lib/pro/util/seoframework-meta.php:220 lib/pro/util/wpseo-meta.php:278
 msgid "Imported %1$s \"%2$s\" metadata from term ID %3$d."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:400 gettext/gettext-lib-pro.php:411
-#: lib/pro/util/seoframework-meta.php:313 lib/pro/util/wpseo-meta.php:389
+#: lib/pro/util/seoframework-meta.php:308 lib/pro/util/wpseo-meta.php:389
 msgid "Imported %1$s \"%2$s\" metadata from user ID %3$d."
 msgstr ""
 
@@ -4536,8 +4536,8 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:412 lib/conflict-seo.php:150
 #: lib/messages-tooltip-plugin.php:283 lib/messages-tooltip-plugin.php:286
 #: lib/pro/util/seoframework-meta.php:136
-#: lib/pro/util/seoframework-meta.php:226
-#: lib/pro/util/seoframework-meta.php:314
+#: lib/pro/util/seoframework-meta.php:221
+#: lib/pro/util/seoframework-meta.php:309
 msgid "The SEO Framework"
 msgstr ""
 
