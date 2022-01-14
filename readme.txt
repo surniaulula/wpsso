@@ -246,12 +246,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 9.14.0-dev.2 (2022/01/14)**
 
 * **New Features**
-	* None.
+	* Added a new "Import SEO Framework Metadata" option under the SSO &gt; Advanced Settings &gt; Integration tab.
 * **Improvements**
-	* None.
+	* Renamed the "Import Yoast SEO Social Meta" option to "Import Yoast SEO Metadata".
+	* Renamed the "Show Yoast SEO Import Details" option to "Show Metadata Import Details".
 * **Bugfixes**
 	* Fixed possible incorrect addition of sameAs URLs for post objects with an ID of 0.
 * **Developer Notes**
+	* Renamed the 'plugin_wpseo_social_meta' options key to 'plugin_import_wpseo_meta'.
+	* Renamed the 'plugin_wpseo_show_import' options key to 'plugin_show_import_details'.
 	* Renamed the lib/abstracts/ folder to lib/abstract/.
 	* Renamed the `SucomAddOn` class to `SucomAbstractAddOn`.
 	* Renamed the `WpssoAddOn` class to `WpssoAbstractAddOn`.
@@ -752,7 +755,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 9.14.0-dev.1 =
+= 9.14.0-dev.2 =
 
 (2022/01/14) Fixed possible incorrect addition of sameAs URLs for post objects with an ID of 0. Renamed the lib/abstracts/ folder and its classes.
 
