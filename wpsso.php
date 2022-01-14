@@ -15,7 +15,7 @@
  * Requires At Least: 5.2
  * Tested Up To: 5.8.3
  * WC Tested Up To: 6.1.0
- * Version: 9.13.2-dev.1
+ * Version: 9.14.0-dev.2
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -42,7 +42,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $admin;		// WpssoAdmin (admin menus and settings page loader) class object.
 		public $cache;		// SucomCache (object and file caching) class object.
 		public $check;		// WpssoCheck class object.
-		public $comment;	// WpssoComment class object (extends WpssoWpMeta).
+		public $comment;	// WpssoComment class object (extends WpssoAbstractWpMeta).
 		public $compat;		// WpssoCompat (third-party plugin and theme compatibility actions and filters) class object.
 		public $conflict;	// WpssoConflict (admin plugin conflict checks) class object.
 		public $debug;		// SucomDebug or SucomNoDebug class object.
@@ -54,12 +54,12 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		public $notice;		// SucomNotice or SucomNoNotice class object.
 		public $opt;		// WpssoOptions class object.
 		public $page;		// WpssoPage (page title, desc, etc.) class object.
-		public $post;		// WpssoPost class object (extends WpssoWpMeta).
+		public $post;		// WpssoPost class object (extends WpssoAbstractWpMeta).
 		public $reg;		// WpssoRegister class object.
 		public $script;		// WpssoScript (admin jquery tooltips) class object.
 		public $style;		// WpssoStyle (admin styles) class object.
-		public $term;		// WpssoTerm class object (extends WpssoWpMeta).
-		public $user;		// WpssoUser class object (extends WpssoWpMeta).
+		public $term;		// WpssoTerm class object (extends WpssoAbstractWpMeta).
+		public $user;		// WpssoUser class object (extends WpssoAbstractWpMeta).
 		public $util;		// WpssoUtil (extends SucomUtil) class object.
 
 		/**
@@ -409,12 +409,12 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			 *	$term
 			 *	$user
 			 */
-			$this->comment = new WpssoComment( $this );		// Extends WpssoWpMeta.
+			$this->comment = new WpssoComment( $this );		// Extends WpssoAbstractWpMeta.
 			$this->media   = new WpssoMedia( $this );
 			$this->page    = new WpssoPage( $this );
-			$this->post    = new WpssoPost( $this );		// Extends WpssoWpMeta.
-			$this->term    = new WpssoTerm( $this );		// Extends WpssoWpMeta.
-			$this->user    = new WpssoUser( $this );		// Extends WpssoWpMeta.
+			$this->post    = new WpssoPost( $this );		// Extends WpssoAbstractWpMeta.
+			$this->term    = new WpssoTerm( $this );		// Extends WpssoAbstractWpMeta.
+			$this->user    = new WpssoUser( $this );		// Extends WpssoAbstractWpMeta.
 
 			/**
 			 * Setup classe for meta tags and Schema markup:

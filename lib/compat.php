@@ -77,7 +77,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			/**
 			 * Yoast SEO.
 			 */
-			if ( ! empty( $this->p->avail[ 'seo' ][ 'wpseo' ] ) || ! empty( $this->p->options[ 'plugin_wpseo_social_meta' ] ) ) {
+			if ( ! empty( $this->p->avail[ 'seo' ][ 'wpseo' ] ) ) {
 
 				$this->p->util->add_plugin_filters( $this, array( 
 					'wpseo_replace_vars' => 2,

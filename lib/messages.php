@@ -282,7 +282,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$mb_title     = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 						$media_tab    = _x( 'Priority Media', 'metabox tab', 'wpsso' );
-						$is_meta_page = WpssoWpMeta::is_meta_page();
+						$is_meta_page = WpssoAbstractWpMeta::is_meta_page();
 
 						$text = '<!-- show-once -->';
 

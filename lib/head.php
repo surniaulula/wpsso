@@ -176,7 +176,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		 *
 		 * Save meta tag values for later sorting in list tables.
 		 *
-		 * Called by WpssoWpMeta->get_head_info().
+		 * Called by WpssoAbstractWpMeta->get_head_info().
 		 * Called by WpssoPost->load_meta_page().
 		 * Called by WpssoPost->ajax_get_metabox_document_meta().
 		 * Called by WpssoTerm->load_meta_page().
@@ -301,7 +301,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 */
 			if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 
-				$sortable_cols = WpssoWpMeta::get_sortable_columns();
+				$sortable_cols = WpssoAbstractWpMeta::get_sortable_columns();
 
 				foreach ( $sortable_cols as $col_key => $col_info ) {
 

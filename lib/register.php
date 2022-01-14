@@ -222,7 +222,7 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				delete_option( WPSSO_REG_TS_NAME );
 				delete_option( WPSSO_OPTIONS_NAME );
 
-				$col_meta_keys = WpssoWpMeta::get_column_meta_keys();
+				$col_meta_keys = WpssoAbstractWpMeta::get_column_meta_keys();
 
 				foreach ( $col_meta_keys as $col_key => $meta_key ) {
 

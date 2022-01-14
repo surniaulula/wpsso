@@ -413,7 +413,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public function get_json_data_home_website() {
 
-			$mod = WpssoWpMeta::get_mod_home();
+			$mod = WpssoAbstractWpMeta::get_mod_home();
 
 			$mt_og = array();
 

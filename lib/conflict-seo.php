@@ -68,6 +68,8 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 				return;
 			}
 
+			$plugin_name = __( 'All in One SEO', 'wpsso' );
+
 			/**
 			 * Check for minimum supported version.
 			 */
@@ -77,7 +79,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 
 				$notice_msg_transl = __( 'The %1$s plugin is too old - please update the %1$s plugin to version %2$s or newer.', 'wpsso' );
 
-				$this->p->notice->err( $this->notice_pre . sprintf( $notice_msg_transl, __( 'All in One SEO', 'all-in-one-seo-pack' ), $min_version ) );
+				$this->p->notice->err( $this->notice_pre . sprintf( $notice_msg_transl, $plugin_name, $min_version ) );
 
 				return;
 			}
@@ -92,9 +94,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 
 				$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=aioseo-social-networks#/facebook' );
 
-				$settings_link = '<a href="' . $settings_url . '">' .
-					// translators: Please ignore - translation uses a different text domain.
-					__( 'All in One SEO', 'all-in-one-seo-pack' ) . ' &gt; ' .
+				$settings_link = '<a href="' . $settings_url . '">' . $plugin_name . ' &gt; ' .
 					// translators: Please ignore - translation uses a different text domain.
 					__( 'Social Networks', 'all-in-one-seo-pack' ) . ' &gt; ' .
 					// translators: Please ignore - translation uses a different text domain.
@@ -120,9 +120,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 
 				$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=aioseo-social-networks#/twitter' );
 
-				$settings_link = '<a href="' . $settings_url . '">' .
-					// translators: Please ignore - translation uses a different text domain.
-					__( 'All in One SEO', 'all-in-one-seo-pack' ) . ' &gt; ' .
+				$settings_link = '<a href="' . $settings_url . '">' . $plugin_name . ' &gt; ' .
 					// translators: Please ignore - translation uses a different text domain.
 					__( 'Social Networks', 'all-in-one-seo-pack' ) . ' &gt; ' .
 					// translators: Please ignore - translation uses a different text domain.
@@ -149,6 +147,8 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 				return;
 			}
 
+			$plugin_name = __( 'The SEO Framework', 'wpsso' );
+
 			$tsf = the_seo_framework();
 
 			$opts = $tsf->get_all_options();
@@ -158,9 +158,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			 */
 			$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=theseoframework-settings' );
 
-			$settings_link = '<a href="' . $settings_url . '">' .
-				// translators: Please ignore - translation uses a different text domain.
-				__( 'The SEO Framework', 'autodescription' ) . ' &gt; ' .
+			$settings_link = '<a href="' . $settings_url . '">' . $plugin_name . ' &gt; ' .
 				// translators: Please ignore - translation uses a different text domain.
 				__( 'Social Meta Settings', 'autodescription' ) . '</a>';
 
@@ -202,9 +200,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			 */
 			if ( ! empty( $opts[ 'knowledge_output' ] ) ) {
 
-				$settings_link = '<a href="' . $settings_url . '">' .
-					// translators: Please ignore - translation uses a different text domain.
-					__( 'The SEO Framework', 'autodescription' ) . ' &gt; ' .
+				$settings_link = '<a href="' . $settings_url . '">' . $plugin_name . ' &gt; ' .
 					// translators: Please ignore - translation uses a different text domain.
 					__( 'Schema Settings', 'autodescription' ) . '</a>';
 
@@ -231,6 +227,8 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 
 				return;
 			}
+
+			$plugin_name = __( 'SEOPress', 'wpsso' );
 
 			$opts = get_option( 'seopress_toggle' );
 
@@ -271,6 +269,8 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 				return;
 			}
 
+			$plugin_name = __( 'SEO Ultimate', 'wpsso' );
+
 			$opts = get_option( 'seo_ultimate' );
 
 			if ( ! empty( $opts[ 'modules' ] ) && is_array( $opts[ 'modules' ] ) ) {
@@ -282,9 +282,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 
 					$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=seo' );
 
-					$settings_link = '<a href="' . $settings_url . '">' .
-						// translators: Please ignore - translation uses a different text domain.
-						__( 'SEO Ultimate', 'seo-ultimate' ) . ' &gt; ' .
+					$settings_link = '<a href="' . $settings_url . '">' . $plugin_name . ' &gt; ' .
 						// translators: Please ignore - translation uses a different text domain.
 						__( 'Modules', 'seo-ultimate' ) . '</a>';
 
@@ -312,6 +310,8 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 
 				return;
 			}
+
+			$plugin_name = __( 'Squirrly SEO', 'wpsso' );
 
 			$opts = json_decode( get_option( 'sq_options' ), $assoc = true );
 
@@ -390,6 +390,8 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 				return;
 			}
 
+			$plugin_name = __( 'WP Meta SEO', 'wpsso' );
+
 			$opts = get_option( '_metaseo_settings' );
 
 			if ( empty( $opts ) ) {	// Plugin settings not yet saved.
@@ -405,9 +407,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			 */
 			$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=metaseo_settings#social' );
 
-			$settings_link = '<a href="' . $settings_url . '">' .
-				// translators: Please ignore - translation uses a different text domain.
-				__( 'WP Meta SEO', 'wp-meta-seo' ) . ' &gt; ' .
+			$settings_link = '<a href="' . $settings_url . '">' . $plugin_name . ' &gt; ' .
 				// translators: Please ignore - translation uses a different text domain.
 				__( 'Settings', 'wp-meta-seo' ) . ' &gt; ' .
 				// translators: Please ignore - translation uses a different text domain.
@@ -461,6 +461,8 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 				return;
 			}
 
+			$plugin_name = __( 'Yoast SEO', 'wpsso' );
+
 			/**
 			 * Check for minimum supported version.
 			 */
@@ -470,7 +472,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 
 				$notice_msg_transl = __( 'The %1$s plugin is too old - please update the %1$s plugin to version %2$s or newer.', 'wpsso' );
 
-				$this->p->notice->err( $this->notice_pre . sprintf( $notice_msg_transl, __( 'Yoast SEO', 'wordpress-seo' ), $min_version ) );
+				$this->p->notice->err( $this->notice_pre . sprintf( $notice_msg_transl, $plugin_name, $min_version ) );
 
 				return;
 			}
@@ -484,9 +486,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			 */
 			$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=wpseo_social#top#accounts' );
 
-			$settings_link = '<a href="' . $settings_url . '">' .
-				// translators: Please ignore - translation uses a different text domain.
-				__( 'Yoast SEO', 'wordpress-seo' ) . ' &gt; ' .
+			$settings_link = '<a href="' . $settings_url . '">' . $plugin_name . ' &gt; ' .
 				// translators: Please ignore - translation uses a different text domain.
 				__( 'Social', 'wordpress-seo' ) . ' &gt; ' .
 				// translators: Please ignore - translation uses a different text domain.
@@ -534,9 +534,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 
 				$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=wpseo_social#top#facebook' );
 
-				$settings_link = '<a href="' . $settings_url . '">' .
-					// translators: Please ignore - translation uses a different text domain.
-					__( 'Yoast SEO', 'wordpress-seo' ) . ' &gt; ' .
+				$settings_link = '<a href="' . $settings_url . '">' . $plugin_name . ' &gt; ' .
 					// translators: Please ignore - translation uses a different text domain.
 					__( 'Social', 'wordpress-seo' ) . ' &gt; ' .
 					// translators: Please ignore - translation uses a different text domain.
@@ -562,9 +560,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 
 				$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=wpseo_social#top#facebook' );
 
-				$settings_link = '<a href="' . $settings_url . '">' .
-					// translators: Please ignore - translation uses a different text domain.
-					__( 'Yoast SEO', 'wordpress-seo' ) . ' &gt; ' .
+				$settings_link = '<a href="' . $settings_url . '">' . $plugin_name . ' &gt; ' .
 					// translators: Please ignore - translation uses a different text domain.
 					__( 'Social', 'wordpress-seo' ) . ' &gt; ' .
 					// translators: Please ignore - translation uses a different text domain.
@@ -590,9 +586,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 
 				$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=wpseo_social#top#twitterbox' );
 
-				$settings_link = '<a href="' . $settings_url . '">' .
-					// translators: Please ignore - translation uses a different text domain.
-					__( 'Yoast SEO', 'wordpress-seo' ) . ' &gt; ' .
+				$settings_link = '<a href="' . $settings_url . '">' . $plugin_name . ' &gt; ' .
 					// translators: Please ignore - translation uses a different text domain.
 					__( 'Social', 'wordpress-seo' ) . ' &gt; ' .
 					// translators: Please ignore - translation uses a different text domain.
@@ -618,9 +612,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 
 				$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=wpseo_dashboard#top#features' );
 
-				$settings_link = '<a href="' . $settings_url . '">' .
-					// translators: Please ignore - translation uses a different text domain.
-					__( 'Yoast SEO', 'wordpress-seo' ) . ' &gt; ' .
+				$settings_link = '<a href="' . $settings_url . '">' . $plugin_name . ' &gt; ' .
 					// translators: Please ignore - translation uses a different text domain.
 					__( 'General', 'wordpress-seo' ) . ' &gt; ' .
 					// translators: Please ignore - translation uses a different text domain.

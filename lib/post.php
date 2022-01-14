@@ -13,20 +13,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * This class may be extended by some add-ons.
  */
-if ( ! class_exists( 'WpssoWpMeta' ) ) {
+if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 	$dir_name = dirname( __FILE__ );
 
-	if ( file_exists( $dir_name . '/abstracts/wp-meta.php' ) ) {
+	if ( file_exists( $dir_name . '/abstract/wp-meta.php' ) ) {
 
-		require_once $dir_name . '/abstracts/wp-meta.php';
+		require_once $dir_name . '/abstract/wp-meta.php';
 
-	} else wpdie( 'WpssoWpMeta class not found.' );
+	} else wpdie( 'WpssoAbstractWpMeta class not found.' );
 }
 
 if ( ! class_exists( 'WpssoPost' ) ) {
 
-	class WpssoPost extends WpssoWpMeta {
+	class WpssoPost extends WpssoAbstractWpMeta {
 
 		private static $saved_shortlink_url = null;	// Used by get_canonical_shortlink() and maybe_restore_shortlink().
 		private static $cache_shortlinks    = array();	// Used by get_canonical_shortlink() and maybe_restore_shortlink().
@@ -494,7 +494,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		/**
-		 * Use $rel = false to extend WpssoWpMeta->save_options().
+		 * Use $rel = false to extend WpssoAbstractWpMeta->save_options().
 		 */
 		public function save_options( $post_id, $rel = false ) {
 
@@ -547,7 +547,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		/**
-		 * Use $rel = false to extend WpssoWpMeta->save_options().
+		 * Use $rel = false to extend WpssoAbstractWpMeta->save_options().
 		 */
 		public function delete_options( $post_id, $rel = false ) {
 
@@ -609,7 +609,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		 *
 		 * Return an array of post ids for a given $mod object.
 		 *
-		 * Called by WpssoWpMeta->get_posts_mods().
+		 * Called by WpssoAbstractWpMeta->get_posts_mods().
 		 */
 		public function get_posts_ids( array $mod, array $extra_args = array() ) {
 
@@ -1336,7 +1336,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		/**
-		 * Use $post_obj = false to extend WpssoWpMeta->add_meta_boxes().
+		 * Use $post_obj = false to extend WpssoAbstractWpMeta->add_meta_boxes().
 		 */
 		public function add_meta_boxes( $post_type, $post_obj = false ) {
 
@@ -1640,7 +1640,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		/**
 		 * Uses a static cache to clear the cache only once per post id per page load.
 		 *
-		 * Use $rel = false to extend WpssoWpMeta->clear_cache().
+		 * Use $rel = false to extend WpssoAbstractWpMeta->clear_cache().
 		 */
 		public function clear_cache( $post_id, $rel = false ) {
 
@@ -1773,7 +1773,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		/**
-		 * Use $rel = false to extend WpssoWpMeta->clear_cache().
+		 * Use $rel = false to extend WpssoAbstractWpMeta->clear_cache().
 		 */
 		public function user_can_save( $post_id, $rel = false ) {
 

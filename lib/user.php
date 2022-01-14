@@ -13,20 +13,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * This class may be extended by some add-ons.
  */
-if ( ! class_exists( 'WpssoWpMeta' ) ) {
+if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 	$dir_name = dirname( __FILE__ );
 
-	if ( file_exists( $dir_name . '/abstracts/wp-meta.php' ) ) {
+	if ( file_exists( $dir_name . '/abstract/wp-meta.php' ) ) {
 
-		require_once $dir_name . '/abstracts/wp-meta.php';
+		require_once $dir_name . '/abstract/wp-meta.php';
 
-	} else wpdie( 'WpssoWpMeta class not found.' );
+	} else wpdie( 'WpssoAbstractWpMeta class not found.' );
 }
 
 if ( ! class_exists( 'WpssoUser' ) ) {
 
-	class WpssoUser extends WpssoWpMeta {
+	class WpssoUser extends WpssoAbstractWpMeta {
 
 		private static $cache_user_prefs = array();	// Used by get_pref() and save_pref().
 
@@ -361,7 +361,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		/**
-		 * Use $rel = false to extend WpssoWpMeta->save_options().
+		 * Use $rel = false to extend WpssoAbstractWpMeta->save_options().
 		 */
 		public function save_options( $user_id, $rel = false ) {
 
@@ -417,7 +417,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		/**
-		 * Use $rel = false to extend WpssoWpMeta->save_options().
+		 * Use $rel = false to extend WpssoAbstractWpMeta->save_options().
 		 */
 		public function delete_options( $user_id, $rel = false ) {
 
@@ -451,7 +451,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		 *
 		 * Return an array of post IDs for a given $mod object.
 		 *
-		 * Called by WpssoWpMeta->get_posts_mods().
+		 * Called by WpssoAbstractWpMeta->get_posts_mods().
 		 */
 		public function get_posts_ids( array $mod, array $extra_args = array() ) {
 
@@ -692,7 +692,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		/**
-		 * Use $rel = false to extend WpssoWpMeta->add_meta_boxes().
+		 * Use $rel = false to extend WpssoAbstractWpMeta->add_meta_boxes().
 		 */
 		public function add_meta_boxes( $user_obj, $rel = false ) {
 
@@ -1395,7 +1395,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		/**
-		 * Use $rel = false to extend WpssoWpMeta->clear_cache().
+		 * Use $rel = false to extend WpssoAbstractWpMeta->clear_cache().
 		 */
 		public function clear_cache( $user_id, $rel = false ) {
 
@@ -1436,7 +1436,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		/**
-		 * Use $rel = false to extend WpssoWpMeta->clear_cache().
+		 * Use $rel = false to extend WpssoAbstractWpMeta->clear_cache().
 		 */
 		public function user_can_save( $user_id, $rel = false ) {
 

@@ -13,20 +13,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * This class may be extended by some add-ons.
  */
-if ( ! class_exists( 'WpssoWpMeta' ) ) {
+if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 	$dir_name = dirname( __FILE__ );
 
-	if ( file_exists( $dir_name . '/abstracts/wp-meta.php' ) ) {
+	if ( file_exists( $dir_name . '/abstract/wp-meta.php' ) ) {
 
-		require_once $dir_name . '/abstracts/wp-meta.php';
+		require_once $dir_name . '/abstract/wp-meta.php';
 
-	} else wpdie( 'WpssoWpMeta class not found.' );
+	} else wpdie( 'WpssoAbstractWpMeta class not found.' );
 }
 
 if ( ! class_exists( 'WpssoComment' ) ) {
 
-	class WpssoComment extends WpssoWpMeta {
+	class WpssoComment extends WpssoAbstractWpMeta {
 
 		public function __construct( &$plugin ) {
 

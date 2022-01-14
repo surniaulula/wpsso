@@ -862,6 +862,15 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 								/**
 								 * Premium edition feature / option.
 								 */
+								case 'seoframework-meta':	// Import SEO Framework Metadata.
+
+									$chk[ 'opt_key' ] = 'plugin_import_seoframework_meta';
+
+									break;
+
+								/**
+								 * Premium edition feature / option.
+								 */
 								case 'shorten':	// URL Shortening Service.
 
 									$chk[ 'opt_key' ] = 'plugin_shortener';
@@ -871,9 +880,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 								/**
 								 * Premium edition feature / option.
 								 */
-								case 'wpseo-meta':	// Import Yoast SEO Social Meta.
+								case 'wpseo-meta':	// Import Yoast SEO Metadata.
 
-									$chk[ 'opt_key' ] = 'plugin_wpseo_social_meta';
+									$chk[ 'opt_key' ] = 'plugin_import_wpseo_meta';
 
 									break;
 							}

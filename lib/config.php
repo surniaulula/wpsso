@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.13.2-dev.1',	// Plugin version.
-					'opt_version' => '853',		// Increment when changing default option values.
+					'version'     => '9.14.0-dev.2',	// Plugin version.
+					'opt_version' => '854',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -199,11 +199,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'buddypress' => '(plugin) BuddyPress',
 							),
 							'util' => array(
-								'check-img-dims' => '(feature) Image Dimension Checks',
-								'coauthors'      => '(plugin) Co-Authors Plus',
-								'elementor'      => '(plugin) Elementor Website Builder',
-								'shorten'        => '(feature) URL Shortening Service',
-								'wpseo-meta'     => '(feature) Import Yoast SEO Social Meta',
+								'check-img-dims'    => '(feature) Image Dimension Checks',
+								'coauthors'         => '(plugin) Co-Authors Plus',
+								'elementor'         => '(plugin) Elementor Website Builder',
+								'seoframework-meta' => '(feature) Import SEO Framework Metadata',
+								'shorten'           => '(feature) URL Shortening Service',
+								'wpseo-meta'        => '(feature) Import Yoast SEO Metadata',
 							),
 						),
 						'profile' => array(
@@ -1754,10 +1755,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings > Integration tab (Plugin and Theme Integration).
 					 */
-					'plugin_check_head'          => 1,	// Check for Duplicate Meta Tags.
-					'plugin_product_include_vat' => 0,	// Include VAT in Product Prices.
-					'plugin_wpseo_social_meta'   => 0,	// Import Yoast SEO Social Meta.
-					'plugin_wpseo_show_import'   => 1,	// Show Yoast SEO Import Details.
+					'plugin_check_head'               => 1,	// Check for Duplicate Meta Tags.
+					'plugin_product_include_vat'      => 0,	// Include VAT in Product Prices.
+					'plugin_import_seoframework_meta' => 0,	// Import SEO Framework Metadata.
+					'plugin_import_wpseo_meta'        => 0,	// Import Yoast SEO Metadata.
+					'plugin_show_meta_import'         => 1,	// Show Metadata Import Details.
 
 					/**
 					 * Advanced Settings > Media Services tab.
@@ -2067,7 +2069,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '4.10.2',	// Minimum update manager version (soft limit).
+				'rec_version' => '4.11.0-dev.2',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
 					48  => 'Every two days',
@@ -4419,11 +4421,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			/**
 			 * Comment, post, term, user modules.
 			 */
-			require_once WPSSO_PLUGINDIR . 'lib/abstracts/wp-meta.php';
-			require_once WPSSO_PLUGINDIR . 'lib/comment.php';	// Extends WpssoWpMeta.
-			require_once WPSSO_PLUGINDIR . 'lib/post.php';		// Extends WpssoWpMeta.
-			require_once WPSSO_PLUGINDIR . 'lib/term.php';		// Extends WpssoWpMeta.
-			require_once WPSSO_PLUGINDIR . 'lib/user.php';		// Extends WpssoWpMeta.
+			require_once WPSSO_PLUGINDIR . 'lib/abstract/wp-meta.php';
+			require_once WPSSO_PLUGINDIR . 'lib/comment.php';	// Extends WpssoAbstractWpMeta.
+			require_once WPSSO_PLUGINDIR . 'lib/post.php';		// Extends WpssoAbstractWpMeta.
+			require_once WPSSO_PLUGINDIR . 'lib/term.php';		// Extends WpssoAbstractWpMeta.
+			require_once WPSSO_PLUGINDIR . 'lib/user.php';		// Extends WpssoAbstractWpMeta.
 
 			/**
 			 * Meta tags and markup.
@@ -4444,7 +4446,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			/**
 			 * Add-ons library.
 			 */
-			require_once WPSSO_PLUGINDIR . 'lib/abstracts/add-on.php';	// Extends SucomAddOn.
+			require_once WPSSO_PLUGINDIR . 'lib/abstract/add-on.php';
 
 			add_filter( 'wpsso_load_lib', array( __CLASS__, 'load_lib' ), 10, 3 );
 		}

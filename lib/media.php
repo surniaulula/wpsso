@@ -1533,7 +1533,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		/**
 		 * Returns a single video associative array.
 		 *
-		 * $fallback = true when called from WpssoWpMeta->get_og_videos().
+		 * $fallback = true when called from WpssoAbstractWpMeta->get_og_videos().
 		 */
 		public function get_video_details( array $args, $check_dupes = true, $fallback = false ) {
 

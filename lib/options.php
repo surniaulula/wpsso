@@ -125,20 +125,38 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$this->cache_defaults[ 'fb_author_field' ] = $this->p->options[ 'plugin_cm_fb_name' ];
 
 				/**
-				 * Maybe import Yoast SEO social meta.
+				 * Maybe import The SEO Framework metadata.
 				 *
-				 * Enabled by default if the Yoast SEO plugin is active, or if no SEO plugin is active but Yoast
+				 * Enabled by default if The SEO Framework plugin is active, or if no SEO plugin is active and The
+				 * SEO Framework settings are found in the database.
+				 */
+				if ( ! empty( $this->p->avail[ 'seo' ][ 'seoframework' ] ) ) {	// The SEO Framework is active.
+
+					$this->cache_defaults[ 'plugin_import_seoframework_meta' ] = 1;
+
+				} elseif ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {	// No other SEO plugin is active.
+
+					if ( get_option( 'the_seo_framework_site_options' ) ) {	// The SEO Framework was once active.
+
+						$this->cache_defaults[ 'plugin_import_seoframework_meta' ] = 1;
+					}
+				}
+
+				/**
+				 * Maybe import Yoast SEO metadata.
+				 *
+				 * Enabled by default if the Yoast SEO plugin is active, or if no SEO plugin is active and Yoast
 				 * SEO settings are found in the database.
 				 */
 				if ( ! empty( $this->p->avail[ 'seo' ][ 'wpseo' ] ) ) {	// Yoast SEO is active.
 
-					$this->cache_defaults[ 'plugin_wpseo_social_meta' ] = 1;
+					$this->cache_defaults[ 'plugin_import_wpseo_meta' ] = 1;
 
 				} elseif ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {	// No other SEO plugin is active.
 
 					if ( get_option( 'wpseo' ) ) {	// Yoast SEO was once active.
 
-						$this->cache_defaults[ 'plugin_wpseo_social_meta' ] = 1;
+						$this->cache_defaults[ 'plugin_import_wpseo_meta' ] = 1;
 					}
 				}
 
@@ -426,12 +444,19 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					);
 
 					/**
-					 * An SEO plugin is active, but it's not the Yoast SEO plugin, so skip importing old Yoast
-					 * SEO post/term/user metadata.
+					 * The active SEO plugin is not The SEO Framework, so do not import The SEO Framework metadata.
+					 */
+					if ( empty( $this->p->avail[ 'seo' ][ 'seoframework' ] ) ) {
+
+						$seo_opts[ 'plugin_import_seoframework_meta' ] = 0;
+					}
+
+					/**
+					 * The active SEO plugin is not Yoast SEO, so do not import Yoast SEO metadata.
 					 */
 					if ( empty( $this->p->avail[ 'seo' ][ 'wpseo' ] ) ) {
 
-						$seo_opts[ 'plugin_wpseo_social_meta' ] = 0;
+						$seo_opts[ 'plugin_import_wpseo_meta' ] = 0;
 					}
 				}
 
@@ -583,7 +608,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		 *
 		 * Called by WpssoAdmin->registered_setting_sanitation().
 		 * Called by WpssoAdmin->save_site_options().
-		 * Called by WpssoWpMeta->get_submit_opts().
+		 * Called by WpssoAbstractWpMeta->get_submit_opts().
 		 */
 		public function sanitize( $opts = array(), $defs = array(), $network = false, $mod = false ) {
 
@@ -1032,7 +1057,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		 */
 		private function add_custom_post_tax_options( array &$opts ) {	// Pass by reference is OK.
 
-			$col_headers = WpssoWpMeta::get_column_headers();
+			$col_headers = WpssoAbstractWpMeta::get_column_headers();
 
 			/**
 			 * Add options using a key prefix array and post type names.

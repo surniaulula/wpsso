@@ -190,17 +190,23 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$form->get_no_td_checkbox( 'plugin_product_include_vat' ) .
 				WpssoAdmin::get_option_site_use( 'plugin_product_include_vat', $form, $network );
 
-			$table_rows[ 'plugin_wpseo_social_meta' ] = '' .
-				$form->get_th_html( _x( 'Import Yoast SEO Social Meta', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_wpseo_social_meta' ) . 
-				$form->get_no_td_checkbox( 'plugin_wpseo_social_meta' ) .
-				WpssoAdmin::get_option_site_use( 'plugin_wpseo_social_meta', $form, $network );
+			$table_rows[ 'plugin_import_seoframework_meta' ] = '' .
+				$form->get_th_html( _x( 'Import SEO Framework Metadata', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_import_seoframework_meta' ) . 
+				$form->get_no_td_checkbox( 'plugin_import_seoframework_meta' ) .
+				WpssoAdmin::get_option_site_use( 'plugin_import_seoframework_meta', $form, $network );
 
-			$table_rows[ 'plugin_wpseo_show_import' ] = $form->get_tr_hide( 'basic', 'plugin_wpseo_show_import' ) .
-				$form->get_th_html( _x( 'Show Yoast SEO Import Details', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_wpseo_show_import' ) .
-				$form->get_no_td_checkbox( 'plugin_wpseo_show_import' ) .
-				WpssoAdmin::get_option_site_use( 'plugin_wpseo_show_import', $form, $network );
+			$table_rows[ 'plugin_import_wpseo_meta' ] = '' .
+				$form->get_th_html( _x( 'Import Yoast SEO Metadata', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_import_wpseo_meta' ) . 
+				$form->get_no_td_checkbox( 'plugin_import_wpseo_meta' ) .
+				WpssoAdmin::get_option_site_use( 'plugin_import_wpseo_meta', $form, $network );
+
+			$table_rows[ 'plugin_show_meta_import' ] = $form->get_tr_hide( 'basic', 'plugin_show_meta_import' ) .
+				$form->get_th_html( _x( 'Show Metadata Import Details', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_show_meta_import' ) .
+				$form->get_no_td_checkbox( 'plugin_show_meta_import' ) .
+				WpssoAdmin::get_option_site_use( 'plugin_show_meta_import', $form, $network );
 
 			return $table_rows;
 		}
@@ -287,7 +293,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			/**
 			 * Additional item list columns.
 			 */
-			$col_headers = WpssoWpMeta::get_column_headers();
+			$col_headers = WpssoAbstractWpMeta::get_column_headers();
 
 			$table_rows[ 'plugin_show_columns' ] = '' .
 				$form->get_th_html( _x( 'WP List Table Columns', 'option label', 'wpsso' ),

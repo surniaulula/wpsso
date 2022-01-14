@@ -13,20 +13,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * This class may be extended by some add-ons.
  */
-if ( ! class_exists( 'WpssoWpMeta' ) ) {
+if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 	$dir_name = dirname( __FILE__ );
 
-	if ( file_exists( $dir_name . '/abstracts/wp-meta.php' ) ) {
+	if ( file_exists( $dir_name . '/abstract/wp-meta.php' ) ) {
 
-		require_once $dir_name . '/abstracts/wp-meta.php';
+		require_once $dir_name . '/abstract/wp-meta.php';
 
-	} else wpdie( 'WpssoWpMeta class not found.' );
+	} else wpdie( 'WpssoAbstractWpMeta class not found.' );
 }
 
 if ( ! class_exists( 'WpssoTerm' ) ) {
 
-	class WpssoTerm extends WpssoWpMeta {
+	class WpssoTerm extends WpssoAbstractWpMeta {
 
 		private $query_term_id  = 0;
 		private $query_tax_slug = '';
@@ -370,7 +370,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		/**
-		 * Use $term_tax_id = false to extend WpssoWpMeta->save_options().
+		 * Use $term_tax_id = false to extend WpssoAbstractWpMeta->save_options().
 		 */
 		public function save_options( $term_id, $term_tax_id = false ) {
 
@@ -429,7 +429,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		/**
-		 * Use $term_tax_id = false to extend WpssoWpMeta->delete_options().
+		 * Use $term_tax_id = false to extend WpssoAbstractWpMeta->delete_options().
 		 */
 		public function delete_options( $term_id, $term_tax_id = false ) {
 
@@ -471,7 +471,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		 *
 		 * Return an array of post ids for a given $mod object, including posts in child terms as well.
 		 *
-		 * Called by WpssoWpMeta->get_posts_mods().
+		 * Called by WpssoAbstractWpMeta->get_posts_mods().
 		 */
 		public function get_posts_ids( array $mod, array $extra_args = array() ) {
 
@@ -701,7 +701,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		/**
-		 * Use $tax_slug = false to extend WpssoWpMeta->add_meta_boxes().
+		 * Use $tax_slug = false to extend WpssoAbstractWpMeta->add_meta_boxes().
 		 */
 		public function add_meta_boxes( $term_obj, $tax_slug = false ) {
 
@@ -839,7 +839,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		 *
 		 * Also called by WpssoPost::clear_cache() to clear the post term cache.
 		 *
-		 * Use $term_tax_id = false to extend WpssoWpMeta->clear_cache().
+		 * Use $term_tax_id = false to extend WpssoAbstractWpMeta->clear_cache().
 		 */
 		public function clear_cache( $term_id, $term_tax_id = false ) {
 
@@ -890,7 +890,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		/**
-		 * Use $term_tax_id = false to extend WpssoWpMeta->user_can_save().
+		 * Use $term_tax_id = false to extend WpssoAbstractWpMeta->user_can_save().
 		 */
 		public function user_can_save( $term_id, $term_tax_id = false ) {
 

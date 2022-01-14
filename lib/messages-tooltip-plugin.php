@@ -277,17 +277,29 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
-				case 'tooltip-plugin_wpseo_social_meta':	// Import Yoast SEO Social Meta.
+				case 'tooltip-plugin_import_seoframework_meta':	// Import SEO Framework Metadata.
 
-					$text = __( 'Import the Yoast SEO custom social meta text for Posts, Terms, and Users.', 'wpsso' ) . ' ';
+					// translators: %1$s is the plugin name.
+					$text = sprintf( __( 'Import %1$s custom metadata for posts, pages, custom post types, terms, and users.', 'wpsso' ), __( 'The SEO Framework', 'wpsso' ) ) . ' ';
 
-					$text .= __( 'This option is checked by default if the Yoast SEO plugin is active, or if no SEO plugin is active and Yoast SEO settings are found in the database.', 'wpsso' );
+					// translators: %1$s is the plugin name.
+					$text .= sprintf( __( 'This option is checked by default if %1$s plugin is active, or if no SEO plugin is active and %1$s settings are found in the database.', 'wpsso' ), __( 'The SEO Framework', 'wpsso' ) ) . ' ';
 
 					break;
 
-				case 'tooltip-plugin_wpseo_show_import':	// Show Yoast SEO Import Details.
+				case 'tooltip-plugin_import_wpseo_meta':	// Import Yoast SEO Metadata.
 
-					$text = __( 'Show notification messages for imported Yoast SEO custom social meta text for Posts, Terms, and Users.', 'wpsso' ) . ' ';
+					// translators: %1$s is the plugin name.
+					$text = sprintf( __( 'Import %1$s custom metadata for posts, pages, custom post types, terms, and users.', 'wpsso' ), __( 'Yoast SEO', 'wpsso' ) ) . ' ';
+
+					// translators: %1$s is the plugin name.
+					$text .= sprintf( __( 'This option is checked by default if %1$s plugin is active, or if no SEO plugin is active and %1$s settings are found in the database.', 'wpsso' ), __( 'Yoast SEO', 'wpsso' ) ) . ' ';
+
+					break;
+
+				case 'tooltip-plugin_show_meta_import':	// Show Metadata Import Details.
+
+					$text = __( 'Show notification messages for imported SEO metadata for posts, pages, custom post types, terms, and users.', 'wpsso' ) . ' ';
 
 					break;
 

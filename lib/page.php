@@ -371,7 +371,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						$this->p->debug->log( 'module object is unknown: merging $mod defaults' );
 					}
 
-					$mod = array_merge( WpssoWpMeta::get_mod_defaults(), $mod );
+					$mod = array_merge( WpssoAbstractWpMeta::get_mod_defaults(), $mod );
 
 					break;
 			}

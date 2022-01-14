@@ -33,7 +33,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			$min_int = SucomUtil::get_min_int();
 
 			/**
-			 * Default Document SSO metabox tabs are defined in WpssoWpMeta->get_document_meta_tabs().
+			 * Default Document SSO metabox tabs are defined in WpssoAbstractWpMeta->get_document_meta_tabs().
 			 */
 			$this->p->util->add_plugin_filters( $this, array( 
 				'metabox_sso_edit_rows'     => 4,
