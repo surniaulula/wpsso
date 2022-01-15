@@ -1064,7 +1064,7 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:94
 msgctxt "lib file description"
-msgid "(feature) Import SEO Framework Metadata"
+msgid "(feature) Import The SEO Framework Metadata"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:95
@@ -2735,7 +2735,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:30 lib/pro/admin/advanced.php:204
 #: lib/std/admin/advanced.php:194
 msgctxt "option label"
-msgid "Import SEO Framework Metadata"
+msgid "Import The SEO Framework Metadata"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:31 lib/pro/admin/advanced.php:210

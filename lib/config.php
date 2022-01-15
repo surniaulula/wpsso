@@ -202,7 +202,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'check-img-dims'    => '(feature) Image Dimension Checks',
 								'coauthors'         => '(plugin) Co-Authors Plus',
 								'elementor'         => '(plugin) Elementor Website Builder',
-								'seoframework-meta' => '(feature) Import SEO Framework Metadata',
+								'seoframework-meta' => '(feature) Import The SEO Framework Metadata',
 								'shorten'           => '(feature) URL Shortening Service',
 								'wpseo-meta'        => '(feature) Import Yoast SEO Metadata',
 							),
@@ -1757,7 +1757,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'plugin_check_head'               => 1,	// Check for Duplicate Meta Tags.
 					'plugin_product_include_vat'      => 0,	// Include VAT in Product Prices.
-					'plugin_import_seoframework_meta' => 0,	// Import SEO Framework Metadata.
+					'plugin_import_seoframework_meta' => 0,	// Import The SEO Framework Metadata.
 					'plugin_import_wpseo_meta'        => 0,	// Import Yoast SEO Metadata.
 
 					/**

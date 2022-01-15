@@ -191,7 +191,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				WpssoAdmin::get_option_site_use( 'plugin_product_include_vat', $form, $network );
 
 			$table_rows[ 'plugin_import_seoframework_meta' ] = '' .
-				$form->get_th_html( _x( 'Import SEO Framework Metadata', 'option label', 'wpsso' ),
+				$form->get_th_html( _x( 'Import The SEO Framework Metadata', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_import_seoframework_meta' ) . 
 				$form->get_no_td_checkbox( 'plugin_import_seoframework_meta' ) .
 				WpssoAdmin::get_option_site_use( 'plugin_import_seoframework_meta', $form, $network );

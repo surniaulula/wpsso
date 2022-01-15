@@ -68,7 +68,7 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 			/**
 			 * pro/util/seoframework-meta.php.
 			 */
-			$features[ '(feature) Import SEO Framework Metadata' ][ 'label_url' ] = $integ_tab_url;
+			$features[ '(feature) Import The SEO Framework Metadata' ][ 'label_url' ] = $integ_tab_url;
 
 			/**
 			 * pro/util/wpseo-meta.php.

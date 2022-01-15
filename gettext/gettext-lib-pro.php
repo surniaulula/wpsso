@@ -27,7 +27,7 @@ _x( 'No Description Text', 'option label', 'wpsso' );
 _x( 'Plugin and Theme Integration', 'metabox title', 'wpsso' );
 _x( 'Check for Duplicate Meta Tags', 'option label', 'wpsso' );
 _x( 'Include VAT in Product Prices', 'option label', 'wpsso' );
-_x( 'Import SEO Framework Metadata', 'option label', 'wpsso' );
+_x( 'Import The SEO Framework Metadata', 'option label', 'wpsso' );
 _x( 'Import Yoast SEO Metadata', 'option label', 'wpsso' );
 _x( 'Open Graph (Facebook and oEmbed)', 'option label', 'wpsso' );
 _x( 'Pinterest Pin It', 'option label', 'wpsso' );

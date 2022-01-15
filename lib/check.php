@@ -862,7 +862,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 								/**
 								 * Premium edition feature / option.
 								 */
-								case 'seoframework-meta':	// Import SEO Framework Metadata.
+								case 'seoframework-meta':	// Import The SEO Framework Metadata.
 
 									$chk[ 'opt_key' ] = 'plugin_import_seoframework_meta';
 

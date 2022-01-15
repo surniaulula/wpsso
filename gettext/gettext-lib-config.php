@@ -91,7 +91,7 @@ _x( '(plugin) BuddyPress', 'lib file description', 'wpsso' );
 _x( '(feature) Image Dimension Checks', 'lib file description', 'wpsso' );
 _x( '(plugin) Co-Authors Plus', 'lib file description', 'wpsso' );
 _x( '(plugin) Elementor Website Builder', 'lib file description', 'wpsso' );
-_x( '(feature) Import SEO Framework Metadata', 'lib file description', 'wpsso' );
+_x( '(feature) Import The SEO Framework Metadata', 'lib file description', 'wpsso' );
 _x( '(feature) URL Shortening Service', 'lib file description', 'wpsso' );
 _x( '(feature) Import Yoast SEO Metadata', 'lib file description', 'wpsso' );
 _x( 'Profile SSO - Social and Search Optimization', 'lib file description', 'wpsso' );

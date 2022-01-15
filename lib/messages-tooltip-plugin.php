@@ -277,7 +277,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
-				case 'tooltip-plugin_import_seoframework_meta':	// Import SEO Framework Metadata.
+				case 'tooltip-plugin_import_seoframework_meta':	// Import The SEO Framework Metadata.
 
 					// translators: %1$s is the plugin name.
 					$text = sprintf( __( 'Import %1$s custom metadata for posts, pages, custom post types, terms, and users.', 'wpsso' ), __( 'The SEO Framework', 'wpsso' ) ) . ' ';
