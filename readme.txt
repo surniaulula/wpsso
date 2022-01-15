@@ -246,7 +246,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 9.14.0-dev.5 (2022/01/15)**
 
 * **New Features**
-	* Added a new "Import SEO Framework Metadata" option under the SSO &gt; Advanced Settings &gt; Integration tab.
+	* Added a new "Import The SEO Framework Metadata" option under the SSO &gt; Advanced Settings &gt; Integration tab.
 * **Improvements**
 	* Renamed the Document SSO metabox tabs (including their labels, keys, and filters).
 	* Renamed the "Import Yoast SEO Social Meta" option to "Import Yoast SEO Metadata".
