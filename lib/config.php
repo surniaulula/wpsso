@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.14.0-dev.4',	// Plugin version.
+					'version'     => '9.14.0-dev.5',	// Plugin version.
 					'opt_version' => '855',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1759,7 +1759,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_product_include_vat'      => 0,	// Include VAT in Product Prices.
 					'plugin_import_seoframework_meta' => 0,	// Import SEO Framework Metadata.
 					'plugin_import_wpseo_meta'        => 0,	// Import Yoast SEO Metadata.
-					'plugin_show_import_details'      => 1,	// Show Metadata Import Details.
 
 					/**
 					 * Advanced Settings > Media Services tab.

@@ -297,12 +297,6 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
-				case 'tooltip-plugin_show_import_details':	// Show Metadata Import Details.
-
-					$text = __( 'Show notification messages for imported metadata for posts, pages, custom post types, terms, and users.', 'wpsso' ) . ' ';
-
-					break;
-
 				/**
 				 * Media Services settings.
 				 */

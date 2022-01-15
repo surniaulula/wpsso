@@ -513,7 +513,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				),
 				853 => array(
 					'plugin_wpseo_social_meta' => 'plugin_import_wpseo_meta',	// Renamed on 2022/01/14.
-					'plugin_wpseo_show_import' => 'plugin_show_import_details',	// Renamed on 2022/01/14.
+					'plugin_wpseo_show_import' => '',				// Deprecated on 2022/01/15.
 				),
 			),
 		);
