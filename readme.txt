@@ -243,14 +243,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.14.0-dev.4 (2022/01/15)**
+**Version 9.14.0-dev.5 (2022/01/15)**
 
 * **New Features**
 	* Added a new "Import SEO Framework Metadata" option under the SSO &gt; Advanced Settings &gt; Integration tab.
 * **Improvements**
 	* Renamed the Document SSO metabox tabs (including their labels, keys, and filters).
 	* Renamed the "Import Yoast SEO Social Meta" option to "Import Yoast SEO Metadata".
-	* Renamed the "Show Yoast SEO Import Details" option to "Show Metadata Import Details".
+	* Removed the "Show Yoast SEO Import Details" option.
 * **Bugfixes**
 	* Fixed incorrect addition of sameAs URLs for post ID 0.
 * **Developer Notes**
@@ -262,7 +262,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Renamed the `WpssoAddOn` class to `WpssoAbstractAddOn`.
 	* Renamed the `WpssoWpMeta` class to `WpssoAbstractWpMeta`.
 	* Renamed the 'plugin_wpseo_social_meta' options key to 'plugin_import_wpseo_meta'.
-	* Renamed the 'plugin_wpseo_show_import' options key to 'plugin_show_import_details'.
+	* Removed the 'plugin_wpseo_show_import' options key.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -759,7 +759,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 9.14.0-dev.4 =
+= 9.14.0-dev.5 =
 
 (2022/01/15) Added a new "Import SEO Framework Metadata" option. Fixed incorrect addition of sameAs URLs for post ID 0. Renamed lib/abstracts/ folder and its classes.
 
