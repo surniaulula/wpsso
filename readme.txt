@@ -243,11 +243,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.14.0-dev.3 (2022/01/14)**
+**Version 9.14.0-dev.4 (2022/01/15)**
 
 * **New Features**
 	* Added a new "Import SEO Framework Metadata" option under the SSO &gt; Advanced Settings &gt; Integration tab.
 * **Improvements**
+	* Renamed the Document SSO metabox tabs (including their labels, keys, and filters).
 	* Renamed the "Import Yoast SEO Social Meta" option to "Import Yoast SEO Metadata".
 	* Renamed the "Show Yoast SEO Import Details" option to "Show Metadata Import Details".
 * **Bugfixes**
@@ -730,7 +731,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 	* Deprecated the head attributes check in theme header templates.
 	* Removed the SSO &gt; Advanced Settings &gt; HTML Tags &gt; Schema tab.
 	* Moved the Schema data filters from the WPSSO JSON add-on to the WPSSO Core plugin.
-	* Moved the Document SSO &gt; Schema JSON-LD Markup / Google Rich Results sections from the WPSSO JSON add-on to the WPSSO Core plugin.
+	* Moved the Document SSO &gt; Schema Markup / Google Rich Results sections from the WPSSO JSON add-on to the WPSSO Core plugin.
 * **Bugfixes**
 	* Fixed caching of option defaults array once plugin objects have been initialized.
 	* Fixed missing 'areaServed' property in Schema LocalBusiness markup for places / locations.
@@ -758,9 +759,9 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 9.14.0-dev.3 =
+= 9.14.0-dev.4 =
 
-(2022/01/14) Added a new "Import SEO Framework Metadata" option. Fixed incorrect addition of sameAs URLs for post ID 0. Renamed lib/abstracts/ folder and its classes.
+(2022/01/15) Added a new "Import SEO Framework Metadata" option. Fixed incorrect addition of sameAs URLs for post ID 0. Renamed lib/abstracts/ folder and its classes.
 
 = 9.13.1 =
 
