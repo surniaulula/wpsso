@@ -409,7 +409,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'tc_sum_img_url'    => '',
 
 					/**
-					 * Schema JSON-LD Markup / Google Rich Results priority image.
+					 * Schema Markup and Google Rich Results priority image.
 					 */
 					'schema_img_id'     => '',
 					'schema_img_id_lib' => $def_img_id_lib,
@@ -1068,27 +1068,27 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 				case $this->p->cf[ 'meta' ][ 'id' ]:	// 'sso' metabox ID.
 
-					$tabs[ 'edit' ]  = _x( 'Customize', 'metabox tab', 'wpsso' );
-					$tabs[ 'media' ] = _x( 'Priority Media', 'metabox tab', 'wpsso' );
+					$tabs[ 'edit_general' ] = _x( 'Edit General', 'metabox tab', 'wpsso' );
+					$tabs[ 'edit_media' ]   = _x( 'Edit Media', 'metabox tab', 'wpsso' );
 
-					if ( $mod[ 'is_public' ] ) {	// Since WPSSO Core v7.0.0.
+					if ( $mod[ 'is_public' ] ) {
 
-						$tabs[ 'robots' ]   = _x( 'Robots Meta', 'metabox tab', 'wpsso' );	// Since WPSSO Core v8.4.0.
-						$tabs[ 'social' ]   = _x( 'Social Preview', 'metabox tab', 'wpsso' );
-						$tabs[ 'oembed' ]   = _x( 'oEmbed Preview', 'metabox tab', 'wpsso' );
-						$tabs[ 'head' ]     = _x( 'Head Markup', 'metabox tab', 'wpsso' );
-						$tabs[ 'validate' ] = _x( 'Validators', 'metabox tab', 'wpsso' );
+						$tabs[ 'edit_visibility' ] = _x( 'Edit Visibility', 'metabox tab', 'wpsso' );
+						$tabs[ 'prev_social' ]     = _x( 'Preview Social', 'metabox tab', 'wpsso' );
+						$tabs[ 'prev_oembed' ]     = _x( 'Preview oEmbed', 'metabox tab', 'wpsso' );
+						$tabs[ 'prev_markup' ]     = _x( 'Preview Markup', 'metabox tab', 'wpsso' );
+						$tabs[ 'validators' ]      = _x( 'Validators', 'metabox tab', 'wpsso' );
 					}
 
 					break;
 			}
 
 			/**
-			 * Exclude the 'Priority Media' tab from attachment editing pages.
+			 * Exclude the 'Edit Media' tab from attachment editing pages.
 			 */
 			if ( $mod[ 'is_attachment' ] ) {
 
-				unset( $tabs[ 'media' ] );
+				unset( $tabs[ 'edit_media' ] );
 			}
 
 			/**
@@ -1098,7 +1098,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			 */
 			if ( ! function_exists( 'get_oembed_response_data' ) ||	! $mod[ 'is_post' ] || ! $mod[ 'id' ] ) {
 
-				unset( $tabs[ 'oembed' ] );
+				unset( $tabs[ 'prev_oembed' ] );
 			}
 
 			return apply_filters( 'wpsso_' . $mod[ 'name' ] . '_document_meta_tabs', $tabs, $mod, $metabox_id );

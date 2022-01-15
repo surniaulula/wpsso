@@ -158,63 +158,66 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 			 */
 			$settings_url = get_admin_url( $blog_id = null, 'admin.php?page=theseoframework-settings' );
 
-			$settings_link = '<a href="' . $settings_url . '">' . $plugin_name . ' &gt; ' .
+			$social_general_link = '<a href="' . $settings_url . '">' . $plugin_name . ' &gt; ' .
 				// translators: Please ignore - translation uses a different text domain.
-				__( 'Social Meta Settings', 'autodescription' ) . '</a>';
+				__( 'Social Meta Settings', 'autodescription' ) . ' &gt; ' .
+				// translators: Please ignore - translation uses a different text domain.
+				__( 'General', 'autodescription' ) . '</a>';
+
+			$social_post_link = '<a href="' . $settings_url . '">' . $plugin_name . ' &gt; ' .
+				// translators: Please ignore - translation uses a different text domain.
+				__( 'Social Meta Settings', 'autodescription' ) . ' &gt; ' .
+				// translators: Please ignore - translation uses a different text domain.
+				__( 'Post Dates', 'autodescription' ) . '</a>';
+
+			$schema_presence_link = '<a href="' . $settings_url . '">' . $plugin_name . ' &gt; ' .
+				// translators: Please ignore - translation uses a different text domain.
+				__( 'Schema.org Settings', 'autodescription' ) . ' &gt; ' .
+				// translators: Please ignore - translation uses a different text domain.
+				__( 'Presence', 'autodescription' ) . '</a>';
 
 			// translators: Please ignore - translation uses a different text domain.
 			$posts_i18n = __( 'posts', 'autodescription' );
 
 			foreach ( array(
-				// translators: Please ignore - translation uses a different text domain.
-				'og_tags'           => '<strong>' . __( 'Output Open Graph meta tags?', 'autodescription' ) . '</strong>',
-				// translators: Please ignore - translation uses a different text domain.
-				'facebook_tags'     => '<strong>' . __( 'Output Facebook meta tags?', 'autodescription' ) . '</strong>',
-				// translators: Please ignore - translation uses a different text domain.
-				'twitter_tags'      => '<strong>' . __( 'Output Twitter meta tags?', 'autodescription' ) . '</strong>',
-				// translators: Please ignore - translation uses a different text domain.
-				'oembed_scripts'    => '<strong>' . __( 'Output oEmbed scripts?', 'autodescription' ) . '</strong>',
-				// translators: Please ignore - translation uses a different text domain.
-				'post_publish_time' => '<strong>' . sprintf( __( 'Add %1$s to %2$s?', 'autodescription' ),
-					'article:published_time', $posts_i18n ) . '</strong>',
-				// translators: Please ignore - translation uses a different text domain.
-				'post_modify_time'  => '<strong>' . sprintf( __( 'Add %1$s to %2$s?', 'autodescription' ),
-					'article:modified_time', $posts_i18n ) . '</strong>',
-			) as $opt_key => $label_transl ) {
-
-				if ( ! empty( $opts[ $opt_key ] ) ) {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( $this->log_pre . 'seoframework ' . $opt_key . ' option is checked' );
-					}
-
-					$notice_msg_transl = __( 'Please uncheck the %1$s option in the %2$s metabox.', 'wpsso' );
-
-					$this->p->notice->err( $this->notice_pre . sprintf( $notice_msg_transl, $label_transl, $settings_link ) );
-				}
-			}
-
-			/**
-			 * Check for Knowledge Graph.
-			 */
-			if ( ! empty( $opts[ 'knowledge_output' ] ) ) {
-
-				$settings_link = '<a href="' . $settings_url . '">' . $plugin_name . ' &gt; ' .
+				$social_general_link => array(
 					// translators: Please ignore - translation uses a different text domain.
-					__( 'Schema Settings', 'autodescription' ) . '</a>';
+					'og_tags'        => '<strong>' . __( 'Output Open Graph meta tags?', 'autodescription' ) . '</strong>',
+					// translators: Please ignore - translation uses a different text domain.
+					'facebook_tags'  => '<strong>' . __( 'Output Facebook meta tags?', 'autodescription' ) . '</strong>',
+					// translators: Please ignore - translation uses a different text domain.
+					'twitter_tags'   => '<strong>' . __( 'Output Twitter meta tags?', 'autodescription' ) . '</strong>',
+					// translators: Please ignore - translation uses a different text domain.
+					'oembed_scripts' => '<strong>' . __( 'Output oEmbed scripts?', 'autodescription' ) . '</strong>',
+				),
+				$social_post_link => array(
+					// translators: Please ignore - translation uses a different text domain.
+					'post_publish_time' => '<strong>' . sprintf( __( 'Add %1$s to %2$s?', 'autodescription' ),
+						'article:published_time', $posts_i18n ) . '</strong>',
+					// translators: Please ignore - translation uses a different text domain.
+					'post_modify_time'  => '<strong>' . sprintf( __( 'Add %1$s to %2$s?', 'autodescription' ),
+						'article:modified_time', $posts_i18n ) . '</strong>',
+				),
+				$schema_presence_link => array(
+					// translators: Please ignore - translation uses a different text domain.
+					'knowledge_output' => '<strong>' . __( 'Output Authorized Presence?', 'autodescription' ) . '</strong>',
+				),
+			) as $settings_link => $keys ) {
 
-				// translators: Please ignore - translation uses a different text domain.
-				$label_transl = '<strong>' . __( 'Output Authorized Presence?', 'autodescription' ) . '</strong>';
+				foreach ( $keys as $opt_key => $label_transl ) {
 
-				if ( $this->p->debug->enabled ) {
+					if ( ! empty( $opts[ $opt_key ] ) ) {
 
-					$this->p->debug->log( $this->log_pre . 'seoframework knowledge_output option is checked' );
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( $this->log_pre . 'seoframework ' . $opt_key . ' option is checked' );
+						}
+	
+						$notice_msg_transl = __( 'Please uncheck the %1$s option under the %2$s tab.', 'wpsso' );
+
+						$this->p->notice->err( $this->notice_pre . sprintf( $notice_msg_transl, $label_transl, $settings_link ) );
+					}
 				}
-
-				$notice_msg_transl = __( 'Please uncheck the %1$s option in the %2$s metabox.', 'wpsso' );
-
-				$this->p->notice->err( $this->notice_pre . sprintf( $notice_msg_transl, $label_transl, $settings_link ) );
 			}
 		}
 

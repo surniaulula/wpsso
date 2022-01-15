@@ -814,7 +814,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 				 	break;
 
 				/**
-				 * Document SSO > Priority Media tab.
+				 * Document SSO > Edit Media tab.
 				 */
 				case 'tooltip-meta-schema_img_id':	// Image ID.
 

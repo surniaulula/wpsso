@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.14.0-dev.3',	// Plugin version.
+					'version'     => '9.14.0-dev.4',	// Plugin version.
 					'opt_version' => '855',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2069,7 +2069,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '4.11.0-dev.2',	// Minimum update manager version (soft limit).
+				'rec_version' => '4.11.0-dev.4',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
 					48  => 'Every two days',
@@ -2262,7 +2262,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'wpsso_!_' => array(
 					),
 					'wpsso_h_' => array(
-						'label'  => 'Head Markup',
+						'label'  => 'Document Markup',
 						'value'  => WEEK_IN_SECONDS,
 						'filter' => 'wpsso_cache_expire_head_markup',
 

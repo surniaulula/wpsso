@@ -36,16 +36,16 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			 * Default Document SSO metabox tabs are defined in WpssoAbstractWpMeta->get_document_meta_tabs().
 			 */
 			$this->p->util->add_plugin_filters( $this, array( 
-				'metabox_sso_edit_rows'     => 4,
-				'metabox_sso_robots_rows'   => 4,
-				'metabox_sso_social_rows'   => 4,
-				'metabox_sso_oembed_rows'   => 4,
-				'metabox_sso_head_rows'     => 4,
-				'metabox_sso_validate_rows' => 4,
+				'metabox_sso_edit_general_rows'    => 4,
+				'metabox_sso_edit_visibility_rows' => 4,
+				'metabox_sso_prev_social_rows'     => 4,
+				'metabox_sso_prev_oembed_rows'     => 4,
+				'metabox_sso_prev_markup_rows'     => 4,
+				'metabox_sso_validators_rows'      => 4,
 			), $min_int );	// Run before any add-on filters.
 		}
 
-		public function filter_metabox_sso_edit_rows( $table_rows, $form, $head_info, $mod ) {
+		public function filter_metabox_sso_edit_general_rows( $table_rows, $form, $head_info, $mod ) {
 
 			$dots           = '...';
 			$read_cache     = true;
@@ -244,13 +244,17 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 				) : '',
 			);
 
-			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
+			$table_rows = $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
+
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_general_schema_rows', $table_rows, $form, $head_info, $mod );
+
+			return $table_rows;
 		}
 
 		/**
 		 * See https://developers.google.com/search/reference/robots_meta_tag.
 		 */
-		public function filter_metabox_sso_robots_rows( $table_rows, $form, $head_info, $mod ) {
+		public function filter_metabox_sso_edit_visibility_rows( $table_rows, $form, $head_info, $mod ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -321,9 +325,9 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 		}
 
 		/**
-		 * Social Preview tab content.
+		 * Preview Social tab content.
 		 */
-		public function filter_metabox_sso_social_rows( $table_rows, $form, $head_info, $mod ) {
+		public function filter_metabox_sso_prev_social_rows( $table_rows, $form, $head_info, $mod ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -431,9 +435,9 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 		}
 
 		/**
-		 * oEmbed Preview tab content.
+		 * Preview oEmbed tab content.
 		 */
-		public function filter_metabox_sso_oembed_rows( $table_rows, $form, $head_info, $mod ) {
+		public function filter_metabox_sso_prev_oembed_rows( $table_rows, $form, $head_info, $mod ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -496,7 +500,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			return $table_rows;
 		}
 
-		public function filter_metabox_sso_head_rows( $table_rows, $form, $head_info, $mod ) {
+		public function filter_metabox_sso_prev_markup_rows( $table_rows, $form, $head_info, $mod ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -613,7 +617,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			return $table_rows;
 		}
 
-		public function filter_metabox_sso_validate_rows( $table_rows, $form, $head_info, $mod ) {
+		public function filter_metabox_sso_validators_rows( $table_rows, $form, $head_info, $mod ) {
 
 			if ( $this->p->debug->enabled ) {
 

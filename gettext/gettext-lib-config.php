@@ -165,7 +165,7 @@ _x( 'Schema ID', 'column header', 'wpsso' );
 _x( 'OG ID', 'column header', 'wpsso' );
 _x( 'SSO Image', 'column header', 'wpsso' );
 _x( 'SSO Description', 'column header', 'wpsso' );
-_x( 'Head Markup', 'option label', 'wpsso' );
+_x( 'Document Markup', 'option label', 'wpsso' );
 _x( 'Image URL Info', 'option label', 'wpsso' );
 _x( 'API Response', 'option label', 'wpsso' );
 _x( 'Short URLs', 'option label', 'wpsso' );

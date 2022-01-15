@@ -214,8 +214,8 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 				'status'       => empty( $this->p->options[ 'add_meta_name_description' ] ) ? 'off' : 'on',
 			);
 
-			$features[ '(code) SEO Robots Meta Tags' ] = array(
-				'label_transl' => _x( '(code) SEO Robots Meta Tags', 'lib file description', 'wpsso' ),
+			$features[ '(code) SEO Robots Meta Tag' ] = array(
+				'label_transl' => _x( '(code) SEO Robots Meta Tag', 'lib file description', 'wpsso' ),
 				'status'       => $this->p->util->robots->is_enabled() ? 'on' : 'off',
 			);
 

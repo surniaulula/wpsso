@@ -209,7 +209,7 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\f10b";	/* .icon-mobile */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_body_section::before {		/* Body Section tab. */
+.sucom-tablink-icon.sucom-tablink-href_body_section::before {		/* SSO > Strip Microdata > Strip Schema Microdata > Body Section tab. */
 	content:"\e815";	/* .icon-download */
 }
 
@@ -237,8 +237,16 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\f2c2";	/* .icon-id-card */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_edit::before {			/* Document SSO > Customize tab. */
+.sucom-tablink-icon.sucom-tablink-href_edit_general::before {		/* Document SSO > Edit General tab. */
 	content:"\e809";	/* .icon-edit */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_edit_media::before {		/* Document SSO > Edit Media tab. */
+	content:"\e808";	/* .icon-picture */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_edit_visibility::before {	/* Document SSO > Edit Visibility tab. */
+	content:"\e81b";	/* .icon-robot-4 */
 }
 
 .sucom-tablink-icon.sucom-tablink-href_facebook::before {		/* SSO > General Settings > Social and Search Sites > Facebook tab. */
@@ -253,11 +261,7 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\f1a0";	/* .icon-google */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_head::before {			/* Head Markup tab. */
-	content:"\e802";	/* .icon-list */
-}
-
-.sucom-tablink-icon.sucom-tablink-href_head_section::before {		/* Head Section tab. */
+.sucom-tablink-icon.sucom-tablink-href_head_section::before {		/* SSO > Strip Microdata > Strip Schema Microdata > Head Section tab. */
 	content:"\e816";	/* .icon-upload */
 }
 
@@ -289,12 +293,8 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\f1a0";	/* .icon-google */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_media::before {			/* Priority Media tab and SSO > Advanced Settings > Service APIs > Media Services tab. */
+.sucom-tablink-icon.sucom-tablink-href_media::before {			/* SSO > Advanced Settings > Service APIs > Media Services tab. */
 	content:"\e808";	/* .icon-picture */
-}
-
-.sucom-tablink-icon.sucom-tablink-href_oembed::before {			/* Document SSO > oEmbed Preview tab. */
-	content:"\f2c3";	/* .icon-id-card-o */
 }
 
 .sucom-tablink-icon.sucom-tablink-href_og_types::before {		/* SSO > Advanced Settings > Document Types > Open Graph Types tab. */
@@ -317,11 +317,19 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\f0d3";	/* .icon-pinterest-squared */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_place::before {			/* SSO > Places > Manage Places tab. */
+.sucom-tablink-icon.sucom-tablink-href_place::before {			/* Unused. */
 	content:"\e806";	/* .icon-location */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_social::before {			/* Document SSO > Social Preview tab. */
+.sucom-tablink-icon.sucom-tablink-href_prev_markup::before {		/* Document SSO > Preview Markup tab. */
+	content:"\e802";	/* .icon-list */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_prev_oembed::before {		/* Document SSO > Preview oEmbed tab. */
+	content:"\f2c3";	/* .icon-id-card-o */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_prev_social::before {		/* Document SSO > Preview Social tab. */
 	content:"\e805";	/* .icon-eye */
 }
 
@@ -331,10 +339,6 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 
 .sucom-tablink-icon.sucom-tablink-href_ratings_reviews::before {	/* SSO > Advanced Settings > Service APIs > Ratings and Reviews tab. */
 	content:"\f123";	/* .icon-star-half-alt */
-}
-
-.sucom-tablink-icon.sucom-tablink-href_robots::before {			/* Document SSO > Robots Meta tab. */
-	content:"\e81b";	/* .icon-robot-4 */
 }
 
 .sucom-tablink-icon.sucom-tablink-href_schema::before {			/* SSO > Advanced Settings > HTML Tags > Schema tab. */
@@ -369,7 +373,7 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\f304";	/* .icon-twitter-squared */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_validate::before {		/* Validate tab. */
+.sucom-tablink-icon.sucom-tablink-href_validators::before {		/* Document SSO > Validators tab. */
 	content:"\e814";	/* .icon-dashicons-code-standards */
 }
 

@@ -281,7 +281,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					case 'notice-image-rejected':
 
 						$mb_title     = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
-						$media_tab    = _x( 'Priority Media', 'metabox tab', 'wpsso' );
+						$media_tab    = _x( 'Edit Media', 'metabox tab', 'wpsso' );
 						$is_meta_page = WpssoAbstractWpMeta::is_meta_page();
 
 						$text = '<!-- show-once -->';

@@ -101,7 +101,7 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 					break;
 
 				/**
-				 * Priority Media tab.
+				 * Edit Media tab.
 				 */
 				case 'info-meta-priority-media':
 
@@ -126,7 +126,7 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 					break;
 
 				/**
-				 * Robots Meta tab.
+				 * Edit Visibility tab.
 				 */
 				case 'info-meta-robots-meta':
 
@@ -143,7 +143,7 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 				 	break;
 
 				/**
-				 * Social Preview tab.
+				 * Preview Social tab.
 				 */
 				case 'info-meta-social-preview':
 
@@ -164,7 +164,7 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 				 	break;
 
 				/**
-				 * oEmbed Preview tab.
+				 * Preview oEmbed tab.
 				 */
 				case 'info-meta-oembed-footer':
 
@@ -177,7 +177,7 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 				 	break;
 
 				/**
-				 * Validators tab.
+				 * Markup Validators tab.
 				 */
 				case 'info-meta-validate-amp':
 

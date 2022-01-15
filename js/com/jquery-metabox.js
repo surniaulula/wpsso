@@ -200,8 +200,8 @@ function sucomTabs( metabox_name, tab_name ) {
 		/**
 		 * Example tablink: 
 		 *
-		 * <a class="sucom-tablink sucom-tablink_sso sucom-tablink-icon sucom-tablink-href_edit" href="#sucom-tabset_sso-tab_edit"></a>
-		 * <a class="sucom-tablink sucom-tablink_sso sucom-tablink-text sucom-tablink-href_edit" href="#sucom-tabset_sso-tab_edit">Customize</a>
+		 * <a class="sucom-tablink sucom-tablink_sso sucom-tablink-icon sucom-tablink-href_edit_general" href="#sucom-tabset_sso-tab_edit_general"></a>
+		 * <a class="sucom-tablink sucom-tablink_sso sucom-tablink-text sucom-tablink-href_edit_general" href="#sucom-tabset_sso-tab_edit_general">Edit General</a>
 		 */
 		var href = jQuery( this ).attr( 'href' ).replace( '#', '' );
 
