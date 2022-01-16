@@ -243,12 +243,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.14.0-dev.5 (2022/01/15)**
+**Version 9.14.0-dev.6 (2022/01/16)**
 
 * **New Features**
 	* Added a new "Import The SEO Framework Metadata" option under the SSO &gt; Advanced Settings &gt; Integration tab.
 * **Improvements**
-	* Renamed the Document SSO metabox tabs (including their labels, keys, and filters).
+	* Removed the Document SSO &gt; Head Markup tab.
+	* Renamed all other Document SSO metabox tabs (including their labels, keys, and filters).
 	* Renamed the "Import Yoast SEO Social Meta" option to "Import Yoast SEO Metadata".
 	* Removed the "Show Yoast SEO Import Details" option.
 * **Bugfixes**
@@ -759,9 +760,9 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 9.14.0-dev.5 =
+= 9.14.0-dev.6 =
 
-(2022/01/15) Added a new "Import SEO Framework Metadata" option. Fixed incorrect addition of sameAs URLs for post ID 0. Renamed lib/abstracts/ folder and its classes.
+(2022/01/16) Added a new "Import SEO Framework Metadata" option. Fixed incorrect addition of sameAs URLs for post ID 0. Renamed lib/abstracts/ folder and its classes.
 
 = 9.13.1 =
 
