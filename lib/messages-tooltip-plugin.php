@@ -279,21 +279,31 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 				case 'tooltip-plugin_import_seoframework_meta':	// Import The SEO Framework Metadata.
 
-					// translators: %1$s is the plugin name.
-					$text = sprintf( __( 'Import %1$s custom metadata for posts, pages, custom post types, terms, and users.', 'wpsso' ), __( 'The SEO Framework', 'wpsso' ) ) . ' ';
+					$plugin_name_transl = __( 'The SEO Framework', 'wpsso' );
 
 					// translators: %1$s is the plugin name.
-					$text .= sprintf( __( 'This option is checked by default if %1$s plugin is active, or if no SEO plugin is active and %1$s settings are found in the database.', 'wpsso' ), __( 'The SEO Framework', 'wpsso' ) ) . ' ';
+					$text = sprintf( __( 'Import %1$s custom metadata for posts, pages, custom post types, terms, and users.', 'wpsso' ), $plugin_name_transl ) . ' ';
+
+					// translators: %1$s is the plugin name.
+					$text .= sprintf( __( 'This option is checked by default if %1$s is active, or if no SEO plugin is active and %1$s settings are found in the database.', 'wpsso' ), $plugin_name_transl ) . ' ';
+
+					// translators: %1$s is the plugin name.
+					$text = sprintf( __( 'If %1$s is active, only social options are imported, and if %1$s is not active, all metadata options are imported.', 'wpsso' ), $plugin_name_transl ) . ' ';
 
 					break;
 
 				case 'tooltip-plugin_import_wpseo_meta':	// Import Yoast SEO Metadata.
 
-					// translators: %1$s is the plugin name.
-					$text = sprintf( __( 'Import %1$s custom metadata for posts, pages, custom post types, terms, and users.', 'wpsso' ), __( 'Yoast SEO', 'wpsso' ) ) . ' ';
+					$plugin_name_transl = __( 'Yoast SEO', 'wpsso' );
 
 					// translators: %1$s is the plugin name.
-					$text .= sprintf( __( 'This option is checked by default if %1$s plugin is active, or if no SEO plugin is active and %1$s settings are found in the database.', 'wpsso' ), __( 'Yoast SEO', 'wpsso' ) ) . ' ';
+					$text = sprintf( __( 'Import %1$s custom metadata for posts, pages, custom post types, terms, and users.', 'wpsso' ), $plugin_name_transl ) . ' ';
+
+					// translators: %1$s is the plugin name.
+					$text .= sprintf( __( 'This option is checked by default if %1$s is active, or if no SEO plugin is active and %1$s settings are found in the database.', 'wpsso' ), $plugin_name_transl ) . ' ';
+
+					// translators: %1$s is the plugin name.
+					$text = sprintf( __( 'If %1$s is active, only social options are imported, and if %1$s is not active, all metadata options are imported.', 'wpsso' ), $plugin_name_transl ) . ' ';
 
 					break;
 

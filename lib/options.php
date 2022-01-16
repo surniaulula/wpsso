@@ -136,7 +136,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				} elseif ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {	// No other SEO plugin is active.
 
-					if ( get_option( 'the_seo_framework_site_options' ) ) {	// The SEO Framework was once active.
+					if ( get_option( 'autodescription-site-settings' ) ) {	// The SEO Framework was once active.
 
 						$this->cache_defaults[ 'plugin_import_seoframework_meta' ] = 1;
 					}
