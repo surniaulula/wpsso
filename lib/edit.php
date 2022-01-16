@@ -40,7 +40,6 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 				'metabox_sso_edit_visibility_rows' => 4,
 				'metabox_sso_prev_social_rows'     => 4,
 				'metabox_sso_prev_oembed_rows'     => 4,
-				'metabox_sso_prev_markup_rows'     => 4,
 				'metabox_sso_validators_rows'      => 4,
 			), $min_int );	// Run before any add-on filters.
 		}
@@ -495,123 +494,6 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			} else {
 
 				$table_rows[] = '<td colspan="2"><p class="status-msg">' . __( 'No oEmbed HTML found.', 'wpsso' ) . '</p></td>';
-			}
-
-			return $table_rows;
-		}
-
-		public function filter_metabox_sso_prev_markup_rows( $table_rows, $form, $head_info, $mod ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			$head_tags = $mod[ 'obj' ]->get_head_tags();
-
-			if ( ! is_array( $head_tags ) ) {	// Just in case.
-
-				return $table_rows;
-			}
-
-			$script_class = '';
-
-			foreach ( $head_tags as $parts ) {
-
-				if ( 1 === count( $parts ) ) {
-
-					if ( 0 === strpos( $parts[ 0 ], '<meta name="wpsso-' ) ) {
-
-						continue;
-
-					} elseif ( 0 === strpos( $parts[ 0 ], '<script ' ) ) {
-
-						$script_class = 'script';
-
-					} elseif ( 0 === strpos( $parts[ 0 ], '<noscript ' ) ) {
-
-						$script_class = 'noscript';
-					}
-
-					$table_rows[] = '<td colspan="5" class="html ' . $script_class . '"><pre>' . esc_html( $parts[ 0 ] ) . '</pre></td>';
-
-					if ( 'script' === $script_class || 0 === strpos( $parts[ 0 ], '</noscript>' ) ) {
-
-						$script_class = '';
-					}
-
-				} elseif ( isset( $parts[ 5 ] ) ) {
-
-					/**
-					 * Skip the generator meta tags.
-					 */
-					if ( 'meta' === $parts[ 1 ] && 'name' === $parts[ 2 ] && 'generator' === $parts[ 3 ] ) {
-
-						continue;
-					}
-
-					/**
-					 * Skip meta tags with reserved values but display empty values.
-					 */
-					if ( $parts[ 5 ] === WPSSO_UNDEF || $parts[ 5 ] === (string) WPSSO_UNDEF ) {
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( $parts[ 3 ] . ' value is ' . WPSSO_UNDEF . ' (skipped)' );
-						}
-
-						continue;
-					}
-
-					if ( 'meta' === $parts[ 1 ] && 'itemprop' === $parts[ 2 ] && 0 !== strpos( $parts[ 3 ], '.' ) ) {
-
-						$match_name = preg_replace( '/^.*\./', '', $parts[ 3 ] );
-
-					} else {
-
-						$match_name = $parts[ 3 ];
-					}
-
-					$opt_name    = strtolower( 'add_' . $parts[ 1 ] . '_' . $parts[ 2 ] . '_' . $parts[ 3 ] );
-					$opt_exists  = isset( $this->p->options[ $opt_name ] ) ? true : false;
-					$opt_enabled = empty( $this->p->options[ $opt_name ] ) ? false : true;
-
-					$tr_class = empty( $script_class ) ? '' : ' ' . $script_class;
-
-					/**
-					 * If there's no HTML to include in the webpage head section,
-					 * then mark the meta tag as disabled and hide it in basic view.
-					 */
-					if ( empty( $parts[ 0 ] ) ) {
-
-						$tr_class .= ' is_disabled hide_row_in_basic';
-
-					} else {
-
-						$tr_class .= ' is_enabled';
-					}
-
-					/**
-					 * The meta tag is enabled, but its value is empty (and not 0).
-					 */
-					if ( $opt_enabled && isset( $parts[ 5 ] ) && empty( $parts[ 5 ] ) && ! is_numeric( $parts[ 5 ] ) ) {
-
-						$tr_class .= ' is_empty';
-					}
-
-					/**
-					 * The meta tag is "standard" if an option exists to enable / disable
-					 * the meta tag, otherwise it's a meta tag meant for internal use.
-					 */
-					$tr_class .= $opt_exists ? ' is_standard' : ' is_internal';
-
-					$table_rows[] = '<tr class="' . trim( $tr_class ) . '">' .
-						'<th class="xshort">' . $parts[ 1 ] . '</th>' . 
-						'<th class="xshort">' . $parts[ 2 ] . '</th>' . 
-						'<td class="">' . ( empty( $parts[ 6 ] ) ? '' : '<!-- ' . $parts[ 6 ] . ' -->' ) . $match_name . '</td>' . 
-						'<th class="xshort">' . $parts[ 4 ] . '</th>' . 
-						'<td class="wide">' . SucomUtil::maybe_link_url( $parts[ 5 ] ) . '</td>';
-				}
 			}
 
 			return $table_rows;

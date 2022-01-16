@@ -321,10 +321,6 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\e806";	/* .icon-location */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_prev_markup::before {		/* Document SSO > Preview Markup tab. */
-	content:"\e802";	/* .icon-list */
-}
-
 .sucom-tablink-icon.sucom-tablink-href_prev_oembed::before {		/* Document SSO > Preview oEmbed tab. */
 	content:"\f2c3";	/* .icon-id-card-o */
 }

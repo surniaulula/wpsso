@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 9.14.0-dev.5\n"
+"Project-Id-Version: WPSSO Core 9.14.0-dev.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4686,7 +4686,7 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:457 lib/edit.php:419 lib/page.php:1302
+#: gettext/gettext-lib-pro.php:457 lib/edit.php:418 lib/page.php:1302
 #: lib/pro/social/buddypress.php:661
 msgctxt "default description"
 msgid "No Description."
@@ -4719,29 +4719,24 @@ msgstr ""
 
 #: lib/abstract/wp-meta.php:1079
 msgctxt "metabox tab"
-msgid "Preview Markup"
-msgstr ""
-
-#: lib/abstract/wp-meta.php:1080
-msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1550
+#: lib/abstract/wp-meta.php:1549
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1875 lib/json-filters/type/claimreview.php:69
+#: lib/abstract/wp-meta.php:1874 lib/json-filters/type/claimreview.php:69
 msgid "A claim review cannot be the subject of another claim review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1877
+#: lib/abstract/wp-meta.php:1876
 msgid ""
 "Please select a subject webpage type that better describes the subject of "
 "the webpage (ie. the content) being reviewed."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2633
+#: lib/abstract/wp-meta.php:2632
 msgid "adding schema images"
 msgstr ""
 
@@ -5799,7 +5794,7 @@ msgstr ""
 msgid "Social sharing block"
 msgstr ""
 
-#: lib/conflict-seo.php:467 lib/messages-tooltip-plugin.php:297
+#: lib/conflict-seo.php:467 lib/messages-tooltip-plugin.php:290
 msgid "Yoast SEO"
 msgstr ""
 
@@ -6013,246 +6008,246 @@ msgid ""
 "social sites to access your site."
 msgstr ""
 
-#: lib/edit.php:109
+#: lib/edit.php:108
 msgctxt "option label"
 msgid "Preferred Cropping"
 msgstr ""
 
-#: lib/edit.php:115 lib/script.php:425
+#: lib/edit.php:114 lib/script.php:425
 msgctxt "option label"
 msgid "Schema Type"
 msgstr ""
 
-#: lib/edit.php:130
+#: lib/edit.php:129
 msgctxt "option label"
 msgid "Open Graph Type"
 msgstr ""
 
-#: lib/edit.php:138
+#: lib/edit.php:137
 msgctxt "option label"
 msgid "Primary Category"
 msgstr ""
 
-#: lib/edit.php:145
+#: lib/edit.php:144
 msgctxt "option label"
 msgid "Default Title"
 msgstr ""
 
-#: lib/edit.php:152
+#: lib/edit.php:151
 msgctxt "option label"
 msgid "Default Description"
 msgstr ""
 
-#: lib/edit.php:160
+#: lib/edit.php:159
 msgctxt "option label"
 msgid "Pinterest Description"
 msgstr ""
 
-#: lib/edit.php:168
+#: lib/edit.php:167
 msgctxt "option label"
 msgid "Twitter Card Title"
 msgstr ""
 
-#: lib/edit.php:175
+#: lib/edit.php:174
 msgctxt "option label"
 msgid "Twitter Card Description"
 msgstr ""
 
-#: lib/edit.php:183
+#: lib/edit.php:182
 msgctxt "option label"
 msgid "Search Description"
 msgstr ""
 
-#: lib/edit.php:191 lib/edit.php:399
+#: lib/edit.php:190 lib/edit.php:398
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
 
-#: lib/edit.php:199
+#: lib/edit.php:198
 msgctxt "option label"
 msgid "Maximum Images"
 msgstr ""
 
-#: lib/edit.php:206
+#: lib/edit.php:205
 msgctxt "option label"
 msgid "Maximum Videos"
 msgstr ""
 
-#: lib/edit.php:213
+#: lib/edit.php:212
 msgctxt "option label"
 msgid "Include Video Previews"
 msgstr ""
 
-#: lib/edit.php:224
+#: lib/edit.php:223
 msgctxt "option label"
 msgid "Article Section"
 msgstr ""
 
-#: lib/edit.php:240
+#: lib/edit.php:239
 msgctxt "option label"
 msgid "Est. Reading Time"
 msgstr ""
 
-#: lib/edit.php:243
+#: lib/edit.php:242
 msgid "minute(s)"
 msgstr ""
 
-#: lib/edit.php:272
+#: lib/edit.php:271
 msgctxt "option label"
 msgid "No Archive"
 msgstr ""
 
-#: lib/edit.php:275
+#: lib/edit.php:274
 msgctxt "option comment"
 msgid "do not show a cached link in search results"
 msgstr ""
 
-#: lib/edit.php:278
+#: lib/edit.php:277
 msgctxt "option label"
 msgid "No Follow"
 msgstr ""
 
-#: lib/edit.php:281
+#: lib/edit.php:280
 msgctxt "option comment"
 msgid "do not follow links on this webpage"
 msgstr ""
 
-#: lib/edit.php:284
+#: lib/edit.php:283
 msgctxt "option label"
 msgid "No Image Index"
 msgstr ""
 
-#: lib/edit.php:287
+#: lib/edit.php:286
 msgctxt "option comment"
 msgid "do not index images on this webpage"
 msgstr ""
 
-#: lib/edit.php:290
+#: lib/edit.php:289
 msgctxt "option label"
 msgid "No Index"
 msgstr ""
 
-#: lib/edit.php:293
+#: lib/edit.php:292
 msgctxt "option comment"
 msgid "do not show this webpage in search results"
 msgstr ""
 
-#: lib/edit.php:296
+#: lib/edit.php:295
 msgctxt "option label"
 msgid "No Snippet"
 msgstr ""
 
-#: lib/edit.php:299
+#: lib/edit.php:298
 msgctxt "option comment"
 msgid "do not show a text snippet or a video preview in search results"
 msgstr ""
 
-#: lib/edit.php:302
+#: lib/edit.php:301
 msgctxt "option label"
 msgid "No Translate"
 msgstr ""
 
-#: lib/edit.php:305
+#: lib/edit.php:304
 msgctxt "option comment"
 msgid "do not offer translation of this webpage in search results"
 msgstr ""
 
-#: lib/edit.php:308
+#: lib/edit.php:307
 msgctxt "option label"
 msgid "Snippet Max. Length"
 msgstr ""
 
-#: lib/edit.php:311 lib/submenu/general.php:324 lib/submenu/general.php:330
+#: lib/edit.php:310 lib/submenu/general.php:324 lib/submenu/general.php:330
 #: lib/submenu/general.php:342 lib/submenu/general.php:354
 #: lib/submenu/general.php:429 lib/submenu/general.php:435
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
 
-#: lib/edit.php:311 lib/edit.php:322 lib/submenu/general.php:354
+#: lib/edit.php:310 lib/edit.php:321 lib/submenu/general.php:354
 #: lib/submenu/general.php:367
 msgctxt "option comment"
 msgid "-1 for no limit"
 msgstr ""
 
-#: lib/edit.php:314
+#: lib/edit.php:313
 msgctxt "option label"
 msgid "Image Preview Size"
 msgstr ""
 
-#: lib/edit.php:319
+#: lib/edit.php:318
 msgctxt "option label"
 msgid "Video Max. Previews"
 msgstr ""
 
-#: lib/edit.php:322 lib/submenu/general.php:367
+#: lib/edit.php:321 lib/submenu/general.php:367
 msgctxt "option comment"
 msgid "seconds"
 msgstr ""
 
-#: lib/edit.php:378
+#: lib/edit.php:377
 msgctxt "preview image error"
 msgid "Image Size Smaller<br/>than Suggested Minimum<br/>of %s"
 msgstr ""
 
-#: lib/edit.php:387
+#: lib/edit.php:386
 msgctxt "preview image error"
 msgid "Image Size Unknown<br/>or Not Available"
 msgstr ""
 
-#: lib/edit.php:394
+#: lib/edit.php:393
 msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/edit.php:403
+#: lib/edit.php:402
 msgctxt "option label"
 msgid "Shortlink URL"
 msgstr ""
 
-#: lib/edit.php:407
+#: lib/edit.php:406
 msgctxt "option label"
 msgid "Facebook / Open Graph Example"
 msgstr ""
 
-#: lib/edit.php:416 lib/page.php:1600
+#: lib/edit.php:415 lib/page.php:1600
 msgctxt "default title"
 msgid "No Title"
 msgstr ""
 
-#: lib/edit.php:455
+#: lib/edit.php:454
 msgctxt "option label"
 msgid "oEmbed JSON URL"
 msgstr ""
 
-#: lib/edit.php:459
+#: lib/edit.php:458
 msgctxt "option label"
 msgid "oEmbed XML URL"
 msgstr ""
 
-#: lib/edit.php:463
+#: lib/edit.php:462
 msgctxt "option label"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/edit.php:473
+#: lib/edit.php:472
 msgid "(see below)"
 msgstr ""
 
-#: lib/edit.php:483
+#: lib/edit.php:482
 msgid "No oEmbed data found."
 msgstr ""
 
-#: lib/edit.php:487
+#: lib/edit.php:486
 msgctxt "option label"
 msgid "oEmbed HTML"
 msgstr ""
 
-#: lib/edit.php:497
+#: lib/edit.php:496
 msgid "No oEmbed HTML found."
 msgstr ""
 
-#: lib/edit.php:637
+#: lib/edit.php:519
 msgctxt "submit button"
 msgid "Validate %s"
 msgstr ""
@@ -8238,55 +8233,62 @@ msgstr ""
 msgid "Retrieve product prices from e-Commerce plugins with VAT included."
 msgstr ""
 
-#. translators: %1$s is the plugin name.
-#: lib/messages-tooltip-plugin.php:285 lib/messages-tooltip-plugin.php:300
+#. translators: %1$s is the plugin name, %2$s is the Document SSO metabox name.
+#: lib/messages-tooltip-plugin.php:296
 msgid ""
 "Import %1$s custom metadata for posts, pages, custom post types, terms, and "
-"users."
+"users into the %2$s metabox options."
+msgstr ""
+
+#. translators: %1$s is the plugin name, %2$s is the Document SSO metabox name.
+#: lib/messages-tooltip-plugin.php:299
+msgid ""
+"Note that %1$s custom metadata will only be imported into %2$s metabox "
+"options that are empty (ie. options that have not already been customized)."
 msgstr ""
 
 #. translators: %1$s is the plugin name.
-#: lib/messages-tooltip-plugin.php:288 lib/messages-tooltip-plugin.php:303
+#: lib/messages-tooltip-plugin.php:302
 msgid ""
-"This option is checked by default if %1$s is active, or if no SEO plugin is "
+"This option is checked by default if %1$s is active, or no SEO plugin is "
 "active and %1$s settings are found in the database."
 msgstr ""
 
 #. translators: %1$s is the plugin name.
-#: lib/messages-tooltip-plugin.php:291 lib/messages-tooltip-plugin.php:306
+#: lib/messages-tooltip-plugin.php:305
 msgid ""
-"If %1$s is active, only social options are imported, and if %1$s is not "
-"active, all metadata options are imported."
+"If %1$s is active, only social custom metadata is imported, and if %1$s is "
+"not active, all custom metadata is imported."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:317
+#: lib/messages-tooltip-plugin.php:316
 msgid ""
 "A customized image for each author can be selected in the WordPress user "
 "profile %s metabox."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:319
+#: lib/messages-tooltip-plugin.php:318
 msgid ""
 "If a custom image has not been selected, fallback to using their Gravatar "
 "image."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:327
+#: lib/messages-tooltip-plugin.php:326
 msgid ""
 "The requested Gravatar image width and height (a number from 1 to 2048)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:329
+#: lib/messages-tooltip-plugin.php:328
 msgid ""
 "Note that users often upload low resolution images to Gravatar, so choosing "
 "a larger image size may result in pixelation and lower-quality images."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:331
+#: lib/messages-tooltip-plugin.php:330
 msgid "The default Gravatar image size is %d pixels."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:337
+#: lib/messages-tooltip-plugin.php:336
 msgid ""
 "Check the content for embedded media URLs from supported media providers "
 "(Vimeo, Wistia, YouTube, etc.). If a supported media URL is found, an API "
@@ -8295,188 +8297,188 @@ msgid ""
 "width / height, etc.)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:346
+#: lib/messages-tooltip-plugin.php:345
 msgid ""
 "A preferred URL shortening service used for the <code>%s</code> HTML tag "
 "value, Schema markup, and social sharing buttons."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:354
+#: lib/messages-tooltip-plugin.php:353
 msgid ""
 "Shorten URLs longer than this length (the default suggested by Twitter is %d "
 "characters)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:362
+#: lib/messages-tooltip-plugin.php:361
 msgctxt "option comment"
 msgid "disabled"
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:364
+#: lib/messages-tooltip-plugin.php:363
 msgid ""
 "Clear shortened URLs when clearing the %1$s transient cache (default is "
 "%2$s)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:366
+#: lib/messages-tooltip-plugin.php:365
 msgid ""
 "Shortened URLs are cached for %1$s seconds (%2$s) to minimize external "
 "service API calls."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:368
+#: lib/messages-tooltip-plugin.php:367
 msgid ""
 "Note that clearing and then re-updating all shortened URLs at once may "
 "exceed API limits imposed by your shortening service provider."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:374
+#: lib/messages-tooltip-plugin.php:373
 msgid ""
 "Use the selected URL shortening service to replace the WordPress <code>%s</"
 "code> function value."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:380
+#: lib/messages-tooltip-plugin.php:379
 msgid ""
 "Use the selected URL shortening service to replace the WordPress <code>%s</"
 "code> HTML tag."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:386
+#: lib/messages-tooltip-plugin.php:385
 msgid ""
 "The Bitly shortening service requires a Generic Access Token to shorten URLs."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:388
+#: lib/messages-tooltip-plugin.php:387
 msgid ""
 "<a href=\"%s\">You can create a Generic Access Token in your Bitly profile "
 "settings</a> and enter its value here."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:394
+#: lib/messages-tooltip-plugin.php:393
 msgid ""
 "An optional Bitly short domain to use - either bit.ly, j.mp, bitly.com, or "
 "another custom short domain."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:396
+#: lib/messages-tooltip-plugin.php:395
 msgid ""
 "If no value is entered here, the short domain selected in your Bitly account "
 "settings will be used."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:402
+#: lib/messages-tooltip-plugin.php:401
 msgid ""
 "An optional <a href=\"%s\">Bitly group name to organize your Bitly account "
 "links</a>."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:409
+#: lib/messages-tooltip-plugin.php:408
 msgid ""
 "The DLMY.App secret API Key can be found in the DLMY.App user account &gt; "
 "Tools &gt; Developer API webpage."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:415
+#: lib/messages-tooltip-plugin.php:414
 msgid ""
 "To use Ow.ly as your preferred shortening service, you must provide the Ow."
 "ly API Key for this website (complete this form to <a href=\"%s\">Request Ow."
 "ly API Access</a>)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:421
+#: lib/messages-tooltip-plugin.php:420
 msgid ""
 "The URL to <a href=\"%s\">Your Own URL Shortener</a> (YOURLS) shortening "
 "service."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:426
+#: lib/messages-tooltip-plugin.php:425
 msgid ""
 "If <a href=\"%s\">Your Own URL Shortener</a> (YOURLS) shortening service is "
 "private, enter a configured username (see YOURLS Token for an alternative to "
 "the username / password options)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:432
+#: lib/messages-tooltip-plugin.php:431
 msgid ""
 "If <a href=\"%s\">Your Own URL Shortener</a> (YOURLS) shortening service is "
 "private, enter a configured user password (see YOURLS Token for an "
 "alternative to the username / password options)."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:438
+#: lib/messages-tooltip-plugin.php:437
 msgid ""
 "If <a href=\"%s\">Your Own URL Shortener</a> (YOURLS) shortening service is "
 "private, you can use a token string for authentication instead of a "
 "username / password combination."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:447
+#: lib/messages-tooltip-plugin.php:446
 msgid ""
 "An external service API used to retrieve ratings and reviews for meta tags "
 "and Schema markup."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:453
+#: lib/messages-tooltip-plugin.php:452
 msgid "The maximum number of reviews retrieved from the service API."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:459
+#: lib/messages-tooltip-plugin.php:458
 msgid "The maximum age of reviews retrieved from the service API."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:465
+#: lib/messages-tooltip-plugin.php:464
 msgid ""
 "Get ratings and reviews for the selected post types from the service API."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:472
+#: lib/messages-tooltip-plugin.php:471
 msgid ""
 "Your unique Shopper Approved site ID and API token values are required to "
 "retrieve ratings and reviews from the Shopper Approved service API."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:474
+#: lib/messages-tooltip-plugin.php:473
 msgid ""
 "<a href=\"%s\">Login to your Shopper Approved account and go to the API "
 "Dashboard</a>, then scroll down to find your Site ID and API Token."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:481
+#: lib/messages-tooltip-plugin.php:480
 msgid ""
 "Your unique Stamped.io store hash and API public key values are required to "
 "retrieve ratings and reviews from the Stamped.io service API."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:492
+#: lib/messages-tooltip-plugin.php:491
 msgid ""
 "Enter the name of a product attribute available in your e-commerce plugin."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:494
+#: lib/messages-tooltip-plugin.php:493
 msgid ""
 "The product attribute name allows %s to request the attribute value from "
 "your e-commerce plugin."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:496
+#: lib/messages-tooltip-plugin.php:495
 msgid "The default attribute name is \"%s\"."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:514
+#: lib/messages-tooltip-plugin.php:513
 msgid ""
 "If your theme or another plugin provides a custom field (aka metadata) for "
 "%s, you may enter its custom field name here."
 msgstr ""
 
 #. translators: %1$s is the metabox name, %2$s is the option name.
-#: lib/messages-tooltip-plugin.php:517
+#: lib/messages-tooltip-plugin.php:516
 msgid ""
 "If a custom field matching this name is found, its value will be imported "
 "for the %1$s \"%2$s\" option."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:523
+#: lib/messages-tooltip-plugin.php:522
 msgid ""
 "Note that the \"%s\" option provides multiple input fields - the custom "
 "field value will be split on newline characters, and each line will be "

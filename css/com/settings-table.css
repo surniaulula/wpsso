@@ -1086,38 +1086,6 @@ table.sucom-settings .oembed_container > iframe {
 }
 
 /**
- * Document SSO > Markup tab.
- */
-div.sucom-tabset_sso-tab_prev_markup table.sucom-settings {
-	border-spacing:2px;
-}
-
-div.sucom-tabset_sso-tab_prev_markup table.sucom-settings tr th,
-div.sucom-tabset_sso-tab_prev_markup table.sucom-settings tr td {
-	border:1px solid transparent;
-}
-
-div.sucom-tabset_sso-tab_prev_markup table.sucom-settings tr td {
-	word-wrap:normal;
-}
-
-div.sucom-tabset_sso-tab_prev_markup table.sucom-settings tr:hover th,
-div.sucom-tabset_sso-tab_prev_markup table.sucom-settings tr:hover td {
-	background-color:#e5f5fa !important;
-	border:1px solid #00a0d2 !important;
-	color:#0090bd;
-}
-
-div.sucom-tabset_sso-tab_prev_markup table.sucom-settings tr:hover a {
-	color:#0090bd;
-}
-
-div.sucom-tabset_sso-tab_prev_markup table.sucom-settings tr th,
-div.sucom-tabset_sso-tab_prev_markup table.sucom-settings tr td {
-	padding:2px 4px;
-}
-
-/**
  * SSO > Dashboard page.
  */
 table.sucom-settings.column-metabox {

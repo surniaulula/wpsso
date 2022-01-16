@@ -1535,22 +1535,22 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					case 'pid':
 
-						if ( ! isset( $get_mt_name ) ) {
+						if ( empty( $get_mt_name ) ) {
 
 							$get_mt_name = $mt_pre . ':image:id';
 						}
 
-						// No break - fall through.
+						// No break.
 
 					case 'image':
 					case 'img_url':
 
-						if ( ! isset( $get_mt_name ) ) {
+						if ( empty( $get_mt_name ) ) {
 
 							$get_mt_name = $mt_pre . ':image';
 						}
 
-						// No break - fall through.
+						// No break.
 
 						if ( null !== $mt_videos ) {
 

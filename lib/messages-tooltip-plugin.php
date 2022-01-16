@@ -66,9 +66,9 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 				 */
 				case 'tooltip-plugin_show_opts': 		// Options to Show by Default.
 
-					$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+					$mb_title_transl = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
-					$text = sprintf( __( 'You can select the default set of options to display in settings pages and the %s metabox.', 'wpsso' ), $mb_title ) . ' ';
+					$text = sprintf( __( 'You can select the default set of options to display in settings pages and the %s metabox.', 'wpsso' ), $mb_title_transl ) . ' ';
 
 					$text .= __( 'The basic view shows the most commonly used options, and includes a link to temporarily show all options when desired.', 'wpsso' ) . ' ';
 
@@ -88,9 +88,9 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 				case 'tooltip-plugin_add_to':		// Show Document SSO Metabox.
 
-					$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+					$mb_title_transl = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
-					$text = sprintf( __( 'Add or remove the %s metabox from admin editing pages for posts, pages, custom post types, terms (categories and tags), and user profile pages.', 'wpsso' ), $mb_title );
+					$text = sprintf( __( 'Add or remove the %s metabox from admin editing pages for posts, pages, custom post types, terms (categories and tags), and user profile pages.', 'wpsso' ), $mb_title_transl );
 
 					break;
 
@@ -278,32 +278,31 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 					break;
 
 				case 'tooltip-plugin_import_seoframework_meta':	// Import The SEO Framework Metadata.
-
+						
 					$plugin_name_transl = __( 'The SEO Framework', 'wpsso' );
 
-					// translators: %1$s is the plugin name.
-					$text = sprintf( __( 'Import %1$s custom metadata for posts, pages, custom post types, terms, and users.', 'wpsso' ), $plugin_name_transl ) . ' ';
-
-					// translators: %1$s is the plugin name.
-					$text .= sprintf( __( 'This option is checked by default if %1$s is active, or if no SEO plugin is active and %1$s settings are found in the database.', 'wpsso' ), $plugin_name_transl ) . ' ';
-
-					// translators: %1$s is the plugin name.
-					$text = sprintf( __( 'If %1$s is active, only social options are imported, and if %1$s is not active, all metadata options are imported.', 'wpsso' ), $plugin_name_transl ) . ' ';
-
-					break;
+					// No break.
 
 				case 'tooltip-plugin_import_wpseo_meta':	// Import Yoast SEO Metadata.
 
-					$plugin_name_transl = __( 'Yoast SEO', 'wpsso' );
+					if ( empty( $plugin_name_transl ) ) {
+
+						$plugin_name_transl = __( 'Yoast SEO', 'wpsso' );
+					}
+
+					$mb_title_transl = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+
+					// translators: %1$s is the plugin name, %2$s is the Document SSO metabox name.
+					$text = sprintf( __( 'Import %1$s custom metadata for posts, pages, custom post types, terms, and users into the %2$s metabox options.', 'wpsso' ), $plugin_name_transl, $mb_title_transl ) . ' ';
+
+					// translators: %1$s is the plugin name, %2$s is the Document SSO metabox name.
+					$text .= sprintf( __( 'Note that %1$s custom metadata will only be imported into %2$s metabox options that are empty (ie. options that have not already been customized).', 'wpsso' ), $plugin_name_transl, $mb_title_transl ) . ' ';
 
 					// translators: %1$s is the plugin name.
-					$text = sprintf( __( 'Import %1$s custom metadata for posts, pages, custom post types, terms, and users.', 'wpsso' ), $plugin_name_transl ) . ' ';
+					$text .= sprintf( __( 'This option is checked by default if %1$s is active, or no SEO plugin is active and %1$s settings are found in the database.', 'wpsso' ), $plugin_name_transl ) . ' ';
 
 					// translators: %1$s is the plugin name.
-					$text .= sprintf( __( 'This option is checked by default if %1$s is active, or if no SEO plugin is active and %1$s settings are found in the database.', 'wpsso' ), $plugin_name_transl ) . ' ';
-
-					// translators: %1$s is the plugin name.
-					$text = sprintf( __( 'If %1$s is active, only social options are imported, and if %1$s is not active, all metadata options are imported.', 'wpsso' ), $plugin_name_transl ) . ' ';
+					$text .= sprintf( __( 'If %1$s is active, only social custom metadata is imported, and if %1$s is not active, all custom metadata is imported.', 'wpsso' ), $plugin_name_transl ) . ' ';
 
 					break;
 
@@ -312,9 +311,9 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 				 */
 				case 'tooltip-plugin_gravatar_api':	// Gravatar is Default Author Image.
 
-					$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+					$mb_title_transl = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
-					$text .= sprintf( __( 'A customized image for each author can be selected in the WordPress user profile %s metabox.', 'wpsso' ), $mb_title ) . ' ';
+					$text .= sprintf( __( 'A customized image for each author can be selected in the WordPress user profile %s metabox.', 'wpsso' ), $mb_title_transl ) . ' ';
 
 					$text = __( 'If a custom image has not been selected, fallback to using their Gravatar image.', 'wpsso' ) . ' ';
 
@@ -502,19 +501,19 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 				 */
 				case ( 0 === strpos( $msg_key, 'tooltip-plugin_cf_' ) ? true : false ):
 
-					$cf_key      = str_replace( 'tooltip-', '', $msg_key );
-					$cf_frags    = $this->get_cf_tooltip_fragments( preg_replace( '/^tooltip-plugin_cf_/', '', $msg_key ) );
-					$cf_md_index = $this->p->cf[ 'opt' ][ 'cf_md_index' ];
-					$cf_md_key   = empty( $cf_md_index[ $cf_key ] ) ? '' : $cf_md_index[ $cf_key ];
-					$cf_is_multi = empty( $this->p->cf[ 'opt' ][ 'cf_md_multi' ][ $cf_md_key ] ) ? false : true;
-					$mb_title    = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+					$cf_key          = str_replace( 'tooltip-', '', $msg_key );
+					$cf_frags        = $this->get_cf_tooltip_fragments( preg_replace( '/^tooltip-plugin_cf_/', '', $msg_key ) );
+					$cf_md_index     = $this->p->cf[ 'opt' ][ 'cf_md_index' ];
+					$cf_md_key       = empty( $cf_md_index[ $cf_key ] ) ? '' : $cf_md_index[ $cf_key ];
+					$cf_is_multi     = empty( $this->p->cf[ 'opt' ][ 'cf_md_multi' ][ $cf_md_key ] ) ? false : true;
+					$mb_title_transl = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
 					if ( ! empty( $cf_frags ) ) {	// Just in case.
 
 						$text = sprintf( __( 'If your theme or another plugin provides a custom field (aka metadata) for %s, you may enter its custom field name here.', 'wpsso' ), $cf_frags[ 'desc' ] ) . ' ';
 
 						// translators: %1$s is the metabox name, %2$s is the option name.
-						$text .= sprintf( __( 'If a custom field matching this name is found, its value will be imported for the %1$s "%2$s" option.', 'wpsso' ), $mb_title, $cf_frags[ 'label' ] ) . ' ';
+						$text .= sprintf( __( 'If a custom field matching this name is found, its value will be imported for the %1$s "%2$s" option.', 'wpsso' ), $mb_title_transl, $cf_frags[ 'label' ] ) . ' ';
 
 						if ( $cf_is_multi ) {
 

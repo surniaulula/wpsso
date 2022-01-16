@@ -426,10 +426,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				if ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {	// An SEO plugin is not active.
 
-					if ( empty( $opts[ 'plugin_wpsso_tid' ] ) ) {
+					if ( empty( $opts[ 'plugin_wpsso_tid' ] ) ||
+						! empty( $opts[ 'plugin_import_seoframework_meta' ] ) ||
+							! empty( $opts[ 'plugin_import_wpseo_meta' ] ) ) {
 
 						$seo_opts = array(
-							'add_link_rel_canonical'    => 0,
+							'add_link_rel_canonical'    => 1,
 							'add_meta_name_description' => 1,
 							'add_meta_name_robots'      => 1,
 						);
@@ -461,8 +463,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				foreach ( $seo_opts as $opt_key => $def_val ) {
-
-					$opts[ $opt_key . ':disabled' ] = true;	// Prevent changes in settings page.
 
 					if ( $opts[ $opt_key ] !== $def_val ) {
 

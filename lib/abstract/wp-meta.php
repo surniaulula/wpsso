@@ -1076,7 +1076,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 						$tabs[ 'edit_visibility' ] = _x( 'Edit Visibility', 'metabox tab', 'wpsso' );
 						$tabs[ 'prev_social' ]     = _x( 'Preview Social', 'metabox tab', 'wpsso' );
 						$tabs[ 'prev_oembed' ]     = _x( 'Preview oEmbed', 'metabox tab', 'wpsso' );
-						$tabs[ 'prev_markup' ]     = _x( 'Preview Markup', 'metabox tab', 'wpsso' );
 						$tabs[ 'validators' ]      = _x( 'Validators', 'metabox tab', 'wpsso' );
 					}
 
