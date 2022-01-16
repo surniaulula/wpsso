@@ -170,7 +170,7 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 
 				 	$text = '<p class="status-msg">';
 
-					$text .= sprintf( __( 'The oEmbed HTML is provided by the <code>%s</code> template.', 'wpsso' ), 'wpsso/embed-content' );
+					$text .= sprintf( __( 'oEmbed HTML provided by the <code>%s</code> template.', 'wpsso' ), 'wpsso/embed-content' );
 
 					$text .= '</p>';
 

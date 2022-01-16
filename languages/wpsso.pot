@@ -6215,39 +6215,26 @@ msgctxt "default title"
 msgid "No Title"
 msgstr ""
 
-#: lib/edit.php:454
+#: lib/edit.php:451
 msgctxt "option label"
 msgid "oEmbed JSON URL"
 msgstr ""
 
-#: lib/edit.php:458
+#: lib/edit.php:455
 msgctxt "option label"
 msgid "oEmbed XML URL"
 msgstr ""
 
-#: lib/edit.php:462
-msgctxt "option label"
-msgid "oEmbed Data"
-msgstr ""
-
-#: lib/edit.php:472
-msgid "(see below)"
-msgstr ""
-
-#: lib/edit.php:482
-msgid "No oEmbed data found."
-msgstr ""
-
-#: lib/edit.php:486
+#: lib/edit.php:459
 msgctxt "option label"
 msgid "oEmbed HTML"
 msgstr ""
 
-#: lib/edit.php:496
+#: lib/edit.php:469
 msgid "No oEmbed HTML found."
 msgstr ""
 
-#: lib/edit.php:519
+#: lib/edit.php:492
 msgctxt "submit button"
 msgid "Validate %s"
 msgstr ""
@@ -6491,7 +6478,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages-info-meta.php:173
-msgid "The oEmbed HTML is provided by the <code>%s</code> template."
+msgid "oEmbed HTML provided by the <code>%s</code> template."
 msgstr ""
 
 #: lib/messages-info-meta.php:186
