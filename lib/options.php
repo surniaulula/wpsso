@@ -437,7 +437,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						);
 					}
 
-				} else {	// An SEO plugin is active (Yoast SEO, or any other).
+				} else {	// An SEO plugin is active.
 
 					$seo_opts = array(
 						'add_link_rel_canonical'    => 0,
@@ -446,7 +446,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					);
 
 					/**
-					 * The active SEO plugin is not The SEO Framework, so do not import The SEO Framework metadata.
+					 * An SEO plugin is active, but it's not The SEO Framework.
 					 */
 					if ( empty( $this->p->avail[ 'seo' ][ 'seoframework' ] ) ) {
 
@@ -454,7 +454,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 
 					/**
-					 * The active SEO plugin is not Yoast SEO, so do not import Yoast SEO metadata.
+					 * An SEO plugin is active, but it's not Yoast SEO.
 					 */
 					if ( empty( $this->p->avail[ 'seo' ][ 'wpseo' ] ) ) {
 
@@ -462,7 +462,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					}
 				}
 
+				/**
+				 * Check if options need to be changed and saved.
+				 *
+				 * Prevent changes as these options would just get changed back anyway.
+				 */
 				foreach ( $seo_opts as $opt_key => $def_val ) {
+
+					$opts[ $opt_key . ':disabled' ] = true;
 
 					if ( $opts[ $opt_key ] !== $def_val ) {
 
