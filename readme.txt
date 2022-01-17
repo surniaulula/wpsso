@@ -243,7 +243,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.14.0-dev.6 (2022/01/16)**
+**Version 9.14.0-dev.7 (2022/01/17)**
 
 * **New Features**
 	* Added a new "Import The SEO Framework Metadata" option under the SSO &gt; Advanced Settings &gt; Integration tab.
@@ -760,9 +760,9 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 9.14.0-dev.6 =
+= 9.14.0-dev.7 =
 
-(2022/01/16) Added a new "Import SEO Framework Metadata" option. Fixed incorrect addition of sameAs URLs for post ID 0. Renamed lib/abstracts/ folder and its classes.
+(2022/01/17) Added a new "Import SEO Framework Metadata" option. Fixed incorrect addition of sameAs URLs for post ID 0. Renamed lib/abstracts/ folder and its classes.
 
 = 9.13.1 =
 
