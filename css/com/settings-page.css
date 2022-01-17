@@ -398,7 +398,7 @@ div.submit-buttons .button-alt:hover {
 	font-style:italic;
 	line-height:1.4em;
 	text-align:center;
-	margin:0 0 5px 0;
+	margin:4px 0;
 }
 
 #tools-content p.status-msg.smaller {

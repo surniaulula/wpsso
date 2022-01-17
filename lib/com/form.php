@@ -812,6 +812,27 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
+		public function get_input_time_dhms( $name_prefix ) {
+
+			static $days_sep  = null;
+			static $hours_sep = null;
+			static $mins_sep  = null;
+			static $secs_sep  = null;
+
+			if ( null === $days_sep ) {	// Translate only once.
+
+				$days_sep  = ' ' . _x( 'days', 'option comment', 'wpsso' ) . ', ';
+				$hours_sep = ' ' . _x( 'hours', 'option comment', 'wpsso' ) . ', ';
+				$mins_sep  = ' ' . _x( 'mins', 'option comment', 'wpsso' ) . ', ';
+				$secs_sep  = ' ' . _x( 'secs', 'option comment', 'wpsso' );
+			}
+
+			return $this->get_input( $name_prefix . '_days', 'xshort', $css_id = '', $max_len = 0, $holder = 0 ) . $days_sep . 
+				$this->get_input( $name_prefix . '_hours', 'xshort', $css_id = '', $max_len = 0, $holder = 0 ) . $hours_sep . 
+				$this->get_input( $name_prefix . '_mins', 'xshort', $css_id = '', $max_len = 0, $holder = 0 ) . $mins_sep . 
+				$this->get_input( $name_prefix . '_secs', 'xshort', $css_id = '', $max_len = 0, $holder = 0 ) . $secs_sep;
+		}
+
 		public function get_input_image_crop_area( $name, $add_none = false, $is_disabled = false ) {
 
 			$css_class = 'crop-area';
@@ -2370,6 +2391,27 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$value = isset( $opts[ $name ] ) ? $opts[ $name ] : '';
 
 			return $this->get_no_input_value( $value, 'datepicker', '', 'yyyy-mm-dd' );
+		}
+
+		public function get_no_input_time_dhms() {
+
+			static $days_sep  = null;
+			static $hours_sep = null;
+			static $mins_sep  = null;
+			static $secs_sep  = null;
+
+			if ( null === $days_sep ) {	// Translate only once.
+
+				$days_sep  = ' ' . _x( 'days', 'option comment', 'wpsso' ) . ', ';
+				$hours_sep = ' ' . _x( 'hours', 'option comment', 'wpsso' ) . ', ';
+				$mins_sep  = ' ' . _x( 'mins', 'option comment', 'wpsso' ) . ', ';
+				$secs_sep  = ' ' . _x( 'secs', 'option comment', 'wpsso' );
+			}
+
+			return $this->get_no_input_value( $value = '0', 'xshort' ) . $days_sep . 
+				$this->get_no_input_value( $value = '0', 'xshort' ) . $hours_sep . 
+				$this->get_no_input_value( $value = '0', 'xshort' ) . $mins_sep . 
+				$this->get_no_input_value( $value = '0', 'xshort' ) . $secs_sep;
 		}
 
 		public function get_no_input_image_crop_area( $name, $add_none = false ) {

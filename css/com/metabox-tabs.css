@@ -176,7 +176,7 @@ ul.sucom-metabox-tabs.vertical > li.active {
 	border-top:1px solid #e9e9e9;
 	border-left:none;
 	border-right:none;
-	border-bottom:1px solid #e9e9e9;
+	border-bottom:1px solid #c3c4c7;;
 	background-color:#eee;
 }
 
@@ -206,11 +206,11 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 }
 
 .sucom-tablink-icon.sucom-tablink-href_appmeta::before {		/* SSO > Mobile Apps tab. */
-	content:"\f10b";	/* .icon-mobile */
+	content:"\e82f";	/* .icon-mobile */
 }
 
 .sucom-tablink-icon.sucom-tablink-href_body_section::before {		/* SSO > Strip Microdata > Strip Schema Microdata > Body Section tab. */
-	content:"\e815";	/* .icon-download */
+	content:"\e815";	/* .icon-download-bar */
 }
 
 .sucom-tablink-icon.sucom-tablink-href_buttons::before {		/* Share Buttons tab. */
@@ -241,12 +241,16 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\e809";	/* .icon-edit */
 }
 
+.sucom-tablink-icon.sucom-tablink-href_edit_schema::before {		/* Document SSO > Edit Schema tab. */
+	content:"\f121";	/* .icon-code */
+}
+
 .sucom-tablink-icon.sucom-tablink-href_edit_media::before {		/* Document SSO > Edit Media tab. */
 	content:"\e808";	/* .icon-picture */
 }
 
 .sucom-tablink-icon.sucom-tablink-href_edit_visibility::before {	/* Document SSO > Edit Visibility tab. */
-	content:"\e81b";	/* .icon-robot-4 */
+	content:"\e805";	/* .icon-eye */
 }
 
 .sucom-tablink-icon.sucom-tablink-href_facebook::before {		/* SSO > General Settings > Social and Search Sites > Facebook tab. */
@@ -262,7 +266,7 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 }
 
 .sucom-tablink-icon.sucom-tablink-href_head_section::before {		/* SSO > Strip Microdata > Strip Schema Microdata > Head Section tab. */
-	content:"\e816";	/* .icon-upload */
+	content:"\e814";	/* .icon-upload-bar */
 }
 
 .sucom-tablink-icon.sucom-tablink-href_image_sizes::before {		/* SSO > Advanced Settings > Advanced Settings > Image Sizes tab. */
@@ -301,7 +305,7 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\f1e1";	/* .icon-share-squared */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_open_graph::before {		/* Open Graph tab. */
+.sucom-tablink-icon.sucom-tablink-href_open_graph::before {		/* SSO > Advanced Settings > HTML Tags > Open Graph tab. */
 	content:"\f1e1";	/* .icon-share-squared */
 }
 
@@ -317,16 +321,12 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\f0d3";	/* .icon-pinterest-squared */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_place::before {			/* Unused. */
-	content:"\e806";	/* .icon-location */
-}
-
 .sucom-tablink-icon.sucom-tablink-href_prev_oembed::before {		/* Document SSO > Preview oEmbed tab. */
 	content:"\f2c3";	/* .icon-id-card-o */
 }
 
 .sucom-tablink-icon.sucom-tablink-href_prev_social::before {		/* Document SSO > Preview Social tab. */
-	content:"\e805";	/* .icon-eye */
+	content:"\f1e0";	/* .icon-share */
 }
 
 .sucom-tablink-icon.sucom-tablink-href_product_attrs::before {		/* SSO > Advanced Settings > Metadata > Product Attributes tab. */
@@ -346,14 +346,14 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 }
 
 .sucom-tablink-icon.sucom-tablink-href_seo_other::before {		/* SSO > Advanced Settings > HTML Tags > SEO / Other tab. */
-	content:"\e804";	/* .icon-search */
+	content:"\e81c";	/* .icon-robot-5 */
 }
 
 .sucom-tablink-icon.sucom-tablink-href_settings::before {		/* SSO > Advanced Settings > Advanced Settings > Plugin Admin tab. */
 	content:"\e80e";	/* .icon-cog-alt */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_shortcodes::before {		/* Shortcode Defaults tab. */
+.sucom-tablink-icon.sucom-tablink-href_shortcodes::before {		/* SSO > FAQ Settings > Frequently Asked Questions > Shortcode Defaults tab. */
 	content:"\f12e";	/* .icon-puzzle */
 }
 
@@ -370,7 +370,7 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 }
 
 .sucom-tablink-icon.sucom-tablink-href_validators::before {		/* Document SSO > Validators tab. */
-	content:"\e814";	/* .icon-dashicons-code-standards */
+	content:"\e81b";	/* .icon-robot-4 */
 }
 
 .sucom-tablink-icon.sucom-tablink-href_videos::before {			/* SSO > General Settings > General Settings > Videos tab. */
@@ -378,11 +378,11 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 }
 
 .sucom-tablink.sucom-tablink_def_schema.sucom-tablink-icon::before {	/* SSO > Advanced Settings > Schema Defaults tabs. */
-	content:"\f0f6";	/* .icon-doc-text */
+	content:"\f1c9";	/* .icon-file-code */
 }
 
 .sucom-tablink.sucom-tablink_rrssb_styles.sucom-tablink-icon::before {	/* SSO > Responsive Styles > Social Sharing Styles tabs. */
-	content:"\e809";	/* .icon-edit */
+	content:"\e816";	/* .icon-css */
 }
 
 /**

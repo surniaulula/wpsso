@@ -30,12 +30,20 @@ _x( 'Post Type', 'option label', 'wpsso' );
 _x( 'Post Type', 'option label', 'wpsso' );
 _x( 'Taxonomy', 'option label', 'wpsso' );
 _x( 'User Profiles', 'option label', 'wpsso' );
+_x( 'days', 'option comment', 'wpsso' );
+_x( 'hours', 'option comment', 'wpsso' );
+_x( 'mins', 'option comment', 'wpsso' );
+_x( 'secs', 'option comment', 'wpsso' );
 _x( 'crop', 'option comment', 'wpsso' );
 _x( 'from', 'option comment', 'wpsso' );
 // translators: Please ignore - translation uses a different text domain.
 __( 'Media Library' );
 // translators: Please ignore - translation uses a different text domain.
 __( 'Select Image' );
+_x( 'days', 'option comment', 'wpsso' );
+_x( 'hours', 'option comment', 'wpsso' );
+_x( 'mins', 'option comment', 'wpsso' );
+_x( 'secs', 'option comment', 'wpsso' );
 __( '%s Notice', 'wpsso' );
 __( 'Notice', 'wpsso' );
 __( 'Forever', 'wpsso' );

@@ -678,7 +678,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 		}
 
 		/**
-		 * If an add-on is not active, return a short message that this add-on is required.
+		 * If an add-on is not active, return a short message that this add-on is recommended.
 		 */
 		public function maybe_ext_required( $ext ) {
 
@@ -711,25 +711,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 		 */
 		public function maybe_preview_images_first() {
 
-			$text = '';
-
-			if ( ! empty( $this->form->options[ 'og_vid_prev_img' ] ) ) {
-
-				$text .= ' ' . _x( 'video preview images are enabled (and included first)', 'option comment', 'wpsso' );
-			}
-
-			return $text;
+			return empty( $this->form->options[ 'og_vid_prev_img' ] ) ? '' : ' ' .
+				_x( 'video preview images are enabled (and included first)', 'option comment', 'wpsso' );
 		}
 
 		/**
 		 * Used by the Advanced Settings page for the "Webpage Document Title" option.
 		 */
-		public function maybe_title_tag_disabled() {
+		public function maybe_doc_title_disabled() {
 
-			if ( current_theme_supports( 'title-tag' ) ) {
+			return current_theme_supports( 'title-tag' ) ? '' : $this->doc_title_disabled;
+		}
 
-				return '';
-			}
+		public function doc_title_disabled() {
 
 			$text = sprintf( __( '<a href="%s">WordPress Title Tag</a> not supported by theme', 'wpsso' ),
 				__( 'https://codex.wordpress.org/Title_Tag', 'wpsso' ) );
@@ -749,21 +743,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 		public function preview_images_are_first() {
 
-			$html = ' ' . _x( 'video preview images are included first', 'option comment', 'wpsso' );
-
-			return $html;
+			return ' ' . _x( 'video preview images are included first', 'option comment', 'wpsso' );
 		}
 
 		public function pro_feature( $ext ) {
 
 			list( $ext, $p_ext ) = $this->ext_p_ext( $ext );
 
-			if ( ! empty( $ext ) ) {	// Just in case.
-
-				return $this->get( 'pro-feature-msg', array( 'plugin_id' => $ext ) );
-			}
-
-			return '';
+			return empty( $ext ) ? '' : $this->get( 'pro-feature-msg', array( 'plugin_id' => $ext ) );
 		}
 
 		public function pro_feature_video_api() {
@@ -782,23 +769,19 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 		}
 
 		/**
-		 * Head cache disabled.
-		 */
-		public function head_cache_disabled() {
-
-			$text = __( 'head cache is disabled (caching plugin or service detected).', 'wpsso' );
-
-			return '<span class="option-info">' . $text . '</span>';
-		}
-
-		/**
 		 * Pinterest disabled.
 		 *
 		 * $extra_css_class can be empty, 'left', or 'inline'.
 		 */
+		public function maybe_pin_img_disabled( $extra_css_class = '' ) {
+
+			return empty( $this->p->options[ 'pin_add_img_html' ] ) ? $this->pin_img_disabled( $extra_css_class ) : '';
+		}
+
 		public function pin_img_disabled( $extra_css_class = '' ) {
 
 			$option_text = _x( 'Add Hidden Image for Pinterest', 'option label', 'wpsso' );
+
 			$option_link = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_pinterest', $option_text );
 
 			// translators: %s is the option name, linked to its settings page.
@@ -808,41 +791,12 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 		}
 
 		/**
-		 * Robots disabled.
-		 */
-		public function robots_disabled() {
-
-			$seo_tab_url = $this->p->util->get_admin_url( 'advanced#sucom-tabset_head_tags-tab_seo_other' );
-
-			$html = '<p class="status-msg"><a href="' . $seo_tab_url . '">' . __( 'The robots meta tag is disabled.', 'wpsso' ) . '</a></p>';
-
-			$html .= '<p class="status-msg">' . __( 'No options available.', 'wpsso' ) . '</p>';
-
-			return $html;
-		}
-
-		public function get_robots_disabled_rows( $table_rows = array() ) {
-
-			if ( ! is_array( $table_rows ) ) {	// Just in case.
-
-				$table_rows = array();
-			}
-
-			$table_rows[ 'robots_disabled' ] = '<tr><td align="center">' . $this->robots_disabled() . '</td></tr>';
-
-			return $table_rows;
-		}
-
-		/**
 		 * Schema disabled.
 		 */
-		public function schema_disabled() {
+		public function maybe_schema_disabled() {
 
-			$html = '<p class="status-msg">' . __( 'Schema markup is disabled.', 'wpsso' ) . '</p>';
-
-			$html .= '<p class="status-msg">' . __( 'No options available.', 'wpsso' ) . '</p>';
-
-			return $html;
+			return isset( $this->p->avail[ 'p' ][ 'schema' ] ) && empty( $this->p->avail[ 'p' ][ 'schema' ] ) ?
+				'<p class="status-msg smaller disabled">' . __( 'Schema markup is disabled.', 'wpsso' ) . '</p>' : '';
 		}
 
 		public function get_schema_disabled_rows( $table_rows = array(), $col_span = 1 ) {
@@ -852,7 +806,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				$table_rows = array();
 			}
 
-			$table_rows[ 'schema_disabled' ] = '<tr><td align="center" colspan="' . $col_span . '">' . $this->schema_disabled() . '</td></tr>';
+			$html = '<p class="status-msg">' . __( 'Schema markup is disabled.', 'wpsso' ) . '</p>';
+
+			$html .= '<p class="status-msg">' . __( 'No options available.', 'wpsso' ) . '</p>';
+
+			$table_rows[ 'schema_disabled' ] = '<tr><td align="center" colspan="' . $col_span . '">' . $html . '</td></tr>';
 
 			return $table_rows;
 		}

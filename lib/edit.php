@@ -33,14 +33,20 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			$min_int = SucomUtil::get_min_int();
 
 			/**
-			 * Default Document SSO metabox tabs are defined in WpssoAbstractWpMeta->get_document_meta_tabs().
+			 * Document SSO metabox tabs are defined in WpssoAbstractWpMeta->get_document_meta_tabs().
 			 */
 			$this->p->util->add_plugin_filters( $this, array( 
-				'metabox_sso_edit_general_rows'    => 4,
-				'metabox_sso_edit_visibility_rows' => 4,
-				'metabox_sso_prev_social_rows'     => 4,
-				'metabox_sso_prev_oembed_rows'     => 4,
-				'metabox_sso_validators_rows'      => 4,
+				'metabox_sso_edit_general_rows'           => 4,
+				'metabox_sso_edit_media_rows'             => 4,
+				'metabox_sso_edit_media_prio_image_rows'  => 4,
+				'metabox_sso_edit_media_twitter_rows'     => 4,
+				'metabox_sso_edit_media_schema_rows'      => 4,
+				'metabox_sso_edit_media_pinterest_rows'   => 4,
+				'metabox_sso_edit_visibility_rows'        => 4,
+				'metabox_sso_edit_visibility_robots_rows' => 4,
+				'metabox_sso_prev_social_rows'            => 4,
+				'metabox_sso_prev_oembed_rows'            => 4,
+				'metabox_sso_validators_rows'             => 4,
 			), $min_int );	// Run before any add-on filters.
 		}
 
@@ -52,13 +58,10 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			$maybe_hashtags = true;
 			$do_encode      = true;
 
-			$pin_img_disabled       = empty( $this->p->options[ 'pin_add_img_html' ] ) ? true : false;
-			$seo_desc_disabled      = empty( $this->p->options[ 'add_meta_name_description' ] ) ? true : false;
-			$canonical_url_disabled = empty( $this->p->options[ 'add_link_rel_canonical' ] ) ? true : false;
-
-			$pin_img_msg       = $pin_img_disabled ? $this->p->msgs->pin_img_disabled() : '';
-			$seo_desc_msg      = $seo_desc_disabled ? $this->p->msgs->seo_option_disabled( 'meta name description' ) : '';
-			$canonical_url_msg = $canonical_url_disabled ? $this->p->msgs->seo_option_disabled( 'link rel canonical' ) : '';
+			$pin_img_disabled_msg  = $this->p->msgs->maybe_pin_img_disabled();
+			$pin_img_disabled      = $pin_img_disabled_msg ? true : false;
+			$seo_desc_disabled     = empty( $this->p->options[ 'add_meta_name_description' ] ) ? true : false;
+			$seo_desc_disabled_msg = $seo_desc_disabled ? $this->p->msgs->seo_option_disabled( 'meta name description' ) : '';
 
 			/**
 			 * Select option arrays.
@@ -67,7 +70,6 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			$schema_types     = $this->p->schema->get_schema_types_select( $context = 'meta' );
 			$primary_terms    = $this->p->post->get_primary_terms( $mod, $tax_slug = 'category', $output = 'names' );
 			$article_sections = $this->p->util->get_article_sections();
-			$max_media_items  = $this->p->cf[ 'form' ][ 'max_media_items' ];
 
 			/**
 			 * Maximum option lengths.
@@ -91,7 +93,6 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			$def_tc_title      = $this->p->page->get_title( $tc_title_max_len, $dots, $mod, $read_cache );
 			$def_tc_desc       = $this->p->page->get_description( $tc_desc_max_len, $dots, $mod, $read_cache );
 			$def_seo_desc      = $seo_desc_disabled ? '' : $this->p->page->get_description( $seo_desc_max_len, $dots, $mod, $read_cache, $no_hashtags );
-			$def_canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = false );
 			$def_reading_mins  = $this->p->page->get_reading_mins( $mod );
 
 			/**
@@ -160,7 +161,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					'tooltip'  => 'meta-pin_img_desc',
 					'content'  => $form->get_textarea( 'pin_img_desc', $css_class = '', $css_id = '',
 						array( 'max' => $pin_img_desc_max_len, 'warn' => $pin_img_desc_warn_len ),
-							$def_pin_img_desc, $pin_img_disabled ) . ' ' . $pin_img_msg,
+							$def_pin_img_desc, $pin_img_disabled ) . $pin_img_disabled_msg,
 				) : '',
 				'tc_title' => $mod[ 'is_public' ] ? array(
 					'th_class' => 'medium',
@@ -182,38 +183,8 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					'label'    => _x( 'Search Description', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-seo_desc',
 					'content'  => $form->get_textarea( 'seo_desc', $css_class = '', $css_id = '',
-						$seo_desc_max_len, $def_seo_desc, $seo_desc_disabled ) . ' ' . $seo_desc_msg,
+						$seo_desc_max_len, $def_seo_desc, $seo_desc_disabled ) . ' ' . $seo_desc_disabled_msg,
 				) : '',
-				'canonical_url' => $mod[ 'is_public' ] ? array(
-					'tr_class' => $canonical_url_disabled ? 'hide_in_basic' : '',
-					'th_class' => 'medium',
-					'label'    => _x( 'Canonical URL', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-canonical_url',
-					'content'  => $form->get_input( 'canonical_url', $css_class = 'wide', $css_id = '',
-						$max_len = 0, $def_canonical_url, $canonical_url_disabled ) . ' ' . $canonical_url_msg,
-				) : '',
-				'og_img_max' => $mod[ 'is_post' ] ? array(
-					'tr_class' => $form->get_css_class_hide( 'basic', 'og_img_max' ),
-					'th_class' => 'medium',
-					'label'    => _x( 'Maximum Images', 'option label', 'wpsso' ),
-					'tooltip'  => 'og_img_max',	// Use tooltip message from settings.
-					'content'  => $form->get_select( 'og_img_max', range( 0, $max_media_items ), $css_class = 'medium' ),
-				) : '',
-				'og_vid_max' => $mod[ 'is_post' ] ? array(
-					'tr_class' => $form->get_css_class_hide( 'basic', 'og_vid_max' ),
-					'th_class' => 'medium',
-					'label'    => _x( 'Maximum Videos', 'option label', 'wpsso' ),
-					'tooltip'  => 'og_vid_max',	// Use the tooltip from plugin settings.
-					'content'  => $form->get_select( 'og_vid_max', range( 0, $max_media_items ), $css_class = 'medium' ),
-				) : '',
-				'og_vid_prev_img' => $mod[ 'is_post' ] ? array(
-					'tr_class' => $form->get_css_class_hide( 'basic', 'og_vid_prev_img' ),
-					'th_class' => 'medium',
-					'label'    => _x( 'Include Video Previews', 'option label', 'wpsso' ),
-					'tooltip'  => 'og_vid_prev_img',	// Use the tooltip from plugin settings.
-					'content'  => $form->get_checkbox( 'og_vid_prev_img' ) . $this->p->msgs->preview_images_are_first(),
-				) : '',
-
 				/**
 				 * Open Graph Article type.
 				 */
@@ -243,9 +214,244 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 				) : '',
 			);
 
+			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
+		}
+
+		public function filter_metabox_sso_edit_media_rows( $table_rows, $form, $head_info, $mod ) {
+
+			$max_media_items = $this->p->cf[ 'form' ][ 'max_media_items' ];
+
+			$form_rows = array(
+				'info_priority_media' => array(
+					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'info-meta-priority-media' ) . '</td>',
+				),
+				'og_img_max' => $mod[ 'is_post' ] ? array(
+					'th_class' => 'medium',
+					'label'    => _x( 'Maximum Images', 'option label', 'wpsso' ),
+					'tooltip'  => 'og_img_max',	// Use tooltip message from settings.
+					'content'  => $form->get_select( 'og_img_max', range( 0, $max_media_items ), $css_class = 'medium' ),
+				) : '',
+				'og_vid_max' => $mod[ 'is_post' ] ? array(
+					'th_class' => 'medium',
+					'label'    => _x( 'Maximum Videos', 'option label', 'wpsso' ),
+					'tooltip'  => 'og_vid_max',	// Use the tooltip from plugin settings.
+					'content'  => $form->get_select( 'og_vid_max', range( 0, $max_media_items ), $css_class = 'medium' ),
+				) : '',
+				'og_vid_prev_img' => $mod[ 'is_post' ] ? array(
+					'th_class' => 'medium',
+					'label'    => _x( 'Include Video Previews', 'option label', 'wpsso' ),
+					'tooltip'  => 'og_vid_prev_img',	// Use the tooltip from plugin settings.
+					'content'  => $form->get_checkbox( 'og_vid_prev_img' ) . $this->p->msgs->preview_images_are_first(),
+				) : '',
+				'subsection_opengraph' => array(
+					'td_class' => 'subsection',
+					'header'   => 'h4',
+					'label'    => _x( 'Priority Media', 'metabox title', 'wpsso' ),
+				),
+			);
+
 			$table_rows = $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
 
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_general_schema_rows', $table_rows, $form, $head_info, $mod );
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_media_prio_image_rows', $table_rows, $form, $head_info, $mod );
+
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_media_prio_video_rows', $table_rows, $form, $head_info, $mod );
+
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_media_twitter_rows', $table_rows, $form, $head_info, $mod );
+
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_media_schema_rows', $table_rows, $form, $head_info, $mod );
+
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_media_pinterest_rows', $table_rows, $form, $head_info, $mod );
+
+			return $table_rows;
+		}
+
+		public function filter_metabox_sso_edit_media_prio_image_rows( $table_rows, $form, $head_info, $mod ) {
+
+			$size_name     = 'wpsso-opengraph';
+			$media_request = array( 'pid' );
+			$media_info    = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = 'none' );
+
+			$form_rows = array(
+				'subsection_priority_image' => array(
+					'td_class' => 'subsection top',
+					'header'   => 'h5',
+					'label'    => _x( 'Priority Image Information', 'metabox title', 'wpsso' )
+				),
+				'og_img_id' => array(
+					'th_class' => 'medium',
+					'label'    => _x( 'Image ID', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-og_img_id',
+					'content'  => $form->get_input_image_upload( 'og_img', $media_info[ 'pid' ] ),
+				),
+				'og_img_url' => array(
+					'th_class' => 'medium',
+					'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-og_img_url',
+					'content'  => $form->get_input_image_url( 'og_img' ),
+				),
+			);
+
+			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
+		}
+
+		/**
+		 * Twitter Card
+		 *
+		 * App and Player cards do not have a $size_name.
+		 *
+		 * Only show custom image options for the Summary and Summary Large Image cards. 
+		 */
+		public function filter_metabox_sso_edit_media_twitter_rows( $table_rows, $form, $head_info, $mod ) {
+
+			if ( ! $mod[ 'is_public' ] ) {
+
+				return $table_rows;
+			}
+
+			list( $card_type, $card_label, $size_name, $tc_prefix ) = $this->p->tc->get_card_info( $mod, $head_info );
+
+			if ( ! empty( $card_label ) ) {
+
+				$form_rows[ 'subsection_tc' ] = array(
+					'td_class' => 'subsection',
+					'header'   => 'h4',
+					'label'    => $card_label,
+				);
+
+				if ( empty( $size_name ) ) {
+
+					$form_rows[ 'subsection_tc_msg' ] = array(
+						'table_row' => '<td colspan="2"><p class="status-msg">' .
+							sprintf( __( 'No priority media options for the %s.', 'wpsso' ),
+								$card_label ) . '</p></td>',
+					);
+
+				} else {
+
+					$media_request = array( 'pid' );
+					$media_info    = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = 'og' );
+
+					$form_rows[ $tc_prefix . '_img_id' ] = array(
+						'th_class' => 'medium',
+						'label'    => _x( 'Image ID', 'option label', 'wpsso' ),
+						'tooltip'  => 'meta-' . $tc_prefix . '_img_id',
+						'content'  => $form->get_input_image_upload( $tc_prefix . '_img', $media_info[ 'pid' ] ),
+					);
+
+					$form_rows[ $tc_prefix . '_img_url' ] = array(
+						'th_class' => 'medium',
+						'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
+						'tooltip'  => 'meta-' . $tc_prefix . '_img_url',
+						'content'  => $form->get_input_image_url( $tc_prefix . '_img' ),
+					);
+				}
+			}
+
+			$table_rows = $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
+
+			return $table_rows;
+		}
+
+		public function filter_metabox_sso_edit_media_schema_rows( $table_rows, $form, $head_info, $mod ) {
+
+			if ( ! $mod[ 'is_public' ] ) {
+
+				return $table_rows;
+			}
+
+			$size_name           = 'wpsso-schema-1x1';
+			$media_request       = array( 'pid' );
+			$media_info          = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = 'og' );
+			$schema_disabled_msg = $this->p->msgs->maybe_schema_disabled();
+			$schema_disabled     = $schema_disabled_msg ? true : false;
+
+			$form_rows = array(
+				'subsection_schema' => array(
+					'tr_class' => $schema_disabled ? 'hide_in_basic' : '',
+					'td_class' => 'subsection top',
+					'header'   => 'h4',
+					'label'    => _x( 'Schema Markup and Google Rich Results', 'metabox title', 'wpsso' )
+				),
+				'schema_img_id' => array(
+					'tr_class' => $schema_disabled ? 'hide_in_basic' : '',
+					'th_class' => 'medium',
+					'label'    => _x( 'Image ID', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_img_id',
+					'content'  => $form->get_input_image_upload( 'schema_img', $media_info[ 'pid' ], $schema_disabled ),
+				),
+				'schema_img_url' => array(
+					'tr_class' => $schema_disabled ? 'hide_in_basic' : '',
+					'th_class' => 'medium',
+					'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_img_url',
+					'content'  => $form->get_input_image_url( 'schema_img', '', $schema_disabled ) . $schema_disabled_msg,
+				),
+			);
+
+			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
+		}
+
+		/**
+		 * Pinterest Pin It.
+		 */
+		public function filter_metabox_sso_edit_media_pinterest_rows( $table_rows, $form, $head_info, $mod ) {
+
+			if ( ! $mod[ 'is_public' ] ) {
+
+				return $table_rows;
+			}
+
+			$size_name            = 'wpsso-pinterest';
+			$media_request        = array( 'pid' );
+			$media_info           = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = array( 'schema', 'og' ) );
+			$pin_img_disabled_msg = $this->p->msgs->maybe_pin_img_disabled();
+			$pin_img_disabled     = $pin_img_disabled_msg ? true : false;
+
+			$form_rows = array(
+				'subsection_pinterest' => array(
+					'tr_class' => $pin_img_disabled ? 'hide_in_basic' : '',
+					'td_class' => 'subsection',
+					'header'   => 'h4',
+					'label'    => _x( 'Pinterest Pin It', 'metabox title', 'wpsso' ),
+				),
+				'pin_img_id' => array(
+					'tr_class' => $pin_img_disabled ? 'hide_in_basic' : '',
+					'th_class' => 'medium',
+					'label'    => _x( 'Image ID', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-pin_img_id',
+					'content'  => $form->get_input_image_upload( 'pin_img', $media_info[ 'pid' ], $pin_img_disabled ),
+				),
+				'pin_img_url' => array(
+					'tr_class' => $pin_img_disabled ? 'hide_in_basic' : '',
+					'th_class' => 'medium',
+					'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-pin_img_url',
+					'content'  => $form->get_input_image_url( 'pin_img', '', $pin_img_disabled ) . $pin_img_disabled_msg,
+				),
+			);
+
+			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
+		}
+
+		public function filter_metabox_sso_edit_visibility_rows( $table_rows, $form, $head_info, $mod ) {
+
+			$canonical_url_disabled     = empty( $this->p->options[ 'add_link_rel_canonical' ] ) ? true : false;
+			$canonical_url_disabled_msg = $canonical_url_disabled ? $this->p->msgs->seo_option_disabled( 'link rel canonical' ) : '';
+			$def_canonical_url          = $this->p->util->get_canonical_url( $mod, $add_page = false );
+
+			$form_rows = array(
+				'canonical_url' => $mod[ 'is_public' ] ? array(
+					'th_class' => 'medium',
+					'label'    => _x( 'Canonical URL', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-canonical_url',
+					'content'  => $form->get_input( 'canonical_url', $css_class = 'wide', $css_id = '',
+						$max_len = 0, $def_canonical_url, $canonical_url_disabled ) . ' ' . $canonical_url_disabled_msg,
+				) : '',
+			);
+
+			$table_rows = $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
+
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_visibility_robots_rows', $table_rows, $form, $head_info, $mod );
 
 			return $table_rows;
 		}
@@ -253,85 +459,95 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 		/**
 		 * See https://developers.google.com/search/reference/robots_meta_tag.
 		 */
-		public function filter_metabox_sso_edit_visibility_rows( $table_rows, $form, $head_info, $mod ) {
+		public function filter_metabox_sso_edit_visibility_robots_rows( $table_rows, $form, $head_info, $mod ) {
 
-			if ( $this->p->debug->enabled ) {
+			$robots_disabled     = $this->p->util->robots->is_disabled();
+			$robots_disabled_msg = $robots_disabled ? $this->p->msgs->seo_option_disabled( 'meta name robots' ) : '';
 
-				$this->p->debug->mark();
-			}
+			$form_rows = array(
+				'subsection_robots_meta' => array(
+					'td_class' => 'subsection',
+					'header'   => 'h4',
+					'label'    => _x( 'Robots Meta', 'metabox title', 'wpsso' ),
+				),
+				'robots_disabled' => array(
+					'th_class' => 'medium',
+					'content'  => $robots_disabled ? $robots_disabled_msg : '',
+				),
+				'robots_noarchive' => array(
+					'th_class' => 'medium',
+					'label'    => _x( 'No Archive', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-robots_noarchive',
+					'content'  => $form->get_checkbox( 'robots_noarchive', $css_class = '', $css_id = '', $robots_disabled ) . ' ' .
+						_x( 'do not show a cached link in search results', 'option comment', 'wpsso' ),
+				),
+				'robots_nofollow' => array(
+					'th_class' => 'medium',
+					'label'    => _x( 'No Follow', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-robots_nofollow',
+					'content'  => $form->get_checkbox( 'robots_nofollow', $css_class = '', $css_id = '', $robots_disabled ) . ' ' .
+						_x( 'do not follow links on this webpage', 'option comment', 'wpsso' ),
+				),
+				'robots_noimageindex' => array(
+					'th_class' => 'medium',
+					'label'    => _x( 'No Image Index', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-robots_noimageindex',
+					'content'  => $form->get_checkbox( 'robots_noimageindex', $css_class = '', $css_id = '', $robots_disabled ) . ' ' .
+						_x( 'do not index images on this webpage', 'option comment', 'wpsso' ),
+				),
+				'robots_noindex' => array(
+					'th_class' => 'medium',
+					'label'    => _x( 'No Index', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-robots_noindex',
+					'content'  => $form->get_checkbox( 'robots_noindex', $css_class = '', $css_id = '', $robots_disabled ) . ' ' .
+						_x( 'do not show this webpage in search results', 'option comment', 'wpsso' ),
+				),
+				'robots_nosnippet' => array(
+					'th_class' => 'medium',
+					'label'    => _x( 'No Snippet', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-robots_nosnippet',
+					'content'  => $form->get_checkbox( 'robots_nosnippet', $css_class = '', $css_id = '', $robots_disabled ) . ' ' .
+						_x( 'do not show a text snippet or a video preview in search results', 'option comment', 'wpsso' ),
+				),
+				'robots_notranslate' => array(
+					'th_class' => 'medium',
+					'label'    => _x( 'No Translate', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-robots_notranslate',
+					'content'  => $form->get_checkbox( 'robots_notranslate', $css_class = '', $css_id = '', $robots_disabled ) . ' ' .
+						_x( 'do not offer translation of this webpage in search results', 'option comment', 'wpsso' ),
+				),
+				'robots_max_snippet' => array(
+					'th_class' => 'medium',
+					'label'    => _x( 'Snippet Max. Length', 'option label', 'wpsso' ),
+					'tooltip'  => 'robots_max_snippet',	// Use the tooltip from plugin settings. 
+					'content'  => $form->get_input( 'robots_max_snippet', $css_class = 'chars', $css_id = '',
+						$len = 0, $holder = true, $robots_disabled ) . ' ' . _x( 'characters or less', 'option comment', 'wpsso' ) .
+							' (' . _x( '-1 for no limit', 'option comment', 'wpsso' ) . ')',
+				),
+				'robots_max_image_preview' => array(
+					'th_class' => 'medium',
+					'label'    => _x( 'Image Preview Size', 'option label', 'wpsso' ),
+					'tooltip'  => 'robots_max_image_preview',	// Use the tooltip from plugin settings.
+					'content'  => $form->get_select( 'robots_max_image_preview', $this->p->cf[ 'form' ][ 'robots_max_image_preview' ],
+						$css_class = '', $css_id = '', $is_assoc = true, $robots_disabled ),
+				),
+				'robots_max_video_preview' => array(
+					'th_class' => 'medium',
+					'label'    => _x( 'Video Max. Previews', 'option label', 'wpsso' ),
+					'tooltip'  => 'robots_max_video_preview',	// Use the tooltip from plugin settings.
+					'content'  => $form->get_input( 'robots_max_video_preview', $css_class = 'chars', $css_id = '',
+						$len = 0, $holder = true, $robots_disabled ) . _x( 'seconds', 'option comment', 'wpsso' ) .
+							' (' . _x( '-1 for no limit', 'option comment', 'wpsso' ) . ')',
+				),
+			);
 
-			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'info-meta-robots-meta' ) . '</td>';
-
-			if ( $this->p->util->robots->is_disabled() ) {
-
-				return $this->p->msgs->get_robots_disabled_rows( $table_rows );
-			}
-
-			$table_rows[ 'robots_noarchive' ] = '' .
-				$form->get_th_html( _x( 'No Archive', 'option label', 'wpsso' ),
-					$css_class = 'medium', $css_id = 'meta-robots_noarchive' ) . 
-				'<td>' . $form->get_checkbox( 'robots_noarchive' ) . ' ' .
-				_x( 'do not show a cached link in search results', 'option comment', 'wpsso' ) . '</td>';
-
-			$table_rows[ 'robots_nofollow' ] = '' .
-				$form->get_th_html( _x( 'No Follow', 'option label', 'wpsso' ),
-					$css_class = 'medium', $css_id = 'meta-robots_nofollow' ) . 
-				'<td>' . $form->get_checkbox( 'robots_nofollow' ) . ' ' .
-				_x( 'do not follow links on this webpage', 'option comment', 'wpsso' ) . '</td>';
-
-			$table_rows[ 'robots_noimageindex' ] = '' .
-				$form->get_th_html( _x( 'No Image Index', 'option label', 'wpsso' ),
-					$css_class = 'medium', $css_id = 'meta-robots_noimageindex' ) . 
-				'<td>' . $form->get_checkbox( 'robots_noimageindex' ) . ' ' .
-				_x( 'do not index images on this webpage', 'option comment', 'wpsso' ) . '</td>';
-
-			$table_rows[ 'robots_noindex' ] = '' .
-				$form->get_th_html( _x( 'No Index', 'option label', 'wpsso' ),
-					$css_class = 'medium', $css_id = 'meta-robots_noindex' ) . 
-				'<td>' . $form->get_checkbox( 'robots_noindex' ) . ' ' .
-				_x( 'do not show this webpage in search results', 'option comment', 'wpsso' ) . '</td>';
-
-			$table_rows[ 'robots_nosnippet' ] = '' .
-				$form->get_th_html( _x( 'No Snippet', 'option label', 'wpsso' ),
-					$css_class = 'medium', $css_id = 'meta-robots_nosnippet' ) . 
-				'<td>' . $form->get_checkbox( 'robots_nosnippet' ) . ' ' .
-				_x( 'do not show a text snippet or a video preview in search results', 'option comment', 'wpsso' ) . '</td>';
-
-			$table_rows[ 'robots_notranslate' ] = '' .
-				$form->get_th_html( _x( 'No Translate', 'option label', 'wpsso' ),
-					$css_class = 'medium', $css_id = 'meta-robots_notranslate' ) . 
-				'<td>' . $form->get_checkbox( 'robots_notranslate' ) . ' ' .
-				_x( 'do not offer translation of this webpage in search results', 'option comment', 'wpsso' ) . '</td>';
-
-			$table_rows[ 'robots_max_snippet' ] = '' .
-				$form->get_th_html( _x( 'Snippet Max. Length', 'option label', 'wpsso' ),
-					$css_class = 'medium', $css_id = 'robots_max_snippet' ) .	// Use the tooltip from plugin settings. 
-				'<td>' . $form->get_input( 'robots_max_snippet', $css_class = 'chars', $css_id = '', $len = 0, $holder = true ) . ' ' .
-				_x( 'characters or less', 'option comment', 'wpsso' ) . ' (' . _x( '-1 for no limit', 'option comment', 'wpsso' ) . ')</td>';
-
-			$table_rows[ 'robots_max_image_preview' ] = '' .
-				$form->get_th_html( _x( 'Image Preview Size', 'option label', 'wpsso' ),
-					$css_class = 'medium', $css_id = 'robots_max_image_preview' ) .	// Use the tooltip from plugin settings.
-				'<td>' . $form->get_select( 'robots_max_image_preview', $this->p->cf[ 'form' ][ 'robots_max_image_preview' ] ) . '</td>';
-
-			$table_rows[ 'robots_max_video_preview' ] = '' .
-				$form->get_th_html( _x( 'Video Max. Previews', 'option label', 'wpsso' ),
-					$css_class = 'medium', $css_id = 'robots_max_video_preview' ) .	// Use the tooltip from plugin settings.
-				'<td>' . $form->get_input( 'robots_max_video_preview', $css_class = 'chars', $css_id = '', $len = 0, $holder = true ) .
-				_x( 'seconds', 'option comment', 'wpsso' ) . ' (' . _x( '-1 for no limit', 'option comment', 'wpsso' ) . ')</td>';
-
-			return $table_rows;
+			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
 		}
 
 		/**
 		 * Preview Social tab content.
 		 */
 		public function filter_metabox_sso_prev_social_rows( $table_rows, $form, $head_info, $mod ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
 
 			$og_prev_width    = 600;
 			$og_prev_height   = 315;
@@ -394,18 +610,18 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 				$og_prev_img_html .= '</div>';
 			}
 
-			$table_rows[] = '' . 
+			$table_rows[ 'prev_canonical_url' ] = '' . 
 				$form->get_th_html( _x( 'Canonical URL', 'option label', 'wpsso' ), $css_class = 'medium nowrap' ) . 
 				'<td>' . $form->get_no_input_clipboard( $canonical_url ) . '</td>';
 
-			$table_rows[] = '' .
+			$table_rows[ 'prev_shortlink_url' ] = '' .
 				$form->get_th_html( _x( 'Shortlink URL', 'option label', 'wpsso' ), $css_class = 'medium nowrap' ) . 
 				'<td>' . $form->get_no_input_clipboard( $shortlink_url ) . '</td>';
 
-			$table_rows[ 'subsection_og_example' ] = '<td colspan="2" class="subsection"><h4>' . 
+			$table_rows[ 'subsection_prev_og' ] = '<td colspan="2" class="subsection"><h4>' . 
 				_x( 'Facebook / Open Graph Example', 'option label', 'wpsso' ) . '</h4></td>';
 
-			$table_rows[] = '' .
+			$table_rows[ 'prev_og' ] = '' .
 				'<td colspan="2" class="fb_preview_container">
 					<div class="fb_preview_box_border">
 						<div class="fb_preview_box">
@@ -428,7 +644,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					</div><!-- .fb_preview_box_border -->
 				</td><!-- .fb_preview_container -->';
 
-			$table_rows[] = '<td colspan="2">' . $this->p->msgs->get( 'info-meta-social-preview' ) . '</td>';
+			$table_rows[ 'prev_og_footer' ] = '<td colspan="2">' . $this->p->msgs->get( 'info-meta-social-preview' ) . '</td>';
 
 			return $table_rows;
 		}
@@ -437,11 +653,6 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 		 * Preview oEmbed tab content.
 		 */
 		public function filter_metabox_sso_prev_oembed_rows( $table_rows, $form, $head_info, $mod ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
 
 			$json_url     = $this->p->util->get_oembed_url( $mod, 'json' );
 			$xml_url      = $this->p->util->get_oembed_url( $mod, 'xml' );
@@ -473,11 +684,6 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 		}
 
 		public function filter_metabox_sso_validators_rows( $table_rows, $form, $head_info, $mod ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
 
 			$validators = $this->p->util->get_validators( $mod, $form );
 

@@ -111,13 +111,13 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 
 					$text .= '<p>';
 
-					$text .= sprintf( __( 'You can edit images in the <a href="%s">WordPress Media Library</a> to select a preferred cropping area (ie. top or bottom), along with optimizing the image social and SEO texts.', 'wpsso' ), $upload_page_url ) . ' ';
+					$text .= sprintf( __( 'You can edit images in the <a href="%s">WordPress Media Library</a> to select a preferred image cropping area (ie. top or bottom), along with optimizing the image social and SEO texts.', 'wpsso' ), $upload_page_url ) . ' ';
 
 					$text .= '</p><p>';
 
 					$text .= __( 'Note that the Schema CreativeWork type (and its sub-types) has a \'video\' property for VideoObject markup, but other Schema types (like Event, Job Posting, Place, Product, and Brand) do not have a \'video\' property.', 'wpsso' ). ' ';
 
-					$text .= __( 'In these cases, assuming the video(s) are about the content subject, they will be added to a \'subjectOf\' property instead.', 'wpsso' ). ' ';
+					$text .= __( 'In these cases - assuming the video(s) are about the content subject - they will be added to a \'subjectOf\' property instead.', 'wpsso' ). ' ';
 
 					$text .= '</p>' . "\n";
 

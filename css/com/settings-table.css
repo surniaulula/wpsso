@@ -26,6 +26,26 @@ table.sucom-settings {
 	box-sizing:border-box;
 }
 
+table.sucom-settings input[type="text"],
+table.sucom-settings input[type="password"],
+table.sucom-settings input[type="date"],
+table.sucom-settings input[type="datetime"],
+table.sucom-settings input[type="datetime-local"],
+table.sucom-settings input[type="email"],
+table.sucom-settings input[type="month"],
+table.sucom-settings input[type="number"],
+table.sucom-settings input[type="search"],
+table.sucom-settings input[type="tel"],
+table.sucom-settings input[type="time"],
+table.sucom-settings input[type="url"],
+table.sucom-settings input[type="week"] {
+	padding:0 10px;
+}
+
+table.sucom-settings textarea {
+	padding:5px 10px;
+}
+
 table.sucom-settings input.disabled,
 table.sucom-settings input:focus.disabled,
 table.sucom-settings input:disabled,
@@ -327,16 +347,20 @@ table.sucom-settings td p.pro-feature-msg {
 	text-align:center;
 }
 
+table.sucom-settings td p.status-msg {
+	margin:0;
+}
+
+table.sucom-settings td p.status-msg.smaller {
+	font-size:0.85em;
+}
+
 table.sucom-settings td p.pro-feature-msg a {
 	color:#999;
 }
 
 table.sucom-settings td p.pro-feature-msg strong {
 	color:#666;
-}
-
-table.sucom-settings td p.status-msg.smaller {
-	font-size:0.85em;
 }
 
 table.sucom-settings td p.centered {
@@ -1070,7 +1094,6 @@ div.sucom-tabset_sso-tab_prev_oembed table.sucom-settings tr td.wide {
 table.sucom-settings .oembed_container {
 	border:1px dotted #e0e0e0;
 	background-color:#e9eaed;
-	min-height:520px;
 	padding:20px;
 }
 
@@ -1081,7 +1104,6 @@ table.sucom-settings .oembed_container > blockquote {
 table.sucom-settings .oembed_container > iframe {
 	display:block;
 	min-width:600px;
-	min-height:650px;
 	margin:0 auto;
 }
 

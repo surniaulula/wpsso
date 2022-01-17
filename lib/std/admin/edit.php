@@ -26,21 +26,18 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			}
 
 			$this->p->util->add_plugin_filters( $this, array(
-				'metabox_sso_edit_media_rows'           => 4,
-				'metabox_sso_edit_media_twitter_rows'   => 4,
-				'metabox_sso_edit_media_pinterest_rows' => 4,
+				'metabox_sso_edit_media_prio_video_rows' => 4,
 			) );
 
 			if ( ! empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
 
 				$this->p->util->add_plugin_filters( $this, array( 
-					'metabox_sso_edit_general_schema_rows' => 4,
-					'metabox_sso_edit_media_schema_rows'   => 4,
+					'metabox_sso_edit_schema_rows' => 4,
 				) );
 			}
 		}
 
-		public function filter_metabox_sso_edit_general_schema_rows( $table_rows, $form, $head_info, $mod ) {
+		public function filter_metabox_sso_edit_schema_rows( $table_rows, $form, $head_info, $mod ) {
 
 			/**
 			 * Provides compatibility for the WPSSO JSON Premium add-on.
@@ -100,7 +97,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			 */
 			$form_rows = array(
 				'subsection_schema' => array(
-					'td_class' => 'subsection',
+					'td_class' => 'subsection top',
 					'header'   => 'h4',
 					'label'    => _x( 'Schema Markup and Google Rich Results', 'metabox title', 'wpsso' )
 				),
@@ -347,7 +344,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Audiobook Duration', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_book_audio_duration_time',
-					'content'  => $this->get_input_time_dhms( $form ),
+					'content'  => $form->get_no_input_time_dhms(),
 				),
 
 				/**
@@ -367,7 +364,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Preparation Time', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_howto_prep_time',
-					'content'  => $this->get_input_time_dhms( $form ),
+					'content'  => $form->get_no_input_time_dhms(),
 				),
 				'schema_howto_total_time' => array(
 					'tr_class' => $schema_type_row_class[ 'how_to' ],
@@ -375,7 +372,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Total Time', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_howto_total_time',
-					'content'  => $this->get_input_time_dhms( $form ),
+					'content'  => $form->get_no_input_time_dhms(),
 				),
 				'schema_howto_supplies' => array(
 					'tr_class' => $schema_type_row_class[ 'how_to' ],
@@ -467,7 +464,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Preparation Time', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_prep_time',
-					'content'  => $this->get_input_time_dhms( $form ),
+					'content'  => $form->get_no_input_time_dhms(),
 				),
 				'schema_recipe_cook_time' => array(
 					'tr_class' => $schema_type_row_class[ 'recipe' ],
@@ -475,7 +472,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Cooking Time', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_cook_time',
-					'content'  => $this->get_input_time_dhms( $form ),
+					'content'  => $form->get_no_input_time_dhms(),
 				),
 				'schema_recipe_total_time' => array(
 					'tr_class' => $schema_type_row_class[ 'recipe' ],
@@ -483,7 +480,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Total Time', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_recipe_total_time',
-					'content'  => $this->get_input_time_dhms( $form ),
+					'content'  => $form->get_no_input_time_dhms(),
 				),
 				'schema_recipe_ingredients' => array(
 					'tr_class' => $schema_type_row_class[ 'recipe' ],
@@ -677,7 +674,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Movie Runtime', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_movie_duration_time',
-					'content'  => $this->get_input_time_dhms( $form ),
+					'content'  => $form->get_no_input_time_dhms(),
 				),
 
 				/**
@@ -1366,46 +1363,9 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
 		}
 
-		public function filter_metabox_sso_edit_media_rows( $table_rows, $form, $head_info, $mod ) {
-
-			/**
-			 * Default priority media.
-			 */
-			$size_name     = 'wpsso-opengraph';
-			$media_request = array( 'pid' );
-			$media_info    = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = 'none' );
+		public function filter_metabox_sso_edit_media_prio_video_rows( $table_rows, $form, $head_info, $mod ) {
 
 			$form_rows = array(
-				'info_priority_media' => array(
-					'table_row' => '<td colspan="2">' . $this->p->msgs->get( 'info-meta-priority-media' ) . '</td>',
-				),
-				'subsection_opengraph' => array(
-					'td_class' => 'subsection top',
-					'header'   => 'h4',
-					'label'    => _x( 'Document Priority Media', 'metabox title', 'wpsso' ),
-				),
-				'pro_feature_msg_opengraph' => array(
-					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
-				),
-				'subsection_priority_image' => array(
-					'td_class' => 'subsection top',
-					'header'   => 'h5',
-					'label'    => _x( 'Priority Image Information', 'metabox title', 'wpsso' )
-				),
-				'og_img_id' => array(
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'Image ID', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-og_img_id',
-					'content'  => $form->get_no_input_image_upload( 'og_img', $media_info[ 'pid' ] ),
-				),
-				'og_img_url' => array(
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-og_img_url',
-					'content'  => $form->get_no_input_value( '', $css_class = 'wide' ),
-				),
 				'subsection_priority_video' => array(
 					'td_class' => 'subsection',
 					'header'   => 'h5',
@@ -1463,194 +1423,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				),
 			);
 
-			$table_rows = $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
-
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_media_twitter_rows', $table_rows, $form, $head_info, $mod );
-
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_media_schema_rows', $table_rows, $form, $head_info, $mod );
-
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_media_pinterest_rows', $table_rows, $form, $head_info, $mod );
-
-			return $table_rows;
-		}
-
-		/**
-		 * Twitter Card
-		 *
-		 * App and Player cards do not have a $size_name.
-		 *
-		 * Only show custom image options for the Summary and Summary Large Image cards. 
-		 */
-		public function filter_metabox_sso_edit_media_twitter_rows( $table_rows, $form, $head_info, $mod ) {
-
-			if ( ! $mod[ 'is_public' ] ) {
-
-				return $table_rows;
-			}
-
-			list( $card_type, $card_label, $size_name, $tc_prefix ) = $this->p->tc->get_card_info( $mod, $head_info );
-
-			if ( ! empty( $card_label ) ) {
-
-				$form_rows[ 'subsection_tc' ] = array(
-					'td_class' => 'subsection',
-					'header'   => 'h4',
-					'label'    => $card_label,
-				);
-
-				if ( empty( $size_name ) ) {
-
-					$form_rows[ 'subsection_tc_msg' ] = array(
-						'table_row' => '<td colspan="2"><p class="status-msg">' .
-							sprintf( __( 'No priority media options for the %s.', 'wpsso' ),
-								$card_label ) . '</p></td>',
-					);
-
-				} else {
-
-					$media_request = array( 'pid' );
-					$media_info    = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = 'og' );
-
-					$form_rows[ 'pro_feature_msg_tc' ] = array(
-						'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
-					);
-
-					$form_rows[ $tc_prefix . '_img_id' ] = array(
-						'th_class' => 'medium',
-						'td_class' => 'blank',
-						'label'    => _x( 'Image ID', 'option label', 'wpsso' ),
-						'tooltip'  => 'meta-' . $tc_prefix . '_img_id',
-						'content'  => $form->get_no_input_image_upload( $tc_prefix . '_img', $media_info[ 'pid' ] ),
-					);
-
-					$form_rows[ $tc_prefix . '_img_url' ] = array(
-						'th_class' => 'medium',
-						'td_class' => 'blank',
-						'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
-						'tooltip'  => 'meta-' . $tc_prefix . '_img_url',
-						'content'  => $form->get_no_input_value( '', $css_class = 'wide' ),
-					);
-				}
-			}
-
-			$table_rows = $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
-
-			return $table_rows;
-		}
-
-		public function filter_metabox_sso_edit_media_schema_rows( $table_rows, $form, $head_info, $mod ) {
-
-			if ( ! $mod[ 'is_public' ] ) {
-
-				return $table_rows;
-			}
-
-			/**
-			 * Provides compatibility for the WPSSO JSON Premium add-on.
-			 */
-			if ( ! empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
-
-				if ( $this->p->check->pp( 'wpssojson' ) ) {	// Nothing to do.
-
-					return $table_rows;
-				}
-			}
-
-			$size_name     = 'wpsso-schema-1x1';
-			$media_request = array( 'pid' );
-			$media_info    = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = 'og' );
-
-			$form_rows = array(
-				'subsection_schema' => array(
-					'td_class' => 'subsection',
-					'header'   => 'h4',
-					'label'    => _x( 'Schema Markup and Google Rich Results', 'metabox title', 'wpsso' )
-				),
-				'pro_feature_msg_schema' => array(
-					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
-				),
-				'schema_img_id' => array(
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'Image ID', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-schema_img_id',
-					'content'  => $form->get_no_input_image_upload( 'schema_img', $media_info[ 'pid' ] ),
-				),
-				'schema_img_url' => array(
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-schema_img_url',
-					'content'  => $form->get_no_input_value( $value = '', $css_class = 'wide' ),
-				),
-			);
-
 			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
-		}
-
-		/**
-		 * Pinterest Pin It.
-		 */
-		public function filter_metabox_sso_edit_media_pinterest_rows( $table_rows, $form, $head_info, $mod ) {
-
-			if ( ! $mod[ 'is_public' ] ) {
-
-				return $table_rows;
-			}
-
-			$size_name        = 'wpsso-pinterest';
-			$media_request = array( 'pid' );
-			$media_info       = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = array( 'schema', 'og' ) );
-			$pin_img_disabled = empty( $this->p->options[ 'pin_add_img_html' ] ) ? true : false;
-			$pin_img_msg      = $pin_img_disabled ? $this->p->msgs->pin_img_disabled() : '';
-
-			$form_rows = array(
-				'subsection_pinterest' => array(
-					'td_class' => 'subsection',
-					'header'   => 'h4',
-					'label'    => _x( 'Pinterest Pin It', 'metabox title', 'wpsso' ),
-				),
-				'pro_feature_msg_pinterest' => array(
-					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
-				),
-				'pin_img_id' => array(
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'Image ID', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-pin_img_id',
-					'content'  => $form->get_no_input_image_upload( 'pin_img', $media_info[ 'pid' ] ),
-				),
-				'pin_img_url' => array(
-					'th_class' => 'medium',
-					'td_class' => 'blank',
-					'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-pin_img_url',
-					'content'  => $form->get_no_input_value( '', $css_class = 'wide' ) . ' ' . $pin_img_msg,
-				),
-			);
-
-			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
-		}
-
-		private function get_input_time_dhms( $form ) {
-
-			static $days_sep  = null;
-			static $hours_sep = null;
-			static $mins_sep  = null;
-			static $secs_sep  = null;
-
-			if ( null === $days_sep ) {	// Translate only once.
-
-				$days_sep  = ' ' . _x( 'days', 'option comment', 'wpsso' ) . ', ';
-				$hours_sep = ' ' . _x( 'hours', 'option comment', 'wpsso' ) . ', ';
-				$mins_sep  = ' ' . _x( 'mins', 'option comment', 'wpsso' ) . ', ';
-				$secs_sep  = ' ' . _x( 'secs', 'option comment', 'wpsso' );
-			}
-
-			return $form->get_no_input_value( $value = '0', 'xshort' ) . $days_sep . 
-				$form->get_no_input_value( $value = '0', 'xshort' ) . $hours_sep . 
-				$form->get_no_input_value( $value = '0', 'xshort' ) . $mins_sep . 
-				$form->get_no_input_value( $value = '0', 'xshort' ) . $secs_sep;
 		}
 	}
 }
