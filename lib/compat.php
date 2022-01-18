@@ -107,9 +107,9 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			/**
 			 * Rank Math.
 			 */
-			if ( ! empty( $this->p->avail[ 'seo' ][ 'rank-math' ] ) ) {
+			if ( ! empty( $this->p->avail[ 'seo' ][ 'rankmath' ] ) ) {
 
-				$this->p->util->add_plugin_filters( $this, array( 'admin_page_style_css_rank_math' => array( 'admin_page_style_css' => 1 ) ) );
+				$this->p->util->add_plugin_filters( $this, array( 'admin_page_style_css_rankmath' => array( 'admin_page_style_css' => 1 ) ) );
 			}
 
 			/**
@@ -164,11 +164,11 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			/**
 			 * Rank Math.
 			 */
-			if ( ! empty( $this->p->avail[ 'seo' ][ 'rank-math' ] ) ) {
+			if ( ! empty( $this->p->avail[ 'seo' ][ 'rankmath' ] ) ) {
 
-				add_action( 'rank_math/head', array( $this, 'cleanup_rank_math_actions' ), -2000 );
+				add_action( 'rank_math/head', array( $this, 'cleanup_rankmath_actions' ), -2000 );
 
-				add_filter( 'rank_math/json_ld', array( $this, 'cleanup_rank_math_json_ld' ), PHP_INT_MAX );
+				add_filter( 'rank_math/json_ld', array( $this, 'cleanup_rankmath_json_ld' ), PHP_INT_MAX );
 			}
 
 			/**
@@ -398,7 +398,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 		/**
 		 * Disable Rank Math Facebook and Twitter meta tags.
 		 */
-		public function cleanup_rank_math_actions() {
+		public function cleanup_rankmath_actions() {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -416,7 +416,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 		/**
 		 * Disable Rank Math Schema markup.
 		 */
-		public function cleanup_rank_math_json_ld( $data ) {
+		public function cleanup_rankmath_json_ld( $data ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -531,7 +531,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 		/**
 		 * Fix Rank Math CSS on back-end pages.
 		 */
-		public function filter_admin_page_style_css_rank_math( $custom_style_css ) {
+		public function filter_admin_page_style_css_rankmath( $custom_style_css ) {
 
 			if ( $this->p->debug->enabled ) {
 

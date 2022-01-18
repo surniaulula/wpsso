@@ -1739,14 +1739,16 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				$input_rows = $len[ 'rows' ];
 
-			} elseif ( ! empty( $len[ 'max' ] ) ) {
-
-				$input_rows = round( $len[ 'max' ] / 100 ) + 1;
 			}
-
+			
 			if ( ! is_array( $len ) ) {
 
 				$len = array( 'max' => $len );
+			}
+
+			if ( ! empty( $len[ 'max' ] ) ) {
+
+				$input_rows = round( $len[ 'max' ] / 100 ) + 1;
 			}
 
 			$html = '<textarea ';

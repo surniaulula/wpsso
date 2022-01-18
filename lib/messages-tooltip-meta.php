@@ -74,6 +74,14 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 
 				 	break;
 
+				case 'tooltip-meta-seo_desc':		// Meta Description.
+
+					$text = __( 'A customized description for the SEO description meta tag.', 'wpsso' );
+
+					$text .= $this->maybe_html_tag_disabled_text( $parts = array( 'meta', 'name', 'description' ) );
+
+				 	break;
+
 				case 'tooltip-meta-pin_img_desc':	// Pinterest Description.
 
 					$text = __( 'A customized description for the Pinterest Pin It browser button.', 'wpsso' );
@@ -89,22 +97,6 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 				case 'tooltip-meta-tc_desc':		// Twitter Card Description.
 
 					$text = __( 'A customized description for the Twitter Card description meta tag (all Twitter Card formats).', 'wpsso' );
-
-				 	break;
-
-				case 'tooltip-meta-seo_desc':		// Search Description.
-
-					$text = __( 'A customized description for the SEO description meta tag.', 'wpsso' );
-
-					$text .= $this->maybe_html_tag_disabled_text( $parts = array( 'meta', 'name', 'description' ) );
-
-				 	break;
-
-				case 'tooltip-meta-canonical_url':	// Canonical URL.
-
-					$text = __( 'A customized URL for meta tags and Schema markup.', 'wpsso' ) . ' ';
-
-					$text .= __( 'Please make sure the custom URL you enter here is functional and redirects correctly.', 'wpsso' );
 
 				 	break;
 
@@ -200,6 +192,17 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 					$text = __( 'A customized image URL (instead of an image ID) for the Twitter Card image.', 'wpsso' ) . ' ';
 
 					$text .= '<em>' . __( 'This option is disabled if a custom image ID is selected.', 'wpsso' ) . '</em>';
+
+				 	break;
+
+				/**
+				 * Document SSO > Edit Visibility tab.
+				 */
+				case 'tooltip-meta-canonical_url':	// Canonical URL.
+
+					$text = __( 'A customized URL for meta tags and Schema markup.', 'wpsso' ) . ' ';
+
+					$text .= __( 'Please make sure the custom URL you enter here is functional and redirects correctly.', 'wpsso' );
 
 				 	break;
 

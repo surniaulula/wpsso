@@ -678,7 +678,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 								 *
 								 * See https://wordpress.org/plugins/seo-by-rank-math/.
 								 */
-								case 'rank-math':
+								case 'rankmath':
 
 									$chk[ 'class' ] = 'RankMath';
 
@@ -856,6 +856,15 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 								case 'jetpack':
 
 									$chk[ 'class' ] = 'Jetpack';
+
+									break;
+
+								/**
+								 * Premium edition feature / option.
+								 */
+								case 'rankmath-meta':	// Import Rank Math SEO Metadata.
+
+									$chk[ 'opt_key' ] = 'plugin_import_rankmath_meta';
 
 									break;
 

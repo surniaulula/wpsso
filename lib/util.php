@@ -1195,11 +1195,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					case 'place_names_custom':
 
-						$this->get_form_cache( 'place_names', false );	// Sets $local_cache[ 'place_names' ].
-
-						$local_cache[ $filter_key ] = array(
-							'custom' => $this->p->cf[ 'form' ][ 'place_select' ][ 'custom' ]
-						) + $local_cache[ 'place_names' ];
+						$local_cache[ $filter_key ] = apply_filters( $filter_name, $local_cache[ $filter_key ] );
 
 						break;
 

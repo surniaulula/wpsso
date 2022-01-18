@@ -154,6 +154,14 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					'content'  => $form->get_textarea( 'og_desc', $css_class = '', $css_id = '',
 						array( 'max' => $og_desc_max_len, 'warn' => $og_desc_warn_len ), $def_og_desc ),
 				) : '',
+				'seo_desc' => $mod[ 'is_public' ] ? array(
+					'tr_class' => $seo_desc_disabled ? 'hide_in_basic' : '',
+					'th_class' => 'medium',
+					'label'    => _x( 'Meta Description', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-seo_desc',
+					'content'  => $form->get_textarea( 'seo_desc', $css_class = '', $css_id = '',
+						$seo_desc_max_len, $def_seo_desc, $seo_desc_disabled ) . ' ' . $seo_desc_disabled_msg,
+				) : '',
 				'pin_img_desc' => $mod[ 'is_public' ] ? array(
 					'tr_class' => $pin_img_disabled ? 'hide_in_basic' : '',
 					'th_class' => 'medium',
@@ -176,14 +184,6 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					'tooltip'  => 'meta-tc_desc',
 					'content'  => $form->get_textarea( 'tc_desc', $css_class = '', $css_id = '',
 						$tc_desc_max_len, $def_tc_desc ),
-				) : '',
-				'seo_desc' => $mod[ 'is_public' ] ? array(
-					'tr_class' => $seo_desc_disabled ? 'hide_in_basic' : '',
-					'th_class' => 'medium',
-					'label'    => _x( 'Search Description', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-seo_desc',
-					'content'  => $form->get_textarea( 'seo_desc', $css_class = '', $css_id = '',
-						$seo_desc_max_len, $def_seo_desc, $seo_desc_disabled ) . ' ' . $seo_desc_disabled_msg,
 				) : '',
 				/**
 				 * Open Graph Article type.

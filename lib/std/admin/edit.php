@@ -119,7 +119,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				'schema_title' => array(
 					'th_class' => 'medium',
 					'td_class' => 'blank',
-					'label'    => _x( 'Name / Title', 'option label', 'wpsso' ),
+					'label'    => _x( 'Schema Name / Title', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_title',
 					'content'  => $form->get_no_input_value( $def_schema_title, $css_class = 'wide' ),
 				),
@@ -133,7 +133,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				'schema_desc' => array(
 					'th_class' => 'medium',
 					'td_class' => 'blank',
-					'label'    => _x( 'Description', 'option label', 'wpsso' ),
+					'label'    => _x( 'Schema Description', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_desc',
 					'content'  => $form->get_no_textarea_value( $def_schema_desc, $css_class = '', $css_id = '', $schema_desc_max_len ),
 				),
@@ -155,11 +155,17 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				/**
 				 * Schema Creative Work.
 				 */
+				'subsection_schema_creative_work' => array(
+					'tr_class' => $schema_type_row_class[ 'creative_work' ],
+					'td_class' => 'subsection',
+					'header'   => 'h5',
+					'label'    => _x( 'Schema Creative Work Information', 'metabox title', 'wpsso' )
+				),
 				'schema_ispartof_url' => array(
 					'tr_class' => $schema_type_row_class[ 'creative_work' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
-					'label'    => _x( 'Is Part of URL', 'option label', 'wpsso' ),
+					'label'    => _x( 'Is Part of URLs', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_ispartof_url',
 					'content'  => $form->get_no_input_value( $value = '', $css_class = 'wide', $css_id = '', '', $repeat = 2 ),
 				),
@@ -261,6 +267,12 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				/**
 				 * Schema Creative Work > Book.
 				 */
+				'subsection_schema_book' => array(
+					'tr_class' => $schema_type_row_class[ 'book' ],
+					'td_class' => 'subsection',
+					'header'   => 'h5',
+					'label'    => _x( 'Schema Book Information', 'metabox title', 'wpsso' )
+				),
 				'schema_book_author_type' => array(
 					'tr_class' => $schema_type_row_class[ 'book' ],
 					'th_class' => 'medium',
@@ -338,6 +350,12 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				/**
 				 * Schema Creative Work > Book > Audiobook.
 				 */
+				'subsection_schema_audiobook' => array(
+					'tr_class' => $schema_type_row_class[ 'book_audio' ],
+					'td_class' => 'subsection',
+					'header'   => 'h5',
+					'label'    => _x( 'Schema Audiobook Information', 'metabox title', 'wpsso' )
+				),
 				'schema_book_audio_duration_time' => array(
 					'tr_class' => $schema_type_row_class[ 'book_audio' ],
 					'th_class' => 'medium',
@@ -350,6 +368,12 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				/**
 				 * Schema Creative Work > How-To.
 				 */
+				'subsection_schema_howto' => array(
+					'tr_class' => $schema_type_row_class[ 'how_to' ],
+					'td_class' => 'subsection',
+					'header'   => 'h5',
+					'label'    => _x( 'Schema How-To Information', 'metabox title', 'wpsso' )
+				),
 				'schema_howto_yield' => array(
 					'tr_class' => $schema_type_row_class[ 'how_to' ],
 					'th_class' => 'medium',
@@ -426,6 +450,12 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				/**
 				 * Schema Creative Work > How-To > Recipe.
 				 */
+				'subsection_schema_recipe' => array(
+					'tr_class' => $schema_type_row_class[ 'recipe' ],
+					'td_class' => 'subsection',
+					'header'   => 'h5',
+					'label'    => _x( 'Schema Recipe Information', 'metabox title', 'wpsso' )
+				),
 				'schema_recipe_cuisine' => array(
 					'tr_class' => $schema_type_row_class[ 'recipe' ],
 					'th_class' => 'medium',
@@ -524,13 +554,13 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				),
 
 				/**
-				 * Schema Creative Work > How-To > Recipe - Nutrition Information.
+				 * Schema Creative Work > How-To > Recipe Nutrition Information.
 				 */
 				'subsection_schema_recipe_nutrition' => array(
 					'tr_class' => $schema_type_row_class[ 'recipe' ],
 					'td_class' => 'subsection',
 					'header'   => 'h5',
-					'label'    => _x( 'Nutrition Information per Serving', 'metabox title', 'wpsso' ),
+					'label'    => _x( 'Schema Recipe Nutrition Information', 'metabox title', 'wpsso' )
 				),
 				'schema_recipe_nutri_serv' => array(
 					'tr_class' => $schema_type_row_class[ 'recipe' ],
@@ -643,6 +673,12 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				/**
 				 * Schema Creative Work > Movie.
 				 */
+				'subsection_schema_movie' => array(
+					'tr_class' => $schema_type_row_class[ 'movie' ],
+					'td_class' => 'subsection',
+					'header'   => 'h5',
+					'label'    => _x( 'Schema Movie Information', 'metabox title', 'wpsso' )
+				),
 				'schema_movie_actor_person_names' => array(
 					'tr_class' => $schema_type_row_class[ 'movie' ],
 					'th_class' => 'medium',
@@ -682,6 +718,12 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				 *
 				 * Note that the rating is a schema.org/Rating, not schema.org/aggregateRating.
 				 */
+				'subsection_schema_review' => array(
+					'tr_class' => $schema_type_row_class[ 'review' ],
+					'td_class' => 'subsection',
+					'header'   => 'h5',
+					'label'    => _x( 'Schema Review Information', 'metabox title', 'wpsso' )
+				),
 				'schema_review_rating' => array(
 					'tr_class' => $schema_type_row_class[ 'review' ],
 					'th_class' => 'medium',
@@ -710,7 +752,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tr_class' => $schema_type_row_class[ 'review' ],
 					'td_class' => 'subsection',
 					'header'   => 'h4',
-					'label'    => _x( 'Subject of the Review', 'metabox title', 'wpsso' ),
+					'label'    => _x( 'Schema Review Subject Information', 'metabox title', 'wpsso' )
 				),
 				'schema_review_item_name' => array(
 					'tr_class' => $schema_type_row_class[ 'review' ],
@@ -824,6 +866,12 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				/**
 				 * Schema Creative Work > Review > Claim Review.
 				 */
+				'subsection_schema_claim_review' => array(
+					'tr_class' => $schema_type_row_class[ 'review_claim' ],
+					'td_class' => 'subsection',
+					'header'   => 'h5',
+					'label'    => _x( 'Schema Claim Review Information', 'metabox title', 'wpsso' )
+				),
 				'schema_review_claim_reviewed' => array(
 					'tr_class' => $schema_type_row_class[ 'review_claim' ],
 					'th_class' => 'medium',
@@ -844,6 +892,12 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				/**
 				 * Schema Creative Work > Software Application.
 				 */
+				'subsection_schema_software_app' => array(
+					'tr_class' => $schema_type_row_class[ 'software_app' ],
+					'td_class' => 'subsection',
+					'header'   => 'h5',
+					'label'    => _x( 'Schema Software App Information', 'metabox title', 'wpsso' )
+				),
 				'schema_software_app_os' => array(
 					'tr_class' => $schema_type_row_class[ 'software_app' ],
 					'th_class' => 'medium',
@@ -864,6 +918,12 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				/**
 				 * Schema Creative Work > Web Page > QA Page.
 				 */
+				'subsection_schema_qa' => array(
+					'tr_class' => $schema_type_row_class[ 'qa' ],
+					'td_class' => 'subsection',
+					'header'   => 'h5',
+					'label'    => _x( 'Schema QA Information', 'metabox title', 'wpsso' )
+				),
 				'schema_qa_desc' => array(
 					'tr_class' => $schema_type_row_class[ 'qa' ],
 					'th_class' => 'medium',
@@ -876,6 +936,12 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				/**
 				 * Schema Event.
 				 */
+				'subsection_schema_event' => array(
+					'tr_class' => $schema_type_row_class[ 'event' ],
+					'td_class' => 'subsection',
+					'header'   => 'h5',
+					'label'    => _x( 'Schema Event Information', 'metabox title', 'wpsso' )
+				),
 				'schema_event_lang' => array(
 					'tr_class' => $schema_type_row_class[ 'event' ],
 					'th_class' => 'medium',
@@ -1032,6 +1098,12 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				/**
 				 * Schema Intangible > Job Posting.
 				 */
+				'subsection_schema_job_posting' => array(
+					'tr_class' => $schema_type_row_class[ 'job_posting' ],
+					'td_class' => 'subsection',
+					'header'   => 'h5',
+					'label'    => _x( 'Schema Job Posting Information', 'metabox title', 'wpsso' )
+				),
 				'schema_job_title' => array(
 					'tr_class' => $schema_type_row_class[ 'job_posting' ],
 					'th_class' => 'medium',
@@ -1098,6 +1170,12 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				/**
 				 * Schema Organization.
 				 */
+				'subsection_schema_organization' => array(
+					'tr_class' => $schema_type_row_class[ 'organization' ],
+					'td_class' => 'subsection',
+					'header'   => 'h5',
+					'label'    => _x( 'Schema Organization Information', 'metabox title', 'wpsso' )
+				),
 				'schema_organization_id' => array(
 					'tr_class' => $schema_type_row_class[ 'organization' ],
 					'th_class' => 'medium',
@@ -1111,6 +1189,12 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				/**
 				 * Schema Person.
 				 */
+				'subsection_schema_person' => array(
+					'tr_class' => $schema_type_row_class[ 'person' ],
+					'td_class' => 'subsection',
+					'header'   => 'h5',
+					'label'    => _x( 'Schema Person Information', 'metabox title', 'wpsso' )
+				),
 				'schema_person_id' => array(
 					'tr_class' => $schema_type_row_class[ 'person' ],
 					'th_class' => 'medium',
@@ -1124,6 +1208,12 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				/**
 				 * Schema Place.
 				 */
+				'subsection_schema_place' => array(
+					'tr_class' => $schema_type_row_class[ 'place' ],
+					'td_class' => 'subsection',
+					'header'   => 'h5',
+					'label'    => _x( 'Schema Place Information', 'metabox title', 'wpsso' )
+				),
 				'schema_place_id' => array(
 					'tr_class' => $schema_type_row_class[ 'place' ],
 					'th_class' => 'medium',
@@ -1144,7 +1234,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tr_class' => $schema_type_row_class[ 'product' ],
 					'td_class' => 'subsection',
 					'header'   => 'h5',
-					'label'    => _x( 'Main Product Information', 'metabox title', 'wpsso' )
+					'label'    => _x( 'Schema Product Information', 'metabox title', 'wpsso' )
 				),
 				'schema_product_category' => array(
 					'tr_class' => $schema_type_row_class[ 'product' ],

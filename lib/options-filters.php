@@ -120,11 +120,11 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					/**
 					 * Text strings that can be blank (line breaks are removed).
 					 */
-					case 'schema_title':				// Name / Title.
+					case 'schema_title':				// Schema Name / Title.
 					case 'schema_title_alt':			// Alternate Name.
 					case 'schema_bc_title':				// Breadcrumb Name.
 					case 'schema_book_author_name':			// Book Author Name.
-					case 'schema_desc':				// Description.
+					case 'schema_desc':				// Schema Description.
 					case 'schema_headline':				// Headline.
 					case 'schema_text':				// Full Text.
 					case 'schema_copyright_year':			// Copyright Year.
@@ -226,7 +226,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					 */
 					case 'schema_addl_type_url':			// Microdata Type URLs.
 					case 'schema_book_author_url':			// Book Author URL.
-					case 'schema_ispartof_url':			// Is Part of URL.
+					case 'schema_ispartof_url':			// Is Part of URLs.
 					case 'schema_license_url':			// License URL.
 					case 'schema_event_online_url':			// Event Online URL.
 					case 'schema_review_item_url':			// Review: Subject Webpage URL.

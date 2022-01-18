@@ -277,9 +277,21 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
+				case 'tooltip-plugin_import_rankmath_meta':	// Import Rank Math SEO Metadata.
+
+					if ( empty( $plugin_name_transl ) ) {
+
+						$plugin_name_transl = __( 'Rank Math SEO', 'wpsso' );
+					}
+
+					// No break.
+
 				case 'tooltip-plugin_import_seoframework_meta':	// Import The SEO Framework Metadata.
-						
-					$plugin_name_transl = __( 'The SEO Framework', 'wpsso' );
+
+					if ( empty( $plugin_name_transl ) ) {
+
+						$plugin_name_transl = __( 'The SEO Framework', 'wpsso' );
+					}
 
 					// No break.
 

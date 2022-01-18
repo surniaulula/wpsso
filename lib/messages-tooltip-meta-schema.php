@@ -31,7 +31,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 				/**
 				 * Document SSO > Customize tab.
 				 */
-				case 'tooltip-meta-schema_title':	// Name / Title.
+				case 'tooltip-meta-schema_title':	// Schema Name / Title.
 
 					$text = __( 'A customized name / title for the Schema "name" property.', 'wpsso' );
 
@@ -49,7 +49,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 				 	break;
 
-				case 'tooltip-meta-schema_desc':	// Description.
+				case 'tooltip-meta-schema_desc':	// Schema Description.
 
 					$text = __( 'A customized description for the Schema "description" property.', 'wpsso' );
 
@@ -71,7 +71,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 				 	break;
 
-				case 'tooltip-meta-schema_ispartof_url':	// Is Part of URL.
+				case 'tooltip-meta-schema_ispartof_url':	// Is Part of URLs.
 
 					$text = __( 'URL(s) to other Schema CreativeWork(s) that this content is a part of.', 'wpsso' );
 

@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.14.0-dev.7',	// Plugin version.
+					'version'     => '9.14.0-b.1',	// Plugin version.
 					'opt_version' => '855',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -189,7 +189,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							),
 							'seo' => array(
 								'aioseop'      => '(plugin) All in One SEO Pack',
-								'rank-math'    => '(plugin) Rank Math SEO',
+								'rankmath'     => '(plugin) Rank Math SEO',
 								'seoframework' => '(plugin) The SEO Framework',
 								'seopress'     => '(plugin) SEOPress',
 								'wpmetaseo'    => '(plugin) WP Meta SEO',
@@ -202,6 +202,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'check-img-dims'    => '(feature) Image Dimension Checks',
 								'coauthors'         => '(plugin) Co-Authors Plus',
 								'elementor'         => '(plugin) Elementor Website Builder',
+								'rankmath-meta'     => '(feature) Import Rank Math SEO Metadata',
 								'seoframework-meta' => '(feature) Import The SEO Framework Metadata',
 								'shorten'           => '(feature) URL Shortening Service',
 								'wpseo-meta'        => '(feature) Import Yoast SEO Metadata',
@@ -1757,6 +1758,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'plugin_check_head'               => 1,	// Check for Duplicate Meta Tags.
 					'plugin_product_include_vat'      => 0,	// Include VAT in Product Prices.
+					'plugin_import_rankmath_meta'     => 0,	// Import Rank Math SEO Metadata.
 					'plugin_import_seoframework_meta' => 0,	// Import The SEO Framework Metadata.
 					'plugin_import_wpseo_meta'        => 0,	// Import Yoast SEO Metadata.
 
@@ -2068,7 +2070,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			 * Update manager config.
 			 */
 			'um' => array(
-				'rec_version' => '4.11.0-dev.7',	// Minimum update manager version (soft limit).
+				'rec_version' => '4.11.0-b.1',	// Minimum update manager version (soft limit).
 				'check_hours' => array(
 					24  => 'Every day',
 					48  => 'Every two days',
@@ -2533,11 +2535,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'none' => '[None]',
 					'new'  => '[New Organization]',
 					'site' => '[WebSite Organization]',
-				),
-				'place_select' => array(
-					'none'   => '[None]',
-					'custom' => '[Custom Place]',
-					'new'    => '[New Place]',
 				),
 				'og_schema_types_select_format' => array(
 					'id'      => 'ID',

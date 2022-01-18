@@ -66,6 +66,11 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 			$features[ '(feature) Image Dimension Checks' ][ 'status' ] = $this->p->options[ 'plugin_check_img_dims' ] ? $status_on : 'recommended';
 
 			/**
+			 * pro/util/rankmath-meta.php.
+			 */
+			$features[ '(feature) Import Rank Math SEO Metadata' ][ 'label_url' ] = $integ_tab_url;
+
+			/**
 			 * pro/util/seoframework-meta.php.
 			 */
 			$features[ '(feature) Import The SEO Framework Metadata' ][ 'label_url' ] = $integ_tab_url;

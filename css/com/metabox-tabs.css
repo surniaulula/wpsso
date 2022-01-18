@@ -205,16 +205,8 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	width:1.1em;
 }
 
-.sucom-tablink-icon.sucom-tablink-href_appmeta::before {		/* SSO > Mobile Apps tab. */
-	content:"\e82f";	/* .icon-mobile */
-}
-
 .sucom-tablink-icon.sucom-tablink-href_body_section::before {		/* SSO > Strip Microdata > Strip Schema Microdata > Body Section tab. */
 	content:"\e815";	/* .icon-download-bar */
-}
-
-.sucom-tablink-icon.sucom-tablink-href_buttons::before {		/* Share Buttons tab. */
-	content:"\e807";	/* .icon-export */
 }
 
 .sucom-tablink-icon.sucom-tablink-href_cache::before {			/* SSO > Advanced Settings > Advanced Settings > Caching tab. */
@@ -247,6 +239,14 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 
 .sucom-tablink-icon.sucom-tablink-href_edit_media::before {		/* Document SSO > Edit Media tab. */
 	content:"\e808";	/* .icon-picture */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_edit_appmeta::before {		/* Document SSO > Edit Mobile Apps tab. */
+	content:"\e82f";	/* .icon-mobile */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_edit_share::before {		/* Document SSO > Edit Share Buttons tab. */
+	content:"\e807";	/* .icon-export */
 }
 
 .sucom-tablink-icon.sucom-tablink-href_edit_visibility::before {	/* Document SSO > Edit Visibility tab. */

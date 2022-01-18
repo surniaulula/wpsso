@@ -125,6 +125,24 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$this->cache_defaults[ 'fb_author_field' ] = $this->p->options[ 'plugin_cm_fb_name' ];
 
 				/**
+				 * Maybe import Rank Math SEO metadata.
+				 *
+				 * Enabled by default if the Rank Math SEO plugin is active, or if no SEO plugin is active and the
+				 * Rank Math SEO settings are found in the database.
+				 */
+				if ( ! empty( $this->p->avail[ 'seo' ][ 'rankmath' ] ) ) {	// Rank Math SEO is active.
+
+					$this->cache_defaults[ 'plugin_import_rankmath_meta' ] = 1;
+
+				} elseif ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {	// No other SEO plugin is active.
+
+					if ( get_option( 'rank-math-options-general' ) ) {	// Rank Math SEO was once active.
+
+						$this->cache_defaults[ 'plugin_import_rankmath_meta' ] = 1;
+					}
+				}
+
+				/**
 				 * Maybe import The SEO Framework metadata.
 				 *
 				 * Enabled by default if The SEO Framework plugin is active, or if no SEO plugin is active and The
@@ -427,8 +445,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				if ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {	// An SEO plugin is not active.
 
 					if ( empty( $opts[ 'plugin_wpsso_tid' ] ) ||
+						! empty( $opts[ 'plugin_import_rankmath_meta' ] ) ||
 						! empty( $opts[ 'plugin_import_seoframework_meta' ] ) ||
-							! empty( $opts[ 'plugin_import_wpseo_meta' ] ) ) {
+						! empty( $opts[ 'plugin_import_wpseo_meta' ] ) ) {
 
 						$seo_opts = array(
 							'add_link_rel_canonical'    => 1,
@@ -444,6 +463,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						'add_meta_name_description' => 0,
 						'add_meta_name_robots'      => 0,
 					);
+
+					/**
+					 * An SEO plugin is active, but it's not Rank Math SEO.
+					 */
+					if ( empty( $this->p->avail[ 'seo' ][ 'rankmath' ] ) ) {
+
+						$seo_opts[ 'plugin_import_rankmath_meta' ] = 0;
+					}
 
 					/**
 					 * An SEO plugin is active, but it's not The SEO Framework.

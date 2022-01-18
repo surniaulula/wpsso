@@ -327,10 +327,10 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'primary_term_id' => $def_primary_term_id,	// Primary Category.
 					'og_title'        => '',			// Default Title.
 					'og_desc'         => '',			// Default Description.
+					'seo_desc'        => '',			// Meta Description.
 					'pin_img_desc'    => '',			// Pinterest Description.
 					'tc_title'        => '',			// Twitter Card Title.
 					'tc_desc'         => '',			// Twitter Card Description.
-					'seo_desc'        => '',			// Search Description.
 					'canonical_url'   => '',			// Canonical URL.
 					'og_img_max'      => isset( $opts[ 'og_img_max' ] ) ? (int) $opts[ 'og_img_max' ] : 1,	// 1 by default.
 					'og_vid_max'      => isset( $opts[ 'og_vid_max' ] ) ? (int) $opts[ 'og_vid_max' ] : 1,	// 1 by default.
@@ -419,15 +419,15 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					 * All Schema Types.
 					 */
 					'schema_type'      => $def_schema_type,	// Schema Type.
-					'schema_title'     => '',		// Name / Title.
+					'schema_title'     => '',		// Schema Name / Title.
 					'schema_title_alt' => '',		// Alternate Name.
 					'schema_bc_title'  => '',		// Breadcrumb Name.
-					'schema_desc'      => '',		// Description.
+					'schema_desc'      => '',		// Schema Description.
 
 					/**
 					 * Schema Creative Work.
 					 */
-					'schema_ispartof_url'    => '',						// Is Part of URL.
+					'schema_ispartof_url'    => '',						// Is Part of URLs.
 					'schema_headline'        => '',						// Headline.
 					'schema_text'            => '',						// Full Text.
 					'schema_keywords'        => '',						// Keywords.
