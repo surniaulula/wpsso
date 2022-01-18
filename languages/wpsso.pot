@@ -244,10 +244,9 @@ msgid ""
 "options based on the content type selected (ie. Schema type or Open Graph "
 "type), allowing you to customize the details of articles, events, e-Commerce "
 "products, recipes, reviews, and more. The \"Preview Social\" tab shows how "
-"this webpage might look when shared on Facebook, the \"Markup Preview\" tab "
-"shows a complete list of meta tags and Schema markup created by the WPSSO "
-"Core plugin, and the \"Markup Validators\" tab allows you to submit the "
-"current webpage URL to several test and validation tools (mentioned above)."
+"this webpage might look when shared on Facebook and the \"Markup Validators"
+"\" tab allows you to submit the current webpage URL to several test and "
+"validation tools (mentioned above)."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:33
@@ -3974,7 +3973,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:266 lib/pro/admin/edit.php:1016
 #: lib/std/admin/edit.php:925
 msgctxt "metabox title"
-msgid "Schema QA Information"
+msgid "Schema QA Page Information"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:267 lib/pro/admin/edit.php:1021
@@ -6540,8 +6539,8 @@ msgstr ""
 #: lib/messages-info-meta.php:114
 msgid ""
 "You can edit images in the <a href=\"%s\">WordPress Media Library</a> to "
-"select a preferred image cropping area (ie. top or bottom), along with "
-"optimizing the image social and SEO texts."
+"select a preferred image cropping area (ie. top or bottom) and optimize the "
+"image SEO information."
 msgstr ""
 
 #: lib/messages-info-meta.php:118
@@ -8353,7 +8352,8 @@ msgstr ""
 #: lib/messages-tooltip-plugin.php:326
 msgid ""
 "If this option is checked and %1$s is active, then only social metadata will "
-"be imported, and if not active, then all available metadata will be imported."
+"be imported, and if %1$s is not active, then all available metadata will be "
+"imported."
 msgstr ""
 
 #: lib/messages-tooltip-plugin.php:337

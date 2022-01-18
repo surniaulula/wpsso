@@ -263,7 +263,7 @@ _x( 'First Appearance URL', 'option label', 'wpsso' );
 _x( 'Schema Software App Information', 'metabox title', 'wpsso' );
 _x( 'Operating System', 'option label', 'wpsso' );
 _x( 'Application Category', 'option label', 'wpsso' );
-_x( 'Schema QA Information', 'metabox title', 'wpsso' );
+_x( 'Schema QA Page Information', 'metabox title', 'wpsso' );
 _x( 'QA Heading', 'option label', 'wpsso' );
 _x( 'Schema Event Information', 'metabox title', 'wpsso' );
 _x( 'Event Language', 'option label', 'wpsso' );

@@ -922,7 +922,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tr_class' => $schema_type_row_class[ 'qa' ],
 					'td_class' => 'subsection',
 					'header'   => 'h5',
-					'label'    => _x( 'Schema QA Information', 'metabox title', 'wpsso' )
+					'label'    => _x( 'Schema QA Page Information', 'metabox title', 'wpsso' )
 				),
 				'schema_qa_desc' => array(
 					'tr_class' => $schema_type_row_class[ 'qa' ],

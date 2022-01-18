@@ -111,7 +111,7 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 
 					$text .= '<p>';
 
-					$text .= sprintf( __( 'You can edit images in the <a href="%s">WordPress Media Library</a> to select a preferred image cropping area (ie. top or bottom), along with optimizing the image social and SEO texts.', 'wpsso' ), $upload_page_url ) . ' ';
+					$text .= sprintf( __( 'You can edit images in the <a href="%s">WordPress Media Library</a> to select a preferred image cropping area (ie. top or bottom) and optimize the image SEO information.', 'wpsso' ), $upload_page_url ) . ' ';
 
 					$text .= '</p><p>';
 
