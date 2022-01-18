@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 9.14.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2022-01-18 12:44-0800\n"
+"PO-Revision-Date: 2022-01-18 12:46-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -893,7 +893,7 @@ msgstr "(plugin) BuddyPress"
 #: gettext/gettext-lib-config.php:91
 msgctxt "lib file description"
 msgid "(feature) Import All in One SEO Pack Metadata"
-msgstr "(feature) Importer métadonnées All in One SEO Pack"
+msgstr "(feature) Importer métadonnées de All in One SEO Pack"
 
 #: gettext/gettext-lib-config.php:92
 msgctxt "lib file description"
@@ -913,12 +913,12 @@ msgstr "(plugin) Elementor Website Builder"
 #: gettext/gettext-lib-config.php:95
 msgctxt "lib file description"
 msgid "(feature) Import Rank Math SEO Metadata"
-msgstr "(feature) Importer métadonnées Rank Math SEO"
+msgstr "(feature) Importer métadonnées de Rank Math SEO"
 
 #: gettext/gettext-lib-config.php:96
 msgctxt "lib file description"
 msgid "(feature) Import The SEO Framework Metadata"
-msgstr "(feature) Importer métadonnées The SEO Framework"
+msgstr "(feature) Importer métadonnées de The SEO Framework"
 
 #: gettext/gettext-lib-config.php:97
 msgctxt "lib file description"
@@ -928,7 +928,7 @@ msgstr "(feature) Service de raccourcissement d'URL"
 #: gettext/gettext-lib-config.php:98
 msgctxt "lib file description"
 msgid "(feature) Import Yoast SEO Metadata"
-msgstr "(feature) Importer métadonnées Yoast SEO"
+msgstr "(feature) Importer métadonnées de Yoast SEO"
 
 #: gettext/gettext-lib-config.php:99
 msgctxt "lib file description"
@@ -2550,25 +2550,25 @@ msgstr "Inclure TVA dans les prix de produits"
 #: lib/std/admin/advanced.php:196
 msgctxt "option label"
 msgid "Import All in One SEO Pack Metadata"
-msgstr "Importer métadonnées All in One SEO Pack"
+msgstr "Importer métadonnées de All in One SEO Pack"
 
 #: gettext/gettext-lib-pro.php:31 lib/pro/admin/advanced.php:211
 #: lib/std/admin/advanced.php:202
 msgctxt "option label"
 msgid "Import Rank Math SEO Metadata"
-msgstr "Importer métadonnées Rank Math SEO"
+msgstr "Importer métadonnées de Rank Math SEO"
 
 #: gettext/gettext-lib-pro.php:32 lib/pro/admin/advanced.php:217
 #: lib/std/admin/advanced.php:208
 msgctxt "option label"
 msgid "Import The SEO Framework Metadata"
-msgstr "Importer métadonnées The SEO Framework"
+msgstr "Importer métadonnées de The SEO Framework"
 
 #: gettext/gettext-lib-pro.php:33 lib/pro/admin/advanced.php:223
 #: lib/std/admin/advanced.php:214
 msgctxt "option label"
 msgid "Import Yoast SEO Metadata"
-msgstr "Importer métadonnées Yoast SEO"
+msgstr "Importer métadonnées de Yoast SEO"
 
 #: gettext/gettext-lib-pro.php:34 lib/opengraph.php:57
 #: lib/pro/admin/advanced.php:245 lib/std/admin/advanced.php:238
