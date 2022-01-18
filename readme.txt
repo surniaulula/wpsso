@@ -243,10 +243,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.14.0-dev.7 (2022/01/17)**
+**Version 9.14.0-b.1 (2022/01/18)**
 
 * **New Features**
-	* Added a new "Import The SEO Framework Metadata" option under the SSO &gt; Advanced Settings &gt; Integration tab.
+	* Added new options under the SSO &gt; Advanced Settings &gt; Integration tab:
+		* "Import Rank Math SEO Metadata"
+		* "Import The SEO Framework Metadata"
 * **Improvements**
 	* Removed the Document SSO &gt; Head Markup tab.
 	* Renamed all other Document SSO metabox tabs (including their labels, keys, and filters).
@@ -256,7 +258,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fixed incorrect addition of sameAs URLs for post ID 0.
 * **Developer Notes**
 	* Added a new `WpssoProUtilAbstractSeoMeta` abstract class.
-	* Added a new `WpssoProUtilSeoFrameworkMeta` class to import The SEO Framework metadata.
+	* Added a new `WpssoProUtilRankmathMeta` class to import Rank Math SEO metadata.
+	* Added a new `WpssoProUtilSeoframeworkMeta` class to import The SEO Framework metadata.
 	* Refactored the `WpssoProUtilWpseoMeta` class to import Yoast SEO metadata.
 	* Renamed lib/abstracts/ folder to lib/abstract/.
 	* Renamed the `SucomAddOn` class to `SucomAbstractAddOn`.
@@ -760,9 +763,9 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 9.14.0-dev.7 =
+= 9.14.0-b.1 =
 
-(2022/01/17) Added a new "Import SEO Framework Metadata" option. Fixed incorrect addition of sameAs URLs for post ID 0. Renamed lib/abstracts/ folder and its classes.
+(2022/01/18) Added new "Import Rank Math SEO Metadata" and "Import SEO Framework Metadata" options. Fixed incorrect addition of sameAs URLs for post ID 0. Renamed lib/abstracts/ folder and its classes.
 
 = 9.13.1 =
 
