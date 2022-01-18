@@ -809,6 +809,15 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							switch ( $id ) {
 
 								/**
+								 * Import All in One SEO Pack Metadata.
+								 */
+								case 'aioseop-meta':
+
+									$chk[ 'opt_key' ] = 'plugin_import_aioseop_meta';
+
+									break;
+
+								/**
 								 * Autoptimize.
 								 *
 								 * See https://wordpress.org/plugins/autoptimize/.
@@ -820,9 +829,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 									break;
 
 								/**
-								 * Premium edition feature / option.
+								 * Image Dimension Checks.
 								 */
-								case 'check-img-dims':	// Image Dimension Checks.
+								case 'check-img-dims':
 
 									$chk[ 'opt_key' ] = 'plugin_check_img_dims';
 
@@ -860,36 +869,36 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 									break;
 
 								/**
-								 * Premium edition feature / option.
+								 * Import Rank Math SEO Metadata.
 								 */
-								case 'rankmath-meta':	// Import Rank Math SEO Metadata.
+								case 'rankmath-meta':
 
 									$chk[ 'opt_key' ] = 'plugin_import_rankmath_meta';
 
 									break;
 
 								/**
-								 * Premium edition feature / option.
+								 * Import The SEO Framework Metadata.
 								 */
-								case 'seoframework-meta':	// Import The SEO Framework Metadata.
+								case 'seoframework-meta':
 
 									$chk[ 'opt_key' ] = 'plugin_import_seoframework_meta';
 
 									break;
 
 								/**
-								 * Premium edition feature / option.
+								 * URL Shortening Service.
 								 */
-								case 'shorten':	// URL Shortening Service.
+								case 'shorten':
 
 									$chk[ 'opt_key' ] = 'plugin_shortener';
 
 									break;
 
 								/**
-								 * Premium edition feature / option.
+								 * Import Yoast SEO Metadata.
 								 */
-								case 'wpseo-meta':	// Import Yoast SEO Metadata.
+								case 'wpseo-meta':
 
 									$chk[ 'opt_key' ] = 'plugin_import_wpseo_meta';
 

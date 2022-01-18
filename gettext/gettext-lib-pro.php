@@ -27,6 +27,7 @@ _x( 'No Description Text', 'option label', 'wpsso' );
 _x( 'Plugin and Theme Integration', 'metabox title', 'wpsso' );
 _x( 'Check for Duplicate Meta Tags', 'option label', 'wpsso' );
 _x( 'Include VAT in Product Prices', 'option label', 'wpsso' );
+_x( 'Import All in One SEO Pack Metadata', 'option label', 'wpsso' );
 _x( 'Import Rank Math SEO Metadata', 'option label', 'wpsso' );
 _x( 'Import The SEO Framework Metadata', 'option label', 'wpsso' );
 _x( 'Import Yoast SEO Metadata', 'option label', 'wpsso' );

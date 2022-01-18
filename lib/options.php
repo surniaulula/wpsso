@@ -129,6 +129,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				if ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {	// No SEO plugin is active.
 
+					if ( get_option( 'aioseo_options' ) ) {	// All in One SEO Pack was once active.
+
+						$this->cache_defaults[ 'plugin_import_aioseop_meta' ] = 1;
+					}
+
 					if ( get_option( 'rank-math-options-general' ) ) {	// Rank Math SEO was once active.
 
 						$this->cache_defaults[ 'plugin_import_rankmath_meta' ] = 1;
@@ -412,6 +417,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				if ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {	// An SEO plugin is not active.
 
 					if ( empty( $opts[ 'plugin_wpsso_tid' ] ) ||
+						! empty( $opts[ 'plugin_import_aioseop_meta' ] ) ||
 						! empty( $opts[ 'plugin_import_rankmath_meta' ] ) ||
 						! empty( $opts[ 'plugin_import_seoframework_meta' ] ) ||
 						! empty( $opts[ 'plugin_import_wpseo_meta' ] ) ) {
@@ -430,6 +436,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						'add_meta_name_description' => 0,
 						'add_meta_name_robots'      => 0,
 					);
+
+					/**
+					 * An SEO plugin is active, but it's not All in One SEO Pack.
+					 */
+					if ( empty( $this->p->avail[ 'seo' ][ 'aioseop' ] ) ) {
+
+						$seo_opts[ 'plugin_import_aioseop_meta' ] = 0;
+					}
 
 					/**
 					 * An SEO plugin is active, but it's not Rank Math SEO.

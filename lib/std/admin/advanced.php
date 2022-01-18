@@ -192,6 +192,12 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$form->get_no_td_checkbox( 'plugin_product_include_vat' ) .
 				WpssoAdmin::get_option_site_use( 'plugin_product_include_vat', $form, $network );
 
+			$table_rows[ 'plugin_import_aioseop_meta' ] = '' .
+				$form->get_th_html( _x( 'Import All in One SEO Pack Metadata', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_import_aioseop_meta' ) . 
+				$form->get_no_td_checkbox( 'plugin_import_aioseop_meta' ) .
+				WpssoAdmin::get_option_site_use( 'plugin_import_aioseop_meta', $form, $network );
+
 			$table_rows[ 'plugin_import_rankmath_meta' ] = '' .
 				$form->get_th_html( _x( 'Import Rank Math SEO Metadata', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_import_rankmath_meta' ) . 

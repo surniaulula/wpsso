@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.14.0-b.1',	// Plugin version.
+					'version'     => '9.14.0-b.2',	// Plugin version.
 					'opt_version' => '855',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -199,6 +199,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'buddypress' => '(plugin) BuddyPress',
 							),
 							'util' => array(
+								'aioseop-meta'      => '(feature) Import All in One SEO Pack Metadata',
 								'check-img-dims'    => '(feature) Image Dimension Checks',
 								'coauthors'         => '(plugin) Co-Authors Plus',
 								'elementor'         => '(plugin) Elementor Website Builder',
@@ -1758,6 +1759,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 */
 					'plugin_check_head'               => 1,	// Check for Duplicate Meta Tags.
 					'plugin_product_include_vat'      => 0,	// Include VAT in Product Prices.
+					'plugin_import_aioseop_meta'      => 0,	// Import All in One SEO Pack Metadata.
 					'plugin_import_rankmath_meta'     => 0,	// Import Rank Math SEO Metadata.
 					'plugin_import_seoframework_meta' => 0,	// Import The SEO Framework Metadata.
 					'plugin_import_wpseo_meta'        => 0,	// Import Yoast SEO Metadata.

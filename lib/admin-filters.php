@@ -59,6 +59,8 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 			$integ_tab_url = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration' );
 
 			/**
+			 * Image Dimension Checks.
+			 *
 			 * pro/util/check-img-dims.php.
 			 */
 			$features[ '(feature) Image Dimension Checks' ][ 'label_url' ] = $integ_tab_url;
@@ -66,26 +68,43 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 			$features[ '(feature) Image Dimension Checks' ][ 'status' ] = $this->p->options[ 'plugin_check_img_dims' ] ? $status_on : 'recommended';
 
 			/**
+			 * Import All in One SEO Pack Metadata.
+			 *
+			 * pro/util/aioseop-meta.php.
+			 */
+			$features[ '(feature) Import All in One SEO Pack Metadata' ][ 'label_url' ] = $integ_tab_url;
+
+			/**
+			 * Import Rank Math SEO Metadata.
+			 *
 			 * pro/util/rankmath-meta.php.
 			 */
 			$features[ '(feature) Import Rank Math SEO Metadata' ][ 'label_url' ] = $integ_tab_url;
 
 			/**
+			 * Import The SEO Framework Metadata.
+			 *
 			 * pro/util/seoframework-meta.php.
 			 */
 			$features[ '(feature) Import The SEO Framework Metadata' ][ 'label_url' ] = $integ_tab_url;
 
 			/**
+			 * Import Yoast SEO Metadata.
+			 *
 			 * pro/util/wpseo-meta.php.
 			 */
 			$features[ '(feature) Import Yoast SEO Metadata' ][ 'label_url' ] = $integ_tab_url;
 
 			/**
+			 * URL Shortening Service.
+			 *
 			 * pro/util/shorten.php.
 			 */
 			$features[ '(feature) URL Shortening Service' ][ 'label_url' ] = $apis_tab_url;
 
 			/**
+			 * Upscale Media Library Images.
+			 *
 			 * pro/media/upscale.php.
 			 */
 			$features[ '(feature) Upscale Media Library Images' ][ 'label_url' ] = $integ_tab_url;
