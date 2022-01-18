@@ -125,52 +125,19 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$this->cache_defaults[ 'fb_author_field' ] = $this->p->options[ 'plugin_cm_fb_name' ];
 
 				/**
-				 * Maybe import Rank Math SEO metadata.
-				 *
-				 * Enabled by default if the Rank Math SEO plugin is active, or if no SEO plugin is active and the
-				 * Rank Math SEO settings are found in the database.
+				 * Maybe import metadata from SEO plugins.
 				 */
-				if ( ! empty( $this->p->avail[ 'seo' ][ 'rankmath' ] ) ) {	// Rank Math SEO is active.
-
-					$this->cache_defaults[ 'plugin_import_rankmath_meta' ] = 1;
-
-				} elseif ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {	// No other SEO plugin is active.
+				if ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {	// No SEO plugin is active.
 
 					if ( get_option( 'rank-math-options-general' ) ) {	// Rank Math SEO was once active.
 
 						$this->cache_defaults[ 'plugin_import_rankmath_meta' ] = 1;
 					}
-				}
-
-				/**
-				 * Maybe import The SEO Framework metadata.
-				 *
-				 * Enabled by default if The SEO Framework plugin is active, or if no SEO plugin is active and The
-				 * SEO Framework settings are found in the database.
-				 */
-				if ( ! empty( $this->p->avail[ 'seo' ][ 'seoframework' ] ) ) {	// The SEO Framework is active.
-
-					$this->cache_defaults[ 'plugin_import_seoframework_meta' ] = 1;
-
-				} elseif ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {	// No other SEO plugin is active.
 
 					if ( get_option( 'autodescription-site-settings' ) ) {	// The SEO Framework was once active.
 
 						$this->cache_defaults[ 'plugin_import_seoframework_meta' ] = 1;
 					}
-				}
-
-				/**
-				 * Maybe import Yoast SEO metadata.
-				 *
-				 * Enabled by default if the Yoast SEO plugin is active, or if no SEO plugin is active and Yoast
-				 * SEO settings are found in the database.
-				 */
-				if ( ! empty( $this->p->avail[ 'seo' ][ 'wpseo' ] ) ) {	// Yoast SEO is active.
-
-					$this->cache_defaults[ 'plugin_import_wpseo_meta' ] = 1;
-
-				} elseif ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {	// No other SEO plugin is active.
 
 					if ( get_option( 'wpseo' ) ) {	// Yoast SEO was once active.
 
