@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 9.14.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2022-01-18 12:46-0800\n"
+"PO-Revision-Date: 2022-01-18 15:04-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -3215,7 +3215,7 @@ msgstr "Date de création du livre"
 #: lib/std/admin/edit.php:320
 msgctxt "option label"
 msgid "Book Edition"
-msgstr "Edition du livre"
+msgstr "Édition du livre"
 
 #: gettext/gettext-lib-pro.php:165 lib/pro/admin/edit.php:320
 #: lib/std/admin/edit.php:328
