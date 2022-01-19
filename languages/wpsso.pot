@@ -4801,17 +4801,17 @@ msgstr ""
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1875 lib/json-filters/type/claimreview.php:69
+#: lib/abstract/wp-meta.php:1881 lib/json-filters/type/claimreview.php:69
 msgid "A claim review cannot be the subject of another claim review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1877
+#: lib/abstract/wp-meta.php:1883
 msgid ""
 "Please select a subject webpage type that better describes the subject of "
 "the webpage (ie. the content) being reviewed."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2633
+#: lib/abstract/wp-meta.php:2639
 msgid "adding schema images"
 msgstr ""
 

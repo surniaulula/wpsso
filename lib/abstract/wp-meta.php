@@ -1607,6 +1607,12 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 					unset( $md_opts[ $md_pre . '_img_url' ] );
 				}
+				
+				if ( empty( $md_opts[ $md_pre . '_img_url' ] ) ) {	// Just in case.
+
+					unset( $md_opts[ $md_pre . '_img_url:width' ] );
+					unset( $md_opts[ $md_pre . '_img_url:height' ] );
+				}
 			}
 
 			/**
