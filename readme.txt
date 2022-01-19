@@ -251,8 +251,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* "Import Rank Math SEO Metadata"
 		* "Import The SEO Framework Metadata"
 * **Improvements**
-	* Removed the Document SSO &gt; Head Markup tab.
-	* Renamed all other Document SSO metabox tabs (including their labels, keys, and filters).
+	* Removed the Document SSO &gt; Head Markup tab and renamed all other Document SSO metabox tabs (including their labels, keys, and filters).
 	* Renamed the "Import Yoast SEO Social Meta" option to "Import Yoast SEO Metadata".
 	* Removed the "Show Yoast SEO Import Details" option.
 * **Bugfixes**
