@@ -243,7 +243,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.14.0-rc.1 (2022/01/19)**
+**Version 9.14.0 (2022/01/19)**
 
 * **New Features**
 	* Added new options under the SSO &gt; Advanced Settings &gt; Integration tab:
@@ -765,7 +765,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 9.14.0-rc.1 =
+= 9.14.0 =
 
 (2022/01/19) Added new "Import Rank Math SEO Metadata" and "Import SEO Framework Metadata" options. Fixed incorrect addition of sameAs URLs for post ID 0. Renamed lib/abstracts/ folder and its classes.
 
