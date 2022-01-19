@@ -410,11 +410,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			if ( ! $network ) {
 
 				/**
-				 * Adjust SEO plugin related options.
+				 * Adjust SEO related options.
 				 */
 				$seo_opts = array();
 
-				if ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {	// An SEO plugin is not active.
+				if ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {	// No SEO plugin is active.
 
 					if ( empty( $opts[ 'plugin_wpsso_tid' ] ) ||
 						! empty( $opts[ 'plugin_import_aioseop_meta' ] ) ||
@@ -438,35 +438,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					);
 
 					/**
-					 * An SEO plugin is active, but it's not All in One SEO Pack.
+					 * Disable the import of SEO metadata for non-active SEO plugins.
 					 */
-					if ( empty( $this->p->avail[ 'seo' ][ 'aioseop' ] ) ) {
+					foreach ( array( 'aioseop', 'rankmath', 'seoframework', 'wpseo' ) as $seo_key ) {
 
-						$seo_opts[ 'plugin_import_aioseop_meta' ] = 0;
-					}
+						if ( empty( $this->p->avail[ 'seo' ][ $seo_key ] ) ) {	// The SEO plugin is not active.
 
-					/**
-					 * An SEO plugin is active, but it's not Rank Math SEO.
-					 */
-					if ( empty( $this->p->avail[ 'seo' ][ 'rankmath' ] ) ) {
-
-						$seo_opts[ 'plugin_import_rankmath_meta' ] = 0;
-					}
-
-					/**
-					 * An SEO plugin is active, but it's not The SEO Framework.
-					 */
-					if ( empty( $this->p->avail[ 'seo' ][ 'seoframework' ] ) ) {
-
-						$seo_opts[ 'plugin_import_seoframework_meta' ] = 0;
-					}
-
-					/**
-					 * An SEO plugin is active, but it's not Yoast SEO.
-					 */
-					if ( empty( $this->p->avail[ 'seo' ][ 'wpseo' ] ) ) {
-
-						$seo_opts[ 'plugin_import_wpseo_meta' ] = 0;
+							$seo_opts[ 'plugin_import_' . $seo_key . '_meta' ] = 0;
+						}
 					}
 				}
 
