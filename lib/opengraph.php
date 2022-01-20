@@ -411,7 +411,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			/**
 			 * 'wpsso_og_seed' is hooked by e-commerce modules to provide product meta tags.
 			 */
-			$mt_og = apply_filters( 'wpsso_og_seed', SucomUtil::get_mt_og_seed(), $mod );
+			$mt_og = (array) apply_filters( 'wpsso_og_seed', SucomUtil::get_mt_og_seed(), $mod );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -808,8 +808,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			$og_type_ns = $this->p->cf[ 'head' ][ 'og_type_ns' ];
 
-			$type_id = isset( $this->p->options[ 'og_type_for_' . $type_name] ) ?	// Just in case.
-				$this->p->options[ 'og_type_for_' . $type_name] : $default_id;
+			$type_id = isset( $this->p->options[ 'og_type_for_' . $type_name] ) ? $this->p->options[ 'og_type_for_' . $type_name] : $default_id;
 
 			if ( empty( $type_id ) || $type_id === 'none' ) {
 

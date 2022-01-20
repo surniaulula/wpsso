@@ -10929,39 +10929,39 @@ msgstr ""
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
-#: lib/twittercard.php:203
+#: lib/twittercard.php:193
 msgctxt "metabox title"
 msgid "Twitter App Card"
 msgstr ""
 
-#: lib/twittercard.php:211
+#: lib/twittercard.php:201
 msgctxt "metabox title"
 msgid "Twitter Player Card"
 msgstr ""
 
-#: lib/twittercard.php:219
+#: lib/twittercard.php:209
 msgctxt "metabox title"
 msgid "Twitter Summary Card"
 msgstr ""
 
-#: lib/twittercard.php:227
+#: lib/twittercard.php:217
 msgctxt "metabox title"
 msgid "Twitter Large Image Summary Card"
 msgstr ""
 
-#: lib/twittercard.php:649
+#: lib/twittercard.php:639
 msgid "Written by"
 msgstr ""
 
-#: lib/twittercard.php:658
+#: lib/twittercard.php:648
 msgid "Est. reading time"
 msgstr ""
 
-#: lib/twittercard.php:669
+#: lib/twittercard.php:659
 msgid "Price"
 msgstr ""
 
-#: lib/twittercard.php:687
+#: lib/twittercard.php:677
 msgid "Availability"
 msgstr ""
 

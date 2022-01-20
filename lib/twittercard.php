@@ -60,17 +60,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
-			 * Read and unset pre-defined twitter card values in the open graph meta tag array.
-			 */
-			$mt_tc = SucomUtil::preg_grep_keys( '/^twitter:/', $mt_og );
-
-			if ( ! empty( $mt_tc ) ) {
-
-				SucomUtil::unset_from_assoc( $mt_og, $mt_tc );
-			}
-
-			$mt_tc = apply_filters( 'wpsso_tc_seed', $mt_tc, $mod );
+			$mt_tc = (array) apply_filters( 'wpsso_tc_seed', array(), $mod );
 
 			/**
 			 * The twitter:domain is used in place of the 'view on web' text.
@@ -142,7 +132,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 		 *		'tc_lrg',
 		 *	)
 		 */
-		public function get_card_info( $mixed, $head = array() ) {
+		public function get_card_info( $mixed, array $head_tags = array(), $use_mod_opts = true ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -154,9 +144,9 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 			$size_name  = 'thumbnail';	// Just in case.
 			$md_pre     = '';
 
-			if ( ! empty( $head[ 'twitter:card' ] ) ) {
+			if ( ! empty( $head_tags[ 'twitter:card' ] ) ) {
 
-				$card_type = $head[ 'twitter:card' ];
+				$card_type = $head_tags[ 'twitter:card' ];
 
 			} elseif ( is_string( $mixed ) ) {	// $mixed is 'singular' or 'default'.
 
@@ -183,9 +173,9 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				}
 
 				/**
-				 * Maybe get a custom card type.
+				 * Maybe override the default with a custom card type.
 				 */
-				if ( ! empty( $mixed[ 'obj' ] ) ) {
+				if ( ! empty( $mixed[ 'obj' ] ) && $use_mod_opts ) {
 
 					$md_card_type = $mixed[ 'obj' ]->get_options( $mixed[ 'id' ], 'tc_type' );	// Returns null if index key not found.
 
