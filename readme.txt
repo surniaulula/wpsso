@@ -10,8 +10,8 @@ Tags: woocommerce, open graph, meta tags, schema, rich results, image seo, video
 Contributors: jsmoriss
 Requires PHP: 7.2
 Requires At Least: 5.2
-Tested Up To: 5.8.3
-WC Tested Up To: 6.1.0
+Tested Up To: 5.9.0
+WC Tested Up To: 6.1.1
 Stable Tag: 9.14.0
 
 Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
