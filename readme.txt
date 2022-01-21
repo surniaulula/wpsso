@@ -243,7 +243,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.14.1-dev.1 (2022/01/21)**
+**Version 9.14.1-dev.2 (2022/01/21)**
 
 * **New Features**
 	* None.
@@ -252,7 +252,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed an undefined property error for `WpssoMessages::$doc_title_disabled`.
 * **Developer Notes**
-	* None.
+	* Removed unused methods:
+		* `SucomPlugin::get_wp_plugin_dir()`
+		* `SucomPlugin::activate_plugin()`
+		* `SucomPlugin::is_slug_active()`
+		* `SucomPlugin::get_slug_info()`
+		* `SucomPlugin::get_slug_name()`
+		* `SucomPlugin::get_slug_download_url()`
+		* `SucomPlugin::download_and_install_slug()`
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -778,7 +785,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 9.14.1-dev.1 =
+= 9.14.1-dev.2 =
 
 (2022/01/21) Fixed an undefined property error for `WpssoMessages::$doc_title_disabled`.
 
