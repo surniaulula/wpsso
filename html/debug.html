@@ -11,7 +11,7 @@
 
 <h3>JavaScript and jQuery Errors</h3>
 
-<p>Since the advent of "page builders" and the new block editor in WordPress v5, JavaScript and jQuery errors have become more common and not easily diagnosed using standard WordPress debugging methods, like defining the WordPress WP_DEBUG constant (see below) and using the Query Monitor plugin.</p>
+<p>Since the advent of page builders and the new block editor in WordPress v5, JavaScript and jQuery errors have become more common and are not easily diagnosed using standard WordPress debugging methods like defining the WordPress WP_DEBUG constant (see below) and using the Query Monitor plugin.</p>
 
 <p>To view JavaScript and jQuery related errors, you must enable your web browser's console, and how you do that depends on the web browser you use (<a href="https://www.google.com/search?q=open+the+browser+javascript+console">see this Google search result for more information on that</a>). It's definitely worth enabling your web browser's console to make sure there are no JavaScript and jQuery errors. If there are, you can select the error and <a href="https://surniaulula.com/support/">copy-paste the error text into a new support ticket</a> (<em>please do not submit screenshots as we cannot work with text in an image</em>). ;-)</p>
 
@@ -21,7 +21,7 @@
 
 <p>In some cases, a web server may display an HTTP 5xx error page (500, 502, etc.) with a generic error message. This error message is generic on purpose - the actual details of the error can be found in the web server's error log.</p>
 
-<p>The most common cause of an HTTP 5xx error are from lack of available memory when PHP is executing - for example, when creating thumbnails from large images, executing a bloated plugin, executing a badly coded recursive filter, etc. If you are seeing an HTTP 5xx error message, you must get the error details from the web server's error log to know what the issue actually is.<p>
+<p>The most common cause of an HTTP 5xx error are from lack of available memory when PHP is executing - for example, when creating thumbnails from large images, executing a bloated plugin, executing a badly coded recursive filter, etc. If you are seeing an HTTP 5xx error message, you must get the error details from the web server's error log to know what the issue really is.<p>
 
 <p>Some older versions of PHP are known to have bugs in their ImageMagick library or PHP may have timed-out when trying to create several thumbnail images in a row (<a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-an-http-error-when-uploading-images/">see this FAQ for details</a>), or PHP may have run out of memory (<a href="https://wpsso.com/docs/plugins/wpsso/faqs/how-can-i-fix-a-php-fatal-out-of-memory-error/">see this FAQ for details</a>), or WPSSO Core may be triggering a bug in your theme or another plugin (try disabling WPSSO Core's use of the WordPress content filter as suggested below).</p>
 
@@ -35,7 +35,7 @@
 
 </blockquote>
 
-<p>WordPress allows plugins and themes to hook hundreds of different filters to manage Post / Page content, some of which are used by WordPress to expand shortcodes, for example. WordPress generally calls a filter (like 'the_content') once to expand text for a given post within the loop or a single webpage. As a consequence, some authors mistakenly assume that a filter they have created will only be executed once for a given post, and only within the webpage body or specific area. WordPress filters are available to any theme or plugin that needs to expand text (title, excerpt, content, etc.), and in any context (header, loop, widget, admin, etc.). WPSSO Core uses 'the_content' filter to locate media elements within the content and to provide complete and accurate description meta tags.</p>
+<p>WordPress allows plugins and themes to hook hundreds of different filters to manage Post / Page content (some of which are used by WordPress to expand shortcodes, for example). WordPress generally calls a filter (like 'the_content') once to expand text for a given post within the loop or a single webpage. As a consequence, some authors mistakenly assume that a filter they have created will only be executed once for a given post, and only within the webpage body or specific area. WordPress filters are available to any theme or plugin that needs to expand text (title, excerpt, content, etc.), and in any context (header, loop, widget, admin, etc.). WPSSO Core uses 'the_content' filter to locate media elements within the content and to provide complete and accurate description meta tags.</p>
 
 <blockquote>
 
@@ -53,7 +53,7 @@
 
 <h3>WordPress and PHP Error Messages</h3>
 
-<p>Enabling the WordPress debug log (aka WP_DEBUG) can be very useful. Your theme and/or some badly coded plugins may be generating hundreds of PHP errors, and you would never know unless you enabled the WordPress debug log.</p>
+<p>Enabling the WordPress debug log (aka WP_DEBUG) is common and very useful. Your theme and/or some badly coded plugins may be generating hundreds of PHP errors and you would never know unless you enabled the WordPress debug log.</p>
 
 <p>To enable the WordPress debug log, without displaying the errors to your visitors, add the following to your <code>wp-config.php</code> file. <em>Make sure you do not already have a <code>define()</code> for <code>WP_DEBUG</code> in your <code>wp-config.php</code> file</em> (as constants can only be defined once). If you do, you can safely remove it and replace it with the following lines.</p>
 
@@ -64,15 +64,15 @@ if ( defined( 'WP_DEBUG' ) &amp;&amp; WP_DEBUG ) {
 
     define( 'WP_DEBUG_LOG', true );
 
-    define( 'WP_DEBUG_DISPLAY', false) ;
+    define( 'WP_DEBUG_DISPLAY', false );
 
     @ini_set( 'display_errors',0 );
 }
 </pre>
 
-<p>You can easily turn on/off the WordPress debug log by changing <code>WP_DEBUG</code>'s value from <code>true</code> to <code>false</code>.</p>
+<p>You can turn on/off the WordPress debug log by changing <code>WP_DEBUG</code>'s value from <code>true</code> to <code>false</code>.</p>
 
-<p>Any WordPress or PHP error messages will be saved in the <code>wordpress/wp-content/debug.log</code> file by default. If you have several badly coded and/or old plugins and themes  that generate a lot of errors, then also make sure you clear the  contents / rotate this file regularly, as it could grow large enough to  fill a filesystem. In all cases, you should endeavour to resolve all warnings and errors in the debug.log file. The debug.log file should remain empty - always.</p>
+<p>WordPress or PHP error messages (if any) will be saved in the <code>wordpress/wp-content/debug.log</code> file by default. If you have several badly coded and/or old plugins and themes that generate a lot of errors, then also make sure you clear the contents / rotate this file regularly, as it could grow large enough to fill a filesystem. In all cases, you should endeavour to resolve all warnings and errors in the debug.log file.</p>
 
 <p>The default location of the <code>debug.log</code> file can be changed by specifying a file path for the <code>WP_DEBUG_LOG</code> value.</p>
 
