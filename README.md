@@ -98,7 +98,7 @@
 <p><strong>&#91;Premium&#93;</strong> Schema JSON-LD markup for Better WooCommerce SEO:</p>
 
 <blockquote>
-  <p>The WooCommerce plugin alone does not provide sufficient Schema markup for Google Rich Results. The WPSSO Core Premium edition reads WooCommerce product data and provides complete Schema Product JSON-LD markup for Google Rich Results, including product image galleries, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, pattern, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.</p>
+  <p>The WooCommerce plugin alone does not provide sufficient Schema markup for Google Rich Results. The <a href="https://wpsso.com/">WPSSO Core Premium edition</a> reads WooCommerce product data and provides complete Schema Product JSON-LD markup for Google Rich Results, including product image galleries, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, pattern, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.</p>
 </blockquote>
 
 <p><strong>&#91;Premium&#93;</strong> An optional Google Merchant Feed XML add-on for for WooCommerce, Easy Digital Downloads, and Document SSO metabox custom products.</p>
