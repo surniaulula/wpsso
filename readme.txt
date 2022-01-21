@@ -243,14 +243,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.14.1-dev.1 (TBD)**
+**Version 9.14.1-dev.1 (2022/01/21)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* None.
+	* Fixed an undefined property error for `WpssoMessages::$doc_title_disabled`.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -780,7 +780,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 = 9.14.1-dev.1 =
 
-(TBD) None.
+(2022/01/21) Fixed an undefined property error for `WpssoMessages::$doc_title_disabled`.
 
 = 9.14.0 =
 
