@@ -16,18 +16,10 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 
 		public function __construct() {}
 
-		public static function get_wp_plugin_dir() {
-
-			if ( defined( 'WP_PLUGIN_DIR' ) && is_dir( WP_PLUGIN_DIR ) && is_writable( WP_PLUGIN_DIR ) ) {
-
-				return WP_PLUGIN_DIR;
-			}
-
-			return false;
-		}
-
 		/**
 		 * The WordPress get_plugins() function is very slow, so call it only once and cache its result.
+		 *
+		 * Used by self::is_plugin_installed().
 		 */
 		public static function get_plugins( $read_cache = true ) {
 
@@ -85,6 +77,8 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 
 		/**
 		 * Returns an associative array of true/false values.
+		 *
+		 * Used by self::is_plugin_active() and Wpsso->show_config().
 		 */
 		public static function get_active_plugins( $read_cache = true ) {
 
@@ -124,6 +118,8 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 		 * Returns true/false.
 		 *
 		 * Example: $plugin_base = wpsso/wpsso.php.
+		 *
+		 * Used by WpssoAdmin->get_ext_action_links().
 		 */
 		public static function is_plugin_installed( $plugin_base, $read_cache = true ) {
 
@@ -160,6 +156,8 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 		 * Returns true/false.
 		 *
 		 * Example: $plugin_base = wpsso/wpsso.php.
+		 *
+		 * Used by WpssoCheck->get_avail().
 		 */
 		public static function is_plugin_active( $plugin_base, $read_cache = true ) {
 
@@ -173,196 +171,12 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 			return false;
 		}
 
-		public static function activate_plugin( $plugin_base, $network_wide = false, $silent = true ) {
-
-			$active_plugins = get_option( 'active_plugins', array() );
-
-			if ( empty( $active_plugins[ $plugin_base ] ) ) {
-
-				if ( ! $silent ) {
-
-					do_action( 'activate_plugin', $plugin_base );
-					do_action( 'activate_' . $plugin_base );
-				}
-
-				$active_plugins[] = $plugin_base;
-
-				sort( $active_plugins ); // Emulate the WordPress function.
-
-				$updated = update_option( 'active_plugins', $active_plugins );
-
-				if ( ! $silent ) {
-
-					do_action( 'activated_plugin', $plugin_base );
-				}
-
-				return $updated;
-			}
-
-			return false; // Plugin already active.
-		}
-
-		/**
-		 * Returns true/false.
-		 *
-		 * Example: $plugin_slug = wpsso.
-		 */
-		public static function is_slug_active( $plugin_slug ) {
-
-			static $local_cache = array();	// Associative array of true/false values.
-
-			if ( isset( $local_cache[ $plugin_slug ] ) ) {
-
-				return $local_cache[ $plugin_slug ];
-
-			} elseif ( empty( $plugin_slug ) ) {	// Just in case.
-
-				return $local_cache[ $plugin_slug ] = false;
-			}
-
-			foreach ( self::get_active_plugins() as $plugin_base => $active ) {
-
-				if ( strpos( $plugin_base, $plugin_slug . '/' ) === 0 ) {	// Plugin slug found.
-
-					return $local_cache[ $plugin_slug ] = true;	// Stop here.
-				}
-			}
-
-			return $local_cache[ $plugin_slug ] = false;
-		}
-
-		public static function get_slug_info( $plugin_slug, $plugin_fields = array(), $unfiltered = true ) {
-
-			static $local_cache = array();
-
-			$plugin_fields = array_merge( array(
-				'active_installs'   => false,
-				'added'             => false,
-				'banners'           => false,
-				'compatibility'     => false,
-				'contributors'      => false,
-				'description'       => false,
-				'donate_link'       => false,
-				'downloadlink'      => false,
-				'group'             => false,
-				'homepage'          => false,
-				'icons'             => false,
-				'last_updated'      => false,
-				'rating'            => false,
-				'ratings'           => false,
-				'requires'          => false,
-				'requires_php'      => false,
-				'reviews'           => false,
-				'sections'          => false,
-				'short_description' => false,
-				'tags'              => false,
-				'tested'            => false,
-				'versions'          => false
-			), $plugin_fields );
-
-			$fields_key = json_encode( $plugin_fields ); // Unique index based on selected fields.
-
-			if ( isset( $local_cache[ $plugin_slug ][ $fields_key ] ) ) {
-
-				return $local_cache[ $plugin_slug ][ $fields_key ];
-
-			} elseif ( empty( $plugin_slug ) ) {	// Just in case.
-
-				return $local_cache[ $plugin_slug ][ $fields_key ] = false;
-			}
-
-			if ( ! function_exists( 'plugins_api' ) ) {
-
-				require_once trailingslashit( ABSPATH ) . 'wp-admin/includes/plugin-install.php';
-			}
-
-			return $local_cache[ $plugin_slug ][ $fields_key ] = plugins_api( 'plugin_information', array(
-				'slug'       => $plugin_slug,
-				'fields'     => $plugin_fields,
-				'unfiltered' => $unfiltered,	// Skip the update manager filter.
-			) );
-		}
-
-		public static function get_slug_name( $plugin_slug, $unfiltered = true ) {
-
-			$plugin_info = self::get_slug_info( $plugin_slug, array(), $unfiltered );
-
-			return empty( $plugin_info->name ) ? $plugin_slug : $plugin_info->name;
-		}
-
-		public static function get_slug_download_url( $plugin_slug, $unfiltered = true ) {
-
-			$plugin_info = self::get_slug_info( $plugin_slug, array( 'downloadlink' => true ), $unfiltered );
-
-			if ( is_wp_error( $plugin_info ) ) {
-
-				return $plugin_info;
-
-			} elseif ( isset( $plugin_info->download_link ) ) {
-
-				if ( false === filter_var( $plugin_info->download_link, FILTER_VALIDATE_URL ) ) { // Just in case.
-
-					$plugin_name = empty( $plugin_info->name ) ? $plugin_slug : $plugin_info->name;
-
-					return new WP_Error( 'invalid_download_link',
-						sprintf( __( 'The plugin information for "%s" contains an invalid download link.' ),
-							$plugin_name ) );
-				}
-
-				return $plugin_info->download_link;
-
-			} else {
-
-				$plugin_name = empty( $plugin_info->name ) ? $plugin_slug : $plugin_info->name;
-
-				return new WP_Error( 'missing_download_link',
-					sprintf( __( 'The plugin information for "%s" does not contain a download link.' ),
-						$plugin_name ) );
-			}
-		}
-
-		/**
-		 * Does not remove an existing plugin folder before extracting the zip file.
-		 */
-		public static function download_and_install_slug( $plugin_slug, $unfiltered = true ) {
-
-			$plugin_url = self::get_slug_download_url( $plugin_slug, $unfiltered );
-
-			if ( is_wp_error( $plugin_url ) ) {
-
-				return $plugin_url;
-			}
-
-			if ( ! function_exists( 'download_url' ) ) {
-
-				require_once trailingslashit( ABSPATH ) . 'wp-admin/includes/file.php';
-			}
-
-			$plugin_zip = download_url( $plugin_url );
-
-			if ( is_wp_error( $plugin_zip ) ) {
-
-				return $plugin_zip;
-			}
-
-			WP_Filesystem();
-
-			$unzip_file = unzip_file( $plugin_zip, WP_PLUGIN_DIR );
-
-			@unlink( $plugin_zip );
-
-			if ( is_wp_error( $unzip_file ) ) {
-
-				return $unzip_file;
-			}
-
-			return true; // Just in case - signal success.
-		}
-
 		/**
 		 * Check the 'update_plugins' site transient and return the number of updates pending for a given slug prefix.
 		 *
 		 * Example: $plugin_prefix = 'wpsso'
+		 *
+		 * Used by WpssoHead->pending_updates_notice().
 		 */
 		public static function get_updates_count( $plugin_prefix = '' ) {
 
@@ -400,6 +214,8 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 
 		/**
 		 * Returns true/false.
+		 *
+		 * Used by WpssoAdmin->get_ext_action_links().
 		 */
 		public static function have_plugin_update( $plugin_base ) {
 

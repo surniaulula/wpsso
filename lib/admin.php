@@ -798,9 +798,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					'height'    => $this->p->cf[ 'wp' ][ 'tb_iframe' ][ 'height' ],
 				), $install_url );
 
-				if ( SucomPlugin::is_plugin_installed( $info[ 'base' ] ) ) {
+				if ( SucomPlugin::is_plugin_installed( $info[ 'base' ] ) ) {	// Uses static local cache.
 
-					if ( SucomPlugin::have_plugin_update( $info[ 'base' ] ) ) {
+					if ( SucomPlugin::have_plugin_update( $info[ 'base' ] ) ) {	// Uses static local cache.
 
 						$action_links[] = '<a href="' . $details_url . '" class="thickbox" tabindex="' . ++$tabindex . '">' .
 							'<font color="red">' . ( 'wpsso' === $ext ? _x( 'Plugin Details and Update',

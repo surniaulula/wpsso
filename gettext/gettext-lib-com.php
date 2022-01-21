@@ -62,7 +62,3 @@ __( 'Please contact the author of that filter and report this issue as a coding 
 __( 'Incorrect webpage output:', 'wpsso' );
 __( 'BEGIN OUTPUT', 'wpsso' );
 __( 'END OUTPUT', 'wpsso' );
-// translators: Please ignore - translation uses a different text domain.
-__( 'The plugin information for "%s" contains an invalid download link.' );
-// translators: Please ignore - translation uses a different text domain.
-__( 'The plugin information for "%s" does not contain a download link.' );

@@ -2105,7 +2105,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * Filter 'wpsso_inherit_featured_image' added in WPSSO Core v9.10.0.
 			 */
-			$mod = $this->get_mod( $post_id );	// Uses a static local cache.
+			$mod = $this->get_mod( $post_id );	// Uses static local cache.
 
 			$inherit_featured = empty( $this->p->options[ 'plugin_inherit_featured' ] ) ? false : $mod[ 'is_public' ];
 			$inherit_featured = apply_filters( 'wpsso_inherit_featured_image', $inherit_featured, $mod );
@@ -2162,7 +2162,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * Filter 'wpsso_inherit_featured_image' added in WPSSO Core v9.10.0.
 			 */
-			$mod = $this->get_mod( $post_id );	// Uses a static local cache.
+			$mod = $this->get_mod( $post_id );	// Uses static local cache.
 
 			$inherit_featured = empty( $this->p->options[ 'plugin_inherit_featured' ] ) ? false : $mod[ 'is_public' ];
 			$inherit_featured = apply_filters( 'wpsso_inherit_featured_image', $inherit_featured, $mod );

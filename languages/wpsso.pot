@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 9.14.1-dev.1\n"
+"Project-Id-Version: WPSSO Core 9.14.1-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -636,16 +636,6 @@ msgstr ""
 
 #: gettext/gettext-lib-com.php:64 lib/com/bfo.php:339
 msgid "END OUTPUT"
-msgstr ""
-
-#. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:66 lib/com/plugin.php:308
-msgid "The plugin information for \"%s\" contains an invalid download link."
-msgstr ""
-
-#. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:68 lib/com/plugin.php:319
-msgid "The plugin information for \"%s\" does not contain a download link."
 msgstr ""
 
 #: gettext/gettext-lib-config.php:6
