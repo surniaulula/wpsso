@@ -177,7 +177,7 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 				 	break;
 
 				/**
-				 * Markup Validators tab.
+				 * Validators tab.
 				 */
 				case 'info-meta-validate-amp':
 

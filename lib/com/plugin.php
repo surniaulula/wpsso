@@ -236,21 +236,22 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 			static $local_cache = array();
 
 			$plugin_fields = array_merge( array(
-				'active_installs'   => true,	// Get by default.
+				'active_installs'   => false,
 				'added'             => false,
 				'banners'           => false,
 				'compatibility'     => false,
 				'contributors'      => false,
 				'description'       => false,
 				'donate_link'       => false,
-				'downloadlink'      => true,	// Get by default.
+				'downloadlink'      => false,
 				'group'             => false,
 				'homepage'          => false,
 				'icons'             => false,
 				'last_updated'      => false,
-				'rating'            => true,	// Get by default.
-				'ratings'           => true,	// Get by default.
+				'rating'            => false,
+				'ratings'           => false,
 				'requires'          => false,
+				'requires_php'      => false,
 				'reviews'           => false,
 				'sections'          => false,
 				'short_description' => false,
@@ -278,7 +279,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 			return $local_cache[ $plugin_slug ][ $fields_key ] = plugins_api( 'plugin_information', array(
 				'slug'       => $plugin_slug,
 				'fields'     => $plugin_fields,
-				'unfiltered' => $unfiltered,	// True skips the update manager filter.
+				'unfiltered' => $unfiltered,	// Skip the update manager filter.
 			) );
 		}
 

@@ -23,11 +23,13 @@
 	</figure>
 </div>
 
-<p>WooCommerce is a popular e-commerce plugin with a solid and well designed codebase, but <strong>WooCommerce is not an SEO plugin</strong> - its Schema markup for search engines is minimal, and its social meta tags for Facebook, Twitter, and other social sites are non-existent. This guide provides quick and easy solutions to fix your WooCommerce product meta tags and Schema markup, which will improve your search engine ranking, the information shown in search results and social sites, and your click through rates.</p>
+<p>WooCommerce is a popular e-commerce plugin, with a solid and well designed codebase, but <strong>WooCommerce is not an SEO plugin</strong> - its Schema markup for search engines is minimal and its social meta tags for Facebook, Twitter, and other social sites are non-existent.</p>
+
+<p>This guide provides a quick and easy solution to fix your WooCommerce product meta tags and Schema markup, to improve your search engine ranking social click through rates.</p>
 
 <h3>Common Warnings for WooCommerce SEO Markup</h3>
 
-<p>The <a href="https://search.google.com/test/rich-results">Google Rich Results Test Tool</a>, the <a href="https://validator.schema.org/">Schema Markup Validator</a>, or the <a href="https://search.google.com/search-console">Google Search Console</a> for site owners, may report one or more of the following errors for the minimal Schema markup offered by the WooCommerce plugin:</p>
+<p>The <a href="https://search.google.com/test/rich-results">Google Rich Results Test Tool</a>, the <a href="https://validator.schema.org/">Schema Markup Validator</a>, or the <a href="https://search.google.com/search-console">Google Search Console</a> for site owners, may report one or more of the following errors for the (minimal) Schema markup offered by the WooCommerce plugin:</p>
 
 <ul>
 	<li><strong>The aggregateRating field is recommended.</strong></li>
@@ -40,22 +42,6 @@
 	<li><strong>Missing field "deliveryTime".</strong></li>
 </ul>
 
-<p>The <em>aggregateRating</em> warning from WooCommerce's Schema markup can be addressed by having your customers leave one or more reviews for each of your products. Unfortunately WooCommerce will only include the <strong>last review</strong> in the Schema Product markup, which may not reflect the total <em>aggregateRating</em> values. All product reviews (ie. that have a rating value) and comments (ie. that do not have a rating value) are combined by WooCommerce into a separate and disconnected Schema JSON-LD block.</p>
-
-<p>The following product information should also be included in the Schema markup, when available, but WooCommerce cannot manage this information without third-party plugins and complex filters to modify its default Schema markup:</p>
-
-<ul>
-	<li><strong>Brand</strong></li>
-	<li><strong>GTIN-14</strong></li>
-	<li><strong>GTIN-13</strong> (aka UPC)</li>
-	<li><strong>GTIN-12</strong> (aka EAN)</li>
-	<li><strong>GTIN-8</strong></li>
-	<li><strong>ISBN</strong></li>
-	<li><strong>MPN</strong> (aka Manufacturer Part Number)</li>
-</ul>
-
-<p>Although Google does not warn about the lack of a <em>mainEntity</em> or <em>mainEntityOfPage</em> value in the default Schema markup from the WooCommerce plugin, this property should be included so Google can recognize the Schema Product markup as the main subject of the webpage.</p>
-
 <h3>A Solution for Better Schema Markup</h3>
 
 <div class="wp-block-image">
@@ -64,11 +50,11 @@
 	</figure>
 </div>
 
-<p>The <a href="https://wpsso.com/extend/plugins/wpsso/">WPSSO Core Premium plugin</a> addresses all the Schema markup weaknesses of WooCommerce, and includes complete social meta tags for Facebook, LinkedIn, Pinterest, Twitter, and more.</p>
+<p>The <a href="https://wpsso.com/">WPSSO Core Premium plugin</a> addresses all the Schema markup weaknesses of WooCommerce and includes complete social meta tags for Facebook, LinkedIn, Pinterest, Twitter, and more.</p>
 
-<p>WooCommerce provides only a single product offer in its Schema markup - even for variable products with different pricing - while WPSSO Core includes all product variation offers, with complete product details for each offer (description, images, mpn, sku, gtin, item condition, availability, price, currency, VAT added, shipping delievery times, weight, width, height, length, fluid volume, and more). WPSSO Core can also include product prices with or without VAT, and if your products have reviews (ie. with a star rating) and comments (ie. no rating value), they will be classified properly - added to the Schema Product markup as "reviews" and "comments" respectively.</p>
+<p>WooCommerce provides only a single product offer in its Schema markup - even for variable products with different pricing. WPSSO Core Premium includes all product variation offers, with complete product details for each offer (description, images, mpn, sku, gtin, item condition, availability, price, currency, VAT added, shipping delievery times, weight, width, height, length, fluid volume, and more). WPSSO Core Premium can also include WooCommerce product prices with or without VAT, and if your products have reviews (ie. with a star rating) and comments (ie. no rating value), they will be added to the Schema Product markup as "reviews" and "comments" respectively.</p>
 
-<p>WPSSO Core supports many additional WooCommerce product attributes as well, including:</p>
+<p>WPSSO Core Premium supports many additional WooCommerce product attributes as well, including:</p>
 
 <ul>
 	<li><strong>Brand</strong></li>
@@ -92,7 +78,7 @@
 
 <h4>Do you ship products?</h4>
 
-<p><a href="https://webmasters.googleblog.com/2020/09/new-schemaorg-support-for-retailer.html">In September 2020, Google announced support for shipping details in Schema markup</a>. Adding shipping details to your Schema Product markup is important if you offer free or low-cost shipping options, as this will make your products more appealing in Google search results. The <a href="https://wpsso.com/extend/plugins/wpsso/">WPSSO Core Premium plugin</a> can provide shipping information for WooCommerce SEO, including shipping zones, methods, rates, and locations (continents, countries, states, and postal / zip codes) when the <a href="https://wordpress.org/plugins/wpsso-wc-shipping-delivery-time/">WPSSO Shipping Delivery Time for WooCommerce SEO add-on</a> is active.</p>
+<p><a href="https://webmasters.googleblog.com/2020/09/new-schemaorg-support-for-retailer.html">In September 2020, Google announced support for shipping details in Schema markup</a>. Adding shipping details to your Schema Product markup is important if you offer free or low-cost shipping options, as this will make your products more appealing in Google search results. The WPSSO Core Premium plugin can provide shipping information for WooCommerce SEO, including shipping zones, methods, rates, and locations (continents, countries, states, and postal / zip codes) when the <a href="https://wordpress.org/plugins/wpsso-wc-shipping-delivery-time/">WPSSO Shipping Delivery Time for WooCommerce SEO add-on</a> is active.</p>
 
 <div id="wpsso-solution-section">
 
@@ -106,7 +92,7 @@
 
 	<li><p><strong>Optionally</strong> install and activate <a href="https://wordpress.org/plugins/wpsso-wc-shipping-delivery-time/">the WPSSO Shipping Delivery Time for WooCommerce SEO add-on</a> to provide Google with shipping rates and delivery time estimates: From your WordPress site's <em>Plugins &gt; Add New</em> page, search for "WPSSO WCSDT".</p></li>
 
-	<li><p><strong>To add support for WooCommerce products, third-party plugins, service APIs, and advanced settings</strong>, purchase <a href="https://wpsso.com/extend/plugins/wpsso/">the WPSSO Core Premium plugin</a> and follow the installation guide provided in the post-purchase email (the Premium edition is offered as a simple plugin update).</p></li>
+	<li><p><strong>To add support for WooCommerce products, third-party plugins, service APIs, and advanced settings</strong>, <a href="https://wpsso.com/extend/plugins/wpsso/">purchase the WPSSO Core Premium plugin</a> and follow the installation guide provided in the post-purchase email.</p></li>
 
 	<li><p><strong>Have a look through the <a href="https://wpsso.com/docs/plugins/wpsso/installation/a-setup-guide/"><em>SSO &gt; Setup Guide</em></a> for optimization and setting suggestions.</strong></p></li>
 
