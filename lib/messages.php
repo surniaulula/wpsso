@@ -720,7 +720,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 		 */
 		public function maybe_doc_title_disabled() {
 
-			return current_theme_supports( 'title-tag' ) ? '' : $this->doc_title_disabled;
+			return current_theme_supports( 'title-tag' ) ? '' : $this->doc_title_disabled();
 		}
 
 		public function doc_title_disabled() {
