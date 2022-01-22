@@ -243,7 +243,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.14.1-dev.3 (2022/01/22)**
+**Version 9.14.1-b.1 (2022/01/22)**
 
 * **New Features**
 	* None.
@@ -794,7 +794,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 9.14.1-dev.3 =
+= 9.14.1-b.1 =
 
 (2022/01/22) Fixed an undefined property error for `WpssoMessages::$doc_title_disabled`.
 
