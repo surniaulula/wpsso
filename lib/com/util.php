@@ -521,7 +521,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			473 => 'testimonial',
 		);
 
-		private static $pub_lang = array(
+		private static $publisher_languages = array(
 
 			/**
 			 * https://developers.facebook.com/docs/messenger-platform/messenger-profile/supported-locales
@@ -818,7 +818,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Use "tz" in the method name to hint that method argument is an abbreviation.
+		 * Use "tz" in the method name to hint that argument is an abbreviation.
 		 */
 		public static function get_tz_name( $tz_abbr ) {
 
@@ -826,7 +826,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Get a timezone abbreviation (ie. 'EST', 'MDT', etc.).
+		 * Get timezone abbreviation (ie. 'EST', 'MDT', etc.).
 		 */
 		public static function get_timezone_abbr( $tz_name ) {
 
@@ -834,7 +834,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Timezone offset in seconds (offset west of UTC is negative, and east of UTC is positive).
+		 * Get timezone offset in seconds (west of UTC is negative, and east of UTC is positive).
 		 */
 		public static function get_timezone_offset_secs( $tz_name ) {
 
@@ -843,6 +843,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		/**
 		 * Timezone difference to UTC with colon between hours and minutes.
+		 *
+		 * Used by self::get_opts_hm_tz() and self::get_opts_open_close_hm_tz().
 		 */
 		public static function get_timezone_offset_hours( $tz_name ) {
 
@@ -865,40 +867,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $local_cache[ $tz_name ][ $format ] = $dt->format( $format );
 		}
 
-		private static function maybe_get_array( $arr, $key = false, $add_none = false ) {
-
-			if ( null === $key ) {
-
-				/**
-				 * Nothing to do.
-				 */
-
-			} elseif ( false === $key ) {
-
-				/**
-				 * Nothing to do.
-				 */
-
-			} elseif ( true === $key ) {				// Sort by value.
-
-				asort( $arr );
-
-			} elseif ( isset( $arr[ $key ] ) ) {			// Return a specific array value.
-
-				return $arr[ $key ];
-
-			} else {
-				return null;					// Array key not found - return null.
-			}
-
-			if ( true === $add_none ) { 				// Prefix array with 'none'.
-
-				$arr = array( 'none' => 'none' ) + $arr; 	// Maintains numeric index.
-			}
-
-			return $arr;
-		}
-
+		/**
+		 * Used by WpssoSubmenuGeneral->get_table_rows() for 'Default Currency' option.
+		 */
 		public static function get_currencies( $currency_abbrev = false, $add_none = false, $format = '%2$s (%1$s)' ) {
 
 			static $local_cache = array(); // Array of arrays, indexed by $format.
@@ -945,6 +916,30 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return self::maybe_get_array( $local_cache, $currency_abbrev, $add_none );
 		}
 
+		public static function get_currency_symbols( $currency_abbrev = false, $add_none = false, $decode = false ) {
+
+			if ( $decode ) {
+
+				static $local_cache = null;
+
+				if ( ! isset( $local_cache ) ) {
+
+					$local_cache = array();
+
+					foreach ( self::$currency_symbols as $key => $value ) {
+
+						$local_cache[ $key ] = self::decode_html( $value );	// Example: USD => $
+					}
+
+					ksort( $local_cache ); // Sort by key.
+				}
+
+				return self::maybe_get_array( $local_cache, $currency_abbrev, $add_none );
+			}
+
+			return self::maybe_get_array( self::$currency_symbols, $currency_abbrev, $add_none );
+		}
+
 		public static function get_currency_symbol_abbrev( $currency_symbol = false, $default = 'USD', $decode = true ) {
 
 			if ( $decode ) {
@@ -985,59 +980,35 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $local_cache[ $currency_symbol ] = $default;
 		}
 
-		public static function get_currency_symbols( $currency_abbrev = false, $add_none = false, $decode = false ) {
-
-			if ( $decode ) {
-
-				static $local_cache = null;
-
-				if ( ! isset( $local_cache ) ) {
-
-					$local_cache = array();
-
-					foreach ( self::$currency_symbols as $key => $value ) {
-
-						$local_cache[ $key ] = self::decode_html( $value );	// Example: USD => $
-					}
-
-					ksort( $local_cache ); // Sort by key.
-				}
-
-				return self::maybe_get_array( $local_cache, $currency_abbrev, $add_none );
-			}
-
-			return self::maybe_get_array( self::$currency_symbols, $currency_abbrev, $add_none );
-		}
-
 		public static function get_dashicons( $icon_number = false, $add_none = false ) {
 
 			return self::maybe_get_array( self::$dashicons, $icon_number, $add_none );
 		}
 
-		public static function get_pub_lang( $pub = '' ) {
+		public static function get_publisher_languages( $publisher = '' ) {
 
-			switch ( $pub ) {
+			switch ( $publisher ) {
 
 				case 'facebook':
 				case 'fb':
 
-					return self::$pub_lang[ 'facebook' ];
+					return self::$publisher_languages[ 'facebook' ];
 
 				case 'google':
 
-					return self::$pub_lang[ 'google' ];
+					return self::$publisher_languages[ 'google' ];
 
 				case 'pinterest':
 				case 'pin':
 				case 'rp':
 
-					return self::$pub_lang[ 'pinterest' ];
+					return self::$publisher_languages[ 'pinterest' ];
 
 				default:
 
-					if ( isset( self::$pub_lang[ $pub ] ) ) {
+					if ( isset( self::$publisher_languages[ $publisher ] ) ) {
 
-						return self::$pub_lang[ $pub ];
+						return self::$publisher_languages[ $publisher ];
 
 					}
 
@@ -1045,17 +1016,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 		}
 
-		public static function maybe_link_url( $mixed ) {
-
-			if ( is_string( $mixed ) && 0 === strpos( $mixed, 'http' ) ) {
-
-				$mixed = '<a href="' . $mixed . '">' . $mixed . '</a>';
-			}
-
-			return $mixed;
-		}
-
-		public static function is_valid_day( $hm_o, $hm_c ) {
+		public static function is_valid_open_close( $hm_o, $hm_c ) {
 
 			/**
 			 * Performa a quick sanitation before using strtotime().
@@ -1697,53 +1658,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return self::get_opts_open_close_hm_tz( $opts, $key_day_o, $key_midday_close, $key_midday_o, $key_day_c );
 		}
 
-		/**
-		 * Returns an empty array or an associative array of open => close hours, including a timezone offset.
-		 *
-		 * $open_close = Array (
-		 *	[08:00-07:00] => 17:00-07:00
-		 * )
-		 *
-		 * -07:00 is a timezone offset.
-		 */
-		public static function get_opts_open_close_hm_tz( array $opts, $key_day_o, $key_midday_c, $key_midday_o, $key_day_c, $key_tz = '' ) {
+		public static function get_opts_begin( $str, array $opts ) {
 
-			$oc_pairs        = array();
-			$is_valid_day    = false;
-			$is_valid_midday = false;
+			$found = array();
 
-			if ( ! empty( $opts[ $key_day_o ] ) && ! empty( $opts[ $key_day_c ] ) ) {
+			foreach ( $opts as $key => $value ) {
 
-				$is_valid_day = self::is_valid_day( $opts[ $key_day_o ], $opts[ $key_day_c ] );
+				if ( 0 === strpos( $key, $str ) ) {
 
-				if ( ! empty( $opts[ $key_midday_c ] ) && ! empty( $opts[ $key_midday_o ] ) ) {
-
-					$is_valid_midday = self::is_valid_midday( $opts[ $key_day_o ], $opts[ $key_midday_c ], $opts[ $key_midday_o ], $opts[ $key_day_c ] );
-				}
-
-				if ( $is_valid_day ) {
-
-					$timezone  = empty( $key_tz ) || empty( $opts[ $key_tz ] ) ? SucomUtilWP::get_default_timezone() : $opts[ $key_tz ];
-					$tz_offset = self::get_timezone_offset_hours( $timezone );
-					$hm_tz_o   = $opts[ $key_day_o ] . $tz_offset;
-					$hm_tz_c   = $opts[ $key_day_c ] . $tz_offset;
-
-					if ( $is_valid_midday ) {
-
-						$hm_tz_midday_c = $opts[ $key_midday_c ] . $tz_offset;
-						$hm_tz_midday_o = $opts[ $key_midday_o ] . $tz_offset;
-
-						$oc_pairs[ $hm_tz_o ]        = $hm_tz_midday_c;
-						$oc_pairs[ $hm_tz_midday_o ] = $hm_tz_c;
-
-					} else {
-
-						$oc_pairs[ $hm_tz_o ] = $hm_tz_c;
-					}
+					$found[ $key ] = $value;
 				}
 			}
 
-			return $oc_pairs;
+			return $found;
 		}
 
 		public static function get_opts_hm_tz( array $opts, $key_hm, $key_tz = '' ) {
@@ -1760,19 +1687,55 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return false;
 		}
 
-		public static function get_opts_begin( $str, array $opts ) {
+		/**
+		 * Returns an empty array or an associative array of open => close hours, including a timezone offset.
+		 *
+		 * $open_close = Array (
+		 *	[08:00-07:00] => 17:00-07:00
+		 * )
+		 *
+		 * Note that "-07:00" is a timezone offset, not a range. :)
+		 *
+		 * Used by WpssoSchemaSingle::get_opening_hours_data().
+		 */
+		public static function get_opts_open_close_hm_tz( array $opts, $key_day_o, $key_midday_c, $key_midday_o, $key_day_c, $key_tz = '' ) {
 
-			$found = array();
+			$open_close_pairs    = array();
+			$is_valid_open_close = false;
+			$is_valid_midday     = false;
 
-			foreach ( $opts as $key => $value ) {
+			if ( ! empty( $opts[ $key_day_o ] ) && ! empty( $opts[ $key_day_c ] ) ) {
 
-				if ( 0 === strpos( $key, $str ) ) {
+				$is_valid_open_close = self::is_valid_open_close( $opts[ $key_day_o ], $opts[ $key_day_c ] );
 
-					$found[ $key ] = $value;
+				if ( ! empty( $opts[ $key_midday_c ] ) && ! empty( $opts[ $key_midday_o ] ) ) {
+
+					$is_valid_midday = self::is_valid_midday( $opts[ $key_day_o ], $opts[ $key_midday_c ], $opts[ $key_midday_o ], $opts[ $key_day_c ] );
+				}
+
+				if ( $is_valid_open_close ) {
+
+					$timezone  = empty( $key_tz ) || empty( $opts[ $key_tz ] ) ? SucomUtilWP::get_default_timezone() : $opts[ $key_tz ];
+					$tz_offset = self::get_timezone_offset_hours( $timezone );
+					$hm_tz_o   = $opts[ $key_day_o ] . $tz_offset;
+					$hm_tz_c   = $opts[ $key_day_c ] . $tz_offset;
+
+					if ( $is_valid_midday ) {
+
+						$hm_tz_midday_c = $opts[ $key_midday_c ] . $tz_offset;
+						$hm_tz_midday_o = $opts[ $key_midday_o ] . $tz_offset;
+
+						$open_close_pairs[ $hm_tz_o ]        = $hm_tz_midday_c;
+						$open_close_pairs[ $hm_tz_midday_o ] = $hm_tz_c;
+
+					} else {
+
+						$open_close_pairs[ $hm_tz_o ] = $hm_tz_c;
+					}
 				}
 			}
 
-			return $found;
+			return $open_close_pairs;
 		}
 
 		public static function natksort( &$assoc_arr ) {
@@ -1782,6 +1745,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		/**
 		 * Since 2021/09/17.
+		 *
+		 * Used by WpssoOptions->sanitize() and WpssoOptionsUpgrade->options().
 		 */
 		public static function unset_numeric_keys( &$assoc_arr ) {
 
@@ -1859,8 +1824,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function next_key( $needle, array &$input, $loop = true ) {
 
 			$keys = array_keys( $input );
-
-			$pos = array_search( $needle, $keys );
+			$pos  = array_search( $needle, $keys );
 
 			if ( false !== $pos ) {
 
@@ -1907,67 +1871,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Modifies the referenced array directly, and returns true or false.
+		 * Modify the referenced array and return true or false.
 		 */
 		public static function add_after_key( array &$arr, $match_key, $mixed, $add_value = null ) {
 
 			return self::insert_in_array( $insert = 'after', $arr, $match_key, $mixed, $add_value, $ret_bool = true );
 		}
 
+		/**
+		 * Modify the referenced array and return true or false.
+		 */
 		public static function add_before_key( array &$arr, $match_key, $mixed, $add_value = null ) {
 
 			return self::insert_in_array( $insert = 'before', $arr, $match_key, $mixed, $add_value, $ret_bool = true );
-		}
-		private static function insert_in_array( $insert, array &$arr, $match_key, $mixed, $add_value = null, $ret_bool = false ) {
-
-			$matched = false;
-
-			if ( array_key_exists( $match_key, $arr ) ) {
-
-				$new_arr = array();
-
-				foreach ( $arr as $key => $val ) {
-
-					if ( 'after' === $insert ) {
-
-						$new_arr[ $key ] = $val;
-					}
-
-					/**
-					 * Add new value before/after the matched key.
-					 *
-					 * Replace the matched key by default (no test required).
-					 */
-					if ( $key === $match_key ) {
-
-						if ( is_array( $mixed ) ) {
-
-							$new_arr = array_merge( $new_arr, $mixed );
-
-						} elseif ( is_string( $mixed ) ) {
-
-							$new_arr[ $mixed ] = $add_value;
-
-						} else {
-
-							$new_arr[] = $add_value;
-						}
-
-						$matched = true;
-					}
-
-					if ( 'before' === $insert ) {
-
-						$new_arr[ $key ] = $val;
-					}
-				}
-
-				$arr = $new_arr;
-
-				unset( $new_arr );
-			}
-
-			return $ret_bool ? $matched : $arr; // Return true/false or the array (default).
 		}
 
 		/**
@@ -2066,66 +1982,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			return false;
-		}
-
-		public static function get_first_value( array $arr ) {
-
-			foreach ( $arr as $value ) {
-
-				return $value;
-			}
-
-			return null;	// Return null if array is empty.
-		}
-
-		public static function get_first_num( array $input ) {
-
-			list( $first, $last, $next ) = self::get_first_last_next_nums( $input );
-
-			return $first;
-		}
-
-		public static function get_last_num( array $input ) {
-
-			list( $first, $last, $next ) = self::get_first_last_next_nums( $input );
-
-			return $last;
-		}
-
-		public static function get_next_num( array $input ) {
-
-			list( $first, $last, $next ) = self::get_first_last_next_nums( $input );
-
-			return $next;
-		}
-
-		public static function get_first_last_next_nums( array $input ) {
-
-			$keys  = array_keys( $input );
-			$count = count( $keys );
-
-			if ( $count && ! is_numeric( implode( $keys ) ) ) { // Check for non-numeric keys.
-
-				$keys = array();
-
-				foreach ( $input as $key => $value ) { // Keep only the numeric keys.
-
-					if ( is_numeric( $key ) ) {
-
-						$keys[] = $key;
-					}
-				}
-
-				$count = count( $keys );
-			}
-
-			sort( $keys ); // Sort numerically.
-
-			$first = (int) reset( $keys );       // Get the first number.
-			$last  = (int) end( $keys );         // Get the last number.
-			$next  = $count ? $last + 1 : $last; // Next is 0 (not 1) for an empty array.
-
-			return array( $first, $last, $next );
 		}
 
 		public static function get_mt_og_seed() {
@@ -4681,6 +4537,98 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$word_count = str_word_count( wp_strip_all_tags( $text ) );
 
 			return round( $word_count / $words_per_min );
+		}
+
+		/**
+		 * Modify the referenced array and return true, false, or the modified array.
+		 */
+		private static function insert_in_array( $insert, array &$arr, $match_key, $mixed, $add_value = null, $ret_bool = false ) {
+
+			$matched = false;
+
+			if ( array_key_exists( $match_key, $arr ) ) {
+
+				$new_arr = array();
+
+				foreach ( $arr as $key => $val ) {
+
+					if ( 'after' === $insert ) {
+
+						$new_arr[ $key ] = $val;
+					}
+
+					/**
+					 * Add new value before/after the matched key.
+					 *
+					 * Replace the matched key by default (no test required).
+					 */
+					if ( $key === $match_key ) {
+
+						if ( is_array( $mixed ) ) {
+
+							$new_arr = array_merge( $new_arr, $mixed );
+
+						} elseif ( is_string( $mixed ) ) {
+
+							$new_arr[ $mixed ] = $add_value;
+
+						} else {
+
+							$new_arr[] = $add_value;
+						}
+
+						$matched = true;
+					}
+
+					if ( 'before' === $insert ) {
+
+						$new_arr[ $key ] = $val;
+					}
+				}
+
+				$arr = $new_arr;
+
+				unset( $new_arr );
+			}
+
+			return $ret_bool ? $matched : $arr; // Return true/false or the array (default).
+		}
+
+		/**
+		 * Used by self::get_currencies(), self::get_currency_abbrev(), and self::get_dashicons().
+		 */
+		private static function maybe_get_array( $arr, $key = false, $add_none = false ) {
+
+			if ( null === $key ) {
+
+				/**
+				 * Nothing to do.
+				 */
+
+			} elseif ( false === $key ) {
+
+				/**
+				 * Nothing to do.
+				 */
+
+			} elseif ( true === $key ) {				// Sort by value.
+
+				asort( $arr );
+
+			} elseif ( isset( $arr[ $key ] ) ) {			// Return a specific array value.
+
+				return $arr[ $key ];
+
+			} else {
+				return null;					// Array key not found - return null.
+			}
+
+			if ( true === $add_none ) { 				// Prefix array with 'none'.
+
+				$arr = array( 'none' => 'none' ) + $arr; 	// Maintains numeric index.
+			}
+
+			return $arr;
 		}
 	}
 }

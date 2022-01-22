@@ -1761,13 +1761,13 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			/**
 			 * Return the Facebook equivalent for this WordPress locale.
 			 */
-			$fb_pub_lang = SucomUtil::get_pub_lang( 'facebook' );
+			$fb_languages = SucomUtil::get_publisher_languages( 'facebook' );
 
-			if ( ! empty( $fb_pub_lang[ $locale ] ) ) {
+			if ( ! empty( $fb_languages[ $locale ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'returning valid facebook locale "' . $locale . '"' );
+					$this->p->debug->log( 'returning facebook locale "' . $locale . '"' );
 				}
 
 				return $locale;
@@ -1779,7 +1779,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 */
 			$def_locale  = SucomUtil::get_locale( 'default' );
 
-			if ( ! empty( $fb_pub_lang[ $def_locale ] ) ) {
+			if ( ! empty( $fb_languages[ $def_locale ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 

@@ -281,7 +281,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$table_rows[ 'fb_locale' ] = $this->form->get_tr_hide( 'basic', 'fb_locale' ) . 
 						$this->form->get_th_html_locale( _x( 'Facebook Locale', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'fb_locale' ) . 
-						'<td>' . $this->form->get_select_locale( 'fb_locale', SucomUtil::get_pub_lang( 'facebook' ) ) . '</td>';
+						'<td>' . $this->form->get_select_locale( 'fb_locale', SucomUtil::get_publisher_languages( 'facebook' ) ) . '</td>';
 
 					break;
 
