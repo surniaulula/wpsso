@@ -708,14 +708,13 @@ table.sucom-settings td textarea { width:100%; }
 
 table.sucom-settings td select { width:255px; }	/* Default width. */
 
-table.sucom-settings td select.crop-area,
-div.postbox table.sucom-settings td select.crop-area { width:82px; }
-
 table.sucom-settings td select.xshort { width:60px; }
 
 table.sucom-settings td select.currency { width:70px; }
 
-table.sucom-settings td select.time-hh-mm { width:82px; }
+table.sucom-settings td select.time-hh-mm,
+table.sucom-settings td select.crop-area,
+div.postbox table.sucom-settings td select.crop-area { width:82px; }
 
 table.sucom-settings td select.yes-no { width:85px; }
 
@@ -729,15 +728,17 @@ table.sucom-settings td select.year { width:125px; }
 
 table.sucom-settings td select.medium { width:180px; }
 
+table.sucom-settings td select.site-use { width:200px; }
+
 table.sucom-settings td select.update_filter { width:220px; }
+
+table.sucom-settings td select.timezone { width:225px; }
 
 table.sucom-settings td select.og_type,
 table.sucom-settings td select.schema_type,
 table.sucom-settings td select.primary_term_id,
 table.sucom-settings td select.article_section,
 table.sucom-settings td select.long_name { width:320px; }
-
-table.sucom-settings td select.site-use { width:200px; }
 
 table.sucom-settings td select.wide { width:100%; }
 

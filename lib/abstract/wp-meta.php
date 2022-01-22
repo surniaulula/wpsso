@@ -443,15 +443,15 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					/**
 					 * Schema Book.
 					 */
-					'schema_book_author_type'      => 'none',				// Author Type.
-					'schema_book_author_name'      => '',					// Author Name.
-					'schema_book_author_url'       => '',					// Author URL.
-					'schema_book_pub_date'         => '',					// Publish Date.
-					'schema_book_pub_time'         => 'none',				// Publish Time.
-					'schema_book_pub_timezone'     => $timezone,				// Publish Timezone.
-					'schema_book_created_date'     => '',					// Created Date.
-					'schema_book_created_time'     => 'none',				// Created Time.
-					'schema_book_created_timezone' => $timezone,				// Created Timezone.
+					'schema_book_author_type'      => 'none',				// Book Author Type.
+					'schema_book_author_name'      => '',					// Book Author Name.
+					'schema_book_author_url'       => '',					// Book Author URL.
+					'schema_book_pub_date'         => '',					// Book Published Date.
+					'schema_book_pub_time'         => 'none',				// Book Published Time.
+					'schema_book_pub_timezone'     => $timezone,				// Book Published Timezone.
+					'schema_book_created_date'     => '',					// Book Created Date.
+					'schema_book_created_time'     => 'none',				// Book Created Time.
+					'schema_book_created_timezone' => $timezone,				// Book Created Timezone.
 					'schema_book_edition'          => '',					// Book Edition.
 					'schema_book_format'           => $opts[ 'schema_def_book_format' ],	// Book Format.
 					'schema_book_pages'            => '',					// Number of Pages.
@@ -531,11 +531,14 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					/**
 					 * Schema Movie.
 					 */
-					'schema_movie_prodco_org_id'  => 'none',	// Movie Production Company.
-					'schema_movie_duration_days'  => 0,		// Movie Runtime (Days).
-					'schema_movie_duration_hours' => 0,		// Movie Runtime (Hours).
-					'schema_movie_duration_mins'  => 0,		// Movie Runtime (Mins).
-					'schema_movie_duration_secs'  => 0,		// Movie Runtime (Secs).
+					'schema_movie_prodco_org_id'     => 'none',	// Movie Production Company.
+					'schema_movie_released_date'     => '',		// Movie Released Date.
+					'schema_movie_released_time'     => 'none',	// Movie Released Time.
+					'schema_movie_released_timezone' => $timezone,	// Movie Released Timezone.
+					'schema_movie_duration_days'     => 0,		// Movie Runtime (Days).
+					'schema_movie_duration_hours'    => 0,		// Movie Runtime (Hours).
+					'schema_movie_duration_mins'     => 0,		// Movie Runtime (Mins).
+					'schema_movie_duration_secs'     => 0,		// Movie Runtime (Secs).
 
 					/**
 					 * Schema Organization.
@@ -615,9 +618,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_review_item_cw_author_type'      => 'none',	// Subject Author Type.
 					'schema_review_item_cw_author_name'      => '',		// Subject Author Name.
 					'schema_review_item_cw_author_url'       => '',		// Subject Author URL.
-					'schema_review_item_cw_pub_date'         => '',		// Subject Publish Date.
-					'schema_review_item_cw_pub_time'         => 'none',	// Subject Publish Time.
-					'schema_review_item_cw_pub_timezone'     => $timezone,	// Subject Publish Timezone.
+					'schema_review_item_cw_pub_date'         => '',		// Subject Published Date.
+					'schema_review_item_cw_pub_time'         => 'none',	// Subject Published Time.
+					'schema_review_item_cw_pub_timezone'     => $timezone,	// Subject Published Timezone.
 					'schema_review_item_cw_created_date'     => '',		// Subject Created Date.
 					'schema_review_item_cw_created_time'     => 'none',	// Subject Created Time.
 					'schema_review_item_cw_created_timezone' => $timezone,	// Subject Created Timezone.

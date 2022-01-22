@@ -704,6 +704,14 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'content'  => $form->get_no_select( 'schema_movie_prodco_org_id', $org_names,
 						$css_class = 'long_name', $css_id = '', $is_assoc = true ),
 				),
+				'schema_movie_released' => array(
+					'tr_class' => $schema_type_row_class[ 'movie' ],
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Movie Released Date', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_movie_released',
+					'content'  => $form->get_no_date_time_tz( 'schema_movie_released' ),
+				),
 				'schema_movie_duration_time' => array(
 					'tr_class' => $schema_type_row_class[ 'movie' ],
 					'th_class' => 'medium',

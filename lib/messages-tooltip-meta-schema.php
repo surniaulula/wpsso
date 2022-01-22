@@ -160,7 +160,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-schema_book_pub':		// Book Publish Date
+						case 'tooltip-meta-schema_book_pub':		// Book Published Date.
 
 							$text = __( 'The date when this creative work was published or entered public discourse.', 'wpsso' );
 
@@ -449,6 +449,12 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
+						case 'tooltip-meta-schema_movie_released':	// Movie Released Date.
+
+							$text = __( 'The date the movie was released.', 'wpsso' );
+
+						 	break;
+
 						case 'tooltip-meta-schema_movie_duration_time':	// Movie Runtime.
 
 							$text = __( 'The total movie runtime from the start to the end of the credits.', 'wpsso' );
@@ -712,7 +718,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_item_cw_pub':		// Review: Subject Publish Date
+						case 'tooltip-meta-schema_review_item_cw_pub':		// Review: Subject Published Date.
 
 							$text = __( 'The date when this creative work was published or entered public discourse.', 'wpsso' );
 

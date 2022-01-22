@@ -97,6 +97,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/**
+			 * Book Published Date, Time, Timezone.
+			 *
 			 * Add the creative work published date, if one is available.
 			 */
 			if ( $date = WpssoSchema::get_opts_date_iso( $book_opts, 'book_pub' ) ) {
@@ -105,6 +107,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/**
+			 * Book Created Date, Time, Timezone.
+			 *
 			 * Add the creative work created date, if one is available.
 			 */
 			if ( $date = WpssoSchema::get_opts_date_iso( $book_opts, 'book_created' ) ) {

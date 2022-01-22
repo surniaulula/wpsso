@@ -1932,6 +1932,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 				/**
+				 * Subject Published Date.
+				 *
 				 * Add the creative work published date, if one is available.
 				 */
 				if ( $date = self::get_opts_date_iso( $md_opts, 'schema_review_item_cw_pub' ) ) {
@@ -1940,6 +1942,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 				/**
+				 * Subject Created Date.
+				 *
 				 * Add the creative work created date, if one is available.
 				 */
 				if ( $date = self::get_opts_date_iso( $md_opts, 'schema_review_item_cw_created' ) ) {
@@ -3107,9 +3111,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return '';
 			}
 
-			$md_date     = empty( $opts[ $md_pre . '_date' ] ) || $opts[ $md_pre . '_date' ] === 'none' ? '' : $opts[ $md_pre . '_date' ];
-			$md_time     = empty( $opts[ $md_pre . '_time' ] ) || $opts[ $md_pre . '_time' ] === 'none' ? '' : $opts[ $md_pre . '_time' ];
-			$md_timezone = empty( $opts[ $md_pre . '_timezone' ] ) || $opts[ $md_pre . '_timezone' ] === 'none' ? '' : $opts[ $md_pre . '_timezone' ];
+			$md_date     = empty( $opts[ $md_pre . '_date' ] ) || 'none' === $opts[ $md_pre . '_date' ] ? '' : $opts[ $md_pre . '_date' ];
+			$md_time     = empty( $opts[ $md_pre . '_time' ] ) || 'none' === $opts[ $md_pre . '_time' ] ? '' : $opts[ $md_pre . '_time' ];
+			$md_timezone = empty( $opts[ $md_pre . '_timezone' ] ) || 'none' === $opts[ $md_pre . '_timezone' ] ? '' : $opts[ $md_pre . '_timezone' ];
 
 			if ( empty( $md_date ) && empty( $md_time ) ) {		// No date or time.
 
@@ -3119,7 +3123,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 				return '';	// Nothing to do.
-
 			}
 
 			if ( ! empty( $md_date ) && empty( $md_time ) ) {	// Date with no time.
