@@ -243,7 +243,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.14.1-dev.2 (2022/01/21)**
+**Version 9.14.1-dev.3 (2022/01/22)**
 
 * **New Features**
 	* None.
@@ -253,6 +253,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fixed an undefined property error for `WpssoMessages::$doc_title_disabled`.
 * **Developer Notes**
 	* Removed unused methods:
+		* `SucomUtil::maybe_link_url()`
+		* `SucomUtil::get_first_value()`
+		* `SucomUtil::get_first_num()`
+		* `SucomUtil::get_last_num()`
+		* `SucomUtil::get_next_num()`
+		* `SucomUtil::get_first_last_next_nums()`
 		* `SucomPlugin::get_wp_plugin_dir()`
 		* `SucomPlugin::activate_plugin()`
 		* `SucomPlugin::is_slug_active()`
@@ -260,6 +266,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* `SucomPlugin::get_slug_name()`
 		* `SucomPlugin::get_slug_download_url()`
 		* `SucomPlugin::download_and_install_slug()`
+		* `WpssoUtil->filter_pub_lang()`
+	* Renamed `SucomUtil::$pub_lang` to `SucomUtil::$publisher_languages`.
+	* Renamed `SucomUtil::get_pub_lang()` to `SucomUtil::get_publisher_languages()`.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -785,9 +794,9 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 9.14.1-dev.2 =
+= 9.14.1-dev.3 =
 
-(2022/01/21) Fixed an undefined property error for `WpssoMessages::$doc_title_disabled`.
+(2022/01/22) Fixed an undefined property error for `WpssoMessages::$doc_title_disabled`.
 
 = 9.14.0 =
 
