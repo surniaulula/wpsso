@@ -243,7 +243,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.14.1-b.1 (2022/01/22)**
+**Version 9.14.1 (2022/01/22)**
 
 * **New Features**
 	* None.
@@ -285,7 +285,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Renamed the "Import Yoast SEO Social Meta" option to "Import Yoast SEO Metadata".
 	* Removed the "Show Yoast SEO Import Details" option.
 * **Bugfixes**
-	* Fixed incorrect addition of sameAs URLs for post ID 0.
+	* Fixed addition of sameAs URLs for post ID 0.
 * **Developer Notes**
 	* Added a new `WpssoProUtilAbstractSeoMeta` abstract class.
 	* Added a new `WpssoProUtilAioseopMeta` class to import All in One SEO Pack metadata.
@@ -794,13 +794,13 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 9.14.1-b.1 =
+= 9.14.1 =
 
 (2022/01/22) Fixed an undefined property error for `WpssoMessages::$doc_title_disabled`.
 
 = 9.14.0 =
 
-(2022/01/19) Added new "Import Rank Math SEO Metadata" and "Import SEO Framework Metadata" options. Fixed incorrect addition of sameAs URLs for post ID 0. Renamed lib/abstracts/ folder and its classes.
+(2022/01/19) Added new "Import Rank Math SEO Metadata" and "Import SEO Framework Metadata" options. Fixed addition of sameAs URLs for post ID 0. Renamed lib/abstracts/ folder and its classes.
 
 = 9.13.1 =
 
