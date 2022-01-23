@@ -243,7 +243,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.14.2-dev.1 (2022/01/22)**
+**Version 9.14.2 (2022/01/22)**
 
 * **New Features**
 	* None.
@@ -252,7 +252,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Deprecated the following unused methods:
+		* `SucomUtil::get_first_num()`
+		* `SucomUtil::get_last_num()`
+		* `SucomUtil::get_next_num()`
+		* `SucomUtil::get_first_last_next_nums()`
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -266,13 +270,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed an undefined property error for `WpssoMessages::$doc_title_disabled`.
 * **Developer Notes**
-	* Removed unused methods:
+	* Removed the following unused methods:
 		* `SucomUtil::maybe_link_url()`
 		* `SucomUtil::get_first_value()`
-		* `SucomUtil::get_first_num()`
-		* `SucomUtil::get_last_num()`
-		* `SucomUtil::get_next_num()`
-		* `SucomUtil::get_first_last_next_nums()`
 		* `SucomPlugin::get_wp_plugin_dir()`
 		* `SucomPlugin::activate_plugin()`
 		* `SucomPlugin::is_slug_active()`
@@ -808,7 +808,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 9.14.2-dev.1 =
+= 9.14.2 =
 
 (2022/01/22) Added a new "Movie Released Date" option in the Document SSO metabox.
 
