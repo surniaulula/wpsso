@@ -4540,13 +4540,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Deprecated on 2022/01/22.
+		 * Deprecated on 2022/01/23.
 		 *
 		 * Used by old WPSSO ORG and WPSSO PLM add-ons.
 		 */
 		public static function get_first_num( array $input ) {
 
-			_deprecated_function( __METHOD__ . '()', '2022/01/22', $replacement = '' );	// Deprecation message.
+			_deprecated_function( __METHOD__ . '()', '2022/01/23', $replacement = '' );	// Deprecation message.
 
 			list( $first, $last, $next ) = self::get_first_last_next_nums( $input );
 
@@ -4554,13 +4554,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Deprecated on 2022/01/22.
+		 * Deprecated on 2022/01/23.
 		 *
 		 * Used by old WPSSO ORG and WPSSO PLM add-ons.
 		 */
 		public static function get_last_num( array $input ) {
 
-			_deprecated_function( __METHOD__ . '()', '2022/01/22', $replacement = '' );	// Deprecation message.
+			_deprecated_function( __METHOD__ . '()', '2022/01/23', $replacement = '' );	// Deprecation message.
 
 			list( $first, $last, $next ) = self::get_first_last_next_nums( $input );
 
@@ -4568,13 +4568,13 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Deprecated on 2022/01/22.
+		 * Deprecated on 2022/01/23.
 		 *
 		 * Used by old WPSSO ORG and WPSSO PLM add-ons.
 		 */
 		public static function get_next_num( array $input ) {
 
-			_deprecated_function( __METHOD__ . '()', '2022/01/22', $replacement = '' );	// Deprecation message.
+			_deprecated_function( __METHOD__ . '()', '2022/01/23', $replacement = '' );	// Deprecation message.
 
 			list( $first, $last, $next ) = self::get_first_last_next_nums( $input );
 
@@ -4582,7 +4582,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Deprecated on 2022/01/22.
+		 * Deprecated on 2022/01/23.
 		 */
 		private static function get_first_last_next_nums( array $input ) {
 
