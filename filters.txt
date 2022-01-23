@@ -291,7 +291,7 @@
 
 'wpsso_save_user_options' ( $opts, $term_id, false, $mod )
 
-'wpsso_schema_markup_disable' ( $bool = false )	// Must be hooked before WordPress 'init' priority 11.
+'wpsso_schema_markup_disable' ( $bool = false )	// Filter applied at WordPress 'init' priority 11.
 
 'wpsso_schema_type_for_default' ( $type_id = 'webpage', $mod )
 
