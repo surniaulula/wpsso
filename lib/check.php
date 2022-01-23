@@ -535,8 +535,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 									$schema_disable = SucomUtil::get_const( 'WPSSO_SCHEMA_MARKUP_DISABLE' );
 
-									$schema_disable = apply_filters( 'wpsso_schema_markup_disable', $schema_disable );
-
 									$get_avail[ $sub ][ $id ] = $schema_disable ? false : true;
 
 									break;
