@@ -257,6 +257,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* `SucomUtil::get_last_num()`
 		* `SucomUtil::get_next_num()`
 		* `SucomUtil::get_first_last_next_nums()`
+	* Added a new 'wpsso_schema_markup_disable' filter.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
