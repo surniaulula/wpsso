@@ -243,7 +243,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.14.2 (2022/01/22)**
+**Version 9.14.2 (2022/01/23)**
 
 * **New Features**
 	* None.
@@ -810,7 +810,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 = 9.14.2 =
 
-(2022/01/22) Added a new "Movie Released Date" option in the Document SSO metabox.
+(2022/01/23) Added a new "Movie Released Date" option in the Document SSO metabox.
 
 = 9.14.1 =
 
