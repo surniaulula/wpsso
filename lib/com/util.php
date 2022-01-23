@@ -4540,6 +4540,80 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
+		 * Deprecated on 2022/01/22.
+		 *
+		 * Used by old WPSSO ORG and WPSSO PLM add-ons.
+		 */
+		public static function get_first_num( array $input ) {
+
+			_deprecated_function( __METHOD__ . '()', '2022/01/22', $replacement = '' );	// Deprecation message.
+
+			list( $first, $last, $next ) = self::get_first_last_next_nums( $input );
+
+			return $first;
+		}
+
+		/**
+		 * Deprecated on 2022/01/22.
+		 *
+		 * Used by old WPSSO ORG and WPSSO PLM add-ons.
+		 */
+		public static function get_last_num( array $input ) {
+
+			_deprecated_function( __METHOD__ . '()', '2022/01/22', $replacement = '' );	// Deprecation message.
+
+			list( $first, $last, $next ) = self::get_first_last_next_nums( $input );
+
+			return $last;
+		}
+
+		/**
+		 * Deprecated on 2022/01/22.
+		 *
+		 * Used by old WPSSO ORG and WPSSO PLM add-ons.
+		 */
+		public static function get_next_num( array $input ) {
+
+			_deprecated_function( __METHOD__ . '()', '2022/01/22', $replacement = '' );	// Deprecation message.
+
+			list( $first, $last, $next ) = self::get_first_last_next_nums( $input );
+
+			return $next;
+		}
+
+		/**
+		 * Deprecated on 2022/01/22.
+		 */
+		private static function get_first_last_next_nums( array $input ) {
+
+			$keys  = array_keys( $input );
+			$count = count( $keys );
+
+			if ( $count && ! is_numeric( implode( $keys ) ) ) { // Check for non-numeric keys.
+
+				$keys = array();
+
+				foreach ( $input as $key => $value ) { // Keep only the numeric keys.
+
+					if ( is_numeric( $key ) ) {
+
+						$keys[] = $key;
+					}
+				}
+
+				$count = count( $keys );
+			}
+
+			sort( $keys ); // Sort numerically.
+
+			$first = (int) reset( $keys );       // Get the first number.
+			$last  = (int) end( $keys );         // Get the last number.
+			$next  = $count ? $last + 1 : $last; // Next is 0 (not 1) for an empty array.
+
+			return array( $first, $last, $next );
+		}
+
+		/**
 		 * Modify the referenced array and return true, false, or the modified array.
 		 */
 		private static function insert_in_array( $insert, array &$arr, $match_key, $mixed, $add_value = null, $ret_bool = false ) {
