@@ -189,7 +189,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				 */
 				if ( method_exists( 'Yoast\WP\SEO\Integrations\Front_End_Integration', 'get_presenters' ) ) {
 
-					add_filter( 'wpseo_frontend_presenters', array( $this, 'cleanup_wpseo_frontend_presenters' ), 1000 );
+					add_filter( 'wpseo_frontend_presenters', array( $this, 'cleanup_wpseo_frontend_presenters' ), 1000, 2 );
 				}
 			}
 		}
@@ -349,7 +349,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 		 *
 		 * Disable Yoast SEO social meta tags and Schema markup.
 		 */
-		public function cleanup_wpseo_frontend_presenters( $presenters ) {
+		public function cleanup_wpseo_frontend_presenters( $presenters, $context ) {
 
 			if ( $this->p->debug->enabled ) {
 
