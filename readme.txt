@@ -243,7 +243,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.14.3-dev.2 (TBD)**
+**Version 9.14.3-dev.2 (2022/01/24)**
 
 * **New Features**
 	* None.
@@ -252,7 +252,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added a new `WpssoSchema->get_mod_script_type_application_ld_json_html()` method.
+	* Added a new `WpssoAdminHeadSuggestAddons` class in lib/admin-head-suggest-addons.php.
+	* Added a new `WpssoAdminHeadSuggestOptions` class in lib/admin-head-suggest-options.php.
+	* Moved '.wpsso-notice.update-nag' CSS from lib/config.php to css/com/admin-page.css.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -824,7 +827,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 = 9.14.3-dev.2 =
 
-(TBD) None.
+(2022/01/24) Added new `WpssoAdminHeadSuggestAddons` and `WpssoAdminHeadSuggestOptions` classes.
 
 = 9.14.2 =
 
