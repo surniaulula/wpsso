@@ -110,7 +110,12 @@
 .qtip.sucom-qtip.qtip-lime-green {
 	color:#144e14;
 	border:1px solid #33cc33;
-	background-color:#effbef;
+	background-color:#ecf7ed;
+}
+
+.wpsso-notice.update-nag {
+	border-left-color:#00a32a;
+	border-left-width:4px;
 }
 
 .wpsso-notice.update-nag .notice-message a,
@@ -158,13 +163,13 @@
 }
 
  .wpsso-notice.update-nag .notice-message {
-	padding:20px 25px;
+	padding:10px 30px;
  }
 
 .wpsso-notice.update-nag .notice-message p,
 .wpsso-notice.update-nag .notice-message ul,
 .wpsso-notice.update-nag .notice-message ol {
-	margin:20px 0;
+	margin:15px 0;
 }
 
 .wpsso-notice.update-nag .notice-message ul li {

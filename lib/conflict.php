@@ -79,7 +79,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 				$this->p->notice->err( $notice_msg, null, $notice_key );
 
-				$this->p->notice->nag( $notice_msg, null, $notice_key );
+				$this->p->notice->nag( '<p>' . $notice_msg . '</p>', null, $notice_key );
 			}
 
 			if ( ! empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
@@ -105,7 +105,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 					$this->p->notice->err( $notice_msg, null, $notice_key );
 					
-					$this->p->notice->nag( $notice_msg, null, $notice_key );
+					$this->p->notice->nag( '<p>' . $notice_msg . '</p>', null, $notice_key );
 				}
 			}
 
@@ -132,7 +132,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 				$this->p->notice->err( $notice_msg, null, $notice_key );
 
-				$this->p->notice->nag( $notice_msg, null, $notice_key );
+				$this->p->notice->nag( '<p>' . $notice_msg . '</p>', null, $notice_key );
 			}
 
 			if ( ! empty( $this->p->avail[ 'p_ext' ][ 'plm' ] ) ) {
@@ -158,7 +158,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 				$this->p->notice->err( $notice_msg, null, $notice_key );
 
-				$this->p->notice->nag( $notice_msg, null, $notice_key );
+				$this->p->notice->nag( '<p>' . $notice_msg . '</p>', null, $notice_key );
 			}
 		}
 

@@ -218,7 +218,11 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 			$notices_shown = 0;
 
-			if ( ! empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ) {
+			if ( empty( $this->p->cf[ 'plugin' ][ 'wpssogmf' ] ) ) {	// Just in case.
+
+				return $notices_shown;
+
+			} elseif ( ! empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ) {
 
 				// translators: Please ignore - translation uses a different text domain.
 				$ecom_plugin_name = __( 'WooCommerce', 'woocommerce' );
@@ -274,6 +278,11 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 		private function get_install_activate_addon_link( $ext ) {
 
+			if ( empty( $this->p->cf[ 'plugin' ][ $ext ] ) ) {	// Just in case.
+
+				return false;
+			}
+
 			$ext_info        = $this->p->cf[ 'plugin' ][ $ext ];
 			$ext_name_transl = _x( $ext_info[ 'name' ], 'plugin name', 'wpsso' );
 
@@ -292,6 +301,11 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 		}
 
 		private function get_purchase_plugin_link( $ext, $cmt = '' ) {
+
+			if ( empty( $this->p->cf[ 'plugin' ][ $ext ] ) ) {	// Just in case.
+
+				return false;
+			}
 
 			$pkg_info         = $this->p->admin->get_pkg_info();	// Returns an array from cache.
 			$ext_info         = $this->p->cf[ 'plugin' ][ $ext ];
