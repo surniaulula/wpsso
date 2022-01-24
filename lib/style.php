@@ -252,57 +252,6 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 						url("' . WPSSO_URLPATH . 'fonts/star.ttf?' . $this->version . '") format("truetype"),
 						url("' . WPSSO_URLPATH . 'fonts/star.svg?' . $this->version . '#star") format("svg");
 				}
-				.sucom-tooltip-icon::before {
-					font-family:"WpssoIcons";
-					font-size:1.2em;
-					font-weight:normal;
-					vertical-align:middle;
-					content:"\f29c";	/* .icon-question-circle-o */
-				}
-			';
-
-			/**
-			 * Admin toolbar notices.
-			 */
-			$custom_style_css .= '
-				#wpadminbar #wp-toolbar #wpsso-toolbar-notices-icon.ab-icon::before {
-					content:"' . $this->p->cf[ 'notice' ][ 'icon-code' ] . '";
-					font-family:'. $this->p->cf[ 'notice' ][ 'icon-font' ] . ';
-				}
-			';
-
-			foreach ( $this->p->cf[ 'notice' ][ 'css-class' ] as $css_class => $css_props ) {
-
-				foreach ( $css_props as $prop_name => $prop_value ) {
-
-					$custom_style_css .= '.wpsso-notice.' . $css_class . '{' . $prop_name . ':' . $prop_value . ';}' . "\n";
-				}
-			}
-
-			/**
-			 * Admin nag notices.
-			 */
-			$custom_style_css .= '
-				.wpsso-notice.update-nag .notice-message {
-					padding:15px 30px;
-				}
-				.wpsso-notice.update-nag .notice-message p,
-				.wpsso-notice.update-nag .notice-message ul,
-				.wpsso-notice.update-nag .notice-message ol {
-					margin:15px 0;
-				}
-				.wpsso-notice.update-nag .notice-message ul li {
-					list-style-type:square;
-				}
-				.wpsso-notice.update-nag .notice-message ol li {
-					list-style-type:decimal;
-				}
-				.wpsso-notice.update-nag .notice-message li {
-					margin:5px 0 5px 60px;
-				}
-				.woocommerce-page .wpsso-notice.update-nag {
-					margin:90px 20px 0 20px;
-				}
 			';
 
 			/**

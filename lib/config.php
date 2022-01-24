@@ -2359,27 +2359,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 			),
 			'notice' => array(
-				'title'     => 'SSO',					// Notice title.
-				'icon-font' => 'WpssoIcons',				// Icon font family.
-				'icon-code' => '\e81d',					// Icon CSS code.
-				'css-class' => array(					// Used by WpssoStyle->add_admin_page_style().
-					'update-nag' => array(				// CSS class name.
-						'color'            => '#144e14',	// CSS property name and value.
-						'border-width'     => '1px',
-						'border-style'     => 'solid',
-						'border-color'     => '#33cc33',
-						'background-color' => '#e0f7e0',
-					),
-					'update-nag a' => array(
-						'color' => '#1f7e1f',
-					),
-					'update-nag a:active' => array(
-						'color' => '#279d27',
-					),
-					'update-nag a:hover' => array(
-						'color' => '#279d27',
-					),
-				),
+				'title' => 'SSO',	// Notice title.
 			),
 			'meta' => array(	// Post, term, user add_meta_box() settings.
 				'id'    => 'sso',

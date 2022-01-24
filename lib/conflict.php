@@ -52,13 +52,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 			$this->conflict_check_vc();
 			$this->conflict_check_wp();
 
-			/**
-			 * WpssoConflictSeo.
-			 */
-			if ( ! class_exists( 'WpssoConflictSeo' ) ) {
-
-				require_once WPSSO_PLUGINDIR . 'lib/conflict-seo.php';
-			}
+			require_once WPSSO_PLUGINDIR . 'lib/conflict-seo.php';
 
 			$this->seo = new WpssoConflictSeo( $this->p );
 
@@ -84,6 +78,8 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				$notice_key = 'deactivate-wpsso-inherit-parent-meta';
 
 				$this->p->notice->err( $notice_msg, null, $notice_key );
+
+				$this->p->notice->nag( $notice_msg, null, $notice_key );
 			}
 
 			if ( ! empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
@@ -99,21 +95,17 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 					$notice_msg = sprintf( __( 'The %1$s add-on has been discontinued.', 'wpsso' ), $pkg_info[ 'wpssojson' ][ 'name' ] ) . ' ';
 
-					$notice_msg .= sprintf( __( 'The %1$s shortcode was migrated to a new %2$s add-on.', 'wpsso' ),
-						'<code>&#91;schema&#93;</code>', $addon_link ) . ' ';
+					$notice_msg .= sprintf( __( 'The %1$s shortcode was migrated to a new %2$s add-on (do not activate this new add-on unless you already use or require the %1$s shortcode).', 'wpsso' ),  '<code>&#91;schema&#93;</code>', $addon_link ) . ' ';
 
-					$notice_msg .= sprintf( __( 'You should not activate the %1$s add-on unless you already use the %2$s shortcode.', 'wpsso' ),
-						$addon_link, '<code>&#91;schema&#93;</code>' ) . ' ';
+					$notice_msg .= sprintf( __( 'All other features of the %1$s add-on were integrated into the %2$s plugin.', 'wpsso' ), $pkg_info[ 'wpssojson' ][ 'name' ], $pkg_info[ 'wpsso' ][ 'name' ] ) . ' ';
 
-					$notice_msg .= sprintf( __( 'All other features of the %1$s add-on were integrated into the %2$s plugin.', 'wpsso' ),
-						$pkg_info[ 'wpssojson' ][ 'name' ], $pkg_info[ 'wpsso' ][ 'name' ] ) . ' ';
-
-					$notice_msg .= sprintf( __( '<a href="%1$s">You can now deactivate and delete the %2$s add-on</a>.', 'wpsso' ),
-						$plugins_url, $pkg_info[ 'wpssojson' ][ 'name' ] );
+					$notice_msg .= sprintf( __( '<a href="%1$s">You can now deactivate and delete the %2$s add-on</a>.', 'wpsso' ), $plugins_url, $pkg_info[ 'wpssojson' ][ 'name' ] );
 
 					$notice_key = 'deactivate-wpsso-schema-json-ld';
 
 					$this->p->notice->err( $notice_msg, null, $notice_key );
+					
+					$this->p->notice->nag( $notice_msg, null, $notice_key );
 				}
 			}
 
@@ -125,23 +117,22 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				$addon_name  = $pkg_info[ 'wpssoopm' ][ 'name' ];
 				$addon_link  = empty( $this->p->avail[ 'p_ext' ][ 'opm' ] ) ? $this->p->util->get_admin_url( 'addons#wpssoopm', $addon_name ) : $addon_name;
 
-				$notice_msg = sprintf( __( 'The %1$s add-on has been deprecated and replaced by the %2$s add-on.', 'wpsso' ),
-					$pkg_info[ 'wpssoorg' ][ 'name' ], $addon_link ) . ' ';
+				$notice_msg = sprintf( __( 'The %1$s add-on has been deprecated and replaced by the %2$s add-on.', 'wpsso' ), $pkg_info[ 'wpssoorg' ][ 'name' ], $addon_link ) . ' ';
 
 				if ( empty( $this->p->avail[ 'p_ext' ][ 'opm' ] ) ) {
 
-					$notice_msg .= sprintf( __( 'After installing and activating the %1$s add-on, <a href="%2$s">please deactivate and delete the deprecated %3$s add-on</a>.', 'wpsso' ),
-						$addon_link, $plugins_url, $pkg_info[ 'wpssoorg' ][ 'name' ] );
+					$notice_msg .= sprintf( __( 'After installing and activating the %1$s add-on, <a href="%2$s">please deactivate and delete the deprecated %3$s add-on</a>.', 'wpsso' ), $addon_link, $plugins_url, $pkg_info[ 'wpssoorg' ][ 'name' ] );
 
 				} else {
 
-					$notice_msg .= sprintf( __( '<a href="%1$s">Please deactivate and delete the deprecated %2$s add-on</a>.', 'wpsso' ),
-						$plugins_url, $pkg_info[ 'wpssoorg' ][ 'name' ] );
+					$notice_msg .= sprintf( __( '<a href="%1$s">Please deactivate and delete the deprecated %2$s add-on</a>.', 'wpsso' ), $plugins_url, $pkg_info[ 'wpssoorg' ][ 'name' ] );
 				}
 
 				$notice_key = 'deactivate-wpsso-organization';
 
 				$this->p->notice->err( $notice_msg, null, $notice_key );
+
+				$this->p->notice->nag( $notice_msg, null, $notice_key );
 			}
 
 			if ( ! empty( $this->p->avail[ 'p_ext' ][ 'plm' ] ) ) {
@@ -152,23 +143,22 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				$addon_link  = empty( $this->p->avail[ 'p_ext' ][ 'opm' ] ) ?
 					$this->p->util->get_admin_url( 'addons#wpssoopm', $pkg_info[ 'wpssoopm' ][ 'name' ] ) : $pkg_info[ 'wpssoopm' ][ 'name' ];
 
-				$notice_msg = sprintf( __( 'The %1$s add-on has been deprecated and replaced by the %2$s add-on.', 'wpsso' ),
-					$pkg_info[ 'wpssoplm' ][ 'name' ], $addon_link ) . ' ';
+				$notice_msg = sprintf( __( 'The %1$s add-on has been deprecated and replaced by the %2$s add-on.', 'wpsso' ), $pkg_info[ 'wpssoplm' ][ 'name' ], $addon_link ) . ' ';
 
 				if ( empty( $this->p->avail[ 'p_ext' ][ 'opm' ] ) ) {
 
-					$notice_msg .= sprintf( __( 'After installing and activating the %1$s add-on, <a href="%2$s">please deactivate and delete the deprecated %3$s add-on</a>.', 'wpsso' ),
-						$addon_link, $plugins_url, $pkg_info[ 'wpssoplm' ][ 'name' ] );
+					$notice_msg .= sprintf( __( 'After installing and activating the %1$s add-on, <a href="%2$s">please deactivate and delete the deprecated %3$s add-on</a>.', 'wpsso' ), $addon_link, $plugins_url, $pkg_info[ 'wpssoplm' ][ 'name' ] );
 
 				} else {
 
-					$notice_msg .= sprintf( __( '<a href="%1$s">Please deactivate and delete the deprecated %2$s add-on</a>.', 'wpsso' ),
-						$plugins_url, $pkg_info[ 'wpssoplm' ][ 'name' ] );
+					$notice_msg .= sprintf( __( '<a href="%1$s">Please deactivate and delete the deprecated %2$s add-on</a>.', 'wpsso' ), $plugins_url, $pkg_info[ 'wpssoplm' ][ 'name' ] );
 				}
 
 				$notice_key = 'deactivate-wpsso-plm';
 
 				$this->p->notice->err( $notice_msg, null, $notice_key );
+
+				$this->p->notice->nag( $notice_msg, null, $notice_key );
 			}
 		}
 
