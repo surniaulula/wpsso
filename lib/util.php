@@ -1670,6 +1670,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 		}
 
+		/**
+		 * Used by WpssoHead->show_head() and WpssoAdminHead->__construct().
+		 */
 		public function log_is_functions() {
 
 			if ( ! $this->p->debug->enabled ) {	// Nothing to do.

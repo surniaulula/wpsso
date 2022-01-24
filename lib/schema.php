@@ -425,6 +425,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $json_data;
 		}
 
+		public function get_mod_script_type_application_ld_json_html( array $mod ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			$json_data = $this->get_mod_json_data( $mod );	// Can return false.
+
+			return empty( $json_data ) ? '' : '<script type="application/ld+json">' . $this->p->util->json_format( $json_data ) . '</script>' . "\n";
+		}
+
 		public function get_mod_json_data( array $mod ) {
 
 			if ( $this->p->debug->enabled ) {

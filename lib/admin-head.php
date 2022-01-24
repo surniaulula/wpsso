@@ -53,11 +53,10 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				$this->suggest = new WpssoAdminHeadSuggest( $plugin );
 
 				add_action( 'admin_head', array( $this, 'wp_config_check' ), -300 );
-				add_action( 'admin_head', array( $this, 'pending_updates_notice' ), -200 );
+				add_action( 'admin_head', array( $this, 'pending_updates' ), -200 );	// Requires 'update_plugins' capability.
 				add_action( 'admin_head', array( $this, 'requires_notices' ), -100 );
 				add_action( 'admin_head', array( $this->p->util, 'log_is_functions' ), 10 );
-				add_action( 'admin_head', array( $this, 'timed_notices' ), 200 );
-				add_action( 'admin_head', array( $this, 'robots_notice' ), 300 );
+				add_action( 'admin_head', array( $this, 'timed_notices' ), 200 );	// Requires 'manage_options' capability.
 			}
 		}
 
@@ -137,30 +136,28 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 		/**
 		 * Show a notice if there are pending WPSSO plugin updates and the user can update plugins.
 		 */
-		public function pending_updates_notice() {
+		public function pending_updates() {
 
-			if ( ! current_user_can( 'update_plugins' ) ) {
+			if ( current_user_can( 'update_plugins' ) ) {
 
-				return;
-			}
+				$update_count = SucomPlugin::get_updates_count( $plugin_prefix = 'wpsso' );
 
-			$update_count = SucomPlugin::get_updates_count( $plugin_prefix = 'wpsso' );
-
-			if ( $update_count > 0 ) {
-
-				$p_info        = $this->p->cf[ 'plugin' ][ 'wpsso' ];
-				$p_name_transl = _x( $p_info[ 'name' ], 'plugin name', 'wpsso' );
-
-				$notice_key = 'have-updates-for-wpsso';
-
-				$notice_msg = sprintf( _n( 'There is <a href="%1$s">%2$d pending update for the %3$s plugin and its add-on(s)</a>.',
-					'There are <a href="%1$s">%2$d pending updates for the %3$s plugin and its add-on(s)</a>.', $update_count, 'wpsso' ),
-						self_admin_url( 'update-core.php' ), $update_count, $p_name_transl ) . ' ';
-
-				$notice_msg .= _n( 'Please install this update at your earliest convenience.',
-					'Please install these updates at your earliest convenience.', $update_count, 'wpsso' );
-
-				$this->p->notice->inf( $notice_msg, null, $notice_key );
+				if ( $update_count > 0 ) {
+	
+					$p_info        = $this->p->cf[ 'plugin' ][ 'wpsso' ];
+					$p_name_transl = _x( $p_info[ 'name' ], 'plugin name', 'wpsso' );
+	
+					$notice_key = 'have-updates-for-wpsso';
+	
+					$notice_msg = sprintf( _n( 'There is <a href="%1$s">%2$d pending update for the %3$s plugin and its add-on(s)</a>.',
+						'There are <a href="%1$s">%2$d pending updates for the %3$s plugin and its add-on(s)</a>.', $update_count, 'wpsso' ),
+							self_admin_url( 'update-core.php' ), $update_count, $p_name_transl ) . ' ';
+	
+					$notice_msg .= _n( 'Please install this update at your earliest convenience.',
+						'Please install these updates at your earliest convenience.', $update_count, 'wpsso' );
+	
+					$this->p->notice->inf( $notice_msg, null, $notice_key );
+				}
 			}
 		}
 
@@ -238,7 +235,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				}
 			}
 
-			if ( $this->p->notice->can_dismiss() && current_user_can( 'manage_options' ) ) {
+			if ( current_user_can( 'manage_options' ) ) {
 
 				foreach ( array( 'wp', 'php' ) as $key ) {
 
@@ -250,16 +247,14 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 								global $wp_version;
 
-								$app_version = $wp_version;
-
+								$app_version  = $wp_version;
 								$dismiss_time = MONTH_IN_SECONDS;
 
 								break;
 
 							case 'php':
 
-								$app_version = phpversion();
-
+								$app_version  = phpversion();
 								$dismiss_time = 3 * MONTH_IN_SECONDS;
 
 								break;
@@ -292,59 +287,19 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			}
 		}
 
+		/**
+		 * Show a single notice at a time.
+		 */
 		public function timed_notices() {
 
-			if ( ! $this->p->notice->can_dismiss() || ! current_user_can( 'manage_options' ) ) {
+			if ( current_user_can( 'manage_options' ) ) {
 
-				if ( $this->p->debug->enabled ) {
+				if ( ! $this->single_notice_review() ) {
 
-					$this->p->debug->log( 'exiting early: cannot dismiss or cannot manage options' );
-				}
+					if ( ! $this->single_notice_upsell() ) {
 
-				return;	// Stop here.
-			}
-
-			/**
-			 * Only show a single notice at a time.
-			 */
-			if ( ! $this->single_notice_review() ) {
-
-				if ( ! $this->single_notice_upsell() ) {
-
-					 // Add more timed notices here as needed.
-				}
-			}
-		}
-
-		public function robots_notice() {
-
-			if ( ! $this->p->notice->can_dismiss() || ! current_user_can( 'manage_options' ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: cannot dismiss or cannot manage options' );
-				}
-
-				return;	// Stop here.
-			}
-
-			if ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
-
-				if ( $this->p->util->robots->is_disabled() ) {
-
-					$seo_other_tab_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_head_tags-tab_seo_other',
-						_x( 'SSO', 'menu title', 'wpsso' ) . ' &gt; ' .
-						_x( 'Advanced Settings', 'lib file description', 'wpsso' ) . ' &gt; ' .
-						_x( 'HTML Tags', 'metabox title', 'wpsso' ) . ' &gt; ' .
-						_x( 'SEO / Other', 'metabox tab', 'wpsso' ) );
-
-					$notice_msg = sprintf( __( 'Please note that the <code>%s</code> HTML tag is currently disabled and a known SEO plugin has not been detected.', 'wpsso' ), 'meta name robots' ) . ' ';
-
-					$notice_msg .= sprintf( __( 'If another SEO plugin or your theme templates are not adding the <code>%1$s</code> HTML tag to your webpages, you can re-enable this option under the %2$s tab.', 'wpsso' ), 'meta name robots', $seo_other_tab_link ) . ' ';
-
-					$notice_key = 'advanced-robots-notice-unchecked-without-seo-plugin';
-
-					$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
+						 // Add more timed notices here as needed.
+					}
 				}
 			}
 		}

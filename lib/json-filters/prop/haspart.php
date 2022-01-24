@@ -31,7 +31,6 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 			}
 
 			$this->p->util->add_plugin_filters( $this, array(
-				'content_html_script_application_ld_json' => 2,
 				'json_data_https_schema_org_thing'        => 5,
 				'json_data_https_schema_org_creativework' => 5,
 			), $prio = 10000 );
@@ -45,26 +44,6 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 			 * Comment json-ld scripts saved in the self::$meta_key metadata array.
 			 */
 			add_filter( 'the_content', array( $this, 'maybe_comment_json_scripts' ), PHP_INT_MAX );
-		}
-
-		/**
-		 * Applied by the WpssoFaqShortcodeFaq->do_shortcode() and WpssoFaqShortcodeQuestion->do_shortcode() methods.
-		 */
-		public function filter_content_html_script_application_ld_json( $html, $mod ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			$json_data = $this->p->schema->get_mod_json_data( $mod );	// Can return false.
-
-			if ( ! empty( $json_data ) ) {
-
-				$html .= '<script type="application/ld+json">' . $this->p->util->json_format( $json_data ) . '</script>' . "\n";
-			}
-
-			return $html;
 		}
 
 		/**
