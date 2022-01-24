@@ -154,7 +154,10 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 				$action_links = array();	// Init a new action array for the notice message.
 
-				$action_links[] = $this->get_install_activate_addon_link( 'wpssowpsm' );
+				if ( $install_activate_link = $this->get_install_activate_addon_link( 'wpssowpsm' ) ) {
+
+					$action_links[] = $install_activate_link;
+				}
 
 				$wpsm_info        = $this->p->cf[ 'plugin' ][ 'wpssowpsm' ];
 				$wpsm_name_transl = _x( $wpsm_info[ 'name' ], 'plugin name', 'wpsso' );
@@ -205,7 +208,10 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 					$action_links = array();	// Init a new action array for the notice message.
 
-					$action_links[] = $this->get_purchase_plugin_link( 'wpsso' );
+					if ( $purchase_link = $this->get_purchase_plugin_link( 'wpsso' ) ) {
+					
+						$action_links[] = $purchase_link;
+					}
 
 					$prod_info_msg = __( 'brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, pattern, size, SKU, volume, weight, etc', 'wpsso' );
 
@@ -235,10 +241,16 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 						$required_msg = sprintf( __( '(required for %s integration)', 'wpsso' ), $ecom_plugin_name );
 
-						$action_links[] = $this->get_purchase_plugin_link( 'wpsso', $required_msg );
+						if ( $purchase_link = $this->get_purchase_plugin_link( 'wpsso', $required_msg ) ) {
+					
+							$action_links[] = $purchase_link;
+						}
 					}
 
-					$action_links[] = $this->get_install_activate_addon_link( 'wpssowcmd' );
+					if ( $install_activate_link = $this->get_install_activate_addon_link( 'wpssowcmd' ) ) {
+
+						$action_links[] = $install_activate_link;
+					}
 
 					$wcmd_info        = $this->p->cf[ 'plugin' ][ 'wpssowcmd' ];
 					$wcmd_name_transl = _x( $wcmd_info[ 'name' ], 'plugin name', 'wpsso' );
@@ -275,10 +287,16 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 							$required_msg = sprintf( __( '(required for %s integration)', 'wpsso' ), $ecom_plugin_name );
 
-							$action_links[] = $this->get_purchase_plugin_link( 'wpsso', $required_msg );
+							if ( $purchase_link = $this->get_purchase_plugin_link( 'wpsso', $required_msg ) ) {
+					
+								$action_links[] = $purchase_link;
+							}
 						}
 
-						$action_links[] = $this->get_install_activate_addon_link( 'wpssowcsdt' );
+						if ( $install_activate_link = $this->get_install_activate_addon_link( 'wpssowcsdt' ) ) {
+
+							$action_links[] = $install_activate_link;
+						}
 
 						$wcsdt_info        = $this->p->cf[ 'plugin' ][ 'wpssowcsdt' ];
 						$wcsdt_name_transl = _x( $wcsdt_info[ 'name' ], 'plugin name', 'wpsso' );
@@ -338,10 +356,16 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 						$required_msg = sprintf( __( '(required for %s integration)', 'wpsso' ), $ecom_plugin_name );
 
-						$action_links[] = $this->get_purchase_plugin_link( 'wpsso', $required_msg );
+						if ( $purchase_link = $this->get_purchase_plugin_link( 'wpsso', $required_msg ) ) {
+					
+							$action_links[] = $purchase_link;
+						}
 					}
 
-					$action_links[] = $this->get_install_activate_addon_link( 'wpssogmf' );
+					if ( $install_activate_link = $this->get_install_activate_addon_link( 'wpssogmf' ) ) {
+
+						$action_links[] = $install_activate_link;
+					}
 
 					$gmf_info        = $this->p->cf[ 'plugin' ][ 'wpssogmf' ];
 					$gmf_name_transl = _x( $gmf_info[ 'name' ], 'plugin name', 'wpsso' );
@@ -363,12 +387,13 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 		private function get_install_activate_addon_link( $ext ) {
 
-			if ( empty( $this->p->cf[ 'plugin' ][ $ext ] ) ) {	// Just in case.
+			if ( empty( $this->p->cf[ 'plugin' ][ $ext ][ 'base' ] ) ) {	// Just in case.
 
 				return false;
 			}
 
-			$ext_info        = $this->p->cf[ 'plugin' ][ $ext ];
+			$ext_info = $this->p->cf[ 'plugin' ][ $ext ];
+
 			$ext_name_transl = _x( $ext_info[ 'name' ], 'plugin name', 'wpsso' );
 
 			if ( SucomPlugin::is_plugin_installed( $ext_info[ 'base' ] ) ) {
@@ -387,7 +412,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 		private function get_purchase_plugin_link( $ext, $cmt = '' ) {
 
-			if ( empty( $this->p->cf[ 'plugin' ][ $ext ] ) ) {	// Just in case.
+			if ( empty( $this->p->cf[ 'plugin' ][ $ext ][ 'url' ][ 'purchase' ] ) ) {	// Just in case.
 
 				return false;
 			}

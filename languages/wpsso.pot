@@ -4904,13 +4904,13 @@ msgstr ""
 msgid "(%d sub-types)"
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:163
+#: lib/admin-head-suggest-addons.php:166
 msgid ""
 "The <a href=\"%1$s\">WordPress sitemaps XML</a> feature (introduced in "
 "WordPress v5.5) is enabled, but the %2$s add-on is not active."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:165
+#: lib/admin-head-suggest-addons.php:168
 msgid ""
 "You can activate this add-on to manage post and taxonomy types included in "
 "the WordPress sitemaps XML, exclude posts, pages, custom post types, "
@@ -4920,23 +4920,23 @@ msgid ""
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin-head-suggest-addons.php:196 lib/admin-head-suggest-addons.php:313
+#: lib/admin-head-suggest-addons.php:199 lib/admin-head-suggest-addons.php:331
 msgid "WooCommerce"
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:210
+#: lib/admin-head-suggest-addons.php:216
 msgid ""
 "brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, "
 "MPN, pattern, size, SKU, volume, weight, etc"
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:212
+#: lib/admin-head-suggest-addons.php:218
 msgid ""
 "The %1$s plugin does not provide sufficient Schema JSON-LD markup for Google "
 "Rich Results."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:214
+#: lib/admin-head-suggest-addons.php:220
 msgid ""
 "The %1$s plugin reads %2$s product data and provides complete Schema Product "
 "JSON-LD markup for Google Rich Results, including additional product images, "
@@ -4945,37 +4945,37 @@ msgid ""
 "shipping rates, shipping times, and much, much more."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:236 lib/admin-head-suggest-addons.php:276
-#: lib/admin-head-suggest-addons.php:339
+#: lib/admin-head-suggest-addons.php:242 lib/admin-head-suggest-addons.php:288
+#: lib/admin-head-suggest-addons.php:357
 msgid "(required for %s integration)"
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:246
+#: lib/admin-head-suggest-addons.php:258
 msgid ""
 "Schema Product markup for Google Rich Results requires at least one unique "
 "product ID, like the product MPN (Manufacturer Part Number), UPC, EAN, GTIN, "
 "or ISBN."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:248
+#: lib/admin-head-suggest-addons.php:260
 msgid ""
 "The product SKU (Stock Keeping Unit) from %1$s is not a valid unique product "
 "ID."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:250
+#: lib/admin-head-suggest-addons.php:262
 msgid ""
 "If you're not already using a plugin to manage unique product IDs for %1$s, "
 "you should activate the %2$s add-on."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:286
+#: lib/admin-head-suggest-addons.php:304
 msgid ""
 "Product shipping features are enabled in %1$s but the %2$s add-on is not "
 "active."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:288
+#: lib/admin-head-suggest-addons.php:306
 msgid ""
 "Adding shipping details to your Schema Product markup is important if you "
 "offer free or low-cost shipping options, as this will make your products "
@@ -4983,11 +4983,11 @@ msgid ""
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin-head-suggest-addons.php:320
+#: lib/admin-head-suggest-addons.php:338
 msgid "Easy Digital Downloads"
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:349
+#: lib/admin-head-suggest-addons.php:373
 msgid ""
 "If you have a Google Merchant account, the %1$s add-on can retrieve product "
 "information from %2$s and provide maintenance free XML feeds for each "
@@ -4995,26 +4995,26 @@ msgid ""
 "WordPress languages)."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:351
+#: lib/admin-head-suggest-addons.php:375
 msgid ""
 "If you're not already using a plugin to manage your Google Merchant Feeds, "
 "you should activate the %s add-on."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:379
+#: lib/admin-head-suggest-addons.php:404
 msgid "Activate the %s add-on."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:385
+#: lib/admin-head-suggest-addons.php:410
 msgid "Install and activate the %s add-on."
 msgstr ""
 
 #. translators: %1$s is a URL, %2$s is the plugin name, and %3$s is a pre-translated comment.
-#: lib/admin-head-suggest-addons.php:402
+#: lib/admin-head-suggest-addons.php:427
 msgid "<a href=\"%1$s\">Purchase the %2$s plugin</a> %3$s."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:405
+#: lib/admin-head-suggest-addons.php:430
 msgid "Purchase the %s plugin."
 msgstr ""
 
