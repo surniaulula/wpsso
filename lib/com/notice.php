@@ -201,16 +201,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			return $this->enable( $state );	// Return the previous state to save and restore.
 		}
 
+		/**
+		 * Note that only a single nag message is shown at a time.
+		 */
 		public function nag( $msg_text, $user_id = null, $notice_key = false, $dismiss_time = false, $payload = array() ) {
-
-			/**
-			 * Do not show a dismiss button by default.
-			 *
-			 * if ( ! isset( $payload[ 'dismiss_diff' ] ) ) {
-			 *
-			 * 	$payload[ 'dismiss_diff' ] = false;
-			 * }
-			 */
 
 			$this->log( 'nag', $msg_text, $user_id, $notice_key, $dismiss_time, $payload );
 		}

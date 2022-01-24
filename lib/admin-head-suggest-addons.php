@@ -41,9 +41,94 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 		public function suggest_addons() {
 
+			$this->suggest_addons_update_manager();
 			$this->suggest_addons_wp_sitemaps();
 			$this->suggest_addons_woocommerce();
 			$this->suggest_addons_ecommerce();
+		}
+
+		private function suggest_addons_update_manager() {
+
+			$notices_shown = 0;
+
+			$pkg_info = $this->p->admin->get_pkg_info();	// Returns an array from cache.
+			$um_info  = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
+			$have_tid = false;
+
+			foreach ( $this->p->cf[ 'plugin' ] as $ext => $ext_info ) {
+
+				if ( empty( $ext_info[ 'name' ] ) ) {	// Just in case.
+
+					continue;
+				}
+
+				if ( ! empty( $this->p->options[ 'plugin_' . $ext . '_tid' ] ) ) {
+
+					$have_tid = true;	// Found at least one plugin with an auth id.
+
+					/**
+					 * If the update manager version is not available, skip the warning notices and show a nag
+					 * notice to install the update manager.
+					 */
+					if ( empty( $um_info[ 'version' ] ) ) {
+
+						break;
+
+					} elseif ( empty( $pkg_info[ $ext ][ 'pdir' ] ) ) {
+
+						if ( ! empty( $ext_info[ 'base' ] ) && ! SucomPlugin::is_plugin_installed( $ext_info[ 'base' ] ) ) {
+
+							$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-installed', array( 'plugin_id' => $ext ) ) );
+
+							$notices_shown++;
+
+						} else {
+
+							$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-updated', array( 'plugin_id' => $ext ) ) );
+
+							$notices_shown++;
+						}
+					}
+				}
+			}
+
+			if ( $have_tid ) {
+
+				/**
+				 * If the update manager is active, its version should be available.
+				 */
+				if ( ! empty( $um_info[ 'version' ] ) ) {
+
+					$rec_version = WpssoConfig::$cf[ 'um' ][ 'rec_version' ];
+
+					if ( version_compare( $um_info[ 'version' ], $rec_version, '<' ) ) {
+
+						$this->p->notice->warn( $this->p->msgs->get( 'notice-um-version-recommended' ) );
+
+						$notices_shown++;
+					}
+
+				/**
+				 * Check if update manager is installed.
+				 */
+				} elseif ( SucomPlugin::is_plugin_installed( $um_info[ 'base' ] ) ) {
+
+					$this->p->notice->nag( $this->p->msgs->get( 'notice-um-activate-add-on' ) );
+
+					$notices_shown++;
+
+				/**
+				 * The update manager is not installed.
+				 */
+				} else {
+
+					$this->p->notice->nag( $this->p->msgs->get( 'notice-um-add-on-required' ) );
+
+					$notices_shown++;
+				}
+			}
+
+			return $notices_shown;
 		}
 
 		private function suggest_addons_wp_sitemaps() {

@@ -53,8 +53,8 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 				$this->suggest = new WpssoAdminHeadSuggest( $plugin );
 
 				add_action( 'admin_head', array( $this, 'wp_config_check' ), -300 );
-				add_action( 'admin_head', array( $this, 'pending_updates' ), -200 );	// Requires 'update_plugins' capability.
-				add_action( 'admin_head', array( $this, 'requires_notices' ), -100 );
+				add_action( 'admin_head', array( $this, 'wp_php_versions' ), -200 );	// Requires 'manage_options' capability.
+				add_action( 'admin_head', array( $this, 'pending_updates' ), -100 );	// Requires 'update_plugins' capability.
 				add_action( 'admin_head', array( $this->p->util, 'log_is_functions' ), 10 );
 				add_action( 'admin_head', array( $this, 'timed_notices' ), 200 );	// Requires 'manage_options' capability.
 			}
@@ -133,107 +133,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 			update_option( WPSSO_WP_CONFIG_CHECK_NAME, $passed = true, $autoload = false );
 		}
 
-		/**
-		 * Show a notice if there are pending WPSSO plugin updates and the user can update plugins.
-		 */
-		public function pending_updates() {
-
-			if ( current_user_can( 'update_plugins' ) ) {
-
-				$update_count = SucomPlugin::get_updates_count( $plugin_prefix = 'wpsso' );
-
-				if ( $update_count > 0 ) {
-	
-					$p_info        = $this->p->cf[ 'plugin' ][ 'wpsso' ];
-					$p_name_transl = _x( $p_info[ 'name' ], 'plugin name', 'wpsso' );
-	
-					$notice_key = 'have-updates-for-wpsso';
-	
-					$notice_msg = sprintf( _n( 'There is <a href="%1$s">%2$d pending update for the %3$s plugin and its add-on(s)</a>.',
-						'There are <a href="%1$s">%2$d pending updates for the %3$s plugin and its add-on(s)</a>.', $update_count, 'wpsso' ),
-							self_admin_url( 'update-core.php' ), $update_count, $p_name_transl ) . ' ';
-	
-					$notice_msg .= _n( 'Please install this update at your earliest convenience.',
-						'Please install these updates at your earliest convenience.', $update_count, 'wpsso' );
-	
-					$this->p->notice->inf( $notice_msg, null, $notice_key );
-				}
-			}
-		}
-
-		public function requires_notices() {
-
-			$pkg_info = $this->p->admin->get_pkg_info();	// Returns an array from cache.
-			$um_info  = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
-			$have_tid = false;
-
-			foreach ( $this->p->cf[ 'plugin' ] as $ext => $ext_info ) {
-
-				if ( empty( $ext_info[ 'name' ] ) ) {	// Just in case.
-
-					continue;
-				}
-
-				if ( ! empty( $this->p->options[ 'plugin_' . $ext . '_tid' ] ) ) {
-
-					$have_tid = true;	// Found at least one plugin with an auth id.
-
-					/**
-					 * If the update manager is active, its version should be available.
-					 *
-					 * If the update manager version is not available, skip the warning notices and show a nag
-					 * notice to install the update manager.
-					 */
-					if ( ! empty( $um_info[ 'version' ] ) ) {
-
-						if ( empty( $pkg_info[ $ext ][ 'pdir' ] ) ) {
-
-							if ( ! empty( $ext_info[ 'base' ] ) && ! SucomPlugin::is_plugin_installed( $ext_info[ 'base' ] ) ) {
-
-								$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-installed', array( 'plugin_id' => $ext ) ) );
-
-							} else {
-
-								$this->p->notice->warn( $this->p->msgs->get( 'notice-pro-not-updated', array( 'plugin_id' => $ext ) ) );
-							}
-						}
-
-					} else {
-
-						break;
-					}
-				}
-			}
-
-			if ( $have_tid ) {
-
-				/**
-				 * If the update manager is active, its version should be available.
-				 */
-				if ( ! empty( $um_info[ 'version' ] ) ) {
-
-					$rec_version = WpssoConfig::$cf[ 'um' ][ 'rec_version' ];
-
-					if ( version_compare( $um_info[ 'version' ], $rec_version, '<' ) ) {
-
-						$this->p->notice->warn( $this->p->msgs->get( 'notice-um-version-recommended' ) );
-					}
-
-				/**
-				 * Check if update manager is installed.
-				 */
-				} elseif ( SucomPlugin::is_plugin_installed( $um_info[ 'base' ] ) ) {
-
-					$this->p->notice->nag( $this->p->msgs->get( 'notice-um-activate-add-on' ) );
-
-				/**
-				 * The update manager is not active or installed.
-				 */
-				} else {
-
-					$this->p->notice->nag( $this->p->msgs->get( 'notice-um-add-on-required' ) );
-				}
-			}
+		public function wp_php_versions() {
 
 			if ( current_user_can( 'manage_options' ) ) {
 
@@ -283,6 +183,34 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 							$this->p->notice->warn( $warn_msg, null, $notice_key, $dismiss_time );
 						}
 					}
+				}
+			}
+		}
+
+		/**
+		 * Show a notice if there are pending WPSSO plugin updates and the user can update plugins.
+		 */
+		public function pending_updates() {
+
+			if ( current_user_can( 'update_plugins' ) ) {
+
+				$update_count = SucomPlugin::get_updates_count( $plugin_prefix = 'wpsso' );
+
+				if ( $update_count > 0 ) {
+	
+					$p_info        = $this->p->cf[ 'plugin' ][ 'wpsso' ];
+					$p_name_transl = _x( $p_info[ 'name' ], 'plugin name', 'wpsso' );
+	
+					$notice_key = 'have-updates-for-wpsso';
+	
+					$notice_msg = sprintf( _n( 'There is <a href="%1$s">%2$d pending update for the %3$s plugin and its add-on(s)</a>.',
+						'There are <a href="%1$s">%2$d pending updates for the %3$s plugin and its add-on(s)</a>.', $update_count, 'wpsso' ),
+							self_admin_url( 'update-core.php' ), $update_count, $p_name_transl ) . ' ';
+	
+					$notice_msg .= _n( 'Please install this update at your earliest convenience.',
+						'Please install these updates at your earliest convenience.', $update_count, 'wpsso' );
+	
+					$this->p->notice->inf( $notice_msg, null, $notice_key );
 				}
 			}
 		}
