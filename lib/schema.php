@@ -1709,7 +1709,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $org_opts;
 		}
 
-		public static function add_howto_step_data( &$json_data, $md_opts, $opt_prefix = 'schema_howto_step', $prop_name = 'step' ) {
+		public static function add_howto_step_data( &$json_data, $mod, $md_opts, $opt_prefix = 'schema_howto_step', $prop_name = 'step' ) {
 
 			$wpsso =& Wpsso::get_instance();
 

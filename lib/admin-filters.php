@@ -52,65 +52,14 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 		 */
 		public function filter_status_pro_features( $features, $ext, $info ) {
 
-			$pkg_info      = $this->p->admin->get_pkg_info();	// Returns an array from cache.
-			$td_class      = $pkg_info[ $ext ][ 'pp' ] ? '' : 'blank';
-			$status_on     = $pkg_info[ $ext ][ 'pp' ] ? 'on' : 'recommended';
-			$apis_tab_url  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_apikeys' );
-			$integ_tab_url = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration' );
+			$pkg_info        = $this->p->admin->get_pkg_info();	// Returns an array from cache.
+			$td_class        = $pkg_info[ $ext ][ 'pp' ] ? '' : 'blank';
+			$status_on       = $pkg_info[ $ext ][ 'pp' ] ? 'on' : 'recommended';
+			$integ_tab_url   = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration' );
+			$shorten_tab_url = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_shortening' );
 
 			/**
-			 * Image Dimension Checks.
-			 *
-			 * pro/util/check-img-dims.php.
-			 */
-			$features[ '(feature) Image Dimension Checks' ][ 'label_url' ] = $integ_tab_url;
-
-			$features[ '(feature) Image Dimension Checks' ][ 'status' ] = $this->p->options[ 'plugin_check_img_dims' ] ? $status_on : 'recommended';
-
-			/**
-			 * Import All in One SEO Pack Metadata.
-			 *
-			 * pro/util/aioseop-meta.php.
-			 */
-			$features[ '(feature) Import All in One SEO Pack Metadata' ][ 'label_url' ] = $integ_tab_url;
-
-			/**
-			 * Import Rank Math SEO Metadata.
-			 *
-			 * pro/util/rankmath-meta.php.
-			 */
-			$features[ '(feature) Import Rank Math SEO Metadata' ][ 'label_url' ] = $integ_tab_url;
-
-			/**
-			 * Import The SEO Framework Metadata.
-			 *
-			 * pro/util/seoframework-meta.php.
-			 */
-			$features[ '(feature) Import The SEO Framework Metadata' ][ 'label_url' ] = $integ_tab_url;
-
-			/**
-			 * Import Yoast SEO Metadata.
-			 *
-			 * pro/util/wpseo-meta.php.
-			 */
-			$features[ '(feature) Import Yoast SEO Metadata' ][ 'label_url' ] = $integ_tab_url;
-
-			/**
-			 * URL Shortening Service.
-			 *
-			 * pro/util/shorten.php.
-			 */
-			$features[ '(feature) URL Shortening Service' ][ 'label_url' ] = $apis_tab_url;
-
-			/**
-			 * Upscale Media Library Images.
-			 *
-			 * pro/media/upscale.php.
-			 */
-			$features[ '(feature) Upscale Media Library Images' ][ 'label_url' ] = $integ_tab_url;
-
-			/**
-			 * SSO > Advanced Settings > Integration > Use Filtered "SEO" Title.
+			 * SSO > Advanced Settings > Plugin Settings > Integration > Use Filtered "SEO" Title.
 			 */
 			$features[ '(feature) Use Filtered "SEO" Title' ] = array(
 				'td_class'     => $td_class,
@@ -120,7 +69,7 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 			);
 
 			/**
-			 * SSO > Advanced Settings > Integration > Use Filtered Content.
+			 * SSO > Advanced Settings > Plugin Settings > Integration > Use Filtered Content.
 			 */
 			$features[ '(feature) Use Filtered Content' ] = array(
 				'td_class'     => $td_class,
@@ -130,7 +79,7 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 			);
 
 			/**
-			 * SSO > Advanced Settings > Integration > Use Filtered Excerpt.
+			 * SSO > Advanced Settings > Plugin Settings > Integration > Use Filtered Excerpt.
 			 */
 			$features[ '(feature) Use Filtered Excerpt' ] = array(
 				'td_class'     => $td_class,
@@ -140,7 +89,7 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 			);
 
 			/**
-			 * SSO > Advanced Settings > Integration > Inherit Featured Image.
+			 * SSO > Advanced Settings > Plugin Settings > Integration > Inherit Featured Image.
 			 */
 			$features[ '(feature) Inherit Featured Image' ] = array(
 				'td_class'     => $td_class,
@@ -150,7 +99,7 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 			);
 
 			/**
-			 * SSO > Advanced Settings > Integration > Inherit Custom Images.
+			 * SSO > Advanced Settings > Plugin Settings > Integration > Inherit Custom Images.
 			 */
 			$features[ '(feature) Inherit Custom Images' ] = array(
 				'td_class'     => $td_class,
@@ -158,6 +107,48 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 				'label_url'    => $integ_tab_url,
 				'status'       => $this->p->options[ 'plugin_inherit_custom' ] ? $status_on : 'off',
 			);
+
+			/**
+			 * SSO > Advanced Settings > Plugin Settings > Integration > Image Dimension Checks.
+			 */
+			$features[ '(feature) Image Dimension Checks' ][ 'label_url' ] = $integ_tab_url;
+
+			$features[ '(feature) Image Dimension Checks' ][ 'status' ] = $this->p->options[ 'plugin_check_img_dims' ] ? $status_on : 'recommended';
+
+			/**
+			 * SSO > Advanced Settings > Plugin Settings > Integration > Upscale Media Library Images.
+			 */
+			$features[ '(feature) Upscale Media Library Images' ][ 'label_url' ] = $integ_tab_url;
+
+			/**
+			 * SSO > Advanced Settings > Plugin Settings > Integration > Import All in One SEO Pack Metadata.
+			 */
+			$features[ '(feature) Import All in One SEO Pack Metadata' ][ 'label_url' ] = $integ_tab_url;
+
+			/**
+			 * SSO > Advanced Settings > Plugin Settings > Integration > Import Rank Math SEO Metadata.
+			 */
+			$features[ '(feature) Import Rank Math SEO Metadata' ][ 'label_url' ] = $integ_tab_url;
+
+			/**
+			 * SSO > Advanced Settings > Plugin Settings > Integration > Import The SEO Framework Metadata.
+			 */
+			$features[ '(feature) Import The SEO Framework Metadata' ][ 'label_url' ] = $integ_tab_url;
+
+			/**
+			 * SSO > Advanced Settings > Plugin Settings > Integration > Import Yoast SEO Metadata.
+			 */
+			$features[ '(feature) Import Yoast SEO Metadata' ][ 'label_url' ] = $integ_tab_url;
+
+			/**
+			 * SSO > Advanced Settings > Plugin Settings > Integration > Import Yoast SEO Blocks Attrs.
+			 */
+			$features[ '(feature) Import Yoast SEO Blocks Attrs' ][ 'label_url' ] = $integ_tab_url;
+
+			/**
+			 * SSO > Advanced Settings > Service APIs > Shortening Services > URL Shortening Service.
+			 */
+			$features[ '(feature) URL Shortening Service' ][ 'label_url' ] = $shorten_tab_url;
 
 			/**
 			 * SSO > Advanced Settings > Service APIs > Shortening Services tab.
@@ -189,7 +180,7 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 				$features[ '(api) ' . $name . ' Shortener API' ] = array(
 					'td_class'     => $td_class,
 					'label_transl' => $label_transl,
-					'label_url'    => $apis_tab_url,
+					'label_url'    => $shorten_tab_url,
 					'status'       => $svc_status,
 				);
 			}

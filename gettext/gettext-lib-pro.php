@@ -31,6 +31,7 @@ _x( 'Import All in One SEO Pack Metadata', 'option label', 'wpsso' );
 _x( 'Import Rank Math SEO Metadata', 'option label', 'wpsso' );
 _x( 'Import The SEO Framework Metadata', 'option label', 'wpsso' );
 _x( 'Import Yoast SEO Metadata', 'option label', 'wpsso' );
+_x( 'Import Yoast SEO Blocks Attrs', 'option label', 'wpsso' );
 _x( 'Open Graph (Facebook and oEmbed)', 'option label', 'wpsso' );
 _x( 'Pinterest Pin It', 'option label', 'wpsso' );
 _x( 'Schema 1:1 (Google)', 'option label', 'wpsso' );

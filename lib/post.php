@@ -415,7 +415,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$post_obj = SucomUtil::get_post_object( $post_id );
 
 					/**
-					 * Since WPSSO Core v9.14.3-dev.3.
+					 * Since WPSSO Core v9.15.0.
 					 *
 					 * See WpssoUtilBlocks->filter_import_content_blocks().
 					 */

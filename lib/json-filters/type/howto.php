@@ -78,7 +78,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeHowTo' ) ) {
 			 * Property:
 			 * 	step
 			 */
-			WpssoSchema::add_howto_step_data( $json_ret, $md_opts, $opt_prefix = 'schema_howto_step', $prop_name = 'step' );
+			WpssoSchema::add_howto_step_data( $json_ret, $mod, $md_opts, $opt_prefix = 'schema_howto_step', $prop_name = 'step' );
 
 			/**
 			 * Property:

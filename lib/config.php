@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.14.3-dev.3',	// Plugin version.
-					'opt_version' => '857',		// Increment when changing default option values.
+					'version'     => '9.15.0-dev.4',	// Plugin version.
+					'opt_version' => '858',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -207,6 +207,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'seoframework-meta' => '(feature) Import The SEO Framework Metadata',
 								'shorten'           => '(feature) URL Shortening Service',
 								'wpseo-meta'        => '(feature) Import Yoast SEO Metadata',
+								'wpseo-blocks'      => '(feature) Import Yoast SEO Blocks Attrs',
 							),
 						),
 						'profile' => array(
@@ -1762,6 +1763,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_import_rankmath_meta'     => 0,	// Import Rank Math SEO Metadata.
 					'plugin_import_seoframework_meta' => 0,	// Import The SEO Framework Metadata.
 					'plugin_import_wpseo_meta'        => 0,	// Import Yoast SEO Metadata.
+					'plugin_import_wpseo_blocks'      => 0,	// Import Yoast SEO Blocks Attrs.
 
 					/**
 					 * Advanced Settings > Media Services tab.

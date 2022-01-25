@@ -890,9 +890,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$img_lib_value = $this->get_options_locale( $input_name_lib_locale, $def_lib_value );
 			$img_url_value = $this->get_options_locale( $input_name_url_locale );
 
-			$upload_css_class  = 'sucom_image_upload_button button';
-			$img_id_css_class  = 'sucom_image_upload_id' . ( $this->get_options( $input_name_id_locale . ':disabled' ) ? ' disabled' : '' );
-			$img_lib_css_class = 'sucom_image_upload_lib';
+			$id_disabled_css_class = $this->get_options( $input_name_id_locale . ':disabled' ) ? ' disabled' : '';
+			$upload_css_class      = 'sucom_image_upload_button button' . $id_disabled_css_class;
+			$img_id_css_class      = 'sucom_image_upload_id' . $id_disabled_css_class;
+			$img_lib_css_class     = 'sucom_image_upload_lib' . $id_disabled_css_class;
 
 			$preview_css_id = SucomUtil::sanitize_css_id( 'preview_' . $input_name_id_locale );
 			$upload_css_id  = SucomUtil::sanitize_css_id( 'upload_' . $input_name_id_locale );
@@ -936,9 +937,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$img_libs[ 'ngg' ] = 'NextGEN Gallery';
 			}
 
-			$img_id_disabled   = $is_disabled;
-			$img_libs_count    = count( $img_libs );
-			$img_libs_disabled = $img_libs_count > 1 ? $is_disabled : true;
+			$img_libs_count   = count( $img_libs );
+			$upload_disabled  = function_exists( 'wp_enqueue_media' ) ? $is_disabled : true;	// Just in case.
+			$img_id_disabled  = $is_disabled;
+			$img_lib_disabled = $img_libs_count > 1 ? $is_disabled : true;
 
 			/**
 			 * Prevent conflicts by removing the image URL if we have an image ID.
@@ -958,15 +960,15 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				unset( $this->options[ $input_name_lib_locale ] );
 
 				$holder          = '';	// Just in case.
+				$upload_disabled = true;
 				$img_id_disabled = true;
 			}
 
 			if ( ! empty( $img_libs[ 'wp' ] ) ) {
 
 				// translators: Please ignore - translation uses a different text domain.
-				$upload_label    = __( 'Select Image' );
-				$upload_disabled = function_exists( 'wp_enqueue_media' ) ? $is_disabled : true;	// Just in case.
-				$upload_button   = $this->get_button( $upload_label, $upload_css_class, $upload_css_id,
+				$upload_label  = __( 'Select Image' );
+				$upload_button = $this->get_button( $upload_label, $upload_css_class, $upload_css_id,
 					$url = '', $newtab = false, $upload_disabled, $upload_button_data );
 
 				if ( 1 === $img_libs_count ) {
@@ -976,7 +978,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			}
 
 			$select_lib = $this->get_select( $input_name_lib_locale, $img_libs, $img_lib_css_class, $img_lib_css_id,
-				$is_assoc = true, $img_libs_disabled, $selected_lib, $event_names = array(), $event_args = null,
+				$is_assoc = true, $img_lib_disabled, $selected_lib, $event_names = array(), $event_args = null,
 					$input_name_lib_attr );
 
 			$input_id = $this->get_input( $input_name_id_locale, $img_id_css_class, $img_id_css_id,

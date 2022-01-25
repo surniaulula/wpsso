@@ -108,7 +108,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeRecipe' ) ) {
 			 * Property:
 			 * 	recipeInstructions
 			 */
-			WpssoSchema::add_howto_step_data( $json_ret, $md_opts, $opt_prefix = 'schema_recipe_instruction', $prop_name = 'recipeInstructions' );
+			WpssoSchema::add_howto_step_data( $json_ret, $mod, $md_opts, $opt_prefix = 'schema_recipe_instruction', $prop_name = 'recipeInstructions' );
 
 			/**
 			 * Property:

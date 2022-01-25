@@ -142,8 +142,16 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					if ( ! empty( $this->p->avail[ 'seo' ][ $avail_key ] ) ||
 						( empty( $this->p->avail[ 'seo' ][ 'any' ] ) && get_option( $option_key ) ) ) {
-	
-						$local_cache[ 'plugin_import_' . $avail_key . '_meta' ] = 1;
+
+						foreach ( array( 'meta', 'blocks' ) as $import_type ) {
+
+							$key = 'plugin_import_' . $avail_key . '_' . $import_type;
+
+							if ( isset( $local_cache[ $key ] ) ) {	// Make sure the option exists.
+						
+								$local_cache[ $key ] = 1;
+							}
+						}
 					}
 				}
 
@@ -456,7 +464,15 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						 */
 						if ( empty( $this->p->avail[ 'seo' ][ $avail_key ] ) ) {
 
-							$seo_opts[ 'plugin_import_' . $avail_key . '_meta' ] = 0;
+							foreach ( array( 'meta', 'blocks' ) as $import_type ) {
+							
+								$key = 'plugin_import_' . $avail_key . '_' . $import_type;
+
+								if ( isset( $opts[ $key ] ) ) { // Make sure the option exists.
+							
+									$seo_opts[ $key ] = 0;
+								}
+							}
 						}
 					}
 				}
@@ -466,13 +482,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 *
 				 * Prevent changes as these options would just get changed back anyway.
 				 */
-				foreach ( $seo_opts as $opt_key => $def_val ) {
+				foreach ( $seo_opts as $key => $val ) {
 
-					$opts[ $opt_key . ':disabled' ] = true;
+					$opts[ $key . ':disabled' ] = true;
 
-					if ( $opts[ $opt_key ] !== $def_val ) {
+					if ( $opts[ $key ] !== $val ) {
 
-						$opts[ $opt_key ] = $def_val;
+						$opts[ $key ] = $val;
 
 						$save_changes = true;	// Save the options.
 					}
@@ -524,27 +540,27 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							'plugin_load_mofiles',		// Use Local Plugin Translations.
 							'plugin_cache_disable',		// Disable Cache for Debugging.
 							'plugin_debug_html',		// Add HTML Debug Messages.
-						) as $opt_key ) {
+						) as $key ) {
 
-							unset( $advanced_opts[ $opt_key ] );
+							unset( $advanced_opts[ $key ] );
 						}
 
-						foreach ( $advanced_opts as $opt_key => $def_val ) {
+						foreach ( $advanced_opts as $key => $val ) {
 
-							if ( isset( $opts[ $opt_key ] ) ) {
+							if ( isset( $opts[ $key ] ) ) {
 
-								if ( $opts[ $opt_key ] === $def_val ) {
+								if ( $opts[ $key ] === $val ) {
 
 									continue;
 								}
 
 								if ( is_admin() ) {
 
-									$this->p->notice->warn( sprintf( $notice_msg, $opt_key ) );
+									$this->p->notice->warn( sprintf( $notice_msg, $key ) );
 								}
 							}
 
-							$opts[ $opt_key ] = $def_val;
+							$opts[ $key ] = $val;
 
 							$save_changes = true;	// Save the options.
 						}

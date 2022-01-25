@@ -902,6 +902,15 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 									$chk[ 'opt_key' ] = 'plugin_import_wpseo_meta';
 
 									break;
+
+								/**
+								 * Import Yoast SEO Blocks Attrs.
+								 */
+								case 'wpseo-blocks':
+
+									$chk[ 'opt_key' ] = 'plugin_import_wpseo_blocks';
+
+									break;
 							}
 
 							break;

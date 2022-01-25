@@ -3248,11 +3248,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 		public function cleanup_html_tags( $text, $strip_tags = true, $use_img_alt = false ) {
 
-			$text = self::strip_shortcodes( $text );	// Remove any remaining shortcodes.
-			$text = preg_replace( '/[\s\n\r]+/s', ' ', $text );	// Put everything on one line.
-			$text = preg_replace( '/<\?.*\?'.'>/U', ' ', $text );	// Remove php.
+			$text = self::strip_shortcodes( $text );					// Remove any remaining shortcodes.
+			$text = preg_replace( '/[\s\n\r]+/s', ' ', $text );				// Put everything on one line.
+			$text = preg_replace( '/<\?.*\?'.'>/U', ' ', $text );				// Remove php.
 			$text = preg_replace( '/<script\b[^>]*>(.*)<\/script>/Ui', ' ', $text );	// Remove javascript.
-			$text = preg_replace( '/<style\b[^>]*>(.*)<\/style>/Ui', ' ', $text );	// Remove inline stylesheets.
+			$text = preg_replace( '/<style\b[^>]*>(.*)<\/style>/Ui', ' ', $text );		// Remove inline stylesheets.
 
 			/**
 			 * Maybe remove text between ignore markers.
