@@ -1851,17 +1851,18 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 				foreach ( $mixed as $name => $atts ) {
 
-					$input_name     = $name . '_' . $key_num;
-					$input_title    = empty( $atts[ 'input_title' ] ) ? '' : $atts[ 'input_title' ];
-					$input_class    = empty( $atts[ 'input_class' ] ) ? '' : $atts[ 'input_class' ];
-					$input_class    .= $this->get_options( $input_name . ':disabled' ) ? ' disabled' : '';
-					$input_class    = SucomUtil::sanitize_css_class( $input_class );
-					$input_id       = empty( $atts[ 'input_id' ] ) ? $input_name : $atts[ 'input_id' ] . '_' . $key_num;
-					$input_id       = SucomUtil::sanitize_css_id( $input_id );
-					$input_content  = empty( $atts[ 'input_content' ] ) ? '' : $atts[ 'input_content' ];
-					$input_values   = empty( $atts[ 'input_values' ] ) ? array() : $atts[ 'input_values' ];
-					$in_options     = $this->in_options( $input_name );	// Optimize and call only once.
-					$in_defaults    = $this->in_defaults( $input_name );	// Optimize and call only once.
+					$input_name      = $name . '_' . $key_num;
+					$input_title     = empty( $atts[ 'input_title' ] ) ? '' : $atts[ 'input_title' ];
+					$input_class     = empty( $atts[ 'input_class' ] ) ? '' : $atts[ 'input_class' ];
+					$container_class = SucomUtil::sanitize_css_class( $input_class );
+					$input_class     .= $this->get_options( $input_name . ':disabled' ) ? ' disabled' : '';
+					$input_class     = SucomUtil::sanitize_css_class( $input_class );
+					$input_id        = empty( $atts[ 'input_id' ] ) ? $input_name : $atts[ 'input_id' ] . '_' . $key_num;
+					$input_id        = SucomUtil::sanitize_css_id( $input_id );
+					$input_content   = empty( $atts[ 'input_content' ] ) ? '' : $atts[ 'input_content' ];
+					$input_values    = empty( $atts[ 'input_values' ] ) ? array() : $atts[ 'input_values' ];
+					$in_options      = $this->in_options( $input_name );	// Optimize and call only once.
+					$in_defaults     = $this->in_defaults( $input_name );	// Optimize and call only once.
 
 					if ( ! empty( $atts[ 'event_names' ] ) ) {
 
@@ -1966,7 +1967,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 								if ( ! empty( $radio_inputs ) ) {
 
 									$html .= '<p';
-									$html .= ' class="' . $input_class . '"';	// Already sanitized.
+									$html .= ' class="' . $container_class . '"';	// Already sanitized.
 									$html .= ' id="' . $input_id . '"';		// Already sanitized.
 									$html .= ' ' . $el_attr . '>';
 									$html .= vsprintf( $atts[ 'input_content' ], $radio_inputs );
