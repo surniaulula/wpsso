@@ -368,7 +368,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$md_opts = array();
 				}
 
-				$md_opts[ 'opt_filtered' ] = 0;	// Just in case.
+				unset( $md_opts[ 'opt_filtered' ] );	// Just in case.
 
 				/**
 				 * Check if options need to be upgraded and saved.

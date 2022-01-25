@@ -269,8 +269,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			$md_defs =& $local_cache[ $obj_id ];	// Shortcut variable name.
 
-			$is_cache_allowed = WpssoOptions::is_cache_allowed();
-
 			if ( empty( $md_defs[ 'opt_filtered' ] ) ) {
 
 				$mod = $this->get_mod( $obj_id );
@@ -302,7 +300,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'plugin_checksum'   => '',	// Checksum of plugin versions.
 					'opt_checksum'      => '',	// Checksum of option versions.
 					'opt_versions'      => array(),
-					'opt_filtered'      => 0,
 					'attach_img_crop_x' => 'none',
 					'attach_img_crop_y' => 'none',
 
@@ -789,11 +786,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$md_defs = apply_filters( 'wpsso_sanitize_md_defaults', $md_defs, $mod );
 
 				/**
-				 * Caching is not allowed yet, so re-apply the filters on next method call.
+				 * If caching is not allowed yet, re-apply the filters on next method call.
 				 */
-				if ( ! $is_cache_allowed ) {
+				if ( ! WpssoOptions::is_cache_allowed() ) {
 
-					$md_defs[ 'opt_filtered' ] = 0;
+					unset( $md_defs[ 'opt_filtered' ] );
 				}
 
 			} elseif ( $this->p->debug->enabled ) {

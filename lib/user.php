@@ -279,7 +279,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					$md_opts = (array) apply_filters( 'wpsso_get_other_user_meta', array(), $user_id );
 				}
 
-				$md_opts[ 'opt_filtered' ] = 0;	// Just in case.
+				unset( $md_opts[ 'opt_filtered' ] );	// Just in case.
 
 				/**
 				 * Check if options need to be upgraded and saved.

@@ -76,7 +76,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			static $local_cache = array();
 
-			if ( empty( $local_cache ) || empty( self::$cache_allowed ) ) {
+			$is_cache_allowed = self::is_cache_allowed();
+
+			if ( empty( $local_cache ) || ! $is_cache_allowed ) {
 
 				$local_cache = $this->p->cf[ 'opt' ][ 'defaults' ];
 			}
@@ -201,9 +203,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				$local_cache = apply_filters( 'wpsso_get_defaults', $local_cache );
 
-				if ( empty( self::$cache_allowed ) ) {
+				if ( ! $is_cache_allowed ) {
 
-					$local_cache[ 'opt_filtered' ] = 0;
+					unset( $local_cache[ 'opt_filtered' ] );
 				}
 
 				if ( $this->p->debug->enabled ) {
@@ -237,7 +239,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			static $local_cache = array();
 
-			if ( empty( $local_cache ) || empty( self::$cache_allowed ) ) {
+			$is_cache_allowed = self::is_cache_allowed();
+
+			if ( empty( $local_cache ) || ! $is_cache_allowed ) {
 
 				/**
 				 * Automatically include all advanced plugin options. 
@@ -245,7 +249,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$local_cache = SucomUtil::preg_grep_keys( '/^plugin_/', $this->p->cf[ 'opt' ][ 'defaults' ] );
 
 				/**
-				 * Add a default "Site Use" value.
+				 * Add a "Site Use" for each option.
 				 */
 				foreach ( $local_cache as $key => $val ) {
 
@@ -292,9 +296,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				$local_cache = apply_filters( 'wpsso_get_site_defaults', $local_cache );
 
-				if ( empty( self::$cache_allowed ) ) {
+				if ( ! $is_cache_allowed ) {
 
-					$local_cache[ 'opt_filtered' ] = 0;
+					unset( $local_cache[ 'opt_filtered' ] );
 				}
 
 				if ( $this->p->debug->enabled ) {
@@ -638,7 +642,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			/**
 			 * Sanitize values.
 			 */
-			unset( $opts[ 'opt_filtered' ] );
+			unset( $opts[ 'opt_filtered' ] );	// Just in case.
 
 			foreach ( $opts as $opt_key => $opt_val ) {
 
