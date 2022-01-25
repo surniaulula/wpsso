@@ -134,6 +134,14 @@ WPSSO provides comprehensive Schema markup for posts, pages, custom post types, 
 * Yoast SEO
 * Yotpo Social Reviews for WooCommerce
 
+**&#91;Premium&#93;** Imports pre-existing plugin data, including:
+
+* All in One SEO Pack Metadata
+* Rank Math SEO Metadata
+* The SEO Framework Metadata
+* Yoast SEO Metadata
+* Yoast SEO Blocks Attrs
+
 **&#91;Premium&#93;** Reads data from remote service APIs, including:
 
 * Bitly
@@ -243,10 +251,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.14.3-dev.3 (2022/01/24)**
+**Version 9.15.0-dev.4 (2022/01/25)**
 
 * **New Features**
-	* None.
+	* Added a new "Import Yoast SEO Blocks Attrs" option under the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Integration tab.
 * **Improvements**
 	* None.
 * **Bugfixes**
@@ -256,6 +264,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new `WpssoAdminHeadSuggestAddons` class in lib/admin-head-suggest-addons.php.
 	* Added a new `WpssoAdminHeadSuggestOptions` class in lib/admin-head-suggest-options.php.
 	* Added a new `WpssoUtilBlocks` class in lib/util-blocks.php.
+	* Added a new `WpssoProUtilWpseoBlocks` class in lib/pro/util/wpseo-blocks.php (Premium edition).
 	* Moved '.wpsso-notice.update-nag' CSS from lib/config.php to css/com/admin-page.css.
 * **Requires At Least**
 	* PHP v7.2.
@@ -826,9 +835,9 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 9.14.3-dev.3 =
+= 9.15.0-dev.4 =
 
-(2022/01/24) Added new `WpssoAdminHeadSuggestAddons`, `WpssoAdminHeadSuggestOptions`, and `WpssoUtilBlocks` classes.
+(2022/01/25) Added a new "Import Yoast SEO Blocks Attrs" option under the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Integration tab.
 
 = 9.14.2 =
 
