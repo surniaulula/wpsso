@@ -266,6 +266,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					$md_opts = array();
 				}
 
+				$md_opts[ 'opt_filtered' ] = 0;	// Just in case.
+
 				/**
 				 * Check if options need to be upgraded and saved.
 				 */
@@ -296,7 +298,15 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 				if ( empty( $md_opts[ 'opt_filtered' ] ) ) {
 
-					$md_opts[ 'opt_filtered' ] = 1;	// Set before calling filters to prevent recursion.
+					/**
+					 * Set before calling filters to prevent recursion.
+					 */
+					if ( $this->p->debug->enabled ) {
+	
+						$this->p->debug->log( 'setting opt_filtered to 1' );
+					}
+	
+					$md_opts[ 'opt_filtered' ] = 1;
 
 					$mod = $this->get_mod( $term_id );
 
@@ -414,18 +424,18 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			/**
 			 * Merge and check submitted post, term, and user metabox options.
 			 */
-			$opts = $this->get_submit_opts( $mod );
+			$md_opts = $this->get_submit_opts( $mod );
 
-			$opts = apply_filters( 'wpsso_save_md_options', $opts, $mod );
+			$md_opts = apply_filters( 'wpsso_save_md_options', $md_opts, $mod );
 
-			$opts = apply_filters( 'wpsso_save_term_options', $opts, $term_id, $term_tax_id, $mod );
+			$md_opts = apply_filters( 'wpsso_save_term_options', $md_opts, $term_id, $term_tax_id, $mod );
 
-			if ( empty( $opts ) ) {
+			if ( empty( $md_opts ) ) {
 
 				return self::delete_term_meta( $term_id, WPSSO_META_NAME );
 			}
 
-			return self::update_term_meta( $term_id, WPSSO_META_NAME, $opts );
+			return self::update_term_meta( $term_id, WPSSO_META_NAME, $md_opts );
 		}
 
 		/**
@@ -785,12 +795,12 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$container_id = 'wpsso_metabox_' . $metabox_id . '_inside';
 			$mod          = $this->get_mod( $term_obj->term_id, $this->query_tax_slug );
 			$tabs         = $this->get_document_meta_tabs( $metabox_id, $mod );
-			$opts         = $this->get_options( $term_obj->term_id );
-			$def_opts     = $this->get_defaults( $term_obj->term_id );
+			$md_opts      = $this->get_options( $term_obj->term_id );
+			$md_defs      = $this->get_defaults( $term_obj->term_id );
 
 			$this->p->admin->get_pkg_info();	// Returns an array from cache.
 
-			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts, $this->p->id );
+			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $md_opts, $md_defs, $this->p->id );
 
 			wp_nonce_field( WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 

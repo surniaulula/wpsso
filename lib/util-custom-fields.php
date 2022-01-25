@@ -41,7 +41,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 
 			$this->u->add_plugin_filters( $this, array(
 				'import_custom_fields' => 3,
-			), $prio = 1000 );
+			) );
 		}
 
 		/**

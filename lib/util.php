@@ -67,6 +67,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			'wp_using_ext_object_cache',
 		);
 
+		public $blocks;		// WpssoUtilBlocks.
 		public $cache;		// WpssoUtilCache.
 		public $cf;		// WpssoUtilCustomFields.
 		public $inline;		// WpssoUtilInline.
@@ -104,6 +105,16 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		public function set_util_instances( &$plugin ) {
+
+			/**
+			 * Instantiate WpssoUtilBlocks.
+			 */
+			if ( ! class_exists( 'WpssoUtilBlocks' ) ) {
+
+				require_once WPSSO_PLUGINDIR . 'lib/util-blocks.php';
+			}
+
+			$this->blocks = new WpssoUtilBlocks( $plugin, $this );
 
 			/**
 			 * Instantiate WpssoUtilCache.

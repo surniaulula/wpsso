@@ -23,9 +23,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		private $upg;	// WpssoOptionsUpgrade class object.
 		private $filters;
 
-		private $cache_defaults      = array();	// Default options cache.
-		private $cache_site_defaults = array();	// Default site options cache.
-
 		private static $cache_allowed = false;
 
 		/**
@@ -67,11 +64,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			return self::$cache_allowed;
 		}
 
-		public static function is_filtered( array $opts ) {
-
-			return empty( $opts[ 'opt_filtered' ] ) ? false : true;
-		}
-
 		public function get_defaults( $opt_key = false, $force_filter = false ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -82,12 +74,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				) );
 			}
 
-			if ( empty( $this->cache_defaults ) || empty( self::$cache_allowed ) ) {
+			static $local_cache = array();
 
-				$this->cache_defaults = $this->p->cf[ 'opt' ][ 'defaults' ];
+			if ( empty( $local_cache ) || empty( self::$cache_allowed ) ) {
+
+				$local_cache = $this->p->cf[ 'opt' ][ 'defaults' ];
 			}
 
-			if ( $force_filter || empty( $this->cache_defaults[ 'opt_filtered' ] ) ) {
+			if ( $force_filter || empty( $local_cache[ 'opt_filtered' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -95,9 +89,19 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				/**
+				 * Set before calling filters to prevent recursion.
+				 */
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'setting opt_filtered to 1' );
+				}
+
+				$local_cache[ 'opt_filtered' ] = 1;
+
+				/**
 				 * Complete the options array for any custom post types and/or custom taxonomies.
 				 */
-				$this->add_custom_post_tax_options( $this->cache_defaults );
+				$this->add_custom_post_tax_options( $local_cache );
 
 				/**
 				 * Translate contact method field labels for current language.
@@ -107,46 +111,37 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->debug->log( 'translating plugin contact field labels' );
 				}
 
-				SucomUtil::transl_key_values( '/^plugin_(cm_.*_label|.*_prefix)$/', $this->cache_defaults, 'wpsso' );
+				SucomUtil::transl_key_values( '/^plugin_(cm_.*_label|.*_prefix)$/', $local_cache, 'wpsso' );
 
 				/**
 				 * Define the default Facebook locale and current locale values.
 				 */
-				$this->cache_defaults[ 'fb_locale' ] = $this->p->og->get_fb_locale( array(), 'default' );
+				$local_cache[ 'fb_locale' ] = $this->p->og->get_fb_locale( array(), 'default' );
 
 				if ( ( $locale_key = SucomUtil::get_key_locale( 'fb_locale' ) ) !== 'fb_locale' ) {
 
-					$this->cache_defaults[ $locale_key ] = $this->p->og->get_fb_locale( array(), 'current' );
+					$local_cache[ $locale_key ] = $this->p->og->get_fb_locale( array(), 'current' );
 				}
 
 				/**
 				 * Maybe use a custom value from the SSO > Advanced settings page.
 				 */
-				$this->cache_defaults[ 'fb_author_field' ] = $this->p->options[ 'plugin_cm_fb_name' ];
+				$local_cache[ 'fb_author_field' ] = $this->p->options[ 'plugin_cm_fb_name' ];
 
 				/**
-				 * Maybe import metadata from SEO plugins.
+				 * Maybe import metadata from known SEO plugins.
 				 */
-				if ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {	// No SEO plugin is active.
+				foreach ( array(
+					'aioseop'      => 'aioseo_options',			// All in One SEO Pack.
+					'rankmath'     => 'rank-math-options-general',		// Rank Math SEO.
+					'seoframework' => 'autodescription-site-settings',	// The SEO Framework.
+					'wpseo'        => 'wpseo',				// Yoast SEO.
+				) as $avail_key => $option_key ) {
 
-					if ( get_option( 'aioseo_options' ) ) {	// All in One SEO Pack was once active.
-
-						$this->cache_defaults[ 'plugin_import_aioseop_meta' ] = 1;
-					}
-
-					if ( get_option( 'rank-math-options-general' ) ) {	// Rank Math SEO was once active.
-
-						$this->cache_defaults[ 'plugin_import_rankmath_meta' ] = 1;
-					}
-
-					if ( get_option( 'autodescription-site-settings' ) ) {	// The SEO Framework was once active.
-
-						$this->cache_defaults[ 'plugin_import_seoframework_meta' ] = 1;
-					}
-
-					if ( get_option( 'wpseo' ) ) {	// Yoast SEO was once active.
-
-						$this->cache_defaults[ 'plugin_import_wpseo_meta' ] = 1;
+					if ( ! empty( $this->p->avail[ 'seo' ][ $avail_key ] ) ||
+						( empty( $this->p->avail[ 'seo' ][ 'any' ] ) && get_option( $option_key ) ) ) {
+	
+						$local_cache[ 'plugin_import_' . $avail_key . '_meta' ] = 1;
 					}
 				}
 
@@ -157,15 +152,15 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					case 'person':
 
-						$this->cache_defaults[ 'schema_def_pub_org_id' ]    = 'none';
-						$this->cache_defaults[ 'schema_def_pub_person_id' ] = $this->p->options[ 'site_pub_person_id' ];
+						$local_cache[ 'schema_def_pub_org_id' ]    = 'none';
+						$local_cache[ 'schema_def_pub_person_id' ] = $this->p->options[ 'site_pub_person_id' ];
 
 						break;
 
 					case 'organization':
 
-						$this->cache_defaults[ 'schema_def_pub_org_id' ]    = 'site';
-						$this->cache_defaults[ 'schema_def_pub_person_id' ] = 'none';
+						$local_cache[ 'schema_def_pub_org_id' ]    = 'site';
+						$local_cache[ 'schema_def_pub_person_id' ] = 'none';
 
 						break;
 				}
@@ -178,7 +173,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					if ( ! empty( $info[ 'update_auth' ] ) && 'none' !== $info[ 'update_auth' ] ) {	// Just in case.
 
-						$this->cache_defaults[ 'plugin_' . $ext . '_' . $info[ 'update_auth' ] ] = '';
+						$local_cache[ 'plugin_' . $ext . '_' . $info[ 'update_auth' ] ] = '';
 					}
 				}
 
@@ -189,11 +184,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					foreach ( $this->p->site_options as $site_opt_key => $site_opt_val ) {
 
-						if ( isset( $this->cache_defaults[ $site_opt_key ] ) && isset( $this->p->site_options[ $site_opt_key . ':use' ] ) ) {
+						if ( isset( $local_cache[ $site_opt_key ] ) && isset( $this->p->site_options[ $site_opt_key . ':use' ] ) ) {
 
 							if ( 'default' === $this->p->site_options[ $site_opt_key . ':use' ] ) {
 
-								$this->cache_defaults[ $site_opt_key ] = $this->p->site_options[ $site_opt_key ];
+								$local_cache[ $site_opt_key ] = $this->p->site_options[ $site_opt_key ];
 							}
 						}
 					}
@@ -204,13 +199,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->debug->log( 'applying get_defaults filters' );
 				}
 
-				$this->cache_defaults[ 'opt_filtered' ] = 1;	// Set before calling filter to prevent recursion.
-
-				$this->cache_defaults = apply_filters( 'wpsso_get_defaults', $this->cache_defaults );
+				$local_cache = apply_filters( 'wpsso_get_defaults', $local_cache );
 
 				if ( empty( self::$cache_allowed ) ) {
 
-					$this->cache_defaults[ 'opt_filtered' ] = 0;
+					$local_cache[ 'opt_filtered' ] = 0;
 				}
 
 				if ( $this->p->debug->enabled ) {
@@ -221,15 +214,15 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			if ( false !== $opt_key ) {
 
-				if ( isset( $this->cache_defaults[ $opt_key ] ) ) {
+				if ( isset( $local_cache[ $opt_key ] ) ) {
 
-					return $this->cache_defaults[ $opt_key ];
+					return $local_cache[ $opt_key ];
 				}
 
 				return null;
 			}
 
-			return $this->cache_defaults;
+			return $local_cache;
 		}
 
 		public function get_site_defaults( $opt_key = false, $force_filter = false ) {
@@ -242,41 +235,53 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				) );
 			}
 
-			if ( empty( $this->cache_site_defaults ) || empty( self::$cache_allowed ) ) {
+			static $local_cache = array();
+
+			if ( empty( $local_cache ) || empty( self::$cache_allowed ) ) {
 
 				/**
 				 * Automatically include all advanced plugin options. 
 				 */
-				$this->cache_site_defaults = SucomUtil::preg_grep_keys( '/^plugin_/', $this->p->cf[ 'opt' ][ 'defaults' ] );
+				$local_cache = SucomUtil::preg_grep_keys( '/^plugin_/', $this->p->cf[ 'opt' ][ 'defaults' ] );
 
 				/**
 				 * Add a default "Site Use" value.
 				 */
-				foreach ( $this->cache_site_defaults as $key => $val ) {
+				foreach ( $local_cache as $key => $val ) {
 
 					if ( false === strpos( $key, ':' ) ) {	// Just in case.
 
-						$this->cache_site_defaults[ $key . ':use' ] = 'default';
+						$local_cache[ $key . ':use' ] = 'default';
 					}
 				}
 
-				$this->cache_site_defaults = array_merge( $this->cache_site_defaults, $this->p->cf[ 'opt' ][ 'site_defaults' ] );
+				$local_cache = array_merge( $local_cache, $this->p->cf[ 'opt' ][ 'site_defaults' ] );
 			}
 
-			if ( $force_filter || empty( $this->cache_site_defaults[ 'opt_filtered' ] ) ) {
+			if ( $force_filter || empty( $local_cache[ 'opt_filtered' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->mark( 'get_site_defaults filters' );	// Begin timer.
 				}
 
+				/**
+				 * Set before calling filters to prevent recursion.
+				 */
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'setting opt_filtered to 1' );
+				}
+
+				$local_cache[ 'opt_filtered' ] = 1;
+
 				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
 					if ( ! empty( $info[ 'update_auth' ] ) && $info[ 'update_auth' ]!== 'none' ) {	// Just in case.
 
-						$this->cache_site_defaults[ 'plugin_' . $ext . '_' . $info[ 'update_auth' ] ] = '';
+						$local_cache[ 'plugin_' . $ext . '_' . $info[ 'update_auth' ] ] = '';
 
-						$this->cache_site_defaults[ 'plugin_' . $ext . '_' . $info[ 'update_auth' ] . ':use' ] = 'default';
+						$local_cache[ 'plugin_' . $ext . '_' . $info[ 'update_auth' ] . ':use' ] = 'default';
 					}
 				}
 
@@ -285,13 +290,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->debug->log( 'applying get_site_defaults filters' );
 				}
 
-				$this->cache_site_defaults[ 'opt_filtered' ] = 1;	// Set before calling filter to prevent recursion.
-
-				$this->cache_site_defaults = apply_filters( 'wpsso_get_site_defaults', $this->cache_site_defaults );
+				$local_cache = apply_filters( 'wpsso_get_site_defaults', $local_cache );
 
 				if ( empty( self::$cache_allowed ) ) {
 
-					$this->cache_site_defaults[ 'opt_filtered' ] = 0;
+					$local_cache[ 'opt_filtered' ] = 0;
 				}
 
 				if ( $this->p->debug->enabled ) {
@@ -302,15 +305,15 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			if ( false !== $opt_key ) {
 
-				if ( isset( $this->cache_site_defaults[ $opt_key ] ) ) {
+				if ( isset( $local_cache[ $opt_key ] ) ) {
 
-					return $this->cache_site_defaults[ $opt_key ];
+					return $local_cache[ $opt_key ];
 				}
 
 				return null;
 			}
 
-			return $this->cache_site_defaults;
+			return $local_cache;
 		}
 
 		/**
@@ -414,13 +417,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				$seo_opts = array();
 
-				if ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {	// No SEO plugin is active.
+				if ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {	// No SEO plugin active.
 
 					if ( empty( $opts[ 'plugin_wpsso_tid' ] ) ||
-						! empty( $opts[ 'plugin_import_aioseop_meta' ] ) ||
-						! empty( $opts[ 'plugin_import_rankmath_meta' ] ) ||
-						! empty( $opts[ 'plugin_import_seoframework_meta' ] ) ||
-						! empty( $opts[ 'plugin_import_wpseo_meta' ] ) ) {
+						! empty( $opts[ 'plugin_import_aioseop_meta' ] ) ||		// All in One SEO Pack.
+						! empty( $opts[ 'plugin_import_rankmath_meta' ] ) ||		// Rank Math SEO.
+						! empty( $opts[ 'plugin_import_seoframework_meta' ] ) ||	// The SEO Framework.
+						! empty( $opts[ 'plugin_import_wpseo_meta' ] ) ) {		// Yoast SEO.
 
 						$seo_opts = array(
 							'add_link_rel_canonical'    => 1,
@@ -437,14 +440,19 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						'add_meta_name_robots'      => 0,
 					);
 
-					/**
-					 * Disable the import of SEO metadata for non-active SEO plugins.
-					 */
-					foreach ( array( 'aioseop', 'rankmath', 'seoframework', 'wpseo' ) as $seo_key ) {
+					foreach ( array(
+						'aioseop',	// All in One SEO Pack.
+						'rankmath',	// Rank Math SEO.
+						'seoframework',	// The SEO Framework.
+						'wpseo',	// Yoast SEO.
+					) as $avail_key ) {
 
-						if ( empty( $this->p->avail[ 'seo' ][ $seo_key ] ) ) {	// The SEO plugin is not active.
+						/**
+						 * Disable the metadata import of all others (ie. non-active SEO plugins).
+						 */
+						if ( empty( $this->p->avail[ 'seo' ][ $avail_key ] ) ) {
 
-							$seo_opts[ 'plugin_import_' . $seo_key . '_meta' ] = 0;
+							$seo_opts[ 'plugin_import_' . $avail_key . '_meta' ] = 0;
 						}
 					}
 				}
@@ -612,19 +620,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			/**
-			 * Make sure we have something to work with.
-			 */
-			if ( empty( $defs ) || ! is_array( $defs ) ) {
-
-				return $opts;
-			}
-
-			/**
 			 * Add any missing options from the defaults, unless sanitizing for a module.
 			 */
 			if ( empty( $mod[ 'name' ] ) ) {
 
-				$opts = array_merge( $defs, $opts );	// Complete the array with default options.
+				if ( ! empty( $defs ) && is_array( $defs ) ) {
+
+					$opts = array_merge( $defs, $opts );	// Complete the array with default options.
+				}
 			}
 
 			/**
@@ -635,6 +638,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			/**
 			 * Sanitize values.
 			 */
+			unset( $opts[ 'opt_filtered' ] );
+
 			foreach ( $opts as $opt_key => $opt_val ) {
 
 				if ( empty( $opt_key ) ) {	// Just in case.

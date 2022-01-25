@@ -368,6 +368,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$md_opts = array();
 				}
 
+				$md_opts[ 'opt_filtered' ] = 0;	// Just in case.
+
 				/**
 				 * Check if options need to be upgraded and saved.
 				 */
@@ -398,9 +400,31 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				if ( empty( $md_opts[ 'opt_filtered' ] ) ) {
 
-					$md_opts[ 'opt_filtered' ] = 1;	// Set before calling filters to prevent recursion.
+					/**
+					 * Set before calling filters to prevent recursion.
+					 */
+					if ( $this->p->debug->enabled ) {
+	
+						$this->p->debug->log( 'setting opt_filtered to 1' );
+					}
+	
+					$md_opts[ 'opt_filtered' ] = 1;
 
 					$mod = $this->get_mod( $post_id );
+
+					$post_obj = SucomUtil::get_post_object( $post_id );
+
+					/**
+					 * Since WPSSO Core v9.14.3-dev.3.
+					 *
+					 * See WpssoUtilBlocks->filter_import_content_blocks().
+					 */
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'applying import_content_blocks filters for post id ' . $post_id . ' content' );
+					}
+
+					$md_opts = apply_filters( 'wpsso_import_content_blocks', $md_opts, $post_obj->post_content );
 
 					/**
 					 * The 'import_custom_fields' filter is executed before the 'wpsso_get_md_options' and
@@ -408,17 +432,21 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 * overwritten by later filters.
 					 *
 					 * The 'import_custom_fields' filter is also executed before the 'wpsso_get_md_defaults'
-					 * and 'wpsso_get_post_defaults' filters, so submitted form values that are identical can
-					 * be removed.
+					 * and 'wpsso_get_post_defaults' filters, so submitted form values that are identical to
+					 * their defaults can be removed before saving the options array.
 					 *
+					 * See WpssoPost->get_options().
+					 * See WpssoAbstractWpMeta->get_defaults().
 					 * See WpssoUtilCustomFields->filter_import_custom_fields().
+					 * See WpssoProEcomWoocommerce->add_mt_product() - imports variation metadata.
+					 * See WpssoProEcomWooAddGtin->filter_wc_variation_cf_meta_keys().
 					 */
 					if ( $this->p->debug->enabled ) {
 
 						$this->p->debug->log( 'applying import_custom_fields filters for post id ' . $post_id . ' metadata' );
 					}
 
-					$md_opts = apply_filters( 'wpsso_import_custom_fields', $md_opts, get_post_meta( $post_id ) );
+					$md_opts = (array) apply_filters( 'wpsso_import_custom_fields', $md_opts, get_post_meta( $post_id ) );
 
 					/**
 					 * Since WPSSO Core v9.5.0.
@@ -426,7 +454,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 * Filter 'wpsso_inherit_custom_images' added in WPSSO Core v9.10.0.
 					 */
 					$inherit_custom = empty( $this->p->options[ 'plugin_inherit_custom' ] ) ? false : $mod[ 'is_public' ];
-					$inherit_custom = apply_filters( 'wpsso_inherit_custom_images', $inherit_custom, $mod );
+
+					$inherit_custom = (bool) apply_filters( 'wpsso_inherit_custom_images', $inherit_custom, $mod );
 
 					if ( $inherit_custom ) {
 
@@ -532,18 +561,18 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * Merge and check submitted post, term, and user metabox options.
 			 */
-			$opts = $this->get_submit_opts( $mod );
+			$md_opts = $this->get_submit_opts( $mod );
 
-			$opts = apply_filters( 'wpsso_save_md_options', $opts, $mod );
+			$md_opts = apply_filters( 'wpsso_save_md_options', $md_opts, $mod );
 
-			$opts = apply_filters( 'wpsso_save_post_options', $opts, $post_id, $rel, $mod );
+			$md_opts = apply_filters( 'wpsso_save_post_options', $md_opts, $post_id, $rel, $mod );
 
-			if ( empty( $opts ) ) {
+			if ( empty( $md_opts ) ) {
 
 				return delete_post_meta( $post_id, WPSSO_META_NAME );
 			}
 
-			return update_post_meta( $post_id, WPSSO_META_NAME, $opts );
+			return update_post_meta( $post_id, WPSSO_META_NAME, $md_opts );
 		}
 
 		/**
@@ -1592,12 +1621,12 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$container_id = 'wpsso_metabox_' . $metabox_id . '_inside';
 			$mod          = $this->get_mod( $post_obj->ID );
 			$tabs         = $this->get_document_meta_tabs( $metabox_id, $mod );
-			$opts         = $this->get_options( $post_obj->ID );
-			$def_opts     = $this->get_defaults( $post_obj->ID );
+			$md_opts      = $this->get_options( $post_obj->ID );
+			$md_defs      = $this->get_defaults( $post_obj->ID );
 
 			$this->p->admin->get_pkg_info();
 
-			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $opts, $def_opts, $this->p->id );
+			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $md_opts, $md_defs, $this->p->id );
 
 			wp_nonce_field( WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 
