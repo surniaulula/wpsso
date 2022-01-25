@@ -189,7 +189,10 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				 */
 				if ( method_exists( 'Yoast\WP\SEO\Integrations\Front_End_Integration', 'get_presenters' ) ) {
 
-					add_filter( 'wpseo_frontend_presenters', array( $this, 'cleanup_wpseo_frontend_presenters' ), 1000, 2 );
+					/**
+					 * Yoast SEO provides two arguments to this filter, but older versions only provided one.
+					 */
+					add_filter( 'wpseo_frontend_presenters', array( $this, 'cleanup_wpseo_frontend_presenters' ), 1000, 1 );
 				}
 			}
 		}
@@ -348,8 +351,10 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 		 * Since Yoast SEO v14.0.
 		 *
 		 * Disable Yoast SEO social meta tags and Schema markup.
+		 *
+		 * Yoast SEO provides two arguments to this filter, but older versions only provided one.
 		 */
-		public function cleanup_wpseo_frontend_presenters( $presenters, $context ) {
+		public function cleanup_wpseo_frontend_presenters( $presenters ) {
 
 			if ( $this->p->debug->enabled ) {
 
