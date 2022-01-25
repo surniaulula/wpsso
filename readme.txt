@@ -44,7 +44,7 @@ Present your content at its best in search results and on social sites - no matt
 
 <!-- /about -->
 
-<p><strong>Reads data from WordPress, plugins, and service APIs:</strong></p>
+<p><strong>Fetches data from WordPress, plugins, and service APIs:</strong></p>
 
 There's no need to select or create templates, manually reenter descriptions, titles, product information, or reselect images and videos &mdash; WPSSO reads your existing WordPress content, including custom post types and taxonomies, enhanced user profile data, Media Library image information, and the Premium edition also imports video details, reads active plugin and service API data (Bitly, Facebook, Shopper Approved, Stamped.io, Vimeo, Wistia, YouTube, and many more).
 
@@ -100,7 +100,7 @@ WPSSO provides comprehensive Schema markup for posts, pages, custom post types, 
 
 **&#91;Premium&#93;** An optional Google Merchant Feed XML add-on for for WooCommerce, Easy Digital Downloads, and Document SSO metabox custom products.
 
-**&#91;Premium&#93;** Reads data from active plugins, including:
+**&#91;Premium&#93;** Fetches data from active plugins, including:
 
 * All in One SEO Pack
 * bbPress
@@ -134,7 +134,7 @@ WPSSO provides comprehensive Schema markup for posts, pages, custom post types, 
 * Yoast SEO
 * Yotpo Social Reviews for WooCommerce
 
-**&#91;Premium&#93;** Imports pre-existing plugin data, including:
+**&#91;Premium&#93;** Imports pre-existing plugin metadata and block attributes, including:
 
 * All in One SEO Pack Metadata
 * Rank Math SEO Metadata
@@ -142,7 +142,7 @@ WPSSO provides comprehensive Schema markup for posts, pages, custom post types, 
 * Yoast SEO Metadata
 * Yoast SEO Blocks Attrs
 
-**&#91;Premium&#93;** Reads data from remote service APIs, including:
+**&#91;Premium&#93;** Fetches data from remote service APIs, including:
 
 * Bitly
 * DLMY.App

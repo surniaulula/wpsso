@@ -41,7 +41,7 @@
 
 <!-- /about -->
 
-<p><strong>Reads data from WordPress, plugins, and service APIs:</strong></p>
+<p><strong>Fetches data from WordPress, plugins, and service APIs:</strong></p>
 
 <p>There's no need to select or create templates, manually reenter descriptions, titles, product information, or reselect images and videos &mdash; WPSSO reads your existing WordPress content, including custom post types and taxonomies, enhanced user profile data, Media Library image information, and the Premium edition also imports video details, reads active plugin and service API data (Bitly, Facebook, Shopper Approved, Stamped.io, Vimeo, Wistia, YouTube, and many more).</p>
 
@@ -103,7 +103,7 @@
 
 <p><strong>&#91;Premium&#93;</strong> An optional Google Merchant Feed XML add-on for for WooCommerce, Easy Digital Downloads, and Document SSO metabox custom products.</p>
 
-<p><strong>&#91;Premium&#93;</strong> Reads data from active plugins, including:</p>
+<p><strong>&#91;Premium&#93;</strong> Fetches data from active plugins, including:</p>
 
 <ul>
 <li>All in One SEO Pack</li>
@@ -139,7 +139,7 @@
 <li>Yotpo Social Reviews for WooCommerce</li>
 </ul>
 
-<p><strong>&#91;Premium&#93;</strong> Imports pre-existing plugin data, including:</p>
+<p><strong>&#91;Premium&#93;</strong> Imports pre-existing plugin metadata and block attributes, including:</p>
 
 <ul>
 <li>All in One SEO Pack Metadata</li>
@@ -149,7 +149,7 @@
 <li>Yoast SEO Blocks Attrs</li>
 </ul>
 
-<p><strong>&#91;Premium&#93;</strong> Reads data from remote service APIs, including:</p>
+<p><strong>&#91;Premium&#93;</strong> Fetches data from remote service APIs, including:</p>
 
 <ul>
 <li>Bitly</li>
