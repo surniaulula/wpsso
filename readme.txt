@@ -243,7 +243,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.14.3-dev.2 (2022/01/24)**
+**Version 9.14.3-dev.3 (2022/01/24)**
 
 * **New Features**
 	* None.
@@ -255,6 +255,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new `WpssoSchema->get_mod_script_type_application_ld_json_html()` method.
 	* Added a new `WpssoAdminHeadSuggestAddons` class in lib/admin-head-suggest-addons.php.
 	* Added a new `WpssoAdminHeadSuggestOptions` class in lib/admin-head-suggest-options.php.
+	* Added a new `WpssoUtilBlocks` class in lib/util-blocks.php.
 	* Moved '.wpsso-notice.update-nag' CSS from lib/config.php to css/com/admin-page.css.
 * **Requires At Least**
 	* PHP v7.2.
@@ -825,9 +826,9 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 9.14.3-dev.2 =
+= 9.14.3-dev.3 =
 
-(2022/01/24) Added new `WpssoAdminHeadSuggestAddons` and `WpssoAdminHeadSuggestOptions` classes.
+(2022/01/24) Added new `WpssoAdminHeadSuggestAddons`, `WpssoAdminHeadSuggestOptions`, and `WpssoUtilBlocks` classes.
 
 = 9.14.2 =
 
