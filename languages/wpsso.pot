@@ -526,25 +526,25 @@ msgid "User Profiles"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:33 gettext/gettext-lib-com.php:43
-#: lib/com/form.php:824 lib/com/form.php:2409
+#: lib/com/form.php:824 lib/com/form.php:2411
 msgctxt "option comment"
 msgid "days"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:34 gettext/gettext-lib-com.php:44
-#: lib/com/form.php:825 lib/com/form.php:2410
+#: lib/com/form.php:825 lib/com/form.php:2412
 msgctxt "option comment"
 msgid "hours"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:35 gettext/gettext-lib-com.php:45
-#: lib/com/form.php:826 lib/com/form.php:2411
+#: lib/com/form.php:826 lib/com/form.php:2413
 msgctxt "option comment"
 msgid "mins"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:36 gettext/gettext-lib-com.php:46
-#: lib/com/form.php:827 lib/com/form.php:2412
+#: lib/com/form.php:827 lib/com/form.php:2414
 msgctxt "option comment"
 msgid "secs"
 msgstr ""

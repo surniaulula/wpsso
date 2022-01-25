@@ -1110,9 +1110,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$is_assoc = SucomUtil::is_assoc( $values );
 			}
 
-			$container_class = $css_class . ( $this->get_options( $name . ':disabled' ) ? ' disabled' : '' );
-			$container_class = SucomUtil::sanitize_css_class( $container_class );
+			$container_class = SucomUtil::sanitize_css_class( $css_class );
 			$container_id    = SucomUtil::sanitize_css_id( empty( $css_id ) ? $name : $css_id );
+			$input_class     = $this->get_options( $name . ':disabled' ) ? 'disabled' : '';
 
 			/**
 			 * Use the "input_vertical_list" class to align the radio input buttons vertically.
@@ -1140,6 +1140,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$html .= '<span><input type="radio"';
 				$html .= $is_disabled ? '' : ' name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '" value="' . esc_attr( $val ) . '"';
 				$html .= $is_disabled ? ' disabled="disabled"' : '';
+				$html .= empty( $input_class ) ? '' : ' class="' . $input_class . '"';	// Already sanitized.
 				$html .= $this->in_options( $name ) ? checked( $this->options[ $name ], $val, false ) : '';
 				$html .= $this->in_defaults( $name ) ? ' title="default is ' . $values[ $this->defaults[ $name ] ] . '"' : '';
 				$html .= '/>&nbsp;' . $label_transl . '&nbsp;&nbsp;</span>';
@@ -1958,6 +1959,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 									$radio_inputs[] = '<input type="radio"' . ( $is_disabled ? ' disabled="disabled"' :
 										' name="' . esc_attr( $this->opts_name . '[' . $input_name . ']' ) . '"' .
+										' class="' . $input_class . '"' .	// Already sanitized.
 										' value="' . esc_attr( $input_value ) . '"' ) . $input_checked . '/>';
 								}
 
