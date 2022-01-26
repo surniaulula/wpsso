@@ -256,7 +256,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* Added a new "Import Yoast SEO Block Attrs" option under the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Integration tab.
 * **Improvements**
-	* None.
+	* Added detection of incorrectly setup post type archive pages, like the Events page from The Events Calendar.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -837,7 +837,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 = 9.15.0-b.3 =
 
-(2022/01/26) Added a new "Import Yoast SEO Block Attrs" option under the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Integration tab.
+(2022/01/26) Added a new "Import Yoast SEO Block Attrs" option. Added detection of incorrectly setup post type archive pages.
 
 = 9.14.2 =
 
