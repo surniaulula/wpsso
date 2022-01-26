@@ -140,7 +140,7 @@ WPSSO provides comprehensive Schema markup for posts, pages, custom post types, 
 * Rank Math SEO Metadata
 * The SEO Framework Metadata
 * Yoast SEO Metadata
-* Yoast SEO Blocks Attrs
+* Yoast SEO Blocks Attributes
 
 **&#91;Premium&#93;** Fetches data from remote service APIs, including:
 
@@ -251,7 +251,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.15.0-dev.4 (2022/01/25)**
+**Version 9.15.0-b.1 (2022/01/25)**
 
 * **New Features**
 	* Added a new "Import Yoast SEO Blocks Attrs" option under the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Integration tab.
@@ -835,7 +835,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 9.15.0-dev.4 =
+= 9.15.0-b.1 =
 
 (2022/01/25) Added a new "Import Yoast SEO Blocks Attrs" option under the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Integration tab.
 
