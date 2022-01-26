@@ -96,11 +96,6 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			$def_reading_mins  = $this->p->page->get_reading_mins( $mod );
 
 			/**
-			 * Javascript classes to hide/show rows by selected schema type.
-			 */
-			$schema_type_row_class = WpssoSchema::get_schema_type_row_class( 'schema_type' );
-
-			/**
 			 * Metabox form rows.
 			 */
 			$form_rows = array(

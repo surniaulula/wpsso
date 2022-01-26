@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 9.15.0-dev.4\n"
+"Project-Id-Version: WPSSO Core 9.15.0-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3276,7 +3276,7 @@ msgctxt "option label"
 msgid "Force Autoplay when Possible"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:140 lib/edit.php:373 lib/pro/admin/edit.php:108
+#: gettext/gettext-lib-pro.php:140 lib/edit.php:368 lib/pro/admin/edit.php:108
 #: lib/std/admin/edit.php:102
 msgctxt "metabox title"
 msgid "Schema Markup and Google Rich Results"
@@ -3527,7 +3527,7 @@ msgid "Description"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:181 gettext/gettext-lib-pro.php:195
-#: lib/edit.php:282 lib/edit.php:336 lib/edit.php:378 lib/edit.php:420
+#: lib/edit.php:277 lib/edit.php:331 lib/edit.php:373 lib/edit.php:415
 #: lib/pro/admin/edit.php:428 lib/pro/admin/edit.php:526
 #: lib/std/admin/edit.php:443 lib/std/admin/edit.php:549
 msgctxt "option label"
@@ -3818,8 +3818,8 @@ msgctxt "option label"
 msgid "Subject Image ID"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:235 lib/edit.php:288 lib/edit.php:343
-#: lib/edit.php:385 lib/edit.php:427 lib/pro/admin/edit.php:749
+#: gettext/gettext-lib-pro.php:235 lib/edit.php:283 lib/edit.php:338
+#: lib/edit.php:380 lib/edit.php:422 lib/pro/admin/edit.php:749
 #: lib/std/admin/edit.php:793
 msgctxt "option label"
 msgid "or an Image URL"
@@ -4767,7 +4767,7 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:459 lib/edit.php:634 lib/page.php:1302
+#: gettext/gettext-lib-pro.php:459 lib/edit.php:629 lib/page.php:1302
 #: lib/pro/social/buddypress.php:661
 msgctxt "default description"
 msgid "No Description."
@@ -6093,257 +6093,257 @@ msgid ""
 "social sites to access your site."
 msgstr ""
 
-#: lib/edit.php:109
+#: lib/edit.php:104
 msgctxt "option label"
 msgid "Preferred Cropping"
 msgstr ""
 
-#: lib/edit.php:115 lib/script.php:425
+#: lib/edit.php:110 lib/script.php:425
 msgctxt "option label"
 msgid "Schema Type"
 msgstr ""
 
-#: lib/edit.php:130
+#: lib/edit.php:125
 msgctxt "option label"
 msgid "Open Graph Type"
 msgstr ""
 
-#: lib/edit.php:138
+#: lib/edit.php:133
 msgctxt "option label"
 msgid "Primary Category"
 msgstr ""
 
-#: lib/edit.php:145
+#: lib/edit.php:140
 msgctxt "option label"
 msgid "Default Title"
 msgstr ""
 
-#: lib/edit.php:152
+#: lib/edit.php:147
 msgctxt "option label"
 msgid "Default Description"
 msgstr ""
 
-#: lib/edit.php:160
+#: lib/edit.php:155
 msgctxt "option label"
 msgid "Meta Description"
 msgstr ""
 
-#: lib/edit.php:168
+#: lib/edit.php:163
 msgctxt "option label"
 msgid "Pinterest Description"
 msgstr ""
 
-#: lib/edit.php:176
+#: lib/edit.php:171
 msgctxt "option label"
 msgid "Twitter Card Title"
 msgstr ""
 
-#: lib/edit.php:183
+#: lib/edit.php:178
 msgctxt "option label"
 msgid "Twitter Card Description"
 msgstr ""
 
-#: lib/edit.php:194
+#: lib/edit.php:189
 msgctxt "option label"
 msgid "Article Section"
 msgstr ""
 
-#: lib/edit.php:210
+#: lib/edit.php:205
 msgctxt "option label"
 msgid "Est. Reading Time"
 msgstr ""
 
-#: lib/edit.php:213
+#: lib/edit.php:208
 msgid "minute(s)"
 msgstr ""
 
-#: lib/edit.php:230
+#: lib/edit.php:225
 msgctxt "option label"
 msgid "Maximum Images"
 msgstr ""
 
-#: lib/edit.php:236
+#: lib/edit.php:231
 msgctxt "option label"
 msgid "Maximum Videos"
 msgstr ""
 
-#: lib/edit.php:242
+#: lib/edit.php:237
 msgctxt "option label"
 msgid "Include Video Previews"
 msgstr ""
 
-#: lib/edit.php:249
+#: lib/edit.php:244
 msgctxt "metabox title"
 msgid "Priority Media"
 msgstr ""
 
-#: lib/edit.php:278
+#: lib/edit.php:273
 msgctxt "metabox title"
 msgid "Priority Image Information"
 msgstr ""
 
-#: lib/edit.php:325
+#: lib/edit.php:320
 msgid "No priority media options for the %s."
 msgstr ""
 
-#: lib/edit.php:415
+#: lib/edit.php:410
 msgctxt "metabox title"
 msgid "Pinterest Pin It"
 msgstr ""
 
-#: lib/edit.php:445 lib/edit.php:614
+#: lib/edit.php:440 lib/edit.php:609
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
 
-#: lib/edit.php:471
+#: lib/edit.php:466
 msgctxt "metabox title"
 msgid "Robots Meta"
 msgstr ""
 
-#: lib/edit.php:479
+#: lib/edit.php:474
 msgctxt "option label"
 msgid "No Archive"
 msgstr ""
 
-#: lib/edit.php:482
+#: lib/edit.php:477
 msgctxt "option comment"
 msgid "do not show a cached link in search results"
 msgstr ""
 
-#: lib/edit.php:486
+#: lib/edit.php:481
 msgctxt "option label"
 msgid "No Follow"
 msgstr ""
 
-#: lib/edit.php:489
+#: lib/edit.php:484
 msgctxt "option comment"
 msgid "do not follow links on this webpage"
 msgstr ""
 
-#: lib/edit.php:493
+#: lib/edit.php:488
 msgctxt "option label"
 msgid "No Image Index"
 msgstr ""
 
-#: lib/edit.php:496
+#: lib/edit.php:491
 msgctxt "option comment"
 msgid "do not index images on this webpage"
 msgstr ""
 
-#: lib/edit.php:500
+#: lib/edit.php:495
 msgctxt "option label"
 msgid "No Index"
 msgstr ""
 
-#: lib/edit.php:503
+#: lib/edit.php:498
 msgctxt "option comment"
 msgid "do not show this webpage in search results"
 msgstr ""
 
-#: lib/edit.php:507
+#: lib/edit.php:502
 msgctxt "option label"
 msgid "No Snippet"
 msgstr ""
 
-#: lib/edit.php:510
+#: lib/edit.php:505
 msgctxt "option comment"
 msgid "do not show a text snippet or a video preview in search results"
 msgstr ""
 
-#: lib/edit.php:514
+#: lib/edit.php:509
 msgctxt "option label"
 msgid "No Translate"
 msgstr ""
 
-#: lib/edit.php:517
+#: lib/edit.php:512
 msgctxt "option comment"
 msgid "do not offer translation of this webpage in search results"
 msgstr ""
 
-#: lib/edit.php:521
+#: lib/edit.php:516
 msgctxt "option label"
 msgid "Snippet Max. Length"
 msgstr ""
 
-#: lib/edit.php:524 lib/submenu/general.php:324 lib/submenu/general.php:330
+#: lib/edit.php:519 lib/submenu/general.php:324 lib/submenu/general.php:330
 #: lib/submenu/general.php:342 lib/submenu/general.php:354
 #: lib/submenu/general.php:429 lib/submenu/general.php:435
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
 
-#: lib/edit.php:525 lib/edit.php:540 lib/submenu/general.php:354
+#: lib/edit.php:520 lib/edit.php:535 lib/submenu/general.php:354
 #: lib/submenu/general.php:367
 msgctxt "option comment"
 msgid "-1 for no limit"
 msgstr ""
 
-#: lib/edit.php:529
+#: lib/edit.php:524
 msgctxt "option label"
 msgid "Image Preview Size"
 msgstr ""
 
-#: lib/edit.php:536
+#: lib/edit.php:531
 msgctxt "option label"
 msgid "Video Max. Previews"
 msgstr ""
 
-#: lib/edit.php:539 lib/submenu/general.php:367
+#: lib/edit.php:534 lib/submenu/general.php:367
 msgctxt "option comment"
 msgid "seconds"
 msgstr ""
 
-#: lib/edit.php:593
+#: lib/edit.php:588
 msgctxt "preview image error"
 msgid "Image Size Smaller<br/>than Suggested Minimum<br/>of %s"
 msgstr ""
 
-#: lib/edit.php:602
+#: lib/edit.php:597
 msgctxt "preview image error"
 msgid "Image Size Unknown<br/>or Not Available"
 msgstr ""
 
-#: lib/edit.php:609
+#: lib/edit.php:604
 msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/edit.php:618
+#: lib/edit.php:613
 msgctxt "option label"
 msgid "Shortlink URL"
 msgstr ""
 
-#: lib/edit.php:622
+#: lib/edit.php:617
 msgctxt "option label"
 msgid "Facebook / Open Graph Example"
 msgstr ""
 
-#: lib/edit.php:631 lib/page.php:1600
+#: lib/edit.php:626 lib/page.php:1600
 msgctxt "default title"
 msgid "No Title"
 msgstr ""
 
-#: lib/edit.php:662
+#: lib/edit.php:657
 msgctxt "option label"
 msgid "oEmbed JSON URL"
 msgstr ""
 
-#: lib/edit.php:666
+#: lib/edit.php:661
 msgctxt "option label"
 msgid "oEmbed XML URL"
 msgstr ""
 
-#: lib/edit.php:670
+#: lib/edit.php:665
 msgctxt "option label"
 msgid "oEmbed HTML"
 msgstr ""
 
-#: lib/edit.php:680
+#: lib/edit.php:675
 msgid "No oEmbed HTML found."
 msgstr ""
 
-#: lib/edit.php:698
+#: lib/edit.php:693
 msgctxt "submit button"
 msgid "Validate %s"
 msgstr ""
@@ -6503,196 +6503,206 @@ msgid ""
 msgstr ""
 
 #: lib/messages-info-meta.php:48
-msgid ""
-"Schema FAQPage markup is a collection of Questions and Answers, and "
-"WordPress manages a collection of related content in two different ways:"
+msgid "Schema FAQPage markup is a collection of Questions and Answers."
 msgstr ""
 
 #: lib/messages-info-meta.php:50
 msgid ""
-"Schema FAQPage can be a parent page with Schema Question child pages, or a "
+"WordPress manages related singular content, like Questions and Answers, in "
+"two different ways:"
+msgstr ""
+
+#: lib/messages-info-meta.php:52
+msgid ""
+"A Schema FAQPage can be a parent page with Schema Question child pages, or a "
 "taxonomy term (ie. categories, tags or custom taxonomies) with Schema "
 "Question pages assigned to that term."
 msgstr ""
 
-#: lib/messages-info-meta.php:52 lib/messages-info-meta.php:94
+#: lib/messages-info-meta.php:54
 msgid ""
-"Note that using the %1$s add-on is often the easiest and preferred way to "
-"manage FAQ groups and Question pages."
+"Note that using the %1$s add-on is the easiest and preferred way to manage "
+"FAQ and Question pages."
 msgstr ""
 
-#: lib/messages-info-meta.php:67
+#: lib/messages-info-meta.php:69
 msgid ""
 "Google requires that Schema QAPage markup include one or more user submitted "
 "and upvoted answers."
 msgstr ""
 
-#: lib/messages-info-meta.php:69
+#: lib/messages-info-meta.php:71
 msgid ""
 "The Schema QAPage document name / title is a summary of the question, and "
 "the full text is the complete question."
 msgstr ""
 
-#: lib/messages-info-meta.php:83
+#: lib/messages-info-meta.php:85
 msgid ""
 "The Schema Question document name / title is a summary of the question, the "
 "description is a summary of the answer, and the full text is the complete "
 "answer."
 msgstr ""
 
-#: lib/messages-info-meta.php:93
+#: lib/messages-info-meta.php:95
 msgid ""
 "The Schema Question type can be a child page of a Schema FAQPage parent, or "
 "assigned to a Schema FAQPage taxonomy term."
 msgstr ""
 
-#: lib/messages-info-meta.php:114
+#: lib/messages-info-meta.php:96
+msgid ""
+"Note that using the %1$s add-on is often the easiest and preferred way to "
+"manage FAQ groups and Question pages."
+msgstr ""
+
+#: lib/messages-info-meta.php:116
 msgid ""
 "You can edit images in the <a href=\"%s\">WordPress Media Library</a> to "
 "select a preferred image cropping area (ie. top or bottom) and optimize the "
 "image SEO information."
 msgstr ""
 
-#: lib/messages-info-meta.php:118
+#: lib/messages-info-meta.php:120
 msgid ""
 "Note that the Schema CreativeWork type (and its sub-types) has a 'video' "
 "property for VideoObject markup, but other Schema types (like Event, Job "
 "Posting, Place, Product, and Brand) do not have a 'video' property."
 msgstr ""
 
-#: lib/messages-info-meta.php:120
+#: lib/messages-info-meta.php:122
 msgid ""
 "In these cases - assuming the video(s) are about the content subject - they "
 "will be added to a 'subjectOf' property instead."
 msgstr ""
 
-#: lib/messages-info-meta.php:137
+#: lib/messages-info-meta.php:139
 msgid ""
 "The robots meta tag lets you utilize a granular, webpage-specific approach "
 "to controlling how an individual webpage should be indexed and served to "
 "users in Google Search results."
 msgstr ""
 
-#: lib/messages-info-meta.php:156
+#: lib/messages-info-meta.php:158
 msgid ""
 "The example image container uses the minimum recommended Facebook image "
 "dimensions of %s."
 msgstr ""
 
-#: lib/messages-info-meta.php:160
+#: lib/messages-info-meta.php:162
 msgid ""
 "You can edit images in the <a href=\"%s\">WordPress Media Library</a> to "
 "select a preferred cropping area (ie. top or bottom), along with optimizing "
 "the social and SEO texts for the image."
 msgstr ""
 
-#: lib/messages-info-meta.php:173
+#: lib/messages-info-meta.php:175
 msgid "oEmbed HTML provided by the <code>%s</code> template."
 msgstr ""
 
-#: lib/messages-info-meta.php:186
+#: lib/messages-info-meta.php:188
 msgid ""
 "Validate the HTML syntax and conformance of the AMP (aka Accelerated Mobile "
 "Pages) webpage."
 msgstr ""
 
-#: lib/messages-info-meta.php:190
+#: lib/messages-info-meta.php:192
 msgid ""
 "Note that an AMP plugin is required to create AMP webpages for WordPress."
 msgstr ""
 
-#: lib/messages-info-meta.php:201
+#: lib/messages-info-meta.php:203
 msgid "All social sites (except for LinkedIn) read Open Graph meta tags."
 msgstr ""
 
-#: lib/messages-info-meta.php:203
+#: lib/messages-info-meta.php:205
 msgid ""
 "The Facebook debugger allows you to validate Open Graph meta tags and "
 "refresh Facebook's cache."
 msgstr ""
 
-#: lib/messages-info-meta.php:205
+#: lib/messages-info-meta.php:207
 msgid ""
 "The Facebook debugger is the most reliable validation tool for Open Graph "
 "meta tags."
 msgstr ""
 
-#: lib/messages-info-meta.php:215
+#: lib/messages-info-meta.php:217
 msgid ""
 "The Facebook catalog microdata debug tool allows you to validate the "
 "structured data used to indicate key information about the items on your "
 "website, such as their name, description and prices."
 msgstr ""
 
-#: lib/messages-info-meta.php:225
+#: lib/messages-info-meta.php:227
 msgid ""
 "Analyzes the webpage content and suggests ways to make the webpage faster "
 "for better ranking in search results."
 msgstr ""
 
-#: lib/messages-info-meta.php:235
+#: lib/messages-info-meta.php:237
 msgid ""
 "Check the webpage structured data markup for <a href=\"%s\">Google Rich "
 "Result types</a> (Job posting, Product, Recipe, etc.)."
 msgstr ""
 
-#: lib/messages-info-meta.php:235 lib/messages-info-meta.php:269
+#: lib/messages-info-meta.php:237 lib/messages-info-meta.php:271
 msgid "https://developers.google.com/search/docs/guides/search-gallery"
 msgstr ""
 
-#: lib/messages-info-meta.php:237
+#: lib/messages-info-meta.php:239
 msgid ""
 "To test and validate Schema markup beyond the limited subset of Google Rich "
 "Result types, use the Schema Markup Validator."
 msgstr ""
 
-#: lib/messages-info-meta.php:247
+#: lib/messages-info-meta.php:249
 msgid "Refresh LinkedIn's cache and validate the webpage oEmbed data."
 msgstr ""
 
-#: lib/messages-info-meta.php:257
+#: lib/messages-info-meta.php:259
 msgid ""
 "Validate Rich Pin markup and submit a request to show Rich Pin markup in "
 "zoomed pins."
 msgstr ""
 
-#: lib/messages-info-meta.php:267
+#: lib/messages-info-meta.php:269
 msgid ""
 "Validate the webpage Schema JSON-LD, Microdata and RDFa structured data "
 "markup."
 msgstr ""
 
-#: lib/messages-info-meta.php:269
+#: lib/messages-info-meta.php:271
 msgid ""
 "This tool provides additional validation for Schema types beyond the limited "
 "subset of <a href=\"%s\">Google Rich Result types</a>."
 msgstr ""
 
-#: lib/messages-info-meta.php:279
+#: lib/messages-info-meta.php:281
 msgid ""
 "The Twitter Card validator does not (currently) accept query arguments - "
 "paste the following URL in the Twitter Card validator \"Card URL\" input "
 "field:"
 msgstr ""
 
-#: lib/messages-info-meta.php:289
+#: lib/messages-info-meta.php:291
 msgid ""
 "Validate the HTML syntax and HTML 5 conformance of your meta tags and theme "
 "templates."
 msgstr ""
 
-#: lib/messages-info-meta.php:291
+#: lib/messages-info-meta.php:293
 msgid ""
 "Validating your theme templates is important - theme templates with serious "
 "errors can prevent social and search crawlers from understanding the webpage "
 "structure."
 msgstr ""
 
-#: lib/messages-info-meta.php:303
+#: lib/messages-info-meta.php:305
 msgid "Activate an AMP plugin to create and validate AMP pages."
 msgstr ""
 
-#: lib/messages-info-meta.php:312 lib/messages.php:797 lib/messages.php:807
+#: lib/messages-info-meta.php:314 lib/messages.php:797 lib/messages.php:807
 msgid "Schema markup is disabled."
 msgstr ""
 

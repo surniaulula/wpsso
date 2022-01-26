@@ -45,11 +45,13 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 
 						$text .= '<p>';
 
-						$text .= __( 'Schema FAQPage markup is a collection of Questions and Answers, and WordPress manages a collection of related content in two different ways:', 'wpsso' ) . ' ';
+						$text .= __( 'Schema FAQPage markup is a collection of Questions and Answers.', 'wpsso' ) . ' ';
+						
+						$text .= __( 'WordPress manages related singular content, like Questions and Answers, in two different ways:', 'wpsso' ) . ' ';
 
-						$text .= __( 'Schema FAQPage can be a parent page with Schema Question child pages, or a taxonomy term (ie. categories, tags or custom taxonomies) with Schema Question pages assigned to that term.', 'wpsso' ) . ' ';
+						$text .= __( 'A Schema FAQPage can be a parent page with Schema Question child pages, or a taxonomy term (ie. categories, tags or custom taxonomies) with Schema Question pages assigned to that term.', 'wpsso' ) . ' ';
 
-						$text .= sprintf( __( 'Note that using the %1$s add-on is often the easiest and preferred way to manage FAQ groups and Question pages.', 'wpsso' ), $faq_info_name ) . ' ';
+						$text .= sprintf( __( 'Note that using the %1$s add-on is the easiest and preferred way to manage FAQ and Question pages.', 'wpsso' ), $faq_info_name ) . ' ';
 
 						$text .= '</p>';
 
