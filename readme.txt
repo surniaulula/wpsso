@@ -275,7 +275,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Added a new "Movie Released Date" option in the Document SSO metabox.
+	* Added a new "Movie Release Date" option in the Document SSO metabox.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -841,7 +841,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 = 9.14.2 =
 
-(2022/01/23) Added a new "Movie Released Date" option in the Document SSO metabox.
+(2022/01/23) Added a new "Movie Release Date" option in the Document SSO metabox.
 
 = 9.14.1 =
 
