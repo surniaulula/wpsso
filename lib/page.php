@@ -1100,7 +1100,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $mod[ 'is_post' ] ) {
 
-					if ( $mod[ 'is_post_type_archive' ] ) {	// Note that post ID can be 0.
+					if ( $mod[ 'is_post_type_archive' ] ) {	// The post ID may be 0.
 
 						if ( $this->p->debug->enabled ) {
 
@@ -1491,7 +1491,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( $mod[ 'is_post' ] ) {
 
-				if ( $mod[ 'is_post_type_archive' ] ) {	// Note that post ID can be 0.
+				if ( $mod[ 'is_post_type_archive' ] ) {	// The post ID may be 0.
 
 					if ( $this->p->debug->enabled ) {
 

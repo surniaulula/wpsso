@@ -236,7 +236,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					if ( $mod[ 'post_type' ] ) {
 
-						if ( $mod[ 'is_post_type_archive' ] ) {	// Note that post ID can be 0.
+						if ( $mod[ 'is_post_type_archive' ] ) {	// The post ID may be 0.
 
 							$type_id = $this->get_og_type_id_for_name( 'post_archive' );
 
