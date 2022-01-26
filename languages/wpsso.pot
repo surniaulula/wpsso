@@ -1106,7 +1106,7 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:99
 msgctxt "lib file description"
-msgid "(feature) Import Yoast SEO Blocks Attrs"
+msgid "(feature) Import Yoast SEO Block Attrs"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:100
@@ -2780,7 +2780,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:34 lib/pro/admin/advanced.php:229
 #: lib/std/admin/advanced.php:220
 msgctxt "option label"
-msgid "Import Yoast SEO Blocks Attrs"
+msgid "Import Yoast SEO Block Attrs"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:35 lib/opengraph.php:57

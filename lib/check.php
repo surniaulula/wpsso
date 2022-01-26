@@ -904,7 +904,7 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 									break;
 
 								/**
-								 * Import Yoast SEO Blocks Attrs.
+								 * Import Yoast SEO Block Attrs.
 								 */
 								case 'wpseo-blocks':
 

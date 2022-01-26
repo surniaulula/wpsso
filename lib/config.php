@@ -207,7 +207,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'seoframework-meta' => '(feature) Import The SEO Framework Metadata',
 								'shorten'           => '(feature) URL Shortening Service',
 								'wpseo-meta'        => '(feature) Import Yoast SEO Metadata',
-								'wpseo-blocks'      => '(feature) Import Yoast SEO Blocks Attrs',
+								'wpseo-blocks'      => '(feature) Import Yoast SEO Block Attrs',
 							),
 						),
 						'profile' => array(
@@ -1763,7 +1763,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_import_rankmath_meta'     => 0,	// Import Rank Math SEO Metadata.
 					'plugin_import_seoframework_meta' => 0,	// Import The SEO Framework Metadata.
 					'plugin_import_wpseo_meta'        => 0,	// Import Yoast SEO Metadata.
-					'plugin_import_wpseo_blocks'      => 0,	// Import Yoast SEO Blocks Attrs.
+					'plugin_import_wpseo_blocks'      => 0,	// Import Yoast SEO Block Attrs.
 
 					/**
 					 * Advanced Settings > Media Services tab.

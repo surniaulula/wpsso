@@ -96,7 +96,7 @@ _x( '(feature) Import Rank Math SEO Metadata', 'lib file description', 'wpsso' )
 _x( '(feature) Import The SEO Framework Metadata', 'lib file description', 'wpsso' );
 _x( '(feature) URL Shortening Service', 'lib file description', 'wpsso' );
 _x( '(feature) Import Yoast SEO Metadata', 'lib file description', 'wpsso' );
-_x( '(feature) Import Yoast SEO Blocks Attrs', 'lib file description', 'wpsso' );
+_x( '(feature) Import Yoast SEO Block Attrs', 'lib file description', 'wpsso' );
 _x( 'Profile SSO - Social and Search Optimization', 'lib file description', 'wpsso' );
 _x( 'Advanced Settings', 'lib file description', 'wpsso' );
 _x( 'Plugin Add-ons', 'lib file description', 'wpsso' );

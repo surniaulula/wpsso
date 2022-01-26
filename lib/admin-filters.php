@@ -141,9 +141,9 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 			$features[ '(feature) Import Yoast SEO Metadata' ][ 'label_url' ] = $integ_tab_url;
 
 			/**
-			 * SSO > Advanced Settings > Plugin Settings > Integration > Import Yoast SEO Blocks Attrs.
+			 * SSO > Advanced Settings > Plugin Settings > Integration > Import Yoast SEO Block Attrs.
 			 */
-			$features[ '(feature) Import Yoast SEO Blocks Attrs' ][ 'label_url' ] = $integ_tab_url;
+			$features[ '(feature) Import Yoast SEO Block Attrs' ][ 'label_url' ] = $integ_tab_url;
 
 			/**
 			 * SSO > Advanced Settings > Service APIs > Shortening Services > URL Shortening Service.

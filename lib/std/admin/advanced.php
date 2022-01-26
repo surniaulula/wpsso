@@ -217,7 +217,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				WpssoAdmin::get_option_site_use( 'plugin_import_wpseo_meta', $form, $network );
 
 			$table_rows[ 'plugin_import_wpseo_blocks' ] = '' .
-				$form->get_th_html( _x( 'Import Yoast SEO Blocks Attrs', 'option label', 'wpsso' ),
+				$form->get_th_html( _x( 'Import Yoast SEO Block Attrs', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_import_wpseo_blocks' ) . 
 				$form->get_no_td_checkbox( 'plugin_import_wpseo_blocks' ) .
 				WpssoAdmin::get_option_site_use( 'plugin_import_wpseo_blocks', $form, $network );

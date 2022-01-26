@@ -327,7 +327,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
-				case 'tooltip-plugin_import_wpseo_blocks':	// Import Yoast SEO Blocks Attrs.
+				case 'tooltip-plugin_import_wpseo_blocks':	// Import Yoast SEO Block Attrs.
 
 					if ( empty( $plugin_name_transl ) ) {
 
