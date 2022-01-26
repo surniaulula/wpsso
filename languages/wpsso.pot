@@ -4767,7 +4767,7 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:459 lib/edit.php:629 lib/page.php:1339
+#: gettext/gettext-lib-pro.php:459 lib/edit.php:629 lib/page.php:1341
 #: lib/pro/social/buddypress.php:661
 msgctxt "default description"
 msgid "No Description."
@@ -6319,7 +6319,7 @@ msgctxt "option label"
 msgid "Facebook / Open Graph Example"
 msgstr ""
 
-#: lib/edit.php:626 lib/page.php:1637
+#: lib/edit.php:626 lib/page.php:1639
 msgctxt "default title"
 msgid "No Title"
 msgstr ""
@@ -9946,60 +9946,60 @@ msgid ""
 "its default value."
 msgstr ""
 
-#: lib/page.php:1123 lib/page.php:1128 lib/page.php:1242
+#: lib/page.php:1125 lib/page.php:1130 lib/page.php:1244
 msgctxt "default description"
 msgid "Archive for %s."
 msgstr ""
 
-#: lib/page.php:1213
+#: lib/page.php:1215
 msgctxt "default description"
 msgid "Tag archive for %s."
 msgstr ""
 
-#: lib/page.php:1226
+#: lib/page.php:1228
 msgctxt "default description"
 msgid "Category archive for %s."
 msgstr ""
 
-#: lib/page.php:1258
+#: lib/page.php:1260
 msgctxt "default description"
 msgid "Authored by %s."
 msgstr ""
 
-#: lib/page.php:1276
+#: lib/page.php:1278
 msgid "Search Results for &#8220;%s&#8221;"
 msgstr ""
 
-#: lib/page.php:1286
+#: lib/page.php:1288
 msgctxt "default description"
 msgid "Yearly archive for %s."
 msgstr ""
 
-#: lib/page.php:1292
+#: lib/page.php:1294
 msgctxt "default description"
 msgid "Monthly archive for %s."
 msgstr ""
 
-#: lib/page.php:1298
+#: lib/page.php:1300
 msgctxt "default description"
 msgid "Daily archive for %s."
 msgstr ""
 
-#: lib/page.php:1305
+#: lib/page.php:1307
 msgctxt "default description"
 msgid "Archive page."
 msgstr ""
 
-#: lib/page.php:1503 lib/page.php:1507
+#: lib/page.php:1505 lib/page.php:1509
 msgctxt "default title"
 msgid "%s Archive"
 msgstr ""
 
-#: lib/page.php:1589
+#: lib/page.php:1591
 msgid "Search Results %1$s %2$s"
 msgstr ""
 
-#: lib/page.php:1722
+#: lib/page.php:1724
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] ""

@@ -432,14 +432,16 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					case 'post':
 
+						/**
+						 * If the query is a post with an ID of 0, then it may be a post type archive page
+						 * that was setup incorrectly (ie. a post object without an ID or slug).
+						 */
 						if ( ! empty( $mod[ 'query_vars' ][ 'post_type' ] ) ) {
+
+							$mod[ 'post_type' ] = $mod[ 'query_vars' ][ 'post_type' ];
 
 							if ( is_post_type_archive() ) {
 					
-								$mod[ 'post_type' ] = $mod[ 'query_vars' ][ 'post_type' ];
-
-								$mod[ 'is_post' ] = true;
-
 								$mod[ 'is_post_type_archive' ] = true;
 					
 								$post_type_obj = get_post_type_object( $mod[ 'post_type' ] );
