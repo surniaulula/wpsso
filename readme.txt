@@ -254,12 +254,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 9.15.0-rc.1 (2022/01/26)**
 
 * **New Features**
-	* Added a new "Import Yoast SEO Block Attrs" option under the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Integration tab.
+	* Added a new "Import Yoast SEO Block Attrs" option under the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Integration tab (Premium edition).
 * **Improvements**
 	* Added detection of incorrect post type archive pages (no ID and no slug), like the Events page from The Events Calendar.
 * **Bugfixes**
 	* Fixed incorrect detection of blog archive page for a post object ID 0, like the Events page from The Events Calendar.
 * **Developer Notes**
+	* Added a 'pta' argument when getting the title and description from The SEO Framework (Premium edition).
 	* Added a new `WpssoSchema->get_mod_script_type_application_ld_json_html()` method.
 	* Added a new `WpssoAdminHeadSuggestAddons` class in lib/admin-head-suggest-addons.php.
 	* Added a new `WpssoAdminHeadSuggestOptions` class in lib/admin-head-suggest-options.php.
@@ -837,7 +838,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 = 9.15.0-rc.1 =
 
-(2022/01/26) Added a new "Import Yoast SEO Block Attrs" option. Added detection of incorrect post type archive pages (no ID and no slug). Fixed incorrect detection of blog archive page for a post object ID 0.
+(2022/01/26) Added a new "Import Yoast SEO Block Attrs" option (Premium edition). Added detection of incorrect post type archive pages (no ID and no slug). Fixed incorrect detection of blog archive page for a post object ID 0.
 
 = 9.14.2 =
 
