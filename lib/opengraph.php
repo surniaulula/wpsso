@@ -135,7 +135,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			} elseif ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'skipping local cache - mod object or id is empty' );
+				$this->p->debug->log( 'skipping local cache: mod object or id is empty' );
 			}
 
 			$default_key = apply_filters( 'wpsso_og_type_for_default', 'website', $mod );

@@ -1467,6 +1467,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		 */
 		public function get_the_title( array $mod, $title_sep = null ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			$title_text = '';
 
 			if ( null === $title_sep ) {	// Can be false.
@@ -1677,6 +1682,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		}
 
 		public function get_the_excerpt( array $mod ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			$excerpt_text = '';
 

@@ -6319,7 +6319,7 @@ msgctxt "option label"
 msgid "Facebook / Open Graph Example"
 msgstr ""
 
-#: lib/edit.php:626 lib/page.php:1639
+#: lib/edit.php:626 lib/page.php:1644
 msgctxt "default title"
 msgid "No Title"
 msgstr ""
@@ -9990,16 +9990,16 @@ msgctxt "default description"
 msgid "Archive page."
 msgstr ""
 
-#: lib/page.php:1505 lib/page.php:1509
+#: lib/page.php:1510 lib/page.php:1514
 msgctxt "default title"
 msgid "%s Archive"
 msgstr ""
 
-#: lib/page.php:1591
+#: lib/page.php:1596
 msgid "Search Results %1$s %2$s"
 msgstr ""
 
-#: lib/page.php:1724
+#: lib/page.php:1734
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] ""

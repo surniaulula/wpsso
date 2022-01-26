@@ -574,7 +574,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			} elseif ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'skipping local cache - mod object or id is empty' );
+				$this->p->debug->log( 'skipping local cache: mod object or id is empty' );
 			}
 
 			$default_key  = apply_filters( 'wpsso_schema_type_for_default', 'webpage', $mod );
@@ -620,12 +620,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				} elseif ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'skipping custom type id - mod object or id is empty' );
+					$this->p->debug->log( 'skipping custom type id: mod object or id is empty' );
 				}
 
 			} elseif ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'skipping custom type id - use_mod_opts is false' );
+				$this->p->debug->log( 'skipping custom type id: use_mod_opts is false' );
 			}
 
 			if ( empty( $type_id ) ) {
