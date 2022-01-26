@@ -2113,7 +2113,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			} elseif ( $mod[ 'is_post' ] ) {
 
-				if ( $mod[ 'is_post_type_archive' ] ) {
+				if ( $mod[ 'is_post_type_archive' ] ) {	// Note that post ID can be 0.
 
 					$url = get_post_type_archive_link( $mod[ 'post_type' ] );
 
@@ -2329,7 +2329,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( $mod[ 'is_post' ] ) {
 
-				if ( $mod[ 'is_post_type_archive' ] ) {
+				if ( $mod[ 'is_post_type_archive' ] ) {	// Note that post ID can be 0.
 
 					// Nothing to do.
 

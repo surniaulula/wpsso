@@ -663,9 +663,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				} elseif ( $mod[ 'is_post' ] ) {
 
-					if ( ! empty( $mod[ 'post_type' ] ) ) {
+					if ( $mod[ 'post_type' ] ) {
 
-						if ( $mod[ 'is_post_type_archive' ] ) {
+						if ( $mod[ 'is_post_type_archive' ] ) {	// Note that post ID can be 0.
 
 							$type_id = $this->get_schema_type_id_for_name( 'post_archive' );
 
