@@ -2965,10 +2965,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$is_home_page = false;
 
-			/**
-			 * Fallback to null so $use_post = 0 does not match.
-			 */
-			$post_id = 'page' === get_option( 'show_on_front' ) ? (int) get_option( 'page_on_front' ) : null;
+			$post_id = 'page' === get_option( 'show_on_front' ) ? (int) get_option( 'page_on_front' ) : 0;
 
 			if ( $post_id > 0 ) {
 
@@ -2989,18 +2986,18 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$is_home_posts = false;
 
-			/**
-			 * Fallback to null so $use_post = 0 does not match.
-			 */
-			$post_id = 'page' === get_option( 'show_on_front' ) ? (int) get_option( 'page_for_posts' ) : null;
+			$post_id = 'page' === get_option( 'show_on_front' ) ? (int) get_option( 'page_for_posts' ) : 0;
+			
+			if ( $post_id > 0 ) {
 
-			if ( is_numeric( $use_post ) && (int) $use_post === $post_id ) {
+				if ( is_numeric( $use_post ) && (int) $use_post === $post_id ) {
 
-				$is_home_posts = true;
+					$is_home_posts = true;
 
-			} elseif ( $post_id > 0 && self::get_post_object( $use_post, 'id' ) === $post_id ) {
+				} elseif ( self::get_post_object( $use_post, 'id' ) === $post_id ) {
 
-				$is_home_posts = true;
+					$is_home_posts = true;
+				}
 
 			} elseif ( false === $use_post && is_home() && is_front_page() ) {
 
