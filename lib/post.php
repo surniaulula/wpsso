@@ -419,12 +419,19 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 *
 					 * See WpssoUtilBlocks->filter_import_content_blocks().
 					 */
-					if ( $this->p->debug->enabled ) {
+					if ( isset( $post_obj->post_content ) ) {
 
-						$this->p->debug->log( 'applying import_content_blocks filters for post id ' . $post_id . ' content' );
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'applying import_content_blocks filters for post id ' . $post_id . ' content' );
+						}
+
+						$md_opts = apply_filters( 'wpsso_import_content_blocks', $md_opts, $post_obj->post_content );
+
+					} elseif ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'content property missing in post id ' . $post_id . ' object' );
 					}
-
-					$md_opts = apply_filters( 'wpsso_import_content_blocks', $md_opts, $post_obj->post_content );
 
 					/**
 					 * The 'import_custom_fields' filter is executed before the 'wpsso_get_md_options' and

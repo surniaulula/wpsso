@@ -425,7 +425,44 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						}
 					}
 				}
+
+			} elseif ( empty( $mod[ 'id' ] ) ) {
+
+				switch ( $mod[ 'name' ] ) {
+
+					case 'post':
+
+						if ( ! empty( $mod[ 'query_vars' ][ 'post_type' ] ) ) {
+
+							if ( is_post_type_archive() ) {
+					
+								$mod[ 'post_type' ] = $mod[ 'query_vars' ][ 'post_type' ];
+
+								$mod[ 'is_post' ] = true;
+
+								$mod[ 'is_post_type_archive' ] = true;
+					
+								$post_type_obj = get_post_type_object( $mod[ 'post_type' ] );
+					
+								if ( is_object( $post_type_obj ) ) {	// Just in case.
+
+									if ( isset( $post_type_obj->labels->singular_name ) ) {
+			
+										$mod[ 'post_type_label' ] = $post_type_obj->labels->singular_name;
+									}
+			
+									if ( isset( $post_type_obj->public ) ) {
+			
+										$mod[ 'is_public' ] = $post_type_obj->public ? true : false;
+									}
+								}
+							}
+						}
+
+						break;
+				}
 			}
+
 
 			if ( $this->p->debug->enabled ) {
 
