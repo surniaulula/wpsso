@@ -51,7 +51,7 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 
 						$text .= __( 'A Schema FAQPage can be a parent page with Schema Question child pages, or a taxonomy term (ie. categories, tags or custom taxonomies) with Schema Question pages assigned to that term.', 'wpsso' ) . ' ';
 
-						$text .= sprintf( __( 'Note that using the %1$s add-on is the easiest and preferred way to manage FAQ and Question pages.', 'wpsso' ), $faq_info_name ) . ' ';
+						$text .= sprintf( __( 'Note that using the %1$s add-on is the easiest and preferred way to manage FAQ pages and its associated question pages.', 'wpsso' ), $faq_info_name ) . ' ';
 
 						$text .= '</p>';
 

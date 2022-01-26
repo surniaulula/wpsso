@@ -449,7 +449,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-schema_movie_released':	// Movie Released Date.
+						case 'tooltip-meta-schema_movie_released':	// Movie Release Date.
 
 							$text = __( 'The date the movie was released.', 'wpsso' );
 

@@ -3761,7 +3761,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:224 lib/pro/admin/edit.php:674
 #: lib/std/admin/edit.php:711
 msgctxt "option label"
-msgid "Movie Released Date"
+msgid "Movie Release Date"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:225 lib/pro/admin/edit.php:681
@@ -6522,7 +6522,7 @@ msgstr ""
 #: lib/messages-info-meta.php:54
 msgid ""
 "Note that using the %1$s add-on is the easiest and preferred way to manage "
-"FAQ and Question pages."
+"FAQ pages and its associated question pages."
 msgstr ""
 
 #: lib/messages-info-meta.php:69

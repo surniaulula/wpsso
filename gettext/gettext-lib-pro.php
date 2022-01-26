@@ -221,7 +221,7 @@ _x( 'Schema Movie Information', 'metabox title', 'wpsso' );
 _x( 'Movie Cast Names', 'option label', 'wpsso' );
 _x( 'Movie Director Names', 'option label', 'wpsso' );
 _x( 'Production Company', 'option label', 'wpsso' );
-_x( 'Movie Released Date', 'option label', 'wpsso' );
+_x( 'Movie Release Date', 'option label', 'wpsso' );
 _x( 'Movie Runtime', 'option label', 'wpsso' );
 _x( 'Schema Review Information', 'metabox title', 'wpsso' );
 _x( 'Review Rating', 'option label', 'wpsso' );

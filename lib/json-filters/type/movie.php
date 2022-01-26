@@ -55,7 +55,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeMovie' ) ) {
 			SucomUtil::add_type_opts_md_pad( $md_opts, $mod );
 
 			/**
-			 * Movie Released Date, Time, Timezone.
+			 * Movie Release Date, Time, Timezone.
 			 *
 			 * Add the movie released (aka created) date, if one is available.
 			 */

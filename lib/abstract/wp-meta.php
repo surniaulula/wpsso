@@ -522,9 +522,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					 * Schema Movie.
 					 */
 					'schema_movie_prodco_org_id'     => 'none',	// Movie Production Company.
-					'schema_movie_released_date'     => '',		// Movie Released Date.
-					'schema_movie_released_time'     => 'none',	// Movie Released Time.
-					'schema_movie_released_timezone' => $timezone,	// Movie Released Timezone.
+					'schema_movie_released_date'     => '',		// Movie Release Date.
+					'schema_movie_released_time'     => 'none',	// Movie Release Time.
+					'schema_movie_released_timezone' => $timezone,	// Movie Release Timezone.
 					'schema_movie_duration_days'     => 0,		// Movie Runtime (Days).
 					'schema_movie_duration_hours'    => 0,		// Movie Runtime (Hours).
 					'schema_movie_duration_mins'     => 0,		// Movie Runtime (Mins).

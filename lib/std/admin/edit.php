@@ -708,7 +708,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tr_class' => $schema_type_row_class[ 'movie' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
-					'label'    => _x( 'Movie Released Date', 'option label', 'wpsso' ),
+					'label'    => _x( 'Movie Release Date', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_movie_released',
 					'content'  => $form->get_no_date_time_tz( 'schema_movie_released' ),
 				),
