@@ -251,7 +251,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.15.1-dev.1 (2022/01/27)**
+**Version 9.16.0-dev.2 (2022/01/27)**
 
 * **New Features**
 	* None.
@@ -260,7 +260,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Refactored several `Wpsso` class methods.
+	* Refactored the `WpssoTerm->get_public_ids()` method.
+	* Refactored the `SucomUtilWP->get_post_types()` method.
+	* Refactored the `SucomUtilWP->get_taxonomies()` method.
+	* Added a new `Wpsso->debug_hooks()` method.
+	* Added a new `Wpsso->debug_reminder()` method.
+	* Added a new `WpssoAdmin->init_check_options()` method (hooked to the 'admin_init' action).
+	* Added a new `WpssoUtil->add_post_type_archive_names()` method.
+	* Removed the 'sucom_get_post_types_args' filter.
+	* Removed the 'sucom_get_taxonomies_args' filter.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -850,7 +859,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 9.15.1-dev.1 =
+= 9.16.0-dev.2 =
 
 (2022/01/27) Moved the SSO &gt; Social Pages &gt; Social and Search Sites metabox to the SSO &gt; General Settings page.
 
