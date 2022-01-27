@@ -251,7 +251,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.15.0-rc.2 (2022/01/27)**
+**Version 9.15.0 (2022/01/27)**
 
 * **New Features**
 	* Added a new "Import Yoast SEO Block Attrs" option under the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Integration tab (Premium edition).
@@ -836,7 +836,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 9.15.0-rc.2 =
+= 9.15.0 =
 
 (2022/01/27) Added a new "Import Yoast SEO Block Attrs" option (Premium edition). Added detection (and work-around) of incorrect post type archive pages. Fixed incorrect detection of a post object ID 0 as a blog archive page.
 
