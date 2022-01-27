@@ -447,15 +447,24 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		}
 
 		/**
-		 * Get all publicly accessible term ids for a taxonomy slug (optional).
-		 *
-		 * These may include term ids from non-public taxonomies.
+		 * Get all publicly accessible term ids for taxonomy slugs (optional).
 		 */
-		public static function get_public_ids( $tax_name = null ) {
+		public static function get_public_ids( $tax_names = null ) {
 
 			$public_term_ids = array();
 
-			$tax_names = SucomUtilWP::get_taxonomies( $output = 'names' );
+			if ( null === $tax_names ) {
+
+				$tax_names = SucomUtilWP::get_taxonomies( $output = 'names' );
+
+			} elseif ( is_string( $tax_names ) ) {
+
+				$tax_names = array( $tax_names );
+
+			} elseif ( ! is_array( $tax_names ) ) {	// Incorrect argument value.
+
+				return array();
+			}
 
 			$terms_args = array( 'fields' => 'ids' );	// Return an array of ids.
 

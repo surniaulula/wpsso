@@ -460,11 +460,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			 * Open Graph Type by Post Type.
 			 */
 			$type_select = '';
-
-			/**
-			 * Returns post types registered as 'public' = 1 and 'show_ui' = 1.
-			 */
-			$post_types = SucomUtilWP::get_post_types( $output = 'objects' );
+			$post_types  = SucomUtilWP::get_post_types( $output = 'objects', $sort = true );
 
 			foreach ( $post_types as $obj ) {
 
@@ -490,7 +486,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			 */
 			$type_select = '';
 			$type_keys   = array();
-			$taxonomies  = SucomUtilWP::get_taxonomies( $output = 'objects' );
+			$taxonomies  = SucomUtilWP::get_taxonomies( $output = 'objects', $sort = true );
 
 			foreach ( $taxonomies as $obj ) {
 
@@ -550,10 +546,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			 */
 			$type_select = '';
 
-			/**
-			 * Returns post types registered as 'public' = 1 and 'show_ui' = 1.
-			 */
-			$post_types  = SucomUtilWP::get_post_types( $output = 'objects' );
+			$post_types  = SucomUtilWP::get_post_types( $output = 'objects', $sort = true );
 
 			foreach ( $post_types as $obj ) {
 
@@ -595,7 +588,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			 */
 			$type_select = '';
 			$type_keys   = array();
-			$taxonomies  = SucomUtilWP::get_taxonomies( $output = 'objects' );
+			$taxonomies  = SucomUtilWP::get_taxonomies( $output = 'objects', $sort = true );
 
 			foreach ( $taxonomies as $obj ) {
 

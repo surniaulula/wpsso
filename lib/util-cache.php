@@ -47,7 +47,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			 * Disable the head and post content cache if the front-end URL includes a query string, or the
 			 * WPSSO_CACHE_DISABLE constant is true, or the 'plugin_cache_disable' option is checked.
 			 */
-			$cache_disable = $this->p->get_const_status_bool( 'CACHE_DISABLE' );
+			$cache_disable = $this->p->get_const_status( 'CACHE_DISABLE' );
 
 			if ( null === $cache_disable ) {	// Constant is not defined.
 

@@ -116,10 +116,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( is_multisite() ) {
 
-					/**
-					 * The 5th argument is $menu_lib = 'sitesubmenu', so always limit the method arguments to 4.
-					 */
-					add_filter( 'network_admin_plugin_action_links', array( $this, 'add_site_plugin_action_links' ), 1000, 4 );
+				/**
+				 * The 5th argument is $menu_lib = 'sitesubmenu', so always limit the method arguments to 4.
+				 */
+				add_filter( 'network_admin_plugin_action_links', array( $this, 'add_site_plugin_action_links' ), 1000, 4 );
 			}
 
 			if ( ! $doing_ajax ) {
@@ -131,6 +131,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				add_action( 'admin_menu', array( $this, 'add_admin_menus' ), WPSSO_ADD_MENU_PRIORITY );
 				add_action( 'admin_menu', array( $this, 'add_admin_submenus' ), WPSSO_ADD_SUBMENU_PRIORITY );
 
+				add_action( 'admin_init', array( $this, 'init_check_options' ), -1000 );
 				add_action( 'admin_init', array( $this, 'add_plugins_page_upgrade_notice' ) );
 				add_action( 'admin_init', array( $this, 'register_setting' ) );
 
@@ -166,7 +167,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 */
 		public function activated_plugin( $plugin_base, $network_activation ) {
 
-			$this->p->reg->reset_admin_check_options();
+			$this->p->reg->reset_admin_checks();
 		}
 
 		/**
@@ -177,7 +178,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 */
 		public function after_switch_theme( $old_name, $old_theme ) {
 
-			$this->p->reg->reset_admin_check_options();
+			$this->p->reg->reset_admin_checks();
 		}
 
 		/**
@@ -187,7 +188,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 */
 		public function upgrader_process_complete( $wp_upgrader_obj, $hook_extra ) {
 
-			$this->p->reg->reset_admin_check_options();
+			$this->p->reg->reset_admin_checks();
 		}
 
 		/**
@@ -617,7 +618,63 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			) );
 		}
 
+		public function init_check_options() {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			/**
+			 * set_options() may have loaded the static defaults for new or missing options.
+			 *
+			 * After all objects have been loaded, and all filter / action hooks registered, check to see if the
+			 * options array needs to be reloaded from the filtered defaults.
+			 */
+			if ( ! empty( $this->p->options[ '__reload_defaults' ] ) ) {
+
+				$this->p->options = $this->p->opt->get_defaults();
+			}
+
+			if ( is_multisite() ) {	// Load the site options array.
+
+				if ( ! empty( $this->p->site_options[ '__reload_defaults' ] ) ) {
+
+					$this->p->site_options = $this->p->opt->get_site_defaults();
+				}
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'checking ' . WPSSO_OPTIONS_NAME . ' options' );
+			}
+
+			$this->p->options = $this->p->opt->check_options( WPSSO_OPTIONS_NAME, $this->p->options, $network = false );
+
+			if ( is_multisite() ) {	// Load the site options array.
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'checking ' . WPSSO_SITE_OPTIONS_NAME . ' options' );
+				}
+
+				$this->p->site_options = $this->p->opt->check_options( WPSSO_SITE_OPTIONS_NAME, $this->p->site_options, $network = true );
+			}
+
+			/**
+			 * Init option checks.
+			 *
+			 * See WpssoWcmd->init_check_options();
+			 */
+			do_action( 'wpsso_init_check_options' );
+		}
+
 		public function add_plugins_page_upgrade_notice() {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
 
@@ -635,6 +692,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function show_upgrade_notice( $data, $response ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			if ( isset( $data[ 'upgrade_notice' ] ) ) {	// Just in case.
 
 				echo '<span style="display:table;border-collapse:collapse;margin-left:26px;">';
@@ -644,6 +706,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		protected function add_menu_page( $menu_slug ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_args( array( 
+					'menu_slug' => $menu_slug,
+				) );
+			}
 
 			$pkg_info    = $this->get_pkg_info();	// Returns an array from cache.
 			$page_title  = $pkg_info[ 'wpsso' ][ 'short_pkg' ] . ' - ' . $this->menu_name;
@@ -2886,10 +2955,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function add_advanced_plugin_settings_table_rows( array &$table_rows, $form, $network = false ) {
 
-			$cache_val    = $this->p->get_const_status_bool( 'CACHE_DISABLE' ) ? 1 : 0;
+			$cache_val    = $this->p->get_const_status( 'CACHE_DISABLE' ) ? 1 : 0;
 			$cache_status = $this->p->get_const_status_transl( 'CACHE_DISABLE' );
 
-			$debug_val    = $this->p->get_const_status_bool( 'DEBUG_HTML' ) ? 1 : 0;
+			$debug_val    = $this->p->get_const_status( 'DEBUG_HTML' ) ? 1 : 0;
 			$debug_status = $this->p->get_const_status_transl( 'DEBUG_HTML' );
 
 			$table_rows[ 'plugin_clean_on_uninstall' ] = '' .

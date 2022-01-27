@@ -1534,40 +1534,46 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		}
 
 		/**
-		 * Returns post types registered as 'public' = 1 and 'show_ui' = 1.
+		 * Returns post types registered as 'public' = 1 and 'show_ui' = 1 by default.
+		 *
+		 * Note that the 'wp_block' custom post type for reusable blocks is registered as 'public' = 0 and 'show_ui' = 1.
 		 *
 		 * $output = objects | names
 		 */
-		public static function get_post_types( $output = 'objects', $sort_by_label = true ) {
+		public static function get_post_types( $output = 'objects', $sort = false, $args = null ) {
 
-			/**
-			 * The 'wp_block' custom post type for reusable blocks is registered as 'public' = 0 and 'show_ui' = 1.
-			 */
-			$args = apply_filters( 'sucom_get_post_types_args', array( 'public' => 1, 'show_ui' => 1 ) );
+			if ( null === $args ) {
+
+				$args = array( 'public' => 1, 'show_ui' => 1 );
+			}
 
 			$operator = 'and';
 
 			$post_types = get_post_types( $args, $output, $operator );
 
-			if ( 'objects' === $output ) {
+			if ( $sort ) {
 
-				if ( $sort_by_label ) {
+				if ( 'objects' === $output ) {
 
 					self::sort_objects_by_label( $post_types );
+
+				} else {
+
+					/**
+					 * Sort an associative array in ascending order (and maintain index association).
+					 */
+					asort( $post_types );
 				}
 			}
 
-			return apply_filters( 'sucom_get_post_types', $post_types, $output );
+			return apply_filters( 'sucom_get_post_types', $post_types, $output, $args );
 		}
 
 		public static function get_post_type_labels( array $values = array(), $val_prefix = '', $label_prefix = '', $objects = null ) {
 
-			/**
-			 * Returns post types registered as 'public' = 1 and 'show_ui' = 1.
-			 */
 			if ( null === $objects ) {
 
-				$objects = self::get_post_types( $output = 'objects' );
+				$objects = self::get_post_types( $output = 'objects', $sort = true );
 			}
 
 			if ( is_array( $objects ) ) {	// Just in case.
@@ -1585,33 +1591,40 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $values;
 		}
 
-		/**
-		 * $output = objects | names
-		 */
-		public static function get_taxonomies( $output = 'objects', $sort_by_label = true ) {
+		public static function get_taxonomies( $output = 'objects', $sort = false, $args = null ) {
 
-			$args = apply_filters( 'sucom_get_taxonomies_args', array( 'public' => 1, 'show_ui' => 1 ) );
+			if ( null === $args ) {
+			
+				$args = array( 'public' => 1, 'show_ui' => 1 );
+			}
 
 			$operator = 'and';
 
 			$taxonomies = get_taxonomies( $args, $output, $operator );
 
-			if ( 'objects' === $output ) {
+			if ( $sort ) {
 
-				if ( $sort_by_label ) {
+				if ( 'objects' === $output ) {
 
 					self::sort_objects_by_label( $taxonomies );
+
+				} else {
+
+					/**
+					 * Sort an associative array in ascending order (and maintain index association).
+					 */
+					asort( $post_types );
 				}
 			}
 
-			return apply_filters( 'sucom_get_taxonomies', $taxonomies, $output );
+			return apply_filters( 'sucom_get_taxonomies', $taxonomies, $output, $args );
 		}
 
 		public static function get_taxonomy_labels( array $values = array(), $val_prefix = '', $label_prefix = '', $objects = null ) {
 
 			if ( null === $objects ) {
 
-				$objects = self::get_taxonomies( $output = 'objects' );
+				$objects = self::get_taxonomies( $output = 'objects', $sort = true );
 			}
 
 			if ( is_array( $objects ) ) {	// Just in case.
@@ -1634,7 +1647,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		 */
 		public static function get_object_label( $obj ) {
 
-			if ( empty( $obj->_builtin ) ) {
+			if ( empty( $obj->_builtin ) ) {	// Custom post type or taxonomy.
 
 				return $obj->label . ' [' . $obj->name . ']';
 			}

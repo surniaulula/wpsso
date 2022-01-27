@@ -15,7 +15,7 @@
  * Requires At Least: 5.2
  * Tested Up To: 5.9.0
  * WC Tested Up To: 6.1.1
- * Version: 9.15.1-dev.1
+ * Version: 9.16.0-dev.2
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -189,16 +189,9 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				/**
 				 * The set_options() action is run before the set_objects() action, where the WpssoOptions class is
 				 * instantiated, so the WpssoOptions->get_defaults() method is not available yet. Load the defaults
-				 * directly from the config array.
+				 * directly from the config array and trigget a defaults reload in set_objects().
 				 */
-				if ( isset( $this->cf[ 'opt' ][ 'defaults' ] ) ) {	// just in case.
-
-					$this->options = $this->cf[ 'opt' ][ 'defaults' ];
-
-				} else {
-
-					$this->options = array();
-				}
+				$this->options = $this->cf[ 'opt' ][ 'defaults' ];
 
 				$this->options[ '__reload_defaults' ] = true;
 			}
@@ -209,21 +202,11 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 				if ( ! is_array( $this->site_options ) ) {
 
-					if ( isset( $this->cf[ 'opt' ][ 'site_defaults' ] ) ) {	// Just in case.
-
-						$this->site_options = $this->cf[ 'opt' ][ 'site_defaults' ];
-
-					} else {
-
-						$this->site_options = array();
-					}
+					$this->site_options = $this->cf[ 'opt' ][ 'site_defaults' ];
 
 					$this->site_options[ '__reload_defaults' ] = true;
 				}
 
-				/**
-				 * If multisite options are found, check for overwrite of site specific options.
-				 */
 				if ( is_array( $this->options ) && is_array( $this->site_options ) ) {
 
 					$blog_id = get_current_blog_id();
@@ -235,9 +218,8 @@ if ( ! class_exists( 'Wpsso' ) ) {
 						if ( false !== strpos( $key, ':use' ) ) {
 
 							continue;
-						}
 
-						if ( isset( $this->site_options[ $key . ':use' ] ) ) {
+						} elseif ( isset( $this->site_options[ $key . ':use' ] ) ) {
 
 							switch ( $this->site_options[ $key . ':use' ] ) {
 
@@ -279,23 +261,8 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			$is_admin   = is_admin();
 			$doing_cron = defined( 'DOING_CRON' ) ? DOING_CRON : false;
-			$debug_log  = false;
-			$debug_html = false;
-
-			/**
-			 * Maybe log debug messages to the WordPress debug.log file.
-			 */
-			$debug_log = $this->get_const_status_bool( 'DEBUG_LOG' );
-
-			/**
-			 * Maybe log debug messages as HTML comments in the webpage.
-			 */
-			$debug_html = $this->get_const_status_bool( 'DEBUG_HTML' );
-
-			if ( null === $debug_html ) {	// Constant not defined.
-
-				$debug_html = empty( $this->options[ 'plugin_debug_html' ] ) ? false : true;
-			}
+			$debug_log  = $this->get_const_status( 'DEBUG_LOG' );
+			$debug_html = $this->get_const_status( 'DEBUG_HTML' );
 
 			/**
 			 * Setup core classes:
@@ -321,6 +288,11 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			/**
 			 * Make sure a debug object is always available.
 			 */
+			if ( null === $debug_html ) {	// Constant not defined.
+
+				$debug_html = empty( $this->options[ 'plugin_debug_html' ] ) ? false : true;
+			}
+
 			if ( $debug_log || $debug_html ) {
 
 				require_once WPSSO_PLUGINDIR . 'lib/com/debug.php';
@@ -337,7 +309,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 					$this->debug->log( 'debug enabled on ' . date( 'c' ) );
 					$this->debug->log( 'PHP version ' . phpversion() );
 					$this->debug->log( 'WP version ' . $wp_version );
-
 					$this->debug->log_arr( 'generator list', $this->check->get_ext_gen_list() );
 				}
 
@@ -459,100 +430,9 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$this->debug->mark( 'init objects do action' );	// End timer.
 			}
 
-			/**
-			 * set_options() may have loaded the static defaults for new or missing options. After all objects have
-			 * been loaded, and all filter / action hooks registered, check to see if the options need to be reloaded
-			 * from the filtered defaults.
-			 */
-			if ( ! empty( $this->options[ '__reload_defaults' ] ) ) {
-
-				$this->options = $this->opt->get_defaults();
-			}
-
 			if ( $this->debug->enabled ) {
 
-				$this->debug->log( 'checking ' . WPSSO_OPTIONS_NAME . ' options' );
-			}
-
-			$this->options = $this->opt->check_options( WPSSO_OPTIONS_NAME, $this->options, $network = false );
-
-			if ( $this->debug->enabled ) {
-
-				$this->debug->log( 'options array len is ' . SucomUtil::serialized_len( $this->options ) . ' bytes' );
-			}
-
-			if ( is_multisite() ) {	// Load the site options array.
-
-				if ( ! empty( $this->site_options[ '__reload_defaults' ] ) ) {
-
-					$this->site_options = $this->opt->get_site_defaults();
-				}
-
-				if ( $this->debug->enabled ) {
-
-					$this->debug->log( 'checking ' . WPSSO_SITE_OPTIONS_NAME . ' options' );
-				}
-
-				$this->site_options = $this->opt->check_options( WPSSO_SITE_OPTIONS_NAME, $this->site_options, $network = true );
-
-				if ( $this->debug->enabled ) {
-
-					$this->debug->log( 'site options array len is ' . SucomUtil::serialized_len( $this->options ) . ' bytes' );
-				}
-			}
-
-			/**
-			 * Init option checks.
-			 */
-			do_action( 'wpsso_init_check_options' );
-
-			/**
-			 * Show a reminder that debug mode is enabled if the WPSSO_DEV constant is not defined.
-			 */
-			if ( $this->debug->enabled ) {
-
-				$info         = $this->cf[ 'plugin' ][ 'wpsso' ];
-				$doing_dev    = SucomUtil::get_const( 'WPSSO_DEV' );
-				$notice_key   = 'debug-mode-is-active';
-				$notice_msg   = '';
-				$dismiss_time = 12 * HOUR_IN_SECONDS;
-
-				if ( $this->debug->is_enabled( 'log' ) ) {
-
-					$this->debug->log( 'WP debug log mode is active' );
-
-					if ( $is_admin ) {
-
-						$notice_key .= '-with-debug-log';
-
-						$notice_msg .= __( 'WP debug logging mode is active - debug messages are being sent to the WordPress debug log.', 'wpsso' ) . ' ';
-					}
-				}
-
-				if ( $this->debug->is_enabled( 'html' ) ) {
-
-					$this->debug->log( 'HTML debug mode is active' );
-
-					if ( $is_admin ) {
-
-						$notice_key .= '-with-html-comments';
-
-						$notice_msg .= __( 'HTML debug mode is active - debug messages are being added to webpages as hidden HTML comments.', 'wpsso' ) . ' ';
-					}
-				}
-
-				if ( ! $doing_dev && ! empty( $notice_msg ) ) {
-
-					// translators: %s is the short plugin name.
-					$notice_msg .= sprintf( __( 'Debug mode can generate thousands of runtime messages during page load, which may degrade website performance.', 'wpsso' ), $info[ 'short' ] ) . ' ';
-
-					$notice_msg .= __( 'Don\'t forget to disable debug mode when debugging is complete.', 'wpsso' );
-
-					$this->notice->warn( $notice_msg, null, $notice_key, $dismiss_time );
-				}
-			}
-
-			if ( $this->debug->enabled ) {
+				$this->debug_reminder();
 
 				$this->debug->log( 'done setting objects' );
 			}
@@ -632,93 +512,23 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			if ( $this->debug->enabled ) {
 
 				$this->debug->mark( 'init plugin' );	// Begin timer.
-			}
 
-			if ( $this->debug->enabled ) {
-
-				$min_int = SucomUtil::get_min_int();
-				$max_int = SucomUtil::get_max_int();
-
-				/**
-				 * PHP v5.3+ is required for "function() use () {}" syntax.
-				 */
-				$has_function_use = version_compare( phpversion(), '5.3.0', '>=' ) ? true : false;
-
-				/**
-				 * Show a comment marker at the top / bottom of the head and footer sections.
-				 */
-				foreach ( array( 'wp_head', 'wp_footer', 'admin_head', 'admin_footer' ) as $action ) {
-
-					foreach ( array( $min_int, $max_int ) as $prio ) {
-
-						if ( $has_function_use ) {
-
-							$function = function() use ( $action, $prio ) {
-
-								echo "\n" . '<!-- wpsso ' . $action . ' action hook priority ' . $prio . ' mark -->' . "\n\n";
-							};
-
-							add_action( $action, $function, $prio );
-						}
-
-						add_action( $action, array( $this, 'show_debug' ), $prio );
-					}
-				}
-
-				/**
-				 * Show a comment marker at the top / bottom of the content section.
-				 */
-				foreach ( array( 'the_content' ) as $filter ) {
-
-					if ( $has_function_use ) {
-
-						/**
-						 * Prepend marker.
-						 */
-						$function = function( $str ) use ( $filter, $min_int ) {
-
-							return "\n\n" . '<!-- wpsso ' . $filter . ' filter hook priority ' . $min_int . ' mark -->' . "\n\n" . $str;
-						};
-
-						add_filter( $filter, $function, $min_int );
-
-						/**
-						 * Append marker.
-						 */
-						$function = function( $str ) use ( $filter, $max_int ) {
-
-							return $str . "\n\n" . '<!-- wpsso ' . $filter . ' filter hook priority ' . $max_int . ' mark -->' . "\n\n";
-						};
-
-						add_filter( $filter, $function, $max_int );
-					}
-				}
-
-				/**
-				 * Show the plugin settings just before the footer marker. 
-				 */
-				foreach ( array( 'wp_footer', 'admin_footer' ) as $action ) {
-
-					add_action( $action, array( $this, 'show_config' ), $max_int );
-				}
-			}
-
-			if ( $this->debug->enabled ) {
+				$this->debug_hooks();
 
 				$this->debug->mark( 'init plugin do action' );	// Begin timer.
 			}
 
 			/**
 			 * All WPSSO Core objects are instantiated and configured.
+			 *
+			 * See SucomAbstractAddOn->init_plugin_notices().
+			 * See WpssoRrssbStdSocialBuddypress->remove_wp_buttons().
 			 */
 			do_action( 'wpsso_init_plugin' );
 
 			if ( $this->debug->enabled ) {
 
 				$this->debug->mark( 'init plugin do action' );	// End timer.
-			}
-
-			if ( $this->debug->enabled ) {
 
 				$this->debug->mark( 'init plugin' );	// End timer.
 			}
@@ -753,17 +563,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			load_plugin_textdomain( 'wpsso', false, 'wpsso/languages/' );
 		}
 
-		public function get_const_status_bool( $const_suffix ) {
-
-			return $this->get_const_status( $const_suffix, $transl = false );
-		}
-
-		public function get_const_status_transl( $const_suffix ) {
-
-			return $this->get_const_status( $const_suffix, $transl = true );
-		}
-
-		private function get_const_status( $const_suffix, $transl ) {
+		public function get_const_status( $const_suffix ) {
 
 			$const_name = '';
 
@@ -774,27 +574,25 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			} elseif ( defined( 'WPSSO_' . $const_suffix ) ) {
 
 				$const_name = 'WPSSO_' . $const_suffix;
+
+			} else {
+			
+				return null;	// Constant not defined.
 			}
 
-			if ( $const_name ) {
+			return constant( $const_name ) ? true : false;	// Return a boolean value.
+		}
 
-				$const_val = constant( $const_name ) ? true : false;
+		public function get_const_status_transl( $const_suffix ) {
 
-				if ( $transl ) {	// Return the translated string value.
+			$const_val = $this->get_const_status( $const_suffix );
 
-					if ( $const_val ) {	// Constant value is true.
+			if ( $const_val ) {
 
-						return sprintf( _x( '%s constant is true', 'option comment', 'wpsso' ), $const_name );
-					}
-
-					return sprintf( _x( '%s constant is false', 'option comment', 'wpsso' ), $const_name );
-
-				}
-
-				return $const_val;	// Return the boolean value.
+				return sprintf( _x( '%s constant is true', 'option comment', 'wpsso' ), $const_name );
 			}
 
-			return null;	// Constant not defined.
+			return sprintf( _x( '%s constant is false', 'option comment', 'wpsso' ), $const_name );
 		}
 
 		public function get_lib_classnames( $type_dir ) {
@@ -883,6 +681,105 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			}
 
 			return $wp_mofile;
+		}
+
+		public function debug_hooks() {
+
+			$min_int = SucomUtil::get_min_int();
+			$max_int = SucomUtil::get_max_int();
+
+			/**
+			 * Show a comment marker at the top / bottom of the head and footer sections.
+			 */
+			foreach ( array( 'wp_head', 'wp_footer', 'admin_head', 'admin_footer' ) as $action ) {
+
+				foreach ( array( $min_int, $max_int ) as $prio ) {
+
+					$function = function() use ( $action, $prio ) {
+						echo "\n" . '<!-- wpsso ' . $action . ' action hook priority ' . $prio . ' mark -->' . "\n\n";
+					};
+
+					add_action( $action, $function, $prio );
+
+					add_action( $action, array( $this, 'show_debug' ), $prio );
+				}
+			}
+
+			/**
+			 * Show a comment marker at the top / bottom of the content section.
+			 */
+			foreach ( array( 'the_content' ) as $filter ) {
+
+				/**
+				 * Prepend marker.
+				 */
+				$function = function( $str ) use ( $filter, $min_int ) {
+					return "\n\n" . '<!-- wpsso ' . $filter . ' filter hook priority ' . $min_int . ' mark -->' . "\n\n" . $str;
+				};
+
+				add_filter( $filter, $function, $min_int );
+
+				/**
+				 * Append marker.
+				 */
+				$function = function( $str ) use ( $filter, $max_int ) {
+					return $str . "\n\n" . '<!-- wpsso ' . $filter . ' filter hook priority ' . $max_int . ' mark -->' . "\n\n";
+				};
+
+				add_filter( $filter, $function, $max_int );
+			}
+
+			/**
+			 * Show the plugin settings just before the footer marker. 
+			 */
+			foreach ( array( 'wp_footer', 'admin_footer' ) as $action ) {
+
+				add_action( $action, array( $this, 'show_config' ), $max_int );
+			}
+		}
+
+		public function debug_reminder() {
+
+			$is_admin     = is_admin();
+			$info         = $this->cf[ 'plugin' ][ 'wpsso' ];
+			$doing_dev    = SucomUtil::get_const( 'WPSSO_DEV' );
+			$notice_key   = 'debug-mode-is-active';
+			$notice_msg   = '';
+			$dismiss_time = 12 * HOUR_IN_SECONDS;
+
+			if ( $this->debug->is_enabled( 'log' ) ) {
+
+				$this->debug->log( 'WP debug log mode is active' );
+
+				if ( $is_admin ) {
+
+					$notice_key .= '-with-debug-log';
+
+					$notice_msg .= __( 'WP debug logging mode is active - debug messages are being sent to the WordPress debug log.', 'wpsso' ) . ' ';
+				}
+			}
+
+			if ( $this->debug->is_enabled( 'html' ) ) {
+
+				$this->debug->log( 'HTML debug mode is active' );
+
+				if ( $is_admin && ! $doing_dev ) {
+
+					$notice_key .= '-with-html-comments';
+
+					$notice_msg .= __( 'HTML debug mode is active - debug messages are being added to webpages as hidden HTML comments.', 'wpsso' ) . ' ';
+				}
+			}
+
+			if ( $notice_msg ) {
+
+				// translators: %s is the short plugin name.
+				$notice_msg .= sprintf( __( 'Debug mode can generate thousands of runtime messages during page load, which may degrade website performance.', 'wpsso' ), $info[ 'short' ] ) . ' ';
+
+				$notice_msg .= __( 'Don\'t forget to disable debug mode when debugging is complete.', 'wpsso' );
+
+				$this->notice->warn( $notice_msg, null, $notice_key, $dismiss_time );
+			}
 		}
 
 		/**

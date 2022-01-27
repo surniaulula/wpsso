@@ -908,14 +908,16 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		/**
 		 * Add options using a key prefix string / array and post type names.
 		 */
-		public function add_post_type_names( array &$opts, array $prefix_defaults ) {
+		public function add_post_type_names( array &$opts, array $opt_prefixes, $args = null ) {
 
-			foreach ( $prefix_defaults as $opt_prefix => $def_val ) {
+			if ( null === $args ) {
 
-				/**
-				 * Returns post types registered as 'public' = 1 and 'show_ui' = 1.
-				 */
-				$post_type_names = SucomUtilWP::get_post_types( $output = 'names' );
+				$args = array( 'public' => 1, 'show_ui' => 1 );
+			}
+
+			foreach ( $opt_prefixes as $opt_prefix => $def_val ) {
+
+				$post_type_names = SucomUtilWP::get_post_types( $output = 'names', $sort = false, $args );
 
 				foreach ( $post_type_names as $opt_suffix ) {
 
@@ -929,6 +931,18 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			return $opts;
+		}
+
+		public function add_post_type_archive_names( array &$opts, array $opt_prefixes, $args = null ) {
+
+			if ( null === $args ) {
+
+				$args = array( 'public' => 1, 'show_ui' => 1 );
+			}
+
+			$args[ 'has_archive' ] = 1;
+
+			return $this->add_post_type_names( $opts, $opt_prefixes, $args );
 		}
 
 		/**
@@ -969,9 +983,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		/**
 		 * Add options using a key prefix string / array and term names.
 		 */
-		public function add_taxonomy_names( array &$opts, array $prefix_defaults ) {
+		public function add_taxonomy_names( array &$opts, array $opt_prefixes ) {
 
-			foreach ( $prefix_defaults as $opt_prefix => $def_val ) {
+			foreach ( $opt_prefixes as $opt_prefix => $def_val ) {
 
 				foreach ( SucomUtilWP::get_taxonomies( $output = 'names' ) as $opt_suffix ) {
 

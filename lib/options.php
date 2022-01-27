@@ -331,65 +331,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		/**
 		 * Returns a checked, fixed, and/or upgraded options array.
 		 */
-		public function check_options( $options_name, $opts = array(), $network = false ) {
+		public function check_options( $options_name, array $opts, $network = false ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark( 'checking options' );	// Begin timer.
 			}
 
-			/**
-			 * Options should always be an array and not empty.
-			 */
-			if ( empty( $opts ) || ! is_array( $opts ) ) {
-
-				if ( false === $opts ) {
-
-					$error_msg = sprintf( __( 'WordPress could not find an entry for %s in the options table.', 'wpsso' ), $options_name );
-
-				} elseif ( ! is_array( $opts ) ) {
-
-					$error_msg = sprintf( __( 'WordPress returned a non-array value when reading %s from the options table.', 'wpsso' ), $options_name );
-
-				} elseif ( empty( $opts ) ) {
-
-					$error_msg = sprintf( __( 'WordPress returned an empty array when reading %s from the options table.', 'wpsso' ), $options_name );
-
-				} else {
-
-					$error_msg = sprintf( __( 'WordPress returned an unknown condition when reading %s from the options table.', 'wpsso' ), $options_name );
-				}
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( $error_msg );
-				}
-
-				if ( is_admin() ) {
-
-					if ( $network ) {
-
-						$admin_url = $this->p->util->get_admin_url( 'network' );
-
-					} else {
-
-						$admin_url = $this->p->util->get_admin_url( 'general' );
-					}
-
-					$error_msg .= ' ' . sprintf( __( 'The plugin settings have been returned to their default values - <a href="%s">please review and save the new settings</a>.', 'wpsso' ), $admin_url );
-
-					$this->p->notice->err( $error_msg );
-				}
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->mark( 'checking options' );	// End timer.
-				}
-
-				return $network ? $this->get_site_defaults() : $this->get_defaults();
-			}
-
-			$defs           = null;	// Optimize and only get array when needed.
+			$defs           = null;	// Optimize and only get the defaults array when needed.
 			$save_changes   = false;
 			$is_plugin_upg  = $this->is_plugin_upgrading( $opts );	// Existing plugin versions have changed.
 			$is_option_upg  = $this->is_upgrade_required( $opts );	// Existing option versions have changed.
@@ -404,16 +353,16 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->p->debug->log( 'upgrading the ' . $options_name . ' settings' );
 				}
 
-				if ( null === $defs ) {	// Only get default options once.
-
-					$defs = $network ? $this->get_site_defaults() : $this->get_defaults();
-				}
-
 				if ( ! is_object( $this->upg ) ) {
 
 					require_once WPSSO_PLUGINDIR . 'lib/upgrade.php';
 
 					$this->upg = new WpssoOptionsUpgrade( $this->p );
+				}
+
+				if ( null === $defs ) {	// Optimize and only get the defaults array when needed.
+
+					$defs = $network ? $this->get_site_defaults() : $this->get_defaults();
 				}
 
 				$opts = $this->upg->options( $options_name, $opts, $defs, $network );
@@ -526,7 +475,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						// translators: %s is the option key name.
 						$notice_msg = __( 'Non-standard value found for the "%s" option - resetting the option to its default value.', 'wpsso' );
 
-						if ( null === $defs ) {	// Only get default options once.
+						if ( null === $defs ) {	// Optimize and only get the defaults array when needed.
 
 							$defs = $network ? $this->get_site_defaults() : $this->get_defaults();
 						}
@@ -644,7 +593,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 */
 			if ( empty( $mod[ 'name' ] ) ) {
 
-				if ( ! empty( $defs ) && is_array( $defs ) ) {
+				if ( ! empty( $defs ) && is_array( $defs ) ) {	// Just in case.
 
 					$opts = array_merge( $defs, $opts );	// Complete the array with default options.
 				}
@@ -1071,8 +1020,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		/**
 		 * Complete the options array for any custom post types and/or custom taxonomies.
 		 *
+		 * This method should be called after themes and plugins have registered their custom post types and taxonomies.
+		 *
 		 * Called by WpssoOptions->get_defaults().
-		 * Called by WpssoOptions->check_options().
 		 */
 		private function add_custom_post_tax_options( array &$opts ) {	// Pass by reference is OK.
 
@@ -1081,11 +1031,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			/**
 			 * Add options using a key prefix array and post type names.
 			 */
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'adding options derived from post type names' );
-			}
-
 			$opt_prefixes = array(
 				'og_type_for'                => 'article',	// Advanced Settings > Document Types > Open Graph > Type by Post Type.
 				'plugin_add_to'              => 1,		// Advanced Settings > Plugin Settings > Interface > Show Document SSO Metabox.
@@ -1103,18 +1048,29 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$opt_prefixes[ 'plugin_' . $col_key . '_col' ] = $def_val;
 			}
 
+			/**
+			 * See WpssoAmFiltersOptions->filter_add_custom_post_type_options().
+			 * See WpssoBcFiltersOptions->filter_add_custom_post_type_options().
+			 */
 			$opt_prefixes = apply_filters( 'wpsso_add_custom_post_type_options', $opt_prefixes );
 
 			$this->p->util->add_post_type_names( $opts, $opt_prefixes );
 
 			/**
+			 * Add options using a key prefix array and post type archive names.
+			 */
+			$opt_prefixes = array(
+				'og_type_for_pta'     => 'website',	// Advanced Settings > Document Types > Open Graph > Type by Post Type Archive.
+				'schema_type_for_pta' => 'item.list',	// Advanced Settings > Document Types > Schema > Type by Post Type Archive.
+			);
+
+			$opt_prefixes = apply_filters( 'wpsso_add_custom_post_type_archive_options', $opt_prefixes );
+
+			$this->p->util->add_post_type_archive_names( $opts, $opt_prefixes );
+
+			/**
 			 * Add options using a key prefix array and term names.
 			 */
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'adding options derived from term names' );
-			}
-
 			$opt_prefixes = array(
 				'og_type_for_tax'     => 'website',	// Advanced Settings > Document Types > Open Graph > Type by Taxonomy.
 				'plugin_add_to_tax'   => 1,		// Advanced Settings > Plugin Settings > Interface > Show Document SSO Metabox.
@@ -1131,6 +1087,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$opt_prefixes[ 'plugin_' . $col_key . '_col_tax' ] = $def_val;
 			}
 
+			/**
+			 * See WpssoBcFiltersOptions->filter_add_custom_taxonomy_options().
+			 */
 			$opt_prefixes = apply_filters( 'wpsso_add_custom_taxonomy_options', $opt_prefixes );
 
 			$this->p->util->add_taxonomy_names( $opts, $opt_prefixes );

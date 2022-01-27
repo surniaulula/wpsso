@@ -196,10 +196,10 @@ if ( ! class_exists( 'WpssoRegister' ) ) {
 				closedir( $dh );
 			}
 
-			$this->reset_admin_check_options();
+			$this->reset_admin_checks();
 		}
 
-		public function reset_admin_check_options() {
+		public function reset_admin_checks() {
 
 			delete_option( WPSSO_POST_CHECK_COUNT_NAME );
 
