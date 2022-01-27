@@ -489,7 +489,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log( 'using query loop to get post mods' );
+					$wpsso->debug->log( 'using WP_Query query_vars to get post mods' );
 				}
 
 				global $wp_query;
