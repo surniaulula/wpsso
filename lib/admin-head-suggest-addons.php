@@ -209,7 +209,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 					$action_links = array();	// Init a new action array for the notice message.
 
 					if ( $purchase_link = $this->get_purchase_plugin_link( 'wpsso' ) ) {
-					
+
 						$action_links[] = $purchase_link;
 					}
 
@@ -242,7 +242,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 						$required_msg = sprintf( __( '(required for %s integration)', 'wpsso' ), $ecom_plugin_name );
 
 						if ( $purchase_link = $this->get_purchase_plugin_link( 'wpsso', $required_msg ) ) {
-					
+
 							$action_links[] = $purchase_link;
 						}
 					}
@@ -288,7 +288,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 							$required_msg = sprintf( __( '(required for %s integration)', 'wpsso' ), $ecom_plugin_name );
 
 							if ( $purchase_link = $this->get_purchase_plugin_link( 'wpsso', $required_msg ) ) {
-					
+
 								$action_links[] = $purchase_link;
 							}
 						}
@@ -357,7 +357,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 						$required_msg = sprintf( __( '(required for %s integration)', 'wpsso' ), $ecom_plugin_name );
 
 						if ( $purchase_link = $this->get_purchase_plugin_link( 'wpsso', $required_msg ) ) {
-					
+
 							$action_links[] = $purchase_link;
 						}
 					}

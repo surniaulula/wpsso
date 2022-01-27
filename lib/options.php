@@ -148,7 +148,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							$key = 'plugin_import_' . $avail_key . '_' . $import_type;
 
 							if ( isset( $local_cache[ $key ] ) ) {	// Make sure the option exists.
-						
+
 								$local_cache[ $key ] = 1;
 							}
 						}
@@ -465,11 +465,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						if ( empty( $this->p->avail[ 'seo' ][ $avail_key ] ) ) {
 
 							foreach ( array( 'meta', 'blocks' ) as $import_type ) {
-							
+
 								$key = 'plugin_import_' . $avail_key . '_' . $import_type;
 
 								if ( isset( $opts[ $key ] ) ) { // Make sure the option exists.
-							
+
 									$seo_opts[ $key ] = 0;
 								}
 							}

@@ -67,7 +67,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestOptions' ) ) {
 						$notice_msg .= sprintf( __( 'If another SEO plugin or your theme templates are not adding the <code>%1$s</code> HTML tag to your webpages, you should enable this option under the %2$s tab.', 'wpsso' ), 'meta name robots', $seo_other_tab_link ) . ' ';
 
 						$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
-					
+
 						$notices_shown++;
 					}
 				}

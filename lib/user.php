@@ -327,10 +327,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					 * Set before calling filters to prevent recursion.
 					 */
 					if ( $this->p->debug->enabled ) {
-	
+
 						$this->p->debug->log( 'setting opt_filtered to 1' );
 					}
-	
+
 					$md_opts[ 'opt_filtered' ] = 1;
 
 					$mod = $this->get_mod( $user_id );

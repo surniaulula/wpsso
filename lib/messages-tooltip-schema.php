@@ -153,16 +153,16 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 					break;
 
 				/**
-				 * SSO > Advanced Settings > Schema Defaults > Book tab.
+				 * SSO > Advanced Settings > Schema Properties > Book tab.
 				 */
-				case 'tooltip-schema_def_book_format':		// Default Format.
+				case 'tooltip-schema_def_book_format':		// Default Book Format.
 
 					$text = __( 'Select a default format type for the Schema Book type.', 'wpsso' );
 
 				 	break;
 
 				/**
-				 * SSO > Advanced Settings > Schema Defaults > Creative Work tab.
+				 * SSO > Advanced Settings > Schema Properties > Creative Work tab.
 				 */
 				case 'tooltip-schema_def_family_friendly':	// Default Family Friendly.
 
@@ -190,7 +190,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 				 	break;
 
 				/**
-				 * SSO > Advanced Settings > Schema Defaults > Event tab.
+				 * SSO > Advanced Settings > Schema Properties > Event tab.
 				 */
 				case 'tooltip-schema_def_event_attendance':	// Event Attendance.
 
@@ -229,7 +229,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 				 	break;
 
 				/**
-				 * SSO > Advanced Settings > Schema Defaults > Job Posting tab.
+				 * SSO > Advanced Settings > Schema Properties > Job Posting tab.
 				 */
 				case 'tooltip-schema_def_job_hiring_org_id':	// Default Job Hiring Org.
 
@@ -250,7 +250,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 				 	break;
 
 				/**
-				 * SSO > Advanced Settings > Schema Defaults > Review tab.
+				 * SSO > Advanced Settings > Schema Properties > Review tab.
 				 */
 				case 'tooltip-schema_def_review_item_type':	// Default Subject Webpage Type.
 

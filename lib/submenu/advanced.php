@@ -38,7 +38,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				'plugin'         => _x( 'Plugin Settings', 'metabox title', 'wpsso' ),
 				'services'       => _x( 'Service APIs', 'metabox title', 'wpsso' ),
 				'doc_types'      => _x( 'Document Types', 'metabox title', 'wpsso' ),
-				'def_schema'     => _x( 'Schema Defaults', 'metabox title', 'wpsso' ),
+				'def_schema'     => _x( 'Schema Properties', 'metabox title', 'wpsso' ),
 				'contact_fields' => _x( 'Contact Fields', 'metabox title', 'wpsso' ),
 				'user_about'     => _x( 'About the User', 'metabox title', 'wpsso' ),
 				'metadata'       => _x( 'Metadata', 'metabox title', 'wpsso' ),

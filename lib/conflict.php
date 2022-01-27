@@ -104,7 +104,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 					$notice_key = 'deactivate-wpsso-schema-json-ld';
 
 					$this->p->notice->err( $notice_msg, null, $notice_key );
-					
+
 					$this->p->notice->nag( '<p>' . $notice_msg . '</p>', null, $notice_key );
 				}
 			}

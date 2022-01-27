@@ -404,10 +404,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 * Set before calling filters to prevent recursion.
 					 */
 					if ( $this->p->debug->enabled ) {
-	
+
 						$this->p->debug->log( 'setting opt_filtered to 1' );
 					}
-	
+
 					$md_opts[ 'opt_filtered' ] = 1;
 
 					$mod = $this->get_mod( $post_id );

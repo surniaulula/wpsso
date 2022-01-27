@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 9.15.0-rc.1\n"
+"Project-Id-Version: WPSSO Core 9.15.0-rc.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3132,7 +3132,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:105 lib/pro/admin/advanced.php:719
 #: lib/std/admin/advanced.php:634
 msgctxt "option label"
-msgid "Default Format"
+msgid "Default Book Format"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:106 lib/pro/admin/advanced.php:737
@@ -10422,7 +10422,7 @@ msgstr ""
 
 #: lib/submenu/advanced.php:41
 msgctxt "metabox title"
-msgid "Schema Defaults"
+msgid "Schema Properties"
 msgstr ""
 
 #: lib/submenu/advanced.php:42

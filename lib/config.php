@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.15.0-rc.1',	// Plugin version.
+					'version'     => '9.15.0-rc.2',	// Plugin version.
 					'opt_version' => '858',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1379,12 +1379,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_website'                => 'website',
 
 					/**
-					 * Advanced Settings > Schema Defaults > Book tab.
+					 * Advanced Settings > Schema Properties > Book tab.
 					 */
-					'schema_def_book_format' => 'none',	// Default Format.
+					'schema_def_book_format' => 'none',	// Default Book Format.
 
 					/**
-					 * Advanced Settings > Schema Defaults > Creative Work tab.
+					 * Advanced Settings > Schema Properties > Creative Work tab.
 					 *
 					 * Note that 'schema_def_pub_org_id' may be updated, in the WpssoOptions->get_defaults()
 					 * method, based on the 'site_pub_schema_type' value.
@@ -1396,7 +1396,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_def_prov_person_id'  => 'none',	// Default Service Prov. Person.
 
 					/**
-					 * Advanced Settings > Schema Defaults > Event tab.
+					 * Advanced Settings > Schema Properties > Event tab.
 					 */
 					'schema_def_event_attendance'          => 'https://schema.org/OfflineEventAttendanceMode',	// Default Attendance.
 					'schema_def_event_location_id'         => 'none',						// Default Physical Venue.
@@ -1406,14 +1406,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_def_event_performer_person_id' => 'none',						// Default Performer Person.
 
 					/**
-					 * Advanced Settings > Schema Defaults > Job Posting tab.
+					 * Advanced Settings > Schema Properties > Job Posting tab.
 					 */
 					'schema_def_job_hiring_org_id' => 'none',	// Default Hiring Org.
 					'schema_def_job_location_id'   => 'none',	// Default Job Location.
 					'schema_def_job_location_type' => 'none',	// Default Job Location Type.
 
 					/**
-					 * Advanced Settings > Schema Defaults > Review tab.
+					 * Advanced Settings > Schema Properties > Review tab.
 					 */
 					'schema_def_review_item_type' => 'product',	// Default Subject Webpage Type.
 

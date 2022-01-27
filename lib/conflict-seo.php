@@ -212,7 +212,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 
 							$this->p->debug->log( $this->log_pre . 'seoframework ' . $opt_key . ' option is checked' );
 						}
-	
+
 						$notice_msg_transl = __( 'Please uncheck the %1$s option under the %2$s tab.', 'wpsso' );
 
 						$this->p->notice->err( $this->notice_pre . sprintf( $notice_msg_transl, $label_transl, $settings_link ) );

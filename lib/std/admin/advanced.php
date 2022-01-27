@@ -36,11 +36,11 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'services_ratings_reviews_rows' => 2,	// Service APIs > Ratings and Reviews tab.
 				'doc_types_og_types_rows'       => 2,	// Document Types > Schema tab.
 				'doc_types_schema_types_rows'   => 2,	// Document Types > Open Graph tab.
-				'def_schema_book_rows'          => 2,	// Schema Defaults > Book tab.
-				'def_schema_creative_work_rows' => 2,	// Schema Defaults > Creative Work tab.
-				'def_schema_event_rows'         => 2,	// Schema Defaults > Event tab.
-				'def_schema_job_posting_rows'   => 2,	// Schema Defaults > Job Posting tab.
-				'def_schema_review_rows'        => 2,	// Schema Defaults > Review tab.
+				'def_schema_book_rows'          => 2,	// Schema Properties > Book tab.
+				'def_schema_creative_work_rows' => 2,	// Schema Properties > Creative Work tab.
+				'def_schema_event_rows'         => 2,	// Schema Properties > Event tab.
+				'def_schema_job_posting_rows'   => 2,	// Schema Properties > Job Posting tab.
+				'def_schema_review_rows'        => 2,	// Schema Properties > Review tab.
 				'cm_custom_contacts_rows'       => 2,	// Contact Fields > Custom Contacts tab.
 				'cm_default_contacts_rows'      => 2,	// Contact Fields > Default Contacts tab.
 				'advanced_user_about_rows'      => 2,	// About the User metabox.
@@ -144,7 +144,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$form->get_no_td_checkbox( 'plugin_upscale_images', _x( 'not recommended', 'option comment', 'wpsso' ) ) .
 				WpssoAdmin::get_option_site_use( 'plugin_upscale_images', $form, $network );
 
-			$table_rows[ 'plugin_upscale_pct_max' ] = $form->get_tr_hide( 'basic', 'plugin_upscale_pct_max' ) .
+			$table_rows[ 'plugin_upscale_pct_max' ] = '' . 
 				$form->get_th_html( _x( 'Maximum Image Upscale Percent', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_upscale_pct_max' ) . 
 				'<td class="blank">' . $form->get_no_input( 'plugin_upscale_pct_max', $css_class = 'short' ) . ' %</td>' .
@@ -631,7 +631,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				),
 				'schema_def_book_format' => array(
 					'td_class' => 'blank',
-					'label'    => _x( 'Default Format', 'option label', 'wpsso' ),
+					'label'    => _x( 'Default Book Format', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_book_format',
 					'content'  => $form->get_no_select( 'schema_def_book_format', $this->p->cf[ 'form' ][ 'book_format' ],
 						$css_class = '', $css_id = '', $is_assoc = true ),

@@ -171,7 +171,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					 * Options that cannot be blank.
 					 */
 					case 'schema_book_author_type':			// Book Author Type.
-					case 'schema_def_book_format':			// Default Format.
+					case 'schema_def_book_format':			// Default Book Format.
 					case 'schema_def_event_location_id':		// Default Physical Venue.
 					case 'schema_def_event_organizer_org_id':	// Default Organizer Org.
 					case 'schema_def_event_organizer_person_id':	// Default Organizer Person.

@@ -1743,7 +1743,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$input_rows = $len[ 'rows' ];
 
 			}
-			
+
 			if ( ! is_array( $len ) ) {
 
 				$len = array( 'max' => $len );

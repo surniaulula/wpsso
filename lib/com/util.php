@@ -2987,7 +2987,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$is_home_posts = false;
 
 			$post_id = 'page' === get_option( 'show_on_front' ) ? (int) get_option( 'page_for_posts' ) : 0;
-			
+
 			if ( $post_id > 0 ) {
 
 				if ( is_numeric( $use_post ) && (int) $use_post === $post_id ) {

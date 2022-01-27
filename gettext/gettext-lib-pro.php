@@ -102,7 +102,7 @@ _x( 'Post Type Archive Page', 'option comment', 'wpsso' );
 _x( 'Type by Post Type', 'option label', 'wpsso' );
 _x( 'for %s', 'option comment', 'wpsso' );
 _x( 'Type by Taxonomy', 'option label', 'wpsso' );
-_x( 'Default Format', 'option label', 'wpsso' );
+_x( 'Default Book Format', 'option label', 'wpsso' );
 _x( 'Default Family Friendly', 'option label', 'wpsso' );
 _x( 'Default Publisher Org.', 'option label', 'wpsso' );
 _x( 'Default Publisher Person', 'option label', 'wpsso' );
