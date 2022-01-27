@@ -251,7 +251,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.15.1-dev.1 (TBD)**
+**Version 9.15.1-dev.1 (2022/01/27)**
 
 * **New Features**
 	* None.
@@ -852,7 +852,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 = 9.15.1-dev.1 =
 
-(TBD) Moved the SSO &gt; Social Pages &gt; Social and Search Sites metabox to the SSO &gt; General Settings page.
+(2022/01/27) Moved the SSO &gt; Social Pages &gt; Social and Search Sites metabox to the SSO &gt; General Settings page.
 
 = 9.15.0 =
 
