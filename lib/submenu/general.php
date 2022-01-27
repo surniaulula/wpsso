@@ -36,6 +36,11 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			$this->maybe_show_language_notice();
 
+			$this->p->media->get_default_images( $size_name = 'wpsso-opengraph' );
+
+			/**
+			 * General Settings metabox.
+			 */
 			$metabox_id      = 'og';
 			$metabox_title   = _x( 'General Settings', 'metabox title', 'wpsso' );
 			$metabox_screen  = $this->pagehook;
@@ -48,7 +53,10 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 				array( $this, 'show_metabox_' . $metabox_id ), $metabox_screen,
 					$metabox_context, $metabox_prio, $callback_args );
 
-			$metabox_id      = 'social_and_search';
+			/**
+			 * Social and Search Sites metabox.
+			 */
+			$metabox_id      = 'pub';
 			$metabox_title   = _x( 'Social and Search Sites', 'metabox title', 'wpsso' );
 			$metabox_screen  = $this->pagehook;
 			$metabox_context = 'normal';
@@ -60,7 +68,22 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 				array( $this, 'show_metabox_' . $metabox_id ), $metabox_screen,
 					$metabox_context, $metabox_prio, $callback_args );
 
-			$this->p->media->get_default_images( $size_name = 'wpsso-opengraph' );
+			/**
+			 * Social and Search Sites metabox.
+			 */
+			$metabox_id      = 'social_pages';
+			$metabox_title   = _x( 'Social Pages and Accounts', 'metabox title', 'wpsso' );
+			$metabox_screen  = $this->pagehook;
+			$metabox_context = 'normal';
+			$metabox_prio    = 'default';
+			$callback_args   = array(	// Second argument passed to the callback function / method.
+				'page_id'    => $this->menu_id,
+				'metabox_id' => $metabox_id,
+			);
+
+			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
+				array( $this, 'show_metabox_table' ), $metabox_screen,
+					$metabox_context, $metabox_prio, $callback_args );
 		}
 
 		public function show_metabox_og() {
@@ -88,7 +111,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
 		}
 
-		public function show_metabox_social_and_search() {
+		public function show_metabox_pub() {
 
 			$metabox_id = 'pub';
 
@@ -116,9 +139,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 		protected function get_table_rows( $metabox_id, $tab_key ) {
 
-			$table_rows      = array();
-			$user_contacts   = $this->p->user->get_form_contact_fields();
-			$max_media_items = $this->p->cf[ 'form' ][ 'max_media_items' ];
+			$table_rows = array();
 
 			switch ( $metabox_id . '-' . $tab_key ) {
 
@@ -231,6 +252,8 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'og-images':
 
+					$max_media_items = $this->p->cf[ 'form' ][ 'max_media_items' ];
+
 					$table_rows[ 'og_img_max' ] = $this->form->get_tr_hide( 'basic', 'og_img_max' ) . 
 						$this->form->get_th_html( _x( 'Maximum Images to Include', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'og_img_max' ) . 
@@ -258,15 +281,17 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'pub-facebook':
 
+					$user_contacts = $this->p->user->get_form_contact_fields();
+
 					$table_rows[ 'fb_site_verify' ] = '' .
 						$this->form->get_th_html( _x( 'Facebook Domain Verification ID', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'fb_site_verify' ) . 
 						'<td>' . $this->form->get_input( 'fb_site_verify', $css_class = 'api_key' ) . '</td>';
 
-					$table_rows[ 'fb_publisher_url' ] = '' . 
-						$this->form->get_th_html_locale( _x( 'Facebook Business Page URL', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'fb_publisher_url' ) . 
-						'<td>' . $this->form->get_input_locale( 'fb_publisher_url', $css_class = 'wide' ) . '</td>';
+					$table_rows[ 'fb_locale' ] = '' .
+						$this->form->get_th_html_locale( _x( 'Facebook Locale', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'fb_locale' ) . 
+						'<td>' . $this->form->get_select_locale( 'fb_locale', SucomUtil::get_publisher_languages( 'facebook' ) ) . '</td>';
 
 					$table_rows[ 'fb_author_field' ] = $this->form->get_tr_hide( 'basic', 'fb_author_field' ) . 
 						$this->form->get_th_html( _x( 'Author Profile URL Field', 'option label', 'wpsso' ),
@@ -277,11 +302,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						$this->form->get_th_html( _x( 'Facebook Application ID', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'fb_app_id' ) . 
 						'<td>' . $this->form->get_input( 'fb_app_id', $css_class = 'api_key' ) . '</td>';
-
-					$table_rows[ 'fb_locale' ] = $this->form->get_tr_hide( 'basic', 'fb_locale' ) . 
-						$this->form->get_th_html_locale( _x( 'Facebook Locale', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'fb_locale' ) . 
-						'<td>' . $this->form->get_select_locale( 'fb_locale', SucomUtil::get_publisher_languages( 'facebook' ) ) . '</td>';
 
 					break;
 
@@ -375,11 +395,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 							$css_class = '', $css_id = 'pin_site_verify' ) . 
 						'<td>' . $this->form->get_input( 'pin_site_verify', 'api_key' ) . '</td>';
 
-					$table_rows[ 'pin_publisher_url' ] = '' . 
-						$this->form->get_th_html_locale( _x( 'Pinterest Company Page URL', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'pin_publisher_url' ) . 
-						'<td>' . $this->form->get_input_locale( 'pin_publisher_url', $css_class = 'wide' ) . '</td>';
-
 					$table_rows[ 'pin_add_nopin_header_img_tag' ] = $this->form->get_tr_hide( 'basic', 'pin_add_nopin_header_img_tag' ) . 
 						$this->form->get_th_html( _x( 'Add "nopin" to Site Header Image', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'pin_add_nopin_header_img_tag' ) . 
@@ -416,11 +431,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'summary'             => _x( 'Summary', 'option value', 'wpsso' ),
 						'summary_large_image' => _x( 'Summary Large Image', 'option value', 'wpsso' ),
 					);
-
-					$table_rows[ 'tc_site' ] = '' . 
-						$this->form->get_th_html_locale( _x( 'Twitter Business @username', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'tc_site' ) . 
-						'<td>' . $this->form->get_input_locale( 'tc_site' ) . '</td>';
 
 					$table_rows[ 'tc_title_max_len' ] = $this->form->get_tr_hide( 'basic', 'tc_title_max_len' ) . 
 						$this->form->get_th_html( _x( 'Twitter Card Title Max. Length', 'option label', 'wpsso' ),
@@ -467,6 +477,41 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						$this->form->get_th_html( _x( 'Yandex Website Verification ID', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'yandex_site_verify' ) . 
 						'<td>' . $this->form->get_input( 'yandex_site_verify', 'api_key' ) . '</td>';
+
+					break;
+
+				case 'general-social_pages':
+
+					foreach ( WpssoConfig::get_social_accounts() as $social_key => $label ) {
+
+						switch ( $social_key ) {
+
+							case 'fb_publisher_url':
+							case 'instagram_publisher_url':
+							case 'linkedin_publisher_url':
+							case 'pin_publisher_url':
+							case 'tiktok_publisher_url':
+							case 'tc_site':
+							case 'yt_publisher_url':
+
+								$tr_hide = '';
+
+								break;
+
+							default:
+
+								$tr_hide = $this->form->get_tr_hide( 'basic', 'social_key' );
+
+								break;
+						}
+
+						$input_class = strpos( $social_key, '_url' ) ? 'wide' : '';
+
+						$table_rows[ $social_key ] = $tr_hide . 
+							$this->form->get_th_html_locale( _x( $label, 'option value', 'wpsso' ),
+								$css_class = 'nowrap', $social_key ) . 
+							'<td>' . $this->form->get_input_locale( $social_key, $input_class ) . '</td>';
+					}
 
 					break;
 			}

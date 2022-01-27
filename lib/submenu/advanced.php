@@ -49,7 +49,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				$metabox_context = 'normal';
 				$metabox_prio    = 'default';
 				$callback_args   = array(	// Second argument passed to the callback function / method.
-					'page_id'    => SucomUtil::sanitize_hookname( $this->menu_id ),
+					'page_id'    => $this->menu_id,
 					'metabox_id' => $metabox_id,
 				);
 

@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.15.0',	// Plugin version.
+					'version'     => '9.15.1-dev.1',	// Plugin version.
 					'opt_version' => '858',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -230,9 +230,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 						'submenu' => array(
 							'dashboard'      => 'Dashboard',
-							'essential'      => 'Essential Settings',
-							'social-pages'   => 'Social Pages',
 							'setup'          => 'Setup Guide',
+							'essential'      => 'Essential Settings',
 							'general'        => 'General Settings',
 							'advanced'       => 'Advanced Settings',
 							'addons'         => 'Plugin Add-ons',
@@ -2343,17 +2342,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add-person'     => 'admin-users',
 					'addons'         => 'admin-plugins',
 					'advanced'       => 'superhero',
+					'dashboard'      => 'dashboard',
 					'essential'      => 'star-filled',
-					'features'       => 'yes-alt',
 					'general'        => 'admin-settings',
 					'licenses'       => 'admin-network',
-					'dashboard'      => 'dashboard',
 					'setup'          => 'welcome-learn-more',
-					'social-pages'   => 'share',
-					'tools'          => 'admin-tools',
 					'site-addons'    => 'admin-plugins',
 					'site-licenses'  => 'admin-network',
 					'site-setup'     => 'welcome-learn-more',
+					'tools'          => 'admin-tools',
 					'your-sso'       => 'id-alt',
 					'*'              => 'admin-generic',	// Default icon.
 				),

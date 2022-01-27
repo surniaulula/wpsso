@@ -61,21 +61,24 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 
 			$this->maybe_show_language_notice();
 
-			$metabox_id      = 'essential';
+			$this->p->media->get_default_images( $size_name = 'wpsso-opengraph' );
+
+			/**
+			 * Essential Settings metabox.
+			 */
+			$metabox_id      = 'general';
 			$metabox_title   = _x( 'Essential Settings', 'metabox title', 'wpsso' );
 			$metabox_screen  = $this->pagehook;
 			$metabox_context = 'normal';
 			$metabox_prio    = 'default';
 			$callback_args   = array(	// Second argument passed to the callback function / method.
-				'page_id'    => SucomUtil::sanitize_hookname( $this->menu_id ),
+				'page_id'    => $this->menu_id,
 				'metabox_id' => $metabox_id,
 			);
 
 			add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
 				array( $this, 'show_metabox_table' ), $metabox_screen,
 					$metabox_context, $metabox_prio, $callback_args );
-
-			$this->p->media->get_default_images( $size_name = 'wpsso-opengraph' );
 		}
 
 		protected function get_table_rows( $page_id, $metabox_id ) {
@@ -84,7 +87,7 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 
 			switch ( $page_id . '-' . $metabox_id ) {
 
-				case 'essential-essential':
+				case 'essential-general':
 
 					$def_site_name    = get_bloginfo( 'name' );
 					$def_site_desc    = get_bloginfo( 'description' );
@@ -111,23 +114,6 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 						$this->form->get_th_html_locale( _x( 'or Default Image URL', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'og_def_img_url' ) . 
 						'<td>' . $this->form->get_input_image_url_locale( 'og_def_img' ) . '</td>';
-
-					$table_rows[ 'og_def_article_section' ] = '' . 
-						$this->form->get_th_html( _x( 'Default Article Section', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'og_def_article_section' ) . 
-						'<td>' .
-						$this->form->get_select( 'og_def_article_section', $article_sections, $css_class = '', $css_id = '',
-							$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
-								$event_args = array(
-									'json_var'  => 'article_sections',
-									'exp_secs'  => WPSSO_CACHE_SELECT_JSON_EXP_SECS,	// Create and read from a javascript URL.
-									'is_transl' => true,					// No label translation required.
-									'is_sorted' => true,					// No label sorting required.
-								)
-							) .
-						'</td>';
-
-					$table_rows[] = '<td colspan="2"><h5>' . __( 'Publisher Information', 'wpsso' ) . '</h5></td>';
 
 					if ( ! empty( $this->p->avail[ 'p' ][ 'schema' ] ) ) {
 
