@@ -1534,9 +1534,9 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		}
 
 		/**
-		 * Returns post types registered as 'public' = 1 and 'show_ui' = 1 by default.
+		 * Returns post types registered as 'public' = true and 'show_ui' = true by default.
 		 *
-		 * Note that the 'wp_block' custom post type for reusable blocks is registered as 'public' = 0 and 'show_ui' = 1.
+		 * Note that the 'wp_block' custom post type for reusable blocks is registered as 'public' = false and 'show_ui' = true.
 		 *
 		 * $output = objects | names
 		 */
@@ -1544,7 +1544,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			if ( null === $args ) {
 
-				$args = array( 'public' => 1, 'show_ui' => 1 );
+				$args = array( 'public' => true, 'show_ui' => true );
 			}
 
 			$operator = 'and';
@@ -1600,7 +1600,12 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 		public static function get_post_type_archive_labels( $val_prefix = '', $label_prefix = '' ) {
 
-			$args = array( 'public' => 1, 'show_ui' => 1, 'has_archive' => 1 );
+			/**
+			 * Note that 'has_archive' = 1 will not match post types archives registered with a string in 'has_archive'.
+			 *
+			 * Use 'has_archive' = true include the WooCommerce product archive page (ie. 'has_archive' = 'shop').
+			 */
+			$args = array( 'public' => true, 'show_ui' => true, 'has_archive' => true );
 
 			$objects = self::get_post_types( $output = 'objects', $sort = true, $args );
 
@@ -1611,7 +1616,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			if ( null === $args ) {
 
-				$args = array( 'public' => 1, 'show_ui' => 1 );
+				$args = array( 'public' => true, 'show_ui' => true );
 			}
 
 			$operator = 'and';

@@ -55,7 +55,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			 */
 			$currencies         = SucomUtil::get_currency_abbrev();
 			$product_categories = $this->p->util->get_google_product_categories();
-			$schema_types       = $this->p->schema->get_schema_types_select( $context = 'meta' );
+			$schema_types       = $this->p->schema->get_schema_types_select();
 
 			/**
 			 * Maximum lengths.

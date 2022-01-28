@@ -1026,6 +1026,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		 */
 		private function add_custom_post_tax_options( array &$opts ) {	// Pass by reference is OK.
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			$col_headers = WpssoAbstractWpMeta::get_column_headers();
 
 			/**

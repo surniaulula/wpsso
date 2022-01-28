@@ -172,15 +172,20 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 							$type_id = $this->get_og_type_id_for( 'pta_' . $mod[ 'post_type' ] );
 
+							if ( empty( $type_id ) ) {	// Just in case.
+
+								$type_id = $this->get_og_type_id_for( 'archive_page' );
+							}
+
 						} else {
 
 							$type_id = $this->get_og_type_id_for( $mod[ 'post_type' ] );
+					
+							if ( empty( $type_id ) ) {	// Just in case.
+
+								$type_id = $this->get_og_type_id_for( 'page' );
+							}
 						}
-					}
-
-					if ( empty( $type_id ) ) {	// Just in case.
-
-						$type_id = $this->get_og_type_id_for( 'page' );
 					}
 
 				} elseif ( $mod[ 'is_term' ] ) {

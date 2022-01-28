@@ -912,7 +912,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( null === $args ) {
 
-				$args = array( 'public' => 1, 'show_ui' => 1 );
+				$args = array( 'public' => true, 'show_ui' => true );
 			}
 
 			foreach ( $opt_prefixes as $opt_prefix => $def_val ) {
@@ -937,10 +937,15 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( null === $args ) {
 
-				$args = array( 'public' => 1, 'show_ui' => 1 );
+				$args = array( 'public' => true, 'show_ui' => true );
 			}
 
-			$args[ 'has_archive' ] = 1;
+			/**
+			 * Note that 'has_archive' = 1 will not match post types archives registered with a string in 'has_archive'.
+			 *
+			 * Use 'has_archive' = true include the WooCommerce product archive page (ie. 'has_archive' = 'shop').
+			 */
+			$args[ 'has_archive' ] = true;
 
 			return $this->add_post_type_names( $opts, $opt_prefixes, $args );
 		}
@@ -952,7 +957,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( null === $args ) {
 
-				$args = array( 'public' => 1, 'show_ui' => 1 );
+				$args = array( 'public' => true, 'show_ui' => true );
 			}
 
 			foreach ( $opt_prefixes as $opt_prefix => $def_val ) {

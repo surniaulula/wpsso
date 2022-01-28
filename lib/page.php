@@ -208,7 +208,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: module object is defined' );
+					$this->p->debug->log( 'exiting early: module object is already defined' );
 				}
 
 				return $mod;
@@ -695,7 +695,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( ! empty( $md_key ) && $md_key !== 'none' ) {
 
-				$cap_text = $mod[ 'obj' ] ? $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
+				$cap_text = is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ?
+					$mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
 
 				/**
 				 * Extract custom hashtags, or get hashtags if $add_hashtags is true or numeric.
@@ -727,7 +728,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					if ( empty( $cap_text ) ) {
 
-						$this->p->debug->log( 'no custom caption found for md_key' );
+						$this->p->debug->log( 'no custom caption for md_key = ' . print_r( $md_key, true ) );
 
 					} else {
 
@@ -870,17 +871,18 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( ! empty( $md_key ) && $md_key !== 'none' ) {
 
-				$title_text = is_object( $mod[ 'obj' ] ) ? $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
+				$title_text = is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ?
+					$mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
 
 				if ( $this->p->debug->enabled ) {
 
 					if ( empty( $title_text ) ) {
 
-						$this->p->debug->log( 'no custom title found for md_key = ' . print_r( $md_key, true ) );
+						$this->p->debug->log( 'no custom title for md_key = ' . print_r( $md_key, true ) );
 
 					} else {
 
-						$this->p->debug->log( 'custom title = "' . $title_text . '"' );
+						$this->p->debug->log( 'custom title = ' . $title_text );
 					}
 				}
 
@@ -900,7 +902,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'title seed = "' . $title_text . '"' );
+						$this->p->debug->log( 'title seed = ' . $title_text );
 					}
 				}
 			}
@@ -1055,17 +1057,18 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( ! empty( $md_key ) && 'none' !== $md_key ) {
 
-				$desc_text = is_object( $mod[ 'obj' ] ) ? $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
+				$desc_text = is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ?
+					$mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
 
 				if ( $this->p->debug->enabled ) {
 
 					if ( empty( $desc_text ) ) {
 
-						$this->p->debug->log( 'no custom description found for md_key' );
+						$this->p->debug->log( 'no custom description for md_key = ' . print_r( $md_key, true ) );
 
 					} else {
 
-						$this->p->debug->log( 'custom description = "' . $desc_text . '"' );
+						$this->p->debug->log( 'custom description = ' . $desc_text );
 					}
 				}
 
@@ -1085,7 +1088,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'description seed = "' . $desc_text . '"' );
+						$this->p->debug->log( 'description seed = ' . $desc_text );
 					}
 				}
 			}
@@ -1714,7 +1717,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$reading_mins = null;
 
-			if ( is_object( $mod[ 'obj' ] ) ) {	// Just in case.
+			if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Just in case.
 
 				$reading_mins = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'reading_mins' );
 			}
@@ -1985,13 +1988,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( ! empty( $md_key ) && $md_key !== 'none' ) {
 
-				$text = is_object( $mod[ 'obj' ] ) ? $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
+				$text = is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ?
+					$mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
 
 				if ( $this->p->debug->enabled ) {
 
 					if ( empty( $text ) ) {
 
-						$this->p->debug->log( 'no custom text found for md_key' );
+						$this->p->debug->log( 'no custom text for md_key = ' . print_r( $md_key, true ) );
 
 					} else {
 
@@ -2038,13 +2042,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( ! empty( $md_key ) && $md_key !== 'none' ) {
 
-				$keywords = is_object( $mod[ 'obj' ] ) ? $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
+				$keywords = is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ?
+					$mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
 
 				if ( $this->p->debug->enabled ) {
 
 					if ( empty( $keywords ) ) {
 
-						$this->p->debug->log( 'no custom keywords found for md_key' );
+						$this->p->debug->log( 'no custom keywords for md_key = ' . print_r( $md_key, true ) );
 
 					} else {
 

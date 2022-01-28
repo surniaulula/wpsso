@@ -516,6 +516,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 */
 		public function get_mod_schema_type_id( array $mod, $use_mod_opts = true ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			return $this->get_mod_schema_type( $mod, $get_id = true, $use_mod_opts );
 		}
 
@@ -525,6 +530,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * Returns the schema type URL.
 		 */
 		public function get_mod_schema_type_url( array $mod, $use_mod_opts = true ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			return $this->get_mod_schema_type( $mod, $get_id = false, $use_mod_opts );
 		}
@@ -599,21 +609,61 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				} elseif ( $mod[ 'is_post' ] ) {
 
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'mod is post' );
+					}
+
 					if ( $mod[ 'post_type' ] ) {	// Just in case.
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'mod has post type = ' . $mod[ 'post_type' ] );
+						}
 
 						if ( $mod[ 'is_post_type_archive' ] ) {	// The post ID may be 0.
 
+							if ( $this->p->debug->enabled ) {
+
+								$this->p->debug->log( 'mod is post type archive' );
+							}
+
 							$type_id = $this->get_schema_type_id_for( 'pta_' . $mod[ 'post_type' ] );
+
+							if ( $this->p->debug->enabled ) {
+
+								$this->p->debug->log( 'mod post type archive schema type id = ' . $type_id );
+							}
+
+							if ( empty( $type_id ) ) {	// Just in case.
+
+								if ( $this->p->debug->enabled ) {
+
+									$this->p->debug->log( 'using post type id for archive page' );
+								}
+
+								$type_id = $this->get_schema_type_id_for( 'archive_page' );
+							}
 
 						} else {
 
 							$type_id = $this->get_schema_type_id_for( $mod[ 'post_type' ] );
+					
+							if ( $this->p->debug->enabled ) {
+
+								$this->p->debug->log( 'mod post type schema type id = ' . $type_id );
+							}
+
+							if ( empty( $type_id ) ) {	// Just in case.
+
+								if ( $this->p->debug->enabled ) {
+
+									$this->p->debug->log( 'using post type id for page' );
+								}
+
+								$type_id = $this->get_schema_type_id_for( 'page' );
+							}
 						}
-					}
-
-					if ( empty( $type_id ) ) {	// Just in case.
-
-						$type_id = $this->get_schema_type_id_for( 'page' );
 					}
 
 				} elseif ( $mod[ 'is_term' ] ) {

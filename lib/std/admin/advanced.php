@@ -62,7 +62,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			}
 
 			$this->og_types     = $this->p->og->get_og_types_select();
-			$this->schema_types = $this->p->schema->get_schema_types_select( $context = 'settings' );
+			$this->schema_types = $this->p->schema->get_schema_types_select();
 			$this->org_names    = $this->p->util->get_form_cache( 'org_names', $add_none = true );
 			$this->person_names = $this->p->util->get_form_cache( 'person_names', $add_none = true );
 			$this->place_names  = $this->p->util->get_form_cache( 'place_names', $add_none = true );
