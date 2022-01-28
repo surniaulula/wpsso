@@ -251,7 +251,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.16.0-dev.3 (2022/01/27)**
+**Version 9.16.0-dev.4 (2022/01/27)**
 
 * **New Features**
 	* None.
@@ -271,8 +271,26 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new `Wpsso->debug_reminder()` method.
 	* Added a new `WpssoAdmin->init_check_options()` method (hooked to the 'admin_init' action).
 	* Added a new `WpssoUtil->add_post_type_archive_names()` method.
-	* Removed the 'sucom_get_post_types_args' filter.
-	* Removed the 'sucom_get_taxonomies_args' filter.
+	* Added a new `WpssoSchema->get_default_schema_type_name_for()` method.
+	* Renamed the `WpssoSchema->get_schema_type_id_for_name()` method to `get_schema_type_id_for()`.
+	* Renamed filters:
+		* 'wpsso_schema_type_id' to 'wpsso_schema_type'
+	* Removed filters:
+		* 'sucom_get_post_types_args'
+		* 'sucom_get_taxonomies_args'
+		* 'wpsso_og_type_for_default'
+		* 'wpsso_og_type_for_home_page'
+		* 'wpsso_og_type_for_home_posts'
+		* 'wpsso_og_type_for_post_type_archive_page'
+		* 'wpsso_og_type_for_post_type_empty_type'
+		* 'wpsso_og_type_for_post_type_unknown_type'
+		* 'wpsso_schema_type_for_default'
+		* 'wpsso_schema_type_for_home_page'
+		* 'wpsso_schema_type_for_home_posts'
+		* 'wpsso_schema_type_for_post_type_{post_type}'
+		* 'wpsso_schema_type_for_post_type_archive_page'
+		* 'wpsso_schema_type_for_post_type_empty_type'
+		* 'wpsso_schema_type_for_post_type_unknown_type'
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -862,7 +880,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 9.16.0-dev.3 =
+= 9.16.0-dev.4 =
 
 (2022/01/27) Moved the SSO &gt; Social Pages &gt; Social and Search Sites metabox to the SSO &gt; General Settings page.
 
