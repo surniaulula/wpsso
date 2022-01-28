@@ -1610,7 +1610,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		public static function get_taxonomies( $output = 'objects', $sort = false, $args = null ) {
 
 			if ( null === $args ) {
-			
+
 				$args = array( 'public' => 1, 'show_ui' => 1 );
 			}
 

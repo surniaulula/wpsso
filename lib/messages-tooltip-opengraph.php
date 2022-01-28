@@ -192,8 +192,10 @@ if ( ! class_exists( 'WpssoMessagesTooltipOpenGraph' ) ) {
 
 					$def_type = $this->p->opt->get_defaults( 'og_type_for_home_page' );
 
-					$text = sprintf( __( 'Select the %s type for a static front page.', 'wpsso' ), 'Open Graph' ) . ' ';
+					// translators: %s is the markup standard name (ie. Open Graph or Schema).
+					$text = sprintf( __( 'Select a default %s type for a static front page.', 'wpsso' ), 'Open Graph' ) . ' ';
 
+					// translators: %1$s is the markup standard name (ie. Open Graph or Schema) and %2$s is the type name.
 					$text .= sprintf( __( 'The default %1$s type is "%2$s".', 'wpsso' ), 'Open Graph', $def_type  );
 
 					break;
@@ -202,8 +204,10 @@ if ( ! class_exists( 'WpssoMessagesTooltipOpenGraph' ) ) {
 
 					$def_type = $this->p->opt->get_defaults( 'og_type_for_home_posts' );
 
-					$text = sprintf( __( 'Select the %s type for a blog (non-static) front page.', 'wpsso' ), 'Open Graph' ) . ' ';
+					// translators: %s is the markup standard name (ie. Open Graph or Schema).
+					$text = sprintf( __( 'Select a default %s type for a blog (non-static) front page.', 'wpsso' ), 'Open Graph' ) . ' ';
 
+					// translators: %1$s is the markup standard name (ie. Open Graph or Schema) and %2$s is the type name.
 					$text .= sprintf( __( 'The default %1$s type is "%2$s".', 'wpsso' ), 'Open Graph', $def_type  );
 
 					break;
@@ -212,8 +216,10 @@ if ( ! class_exists( 'WpssoMessagesTooltipOpenGraph' ) ) {
 
 					$def_type = $this->p->opt->get_defaults( 'og_type_for_user_page' );
 
-					$text = sprintf( __( 'Select the %s type for user / author pages.', 'wpsso' ), 'Open Graph' ) . ' ';
+					// translators: %s is the markup standard name (ie. Open Graph or Schema).
+					$text = sprintf( __( 'Select a default %s type for user / author profile pages.', 'wpsso' ), 'Open Graph' ) . ' ';
 
+					// translators: %1$s is the markup standard name (ie. Open Graph or Schema) and %2$s is the type name.
 					$text .= sprintf( __( 'The default %1$s type is "%2$s".', 'wpsso' ), 'Open Graph', $def_type  );
 
 					break;
@@ -222,8 +228,10 @@ if ( ! class_exists( 'WpssoMessagesTooltipOpenGraph' ) ) {
 
 					$def_type = $this->p->opt->get_defaults( 'og_type_for_search_page' );
 
-					$text = sprintf( __( 'Select the %s type for search results pages.', 'wpsso' ), 'Open Graph' ) . ' ';
+					// translators: %s is the markup standard name (ie. Open Graph or Schema).
+					$text = sprintf( __( 'Select a default %s type for search results pages.', 'wpsso' ), 'Open Graph' ) . ' ';
 
+					// translators: %1$s is the markup standard name (ie. Open Graph or Schema) and %2$s is the type name.
 					$text .= sprintf( __( 'The default %1$s type is "%2$s".', 'wpsso' ), 'Open Graph', $def_type  );
 
 					break;
@@ -232,23 +240,44 @@ if ( ! class_exists( 'WpssoMessagesTooltipOpenGraph' ) ) {
 
 					$def_type = $this->p->opt->get_defaults( 'og_type_for_archive_page' );
 
-					$text = sprintf( __( 'Select the %s type for other archive pages (example: date-based archive pages).', 'wpsso' ), 'Open Graph' ) . ' ';
+					// translators: %s is the markup standard name (ie. Open Graph or Schema).
+					$text = sprintf( __( 'Select a default %s type for other archive pages (date-based archive pages, for example).', 'wpsso' ), 'Open Graph' ) . ' ';
 
+					// translators: %1$s is the markup standard name (ie. Open Graph or Schema) and %2$s is the type name.
 					$text .= sprintf( __( 'The default %1$s type is "%2$s".', 'wpsso' ), 'Open Graph', $def_type  );
 
 					break;
 
-				case 'tooltip-og_type_for_ptn':		// Type by Post Type.
+				case 'tooltip-og_type_for_pt':		// Type by Post Type.
 
-					$text = sprintf( __( 'Select the %s type for each WordPress post type.', 'wpsso' ), 'Open Graph' ) . ' ';
+					// translators: %s is the markup standard name (ie. Open Graph or Schema).
+					$text = sprintf( __( 'Select a default %s type for each post type.', 'wpsso' ), 'Open Graph' ) . ' ';
 
 					$text .= __( 'Please note that each Open Graph type has a unique set of meta tags, so by selecting "website" here (for example), you would be excluding all "article" related meta tags (<code>article:author</code>, <code>article:section</code>, etc.).', 'wpsso' );
 
 					break;
 
-				case 'tooltip-og_type_for_ttn':		// Type by Taxonomy.
+				case 'tooltip-og_type_for_pta':		// Type by Post Type Archive.
 
-					$text = __( 'Select the Open Graph type for each WordPress taxonomy.', 'wpsso' );
+					$def_type = $this->p->opt->get_defaults( 'og_type_for_archive_page' );
+
+					// translators: %s is the markup standard name (ie. Open Graph or Schema).
+					$text = sprintf( __( 'Select a default %s type for each post type archive.', 'wpsso' ), 'Open Graph' ) . ' ';
+
+					// translators: %1$s is the markup standard name (ie. Open Graph or Schema) and %2$s is the type name.
+					$text .= sprintf( __( 'The default %1$s type is "%2$s".', 'wpsso' ), 'Open Graph', $def_type  );
+
+					break;
+					
+				case 'tooltip-og_type_for_tax':		// Type by Taxonomy.
+
+					$def_type = $this->p->opt->get_defaults( 'og_type_for_archive_page' );
+
+					// translators: %s is the markup standard name (ie. Open Graph or Schema).
+					$text = sprintf( __( 'Select a default %s type for each taxonomy.', 'wpsso' ), 'Open Graph' ) . ' ';
+
+					// translators: %1$s is the markup standard name (ie. Open Graph or Schema) and %2$s is the type name.
+					$text .= sprintf( __( 'The default %1$s type is "%2$s".', 'wpsso' ), 'Open Graph', $def_type  );
 
 					break;
 

@@ -466,9 +466,9 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
 			}
 
-			$table_rows[ 'og_type_for_ptn' ] = '' .
+			$table_rows[ 'og_type_for_pt' ] = '' .
 				$form->get_th_html( _x( 'Type by Post Type', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'og_type_for_ptn' ) .
+					$css_class = '', $css_id = 'og_type_for_pt' ) .
 				'<td class="blank">' . $type_select . '</td>';
 
 			/**
@@ -509,8 +509,8 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
 			}
 
-			$table_rows[ 'og_type_for_ttn' ] = $form->get_tr_hide( 'basic', $type_keys ) .
-				$form->get_th_html( _x( 'Type by Taxonomy', 'option label', 'wpsso' ), $css_class = '', $css_id = 'og_type_for_ttn' ) .
+			$table_rows[ 'og_type_for_tax' ] = $form->get_tr_hide( 'basic', $type_keys ) .
+				$form->get_th_html( _x( 'Type by Taxonomy', 'option label', 'wpsso' ), $css_class = '', $css_id = 'og_type_for_tax' ) .
 				'<td class="blank">' . $type_select . '</td>';
 
 			return $table_rows;
@@ -569,9 +569,9 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					) . ' ' . sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
 			}
 
-			$table_rows[ 'schema_type_for_ptn' ] = '' .
+			$table_rows[ 'schema_type_for_pt' ] = '' .
 				$form->get_th_html( _x( 'Type by Post Type', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'schema_type_for_ptn' ) .
+					$css_class = '', $css_id = 'schema_type_for_pt' ) .
 				'<td class="blank">' . $type_select . '</td>';
 
 			/**
@@ -626,8 +626,8 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					) . ' ' . sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
 			}
 
-			$table_rows[ 'schema_type_for_ttn' ] = $form->get_tr_hide( 'basic', $type_keys ) .
-				$form->get_th_html( _x( 'Type by Taxonomy', 'option label', 'wpsso' ), $css_id = '', $css_class = 'schema_type_for_ttn' ) .
+			$table_rows[ 'schema_type_for_tax' ] = $form->get_tr_hide( 'basic', $type_keys ) .
+				$form->get_th_html( _x( 'Type by Taxonomy', 'option label', 'wpsso' ), $css_id = '', $css_class = 'schema_type_for_tax' ) .
 				'<td class="blank">' . $type_select . '</td>';
 
 			return $table_rows;

@@ -444,6 +444,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 								$mod[ 'is_post_type_archive' ] = true;
 
+								$mod[ 'is_archive' ] = $mod[ 'is_post_type_archive' ];
+
 								$post_type_obj = get_post_type_object( $mod[ 'post_type' ] );
 
 								if ( is_object( $post_type_obj ) ) {	// Just in case.
@@ -1102,39 +1104,19 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					if ( $mod[ 'is_post_type_archive' ] ) {	// The post ID may be 0.
 
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'getting the description for post type ' . $mod[ 'post_type' ] );
-						}
-
 						$post_type_obj = get_post_type_object( $mod[ 'post_type' ] );
 
 						if ( ! empty( $post_type_obj->description ) ) {
 
 							$desc_text = $post_type_obj->description;
 
-						} else {
+						} elseif ( ! empty( $post_type_obj->labels->menu_name ) ) {
 
-							if ( $this->p->debug->enabled ) {
+							$desc_text = sprintf( _x( 'Archive for %s.', 'default description', 'wpsso' ), $post_type_obj->labels->menu_name );
 
-								$this->p->debug->log( 'post type ' . $mod[ 'post_type' ] . ' description is empty - using title value' );
-							}
+						} elseif ( ! empty( $post_type_obj->name ) ) {
 
-							if ( ! empty( $post_type_obj->labels->menu_name ) ) {
-
-								$desc_text = sprintf( _x( 'Archive for %s.', 'default description', 'wpsso' ),
-									$post_type_obj->labels->menu_name );
-
-							} elseif ( ! empty( $post_type_obj->name ) ) {
-
-								$desc_text = sprintf( _x( 'Archive for %s.', 'default description', 'wpsso' ),
-									$post_type_obj->name );
-							}
-						}
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'before post_archive_description filter = ' . $desc_text );
+							$desc_text = sprintf( _x( 'Archive for %s.', 'default description', 'wpsso' ), $post_type_obj->name );
 						}
 
 						$desc_text = apply_filters( 'wpsso_post_archive_description', $desc_text, $mod, $post_type_obj );
@@ -1498,11 +1480,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $mod[ 'is_post_type_archive' ] ) {	// The post ID may be 0.
 
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'getting the title for post type ' . $mod[ 'post_type' ] );
-					}
-
 					$post_type_obj = get_post_type_object( $mod[ 'post_type' ] );
 
 					if ( ! empty( $post_type_obj->labels->menu_name ) ) {
@@ -1512,11 +1489,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					} elseif ( ! empty( $post_type_obj->name ) ) {
 
 						$title_text = sprintf( _x( '%s Archive', 'default title', 'wpsso' ), $post_type_obj->name );
-					}
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'before post_archive_title filter = ' . $title_text );
 					}
 
 					$title_text = apply_filters( 'wpsso_post_archive_title', $title_text, $mod, $post_type_obj );

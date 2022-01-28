@@ -3196,21 +3196,25 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * $post_type can be the post type string, or the post type object.
+		 * $post_type can be a post type string, or a post type object.
 		 */
 		public static function is_post_type_archive( $post_type, $post_slug ) {
 
 			$is_post_type_archive = false;
 
-			if ( ! empty( $post_type ) && ! empty( $post_slug ) ) {	// Just in case.
+			if ( $post_type && $post_slug && is_string( $post_slug ) ) {	// Just in case.
 
 				if ( is_object( $post_type ) ) {
 
 					$post_type_obj =& $post_type;
 
-				} else {
+				} elseif ( is_string( $post_type ) ) {
 
 					$post_type_obj = get_post_type_object( $post_type );
+
+				} else {	// Just in case.
+			
+					return $is_post_type_archive;
 				}
 
 				if ( ! empty( $post_type_obj->has_archive ) ) {	// just in case.

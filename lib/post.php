@@ -255,9 +255,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					$post_type_obj = get_post_type_object( $mod[ 'post_type' ] );
 
-					$mod[ 'is_post_type_archive' ] = SucomUtil::is_post_type_archive( $post_type_obj, $mod[ 'post_slug' ] );
-
 					if ( is_object( $post_type_obj ) ) {	// Just in case.
+
+						$mod[ 'is_post_type_archive' ] = SucomUtil::is_post_type_archive( $post_type_obj, $mod[ 'post_slug' ] );
+
+						$mod[ 'is_archive' ] = $mod[ 'is_post_type_archive' ];
 
 						if ( isset( $post_type_obj->labels->singular_name ) ) {
 

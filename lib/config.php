@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.16.0-dev.3',	// Plugin version.
+					'version'     => '9.16.0-dev.4',	// Plugin version.
 					'opt_version' => '861',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1242,44 +1242,43 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 					/**
 					 * Advanced Settings > Document Types > Open Graph tab.
-					 *
-					 * Standard WordPress taxonomy and post types.
 					 */
 					'og_type_for_archive_page'      => 'website',
-					'og_type_for_attachment'        => 'website',
 					'og_type_for_home_page'         => 'website',
 					'og_type_for_home_posts'        => 'website',
-					'og_type_for_page'              => 'article',
-					'og_type_for_post'              => 'article',
-					'og_type_for_post_archive'      => 'website',
-					'og_type_for_question'          => 'article',
 					'og_type_for_search_page'       => 'website',
-					'og_type_for_tax_category'      => 'website',
-					'og_type_for_tax_link_category' => 'website',
-					'og_type_for_tax_post_tag'      => 'website',
 					'og_type_for_user_page'         => 'profile',
 
 					/**
-					 * Advanced Settings > Document Types > Open Graph tab.
-					 *
-					 * Custom taxonomy and post types.
+					 * Advanced Settings > Document Types > Open Graph tab: Post Types.
 					 */
-					'og_type_for_article'                => 'article',
-					'og_type_for_book'                   => 'book',
-					'og_type_for_download'               => 'product',	// For Easy Digital Downloads.
-					'og_type_for_organization'           => 'website',
-					'og_type_for_place'                  => 'place',
-					'og_type_for_product'                => 'product', 	// For WooCommerce.
-					'og_type_for_question'               => 'article',
+					'og_type_for_attachment'   => 'website',
+					'og_type_for_article'      => 'article',
+					'og_type_for_book'         => 'book',
+					'og_type_for_business'     => 'place',
+					'og_type_for_download'     => 'product',	// For Easy Digital Downloads.
+					'og_type_for_organization' => 'website',
+					'og_type_for_page'         => 'article',
+					'og_type_for_place'        => 'place',
+					'og_type_for_post'         => 'article',
+					'og_type_for_product'      => 'product', 	// For WooCommerce.
+					'og_type_for_question'     => 'article',
+					'og_type_for_tc_events'    => 'article',	// For Tickera.
+					'og_type_for_tribe_events' => 'article',	// For The Events Calendar.
+					'og_type_for_website'      => 'website',
+
+					/**
+					 * Advanced Settings > Document Types > Open Graph tab: Taxonomies.
+					 */
+					'og_type_for_tax_category'           => 'website',
 					'og_type_for_tax_faq_category'       => 'website',
+					'og_type_for_tax_link_category'      => 'website',
+					'og_type_for_tax_post_tag'           => 'website',
 					'og_type_for_tax_product_brand'      => 'website',	// For WooCommerce Brands.
 					'og_type_for_tax_product_cat'        => 'website',	// For WooCommerce.
 					'og_type_for_tax_product_tag'        => 'website',	// For WooCommerce.
 					'og_type_for_tax_pwb-brand'          => 'website',	// For Perfect WooCommerce Brands Add-on.
 					'og_type_for_tax_yith_product_brand' => 'website',	// For YITH WooCommerce Brands Add-on.
-					'og_type_for_tc_events'              => 'article',	// For Tickera.
-					'og_type_for_tribe_events'           => 'article',	// For The Events Calendar.
-					'og_type_for_website'                => 'website',
 
 					/**
 					 * Pinterest options.
@@ -1328,54 +1327,51 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 					/**
 					 * Advanced Settings > Document Types > Schema tab.
-					 *
-					 * Standard WordPress taxonomy and post types.
 					 */
-					'schema_type_for_archive_page'      => 'item.list',
-					'schema_type_for_attachment'        => 'webpage',
-					'schema_type_for_home_page'         => 'website',
-					'schema_type_for_home_posts'        => 'blog',
-					'schema_type_for_page'              => 'article',
-					'schema_type_for_post'              => 'blog.posting',
-					'schema_type_for_post_archive'      => 'item.list',
-					'schema_type_for_search_page'       => 'webpage.search.results',
-					'schema_type_for_tax_category'      => 'item.list',
-					'schema_type_for_tax_link_category' => 'item.list',
-					'schema_type_for_tax_post_tag'      => 'item.list',
-					'schema_type_for_user_page'         => 'webpage.profile',
+					'schema_type_for_archive_page' => 'item.list',
+					'schema_type_for_home_page'    => 'website',
+					'schema_type_for_home_posts'   => 'blog',
+					'schema_type_for_search_page'  => 'webpage.search.results',
+					'schema_type_for_user_page'    => 'webpage.profile',
 
 					/**
-					 * Advanced Settings > Document Types > Schema tab.
-					 *
-					 * Custom taxonomy and post types.
+					 * Advanced Settings > Document Types > Open Graph tab: Post Types.
 					 */
-					'schema_type_for_article'                => 'article',
-					'schema_type_for_book'                   => 'book',
-					'schema_type_for_blog'                   => 'blog',
-					'schema_type_for_business'               => 'local.business',
-					'schema_type_for_download'               => 'product',		// For Easy Digital Downloads.
-					'schema_type_for_event'                  => 'event',
-					'schema_type_for_howto'                  => 'how.to',
-					'schema_type_for_job_listing'            => 'job.posting',	// For WP Job Manager.
-					'schema_type_for_jobpost'                => 'job.posting',	// For Simple Job Board.
-					'schema_type_for_organization'           => 'organization',
-					'schema_type_for_other'                  => 'other',
-					'schema_type_for_person'                 => 'person',
-					'schema_type_for_place'                  => 'place',
-					'schema_type_for_product'                => 'product',		// For WooCommerce.
-					'schema_type_for_qa'                     => 'webpage.qa',
-					'schema_type_for_question'               => 'question',		// For WPSSO FAQ.
-					'schema_type_for_review'                 => 'review',		// For WP Product Review.
+					'schema_type_for_attachment'   => 'webpage',
+					'schema_type_for_article'      => 'article',
+					'schema_type_for_book'         => 'book',
+					'schema_type_for_business'     => 'local.business',
+					'schema_type_for_download'     => 'product',		// For Easy Digital Downloads.
+					'schema_type_for_event'        => 'event',
+					'schema_type_for_howto'        => 'how.to',
+					'schema_type_for_job_listing'  => 'job.posting',	// For WP Job Manager.
+					'schema_type_for_jobpost'      => 'job.posting',	// For Simple Job Board.
+					'schema_type_for_organization' => 'organization',
+					'schema_type_for_page'         => 'article',
+					'schema_type_for_person'       => 'person',
+					'schema_type_for_place'        => 'place',
+					'schema_type_for_post'         => 'blog.posting',
+					'schema_type_for_product'      => 'product',		// For WooCommerce.
+					'schema_type_for_qa'           => 'webpage.qa',
+					'schema_type_for_question'     => 'question',		// For WPSSO FAQ.
+					'schema_type_for_review'       => 'review',		// For WP Product Review.
+					'schema_type_for_tc_events'    => 'event',		// For Tickera.
+					'schema_type_for_tribe_events' => 'event',		// For The Events Calendar.
+					'schema_type_for_webpage'      => 'webpage',
+					'schema_type_for_website'      => 'website',
+
+					/**
+					 * Advanced Settings > Document Types > Open Graph tab: Taxonomies.
+					 */
+					'schema_type_for_tax_category'           => 'item.list',
 					'schema_type_for_tax_faq_category'       => 'webpage.faq',	// For WPSSO FAQ.
+					'schema_type_for_tax_link_category'      => 'item.list',
+					'schema_type_for_tax_post_tag'           => 'item.list',
 					'schema_type_for_tax_product_brand'      => 'item.list',	// For WooCommerce Brands.
 					'schema_type_for_tax_product_cat'        => 'item.list',	// For WooCommerce.
 					'schema_type_for_tax_product_tag'        => 'item.list',	// For WooCommerce.
 					'schema_type_for_tax_pwb-brand'          => 'item.list',	// For Perfect WooCommerce Brands Add-on.
 					'schema_type_for_tax_yith_product_brand' => 'item.list',	// For YITH WooCommerce Brands Add-on.
-					'schema_type_for_tc_events'              => 'event',		// For Tickera.
-					'schema_type_for_tribe_events'           => 'event',		// For The Events Calendar.
-					'schema_type_for_webpage'                => 'webpage',
-					'schema_type_for_website'                => 'website',
 
 					/**
 					 * Advanced Settings > Schema Properties > Book tab.

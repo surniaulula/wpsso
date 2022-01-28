@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 9.16.0-dev.3\n"
+"Project-Id-Version: WPSSO Core 9.16.0-dev.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4433,23 +4433,23 @@ msgstr ""
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:350 lib/pro/ecom/woocommerce.php:687
+#: gettext/gettext-lib-pro.php:350 lib/pro/ecom/woocommerce.php:680
 msgid ""
 "The rating and review counts provided by WooCommerce for product ID %d are "
 "invalid."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:351 lib/pro/ecom/woocommerce.php:690
+#: gettext/gettext-lib-pro.php:351 lib/pro/ecom/woocommerce.php:683
 msgid ""
 "The average rating is %.2f, but the rating count is %d and the review count "
 "is %d."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:352 lib/pro/ecom/woocommerce.php:693
+#: gettext/gettext-lib-pro.php:352 lib/pro/ecom/woocommerce.php:686
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:353 lib/pro/ecom/woocommerce.php:1326
+#: gettext/gettext-lib-pro.php:353 lib/pro/ecom/woocommerce.php:1319
 msgid "World"
 msgstr ""
 
@@ -4550,7 +4550,7 @@ msgstr ""
 
 #: gettext/gettext-lib-pro.php:395 gettext/gettext-lib-pro.php:397
 #: gettext/gettext-lib-pro.php:431 lib/conflict.php:216 lib/loader.php:187
-#: lib/loader.php:201 lib/post.php:1615 lib/pro/review/yotpowc.php:205
+#: lib/loader.php:201 lib/post.php:1617 lib/pro/review/yotpowc.php:205
 #: lib/pro/util/shorten.php:460 lib/pro/util/shorten.php:497
 msgid "%s error:"
 msgstr ""
@@ -4763,7 +4763,7 @@ msgid ""
 "Me, etc.)."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:459 lib/edit.php:629 lib/page.php:1341
+#: gettext/gettext-lib-pro.php:459 lib/edit.php:629 lib/page.php:1323
 #: lib/pro/social/buddypress.php:661
 msgctxt "default description"
 msgid "No Description."
@@ -5282,7 +5282,7 @@ msgstr ""
 msgid "Network plugin settings have been saved."
 msgstr ""
 
-#: lib/admin.php:1300 lib/post.php:963 lib/term.php:704 lib/user.php:686
+#: lib/admin.php:1300 lib/post.php:965 lib/term.php:704 lib/user.php:686
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -6316,7 +6316,7 @@ msgctxt "option label"
 msgid "Facebook / Open Graph Example"
 msgstr ""
 
-#: lib/edit.php:626 lib/page.php:1644
+#: lib/edit.php:626 lib/page.php:1616
 msgctxt "default title"
 msgid "No Title"
 msgstr ""
@@ -6460,13 +6460,13 @@ msgid ""
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1027 lib/post.php:680 lib/register.php:348 lib/term.php:531
-#: lib/user.php:495 lib/util.php:730 lib/util.php:2968
+#: lib/media.php:1027 lib/post.php:682 lib/register.php:348 lib/term.php:531
+#: lib/user.php:495 lib/util.php:730 lib/util.php:2928
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1028 lib/post.php:681 lib/term.php:532 lib/user.php:496
-#: lib/util.php:731 lib/util.php:2969
+#: lib/media.php:1028 lib/post.php:683 lib/term.php:532 lib/user.php:496
+#: lib/util.php:731 lib/util.php:2929
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
@@ -7559,7 +7559,7 @@ msgid ""
 "reviewed."
 msgstr ""
 
-#: lib/messages-tooltip-meta-schema.php:672 lib/messages-tooltip-schema.php:259
+#: lib/messages-tooltip-meta-schema.php:672 lib/messages-tooltip-schema.php:287
 msgid ""
 "Please note that although the Schema standard allows the subject of a review "
 "to be any Schema type, <a href=\"%1$s\">Google allows reviews for only a few "
@@ -7989,43 +7989,53 @@ msgid ""
 "meta tags and Schema markup."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:195 lib/messages-tooltip-schema.php:96
-msgid "Select the %s type for a static front page."
+#. translators: %s is the markup standard name (ie. Open Graph or Schema).
+#: lib/messages-tooltip-opengraph.php:196 lib/messages-tooltip-schema.php:97
+msgid "Select a default %s type for a static front page."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:197
-#: lib/messages-tooltip-opengraph.php:207
-#: lib/messages-tooltip-opengraph.php:217
-#: lib/messages-tooltip-opengraph.php:227
-#: lib/messages-tooltip-opengraph.php:237 lib/messages-tooltip-schema.php:98
-#: lib/messages-tooltip-schema.php:108 lib/messages-tooltip-schema.php:118
-#: lib/messages-tooltip-schema.php:128 lib/messages-tooltip-schema.php:138
+#. translators: %1$s is the markup standard name (ie. Open Graph or Schema) and %2$s is the type name.
+#: lib/messages-tooltip-opengraph.php:199
+#: lib/messages-tooltip-opengraph.php:211
+#: lib/messages-tooltip-opengraph.php:223
+#: lib/messages-tooltip-opengraph.php:235
+#: lib/messages-tooltip-opengraph.php:247
+#: lib/messages-tooltip-opengraph.php:268
+#: lib/messages-tooltip-opengraph.php:280 lib/messages-tooltip-schema.php:100
+#: lib/messages-tooltip-schema.php:112 lib/messages-tooltip-schema.php:124
+#: lib/messages-tooltip-schema.php:136 lib/messages-tooltip-schema.php:148
+#: lib/messages-tooltip-schema.php:167 lib/messages-tooltip-schema.php:179
 msgid "The default %1$s type is \"%2$s\"."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:205 lib/messages-tooltip-schema.php:106
-msgid "Select the %s type for a blog (non-static) front page."
+#. translators: %s is the markup standard name (ie. Open Graph or Schema).
+#: lib/messages-tooltip-opengraph.php:208 lib/messages-tooltip-schema.php:109
+msgid "Select a default %s type for a blog (non-static) front page."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:215 lib/messages-tooltip-schema.php:116
-msgid "Select the %s type for user / author pages."
+#. translators: %s is the markup standard name (ie. Open Graph or Schema).
+#: lib/messages-tooltip-opengraph.php:220 lib/messages-tooltip-schema.php:121
+msgid "Select a default %s type for user / author profile pages."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:225 lib/messages-tooltip-schema.php:126
-msgid "Select the %s type for search results pages."
+#. translators: %s is the markup standard name (ie. Open Graph or Schema).
+#: lib/messages-tooltip-opengraph.php:232 lib/messages-tooltip-schema.php:133
+msgid "Select a default %s type for search results pages."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:235 lib/messages-tooltip-schema.php:136
+#. translators: %s is the markup standard name (ie. Open Graph or Schema).
+#: lib/messages-tooltip-opengraph.php:244 lib/messages-tooltip-schema.php:145
 msgid ""
-"Select the %s type for other archive pages (example: date-based archive "
-"pages)."
+"Select a default %s type for other archive pages (date-based archive pages, "
+"for example)."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:243 lib/messages-tooltip-schema.php:144
-msgid "Select the %s type for each WordPress post type."
+#. translators: %s is the markup standard name (ie. Open Graph or Schema).
+#: lib/messages-tooltip-opengraph.php:254 lib/messages-tooltip-schema.php:155
+msgid "Select a default %s type for each post type."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:245
+#: lib/messages-tooltip-opengraph.php:256
 msgid ""
 "Please note that each Open Graph type has a unique set of meta tags, so by "
 "selecting \"website\" here (for example), you would be excluding all "
@@ -8033,8 +8043,14 @@ msgid ""
 "section</code>, etc.)."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:251
-msgid "Select the Open Graph type for each WordPress taxonomy."
+#. translators: %s is the markup standard name (ie. Open Graph or Schema).
+#: lib/messages-tooltip-opengraph.php:265 lib/messages-tooltip-schema.php:164
+msgid "Select a default %s type for each post type archive."
+msgstr ""
+
+#. translators: %s is the markup standard name (ie. Open Graph or Schema).
+#: lib/messages-tooltip-opengraph.php:277 lib/messages-tooltip-schema.php:176
+msgid "Select a default %s type for each taxonomy."
 msgstr ""
 
 #: lib/messages-tooltip-plugin.php:36
@@ -8651,78 +8667,74 @@ msgid ""
 "characters)."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:150
-msgid "Select the Schema type for each WordPress taxonomy."
-msgstr ""
-
-#: lib/messages-tooltip-schema.php:160
+#: lib/messages-tooltip-schema.php:188
 msgid "Select a default format type for the Schema Book type."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:169
+#: lib/messages-tooltip-schema.php:197
 msgid ""
 "Select a default family friendly value for the Schema CreativeWork type and/"
 "or its sub-types (Article, BlogPosting, WebPage, etc)."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:175
+#: lib/messages-tooltip-schema.php:203
 msgid ""
 "Select a default publisher organization for the Schema CreativeWork type and/"
 "or its sub-types (Article, BlogPosting, WebPage, etc)."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:181
+#: lib/messages-tooltip-schema.php:209
 msgid ""
 "Select a default publisher person for the Schema CreativeWork type and/or "
 "its sub-types (Article, BlogPosting, WebPage, etc)."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:188
+#: lib/messages-tooltip-schema.php:216
 msgid ""
 "Select a default service provider, service operator or service performer "
 "(example: \"Netflix\")."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:197
+#: lib/messages-tooltip-schema.php:225
 msgid "Select a default attendance for the Schema Event type."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:203
+#: lib/messages-tooltip-schema.php:231
 msgid "Select a default venue for the Schema Event type."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:209
+#: lib/messages-tooltip-schema.php:237
 msgid "Select a default organizer (organization) for the Schema Event type."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:215
+#: lib/messages-tooltip-schema.php:243
 msgid "Select a default organizer (person) for the Schema Event type."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:221
+#: lib/messages-tooltip-schema.php:249
 msgid "Select a default performer (organization) for the Schema Event type."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:227
+#: lib/messages-tooltip-schema.php:255
 msgid "Select a default performer (person) for the Schema Event type."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:236
+#: lib/messages-tooltip-schema.php:264
 msgid ""
 "Select a default organization for the Schema JobPosting hiring organization."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:242
+#: lib/messages-tooltip-schema.php:270
 msgid "Select a default location for the Schema JobPosting job location."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:248
+#: lib/messages-tooltip-schema.php:276
 msgid ""
 "Select a default optional Google approved location type (see <a href=\"%s"
 "\">Google's Job Posting guidelines</a> for more information)."
 msgstr ""
 
-#: lib/messages-tooltip-schema.php:257
+#: lib/messages-tooltip-schema.php:285
 msgid "Select a default Schema type for the Schema Review subject URL."
 msgstr ""
 
@@ -9916,60 +9928,60 @@ msgid ""
 "its default value."
 msgstr ""
 
-#: lib/page.php:1125 lib/page.php:1130 lib/page.php:1244
+#: lib/page.php:1115 lib/page.php:1119 lib/page.php:1226
 msgctxt "default description"
 msgid "Archive for %s."
 msgstr ""
 
-#: lib/page.php:1215
+#: lib/page.php:1197
 msgctxt "default description"
 msgid "Tag archive for %s."
 msgstr ""
 
-#: lib/page.php:1228
+#: lib/page.php:1210
 msgctxt "default description"
 msgid "Category archive for %s."
 msgstr ""
 
-#: lib/page.php:1260
+#: lib/page.php:1242
 msgctxt "default description"
 msgid "Authored by %s."
 msgstr ""
 
-#: lib/page.php:1278
+#: lib/page.php:1260
 msgid "Search Results for &#8220;%s&#8221;"
 msgstr ""
 
-#: lib/page.php:1288
+#: lib/page.php:1270
 msgctxt "default description"
 msgid "Yearly archive for %s."
 msgstr ""
 
-#: lib/page.php:1294
+#: lib/page.php:1276
 msgctxt "default description"
 msgid "Monthly archive for %s."
 msgstr ""
 
-#: lib/page.php:1300
+#: lib/page.php:1282
 msgctxt "default description"
 msgid "Daily archive for %s."
 msgstr ""
 
-#: lib/page.php:1307
+#: lib/page.php:1289
 msgctxt "default description"
 msgid "Archive page."
 msgstr ""
 
-#: lib/page.php:1510 lib/page.php:1514
+#: lib/page.php:1487 lib/page.php:1491
 msgctxt "default title"
 msgid "%s Archive"
 msgstr ""
 
-#: lib/page.php:1596
+#: lib/page.php:1568
 msgid "Search Results %1$s %2$s"
 msgstr ""
 
-#: lib/page.php:1734
+#: lib/page.php:1706
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] ""
@@ -9980,139 +9992,139 @@ msgctxt "module name"
 msgid "post"
 msgstr ""
 
-#: lib/post.php:682
+#: lib/post.php:684
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to get children of "
 "post ID %3$d (%4$s)."
 msgstr ""
 
-#: lib/post.php:896 lib/post.php:1539 lib/schema.php:3448 lib/term.php:655
+#: lib/post.php:898 lib/post.php:1541 lib/schema.php:3452 lib/term.php:655
 #: lib/user.php:636
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/post.php:1101
+#: lib/post.php:1103
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:1134
+#: lib/post.php:1136
 msgid "The webpage HTML retrieved from %1$s is %2$s bytes."
 msgstr ""
 
-#: lib/post.php:1136
+#: lib/post.php:1138
 msgid ""
 "This exceeds the maximum limit of %1$s bytes imposed by the Google crawler."
 msgstr ""
 
-#: lib/post.php:1138
+#: lib/post.php:1140
 msgid ""
 "If you do not reduce the webpage HTML size, Google will refuse to crawl this "
 "webpage."
 msgstr ""
 
-#: lib/post.php:1168
+#: lib/post.php:1170
 msgid "Retrieving the webpage HTML for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:1170
+#: lib/post.php:1172
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:1172
+#: lib/post.php:1174
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:1173
+#: lib/post.php:1175
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:1187
+#: lib/post.php:1189
 msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:1201
+#: lib/post.php:1203
 msgid "An %1$s tag was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1216
+#: lib/post.php:1218
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1233
+#: lib/post.php:1235
 msgid ""
 "The %1$s meta tags and Schema markup section was not found in <a href=\"%2$s"
 "\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1235
+#: lib/post.php:1237
 msgid "Does a caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:1266
+#: lib/post.php:1268
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section - "
 "this could be an indication of a problem with PHP's PCRE library, or an "
 "optimization plugin or service corrupting the webpage HTML markup."
 msgstr ""
 
-#: lib/post.php:1268
+#: lib/post.php:1270
 msgid ""
 "You may consider updating or having your hosting provider update your PHP "
 "installation and its PCRE library."
 msgstr ""
 
-#: lib/post.php:1288
+#: lib/post.php:1290
 msgid ""
 "Conflict detected - your theme or another plugin is adding %1$s to the head "
 "section of this webpage."
 msgstr ""
 
-#: lib/post.php:1306
+#: lib/post.php:1308
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1306
+#: lib/post.php:1308
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML document - please review the <a href=\"%1$s\">W3C Markup "
 "Validator</a> results and correct any syntax errors."
 msgstr ""
 
-#: lib/post.php:1344
+#: lib/post.php:1346
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1346
+#: lib/post.php:1348
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1354
+#: lib/post.php:1356
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1358
+#: lib/post.php:1360
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1362
+#: lib/post.php:1364
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1579
+#: lib/post.php:1581
 msgid "invalid ajax referer nonce value"
 msgstr ""
 
-#: lib/post.php:1584
+#: lib/post.php:1586
 msgid "ajax request missing the post_id"
 msgstr ""
 
-#: lib/post.php:1861
+#: lib/post.php:1863
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -10290,18 +10302,18 @@ msgstr ""
 msgid "adding schema"
 msgstr ""
 
-#: lib/schema.php:1671
+#: lib/schema.php:1675
 msgid "adding schema %s #%d image"
 msgstr ""
 
-#: lib/schema.php:1782
+#: lib/schema.php:1786
 msgid ""
 "Please note that although the Schema standard allows the subject of a review "
 "to be any Schema type, <a href=\"%1$s\">Google does not allow reviews for "
 "the Schema %2$s type</a>."
 msgstr ""
 
-#: lib/schema.php:1809
+#: lib/schema.php:1813
 msgid "adding reviewed subject image"
 msgstr ""
 
@@ -11290,47 +11302,47 @@ msgstr ""
 msgid "Slow PHP function detected - %1$s took %2$.3f secs for %3$s (%4$s)."
 msgstr ""
 
-#: lib/util.php:1203
+#: lib/util.php:1175
 msgid "Error reading the %s file for the article sections list."
 msgstr ""
 
-#: lib/util.php:1304
+#: lib/util.php:1276
 msgid "Error reading the %s file for the product categories list."
 msgstr ""
 
-#: lib/util.php:1428
+#: lib/util.php:1400
 msgid "The <code>%1$s</code> request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1452
+#: lib/util.php:1424
 msgid "Error getting HTML from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/util.php:1482
+#: lib/util.php:1454
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
 #. translators: %1$s is the class name.
-#: lib/util.php:1680
+#: lib/util.php:1652
 msgid ""
 "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting "
 "provider to have the missing class installed."
 msgstr ""
 
 #. translators: %1$s is the function name.
-#: lib/util.php:1694
+#: lib/util.php:1666
 msgid ""
 "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting "
 "provider to have the missing function installed."
 msgstr ""
 
-#: lib/util.php:2970
+#: lib/util.php:2930
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:2986
+#: lib/util.php:2946
 msgid ""
 "Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds "
 "to execute. This is longer than the recommended maximum of %3$.3f seconds "
@@ -11339,120 +11351,120 @@ msgid ""
 "optimal PHP code."
 msgstr ""
 
-#: lib/util.php:2988
+#: lib/util.php:2948
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3386
+#: lib/util.php:3346
 msgctxt "option label"
 msgid "The AMP Project Validator"
 msgstr ""
 
-#: lib/util.php:3387
+#: lib/util.php:3347
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr ""
 
-#: lib/util.php:3391
+#: lib/util.php:3351
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr ""
 
-#: lib/util.php:3392
+#: lib/util.php:3352
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/util.php:3396
+#: lib/util.php:3356
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr ""
 
-#: lib/util.php:3397
+#: lib/util.php:3357
 msgctxt "validator type"
 msgid "Microdata"
 msgstr ""
 
-#: lib/util.php:3401
+#: lib/util.php:3361
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr ""
 
-#: lib/util.php:3402
+#: lib/util.php:3362
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr ""
 
-#: lib/util.php:3406
+#: lib/util.php:3366
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/util.php:3407
+#: lib/util.php:3367
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr ""
 
-#: lib/util.php:3411
+#: lib/util.php:3371
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/util.php:3412
+#: lib/util.php:3372
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/util.php:3416
+#: lib/util.php:3376
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/util.php:3417
+#: lib/util.php:3377
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr ""
 
-#: lib/util.php:3421
+#: lib/util.php:3381
 msgctxt "option label"
 msgid "Schema Markup Validator"
 msgstr ""
 
-#: lib/util.php:3422
+#: lib/util.php:3382
 msgctxt "validator type"
 msgid "Schema Markup"
 msgstr ""
 
-#: lib/util.php:3426
+#: lib/util.php:3386
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/util.php:3427
+#: lib/util.php:3387
 msgctxt "validator type"
 msgid "Twitter Card"
 msgstr ""
 
-#: lib/util.php:3432
+#: lib/util.php:3392
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr ""
 
-#: lib/util.php:3433
+#: lib/util.php:3393
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name.
-#: lib/util.php:3595
+#: lib/util.php:3555
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3605
+#: lib/util.php:3565
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 

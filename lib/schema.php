@@ -590,11 +590,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					if ( $mod[ 'is_home_page' ] ) {	// Static front page (singular post).
 
-						$type_id = $this->get_schema_type_id_for_name( 'home_page' );
+						$type_id = $this->get_schema_type_id_for( 'home_page' );
 
 					} else {
 
-						$type_id = $this->get_schema_type_id_for_name( 'home_posts' );
+						$type_id = $this->get_schema_type_id_for( 'home_posts' );
 					}
 
 				} elseif ( $mod[ 'is_post' ] ) {
@@ -603,42 +603,42 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 						if ( $mod[ 'is_post_type_archive' ] ) {	// The post ID may be 0.
 
-							$type_id = $this->get_schema_type_id_for_name( 'pta_' . $mod[ 'post_type' ] );
+							$type_id = $this->get_schema_type_id_for( 'pta_' . $mod[ 'post_type' ] );
 
 						} else {
 
-							$type_id = $this->get_schema_type_id_for_name( $mod[ 'post_type' ] );
+							$type_id = $this->get_schema_type_id_for( $mod[ 'post_type' ] );
 						}
 					}
 
 					if ( empty( $type_id ) ) {	// Just in case.
 
-						$type_id = $this->get_schema_type_id_for_name( 'page' );
+						$type_id = $this->get_schema_type_id_for( 'page' );
 					}
 
 				} elseif ( $mod[ 'is_term' ] ) {
 
 					if ( ! empty( $mod[ 'tax_slug' ] ) ) {	// Just in case.
 
-						$type_id = $this->get_schema_type_id_for_name( 'tax_' . $mod[ 'tax_slug' ] );
+						$type_id = $this->get_schema_type_id_for( 'tax_' . $mod[ 'tax_slug' ] );
 					}
 
 					if ( empty( $type_id ) ) {	// Just in case.
 
-						$type_id = $this->get_schema_type_id_for_name( 'archive_page' );
+						$type_id = $this->get_schema_type_id_for( 'archive_page' );
 					}
 
 				} elseif ( $mod[ 'is_user' ] ) {
 
-					$type_id = $this->get_schema_type_id_for_name( 'user_page' );
+					$type_id = $this->get_schema_type_id_for( 'user_page' );
 
 				} elseif ( $mod[ 'is_search' ] ) {
 
-					$type_id = $this->get_schema_type_id_for_name( 'search_page' );
+					$type_id = $this->get_schema_type_id_for( 'search_page' );
 
 				} elseif ( $mod[ 'is_archive' ] ) {
 
-					$type_id = $this->get_schema_type_id_for_name( 'archive_page' );
+					$type_id = $this->get_schema_type_id_for( 'archive_page' );
 				}
 			
 				if ( empty( $type_id ) ) {	// Just in case.
@@ -1063,56 +1063,60 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $json_data;
 		}
 
-		public function get_schema_type_id_for_name( $type_name, $default_id = null ) {
+		public function get_schema_type_id_for( $opt_suffix, $default_id = null ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_args( array( 
-					'type_name'  => $type_name,
+					'opt_suffix' => $opt_suffix,
 					'default_id' => $default_id,
 				) );
 			}
 
-			if ( empty( $type_name ) ) {
+			if ( empty( $opt_suffix ) ) {	// Just in case.
 
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: schema type name is empty' );
-				}
-
-				return $default_id;	// Just in case.
+				return $default_id;
 			}
 
-			$schema_types = $this->get_schema_types_array( $flatten = true );
+			$opt_key      = 'schema_type_for_' . $opt_suffix;
+			$type_id      = isset( $this->p->options[ $opt_key ] ) ? $this->p->options[ $opt_key ] : $default_id;
+			$schema_types = $this->get_schema_types_array( $flatten = true );	// Uses a class variable cache.
 
-			$opt_key = 'schema_type_for_' . $type_name;
+			if ( empty( $type_id ) || 'none' === $type_id || empty( $schema_types[ $type_id ] ) ) {
 
-			$type_id = isset( $this->p->options[ $opt_key ] ) ? $this->p->options[ $opt_key ] : $default_id;
-
-			if ( empty( $type_id ) || 'none' === $type_id ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'schema type id for ' . $type_name . ' is empty or disabled' );
-				}
-
-				$type_id = $default_id;
-
-			} elseif ( empty( $schema_types[ $type_id ] ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'schema type id "' . $type_id . '" for ' . $type_name . ' not in schema types' );
-				}
-
-				$type_id = $default_id;
-
-			} elseif ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'schema type id for ' . $type_name . ' is ' . $type_id );
+				return $default_id;
 			}
 
 			return $type_id;
+		}
+
+		public function get_default_schema_type_name_for( $opt_suffix, $default_id = null ) {
+			
+			if ( empty( $opt_suffix ) ) {	// Just in case.
+				
+				return $default_id;
+			}
+			
+			$opt_key      = 'schema_type_for_' . $opt_suffix;
+			$type_id      = $this->p->opt->get_defaults( $opt_key );	// Uses a local static cache.
+			$schema_types = $this->get_schema_types_array( $flatten = true );	// Uses a class variable cache.
+
+			if ( empty( $type_id ) || 'none' === $type_id || empty( $schema_types[ $type_id ] ) ) {
+
+				/**
+				 * We're returning the Schema type name, so make sure the default schema type id is valid as well.
+				 */
+				if ( empty( $default_id ) || 'none' === $default_id || empty( $schema_types[ $default_id ] ) ) {
+
+					return $default_id;
+				}
+
+				$type_id = $default_id;
+			}
+
+			$type_url = preg_replace( '/^.*\/\//', '', $schema_types[ $type_id ] );
+
+			return preg_replace( '/^.*\//U', '', $type_url );
 		}
 
 		/**

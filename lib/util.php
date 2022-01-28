@@ -946,48 +946,20 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * Deprecated on 2020/06/03.
-		 */
-		public function get_post_types( $output = 'objects' ) {
-
-			_deprecated_function( __METHOD__ . '()', '2020/06/03', $replacement = 'SucomUtilWP::get_post_types()' );	// Deprecation message.
-
-			return SucomUtilWP::get_post_types( $output );
-		}
-
-		/**
-		 * Deprecated on 2020/06/03.
-		 */
-		public function get_taxonomies( $output = 'objects' ) {
-
-			_deprecated_function( __METHOD__ . '()', '2020/06/03', $replacement = 'SucomUtilWP::get_taxonomies()' );	// Deprecation message.
-
-			return SucomUtilWP::get_taxonomies( $output );
-		}
-
-		/**
-		 * Deprecated on 2020/04/15.
-		 */
-		public function add_ttns_to_opts( array &$opts, $mixed, $default = 1 ) {
-
-			if ( ! is_array( $mixed ) ) {
-
-				$mixed = array( $mixed => $default );
-			}
-
-			_deprecated_function( __METHOD__ . '()', '2020/04/15', $replacement = __CLASS__ . '::add_taxonomy_names()' );	// Deprecation message.
-
-			return $this->add_taxonomy_names( $opts, $mixed );
-		}
-
-		/**
 		 * Add options using a key prefix string / array and term names.
 		 */
-		public function add_taxonomy_names( array &$opts, array $opt_prefixes ) {
+		public function add_taxonomy_names( array &$opts, array $opt_prefixes, $args = null ) {
+
+			if ( null === $args ) {
+
+				$args = array( 'public' => 1, 'show_ui' => 1 );
+			}
 
 			foreach ( $opt_prefixes as $opt_prefix => $def_val ) {
 
-				foreach ( SucomUtilWP::get_taxonomies( $output = 'names' ) as $opt_suffix ) {
+				$taxonomy_names = SucomUtilWP::get_taxonomies( $output = 'names', $sort = false, $args );
+
+				foreach ( $taxonomy_names as $opt_suffix ) {
 
 					$opt_key = $opt_prefix . '_' . $opt_suffix;
 
@@ -2341,43 +2313,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				return $url;	// Nothing to do.
 			}
 
-			if ( $mod[ 'is_post' ] ) {
+			$page_number = $this->get_page_number( $mod, $add_page );
 
-				if ( $mod[ 'is_post_type_archive' ] ) {	// The post ID may be 0.
+			if ( $page_number > 1 ) {
 
-					// Nothing to do.
-
-				} elseif ( $mod[ 'id' ] ) {
-
-					$page_number = $this->get_page_number( $mod, $add_page );
-
-					if ( $page_number > 1 ) {
-
-						$page_total = $this->get_page_total( $mod );
-
-						if ( $page_number > $page_total ) {	// Just in case.
-
-							$page_number = $page_total;
-						}
-
-						global $wp_rewrite;
-
-						if ( ! $wp_rewrite->using_permalinks() || false !== strpos( $url, '?' ) ) {
-
-							$url = add_query_arg( 'page', $page_number, $url );
-
-						} else {
-
-							$url = user_trailingslashit( trailingslashit( $url ) . $page_number );
-						}
-					}
-				}
-
-			} else {
-
-				$page_number = $this->get_page_number( $mod, $add_page );
-
-				if ( $page_number > 1 ) {
+				if ( $mod[ 'is_archive' ] ) {
 
 					global $wp_rewrite;
 
@@ -2402,11 +2342,31 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						$url = user_trailingslashit( trailingslashit( $url ) . trailingslashit( $wp_rewrite->pagination_base ) . $page_number );
 					}
 
-					if ( $this->p->debug->enabled ) {
+				} else {	// Is singular.
 
-						$this->p->debug->log( 'get url paged = ' . $url );
+					$page_total = $this->get_page_total( $mod );
+
+					if ( $page_number > $page_total ) {	// Just in case.
+
+						$page_number = $page_total;
+					}
+
+					global $wp_rewrite;
+
+					if ( ! $wp_rewrite->using_permalinks() || false !== strpos( $url, '?' ) ) {
+
+						$url = add_query_arg( 'page', $page_number, $url );
+
+					} else {
+
+						$url = user_trailingslashit( trailingslashit( $url ) . $page_number );
 					}
 				}
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'get url paged = ' . $url );
 			}
 
 			return $url;
