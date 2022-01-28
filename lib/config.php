@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'     => '9.16.0-dev.4',	// Plugin version.
-					'opt_version' => '861',		// Increment when changing default option values.
+					'opt_version' => '862',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1710,8 +1710,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_og_desc_col_tax_product_tag'   => 1,		// For WooCommerce.
 					'plugin_og_desc_col_user_page'         => 1,
 
-					'plugin_og_types_select_format'     => 'name',		// Schema Type Select Format.
-					'plugin_schema_types_select_format' => 'name',		// Open Graph Type Select Format.
+					'plugin_og_types_select_format'     => 'name',		// Open Graph Type Select Format.
+					'plugin_schema_types_select_format' => 'name',		// Schema Type Select Format.
 
 					/**
 					 * Advanced Settings > Integration tab.

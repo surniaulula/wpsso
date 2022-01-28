@@ -209,7 +209,7 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\e815";	/* .icon-download-bar */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_cache::before {			/* SSO > Advanced Settings > Advanced Settings > Caching tab. */
+.sucom-tablink-icon.sucom-tablink-href_cache::before {			/* SSO > Advanced Settings > Plugin Settings > Caching tab. */
 	content:"\f1c0";	/* .icon-database */
 }
 
@@ -227,6 +227,10 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 
 .sucom-tablink-icon.sucom-tablink-href_default_contacts::before {	/* SSO > Advanced Settings > Contact Fields > Default Contacts tab. */
 	content:"\f2c2";	/* .icon-id-card */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_def_text::before {		/* SSO > Advanced Settings > Plugin Settings > Default Text tab. */
+	content:"\e809";	/* .icon-edit */
 }
 
 .sucom-tablink-icon.sucom-tablink-href_edit_general::before {		/* Document SSO > Edit General tab. */
@@ -269,7 +273,7 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\e814";	/* .icon-upload-bar */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_image_sizes::before {		/* SSO > Advanced Settings > Advanced Settings > Image Sizes tab. */
+.sucom-tablink-icon.sucom-tablink-href_image_sizes::before {		/* SSO > Advanced Settings > Plugin Settings > Image Sizes tab. */
 	content:"\e82d";	/* .icon-resize-full */
 }
 
@@ -281,11 +285,11 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\f0d0";	/* .icon-magic */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_integration::before {		/* SSO > Advanced Settings > Advanced Settings > Integration tab. */
+.sucom-tablink-icon.sucom-tablink-href_integration::before {		/* SSO > Advanced Settings > Plugin Settings > Integration tab. */
 	content:"\f2b5";	/* .icon-handshake-o */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_interface::before {		/* SSO > Advanced Settings > Advanced Settings > Interface tab. */
+.sucom-tablink-icon.sucom-tablink-href_interface::before {		/* SSO > Advanced Settings > Plugin Settings > Interface tab. */
 	content:"\f108";	/* .icon-desktop */
 }
 
@@ -349,7 +353,7 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\e81c";	/* .icon-robot-5 */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_settings::before {		/* SSO > Advanced Settings > Advanced Settings > Plugin Admin tab. */
+.sucom-tablink-icon.sucom-tablink-href_settings::before {		/* SSO > Advanced Settings > Plugin Settings > Plugin Admin tab. */
 	content:"\e80e";	/* .icon-cog-alt */
 }
 
@@ -377,7 +381,7 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\e800";	/* .icon-videocam */
 }
 
-.sucom-tablink.sucom-tablink_def_schema.sucom-tablink-icon::before {	/* SSO > Advanced Settings > Schema Properties tabs. */
+.sucom-tablink.sucom-tablink_schema_props.sucom-tablink-icon::before {	/* SSO > Advanced Settings > Schema Properties tabs. */
 	content:"\f1c9";	/* .icon-file-code */
 }
 

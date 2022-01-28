@@ -1601,9 +1601,9 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		public static function get_post_type_archive_labels( $val_prefix = '', $label_prefix = '' ) {
 
 			/**
-			 * Note that 'has_archive' = 1 will not match post types archives registered with a string in 'has_archive'.
+			 * Note that 'has_archive' = 1 will not match post types registered with a string in 'has_archive'.
 			 *
-			 * Use 'has_archive' = true include the WooCommerce product archive page (ie. 'has_archive' = 'shop').
+			 * Use 'has_archive' = true to include the WooCommerce product archive page (ie. 'has_archive' = 'shop').
 			 */
 			$args = array( 'public' => true, 'show_ui' => true, 'has_archive' => true );
 

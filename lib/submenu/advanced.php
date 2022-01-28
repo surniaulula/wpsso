@@ -38,7 +38,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				'plugin'         => _x( 'Plugin Settings', 'metabox title', 'wpsso' ),
 				'services'       => _x( 'Service APIs', 'metabox title', 'wpsso' ),
 				'doc_types'      => _x( 'Document Types', 'metabox title', 'wpsso' ),
-				'def_schema'     => _x( 'Schema Properties', 'metabox title', 'wpsso' ),
+				'schema_props'   => _x( 'Schema Properties', 'metabox title', 'wpsso' ),
 				'contact_fields' => _x( 'Contact Fields', 'metabox title', 'wpsso' ),
 				'user_about'     => _x( 'About the User', 'metabox title', 'wpsso' ),
 				'metadata'       => _x( 'Metadata', 'metabox title', 'wpsso' ),
@@ -75,6 +75,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			$tabs = apply_filters( 'wpsso_advanced_' . $metabox_id . '_tabs', array(
 				'settings'    => _x( 'Plugin Admin', 'metabox tab', 'wpsso' ),
 				'integration' => _x( 'Integration', 'metabox tab', 'wpsso' ),
+				'def_text'    => _x( 'Default Text', 'metabox tab', 'wpsso' ),
 				'image_sizes' => _x( 'Image Sizes', 'metabox tab', 'wpsso' ),
 				'interface'   => _x( 'Interface', 'metabox tab', 'wpsso' ),
 			) );
@@ -136,9 +137,9 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 			$this->p->util->metabox->do_tabbed( $metabox_id, $tabs, $table_rows );
 		}
 
-		public function show_metabox_def_schema() {
+		public function show_metabox_schema_props() {
 
-			$metabox_id = 'def_schema';
+			$metabox_id = 'schema_props';
 
 			$tabs = apply_filters( 'wpsso_advanced_' . $metabox_id . '_tabs', array(
 				'book'          => _x( 'Book', 'metabox tab', 'wpsso' ),
