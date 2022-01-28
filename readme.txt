@@ -256,6 +256,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
+	* Added a new SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Default Text tab.
 	* Moved the SSO &gt; Social Pages &gt; Social and Search Sites metabox to the SSO &gt; General Settings page and removed SSO &gt; Social Pages from the menu.
 * **Bugfixes**
 	* None.
@@ -278,12 +279,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Removed filters:
 		* 'sucom_get_post_types_args'
 		* 'sucom_get_taxonomies_args'
+		* 'wpsso_archive_page_description'
+		* 'wpsso_category_archive_description'
+		* 'wpsso_date_archive_title'
+		* 'wpsso_daily_archive_description'
+		* 'wpsso_home_posts_description'
+		* 'wpsso_home_posts_title'
+		* 'wpsso_monthly_archive_description'
 		* 'wpsso_og_type_for_default'
 		* 'wpsso_og_type_for_home_page'
 		* 'wpsso_og_type_for_home_posts'
 		* 'wpsso_og_type_for_post_type_archive_page'
 		* 'wpsso_og_type_for_post_type_empty_type'
 		* 'wpsso_og_type_for_post_type_unknown_type'
+		* 'wpsso_post_archive_description'
+		* 'wpsso_post_archive_title'
 		* 'wpsso_schema_type_for_default'
 		* 'wpsso_schema_type_for_home_page'
 		* 'wpsso_schema_type_for_home_posts'
@@ -291,6 +301,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* 'wpsso_schema_type_for_post_type_archive_page'
 		* 'wpsso_schema_type_for_post_type_empty_type'
 		* 'wpsso_schema_type_for_post_type_unknown_type'
+		* 'wpsso_search_results_title'
+		* 'wpsso_tag_archive_description'
+		* 'wpsso_term_archive_description'
+		* 'wpsso_term_archive_title'
+		* 'wpsso_user_archive_description'
+		* 'wpsso_user_archive_title'
+		* 'wpsso_wp_title'
+		* 'wpsso_yearly_archive_description'
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -510,8 +528,8 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 	* None.
 * **Improvements**
 	* Added new options under the SSO &gt; Advanced Settings &gt; Interface tab:
-		* Schema Type Select Format
 		* Open Graph Type Select Format
+		* Schema Type Select Format
 * **Bugfixes**
 	* None.
 * **Developer Notes**
