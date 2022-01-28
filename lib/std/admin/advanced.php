@@ -467,7 +467,8 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			}
 
 			$table_rows[ 'og_type_for_ptn' ] = '' .
-				$form->get_th_html( _x( 'Type by Post Type', 'option label', 'wpsso' ), $css_class = '', $css_id = 'og_type_for_ptn' ) .
+				$form->get_th_html( _x( 'Type by Post Type', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'og_type_for_ptn' ) .
 				'<td class="blank">' . $type_select . '</td>';
 
 			/**
@@ -485,9 +486,13 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
 			}
 
-			$table_rows[ 'og_type_for_pta' ] = $form->get_tr_hide( 'basic', $type_keys ) .
-				$form->get_th_html( _x( 'Type by Post Type Archive', 'option label', 'wpsso' ), $css_class = '', $css_id = 'og_type_for_pta' ) .
-				'<td class="blank">' . $type_select . '</td>';
+			if ( ! empty( $type_select ) ) {
+
+				$table_rows[ 'og_type_for_pta' ] = $form->get_tr_hide( 'basic', $type_keys ) .
+					$form->get_th_html( _x( 'Type by Post Type Archive', 'option label', 'wpsso' ),
+						$css_class = '', $css_id = 'og_type_for_pta' ) .
+					'<td class="blank">' . $type_select . '</td>';
+			}
 
 			/**
 			 * Open Graph Type by Taxonomy.
@@ -565,7 +570,8 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			}
 
 			$table_rows[ 'schema_type_for_ptn' ] = '' .
-				$form->get_th_html( _x( 'Type by Post Type', 'option label', 'wpsso' ), $css_class = '', $css_id = 'schema_type_for_ptn' ) .
+				$form->get_th_html( _x( 'Type by Post Type', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'schema_type_for_ptn' ) .
 				'<td class="blank">' . $type_select . '</td>';
 
 			/**
@@ -590,9 +596,13 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					) . ' ' . sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
 			}
 
-			$table_rows[ 'schema_type_for_pta' ] = $form->get_tr_hide( 'basic', $type_keys ) .
-				$form->get_th_html( _x( 'Type by Post Type Archive', 'option label', 'wpsso' ), $css_class = '', $css_id = 'schema_type_for_pta' ) .
-				'<td class="blank">' . $type_select . '</td>';
+			if ( ! empty( $type_select ) ) {
+
+				$table_rows[ 'schema_type_for_pta' ] = $form->get_tr_hide( 'basic', $type_keys ) .
+					$form->get_th_html( _x( 'Type by Post Type Archive', 'option label', 'wpsso' ),
+						$css_class = '', $css_id = 'schema_type_for_pta' ) .
+					'<td class="blank">' . $type_select . '</td>';
+			}
 
 			/**
 			 * Schema Type by Taxonomy.
