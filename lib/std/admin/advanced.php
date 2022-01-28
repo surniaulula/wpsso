@@ -442,14 +442,12 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			 * Open Graph Type.
 			 */
 			foreach ( array( 
-				'home_page'    => _x( 'Type for Page Homepage', 'option label', 'wpsso' ),
-				'home_posts'   => _x( 'Type for Posts Homepage', 'option label', 'wpsso' ),
-				'user_page'    => _x( 'Type for User Profiles', 'option label', 'wpsso' ),
-				'search_page'  => _x( 'Type for Search Results', 'option label', 'wpsso' ),
-				'archive_page' => _x( 'Type for Other Archive', 'option label', 'wpsso' ),
-			) as $type_name => $th_label ) {
-
-				$opt_key = 'og_type_for_' . $type_name;	// Hard-coded value - no sanitation required.
+				'og_type_for_home_page'    => _x( 'Type for Page Homepage', 'option label', 'wpsso' ),
+				'og_type_for_home_posts'   => _x( 'Type for Posts Homepage', 'option label', 'wpsso' ),
+				'og_type_for_user_page'    => _x( 'Type for User Profiles', 'option label', 'wpsso' ),
+				'og_type_for_search_page'  => _x( 'Type for Search Results', 'option label', 'wpsso' ),
+				'og_type_for_archive_page' => _x( 'Type for Archive Page', 'option label', 'wpsso' ),
+			) as $opt_key => $th_label ) {
 
 				$table_rows[ $opt_key ] = $form->get_tr_hide( 'basic', $opt_key ) .
 					$form->get_th_html( $th_label, $css_class = '', $opt_key ) . 
@@ -460,25 +458,35 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			 * Open Graph Type by Post Type.
 			 */
 			$type_select = '';
-			$post_types  = SucomUtilWP::get_post_types( $output = 'objects', $sort = true );
+			$type_labels = SucomUtilWP::get_post_type_labels( $val_prefix = 'og_type_for_' );
 
-			foreach ( $post_types as $obj ) {
-
-				$opt_key = SucomUtil::sanitize_hookname( 'og_type_for_' . $obj->name );
-
-				$obj_label = SucomUtilWP::get_object_label( $obj );
+			foreach ( $type_labels as $opt_key => $obj_label ) {
 
 				$type_select .= '<p>' . $form->get_no_select( $opt_key, $this->og_types, $css_class = 'og_type' ) . ' ' .
 					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
 			}
 
-			$opt_key = 'og_type_for_post_archive';	// Hard-coded value - no sanitation required.
-
-			$type_select .= '<p>' . $form->get_no_select( $opt_key, $this->og_types, $css_class = 'og_type' ) . ' ' .
-				sprintf( _x( 'for %s', 'option comment', 'wpsso' ), _x( 'Post Type Archive Page', 'option comment', 'wpsso' ) ) . '</p>' . "\n";
-
 			$table_rows[ 'og_type_for_ptn' ] = '' .
 				$form->get_th_html( _x( 'Type by Post Type', 'option label', 'wpsso' ), $css_class = '', $css_id = 'og_type_for_ptn' ) .
+				'<td class="blank">' . $type_select . '</td>';
+
+			/**
+			 * Open Graph Type by Post Type Archive.
+			 */
+			$type_select = '';
+			$type_keys   = array();
+			$type_labels = SucomUtilWP::get_post_type_archive_labels( $val_prefix = 'og_type_for_pta_' );
+
+			foreach ( $type_labels as $opt_key => $obj_label ) {
+
+				$type_keys[] = $opt_key;
+
+				$type_select .= '<p>' . $form->get_no_select( $opt_key, $this->og_types, $css_class = 'og_type' ) . ' ' .
+					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
+			}
+
+			$table_rows[ 'og_type_for_pta' ] = $form->get_tr_hide( 'basic', $type_keys ) .
+				$form->get_th_html( _x( 'Type by Post Type Archive', 'option label', 'wpsso' ), $css_class = '', $css_id = 'og_type_for_pta' ) .
 				'<td class="blank">' . $type_select . '</td>';
 
 			/**
@@ -486,13 +494,11 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			 */
 			$type_select = '';
 			$type_keys   = array();
-			$taxonomies  = SucomUtilWP::get_taxonomies( $output = 'objects', $sort = true );
+			$type_labels = SucomUtilWP::get_taxonomy_labels( $val_prefix = 'og_type_for_tax_' );
 
-			foreach ( $taxonomies as $obj ) {
+			foreach ( $type_labels as $opt_key => $obj_label ) {
 
-				$type_keys[] = $opt_key = SucomUtil::sanitize_hookname( 'og_type_for_tax_' . $obj->name );
-
-				$obj_label = SucomUtilWP::get_object_label( $obj );
+				$type_keys[] = $opt_key;
 
 				$type_select .= '<p>' . $form->get_no_select( $opt_key, $this->og_types, $css_class = 'og_type' ) . ' ' .
 					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
@@ -518,19 +524,17 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			 * Schema Type.
 			 */
 			foreach ( array( 
-				'home_page'    => _x( 'Type for Page Homepage', 'option label', 'wpsso' ),
-				'home_posts'   => _x( 'Type for Posts Homepage', 'option label', 'wpsso' ),
-				'user_page'    => _x( 'Type for User Profiles', 'option label', 'wpsso' ),
-				'search_page'  => _x( 'Type for Search Results', 'option label', 'wpsso' ),
-				'archive_page' => _x( 'Type for Other Archive', 'option label', 'wpsso' ),
-			) as $type_name => $th_label ) {
-
-				$opt_key = 'schema_type_for_' . $type_name;	// Hard-coded value - no sanitation required.
+				'schema_type_for_home_page'    => _x( 'Type for Page Homepage', 'option label', 'wpsso' ),
+				'schema_type_for_home_posts'   => _x( 'Type for Posts Homepage', 'option label', 'wpsso' ),
+				'schema_type_for_user_page'    => _x( 'Type for User Profiles', 'option label', 'wpsso' ),
+				'schema_type_for_search_page'  => _x( 'Type for Search Results', 'option label', 'wpsso' ),
+				'schema_type_for_archive_page' => _x( 'Type for Archive Page', 'option label', 'wpsso' ),
+			) as $opt_key => $th_label ) {
 
 				$table_rows[ $opt_key ] = $form->get_tr_hide( 'basic', $opt_key ) . 
 					$form->get_th_html( $th_label, $css_class = '', $opt_key ) . 
 					'<td class="blank">' . $form->get_no_select( $opt_key, $this->schema_types, $css_class = 'schema_type', $css_id = '',
-						$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
+						$is_assoc = true, $selected = false, $event_names = array( 'on_focus_load_json' ),
 							$event_args = array(
 								'json_var'  => 'schema_types',
 								'exp_secs'  => WPSSO_CACHE_SELECT_JSON_EXP_SECS,	// Create and read from a javascript URL.
@@ -545,17 +549,12 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			 * Schema Type by Post Type.
 			 */
 			$type_select = '';
+			$type_labels = SucomUtilWP::get_post_type_labels( $val_prefix = 'schema_type_for_' );
 
-			$post_types  = SucomUtilWP::get_post_types( $output = 'objects', $sort = true );
-
-			foreach ( $post_types as $obj ) {
-
-				$opt_key = SucomUtil::sanitize_hookname( 'schema_type_for_' . $obj->name );
-
-				$obj_label = SucomUtilWP::get_object_label( $obj );
+			foreach ( $type_labels as $opt_key => $obj_label ) {
 
 				$type_select .= '<p>' . $form->get_no_select( $opt_key, $this->schema_types, $css_class = 'schema_type', $css_id = '',
-					$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
+					$is_assoc = true, $selected = false, $event_names = array( 'on_focus_load_json' ),
 						$event_args = array(
 							'json_var'  => 'schema_types',
 							'exp_secs'  => WPSSO_CACHE_SELECT_JSON_EXP_SECS,	// Create and read from a javascript URL.
@@ -565,22 +564,34 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					) . ' ' . sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
 			}
 
-			$opt_key = 'schema_type_for_post_archive';	// Hard-coded value - no sanitation required.
-
-			$type_select .= '<p>' . $form->get_no_select( $opt_key, $this->schema_types, $css_class = 'schema_type', $css_id = '',
-				$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
-					$event_args = array(
-						'json_var'  => 'schema_types',
-						'exp_secs'  => WPSSO_CACHE_SELECT_JSON_EXP_SECS,	// Create and read from a javascript URL.
-						'is_transl' => true,					// No label translation required.
-						'is_sorted' => true,					// No label sorting required.
-					)
-				) . ' ' .
-				sprintf( _x( 'for %s', 'option comment', 'wpsso' ), _x( 'Post Type Archive Page', 'option comment', 'wpsso' ) ) .
-				'</p>' . "\n";
-
 			$table_rows[ 'schema_type_for_ptn' ] = '' .
 				$form->get_th_html( _x( 'Type by Post Type', 'option label', 'wpsso' ), $css_class = '', $css_id = 'schema_type_for_ptn' ) .
+				'<td class="blank">' . $type_select . '</td>';
+
+			/**
+			 * Schema Type by Post Type Archive.
+			 */
+			$type_select = '';
+			$type_keys   = array();
+			$type_labels = SucomUtilWP::get_post_type_archive_labels( $val_prefix = 'schema_type_for_pta_' );
+
+			foreach ( $type_labels as $opt_key => $obj_label ) {
+
+				$type_keys[] = $opt_key;
+
+				$type_select .= '<p>' . $form->get_no_select( $opt_key, $this->schema_types, $css_class = 'schema_type', $css_id = '',
+					$is_assoc = true, $selected = false, $event_names = array( 'on_focus_load_json' ),
+						$event_args = array(
+							'json_var'  => 'schema_types',
+							'exp_secs'  => WPSSO_CACHE_SELECT_JSON_EXP_SECS,	// Create and read from a javascript URL.
+							'is_transl' => true,					// No label translation required.
+							'is_sorted' => true,					// No label sorting required.
+						)
+					) . ' ' . sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
+			}
+
+			$table_rows[ 'schema_type_for_pta' ] = $form->get_tr_hide( 'basic', $type_keys ) .
+				$form->get_th_html( _x( 'Type by Post Type Archive', 'option label', 'wpsso' ), $css_class = '', $css_id = 'schema_type_for_pta' ) .
 				'<td class="blank">' . $type_select . '</td>';
 
 			/**
@@ -588,16 +599,14 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			 */
 			$type_select = '';
 			$type_keys   = array();
-			$taxonomies  = SucomUtilWP::get_taxonomies( $output = 'objects', $sort = true );
+			$type_labels = SucomUtilWP::get_taxonomy_labels( $val_prefix = 'schema_type_for_tax_' );
 
-			foreach ( $taxonomies as $obj ) {
+			foreach ( $type_labels as $opt_key => $obj_label ) {
 
-				$type_keys[] = $opt_key = SucomUtil::sanitize_hookname( 'schema_type_for_tax_' . $obj->name );
-
-				$obj_label = SucomUtilWP::get_object_label( $obj );
+				$type_keys[] = $opt_key;
 
 				$type_select .= '<p>' . $form->get_no_select( $opt_key, $this->schema_types, $css_class = 'schema_type', $css_id = '',
-					$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
+					$is_assoc = true, $selected = false, $event_names = array( 'on_focus_load_json' ),
 						$event_args = array(
 							'json_var'  => 'schema_types',
 							'exp_secs'  => WPSSO_CACHE_SELECT_JSON_EXP_SECS,	// Create and read from a javascript URL.

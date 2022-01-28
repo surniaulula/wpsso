@@ -77,7 +77,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		/**
 		 * Since WPSSO Core v9.13.0.
 		 *
-		 * Returns the open graph type ID.
+		 * Returns the open graph type id.
 		 */
 		public function get_mod_og_type_id( array $mod, $use_mod_opts = true ) {
 
@@ -97,9 +97,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		/**
 		 * Since WPSSO Core v4.10.0.
 		 *
-		 * Returns the open graph type ID or namespace value.
+		 * Returns the open graph type id by default.
 		 *
 		 * Example: article, product, place, etc.
+		 *
+		 * Use $get_id = false to return the open graph namespace instead of the ID.
 		 */
 		public function get_mod_og_type( array $mod, $get_id = true, $use_mod_opts = true ) {
 
@@ -113,6 +115,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			$cache_salt = false;
 
 			/**
+			 * Archive pages can call this method several times.
+			 *
 			 * Optimize and cache post/term/user og type values.
 			 */
 			if ( $mod[ 'obj' ] && $mod[ 'id' ] ) {
@@ -121,29 +125,16 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				if ( isset( $local_cache[ $cache_salt ] ) ) {
 
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'returning local cache value "' . $local_cache[ $cache_salt ] . '"' );
-					}
-
 					return $local_cache[ $cache_salt ];
 
-				} elseif ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'no value found in local cache' );
 				}
-
-			} elseif ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'skipping local cache: mod object or id is empty' );
 			}
 
-			$default_key = apply_filters( 'wpsso_og_type_for_default', 'website', $mod );
-			$og_type_ns  = $this->p->cf[ 'head' ][ 'og_type_ns' ];
-			$type_id     = null;
+			$type_id    = null;
+			$og_type_ns = $this->p->cf[ 'head' ][ 'og_type_ns' ];
 
 			/**
-			 * Get custom open graph type from post, term, or user meta.
+			 * Maybe get a custom open graph type id from the post, term, or user meta.
 			 */
 			if ( $use_mod_opts ) {
 
@@ -151,154 +142,52 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					$type_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'og_type' );	// Returns null if index key not found.
 
-					if ( empty( $type_id ) ) {	// Must be a non-empty string.
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'custom type id from meta is empty' );
-						}
-
-					} elseif ( 'none' === $type_id ) {
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'custom type id is disabled with value none' );
-						}
-
-					} elseif ( empty( $og_type_ns[ $type_id ] ) ) {
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'custom type id "' . $type_id . '" not in og types' );
-						}
+					if ( empty( $type_id ) || $type_id === 'none' || empty( $og_type_ns[ $type_id ] ) ) {	// Check for an invalid type id.
 
 						$type_id = null;
-
-					} elseif ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'custom type id "' . $type_id . '" from ' . $mod[ 'name' ] . ' meta' );
 					}
-
-				} elseif ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'skipping custom type id: mod object or id is empty' );
 				}
-
-			} elseif ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'skipping custom type id: use_mod_opts is false' );
 			}
 
-			if ( empty( $type_id ) ) {
+			$is_custom = empty( $type_id ) ? false : true;
 
-				$is_custom = false;
-
-			} else {
-
-				$is_custom = true;
-			}
-
-			if ( empty( $type_id ) ) {	// If no custom of type, then use the default settings.
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'using plugin settings to determine og type' );
-				}
+			if ( ! $is_custom ) {	// No custom open graph type id from the post, term, or user meta.
 
 				if ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).
-
-					$type_id = $default_key;
 
 					if ( $mod[ 'is_home_page' ] ) {	// Static front page (singular post).
 
 						$type_id = $this->get_og_type_id_for_name( 'home_page' );
 
-						$type_id = apply_filters( 'wpsso_og_type_for_home_page', $type_id, $mod );
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'using og type id "' . $type_id . '" for home page' );
-						}
-
 					} else {
 
 						$type_id = $this->get_og_type_id_for_name( 'home_posts' );
-
-						$type_id = apply_filters( 'wpsso_og_type_for_home_posts', $type_id, $mod );
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'using og type id "' . $type_id . '" for home posts' );
-						}
 					}
 
 				} elseif ( $mod[ 'is_post' ] ) {
 
-					if ( $mod[ 'post_type' ] ) {
+					if ( $mod[ 'post_type' ] ) {	// Just in case.
 
 						if ( $mod[ 'is_post_type_archive' ] ) {	// The post ID may be 0.
 
-							$type_id = $this->get_og_type_id_for_name( 'post_archive' );
+							$type_id = $this->get_og_type_id_for_name( 'pta_' . $mod[ 'post_type' ] );
 
-							$type_id = apply_filters( 'wpsso_og_type_for_post_type_archive_page', $type_id, $mod );
-
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'using og type id "' . $type_id . '" for post_type_archive page' );
-							}
-
-						} elseif ( isset( $this->p->options[ 'og_type_for_' . $mod[ 'post_type' ] ] ) ) {
+						} else {
 
 							$type_id = $this->get_og_type_id_for_name( $mod[ 'post_type' ] );
-
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'using og type id "' . $type_id . '" from post type option value' );
-							}
-
-						} elseif ( ! empty( $og_type_ns[ $mod[ 'post_type' ] ] ) ) {
-
-							$type_id = $mod[ 'post_type' ];
-
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'using og type id "' . $type_id . '" from post type name' );
-							}
-
-						} else {	// Unknown post type.
-
-							$type_id = $this->get_og_type_id_for_name( 'page' );
-
-							$type_id = apply_filters( 'wpsso_og_type_for_post_type_unknown_type', $type_id, $mod );
-
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'using "page" og type for unknown post type ' . $mod[ 'post_type' ] );
-							}
 						}
+					}
 
-					} else {	// Post objects without a post_type property.
+					if ( empty( $type_id ) ) {	// Just in case.
 
 						$type_id = $this->get_og_type_id_for_name( 'page' );
-
-						$type_id = apply_filters( 'wpsso_og_type_for_post_type_empty_type', $type_id, $mod );
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'using "page" og type for empty post type' );
-						}
 					}
 
 				} elseif ( $mod[ 'is_term' ] ) {
 
-					if ( ! empty( $mod[ 'tax_slug' ] ) ) {
+					if ( ! empty( $mod[ 'tax_slug' ] ) ) {	// Just in case.
 
 						$type_id = $this->get_og_type_id_for_name( 'tax_' . $mod[ 'tax_slug' ] );
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'using og type id "' . $type_id . '" from term option value' );
-						}
 					}
 
 					if ( empty( $type_id ) ) {	// Just in case.
@@ -317,28 +206,29 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				} elseif ( $mod[ 'is_archive' ] ) {
 
 					$type_id = $this->get_og_type_id_for_name( 'archive_page' );
+				}
 
-				} else {	// Everything else.
-
-					$type_id = $default_key;
+				if ( empty( $type_id ) ) {	// Just in case.
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'using default og type id "' . $default_key . '"' );
+						$this->p->debug->log( 'unable to determine og type id (using default)' );
 					}
+
+					$type_id = 'website';
 				}
 			}
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'og type id before filter is "' . $type_id . '"' );
+				$this->p->debug->log( 'og type id before filter: ' . $type_id );
 			}
 
 			$type_id = apply_filters( 'wpsso_og_type', $type_id, $mod, $is_custom );
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'og type id after filter is "' . $type_id . '"' );
+				$this->p->debug->log( 'og type id after filter: ' . $type_id );
 			}
 
 			$get_value = false;
@@ -361,14 +251,14 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'returning false: og type id "' . $type_id . '" is unknown' );
+					$this->p->debug->log( 'returning false: og type id ' . $type_id . ' is unknown' );
 				}
 
 			} elseif ( ! $get_id ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'returning og type namespace "' . $og_type_ns[ $type_id ] . '"' );
+					$this->p->debug->log( 'returning og type id namespace: ' . $og_type_ns[ $type_id ] );
 				}
 
 				$get_value = $og_type_ns[ $type_id ];
@@ -377,7 +267,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'returning og type id "' . $type_id . '"' );
+					$this->p->debug->log( 'returning og type id: ' . $type_id );
 				}
 
 				$get_value = $type_id;

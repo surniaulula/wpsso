@@ -515,6 +515,10 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'plugin_wpseo_social_meta' => 'plugin_import_wpseo_meta',	// Renamed on 2022/01/14.
 					'plugin_wpseo_show_import' => '',				// Deprecated on 2022/01/15.
 				),
+				860 => array(
+					'og_type_for_post_archive'     => '',
+					'schema_type_for_post_archive' => '',
+				),
 			),
 		);
 

@@ -129,7 +129,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 					break;
 
-				case 'tooltip-schema_type_for_archive_page':	// Type for Other Archive.
+				case 'tooltip-schema_type_for_archive_page':	// Type for Archive Page.
 
 					$def_type = $this->p->opt->get_defaults( 'schema_type_for_archive_page' );
 

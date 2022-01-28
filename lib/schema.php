@@ -196,7 +196,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * )
 			 *
 			 * Hooked by the WpssoBcFilters->filter_json_array_schema_page_type_ids() filter at add its
-			 * 'breadcrumb.list' type ID.
+			 * 'breadcrumb.list' type id.
 			 */
 			$page_type_ids = apply_filters( 'wpsso_json_array_schema_page_type_ids', $page_type_ids, $mod );
 
@@ -342,7 +342,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'page type ID is ' . $page_type_id );
+					$this->p->debug->log( 'page type id is ' . $page_type_id );
 				}
 			}
 
@@ -482,7 +482,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'page type ID is ' . $page_type_id );
+				$this->p->debug->log( 'page type id is ' . $page_type_id );
 			}
 
 			$ref_url = $this->p->util->maybe_set_ref( null, $mod, __( 'adding schema', 'wpsso' ) );
@@ -512,7 +512,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/**
 		 * Since WPSSO Core v9.1.2.
 		 *
-		 * Returns the schema type ID.
+		 * Returns the schema type id.
 		 */
 		public function get_mod_schema_type_id( array $mod, $use_mod_opts = true ) {
 
@@ -532,13 +532,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		/**
 		 * Since WPSSO Core v3.37.1.
 		 *
-		 * Returns the schema type ID by default.
+		 * Returns the schema type id by default.
 		 * 
 		 * Use $get_id = false to return the schema type URL instead of the ID.
-		 *
-		 * Keep this method public for old versions of the WPSSO JSON add-on that call this method using:
-		 *
-		 *	$this->p->schema->get_mod_schema_type( $mod, $get_id = true, $use_mod_opts = false );
 		 */
 		public function get_mod_schema_type( array $mod, $get_id = true, $use_mod_opts = true ) {
 
@@ -552,6 +548,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$cache_salt = false;
 
 			/**
+			 * Archive pages can call this method several times.
+			 *
 			 * Optimize and cache post/term/user schema type values.
 			 */
 			if ( $mod[ 'obj' ] && $mod[ 'id' ] ) {
@@ -560,29 +558,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( isset( $local_cache[ $cache_salt ] ) ) {
 
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'returning local cache value "' . $local_cache[ $cache_salt ] . '"' );
-					}
-
 					return $local_cache[ $cache_salt ];
 
-				} elseif ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'no value found in local cache' );
 				}
-
-			} elseif ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'skipping local cache: mod object or id is empty' );
 			}
 
-			$default_key  = apply_filters( 'wpsso_schema_type_for_default', 'webpage', $mod );
-			$schema_types = $this->get_schema_types_array( $flatten = true );
 			$type_id      = null;
+			$schema_types = $this->get_schema_types_array( $flatten = true );
 
 			/**
-			 * Get custom schema type from post, term, or user meta.
+			 * Maybe get a custom schema type id from the post, term, or user meta.
 			 */
 			if ( $use_mod_opts ) {
 
@@ -590,61 +575,16 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					$type_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_type' );	// Returns null if an index key is not found.
 
-					if ( empty( $type_id ) ) {	// Must be a non-empty string.
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'custom type id from meta is empty' );
-						}
-
-					} elseif ( $type_id === 'none' ) {
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'custom type id is disabled with value "none"' );
-						}
-
-					} elseif ( empty( $schema_types[ $type_id ] ) ) {
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'custom type id "' . $type_id . '" not in schema types' );
-						}
+					if ( empty( $type_id ) || $type_id === 'none' || empty( $schema_types[ $type_id ] ) ) {	// Check for an invalid type id.
 
 						$type_id = null;
-
-					} elseif ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'custom type id "' . $type_id . '" from ' . $mod[ 'name' ] . ' meta' );
 					}
-
-				} elseif ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'skipping custom type id: mod object or id is empty' );
 				}
-
-			} elseif ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'skipping custom type id: use_mod_opts is false' );
 			}
 
-			if ( empty( $type_id ) ) {
+			$is_custom = empty( $type_id ) ? false : true;
 
-				$is_custom = false;
-
-			} else {
-
-				$is_custom = true;
-			}
-
-			if ( empty( $type_id ) ) {	// If no custom schema type, then use the default settings.
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'using plugin settings to determine schema type' );
-				}
-
-				$filter_name = '';
+			if ( ! $is_custom ) {	// No custom schema type id from the post, term, or user meta.
 
 				if ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).
 
@@ -652,54 +592,33 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 						$type_id = $this->get_schema_type_id_for_name( 'home_page' );
 
-						$filter_name = SucomUtil::sanitize_hookname( 'wpsso_schema_type_for_home_page' );
-
 					} else {
 
 						$type_id = $this->get_schema_type_id_for_name( 'home_posts' );
-
-						$filter_name = SucomUtil::sanitize_hookname( 'wpsso_schema_type_for_home_posts' );
 					}
 
 				} elseif ( $mod[ 'is_post' ] ) {
 
-					if ( $mod[ 'post_type' ] ) {
+					if ( $mod[ 'post_type' ] ) {	// Just in case.
 
 						if ( $mod[ 'is_post_type_archive' ] ) {	// The post ID may be 0.
 
-							$type_id = $this->get_schema_type_id_for_name( 'post_archive' );
+							$type_id = $this->get_schema_type_id_for_name( 'pta_' . $mod[ 'post_type' ] );
 
-							$filter_name = SucomUtil::sanitize_hookname( 'wpsso_schema_type_for_post_type_archive_page' );
-
-						} elseif ( isset( $this->p->options[ 'schema_type_for_' . $mod[ 'post_type' ] ] ) ) {
+						} else {
 
 							$type_id = $this->get_schema_type_id_for_name( $mod[ 'post_type' ] );
-
-							$filter_name = SucomUtil::sanitize_hookname( 'wpsso_schema_type_for_post_type_' . $mod[ 'post_type' ] );
-
-						} elseif ( ! empty( $schema_types[ $mod[ 'post_type' ] ] ) ) {
-
-							$type_id = $mod[ 'post_type' ];
-
-							$filter_name = SucomUtil::sanitize_hookname( 'wpsso_schema_type_for_post_type_' . $mod[ 'post_type' ] );
-
-						} else {	// Unknown post type.
-
-							$type_id = $this->get_schema_type_id_for_name( 'page' );
-
-							$filter_name = SucomUtil::sanitize_hookname( 'wpsso_schema_type_for_post_type_unknown_type' );
 						}
+					}
 
-					} else {	// Post objects without a post_type property.
+					if ( empty( $type_id ) ) {	// Just in case.
 
 						$type_id = $this->get_schema_type_id_for_name( 'page' );
-
-						$filter_name = SucomUtil::sanitize_hookname( 'wpsso_schema_type_for_post_type_empty_type' );
 					}
 
 				} elseif ( $mod[ 'is_term' ] ) {
 
-					if ( ! empty( $mod[ 'tax_slug' ] ) ) {
+					if ( ! empty( $mod[ 'tax_slug' ] ) ) {	// Just in case.
 
 						$type_id = $this->get_schema_type_id_for_name( 'tax_' . $mod[ 'tax_slug' ] );
 					}
@@ -720,33 +639,30 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				} elseif ( $mod[ 'is_archive' ] ) {
 
 					$type_id = $this->get_schema_type_id_for_name( 'archive_page' );
-
-				} else {	// Everything else.
-
-					$type_id = $default_key;
 				}
-
-				if ( $filter_name ) {
+			
+				if ( empty( $type_id ) ) {	// Just in case.
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'applying ' . $filter_name . ' filters for type id "' . $type_id . '"' );
+						$this->p->debug->log( 'unable to determine schema type id (using default)' );
 					}
 
-					$type_id = apply_filters( $filter_name, $type_id, $mod );
+					$type_id = 'webpage';
 				}
-
-				unset( $filter_name );
 			}
-
-			$filter_name = SucomUtil::sanitize_hookname( 'wpsso_schema_type_id' );
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'applying ' . $filter_name . ' filters for type id "' . $type_id . '"' );
+				$this->p->debug->log( 'schema type id before filter: ' . $type_id );
 			}
 
-			$type_id = apply_filters( 'wpsso_schema_type_id', $type_id, $mod, $is_custom );
+			$type_id = apply_filters( 'wpsso_schema_type', $type_id, $mod, $is_custom );
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'schema type id after filter: ' . $type_id );
+			}
 
 			$get_value = false;
 
@@ -768,14 +684,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'returning false: schema type id "' . $type_id . '" is unknown' );
+					$this->p->debug->log( 'returning false: schema type id ' . $type_id . ' is unknown' );
 				}
 
 			} elseif ( ! $get_id ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'returning schema type url "' . $schema_types[ $type_id ] . '"' );
+					$this->p->debug->log( 'returning schema type url: ' . $schema_types[ $type_id ] );
 				}
 
 				$get_value = $schema_types[ $type_id ];
@@ -784,7 +700,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'returning schema type id "' . $type_id . '"' );
+					$this->p->debug->log( 'returning schema type id: ' . $type_id );
 				}
 
 				$get_value = $type_id;
@@ -1388,7 +1304,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
-		 * Returns an array of schema type IDs for a given type URL.
+		 * Returns an array of schema type id for a given type URL.
 		 */
 		public function get_schema_type_url_ids( $type_url ) {
 
@@ -1408,7 +1324,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
-		 * Returns the first schema type ID for a given type URL.
+		 * Returns the first schema type id for a given type URL.
 		 */
 		public function get_schema_type_url_id( $type_url, $default_id = false ) {
 
@@ -3581,7 +3497,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( ! empty( $json_data[ $prop_name ] ) ) {
 
 				/**
-				 * Numeric category IDs are expected to be Google product type IDs.
+				 * Numeric category IDs are expected to be Google product type id.
 				 *
 				 * See https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt.
 				 */
@@ -3902,7 +3818,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 				/**
-				 * Maybe remove an anchor ID from the begining of the type ID string.
+				 * Maybe remove an anchor ID from the begining of the type id string.
 				 */
 				if ( 0 === strpos( $type_id, $id_anchor ) ) {
 
@@ -3923,7 +3839,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 				/**
-				 * Check if we already have the type ID in the URL.
+				 * Check if we already have the type id in the URL.
 				 */
 				if ( false === strpos( $id_url, $id_anchor . $type_id ) ) {
 

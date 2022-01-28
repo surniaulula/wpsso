@@ -15,7 +15,7 @@
  * Requires At Least: 5.2
  * Tested Up To: 5.9.0
  * WC Tested Up To: 6.1.1
- * Version: 9.16.0-dev.2
+ * Version: 9.16.0-dev.3
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -565,34 +565,40 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 		public function get_const_status( $const_suffix ) {
 
-			$const_name = '';
+			$const_name = $this->get_const_name( $const_suffix );
 
-			if ( is_admin() && defined( 'WPSSO_ADMIN_' . $const_suffix ) ) {
-
-				$const_name = 'WPSSO_ADMIN_' . $const_suffix;
-
-			} elseif ( defined( 'WPSSO_' . $const_suffix ) ) {
-
-				$const_name = 'WPSSO_' . $const_suffix;
-
-			} else {
-			
-				return null;	// Constant not defined.
-			}
-
-			return constant( $const_name ) ? true : false;	// Return a boolean value.
+			return $const_name ? constant( $const_name ) : null;
 		}
 
 		public function get_const_status_transl( $const_suffix ) {
 
-			$const_val = $this->get_const_status( $const_suffix );
+			$const_name = $this->get_const_name( $const_suffix );
 
-			if ( $const_val ) {
+			if ( null !== $const_name ) {
 
-				return sprintf( _x( '%s constant is true', 'option comment', 'wpsso' ), $const_name );
+				if ( constant( $const_name ) ) {
+
+					return sprintf( _x( '%s constant is true', 'option comment', 'wpsso' ), $const_name );
+				}
+
+				return sprintf( _x( '%s constant is false', 'option comment', 'wpsso' ), $const_name );
 			}
 
-			return sprintf( _x( '%s constant is false', 'option comment', 'wpsso' ), $const_name );
+			return '';
+		}
+
+		public function get_const_name( $const_suffix ) {
+
+			if ( is_admin() && defined( 'WPSSO_ADMIN_' . $const_suffix ) ) {
+
+				return 'WPSSO_ADMIN_' . $const_suffix;
+
+			} elseif ( defined( 'WPSSO_' . $const_suffix ) ) {
+
+				return 'WPSSO_' . $const_suffix;
+			}
+
+			return null;	// Constant not defined.
 		}
 
 		public function get_lib_classnames( $type_dir ) {

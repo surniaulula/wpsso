@@ -228,7 +228,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipOpenGraph' ) ) {
 
 					break;
 
-				case 'tooltip-og_type_for_archive_page':	// Type for Other Archive.
+				case 'tooltip-og_type_for_archive_page':	// Type for Archive Page.
 
 					$def_type = $this->p->opt->get_defaults( 'og_type_for_archive_page' );
 

@@ -211,19 +211,7 @@
 
 'wpsso_og_seed' ( $og, $mod )
 
-'wpsso_og_type_for_default' ( 'website', $mod )
-
-'wpsso_og_type_for_home_page' ( $type_id, $mod )
-
-'wpsso_og_type_for_home_posts' ( $type_id, $mod )
-
-'wpsso_og_type_for_post_type_archive_page' ( $type_id, $mod )
-
-'wpsso_og_type_for_post_type_empty_type' ( $type_id, $mod )
-
-'wpsso_og_type_for_post_type_unknown_type' ( $type_id, $mod )
-
-'wpsso_og_type' ( $og_type, $mod, $is_custom )
+'wpsso_og_type' ( $type_id, $mod, $is_custom )
 
 'wpsso_option_type' ( false, $base_key, $network, $mod )
 
@@ -287,21 +275,7 @@
 
 'wpsso_save_user_options' ( $opts, $term_id, false, $mod )
 
-'wpsso_schema_type_for_default' ( $type_id = 'webpage', $mod )
-
-'wpsso_schema_type_for_home_page' ( $type_id, $mod )
-
-'wpsso_schema_type_for_home_posts' ( $type_id, $mod )
-
-'wpsso_schema_type_for_post_type_{post_type}' ( $type_id, $mod )
-
-'wpsso_schema_type_for_post_type_archive_page' ( $type_id, $mod )
-
-'wpsso_schema_type_for_post_type_empty_type' ( $type_id, $mod )
-
-'wpsso_schema_type_for_post_type_unknown_type' ( $type_id, $mod )
-
-'wpsso_schema_type_id' ( $type_id, $mod, $is_custom )
+'wpsso_schema_type' ( $type_id, $mod, $is_custom )
 
 'wpsso_schema_types' ( (array) $schema_types )
 
