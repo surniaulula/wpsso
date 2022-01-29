@@ -254,8 +254,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 9.16.0-dev.7 (2022/01/29)**
 
 * **New Features**
-	* Added a new SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Default Text tab.
-	* Added post type archive title and description text options under the new Default Text tab (when post type archives are available).
+	* Added a new SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Default Text tab with post type archive title and description text options (when post type archives are available).
 * **Improvements**
 	* Moved the SSO &gt; Social Pages &gt; Social and Search Sites metabox to the SSO &gt; General Settings page and removed SSO &gt; Social Pages from the menu.
 	* Removed the SSO &gt; General Settings &gt; Social and Search Sites &gt; Facebook &gt; Author Profile URL Field option.
@@ -264,6 +263,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Refactored several `Wpsso` class methods.
 	* Refactored the `WpssoTerm->get_public_ids()` method.
+	* Refactored the `SucomUtil::get_locale()` method.
 	* Refactored the `SucomUtilWP::get_post_types()` method.
 	* Refactored the `SucomUtilWP::get_taxonomies()` method.
 	* Refactored the `SucomUtilWP::get_post_type_labels()` method.
@@ -903,7 +903,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 = 9.16.0-dev.7 =
 
-(2022/01/29) Moved the SSO &gt; Social Pages &gt; Social and Search Sites metabox to the SSO &gt; General Settings page.
+(2022/01/29) Added a new SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Default Text tab with post type archive title and description text options (when post type archives are available).
 
 = 9.15.0 =
 
