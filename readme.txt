@@ -251,13 +251,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.16.0-dev.5 (2022/01/27)**
+**Version 9.16.0-dev.6 (2022/01/29)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Added a new SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Default Text tab.
 	* Moved the SSO &gt; Social Pages &gt; Social and Search Sites metabox to the SSO &gt; General Settings page and removed SSO &gt; Social Pages from the menu.
+	* Removed the SSO &gt; General Settings &gt; Social and Search Sites &gt; Facebook &gt; Author Profile URL Field option.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -898,9 +899,9 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 9.16.0-dev.5 =
+= 9.16.0-dev.6 =
 
-(2022/01/27) Moved the SSO &gt; Social Pages &gt; Social and Search Sites metabox to the SSO &gt; General Settings page.
+(2022/01/29) Moved the SSO &gt; Social Pages &gt; Social and Search Sites metabox to the SSO &gt; General Settings page.
 
 = 9.15.0 =
 
