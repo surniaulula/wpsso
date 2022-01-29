@@ -251,12 +251,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.16.0-dev.6 (2022/01/29)**
+**Version 9.16.0-dev.7 (2022/01/29)**
 
 * **New Features**
-	* None.
-* **Improvements**
 	* Added a new SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Default Text tab.
+	* Added post type archive title and description text options under the new Default Text tab (when post type archives are available).
+* **Improvements**
 	* Moved the SSO &gt; Social Pages &gt; Social and Search Sites metabox to the SSO &gt; General Settings page and removed SSO &gt; Social Pages from the menu.
 	* Removed the SSO &gt; General Settings &gt; Social and Search Sites &gt; Facebook &gt; Author Profile URL Field option.
 * **Bugfixes**
@@ -274,6 +274,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new `WpssoAdmin->init_check_options()` method (hooked to the 'admin_init' action).
 	* Added a new `WpssoUtil->add_post_type_archive_names()` method.
 	* Added a new `WpssoSchema->get_default_schema_type_name_for()` method.
+	* Added a new `WpssoOptions->set_default_text()` method.
+	* Added a new `WpssoOptions->get_text()` method.
 	* Renamed the `WpssoSchema->get_schema_type_id_for_name()` method to `get_schema_type_id_for()`.
 	* Renamed filters:
 		* 'wpsso_schema_type_id' to 'wpsso_schema_type'
@@ -899,7 +901,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 9.16.0-dev.6 =
+= 9.16.0-dev.7 =
 
 (2022/01/29) Moved the SSO &gt; Social Pages &gt; Social and Search Sites metabox to the SSO &gt; General Settings page.
 
