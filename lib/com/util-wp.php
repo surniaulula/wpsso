@@ -1542,10 +1542,17 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		 */
 		public static function get_post_types( $output = 'objects', $sort = false, $args = null ) {
 
-			if ( null === $args ) {
+			$def_args = array( 'public' => true, 'show_ui' => true );
 
-				$args = array( 'public' => true, 'show_ui' => true );
-			}
+			if ( null === $args ) {
+			
+				$args = $def_args;
+
+			} elseif ( is_array( $args ) ) {
+
+				$args = array_merge( $def_args, $args );
+
+			} else return array();
 
 			$operator = 'and';
 
@@ -1559,9 +1566,6 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 				} else {
 
-					/**
-					 * Sort an associative array in ascending order (and maintain index association).
-					 */
 					asort( $post_types );
 				}
 			}
@@ -1598,26 +1602,46 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $values;
 		}
 
+		/**
+		 * Note that 'has_archive' = 1 will not match post types registered with a string in 'has_archive'.
+		 *
+		 * Use 'has_archive' = true to include the WooCommerce product archive page (ie. 'has_archive' = 'shop').
+		 */
+		public static function get_post_type_archives( $output = 'objects', $sort = false, $args = null ) {
+
+			if ( ! is_array( $args ) ) {
+			
+				$args = array();
+			}
+
+			if ( empty( $args[ 'has_archive' ] ) || 1 === $args[ 'has_archive' ] ) {
+			
+				$args[ 'has_archive' ] = true;
+			}
+
+			return self::get_post_types( $output, $sort, $args );
+		}
+
 		public static function get_post_type_archive_labels( $val_prefix = '', $label_prefix = '' ) {
 
-			/**
-			 * Note that 'has_archive' = 1 will not match post types registered with a string in 'has_archive'.
-			 *
-			 * Use 'has_archive' = true to include the WooCommerce product archive page (ie. 'has_archive' = 'shop').
-			 */
-			$args = array( 'public' => true, 'show_ui' => true, 'has_archive' => true );
-
-			$objects = self::get_post_types( $output = 'objects', $sort = true, $args );
+			$objects = self::get_post_type_archives( $output = 'objects' );
 
 			return self::get_post_type_labels( $val_prefix, $label_prefix, $objects );
 		}
 
 		public static function get_taxonomies( $output = 'objects', $sort = false, $args = null ) {
 
-			if ( null === $args ) {
+			$def_args = array( 'public' => true, 'show_ui' => true );
 
-				$args = array( 'public' => true, 'show_ui' => true );
-			}
+			if ( null === $args ) {
+			
+				$args = $def_args;
+
+			} elseif ( is_array( $args ) ) {
+
+				$args = array_merge( $def_args, $args );
+
+			} else return array();
 
 			$operator = 'and';
 
@@ -1631,9 +1655,6 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 				} else {
 
-					/**
-					 * Sort an associative array in ascending order (and maintain index association).
-					 */
 					asort( $post_types );
 				}
 			}

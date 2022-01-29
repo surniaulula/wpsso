@@ -137,42 +137,42 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		);
 
 		private static $mod_defaults = array(
-			'id'                   => 0,		// Post, term, or user ID.
-			'name'                 => false,	// Module name ('post', 'term', or 'user').
-			'name_transl'          => false,	// Module name translated.
-			'obj'                  => false,	// Module object.
-			'query_vars'           => array(),	// Defined by WpssoPage->get_mod().
-			'max_num_pages'        => 0,		// Defined by WpssoPage->get_mod().
-			'is_404'               => false,
-			'is_archive'           => false,
-			'is_attachment'        => false,	// Post type is 'attachment'.
-			'is_comment'           => false,	// Is comment module.
-			'is_date'              => false,
-			'is_day'               => false,
-			'is_home'              => false,	// Home page (static or blog archive).
-			'is_home_page'         => false,	// Static front page (singular post).
-			'is_home_posts'        => false,	// Static posts page or blog archive page.
-			'is_month'             => false,
-			'is_post'              => false,	// Is post module.
-			'is_post_type_archive' => false,	// Post is an archive.
-			'is_public'            => true,
-			'is_search'            => false,
-			'is_term'              => false,	// Is term module.
-			'is_user'              => false,	// Is user module.
-			'is_year'              => false,
-			'use_post'             => false,
-			'post_slug'            => false,	// Post name (aka slug).
-			'post_type'            => false,	// Post type name.
-			'post_type_label'      => false,	// Post type singular name.
-			'post_mime'            => false,	// Post mime type (ie. image/jpg).
-			'post_status'          => false,	// Post status name.
-			'post_author'          => false,	// Post author id.
-			'post_coauthors'       => array(),
-			'post_time'            => false,	// Post published time (ISO 8601 date or false).
-			'post_modified_time'   => false,	// Post modified time (ISO 8601 date or false).
-			'term_tax_id'          => false,
-			'tax_slug'             => '',
-			'tax_label'            => false,	// Taxonomy singular name.
+			'id'                     => 0,		// Post, term, or user ID.
+			'name'                   => false,	// Module name ('post', 'term', or 'user').
+			'name_transl'            => false,	// Module name translated.
+			'obj'                    => false,	// Module object.
+			'query_vars'             => array(),	// Defined by WpssoPage->get_mod().
+			'max_num_pages'          => 0,		// Defined by WpssoPage->get_mod().
+			'is_404'                 => false,
+			'is_archive'             => false,
+			'is_attachment'          => false,	// Post type is 'attachment'.
+			'is_comment'             => false,	// Is comment module.
+			'is_date'                => false,
+			'is_day'                 => false,
+			'is_home'                => false,	// Home page (static or blog archive).
+			'is_home_page'           => false,	// Static front page (singular post).
+			'is_home_posts'          => false,	// Static posts page or blog archive page.
+			'is_month'               => false,
+			'is_post'                => false,	// Is post module.
+			'is_post_type_archive'   => false,	// Post is an archive.
+			'is_public'              => true,
+			'is_search'              => false,
+			'is_term'                => false,	// Is term module.
+			'is_user'                => false,	// Is user module.
+			'is_year'                => false,
+			'use_post'               => false,
+			'post_slug'              => false,	// Post name (aka slug).
+			'post_type'              => false,	// Post type name.
+			'post_type_label_single' => false,	// Post type singular name.
+			'post_mime'              => false,	// Post mime type (ie. image/jpg).
+			'post_status'            => false,	// Post status name.
+			'post_author'            => false,	// Post author id.
+			'post_coauthors'         => array(),
+			'post_time'              => false,	// Post published time (ISO 8601 date or false).
+			'post_modified_time'     => false,	// Post modified time (ISO 8601 date or false).
+			'term_tax_id'            => false,
+			'tax_slug'               => '',
+			'tax_label_single'       => false,	// Taxonomy singular name.
 		);
 
 		public function __construct( &$plugin ) {
@@ -275,8 +275,8 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 				$opts =& $this->p->options;		// Shortcut variable name.
 
-				$def_og_type         = $this->p->og->get_mod_og_type_id( $mod, $use_mod_opts = false );
-				$def_schema_type     = $this->p->schema->get_mod_schema_type_id( $mod, $use_mod_opts = false );
+				$def_og_type         = $this->p->og->get_mod_og_type_id( $mod, $use_md_opts = false );
+				$def_schema_type     = $this->p->schema->get_mod_schema_type_id( $mod, $use_md_opts = false );
 				$def_primary_term_id = $this->p->post->get_default_term_id( $mod, $tax_slug = 'category' );	// Returns term ID or false.
 				$def_reading_mins    = $this->p->page->get_reading_mins( $mod );
 				$def_img_id_lib      = empty( $opts[ 'og_def_img_id_lib' ] ) ? '' : $opts[ 'og_def_img_id_lib' ];

@@ -514,14 +514,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 *
 		 * Returns the schema type id.
 		 */
-		public function get_mod_schema_type_id( array $mod, $use_mod_opts = true ) {
+		public function get_mod_schema_type_id( array $mod, $use_md_opts = true ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
 			}
 
-			return $this->get_mod_schema_type( $mod, $get_id = true, $use_mod_opts );
+			return $this->get_mod_schema_type( $mod, $get_id = true, $use_md_opts );
 		}
 
 		/**
@@ -529,14 +529,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 *
 		 * Returns the schema type URL.
 		 */
-		public function get_mod_schema_type_url( array $mod, $use_mod_opts = true ) {
+		public function get_mod_schema_type_url( array $mod, $use_md_opts = true ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
 			}
 
-			return $this->get_mod_schema_type( $mod, $get_id = false, $use_mod_opts );
+			return $this->get_mod_schema_type( $mod, $get_id = false, $use_md_opts );
 		}
 
 		/**
@@ -546,7 +546,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 * 
 		 * Use $get_id = false to return the schema type URL instead of the ID.
 		 */
-		public function get_mod_schema_type( array $mod, $get_id = true, $use_mod_opts = true ) {
+		public function get_mod_schema_type( array $mod, $get_id = true, $use_md_opts = true ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -564,7 +564,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 */
 			if ( $mod[ 'obj' ] && $mod[ 'id' ] ) {
 
-				$cache_salt = SucomUtil::get_mod_salt( $mod ) . '_get_id:' . (string) $get_id . '_opts:' . (string) $use_mod_opts;
+				$cache_salt = SucomUtil::get_mod_salt( $mod ) . '_get_id:' . (string) $get_id . '_opts:' . (string) $use_md_opts;
 
 				if ( isset( $local_cache[ $cache_salt ] ) ) {
 
@@ -579,7 +579,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/**
 			 * Maybe get a custom schema type id from the post, term, or user meta.
 			 */
-			if ( $use_mod_opts ) {
+			if ( $use_md_opts ) {
 
 				if ( $mod[ 'obj' ] && $mod[ 'id' ] ) {	// Just in case.
 

@@ -257,19 +257,19 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					if ( is_object( $post_type_obj ) ) {	// Just in case.
 
-						$mod[ 'is_post_type_archive' ] = SucomUtil::is_post_type_archive( $post_type_obj, $mod[ 'post_slug' ] );
-
-						$mod[ 'is_archive' ] = $mod[ 'is_post_type_archive' ];
-
 						if ( isset( $post_type_obj->labels->singular_name ) ) {
 
-							$mod[ 'post_type_label' ] = $post_type_obj->labels->singular_name;
+							$mod[ 'post_type_label_single' ] = $post_type_obj->labels->singular_name;
 						}
 
 						if ( isset( $post_type_obj->public ) ) {
 
 							$mod[ 'is_public' ] = $post_type_obj->public ? true : false;
 						}
+
+						$mod[ 'is_post_type_archive' ] = SucomUtil::is_post_type_archive( $post_type_obj, $mod[ 'post_slug' ] );
+
+						$mod[ 'is_archive' ] = $mod[ 'is_post_type_archive' ];
 					}
 
 					/**

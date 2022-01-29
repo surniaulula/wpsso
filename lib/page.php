@@ -440,25 +440,25 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 							$mod[ 'post_type' ] = $mod[ 'query_vars' ][ 'post_type' ];
 
-							if ( is_post_type_archive() ) {
+							$post_type_obj = get_post_type_object( $mod[ 'post_type' ] );
 
-								$mod[ 'is_post_type_archive' ] = true;
+							if ( is_object( $post_type_obj ) ) {	// Just in case.
 
-								$mod[ 'is_archive' ] = $mod[ 'is_post_type_archive' ];
+								if ( isset( $post_type_obj->labels->singular_name ) ) {
 
-								$post_type_obj = get_post_type_object( $mod[ 'post_type' ] );
+									$mod[ 'post_type_label_single' ] = $post_type_obj->labels->singular_name;
+								}
 
-								if ( is_object( $post_type_obj ) ) {	// Just in case.
+								if ( isset( $post_type_obj->public ) ) {
 
-									if ( isset( $post_type_obj->labels->singular_name ) ) {
+									$mod[ 'is_public' ] = $post_type_obj->public ? true : false;
+								}
 
-										$mod[ 'post_type_label' ] = $post_type_obj->labels->singular_name;
-									}
+								if ( is_post_type_archive() ) {
 
-									if ( isset( $post_type_obj->public ) ) {
+									$mod[ 'is_post_type_archive' ] = true;
 
-										$mod[ 'is_public' ] = $post_type_obj->public ? true : false;
-									}
+									$mod[ 'is_archive' ] = $mod[ 'is_post_type_archive' ];
 								}
 							}
 						}
@@ -1242,12 +1242,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$this->p->debug->log( 'description is empty - using generic description text' );
 				}
 
-				$desc_text = SucomUtil::get_key_value( 'plugin_no_desc_text', $this->p->options );
-
-				if ( empty( $desc_text ) ) {	// Just in case.
-
-					$desc_text = _x( 'No Description.', 'default description', 'wpsso' );
-				}
+				$desc_text = $this->p->opt->get_no_desc_text();
 			}
 
 			/**
@@ -1403,13 +1398,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					$post_type_obj = get_post_type_object( $mod[ 'post_type' ] );
 
-					if ( ! empty( $post_type_obj->labels->menu_name ) ) {
+					if ( ! empty( $post_type_obj->label ) ) {
 
-						$title_text = $post_type_obj->labels->menu_name;
-
-					} elseif ( ! empty( $post_type_obj->name ) ) {
-
-						$title_text = $post_type_obj->name;
+						$title_text = $post_type_obj->label;
 					}
 
 				} elseif ( $mod[ 'id' ] ) {
@@ -1512,12 +1503,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$this->p->debug->log( 'title is empty - using generic title text' );
 				}
 
-				$title_text = SucomUtil::get_key_value( 'plugin_no_title_text', $this->p->options );
-
-				if ( empty( $title_text ) ) {	// Just in case.
-
-					$title_text = _x( 'No Title', 'default title', 'wpsso' );
-				}
+				$title_text = $this->p->opt->get_no_title_text();
 			}
 
 			if ( ! $filter_title ) {

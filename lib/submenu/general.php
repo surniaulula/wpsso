@@ -293,11 +293,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 							$css_class = '', $css_id = 'fb_locale' ) . 
 						'<td>' . $this->form->get_select_locale( 'fb_locale', SucomUtil::get_publisher_languages( 'facebook' ) ) . '</td>';
 
-					$table_rows[ 'fb_author_field' ] = $this->form->get_tr_hide( 'basic', 'fb_author_field' ) . 
-						$this->form->get_th_html( _x( 'Author Profile URL Field', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'fb_author_field' ) . 
-						'<td>' . $this->form->get_select( 'fb_author_field', $user_contacts ) . '</td>';
-
 					$table_rows[ 'fb_app_id' ] = $this->form->get_tr_hide( 'basic', 'fb_app_id' ) .
 						$this->form->get_th_html( _x( 'Facebook Application ID', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'fb_app_id' ) . 

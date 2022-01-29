@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.16.0-dev.5',	// Plugin version.
-					'opt_version' => '862',		// Increment when changing default option values.
+					'version'     => '9.16.0-dev.6',	// Plugin version.
+					'opt_version' => '865',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1209,7 +1209,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Facebook options.
 					 */
 					'fb_publisher_url' => '',			// Facebook Business Page URL (localized).
-					'fb_author_field'  => 'facebook',		// Author Profile URL Field.
 					'fb_app_id'        => '966242223397117',	// Facebook Application ID.
 					'fb_locale'        => 'en_US',			// Facebook Locale.
 
@@ -1648,6 +1647,22 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 					/**
 					 * WP List Table Columns: Schema Type.
+					 */
+					'plugin_schema_type_name_col_attachment'        => 0,
+					'plugin_schema_type_name_col_download'          => 0,	// For Easy Digital Downloads.
+					'plugin_schema_type_name_col_page'              => 0,
+					'plugin_schema_type_name_col_post'              => 0,
+					'plugin_schema_type_name_col_product'           => 0,	// For WooCommerce.
+					'plugin_schema_type_name_col_tax_category'      => 0,
+					'plugin_schema_type_name_col_tax_faq_category'  => 0,
+					'plugin_schema_type_name_col_tax_link_category' => 0,
+					'plugin_schema_type_name_col_tax_post_tag'      => 0,
+					'plugin_schema_type_name_col_tax_product_cat'   => 0,	// For WooCommerce.
+					'plugin_schema_type_name_col_tax_product_tag'   => 0,	// For WooCommerce.
+					'plugin_schema_type_name_col_user_page'         => 0,
+
+					/**
+					 * WP List Table Columns: Schema ID.
 					 */
 					'plugin_schema_type_col_attachment'        => 0,
 					'plugin_schema_type_col_download'          => 0,	// For Easy Digital Downloads.

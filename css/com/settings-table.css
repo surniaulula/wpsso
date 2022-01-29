@@ -629,7 +629,7 @@ table.sucom-settings td.blank input[type="text"],
 table.sucom-settings td.blank select,
 table.sucom-settings td.blank textarea {
 	font-size:1em;
-	color:#999;
+	color:#ccc;
 	background-color:#f9f9f9;
 	-webkit-box-sizing:border-box;
 	-moz-box-sizing:border-box;
@@ -856,6 +856,7 @@ table.sucom-settings td.checkbox,
 table.sucom-settings th.checkbox,
 table.sucom-settings td.checkbox.blank {
 	text-align:center;
+	padding:0;
 }
 
 table.sucom-settings th.checkbox.left {
@@ -863,8 +864,8 @@ table.sucom-settings th.checkbox.left {
 }
 
 table.sucom-settings td.checkbox.blank {
-	width:25px;
-	min-width:25px;
+	width:22px;
+	min-width:22px;
 }
 
 table.sucom-settings th.option_col {

@@ -194,7 +194,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 				if ( isset( $tax_obj->labels->singular_name ) ) {
 
-					$mod[ 'tax_label' ] = $tax_obj->labels->singular_name;
+					$mod[ 'tax_label_single' ] = $tax_obj->labels->singular_name;
 				}
 
 				if ( isset( $tax_obj->public ) ) {

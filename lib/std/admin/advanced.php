@@ -29,7 +29,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$this->p->util->add_plugin_filters( $this, array(
 				'plugin_integration_rows'         => 3,	// Plugin Settings > Integration tab.
-				'plugin_def_text_rows'            => 2,	// Plugin Settings > Default Text tab.
+				'plugin_default_text_rows'        => 2,	// Plugin Settings > Default Text tab.
 				'plugin_image_sizes_rows'         => 2,	// Plugin Settings > Image Sizes tab.
 				'plugin_interface_rows'           => 2,	// Plugin Settings > Interface tab.
 				'services_media_rows'             => 2,	// Service APIs > Media Services tab.
@@ -205,7 +205,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		/**
 		 * Plugin Settings > Default Text tab.
 		 */
-		public function filter_plugin_def_text_rows( $table_rows, $form ) {
+		public function filter_plugin_default_text_rows( $table_rows, $form ) {
 
 			$table_rows[ 'plugin_img_alt_prefix' ] = '' .
 				$form->get_th_html_locale( _x( 'Content Image Alt Prefix', 'option label', 'wpsso' ),
@@ -226,6 +226,39 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$form->get_th_html_locale( _x( 'No Description Text', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_no_desc_text' ) . 
 				'<td class="blank">' . $form->get_no_input_locale( 'plugin_no_desc_text', $css_class = 'medium' ) . '</td>';
+
+			$post_type_archives = SucomUtilWP::get_post_type_archives( $output = 'objects', $sort = true );
+
+			if ( ! empty( $post_type_archives ) ) {
+
+				$table_rows[ 'subsection_post_type_archives' ] = '' .
+					'<td colspan="2" class="subsection"><h4>' . _x( 'Post Type Archives', 'metabox title', 'wpsso' ) . '</h4></td>';
+
+				foreach ( $post_type_archives as $post_type_obj ) {
+
+					$title_label    = isset( $post_type_obj->label ) ? $post_type_obj->label : $post_type_obj->name;
+					$title_key      = 'plugin_pta_' . $post_type_obj->name . '_title';
+					$desc_key       = 'plugin_pta_' . $post_type_obj->name . '_desc';
+
+					$def_title_text = empty( $post_type_obj->label ) ?
+						$this->p->opt->get_no_title_text() : $post_type_obj->label;
+
+					$def_desc_text  = empty( $post_type_obj->description ) ?	// The post type object may not have a description.
+						$this->p->opt->get_no_desc_text() : $post_type_obj->description;
+
+					$table_rows[ $title_key ] = '' .
+						$form->get_th_html_locale( sprintf( _x( '%s Archive Title', 'option label', 'wpsso' ), $title_label ),
+							$css_class = '', $title_key ) .
+						'<td class="blank">' . $form->get_no_input_locale( $title_key, $css_class = 'wide', $css_id = '',
+							$len = 0, $def_title_text ) . '</td>';
+
+					$table_rows[ $desc_key ] = '' . 
+						$form->get_th_html_locale( sprintf( _x( '%s Archive Description', 'option label', 'wpsso' ), $title_label ),
+							$css_class = '', $desc_key ) . 
+						'<td class="blank">' . $form->get_no_textarea_locale( $desc_key, $css_class = '', $css_id = '',
+							$len = 0, $def_desc_text ) . '</td>';
+				}
+			}
 
 			return $table_rows;
 		}
@@ -322,12 +355,12 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$table_rows[ 'plugin_og_types_select_format' ] = $form->get_tr_hide( 'basic', 'plugin_og_types_select_format' ) .
 				$form->get_th_html( _x( 'Open Graph Type Select Format', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_og_types_select_format' ) . 
-				'<td>' . $form->get_no_select( 'plugin_og_types_select_format', $this->p->cf[ 'form' ][ 'og_schema_types_select_format' ] ) . '</td>';
+				'<td class="blank">' . $form->get_no_select( 'plugin_og_types_select_format', $this->p->cf[ 'form' ][ 'og_schema_types_select_format' ] ) . '</td>';
 
 			$table_rows[ 'plugin_schema_types_select_format' ] = $form->get_tr_hide( 'basic', 'plugin_schema_types_select_format' ) .
 				$form->get_th_html( _x( 'Schema Type Select Format', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_schema_types_select_format' ) . 
-				'<td>' . $form->get_no_select( 'plugin_schema_types_select_format', $this->p->cf[ 'form' ][ 'og_schema_types_select_format' ] ) . '</td>';
+				'<td class="blank">' . $form->get_no_select( 'plugin_schema_types_select_format', $this->p->cf[ 'form' ][ 'og_schema_types_select_format' ] ) . '</td>';
 
 			return $table_rows;
 		}

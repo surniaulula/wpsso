@@ -100,6 +100,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				$local_cache[ 'opt_filtered' ] = 1;
 
+				//SucomUtil::set_key_locale( 'plugin_no_desc_text', $this->get_no_desc_text( $use_opts = false ), $local_cache, $mixed = 'default' );
+
 				/**
 				 * Complete the options array for any custom post types and/or custom taxonomies.
 				 */
@@ -124,11 +126,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					$local_cache[ $locale_key ] = $this->p->og->get_fb_locale( array(), 'current' );
 				}
-
-				/**
-				 * Maybe use a custom value from the SSO > Advanced settings page.
-				 */
-				$local_cache[ 'fb_author_field' ] = $this->p->options[ 'plugin_cm_fb_name' ];
 
 				/**
 				 * Maybe import metadata from known SEO plugins.
@@ -1045,12 +1042,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			foreach ( $col_headers as $col_key => $col_header ) {
 
+				$opt_prefix = 'plugin_' . $col_key . '_col';
+
 				/**
 				 * Show the Open Graph Image column for post types by default.
 				 */
 				$def_val = 'og_img' === $col_key ? 1 : 0;
 
-				$opt_prefixes[ 'plugin_' . $col_key . '_col' ] = $def_val;
+				$opt_prefixes[ $opt_prefix ] = $def_val;
 			}
 
 			/**
@@ -1084,12 +1083,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			foreach ( $col_headers as $col_key => $col_header ) {
 
+				$opt_prefix = 'plugin_' . $col_key . '_col_tax';
+
 				/**
 				 * Show the Open Graph Image and Description columns for taxonomies by default.
 				 */
 				$def_val = 'og_img' === $col_key || 'og_desc' === $col_key ? 1 : 0;
 
-				$opt_prefixes[ 'plugin_' . $col_key . '_col_tax' ] = $def_val;
+				$opt_prefixes[ $opt_prefix ] = $def_val;
 			}
 
 			/**
@@ -1663,6 +1664,54 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			_deprecated_function( __METHOD__ . '()', '2020/07/07', $replacement = 'WpssoOptions::is_cache_allowed()' );	// Deprecation message.
 
 			return self::is_cache_allowed();
+		}
+
+		public function get_no_desc_text( $use_opts = true ) {
+
+			$desc_text = '';
+
+			if ( $use_opts && ! empty( $this->p->options ) ) {
+
+				$desc_text = SucomUtil::get_key_value( 'plugin_no_desc_text', $this->p->options, 'current' );	// Value for current or default locale.
+			}
+
+			if ( empty( $desc_text ) ) {
+
+				if ( ! $use_opts ) {	// Get translation for the default locale.
+
+					$locale     = SucomUtil::get_locale( 'current' );	// Uses a static cache.
+					$def_locale = SucomUtil::get_locale( 'default' );	// Uses a static cache.
+
+					if ( $locale !== $def_locale ) {
+
+						switch_to_locale( $def_locale );
+					}
+				}
+
+				$desc_text = _x( 'No Description.', 'option value', 'wpsso' );
+
+				if ( ! $use_opts ) {	// Restore the default locale.
+
+					if ( $locale !== $def_locale ) {
+					
+						restore_previous_locale();
+					}
+				}
+			}
+
+			return $desc_text;
+		}
+
+		public function get_no_title_text( $use_opts = true ) {
+
+			$title_text = $use_opts ? SucomUtil::get_key_value( 'plugin_no_title_text', $this->p->options ) : '';
+
+			if ( empty( $title_text ) ) {
+
+				$title_text = _x( 'No Title', 'option value', 'wpsso' );
+			}
+
+			return $title_text;
 		}
 	}
 }

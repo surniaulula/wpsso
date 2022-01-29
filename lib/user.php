@@ -1529,12 +1529,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$user_ids = array( $user_ids );
 			}
 
-			if ( empty( $meta_key ) ) {
-
-				$meta_key = $this->p->options[ 'fb_author_field' ];	// Provide a default value.
-			}
-
-			if ( ! empty( $meta_key ) && 'none' !== $meta_key ) {	// Just in case.
+			if ( $meta_key && 'none' !== $meta_key ) {	// Just in case.
 
 				foreach ( $user_ids as $user_id ) {
 
@@ -1624,12 +1619,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				$website_url = trim( $website_url );	// Just in case.
 
-			} else {
+			} elseif ( $this->p->debug->enabled ) {
 
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'user id ' . $user_id . ' is not a WordPress user' );
-				}
+				$this->p->debug->log( 'user id ' . $user_id . ' is not a WordPress user' );
 			}
 
 			$website_url = apply_filters( 'wpsso_get_author_website', $website_url, $user_id, $meta_key, $user_exists );

@@ -229,7 +229,7 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\f2c2";	/* .icon-id-card */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_def_text::before {		/* SSO > Advanced Settings > Plugin Settings > Default Text tab. */
+.sucom-tablink-icon.sucom-tablink-href_default_text::before {		/* SSO > Advanced Settings > Plugin Settings > Default Text tab. */
 	content:"\e809";	/* .icon-edit */
 }
 

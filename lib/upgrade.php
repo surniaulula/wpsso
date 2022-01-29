@@ -422,7 +422,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'plugin_shopperapproved_for_product'  => 'plugin_ratings_reviews_for_product',	// Renamed on 2021/06/24.
 				),
 				798 => array(
-					'og_author_field' => 'fb_author_field',	// Renamed on 2021/07/01.
+					'og_author_field' => '',	// Renamed on 2021/07/01, then deleted on 2022/01/29.
 				),
 				800 => array(
 					'plugin_apiresp_cache_exp'   => '',
@@ -515,9 +515,10 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'plugin_wpseo_social_meta' => 'plugin_import_wpseo_meta',	// Renamed on 2022/01/14.
 					'plugin_wpseo_show_import' => '',				// Deprecated on 2022/01/15.
 				),
-				860 => array(
-					'og_type_for_post_archive'     => '',
+				864 => array(
+					'og_type_for_post_archive'     => '',	
 					'schema_type_for_post_archive' => '',
+					'fb_author_field'              => '',	// Deleted on 2022/01/29.
 				),
 			),
 		);

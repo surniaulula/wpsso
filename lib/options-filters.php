@@ -435,7 +435,6 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				 */
 				case 'site_org_place_id':		// Example: 'none' or place ID.
 				case 'site_org_schema_type':		// Example: 'organization' or a sub-type.
-				case 'fb_author_field':
 				case 'og_def_article_section':
 				case 'og_def_product_category':
 				case 'og_def_country':

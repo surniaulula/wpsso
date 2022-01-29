@@ -906,20 +906,15 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * Add options using a key prefix string / array and post type names.
+		 * Add options using a key prefix array and post type names.
 		 */
 		public function add_post_type_names( array &$opts, array $opt_prefixes, $args = null ) {
 
-			if ( null === $args ) {
-
-				$args = array( 'public' => true, 'show_ui' => true );
-			}
-
 			foreach ( $opt_prefixes as $opt_prefix => $def_val ) {
 
-				$post_type_names = SucomUtilWP::get_post_types( $output = 'names', $sort = false, $args );
+				$names = SucomUtilWP::get_post_types( $output = 'names', $sort = false, $args );
 
-				foreach ( $post_type_names as $opt_suffix ) {
+				foreach ( $names as $opt_suffix ) {
 
 					$opt_key = $opt_prefix . '_' . $opt_suffix;
 
@@ -933,38 +928,30 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $opts;
 		}
 
-		public function add_post_type_archive_names( array &$opts, array $opt_prefixes, $args = null ) {
+		/**
+		 * Add options using a key prefix array and post type archive names.
+		 *
+		 * Note that 'has_archive' = 1 will not match post types registered with a string in 'has_archive'.
+		 *
+		 * Use 'has_archive' = true to include the WooCommerce product archive page (ie. 'has_archive' = 'shop').
+		 */
+		public function add_post_type_archive_names( array &$opts, array $opt_prefixes ) {
 
-			if ( null === $args ) {
-
-				$args = array( 'public' => true, 'show_ui' => true );
-			}
-
-			/**
-			 * Note that 'has_archive' = 1 will not match post types registered with a string in 'has_archive'.
-			 *
-			 * Use 'has_archive' = true to include the WooCommerce product archive page (ie. 'has_archive' = 'shop').
-			 */
-			$args[ 'has_archive' ] = true;
+			$args = array( 'has_archive' => true );
 
 			return $this->add_post_type_names( $opts, $opt_prefixes, $args );
 		}
 
 		/**
-		 * Add options using a key prefix string / array and term names.
+		 * Add options using a key prefix array and taxonomy names.
 		 */
-		public function add_taxonomy_names( array &$opts, array $opt_prefixes, $args = null ) {
-
-			if ( null === $args ) {
-
-				$args = array( 'public' => true, 'show_ui' => true );
-			}
+		public function add_taxonomy_names( array &$opts, array $opt_prefixes ) {
 
 			foreach ( $opt_prefixes as $opt_prefix => $def_val ) {
 
-				$taxonomy_names = SucomUtilWP::get_taxonomies( $output = 'names', $sort = false, $args );
+				$names = SucomUtilWP::get_taxonomies( $output = 'names' );
 
-				foreach ( $taxonomy_names as $opt_suffix ) {
+				foreach ( $names as $opt_suffix ) {
 
 					$opt_key = $opt_prefix . '_' . $opt_suffix;
 
@@ -3541,13 +3528,13 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				return $this->p->notice->set_ref( $canonical_url, $mod, $msg_transl );
 			}
 
-			if ( $mod[ 'is_post' ] && $mod[ 'post_type_label' ] ) {
+			if ( $mod[ 'is_post' ] && $mod[ 'post_type_label_single' ] ) {
 
-				$name_transl = mb_strtolower( $mod[ 'post_type_label' ] );
+				$name_transl = mb_strtolower( $mod[ 'post_type_label_single' ] );
 
-			} elseif ( $mod[ 'is_term' ] && $mod[ 'tax_label' ] ) {
+			} elseif ( $mod[ 'is_term' ] && $mod[ 'tax_label_single' ] ) {
 
-				$name_transl = mb_strtolower( $mod[ 'tax_label' ] );
+				$name_transl = mb_strtolower( $mod[ 'tax_label_single' ] );
 
 			} else {
 

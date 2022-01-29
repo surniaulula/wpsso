@@ -2428,7 +2428,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		/**
 		 * Returns an option value or null.
 		 *
-		 * Note that for non-existing keys or empty strings, this methods will return the default non-localized value.
+		 * Note that for non-existing keys or empty strings, this methods returns the default non-localized value.
 		 *
 		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 */
@@ -2452,7 +2452,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				}
 
 				return $val_locale;
-
 			}
 
 			return $val_locale;
@@ -2474,25 +2473,27 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function get_key_locale( $key, $opts = false, $mixed = 'current' ) {
 
-			/**
-			 * Remove any pre-existing locale value.
-			 */
-			if ( false !== ( $pos = strpos( $key, '#' ) ) ) {
+			if ( false !== ( $pos = strpos( $key, '#' ) ) ) {	// Maybe remove pre-existing locale.
 
 				$key = substr( $key, 0, $pos );
 			}
 
-			$default    = self::get_locale( 'default' );	// Uses a static cache.
 			$locale     = self::get_locale( $mixed );	// Uses a static cache.
-			$key_locale = $key . '#' . $locale;
+			$def_locale = self::get_locale( 'default' );	// Uses a static cache.
+			$key_locale = $key . '#' . $locale;		// Maybe add the current or default locale.
 
-			/**
-			 * The default language for the WordPress site may have changed in the past, so if we're using the default,
-			 * check for a locale version of the default language.
-			 */
-			if ( $locale === $default ) {
+			if ( $locale === $def_locale ) {
 
-				return isset( $opts[ $key_locale ] ) ? $key_locale : $key;
+				/**
+				 * The default language for the WordPress site may have changed in the past, so if we're using the
+				 * default, check for a locale version of the default language.
+				 */
+				if ( isset( $opts[ $key_locale ] ) ) {
+				
+					return $key_locale;
+				}
+				
+				return $key;
 			}
 
 			return $key_locale;
@@ -2500,10 +2501,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_multi_key_locale( $prefix, array &$opts, $add_none = false ) {
 
-			$current = self::get_locale();			// Uses a static cache.
-			$default = self::get_locale( 'default' );	// Uses a static cache.
-			$matches = self::preg_grep_keys( '/^' . $prefix . '_([0-9]+)(#.*)?$/', $opts );
-			$results = array();
+			$current    = self::get_locale();		// Uses a static cache.
+			$def_locale = self::get_locale( 'default' );	// Uses a static cache.
+			$matches    = self::preg_grep_keys( '/^' . $prefix . '_([0-9]+)(#.*)?$/', $opts );
+			$results    = array();
 
 			foreach ( $matches as $key => $value ) {
 
@@ -2517,9 +2518,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 					$results[ $num ] = $opts[ $prefix . '_' . $num . '#' . $current ];
 
-				} elseif ( ! empty( $opts[ $prefix . '_' . $num . '#' . $default ] ) ) { // Default locale.
+				} elseif ( ! empty( $opts[ $prefix . '_' . $num . '#' . $def_locale ] ) ) { // Default locale.
 
-					$results[ $num ] = $opts[ $prefix . '_' . $num . '#' . $default ];
+					$results[ $num ] = $opts[ $prefix . '_' . $num . '#' . $def_locale ];
 
 				} elseif ( ! empty( $opts[ $prefix . '_' . $num ] ) ) { // No locale.
 
@@ -2575,16 +2576,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					$locale = WPLANG;
 				}
 
+				/**
+				 * The database 'WPLANG' values override the 'WPLANG' constant.
+				 */
 				if ( is_multisite() ) {
 
-					if ( ( $ms_locale = get_option( 'WPLANG' ) ) === false ) {
+					if ( ( $multisite_locale = get_option( 'WPLANG' ) ) === false ) {
 
-						$ms_locale = get_site_option( 'WPLANG' );
+						$multisite_locale = get_site_option( 'WPLANG' );
 					}
 
-					if ( false !== $ms_locale ) {
+					if ( false !== $multisite_locale ) {
 
-						$locale = $ms_locale;
+						$locale = $multisite_locale;
 					}
 
 				} else {
@@ -2597,17 +2601,27 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					}
 				}
 
-				if ( empty( $locale ) ) {
+			} elseif ( 'current' === $mixed ) {
 
-					$locale = 'en_US';	// Just in case.
+				$locale = is_admin() ? get_user_locale() : get_locale();
+
+			} elseif ( 'user' === $mixed ) {
+
+				$locale = get_user_locale();
+
+			} elseif ( is_string( $mixed ) ) {
+			
+				$locale_names = self::get_available_locale_names();	// Uses a local static cache.
+
+				if ( isset( $locale_names[ $mixed ] ) ) {
+
+					$locale = $mixed;
 				}
+			}
 
-			} else {
+			if ( empty( $locale ) ) {	// Just in case.
 
-				/**
-				 * get_user_locale() is available since WP v4.7.0, so make sure it exists before calling it. :)
-				 */
-				$locale = is_admin() && function_exists( 'get_user_locale' ) ? get_user_locale() : get_locale();
+				$locale = 'en_US';
 			}
 
 			/**
@@ -2639,7 +2653,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			require_once trailingslashit( ABSPATH ) . 'wp-admin/includes/translation-install.php';
 
 			$translations  = wp_get_available_translations();	// Since WP v4.0.
-			$avail_locales = self::get_available_locales();
+			$avail_locales = self::get_available_locales();	// Uses a local static cache.
 			$local_cache   = array();
 
 			foreach ( $avail_locales as $locale ) {
@@ -2675,16 +2689,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			$local_cache = get_available_languages();
-
-			$default_locale = self::get_locale( 'default' );	// Uses a static cache.
+			$def_locale  = self::get_locale( 'default' );	// Uses a static cache.
 
 			if ( ! is_array( $local_cache ) ) {	// Just in case.
 
-				$local_cache = array( $default_locale );
+				$local_cache = array( $def_locale );
 
-			} elseif ( ! in_array( $default_locale, $local_cache ) ) {	// Just in case.
+			} elseif ( ! in_array( $def_locale, $local_cache ) ) {	// Just in case.
 
-				$local_cache[] = $default_locale;
+				$local_cache[] = $def_locale;
 			}
 
 			sort( $local_cache );

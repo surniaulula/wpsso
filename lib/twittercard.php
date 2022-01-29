@@ -132,7 +132,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 		 *		'tc_lrg',
 		 *	)
 		 */
-		public function get_card_info( $mixed, array $head_tags = array(), $use_mod_opts = true ) {
+		public function get_card_info( $mixed, array $head_tags = array(), $use_md_opts = true ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -175,7 +175,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				/**
 				 * Maybe override the default with a custom card type.
 				 */
-				if ( ! empty( $mixed[ 'obj' ] ) && $use_mod_opts ) {
+				if ( ! empty( $mixed[ 'obj' ] ) && $use_md_opts ) {
 
 					$md_card_type = $mixed[ 'obj' ]->get_options( $mixed[ 'id' ], 'tc_type' );	// Returns null if index key not found.
 

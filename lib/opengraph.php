@@ -79,9 +79,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		 *
 		 * Returns the open graph type id.
 		 */
-		public function get_mod_og_type_id( array $mod, $use_mod_opts = true ) {
+		public function get_mod_og_type_id( array $mod, $use_md_opts = true ) {
 
-			return $this->get_mod_og_type( $mod, $get_id = true, $use_mod_opts );
+			return $this->get_mod_og_type( $mod, $get_id = true, $use_md_opts );
 		}
 
 		/**
@@ -89,9 +89,9 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		 *
 		 * Returns the open graph namespace.
 		 */
-		public function get_mod_og_type_ns( array $mod, $use_mod_opts = true ) {
+		public function get_mod_og_type_ns( array $mod, $use_md_opts = true ) {
 
-			return $this->get_mod_og_type( $mod, $get_id = false, $use_mod_opts );
+			return $this->get_mod_og_type( $mod, $get_id = false, $use_md_opts );
 		}
 
 		/**
@@ -103,7 +103,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		 *
 		 * Use $get_id = false to return the open graph namespace instead of the ID.
 		 */
-		public function get_mod_og_type( array $mod, $get_id = true, $use_mod_opts = true ) {
+		public function get_mod_og_type( array $mod, $get_id = true, $use_md_opts = true ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -121,7 +121,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 */
 			if ( $mod[ 'obj' ] && $mod[ 'id' ] ) {
 
-				$cache_salt = SucomUtil::get_mod_salt( $mod ) . '_get_id:' . (string) $get_id . '_opts:' . (string) $use_mod_opts;
+				$cache_salt = SucomUtil::get_mod_salt( $mod ) . '_get_id:' . (string) $get_id . '_opts:' . (string) $use_md_opts;
 
 				if ( isset( $local_cache[ $cache_salt ] ) ) {
 
@@ -136,7 +136,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			/**
 			 * Maybe get a custom open graph type id from the post, term, or user meta.
 			 */
-			if ( $use_mod_opts ) {
+			if ( $use_md_opts ) {
 
 				if ( $mod[ 'obj' ] && $mod[ 'id' ] ) {	// Just in case.
 
@@ -591,8 +591,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						/**
 						 * An array of author URLs.
 						 */
-						$mt_og[ 'article:author' ] = $this->p->user->get_authors_websites( $mod[ 'post_author' ],
-							$this->p->options[ 'fb_author_field' ] );
+						$mt_og[ 'article:author' ] = $this->p->user->get_authors_websites( $mod[ 'post_author' ], $meta_key = 'facebook' );
 
 					} else {
 
@@ -604,8 +603,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					 */
 					if ( ! empty( $mod[ 'post_coauthors' ] ) ) {
 
-						$og_profile_urls = $this->p->user->get_authors_websites( $mod[ 'post_coauthors' ],
-							$this->p->options[ 'fb_author_field' ] );
+						$og_profile_urls = $this->p->user->get_authors_websites( $mod[ 'post_coauthors' ], $meta_key = 'facebook' );
 
 						$mt_og[ 'article:author' ] = array_merge( $mt_og[ 'article:author' ], $og_profile_urls );
 					}
@@ -2191,7 +2189,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					} else {
 
-						$type_id = $this->p->schema->get_mod_schema_type_id( $mod, $use_mod_opts = false );
+						$type_id = $this->p->schema->get_mod_schema_type_id( $mod, $use_md_opts = false );
 					}
 
 					/**
