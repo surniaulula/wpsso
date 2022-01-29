@@ -3254,7 +3254,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				if ( '' === $text_stripped && $use_img_alt && false !== strpos( $text, '<img ' ) ) {
 
 					$alt_text   = '';
-					$alt_prefix = SucomUtil::get_key_value( 'plugin_img_alt_prefix', $this->p->options );
+					$alt_prefix = $this->p->opt->get_text( 'plugin_img_alt_prefix' );
 
 					if ( preg_match_all( '/<img [^>]*alt=["\']([^"\'>]*)["\']/Ui', $text, $all_matches, PREG_PATTERN_ORDER ) ) {
 

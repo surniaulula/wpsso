@@ -100,7 +100,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				$local_cache[ 'opt_filtered' ] = 1;
 
-				//SucomUtil::set_key_locale( 'plugin_no_desc_text', $this->get_no_desc_text( $use_opts = false ), $local_cache, $mixed = 'default' );
+				$this->set_default_text( $local_cache, 'plugin_img_alt_prefix' );	// Content Image Alt Prefix.
+				$this->set_default_text( $local_cache, 'plugin_p_cap_prefix' );		// WP Caption Text Prefix.
+				$this->set_default_text( $local_cache, 'plugin_no_title_text' );	// No Title Text.
+				$this->set_default_text( $local_cache, 'plugin_no_desc_text' );		// No Description Text.
 
 				/**
 				 * Complete the options array for any custom post types and/or custom taxonomies.
@@ -1666,52 +1669,57 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			return self::is_cache_allowed();
 		}
 
-		public function get_no_desc_text( $use_opts = true ) {
+		public function set_default_text( array &$opts, $opt_key ) {
 
-			$desc_text = '';
+			if ( $opt_key && is_string( $opt_key ) ) {	// Just in case.
+
+				$text = $this->get_text( $opt_key, $use_opts = false );
+
+				SucomUtil::set_key_locale( $opt_key, $text, $opts );
+			}
+		}
+		
+		/**
+		 * Returns an option value or null.
+		 *
+		 * $mixed = 'default' | 'current' | post ID | $mod array
+		 */
+		public function get_text( $opt_key, $use_opts = true, $mixed = 'current' ) {
+
+			$text = null;
 
 			if ( $use_opts && ! empty( $this->p->options ) ) {
 
-				$desc_text = SucomUtil::get_key_value( 'plugin_no_desc_text', $this->p->options, 'current' );	// Value for current or default locale.
+				$text = SucomUtil::get_key_value( $opt_key, $this->p->options, $mixed  );	// Returns null if option key does not exist.
 			}
 
-			if ( empty( $desc_text ) ) {
+			if ( null === $text ) {	// Fallback to default text from current locale.
 
-				if ( ! $use_opts ) {	// Get translation for the default locale.
+				switch ( $opt_key ) {
 
-					$locale     = SucomUtil::get_locale( 'current' );	// Uses a static cache.
-					$def_locale = SucomUtil::get_locale( 'default' );	// Uses a static cache.
+					case 'plugin_img_alt_prefix':	// Content Image Alt Prefix.
 
-					if ( $locale !== $def_locale ) {
+						return _x( 'Image:', 'option value', 'wpsso' );
 
-						switch_to_locale( $def_locale );
-					}
-				}
-
-				$desc_text = _x( 'No Description.', 'option value', 'wpsso' );
-
-				if ( ! $use_opts ) {	// Restore the default locale.
-
-					if ( $locale !== $def_locale ) {
+					case 'plugin_p_cap_prefix':	// WP Caption Text Prefix.
 					
-						restore_previous_locale();
-					}
+						return _x( 'Caption:', 'option value', 'wpsso' );
+
+					case 'plugin_no_title_text':	// No Title Text.
+						
+						return _x( 'No Title', 'option value', 'wpsso' );
+
+					case 'plugin_no_desc_text':	// No Description Text.
+					
+						return _x( 'No Description.', 'option value', 'wpsso' );
+
+					default:
+
+						return apply_filters( 'wpsso_get_text_default_options_key', null, $opt_key );
 				}
 			}
 
-			return $desc_text;
-		}
-
-		public function get_no_title_text( $use_opts = true ) {
-
-			$title_text = $use_opts ? SucomUtil::get_key_value( 'plugin_no_title_text', $this->p->options ) : '';
-
-			if ( empty( $title_text ) ) {
-
-				$title_text = _x( 'No Title', 'option value', 'wpsso' );
-			}
-
-			return $title_text;
+			return $text;
 		}
 	}
 }

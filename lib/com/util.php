@@ -2435,26 +2435,25 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function get_key_value( $key, array $opts, $mixed = 'current' ) {
 
 			$key_locale = self::get_key_locale( $key, $opts, $mixed );
-			$val_locale = isset( $opts[ $key_locale ] ) ? $opts[ $key_locale ] : null;
 
-			if ( ! isset( $opts[ $key_locale ] ) || '' === $opts[ $key_locale ] ) {
+			$ret = isset( $opts[ $key_locale ] ) ? $opts[ $key_locale ] : null;	// Null if key does not exist.
 
-				if ( false !== strpos( $key_locale, '#' ) ) {
+			if ( null === $ret || '' === $ret ) {	// Maybe fallback to the default non-localized value.
 
-					$key_default = self::get_key_locale( $key_locale, $opts, 'default' );
-
-					if ( $key_locale !== $key_default ) {
-
-						return isset( $opts[ $key_default ] ) ? $opts[ $key_default ] : $val_locale;
-					}
-
-					return $val_locale;
+				if ( false === strpos( $key_locale, '#' ) ) {	// Option key not localized, return null or empty string.
+				
+					return $ret;
 				}
 
-				return $val_locale;
+				$key_default = self::get_key_locale( $key_locale, $opts, 'default' );
+
+				if ( $key_locale !== $key_default ) {
+
+					return isset( $opts[ $key_default ] ) ? $opts[ $key_default ] : $ret;
+				}
 			}
 
-			return $val_locale;
+			return $ret;
 		}
 
 		public static function set_key_locale( $key, $value, &$opts, $mixed = 'current' ) {
@@ -2552,7 +2551,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function get_locale( $mixed = 'current', $read_cache = true ) {
 
-			$cache_index = is_array( $mixed ) ? $mixed[ 'name' ] . '_' . $mixed[ 'id' ] : $mixed;
+			$cache_index = is_array( $mixed ) ? self::get_mod_salt( $mixed ) : $mixed;
 
 			if ( $read_cache ) {
 
@@ -2601,7 +2600,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					}
 				}
 
-			} elseif ( 'current' === $mixed ) {
+			} elseif ( 'current' === $mixed || is_array( $mixed ) ) {
 
 				$locale = is_admin() ? get_user_locale() : get_locale();
 
@@ -2610,7 +2609,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$locale = get_user_locale();
 
 			} elseif ( is_string( $mixed ) ) {
-			
+
 				$locale_names = self::get_available_locale_names();	// Uses a local static cache.
 
 				if ( isset( $locale_names[ $mixed ] ) ) {

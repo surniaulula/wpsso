@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.16.0-dev.6',	// Plugin version.
+					'version'     => '9.16.0-dev.7',	// Plugin version.
 					'opt_version' => '865',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1743,26 +1743,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_check_img_dims'       => 0,			// Image Dimension Checks.
 					'plugin_upscale_images'       => 0,			// Upscale Media Library Images.
 					'plugin_upscale_pct_max'      => 33,			// Maximum Image Upscale Percent.
-					'plugin_img_alt_prefix'       => 'Image:',		// Content Image Alt Prefix.
-					'plugin_img_alt_prefix#es_ES' => 'Imagen:',		// Content Image Alt Prefix (es_ES).
-					'plugin_img_alt_prefix#fr_BE' => 'Image:',		// Content Image Alt Prefix (fr_BE).
-					'plugin_img_alt_prefix#fr_CA' => 'Image:',		// Content Image Alt Prefix (fr_CA).
-					'plugin_img_alt_prefix#fr_FR' => 'Image:',		// Content Image Alt Prefix (fr_FR).
-					'plugin_p_cap_prefix'         => 'Caption:',		// WP Caption Text Prefix.
-					'plugin_p_cap_prefix#es_ES'   => 'Leyenda:',		// WP Caption Text Prefix (es_ES).
-					'plugin_p_cap_prefix#fr_BE'   => 'Légende:',		// WP Caption Text Prefix (fr_BE).
-					'plugin_p_cap_prefix#fr_CA'   => 'Légende:',		// WP Caption Text Prefix (fr_CA).
-					'plugin_p_cap_prefix#fr_FR'   => 'Légende:',		// WP Caption Text Prefix (fr_FR).
-					'plugin_no_title_text'        => 'No Title',		// No Title Text.
-					'plugin_no_title_text#es_ES'  => 'Sin título',		// No Title Text (es_ES).
-					'plugin_no_title_text#fr_BE'  => 'Aucun titre',		// No Title Text (fr_BE).
-					'plugin_no_title_text#fr_CA'  => 'Aucun titre',		// No Title Text (fr_CA).
-					'plugin_no_title_text#fr_FR'  => 'Aucun titre',		// No Title Text (fr_FR).
-					'plugin_no_desc_text'         => 'No Description.',	// No Description Text.
-					'plugin_no_desc_text#es_ES'   => 'Sin descripción.',	// No Description Text (es_ES).
-					'plugin_no_desc_text#fr_BE'   => 'Aucune description.',	// No Description Text (fr_BE).
-					'plugin_no_desc_text#fr_CA'   => 'Aucune description.',	// No Description Text (fr_CA).
-					'plugin_no_desc_text#fr_FR'   => 'Aucune description.',	// No Description Text (fr_FR).
 
 					/**
 					 * Advanced Settings > Integration tab (Plugin and Theme Integration).

@@ -1101,11 +1101,18 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					if ( $mod[ 'is_post_type_archive' ] ) {	// The post ID may be 0.
 
-						$post_type_obj = get_post_type_object( $mod[ 'post_type' ] );
+						$opt_key = 'plugin_pta_' . $mod[ 'post_type' ] . '_desc';
 
-						if ( ! empty( $post_type_obj->description ) ) {
+						$desc_text = $this->p->opt->get_text( $opt_key );
 
-							$desc_text = $post_type_obj->description;
+						if ( empty( $desc_text ) ) {
+
+							$post_type_obj = get_post_type_object( $mod[ 'post_type' ] );
+
+							if ( ! empty( $post_type_obj->description ) ) {
+
+								$desc_text = $post_type_obj->description;
+							}
 						}
 
 					} else {
@@ -1242,7 +1249,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$this->p->debug->log( 'description is empty - using generic description text' );
 				}
 
-				$desc_text = $this->p->opt->get_no_desc_text();
+				$desc_text = $this->p->opt->get_text( 'plugin_no_desc_text' );
 			}
 
 			/**
@@ -1396,11 +1403,18 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $mod[ 'is_post_type_archive' ] ) {	// The post ID may be 0.
 
-					$post_type_obj = get_post_type_object( $mod[ 'post_type' ] );
+					$opt_key = 'plugin_pta_' . $mod[ 'post_type' ] . '_title';
 
-					if ( ! empty( $post_type_obj->label ) ) {
+					$title_text = $this->p->opt->get_text( $opt_key );
 
-						$title_text = $post_type_obj->label;
+					if ( empty( $title_text ) ) {
+
+						$post_type_obj = get_post_type_object( $mod[ 'post_type' ] );
+
+						if ( ! empty( $post_type_obj->label ) ) {
+
+							$title_text = $post_type_obj->label;
+						}
 					}
 
 				} elseif ( $mod[ 'id' ] ) {
@@ -1503,7 +1517,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$this->p->debug->log( 'title is empty - using generic title text' );
 				}
 
-				$title_text = $this->p->opt->get_no_title_text();
+				$title_text = $this->p->opt->get_text( 'plugin_no_title_text' );	// No Title Text.
 			}
 
 			if ( ! $filter_title ) {
@@ -1809,7 +1823,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( false !== strpos( $content, '<p class="wp-caption-text">' ) ) {
 
-				$caption_prefix = SucomUtil::get_key_value( 'plugin_p_cap_prefix', $this->p->options );
+				$caption_prefix = $this->p->opt->get_text( 'plugin_p_cap_prefix' );
 
 				if ( ! empty( $caption_prefix ) ) {
 

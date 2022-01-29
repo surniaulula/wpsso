@@ -241,10 +241,10 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					$desc_key       = 'plugin_pta_' . $post_type_obj->name . '_desc';
 
 					$def_title_text = empty( $post_type_obj->label ) ?
-						$this->p->opt->get_no_title_text() : $post_type_obj->label;
+						$this->p->opt->get_text( 'plugin_no_title_text' ) : $post_type_obj->label;
 
 					$def_desc_text  = empty( $post_type_obj->description ) ?	// The post type object may not have a description.
-						$this->p->opt->get_no_desc_text() : $post_type_obj->description;
+						$this->p->opt->get_text( 'plugin_no_desc_text' ) : $post_type_obj->description;
 
 					$table_rows[ $title_key ] = '' .
 						$form->get_th_html_locale( sprintf( _x( '%s Archive Title', 'option label', 'wpsso' ), $title_label ),
