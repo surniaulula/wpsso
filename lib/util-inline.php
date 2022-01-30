@@ -46,153 +46,170 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 		 * $atts can be an associative array with additional information ('canonical_url', 'canonical_short_url', 'add_page', etc.).
 		 *
 		 * $extras can be an associative array with key/value pairs to be replaced.
+		 *
+		 * See WpssoHead->add_mt_singles()
+		 * See WpssoPage->get_title()
+		 * See WpssoPage->get_description()
 		 */
-		public function replace_variables( $content, $mod = false, $atts = array(), $extras = array() ) {
+		public function replace_variables( $subject, $mod = false, array $atts = array(), array $extras = array() ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			if ( false === strpos( $subject, '%%' ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: no inline variables in subject string' );
+				}
+
+				return $subject;
+			}
+
+			/**
+			 * The $mod array argument is preferred but not required.
+			 *
+			 * $mod = true | false | post_id | $mod array
+			 */
+			if ( ! is_array( $mod ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
+				}
+
+				$mod = $this->p->page->get_mod( $mod );
+			}
+
+			/**
+			 * Get the default search => replace associative array.
+			 */
+			$vars = $this->get_default_variables( $mod, $atts );
+
+			/**
+			 * Maybe add extra search => replace values.
+			 */
+			if ( ! empty( $extras ) && SucomUtil::is_assoc( $extras ) ) {
+
+				$vars = array_merge( $vars, $extras );
+			}
+
+			/**
+			 * Encode all values for use as URL query arguments.
+			 */
+			if ( ! empty( $atts[ 'rawurlencode' ] ) ) {
+
+				foreach ( $vars as $match => $val ) {
+
+					$vars[ $match ] = rawurlencode( $val );
+				}
+			}
+
+			/**
+			 * Create the str_replace() arguments.
+			 */
+			$search  = array();
+			$replace = array();
+
+			foreach ( $vars as $match => $val ) {
+
+				$search[]  = 0 === strpos( $match, '%%' ) ? $match : '%%' . $match . '%%';
+				$replace[] = $val;
+			}
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_arr( '$atts', $atts );
 				$this->p->debug->log_arr( '$extras', $extras );
+				$this->p->debug->log_arr( '$vars', $vars );
 			}
 
-			if ( false === strpos( $content, '%%' ) ) {
+			unset( $vars );
 
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: no inline vars' );
-				}
-
-				return $content;
-			}
-
-			/**
-			 * The $mod array argument is preferred but not required.
-			 *
-			 * $mod = true | false | post_id | $mod array
-			 */
-			if ( ! is_array( $mod ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
-				}
-
-				$mod = $this->p->page->get_mod( $mod );
-			}
-
-			$variables = $this->get_variables();
-
-			$values = $this->get_values( $mod, $atts );
-
-			if ( ! empty( $extras ) && SucomUtil::is_assoc( $extras ) ) {
-
-				foreach ( $extras as $match => $val ) {
-
-					$variables[] = '%%' . $match . '%%';
-
-					$values[] = $val;
-				}
-			}
-
-			if ( ! empty( $atts[ 'rawurlencode' ] ) ) {
-
-				foreach ( $values as $num => $val ) {
-
-					$values[ $num ] = rawurlencode( $val );
-				}
-			}
-
-			ksort( $variables );
-
-			ksort( $values );
-
-			return str_replace( $variables, $values, $content );
+			return str_replace( $search, $replace, $subject );
 		}
 
+		/**
+		 * Since WPSSO Core v10.0.0.
+		 */
+		public function get_default_variables( array $mod, array $atts ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			static $local_prevent_recursion = false;
+
+			if ( $local_prevent_recursion ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: recursion detected' );
+				}
+
+				return array();
+			}
+
+			$local_prevent_recursion = true;
+
+			$add_page    = isset( $atts[ 'add_page' ] ) ? $atts[ 'add_page' ] : true;
+			$def_sep     = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
+			$sep         = isset( $atts[ 'title_sep' ] ) ? $atts[ 'title_sep' ] : $def_sep;
+			$page_number = $this->u->get_page_number( $mod, $add_page );
+			$page_total  = $this->u->get_page_total( $mod );
+
+			$ret = array(
+				'canonical_url'       => empty( $atts[ 'canonical_url' ] ) ?
+					$this->u->get_canonical_url( $mod, $add_page ) : $atts[ 'canonical_url' ],
+				'canonical_short_url' => empty( $atts[ 'canonical_short_url' ] ) ?
+					$this->u->get_canonical_short_url( $mod, $add_page ) : $atts[ 'canonical_short_url' ],
+				'sharing_url'         => empty( $atts[ 'sharing_url' ] ) ?
+					$this->u->get_sharing_url( $mod, $add_page, $atts ) : $atts[ 'sharing_url' ],
+				'sharing_short_url'   => empty( $atts[ 'sharing_short_url' ] ) ?
+					$this->u->get_sharing_short_url( $mod, $add_page, $atts ) : $atts[ 'sharing_short_url' ],
+				'request_url'         => is_admin() ? $canonical_url : SucomUtil::get_url( $remove_tracking = true ),
+				'sitename'            => SucomUtil::get_site_name( $this->p->options, $mod ),
+				'sitealtname'         => SucomUtil::get_site_name_alt( $this->p->options, $mod ),
+				'sitedesc'            => SucomUtil::get_site_description( $this->p->options, $mod ),
+				'sep'                 => $sep,
+				'title'               => $this->p->page->get_the_title( $mod, $sep ),
+				'pagenumber'          => $page_number,
+				'pagetotal'           => $page_total,
+				'page'                => sprintf( $sep . ' ' . __( 'Page %1$d of %2$d', 'wpsso' ), $page_number, $page_total ),
+				'searchphrase'        => isset( $mod[ 'query_vars' ][ 's' ] ) ? $mod[ 'query_vars' ][ 's' ] : '',
+			);
+
+			/**
+			 * Maintain backwards compatibility for old WPSSO RRSSB templates.
+			 */
+			$ret[ 'short_url' ] = $ret[ 'sharing_short_url' ];
+
+			$local_prevent_recursion = false;
+
+			return $ret;
+		}
+
+		/**
+		 * Deprecated since 2022/01/30.
+		 */
 		public function get_variables() {
 
-			$variables = array(
-				'%%canonical_url%%',
-				'%%canonical_short_url%%',
-				'%%sharing_url%%',
-				'%%sharing_short_url%%',
-				'%%short_url%%',	// Same as %%sharing_short_url%% (required for old WPSSO RRSSB templates).
-				'%%request_url%%',
-				'%%sitename%%',
-				'%%sitealtname%%',
-				'%%sitedesc%%',
-				'%%sep%%',
-				'%%title%%',
-				'%%pagenumber%%',
-				'%%pagetotal%%',
-				'%%page%%',
-			);
+			_deprecated_function( __METHOD__ . '()', '2022/01/30', $replacement = '' );	// Deprecation message.
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log_arr( '$variables', $variables );
-			}
-
-			return $variables;
+			return array();
 		}
 
+		/**
+		 * Deprecated since 2022/01/30.
+		 */
 		public function get_values( $mod = false, $atts = array() ) {
 
-			/**
-			 * The $mod array argument is preferred but not required.
-			 *
-			 * $mod = true | false | post_id | $mod array
-			 */
-			if ( ! is_array( $mod ) ) {
+			_deprecated_function( __METHOD__ . '()', '2022/01/30', $replacement = '' );	// Deprecation message.
 
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
-				}
-
-				$mod = $this->p->page->get_mod( $mod );
-			}
-
-			$add_page            = isset( $atts[ 'add_page' ] ) ? $atts[ 'add_page' ] : true;
-			$title_sep           = isset( $atts[ 'title_sep' ] ) ? $atts[ 'title_sep' ] :
-				html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
-			$canonical_url       = empty( $atts[ 'canonical_url' ] ) ? $this->u->get_canonical_url( $mod, $add_page ) : $atts[ 'canonical_url' ];
-			$canonical_short_url = empty( $atts[ 'canonical_short_url' ] ) ? $this->u->get_canonical_short_url( $mod, $add_page ) : $atts[ 'canonical_short_url' ];
-			$sharing_url         = empty( $atts[ 'sharing_url' ] ) ? $this->u->get_sharing_url( $mod, $add_page, $atts ) : $atts[ 'sharing_url' ];
-			$sharing_short_url   = empty( $atts[ 'sharing_short_url' ] ) ? $this->u->get_sharing_short_url( $mod, $add_page, $atts ) : $atts[ 'sharing_short_url' ];
-			$request_url         = is_admin() ? $canonical_url : SucomUtil::get_url( $remove_tracking = true );
-			$sitename            = SucomUtil::get_site_name( $this->p->options, $mod );
-			$sitealtname         = SucomUtil::get_site_name_alt( $this->p->options, $mod );
-			$sitedesc            = SucomUtil::get_site_description( $this->p->options, $mod );
-			$title               = $this->p->page->get_the_title( $mod, $title_sep );
-			$page_number         = $this->u->get_page_number( $mod, $add_page );
-			$page_total          = $this->u->get_page_total( $mod );
-			$page                = sprintf( $title_sep . ' ' . __( 'Page %1$d of %2$d', 'wpsso' ), $page_number, $page_total );
-
-			$values = array(
-				$canonical_url,		// %%canonical_url%%
-				$canonical_short_url,	// %%canonical_short_url%%
-				$sharing_url,		// %%sharing_url%%
-				$sharing_short_url,	// %%sharing_short_url%%
-				$sharing_short_url,	// %%short_url%% (required for old WPSSO RRSSB templates).
-				$request_url,		// %%request_url%%
-				$sitename,		// %%sitename%%
-				$sitealtname,		// %%sitealtname%%
-				$sitedesc,		// %%sitedesc%%
-				$title_sep,		// %%sep%%
-				$title,			// %%title%%
-				$page_number,		// %%pagenumber%%
-				$page_total,		// %%pagetotal%%
-				$page,			// %%page%%
-			);
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log_arr( '$values', $values );
-			}
-
-			return $values;
+			return array();
 		}
 	}
 }

@@ -173,11 +173,11 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeProduct' ) ) {
 			/**
 			 * Prevent recursion for an itemOffered within a Schema Offer.
 			 */
-			static $local_recursion = false;
+			static $local_prevent_recursion = false;
 
-			if ( ! $local_recursion ) {
+			if ( ! $local_prevent_recursion ) {
 
-				$local_recursion = true;
+				$local_prevent_recursion = true;
 
 				/**
 				 * Property:
@@ -227,7 +227,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeProduct' ) ) {
 					}
 				}
 
-				$local_recursion = false;
+				$local_prevent_recursion = false;
 
 			} else {
 

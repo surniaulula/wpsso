@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '9.16.0-dev.7',	// Plugin version.
-					'opt_version' => '865',		// Increment when changing default option values.
+					'version'     => '10.0.0-dev.8',	// Plugin version.
+					'opt_version' => '866',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1731,18 +1731,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings > Integration tab.
 					 */
-					'plugin_document_title'       => 'wp_title',		// Webpage Document Title.
-					'plugin_filter_title'         => 0,			// Use Filtered "SEO" Title.
-					'plugin_filter_content'       => 0,			// Use Filtered Content.
-					'plugin_filter_excerpt'       => 0,			// Use Filtered Excerpt.
-					'plugin_page_excerpt'         => 0,			// Enable Excerpt for Pages.
-					'plugin_page_tags'            => 0,			// Enable Tags for Pages.
-					'plugin_new_user_is_person'   => 0,			// Add Person Role for New Users.
-					'plugin_inherit_featured'     => 1,			// Inherit Featured Image.
-					'plugin_inherit_custom'       => 1,			// Inherit Custom Images.
-					'plugin_check_img_dims'       => 0,			// Image Dimension Checks.
-					'plugin_upscale_images'       => 0,			// Upscale Media Library Images.
-					'plugin_upscale_pct_max'      => 33,			// Maximum Image Upscale Percent.
+					'plugin_document_title'     => 'wp_title',		// Webpage Document Title.
+					'plugin_filter_title'       => 0,			// Use Filtered "SEO" Title.
+					'plugin_filter_content'     => 0,			// Use Filtered Content.
+					'plugin_filter_excerpt'     => 0,			// Use Filtered Excerpt.
+					'plugin_page_excerpt'       => 0,			// Enable Excerpt for Pages.
+					'plugin_page_tags'          => 0,			// Enable Tags for Pages.
+					'plugin_new_user_is_person' => 0,			// Add Person Role for New Users.
+					'plugin_inherit_featured'   => 1,			// Inherit Featured Image.
+					'plugin_inherit_custom'     => 1,			// Inherit Custom Images.
+					'plugin_check_img_dims'     => 0,			// Image Dimension Checks.
+					'plugin_upscale_images'     => 0,			// Upscale Media Library Images.
+					'plugin_upscale_pct_max'    => 33,			// Maximum Image Upscale Percent.
 
 					/**
 					 * Advanced Settings > Integration tab (Plugin and Theme Integration).
@@ -2452,7 +2452,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'tz'         => 'tz',
 				),
 				'document_title' => array(	// Webpage Document Title.
-					'wp_title'         => '[WordPress Title]',
+					'wp_title'         => '[Default WordPress Title]',
 					'og_title'         => 'Document SSO Default Title',
 					'schema_title'     => 'Document SSO Schema Name / Title',
 					'schema_title_alt' => 'Document SSO Schema Alternate Name',

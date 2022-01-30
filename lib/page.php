@@ -136,10 +136,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$title_prov = empty( $this->p->options[ 'plugin_document_title' ] ) ?
-				'wp_title' : $this->p->options[ 'plugin_document_title' ];
+			$title_source = empty( $this->p->options[ 'plugin_document_title' ] ) ? 'wp_title' : $this->p->options[ 'plugin_document_title' ];
 
-			if ( 'wp_title' === $title_prov ) {	// Nothing to do.
+			if ( 'wp_title' === $title_source ) {	// Nothing to do.
 
 				return $title;
 			}
@@ -153,7 +152,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$mod = $this->p->page->get_mod( $use_post );
 
-			switch ( $title_prov ) {
+			switch ( $title_source ) {
 
 				case 'og_title':
 
@@ -184,7 +183,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'returning ' . $title_prov . ' = ' . $title );
+				$this->p->debug->log( 'returning ' . $title_source . ' = ' . $title );
 			}
 
 			return $title;
@@ -920,9 +919,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( false !== strpos( $title_text, '%%' ) ) {
 
-				$title_text = $this->p->util->inline->replace_variables( $title_text, $mod, $atts = array(
-					'title_sep' => $title_sep,
-				) );
+				$title_text = $this->p->util->inline->replace_variables( $title_text, $mod, $atts = array( 'title_sep' => $title_sep ) );
 			}
 
 			/**
@@ -941,7 +938,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						$pagesuffix .= ' ' . $title_sep;
 					}
 
-					$pagesuffix .= ' ' . sprintf( 'Page %s', $paged );
+					$pagesuffix .= ' ' . sprintf( __( 'Page %s', 'wpsso' ), $paged );
 				}
 			}
 
@@ -1101,9 +1098,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					if ( $mod[ 'is_post_type_archive' ] ) {	// The post ID may be 0.
 
-						$opt_key = 'plugin_pta_' . $mod[ 'post_type' ] . '_desc';
-
-						$desc_text = $this->p->opt->get_text( $opt_key );
+						$desc_text = $this->p->opt->get_text( 'plugin_pta_' . $mod[ 'post_type' ] . '_desc' );
 
 						if ( empty( $desc_text ) ) {
 
@@ -1207,6 +1202,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				} elseif ( $mod[ 'is_search' ] ) {
 
+					// translators: %s is the search query.
 					$desc_text = sprintf( __( 'Search Results for &#8220;%s&#8221;' ), esc_attr( $mod[ 'query_vars' ][ 's' ] ) );
 
 				} elseif ( $mod[ 'is_archive' ] ) {
@@ -1403,9 +1399,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $mod[ 'is_post_type_archive' ] ) {	// The post ID may be 0.
 
-					$opt_key = 'plugin_pta_' . $mod[ 'post_type' ] . '_title';
-
-					$title_text = $this->p->opt->get_text( $opt_key );
+					$title_text = $this->p->opt->get_text( 'plugin_pta_' . $mod[ 'post_type' ] . '_title' );
 
 					if ( empty( $title_text ) ) {
 
@@ -1481,7 +1475,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			} elseif ( $mod[ 'is_search' ] ) {
 
-				$title_text = sprintf( __( 'Search Results %1$s %2$s' ), $title_sep, esc_attr( $mod[ 'query_vars' ][ 's' ] ) );
+				$title_text = $this->p->opt->get_text( 'plugin_search_page_title' );
 
 			} elseif ( $mod[ 'is_archive' ] ) {
 

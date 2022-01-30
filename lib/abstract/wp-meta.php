@@ -2080,9 +2080,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			$mod_salt = SucomUtil::get_mod_salt( $mod );
 
-			static $local_no_recursion = array();
+			static $local_prevent_recursion = array();
 
-			if ( isset( $local_no_recursion[ $mod_salt ][ $meta_key ] ) ) {
+			if ( isset( $local_prevent_recursion[ $mod_salt ][ $meta_key ] ) ) {
 
 				return $value;	// Return null.
 			}
@@ -2091,7 +2091,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			if ( ! empty( $col_info ) ) {
 
-				$local_no_recursion[ $mod_salt ][ $meta_key ] = true;	// Prevent recursion.
+				$local_prevent_recursion[ $mod_salt ][ $meta_key ] = true;	// Prevent recursion.
 
 				$metadata = static::get_meta( $obj_id, $meta_key, $single = true );	// Use static method from child.
 
@@ -2116,7 +2116,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					$this->get_head_info( $mod, $read_cache = true );
 				}
 
-				unset( $local_no_recursion[ $mod_salt ][ $meta_key ] );
+				unset( $local_prevent_recursion[ $mod_salt ][ $meta_key ] );
 			}
 
 			return $value;

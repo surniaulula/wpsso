@@ -82,7 +82,9 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$table_rows[ 'plugin_document_title' ] = '' .
 				$form->get_th_html( _x( 'Webpage Document Title', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_document_title' ) .
-				'<td class="blank">' . $form->get_no_select( 'plugin_document_title',  $doc_title_source ) . $doc_title_disabled_msg . '</td>' .
+				'<td class="blank">' . $form->get_no_select( 'plugin_document_title', $doc_title_source,
+					$css_class = 'long_name', $css_id = '', $is_assoc = true ) .
+				$doc_title_disabled_msg . '</td>' .
 				WpssoAdmin::get_option_site_use( 'plugin_document_title', $form, $network );
 
 			$table_rows[ 'plugin_filter_title' ] = '' . 
@@ -227,6 +229,11 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					$css_class = '', $css_id = 'plugin_no_desc_text' ) . 
 				'<td class="blank">' . $form->get_no_input_locale( 'plugin_no_desc_text', $css_class = 'medium' ) . '</td>';
 
+			$table_rows[ 'plugin_search_page_title' ] = '' .
+				$form->get_th_html_locale( _x( 'Search Results Page Title', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_search_page_title' ) . 
+				'<td class="blank">' . $form->get_no_input_locale( 'plugin_search_page_title', $css_class = 'wide' ) . '</td>';
+
 			$post_type_archives = SucomUtilWP::get_post_type_archives( $output = 'objects', $sort = true );
 
 			if ( ! empty( $post_type_archives ) ) {
@@ -234,11 +241,16 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$table_rows[ 'subsection_post_type_archives' ] = '' .
 					'<td colspan="2" class="subsection"><h4>' . _x( 'Post Type Archives', 'metabox title', 'wpsso' ) . '</h4></td>';
 
-				foreach ( $post_type_archives as $post_type_obj ) {
+				foreach ( $post_type_archives as $num => $post_type_obj ) {
 
-					$title_label    = isset( $post_type_obj->label ) ? $post_type_obj->label : $post_type_obj->name;
-					$title_key      = 'plugin_pta_' . $post_type_obj->name . '_title';
-					$desc_key       = 'plugin_pta_' . $post_type_obj->name . '_desc';
+					$obj_label   = sprintf( __( '%s Archive Page', 'wpsso' ), SucomUtilWP::get_object_label( $post_type_obj ) );
+					$title_label = isset( $post_type_obj->label ) ? $post_type_obj->label : $post_type_obj->name;
+					$title_key   = 'plugin_pta_' . $post_type_obj->name . '_title';
+					$desc_key    = 'plugin_pta_' . $post_type_obj->name . '_desc';
+
+					$table_rows[ 'subsection_pta_' . $post_type_obj->name ] = '' .
+						'<td colspan="2" class="subsection' . ( $num ? '' : ' top' ) . '">' .
+						'<h5>' . $obj_label . '</h4></td>';
 
 					$def_title_text = empty( $post_type_obj->label ) ?
 						$this->p->opt->get_text( 'plugin_no_title_text' ) : $post_type_obj->label;
@@ -247,13 +259,13 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 						$this->p->opt->get_text( 'plugin_no_desc_text' ) : $post_type_obj->description;
 
 					$table_rows[ $title_key ] = '' .
-						$form->get_th_html_locale( sprintf( _x( '%s Archive Title', 'option label', 'wpsso' ), $title_label ),
+						$form->get_th_html_locale( _x( 'Archive Page Title', 'option label', 'wpsso' ),
 							$css_class = '', $title_key ) .
 						'<td class="blank">' . $form->get_no_input_locale( $title_key, $css_class = 'wide', $css_id = '',
 							$len = 0, $def_title_text ) . '</td>';
 
 					$table_rows[ $desc_key ] = '' . 
-						$form->get_th_html_locale( sprintf( _x( '%s Archive Description', 'option label', 'wpsso' ), $title_label ),
+						$form->get_th_html_locale( _x( 'Archive Page Description', 'option label', 'wpsso' ),
 							$css_class = '', $desc_key ) . 
 						'<td class="blank">' . $form->get_no_textarea_locale( $desc_key, $css_class = '', $css_id = '',
 							$len = 0, $def_desc_text ) . '</td>';

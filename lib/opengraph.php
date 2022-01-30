@@ -1735,7 +1735,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					/**
 					 * Use $title_sep = false to avoid adding parent names in the term title.
 					 */
-					$title_sep  = false;	// Do not add a separator.
+					$title_sep = false;	// Do not add a separator.
 
 					$category_names[ $parent_term_id ][ $term_id ] = $this->p->page->get_title( $max_len = 0,
 						$dots = '', $term_mod, $read_cache = true, $add_hashtags = false, $do_encode = true,

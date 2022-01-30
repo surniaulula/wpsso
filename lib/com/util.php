@@ -2440,15 +2440,19 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( null === $ret || '' === $ret ) {	// Maybe fallback to the default non-localized value.
 
-				if ( false === strpos( $key_locale, '#' ) ) {	// Option key not localized, return null or empty string.
+				if ( false === strpos( $key_locale, '#' ) ) {	// The option key not localized, return null or empty string.
 				
 					return $ret;
 				}
 
 				$key_default = self::get_key_locale( $key_locale, $opts, 'default' );
 
-				if ( $key_locale !== $key_default ) {
+				if ( $key_locale !== $key_default ) {	// The option key is localized and it's not the default locale.
 
+					/**
+					 * If the $key_locale value is an empty string, and $key_default does not exist, then
+					 * return the emty string.
+					 */
 					return isset( $opts[ $key_default ] ) ? $opts[ $key_default ] : $ret;
 				}
 			}

@@ -163,7 +163,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 				return $content;	// Stop here.
 			}
 
-			static $local_recursion = array();	// Use a static variable to prevent recursion.
+			static $local_prevent_recursion = array();	// Use a static variable to prevent recursion.
 
 			$use_post = apply_filters( 'wpsso_use_post', in_the_loop() ? true : false );
 
@@ -176,7 +176,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 
 			$cache_salt = SucomUtil::get_mod_salt( $mod );
 
-			if ( ! empty( $local_recursion[ $cache_salt ] ) ) {	// Check for recursion.
+			if ( ! empty( $local_prevent_recursion[ $cache_salt ] ) ) {	// Check for recursion.
 
 				if ( $this->p->debug->enabled ) {
 
@@ -187,7 +187,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 
 			}
 
-			$local_recursion[ $cache_salt ] = true;
+			$local_prevent_recursion[ $cache_salt ] = true;
 
 			$size_name = 'wpsso-pinterest';
 
@@ -239,7 +239,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 				$this->p->debug->log( 'done' );
 			}
 
-			unset( $local_recursion[ $cache_salt ] );
+			unset( $local_prevent_recursion[ $cache_salt ] );
 
 			return $image_html . $content;
 		}

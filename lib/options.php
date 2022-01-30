@@ -104,6 +104,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$this->set_default_text( $local_cache, 'plugin_p_cap_prefix' );		// WP Caption Text Prefix.
 				$this->set_default_text( $local_cache, 'plugin_no_title_text' );	// No Title Text.
 				$this->set_default_text( $local_cache, 'plugin_no_desc_text' );		// No Description Text.
+				$this->set_default_text( $local_cache, 'plugin_search_page_title' );	// Search Results Page Title.
 
 				/**
 				 * Complete the options array for any custom post types and/or custom taxonomies.
@@ -1697,21 +1698,25 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				switch ( $opt_key ) {
 
-					case 'plugin_img_alt_prefix':	// Content Image Alt Prefix.
+					case 'plugin_img_alt_prefix':		// Content Image Alt Prefix.
 
 						return _x( 'Image:', 'option value', 'wpsso' );
 
-					case 'plugin_p_cap_prefix':	// WP Caption Text Prefix.
+					case 'plugin_p_cap_prefix':		// WP Caption Text Prefix.
 					
 						return _x( 'Caption:', 'option value', 'wpsso' );
 
-					case 'plugin_no_title_text':	// No Title Text.
+					case 'plugin_no_title_text':		// No Title Text.
 						
 						return _x( 'No Title', 'option value', 'wpsso' );
 
-					case 'plugin_no_desc_text':	// No Description Text.
+					case 'plugin_no_desc_text':		// No Description Text.
 					
 						return _x( 'No Description.', 'option value', 'wpsso' );
+
+					case 'plugin_search_page_title':	// Search Results Page Title.
+
+						return _x( 'Search Results %%sep%% %%searchphrase%%', 'option value', 'wpsso' );
 
 					default:
 
