@@ -104,7 +104,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$this->set_default_text( $local_cache, 'plugin_p_cap_prefix' );		// WP Caption Text Prefix.
 				$this->set_default_text( $local_cache, 'plugin_no_title_text' );	// No Title Text.
 				$this->set_default_text( $local_cache, 'plugin_no_desc_text' );		// No Description Text.
-				$this->set_default_text( $local_cache, 'plugin_search_page_title' );	// Search Results Page Title.
+				$this->set_default_text( $local_cache, 'plugin_search_page_title' );	// Search Results Title.
+				$this->set_default_text( $local_cache, 'plugin_search_page_desc' );	// Search Results Description.
+				$this->set_default_text( $local_cache, 'plugin_year_page_title' );	// Year Archive Title.
+				$this->set_default_text( $local_cache, 'plugin_year_page_desc' );	// Year Archive Description.
+				$this->set_default_text( $local_cache, 'plugin_month_page_title' );	// Month Archive Title.
+				$this->set_default_text( $local_cache, 'plugin_month_page_desc' );	// Month Archive Description.
+				$this->set_default_text( $local_cache, 'plugin_day_page_title' );	// Day Archive Title.
+				$this->set_default_text( $local_cache, 'plugin_day_page_desc' );	// Day Archive Description.
 
 				/**
 				 * Complete the options array for any custom post types and/or custom taxonomies.
@@ -1670,13 +1677,20 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			return self::is_cache_allowed();
 		}
 
-		public function set_default_text( array &$opts, $opt_key ) {
+		public function set_default_text( array &$defs, $opt_key ) {
 
 			if ( $opt_key && is_string( $opt_key ) ) {	// Just in case.
 
 				$text = $this->get_text( $opt_key, $use_opts = false );
 
-				SucomUtil::set_key_locale( $opt_key, $text, $opts );
+				$opt_key_locale = SucomUtil::get_key_locale( $opt_key, $defs, 'current' );
+
+				$defs[ $opt_key_locale ] = $text;
+
+				if ( ! isset( $this->p->options[ $opt_key_locale ] ) ) {	// Just in case.
+
+					$this->p->options[ $opt_key_locale ] = $text;
+				}
 			}
 		}
 		
@@ -1714,9 +1728,37 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					
 						return _x( 'No Description.', 'option value', 'wpsso' );
 
-					case 'plugin_search_page_title':	// Search Results Page Title.
+					case 'plugin_search_page_title':	// Search Results Title.
 
-						return _x( 'Search Results %%sep%% %%searchphrase%%', 'option value', 'wpsso' );
+						return _x( 'Search Results %%sep%% %%query_search%%', 'option value', 'wpsso' );
+
+					case 'plugin_search_page_desc':		// Search Results Description.
+
+						return _x( 'Search results for &#8220;%%query_search%%&#8221;.', 'option value', 'wpsso' );
+
+					case 'plugin_year_page_title':		// Year Archive Title.
+
+						return _x( '%%query_year%%', 'option value', 'wpsso' );
+
+					case 'plugin_year_page_desc':		// Year Archive Description.
+
+						return _x( 'Yearly archive for %%query_year%%.', 'option value', 'wpsso' );
+
+					case 'plugin_month_page_title':		// Month Archive Title.
+
+						return _x( '%%query_month%% %%query_year%%', 'option value', 'wpsso' );
+
+					case 'plugin_month_page_desc':		// Month Archive Description.
+
+						return _x( 'Monthly archive for %%query_month%%, %%query_year%%.', 'option value', 'wpsso' );
+
+					case 'plugin_day_page_title':		// Day Archive Title.
+
+						return _x( '%%query_month%% %%query_day%%, %%query_year%%', 'option value', 'wpsso' );
+
+					case 'plugin_day_page_desc':		// Day Archive Description.
+
+						return _x( 'Daily archive for %%query_month%% %%query_day%%, %%query_year%%.', 'option value', 'wpsso' );
 
 					default:
 

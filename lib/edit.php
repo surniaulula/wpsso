@@ -614,7 +614,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 				'<td>' . $form->get_no_input_clipboard( $shortlink_url ) . '</td>';
 
 			$table_rows[ 'subsection_prev_og' ] = '<td colspan="2" class="subsection"><h4>' . 
-				_x( 'Facebook / Open Graph Example', 'option label', 'wpsso' ) . '</h4></td>';
+				_x( 'Facebook / Open Graph Example', 'metabox title', 'wpsso' ) . '</h4></td>';
 
 			$table_rows[ 'prev_og' ] = '' .
 				'<td colspan="2" class="fb_preview_container">
@@ -662,7 +662,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 				'<td>' . $form->get_no_input_clipboard( $xml_url ) . '</td>';
 
 			$table_rows[ 'subsection_oembed_html' ] = '<td colspan="2" class="subsection"><h4>' . 
-				_x( 'oEmbed HTML', 'option label', 'wpsso' ) . '</h4></td>';
+				_x( 'oEmbed HTML', 'metabox title', 'wpsso' ) . '</h4></td>';
 
 			if ( ! empty( $oembed_data[ 'html' ] ) ) {
 

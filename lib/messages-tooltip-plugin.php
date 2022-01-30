@@ -29,7 +29,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 			switch ( $msg_key ) {
 
 				/**
-				 * Plugin Admin settings.
+				 * SSO > Advanced Settings > Plugin Settings > Plugin Admin tab.
 				 */
 				case 'tooltip-plugin_clean_on_uninstall':	// Remove Settings on Uninstall.
 
@@ -62,60 +62,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 					break;
 
 				/**
-				 * Interface settings.
-				 */
-				case 'tooltip-plugin_show_opts': 		// Options to Show by Default.
-
-					$mb_title_transl = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
-
-					$text = sprintf( __( 'You can select the default set of options to display in settings pages and the %s metabox.', 'wpsso' ), $mb_title_transl ) . ' ';
-
-					$text .= __( 'The basic view shows the most commonly used options, and includes a link to temporarily show all options when desired.', 'wpsso' ) . ' ';
-
-					$text .= __( 'Note that showing all options by default could be a bit overwhelming for new users.', 'wpsso' );
-
-					break;
-
-				case 'tooltip-plugin_show_validate_toolbar':	// Show Validators Toolbar Menu.
-
-					$menu_title = _x( 'Validators', 'toolbar menu title', 'wpsso' );
-
-					$text = sprintf( __( 'Show a "%s" menu in the admin toolbar.', 'wpsso' ), $menu_title ) . ' ';
-
-					$text .= __( 'Please note that the Twitter Card validator does not (currently) accept query arguments, so it cannot be included in this menu.', 'wpsso' ) . ' ';
-
-					break;
-
-				case 'tooltip-plugin_add_to':		// Show Document SSO Metabox.
-
-					$mb_title_transl = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
-
-					$text = sprintf( __( 'Add or remove the %s metabox from admin editing pages for posts, pages, custom post types, terms (categories and tags), and user profile pages.', 'wpsso' ), $mb_title_transl );
-
-					break;
-
-				case 'tooltip-plugin_show_columns':	// WP List Table Columns.
-
-					$text = __( 'Additional columns can be included by default in the admin list tables for posts, pages, custom post types, terms (categories and tags), and user profile pages.', 'wpsso' ) . ' ';
-
-					$text .= __( 'Users can also hide columns by using the <em>Screen Options</em> tab when viewing admin list tables.', 'wpsso' );
-
-					break;
-
-				case 'tooltip-plugin_og_types_select_format':	// Open Graph Type Select Format.
-
-					$text = __( 'Select a preferred format for the Open Graph Type drop-down options.', 'wpsso' );
-
-					break;
-
-				case 'tooltip-plugin_schema_types_select_format':	// Schema Type Select Format.
-
-					$text = __( 'Select a preferred format for the Schema Type drop-down options.', 'wpsso' );
-
-					break;
-
-				/**
-				 * Integration settings.
+				 * SSO > Advanced Settings > Plugin Settings > Integration tab.
 				 */
 				case 'tooltip-plugin_document_title':	// Webpage Document Title.
 
@@ -232,36 +179,8 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
-				case 'tooltip-plugin_img_alt_prefix':	// Content Image Alt Prefix.
-
-					$text = sprintf( __( 'When the text from image %1$s attributes is used, %2$s can prefix the attribute text with an optional string (for example, "Image:").', 'wpsso' ), '<em>alt</em>', $info[ 'short' ] ) . ' ';
-
-					$text .= sprintf( __( 'Leave this option blank to prevent the text from image %s attributes from being prefixed.', 'wpsso' ), '<em>alt</em>' );
-
-					break;
-
-				case 'tooltip-plugin_p_cap_prefix':	// WP Caption Text Prefix.
-
-					$text = sprintf( __( '%1$s can prefix caption paragraphs found with the "%2$s" class (for example, "Caption:").', 'wpsso' ), $info[ 'short' ], 'wp-caption-text' ) . ' ';
-
-					$text .= __( 'Leave this option blank to prevent caption paragraphs from being prefixed.', 'wpsso' );
-
-					break;
-
-				case 'tooltip-plugin_no_title_text':	// No Title Text.
-
-					$text = __( 'A fallback string to use when there is no title text available (for example, "No Title").' );
-
-					break;
-
-				case 'tooltip-plugin_no_desc_text':	// No Description Text.
-
-					$text = __( 'A fallback string to use when there is no description text available (for example, "No Description.").' );
-
-					break;
-
 				/**
-				 * Integration settings (Plugin and Theme Integration).
+				 * SSO > Advanced Settings > Plugin Settings > Integration tab (Plugin and Theme Integration section).
 				 */
 				case 'tooltip-plugin_check_head':	// Check for Duplicate Meta Tags.
 
@@ -345,7 +264,143 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 					break;
 
 				/**
-				 * Media Services settings.
+				 * SSO > Advanced Settings > Plugin Settings > Default Text tab.
+				 */
+				case 'tooltip-plugin_img_alt_prefix':	// Content Image Alt Prefix.
+
+					$text = sprintf( __( 'Image %1$s text used in descriptions can be prefixed with an optional string (for example, "Image:").', 'wpsso' ), '<code>alt</code>' ) . ' ';
+
+					$text .= sprintf( __( 'Leave this option blank to prevent the image %1$s text from being prefixed.', 'wpsso' ), '<code>alt</code>' );
+
+					break;
+
+				case 'tooltip-plugin_p_cap_prefix':	// WP Caption Text Prefix.
+
+					$text = sprintf( __( 'Caption paragraphs found with the "%1$s" CSS class can be prefixed with an optional string (for example, "Caption:").', 'wpsso' ), 'wp-caption-text' ) . ' ';
+
+					$text .= __( 'Leave this option blank to prevent caption paragraphs from being prefixed.', 'wpsso' );
+
+					break;
+
+				case 'tooltip-plugin_no_title_text':	// No Title Text.
+
+					$text = __( 'A fallback string to use when there is no title text available (for example, "No Title").' );
+
+					break;
+
+				case 'tooltip-plugin_no_desc_text':	// No Description Text.
+
+					$text = __( 'A fallback string to use when there is no description text available (for example, "No Description.").' );
+
+					break;
+
+				/**
+				 * SSO > Advanced Settings > Plugin Settings > Default Text tab (Archive Pages section).
+				 */
+				case 'tooltip-plugin_search_page_title':	// Search Results Title.
+
+					$text = __( 'The search results page title used for meta tags and Schema markup.' );
+
+					break;
+
+				case 'tooltip-plugin_search_page_desc':	// Search Results Description.
+
+					$text = __( 'The search results page description used for meta tags and Schema markup.' );
+
+					break;
+
+				case 'tooltip-plugin_year_page_title':	// Year Archive Title.
+
+					$text = __( 'The yearly archive page title used for meta tags and Schema markup.' );
+
+					break;
+
+				case 'tooltip-plugin_year_page_desc':	// Year Archive Description.
+
+					$text = __( 'The yearly archive page description used for meta tags and Schema markup.' );
+
+					break;
+
+				case 'tooltip-plugin_month_page_title':	// Month Archive Title.
+
+					$text = __( 'The monthly archive page title used for meta tags and Schema markup.' );
+
+					break;
+
+				case 'tooltip-plugin_month_page_desc':	// Month Archive Description.
+
+					$text = __( 'The monthly archive page description used for meta tags and Schema markup.' );
+
+					break;
+
+				case 'tooltip-plugin_day_page_title':	// Day Archive Title.
+
+					$text = __( 'The daily archive page title used for meta tags and Schema markup.' );
+
+					break;
+
+				case 'tooltip-plugin_day_page_desc':	// Day Archive Description.
+
+					$text = __( 'The daily archive page description used for meta tags and Schema markup.' );
+
+					break;
+
+				/**
+				 * SSO > Advanced Settings > Plugin Settings > Interface tab.
+				 */
+				case 'tooltip-plugin_show_opts': 		// Options to Show by Default.
+
+					$mb_title_transl = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+
+					$text = sprintf( __( 'You can select the default set of options to display in settings pages and the %s metabox.', 'wpsso' ), $mb_title_transl ) . ' ';
+
+					$text .= __( 'The basic view shows the most commonly used options, and includes a link to temporarily show all options when desired.', 'wpsso' ) . ' ';
+
+					$text .= __( 'Note that showing all options by default could be a bit overwhelming for new users.', 'wpsso' );
+
+					break;
+
+				case 'tooltip-plugin_show_validate_toolbar':	// Show Validators Toolbar Menu.
+
+					$menu_title = _x( 'Validators', 'toolbar menu title', 'wpsso' );
+
+					$text = sprintf( __( 'Show a "%s" menu in the admin toolbar.', 'wpsso' ), $menu_title ) . ' ';
+
+					$text .= __( 'Please note that the Twitter Card validator does not (currently) accept query arguments, so it cannot be included in this menu.', 'wpsso' ) . ' ';
+
+					break;
+
+				case 'tooltip-plugin_add_to':		// Show Document SSO Metabox.
+
+					$mb_title_transl = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+
+					$text = sprintf( __( 'Add or remove the %s metabox from admin editing pages for posts, pages, custom post types, terms (categories and tags), and user profile pages.', 'wpsso' ), $mb_title_transl );
+
+					break;
+
+				case 'tooltip-plugin_show_columns':	// WP List Table Columns.
+
+					$text = __( 'Additional columns can be included by default in the admin list tables for posts, pages, custom post types, terms (categories and tags), and user profile pages.', 'wpsso' ) . ' ';
+
+					$text .= __( 'Users can also hide columns by using the <em>Screen Options</em> tab when viewing admin list tables.', 'wpsso' );
+
+					break;
+
+				case 'tooltip-plugin_og_types_select_format':	// Open Graph Type Select Format.
+
+					$text = __( 'Select a preferred format for the Open Graph Type drop-down options.', 'wpsso' );
+
+					break;
+
+				case 'tooltip-plugin_schema_types_select_format':	// Schema Type Select Format.
+
+					$text = __( 'Select a preferred format for the Schema Type drop-down options.', 'wpsso' );
+
+					break;
+
+
+				/**
+				 * SSO > Advanced Settings > Service APIs > Media Services tab.
 				 */
 				case 'tooltip-plugin_gravatar_api':	// Gravatar is Default Author Image.
 
@@ -376,7 +431,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 					break;
 
 				/**
-				 * Shortening Services settings.
+				 * SSO > Advanced Settings > Service APIs > Shortening Services tab.
 				 */
 				case 'tooltip-plugin_shortener':	// URL Shortening Service.
 
@@ -477,7 +532,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 					break;
 
 				/**
-				 * Ratings and Reviews settings.
+				 * SSO > Advanced Settings > Service APIs > Ratings and Reviews tab.
 				 */
 				case 'tooltip-plugin_ratings_reviews_svc':	// Ratings and Reviews Service.
 
@@ -520,7 +575,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 					break;
 
 				/**
-				 * Product Attributes settings.
+				 * SSO > Advanced Settings > Metadata > Product Attributes tab.
 				 */
 				case ( 0 === strpos( $msg_key, 'tooltip-plugin_attr_product_' ) ? true : false ):
 
@@ -535,7 +590,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 					break;
 
 				/**
-				 * Custom Fields settings
+				 * SSO > Advanced Settings > Metadata > Custom Fields tab.
 				 */
 				case ( 0 === strpos( $msg_key, 'tooltip-plugin_cf_' ) ? true : false ):
 

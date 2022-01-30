@@ -229,28 +229,64 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					$css_class = '', $css_id = 'plugin_no_desc_text' ) . 
 				'<td class="blank">' . $form->get_no_input_locale( 'plugin_no_desc_text', $css_class = 'medium' ) . '</td>';
 
+			$table_rows[ 'subsection_archive_pages' ] = '' .
+				'<td colspan="2" class="subsection"><h4>' . _x( 'Archive Pages', 'metabox title', 'wpsso' ) . '</h4></td>';
+
 			$table_rows[ 'plugin_search_page_title' ] = '' .
-				$form->get_th_html_locale( _x( 'Search Results Page Title', 'option label', 'wpsso' ),
+				$form->get_th_html_locale( _x( 'Search Results Title', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_search_page_title' ) . 
 				'<td class="blank">' . $form->get_no_input_locale( 'plugin_search_page_title', $css_class = 'wide' ) . '</td>';
+
+			$table_rows[ 'plugin_search_page_desc' ] = '' .
+				$form->get_th_html_locale( _x( 'Search Results Description', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_search_page_desc' ) . 
+				'<td class="blank">' . $form->get_no_input_locale( 'plugin_search_page_desc', $css_class = 'wide' ) . '</td>';
+
+			$table_rows[ 'plugin_year_page_title' ] = '' .
+				$form->get_th_html_locale( _x( 'Year Archive Title', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_year_page_title' ) . 
+				'<td class="blank">' . $form->get_no_input_locale( 'plugin_year_page_title', $css_class = 'wide' ) . '</td>';
+
+			$table_rows[ 'plugin_year_page_desc' ] = '' .
+				$form->get_th_html_locale( _x( 'Year Archive Description', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_year_page_desc' ) . 
+				'<td class="blank">' . $form->get_no_input_locale( 'plugin_year_page_desc', $css_class = 'wide' ) . '</td>';
+
+			$table_rows[ 'plugin_month_page_title' ] = '' .
+				$form->get_th_html_locale( _x( 'Month Archive Title', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_month_page_title' ) . 
+				'<td class="blank">' . $form->get_no_input_locale( 'plugin_month_page_title', $css_class = 'wide' ) . '</td>';
+
+			$table_rows[ 'plugin_month_page_desc' ] = '' .
+				$form->get_th_html_locale( _x( 'Month Archive Description', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_month_page_desc' ) . 
+				'<td class="blank">' . $form->get_no_input_locale( 'plugin_month_page_desc', $css_class = 'wide' ) . '</td>';
+
+			$table_rows[ 'plugin_day_page_title' ] = '' .
+				$form->get_th_html_locale( _x( 'Day Archive Title', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_day_page_title' ) . 
+				'<td class="blank">' . $form->get_no_input_locale( 'plugin_day_page_title', $css_class = 'wide' ) . '</td>';
+
+			$table_rows[ 'plugin_day_page_desc' ] = '' .
+				$form->get_th_html_locale( _x( 'Day Archive Description', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_day_page_desc' ) . 
+				'<td class="blank">' . $form->get_no_input_locale( 'plugin_day_page_desc', $css_class = 'wide' ) . '</td>';
 
 			$post_type_archives = SucomUtilWP::get_post_type_archives( $output = 'objects', $sort = true );
 
 			if ( ! empty( $post_type_archives ) ) {
 
-				$table_rows[ 'subsection_post_type_archives' ] = '' .
-					'<td colspan="2" class="subsection"><h4>' . _x( 'Post Type Archives', 'metabox title', 'wpsso' ) . '</h4></td>';
+				$table_rows[ 'subsection_post_type_archive_pages' ] = '' .
+					'<td colspan="2" class="subsection"><h4>' . _x( 'Post Type Archive Pages', 'metabox title', 'wpsso' ) . '</h4></td>';
 
 				foreach ( $post_type_archives as $num => $post_type_obj ) {
 
-					$obj_label   = sprintf( __( '%s Archive Page', 'wpsso' ), SucomUtilWP::get_object_label( $post_type_obj ) );
-					$title_label = isset( $post_type_obj->label ) ? $post_type_obj->label : $post_type_obj->name;
-					$title_key   = 'plugin_pta_' . $post_type_obj->name . '_title';
-					$desc_key    = 'plugin_pta_' . $post_type_obj->name . '_desc';
+					$obj_label = sprintf( _x( '%s Archive Page', 'metabox title', 'wpsso' ), SucomUtilWP::get_object_label( $post_type_obj ) );
+					$title_key = 'plugin_pta_' . $post_type_obj->name . '_title';
+					$desc_key  = 'plugin_pta_' . $post_type_obj->name . '_desc';
 
 					$table_rows[ 'subsection_pta_' . $post_type_obj->name ] = '' .
-						'<td colspan="2" class="subsection' . ( $num ? '' : ' top' ) . '">' .
-						'<h5>' . $obj_label . '</h4></td>';
+						'<td colspan="2" class="subsection' . ( $num ? '' : ' top' ) . '"><h5>' . $obj_label . '</h4></td>';
 
 					$def_title_text = empty( $post_type_obj->label ) ?
 						$this->p->opt->get_text( 'plugin_no_title_text' ) : $post_type_obj->label;

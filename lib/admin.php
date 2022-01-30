@@ -664,7 +664,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			/**
 			 * Init option checks.
 			 *
-			 * See WpssoWcmd->init_check_options();
+			 * See WpssoWcmd->init_check_options().
 			 */
 			do_action( 'wpsso_init_check_options' );
 		}

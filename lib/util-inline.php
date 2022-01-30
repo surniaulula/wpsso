@@ -47,9 +47,9 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 		 *
 		 * $extras can be an associative array with key/value pairs to be replaced.
 		 *
-		 * See WpssoHead->add_mt_singles()
-		 * See WpssoPage->get_title()
-		 * See WpssoPage->get_description()
+		 * See WpssoHead->add_mt_singles().
+		 * See WpssoPage->get_title().
+		 * See WpssoPage->get_description().
 		 */
 		public function replace_variables( $subject, $mod = false, array $atts = array(), array $extras = array() ) {
 
@@ -86,7 +86,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 			/**
 			 * Get the default search => replace associative array.
 			 */
-			$vars = $this->get_default_variables( $mod, $atts );
+			$vars = $this->get_defaults( $mod, $atts );
 
 			/**
 			 * Maybe add extra search => replace values.
@@ -115,7 +115,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 			foreach ( $vars as $match => $val ) {
 
-				$search[]  = 0 === strpos( $match, '%%' ) ? $match : '%%' . $match . '%%';
+				$search[]  = '%%' . $match . '%%';
 				$replace[] = $val;
 			}
 
@@ -134,7 +134,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 		/**
 		 * Since WPSSO Core v10.0.0.
 		 */
-		public function get_default_variables( array $mod, array $atts ) {
+		public function get_defaults( array $mod, array $atts ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -170,6 +170,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 					$this->u->get_sharing_url( $mod, $add_page, $atts ) : $atts[ 'sharing_url' ],
 				'sharing_short_url'   => empty( $atts[ 'sharing_short_url' ] ) ?
 					$this->u->get_sharing_short_url( $mod, $add_page, $atts ) : $atts[ 'sharing_short_url' ],
+				'short_url'           => '',	// Placeholder.
 				'request_url'         => is_admin() ? $canonical_url : SucomUtil::get_url( $remove_tracking = true ),
 				'sitename'            => SucomUtil::get_site_name( $this->p->options, $mod ),
 				'sitealtname'         => SucomUtil::get_site_name_alt( $this->p->options, $mod ),
@@ -179,11 +180,37 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				'pagenumber'          => $page_number,
 				'pagetotal'           => $page_total,
 				'page'                => sprintf( $sep . ' ' . __( 'Page %1$d of %2$d', 'wpsso' ), $page_number, $page_total ),
-				'searchphrase'        => isset( $mod[ 'query_vars' ][ 's' ] ) ? $mod[ 'query_vars' ][ 's' ] : '',
+				'query_search'        => isset( $mod[ 'query_vars' ][ 's' ] ) ? $mod[ 'query_vars' ][ 's' ] : '',
+				'query_year'          => isset( $mod[ 'query_vars' ][ 'year' ] ) ? $mod[ 'query_vars' ][ 'year' ] : '',
+				'query_month'         => '',	// Placeholder.
+				'query_monthnum'      => isset( $mod[ 'query_vars' ][ 'monthnum' ] ) ? $mod[ 'query_vars' ][ 'monthnum' ] : '',
+				'query_day'           => isset( $mod[ 'query_vars' ][ 'day' ] ) ? $mod[ 'query_vars' ][ 'day' ] : '',
+				'searchphrase'        => '',	// Placeholder.
 			);
 
 			/**
-			 * Maintain backwards compatibility for old WPSSO RRSSB templates.
+			 * See the WordPress single_month_title() function.
+			 */
+			if ( empty( $ret[ 'query_year' ] ) && empty( $ret[ 'query_monthnum' ] ) ) {
+
+				if ( ! empty( $mod[ 'query_vars' ][ 'm' ] ) ) {
+
+					$ret[ 'query_year' ]     = substr( $mod[ 'query_vars' ][ 'm' ], 0, 4 );
+					$ret[ 'query_monthnum' ] = substr( $mod[ 'query_vars' ][ 'm' ], 4, 2 );
+				}
+			}
+
+			global $wp_locale;
+
+			$ret[ 'query_month' ] = $ret[ 'query_monthnum' ] ? $wp_locale->get_month( $ret[ 'query_monthnum' ] ) : '';
+
+			/**
+			 * Compatibility for Yoast SEO.
+			 */
+			$ret[ 'searchphrase' ] = $ret[ 'query_search' ];
+
+			/**
+			 * Compatibility for old WPSSO RRSSB templates.
 			 */
 			$ret[ 'short_url' ] = $ret[ 'sharing_short_url' ];
 

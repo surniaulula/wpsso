@@ -807,9 +807,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		 *
 		 * $md_key = true | false | string | array
 		 *
-		 * Use a $title_sep value of false to avoid adding parent names in the term title. $md_key can be a metadata
-		 * options key, or an array of keys in order of preference (ie. from more specific to less specific). Example:
-		 * array( 'seo_title', 'og_title' ).
+		 * Use a $title_sep value of false to avoid adding parent names in the term title.
+		 *
+		 * $md_key can be a metadata options key, or an array of keys in order of preference (ie. from more specific to
+		 * less specific). Example $md_key = array( 'seo_title', 'og_title'
+		 * ).
+		 *
+		 * Note that WpssoUtilInline->replace_variables() is applied to the final title text.
 		 */
 		public function get_title( $max_len = 70, $dots = '', $mod = false, $read_cache = true,
 			$add_hashtags = false, $do_encode = true, $md_key = 'og_title', $title_sep = null ) {
@@ -998,7 +1002,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		 * $md_key = true | false | string | array.
 		 *
 		 * $md_key can be a metadata options key, or an array of keys in order of preference (ie. from more specific to
-		 * less specific). Example: array( 'seo_desc', 'og_desc' ).
+		 * less specific). Example $md_key = array( 'seo_desc', 'og_desc' ).
+		 *
+		 * Note that WpssoUtilInline->replace_variables() is applied to the final description text.
 		 */
 		public function get_description( $max_len = 160, $dots = '...', $mod = false, $read_cache = true,
 			$add_hashtags = true, $do_encode = true, $md_key = 'og_desc' ) {
@@ -1196,14 +1202,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						$desc_text = $user_obj->description;
 					}
 
-				} elseif ( $mod[ 'is_home_posts' ] ) {	// Static posts page or blog archive page.
+				} elseif ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).
 
 					$desc_text = SucomUtil::get_site_description( $this->p->options );
 
 				} elseif ( $mod[ 'is_search' ] ) {
 
-					// translators: %s is the search query.
-					$desc_text = sprintf( __( 'Search Results for &#8220;%s&#8221;' ), esc_attr( $mod[ 'query_vars' ][ 's' ] ) );
+					$desc_text = $this->p->opt->get_text( 'plugin_search_page_desc' );
 
 				} elseif ( $mod[ 'is_archive' ] ) {
 
@@ -1211,20 +1216,16 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 						if ( $mod[ 'is_year' ] ) {
 
-							$desc_text = sprintf( _x( 'Yearly archive for %s.', 'default description', 'wpsso' ), get_the_date( 'Y' ) );
+							$desc_text = $this->p->opt->get_text( 'plugin_year_page_desc' );
 
 						} elseif ( $mod[ 'is_month' ] ) {
 
-							$desc_text = sprintf( _x( 'Monthly archive for %s.', 'default description', 'wpsso' ), get_the_date( 'F Y' ) );
+							$desc_text = $this->p->opt->get_text( 'plugin_month_page_desc' );
 
 						} elseif ( $mod[ 'is_day' ] ) {
 
-							$desc_text = sprintf( _x( 'Daily archive for %s.', 'default description', 'wpsso' ), get_the_date() );
+							$desc_text = $this->p->opt->get_text( 'plugin_day_page_desc' );
 						}
-
-					} else {
-
-						$desc_text = _x( 'Archive page.', 'default description', 'wpsso' );
 					}
 				}
 			}
@@ -1365,6 +1366,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		 * $mod = array
 		 *
 		 * Use $title_sep = false to avoid adding parent names in the term title.
+		 *
+		 * Note that WpssoUtilInline->replace_variables() is applied in WpssoPage->get_title(), not in this method.
+		 *
+		 * See WpssoUtilInline->get_defaults().
 		 */
 		public function get_the_title( array $mod, $title_sep = null ) {
 
@@ -1483,15 +1488,15 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					if ( $mod[ 'is_year' ] ) {
 
-						$title_text = get_the_date( 'Y' );
+						$title_text = $this->p->opt->get_text( 'plugin_year_page_title' );
 
 					} elseif ( $mod[ 'is_month' ] ) {
 
-						$title_text = get_the_date( 'F Y' );
+						$title_text = $this->p->opt->get_text( 'plugin_month_page_title' );
 
 					} elseif ( $mod[ 'is_day' ] ) {
 
-						$title_text = get_the_date();
+						$title_text = $this->p->opt->get_text( 'plugin_day_page_title' );
 					}
 
 				} else {
