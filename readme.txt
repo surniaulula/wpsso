@@ -251,10 +251,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 9.16.0-dev.7 (2022/01/29)**
+**Version 10.0.0-dev.8 (2022/01/29)**
 
 * **New Features**
-	* Added a new SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Default Text tab with post type archive title and description text options (when post type archives are available).
+	* Added a new SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Default Text tab:
+		* Added a "Search Results Page Title" option.
+		* Added a "Post Type Archives" section for post type archive title and description option.
 * **Improvements**
 	* Moved the SSO &gt; Social Pages &gt; Social and Search Sites metabox to the SSO &gt; General Settings page and removed SSO &gt; Social Pages from the menu.
 	* Removed the SSO &gt; General Settings &gt; Social and Search Sites &gt; Facebook &gt; Author Profile URL Field option.
@@ -276,6 +278,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new `WpssoSchema->get_default_schema_type_name_for()` method.
 	* Added a new `WpssoOptions->set_default_text()` method.
 	* Added a new `WpssoOptions->get_text()` method.
+	* Added a new `WpssoUtilInline->get_default_variables()` method.
 	* Renamed the `WpssoSchema->get_schema_type_id_for_name()` method to `get_schema_type_id_for()`.
 	* Renamed filters:
 		* 'wpsso_schema_type_id' to 'wpsso_schema_type'
@@ -312,6 +315,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* 'wpsso_user_archive_title'
 		* 'wpsso_wp_title'
 		* 'wpsso_yearly_archive_description'
+	* Deprecated the `WpssoUtilInline->get_variables()` method.
+	* Deprecated the `WpssoUtilInline->get_values()` method.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -901,9 +906,9 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 9.16.0-dev.7 =
+= 10.0.0-dev.8 =
 
-(2022/01/29) Added a new SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Default Text tab with post type archive title and description text options (when post type archives are available).
+(2022/01/29) Added a new SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Default Text tab.
 
 = 9.15.0 =
 
