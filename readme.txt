@@ -251,12 +251,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 10.0.0-dev.8 (2022/01/29)**
+**Version 10.0.0-a.1 (2022/01/30)**
 
 * **New Features**
 	* Added a new SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Default Text tab:
-		* Added a "Search Results Page Title" option.
-		* Added a "Post Type Archives" section for post type archive title and description option.
+		* Added a new "Archive Pages" section:
+			* Added a new "Search Results Title" option.
+			* Added a new "Search Results Description" option.
+			* Added a new "Year Archive Title" option.
+			* Added a new "Year Archive Description" option.
+			* Added a new "Month Archive Title" option.
+			* Added a new "Month Archive Description" option.
+			* Added a new "Day Archive Title" option.
+			* Added a new "Day Archive Description" option.
+		* Added a new "Post Type Archive Pages" section for post type archive title and description option.
 * **Improvements**
 	* Moved the SSO &gt; Social Pages &gt; Social and Search Sites metabox to the SSO &gt; General Settings page and removed SSO &gt; Social Pages from the menu.
 	* Removed the SSO &gt; General Settings &gt; Social and Search Sites &gt; Facebook &gt; Author Profile URL Field option.
@@ -278,7 +286,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new `WpssoSchema->get_default_schema_type_name_for()` method.
 	* Added a new `WpssoOptions->set_default_text()` method.
 	* Added a new `WpssoOptions->get_text()` method.
-	* Added a new `WpssoUtilInline->get_default_variables()` method.
+	* Added a new `WpssoUtilInline->get_defaults()` method.
 	* Renamed the `WpssoSchema->get_schema_type_id_for_name()` method to `get_schema_type_id_for()`.
 	* Renamed filters:
 		* 'wpsso_schema_type_id' to 'wpsso_schema_type'
@@ -906,9 +914,9 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 10.0.0-dev.8 =
+= 10.0.0-a.1 =
 
-(2022/01/29) Added a new SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Default Text tab.
+(2022/01/30) Added a new SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Default Text tab.
 
 = 9.15.0 =
 
