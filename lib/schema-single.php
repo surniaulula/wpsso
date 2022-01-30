@@ -659,9 +659,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 
 				/**
-				 * Set the 'fileFormat' property to the image mime type.
+				 * Set the 'encodingFormat' property to the image mime type.
 				 */
-				$json_ret[ 'fileFormat' ] = get_post_mime_type( $mod[ 'id' ] );
+				$json_ret[ 'encodingFormat' ] = get_post_mime_type( $mod[ 'id' ] );
 
 				/**
 				 * Set the 'uploadDate' property to the image attachment publish time.
@@ -1690,16 +1690,16 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$json_ret = WpssoSchema::get_schema_type_context( $video_type_url, array( 'url' => SucomUtil::esc_url_encode( $media_url ) ) );
 
 			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $mt_single, array(
-				'name'         => $media_pre . ':title',
-				'description'  => $media_pre . ':description',
-				'embedUrl'     => $media_pre . ':embed_url',
-				'contentUrl'   => $media_pre . ':stream_url',
-				'fileFormat'   => $media_pre . ':type',	// Mime type.
-				'width'        => $media_pre . ':width',
-				'height'       => $media_pre . ':height',
-				'duration'     => $media_pre . ':duration',
-				'uploadDate'   => $media_pre . ':upload_date',
-				'thumbnailUrl' => $media_pre . ':thumbnail_url',
+				'name'           => $media_pre . ':title',
+				'description'    => $media_pre . ':description',
+				'embedUrl'       => $media_pre . ':embed_url',
+				'contentUrl'     => $media_pre . ':stream_url',
+				'encodingFormat' => $media_pre . ':type',	// Mime type.
+				'width'          => $media_pre . ':width',
+				'height'         => $media_pre . ':height',
+				'duration'       => $media_pre . ':duration',
+				'uploadDate'     => $media_pre . ':upload_date',
+				'thumbnailUrl'   => $media_pre . ':thumbnail_url',
 			) );
 
 			if ( ! empty( $mt_single[ $media_pre . ':has_image' ] ) ) {
