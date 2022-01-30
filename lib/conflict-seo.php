@@ -77,9 +77,13 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 
 			if ( ! defined( 'AIOSEO_VERSION' ) || version_compare( AIOSEO_VERSION, $min_version, '<' ) ) {
 
-				$notice_msg_transl = __( 'The %1$s plugin is too old - please update the %1$s plugin to version %2$s or newer.', 'wpsso' );
+				$notice_msg = __( 'The %1$s plugin is too old - please update the %1$s plugin to version %2$s or newer.', 'wpsso' );
 
-				$this->p->notice->err( $this->notice_pre . sprintf( $notice_msg_transl, $plugin_name, $min_version ) );
+				$notice_msg = $this->notice_pre . sprintf( $notice_msg, $plugin_name, $min_version );
+
+				$notice_key = 'aioseo-version-' . AIOSEO_VERSION . '-too-old';
+
+				$this->p->notice->err( $notice_msg, null, $notice_key );
 
 				return;
 			}
@@ -105,9 +109,13 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 					$this->p->debug->log( $this->log_pre . 'aioseop open graph markup is enabled' );
 				}
 
-				$notice_msg_transl = __( 'Please uncheck the %1$s option in the %2$s settings.', 'wpsso' );
+				$notice_msg = __( 'Please uncheck the %1$s option in the %2$s settings.', 'wpsso' );
 
-				$this->p->notice->err( $this->notice_pre . sprintf( $notice_msg_transl, $label_transl, $settings_link ) );
+				$notice_msg = $this->notice_pre . sprintf( $notice_msg, $label_transl, $settings_link );
+
+				$notice_key = 'aioseo-open-graph-markup-enabled';
+
+				$this->p->notice->err( $notice_msg, null, $notice_key );
 			}
 
 			/**
@@ -131,9 +139,13 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 					$this->p->debug->log( $this->log_pre . 'aioseop twitter card is enabled' );
 				}
 
-				$notice_msg_transl = __( 'Please uncheck the %1$s option in the %2$s settings.', 'wpsso' );
+				$notice_msg = __( 'Please uncheck the %1$s option in the %2$s settings.', 'wpsso' );
 
-				$this->p->notice->err( $this->notice_pre . sprintf( $notice_msg_transl, $label_transl, $settings_link ) );
+				$notice_msg = $this->notice_pre . sprintf( $notice_msg, $label_transl, $settings_link );
+
+				$notice_key = 'aioseo-twitter-card-enabled';
+
+				$this->p->notice->err( $notice_msg, null, $notice_key );
 			}
 		}
 
@@ -213,9 +225,13 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 							$this->p->debug->log( $this->log_pre . 'seoframework ' . $opt_key . ' option is checked' );
 						}
 
-						$notice_msg_transl = __( 'Please uncheck the %1$s option under the %2$s tab.', 'wpsso' );
+						$notice_msg = __( 'Please uncheck the %1$s option under the %2$s tab.', 'wpsso' );
 
-						$this->p->notice->err( $this->notice_pre . sprintf( $notice_msg_transl, $label_transl, $settings_link ) );
+						$notice_msg = $this->notice_pre . sprintf( $notice_msg, $label_transl, $settings_link );
+
+						$notice_key = 'seoframework-' . $opt_key . '-option-checked';
+
+						$this->p->notice->err( $notice_msg, null, $notice_key );
 					}
 				}
 			}
@@ -256,9 +272,13 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 					$this->p->debug->log( $this->log_pre . 'seopress social networks module is enabled' );
 				}
 
-				$notice_msg_transl = __( 'Please disable the %1$s module in the %2$s settings.', 'wpsso' );
+				$notice_msg = __( 'Please disable the %1$s module in the %2$s settings.', 'wpsso' );
 
-				$this->p->notice->err( $this->notice_pre . sprintf( $notice_msg_transl, $label_transl, $settings_link ) );
+				$notice_msg = $this->notice_pre . sprintf( $notice_msg, $label_transl, $settings_link );
+
+				$notice_key = 'seopress-social-networks-module-enabled';
+
+				$this->p->notice->err( $notice_msg, null, $notice_key );
 			}
 		}
 
@@ -297,9 +317,13 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 						$this->p->debug->log( $this->log_pre . 'seo ultimate opengraph module is enabled' );
 					}
 
-					$notice_msg_transl = __( 'Please disable the %1$s module in the %2$s settings.', 'wpsso' );
+					$notice_msg = __( 'Please disable the %1$s module in the %2$s settings.', 'wpsso' );
 
-					$this->p->notice->err( $this->notice_pre . sprintf( $notice_msg_transl, $label_transl, $settings_link ) );
+					$notice_msg = $this->notice_pre . sprintf( $notice_msg, $label_transl, $settings_link );
+
+					$notice_key = 'seo-ultimate-opengraph-module-enabled';
+
+					$this->p->notice->err( $notice_msg, null, $notice_key );
 				}
 			}
 		}
@@ -345,9 +369,13 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 						$this->p->debug->log( $this->log_pre . 'squirrly seo ' . $opt_key . ' option is enabled' );
 					}
 
-					$notice_msg_transl = __( 'Please disable the %1$s option in the %2$s settings.', 'wpsso' );
+					$notice_msg = __( 'Please disable the %1$s option in the %2$s settings.', 'wpsso' );
 
-					$this->p->notice->err( $this->notice_pre . sprintf( $notice_msg_transl, $label_transl, $settings_link ) );
+					$notice_msg = $this->notice_pre . sprintf( $notice_msg, $label_transl, $settings_link );
+
+					$notice_key = 'squirrly-seo-' . $opt_key . '-option-enabled';
+
+					$this->p->notice->err( $notice_msg, null, $notice_key );
 				}
 			}
 
@@ -376,9 +404,13 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 						$this->p->debug->log( $this->log_pre . 'squirrly seo ' . $opt_key . ' option is enabled' );
 					}
 
-					$notice_msg_transl = __( 'Please disable the %1$s option in the %2$s metabox.', 'wpsso' );
+					$notice_msg = __( 'Please disable the %1$s option in the %2$s metabox.', 'wpsso' );
 
-					$this->p->notice->err( $this->notice_pre . sprintf( $notice_msg_transl, $label_transl, $settings_link ) );
+					$notice_msg = $this->notice_pre . sprintf( $notice_msg, $label_transl, $settings_link );
+
+					$notice_key = 'squirrly-seo-' . $opt_key . '-option-enabled';
+
+					$this->p->notice->err( $notice_msg, null, $notice_key );
 				}
 			}
 		}
@@ -432,9 +464,13 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 						$this->p->debug->log( $this->log_pre . 'wpmetaseo ' . $opt_key . ' option is not empty' );
 					}
 
-					$notice_msg_transl = __( 'Please remove the %1$s option value in the %2$s settings.', 'wpsso' );
+					$notice_msg = __( 'Please remove the %1$s option value in the %2$s settings.', 'wpsso' );
 
-					$this->p->notice->err( $this->notice_pre . sprintf( $notice_msg_transl, $label_transl, $settings_link ) );
+					$notice_msg= $this->notice_pre . sprintf( $notice_msg, $label_transl, $settings_link );
+
+					$notice_key = 'wpmetaseo-' . $opt_key . '-option-not-empty';
+
+					$this->p->notice->err( $notice_msg, null, $notice_key );
 				}
 			}
 
@@ -448,9 +484,13 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 					$this->p->debug->log( $this->log_pre . 'wpmetaseo metaseo_showsocial option is enabled' );
 				}
 
-				$notice_msg_transl = __( 'Please disable the %1$s option in the %2$s settings.', 'wpsso' );
+				$notice_msg = __( 'Please disable the %1$s option in the %2$s settings.', 'wpsso' );
 
-				$this->p->notice->err( $this->notice_pre . sprintf( $notice_msg_transl, $label_transl, $settings_link ) );
+				$notice_msg = $this->notice_pre . sprintf( $notice_msg, $label_transl, $settings_link );
+
+				$notice_key = 'wpmetaseo-showsocial-option-enabled';
+
+				$this->p->notice->err( $notice_msg, null, $notice_key );
 			}
 		}
 
@@ -473,9 +513,13 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 
 			if ( ! defined( 'WPSEO_VERSION' ) || version_compare( WPSEO_VERSION, $min_version, '<' ) ) {
 
-				$notice_msg_transl = __( 'The %1$s plugin is too old - please update the %1$s plugin to version %2$s or newer.', 'wpsso' );
+				$notice_msg = __( 'The %1$s plugin is too old - please update the %1$s plugin to version %2$s or newer.', 'wpsso' );
 
-				$this->p->notice->err( $this->notice_pre . sprintf( $notice_msg_transl, $plugin_name, $min_version ) );
+				$notice_msg = $this->notice_pre . sprintf( $notice_msg, $plugin_name, $min_version );
+
+				$notice_key = 'wpseo-version-' . WPSEO_VERSION . '-too-old';
+
+				$this->p->notice->err( $notice_msg, null, $notice_key );
 
 				return;
 			}
@@ -521,9 +565,13 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 						$this->p->debug->log( $this->log_pre . 'wpseo ' . $opt_key . ' option is not empty' );
 					}
 
-					$notice_msg_transl = __( 'Please remove the %1$s option value in the %2$s settings.', 'wpsso' );
+					$notice_msg = __( 'Please remove the %1$s option value in the %2$s settings.', 'wpsso' );
 
-					$this->p->notice->err( $this->notice_pre . sprintf( $notice_msg_transl, $label_transl, $settings_link ) );
+					$notice_msg = $this->notice_pre . sprintf( $notice_msg, $label_transl, $settings_link );
+
+					$notice_key = 'wpseo-' . $opt_key . '-option-not-empty';
+
+					$this->p->notice->err( $notice_msg, null, $notice_key );
 				}
 			}
 
@@ -548,9 +596,13 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 					$this->p->debug->log( $this->log_pre . 'wpseo fbadminapp option is not empty' );
 				}
 
-				$notice_msg_transl = __( 'Please remove the %1$s option value in the %2$s settings.', 'wpsso' );
+				$notice_msg = __( 'Please remove the %1$s option value in the %2$s settings.', 'wpsso' );
 
-				$this->p->notice->err( $this->notice_pre . sprintf( $notice_msg_transl, $label_transl, $settings_link ) );
+				$notice_msg = $this->notice_pre . sprintf( $notice_msg, $label_transl, $settings_link );
+
+				$notice_key = 'wpseo-fbadminapp-option-not-empty';
+
+				$this->p->notice->err( $notice_msg, null, $notice_key );
 			}
 
 			/**
@@ -574,9 +626,13 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 					$this->p->debug->log( $this->log_pre . 'wpseo opengraph option is enabled' );
 				}
 
-				$notice_msg_transl = __( 'Please disable the %1$s option in the %2$s settings.', 'wpsso' );
+				$notice_msg = __( 'Please disable the %1$s option in the %2$s settings.', 'wpsso' );
 
-				$this->p->notice->err( $this->notice_pre . sprintf( $notice_msg_transl, $label_transl, $settings_link ) );
+				$notice_msg = $this->notice_pre . sprintf( $notice_msg, $label_transl, $settings_link );
+
+				$notice_key = 'wpseo-opengraph-option-enabled';
+
+				$this->p->notice->err( $notice_msg, null, $notice_key );
 			}
 
 			/**
@@ -600,9 +656,13 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 					$this->p->debug->log( $this->log_pre . 'wpseo twitter option is enabled' );
 				}
 
-				$notice_msg_transl = __( 'Please disable the %1$s option in the %2$s settings.', 'wpsso' );
+				$notice_msg = __( 'Please disable the %1$s option in the %2$s settings.', 'wpsso' );
 
-				$this->p->notice->err( $this->notice_pre . sprintf( $notice_msg_transl, $label_transl, $settings_link ) );
+				$notice_msg = $this->notice_pre . sprintf( $notice_msg, $label_transl, $settings_link );
+
+				$notice_key = 'wpseo-twitter-option-enabled';
+
+				$this->p->notice->err( $notice_msg, null, $notice_key );
 			}
 
 			/**
@@ -626,9 +686,13 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 					$this->p->debug->log( $this->log_pre . 'wpseo slack option is enabled' );
 				}
 
-				$notice_msg_transl = __( 'Please disable the %1$s option in the %2$s settings.', 'wpsso' );
+				$notice_msg = __( 'Please disable the %1$s option in the %2$s settings.', 'wpsso' );
 
-				$this->p->notice->err( $this->notice_pre . sprintf( $notice_msg_transl, $label_transl, $settings_link ) );
+				$notice_msg = $this->notice_pre . sprintf( $notice_msg, $label_transl, $settings_link );
+
+				$notice_key = 'wpseo-slack-option-enabled';
+
+				$this->p->notice->err( $notice_msg, null, $notice_key );
 			}
 		}
 

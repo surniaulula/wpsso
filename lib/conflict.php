@@ -196,6 +196,8 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 					$notice_key = 'db-max-allowed-packet-too-small';
 
 					$this->p->notice->err( $notice_msg, null, $notice_key );
+				
+					$this->p->notice->nag( '<p>' . $notice_msg . '</p>', null, $notice_key );
 				}
 			}
 		}
@@ -229,6 +231,8 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				}
 
 				$notice_msg = '';	// Clear any previous error message.
+
+				$notice_key = '';	// Clear any previous error message key.
 
 				/**
 				 * Check for the extension first, then maybe check for its functions.
@@ -286,6 +290,8 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 					$notice_msg .= sprintf( __( 'Please contact your hosting provider to have the missing PHP "%1$s" extension installed and enabled.', 'wpsso' ), $php_ext );
 
+					$notice_key .= 'php-extension-' . $php_ext . '-not-loaded';
+
 				/**
 				 * If the PHP extension is loaded, then maybe check to make sure the extension is complete. ;-)
 				 */
@@ -303,6 +309,8 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 							$notice_msg .= sprintf( __( 'The <a href="%1$s">PHP %2$s extension module</a> is loaded but the %3$s class is missing.', 'wpsso' ), $php_info[ 'url' ], $php_info[ 'label' ], '<code>' . $class_name . '</code>' ) . ' ';
 
 							$notice_msg .= __( 'Please contact your hosting provider to have the missing PHP class installed.', 'wpsso' );
+					
+							$notice_key .= 'php-class-' . $class_name . '-missing';
 						}
 					}
 
@@ -320,13 +328,17 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 							$notice_msg .= sprintf( __( 'The <a href="%1$s">PHP %2$s extension module</a> is loaded but the %3$s function is missing.', 'wpsso' ), $php_info[ 'url' ], $php_info[ 'label' ], '<code>' . $function_name . '()</code>' ) . ' ';
 
 							$notice_msg .= __( 'Please contact your hosting provider to have the missing PHP function installed.', 'wpsso' );
+							
+							$notice_key .= 'php-function-' . $function_name . '-missing';
 						}
 					}
 				}
 
 				if ( ! empty( $notice_msg ) ) {
 
-					$this->p->notice->err( $notice_msg );
+					$this->p->notice->err( $notice_msg, null, $notice_key );
+
+					$this->p->notice->nag( '<p>' . $notice_msg . '</p>', null, $notice_key );
 
 					SucomUtil::safe_error_log( $error_pre . ' ' . $notice_msg, $strip_html = true );
 				}
@@ -363,6 +375,8 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 					$notice_key = 'wpb-vc-version-event-bug-' . $min_version;
 
 					$this->p->notice->err( $notice_msg, null, $notice_key );
+
+					$this->p->notice->nag( '<p>' . $notice_msg . '</p>', null, $notice_key );
 				}
 			}
 		}
