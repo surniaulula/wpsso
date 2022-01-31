@@ -2313,27 +2313,35 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 */
 			if ( get_option( 'page_comments' ) ) {	// "Break comments into pages" option is checked.
 
-				$paged  = isset( $mod[ 'query_vars' ][ 'paged' ] ) ? $mod[ 'query_vars' ][ 'paged' ] : 1;	// Get the page number.
-				$number = get_option( 'comments_per_page' );							// Get "Top level comments per page" option value.
-				$order  = 'oldest' === get_option( 'default_comments_page' ) ? 'ASC' : 'DESC';			// Maybe sort oldest comments first.
+				$comment_order  = strtoupper( get_option( 'comment_order' ) );
+				$comment_paged  = $mod[ 'comment_paged' ] ? $mod[ 'comment_paged' ] : 1;		// Get the comment page number.
+				$comment_number = get_option( 'comments_per_page' );
 
 			} else {
 
-				$paged  = 1;
-				$number = SucomUtil::get_const( 'WPSSO_SCHEMA_COMMENTS_MAX' );
-				$order  = 'DESC';
+				$comment_order  = 'DESC';
+				$comment_paged  = 1;
+				$comment_number = SucomUtil::get_const( 'WPSSO_SCHEMA_COMMENTS_MAX' );
 			}
 
-			if ( $number ) {	// 0 disables the addition of comments.
+			if ( $comment_number ) {	// 0 disables the addition of comments.
 
-				$comments = get_comments( array(
+				$get_comment_args = array(
 					'post_id' => $mod[ 'id' ],
 					'status'  => 'approve',
-					'parent'  => 0,					// Don't get replies.
-					'order'   => $order,
+					'parent'  => 0,		// Don't get replies.
+					'order'   => $comment_order,
 					'orderby' => 'comment_date_gmt',
-					'number'  => get_option( 'page_comments' ),	// Limit number of comments.
-				) );
+					'paged'   => $comment_paged,
+					'number'  => $comment_number,
+				);
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log_arr( '$get_comment_args', $get_comment_args );
+				}
+
+				$comments = get_comments( $get_comment_args );
 
 				if ( is_array( $comments ) ) {
 

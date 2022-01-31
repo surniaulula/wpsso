@@ -243,19 +243,24 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				if ( is_object( $post_obj ) ) {	// Just in case.
 
-					$mod[ 'post_slug' ]            = get_post_field( 'post_name', $post_obj );		// Post name (aka slug).
-					$mod[ 'post_type' ]            = get_post_type( $post_obj );				// Post type name.
-					$mod[ 'post_mime' ]            = get_post_mime_type( $post_obj );			// Post mime type (ie. image/jpg).
-					$mod[ 'post_status' ]          = get_post_status( $post_obj );				// Post status name.
-					$mod[ 'post_author' ]          = (int) get_post_field( 'post_author', $post_obj );	// Post author id.
-					$mod[ 'post_coauthors' ]       = array();
-					$mod[ 'post_time' ]            = get_post_time( 'c', $gmt = true, $post_obj );		// Returns false on failure.
-					$mod[ 'post_modified_time' ]   = get_post_modified_time( 'c', $gmt = true, $post_obj );	// Returns false on failure.
-					$mod[ 'is_attachment' ]        = 'attachment' === $mod[ 'post_type' ] ? true : false;	// Post type is 'attachment'.
+					$mod[ 'post_slug' ]          = get_post_field( 'post_name', $post_obj );		// Post name (aka slug).
+					$mod[ 'post_type' ]          = get_post_type( $post_obj );				// Post type name.
+					$mod[ 'post_mime' ]          = get_post_mime_type( $post_obj );				// Post mime type (ie. image/jpg).
+					$mod[ 'post_status' ]        = get_post_status( $post_obj );				// Post status name.
+					$mod[ 'post_author' ]        = (int) get_post_field( 'post_author', $post_obj );	// Post author id.
+					$mod[ 'post_coauthors' ]     = array();
+					$mod[ 'post_time' ]          = get_post_time( 'c', $gmt = true, $post_obj );		// ISO 8601 date or false.
+					$mod[ 'post_modified_time' ] = get_post_modified_time( 'c', $gmt = true, $post_obj );	// ISO 8601 date or false.
+					$mod[ 'is_attachment' ]      = 'attachment' === $mod[ 'post_type' ] ? true : false;	// Post type is 'attachment'.
 
 					$post_type_obj = get_post_type_object( $mod[ 'post_type' ] );
 
 					if ( is_object( $post_type_obj ) ) {	// Just in case.
+
+						if ( isset( $post_type_obj->labels->name ) ) {
+
+							$mod[ 'post_type_label_plural' ] = $post_type_obj->labels->name;
+						}
 
 						if ( isset( $post_type_obj->labels->singular_name ) ) {
 
@@ -270,6 +275,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$mod[ 'is_post_type_archive' ] = SucomUtil::is_post_type_archive( $post_type_obj, $mod[ 'post_slug' ] );
 
 						$mod[ 'is_archive' ] = $mod[ 'is_post_type_archive' ];
+					}
+
+					if ( ! $mod[ 'is_post_type_archive' ] && ! $mod[ 'is_home_posts' ] ) {
+					
+						$mod[ 'paged_total' ] = substr_count( $post_obj->post_content, '<!--nextpage-->' ) + 1;
 					}
 
 					/**
@@ -631,9 +641,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				'has_password'     => false,
 				'order'            => 'DESC',		// Newest first.
 				'orderby'          => 'date',
-				'paged'            => false,
 				'post_status'      => 'publish',	// Only 'publish' (not 'auto-draft', 'draft', 'future', 'inherit', 'pending', 'private', or 'trash').
 				'post_type'        => 'any',		// Return any post, page, or custom post type.
+				'paged'            => false,
 				'posts_per_page'   => -1,		// The number of posts to query for. -1 to request all posts.
 				'no_found_rows'    => true,		// Skip counting total rows found - should be enabled when pagination is not needed.
 				'suppress_filters' => false,		// Allow WPML to filter posts for the current language.

@@ -192,6 +192,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( $tax_obj = get_taxonomy( $mod[ 'tax_slug' ] ) ) {
 
+				if ( isset( $tax_obj->labels->name ) ) {
+
+					$mod[ 'tax_label_plural' ] = $tax_obj->labels->name;
+				}
+
 				if ( isset( $tax_obj->labels->singular_name ) ) {
 
 					$mod[ 'tax_label_single' ] = $tax_obj->labels->singular_name;

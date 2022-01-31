@@ -382,7 +382,41 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$mod[ 'query_vars' ] = $wp_query->query_vars;
 
-			$mod[ 'max_num_pages' ] = empty( $wp_query->max_num_pages ) ? 0 : $wp_query->max_num_pages;
+			if ( empty( $mod[ 'paged' ] ) ) {	// False by default.
+
+				if ( ! empty( $mod[ 'query_vars' ][ 'page' ] ) ) {
+
+					$mod[ 'paged' ] = $mod[ 'query_vars' ][ 'page' ];
+
+				} elseif ( ! empty( $mod[ 'query_vars' ][ 'paged' ] ) ) {
+				
+					$mod[ 'paged' ] = $mod[ 'query_vars' ][ 'paged' ];
+
+				} else {
+
+					$mod[ 'paged' ] = 1;
+				}
+			}
+
+			if ( empty( $mod[ 'paged_total' ] ) ) {	// False by default. Can be defined in WpssoPost->get_mod().
+
+				$mod[ 'paged_total' ] = empty( $wp_query->max_num_pages ) ? 1 : $wp_query->max_num_pages;
+			}
+
+			if ( $mod[ 'paged' ] > $mod[ 'paged_total' ] ) {	// Just in case.
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'paged greater than paged_total - adjusting paged value' );
+				}
+
+				$mod[ 'paged' ] = $mod[ 'paged_total' ];
+			}
+
+			if ( empty( $mod[ 'comment_paged' ] ) ) {	// False by default.
+
+				$mod[ 'comment_paged' ] = empty( $mod[ 'query_vars' ][ 'cpage' ] ) ? 1 : $mod[ 'query_vars' ][ 'cpage' ];
+			}
 
 			$mod[ 'use_post' ] = $use_post;
 
@@ -442,6 +476,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 							$post_type_obj = get_post_type_object( $mod[ 'post_type' ] );
 
 							if ( is_object( $post_type_obj ) ) {	// Just in case.
+
+								if ( isset( $post_type_obj->labels->name ) ) {
+
+									$mod[ 'post_type_label_plural' ] = $post_type_obj->labels->name;
+								}
 
 								if ( isset( $post_type_obj->labels->singular_name ) ) {
 
@@ -927,23 +966,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			/**
-			 * Apply seo-like title modifications.
+			 * Maybe add the page number.
 			 */
 			$pagesuffix = '';
 
-			if ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
+			if ( $mod[ 'paged' ] > 1 ) {
 
-				$paged = isset( $mod[ 'query_vars' ][ 'paged' ] ) ? $mod[ 'query_vars' ][ 'paged' ] : 1;
-
-				if ( $paged > 1 ) {
-
-					if ( ! empty( $title_sep ) ) {	// Can be false.
-
-						$pagesuffix .= ' ' . $title_sep;
-					}
-
-					$pagesuffix .= ' ' . sprintf( __( 'Page %s', 'wpsso' ), $paged );
-				}
+				$pagesuffix .= trim( $title_sep . ' ' . sprintf( __( 'Page %s', 'wpsso' ), $mod[ 'paged' ] ) );
 			}
 
 			/**
@@ -951,7 +980,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( $max_len > 0 ) {
 
-				$adj_max_len = empty( $pagesuffix ) ? $max_len : $max_len - strlen( $pagesuffix );
+				$adj_max_len = empty( $pagesuffix ) ? $max_len : $max_len - strlen( $pagesuffix ) - 1;
 
 				$adj_max_len = empty( $hashtags ) ? $adj_max_len : $adj_max_len - strlen( $hashtags ) - 1;
 
@@ -965,12 +994,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( ! empty( $pagesuffix ) ) {
 
-				$title_text = trim( $title_text . $pagesuffix );	// $pagesuffix includes a leading space.
+				$title_text = trim( $title_text . ' ' . $pagesuffix );
 			}
 
 			if ( ! empty( $hashtags ) ) {
 
-				$title_text = trim( $title_text . ' ' . $hashtags );	// Trim in case title text is empty.
+				$title_text = trim( $title_text . ' ' . $hashtags );
 			}
 
 			if ( $do_encode ) {

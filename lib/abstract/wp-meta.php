@@ -142,7 +142,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			'name_transl'            => false,	// Module name translated.
 			'obj'                    => false,	// Module object.
 			'query_vars'             => array(),	// Defined by WpssoPage->get_mod().
-			'max_num_pages'          => 0,		// Defined by WpssoPage->get_mod().
+			'paged'                  => false,	// Aka $wp_query->query_vars[ 'paged' ].
+			'paged_total'            => false,	// Aka $wp_query->max_num_pages.
+			'comment_paged'          => false,	// Aka $wp_query->query_vars[ 'cpage' ].
 			'is_404'                 => false,
 			'is_archive'             => false,
 			'is_attachment'          => false,	// Post type is 'attachment'.
@@ -163,6 +165,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			'use_post'               => false,
 			'post_slug'              => false,	// Post name (aka slug).
 			'post_type'              => false,	// Post type name.
+			'post_type_label_plural' => false,	// Post type plural name.
 			'post_type_label_single' => false,	// Post type singular name.
 			'post_mime'              => false,	// Post mime type (ie. image/jpg).
 			'post_status'            => false,	// Post status name.
@@ -172,6 +175,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			'post_modified_time'     => false,	// Post modified time (ISO 8601 date or false).
 			'term_tax_id'            => false,
 			'tax_slug'               => '',
+			'tax_label_plural'       => false,	// Taxonomy plural name.
 			'tax_label_single'       => false,	// Taxonomy singular name.
 		);
 

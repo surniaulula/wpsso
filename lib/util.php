@@ -1862,7 +1862,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( $mod[ 'is_post' ] ) {
 
-				if ( ! empty( $mod[ 'id' ] ) ) {	// Just in case.
+				if ( $mod[ 'id' ] ) {	// Just in case.
 
 					if ( 'publish' !== $mod[ 'post_status' ] ) {
 
@@ -1874,37 +1874,30 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 								$post_obj->post_status = 'publish';
 
-								$post_obj->post_name = $post_obj->post_name ? $post_obj->post_name : sanitize_title( $post_obj->post_title );
+								if ( empty( $post_obj->post_name ) ) {
+
+									$post_obj->post_name = sanitize_title( $post_obj->post_title );
+								}
 
 								$url = get_permalink( $post_obj );
 							}
 						}
+					}
 
-						if ( empty( $url ) ) {
-
-							$url = get_permalink( $mod[ 'id' ] );
-						}
-
-					} else {
+					if ( empty( $url ) ) {
 
 						$url = get_permalink( $mod[ 'id' ] );
 					}
 
-					$url = $this->check_url_string( $url, 'post permalink' );
+					$url = $this->check_url_string( $url, 'post permalink' );	// Check for WP_Error.
+				
+					$url = apply_filters( 'wpsso_post_url', $url, $mod );
 				}
 			}
 
 			if ( ! empty( $url ) ) {
 
-				/**
-			 	* Maybe enforce the FORCE_SSL constant.
-			 	*/
 				if ( self::get_const( 'FORCE_SSL' ) && ! self::is_https( $url ) ) {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'force ssl is enabled - replacing http by https' );
-					}
 
 					$url = set_url_scheme( $url, 'https' );
 				}
@@ -2084,32 +2077,46 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					$url = get_comment_link( $mod[ 'id' ] );
 
-					$url = $this->check_url_string( $url, 'comment link' );
+					$url = $this->check_url_string( $url, 'comment link' );	// Check for WP_Error.
 				}
 
 				$url = apply_filters( 'wpsso_comment_url', $url, $mod );
 
-			} elseif ( $mod[ 'is_post' ] ) {
+			} elseif ( $mod[ 'is_post' ] ) {	// This can also be a home posts page.
 
-				if ( $mod[ 'is_post_type_archive' ] ) {	// The post ID may be 0.
+				if ( $mod[ 'id' ] ) {	// Just in case.
 
-					$url = get_post_type_archive_link( $mod[ 'post_type' ] );
-
-					$url = $this->check_url_string( $url, 'post_type_archive' );
-
-				} elseif ( $mod[ 'id' ] ) {	// Just in case.
-
-					if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
+					if ( is_object( $mod[ 'obj' ] ) ) {	// Just in case.
 
 						$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'canonical_url' );	// Returns null if an index key is not found.
 					}
+				}
 
-					if ( ! empty( $url ) ) {	// Must be a non-empty string.
+				if ( ! empty( $url ) ) {
 
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'custom post canonical url = ' . $url );
+					}
+
+				} elseif ( $mod[ 'is_post_type_archive' ] ) {	// The post ID may be 0.
+
+					$url = get_post_type_archive_link( $mod[ 'post_type' ] );
+
+					$url = $this->check_url_string( $url, 'post type archive link' );	// Check for WP_Error.
+
+				} elseif ( $mod[ 'id' ] ) {	// Just in case.
+
+					if ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).
+
+						$url = self::get_home_url( $this->p->options, $mod );
+			
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'custom post canonical_url = ' . $url );
+							$this->p->debug->log( 'home post canonical url = ' . $url );
 						}
+
+						$url = apply_filters( 'wpsso_home_url', $url, $mod );
 
 					} elseif ( 'publish' !== $mod[ 'post_status' ] ) {
 
@@ -2129,63 +2136,39 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 								$url = get_permalink( $post_obj );
 							}
 						}
+					}
 
-						if ( empty( $url ) ) {
-
-							$url = get_permalink( $mod[ 'id' ] );
-						}
-
-					} else {
+					if ( empty( $url ) ) {	// Just in case.
 
 						$url = get_permalink( $mod[ 'id' ] );
 					}
 
-					$url = $this->check_url_string( $url, 'post permalink' );
+					$url = $this->check_url_string( $url, 'post permalink' );	// Check for WP_Error.
 				}
 
 				$url = apply_filters( 'wpsso_post_url', $url, $mod );
 
-			} elseif ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).
-
-				if ( 'page' === get_option( 'show_on_front' ) ) {	// 'show_on_front' = posts | page.
-
-					$url = get_permalink( get_option( 'page_for_posts' ) );
-
-					$url = $this->check_url_string( $url, 'page for posts' );
-
-				} else {
-
-					$url = self::get_home_url( $this->p->options, $mod );
-				}
-
-				$url = apply_filters( 'wpsso_home_url', $url, $mod );
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'home url = ' . $url );
-				}
-
 			} elseif ( $mod[ 'is_term' ] ) {
 
-				if ( ! empty( $mod[ 'id' ] ) ) {	// Just in case.
+				if ( $mod[ 'id' ] ) {	// Just in case.
 
-					if ( ! empty( $mod[ 'obj' ] ) ) {
+					if ( is_object( $mod[ 'obj' ] ) ) {
 
 						$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'canonical_url' );	// Returns null if an index key is not found.
 					}
 
-					if ( ! empty( $url ) ) {	// Must be a non-empty string.
+					if ( ! empty( $url ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'custom term canonical_url = ' . $url );
+							$this->p->debug->log( 'custom term canonical url = ' . $url );
 						}
 
 					} else {
 
 						$url = get_term_link( $mod[ 'id' ], $mod[ 'tax_slug' ] );
 
-						$url = $this->check_url_string( $url, 'term link' );
+						$url = $this->check_url_string( $url, 'term link' );	// Check for WP_Error.
 					}
 				}
 
@@ -2193,33 +2176,46 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			} elseif ( $mod[ 'is_user' ] ) {
 
-				if ( ! empty( $mod[ 'id' ] ) ) {	// Just in case.
+				if ( $mod[ 'id' ] ) {	// Just in case.
 
-					if ( ! empty( $mod[ 'obj' ] ) ) {
+					if ( is_object( $mod[ 'obj' ] ) ) {
 
 						$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'canonical_url' );	// Returns null if an index key is not found.
 					}
 
-					if ( ! empty( $url ) ) {	// Must be a non-empty string.
+					if ( ! empty( $url ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'custom user canonical_url = ' . $url );
+							$this->p->debug->log( 'custom user canonical url = ' . $url );
 						}
 
 					} else {
 
 						$url = get_author_posts_url( $mod[ 'id' ] );
 
-						$url = $this->check_url_string( $url, 'author posts' );
+						$url = $this->check_url_string( $url, 'author posts url' );	// Check for WP_Error.
 					}
 				}
 
 				$url = apply_filters( 'wpsso_user_url', $url, $mod );
 
+			} elseif ( $mod[ 'is_home' ] ) {
+
+				$url = self::get_home_url( $this->p->options, $mod );
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'home canonical url = ' . $url );
+				}
+
+				$url = apply_filters( 'wpsso_home_url', $url, $mod );
+
 			} elseif ( $mod[ 'is_search' ] ) {
 
-				$url = $this->check_url_string( get_search_link( $mod[ 'query_vars' ][ 's' ] ), 'search link' );
+				$url = get_search_link( $mod[ 'query_vars' ][ 's' ] );
+
+				$url = $this->check_url_string( $url, 'search link' );	// Check for WP_Error.
 
 				$url = apply_filters( 'wpsso_search_url', $url, $mod );
 
@@ -2229,17 +2225,21 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					if ( $mod[ 'is_year' ] ) {
 
-						$url = $this->check_url_string( get_year_link( $mod[ 'query_vars' ][ 'year' ] ), 'year link' );
+						$url = get_year_link( $mod[ 'query_vars' ][ 'year' ] );
+
+						$url = $this->check_url_string( $url, 'year link' );	// Check for WP_Error.
 
 					} elseif ( $mod[ 'is_month' ] ) {
 
-						$url = $this->check_url_string( get_month_link( $mod[ 'query_vars' ][ 'year' ],
-							$mod[ 'query_vars' ][ 'monthnum' ] ), 'month link' );
+						$url = get_month_link( $mod[ 'query_vars' ][ 'year' ], $mod[ 'query_vars' ][ 'monthnum' ] );
+
+						$url = $this->check_url_string( $url, 'month link' );	// Check for WP_Error.
 
 					} elseif ( $mod[ 'is_day' ] ) {
 
-						$url = $this->check_url_string( get_day_link( $mod[ 'query_vars' ][ 'year' ],
-							$mod[ 'query_vars' ][ 'monthnum' ], $mod[ 'query_vars' ][ 'day' ] ), 'day link' );
+						$url = get_day_link( $mod[ 'query_vars' ][ 'year' ], $mod[ 'query_vars' ][ 'monthnum' ], $mod[ 'query_vars' ][ 'day' ] );
+
+						$url = $this->check_url_string( $url, 'day link' );	// Check for WP_Error.
 					}
 				}
 
@@ -2305,53 +2305,56 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				return $url;	// Nothing to do.
 			}
 
-			$page_number = $this->get_page_number( $mod, $add_page );
+			global $wp_rewrite;
 
-			if ( $page_number > 1 ) {
+			$using_permalinks = $wp_rewrite->using_permalinks();
+			$have_query_args  = false === strpos( $url, '?' ) ? false : true;
+			$page_number      = $this->get_page_number( $mod, $add_page );
 
-				if ( $mod[ 'is_archive' ] ) {
+			if ( $mod[ 'is_archive' ] || $mod[ 'is_home_posts' ] ) {
 
-					global $wp_rewrite;
+				if ( ! $using_permalinks || $have_query_args ) {
 
-					if ( ! $wp_rewrite->using_permalinks() !== strpos( $url, '?' ) ) {
+					if ( $page_number > 1 ) {
 
 						$url = add_query_arg( 'paged', $page_number, $url );
+					}
 
-					} else {
+				} else {
 
-						if ( $mod[ 'is_home_page' ] ) {	// Static front page (singular post).
-
-							$base = $wp_rewrite->using_index_permalinks() ? 'index.php/' : '/';
-
-							$url = home_url( $base );
-
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'home_url for ' . $base . ' = ' . $url );
-							}
-						}
+					if ( $page_number > 1 ) {
 
 						$url = user_trailingslashit( trailingslashit( $url ) . trailingslashit( $wp_rewrite->pagination_base ) . $page_number );
 					}
+				}
 
-				} else {	// Is singular.
+			} else {
 
-					$page_total = $this->get_page_total( $mod );
+				if ( ! $using_permalinks || $have_query_args ) {
 
-					if ( $page_number > $page_total ) {	// Just in case.
+					if ( $page_number > 1 ) {
 
-						$page_number = $page_total;
+						/**
+						 * Note that the singular page query argument is named 'page' not 'paged'.
+						 */
+						$url = add_query_arg( 'page', $page_number, $url );
+					}
+				
+					if ( $mod[ 'comment_paged' ] > 1 ) {
+					
+						$url = add_query_arg( 'cpage', $mod[ 'comment_paged' ], $url );
 					}
 
-					global $wp_rewrite;
+				} else {
 
-					if ( ! $wp_rewrite->using_permalinks() || false !== strpos( $url, '?' ) ) {
-
-						$url = add_query_arg( 'page', $page_number, $url );
-
-					} else {
-
+					if ( $page_number > 1 ) {
+					
 						$url = user_trailingslashit( trailingslashit( $url ) . $page_number );
+					}
+				
+					if ( $mod[ 'comment_paged' ] > 1 ) {
+
+						$url = user_trailingslashit( trailingslashit( $url ) . $wp_rewrite->comments_pagination_base . '-' . $mod[ 'comment_paged' ] );
 					}
 				}
 			}
@@ -2364,61 +2367,24 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $url;
 		}
 
-		public function get_page_number( $mod = false, $add_page = true ) {
-
-			if ( ! is_array( $mod ) ) {	// Just in case.
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
-				}
-
-				$mod = $this->p->page->get_mod( $mod );
-			}
+		/**
+		 * See WpssoUtil->get_url_paged().
+		 * See WpssoUtilInline->get_defaults().
+		 */
+		public function get_page_number( array $mod, $add_page = true ) {
 
 			$page_number = 1;
 
 			if ( is_numeric( $add_page ) ) {
 
-				$page_number = $add_page;
+				$page_number = $add_page > 1 ? $add_page : 1;
 
-			} elseif ( isset( $mod[ 'query_vars' ][ 'page' ] ) ) {	// Can be 0.
+			} else {
 
-				$page_number = $mod[ 'query_vars' ][ 'page' ];
+				$page_number = $mod[ 'paged' ];
 			}
 
-			return $page_number > 1 ? $page_number : 1;	// Always return a positive number.
-		}
-
-		public function get_page_total( $mod = false ) {
-
-			if ( ! is_array( $mod ) ) {	// Just in case.
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
-				}
-
-				$mod = $this->p->page->get_mod( $mod );
-			}
-
-			$total_pages = 1;
-
-			if ( $mod[ 'is_post' ] ) {
-
-				if ( ! empty( $mod[ 'id' ] ) ) {
-
-					$post_obj = self::get_post_object( $mod[ 'id' ] );
-
-					$total_pages = substr_count( $post_obj->post_content, '<!--nextpage-->' ) + 1;
-				}
-
-			} elseif ( isset( $mod[ 'max_num_pages' ] ) ) {	// Can be 0.
-
-				$page_number = $mod[ 'max_num_pages' ];
-			}
-
-			return $total_pages > 1 ? $total_pages : 1;	// Always return a positive number.
+			return $page_number;
 		}
 
 		private function check_url_string( $url, $context ) {
@@ -2705,7 +2671,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			foreach ( $max_opt_keys as $opt_key ) {
 
-				if ( ! empty( $mod[ 'id' ] ) && ! empty( $mod[ 'obj' ] ) ) {
+				if ( $mod[ 'id' ] && is_object( $mod[ 'obj' ] ) ) {
 
 					$max_val = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $opt_key );	// Returns null if an index key is not found.
 
@@ -3299,11 +3265,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			/**
 			 * We do not want to validate settings pages in the back-end, so validators are only provided for known
-			 * modules (post, term, and user). If we're on the front-end, validating the current webpage URL is fine.
+			 * modules (comment, post, term, and user). If we're on the front-end, validating the current webpage URL
+			 * is fine.
 			 */
 			if ( is_admin() ) {
 
-				if ( empty( $mod[ 'obj' ] ) ) {
+				if ( ! is_object( $mod[ 'obj' ] ) ) {
 
 					return array();
 				}

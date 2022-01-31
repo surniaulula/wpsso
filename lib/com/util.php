@@ -2772,19 +2772,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				$mod_salt .= '_' . $mod[ 'name' ] . ':';
 
-				if ( false === $mod[ 'id' ] ) {
+				if ( is_bool( $mod[ 'id' ] ) ) {
 
-					$mod_salt .= 'false';
+					$mod_salt .= $mod[ 'id' ] ? 'true' : 'false';
 
-				} elseif ( true === $mod[ 'id' ] ) {
-
-					$mod_salt .= 'true';
-
-				} elseif ( empty( $mod[ 'id' ] ) ) {
-
-					$mod_salt .= '0';
-
-				} else {
+				} elseif ( is_numeric( $mod[ 'id' ] ) ) {	// Just in case.
 
 					$mod_salt .= $mod[ 'id' ];
 				}
@@ -2795,11 +2787,21 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mod_salt .= '_tax:' . $mod[ 'tax_slug' ];
 			}
 
+			if ( ! empty( $mod[ 'paged' ] ) ) {
+
+				$mod_salt .= '_paged:' . $mod[ 'paged' ];
+			}
+
+			if ( ! empty( $mod[ 'comment_paged' ] ) ) {
+
+				$mod_salt .= '_cpage:' . $mod[ 'comment_paged' ];
+			}
+
 			if ( ! is_numeric( $mod[ 'id' ] ) || ! $mod[ 'id' ] > 0 ) {
 
 				if ( ! empty( $mod[ 'is_home' ] ) ) {	// Home page (static or blog archive).
 
-					$mod_salt .= '_home';
+					$mod_salt .= '_home:true';
 				}
 
 				if ( ! empty( $canonical_url ) ) {
@@ -2940,28 +2942,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			return $opts;
-		}
-
-		public static function get_page_info( $use_post = false ) {
-
-			$is_post_page = $is_term_page = $is_user_page = false;
-
-			/**
-			 * Optimize and stop on first match.
-			 */
-			if ( ! $is_post_page = self::is_post_page( $use_post ) ) {
-
-				if ( ! $is_term_page = self::is_term_page() ) {
-
-					$is_user_page = self::is_user_page();
-				}
-			}
-
-			return array(
-				'post_page' => $is_post_page,
-				'term_page' => $is_term_page,
-				'user_page' => $is_user_page
-			);
 		}
 
 		/**

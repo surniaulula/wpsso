@@ -126,7 +126,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				$this->p->debug->log_arr( '$vars', $vars );
 			}
 
-			unset( $vars );
+			unset( $atts, $extras, $vars );
 
 			return str_replace( $search, $replace, $subject );
 		}
@@ -155,21 +155,29 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 			$local_prevent_recursion = true;
 
-			$add_page    = isset( $atts[ 'add_page' ] ) ? $atts[ 'add_page' ] : true;
-			$def_sep     = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
-			$sep         = isset( $atts[ 'title_sep' ] ) ? $atts[ 'title_sep' ] : $def_sep;
-			$page_number = $this->u->get_page_number( $mod, $add_page );
-			$page_total  = $this->u->get_page_total( $mod );
+			$date_format         = get_option( 'date_format' );
+			$time_format         = get_option( 'time_format' );
+			$add_page            = isset( $atts[ 'add_page' ] ) ? $atts[ 'add_page' ] : true;
+			$page_number         = $this->u->get_page_number( $mod, $add_page );
+			$page_total          = $mod[ 'paged_total' ];
+			$def_sep             = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
+			$sep                 = isset( $atts[ 'title_sep' ] ) ? $atts[ 'title_sep' ] : $def_sep;
+			$canonical_url       = empty( $atts[ 'canonical_url' ] ) ? $this->u->get_canonical_url( $mod, $add_page ) : $atts[ 'canonical_url' ];
+			$canonical_short_url = empty( $atts[ 'canonical_short_url' ] ) ? $this->u->get_canonical_short_url( $mod, $add_page ) : $atts[ 'canonical_short_url' ];
+			$sharing_url         = empty( $atts[ 'sharing_url' ] ) ? $this->u->get_sharing_url( $mod, $add_page, $atts ) : $atts[ 'sharing_url' ];
+			$sharing_short_url   = empty( $atts[ 'sharing_short_url' ] ) ? $this->u->get_sharing_short_url( $mod, $add_page, $atts ) : $atts[ 'sharing_short_url' ];
 
+			/**
+			 * When possible, try and provide the same variable names as Yoast SEO.
+			 *
+			 * See https://yoast.com/help/list-available-snippet-variables-yoast-seo/.
+			 * See wordpress/wp-content/plugins/wordpress-seo/inc/class-wpseo-replace-vars.php.
+			 */
 			$ret = array(
-				'canonical_url'       => empty( $atts[ 'canonical_url' ] ) ?
-					$this->u->get_canonical_url( $mod, $add_page ) : $atts[ 'canonical_url' ],
-				'canonical_short_url' => empty( $atts[ 'canonical_short_url' ] ) ?
-					$this->u->get_canonical_short_url( $mod, $add_page ) : $atts[ 'canonical_short_url' ],
-				'sharing_url'         => empty( $atts[ 'sharing_url' ] ) ?
-					$this->u->get_sharing_url( $mod, $add_page, $atts ) : $atts[ 'sharing_url' ],
-				'sharing_short_url'   => empty( $atts[ 'sharing_short_url' ] ) ?
-					$this->u->get_sharing_short_url( $mod, $add_page, $atts ) : $atts[ 'sharing_short_url' ],
+				'canonical_url'       => $canonical_url,
+				'canonical_short_url' => $canonical_short_url,
+				'sharing_url'         => $sharing_url,
+				'sharing_short_url'   => $sharing_short_url,
 				'short_url'           => '',	// Placeholder.
 				'request_url'         => is_admin() ? $canonical_url : SucomUtil::get_url( $remove_tracking = true ),
 				'sitename'            => SucomUtil::get_site_name( $this->p->options, $mod ),
@@ -177,9 +185,11 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				'sitedesc'            => SucomUtil::get_site_description( $this->p->options, $mod ),
 				'sep'                 => $sep,
 				'title'               => $this->p->page->get_the_title( $mod, $sep ),
+				'page'                => sprintf( $sep . ' ' . __( 'Page %1$d of %2$d', 'wpsso' ), $page_number, $page_total ),
 				'pagenumber'          => $page_number,
 				'pagetotal'           => $page_total,
-				'page'                => sprintf( $sep . ' ' . __( 'Page %1$d of %2$d', 'wpsso' ), $page_number, $page_total ),
+				'post_date'           => empty( $mod[ 'post_time' ] ) ? '' : mysql2date( $date_format, $mod[ 'post_time' ] ),
+				'post_modified'       => empty( $mod[ 'post_modified_time' ] ) ? '' : mysql2date( $date_format, $mod[ 'post_modified_time' ] ),
 				'query_search'        => isset( $mod[ 'query_vars' ][ 's' ] ) ? $mod[ 'query_vars' ][ 's' ] : '',
 				'query_year'          => isset( $mod[ 'query_vars' ][ 'year' ] ) ? $mod[ 'query_vars' ][ 'year' ] : '',
 				'query_month'         => '',	// Placeholder.
@@ -189,7 +199,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 			);
 
 			/**
-			 * See the WordPress single_month_title() function.
+			 * See https://developer.wordpress.org/reference/functions/single_month_title/.
 			 */
 			if ( empty( $ret[ 'query_year' ] ) && empty( $ret[ 'query_monthnum' ] ) ) {
 
