@@ -46,15 +46,23 @@ if ( ! class_exists( 'WpssoMessagesTooltipSite' ) ) {
 
 					break;
 
+				/**
+				 * This help text is also used for the WPSSO OPM add-on 'tooltip-meta-org_logo_url' help text.
+				 */
 				case 'tooltip-site_org_logo_url':	// Organization Logo URL.
 
 					$text = __( 'A URL for this organization\'s logo image that Google can show in its search results and <em>Knowledge Graph</em>.', 'wpsso' );
 
+					$text .= __( 'The image must be at least 112x112px for Google, but preferably much larger than this.', 'wpsso' );
+
 					break;
 
+				/**
+				 * This help text is also used for the WPSSO OPM add-on 'tooltip-meta-org_banner_url' help text.
+				 */
 				case 'tooltip-site_org_banner_url':	// Organization Banner URL.
 
-					$text = __( 'A URL for this organization\'s banner image - <strong>measuring exactly 600x60px</strong> - that Google News can show for Schema Article type content from this publisher.', 'wpsso' );
+					$text = __( 'A URL for this organization\'s banner image <strong>measuring exactly 600x60px</strong>, that Google News can show for Schema Article type content from this publisher.', 'wpsso' );
 
 					break;
 

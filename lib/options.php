@@ -1139,10 +1139,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 */
 			$this->p->util->add_image_url_size( $opts, $img_url_keys );
 
-			$this->check_banner_image_size( $opts );
+			$this->check_site_org_image_sizes( $opts );
 		}
 
-		private function check_banner_image_size( $opts ) {
+		private function check_site_org_image_sizes( $opts ) {
 
 			/**
 			 * Skip if notices have already been shown.
@@ -1165,34 +1165,80 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 *	'og:image:size_name' => null,
 			 * );
 			 */
-			$mt_single_image = $this->p->media->get_mt_img_pre_url( $opts, $img_pre = 'site_org_banner' );
-			$first_image_url = SucomUtil::get_first_mt_media_url( $mt_single_image );
+			foreach ( array ( 'site_org_logo', 'site_org_banner' ) as $img_pre ) {
 
-			if ( ! empty( $first_image_url ) ) {
+				$mt_single_image = $this->p->media->get_mt_img_pre_url( $opts, $img_pre );
+				$first_image_url = SucomUtil::get_first_mt_media_url( $mt_single_image );
 
-				$image_href         = '<a href="' . $first_image_url . '">' . $first_image_url . '</a>';
-				$image_dims         = $mt_single_image[ 'og:image:width' ] . 'x' . $mt_single_image[ 'og:image:height' ] . 'px';
-				$required_dims      = '600x60px';
-				$settings_page_link = $this->p->util->get_admin_url( 'essential', _x( 'Organization Banner URL', 'option label', 'wpsso' ) );
+				if ( 'site_org_logo' === $img_pre ) {
 
-				if ( $image_dims !== $required_dims ) {
+					$option_label = _x( 'Organization Logo URL', 'option label', 'wpsso' );
+					$option_link  = $this->p->util->get_admin_url( 'essential', $option_label );
+					$mininum_dims = '112x112px';
 
+				} elseif ( 'site_org_banner' === $img_pre ) {
+				
+					$option_label  = _x( 'Organization Banner URL', 'option label', 'wpsso' );
+					$option_link   = $this->p->util->get_admin_url( 'essential', $option_label );
+					$required_dims = '600x60px';
+				}
+
+				if ( empty( $first_image_url ) ) {
+
+					// translators: %s is a link to the option label.
+					$notice_msg = sprintf( __( 'The %s image URL is missing and required.', 'wpsso' ), $option_link ) . ' ';
+	
+					$this->p->notice->err( $notice_msg );
+
+				} else {
+					
+					$image_href   = '<a href="' . $first_image_url . '">' . $first_image_url . '</a>';
+					$image_width  = $mt_single_image[ 'og:image:width' ];
+					$image_height = $mt_single_image[ 'og:image:height' ];
+					$image_dims   = $image_width . 'x' . $image_height . 'px';
+					$notice_key   = 'invalid-image-dimensions-' . $image_dims . '-' . $first_image_url;
+					
 					if ( '-1x-1px' === $image_dims ) {
 
-						$error_msg = sprintf( __( 'The %s image dimensions cannot be determined.', 'wpsso' ), $settings_page_link ) . ' ';
+						// translators: %s is a link to the option label.
+						$notice_msg = sprintf( __( 'The %s image dimensions cannot be determined.', 'wpsso' ), $option_link ) . ' ';
+	
+						// translators: %s is the image URL.
+						$notice_msg .= sprintf( __( 'Please make sure this site can access %s using the PHP getimagesize() function.',
+							'wpsso' ), $image_href );
+	
+						$this->p->notice->err( $notice_msg, null, $notice_key );
+	
+					} elseif ( 'site_org_logo' === $img_pre ) {
+					
+						if ( $image_width < 112 || $image_height < 112 ) {
+	
+							// translators: %1$s is a link to the option label.
+							$notice_msg = sprintf( __( 'The %1$s image dimensions are %2$s and must be greater than %3$s.',
+								'wpsso' ), $option_link, $image_dims, $mininum_dims ) . ' ';
+	
+							// translators: %s is the image URL.
+							$notice_msg .= sprintf( __( 'Please correct the %s logo image or select a different logo image.',
+								'wpsso' ), $image_href );
+	
+							$this->p->notice->err( $notice_msg, null, $notice_key );
+						}
 
-						$error_msg .= sprintf( __( 'Please make sure this site can access %s using the PHP getimagesize() function.', 'wpsso' ),
-							$image_href );
+					} elseif ( 'site_org_banner' === $img_pre ) {
 
-					} else {
+						if ( $image_dims !== $required_dims ) {
 
-						$error_msg = sprintf( __( 'The %1$s image dimensions are %2$s and must be exactly %3$s.', 'wpsso' ), $settings_page_link,
-							$image_dims, $required_dims ) . ' ';
+							// translators: %1$s is a link to the option label.
+							$notice_msg = sprintf( __( 'The %1$s image dimensions are %2$s and must be exactly %3$s.',
+								'wpsso' ), $option_link, $image_dims, $required_dims ) . ' ';
 
-						$error_msg .= sprintf( __( 'Please correct the %s banner image.', 'wpsso' ), $image_href );
+							// translators: %s is the image URL.
+							$notice_msg .= sprintf( __( 'Please correct the %s banner image or select a different banner image.',
+								'wpsso' ), $image_href );
+
+							$this->p->notice->err( $notice_msg, null, $notice_key );
+						}
 					}
-
-					$this->p->notice->err( $error_msg );
 				}
 			}
 		}

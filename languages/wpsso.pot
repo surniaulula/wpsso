@@ -5636,12 +5636,12 @@ msgctxt "option label"
 msgid "WebSite Publisher Person"
 msgstr ""
 
-#: lib/admin.php:2926
+#: lib/admin.php:2926 lib/options.php:1175
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:2931 lib/options.php:1176
+#: lib/admin.php:2931 lib/options.php:1181
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
@@ -8868,63 +8868,69 @@ msgid ""
 "page."
 msgstr ""
 
-#: lib/messages-tooltip-site.php:51
+#: lib/messages-tooltip-site.php:54
 msgid ""
 "A URL for this organization's logo image that Google can show in its search "
 "results and <em>Knowledge Graph</em>."
 msgstr ""
 
-#: lib/messages-tooltip-site.php:57
+#: lib/messages-tooltip-site.php:56
 msgid ""
-"A URL for this organization's banner image - <strong>measuring exactly "
-"600x60px</strong> - that Google News can show for Schema Article type "
-"content from this publisher."
+"The image must be at least 112x112px for Google, but preferably much larger "
+"than this."
 msgstr ""
 
-#: lib/messages-tooltip-site.php:63
+#: lib/messages-tooltip-site.php:65
+msgid ""
+"A URL for this organization's banner image <strong>measuring exactly "
+"600x60px</strong>, that Google News can show for Schema Article type content "
+"from this publisher."
+msgstr ""
+
+#: lib/messages-tooltip-site.php:71
 msgid ""
 "Google does not recognize most Schema Organization sub-types as valid "
 "organizations."
 msgstr ""
 
-#: lib/messages-tooltip-site.php:65
+#: lib/messages-tooltip-site.php:73
 msgid ""
 "The site Schema Organization type should be Organization and not a sub-type."
 msgstr ""
 
-#: lib/messages-tooltip-site.php:71
+#: lib/messages-tooltip-site.php:79
 msgid "Select an optional location for this organization."
 msgstr ""
 
-#: lib/messages-tooltip-site.php:79
+#: lib/messages-tooltip-site.php:87
 msgid "Select a user for the Schema Person publisher markup."
 msgstr ""
 
-#: lib/messages-tooltip-site.php:81
+#: lib/messages-tooltip-site.php:89
 msgid "The available Person list includes all users in the %1$s or %2$s roles."
 msgstr ""
 
-#: lib/messages-tooltip-site.php:82
+#: lib/messages-tooltip-site.php:90
 msgctxt "user role"
 msgid "Administrator"
 msgstr ""
 
-#: lib/messages-tooltip-site.php:82
+#: lib/messages-tooltip-site.php:90
 msgctxt "user role"
 msgid "Editor"
 msgstr ""
 
-#: lib/messages-tooltip-site.php:88
+#: lib/messages-tooltip-site.php:96
 msgid "Select a Schema type for the publisher of content for this website."
 msgstr ""
 
-#: lib/messages-tooltip-site.php:90
+#: lib/messages-tooltip-site.php:98
 msgid ""
 "Traditionally, the Schema Organization type is selected for business "
 "websites, where-as the Schema Person type is selected for personal websites."
 msgstr ""
 
-#: lib/messages-tooltip-site.php:96
+#: lib/messages-tooltip-site.php:104
 msgid ""
 "Individual sites/blogs may use this value as a default (when the plugin is "
 "first activated), if the current site/blog option value is blank, or force "
@@ -9945,158 +9951,177 @@ msgstr ""
 msgid "Plugin settings have been upgraded and saved."
 msgstr ""
 
-#: lib/options.php:1182
+#. translators: %s is a link to the option label.
+#: lib/options.php:1189
+msgid "The %s image URL is missing and required."
+msgstr ""
+
+#. translators: %s is a link to the option label.
+#: lib/options.php:1204
 msgid "The %s image dimensions cannot be determined."
 msgstr ""
 
-#: lib/options.php:1184
+#. translators: %s is the image URL.
+#: lib/options.php:1207
 msgid ""
 "Please make sure this site can access %s using the PHP getimagesize() "
 "function."
 msgstr ""
 
-#: lib/options.php:1189
+#. translators: %1$s is a link to the option label.
+#: lib/options.php:1217
+msgid "The %1$s image dimensions are %2$s and must be greater than %3$s."
+msgstr ""
+
+#. translators: %s is the image URL.
+#: lib/options.php:1221
+msgid "Please correct the %s logo image or select a different logo image."
+msgstr ""
+
+#. translators: %1$s is a link to the option label.
+#: lib/options.php:1232
 msgid "The %1$s image dimensions are %2$s and must be exactly %3$s."
 msgstr ""
 
-#: lib/options.php:1192
-msgid "Please correct the %s banner image."
+#. translators: %s is the image URL.
+#: lib/options.php:1236
+msgid "Please correct the %s banner image or select a different banner image."
 msgstr ""
 
-#: lib/options.php:1225
+#: lib/options.php:1271
 msgid ""
 "The value of option \"%s\" must be alpha-numeric - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1226
+#: lib/options.php:1272
 msgid ""
 "The value of option \"%s\" must be blank or numeric - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1227
+#: lib/options.php:1273
 msgid ""
 "The value of option \"%s\" must be a CSS color code - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1228
+#: lib/options.php:1274
 msgid ""
 "The value of option \"%s\" must be a comma-delimited list of URL(s) - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:1229
+#: lib/options.php:1275
 msgid ""
 "The value of option \"%s\" must be a yyyy-mm-dd date - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1230
+#: lib/options.php:1276
 msgid ""
 "The value of option \"%s\" must be HTML code - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1231
+#: lib/options.php:1277
 msgid ""
 "The value of option \"%s\" must be an image ID - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1232
+#: lib/options.php:1278
 msgid ""
 "The value of option \"%s\" must be a valid image URL - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1233
+#: lib/options.php:1279
 msgid ""
 "The value of option \"%s\" cannot be an empty string - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1234
+#: lib/options.php:1280
 msgid ""
 "The value of option \"%s\" must be numeric - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1235
+#: lib/options.php:1281
 msgid ""
 "The value of option \"%1$s\" must be equal to or greather than %2$s - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:1236
+#: lib/options.php:1282
 msgid ""
 "The value of option \"%s\" must be a hh:mm time - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1237
+#: lib/options.php:1283
 msgid ""
 "The value of option \"%s\" must be a valid URL - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1717
+#: lib/options.php:1763
 msgctxt "option value"
 msgid "Image:"
 msgstr ""
 
-#: lib/options.php:1721
+#: lib/options.php:1767
 msgctxt "option value"
 msgid "Caption:"
 msgstr ""
 
-#: lib/options.php:1725
+#: lib/options.php:1771
 msgctxt "option value"
 msgid "No Title"
 msgstr ""
 
-#: lib/options.php:1729
+#: lib/options.php:1775
 msgctxt "option value"
 msgid "No Description."
 msgstr ""
 
-#: lib/options.php:1733
+#: lib/options.php:1779
 msgctxt "option value"
 msgid "Search Results %%sep%% %%query_search%%"
 msgstr ""
 
-#: lib/options.php:1737
+#: lib/options.php:1783
 msgctxt "option value"
 msgid "Search results for &#8220;%%query_search%%&#8221;."
 msgstr ""
 
-#: lib/options.php:1741
+#: lib/options.php:1787
 msgctxt "option value"
 msgid "%%query_year%%"
 msgstr ""
 
-#: lib/options.php:1745
+#: lib/options.php:1791
 msgctxt "option value"
 msgid "Yearly archive for %%query_year%%."
 msgstr ""
 
-#: lib/options.php:1749
+#: lib/options.php:1795
 msgctxt "option value"
 msgid "%%query_month%% %%query_year%%"
 msgstr ""
 
-#: lib/options.php:1753
+#: lib/options.php:1799
 msgctxt "option value"
 msgid "Monthly archive for %%query_month%%, %%query_year%%."
 msgstr ""
 
-#: lib/options.php:1757
+#: lib/options.php:1803
 msgctxt "option value"
 msgid "%%query_month%% %%query_day%%, %%query_year%%"
 msgstr ""
 
-#: lib/options.php:1761
+#: lib/options.php:1807
 msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr ""

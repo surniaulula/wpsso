@@ -2922,7 +2922,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			 * Website organization.
 			 */
 			$table_rows[ 'site_org_logo_url' ] = $form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
-				$form->get_th_html_locale( '<a href="https://developers.google.com/structured-data/customize/logos">' .
+				$form->get_th_html_locale( '<a href="https://developers.google.com/search/docs/advanced/structured-data/logo">' .
 				_x( 'Organization Logo URL', 'option label', 'wpsso' ) . '</a>', $css_class = '', $css_id = 'site_org_logo_url' ) . 
 				'<td>' . $form->get_input_locale( 'site_org_logo_url', $css_class = 'wide is_required' ) . '</td>';
 
