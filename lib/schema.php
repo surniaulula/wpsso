@@ -609,17 +609,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				} elseif ( $mod[ 'is_post' ] ) {
 
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'mod is post' );
-					}
-
 					if ( $mod[ 'post_type' ] ) {	// Just in case.
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'mod has post type = ' . $mod[ 'post_type' ] );
-						}
 
 						if ( $mod[ 'is_post_type_archive' ] ) {	// The post ID may be 0.
 

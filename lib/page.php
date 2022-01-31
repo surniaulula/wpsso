@@ -1133,7 +1133,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( empty( $desc_text ) ) {
 
-				if ( $mod[ 'is_post' ] ) {
+				if ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).
+
+					$desc_text = SucomUtil::get_site_description( $this->p->options );
+
+				} elseif ( $mod[ 'is_post' ] ) {
 
 					if ( $mod[ 'is_post_type_archive' ] ) {	// The post ID may be 0.
 
@@ -1149,7 +1153,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 							}
 						}
 
-					} else {
+					} elseif ( $mod[ 'id' ] ) {
 
 						$desc_text = $this->get_the_excerpt( $mod );
 
@@ -1234,10 +1238,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 						$desc_text = $user_obj->description;
 					}
-
-				} elseif ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).
-
-					$desc_text = SucomUtil::get_site_description( $this->p->options );
 
 				} elseif ( $mod[ 'is_search' ] ) {
 
@@ -1433,7 +1433,16 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				SucomUtil::protect_filter_value( 'wp_title', $auto_unprotect = false );
 			}
 
-			if ( $mod[ 'is_post' ] ) {
+			if ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).
+
+				$title_text = SucomUtil::get_site_name( $this->p->options );
+
+				if ( $filter_title ) {
+
+					$title_text = $this->p->util->safe_apply_filters( array( 'wp_title', $title_text, $title_sep, $seplocation = 'right' ), $mod );
+				}
+
+			} elseif ( $mod[ 'is_post' ] ) {
 
 				if ( $mod[ 'is_post_type_archive' ] ) {	// The post ID may be 0.
 
@@ -1502,15 +1511,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					}
 				}
 
-			} elseif ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).
-
-				$title_text = SucomUtil::get_site_name( $this->p->options );
-
-				if ( $filter_title ) {
-
-					$title_text = $this->p->util->safe_apply_filters( array( 'wp_title', $title_text, $title_sep, $seplocation = 'right' ), $mod );
-				}
-
 			} elseif ( $mod[ 'is_search' ] ) {
 
 				$title_text = $this->p->opt->get_text( 'plugin_search_page_title' );
@@ -1531,15 +1531,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 						$title_text = $this->p->opt->get_text( 'plugin_day_page_title' );
 					}
-
-				} else {
-
-					$title_text = wp_title( $title_sep, $display = false, $seplocation = 'right' );
 				}
-
-			} else {
-
-				$title_text = wp_title( $title_sep, $display = false, $seplocation = 'right' );
 			}
 
 			if ( empty( $title_text ) ) {

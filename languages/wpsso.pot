@@ -10130,7 +10130,7 @@ msgstr ""
 msgid "Page %s"
 msgstr ""
 
-#: lib/page.php:1641
+#: lib/page.php:1633
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] ""
@@ -10147,7 +10147,7 @@ msgid ""
 "post ID %3$d (%4$s)."
 msgstr ""
 
-#: lib/post.php:911 lib/post.php:1554 lib/schema.php:3510 lib/term.php:660
+#: lib/post.php:911 lib/post.php:1554 lib/schema.php:3500 lib/term.php:660
 #: lib/user.php:636
 msgid "checking meta tags"
 msgstr ""
@@ -10451,18 +10451,18 @@ msgstr ""
 msgid "adding schema"
 msgstr ""
 
-#: lib/schema.php:1725
+#: lib/schema.php:1715
 msgid "adding schema %s #%d image"
 msgstr ""
 
-#: lib/schema.php:1836
+#: lib/schema.php:1826
 msgid ""
 "Please note that although the Schema standard allows the subject of a review "
 "to be any Schema type, <a href=\"%1$s\">Google does not allow reviews for "
 "the Schema %2$s type</a>."
 msgstr ""
 
-#: lib/schema.php:1863
+#: lib/schema.php:1853
 msgid "adding reviewed subject image"
 msgstr ""
 
