@@ -251,7 +251,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 10.0.0-a.2 (2022/01/30)**
+**Version 10.0.0-b.1 (2022/01/31)**
 
 * **New Features**
 	* Added a new SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Default Text tab:
@@ -271,8 +271,18 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed caching salt value and permalink URL for posts with multiple comment pages.
 * **Developer Notes**
+	* Updated the `$mod` array with additional elements:
+		* 'paged'
+		* 'paged_total'
+		* 'comment_paged'
+		* 'post_type_label_plural'
+		* 'post_type_label_single'
+		* 'tax_label_plural'
+		* 'tax_label_single'
 	* Refactored several `Wpsso` class methods.
 	* Refactored the `WpssoTerm->get_public_ids()` method.
+	* Refactored the `WpssoUtil->get_canonical_url()` method.
+	* Refactored the `WpssoUtil->get_url_paged()` method.
 	* Refactored the `SucomUtil::get_locale()` method.
 	* Refactored the `SucomUtilWP::get_post_types()` method.
 	* Refactored the `SucomUtilWP::get_taxonomies()` method.
@@ -914,9 +924,9 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 10.0.0-a.2 =
+= 10.0.0-b.1 =
 
-(2022/01/30) Added a new SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Default Text tab. Fixed caching salt value and permalink URL for posts with multiple comment pages.
+(2022/01/31) Added a new SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Default Text tab. Fixed caching salt value and permalink URL for posts with multiple comment pages.
 
 = 9.15.0 =
 
