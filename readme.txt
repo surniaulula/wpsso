@@ -283,6 +283,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Refactored the `WpssoTerm->get_public_ids()` method.
 	* Refactored the `WpssoUtil->get_canonical_url()` method.
 	* Refactored the `WpssoUtil->get_url_paged()` method.
+	* Refactored the `WpssoOptions->check_site_org_image_sizes()` method to check both logo and banner images.
 	* Refactored the `SucomUtil::get_locale()` method.
 	* Refactored the `SucomUtilWP::get_post_types()` method.
 	* Refactored the `SucomUtilWP::get_taxonomies()` method.
