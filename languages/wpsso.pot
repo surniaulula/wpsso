@@ -5641,7 +5641,7 @@ msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:2931 lib/options.php:1181
+#: lib/admin.php:2931 lib/options.php:1180
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
@@ -9952,17 +9952,17 @@ msgid "Plugin settings have been upgraded and saved."
 msgstr ""
 
 #. translators: %s is a link to the option label.
-#: lib/options.php:1189
+#: lib/options.php:1187
 msgid "The %s image URL is missing and required."
 msgstr ""
 
 #. translators: %s is a link to the option label.
-#: lib/options.php:1204
+#: lib/options.php:1202
 msgid "The %s image dimensions cannot be determined."
 msgstr ""
 
 #. translators: %s is the image URL.
-#: lib/options.php:1207
+#: lib/options.php:1205
 msgid ""
 "Please make sure this site can access %s using the PHP getimagesize() "
 "function."
@@ -9979,149 +9979,149 @@ msgid "Please correct the %s logo image or select a different logo image."
 msgstr ""
 
 #. translators: %1$s is a link to the option label.
-#: lib/options.php:1232
+#: lib/options.php:1234
 msgid "The %1$s image dimensions are %2$s and must be exactly %3$s."
 msgstr ""
 
 #. translators: %s is the image URL.
-#: lib/options.php:1236
+#: lib/options.php:1238
 msgid "Please correct the %s banner image or select a different banner image."
 msgstr ""
 
-#: lib/options.php:1271
+#: lib/options.php:1273
 msgid ""
 "The value of option \"%s\" must be alpha-numeric - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1272
+#: lib/options.php:1274
 msgid ""
 "The value of option \"%s\" must be blank or numeric - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1273
+#: lib/options.php:1275
 msgid ""
 "The value of option \"%s\" must be a CSS color code - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1274
+#: lib/options.php:1276
 msgid ""
 "The value of option \"%s\" must be a comma-delimited list of URL(s) - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:1275
+#: lib/options.php:1277
 msgid ""
 "The value of option \"%s\" must be a yyyy-mm-dd date - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1276
+#: lib/options.php:1278
 msgid ""
 "The value of option \"%s\" must be HTML code - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1277
+#: lib/options.php:1279
 msgid ""
 "The value of option \"%s\" must be an image ID - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1278
+#: lib/options.php:1280
 msgid ""
 "The value of option \"%s\" must be a valid image URL - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1279
+#: lib/options.php:1281
 msgid ""
 "The value of option \"%s\" cannot be an empty string - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1280
+#: lib/options.php:1282
 msgid ""
 "The value of option \"%s\" must be numeric - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1281
+#: lib/options.php:1283
 msgid ""
 "The value of option \"%1$s\" must be equal to or greather than %2$s - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:1282
+#: lib/options.php:1284
 msgid ""
 "The value of option \"%s\" must be a hh:mm time - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1283
+#: lib/options.php:1285
 msgid ""
 "The value of option \"%s\" must be a valid URL - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1763
+#: lib/options.php:1765
 msgctxt "option value"
 msgid "Image:"
 msgstr ""
 
-#: lib/options.php:1767
+#: lib/options.php:1769
 msgctxt "option value"
 msgid "Caption:"
 msgstr ""
 
-#: lib/options.php:1771
+#: lib/options.php:1773
 msgctxt "option value"
 msgid "No Title"
 msgstr ""
 
-#: lib/options.php:1775
+#: lib/options.php:1777
 msgctxt "option value"
 msgid "No Description."
 msgstr ""
 
-#: lib/options.php:1779
+#: lib/options.php:1781
 msgctxt "option value"
 msgid "Search Results %%sep%% %%query_search%%"
 msgstr ""
 
-#: lib/options.php:1783
+#: lib/options.php:1785
 msgctxt "option value"
 msgid "Search results for &#8220;%%query_search%%&#8221;."
 msgstr ""
 
-#: lib/options.php:1787
+#: lib/options.php:1789
 msgctxt "option value"
 msgid "%%query_year%%"
 msgstr ""
 
-#: lib/options.php:1791
+#: lib/options.php:1793
 msgctxt "option value"
 msgid "Yearly archive for %%query_year%%."
 msgstr ""
 
-#: lib/options.php:1795
+#: lib/options.php:1797
 msgctxt "option value"
 msgid "%%query_month%% %%query_year%%"
 msgstr ""
 
-#: lib/options.php:1799
+#: lib/options.php:1801
 msgctxt "option value"
 msgid "Monthly archive for %%query_month%%, %%query_year%%."
 msgstr ""
 
-#: lib/options.php:1803
+#: lib/options.php:1805
 msgctxt "option value"
 msgid "%%query_month%% %%query_day%%, %%query_year%%"
 msgstr ""
 
-#: lib/options.php:1807
+#: lib/options.php:1809
 msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr ""

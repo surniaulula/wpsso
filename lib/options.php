@@ -1174,13 +1174,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					$option_label = _x( 'Organization Logo URL', 'option label', 'wpsso' );
 					$option_link  = $this->p->util->get_admin_url( 'essential', $option_label );
-					$mininum_dims = '112x112px';
 
 				} elseif ( 'site_org_banner' === $img_pre ) {
 				
 					$option_label  = _x( 'Organization Banner URL', 'option label', 'wpsso' );
 					$option_link   = $this->p->util->get_admin_url( 'essential', $option_label );
-					$required_dims = '600x60px';
 				}
 
 				if ( empty( $first_image_url ) ) {
@@ -1211,11 +1209,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 	
 					} elseif ( 'site_org_logo' === $img_pre ) {
 					
+						$minimum_dims = '112x112px';
+
 						if ( $image_width < 112 || $image_height < 112 ) {
 	
 							// translators: %1$s is a link to the option label.
 							$notice_msg = sprintf( __( 'The %1$s image dimensions are %2$s and must be greater than %3$s.',
-								'wpsso' ), $option_link, $image_dims, $mininum_dims ) . ' ';
+								'wpsso' ), $option_link, $image_dims, $minimum_dims ) . ' ';
 	
 							// translators: %s is the image URL.
 							$notice_msg .= sprintf( __( 'Please correct the %s logo image or select a different logo image.',
@@ -1225,6 +1225,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						}
 
 					} elseif ( 'site_org_banner' === $img_pre ) {
+
+						$required_dims = '600x60px';
 
 						if ( $image_dims !== $required_dims ) {
 
