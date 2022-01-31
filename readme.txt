@@ -251,7 +251,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 10.0.0-a.1 (2022/01/30)**
+**Version 10.0.0-a.2 (2022/01/30)**
 
 * **New Features**
 	* Added a new SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Default Text tab:
@@ -269,7 +269,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Moved the SSO &gt; Social Pages &gt; Social and Search Sites metabox to the SSO &gt; General Settings page and removed SSO &gt; Social Pages from the menu.
 	* Removed the SSO &gt; General Settings &gt; Social and Search Sites &gt; Facebook &gt; Author Profile URL Field option.
 * **Bugfixes**
-	* None.
+	* Fixed caching salt value and permalink URL for posts with multiple comment pages.
 * **Developer Notes**
 	* Refactored several `Wpsso` class methods.
 	* Refactored the `WpssoTerm->get_public_ids()` method.
@@ -914,9 +914,9 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 10.0.0-a.1 =
+= 10.0.0-a.2 =
 
-(2022/01/30) Added a new SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Default Text tab.
+(2022/01/30) Added a new SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Default Text tab. Fixed caching salt value and permalink URL for posts with multiple comment pages.
 
 = 9.15.0 =
 
