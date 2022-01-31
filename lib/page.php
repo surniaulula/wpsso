@@ -398,7 +398,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			if ( empty( $mod[ 'paged_total' ] ) ) {	// False by default. Can be defined in WpssoPost->get_mod().
+			/**
+			 * The 'paged_total' can be pre-defined by WpssoPost->get_mod() for posts with content (ie. singular) and
+			 * paging in their content.
+			 */
+			if ( empty( $mod[ 'paged_total' ] ) ) {	// False by default.
 
 				$mod[ 'paged_total' ] = empty( $wp_query->max_num_pages ) ? 1 : $wp_query->max_num_pages;
 			}

@@ -2328,34 +2328,31 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					}
 				}
 
+			} elseif ( ! $using_permalinks || $have_query_args ) {
+
+				/**
+				 * Note that the singular page query argument is named 'page' not 'paged'.
+				 */
+				if ( $page_number > 1 ) {
+
+					$url = add_query_arg( 'page', $page_number, $url );
+				}
+			
+				if ( $mod[ 'comment_paged' ] > 1 ) {
+				
+					$url = add_query_arg( 'cpage', $mod[ 'comment_paged' ], $url );
+				}
+
 			} else {
 
-				if ( ! $using_permalinks || $have_query_args ) {
-
-					if ( $page_number > 1 ) {
-
-						/**
-						 * Note that the singular page query argument is named 'page' not 'paged'.
-						 */
-						$url = add_query_arg( 'page', $page_number, $url );
-					}
+				if ( $page_number > 1 ) {
 				
-					if ( $mod[ 'comment_paged' ] > 1 ) {
-					
-						$url = add_query_arg( 'cpage', $mod[ 'comment_paged' ], $url );
-					}
+					$url = user_trailingslashit( trailingslashit( $url ) . $page_number );
+				}
+			
+				if ( $mod[ 'comment_paged' ] > 1 ) {
 
-				} else {
-
-					if ( $page_number > 1 ) {
-					
-						$url = user_trailingslashit( trailingslashit( $url ) . $page_number );
-					}
-				
-					if ( $mod[ 'comment_paged' ] > 1 ) {
-
-						$url = user_trailingslashit( trailingslashit( $url ) . $wp_rewrite->comments_pagination_base . '-' . $mod[ 'comment_paged' ] );
-					}
+					$url = user_trailingslashit( trailingslashit( $url ) . $wp_rewrite->comments_pagination_base . '-' . $mod[ 'comment_paged' ] );
 				}
 			}
 
