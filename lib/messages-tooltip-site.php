@@ -58,7 +58,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSite' ) ) {
 					$text = __( 'A URL for this organization\'s logo image that Google can show in its search results and <em>Knowledge Graph</em>.', 'wpsso' );
 
 					// translators: %s is 600x60px.
-					$text .= sprintf( __( 'The image must be at least %s for Google, but preferably at least 1200x1200px.', 'wpsso' ), $minimum_dims );
+					$text .= sprintf( __( 'The image must be at least %s for Google, but preferably 1200x1200px or more.', 'wpsso' ), $minimum_dims );
 
 					break;
 

@@ -8877,8 +8877,7 @@ msgstr ""
 #. translators: %s is 600x60px.
 #: lib/messages-tooltip-site.php:61
 msgid ""
-"The image must be at least %s for Google, but preferably at least "
-"1200x1200px."
+"The image must be at least %s for Google, but preferably 1200x1200px or more."
 msgstr ""
 
 #. translators: %s is 600x60px.
