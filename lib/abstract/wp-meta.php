@@ -156,7 +156,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			'is_home_posts'          => false,	// Static posts page or blog archive page.
 			'is_month'               => false,
 			'is_post'                => false,	// Is post module.
-			'is_post_type_archive'   => false,	// Post is an archive.
+			'is_post_type_archive'   => false,	// Post is an archive page.
 			'is_public'              => true,
 			'is_search'              => false,
 			'is_term'                => false,	// Is term module.

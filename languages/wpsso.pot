@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 10.0.0-b.1\n"
+"Project-Id-Version: WPSSO Core 10.0.0-b.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -5365,7 +5365,7 @@ msgstr ""
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
-#: lib/admin.php:1312 lib/options.php:885 lib/register.php:162
+#: lib/admin.php:1312 lib/options.php:891 lib/register.php:162
 msgid "A background task will begin shortly to clear all caches."
 msgstr ""
 
@@ -5637,12 +5637,12 @@ msgctxt "option label"
 msgid "WebSite Publisher Person"
 msgstr ""
 
-#: lib/admin.php:2926 lib/options.php:1175
+#: lib/admin.php:2926 lib/options.php:1179
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:2931 lib/options.php:1180
+#: lib/admin.php:2931 lib/options.php:1184
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
@@ -6540,12 +6540,12 @@ msgid ""
 msgstr ""
 
 #: lib/media.php:1027 lib/post.php:695 lib/register.php:348 lib/term.php:536
-#: lib/user.php:495 lib/util.php:730 lib/util.php:2883
+#: lib/user.php:495 lib/util.php:730 lib/util.php:2853
 msgid "%s warning:"
 msgstr ""
 
 #: lib/media.php:1028 lib/post.php:696 lib/term.php:537 lib/user.php:496
-#: lib/util.php:731 lib/util.php:2884
+#: lib/util.php:731 lib/util.php:2854
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
@@ -9925,213 +9925,213 @@ msgid ""
 "default value."
 msgstr ""
 
-#: lib/options.php:728
+#: lib/options.php:729
 msgid ""
 "Option keys \"%1$s\" (%2$d) and \"%3$s\" (%4$d) have an aspect ratio of "
 "%5$s:1, which not equal to the required image ratio of %6$s:1."
 msgstr ""
 
-#: lib/options.php:737
+#: lib/options.php:738
 msgid ""
 "Option keys \"%1$s\" (%2$d) and \"%3$s\" (%4$d) have an aspect ratio of "
 "%5$s:1, which is equal to / or greater than the maximum image ratio of "
 "%6$s:1."
 msgstr ""
 
-#: lib/options.php:745
+#: lib/options.php:746
 msgid "These options have been reset to their default values."
 msgstr ""
 
-#: lib/options.php:779
+#: lib/options.php:780
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length - "
 "the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:884
+#: lib/options.php:890
 msgid "Plugin settings have been upgraded and saved."
 msgstr ""
 
 #. translators: %s is a link to the option label.
-#: lib/options.php:1187
-msgid "The %s image URL is missing and required."
+#: lib/options.php:1191
+msgid "The %s image is missing and required."
 msgstr ""
 
 #. translators: %s is a link to the option label.
-#: lib/options.php:1202
+#: lib/options.php:1206
 msgid "The %s image dimensions cannot be determined."
 msgstr ""
 
 #. translators: %s is the image URL.
-#: lib/options.php:1205
+#: lib/options.php:1209
 msgid ""
 "Please make sure this site can access %s using the PHP getimagesize() "
 "function."
 msgstr ""
 
 #. translators: %1$s is a link to the option label.
-#: lib/options.php:1217
+#: lib/options.php:1221
 msgid "The %1$s image dimensions are %2$s and must be greater than %3$s."
 msgstr ""
 
 #. translators: %s is the image URL.
-#: lib/options.php:1221
+#: lib/options.php:1225
 msgid "Please correct the %s logo image or select a different logo image."
 msgstr ""
 
 #. translators: %1$s is a link to the option label.
-#: lib/options.php:1234
+#: lib/options.php:1238
 msgid "The %1$s image dimensions are %2$s and must be exactly %3$s."
 msgstr ""
 
 #. translators: %s is the image URL.
-#: lib/options.php:1238
+#: lib/options.php:1242
 msgid "Please correct the %s banner image or select a different banner image."
 msgstr ""
 
-#: lib/options.php:1273
+#: lib/options.php:1277
 msgid ""
 "The value of option \"%s\" must be alpha-numeric - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1274
+#: lib/options.php:1278
 msgid ""
 "The value of option \"%s\" must be blank or numeric - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1275
+#: lib/options.php:1279
 msgid ""
 "The value of option \"%s\" must be a CSS color code - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1276
+#: lib/options.php:1280
 msgid ""
 "The value of option \"%s\" must be a comma-delimited list of URL(s) - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:1277
+#: lib/options.php:1281
 msgid ""
 "The value of option \"%s\" must be a yyyy-mm-dd date - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1278
+#: lib/options.php:1282
 msgid ""
 "The value of option \"%s\" must be HTML code - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1279
+#: lib/options.php:1283
 msgid ""
 "The value of option \"%s\" must be an image ID - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1280
+#: lib/options.php:1284
 msgid ""
 "The value of option \"%s\" must be a valid image URL - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1281
+#: lib/options.php:1285
 msgid ""
 "The value of option \"%s\" cannot be an empty string - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1282
+#: lib/options.php:1286
 msgid ""
 "The value of option \"%s\" must be numeric - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1283
+#: lib/options.php:1287
 msgid ""
 "The value of option \"%1$s\" must be equal to or greather than %2$s - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:1284
+#: lib/options.php:1288
 msgid ""
 "The value of option \"%s\" must be a hh:mm time - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1285
+#: lib/options.php:1289
 msgid ""
 "The value of option \"%s\" must be a valid URL - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1765
+#: lib/options.php:1769
 msgctxt "option value"
 msgid "Image:"
 msgstr ""
 
-#: lib/options.php:1769
+#: lib/options.php:1773
 msgctxt "option value"
 msgid "Caption:"
 msgstr ""
 
-#: lib/options.php:1773
+#: lib/options.php:1777
 msgctxt "option value"
 msgid "No Title"
 msgstr ""
 
-#: lib/options.php:1777
+#: lib/options.php:1781
 msgctxt "option value"
 msgid "No Description."
 msgstr ""
 
-#: lib/options.php:1781
+#: lib/options.php:1785
 msgctxt "option value"
 msgid "Search Results %%sep%% %%query_search%%"
 msgstr ""
 
-#: lib/options.php:1785
+#: lib/options.php:1789
 msgctxt "option value"
 msgid "Search results for &#8220;%%query_search%%&#8221;."
 msgstr ""
 
-#: lib/options.php:1789
+#: lib/options.php:1793
 msgctxt "option value"
 msgid "%%query_year%%"
 msgstr ""
 
-#: lib/options.php:1793
+#: lib/options.php:1797
 msgctxt "option value"
 msgid "Yearly archive for %%query_year%%."
 msgstr ""
 
-#: lib/options.php:1797
+#: lib/options.php:1801
 msgctxt "option value"
 msgid "%%query_month%% %%query_year%%"
 msgstr ""
 
-#: lib/options.php:1801
+#: lib/options.php:1805
 msgctxt "option value"
 msgid "Monthly archive for %%query_month%%, %%query_year%%."
 msgstr ""
 
-#: lib/options.php:1805
+#: lib/options.php:1809
 msgctxt "option value"
 msgid "%%query_month%% %%query_day%%, %%query_year%%"
 msgstr ""
 
-#: lib/options.php:1809
+#: lib/options.php:1813
 msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr ""
 
-#: lib/page.php:979
+#: lib/page.php:967
 msgid "Page %s"
 msgstr ""
 
-#: lib/page.php:1633
+#: lib/page.php:1635
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] ""
@@ -10148,7 +10148,7 @@ msgid ""
 "post ID %3$d (%4$s)."
 msgstr ""
 
-#: lib/post.php:911 lib/post.php:1554 lib/schema.php:3500 lib/term.php:660
+#: lib/post.php:911 lib/post.php:1554 lib/schema.php:3483 lib/term.php:660
 #: lib/user.php:636
 msgid "checking meta tags"
 msgstr ""
@@ -10452,18 +10452,18 @@ msgstr ""
 msgid "adding schema"
 msgstr ""
 
-#: lib/schema.php:1715
+#: lib/schema.php:1698
 msgid "adding schema %s #%d image"
 msgstr ""
 
-#: lib/schema.php:1826
+#: lib/schema.php:1809
 msgid ""
 "Please note that although the Schema standard allows the subject of a review "
 "to be any Schema type, <a href=\"%1$s\">Google does not allow reviews for "
 "the Schema %2$s type</a>."
 msgstr ""
 
-#: lib/schema.php:1853
+#: lib/schema.php:1836
 msgid "adding reviewed subject image"
 msgstr ""
 
@@ -11486,13 +11486,13 @@ msgid ""
 "provider to have the missing function installed."
 msgstr ""
 
-#: lib/util.php:2885
+#: lib/util.php:2855
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:2901
+#: lib/util.php:2871
 msgid ""
 "Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds "
 "to execute. This is longer than the recommended maximum of %3$.3f seconds "
@@ -11501,120 +11501,120 @@ msgid ""
 "optimal PHP code."
 msgstr ""
 
-#: lib/util.php:2903
+#: lib/util.php:2873
 msgid ""
 "Activating the %1$s plugin and clearing the %2$s cache (to re-apply the "
 "filter) may provide more information on the specific hook(s) or PHP code "
 "affecting performance."
 msgstr ""
 
-#: lib/util.php:3302
+#: lib/util.php:3272
 msgctxt "option label"
 msgid "The AMP Project Validator"
 msgstr ""
 
-#: lib/util.php:3303
+#: lib/util.php:3273
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr ""
 
-#: lib/util.php:3307
+#: lib/util.php:3277
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr ""
 
-#: lib/util.php:3308
+#: lib/util.php:3278
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/util.php:3312
+#: lib/util.php:3282
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr ""
 
-#: lib/util.php:3313
+#: lib/util.php:3283
 msgctxt "validator type"
 msgid "Microdata"
 msgstr ""
 
-#: lib/util.php:3317
+#: lib/util.php:3287
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr ""
 
-#: lib/util.php:3318
+#: lib/util.php:3288
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr ""
 
-#: lib/util.php:3322
+#: lib/util.php:3292
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/util.php:3323
+#: lib/util.php:3293
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr ""
 
-#: lib/util.php:3327
+#: lib/util.php:3297
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/util.php:3328
+#: lib/util.php:3298
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/util.php:3332
+#: lib/util.php:3302
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/util.php:3333
+#: lib/util.php:3303
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr ""
 
-#: lib/util.php:3337
+#: lib/util.php:3307
 msgctxt "option label"
 msgid "Schema Markup Validator"
 msgstr ""
 
-#: lib/util.php:3338
+#: lib/util.php:3308
 msgctxt "validator type"
 msgid "Schema Markup"
 msgstr ""
 
-#: lib/util.php:3342
+#: lib/util.php:3312
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/util.php:3343
+#: lib/util.php:3313
 msgctxt "validator type"
 msgid "Twitter Card"
 msgstr ""
 
-#: lib/util.php:3348
+#: lib/util.php:3318
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr ""
 
-#: lib/util.php:3349
+#: lib/util.php:3319
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name.
-#: lib/util.php:3511
+#: lib/util.php:3481
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3521
+#: lib/util.php:3491
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 

@@ -2061,206 +2061,176 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$cache_salt = false;
 
-			if ( ! empty( $mod[ 'name' ] ) && ! empty( $mod[ 'id' ] ) ) {
+			if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 
 				$cache_salt = self::get_mod_salt( $mod ) . '_add_page:' . $add_page;
 
-				if ( ! empty( $local_cache[ $cache_salt ] ) ) {
+				if ( isset( $local_cache[ $cache_salt ] ) ) {
 
 					return $local_cache[ $cache_salt ];
 				}
-			}
 
-			if ( $mod[ 'is_comment' ] ) {
+				$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'canonical_url' );	// Returns null if an index key is not found.
+					
+				if ( ! empty( $url ) ) {
+					
+					if ( $this->p->debug->enabled ) {
 
-				if ( ! empty( $mod[ 'id' ] ) ) {	// Just in case.
-
-					$url = get_comment_link( $mod[ 'id' ] );
-
-					$url = $this->check_url_string( $url, 'comment link' );	// Check for WP_Error.
-				}
-
-				$url = apply_filters( 'wpsso_comment_url', $url, $mod );
-
-			} elseif ( $mod[ 'is_post' ] ) {	// This can also be a home posts page.
-
-				if ( $mod[ 'id' ] ) {	// Just in case.
-
-					if ( is_object( $mod[ 'obj' ] ) ) {	// Just in case.
-
-						$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'canonical_url' );	// Returns null if an index key is not found.
+						$this->p->debug->log( 'custom canonical url = ' . $url );
 					}
 				}
+			}
 
-				if ( ! empty( $url ) ) {
+			$is_custom = empty( $url ) ? false : true;
+
+			if ( ! $is_custom ) {	// No custom canonical url from the post, term, or user meta.
+
+				if ( $mod[ 'is_home' ] ) {
+
+					$url = self::get_home_url( $this->p->options, $mod );
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'custom post canonical url = ' . $url );
+						$this->p->debug->log( 'home canonical url = ' . $url );
 					}
 
-				} elseif ( $mod[ 'is_post_type_archive' ] ) {	// The post ID may be 0.
+					$url = apply_filters( 'wpsso_home_url', $url, $mod );
 
-					$url = get_post_type_archive_link( $mod[ 'post_type' ] );
+				} elseif ( $mod[ 'is_comment' ] ) {
 
-					$url = $this->check_url_string( $url, 'post type archive link' );	// Check for WP_Error.
+					if ( $mod[ 'id' ] ) {	// Just in case.
 
-				} elseif ( $mod[ 'id' ] ) {	// Just in case.
+						$url = get_comment_link( $mod[ 'id' ] );
 
-					if ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).
+						$url = $this->check_url_string( $url, 'comment link' );	// Check for WP_Error.
+					}
 
-						$url = self::get_home_url( $this->p->options, $mod );
-			
-						if ( $this->p->debug->enabled ) {
+					$url = apply_filters( 'wpsso_comment_url', $url, $mod );
 
-							$this->p->debug->log( 'home post canonical url = ' . $url );
-						}
+				} elseif ( $mod[ 'is_post' ] ) {
 
-						$url = apply_filters( 'wpsso_home_url', $url, $mod );
+					if ( $mod[ 'post_type' ] ) {	// Just in case.
 
-					} elseif ( 'publish' !== $mod[ 'post_status' ] ) {
+						if ( $mod[ 'is_post_type_archive' ] ) {	// The post ID may be 0.
 
-						$post_obj = self::get_post_object( $mod[ 'id' ], $output = 'object' );
+							$url = get_post_type_archive_link( $mod[ 'post_type' ] );
 
-						if ( is_object( $post_obj ) ) {
+							$url = $this->check_url_string( $url, 'post type archive link' );	// Check for WP_Error.
 
-							if ( ! is_wp_error( $post_obj ) ) {
+						} elseif ( $mod[ 'id' ] ) {	// Just in case.
 
-								$post_obj->post_status = 'publish';
+							if ( 'publish' !== $mod[ 'post_status' ] ) {
 
-								if ( empty( $post_obj->post_name ) ) {
+								$post_obj = self::get_post_object( $mod[ 'id' ], $output = 'object' );
 
-									$post_obj->post_name = sanitize_title( $post_obj->post_title );
+								if ( is_object( $post_obj ) ) {
+		
+									if ( ! is_wp_error( $post_obj ) ) {
+		
+										$post_obj->post_status = 'publish';
+		
+										if ( empty( $post_obj->post_name ) ) {
+		
+											$post_obj->post_name = sanitize_title( $post_obj->post_title );
+										}
+		
+										$url = get_permalink( $post_obj );
+									}
 								}
-
-								$url = get_permalink( $post_obj );
 							}
-						}
-					}
+		
+							if ( empty( $url ) ) {	// Just in case.
+		
+								$url = get_permalink( $mod[ 'id' ] );
+							}
+		
+							$url = $this->check_url_string( $url, 'post permalink' );	// Check for WP_Error.
+					
+						} elseif ( $this->p->debug->enabled ) {
 
-					if ( empty( $url ) ) {	// Just in case.
-
-						$url = get_permalink( $mod[ 'id' ] );
-					}
-
-					$url = $this->check_url_string( $url, 'post permalink' );	// Check for WP_Error.
-				}
-
-				$url = apply_filters( 'wpsso_post_url', $url, $mod );
-
-			} elseif ( $mod[ 'is_term' ] ) {
-
-				if ( $mod[ 'id' ] ) {	// Just in case.
-
-					if ( is_object( $mod[ 'obj' ] ) ) {
-
-						$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'canonical_url' );	// Returns null if an index key is not found.
-					}
-
-					if ( ! empty( $url ) ) {
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'custom term canonical url = ' . $url );
+							$this->p->debug->log( 'no post id' );
 						}
 
-					} else {
+					} elseif ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'no post type' );
+					}
+
+					$url = apply_filters( 'wpsso_post_url', $url, $mod );
+
+				} elseif ( $mod[ 'is_term' ] ) {
+
+					if ( $mod[ 'id' ] ) {	// Just in case.
 
 						$url = get_term_link( $mod[ 'id' ], $mod[ 'tax_slug' ] );
 
 						$url = $this->check_url_string( $url, 'term link' );	// Check for WP_Error.
 					}
-				}
 
-				$url = apply_filters( 'wpsso_term_url', $url, $mod );
+					$url = apply_filters( 'wpsso_term_url', $url, $mod );
 
-			} elseif ( $mod[ 'is_user' ] ) {
+				} elseif ( $mod[ 'is_user' ] ) {
 
-				if ( $mod[ 'id' ] ) {	// Just in case.
-
-					if ( is_object( $mod[ 'obj' ] ) ) {
-
-						$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'canonical_url' );	// Returns null if an index key is not found.
-					}
-
-					if ( ! empty( $url ) ) {
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'custom user canonical url = ' . $url );
-						}
-
-					} else {
+					if ( $mod[ 'id' ] ) {	// Just in case.
 
 						$url = get_author_posts_url( $mod[ 'id' ] );
 
 						$url = $this->check_url_string( $url, 'author posts url' );	// Check for WP_Error.
 					}
-				}
 
-				$url = apply_filters( 'wpsso_user_url', $url, $mod );
+					$url = apply_filters( 'wpsso_user_url', $url, $mod );
 
-			} elseif ( $mod[ 'is_home' ] ) {
+				} elseif ( $mod[ 'is_search' ] ) {
 
-				$url = self::get_home_url( $this->p->options, $mod );
+					$url = get_search_link( $mod[ 'query_vars' ][ 's' ] );
 
-				if ( $this->p->debug->enabled ) {
+					$url = $this->check_url_string( $url, 'search link' );	// Check for WP_Error.
 
-					$this->p->debug->log( 'home canonical url = ' . $url );
-				}
+					$url = apply_filters( 'wpsso_search_url', $url, $mod );
 
-				$url = apply_filters( 'wpsso_home_url', $url, $mod );
+				} elseif ( $mod[ 'is_archive' ] ) {
 
-			} elseif ( $mod[ 'is_search' ] ) {
+					if ( $mod[ 'is_date' ] ) {
 
-				$url = get_search_link( $mod[ 'query_vars' ][ 's' ] );
+						if ( $mod[ 'is_year' ] ) {
 
-				$url = $this->check_url_string( $url, 'search link' );	// Check for WP_Error.
+							$url = get_year_link( $mod[ 'query_vars' ][ 'year' ] );
 
-				$url = apply_filters( 'wpsso_search_url', $url, $mod );
+							$url = $this->check_url_string( $url, 'year link' );	// Check for WP_Error.
 
-			} elseif ( $mod[ 'is_archive' ] ) {
+						} elseif ( $mod[ 'is_month' ] ) {
 
-				if ( $mod[ 'is_date' ] ) {
+							$url = get_month_link( $mod[ 'query_vars' ][ 'year' ], $mod[ 'query_vars' ][ 'monthnum' ] );
 
-					if ( $mod[ 'is_year' ] ) {
+							$url = $this->check_url_string( $url, 'month link' );	// Check for WP_Error.
 
-						$url = get_year_link( $mod[ 'query_vars' ][ 'year' ] );
+						} elseif ( $mod[ 'is_day' ] ) {
 
-						$url = $this->check_url_string( $url, 'year link' );	// Check for WP_Error.
+							$url = get_day_link( $mod[ 'query_vars' ][ 'year' ], $mod[ 'query_vars' ][ 'monthnum' ], $mod[ 'query_vars' ][ 'day' ] );
 
-					} elseif ( $mod[ 'is_month' ] ) {
-
-						$url = get_month_link( $mod[ 'query_vars' ][ 'year' ], $mod[ 'query_vars' ][ 'monthnum' ] );
-
-						$url = $this->check_url_string( $url, 'month link' );	// Check for WP_Error.
-
-					} elseif ( $mod[ 'is_day' ] ) {
-
-						$url = get_day_link( $mod[ 'query_vars' ][ 'year' ], $mod[ 'query_vars' ][ 'monthnum' ], $mod[ 'query_vars' ][ 'day' ] );
-
-						$url = $this->check_url_string( $url, 'day link' );	// Check for WP_Error.
+							$url = $this->check_url_string( $url, 'day link' );	// Check for WP_Error.
+						}
 					}
+
+					$url = apply_filters( 'wpsso_archive_page_url', $url, $mod );
 				}
 
-				$url = apply_filters( 'wpsso_archive_page_url', $url, $mod );
-			}
-
-			/**
-			 * Use the current URL as a fallback for themes and plugins that create public content and don't use the
-			 * standard WordPress functions / variables and/or are not properly integrated with WordPress (ie. they do
-			 * not use custom post types, taxonomies, terms, etc.).
-			 */
-			if ( empty ( $url ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'falling back to server request url' );
+				/**
+				 * Use the current URL as a fallback for themes and plugins that create public content and don't use the
+				 * standard WordPress functions / variables and/or are not properly integrated with WordPress (ie. they do
+				 * not use custom post types, taxonomies, terms, etc.).
+				 */
+				if ( empty ( $url ) ) {
+	
+					if ( $this->p->debug->enabled ) {
+	
+						$this->p->debug->log( 'falling back to server request url' );
+					}
+	
+					$url = self::get_url( $remove_tracking = true );
+	
+					$url = apply_filters( 'wpsso_server_request_url', $url );
 				}
-
-				$url = self::get_url( $remove_tracking = true );
-
-				$url = apply_filters( 'wpsso_server_request_url', $url );
 			}
 
 			/**
@@ -2281,7 +2251,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$url = $this->get_url_paged( $url, $mod, $add_page );
 
-			$url = apply_filters( 'wpsso_canonical_url', $url, $mod, $add_page );
+			$url = apply_filters( 'wpsso_canonical_url', $url, $mod, $add_page, $is_custom );
 
 			if ( ! empty( $cache_salt ) ) {
 

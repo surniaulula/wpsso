@@ -562,7 +562,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 *
 			 * Optimize and cache post/term/user schema type values.
 			 */
-			if ( $mod[ 'obj' ] && $mod[ 'id' ] ) {
+			if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 
 				$cache_salt = SucomUtil::get_mod_salt( $mod ) . '_get_id:' . (string) $get_id . '_opts:' . (string) $use_md_opts;
 
@@ -588,6 +588,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					if ( empty( $type_id ) || $type_id === 'none' || empty( $schema_types[ $type_id ] ) ) {	// Check for an invalid type id.
 
 						$type_id = null;
+
+					} elseif ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'custom type id = ' . $type_id );
 					}
 				}
 			}
@@ -613,24 +617,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 						if ( $mod[ 'is_post_type_archive' ] ) {	// The post ID may be 0.
 
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'mod is post type archive' );
-							}
-
 							$type_id = $this->get_schema_type_id_for( 'pta_' . $mod[ 'post_type' ] );
 
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'mod post type archive schema type id = ' . $type_id );
-							}
-
 							if ( empty( $type_id ) ) {	// Just in case.
-
-								if ( $this->p->debug->enabled ) {
-
-									$this->p->debug->log( 'using post type id for archive page' );
-								}
 
 								$type_id = $this->get_schema_type_id_for( 'archive_page' );
 							}
@@ -639,21 +628,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 							$type_id = $this->get_schema_type_id_for( $mod[ 'post_type' ] );
 					
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'mod post type schema type id = ' . $type_id );
-							}
-
 							if ( empty( $type_id ) ) {	// Just in case.
-
-								if ( $this->p->debug->enabled ) {
-
-									$this->p->debug->log( 'using post type id for page' );
-								}
 
 								$type_id = $this->get_schema_type_id_for( 'page' );
 							}
 						}
+					
+					} elseif ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'no post type' );
 					}
 
 				} elseif ( $mod[ 'is_term' ] ) {

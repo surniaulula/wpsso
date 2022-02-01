@@ -726,7 +726,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						break;
 				}
 
-			} else {	// $md_key could be a string or array.
+			} else {	// $md_key can be a string or array.
 
 				$md_key_title = $md_key;
 				$md_key_desc  = $md_key;
@@ -735,55 +735,42 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/**
 			 * Check for custom caption if a metadata index key is provided.
 			 */
-			if ( ! empty( $md_key ) && $md_key !== 'none' ) {
+			if ( ! empty( $md_key ) && 'none' !== $md_key ) {	// $md_key can be a string or array.
 
-				$cap_text = is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ?
-					$mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
+				if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Just in case.
 
-				/**
-				 * Extract custom hashtags, or get hashtags if $add_hashtags is true or numeric.
-				 */
-				list( $cap_text, $hashtags ) = $this->get_text_and_hashtags( $cap_text, $mod, $add_hashtags );
+					$cap_text = $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key );
 
-				if ( ! empty( $cap_text ) ) {
+					/**
+					 * Extract custom hashtags, or get hashtags if $add_hashtags is true or numeric.
+					 */
+					list( $cap_text, $hashtags ) = $this->get_text_and_hashtags( $cap_text, $mod, $add_hashtags );
 
-					if ( $max_len > 0 ) {
+					if ( ! empty( $cap_text ) ) {
 
-						$adj_max_len = empty( $hashtags ) ? $max_len : $max_len - strlen( $hashtags ) - 1;
+						if ( $max_len > 0 ) {
+
+							$adj_max_len = empty( $hashtags ) ? $max_len : $max_len - strlen( $hashtags ) - 1;
+
+							$cap_text = $this->p->util->limit_text_length( $cap_text, $adj_max_len, '...', false );
+						}
+	
+						$cap_text = trim( $cap_text . ' ' . $hashtags );
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'caption strlen before limit length ' . strlen( $cap_text ) .
-								' (limiting to ' . $adj_max_len . ' chars)' );
+							$this->p->debug->log( 'custom caption = ' . $cap_text );
 						}
-
-						$cap_text = $this->p->util->limit_text_length( $cap_text, $adj_max_len, '...', false );
-					}
-
-					if ( ! empty( $hashtags ) ) {
-
-						$cap_text = trim( $cap_text . ' ' . $hashtags );	// Trim in case text is empty.
 					}
 				}
-
-				if ( $this->p->debug->enabled ) {
-
-					if ( empty( $cap_text ) ) {
-
-						$this->p->debug->log( 'no custom caption for md_key = ' . print_r( $md_key, true ) );
-
-					} else {
-
-						$this->p->debug->log( 'custom caption = ' . $cap_text );
-					}
-				}
-
-			} elseif ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'custom caption skipped: no md_key value' );
 			}
 
-			if ( empty( $cap_text ) ) {
+			$is_custom = empty( $cap_text ) ? false : true;
+
+			/**
+			 * If there's no custom caption text, then go ahead and generate the caption text value.
+			 */
+			if ( ! $is_custom ) {
 
 				/**
 				 * Request all values un-encoded, then encode once we have the complete caption text.
@@ -901,9 +888,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			} elseif ( ! is_array( $md_key ) ) {	// Use fallback by default - get_options_multi() will do array_uniq().
 
 				$md_key = array( $md_key, 'og_title' );
+			
+				$md_key = array_unique( $md_key );	// Just in case.
 			}
-
-			$md_key = array_unique( $md_key );	// Just in case.
 
 			if ( null === $title_sep ) {	// Can be false.
 
@@ -915,27 +902,28 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/**
 			 * Check for custom title if a metadata index key is provided.
 			 */
-			if ( ! empty( $md_key ) && $md_key !== 'none' ) {
+			if ( ! empty( $md_key ) && 'none' !== $md_key ) {	// $md_key can be a string or array.
 
-				$title_text = is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ? $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
+				if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Just in case.
 
-				if ( $this->p->debug->enabled ) {
+					$title_text = $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key );
 
-					if ( empty( $title_text ) ) {
+					if ( ! empty( $title_text ) ) {
+					
+						if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'no custom title for md_key = ' . print_r( $md_key, true ) );
-
-					} else {
-
-						$this->p->debug->log( 'custom title = ' . $title_text );
+							$this->p->debug->log( 'custom title = ' . $title_text );
+						}
 					}
 				}
 			}
 
+			$is_custom = empty( $title_text ) ? false : true;
+
 			/**
 			 * Get seed if no custom meta title.
 			 */
-			if ( empty( $title_text ) ) {
+			if ( ! $is_custom ) {
 
 				$title_text = apply_filters( 'wpsso_title_seed', '', $mod, $add_hashtags, $md_key, $title_sep );
 
@@ -956,7 +944,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/**
 			 * If there's no custom title, and no pre-seed, then go ahead and generate the title value.
 			 */
-			if ( empty( $title_text ) ) {
+			if ( ! $is_custom && empty( $desc_text ) ) {
 
 				$title_text = $this->get_the_title( $mod, $title_sep );
 			}
@@ -1019,7 +1007,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'title before filter = ' . $title_text );
 			}
 
-			$title_text = apply_filters( 'wpsso_title', $title_text, $mod, $add_hashtags, $md_key, $title_sep );
+			$title_text = apply_filters( 'wpsso_title', $title_text, $mod, $add_hashtags, $md_key, $title_sep, $is_custom );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1040,7 +1028,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		 * Note that WpssoUtilInline->replace_variables() is applied to the final description text.
 		 */
 		public function get_description( $max_len = 160, $dots = '...', $mod = false, $read_cache = true,
-			$add_hashtags = true, $do_encode = true, $md_key = 'og_desc' ) {
+			$add_hashtags = true, $do_encode = true, $md_key = array( 'og_desc' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1072,7 +1060,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( false === $md_key ) {	// False would return the complete meta array.
 
-				$md_key = '';
+				$md_key = array();
 
 			} elseif ( true === $md_key ) {	// True signals use of the standard / fallback value.
 
@@ -1081,36 +1069,37 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			} elseif ( ! is_array( $md_key ) ) {	// Use fallback by default - get_options_multi() will do array_uniq().
 
 				$md_key = array( $md_key, 'og_desc' );
+			
+				$md_key = array_unique( $md_key );	// Just in case.
 			}
-
-			$md_key = array_unique( $md_key );	// Just in case.
 
 			$desc_text = '';
 
 			/**
 			 * Check for custom description if a metadata index key is provided.
 			 */
-			if ( ! empty( $md_key ) && 'none' !== $md_key ) {
+			if ( ! empty( $md_key ) && 'none' !== $md_key ) {	// $md_key can be a string or array.
 
-				$desc_text = is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ? $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
+				if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Just in case.
 
-				if ( $this->p->debug->enabled ) {
+					$desc_text = $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key );
 
-					if ( empty( $desc_text ) ) {
+					if ( ! empty( $desc_text ) ) {
+					
+						if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'no custom description for md_key = ' . print_r( $md_key, true ) );
-
-					} else {
-
-						$this->p->debug->log( 'custom description = ' . $desc_text );
+							$this->p->debug->log( 'custom description = ' . $desc_text );
+						}
 					}
 				}
 			}
 
+			$is_custom = empty( $desc_text ) ? false : true;
+
 			/**
 			 * Get seed if no custom meta description.
 			 */
-			if ( empty( $desc_text ) ) {
+			if ( ! $is_custom ) {
 
 				$desc_text = apply_filters( 'wpsso_description_seed', '', $mod, $add_hashtags, $md_key );
 
@@ -1131,7 +1120,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/**
 			 * If there's no custom description, and no pre-seed, then go ahead and generate the description value.
 			 */
-			if ( empty( $desc_text ) ) {
+			if ( ! $is_custom && empty( $desc_text ) ) {
 
 				if ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).
 
@@ -1139,83 +1128,85 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				} elseif ( $mod[ 'is_post' ] ) {
 
-					if ( $mod[ 'is_post_type_archive' ] ) {	// The post ID may be 0.
+					if ( $mod[ 'post_type' ] ) {	// Just in case.
 
-						$desc_text = $this->p->opt->get_text( 'plugin_pta_' . $mod[ 'post_type' ] . '_desc' );
-
-						if ( empty( $desc_text ) ) {
-
-							$post_type_obj = get_post_type_object( $mod[ 'post_type' ] );
-
-							if ( ! empty( $post_type_obj->description ) ) {
-
-								$desc_text = $post_type_obj->description;
+						if ( $mod[ 'is_post_type_archive' ] ) {	// The post ID may be 0.
+	
+							$desc_text = $this->p->opt->get_text( 'plugin_pta_' . $mod[ 'post_type' ] . '_desc' );
+	
+							if ( empty( $desc_text ) ) {
+	
+								$post_type_obj = get_post_type_object( $mod[ 'post_type' ] );
+	
+								if ( ! empty( $post_type_obj->description ) ) {
+	
+									$desc_text = $post_type_obj->description;
+								}
 							}
-						}
-
-					} elseif ( $mod[ 'id' ] ) {
-
-						$desc_text = $this->get_the_excerpt( $mod );
-
-						/**
-						 * If there's no excerpt, then fallback to the content.
-						 */
-						if ( empty( $desc_text ) ) {
-
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'getting the content for post ID ' . $mod[ 'id' ] );
-							}
-
-							$desc_text = $this->get_the_content( $mod, $read_cache, $md_key );
-
+	
+						} elseif ( $mod[ 'id' ] ) {	// Just in case.
+	
+							$desc_text = $this->get_the_excerpt( $mod );
+	
 							/**
-							 * Ignore everything before the first paragraph.
+							 * If there's no excerpt, then fallback to the content.
 							 */
 							if ( empty( $desc_text ) ) {
-
+	
 								if ( $this->p->debug->enabled ) {
-
-									$this->p->debug->log( 'returned content text is empty' );
+	
+									$this->p->debug->log( 'getting the content for post ID ' . $mod[ 'id' ] );
 								}
-
-							} else {
-
-								if ( $this->p->debug->enabled ) {
-
-									$this->p->debug->log( 'removing text before the first paragraph' );
-								}
-
+	
+								$desc_text = $this->get_the_content( $mod, $read_cache, $md_key );
+	
 								/**
-								 * U = Inverts the "greediness" of quantifiers so that they are not greedy by default.
-								 * i = Letters in the pattern match both upper and lower case letters. 
-								 *
-								 * See http://php.net/manual/en/reference.pcre.pattern.modifiers.php.
+								 * Ignore everything before the first paragraph.
 								 */
-								$desc_text = preg_replace( '/^.*<p[^>]*>/Usi', '', $desc_text );
-							}
-						}
-
-						/**
-						 * Fallback to the image alt value.
-						 */
-						if ( empty( $desc_text ) ) {
-
-							if ( $mod[ 'is_attachment' ] && strpos( $mod[ 'post_mime' ], 'image/' ) === 0 ) {
-
-								if ( $this->p->debug->enabled ) {
-
-									$this->p->debug->log( 'falling back to the attachment image alt text' );
+								if ( ! empty( $desc_text ) ) {
+	
+									if ( $this->p->debug->enabled ) {
+	
+										$this->p->debug->log( 'removing text before the first paragraph' );
+									}
+	
+									/**
+									 * U = Inverts the "greediness" of quantifiers so that they are not greedy by default.
+									 * i = Letters in the pattern match both upper and lower case letters. 
+									 *
+									 * See http://php.net/manual/en/reference.pcre.pattern.modifiers.php.
+									 */
+									$desc_text = preg_replace( '/^.*<p[^>]*>/Usi', '', $desc_text );
 								}
-
-								$desc_text = get_post_meta( $mod[ 'id' ], '_wp_attachment_image_alt', true );
 							}
+	
+							/**
+							 * Fallback to the image alt value.
+							 */
+							if ( empty( $desc_text ) ) {
+	
+								if ( $mod[ 'is_attachment' ] && strpos( $mod[ 'post_mime' ], 'image/' ) === 0 ) {
+	
+									if ( $this->p->debug->enabled ) {
+	
+										$this->p->debug->log( 'falling back to attachment image alt text' );
+									}
+	
+									$desc_text = get_post_meta( $mod[ 'id' ], '_wp_attachment_image_alt', true );
+								}
+							}
+					
+						} elseif ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'no post id' );
 						}
+
+					} elseif ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'no post type' );
 					}
-
+	
 				} elseif ( $mod[ 'is_term' ] ) {
-
-					$term_obj = get_term( $mod[ 'id' ], $mod[ 'tax_slug' ] );
 
 					if ( SucomUtil::is_tag_page( $mod[ 'id' ] ) ) {
 
@@ -1225,9 +1216,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 						$desc_text = category_description( $mod[ 'id' ] );
 
-					} elseif ( isset( $term_obj->description ) ) {
+					} else {
+					
+						$term_obj = get_term( $mod[ 'id' ], $mod[ 'tax_slug' ] );
 
-						$desc_text = $term_obj->description;
+						if ( isset( $term_obj->description ) ) {
+
+							$desc_text = $term_obj->description;
+						}
 					}
 
 				} elseif ( $mod[ 'is_user' ] ) {
@@ -1264,8 +1260,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			/**
-			 * Descriptions comprised entirely of html content will be empty after running cleanup_html_tags(),
-			 * so remove the html before falling back to a generic description.
+			 * Descriptions comprised entirely of HTML content will be empty after running cleanup_html_tags(), so
+			 * remove the HTML tags before maybe falling back to the generic description.
 			 */
 			$desc_text = $this->p->util->cleanup_html_tags( $desc_text, $strip_tags = true, $use_img_alt = true );
 
@@ -1279,7 +1275,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$this->p->debug->log( 'description is empty - using generic description text' );
 				}
 
-				$desc_text = $this->p->opt->get_text( 'plugin_no_desc_text' );
+				$desc_text = $this->p->opt->get_text( 'plugin_no_desc_text' );	// No Description Text.
 			}
 
 			/**
@@ -1319,7 +1315,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'description before filter = ' . $desc_text );
 			}
 
-			$desc_text = apply_filters( 'wpsso_description', $desc_text, $mod, $add_hashtags, $md_key );
+			$desc_text = apply_filters( 'wpsso_description', $desc_text, $mod, $add_hashtags, $md_key, $is_custom );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1411,8 +1407,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$title_text = '';
-
 			if ( null === $title_sep ) {	// Can be false.
 
 				$title_sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
@@ -1433,6 +1427,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				SucomUtil::protect_filter_value( 'wp_title', $auto_unprotect = false );
 			}
 
+			$title_text = '';
+
 			if ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).
 
 				$title_text = SucomUtil::get_site_name( $this->p->options );
@@ -1444,48 +1440,52 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			} elseif ( $mod[ 'is_post' ] ) {
 
-				if ( $mod[ 'is_post_type_archive' ] ) {	// The post ID may be 0.
+				if ( $mod[ 'post_type' ] ) {	// Just in case.
 
-					$title_text = $this->p->opt->get_text( 'plugin_pta_' . $mod[ 'post_type' ] . '_title' );
+					if ( $mod[ 'is_post_type_archive' ] ) {	// The post ID may be 0.
 
-					if ( empty( $title_text ) ) {
+						$title_text = $this->p->opt->get_text( 'plugin_pta_' . $mod[ 'post_type' ] . '_title' );
 
-						$post_type_obj = get_post_type_object( $mod[ 'post_type' ] );
+						if ( empty( $title_text ) ) {
 
-						if ( ! empty( $post_type_obj->label ) ) {
-
-							$title_text = $post_type_obj->label;
+							$post_type_obj = get_post_type_object( $mod[ 'post_type' ] );
+	
+							if ( ! empty( $post_type_obj->label ) ) {
+	
+								$title_text = $post_type_obj->label;
+							}
+						}
+	
+					} elseif ( $mod[ 'id' ] ) {
+	
+						/**
+						 * Note that the get_the_title() function does not apply the 'wp_title' filter.
+						 *
+						 * See https://core.trac.wordpress.org/browser/tags/5.4/src/wp-includes/post-template.php#L117.
+						 */
+						$title_text = html_entity_decode( get_the_title( $mod[ 'id' ] ) ) . ' ';
+	
+						if ( $this->p->debug->enabled ) {
+	
+							$this->p->debug->log( 'get_the_title = ' . $title_text );
 						}
 					}
-
-				} elseif ( $mod[ 'id' ] ) {
-
-					/**
-					 * Note that the get_the_title() function does not apply the 'wp_title' filter.
-					 *
-					 * See https://core.trac.wordpress.org/browser/tags/5.4/src/wp-includes/post-template.php#L117.
-					 */
-					$title_text = html_entity_decode( get_the_title( $mod[ 'id' ] ) ) . ' ';
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'get_the_title = ' . $title_text );
+	
+					if ( $title_text ) {
+	
+						if ( ! empty( $title_sep ) ) {
+	
+							$title_text .= $title_sep . ' ';
+						}
+	
+						if ( $filter_title ) {
+	
+							$title_text = $this->p->util->safe_apply_filters( array( 'wp_title',
+								$title_text, $title_sep, $seplocation = 'right' ), $mod );
+						}
 					}
 				}
-
-				if ( $title_text ) {
-
-					if ( ! empty( $title_sep ) ) {
-
-						$title_text .= $title_sep . ' ';
-					}
-
-					if ( $filter_title ) {
-
-						$title_text = $this->p->util->safe_apply_filters( array( 'wp_title', $title_text, $title_sep, $seplocation = 'right' ), $mod );
-					}
-				}
-
+	
 			} elseif ( $mod[ 'is_term' ] ) {
 
 				$term_obj = get_term( $mod[ 'id' ], $mod[ 'tax_slug' ] );
@@ -1507,7 +1507,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					if ( $filter_title ) {
 
-						$title_text = $this->p->util->safe_apply_filters( array( 'wp_title', $title_text, $title_sep, $seplocation = 'right' ), $mod );
+						$title_text = $this->p->util->safe_apply_filters( array( 'wp_title',
+							$title_text, $title_sep, $seplocation = 'right' ), $mod );
 					}
 				}
 
@@ -1534,16 +1535,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			if ( empty( $title_text ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'title is empty - using generic title text' );
-				}
-
-				$title_text = $this->p->opt->get_text( 'plugin_no_title_text' );	// No Title Text.
-			}
-
 			if ( ! $filter_title ) {
 
 				if ( $this->p->debug->enabled ) {
@@ -1555,9 +1546,20 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			/**
-			 * Strip html tags before removing separator.
+			 * Titles comprised entirely of HTML content will be empty after running cleanup_html_tags(), so remove the
+			 * HTML tags before maybe falling back to the generic title.
 			 */
-			$title_text = $this->p->util->cleanup_html_tags( $title_text );
+			$title_text = $this->p->util->cleanup_html_tags( $title_text, $strip_tags = true, $use_img_alt = true );
+
+			if ( empty( $title_text ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'title is empty - using generic title text' );
+				}
+
+				$title_text = $this->p->opt->get_text( 'plugin_no_title_text' );	// No Title Text.
+			}
 
 			/**
 			 * Trim excess separator.
@@ -1899,32 +1901,28 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/**
 			 * Check for custom text if a metadata index key is provided.
 			 */
-			if ( ! empty( $md_key ) && $md_key !== 'none' ) {
+			if ( ! empty( $md_key ) && 'none' !== $md_key ) {	// $md_key can be a string or array.
 
-				$text = is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ?
-					$mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
+				if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Just in case.
 
-				if ( $this->p->debug->enabled ) {
+					$text = $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key );
 
-					if ( empty( $text ) ) {
+					if ( ! empty( $text ) ) {
 
-						$this->p->debug->log( 'no custom text for md_key = ' . print_r( $md_key, true ) );
+						if ( $this->p->debug->enabled ) {
 
-					} else {
-
-						$this->p->debug->log( 'custom text = ' . $text );
+							$this->p->debug->log( 'custom text = ' . $text );
+						}
 					}
 				}
-
-			} elseif ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'custom text skipped: no md_key value' );
 			}
+
+			$is_custom = empty( $text ) ? false : true;
 
 			/**
 			 * If there's no custom text, then go ahead and generate the text value.
 			 */
-			if ( empty( $text ) ) {
+			if ( ! $is_custom ) {
 
 				$text = $this->get_the_content( $mod, $read_cache, $md_key );
 
@@ -1953,32 +1951,28 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/**
 			 * Check for custom keywords if a metadata index key is provided.
 			 */
-			if ( ! empty( $md_key ) && $md_key !== 'none' ) {
+			if ( ! empty( $md_key ) && 'none' !== $md_key ) {	// $md_key can be a string or array.
 
-				$keywords = is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ?
-					$mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key ) : null;
+				if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Just in case.
 
-				if ( $this->p->debug->enabled ) {
+					$keywords = $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key );
 
-					if ( empty( $keywords ) ) {
+					if ( ! empty( $keywords ) ) {
 
-						$this->p->debug->log( 'no custom keywords for md_key = ' . print_r( $md_key, true ) );
+						if ( $this->p->debug->enabled ) {
 
-					} else {
-
-						$this->p->debug->log( 'custom keywords = ' . $keywords );
+							$this->p->debug->log( 'custom keywords = ' . $keywords );
+						}
 					}
 				}
-
-			} elseif ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'custom keywords skipped: no md_key value' );
 			}
+
+			$is_custom = empty( $keywords ) ? false : true;
 
 			/**
 			 * If there's no custom keywords, then go ahead and generate the keywords value.
 			 */
-			if ( empty( $keywords ) ) {
+			if ( ! $is_custom ) {
 
 				$tags = $this->get_tag_names( $mod );
 

@@ -597,7 +597,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			/**
-			 * Add any missing options from the defaults, unless sanitizing for a module.
+			 * Add any missing options from the defaults, unless sanitizing for a module, in which case we do not
+			 * complete the options array.
 			 */
 			if ( empty( $mod[ 'name' ] ) ) {
 
@@ -797,6 +798,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			if ( ! $network ) {
 
 				$this->refresh_image_url_sizes( $opts );	// $opts passed by reference.
+			
+				if ( empty( $mod[ 'name' ] ) ) {	// Only check when saving the plugin settings.
+
+					$this->check_site_org_image_sizes( $opts );
+				}
 			}
 
 			/**
@@ -1138,11 +1144,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 * Note that PHP v7.1 or better is required to get the image size of WebP images.
 			 */
 			$this->p->util->add_image_url_size( $opts, $img_url_keys );
-
-			$this->check_site_org_image_sizes( $opts );
 		}
 
-		private function check_site_org_image_sizes( $opts ) {
+		private function check_site_org_image_sizes( array $opts ) {
 
 			/**
 			 * Skip if notices have already been shown.
@@ -1184,7 +1188,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				if ( empty( $first_image_url ) ) {
 
 					// translators: %s is a link to the option label.
-					$notice_msg = sprintf( __( 'The %s image URL is missing and required.', 'wpsso' ), $option_link ) . ' ';
+					$notice_msg = sprintf( __( 'The %s image is missing and required.', 'wpsso' ), $option_link ) . ' ';
 	
 					$this->p->notice->err( $notice_msg );
 

@@ -119,7 +119,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 *
 			 * Optimize and cache post/term/user og type values.
 			 */
-			if ( $mod[ 'obj' ] && $mod[ 'id' ] ) {
+			if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 
 				$cache_salt = SucomUtil::get_mod_salt( $mod ) . '_get_id:' . (string) $get_id . '_opts:' . (string) $use_md_opts;
 
@@ -138,13 +138,17 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 */
 			if ( $use_md_opts ) {
 
-				if ( $mod[ 'obj' ] && $mod[ 'id' ] ) {	// Just in case.
+				if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Just in case.
 
 					$type_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'og_type' );	// Returns null if index key not found.
 
 					if ( empty( $type_id ) || $type_id === 'none' || empty( $og_type_ns[ $type_id ] ) ) {	// Check for an invalid type id.
 
 						$type_id = null;
+
+					} elseif ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'custom type id = ' . $type_id );
 					}
 				}
 			}
@@ -186,6 +190,10 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 								$type_id = $this->get_og_type_id_for( 'page' );
 							}
 						}
+
+					} elseif ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'no post type' );
 					}
 
 				} elseif ( $mod[ 'is_term' ] ) {
@@ -226,14 +234,14 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'og type id before filter: ' . $type_id );
+				$this->p->debug->log( 'og type id before filter = ' . $type_id );
 			}
 
 			$type_id = apply_filters( 'wpsso_og_type', $type_id, $mod, $is_custom );
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'og type id after filter: ' . $type_id );
+				$this->p->debug->log( 'og type id after filter = ' . $type_id );
 			}
 
 			$get_value = false;
