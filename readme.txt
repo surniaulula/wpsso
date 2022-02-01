@@ -251,11 +251,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 10.0.0-b.3 (2022/02/01)**
+**Version 10.0.0-rc.1 (2022/02/01)**
+
+WPSSO Core has always been a fast plugin (see <a href="https://surniaulula.com/2021/apps/wordpress/plugins/wordpress-seo-plugin-performance-report-for-q4-2021/">SEO Plugin Performance Report for Q4 2021</a>) and version 10 delivers even faster performance by improving the selection and creation of a default Schema type, Open Graph type, canonical URL, document title, and document description. The caching of structured data and the creation of canonical URLs for multi-page content (ie. archive pages, content with page breaks, and comment pages) has also been improved.
+
+Version 10 includes a new Default Text tab in the Advanced Settings (Premium edition) to manage default title and description strings for content without an editing page (ie. search results, date based archives, and post types archives without an associated post ID).
 
 * **New Features**
-	* Added a new SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Default Text tab:
-		* Added a new "Archive Pages" section:
+	* Added a new SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Default Text tab (Premium edition):
+		* Added a new Archive Pages section:
 			* Added a new "Search Results Title" option.
 			* Added a new "Search Results Description" option.
 			* Added a new "Year Archive Title" option.
@@ -264,7 +268,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 			* Added a new "Month Archive Description" option.
 			* Added a new "Day Archive Title" option.
 			* Added a new "Day Archive Description" option.
-		* Added a new "Post Type Archive Pages" section for post type archive title and description option.
+		* Added a new Post Type Archive Pages section for post type archive title and description options.
 * **Improvements**
 	* Moved the SSO &gt; Social Pages &gt; Social and Search Sites metabox to the SSO &gt; General Settings page and removed SSO &gt; Social Pages from the menu.
 	* Removed the SSO &gt; General Settings &gt; Social and Search Sites &gt; Facebook &gt; Author Profile URL Field option.
@@ -925,7 +929,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 10.0.0-b.3 =
+= 10.0.0-rc.1 =
 
 (2022/02/01) Added a new SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Default Text tab. Fixed caching salt value and permalink URL for posts with multiple comment pages.
 
