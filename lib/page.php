@@ -43,7 +43,16 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( $show_validate ) {
 
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'adding validators toolbar' );
+				}
+
 				add_action( 'admin_bar_menu', array( $this, 'add_validate_toolbar' ), WPSSO_TB_VALIDATE_MENU_ORDER, 1 );
+
+			} elseif ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'validators toolbar is disabled' );
 			}
 
 			add_action( 'pre_get_document_title', array( $this, 'pre_get_document_title' ), 1000 );	// Since WP v4.4.
