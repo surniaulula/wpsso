@@ -12,7 +12,7 @@ Requires PHP: 7.2
 Requires At Least: 5.2
 Tested Up To: 5.9.0
 WC Tested Up To: 6.1.1
-Stable Tag: 9.15.0
+Stable Tag: 10.0.0
 
 Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
 
@@ -251,7 +251,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 10.0.0 (2022/02/01)**
+**Version 10.0.0 (2022/02/02)**
 
 WPSSO Core has always been a fast plugin and version 10.0.0 delivers even better performance by improving the selection and creation of a default Schema type, Open Graph type, canonical URL, document title, and document description. The caching of structured data, and the creation of canonical URLs for multi-page content (ie. archive pages, content with page breaks, and comment pages) has also been improved. Version 10.0.0 includes a new Default Text tab in the Advanced Settings (Premium edition) to manage default title and description strings for content without an editing page (ie. search results, date based archives, and post types archives without an associated post ID).
 
@@ -929,7 +929,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 = 10.0.0 =
 
-(2022/02/01) Added a new SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Default Text tab. Fixed caching salt value and permalink URL for posts with multiple comment pages.
+(2022/02/02) Added a new SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Default Text tab. Fixed caching salt value and permalink URL for posts with multiple comment pages.
 
 = 9.15.0 =
 
