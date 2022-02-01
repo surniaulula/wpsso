@@ -51,9 +51,14 @@ if ( ! class_exists( 'WpssoMessagesTooltipSite' ) ) {
 				 */
 				case 'tooltip-site_org_logo_url':	// Organization Logo URL.
 
+					$min_width    = $this->p->cf[ 'head' ][ 'limit_min' ][ 'org_logo_width' ];
+					$min_height   = $this->p->cf[ 'head' ][ 'limit_min' ][ 'org_logo_height' ];
+					$minimum_dims = $min_width . 'x' . $min_height . 'px';
+
 					$text = __( 'A URL for this organization\'s logo image that Google can show in its search results and <em>Knowledge Graph</em>.', 'wpsso' );
 
-					$text .= __( 'The image must be at least 112x112px for Google, but preferably much larger than this.', 'wpsso' );
+					// translators: %s is 600x60px.
+					$text .= sprintf( __( 'The image must be at least %s for Google, but preferably at least 1200x1200px.', 'wpsso' ), $minimum_dims );
 
 					break;
 
@@ -62,7 +67,12 @@ if ( ! class_exists( 'WpssoMessagesTooltipSite' ) ) {
 				 */
 				case 'tooltip-site_org_banner_url':	// Organization Banner URL.
 
-					$text = __( 'A URL for this organization\'s banner image <strong>measuring exactly 600x60px</strong>, that Google News can show for Schema Article type content from this publisher.', 'wpsso' );
+					$min_width     = $this->p->cf[ 'head' ][ 'limit' ][ 'org_banner_width' ];
+					$min_height    = $this->p->cf[ 'head' ][ 'limit' ][ 'org_banner_height' ];
+					$required_dims = $min_width . 'x' . $min_height . 'px';
+
+					// translators: %s is 600x60px.
+					$text = sprintf( __( 'A URL for this organization\'s banner image <strong>measuring exactly %s</strong>, that Google News can show for Schema Article type content from this publisher.', 'wpsso' ), $required_dims );
 
 					break;
 

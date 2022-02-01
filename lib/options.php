@@ -1212,10 +1212,12 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$this->p->notice->err( $notice_msg, null, $notice_key );
 	
 					} elseif ( 'site_org_logo' === $img_pre ) {
-					
-						$minimum_dims = '112x112px';
+				
+						$min_width    = $this->p->cf[ 'head' ][ 'limit_min' ][ 'org_logo_width' ];
+						$min_height   = $this->p->cf[ 'head' ][ 'limit_min' ][ 'org_logo_height' ];
+						$minimum_dims = $min_width . 'x' . $min_height . 'px';
 
-						if ( $image_width < 112 || $image_height < 112 ) {
+						if ( $image_width < $min_width || $image_height < $min_height ) {
 	
 							// translators: %1$s is a link to the option label.
 							$notice_msg = sprintf( __( 'The %1$s image dimensions are %2$s and must be greater than %3$s.',
@@ -1230,7 +1232,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					} elseif ( 'site_org_banner' === $img_pre ) {
 
-						$required_dims = '600x60px';
+						$min_width     = $this->p->cf[ 'head' ][ 'limit' ][ 'org_banner_width' ];
+						$min_height    = $this->p->cf[ 'head' ][ 'limit' ][ 'org_banner_height' ];
+						$required_dims = $min_width . 'x' . $min_height . 'px';
 
 						if ( $image_dims !== $required_dims ) {
 

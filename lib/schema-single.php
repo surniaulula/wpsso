@@ -891,7 +891,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 		/**
 		 * $org_id can be 'none', 'site', or a number (including 0).
 		 *
-		 * $org_logo_key can be empty, 'org_logo_url', or 'org_banner_url' (600x60px image) for Articles.
+		 * $org_logo_key can be empty, 'org_logo_url', or 'org_banner_url' for Articles.
 		 *
 		 * Do not provide localized option names - the method will fetch the localized values.
 		 */
@@ -1003,7 +1003,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			/**
 			 * Organization logo.
 			 *
-			 * $org_logo_key can be empty, 'org_logo_url', or 'org_banner_url' (600x60px image) for Articles.
+			 * $org_logo_key can be empty, 'org_logo_url', or 'org_banner_url' for Articles.
 			 */
 			if ( ! empty( $org_logo_key ) ) {
 
@@ -1035,7 +1035,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 							$logo_missing_msg   = __( 'An organization logo image is missing and required for the "%1$s" organization Schema %2$s markup.', 'wpsso' );
 
 							// translators: %1$s is the organization name, %2$s the Schema type URL.
-							$banner_missing_msg = __( 'An organization banner image (600x60px) is missing and required for the "%1$s" organization Schema %2$s markup.', 'wpsso' );
+							$banner_missing_msg = __( 'An organization banner image is missing and required for the "%1$s" organization Schema %2$s markup.', 'wpsso' );
 
 							// translators: %1$s is the organization name, %2$s is 'site' (translated) or 'ID #'.
 							$org_settings_msg   = __( 'Please enter the missing image URL in the "%1$s" %2$s organization settings.', 'wpsso' );
@@ -1060,11 +1060,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 								 */
 								if ( 'site' === $org_id ) {
 
-									$general_page_link = $wpsso->util->get_admin_url( 'essential' );
+									$settings_page_url = $wpsso->util->get_admin_url( 'essential' );
 									$org_id_transl     = __( 'site', 'wpsso' );
 
 									$notice_msg .= ' ';
-									$notice_msg .= '<a href="' . $general_page_link . '">';
+									$notice_msg .= '<a href="' . $settings_page_url . '">';
 									$notice_msg .= sprintf( $org_settings_msg, $json_ret[ 'name' ], $org_id_transl );
 									$notice_msg .= '</a>';
 

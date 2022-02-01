@@ -2844,6 +2844,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_1x1_img_ratio'  => 1.000,
 					'schema_4x3_img_ratio'  => 1.333,
 					'schema_16x9_img_ratio' => 1.778,
+					'org_banner_width'      => 600,
+					'org_banner_height'     => 60,
 				),
 				'limit_min' => array(
 					'og_desc_len'            => 160,
@@ -2860,6 +2862,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'tc_desc_len'            => 160,
 					'thumb_img_width'        => 300,
 					'thumb_img_height'       => 200,
+					'org_logo_width'         => 112,
+					'org_logo_height'        => 112,
 				),
 				'limit_max' => array(
 					'og_img_ratio'        => 3.000,

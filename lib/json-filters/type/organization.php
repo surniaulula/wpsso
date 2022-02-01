@@ -95,7 +95,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeOrganization' ) ) {
 		 	/**
 			 * $org_id can be 'none', 'site', or a number (including 0).
 			 *
-		 	 * $org_logo_key can be empty, 'org_logo_url', or 'org_banner_url' (600x60px image) for Articles.
+		 	 * $org_logo_key can be empty, 'org_logo_url', or 'org_banner_url' for Articles.
 			 *
 			 * Do not provide localized option names - the method will fetch the localized values.
 			 */
