@@ -251,7 +251,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 10.0.0-b.1 (2022/01/31)**
+**Version 10.0.0-b.2 (2022/02/01)**
 
 * **New Features**
 	* Added a new SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Default Text tab:
@@ -925,9 +925,9 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 10.0.0-b.1 =
+= 10.0.0-b.2 =
 
-(2022/01/31) Added a new SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Default Text tab. Fixed caching salt value and permalink URL for posts with multiple comment pages.
+(2022/02/01) Added a new SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Default Text tab. Fixed caching salt value and permalink URL for posts with multiple comment pages.
 
 = 9.15.0 =
 
