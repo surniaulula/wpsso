@@ -2441,7 +2441,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( null === $ret || '' === $ret ) {	// Maybe fallback to the default non-localized value.
 
 				if ( false === strpos( $key_locale, '#' ) ) {	// The option key not localized, return null or empty string.
-				
+
 					return $ret;
 				}
 
@@ -2492,10 +2492,10 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				 * default, check for a locale version of the default language.
 				 */
 				if ( isset( $opts[ $key_locale ] ) ) {
-				
+
 					return $key_locale;
 				}
-				
+
 				return $key;
 			}
 
@@ -3209,7 +3209,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					$post_type_obj = get_post_type_object( $post_type );
 
 				} else {	// Just in case.
-			
+
 					return $is_post_type_archive;
 				}
 

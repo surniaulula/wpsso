@@ -1890,7 +1890,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					}
 
 					$url = $this->check_url_string( $url, 'post permalink' );	// Check for WP_Error.
-				
+
 					$url = apply_filters( 'wpsso_post_url', $url, $mod );
 				}
 			}
@@ -2071,9 +2071,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				}
 
 				$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'canonical_url' );	// Returns null if an index key is not found.
-					
+
 				if ( ! empty( $url ) ) {
-					
+
 					if ( $this->p->debug->enabled ) {
 
 						$this->p->debug->log( 'custom canonical url = ' . $url );
@@ -2085,6 +2085,15 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( ! $is_custom ) {	// No custom canonical url from the post, term, or user meta.
 
+				/**
+				 * Similar module type logic can be found in the following methods:
+				 *
+				 * See WpssoOpenGraph->get_mod_og_type().
+				 * See WpssoPage->get_description().
+				 * See WpssoPage->get_the_title().
+				 * See WpssoSchema->get_mod_schema_type().
+				 * See WpssoUtil->get_canonical_url().
+				 */
 				if ( $mod[ 'is_home' ] ) {
 
 					$url = self::get_home_url( $this->p->options, $mod );
@@ -2124,28 +2133,28 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 								$post_obj = self::get_post_object( $mod[ 'id' ], $output = 'object' );
 
 								if ( is_object( $post_obj ) ) {
-		
+
 									if ( ! is_wp_error( $post_obj ) ) {
-		
+
 										$post_obj->post_status = 'publish';
-		
+
 										if ( empty( $post_obj->post_name ) ) {
-		
+
 											$post_obj->post_name = sanitize_title( $post_obj->post_title );
 										}
-		
+
 										$url = get_permalink( $post_obj );
 									}
 								}
 							}
-		
+
 							if ( empty( $url ) ) {	// Just in case.
-		
+
 								$url = get_permalink( $mod[ 'id' ] );
 							}
-		
+
 							$url = $this->check_url_string( $url, 'post permalink' );	// Check for WP_Error.
-					
+
 						} elseif ( $this->p->debug->enabled ) {
 
 							$this->p->debug->log( 'no post id' );
@@ -2221,14 +2230,14 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				 * not use custom post types, taxonomies, terms, etc.).
 				 */
 				if ( empty ( $url ) ) {
-	
+
 					if ( $this->p->debug->enabled ) {
-	
+
 						$this->p->debug->log( 'falling back to server request url' );
 					}
-	
+
 					$url = self::get_url( $remove_tracking = true );
-	
+
 					$url = apply_filters( 'wpsso_server_request_url', $url );
 				}
 			}
@@ -2307,19 +2316,19 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					$url = add_query_arg( 'page', $page_number, $url );
 				}
-			
+
 				if ( $mod[ 'comment_paged' ] > 1 ) {
-				
+
 					$url = add_query_arg( 'cpage', $mod[ 'comment_paged' ], $url );
 				}
 
 			} else {
 
 				if ( $page_number > 1 ) {
-				
+
 					$url = user_trailingslashit( trailingslashit( $url ) . $page_number );
 				}
-			
+
 				if ( $mod[ 'comment_paged' ] > 1 ) {
 
 					$url = user_trailingslashit( trailingslashit( $url ) . $wp_rewrite->comments_pagination_base . '-' . $mod[ 'comment_paged' ] );

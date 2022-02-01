@@ -600,6 +600,15 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( ! $is_custom ) {	// No custom schema type id from the post, term, or user meta.
 
+				/**
+				 * Similar module type logic can be found in the following methods:
+				 *
+				 * See WpssoOpenGraph->get_mod_og_type().
+				 * See WpssoPage->get_description().
+				 * See WpssoPage->get_the_title().
+				 * See WpssoSchema->get_mod_schema_type().
+				 * See WpssoUtil->get_canonical_url().
+				 */
 				if ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).
 
 					if ( $mod[ 'is_home_page' ] ) {	// Static front page (singular post).
@@ -627,13 +636,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						} else {
 
 							$type_id = $this->get_schema_type_id_for( $mod[ 'post_type' ] );
-					
+
 							if ( empty( $type_id ) ) {	// Just in case.
 
 								$type_id = $this->get_schema_type_id_for( 'page' );
 							}
 						}
-					
+
 					} elseif ( $this->p->debug->enabled ) {
 
 						$this->p->debug->log( 'no post type' );
@@ -663,7 +672,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					$type_id = $this->get_schema_type_id_for( 'archive_page' );
 				}
-			
+
 				if ( empty( $type_id ) ) {	// Just in case.
 
 					if ( $this->p->debug->enabled ) {
@@ -1114,12 +1123,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		public function get_default_schema_type_name_for( $opt_suffix, $default_id = null ) {
-			
+
 			if ( empty( $opt_suffix ) ) {	// Just in case.
-				
+
 				return $default_id;
 			}
-			
+
 			$opt_key      = 'schema_type_for_' . $opt_suffix;
 			$type_id      = $this->p->opt->get_defaults( $opt_key );	// Uses a local static cache.
 			$schema_types = $this->get_schema_types_array( $flatten = true );	// Uses a class variable cache.

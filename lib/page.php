@@ -389,7 +389,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$mod[ 'paged' ] = $mod[ 'query_vars' ][ 'page' ];
 
 				} elseif ( ! empty( $mod[ 'query_vars' ][ 'paged' ] ) ) {
-				
+
 					$mod[ 'paged' ] = $mod[ 'query_vars' ][ 'paged' ];
 
 				} else {
@@ -754,7 +754,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 							$cap_text = $this->p->util->limit_text_length( $cap_text, $adj_max_len, '...', false );
 						}
-	
+
 						$cap_text = trim( $cap_text . ' ' . $hashtags );
 
 						if ( $this->p->debug->enabled ) {
@@ -888,7 +888,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			} elseif ( ! is_array( $md_key ) ) {	// Use fallback by default - get_options_multi() will do array_uniq().
 
 				$md_key = array( $md_key, 'og_title' );
-			
+
 				$md_key = array_unique( $md_key );	// Just in case.
 			}
 
@@ -909,7 +909,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$title_text = $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key );
 
 					if ( ! empty( $title_text ) ) {
-					
+
 						if ( $this->p->debug->enabled ) {
 
 							$this->p->debug->log( 'custom title = ' . $title_text );
@@ -1069,7 +1069,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			} elseif ( ! is_array( $md_key ) ) {	// Use fallback by default - get_options_multi() will do array_uniq().
 
 				$md_key = array( $md_key, 'og_desc' );
-			
+
 				$md_key = array_unique( $md_key );	// Just in case.
 			}
 
@@ -1085,7 +1085,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$desc_text = $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key );
 
 					if ( ! empty( $desc_text ) ) {
-					
+
 						if ( $this->p->debug->enabled ) {
 
 							$this->p->debug->log( 'custom description = ' . $desc_text );
@@ -1122,6 +1122,15 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( ! $is_custom && empty( $desc_text ) ) {
 
+				/**
+				 * Similar module type logic can be found in the following methods:
+				 *
+				 * See WpssoOpenGraph->get_mod_og_type().
+				 * See WpssoPage->get_description().
+				 * See WpssoPage->get_the_title().
+				 * See WpssoSchema->get_mod_schema_type().
+				 * See WpssoUtil->get_canonical_url().
+				 */
 				if ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).
 
 					$desc_text = SucomUtil::get_site_description( $this->p->options );
@@ -1131,45 +1140,45 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					if ( $mod[ 'post_type' ] ) {	// Just in case.
 
 						if ( $mod[ 'is_post_type_archive' ] ) {	// The post ID may be 0.
-	
+
 							$desc_text = $this->p->opt->get_text( 'plugin_pta_' . $mod[ 'post_type' ] . '_desc' );
-	
+
 							if ( empty( $desc_text ) ) {
-	
+
 								$post_type_obj = get_post_type_object( $mod[ 'post_type' ] );
-	
+
 								if ( ! empty( $post_type_obj->description ) ) {
-	
+
 									$desc_text = $post_type_obj->description;
 								}
 							}
-	
+
 						} elseif ( $mod[ 'id' ] ) {	// Just in case.
-	
+
 							$desc_text = $this->get_the_excerpt( $mod );
-	
+
 							/**
 							 * If there's no excerpt, then fallback to the content.
 							 */
 							if ( empty( $desc_text ) ) {
-	
+
 								if ( $this->p->debug->enabled ) {
-	
+
 									$this->p->debug->log( 'getting the content for post ID ' . $mod[ 'id' ] );
 								}
-	
+
 								$desc_text = $this->get_the_content( $mod, $read_cache, $md_key );
-	
+
 								/**
 								 * Ignore everything before the first paragraph.
 								 */
 								if ( ! empty( $desc_text ) ) {
-	
+
 									if ( $this->p->debug->enabled ) {
-	
+
 										$this->p->debug->log( 'removing text before the first paragraph' );
 									}
-	
+
 									/**
 									 * U = Inverts the "greediness" of quantifiers so that they are not greedy by default.
 									 * i = Letters in the pattern match both upper and lower case letters. 
@@ -1179,23 +1188,23 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 									$desc_text = preg_replace( '/^.*<p[^>]*>/Usi', '', $desc_text );
 								}
 							}
-	
+
 							/**
 							 * Fallback to the image alt value.
 							 */
 							if ( empty( $desc_text ) ) {
-	
+
 								if ( $mod[ 'is_attachment' ] && strpos( $mod[ 'post_mime' ], 'image/' ) === 0 ) {
-	
+
 									if ( $this->p->debug->enabled ) {
-	
+
 										$this->p->debug->log( 'falling back to attachment image alt text' );
 									}
-	
+
 									$desc_text = get_post_meta( $mod[ 'id' ], '_wp_attachment_image_alt', true );
 								}
 							}
-					
+
 						} elseif ( $this->p->debug->enabled ) {
 
 							$this->p->debug->log( 'no post id' );
@@ -1205,7 +1214,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 						$this->p->debug->log( 'no post type' );
 					}
-	
+
 				} elseif ( $mod[ 'is_term' ] ) {
 
 					if ( SucomUtil::is_tag_page( $mod[ 'id' ] ) ) {
@@ -1217,7 +1226,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						$desc_text = category_description( $mod[ 'id' ] );
 
 					} else {
-					
+
 						$term_obj = get_term( $mod[ 'id' ], $mod[ 'tax_slug' ] );
 
 						if ( isset( $term_obj->description ) ) {
@@ -1429,6 +1438,15 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$title_text = '';
 
+			/**
+			 * Similar module type logic can be found in the following methods:
+			 *
+			 * See WpssoOpenGraph->get_mod_og_type().
+			 * See WpssoPage->get_description().
+			 * See WpssoPage->get_the_title().
+			 * See WpssoSchema->get_mod_schema_type().
+			 * See WpssoUtil->get_canonical_url().
+			 */
 			if ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).
 
 				$title_text = SucomUtil::get_site_name( $this->p->options );
@@ -1449,43 +1467,43 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						if ( empty( $title_text ) ) {
 
 							$post_type_obj = get_post_type_object( $mod[ 'post_type' ] );
-	
+
 							if ( ! empty( $post_type_obj->label ) ) {
-	
+
 								$title_text = $post_type_obj->label;
 							}
 						}
-	
+
 					} elseif ( $mod[ 'id' ] ) {
-	
+
 						/**
 						 * Note that the get_the_title() function does not apply the 'wp_title' filter.
 						 *
 						 * See https://core.trac.wordpress.org/browser/tags/5.4/src/wp-includes/post-template.php#L117.
 						 */
 						$title_text = html_entity_decode( get_the_title( $mod[ 'id' ] ) ) . ' ';
-	
+
 						if ( $this->p->debug->enabled ) {
-	
+
 							$this->p->debug->log( 'get_the_title = ' . $title_text );
 						}
 					}
-	
+
 					if ( $title_text ) {
-	
+
 						if ( ! empty( $title_sep ) ) {
-	
+
 							$title_text .= $title_sep . ' ';
 						}
-	
+
 						if ( $filter_title ) {
-	
+
 							$title_text = $this->p->util->safe_apply_filters( array( 'wp_title',
 								$title_text, $title_sep, $seplocation = 'right' ), $mod );
 						}
 					}
 				}
-	
+
 			} elseif ( $mod[ 'is_term' ] ) {
 
 				$term_obj = get_term( $mod[ 'id' ], $mod[ 'tax_slug' ] );

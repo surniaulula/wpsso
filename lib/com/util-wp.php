@@ -1545,7 +1545,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			$def_args = array( 'public' => true, 'show_ui' => true );
 
 			if ( null === $args ) {
-			
+
 				$args = $def_args;
 
 			} elseif ( is_array( $args ) ) {
@@ -1574,7 +1574,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		}
 
 		public static function get_post_type_labels( $val_prefix = '', $label_prefix = '', $objects = null ) {
-			
+
 			$values = array();
 
 			if ( ! is_string( $val_prefix ) ) {	// Just in case.
@@ -1610,12 +1610,12 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		public static function get_post_type_archives( $output = 'objects', $sort = false, $args = null ) {
 
 			if ( ! is_array( $args ) ) {
-			
+
 				$args = array();
 			}
 
 			if ( empty( $args[ 'has_archive' ] ) || 1 === $args[ 'has_archive' ] ) {
-			
+
 				$args[ 'has_archive' ] = true;
 			}
 
@@ -1634,7 +1634,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			$def_args = array( 'public' => true, 'show_ui' => true );
 
 			if ( null === $args ) {
-			
+
 				$args = $def_args;
 
 			} elseif ( is_array( $args ) ) {

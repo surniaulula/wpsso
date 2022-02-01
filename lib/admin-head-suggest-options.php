@@ -41,34 +41,41 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestOptions' ) ) {
 
 		public function suggest_options() {
 
-			$this->suggest_options_robots();
+			$this->suggest_options_seo();
 		}
 
-		public function suggest_options_robots() {
+		public function suggest_options_seo() {
 
 			$notices_shown = 0;
 
 			if ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {	// No SEO plugin is active.
 
-				if ( empty( $this->p->options[ 'add_meta_name_robots' ] ) && empty( $this->p->options[ 'add_meta_name_robots:disabled' ] ) ) {
+				foreach ( array( 
+					'add_link_rel_canonical'    => 'link rel canonical',
+					'add_meta_name_description' => 'meta name description',
+					'add_meta_name_robots'      => 'meta name robots',
+				) as $opt_key => $tag_name ) {
 
-					$notice_key = 'suggest-options-robots';
+					if ( empty( $this->p->options[ $opt_key ] ) && empty( $this->p->options[ $opt_key . ':disabled' ] ) ) {
 
-					if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
+						$notice_key = 'suggest-options-seo-' . $opt_key;
 
-						$seo_other_tab_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_head_tags-tab_seo_other',
-							_x( 'SSO', 'menu title', 'wpsso' ) . ' &gt; ' .
-							_x( 'Advanced Settings', 'lib file description', 'wpsso' ) . ' &gt; ' .
-							_x( 'HTML Tags', 'metabox title', 'wpsso' ) . ' &gt; ' .
-							_x( 'SEO / Other', 'metabox tab', 'wpsso' ) );
+						if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
 
-						$notice_msg = sprintf( __( 'Please note that the <code>%s</code> HTML tag is currently disabled and a known SEO plugin has not been detected.', 'wpsso' ), 'meta name robots' ) . ' ';
+							$seo_other_tab_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_head_tags-tab_seo_other',
+								_x( 'SSO', 'menu title', 'wpsso' ) . ' &gt; ' .
+								_x( 'Advanced Settings', 'lib file description', 'wpsso' ) . ' &gt; ' .
+								_x( 'HTML Tags', 'metabox title', 'wpsso' ) . ' &gt; ' .
+								_x( 'SEO and Others', 'metabox tab', 'wpsso' ) );
 
-						$notice_msg .= sprintf( __( 'If another SEO plugin or your theme templates are not adding the <code>%1$s</code> HTML tag to your webpages, you should enable this option under the %2$s tab.', 'wpsso' ), 'meta name robots', $seo_other_tab_link ) . ' ';
+							$notice_msg = sprintf( __( 'Please note that the %s HTML tag is currently disabled and a known SEO plugin has not been detected.', 'wpsso' ), '<code>' . $tag_name . '</code>' ) . ' ';
 
-						$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
+							$notice_msg .= sprintf( __( 'If another SEO plugin or your theme templates are not adding the %1$s HTML tag to your webpages, you should enable this option under the %2$s tab.', 'wpsso' ), '<code>' . $tag_name . '</code>', $seo_other_tab_link ) . ' ';
 
-						$notices_shown++;
+							$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
+
+							$notices_shown++;
+						}
 					}
 				}
 			}

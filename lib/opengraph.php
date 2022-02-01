@@ -157,6 +157,15 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			if ( ! $is_custom ) {	// No custom open graph type id from the post, term, or user meta.
 
+				/**
+				 * Similar module type logic can be found in the following methods:
+				 *
+				 * See WpssoOpenGraph->get_mod_og_type().
+				 * See WpssoPage->get_description().
+				 * See WpssoPage->get_the_title().
+				 * See WpssoSchema->get_mod_schema_type().
+				 * See WpssoUtil->get_canonical_url().
+				 */
 				if ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).
 
 					if ( $mod[ 'is_home_page' ] ) {	// Static front page (singular post).
@@ -184,7 +193,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						} else {
 
 							$type_id = $this->get_og_type_id_for( $mod[ 'post_type' ] );
-					
+
 							if ( empty( $type_id ) ) {	// Just in case.
 
 								$type_id = $this->get_og_type_id_for( 'page' );

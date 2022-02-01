@@ -214,7 +214,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$value_transl = _x( $value, $context, $this->text_domain );	// Use text domain of main plugin or add-on.
 
 				if ( $value === $value_transl ) {	// No translation.
-				
+
 					if ( $this->text_domain !== $this->def_text_domain ) {	// Fallback to default text domain of main plugin.
 
 						$value_transl = _x( $value, $context, $this->def_text_domain );

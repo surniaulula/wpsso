@@ -364,6 +364,33 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					}
 
 					$md_opts = apply_filters( 'wpsso_sanitize_md_options', $md_opts, $mod );
+
+					/**
+					 * Since WPSSO Core v10.0.0.
+					 *
+					 * Prevent users from modifying specific options, like the canonical URL, Open Graph type,
+					 * and Schema type.
+					 */
+					$disable_keys = array(
+						'canonical_url',
+						'og_type',
+						'schema_type',
+					);
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'applying get_user_options_disable_keys filters' );
+					}
+
+					$disable_keys = apply_filters( 'wpsso_get_user_options_disable_keys', $disable_keys, $user_id, $mod );
+
+					if ( ! empty( $disable_keys ) ) {
+
+						foreach ( $disable_keys as $opt_key ) {
+
+							$md_opts[ $opt_key . ':disabled' ] = true;
+						}
+					}
 				}
 			}
 

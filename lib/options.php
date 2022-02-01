@@ -798,7 +798,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			if ( ! $network ) {
 
 				$this->refresh_image_url_sizes( $opts );	// $opts passed by reference.
-			
+
 				if ( empty( $mod[ 'name' ] ) ) {	// Only check when saving the plugin settings.
 
 					$this->check_site_org_image_sizes( $opts );
@@ -1180,7 +1180,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$option_link  = $this->p->util->get_admin_url( 'essential', $option_label );
 
 				} elseif ( 'site_org_banner' === $img_pre ) {
-				
+
 					$option_label  = _x( 'Organization Banner URL', 'option label', 'wpsso' );
 					$option_link   = $this->p->util->get_admin_url( 'essential', $option_label );
 				}
@@ -1189,44 +1189,44 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					// translators: %s is a link to the option label.
 					$notice_msg = sprintf( __( 'The %s image is missing and required.', 'wpsso' ), $option_link ) . ' ';
-	
+
 					$this->p->notice->err( $notice_msg );
 
 				} else {
-					
+
 					$image_href   = '<a href="' . $first_image_url . '">' . $first_image_url . '</a>';
 					$image_width  = $mt_single_image[ 'og:image:width' ];
 					$image_height = $mt_single_image[ 'og:image:height' ];
 					$image_dims   = $image_width . 'x' . $image_height . 'px';
 					$notice_key   = 'invalid-image-dimensions-' . $image_dims . '-' . $first_image_url;
-					
+
 					if ( '-1x-1px' === $image_dims ) {
 
 						// translators: %s is a link to the option label.
 						$notice_msg = sprintf( __( 'The %s image dimensions cannot be determined.', 'wpsso' ), $option_link ) . ' ';
-	
+
 						// translators: %s is the image URL.
 						$notice_msg .= sprintf( __( 'Please make sure this site can access %s using the PHP getimagesize() function.',
 							'wpsso' ), $image_href );
-	
+
 						$this->p->notice->err( $notice_msg, null, $notice_key );
-	
+
 					} elseif ( 'site_org_logo' === $img_pre ) {
-				
+
 						$min_width    = $this->p->cf[ 'head' ][ 'limit_min' ][ 'org_logo_width' ];
 						$min_height   = $this->p->cf[ 'head' ][ 'limit_min' ][ 'org_logo_height' ];
 						$minimum_dims = $min_width . 'x' . $min_height . 'px';
 
 						if ( $image_width < $min_width || $image_height < $min_height ) {
-	
+
 							// translators: %1$s is a link to the option label.
 							$notice_msg = sprintf( __( 'The %1$s image dimensions are %2$s and must be greater than %3$s.',
 								'wpsso' ), $option_link, $image_dims, $minimum_dims ) . ' ';
-	
+
 							// translators: %s is the image URL.
 							$notice_msg .= sprintf( __( 'Please correct the %s logo image or select a different logo image.',
 								'wpsso' ), $image_href );
-	
+
 							$this->p->notice->err( $notice_msg, null, $notice_key );
 						}
 
@@ -1749,7 +1749,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 			}
 		}
-		
+
 		/**
 		 * Returns an option value or null.
 		 *
@@ -1773,15 +1773,15 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						return _x( 'Image:', 'option value', 'wpsso' );
 
 					case 'plugin_p_cap_prefix':		// WP Caption Text Prefix.
-					
+
 						return _x( 'Caption:', 'option value', 'wpsso' );
 
 					case 'plugin_no_title_text':		// No Title Text.
-						
+
 						return _x( 'No Title', 'option value', 'wpsso' );
 
 					case 'plugin_no_desc_text':		// No Description Text.
-					
+
 						return _x( 'No Description.', 'option value', 'wpsso' );
 
 					case 'plugin_search_page_title':	// Search Results Title.

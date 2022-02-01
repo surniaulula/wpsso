@@ -196,7 +196,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 					$notice_key = 'db-max-allowed-packet-too-small';
 
 					$this->p->notice->err( $notice_msg, null, $notice_key );
-				
+
 					$this->p->notice->nag( '<p>' . $notice_msg . '</p>', null, $notice_key );
 				}
 			}
@@ -309,7 +309,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 							$notice_msg .= sprintf( __( 'The <a href="%1$s">PHP %2$s extension module</a> is loaded but the %3$s class is missing.', 'wpsso' ), $php_info[ 'url' ], $php_info[ 'label' ], '<code>' . $class_name . '</code>' ) . ' ';
 
 							$notice_msg .= __( 'Please contact your hosting provider to have the missing PHP class installed.', 'wpsso' );
-					
+
 							$notice_key .= 'php-class-' . $class_name . '-missing';
 						}
 					}
@@ -328,7 +328,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 							$notice_msg .= sprintf( __( 'The <a href="%1$s">PHP %2$s extension module</a> is loaded but the %3$s function is missing.', 'wpsso' ), $php_info[ 'url' ], $php_info[ 'label' ], '<code>' . $function_name . '()</code>' ) . ' ';
 
 							$notice_msg .= __( 'Please contact your hosting provider to have the missing PHP function installed.', 'wpsso' );
-							
+
 							$notice_key .= 'php-function-' . $function_name . '-missing';
 						}
 					}

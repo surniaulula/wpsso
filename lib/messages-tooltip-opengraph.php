@@ -268,7 +268,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipOpenGraph' ) ) {
 					$text .= sprintf( __( 'The default %1$s type is "%2$s".', 'wpsso' ), 'Open Graph', $def_type  );
 
 					break;
-					
+
 				case 'tooltip-og_type_for_tax':		// Type by Taxonomy.
 
 					$def_type = $this->p->opt->get_defaults( 'og_type_for_archive_page' );

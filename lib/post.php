@@ -281,7 +281,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 * If we have a post with content (ie. singular), then check for paging in the content.
 					 */
 					if ( ! $mod[ 'is_post_type_archive' ] && ! $mod[ 'is_home_posts' ] ) {
-					
+
 						$mod[ 'paged_total' ] = substr_count( $post_obj->post_content, '<!--nextpage-->' ) + 1;
 					}
 

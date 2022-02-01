@@ -349,7 +349,7 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\f121";	/* .icon-code */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_seo_other::before {		/* SSO > Advanced Settings > HTML Tags > SEO / Other tab. */
+.sucom-tablink-icon.sucom-tablink-href_seo_other::before {		/* SSO > Advanced Settings > HTML Tags > SEO and Others tab. */
 	content:"\e81c";	/* .icon-robot-5 */
 }
 
