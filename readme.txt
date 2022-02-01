@@ -279,7 +279,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* 'post_type_label_single'
 		* 'tax_label_plural'
 		* 'tax_label_single'
-	* Refactored several `Wpsso` class methods.
+	* Moved the `WpssoOptions->check_options()` call from `Wpsso->set_objects()` to `WpssoAdmin->init_check_options()`.
 	* Refactored the `WpssoTerm->get_public_ids()` method.
 	* Refactored the `WpssoUtil->get_canonical_url()` method.
 	* Refactored the `WpssoUtil->get_url_paged()` method.
