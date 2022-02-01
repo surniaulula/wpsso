@@ -628,8 +628,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= __( 'Without new ratings, plugins and add-ons that you and your site depend on could be discontinued prematurely.', 'wpsso' ) . ' ';
 
-						$text .= '</p><p>';
-
 						$text .= __( 'Don\'t let that happen!', 'wpsso' ) . ' ';
 
 						$text .= __( 'Rate your active plugins today - it only takes a few seconds to rate a plugin!', 'wpsso' ) . ' ';

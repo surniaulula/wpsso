@@ -380,8 +380,6 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 
 				$notice_msg .= __( 'Without new ratings, plugins and add-ons that you and your site depend on could be discontinued prematurely.', 'wpsso' ) . ' ';
 
-				$notice_msg .= '</p><p>';
-
 				$notice_msg .= __( 'Don\'t let that happen!', 'wpsso' ) . ' ';
 
 				$notice_msg .= __( 'Rate your active plugins today - it only takes a few seconds to rate a plugin!', 'wpsso' ) . ' ';
