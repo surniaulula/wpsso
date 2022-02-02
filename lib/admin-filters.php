@@ -59,16 +59,6 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 			$shorten_tab_url = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_shortening' );
 
 			/**
-			 * SSO > Advanced Settings > Plugin Settings > Integration > Use Filtered "SEO" Title.
-			 */
-			$features[ '(feature) Use Filtered "SEO" Title' ] = array(
-				'td_class'     => $td_class,
-				'label_transl' => _x( '(feature) Use Filtered "SEO" Title', 'lib file description', 'wpsso' ),
-				'label_url'    => $integ_tab_url,
-				'status'       => $this->p->options[ 'plugin_filter_title' ] ? $status_on : 'off',
-			);
-
-			/**
 			 * SSO > Advanced Settings > Plugin Settings > Integration > Use Filtered Content.
 			 */
 			$features[ '(feature) Use Filtered Content' ] = array(

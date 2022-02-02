@@ -87,12 +87,6 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$doc_title_disabled_msg . '</td>' .
 				WpssoAdmin::get_option_site_use( 'plugin_document_title', $form, $network );
 
-			$table_rows[ 'plugin_filter_title' ] = '' . 
-				$form->get_th_html( _x( 'Use Filtered "SEO" Title', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_filter_title' ) . 
-				$form->get_no_td_checkbox( 'plugin_filter_title', _x( 'not recommended', 'option comment', 'wpsso' ) ) .
-				WpssoAdmin::get_option_site_use( 'plugin_filter_title', $form, $network );
-
 			$table_rows[ 'plugin_filter_content' ] = '' . 
 				$form->get_th_html( _x( 'Use Filtered Content', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_filter_content' ) . 

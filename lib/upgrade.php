@@ -518,7 +518,10 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				864 => array(
 					'og_type_for_post_archive'     => '',	
 					'schema_type_for_post_archive' => '',
-					'fb_author_field'              => '',	// Deleted on 2022/01/29.
+					'fb_author_field'              => '',	// Deprecated on 2022/01/29.
+				),
+				866 => array(
+					'plugin_filter_title' => '',	// Deprecated on 2022/02/02.
 				),
 			),
 		);

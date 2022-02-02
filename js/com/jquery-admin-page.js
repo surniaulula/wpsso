@@ -214,6 +214,8 @@ function sucomToolbarNotices( pluginId, adminPageL10n ) {
 	var subMenuId = '#wp-admin-bar-' + pluginId + '-toolbar-notices-container';
 	var counterId = '#' + pluginId + '-toolbar-notices-count';
 
+	var menuItem = jQuery( menuId );
+
 	var ajaxData = {
 		action: cfg[ '_ajax_actions' ][ 'get_notices_json' ],
 		context: 'toolbar_notices',
@@ -259,11 +261,12 @@ function sucomToolbarNotices( pluginId, adminPageL10n ) {
 		 * Cleanup any pre-existing notice classes.
 		 */
 		jQuery( 'body.wp-admin' ).removeClass( 'has-toolbar-notices' );
-		jQuery( menuId ).removeClass( 'has-toolbar-notices' );
-		jQuery( menuId ).removeClass( 'toolbar-notices-error' );
-		jQuery( menuId ).removeClass( 'toolbar-notices-warning' );
-		jQuery( menuId ).removeClass( 'toolbar-notices-info' );
-		jQuery( menuId ).removeClass( 'toolbar-notices-success' );
+
+		menuItem.removeClass( 'has-toolbar-notices' );
+		menuItem.removeClass( 'toolbar-notices-error' );
+		menuItem.removeClass( 'toolbar-notices-warning' );
+		menuItem.removeClass( 'toolbar-notices-info' );
+		menuItem.removeClass( 'toolbar-notices-success' );
 
 		if ( noticeHtml ) {
 
@@ -271,9 +274,9 @@ function sucomToolbarNotices( pluginId, adminPageL10n ) {
 
 			jQuery( subMenuId ).html( noticeHtml );
 
-			jQuery( menuId ).addClass( 'has-toolbar-notices' );
-
 			jQuery( 'body.wp-admin' ).addClass( 'has-toolbar-notices' );
+
+			menuItem.addClass( 'has-toolbar-notices' );
 
 		} else {
 
@@ -290,51 +293,38 @@ function sucomToolbarNotices( pluginId, adminPageL10n ) {
 
 				noticeCount  = noticeTypeCount[ 'err' ];
 				noticeStatus = 'error';
+				noticeTime   = 0;
 
 			} else if ( noticeTypeCount[ 'warn' ] ) {
 
 				noticeCount  = noticeTypeCount[ 'warn' ];
 				noticeStatus = 'warning';
+				noticeTime   = 0;
 
 			} else if ( noticeTypeCount[ 'inf' ] ) {
 
 				noticeCount  = noticeTypeCount[ 'inf' ];
 				noticeStatus = 'info';
+				noticeTime   = 4000;
 
 			} else if ( noticeTypeCount[ 'upd' ] ) {
 
 				noticeCount  = noticeTypeCount[ 'upd' ];
 				noticeStatus = 'success';
+				noticeTime   = 2500;
 			}
 
-			jQuery( menuId ).addClass( 'toolbar-notices-' + noticeStatus );
+			menuItem.addClass( 'toolbar-notices-' + noticeStatus );
+			
+			if ( noticeTime ) {
 
-			/**
-			 * countMsgsTransl is an array with one or more noticeStatus keys and their translated message.
-			 *
-			 * Array(
-			 *	'error' => 'There are {0} important error messages under the notification icon.',
-			 * );
-			 */
-			if ( countMsgsTransl[ noticeStatus ] ) {
+				menuItem.addClass( 'hover-timeout' );
 
-				if ( 'undefined' !== typeof wp.data ) {
+				setTimeout( function(){ menuItem.removeClass( 'hover-timeout' ); }, noticeTime );
 
-					var createNotice  = wp.data.dispatch( 'core/notices' ).createNotice;
-					var removeNotice  = wp.data.dispatch( 'core/notices' ).removeNotice;
-					var noticeKey     = 'notice-count-msg-' + noticeStatus;
-					var noticeMessage = countMsgsTransl[ noticeStatus ].formatUnicorn( noticeCount );
+			} else {
 
-					var noticeOptions = {
-						id: noticeKey,
-						type: 'snackbar',
-						spokenMessage: noticeMessage,
-					};
-
-					removeNotice( noticeKey );
-
-					noticeObj = createNotice( noticeStatus, noticeMessage, noticeOptions );
-				}
+				jQuery( menuId ).addClass( 'hover' );
 			}
 		}
 	} );

@@ -4,8 +4,6 @@
  * Extract of translatable strings from lib/pro/.
  */
 _x( 'Webpage Document Title', 'option label', 'wpsso' );
-_x( 'Use Filtered "SEO" Title', 'option label', 'wpsso' );
-_x( 'not recommended', 'option comment', 'wpsso' );
 _x( 'Use Filtered Content', 'option label', 'wpsso' );
 _x( 'recommended (see help text)', 'option comment', 'wpsso' );
 _x( 'Use Filtered Excerpt', 'option label', 'wpsso' );
@@ -469,4 +467,3 @@ __( 'JSON response decode error code %d.', 'wpsso' );
 __( '%1$s shortener API error: %2$s', 'wpsso' );
 _x( 'BuddyPress Member Bio Field Name', 'option label', 'wpsso' );
 __( 'The BuddyPress member profile page does not include the <em>Biographical Info</em> text from the WordPress user profile. If you\'ve created an additional BuddyPress Profile Field for members to enter their profile description, enter the field name here (example: Biographical Info, About Me, etc.).', 'wpsso' );
-_x( 'No Description.', 'default description', 'wpsso' );

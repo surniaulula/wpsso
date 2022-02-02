@@ -81,16 +81,6 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
-				case 'tooltip-plugin_filter_title':	// Use Filtered "SEO" Title.
-
-					$def_checked = $this->get_def_checked( 'plugin_filter_title' );
-
-					$text = sprintf( __( 'The title value provided by WordPress to %s may include modifications from themes and/or other SEO plugins (appending the site name or expanding inline variables, for example, is a common practice).', 'wpsso' ), $this->p_name ) . ' ';
-
-					$text .= sprintf( __( 'Uncheck this option to always use the original unmodified title value from WordPress (default is %1$s) or enable this option to allow themes and plugins to modify the title value provided to %2$s.', 'wpsso' ), $def_checked, $this->p_name ) . ' ';
-
-					break;
-
 				case 'tooltip-plugin_filter_content':	// Use Filtered Content.
 
 					$text .= sprintf( __( 'The use of WordPress content filters allows %s to fully render your content text for meta tag descriptions and detect additional images and/or embedded videos provided by shortcodes.', 'wpsso' ), $this->p_name ) . ' ';
@@ -290,7 +280,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 				case 'tooltip-plugin_no_desc_text':	// No Description Text.
 
-					$text = __( 'A fallback string to use when there is no description text available (for example, "No Description.").' );
+					$text = __( 'A fallback string to use when there is no description text available (for example, "No description.").' );
 
 					break;
 

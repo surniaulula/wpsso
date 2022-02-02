@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '10.0.0',	// Plugin version.
-					'opt_version' => '866',		// Increment when changing default option values.
+					'version'     => '10.1.0-dev.1',	// Plugin version.
+					'opt_version' => '867',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1732,7 +1732,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Advanced Settings > Integration tab.
 					 */
 					'plugin_document_title'     => 'wp_title',		// Webpage Document Title.
-					'plugin_filter_title'       => 0,			// Use Filtered "SEO" Title.
 					'plugin_filter_content'     => 0,			// Use Filtered Content.
 					'plugin_filter_excerpt'     => 0,			// Use Filtered Excerpt.
 					'plugin_page_excerpt'       => 0,			// Enable Excerpt for Pages.

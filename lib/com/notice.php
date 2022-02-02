@@ -26,7 +26,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		private $doing_dev    = false;
 		private $use_cache    = true;	// Read/save minimized CSS from/to transient cache.
 		private $all_types    = array( 'nag', 'err', 'warn', 'inf', 'upd' );	// Sort by importance (most to least).
-		private $tb_types     = array( 'err', 'warn', 'inf' );
+		private $tb_types     = array( 'err', 'warn', 'inf', 'upd' );
 		private $has_shown    = false;
 		private $notice_info  = array();
 		private $notice_cache = array();
@@ -1441,33 +1441,10 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				body.wp-admin.is-fullscreen-mode.has-toolbar-notices .interface-interface-skeleton {
 					top:32px;	/* Non-fullscreen default. */
 				}
-			';
-
-			if ( version_compare( $wp_version, '5.3.2', '>' ) ) {
-
-				$custom_style_css .= '
-					body.wp-admin.is-fullscreen-mode.has-toolbar-notices .block-editor__container .block-editor-editor-skeleton,
-					body.wp-admin.is-fullscreen-mode.has-toolbar-notices .block-editor__container .block-editor-editor-skeleton .editor-post-publish-panel {
-						top:32px;
-					}
-				';
-
-			} else {
-
-				$custom_style_css .= '
-					body.wp-admin.is-fullscreen-mode.has-toolbar-notices .block-editor__container .edit-post-layout > .edit-post-header {
-						top:32px;
-					}
-					body.wp-admin.is-fullscreen-mode.has-toolbar-notices .block-editor__container .edit-post-layout > .edit-post-layout__content {
-						top:88px;
-					}
-					body.wp-admin.is-fullscreen-mode.has-toolbar-notices .block-editor__container .edit-post-layout > div > .edit-post-sidebar {
-						top:88px;
-					}
-				';
-			}
-
-			$custom_style_css .= '
+				body.wp-admin.is-fullscreen-mode.has-toolbar-notices .block-editor__container .block-editor-editor-skeleton,
+				body.wp-admin.is-fullscreen-mode.has-toolbar-notices .block-editor__container .block-editor-editor-skeleton .editor-post-publish-panel {
+					top:32px;
+				}
 				@keyframes blinker {
 					25% { opacity: 0; }
 					75% { opacity: 1; }
@@ -1495,36 +1472,38 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					border:0;
 					background:inherit;
 				}
-				#wpadminbar #wp-toolbar .has-toolbar-notices .ab-item:hover,
-				#wpadminbar #wp-toolbar .has-toolbar-notices.hover .ab-item {
-					color:inherit;
-					background:inherit;
+				#wpadminbar #wp-toolbar li.has-toolbar-notices.hover-timeout div.ab-sub-wrapper {
+					display:block;
 				}
-				#wpadminbar #wp-toolbar .has-toolbar-notices #' . $this->plugin_id . '-toolbar-notices-icon.ab-icon::before {
+				#wpadminbar #wp-toolbar li.has-toolbar-notices div.ab-item {
+					color:inherit !important;
+					background:inherit !important;
+				}
+				#wpadminbar #wp-toolbar li.has-toolbar-notices #' . $this->plugin_id . '-toolbar-notices-icon.ab-icon::before {
 					color:#fff;			/* White on background color. */
 					background-color:inherit;
 				}
-				#wpadminbar #wp-toolbar .has-toolbar-notices #' . $this->plugin_id . '-toolbar-notices-count {
+				#wpadminbar #wp-toolbar li.has-toolbar-notices #' . $this->plugin_id . '-toolbar-notices-count {
 					color:#fff;			/* White on background color. */
 					background-color:inherit;
 				}
-				#wpadminbar #wp-toolbar .has-toolbar-notices.toolbar-notices-error {
+				#wpadminbar #wp-toolbar li.has-toolbar-notices.toolbar-notices-error {
 					background-color:#dc3232;	/* Red. */
 				}
-				#wpadminbar #wp-toolbar .has-toolbar-notices.toolbar-notices-warning {
+				#wpadminbar #wp-toolbar li.has-toolbar-notices.toolbar-notices-warning {
 					background-color:#ffb900;	/* Yellow. */
 				}
-				#wpadminbar #wp-toolbar .has-toolbar-notices.toolbar-notices-info {
+				#wpadminbar #wp-toolbar li.has-toolbar-notices.toolbar-notices-info {
 					background-color:#00a0d2;	/* Blue. */
 				}
-				#wpadminbar .has-toolbar-notices.toolbar-notices-success {
+				#wpadminbar #wp-toolbar li.has-toolbar-notices.toolbar-notices-success {
 					background-color:#46b450;	/* Green. */
 				}
-				#wpadminbar .has-toolbar-notices #wp-admin-bar-' . $this->plugin_id . '-toolbar-notices-default {
+				#wpadminbar #wp-toolbar li.has-toolbar-notices #wp-admin-bar-' . $this->plugin_id . '-toolbar-notices-default {
 					padding:0;
 				}
-				#wpadminbar .has-toolbar-notices #wp-admin-bar-' . $this->plugin_id . '-toolbar-notices-container {
-					min-width:70vw;			/* 70% of the viewing window width. */
+				#wpadminbar #wp-toolbar li.has-toolbar-notices #wp-admin-bar-' . $this->plugin_id . '-toolbar-notices-container {
+					min-width:75vw;			/* 70% of the viewing window width. */
 					max-height:90vh;		/* 90% of the viewing window height. */
 					overflow-y:scroll;
 				}
@@ -1779,9 +1758,6 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 		private function get_notice_script() {
 
-			/**
-			 * The type="text/javascript" attribute is unnecessary for JavaScript resources and creates warnings in the W3C validator.
-			 */
 			return '
 <script>
 

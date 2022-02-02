@@ -145,9 +145,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$title_source = empty( $this->p->options[ 'plugin_document_title' ] ) ? 'wp_title' : $this->p->options[ 'plugin_document_title' ];
+			$title_type = empty( $this->p->options[ 'plugin_document_title' ] ) ? 'wp_title' : $this->p->options[ 'plugin_document_title' ];
 
-			if ( 'wp_title' === $title_source ) {	// Nothing to do.
+			if ( 'wp_title' === $title_type ) {	// Nothing to do.
 
 				return $title;
 			}
@@ -161,7 +161,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$mod = $this->p->page->get_mod( $use_post );
 
-			switch ( $title_source ) {
+			switch ( $title_type ) {
 
 				case 'og_title':
 
@@ -192,7 +192,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'returning ' . $title_source . ' = ' . $title );
+				$this->p->debug->log( 'returning ' . $title_type . ' = ' . $title );
 			}
 
 			return $title;
@@ -1430,21 +1430,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$title_sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
 			}
 
-			/**
-			 * Filters to save and restore original / pre-filtered title value.
-			 */
-			$filter_title = empty( $this->p->options[ 'plugin_filter_title' ] ) ? false : true;
-
-			if ( ! $filter_title ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'protecting filter value for wp_title (auto_unprotect is false)' );
-				}
-
-				SucomUtil::protect_filter_value( 'wp_title', $auto_unprotect = false );
-			}
-
 			$title_text = '';
 
 			/**
@@ -1460,11 +1445,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				$title_text = SucomUtil::get_site_name( $this->p->options );
 
-				if ( $filter_title ) {
-
-					$title_text = $this->p->util->safe_apply_filters( array( 'wp_title', $title_text, $title_sep, $seplocation = 'right' ), $mod );
-				}
-
 			} elseif ( $mod[ 'is_post' ] ) {
 
 				if ( $mod[ 'post_type' ] ) {	// Just in case.
@@ -1477,7 +1457,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 							$post_type_obj = get_post_type_object( $mod[ 'post_type' ] );
 
-							if ( ! empty( $post_type_obj->label ) ) {
+							if ( isset( $post_type_obj->label ) ) {	// Just in case.
 
 								$title_text = $post_type_obj->label;
 							}
@@ -1486,30 +1466,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					} elseif ( $mod[ 'id' ] ) {
 
 						/**
-						 * Note that the get_the_title() function does not apply the 'wp_title' filter.
+						 * The get_the_title() function does not apply the 'wp_title' filter.
 						 *
 						 * See https://core.trac.wordpress.org/browser/tags/5.4/src/wp-includes/post-template.php#L117.
 						 */
 						$title_text = html_entity_decode( get_the_title( $mod[ 'id' ] ) ) . ' ';
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'get_the_title = ' . $title_text );
-						}
-					}
-
-					if ( $title_text ) {
-
-						if ( ! empty( $title_sep ) ) {
-
-							$title_text .= $title_sep . ' ';
-						}
-
-						if ( $filter_title ) {
-
-							$title_text = $this->p->util->safe_apply_filters( array( 'wp_title',
-								$title_text, $title_sep, $seplocation = 'right' ), $mod );
-						}
 					}
 				}
 
@@ -1528,15 +1489,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				$user_obj = SucomUtil::get_user_object( $mod[ 'id' ] );
 
-				if ( ! empty( $user_obj->display_name ) ) {	// Just in case.
+				if ( isset( $user_obj->display_name ) ) {	// Just in case.
 
-					$title_text = $user_obj->display_name . ' ' . $title_sep . ' ';
-
-					if ( $filter_title ) {
-
-						$title_text = $this->p->util->safe_apply_filters( array( 'wp_title',
-							$title_text, $title_sep, $seplocation = 'right' ), $mod );
-					}
+					$title_text = $user_obj->display_name;
 				}
 
 			} elseif ( $mod[ 'is_search' ] ) {
@@ -1560,16 +1515,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						$title_text = $this->p->opt->get_text( 'plugin_day_page_title' );
 					}
 				}
-			}
-
-			if ( ! $filter_title ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'unprotecting filter value for wp_title' );
-				}
-
-				SucomUtil::unprotect_filter_value( 'wp_title' );
 			}
 
 			/**
@@ -2187,7 +2132,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		}
 
 		/**
-		 * Includes parent names in the term title if the $title_sep value is not empty.
+		 * Includes parent names in the term title if $title_sep is not false.
 		 */
 		public function get_term_title( $term_id = 0, $title_sep = null ) {
 

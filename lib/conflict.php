@@ -78,8 +78,6 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				$notice_key = 'deactivate-wpsso-inherit-parent-meta';
 
 				$this->p->notice->err( $notice_msg, null, $notice_key );
-
-				$this->p->notice->nag( '<p>' . $notice_msg . '</p>', null, $notice_key );
 			}
 
 			if ( ! empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
@@ -104,8 +102,6 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 					$notice_key = 'deactivate-wpsso-schema-json-ld';
 
 					$this->p->notice->err( $notice_msg, null, $notice_key );
-
-					$this->p->notice->nag( '<p>' . $notice_msg . '</p>', null, $notice_key );
 				}
 			}
 
@@ -131,8 +127,6 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				$notice_key = 'deactivate-wpsso-organization';
 
 				$this->p->notice->err( $notice_msg, null, $notice_key );
-
-				$this->p->notice->nag( '<p>' . $notice_msg . '</p>', null, $notice_key );
 			}
 
 			if ( ! empty( $this->p->avail[ 'p_ext' ][ 'plm' ] ) ) {
@@ -157,8 +151,6 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 				$notice_key = 'deactivate-wpsso-plm';
 
 				$this->p->notice->err( $notice_msg, null, $notice_key );
-
-				$this->p->notice->nag( '<p>' . $notice_msg . '</p>', null, $notice_key );
 			}
 		}
 
@@ -196,8 +188,6 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 					$notice_key = 'db-max-allowed-packet-too-small';
 
 					$this->p->notice->err( $notice_msg, null, $notice_key );
-
-					$this->p->notice->nag( '<p>' . $notice_msg . '</p>', null, $notice_key );
 				}
 			}
 		}
@@ -338,8 +328,6 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 					$this->p->notice->err( $notice_msg, null, $notice_key );
 
-					$this->p->notice->nag( '<p>' . $notice_msg . '</p>', null, $notice_key );
-
 					SucomUtil::safe_error_log( $error_pre . ' ' . $notice_msg, $strip_html = true );
 				}
 			}
@@ -375,8 +363,6 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 					$notice_key = 'wpb-vc-version-event-bug-' . $min_version;
 
 					$this->p->notice->err( $notice_msg, null, $notice_key );
-
-					$this->p->notice->nag( '<p>' . $notice_msg . '</p>', null, $notice_key );
 				}
 			}
 		}

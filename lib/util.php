@@ -729,8 +729,10 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$func_name   = 'getimagesize()';
 				$error_pre   = sprintf( __( '%s warning:', 'wpsso' ), __METHOD__ );
 				$rec_max_msg = sprintf( __( 'longer than recommended max of %1$.3f secs', 'wpsso' ), $mtime_max );
-				$error_msg   = sprintf( __( 'Slow PHP function detected - %1$s took %2$.3f secs for %3$s (%4$s).',
+				$notice_msg  = sprintf( __( 'Slow PHP function detected - %1$s took %2$.3f secs for %3$s (%4$s).',
 					'wpsso' ), '<code>' . $func_name . '</code>', $mtime_total, $image_url, $rec_max_msg );
+
+				self::safe_error_log( $error_pre . ' ' . $notice_msg, $strip_html = true );
 
 				if ( $this->p->debug->enabled ) {
 
@@ -740,10 +742,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				if ( $this->p->notice->is_admin_pre_notices() ) {
 
-					$this->p->notice->warn( $error_msg );
+					$this->p->notice->warn( $notice_msg );
 				}
-
-				self::safe_error_log( $error_pre . ' ' . $error_msg, $strip_html = true );
 			}
 
 			if ( is_array( $image_info ) ) {
@@ -1155,20 +1155,19 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( ! is_array( $raw_sections ) ) {
 
+				$error_pre  = sprintf( '%s error:', __METHOD__ );
+				$notice_msg = sprintf( __( 'Error reading the %s file for the article sections list.', 'wpsso' ), $text_list_file );
+
+				self::safe_error_log( $error_pre . ' ' . $notice_msg );
+
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'error reading %s article sections list file' );
 				}
 
-				if ( is_admin() ) {
+				if ( $this->p->notice->is_admin_pre_notices() ) {
 
-					$error_pre = sprintf( '%s error:', __METHOD__ );
-
-					$error_msg = sprintf( __( 'Error reading the %s file for the article sections list.', 'wpsso' ), $text_list_file );
-
-					$this->p->notice->err( $error_msg );
-
-					self::safe_error_log( $error_pre . ' ' . $error_msg );
+					$this->p->notice->err( $notice_msg );
 				}
 
 				return array();
@@ -1257,19 +1256,19 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( ! is_array( $raw_categories ) ) {
 
+				$error_pre  = sprintf( '%s error:', __METHOD__ );
+				$notice_msg = sprintf( __( 'Error reading the %s file for the product categories list.', 'wpsso' ), $text_list_file );
+
+				self::safe_error_log( $error_pre . ' ' . $notice_msg );
+
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'error reading %s product categories list file' );
 				}
 
-				if ( is_admin() ) {
+				if ( $this->p->notice->is_admin_pre_notices() ) {
 
-					$error_pre = sprintf( '%s error:', __METHOD__ );
-					$error_msg = sprintf( __( 'Error reading the %s file for the product categories list.', 'wpsso' ), $text_list_file );
-
-					$this->p->notice->err( $error_msg );
-
-					self::safe_error_log( $error_pre . ' ' . $error_msg );
+					$this->p->notice->err( $notice_msg );
 				}
 
 				return array();
@@ -2841,28 +2840,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 */
 			if ( $mtime_max > 0 && $mtime_total > $mtime_max ) {
 
-				switch ( $filter_name ) {
-
-					case 'get_the_excerpt':
-					case 'the_content':
-					case 'the_excerpt':
-					case 'wp_title':
-
-						$is_wp_filter = true;
-
-						break;
-
-					default:
-
-						$is_wp_filter = false;
-
-						break;
-				}
-
 				$error_pre   = sprintf( __( '%s warning:', 'wpsso' ), __METHOD__ );
 				$rec_max_msg = sprintf( __( 'longer than recommended max of %1$.3f secs', 'wpsso' ), $mtime_max );
-				$error_msg   = sprintf( __( 'Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the "%2$s" filter (%3$s).',
+				$notice_msg  = sprintf( __( 'Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the "%2$s" filter (%3$s).',
 					'wpsso' ), $mtime_total, $filter_name, $rec_max_msg );
+
+				self::safe_error_log( $error_pre . ' ' . $notice_msg );
 
 				if ( $this->p->debug->enabled ) {
 
@@ -2872,14 +2855,37 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				if ( $this->p->notice->is_admin_pre_notices() ) {
 
+					$is_wp_filter = false;
+
+					switch ( $filter_name ) {
+
+						case 'get_the_excerpt':
+						case 'the_content':
+						case 'the_excerpt':
+						case 'wp_title':
+
+							$is_wp_filter = true;
+
+							break;
+					}
+
+					/**
+					 * If this is a known WordPress filter, show a more complete notification message.
+					 */
 					if ( $is_wp_filter ) {
 
 						$filter_api_link = sprintf( '<a href="https://codex.wordpress.org/Plugin_API/Filter_Reference/%1$s">%1$s</a>', $filter_name );
 						$qm_plugin_link  = '<a href="https://wordpress.org/plugins/query-monitor/">Query Monitor</a>';
+						$option_label    = _x( 'Disable Cache for Debugging', 'option label', 'wpsso' );
+						$option_link     = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_settings', $option_label );
 
-						$notice_msg = sprintf( __( 'Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds to execute. This is longer than the recommended maximum of %3$.3f seconds and may affect page load time. Please consider reviewing active plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code.', 'wpsso' ), $filter_api_link, $mtime_total, $mtime_max ) . ' ';
+						$notice_msg = sprintf( __( 'Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds to execute.', 'wpsso' ), $filter_api_link, $mtime_total ) . ' ';
 
-						$notice_msg .= sprintf( __( 'Activating the %1$s plugin and clearing the %2$s cache (to re-apply the filter) may provide more information on the specific hook(s) or PHP code affecting performance.', 'wpsso' ), $qm_plugin_link, $this->p->cf[ 'plugin' ][ 'wpsso' ][ 'short' ] );
+						$notice_msg .= sprintf( __( 'This is longer than the recommended maximum of %1$.3f seconds and may affect page load time.', 'wpsso' ), $mtime_max ) . ' ';
+
+						$notice_msg .= sprintf( __( 'Please consider reviewing active plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code.', 'wpsso' ), $filter_api_link ) . ' ';
+
+						$notice_msg .= sprintf( __( 'Activating the %1$s plugin and enabling the the %2$s option (to apply the filter consistently) may provide more information on the specific hook(s) or PHP code affecting performance.', 'wpsso' ), $qm_plugin_link, $option_link );
 
 						$notice_key = 'slow-filter-hooks-detected-' . $filter_name;
 
@@ -2887,11 +2893,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					} else {
 
-						$this->p->notice->warn( $error_msg );
+						$this->p->notice->warn( $notice_msg );
 					}
 				}
-
-				self::safe_error_log( $error_pre . ' ' . $error_msg );
 			}
 
 			/**

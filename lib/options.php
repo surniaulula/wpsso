@@ -1782,7 +1782,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					case 'plugin_no_desc_text':		// No Description Text.
 
-						return _x( 'No Description.', 'option value', 'wpsso' );
+						return _x( 'No description.', 'option value', 'wpsso' );
 
 					case 'plugin_search_page_title':	// Search Results Title.
 
