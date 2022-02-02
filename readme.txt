@@ -251,7 +251,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 10.1.0-dev.2 (2020/02/02)**
+**Version 10.1.0-dev.3 (2020/02/02)**
 
 * **New Features**
 	* SSO toolbar notices are now shown and hidden after a time-out (2.5 seconds for success notices, 4 seconds for info notices, and no time-out for warnings and errors).
@@ -260,7 +260,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added a new `SucomUtilWP::add_title_value()` method to add a separator and value to the left/right hand of the title.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -941,7 +941,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 10.1.0-dev.2 =
+= 10.1.0-dev.3 =
 
 (2020/02/02) SSO toolbar notices are now shown and hidden after a time-out (2.5 seconds for success notices, 4 seconds for info notices, and no time-out for warnings and errors).
 
