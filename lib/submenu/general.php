@@ -92,7 +92,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			$tabs = apply_filters( 'wpsso_general_' . $metabox_id . '_tabs', array(
 				'site'    => _x( 'Site Information', 'metabox tab', 'wpsso' ),
-				'content' => _x( 'Titles / Descriptions', 'metabox tab', 'wpsso' ),
+				'content' => _x( 'Titles and Descriptions', 'metabox tab', 'wpsso' ),
 				'images'  => _x( 'Images', 'metabox tab', 'wpsso' ),
 				'videos'  => _x( 'Videos', 'metabox tab', 'wpsso' ),
 			) );
@@ -117,7 +117,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 			$tabs = apply_filters( 'wpsso_general_' . $metabox_id . '_tabs', array(
 				'facebook'    => _x( 'Facebook', 'metabox tab', 'wpsso' ),
-				'google'      => _x( 'Google / Schema', 'metabox tab', 'wpsso' ),
+				'google'      => _x( 'Google and Schema', 'metabox tab', 'wpsso' ),
 				'pinterest'   => _x( 'Pinterest', 'metabox tab', 'wpsso' ),
 				'twitter'     => _x( 'Twitter', 'metabox tab', 'wpsso' ),
 				'other_sites' => _x( 'Other Sites', 'metabox tab', 'wpsso' ),
@@ -308,7 +308,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					}
 
 					/**
-					 * Google / Schema settings.
+					 * Google and Schema settings.
 					 */
 					$table_rows[ 'g_site_verify' ] = '' .
 						$this->form->get_th_html( _x( 'Google Website Verification ID', 'option label', 'wpsso' ),
@@ -335,7 +335,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$table_rows[ 'schema_text_max_len' ] = $this->form->get_tr_hide( 'basic', 'schema_text_max_len' ) . 
 						$this->form->get_th_html( _x( 'Text / Article Body Max. Length', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'schema_text_max_len' ) . 
-						'<td>' . $this->form->get_input( 'schema_text_max_len', $css_class = 'chars' ) . ' ' .
+						'<td>' . $this->form->get_input( 'schema_text_max_len', $css_class = 'bigchars' ) . ' ' .
 						_x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
 
 					$table_rows[ 'schema_desc_max_len' ] = $this->form->get_tr_hide( 'basic', 'schema_desc_max_len' ) . 

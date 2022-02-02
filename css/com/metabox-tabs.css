@@ -213,7 +213,7 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	content:"\f1c0";	/* .icon-database */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_content::before {		/* SSO > General Settings > General Settings > Titles / Descriptions tab. */
+.sucom-tablink-icon.sucom-tablink-href_content::before {		/* SSO > General Settings > General Settings > Titles and Descriptions tab. */
 	content:"\e809";	/* .icon-edit */
 }
 

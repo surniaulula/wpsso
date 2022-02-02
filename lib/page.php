@@ -846,13 +846,16 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		 *
 		 * $md_key = true | false | string | array
 		 *
-		 * Use a $title_sep value of false to avoid adding parent names in the term title.
-		 *
 		 * $md_key can be a metadata options key, or an array of keys in order of preference (ie. from more specific to
-		 * less specific). Example $md_key = array( 'seo_title', 'og_title'
-		 * ).
+		 * less specific). Example $md_key = array( 'seo_title', 'og_title' ).
+		 *
+		 * Use $title_sep = false to avoid adding parent names in the term title.
 		 *
 		 * Note that WpssoUtilInline->replace_variables() is applied to the final title text.
+		 *
+		 * Note that the WPSSO BC add-on uses $title_sep = false to avoid prefixing term parents in the term titles.
+		 *
+		 * See WpssoBcBreadcrumb->add_itemlist_data().
 		 */
 		public function get_title( $max_len = 70, $dots = '', $mod = false, $read_cache = true,
 			$add_hashtags = false, $do_encode = true, $md_key = 'og_title', $title_sep = null ) {
@@ -984,11 +987,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$adj_max_len = empty( $pagesuffix ) ? $max_len : $max_len - strlen( $pagesuffix ) - 1;
 
 				$adj_max_len = empty( $hashtags ) ? $adj_max_len : $adj_max_len - strlen( $hashtags ) - 1;
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'title strlen before limit length ' . strlen( $title_text ) . ' (limiting to ' . $adj_max_len . ' chars)' );
-				}
 
 				$title_text = $this->p->util->limit_text_length( $title_text, $adj_max_len, $dots, $cleanup_html = false );
 			}
@@ -1144,6 +1142,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					$desc_text = SucomUtil::get_site_description( $this->p->options );
 
+				} elseif ( $mod[ 'is_comment' ] ) {
+
+					if ( $mod[ 'id' ] ) {	// Just in case.
+
+						$desc_text = get_comment_excerpt( $mod[ 'id' ] );
+					}
+
 				} elseif ( $mod[ 'is_post' ] ) {
 
 					if ( $mod[ 'post_type' ] ) {	// Just in case.
@@ -1152,7 +1157,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 							$desc_text = $this->p->opt->get_text( 'plugin_pta_' . $mod[ 'post_type' ] . '_desc' );
 
-							if ( empty( $desc_text ) ) {
+							if ( empty( $desc_text ) ) {	// Just in case.
 
 								$post_type_obj = get_post_type_object( $mod[ 'post_type' ] );
 
@@ -1226,15 +1231,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				} elseif ( $mod[ 'is_term' ] ) {
 
-					if ( SucomUtil::is_tag_page( $mod[ 'id' ] ) ) {
-
-						$desc_text = tag_description( $mod[ 'id' ] );
-
-					} elseif ( SucomUtil::is_category_page( $mod[ 'id' ] ) ) {
-
-						$desc_text = category_description( $mod[ 'id' ] );
-
-					} else {
+					if ( $mod[ 'id' ] ) {	// Just in case.
 
 						$term_obj = get_term( $mod[ 'id' ], $mod[ 'tax_slug' ] );
 
@@ -1246,11 +1243,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				} elseif ( $mod[ 'is_user' ] ) {
 
-					$user_obj = SucomUtil::get_user_object( $mod[ 'id' ] );
+					if ( $mod[ 'id' ] ) {	// Just in case.
 
-					if ( isset( $user_obj->description ) ) {
+						$user_obj = SucomUtil::get_user_object( $mod[ 'id' ] );
 
-						$desc_text = $user_obj->description;
+						if ( isset( $user_obj->description ) ) {
+
+							$desc_text = $user_obj->description;
+						}
 					}
 
 				} elseif ( $mod[ 'is_search' ] ) {
@@ -1410,13 +1410,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		}
 
 		/**
-		 * $mod = array
-		 *
 		 * Use $title_sep = false to avoid adding parent names in the term title.
 		 *
 		 * Note that WpssoUtilInline->replace_variables() is applied in WpssoPage->get_title(), not in this method.
 		 *
 		 * See WpssoUtilInline->get_defaults().
+		 * See WpssoBcBreadcrumb->add_itemlist_data().
 		 */
 		public function get_the_title( array $mod, $title_sep = null ) {
 
@@ -1445,6 +1444,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				$title_text = SucomUtil::get_site_name( $this->p->options );
 
+			} elseif ( $mod[ 'is_comment' ] ) {
+
+				if ( $mod[ 'id' ] ) {	// Just in case.
+
+					$title_text = sprintf( __( 'Comment from %1$s on %2$s', 'wpsso' ),
+						get_comment_author( $mod[ 'id' ] ), get_comment_date( $fmt = '', $mod[ 'id' ] ) );
+				}
+
 			} elseif ( $mod[ 'is_post' ] ) {
 
 				if ( $mod[ 'post_type' ] ) {	// Just in case.
@@ -1453,7 +1460,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 						$title_text = $this->p->opt->get_text( 'plugin_pta_' . $mod[ 'post_type' ] . '_title' );
 
-						if ( empty( $title_text ) ) {
+						if ( empty( $title_text ) ) {	// Just in case.
 
 							$post_type_obj = get_post_type_object( $mod[ 'post_type' ] );
 
@@ -1470,28 +1477,42 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						 *
 						 * See https://core.trac.wordpress.org/browser/tags/5.4/src/wp-includes/post-template.php#L117.
 						 */
-						$title_text = html_entity_decode( get_the_title( $mod[ 'id' ] ) ) . ' ';
+						$title_text = html_entity_decode( get_the_title( $mod[ 'id' ] ) );
+
+					} elseif ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'no post id' );
 					}
+
+				} elseif ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'no post type' );
 				}
 
 			} elseif ( $mod[ 'is_term' ] ) {
 
-				$term_obj = get_term( $mod[ 'id' ], $mod[ 'tax_slug' ] );
+				if ( $mod[ 'id' ] ) {	// Just in case.
 
-				/**
-				 * Includes parent names in the term title if the $title_sep value is not empty.
-				 *
-				 * Use $title_sep = false to avoid adding parent names in the term title.
-				 */
-				$title_text = $this->get_term_title( $term_obj, $title_sep );
+					$term_obj = get_term( $mod[ 'id' ], $mod[ 'tax_slug' ] );
+
+					/**
+					 * Includes parent names in the term title if the $title_sep value is not empty.
+					 *
+					 * Use $title_sep = false to avoid adding parent names in the term title.
+					 */
+					$title_text = $this->get_term_title( $term_obj, $title_sep );
+				}
 
 			} elseif ( $mod[ 'is_user' ] ) {
 
-				$user_obj = SucomUtil::get_user_object( $mod[ 'id' ] );
+				if ( $mod[ 'id' ] ) {	// Just in case.
 
-				if ( isset( $user_obj->display_name ) ) {	// Just in case.
+					$user_obj = SucomUtil::get_user_object( $mod[ 'id' ] );
 
-					$title_text = $user_obj->display_name;
+					if ( isset( $user_obj->display_name ) ) {	// Just in case.
+
+						$title_text = $user_obj->display_name;
+					}
 				}
 
 			} elseif ( $mod[ 'is_search' ] ) {
@@ -1537,11 +1558,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 * Trim excess separator.
 			 */
 			if ( ! empty( $title_sep ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'trimming separator "' . $title_sep . '" from title string' );
-				}
 
 				$title_text = preg_replace( '/ *' . preg_quote( $title_sep, '/' ) . ' *$/', '', $title_text );
 			}

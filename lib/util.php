@@ -2097,11 +2097,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					$url = self::get_home_url( $this->p->options, $mod );
 
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'home canonical url = ' . $url );
-					}
-
 					$url = apply_filters( 'wpsso_home_url', $url, $mod );
 
 				} elseif ( $mod[ 'is_comment' ] ) {
