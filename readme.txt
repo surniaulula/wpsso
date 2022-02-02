@@ -251,7 +251,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 10.1.0-dev.1 (2020/02/02)**
+**Version 10.1.0-dev.2 (2020/02/02)**
 
 * **New Features**
 	* SSO toolbar notices are now shown and hidden after a time-out (2.5 seconds for success notices, 4 seconds for info notices, and no time-out for warnings and errors).
@@ -941,7 +941,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 10.1.0-dev.1 =
+= 10.1.0-dev.2 =
 
 (2020/02/02) SSO toolbar notices are now shown and hidden after a time-out (2.5 seconds for success notices, 4 seconds for info notices, and no time-out for warnings and errors).
 
