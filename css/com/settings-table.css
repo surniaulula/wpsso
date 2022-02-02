@@ -732,7 +732,12 @@ table.sucom-settings td select.site-use { width:200px; }
 
 table.sucom-settings td select.update_filter { width:220px; }
 
-table.sucom-settings td select.timezone { width:225px; }
+table.sucom-settings td input[type="text"].latitude,
+table.sucom-settings td input[type="text"].longitude,
+table.sucom-settings td input[type="text"].altitude,
+table.sucom-settings td select.timezone {
+	width:225px;
+}
 
 table.sucom-settings td select.og_type,
 table.sucom-settings td select.schema_type,
