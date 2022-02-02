@@ -139,7 +139,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipOpenGraph' ) ) {
 
 					$text = __( 'An image ID for your site\'s default image (ie. when an image is required, and no other image is available).', 'wpsso' ) . ' ';
 
-					$text .= __( 'The default image is used for archive pages (ie. blog, category, and tag archive page) and as a fallback for WordPress Posts and Pages that do not have a suitable image featured, attached, or in their content.', 'wpsso' ) . ' ';
+					$text .= __( 'The default image is used for archive pages (ie. blog, category, and tag archive page) and as a fallback for posts and pages that do not have a suitable image featured, attached, or in their content.', 'wpsso' ) . ' ';
 
 					$text .= '<em>' . __( 'This option is disabled if a custom image URL is entered.', 'wpsso' ) . '</em>';
 
@@ -156,7 +156,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipOpenGraph' ) ) {
 
 					$text .= sprintf( __( 'The image should be at least %s or more in width and height.', 'wpsso' ), $limit_min_width . 'x' . $limit_min_height . 'px' ) . ' ';
 
-					$text .= __( 'The default image is used for archive pages (ie. blog, category, and tag archive page) and as a fallback for WordPress Posts and Pages that do not have a suitable image featured, attached, or in their content.', 'wpsso' ) . ' ';
+					$text .= __( 'The default image is used for archive pages (ie. blog, category, and tag archive page) and as a fallback for posts and pages that do not have a suitable image featured, attached, or in their content.', 'wpsso' ) . ' ';
 
 					$text .= '<em>' . __( 'This option is disabled if a custom image ID is selected.', 'wpsso' ) . '</em>';
 

@@ -8025,8 +8025,8 @@ msgstr ""
 #: lib/messages-tooltip-opengraph.php:159
 msgid ""
 "The default image is used for archive pages (ie. blog, category, and tag "
-"archive page) and as a fallback for WordPress Posts and Pages that do not "
-"have a suitable image featured, attached, or in their content."
+"archive page) and as a fallback for posts and pages that do not have a "
+"suitable image featured, attached, or in their content."
 msgstr ""
 
 #: lib/messages-tooltip-opengraph.php:153
