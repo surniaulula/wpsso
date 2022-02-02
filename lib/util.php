@@ -41,6 +41,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			'is_multisite',
 			'is_page',
 			'is_post_type_archive',
+			'is_rtl',
 			'is_search',
 			'is_single',
 			'is_singular',
@@ -3118,7 +3119,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 */
 		public function limit_text_length( $text, $maxlen = 300, $trailing = '', $cleanup_html = true ) {
 
-			if ( true === $cleanup_html ) {
+			if ( $cleanup_html ) {
 
 				$text = $this->cleanup_html_tags( $text );	// Remove any remaining html tags.
 			}
@@ -3129,16 +3130,18 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( $maxlen > 0 && function_exists( 'mb_strlen' ) && function_exists( 'mb_substr' ) ) {
 
-				if ( mb_strlen( $trailing ) > $maxlen ) {
+				if ( mb_strlen( $trailing ) > $maxlen ) {	// Just in case.
 
 					$trailing = mb_substr( $trailing, 0, $maxlen );	// Trim the trailing string, if too long.
 				}
 
 				if ( mb_strlen( $text ) > $maxlen ) {
 
-					$text = mb_substr( $text, 0, $maxlen - mb_strlen( $trailing ) );
+					$adj_max_len = $maxlen - mb_strlen( $trailing );
+
+					$text = mb_substr( $text, 0, $adj_max_len );
 					$text = trim( preg_replace( '/[^ ]*$/', '', $text ) );	// Remove trailing bits of words.
-					$text = preg_replace( '/[,\.]*$/', '', $text );	// Remove trailing puntuation.
+					$text = preg_replace( '/[,\.]*$/', '', $text );		// Remove trailing puntuation.
 
 				} else {
 

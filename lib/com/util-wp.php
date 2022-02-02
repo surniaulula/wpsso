@@ -18,6 +18,34 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 		public function __construct() {}
 
+		/**
+		 * Add a separator and value to the left/right hand of the title.
+		 */
+		public static function add_title_value( &$title, $title_sep, $value, $hand = null ) {
+
+			if ( null === $hand ) {
+
+				$hand = is_rtl() ? 'left' : 'right';
+			}
+
+			switch ( $hand ) {
+
+				case 'left':
+
+					$title = trim( $value . ' ' . $title_sep ) . ' ' . $title;
+
+					break;
+
+				default:
+
+					$title = trim( $title . ' ' . $title_sep ) . ' ' . $value;
+
+					break;
+			}
+
+			return $title;
+		}
+
 		public static function oembed_enabled() {
 
 			if ( function_exists( 'get_oembed_response_data' ) ) {	// Since WP v4.4.

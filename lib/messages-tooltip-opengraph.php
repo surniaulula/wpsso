@@ -77,9 +77,9 @@ if ( ! class_exists( 'WpssoMessagesTooltipOpenGraph' ) ) {
 				 */
 				case 'tooltip-og_title_sep':		// Title Separator.
 
-					$def_sep = $this->p->opt->get_defaults( 'og_title_sep' );
+					$def_title_sep = $this->p->opt->get_defaults( 'og_title_sep' );
 
-					$text = sprintf( __( 'One or more characters used to separate values (category parent names, page numbers, etc.) within the Facebook / Open Graph title string (the default is a hyphen "%s" character).', 'wpsso' ), $def_sep );
+					$text = sprintf( __( 'One or more characters used to separate values (category parent names, page numbers, etc.) within the title string (the default is a hyphen "%s" character).', 'wpsso' ), $def_title_sep );
 
 					break;
 

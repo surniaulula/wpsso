@@ -160,8 +160,8 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 			$add_page            = isset( $atts[ 'add_page' ] ) ? $atts[ 'add_page' ] : true;
 			$page_number         = $this->u->get_page_number( $mod, $add_page );
 			$page_total          = $mod[ 'paged_total' ];
-			$def_sep             = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
-			$sep                 = isset( $atts[ 'title_sep' ] ) ? $atts[ 'title_sep' ] : $def_sep;
+			$def_title_sep       = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
+			$sep                 = isset( $atts[ 'title_sep' ] ) ? $atts[ 'title_sep' ] : $def_title_sep;
 			$canonical_url       = empty( $atts[ 'canonical_url' ] ) ? $this->u->get_canonical_url( $mod, $add_page ) : $atts[ 'canonical_url' ];
 			$canonical_short_url = empty( $atts[ 'canonical_short_url' ] ) ? $this->u->get_canonical_short_url( $mod, $add_page ) : $atts[ 'canonical_short_url' ];
 			$sharing_url         = empty( $atts[ 'sharing_url' ] ) ? $this->u->get_sharing_url( $mod, $add_page, $atts ) : $atts[ 'sharing_url' ];

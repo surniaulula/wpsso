@@ -664,6 +664,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		 * $mod = true | false | post_id | array
 		 *
 		 * $md_key = true | false | string | array
+		 *
+		 * See WpssoRrssbFiltersEdit->filter_post_edit_share_rows().
 		 */
 		public function get_caption( $type = 'title', $max_len = 200, $mod = true, $read_cache = true,
 			$add_hashtags = true, $do_encode = true, $md_key = '' ) {
@@ -803,27 +805,18 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						/**
 						 * Get the title first.
 						 */
-						$cap_text = $this->get_title( 0, '', $mod, $read_cache, false, false, $md_key_title );
-
-						/**
-						 * Add a separator between title and description.
-						 */
-						if ( ! empty( $cap_text ) ) {
-
-							$cap_text .= ' ';
-						}
-
-						if ( ! empty( $title_sep ) ) {
-
-							$cap_text .= $title_sep . ' ';
-						}
+						$cap_text = $this->get_title( 0, '', $mod, $read_cache, false, false, $md_key_title, $title_sep );
 
 						/**
 						 * Reduce the requested $max_len by the caption length we already have.
 						 */
-						$adj_max_len = $max_len - strlen( $cap_text );
+						$cap_len = strlen( trim( $cap_text . ' ' . $title_sep ) . ' ' );
 
-						$cap_text .= $this->get_description( $adj_max_len, '...', $mod, $read_cache, $add_hashtags, false, $md_key_desc );
+						$adj_max_len = $max_len - $cap_len;
+
+						$cap_desc = $this->get_description( $adj_max_len, '...', $mod, $read_cache, $add_hashtags, false, $md_key_desc );
+
+						SucomUtilWP::add_title_value( $cap_text, $title_sep, $cap_desc );
 
 						break;
 				}
