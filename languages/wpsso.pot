@@ -5110,13 +5110,13 @@ msgid "SSO"
 msgstr ""
 
 #: lib/admin-head-suggest-options.php:68 lib/messages.php:878
-#: lib/submenu/advanced.php:45
+#: lib/submenu/advanced.php:47
 msgctxt "metabox title"
 msgid "HTML Tags"
 msgstr ""
 
 #: lib/admin-head-suggest-options.php:69 lib/messages.php:879
-#: lib/submenu/advanced.php:235
+#: lib/submenu/advanced.php:237
 msgctxt "metabox tab"
 msgid "SEO and Others"
 msgstr ""
@@ -8025,19 +8025,18 @@ msgstr ""
 #: lib/messages-tooltip-opengraph.php:159
 msgid ""
 "The default image is used for archive pages (ie. blog, category, and tag "
-"archive page) and as a fallback for posts and pages that do not have a "
-"suitable image featured, attached, or in their content."
+"archive page) and as a fallback for WordPress Posts and Pages that do not "
+"have a suitable image featured, attached, or in their content."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:150
+#: lib/messages-tooltip-opengraph.php:153
 msgid "You can enter a default image URL instead of choosing an image ID."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:152
+#: lib/messages-tooltip-opengraph.php:155
 msgid ""
-"The image URL option allows you to use an image outside of a managed "
-"collection (WordPress Media Library or NextGEN Gallery), and/or a smaller "
-"logo style image."
+"The image URL option allows you to choose an image outside of the WordPress "
+"Media Library and/or a smaller logo style image."
 msgstr ""
 
 #: lib/messages-tooltip-opengraph.php:157
@@ -10513,12 +10512,12 @@ msgctxt "metabox title"
 msgid "Network Advanced Settings"
 msgstr ""
 
-#: lib/sitesubmenu/site-advanced.php:72 lib/submenu/advanced.php:76
+#: lib/sitesubmenu/site-advanced.php:72 lib/submenu/advanced.php:78
 msgctxt "metabox tab"
 msgid "Plugin Admin"
 msgstr ""
 
-#: lib/sitesubmenu/site-advanced.php:73 lib/submenu/advanced.php:77
+#: lib/sitesubmenu/site-advanced.php:73 lib/submenu/advanced.php:79
 msgctxt "metabox tab"
 msgid "Integration"
 msgstr ""
@@ -10537,132 +10536,132 @@ msgctxt "metabox title"
 msgid "Free Plugin Add-ons"
 msgstr ""
 
-#: lib/submenu/advanced.php:38
+#: lib/submenu/advanced.php:40
 msgctxt "metabox title"
 msgid "Plugin Settings"
 msgstr ""
 
-#: lib/submenu/advanced.php:39
+#: lib/submenu/advanced.php:41
 msgctxt "metabox title"
 msgid "Service APIs"
 msgstr ""
 
-#: lib/submenu/advanced.php:40
+#: lib/submenu/advanced.php:42
 msgctxt "metabox title"
 msgid "Document Types"
 msgstr ""
 
-#: lib/submenu/advanced.php:41
+#: lib/submenu/advanced.php:43
 msgctxt "metabox title"
 msgid "Schema Properties"
 msgstr ""
 
-#: lib/submenu/advanced.php:42
+#: lib/submenu/advanced.php:44
 msgctxt "metabox title"
 msgid "Contact Fields"
 msgstr ""
 
-#: lib/submenu/advanced.php:43
+#: lib/submenu/advanced.php:45
 msgctxt "metabox title"
 msgid "About the User"
 msgstr ""
 
-#: lib/submenu/advanced.php:44
+#: lib/submenu/advanced.php:46
 msgctxt "metabox title"
 msgid "Metadata"
 msgstr ""
 
-#: lib/submenu/advanced.php:78
+#: lib/submenu/advanced.php:80
 msgctxt "metabox tab"
 msgid "Default Text"
 msgstr ""
 
-#: lib/submenu/advanced.php:79
+#: lib/submenu/advanced.php:81
 msgctxt "metabox tab"
 msgid "Image Sizes"
 msgstr ""
 
-#: lib/submenu/advanced.php:80
+#: lib/submenu/advanced.php:82
 msgctxt "metabox tab"
 msgid "Interface"
 msgstr ""
 
-#: lib/submenu/advanced.php:101
+#: lib/submenu/advanced.php:103
 msgctxt "metabox tab"
 msgid "Media Services"
 msgstr ""
 
-#: lib/submenu/advanced.php:102
+#: lib/submenu/advanced.php:104
 msgctxt "metabox tab"
 msgid "Shortening Services"
 msgstr ""
 
-#: lib/submenu/advanced.php:103
+#: lib/submenu/advanced.php:105
 msgctxt "metabox tab"
 msgid "Ratings and Reviews"
 msgstr ""
 
-#: lib/submenu/advanced.php:124 lib/submenu/advanced.php:233
+#: lib/submenu/advanced.php:126 lib/submenu/advanced.php:235
 msgctxt "metabox tab"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/submenu/advanced.php:125
+#: lib/submenu/advanced.php:127
 msgctxt "metabox tab"
 msgid "Schema"
 msgstr ""
 
-#: lib/submenu/advanced.php:145
+#: lib/submenu/advanced.php:147
 msgctxt "metabox tab"
 msgid "Book"
 msgstr ""
 
-#: lib/submenu/advanced.php:146
+#: lib/submenu/advanced.php:148
 msgctxt "metabox tab"
 msgid "Creative Work"
 msgstr ""
 
-#: lib/submenu/advanced.php:147
+#: lib/submenu/advanced.php:149
 msgctxt "metabox tab"
 msgid "Event"
 msgstr ""
 
-#: lib/submenu/advanced.php:148
+#: lib/submenu/advanced.php:150
 msgctxt "metabox tab"
 msgid "Job Posting"
 msgstr ""
 
-#: lib/submenu/advanced.php:149
+#: lib/submenu/advanced.php:151
 msgctxt "metabox tab"
 msgid "Review"
 msgstr ""
 
-#: lib/submenu/advanced.php:185
+#: lib/submenu/advanced.php:187
 msgctxt "metabox tab"
 msgid "Custom Contacts"
 msgstr ""
 
-#: lib/submenu/advanced.php:186
+#: lib/submenu/advanced.php:188
 msgctxt "metabox tab"
 msgid "Default Contacts"
 msgstr ""
 
-#: lib/submenu/advanced.php:209
+#: lib/submenu/advanced.php:211
 msgctxt "metabox tab"
 msgid "Product Attributes"
 msgstr ""
 
-#: lib/submenu/advanced.php:210
+#: lib/submenu/advanced.php:212
 msgctxt "metabox tab"
 msgid "Custom Fields"
 msgstr ""
 
-#: lib/submenu/advanced.php:232 lib/submenu/general.php:119
+#: lib/submenu/advanced.php:234 lib/submenu/general.php:119
 msgctxt "metabox tab"
 msgid "Facebook"
 msgstr ""
 
-#: lib/submenu/advanced.php:234 lib/submenu/general.php:122
+#: lib/submenu/advanced.php:236 lib/submenu/general.php:122
 msgctxt "metabox tab"
 msgid "Twitter"
 msgstr ""

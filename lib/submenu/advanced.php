@@ -34,6 +34,8 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 		 */
 		protected function add_meta_boxes() {
 
+			$this->maybe_show_language_notice();
+
 			foreach ( array(
 				'plugin'         => _x( 'Plugin Settings', 'metabox title', 'wpsso' ),
 				'services'       => _x( 'Service APIs', 'metabox title', 'wpsso' ),
