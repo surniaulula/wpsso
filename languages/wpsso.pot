@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 10.1.0-dev.1\n"
+"Project-Id-Version: WPSSO Core 10.1.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -10428,39 +10428,39 @@ msgstr ""
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/script.php:429
+#: lib/script.php:430
 msgid "No %s notifications."
 msgstr ""
 
-#: lib/script.php:431
+#: lib/script.php:432
 msgid "Copy notifications to clipboard."
 msgstr ""
 
-#: lib/script.php:465
+#: lib/script.php:467
 msgid "Copied to clipboard."
 msgstr ""
 
-#: lib/script.php:466
+#: lib/script.php:468
 msgid "Value linked to {0} option"
 msgstr ""
 
-#: lib/script.php:468
+#: lib/script.php:470
 msgid "There are {0} important error messages under the %s notification icon."
 msgstr ""
 
-#: lib/script.php:471
+#: lib/script.php:473
 msgid "{0} of {1} characters minimum"
 msgstr ""
 
-#: lib/script.php:472
+#: lib/script.php:474
 msgid "{0} of {1} characters required"
 msgstr ""
 
-#: lib/script.php:473
+#: lib/script.php:475
 msgid "{0} of {1} characters maximum"
 msgstr ""
 
-#: lib/script.php:474
+#: lib/script.php:476
 msgid "{0} characters"
 msgstr ""
 

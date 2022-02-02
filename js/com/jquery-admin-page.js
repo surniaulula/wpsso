@@ -289,29 +289,32 @@ function sucomToolbarNotices( pluginId, adminPageL10n ) {
 
 			var noticeStatus = '';
 
+			/**
+			 * The most significant notice type matches first (ie. error is most significant type).
+			 */
 			if ( noticeTypeCount[ 'err' ] ) {
 
 				noticeCount  = noticeTypeCount[ 'err' ];
 				noticeStatus = 'error';
-				noticeTime   = 0;
+				noticeTime   = cfg[ '_tb_types_timeout' ][ 'err' ] || 0;
 
 			} else if ( noticeTypeCount[ 'warn' ] ) {
 
 				noticeCount  = noticeTypeCount[ 'warn' ];
 				noticeStatus = 'warning';
-				noticeTime   = 0;
+				noticeTime   = cfg[ '_tb_types_timeout' ][ 'warn' ] || 0;
 
 			} else if ( noticeTypeCount[ 'inf' ] ) {
 
 				noticeCount  = noticeTypeCount[ 'inf' ];
 				noticeStatus = 'info';
-				noticeTime   = 4000;
+				noticeTime   = cfg[ '_tb_types_timeout' ][ 'inf' ] || 0;
 
 			} else if ( noticeTypeCount[ 'upd' ] ) {
 
 				noticeCount  = noticeTypeCount[ 'upd' ];
 				noticeStatus = 'success';
-				noticeTime   = 2500;
+				noticeTime   = cfg[ '_tb_types_timeout' ][ 'upd' ] || 0;
 			}
 
 			menuItem.addClass( 'toolbar-notices-' + noticeStatus );

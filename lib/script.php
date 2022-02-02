@@ -426,6 +426,7 @@ EOF;
 			) );
 
 			$tb_types_showing    = $this->p->notice->get_tb_types_showing();
+			$tb_types_timeout    = array( 'inf' => 4000, 'upd' => 2000 );
 			$no_notices_transl   = sprintf( __( 'No %s notifications.', 'wpsso' ), $this->p->cf[ 'menu' ][ 'title' ] );
 			$no_notices_html     = '<div class="ab-item ab-empty-item">' . $no_notices_transl . '</div>';
 			$copy_notices_transl = __( 'Copy notifications to clipboard.', 'wpsso' );
@@ -458,7 +459,8 @@ EOF;
 					),
 				),
 				'_option_labels'         => $option_labels,
-				'_tb_types_showing'      => $tb_types_showing,		// Maybe null, true, false, or array.
+				'_tb_types_showing'      => $tb_types_showing,	// Maybe null, true, false, or array.
+				'_tb_types_timeout'      => $tb_types_timeout,
 				'_notice_text_id'        => $notice_text_uniqid,	// CSS id of hidden notice text container.
 				'_no_notices_html'       => $no_notices_html,
 				'_copy_notices_html'     => $copy_notices_html,
