@@ -251,6 +251,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 10.1.0-dev.1 (2020/02/02)**
+
+* **New Features**
+	* SSO toolbar notices are now shown and hidden after a time-out (2.5 seconds for success notices, 4 seconds for info notices, and no time-out for warnings and errors).
+* **Improvements**
+	* Removed the SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Integration &gt; Use Filtered "SEO" Title option.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 10.0.0 (2022/02/02)**
 
 WPSSO Core has always been a fast plugin and version 10.0.0 delivers even better performance by improving the selection and creation of a default Schema type, Open Graph type, canonical URL, document title, and document description. The caching of structured data, and the creation of canonical URLs for multi-page content (ie. archive pages, content with page breaks, and comment pages) has also been improved. Version 10.0.0 includes a new Default Text tab in the Advanced Settings (Premium edition) to manage default title and description strings for content without an editing page (ie. search results, date based archives, and post types archives without an associated post ID).
@@ -926,6 +940,10 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 	* WordPress v5.0.
 
 == Upgrade Notice ==
+
+= 10.1.0-dev.1 =
+
+(2020/02/02) SSO toolbar notices are now shown and hidden after a time-out (2.5 seconds for success notices, 4 seconds for info notices, and no time-out for warnings and errors).
 
 = 10.0.0 =
 
