@@ -183,6 +183,9 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeThing' ) ) {
 				 */
 				if ( ! empty( $mt_og[ 'og:url' ] ) ) {	// Just in case.
 
+					/**
+					 * Shorten URL using the selected shortening service.
+					 */
 					$short_url = $this->p->util->shorten_url( $mt_og[ 'og:url' ], $mod );
 
 					if ( $this->p->debug->enabled ) {
@@ -248,9 +251,8 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeThing' ) ) {
 			 *	name
 			 *	alternateName
 			 */
-			$json_ret[ 'name' ] = $this->p->page->get_title( $title_max_len = 0, $dots = '', $mod,
-				$read_cache = true, $add_hashtags = false, $do_encode = true,
-					$md_key = 'schema_title' );
+			$json_ret[ 'name' ] = $this->p->page->get_title( $title_max_len = 0, $dots = '', $mod, $add_hashtags = false,
+				$do_encode = true, $md_key = 'schema_title' );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -259,9 +261,8 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeThing' ) ) {
 
 			$title_max_len = $this->p->options[ 'og_title_max_len' ];
 
-			$json_ret[ 'alternateName' ] = $this->p->page->get_title( $title_max_len, $dots = '...', $mod,
-				$read_cache = true, $add_hashtags = false, $do_encode = true,
-					$md_key = 'schema_title_alt' );
+			$json_ret[ 'alternateName' ] = $this->p->page->get_title( $title_max_len, $dots = '...', $mod, $add_hashtags = false,
+				$do_encode = true, $md_key = 'schema_title_alt' );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -283,8 +284,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeThing' ) ) {
 			}
 
 			$json_ret[ 'description' ] = $this->p->page->get_description( $this->p->options[ 'schema_desc_max_len' ],
-				$dots = '...', $mod, $read_cache = true, $add_hashtags = false, $do_encode = true,
-					$md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
+				$dots = '...', $mod, $add_hashtags = false, $do_encode = true, $md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
 
 			/**
 			 * Property:

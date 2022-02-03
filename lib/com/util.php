@@ -2759,53 +2759,61 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * 	'post:123'
 		 * 	'term:456_tax:post_tag'
 		 * 	'post:0_url:https://example.com/a-subject/'
+		 * 	'url:https://example.com/2022/01/'
 		 */
-		public static function get_mod_salt( array $mod, $canonical_url = false ) {
+		public static function get_mod_salt( $mod = false, $canonical_url = false ) {
 
 			$mod_salt = '';
 
-			if ( ! empty( $mod[ 'name' ] ) ) {
+			if ( is_array( $mod ) ) {
 
-				$mod_salt .= '_' . $mod[ 'name' ] . ':';
-
-				if ( is_bool( $mod[ 'id' ] ) ) {
-
-					$mod_salt .= $mod[ 'id' ] ? 'true' : 'false';
-
-				} elseif ( is_numeric( $mod[ 'id' ] ) ) {	// Just in case.
-
-					$mod_salt .= $mod[ 'id' ];
+				if ( ! empty( $mod[ 'name' ] ) ) {
+	
+					$mod_salt .= '_' . $mod[ 'name' ] . ':';
+	
+					if ( is_bool( $mod[ 'id' ] ) ) {
+	
+						$mod_salt .= $mod[ 'id' ] ? 'true' : 'false';
+	
+					} elseif ( is_numeric( $mod[ 'id' ] ) ) {	// Just in case.
+	
+						$mod_salt .= $mod[ 'id' ];
+					}
 				}
-			}
+	
+				if ( ! empty( $mod[ 'tax_slug' ] ) ) {
+	
+					$mod_salt .= '_tax:' . $mod[ 'tax_slug' ];
+				}
+	
+				if ( ! empty( $mod[ 'paged' ] ) ) {
+	
+					$mod_salt .= '_paged:' . $mod[ 'paged' ];
+				}
+	
+				if ( ! empty( $mod[ 'comment_paged' ] ) ) {
+	
+					$mod_salt .= '_cpage:' . $mod[ 'comment_paged' ];
+				}
+	
+				if ( ! is_numeric( $mod[ 'id' ] ) || ! $mod[ 'id' ] > 0 ) {
+	
+					if ( ! empty( $mod[ 'is_home' ] ) ) {	// Home page (static or blog archive).
+	
+						$mod_salt .= '_home:true';
+					}
+	
+					if ( ! empty( $canonical_url ) ) {
 
-			if ( ! empty( $mod[ 'tax_slug' ] ) ) {
-
-				$mod_salt .= '_tax:' . $mod[ 'tax_slug' ];
-			}
-
-			if ( ! empty( $mod[ 'paged' ] ) ) {
-
-				$mod_salt .= '_paged:' . $mod[ 'paged' ];
-			}
-
-			if ( ! empty( $mod[ 'comment_paged' ] ) ) {
-
-				$mod_salt .= '_cpage:' . $mod[ 'comment_paged' ];
-			}
-
-			if ( ! is_numeric( $mod[ 'id' ] ) || ! $mod[ 'id' ] > 0 ) {
-
-				if ( ! empty( $mod[ 'is_home' ] ) ) {	// Home page (static or blog archive).
-
-					$mod_salt .= '_home:true';
+						$mod_salt .= '_url:' . $canonical_url;
+					}
 				}
 
-				if ( ! empty( $canonical_url ) ) {
+			} else {
 
-					$mod_salt .= '_url:' . $canonical_url;
-				}
+				$mod_salt .= '_url:' . $canonical_url;
 			}
-
+	
 			$mod_salt = ltrim( $mod_salt, '_' );
 
 			return apply_filters( 'sucom_mod_salt', $mod_salt, $canonical_url );

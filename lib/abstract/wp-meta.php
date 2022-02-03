@@ -1334,174 +1334,22 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 */
 		protected function clear_mod_cache( array $mod ) {
 
-			$head_pre       = 'wpsso_h_';
-			$head_method    = 'WpssoHead::get_head_array';
-			$content_pre    = 'wpsso_c_';
-			$content_method = 'WpssoPage::get_the_content';
-			$canonical_url  = $this->p->util->get_canonical_url( $mod );
-			$mod_salt       = SucomUtil::get_mod_salt( $mod, $canonical_url );
-
-			$cache_types = array(
-				'transient' => array(
-					array(
-						'id'   => $head_pre . md5( $head_method . '(' . $mod_salt . ')' ),
-						'pre'  => $head_pre,
-						'salt' => $head_method . '(' . $mod_salt . ')',
-					)
-				),
-				'wp_cache' => array(
-					array(
-						'id'   => $content_pre . md5( $content_method . '(' . $mod_salt . ')' ),
-						'pre'  => $content_pre,
-						'salt' => $content_method . '(' . $mod_salt . ')',
-					),
-				),
-			);
-
 			/**
 			 * WordPress stores data using a post, term, or user ID, along with a group string.
 			 */
-			$cleared_count = wp_cache_delete( $mod[ 'id' ], $mod[ 'name' ] . '_meta' );
+			wp_cache_delete( $mod[ 'id' ], $mod[ 'name' ] . '_meta' );
 
-			$cleared_ids = array();
+			/**
+			 * Clear the WpssoPage->get_the_content() cache.
+			 */
+			$this->p->page->clear_the_content( $mod );
 
-			foreach ( $cache_types as $type_name => $type_keys ) {
+			/**
+			 * Clear the WpssoHead->get_head_array() cache.
+			 */
+			$this->p->head->clear_head_array( $mod );
 
-				/**
-				 * Clear post date, term, and author archive pages.
-				 */
-				if ( $mod[ 'is_post' ] && $mod[ 'id' ] ) {
-
-					$post_id = $mod[ 'id' ];
-
-					/**
-					 * Clear date based archive pages.
-					 */
-					$year  = get_the_time( 'Y', $post_id );
-					$month = get_the_time( 'm', $post_id );
-					$day   = get_the_time( 'd', $post_id );
-
-					$home_url  = home_url( '/' );
-					$year_url  = get_year_link( $year );
-					$month_url = get_month_link( $year, $month );
-					$day_url   = get_day_link( $year, $month, $day );
-
-					foreach ( array( $home_url, $year_url, $month_url, $day_url ) as $date_url ) {
-
-						$transient_keys[] = array(
-							'id'   => $head_pre . md5( $head_method . '(url:' . $date_url . ')' ),
-							'pre'  => $head_pre,
-							'salt' => $head_method . '(url:' . $date_url . ')',
-						);
-					}
-
-					/**
-					 * Clear term archive pages.
-					 */
-					$post_taxonomies = get_post_taxonomies( $post_id );
-
-					foreach ( $post_taxonomies as $tax_slug ) {
-
-						$post_terms = wp_get_post_terms( $post_id, $tax_slug );	// Returns WP_Error if taxonomy does not exist.
-
-						if ( is_array( $post_terms ) ) {
-
-							foreach ( $post_terms as $term_obj ) {
-
-								$term_mod           = $this->p->term->get_mod( $term_obj->term_id );
-								$term_canonical_url = $this->p->util->get_canonical_url( $term_mod );
-								$term_mod_salt      = SucomUtil::get_mod_salt( $term_mod, $term_canonical_url );
-
-								$transient_keys[] = array(
-									'id'   => $head_pre . md5( $head_method . '(' . $term_mod_salt . ')' ),
-									'pre'  => $head_pre,
-									'salt' => $head_method . '(' . $term_mod_salt . ')',
-								);
-							}
-						}
-					}
-
-					/**
-					 * Clear author archive page page.
-					 */
-					$author_id          = get_post_field( 'post_author', $post_id );
-					$user_mod           = $this->p->user->get_mod( $author_id );
-					$user_canonical_url = $this->p->util->get_canonical_url( $user_mod );
-					$user_mod_salt      = SucomUtil::get_mod_salt( $user_mod, $user_canonical_url );
-
-					$transient_keys[] = array(
-						'id'   => $head_pre . md5( $head_method . '(' . $user_mod_salt . ')' ),
-						'pre'  => $head_pre,
-						'salt' => $head_method . '(' . $user_mod_salt . ')',
-					);
-				}
-
-				/**
-				 * Example filter names:
-				 *
-				 *	'wpsso_post_cache_transient_keys'
-				 */
-				$filter_name = 'wpsso_' . $mod[ 'name' ] . '_cache_' . $type_name . '_keys';
-
-				$type_keys = (array) apply_filters( $filter_name, $type_keys, $mod, $canonical_url, $mod_salt );
-
-				foreach ( $type_keys as $mixed ) {
-
-					if ( is_array( $mixed ) && isset( $mixed[ 'id' ] ) ) {
-
-						$cache_id = $mixed[ 'id' ];
-
-						$cache_key = '';
-						$cache_key .= isset( $mixed[ 'pre' ] ) ? $mixed[ 'pre' ] : '';
-						$cache_key .= isset( $mixed[ 'salt' ] ) ? $mixed[ 'salt' ] : '';
-						$cache_key = trim( $cache_key );
-
-						if ( empty( $cache_key ) ) {
-
-							$cache_key = $cache_id;
-						}
-
-					} else {
-
-						$cache_id = $cache_key = $mixed;
-					}
-
-					if ( isset( $cleared_ids[ $type_name ][ $cache_id ] ) ) {	// Skip duplicate cache ids.
-
-						continue;
-					}
-
-					switch ( $type_name ) {
-
-						case 'transient':
-
-							$ret = delete_transient( $cache_id );
-
-							break;
-
-						case 'wp_cache':
-
-							$ret = wp_cache_delete( $cache_id );
-
-							break;
-
-						default:
-
-							$ret = false;
-
-							break;
-					}
-
-					if ( $ret ) {
-
-						$cleared_count++;
-					}
-
-					$cleared_ids[ $type_name ][ $cache_key ] = $ret;
-				}
-			}
-
-			return $cleared_count;
+			do_action( 'wpsso_clear_mod_cache', $mod );
 		}
 
 		/**

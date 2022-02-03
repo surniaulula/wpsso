@@ -884,19 +884,13 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			$do_once[ $term_id ][ $term_tax_id ] = true;
 
-			$term_obj = get_term_by( 'term_taxonomy_id', $term_tax_id, $tax_slug = '' );
+			if ( empty( $term_id ) ) {	// Just in case.
 
-			if ( isset( $term_obj->taxonomy ) ) {	// Just in case.
-
-				$mod = $this->get_mod( $term_id, $term_obj->taxonomy );
-
-			} else {
-
-				$mod = $this->get_mod( $term_id );
+				return;
 			}
 
 			/**
-			 * Clear the term meta.
+			 * Clear the term column meta.
 			 */
 			$col_meta_keys = parent::get_column_meta_keys();
 
@@ -906,8 +900,12 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 
 			/**
-			 * Clear the plugin cache.
+			 * Clear the post meta, content, and head caches.
 			 */
+			$term_obj = get_term_by( 'term_taxonomy_id', $term_tax_id, $tax_slug = '' );
+
+			$mod = isset( $term_obj->taxonomy ) ? $this->get_mod( $term_id, $term_obj->taxonomy ) : $this->get_mod( $term_id );
+
 			$this->clear_mod_cache( $mod );
 
 			do_action( 'wpsso_clear_term_cache', $term_id );

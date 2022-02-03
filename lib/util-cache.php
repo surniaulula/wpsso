@@ -101,8 +101,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			 */
 			if ( null === $clear_short ) {	// Default argument value is null.
 
-				$clear_short = isset( $this->p->options[ 'plugin_clear_short_urls' ] ) ?
-					$this->p->options[ 'plugin_clear_short_urls' ] : false;
+				$clear_short = isset( $this->p->options[ 'plugin_clear_short_urls' ] ) ? $this->p->options[ 'plugin_clear_short_urls' ] : false;
 			}
 
 			$user_id    = $this->u->maybe_change_user_id( $user_id );	// Maybe change textdomain for user ID.

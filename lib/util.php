@@ -699,6 +699,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						$this->p->debug->log( 'exiting early: returning image info from transient' );
 					}
 
+					/**
+					 * Optimize and save the transient cache value to local cache.
+					 */
 					return $local_cache[ $image_url ] = $image_info;
 				}
 
@@ -1746,6 +1749,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $this->inline->get_values( $mod, $atts );
 		}
 
+		/**
+		 * Shorten URL using the selected shortening service.
+		 */
 		public function shorten_url( $long_url, $mod = false ) {
 
 			$shortener = isset( $this->p->options[ 'plugin_shortener' ] ) ? $this->p->options[ 'plugin_shortener' ] : 'none';
@@ -2020,9 +2026,22 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return apply_filters( 'wpsso_sharing_url', $url, $mod, $add_page );
 		}
 
+		/**
+		 * Shorten the sharing URL using the selected shortening service.
+		 */
 		public function get_sharing_short_url( $mod = false, $add_page = true, $atts = array() ) {
 
 			$url = $this->get_sharing_url( $mod, $add_page, $atts );
+
+			return $this->shorten_url( $url, $mod );
+		}
+
+		/**
+		 * Shorten the canonical URL using the selected shortening service.
+		 */
+		public function get_canonical_short_url( $mod = false, $add_page = true ) {
+
+			$url = $this->get_canonical_url( $mod, $add_page );
 
 			return $this->shorten_url( $url, $mod );
 		}
@@ -2263,13 +2282,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			return $url;
-		}
-
-		public function get_canonical_short_url( $mod = false, $add_page = true ) {
-
-			$url = $this->get_canonical_url( $mod, $add_page );
-
-			return $this->shorten_url( $url, $mod );
 		}
 
 		private function get_url_paged( $url, array $mod, $add_page ) {

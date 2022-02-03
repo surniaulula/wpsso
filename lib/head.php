@@ -463,6 +463,43 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		}
 
 		/**
+		 * The cache is cleared by WpssoAbstractWpMeta->clear_mod_cache().
+		 *
+		 * The clear_head_array() method is called with $mod = false and a $canonical_url value for post date archive pages.
+		 */
+		public function clear_head_array( $mod = false, $canonical_url = null ) {
+
+			if ( $this->p->debug->enabled ) {
+				
+				$this->p->debug->mark();
+			}
+
+			if ( empty( $mod ) && empty( $canonical_url ) ) {
+
+				return 0;
+
+			} elseif ( null === $canonical_url ) {
+			
+				$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = true );
+			}
+
+			$cache_md5_pre = 'wpsso_h_';	// Transient prefix for head markup.
+			$cache_salt    = __CLASS__ . '::get_head_array(' . SucomUtil::get_mod_salt( $mod, $canonical_url ) . ')';
+			$cache_id      = $cache_md5_pre . md5( $cache_salt );
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'canonical url = ' . $canonical_url );
+				$this->p->debug->log( 'cache salt = ' . $cache_salt );
+				$this->p->debug->log( 'cache id = ' . $cache_id );
+			}
+
+			return delete_transient( $cache_id );
+		}
+
+		/**
+		 * The cache is cleared by WpssoAbstractWpMeta->clear_mod_cache().
+		 *
 		 * $read_cache is false when called by the post/term/user load_meta_page() method.
 		 */
 		public function get_head_array( $use_post = false, $mod = false, $read_cache = true ) {
@@ -489,20 +526,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 * The canonical URL is optional for SucomUtil::get_mod_salt().
 			 */
 			$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = true );
-
-			if ( empty( $canonical_url ) ) {	// Just in case.
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: get_canonical_url() returned an empty string' );
-				}
-
-				return array();
-
-			} elseif ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'canonical url = ' . $canonical_url );
-			}
 
 			/**
 			 * Disable head and content cache if the request URL contains an unknown/extra query string.
@@ -538,13 +561,14 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 */
 			$cache_md5_pre  = 'wpsso_h_';	// Transient prefix for head markup.
 			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'transient', $mod );
-			$cache_salt     = __METHOD__ . '(' . SucomUtil::get_mod_salt( $mod, $canonical_url ) . ')';
+			$cache_salt     = __CLASS__ . '::get_head_array(' . SucomUtil::get_mod_salt( $mod, $canonical_url ) . ')';
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 			$cache_index    = $this->get_head_cache_index( $mod, $canonical_url );	// Includes locale, url, etc.
 			$cache_array    = array();
 
 			if ( $this->p->debug->enabled ) {
 
+				$this->p->debug->log( 'canonical url = ' . $canonical_url );
 				$this->p->debug->log( 'cache expire = ' . $cache_exp_secs );
 				$this->p->debug->log( 'cache salt = ' . $cache_salt );
 				$this->p->debug->log( 'cache id = ' . $cache_id );

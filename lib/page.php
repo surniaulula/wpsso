@@ -173,7 +173,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				case 'schema_title':
 
-					$title = $this->p->page->get_title( $title_max_len = 0, $dots = '', $mod, $read_cache = true, $add_hashtags = false,
+					$title = $this->p->page->get_title( $title_max_len = 0, $dots = '', $mod, $add_hashtags = false,
 						$do_encode = true, $md_key = 'schema_title' );
 
 					break;
@@ -182,7 +182,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					$title_max_len = $this->p->options[ 'og_title_max_len' ];
 
-					$title = $this->p->page->get_title( $title_max_len, $dots = '...', $mod, $read_cache = true, $add_hashtags = false,
+					$title = $this->p->page->get_title( $title_max_len, $dots = '...', $mod, $add_hashtags = false,
 						$do_encode = true, $md_key = 'schema_title_alt' );
 
 					break;
@@ -665,8 +665,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		 *
 		 * See WpssoRrssbFiltersEdit->filter_post_edit_share_rows().
 		 */
-		public function get_caption( $type = 'title', $max_len = 200, $mod = true, $read_cache = true, $add_hashtags = true,
-			$do_encode = true, $md_key = '' ) {
+		public function get_caption( $type = 'title', $max_len = 200, $mod = true, $add_hashtags = true, $do_encode = true, $md_key = '' ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -674,7 +673,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					'type'         => $type,
 					'max_len'      => $max_len,
 					'mod'          => $mod,
-					'read_cache'   => $read_cache,
 					'add_hashtags' => $add_hashtags,	// True, false, or numeric.
 					'do_encode'    => $do_encode,
 					'md_key'       => $md_key,
@@ -773,23 +771,23 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					case 'title':
 
-						$caption_text = $this->get_title( $max_len, '...', $mod, $read_cache, $add_hashtags, false, $md_key_title );
+						$caption_text = $this->get_title( $max_len, '...', $mod, $add_hashtags, false, $md_key_title );
 
 						break;
 
 					case 'excerpt':
 
-						$caption_text = $this->get_description( $max_len, '...', $mod, $read_cache, $add_hashtags, false, $md_key_desc );
+						$caption_text = $this->get_description( $max_len, '...', $mod, $add_hashtags, false, $md_key_desc );
 
 						break;
 
 					case 'both':
 
 						$title_sep        = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
-						$caption_text     = $this->get_title( 0, '', $mod, $read_cache, false, false, $md_key_title, $title_sep );
+						$caption_text     = $this->get_title( 0, '', $mod, false, false, $md_key_title, $title_sep );
 						$caption_text_len = strlen( trim( $caption_text . ' ' . $title_sep ) . ' ' );
 						$adj_max_len      = $max_len - $caption_text_len;
-						$caption_desc     = $this->get_description( $adj_max_len, '...', $mod, $read_cache, $add_hashtags, false, $md_key_desc );
+						$caption_desc     = $this->get_description( $adj_max_len, '...', $mod, $add_hashtags, false, $md_key_desc );
 
 						SucomUtilWP::add_title_part( $caption_text, $title_sep, $caption_desc );
 
@@ -825,8 +823,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		 *
 		 * See WpssoBcBreadcrumb->add_itemlist_data().
 		 */
-		public function get_title( $max_len = 70, $dots = '', $mod = false, $read_cache = true, $add_hashtags = false,
-			$do_encode = true, $md_key = 'og_title', $title_sep = null ) {
+		public function get_title( $max_len = 70, $dots = '', $mod = false, $add_hashtags = false, $do_encode = true, $md_key = 'og_title', $title_sep = null ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -834,7 +831,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					'max_len'      => $max_len,
 					'dots'         => $dots,
 					'mod'          => $mod,
-					'read_cache'   => $read_cache,
 					'add_hashtags' => $add_hashtags,	// True, false, or numeric.
 					'do_encode'    => $do_encode,
 					'md_key'       => $md_key,
@@ -920,6 +916,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			/**
 			 * If there's no custom title, and no pre-seed, then go ahead and generate the title value.
+			 *
+			 * A custom or pre-seed title is expected to provide any hashtags, so get hashtags only when generating the
+			 * title value.
 			 */
 			if ( empty( $title_text ) ) {
 
@@ -937,6 +936,25 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				 * Override the default 'title_sep' value.
 				 */
 				$title_text = $this->p->util->inline->replace_variables( $title_text, $mod, $atts = array( 'title_sep' => $title_sep ) );
+			}
+
+			/**
+			 * Titles comprised entirely of HTML content will be empty after running cleanup_html_tags(), so remove the
+			 * HTML tags before maybe falling back to the generic title.
+			 */
+			$title_text = $this->p->util->cleanup_html_tags( $title_text, $strip_tags = true, $use_img_alt = true );
+
+			/**
+			 * If there's still no title, then fallback to a generic version.
+			 */
+			if ( empty( $title_text ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'title is empty - using generic title text' );
+				}
+
+				$title_text = $this->p->opt->get_text( 'plugin_no_title_text' );	// No Title Text.
 			}
 
 			/**
@@ -998,8 +1016,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		 *
 		 * Note that WpssoUtilInline->replace_variables() is applied to the final description text.
 		 */
-		public function get_description( $max_len = 160, $dots = '...', $mod = false, $read_cache = true, $add_hashtags = true,
-			$do_encode = true, $md_key = array( 'og_desc' ) ) {
+		public function get_description( $max_len = 160, $dots = '...', $mod = false, $add_hashtags = true, $do_encode = true, $md_key = array( 'og_desc' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1007,7 +1024,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					'max_len'      => $max_len,
 					'dots'         => $dots,
 					'mod'          => $mod,
-					'read_cache'   => $read_cache,
 					'add_hashtags' => $add_hashtags, 	// True, false, or numeric.
 					'do_encode'    => $do_encode,
 					'md_key'       => $md_key,
@@ -1087,10 +1103,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			/**
 			 * If there's no custom description, and no pre-seed, then go ahead and generate the description value.
+			 *
+			 * A custom or pre-seed description is expected to provide any hashtags, so get hashtags only when
+			 * generating the description value.
 			 */
 			if ( empty( $desc_text ) ) {
 
-				$desc_text = $this->get_the_description( $mod, $read_cache, $md_key );
+				$desc_text = $this->get_the_description( $mod, $md_key );
 
 				$hashtags = $this->get_hashtags( $mod, $add_hashtags );
 			}
@@ -1101,6 +1120,25 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			if ( false !== strpos( $desc_text, '%%' ) ) {
 
 				$desc_text = $this->p->util->inline->replace_variables( $desc_text, $mod );
+			}
+
+			/**
+			 * Descriptions comprised entirely of HTML content will be empty after running cleanup_html_tags(), so
+			 * remove the HTML tags before maybe falling back to the generic description.
+			 */
+			$desc_text = $this->p->util->cleanup_html_tags( $desc_text, $strip_tags = true, $use_img_alt = true );
+
+			/**
+			 * If there's still no description, then fallback to a generic version.
+			 */
+			if ( empty( $desc_text ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'description is empty - using generic description text' );
+				}
+
+				$desc_text = $this->p->opt->get_text( 'plugin_no_desc_text' );	// No Description Text.
 			}
 
 			/**
@@ -1135,8 +1173,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return apply_filters( 'wpsso_description', $desc_text, $mod, $add_hashtags, $md_key, $is_custom );
 		}
 
-		public function get_text( $max_len = 0, $dots = '...', $mod = false, $read_cache = true, $add_hashtags = false,
-			$do_encode = true, $md_key = 'schema_text' ) {
+		public function get_text( $max_len = 0, $dots = '...', $mod = false, $add_hashtags = false, $do_encode = true, $md_key = 'schema_text' ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1158,7 +1195,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$mod = $this->p->page->get_mod( $mod );
 			}
 
-			$text = $this->get_the_text( $mod, $read_cache, $md_key );
+			$text = $this->get_the_text( $mod, $md_key );
+
+			$hashtags = $this->get_hashtags( $mod, $add_hashtags );
 
 			/**
 			 * Check text against string length limits.
@@ -1321,26 +1360,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			/**
-			 * Titles comprised entirely of HTML content will be empty after running cleanup_html_tags(), so remove the
-			 * HTML tags before maybe falling back to the generic title.
-			 */
-			$title_text = $this->p->util->cleanup_html_tags( $title_text, $strip_tags = true, $use_img_alt = true );
-
-			if ( empty( $title_text ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'title is empty - using generic title text' );
-				}
-
-				$title_text = $this->p->opt->get_text( 'plugin_no_title_text' );	// No Title Text.
-			}
-
 			return apply_filters( 'wpsso_the_title', $title_text, $mod, $title_sep );
 		}
 
-		public function get_the_description( array $mod, $read_cache = true, $md_key = '' ) {
+		public function get_the_description( array $mod, $md_key = '' ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1401,7 +1424,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 								$this->p->debug->log( 'getting the content for post ID ' . $mod[ 'id' ] );
 							}
 
-							$desc_text = $this->get_the_content( $mod, $read_cache, $md_key );
+							$desc_text = $this->get_the_content( $mod, $md_key );
 
 							/**
 							 * Ignore everything before the first paragraph.
@@ -1496,25 +1519,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			/**
-			 * Descriptions comprised entirely of HTML content will be empty after running cleanup_html_tags(), so
-			 * remove the HTML tags before maybe falling back to the generic description.
-			 */
-			$desc_text = $this->p->util->cleanup_html_tags( $desc_text, $strip_tags = true, $use_img_alt = true );
-
-			/**
-			 * If there's still no description, then fallback to a generic version.
-			 */
-			if ( empty( $desc_text ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'description is empty - using generic description text' );
-				}
-
-				$desc_text = $this->p->opt->get_text( 'plugin_no_desc_text' );	// No Description Text.
-			}
-
 			return apply_filters( 'wpsso_the_description', $desc_text, $mod );
 		}
 
@@ -1555,14 +1559,41 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return apply_filters( 'wpsso_the_excerpt', $excerpt_text, $mod );
 		}
 
-		public function get_the_content( array $mod, $read_cache = true, $md_key = '', $flatten = true ) {
+		/**
+		 * The cache is cleared by WpssoAbstractWpMeta->clear_mod_cache().
+		 */
+		public function clear_the_content( array $mod ) {
+
+			if ( $this->p->debug->enabled ) {
+				
+				$this->p->debug->mark();
+			}
+
+			$canonical_url = $this->p->util->get_canonical_url( $mod );
+			$cache_md5_pre = 'wpsso_c_';
+			$cache_salt    = __CLASS__ . '::get_the_content(' . SucomUtil::get_mod_salt( $mod, $canonical_url ) . ')';
+			$cache_id      = $cache_md5_pre . md5( $cache_salt );
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'canonical url = ' . $canonical_url );
+				$this->p->debug->log( 'wp cache salt = ' . $cache_salt );
+				$this->p->debug->log( 'wp cache id = ' . $cache_id );
+			}
+
+			return wp_cache_delete( $cache_id );
+		}
+
+		/**
+		 * The cache is cleared by WpssoAbstractWpMeta->clear_mod_cache().
+		 */
+		public function get_the_content( array $mod, $md_key = '', $flatten = true ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_args( array(
-					'mod'        => $mod,
-					'read_cache' => $read_cache,
-					'md_key'     => $md_key,
+					'mod'    => $mod,
+					'md_key' => $md_key,
 				) );
 			}
 
@@ -1570,7 +1601,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$canonical_url  = $this->p->util->get_canonical_url( $mod );
 			$cache_md5_pre  = 'wpsso_c_';
 			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'wp_cache' );
-			$cache_salt     = __METHOD__ . '(' . SucomUtil::get_mod_salt( $mod, $canonical_url ) . ')';
+			$cache_salt     = __CLASS__ . '::get_the_content(' . SucomUtil::get_mod_salt( $mod, $canonical_url ) . ')';
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 			$cache_index    = 'locale:' . SucomUtil::get_locale( $mod ) . '_filter:' . ( $filter_content ? 'true' : 'false' );
 			$cache_array    = array();
@@ -1587,45 +1618,34 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( $cache_exp_secs > 0 ) {
 
-				if ( $read_cache ) {
+				$cache_array = wp_cache_get( $cache_id, __METHOD__ );
 
-					$cache_array = wp_cache_get( $cache_id, __METHOD__ );
+				if ( isset( $cache_array[ $cache_index ] ) ) {
 
-					if ( isset( $cache_array[ $cache_index ] ) ) {
+					if ( $this->p->debug->enabled ) {
 
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'exiting early: cache index found in wp_cache' );
-						}
-
-						$content =& $cache_array[ $cache_index ];
-
-						/**
-						 * Maybe put everything on one line but do not cache the re-formatted content.
-						 */
-						return $flatten ? preg_replace( '/[\s\r\n]+/s', ' ', $content ) : $content;
-
-					} else {
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'cache index not in wp_cache' );
-						}
-
-						if ( ! is_array( $cache_array ) ) {
-
-							$cache_array = array();
-						}
+						$this->p->debug->log( 'exiting early: cache index found in wp_cache' );
 					}
 
-				} elseif ( $this->p->debug->enabled ) {
+					$content =& $cache_array[ $cache_index ];
 
-					$this->p->debug->log( 'read cache for content is false' );
+					/**
+					 * Maybe put everything on one line but do not cache the re-formatted content.
+					 */
+					return $flatten ? preg_replace( '/[\s\r\n]+/s', ' ', $content ) : $content;
+
+				} else {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'cache index not in wp_cache' );
+					}
+
+					if ( ! is_array( $cache_array ) ) {
+
+						$cache_array = array();
+					}
 				}
-
-			} elseif ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'content array wp_cache is disabled' );
 			}
 
 			if ( $this->p->debug->enabled ) {
@@ -1646,7 +1666,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 * See WpssoProEcomWoocommerce->filter_the_content_seed().
 			 * See WpssoProSocialBuddypress->filter_the_content_seed().
 			 */
-			$content = apply_filters( 'wpsso_the_content_seed', '', $mod, $read_cache, $md_key );
+			$content = apply_filters( 'wpsso_the_content_seed', '', $mod, $md_key );
 
 			if ( false === $content ) {
 
@@ -1759,7 +1779,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/**
 			 * Apply the filter.
 			 */
-			$content = apply_filters( 'wpsso_the_content', $content, $mod, $read_cache, $md_key );
+			$content = apply_filters( 'wpsso_the_content', $content, $mod, $md_key );
 
 			/**
 			 * Save content to non-persistant cache.
@@ -1790,7 +1810,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		/**
 		 * Returns the content text, stripped of all HTML tags.
 		 */
-		public function get_the_text( array $mod, $read_cache = true, $md_key = '' ) {
+		public function get_the_text( array $mod, $md_key = '' ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1826,7 +1846,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( empty( $text ) ) {
 
-				$text = $this->get_the_content( $mod, $read_cache, $md_key );
+				$text = $this->get_the_content( $mod, $md_key );
 
 				$text = preg_replace( '/<!\[CDATA\[.*\]\]>/Us', '', $text );
 
@@ -1835,13 +1855,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$text = $this->p->util->cleanup_html_tags( $text, $strip_tags = true, $use_img_alt = true );
 			}
 
-			return apply_filters( 'wpsso_text', $text, $mod, $read_cache, $md_key );
+			return apply_filters( 'wpsso_text', $text, $mod, $md_key );
 		}
 
 		/**
 		 * Returns a comma delimited text string of keywords (ie. post tag names).
 		 */
-		public function get_keywords( array $mod, $read_cache = true, $md_key = '' ) {
+		public function get_keywords( array $mod, $md_key = '' ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1890,7 +1910,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			return apply_filters( 'wpsso_keywords', $keywords, $mod, $read_cache, $md_key );
+			return apply_filters( 'wpsso_keywords', $keywords, $mod, $md_key );
 		}
 
 		/**

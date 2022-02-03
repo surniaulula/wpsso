@@ -442,7 +442,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 
 				$mt_og[ 'og:description' ] = $this->p->page->get_description( $this->p->options[ 'og_desc_max_len' ],
-					'...', $mod, $read_cache = true, $this->p->options[ 'og_desc_hashtags' ] );
+					$dots = '...', $mod, $this->p->options[ 'og_desc_hashtags' ] );
 
 				if ( $this->p->debug->enabled ) {
 
@@ -1755,8 +1755,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$title_sep = false;	// Do not add a separator.
 
 					$category_names[ $parent_term_id ][ $term_id ] = $this->p->page->get_title( $max_len = 0,
-						$dots = '', $term_mod, $read_cache = true, $add_hashtags = false, $do_encode = true,
-							$title_keys, $title_sep );
+						$dots = '', $term_mod, $add_hashtags = false, $do_encode = true, $title_keys, $title_sep );
 				}
 			}
 

@@ -1689,8 +1689,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		}
 
 		/**
-		 * Uses a static cache to clear the cache only once per post id per page load.
-		 *
 		 * Use $rel = false to extend WpssoAbstractWpMeta->clear_cache().
 		 */
 		public function clear_cache( $post_id, $rel = false ) {
@@ -1713,7 +1711,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( empty( $post_id ) ) {	// Just in case.
 
-				return;	// Stop here.
+				return;
 			}
 
 			$post_status = get_post_status( $post_id );
@@ -1742,10 +1740,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					break;
 			}
 
-			$mod = $this->get_mod( $post_id );
-
 			/**
-			 * Clear the post meta.
+			 * Clear the post column meta.
 			 */
 			$col_meta_keys = parent::get_column_meta_keys();
 
@@ -1755,20 +1751,15 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			/**
-			 * Clear the permalink, canonical / shortlink webpage cache.
+			 * Clear the permalink, canonical / shortlink url cache.
 			 */
 			$permalink = get_permalink( $post_id );
 
 			$this->p->cache->clear( $permalink );
 
-			if ( ini_get( 'open_basedir' ) ) {
-
-				$check_url = $this->p->util->get_canonical_url( $post_id, $add_page = false );
-
-			} else {
-
-				$check_url = SucomUtilWP::wp_get_shortlink( $post_id, $context = 'post' );
-			}
+			$check_url = ini_get( 'open_basedir' ) ?
+				$this->p->util->get_canonical_url( $post_id, $add_page = false ) :
+				SucomUtilWP::wp_get_shortlink( $post_id, $context = 'post' );
 
 			if ( $permalink !== $check_url ) {
 
@@ -1776,13 +1767,34 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			/**
-			 * Clear the plugin cache.
+			 * Clear the post meta, content, and head caches.
 			 */
+			$mod = $this->get_mod( $post_id );
+
 			$this->clear_mod_cache( $mod );
+
+			/**
+			 * Clear post date, term, and author archive pages.
+			 */
+			$post_year  = get_the_time( 'Y', $post_id );
+			$post_month = get_the_time( 'm', $post_id );
+			$post_day   = get_the_time( 'd', $post_id );
+
+			$home_url       = home_url( '/' );
+			$post_year_url  = get_year_link( $post_year );
+			$post_month_url = get_month_link( $post_year, $post_month );
+			$post_day_url   = get_day_link( $post_year, $post_month, $post_day );
+
+			foreach ( array( $home_url, $post_year_url, $post_month_url, $post_day_url ) as $url ) {
+
+				$this->p->head->clear_head_array( $archive_page_mod = false, $url );
+			}
 
 			/**
 			 * Clear the post terms (categories, tags, etc.) for published (aka public) posts.
 			 */
+			$post_status = get_post_status( $post_id );
+
 			if ( 'publish' === $post_status ) {
 
 				$post_taxonomies = get_post_taxonomies( $post_id );
@@ -1791,17 +1803,27 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					$post_terms = wp_get_post_terms( $post_id, $tax_slug );	// Returns WP_Error if taxonomy does not exist.
 
-					if ( is_array( $post_terms ) ) {
+					if ( is_array( $post_terms ) ) {	// Just in case.
 
 						foreach ( $post_terms as $term_obj ) {
 
-							$this->p->term->clear_cache( $term_obj->term_id, $term_obj->term_taxonomy_id );
+							$this->p->term->clear_cache( $term_obj->term_id, $tax_slug );
 						}
 					}
 				}
 			}
 
-			if ( function_exists( 'w3tc_pgcache_flush_post' ) ) {	// Clear W3 Total Cache.
+			/**
+			 * Clear the post author archive page.
+			 */
+			$author_id = get_post_field( 'post_author', $post_id );
+
+			$this->p->user->clear_cache( $author_id );
+
+			/**
+			 * Clear W3 Total Cache.
+			 */
+			if ( function_exists( 'w3tc_pgcache_flush_post' ) ) {
 
 				w3tc_pgcache_flush_post( $post_id );
 			}
@@ -1972,8 +1994,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			}
 
 			/**
-			 * The WordPress link-template.php functions call wp_get_shortlink() with a post id of 0. Use the same
-			 * WordPress code to get a real post id and create a default shortlink (if required).
+			 * The WordPress link-template.php functions call wp_get_shortlink() with a post id of 0.
+			 *
+			 * Use the same WordPress code to get a real post id and create a default shortlink (if required).
 			 */
 			if ( 0 === $post_id ) {
 
@@ -2090,6 +2113,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = false );
 
+			/**
+			 * Shorten URL using the selected shortening service.
+			 */
 			$short_url = $this->p->util->shorten_url( $canonical_url, $mod );
 
 			if ( $short_url === $canonical_url ) {

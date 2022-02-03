@@ -609,8 +609,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				 * Get the image title.
 				 */
 				$json_ret[ 'name' ] = $wpsso->page->get_title( $title_max_len = 0, $dots = '', $mod,
-					$read_cache = true, $add_hashtags = false, $do_encode = true,
-						$md_key = 'schema_title', $title_sep = false );
+					$add_hashtags = false, $do_encode = true, $md_key = 'schema_title', $title_sep = false );
 
 				/**
 				 * Get the image alternate title, if one has been defined in the custom post meta.
@@ -618,8 +617,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$title_alt_max_len = $wpsso->options[ 'og_title_max_len' ];
 
 				$json_ret[ 'alternateName' ] = $wpsso->page->get_title( $title_alt_max_len, $dots = '...', $mod,
-					$read_cache = true, $add_hashtags = false, $do_encode = true,
-						$md_key = 'schema_title_alt' );
+					$add_hashtags = false, $do_encode = true, $md_key = 'schema_title_alt' );
 
 				if ( $json_ret[ 'name' ] === $json_ret[ 'alternateName' ] ) {	// Prevent duplicate values.
 
@@ -649,13 +647,11 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				if ( empty( $json_ret[ 'caption' ] ) ) {
 
 					$json_ret[ 'description' ] = $wpsso->page->get_description( $wpsso->options[ 'schema_desc_max_len' ],
-						$dots = '...', $mod, $read_cache = true, $add_hashtags = false, $do_encode = true,
-							$md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
+						$dots = '...', $mod, $add_hashtags = false, $do_encode = true, $md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
 
 				} else {
 
-					$json_ret[ 'description' ] = $wpsso->page->get_the_text( $mod, $read_cache = true,
-						$md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
+					$json_ret[ 'description' ] = $wpsso->page->get_the_text( $mod, $md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
 				}
 
 				/**

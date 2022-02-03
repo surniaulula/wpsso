@@ -19,9 +19,25 @@
 
 %%title%%
 
+%%page%%
+
 %%pagenumber%%
 
 %%pagetotal%%
 
-%%page%%
+%%post_date%%
+
+%%post_modified%%
+
+%%query_search%%
+
+%%query_year%%
+
+%%query_month%%
+
+%%query_monthnum%%
+
+%%query_day%%
+
+%%searchphrase%%
 

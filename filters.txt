@@ -51,7 +51,7 @@
 
 'wpsso_cache_expire_the_content' ( $secs, $cache_type, $mod )
 
-'wpsso_cache_refreshed_notice' ( $notice_msg, $user_id, $read_cache )
+'wpsso_cache_refreshed_notice' ( $notice_msg, $user_id, $read_cache = false )
 
 'wpsso_canonical_url' ( $url, $mod, $add_page )
 
@@ -209,10 +209,6 @@
 
 'wpsso_plugin_image_sizes' ( $sizes )
 
-'wpsso_post_cache_transient_keys' ( $transient_keys, $mod, $canonical_url, $mod_salt )
-
-'wpsso_post_cache_wp_cache_keys' ( $wp_cache_keys, $mod, $canonical_url, $mod_salt )
-
 'wpsso_post_document_meta_tabs' ( $tabs, $mod, $metabox_id )
 
 'wpsso_post_image_ids' ( array $ids, $size_name, $post_id )
@@ -287,10 +283,6 @@
 
 'wpsso_tc' ( $tc, $mod )
 
-'wpsso_term_cache_transient_keys' ( $transient_keys, $mod, $canonical_url, $mod_salt )
-
-'wpsso_term_cache_wp_cache_keys' ( $wp_cache_keys, $mod, $canonical_url, $mod_salt )
-
 'wpsso_term_document_meta_tabs' ( $tabs, $mod, $metabox_id )
 
 'wpsso_term_image_ids' ( array $ids, $size_name, $term_id )
@@ -301,17 +293,13 @@
 
 'wpsso_text' ( $text, $mod, $add_hashtags, $md_key )
 
-'wpsso_the_content' ( $content, $mod, $read_cache, $md_key )
+'wpsso_the_content' ( $content, $mod, $md_key )
 
-'wpsso_the_content_seed' ( '', $mod, $read_cache, $md_key )
+'wpsso_the_content_seed' ( '', $mod, $md_key )
 
 'wpsso_title_seed' ( '', $mod, $add_hashtags, $md_key, $title_sep )
 
 'wpsso_title' ( $title_text, $mod, $add_hashtags, $md_key, $title_sep )
-
-'wpsso_user_cache_transient_keys' ( $transient_keys, $mod, $canonical_url, $mod_salt )
-
-'wpsso_user_cache_wp_cache_keys' ( $wp_cache_keys, $mod, $canonical_url, $mod_salt )
 
 'wpsso_user_document_meta_tabs' ( $tabs, $mod, $metabox_id )
 

@@ -212,8 +212,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 				}
 
 				$data_pin_desc = $this->p->page->get_description( $this->p->options[ 'pin_img_desc_max_len' ],
-					$dots = '...', $mod, $read_cache = true, $add_hashtags = true, $do_encode = true,
-						$md_key = array( 'pin_img_desc', 'og_desc' ) );
+					$dots = '...', $mod, $add_hashtags = true, $do_encode = true, $md_key = array( 'pin_img_desc', 'og_desc' ) );
 
 				if ( $this->p->debug->enabled ) {
 

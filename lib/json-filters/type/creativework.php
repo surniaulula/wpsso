@@ -174,7 +174,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeCreativeWork' ) ) {
 			 * Property:
 			 *      keywords
 			 */
-			$json_ret[ 'keywords' ] = $this->p->page->get_keywords( $mod, $read_cache = true, $md_key = 'schema_keywords' );
+			$json_ret[ 'keywords' ] = $this->p->page->get_keywords( $mod, $md_key = 'schema_keywords' );
 
 			/**
 			 * Property:

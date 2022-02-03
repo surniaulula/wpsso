@@ -76,7 +76,7 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 			if ( ! empty( $this->p->options[ 'add_meta_name_description' ] ) ) {
 
 				$mt_name[ 'description' ] = $this->p->page->get_description( $this->p->options[ 'seo_desc_max_len' ],
-					$dots = '...', $mod, $read_cache = true, $add_hashtags = false, $do_encode = true, $md_key = 'seo_desc' );
+					$dots = '...', $mod, $add_hashtags = false, $do_encode = true, $md_key = 'seo_desc' );
 			}
 
 			/**

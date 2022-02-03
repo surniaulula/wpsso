@@ -1452,10 +1452,13 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$do_once[ $user_id ] = true;
 
-			$mod = $this->get_mod( $user_id );
+			if ( empty( $user_id ) ) {	// Just in case.
+
+				return;
+			}
 
 			/**
-			 * Clear the user meta.
+			 * Clear the user column meta.
 			 */
 			$col_meta_keys = parent::get_column_meta_keys();
 
@@ -1465,8 +1468,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			/**
-			 * Clear the plugin cache.
+			 * Clear the post meta, content, and head caches.
 			 */
+			$mod = $this->get_mod( $user_id );
+
 			$this->clear_mod_cache( $mod );
 
 			do_action( 'wpsso_clear_user_cache', $user_id );

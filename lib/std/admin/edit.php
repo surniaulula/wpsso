@@ -69,17 +69,15 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			 * Default values.
 			 */
 			$dots             = '...';
-			$read_cache       = true;
-			$no_hashtags      = false;
 			$do_encode        = true;
 			$schema_desc_keys = array( 'seo_desc', 'og_desc' );
 
-			$def_schema_title     = $this->p->page->get_title( $max_len = 0, '', $mod, $read_cache, $no_hashtags, $do_encode, 'og_title' );
-			$def_schema_title_alt = $this->p->page->get_title( $og_title_max_len, $dots, $mod, $read_cache, $no_hashtags, $do_encode, 'og_title' );
-			$def_schema_headline  = $this->p->page->get_title( $schema_headline_max_len, '', $mod, $read_cache, $no_hashtags, $do_encode, 'og_title' );
-			$def_schema_desc      = $this->p->page->get_description( $schema_desc_max_len, $dots, $mod, $read_cache, $no_hashtags, $do_encode, $schema_desc_keys );
-			$def_schema_text      = $this->p->page->get_text( $schema_text_max_len, '', $mod, $read_cache, $no_hashtags, $do_encode, $md_key = 'none' );
-			$def_schema_keywords  = $this->p->page->get_keywords( $mod, $read_cache, $md_key = 'none' );
+			$def_schema_title     = $this->p->page->get_title( $max_len = 0, '', $mod, $add_hashtags = false, $do_encode, 'og_title' );
+			$def_schema_title_alt = $this->p->page->get_title( $og_title_max_len, $dots, $mod, $add_hashtags = false, $do_encode, 'og_title' );
+			$def_schema_headline  = $this->p->page->get_title( $schema_headline_max_len, '', $mod, $add_hashtags = false, $do_encode, 'og_title' );
+			$def_schema_desc      = $this->p->page->get_description( $schema_desc_max_len, $dots, $mod, $add_hashtags = false, $do_encode, $schema_desc_keys );
+			$def_schema_text      = $this->p->page->get_text( $schema_text_max_len, '', $mod, $add_hashtags = false, $do_encode, $md_key = 'none' );
+			$def_schema_keywords  = $this->p->page->get_keywords( $mod, $md_key = 'none' );
 
 			$org_names          = $this->p->util->get_form_cache( 'org_names', $add_none = true );
 			$person_names       = $this->p->util->get_form_cache( 'person_names', $add_none = true );

@@ -504,7 +504,7 @@ if ( ! function_exists( 'wpsso_get_short_url' ) ) {
 }
 
 /**
- * Shorten any URL using the selected shortening service.
+ * Shorten URL using the selected shortening service.
  */
 if ( ! function_exists( 'wpsso_shorten_url' ) ) {
 

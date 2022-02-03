@@ -52,11 +52,8 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 
 		public function filter_metabox_sso_edit_general_rows( $table_rows, $form, $head_info, $mod ) {
 
-			$dots           = '...';
-			$read_cache     = true;
-			$no_hashtags    = false;
-			$maybe_hashtags = true;
-			$do_encode      = true;
+			$dots      = '...';
+			$do_encode = true;
 
 			$pin_img_disabled_msg  = $this->p->msgs->maybe_pin_img_disabled();
 			$pin_img_disabled      = $pin_img_disabled_msg ? true : false;
@@ -87,12 +84,12 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			/**
 			 * Default option values.
 			 */
-			$def_og_title      = $this->p->page->get_title( $og_title_max_len, $dots, $mod, $read_cache, $no_hashtags, $do_encode, 'none' );
-			$def_og_desc       = $this->p->page->get_description( $og_desc_max_len, $dots, $mod, $read_cache, $maybe_hashtags, $do_encode, 'none' );
-			$def_pin_img_desc  = $pin_img_disabled ? '' : $this->p->page->get_description( $pin_img_desc_max_len, $dots, $mod, $read_cache, $maybe_hashtags );
-			$def_tc_title      = $this->p->page->get_title( $tc_title_max_len, $dots, $mod, $read_cache );
-			$def_tc_desc       = $this->p->page->get_description( $tc_desc_max_len, $dots, $mod, $read_cache );
-			$def_seo_desc      = $seo_desc_disabled ? '' : $this->p->page->get_description( $seo_desc_max_len, $dots, $mod, $read_cache, $no_hashtags );
+			$def_og_title      = $this->p->page->get_title( $og_title_max_len, $dots, $mod, $add_hashtags = false, $do_encode, 'none' );
+			$def_og_desc       = $this->p->page->get_description( $og_desc_max_len, $dots, $mod, $add_hashtags = true, $do_encode, 'none' );
+			$def_pin_img_desc  = $pin_img_disabled ? '' : $this->p->page->get_description( $pin_img_desc_max_len, $dots, $mod );
+			$def_tc_title      = $this->p->page->get_title( $tc_title_max_len, $dots, $mod );
+			$def_tc_desc       = $this->p->page->get_description( $tc_desc_max_len, $dots, $mod );
+			$def_seo_desc      = $seo_desc_disabled ? '' : $this->p->page->get_description( $seo_desc_max_len, $dots, $mod, $add_hashtags = false );
 			$def_reading_mins  = $this->p->page->get_reading_mins( $mod );
 
 			/**
