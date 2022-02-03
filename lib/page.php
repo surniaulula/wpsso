@@ -173,9 +173,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				case 'schema_title':
 
-					$title = $this->p->page->get_title( $title_max_len = 0, $dots = '', $mod,
-						$read_cache = true, $add_hashtags = false, $do_encode = true,
-							$md_key = 'schema_title' );
+					$title = $this->p->page->get_title( $title_max_len = 0, $dots = '', $mod, $read_cache = true, $add_hashtags = false,
+						$do_encode = true, $md_key = 'schema_title' );
 
 					break;
 
@@ -183,9 +182,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					$title_max_len = $this->p->options[ 'og_title_max_len' ];
 
-					$title = $this->p->page->get_title( $title_max_len, $dots = '...', $mod,
-						$read_cache = true, $add_hashtags = false, $do_encode = true,
-							$md_key = 'schema_title_alt' );
+					$title = $this->p->page->get_title( $title_max_len, $dots = '...', $mod, $read_cache = true, $add_hashtags = false,
+						$do_encode = true, $md_key = 'schema_title_alt' );
 
 					break;
 			}
@@ -667,8 +665,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		 *
 		 * See WpssoRrssbFiltersEdit->filter_post_edit_share_rows().
 		 */
-		public function get_caption( $type = 'title', $max_len = 200, $mod = true, $read_cache = true,
-			$add_hashtags = true, $do_encode = true, $md_key = '' ) {
+		public function get_caption( $type = 'title', $max_len = 200, $mod = true, $read_cache = true, $add_hashtags = true,
+			$do_encode = true, $md_key = '' ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -698,9 +696,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$mod = $this->p->page->get_mod( $mod );
 			}
 
-			$cap_text = '';
-
-			$title_sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
+			$caption_text = '';
 
 			if ( false === $md_key ) {	// False would return the complete meta array.
 
@@ -750,33 +746,33 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Just in case.
 
-					$cap_text = $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key );
+					$caption_text = $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key );
 
 					/**
 					 * Extract custom hashtags, or get hashtags if $add_hashtags is true or numeric.
 					 */
-					list( $cap_text, $hashtags ) = $this->get_text_and_hashtags( $cap_text, $mod, $add_hashtags );
+					list( $caption_text, $hashtags ) = $this->get_text_and_hashtags( $caption_text, $mod, $add_hashtags );
 
-					if ( ! empty( $cap_text ) ) {
+					if ( ! empty( $caption_text ) ) {
 
 						if ( $max_len > 0 ) {
 
 							$adj_max_len = empty( $hashtags ) ? $max_len : $max_len - strlen( $hashtags ) - 1;
 
-							$cap_text = $this->p->util->limit_text_length( $cap_text, $adj_max_len, '...', false );
+							$caption_text = $this->p->util->limit_text_length( $caption_text, $adj_max_len, '...', false );
 						}
 
-						$cap_text = trim( $cap_text . ' ' . $hashtags );
+						$caption_text = trim( $caption_text . ' ' . $hashtags );
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'custom caption = ' . $cap_text );
+							$this->p->debug->log( 'custom caption = ' . $caption_text );
 						}
 					}
 				}
 			}
 
-			$is_custom = empty( $cap_text ) ? false : true;
+			$is_custom = empty( $caption_text ) ? false : true;
 
 			/**
 			 * If there's no custom caption text, then go ahead and generate the caption text value.
@@ -790,33 +786,25 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					case 'title':
 
-						$cap_text = $this->get_title( $max_len, '...', $mod, $read_cache, $add_hashtags, false, $md_key_title );
+						$caption_text = $this->get_title( $max_len, '...', $mod, $read_cache, $add_hashtags, false, $md_key_title );
 
 						break;
 
 					case 'excerpt':
 
-						$cap_text = $this->get_description( $max_len, '...', $mod, $read_cache, $add_hashtags, false, $md_key_desc );
+						$caption_text = $this->get_description( $max_len, '...', $mod, $read_cache, $add_hashtags, false, $md_key_desc );
 
 						break;
 
 					case 'both':
 
-						/**
-						 * Get the title first.
-						 */
-						$cap_text = $this->get_title( 0, '', $mod, $read_cache, false, false, $md_key_title, $title_sep );
+						$title_sep        = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
+						$caption_text     = $this->get_title( 0, '', $mod, $read_cache, false, false, $md_key_title, $title_sep );
+						$caption_text_len = strlen( trim( $caption_text . ' ' . $title_sep ) . ' ' );
+						$adj_max_len      = $max_len - $caption_text_len;
+						$caption_desc     = $this->get_description( $adj_max_len, '...', $mod, $read_cache, $add_hashtags, false, $md_key_desc );
 
-						/**
-						 * Reduce the requested $max_len by the caption length we already have.
-						 */
-						$cap_len = strlen( trim( $cap_text . ' ' . $title_sep ) . ' ' );
-
-						$adj_max_len = $max_len - $cap_len;
-
-						$cap_desc = $this->get_description( $adj_max_len, '...', $mod, $read_cache, $add_hashtags, false, $md_key_desc );
-
-						SucomUtilWP::add_title_value( $cap_text, $title_sep, $cap_desc );
+						SucomUtilWP::add_title_part( $caption_text, $title_sep, $caption_desc );
 
 						break;
 				}
@@ -824,14 +812,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( true === $do_encode ) {
 
-				$cap_text = SucomUtil::encode_html_emoji( $cap_text );	// Does not double-encode.
+				$caption_text = SucomUtil::encode_html_emoji( $caption_text );	// Does not double-encode.
 
 			} else {	// Just in case.
 
-				$cap_text = html_entity_decode( SucomUtil::decode_utf8( $cap_text ), ENT_QUOTES, get_bloginfo( 'charset' ) );
+				$caption_text = html_entity_decode( SucomUtil::decode_utf8( $caption_text ), ENT_QUOTES, get_bloginfo( 'charset' ) );
 			}
 
-			return apply_filters( 'wpsso_caption', $cap_text, $mod, $add_hashtags, $md_key );
+			return apply_filters( 'wpsso_caption', $caption_text, $mod, $add_hashtags, $md_key );
 		}
 
 		/**
@@ -842,7 +830,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		 * $md_key can be a metadata options key, or an array of keys in order of preference (ie. from more specific to
 		 * less specific). Example $md_key = array( 'seo_title', 'og_title' ).
 		 *
-		 * Use $title_sep = false to avoid adding parent names in the term title.
+		 * Use $title_sep = false to avoid adding term parent names in the term title.
 		 *
 		 * Note that WpssoUtilInline->replace_variables() is applied to the final title text.
 		 *
@@ -850,8 +838,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		 *
 		 * See WpssoBcBreadcrumb->add_itemlist_data().
 		 */
-		public function get_title( $max_len = 70, $dots = '', $mod = false, $read_cache = true,
-			$add_hashtags = false, $do_encode = true, $md_key = 'og_title', $title_sep = null ) {
+		public function get_title( $max_len = 70, $dots = '', $mod = false, $read_cache = true, $add_hashtags = false,
+			$do_encode = true, $md_key = 'og_title', $title_sep = null ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -897,7 +885,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$md_key = array_unique( $md_key );	// Just in case.
 			}
 
-			if ( null === $title_sep ) {	// Can be false.
+			if ( null === $title_sep ) {	// Can be false to avoid adding term parent names in the term title.
 
 				$title_sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
 			}
@@ -959,17 +947,20 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( false !== strpos( $title_text, '%%' ) ) {
 
+				/**
+				 * Maybe overwrite the default 'title_sep' value.
+				 */
 				$title_text = $this->p->util->inline->replace_variables( $title_text, $mod, $atts = array( 'title_sep' => $title_sep ) );
 			}
 
 			/**
 			 * Maybe add the page number.
 			 */
-			$pagesuffix = '';
+			$page_number_transl = '';
 
 			if ( $mod[ 'paged' ] > 1 ) {
 
-				$pagesuffix .= trim( $title_sep . ' ' . sprintf( __( 'Page %s', 'wpsso' ), $mod[ 'paged' ] ) );
+				$page_number_transl = sprintf( __( 'Page %s', 'wpsso' ), $mod[ 'paged' ] );
 			}
 
 			/**
@@ -977,23 +968,32 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( $max_len > 0 ) {
 
-				$adj_max_len = empty( $pagesuffix ) ? $max_len : $max_len - strlen( $pagesuffix ) - 1;
+				/**
+				 * Reduce the max title length by the separator, page number, and two spaces.
+				 */
+				$adj_max_len = empty( $page_number_transl ) ? $max_len : $max_len - strlen ( $title_sep ) - strlen( $page_number_transl ) - 2;
 
+				/**
+				 * Further reduce the max title length by the hashtags and one space.
+				 */
 				$adj_max_len = empty( $hashtags ) ? $adj_max_len : $adj_max_len - strlen( $hashtags ) - 1;
 
 				$title_text = $this->p->util->limit_text_length( $title_text, $adj_max_len, $dots, $cleanup_html = false );
 			}
 
-			if ( ! empty( $pagesuffix ) ) {
+			if ( ! empty( $page_number_transl ) ) {
 
-				$title_text = trim( $title_text . ' ' . $pagesuffix );
+				SucomUtilWP::add_title_part( $title_text, $title_sep, $page_number_transl );
 			}
 
 			if ( ! empty( $hashtags ) ) {
 
-				$title_text = trim( $title_text . ' ' . $hashtags );
+				SucomUtilWP::add_title_part( $title_text, '', $hashtags );
 			}
 
+			/**
+			 * Maybe return the values encoded (true by default).
+			 */
 			if ( $do_encode ) {
 
 				foreach ( array( 'title_text', 'title_sep' ) as $var ) {	// Loop through variables.
@@ -1027,8 +1027,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		 *
 		 * Note that WpssoUtilInline->replace_variables() is applied to the final description text.
 		 */
-		public function get_description( $max_len = 160, $dots = '...', $mod = false, $read_cache = true,
-			$add_hashtags = true, $do_encode = true, $md_key = array( 'og_desc' ) ) {
+		public function get_description( $max_len = 160, $dots = '...', $mod = false, $read_cache = true, $add_hashtags = true,
+			$do_encode = true, $md_key = array( 'og_desc' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1336,8 +1336,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return $desc_text;
 		}
 
-		public function get_text( $max_len = 0, $dots = '...', $mod = false, $read_cache = true,
-			$add_hashtags = false, $do_encode = true, $md_key = 'schema_text' ) {
+		public function get_text( $max_len = 0, $dots = '...', $mod = false, $read_cache = true, $add_hashtags = false,
+			$do_encode = true, $md_key = 'schema_text' ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1403,7 +1403,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		}
 
 		/**
-		 * Use $title_sep = false to avoid adding parent names in the term title.
+		 * Use $title_sep = false to avoid adding term parent names in the term title.
 		 *
 		 * Note that WpssoUtilInline->replace_variables() is applied in WpssoPage->get_title(), not in this method.
 		 *
@@ -1491,7 +1491,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					/**
 					 * Includes parent names in the term title if the $title_sep value is not empty.
 					 *
-					 * Use $title_sep = false to avoid adding parent names in the term title.
+					 * Use $title_sep = false to avoid adding term parent names in the term title.
 					 */
 					$title_text = $this->get_term_title( $term_obj, $title_sep );
 				}
@@ -1545,14 +1545,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 
 				$title_text = $this->p->opt->get_text( 'plugin_no_title_text' );	// No Title Text.
-			}
-
-			/**
-			 * Trim excess separator.
-			 */
-			if ( ! empty( $title_sep ) ) {
-
-				$title_text = preg_replace( '/ *' . preg_quote( $title_sep, '/' ) . ' *$/', '', $title_text );
 			}
 
 			/**

@@ -10088,7 +10088,7 @@ msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr ""
 
-#: lib/page.php:972
+#: lib/page.php:963
 msgid "Page %s"
 msgstr ""
 
@@ -10096,7 +10096,7 @@ msgstr ""
 msgid "Comment from %1$s on %2$s"
 msgstr ""
 
-#: lib/page.php:1616
+#: lib/page.php:1608
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] ""
@@ -11478,7 +11478,7 @@ msgstr ""
 #: lib/util.php:2884
 msgid ""
 "Activating the %1$s plugin and enabling the the %2$s option (to apply the "
-"filter consistently) may provide more information on the specific hook(s) or "
+"filter consistently) may provide more information on the specific hooks or "
 "PHP code affecting performance."
 msgstr ""
 

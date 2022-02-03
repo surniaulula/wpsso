@@ -19,31 +19,44 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		public function __construct() {}
 
 		/**
-		 * Add a separator and value to the left/right hand of the title.
+		 * Add a separator and a value to the left/right hand of the title.
 		 */
-		public static function add_title_value( &$title, $title_sep, $value, $hand = null ) {
+		public static function add_title_part( &$title, $title_sep, $part, $hand = null ) {
 
 			if ( null === $hand ) {
 
 				$hand = is_rtl() ? 'left' : 'right';
 			}
 
-			switch ( $hand ) {
+			/**
+			 * Adding an empty $title_sep is fine, but an empty $part would only leave a hanging separator.
+			 */
+			if ( $part ) {
 
-				case 'left':
+				if ( $title ) {
 
-					$title = trim( $value . ' ' . $title_sep ) . ' ' . $title;
+					switch ( $hand ) {
 
-					break;
+						case 'left':
 
-				default:
+							$title = $part . ' ' . trim( $title_sep . ' ' . $title );
 
-					$title = trim( $title . ' ' . $title_sep ) . ' ' . $value;
+							break;
 
-					break;
+						default:
+
+							$title = trim( $title . ' ' . $title_sep ) . ' ' . $part;
+
+							break;
+					}
+
+				} else {
+
+					$title = $part;	// We have a part, but no title.
+				}
 			}
 
-			return $title;
+			return trim( $title );
 		}
 
 		public static function oembed_enabled() {

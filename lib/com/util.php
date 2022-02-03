@@ -1438,11 +1438,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function sanitize_hashtags( array $tags = array() ) {
 
-			return preg_replace(
-				array( '/^[0-9].*/', '/[ \[\]#!\$\?\\\\\/\*\+\.\-\^]/', '/^.+/' ),
-				array( '', '', '#$0' ),
-				$tags
-			);
+			return preg_replace( array( '/^[0-9].*/', '/[ \[\]#!\$\?\\\\\/\*\+\.\-\^]/', '/^.+/' ), array( '', '', '#$0' ), $tags );
 		}
 
 		public static function sanitize_hookname( $name ) {

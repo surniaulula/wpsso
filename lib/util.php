@@ -2881,7 +2881,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						$notice_msg .= sprintf( __( 'Please consider reviewing active plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code.', 'wpsso' ), $filter_api_link ) . ' ';
 
-						$notice_msg .= sprintf( __( 'Activating the %1$s plugin and enabling the the %2$s option (to apply the filter consistently) may provide more information on the specific hook(s) or PHP code affecting performance.', 'wpsso' ), $qm_plugin_link, $option_link );
+						$notice_msg .= sprintf( __( 'Activating the %1$s plugin and enabling the the %2$s option (to apply the filter consistently) may provide more information on the specific hooks or PHP code affecting performance.', 'wpsso' ), $qm_plugin_link, $option_link );
 
 						$notice_key = 'slow-filter-hooks-detected-' . $filter_name;
 

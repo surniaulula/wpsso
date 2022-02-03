@@ -1750,7 +1750,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$title_keys = array( 'schema_bc_title', 'schema_title', 'og_title' );
 
 					/**
-					 * Use $title_sep = false to avoid adding parent names in the term title.
+					 * Use $title_sep = false to avoid adding term parent names in the term title.
 					 */
 					$title_sep = false;	// Do not add a separator.
 
