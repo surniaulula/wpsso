@@ -254,7 +254,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 10.1.0-dev.4 (2022/02/03)**
 
 * **New Features**
-	* SSO toolbar notices are now shown and hidden after a time-out (2.5 seconds for success notices, 4 seconds for info notices, and no time-out for warnings and errors).
+	* SSO toolbar notices are now shown and hidden after a time-out (2 seconds for success notices, 4 seconds for info notices, and no time-out for warnings and errors).
 * **Improvements**
 	* Removed the SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Integration &gt; Use Filtered "SEO" Title option.
 * **Bugfixes**
@@ -943,7 +943,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 = 10.1.0-dev.4 =
 
-(2022/02/03) SSO toolbar notices are now shown and hidden after a time-out (2.5 seconds for success notices, 4 seconds for info notices, and no time-out for warnings and errors).
+(2022/02/03) SSO toolbar notices are now shown and hidden after a time-out (2 seconds for success notices, 4 seconds for info notices, and no time-out for warnings and errors).
 
 = 10.0.0 =
 
