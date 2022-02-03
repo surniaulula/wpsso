@@ -2768,41 +2768,41 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			if ( is_array( $mod ) ) {
 
 				if ( ! empty( $mod[ 'name' ] ) ) {
-	
+
 					$mod_salt .= '_' . $mod[ 'name' ] . ':';
-	
+
 					if ( is_bool( $mod[ 'id' ] ) ) {
-	
+
 						$mod_salt .= $mod[ 'id' ] ? 'true' : 'false';
-	
+
 					} elseif ( is_numeric( $mod[ 'id' ] ) ) {	// Just in case.
-	
+
 						$mod_salt .= $mod[ 'id' ];
 					}
 				}
-	
+
 				if ( ! empty( $mod[ 'tax_slug' ] ) ) {
-	
+
 					$mod_salt .= '_tax:' . $mod[ 'tax_slug' ];
 				}
-	
+
 				if ( ! empty( $mod[ 'paged' ] ) ) {
-	
+
 					$mod_salt .= '_paged:' . $mod[ 'paged' ];
 				}
-	
+
 				if ( ! empty( $mod[ 'comment_paged' ] ) ) {
-	
+
 					$mod_salt .= '_cpage:' . $mod[ 'comment_paged' ];
 				}
-	
+
 				if ( ! is_numeric( $mod[ 'id' ] ) || ! $mod[ 'id' ] > 0 ) {
-	
+
 					if ( ! empty( $mod[ 'is_home' ] ) ) {	// Home page (static or blog archive).
-	
+
 						$mod_salt .= '_home:true';
 					}
-	
+
 					if ( ! empty( $canonical_url ) ) {
 
 						$mod_salt .= '_url:' . $canonical_url;
@@ -2813,7 +2813,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				$mod_salt .= '_url:' . $canonical_url;
 			}
-	
+
 			$mod_salt = ltrim( $mod_salt, '_' );
 
 			return apply_filters( 'sucom_mod_salt', $mod_salt, $canonical_url );

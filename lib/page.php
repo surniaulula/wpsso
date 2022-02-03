@@ -1565,7 +1565,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		public function clear_the_content( array $mod ) {
 
 			if ( $this->p->debug->enabled ) {
-				
+
 				$this->p->debug->mark();
 			}
 
@@ -1935,20 +1935,20 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			} elseif ( is_numeric( $add_hashtags ) && $add_hashtags >= 1 ) {
 
 				$tags = $this->get_tag_names( $mod );
-	
+
 				$tags = array_slice( $tags, 0, $add_hashtags );
-	
+
 				if ( ! empty( $tags ) ) {
-	
+
 					$hashtags = SucomUtil::array_to_hashtags( $tags );	// Remove special characters incompatible with Twitter.
-	
+
 					if ( $this->p->debug->enabled ) {
 
 						$this->p->debug->log( 'hashtags = ' . $hashtags );
 					}
 				}
 			}
-	
+
 			return apply_filters( 'wpsso_hashtags', $hashtags, $mod, $add_hashtags );
 		}
 

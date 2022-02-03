@@ -827,7 +827,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return self::reset_image_src_args();
 			}
 
-			$img_meta = wp_get_attachment_metadata( $pid );
+			$img_meta = wp_get_attachment_metadata( $pid );	// Returns a WP_Error object on failure.
 			$img_alt  = get_post_meta( $pid, '_wp_attachment_image_alt', $single = true );
 
 			/**
@@ -884,21 +884,21 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$error_msg = $img_meta->get_error_message();
 
 					if ( $this->p->debug->enabled ) {
-	
+
 						$this->p->debug->log( $func_name . ' error for ' . $pid . ': ' . $error_msg );
 					}
-	
+
 					if ( $this->p->notice->is_admin_pre_notices() ) {
-	
+
 						$notice_msg = sprintf( __( 'Possible %1$s corruption detected - the <a href="%2$s">WordPress %3$s function</a> returned an error for <a href="%4$s">image ID %5$s</a>: %6$s.', 'wpsso' ), $img_lib, $func_url, '<code>' . $func_name . '</code>', $edit_url, $pid, $error_msg ) . ' ' . $regen_msg;
-	
+
 						$notice_key = 'wp-get-attachment-metadata-error-for-' . $pid;
-	
+
 						$this->p->notice->err( $notice_msg, null, $notice_key );
 					}
-	
+
 					$img_meta = array();	// Avoid "cannot use object of type WP_Error as array" error.
-	
+
 				/**
 				 * Image dimensions are missing, but full size image path is present.
 				 */

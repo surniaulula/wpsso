@@ -470,7 +470,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		public function clear_head_array( $mod = false, $canonical_url = null ) {
 
 			if ( $this->p->debug->enabled ) {
-				
+
 				$this->p->debug->mark();
 			}
 
@@ -479,7 +479,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				return 0;
 
 			} elseif ( null === $canonical_url ) {
-			
+
 				$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = true );
 			}
 

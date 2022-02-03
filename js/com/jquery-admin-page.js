@@ -318,7 +318,7 @@ function sucomToolbarNotices( pluginId, adminPageL10n ) {
 			}
 
 			menuItem.addClass( 'toolbar-notices-' + noticeStatus );
-			
+
 			if ( noticeTime ) {
 
 				menuItem.addClass( 'hover-timeout' );
