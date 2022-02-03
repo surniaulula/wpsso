@@ -261,6 +261,24 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Added a new `SucomUtilWP::add_title_part()` method to add a separator and value to the left/right hand of the title.
+	* Removed the `$read_cache` argument from the following methods:
+		* `WpssoPage->get_caption()`
+		* `WpssoPage->get_description()`
+		* `WpssoPage->get_keywords()`
+		* `WpssoPage->get_text()`
+		* `WpssoPage->get_the_content()`
+		* `WpssoPage->get_the_text()`
+		* `WpssoPage->get_title()`
+	* Removed the `$read_cache` argument from the following filters:
+		* 'wpsso_the_content_seed'
+		* 'wpsso_the_content'
+	* Removed the following filters:
+		* 'wpsso_post_cache_transient_keys'
+		* 'wpsso_post_cache_wp_cache_keys'
+		* 'wpsso_term_cache_transient_keys'
+		* 'wpsso_term_cache_wp_cache_keys'
+		* 'wpsso_user_cache_transient_keys'
+		* 'wpsso_user_cache_wp_cache_keys'
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
