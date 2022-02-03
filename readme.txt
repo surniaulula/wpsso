@@ -260,7 +260,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added a new `SucomUtilWP::add_title_value()` method to add a separator and value to the left/right hand of the title.
+	* Added a new `SucomUtilWP::add_title_part()` method to add a separator and value to the left/right hand of the title.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
