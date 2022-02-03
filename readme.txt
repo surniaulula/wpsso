@@ -251,16 +251,22 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 10.1.0-dev.4 (2022/02/03)**
+**Version 10.1.0-dev.5 (2022/02/03)**
 
 * **New Features**
-	* SSO toolbar notices are now shown and hidden after a time-out (2 seconds for success notices, 4 seconds for info notices, and no time-out for warnings and errors).
+	* SSO toolbar notices show and hide after a time-out (2 seconds for success notices, 4 seconds for info notices, and no time-out for warnings and errors).
 * **Improvements**
 	* Removed the SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Integration &gt; Use Filtered "SEO" Title option.
 * **Bugfixes**
-	* None.
+	* Fixed handling of possible WP_Error object from `wp_get_attachment_metadata()`.
 * **Developer Notes**
-	* Added a new `SucomUtilWP::add_title_part()` method to add a separator and value to the left/right hand of the title.
+	* Added a new `WpssoHead->clear_head_array()` method.
+	* Added a new `WpssoPage->clear_the_content()` method.
+	* Added a new `WpssoPage->get_the_description()` method.
+	* Added a new `SucomUtilWP::add_title_part()` method to add a separator and value (to the left/right of the title).
+	* Refactored the `SucomUtil::get_mod_salt()` method to handle `$mod = false`.
+	* Removed the `WpssoPage->get_text_and_hashtags()` method.
+	* Removed application of the 'wp_title' filter from `WpssoPage->get_the_title()`.
 	* Removed the `$read_cache` argument from the following methods:
 		* `WpssoPage->get_caption()`
 		* `WpssoPage->get_description()`
@@ -959,9 +965,9 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 10.1.0-dev.4 =
+= 10.1.0-dev.5 =
 
-(2022/02/03) SSO toolbar notices are now shown and hidden after a time-out (2 seconds for success notices, 4 seconds for info notices, and no time-out for warnings and errors).
+(2022/02/03) SSO toolbar notices show and hide after a time-out (2 seconds for success notices, 4 seconds for info notices, and no time-out for warnings and errors).
 
 = 10.0.0 =
 
