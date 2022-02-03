@@ -696,8 +696,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$mod = $this->p->page->get_mod( $mod );
 			}
 
-			$caption_text = '';
-
 			if ( false === $md_key ) {	// False would return the complete meta array.
 
 				$md_key       = '';
@@ -739,6 +737,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$md_key_desc  = $md_key;
 			}
 
+			$caption_text = '';
+			$is_custom    = false;
+
 			/**
 			 * Check for custom caption if a metadata index key is provided.
 			 */
@@ -748,21 +749,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					$caption_text = $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key );
 
-					/**
-					 * Extract custom hashtags, or get hashtags if $add_hashtags is true or numeric.
-					 */
-					list( $caption_text, $hashtags ) = $this->get_text_and_hashtags( $caption_text, $mod, $add_hashtags );
-
 					if ( ! empty( $caption_text ) ) {
 
-						if ( $max_len > 0 ) {
-
-							$adj_max_len = empty( $hashtags ) ? $max_len : $max_len - strlen( $hashtags ) - 1;
-
-							$caption_text = $this->p->util->limit_text_length( $caption_text, $adj_max_len, '...', false );
-						}
-
-						$caption_text = trim( $caption_text . ' ' . $hashtags );
+						$is_custom = true;
 
 						if ( $this->p->debug->enabled ) {
 
@@ -772,12 +761,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			$is_custom = empty( $caption_text ) ? false : true;
-
 			/**
 			 * If there's no custom caption text, then go ahead and generate the caption text value.
 			 */
-			if ( ! $is_custom ) {
+			if ( empty( $caption_text ) ) {
 
 				/**
 				 * Request all values un-encoded, then encode once we have the complete caption text.
@@ -891,6 +878,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			$title_text = '';
+			$hashtags   = '';
+			$is_custom  = false;
 
 			/**
 			 * Check for custom title if a metadata index key is provided.
@@ -903,6 +892,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					if ( ! empty( $title_text ) ) {
 
+						$is_custom = true;
+
 						if ( $this->p->debug->enabled ) {
 
 							$this->p->debug->log( 'custom title = ' . $title_text );
@@ -911,12 +902,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			$is_custom = empty( $title_text ) ? false : true;
-
 			/**
 			 * Get seed if no custom meta title.
 			 */
-			if ( ! $is_custom ) {
+			if ( empty( $title_text ) ) {
 
 				$title_text = apply_filters( 'wpsso_title_seed', '', $mod, $add_hashtags, $md_key, $title_sep );
 
@@ -930,25 +919,22 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			/**
-			 * Extract custom hashtags, or get hashtags if $add_hashtags is true or numeric.
-			 */
-			list( $title_text, $hashtags ) = $this->get_text_and_hashtags( $title_text, $mod, $add_hashtags );
-
-			/**
 			 * If there's no custom title, and no pre-seed, then go ahead and generate the title value.
 			 */
-			if ( ! $is_custom && empty( $desc_text ) ) {
+			if ( empty( $title_text ) ) {
 
 				$title_text = $this->get_the_title( $mod, $title_sep );
+
+				$hashtags = $this->get_hashtags( $mod, $add_hashtags );
 			}
 
 			/**
-			 * Replace any inline variables in the string.
+			 * Replace inline variables in the string.
 			 */
 			if ( false !== strpos( $title_text, '%%' ) ) {
 
 				/**
-				 * Maybe overwrite the default 'title_sep' value.
+				 * Override the default 'title_sep' value.
 				 */
 				$title_text = $this->p->util->inline->replace_variables( $title_text, $mod, $atts = array( 'title_sep' => $title_sep ) );
 			}
@@ -956,12 +942,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/**
 			 * Maybe add the page number.
 			 */
-			$page_number_transl = '';
-
-			if ( $mod[ 'paged' ] > 1 ) {
-
-				$page_number_transl = sprintf( __( 'Page %s', 'wpsso' ), $mod[ 'paged' ] );
-			}
+			$page_number_transl = $mod[ 'paged' ] > 1 ? sprintf( __( 'Page %s', 'wpsso' ), $mod[ 'paged' ] ) : '';
 
 			/**
 			 * Check title against string length limits.
@@ -969,18 +950,21 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			if ( $max_len > 0 ) {
 
 				/**
-				 * Reduce the max title length by the separator, page number, and two spaces.
+				 * If we have a page number, reduce the max length by the separator, page number, and two spaces.
 				 */
 				$adj_max_len = empty( $page_number_transl ) ? $max_len : $max_len - strlen ( $title_sep ) - strlen( $page_number_transl ) - 2;
 
 				/**
-				 * Further reduce the max title length by the hashtags and one space.
+				 * If we have any hashtags, further reduce the max title length by the hashtags and one space.
 				 */
 				$adj_max_len = empty( $hashtags ) ? $adj_max_len : $adj_max_len - strlen( $hashtags ) - 1;
 
 				$title_text = $this->p->util->limit_text_length( $title_text, $adj_max_len, $dots, $cleanup_html = false );
 			}
 
+			/**
+			 * Once the description length has been adjusted, we can add the page number and hashtags.
+			 */
 			if ( ! empty( $page_number_transl ) ) {
 
 				SucomUtilWP::add_title_part( $title_text, $title_sep, $page_number_transl );
@@ -996,25 +980,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( $do_encode ) {
 
-				foreach ( array( 'title_text', 'title_sep' ) as $var ) {	// Loop through variables.
+				$title_text = SucomUtil::encode_html_emoji( $title_text );	// Does not double-encode.
 
-					$$var = SucomUtil::encode_html_emoji( $$var );	// Does not double-encode.
-				}
+				$title_sep = SucomUtil::encode_html_emoji( $title_sep );	// Does not double-encode.
 			}
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'title before filter = ' . $title_text );
-			}
-
-			$title_text = apply_filters( 'wpsso_title', $title_text, $mod, $add_hashtags, $md_key, $title_sep, $is_custom );
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'title after filter = ' . $title_text );
-			}
-
-			return $title_text;
+			return apply_filters( 'wpsso_title', $title_text, $mod, $add_hashtags, $md_key, $title_sep, $is_custom );
 		}
 
 		/**
@@ -1074,6 +1045,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			$desc_text = '';
+			$hashtags  = '';
+			$is_custom = false;
 
 			/**
 			 * Check for custom description if a metadata index key is provided.
@@ -1086,6 +1059,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					if ( ! empty( $desc_text ) ) {
 
+						$is_custom = true;
+
 						if ( $this->p->debug->enabled ) {
 
 							$this->p->debug->log( 'custom description = ' . $desc_text );
@@ -1094,12 +1069,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			$is_custom = empty( $desc_text ) ? false : true;
-
 			/**
 			 * Get seed if no custom meta description.
 			 */
-			if ( ! $is_custom ) {
+			if ( empty( $desc_text ) ) {
 
 				$desc_text = apply_filters( 'wpsso_description_seed', '', $mod, $add_hashtags, $md_key );
 
@@ -1113,180 +1086,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			/**
-			 * Extract custom hashtags, or get hashtags if $add_hashtags is true or numeric.
-			 */
-			list( $desc_text, $hashtags ) = $this->get_text_and_hashtags( $desc_text, $mod, $add_hashtags );
-
-			/**
 			 * If there's no custom description, and no pre-seed, then go ahead and generate the description value.
-			 */
-			if ( ! $is_custom && empty( $desc_text ) ) {
-
-				/**
-				 * Similar module type logic can be found in the following methods:
-				 *
-				 * See WpssoOpenGraph->get_mod_og_type().
-				 * See WpssoPage->get_description().
-				 * See WpssoPage->get_the_title().
-				 * See WpssoSchema->get_mod_schema_type().
-				 * See WpssoUtil->get_canonical_url().
-				 */
-				if ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).
-
-					$desc_text = SucomUtil::get_site_description( $this->p->options );
-
-				} elseif ( $mod[ 'is_comment' ] ) {
-
-					if ( $mod[ 'id' ] ) {	// Just in case.
-
-						$desc_text = get_comment_excerpt( $mod[ 'id' ] );
-					}
-
-				} elseif ( $mod[ 'is_post' ] ) {
-
-					if ( $mod[ 'post_type' ] ) {	// Just in case.
-
-						if ( $mod[ 'is_post_type_archive' ] ) {	// The post ID may be 0.
-
-							$desc_text = $this->p->opt->get_text( 'plugin_pta_' . $mod[ 'post_type' ] . '_desc' );
-
-							if ( empty( $desc_text ) ) {	// Just in case.
-
-								$post_type_obj = get_post_type_object( $mod[ 'post_type' ] );
-
-								if ( ! empty( $post_type_obj->description ) ) {
-
-									$desc_text = $post_type_obj->description;
-								}
-							}
-
-						} elseif ( $mod[ 'id' ] ) {	// Just in case.
-
-							$desc_text = $this->get_the_excerpt( $mod );
-
-							/**
-							 * If there's no excerpt, then fallback to the content.
-							 */
-							if ( empty( $desc_text ) ) {
-
-								if ( $this->p->debug->enabled ) {
-
-									$this->p->debug->log( 'getting the content for post ID ' . $mod[ 'id' ] );
-								}
-
-								$desc_text = $this->get_the_content( $mod, $read_cache, $md_key );
-
-								/**
-								 * Ignore everything before the first paragraph.
-								 */
-								if ( ! empty( $desc_text ) ) {
-
-									if ( $this->p->debug->enabled ) {
-
-										$this->p->debug->log( 'removing text before the first paragraph' );
-									}
-
-									/**
-									 * U = Inverts the "greediness" of quantifiers so that they are not greedy by default.
-									 * i = Letters in the pattern match both upper and lower case letters. 
-									 *
-									 * See http://php.net/manual/en/reference.pcre.pattern.modifiers.php.
-									 */
-									$desc_text = preg_replace( '/^.*<p[^>]*>/Usi', '', $desc_text );
-								}
-							}
-
-							/**
-							 * Fallback to the image alt value.
-							 */
-							if ( empty( $desc_text ) ) {
-
-								if ( $mod[ 'is_attachment' ] && strpos( $mod[ 'post_mime' ], 'image/' ) === 0 ) {
-
-									if ( $this->p->debug->enabled ) {
-
-										$this->p->debug->log( 'falling back to attachment image alt text' );
-									}
-
-									$desc_text = get_post_meta( $mod[ 'id' ], '_wp_attachment_image_alt', true );
-								}
-							}
-
-						} elseif ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'no post id' );
-						}
-
-					} elseif ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'no post type' );
-					}
-
-				} elseif ( $mod[ 'is_term' ] ) {
-
-					if ( $mod[ 'id' ] ) {	// Just in case.
-
-						$term_obj = get_term( $mod[ 'id' ], $mod[ 'tax_slug' ] );
-
-						if ( isset( $term_obj->description ) ) {
-
-							$desc_text = $term_obj->description;
-						}
-					}
-
-				} elseif ( $mod[ 'is_user' ] ) {
-
-					if ( $mod[ 'id' ] ) {	// Just in case.
-
-						$user_obj = SucomUtil::get_user_object( $mod[ 'id' ] );
-
-						if ( isset( $user_obj->description ) ) {
-
-							$desc_text = $user_obj->description;
-						}
-					}
-
-				} elseif ( $mod[ 'is_search' ] ) {
-
-					$desc_text = $this->p->opt->get_text( 'plugin_search_page_desc' );
-
-				} elseif ( $mod[ 'is_archive' ] ) {
-
-					if ( $mod[ 'is_date' ] ) {
-
-						if ( $mod[ 'is_year' ] ) {
-
-							$desc_text = $this->p->opt->get_text( 'plugin_year_page_desc' );
-
-						} elseif ( $mod[ 'is_month' ] ) {
-
-							$desc_text = $this->p->opt->get_text( 'plugin_month_page_desc' );
-
-						} elseif ( $mod[ 'is_day' ] ) {
-
-							$desc_text = $this->p->opt->get_text( 'plugin_day_page_desc' );
-						}
-					}
-				}
-			}
-
-			/**
-			 * Descriptions comprised entirely of HTML content will be empty after running cleanup_html_tags(), so
-			 * remove the HTML tags before maybe falling back to the generic description.
-			 */
-			$desc_text = $this->p->util->cleanup_html_tags( $desc_text, $strip_tags = true, $use_img_alt = true );
-
-			/**
-			 * If there's still no description, then fallback to a generic version.
 			 */
 			if ( empty( $desc_text ) ) {
 
-				if ( $this->p->debug->enabled ) {
+				$desc_text = $this->get_the_description( $mod, $read_cache, $md_key );
 
-					$this->p->debug->log( 'description is empty - using generic description text' );
-				}
-
-				$desc_text = $this->p->opt->get_text( 'plugin_no_desc_text' );	// No Description Text.
+				$hashtags = $this->get_hashtags( $mod, $add_hashtags );
 			}
 
 			/**
@@ -1302,38 +1108,31 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( $max_len > 0 ) {
 
+				/**
+				 * If we have any hashtags, reduce the max length by the hashtags and one space.
+				 */
 				$adj_max_len = empty( $hashtags ) ? $max_len : $max_len - strlen( $hashtags ) - 1;
 
 				$desc_text = $this->p->util->limit_text_length( $desc_text, $adj_max_len, $dots, $cleanup_html = false );
-
-			} elseif ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'skipped the description length limit' );
 			}
 
+			/**
+			 * Once the description length has been adjusted, we can add the hashtags.
+			 */
 			if ( ! empty( $hashtags ) ) {
 
-				$desc_text = trim( $desc_text . ' ' . $hashtags );	// Trim in case text is empty.
+				SucomUtilWP::add_title_part( $desc_text, '', $hashtags );
 			}
 
+			/**
+			 * Maybe return the values encoded (true by default).
+			 */
 			if ( $do_encode ) {
 
 				$desc_text = SucomUtil::encode_html_emoji( $desc_text );	// Does not double-encode.
 			}
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'description before filter = ' . $desc_text );
-			}
-
-			$desc_text = apply_filters( 'wpsso_description', $desc_text, $mod, $add_hashtags, $md_key, $is_custom );
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'description after filter = ' . $desc_text );
-			}
-
-			return $desc_text;
+			return apply_filters( 'wpsso_description', $desc_text, $mod, $add_hashtags, $md_key, $is_custom );
 		}
 
 		public function get_text( $max_len = 0, $dots = '...', $mod = false, $read_cache = true, $add_hashtags = false,
@@ -1362,44 +1161,35 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$text = $this->get_the_text( $mod, $read_cache, $md_key );
 
 			/**
-			 * Extract custom hashtags, or get hashtags if $add_hashtags is true or numeric.
+			 * Check text against string length limits.
 			 */
-			list( $text, $hashtags ) = $this->get_text_and_hashtags( $text, $mod, $add_hashtags );
-
 			if ( $max_len > 0 ) {
 
+				/**
+				 * If we have any hashtags, reduce the max length by the hashtags and one space.
+				 */
 				$adj_max_len = empty( $hashtags ) ? $max_len : $max_len - strlen( $hashtags ) - 1;
 
 				$text = $this->p->util->limit_text_length( $text, $adj_max_len, $dots, $cleanup_html = false );
-
-			} elseif ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'skipped the text length limit' );
 			}
 
+			/**
+			 * Once the text length has been adjusted, we can add the hashtags.
+			 */
 			if ( ! empty( $hashtags ) ) {
 
-				$text = trim( $text . ' ' . $hashtags );	// Trim in case text is empty.
+				SucomUtilWP::add_title_part( $text, '', $hashtags );
 			}
 
+			/**
+			 * Maybe return the values encoded (true by default).
+			 */
 			if ( $do_encode ) {
 
 				$text = SucomUtil::encode_html_emoji( $text );	// Does not double-encode.
 			}
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'text before filter = ' . $text );
-			}
-
-			$text = apply_filters( 'wpsso_text', $text, $mod, $add_hashtags, $md_key );
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'text after filter = ' . $text );
-			}
-
-			return $text;
+			return apply_filters( 'wpsso_text', $text, $mod, $add_hashtags, $md_key );
 		}
 
 		/**
@@ -1428,8 +1218,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 * Similar module type logic can be found in the following methods:
 			 *
 			 * See WpssoOpenGraph->get_mod_og_type().
-			 * See WpssoPage->get_description().
 			 * See WpssoPage->get_the_title().
+			 * See WpssoPage->get_the_description().
 			 * See WpssoSchema->get_mod_schema_type().
 			 * See WpssoUtil->get_canonical_url().
 			 */
@@ -1547,12 +1337,185 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$title_text = $this->p->opt->get_text( 'plugin_no_title_text' );	// No Title Text.
 			}
 
-			/**
-			 * Apply the filter.
-			 */
-			$title_text = apply_filters( 'wpsso_the_title', $title_text, $mod, $title_sep );
+			return apply_filters( 'wpsso_the_title', $title_text, $mod, $title_sep );
+		}
 
-			return $title_text;
+		public function get_the_description( array $mod, $read_cache = true, $md_key = '' ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			$desc_text = '';
+
+			/**
+			 * Similar module type logic can be found in the following methods:
+			 *
+			 * See WpssoOpenGraph->get_mod_og_type().
+			 * See WpssoPage->get_the_title().
+			 * See WpssoPage->get_the_description().
+			 * See WpssoSchema->get_mod_schema_type().
+			 * See WpssoUtil->get_canonical_url().
+			 */
+			if ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).
+
+				$desc_text = SucomUtil::get_site_description( $this->p->options );
+
+			} elseif ( $mod[ 'is_comment' ] ) {
+
+				if ( $mod[ 'id' ] ) {	// Just in case.
+
+					$desc_text = get_comment_excerpt( $mod[ 'id' ] );
+				}
+
+			} elseif ( $mod[ 'is_post' ] ) {
+
+				if ( $mod[ 'post_type' ] ) {	// Just in case.
+
+					if ( $mod[ 'is_post_type_archive' ] ) {	// The post ID may be 0.
+
+						$desc_text = $this->p->opt->get_text( 'plugin_pta_' . $mod[ 'post_type' ] . '_desc' );
+
+						if ( empty( $desc_text ) ) {	// Just in case.
+
+							$post_type_obj = get_post_type_object( $mod[ 'post_type' ] );
+
+							if ( ! empty( $post_type_obj->description ) ) {
+
+								$desc_text = $post_type_obj->description;
+							}
+						}
+
+					} elseif ( $mod[ 'id' ] ) {	// Just in case.
+
+						$desc_text = $this->get_the_excerpt( $mod );
+
+						/**
+						 * If there's no excerpt, then fallback to the content.
+						 */
+						if ( empty( $desc_text ) ) {
+
+							if ( $this->p->debug->enabled ) {
+
+								$this->p->debug->log( 'getting the content for post ID ' . $mod[ 'id' ] );
+							}
+
+							$desc_text = $this->get_the_content( $mod, $read_cache, $md_key );
+
+							/**
+							 * Ignore everything before the first paragraph.
+							 */
+							if ( ! empty( $desc_text ) ) {
+
+								if ( $this->p->debug->enabled ) {
+
+									$this->p->debug->log( 'removing text before the first paragraph' );
+								}
+
+								/**
+								 * U = Inverts the "greediness" of quantifiers so that they are not greedy by default.
+								 * i = Letters in the pattern match both upper and lower case letters. 
+								 *
+								 * See http://php.net/manual/en/reference.pcre.pattern.modifiers.php.
+								 */
+								$desc_text = preg_replace( '/^.*<p[^>]*>/Usi', '', $desc_text );
+							}
+						}
+
+						/**
+						 * Fallback to the image alt value.
+						 */
+						if ( empty( $desc_text ) ) {
+
+							if ( $mod[ 'is_attachment' ] && strpos( $mod[ 'post_mime' ], 'image/' ) === 0 ) {
+
+								if ( $this->p->debug->enabled ) {
+
+									$this->p->debug->log( 'falling back to attachment image alt text' );
+								}
+
+								$desc_text = get_post_meta( $mod[ 'id' ], '_wp_attachment_image_alt', true );
+							}
+						}
+
+					} elseif ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'no post id' );
+					}
+
+				} elseif ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'no post type' );
+				}
+
+			} elseif ( $mod[ 'is_term' ] ) {
+
+				if ( $mod[ 'id' ] ) {	// Just in case.
+
+					$term_obj = get_term( $mod[ 'id' ], $mod[ 'tax_slug' ] );
+
+					if ( isset( $term_obj->description ) ) {
+
+						$desc_text = $term_obj->description;
+					}
+				}
+
+			} elseif ( $mod[ 'is_user' ] ) {
+
+				if ( $mod[ 'id' ] ) {	// Just in case.
+
+					$user_obj = SucomUtil::get_user_object( $mod[ 'id' ] );
+
+					if ( isset( $user_obj->description ) ) {
+
+						$desc_text = $user_obj->description;
+					}
+				}
+
+			} elseif ( $mod[ 'is_search' ] ) {
+
+				$desc_text = $this->p->opt->get_text( 'plugin_search_page_desc' );
+
+			} elseif ( $mod[ 'is_archive' ] ) {
+
+				if ( $mod[ 'is_date' ] ) {
+
+					if ( $mod[ 'is_year' ] ) {
+
+						$desc_text = $this->p->opt->get_text( 'plugin_year_page_desc' );
+
+					} elseif ( $mod[ 'is_month' ] ) {
+
+						$desc_text = $this->p->opt->get_text( 'plugin_month_page_desc' );
+
+					} elseif ( $mod[ 'is_day' ] ) {
+
+						$desc_text = $this->p->opt->get_text( 'plugin_day_page_desc' );
+					}
+				}
+			}
+
+			/**
+			 * Descriptions comprised entirely of HTML content will be empty after running cleanup_html_tags(), so
+			 * remove the HTML tags before maybe falling back to the generic description.
+			 */
+			$desc_text = $this->p->util->cleanup_html_tags( $desc_text, $strip_tags = true, $use_img_alt = true );
+
+			/**
+			 * If there's still no description, then fallback to a generic version.
+			 */
+			if ( empty( $desc_text ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'description is empty - using generic description text' );
+				}
+
+				$desc_text = $this->p->opt->get_text( 'plugin_no_desc_text' );	// No Description Text.
+			}
+
+			return apply_filters( 'wpsso_the_description', $desc_text, $mod );
 		}
 
 		public function get_the_excerpt( array $mod ) {
@@ -1585,48 +1548,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						$post_obj = SucomUtil::get_post_object( $mod[ 'id' ] );
 
 						$excerpt_text = $this->p->util->safe_apply_filters( array( 'get_the_excerpt', $excerpt_text, $post_obj ), $mod );
-
-					} elseif ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'skipped the WordPress get_the_excerpt filters' );
 					}
 				}
 			}
 
-			$excerpt_text = apply_filters( 'wpsso_the_excerpt', $excerpt_text, $mod );
-
-			return $excerpt_text;
-		}
-
-		/**
-		 * Returns an empty or formatted string (number with minutes).
-		 */
-		public function get_reading_time( array $mod ) {
-
-			$reading_mins = $this->get_reading_mins( $mod );
-
-			return $reading_mins ? sprintf( _n( '%s minute', '%s minutes', $reading_mins, 'wpsso' ), $reading_mins ) : '';
-		}
-
-		public function get_reading_mins( array $mod ) {
-
-			$content = $this->get_the_content( $mod );
-
-			$words_per_min = WPSSO_READING_WORDS_PER_MIN;
-
-			$reading_mins = null;
-
-			if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Just in case.
-
-				$reading_mins = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'reading_mins' );
-			}
-
-			if ( null === $reading_mins ) {	// Default value or no custom value.
-
-				$reading_mins = SucomUtil::get_text_reading_mins( $content, $words_per_min );
-			}
-
-			return $reading_mins;
+			return apply_filters( 'wpsso_the_excerpt', $excerpt_text, $mod );
 		}
 
 		public function get_the_content( array $mod, $read_cache = true, $md_key = '', $flatten = true ) {
@@ -1871,6 +1797,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->mark();
 			}
 
+			$text      = '';
+			$is_custom = false;
+
 			/**
 			 * Check for custom text if a metadata index key is provided.
 			 */
@@ -1882,6 +1811,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					if ( ! empty( $text ) ) {
 
+						$is_custom = true;
+
 						if ( $this->p->debug->enabled ) {
 
 							$this->p->debug->log( 'custom text = ' . $text );
@@ -1890,12 +1821,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			$is_custom = empty( $text ) ? false : true;
-
 			/**
 			 * If there's no custom text, then go ahead and generate the text value.
 			 */
-			if ( ! $is_custom ) {
+			if ( empty( $text ) ) {
 
 				$text = $this->get_the_content( $mod, $read_cache, $md_key );
 
@@ -1906,7 +1835,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$text = $this->p->util->cleanup_html_tags( $text, $strip_tags = true, $use_img_alt = true );
 			}
 
-			return $text;
+			return apply_filters( 'wpsso_text', $text, $mod, $read_cache, $md_key );
 		}
 
 		/**
@@ -1919,7 +1848,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$keywords = '';
+			$keywords  = '';
+			$is_custom = false;
 
 			/**
 			 * Check for custom keywords if a metadata index key is provided.
@@ -1932,6 +1862,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					if ( ! empty( $keywords ) ) {
 
+						$is_custom = false;
+
 						if ( $this->p->debug->enabled ) {
 
 							$this->p->debug->log( 'custom keywords = ' . $keywords );
@@ -1940,12 +1872,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			$is_custom = empty( $keywords ) ? false : true;
-
 			/**
 			 * If there's no custom keywords, then go ahead and generate the keywords value.
 			 */
-			if ( ! $is_custom ) {
+			if ( empty( $keywords ) ) {
 
 				$tags = $this->get_tag_names( $mod );
 
@@ -1960,42 +1890,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			return $keywords;
-		}
-
-		/**
-		 * Extract custom hashtags, or get hashtags if $add_hashtags is true or numeric.
-		 */
-		public function get_text_and_hashtags( $text, array $mod, $add_hashtags = true ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			$hashtags = '';
-
-			/**
-			 * U = Inverts the "greediness" of quantifiers so that they are not greedy by default.
-			 *
-			 * See http://php.net/manual/en/reference.pcre.pattern.modifiers.php.
-			 */
-			if ( preg_match( '/^(.*)(( *#[a-z][a-z0-9\-]+)+)$/U', $text, $match ) ) {
-
-				$text     = $match[1];
-				$hashtags = trim( $match[2] );
-
-			} elseif ( $add_hashtags ) {
-
-				$hashtags = $this->get_hashtags( $mod, $add_hashtags );
-			}
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'hashtags = ' . $hashtags );
-			}
-
-			return array( $text, $hashtags );
+			return apply_filters( 'wpsso_keywords', $keywords, $mod, $read_cache, $md_key );
 		}
 
 		/**
@@ -2008,26 +1903,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->mark();
 			}
 
-			/**
-			 * Determine the maximum number of hashtags to return.
-			 */
-			if ( empty( $add_hashtags ) ) {	// False or 0.
-
-				return '';
-
-			} elseif ( is_numeric( $add_hashtags ) ) {	// Return a specific number of hashtags.
-
-				$max_hashtags = $add_hashtags;
-
-			} elseif ( ! empty( $this->p->options[ 'og_desc_hashtags' ] ) ) {	// Return the default number of hashtags.
-
-				$max_hashtags = $this->p->options[ 'og_desc_hashtags' ];
-
-			} else {	// Just in case.
-
-				return '';
-			}
-
 			$hashtags = apply_filters( 'wpsso_hashtags_seed', '', $mod, $add_hashtags );
 
 			if ( ! empty( $hashtags ) ) {	// Seed hashtags returned.
@@ -2037,23 +1912,23 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$this->p->debug->log( 'hashtags seed = ' . $hashtags );
 				}
 
-			} else {
+			} elseif ( is_numeric( $add_hashtags ) && $add_hashtags >= 1 ) {
 
 				$tags = $this->get_tag_names( $mod );
-
-				$tags = array_slice( $tags, 0, $max_hashtags );
-
+	
+				$tags = array_slice( $tags, 0, $add_hashtags );
+	
 				if ( ! empty( $tags ) ) {
-
+	
 					$hashtags = SucomUtil::array_to_hashtags( $tags );	// Remove special characters incompatible with Twitter.
-
+	
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'hashtags (max ' . $max_hashtags . ') = ' . $hashtags );
+						$this->p->debug->log( 'hashtags = ' . $hashtags );
 					}
 				}
 			}
-
+	
 			return apply_filters( 'wpsso_hashtags', $hashtags, $mod, $add_hashtags );
 		}
 
@@ -2092,35 +1967,32 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$this->p->debug->log( 'tags seed = ' . implode( ',', $tags ) );
 				}
 
-			} else {
+			} elseif ( $mod[ 'is_post' ] ) {
 
-				if ( $mod[ 'is_post' ] ) {
+				if ( 'post' === $mod[ 'post_type' ] ) {
 
-					if ( 'post' === $mod[ 'post_type' ] ) {
+					$taxonomy = 'post_tag';
 
-						$taxonomy = 'post_tag';
+				} elseif ( 'page' === $mod[ 'post_type' ] && ! empty( $this->p->options[ 'plugin_page_tags' ] ) ) {
 
-					} elseif ( 'page' === $mod[ 'post_type' ] && ! empty( $this->p->options[ 'plugin_page_tags' ] ) ) {
+					$taxonomy = SucomUtil::get_const( 'WPSSO_PAGE_TAG_TAXONOMY' );
 
-						$taxonomy = SucomUtil::get_const( 'WPSSO_PAGE_TAG_TAXONOMY' );
+				} else {
 
-					} else {
-
-						$taxonomy = '';
-					}
-
-					$filter_name = SucomUtil::sanitize_hookname( 'wpsso_' . $mod[ 'post_type' ] . '_tag_taxonomy' );
-
-					$taxonomy = apply_filters( $filter_name, $taxonomy, $mod );
-
-					if ( ! empty( $taxonomy ) ) {
-
-						$tags = wp_get_post_terms( $mod[ 'id' ], $taxonomy, $args = array( 'fields' => 'names' ) );
-					}
+					$taxonomy = '';
 				}
 
-				$tags = array_unique( $tags );
+				$filter_name = SucomUtil::sanitize_hookname( 'wpsso_' . $mod[ 'post_type' ] . '_tag_taxonomy' );
+
+				$taxonomy = apply_filters( $filter_name, $taxonomy, $mod );
+
+				if ( ! empty( $taxonomy ) ) {
+
+					$tags = wp_get_post_terms( $mod[ 'id' ], $taxonomy, $args = array( 'fields' => 'names' ) );
+				}
 			}
+
+			$tags = array_unique( $tags );
 
 			$tags = apply_filters( 'wpsso_tag_names', $tags, $mod );
 
@@ -2183,17 +2055,15 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$title_sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
 			}
 
-			if ( ! empty( $term_obj->name ) ) {	// Just in case.
+			if ( ! empty( $term_obj->name ) ) {
 
-				$title_text = $term_obj->name . ' ';
-
-				if ( ! empty( $title_sep ) ) {
-
-					$title_text .= $title_sep . ' ';	// Default behavior.
-				}
+				$title_text = $term_obj->name;
 			}
 
-			if ( ! empty( $title_sep ) ) {	// Just in case.
+			/**
+			 * If we have a title separator and a parent, then redefine the title text with the parent list.
+			 */
+			if ( ! empty( $title_sep ) ) {
 
 				if ( ! empty( $term_obj->parent ) ) {
 
@@ -2204,34 +2074,46 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						'inclusive' => true,
 					) );
 
-					if ( is_wp_error( $term_parents ) ) {
+					if ( $term_parents && ! is_wp_error( $term_parents ) ) {
 
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'get_term_parents_list error: ' . $term_parents->get_error_message() );
-						}
-
-					} else {
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'get_term_parents_list = ' . $term_parents );
-						}
-
-						if ( ! empty( $term_parents ) ) {
-
-							$title_text = $term_parents;
-						}
+						/**
+						 * Trim excess separator.
+						 */
+						$title_text = preg_replace( '/ *' . preg_quote( $title_sep, '/' ) . ' *$/', '', $term_parents );
 					}
 				}
-
-				/**
-				 * Trim excess separator.
-				 */
-				$title_text = preg_replace( '/ *' . preg_quote( $title_sep, '/' ) . ' *$/', '', $title_text );
 			}
 
-			return $title_text;
+			return apply_filters( 'wpsso_term_title', $title_text, $term_id, $title_sep );
+		}
+
+		/**
+		 * Returns an empty or formatted string (number with minutes).
+		 */
+		public function get_reading_time( array $mod ) {
+
+			$reading_mins = $this->get_reading_mins( $mod );
+
+			return $reading_mins ? sprintf( _n( '%s minute', '%s minutes', $reading_mins, 'wpsso' ), $reading_mins ) : '';
+		}
+
+		public function get_reading_mins( array $mod ) {
+
+			$content       = $this->get_the_content( $mod );
+			$words_per_min = WPSSO_READING_WORDS_PER_MIN;
+			$reading_mins  = null;
+
+			if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Just in case.
+
+				$reading_mins = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'reading_mins' );
+			}
+
+			if ( null === $reading_mins ) {	// Default value or no custom value.
+
+				$reading_mins = SucomUtil::get_text_reading_mins( $content, $words_per_min );
+			}
+
+			return $reading_mins;
 		}
 	}
 }

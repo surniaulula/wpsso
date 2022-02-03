@@ -828,13 +828,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			$img_meta = wp_get_attachment_metadata( $pid );
-			$img_alt  = get_post_meta( $pid, '_wp_attachment_image_alt', true );
+			$img_alt  = get_post_meta( $pid, '_wp_attachment_image_alt', $single = true );
 
 			/**
-			 * Check to see if the full size image width / height matches the resize width / height we require. If so,
-			 * then use the full size image instead.
+			 * Check to see if the full size image width / height matches the resize width / height we require.
 			 */
-			if ( isset( $img_meta[ 'file' ] ) && isset( $img_meta[ 'width' ] ) && isset( $img_meta[ 'height' ] ) ) {
+			if ( is_array( $img_meta ) && isset( $img_meta[ 'file' ] ) && isset( $img_meta[ 'width' ] ) && isset( $img_meta[ 'height' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -877,48 +876,65 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$func_url  = __( 'https://developer.wordpress.org/reference/functions/wp_get_attachment_metadata/', 'wpsso' );
 				$regen_msg = sprintf( __( 'You may consider regenerating the sizes of all WordPress Media Library images using one of <a href="%s">several available plugins from WordPress.org</a>.', 'wpsso' ), 'https://wordpress.org/plugins/search/regenerate+thumbnails/' );
 
-				if ( isset( $img_meta[ 'file' ] ) ) {
+				/**
+				 * wp_get_attachment_metadata() returned a WP_Error object.
+				 */
+				if ( is_wp_error( $img_meta ) ) {
 
-					/**
-					 * Image dimensions are missing, but full size image path is present.
-					 */
+					$error_msg = $img_meta->get_error_message();
+
+					if ( $this->p->debug->enabled ) {
+	
+						$this->p->debug->log( $func_name . ' error for ' . $pid . ': ' . $error_msg );
+					}
+	
+					if ( $this->p->notice->is_admin_pre_notices() ) {
+	
+						$notice_msg = sprintf( __( 'Possible %1$s corruption detected - the <a href="%2$s">WordPress %3$s function</a> returned an error for <a href="%4$s">image ID %5$s</a>: %6$s.', 'wpsso' ), $img_lib, $func_url, '<code>' . $func_name . '</code>', $edit_url, $pid, $error_msg ) . ' ' . $regen_msg;
+	
+						$notice_key = 'wp-get-attachment-metadata-error-for-' . $pid;
+	
+						$this->p->notice->err( $notice_msg, null, $notice_key );
+					}
+	
+					$img_meta = array();	// Avoid "cannot use object of type WP_Error as array" error.
+	
+				/**
+				 * Image dimensions are missing, but full size image path is present.
+				 */
+				} elseif ( isset( $img_meta[ 'file' ] ) ) {
+
 					if ( $this->p->debug->enabled ) {
 
 						$this->p->debug->log( 'full size image ' . $img_meta[ 'file' ] . ' dimensions missing from image metadata' );
 					}
 
-					/**
-					 * Add notice only if the admin notices have not already been shown.
-					 */
 					if ( $this->p->notice->is_admin_pre_notices() ) {
 
 						$notice_msg = sprintf( __( 'Possible %1$s corruption detected - the full size image dimensions for <a href="%2$s">image ID %3$s</a> are missing from the image metadata returned by the <a href="%4$s">WordPress %5$s function</a>.', 'wpsso' ), $img_lib, $edit_url, $pid, $func_url, '<code>' . $func_name . '</code>' ) . ' ' . $regen_msg;
 
 						$notice_key = 'full-size-image-' . $pid . '-dimensions-missing';
 
-						$this->p->notice->err( $notice_msg, null, $notice_key, $dismiss_time = WEEK_IN_SECONDS );
+						$this->p->notice->err( $notice_msg, null, $notice_key );
 					}
 
+				/**
+				 * Both the image dimensions and full size image path are missing.
+				 */
 				} else {
 
-					/**
-					 * Both the image dimensions and full size image path are missing.
-					 */
 					if ( $this->p->debug->enabled ) {
 
 						$this->p->debug->log( 'full size image file path for ' . $pid . ' missing from image metadata' );
 					}
 
-					/**
-					 * Add notice only if the admin notices have not already been shown.
-					 */
 					if ( $this->p->notice->is_admin_pre_notices() ) {
 
 						$notice_msg = sprintf( __( 'Possible %1$s corruption detected - the full size image file path for <a href="%2$s">image ID %3$s</a> is missing from the image metadata returned by the <a href="%4$s">WordPress %5$s function</a>.', 'wpsso' ), $img_lib, $edit_url, $pid, $func_url, '<code>' . $func_name . '</code>' ) . ' ' . $regen_msg;
 
 						$notice_key = 'full-size-image-' . $pid . '-file-path-missing';
 
-						$this->p->notice->err( $notice_msg, null, $notice_key, $dismiss_time = WEEK_IN_SECONDS );
+						$this->p->notice->err( $notice_msg, null, $notice_key );
 					}
 				}
 			}
@@ -1016,8 +1032,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							 *
 							 * Returns (array|false) metadata array on success, false if no image was created.
 							 */
-							$resized_meta = image_make_intermediate_size( $fullsizepath, $size_info[ 'width' ], $size_info[ 'height' ],
-								$size_info[ 'crop' ] );
+							$resized_meta = image_make_intermediate_size( $fullsizepath,
+								$size_info[ 'width' ], $size_info[ 'height' ], $size_info[ 'crop' ] );
 
 							$mtime_total = microtime( $get_float = true ) - $mtime_start;
 							$mtime_max   = WPSSO_IMAGE_MAKE_SIZE_MAX_TIME;
@@ -1026,7 +1042,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 								$error_pre   = sprintf( __( '%s warning:', 'wpsso' ), __METHOD__ );
 								$rec_max_msg = sprintf( __( 'longer than recommended max of %1$.3f secs', 'wpsso' ), $mtime_max );
-								$error_msg   = sprintf( __( 'Slow WordPress function detected - %1$s took %2$.3f secs to make image size "%3$s" from %4$s (%5$s).', 'wpsso' ), '<code>' . $func_name . '</code>', $mtime_total, $size_name, $fullsizepath, $rec_max_msg );
+								$notice_msg  = sprintf( __( 'Slow WordPress function detected - %1$s took %2$.3f secs to make image size "%3$s" from %4$s (%5$s).', 'wpsso' ), '<code>' . $func_name . '</code>', $mtime_total, $size_name, $fullsizepath, $rec_max_msg );
 
 								if ( $this->p->debug->enabled ) {
 
@@ -1037,10 +1053,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 								if ( $this->p->notice->is_admin_pre_notices() ) {
 
-									$this->p->notice->warn( $error_msg );
+									$this->p->notice->warn( $notice_msg );
 								}
 
-								SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
+								SucomUtil::safe_error_log( $error_pre . ' ' . $notice_msg );
 							}
 
 							/**

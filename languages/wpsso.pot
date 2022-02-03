@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 10.1.0-dev.3\n"
+"Project-Id-Version: WPSSO Core 10.1.0-dev.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -564,7 +564,7 @@ msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
 #: gettext/gettext-lib-com.php:40 gettext/gettext-lib-pro.php:411
-#: lib/com/form.php:865 lib/media.php:873 lib/media.php:1007 lib/media.php:2441
+#: lib/com/form.php:865 lib/media.php:872 lib/media.php:1023 lib/media.php:2457
 #: lib/pro/util/check-img-dims.php:104
 msgid "Media Library"
 msgstr ""
@@ -4640,7 +4640,7 @@ msgstr ""
 msgid "full size original"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:412 lib/media.php:2451
+#: gettext/gettext-lib-pro.php:412 lib/media.php:2467
 #: lib/pro/util/check-img-dims.php:107
 msgid "image ID %1$s (%2$s)"
 msgstr ""
@@ -4832,6 +4832,22 @@ msgid ""
 "additional BuddyPress Profile Field for members to enter their profile "
 "description, enter the field name here (example: Biographical Info, About "
 "Me, etc.)."
+msgstr ""
+
+#: gettext/gettext-lib-pro.php:470 lib/pro/forum/bbpress.php:147
+msgid "Forum archive: %d forums"
+msgstr ""
+
+#: gettext/gettext-lib-pro.php:471 lib/pro/forum/bbpress.php:155
+msgid "No forum description."
+msgstr ""
+
+#: gettext/gettext-lib-pro.php:472 lib/pro/forum/bbpress.php:169
+msgid "No topic excerpt."
+msgstr ""
+
+#: gettext/gettext-lib-pro.php:473 lib/pro/forum/bbpress.php:180
+msgid "No topic tag description."
 msgstr ""
 
 #: lib/abstract/wp-meta.php:1074
@@ -6481,73 +6497,79 @@ msgstr ""
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:877
+#: lib/media.php:876
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:878 lib/media.php:1058
+#: lib/media.php:877 lib/media.php:1074
 msgid ""
 "You may consider regenerating the sizes of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
 "org</a>."
 msgstr ""
 
-#: lib/media.php:895
+#: lib/media.php:893
+msgid ""
+"Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s "
+"function</a> returned an error for <a href=\"%4$s\">image ID %5$s</a>: %6$s."
+msgstr ""
+
+#: lib/media.php:914
 msgid ""
 "Possible %1$s corruption detected - the full size image dimensions for <a "
 "href=\"%2$s\">image ID %3$s</a> are missing from the image metadata returned "
 "by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:917
+#: lib/media.php:933
 msgid ""
 "Possible %1$s corruption detected - the full size image file path for <a "
 "href=\"%2$s\">image ID %3$s</a> is missing from the image metadata returned "
 "by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:1009
+#: lib/media.php:1025
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1027 lib/post.php:695 lib/register.php:348 lib/term.php:536
+#: lib/media.php:1043 lib/post.php:695 lib/register.php:348 lib/term.php:536
 #: lib/user.php:522 lib/util.php:731 lib/util.php:2839
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1028 lib/post.php:696 lib/term.php:537 lib/user.php:523
+#: lib/media.php:1044 lib/post.php:696 lib/term.php:537 lib/user.php:523
 #: lib/util.php:732 lib/util.php:2840
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
-#: lib/media.php:1029
+#: lib/media.php:1045
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to make image size "
 "\"%3$s\" from %4$s (%5$s)."
 msgstr ""
 
-#: lib/media.php:1056
+#: lib/media.php:1072
 msgid ""
 "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s "
 "function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr ""
 
-#: lib/media.php:2467
+#: lib/media.php:2483
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:2520
+#: lib/media.php:2536
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:2555
+#: lib/media.php:2571
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
@@ -7047,7 +7069,7 @@ msgstr ""
 
 #: lib/messages-tooltip-meta-opengraph.php:77
 #: lib/messages-tooltip-meta-schema.php:829 lib/messages-tooltip-meta.php:168
-#: lib/messages-tooltip-meta.php:185 lib/messages-tooltip-opengraph.php:144
+#: lib/messages-tooltip-meta.php:185 lib/messages-tooltip-opengraph.php:142
 msgid "This option is disabled if a custom image URL is entered."
 msgstr ""
 
@@ -7065,7 +7087,7 @@ msgstr ""
 
 #: lib/messages-tooltip-meta-opengraph.php:89
 #: lib/messages-tooltip-meta-schema.php:837 lib/messages-tooltip-meta.php:176
-#: lib/messages-tooltip-meta.php:194 lib/messages-tooltip-opengraph.php:161
+#: lib/messages-tooltip-meta.php:194 lib/messages-tooltip-opengraph.php:159
 msgid "This option is disabled if a custom image ID is selected."
 msgstr ""
 
@@ -7957,104 +7979,100 @@ msgstr ""
 #: lib/messages-tooltip-opengraph.php:107
 msgid ""
 "The maximum number of tag names (converted to hashtags) to include in the "
-"Facebook / Open Graph description."
+"Facebook / Open Graph and Twitter Card descriptions."
 msgstr ""
 
 #: lib/messages-tooltip-opengraph.php:109
-msgid "Each tag name is converted to lowercase with whitespaces removed."
-msgstr ""
-
-#: lib/messages-tooltip-opengraph.php:111
 msgid "Select \"0\" to disable the addition of hashtags."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:120
+#: lib/messages-tooltip-opengraph.php:118
 msgid ""
 "The maximum number of images to include for the webpage meta tags and Schema "
 "markup."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:122
+#: lib/messages-tooltip-opengraph.php:120
 msgid "If you select \"0\", then no images will be included (not recommended)."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:124
+#: lib/messages-tooltip-opengraph.php:122
 msgid ""
 "If no images are available in the Open Graph meta tags, social sites may "
 "choose any random image from the webpage, including headers, thumbnails, "
 "ads, etc."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:132
+#: lib/messages-tooltip-opengraph.php:130
 msgid ""
 "The image dimensions used for Facebook / Open Graph meta tags and oEmbed "
 "markup (the default dimensions are %s)."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:140
+#: lib/messages-tooltip-opengraph.php:138
 msgid ""
 "An image ID for your site's default image (ie. when an image is required, "
 "and no other image is available)."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:142
-#: lib/messages-tooltip-opengraph.php:159
+#: lib/messages-tooltip-opengraph.php:140
+#: lib/messages-tooltip-opengraph.php:157
 msgid ""
 "The default image is used for archive pages (ie. blog, category, and tag "
 "archive page) and as a fallback for posts and pages that do not have a "
 "suitable image featured, attached, or in their content."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:153
+#: lib/messages-tooltip-opengraph.php:151
 msgid "You can enter a default image URL instead of choosing an image ID."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:155
+#: lib/messages-tooltip-opengraph.php:153
 msgid ""
 "The image URL option allows you to choose an image outside of the WordPress "
 "Media Library and/or a smaller logo style image."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:157
+#: lib/messages-tooltip-opengraph.php:155
 msgid "The image should be at least %s or more in width and height."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:170
+#: lib/messages-tooltip-opengraph.php:168
 msgid ""
 "The maximum number of embedded videos to include in meta tags and Schema "
 "markup."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:176
+#: lib/messages-tooltip-opengraph.php:174
 msgid "Include video preview images in meta tags and Schema markup."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:178
+#: lib/messages-tooltip-opengraph.php:176
 msgid ""
 "When video preview images are enabled and a preview image is available, it "
 "will be included in meta tags and Schema markup before any other image "
 "(custom, featured, attached, or content image)."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:184
+#: lib/messages-tooltip-opengraph.php:182
 msgid ""
 "If possible, add or modify the video URL \"autoplay\" argument for videos in "
 "meta tags and Schema markup."
 msgstr ""
 
 #. translators: %s is the markup standard name (ie. Open Graph or Schema).
-#: lib/messages-tooltip-opengraph.php:196 lib/messages-tooltip-schema.php:97
+#: lib/messages-tooltip-opengraph.php:194 lib/messages-tooltip-schema.php:97
 msgid "Select a default %s type for a static front page."
 msgstr ""
 
 #. translators: %1$s is the markup standard name (ie. Open Graph or Schema) and %2$s is the type name.
-#: lib/messages-tooltip-opengraph.php:199
-#: lib/messages-tooltip-opengraph.php:211
-#: lib/messages-tooltip-opengraph.php:223
-#: lib/messages-tooltip-opengraph.php:235
-#: lib/messages-tooltip-opengraph.php:247
-#: lib/messages-tooltip-opengraph.php:268
-#: lib/messages-tooltip-opengraph.php:280 lib/messages-tooltip-schema.php:100
+#: lib/messages-tooltip-opengraph.php:197
+#: lib/messages-tooltip-opengraph.php:209
+#: lib/messages-tooltip-opengraph.php:221
+#: lib/messages-tooltip-opengraph.php:233
+#: lib/messages-tooltip-opengraph.php:245
+#: lib/messages-tooltip-opengraph.php:266
+#: lib/messages-tooltip-opengraph.php:278 lib/messages-tooltip-schema.php:100
 #: lib/messages-tooltip-schema.php:112 lib/messages-tooltip-schema.php:124
 #: lib/messages-tooltip-schema.php:136 lib/messages-tooltip-schema.php:148
 #: lib/messages-tooltip-schema.php:167 lib/messages-tooltip-schema.php:179
@@ -8062,33 +8080,33 @@ msgid "The default %1$s type is \"%2$s\"."
 msgstr ""
 
 #. translators: %s is the markup standard name (ie. Open Graph or Schema).
-#: lib/messages-tooltip-opengraph.php:208 lib/messages-tooltip-schema.php:109
+#: lib/messages-tooltip-opengraph.php:206 lib/messages-tooltip-schema.php:109
 msgid "Select a default %s type for a blog (non-static) front page."
 msgstr ""
 
 #. translators: %s is the markup standard name (ie. Open Graph or Schema).
-#: lib/messages-tooltip-opengraph.php:220 lib/messages-tooltip-schema.php:121
+#: lib/messages-tooltip-opengraph.php:218 lib/messages-tooltip-schema.php:121
 msgid "Select a default %s type for user / author profile pages."
 msgstr ""
 
 #. translators: %s is the markup standard name (ie. Open Graph or Schema).
-#: lib/messages-tooltip-opengraph.php:232 lib/messages-tooltip-schema.php:133
+#: lib/messages-tooltip-opengraph.php:230 lib/messages-tooltip-schema.php:133
 msgid "Select a default %s type for search results pages."
 msgstr ""
 
 #. translators: %s is the markup standard name (ie. Open Graph or Schema).
-#: lib/messages-tooltip-opengraph.php:244 lib/messages-tooltip-schema.php:145
+#: lib/messages-tooltip-opengraph.php:242 lib/messages-tooltip-schema.php:145
 msgid ""
 "Select a default %s type for other archive pages (date-based archive pages, "
 "for example)."
 msgstr ""
 
 #. translators: %s is the markup standard name (ie. Open Graph or Schema).
-#: lib/messages-tooltip-opengraph.php:254 lib/messages-tooltip-schema.php:155
+#: lib/messages-tooltip-opengraph.php:252 lib/messages-tooltip-schema.php:155
 msgid "Select a default %s type for each post type."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:256
+#: lib/messages-tooltip-opengraph.php:254
 msgid ""
 "Please note that each Open Graph type has a unique set of meta tags, so by "
 "selecting \"website\" here (for example), you would be excluding all "
@@ -8097,12 +8115,12 @@ msgid ""
 msgstr ""
 
 #. translators: %s is the markup standard name (ie. Open Graph or Schema).
-#: lib/messages-tooltip-opengraph.php:265 lib/messages-tooltip-schema.php:164
+#: lib/messages-tooltip-opengraph.php:263 lib/messages-tooltip-schema.php:164
 msgid "Select a default %s type for each post type archive."
 msgstr ""
 
 #. translators: %s is the markup standard name (ie. Open Graph or Schema).
-#: lib/messages-tooltip-opengraph.php:277 lib/messages-tooltip-schema.php:176
+#: lib/messages-tooltip-opengraph.php:275 lib/messages-tooltip-schema.php:176
 msgid "Select a default %s type for each taxonomy."
 msgstr ""
 
@@ -10088,15 +10106,15 @@ msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr ""
 
-#: lib/page.php:963
+#: lib/page.php:945
 msgid "Page %s"
 msgstr ""
 
-#: lib/page.php:1444
+#: lib/page.php:1234
 msgid "Comment from %1$s on %2$s"
 msgstr ""
 
-#: lib/page.php:1608
+#: lib/page.php:2097
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] ""
@@ -10243,32 +10261,32 @@ msgstr ""
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:114 lib/pro/forum/bbpress.php:213
+#: lib/pro/forum/bbpress.php:114 lib/pro/forum/bbpress.php:205
 msgctxt "bbpress single user description"
 msgid "%s's Profile"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:224
+#: lib/pro/forum/bbpress.php:216
 msgctxt "bbpress single user description"
 msgid "%s's Topics Started"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:230
+#: lib/pro/forum/bbpress.php:222
 msgctxt "bbpress single user description"
 msgid "%s's Replies Created"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:236
+#: lib/pro/forum/bbpress.php:228
 msgctxt "bbpress single user description"
 msgid "%s's Favorites"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:242
+#: lib/pro/forum/bbpress.php:234
 msgctxt "bbpress single user description"
 msgid "%s's Subscriptions"
 msgstr ""
 
-#: lib/pro/forum/bbpress.php:248
+#: lib/pro/forum/bbpress.php:240
 msgctxt "bbpress single user description"
 msgid "Edit %s's Profile"
 msgstr ""

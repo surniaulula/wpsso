@@ -467,3 +467,7 @@ __( 'JSON response decode error code %d.', 'wpsso' );
 __( '%1$s shortener API error: %2$s', 'wpsso' );
 _x( 'BuddyPress Member Bio Field Name', 'option label', 'wpsso' );
 __( 'The BuddyPress member profile page does not include the <em>Biographical Info</em> text from the WordPress user profile. If you\'ve created an additional BuddyPress Profile Field for members to enter their profile description, enter the field name here (example: Biographical Info, About Me, etc.).', 'wpsso' );
+__( 'Forum archive: %d forums', 'wpsso' );
+__( 'No forum description.', 'wpsso' );
+__( 'No topic excerpt.', 'wpsso' );
+__( 'No topic tag description.', 'wpsso' );

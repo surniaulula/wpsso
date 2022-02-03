@@ -104,9 +104,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipOpenGraph' ) ) {
 
 				case 'tooltip-og_desc_hashtags':	// Description Hashtags.
 
-					$text = __( 'The maximum number of tag names (converted to hashtags) to include in the Facebook / Open Graph description.', 'wpsso' ) . ' ';
-
-					$text .= __( 'Each tag name is converted to lowercase with whitespaces removed.', 'wpsso' ) . ' ';
+					$text = __( 'The maximum number of tag names (converted to hashtags) to include in the Facebook / Open Graph and Twitter Card descriptions.', 'wpsso' ) . ' ';
 
 					$text .= __( 'Select "0" to disable the addition of hashtags.', 'wpsso' );
 

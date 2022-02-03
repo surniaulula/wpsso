@@ -325,7 +325,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				 */
 				case 'og_img_max':			// Maximum Images.
 				case 'og_vid_max':			// Maximum Videos.
-				case 'og_desc_hashtags': 
+				case 'og_desc_hashtags': 		// Description Hashtags.
 				case 'primary_term_id':			// Primary Category.
 				case ( preg_match( '/_(cache_exp|caption_hashtags|filter_prio)$/', $base_key ) ? true : false ):
 				case ( preg_match( '/_(img|logo|banner)_url(:width|:height)$/', $base_key ) ? true : false ):
