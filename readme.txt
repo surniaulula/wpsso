@@ -262,6 +262,30 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* To optimize performance and memory usage, the initialization of Schema JSON filters has been moved to the `WpssoSchema->get_array()` method (so the filters are only loaded when needed).
 	* SSO toolbar notices show and hide after a time-out (2 seconds for success notices, 4 seconds for info notices, and no time-out for warnings and errors).
 	* Removed the SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Integration &gt; Use Filtered "SEO" Title option.
+	* Updated the list of available inline variables:
+		* %%canonical_url%%
+		* %%canonical_short_url%%
+		* %%sharing_url%%
+		* %%sharing_short_url%%
+		* %%request_url%%
+		* %%sitename%%
+		* %%sitealtname%%
+		* %%sitedesc%%
+		* %%sep%%
+		* %%title%%
+		* %%page%%
+		* %%pagenumber%%
+		* %%pagetotal%%
+		* %%comment_author%%
+		* %%comment_date%%
+		* %%post_date%%
+		* %%post_modified%%
+		* %%query_search%%
+		* %%query_year%%
+		* %%query_month%%
+		* %%query_monthnum%%
+		* %%query_day%%
+		* %%searchphrase%%
 * **Bugfixes**
 	* Fixed handling of possible `WP_Error` object from `wp_get_attachment_metadata()`.
 * **Developer Notes**
@@ -770,206 +794,6 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 	* PHP v7.0.
 	* WordPress v5.0.
 
-**Version 9.4.1 (2021/10/30)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* None.
-* **Bugfixes**
-	* Fixed Open Graph and Schema image sizes for WooCommerce product offers (Premium edition).
-* **Developer Notes**
-	* None.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v5.0.
-
-**Version 9.4.0 (2021/10/28)**
-
-* **New Features**
-	* Added an integration module for the Elementor Website Builder plugin.
-* **Improvements**
-	* Added support for the Elementor video widget.
-	* Added support for the 'elementor/editor/after_save' action to clear the post cache.
-	* Added 'knowledge-graph' to the home page Schema Organization '@id' value for Google.
-	* Added new options under the Document SSO &gt; Customize tab:
-		* Book Author Type
-		* Book Author Name
-		* Book Author URL
-		* Book Published Date
-		* Book Created Date
-		* Book Edition
-		* Book Format
-		* Number of Pages
-		* Book ISBN
-	* Moved addition of some Schema CreativeWork properties to its sub-types (Article, QAPage, Question, Review, and WebPage):
-		* 'dateCreated'
-		* 'datePublished'
-		* 'dateModified'
-		* 'author'
-		* 'contributor'
-* **Bugfixes**
-	* Fixed home page Schema Organization logo detection by Google.
-	* Fixed missing product currency when the default currency is selected in the Document SSO metabox.
-* **Developer Notes**
-	* None.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v5.0.
-
-**Version 9.3.0 (2021/10/23)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Refactored several methods to offer selective local caching (enabled by default).
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Added a new `WpssoAdmin->activated_plugin()` method.
-	* Added a new `WpssoAdmin->after_switch_theme()` method.
-	* Added a new `WpssoAdmin->upgrader_process_complete()` method.
-	* Moved `WpssoAdmin::reset_admin_check_options()` to `WpssoRegister->reset_admin_check_options()`.
-	* Refactored the `WpssoUtil->maybe_load_textdomain()` method to add support for `WPMU_PLUGIN_DIR`.
-	* Refactored the `WpssoConfig::get_config()` method to remove the `$apply_filters` argument.
-	* Refactored the `WpssoConfig::get_ext_dir()` method to add a `$read_cache` argument (true by default).
-	* Refactored the `SucomPlugin::get_active_plugins()` method.
-	* Refactored the `SucomPlugin::is_plugin_installed()` method.
-	* Refactored the `SucomPlugin::get_plugins()` method to add a `$read_cache` argument (true by default).
-	* Deprecated the `SucomPlugin::clear_plugins_cache()` method.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v5.0.
-
-**Version 9.2.1 (2021/10/19)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Added a minimum version check when the Yoast SEO plugin is active.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Moved `allow_aggregate_rating()` and `allow_review()` filter methods to the `WpssoSchema` class.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v5.0.
-
-**Version 9.2.0 (2021/10/16)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* None.
-* **Bugfixes**
-	* Fixed a condition where WP_HOME could be used for the Site Address URL for non-default sites in a multisite setup.
-* **Developer Notes**
-	* Updated the `SucomUtilWP` class methods for WordPress v5.8.1.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v5.0.
-
-**Version 9.1.2 (2021/10/15)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Added a "Current Site Address" information field to the SSO &gt; Premium Licenses settings page.
-	* Added a compatibility filter for Yoast WooCommerce SEO presenters to avoid conflicting markup.
-* **Bugfixes**
-	* Fixed a possible Schema type conflict for the site organization with a custom home page Schema type.
-* **Developer Notes**
-	* None.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v5.0.
-
-**Version 9.1.1 (2021/10/11)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* None.
-* **Bugfixes**
-	* Fixed unnecessary loading of the 'sucom-block-editor-admin' script in the WordPress widgets editing page.
-* **Developer Notes**
-	* None.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v5.0.
-
-**Version 9.1.0 (2021/10/06)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Added Schema Event, Place, and Product 'subjectOf' property for videos.
-* **Bugfixes**
-	* Fixed the Document SSO &gt; Publisher Org. option value.
-	* Fixed the Advanced Settings &gt; Default Publisher Org. option value.
-* **Developer Notes**
-	* Standardized `get_table_rows()` calls and filters in 'submenu' and 'sitesubmenu' classes.
-	* Refactored the `WpssoProMediaGravatar->filter_user_image_urls()` method.
-	* Removed the unused `WpssoWpMeta->get_table_rows()` method.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v5.0.
-
-**Version 9.0.1 (2021/09/30)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Updated the SSO &gt; Setup Guide text.
-	* Updated information text in the Document SSO metabox.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Optimized the metabox container update process in the block editor.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v5.0.
-
-**Version 9.0.0 (2021/09/24)**
-
-* **New Features**
-	* Discontinued the WPSSO JSON add-on:
-		* The <code>&#91;schema&#93;</code> shortcode was migrated to a new WPSSO Schema Shortcode add-on.
-		* All other features of the WPSSO Schema JSON-LD Markup add-on were integrated into the WPSSO Core v9.0.0 plugin.
-	* Updated the SSO &gt; Advanced Settings &gt; Integration &gt; Enable Tags for Pages feature to register a non-public Page Tags taxonomy.
-* **Improvements**
-	* Added a Document SSO &gt; Customize &gt; Twitter Card Title option.
-	* Refactored the Rank Math integration module to read Google, Facebook, and Twitter metadata (Premium edition).
-	* Deprecated the Schema link and meta itemprop tags.
-	* Deprecated the head attributes check in theme header templates.
-	* Removed the SSO &gt; Advanced Settings &gt; HTML Tags &gt; Schema tab.
-	* Moved the Schema data filters from the WPSSO JSON add-on to the WPSSO Core plugin.
-	* Moved the Document SSO &gt; Schema Markup / Google Rich Results sections from the WPSSO JSON add-on to the WPSSO Core plugin.
-* **Bugfixes**
-	* Fixed caching of option defaults array once plugin objects have been initialized.
-	* Fixed missing 'areaServed' property in Schema LocalBusiness markup for places / locations.
-	* Fixed the saving of selected option colors using `wpColorPicker()`.
-	* Fixed an undefined `$mt_ret` variable error in lib/util.php.
-	* Fixed reading of transient cache in `WpssoSchema->get_schema_types_array()`.
-	* Fixed saving of the "Primary Category" option value when the default category ID is 1.
-* **Developer Notes**
-	* Added a new 'wpsso_{post_type}_tag_taxonomy' filter.
-	* Added a new `WpssoOptionsFilters` class.
-	* Added a new `WpssoConfig::get_social_accounts()` method.
-	* Removed the `WpssoMetaItem` class.
-	* Removed the `WpssoSchemaNoScript` class.
-	* Removed the 'wpsso_add_schema_head_attributes' filter.
-	* Removed the 'wpsso_add_schema_meta_array' filter.
-	* Removed the 'wpsso_add_schema_noscript_aggregaterating' filter.
-	* Removed the 'wpsso_add_schema_noscript_array' filter.
-	* Removed the 'wpsso_schema_meta_itemprop' filter.
-	* Removed the `WPSSO_HEAD_ATTR_FILTER_NAME` constant.
-	* Removed the `WPSSO_HEAD_ATTR_FILTER_PRIO` constant.
-	* Deprecated the `WpssoAdmin->check_tmpl_head_attributes()` method.
-* **Requires At Least**
-	* PHP v7.0.
-	* WordPress v5.0.
-
 == Upgrade Notice ==
 
 = 10.1.0-dev.6 =
@@ -1055,44 +879,4 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 = 9.5.0 =
 
 (2021/11/02) Fixed missing 'author' in Schema CreativeWork markup. Fixed inheritance of custom images for WooCommerce product offers (Premium edition). Discontinued the WPSSO IPM add-on. Added support for new inline variables.
-
-= 9.4.1 =
-
-(2021/10/30) Fixed Open Graph and Schema image sizes for WooCommerce product offers (Premium edition).
-
-= 9.4.0 =
-
-(2021/10/28) Added integration module for Elementor Website Builder plugin. Fixed home page Schema Organization logo. Fixed missing product currency. Added options under the Document SSO &gt; Customize tab.
-
-= 9.3.0 =
-
-(2021/10/23) Refactored several methods to offer selective local caching.
-
-= 9.2.1 =
-
-(2021/10/19) Added a minimum version check when the Yoast SEO plugin is active.
-
-= 9.2.0 =
-
-(2021/10/16) Fixed a condition where WP_HOME could be used for the Site Address URL for non-default sites in a multisite setup.
-
-= 9.1.2 =
-
-(2021/10/15) Added a "Current Site Address" information field. Added a compatibility filter for Yoast WooCommerce SEO presenters. Fixed a possible Schema type conflict for the site organization.
-
-= 9.1.1 =
-
-(2021/10/11) Fixed unnecessary loading of the 'sucom-block-editor-admin' script in the WordPress widgets editing page.
-
-= 9.1.0 =
-
-(2021/10/06) Fixed the Document SSO &gt; Publisher Org. and the Advanced Settings &gt; Default Publisher Org. option value. Added Schema Event, Place, and Product 'subjectOf' property for videos.
-
-= 9.0.1 =
-
-(2021/09/30) Updated the SSO &gt; Setup Guide text. Updated information text in the Document SSO metabox.
-
-= 9.0.0 =
-
-(2021/09/24) Added a Document SSO &gt; Twitter Card Title option. Refactored the Rank Math integration module (Premium edition). Moved Schema data filters from WPSSO JSON to WPSSO Core.
 
