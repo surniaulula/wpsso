@@ -251,14 +251,19 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 10.1.0-dev.5 (2022/02/03)**
+**Version 10.1.0-dev.6 (2022/02/04)**
 
 * **New Features**
-	* SSO toolbar notices show and hide after a time-out (2 seconds for success notices, 4 seconds for info notices, and no time-out for warnings and errors).
+	* Added new options under the SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Default Text tab:
+		* Title Tag Site Suffix / Prefix
+		* Title Tag Tagline Suffix / Prefix
+		* Comment Title
 * **Improvements**
+	* To optimize performance and memory usage, the initialization of Schema JSON filters has been moved to the `WpssoSchema->get_array()` method (so the filters are only loaded when needed).
+	* SSO toolbar notices show and hide after a time-out (2 seconds for success notices, 4 seconds for info notices, and no time-out for warnings and errors).
 	* Removed the SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Integration &gt; Use Filtered "SEO" Title option.
 * **Bugfixes**
-	* Fixed handling of possible WP_Error object from `wp_get_attachment_metadata()`.
+	* Fixed handling of possible `WP_Error` object from `wp_get_attachment_metadata()`.
 * **Developer Notes**
 	* Added a new `WpssoHead->clear_head_array()` method.
 	* Added a new `WpssoPage->clear_the_content()` method.
@@ -285,6 +290,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* 'wpsso_term_cache_wp_cache_keys'
 		* 'wpsso_user_cache_transient_keys'
 		* 'wpsso_user_cache_wp_cache_keys'
+	* Replaced `SucomUtil::get_min_int()` by `PHP_INT_MIN`.
+	* Replaced `SucomUtil::get_max_int()` by `PHP_INT_MAX`.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -965,9 +972,9 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 10.1.0-dev.5 =
+= 10.1.0-dev.6 =
 
-(2022/02/03) SSO toolbar notices show and hide after a time-out (2 seconds for success notices, 4 seconds for info notices, and no time-out for warnings and errors).
+(2022/02/04) Added new options under the SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Default Text tab.
 
 = 10.0.0 =
 
