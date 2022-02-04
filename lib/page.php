@@ -277,7 +277,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			/**
-			 * Make sure the parts are in a predictable right-to-left order.
+			 * Make sure the parts are in a predictable left-to-right order.
 			 */
 			$title_parts = array_merge( array( 'title' => null, 'page' => null, 'site' => null, 'tagline' => null ), $title_parts );
 
