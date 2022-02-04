@@ -184,27 +184,39 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			/**
 			 * WpssoTerm elements.
 			 */
-			$term_obj = SucomUtil::get_term_object( $mod[ 'id' ], (string) $tax_slug );
+			$mod[ 'is_term' ] = true;
 
-			$mod[ 'is_term' ]     = true;
-			$mod[ 'term_tax_id' ] = isset( $term_obj->term_taxonomy_id ) ? (int) $term_obj->term_taxonomy_id : false;
-			$mod[ 'tax_slug' ]    = isset( $term_obj->taxonomy ) ? (string) $term_obj->taxonomy : '';
+			if ( $mod[ 'id' ] ) {	// Just in case.
 
-			if ( $tax_obj = get_taxonomy( $mod[ 'tax_slug' ] ) ) {
+				$term_obj = get_term( $mod[ 'id' ], (string) $tax_slug );
 
-				if ( isset( $tax_obj->labels->name ) ) {
+				if ( $term_obj instanceof WP_Term ) {	// Just in case.
 
-					$mod[ 'tax_label_plural' ] = $tax_obj->labels->name;
-				}
+					$mod[ 'term_tax_id' ] = (int) $term_obj->term_taxonomy_id;
+					$mod[ 'tax_slug' ]    = (string) $term_obj->taxonomy;
 
-				if ( isset( $tax_obj->labels->singular_name ) ) {
+					if ( $mod[ 'tax_slug' ] ) {	// Just in case.
 
-					$mod[ 'tax_label_single' ] = $tax_obj->labels->singular_name;
-				}
+						$tax_obj = get_taxonomy( $mod[ 'tax_slug' ] );
 
-				if ( isset( $tax_obj->public ) ) {
+						if ( $tax_obj instanceof WP_Taxonomy ) {	// Just in case.
 
-					$mod[ 'is_public' ] = $tax_obj->public ? true : false;
+							if ( isset( $tax_obj->labels->name ) ) {
+
+								$mod[ 'tax_label_plural' ] = $tax_obj->labels->name;
+							}
+
+							if ( isset( $tax_obj->labels->singular_name ) ) {
+
+								$mod[ 'tax_label_single' ] = $tax_obj->labels->singular_name;
+							}
+
+							if ( isset( $tax_obj->public ) ) {
+
+								$mod[ 'is_public' ] = $tax_obj->public ? true : false;
+							}
+						}
+					}
 				}
 			}
 

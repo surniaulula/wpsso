@@ -148,12 +148,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				return $comments_added;
 			}
 
-			$cmt = get_comment( $comment_id );
+			$comment_obj = get_comment( $comment_id );
 
-			if ( empty( $cmt ) ) {
+			if ( empty( $comment_obj ) ) {
 
 				return $comments_added;
 			}
+
+			$comment_mod = $wpsso->comment->get_mod( $comment_id );
 
 			/**
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
@@ -171,17 +173,19 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			$json_ret = WpssoSchema::get_schema_type_context( $comment_type_url, array(
-				'url'         => get_comment_link( $cmt->comment_ID ),
-				'dateCreated' => mysql2date( 'c', $cmt->comment_date_gmt ),
-				'description' => get_comment_excerpt( $cmt->comment_ID ),
+				'url'         => $wpsso->util->get_canonical_url( $comment_mod ),
+				'name'        => $wpsso->page->get_title( $max_len = 0, $dots = '', $comment_mod ),
+				'description' => $wpsso->page->get_description( $max_len = 0, $dots = '', $comment_mod ),
+				'dateCreated' => $comment_mod[ 'comment_time' ],
 				'author'      => WpssoSchema::get_schema_type_context( 'https://schema.org/Person', array(
-					'name' => $cmt->comment_author,
+					'url'  => $comment_mod[ 'comment_author_url' ],
+					'name' => $comment_mod[ 'comment_author_name' ],
 				) ),
 			) );
 
 			$comments_added++;
 
-			$replies_added = self::add_comment_reply_data( $json_ret[ 'comment' ], $mod, $cmt->comment_ID );
+			$replies_added = self::add_comment_reply_data( $json_ret[ 'comment' ], $mod, $comment_obj->comment_ID );
 
 			if ( empty( $list_element ) ) {		// Add a single item.
 

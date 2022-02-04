@@ -250,6 +250,8 @@ if ( ! class_exists( 'WpssoMessagesInfo' ) ) {
 
 				case 'info-image_dimensions':
 
+					$tools_page_link = $this->p->util->get_admin_url( 'tools', _x( 'Tools and Actions', 'lib file description', 'wpsso' ) );
+
 					$text = '<blockquote class="top-info">';
 
 					$text .= '<p>';
@@ -258,7 +260,9 @@ if ( ! class_exists( 'WpssoMessagesInfo' ) ) {
 
 					$text .= __( 'Image sizes that use the same dimensions and crop settings will create just one image file.', 'wpsso' ) . ' ';
 
-					$text .= sprintf( __( 'The default dimensions and crop settings from %1$s create only %2$s image files from an original full size image (provided the original image is large enough or image upscaling has been enabled).', 'wpsso' ), $info[ 'short' ], __( 'five', 'wpsso' ) );
+					$text .= sprintf( __( 'The default dimensions and crop settings from %1$s create only %2$s image files from an original full size image (provided the original image is large enough or image upscaling has been enabled).', 'wpsso' ), $info[ 'short' ], __( 'five', 'wpsso' ) ) . ' ';
+
+					$text .= sprintf( __( 'You can reload the default image sizes from the %s settings page.', 'wpsso' ), $tools_page_link ) . ' ';
 
 					$text .= '</p>';
 

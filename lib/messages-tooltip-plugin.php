@@ -64,7 +64,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 				/**
 				 * SSO > Advanced Settings > Plugin Settings > Integration tab.
 				 */
-				case 'tooltip-plugin_document_title':	// Webpage Document Title.
+				case 'tooltip-plugin_title_tag':	// Webpage Title Tag.
 
 					if ( ! current_theme_supports( 'title-tag' ) ) {
 
@@ -256,6 +256,42 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 				/**
 				 * SSO > Advanced Settings > Plugin Settings > Default Text tab.
 				 */
+				case 'tooltip-plugin_title_part_site':	// Title Tag Site Prefix / Suffix.
+
+					$part_pos_text = is_rtl() ? __( 'prefix', 'wpsso' ) : __( 'suffix', 'wpsso' );
+
+					$option_label = _x( 'Webpage Title Tag', 'option label', 'wpsso' );
+					$option_link  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', $option_label );
+
+					$text = sprintf( __( 'The SEO site name %1$s for the %2$s option value.', 'wpsso' ),
+						$part_pos_text, $option_link ) . ' ';
+
+					$option_label = _x( 'WebSite Name', 'option label', 'wpsso' );
+					$option_link  = $this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_site', $option_label );
+
+					$text .= sprintf( __( 'The default SEO site name %1$s is the %2$s value (aka %3$s inline variable).', 'wpsso' ),
+						$part_pos_text, $option_link, '<code>%%sitename%%</code>' );
+
+					break;
+
+				case 'tooltip-plugin_title_part_tagline':	// Title Tag Tagline Prefix / Suffix.
+
+					$part_pos_text = is_rtl() ? __( 'prefix', 'wpsso' ) : __( 'suffix', 'wpsso' );
+
+					$option_label = _x( 'Webpage Title Tag', 'option label', 'wpsso' );
+					$option_link  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', $option_label );
+
+					$text = sprintf( __( 'The SEO tagline 1$s for the %2$s option value.', 'wpsso' ),
+						$part_pos_text, $option_link ) . ' ';
+
+					$option_label = _x( 'WebSite Description', 'option label', 'wpsso' );
+					$option_link  = $this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_site', $option_label );
+
+					$text .= sprintf( __( 'The default SEO tagline %1$s is the %2$s value (aka %3$s inline variable).', 'wpsso' ),
+						$part_pos_text, $option_link, '<code>%%sitedesc%%</code>' );
+
+					break;
+
 				case 'tooltip-plugin_img_alt_prefix':	// Content Image Alt Prefix.
 
 					$text = sprintf( __( 'Image %1$s text used in descriptions can be prefixed with an optional string (for example, "Image:").', 'wpsso' ), '<code>alt</code>' ) . ' ';
@@ -269,6 +305,12 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 					$text = sprintf( __( 'Caption paragraphs found with the "%1$s" CSS class can be prefixed with an optional string (for example, "Caption:").', 'wpsso' ), 'wp-caption-text' ) . ' ';
 
 					$text .= __( 'Leave this option blank to prevent caption paragraphs from being prefixed.', 'wpsso' );
+
+					break;
+
+				case 'tooltip-plugin_comment_title':	// Comment Title.
+
+					$text = __( 'The comment title used for Schema markup.' );
 
 					break;
 

@@ -100,8 +100,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				$local_cache[ 'opt_filtered' ] = 1;
 
+				$this->set_default_text( $local_cache, 'plugin_title_part_site' );	// Title Tag Site Prefix / Suffix.
+				$this->set_default_text( $local_cache, 'plugin_title_part_tagline' );	// Title Tag Tagline Prefix / Suffix.
 				$this->set_default_text( $local_cache, 'plugin_img_alt_prefix' );	// Content Image Alt Prefix.
 				$this->set_default_text( $local_cache, 'plugin_p_cap_prefix' );		// WP Caption Text Prefix.
+				$this->set_default_text( $local_cache, 'plugin_comment_title' );	// Comment Title.
 				$this->set_default_text( $local_cache, 'plugin_no_title_text' );	// No Title Text.
 				$this->set_default_text( $local_cache, 'plugin_no_desc_text' );		// No Description Text.
 				$this->set_default_text( $local_cache, 'plugin_search_page_title' );	// Search Results Title.
@@ -847,7 +850,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			$opts = (array) apply_filters( 'wpsso_save_setting_options', $opts, $network, $is_option_upg );
 
 			/**
-			 * Add plugin and add-on option versions (ie. 'plugin_checksum', 'opt_checksum', and 'opt_versions').
+			 * Add plugin and add-on option versions (ie. 'checksum', 'opt_checksum', and 'opt_versions').
 			 */
 			$this->p->opt->add_versions( $opts );	// Note that $opts must be an array.
 
@@ -962,7 +965,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		}
 
 		/**
-		 * Returns true or false, false for a new options array ('plugin_checksum' is an empty string by default).
+		 * Returns true or false, false for a new options array ('checksum' is an empty string by default).
 		 */
 		public function is_plugin_upgrading( array $opts ) {
 
@@ -970,9 +973,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 			$prev_checksum = '';
 
-			if ( isset( $opts[ 'plugin_checksum' ] ) ) {	// Empty string by default.
+			if ( isset( $opts[ 'checksum' ] ) ) {	// Empty string by default.
 
-				$prev_checksum = $opts[ 'plugin_checksum' ];
+				$prev_checksum = $opts[ 'checksum' ];
 			}
 
 			return $prev_checksum && $prev_checksum !== $cf_checksum ? true : false;
@@ -1000,11 +1003,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 		}
 
 		/**
-		 * Add plugin and add-on option versions (ie. 'plugin_checksum', 'opt_checksum', and 'opt_versions').
+		 * Add plugin and add-on option versions (ie. 'checksum', 'opt_checksum', and 'opt_versions').
 		 */
 		public function add_versions( array &$opts ) {	// Pass by reference is OK.
 
-			$opts[ 'plugin_checksum' ] = md5( $this->p->cf[ '*' ][ 'version' ] );
+			$opts[ 'checksum' ] = md5( $this->p->cf[ '*' ][ 'version' ] );
 			$opts[ 'opt_checksum' ]    = md5( $this->p->cf[ 'opt' ][ 'version' ] );
 
 			if ( isset( $opts[ 'options_version' ] ) ) {	// Deprecated options checksum key.
@@ -1768,6 +1771,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				switch ( $opt_key ) {
 
+					case 'plugin_title_part_site':		// Title Tag Site Prefix / Suffix.
+
+						return _x( '%%sitename%%', 'option value', 'wpsso' );
+
+					case 'plugin_title_part_tagline':	// Title Tag Tagline Prefix / Suffix.
+
+						return _x( '%%sitedesc%%', 'option value', 'wpsso' );
+
 					case 'plugin_img_alt_prefix':		// Content Image Alt Prefix.
 
 						return _x( 'Image:', 'option value', 'wpsso' );
@@ -1775,6 +1786,10 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					case 'plugin_p_cap_prefix':		// WP Caption Text Prefix.
 
 						return _x( 'Caption:', 'option value', 'wpsso' );
+
+					case 'plugin_comment_title':		// Comment Title.
+
+						return _x( 'Comment by %%comment_author%% on %%comment_date%%', 'option value', 'wpsso' );
 
 					case 'plugin_no_title_text':		// No Title Text.
 

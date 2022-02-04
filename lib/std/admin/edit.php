@@ -117,7 +117,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				'schema_title' => array(
 					'th_class' => 'medium',
 					'td_class' => 'blank',
-					'label'    => _x( 'Schema Name / Title', 'option label', 'wpsso' ),
+					'label'    => _x( 'Schema Name', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_title',
 					'content'  => $form->get_no_input_value( $def_schema_title, $css_class = 'wide' ),
 				),
@@ -1492,7 +1492,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				'og_vid_title' => array(
 					'th_class' => 'medium',
 					'td_class' => 'blank',
-					'label'    => _x( 'Video Name / Title', 'option label', 'wpsso' ),
+					'label'    => _x( 'Video Name', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-og_vid_title',
 					'content'  => $form->get_no_input_value( $value = '', $css_class = 'wide' ),
 				),

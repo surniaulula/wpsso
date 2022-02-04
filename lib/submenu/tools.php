@@ -43,11 +43,9 @@ if ( ! class_exists( 'WpssoSubmenuTools' ) && class_exists( 'WpssoAdmin' ) ) {
 			/**
 			 * Make sure this filter runs first as it initializes a new form buttons array.
 			 */
-			$min_int = SucomUtil::get_min_int();
-
 			$this->p->util->add_plugin_filters( $this, array(
 				'form_button_rows'  => 1,	// Filter form buttons for this settings page only.
-			), $min_int );
+			), PHP_INT_MIN );
 		}
 
 		/**

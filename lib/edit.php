@@ -30,8 +30,6 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$min_int = SucomUtil::get_min_int();
-
 			/**
 			 * Document SSO metabox tabs are defined in WpssoAbstractWpMeta->get_document_meta_tabs().
 			 */
@@ -47,7 +45,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 				'metabox_sso_prev_social_rows'            => 4,
 				'metabox_sso_prev_oembed_rows'            => 4,
 				'metabox_sso_validators_rows'             => 4,
-			), $min_int );	// Run before any add-on filters.
+			), PHP_INT_MIN );	// Run before any add-on filters.
 		}
 
 		public function filter_metabox_sso_edit_general_rows( $table_rows, $form, $head_info, $mod ) {

@@ -323,6 +323,8 @@ function sucomToolbarNotices( pluginId, adminPageL10n ) {
 
 				menuItem.addClass( 'hover-timeout' );
 
+				jQuery( 'html' ).click( function(){ menuItem.removeClass( 'hover-timeout' ); } );
+
 				setTimeout( function(){ menuItem.removeClass( 'hover-timeout' ); }, noticeTime );
 
 			} else {

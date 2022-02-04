@@ -31,7 +31,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 				/**
 				 * Document SSO > Customize tab.
 				 */
-				case 'tooltip-meta-schema_title':	// Schema Name / Title.
+				case 'tooltip-meta-schema_title':	// Schema Name.
 
 					$text = __( 'A customized name / title for the Schema "name" property.', 'wpsso' );
 

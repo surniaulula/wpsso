@@ -25,6 +25,10 @@
 
 %%pagetotal%%
 
+%%comment_author%%
+
+%%comment_date%%
+
 %%post_date%%
 
 %%post_modified%%

@@ -399,8 +399,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					 */
 					case 'notice-content-filters-disabled':
 
-						$option_text = _x( 'Use Filtered Content', 'option label', 'wpsso' );
-						$option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', $option_text );
+						$option_label = _x( 'Use Filtered Content', 'option label', 'wpsso' );
+						$option_link  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', $option_label );
 
 						$text = '<p class="top">';
 
@@ -428,8 +428,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					 */
 					case 'notice-check-img-dims-disabled':
 
-						$option_text = _x( 'Image Dimension Checks', 'option label', 'wpsso' );
-						$option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', $option_text );
+						$option_label = _x( 'Image Dimension Checks', 'option label', 'wpsso' );
+						$option_link  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', $option_label );
 
 						$text = '<p class="top">';
 
@@ -452,8 +452,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'notice-ratings-reviews-wc-enabled':
 
-						$option_text = _x( 'Ratings and Reviews Service', 'option label', 'wpsso' );
-						$option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_services-tab_ratings_reviews', $option_text );
+						$option_label = _x( 'Ratings and Reviews Service', 'option label', 'wpsso' );
+						$option_link  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_services-tab_ratings_reviews', $option_label );
 
 						$wc_settings_page_url = get_admin_url( $blog_id = null, 'admin.php?page=wc-settings&tab=products' );
 
@@ -712,7 +712,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 		}
 
 		/**
-		 * Used by the Advanced Settings page for the "Webpage Document Title" option.
+		 * Used by the Advanced Settings page for the "Webpage Title Tag" option.
 		 */
 		public function maybe_doc_title_disabled() {
 
@@ -776,9 +776,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 		public function pin_img_disabled( $extra_css_class = '' ) {
 
-			$option_text = _x( 'Add Hidden Image for Pinterest', 'option label', 'wpsso' );
-
-			$option_link = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_pinterest', $option_text );
+			$option_label = _x( 'Add Hidden Image for Pinterest', 'option label', 'wpsso' );
+			$option_link  = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_pinterest', $option_label );
 
 			// translators: %s is the option name, linked to its settings page.
 			$text = sprintf( __( 'Modifications disabled (%s option is unchecked).', 'wpsso' ), $option_link );

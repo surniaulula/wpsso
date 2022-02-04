@@ -15,7 +15,7 @@
  * Requires At Least: 5.2
  * Tested Up To: 5.9.0
  * WC Tested Up To: 6.1.1
- * Version: 10.1.0-dev.5
+ * Version: 10.1.0-dev.6
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -118,16 +118,30 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			add_action( 'widgets_init', array( $this, 'register_widgets' ), 10 );				// Runs at init 1.
 			add_action( 'init', array( $this, 'set_options' ), WPSSO_INIT_OPTIONS_PRIORITY );		// Runs at init 9.
 			add_action( 'init', array( $this, 'set_objects' ), WPSSO_INIT_OBJECTS_PRIORITY );		// Runs at init 10.
-			add_action( 'init', array( $this, 'init_json_filters' ), WPSSO_INIT_JSON_FILTERS_PRIORITY );	// Runs at init 11.
 			add_action( 'init', array( $this, 'init_shortcodes' ), WPSSO_INIT_SHORTCODES_PRIORITY );	// Runs at init 11.
 			add_action( 'init', array( $this, 'init_plugin' ), WPSSO_INIT_PLUGIN_PRIORITY );		// Runs at init 12.
+
+			/**
+			 * To optimize performance and memory usage, the 'wpsso_init_json_filters' action is run at the start of
+			 * WpssoSchema->get_array() when the Schema filters are needed. The Wpsso->init_json_filters() action then
+			 * unhooks itself from the action, so it can only be run once.
+			 */
+			add_action( 'wpsso_init_json_filters', array( $this, 'init_json_filters' ), -1000, 0 );
 
 			/**
 			 * The 'wpsso_init_textdomain' action is run after the $check, $avail, and $debug properties are defined.
 			 */
 			add_action( 'wpsso_init_textdomain', array( $this, 'init_textdomain' ), -1000, 0 );
 
+			/**
+			 * The 'change_locale' action also runs the 'wpsso_init_textdomain' action.
+			 */
 			add_action( 'change_locale', array( $this, 'change_locale' ), -1000, 1 );
+
+			/**
+			 * If the "Use Local Plugin Translations" option is enabled, returns the file path to the plugin or add-on mo file.
+			 */
+			add_filter( 'load_textdomain_mofile', array( $this, 'textdomain_mofile' ), 10, 3 );
 		}
 
 		public static function &get_instance() {
@@ -319,6 +333,8 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			/**
 			 * The 'wpsso_init_textdomain' action is run after the $check, $avail, and $debug properties are defined.
+			 *
+			 * The 'change_locale' action also runs the 'wpsso_init_textdomain' action.
 			 */
 			do_action( 'wpsso_init_textdomain' );
 
@@ -441,42 +457,6 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		/**
 		 * Runs at init priority 11.
 		 */
-		public function init_json_filters() {
-
-			if ( $this->debug->enabled ) {
-
-				$this->debug->mark( 'init json filters' );	// Begin timer.
-			}
-
-			/**
-			 * Load lib/json-filters/* library files.
-			 */
-			if ( $this->avail[ 'p' ][ 'schema' ] ) {
-
-				$classnames = $this->get_lib_classnames( 'json-filters' );	// Always returns an array.
-
-				foreach ( $classnames as $id => $classname ) {
-
-					new $classname( $this );
-				}
-
-			} else {
-
-				if ( $this->debug->enabled ) {
-
-					$this->debug->log( 'schema markup is disabled' );
-				}
-			}
-
-			if ( $this->debug->enabled ) {
-
-				$this->debug->mark( 'init json filters' );	// End timer.
-			}
-		}
-
-		/**
-		 * Runs at init priority 11.
-		 */
 		public function init_shortcodes() {
 
 			if ( $this->debug->enabled ) {
@@ -534,33 +514,89 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			}
 		}
 
+		/**
+		 * To optimize performance and memory usage, the 'wpsso_init_json_filters' action is run at the start of
+		 * WpssoSchema->get_array() when the Schema filters are needed. The Wpsso->init_json_filters() action then unhooks
+		 * itself from the action, so it can only be run once.
+		 */
+		public function init_json_filters() {
+
+			if ( $this->debug->enabled ) {
+
+				$this->debug->mark( 'init json filters' );	// Begin timer.
+			}
+
+			$classnames = $this->get_lib_classnames( 'json-filters' );	// Always returns an array.
+
+			foreach ( $classnames as $id => $classname ) {
+
+				new $classname( $this );
+			}
+
+			if ( $this->debug->enabled ) {
+
+				$this->debug->mark( 'init json filters' );	// End timer.
+			}
+
+			/**
+			 * Unhook from the 'wpsso_init_json_filters' action to make sure the Schema filters are only loaded once.
+			 */
+			remove_action( 'wpsso_init_json_filters', array( $this, 'init_json_filters' ), -1000 );
+		}
+
+		/**
+		 * The 'wpsso_init_textdomain' action is run after the $check, $avail, and $debug properties are defined.
+		 */
+		public function init_textdomain() {
+
+			load_plugin_textdomain( 'wpsso', false, 'wpsso/languages/' );
+		}
+
+		/**
+		 * The 'change_locale' action also runs the 'wpsso_init_textdomain' action.
+		 */
 		public function change_locale( $locale ) {
 
 			do_action( 'wpsso_init_textdomain' );
 		}
 
 		/**
-		 * Runs at wpsso_init_textdomain priority -1000.
-		 *
-		 * The 'wpsso_init_textdomain' action is run after the $check, $avail, and $debug properties are defined.
-		 *
-		 * May also be called via the 'change_locale' action.
+		 * If the "Use Local Plugin Translations" option is enabled, returns the file path to the plugin or add-on mo file.
 		 */
-		public function init_textdomain() {
+		public function textdomain_mofile( $wp_mofile, $domain ) {
 
-			if ( ! empty( $this->options[ 'plugin_load_mofiles' ] ) ) {
+			if ( empty( $this->options[ 'plugin_load_mofiles' ] ) ) {	// Nothing to do.
 
-				static $do_once = null;
+				return $wp_mofile;
+			}
 
-				if ( null === $do_once ) {
+			if ( 0 === strpos( $domain, 'wpsso' ) ) {	// Optimize.
 
-					$do_once = true;
+				foreach ( $this->cf[ 'plugin' ] as $ext => $info ) {
 
-					add_filter( 'load_textdomain_mofile', array( $this, 'override_textdomain_mofile' ), 10, 3 );
+					if ( empty( $info[ 'slug' ] ) ) {	// Just in case.
+
+						continue;
+
+					} elseif ( $domain === $info[ 'slug' ] ) {
+
+						$languages_mofile = 'languages/' . basename( $wp_mofile );
+
+						if ( $plugin_mofile = WpssoConfig::get_ext_file_path( $ext, $languages_mofile ) ) {
+
+							global $l10n;
+
+							unset( $l10n[ $domain ] );	// Prevent merging.
+
+							return $plugin_mofile;
+						}
+
+						break;	// Stop here.
+					}
 				}
 			}
 
-			load_plugin_textdomain( 'wpsso', false, 'wpsso/languages/' );
+			return $wp_mofile;
 		}
 
 		public function get_const_status( $const_suffix ) {
@@ -658,48 +694,14 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			return $classnames;
 		}
 
-		public function override_textdomain_mofile( $wp_mofile, $domain ) {
-
-			if ( 0 === strpos( $domain, 'wpsso' ) ) {	// Optimize.
-
-				foreach ( $this->cf[ 'plugin' ] as $ext => $info ) {
-
-					if ( empty( $info[ 'slug' ] ) ) {	// Just in case.
-
-						continue;
-
-					} elseif ( $domain === $info[ 'slug' ] ) {
-
-						$languages_mofile = 'languages/' . basename( $wp_mofile );
-
-						if ( $plugin_mofile = WpssoConfig::get_ext_file_path( $ext, $languages_mofile ) ) {
-
-							global $l10n;
-
-							unset( $l10n[ $domain ] );	// Prevent merging.
-
-							return $plugin_mofile;
-						}
-
-						break;	// Stop here.
-					}
-				}
-			}
-
-			return $wp_mofile;
-		}
-
 		public function debug_hooks() {
-
-			$min_int = SucomUtil::get_min_int();
-			$max_int = SucomUtil::get_max_int();
 
 			/**
 			 * Show a comment marker at the top / bottom of the head and footer sections.
 			 */
 			foreach ( array( 'wp_head', 'wp_footer', 'admin_head', 'admin_footer' ) as $action ) {
 
-				foreach ( array( $min_int, $max_int ) as $prio ) {
+				foreach ( array( PHP_INT_MIN, PHP_INT_MAX ) as $prio ) {
 
 					$function = function() use ( $action, $prio ) {
 						echo "\n" . '<!-- wpsso ' . $action . ' action hook priority ' . $prio . ' mark -->' . "\n\n";
@@ -719,20 +721,20 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				/**
 				 * Prepend marker.
 				 */
-				$function = function( $str ) use ( $filter, $min_int ) {
-					return "\n\n" . '<!-- wpsso ' . $filter . ' filter hook priority ' . $min_int . ' mark -->' . "\n\n" . $str;
+				$function = function( $html ) use ( $filter ) {
+					return "\n\n" . '<!-- wpsso ' . $filter . ' filter hook priority ' . PHP_INT_MIN . ' mark -->' . "\n\n" . $html;
 				};
 
-				add_filter( $filter, $function, $min_int );
+				add_filter( $filter, $function, PHP_INT_MIN );
 
 				/**
 				 * Append marker.
 				 */
-				$function = function( $str ) use ( $filter, $max_int ) {
-					return $str . "\n\n" . '<!-- wpsso ' . $filter . ' filter hook priority ' . $max_int . ' mark -->' . "\n\n";
+				$function = function( $html ) use ( $filter ) {
+					return $html . "\n\n" . '<!-- wpsso ' . $filter . ' filter hook priority ' . PHP_INT_MAX . ' mark -->' . "\n\n";
 				};
 
-				add_filter( $filter, $function, $max_int );
+				add_filter( $filter, $function, PHP_INT_MAX );
 			}
 
 			/**
@@ -740,7 +742,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			 */
 			foreach ( array( 'wp_footer', 'admin_footer' ) as $action ) {
 
-				add_action( $action, array( $this, 'show_config' ), $max_int );
+				add_action( $action, array( $this, 'show_config' ), PHP_INT_MAX );
 			}
 		}
 

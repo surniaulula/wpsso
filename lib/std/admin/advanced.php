@@ -79,13 +79,13 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$table_rows[] = '<td colspan="4">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
-			$table_rows[ 'plugin_document_title' ] = '' .
-				$form->get_th_html( _x( 'Webpage Document Title', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'plugin_document_title' ) .
-				'<td class="blank">' . $form->get_no_select( 'plugin_document_title', $doc_title_source,
+			$table_rows[ 'plugin_title_tag' ] = '' .
+				$form->get_th_html( _x( 'Webpage Title Tag', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_title_tag' ) .
+				'<td class="blank">' . $form->get_no_select( 'plugin_title_tag', $doc_title_source,
 					$css_class = 'long_name', $css_id = '', $is_assoc = true ) .
 				$doc_title_disabled_msg . '</td>' .
-				WpssoAdmin::get_option_site_use( 'plugin_document_title', $form, $network );
+				WpssoAdmin::get_option_site_use( 'plugin_title_tag', $form, $network );
 
 			$table_rows[ 'plugin_filter_content' ] = '' . 
 				$form->get_th_html( _x( 'Use Filtered Content', 'option label', 'wpsso' ),
@@ -203,25 +203,42 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		 */
 		public function filter_plugin_default_text_rows( $table_rows, $form ) {
 
+			$part_pos_label = is_rtl() ? __( 'Prefix', 'wpsso' ) : __( 'Suffix', 'wpsso' );
+
+			$table_rows[ 'plugin_title_part_site' ] = '' .
+				$form->get_th_html_locale( sprintf( _x( 'Title Tag Site %s', 'option label', 'wpsso' ), $part_pos_label ),
+					$css_class = '', $css_id = 'plugin_title_part_site' ) .
+				'<td class="blank">' . $form->get_no_input_locale( 'plugin_title_part_site', $css_class = 'long_name' ) . '</td>';
+
+			$table_rows[ 'plugin_title_part_tagline' ] = '' .
+				$form->get_th_html_locale( sprintf( _x( 'Title Tag Tagline %s', 'option label', 'wpsso' ), $part_pos_label ),
+					$css_class = '', $css_id = 'plugin_title_part_tagline' ) .
+				'<td class="blank">' . $form->get_no_input_locale( 'plugin_title_part_tagline', $css_class = 'wide' ) . '</td>';
+
 			$table_rows[ 'plugin_img_alt_prefix' ] = '' .
 				$form->get_th_html_locale( _x( 'Content Image Alt Prefix', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_img_alt_prefix' ) . 
-				'<td class="blank">' . $form->get_no_input_locale( 'plugin_img_alt_prefix', $css_class = 'medium' ) . '</td>';
+				'<td class="blank">' . $form->get_no_input_locale( 'plugin_img_alt_prefix' ) . '</td>';
 
 			$table_rows[ 'plugin_p_cap_prefix' ] = '' .
 				$form->get_th_html_locale( _x( 'WP Caption Text Prefix', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_p_cap_prefix' ) . 
-				'<td class="blank">' . $form->get_no_input_locale( 'plugin_p_cap_prefix', $css_class = 'medium' ) . '</td>';
+				'<td class="blank">' . $form->get_no_input_locale( 'plugin_p_cap_prefix' ) . '</td>';
+
+			$table_rows[ 'plugin_comment_title' ] = '' .
+				$form->get_th_html_locale( _x( 'Comment Title', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'comment_title' ) . 
+				'<td class="blank">' . $form->get_no_input_locale( 'comment_title', $css_class = 'wide' ) . '</td>';
 
 			$table_rows[ 'plugin_no_title_text' ] = '' .
 				$form->get_th_html_locale( _x( 'No Title Text', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_no_title_text' ) . 
-				'<td class="blank">' . $form->get_no_input_locale( 'plugin_no_title_text', $css_class = 'medium' ) . '</td>';
+				'<td class="blank">' . $form->get_no_input_locale( 'plugin_no_title_text', $css_class = 'wide' ) . '</td>';
 
 			$table_rows[ 'plugin_no_desc_text' ] = '' .
 				$form->get_th_html_locale( _x( 'No Description Text', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_no_desc_text' ) . 
-				'<td class="blank">' . $form->get_no_input_locale( 'plugin_no_desc_text', $css_class = 'medium' ) . '</td>';
+				'<td class="blank">' . $form->get_no_input_locale( 'plugin_no_desc_text', $css_class = 'wide' ) . '</td>';
 
 			$table_rows[ 'subsection_archive_pages' ] = '' .
 				'<td colspan="2" class="subsection"><h4>' . _x( 'Archive Pages', 'metabox title', 'wpsso' ) . '</h4></td>';

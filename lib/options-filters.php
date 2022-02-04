@@ -120,7 +120,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					/**
 					 * Text strings that can be blank (line breaks are removed).
 					 */
-					case 'schema_title':				// Schema Name / Title.
+					case 'schema_title':				// Schema Name.
 					case 'schema_title_alt':			// Alternate Name.
 					case 'schema_bc_title':				// Breadcrumb Name.
 					case 'schema_book_author_name':			// Book Author Name.
@@ -412,6 +412,8 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'product_pattern':
 				case 'product_retailer_part_no':	// Product SKU.
 				case 'product_size':
+				case 'plugin_title_part_site':		// Title Tag Site Prefix / Suffix.
+				case 'plugin_title_part_tagline':	// Title Tag Tagline Prefix / Suffix.
 				case 'plugin_img_alt_prefix':		// Content Image Alt Prefix.
 				case 'plugin_p_cap_prefix':		// WP Caption Text Prefix.
 				case 'plugin_bitly_access_token':	// Bitly Generic Access Token.
@@ -442,9 +444,10 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'og_def_currency':
 				case 'og_def_img_id_lib': 			// Example: 'wp' or 'ngg' media library name.
 				case 'og_img_id_lib': 				// Example: 'wp' or 'ngg' media library name.
-				case 'plugin_shortener':			// Example: 'none' or name of shortener
+				case 'plugin_comment_title':			// Comment Title.
 				case 'plugin_no_title_text':			// No Title Text.
 				case 'plugin_no_desc_text':			// No Description Text.
+				case 'plugin_shortener':			// Example: 'none' or name of shortener
 				case 'product_avail':				// Select option with 'none' as default.
 				case 'product_condition':			// Select option with 'none' as default.
 				case 'product_size_type':			// Select option with 'none' as default.

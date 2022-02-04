@@ -106,7 +106,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaOpenGraph' ) ) {
 
 				 	break;
 
-				case 'tooltip-meta-og_vid_title':	// Video Name / Title.
+				case 'tooltip-meta-og_vid_title':	// Video Name.
 				case 'tooltip-meta-og_vid_desc':	// Video Description.
 				case 'tooltip-meta-og_vid_dimensions':	// Video Dimensions.
 

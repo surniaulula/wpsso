@@ -71,7 +71,20 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 			/**
 			 * WpssoComment elements.
 			 */
-			$mod[ 'is_comment' ]    = true;
+			$mod[ 'is_comment' ] = true;
+
+			if ( $mod[ 'id' ] ) {	// Just in case.
+
+				$comment_obj = get_comment( $mod[ 'id' ] );
+
+				if ( $comment_obj instanceof WP_Comment ) {	// Just in case.
+
+					$mod[ 'comment_author' ]      = (int) $comment_obj->user_id;		// Comment author user ID.
+					$mod[ 'comment_author_name' ] = $comment_obj->comment_author;		// Comment author name.
+					$mod[ 'comment_author_url' ]  = $comment_obj->comment_author_url;
+					$mod[ 'comment_time' ]        = mysql2date( 'c', $comment_obj->comment_date_gmt );	// ISO 8601 date.
+				}
+			}
 
 			/**
 			 * Hooked by the 'coauthors' pro module.

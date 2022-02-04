@@ -164,7 +164,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$table_rows[ 'site_desc' ] = '' . 
 						$this->form->get_th_html_locale( _x( 'WebSite Description', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'site_desc' ) . 
-						'<td>' . $this->form->get_textarea_locale( 'site_desc', $css_class = '', $css_id = '',
+						'<td>' . $this->form->get_input_locale( 'site_desc', $css_class = 'wide', $css_id = '',
 							$len = 0, $def_site_desc ) . '</td>';
 
 					$table_rows[ 'og_def_article_section' ] = '' . 

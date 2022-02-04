@@ -130,6 +130,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
+				$this->p->debug->mark();
+			}
+
+			/**
+			 * To optimize performance and memory usage, the 'wpsso_init_json_filters' action is run at the start of
+			 * WpssoSchema->get_array() when the Schema filters are needed. The Wpsso->init_json_filters() action then
+			 * unhooks itself from the action, so it can only be run once.
+			 */
+			do_action( 'wpsso_init_json_filters' );
+
+			if ( $this->p->debug->enabled ) {
+
 				$this->p->debug->mark( 'build schema array' );	// Begin timer.
 			}
 
@@ -2220,8 +2232,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			return self::add_offers_aggregate_data( $json_data, $mod, $mt_offers );
 		}
-
-
 
 		/**
 		 * $user_id is optional and takes precedence over the $mod post_author value.

@@ -170,11 +170,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$this->p->debug->log( 'adding pre_get_shortlink filters to shorten the url' );
 					}
 
-					$min_int = SucomUtil::get_min_int();
-					$max_int = SucomUtil::get_max_int();
-
-					add_filter( 'pre_get_shortlink', array( $this, 'get_canonical_shortlink' ), $min_int, 4 );
-					add_filter( 'pre_get_shortlink', array( $this, 'maybe_restore_shortlink' ), $max_int, 4 );
+					add_filter( 'pre_get_shortlink', array( $this, 'get_canonical_shortlink' ), PHP_INT_MIN, 4 );
+					add_filter( 'pre_get_shortlink', array( $this, 'maybe_restore_shortlink' ), PHP_INT_MAX, 4 );
 
 					if ( function_exists( 'wpme_get_shortlink_handler' ) ) {
 
@@ -241,7 +238,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				$post_obj = get_post( $mod[ 'id' ] );	// Optimize and fetch once for WordPress functions.
 
-				if ( is_object( $post_obj ) ) {	// Just in case.
+				if ( $post_obj instanceof WP_Post ) {	// Just in case.
 
 					$mod[ 'post_slug' ]          = get_post_field( 'post_name', $post_obj );		// Post name (aka slug).
 					$mod[ 'post_type' ]          = get_post_type( $post_obj );				// Post type name.
@@ -253,28 +250,31 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$mod[ 'post_modified_time' ] = get_post_modified_time( 'c', $gmt = true, $post_obj );	// ISO 8601 date or false.
 					$mod[ 'is_attachment' ]      = 'attachment' === $mod[ 'post_type' ] ? true : false;	// Post type is 'attachment'.
 
-					$post_type_obj = get_post_type_object( $mod[ 'post_type' ] );
+					if ( $mod[ 'post_type' ] ) {	// Just in case.
 
-					if ( is_object( $post_type_obj ) ) {	// Just in case.
+						$post_type_obj = get_post_type_object( $mod[ 'post_type' ] );
 
-						if ( isset( $post_type_obj->labels->name ) ) {
+						if ( $post_type_obj instanceof WP_Post_Type ) {	// Just in case.
 
-							$mod[ 'post_type_label_plural' ] = $post_type_obj->labels->name;
+							if ( isset( $post_type_obj->labels->name ) ) {
+
+								$mod[ 'post_type_label_plural' ] = $post_type_obj->labels->name;
+							}
+
+							if ( isset( $post_type_obj->labels->singular_name ) ) {
+
+								$mod[ 'post_type_label_single' ] = $post_type_obj->labels->singular_name;
+							}
+
+							if ( isset( $post_type_obj->public ) ) {
+
+								$mod[ 'is_public' ] = $post_type_obj->public ? true : false;
+							}
+
+							$mod[ 'is_post_type_archive' ] = SucomUtil::is_post_type_archive( $post_type_obj, $mod[ 'post_slug' ] );
+
+							$mod[ 'is_archive' ] = $mod[ 'is_post_type_archive' ];
 						}
-
-						if ( isset( $post_type_obj->labels->singular_name ) ) {
-
-							$mod[ 'post_type_label_single' ] = $post_type_obj->labels->singular_name;
-						}
-
-						if ( isset( $post_type_obj->public ) ) {
-
-							$mod[ 'is_public' ] = $post_type_obj->public ? true : false;
-						}
-
-						$mod[ 'is_post_type_archive' ] = SucomUtil::is_post_type_archive( $post_type_obj, $mod[ 'post_slug' ] );
-
-						$mod[ 'is_archive' ] = $mod[ 'is_post_type_archive' ];
 					}
 
 					/**

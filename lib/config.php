@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '10.1.0-dev.5',	// Plugin version.
-					'opt_version' => '867',		// Increment when changing default option values.
+					'version'     => '10.1.0-dev.6',	// Plugin version.
+					'opt_version' => '871',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1187,7 +1187,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'opt' => array(
 				'defaults' => array(
-					'plugin_checksum' => '',	// Checksum of plugin versions.
+					'checksum'        => '',	// Checksum of plugin versions.
 					'opt_checksum'    => '',	// Checksum of option versions.
 					'opt_versions'    => array(),
 
@@ -1731,7 +1731,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings > Integration tab.
 					 */
-					'plugin_document_title'     => 'wp_title',		// Webpage Document Title.
+					'plugin_title_tag'          => 'schema_title',		// Webpage Title Tag.
 					'plugin_filter_content'     => 0,			// Use Filtered Content.
 					'plugin_filter_excerpt'     => 0,			// Use Filtered Excerpt.
 					'plugin_page_excerpt'       => 0,			// Enable Excerpt for Pages.
@@ -1935,9 +1935,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * See the WpssoOptions->get_site_defaults() method.
 				 */
 				'site_defaults' => array(
-					'plugin_checksum' => '',	// Checksum of plugin versions.
-					'opt_checksum'    => '',	// Checksum of option versions.
-					'opt_versions'    => array(),
+					'checksum'     => '',	// Checksum of plugin versions.
+					'opt_checksum' => '',	// Checksum of option versions.
+					'opt_versions' => array(),
 				),
 
 				/**
@@ -2450,11 +2450,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'at'         => 'at',
 					'tz'         => 'tz',
 				),
-				'document_title' => array(	// Webpage Document Title.
+				'document_title' => array(	// Webpage Title Tag.
 					'wp_title'         => '[Default WordPress Title]',
-					'og_title'         => 'Document SSO Default Title',
-					'schema_title'     => 'Document SSO Schema Name / Title',
-					'schema_title_alt' => 'Document SSO Schema Alternate Name',
+					'og_title'         => 'Document SSO - Default Title',
+					'schema_title'     => 'Document SSO - Schema Name',
+					'schema_title_alt' => 'Document SSO - Schema Alternate Name',
 				),
 				'notice_systems' => array(
 					'toolbar_notices' => 'SSO Toolbar Notices',
@@ -4327,15 +4327,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			/**
 			 * Hook priorities.
 			 */
-			$var_const[ 'WPSSO_ADD_MENU_PRIORITY' ]      = -20;	// 'admin_menu' hook priority.
-			$var_const[ 'WPSSO_ADD_SUBMENU_PRIORITY' ]   = -10;	// 'admin_menu' hook priority.
+			$var_const[ 'WPSSO_ADD_MENU_PRIORITY' ]      = -20;		// 'admin_menu' hook priority.
+			$var_const[ 'WPSSO_ADD_SUBMENU_PRIORITY' ]   = -10;		// 'admin_menu' hook priority.
 			$var_const[ 'WPSSO_ADD_COLUMN_PRIORITY' ]    = 100;
-			$var_const[ 'WPSSO_ADMIN_SCRIPTS_PRIORITY' ] = -1000;	// 'admin_enqueue_scripts' hook priority.
-			$var_const[ 'WPSSO_BLOCK_ASSETS_PRIORITY' ]  = -1000;	// 'enqueue_block_editor_assets' hook priority.
+			$var_const[ 'WPSSO_ADMIN_SCRIPTS_PRIORITY' ] = -1000;		// 'admin_enqueue_scripts' hook priority.
+			$var_const[ 'WPSSO_BLOCK_ASSETS_PRIORITY' ]  = -1000;		// 'enqueue_block_editor_assets' hook priority.
 			$var_const[ 'WPSSO_HEAD_PRIORITY' ]          = 10;
-			$var_const[ 'WPSSO_META_SAVE_PRIORITY' ]     = -100;	// Save our custom post/term/user meta before clearing the cache.
-			$var_const[ 'WPSSO_META_CACHE_PRIORITY' ]    = -10;	// Clear our cache before priority 10 (where most caching plugins are hooked).
-			$var_const[ 'WPSSO_SEO_SEED_PRIORITY' ]      = 100;
+			$var_const[ 'WPSSO_META_SAVE_PRIORITY' ]     = -100;		// Save custom post/term/user meta before clearing the cache.
+			$var_const[ 'WPSSO_META_CACHE_PRIORITY' ]    = -10;		// Clear cache before priority 10 (where most caching plugins are hooked).
+			$var_const[ 'WPSSO_TITLE_TAG_PRIORITY' ]     = PHP_INT_MAX;	// Priority for the WordPress 'document_title' filters.
 
 			/**
 			 * PHP cURL library settings.

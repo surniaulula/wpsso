@@ -188,6 +188,8 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				'page'                => sprintf( $sep . ' ' . __( 'Page %1$d of %2$d', 'wpsso' ), $page_number, $page_total ),
 				'pagenumber'          => $page_number,
 				'pagetotal'           => $page_total,
+				'comment_author'      => empty( $mod[ 'comment_author_name' ] ) ? '' : $mod[ 'comment_author_name' ],
+				'comment_date'        => empty( $mod[ 'comment_time' ] ) ? '' : mysql2date( $date_format, $mod[ 'comment_time' ] ),
 				'post_date'           => empty( $mod[ 'post_time' ] ) ? '' : mysql2date( $date_format, $mod[ 'post_time' ] ),
 				'post_modified'       => empty( $mod[ 'post_modified_time' ] ) ? '' : mysql2date( $date_format, $mod[ 'post_modified_time' ] ),
 				'query_search'        => isset( $mod[ 'query_vars' ][ 's' ] ) ? $mod[ 'query_vars' ][ 's' ] : '',

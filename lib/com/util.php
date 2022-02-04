@@ -807,14 +807,20 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public function __construct() {}
 
+		/**
+		 * Deprecated on 2022/02/04.
+		 */
 		public static function get_min_int() {
 
-			return defined( 'PHP_INT_MIN' ) ? PHP_INT_MIN : -2147483648;	// Since PHP v7.0.0.
+			return PHP_INT_MIN;	// Since PHP v7.0.0.
 		}
 
+		/**
+		 * Deprecated on 2022/02/04.
+		 */
 		public static function get_max_int() {
 
-			return defined( 'PHP_INT_MAX' ) ? PHP_INT_MAX : 2147483647;	// Since PHP 5.0.2.
+			return PHP_INT_MAX;	// Since PHP 5.0.2.
 		}
 
 		/**
@@ -4284,11 +4290,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			 */
 			if ( false === has_filter( $filter_name, array( __CLASS__, '__save_current_filter_value' ) ) ) {	// Can return a priority of 0.
 
-				$min_int = self::get_min_int();
-				$max_int = self::get_max_int();
-
-				add_filter( $filter_name, array( __CLASS__, '__save_current_filter_value' ), $min_int, 1 );
-				add_filter( $filter_name, array( __CLASS__, '__restore_current_filter_value' ), $max_int, 1 );
+				add_filter( $filter_name, array( __CLASS__, '__save_current_filter_value' ), PHP_INT_MIN, 1 );
+				add_filter( $filter_name, array( __CLASS__, '__restore_current_filter_value' ), PHP_INT_MAX, 1 );
 			}
 
 			return true;
@@ -4304,11 +4307,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return false;
 			}
 
-			$min_int = self::get_min_int();
-			$max_int = self::get_max_int();
-
-			remove_filter( $filter_name, array( __CLASS__, '__save_current_filter_value' ), $min_int );
-			remove_filter( $filter_name, array( __CLASS__, '__restore_current_filter_value' ), $max_int );
+			remove_filter( $filter_name, array( __CLASS__, '__save_current_filter_value' ), PHP_INT_MIN );
+			remove_filter( $filter_name, array( __CLASS__, '__restore_current_filter_value' ), PHP_INT_MAX );
 
 			return true;
 		}
@@ -4359,11 +4359,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( ! empty( self::$cache_protect[ $filter_name ][ 'auto_unprotect' ] ) ) {
 
-				$min_int = self::get_min_int();
-				$max_int = self::get_max_int();
-
-				remove_filter( $filter_name, array( __CLASS__, __FUNCTION__ ), $min_int );
-				remove_filter( $filter_name, array( __CLASS__, __FUNCTION__ ), $max_int );
+				remove_filter( $filter_name, array( __CLASS__, __FUNCTION__ ), PHP_INT_MIN );
+				remove_filter( $filter_name, array( __CLASS__, __FUNCTION__ ), PHP_INT_MAX );
 			}
 
 			return $value;

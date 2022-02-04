@@ -55,7 +55,15 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'validators toolbar is disabled' );
 			}
 
-			add_action( 'pre_get_document_title', array( $this, 'pre_get_document_title' ), 1000 );	// Since WP v4.4.
+			/**
+			 * Since WordPress v4.4.
+			 *
+			 * See wordpress/wp-includes/general-template.php.
+			 */
+			add_filter( 'pre_get_document_title', array( $this, 'pre_get_document_title' ), WPSSO_TITLE_TAG_PRIORITY, 1 );
+			add_filter( 'document_title_separator', array( $this, 'document_title_separator' ), WPSSO_TITLE_TAG_PRIORITY, 1 );
+			add_filter( 'document_title_parts', array( $this, 'document_title_parts' ), WPSSO_TITLE_TAG_PRIORITY, 1 );
+			add_filter( 'document_title', array( $this, 'document_title' ), WPSSO_TITLE_TAG_PRIORITY, 1 );
 		}
 
 		/**
@@ -136,20 +144,62 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		}
 
 		/**
+		 * Since WordPress v4.4.
+		 *
 		 * Filters the WordPress document title before it is generated.
+		 *
+		 * Returning a non-empty string will skip the default 'document_title_separator', 'document_title_parts', and
+		 * 'document_title' filters.
+		 *
+		 * See wordpress/wp-includes/general-template.php.
 		 */
-		public function pre_get_document_title( $title = '' ) {
+		public function pre_get_document_title( $pre_title = '' ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( '$pre_title = ' . $pre_title );
+			}
+
+			return $pre_title;
+		}
+
+		/**
+		 * Since WordPress v4.4.
+		 *
+		 * Filters the separator for the document title.
+		 *
+		 * See wordpress/wp-includes/general-template.php.
+		 */
+		public function document_title_separator( $title_sep = '-' ) {
+
+			$title_sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
+
+			return $title_sep;
+		}
+
+		/**
+		 * Since WordPress v4.4.
+		 *
+		 * Filters the parts of the document title.
+		 *
+		 * 	Array (
+		 * 		[title]   => A Title
+		 * 		[page]    => Page 2
+		 * 		[site]    => WebSite Name
+		 * 		[tagline] => 
+		 * 	)
+		 *
+		 * The final array is imploded into a string using the $title_sep value.
+		 *
+		 *	$title = implode( ' ' . $title_sep . ' ', array_filter( $title ) );
+		 *
+		 * See wordpress/wp-includes/general-template.php.
+		 */
+		public function document_title_parts( $title_parts ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
-			}
-
-			$title_type = empty( $this->p->options[ 'plugin_document_title' ] ) ? 'wp_title' : $this->p->options[ 'plugin_document_title' ];
-
-			if ( 'wp_title' === $title_type ) {	// Nothing to do.
-
-				return $title;
 			}
 
 			$use_post = apply_filters( 'wpsso_use_post', false );
@@ -161,20 +211,46 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$mod = $this->p->page->get_mod( $use_post );
 
-			switch ( $title_type ) {
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'getting title for ' . $this->p->options[ 'plugin_title_tag' ] );
+			}
+
+			switch ( $this->p->options[ 'plugin_title_tag' ] ) {
+
+				case 'wp_title':
+
+					if ( ! empty( $title_parts[ 'site' ] ) ) {
+
+						$title_parts[ 'site' ] = $this->p->opt->get_text( 'plugin_title_part_site' );
+					}
+
+					/**
+					 * If we have a sitename, but no title, then compliment the site name with a tagline.
+					 */
+					if ( ! empty( $title_parts[ 'site' ] ) && empty( $title_parts[ 'title' ] ) ) {
+
+						$title_parts[ 'tagline' ] = $this->p->opt->get_text( 'plugin_title_part_tagline' );
+
+					} elseif ( ! empty( $title_parts[ 'tagline' ] ) ) {
+						
+						$title_parts[ 'tagline' ] = $this->p->opt->get_text( 'plugin_title_part_tagline' );
+					}
+
+					break;
 
 				case 'og_title':
 
 					$title_max_len = $this->p->options[ 'og_title_max_len' ];
 
-					$title = $this->p->page->get_title( $title_max_len, '...', $mod );
+					$title_parts[ 'title' ] = $this->p->page->get_title( $title_max_len, '...', $mod );
 
 					break;
 
 				case 'schema_title':
 
-					$title = $this->p->page->get_title( $title_max_len = 0, $dots = '', $mod, $add_hashtags = false,
-						$do_encode = true, $md_key = 'schema_title' );
+					$title_parts[ 'title' ] = $this->p->page->get_title( $title_max_len = 0, $dots = '', $mod,
+						$add_hashtags = false, $do_encode = true, $md_key = 'schema_title' );
 
 					break;
 
@@ -182,15 +258,71 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					$title_max_len = $this->p->options[ 'og_title_max_len' ];
 
-					$title = $this->p->page->get_title( $title_max_len, $dots = '...', $mod, $add_hashtags = false,
-						$do_encode = true, $md_key = 'schema_title_alt' );
+					$title_parts[ 'title' ] = $this->p->page->get_title( $title_max_len, $dots = '...', $mod,
+						$add_hashtags = false, $do_encode = true, $md_key = 'schema_title_alt' );
 
 					break;
 			}
 
+			if ( 'wp_title' !== $this->p->options[ 'plugin_title_tag' ] ) {
+
+				if ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).
+
+					$title_parts[ 'tagline' ] = $this->p->opt->get_text( 'plugin_title_part_tagline' );
+
+					unset( $title_parts[ 'site' ] );	// The default title value is already the site name.
+				}
+
+				unset( $title_parts[ 'page' ] );	// The title value already contains the page number.
+			}
+
+			/**
+			 * Make sure the parts are in a predictable right-to-left order.
+			 */
+			$title_parts = array_merge( array( 'title' => null, 'page' => null, 'site' => null, 'tagline' => null ), $title_parts );
+
+			/**
+			 * If this is a right-to-left language, then reverse the order of the parts.
+			 */
+			if ( is_rtl() ) {
+
+				$title_parts = array_reverse( $title_parts );
+			}
+
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'returning ' . $title_type . ' = ' . $title );
+				$this->p->debug->log_arr( '$title_parts', $title_parts );
+			}
+
+			return $title_parts;
+		}
+
+		/**
+		 * Since WordPress v4.4.
+		 *
+		 * Filters the document title.
+		 *
+		 * See wordpress/wp-includes/general-template.php.
+		 */
+		public function document_title( $title ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( '$title = ' . $title );
+			}
+
+			if ( false !== strpos( $title, '%%' ) ) {
+
+				$use_post = apply_filters( 'wpsso_use_post', false );
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'required call to WpssoPage->get_mod()' );
+				}
+
+				$mod = $this->p->page->get_mod( $use_post );
+
+				$title = $this->p->util->inline->replace_variables( $title, $mod );
 			}
 
 			return $title;
@@ -615,7 +747,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 			}
 
-			$page_posts_mods = apply_filters( 'wpsso_json_page_posts_mods', $page_posts_mods, $mod );
+			$page_posts_mods = apply_filters( 'wpsso_page_posts_mods', $page_posts_mods, $mod );
 
 			if ( $wpsso->debug->enabled ) {
 
@@ -1270,8 +1402,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $mod[ 'id' ] ) {	// Just in case.
 
-					$title_text = sprintf( __( 'Comment from %1$s on %2$s', 'wpsso' ),
-						get_comment_author( $mod[ 'id' ] ), get_comment_date( $fmt = '', $mod[ 'id' ] ) );
+					$title_text = $this->p->opt->get_text( 'plugin_comment_title' );
 				}
 
 			} elseif ( $mod[ 'is_post' ] ) {

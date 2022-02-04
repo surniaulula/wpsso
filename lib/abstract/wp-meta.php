@@ -162,6 +162,10 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			'is_term'                => false,	// Is term module.
 			'is_user'                => false,	// Is user module.
 			'is_year'                => false,
+			'comment_author'         => false,	// Comment author user ID.
+			'comment_author_name'    => false,
+			'comment_author_url'     => false,
+			'comment_time'           => false,
 			'use_post'               => false,
 			'post_slug'              => false,	// Post name (aka slug).
 			'post_type'              => false,	// Post type name.
@@ -301,7 +305,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				}
 
 				$md_defs = array(
-					'plugin_checksum'   => '',	// Checksum of plugin versions.
+					'checksum'          => '',	// Checksum of plugin versions.
 					'opt_checksum'      => '',	// Checksum of option versions.
 					'opt_versions'      => array(),
 					'attach_img_crop_x' => 'none',
@@ -413,7 +417,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					 * All Schema Types.
 					 */
 					'schema_type'      => $def_schema_type,	// Schema Type.
-					'schema_title'     => '',		// Schema Name / Title.
+					'schema_title'     => '',		// Schema Name.
 					'schema_title_alt' => '',		// Alternate Name.
 					'schema_bc_title'  => '',		// Breadcrumb Name.
 					'schema_desc'      => '',		// Schema Description.
@@ -881,7 +885,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			$md_opts = (array) apply_filters( 'wpsso_upgraded_md_options', $md_opts );
 
 			/**
-			 * Add plugin and add-on option versions (ie. 'plugin_checksum', 'opt_checksum', and 'opt_versions').
+			 * Add plugin and add-on option versions (ie. 'checksum', 'opt_checksum', and 'opt_versions').
 			 */
 			$this->p->opt->add_versions( $md_opts );	// Note that $md_opts must be an array.
 
@@ -1739,7 +1743,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			}
 
 			/**
-			 * Add plugin and add-on option versions (ie. 'plugin_checksum', 'opt_checksum', and 'opt_versions').
+			 * Add plugin and add-on option versions (ie. 'checksum', 'opt_checksum', and 'opt_versions').
 			 */
 			$this->p->opt->add_versions( $md_opts );	// Note that $md_opts must be an array.
 

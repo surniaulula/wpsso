@@ -3,7 +3,7 @@
 /**
  * Extract of translatable strings from lib/pro/.
  */
-_x( 'Webpage Document Title', 'option label', 'wpsso' );
+_x( 'Webpage Title Tag', 'option label', 'wpsso' );
 _x( 'Use Filtered Content', 'option label', 'wpsso' );
 _x( 'recommended (see help text)', 'option comment', 'wpsso' );
 _x( 'Use Filtered Excerpt', 'option label', 'wpsso' );
@@ -26,8 +26,13 @@ _x( 'Import Rank Math SEO Metadata', 'option label', 'wpsso' );
 _x( 'Import The SEO Framework Metadata', 'option label', 'wpsso' );
 _x( 'Import Yoast SEO Metadata', 'option label', 'wpsso' );
 _x( 'Import Yoast SEO Block Attrs', 'option label', 'wpsso' );
+__( 'Prefix', 'wpsso' );
+__( 'Suffix', 'wpsso' );
+_x( 'Title Tag Site %s', 'option label', 'wpsso' );
+_x( 'Title Tag Tagline %s', 'option label', 'wpsso' );
 _x( 'Content Image Alt Prefix', 'option label', 'wpsso' );
 _x( 'WP Caption Text Prefix', 'option label', 'wpsso' );
+_x( 'Comment Title', 'option label', 'wpsso' );
 _x( 'No Title Text', 'option label', 'wpsso' );
 _x( 'No Description Text', 'option label', 'wpsso' );
 _x( 'Archive Pages', 'metabox title', 'wpsso' );
@@ -149,7 +154,7 @@ _x( 'Include Video Preview Images', 'option label', 'wpsso' );
 _x( 'Force Autoplay when Possible', 'option label', 'wpsso' );
 _x( 'Check for Embedded Media', 'option label', 'wpsso' );
 _x( 'Schema Markup and Google Rich Results', 'metabox title', 'wpsso' );
-_x( 'Schema Name / Title', 'option label', 'wpsso' );
+_x( 'Schema Name', 'option label', 'wpsso' );
 _x( 'Alternate Name', 'option label', 'wpsso' );
 _x( 'Schema Description', 'option label', 'wpsso' );
 _x( 'Microdata Type URLs', 'option label', 'wpsso' );
@@ -343,7 +348,7 @@ _x( 'Priority Video Information', 'metabox title', 'wpsso' );
 _x( 'Video Embed HTML', 'option label', 'wpsso' );
 _x( 'or a Video URL', 'option label', 'wpsso' );
 _x( 'Video Information from Video API', 'metabox title', 'wpsso' );
-_x( 'Video Name / Title', 'option label', 'wpsso' );
+_x( 'Video Name', 'option label', 'wpsso' );
 _x( 'Video Description', 'option label', 'wpsso' );
 _x( 'Video Stream URL', 'option label', 'wpsso' );
 _x( 'Video Dimensions', 'option label', 'wpsso' );
