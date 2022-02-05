@@ -148,8 +148,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		 *
 		 * Filters the WordPress document title before it is generated.
 		 *
-		 * Note that returning a non-empty string will skip the default 'document_title_separator', 'document_title_parts',
-		 * and 'document_title' filters.
+		 * Returning a non-empty value skips the 'document_title_separator', 'document_title_parts', and 'document_title'
+		 * filters.
 		 *
 		 * See wordpress/wp-includes/general-template.php.
 		 */
@@ -157,10 +157,19 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( '$pre_title (' . gettype( $pre_title ) . ') = ' . $pre_title );
+				$this->p->debug->log( 'received pre_title value (' . gettype( $pre_title ) . ') = ' . $pre_title );
 			}
 
-			return $pre_title;
+			/**
+			 * Always return an empty string to make sure the following 'document_title_separator',
+			 * 'document_title_parts', and 'document_title' filters are applied.
+			 */
+			if ( $this->p->debug->enabled ) {
+				
+				$this->p->debug->log( 'returning an empty string to use the document_title filters' );
+			}
+
+			return '';
 		}
 
 		/**
@@ -276,7 +285,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				unset( $title_parts[ 'page' ] );	// The title value already contains the page number.
 			}
 
-			// Make sure the parts are ordered properly.
+			/**
+			 * Make sure the parts are ordered properly (just in case).
+			 */
 			$title_parts = array_merge( array( 'title' => null, 'page' => null, 'site' => null, 'tagline' => null ), $title_parts );
 
 			if ( $this->p->debug->enabled ) {
