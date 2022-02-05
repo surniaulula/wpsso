@@ -2559,6 +2559,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$cache_index = is_array( $mixed ) ? self::get_mod_salt( $mixed ) : $mixed;
 
+			if ( empty( $mixed ) ) {	// Just in case.
+
+				$mixed = 'current';
+			}
+
 			if ( $read_cache ) {
 
 				if ( isset( self::$cache_locale[ $cache_index ] ) ) {
@@ -2790,16 +2795,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				if ( ! empty( $mod[ 'tax_slug' ] ) ) {
 
 					$mod_salt .= '_tax:' . $mod[ 'tax_slug' ];
-				}
-
-				if ( ! empty( $mod[ 'paged' ] ) && $mod[ 'paged' ] > 1 ) {	// False or numeric.
-
-					$mod_salt .= '_paged:' . $mod[ 'paged' ];
-				}
-
-				if ( ! empty( $mod[ 'comment_paged' ] ) && $mod[ 'comment_paged' ] > 1 ) {	// False or numeric.
-
-					$mod_salt .= '_cpage:' . $mod[ 'comment_paged' ];
 				}
 
 				if ( ! is_numeric( $mod[ 'id' ] ) || ! $mod[ 'id' ] > 0 ) {

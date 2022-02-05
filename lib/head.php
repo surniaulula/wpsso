@@ -88,19 +88,29 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$cache_index = '';
 
-			if ( false !== $mixed ) {
+			if ( is_array( $mixed ) ) {
 
-				$cache_index .= '_locale:' . SucomUtil::get_locale( $mixed );
+				if ( ! empty( $mixed[ 'paged' ] ) && $mixed[ 'paged' ] > 1 ) {	// False or numeric.
+
+					$cache_index .= '_paged:' . $mixed[ 'paged' ];
+				}
+
+				if ( ! empty( $mixed[ 'comment_paged' ] ) && $mixed[ 'comment_paged' ] > 1 ) {	// False or numeric.
+
+					$cache_index .= '_cpage:' . $mixed[ 'comment_paged' ];
+				}
+			}
+
+			$cache_index .= '_locale:' . SucomUtil::get_locale( $mixed );
+
+			if ( SucomUtil::is_amp() ) {	// Returns null, true, or false.
+
+				$cache_index .= '_amp:true';
 			}
 
 			if ( false !== $canonical_url ) {
 
 				$cache_index .= '_url:' . $canonical_url;
-			}
-
-			if ( SucomUtil::is_amp() ) {	// Returns null, true, or false.
-
-				$cache_index .= '_amp:true';
 			}
 
 			$cache_index = trim( $cache_index, '_' );	// Cleanup leading underscores.
