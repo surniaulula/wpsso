@@ -256,9 +256,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Moved page numbers for caching from the transient name to a transient array element (resulting in larger but fewer transients).
-* **Bugfixes**
 	* None.
+* **Bugfixes**
+	* Fixed clearing cache for multi-page content by moving the page number for caching from the transient name to a transient array key.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -813,7 +813,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 = 10.1.1-dev.1 =
 
-(2022/02/05) Moved page numbers for caching from the transient name to a transient array element (resulting in larger but fewer transients).
+(2022/02/05) Fixed clearing cache for multi-page content by moving the page number for caching from the transient name to a transient array key.
 
 = 10.1.0 =
 
