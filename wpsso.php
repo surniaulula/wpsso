@@ -15,7 +15,7 @@
  * Requires At Least: 5.2
  * Tested Up To: 5.9.0
  * WC Tested Up To: 6.1.1
- * Version: 10.1.0-b.1
+ * Version: 10.1.0-b.2
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -78,6 +78,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		 */
 		public $lca          = 'wpsso';	// Plugin lowercase acronym (deprecated).
 		public $id           = 'wpsso';	// Plugin ID (since WPSSO Core v8.14.0).
+		public $json         = array();	// Schema json filters.
 		public $m            = array();	// Loaded module objects from core plugin.
 		public $m_ext        = array();	// Loaded module objects from extensions / add-ons.
 		public $cf           = array();	// Config array from WpssoConfig::get_config().
@@ -472,10 +473,12 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			foreach ( $classnames as $id => $classname ) {
 
 				/**
-				 * Note that the 'schema' shortcode object array element is used by the
-				 * WpssoSscFilters->filter_json_data_graph_element() method.
+				 * Note that Wpsso->sc[ 'schema' ] is used by WpssoSscFilters->filter_json_data_graph_element().
 				 */
-				$this->sc[ $id ] = new $classname( $this );
+				if ( ! isset( $this->sc[ $id ] ) ) {	// Just in case.
+
+					$this->sc[ $id ] = new $classname( $this );
+				}
 			}
 
 			if ( $this->debug->enabled ) {
@@ -530,7 +533,13 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			foreach ( $classnames as $id => $classname ) {
 
-				new $classname( $this );
+				/**
+				 * We only use the Wpsso->json array to prevent loading json filters more than once.
+				 */
+				if ( ! isset( $this->json[ $id ] ) ) {	// Just in case.
+				
+					new $classname( $this );
+				}
 			}
 
 			if ( $this->debug->enabled ) {
@@ -667,7 +676,8 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 						foreach ( $libs as $id => $label ) {
 
-							$lib_path  = $type_dir . '/' . $sub_dir . '/' . $id;
+							$lib_path = $type_dir . '/' . $sub_dir . '/' . $id;
+
 							$classname = apply_filters( $ext . '_load_lib', false, $lib_path );
 
 							if ( is_string( $classname ) && class_exists( $classname ) ) {
