@@ -203,19 +203,18 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		 */
 		public function filter_plugin_default_text_rows( $table_rows, $form ) {
 
-			$part_pos_label         = is_rtl() ? __( 'Prefix', 'wpsso' ) : __( 'Suffix', 'wpsso' );
 			$doc_title_disabled_msg = $this->p->msgs->maybe_doc_title_disabled();
 
 			$table_rows[] = '<td colspan="4">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
 			$table_rows[ 'plugin_title_part_site' ] = '' .
-				$form->get_th_html_locale( sprintf( _x( 'Title Tag Site %s', 'option label', 'wpsso' ), $part_pos_label ),
+				$form->get_th_html_locale( _x( 'Title Tag Site Suffix', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_title_part_site' ) .
 				'<td class="blank">' . $form->get_no_input_locale( 'plugin_title_part_site', $css_class = 'long_name' ) .
 				$doc_title_disabled_msg . '</td>';
 
 			$table_rows[ 'plugin_title_part_tagline' ] = '' .
-				$form->get_th_html_locale( sprintf( _x( 'Title Tag Tagline %s', 'option label', 'wpsso' ), $part_pos_label ),
+				$form->get_th_html_locale( _x( 'Title Tag Tagline Suffix', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_title_part_tagline' ) .
 				'<td class="blank">' . $form->get_no_input_locale( 'plugin_title_part_tagline', $css_class = 'wide' ) . '</td>';
 

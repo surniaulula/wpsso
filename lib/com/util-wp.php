@@ -19,19 +19,11 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 		public function __construct() {}
 
 		/**
-		 * Add a separator and a value to the left/right hand of the title.
+		 * Add a separator and a value to the left/right hand side of the title.
 		 */
-		public static function add_title_part( &$title, $title_sep, $part, $hand = null ) {
+		public static function add_title_part( &$title, $title_sep, $part, $hand = 'right' ) {
 
-			if ( null === $hand ) {
-
-				$hand = is_rtl() ? 'left' : 'right';
-			}
-
-			/**
-			 * Adding an empty $title_sep is fine, but an empty $part would only leave a hanging separator.
-			 */
-			if ( $part ) {
+			if ( $part ) {	// An empty $part would only leave a hanging separator.
 
 				if ( $title ) {
 

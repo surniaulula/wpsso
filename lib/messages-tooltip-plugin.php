@@ -258,37 +258,35 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 				 */
 				case 'tooltip-plugin_title_part_site':	// Title Tag Site Prefix / Suffix.
 
-					$part_pos_text = is_rtl() ? __( 'prefix', 'wpsso' ) : __( 'suffix', 'wpsso' );
-
 					$option_label = _x( 'Webpage Title Tag', 'option label', 'wpsso' );
 					$option_link  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', $option_label );
 
-					$text = sprintf( __( 'The SEO site name %1$s for the %2$s option value.', 'wpsso' ),
-						$part_pos_text, $option_link ) . ' ';
+					// translators: %1$s is the "Webpage Title Tag" option label.
+					$text = sprintf( __( 'The SEO site name suffix for the %1$s option value.', 'wpsso' ), $option_link ) . ' ';
 
 					$option_label = _x( 'WebSite Name', 'option label', 'wpsso' );
 					$option_link  = $this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_site', $option_label );
 
-					$text .= sprintf( __( 'The default SEO site name %1$s is the %2$s value (aka %3$s inline variable).', 'wpsso' ),
-						$part_pos_text, $option_link, '<code>%%sitename%%</code>' );
+					// translators: %1$s is the "WebSite Name" option label, %2$s is the "%%sitename%%" inline variable.
+					$text .= sprintf( __( 'The default SEO site name suffix is the %1$s value (aka %2$s inline variable).', 'wpsso' ),
+						$option_link, '<code>%%sitename%%</code>' );
 
 					break;
 
 				case 'tooltip-plugin_title_part_tagline':	// Title Tag Tagline Prefix / Suffix.
 
-					$part_pos_text = is_rtl() ? __( 'prefix', 'wpsso' ) : __( 'suffix', 'wpsso' );
-
 					$option_label = _x( 'Webpage Title Tag', 'option label', 'wpsso' );
 					$option_link  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', $option_label );
 
-					$text = sprintf( __( 'The SEO tagline %1$s for the %2$s option value.', 'wpsso' ),
-						$part_pos_text, $option_link ) . ' ';
+					// translators: %1$s is the "Webpage Title Tag" option label.
+					$text = sprintf( __( 'The SEO tagline suffix for the %1$s option value.', 'wpsso' ), $option_link ) . ' ';
 
 					$option_label = _x( 'WebSite Description', 'option label', 'wpsso' );
 					$option_link  = $this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_site', $option_label );
 
-					$text .= sprintf( __( 'The default SEO tagline %1$s is the %2$s value (aka %3$s inline variable).', 'wpsso' ),
-						$part_pos_text, $option_link, '<code>%%sitedesc%%</code>' );
+					// translators: %1$s is the "WebSite Description" option label, %2$s is the "%%sitedesc%%" inline variable.
+					$text .= sprintf( __( 'The default SEO tagline suffix is the %1$s value (aka %2$s inline variable).', 'wpsso' ),
+						$option_link, '<code>%%sitedesc%%</code>' );
 
 					break;
 

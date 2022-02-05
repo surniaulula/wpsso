@@ -279,12 +279,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			// Make sure the parts are ordered in a predictable left-to-right sequence.
 			$title_parts = array_merge( array( 'title' => null, 'page' => null, 'site' => null, 'tagline' => null ), $title_parts );
 
-			// If this is a right-to-left language, reverse the order of the parts.
-			if ( is_rtl() ) {
-
-				$title_parts = array_reverse( $title_parts );
-			}
-
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_arr( '$title_parts', $title_parts );
