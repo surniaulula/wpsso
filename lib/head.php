@@ -75,11 +75,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		}
 
 		/**
-		 * Can return an empty string if $mixed and $sharing_rul are false.
-		 *
 		 * $mixed = 'default' | 'current' | post ID | $mod array
 		 */
-		public function get_head_cache_index( $mixed = 'current', $canonical_url = false ) {
+		public function get_head_cache_index( $mixed = 'current' ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -94,11 +92,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 					$cache_index .= '_paged:' . $mixed[ 'paged' ];
 				}
-
-				if ( ! empty( $mixed[ 'comment_paged' ] ) && $mixed[ 'comment_paged' ] > 1 ) {	// False or numeric.
-
-					$cache_index .= '_cpage:' . $mixed[ 'comment_paged' ];
-				}
 			}
 
 			$cache_index .= '_locale:' . SucomUtil::get_locale( $mixed );
@@ -106,11 +99,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			if ( SucomUtil::is_amp() ) {	// Returns null, true, or false.
 
 				$cache_index .= '_amp:true';
-			}
-
-			if ( false !== $canonical_url ) {
-
-				$cache_index .= '_url:' . $canonical_url;
 			}
 
 			$cache_index = trim( $cache_index, '_' );	// Cleanup leading underscores.
@@ -575,7 +563,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'transient', $mod );
 			$cache_salt     = __CLASS__ . '::head_array(' . SucomUtil::get_mod_salt( $mod, $canonical_url ) . ')';
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
-			$cache_index    = $this->get_head_cache_index( $mod, $canonical_url );	// Includes locale, url, etc.
+			$cache_index    = $this->get_head_cache_index( $mod );
 			$cache_array    = array();
 
 			if ( $this->p->debug->enabled ) {
