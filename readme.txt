@@ -259,7 +259,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Title Tag Tagline Suffix / Prefix
 		* Comment Title
 * **Improvements**
-	* To optimize performance and memory usage, the initialization of Schema JSON filters has been moved to the `WpssoSchema->get_array()` method (so the filters are only loaded when needed).
+	* To optimize performance and memory usage, the initialization of Schema JSON filters has been moved to the `WpssoSchema->get_json_data()` method (so the filters are only loaded when needed).
 	* SSO toolbar notices show and hide after a time-out (2 seconds for success notices, 4 seconds for info notices, and no time-out for warnings and errors).
 	* Removed the SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Integration &gt; Use Filtered "SEO" Title option.
 	* Updated the list of available inline variables:
