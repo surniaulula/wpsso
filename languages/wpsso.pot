@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 10.1.1-dev.1\n"
+"Project-Id-Version: WPSSO Core 10.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4988,22 +4988,22 @@ msgctxt "lib file description"
 msgid "(code) Twitter Card Meta Tags"
 msgstr ""
 
-#: lib/admin-filters.php:253
+#: lib/admin-filters.php:260
 msgctxt "lib file description"
 msgid "(code) Knowledge Graph Organization Markup"
 msgstr ""
 
-#: lib/admin-filters.php:259
+#: lib/admin-filters.php:266
 msgctxt "lib file description"
 msgid "(code) Knowledge Graph Person Markup"
 msgstr ""
 
-#: lib/admin-filters.php:265
+#: lib/admin-filters.php:272
 msgctxt "lib file description"
 msgid "(code) Knowledge Graph WebSite Markup"
 msgstr ""
 
-#: lib/admin-filters.php:295
+#: lib/admin-filters.php:302
 msgid "(%d sub-types)"
 msgstr ""
 
@@ -5381,7 +5381,7 @@ msgstr ""
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
-#: lib/admin.php:1312 lib/options.php:894 lib/register.php:162
+#: lib/admin.php:1312 lib/options.php:900 lib/register.php:162
 msgid "A background task will begin shortly to clear all caches."
 msgstr ""
 
@@ -5653,12 +5653,12 @@ msgctxt "option label"
 msgid "WebSite Publisher Person"
 msgstr ""
 
-#: lib/admin.php:2926 lib/options.php:1182
+#: lib/admin.php:2926 lib/options.php:1188
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:2931 lib/options.php:1187
+#: lib/admin.php:2931 lib/options.php:1193
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
@@ -9967,225 +9967,225 @@ msgid "cropped"
 msgstr ""
 
 #. translators: %s is the option key name.
-#: lib/options.php:487
+#: lib/options.php:493
 msgid ""
 "Non-standard value found for the \"%s\" option - resetting the option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:732
+#: lib/options.php:738
 msgid ""
 "Option keys \"%1$s\" (%2$d) and \"%3$s\" (%4$d) have an aspect ratio of "
 "%5$s:1, which not equal to the required image ratio of %6$s:1."
 msgstr ""
 
-#: lib/options.php:741
+#: lib/options.php:747
 msgid ""
 "Option keys \"%1$s\" (%2$d) and \"%3$s\" (%4$d) have an aspect ratio of "
 "%5$s:1, which is equal to / or greater than the maximum image ratio of "
 "%6$s:1."
 msgstr ""
 
-#: lib/options.php:749
+#: lib/options.php:755
 msgid "These options have been reset to their default values."
 msgstr ""
 
-#: lib/options.php:783
+#: lib/options.php:789
 msgid ""
 "The Facebook App ID must be numeric and 32 characters or less in length - "
 "the value of \"%s\" is not valid."
 msgstr ""
 
-#: lib/options.php:893
+#: lib/options.php:899
 msgid "Plugin settings have been upgraded and saved."
 msgstr ""
 
 #. translators: %s is a link to the option label.
-#: lib/options.php:1194
+#: lib/options.php:1200
 msgid "The %s image is missing and required."
 msgstr ""
 
 #. translators: %s is a link to the option label.
-#: lib/options.php:1209
+#: lib/options.php:1215
 msgid "The %s image dimensions cannot be determined."
 msgstr ""
 
 #. translators: %s is the image URL.
-#: lib/options.php:1212
+#: lib/options.php:1218
 msgid ""
 "Please make sure this site can access %s using the PHP getimagesize() "
 "function."
 msgstr ""
 
 #. translators: %1$s is a link to the option label.
-#: lib/options.php:1226
+#: lib/options.php:1232
 msgid "The %1$s image dimensions are %2$s and must be greater than %3$s."
 msgstr ""
 
 #. translators: %s is the image URL.
-#: lib/options.php:1230
+#: lib/options.php:1236
 msgid "Please correct the %s logo image or select a different logo image."
 msgstr ""
 
 #. translators: %1$s is a link to the option label.
-#: lib/options.php:1245
+#: lib/options.php:1251
 msgid "The %1$s image dimensions are %2$s and must be exactly %3$s."
 msgstr ""
 
 #. translators: %s is the image URL.
-#: lib/options.php:1249
+#: lib/options.php:1255
 msgid "Please correct the %s banner image or select a different banner image."
 msgstr ""
 
-#: lib/options.php:1284
+#: lib/options.php:1290
 msgid ""
 "The value of option \"%s\" must be alpha-numeric - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1285
+#: lib/options.php:1291
 msgid ""
 "The value of option \"%s\" must be blank or numeric - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1286
+#: lib/options.php:1292
 msgid ""
 "The value of option \"%s\" must be a CSS color code - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1287
+#: lib/options.php:1293
 msgid ""
 "The value of option \"%s\" must be a comma-delimited list of URL(s) - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:1288
+#: lib/options.php:1294
 msgid ""
 "The value of option \"%s\" must be a yyyy-mm-dd date - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1289
+#: lib/options.php:1295
 msgid ""
 "The value of option \"%s\" must be HTML code - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1290
+#: lib/options.php:1296
 msgid ""
 "The value of option \"%s\" must be an image ID - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1291
+#: lib/options.php:1297
 msgid ""
 "The value of option \"%s\" must be a valid image URL - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1292
+#: lib/options.php:1298
 msgid ""
 "The value of option \"%s\" cannot be an empty string - resetting this option "
 "to its default value."
 msgstr ""
 
-#: lib/options.php:1293
+#: lib/options.php:1299
 msgid ""
 "The value of option \"%s\" must be numeric - resetting this option to its "
 "default value."
 msgstr ""
 
-#: lib/options.php:1294
+#: lib/options.php:1300
 msgid ""
 "The value of option \"%1$s\" must be equal to or greather than %2$s - "
 "resetting this option to its default value."
 msgstr ""
 
-#: lib/options.php:1295
+#: lib/options.php:1301
 msgid ""
 "The value of option \"%s\" must be a hh:mm time - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1296
+#: lib/options.php:1302
 msgid ""
 "The value of option \"%s\" must be a valid URL - resetting this option to "
 "its default value."
 msgstr ""
 
-#: lib/options.php:1776
+#: lib/options.php:1782
 msgctxt "option value"
 msgid "%%sitename%%"
 msgstr ""
 
-#: lib/options.php:1780
+#: lib/options.php:1786
 msgctxt "option value"
 msgid "%%sitedesc%%"
 msgstr ""
 
-#: lib/options.php:1784
+#: lib/options.php:1790
 msgctxt "option value"
 msgid "Image:"
 msgstr ""
 
-#: lib/options.php:1788
+#: lib/options.php:1794
 msgctxt "option value"
 msgid "Caption:"
 msgstr ""
 
-#: lib/options.php:1792
+#: lib/options.php:1798
 msgctxt "option value"
 msgid "Comment by %%comment_author%% on %%comment_date%%"
 msgstr ""
 
-#: lib/options.php:1796
+#: lib/options.php:1802
 msgctxt "option value"
 msgid "No Title"
 msgstr ""
 
-#: lib/options.php:1800
+#: lib/options.php:1806
 msgctxt "option value"
 msgid "No description."
 msgstr ""
 
-#: lib/options.php:1804
+#: lib/options.php:1810
 msgctxt "option value"
 msgid "Search Results %%sep%% %%query_search%%"
 msgstr ""
 
-#: lib/options.php:1808
+#: lib/options.php:1814
 msgctxt "option value"
 msgid "Search results for &#8220;%%query_search%%&#8221;."
 msgstr ""
 
-#: lib/options.php:1812
+#: lib/options.php:1818
 msgctxt "option value"
 msgid "%%query_year%%"
 msgstr ""
 
-#: lib/options.php:1816
+#: lib/options.php:1822
 msgctxt "option value"
 msgid "Yearly archive for %%query_year%%."
 msgstr ""
 
-#: lib/options.php:1820
+#: lib/options.php:1826
 msgctxt "option value"
 msgid "%%query_month%% %%query_year%%"
 msgstr ""
 
-#: lib/options.php:1824
+#: lib/options.php:1830
 msgctxt "option value"
 msgid "Monthly archive for %%query_month%%, %%query_year%%."
 msgstr ""
 
-#: lib/options.php:1828
+#: lib/options.php:1834
 msgctxt "option value"
 msgid "%%query_month%% %%query_day%%, %%query_year%%"
 msgstr ""
 
-#: lib/options.php:1832
+#: lib/options.php:1838
 msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr ""

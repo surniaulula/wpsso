@@ -234,6 +234,13 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 
 		public function filter_status_std_features_schema( $features, $ext, $info ) {
 
+			/**
+			 * To optimize performance and memory usage, the 'wpsso_init_json_filters' action is run at the start of
+			 * WpssoSchema->get_json_data() when the Schema filters are needed. The Wpsso->init_json_filters() action
+			 * then unhooks itself from the action, so it can only be run once.
+			 */
+			do_action( 'wpsso_init_json_filters' );
+
 			$google_tab_url = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_google' );
 
 			if ( $this->p->avail[ 'p' ][ 'schema' ] ) {

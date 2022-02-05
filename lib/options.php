@@ -142,7 +142,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				/**
-				 * Maybe import metadata from known SEO plugins.
+				 * Import metadata and block attributes from known SEO plugins.
+				 *
+				 * 'plugin_import_aioseop_meta'
+				 * 'plugin_import_rankmath_meta'
+				 * 'plugin_import_seoframework_meta'
+				 * 'plugin_import_wpseo_meta'
+				 * 'plugin_import_wpseo_blocks'
 				 */
 				foreach ( array(
 					'aioseop'      => 'aioseo_options',			// All in One SEO Pack.
