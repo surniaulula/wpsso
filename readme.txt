@@ -251,7 +251,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 10.1.0-b.1 (2022/02/04)**
+**Version 10.1.0-b.2 (2022/02/05)**
 
 * **New Features**
 	* Added new options under the SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Default Text tab:
@@ -796,9 +796,9 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 10.1.0-b.1 =
+= 10.1.0-b.2 =
 
-(2022/02/04) Added new options under the SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Default Text tab.
+(2022/02/05) Added new options under the SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Default Text tab.
 
 = 10.0.0 =
 
