@@ -123,8 +123,8 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			/**
 			 * To optimize performance and memory usage, the 'wpsso_init_json_filters' action is run at the start of
-			 * WpssoSchema->get_array() when the Schema filters are needed. The Wpsso->init_json_filters() action then
-			 * unhooks itself from the action, so it can only be run once.
+			 * WpssoSchema->get_json_data() when the Schema filters are needed. The Wpsso->init_json_filters() action
+			 * then unhooks itself from the action, so it can only be run once.
 			 */
 			add_action( 'wpsso_init_json_filters', array( $this, 'init_json_filters' ), -1000, 0 );
 
@@ -516,8 +516,8 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 		/**
 		 * To optimize performance and memory usage, the 'wpsso_init_json_filters' action is run at the start of
-		 * WpssoSchema->get_array() when the Schema filters are needed. The Wpsso->init_json_filters() action then unhooks
-		 * itself from the action, so it can only be run once.
+		 * WpssoSchema->get_json_data() when the Schema filters are needed. The Wpsso->init_json_filters() action then
+		 * unhooks itself from the action, so it can only be run once.
 		 */
 		public function init_json_filters() {
 

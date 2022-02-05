@@ -276,14 +276,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				unset( $title_parts[ 'page' ] );	// The title value already contains the page number.
 			}
 
-			/**
-			 * Make sure the parts are in a predictable left-to-right order.
-			 */
+			// Make sure the parts are ordered in a predictable left-to-right sequence.
 			$title_parts = array_merge( array( 'title' => null, 'page' => null, 'site' => null, 'tagline' => null ), $title_parts );
 
-			/**
-			 * If this is a right-to-left language, then reverse the order of the parts.
-			 */
+			// If this is a right-to-left language, reverse the order of the parts.
 			if ( is_rtl() ) {
 
 				$title_parts = array_reverse( $title_parts );

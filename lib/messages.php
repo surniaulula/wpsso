@@ -835,7 +835,16 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				$html .= '<p class="status-msg">' . __( 'WordPress is set to discourage search engines from indexing this site.', 'wpsso' ) . '</p>';
 			}
 
-			$html .= '<p class="status-msg">' . __( 'WordPress sitemaps are disabled.', 'wpsso' ) . '</p>';
+			$html .= '<p class="status-msg">' . __( 'The WordPress sitemaps functionality is disabled.', 'wpsso' ) . '</p>';
+
+			/**
+			 * Check if a theme or another plugin has disabled the Wordpress sitemaps functionality using the
+			 * 'wp_sitemaps_enabled' filter.
+			 */
+			if ( ! apply_filters( 'wp_sitemaps_enabled', true ) ) {
+
+				$html .= '<p class="status-msg">' . __( 'A theme or plugin is returning <code>false</code> for the \'wp_sitemaps_enabled\' filter.', 'wpsso' ) . '</p>';
+			}
 
 			$html .= '<p class="status-msg">' . __( 'No options available.', 'wpsso' ) . '</p>';
 

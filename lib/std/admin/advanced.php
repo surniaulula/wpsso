@@ -331,8 +331,8 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		 */
 		public function filter_plugin_image_sizes_rows( $table_rows, $form ) {
 
-			$pin_img_disabled     = $pin_img_disabled_msg ? true : false;
 			$pin_img_disabled_msg = $this->p->msgs->maybe_pin_img_disabled( $extra_css_class = 'inline' );
+			$pin_img_disabled     = $pin_img_disabled_msg ? true : false;
 
 			if ( $info_msg = $this->p->msgs->get( 'info-image_dimensions' ) ) {
 

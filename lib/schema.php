@@ -104,23 +104,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $md_opts;
 		}
 
-		public function has_json_data_filter( array $mod, $type_url = '' ) {
-
-			$filter_name = $this->get_json_data_filter( $mod, $type_url );
-
-			return empty( $filter_name ) ? false : has_filter( $filter_name );
-		}
-
-		public function get_json_data_filter( array $mod, $type_url = '' ) {
-
-			if ( empty( $type_url ) ) {
-
-				$type_url = $this->get_mod_schema_type_url( $mod );
-			}
-
-			return 'wpsso_json_data_' . SucomUtil::sanitize_hookname( $type_url );
-		}
-
 		/**
 		 * Called by WpssoHead->get_head_array().
 		 *
@@ -132,13 +115,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$this->p->debug->mark();
 			}
-
-			/**
-			 * To optimize performance and memory usage, the 'wpsso_init_json_filters' action is run at the start of
-			 * WpssoSchema->get_array() when the Schema filters are needed. The Wpsso->init_json_filters() action then
-			 * unhooks itself from the action, so it can only be run once.
-			 */
-			do_action( 'wpsso_init_json_filters' );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -207,8 +183,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 *	[person]       => false
 			 * )
 			 *
-			 * Hooked by the WpssoBcFilters->filter_json_array_schema_page_type_ids() filter at add its
-			 * 'breadcrumb.list' type id.
+			 * Hooked by WpssoBcFilters->filter_json_array_schema_page_type_ids() to add its 'breadcrumb.list' type id.
 			 */
 			$page_type_ids = apply_filters( 'wpsso_json_array_schema_page_type_ids', $page_type_ids, $mod );
 
@@ -347,6 +322,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$this->p->debug->mark();
 			}
+
+			/**
+			 * To optimize performance and memory usage, the 'wpsso_init_json_filters' action is run at the start of
+			 * WpssoSchema->get_json_data() when the Schema filters are needed. The Wpsso->init_json_filters() action
+			 * then unhooks itself from the action, so it can only be run once.
+			 */
+			do_action( 'wpsso_init_json_filters' );
 
 			if ( empty( $page_type_id ) ) {
 
@@ -1465,6 +1447,23 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			$children = $this->get_schema_type_children( $type_id );
 
 			return count( $children );
+		}
+
+		public function has_json_data_filter( array $mod, $type_url = '' ) {
+
+			$filter_name = $this->get_json_data_filter( $mod, $type_url );
+
+			return empty( $filter_name ) ? false : has_filter( $filter_name );
+		}
+
+		public function get_json_data_filter( array $mod, $type_url = '' ) {
+
+			if ( empty( $type_url ) ) {
+
+				$type_url = $this->get_mod_schema_type_url( $mod );
+			}
+
+			return 'wpsso_json_data_' . SucomUtil::sanitize_hookname( $type_url );
 		}
 
 		/**
