@@ -292,7 +292,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new `WpssoHead->clear_head_array()` method.
 	* Added a new `WpssoPage->clear_the_content()` method.
 	* Added a new `WpssoPage->get_the_description()` method.
-	* Added a new `SucomUtilWP::add_title_part()` method to add a separator and value (to the left/right of the title).
+	* Added a new `SucomUtilWP::add_title_part()` method to add a separator and value.
 	* Refactored the `SucomUtil::get_mod_salt()` method to handle `$mod = false`.
 	* Removed the `WpssoPage->get_text_and_hashtags()` method.
 	* Removed application of the 'wp_title' filter from `WpssoPage->get_the_title()`.
