@@ -287,6 +287,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* %%query_day%%
 		* %%searchphrase%%
 * **Bugfixes**
+	* Fixed back-end/front-end cache salt mismatch, which prevented the back-end from peroperly clearing the cache when updating a post/page.
 	* Fixed handling of possible `WP_Error` object from `wp_get_attachment_metadata()`.
 * **Developer Notes**
 	* Added a new `WpssoHead->clear_head_array()` method.
