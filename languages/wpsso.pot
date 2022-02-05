@@ -4905,21 +4905,21 @@ msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1405
+#: lib/abstract/wp-meta.php:1407
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1736 lib/json-filters/type/claimreview.php:69
+#: lib/abstract/wp-meta.php:1738 lib/json-filters/type/claimreview.php:69
 msgid "A claim review cannot be the subject of another claim review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1738
+#: lib/abstract/wp-meta.php:1740
 msgid ""
 "Please select a subject webpage type that better describes the subject of "
 "the webpage (ie. the content) being reviewed."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:2494
+#: lib/abstract/wp-meta.php:2496
 msgid "adding schema images"
 msgstr ""
 
@@ -6435,23 +6435,23 @@ msgctxt "submit button"
 msgid "Validate %s"
 msgstr ""
 
-#: lib/head.php:639
+#: lib/head.php:641
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:648
+#: lib/head.php:650
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:657
+#: lib/head.php:659
 msgid "adding meta name meta tags"
 msgstr ""
 
-#: lib/head.php:666
+#: lib/head.php:668
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:686
+#: lib/head.php:688
 msgid "adding schema json-ld markup"
 msgstr ""
 
@@ -10190,11 +10190,11 @@ msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr ""
 
-#: lib/page.php:1096
+#: lib/page.php:1098
 msgid "Page %s"
 msgstr ""
 
-#: lib/page.php:2249
+#: lib/page.php:2253
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] ""

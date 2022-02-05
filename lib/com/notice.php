@@ -1472,7 +1472,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					border:0;
 					background:inherit;
 				}
-				#wpadminbar #wp-toolbar li.has-toolbar-notices.hover-timeout div.ab-sub-wrapper {
+				#wpadminbar #wp-toolbar li.has-toolbar-notices.show-timeout div.ab-sub-wrapper {
 					display:block;
 				}
 				#wpadminbar #wp-toolbar li.has-toolbar-notices div.ab-item {

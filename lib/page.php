@@ -531,23 +531,22 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				} elseif ( ! empty( $mod[ 'query_vars' ][ 'paged' ] ) ) {
 
 					$mod[ 'paged' ] = $mod[ 'query_vars' ][ 'paged' ];
-
-				} else {
-
-					$mod[ 'paged' ] = 1;
 				}
 			}
 
 			/**
-			 * The 'paged_total' can be pre-defined by WpssoPost->get_mod() for posts with content (ie. singular) and
-			 * paging in their content.
+			 * Note that 'paged_total' can be pre-defined by WpssoPost->get_mod() for posts with content (ie. singular)
+			 * and paging in their content.
 			 */
 			if ( empty( $mod[ 'paged_total' ] ) ) {	// False by default.
 
-				$mod[ 'paged_total' ] = empty( $wp_query->max_num_pages ) ? 1 : $wp_query->max_num_pages;
+				if ( ! empty( $wp_query->max_num_pages ) ) {
+
+					$mod[ 'paged_total' ] = $wp_query->max_num_pages;
+				}
 			}
 
-			if ( $mod[ 'paged' ] > $mod[ 'paged_total' ] ) {	// Just in case.
+			if ( $mod[ 'paged' ] && $mod[ 'paged_total' ] && $mod[ 'paged' ] > $mod[ 'paged_total' ] ) {	// Just in case.
 
 				if ( $this->p->debug->enabled ) {
 
@@ -559,7 +558,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( empty( $mod[ 'comment_paged' ] ) ) {	// False by default.
 
-				$mod[ 'comment_paged' ] = empty( $mod[ 'query_vars' ][ 'cpage' ] ) ? 1 : $mod[ 'query_vars' ][ 'cpage' ];
+				if ( ! empty( $mod[ 'query_vars' ][ 'cpage' ] ) ) {
+
+					$mod[ 'comment_paged' ] = $mod[ 'query_vars' ][ 'cpage' ];
+				}
 			}
 
 			$mod[ 'use_post' ] = $use_post;
@@ -1703,7 +1705,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$canonical_url = $this->p->util->get_canonical_url( $mod );
 			$cache_md5_pre = 'wpsso_c_';
-			$cache_salt    = __CLASS__ . '::get_the_content(' . SucomUtil::get_mod_salt( $mod, $canonical_url ) . ')';
+			$cache_salt    = __CLASS__ . '::the_content(' . SucomUtil::get_mod_salt( $mod, $canonical_url ) . ')';
 			$cache_id      = $cache_md5_pre . md5( $cache_salt );
 
 			if ( $this->p->debug->enabled ) {
@@ -1713,7 +1715,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'wp cache id = ' . $cache_id );
 			}
 
-			return wp_cache_delete( $cache_id );
+			wp_cache_delete( $cache_id );
+
+			return;
 		}
 
 		/**
@@ -1733,7 +1737,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$canonical_url  = $this->p->util->get_canonical_url( $mod );
 			$cache_md5_pre  = 'wpsso_c_';
 			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'wp_cache' );
-			$cache_salt     = __CLASS__ . '::get_the_content(' . SucomUtil::get_mod_salt( $mod, $canonical_url ) . ')';
+			$cache_salt     = __CLASS__ . '::the_content(' . SucomUtil::get_mod_salt( $mod, $canonical_url ) . ')';
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 			$cache_index    = 'locale:' . SucomUtil::get_locale( $mod ) . '_filter:' . ( $filter_content ? 'true' : 'false' );
 			$cache_array    = array();

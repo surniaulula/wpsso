@@ -484,7 +484,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			$cache_md5_pre = 'wpsso_h_';	// Transient prefix for head markup.
-			$cache_salt    = __CLASS__ . '::get_head_array(' . SucomUtil::get_mod_salt( $mod, $canonical_url ) . ')';
+			$cache_salt    = __CLASS__ . '::head_array(' . SucomUtil::get_mod_salt( $mod, $canonical_url ) . ')';
 			$cache_id      = $cache_md5_pre . md5( $cache_salt );
 
 			if ( $this->p->debug->enabled ) {
@@ -494,7 +494,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->log( 'cache id = ' . $cache_id );
 			}
 
-			return delete_transient( $cache_id );
+			delete_transient( $cache_id );
+
+			return;
 		}
 
 		/**
@@ -561,7 +563,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 */
 			$cache_md5_pre  = 'wpsso_h_';	// Transient prefix for head markup.
 			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'transient', $mod );
-			$cache_salt     = __CLASS__ . '::get_head_array(' . SucomUtil::get_mod_salt( $mod, $canonical_url ) . ')';
+			$cache_salt     = __CLASS__ . '::head_array(' . SucomUtil::get_mod_salt( $mod, $canonical_url ) . ')';
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 			$cache_index    = $this->get_head_cache_index( $mod, $canonical_url );	// Includes locale, url, etc.
 			$cache_array    = array();

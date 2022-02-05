@@ -142,9 +142,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			'name_transl'            => false,	// Module name translated.
 			'obj'                    => false,	// Module object.
 			'query_vars'             => array(),	// Defined by WpssoPage->get_mod().
-			'paged'                  => false,	// Aka $wp_query->query_vars[ 'paged' ].
-			'paged_total'            => false,	// Aka $wp_query->max_num_pages.
-			'comment_paged'          => false,	// Aka $wp_query->query_vars[ 'cpage' ].
+			'paged'                  => false,	// False or numeric (aka $wp_query->query_vars[ 'paged' ]).
+			'paged_total'            => false,	// False or numberic (aka $wp_query->max_num_pages).
+			'comment_paged'          => false,	// False or numeric (aka $wp_query->query_vars[ 'cpage' ]).
 			'is_404'                 => false,
 			'is_archive'             => false,
 			'is_attachment'          => false,	// Post type is 'attachment'.
@@ -1339,11 +1339,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		protected function clear_mod_cache( array $mod ) {
 
 			/**
-			 * WordPress stores data using a post, term, or user ID, along with a group string.
-			 */
-			wp_cache_delete( $mod[ 'id' ], $mod[ 'name' ] . '_meta' );
-
-			/**
 			 * Clear the WpssoPage->get_the_content() cache.
 			 */
 			$this->p->page->clear_the_content( $mod );
@@ -1352,6 +1347,13 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			 * Clear the WpssoHead->get_head_array() cache.
 			 */
 			$this->p->head->clear_head_array( $mod );
+
+			/**
+			 * WordPress stores data using a post, term, or user ID, along with a group string.
+			 */
+			wp_cache_delete( $mod[ 'id' ], $mod[ 'name' ] . '_meta' );
+
+			update_meta_cache( $mod[ 'name' ], $mod[ 'id' ] );
 
 			do_action( 'wpsso_clear_mod_cache', $mod );
 		}

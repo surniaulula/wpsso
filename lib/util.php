@@ -2364,7 +2364,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			} else {
 
-				$page_number = $mod[ 'paged' ];
+				$page_number = $mod[ 'paged' ];	// False or a number.
 			}
 
 			return $page_number;

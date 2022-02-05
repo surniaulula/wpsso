@@ -321,24 +321,43 @@ function sucomToolbarNotices( pluginId, adminPageL10n ) {
 
 			if ( noticeTime ) {
 
-				menuItem.addClass( 'hover-timeout' );
+				menuItem.addClass( 'show-timeout' );
 
 				jQuery( document ).on( 'click', function( event ) {
 
-					menuItem.removeClass( 'hover-timeout' );
+					/**
+					 * Remove the 'show-timeout' class if we're clicking anywhere outside the notices menu.
+					 */
+					if ( ! menuItem.is( event.target ) && ! menuItem.has( event.target ).length ) {
 
-					jQuery( document ).off( 'click', arguments.callee );
+						menuItem.removeClass( 'show-timeout' );
+					
+						jQuery( document ).off( 'click', arguments.callee );
+					}
 				} );
 
 				setTimeout( function() {
 				
-					menuItem.removeClass( 'hover-timeout' );
+					menuItem.removeClass( 'show-timeout' );
 
 				}, noticeTime );
 
 			} else {
 
 				jQuery( menuId ).addClass( 'hover' );
+				
+				jQuery( document ).on( 'click', function( event ) {
+
+					/**
+					 * Remove the 'hover' class if we're clicking anywhere outside the notices menu.
+					 */
+					if ( ! menuItem.is( event.target ) && ! menuItem.has( event.target ).length ) {
+				
+						menuItem.removeClass( 'hover' );
+					
+						jQuery( document ).off( 'click', arguments.callee );
+					}
+				} );
 			}
 		}
 	} );
