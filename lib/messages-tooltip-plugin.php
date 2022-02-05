@@ -281,7 +281,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 					$option_label = _x( 'Webpage Title Tag', 'option label', 'wpsso' );
 					$option_link  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', $option_label );
 
-					$text = sprintf( __( 'The SEO tagline 1$s for the %2$s option value.', 'wpsso' ),
+					$text = sprintf( __( 'The SEO tagline %1$s for the %2$s option value.', 'wpsso' ),
 						$part_pos_text, $option_link ) . ' ';
 
 					$option_label = _x( 'WebSite Description', 'option label', 'wpsso' );

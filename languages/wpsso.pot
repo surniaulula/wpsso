@@ -8424,7 +8424,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip-plugin.php:284
-msgid "The SEO tagline 1$s for the %2$s option value."
+msgid "The SEO tagline %1$s for the %2$s option value."
 msgstr ""
 
 #: lib/messages-tooltip-plugin.php:287 lib/submenu/essential.php:103

@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 10.1.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2022-02-04 17:45-0800\n"
+"PO-Revision-Date: 2022-02-04 17:50-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -2555,13 +2555,13 @@ msgstr "Suffixe"
 #: lib/std/admin/advanced.php:212
 msgctxt "option label"
 msgid "Title Tag Site %s"
-msgstr "%s site balise titre"
+msgstr "%s site de balise titre"
 
 #: gettext/gettext-lib-pro.php:32 lib/pro/admin/advanced.php:223
 #: lib/std/admin/advanced.php:218
 msgctxt "option label"
 msgid "Title Tag Tagline %s"
-msgstr "%s slogan balise titre"
+msgstr "%s slogan de balise titre"
 
 #: gettext/gettext-lib-pro.php:33 lib/pro/admin/advanced.php:229
 #: lib/std/admin/advanced.php:223
