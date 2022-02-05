@@ -251,7 +251,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 10.1.1-dev.1 (2022/02/05)**
+**Version 10.1.1-rc.1 (2022/02/05)**
 
 * **New Features**
 	* None.
@@ -811,7 +811,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 10.1.1-dev.1 =
+= 10.1.1-rc.1 =
 
 (2022/02/05) Fixed clearing cache for multi-page content by moving the page number for caching from the transient name to a transient array key.
 
