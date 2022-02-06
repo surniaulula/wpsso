@@ -21,6 +21,8 @@
 
 %%page%%
 
+%%pagename%%
+
 %%pagenumber%%
 
 %%pagetotal%%

@@ -1471,6 +1471,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					}
 				}
 
+			} elseif ( $mod[ 'is_404' ] ) {
+
+				$title_text = $this->p->opt->get_text( 'plugin_404_page_title' );
+
 			} elseif ( $mod[ 'is_search' ] ) {
 
 				$title_text = $this->p->opt->get_text( 'plugin_search_page_title' );
@@ -1629,6 +1633,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						$desc_text = $user_obj->description;
 					}
 				}
+
+			} elseif ( $mod[ 'is_404' ] ) {
+
+				$desc_text = $this->p->opt->get_text( 'plugin_404_page_desc' );
 
 			} elseif ( $mod[ 'is_search' ] ) {
 

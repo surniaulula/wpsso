@@ -312,6 +312,18 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
+				case 'tooltip-plugin_404_page_title':	// 404 Page Title.
+
+					$text = __( 'The 404 page title used for meta tags and Schema markup.' );
+
+					break;
+
+				case 'tooltip-plugin_404_page_desc':	// 404 Page Description.
+
+					$text = __( 'The 404 page description used for meta tags and Schema markup.' );
+
+					break;
+
 				case 'tooltip-plugin_no_title_text':	// No Title Text.
 
 					$text = __( 'A fallback string to use when there is no title text available (for example, "No Title").' );
