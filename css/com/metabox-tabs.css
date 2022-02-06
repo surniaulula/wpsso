@@ -205,6 +205,10 @@ div.sucom-metabox-tabs.vertical > div.sucom-tabset {
 	width:1.1em;
 }
 
+body.rtl .sucom-tablink-icon::before {
+	margin:0 0 0 8px;
+}
+
 .sucom-tablink-icon.sucom-tablink-href_body_section::before {		/* SSO > Strip Microdata > Strip Schema Microdata > Body Section tab. */
 	content:"\e815";	/* .icon-download-bar */
 }

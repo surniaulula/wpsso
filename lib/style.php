@@ -280,13 +280,19 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				}
 				#adminmenu ul.wp-submenu div.wpsso-menu-item.dashicons-before {
 					max-width:1.3em;
-					padding-right:6px;
+					padding:0 6px 0 0;
+				}
+				body.rtl #adminmenu ul.wp-submenu div.wpsso-menu-item.dashicons-before {
+					padding:0 0 0 6px;
 				}
 				#adminmenu ul.wp-submenu div.wpsso-menu-item.dashicons-before::before {
 					font-size:1.3em;
 					text-align:left;
 					opacity:0.5;
 					filter:alpha(opacity=50);	/* IE8 and earlier. */
+				}
+				body.rtl #adminmenu ul.wp-submenu div.wpsso-menu-item.dashicons-before::before {
+					text-align:right;
 				}
 				#adminmenu ul.wp-submenu div.wpsso-menu-item.menu-item-label {
 					width:100%;

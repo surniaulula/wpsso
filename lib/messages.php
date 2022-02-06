@@ -661,6 +661,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				if ( 0 === strpos( $msg_key, 'tooltip-' ) ) {
 
 					$tooltip_class = $this->p->cf[ 'form' ][ 'tooltip_class' ];
+
 					$tooltip_icon  = '<span class="' . $tooltip_class . '-icon"></span>';
 
 					if ( false === strpos( $text, '<span class="' . $tooltip_class . '"' ) ) {	// Only add the tooltip wrapper once.
