@@ -103,7 +103,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$cache_index = trim( $cache_index, '_' );	// Cleanup leading underscores.
 
-			$cache_index = apply_filters( 'wpsso_head_cache_index', $cache_index, $mixed, $canonical_url );
+			$cache_index = apply_filters( 'wpsso_head_cache_index', $cache_index, $mixed );
 
 			if ( $this->p->debug->enabled ) {
 

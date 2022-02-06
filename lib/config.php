@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'     => '10.1.1-rc.1',	// Plugin version.
-					'opt_version' => '871',		// Increment when changing default option values.
+					'opt_version' => '872',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1240,7 +1240,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_vid_prev_img'         => 1,		// Include Video Preview Images.
 
 					/**
-					 * Advanced Settings > Document Types > Open Graph tab.
+					 * Advanced Settings > Document Types > Open Graph.
 					 */
 					'og_type_for_archive_page'      => 'website',
 					'og_type_for_home_page'         => 'website',
@@ -1325,7 +1325,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_desc_max_len'    => 300,	// Schema Description Max. Length (hard limit).
 
 					/**
-					 * Advanced Settings > Document Types > Schema tab.
+					 * Advanced Settings > Document Types > Schema.
 					 */
 					'schema_type_for_archive_page' => 'item.list',
 					'schema_type_for_home_page'    => 'website',
@@ -1373,12 +1373,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_tax_yith_product_brand' => 'item.list',	// For YITH WooCommerce Brands Add-on.
 
 					/**
-					 * Advanced Settings > Schema Properties > Book tab.
+					 * Advanced Settings > Schema Properties > Book.
 					 */
 					'schema_def_book_format' => 'none',	// Default Book Format.
 
 					/**
-					 * Advanced Settings > Schema Properties > Creative Work tab.
+					 * Advanced Settings > Schema Properties > Creative Work.
 					 *
 					 * Note that 'schema_def_pub_org_id' may be updated, in the WpssoOptions->get_defaults()
 					 * method, based on the 'site_pub_schema_type' value.
@@ -1390,7 +1390,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_def_prov_person_id'  => 'none',	// Default Service Prov. Person.
 
 					/**
-					 * Advanced Settings > Schema Properties > Event tab.
+					 * Advanced Settings > Schema Properties > Event.
 					 */
 					'schema_def_event_attendance'          => 'https://schema.org/OfflineEventAttendanceMode',	// Default Attendance.
 					'schema_def_event_location_id'         => 'none',						// Default Physical Venue.
@@ -1400,14 +1400,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_def_event_performer_person_id' => 'none',						// Default Performer Person.
 
 					/**
-					 * Advanced Settings > Schema Properties > Job Posting tab.
+					 * Advanced Settings > Schema Properties > Job Posting.
 					 */
 					'schema_def_job_hiring_org_id' => 'none',	// Default Hiring Org.
 					'schema_def_job_location_id'   => 'none',	// Default Job Location.
 					'schema_def_job_location_type' => 'none',	// Default Job Location Type.
 
 					/**
-					 * Advanced Settings > Schema Properties > Review tab.
+					 * Advanced Settings > Schema Properties > Review.
 					 */
 					'schema_def_review_item_type' => 'product',	// Default Subject Webpage Type.
 
@@ -1613,7 +1613,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_name_yandex-verification'                 => 1,	// Yandex Website Verification ID.
 
 					/**
-					 * Advanced Settings > Plugin Admin tab.
+					 * Advanced Settings > Plugin Admin.
 					 */
 					'plugin_clean_on_uninstall' => 0,	// Remove Settings on Uninstall.
 					'plugin_cache_disable'      => 0,	// Disable Cache for Debugging.
@@ -1621,7 +1621,33 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_load_mofiles'       => 0,	// Use Local Plugin Translations.
 
 					/**
-					 * Advanced Settings > Interface tab.
+					 * Advanced Settings > Integration.
+					 */
+					'plugin_title_tag'          => 'schema_title',		// Webpage Title Tag.
+					'plugin_filter_content'     => 0,			// Use Filtered Content.
+					'plugin_filter_excerpt'     => 0,			// Use Filtered Excerpt.
+					'plugin_page_excerpt'       => 0,			// Enable Excerpt for Pages.
+					'plugin_page_tags'          => 0,			// Enable Tags for Pages.
+					'plugin_new_user_is_person' => 0,			// Add Person Role for New Users.
+					'plugin_inherit_featured'   => 1,			// Inherit Featured Image.
+					'plugin_inherit_custom'     => 1,			// Inherit Custom Images.
+					'plugin_check_img_dims'     => 0,			// Image Dimension Checks.
+					'plugin_upscale_images'     => 0,			// Upscale Media Library Images.
+					'plugin_upscale_pct_max'    => 33,			// Maximum Image Upscale Percent.
+
+					/**
+					 * Advanced Settings > Integration > Plugin and Theme Integration.
+					 */
+					'plugin_check_head'               => 1,	// Check for Duplicate Meta Tags.
+					'plugin_product_include_vat'      => 0,	// Include VAT in Product Prices.
+					'plugin_import_aioseop_meta'      => 0,	// Import All in One SEO Pack Metadata.
+					'plugin_import_rankmath_meta'     => 0,	// Import Rank Math SEO Metadata.
+					'plugin_import_seoframework_meta' => 0,	// Import The SEO Framework Metadata.
+					'plugin_import_wpseo_meta'        => 0,	// Import Yoast SEO Metadata.
+					'plugin_import_wpseo_blocks'      => 0,	// Import Yoast SEO Block Attrs.
+
+					/**
+					 * Advanced Settings > Interface.
 					 */
 					'plugin_show_opts'                     => 'basic',	// Options to Show by Default.
 					'plugin_show_validate_toolbar'         => 1,		// Show Validators Toolbar Menu.
@@ -1646,7 +1672,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_add_to_user_page'              => 1,
 
 					/**
-					 * WP List Table Columns: Schema Type.
+					 * Advanced Settings > Interface > WP List Table Columns: Schema Type.
 					 */
 					'plugin_schema_type_name_col_attachment'        => 0,
 					'plugin_schema_type_name_col_download'          => 0,	// For Easy Digital Downloads.
@@ -1662,7 +1688,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_schema_type_name_col_user_page'         => 0,
 
 					/**
-					 * WP List Table Columns: Schema ID.
+					 * Advanced Settings > Interface > WP List Table Columns: Schema ID.
 					 */
 					'plugin_schema_type_col_attachment'        => 0,
 					'plugin_schema_type_col_download'          => 0,	// For Easy Digital Downloads.
@@ -1678,7 +1704,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_schema_type_col_user_page'         => 0,
 
 					/**
-					 * WP List Table Columns: Open Graph Type.
+					 * Advanced Settings > Interface > WP List Table Columns: Open Graph Type.
 					 */
 					'plugin_og_type_col_attachment'        => 0,
 					'plugin_og_type_col_download'          => 0,		// For Easy Digital Downloads.
@@ -1694,7 +1720,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_og_type_col_user_page'         => 0,
 
 					/**
-					 * WP List Table Columns: Open Graph Image.
+					 * Advanced Settings > Interface > WP List Table Columns: Open Graph Image.
 					 */
 					'plugin_og_img_col_attachment'        => 0,
 					'plugin_og_img_col_download'          => 1,		// For Easy Digital Downloads.
@@ -1710,7 +1736,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_og_img_col_user_page'         => 1,
 
 					/**
-					 * WP List Table Columns: Open Graph Description.
+					 * Advanced Settings > Interface > WP List Table Columns: Open Graph Description.
 					 */
 					'plugin_og_desc_col_attachment'        => 1,
 					'plugin_og_desc_col_download'          => 0,		// For Easy Digital Downloads.
@@ -1729,33 +1755,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_schema_types_select_format' => 'name',		// Schema Type Select Format.
 
 					/**
-					 * Advanced Settings > Integration tab.
-					 */
-					'plugin_title_tag'          => 'schema_title',		// Webpage Title Tag.
-					'plugin_filter_content'     => 0,			// Use Filtered Content.
-					'plugin_filter_excerpt'     => 0,			// Use Filtered Excerpt.
-					'plugin_page_excerpt'       => 0,			// Enable Excerpt for Pages.
-					'plugin_page_tags'          => 0,			// Enable Tags for Pages.
-					'plugin_new_user_is_person' => 0,			// Add Person Role for New Users.
-					'plugin_inherit_featured'   => 1,			// Inherit Featured Image.
-					'plugin_inherit_custom'     => 1,			// Inherit Custom Images.
-					'plugin_check_img_dims'     => 0,			// Image Dimension Checks.
-					'plugin_upscale_images'     => 0,			// Upscale Media Library Images.
-					'plugin_upscale_pct_max'    => 33,			// Maximum Image Upscale Percent.
-
-					/**
-					 * Advanced Settings > Integration tab (Plugin and Theme Integration).
-					 */
-					'plugin_check_head'               => 1,	// Check for Duplicate Meta Tags.
-					'plugin_product_include_vat'      => 0,	// Include VAT in Product Prices.
-					'plugin_import_aioseop_meta'      => 0,	// Import All in One SEO Pack Metadata.
-					'plugin_import_rankmath_meta'     => 0,	// Import Rank Math SEO Metadata.
-					'plugin_import_seoframework_meta' => 0,	// Import The SEO Framework Metadata.
-					'plugin_import_wpseo_meta'        => 0,	// Import Yoast SEO Metadata.
-					'plugin_import_wpseo_blocks'      => 0,	// Import Yoast SEO Block Attrs.
-
-					/**
-					 * Advanced Settings > Media Services tab.
+					 * Advanced Settings > Service APIs > Media Services.
 					 */
 					'plugin_gravatar_api'   => 1,		// Gravatar is Default Author Image.
 					'plugin_gravatar_size'  => 1200,	// Gravatar Image Size.
@@ -1768,7 +1768,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_youtube_api'    => 1,		// Check for Embedded Media: Youtube Videos and Playlists.
 
 					/**
-					 * Advanced Settings > Shortening Services tab.
+					 * Advanced Settings > Service APIs > Shortening Services.
 					 */
 					'plugin_shortener'          => 'none',	// URL Shortening Service.
 					'plugin_min_shorten'        => 23,	// Minimum URL Length to Shorten.
@@ -1785,7 +1785,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_yourls_token'       => '',	// YOURLS Token.
 
 					/**
-					 * Advanced Settings > Ratings and Reviews tab.
+					 * Advanced Settings > Service APIs > Ratings and Reviews.
 					 */
 					'plugin_ratings_reviews_svc'          => 'none',	// Ratings and Reviews Service.
 					'plugin_ratings_reviews_num_max'      => 100,		// Maximum Number of Reviews.
@@ -1798,7 +1798,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_stamped_key_public'           => '',		// Stamped API Key Public.
 
 					/**
-					 * Advanced Settings > Custom Contacts tab.
+					 * Advanced Settings > Contact Fields > Custom Contacts.
 					 */
 					'plugin_cm_behance_name'      => 'behance',
 					'plugin_cm_behance_label'     => 'Behance Profile URL',
@@ -1844,7 +1844,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cm_yt_enabled'        => 1,
 
 					/**
-					 * Advanced Settings > Default Contacts tab.
+					 * Advanced Settings > Contact Fields > Default Contacts.
 					 */
 					'wp_cm_aim_name'       => 'aim',
 					'wp_cm_aim_label'      => 'AIM',
@@ -1857,7 +1857,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'wp_cm_yim_enabled'    => 1,
 
 					/**
-					 * Advanced Settings > About the User metabox.
+					 * Advanced Settings > About the User.
 					 */
 					'plugin_user_about_job_title'        => 1,	// Job Title.
 					'plugin_user_about_honorific_prefix' => 1,	// Honorific Prefix.
@@ -1865,7 +1865,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_user_about_additional_name'  => 1,	// Middle or Additional Name.
 
 					/**
-					 * Advanced Settings > Product Attributes tab.
+					 * Advanced Settings > Metadata > Product Attributes.
 					 */
 					'plugin_attr_product_brand'              => 'Brand',		// Brand Attribute Name.
 					'plugin_attr_product_color'              => 'Color',		// Color Attribute Name.
@@ -1886,7 +1886,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_attr_product_target_gender'      => 'Gender',		// Target Gender Attribute Name.
 
 					/**
-					 * Advanced Settings > Custom Fields tab.
+					 * Advanced Settings > Metadata > Custom Fields.
 					 */
 					'plugin_cf_addl_type_urls'             => '',	// Microdata Type URLs Custom Field.
 					'plugin_cf_book_isbn'                  => '',	// Book ISBN Custom Field.

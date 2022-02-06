@@ -230,8 +230,8 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$table_rows[ 'plugin_comment_title' ] = '' .
 				$form->get_th_html_locale( _x( 'Comment Title', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'comment_title' ) . 
-				'<td class="blank">' . $form->get_no_input_locale( 'comment_title', $css_class = 'wide' ) . '</td>';
+					$css_class = '', $css_id = 'plugin_comment_title' ) . 
+				'<td class="blank">' . $form->get_no_input_locale( 'plugin_comment_title', $css_class = 'wide' ) . '</td>';
 
 			$table_rows[ 'plugin_no_title_text' ] = '' .
 				$form->get_th_html_locale( _x( 'No Title Text', 'option label', 'wpsso' ),
