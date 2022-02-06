@@ -371,6 +371,10 @@ body.rtl .postbox-dashboard > div.postbox-header:before {
 	margin:20px 0;
 }
 
+body.rtl #tools-content div.submit-buttons {
+	text-align:right;
+}
+
 #tools-content div.submit-buttons input[type=submit],
 #tools-content div.submit-buttons input[type=button] {
 	display:block;
@@ -411,6 +415,10 @@ body.rtl .postbox-dashboard > div.postbox-header:before {
 
 #tools-content p.left {
 	text-align:left;
+}
+
+body.rtl #tools-content p.left {
+	text-align:right;
 }
 
 /**

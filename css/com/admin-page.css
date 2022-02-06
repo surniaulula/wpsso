@@ -196,6 +196,10 @@ table td .no_input_clipboard .copy_button {
 	float:right;
 }
 
+body.rtl table td .no_input_clipboard .copy_button {
+	float:left;
+}
+
 table td .no_input_clipboard .copy_button a {
 	display:inline-block;
 	width:30px;
@@ -226,7 +230,11 @@ table td .no_input_clipboard .copy_button a span.dashicons::before {
 }
 
 table td .no_input_clipboard .copy_text {
-	margin-right:55px;	/* Leave room for floating button. */
+	margin:0 60px 0 0;	/* Leave room for floating button. */
+}
+
+body.rtl table td .no_input_clipboard .copy_text {
+	margin:0 0 0 60px;	/* Leave room for floating button. */
 }
 
 table td .no_input_clipboard .copy_text input {

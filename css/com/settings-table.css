@@ -310,6 +310,10 @@ table.sucom-settings td.ext-info-plugin-icon {
 	max-width:168px;
 }
 
+body.rtl table.sucom-settings td.ext-info-plugin-icon {
+	text-align:right;
+}
+
 table.sucom-settings td.ext-info-plugin-name {
 	width:100%;
 }
@@ -911,9 +915,13 @@ table.sucom-settings .sucom_image_upload {
 	white-space:nowrap;
 }
 
-table.sucom-settings .sucom_image_upload * {
-	margin:0;
+table.sucom-settings .sucom_image_upload > * {
+	margin:0 3px 0 0;
 	vertical-align:middle;
+}
+
+body.rtl table.sucom-settings .sucom_image_upload > * {
+	margin:0 0 0 3px;
 }
 
 table.sucom-settings input[type="text"].sucom_image_upload_id {
@@ -929,15 +937,23 @@ table.sucom-settings select.sucom_image_upload_lib {
 
 table.sucom-settings .sucom_image_upload_preview {
 	display:inline-block;
-	line-height:0;
-	max-height:2.2em;
+	margin:0 0 0 6px;
 	vertical-align:middle;
+	border:1px solid #8c8f94;
+	border-radius:3px;
+}
+
+body.rtl table.sucom-settings .sucom_image_upload_preview {
+	margin:0 6px 0 0;
 }
 
 table.sucom-settings .sucom_image_upload_preview img {
 	width:auto;
-	max-height:2.2em;
-	margin:0 0 0 4px;
+	min-height:28px;
+	max-height:2em;
+	margin:0;
+	padding:0;
+	vertical-align:middle;
 }
 
 table.sucom-settings .button-primary {
@@ -973,6 +989,10 @@ table.sucom-settings .fb_preview_container {
 	background-color:#e9eaed;
 	height:400px;	/* Set a minimum height. */
 	padding:10px;
+}
+
+body.rtl table.sucom-settings .fb_preview_container {
+	text-align:right;
 }
 
 table.sucom-settings .fb_preview_box_border,
@@ -1030,7 +1050,6 @@ table.sucom-settings .fb_preview_text {
 	line-height:15.3667px;
 	margin:10px 12px;
 	position:relative;
-	text-align:left;
 	word-wrap:break-word;
 }
 
@@ -1046,7 +1065,6 @@ table.sucom-settings .fb_preview_title {
 	overflow:hidden;
 	overflow-x:hidden;
 	overflow-y:hidden;
-	text-align:left;
 	text-decoration:none;
 	transition-delay:0s;
 	transition-duration:0.1s;
@@ -1067,7 +1085,6 @@ table.sucom-settings .fb_preview_desc {
 	overflow:hidden;
 	overflow-x:hidden;
 	overflow-y:hidden;
-	text-align:left;
 	word-wrap:break-word;
 }
 
@@ -1080,7 +1097,6 @@ table.sucom-settings .fb_preview_by {
 	overflow:hidden;
 	overflow-x:hidden;
 	overflow-y:hidden;
-	text-align:left;
 	text-overflow:ellipsis;
 	text-transform:uppercase;
 	white-space:nowrap;

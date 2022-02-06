@@ -157,8 +157,13 @@ ul.sucom-metabox-tabs.vertical {
 	border-right:1px solid #e9e9e9;
 }
 
+body.rtl ul.sucom-metabox-tabs.vertical {
+	float:right;
+}
+
 ul.sucom-metabox-tabs.vertical > li {
 	display:block;
+	text-align:right;
 	padding:14px;
 	margin:-1px 0 0 0;
 	border-top:1px solid #e9e9e9;
