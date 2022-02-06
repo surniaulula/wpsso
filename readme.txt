@@ -256,6 +256,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
+	* Improved RTL support for settings pages.
 	* Added new options under the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Default Text tab:
 		* 404 Page Title
 		* 404 Page Description
@@ -829,7 +830,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 = 10.2.0-dev.1 =
 
-(2022/02/06) Added new options under the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Default Text tab.
+(2022/02/06) Improved RTL support for settings pages. Added new options under the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Default Text tab.
 
 = 10.1.1 =
 
