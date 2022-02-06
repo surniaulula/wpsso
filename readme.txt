@@ -251,6 +251,22 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 10.2.0-dev.1 (2022/02/06)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added new options under the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Default Text tab:
+		* 404 Page Title
+		* 404 Page Description
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 10.1.1 (2022/02/05)**
 
 * **New Features**
@@ -810,6 +826,10 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 	* WordPress v5.0.
 
 == Upgrade Notice ==
+
+= 10.2.0-dev.1 =
+
+(2022/02/06) Added new options under the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Default Text tab.
 
 = 10.1.1 =
 
