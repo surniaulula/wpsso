@@ -251,7 +251,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 10.2.0-dev.1 (2022/02/06)**
+**Version 10.2.0-dev.2 (2022/02/06)**
 
 * **New Features**
 	* None.
@@ -828,7 +828,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 10.2.0-dev.1 =
+= 10.2.0-dev.2 =
 
 (2022/02/06) Improved RTL support for settings pages. Added new options under the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Default Text tab.
 
