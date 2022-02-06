@@ -12,7 +12,7 @@ Requires PHP: 7.2
 Requires At Least: 5.2
 Tested Up To: 5.9.0
 WC Tested Up To: 6.1.1
-Stable Tag: 10.1.0
+Stable Tag: 10.1.1
 
 Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
 
@@ -258,7 +258,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* Fixed clearing cache for multi-page content by moving the page number for caching from the transient name to a transient array key.
+	* Fixed clearing cache for multi-page content by moving the page number for caching from the transient name to the transient array key.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -813,7 +813,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 = 10.1.1 =
 
-(2022/02/05) Fixed clearing cache for multi-page content by moving the page number for caching from the transient name to a transient array key.
+(2022/02/05) Fixed clearing cache for multi-page content by moving the page number for caching from the transient name to the transient array key.
 
 = 10.1.0 =
 
