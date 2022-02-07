@@ -1467,7 +1467,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					if ( isset( $user_obj->display_name ) ) {	// Just in case.
 
-						$title_text = $user_obj->display_name;
+						$title_text = sprintf( '%1$s, Author at %2$s', $user_obj->display_name, SucomUtil::get_site_name( $this->p->options ) );
 					}
 				}
 
