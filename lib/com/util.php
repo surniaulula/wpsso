@@ -20,7 +20,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 	class SucomUtil {
 
 		private static $cache_locale  = array();	// Saved get_locale() values.
-		private static $cache_protect = array();	// Saved protect_filter_value() values.
 
 		private static $currencies = array(
 			'AED' => 'United Arab Emirates dirham',
@@ -4259,106 +4258,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			return $wp_url;
-		}
-
-		/**
-		 * Wrap a filter to return its original / unchanged value.
-		 *
-		 * Returns true if protection filters were added, false if protection filters are not required.
-		 */
-		public static function protect_filter_value( $filter_name, $auto_unprotect = true ) {
-
-			unset( self::$cache_protect[ $filter_name ] );	// Just in case.
-
-			/**
-			 * Don't bother if there's nothing to protect.
-			 */
-			if ( false === has_filter( $filter_name ) ) {
-
-				return false;
-			}
-
-			self::$cache_protect[ $filter_name ][ 'auto_unprotect' ] = $auto_unprotect;
-
-			/**
-			 * Only hook the save/restore protection filters once.
-			 */
-			if ( false === has_filter( $filter_name, array( __CLASS__, '__save_current_filter_value' ) ) ) {	// Can return a priority of 0.
-
-				add_filter( $filter_name, array( __CLASS__, '__save_current_filter_value' ), PHP_INT_MIN, 1 );
-				add_filter( $filter_name, array( __CLASS__, '__restore_current_filter_value' ), PHP_INT_MAX, 1 );
-			}
-
-			return true;
-		}
-
-		public static function unprotect_filter_value( $filter_name ) {
-
-			/**
-			 * Don't bother if there are no protection filters.
-			 */
-			if ( false === has_filter( $filter_name, array( __CLASS__, '__save_current_filter_value' ) ) ) {	// Can return a priority of 0.
-
-				return false;
-			}
-
-			remove_filter( $filter_name, array( __CLASS__, '__save_current_filter_value' ), PHP_INT_MIN );
-			remove_filter( $filter_name, array( __CLASS__, '__restore_current_filter_value' ), PHP_INT_MAX );
-
-			return true;
-		}
-
-		public static function get_original_filter_value( $filter_name ) {
-
-			if ( isset( self::$cache_protect[ $filter_name ][ 'original_value' ] ) ) {
-
-				return self::$cache_protect[ $filter_name ][ 'original_value' ];
-			}
-
-			return null;
-		}
-
-		public static function get_modified_filter_value( $filter_name ) {
-
-			if ( isset( self::$cache_protect[ $filter_name ][ 'modified_value' ] ) ) {
-
-				return self::$cache_protect[ $filter_name ][ 'modified_value' ];
-			}
-
-			return null;
-		}
-
-		public static function __save_current_filter_value( $value ) {
-
-			$filter_name = current_filter();
-
-			self::$cache_protect[ $filter_name ][ 'original_value' ] = $value;	// Save value to static cache.
-			self::$cache_protect[ $filter_name ][ 'modified_value' ] = $value;	// Save value to static cache.
-
-			return $value;
-		}
-
-		public static function __restore_current_filter_value( $value ) {
-
-			$filter_name = current_filter();
-
-			if ( isset( self::$cache_protect[ $filter_name ][ 'original_value' ] ) ) {		// Just in case.
-
-				self::$cache_protect[ $filter_name ][ 'modified_value' ] = $value;		// Save for get_modified_filter_value().
-
-				if ( $value !== self::$cache_protect[ $filter_name ][ 'original_value' ] ) {
-
-					$value = self::$cache_protect[ $filter_name ][ 'original_value' ];	// Restore value from static cache.
-				}
-			}
-
-			if ( ! empty( self::$cache_protect[ $filter_name ][ 'auto_unprotect' ] ) ) {
-
-				remove_filter( $filter_name, array( __CLASS__, __FUNCTION__ ), PHP_INT_MIN );
-				remove_filter( $filter_name, array( __CLASS__, __FUNCTION__ ), PHP_INT_MAX );
-			}
-
-			return $value;
 		}
 
 		/**
