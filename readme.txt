@@ -251,7 +251,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 10.2.0-rc.1 (2022/02/07)**
+**Version 10.2.0 (2022/02/07)**
 
 * **New Features**
 	* None.
@@ -840,7 +840,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 10.2.0-rc.1 =
+= 10.2.0 =
 
 (2022/02/07) Fixed paging in the canonical URL for term and author archive pages. Improved RTL support. Added new options in the SSO &gt; Advanced Settings page.
 
