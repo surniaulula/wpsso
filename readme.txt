@@ -251,7 +251,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 10.2.0-b.2 (2022/02/07)**
+**Version 10.2.0-b.3 (2022/02/07)**
 
 * **New Features**
 	* None.
@@ -270,6 +270,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* `WpssoUtil::get_modified_filter_value()`
 		* `WpssoUtil::__save_current_filter_value()`
 		* `WpssoUtil::__restore_current_filter_value()`
+	* Refactored the following classes to only import social metadata if the SEO plugin is active (and import all metadata if inactive):
+		* `WpssoProUtilAbstractSeoMeta`
+		* `WpssoProUtilAioseopMeta`
+		* `WpssoProUtilRankmathMeta`
+		* `WpssoProUtilSeoframeworkMeta`
+		* `WpssoProUtilWpseoMeta`
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -834,7 +840,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 10.2.0-b.2 =
+= 10.2.0-b.3 =
 
 (2022/02/07) Fixed paging in the canonical URL for term and author archive pages. Improved RTL support. Added new options in the SSO &gt; Advanced Settings page.
 
