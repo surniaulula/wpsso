@@ -251,7 +251,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 10.2.0-dev.2 (2022/02/06)**
+**Version 10.2.0-dev.3 (2022/02/06)**
 
 * **New Features**
 	* None.
@@ -261,7 +261,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* 404 Page Title
 		* 404 Page Description
 * **Bugfixes**
-	* None.
+	* Fixed paging in the canonical URL for author archive pages.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -828,9 +828,9 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 10.2.0-dev.2 =
+= 10.2.0-dev.3 =
 
-(2022/02/06) Improved RTL support in the Document SSO metabox and settings pages. Added new options under the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Default Text tab.
+(2022/02/06) Fixed paging in the canonical URL for author archive pages. Improved RTL support. Added new options in the SSO &gt; Advanced Settings page.
 
 = 10.1.1 =
 
