@@ -191,6 +191,8 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			 */
 			$mod[ 'is_user' ] = true;
 
+			$mod[ 'is_archive' ] = true;	// The isrt page is an archive page of the author's posts.
+
 			return $local_cache[ $user_id ] = apply_filters( 'wpsso_get_user_mod', $mod, $user_id );
 		}
 

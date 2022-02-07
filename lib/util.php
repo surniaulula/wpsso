@@ -2293,28 +2293,40 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			global $wp_rewrite;
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'pagination base = ' . $wp_rewrite->pagination_base );
+			}
+
 			$using_permalinks = $wp_rewrite->using_permalinks();
 			$have_query_args  = false === strpos( $url, '?' ) ? false : true;
 			$page_number      = $this->get_page_number( $mod, $add_page );
 
 			if ( $mod[ 'is_archive' ] || $mod[ 'is_home_posts' ] ) {
 
-				if ( ! $using_permalinks || $have_query_args ) {
+				if ( $this->p->debug->enabled ) {
 
-					if ( $page_number > 1 ) {
+					$this->p->debug->log( 'is archive or home posts page' );
+				}
+
+				if ( $page_number > 1 ) {
+
+					if ( ! $using_permalinks || $have_query_args ) {
 
 						$url = add_query_arg( 'paged', $page_number, $url );
-					}
 
-				} else {
-
-					if ( $page_number > 1 ) {
+					} else {
 
 						$url = user_trailingslashit( trailingslashit( $url ) . trailingslashit( $wp_rewrite->pagination_base ) . $page_number );
 					}
 				}
 
 			} elseif ( ! $using_permalinks || $have_query_args ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'not using permalinks or have query args' );
+				}
 
 				/**
 				 * Note that the singular page query argument is named 'page' not 'paged'.
