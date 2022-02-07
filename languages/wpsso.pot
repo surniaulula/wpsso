@@ -5389,7 +5389,7 @@ msgstr ""
 msgid "Network plugin settings have been saved."
 msgstr ""
 
-#: lib/admin.php:1300 lib/post.php:978 lib/term.php:721 lib/user.php:715
+#: lib/admin.php:1300 lib/post.php:978 lib/term.php:722 lib/user.php:714
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -5432,7 +5432,7 @@ msgstr ""
 #: lib/admin.php:1388 lib/admin.php:1399
 #: lib/messages-tooltip-meta-schema.php:478 lib/messages-tooltip-plugin.php:118
 #: lib/submenu/tools.php:56 lib/submenu/tools.php:101 lib/user.php:61
-#: lib/user.php:1709 lib/user.php:1816 lib/user.php:1947
+#: lib/user.php:1708 lib/user.php:1815 lib/user.php:1946
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -6568,12 +6568,12 @@ msgid ""
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1043 lib/post.php:695 lib/register.php:348 lib/term.php:548
-#: lib/user.php:524 lib/util.php:734 lib/util.php:2863
+#: lib/media.php:1043 lib/post.php:695 lib/register.php:348 lib/term.php:549
+#: lib/user.php:523 lib/util.php:734 lib/util.php:2863
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1044 lib/post.php:696 lib/term.php:549 lib/user.php:525
+#: lib/media.php:1044 lib/post.php:696 lib/term.php:550 lib/user.php:524
 #: lib/util.php:735 lib/util.php:2864
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
@@ -10241,8 +10241,8 @@ msgid ""
 "post ID %3$d (%4$s)."
 msgstr ""
 
-#: lib/post.php:911 lib/post.php:1554 lib/schema.php:3501 lib/term.php:672
-#: lib/user.php:665
+#: lib/post.php:911 lib/post.php:1554 lib/schema.php:3501 lib/term.php:673
+#: lib/user.php:664
 msgid "checking meta tags"
 msgstr ""
 
@@ -11150,13 +11150,13 @@ msgctxt "module name"
 msgid "term"
 msgstr ""
 
-#: lib/term.php:550
+#: lib/term.php:551
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to get posts for "
 "term ID %3$d in taxonomy %4$s (%5$s)."
 msgstr ""
 
-#: lib/term.php:961
+#: lib/term.php:962
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -11201,70 +11201,70 @@ msgctxt "module name"
 msgid "user"
 msgstr ""
 
-#: lib/user.php:526
+#: lib/user.php:525
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to get posts "
 "authored by user ID %3$d (%4$s)."
 msgstr ""
 
-#: lib/user.php:854
+#: lib/user.php:853
 msgid "Examples: Dr, Mrs, Mr."
 msgstr ""
 
-#: lib/user.php:860
+#: lib/user.php:859
 msgid "Examples: CPA, Esq., M.D., P.E., PhD., PMP, RN"
 msgstr ""
 
-#: lib/user.php:1020
+#: lib/user.php:1019
 msgid "(not a Facebook Pages URL)"
 msgstr ""
 
-#: lib/user.php:1146
+#: lib/user.php:1145
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:1147
+#: lib/user.php:1146
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:1148
+#: lib/user.php:1147
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1513
+#: lib/user.php:1512
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/user.php:1728
+#: lib/user.php:1727
 msgid ""
 "Aborting task to add the %1$s role to content creators - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1743
+#: lib/user.php:1742
 msgid "A task to add the %1$s role for content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1784
+#: lib/user.php:1783
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1786 lib/user.php:1889 lib/util-cache.php:184
+#: lib/user.php:1785 lib/user.php:1888 lib/util-cache.php:184
 #: lib/util-cache.php:702
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
-#: lib/user.php:1835
+#: lib/user.php:1834
 msgid ""
 "Aborting task to remove the %1$s role from all users - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1850
+#: lib/user.php:1849
 msgid "A task to remove the %1$s role from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1887
+#: lib/user.php:1886
 msgid "The %1$s role has been removed from %2$d content creators."
 msgstr ""
 

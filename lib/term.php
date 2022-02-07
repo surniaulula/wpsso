@@ -184,7 +184,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			/**
 			 * WpssoTerm elements.
 			 */
-			$mod[ 'is_term' ] = true;
+			$mod[ 'is_term' ]    = true;
+			$mod[ 'is_archive' ] = true;
 
 			if ( $mod[ 'id' ] ) {	// Just in case.
 
