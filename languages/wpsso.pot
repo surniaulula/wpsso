@@ -10192,7 +10192,7 @@ msgstr ""
 
 #: lib/options.php:1821
 msgctxt "option value"
-msgid "%%name%%, Author at %%sitename%%"
+msgid "%%author%%, Author at %%sitename%%"
 msgstr ""
 
 #: lib/options.php:1825
@@ -11434,7 +11434,7 @@ msgid ""
 "refreshed."
 msgstr ""
 
-#: lib/util-inline.php:189
+#: lib/util-inline.php:190
 msgid "Page %1$d of %2$d"
 msgstr ""
 

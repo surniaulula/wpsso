@@ -1818,7 +1818,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					case 'plugin_author_page_title':	// Author Archive Title.
 
-						return _x( '%%name%%, Author at %%sitename%%', 'option value', 'wpsso' );
+						return _x( '%%author%%, Author at %%sitename%%', 'option value', 'wpsso' );
 
 					case 'plugin_search_page_title':	// Search Results Title.
 

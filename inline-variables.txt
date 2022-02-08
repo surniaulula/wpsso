@@ -19,6 +19,8 @@
 
 %%title%%
 
+%%author%%
+
 %%page%%
 
 %%pagename%%
@@ -27,13 +29,13 @@
 
 %%pagetotal%%
 
-%%comment_author%%
-
-%%comment_date%%
-
 %%post_date%%
 
 %%post_modified%%
+
+%%comment_author%%
+
+%%comment_date%%
 
 %%query_search%%
 
@@ -44,6 +46,4 @@
 %%query_monthnum%%
 
 %%query_day%%
-
-%%searchphrase%%
 

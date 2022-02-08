@@ -186,21 +186,20 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				'sitedesc'            => SucomUtil::get_site_description( $this->p->options, $mod ),
 				'sep'                 => $sep,
 				'title'               => $this->p->page->get_the_title( $mod, $sep ),
+				'author'              => $author_name,
 				'page'                => sprintf( $sep . ' ' . __( 'Page %1$d of %2$d', 'wpsso' ), $page_number, $page_total ),
 				'pagename'            => isset( $mod[ 'query_vars' ][ 'pagename' ] ) ? $mod[ 'query_vars' ][ 'pagename' ] : '',
 				'pagenumber'          => $page_number,
 				'pagetotal'           => $page_total,
-				'name'                => $author_name,
-				'comment_author'      => empty( $mod[ 'comment_author_name' ] ) ? '' : $mod[ 'comment_author_name' ],
-				'comment_date'        => empty( $mod[ 'comment_time' ] ) ? '' : mysql2date( $date_format, $mod[ 'comment_time' ] ),
 				'post_date'           => empty( $mod[ 'post_time' ] ) ? '' : mysql2date( $date_format, $mod[ 'post_time' ] ),
 				'post_modified'       => empty( $mod[ 'post_modified_time' ] ) ? '' : mysql2date( $date_format, $mod[ 'post_modified_time' ] ),
+				'comment_author'      => empty( $mod[ 'comment_author_name' ] ) ? '' : $mod[ 'comment_author_name' ],
+				'comment_date'        => empty( $mod[ 'comment_time' ] ) ? '' : mysql2date( $date_format, $mod[ 'comment_time' ] ),
 				'query_search'        => isset( $mod[ 'query_vars' ][ 's' ] ) ? $mod[ 'query_vars' ][ 's' ] : '',
 				'query_year'          => isset( $mod[ 'query_vars' ][ 'year' ] ) ? $mod[ 'query_vars' ][ 'year' ] : '',
 				'query_month'         => '',	// Placeholder.
 				'query_monthnum'      => isset( $mod[ 'query_vars' ][ 'monthnum' ] ) ? $mod[ 'query_vars' ][ 'monthnum' ] : '',
 				'query_day'           => isset( $mod[ 'query_vars' ][ 'day' ] ) ? $mod[ 'query_vars' ][ 'day' ] : '',
-				'searchphrase'        => '',	// Placeholder.
 			);
 
 			/**
@@ -222,6 +221,9 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 			/**
 			 * Compatibility for Yoast SEO.
 			 */
+			$ret[ 'date' ]         = $ret[ 'post_date' ];
+			$ret[ 'modified' ]     = $ret[ 'post_modified' ];
+			$ret[ 'name' ]         = $ret[ 'author' ];
 			$ret[ 'searchphrase' ] = $ret[ 'query_search' ];
 
 			/**
