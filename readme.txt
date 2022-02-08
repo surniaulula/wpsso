@@ -251,11 +251,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 10.3.0-dev.1 (2022/02/08)**
+**Version 10.3.0-dev.2 (2022/02/08)**
 
 * **New Features**
 	* None.
 * **Improvements**
+	* Improved RTL support in the Document SSO metabox and settings pages.
 	* Added new options under the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Default Text tab:
 		* Author Archive Title
 * **Bugfixes**
@@ -855,9 +856,9 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 10.3.0-dev.1 =
+= 10.3.0-dev.2 =
 
-(2022/02/08) Fixed Schema Job Posting title. Added new options in the SSO &gt; Advanced Settings page.
+(2022/02/08) Fixed Schema Job Posting title. Improved RTL support. Added new options in the SSO &gt; Advanced Settings page.
 
 = 10.2.0 =
 
