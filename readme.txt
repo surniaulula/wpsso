@@ -256,9 +256,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Improved RTL support in the Document SSO metabox and settings pages.
 	* Added new options under the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Default Text tab:
 		* Author Archive Title
+	* Updated tooltip position for RTL.
 * **Bugfixes**
 	* Fixed incorrect `WpssoPage->get_title()` arguments when getting the Schema Job Posting title.
 * **Developer Notes**
@@ -858,7 +858,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 = 10.3.0-dev.2 =
 
-(2022/02/08) Fixed Schema Job Posting title. Improved RTL support. Added new options in the SSO &gt; Advanced Settings page.
+(2022/02/08) Fixed Schema Job Posting title. Updated tooltip position for RTL. Added new options in the SSO &gt; Advanced Settings page.
 
 = 10.2.0 =
 
