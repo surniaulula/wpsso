@@ -262,7 +262,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed incorrect `WpssoPage->get_title()` arguments when getting the Schema Job Posting title.
 * **Developer Notes**
-	* None.
+	* Added new inline variables:
+		* %%author%%
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -335,10 +336,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* %%page%%
 		* %%pagenumber%%
 		* %%pagetotal%%
-		* %%comment_author%%
-		* %%comment_date%%
 		* %%post_date%%
 		* %%post_modified%%
+		* %%comment_author%%
+		* %%comment_date%%
 		* %%query_search%%
 		* %%query_year%%
 		* %%query_month%%
