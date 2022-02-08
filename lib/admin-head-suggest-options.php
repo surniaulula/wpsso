@@ -51,9 +51,12 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestOptions' ) ) {
 
 				$notice_key = 'notice-content-filters-disabled';
 
-				if ( $notice_msg = $this->p->msgs->get( $notice_key ) ) {
+				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
 
-					$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
+					if ( $notice_msg = $this->p->msgs->get( $notice_key ) ) {
+
+						$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
+					}
 				}
 			}
 
@@ -61,9 +64,12 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestOptions' ) ) {
 
 				$notice_key = 'notice-check-img-dims-disabled';
 
-				if ( $notice_msg = $this->p->msgs->get( $notice_key ) ) {
+				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
 
-					$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
+					if ( $notice_msg = $this->p->msgs->get( $notice_key ) ) {
+
+						$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
+					}
 				}
 			}
 		}
