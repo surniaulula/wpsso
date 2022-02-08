@@ -101,6 +101,14 @@ body.rtl .sucom-tooltip {
 	vertical-align:middle;
 }
 
+body.rtl .qtip.sucom-qtip {
+	direction:rtl;
+}
+
+body.rtl .qtip.sucom-qtip .qtip-content {
+	text-align:right;
+}
+
 .qtip.sucom-qtip {
 	max-width:500px;
 }
