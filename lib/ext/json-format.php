@@ -27,7 +27,9 @@ if ( ! class_exists( 'SuextJsonFormat' ) ) {
 				} elseif ( version_compare( $php_version, '5.3.0',  '>=' ) ) {
 
 					return json_encode( $json, $options|JSON_PRETTY_PRINT );
+
 				} else {
+
 					$json = json_encode( $json );
 				}
 			}
@@ -94,10 +96,12 @@ if ( ! class_exists( 'SuextJsonFormat' ) ) {
 					$result .= $newLine;
 
 					if ( $char === '{' || $char === '[' ) {
+
 						$pos++;
 					}
 
 					for ( $j = 0; $j < $pos; $j++ ) {
+
 						$result .= $indentStr;
 					}
 				}

@@ -1797,7 +1797,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				} else {
 
-					$have_old_php = true;			// Use SuextJsonFormat for older PHP.
+					$have_old_php = true;	// Use SuextJsonFormat for older PHP.
 				}
 			}
 
