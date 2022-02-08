@@ -96,7 +96,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			$form_rows = array(
 				'attach_img_crop' => $mod[ 'is_attachment' ] && wp_attachment_is_image( $mod[ 'id' ] ) ? array(
 					'th_class' => 'medium',
-					'label'    => _x( 'Preferred Cropping', 'option label', 'wpsso' ),
+					'label'    => _x( 'Crop Area', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-og_img_crop_area',
 					'content'  => $form->get_input_image_crop_area( 'attach_img', $add_none = true ),
 				) : array(),

@@ -6205,7 +6205,7 @@ msgstr ""
 
 #: lib/edit.php:99
 msgctxt "option label"
-msgid "Preferred Cropping"
+msgid "Crop Area"
 msgstr ""
 
 #: lib/edit.php:105 lib/script.php:425

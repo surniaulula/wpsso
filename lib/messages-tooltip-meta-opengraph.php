@@ -64,7 +64,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaOpenGraph' ) ) {
 
 				 	break;
 
-				case 'tooltip-meta-og_img_crop_area':	// Preferred Cropping.
+				case 'tooltip-meta-og_img_crop_area':	// Crop Area.
 
 					$text = __( 'Select the preferred cropping (ie. main subject) area of the image.', 'wpsso' );
 
