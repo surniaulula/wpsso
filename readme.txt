@@ -251,7 +251,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 10.3.0-dev.2 (2022/02/08)**
+**Version 10.3.0-dev.3 (2022/02/08)**
 
 * **New Features**
 	* None.
@@ -857,7 +857,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 10.3.0-dev.2 =
+= 10.3.0-dev.3 =
 
 (2022/02/08) Fixed Schema Job Posting title. Updated tooltip position for RTL. Added new options in the SSO &gt; Advanced Settings page.
 
