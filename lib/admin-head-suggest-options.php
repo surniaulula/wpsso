@@ -41,7 +41,31 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestOptions' ) ) {
 
 		public function suggest_options() {
 
+			$this->suggest_options_integration();
 			$this->suggest_options_seo();
+		}
+
+		public function suggest_options_integration() {
+
+			if ( empty( $this->p->options[ 'plugin_filter_content' ] ) ) {
+
+				$notice_key = 'notice-content-filters-disabled';
+
+				if ( $notice_msg = $this->p->msgs->get( $notice_key ) ) {
+
+					$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
+				}
+			}
+
+			if ( empty( $this->p->options[ 'plugin_check_img_dims' ] ) ) {
+
+				$notice_key = 'notice-check-img-dims-disabled';
+
+				if ( $notice_msg = $this->p->msgs->get( $notice_key ) ) {
+
+					$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
+				}
+			}
 		}
 
 		public function suggest_options_seo() {
@@ -52,6 +76,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestOptions' ) ) {
 
 				foreach ( array( 
 					'add_link_rel_canonical'    => 'link rel canonical',
+					'add_link_rel_shortlink'    => 'link rel shortlink',
 					'add_meta_name_description' => 'meta name description',
 					'add_meta_name_robots'      => 'meta name robots',
 				) as $opt_key => $tag_name ) {

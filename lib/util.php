@@ -2961,9 +2961,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 		public function get_admin_url( $menu_id = '', $link_text = '', $menu_lib = '' ) {
 
-			$hash      = '';
-			$query     = '';
-			$admin_url = '';
+			$hash        = '';
+			$query       = '';
+			$admin_url   = '';
+			$current_url = $_SERVER[ 'REQUEST_URI' ];
+
 
 			/**
 			 * $menu_id may start with a hash or query, so parse before checking its value.
@@ -2980,9 +2982,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( empty( $menu_id ) ) {
 
-				$current = $_SERVER[ 'REQUEST_URI' ];
-
-				if ( preg_match( '/^.*\?page=wpsso-([^&]*).*$/', $current, $match ) ) {
+				if ( preg_match( '/^.*\?page=wpsso-([^&]*).*$/', $current_url, $match ) ) {
 
 					$menu_id = $match[ 1 ];
 
@@ -3039,6 +3039,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( ! empty( $hash ) ) {
 
+				$admin_url .= '&' . rand( 100000, 999999 );	// If on the same page, force a reload for the anchor.
+
 				$admin_url .= '#' . $hash;
 			}
 
@@ -3048,7 +3050,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			}
 
-			return '<a href="' . $admin_url . '">' . $link_text . '</a>';
+			$html = '<a href="' . $admin_url . '">' . $link_text . '</a>';
+
+			return $html;
 		}
 
 		/**

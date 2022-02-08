@@ -181,6 +181,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			'tax_slug'               => '',
 			'tax_label_plural'       => false,	// Taxonomy plural name.
 			'tax_label_single'       => false,	// Taxonomy singular name.
+			'user_name'              => '',		// User display name.
 		);
 
 		public function __construct( &$plugin ) {
@@ -2550,21 +2551,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		}
 
 		public function maybe_restore_shortlink( $shortlink = false, $obj_id = 0, $context = 'post', $allow_slugs = true ) {
-
-			return self::must_be_extended( $ret_val = '' );
-		}
-
-		/**
-		 * WpssoUser class specific methods.
-		 *
-		 * Called by WpssoOpenGraph->get_array() for a single post author and (possibly) several coauthors.
-		 */
-		public function get_authors_websites( $user_ids, $field_id = 'url' ) {
-
-			return self::must_be_extended( $ret_val = array() );
-		}
-
-		public function get_author_website( $user_id, $field_id = 'url' ) {
 
 			return self::must_be_extended( $ret_val = '' );
 		}

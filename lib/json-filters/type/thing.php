@@ -252,7 +252,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeThing' ) ) {
 			 *	alternateName
 			 */
 			$json_ret[ 'name' ] = $this->p->page->get_title( $title_max_len = 0, $dots = '', $mod, $add_hashtags = false,
-				$do_encode = true, $md_key = 'schema_title' );
+				$do_encode = true, $md_keys = array( 'schema_title', 'og_title' ) );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -262,7 +262,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeThing' ) ) {
 			$title_max_len = $this->p->options[ 'og_title_max_len' ];
 
 			$json_ret[ 'alternateName' ] = $this->p->page->get_title( $title_max_len, $dots = '...', $mod, $add_hashtags = false,
-				$do_encode = true, $md_key = 'schema_title_alt' );
+				$do_encode = true, $md_keys = array( 'schema_title_alt', 'schema_title', 'og_title' ) );
 
 			if ( $this->p->debug->enabled ) {
 

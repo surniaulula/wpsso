@@ -259,7 +259,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				case 'schema_title':
 
 					$title_parts[ 'title' ] = $this->p->page->get_title( $title_max_len = 0, $dots = '', $mod,
-						$add_hashtags = false, $do_encode = true, $md_key = 'schema_title' );
+						$add_hashtags = false, $do_encode = true, $md_keys = array( 'schema_title', 'og_title' ) );
 
 					break;
 
@@ -268,7 +268,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$title_max_len = $this->p->options[ 'og_title_max_len' ];
 
 					$title_parts[ 'title' ] = $this->p->page->get_title( $title_max_len, $dots = '...', $mod,
-						$add_hashtags = false, $do_encode = true, $md_key = 'schema_title_alt' );
+						$add_hashtags = false, $do_encode = true, $md_keys = array( 'schema_title_alt', 'schema_title', 'og_title' ) );
 
 					break;
 			}
@@ -1461,15 +1461,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			} elseif ( $mod[ 'is_user' ] ) {
 
-				if ( $mod[ 'id' ] ) {	// Just in case.
-
-					$user_obj = SucomUtil::get_user_object( $mod[ 'id' ] );
-
-					if ( isset( $user_obj->display_name ) ) {	// Just in case.
-
-						$title_text = sprintf( '%1$s, Author at %2$s', $user_obj->display_name, SucomUtil::get_site_name( $this->p->options ) );
-					}
-				}
+				$title_text = $this->p->opt->get_text( 'plugin_author_page_title' );
 
 			} elseif ( $mod[ 'is_404' ] ) {
 

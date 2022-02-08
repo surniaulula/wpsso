@@ -1146,9 +1146,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 */
 				if ( $is_admin && ! $this->p->debug->enabled ) {
 
-					$notice_msg = sprintf( __( 'The webpage HTML retrieved from %1$s is %2$s bytes.', 'wpsso' ), '<a href="' . $check_url . '">' . $check_url_htmlenc . '</a>', $html_size ) . ' ';
+					$notice_msg = sprintf( __( 'The webpage HTML retrieved from %1$s is %2$s bytes.', 'wpsso' ),
+						'<a href="' . $check_url . '">' . $check_url_htmlenc . '</a>', $html_size ) . ' ';
 
-					$notice_msg .= sprintf( __( 'This exceeds the maximum limit of %1$s bytes imposed by the Google crawler.', 'wpsso' ), $error_size ) . ' ';
+					$notice_msg .= sprintf( __( 'This exceeds the maximum limit of %1$s bytes imposed by the Google crawler.', 'wpsso' ),
+						$error_size ) . ' ';
 
 					$notice_msg .= __( 'If you do not reduce the webpage HTML size, Google will refuse to crawl this webpage.', 'wpsso' );
 
@@ -1245,7 +1247,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					$short_name = $this->p->cf[ 'plugin' ][ 'wpsso' ][ 'short' ];
 
-					$notice_msg = sprintf( __( 'The %1$s meta tags and Schema markup section was not found in <a href="%2$s">%2$s</a>.', 'wpsso' ), $short_name, $check_url ) . ' ';
+					$notice_msg = sprintf( __( 'The %1$s meta tags and Schema markup section was not found in <a href="%2$s">%2$s</a>.',
+						'wpsso' ), $short_name, $check_url ) . ' ';
 
 					$notice_msg .= __( 'Does a caching plugin or service needs to be refreshed?', 'wpsso' );
 
@@ -1278,9 +1281,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					$short_name = $this->p->cf[ 'plugin' ][ 'wpsso' ][ 'short' ];
 
-					$notice_msg = sprintf( __( 'The PHP preg_replace() function failed to remove the %1$s meta tag section - this could be an indication of a problem with PHP\'s PCRE library, or an optimization plugin or service corrupting the webpage HTML markup.', 'wpsso' ), $short_name ) . ' ';
+					$notice_msg = sprintf( __( 'The PHP preg_replace() function failed to remove the %1$s meta tag section.', 'wpsso' ),
+						$short_name ) . ' ';
 
-					$notice_msg .= __( 'You may consider updating or having your hosting provider update your PHP installation and its PCRE library.', 'wpsso' );
+					$notice_msg .= __( 'This could indicate a problem with PHP\'s PCRE library, or an optimization plugin / service corrupting the webpage HTML.',
+						'wpsso' ) . ' ';
+
+					$notice_msg .= __( 'You should consider updating or having your hosting provider update your PHP installation and its PCRE library.',
+						'wpsso' );
 
 					$this->p->notice->err( $notice_msg );
 				}
@@ -1315,10 +1323,21 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					if ( $is_admin ) {
 
-						$validator_url     = 'https://validator.w3.org/nu/?doc=' . urlencode( $check_url );
+						$validator_url = 'https://validator.w3.org/nu/?doc=' . urlencode( $check_url );
+
 						$settings_page_url = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_pinterest' );
 
-						$this->p->notice->err( sprintf( __( 'An error occured parsing the head meta tags from <a href="%1$s">%1$s</a> (no "link" or "meta" HTML tags were found).', 'wpsso' ), $check_url ) . ' ' . sprintf( __( 'The webpage may contain HTML syntax errors preventing PHP from successfully parsing the HTML document - please review the <a href="%1$s">W3C Markup Validator</a> results and correct any syntax errors.', 'wpsso' ), $validator_url ) );
+						$notice_msg = sprintf( __( 'An error occured parsing the head meta tags from <a href="%1$s">%1$s</a> (no "link" or "meta" HTML tags were found).', 'wpsso' ), $check_url ) . ' ';
+
+						$notice_msg .= __( 'The webpage may contain HTML syntax errors preventing PHP from successfully parsing the HTML document.',
+							'wpsso' ) . ' ';
+
+						$notice_msg .= sprintf( __( 'Please review the <a href="%1$s">W3C Markup Validator</a> results and correct any syntax errors.',
+							'wpsso' ), $validator_url ) . ' ';
+
+						$notice_key = 'possible-html-syntax-errors-for-' . $check_url;
+
+						$this->p->notice->err( $notice_msg, null, $notice_key );
 					}
 
 				} else {

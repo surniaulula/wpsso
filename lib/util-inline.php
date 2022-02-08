@@ -166,6 +166,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 			$canonical_short_url = empty( $atts[ 'canonical_short_url' ] ) ? $this->u->get_canonical_short_url( $mod, $add_page ) : $atts[ 'canonical_short_url' ];
 			$sharing_url         = empty( $atts[ 'sharing_url' ] ) ? $this->u->get_sharing_url( $mod, $add_page, $atts ) : $atts[ 'sharing_url' ];
 			$sharing_short_url   = empty( $atts[ 'sharing_short_url' ] ) ? $this->u->get_sharing_short_url( $mod, $add_page, $atts ) : $atts[ 'sharing_short_url' ];
+			$author_name         = empty( $atts[ 'author_name' ] ) ? WpssoUser::get_author_name( $mod ) : empty( $atts[ 'author_name' ] );
 
 			/**
 			 * When possible, try and provide the same variable names as Yoast SEO.
@@ -189,6 +190,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				'pagename'            => isset( $mod[ 'query_vars' ][ 'pagename' ] ) ? $mod[ 'query_vars' ][ 'pagename' ] : '',
 				'pagenumber'          => $page_number,
 				'pagetotal'           => $page_total,
+				'name'                => $author_name,
 				'comment_author'      => empty( $mod[ 'comment_author_name' ] ) ? '' : $mod[ 'comment_author_name' ],
 				'comment_date'        => empty( $mod[ 'comment_time' ] ) ? '' : mysql2date( $date_format, $mod[ 'comment_time' ] ),
 				'post_date'           => empty( $mod[ 'post_time' ] ) ? '' : mysql2date( $date_format, $mod[ 'post_time' ] ),

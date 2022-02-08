@@ -190,7 +190,17 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			 * WpssoUser elements.
 			 */
 			$mod[ 'is_user' ]    = true;
-			$mod[ 'is_archive' ] = true;
+			$mod[ 'is_archive' ] = true;	// Required for WpssoUtil->get_url_paged().
+
+			if ( $mod[ 'id' ] ) {	// Just in case.
+				
+				$user_obj = get_userdata( $mod[ 'id' ] );
+
+				if ( $user_obj instanceof WP_User ) {	// Just in case.
+					
+					$mod[ 'user_name' ] = (string) $user_obj->display_name;
+				}
+			}
 
 			return $local_cache[ $user_id ] = apply_filters( 'wpsso_get_user_mod', $mod, $user_id );
 		}
@@ -1171,6 +1181,13 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $author_id;
 		}
 
+		public static function get_author_name( array $mod ) {
+
+			$author_id = self::get_author_id( $mod );
+
+			return get_the_author_meta( 'display_name', $author_id );
+		}
+
 		public function get_author_meta( $user_id, $meta_key ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -1235,12 +1252,126 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$author_meta = apply_filters( 'wpsso_get_author_meta', $author_meta, $user_id, $meta_key, $user_exists );
 
+			return $local_cache[ $user_id ][ $meta_key ] = (string) $author_meta;
+		}
+
+		public function get_author_website( $user_id, $meta_key = 'url' ) {
+
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'user id ' . $user_id . ' ' . $meta_key . ': ' . $author_meta );
+				$this->p->debug->log_args( array( 
+					'user_id'  => $user_id,
+					'meta_key' => $meta_key,
+				) );
 			}
 
-			return $local_cache[ $user_id ][ $meta_key ] = (string) $author_meta;
+			static $local_cache = array();
+
+			if ( isset( $local_cache[ $user_id ] ) ) {
+
+				if ( isset( $local_cache[ $user_id ][ $meta_key ] ) ) {
+
+					return $local_cache[ $user_id ][ $meta_key ];
+				}
+
+			} else {
+
+				$local_cache[ $user_id ] = array();
+			}
+
+			$user_exists = SucomUtilWP::user_exists( $user_id );
+
+			$website_url = '';
+
+			if ( $user_exists ) {
+
+				switch ( $meta_key ) {
+
+					case 'none':
+
+						break;
+
+					case 'archive':
+
+						$website_url = get_author_posts_url( $user_id );
+
+						break;
+
+					case 'twitter':
+
+						$website_url = get_the_author_meta( $meta_key, $user_id );
+
+						if ( false === filter_var( $website_url, FILTER_VALIDATE_URL ) ) {
+
+							$website_url = 'https://twitter.com/' . preg_replace( '/^@/', '', $website_url );
+						}
+
+						break;
+
+					case 'url':
+					case 'website':
+
+						$website_url = get_the_author_meta( 'url', $user_id );
+
+						break;
+
+					default:
+
+						$website_url = get_the_author_meta( $meta_key, $user_id );
+
+						break;
+				}
+
+				$website_url = trim( $website_url );	// Just in case.
+
+			} elseif ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'user id ' . $user_id . ' is not a WordPress user' );
+			}
+
+			$website_url = apply_filters( 'wpsso_get_author_website', $website_url, $user_id, $meta_key, $user_exists );
+
+			return $local_cache[ $user_id ][ $meta_key ] = (string) $website_url;
+		}
+
+		/**
+		 * WpssoUser class specific methods.
+		 *
+		 * Called by WpssoOpenGraph->get_array() for a single post author and (possibly) several coauthors.
+		 */
+		public function get_authors_websites( $user_ids, $meta_key = 'url' ) {
+
+			$urls = array();
+
+			if ( empty( $user_ids ) ) {	// Just in case.
+
+				return $urls;
+			}
+
+			if ( ! is_array( $user_ids ) ) {
+
+				$user_ids = array( $user_ids );
+			}
+
+			if ( $meta_key && 'none' !== $meta_key ) {	// Just in case.
+
+				foreach ( $user_ids as $user_id ) {
+
+					if ( empty( $user_id ) ) {
+
+						continue;
+					}
+
+					$value = $this->get_author_website( $user_id, $meta_key );	// Returns a single URL string.
+
+					if ( ! empty( $value ) ) {	// Make sure we don't add empty values.
+
+						$urls[] = $value;
+					}
+				}
+			}
+
+			return $urls;
 		}
 
 		/**
@@ -1541,130 +1672,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			}
 
 			return apply_filters( 'wpsso_get_other_user_images', array(), $num, $size_names, $user_id, $check_dupes, $md_pre );
-		}
-
-		/**
-		 * WpssoUser class specific methods.
-		 *
-		 * Called by WpssoOpenGraph->get_array() for a single post author and (possibly) several coauthors.
-		 */
-		public function get_authors_websites( $user_ids, $meta_key = 'url' ) {
-
-			$urls = array();
-
-			if ( empty( $user_ids ) ) {	// Just in case.
-
-				return $urls;
-			}
-
-			if ( ! is_array( $user_ids ) ) {
-
-				$user_ids = array( $user_ids );
-			}
-
-			if ( $meta_key && 'none' !== $meta_key ) {	// Just in case.
-
-				foreach ( $user_ids as $user_id ) {
-
-					if ( empty( $user_id ) ) {
-
-						continue;
-					}
-
-					$value = $this->get_author_website( $user_id, $meta_key );	// Returns a single URL string.
-
-					if ( ! empty( $value ) ) {	// Make sure we don't add empty values.
-
-						$urls[] = $value;
-					}
-				}
-			}
-
-			return $urls;
-		}
-
-		public function get_author_website( $user_id, $meta_key = 'url' ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log_args( array( 
-					'user_id'  => $user_id,
-					'meta_key' => $meta_key,
-				) );
-			}
-
-			static $local_cache = array();
-
-			if ( isset( $local_cache[ $user_id ] ) ) {
-
-				if ( isset( $local_cache[ $user_id ][ $meta_key ] ) ) {
-
-					return $local_cache[ $user_id ][ $meta_key ];
-				}
-
-			} else {
-
-				$local_cache[ $user_id ] = array();
-			}
-
-			$user_exists = SucomUtilWP::user_exists( $user_id );
-
-			$website_url = '';
-
-			if ( $user_exists ) {
-
-				switch ( $meta_key ) {
-
-					case 'none':
-
-						break;
-
-					case 'index':
-
-						$website_url = get_author_posts_url( $user_id );
-
-						break;
-
-					case 'twitter':
-
-						$website_url = get_the_author_meta( $meta_key, $user_id );
-
-						if ( false === filter_var( $website_url, FILTER_VALIDATE_URL ) ) {
-
-							$website_url = 'https://twitter.com/' . preg_replace( '/^@/', '', $website_url );
-						}
-
-						break;
-
-					case 'url':
-					case 'website':
-
-						$website_url = get_the_author_meta( 'url', $user_id );
-
-						break;
-
-					default:
-
-						$website_url = get_the_author_meta( $meta_key, $user_id );
-
-						break;
-				}
-
-				$website_url = trim( $website_url );	// Just in case.
-
-			} elseif ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'user id ' . $user_id . ' is not a WordPress user' );
-			}
-
-			$website_url = apply_filters( 'wpsso_get_author_website', $website_url, $user_id, $meta_key, $user_exists );
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'user id ' . $user_id . ' ' . $meta_key . ' = ' . $website_url );
-			}
-
-			return $local_cache[ $user_id ][ $meta_key ] = (string) $website_url;
 		}
 
 		/**

@@ -339,6 +339,12 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 				/**
 				 * SSO > Advanced Settings > Plugin Settings > Default Text tab (Archive Pages section).
 				 */
+				case 'tooltip-plugin_author_page_title':	// Author Archive Title.
+
+					$text = __( 'The author archive page title used for meta tags and Schema markup.' );
+
+					break;
+
 				case 'tooltip-plugin_search_page_title':	// Search Results Title.
 
 					$text = __( 'The search results page title used for meta tags and Schema markup.' );

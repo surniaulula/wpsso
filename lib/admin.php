@@ -1178,26 +1178,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				sprintf( __( 'Note that some caches may take several days to expire and reflect these changes (or %s now).',
 					'wpsso' ), $clear_cache_link ) );
 
-			if ( empty( $opts[ 'plugin_filter_content' ] ) ) {
-
-				$notice_key = 'notice-content-filters-disabled';
-
-				if ( $notice_msg = $this->p->msgs->get( $notice_key ) ) {
-
-					$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
-				}
-			}
-
-			if ( empty( $opts[ 'plugin_check_img_dims' ] ) ) {
-
-				$notice_key = 'notice-check-img-dims-disabled';
-
-				if ( $notice_msg = $this->p->msgs->get( $notice_key ) ) {
-
-					$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
-				}
-			}
-
 			return $opts;
 		}
 
@@ -1544,7 +1524,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( $current_locale && $default_locale && $current_locale !== $default_locale ) {
 
-				$notice_msg = sprintf( __( 'Please note that your current language is different from the default site language (%s).', 'wpsso' ), $default_locale ) . ' ';
+				$notice_msg = sprintf( __( 'Please note that your current language is different from the default site language (%s).', 'wpsso' ),
+					$default_locale ) . ' ';
 
 				$notice_msg .= sprintf( __( 'Localized option values (%s) are used for webpages and content in that language only (not for the default language, or any other language).', 'wpsso' ), $current_locale );
 

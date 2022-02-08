@@ -201,7 +201,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 					$p_info        = $this->p->cf[ 'plugin' ][ 'wpsso' ];
 					$p_name_transl = _x( $p_info[ 'name' ], 'plugin name', 'wpsso' );
 
-					$notice_key = 'have-updates-for-wpsso';
+					$notice_key = 'pending-updates-for-wpsso-and-addons';
 
 					$notice_msg = sprintf( _n( 'There is <a href="%1$s">%2$d pending update for the %3$s plugin and its add-on(s)</a>.',
 						'There are <a href="%1$s">%2$d pending updates for the %3$s plugin and its add-on(s)</a>.', $update_count, 'wpsso' ),

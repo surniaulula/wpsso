@@ -185,7 +185,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			 * WpssoTerm elements.
 			 */
 			$mod[ 'is_term' ]    = true;
-			$mod[ 'is_archive' ] = true;
+			$mod[ 'is_archive' ] = true;	// Required for WpssoUtil->get_url_paged().
 
 			if ( $mod[ 'id' ] ) {	// Just in case.
 

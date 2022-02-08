@@ -256,6 +256,11 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$table_rows[ 'subsection_archive_pages' ] = '' .
 				'<td colspan="2" class="subsection"><h4>' . _x( 'Archive Pages', 'metabox title', 'wpsso' ) . '</h4></td>';
 
+			$table_rows[ 'plugin_author_page_title' ] = '' .
+				$form->get_th_html_locale( _x( 'Author Archive Title', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_author_page_title' ) . 
+				'<td class="blank">' . $form->get_no_input_locale( 'plugin_author_page_title', $css_class = 'wide' ) . '</td>';
+
 			$table_rows[ 'plugin_search_page_title' ] = '' .
 				$form->get_th_html_locale( _x( 'Search Results Title', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_search_page_title' ) . 
