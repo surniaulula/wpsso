@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires PHP: 7.2
 Requires At Least: 5.2
 Tested Up To: 5.9.0
-WC Tested Up To: 6.1.1
+WC Tested Up To: 6.2.0
 Stable Tag: 10.2.0
 
 Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
@@ -251,19 +251,23 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 10.3.0-dev.3 (2022/02/08)**
+**Version 10.3.0-dev.4 (2022/02/09)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added new options under the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Default Text tab:
+	* Updated the Rank Math integration modules to convert Rank Math inline variable names (Premium edition).
+	* Added a new option under the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Default Text tab (Premium edition):
 		* Author Archive Title
 	* Updated tooltip position for RTL.
 * **Bugfixes**
 	* Fixed incorrect `WpssoPage->get_title()` arguments when getting the Schema Job Posting title.
 * **Developer Notes**
-	* Added new inline variables:
+	* Added a new inline variable:
 		* %%author%%
+	* Replaced calls to `SucomUtil::json_encode_array()` with `wp_json_encode()`.
+	* Refactored the `WpssoProSeoRankmath` and `WpssoProUtilRankmathMeta` classes to convert Rank Math inline variable names (Premium edition).
+	* Removed the `SuextJsonFormat` class (no longer used).
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -274,7 +278,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Improvements**
 	* Improved RTL support in the Document SSO metabox and settings pages.
-	* Added new options under the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Default Text tab:
+	* Added new options under the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Default Text tab (Premium edition):
 		* 404 Page Title
 		* 404 Page Description
 * **Bugfixes**
@@ -287,7 +291,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* `WpssoUtil::get_modified_filter_value()`
 		* `WpssoUtil::__save_current_filter_value()`
 		* `WpssoUtil::__restore_current_filter_value()`
-	* Refactored the following classes to import only social metadata if the SEO plugin is active (and import all metadata if inactive):
+	* Refactored the following classes to import only social metadata if the SEO plugin is active and import all metadata if inactive (Premium edition):
 		* `WpssoProUtilAbstractSeoMeta`
 		* `WpssoProUtilAioseopMeta`
 		* `WpssoProUtilRankmathMeta`
@@ -857,9 +861,9 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 10.3.0-dev.3 =
+= 10.3.0-dev.4 =
 
-(2022/02/08) Fixed Schema Job Posting title. Updated tooltip position for RTL. Added new options in the SSO &gt; Advanced Settings page.
+(2022/02/09) Fixed Schema Job Posting title. Updated the Rank Math integration modules. Added a new option in the SSO &gt; Advanced Settings page.
 
 = 10.2.0 =
 
