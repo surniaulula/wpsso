@@ -251,7 +251,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 10.3.0-dev.4 (2022/02/09)**
+**Version 10.3.0-dev.5 (2022/02/09)**
 
 * **New Features**
 	* None.
@@ -260,7 +260,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new option under the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Default Text tab (Premium edition):
 		* Author Archive Title
 	* Updated tooltip position for RTL.
-	* Changed the default notification TTL from 600 to 120 seconds.
+	* Changed the default notification TTL from 600 to 60 seconds.
 * **Bugfixes**
 	* Fixed incorrect `WpssoPage->get_title()` arguments when getting the Schema Job Posting title.
 * **Developer Notes**
@@ -863,7 +863,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 10.3.0-dev.4 =
+= 10.3.0-dev.5 =
 
 (2022/02/09) Fixed Schema Job Posting title. Updated the Rank Math integration modules. Added a new option in the SSO &gt; Advanced Settings page.
 
