@@ -875,7 +875,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 = 10.1.0 =
 
-(2022/02/05) Added new options under the SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Default Text tab.
+(2022/02/05) SSO toolbar notices show and hide after a time-out. Added new options under the SSO &gt; Advanced Settings &gt; Plugin Admin &gt; Default Text tab.
 
 = 10.0.0 =
 
