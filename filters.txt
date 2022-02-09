@@ -313,5 +313,3 @@
 
 'wpsso_variation_title' ( $title, $variation )
 
-'wpsso_wpseo_replace_vars' ( $text, $obj )
-
