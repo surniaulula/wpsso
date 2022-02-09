@@ -260,6 +260,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new option under the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Default Text tab (Premium edition):
 		* Author Archive Title
 	* Updated tooltip position for RTL.
+	* Changed the default notification TTL from 600 to 120 seconds.
 * **Bugfixes**
 	* Fixed incorrect `WpssoPage->get_title()` arguments when getting the Schema Job Posting title.
 * **Developer Notes**
@@ -267,6 +268,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* %%author%%
 	* Replaced calls to `SucomUtil::json_encode_array()` with `wp_json_encode()`.
 	* Refactored the `WpssoProSeoRankmath` and `WpssoProUtilRankmathMeta` classes to convert Rank Math inline variable names (Premium edition).
+	* Removed the 'wpsso_wpseo_replace_vars' filter (no longer required).
 	* Removed the `SuextJsonFormat` class (no longer used).
 * **Requires At Least**
 	* PHP v7.2.
