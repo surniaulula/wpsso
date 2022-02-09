@@ -337,7 +337,14 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				''              => 'width:15%; max-width:15vw;',
 			) as $css_class => $width_css ) {
 
-				$custom_style_css .= "\n@media screen and ( min-width:783px ) {\n";	// Open code block.
+				/**
+				 * WooCommerce changes their tabs to icons at 900px. 
+				 * WordPress collapses the admin menu at 960px.
+				 * WordPress changes to larger icons at 782px.
+				 *
+				 * WPSSO uses @media max-width values of 1330px, 1200px, 960px, 782px, and 600px.
+				 */
+				$custom_style_css .= "\n@media screen and ( min-width:782px ) {\n";	// Open code block.
 
 				switch ( $css_class ) {
 
@@ -502,7 +509,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				table.wp-list-table > tbody > tr > td.column-wpsso_og_desc {
 					overflow:hidden;
 				}
-				@media screen and ( max-width:1295px ) {
+				@media screen and ( max-width:1330px ) {
 
 					th.column-wpsso_og_desc,
 					td.column-wpsso_og_desc {

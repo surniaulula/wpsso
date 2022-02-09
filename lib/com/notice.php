@@ -1221,7 +1221,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			/**
 			 * Check to see if there's a section that should be shown only once.
 			 */
-			if ( preg_match( '/<!-- show-once -->.*<!-- \/show-once -->/Us', $payload[ 'msg_text' ], $matches ) ) {
+			if ( preg_match( '/<!-- *show-once *-->.*<!-- *\/show-once *-->/Us', $payload[ 'msg_text' ], $matches ) ) {
 
 				static $show_once = array();
 
@@ -1503,9 +1503,14 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					padding:0;
 				}
 				#wpadminbar #wp-toolbar li.has-toolbar-notices #wp-admin-bar-' . $this->plugin_id . '-toolbar-notices-container {
-					min-width:75vw;			/* 70% of the viewing window width. */
-					max-height:90vh;		/* 90% of the viewing window height. */
+					min-width:65vw;
+					max-height:90vh;
 					overflow-y:scroll;
+				}
+				@media screen and ( max-width:1330px ) {
+					#wpadminbar #wp-toolbar li.has-toolbar-notices #wp-admin-bar-' . $this->plugin_id . '-toolbar-notices-container {
+						min-width:70vw;
+					}
 				}
 				#wpadminbar .' . $this->plugin_id . '-notice,
 				#wpadminbar .' . $this->plugin_id . '-notice.error,
@@ -1571,6 +1576,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					border:none;
 					vertical-align:top;
 					background:inherit;
+				}
+				@media screen and ( max-width:1200px ) {
+					#wpadminbar div.' . $this->plugin_id . '-notice .notice-label {
+						display:none;
+					}
 				}
 				.' . $this->plugin_id . '-notice div.notice-actions {
 					text-align:center;

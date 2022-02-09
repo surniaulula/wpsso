@@ -89,7 +89,14 @@ h1 > div.dashicons-before::before {
 	margin:10px 0 5px 0;
 }
 
-@media screen and ( max-width:1400px ) {
+/**
+ * WooCommerce changes their tabs to icons at 900px. 
+ * WordPress collapses the admin menu at 960px.
+ * WordPress changes to larger icons at 782px.
+ *
+ * WPSSO uses @media max-width values of 1330px, 1200px, 960px, 782px, and 600px.
+ */
+@media screen and ( max-width:1330px ) {
 
 	#side-column {
 		width:245px;
@@ -102,10 +109,7 @@ h1 > div.dashicons-before::before {
 	}
 }
 
-/**
- * Move the side info boxes below the metaboxes.
- */
-@media screen and ( max-width:1200px ) {
+@media screen and ( max-width:1200px ) {	/* Move the side info boxes below the metaboxes. */
 
 	.has-side-column {
 		display:block !important;

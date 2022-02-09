@@ -3010,7 +3010,20 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( ! empty( $hash ) ) {
 
-				$admin_url .= '&' . rand( 100000, 999999 );	// If on the same page, force a reload for the anchor.
+				/**
+				 * If we have anchor text, force a page reload for the anchor, in case we're on the same page.
+				 *
+				 * Use the same random query for all admin URLs during a single page load so the SucomNotice "show
+				 * once" feature will work correctly.
+				 */
+				static $rand_arg = null;
+
+				if ( null === $rand_arg ) {
+
+					$rand_arg = rand( 100000, 999999 );
+				}
+
+				$admin_url .= '&' . $rand_arg;
 
 				$admin_url .= '#' . $hash;
 			}
