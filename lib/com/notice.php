@@ -21,7 +21,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 		private $text_domain  = 'sucom';
 		private $dismiss_name = 'sucom_dismissed';
 		private $nonce_name   = '';
-		private $default_ttl  = 600;
+		private $default_ttl  = 120;
 		private $label_transl = false;
 		private $doing_dev    = false;
 		private $use_cache    = true;	// Read/save minimized CSS from/to transient cache.
