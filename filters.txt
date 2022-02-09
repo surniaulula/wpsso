@@ -255,11 +255,11 @@
 
 'wpsso_save_setting_options' ( $opts, $network, $upgrading )
 
-'wpsso_save_post_options' ( $opts, $post_id, $rel_id, $mod )
+'wpsso_save_post_options' ( $opts, $post_id, $mod )
 
-'wpsso_save_term_options' ( $opts, $term_id, $term_tax_id, $mod )
+'wpsso_save_term_options' ( $opts, $term_id, $mod )
 
-'wpsso_save_user_options' ( $opts, $term_id, false, $mod )
+'wpsso_save_user_options' ( $opts, $term_id, $mod )
 
 'wpsso_schema_type' ( $type_id, $mod, $is_custom )
 

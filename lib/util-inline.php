@@ -200,6 +200,11 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				'query_month'         => '',	// Placeholder.
 				'query_monthnum'      => isset( $mod[ 'query_vars' ][ 'monthnum' ] ) ? $mod[ 'query_vars' ][ 'monthnum' ] : '',
 				'query_day'           => isset( $mod[ 'query_vars' ][ 'day' ] ) ? $mod[ 'query_vars' ][ 'day' ] : '',
+				'currentdate'         => date_i18n( $date_format ),
+				'currenttime'         => date_i18n( $time_format ),
+				'currentday'          => date_i18n( 'j' ),
+				'currentmonth'        => date_i18n( 'F' ),
+				'currentyear'         => date_i18n( 'Y' ),
 			);
 
 			/**

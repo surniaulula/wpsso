@@ -47,3 +47,13 @@
 
 %%query_day%%
 
+%%currentdate%%
+
+%%currenttime%%
+
+%%currentday%%
+
+%%currentmonth%%
+
+%%currentyear%%
+

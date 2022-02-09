@@ -375,7 +375,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 						$this->p->debug->log( 'applying get_md_options filters' );
 					}
 
-					$md_opts = (array) apply_filters( 'wpsso_get_md_options', $md_opts, $mod );
+					$md_opts = apply_filters( 'wpsso_get_md_options', $md_opts, $mod );
 
 					/**
 					 * Since WPSSO Core v4.31.0.
@@ -385,7 +385,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 						$this->p->debug->log( 'applying get_term_options filters for term_id ' . $term_id . ' meta' );
 					}
 
-					$md_opts = (array) apply_filters( 'wpsso_get_term_options', $md_opts, $term_id, $mod );
+					$md_opts = apply_filters( 'wpsso_get_term_options', $md_opts, $term_id, $mod );
 
 					/**
 					 * Since WPSSO Core v8.2.0.
@@ -451,7 +451,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			$md_opts = apply_filters( 'wpsso_save_md_options', $md_opts, $mod );
 
-			$md_opts = apply_filters( 'wpsso_save_term_options', $md_opts, $term_id, $term_tax_id, $mod );
+			$md_opts = apply_filters( 'wpsso_save_term_options', $md_opts, $term_id, $mod );
 
 			if ( empty( $md_opts ) ) {
 
@@ -847,11 +847,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 				$filter_name = 'wpsso_metabox_' . $metabox_id . '_' . $tab_key . '_rows';
 
-				$table_rows[ $tab_key ] = (array) apply_filters( $filter_name, array(), $this->form, parent::$head_info, $mod );
+				$table_rows[ $tab_key ] = apply_filters( $filter_name, array(), $this->form, parent::$head_info, $mod );
 
 				$mod_filter_name = 'wpsso_' . $mod[ 'name' ] . '_' . $tab_key . '_rows';
 
-				$table_rows[ $tab_key ] = (array) apply_filters( $mod_filter_name, $table_rows[ $tab_key ], $this->form, parent::$head_info, $mod );
+				$table_rows[ $tab_key ] = apply_filters( $mod_filter_name, $table_rows[ $tab_key ], $this->form, parent::$head_info, $mod );
 			}
 
 			$tabbed_args = array( 'layout' => 'vertical' );
@@ -1060,28 +1060,24 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 		public static function use_term_meta_table( $term_id = false ) {
 
-			static $local_cache = null;
+			static $local_cache = array();
 
-			if ( null === $local_cache )	{	// Optimize and check only once.
+			if ( isset( $local_cache[ $term_id ] ) ) {	// Optimize and check only once.
 
-				if ( function_exists( 'get_term_meta' ) && get_option( 'db_version' ) >= 34370 ) {
-
-					if ( false === $term_id || ! wp_term_is_shared( $term_id ) ) {
-
-						$local_cache = true;
-
-					} else {
-
-						$local_cache = false;
-					}
-
-				} else {
-
-					$local_cache = false;
-				}
+				return $local_cache[ $term_id ];
 			}
 
-			return $local_cache;
+			if ( function_exists( 'get_term_meta' ) && get_option( 'db_version' ) >= 34370 ) {
+
+				if ( false === $term_id || ! wp_term_is_shared( $term_id ) ) {
+
+					return $local_cache[ $term_id ] = true;
+				}
+
+				return $local_cache[ $term_id ] = false;
+			}
+
+			return $local_cache[ $term_id ] = false;
 		}
 	}
 }

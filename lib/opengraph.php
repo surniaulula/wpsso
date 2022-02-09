@@ -46,7 +46,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			) );
 
 			$this->p->util->add_plugin_filters( $this, array(
-				'get_post_options'  => 3,
+				'get_post_options' => 3,
 			), PHP_INT_MAX );
 		}
 
@@ -60,7 +60,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			return $sizes;
 		}
 
-		public function filter_get_post_options( $md_opts, $post_id, $mod ) {
+		public function filter_get_post_options( array $md_opts, $post_id, array $mod ) {
 
 			if ( is_admin() ) {	// Keep processing on the front-end to a minimum.
 
@@ -2172,7 +2172,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		 * If the Open Graph type isn't already hard-coded (ie. ':disabled'), then using the post type and the Schema type,
 		 * check for a possible hard-coded Open Graph type.
 		 */
-		private function maybe_update_post_og_type( $md_opts, $post_id, $mod ) {
+		private function maybe_update_post_og_type( array $md_opts, $post_id, array $mod ) {
 
 			if ( $this->p->debug->enabled ) {
 

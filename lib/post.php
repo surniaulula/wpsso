@@ -473,7 +473,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 						$this->p->debug->log( 'applying import_custom_fields filters for post id ' . $post_id . ' metadata' );
 					}
 
-					$md_opts = (array) apply_filters( 'wpsso_import_custom_fields', $md_opts, get_post_meta( $post_id ) );
+					$md_opts = apply_filters( 'wpsso_import_custom_fields', $md_opts, get_post_meta( $post_id ) );
 
 					/**
 					 * Since WPSSO Core v9.5.0.
@@ -482,7 +482,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 */
 					$inherit_custom = empty( $this->p->options[ 'plugin_inherit_custom' ] ) ? false : $mod[ 'is_public' ];
 
-					$inherit_custom = (bool) apply_filters( 'wpsso_inherit_custom_images', $inherit_custom, $mod );
+					$inherit_custom = apply_filters( 'wpsso_inherit_custom_images', $inherit_custom, $mod );
 
 					if ( $inherit_custom ) {
 
@@ -592,7 +592,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$md_opts = apply_filters( 'wpsso_save_md_options', $md_opts, $mod );
 
-			$md_opts = apply_filters( 'wpsso_save_post_options', $md_opts, $post_id, $rel, $mod );
+			$md_opts = apply_filters( 'wpsso_save_post_options', $md_opts, $post_id, $mod );
 
 			if ( empty( $md_opts ) ) {
 
@@ -1687,11 +1687,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				$filter_name = 'wpsso_metabox_' . $metabox_id . '_' . $tab_key . '_rows';
 
-				$table_rows[ $tab_key ] = (array) apply_filters( $filter_name, array(), $this->form, parent::$head_info, $mod );
+				$table_rows[ $tab_key ] = apply_filters( $filter_name, array(), $this->form, parent::$head_info, $mod );
 
 				$mod_filter_name = 'wpsso_' . $mod[ 'name' ] . '_' . $tab_key . '_rows';
 
-				$table_rows[ $tab_key ] = (array) apply_filters( $mod_filter_name, $table_rows[ $tab_key ], $this->form, parent::$head_info, $mod );
+				$table_rows[ $tab_key ] = apply_filters( $mod_filter_name, $table_rows[ $tab_key ], $this->form, parent::$head_info, $mod );
 			}
 
 			$tabbed_args = array( 'layout' => 'vertical' );

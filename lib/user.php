@@ -292,7 +292,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 					$user_exists_id = 0;
 
-					$md_opts = (array) apply_filters( 'wpsso_get_other_user_meta', array(), $user_id );
+					$md_opts = apply_filters( 'wpsso_get_other_user_meta', array(), $user_id );
 				}
 
 				unset( $md_opts[ 'opt_filtered' ] );	// Just in case.
@@ -359,7 +359,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 						$this->p->debug->log( 'applying get_md_options filters' );
 					}
 
-					$md_opts = (array) apply_filters( 'wpsso_get_md_options', $md_opts, $mod );
+					$md_opts = apply_filters( 'wpsso_get_md_options', $md_opts, $mod );
 
 					/**
 					 * Since WPSSO Core v4.31.0.
@@ -369,7 +369,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 						$this->p->debug->log( 'applying get_user_options filters for user_id ' . $user_id . ' meta' );
 					}
 
-					$md_opts = (array) apply_filters( 'wpsso_get_user_options', $md_opts, $user_id, $mod );
+					$md_opts = apply_filters( 'wpsso_get_user_options', $md_opts, $user_id, $mod );
 
 					/**
 					 * Since WPSSO Core v8.2.0.
@@ -459,7 +459,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$md_opts = apply_filters( 'wpsso_save_md_options', $md_opts, $mod );
 
-			$md_opts = apply_filters( 'wpsso_save_user_options', $md_opts, $user_id, $rel, $mod );
+			$md_opts = apply_filters( 'wpsso_save_user_options', $md_opts, $user_id, $mod );
 
 			if ( empty( $md_opts ) ) {
 
@@ -939,11 +939,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				$filter_name = 'wpsso_metabox_' . $metabox_id . '_' . $tab_key . '_rows';
 
-				$table_rows[ $tab_key ] = (array) apply_filters( $filter_name, array(), $this->form, parent::$head_info, $mod );
+				$table_rows[ $tab_key ] = apply_filters( $filter_name, array(), $this->form, parent::$head_info, $mod );
 
 				$mod_filter_name = 'wpsso_' . $mod[ 'name' ] . '_' . $tab_key . '_rows';
 
-				$table_rows[ $tab_key ] = (array) apply_filters( $mod_filter_name, $table_rows[ $tab_key ], $this->form, parent::$head_info, $mod );
+				$table_rows[ $tab_key ] = apply_filters( $mod_filter_name, $table_rows[ $tab_key ], $this->form, parent::$head_info, $mod );
 			}
 
 			$tabbed_args = array( 'layout' => 'vertical' );
