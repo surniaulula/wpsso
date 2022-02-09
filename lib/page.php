@@ -1063,6 +1063,27 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			/**
+			 * Add the page number if it's greater than 1 and we don't already have a '%%page%%' or '%%pagenumber%%'
+			 * inline variable in the title.
+			 */
+			$page_number_transl = '';
+			
+			if ( $mod[ 'paged' ] > 1 ) {
+
+				if ( false === strpos( $title_text, '%%page%%' ) && false === strpos( $title_text, '%%pagenumber%%' ) ) {
+
+					if ( $mod[ 'paged_total' ] > 1 ) {
+
+						$page_number_transl = sprintf( __( 'Page %1$d of %2$d', 'wpsso' ), $mod[ 'paged' ], $mod[ 'paged_total' ] );
+
+					} else {
+
+						$page_number_transl = sprintf( __( 'Page %1$d', 'wpsso' ), $mod[ 'paged' ] );
+					}
+				}
+			}
+
+			/**
 			 * Replace inline variables in the string.
 			 */
 			if ( false !== strpos( $title_text, '%%' ) ) {
@@ -1091,11 +1112,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				$title_text = $this->p->opt->get_text( 'plugin_no_title_text' );	// No Title Text.
 			}
-
-			/**
-			 * Maybe add the page number.
-			 */
-			$page_number_transl = $mod[ 'paged' ] > 1 ? sprintf( __( 'Page %s', 'wpsso' ), $mod[ 'paged' ] ) : '';
 
 			/**
 			 * Check title against string length limits.

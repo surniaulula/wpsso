@@ -1080,7 +1080,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 				}
 			}
 
-			$json_encoded = SucomUtil::json_encode_array( $json_notices );
+			$json_encoded = wp_json_encode( $json_notices );
 
 			die( $json_encoded );
 		}

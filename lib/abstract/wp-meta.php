@@ -205,6 +205,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return self::must_be_extended( self::$mod_defaults );
 		}
 
+		public function get_mod_wp_object( array $mod ) {
+			
+			return self::must_be_extended( $ret_val = false );
+		}
+
 		public static function get_mod_defaults() {
 
 			return self::$mod_defaults;

@@ -92,6 +92,11 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 			return $local_cache[ $comment_id ] = apply_filters( 'wpsso_get_comment_mod', $mod, $comment_id );
 		}
 
+		public function get_mod_wp_object( array $mod ) {
+
+			return get_comment( $mod[ 'id' ] );
+		}
+
 		public function clear_cache_comment_post( $comment_id, $comment_approved ) {
 
 			if ( $comment_id && $comment_approved ) {

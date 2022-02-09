@@ -3840,28 +3840,18 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return mb_convert_encoding( pack( 'H*', $match[ 1 ] ), $to_encoding = 'UTF-8', $from_encoding = 'UCS-2' );
 		}
 
+		/**
+		 * Deprecated on 2022/02/09.
+		 */
 		public static function json_encode_array( array $data, $options = 0, $depth = 32 ) {
 
 			if ( function_exists( 'wp_json_encode' ) ) {
 
-				return wp_json_encode( $data, $options, $depth );
+				return wp_json_encode( $data, $options, $depth );	// Encode the array into JSON, with some sanity checks.
 
 			} elseif ( function_exists( 'json_encode' ) ) {
 
-				$php_version = phpversion();
-
-				if ( version_compare( $php_version, '5.5.0', '>=' ) ) {
-
-					return json_encode( $data, $options, $depth );  // $depth since PHP v5.5.0.
-
-				} elseif ( version_compare( $php_version, '5.3.0', '>=' ) ) {
-
-					return json_encode( $data, $options );          // $options since PHP v5.3.0.
-
-				}
-
-				return json_encode( $data );
-
+				return json_encode( $data, $options, $depth );
 			}
 
 			return '{}'; // Empty string.
@@ -4115,9 +4105,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function is_true( $mixed, $allow_null = false ) {
 
-			$ret_bool = is_string( $mixed ) ? filter_var( $mixed, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE ) : (bool) $mixed;
+			$ret = is_string( $mixed ) ? filter_var( $mixed, FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE ) : (bool) $mixed;
 
-		        return null === $ret_bool && ! $allow_null ? false : $ret_bool;
+		        return null === $ret && ! $allow_null ? false : $ret;
 		}
 
 		/**

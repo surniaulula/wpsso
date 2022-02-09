@@ -2642,17 +2642,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							 */
 							if ( ! empty( $info[ 'url' ][ 'info' ] ) ) {
 
-								/**
-								 * get_user_locale() is available since WP v4.7.0, so make sure it exists before calling it. :)
-								 */
-								$locale = is_admin() && function_exists( 'get_user_locale' ) ? get_user_locale() : get_locale();
-
 								$info_url = add_query_arg( array(
-									'tid'       => $this->p->options[ 'plugin_' . $ext . '_tid' ],
-									'locale'    => $locale,
-									'TB_iframe' => 'true',
-									'width'     => $this->p->cf[ 'wp' ][ 'tb_iframe' ][ 'width' ],
-									'height'    => $this->p->cf[ 'wp' ][ 'tb_iframe' ][ 'height' ],
+									'tid'            => $this->p->options[ 'plugin_' . $ext . '_tid' ],
+									'user_direction' => is_rtl() ? 'rtl' : 'ltr',
+									'user_locale'    => is_admin() ? get_user_locale() : get_locale(),
+									'TB_iframe'      => 'true',
+									'width'          => $this->p->cf[ 'wp' ][ 'tb_iframe' ][ 'width' ],
+									'height'         => $this->p->cf[ 'wp' ][ 'tb_iframe' ][ 'height' ],
 								), $info[ 'url' ][ 'purchase' ] . 'info/' );
 
 								$val = '<a href="' . $info_url . '" class="thickbox">' . $val . '</a>';
@@ -3357,7 +3353,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$home_slug    = SucomUtil::sanitize_hookname( preg_replace( '/^.*\/\//', '', get_home_url() ) );
 			$mime_type_gz = 'application/x-gzip';
 			$file_name_gz = WpssoConfig::get_version( $add_slug = true ) . '-' . $home_slug . '-' . $date_slug . '.json.gz';
-			$opts_encoded = SucomUtil::json_encode_array( $this->p->options );
+			$opts_encoded = wp_json_encode( $this->p->options );
 			$gzdata       = gzencode( $opts_encoded, 9, FORCE_GZIP );
 			$filesize     = strlen( $gzdata );
 			$disposition  = 'attachment';

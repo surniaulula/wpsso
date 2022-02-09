@@ -303,6 +303,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return $local_cache[ $post_id ] = apply_filters( 'wpsso_get_post_mod', $mod, $post_id );
 		}
 
+		public function get_mod_wp_object( array $mod ) {
+
+			return get_post( $mod[ 'id' ] );
+		}
+
 		/**
 		 * Check if the post type matches a pre-defined Open Graph type.
 		 *

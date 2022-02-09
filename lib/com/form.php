@@ -2866,8 +2866,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				 * element order. For this reason, we must use different arrays for the array keys and their
 				 * values.
 				 */
-				$json_array_keys   = SucomUtil::json_encode_array( array_keys( $select_json_arr ) );
-				$json_array_values = SucomUtil::json_encode_array( array_values( $select_json_arr ) );
+				$json_array_keys   = wp_json_encode( array_keys( $select_json_arr ) );
+				$json_array_values = wp_json_encode( array_values( $select_json_arr ) );
 
 				$script_js = 'var ' . $event_json_var . '_array_keys = ' . $json_array_keys . ';' . "\n";
 				$script_js .= 'var ' . $event_json_var . '_array_values = ' . $json_array_values . ';' . "\n";

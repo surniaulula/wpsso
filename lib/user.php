@@ -205,6 +205,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			return $local_cache[ $user_id ] = apply_filters( 'wpsso_get_user_mod', $mod, $user_id );
 		}
 
+		public function get_mod_wp_object( array $mod ) {
+
+			return get_userdata( $mod[ 'id' ] );
+		}
+
 		/**
 		 * Option handling methods:
 		 *

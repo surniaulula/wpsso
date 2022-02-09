@@ -481,8 +481,9 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = true );
 			}
 
+			$pretty_salt   = '_pretty:' . ( $this->p->util->is_json_pretty() ? 'true' : 'false' );
 			$cache_md5_pre = 'wpsso_h_';	// Transient prefix for head markup.
-			$cache_salt    = __CLASS__ . '::head_array(' . SucomUtil::get_mod_salt( $mod, $canonical_url ) . ')';
+			$cache_salt    = __CLASS__ . '::head_array(' . SucomUtil::get_mod_salt( $mod, $canonical_url ) . $pretty_salt . ')';
 			$cache_id      = $cache_md5_pre . md5( $cache_salt );
 
 			if ( $this->p->debug->enabled ) {
@@ -559,9 +560,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			 * Note that get_cache_exp_secs() will return 0 for some pre-defined conditions in the $mod array (404,
 			 * attachment, date, and search).
 			 */
+			$pretty_salt    = '_pretty:' . ( $this->p->util->is_json_pretty() ? 'true' : 'false' );
 			$cache_md5_pre  = 'wpsso_h_';	// Transient prefix for head markup.
 			$cache_exp_secs = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'transient', $mod );
-			$cache_salt     = __CLASS__ . '::head_array(' . SucomUtil::get_mod_salt( $mod, $canonical_url ) . ')';
+			$cache_salt     = __CLASS__ . '::head_array(' . SucomUtil::get_mod_salt( $mod, $canonical_url ) . $pretty_salt . ')';
 			$cache_id       = $cache_md5_pre . md5( $cache_salt );
 			$cache_index    = $this->get_head_cache_index( $mod );
 			$cache_array    = array();

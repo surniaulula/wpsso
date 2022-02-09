@@ -428,7 +428,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$json_data = $this->get_mod_json_data( $mod );	// Can return false.
 
-			return empty( $json_data ) ? '' : '<script type="application/ld+json">' . $this->p->util->json_format( $json_data ) . '</script>' . "\n";
+			if ( empty( $json_data ) ) {	// Just in case.
+			
+				return '';
+			}
+			
+			return '<script type="application/ld+json">' . $this->p->util->json_format( $json_data ) . '</script>' . "\n";
 		}
 
 		public function get_mod_json_data( array $mod ) {

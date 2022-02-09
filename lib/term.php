@@ -224,6 +224,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			return $local_cache[ $term_id ] = apply_filters( 'wpsso_get_term_mod', $mod, $term_id, $tax_slug );
 		}
 
+		public function get_mod_wp_object( array $mod ) {
+
+			return get_term( $mod[ 'id' ], $mod[ 'tax_slug' ] );
+		}
+
 		/**
 		 * Option handling methods:
 		 *

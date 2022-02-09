@@ -187,7 +187,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				'sep'                 => $sep,
 				'title'               => $this->p->page->get_the_title( $mod, $sep ),
 				'author'              => $author_name,
-				'page'                => sprintf( $sep . ' ' . __( 'Page %1$d of %2$d', 'wpsso' ), $page_number, $page_total ),
+				'page'                => $page_number > 1 ? sprintf( $sep . ' ' . __( 'Page %1$d of %2$d', 'wpsso' ), $page_number, $page_total ) : '',
 				'pagename'            => isset( $mod[ 'query_vars' ][ 'pagename' ] ) ? $mod[ 'query_vars' ][ 'pagename' ] : '',
 				'pagenumber'          => $page_number,
 				'pagetotal'           => $page_total,

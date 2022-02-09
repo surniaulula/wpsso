@@ -1769,62 +1769,33 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $long_url;
 		}
 
-		/**
-		 * Accepts a json script or json array.
-		 */
-		public function json_format( $json, $options = 0, $depth = 32 ) {
+		public function json_format( array $data, $options = 0, $depth = 32 ) {
 
-			/**
-			 * Allows for better visual cues in the Google validator.
-			 */
-			$do_pretty    = self::get_const( 'WPSSO_JSON_PRETTY_PRINT', true ) || $this->p->debug->enabled ? true : false;
-			$use_ext_lib  = self::get_const( 'WPSSO_EXT_JSON_DISABLE', false ) ? false : true;
-			$have_old_php = false;
+			if ( 0 === $options ) {
 
-			if ( 0 === $options && defined( 'JSON_UNESCAPED_SLASHES' ) ) {
-
-				$options = JSON_UNESCAPED_SLASHES;		// Since PHP v5.4.
+				$options = JSON_UNESCAPED_SLASHES;
 			}
 
-			/**
-			 * Decide if the encoded json will be minified or not.
-			 */
-			if ( $do_pretty ) {
+			if ( $this->is_json_pretty() ) {
 
-				if ( defined( 'JSON_PRETTY_PRINT' ) ) {		// Since PHP v5.4.
-
-					$options = $options|JSON_PRETTY_PRINT;
-
-				} else {
-
-					$have_old_php = true;	// Use SuextJsonFormat for older PHP.
-				}
+				$options = $options|JSON_PRETTY_PRINT;
 			}
 
-			/**
-			 * Encode the json.
-			 */
-			if ( is_array( $json ) ) {
+			return wp_json_encode( $data, $options, $depth );
+		}
 
-				$json = self::json_encode_array( $json, $options, $depth );
+		public function is_json_pretty() {
+
+			if ( $this->p->debug->enabled ) {	// Always output pretty JSON when debug is enabled.
+
+				return true;
 			}
+			
+			$is_pretty = self::get_const( 'WPSSO_JSON_PRETTY_PRINT', true );	// True by default.
+			
+			$is_pretty = (bool) apply_filters( 'wpsso_json_pretty_print', $is_pretty );
 
-			/**
-			 * After the JSON is encoded, maybe use the pretty print library for older PHP versions.
-			 *
-			 * Define WPSSO_EXT_JSON_DISABLE as true in wp-config.php to prevent using this library.
-			 */
-			if ( $have_old_php && $use_ext_lib ) {
-
-				$classname = WpssoConfig::load_lib( false, 'ext/json-format', 'suextjsonformat' );
-
-				if ( false !== $classname && class_exists( $classname ) ) {
-
-					$json = SuextJsonFormat::get( $json, $options, $depth );
-				}
-			}
-
-			return $json;
+			return $is_pretty ? true : false;
 		}
 
 		/**
