@@ -267,6 +267,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added new inline variables:
 		* %%author%%
 		* %%parent_title%%
+		* %%term%%
 		* %%term_title%%
 		* %%excerpt_only%%
 		* %%currentdate%%
