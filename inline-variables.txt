@@ -41,6 +41,8 @@
 
 %%comment_date%%
 
+%%term%%
+
 %%term_title%%
 
 %%query_search%%

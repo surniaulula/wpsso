@@ -227,7 +227,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 				case 'parent_title':
 
-					if ( $mod[ 'is_post' ] && $mod[ 'post_parent' ] ) {
+					if ( $mod[ 'is_post' ] && $mod[ 'post_parent' ] ) {	// Just in case.
 
 						$parent_mod = $this->p->post->get_mod( $mod[ 'post_parent' ] );
 
@@ -236,9 +236,20 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 					break;
 
+				case 'term':
+
+					if ( $mod[ 'is_term' ] ) {	// Just in case.
+				
+						$term_obj = $this->p->term->get_mod_wp_object( $mod );
+				
+						$ret_val = $term_obj->name;
+					}
+
+					break;
+
 				case 'term_title':
 
-					if ( $mod[ 'is_term' ] ) {
+					if ( $mod[ 'is_term' ] ) {	// Just in case.
 
 						$ret_val = $this->p->page->get_the_title( $mod, $title_sep );
 					}
@@ -248,6 +259,9 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				case 'author':
 				case 'name':	// Compatibility with Yoast SEO.
 				
+					/**
+					 * Returns the display name for a comment author, post author, or user module.
+					 */
 					$ret_val = WpssoUser::get_author_name( $mod );
 
 					break;
