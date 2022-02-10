@@ -155,13 +155,29 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 			$local_prevent_recursion = true;
 
-			$date_format         = get_option( 'date_format' );
-			$time_format         = get_option( 'time_format' );
+			static $local_cache = null;
+
+			if ( null === $local_cache ) {
+
+				$date_format = get_option( 'date_format' );
+				$time_format = get_option( 'time_format' );
+
+				$local_cache = array(
+					'sep'           => html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) ),
+					'date_format'   => $date_format,
+					'time_format'   => $time_format,
+					'currentdate'   => date_i18n( $date_format ),
+					'currenttime'   => date_i18n( $time_format ),
+					'currentday'    => date_i18n( 'j' ),
+					'currentmonth'  => date_i18n( 'F' ),
+					'currentyear'   => date_i18n( 'Y' ),
+				);
+			}
+
 			$add_page            = isset( $atts[ 'add_page' ] ) ? $atts[ 'add_page' ] : true;
-			$page_number         = $this->u->get_page_number( $mod, $add_page );
-			$page_total          = $mod[ 'paged_total' ];
-			$def_title_sep       = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
-			$sep                 = isset( $atts[ 'title_sep' ] ) ? $atts[ 'title_sep' ] : $def_title_sep;
+			$page_num            = $this->u->get_page_number( $mod, $add_page );
+			$title_sep           = isset( $atts[ 'title_sep' ] ) ? $atts[ 'title_sep' ] : $local_cache[ 'sep' ];
+			$page_transl         = $title_sep . ' ' . __( 'Page %1$d of %2$d', 'wpsso' );
 			$canonical_url       = empty( $atts[ 'canonical_url' ] ) ? $this->u->get_canonical_url( $mod, $add_page ) : $atts[ 'canonical_url' ];
 			$canonical_short_url = empty( $atts[ 'canonical_short_url' ] ) ? $this->u->get_canonical_short_url( $mod, $add_page ) : $atts[ 'canonical_short_url' ];
 			$sharing_url         = empty( $atts[ 'sharing_url' ] ) ? $this->u->get_sharing_url( $mod, $add_page, $atts ) : $atts[ 'sharing_url' ];
@@ -184,32 +200,29 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				'sitename'            => SucomUtil::get_site_name( $this->p->options, $mod ),
 				'sitealtname'         => SucomUtil::get_site_name_alt( $this->p->options, $mod ),
 				'sitedesc'            => SucomUtil::get_site_description( $this->p->options, $mod ),
-				'sep'                 => $sep,
-				'title'               => $this->p->page->get_the_title( $mod, $sep ),
+				'sep'                 => $title_sep,
+				'title'               => $this->p->page->get_the_title( $mod, $title_sep ),
 				'author'              => $author_name,
-				'page'                => $page_number > 1 ? sprintf( $sep . ' ' . __( 'Page %1$d of %2$d', 'wpsso' ), $page_number, $page_total ) : '',
+				'page'                => $page_num > 1 ? sprintf( $page_transl, $page_num, $mod[ 'paged_total' ] ) : '',
 				'pagename'            => isset( $mod[ 'query_vars' ][ 'pagename' ] ) ? $mod[ 'query_vars' ][ 'pagename' ] : '',
-				'pagenumber'          => $page_number,
-				'pagetotal'           => $page_total,
-				'post_date'           => empty( $mod[ 'post_time' ] ) ? '' : mysql2date( $date_format, $mod[ 'post_time' ] ),
-				'post_modified'       => empty( $mod[ 'post_modified_time' ] ) ? '' : mysql2date( $date_format, $mod[ 'post_modified_time' ] ),
+				'pagenumber'          => $page_num,
+				'pagetotal'           => $mod[ 'paged_total' ],
+				'post_date'           => empty( $mod[ 'post_time' ] ) ? '' : mysql2date( $local_cache[ 'date_format' ], $mod[ 'post_time' ] ),
+				'post_modified'       => empty( $mod[ 'post_modified_time' ] ) ? '' : mysql2date( $local_cache[ 'date_format' ], $mod[ 'post_modified_time' ] ),
 				'comment_author'      => empty( $mod[ 'comment_author_name' ] ) ? '' : $mod[ 'comment_author_name' ],
-				'comment_date'        => empty( $mod[ 'comment_time' ] ) ? '' : mysql2date( $date_format, $mod[ 'comment_time' ] ),
+				'comment_date'        => empty( $mod[ 'comment_time' ] ) ? '' : mysql2date( $local_cache[ 'date_format' ], $mod[ 'comment_time' ] ),
 				'query_search'        => isset( $mod[ 'query_vars' ][ 's' ] ) ? $mod[ 'query_vars' ][ 's' ] : '',
 				'query_year'          => isset( $mod[ 'query_vars' ][ 'year' ] ) ? $mod[ 'query_vars' ][ 'year' ] : '',
 				'query_month'         => '',	// Placeholder.
 				'query_monthnum'      => isset( $mod[ 'query_vars' ][ 'monthnum' ] ) ? $mod[ 'query_vars' ][ 'monthnum' ] : '',
 				'query_day'           => isset( $mod[ 'query_vars' ][ 'day' ] ) ? $mod[ 'query_vars' ][ 'day' ] : '',
-				'currentdate'         => date_i18n( $date_format ),
-				'currenttime'         => date_i18n( $time_format ),
-				'currentday'          => date_i18n( 'j' ),
-				'currentmonth'        => date_i18n( 'F' ),
-				'currentyear'         => date_i18n( 'Y' ),
 			);
 
 			/**
 			 * See https://developer.wordpress.org/reference/functions/single_month_title/.
 			 */
+			global $wp_locale;
+
 			if ( empty( $ret[ 'query_year' ] ) && empty( $ret[ 'query_monthnum' ] ) ) {
 
 				if ( ! empty( $mod[ 'query_vars' ][ 'm' ] ) ) {
@@ -219,9 +232,12 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				}
 			}
 
-			global $wp_locale;
-
 			$ret[ 'query_month' ] = $ret[ 'query_monthnum' ] ? $wp_locale->get_month( $ret[ 'query_monthnum' ] ) : '';
+
+			/**
+			 * Merge the default local cache with the inline variables array.
+			 */
+			$ret = array_merge( $local_cache, $ret );
 
 			/**
 			 * Compatibility for Yoast SEO.
@@ -232,7 +248,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 			$ret[ 'searchphrase' ] = $ret[ 'query_search' ];
 
 			/**
-			 * Compatibility for old WPSSO RRSSB templates.
+			 * Compatibility for older WPSSO RRSSB templates.
 			 */
 			$ret[ 'short_url' ] = $ret[ 'sharing_short_url' ];
 
