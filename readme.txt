@@ -20,11 +20,11 @@ Present your content at its best in search results and on social sites - no matt
 
 <h3 class="top">Complete Structured Data Plugin for WordPress</h3>
 
-<h4>Image / Video SEO, Meta Tags, Merchant Feeds, oEmbed, REST API, Rich Pins, Rich Results, Schema JSON-LD, Sitemaps XML, Twitter Cards</h4>
+<h4>Image / Video SEO, Facebook / Open Graph Meta Tags, Merchant Feeds, oEmbed, REST API, Rich Pins, Rich Results, Schema JSON-LD, Sitemaps XML, Twitter Cards</h4>
 
 <!-- about -->
 
-<p class="summary"><strong>Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</strong></p>
+<p><strong>Present your content at its best in search results and on social sites</strong> - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</p>
 
 <p><strong>Provides meta tags and structured data markup for:</strong></p>
 
