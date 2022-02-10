@@ -251,7 +251,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 10.3.0-b.1 (2022/02/10)**
+**Version 10.3.0-b.2 (2022/02/10)**
 
 * **New Features**
 	* None.
@@ -271,9 +271,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* %%currentday%%
 		* %%currentmonth%%
 		* %%currentyear%%
-	* Replaced calls to `SucomUtil::json_encode_array()` with `wp_json_encode()`.
+	* Refactored the `WpssoUtilInline->replace_variables()` method and added a new `replace_callback()` private method.
 	* Refactored the `WpssoProSeoRankmath` and `WpssoProUtilRankmathMeta` classes to convert Rank Math inline variable names (Premium edition).
 	* Refactored the `WpssoProUtilAbstractSeoMeta` class to remove the imported meta only when saving.
+	* Replaced calls to `SucomUtil::json_encode_array()` with `wp_json_encode()`.
 	* Removed the 'wpsso_wpseo_replace_vars' filter (no longer required).
 	* Removed the `SuextJsonFormat` class (no longer used).
 * **Requires At Least**
@@ -869,7 +870,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 10.3.0-b.1 =
+= 10.3.0-b.2 =
 
 (2022/02/10) Fixed Schema Job Posting title. Updated the Rank Math integration modules. Added a new option in the SSO &gt; Advanced Settings page.
 
