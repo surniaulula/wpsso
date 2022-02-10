@@ -251,7 +251,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 10.3.0-rc.1 (2022/02/10)**
+**Version 10.3.0 (2022/02/10)**
 
 * **New Features**
 	* None.
@@ -875,7 +875,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 10.3.0-rc.1 =
+= 10.3.0 =
 
 (2022/02/10) Fixed Schema Job Posting title. Fine-tuned the showing of notifications. Added a new option in the SSO &gt; Advanced Settings page. Updated the Rank Math integration modules.
 
