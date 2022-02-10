@@ -425,8 +425,14 @@ EOF;
 				'schema_type' => _x( 'Schema Type', 'option label', 'wpsso' ),
 			) );
 
+			$tb_types_timeout = array(
+				'err'  => -1,
+				'warn' => -1,
+				'inf'  => -1,
+				'upd'  => 3000,
+			);
+
 			$tb_types_showing    = $this->p->notice->get_tb_types_showing();
-			$tb_types_timeout    = array( 'inf' => 4000, 'upd' => 2000 );
 			$no_notices_transl   = sprintf( __( 'No %s notifications.', 'wpsso' ), $this->p->cf[ 'menu' ][ 'title' ] );
 			$no_notices_html     = '<div class="ab-item ab-empty-item">' . $no_notices_transl . '</div>';
 			$copy_notices_transl = __( 'Copy notifications to clipboard.', 'wpsso' );

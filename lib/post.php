@@ -250,6 +250,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$mod[ 'post_modified_time' ] = get_post_modified_time( 'c', $gmt = true, $post_obj );	// ISO 8601 date or false.
 					$mod[ 'is_attachment' ]      = 'attachment' === $mod[ 'post_type' ] ? true : false;	// Post type is 'attachment'.
 
+					if ( ! empty( $post_obj->post_parent ) ) {
+					
+						$mod[ 'post_parent' ] = $post_obj->post_parent;	// Post parent id.
+					}
+
 					if ( $mod[ 'post_type' ] ) {	// Just in case.
 
 						$post_type_obj = get_post_type_object( $mod[ 'post_type' ] );

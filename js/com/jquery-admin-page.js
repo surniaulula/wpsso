@@ -296,30 +296,54 @@ function sucomToolbarNotices( pluginId, adminPageL10n ) {
 
 				noticeCount  = noticeTypeCount[ 'err' ];
 				noticeStatus = 'error';
-				noticeTime   = cfg[ '_tb_types_timeout' ][ 'err' ] || 0;
+				noticeTime   = cfg[ '_tb_types_timeout' ][ 'err' ] || -1;
 
 			} else if ( noticeTypeCount[ 'warn' ] ) {
 
 				noticeCount  = noticeTypeCount[ 'warn' ];
 				noticeStatus = 'warning';
-				noticeTime   = cfg[ '_tb_types_timeout' ][ 'warn' ] || 0;
+				noticeTime   = cfg[ '_tb_types_timeout' ][ 'warn' ] || -1;
 
 			} else if ( noticeTypeCount[ 'inf' ] ) {
 
 				noticeCount  = noticeTypeCount[ 'inf' ];
 				noticeStatus = 'info';
-				noticeTime   = cfg[ '_tb_types_timeout' ][ 'inf' ] || 0;
+				noticeTime   = cfg[ '_tb_types_timeout' ][ 'inf' ] || -1;
 
 			} else if ( noticeTypeCount[ 'upd' ] ) {
 
 				noticeCount  = noticeTypeCount[ 'upd' ];
 				noticeStatus = 'success';
-				noticeTime   = cfg[ '_tb_types_timeout' ][ 'upd' ] || 0;
+				noticeTime   = cfg[ '_tb_types_timeout' ][ 'upd' ] || -1;
 			}
 
 			menuItem.addClass( 'toolbar-notices-' + noticeStatus );
 
-			if ( noticeTime ) {
+			/**
+			 * noticeTime = -1 to skip automatically showing notifications.
+			 *
+			 * noticeTime = 0 to automatically show notifications until click or hover.
+			 *
+			 * noticeTime = milliseconds to automatically show notifications.
+			 */
+			if ( 0 == noticeTime ) {
+
+				jQuery( menuId ).addClass( 'hover' );
+				
+				jQuery( document ).on( 'click', function( event ) {
+
+					/**
+					 * Remove the 'hover' class if we're clicking anywhere outside the notices menu.
+					 */
+					if ( ! menuItem.is( event.target ) && ! menuItem.has( event.target ).length ) {
+				
+						menuItem.removeClass( 'hover' );
+					
+						jQuery( document ).off( 'click', arguments.callee );
+					}
+				} );
+
+			} else if ( noticeTime > 0 ) {
 
 				menuItem.addClass( 'show-timeout' );
 
@@ -341,23 +365,6 @@ function sucomToolbarNotices( pluginId, adminPageL10n ) {
 					menuItem.removeClass( 'show-timeout' );
 
 				}, noticeTime );
-
-			} else {
-
-				jQuery( menuId ).addClass( 'hover' );
-				
-				jQuery( document ).on( 'click', function( event ) {
-
-					/**
-					 * Remove the 'hover' class if we're clicking anywhere outside the notices menu.
-					 */
-					if ( ! menuItem.is( event.target ) && ! menuItem.has( event.target ).length ) {
-				
-						menuItem.removeClass( 'hover' );
-					
-						jQuery( document ).off( 'click', arguments.callee );
-					}
-				} );
 			}
 		}
 	} );

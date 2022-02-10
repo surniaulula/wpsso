@@ -37,7 +37,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 		}
 
 		/**
-		 * Replace default and extra inline variables in the content text.
+		 * Replace inline variables in the subject text.
 		 *
 		 * $atts can be an associative array with additional information ('canonical_url', 'canonical_short_url', 'add_page', etc.).
 		 *
@@ -56,7 +56,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: no inline variables in subject string' );
+					$this->p->debug->log( 'exiting early: no inline variables in subject' );
 				}
 
 				return $subject;
@@ -77,6 +77,9 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				$mod = $this->p->page->get_mod( $mod );
 			}
 
+			/**
+			 * Use a callback to get the inline variable values we need, as we need them.
+			 */
 			$callback = function( $matches ) use ( $mod, $atts ) {
 				
 				return $this->replace_callback( $matches, $mod, $atts );
@@ -92,15 +95,21 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 			
 		private function replace_callback( array $matches, array $mod, array $atts ) {
 
-			$var     = $matches[ 1 ];
-			$value   = '';
+			$varname = $matches[ 1 ];
+			$ret_val = '';
 			$url_enc = empty( $atts[ 'rawurlencode' ] ) ? false : true;
 
-			if ( isset( $atts[ $var ] ) ) {
+			/**
+			 * Some inline variables and values may be passed in the $atts array, so check this array first.
+			 */
+			if ( isset( $atts[ $varname ] ) ) {
 
-				return $url_enc ? rawurlencode( $atts[ $var ] ) : $atts[ $var ];
+				return $url_enc ? rawurlencode( $atts[ $varname ] ) : $atts[ $varname ];
 			}
 
+			/**
+			 * Use a local cache for values that will not change for this page load.
+			 */
 			static $local_cache = null;
 
 			if ( null === $local_cache ) {
@@ -120,16 +129,19 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				);
 			}
 
-			if ( isset( $local_cache[ $var ] ) ) {
+			if ( isset( $local_cache[ $varname ] ) ) {
 
-				return $url_enc ? rawurlencode( $local_cache[ $var ] ) : $local_cache[ $var ];
+				return $url_enc ? rawurlencode( $local_cache[ $varname ] ) : $local_cache[ $varname ];
 			}
 
+			/**
+			 * Prevent recursion, just in case.
+			 */
 			static $local_is_recursion = false;
 
 			if ( $local_is_recursion ) {
 				
-				return $value;
+				return $ret_val;
 			}
 
 			$local_is_recursion = true;	// Prevent recursion.
@@ -137,17 +149,17 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 			$add_page  = isset( $atts[ 'add_page' ] ) ? $atts[ 'add_page' ] : true;
 			$title_sep = isset( $atts[ 'title_sep' ] ) ? $atts[ 'title_sep' ] : $local_cache[ 'default_sep' ];
 
-			switch ( $var ) {
+			switch ( $varname ) {
 
 				case 'canonical_url':
 
-					$value = $this->u->get_canonical_url( $mod, $add_page );
+					$ret_val = $this->u->get_canonical_url( $mod, $add_page );
 
 					break;
 
 				case 'canonical_short_url':
 				
-					$value = $this->u->get_canonical_short_url( $mod, $add_page );
+					$ret_val = $this->u->get_canonical_short_url( $mod, $add_page );
 
 					break;
 
@@ -156,7 +168,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 					/**
 					 * The $atts array may contain 'utm_medium', 'utm_source', 'utm_campaign', 'utm_content', and 'utm_term'.
 					 */
-					$value = $this->u->get_sharing_url( $mod, $add_page, $atts );
+					$ret_val = $this->u->get_sharing_url( $mod, $add_page, $atts );
 
 					break;
 
@@ -166,7 +178,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 					/**
 					 * The $atts array may contain 'utm_medium', 'utm_source', 'utm_campaign', 'utm_content', and 'utm_term'.
 					 */
-			 		$value = $this->u->get_sharing_short_url( $mod, $add_page, $atts );
+			 		$ret_val = $this->u->get_sharing_short_url( $mod, $add_page, $atts );
 
 					break;
 
@@ -174,49 +186,69 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 			
 					if ( is_admin() ) {
 
-						$value = $this->u->get_canonical_url( $mod, $add_page );
+						$ret_val = $this->u->get_canonical_url( $mod, $add_page );
 
 					} else {
 
-						$value = SucomUtil::get_url( $remove_tracking = true );
+						$ret_val = SucomUtil::get_url( $remove_tracking = true );
 					}
 
 					break;
 
 				case 'sitename':
 				
-					$value = SucomUtil::get_site_name( $this->p->options, $mod );
+					$ret_val = SucomUtil::get_site_name( $this->p->options, $mod );
 
 					break;
 
 				case 'sitealtname':
 				
-					$value = SucomUtil::get_site_name_alt( $this->p->options, $mod );
+					$ret_val = SucomUtil::get_site_name_alt( $this->p->options, $mod );
 
 					break;
 
 				case 'sitedesc':
 				
-					$value = SucomUtil::get_site_description( $this->p->options, $mod );
+					$ret_val = SucomUtil::get_site_description( $this->p->options, $mod );
 
 					break;
 
 				case 'sep':
 				
-					$value = $title_sep;
+					$ret_val = $title_sep;
 
 					break;
 
 				case 'title':
 				
-					$value = $this->p->page->get_the_title( $mod, $title_sep );
+					$ret_val = $this->p->page->get_the_title( $mod, $title_sep );
+
+					break;
+
+				case 'parent_title':
+
+					if ( $mod[ 'is_post' ] && $mod[ 'post_parent' ] ) {
+
+						$parent_mod = $this->p->post->get_mod( $mod[ 'post_parent' ] );
+
+						$ret_val = $this->p->page->get_the_title( $parent_mod, $title_sep );
+					}
+
+					break;
+
+				case 'term_title':
+
+					if ( $mod[ 'is_term' ] ) {
+
+						$ret_val = $this->p->page->get_the_title( $mod, $title_sep );
+					}
 
 					break;
 
 				case 'author':
 				case 'name':	// Compatibility with Yoast SEO.
 				
-					$value = WpssoUser::get_author_name( $mod );
+					$ret_val = WpssoUser::get_author_name( $mod );
 
 					break;
 
@@ -228,7 +260,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 						$page_transl = __( 'Page %1$d of %2$d', 'wpsso' );
 
-						$value = $title_sep . ' ' . sprintf( $page_transl, $page_num, $mod[ 'paged_total' ] );
+						$ret_val = $title_sep . ' ' . sprintf( $page_transl, $page_num, $mod[ 'paged_total' ] );
 					}
 
 					break;
@@ -237,20 +269,20 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 					if ( isset( $mod[ 'query_vars' ][ 'pagename' ] ) ) {
 					
-						$value = $mod[ 'query_vars' ][ 'pagename' ];
+						$ret_val = $mod[ 'query_vars' ][ 'pagename' ];
 					}
 
 					break;
 
 				case 'pagenumber':
 				
-					$value = $this->u->get_page_number( $mod, $add_page );
+					$ret_val = $this->u->get_page_number( $mod, $add_page );
 
 					break;
 
 				case 'pagetotal':
 				
-					$value = $mod[ 'paged_total' ];
+					$ret_val = $mod[ 'paged_total' ];
 
 					break;
 
@@ -259,7 +291,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				
 					if ( ! empty( $mod[ 'post_time' ] ) ) {
 					
-						$value = mysql2date( $local_cache[ 'date_format' ], $mod[ 'post_time' ] );
+						$ret_val = mysql2date( $local_cache[ 'date_format' ], $mod[ 'post_time' ] );
 					}
 
 					break;
@@ -269,14 +301,20 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				
 					if ( ! empty( $mod[ 'post_modified_time' ] ) ) {
 					
-						$value = mysql2date( $local_cache[ 'date_format' ], $mod[ 'post_modified_time' ] );
+						$ret_val = mysql2date( $local_cache[ 'date_format' ], $mod[ 'post_modified_time' ] );
 					}
+
+					break;
+
+				case 'excerpt_only':
+
+					$ret_val = $this->p->page->get_the_excerpt( $mod );
 
 					break;
 
 				case 'comment_author':
 				
-					$value = $mod[ 'comment_author_name' ];
+					$ret_val = $mod[ 'comment_author_name' ];
 
 					break;
 
@@ -284,7 +322,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				
 					if ( ! empty( $mod[ 'comment_time' ] ) ) {
 					
-						$value = mysql2date( $local_cache[ 'date_format' ], $mod[ 'comment_time' ] );
+						$ret_val = mysql2date( $local_cache[ 'date_format' ], $mod[ 'comment_time' ] );
 					}
 
 					break;
@@ -294,7 +332,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				
 					if ( isset( $mod[ 'query_vars' ][ 's' ] ) ) {
 					
-						$value = $mod[ 'query_vars' ][ 's' ];
+						$ret_val = $mod[ 'query_vars' ][ 's' ];
 					}
 
 					break;
@@ -303,11 +341,11 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				
 					if ( isset( $mod[ 'query_vars' ][ 'year' ] ) ) {
 					
-						$value = $mod[ 'query_vars' ][ 'year' ];
+						$ret_val = $mod[ 'query_vars' ][ 'year' ];
 				
 					} elseif ( ! empty( $mod[ 'query_vars' ][ 'm' ] ) ) {
 
-						$value = substr( $mod[ 'query_vars' ][ 'm' ], 0, 4 );
+						$ret_val = substr( $mod[ 'query_vars' ][ 'm' ], 0, 4 );
 					}
 
 					break;
@@ -317,19 +355,19 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				
 					if ( isset( $mod[ 'query_vars' ][ 'monthnum' ] ) ) {
 					
-						$value = $mod[ 'query_vars' ][ 'monthnum' ];
+						$ret_val = $mod[ 'query_vars' ][ 'monthnum' ];
 
 					} elseif ( ! empty( $mod[ 'query_vars' ][ 'm' ] ) ) {
 
-						$value = substr( $mod[ 'query_vars' ][ 'm' ], 4, 2 );
+						$ret_val = substr( $mod[ 'query_vars' ][ 'm' ], 4, 2 );
 					}
 
 					/**
-					 * Convert month number to the month name.
+					 * Convert the month number to a month name.
 					 */
-					if ( 'query_month' === $var ) {
+					if ( 'query_month' === $varname ) {
 	
-						$value = $value ? $wp_locale->get_month( $value ) : '';
+						$ret_val = $ret_val ? $wp_locale->get_month( $ret_val ) : '';
 					}
 
 					break;
@@ -338,7 +376,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				
 					if ( isset( $mod[ 'query_vars' ][ 'day' ] ) ) {
 					
-						$value = $mod[ 'query_vars' ][ 'day' ];
+						$ret_val = $mod[ 'query_vars' ][ 'day' ];
 					}
 
 					break;
@@ -346,7 +384,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 			$local_is_recursion = false;
 
-			return $url_enc ? rawurlencode( $value ) : $value;
+			return $url_enc ? rawurlencode( $ret_val ) : $ret_val;
 		}
 	}
 }

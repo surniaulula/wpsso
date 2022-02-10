@@ -1385,9 +1385,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		/**
 		 * Use $title_sep = false to avoid adding term parent names in the term title.
 		 *
-		 * Note that WpssoUtilInline->replace_variables() is applied in WpssoPage->get_title(), not in this method.
+		 * Note that WpssoUtilInline->replace_variables() is called in the WpssoPage->get_title() method, not in this one,
+		 * so this method is safe to call in WpssoUtilInline->replace_variables().
 		 *
-		 * See WpssoUtilInline->get_defaults().
+		 * See WpssoUtilInline->replace_callback().
 		 * See WpssoBcBreadcrumb->add_itemlist_data().
 		 */
 		public function get_the_title( array $mod, $title_sep = null ) {
@@ -1465,7 +1466,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $mod[ 'id' ] ) {	// Just in case.
 
-					$term_obj = get_term( $mod[ 'id' ], $mod[ 'tax_slug' ] );
+					$term_obj = $this->p->term->get_mod_wp_object( $mod );
 
 					/**
 					 * Includes parent names in the term title if the $title_sep value is not empty.
@@ -1622,7 +1623,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $mod[ 'id' ] ) {	// Just in case.
 
-					$term_obj = get_term( $mod[ 'id' ], $mod[ 'tax_slug' ] );
+					$term_obj = $this->p->term->get_mod_wp_object( $mod );
 
 					if ( isset( $term_obj->description ) ) {
 
@@ -1696,9 +1697,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					if ( $filter_excerpt ) {
 
-						/**
-						 * The $post_obj argument was added to 'get_the_excerpt' in WordPress v4.5.
-						 */
 						$post_obj = SucomUtil::get_post_object( $mod[ 'id' ] );
 
 						$excerpt_text = $this->p->util->safe_apply_filters( array( 'get_the_excerpt', $excerpt_text, $post_obj ), $mod );
@@ -2177,6 +2175,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		}
 
 		/**
+		 * Called by WpssoPage->get_the_title().
+		 *
 		 * Includes parent names in the term title if $title_sep is not false.
 		 */
 		public function get_term_title( $term_id = 0, $title_sep = null ) {
@@ -2186,31 +2186,28 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$term_obj = false;
-
+			$term_obj   = false;
 			$title_text = '';
 
 			if ( is_object( $term_id ) ) {
 
-				if ( is_wp_error( $term_id ) ) {	// Just in case.
+				if ( ! $term_id instanceof WP_Term ) {	// Just in case.
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'exiting early: term object is WP_Error' );
+						$this->p->debug->log( 'exiting early: object is not WP_Term' );
 					}
 
 					return $title_text;
 				}
 
 				$term_obj = $term_id;
-
-				$term_id = $term_obj->term_id;
+				$term_id  = $term_obj->term_id;
 
 			} elseif ( is_numeric( $term_id ) ) {
 
-				$mod = $this->p->term->get_mod( $term_id );
-
-				$term_obj = get_term( $mod[ 'id' ], $mod[ 'tax_slug' ] );
+				$mod      = $this->p->term->get_mod( $term_id );
+				$term_obj = $this->p->term->get_mod_wp_object( $mod );
 
 			} else {
 
@@ -2240,10 +2237,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				if ( ! empty( $term_obj->parent ) ) {
 
 					$term_parents = get_term_parents_list( $term_obj->term_id, $term_obj->taxonomy, $args = array(
-						'format'    => 'name',
-						'separator' => ' ' . $title_sep . ' ',
-						'link'      => false,
-						'inclusive' => true,
+						'format'    => 'name',			// Use term names or slugs for display.
+						'separator' => ' ' . $title_sep . ' ',	// Separator for between the terms.
+						'link'      => false,			// Whether to format as a link.
+						'inclusive' => true,			// Include the term to get the parents for.
 					) );
 
 					if ( $term_parents && ! is_wp_error( $term_parents ) ) {

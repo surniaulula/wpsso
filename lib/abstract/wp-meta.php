@@ -177,6 +177,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			'post_coauthors'         => array(),
 			'post_time'              => false,	// Post published time (ISO 8601 date or false).
 			'post_modified_time'     => false,	// Post modified time (ISO 8601 date or false).
+			'post_parent'            => false,	// Post parent id.
 			'term_tax_id'            => false,
 			'tax_slug'               => '',
 			'tax_label_plural'       => false,	// Taxonomy plural name.

@@ -19,6 +19,8 @@
 
 %%title%%
 
+%%parent_title%%
+
 %%author%%
 
 %%page%%
@@ -33,9 +35,13 @@
 
 %%post_modified%%
 
+%%excerpt_only%%
+
 %%comment_author%%
 
 %%comment_date%%
+
+%%term_title%%
 
 %%query_search%%
 
