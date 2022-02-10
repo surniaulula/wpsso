@@ -251,21 +251,24 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 10.3.0-b.2 (2022/02/10)**
+**Version 10.3.0-rc.1 (2022/02/10)**
 
 * **New Features**
 	* None.
 * **Improvements**
+	* Fine-tuned the showing of notifications to automatically show only update/success notification messages.
 	* Added a new option under the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Default Text tab (Premium edition):
 		* Author Archive Title
 	* Updated tooltip position for RTL.
 	* Updated the Rank Math integration modules to convert Rank Math inline variable names (Premium edition).
-	* Changed the default notification TTL from 600 to 60 seconds.
 * **Bugfixes**
 	* Fixed incorrect `WpssoPage->get_title()` arguments when getting the Schema Job Posting title.
 * **Developer Notes**
 	* Added new inline variables:
 		* %%author%%
+		* %%parent_title%%
+		* %%term_title%%
+		* %%excerpt_only%%
 		* %%currentdate%%
 		* %%currenttime%%
 		* %%currentday%%
@@ -277,6 +280,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Replaced calls to `SucomUtil::json_encode_array()` with `wp_json_encode()`.
 	* Removed the 'wpsso_wpseo_replace_vars' filter (no longer required).
 	* Removed the `SuextJsonFormat` class (no longer used).
+	* Changed the notification TTL from 600 to 60 seconds.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -870,9 +874,9 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 10.3.0-b.2 =
+= 10.3.0-rc.1 =
 
-(2022/02/10) Fixed Schema Job Posting title. Updated the Rank Math integration modules. Added a new option in the SSO &gt; Advanced Settings page.
+(2022/02/10) Fixed Schema Job Posting title. Fine-tuned the showing of notifications. Added a new option in the SSO &gt; Advanced Settings page. Updated the Rank Math integration modules.
 
 = 10.2.0 =
 
