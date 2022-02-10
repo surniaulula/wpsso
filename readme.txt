@@ -1,4 +1,4 @@
-=== WPSSO Core | Complete Structured Data - Meta Tags, oEmbed, REST API, Rich Pins, Rich Results, Schema JSON-LD, Twitter Cards, XML ===
+=== WordPress Social and Search Optimization | Complete Structured Data Plugin for WordPress ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -6,7 +6,7 @@ Domain Path: /languages
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 Assets URI: https://surniaulula.github.io/wpsso/assets/
-Tags: woocommerce, open graph, meta tags, schema, rich results, image seo, video seo, google search, knowledge graph, xml sitemap
+Tags: woocommerce, open graph, meta tags, schema, rich results, image seo, video seo, google search, knowledge graph, sitemaps
 Contributors: jsmoriss
 Requires PHP: 7.2
 Requires At Least: 5.2
@@ -19,6 +19,8 @@ Present your content at its best in search results and on social sites - no matt
 == Description ==
 
 <h3 class="top">Complete Structured Data Plugin for WordPress</h3>
+
+<h4>Image / Video SEO, Meta Tags, Merchant Feeds, oEmbed, REST API, Rich Pins, Rich Results, Schema JSON-LD, Sitemaps XML, Twitter Cards</h4>
 
 <!-- about -->
 
