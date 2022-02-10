@@ -144,7 +144,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			'query_vars'             => array(),	// Defined by WpssoPage->get_mod().
 			'paged'                  => false,	// False or numeric (aka $wp_query->query_vars[ 'paged' ]).
 			'paged_total'            => false,	// False or numberic (aka $wp_query->max_num_pages).
-			'comment_paged'          => false,	// False or numeric (aka $wp_query->query_vars[ 'cpage' ]).
 			'is_404'                 => false,
 			'is_archive'             => false,
 			'is_attachment'          => false,	// Post type is 'attachment'.
@@ -162,9 +161,10 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			'is_term'                => false,	// Is term module.
 			'is_user'                => false,	// Is user module.
 			'is_year'                => false,
+			'comment_paged'          => false,	// False or numeric (aka $wp_query->query_vars[ 'cpage' ]).
 			'comment_author'         => false,	// Comment author user ID.
-			'comment_author_name'    => false,
-			'comment_author_url'     => false,
+			'comment_author_name'    => false,	// Comment author name.
+			'comment_author_url'     => false,	// Comment author URL.
 			'comment_time'           => false,
 			'use_post'               => false,
 			'post_slug'              => false,	// Post name (aka slug).
@@ -1944,9 +1944,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			$mod_salt = SucomUtil::get_mod_salt( $mod );
 
-			static $local_prevent_recursion = array();
+			static $local_is_recursion = array();
 
-			if ( isset( $local_prevent_recursion[ $mod_salt ][ $meta_key ] ) ) {
+			if ( ! empty( $local_is_recursion[ $mod_salt ][ $meta_key ] ) ) {
 
 				return $value;	// Return null.
 			}
@@ -1955,7 +1955,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			if ( ! empty( $col_info ) ) {
 
-				$local_prevent_recursion[ $mod_salt ][ $meta_key ] = true;	// Prevent recursion.
+				$local_is_recursion[ $mod_salt ][ $meta_key ] = true;	// Prevent recursion.
 
 				$metadata = static::get_meta( $obj_id, $meta_key, $single = true );	// Use static method from child.
 
@@ -1980,7 +1980,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					$this->get_head_info( $mod, $read_cache = true );
 				}
 
-				unset( $local_prevent_recursion[ $mod_salt ][ $meta_key ] );
+				unset( $local_is_recursion[ $mod_salt ][ $meta_key ] );
 			}
 
 			return $value;

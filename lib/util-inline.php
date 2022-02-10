@@ -1,11 +1,7 @@
 <?php
 /**
- * IMPORTANT: READ THE LICENSE AGREEMENT CAREFULLY. BY INSTALLING, COPYING, RUNNING, OR OTHERWISE USING THE WPSSO CORE PREMIUM
- * APPLICATION, YOU AGREE  TO BE BOUND BY THE TERMS OF ITS LICENSE AGREEMENT. IF YOU DO NOT AGREE TO THE TERMS OF ITS LICENSE
- * AGREEMENT, DO NOT INSTALL, RUN, COPY, OR OTHERWISE USE THE WPSSO CORE PREMIUM APPLICATION.
- * 
- * License URI: https://wpsso.com/wp-content/plugins/wpsso/license/premium.txt
- * 
+ * License: GPLv3
+ * License URI: https://www.gnu.org/licenses/gpl.txt
  * Copyright 2012-2022 Jean-Sebastien Morisset (https://wpsso.com/)
  */
 
@@ -45,13 +41,11 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 		 *
 		 * $atts can be an associative array with additional information ('canonical_url', 'canonical_short_url', 'add_page', etc.).
 		 *
-		 * $extras can be an associative array with key/value pairs to be replaced.
-		 *
 		 * See WpssoHead->add_mt_singles().
 		 * See WpssoPage->get_title().
 		 * See WpssoPage->get_description().
 		 */
-		public function replace_variables( $subject, $mod = false, array $atts = array(), array $extras = array() ) {
+		public function replace_variables( $subject, $mod = false, array $atts = array() ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -83,77 +77,29 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				$mod = $this->p->page->get_mod( $mod );
 			}
 
-			/**
-			 * Get the default search => replace associative array.
-			 */
-			$vars = $this->get_defaults( $mod, $atts );
+			$callback = function( $matches ) use ( $mod, $atts ) {
+				
+				return $this->replace_callback( $matches, $mod, $atts );
+			};
 
 			/**
-			 * Maybe add extra search => replace values.
+			 * See https://www.php.net/manual/en/function.preg-replace-callback.php.
 			 */
-			if ( ! empty( $extras ) && SucomUtil::is_assoc( $extras ) ) {
+			$subject = preg_replace_callback( '/%%([^%]+)%%/', $callback, $subject );
 
-				$vars = array_merge( $vars, $extras );
-			}
-
-			/**
-			 * Encode all values for use as URL query arguments.
-			 */
-			if ( ! empty( $atts[ 'rawurlencode' ] ) ) {
-
-				foreach ( $vars as $match => $val ) {
-
-					$vars[ $match ] = rawurlencode( $val );
-				}
-			}
-
-			/**
-			 * Create the str_replace() arguments.
-			 */
-			$search  = array();
-			$replace = array();
-
-			foreach ( $vars as $match => $val ) {
-
-				$search[]  = '%%' . $match . '%%';
-				$replace[] = $val;
-			}
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log_arr( '$atts', $atts );
-				$this->p->debug->log_arr( '$extras', $extras );
-				$this->p->debug->log_arr( '$vars', $vars );
-			}
-
-			unset( $atts, $extras, $vars );
-
-			return str_replace( $search, $replace, $subject );
+			return $subject;
 		}
+			
+		private function replace_callback( array $matches, array $mod, array $atts ) {
 
-		/**
-		 * Since WPSSO Core v10.0.0.
-		 */
-		public function get_defaults( array $mod, array $atts ) {
+			$var     = $matches[ 1 ];
+			$value   = '';
+			$url_enc = empty( $atts[ 'rawurlencode' ] ) ? false : true;
 
-			if ( $this->p->debug->enabled ) {
+			if ( isset( $atts[ $var ] ) ) {
 
-				$this->p->debug->mark();
+				return $url_enc ? rawurlencode( $atts[ $var ] ) : $atts[ $var ];
 			}
-
-			static $local_prevent_recursion = false;
-
-			if ( $local_prevent_recursion ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: recursion detected' );
-				}
-
-				return array();
-			}
-
-			$local_prevent_recursion = true;
 
 			static $local_cache = null;
 
@@ -163,118 +109,244 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				$time_format = get_option( 'time_format' );
 
 				$local_cache = array(
-					'sep'           => html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) ),
-					'date_format'   => $date_format,
-					'time_format'   => $time_format,
-					'currentdate'   => date_i18n( $date_format ),
-					'currenttime'   => date_i18n( $time_format ),
-					'currentday'    => date_i18n( 'j' ),
-					'currentmonth'  => date_i18n( 'F' ),
-					'currentyear'   => date_i18n( 'Y' ),
+					'default_sep'  => html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) ),
+					'date_format'  => $date_format,
+					'time_format'  => $time_format,
+					'currentdate'  => date_i18n( $date_format ),
+					'currenttime'  => date_i18n( $time_format ),
+					'currentday'   => date_i18n( 'j' ),
+					'currentmonth' => date_i18n( 'F' ),
+					'currentyear'  => date_i18n( 'Y' ),
 				);
 			}
 
-			$add_page            = isset( $atts[ 'add_page' ] ) ? $atts[ 'add_page' ] : true;
-			$page_num            = $this->u->get_page_number( $mod, $add_page );
-			$title_sep           = isset( $atts[ 'title_sep' ] ) ? $atts[ 'title_sep' ] : $local_cache[ 'sep' ];
-			$page_transl         = $title_sep . ' ' . __( 'Page %1$d of %2$d', 'wpsso' );
-			$canonical_url       = empty( $atts[ 'canonical_url' ] ) ? $this->u->get_canonical_url( $mod, $add_page ) : $atts[ 'canonical_url' ];
-			$canonical_short_url = empty( $atts[ 'canonical_short_url' ] ) ? $this->u->get_canonical_short_url( $mod, $add_page ) : $atts[ 'canonical_short_url' ];
-			$sharing_url         = empty( $atts[ 'sharing_url' ] ) ? $this->u->get_sharing_url( $mod, $add_page, $atts ) : $atts[ 'sharing_url' ];
-			$sharing_short_url   = empty( $atts[ 'sharing_short_url' ] ) ? $this->u->get_sharing_short_url( $mod, $add_page, $atts ) : $atts[ 'sharing_short_url' ];
-			$author_name         = empty( $atts[ 'author_name' ] ) ? WpssoUser::get_author_name( $mod ) : empty( $atts[ 'author_name' ] );
+			if ( isset( $local_cache[ $var ] ) ) {
 
-			/**
-			 * When possible, try and provide the same variable names as Yoast SEO.
-			 *
-			 * See https://yoast.com/help/list-available-snippet-variables-yoast-seo/.
-			 * See wordpress/wp-content/plugins/wordpress-seo/inc/class-wpseo-replace-vars.php.
-			 */
-			$ret = array(
-				'canonical_url'       => $canonical_url,
-				'canonical_short_url' => $canonical_short_url,
-				'sharing_url'         => $sharing_url,
-				'sharing_short_url'   => $sharing_short_url,
-				'short_url'           => '',	// Placeholder.
-				'request_url'         => is_admin() ? $canonical_url : SucomUtil::get_url( $remove_tracking = true ),
-				'sitename'            => SucomUtil::get_site_name( $this->p->options, $mod ),
-				'sitealtname'         => SucomUtil::get_site_name_alt( $this->p->options, $mod ),
-				'sitedesc'            => SucomUtil::get_site_description( $this->p->options, $mod ),
-				'sep'                 => $title_sep,
-				'title'               => $this->p->page->get_the_title( $mod, $title_sep ),
-				'author'              => $author_name,
-				'page'                => $page_num > 1 ? sprintf( $page_transl, $page_num, $mod[ 'paged_total' ] ) : '',
-				'pagename'            => isset( $mod[ 'query_vars' ][ 'pagename' ] ) ? $mod[ 'query_vars' ][ 'pagename' ] : '',
-				'pagenumber'          => $page_num,
-				'pagetotal'           => $mod[ 'paged_total' ],
-				'post_date'           => empty( $mod[ 'post_time' ] ) ? '' : mysql2date( $local_cache[ 'date_format' ], $mod[ 'post_time' ] ),
-				'post_modified'       => empty( $mod[ 'post_modified_time' ] ) ? '' : mysql2date( $local_cache[ 'date_format' ], $mod[ 'post_modified_time' ] ),
-				'comment_author'      => empty( $mod[ 'comment_author_name' ] ) ? '' : $mod[ 'comment_author_name' ],
-				'comment_date'        => empty( $mod[ 'comment_time' ] ) ? '' : mysql2date( $local_cache[ 'date_format' ], $mod[ 'comment_time' ] ),
-				'query_search'        => isset( $mod[ 'query_vars' ][ 's' ] ) ? $mod[ 'query_vars' ][ 's' ] : '',
-				'query_year'          => isset( $mod[ 'query_vars' ][ 'year' ] ) ? $mod[ 'query_vars' ][ 'year' ] : '',
-				'query_month'         => '',	// Placeholder.
-				'query_monthnum'      => isset( $mod[ 'query_vars' ][ 'monthnum' ] ) ? $mod[ 'query_vars' ][ 'monthnum' ] : '',
-				'query_day'           => isset( $mod[ 'query_vars' ][ 'day' ] ) ? $mod[ 'query_vars' ][ 'day' ] : '',
-			);
-
-			/**
-			 * See https://developer.wordpress.org/reference/functions/single_month_title/.
-			 */
-			global $wp_locale;
-
-			if ( empty( $ret[ 'query_year' ] ) && empty( $ret[ 'query_monthnum' ] ) ) {
-
-				if ( ! empty( $mod[ 'query_vars' ][ 'm' ] ) ) {
-
-					$ret[ 'query_year' ]     = substr( $mod[ 'query_vars' ][ 'm' ], 0, 4 );
-					$ret[ 'query_monthnum' ] = substr( $mod[ 'query_vars' ][ 'm' ], 4, 2 );
-				}
+				return $url_enc ? rawurlencode( $local_cache[ $var ] ) : $local_cache[ $var ];
 			}
 
-			$ret[ 'query_month' ] = $ret[ 'query_monthnum' ] ? $wp_locale->get_month( $ret[ 'query_monthnum' ] ) : '';
+			static $local_is_recursion = false;
 
-			/**
-			 * Merge the default local cache with the inline variables array.
-			 */
-			$ret = array_merge( $local_cache, $ret );
+			if ( $local_is_recursion ) {
+				
+				return $value;
+			}
 
-			/**
-			 * Compatibility for Yoast SEO.
-			 */
-			$ret[ 'date' ]         = $ret[ 'post_date' ];
-			$ret[ 'modified' ]     = $ret[ 'post_modified' ];
-			$ret[ 'name' ]         = $ret[ 'author' ];
-			$ret[ 'searchphrase' ] = $ret[ 'query_search' ];
+			$local_is_recursion = true;	// Prevent recursion.
 
-			/**
-			 * Compatibility for older WPSSO RRSSB templates.
-			 */
-			$ret[ 'short_url' ] = $ret[ 'sharing_short_url' ];
+			$add_page  = isset( $atts[ 'add_page' ] ) ? $atts[ 'add_page' ] : true;
+			$title_sep = isset( $atts[ 'title_sep' ] ) ? $atts[ 'title_sep' ] : $local_cache[ 'default_sep' ];
 
-			$local_prevent_recursion = false;
+			switch ( $var ) {
 
-			return $ret;
-		}
+				case 'canonical_url':
 
-		/**
-		 * Deprecated since 2022/01/30.
-		 */
-		public function get_variables() {
+					$value = $this->u->get_canonical_url( $mod, $add_page );
 
-			_deprecated_function( __METHOD__ . '()', '2022/01/30', $replacement = '' );	// Deprecation message.
+					break;
 
-			return array();
-		}
+				case 'canonical_short_url':
+				
+					$value = $this->u->get_canonical_short_url( $mod, $add_page );
 
-		/**
-		 * Deprecated since 2022/01/30.
-		 */
-		public function get_values( $mod = false, $atts = array() ) {
+					break;
 
-			_deprecated_function( __METHOD__ . '()', '2022/01/30', $replacement = '' );	// Deprecation message.
+				case 'sharing_url':
+			
+					/**
+					 * The $atts array may contain 'utm_medium', 'utm_source', 'utm_campaign', 'utm_content', and 'utm_term'.
+					 */
+					$value = $this->u->get_sharing_url( $mod, $add_page, $atts );
 
-			return array();
+					break;
+
+				case 'sharing_short_url':
+				case 'short_url':	// Compatibility for older WPSSO RRSSB templates.
+				
+					/**
+					 * The $atts array may contain 'utm_medium', 'utm_source', 'utm_campaign', 'utm_content', and 'utm_term'.
+					 */
+			 		$value = $this->u->get_sharing_short_url( $mod, $add_page, $atts );
+
+					break;
+
+				case 'request_url':
+			
+					if ( is_admin() ) {
+
+						$value = $this->u->get_canonical_url( $mod, $add_page );
+
+					} else {
+
+						$value = SucomUtil::get_url( $remove_tracking = true );
+					}
+
+					break;
+
+				case 'sitename':
+				
+					$value = SucomUtil::get_site_name( $this->p->options, $mod );
+
+					break;
+
+				case 'sitealtname':
+				
+					$value = SucomUtil::get_site_name_alt( $this->p->options, $mod );
+
+					break;
+
+				case 'sitedesc':
+				
+					$value = SucomUtil::get_site_description( $this->p->options, $mod );
+
+					break;
+
+				case 'sep':
+				
+					$value = $title_sep;
+
+					break;
+
+				case 'title':
+				
+					$value = $this->p->page->get_the_title( $mod, $title_sep );
+
+					break;
+
+				case 'author':
+				case 'name':	// Compatibility with Yoast SEO.
+				
+					$value = WpssoUser::get_author_name( $mod );
+
+					break;
+
+				case 'page':
+				
+					$page_num = $this->u->get_page_number( $mod, $add_page );
+
+					if ( $page_num > 1 ) {
+
+						$page_transl = __( 'Page %1$d of %2$d', 'wpsso' );
+
+						$value = $title_sep . ' ' . sprintf( $page_transl, $page_num, $mod[ 'paged_total' ] );
+					}
+
+					break;
+
+				case 'pagename':
+
+					if ( isset( $mod[ 'query_vars' ][ 'pagename' ] ) ) {
+					
+						$value = $mod[ 'query_vars' ][ 'pagename' ];
+					}
+
+					break;
+
+				case 'pagenumber':
+				
+					$value = $this->u->get_page_number( $mod, $add_page );
+
+					break;
+
+				case 'pagetotal':
+				
+					$value = $mod[ 'paged_total' ];
+
+					break;
+
+				case 'post_date':
+				case 'date':	// Compatibility with Yoast SEO.
+				
+					if ( ! empty( $mod[ 'post_time' ] ) ) {
+					
+						$value = mysql2date( $local_cache[ 'date_format' ], $mod[ 'post_time' ] );
+					}
+
+					break;
+
+				case 'post_modified':
+				case 'modified':	// Compatibility with Yoast SEO.
+				
+					if ( ! empty( $mod[ 'post_modified_time' ] ) ) {
+					
+						$value = mysql2date( $local_cache[ 'date_format' ], $mod[ 'post_modified_time' ] );
+					}
+
+					break;
+
+				case 'comment_author':
+				
+					$value = $mod[ 'comment_author_name' ];
+
+					break;
+
+				case 'comment_date':
+				
+					if ( ! empty( $mod[ 'comment_time' ] ) ) {
+					
+						$value = mysql2date( $local_cache[ 'date_format' ], $mod[ 'comment_time' ] );
+					}
+
+					break;
+
+				case 'query_search':
+				case 'searchphrase':	// Compatibility with Yoast SEO.
+				
+					if ( isset( $mod[ 'query_vars' ][ 's' ] ) ) {
+					
+						$value = $mod[ 'query_vars' ][ 's' ];
+					}
+
+					break;
+
+				case 'query_year':
+				
+					if ( isset( $mod[ 'query_vars' ][ 'year' ] ) ) {
+					
+						$value = $mod[ 'query_vars' ][ 'year' ];
+				
+					} elseif ( ! empty( $mod[ 'query_vars' ][ 'm' ] ) ) {
+
+						$value = substr( $mod[ 'query_vars' ][ 'm' ], 0, 4 );
+					}
+
+					break;
+
+				case 'query_month':
+				case 'query_monthnum':
+				
+					if ( isset( $mod[ 'query_vars' ][ 'monthnum' ] ) ) {
+					
+						$value = $mod[ 'query_vars' ][ 'monthnum' ];
+
+					} elseif ( ! empty( $mod[ 'query_vars' ][ 'm' ] ) ) {
+
+						$value = substr( $mod[ 'query_vars' ][ 'm' ], 4, 2 );
+					}
+
+					/**
+					 * Convert month number to the month name.
+					 */
+					if ( 'query_month' === $var ) {
+	
+						$value = $value ? $wp_locale->get_month( $value ) : '';
+					}
+
+					break;
+
+				case 'query_day':
+				
+					if ( isset( $mod[ 'query_vars' ][ 'day' ] ) ) {
+					
+						$value = $mod[ 'query_vars' ][ 'day' ];
+					}
+
+					break;
+			}
+
+			$local_is_recursion = false;
+
+			return $url_enc ? rawurlencode( $value ) : $value;
 		}
 	}
 }

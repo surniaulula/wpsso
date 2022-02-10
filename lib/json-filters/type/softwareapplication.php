@@ -78,11 +78,18 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeSoftwareApplication' ) ) {
 			/**
 			 * Prevent recursion for an itemOffered within a Schema Offer.
 			 */
-			static $local_prevent_recursion = false;
+			static $local_is_recursion = false;
 
-			if ( ! $local_prevent_recursion ) {
+			if ( $local_is_recursion ) {
 
-				$local_prevent_recursion = true;
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'product offer recursion detected and avoided' );
+				}
+
+			} else {
+
+				$local_is_recursion = true;
 
 				/**
 				 * Property:
@@ -137,14 +144,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeSoftwareApplication' ) ) {
 					}
 				}
 
-				$local_prevent_recursion = false;
-
-			} else {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'product offer recursion detected and avoided' );
-				}
+				$local_is_recursion = false;
 			}
 
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );

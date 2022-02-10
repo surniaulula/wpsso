@@ -1710,46 +1710,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * Deprecated on 2021/09/03.
-		 */
-		public function replace_inline_vars( $content, $mod = false, $atts = array(), $extras = array() ) {
-
-			_deprecated_function( __METHOD__ . '()', '2021/09/03', $replacement = __CLASS__ . '->inline->replace_variables()' );	// Deprecation message.
-
-			return $this->inline->replace_variables( $content, $mod, $atts, $extras );
-		}
-
-		/**
-		 * Deprecated on 2021/10/30.
-		 */
-		public function replace_inline_variables( $content, $mod = false, $atts = array(), $extras = array() ) {
-
-			_deprecated_function( __METHOD__ . '()', '2021/10/30', $replacement = __CLASS__ . '->inline->replace_variables()' );	// Deprecation message.
-
-			return $this->inline->replace_variables( $content, $mod, $atts, $extras );
-		}
-
-		/**
-		 * Deprecated on 2021/10/30.
-		 */
-		public function get_inline_variables() {
-
-			_deprecated_function( __METHOD__ . '()', '2021/10/30', $replacement = __CLASS__ . '->inline->get_variables()' );	// Deprecation message.
-
-			return $this->inline->get_variables();
-		}
-
-		/**
-		 * Deprecated on 2021/10/30.
-		 */
-		public function get_inline_values( $mod = false, $atts = array() ) {
-
-			_deprecated_function( __METHOD__ . '()', '2021/10/30', $replacement = __CLASS__ . '->inline->get_values()' );	// Deprecation message.
-
-			return $this->inline->get_values( $mod, $atts );
-		}
-
-		/**
 		 * Shorten URL using the selected shortening service.
 		 */
 		public function shorten_url( $long_url, $mod = false ) {
