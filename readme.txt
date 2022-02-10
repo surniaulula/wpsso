@@ -251,21 +251,26 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 10.3.0-b.1 (2022/02/09)**
+**Version 10.3.0-b.1 (2022/02/10)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Updated the Rank Math integration modules to convert Rank Math inline variable names (Premium edition).
 	* Added a new option under the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Default Text tab (Premium edition):
 		* Author Archive Title
 	* Updated tooltip position for RTL.
+	* Updated the Rank Math integration modules to convert Rank Math inline variable names (Premium edition).
 	* Changed the default notification TTL from 600 to 60 seconds.
 * **Bugfixes**
 	* Fixed incorrect `WpssoPage->get_title()` arguments when getting the Schema Job Posting title.
 * **Developer Notes**
-	* Added a new inline variable:
+	* Added new inline variables:
 		* %%author%%
+		* %%currentdate%%
+		* %%currenttime%%
+		* %%currentday%%
+		* %%currentmonth%%
+		* %%currentyear%%
 	* Replaced calls to `SucomUtil::json_encode_array()` with `wp_json_encode()`.
 	* Refactored the `WpssoProSeoRankmath` and `WpssoProUtilRankmathMeta` classes to convert Rank Math inline variable names (Premium edition).
 	* Refactored the `WpssoProUtilAbstractSeoMeta` class to remove the imported meta only when saving.
@@ -866,7 +871,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 = 10.3.0-b.1 =
 
-(2022/02/09) Fixed Schema Job Posting title. Updated the Rank Math integration modules. Added a new option in the SSO &gt; Advanced Settings page.
+(2022/02/10) Fixed Schema Job Posting title. Updated the Rank Math integration modules. Added a new option in the SSO &gt; Advanced Settings page.
 
 = 10.2.0 =
 
