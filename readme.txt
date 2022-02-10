@@ -18,7 +18,7 @@ Present your content at its best in search results and on social sites - no matt
 
 == Description ==
 
-<h3 class="top">Complete Structured Data Plugin for WordPress</h3>
+<h2 class="top">Complete Structured Data Plugin for WordPress</h2>
 
 <h3>Image / Video SEO, Facebook / Open Graph Meta Tags, Merchant Feeds, oEmbed, REST API, Rich Pins, Rich Results, Schema JSON-LD, Sitemaps XML, Twitter Cards</h3>
 
