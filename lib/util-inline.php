@@ -196,6 +196,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 					break;
 
 				case 'sitename':
+				case 'sitetitle':	// Compatibility for SEOPress.
 				
 					$ret_val = SucomUtil::get_site_name( $this->p->options, $mod );
 
@@ -208,6 +209,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 					break;
 
 				case 'sitedesc':
+				case 'tagline':	// Compatibility for SEOPress.
 				
 					$ret_val = SucomUtil::get_site_description( $this->p->options, $mod );
 
@@ -257,7 +259,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 					break;
 
 				case 'author':
-				case 'name':	// Compatibility with Yoast SEO.
+				case 'name':	// Compatibility for Yoast SEO.
 				
 					/**
 					 * Returns the display name for a comment author, post author, or user module.
@@ -301,7 +303,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 					break;
 
 				case 'post_date':
-				case 'date':	// Compatibility with Yoast SEO.
+				case 'date':	// Compatibility for Yoast SEO.
 				
 					if ( ! empty( $mod[ 'post_time' ] ) ) {
 					
@@ -311,7 +313,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 					break;
 
 				case 'post_modified':
-				case 'modified':	// Compatibility with Yoast SEO.
+				case 'modified':	// Compatibility for Yoast SEO.
 				
 					if ( ! empty( $mod[ 'post_modified_time' ] ) ) {
 					
@@ -342,7 +344,9 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 					break;
 
 				case 'query_search':
-				case 'searchphrase':	// Compatibility with Yoast SEO.
+				case 'search_keywords':	// Compatibility for SEOPress.
+				case 'search_query':	// Compatibility for Rank Math.
+				case 'searchphrase':	// Compatibility for Yoast SEO.
 				
 					if ( isset( $mod[ 'query_vars' ][ 's' ] ) ) {
 					
