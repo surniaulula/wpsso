@@ -24,9 +24,9 @@ Present your content at its best in search results and on social sites - no matt
 
 <!-- about -->
 
-<h4>Present your content at its best in search results and on social sites</strong> - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</h4>
+<p><strong>Present your content at its best in search results and on social sites</strong> - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</p>
 
-<h4>Provides meta tags and structured data markup for:</h4>
+<p><strong>Provides meta tags and structured data markup for:</strong></p>
 
 <ul>
 	<li>Facebook Open Graph</li>
