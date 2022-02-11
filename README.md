@@ -18,12 +18,14 @@
 <h3 class="top">Complete Structured Data Plugin for WordPress</h3>
 
 <blockquote>
+
 <p><strong>Image / Video SEO, Facebook / Open Graph Meta Tags, Merchant Feeds, oEmbed, REST API, Rich Pins, Rich Results, Schema JSON-LD, Sitemaps XML, Twitter Cards.</strong></p>
+
+<p>Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</p>
+
 </blockquote>
 
 <!-- about -->
-
-<p><strong>Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</strong></p>
 
 <p><strong>Provides meta tags and structured data markup for:</strong></p>
 
