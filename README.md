@@ -47,7 +47,7 @@
 
 <!-- /about -->
 
-<p><strong>Fetches data from WordPress, plugins, and service APIs:</strong></p>
+<p><strong>Reads data from WordPress, plugins, and service APIs:</strong></p>
 
 <p>There's no need to select or create templates, manually reenter descriptions, titles, product information, or reselect images and videos &mdash; WPSSO reads your existing WordPress content, including custom post types and taxonomies, enhanced user profile data, Media Library image information, and the Premium edition also imports video details, reads active plugin and service API data (Bitly, Facebook, Shopper Approved, Stamped.io, Vimeo, Wistia, YouTube, and many more).</p>
 
