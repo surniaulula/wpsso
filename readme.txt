@@ -30,7 +30,7 @@ Present your content at its best in search results and on social sites - no matt
 
 <!-- about -->
 
-<p><strong>Provides meta tags and structured data markup for:</strong></p>
+<p><strong>Provides structured data markup for:</strong></p>
 
 <ul>
 	<li>Facebook Open Graph</li>
