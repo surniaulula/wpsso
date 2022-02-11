@@ -69,7 +69,7 @@
 <li>Video Preview Images</li>
 </ul>
 
-<p><strong>Fixes Google Search and Schema Markup Validator errors, including:</strong></p>
+<p><strong>Fixes Google Search and Schema Markup Validator errors:</strong></p>
 
 <ul>
 <li><em>A value for the headline field is required.</em></li>

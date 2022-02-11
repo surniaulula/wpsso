@@ -70,7 +70,7 @@ WPSSO provides comprehensive Schema markup for posts, pages, custom post types, 
 * Twitter Large Image Summary Card
 * Video Preview Images
 
-<p><strong>Fixes Google Search and Schema Markup Validator errors, including:</strong></p>
+<p><strong>Fixes Google Search and Schema Markup Validator errors:</strong></p>
 
 * *A value for the headline field is required.*
 * *A value for the image field is required.*
