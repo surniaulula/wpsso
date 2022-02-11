@@ -89,17 +89,15 @@ WPSSO provides comprehensive Schema markup for posts, pages, custom post types, 
 
 <h3>Premium Edition Features</h3>
 
-**Additional options in the SSO &gt; Advanced Settings page.**
-
-**Additional options in the Document SSO metabox for the selected Schema type.**
+**Additional options in the SSO &gt; Advanced Settings page and Document SSO metabox.**
 
 **Imports video information from Facebook, Slideshare, Vimeo, Wistia, and Youtube videos.**
 
-**Schema JSON-LD markup for Better WooCommerce SEO:**
+**Schema JSON-LD markup for WooCommerce SEO:**
 
 > The WooCommerce plugin alone does not provide sufficient Schema markup for Google Rich Results. The <a href="https://wpsso.com/">WPSSO Core Premium edition</a> reads WooCommerce product data and provides complete Schema Product JSON-LD markup for Google Rich Results, including product image galleries, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, pattern, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.
 
-An optional Google Merchant Feed XML add-on for for WooCommerce, Easy Digital Downloads, and Document SSO metabox custom products.**
+**Google Merchant Feed XML add-on for for WooCommerce, Easy Digital Downloads, and Document SSO metabox custom products.**
 
 **Reads data from active plugins, including:**
 
