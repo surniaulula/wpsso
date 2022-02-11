@@ -90,21 +90,21 @@
 
 <h3>Premium Edition Features</h3>
 
-<p>&#91;Premium&#93; <strong>Additional options in the SSO &gt; Advanced Settings page.</strong></p>
+<p><strong>Additional options in the SSO &gt; Advanced Settings page.</strong></p>
 
-<p>&#91;Premium&#93; <strong>Additional options in the Document SSO metabox for the selected Schema type.</strong></p>
+<p><strong>Additional options in the Document SSO metabox for the selected Schema type.</strong></p>
 
-<p>&#91;Premium&#93; <strong>Imports video information from Facebook, Slideshare, Vimeo, Wistia, and Youtube videos.</strong></p>
+<p><strong>Imports video information from Facebook, Slideshare, Vimeo, Wistia, and Youtube videos.</strong></p>
 
-<p>&#91;Premium&#93; <strong>Schema JSON-LD markup for Better WooCommerce SEO:</strong></p>
+<p><strong>Schema JSON-LD markup for Better WooCommerce SEO:</strong></p>
 
 <blockquote>
   <p>The WooCommerce plugin alone does not provide sufficient Schema markup for Google Rich Results. The <a href="https://wpsso.com/">WPSSO Core Premium edition</a> reads WooCommerce product data and provides complete Schema Product JSON-LD markup for Google Rich Results, including product image galleries, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, pattern, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.</p>
 </blockquote>
 
-<p>&#91;Premium&#93; <strong>An optional Google Merchant Feed XML add-on for for WooCommerce, Easy Digital Downloads, and Document SSO metabox custom products.</strong></p>
+<p>An optional Google Merchant Feed XML add-on for for WooCommerce, Easy Digital Downloads, and Document SSO metabox custom products.**</p>
 
-<p>&#91;Premium&#93; <strong>Reads data from active plugins, including:</strong></p>
+<p><strong>Reads data from active plugins, including:</strong></p>
 
 <ul>
 <li>All in One SEO Pack</li>
@@ -140,7 +140,7 @@
 <li>Yotpo Social Reviews for WooCommerce</li>
 </ul>
 
-<p>&#91;Premium&#93; <strong>Imports plugin metadata and block attributes, including:</strong></p>
+<p><strong>Imports plugin metadata and block attributes, including:</strong></p>
 
 <ul>
 <li>All in One SEO Pack Metadata</li>
@@ -150,7 +150,7 @@
 <li>Yoast SEO Block Attributes</li>
 </ul>
 
-<p>&#91;Premium&#93; <strong>Reads data from remote service APIs, including:</strong></p>
+<p><strong>Reads data from remote service APIs, including:</strong></p>
 
 <ul>
 <li>Bitly</li>
