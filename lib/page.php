@@ -165,7 +165,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 * 'document_title_parts', and 'document_title' filters are applied.
 			 */
 			if ( $this->p->debug->enabled ) {
-				
+
 				$this->p->debug->log( 'returning an empty string to use the document_title filters' );
 			}
 
@@ -242,7 +242,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						$title_parts[ 'tagline' ] = $this->p->opt->get_text( 'plugin_title_part_tagline' );
 
 					} elseif ( ! empty( $title_parts[ 'tagline' ] ) ) {
-						
+
 						$title_parts[ 'tagline' ] = $this->p->opt->get_text( 'plugin_title_part_tagline' );
 					}
 
@@ -1067,7 +1067,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 * inline variable in the title.
 			 */
 			$page_number_transl = '';
-			
+
 			if ( $mod[ 'paged' ] > 1 ) {
 
 				if ( false === strpos( $title_text, '%%page%%' ) && false === strpos( $title_text, '%%pagenumber%%' ) ) {

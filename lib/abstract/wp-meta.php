@@ -207,7 +207,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		}
 
 		public function get_mod_wp_object( array $mod ) {
-			
+
 			return self::must_be_extended( $ret_val = false );
 		}
 

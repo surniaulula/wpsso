@@ -537,7 +537,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				 * We only use the Wpsso->json array to prevent loading json filters more than once.
 				 */
 				if ( ! isset( $this->json[ $id ] ) ) {	// Just in case.
-				
+
 					new $classname( $this );
 				}
 			}

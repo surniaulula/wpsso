@@ -30,7 +30,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected $pageref_url;
 		protected $pageref_title;
 
-		protected static $pkg_cache = array();
+		protected static $cache_pkg_info = array();
 
 		public static $readme = array();
 
@@ -333,9 +333,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function get_pkg_info() {
 
-			if ( ! empty( self::$pkg_cache ) ) {	// Only execute once.
+			if ( ! empty( self::$cache_pkg_info ) ) {	// Only execute once.
 
-				return self::$pkg_cache;
+				return self::$cache_pkg_info;
 			}
 
 			$pkg_info = array();	// Init a new pkg info array.
@@ -369,7 +369,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$pkg_info[ $ext ][ 'name_std' ]  = SucomUtil::get_dist_name( $ext_name_transl, $pkg_std_transl );
 			}
 
-			return self::$pkg_cache = $pkg_info;
+			return self::$cache_pkg_info = $pkg_info;
 		}
 
 		public function add_network_admin_menus() {

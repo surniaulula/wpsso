@@ -1750,9 +1750,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				return true;
 			}
-			
+
 			$is_pretty = self::get_const( 'WPSSO_JSON_PRETTY_PRINT', true );	// True by default.
-			
+
 			$is_pretty = (bool) apply_filters( 'wpsso_json_pretty_print', $is_pretty );
 
 			return $is_pretty ? true : false;

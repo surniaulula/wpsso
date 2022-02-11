@@ -251,7 +251,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$mod[ 'is_attachment' ]      = 'attachment' === $mod[ 'post_type' ] ? true : false;	// Post type is 'attachment'.
 
 					if ( ! empty( $post_obj->post_parent ) ) {
-					
+
 						$mod[ 'post_parent' ] = $post_obj->post_parent;	// Post parent id.
 					}
 

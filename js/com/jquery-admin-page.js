@@ -329,16 +329,16 @@ function sucomToolbarNotices( pluginId, adminPageL10n ) {
 			if ( 0 == noticeTime ) {
 
 				jQuery( menuId ).addClass( 'hover' );
-				
+
 				jQuery( document ).on( 'click', function( event ) {
 
 					/**
 					 * Remove the 'hover' class if we're clicking anywhere outside the notices menu.
 					 */
 					if ( ! menuItem.is( event.target ) && ! menuItem.has( event.target ).length ) {
-				
+
 						menuItem.removeClass( 'hover' );
-					
+
 						jQuery( document ).off( 'click', arguments.callee );
 					}
 				} );
@@ -355,13 +355,13 @@ function sucomToolbarNotices( pluginId, adminPageL10n ) {
 					if ( ! menuItem.is( event.target ) && ! menuItem.has( event.target ).length ) {
 
 						menuItem.removeClass( 'show-timeout' );
-					
+
 						jQuery( document ).off( 'click', arguments.callee );
 					}
 				} );
 
 				setTimeout( function() {
-				
+
 					menuItem.removeClass( 'show-timeout' );
 
 				}, noticeTime );

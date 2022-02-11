@@ -81,7 +81,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 			 * Use a callback to get the inline variable values we need, as we need them.
 			 */
 			$callback = function( $matches ) use ( $mod, $atts ) {
-				
+
 				return $this->replace_callback( $matches, $mod, $atts );
 			};
 
@@ -92,7 +92,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 			return $subject;
 		}
-			
+
 		private function replace_callback( array $matches, array $mod, array $atts ) {
 
 			$varname = $matches[ 1 ];
@@ -140,7 +140,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 			static $local_is_recursion = false;
 
 			if ( $local_is_recursion ) {
-				
+
 				return $ret_val;
 			}
 
@@ -158,13 +158,13 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 					break;
 
 				case 'canonical_short_url':
-				
+
 					$ret_val = $this->u->get_canonical_short_url( $mod, $add_page );
 
 					break;
 
 				case 'sharing_url':
-			
+
 					/**
 					 * The $atts array may contain 'utm_medium', 'utm_source', 'utm_campaign', 'utm_content', and 'utm_term'.
 					 */
@@ -174,7 +174,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 				case 'sharing_short_url':
 				case 'short_url':	// Compatibility for older WPSSO RRSSB templates.
-				
+
 					/**
 					 * The $atts array may contain 'utm_medium', 'utm_source', 'utm_campaign', 'utm_content', and 'utm_term'.
 					 */
@@ -183,7 +183,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 					break;
 
 				case 'request_url':
-			
+
 					if ( is_admin() ) {
 
 						$ret_val = $this->u->get_canonical_url( $mod, $add_page );
@@ -197,32 +197,32 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 				case 'sitename':
 				case 'sitetitle':	// Compatibility for SEOPress.
-				
+
 					$ret_val = SucomUtil::get_site_name( $this->p->options, $mod );
 
 					break;
 
 				case 'sitealtname':
-				
+
 					$ret_val = SucomUtil::get_site_name_alt( $this->p->options, $mod );
 
 					break;
 
 				case 'sitedesc':
 				case 'tagline':	// Compatibility for SEOPress.
-				
+
 					$ret_val = SucomUtil::get_site_description( $this->p->options, $mod );
 
 					break;
 
 				case 'sep':
-				
+
 					$ret_val = $title_sep;
 
 					break;
 
 				case 'title':
-				
+
 					$ret_val = $this->p->page->get_the_title( $mod, $title_sep );
 
 					break;
@@ -241,9 +241,9 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				case 'term':
 
 					if ( $mod[ 'is_term' ] ) {	// Just in case.
-				
+
 						$term_obj = $this->p->term->get_mod_wp_object( $mod );
-				
+
 						$ret_val = $term_obj->name;
 					}
 
@@ -260,7 +260,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 				case 'author':
 				case 'name':	// Compatibility for Yoast SEO.
-				
+
 					/**
 					 * Returns the display name for a comment author, post author, or user module.
 					 */
@@ -269,7 +269,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 					break;
 
 				case 'page':
-				
+
 					$page_num = $this->u->get_page_number( $mod, $add_page );
 
 					if ( $page_num > 1 ) {
@@ -284,29 +284,29 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				case 'pagename':
 
 					if ( isset( $mod[ 'query_vars' ][ 'pagename' ] ) ) {
-					
+
 						$ret_val = $mod[ 'query_vars' ][ 'pagename' ];
 					}
 
 					break;
 
 				case 'pagenumber':
-				
+
 					$ret_val = $this->u->get_page_number( $mod, $add_page );
 
 					break;
 
 				case 'pagetotal':
-				
+
 					$ret_val = $mod[ 'paged_total' ];
 
 					break;
 
 				case 'post_date':
 				case 'date':	// Compatibility for Yoast SEO.
-				
+
 					if ( ! empty( $mod[ 'post_time' ] ) ) {
-					
+
 						$ret_val = mysql2date( $local_cache[ 'date_format' ], $mod[ 'post_time' ] );
 					}
 
@@ -314,9 +314,9 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 				case 'post_modified':
 				case 'modified':	// Compatibility for Yoast SEO.
-				
+
 					if ( ! empty( $mod[ 'post_modified_time' ] ) ) {
-					
+
 						$ret_val = mysql2date( $local_cache[ 'date_format' ], $mod[ 'post_modified_time' ] );
 					}
 
@@ -329,15 +329,15 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 					break;
 
 				case 'comment_author':
-				
+
 					$ret_val = $mod[ 'comment_author_name' ];
 
 					break;
 
 				case 'comment_date':
-				
+
 					if ( ! empty( $mod[ 'comment_time' ] ) ) {
-					
+
 						$ret_val = mysql2date( $local_cache[ 'date_format' ], $mod[ 'comment_time' ] );
 					}
 
@@ -347,20 +347,20 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				case 'search_keywords':	// Compatibility for SEOPress.
 				case 'search_query':	// Compatibility for Rank Math.
 				case 'searchphrase':	// Compatibility for Yoast SEO.
-				
+
 					if ( isset( $mod[ 'query_vars' ][ 's' ] ) ) {
-					
+
 						$ret_val = $mod[ 'query_vars' ][ 's' ];
 					}
 
 					break;
 
 				case 'query_year':
-				
+
 					if ( isset( $mod[ 'query_vars' ][ 'year' ] ) ) {
-					
+
 						$ret_val = $mod[ 'query_vars' ][ 'year' ];
-				
+
 					} elseif ( ! empty( $mod[ 'query_vars' ][ 'm' ] ) ) {
 
 						$ret_val = substr( $mod[ 'query_vars' ][ 'm' ], 0, 4 );
@@ -370,9 +370,9 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 				case 'query_month':
 				case 'query_monthnum':
-				
+
 					if ( isset( $mod[ 'query_vars' ][ 'monthnum' ] ) ) {
-					
+
 						$ret_val = $mod[ 'query_vars' ][ 'monthnum' ];
 
 					} elseif ( ! empty( $mod[ 'query_vars' ][ 'm' ] ) ) {
@@ -384,16 +384,16 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 					 * Convert the month number to a month name.
 					 */
 					if ( 'query_month' === $varname ) {
-	
+
 						$ret_val = $ret_val ? $wp_locale->get_month( $ret_val ) : '';
 					}
 
 					break;
 
 				case 'query_day':
-				
+
 					if ( isset( $mod[ 'query_vars' ][ 'day' ] ) ) {
-					
+
 						$ret_val = $mod[ 'query_vars' ][ 'day' ];
 					}
 

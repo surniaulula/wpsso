@@ -394,58 +394,48 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						break;
 
-					/**
-					 * Notice shown when saving settings if the "Use Filtered Content" option is unchecked.
-					 */
 					case 'notice-content-filters-disabled':
 
-						$option_label = _x( 'Use Filtered Content', 'option label', 'wpsso' );
-						$option_link  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', $option_label );
+						if ( ! empty( $this->pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
 
-						$text = '<p class="top">';
+							$option_label = _x( 'Use Filtered Content', 'option label', 'wpsso' );
+							$option_link  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', $option_label );
 
-						$text .= '<b>' . sprintf( __( 'The %s advanced option is currently disabled.', 'wpsso' ), $option_link ) . '</b> ';
+							$text = '<p class="top">';
 
-						$text .= sprintf( __( 'The use of WordPress content filters allows %s to fully render your content text for meta tag descriptions and detect additional images and/or embedded videos provided by shortcodes.', 'wpsso' ), $this->p_name );
+							$text .= '<b>' . sprintf( __( 'The %s advanced option is currently disabled.', 'wpsso' ), $option_link ) . '</b> ';
 
-						$text .= '</p> <p>';
+							$text .= sprintf( __( 'The use of WordPress content filters allows %s to fully render your content text for meta tag descriptions and detect additional images and/or embedded videos provided by shortcodes.', 'wpsso' ), $this->p_name );
 
-						$text .= '<b>' . __( 'Many themes and plugins have badly coded content filters, so this option is disabled by default.', 'wpsso' ) . '</b> ';
+							$text .= '</p> <p>';
 
-						$text .= __( 'If you use shortcodes in your content text, this option should be enabled - IF YOU EXPERIENCE WEBPAGE LAYOUT OR PERFORMANCE ISSUES AFTER ENABLING THIS OPTION, determine which theme or plugin is filtering the content incorrectly and report the problem to its author(s).', 'wpsso' );
+							$text .= '<b>' . __( 'Many themes and plugins have badly coded content filters, so this option is disabled by default.', 'wpsso' ) . '</b> ';
 
-						$text .= '</p>';
+							$text .= __( 'If you use shortcodes in your content text, this option should be enabled - IF YOU EXPERIENCE WEBPAGE LAYOUT OR PERFORMANCE ISSUES AFTER ENABLING THIS OPTION, determine which theme or plugin is filtering the content incorrectly and report the problem to its author(s).', 'wpsso' );
 
-						if ( empty( $this->pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
-
-							$text .= '<p>' . sprintf( __( 'Note that the %1$s option is an advanced %2$s feature.', 'wpsso' ), $option_link, $this->p_name_pro ) . '</p>';
+							$text .= '</p>';
 						}
 
 						break;
 
-					/**
-					 * Notice shown when saving settings if the "Image Dimension Checks" option is unchecked.
-					 */
 					case 'notice-check-img-dims-disabled':
 
-						$option_label = _x( 'Image Dimension Checks', 'option label', 'wpsso' );
-						$option_link  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', $option_label );
+						if ( ! empty( $this->pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
 
-						$text = '<p class="top">';
+							$option_label = _x( 'Image Dimension Checks', 'option label', 'wpsso' );
+							$option_link  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', $option_label );
 
-						$text .= '<b>' . sprintf( __( 'The %s advanced option is currently disabled.', 'wpsso' ), $option_link ) . '</b> ';
+							$text = '<p class="top">';
 
-						$text .= __( 'Providing social and search sites with perfectly resized images is highly recommended, so this option should be enabled if possible.', 'wpsso' ) . ' ';
+							$text .= '<b>' . sprintf( __( 'The %s advanced option is currently disabled.', 'wpsso' ), $option_link ) . '</b> ';
 
-						$text .= __( 'Content authors often upload small featured images to the Media Library, without knowing that WordPress can create several different image sizes from the original, so this option is disabled by default to avoid excessive warning messages.', 'wpsso' ) . ' ';
+							$text .= __( 'Providing social and search sites with perfectly resized images is highly recommended, so this option should be enabled if possible.', 'wpsso' ) . ' ';
 
-						$text .= sprintf( __( 'See <a href="%s">Why shouldn\'t I upload small images to the media library?</a> for more information on WordPress and its image sizes.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/' ). ' ';
+							$text .= __( 'Content authors often upload small featured images to the Media Library, without knowing that WordPress can create several different image sizes from the original, so this option is disabled by default to avoid excessive warning messages.', 'wpsso' ) . ' ';
 
-						$text .= '</p>';
+							$text .= sprintf( __( 'See <a href="%s">Why shouldn\'t I upload small images to the media library?</a> for more information on WordPress and its image sizes.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/' ). ' ';
 
-						if ( empty( $this->pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
-
-							$text .= '<p>' . sprintf( __( 'Note that the %1$s option is an advanced %2$s feature.', 'wpsso' ), $option_link, $this->p_name_pro ) . '</p>';
+							$text .= '</p>';
 						}
 
 						break;

@@ -193,11 +193,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$mod[ 'is_archive' ] = true;	// Required for WpssoUtil->get_url_paged().
 
 			if ( $mod[ 'id' ] ) {	// Just in case.
-				
+
 				$user_obj = get_userdata( $mod[ 'id' ] );
 
 				if ( $user_obj instanceof WP_User ) {	// Just in case.
-					
+
 					$mod[ 'user_name' ] = (string) $user_obj->display_name;
 				}
 			}
@@ -1206,7 +1206,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			if ( $author_id = self::get_author_id( $mod ) ) {
 
 				$author_name = get_the_author_meta( 'display_name', $author_id );
-			
+
 			} elseif ( $mod[ 'is_comment' ] ) {
 
 				if ( $mod[ 'comment_author_name' ] ) {
