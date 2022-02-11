@@ -118,7 +118,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				'schema_title' => array(
 					'th_class' => 'medium',
 					'td_class' => 'blank',
-					'label'    => _x( 'Schema Name', 'option label', 'wpsso' ),
+					'label'    => _x( 'Name', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_title',
 					'content'  => $form->get_no_input_value( $def_schema_title, $css_class = 'wide' ),
 				),
@@ -132,7 +132,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				'schema_desc' => array(
 					'th_class' => 'medium',
 					'td_class' => 'blank',
-					'label'    => _x( 'Schema Description', 'option label', 'wpsso' ),
+					'label'    => _x( 'Description', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_desc',
 					'content'  => $form->get_no_textarea_value( $def_schema_desc, $css_class = '', $css_id = '', $schema_desc_max_len ),
 				),

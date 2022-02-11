@@ -3387,10 +3387,13 @@ msgctxt "metabox title"
 msgid "Schema Markup and Google Rich Results"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:158 lib/pro/admin/edit.php:123
-#: lib/std/admin/edit.php:121
+#: gettext/gettext-lib-pro.php:158 gettext/gettext-lib-pro.php:196
+#: gettext/gettext-lib-pro.php:210 lib/pro/admin/edit.php:123
+#: lib/pro/admin/edit.php:417 lib/pro/admin/edit.php:515
+#: lib/std/admin/edit.php:121 lib/std/admin/edit.php:432
+#: lib/std/admin/edit.php:538
 msgctxt "option label"
-msgid "Schema Name"
+msgid "Name"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:159 lib/pro/admin/edit.php:130
@@ -3399,10 +3402,13 @@ msgctxt "option label"
 msgid "Alternate Name"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:160 lib/pro/admin/edit.php:137
-#: lib/std/admin/edit.php:135
+#: gettext/gettext-lib-pro.php:160 gettext/gettext-lib-pro.php:197
+#: gettext/gettext-lib-pro.php:211 lib/pro/admin/edit.php:137
+#: lib/pro/admin/edit.php:422 lib/pro/admin/edit.php:520
+#: lib/std/admin/edit.php:135 lib/std/admin/edit.php:437
+#: lib/std/admin/edit.php:543
 msgctxt "option label"
-msgid "Schema Description"
+msgid "Description"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:161 lib/messages.php:899
@@ -3615,20 +3621,6 @@ msgstr ""
 #: lib/std/admin/edit.php:426
 msgctxt "option label"
 msgid "%1$s How-To Step or %2$s Step Group / Section:"
-msgstr ""
-
-#: gettext/gettext-lib-pro.php:196 gettext/gettext-lib-pro.php:210
-#: lib/pro/admin/edit.php:417 lib/pro/admin/edit.php:515
-#: lib/std/admin/edit.php:432 lib/std/admin/edit.php:538
-msgctxt "option label"
-msgid "Name"
-msgstr ""
-
-#: gettext/gettext-lib-pro.php:197 gettext/gettext-lib-pro.php:211
-#: lib/pro/admin/edit.php:422 lib/pro/admin/edit.php:520
-#: lib/std/admin/edit.php:437 lib/std/admin/edit.php:543
-msgctxt "option label"
-msgid "Description"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:198 gettext/gettext-lib-pro.php:212

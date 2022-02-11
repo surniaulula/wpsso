@@ -121,8 +121,8 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					 * Text strings that can be blank (line breaks are removed).
 					 */
 					case 'schema_title':				// Schema Name.
-					case 'schema_title_alt':			// Alternate Name.
-					case 'schema_bc_title':				// Breadcrumb Name.
+					case 'schema_title_alt':			// Schema Alternate Name.
+					case 'schema_bc_title':				// Schema Breadcrumb Name.
 					case 'schema_book_author_name':			// Book Author Name.
 					case 'schema_desc':				// Schema Description.
 					case 'schema_headline':				// Headline.

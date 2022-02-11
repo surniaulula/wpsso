@@ -37,13 +37,13 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 				 	break;
 
-				case 'tooltip-meta-schema_title_alt':	// Alternate Name.
+				case 'tooltip-meta-schema_title_alt':	// Schema Alternate Name.
 
 					$text = __( 'A customized alternate name / title for the Schema "alternateName" property.', 'wpsso' );
 
 				 	break;
 
-				case 'tooltip-meta-schema_bc_title':	// Breadcrumb Name.
+				case 'tooltip-meta-schema_bc_title':	// Schema Breadcrumb Name.
 
 					$text = __( 'A short title used for the Schema and/or HTML breadcrumb item name.', 'wpsso' );
 
