@@ -4267,10 +4267,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_CACHEDIR' ] = $var_const[ 'WPSSO_CACHE_DIR' ];
 			$var_const[ 'WPSSO_CACHEURL' ] = $var_const[ 'WPSSO_CACHE_URL' ];
 
-			$var_const[ 'WPSSO_MENU_ORDER' ]                  = '80.0';		// Position of the SSO settings menu item.
-			$var_const[ 'WPSSO_TB_NOTICE_MENU_ORDER' ]        = '55';		// Position of the SSO notices toolbar menu item.
-			$var_const[ 'WPSSO_TB_LOCALE_MENU_ORDER' ]        = '56';		// Position of the user locale toolbar menu item.
-			$var_const[ 'WPSSO_TB_VALIDATE_MENU_ORDER' ]      = '57';		// Position of the validate menu item.
+			$var_const[ 'WPSSO_MENU_ORDER' ]                  = 80.0;		// Position of the SSO settings menu item.
+			$var_const[ 'WPSSO_TB_NOTICE_MENU_ORDER' ]        = 55;			// Position of the SSO notices toolbar menu item.
+			$var_const[ 'WPSSO_TB_LOCALE_MENU_ORDER' ]        = 56;			// Position of the user locale toolbar menu item.
+			$var_const[ 'WPSSO_TB_VALIDATE_MENU_ORDER' ]      = 57;			// Position of the validate menu item.
 			$var_const[ 'WPSSO_JSON_PRETTY_PRINT' ]           = true;		// Allows for better visual cues in the Google validator.
 			$var_const[ 'WPSSO_CACHE_CLEAR_MAX_TIME' ]        = 3600;		// 1 hour.
 			$var_const[ 'WPSSO_CACHE_REFRESH_MAX_TIME' ]      = 10800;		// 3 hours.
