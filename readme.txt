@@ -20,13 +20,9 @@ Present your content at its best in search results and on social sites - no matt
 
 <h3 class="top">Complete Structured Data Plugin for WordPress</h3>
 
-<blockquote>
-
-<p><strong>Image / Video SEO, Facebook / Open Graph Meta Tags, Merchant Feeds, oEmbed, REST API, Rich Pins, Rich Results, Schema JSON-LD, Sitemaps XML, Twitter Cards:</strong></p>
+<p><strong>Image and Video SEO, Facebook / Open Graph meta tags, Merchant Feeds, oEmbed, REST API, Rich Pins, Rich Results, Schema JSON-LD, Sitemaps XML, Twitter Cards:</strong></p>
 
 <p>Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</p>
-
-</blockquote>
 
 <!-- about -->
 
@@ -94,19 +90,19 @@ WPSSO provides comprehensive Schema markup for posts, pages, custom post types, 
 
 <h3>Premium Edition Features</h3>
 
-**&#91;Premium&#93;** Additional options in the SSO &gt; Advanced Settings page.
+**&#91;Premium&#93; Additional options in the SSO &gt; Advanced Settings page.**
 
-**&#91;Premium&#93;** Additional options in the Document SSO metabox for the selected Schema type.
+**&#91;Premium&#93; Additional options in the Document SSO metabox for the selected Schema type.**
 
-**&#91;Premium&#93;** Imports video information from Facebook, Slideshare, Vimeo, Wistia, and Youtube videos.
+**&#91;Premium&#93; Imports video information from Facebook, Slideshare, Vimeo, Wistia, and Youtube videos.**
 
-**&#91;Premium&#93;** Schema JSON-LD markup for Better WooCommerce SEO:
+**&#91;Premium&#93; Schema JSON-LD markup for Better WooCommerce SEO:**
 
 > The WooCommerce plugin alone does not provide sufficient Schema markup for Google Rich Results. The <a href="https://wpsso.com/">WPSSO Core Premium edition</a> reads WooCommerce product data and provides complete Schema Product JSON-LD markup for Google Rich Results, including product image galleries, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, pattern, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.
 
-**&#91;Premium&#93;** An optional Google Merchant Feed XML add-on for for WooCommerce, Easy Digital Downloads, and Document SSO metabox custom products.
+**&#91;Premium&#93; An optional Google Merchant Feed XML add-on for for WooCommerce, Easy Digital Downloads, and Document SSO metabox custom products.**
 
-**&#91;Premium&#93;** Fetches data from active plugins, including:
+**&#91;Premium&#93; Reads data from active plugins, including:**
 
 * All in One SEO Pack
 * bbPress
@@ -140,7 +136,7 @@ WPSSO provides comprehensive Schema markup for posts, pages, custom post types, 
 * Yoast SEO
 * Yotpo Social Reviews for WooCommerce
 
-**&#91;Premium&#93;** Imports pre-existing plugin metadata and block attributes, including:
+**&#91;Premium&#93; Imports plugin metadata and block attributes, including:**
 
 * All in One SEO Pack Metadata
 * Rank Math SEO Metadata
@@ -148,7 +144,7 @@ WPSSO provides comprehensive Schema markup for posts, pages, custom post types, 
 * Yoast SEO Metadata
 * Yoast SEO Block Attributes
 
-**&#91;Premium&#93;** Fetches data from remote service APIs, including:
+**&#91;Premium&#93; Reads data from remote service APIs, including:**
 
 * Bitly
 * DLMY.App
