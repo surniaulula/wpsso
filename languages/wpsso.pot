@@ -9684,11 +9684,11 @@ msgid ""
 msgstr ""
 
 #: lib/messages.php:603
-msgid "Fetches data from active plugins and service APIs."
+msgid "Reads data from active plugins and service APIs."
 msgstr ""
 
 #: lib/messages.php:605
-msgid "Imports pre-existing plugin metadata and block attributes."
+msgid "Imports plugin metadata and block attributes."
 msgstr ""
 
 #: lib/messages.php:615
