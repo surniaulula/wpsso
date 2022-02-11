@@ -1,4 +1,4 @@
-=== WordPress Social and Search Optimization | Complete Structured Data Plugin for WordPress ===
+=== WordPress Social and Search Optimization ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -20,11 +20,11 @@ Present your content at its best in search results and on social sites - no matt
 
 <h3 class="top">Complete Structured Data Plugin for WordPress</h3>
 
-<h4>Image / Video SEO, Facebook / Open Graph Meta Tags, Merchant Feeds, oEmbed, REST API, Rich Pins, Rich Results, Schema JSON-LD, Sitemaps XML, Twitter Cards</h4>
+<p><strong>Image / Video SEO, Facebook / Open Graph Meta Tags, Merchant Feeds, oEmbed, REST API, Rich Pins, Rich Results, Schema JSON-LD, Sitemaps XML, Twitter Cards.</strong></p>
 
 <!-- about -->
 
-<p><strong>Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</strong></p>
+<p>Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</p>
 
 <p><strong>Provides meta tags and structured data markup for:</strong></p>
 
