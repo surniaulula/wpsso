@@ -15,7 +15,7 @@
 
 <h2>Description</h2>
 
-<h3 class="top">Complete Structured Data Plugin for WordPress:</h3>
+<h3 class="top">Complete Structured Data Plugin for WordPress</h3>
 
 <p><strong>Image / Video SEO, Facebook / Open Graph Meta Tags, Merchant Feeds, oEmbed, REST API, Rich Pins, Rich Results, Schema JSON-LD, Sitemaps XML, Twitter Cards.</strong></p>
 
