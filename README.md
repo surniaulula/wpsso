@@ -17,24 +17,23 @@
 
 <h3 class="top">Complete Structured Data Plugin for WordPress</h3>
 
-<p><strong>Image and Video SEO, Facebook / Open Graph meta tags, Merchant Feeds, oEmbed, REST API, Rich Pins, Rich Results, Schema JSON-LD, Sitemaps XML, Twitter Cards:</strong></p>
-
-<p>Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</p>
+<p><strong>Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</strong></p>
 
 <!-- about -->
 
 <p><strong>Provides structured data markup for:</strong></p>
 
 <ul>
-    <li>Facebook Open Graph</li>
+    <li>Facebook / Open Graph</li>
     <li>Google Knowledge Graph</li>
-    <li>Google Merchant Feeds XML (Premium Edition)</li>
-    <li>Google Rich Results (aka Rich Snippets)</li>
+    <li>Google Merchant Feeds (Premium Edition)</li>
+    <li>Google Rich Results / Rich Snippets</li>
+    <li>Image and Video SEO</li>
     <li>Mobile Web Browsers</li>
-    <li>oEmbed for LinkedIn, Discord, Drupal, etc.</li>
+    <li>oEmbed for LinkedIn, Discord, and Drupal</li>
     <li>Pinterest Rich Pins</li>
     <li>Twitter Cards</li>
-    <li>Schema.org JSON-LD Markup</li>
+    <li>Schema JSON-LD Markup</li>
     <li>Slack</li>
     <li>WhatsApp and Messaging Apps</li>
     <li>WordPress REST API</li>
