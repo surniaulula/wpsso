@@ -1623,17 +1623,17 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings > Integration.
 					 */
-					'plugin_title_tag'          => 'schema_title',		// Webpage Title Tag.
-					'plugin_filter_content'     => 0,			// Use Filtered Content.
-					'plugin_filter_excerpt'     => 0,			// Use Filtered Excerpt.
-					'plugin_page_excerpt'       => 0,			// Enable Excerpt for Pages.
-					'plugin_page_tags'          => 0,			// Enable Tags for Pages.
-					'plugin_new_user_is_person' => 0,			// Add Person Role for New Users.
-					'plugin_inherit_featured'   => 1,			// Inherit Featured Image.
-					'plugin_inherit_custom'     => 1,			// Inherit Custom Images.
-					'plugin_check_img_dims'     => 0,			// Image Dimension Checks.
-					'plugin_upscale_images'     => 0,			// Upscale Media Library Images.
-					'plugin_upscale_pct_max'    => 33,			// Maximum Image Upscale Percent.
+					'plugin_title_tag'          => 'wp_title',	// Webpage Title Tag.
+					'plugin_filter_content'     => 0,		// Use Filtered Content.
+					'plugin_filter_excerpt'     => 0,		// Use Filtered Excerpt.
+					'plugin_page_excerpt'       => 0,		// Enable Excerpt for Pages.
+					'plugin_page_tags'          => 0,		// Enable Tags for Pages.
+					'plugin_new_user_is_person' => 0,		// Add Person Role for New Users.
+					'plugin_inherit_featured'   => 1,		// Inherit Featured Image.
+					'plugin_inherit_custom'     => 1,		// Inherit Custom Images.
+					'plugin_check_img_dims'     => 0,		// Image Dimension Checks.
+					'plugin_upscale_images'     => 0,		// Upscale Media Library Images.
+					'plugin_upscale_pct_max'    => 33,		// Maximum Image Upscale Percent.
 
 					/**
 					 * Advanced Settings > Integration > Plugin and Theme Integration.
