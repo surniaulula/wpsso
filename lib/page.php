@@ -146,10 +146,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		/**
 		 * Since WordPress v4.4.
 		 *
-		 * Filters the WordPress document title before it is generated.
-		 *
-		 * Returning a non-empty value skips the 'document_title_separator', 'document_title_parts', and 'document_title'
-		 * filters.
+		 * Filters the WordPress document title before it is generated. Returning a non-empty value skips the
+		 * 'document_title_separator', 'document_title_parts', and 'document_title' filters.
 		 *
 		 * See wordpress/wp-includes/general-template.php.
 		 */
@@ -169,7 +167,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'returning an empty string to use the document_title filters' );
 			}
 
-			return '';
+			return $pre_title;
 		}
 
 		/**
