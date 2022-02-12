@@ -10223,15 +10223,15 @@ msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr ""
 
-#: lib/page.php:1075 lib/util-inline.php:277
+#: lib/page.php:1083 lib/util-inline.php:277
 msgid "Page %1$d of %2$d"
 msgstr ""
 
-#: lib/page.php:1079
+#: lib/page.php:1087
 msgid "Page %1$d"
 msgstr ""
 
-#: lib/page.php:2264
+#: lib/page.php:2272
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] ""

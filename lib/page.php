@@ -159,15 +159,23 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			/**
-			 * Always return an empty string to make sure the following 'document_title_separator',
-			 * 'document_title_parts', and 'document_title' filters are applied.
+			 * If $pre_title is not an empty string, then maybe force an empty string to make sure the
+			 * 'document_title_separator', 'document_title_parts', and 'document_title' filters are applied.
 			 */
-			if ( $this->p->debug->enabled ) {
+			if ( '' !== $pre_title ) {
 
-				$this->p->debug->log( 'returning an empty string to use the document_title filters' );
+				if ( 'wp_title' !== $this->p->options[ 'plugin_title_tag' ] ) {
+
+					$pre_title = '';
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'returning an empty string to use document_title filters' );
+					}
+				}
 			}
 
-			return '';
+			return $pre_title;
 		}
 
 		/**
