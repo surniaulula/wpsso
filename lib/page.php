@@ -167,7 +167,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'returning an empty string to use the document_title filters' );
 			}
 
-			return $pre_title;
+			return '';
 		}
 
 		/**
