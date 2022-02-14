@@ -12,7 +12,7 @@ Requires PHP: 7.2
 Requires At Least: 5.2
 Tested Up To: 5.9.0
 WC Tested Up To: 6.2.0
-Stable Tag: 10.3.0
+Stable Tag: 10.3.1
 
 Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
 
@@ -250,7 +250,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 10.4.0-dev.1 (TBD)**
+**Version 10.4.0-dev.1 (2022/02/14)**
 
 * **New Features**
 	* Added a new "SEO Title Tag" option in the Document SSO metabox.
@@ -912,7 +912,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 = 10.4.0-dev.1 =
 
-(TBD) Added a new "SEO Title Tag" option in the Document SSO metabox.
+(2022/02/14) Added a new "SEO Title Tag" option in the Document SSO metabox.
 
 = 10.3.1 =
 
