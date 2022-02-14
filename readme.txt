@@ -250,7 +250,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 10.4.0-dev.1 (2022/02/14)**
+**Version 10.4.0-dev.2 (2022/02/14)**
 
 * **New Features**
 	* Added a new "SEO Title Tag" option in the Document SSO metabox.
@@ -910,7 +910,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 10.4.0-dev.1 =
+= 10.4.0-dev.2 =
 
 (2022/02/14) Added a new "SEO Title Tag" option in the Document SSO metabox.
 
