@@ -202,8 +202,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 					$this->p->debug->log( 'adding image URL for pinterest = ' . $image_url );
 				}
 
-				$data_pin_desc = $this->p->page->get_description( 'pin_img_desc', $dots = '...', $mod,
-					$add_hashtags = true, $do_encode = true, $md_key = array( 'pin_img_desc', 'og_desc', 'seo_desc' ) );
+				$data_pin_desc = $this->p->page->get_description( $mod, $md_key = 'pin_img_desc', $max_len = 'pin_img_desc', $num_hashtags = true );
 
 				if ( $this->p->debug->enabled ) {
 

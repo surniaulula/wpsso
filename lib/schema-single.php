@@ -174,8 +174,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			$json_ret = WpssoSchema::get_schema_type_context( $comment_type_url, array(
 				'url'         => $wpsso->util->get_canonical_url( $comment_mod ),
-				'name'        => $wpsso->page->get_title( 'schema_title', $dots = '...', $comment_mod ),
-				'description' => $wpsso->page->get_description( 'schema_desc', $dots = '...', $comment_mod ),
+				'name'        => $wpsso->page->get_title( $comment_mod, $md_key = 'schema_title', $max_len = 'schema_title' ),
+				'description' => $wpsso->page->get_description( $comment_mod, $md_key = 'schema_desc', $max_len = 'schema_desc' ),
 				'dateCreated' => $comment_mod[ 'comment_time' ],
 				'author'      => WpssoSchema::get_schema_type_context( 'https://schema.org/Person', array(
 					'url'  => $comment_mod[ 'comment_author_url' ],
@@ -611,15 +611,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				/**
 				 * Get the image title.
 				 */
-				$json_ret[ 'name' ] = $wpsso->page->get_title( 'schema_title', $dots = '...', $mod,
-					$add_hashtags = false, $do_encode = true, $md_keys = array( 'schema_title', 'seo_title' ),
-						$title_sep = false );
+				$json_ret[ 'name' ] = $wpsso->page->get_title( $mod, $md_key = 'schema_title', $max_len = 'schema_title' );
 
 				/**
 				 * Get the image alternate title, if one has been defined in the custom post meta.
 				 */
-				$json_ret[ 'alternateName' ] = $wpsso->page->get_title( 'schema_title_alt', $dots = '...', $mod,
-					$add_hashtags = false, $do_encode = true, $md_keys = array( 'schema_title_alt', 'schema_title', 'seo_title' ) );
+				$json_ret[ 'alternateName' ] = $wpsso->page->get_title( $mod, $md_key = 'schema_title_alt', $max_len = 'schema_title_alt' );
 
 				if ( $json_ret[ 'name' ] === $json_ret[ 'alternateName' ] ) {	// Prevent duplicate values.
 
@@ -641,8 +638,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				 */
 				$json_ret[ 'caption' ] = $wpsso->page->get_the_excerpt( $mod );
 
-				$json_ret[ 'description' ] = $wpsso->page->get_description( 'schema_desc', $dots = '...', $mod,
-					$add_hashtags = false, $do_encode = true, $md_key = array( 'schema_desc', 'seo_desc' ) );
+				$json_ret[ 'description' ] = $wpsso->page->get_description( $mod, $md_key = 'schema_desc', $max_len = 'schema_desc' );
 
 				/**
 				 * Set the 'encodingFormat' property to the image mime type.
@@ -737,9 +733,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			if ( empty( $job_opts[ 'job_title' ] ) ) {
 
-				$job_opts[ 'job_title' ] = $wpsso->page->get_title( 'schema_title', $dots = '...', $mod,
-					$add_hashtags = false, $do_encode = true, $md_keys = array( 'schema_title', 'og_title' ),
-						$title_sep = false );
+				$job_opts[ 'job_title' ] = $wpsso->page->get_title( $mod, $md_key = 'schema_title', $max_len = 'schema_title' );
 			}
 
 			/**

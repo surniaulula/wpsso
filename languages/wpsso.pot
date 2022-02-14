@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 10.4.0-dev.1\n"
+"Project-Id-Version: WPSSO Core 10.4.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -3386,7 +3386,7 @@ msgctxt "option label"
 msgid "Force Autoplay when Possible"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:157 lib/edit.php:351 lib/pro/admin/edit.php:91
+#: gettext/gettext-lib-pro.php:157 lib/edit.php:354 lib/pro/admin/edit.php:91
 #: lib/std/admin/edit.php:85
 msgctxt "metabox title"
 msgid "Schema Markup and Google Rich Results"
@@ -3629,7 +3629,7 @@ msgid "%1$s How-To Step or %2$s Step Group / Section:"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:198 gettext/gettext-lib-pro.php:212
-#: lib/edit.php:260 lib/edit.php:314 lib/edit.php:356 lib/edit.php:398
+#: lib/edit.php:263 lib/edit.php:317 lib/edit.php:359 lib/edit.php:401
 #: lib/pro/admin/edit.php:411 lib/pro/admin/edit.php:509
 #: lib/std/admin/edit.php:426 lib/std/admin/edit.php:532
 msgctxt "option label"
@@ -3920,8 +3920,8 @@ msgctxt "option label"
 msgid "Subject Image ID"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:252 lib/edit.php:266 lib/edit.php:321
-#: lib/edit.php:363 lib/edit.php:405 lib/pro/admin/edit.php:732
+#: gettext/gettext-lib-pro.php:252 lib/edit.php:269 lib/edit.php:324
+#: lib/edit.php:366 lib/edit.php:408 lib/pro/admin/edit.php:732
 #: lib/std/admin/edit.php:776
 msgctxt "option label"
 msgid "or an Image URL"
@@ -6200,255 +6200,255 @@ msgid ""
 "social sites to access your site."
 msgstr ""
 
-#: lib/edit.php:84
+#: lib/edit.php:87
 msgctxt "option label"
 msgid "Crop Area"
 msgstr ""
 
-#: lib/edit.php:90 lib/script.php:425
+#: lib/edit.php:93 lib/script.php:425
 msgctxt "option label"
 msgid "Schema Type"
 msgstr ""
 
-#: lib/edit.php:105
+#: lib/edit.php:108
 msgctxt "option label"
 msgid "Open Graph Type"
 msgstr ""
 
-#: lib/edit.php:113
+#: lib/edit.php:116
 msgctxt "option label"
 msgid "Primary Category"
 msgstr ""
 
-#: lib/edit.php:121
+#: lib/edit.php:124
 msgctxt "option label"
 msgid "Article Section"
 msgstr ""
 
-#: lib/edit.php:137
+#: lib/edit.php:140
 msgctxt "option label"
 msgid "Est. Reading Time"
 msgstr ""
 
-#: lib/edit.php:140
+#: lib/edit.php:143
 msgid "minute(s)"
 msgstr ""
 
-#: lib/edit.php:144
+#: lib/edit.php:147
 msgctxt "option label"
 msgid "SEO Title Tag"
 msgstr ""
 
-#: lib/edit.php:152
+#: lib/edit.php:155
 msgctxt "option label"
 msgid "SEO Meta Description"
 msgstr ""
 
-#: lib/edit.php:159
+#: lib/edit.php:162
 msgctxt "option label"
 msgid "Open Graph Title"
 msgstr ""
 
-#: lib/edit.php:166
+#: lib/edit.php:169
 msgctxt "option label"
 msgid "Open Graph Description"
 msgstr ""
 
-#: lib/edit.php:174
+#: lib/edit.php:177
 msgctxt "option label"
 msgid "Pinterest Description"
 msgstr ""
 
-#: lib/edit.php:181
+#: lib/edit.php:184
 msgctxt "option label"
 msgid "Twitter Card Title"
 msgstr ""
 
-#: lib/edit.php:188
+#: lib/edit.php:191
 msgctxt "option label"
 msgid "Twitter Card Description"
 msgstr ""
 
-#: lib/edit.php:208
+#: lib/edit.php:211
 msgctxt "option label"
 msgid "Maximum Images"
 msgstr ""
 
-#: lib/edit.php:214
+#: lib/edit.php:217
 msgctxt "option label"
 msgid "Maximum Videos"
 msgstr ""
 
-#: lib/edit.php:220
+#: lib/edit.php:223
 msgctxt "option label"
 msgid "Include Video Previews"
 msgstr ""
 
-#: lib/edit.php:227
+#: lib/edit.php:230
 msgctxt "metabox title"
 msgid "Priority Media"
 msgstr ""
 
-#: lib/edit.php:256
+#: lib/edit.php:259
 msgctxt "metabox title"
 msgid "Priority Image Information"
 msgstr ""
 
-#: lib/edit.php:303
+#: lib/edit.php:306
 msgid "No priority media options for the %s."
 msgstr ""
 
-#: lib/edit.php:393
+#: lib/edit.php:396
 msgctxt "metabox title"
 msgid "Pinterest Pin It"
 msgstr ""
 
-#: lib/edit.php:423 lib/edit.php:592
+#: lib/edit.php:426 lib/edit.php:595
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
 
-#: lib/edit.php:449
+#: lib/edit.php:452
 msgctxt "metabox title"
 msgid "Robots Meta"
 msgstr ""
 
-#: lib/edit.php:457
+#: lib/edit.php:460
 msgctxt "option label"
 msgid "No Archive"
 msgstr ""
 
-#: lib/edit.php:460
+#: lib/edit.php:463
 msgctxt "option comment"
 msgid "do not show a cached link in search results"
 msgstr ""
 
-#: lib/edit.php:464
+#: lib/edit.php:467
 msgctxt "option label"
 msgid "No Follow"
 msgstr ""
 
-#: lib/edit.php:467
+#: lib/edit.php:470
 msgctxt "option comment"
 msgid "do not follow links on this webpage"
 msgstr ""
 
-#: lib/edit.php:471
+#: lib/edit.php:474
 msgctxt "option label"
 msgid "No Image Index"
 msgstr ""
 
-#: lib/edit.php:474
+#: lib/edit.php:477
 msgctxt "option comment"
 msgid "do not index images on this webpage"
 msgstr ""
 
-#: lib/edit.php:478
+#: lib/edit.php:481
 msgctxt "option label"
 msgid "No Index"
 msgstr ""
 
-#: lib/edit.php:481
+#: lib/edit.php:484
 msgctxt "option comment"
 msgid "do not show this webpage in search results"
 msgstr ""
 
-#: lib/edit.php:485
+#: lib/edit.php:488
 msgctxt "option label"
 msgid "No Snippet"
 msgstr ""
 
-#: lib/edit.php:488
+#: lib/edit.php:491
 msgctxt "option comment"
 msgid "do not show a text snippet or a video preview in search results"
 msgstr ""
 
-#: lib/edit.php:492
+#: lib/edit.php:495
 msgctxt "option label"
 msgid "No Translate"
 msgstr ""
 
-#: lib/edit.php:495
+#: lib/edit.php:498
 msgctxt "option comment"
 msgid "do not offer translation of this webpage in search results"
 msgstr ""
 
-#: lib/edit.php:499
+#: lib/edit.php:502
 msgctxt "option label"
 msgid "Snippet Max. Length"
 msgstr ""
 
-#: lib/edit.php:502 lib/submenu/general.php:330
+#: lib/edit.php:505 lib/submenu/general.php:330
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
 
-#: lib/edit.php:503 lib/edit.php:518 lib/submenu/general.php:330
+#: lib/edit.php:506 lib/edit.php:521 lib/submenu/general.php:330
 #: lib/submenu/general.php:343
 msgctxt "option comment"
 msgid "-1 for no limit"
 msgstr ""
 
-#: lib/edit.php:507
+#: lib/edit.php:510
 msgctxt "option label"
 msgid "Image Preview Size"
 msgstr ""
 
-#: lib/edit.php:514
+#: lib/edit.php:517
 msgctxt "option label"
 msgid "Video Max. Previews"
 msgstr ""
 
-#: lib/edit.php:517 lib/submenu/general.php:343
+#: lib/edit.php:520 lib/submenu/general.php:343
 msgctxt "option comment"
 msgid "seconds"
 msgstr ""
 
-#: lib/edit.php:571
+#: lib/edit.php:574
 msgctxt "preview image error"
 msgid "Image Size Smaller<br/>than Suggested Minimum<br/>of %s"
 msgstr ""
 
-#: lib/edit.php:580
+#: lib/edit.php:583
 msgctxt "preview image error"
 msgid "Image Size Unknown<br/>or Not Available"
 msgstr ""
 
-#: lib/edit.php:587
+#: lib/edit.php:590
 msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/edit.php:596
+#: lib/edit.php:599
 msgctxt "option label"
 msgid "Shortlink URL"
 msgstr ""
 
-#: lib/edit.php:600
+#: lib/edit.php:603
 msgctxt "metabox title"
 msgid "Facebook / Open Graph Example"
 msgstr ""
 
-#: lib/edit.php:640
+#: lib/edit.php:643
 msgctxt "option label"
 msgid "oEmbed JSON URL"
 msgstr ""
 
-#: lib/edit.php:644
+#: lib/edit.php:647
 msgctxt "option label"
 msgid "oEmbed XML URL"
 msgstr ""
 
-#: lib/edit.php:648
+#: lib/edit.php:651
 msgctxt "metabox title"
 msgid "oEmbed HTML"
 msgstr ""
 
-#: lib/edit.php:658
+#: lib/edit.php:661
 msgid "No oEmbed HTML found."
 msgstr ""
 
-#: lib/edit.php:676
+#: lib/edit.php:679
 msgctxt "submit button"
 msgid "Validate %s"
 msgstr ""
@@ -10181,15 +10181,15 @@ msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr ""
 
-#: lib/page.php:997 lib/util-inline.php:277
+#: lib/page.php:977 lib/util-inline.php:277
 msgid "Page %1$d of %2$d"
 msgstr ""
 
-#: lib/page.php:1001
+#: lib/page.php:981
 msgid "Page %1$d"
 msgstr ""
 
-#: lib/page.php:2098
+#: lib/page.php:2090
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] ""
@@ -10474,44 +10474,44 @@ msgctxt "Taxonomy description"
 msgid "Tags for the page post type."
 msgstr ""
 
-#: lib/schema-single.php:959
+#: lib/schema-single.php:953
 msgid "adding schema organization"
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1023
+#: lib/schema-single.php:1017
 msgid ""
 "An organization logo image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1026
+#: lib/schema-single.php:1020
 msgid ""
 "An organization banner image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s is 'site' (translated) or 'ID #'.
-#: lib/schema-single.php:1029
+#: lib/schema-single.php:1023
 msgid ""
 "Please enter the missing image URL in the \"%1$s\" %2$s organization "
 "settings."
 msgstr ""
 
-#: lib/schema-single.php:1052
+#: lib/schema-single.php:1046
 msgid "site"
 msgstr ""
 
-#: lib/schema-single.php:1066 lib/schema-single.php:1075
+#: lib/schema-single.php:1060 lib/schema-single.php:1069
 msgid "ID #%s"
 msgstr ""
 
-#: lib/schema-single.php:1248
+#: lib/schema-single.php:1242
 msgid "adding schema person"
 msgstr ""
 
-#: lib/schema-single.php:1451
+#: lib/schema-single.php:1445
 msgid "adding schema place"
 msgstr ""
 
@@ -11087,39 +11087,39 @@ msgstr ""
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
-#: lib/twittercard.php:191
+#: lib/twittercard.php:189
 msgctxt "metabox title"
 msgid "Twitter App Card"
 msgstr ""
 
-#: lib/twittercard.php:199
+#: lib/twittercard.php:197
 msgctxt "metabox title"
 msgid "Twitter Player Card"
 msgstr ""
 
-#: lib/twittercard.php:207
+#: lib/twittercard.php:205
 msgctxt "metabox title"
 msgid "Twitter Summary Card"
 msgstr ""
 
-#: lib/twittercard.php:215
+#: lib/twittercard.php:213
 msgctxt "metabox title"
 msgid "Twitter Large Image Summary Card"
 msgstr ""
 
-#: lib/twittercard.php:637
+#: lib/twittercard.php:635
 msgid "Written by"
 msgstr ""
 
-#: lib/twittercard.php:646
+#: lib/twittercard.php:644
 msgid "Est. reading time"
 msgstr ""
 
-#: lib/twittercard.php:657
+#: lib/twittercard.php:655
 msgid "Price"
 msgstr ""
 
-#: lib/twittercard.php:675
+#: lib/twittercard.php:673
 msgid "Availability"
 msgstr ""
 

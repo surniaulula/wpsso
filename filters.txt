@@ -55,7 +55,7 @@
 
 'wpsso_canonical_url' ( $url, $mod, $add_page )
 
-'wpsso_caption' ( $caption, $mod, $add_hashtags, $md_key )
+'wpsso_caption' ( $caption, $mod, $num_hashtags, $md_key )
 
 'wpsso_check_post_head' ( $bool, $post_id, $post_obj )
 
@@ -67,9 +67,9 @@
 
 'wpsso_default_term_id' ( $default_term_id, $mod, $tax_slug )
 
-'wpsso_description' ( $desc_text, $mod, $add_hashtags, $md_key )
+'wpsso_description' ( $desc_text, $mod, $num_hashtags, $md_key )
 
-'wpsso_description_seed' ( '', $mod, $add_hashtags, $md_key )
+'wpsso_description_seed' ( '', $mod, $num_hashtags, $md_key )
 
 'wpsso_form_select_{option_name}' ( $values )
 
@@ -293,15 +293,15 @@
 
 'wpsso_term_url' ( $url, $mod )
 
-'wpsso_text' ( $text, $mod, $add_hashtags, $md_key )
+'wpsso_text' ( $text, $mod, $num_hashtags, $md_key )
 
 'wpsso_the_content' ( $content, $mod, $md_key )
 
 'wpsso_the_content_seed' ( '', $mod, $md_key )
 
-'wpsso_title_seed' ( '', $mod, $add_hashtags, $md_key, $title_sep )
+'wpsso_title_seed' ( '', $mod, $num_hashtags, $md_key, $title_sep )
 
-'wpsso_title' ( $title_text, $mod, $add_hashtags, $md_key, $title_sep )
+'wpsso_title' ( $title_text, $mod, $num_hashtags, $md_key, $title_sep )
 
 'wpsso_user_document_meta_tabs' ( $tabs, $mod, $metabox_id )
 

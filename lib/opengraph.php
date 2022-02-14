@@ -419,7 +419,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$this->p->debug->log( 'getting title for og:title meta tag' );
 				}
 
-				$mt_og[ 'og:title' ] = $this->p->page->get_title( 'og_title', $dots = '...', $mod );
+				$mt_og[ 'og:title' ] = $this->p->page->get_title( $mod, $md_key = 'og_title', $max_len = 'og_title' );
 
 				if ( $this->p->debug->enabled ) {
 
@@ -441,8 +441,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$this->p->debug->log( 'getting description for og:description meta tag' );
 				}
 
-				$mt_og[ 'og:description' ] = $this->p->page->get_description( 'og_desc', $dots = '...', $mod,
-					$this->p->options[ 'og_desc_hashtags' ] );
+				$mt_og[ 'og:description' ] = $this->p->page->get_description( $mod, $md_key = 'og_desc', $max_len = 'og_desc', $num_hashtags = true );
 
 				if ( $this->p->debug->enabled ) {
 
@@ -1752,9 +1751,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					/**
 					 * Use $title_sep = false to avoid adding term parent names in the term title.
 					 */
-					$category_names[ $parent_term_id ][ $term_id ] = $this->p->page->get_title( $max_len = 0, $dots = '...', $term_mod,
-						$add_hashtags = false, $do_encode = true, $md_keys = array( 'schema_bc_title', 'schema_title', 'seo_title' ),
-							$title_sep = false );
+					$category_names[ $parent_term_id ][ $term_id ] = $this->p->page->get_title( $term_mod,
+						$md_key = 'schema_title_bc', $max_len = 'schema_title_bc', $title_sep = false );
 				}
 			}
 

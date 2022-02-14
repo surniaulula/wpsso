@@ -410,7 +410,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_type'      => $def_schema_type,	// Schema Type.
 					'schema_title'     => '',		// Schema Name.
 					'schema_title_alt' => '',		// Schema Alternate Name.
-					'schema_bc_title'  => '',		// Schema Breadcrumb Name.
+					'schema_title_bc'  => '',		// Schema Breadcrumb Name.
 					'schema_desc'      => '',		// Schema Description.
 
 					/**

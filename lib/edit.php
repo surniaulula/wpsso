@@ -59,15 +59,18 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			/**
 			 * Default option values.
 			 */
-			$def_seo_title     = $this->p->page->get_title( 'seo_title', $dots = '...', $mod, $add_hashtags = false, $do_encode = true, $md_key = 'none' );
-			$def_seo_desc      = $this->p->page->get_description( 'seo_desc', $dots = '...', $mod, $add_hashtags = false, $do_encode = true, $md_key = 'none' );
-			$def_og_title      = $this->p->page->get_title( 'og_title', $dots = '...', $mod );
-			$def_og_desc       = $this->p->page->get_description( 'og_desc', $dots = '...', $mod, $add_hashtags = true );
-			$def_pin_img_desc  = $this->p->page->get_description( 'pin_img_desc', $dots = '...', $mod );
-			$def_tc_title      = $this->p->page->get_title( 'tc_title', $dots = '...', $mod );
-			$def_tc_desc       = $this->p->page->get_description( 'tc_desc', $dots = '...', $mod );
-			$def_reading_mins  = $this->p->page->get_reading_mins( $mod );
+			$def_seo_title    = $this->p->page->get_title( $mod, $md_key = '', $max_len = 'seo_title' );
+			$def_og_title     = $this->p->page->get_title( $mod, $md_key = 'seo_title', $max_len = 'og_title' );
+			$def_tc_title     = $this->p->page->get_title( $mod, $md_key = 'og_title', $max_len = 'tc_title' );
+			$def_seo_desc     = $this->p->page->get_description( $mod, $md_key = '', $max_len = 'seo_desc' );
+			$def_og_desc      = $this->p->page->get_description( $mod, $md_key = 'seo_desc', $max_len = 'og_desc' );
+			$def_pin_img_desc = $this->p->page->get_description( $mod, $md_key = 'og_desc', $max_len = 'pin_img_desc' );
+			$def_tc_desc      = $this->p->page->get_description( $mod, $md_key = 'og_desc', $max_len = 'tc_desc' );
+			$def_reading_mins = $this->p->page->get_reading_mins( $mod );
 
+			/**
+			 * Check for disabled options.
+			 */
 			$seo_title_disabled     = $this->p->util->is_seo_title_disabled();
 			$seo_title_disabled_msg = $this->p->msgs->maybe_seo_tag_option_disabled( 'meta name description' );
 			$seo_desc_disabled      = $this->p->util->is_seo_desc_disabled();

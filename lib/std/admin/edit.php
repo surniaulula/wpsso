@@ -62,12 +62,12 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			/**
 			 * Default values.
 			 */
-			$def_schema_title     = $this->p->page->get_title( 'schema_title', $dots = '...', $mod );
-			$def_schema_title_alt = $this->p->page->get_title( 'schema_title_alt', $dots = '...', $mod, $add_hashtags = false, $do_encode = true, $md_keys = array( 'schema_title', 'seo_title' ) );
-			$def_schema_headline  = $this->p->page->get_title( 'schema_headline', $dots = '...', $mod );
-			$def_schema_desc      = $this->p->page->get_description( 'schema_desc', $dots = '...', $mod );
-			$def_schema_text      = $this->p->page->get_text( 'schema_text', $dots = '...', $mod, $add_hashtags = false, $do_encode = true, $md_key = 'none' );
-			$def_schema_keywords  = $this->p->page->get_keywords( $mod, $md_key = 'none' );
+			$def_schema_title     = $this->p->page->get_title( $mod, $md_key = 'seo_title', $max_len = 'schema_title' );
+			$def_schema_title_alt = $this->p->page->get_title( $mod, $md_key = 'schema_title', $max_len = 'schema_title_alt' );
+			$def_schema_headline  = $this->p->page->get_title( $mod, $md_key = 'schema_title_alt', $max_len = 'schema_headline' );
+			$def_schema_desc      = $this->p->page->get_description( $mod, $md_key = 'seo_desc', $max_len = 'schema_desc' );
+			$def_schema_text      = $this->p->page->get_text( $mod, $md_key = '', $max_len = 'schema_text' );
+			$def_schema_keywords  = $this->p->page->get_keywords( $mod, $md_key = '' );
 
 			/**
 			 * Javascript classes to hide/show rows by selected schema type.

@@ -163,9 +163,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeCreativeWork' ) ) {
 
 			} else {
 
-				$headline_max_len = $this->p->cf[ 'head' ][ 'limit_max' ][ 'schema_headline_len' ];
-
-				$json_ret[ 'headline' ] = $this->p->page->get_title( $headline_max_len, '...', $mod );
+				$json_ret[ 'headline' ] = $this->p->page->get_title( $mod, $md_key = 'schema_headline', $max_len = 'schema_headline' );
 			}
 
 			/**

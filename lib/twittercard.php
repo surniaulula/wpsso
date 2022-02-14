@@ -77,14 +77,12 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 			if ( ! isset( $mt_tc[ 'twitter:title' ] ) ) {
 
-				$mt_tc[ 'twitter:title' ] = $this->p->page->get_title( 'tc_title', $dots = '...', $mod,
-					$add_hashtags = false, $do_encode = true, $md_key = array( 'tc_title', 'og_title' ) );
+				$mt_tc[ 'twitter:title' ] = $this->p->page->get_title( $mod, $md_key = 'tc_title', $max_len = 'tc_title' );
 			}
 
 			if ( ! isset( $mt_tc[ 'twitter:description' ] ) ) {
 
-				$mt_tc[ 'twitter:description' ] = $this->p->page->get_description( 'tc_desc', $dots = '...', $mod,
-					$this->p->options[ 'og_desc_hashtags' ], $do_encode = true, $md_key = array( 'tc_desc', 'og_desc' ) );
+				$mt_tc[ 'twitter:description' ] = $this->p->page->get_description( $mod, $md_key = 'tc_desc', $max_len = 'tc_desc', $num_hashtags = true );
 			}
 
 			if ( ! isset( $mt_tc[ 'twitter:creator' ] ) ) {

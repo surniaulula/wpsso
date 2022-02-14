@@ -43,7 +43,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 				 	break;
 
-				case 'tooltip-meta-schema_bc_title':	// Schema Breadcrumb Name.
+				case 'tooltip-meta-schema_title_bc':	// Schema Breadcrumb Name.
 
 					$text = __( 'A short title used for the Schema and/or HTML breadcrumb item name.', 'wpsso' );
 

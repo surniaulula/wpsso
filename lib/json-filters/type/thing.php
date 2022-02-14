@@ -250,11 +250,9 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeThing' ) ) {
 			 *	name
 			 *	alternateName
 			 */
-			$json_ret[ 'name' ] = $this->p->page->get_title( 'schema_title', $dots = '...', $mod,
-				$add_hashtags = false, $do_encode = true, $md_keys = array( 'schema_title', 'seo_title' ) );
+			$json_ret[ 'name' ] = $this->p->page->get_title( $mod, $md_key = 'schema_title', $max_len = 'schema_title' );
 
-			$json_ret[ 'alternateName' ] = $this->p->page->get_title( 'schema_title_alt', $dots = '...', $mod,
-				$add_hashtags = false, $do_encode = true, $md_keys = array( 'schema_title_alt', 'schema_title', 'seo_title' ) );
+			$json_ret[ 'alternateName' ] = $this->p->page->get_title( $mod, $md_key = 'schema_title_alt', $max_len = 'schema_title_alt' );
 
 			if ( $json_ret[ 'name' ] === $json_ret[ 'alternateName' ] ) {	// Prevent duplicate values.
 
@@ -265,8 +263,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeThing' ) ) {
 			 * Property:
 			 *	description
 			 */
-			$json_ret[ 'description' ] = $this->p->page->get_description( 'schema_desc', $dots = '...', $mod,
-				$add_hashtags = false, $do_encode = true, $md_key = array( 'schema_desc', 'seo_desc' ) );
+			$json_ret[ 'description' ] = $this->p->page->get_description( $mod, $md_key = 'schema_desc', $max_len = 'schema_desc' );
 
 			/**
 			 * Property:
