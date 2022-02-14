@@ -250,6 +250,42 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 10.4.0-dev.1 (TBD)**
+
+* **New Features**
+	* Added a new "SEO Title Tag" option in the Document SSO metabox.
+* **Improvements**
+	* Added a new "Truncated Text Ellipsis" option in the SSO &gt; General Settings page.
+	* Removed the Open Graph "Title Max. Length" option.
+	* Removed the Open Graph "Description Max. Length" option.
+	* Removed the Google / Schema "Description Meta Tag Max. Length" option.
+	* Removed the Google / Schema "Description Max. Length" option.
+	* Removed the Google / Schema "Text / Article Body Max. Length" option.
+	* Removed the Pinterest "Image Description Max. Length" option.
+	* Removed the Twitter Card Title Max. Length
+	* Removed the Twitter Card Description Max. Length
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new `WpssoConfig::$cf[ 'form' ][ 'input_limits' ]` array for min, warn, and max title and description lengths.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
+**Version 10.3.1 (2022/02/14)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed an undefined '$wp_locale' error when replacing the '%%query_month%%' inline variable.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 10.3.0 (2022/02/10)**
 
 * **New Features**
@@ -873,6 +909,14 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 	* WordPress v5.0.
 
 == Upgrade Notice ==
+
+= 10.4.0-dev.1 =
+
+(TBD) Added a new "SEO Title Tag" option in the Document SSO metabox.
+
+= 10.3.1 =
+
+(2022/02/14) Fixed an undefined '$wp_locale' error when replacing the '%%query_month%%' inline variable.
 
 = 10.3.0 =
 
