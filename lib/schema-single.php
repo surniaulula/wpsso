@@ -174,8 +174,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			$json_ret = WpssoSchema::get_schema_type_context( $comment_type_url, array(
 				'url'         => $wpsso->util->get_canonical_url( $comment_mod ),
-				'name'        => $wpsso->page->get_title( $max_len = 0, $dots = '', $comment_mod ),
-				'description' => $wpsso->page->get_description( $max_len = 0, $dots = '', $comment_mod ),
+				'name'        => $wpsso->page->get_title( 'schema_title', $dots = '...', $comment_mod ),
+				'description' => $wpsso->page->get_description( 'schema_desc', $dots = '...', $comment_mod ),
 				'dateCreated' => $comment_mod[ 'comment_time' ],
 				'author'      => WpssoSchema::get_schema_type_context( 'https://schema.org/Person', array(
 					'url'  => $comment_mod[ 'comment_author_url' ],
@@ -606,23 +606,20 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			if ( ! empty( $mt_single[ $media_pre . ':id' ] ) && is_numeric( $mt_single[ $media_pre . ':id' ] ) ) {
 
 				$post_id = $mt_single[ $media_pre . ':id' ];
-
-				$mod = $wpsso->post->get_mod( $post_id );
+				$mod     = $wpsso->post->get_mod( $post_id );
 
 				/**
 				 * Get the image title.
 				 */
-				$json_ret[ 'name' ] = $wpsso->page->get_title( $title_max_len = 0, $dots = '', $mod,
-					$add_hashtags = false, $do_encode = true, $md_keys = array( 'schema_title', 'og_title' ),
+				$json_ret[ 'name' ] = $wpsso->page->get_title( 'schema_title', $dots = '...', $mod,
+					$add_hashtags = false, $do_encode = true, $md_keys = array( 'schema_title', 'seo_title' ),
 						$title_sep = false );
 
 				/**
 				 * Get the image alternate title, if one has been defined in the custom post meta.
 				 */
-				$title_alt_max_len = $wpsso->options[ 'og_title_max_len' ];
-
-				$json_ret[ 'alternateName' ] = $wpsso->page->get_title( $title_alt_max_len, $dots = '...', $mod,
-					$add_hashtags = false, $do_encode = true, $md_keys = array( 'schema_title_alt', 'schema_title', 'og_title' ) );
+				$json_ret[ 'alternateName' ] = $wpsso->page->get_title( 'schema_title_alt', $dots = '...', $mod,
+					$add_hashtags = false, $do_encode = true, $md_keys = array( 'schema_title_alt', 'schema_title', 'seo_title' ) );
 
 				if ( $json_ret[ 'name' ] === $json_ret[ 'alternateName' ] ) {	// Prevent duplicate values.
 
@@ -644,20 +641,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				 */
 				$json_ret[ 'caption' ] = $wpsso->page->get_the_excerpt( $mod );
 
-				/**
-				 * If we don't have a caption, then provide a short description.
-				 *
-				 * If we have a caption, then add the complete image description.
-				 */
-				if ( empty( $json_ret[ 'caption' ] ) ) {
-
-					$json_ret[ 'description' ] = $wpsso->page->get_description( $wpsso->options[ 'schema_desc_max_len' ],
-						$dots = '...', $mod, $add_hashtags = false, $do_encode = true, $md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
-
-				} else {
-
-					$json_ret[ 'description' ] = $wpsso->page->get_the_text( $mod, $md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
-				}
+				$json_ret[ 'description' ] = $wpsso->page->get_description( 'schema_desc', $dots = '...', $mod,
+					$add_hashtags = false, $do_encode = true, $md_key = array( 'schema_desc', 'seo_desc' ) );
 
 				/**
 				 * Set the 'encodingFormat' property to the image mime type.
@@ -752,7 +737,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			if ( empty( $job_opts[ 'job_title' ] ) ) {
 
-				$job_opts[ 'job_title' ] = $wpsso->page->get_title( $title_max_len = 0, $dots = '', $mod,
+				$job_opts[ 'job_title' ] = $wpsso->page->get_title( 'schema_title', $dots = '...', $mod,
 					$add_hashtags = false, $do_encode = true, $md_keys = array( 'schema_title', 'og_title' ),
 						$title_sep = false );
 			}
@@ -1263,7 +1248,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						$wpsso->util->maybe_set_ref( $local_cache_person_urls[ $person_id ], $user_mod, __( 'adding schema person', 'wpsso' ) );
 					}
 
-					$user_desc = $user_mod[ 'obj' ]->get_options_multi( $person_id, $md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
+					$user_desc = $user_mod[ 'obj' ]->get_options_multi( $person_id, $md_key = array( 'schema_desc', 'seo_desc' ) );
 
 					if ( empty( $user_desc ) ) {
 

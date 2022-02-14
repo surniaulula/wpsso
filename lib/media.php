@@ -407,6 +407,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$content_passed = false;
 
 			} else {
+
 				$content_passed = true;
 			}
 

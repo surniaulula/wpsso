@@ -50,40 +50,24 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				}
 			}
 
-			/**
-			 * Select arrays.
-			 */
+			$limits             = $this->p->cf[ 'form' ][ 'input_limits' ];
 			$currencies         = SucomUtil::get_currency_abbrev();
 			$product_categories = $this->p->util->get_google_product_categories();
 			$schema_types       = $this->p->schema->get_schema_types_select();
-
-			/**
-			 * Maximum lengths.
-			 */
-			$og_title_max_len        = $this->p->options[ 'og_title_max_len' ];
-			$schema_headline_max_len = $this->p->cf[ 'head' ][ 'limit_max' ][ 'schema_headline_len' ];
-			$schema_desc_max_len     = $this->p->options[ 'schema_desc_max_len' ];		// Schema Description Max. Length.
-			$schema_text_max_len     = $this->p->options[ 'schema_text_max_len' ];
-
-			/**
-			 * Default values.
-			 */
-			$dots      = '...';
-			$do_encode = true;
-
-			$def_schema_title     = $this->p->page->get_title( $max_len = 0, '', $mod, $add_hashtags = false, $do_encode, 'og_title' );
-			$def_schema_title_alt = $this->p->page->get_title( $og_title_max_len, $dots, $mod, $add_hashtags = false, $do_encode,
-				$md_keys = array( 'schema_title', 'og_title' ) );
-			$def_schema_headline  = $this->p->page->get_title( $schema_headline_max_len, '', $mod, $add_hashtags = false, $do_encode, 'og_title' );
-			$def_schema_desc      = $this->p->page->get_description( $schema_desc_max_len, $dots, $mod, $add_hashtags = false, $do_encode,
-				$md_keys = array( 'seo_desc', 'og_desc' ) );
-			$def_schema_text      = $this->p->page->get_text( $schema_text_max_len, '', $mod, $add_hashtags = false, $do_encode, $md_key = 'none' );
-			$def_schema_keywords  = $this->p->page->get_keywords( $mod, $md_key = 'none' );
-
 			$org_names          = $this->p->util->get_form_cache( 'org_names', $add_none = true );
 			$person_names       = $this->p->util->get_form_cache( 'person_names', $add_none = true );
 			$place_names        = $this->p->util->get_form_cache( 'place_names', $add_none = true );
 			$place_names_custom = $this->p->util->get_form_cache( 'place_names_custom', $add_none = true );
+
+			/**
+			 * Default values.
+			 */
+			$def_schema_title     = $this->p->page->get_title( 'schema_title', $dots = '...', $mod );
+			$def_schema_title_alt = $this->p->page->get_title( 'schema_title_alt', $dots = '...', $mod, $add_hashtags = false, $do_encode = true, $md_keys = array( 'schema_title', 'seo_title' ) );
+			$def_schema_headline  = $this->p->page->get_title( 'schema_headline', $dots = '...', $mod );
+			$def_schema_desc      = $this->p->page->get_description( 'schema_desc', $dots = '...', $mod );
+			$def_schema_text      = $this->p->page->get_text( 'schema_text', $dots = '...', $mod, $add_hashtags = false, $do_encode = true, $md_key = 'none' );
+			$def_schema_keywords  = $this->p->page->get_keywords( $mod, $md_key = 'none' );
 
 			/**
 			 * Javascript classes to hide/show rows by selected schema type.
@@ -134,7 +118,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Description', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_desc',
-					'content'  => $form->get_no_textarea_value( $def_schema_desc, $css_class = '', $css_id = '', $schema_desc_max_len ),
+					'content'  => $form->get_no_textarea_value( $def_schema_desc, $css_class = '', $css_id = '', $limits[ 'schema_desc' ] ),
 				),
 				'schema_addl_type_url' => array(
 					'th_class' => 'medium',

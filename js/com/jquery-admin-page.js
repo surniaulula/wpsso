@@ -615,11 +615,6 @@ function sucomTextLenReset( containerId ) {
 
 function sucomTextLenSpan( text_len, max_len, warn_len, min_len ) {
 
-	if ( ! min_len ) {
-
-		min_len = 0;
-	}
-
 	if ( ! max_len ) {
 
 		max_len = 0;
@@ -629,7 +624,7 @@ function sucomTextLenSpan( text_len, max_len, warn_len, min_len ) {
 
 		if ( max_len ) {
 
-			warn_len = max_len - 20;
+			warn_len = 0.9 * max_len;	// Default to 90% of max_len.
 
 		} else {
 
@@ -637,23 +632,24 @@ function sucomTextLenSpan( text_len, max_len, warn_len, min_len ) {
 		}
 	}
 
+	if ( ! min_len ) {
+
+		min_len = 0;
+	}
+
 	var css_class = '';
 
-	if ( min_len && text_len < min_len ) {
+	if ( max_len && text_len >= ( max_len - 5 ) ) {		// 5 characters from the end.
 
 		css_class = 'bad';
 
-	} else if ( min_len && text_len >= min_len ) {
-
-		css_class = 'good';
-
-	} else if ( max_len && text_len >= ( max_len - 5 ) ) {
-
-		css_class = 'bad';
-
-	} else if ( warn_len && text_len >= warn_len ) {
+	} else if ( warn_len && text_len >= warn_len ) {	// Length is over the warning limit.
 
 		css_class = 'warn';
+
+	} else if ( min_len && text_len < min_len ) {		// Length is less than the minimum.
+
+		css_class = 'bad';
 
 	} else {
 

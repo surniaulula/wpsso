@@ -49,8 +49,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeThing' ) ) {
 			}
 
 			$page_type_url = $this->p->schema->get_schema_type_url( $page_type_id );
-
-			$json_ret = WpssoSchema::get_schema_type_context( $page_type_url );
+			$json_ret      = WpssoSchema::get_schema_type_context( $page_type_url );
 
 			/**
 			 * Property:
@@ -251,23 +250,11 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeThing' ) ) {
 			 *	name
 			 *	alternateName
 			 */
-			$json_ret[ 'name' ] = $this->p->page->get_title( $title_max_len = 0, $dots = '', $mod, $add_hashtags = false,
-				$do_encode = true, $md_keys = array( 'schema_title', 'og_title' ) );
+			$json_ret[ 'name' ] = $this->p->page->get_title( 'schema_title', $dots = '...', $mod,
+				$add_hashtags = false, $do_encode = true, $md_keys = array( 'schema_title', 'seo_title' ) );
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'name value = ' . $json_ret[ 'name' ] );
-			}
-
-			$title_max_len = $this->p->options[ 'og_title_max_len' ];
-
-			$json_ret[ 'alternateName' ] = $this->p->page->get_title( $title_max_len, $dots = '...', $mod, $add_hashtags = false,
-				$do_encode = true, $md_keys = array( 'schema_title_alt', 'schema_title', 'og_title' ) );
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'alternateName value = ' . $json_ret[ 'alternateName' ] );
-			}
+			$json_ret[ 'alternateName' ] = $this->p->page->get_title( 'schema_title_alt', $dots = '...', $mod,
+				$add_hashtags = false, $do_encode = true, $md_keys = array( 'schema_title_alt', 'schema_title', 'seo_title' ) );
 
 			if ( $json_ret[ 'name' ] === $json_ret[ 'alternateName' ] ) {	// Prevent duplicate values.
 
@@ -278,13 +265,8 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeThing' ) ) {
 			 * Property:
 			 *	description
 			 */
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'getting schema description with custom meta fallback: schema_desc, seo_desc, og_desc' );
-			}
-
-			$json_ret[ 'description' ] = $this->p->page->get_description( $this->p->options[ 'schema_desc_max_len' ],
-				$dots = '...', $mod, $add_hashtags = false, $do_encode = true, $md_key = array( 'schema_desc', 'seo_desc', 'og_desc' ) );
+			$json_ret[ 'description' ] = $this->p->page->get_description( 'schema_desc', $dots = '...', $mod,
+				$add_hashtags = false, $do_encode = true, $md_key = array( 'schema_desc', 'seo_desc' ) );
 
 			/**
 			 * Property:

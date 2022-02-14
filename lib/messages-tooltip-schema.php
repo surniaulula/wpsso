@@ -67,25 +67,6 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 				 	break;
 
-				case 'tooltip-schema_text_max_len':		// Text / Article Body Max. Length.
-
-					$def_max_len = $this->p->opt->get_defaults( 'schema_text_max_len' );
-
-					$text = sprintf( __( 'The maximum length of the Schema CreativeWork "text" or "articleBody" property values (the default is %d characters).', 'wpsso' ), $def_max_len );
-
-		 			break;
-
-				case 'tooltip-schema_desc_max_len':		// Schema Description Max. Length.
-
-					$def_max_len   = $this->p->opt->get_defaults( 'schema_desc_max_len' );
-					$limit_min_len = $this->p->cf[ 'head' ][ 'limit_min' ][ 'schema_desc_len' ];
-
-					$text = sprintf( __( 'The maximum length for the Schema description value (the default is %d characters).', 'wpsso' ), $def_max_len ) . ' ';
-
-					$text .= sprintf( __( 'The maximum length must be at least %d characters or more.', 'wpsso' ), $limit_min_len );
-
-					break;
-
 				/**
 				 * SSO > Advanced Settings > Document Types > Schema tab.
 				 */

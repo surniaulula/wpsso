@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '10.3.0',	// Plugin version.
-					'opt_version' => '876',		// Increment when changing default option values.
+					'version'     => '10.4.0-dev.1',	// Plugin version.
+					'opt_version' => '879',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1229,12 +1229,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_img_crop_x'           => 'center',
 					'og_img_crop_y'           => 'center',
 					'og_img_max'              => 1,		// Maximum Images to Include.
-					'og_title_sep'            => '-',
-					'og_title_max_len'        => 70,
-					'og_title_warn_len'       => 40,
-					'og_desc_max_len'         => 300,
-					'og_desc_warn_len'        => 160,
-					'og_desc_hashtags'        => 0,
+					'og_title_sep'            => '-',	// Title Separator.
+					'og_ellipsis'             => '...',	// Truncated Text Ellipsis.
+					'og_desc_hashtags'        => 0,		// Description Hashtags.
 					'og_vid_max'              => 1,
 					'og_vid_autoplay'         => 1,
 					'og_vid_prev_img'         => 1,		// Include Video Preview Images.
@@ -1291,8 +1288,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'pin_img_crop'                 => 0,
 					'pin_img_crop_x'               => 'center',
 					'pin_img_crop_y'               => 'center',
-					'pin_img_desc_max_len'         => 300,		// Image Description Max. Length (hard limit).
-					'pin_img_desc_warn_len'        => 100,		// Image Description Max. Length (soft limit).
 
 					/**
 					 * Robots options.
@@ -1321,8 +1316,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_16x9_img_crop_y' => 'center',
 					'schema_aggr_offers'     => 0,		// Aggregate Offers by Currency.
 					'schema_add_text_prop'   => 1,		// Add Text / Article Body Properties.
-					'schema_text_max_len'    => 10000,	// Text / Article Body Max. Length.
-					'schema_desc_max_len'    => 300,	// Schema Description Max. Length (hard limit).
 
 					/**
 					 * Advanced Settings > Document Types > Schema.
@@ -1412,16 +1405,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_def_review_item_type' => 'product',	// Default Subject Webpage Type.
 
 					/**
-					 * SEO options.
-					 */
-					'seo_desc_max_len' => 180,	// Description Meta Tag Max. Length (hard limit).
-
-					/**
 					 * Twitter Card options.
 					 */
 					'tc_site'           => '',			// Twitter Business @username (localized).
-					'tc_title_max_len'  => 70,			// Twitter Card Title Max. Length (hard limit).
-					'tc_desc_max_len'   => 200,			// Twitter Card Description Max. Length (hard limit).
 					'tc_type_singular'  => 'summary_large_image',	// Twitter Card for Post / Page Image.
 					'tc_type_default'   => 'summary',		// Twitter Card Type by Default.
 					'tc_sum_img_width'  => 1200,
@@ -2452,7 +2438,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'document_title' => array(	// Webpage Title Tag.
 					'wp_title'         => '[Default WordPress Title]',
-					'og_title'         => 'Document SSO - Default Title',
+					'seo_title'        => 'Document SSO - SEO Title Tag',
+					'og_title'         => 'Document SSO - Open Graph Title',
 					'schema_title'     => 'Document SSO - Schema Name',
 					'schema_title_alt' => 'Document SSO - Schema Alternate Name',
 				),
@@ -2837,6 +2824,59 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'big'       => 'Big',
 					'maternity' => 'Maternity',
 				),
+
+				/**
+				 * The default warning is 90% of the maximum length.
+				 *
+				 * See sucomTextLenSpan() in wpsso/live/js/com/jquery-admin-page.js.
+				 */
+				'input_limits' => array(
+					'seo_title' => array(
+						'min'  => 20,
+						'warn' => 60,
+						'max'  => 70,
+					),
+					'seo_desc' => array(
+						'warn' => 150,
+						'max'  => 180,
+					),
+					'og_title' => array(
+						'min'  => 20,
+						'warn' => 60,
+						'max'  => 70,
+					),
+					'og_desc' => array(
+						'warn' => 160,
+						'max'  => 300,
+					),
+					'schema_title' => array(
+						'min'  => 20,
+						'warn' => 60,
+						'max'  => 70,
+					),
+					'schema_title_alt' => array(
+						'max' => 110,
+					),
+					'schema_headline' => array(
+						'max' => 110,
+					),
+					'schema_desc' => array(
+						'max' => 300,
+					),
+					'schema_text' => array(
+						'max' => 10000,
+					),
+					'pin_img_desc' => array(
+						'warn' => 100,
+						'max'  => 300,
+					),
+					'tc_title' => array(
+						'max' => 70,
+					),
+					'tc_desc' => array(
+						'max' => 200,
+					),
+				),
 			),
 			'head' => array(
 				'limit' => array(
@@ -3033,7 +3073,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'product:age_group'               => '',
 						'product:availability'            => 'product_avail',
 						'product:brand'                   => 'product_brand',
-						'product:category'                => 'product_category',	// Product category ID from Google product taxonomy.
+						'product:category'                => 'product_category',	// Product Type ID from the Google product taxonomy.
 						'product:color'                   => 'product_color',
 						'product:condition'               => 'product_condition',
 						'product:depth:value'             => 'product_depth_value',	// Non-standard / internal meta tag.

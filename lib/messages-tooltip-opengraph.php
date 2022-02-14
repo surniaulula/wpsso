@@ -79,32 +79,21 @@ if ( ! class_exists( 'WpssoMessagesTooltipOpenGraph' ) ) {
 
 					$def_title_sep = $this->p->opt->get_defaults( 'og_title_sep' );
 
-					$text = sprintf( __( 'One or more characters used to separate values (category parent names, page numbers, etc.) within the title string (the default is a hyphen "%s" character).', 'wpsso' ), $def_title_sep );
+					$text = sprintf( __( 'One or more characters used to separate values (category parent names, page numbers, site name, etc.) within a title string (default is a hyphen "%s").', 'wpsso' ), $def_title_sep );
 
 					break;
 
-				case 'tooltip-og_title_max_len':	// Title Max. Length.
+				case 'tooltip-og_ellipsis':		// Truncated Text Ellipsis.
 
-					$def_max_len = $this->p->opt->get_defaults( 'og_title_max_len' );
+					$def_title_sep = $this->p->opt->get_defaults( 'og_ellipsis' );
 
-					$text = sprintf( __( 'The maximum length for the Facebook / Open Graph title value (the default is %d characters).', 'wpsso' ), $def_max_len );
-
-					break;
-
-				case 'tooltip-og_desc_max_len':		// Description Max. Length.
-
-					$def_max_len   = $this->p->opt->get_defaults( 'og_desc_max_len' );
-					$limit_min_len = $this->p->cf[ 'head' ][ 'limit_min' ][ 'og_desc_len' ];
-
-					$text = sprintf( __( 'The maximum length for the Facebook / Open Graph description value (the default is %d characters).', 'wpsso' ), $def_max_len ) . ' ';
-
-					$text .= sprintf( __( 'The maximum length must be at least %d characters or more.', 'wpsso' ), $limit_min_len );
+					$text = sprintf( __( 'One or more characters used to suffix a truncated (ie. shortened) text string (default is three dots "%s").', 'wpsso' ), $def_title_sep );
 
 					break;
 
 				case 'tooltip-og_desc_hashtags':	// Description Hashtags.
 
-					$text = __( 'The maximum number of tag names (converted to hashtags) to include in the Facebook / Open Graph and Twitter Card descriptions.', 'wpsso' ) . ' ';
+					$text = __( 'The maximum number of WordPress tag names (automatically converted to hashtags) to include in the Facebook / Open Graph and Twitter Card descriptions.', 'wpsso' ) . ' ';
 
 					$text .= __( 'Select "0" to disable the addition of hashtags.', 'wpsso' );
 

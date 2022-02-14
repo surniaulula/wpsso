@@ -419,7 +419,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$this->p->debug->log( 'getting title for og:title meta tag' );
 				}
 
-				$mt_og[ 'og:title' ] = $this->p->page->get_title( $this->p->options[ 'og_title_max_len' ], '...', $mod );
+				$mt_og[ 'og:title' ] = $this->p->page->get_title( 'og_title', $dots = '...', $mod );
 
 				if ( $this->p->debug->enabled ) {
 
@@ -441,8 +441,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					$this->p->debug->log( 'getting description for og:description meta tag' );
 				}
 
-				$mt_og[ 'og:description' ] = $this->p->page->get_description( $this->p->options[ 'og_desc_max_len' ],
-					$dots = '...', $mod, $this->p->options[ 'og_desc_hashtags' ] );
+				$mt_og[ 'og:description' ] = $this->p->page->get_description( 'og_desc', $dots = '...', $mod,
+					$this->p->options[ 'og_desc_hashtags' ] );
 
 				if ( $this->p->debug->enabled ) {
 
@@ -1699,6 +1699,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 		/**
 		 * Returns a string.
+		 *
+		 * Used for the 'product:retailer_category' meta tag value.
 		 */
 		public function get_product_retailer_category( $mod ) {
 
@@ -1747,15 +1749,12 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 					$term_mod = $this->p->term->get_mod( $term_id );
 
-					$title_keys = array( 'schema_bc_title', 'schema_title', 'og_title' );
-
 					/**
 					 * Use $title_sep = false to avoid adding term parent names in the term title.
 					 */
-					$title_sep = false;	// Do not add a separator.
-
-					$category_names[ $parent_term_id ][ $term_id ] = $this->p->page->get_title( $max_len = 0,
-						$dots = '', $term_mod, $add_hashtags = false, $do_encode = true, $title_keys, $title_sep );
+					$category_names[ $parent_term_id ][ $term_id ] = $this->p->page->get_title( $max_len = 0, $dots = '...', $term_mod,
+						$add_hashtags = false, $do_encode = true, $md_keys = array( 'schema_bc_title', 'schema_title', 'seo_title' ),
+							$title_sep = false );
 				}
 			}
 

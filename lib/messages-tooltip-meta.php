@@ -68,38 +68,6 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 
 			switch ( $msg_key ) {
 
-				case 'tooltip-meta-primary_term_id':	// Primary Category.
-
-					$text .= __( 'Select a primary category for breadcrumbs.' );
-
-				 	break;
-
-				case 'tooltip-meta-seo_desc':		// Meta Description.
-
-					$text = __( 'A customized description for the SEO description meta tag.', 'wpsso' );
-
-					$text .= $this->maybe_html_tag_disabled_text( $parts = array( 'meta', 'name', 'description' ) );
-
-				 	break;
-
-				case 'tooltip-meta-pin_img_desc':	// Pinterest Description.
-
-					$text = __( 'A customized description for the Pinterest Pin It browser button.', 'wpsso' );
-
-				 	break;
-
-				case 'tooltip-meta-tc_title':		// Twitter Card Title.
-
-					$text = __( 'A customized title for the Twitter Card title meta tag (all Twitter Card formats).', 'wpsso' );
-
-				 	break;
-
-				case 'tooltip-meta-tc_desc':		// Twitter Card Description.
-
-					$text = __( 'A customized description for the Twitter Card description meta tag (all Twitter Card formats).', 'wpsso' );
-
-				 	break;
-
 				case 'tooltip-meta-article_section':	// Article Section.
 
 					$option_link = $this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_site',
@@ -118,6 +86,44 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 					$text = __( 'The estimated reading time (in minutes) for this article.', 'wpsso' ) . ' ';
 
 					$text .= __( 'A value of 0 minutes disables the estimated reading time meta tags.', 'wpsso' );
+
+				 	break;
+
+				case 'tooltip-meta-primary_term_id':	// Primary Category.
+
+					$text .= __( 'Select a primary category for breadcrumbs.' );
+
+				 	break;
+
+				case 'tooltip-meta-seo_title':		// SEO Title Tag.
+
+					$text = __( 'A customized description for the SEO title tag and the default for all other title values.', 'wpsso' );
+
+				 	break;
+
+				case 'tooltip-meta-seo_desc':		// SEO Meta Description.
+
+					$text = __( 'A customized description for the SEO description meta tag and the default for all other description values.', 'wpsso' );
+
+					$text .= $this->maybe_add_seo_tag_disabled_link( 'meta name description' );
+
+				 	break;
+
+				case 'tooltip-meta-pin_img_desc':	// Pinterest Description.
+
+					$text = __( 'A customized description for the Pinterest Pin It browser button.', 'wpsso' );
+
+				 	break;
+
+				case 'tooltip-meta-tc_title':		// Twitter Card Title.
+
+					$text = __( 'A customized title for the Twitter Card title meta tag (all Twitter Card formats).', 'wpsso' );
+
+				 	break;
+
+				case 'tooltip-meta-tc_desc':		// Twitter Card Description.
+
+					$text = __( 'A customized description for the Twitter Card description meta tag (all Twitter Card formats).', 'wpsso' );
 
 				 	break;
 
@@ -161,6 +167,9 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 
 				 	break;
 
+				/**
+				 * Document SSO > Edit Media tab.
+				 */
 				case 'tooltip-meta-pin_img_id':		// Image ID.
 
 					$text = __( 'A customized image ID for the Pinterest Pin It browser button.', 'wpsso' ) . ' ';
@@ -169,7 +178,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 
 				 	break;
 
-				case 'tooltip-meta-pin_img_url':		// or an Image URL.
+				case 'tooltip-meta-pin_img_url':	// or an Image URL.
 
 					$text = __( 'A customized image URL (instead of an image ID) for the Pinterest Pin It browser button.', 'wpsso' ) . ' ';
 

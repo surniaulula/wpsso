@@ -385,6 +385,8 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 					 */
 					if ( 'query_month' === $varname ) {
 
+						global $wp_locale;
+
 						$ret_val = $ret_val ? $wp_locale->get_month( $ret_val ) : '';
 					}
 

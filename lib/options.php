@@ -400,11 +400,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				if ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {	// No SEO plugin active.
 
-					if ( empty( $opts[ 'plugin_wpsso_tid' ] ) ||
-						! empty( $opts[ 'plugin_import_aioseop_meta' ] ) ||		// All in One SEO Pack.
-						! empty( $opts[ 'plugin_import_rankmath_meta' ] ) ||		// Rank Math SEO.
-						! empty( $opts[ 'plugin_import_seoframework_meta' ] ) ||	// The SEO Framework.
-						! empty( $opts[ 'plugin_import_wpseo_meta' ] ) ) {		// Yoast SEO.
+					if ( empty( $opts[ 'plugin_wpsso_tid' ] ) ) {
 
 						$seo_opts = array(
 							'add_link_rel_canonical'    => 1,
@@ -764,22 +760,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$opts[ $opt_pre . '_img_crop' ]   = $defs[ $opt_pre . '_img_crop' ];
 					}
 				}
-			}
-
-			/**
-			 * og_desc_max_len must be at least 160 chars (defined in config).
-			 */
-			if ( isset( $opts[ 'og_desc_max_len' ] ) && $opts[ 'og_desc_max_len' ] < $this->p->cf[ 'head' ][ 'limit_min' ][ 'og_desc_len' ] )  {
-
-				$opts[ 'og_desc_max_len' ] = $this->p->cf[ 'head' ][ 'limit_min' ][ 'og_desc_len' ];
-			}
-
-			/**
-			 * Remove the SEO description if a known SEO plugin is active.
-			 */
-			if ( isset( $opts[ 'seo_desc' ] ) && ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
-
-				unset( $opts[ 'seo_desc' ] );
 			}
 
 			if ( false === $mod ) {

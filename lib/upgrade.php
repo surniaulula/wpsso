@@ -196,13 +196,13 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				),
 				616 => array(
 					'site_org_type'   => 'site_org_schema_type',
-					'schema_desc_len' => 'schema_desc_max_len',
-					'og_title_len'    => 'og_title_max_len',
-					'og_title_warn'   => 'og_title_warn_len',
-					'og_desc_len'     => 'og_desc_max_len',
-					'og_desc_warn'    => 'og_desc_warn_len',
-					'seo_desc_len'    => 'seo_desc_max_len',
-					'tc_desc_len'     => 'tc_desc_max_len',
+					'schema_desc_len' => '',
+					'og_title_len'    => '',
+					'og_title_warn'   => '',
+					'og_desc_len'     => '',
+					'og_desc_warn'    => '',
+					'seo_desc_len'    => '',
+					'tc_desc_len'     => '',
 				),
 				618 => array(
 					'fb_author_name'     => '',
@@ -466,8 +466,8 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'p_img_crop'                 => 'pin_img_crop',
 					'p_img_crop_x'               => 'pin_img_crop_x',
 					'p_img_crop_y'               => 'pin_img_crop_y',
-					'p_img_desc_max_len'         => 'pin_img_desc_max_len',
-					'p_img_desc_warn_len'        => 'pin_img_desc_warn_len',
+					'p_img_desc_max_len'         => '',
+					'p_img_desc_warn_len'        => '',
 				),
 				816 => array(
 					'add_link_itemprop_url'                         => '',	// Deprecated on 2021/09/15.
@@ -525,6 +525,21 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'plugin_filter_title'   => '',		// Deprecated on 2022/02/02.
 					'plugin_document_title' => '',		// Deprecated on 2022/02/04.
 					'plugin_seo_title_part' => '',		// Deprecated on 2022/02/04.
+				),
+				877 => array(
+					'seo_title_max_len'     => '',
+					'seo_desc_max_len'      => '',
+					'og_title_max_len'      => '',
+					'og_title_warn_len'     => '',
+					'og_desc_max_len'       => '',
+					'og_desc_warn_len'      => '',
+					'pin_img_desc_max_len'  => '',
+					'pin_img_desc_warn_len' => '',
+					'tc_title_max_len'      => '',
+					'tc_desc_max_len'       => '',
+					'schema_title_max_len'  => '',
+					'schema_desc_max_len'   => '',
+					'schema_text_max_len'   => '',
 				),
 			),
 		);
@@ -720,17 +735,6 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					foreach ( SucomUtil::get_opts_begin( 'add_meta_property_product:', $opts ) as $key => $val ) {
 
 						$opts[ $key ] = 1;
-					}
-				}
-
-				/**
-				 * Increase the default SEO description length from 156 to 220 characters.
-				 */
-				if ( $prev_version > 0 && $prev_version <= 637 ) {
-
-					if ( isset( $opts[ 'seo_desc_max_len' ] ) && $opts[ 'seo_desc_max_len' ] === 156 ) {
-
-						$opts[ 'seo_desc_max_len' ] = 220;
 					}
 				}
 

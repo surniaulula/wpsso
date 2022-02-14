@@ -46,22 +46,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			$this->maybe_set_properties();
 		}
 
-		/**
-		 * Define and translate certain strings only once. 
-		 */
-		protected function maybe_set_properties() {
-
-			if ( empty( $this->pkg_info ) ) {
-
-				$this->pkg_info        = $this->p->admin->get_pkg_info();	// Returns an array from cache.
-				$this->p_name          = $this->pkg_info[ 'wpsso' ][ 'name' ];
-				$this->p_name_pro      = $this->pkg_info[ 'wpsso' ][ 'name_pro' ];
-				$this->pkg_pro_transl  = _x( $this->p->cf[ 'packages' ][ 'pro' ], 'package name', 'wpsso' );
-				$this->pkg_std_transl  = _x( $this->p->cf[ 'packages' ][ 'std' ], 'package name', 'wpsso' );
-				$this->fb_prefs_transl = __( 'Facebook prefers images of 1200x630px cropped (for Retina and high-PPI displays), 600x315px cropped as a recommended minimum, and ignores images smaller than 200x200px.', 'wpsso' );
-			}
-		}
-
 		public function get( $msg_key = false, $info = array() ) {
 
 			$msg_key = sanitize_title_with_dashes( $msg_key );
@@ -665,227 +649,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 		}
 
 		/**
-		 * If an add-on is not active, return a short message that this add-on is recommended.
-		 */
-		public function maybe_ext_required( $ext ) {
-
-			list( $ext, $p_ext ) = $this->ext_p_ext( $ext );
-
-			if ( empty( $ext ) ) {							// Just in case.
-
-				return '';
-
-			} elseif ( 'wpsso' === $ext ) {						// The main plugin is not considered an add-on.
-
-				return '';
-
-			} elseif ( ! empty( $this->p->avail[ 'p_ext' ][ $p_ext ] ) ) {		// Add-on is already active.
-
-				return '';
-
-			} elseif ( empty( $this->p->cf[ 'plugin' ][ $ext ][ 'short' ] ) ) {	// Unknown add-on.
-
-				return '';
-			}
-
-			$ext_name_link = $this->p->util->get_admin_url( 'addons#' . $ext, $this->p->cf[ 'plugin' ][ $ext ][ 'name' ] );
-
-			return ' ' . sprintf( _x( 'Activating the %s add-on is recommended for this option.', 'wpsso' ), $ext_name_link );
-		}
-
-		/**
-		 * Used by the General Settings page.
-		 */
-		public function maybe_preview_images_first() {
-
-			return empty( $this->form->options[ 'og_vid_prev_img' ] ) ? '' : ' ' .
-				_x( 'video preview images are enabled (and included first)', 'option comment', 'wpsso' );
-		}
-
-		/**
-		 * Used by the Advanced Settings page for the "Webpage Title Tag" option.
-		 */
-		public function maybe_doc_title_disabled() {
-
-			return current_theme_supports( 'title-tag' ) ? '' : $this->doc_title_disabled();
-		}
-
-		public function doc_title_disabled() {
-
-			$text = sprintf( __( '<a href="%s">WordPress Title Tag</a> not supported by theme', 'wpsso' ),
-				__( 'https://codex.wordpress.org/Title_Tag', 'wpsso' ) );
-
-			return '<span class="option-warning">' . $text . '</span>';
-		}
-
-		/**
-		 * Deprecated on 2021/09/10.
-		 */
-		public function preview_images_first() {
-
-			_deprecated_function( __METHOD__ . '()', '2021/09/10', $replacement = __CLASS__ . '::preview_images_are_first()' );	// Deprecation message.
-
-			return $this->preview_images_are_first();
-		}
-
-		public function preview_images_are_first() {
-
-			return ' ' . _x( 'video preview images are included first', 'option comment', 'wpsso' );
-		}
-
-		public function pro_feature( $ext ) {
-
-			list( $ext, $p_ext ) = $this->ext_p_ext( $ext );
-
-			return empty( $ext ) ? '' : $this->get( 'pro-feature-msg', array( 'plugin_id' => $ext ) );
-		}
-
-		public function pro_feature_video_api() {
-
-			$this->maybe_set_properties();
-
-			$short_pro = $this->pkg_info[ $this->p->id ][ 'short_pro' ];
-
-			$html = '<p class="pro-feature-msg">';
-
-			$html .= sprintf( __( 'Video discovery and service API modules are provided with the %s edition.', 'wpsso' ), $short_pro );
-
-			$html .= '</p>';
-
-			return $html;
-		}
-
-		/**
-		 * Pinterest disabled.
-		 *
-		 * $extra_css_class can be empty, 'left', or 'inline'.
-		 */
-		public function maybe_pin_img_disabled( $extra_css_class = '' ) {
-
-			return empty( $this->p->options[ 'pin_add_img_html' ] ) ? $this->pin_img_disabled( $extra_css_class ) : '';
-		}
-
-		public function pin_img_disabled( $extra_css_class = '' ) {
-
-			$option_label = _x( 'Add Hidden Image for Pinterest', 'option label', 'wpsso' );
-			$option_link  = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_pinterest', $option_label );
-
-			// translators: %s is the option name, linked to its settings page.
-			$text = sprintf( __( 'Modifications disabled (%s option is unchecked).', 'wpsso' ), $option_link );
-
-			return '<p class="status-msg smaller disabled ' . $extra_css_class . '">' . $text . '</p>';
-		}
-
-		/**
-		 * Schema disabled.
-		 */
-		public function maybe_schema_disabled() {
-
-			return isset( $this->p->avail[ 'p' ][ 'schema' ] ) && empty( $this->p->avail[ 'p' ][ 'schema' ] ) ?
-				'<p class="status-msg smaller disabled">' . __( 'Schema markup is disabled.', 'wpsso' ) . '</p>' : '';
-		}
-
-		public function get_schema_disabled_rows( $table_rows = array(), $col_span = 1 ) {
-
-			if ( ! is_array( $table_rows ) ) {	// Just in case.
-
-				$table_rows = array();
-			}
-
-			$html = '<p class="status-msg">' . __( 'Schema markup is disabled.', 'wpsso' ) . '</p>';
-
-			$html .= '<p class="status-msg">' . __( 'No options available.', 'wpsso' ) . '</p>';
-
-			$table_rows[ 'schema_disabled' ] = '<tr><td align="center" colspan="' . $col_span . '">' . $html . '</td></tr>';
-
-			return $table_rows;
-		}
-
-		/**
-		 * SEO option disabled.
-		 */
-		public function seo_option_disabled( $mt_name ) {
-
-			// translators: %s is the meta tag name (aka meta name canonical).
-			$text = sprintf( __( 'Modifications disabled (<code>%s</code> tag disabled or SEO plugin detected).', 'wpsso' ), $mt_name );
-
-			return '<p class="status-msg smaller disabled">' . $text . '</p>';
-		}
-
-		/**
-		 * WordPress sitemaps disabled.
-		 */
-		public function wp_sitemaps_disabled() {
-
-			$html = '';
-
-			$is_public = get_option( 'blog_public' );
-
-			if ( ! $is_public ) {
-
-				$html .= '<p class="status-msg">' . __( 'WordPress is set to discourage search engines from indexing this site.', 'wpsso' ) . '</p>';
-			}
-
-			$html .= '<p class="status-msg">' . __( 'The WordPress sitemaps functionality is disabled.', 'wpsso' ) . '</p>';
-
-			/**
-			 * Check if a theme or another plugin has disabled the Wordpress sitemaps functionality using the
-			 * 'wp_sitemaps_enabled' filter.
-			 */
-			if ( ! apply_filters( 'wp_sitemaps_enabled', true ) ) {
-
-				$html .= '<p class="status-msg">' . __( 'A theme or plugin is returning <code>false</code> for the \'wp_sitemaps_enabled\' filter.', 'wpsso' ) . '</p>';
-			}
-
-			$html .= '<p class="status-msg">' . __( 'No options available.', 'wpsso' ) . '</p>';
-
-			return $html;
-		}
-
-		public function get_wp_sitemaps_disabled_rows( $table_rows = array() ) {
-
-			if ( ! is_array( $table_rows ) ) {	// Just in case.
-
-				$table_rows = array();
-			}
-
-			$table_rows[ 'wp_sitemaps_disabled' ] = '<tr><td align="center">' . $this->wp_sitemaps_disabled() . '</td></tr>';
-
-			return $table_rows;
-		}
-
-		protected function maybe_html_tag_disabled_text( array $parts ) {
-
-			$text = '';
-
-			if ( empty( $parts[ 2 ] ) ) {	// Check for an incomplete HTML tag parts array.
-
-				return $text;
-			}
-
-			$opt_key = strtolower( 'add_' . implode( '_', $parts ) );	// Use same concatenation technique as WpssoHead->add_mt_singles().
-
-			$html_tag = implode( ' ', $parts );	// HTML tag string for display.
-
-			$is_disabled = empty( $this->p->options[ $opt_key ] ) ? true : false;
-
-			if ( $is_disabled ) {
-
-				$seo_tab_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_head_tags-tab_seo_other',
-					_x( 'SSO', 'menu title', 'wpsso' ) . ' &gt; ' .
-					_x( 'Advanced Settings', 'lib file description', 'wpsso' ) . ' &gt; ' .
-					_x( 'HTML Tags', 'metabox title', 'wpsso' ) . ' &gt; ' .
-					_x( 'SEO and Others', 'metabox tab', 'wpsso' ) );
-
-				$text .= ' ' . sprintf( __( 'Note that the <code>%s</code> HTML tag is currently disabled.', 'wpsso' ), $html_tag ) . ' ';
-
-				$text .= sprintf( __( 'You can re-enable this option under the %s tab.', 'wpsso' ), $seo_tab_link );
-			}
-
-			return $text;
-		}
-
-		/**
 		 * Returns an array of two elements - the custom field option label and a tooltip fragment.
 		 */
 		protected function get_cf_tooltip_fragments( $msg_key = false ) {
@@ -1089,6 +852,227 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			$img_cropped = empty( $def_opts[ $opt_pre . '_img_crop' ] ) ? _x( 'uncropped', 'option value', 'wpsso' ) : _x( 'cropped', 'option value', 'wpsso' );
 
 			return $img_width . 'x' . $img_height . 'px ' . $img_cropped;
+		}
+
+		public function get_schema_disabled_rows( $table_rows = array(), $col_span = 1 ) {
+
+			if ( ! is_array( $table_rows ) ) {	// Just in case.
+
+				$table_rows = array();
+			}
+
+			$html = '<p class="status-msg">' . __( 'Schema markup is disabled.', 'wpsso' ) . '</p>';
+
+			$html .= '<p class="status-msg">' . __( 'No options available.', 'wpsso' ) . '</p>';
+
+			$table_rows[ 'schema_disabled' ] = '<tr><td align="center" colspan="' . $col_span . '">' . $html . '</td></tr>';
+
+			return $table_rows;
+		}
+
+		public function get_wp_sitemaps_disabled_rows( $table_rows = array() ) {
+
+			if ( ! is_array( $table_rows ) ) {	// Just in case.
+
+				$table_rows = array();
+			}
+
+			$table_rows[ 'wp_sitemaps_disabled' ] = '<tr><td align="center">' . $this->wp_sitemaps_disabled() . '</td></tr>';
+
+			return $table_rows;
+		}
+
+		/**
+		 * Define and translate certain strings only once. 
+		 */
+		protected function maybe_set_properties() {
+
+			if ( empty( $this->pkg_info ) ) {
+
+				$this->pkg_info        = $this->p->admin->get_pkg_info();	// Returns an array from cache.
+				$this->p_name          = $this->pkg_info[ 'wpsso' ][ 'name' ];
+				$this->p_name_pro      = $this->pkg_info[ 'wpsso' ][ 'name_pro' ];
+				$this->pkg_pro_transl  = _x( $this->p->cf[ 'packages' ][ 'pro' ], 'package name', 'wpsso' );
+				$this->pkg_std_transl  = _x( $this->p->cf[ 'packages' ][ 'std' ], 'package name', 'wpsso' );
+				$this->fb_prefs_transl = __( 'Facebook prefers images of 1200x630px cropped (for Retina and high-PPI displays), 600x315px cropped as a recommended minimum, and ignores images smaller than 200x200px.', 'wpsso' );
+			}
+		}
+
+		/**
+		 * Used by the Advanced Settings page for the "Webpage Title Tag" option.
+		 */
+		public function maybe_doc_title_disabled() {
+
+			return $this->p->util->is_title_tag_disabled() ? $this->doc_title_disabled() : '';
+		}
+
+		/**
+		 * If an add-on is not active, return a short message that this add-on is recommended.
+		 */
+		public function maybe_ext_required( $ext ) {
+
+			list( $ext, $p_ext ) = $this->ext_p_ext( $ext );
+
+			if ( empty( $ext ) ) {							// Just in case.
+
+				return '';
+
+			} elseif ( 'wpsso' === $ext ) {						// The main plugin is not considered an add-on.
+
+				return '';
+
+			} elseif ( ! empty( $this->p->avail[ 'p_ext' ][ $p_ext ] ) ) {		// Add-on is already active.
+
+				return '';
+
+			} elseif ( empty( $this->p->cf[ 'plugin' ][ $ext ][ 'short' ] ) ) {	// Unknown add-on.
+
+				return '';
+			}
+
+			$ext_name_link = $this->p->util->get_admin_url( 'addons#' . $ext, $this->p->cf[ 'plugin' ][ $ext ][ 'name' ] );
+
+			return ' ' . sprintf( _x( 'Activating the %s add-on is recommended for this option.', 'wpsso' ), $ext_name_link );
+		}
+
+		/**
+		 * Called in the 'tooltip-meta-seo_desc' and 'tooltip-robots_*' tooltips.
+		 */
+		public function maybe_add_seo_tag_disabled_link( $mt_name ) {
+
+			$html        = '';
+			$opt_key     = strtolower( 'add_' . str_replace( ' ', '_', $mt_name ) );
+			$is_disabled = empty( $this->p->options[ $opt_key ] ) ? true : false;
+
+			if ( $is_disabled ) {
+
+				$seo_tab_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_head_tags-tab_seo_other',
+					_x( 'SSO', 'menu title', 'wpsso' ) . ' &gt; ' .
+					_x( 'Advanced Settings', 'lib file description', 'wpsso' ) . ' &gt; ' .
+					_x( 'HTML Tags', 'metabox title', 'wpsso' ) . ' &gt; ' .
+					_x( 'SEO and Others', 'metabox tab', 'wpsso' ) );
+
+				$html .= ' ' . sprintf( __( 'Note that the <code>%s</code> HTML tag is currently disabled.', 'wpsso' ), $mt_name ) . ' ';
+
+				$html .= sprintf( __( 'You can re-enable this option under the %s tab.', 'wpsso' ), $seo_tab_link );
+			}
+
+			return $html;
+		}
+
+		public function maybe_seo_tag_option_disabled( $mt_name ) {
+
+			$html        = '';
+			$opt_key     = strtolower( 'add_' . str_replace( ' ', '_', $mt_name ) );
+			$is_disabled = empty( $this->p->options[ $opt_key ] ) ? true : false;
+
+			if ( $is_disabled ) {
+
+				// translators: %s is the meta tag name (aka meta name canonical).
+				$html = sprintf( __( 'Modifications disabled (<code>%s</code> tag disabled or SEO plugin detected).', 'wpsso' ), $mt_name );
+			
+				$html = '<p class="status-msg smaller disabled">' . $html . '</p>';
+			}
+
+			return $html;
+		}
+
+		/**
+		 * Pinterest disabled.
+		 *
+		 * $extra_css_class can be empty, 'left', or 'inline'.
+		 */
+		public function maybe_pin_img_disabled( $extra_css_class = '' ) {
+
+			return $this->p->util->is_pin_img_disabled() ? $this->pin_img_disabled( $extra_css_class ) : '';
+		}
+
+		/**
+		 * Used by the General Settings page.
+		 */
+		public function maybe_preview_images_first() {
+
+			return empty( $this->form->options[ 'og_vid_prev_img' ] ) ?
+				'' : ' ' . _x( 'video preview images are enabled (and included first)', 'option comment', 'wpsso' );
+		}
+
+		public function maybe_schema_disabled() {
+
+			return $this->p->util->is_schema_disabled() ?
+				'<p class="status-msg smaller disabled">' . __( 'Schema markup is disabled.', 'wpsso' ) . '</p>' : '';
+		}
+
+		public function doc_title_disabled() {
+
+			$text = sprintf( __( '<a href="%s">WordPress Title Tag</a> not supported by theme', 'wpsso' ),
+				__( 'https://codex.wordpress.org/Title_Tag', 'wpsso' ) );
+
+			return '<span class="option-warning">' . $text . '</span>';
+		}
+
+		public function pin_img_disabled( $extra_css_class = '' ) {
+
+			$option_label = _x( 'Add Hidden Image for Pinterest', 'option label', 'wpsso' );
+
+			$option_link = $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_pinterest', $option_label );
+
+			// translators: %s is the option name, linked to its settings page.
+			$text = sprintf( __( 'Modifications disabled (%s option is unchecked).', 'wpsso' ), $option_link );
+
+			return '<p class="status-msg smaller disabled ' . $extra_css_class . '">' . $text . '</p>';
+		}
+
+		public function preview_images_are_first() {
+
+			return ' ' . _x( 'video preview images are included first', 'option comment', 'wpsso' );
+		}
+
+		public function pro_feature( $ext ) {
+
+			list( $ext, $p_ext ) = $this->ext_p_ext( $ext );
+
+			return empty( $ext ) ? '' : $this->get( 'pro-feature-msg', array( 'plugin_id' => $ext ) );
+		}
+
+		public function pro_feature_video_api() {
+
+			$this->maybe_set_properties();
+
+			$short_pro = $this->pkg_info[ $this->p->id ][ 'short_pro' ];
+
+			$html = '<p class="pro-feature-msg">';
+
+			$html .= sprintf( __( 'Video discovery and service API modules are provided with the %s edition.', 'wpsso' ), $short_pro );
+
+			$html .= '</p>';
+
+			return $html;
+		}
+
+		public function wp_sitemaps_disabled() {
+
+			$html = '';
+
+			$is_public = get_option( 'blog_public' );
+
+			if ( ! $is_public ) {
+
+				$html .= '<p class="status-msg">' . __( 'WordPress is set to discourage search engines from indexing this site.', 'wpsso' ) . '</p>';
+			}
+
+			$html .= '<p class="status-msg">' . __( 'The WordPress sitemaps functionality is disabled.', 'wpsso' ) . '</p>';
+
+			/**
+			 * Check if a theme or another plugin has disabled the Wordpress sitemaps functionality.
+			 */
+			if ( ! apply_filters( 'wp_sitemaps_enabled', true ) ) {
+
+				$html .= '<p class="status-msg">' . __( 'A theme or plugin is returning <code>false</code> for the \'wp_sitemaps_enabled\' filter.', 'wpsso' ) . '</p>';
+			}
+
+			$html .= '<p class="status-msg">' . __( 'No options available.', 'wpsso' ) . '</p>';
+
+			return $html;
 		}
 
 		/**

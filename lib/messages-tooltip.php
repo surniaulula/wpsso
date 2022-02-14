@@ -228,18 +228,6 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 				switch ( $msg_key ) {
 
-					case 'tooltip-seo_desc_max_len':	// Description Meta Tag Max. Length.
-
-						$def_max_len = $this->p->opt->get_defaults( 'seo_desc_max_len' );
-
-						$text = sprintf( __( 'The maximum length for the SEO description meta tag value (the default is %d characters).', 'wpsso' ), $def_max_len ) . ' ';
-
-						$text .= sprintf( __( 'The maximum length must be at least %d characters or more.', 'wpsso' ), $this->p->cf[ 'head' ][ 'limit_min' ][ 'seo_desc_len' ] );
-
-						$text .= $this->maybe_html_tag_disabled_text( $parts = array( 'meta', 'name', 'description' ) );
-
-						break;
-
 					default:
 
 						$text = apply_filters( 'wpsso_messages_tooltip_seo', $text, $msg_key, $info );
@@ -316,7 +304,7 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 				}	// End of 'tooltip-robots' switch.
 
-				$text .= $this->maybe_html_tag_disabled_text( $parts = array( 'meta', 'name', 'robots' ) );
+				$text .= $this->maybe_add_seo_tag_disabled_link( 'meta name robots' );
 
 			/**
 			 * Pinterest settings.
@@ -374,14 +362,6 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 						break;
 
-					case 'tooltip-pin_img_desc_max_len':		// Image Description Max. Length.
-
-						$def_max_len = $this->p->opt->get_defaults( 'pin_img_desc_max_len' );
-
-						$text = sprintf( __( 'The maximum length used for the Pinterest Pin It browser button description (the default is %d characters).', 'wpsso' ), $def_max_len ) . ' ';
-
-						break;
-
 					case 'tooltip-pin_img_size':			// Pinterest Pin It Image Size.
 
 						$def_img_dims = $this->get_def_img_dims( 'pin' );
@@ -415,24 +395,6 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 							$text .= __( 'Google Search may use this URL to display additional information about the website, business, or company in its search results.', 'wpsso' );
 						}
-
-						break;
-
-					case 'tooltip-tc_title_max_len':	// Twitter Card Title Max. Length.
-
-						$def_max_len = $this->p->opt->get_defaults( 'tc_title_max_len' );
-
-						$text = sprintf( __( 'The maximum length for the Twitter Card title value (the default is %d characters).', 'wpsso' ), $def_max_len );
-
-						break;
-
-					case 'tooltip-tc_desc_max_len':	// Twitter Card Description Max. Length.
-
-						$def_max_len = $this->p->opt->get_defaults( 'tc_desc_max_len' );
-
-						$text = sprintf( __( 'The maximum length for the Twitter Card description value (the default is %d characters).', 'wpsso' ), $def_max_len ) . ' ';
-
-						$text .= sprintf( __( 'The maximum length must be at least %d characters or more.', 'wpsso' ), $this->p->cf[ 'head' ][ 'limit_min' ][ 'tc_desc_len' ] );
 
 						break;
 

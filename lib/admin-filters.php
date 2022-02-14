@@ -214,8 +214,8 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 				'status'       => empty( $this->p->options[ 'pin_add_img_html' ] ) ? 'off' : 'on',
 			);
 
-			$features[ '(code) SEO Description Meta Tag' ] = array(
-				'label_transl' => _x( '(code) SEO Description Meta Tag', 'lib file description', 'wpsso' ),
+			$features[ '(code) SEO Meta Description Tag' ] = array(
+				'label_transl' => _x( '(code) SEO Meta Description Tag', 'lib file description', 'wpsso' ),
 				'status'       => empty( $this->p->options[ 'add_meta_name_description' ] ) ? 'off' : 'on',
 			);
 

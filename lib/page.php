@@ -187,7 +187,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		 */
 		public function document_title_separator( $title_sep = '-' ) {
 
-			$title_sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
+			$title_sep = $this->maybe_get_title_sep( $title_sep = null );	// Returns default $title_sep if not provided.
 
 			return $title_sep;
 		}
@@ -215,16 +215,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
-			}
-
-			$use_post = apply_filters( 'wpsso_use_post', false );
-
-			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'required call to WpssoPage->get_mod()' );
 			}
 
-			$mod = $this->p->page->get_mod( $use_post );
+			$use_post = apply_filters( 'wpsso_use_post', false );
+			$mod      = $this->p->page->get_mod( $use_post );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -254,27 +250,30 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					break;
 
+				case 'seo_title':
+
+					$title_parts[ 'title' ] = $this->p->page->get_title( 'seo_title', $dots = null, $mod );
+
+					break;
+
 				case 'og_title':
 
-					$title_max_len = $this->p->options[ 'og_title_max_len' ];
-
-					$title_parts[ 'title' ] = $this->p->page->get_title( $title_max_len, '...', $mod );
+					$title_parts[ 'title' ] = $this->p->page->get_title( 'og_title', $dots = null, $mod,
+						$add_hashtags = false, $do_encode = true, $md_keys = array( 'og_title', 'seo_title' ) );
 
 					break;
 
 				case 'schema_title':
 
-					$title_parts[ 'title' ] = $this->p->page->get_title( $title_max_len = 0, $dots = '', $mod,
-						$add_hashtags = false, $do_encode = true, $md_keys = array( 'schema_title', 'og_title' ) );
+					$title_parts[ 'title' ] = $this->p->page->get_title( 'schema_title', $dots = null, $mod,
+						$add_hashtags = false, $do_encode = true, $md_keys = array( 'schema_title', 'seo_title' ) );
 
 					break;
 
 				case 'schema_title_alt':
 
-					$title_max_len = $this->p->options[ 'og_title_max_len' ];
-
-					$title_parts[ 'title' ] = $this->p->page->get_title( $title_max_len, $dots = '...', $mod,
-						$add_hashtags = false, $do_encode = true, $md_keys = array( 'schema_title_alt', 'schema_title', 'og_title' ) );
+					$title_parts[ 'title' ] = $this->p->page->get_title( 'schema_title_alt', $dots = null, $mod,
+						$add_hashtags = false, $do_encode = true, $md_keys = array( 'schema_title_alt', 'schema_title', 'seo_title' ) );
 
 					break;
 			}
@@ -820,21 +819,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				) );
 			}
 
-			/**
-			 * The $mod array argument is preferred but not required.
-			 *
-			 * $mod = true | false | post_id | $mod array
-			 */
-			if ( ! is_array( $mod ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
-				}
-
-				$mod = $this->p->page->get_mod( $mod );
-			}
-
 			if ( false === $md_key ) {	// False would return the complete meta array.
 
 				$md_key       = '';
@@ -876,29 +860,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$md_key_desc  = $md_key;
 			}
 
-			$caption_text = '';
-			$is_custom    = false;
-
-			/**
-			 * Check for custom caption if a metadata index key is provided.
-			 */
-			if ( ! empty( $md_key ) && 'none' !== $md_key ) {	// $md_key can be a string or array.
-
-				if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Just in case.
-
-					$caption_text = $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key );
-
-					if ( ! empty( $caption_text ) ) {
-
-						$is_custom = true;
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'custom caption = ' . $caption_text );
-						}
-					}
-				}
-			}
+			$max_len      = $this->sanitize_max_len( $max_len );		// Returns max integer for numeric, string, or array value.
+			$mod          = $this->maybe_get_mod( $mod );			// Returns $mod array if not provided.
+			$caption_text = $this->maybe_get_custom( $mod, $md_key );	// Returns null or custom value.
+			$is_custom    = empty( $caption_text ) ? false : true;
 
 			/**
 			 * If there's no custom caption text, then go ahead and generate the caption text value.
@@ -912,23 +877,23 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					case 'title':
 
-						$caption_text = $this->get_title( $max_len, '...', $mod, $add_hashtags, false, $md_key_title );
+						$caption_text = $this->get_title( $max_len, $dots = null, $mod, $add_hashtags, false, $md_key_title );
 
 						break;
 
 					case 'excerpt':
 
-						$caption_text = $this->get_description( $max_len, '...', $mod, $add_hashtags, false, $md_key_desc );
+						$caption_text = $this->get_description( $max_len, $dots = null, $mod, $add_hashtags, false, $md_key_desc );
 
 						break;
 
 					case 'both':
 
-						$title_sep        = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
-						$caption_text     = $this->get_title( 0, '', $mod, false, false, $md_key_title, $title_sep );
+						$title_sep        = $this->maybe_get_title_sep();	// Returns default $title_sep if not provided.
+						$caption_text     = $this->get_title( 0, $dots = '', $mod, false, false, $md_key_title, $title_sep );
 						$caption_text_len = strlen( trim( $caption_text . ' ' . $title_sep ) . ' ' );
 						$adj_max_len      = $max_len - $caption_text_len;
-						$caption_desc     = $this->get_description( $adj_max_len, '...', $mod, $add_hashtags, false, $md_key_desc );
+						$caption_desc     = $this->get_description( $adj_max_len, $dots = null, $mod, $add_hashtags, false, $md_key_desc );
 
 						SucomUtilWP::add_title_part( $caption_text, $title_sep, $caption_desc );
 
@@ -954,17 +919,17 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		 * $md_key = true | false | string | array
 		 *
 		 * $md_key can be a metadata options key, or an array of keys in order of preference (ie. from more specific to
-		 * less specific). Example $md_key = array( 'seo_title', 'og_title' ).
+		 * less specific). Example: $md_key = array( 'og_title', 'seo_title' ).
 		 *
 		 * Use $title_sep = false to avoid adding term parent names in the term title.
 		 *
-		 * Note that WpssoUtilInline->replace_variables() is applied to the final title text.
+		 * WpssoUtilInline->replace_variables() is applied to the final title text.
 		 *
-		 * Note that the WPSSO BC add-on uses $title_sep = false to avoid prefixing term parents in the term titles.
+		 * The WPSSO BC add-on uses $title_sep = false to avoid prefixing term parents in the term titles.
 		 *
 		 * See WpssoBcBreadcrumb->add_itemlist_data().
 		 */
-		public function get_title( $max_len = 70, $dots = '', $mod = false, $add_hashtags = false, $do_encode = true, $md_key = 'og_title', $title_sep = null ) {
+		public function get_title( $max_len = 70, $dots = null, $mod = false, $add_hashtags = false, $do_encode = true, $md_key = 'seo_title', $title_sep = null ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -979,65 +944,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				) );
 			}
 
-			/**
-			 * The $mod array argument is preferred but not required.
-			 *
-			 * $mod = true | false | post_id | $mod array
-			 */
-			if ( ! is_array( $mod ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
-				}
-
-				$mod = $this->p->page->get_mod( $mod );
-			}
-
-			if ( false === $md_key ) {	// False would return the complete meta array.
-
-				$md_key = '';
-
-			} elseif ( true === $md_key ) {	// True signals use of the standard / fallback value.
-
-				$md_key = array( 'og_title' );
-
-			} elseif ( ! is_array( $md_key ) ) {	// Use fallback by default - get_options_multi() will do array_uniq().
-
-				$md_key = array( $md_key, 'og_title' );
-
-				$md_key = array_unique( $md_key );	// Just in case.
-			}
-
-			if ( null === $title_sep ) {	// Can be false to avoid adding term parent names in the term title.
-
-				$title_sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
-			}
-
-			$title_text = '';
+			$md_key     = $this->sanitize_md_key( $md_key, $def_key = 'seo_title' );
+			$max_len    = $this->sanitize_max_len( $max_len );		// Returns max integer for numeric, string, or array value.
+			$dots       = $this->maybe_get_ellipsis( $dots );		// Returns default $dots if not provided.
+			$mod        = $this->maybe_get_mod( $mod );			// Returns $mod array if not provided.
+			$title_sep  = $this->maybe_get_title_sep( $title_sep );		// Returns default $title_sep if not provided.
+			$title_text = $this->maybe_get_custom( $mod, $md_key );		// Returns null or custom value.
+			$is_custom  = empty( $title_text ) ? false : true;
 			$hashtags   = '';
-			$is_custom  = false;
-
-			/**
-			 * Check for custom title if a metadata index key is provided.
-			 */
-			if ( ! empty( $md_key ) && 'none' !== $md_key ) {	// $md_key can be a string or array.
-
-				if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Just in case.
-
-					$title_text = $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key );
-
-					if ( ! empty( $title_text ) ) {
-
-						$is_custom = true;
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'custom title = ' . $title_text );
-						}
-					}
-				}
-			}
 
 			/**
 			 * Get seed if no custom meta title.
@@ -1169,11 +1083,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		 * $md_key = true | false | string | array.
 		 *
 		 * $md_key can be a metadata options key, or an array of keys in order of preference (ie. from more specific to
-		 * less specific). Example $md_key = array( 'seo_desc', 'og_desc' ).
+		 * less specific). Example: $md_key = array( 'og_desc', 'seo_desc' ).
 		 *
-		 * Note that WpssoUtilInline->replace_variables() is applied to the final description text.
+		 * WpssoUtilInline->replace_variables() is applied to the final description text.
 		 */
-		public function get_description( $max_len = 160, $dots = '...', $mod = false, $add_hashtags = true, $do_encode = true, $md_key = array( 'og_desc' ) ) {
+		public function get_description( $max_len = 160, $dots = null, $mod = false, $add_hashtags = true, $do_encode = true, $md_key = array( 'seo_desc' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1187,60 +1101,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				) );
 			}
 
-			/**
-			 * The $mod array argument is preferred but not required.
-			 * 
-			 * $mod = true | false | post_id | $mod array.
-			 */
-			if ( ! is_array( $mod ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
-				}
-
-				$mod = $this->p->page->get_mod( $mod );
-			}
-
-			if ( false === $md_key ) {	// False would return the complete meta array.
-
-				$md_key = array();
-
-			} elseif ( true === $md_key ) {	// True signals use of the standard / fallback value.
-
-				$md_key = array( 'og_desc' );
-
-			} elseif ( ! is_array( $md_key ) ) {	// Use fallback by default - get_options_multi() will do array_uniq().
-
-				$md_key = array( $md_key, 'og_desc' );
-
-				$md_key = array_unique( $md_key );	// Just in case.
-			}
-
-			$desc_text = '';
+			$md_key    = $this->sanitize_md_key( $md_key, $def_key = 'seo_desc' );
+			$max_len   = $this->sanitize_max_len( $max_len );		// Returns max integer for numeric, string, or array value.
+			$dots      = $this->maybe_get_ellipsis( $dots );		// Returns default $dots if not provided.
+			$mod       = $this->maybe_get_mod( $mod );			// Returns $mod array if not provided.
+			$desc_text = $this->maybe_get_custom( $mod, $md_key );		// Returns null or custom value.
+			$is_custom = empty( $desc_text ) ? false : true;
 			$hashtags  = '';
-			$is_custom = false;
-
-			/**
-			 * Check for custom description if a metadata index key is provided.
-			 */
-			if ( ! empty( $md_key ) && 'none' !== $md_key ) {	// $md_key can be a string or array.
-
-				if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Just in case.
-
-					$desc_text = $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key );
-
-					if ( ! empty( $desc_text ) ) {
-
-						$is_custom = true;
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'custom description = ' . $desc_text );
-						}
-					}
-				}
-			}
 
 			/**
 			 * Get seed if no custom meta description.
@@ -1330,31 +1197,29 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return apply_filters( 'wpsso_description', $desc_text, $mod, $add_hashtags, $md_key, $is_custom );
 		}
 
-		public function get_text( $max_len = 0, $dots = '...', $mod = false, $add_hashtags = false, $do_encode = true, $md_key = 'schema_text' ) {
+		public function get_text( $max_len = 0, $dots = null, $mod = false, $add_hashtags = false, $do_encode = true, $md_key = 'schema_text' ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
 			}
 
+			$md_key    = $this->sanitize_md_key( $md_key, $def_key = 'schema_text' );
+			$max_len   = $this->sanitize_max_len( $max_len );		// Returns max integer for numeric, string, or array value.
+			$dots      = $this->maybe_get_ellipsis( $dots );		// Returns default $dots if not provided.
+			$mod       = $this->maybe_get_mod( $mod );			// Returns $mod array if not provided.
+			$text      = $this->maybe_get_custom( $mod, $md_key );		// Returns null or custom value.
+			$is_custom = empty( $text ) ? false : true;
+
 			/**
-			 * The $mod array argument is preferred but not required.
-			 *
-			 * $mod = true | false | post_id | $mod array
+			 * If there's no custom text, then go ahead and generate the text value.
 			 */
-			if ( ! is_array( $mod ) ) {
+			if ( empty( $title_text ) ) {
 
-				if ( $this->p->debug->enabled ) {
+				$text = $this->get_the_text( $mod );
 
-					$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
-				}
-
-				$mod = $this->p->page->get_mod( $mod );
+				$hashtags = $this->get_hashtags( $mod, $add_hashtags );
 			}
-
-			$text = $this->get_the_text( $mod, $md_key );
-
-			$hashtags = $this->get_hashtags( $mod, $add_hashtags );
 
 			/**
 			 * Check text against string length limits.
@@ -1385,7 +1250,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$text = SucomUtil::encode_html_emoji( $text );	// Does not double-encode.
 			}
 
-			return apply_filters( 'wpsso_text', $text, $mod, $add_hashtags, $md_key );
+			return apply_filters( 'wpsso_text', $text, $mod, $add_hashtags, $md_key, $is_custom );
 		}
 
 		/**
@@ -1404,11 +1269,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( null === $title_sep ) {	// Can be false.
-
-				$title_sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
-			}
-
+			$title_sep  = $this->maybe_get_title_sep( $title_sep );	// Returns default $title_sep if not provided.
 			$title_text = '';
 
 			/**
@@ -1577,7 +1438,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 								$this->p->debug->log( 'getting the content for post ID ' . $mod[ 'id' ] );
 							}
 
-							$desc_text = $this->get_the_content( $mod, $md_key );
+							$desc_text = $this->get_the_content( $mod );
 
 							/**
 							 * Ignore everything before the first paragraph.
@@ -1743,13 +1604,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		/**
 		 * The cache is cleared by WpssoAbstractWpMeta->clear_mod_cache().
 		 */
-		public function get_the_content( array $mod, $md_key = '', $flatten = true ) {
+		public function get_the_content( array $mod, $flatten = true ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_args( array(
-					'mod'    => $mod,
-					'md_key' => $md_key,
+					'mod' => $mod,
 				) );
 			}
 
@@ -1822,7 +1682,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 * See WpssoProEcomWoocommerce->filter_the_content_seed().
 			 * See WpssoProSocialBuddypress->filter_the_content_seed().
 			 */
-			$content = apply_filters( 'wpsso_the_content_seed', '', $mod, $md_key );
+			$content = apply_filters( 'wpsso_the_content_seed', '', $mod );
 
 			if ( false === $content ) {
 
@@ -1935,7 +1795,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/**
 			 * Apply the filter.
 			 */
-			$content = apply_filters( 'wpsso_the_content', $content, $mod, $md_key );
+			$content = apply_filters( 'wpsso_the_content', $content, $mod );
 
 			/**
 			 * Save content to non-persistant cache.
@@ -1966,52 +1826,22 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		/**
 		 * Returns the content text, stripped of all HTML tags.
 		 */
-		public function get_the_text( array $mod, $md_key = '' ) {
+		public function get_the_text( array $mod ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
 			}
 
-			$text      = '';
-			$is_custom = false;
+			$text = $this->get_the_content( $mod );
 
-			/**
-			 * Check for custom text if a metadata index key is provided.
-			 */
-			if ( ! empty( $md_key ) && 'none' !== $md_key ) {	// $md_key can be a string or array.
+			$text = preg_replace( '/<!\[CDATA\[.*\]\]>/Us', '', $text );
 
-				if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Just in case.
+			$text = preg_replace( '/<pre[^>]*>.*<\/pre>/Us', '', $text );
 
-					$text = $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key );
+			$text = $this->p->util->cleanup_html_tags( $text, $strip_tags = true, $use_img_alt = true );
 
-					if ( ! empty( $text ) ) {
-
-						$is_custom = true;
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'custom text = ' . $text );
-						}
-					}
-				}
-			}
-
-			/**
-			 * If there's no custom text, then go ahead and generate the text value.
-			 */
-			if ( empty( $text ) ) {
-
-				$text = $this->get_the_content( $mod, $md_key );
-
-				$text = preg_replace( '/<!\[CDATA\[.*\]\]>/Us', '', $text );
-
-				$text = preg_replace( '/<pre[^>]*>.*<\/pre>/Us', '', $text );
-
-				$text = $this->p->util->cleanup_html_tags( $text, $strip_tags = true, $use_img_alt = true );
-			}
-
-			return apply_filters( 'wpsso_text', $text, $mod, $md_key );
+			return apply_filters( 'wpsso_the_text', $text, $mod );
 		}
 
 		/**
@@ -2193,6 +2023,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			$term_obj   = false;
+			$title_sep  = $this->maybe_get_title_sep( $title_sep );	// Returns default $title_sep if not provided.
 			$title_text = '';
 
 			if ( is_object( $term_id ) ) {
@@ -2223,11 +2054,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 
 				return $title_text;
-			}
-
-			if ( null === $title_sep ) {
-
-				$title_sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
 			}
 
 			if ( ! empty( $term_obj->name ) ) {
@@ -2289,6 +2115,104 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			return $reading_mins;
+		}
+		
+		/**
+		 * Private methods to sanitize arguments or modify values for get_title(), get_description(), etc.
+		 */
+		private function sanitize_max_len( $max_len ) {
+
+			if ( is_numeric( $max_len ) ) {
+
+				return (int) $max_len;
+
+			} elseif ( is_array( $max_len ) && isset( $max_len[ 'max' ] ) ) {
+
+				return (int) $max_len[ 'max' ];
+
+			} elseif ( is_string( $max_len ) && isset( $this->p->cf[ 'form' ][ 'input_limits' ][ $max_len ][ 'max' ] ) ) {
+
+				return (int) $this->p->cf[ 'form' ][ 'input_limits' ][ $max_len ][ 'max' ];
+			}
+
+			return 0;
+		}
+
+		private function sanitize_md_key( $md_key, $def_key = '' ) {
+
+			if ( false === $md_key ) {		// False would return the complete meta array.
+
+				$md_key = '';
+
+			} elseif ( true === $md_key ) {		// True signals use of the standard / fallback value.
+
+				$md_key = array( $def_key );
+
+			} elseif ( 'none' === $md_key ) {
+
+				// Nothing to do.
+
+			} elseif ( ! is_array( $md_key ) ) {
+
+				$md_key = array( $md_key, $def_key );
+
+				$md_key = array_unique( $md_key );	// Just in case.
+			}
+
+			return $md_key;
+		}
+
+		/**
+		 * The $mod array argument is preferred but not required.
+		 *
+		 * $mod = true | false | post_id | $mod array
+		 */
+		private function maybe_get_mod( $mod ) {
+
+			if ( ! is_array( $mod ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
+				}
+
+				$mod = $this->p->page->get_mod( $mod );
+			}
+
+			return $mod;
+		}
+
+		private function maybe_get_title_sep( $title_sep = null ) {
+
+			if ( null === $title_sep ) {
+			
+				$title_sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
+			}
+
+			return $title_sep;
+		}
+
+		private function maybe_get_ellipsis( $ellipsis = null ) {
+
+			if ( null === $ellipsis ) {
+			
+				$ellipsis = html_entity_decode( $this->p->options[ 'og_ellipsis' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
+			}
+
+			return $ellipsis;
+		}
+
+		private function maybe_get_custom( $mod, $md_key ) {
+
+			if ( ! empty( $md_key ) && 'none' !== $md_key ) {	// Make sure we have something to work with.
+
+				if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Just in case.
+
+					return $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key );
+				}
+			}
+
+			return null;
 		}
 	}
 }

@@ -597,38 +597,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		}
 
 		/**
-		 * Note that WebP is only supported since PHP v7.1.
-		 */
-		public function is_image_url( $image_url ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			/**
-			 * Example $image_info:
-			 *
-			 * Array (
-			 *	[0] => 2048
-			 *	[1] => 2048
-			 *	[2] => 3
-			 *	[3] => width="2048" height="2048"
-			 *	[bits] => 8
-			 *	[mime] => image/png
-			 * )
-			 */
-			$image_info = $this->get_image_url_info( $image_url );
-
-			if ( empty( $image_info[ 2 ] ) ) {	// Check for the IMAGETYPE_XXX constant integer.
-
-				return false;
-			}
-
-			return true;
-		}
-
-		/**
 		 * Always returns an array.
 		 *
 		 * Note that WebP is only supported since PHP v7.1.
@@ -1744,30 +1712,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return wp_json_encode( $data, $options, $depth );
 		}
 
-		public function is_json_pretty() {
-
-			if ( $this->p->debug->enabled ) {	// Always output pretty JSON when debug is enabled.
-
-				return true;
-			}
-
-			$is_pretty = self::get_const( 'WPSSO_JSON_PRETTY_PRINT', true );	// True by default.
-
-			$is_pretty = (bool) apply_filters( 'wpsso_json_pretty_print', $is_pretty );
-
-			return $is_pretty ? true : false;
-		}
-
-		/**
-		 * Deprecated on 2020/12/09.
-		 */
-		public function get_page_mod( $use_post = false, $mod = false, $wp_obj = false ) {
-
-			_deprecated_function( __METHOD__ . '()', '2020/12/09', $replacement = 'WpssoPage::get_mod()' );	// Deprecation message.
-
-			return $this->p->page->get_mod( $use_post, $mod, $wp_obj );
-		}
-
 		public function get_oembed_url( $mod = false, $format = 'json' ) {
 
 			if ( $this->p->debug->enabled ) {
@@ -2473,6 +2417,87 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $cleared;
 		}
 
+		public function is_title_tag_disabled() {
+
+			return current_theme_supports( 'title-tag' ) ? false : true;
+		}
+
+		public function is_seo_title_disabled() {
+
+			return $this->is_title_tag_disabled() || 'seo_title' !== $this->p->options[ 'plugin_title_tag' ] ? true : false;
+		}
+
+		public function is_seo_desc_disabled() {
+
+			return empty( $this->p->options[ 'add_meta_name_description' ] ) ? true : false;
+		}
+
+		public function is_pin_img_disabled() {
+
+			return empty( $this->p->options[ 'pin_add_img_html' ] ) ? true : false;
+		}
+
+		public function is_robots_disabled() {
+
+			return $this->robots->is_disabled();
+		}
+
+		public function is_schema_disabled() {
+
+			return isset( $this->p->avail[ 'p' ][ 'schema' ] ) && empty( $this->p->avail[ 'p' ][ 'schema' ] ) ? true : false;
+		}
+
+		public function is_sitemaps_disabled() {
+
+			return apply_filters( 'wp_sitemaps_enabled', true ) ? false : true;
+		}
+
+		public function is_json_pretty() {
+
+			if ( $this->p->debug->enabled ) {	// Always output pretty JSON when debug is enabled.
+
+				return true;
+			}
+
+			$is_pretty = self::get_const( 'WPSSO_JSON_PRETTY_PRINT', true );	// True by default.
+
+			$is_pretty = (bool) apply_filters( 'wpsso_json_pretty_print', $is_pretty );
+
+			return $is_pretty ? true : false;
+		}
+
+		/**
+		 * Note that WebP is only supported since PHP v7.1.
+		 */
+		public function is_image_url( $image_url ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			/**
+			 * Example $image_info:
+			 *
+			 * Array (
+			 *	[0] => 2048
+			 *	[1] => 2048
+			 *	[2] => 3
+			 *	[3] => width="2048" height="2048"
+			 *	[bits] => 8
+			 *	[mime] => image/png
+			 * )
+			 */
+			$image_info = $this->get_image_url_info( $image_url );
+
+			if ( empty( $image_info[ 2 ] ) ) {	// Check for the IMAGETYPE_XXX constant integer.
+
+				return false;
+			}
+
+			return true;
+		}
+
 		public function is_dupe_url( $url, $context = 'default' ) {
 
 			return $this->is_uniq_url( $url, $context ) ? false : true;
@@ -2997,26 +3022,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$html = '<a href="' . $admin_url . '">' . $link_text . '</a>';
 
 			return $html;
-		}
-
-		/**
-		 * Deprecated on 2020/07/07.
-		 */
-		public function do_metabox_tabbed( $metabox_id = '', $tabs = array(), $table_rows = array(), $args = array() ) {
-
-			_deprecated_function( __METHOD__ . '()', '2020/07/07', $replacement = 'WpssoUtilMetabox::get_tabbed()' );	// Deprecation message.
-
-			echo $this->metabox->get_tabbed( $metabox_id, $tabs, $table_rows, $args );
-		}
-
-		/**
-		 * Deprecated on 2020/07/07.
-		 */
-		public function do_metabox_table( $table_rows, $class_href_key = '', $class_tabset_mb = '', $class_tabset = 'sucom-no_tabset', $title_transl = '' ) {
-
-			_deprecated_function( __METHOD__ . '()', '2020/07/07', $replacement = 'WpssoUtilMetabox::get_table()' );	// Deprecation message.
-
-			echo $this->metabox->get_table( $table_rows, $class_href_key, $class_tabset_mb, $class_tabset, $title_transl );
 		}
 
 		/**

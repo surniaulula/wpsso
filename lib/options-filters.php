@@ -396,14 +396,15 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'site_name':
 				case 'site_name_alt':
 				case 'site_desc':
+				case 'seo_title':	// SEO Title Tag.
+				case 'seo_desc':	// SEO Meta Description.
 				case 'og_title':
 				case 'og_desc':
-				case 'seo_desc':
 				case 'tc_title':	// Twitter Card Title.
 				case 'tc_desc':		// Twitter Card Description.
 				case 'pin_desc':
 				case 'article_section':
-				case 'product_category':
+				case 'product_category':	// Product Type.
 				case 'product_brand':
 				case 'product_color':
 				case 'product_currency':
@@ -438,7 +439,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'site_org_place_id':		// Example: 'none' or place ID.
 				case 'site_org_schema_type':		// Example: 'organization' or a sub-type.
 				case 'og_def_article_section':
-				case 'og_def_product_category':
+				case 'og_def_product_category':		// Default Product Type.
 				case 'og_def_country':
 				case 'og_def_timezone':
 				case 'og_def_currency':

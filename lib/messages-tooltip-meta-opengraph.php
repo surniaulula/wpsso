@@ -50,17 +50,15 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaOpenGraph' ) ) {
 
 				 	break;
 
-				case 'tooltip-meta-og_title':	// Default Title.
+				case 'tooltip-meta-og_title':	// Open Graph Title.
 
-					$text = sprintf( __( 'A customized title for the Facebook / Open Graph %s meta tag and the default for all other title values.', 'wpsso' ), '<code>og:title</code>' );
+					$text = sprintf( __( 'A customized title for the Facebook / Open Graph %s meta tag.', 'wpsso' ), '<code>og:title</code>' );
 
 				 	break;
 
-				case 'tooltip-meta-og_desc':	// Default Description.
+				case 'tooltip-meta-og_desc':	// Open Graph Description.
 
-					$text = sprintf( __( 'A customized description for the Facebook / Open Graph %s meta tag and the default for all other description values.', 'wpsso' ), '<code>og:description</code>' ) . ' ';
-
-					$text .= __( 'Update and save the custom Facebook / Open Graph description to change the default value of all other description fields.', 'wpsso' );
+					$text = sprintf( __( 'A customized description for the Facebook / Open Graph %s meta tag.', 'wpsso' ), '<code>og:description</code>' ) . ' ';
 
 				 	break;
 

@@ -221,25 +221,10 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 							$css_class = '', $css_id = 'og_title_sep' ) . 
 						'<td>' . $this->form->get_input( 'og_title_sep', 'xshort' ) . '</td>';
 
-					$table_rows[ 'og_title_max_len' ] = '' . 
-						$this->form->get_th_html( _x( 'Title Max. Length', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'og_title_max_len' ) . 
-						'<td>' . 
-						$this->form->get_input( 'og_title_max_len', $css_class = 'chars' ) . ' ' . 
-						_x( 'characters or less (hard limit), and warn at', 'option comment', 'wpsso' ) . ' ' . 
-						$this->form->get_input( 'og_title_warn_len', $css_class = 'chars' ) . ' ' . 
-						_x( 'characters (soft limit)', 'option comment', 'wpsso' ) . 
-						'</td>';
-
-					$table_rows[ 'og_desc_max_len' ] = '' . 
-						$this->form->get_th_html( _x( 'Description Max. Length', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'og_desc_max_len' ) . 
-						'<td>' . 
-						$this->form->get_input( 'og_desc_max_len', $css_class = 'chars' ) . ' ' . 
-						_x( 'characters or less (hard limit), and warn at', 'option comment', 'wpsso' ) . ' ' . 
-						$this->form->get_input( 'og_desc_warn_len', $css_class = 'chars' ) . ' ' . 
-						_x( 'characters (soft limit)', 'option comment', 'wpsso' ) . 
-						'</td>';
+					$table_rows[ 'og_ellipsis' ] = '' . 
+						$this->form->get_th_html( _x( 'Truncated Text Ellipsis', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'og_ellipsis' ) . 
+						'<td>' . $this->form->get_input( 'og_ellipsis', 'xshort' ) . '</td>';
 
 					$table_rows[ 'og_desc_hashtags' ] = '' .
 						$this->form->get_th_html( _x( 'Description Hashtags', 'option label', 'wpsso' ),
@@ -332,30 +317,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 							$css_class = '', $css_id = 'schema_add_text_prop' ) . 
 						'<td>' . $this->form->get_checkbox( 'schema_add_text_prop' ) . '</td>';
 
-					$table_rows[ 'schema_text_max_len' ] = $this->form->get_tr_hide( 'basic', 'schema_text_max_len' ) . 
-						$this->form->get_th_html( _x( 'Text / Article Body Max. Length', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'schema_text_max_len' ) . 
-						'<td>' . $this->form->get_input( 'schema_text_max_len', $css_class = 'bigchars' ) . ' ' .
-						_x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
-
-					$table_rows[ 'schema_desc_max_len' ] = $this->form->get_tr_hide( 'basic', 'schema_desc_max_len' ) . 
-						$this->form->get_th_html( _x( 'Schema Description Max. Length', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'schema_desc_max_len' ) . 
-						'<td>' . $this->form->get_input( 'schema_desc_max_len', 'chars' ) . ' ' .
-						_x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
-
-					/**
-					 * SEO settings.
-					 */
-					$seo_desc_disabled = empty( $this->p->options[ 'add_meta_name_description' ] ) ? true : false;
-
-					$table_rows[ 'seo_desc_max_len' ] = $this->form->get_tr_hide( 'basic', 'seo_desc_max_len' ) . 
-						$this->form->get_th_html( _x( 'Description Meta Tag Max. Length', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'seo_desc_max_len' ) . 
-						'<td>' . $this->form->get_input( 'seo_desc_max_len',
-							$css_class = 'chars', $css_id = '', $len = 0, $holder = false, $seo_desc_disabled ) . ' ' .
-						_x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
-
 					/**
 					 * Robots settings.
 					 */
@@ -408,16 +369,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'<td>' . $this->form->get_checkbox( 'pin_add_img_html' ) . ' ' .
 						_x( 'recommended (see help text for caveats)', 'option comment', 'wpsso' ) . '</td>';
 
-					$table_rows[ 'pin_img_desc_max_len' ] = $this->form->get_tr_hide( 'basic', 'pin_img_desc_max_len' ) . 
-						$this->form->get_th_html( _x( 'Image Description Max. Length', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'pin_img_desc_max_len' ) . 
-						'<td>' .
-						$this->form->get_input( 'pin_img_desc_max_len', $css_class = 'chars' ) . ' ' . 
-						_x( 'characters or less (hard limit), and warn at', 'option comment', 'wpsso' ) . ' ' . 
-						$this->form->get_input( 'pin_img_desc_warn_len', $css_class = 'chars' ) . ' ' . 
-						_x( 'characters (soft limit)', 'option comment', 'wpsso' ) . 
-						'</td>';
-
 					break;
 
 				case 'pub-twitter':
@@ -426,18 +377,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'summary'             => _x( 'Summary', 'option value', 'wpsso' ),
 						'summary_large_image' => _x( 'Summary Large Image', 'option value', 'wpsso' ),
 					);
-
-					$table_rows[ 'tc_title_max_len' ] = $this->form->get_tr_hide( 'basic', 'tc_title_max_len' ) . 
-						$this->form->get_th_html( _x( 'Twitter Card Title Max. Length', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'tc_title_max_len' ) . 
-						'<td>' . $this->form->get_input( 'tc_title_max_len', $css_class = 'chars' ) . ' ' . 
-						_x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
-
-					$table_rows[ 'tc_desc_max_len' ] = $this->form->get_tr_hide( 'basic', 'tc_desc_max_len' ) . 
-						$this->form->get_th_html( _x( 'Twitter Card Description Max. Length', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'tc_desc_max_len' ) . 
-						'<td>' . $this->form->get_input( 'tc_desc_max_len', $css_class = 'chars' ) . ' ' . 
-						_x( 'characters or less', 'option comment', 'wpsso' ) . '</td>';
 
 					$table_rows[ 'tc_type_singular' ] = '' .
 						$this->form->get_th_html( _x( 'Twitter Card for Singular with Image', 'option label', 'wpsso' ),

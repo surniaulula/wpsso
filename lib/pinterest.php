@@ -183,12 +183,9 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 
 			$local_is_recursion[ $cache_salt ] = true;
 
-			$size_name = 'wpsso-pinterest';
-
-			$mt_images = $this->p->og->get_all_images( 1, $size_name, $mod, false, $md_pre = array( 'pin', 'schema', 'og' ) );
-
-			$image_url = SucomUtil::get_first_mt_media_url( $mt_images );
-
+			$size_name  = 'wpsso-pinterest';
+			$mt_images  = $this->p->og->get_all_images( 1, $size_name, $mod, false, $md_pre = array( 'pin', 'schema', 'og' ) );
+			$image_url  = SucomUtil::get_first_mt_media_url( $mt_images );
 			$image_html = '<div class="wpsso-pinterest-pin-it-image" style="display:none !important;">' . "\n";
 
 			if ( empty( $image_url ) ) {
@@ -205,8 +202,8 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 					$this->p->debug->log( 'adding image URL for pinterest = ' . $image_url );
 				}
 
-				$data_pin_desc = $this->p->page->get_description( $this->p->options[ 'pin_img_desc_max_len' ],
-					$dots = '...', $mod, $add_hashtags = true, $do_encode = true, $md_key = array( 'pin_img_desc', 'og_desc' ) );
+				$data_pin_desc = $this->p->page->get_description( 'pin_img_desc', $dots = '...', $mod,
+					$add_hashtags = true, $do_encode = true, $md_key = array( 'pin_img_desc', 'og_desc', 'seo_desc' ) );
 
 				if ( $this->p->debug->enabled ) {
 

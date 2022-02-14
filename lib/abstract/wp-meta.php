@@ -326,30 +326,57 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'gv_id_img'   => 0,	// Post Image Field ID
 
 					/**
-					 * Customize tab.
+					 * Edit General.
 					 */
-					'og_type'         => $def_og_type,		// Open Graph Type.
 					'primary_term_id' => $def_primary_term_id,	// Primary Category.
-					'og_title'        => '',			// Default Title.
-					'og_desc'         => '',			// Default Description.
-					'seo_desc'        => '',			// Meta Description.
+					'seo_title'       => '',			// SEO Title Tag.
+					'seo_desc'        => '',			// SEO Meta Description.
+					'og_type'         => $def_og_type,		// Open Graph Type.
+					'og_title'        => '',			// Open Graph Title.
+					'og_desc'         => '',			// Open Graph Description.
 					'pin_img_desc'    => '',			// Pinterest Description.
 					'tc_title'        => '',			// Twitter Card Title.
 					'tc_desc'         => '',			// Twitter Card Description.
-					'canonical_url'   => '',			// Canonical URL.
-					'og_img_max'      => isset( $opts[ 'og_img_max' ] ) ? (int) $opts[ 'og_img_max' ] : 1,	// 1 by default.
-					'og_vid_max'      => isset( $opts[ 'og_vid_max' ] ) ? (int) $opts[ 'og_vid_max' ] : 1,	// 1 by default.
-					'og_vid_prev_img' => empty( $opts[ 'og_vid_prev_img' ] ) ? 0 : 1,	// Enabled by default.
-					'og_vid_autoplay' => empty( $opts[ 'og_vid_autoplay' ] ) ? 0 : 1,	// Enabled by default.
-
-					/**
-					 * Open Graph article type.
-					 */
 					'article_section' => isset( $opts[ 'og_def_article_section' ] ) ? $opts[ 'og_def_article_section' ] : 'none',
 					'reading_mins'    => $def_reading_mins,
 
 					/**
-					 * Open Graph and Schema product type.
+					 * Edit Media tab.
+					 */
+					'og_img_max'        => isset( $opts[ 'og_img_max' ] ) ? (int) $opts[ 'og_img_max' ] : 1,	// 1 by default.
+					'og_vid_max'        => isset( $opts[ 'og_vid_max' ] ) ? (int) $opts[ 'og_vid_max' ] : 1,	// 1 by default.
+					'og_vid_prev_img'   => empty( $opts[ 'og_vid_prev_img' ] ) ? 0 : 1,	// Enabled by default.
+					'og_vid_autoplay'   => empty( $opts[ 'og_vid_autoplay' ] ) ? 0 : 1,	// Enabled by default.
+					'og_img_id'         => '',
+					'og_img_id_lib'     => $def_img_id_lib,
+					'og_img_url'        => '',
+					'og_vid_embed'      => '',
+					'og_vid_url'        => '',
+					'og_vid_title'      => '',
+					'og_vid_desc'       => '',
+					'og_vid_stream_url' => '',
+					'og_vid_width'      => '',
+					'og_vid_height'     => '',
+					'pin_img_id'        => '',
+					'pin_img_id_lib'    => $def_img_id_lib,
+					'pin_img_url'       => '',
+					'tc_lrg_img_id'     => '',
+					'tc_lrg_img_id_lib' => $def_img_id_lib,
+					'tc_lrg_img_url'    => '',
+					'tc_sum_img_id'     => '',
+					'tc_sum_img_id_lib' => $def_img_id_lib,
+					'tc_sum_img_url'    => '',
+					'schema_img_id'     => '',
+					'schema_img_id_lib' => $def_img_id_lib,
+					'schema_img_url'    => '',
+
+					/**
+					 * Edit Visibility tab.
+					 */
+					'canonical_url' => '',		// Canonical URL.
+
+					/**
+					 * Open Graph and Schema Product type.
 					 */
 					'product_category'         => isset( $opts[ 'og_def_product_category' ] ) ? $opts[ 'og_def_product_category' ] : 'none',
 					'product_brand'            => '',
@@ -376,49 +403,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'product_gtin8'            => '',
 					'product_gtin'             => '',
 					'product_isbn'             => '',
-
-					/**
-					 * Open Graph priority image.
-					 */
-					'og_img_id'     => '',
-					'og_img_id_lib' => $def_img_id_lib,
-					'og_img_url'    => '',
-
-					/**
-					 * Open Graph priority video.
-					 */
-					'og_vid_embed'      => '',
-					'og_vid_url'        => '',
-					'og_vid_title'      => '',
-					'og_vid_desc'       => '',
-					'og_vid_stream_url' => '',
-					'og_vid_width'      => '',
-					'og_vid_height'     => '',
-
-					/**
-					 * Pinterest priority image.
-					 */
-					'pin_img_id'     => '',
-					'pin_img_id_lib' => $def_img_id_lib,
-					'pin_img_url'    => '',
-
-					/**
-					 * Twitter Card priority image.
-					 */
-					'tc_lrg_img_id'     => '',
-					'tc_lrg_img_id_lib' => $def_img_id_lib,
-					'tc_lrg_img_url'    => '',
-
-					'tc_sum_img_id'     => '',
-					'tc_sum_img_id_lib' => $def_img_id_lib,
-					'tc_sum_img_url'    => '',
-
-					/**
-					 * Schema Markup and Google Rich Results priority image.
-					 */
-					'schema_img_id'     => '',
-					'schema_img_id_lib' => $def_img_id_lib,
-					'schema_img_url'    => '',
 
 					/**
 					 * All Schema Types.
@@ -1264,7 +1248,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 				$md_val = $this->get_options( $obj_id, $md_key, $filter_opts );
 
-			} elseif ( true === $md_key ) {	// True is not valid for a custom meta key.
+			} elseif ( true === $md_key ) {	// True is invalid for a custom meta key.
 
 				$md_val = null;
 
@@ -1446,9 +1430,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			$md_opts = $this->p->opt->sanitize( $md_opts, $md_defs, $network = false, $mod );
 
 			/**
-			 * Do not save the SEO description if an SEO plugin is active.
+			 * Do not save the SEO meta description if the meta description is disabled.
 			 */
-			if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
+			if ( empty( $this->p->options[ 'add_meta_name_description' ] ) ) {
 
 				unset( $md_opts[ 'seo_desc' ] );
 			}

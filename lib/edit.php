@@ -50,45 +50,30 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 
 		public function filter_metabox_sso_edit_general_rows( $table_rows, $form, $head_info, $mod ) {
 
-			$dots      = '...';
-			$do_encode = true;
-
-			$pin_img_disabled_msg  = $this->p->msgs->maybe_pin_img_disabled();
-			$pin_img_disabled      = $pin_img_disabled_msg ? true : false;
-			$seo_desc_disabled     = empty( $this->p->options[ 'add_meta_name_description' ] ) ? true : false;
-			$seo_desc_disabled_msg = $seo_desc_disabled ? $this->p->msgs->seo_option_disabled( 'meta name description' ) : '';
-
-			/**
-			 * Select option arrays.
-			 */
+			$limits           = $this->p->cf[ 'form' ][ 'input_limits' ];
 			$og_types         = $this->p->og->get_og_types_select();
 			$schema_types     = $this->p->schema->get_schema_types_select();
 			$primary_terms    = $this->p->post->get_primary_terms( $mod, $tax_slug = 'category', $output = 'names' );
 			$article_sections = $this->p->util->get_article_sections();
 
 			/**
-			 * Maximum option lengths.
-			 */
-			$og_title_max_len      = $this->p->options[ 'og_title_max_len' ];
-			$og_title_warn_len     = $this->p->options[ 'og_title_warn_len' ];
-			$og_desc_max_len       = $this->p->options[ 'og_desc_max_len' ];
-			$og_desc_warn_len      = $this->p->options[ 'og_desc_warn_len' ];
-			$pin_img_desc_max_len  = $this->p->options[ 'pin_img_desc_max_len' ];
-			$pin_img_desc_warn_len = $this->p->options[ 'pin_img_desc_warn_len' ];
-			$tc_title_max_len      = $this->p->options[ 'tc_title_max_len' ];
-			$tc_desc_max_len       = $this->p->options[ 'tc_desc_max_len' ];
-			$seo_desc_max_len      = $this->p->options[ 'seo_desc_max_len' ];		// Description Meta Tag Max. Length.
-
-			/**
 			 * Default option values.
 			 */
-			$def_og_title      = $this->p->page->get_title( $og_title_max_len, $dots, $mod, $add_hashtags = false, $do_encode, 'none' );
-			$def_og_desc       = $this->p->page->get_description( $og_desc_max_len, $dots, $mod, $add_hashtags = true, $do_encode, 'none' );
-			$def_pin_img_desc  = $pin_img_disabled ? '' : $this->p->page->get_description( $pin_img_desc_max_len, $dots, $mod );
-			$def_tc_title      = $this->p->page->get_title( $tc_title_max_len, $dots, $mod );
-			$def_tc_desc       = $this->p->page->get_description( $tc_desc_max_len, $dots, $mod );
-			$def_seo_desc      = $seo_desc_disabled ? '' : $this->p->page->get_description( $seo_desc_max_len, $dots, $mod, $add_hashtags = false );
+			$def_seo_title     = $this->p->page->get_title( 'seo_title', $dots = '...', $mod, $add_hashtags = false, $do_encode = true, $md_key = 'none' );
+			$def_seo_desc      = $this->p->page->get_description( 'seo_desc', $dots = '...', $mod, $add_hashtags = false, $do_encode = true, $md_key = 'none' );
+			$def_og_title      = $this->p->page->get_title( 'og_title', $dots = '...', $mod );
+			$def_og_desc       = $this->p->page->get_description( 'og_desc', $dots = '...', $mod, $add_hashtags = true );
+			$def_pin_img_desc  = $this->p->page->get_description( 'pin_img_desc', $dots = '...', $mod );
+			$def_tc_title      = $this->p->page->get_title( 'tc_title', $dots = '...', $mod );
+			$def_tc_desc       = $this->p->page->get_description( 'tc_desc', $dots = '...', $mod );
 			$def_reading_mins  = $this->p->page->get_reading_mins( $mod );
+
+			$seo_title_disabled     = $this->p->util->is_seo_title_disabled();
+			$seo_title_disabled_msg = $this->p->msgs->maybe_seo_tag_option_disabled( 'meta name description' );
+			$seo_desc_disabled      = $this->p->util->is_seo_desc_disabled();
+			$seo_desc_disabled_msg  = $this->p->msgs->maybe_seo_tag_option_disabled( 'meta name description' );
+			$pin_img_disabled_msg   = $this->p->msgs->maybe_pin_img_disabled();
+			$pin_img_disabled       = $pin_img_disabled_msg ? true : false;
 
 			/**
 			 * Metabox form rows.
@@ -130,54 +115,6 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					'content'  => $form->get_select( 'primary_term_id', $primary_terms,
 						$css_class = 'primary_term_id', $css_id = '', $is_assoc = true ),
 				) : '',
-				'og_title' => $mod[ 'is_public' ] ? array(
-					'th_class' => 'medium',
-					'label'    => _x( 'Default Title', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-og_title',
-					'content'  => $form->get_input( 'og_title', $css_class = 'wide', $css_id = '',
-						array( 'max' => $og_title_max_len, 'warn' => $og_title_warn_len ), $def_og_title ),
-				) : '',
-				'og_desc' => $mod[ 'is_public' ] ? array(
-					'th_class' => 'medium',
-					'label'    => _x( 'Default Description', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-og_desc',
-					'content'  => $form->get_textarea( 'og_desc', $css_class = '', $css_id = '',
-						array( 'max' => $og_desc_max_len, 'warn' => $og_desc_warn_len ), $def_og_desc ),
-				) : '',
-				'seo_desc' => $mod[ 'is_public' ] ? array(
-					'tr_class' => $seo_desc_disabled ? 'hide_in_basic' : '',
-					'th_class' => 'medium',
-					'label'    => _x( 'Meta Description', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-seo_desc',
-					'content'  => $form->get_textarea( 'seo_desc', $css_class = '', $css_id = '',
-						$seo_desc_max_len, $def_seo_desc, $seo_desc_disabled ) . ' ' . $seo_desc_disabled_msg,
-				) : '',
-				'pin_img_desc' => $mod[ 'is_public' ] ? array(
-					'tr_class' => $pin_img_disabled ? 'hide_in_basic' : '',
-					'th_class' => 'medium',
-					'label'    => _x( 'Pinterest Description', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-pin_img_desc',
-					'content'  => $form->get_textarea( 'pin_img_desc', $css_class = '', $css_id = '',
-						array( 'max' => $pin_img_desc_max_len, 'warn' => $pin_img_desc_warn_len ),
-							$def_pin_img_desc, $pin_img_disabled ) . $pin_img_disabled_msg,
-				) : '',
-				'tc_title' => $mod[ 'is_public' ] ? array(
-					'th_class' => 'medium',
-					'label'    => _x( 'Twitter Card Title', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-tc_title',
-					'content'  => $form->get_input( 'tc_title', $css_class = 'wide', $css_id = '',
-						$tc_title_max_len, $def_tc_title ),
-				) : '',
-				'tc_desc' => $mod[ 'is_public' ] ? array(
-					'th_class' => 'medium',
-					'label'    => _x( 'Twitter Card Description', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-tc_desc',
-					'content'  => $form->get_textarea( 'tc_desc', $css_class = '', $css_id = '',
-						$tc_desc_max_len, $def_tc_desc ),
-				) : '',
-				/**
-				 * Open Graph Article type.
-				 */
 				'og_article_section' => $mod[ 'is_public' ] ? array(
 					'tr_class' => 'hide_og_type hide_og_type_article',
 					'th_class' => 'medium',
@@ -201,6 +138,57 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					'tooltip'  => 'meta-reading_mins',
 					'content'  => $form->get_input( 'reading_mins', $css_class = 'xshort', $css_id = '', 0, $def_reading_mins ) . ' ' .
 						__( 'minute(s)', 'wpsso' ),
+				) : '',
+				'seo_title' => $mod[ 'is_public' ] ? array(
+					'th_class' => 'medium',
+					'label'    => _x( 'SEO Title Tag', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-seo_title',
+					'content'  => $form->get_input( 'seo_title', $css_class = 'wide', $css_id = '',
+						$limits[ 'seo_title' ], $def_seo_title, $seo_title_disabled ) . ' ' . $seo_title_disabled_msg,
+				) : '',
+				'seo_desc' => $mod[ 'is_public' ] ? array(
+					'tr_class' => $seo_desc_disabled ? 'hide_in_basic' : '',
+					'th_class' => 'medium',
+					'label'    => _x( 'SEO Meta Description', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-seo_desc',
+					'content'  => $form->get_textarea( 'seo_desc', $css_class = '', $css_id = '',
+						$limits[ 'seo_desc' ], $def_seo_desc, $seo_desc_disabled ) . ' ' . $seo_desc_disabled_msg,
+				) : '',
+				'og_title' => $mod[ 'is_public' ] ? array(
+					'th_class' => 'medium',
+					'label'    => _x( 'Open Graph Title', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-og_title',
+					'content'  => $form->get_input( 'og_title', $css_class = 'wide', $css_id = '',
+						$limits[ 'og_title' ], $def_og_title ),
+				) : '',
+				'og_desc' => $mod[ 'is_public' ] ? array(
+					'th_class' => 'medium',
+					'label'    => _x( 'Open Graph Description', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-og_desc',
+					'content'  => $form->get_textarea( 'og_desc', $css_class = '', $css_id = '',
+						$limits[ 'og_desc' ], $def_og_desc ),
+				) : '',
+				'pin_img_desc' => $mod[ 'is_public' ] ? array(
+					'tr_class' => $pin_img_disabled ? 'hide_in_basic' : '',
+					'th_class' => 'medium',
+					'label'    => _x( 'Pinterest Description', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-pin_img_desc',
+					'content'  => $form->get_textarea( 'pin_img_desc', $css_class = '', $css_id = '',
+						$limits[ 'pin_img_desc' ], $def_pin_img_desc, $pin_img_disabled ) . $pin_img_disabled_msg,
+				) : '',
+				'tc_title' => $mod[ 'is_public' ] ? array(
+					'th_class' => 'medium',
+					'label'    => _x( 'Twitter Card Title', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-tc_title',
+					'content'  => $form->get_input( 'tc_title', $css_class = 'wide', $css_id = '',
+						$limits[ 'tc_title' ], $def_tc_title ),
+				) : '',
+				'tc_desc' => $mod[ 'is_public' ] ? array(
+					'th_class' => 'medium',
+					'label'    => _x( 'Twitter Card Description', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-tc_desc',
+					'content'  => $form->get_textarea( 'tc_desc', $css_class = '', $css_id = '',
+						$limits[ 'tc_desc' ], $def_tc_desc ),
 				) : '',
 			);
 
@@ -426,7 +414,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 		public function filter_metabox_sso_edit_visibility_rows( $table_rows, $form, $head_info, $mod ) {
 
 			$canonical_url_disabled     = empty( $this->p->options[ 'add_link_rel_canonical' ] ) ? true : false;
-			$canonical_url_disabled_msg = $canonical_url_disabled ? $this->p->msgs->seo_option_disabled( 'link rel canonical' ) : '';
+			$canonical_url_disabled_msg = $this->p->msgs->maybe_seo_tag_option_disabled( 'link rel canonical' );
 			$def_canonical_url          = $this->p->util->get_canonical_url( $mod, $add_page = false );
 
 			$form_rows = array(
@@ -452,7 +440,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 		public function filter_metabox_sso_edit_visibility_robots_rows( $table_rows, $form, $head_info, $mod ) {
 
 			$robots_disabled     = $this->p->util->robots->is_disabled();
-			$robots_disabled_msg = $robots_disabled ? $this->p->msgs->seo_option_disabled( 'meta name robots' ) : '';
+			$robots_disabled_msg = $this->p->msgs->maybe_seo_tag_option_disabled( 'meta name robots' );
 
 			$form_rows = array(
 				'subsection_robots_meta' => array(

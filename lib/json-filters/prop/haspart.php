@@ -110,7 +110,7 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 				$this->p->debug->log( 'getting the content for post id ' . $mod[ 'id' ] );
 			}
 
-			$content = $this->p->page->get_the_content( $mod, $md_key = '', $flatten = false );
+			$content = $this->p->page->get_the_content( $mod, $flatten = false );
 
 			if ( $this->p->debug->enabled ) {
 
