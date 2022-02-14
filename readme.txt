@@ -267,6 +267,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
+	* Refactored the `WpssoPage` class `get_title()`, `get_description()`, and `get_caption()` methods, including their arguments.
 	* Added a new `WpssoConfig::$cf[ 'form' ][ 'input_limits' ]` array for min, warn, and max title and description lengths.
 * **Requires At Least**
 	* PHP v7.2.
@@ -912,7 +913,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 = 10.4.0-dev.2 =
 
-(2022/02/14) Added a new "SEO Title Tag" option in the Document SSO metabox.
+(2022/02/14) Added a new "SEO Title Tag" option in the Document SSO metabox. Refactored `WpssoPage` class methods, including their arguments.
 
 = 10.3.1 =
 
