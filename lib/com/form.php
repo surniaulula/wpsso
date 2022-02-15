@@ -2671,6 +2671,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			/**
 			 * Extract the option label, without its qualifier (ie. "(default)").
 			 */
+			$a_count = null;
+			$b_count = null;
+
 			$a_label = preg_replace( '/^.*>(.*)<\/option>$/', '$1', $a, $limit = -1, $a_count );
 			$b_label = preg_replace( '/^.*>(.*)<\/option>$/', '$1', $b, $limit = -1, $b_count );
 

@@ -431,6 +431,8 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			 *
 			 * $found (bool) Whether the key was found in the cache (passed by reference) - disambiguates a return of false.
 			 */
+			$found = null;
+
 			$metadata = wp_cache_get( $obj_id, $meta_type . '_meta', $force = false, $found );
 
 			if ( $found ) {

@@ -4656,7 +4656,7 @@ msgstr ""
 
 #: gettext/gettext-lib-pro.php:412 gettext/gettext-lib-pro.php:414
 #: gettext/gettext-lib-pro.php:448 lib/conflict.php:208 lib/loader.php:187
-#: lib/loader.php:201 lib/post.php:1659 lib/pro/review/yotpowc.php:205
+#: lib/loader.php:201 lib/post.php:1661 lib/pro/review/yotpowc.php:205
 #: lib/pro/util/shorten.php:495 lib/pro/util/shorten.php:532
 msgid "%s error:"
 msgstr ""
@@ -5698,7 +5698,7 @@ msgctxt "option label"
 msgid "Use Local Plugin Translations"
 msgstr ""
 
-#: lib/admin.php:2955 lib/util.php:2855
+#: lib/admin.php:2955 lib/util.php:2858
 msgctxt "option label"
 msgid "Disable Cache for Debugging"
 msgstr ""
@@ -6575,12 +6575,12 @@ msgid ""
 msgstr ""
 
 #: lib/media.php:1044 lib/post.php:705 lib/register.php:348 lib/term.php:554
-#: lib/user.php:538 lib/util.php:702 lib/util.php:2819
+#: lib/user.php:538 lib/util.php:705 lib/util.php:2822
 msgid "%s warning:"
 msgstr ""
 
 #: lib/media.php:1045 lib/post.php:706 lib/term.php:555 lib/user.php:539
-#: lib/util.php:703 lib/util.php:2820
+#: lib/util.php:706 lib/util.php:2823
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
@@ -10189,7 +10189,7 @@ msgstr ""
 msgid "Page %1$d"
 msgstr ""
 
-#: lib/page.php:2090
+#: lib/page.php:2092
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] ""
@@ -10206,7 +10206,7 @@ msgid ""
 "post ID %3$d (%4$s)."
 msgstr ""
 
-#: lib/post.php:921 lib/post.php:1583 lib/schema.php:3506 lib/term.php:678
+#: lib/post.php:921 lib/post.php:1585 lib/schema.php:3506 lib/term.php:678
 #: lib/user.php:679
 msgid "checking meta tags"
 msgstr ""
@@ -10272,76 +10272,76 @@ msgstr ""
 msgid "Does a caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:1294
+#: lib/post.php:1296
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section."
 msgstr ""
 
-#: lib/post.php:1297
+#: lib/post.php:1299
 msgid ""
 "This could indicate a problem with PHP's PCRE library, or an optimization "
 "plugin / service corrupting the webpage HTML."
 msgstr ""
 
-#: lib/post.php:1300
+#: lib/post.php:1302
 msgid ""
 "You should consider updating or having your hosting provider update your PHP "
 "installation and its PCRE library."
 msgstr ""
 
-#: lib/post.php:1321
+#: lib/post.php:1323
 msgid ""
 "Conflict detected - your theme or another plugin is adding %1$s to the head "
 "section of this webpage."
 msgstr ""
 
-#: lib/post.php:1340
+#: lib/post.php:1342
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1342
+#: lib/post.php:1344
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML document."
 msgstr ""
 
-#: lib/post.php:1345
+#: lib/post.php:1347
 msgid ""
 "Please review the <a href=\"%1$s\">W3C Markup Validator</a> results and "
 "correct any syntax errors."
 msgstr ""
 
-#: lib/post.php:1388
+#: lib/post.php:1390
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1390
+#: lib/post.php:1392
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1398
+#: lib/post.php:1400
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1402
+#: lib/post.php:1404
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1406
+#: lib/post.php:1408
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1623
+#: lib/post.php:1625
 msgid "invalid ajax referer nonce value"
 msgstr ""
 
-#: lib/post.php:1628
+#: lib/post.php:1630
 msgid "ajax request missing the post_id"
 msgstr ""
 
-#: lib/post.php:1927
+#: lib/post.php:1929
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -11454,182 +11454,182 @@ msgstr ""
 msgid "uncropped"
 msgstr ""
 
-#: lib/util.php:704
+#: lib/util.php:707
 msgid "Slow PHP function detected - %1$s took %2$.3f secs for %3$s (%4$s)."
 msgstr ""
 
-#: lib/util.php:1131
+#: lib/util.php:1134
 msgid "Error reading the %s file for the article sections list."
 msgstr ""
 
-#: lib/util.php:1232
+#: lib/util.php:1235
 msgid "Error reading the %s file for the product categories list."
 msgstr ""
 
-#: lib/util.php:1363
+#: lib/util.php:1366
 msgid "The <code>%1$s</code> request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1387
+#: lib/util.php:1390
 msgid "Error getting HTML from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/util.php:1417
+#: lib/util.php:1420
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
 #. translators: %1$s is the class name.
-#: lib/util.php:1615
+#: lib/util.php:1618
 msgid ""
 "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting "
 "provider to have the missing class installed."
 msgstr ""
 
 #. translators: %1$s is the function name.
-#: lib/util.php:1629
+#: lib/util.php:1632
 msgid ""
 "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting "
 "provider to have the missing function installed."
 msgstr ""
 
-#: lib/util.php:2821
+#: lib/util.php:2824
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:2858
+#: lib/util.php:2861
 msgid ""
 "Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds "
 "to execute."
 msgstr ""
 
-#: lib/util.php:2860
+#: lib/util.php:2863
 msgid ""
 "This is longer than the recommended maximum of %1$.3f seconds and may affect "
 "page load time."
 msgstr ""
 
-#: lib/util.php:2862
+#: lib/util.php:2865
 msgid ""
 "Please consider reviewing active plugin and theme functions hooked into the "
 "WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:2864
+#: lib/util.php:2867
 msgid ""
 "Activating the %1$s plugin and enabling the the %2$s option (to apply the "
 "filter consistently) may provide more information on the specific hooks or "
 "PHP code affecting performance."
 msgstr ""
 
-#: lib/util.php:3260
+#: lib/util.php:3263
 msgctxt "option label"
 msgid "The AMP Project Validator"
 msgstr ""
 
-#: lib/util.php:3261
+#: lib/util.php:3264
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr ""
 
-#: lib/util.php:3265
+#: lib/util.php:3268
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr ""
 
-#: lib/util.php:3266
+#: lib/util.php:3269
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/util.php:3270
+#: lib/util.php:3273
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr ""
 
-#: lib/util.php:3271
+#: lib/util.php:3274
 msgctxt "validator type"
 msgid "Microdata"
 msgstr ""
 
-#: lib/util.php:3275
+#: lib/util.php:3278
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr ""
 
-#: lib/util.php:3276
+#: lib/util.php:3279
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr ""
 
-#: lib/util.php:3280
+#: lib/util.php:3283
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/util.php:3281
+#: lib/util.php:3284
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr ""
 
-#: lib/util.php:3285
+#: lib/util.php:3288
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/util.php:3286
+#: lib/util.php:3289
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/util.php:3290
+#: lib/util.php:3293
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/util.php:3291
+#: lib/util.php:3294
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr ""
 
-#: lib/util.php:3295
+#: lib/util.php:3298
 msgctxt "option label"
 msgid "Schema Markup Validator"
 msgstr ""
 
-#: lib/util.php:3296
+#: lib/util.php:3299
 msgctxt "validator type"
 msgid "Schema Markup"
 msgstr ""
 
-#: lib/util.php:3300
+#: lib/util.php:3303
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/util.php:3301
+#: lib/util.php:3304
 msgctxt "validator type"
 msgid "Twitter Card"
 msgstr ""
 
-#: lib/util.php:3306
+#: lib/util.php:3309
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr ""
 
-#: lib/util.php:3307
+#: lib/util.php:3310
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name.
-#: lib/util.php:3469
+#: lib/util.php:3472
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3479
+#: lib/util.php:3482
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 

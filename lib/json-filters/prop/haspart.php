@@ -380,7 +380,10 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 				}
 
 				$success = "\n" . '<!-- json-ld script ' . $single_md5 . ' added to Schema markup and commented -->' . "\n";
+
 				$failure = "\n" . '<!-- json-ld script ' . $single_md5 . ' added to Schema markup but not found in content -->' . "\n";
+
+				$count = null;
 
 				$content = str_replace( $single_json, $success . $single_json_encoded, $content, $count );
 

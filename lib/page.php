@@ -1690,6 +1690,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/**
 			 * Remove singlepics, which we detect and use before-hand.
 			 */
+			$count = null;
+
 			$content = preg_replace( '/\[singlepic[^\]]+\]/', '', $content, -1, $count );
 
 			if ( $count > 0 ) {
@@ -2142,11 +2144,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				$md_key = $def_key ? $def_key : '';
 
-			} elseif ( ! is_array( $md_key ) ) {	// Check the key value and create a fallback order.
+			} elseif ( ! is_array( $md_key ) ) {	// Use the key and maybe create a fallback order.
 
 				$md_key = array( $md_key );
 
-				switch ( $md_key ) {	// Maybe add some fallback values.
+				/**
+				 * Maybe add fallback keys.
+				 */
+				switch ( $md_key ) {
 
 					case 'schema_title_bc':
 					case 'schema_title_headline':
@@ -2178,7 +2183,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			/**
-			 * Add the default fallback key to the array and remove any duplicates.
+			 * Add the default fallback key to the array and remove duplicates.
 			 */
 			if ( is_array( $md_key ) ) {
 

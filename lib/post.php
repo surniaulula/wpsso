@@ -1278,9 +1278,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$mt_mark_preg = $this->p->head->get_mt_data( 'preg' );
 
-			$html_stripped = preg_replace( $mt_mark_preg, '', $webpage_html, -1, $mark_count );
+			$count = null;
 
-			if ( ! $mark_count ) {
+			$html_stripped = preg_replace( $mt_mark_preg, '', $webpage_html, -1, $count );
+
+			if ( ! $count ) {
 
 				if ( $this->p->debug->enabled ) {
 
