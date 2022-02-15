@@ -659,7 +659,7 @@ function sucomTextLenSpan( text_len, max_len, warn_len, min_len ) {
 
 	if ( max_len ) {
 
-		var pct_width = text_len * 100 / max_len;
+		var pct_width = Math.round( text_len * 100 / max_len );
 
 		html += '<div class="progress wrapper">';
 		html += '<div class="progress ' + css_class + '" style="width:' + pct_width + '%;"></div>';
