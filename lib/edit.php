@@ -71,12 +71,13 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			/**
 			 * Check for disabled options.
 			 */
-			$seo_title_disabled     = $this->p->util->is_seo_title_disabled();
-			$seo_title_disabled_msg = $this->p->msgs->maybe_seo_tag_option_disabled( 'meta name description' );
-			$seo_desc_disabled      = $this->p->util->is_seo_desc_disabled();
-			$seo_desc_disabled_msg  = $this->p->msgs->maybe_seo_tag_option_disabled( 'meta name description' );
-			$pin_img_disabled_msg   = $this->p->msgs->maybe_pin_img_disabled();
-			$pin_img_disabled       = $pin_img_disabled_msg ? true : false;
+			$seo_title_disabled = $this->p->util->is_seo_title_disabled();
+			$seo_desc_disabled  = $this->p->util->is_seo_desc_disabled();
+			$pin_img_disabled   = $this->p->util->is_pin_img_disabled();
+
+			$seo_title_msg = $this->p->msgs->maybe_seo_title_disabled();
+			$seo_desc_msg  = $this->p->msgs->maybe_seo_tag_disabled( 'meta name description' );
+			$pin_img_msg   = $this->p->msgs->maybe_pin_img_disabled();
 
 			/**
 			 * Metabox form rows.
@@ -143,11 +144,12 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 						__( 'minute(s)', 'wpsso' ),
 				) : '',
 				'seo_title' => $mod[ 'is_public' ] ? array(
+					'tr_class' => $seo_title_disabled ? 'hide_in_basic' : '',
 					'th_class' => 'medium',
 					'label'    => _x( 'SEO Title Tag', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-seo_title',
 					'content'  => $form->get_input( 'seo_title', $css_class = 'wide', $css_id = '',
-						$limits[ 'seo_title' ], $def_seo_title, $seo_title_disabled ) . ' ' . $seo_title_disabled_msg,
+						$limits[ 'seo_title' ], $def_seo_title, $seo_title_disabled ) . ' ' . $seo_title_msg,
 				) : '',
 				'seo_desc' => $mod[ 'is_public' ] ? array(
 					'tr_class' => $seo_desc_disabled ? 'hide_in_basic' : '',
@@ -155,7 +157,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					'label'    => _x( 'SEO Meta Description', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-seo_desc',
 					'content'  => $form->get_textarea( 'seo_desc', $css_class = '', $css_id = '',
-						$limits[ 'seo_desc' ], $def_seo_desc, $seo_desc_disabled ) . ' ' . $seo_desc_disabled_msg,
+						$limits[ 'seo_desc' ], $def_seo_desc, $seo_desc_disabled ) . ' ' . $seo_desc_msg,
 				) : '',
 				'og_title' => $mod[ 'is_public' ] ? array(
 					'th_class' => 'medium',
@@ -177,7 +179,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					'label'    => _x( 'Pinterest Description', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-pin_img_desc',
 					'content'  => $form->get_textarea( 'pin_img_desc', $css_class = '', $css_id = '',
-						$limits[ 'pin_img_desc' ], $def_pin_img_desc, $pin_img_disabled ) . $pin_img_disabled_msg,
+						$limits[ 'pin_img_desc' ], $def_pin_img_desc, $pin_img_disabled ) . $pin_img_msg,
 				) : '',
 				'tc_title' => $mod[ 'is_public' ] ? array(
 					'th_class' => 'medium',
@@ -340,11 +342,11 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 				return $table_rows;
 			}
 
-			$size_name           = 'wpsso-schema-1x1';
-			$media_request       = array( 'pid' );
-			$media_info          = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = 'og' );
-			$schema_disabled_msg = $this->p->msgs->maybe_schema_disabled();
-			$schema_disabled     = $schema_disabled_msg ? true : false;
+			$size_name       = 'wpsso-schema-1x1';
+			$media_request   = array( 'pid' );
+			$media_info      = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = 'og' );
+			$schema_disabled = $this->p->util->is_schema_disabled();
+			$schema_msg      = $this->p->msgs->maybe_schema_disabled();
 
 			$form_rows = array(
 				'subsection_schema' => array(
@@ -365,7 +367,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_img_url',
-					'content'  => $form->get_input_image_url( 'schema_img', '', $schema_disabled ) . $schema_disabled_msg,
+					'content'  => $form->get_input_image_url( 'schema_img', '', $schema_disabled ) . $schema_msg,
 				),
 			);
 
@@ -382,11 +384,11 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 				return $table_rows;
 			}
 
-			$size_name            = 'wpsso-pinterest';
-			$media_request        = array( 'pid' );
-			$media_info           = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = array( 'schema', 'og' ) );
-			$pin_img_disabled_msg = $this->p->msgs->maybe_pin_img_disabled();
-			$pin_img_disabled     = $pin_img_disabled_msg ? true : false;
+			$size_name        = 'wpsso-pinterest';
+			$media_request    = array( 'pid' );
+			$media_info       = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = array( 'schema', 'og' ) );
+			$pin_img_disabled = $this->p->util->is_pin_img_disabled();
+			$pin_img_msg      = $this->p->msgs->maybe_pin_img_disabled();
 
 			$form_rows = array(
 				'subsection_pinterest' => array(
@@ -407,7 +409,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-pin_img_url',
-					'content'  => $form->get_input_image_url( 'pin_img', '', $pin_img_disabled ) . $pin_img_disabled_msg,
+					'content'  => $form->get_input_image_url( 'pin_img', '', $pin_img_disabled ) . $pin_img_msg,
 				),
 			);
 
@@ -416,9 +418,9 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 
 		public function filter_metabox_sso_edit_visibility_rows( $table_rows, $form, $head_info, $mod ) {
 
-			$canonical_url_disabled     = empty( $this->p->options[ 'add_link_rel_canonical' ] ) ? true : false;
-			$canonical_url_disabled_msg = $this->p->msgs->maybe_seo_tag_option_disabled( 'link rel canonical' );
-			$def_canonical_url          = $this->p->util->get_canonical_url( $mod, $add_page = false );
+			$canonical_url_disabled = empty( $this->p->options[ 'add_link_rel_canonical' ] ) ? true : false;
+			$canonical_url_msg      = $this->p->msgs->maybe_seo_tag_disabled( 'link rel canonical' );
+			$def_canonical_url      = $this->p->util->get_canonical_url( $mod, $add_page = false );
 
 			$form_rows = array(
 				'canonical_url' => $mod[ 'is_public' ] ? array(
@@ -426,7 +428,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					'label'    => _x( 'Canonical URL', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-canonical_url',
 					'content'  => $form->get_input( 'canonical_url', $css_class = 'wide', $css_id = '',
-						$max_len = 0, $def_canonical_url, $canonical_url_disabled ) . ' ' . $canonical_url_disabled_msg,
+						$max_len = 0, $def_canonical_url, $canonical_url_disabled ) . ' ' . $canonical_url_msg,
 				) : '',
 			);
 
@@ -442,8 +444,8 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 		 */
 		public function filter_metabox_sso_edit_visibility_robots_rows( $table_rows, $form, $head_info, $mod ) {
 
-			$robots_disabled     = $this->p->util->robots->is_disabled();
-			$robots_disabled_msg = $this->p->msgs->maybe_seo_tag_option_disabled( 'meta name robots' );
+			$robots_disabled = $this->p->util->robots->is_disabled();
+			$robots_msg      = $this->p->msgs->maybe_seo_tag_disabled( 'meta name robots' );
 
 			$form_rows = array(
 				'subsection_robots_meta' => array(
@@ -453,7 +455,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 				),
 				'robots_disabled' => array(
 					'th_class' => 'medium',
-					'content'  => $robots_disabled ? $robots_disabled_msg : '',
+					'content'  => $robots_disabled ? $robots_msg : '',
 				),
 				'robots_noarchive' => array(
 					'th_class' => 'medium',

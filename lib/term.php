@@ -752,18 +752,10 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				$this->p->debug->mark();
 			}
 
+			$term_id = empty( $term_obj->term_id ) ? 0 : $term_obj->term_id;
 			$tax_obj = get_taxonomy( $tax_slug );
 
-			if ( ! current_user_can( $tax_obj->cap->edit_terms ) ) {	// Example: 'edit_categories'.
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: user cannot edit terms' );
-				}
-
-				return;
-
-			} elseif ( empty( $this->p->options[ 'plugin_add_to_tax_' . $tax_slug ] ) ) {
+			if ( empty( $this->p->options[ 'plugin_add_to_tax_' . $tax_slug ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -773,6 +765,18 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				return;
 			}
 
+			$capability = $tax_obj->cap->edit_terms;
+
+			if ( ! current_user_can( $capability, $term_id ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: cannot ' . $capability . ' for term id ' . $term_id );
+				}
+
+				return;
+			}
+			
 			$metabox_id      = $this->p->cf[ 'meta' ][ 'id' ];
 			$metabox_title   = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 			$metabox_screen  = 'wpsso-term';
@@ -794,13 +798,16 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 		public function show_metaboxes( $term_obj, $tax_slug ) {
 
+			$term_id = empty( $term_obj->term_id ) ? 0 : $term_obj->term_id;
 			$tax_obj = get_taxonomy( $tax_slug );
 
-			if ( ! current_user_can( $tax_obj->cap->edit_terms ) ) {	// Example: 'edit_categories'.
+			$capability = $tax_obj->cap->edit_terms;
+
+			if ( empty( $this->p->options[ 'plugin_add_to_tax_' . $tax_slug ] ) ) {
 
 				return;
 
-			} elseif ( empty( $this->p->options[ 'plugin_add_to_tax_' . $tax_slug ] ) ) {
+			} elseif ( ! current_user_can( $capability, $term_id ) ) {
 
 				return;
 			}
@@ -934,8 +941,6 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		 */
 		public function user_can_save( $term_id, $term_tax_id = false ) {
 
-			$user_can_save = false;
-
 			if ( ! $this->verify_submit_nonce() ) {
 
 				if ( $this->p->debug->enabled ) {
@@ -943,20 +948,19 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					$this->p->debug->log( 'exiting early: verify_submit_nonce failed' );
 				}
 
-				return $user_can_save;
+				return false;
 			}
 
 			$term_obj = get_term_by( 'term_taxonomy_id', $term_tax_id, $tax_slug = '' );
+			$tax_obj  = get_taxonomy( $term_obj->taxonomy );
 
-			$tax_obj = get_taxonomy( $term_obj->taxonomy );
+			$capability = $tax_obj->cap->edit_terms;
 
-			$user_can_save = current_user_can( $tax_obj->cap->edit_terms );	// Example: 'edit_categories'.
-
-			if ( ! $user_can_save ) {
+			if ( ! current_user_can( $capability, $term_id ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'insufficient privileges to save settings for term id ' . $term_id );
+					$this->p->debug->log( 'exiting early: cannot ' . $capability . ' for term id ' . $term_id );
 				}
 
 				/**
@@ -966,9 +970,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 					$this->p->notice->err( sprintf( __( 'Insufficient privileges to save settings for term ID %1$s.', 'wpsso' ), $term_id ) );
 				}
+
+				return false;
 			}
 
-			return $user_can_save;
+			return true;
 		}
 
 		/**

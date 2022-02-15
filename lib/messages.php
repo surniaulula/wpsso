@@ -960,9 +960,27 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			return $html;
 		}
 
-		public function maybe_seo_tag_option_disabled( $mt_name ) {
+		public function maybe_seo_title_disabled() {
+			
+			$is_disabled = $this->p->util->is_seo_title_disabled();
 
-			$html        = '';
+			if ( $is_disabled ) {
+
+				$opt_val   = _x( $this->p->cf[ 'form' ][ 'document_title' ][ 'seo_title' ], 'option value', 'wpsso' );
+				$opt_label = _x( 'Webpage Title Tag', 'option label', 'wpsso' );
+				$opt_link  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', $opt_label );
+
+				// translators: %s is the meta tag name (aka meta name canonical).
+				$html = sprintf( __( 'Modifications disabled (%1$s option is not %2$s).', 'wpsso' ), $opt_link, $opt_val );
+			
+				return '<p class="status-msg smaller disabled">' . $html . '</p>';
+			}
+
+			return '';
+		}
+
+		public function maybe_seo_tag_disabled( $mt_name ) {
+
 			$opt_key     = strtolower( 'add_' . str_replace( ' ', '_', $mt_name ) );
 			$is_disabled = empty( $this->p->options[ $opt_key ] ) ? true : false;
 
@@ -971,10 +989,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				// translators: %s is the meta tag name (aka meta name canonical).
 				$html = sprintf( __( 'Modifications disabled (<code>%s</code> tag disabled or SEO plugin detected).', 'wpsso' ), $mt_name );
 			
-				$html = '<p class="status-msg smaller disabled">' . $html . '</p>';
+				return '<p class="status-msg smaller disabled">' . $html . '</p>';
 			}
 
-			return $html;
+			return '';
 		}
 
 		/**

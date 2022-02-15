@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '10.4.0-dev.2',	// Plugin version.
+					'version'     => '10.4.0-dev.3',	// Plugin version.
 					'opt_version' => '879',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2438,10 +2438,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 				'document_title' => array(	// Webpage Title Tag.
 					'wp_title'         => '[Default WordPress Title]',
-					'seo_title'        => 'Document SSO - SEO Title Tag',
-					'og_title'         => 'Document SSO - Open Graph Title',
-					'schema_title'     => 'Document SSO - Schema Name',
-					'schema_title_alt' => 'Document SSO - Schema Alternate Name',
+					'seo_title'        => 'SEO Title Tag',
+					'schema_title'     => 'Schema Name',
+					'schema_title_alt' => 'Schema Alternate Name',
 				),
 				'notice_systems' => array(
 					'toolbar_notices' => 'SSO Toolbar Notices',

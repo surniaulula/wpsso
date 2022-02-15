@@ -2854,9 +2854,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					if ( $is_wp_filter ) {
 
 						$filter_api_link = sprintf( '<a href="https://codex.wordpress.org/Plugin_API/Filter_Reference/%1$s">%1$s</a>', $filter_name );
-						$qm_plugin_link  = '<a href="https://wordpress.org/plugins/query-monitor/">Query Monitor</a>';
-						$option_label    = _x( 'Disable Cache for Debugging', 'option label', 'wpsso' );
-						$option_link     = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_settings', $option_label );
+
+						$qm_plugin_link = '<a href="https://wordpress.org/plugins/query-monitor/">Query Monitor</a>';
+
+						$option_label = _x( 'Disable Cache for Debugging', 'option label', 'wpsso' );
+
+						$option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_settings', $option_label );
 
 						$notice_msg = sprintf( __( 'Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds to execute.', 'wpsso' ), $filter_api_link, $mtime_total ) . ' ';
 

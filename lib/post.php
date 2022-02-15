@@ -1429,21 +1429,23 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$post_id = empty( $post_obj->ID ) ? 0 : $post_obj->ID;
 
-			if ( ( 'page' === $post_type && ! current_user_can( 'edit_page', $post_id ) ) || ! current_user_can( 'edit_post', $post_id ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: user cannot edit page/post id ' . $post_id );
-				}
-
-				return;
-			}
-
 			if ( empty( $this->p->options[ 'plugin_add_to_' . $post_type ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'exiting early: cannot add metabox to post type "' . $post_type . '"' );
+				}
+
+				return;
+			}
+
+			$capability = 'page' === $post_type ? 'edit_page' : 'edit_post';
+
+			if ( ! current_user_can( $capability, $post_id ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: cannot ' . $capability . ' for post id ' . $post_id );
 				}
 
 				return;
@@ -1881,8 +1883,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		 */
 		public function user_can_save( $post_id, $rel = false ) {
 
-			$user_can_save = false;
-
 			if ( ! $this->verify_submit_nonce() ) {
 
 				if ( $this->p->debug->enabled ) {
@@ -1890,7 +1890,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					$this->p->debug->log( 'exiting early: verify_submit_nonce failed' );
 				}
 
-				return $user_can_save;
+				return false;
 			}
 
 			if ( ! $post_type = SucomUtil::get_request_value( 'post_type', 'POST' ) ) {	// Uses sanitize_text_field.
@@ -1898,27 +1898,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$post_type = 'post';
 			}
 
-			switch ( $post_type ) {
+			$capability = 'page' === $post_type ? 'edit_page' : 'edit_post';
 
-				case 'page':
-
-					$user_can_save = current_user_can( 'edit_' . $post_type, $post_id );
-
-					break;
-
-				default:
-
-					$user_can_save = current_user_can( 'edit_post', $post_id );
-
-					break;
-
-			}
-
-			if ( ! $user_can_save ) {
+			if ( ! current_user_can( $capability, $post_id ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'insufficient privileges to save settings for ' . $post_type . ' id ' . $post_id );
+					$this->p->debug->log( 'exiting early: cannot ' . $capability . ' for post id ' . $post_id );
 				}
 
 				/**
@@ -1928,9 +1914,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					$this->p->notice->err( sprintf( __( 'Insufficient privileges to save settings for %1$s ID %2$s.', 'wpsso' ), $post_type, $post_id ) );
 				}
+
+				return false;
 			}
 
-			return $user_can_save;
+			return true;
 		}
 
 		/**

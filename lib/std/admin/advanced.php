@@ -74,8 +74,8 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		 */
 		public function filter_plugin_integration_rows( $table_rows, $form, $network = false ) {
 
-			$doc_title_source       = $this->p->cf[ 'form' ][ 'document_title' ];
-			$doc_title_disabled_msg = $this->p->msgs->maybe_doc_title_disabled();
+			$doc_title_source = $this->p->cf[ 'form' ][ 'document_title' ];
+			$doc_title_msg    = $this->p->msgs->maybe_doc_title_disabled();
 
 			$table_rows[] = '<td colspan="4">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
@@ -84,7 +84,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					$css_class = '', $css_id = 'plugin_title_tag' ) .
 				'<td class="blank">' . $form->get_no_select( 'plugin_title_tag', $doc_title_source,
 					$css_class = 'long_name', $css_id = '', $is_assoc = true ) .
-				$doc_title_disabled_msg . '</td>' .
+				$doc_title_msg . '</td>' .
 				WpssoAdmin::get_option_site_use( 'plugin_title_tag', $form, $network );
 
 			$table_rows[ 'plugin_filter_content' ] = '' . 
@@ -203,7 +203,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		 */
 		public function filter_plugin_default_text_rows( $table_rows, $form ) {
 
-			$doc_title_disabled_msg = $this->p->msgs->maybe_doc_title_disabled();
+			$doc_title_msg = $this->p->msgs->maybe_doc_title_disabled();
 
 			$table_rows[] = '<td colspan="4">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
@@ -211,7 +211,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$form->get_th_html_locale( _x( 'Title Tag Site Suffix', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_title_part_site' ) .
 				'<td class="blank">' . $form->get_no_input_locale( 'plugin_title_part_site', $css_class = 'long_name' ) .
-				$doc_title_disabled_msg . '</td>';
+				$doc_title_msg . '</td>';
 
 			$table_rows[ 'plugin_title_part_tagline' ] = '' .
 				$form->get_th_html_locale( _x( 'Title Tag Tagline Suffix', 'option label', 'wpsso' ),
@@ -345,8 +345,8 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		 */
 		public function filter_plugin_image_sizes_rows( $table_rows, $form ) {
 
-			$pin_img_disabled_msg = $this->p->msgs->maybe_pin_img_disabled( $extra_css_class = 'inline' );
-			$pin_img_disabled     = $pin_img_disabled_msg ? true : false;
+			$pin_img_disabled = $this->p->util->is_pin_img_disabled();
+			$pin_img_msg      = $this->p->msgs->maybe_pin_img_disabled( $extra_css_class = 'inline' );
 
 			if ( $info_msg = $this->p->msgs->get( 'info-image_dimensions' ) ) {
 
@@ -361,7 +361,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			$table_rows[ 'pin_img_size' ] = ( $pin_img_disabled ? $form->get_tr_hide( 'basic' ) : '' ) .
 				$form->get_th_html( _x( 'Pinterest Pin It', 'option label', 'wpsso' ), '', 'pin_img_size' ) . 
-				'<td class="blank">' . $form->get_no_input_image_dimensions( 'pin_img', $pin_img_disabled ) . $pin_img_disabled_msg . '</td>';
+				'<td class="blank">' . $form->get_no_input_image_dimensions( 'pin_img', $pin_img_disabled ) . $pin_img_msg . '</td>';
 
 			$table_rows[ 'schema_01x01_img_size' ] = '' .
 				$form->get_th_html( _x( 'Schema 1:1 (Google)', 'option label', 'wpsso' ), '', 'schema_1x1_img_size' ) . 

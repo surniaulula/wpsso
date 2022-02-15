@@ -754,23 +754,25 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$user_id = SucomUtil::get_user_object( false, 'id' );
-
-			if ( ! current_user_can( 'edit_user', $user_id ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: user cannot edit user id ' . $user_id );
-				}
-
-				return;
-			}
+			$user_id = empty( $user_obj->ID ) ? 0 : $user_obj->ID;
 
 			if ( empty( $this->p->options[ 'plugin_add_to_user_page' ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'exiting early: cannot add metabox to user page' );
+				}
+
+				return;
+			}
+
+			$capability = 'edit_user';
+
+			if ( ! current_user_can( $capability, $user_id ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: cannot ' . $capability . ' for user id ' . $user_id );
 				}
 
 				return;
@@ -887,12 +889,12 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				return;
 			}
 
-			if ( ! current_user_can( 'edit_user', $user_obj->ID ) ) {	// Just in case.
+			if ( empty( $this->p->options[ 'plugin_add_to_user_page' ] ) ) {
 
 				return;
 			}
 
-			if ( empty( $this->p->options[ 'plugin_add_to_user_page' ] ) ) {
+			if ( ! current_user_can( 'edit_user', $user_obj->ID ) ) {	// Just in case.
 
 				return;
 			}
@@ -1644,8 +1646,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		 */
 		public function user_can_save( $user_id, $rel = false ) {
 
-			$user_can_save = false;
-
 			if ( ! $this->verify_submit_nonce() ) {
 
 				if ( $this->p->debug->enabled ) {
@@ -1653,16 +1653,16 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					$this->p->debug->log( 'exiting early: verify_submit_nonce failed' );
 				}
 
-				return $user_can_save;
+				return false;
 			}
 
-			$user_can_save = current_user_can( 'edit_user', $user_id );
+			$capability = 'edit_user';
 
-			if ( ! $user_can_save ) {
+			if ( ! current_user_can( $capability, $post_id ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'insufficient privileges to save settings for user id ' . $user_id );
+					$this->p->debug->log( 'exiting early: cannot ' . $capability . ' for user id ' . $user_id );
 				}
 
 				/**
@@ -1672,9 +1672,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 					$this->p->notice->err( sprintf( __( 'Insufficient privileges to save settings for user ID %1$s.', 'wpsso' ), $user_id ) );
 				}
+
+				return false;
 			}
 
-			return $user_can_save;
+			return true;
 		}
 
 		/**
