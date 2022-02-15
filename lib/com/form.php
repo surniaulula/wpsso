@@ -738,7 +738,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$html .= $this->get_placeholder_attrs( $type = 'input', $holder, $name );
 			$html .= ' value="' . esc_attr( $value ) . '" />' . "\n";
-			$html .= empty( $len ) ? '' : '<div id="text_' . $input_id . '-text-length-message"></div>' . "\n";
+			$html .= empty( $len ) ? '' : '<div id="text_' . $input_id . '-text-len-wrapper"></div>' . "\n";
 
 			if ( ! empty( $len ) ) {
 
@@ -1752,7 +1752,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html .= empty( $len[ 'max' ] ) || $is_disabled ? '' : ' maxLength="' . esc_attr( $len[ 'max' ] ) . '"';
 			$html .= empty( $len[ 'warn' ] ) || $is_disabled ? '' : ' warnLength="' . esc_attr( $len[ 'warn' ] ) . '"';
 			$html .= $this->get_placeholder_attrs( $type = 'textarea', $holder ) . '>' . esc_attr( $value ) . '</textarea>';
-			$html .= empty( $len[ 'max' ] ) || $is_disabled ? '' : ' <div id="textarea_' . $input_id . '-text-length-message"></div>';
+			$html .= empty( $len[ 'max' ] ) || $is_disabled ? '' : ' <div id="textarea_' . $input_id . '-text-len-wrapper"></div>';
 
 			if ( ! empty( $len[ 'max' ] ) ) {
 

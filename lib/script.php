@@ -477,7 +477,7 @@ EOF;
 						$this->p->cf[ 'notice' ][ 'title' ] ),
 				),
 				'_min_len_transl' => __( '{0} of {1} characters minimum', 'wpsso' ),
-				'_req_len_transl' => __( '{0} of {1} characters required', 'wpsso' ),
+				'_req_len_transl' => __( '{0} of {1} characters recommended', 'wpsso' ),
 				'_max_len_transl' => __( '{0} of {1} characters maximum', 'wpsso' ),
 				'_len_transl'     => __( '{0} characters', 'wpsso' ),
 			);

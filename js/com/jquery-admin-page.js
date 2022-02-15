@@ -3,7 +3,7 @@
  *
  * Don't forget to update the wp_register_script() arguments for the 'sucom-admin-page' script when updating this version number.
  *
- * Version: 20211210-01
+ * Version: 20220215-01
  */
 
 /**
@@ -568,14 +568,14 @@ function sucomTextLen( containerId, adminPageL10n ) {
 		max_len = min_len;
 	}
 
-	var len_span_html = sucomTextLenSpan( text_len, max_len, warn_len, min_len );
-	var limit_html    = max_len;
+	var char_count = sucomTextLenSpan( text_len, max_len, warn_len, min_len );
+	var char_limit = max_len;
 
 	if ( min_len ) {
 
 		if ( ! max_len ) {
 
-			limit_html = min_len;
+			char_limit = min_len;
 
 			msg_transl = cfg[ '_min_len_transl' ];
 
@@ -583,7 +583,7 @@ function sucomTextLen( containerId, adminPageL10n ) {
 
 			if ( max_len > min_len ) {
 
-				limit_html = String( min_len ) + '-' + String( max_len );
+				char_limit = String( min_len ) + '-' + String( max_len );
 			}
 
 			msg_transl = cfg[ '_req_len_transl' ];
@@ -599,10 +599,10 @@ function sucomTextLen( containerId, adminPageL10n ) {
 	}
 
 	/**
-	 * {0} = len_span_html
-	 * {1} = limit_html
+	 * {0} = char_count
+	 * {1} = char_limit
 	 */
-	jQuery( '#' + containerId + '-text-length-message' ).html( '<div class="text_len_msg">' + msg_transl.formatUnicorn( len_span_html, limit_html ) + '</div>' )
+	jQuery( '#' + containerId + '-text-len-wrapper' ).html( '<div class="text-len-status">' + msg_transl.formatUnicorn( char_count, char_limit ) + '</div>' )
 }
 
 /**
@@ -610,7 +610,7 @@ function sucomTextLen( containerId, adminPageL10n ) {
  */
 function sucomTextLenReset( containerId ) {
 
-	jQuery( '#' + containerId + '-text-length-message' ).html( '' )
+	jQuery( '#' + containerId + '-text-len-wrapper' ).html( '' )
 }
 
 function sucomTextLenSpan( text_len, max_len, warn_len, min_len ) {
@@ -637,26 +637,38 @@ function sucomTextLenSpan( text_len, max_len, warn_len, min_len ) {
 		min_len = 0;
 	}
 
+	var html      = '';
 	var css_class = '';
 
 	if ( max_len && text_len >= ( max_len - 5 ) ) {		// 5 characters from the end.
 
-		css_class = 'bad';
+		css_class = 'maximum';
 
 	} else if ( warn_len && text_len >= warn_len ) {	// Length is over the warning limit.
 
-		css_class = 'warn';
+		css_class = 'long';
 
 	} else if ( min_len && text_len < min_len ) {		// Length is less than the minimum.
 
-		css_class = 'bad';
+		css_class = 'short';
 
 	} else {
 
 		css_class = 'good';
 	}
 
-	return '<span class="' + css_class + '">' + text_len + '</span>';
+	if ( max_len ) {
+
+		var pct_width = text_len * 100 / max_len;
+
+		html += '<div class="progress wrapper">';
+		html += '<div class="progress ' + css_class + '" style="width:' + pct_width + '%;"></div>';
+		html += '</div>';
+	}
+
+	html += '<span class="numeric ' + css_class + '">' + text_len + '</span>';
+
+	return html;
 }
 
 function sucomTextLenClean( str ) {

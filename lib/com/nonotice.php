@@ -34,7 +34,7 @@ if ( ! class_exists( 'SucomNoNotice' ) ) {
 		public function get_ref_url_html() { return ''; }
 		public function is_ref_url() { return false; }
 		public function is_admin_pre_notices() { return false; }
-		public function force_expire() {}
+		public function clear_dismissed() {}
 		public function reset_dismissed() {}
 		public function is_dismissed() { return false; }
 		public function can_dismiss() { return false; }

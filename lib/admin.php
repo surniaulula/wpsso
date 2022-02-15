@@ -1140,6 +1140,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 */
 		public function registered_setting_sanitation( $opts ) {
 
+			$current_user_id = get_current_user_id();	// Always returns an integer.
+
 			/**
 			 * Clear any old notices for the current user before sanitation checks.
 			 */
@@ -1159,6 +1161,24 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$opts = array_merge( $this->p->options, $opts );
 			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network = false );
 			$opts = apply_filters( 'wpsso_save_setting_options', $opts, $network = false, $upgrading = false );
+
+			/**
+			 * Maybe clear dismissed notices.
+			 */
+			foreach ( array(
+				'add_link_rel_canonical',
+				'add_link_rel_shortlink',
+				'add_meta_name_description',
+				'add_meta_name_robots',
+			) as $opt_key ) {
+
+				if ( ! empty( $opts[ $opt_key ] ) ) {
+					
+					$notice_key = 'suggest-options-seo-' . $opt_key;
+
+					$this->p->notice->clear_dismissed( $notice_key, $current_user_id );
+				}
+			}
 
 			/**
 			 * Update the current options with any changes.
