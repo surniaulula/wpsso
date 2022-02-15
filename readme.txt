@@ -250,12 +250,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 10.4.0-dev.3 (2022/02/15)**
+**Version 10.4.0-dev.4 (2022/02/15)**
 
 * **New Features**
 	* Added a new "SEO Title Tag" option in the Document SSO metabox.
 * **Improvements**
 	* Added a new "Truncated Text Ellipsis" option in the SSO &gt; General Settings page.
+	* Added a progress bar to the character counter in the Document SSO metabox.
 	* Removed the Open Graph "Title Max. Length" option.
 	* Removed the Open Graph "Description Max. Length" option.
 	* Removed the Google / Schema "Description Meta Tag Max. Length" option.
@@ -269,6 +270,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Refactored the `WpssoPage` class `get_title()`, `get_description()`, and `get_caption()` methods, including their arguments.
 	* Added a new `WpssoConfig::$cf[ 'form' ][ 'input_limits' ]` array for minimum, warning, and maximum title and description lengths.
+	* Added new private methods in the `WpssoPage` class:
+		* `sanitize_max_len()`
+		* `sanitize_md_key()`
+		* `maybe_get_mod()`
+		* `maybe_get_title_sep()`
+		* `maybe_get_ellipsis()`
+		* `maybe_get_custom()`
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -911,7 +919,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 10.4.0-dev.3 =
+= 10.4.0-dev.4 =
 
 (2022/02/15) Added a new "SEO Title Tag" option in the Document SSO metabox. Refactored `WpssoPage` class methods, including their arguments.
 
