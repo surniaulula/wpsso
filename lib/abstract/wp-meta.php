@@ -332,8 +332,8 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'seo_title'       => '',			// SEO Title Tag.
 					'seo_desc'        => '',			// SEO Meta Description.
 					'og_type'         => $def_og_type,		// Open Graph Type.
-					'og_title'        => '',			// Open Graph Title.
-					'og_desc'         => '',			// Open Graph Description.
+					'og_title'        => '',			// Social Title.
+					'og_desc'         => '',			// Social Description.
 					'pin_img_desc'    => '',			// Pinterest Description.
 					'tc_title'        => '',			// Twitter Card Title.
 					'tc_desc'         => '',			// Twitter Card Description.

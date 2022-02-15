@@ -161,14 +161,14 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 				) : '',
 				'og_title' => $mod[ 'is_public' ] ? array(
 					'th_class' => 'medium',
-					'label'    => _x( 'Open Graph Title', 'option label', 'wpsso' ),
+					'label'    => _x( 'Social Title', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-og_title',
 					'content'  => $form->get_input( 'og_title', $css_class = 'wide', $css_id = '',
 						$limits[ 'og_title' ], $def_og_title ),
 				) : '',
 				'og_desc' => $mod[ 'is_public' ] ? array(
 					'th_class' => 'medium',
-					'label'    => _x( 'Open Graph Description', 'option label', 'wpsso' ),
+					'label'    => _x( 'Social Description', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-og_desc',
 					'content'  => $form->get_textarea( 'og_desc', $css_class = '', $css_id = '',
 						$limits[ 'og_desc' ], $def_og_desc ),

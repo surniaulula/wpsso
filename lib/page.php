@@ -796,29 +796,29 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		}
 
 		/**
-		 * $type = 'title' | 'excerpt' | 'both'
-		 *
 		 * $mod = true | false | post_id | array
 		 *
 		 * $md_key = true | false | string | array
 		 *
+		 * $caption_type = 'title' | 'excerpt' | 'both'
+		 *
 		 * See WpssoRrssbFiltersEdit->filter_post_edit_share_rows().
 		 */
-		public function get_caption( $mod = false, $md_key = null, $type = 'title', $caption_max_len = 0, $num_hashtags = false, $do_encode = true ) {
+		public function get_caption( $mod = false, $md_key = null, $caption_type = 'title', $caption_max_len = 0, $num_hashtags = false, $do_encode = true ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_args( array(
 					'mod'             => $mod,
 					'md_key'          => $md_key,
-					'type'            => $type,
+					'caption_type'    => $caption_type,
 					'caption_max_len' => $caption_max_len,
 					'num_hashtags'    => $num_hashtags,	// True, false, or numeric.
 					'do_encode'       => $do_encode,
 				) );
 			}
 
-			switch ( $type ) {
+			switch ( $caption_type ) {
 
 				case 'title':
 
@@ -853,7 +853,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				/**
 				 * Request all values un-encoded, then encode once we have the complete caption text.
 				 */
-				switch ( $type ) {
+				switch ( $caption_type ) {
 
 					case 'title':
 

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 10.4.0-dev.4\n"
+"Project-Id-Version: WPSSO Core 11.0.0-dev.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -6241,12 +6241,12 @@ msgstr ""
 
 #: lib/edit.php:164
 msgctxt "option label"
-msgid "Open Graph Title"
+msgid "Social Title"
 msgstr ""
 
 #: lib/edit.php:171
 msgctxt "option label"
-msgid "Open Graph Description"
+msgid "Social Description"
 msgstr ""
 
 #: lib/edit.php:179
