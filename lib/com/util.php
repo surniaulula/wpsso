@@ -3599,9 +3599,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			static $charset = null;
 
-			if ( ! isset( $charset  ) ) {
+			if ( null === $charset  ) {
 
-				$charset = get_bloginfo( $show = 'charset', $filter = 'raw' );	// Only get it once.
+				$charset = get_bloginfo( $show = 'charset', $filter = 'raw' );
 			}
 
 			return html_entity_decode( self::decode_utf8( $encoded ), ENT_QUOTES, $charset );
@@ -3804,9 +3804,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			static $charset = null;
 
-			if ( ! isset( $charset ) ) {
+			if ( null === $charset ) {
 
-				$charset = get_bloginfo( $show = 'charset', $filter = 'raw' );	// Only get it once.
+				$charset = get_bloginfo( $show = 'charset', $filter = 'raw' );
 			}
 
 			$content = htmlentities( $content, ENT_QUOTES, $charset, $double_encode = false );

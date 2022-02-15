@@ -116,9 +116,10 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 				$date_format = get_option( 'date_format' );
 				$time_format = get_option( 'time_format' );
+				$charset     = get_bloginfo( $show = 'charset', $filter = 'raw' );
 
 				$local_cache = array(
-					'default_sep'  => html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) ),
+					'default_sep'  => html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, $charset ),
 					'date_format'  => $date_format,
 					'time_format'  => $time_format,
 					'currentdate'  => date_i18n( $date_format ),

@@ -2461,7 +2461,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$tabindex  = 0;
 			$ext_num   = 0;
 			$ext_total = count( $ext_sorted );
-			$charset   = get_bloginfo( 'charset' );
+			$charset   = get_bloginfo( $show = 'charset', $filter = 'raw' );
 			$icon_px   = 128;
 
 			echo '<table class="sucom-settings wpsso addons-metabox" style="padding-bottom:10px">' . "\n";
@@ -2543,7 +2543,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$tabindex  = 0;
 			$ext_num   = 0;
 			$ext_total = count( $ext_sorted );
-			$charset   = get_bloginfo( 'charset' );
+			$charset   = get_bloginfo( $show = 'charset', $filter = 'raw' );
 			$icon_px   = 128;
 
 			echo '<table class="sucom-settings wpsso licenses-metabox" style="padding-bottom:10px">' . "\n";

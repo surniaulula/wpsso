@@ -75,12 +75,12 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 				}
 			}
 
-			$charset = get_bloginfo( 'charset' );	// Required for html_entity_decode().
-
+			static $charset     = null;
 			static $local_cache = null;
 
-			if ( null === $local_cache ) {
+			if ( null === $charset ) {
 
+				$charset     = get_bloginfo( $show = 'charset', $filter = 'raw' );
 				$local_cache = (array) apply_filters( 'wpsso_cf_md_index', $this->p->cf[ 'opt' ][ 'cf_md_index' ] );
 			}
 

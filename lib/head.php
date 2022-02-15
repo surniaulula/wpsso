@@ -831,6 +831,15 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 		public function add_mt_singles( &$mt_array, $tag, $type, $name, $value, $cmt = '', $mod = false ) {
 
+			static $last_secure_url = null;
+			static $last_url        = null;
+			static $charset         = null;
+
+			if ( null === $charset  ) {
+
+				$charset = get_bloginfo( $show = 'charset', $filter = 'raw' );
+			}
+
 			/**
 			 * Check for known exceptions for the "property" $type.
 			 */
@@ -868,26 +877,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			/**
-			 * Sanitation check for both "link rel href" and "link itemprop href" - all other meta tags use a "content"
-			 * attribute name.
+			 * Check for "link rel href" and "link itemprop href" - all other meta tags use a 'content' attribute name.
 			 */
-			if ( 'link' === $tag ) {
-
-				$attr = 'href';
-
-			} else {
-
-				$attr = 'content';
-			}
+			$attr = 'link' === $tag ? 'href' : 'content';
 
 			$log_prefix = $tag . ' ' . $type . ' ' . $name;
-
-			static $charset = null;
-
-			if ( null === $charset  ) {
-
-				$charset = get_bloginfo( 'charset' );
-			}
 
 			if ( is_array( $value ) ) {
 
@@ -915,9 +909,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 				$value = $this->p->util->inline->replace_variables( $value, $mod );
 			}
-
-			static $last_secure_url = null;
-			static $last_url        = null;
 
 			$singles = array();
 

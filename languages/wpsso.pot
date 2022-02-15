@@ -2943,7 +2943,7 @@ msgid "Options to Show by Default"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:61 lib/messages-tooltip-plugin.php:413
-#: lib/page.php:100 lib/pro/admin/advanced.php:408
+#: lib/page.php:102 lib/pro/admin/advanced.php:408
 #: lib/std/admin/advanced.php:405
 msgctxt "toolbar menu title"
 msgid "Validators"
@@ -10181,15 +10181,15 @@ msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr ""
 
-#: lib/page.php:977 lib/util-inline.php:277
+#: lib/page.php:979 lib/util-inline.php:278
 msgid "Page %1$d of %2$d"
 msgstr ""
 
-#: lib/page.php:981
+#: lib/page.php:983
 msgid "Page %1$d"
 msgstr ""
 
-#: lib/page.php:2092
+#: lib/page.php:2094
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] ""
@@ -11523,113 +11523,113 @@ msgid ""
 "PHP code affecting performance."
 msgstr ""
 
-#: lib/util.php:3266
+#: lib/util.php:3271
 msgctxt "option label"
 msgid "The AMP Project Validator"
 msgstr ""
 
-#: lib/util.php:3267
+#: lib/util.php:3272
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr ""
 
-#: lib/util.php:3271
+#: lib/util.php:3276
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr ""
 
-#: lib/util.php:3272
+#: lib/util.php:3277
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/util.php:3276
+#: lib/util.php:3281
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr ""
 
-#: lib/util.php:3277
+#: lib/util.php:3282
 msgctxt "validator type"
 msgid "Microdata"
 msgstr ""
 
-#: lib/util.php:3281
+#: lib/util.php:3286
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr ""
 
-#: lib/util.php:3282
+#: lib/util.php:3287
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr ""
 
-#: lib/util.php:3286
+#: lib/util.php:3291
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/util.php:3287
+#: lib/util.php:3292
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr ""
 
-#: lib/util.php:3291
+#: lib/util.php:3296
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/util.php:3292
+#: lib/util.php:3297
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/util.php:3296
+#: lib/util.php:3301
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/util.php:3297
+#: lib/util.php:3302
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr ""
 
-#: lib/util.php:3301
+#: lib/util.php:3306
 msgctxt "option label"
 msgid "Schema Markup Validator"
 msgstr ""
 
-#: lib/util.php:3302
+#: lib/util.php:3307
 msgctxt "validator type"
 msgid "Schema Markup"
 msgstr ""
 
-#: lib/util.php:3306
+#: lib/util.php:3311
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/util.php:3307
+#: lib/util.php:3312
 msgctxt "validator type"
 msgid "Twitter Card"
 msgstr ""
 
-#: lib/util.php:3312
+#: lib/util.php:3317
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr ""
 
-#: lib/util.php:3313
+#: lib/util.php:3318
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name.
-#: lib/util.php:3475
+#: lib/util.php:3480
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3485
+#: lib/util.php:3490
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 

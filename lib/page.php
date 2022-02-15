@@ -26,7 +26,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 	 */
 	class WpssoPage {	// Aka WpssoWebPage.
 
-		private $p;	// Wpsso class object.
+		private $p;		// Wpsso class object.
+		private $charset;
 
 		public function __construct( &$plugin ) {
 
@@ -37,11 +38,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$show_validate = empty( $this->p->options[ 'plugin_show_validate_toolbar' ] ) ? false : true;
+			$this->charset = get_bloginfo( $show = 'charset', $filter = 'raw' );
 
-			$show_validate = (bool) apply_filters( 'wpsso_show_validate_toolbar', $show_validate );
+			$add_validate_toolbar = empty( $this->p->options[ 'plugin_show_validate_toolbar' ] ) ? false : true;
+			$add_validate_toolbar = (bool) apply_filters( 'wpsso_show_validate_toolbar', $add_validate_toolbar );
 
-			if ( $show_validate ) {
+			if ( $add_validate_toolbar ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -893,7 +895,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			} else {	// Just in case.
 
-				$caption_text = html_entity_decode( SucomUtil::decode_utf8( $caption_text ), ENT_QUOTES, get_bloginfo( 'charset' ) );
+				$caption_text = html_entity_decode( SucomUtil::decode_utf8( $caption_text ), ENT_QUOTES, $this->charset );
 			}
 
 			return apply_filters( 'wpsso_caption', $caption_text, $mod, $num_hashtags, $md_key );
@@ -1301,7 +1303,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						 */
 						$title_text = get_the_title( $mod[ 'id' ] );
 
-						$title_text = html_entity_decode( $title_text, ENT_QUOTES, get_bloginfo( 'charset' ) );
+						$title_text = html_entity_decode( $title_text, ENT_QUOTES, $this->charset );
 
 					} elseif ( $this->p->debug->enabled ) {
 
@@ -2134,6 +2136,21 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return 0;
 		}
 
+		/**
+		 * $md_key = true | false | string | array
+		 *
+		 * Examples:
+		 *
+		 * 	$md_key = 'schema_title_bc' will return array( 'schema_title_bc', 'schema_title_alt', 'schema_title', 'seo_title' ).
+		 *
+		 * 	$md_key = 'tc_title' will return array( 'tc_title', 'og_title', 'seo_title' ).
+		 *
+		 * 	$md_key = 'og_title' will return array( 'og_title', 'seo_title' ).
+		 *
+		 * 	$md_key = 'seo_title' will return 'seo_title' (no need for a fallback array).
+		 *
+		 * 	$md_key = 'none' will return ''.
+		 */
 		private function sanitize_md_key( $md_key, $def_key = '' ) {
 
 			if ( false === $md_key || 'none' === $md_key || '' === $md_key ) {	// Nothing to do.
@@ -2219,7 +2236,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( null === $title_sep ) {
 			
-				$title_sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
+				$title_sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, $this->charset );
 			}
 
 			return $title_sep;
@@ -2229,7 +2246,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( null === $ellipsis ) {
 			
-				$ellipsis = html_entity_decode( $this->p->options[ 'og_ellipsis' ], ENT_QUOTES, get_bloginfo( 'charset' ) );
+				$ellipsis = html_entity_decode( $this->p->options[ 'og_ellipsis' ], ENT_QUOTES, $this->charset );
 			}
 
 			return $ellipsis;

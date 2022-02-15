@@ -3102,12 +3102,17 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 */
 		public function limit_text_length( $text, $maxlen = 300, $trailing = '', $cleanup_html = true ) {
 
+			static $charset = null;
+
+			if ( null === $charset ) {
+
+				$charset = get_bloginfo( $show = 'charset', $filter = 'raw' );
+			}
+
 			if ( $cleanup_html ) {
 
 				$text = $this->cleanup_html_tags( $text );	// Remove any remaining html tags.
 			}
-
-			$charset = get_bloginfo( 'charset' );
 
 			$text = html_entity_decode( self::decode_utf8( $text ), ENT_QUOTES, $charset );
 
