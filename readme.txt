@@ -250,7 +250,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 10.4.0-dev.2 (2022/02/14)**
+**Version 10.4.0-dev.3 (2022/02/15)**
 
 * **New Features**
 	* Added a new "SEO Title Tag" option in the Document SSO metabox.
@@ -268,7 +268,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Refactored the `WpssoPage` class `get_title()`, `get_description()`, and `get_caption()` methods, including their arguments.
-	* Added a new `WpssoConfig::$cf[ 'form' ][ 'input_limits' ]` array for min, warn, and max title and description lengths.
+	* Added a new `WpssoConfig::$cf[ 'form' ][ 'input_limits' ]` array for minimum, warning, and maximum title and description lengths.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -911,9 +911,9 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 10.4.0-dev.2 =
+= 10.4.0-dev.3 =
 
-(2022/02/14) Added a new "SEO Title Tag" option in the Document SSO metabox. Refactored `WpssoPage` class methods, including their arguments.
+(2022/02/15) Added a new "SEO Title Tag" option in the Document SSO metabox. Refactored `WpssoPage` class methods, including their arguments.
 
 = 10.3.1 =
 
