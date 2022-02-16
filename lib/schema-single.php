@@ -651,13 +651,13 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$json_ret[ 'uploadDate' ] = trim( get_post_time( 'c', $gmt = true, $mod[ 'id' ] ) );
 			}
 
-			foreach ( array( 'width', 'height' ) as $prop_name ) {
-
-				if ( isset( $mt_single[ $media_pre . ':' . $prop_name ] ) && $mt_single[ $media_pre . ':' . $prop_name ] > 0 ) {	// Just in case.
-
-					$json_ret[ $prop_name ] = $mt_single[ $media_pre . ':' . $prop_name ];
-				}
-			}
+			/**
+			 * Add width and height as QuantitativeValue.
+			 */
+			WpssoSchema::add_data_unit_from_assoc( $json_ret, $mt_single, array(
+				'width_px'  => $media_pre . ':width',
+				'height_px' => $media_pre . ':height',
+			) );
 
 			if ( ! empty( $mt_single[ $media_pre . ':tag' ] ) ) {
 
@@ -1677,11 +1677,17 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'embedUrl'       => $media_pre . ':embed_url',
 				'contentUrl'     => $media_pre . ':stream_url',
 				'encodingFormat' => $media_pre . ':type',	// Mime type.
-				'width'          => $media_pre . ':width',
-				'height'         => $media_pre . ':height',
 				'duration'       => $media_pre . ':duration',
 				'uploadDate'     => $media_pre . ':upload_date',
 				'thumbnailUrl'   => $media_pre . ':thumbnail_url',
+			) );
+
+			/**
+			 * Add width and height as QuantitativeValue.
+			 */
+			WpssoSchema::add_data_unit_from_assoc( $json_ret, $mt_single, array(
+				'width_px'  => $media_pre . ':width',
+				'height_px' => $media_pre . ':height',
 			) );
 
 			if ( ! empty( $mt_single[ $media_pre . ':has_image' ] ) ) {

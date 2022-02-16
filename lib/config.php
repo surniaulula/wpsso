@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '11.0.0-b.2',	// Plugin version.
-					'opt_version' => '879',		// Increment when changing default option values.
+					'version'     => '11.0.0-rc.1',	// Plugin version.
+					'opt_version' => '880',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -3967,7 +3967,16 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'unitCode' => 'CMT',
 						),
 					),
-					'length' => array(	// Unitcode index value.
+					'height_px' => array(		// Unitcode index value.
+						'height' => array(	// Schema property name.
+							'@context' => 'https://schema.org',
+							'@type'    => 'QuantitativeValue',
+							'name'     => 'Height',
+							'unitText' => 'px',
+							'unitCode' => 'E37',
+						),
+					),
+					'length' => array(			// Unitcode index value.
 						'additionalProperty' => array(	// Schema property name.
 							'@context'   => 'https://schema.org',
 							'@type'      => 'PropertyValue',
@@ -4011,6 +4020,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'name'     => 'Width',
 							'unitText' => 'cm',
 							'unitCode' => 'CMT',
+						),
+					),
+					'width_px' => array(		// Unitcode index value.
+						'width' => array(	// Schema property name.
+							'@context' => 'https://schema.org',
+							'@type'    => 'QuantitativeValue',
+							'name'     => 'Width',
+							'unitText' => 'px',
+							'unitCode' => 'E37',
 						),
 					),
 				),

@@ -541,6 +541,11 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'schema_desc_max_len'   => '',
 					'schema_text_max_len'   => '',
 				),
+				879 => array(
+					'og_type_for_elementor_library'       => '',
+					'schema_type_for_elementor_library'   => '',
+					'wpsm_sitemaps_for_elementor_library' => '',
+				),
 			),
 		);
 
