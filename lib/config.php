@@ -3948,8 +3948,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				/**
 				 * See http://wiki.goodrelations-vocabulary.org/Documentation/UN/CEFACT_Common_Codes.
 				 */
-				'schema_units' => array(	// Element of 'head' array.
-					'depth' => array(	// Unitcode index value.
+				'schema_units' => array(		// Element of 'head' array.
+					'depth' => array(		// Unitcode index value.
 						'depth' => array(	// Schema property name.
 							'@context' => 'https://schema.org',
 							'@type'    => 'QuantitativeValue',
@@ -3958,7 +3958,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'unitCode' => 'CMT',
 						),
 					),
-					'height' => array(	// Unitcode index value.
+					'height' => array(		// Unitcode index value.
 						'height' => array(	// Schema property name.
 							'@context' => 'https://schema.org',
 							'@type'    => 'QuantitativeValue',
@@ -3986,7 +3986,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'unitCode'   => 'CMT',
 						),
 					),
-					'size' => array(	// Unitcode index value.
+					'size' => array(			// Unitcode index value.
 						'additionalProperty' => array(	// Schema property name.
 							'@context'   => 'https://schema.org',
 							'@type'      => 'PropertyValue',
@@ -3994,7 +3994,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'name'       => 'Size',
 						),
 					),
-					'fluid_volume' => array(	// Unitcode index value.
+					'fluid_volume' => array(		// Unitcode index value.
 						'additionalProperty' => array(	// Schema property name.
 							'@context'   => 'https://schema.org',
 							'@type'      => 'PropertyValue',
@@ -4004,7 +4004,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'unitCode'   => 'MLT',
 						),
 					),
-					'weight' => array(	// Unitcode index value.
+					'weight' => array(		// Unitcode index value.
 						'weight' => array(	// Schema property name.
 							'@context' => 'https://schema.org',
 							'@type'    => 'QuantitativeValue',
@@ -4013,7 +4013,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'unitCode' => 'KGM',
 						),
 					),
-					'width' => array(	// Unitcode index value.
+					'width' => array(		// Unitcode index value.
 						'width' => array(	// Schema property name.
 							'@context' => 'https://schema.org',
 							'@type'    => 'QuantitativeValue',

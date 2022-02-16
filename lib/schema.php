@@ -3251,6 +3251,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				 */
 				foreach ( self::$units_cache[ $key ] as $prop_name => $prop_data ) {
 
+					$quant_id = 'qv-' . $key . '-' . $assoc[ $key_name ];	// Example '@id' = '#sso/qv-width-px-1200'.
+
+					self::update_data_id( $prop_data, $quant_id, '/' );
+
 					$prop_data[ 'value' ] = $assoc[ $key_name ];
 
 					$json_data[ $prop_name ][] = $prop_data;

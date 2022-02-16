@@ -584,7 +584,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			list( $image_type_id, $image_type_url ) = self::get_type_id_url_list( $json_data, $type_opts = false,
 				$opt_key = 'image_type', $def_type_id = 'image.object', $list_element );
 
-			$json_ret = WpssoSchema::get_schema_type_context( $image_type_url, array( 'url' => SucomUtil::esc_url_encode( $image_url ) ) );
+			$json_ret = WpssoSchema::get_schema_type_context( $image_type_url, array(
+				'url' => SucomUtil::esc_url_encode( $image_url ),
+			) );
 
 			/**
 			 * Maybe add an 'identifier' value based on the size name and image ID.
@@ -606,7 +608,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			if ( ! empty( $mt_single[ $media_pre . ':id' ] ) && is_numeric( $mt_single[ $media_pre . ':id' ] ) ) {
 
 				$post_id = $mt_single[ $media_pre . ':id' ];
-				$mod     = $wpsso->post->get_mod( $post_id );
+
+				$mod = $wpsso->post->get_mod( $post_id );
 
 				/**
 				 * Get the image title.
@@ -1669,7 +1672,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			list( $video_type_id, $video_type_url ) = self::get_type_id_url_list( $json_data,
 				$type_opts = false, $opt_key = false, $def_type_id = 'video.object', $list_element );
 
-			$json_ret = WpssoSchema::get_schema_type_context( $video_type_url, array( 'url' => SucomUtil::esc_url_encode( $media_url ) ) );
+			$json_ret = WpssoSchema::get_schema_type_context( $video_type_url, array(
+				'url' => SucomUtil::esc_url_encode( $media_url ),
+			) );
 
 			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $mt_single, array(
 				'name'           => $media_pre . ':title',
@@ -2196,7 +2201,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 						if ( ! empty( $quantity[ 'unitCode' ] ) ) {
 
-							$quant_id  = strtolower( $quant_id );
+							$quant_id = strtolower( $quant_id );
+
 							$quant_rel = empty( $delivery_opts[ $delivery_opt_pre . '_rel' ] ) ?
 								$offer_url : $delivery_opts[ $delivery_opt_pre . '_rel' ];
 
