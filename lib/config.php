@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'     => '11.0.0-rc.4',	// Plugin version.
-					'opt_version' => '881',		// Increment when changing default option values.
+					'opt_version' => '882',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1274,6 +1274,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_type_for_tax_product_cat'        => 'website',	// For WooCommerce.
 					'og_type_for_tax_product_tag'        => 'website',	// For WooCommerce.
 					'og_type_for_tax_pwb-brand'          => 'website',	// For Perfect WooCommerce Brands Add-on.
+					'og_type_for_tax_tribe_events_cat'   => 'website',	// For The Events Calendar.
 					'og_type_for_tax_yith_product_brand' => 'website',	// For YITH WooCommerce Brands Add-on.
 
 					/**
@@ -1363,6 +1364,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_tax_product_cat'        => 'item.list',	// For WooCommerce.
 					'schema_type_for_tax_product_tag'        => 'item.list',	// For WooCommerce.
 					'schema_type_for_tax_pwb-brand'          => 'item.list',	// For Perfect WooCommerce Brands Add-on.
+					'schema_type_for_tax_tribe_events_cat'   => 'item.list',	// For The Events Calendar.
 					'schema_type_for_tax_yith_product_brand' => 'item.list',	// For YITH WooCommerce Brands Add-on.
 
 					/**
@@ -1651,6 +1653,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_add_to_tax_product_cat'        => 1,		// For WooCommerce.
 					'plugin_add_to_tax_product_tag'        => 1,		// For WooCommerce.
 					'plugin_add_to_tax_pwb-brand'          => 1,		// For Perfect WooCommerce Brands Add-on.
+					'plugin_add_to_tax_tribe_events_cat'   => 0,		// For The Events Calendar.
 					'plugin_add_to_tax_yith_product_brand' => 1,		// For YITH WooCommerce Brands Add-on.
 					'plugin_add_to_topic'                  => 0,		// For Bbpress
 					'plugin_add_to_tribe_events'           => 1,		// For The Events Calendar.
@@ -1660,82 +1663,87 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings > Interface > WP List Table Columns: Schema Type.
 					 */
-					'plugin_schema_type_name_col_attachment'        => 0,
-					'plugin_schema_type_name_col_download'          => 0,	// For Easy Digital Downloads.
-					'plugin_schema_type_name_col_page'              => 0,
-					'plugin_schema_type_name_col_post'              => 0,
-					'plugin_schema_type_name_col_product'           => 0,	// For WooCommerce.
-					'plugin_schema_type_name_col_tax_category'      => 0,
-					'plugin_schema_type_name_col_tax_faq_category'  => 0,
-					'plugin_schema_type_name_col_tax_link_category' => 0,
-					'plugin_schema_type_name_col_tax_post_tag'      => 0,
-					'plugin_schema_type_name_col_tax_product_cat'   => 0,	// For WooCommerce.
-					'plugin_schema_type_name_col_tax_product_tag'   => 0,	// For WooCommerce.
-					'plugin_schema_type_name_col_user_page'         => 0,
+					'plugin_schema_type_name_col_attachment'           => 0,
+					'plugin_schema_type_name_col_download'             => 0,	// For Easy Digital Downloads.
+					'plugin_schema_type_name_col_page'                 => 0,
+					'plugin_schema_type_name_col_post'                 => 0,
+					'plugin_schema_type_name_col_product'              => 0,	// For WooCommerce.
+					'plugin_schema_type_name_col_tax_category'         => 0,
+					'plugin_schema_type_name_col_tax_faq_category'     => 0,
+					'plugin_schema_type_name_col_tax_link_category'    => 0,
+					'plugin_schema_type_name_col_tax_post_tag'         => 0,
+					'plugin_schema_type_name_col_tax_product_cat'      => 0,	// For WooCommerce.
+					'plugin_schema_type_name_col_tax_product_tag'      => 0,	// For WooCommerce.
+					'plugin_schema_type_name_col_tax_tribe_events_cat' => 0,	// For The Events Calendar.
+					'plugin_schema_type_name_col_user_page'            => 0,
 
 					/**
 					 * Advanced Settings > Interface > WP List Table Columns: Schema ID.
 					 */
-					'plugin_schema_type_col_attachment'        => 0,
-					'plugin_schema_type_col_download'          => 0,	// For Easy Digital Downloads.
-					'plugin_schema_type_col_page'              => 0,
-					'plugin_schema_type_col_post'              => 0,
-					'plugin_schema_type_col_product'           => 0,	// For WooCommerce.
-					'plugin_schema_type_col_tax_category'      => 0,
-					'plugin_schema_type_col_tax_faq_category'  => 0,
-					'plugin_schema_type_col_tax_link_category' => 0,
-					'plugin_schema_type_col_tax_post_tag'      => 0,
-					'plugin_schema_type_col_tax_product_cat'   => 0,	// For WooCommerce.
-					'plugin_schema_type_col_tax_product_tag'   => 0,	// For WooCommerce.
-					'plugin_schema_type_col_user_page'         => 0,
+					'plugin_schema_type_col_attachment'           => 0,
+					'plugin_schema_type_col_download'             => 0,	// For Easy Digital Downloads.
+					'plugin_schema_type_col_page'                 => 0,
+					'plugin_schema_type_col_post'                 => 0,
+					'plugin_schema_type_col_product'              => 0,	// For WooCommerce.
+					'plugin_schema_type_col_tax_category'         => 0,
+					'plugin_schema_type_col_tax_faq_category'     => 0,
+					'plugin_schema_type_col_tax_link_category'    => 0,
+					'plugin_schema_type_col_tax_post_tag'         => 0,
+					'plugin_schema_type_col_tax_product_cat'      => 0,	// For WooCommerce.
+					'plugin_schema_type_col_tax_product_tag'      => 0,	// For WooCommerce.
+					'plugin_schema_type_col_tax_tribe_events_cat' => 0,	// For The Events Calendar.
+					'plugin_schema_type_col_user_page'            => 0,
 
 					/**
 					 * Advanced Settings > Interface > WP List Table Columns: Open Graph Type.
 					 */
-					'plugin_og_type_col_attachment'        => 0,
-					'plugin_og_type_col_download'          => 0,		// For Easy Digital Downloads.
-					'plugin_og_type_col_page'              => 0,
-					'plugin_og_type_col_post'              => 0,
-					'plugin_og_type_col_product'           => 0,		// For WooCommerce.
-					'plugin_og_type_col_tax_category'      => 0,
-					'plugin_og_type_col_tax_faq_category'  => 0,
-					'plugin_og_type_col_tax_link_category' => 0,
-					'plugin_og_type_col_tax_post_tag'      => 0,
-					'plugin_og_type_col_tax_product_cat'   => 0,		// For WooCommerce.
-					'plugin_og_type_col_tax_product_tag'   => 0,		// For WooCommerce.
-					'plugin_og_type_col_user_page'         => 0,
+					'plugin_og_type_col_attachment'           => 0,
+					'plugin_og_type_col_download'             => 0,		// For Easy Digital Downloads.
+					'plugin_og_type_col_page'                 => 0,
+					'plugin_og_type_col_post'                 => 0,
+					'plugin_og_type_col_product'              => 0,		// For WooCommerce.
+					'plugin_og_type_col_tax_category'         => 0,
+					'plugin_og_type_col_tax_faq_category'     => 0,
+					'plugin_og_type_col_tax_link_category'    => 0,
+					'plugin_og_type_col_tax_post_tag'         => 0,
+					'plugin_og_type_col_tax_product_cat'      => 0,		// For WooCommerce.
+					'plugin_og_type_col_tax_product_tag'      => 0,		// For WooCommerce.
+					'plugin_og_type_col_tax_tribe_events_cat' => 0,		// For The Events Calendar.
+					'plugin_og_type_col_user_page'            => 0,
 
 					/**
 					 * Advanced Settings > Interface > WP List Table Columns: Open Graph Image.
 					 */
-					'plugin_og_img_col_attachment'        => 0,
-					'plugin_og_img_col_download'          => 1,		// For Easy Digital Downloads.
-					'plugin_og_img_col_page'              => 1,
-					'plugin_og_img_col_post'              => 1,
-					'plugin_og_img_col_product'           => 1,		// For WooCommerce.
-					'plugin_og_img_col_tax_category'      => 1,
-					'plugin_og_img_col_tax_faq_category'  => 1,
-					'plugin_og_img_col_tax_link_category' => 1,
-					'plugin_og_img_col_tax_post_tag'      => 1,
-					'plugin_og_img_col_tax_product_cat'   => 1,		// For WooCommerce.
-					'plugin_og_img_col_tax_product_tag'   => 1,		// For WooCommerce.
-					'plugin_og_img_col_user_page'         => 1,
+					'plugin_og_img_col_attachment'           => 0,
+					'plugin_og_img_col_download'             => 1,		// For Easy Digital Downloads.
+					'plugin_og_img_col_page'                 => 1,
+					'plugin_og_img_col_post'                 => 1,
+					'plugin_og_img_col_product'              => 1,		// For WooCommerce.
+					'plugin_og_img_col_tax_category'         => 1,
+					'plugin_og_img_col_tax_faq_category'     => 1,
+					'plugin_og_img_col_tax_link_category'    => 1,
+					'plugin_og_img_col_tax_post_tag'         => 1,
+					'plugin_og_img_col_tax_product_cat'      => 1,		// For WooCommerce.
+					'plugin_og_img_col_tax_product_tag'      => 1,		// For WooCommerce.
+					'plugin_og_img_col_tax_tribe_events_cat' => 0,		// For The Events Calendar.
+					'plugin_og_img_col_user_page'            => 1,
 
 					/**
 					 * Advanced Settings > Interface > WP List Table Columns: Open Graph Description.
 					 */
-					'plugin_og_desc_col_attachment'        => 1,
-					'plugin_og_desc_col_download'          => 0,		// For Easy Digital Downloads.
-					'plugin_og_desc_col_page'              => 0,
-					'plugin_og_desc_col_post'              => 0,
-					'plugin_og_desc_col_product'           => 0,		// For WooCommerce.
-					'plugin_og_desc_col_tax_category'      => 1,
-					'plugin_og_desc_col_tax_faq_category'  => 1,
-					'plugin_og_desc_col_tax_link_category' => 1,
-					'plugin_og_desc_col_tax_post_tag'      => 1,
-					'plugin_og_desc_col_tax_product_cat'   => 1,		// For WooCommerce.
-					'plugin_og_desc_col_tax_product_tag'   => 1,		// For WooCommerce.
-					'plugin_og_desc_col_user_page'         => 1,
+					'plugin_og_desc_col_attachment'           => 1,
+					'plugin_og_desc_col_download'             => 0,		// For Easy Digital Downloads.
+					'plugin_og_desc_col_page'                 => 0,
+					'plugin_og_desc_col_post'                 => 0,
+					'plugin_og_desc_col_product'              => 0,		// For WooCommerce.
+					'plugin_og_desc_col_tax_category'         => 1,
+					'plugin_og_desc_col_tax_faq_category'     => 1,
+					'plugin_og_desc_col_tax_link_category'    => 1,
+					'plugin_og_desc_col_tax_post_tag'         => 1,
+					'plugin_og_desc_col_tax_product_cat'      => 1,		// For WooCommerce.
+					'plugin_og_desc_col_tax_product_tag'      => 1,		// For WooCommerce.
+					'plugin_og_desc_col_tax_tribe_events_cat' => 0,		// For The Events Calendar.
+					'plugin_og_desc_col_user_page'            => 1,
 
 					'plugin_og_types_select_format'     => 'name',		// Open Graph Type Select Format.
 					'plugin_schema_types_select_format' => 'name',		// Schema Type Select Format.
