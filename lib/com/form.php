@@ -2793,10 +2793,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			} else {
 
-				$js_if_empty = 'if ( this.value == \'\' ) this.value = \'' . esc_js( $holder ) . '\';';
+				$js_if_empty = 'if ( this.value == \'\' ) this.value = this.getAttribute( \'placeholder\' );';
 			}
 
-			$js_if_same = 'if ( this.value == \'' . esc_js( $holder ) . '\' ) this.value = \'\';';
+			$js_if_same = 'if ( this.value == this.getAttribute( \'placeholder\' ) ) this.value = \'\';';
 
 			$html = ' placeholder="' . esc_attr( $holder ) . '"';
 
