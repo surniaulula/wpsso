@@ -250,7 +250,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.0.0-rc.1 (2022/02/15)**
+**Version 11.0.0-rc.2 (2022/02/16)**
 
 * **New Features**
 	* Added a new "SEO Title Tag" option in the Document SSO metabox.
@@ -920,9 +920,9 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 11.0.0-rc.1 =
+= 11.0.0-rc.2 =
 
-(2022/02/15) Added a new "SEO Title Tag" option in the Document SSO metabox. Added a new "Truncated Text Ellipsis" option. Added a progress bar to the character counter.
+(2022/02/16) Added a new "SEO Title Tag" option in the Document SSO metabox. Added a new "Truncated Text Ellipsis" option. Added a progress bar to the character counter.
 
 = 10.3.1 =
 
