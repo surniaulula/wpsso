@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '11.0.0-dev.4',	// Plugin version.
+					'version'     => '11.0.0-dev.5',	// Plugin version.
 					'opt_version' => '879',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1609,7 +1609,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings > Integration.
 					 */
-					'plugin_title_tag'          => 'wp_title',	// Webpage Title Tag.
+					'plugin_title_tag'          => 'seo_title',	// Webpage Title Tag.
 					'plugin_filter_content'     => 0,		// Use Filtered Content.
 					'plugin_filter_excerpt'     => 0,		// Use Filtered Excerpt.
 					'plugin_page_excerpt'       => 0,		// Enable Excerpt for Pages.
@@ -2437,7 +2437,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'tz'         => 'tz',
 				),
 				'document_title' => array(	// Webpage Title Tag.
-					'wp_title'         => '[Default WordPress Title]',
+					'wp_title'         => '[WordPress Title]',
 					'seo_title'        => 'SEO Title Tag',
 					'schema_title'     => 'Schema Name',
 					'schema_title_alt' => 'Schema Alternate Name',

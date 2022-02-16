@@ -152,6 +152,13 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 			switch ( $varname ) {
 
+				case 'org_url':		// Compatibility for Rank Math.
+				case 'site_url':
+
+					$ret_val = SucomUtil::get_home_url( $this->p->options, $mod );
+					
+					break;
+
 				case 'canonical_url':
 
 					$ret_val = $this->u->get_canonical_url( $mod, $add_page );
@@ -196,6 +203,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 					break;
 
+				case 'org_name':	// Compatibility for Rank Math.
 				case 'sitename':
 				case 'sitetitle':	// Compatibility for SEOPress.
 
@@ -210,7 +218,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 					break;
 
 				case 'sitedesc':
-				case 'tagline':	// Compatibility for SEOPress.
+				case 'tagline':		// Compatibility for SEOPress.
 
 					$ret_val = SucomUtil::get_site_description( $this->p->options, $mod );
 
@@ -260,7 +268,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 					break;
 
 				case 'author':
-				case 'name':	// Compatibility for Yoast SEO.
+				case 'name':		// Compatibility for Yoast SEO.
 
 					/**
 					 * Returns the display name for a comment author, post author, or user module.
@@ -304,7 +312,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 					break;
 
 				case 'post_date':
-				case 'date':	// Compatibility for Yoast SEO.
+				case 'date':		// Compatibility for Yoast SEO.
 
 					if ( ! empty( $mod[ 'post_time' ] ) ) {
 
@@ -323,9 +331,26 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 					break;
 
+				case 'excerpt':
+
+					if ( $mod[ 'is_post' ] ) {	// Just in case.
+
+						$ret_val = $this->p->page->get_the_excerpt( $mod );
+
+						if ( empty( $ret_val ) ) {
+					
+							$ret_val = wp_trim_excerpt( '', $mod[ 'id' ] );
+						}
+					}
+
+					break;
+
 				case 'excerpt_only':
 
-					$ret_val = $this->p->page->get_the_excerpt( $mod );
+					if ( $mod[ 'is_post' ] ) {	// Just in case.
+					
+						$ret_val = $this->p->page->get_the_excerpt( $mod );
+					}
 
 					break;
 

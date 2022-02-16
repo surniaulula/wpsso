@@ -204,7 +204,7 @@ _x( 'checked', 'option value', 'wpsso' );
 _x( 'unchecked', 'option value', 'wpsso' );
 _x( 'at', 'option value', 'wpsso' );
 _x( 'tz', 'option value', 'wpsso' );
-_x( '[Default WordPress Title]', 'option value', 'wpsso' );
+_x( '[WordPress Title]', 'option value', 'wpsso' );
 _x( 'SEO Title Tag', 'option value', 'wpsso' );
 _x( 'Schema Name', 'option value', 'wpsso' );
 _x( 'Schema Alternate Name', 'option value', 'wpsso' );

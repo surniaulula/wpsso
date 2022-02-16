@@ -764,37 +764,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return $page_posts_mods;
 		}
 
-		public function get_quote( array $mod ) {
-
-			$quote_text = apply_filters( 'wpsso_quote_seed', '', $mod );
-
-			if ( ! empty( $quote_text ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'quote seed = ' . $quote_text );
-				}
-
-			} else {
-
-				if ( has_excerpt( $mod[ 'id' ] ) ) {
-
-					$quote_text = get_the_excerpt( $mod[ 'id' ] );	// Applies the 'get_the_excerpt' filter.
-
-				} else {
-
-					$quote_text = get_post_field( 'post_content', $mod[ 'id' ] );
-				}
-			}
-
-			/**
-			 * Remove shortcodes, etc., but don't strip html tags.
-			 */
-			$quote_text = $this->p->util->cleanup_html_tags( $quote_text, $strip_tags = false );
-
-			return apply_filters( 'wpsso_quote', $quote_text, $mod );
-		}
-
 		/**
 		 * $mod = true | false | post_id | array
 		 *
