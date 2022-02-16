@@ -1696,11 +1696,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( ! empty( $opts[ $key_hm ] ) ) {
 
-				$timezone  = empty( $key_tz ) || empty( $opts[ $key_tz ] ) ? SucomUtilWP::get_default_timezone() : $opts[ $key_tz ];
-				$tz_offset = self::get_timezone_offset_hours( $timezone );
-				$hm_tz     = $opts[ $key_hm ] . $tz_offset;
+				$timezone  = empty( $key_tz ) || empty( $opts[ $key_tz ] ) ?
+					SucomUtilWP::get_default_timezone() : $opts[ $key_tz ];
 
-				return $hm_tz;
+				$tz_offset = self::get_timezone_offset_hours( $timezone );
+
+				return $opts[ $key_hm ] . ':00' . $tz_offset;
 			}
 
 			return false;
@@ -1710,7 +1711,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 * Returns an empty array or an associative array of open => close hours, including a timezone offset.
 		 *
 		 * $open_close = Array (
-		 *	[08:00-07:00] => 17:00-07:00
+		 *	[08:00:00-07:00] => 17:00:00-07:00
 		 * )
 		 *
 		 * Note that "-07:00" is a timezone offset, not a range. :)
@@ -1734,15 +1735,18 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				if ( $is_valid_open_close ) {
 
-					$timezone  = empty( $key_tz ) || empty( $opts[ $key_tz ] ) ? SucomUtilWP::get_default_timezone() : $opts[ $key_tz ];
+					$timezone  = empty( $key_tz ) || empty( $opts[ $key_tz ] ) ?
+						SucomUtilWP::get_default_timezone() : $opts[ $key_tz ];
+
 					$tz_offset = self::get_timezone_offset_hours( $timezone );
-					$hm_tz_o   = $opts[ $key_day_o ] . $tz_offset;
-					$hm_tz_c   = $opts[ $key_day_c ] . $tz_offset;
+
+					$hm_tz_o = $opts[ $key_day_o ] . ':00' . $tz_offset;
+					$hm_tz_c = $opts[ $key_day_c ] . ':00' . $tz_offset;
 
 					if ( $is_valid_midday ) {
 
-						$hm_tz_midday_c = $opts[ $key_midday_c ] . $tz_offset;
-						$hm_tz_midday_o = $opts[ $key_midday_o ] . $tz_offset;
+						$hm_tz_midday_c = $opts[ $key_midday_c ] . ':00' . $tz_offset;
+						$hm_tz_midday_o = $opts[ $key_midday_o ] . ':00' . $tz_offset;
 
 						$open_close_pairs[ $hm_tz_o ]        = $hm_tz_midday_c;
 						$open_close_pairs[ $hm_tz_midday_o ] = $hm_tz_c;
