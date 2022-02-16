@@ -250,7 +250,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.0.0-dev.4 (2022/02/15)**
+**Version 11.0.0-dev.5 (2022/02/15)**
 
 * **New Features**
 	* Added a new "SEO Title Tag" option in the Document SSO metabox.
@@ -919,7 +919,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 11.0.0-dev.4 =
+= 11.0.0-dev.5 =
 
 (2022/02/15) Added a new "SEO Title Tag" option in the Document SSO metabox. Refactored `WpssoPage` class methods, including their arguments.
 
