@@ -544,32 +544,61 @@ function sucomTextLen( containerId, adminPageL10n ) {
 
 	var cfg = window[ adminPageL10n ];
 
-	if ( 'undefined' === typeof cfg ) {	// Just in case.
+	if ( 'undefined' === typeof cfg ) {
 
 		cfg = {
 			'_min_len_transl': '{0} of {1} characters minimum',
-			'_req_len_transl': '{0} of {1} characters required',
+			'_req_len_transl': '{0} of {1} characters recommended',
 			'_max_len_transl': '{0} of {1} characters maximum',
 			'_len_transl'    : '{0} characters',
 		}
 	}
 
-	var text_val = sucomTextLenClean( jQuery( '#' + containerId ).val() );
-	var text_len = text_val.length;
-	var min_len  = Number( jQuery( '#' + containerId ).attr( 'minLength' ) );
-	var warn_len = Number( jQuery( '#' + containerId ).attr( 'warnLength' ) );
-	var max_len  = Number( jQuery( '#' + containerId ).attr( 'maxLength' ) );
+	var container = jQuery( '#' + containerId );
+	var text_len  = sucomTextLenClean( container.val() ).length;
+	var max_len   = Number( container.attr( 'maxLength' ) );
+	var warn_len  = Number( container.attr( 'warnLength' ) );
+	var min_len   = Number( container.attr( 'minLength' ) );
+
+	if ( ! text_len ) {
+
+		text_len = sucomTextLenClean( container.attr( 'placeholder' ) ).length;
+	}
 
 	/**
-	 * If we have a max length, make sure it's larger than the minimum.
+	 * Sanitize the max_len, warn_len, and min_len values.
 	 */
+	if ( ! max_len ) {
+
+		max_len = 0;
+	}
+
+	if ( ! warn_len ) {
+
+		if ( max_len ) {
+
+			warn_len = 0.9 * max_len;	// Default to 90% of max_len.
+
+		} else {
+
+			warn_len = 0;
+		}
+	}
+
+	if ( ! min_len ) {
+
+		min_len = 0;
+	}
+
 	if ( min_len && max_len && max_len < min_len ) {
 
 		max_len = min_len;
 	}
 
-	var char_count = sucomTextLenSpan( text_len, max_len, warn_len, min_len );
-	var char_limit = max_len;
+	/**
+	 * Select a text string and the character limit.
+	 */
+	var char_limit = max_len;	// Default value.
 
 	if ( min_len ) {
 
@@ -599,47 +628,8 @@ function sucomTextLen( containerId, adminPageL10n ) {
 	}
 
 	/**
-	 * {0} = char_count
-	 * {1} = char_limit
+	 * Select a CSS class.
 	 */
-	jQuery( '#' + containerId + '-text-len-wrapper' ).html( '<div class="text-len-status">' + msg_transl.formatUnicorn( char_count, char_limit ) + '</div>' )
-}
-
-/**
- * Hooked to .blur() by SucomForm->get_textlen_script().
- */
-function sucomTextLenReset( containerId ) {
-
-	jQuery( '#' + containerId + '-text-len-wrapper' ).html( '' )
-}
-
-function sucomTextLenSpan( text_len, max_len, warn_len, min_len ) {
-
-	if ( ! max_len ) {
-
-		max_len = 0;
-	}
-
-	if ( ! warn_len ) {
-
-		if ( max_len ) {
-
-			warn_len = 0.9 * max_len;	// Default to 90% of max_len.
-
-		} else {
-
-			warn_len = 0;
-		}
-	}
-
-	if ( ! min_len ) {
-
-		min_len = 0;
-	}
-
-	var html      = '';
-	var css_class = '';
-
 	if ( max_len && text_len >= ( max_len - 5 ) ) {		// 5 characters from the end.
 
 		css_class = 'maximum';
@@ -657,18 +647,36 @@ function sucomTextLenSpan( text_len, max_len, warn_len, min_len ) {
 		css_class = 'good';
 	}
 
+	/**
+	 * Create the container HTML.
+	 */
+	var container_html = '';
+
 	if ( max_len ) {
 
 		var pct_width = Math.round( text_len * 100 / max_len );
 
-		html += '<div class="progress wrapper">';
-		html += '<div class="progress ' + css_class + '" style="width:' + pct_width + '%;"></div>';
-		html += '</div>';
+		container_html += '<div class="text-len-progress-bar">';
+		container_html += '<div class="text-len-progress ' + css_class + '" style="width:' + pct_width + '%;"></div>';
+		container_html += '</div>';
 	}
 
-	html += '<span class="numeric ' + css_class + '">' + text_len + '</span>';
+	container_html += '<div class="text-len-status ' + css_class + '">';
+	container_html += msg_transl.formatUnicorn( text_len, char_limit );
+	container_html += '</div>';
 
-	return html;
+	/**
+	 * Add the container HTML.
+	 */
+	jQuery( '#' + containerId + '-text-len-wrapper' ).html( container_html );
+}
+
+/**
+ * Hooked to .blur() by SucomForm->get_textlen_script().
+ */
+function sucomTextLenReset( containerId ) {
+
+	jQuery( '#' + containerId + '-text-len-wrapper' ).html( '' )
 }
 
 function sucomTextLenClean( str ) {

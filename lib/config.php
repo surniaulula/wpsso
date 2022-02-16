@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '11.0.0-dev.5',	// Plugin version.
+					'version'     => '11.0.0-b.1',	// Plugin version.
 					'opt_version' => '879',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2827,7 +2827,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				/**
 				 * The default warning is 90% of the maximum length.
 				 *
-				 * See sucomTextLenSpan() in wpsso/live/js/com/jquery-admin-page.js.
+				 * See sucomTextLen() in wpsso/live/js/com/jquery-admin-page.js.
 				 */
 				'input_limits' => array(
 					'seo_title' => array(
