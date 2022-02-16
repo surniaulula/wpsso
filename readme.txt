@@ -921,7 +921,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 = 11.0.0-b.1 =
 
-(2022/02/15) Added a new "SEO Title Tag" option in the Document SSO metabox. Refactored `WpssoPage` class methods, including their arguments.
+(2022/02/15) Added a new "SEO Title Tag" option in the Document SSO metabox. Added a new "Truncated Text Ellipsis" option. Added a progress bar to the character counter.
 
 = 10.3.1 =
 
