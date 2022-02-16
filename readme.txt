@@ -250,13 +250,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.0.0-b.2 (2022/02/15)**
+**Version 11.0.0-rc.1 (2022/02/15)**
 
 * **New Features**
 	* Added a new "SEO Title Tag" option in the Document SSO metabox.
 * **Improvements**
 	* Added a new "Truncated Text Ellipsis" option in the SSO &gt; General Settings page.
 	* Added a progress bar to the character counter in the Document SSO metabox.
+	* Removed the Elementor 'elementor_library' post type from the list of available public post types.
 	* Removed the Open Graph "Title Max. Length" option.
 	* Removed the Open Graph "Description Max. Length" option.
 	* Removed the Google / Schema "Description Meta Tag Max. Length" option.
@@ -919,7 +920,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 11.0.0-b.2 =
+= 11.0.0-rc.1 =
 
 (2022/02/15) Added a new "SEO Title Tag" option in the Document SSO metabox. Added a new "Truncated Text Ellipsis" option. Added a progress bar to the character counter.
 
