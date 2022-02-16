@@ -1632,8 +1632,6 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 				}
 			}
 
-			asort( $values );	// Sort by label.
-
 			return $values;
 		}
 

@@ -849,11 +849,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		/**
 		 * Timezone difference to UTC with colon between hours and minutes.
 		 *
-		 * Used by self::get_opts_hm_tz() and self::get_opts_open_close_hm_tz().
+		 * Used by SucomUtil::get_opts_hm_tz() and SucomUtil::get_opts_open_close_hm_tz().
 		 */
 		public static function get_timezone_offset_hours( $tz_name ) {
 
-			return self::get_formatted_timezone( $tz_name, 'P' );
+			/**
+			 * P 	Difference to Greenwich time (GMT) with colon between hours and minutes.
+			 * p 	The same as P, but returns Z instead of +00:00.
+			 */
+			return self::get_formatted_timezone( $tz_name, 'p' );
 		}
 
 		public static function get_formatted_timezone( $tz_name, $format ) {
@@ -1674,6 +1678,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $found;
 		}
 
+		/**
+		 * Used by WpssoSchemaSingle::get_shipping_offer_data().
+		 */
 		public static function get_opts_hm_tz( array $opts, $key_hm, $key_tz = '' ) {
 
 			if ( ! empty( $opts[ $key_hm ] ) ) {
