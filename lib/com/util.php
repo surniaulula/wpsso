@@ -854,10 +854,21 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function get_timezone_offset_hours( $tz_name ) {
 
 			/**
+			 * See https://www.php.net/manual/en/datetime.format.php.
+			 *
 			 * P 	Difference to Greenwich time (GMT) with colon between hours and minutes.
 			 * p 	The same as P, but returns Z instead of +00:00.
+			 *
+			 * Unfortunately 'p' is only available since PHP v8, so we must use 'P' and check for '+00:00'.
 			 */
-			return self::get_formatted_timezone( $tz_name, 'p' );
+			 $offset = self::get_formatted_timezone( $tz_name, 'P' );
+
+			 if ( '+00:00' == $offset ) {
+
+			 	$offset = 'Z';
+			 }
+
+			 return $offset;
 		}
 
 		public static function get_formatted_timezone( $tz_name, $format ) {
@@ -869,11 +880,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return $local_cache[ $tz_name ][ $format ];
 			}
 
-			$dt = new DateTime();
+			$dt_obj = new DateTime();
 
-			$dt->setTimeZone( new DateTimeZone( $tz_name ) );
+			$dt_obj->setTimeZone( new DateTimeZone( $tz_name ) );
 
-			return $local_cache[ $tz_name ][ $format ] = $dt->format( $format );
+			return $local_cache[ $tz_name ][ $format ] = $dt_obj->format( $format );
 		}
 
 		/**
