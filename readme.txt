@@ -250,16 +250,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.0.1-dev.2 (2022/02/17)**
+**Version 11.1.0-dev.3 (2022/02/17)**
 
 * **New Features**
-	* None.
+	* Added a new Document SSO &gt; Edit Visibility &gt; 301 Redirect URL option.
 * **Improvements**
 	* Removed test for `WpssoUtilRobots->is_enabled()` when checking for noindex, to allow noindex checks even if the robots meta tag is disabled.
 * **Bugfixes**
 	* Fixed an incorrect visual element change on mouseover for The Events Calendar and WP Job Manager option selects.
 * **Developer Notes**
-	* None.
+	* Renamed the 'wpsso_add_head_html' (true by default) filter to 'wpsso_head_disabled' (false by default).
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -934,9 +934,9 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 11.0.1-dev.2 =
+= 11.1.0-dev.3 =
 
-(2022/02/17) Fixed an incorrect visual element change on mouseover for The Events Calendar and WP Job Manager option selects.
+(2022/02/17) Added a new Document SSO &gt; Edit Visibility &gt; 301 Redirect URL option. Fixed an incorrect visual element change on mouseover for The Events Calendar and WP Job Manager option selects.
 
 = 11.0.0 =
 
