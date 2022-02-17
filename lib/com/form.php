@@ -722,7 +722,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			if ( ! is_array( $len ) ) {	// A non-array value defaults to a max length.
 
-				$len = empty( $len ) ? $len = array() : array( 'max' => $len );
+				$len = empty( $len ) ? array() : array( 'max' => $len );
 			}
 
 			$html .= '<input type="text" name="' . esc_attr( $this->opts_name . '[' . $name . ']' ) . '"';
@@ -1728,18 +1728,16 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$value       = $this->in_options( $name ) ? $this->options[ $name ] : '';
 			$holder      = $this->get_placeholder_sanitized( $name, $holder );
 
-			if ( ! empty( $len[ 'rows' ] ) ) {
-
-				$input_rows = $len[ 'rows' ];
-
-			}
-
 			if ( ! is_array( $len ) ) {
 
 				$len = array( 'max' => $len );
 			}
 
-			if ( ! empty( $len[ 'max' ] ) ) {
+			if ( ! empty( $len[ 'rows' ] ) ) {
+
+				$input_rows = $len[ 'rows' ];
+
+			} elseif ( ! empty( $len[ 'max' ] ) ) {
 
 				$input_rows = round( $len[ 'max' ] / 100 ) + 1;
 			}
@@ -2604,11 +2602,31 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_no_textarea_value( $value = '', $css_class = '', $css_id = '', $len = 0, $holder = '' ) {
 
-			return '<textarea disabled="disabled"' .
-				( empty( $css_class ) ? '' : ' class="' . esc_attr( $css_class ) . '"' ) .
-				( empty( $css_id ) ? '' : ' id="textarea_' . esc_attr( $css_id ) . '"' ) .
-				( empty( $len ) ? '' : ' rows="'.( round( $len / 100 ) + 1 ) . '"' ) .
-				'>' . esc_attr( $value ) . '</textarea>';
+			$input_class = SucomUtil::sanitize_css_class( $css_class );
+			$input_id    = SucomUtil::sanitize_css_id( $css_id );
+			$input_rows  = '';
+
+			if ( ! is_array( $len ) ) {	// A non-array value defaults to a max length.
+
+				$len = empty( $len ) ? array() : array( 'max' => $len );
+			}
+
+			if ( ! empty( $len[ 'rows' ] ) ) {
+
+				$input_rows = $len[ 'rows' ];
+
+			} elseif ( ! empty( $len[ 'max' ] ) ) {
+
+				$input_rows = round( $len[ 'max' ] / 100 ) + 1;
+			}
+
+			$html = '<textarea disabled="disabled"';
+			$html .= $input_class ? ' class="' . $input_class . '"' : '';	// Already sanitized.
+			$html .= $input_id ? ' id="textarea_' . $input_id . '"' : '';	// Already sanitized.
+			$html .= $input_rows ? ' rows="' . $input_rows . '"' : '';
+			$html .= '>' . esc_attr( $value ) . '</textarea>';
+
+			return $html;
 		}
 
 		/**

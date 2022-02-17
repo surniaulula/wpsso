@@ -1022,7 +1022,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 		public function doc_title_disabled() {
 
-			$text = sprintf( __( '<a href="%s">WordPress Title Tag</a> not supported by theme', 'wpsso' ),
+			$text = sprintf( __( '<a href="%s">Title Tag</a> not supported by theme', 'wpsso' ),
 				__( 'https://codex.wordpress.org/Title_Tag', 'wpsso' ) );
 
 			return '<span class="option-warning">' . $text . '</span>';

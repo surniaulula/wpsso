@@ -242,7 +242,7 @@ if ( ! class_exists( 'WpssoMessagesInfo' ) ) {
 					$text .= '</p><p>';
 
 					// translators: %1$s is "link rel canonical", %2$s is "meta name description", and %3$s is "meta name robots".
-					$text .= sprintf( __( 'Note that the %1$s, %2$s, and %3$s HTML tags are disabled automatically if another known SEO plugin is detected.', 'wpsso' ), '<code>link rel canonical</code>', '<code>meta name description</code>', '<code>meta name robots</code>' );
+					$text .= sprintf( __( 'Note that the %1$s, %2$s, and %3$s tags are disabled automatically if another known SEO plugin is detected.', 'wpsso' ), '<code>link rel canonical</code>', '<code>meta name description</code>', '<code>meta name robots</code>' );
 
 					$text .= '</p>';
 

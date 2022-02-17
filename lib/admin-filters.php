@@ -188,9 +188,40 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 				$this->p->debug->mark();
 			}
 
+			$features[ '(code) SEO Title Tag' ] = array(
+				'label_transl' => _x( '(code) SEO Title Tag', 'lib file description', 'wpsso' ),
+				'status'       => $this->p->util->is_seo_title_disabled() ? 'off' : 'on',
+			);
+
+			$features[ '(code) SEO Meta Description Tag' ] = array(
+				'label_transl' => _x( '(code) SEO Meta Description Tag', 'lib file description', 'wpsso' ),
+				'status'       => $this->p->util->is_seo_desc_disabled() ? 'off' : 'on',
+			);
+
+			$features[ '(code) SEO Robots Meta Tag' ] = array(
+				'label_transl' => _x( '(code) SEO Robots Meta Tag', 'lib file description', 'wpsso' ),
+				'status'       => $this->p->util->robots->is_enabled() ? 'on' : 'off',
+			);
+
 			$features[ '(code) Facebook / Open Graph Meta Tags' ] = array(
 				'label_transl' => _x( '(code) Facebook / Open Graph Meta Tags', 'lib file description', 'wpsso' ),
 				'status'       => class_exists( 'wpssoopengraph' ) ? 'on' : 'recommended',
+			);
+
+			$features[ '(code) Pinterest Hidden Image' ] = array(
+				'label_transl' => _x( '(code) Pinterest Hidden Image', 'lib file description', 'wpsso' ),
+				'label_url'    => $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_pinterest' ),
+				'status'       => $this->p->util->is_pin_img_disabled() ? 'off' : 'on',
+			);
+
+			$features[ '(code) Schema JSON-LD Markup' ] = array(
+				'label_transl' => _x( '(code) Schema JSON-LD Markup', 'lib file description', 'wpsso' ),
+				'status'       => $this->p->util->is_schema_disabled() ? 'recommended' : 'on',
+			);
+
+			$features[ '(code) Twitter Card Meta Tags' ] = array(
+				'label_transl' => _x( '(code) Twitter Card Meta Tags', 'lib file description', 'wpsso' ),
+				'status'       => class_exists( 'WpssoTwitterCard' ) ? 'on' : 'recommended',
 			);
 
 			$features[ '(code) Link Relation Canonical Tag' ] = array(
@@ -206,27 +237,6 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 			$features[ '(code) oEmbed Response Enhancements' ] = array(
 				'label_transl' => _x( '(code) oEmbed Response Enhancements', 'lib file description', 'wpsso' ),
 				'status'       => class_exists( 'WpssoOembed' ) && function_exists( 'get_oembed_response_data' ) ? 'on' : 'recommended',
-			);
-
-			$features[ '(code) Pinterest Hidden Content Image' ] = array(
-				'label_transl' => _x( '(code) Pinterest Hidden Content Image', 'lib file description', 'wpsso' ),
-				'label_url'    => $this->p->util->get_admin_url( 'general#sucom-tabset_pub-tab_pinterest' ),
-				'status'       => empty( $this->p->options[ 'pin_add_img_html' ] ) ? 'off' : 'on',
-			);
-
-			$features[ '(code) SEO Meta Description Tag' ] = array(
-				'label_transl' => _x( '(code) SEO Meta Description Tag', 'lib file description', 'wpsso' ),
-				'status'       => empty( $this->p->options[ 'add_meta_name_description' ] ) ? 'off' : 'on',
-			);
-
-			$features[ '(code) SEO Robots Meta Tag' ] = array(
-				'label_transl' => _x( '(code) SEO Robots Meta Tag', 'lib file description', 'wpsso' ),
-				'status'       => $this->p->util->robots->is_enabled() ? 'on' : 'off',
-			);
-
-			$features[ '(code) Twitter Card Meta Tags' ] = array(
-				'label_transl' => _x( '(code) Twitter Card Meta Tags', 'lib file description', 'wpsso' ),
-				'status'       => class_exists( 'WpssoTwitterCard' ) ? 'on' : 'recommended',
 			);
 
 			return $this->filter_status_std_features_schema( $features, $ext, $info );

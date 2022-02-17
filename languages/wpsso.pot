@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 11.0.0-rc.5\n"
+"Project-Id-Version: WPSSO Core 11.0.0-rc.6\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -528,25 +528,25 @@ msgid "User Profiles"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:33 gettext/gettext-lib-com.php:43
-#: lib/com/form.php:814 lib/com/form.php:2402
+#: lib/com/form.php:814 lib/com/form.php:2400
 msgctxt "option comment"
 msgid "days"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:34 gettext/gettext-lib-com.php:44
-#: lib/com/form.php:815 lib/com/form.php:2403
+#: lib/com/form.php:815 lib/com/form.php:2401
 msgctxt "option comment"
 msgid "hours"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:35 gettext/gettext-lib-com.php:45
-#: lib/com/form.php:816 lib/com/form.php:2404
+#: lib/com/form.php:816 lib/com/form.php:2402
 msgctxt "option comment"
 msgid "mins"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:36 gettext/gettext-lib-com.php:46
-#: lib/com/form.php:817 lib/com/form.php:2405
+#: lib/com/form.php:817 lib/com/form.php:2403
 msgctxt "option comment"
 msgid "secs"
 msgstr ""
@@ -4960,60 +4960,70 @@ msgstr ""
 
 #: lib/admin-filters.php:192
 msgctxt "lib file description"
-msgid "(code) Facebook / Open Graph Meta Tags"
+msgid "(code) SEO Title Tag"
 msgstr ""
 
 #: lib/admin-filters.php:197
 msgctxt "lib file description"
-msgid "(code) Link Relation Canonical Tag"
+msgid "(code) SEO Meta Description Tag"
 msgstr ""
 
 #: lib/admin-filters.php:202
 msgctxt "lib file description"
-msgid "(code) Link Relation Shortlink Tag"
+msgid "(code) SEO Robots Meta Tag"
 msgstr ""
 
 #: lib/admin-filters.php:207
 msgctxt "lib file description"
-msgid "(code) oEmbed Response Enhancements"
+msgid "(code) Facebook / Open Graph Meta Tags"
 msgstr ""
 
 #: lib/admin-filters.php:212
 msgctxt "lib file description"
-msgid "(code) Pinterest Hidden Content Image"
+msgid "(code) Pinterest Hidden Image"
 msgstr ""
 
 #: lib/admin-filters.php:218
 msgctxt "lib file description"
-msgid "(code) SEO Meta Description Tag"
+msgid "(code) Schema JSON-LD Markup"
 msgstr ""
 
 #: lib/admin-filters.php:223
 msgctxt "lib file description"
-msgid "(code) SEO Robots Meta Tag"
+msgid "(code) Twitter Card Meta Tags"
 msgstr ""
 
 #: lib/admin-filters.php:228
 msgctxt "lib file description"
-msgid "(code) Twitter Card Meta Tags"
+msgid "(code) Link Relation Canonical Tag"
 msgstr ""
 
-#: lib/admin-filters.php:260
+#: lib/admin-filters.php:233
+msgctxt "lib file description"
+msgid "(code) Link Relation Shortlink Tag"
+msgstr ""
+
+#: lib/admin-filters.php:238
+msgctxt "lib file description"
+msgid "(code) oEmbed Response Enhancements"
+msgstr ""
+
+#: lib/admin-filters.php:270
 msgctxt "lib file description"
 msgid "(code) Knowledge Graph Organization Markup"
 msgstr ""
 
-#: lib/admin-filters.php:266
+#: lib/admin-filters.php:276
 msgctxt "lib file description"
 msgid "(code) Knowledge Graph Person Markup"
 msgstr ""
 
-#: lib/admin-filters.php:272
+#: lib/admin-filters.php:282
 msgctxt "lib file description"
 msgid "(code) Knowledge Graph WebSite Markup"
 msgstr ""
 
-#: lib/admin-filters.php:302
+#: lib/admin-filters.php:312
 msgid "(%d sub-types)"
 msgstr ""
 
@@ -7009,7 +7019,7 @@ msgstr ""
 #. translators: %1$s is "link rel canonical", %2$s is "meta name description", and %3$s is "meta name robots".
 #: lib/messages-info.php:245
 msgid ""
-"Note that the %1$s, %2$s, and %3$s HTML tags are disabled automatically if "
+"Note that the %1$s, %2$s, and %3$s tags are disabled automatically if "
 "another known SEO plugin is detected."
 msgstr ""
 
@@ -9910,7 +9920,7 @@ msgid "video preview images are enabled (and included first)"
 msgstr ""
 
 #: lib/messages.php:1025
-msgid "<a href=\"%s\">WordPress Title Tag</a> not supported by theme"
+msgid "<a href=\"%s\">Title Tag</a> not supported by theme"
 msgstr ""
 
 #. translators: %s is the option name, linked to its settings page.
