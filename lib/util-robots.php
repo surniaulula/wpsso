@@ -41,6 +41,8 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 
 		/**
 		 * See https://developers.google.com/search/reference/robots_meta_tag.
+		 *
+		 * Called by WpssoMetaName->maybe_disable_noindex(), and WpssoMetaName->get_array().
 		 */
 		public function get_content( array $mod ) {
 
@@ -75,15 +77,9 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 
 			$directives = self::get_default_directives();
 
-			/**
-			 * Ignore custom options if the robots meta tag is disabled.
-			 */
-			if ( $this->is_enabled() ) {
+			if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 
-				if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
-
-					$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
-				}
+				$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
 			}
 
 			foreach ( $directives as $directive_key => $default_value ) {
@@ -156,19 +152,13 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 				$mod = $this->p->$mixed->get_mod( $mod_id );
 			}
 
-			/**
-			 * Ignore custom options if the robots meta tag is disabled.
-			 */
-			if ( $this->is_enabled() ) {
+			if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 
-				if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
+				$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
 
-					$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
+				if ( isset( $md_opts[ 'robots_noindex' ] ) ) {
 
-					if ( isset( $md_opts[ 'robots_noindex' ] ) ) {
-
-						$is_noindex = $md_opts[ 'robots_noindex' ] ? true : false;
-					}
+					$is_noindex = $md_opts[ 'robots_noindex' ] ? true : false;
 				}
 			}
 
