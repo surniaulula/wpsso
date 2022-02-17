@@ -388,9 +388,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					 * and Schema type.
 					 */
 					$disable_keys = array(
-						'canonical_url',
 						'og_type',
 						'schema_type',
+						'canonical_url',
+						'redirect_url',
 					);
 
 					if ( $this->p->debug->enabled ) {

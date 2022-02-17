@@ -63,33 +63,38 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( ! empty( $this->p->options[ 'add_link_rel_canonical' ] ) ) {
+			if ( $this->p->util->is_canonical_disabled() ) {	// WPSSO canonical URL meta tag is disabled.
 
-				if ( function_exists( 'current_action' ) ) {	// Since WP v3.9.
+				return;
+			}
 
-					$current  = current_action();
+			/**
+			 * If WPSSO is providing the canonical URL, then disable the WordPress and AMP canonical meta tags.
+			 */
+			if ( function_exists( 'current_action' ) ) {	// Since WP v3.9.
 
-				} else {
+				$current  = current_action();
 
-					$current  = current_filter();
-				}
+			} else {
 
-				switch( $current ) {
+				$current  = current_filter();
+			}
 
-					case 'wp_head':
+			switch( $current ) {
 
-						remove_filter( $current, 'rel_canonical' );	// WordPress.
+				case 'wp_head':
 
-						remove_action( $current, 'amp_frontend_add_canonical' );	// AMP.
+					remove_filter( $current, 'rel_canonical' );
 
-						break;
+					remove_action( $current, 'amp_frontend_add_canonical' );
 
-					case 'amp_post_template_head':
+					break;
 
-						remove_action( $current, 'amp_post_template_add_canonical' );	// AMP.
+				case 'amp_post_template_head':
 
-						break;
-				}
+					remove_action( $current, 'amp_post_template_add_canonical' );
+
+					break;
 			}
 		}
 
@@ -108,7 +113,7 @@ if ( ! class_exists( 'WpssoLinkRel' ) ) {
 			/**
 			 * Link rel canonical.
 			 */
-			$add_link_rel_canonical = empty( $this->p->options[ 'add_link_rel_canonical' ] ) ? false : true;
+			$add_link_rel_canonical = $this->p->util->is_canonical_disabled() ? false : true;
 
 			if ( apply_filters( 'wpsso_add_link_rel_canonical', $add_link_rel_canonical, $mod ) ) {
 

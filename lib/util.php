@@ -36,11 +36,13 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			'is_attachment',
 			'is_author',
 			'is_category',
+			'is_customize_preview',
 			'is_front_page',
 			'is_home',
 			'is_multisite',
 			'is_page',
 			'is_post_type_archive',
+			'is_preview',
 			'is_rtl',
 			'is_search',
 			'is_single',
@@ -50,7 +52,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			'is_tax',
 
 			/**
-			 * Common e-commerce / woocommerce functions.
+			 * Common e-commerce functions.
 			 */
 			'is_account_page',
 			'is_cart',
@@ -1949,13 +1951,13 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				$mod = $this->p->page->get_mod( $mod );
 			}
 
-			$url = null;
-
 			/**
 			 * Optimize and return the URL from local cache if possible.
 			 */
 			static $local_cache = array();
 
+			$url        = null;
+			$is_custom  = false;
 			$cache_salt = false;
 
 			if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
@@ -1975,10 +1977,10 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						$this->p->debug->log( 'custom canonical url = ' . $url );
 					}
+			
+					$is_custom = true;
 				}
 			}
-
-			$is_custom = empty( $url ) ? false : true;
 
 			if ( ! $is_custom ) {	// No custom canonical url from the post, term, or user meta.
 
@@ -2141,11 +2143,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				if ( self::get_const( 'FORCE_SSL' ) && ! self::is_https( $url ) ) {
 
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'force ssl is enabled - replacing http by https' );
-					}
-
 					$url = set_url_scheme( $url, 'https' );
 				}
 			}
@@ -2158,6 +2155,56 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				$local_cache[ $cache_salt ] = $url;
 			}
+
+			return $url;
+		}
+
+		/**
+		 * The $mod array argument is preferred but not required.
+		 *
+		 * $mod = true | false | post_id | $mod array
+		 */
+		public function get_redirect_url( $mixed, $mod_id = null ) {
+
+			$mod = false;
+
+			if ( ! empty( $mixed[ 'obj' ] ) ) {
+
+				$mod =& $mixed;
+
+			} elseif ( is_string( $mixed ) && isset( $this->p->$mixed ) && $mod_id ) {	// Just in case.
+
+				$mod = $this->p->$mixed->get_mod( $mod_id );
+
+			} elseif ( ! is_array( $mod ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
+				}
+
+				$mod = $this->p->page->get_mod( $mixed );
+			}
+
+			$url        = null;
+			$is_custom  = false;
+
+			if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
+
+				$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'redirect_url' );	// Returns null if an index key is not found.
+
+				if ( ! empty( $url ) ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'custom redirect url = ' . $url );
+					}
+			
+					$is_custom  = true;
+				}
+			}
+
+			$url = apply_filters( 'wpsso_redirect_url', $url, $mod, $is_custom );
 
 			return $url;
 		}
@@ -2418,6 +2465,16 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			return $cleared;
+		}
+
+		public function is_canonical_disabled() {
+
+			return empty( $this->p->options[ 'add_link_rel_canonical' ] ) ? true : false;
+		}
+
+		public function is_redirect_disabled() {
+
+			return apply_filters( 'wpsso_redirect_disabled', false );
 		}
 
 		public function is_title_tag_disabled() {

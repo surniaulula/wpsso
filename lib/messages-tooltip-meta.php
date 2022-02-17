@@ -211,7 +211,15 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 
 					$text = __( 'A customized URL for meta tags and Schema markup.', 'wpsso' ) . ' ';
 
-					$text .= __( 'Please make sure the custom URL you enter here is functional and redirects correctly.', 'wpsso' );
+					$text .= __( 'Make sure the custom URL you enter here is functional and redirects correctly.', 'wpsso' );
+
+				 	break;
+
+				case 'tooltip-meta-redirect_url':	// 301 Redirect URL.
+
+					$text = __( 'Permanently redirect this URL to another.', 'wpsso' ) . ' ';
+
+					$text .= __( 'Make sure the custom URL you enter here is functional and redirects correctly.', 'wpsso' );
 
 				 	break;
 

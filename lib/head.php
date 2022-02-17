@@ -57,6 +57,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 
 			/**
+			 * Maybe do a 301 redirect.
+			 */
+			add_action( 'template_redirect', array( $this, 'maybe_redirect_url' ), -1000 );
+
+			/**
 			 * If a caching plugin or service is active, reduce the head markup cache expiration.
 			 */
 			if ( ! empty( $this->p->avail[ 'cache' ][ 'any' ] ) ) {
@@ -67,50 +72,54 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			}
 		}
 
-		public function add_vary_user_agent_header( $headers ) {
-
-			$headers [ 'Vary' ] = 'User-Agent';
-
-			return $headers;
-		}
-
-		/**
-		 * $mixed = 'default' | 'current' | post ID | $mod array
-		 */
-		public function get_head_cache_index( $mixed = 'current' ) {
+		public function maybe_redirect_url() {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
 			}
 
-			$cache_index = '';
+			if ( is_admin() || is_preview() || is_customize_preview() ) {
 
-			if ( is_array( $mixed ) ) {
+				if ( $this->p->debug->enabled ) {
 
-				if ( ! empty( $mixed[ 'paged' ] ) && $mixed[ 'paged' ] > 1 ) {	// False or numeric.
+					$this->p->debug->log( 'exiting early: is admin, preview, or customize preview' );
+				}
 
-					$cache_index .= '_paged:' . $mixed[ 'paged' ];
+				return;
+
+			} elseif ( $this->p->util->is_redirect_disabled() ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: redirect disabled' );
+				}
+
+				return;
+			}
+
+			$use_post = apply_filters( 'wpsso_use_post', false );
+
+			$url = $this->p->util->get_redirect_url( $use_post );
+
+			if ( $url ) {
+			
+				do_action( 'wpsso_before_redirect', $url );
+
+				$redirect_code = absint( apply_filters( 'wpsso_redirect_status_code', 301 ) );
+
+				if ( wp_safe_redirect( $url, $redirect_code ) ) {
+
+					exit;
 				}
 			}
+		}
 
-			$cache_index .= '_locale:' . SucomUtil::get_locale( $mixed );
+		public function add_vary_user_agent_header( $headers ) {
 
-			if ( SucomUtil::is_amp() ) {	// Returns null, true, or false.
+			$headers [ 'Vary' ] = 'User-Agent';
 
-				$cache_index .= '_amp:true';
-			}
-
-			$cache_index = trim( $cache_index, '_' );	// Cleanup leading underscores.
-
-			$cache_index = apply_filters( 'wpsso_head_cache_index', $cache_index, $mixed );
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'returned cache index is "' . $cache_index . '"' );
-			}
-
-			return $cache_index;
+			return $headers;
 		}
 
 		/**
@@ -128,13 +137,14 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( function_exists( 'current_action' ) ) {	// Since WP v3.9.
+			if ( is_admin() || is_preview() || is_customize_preview() ) {
 
-				$current  = current_action();
+				if ( $this->p->debug->enabled ) {
 
-			} else {
+					$this->p->debug->log( 'exiting early: is admin, preview, or customize preview' );
+				}
 
-				$current  = current_filter();
+				return;
 			}
 
 			$use_post = apply_filters( 'wpsso_use_post', false );
@@ -146,7 +156,15 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$mod = $this->p->page->get_mod( $use_post );	// Get post/term/user ID, module name, and module object reference.
 
-			$add_head_html = apply_filters( 'wpsso_add_head_html', true, $mod );
+			$head_disabled = apply_filters( 'wpsso_head_disabled', false, $mod );
+
+			if ( $head_disabled ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: head disabled' );
+				}
+			}
 
 			if ( $this->p->debug->enabled ) {
 
@@ -154,258 +172,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->log( 'locale current = ' . SucomUtil::get_locale() );
 				$this->p->debug->log( 'locale default = ' . SucomUtil::get_locale( 'default' ) );
 				$this->p->debug->log( 'locale mod = ' . SucomUtil::get_locale( $mod ) );
-				$this->p->debug->log( 'add head html = ' . ( $add_head_html ? 'true' : 'false' ) );
 
 				$this->p->util->log_is_functions();
 			}
 
-			if ( $add_head_html ) {
-
-				echo $this->get_head_html( $use_post, $mod, $read_cache = true );
-
-			} else {
-
-				echo "\n\n" . '<!-- wpsso head html is disabled -->' . "\n\n";
-			}
-		}
-
-		/**
-		 * Extract certain key fields for display and sanity checks.
-		 *
-		 * Save meta tag values for later sorting in list tables.
-		 *
-		 * Called by WpssoAbstractWpMeta->get_head_info().
-		 * Called by WpssoPost->load_meta_page().
-		 * Called by WpssoPost->ajax_get_metabox_document_meta().
-		 * Called by WpssoTerm->load_meta_page().
-		 * Called by WpssoUser->load_meta_page().
-		 * Called by WpssoUtilCache->refresh_mod_head_meta().
-		 */
-		public function extract_head_info( array $head_tags, $mod = false ) {
-
-			$head_info = array();
-
-			foreach ( $head_tags as $mt ) {
-
-				if ( ! isset( $mt[ 2 ] ) || ! isset( $mt[ 3 ] ) ) {
-
-					continue;
-				}
-
-				$mt_match = $mt[ 2 ] . '-' . $mt[ 3 ];
-
-				switch ( $mt_match ) {
-
-					case 'property-og:url':
-					case 'property-og:type':
-					case 'property-og:title':
-					case 'property-og:description':
-					case 'property-article:author:name':
-					case ( strpos( $mt_match, 'name-schema:' ) === 0 ? true : false ):
-					case ( strpos( $mt_match, 'name-twitter:' ) === 0 ? true : false ):
-
-						if ( ! isset( $head_info[ $mt[ 3 ] ] ) ) {	// Only save the first meta tag value.
-
-							$head_info[ $mt[ 3 ] ] = $mt[ 5 ];
-						}
-
-						break;
-
-					case ( preg_match( '/^property-((og|p):(image|video))(:secure_url|:url)?$/', $mt_match, $m ) ? true : false ):
-
-						if ( ! empty( $mt[ 5 ] ) ) {
-
-							$has_media[ $m[ 1 ] ] = true;	// Optimize media loop.
-						}
-
-						break;
-				}
-			}
-
-			/**
-			 * Save the first image and video information found.
-			 *
-			 * Assumes array key order defined by SucomUtil::get_mt_image_seed() and SucomUtil::get_mt_video_seed().
-			 */
-			foreach ( array( 'og:image', 'og:video', 'p:image' ) as $mt_pre ) {
-
-				if ( empty( $has_media[ $mt_pre ] ) ) {
-
-					continue;
-				}
-
-				$is_first = false;
-
-				foreach ( $head_tags as $mt ) {
-
-					if ( ! isset( $mt[ 2 ] ) || ! isset( $mt[ 3 ] ) ) {
-
-						continue;
-					}
-
-					if ( strpos( $mt[ 3 ], $mt_pre ) !== 0 ) {
-
-						$is_first = false;
-
-						/**
-						 * If we already found media, then skip to the next media prefix.
-						 */
-						if ( ! empty( $head_info[ $mt_pre ] ) ) {
-
-							continue 2;
-
-						} else {
-
-							continue;	// Skip meta tags without matching prefix.
-						}
-					}
-
-					$mt_match = $mt[ 2 ] . '-' . $mt[ 3 ];
-
-					switch ( $mt_match ) {
-
-						case ( preg_match( '/^property-' . $mt_pre . '(:secure_url|:url)?$/', $mt_match, $m ) ? true : false ):
-
-							if ( ! empty( $head_info[ $mt_pre ] ) ) {	// Only save the media URL once.
-
-								continue 2;				// Get the next meta tag.
-							}
-
-							if ( ! empty( $mt[ 5 ] ) ) {
-
-								$head_info[ $mt_pre ] = $mt[ 5 ];	// Save the media URL.
-
-								$is_first = true;
-							}
-
-							break;
-
-						case ( preg_match( '/^property-' . $mt_pre . ':(width|height|cropped|id|title|description)$/', $mt_match, $m ) ? true : false ):
-
-							if ( true !== $is_first ) {	// Only save for first media found.
-
-								continue 2;		// Get the next meta tag.
-							}
-
-							$head_info[ $mt[ 3 ] ] = $mt[ 5 ];
-
-							break;
-					}
-				}
-			}
-
-			/**
-			 * Maybe save meta tag values for later sorting in list tables.
-			 */
-			if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
-
-				$sortable_cols = WpssoAbstractWpMeta::get_sortable_columns();
-
-				foreach ( $sortable_cols as $col_key => $col_info ) {
-
-					if ( empty( $col_info[ 'meta_key' ] ) ) {
-
-						continue;
-
-					} elseif ( 0 !== strpos( $col_info[ 'meta_key' ], '_wpsso_head_info_' ) ) {
-
-						continue;
-					}
-
-					$meta_value = 'none';
-
-					if ( ! empty( $col_info[ 'mt_name' ]  ) ) {
-
-						if ( 'og:image' === $col_info[ 'mt_name' ] ) {	// Get the image thumbnail HTML.
-
-							if ( $media_html = $mod[ 'obj' ]->get_head_info_thumb_bg_img( $head_info, $mod ) ) {
-
-								/**
-								 * Example:
-								 *
-								 *	<div class="wp-thumb-bg-img" style="background-image:url(https://.../thumbnail.jpg);"></div>
-								 */
-								$meta_value = $media_html;
-							}
-
-						} elseif ( isset( $head_info[ $col_info[ 'mt_name' ] ] ) ) {
-
-							$meta_value = $head_info[ $col_info[ 'mt_name' ] ];
-						}
-					}
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'updating meta for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' ' . $col_key . ' = ' . $meta_value );
-					}
-
-					$mod[ 'obj' ]->update_sortable_meta( $mod[ 'id' ], $col_key, $meta_value );
-				}
-			}
-
-			return $head_info;
-		}
-
-		/**
-		 * Deprecated on 2021/07/04.
-		 */
-		public function get_mt_mark( $type ) {
-
-			return $this->get_mt_data( $type );
-		}
-
-		/**
-		 * Called by WpssoHead->get_head_html() with $type = 'begin' and 'end'.
-		 * Called by WpssoPost->check_post_head() with $type = 'preg'.
-		 * Called by WpssoSsmFilters->strip_schema_microdata() with $type = 'preg'.
-		 */
-		public function get_mt_data( $type, $args = null ) {
-
-			switch ( $type ) {
-
-				case 'added':
-
-					$total_secs = sprintf( '%f secs', $args );
-					$home_url   = SucomUtilWP::raw_get_home_url();
-					$home_path  = preg_replace( '/^[a-z]+:\/\//i', '', $home_url );	// Remove the protocol prefix.
-
-					return '<meta name="wpsso-' . $type . '" content="' . date( 'c' ) . ' in ' . $total_secs .  ' for ' . $home_path . '">' . "\n";
-
-				case 'begin':
-				case 'end':
-
-					return '<meta name="wpsso-' . $type . '" content="' . WPSSO_DATA_ID . ' ' . $type . '"/>' . "\n";
-
-				case 'cached':
-
-					return '<meta name="wpsso-' . $type . '" content="' . ( $args ? date( 'c' ) : 'no cache' ) . '">' . "\n";
-
-				/**
-				 * Used by WpssoPost->check_post_head() and WpssoSsmFilters->strip_schema_microdata().
-				 */
-				case 'preg':
-
-					/**
-					 * Some HTML optimization plugins or services may remove the double-quotes from the name
-					 * attribute, along with the trailing space and slash characters, so make these optional in
-					 * the regex.
-					 */
-					$preg_prefix = '<(meta[\s\n\r]+name="?wpsso-(begin|end)"?[\s\n\r]+content=")';
-					$preg_suffix = '("[\s\n\r]*\/?)>';
-
-					/**
-					 * U = Invert greediness of quantifiers, so they are NOT greedy by default, but become greedy if followed by ?.
-					 * u = Modifier to handle UTF-8 in subject strings.
-					 * m = The "^" and "$" constructs match newlines and the complete subject string.
-					 * s = A dot metacharacter in the pattern matches all characters, including newlines.
-					 */
-					return '/' . $preg_prefix . WPSSO_DATA_ID . ' begin' . $preg_suffix . '.*' .
-						$preg_prefix . WPSSO_DATA_ID . ' end' . $preg_suffix . '/Uums';
-
-				default:
-
-					return '';
-			}
+			echo $this->get_head_html( $use_post, $mod, $read_cache = true );
 		}
 
 		public function get_head_html( $use_post = false, $mod = false, $read_cache = true ) {
@@ -744,6 +515,222 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			return $cache_array[ $cache_index ];
 		}
 
+		/**
+		 * $mixed = 'default' | 'current' | post ID | $mod array
+		 */
+		public function get_head_cache_index( $mixed = 'current' ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			$cache_index = '';
+
+			if ( is_array( $mixed ) ) {
+
+				if ( ! empty( $mixed[ 'paged' ] ) && $mixed[ 'paged' ] > 1 ) {	// False or numeric.
+
+					$cache_index .= '_paged:' . $mixed[ 'paged' ];
+				}
+			}
+
+			$cache_index .= '_locale:' . SucomUtil::get_locale( $mixed );
+
+			if ( SucomUtil::is_amp() ) {	// Returns null, true, or false.
+
+				$cache_index .= '_amp:true';
+			}
+
+			$cache_index = trim( $cache_index, '_' );	// Cleanup leading underscores.
+
+			$cache_index = apply_filters( 'wpsso_head_cache_index', $cache_index, $mixed );
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'returned cache index is "' . $cache_index . '"' );
+			}
+
+			return $cache_index;
+		}
+
+		/**
+		 * Extract certain key fields for display and sanity checks.
+		 *
+		 * Save meta tag values for later sorting in list tables.
+		 *
+		 * Called by WpssoAbstractWpMeta->get_head_info().
+		 * Called by WpssoPost->load_meta_page().
+		 * Called by WpssoPost->ajax_get_metabox_document_meta().
+		 * Called by WpssoTerm->load_meta_page().
+		 * Called by WpssoUser->load_meta_page().
+		 * Called by WpssoUtilCache->refresh_mod_head_meta().
+		 */
+		public function extract_head_info( array $head_tags, $mod = false ) {
+
+			$head_info = array();
+
+			foreach ( $head_tags as $mt ) {
+
+				if ( ! isset( $mt[ 2 ] ) || ! isset( $mt[ 3 ] ) ) {
+
+					continue;
+				}
+
+				$mt_match = $mt[ 2 ] . '-' . $mt[ 3 ];
+
+				switch ( $mt_match ) {
+
+					case 'property-og:url':
+					case 'property-og:type':
+					case 'property-og:title':
+					case 'property-og:description':
+					case 'property-article:author:name':
+					case ( strpos( $mt_match, 'name-schema:' ) === 0 ? true : false ):
+					case ( strpos( $mt_match, 'name-twitter:' ) === 0 ? true : false ):
+
+						if ( ! isset( $head_info[ $mt[ 3 ] ] ) ) {	// Only save the first meta tag value.
+
+							$head_info[ $mt[ 3 ] ] = $mt[ 5 ];
+						}
+
+						break;
+
+					case ( preg_match( '/^property-((og|p):(image|video))(:secure_url|:url)?$/', $mt_match, $m ) ? true : false ):
+
+						if ( ! empty( $mt[ 5 ] ) ) {
+
+							$has_media[ $m[ 1 ] ] = true;	// Optimize media loop.
+						}
+
+						break;
+				}
+			}
+
+			/**
+			 * Save the first image and video information found.
+			 *
+			 * Assumes array key order defined by SucomUtil::get_mt_image_seed() and SucomUtil::get_mt_video_seed().
+			 */
+			foreach ( array( 'og:image', 'og:video', 'p:image' ) as $mt_pre ) {
+
+				if ( empty( $has_media[ $mt_pre ] ) ) {
+
+					continue;
+				}
+
+				$is_first = false;
+
+				foreach ( $head_tags as $mt ) {
+
+					if ( ! isset( $mt[ 2 ] ) || ! isset( $mt[ 3 ] ) ) {
+
+						continue;
+					}
+
+					if ( strpos( $mt[ 3 ], $mt_pre ) !== 0 ) {
+
+						$is_first = false;
+
+						/**
+						 * If we already found media, then skip to the next media prefix.
+						 */
+						if ( ! empty( $head_info[ $mt_pre ] ) ) {
+
+							continue 2;
+
+						} else {
+
+							continue;	// Skip meta tags without matching prefix.
+						}
+					}
+
+					$mt_match = $mt[ 2 ] . '-' . $mt[ 3 ];
+
+					switch ( $mt_match ) {
+
+						case ( preg_match( '/^property-' . $mt_pre . '(:secure_url|:url)?$/', $mt_match, $m ) ? true : false ):
+
+							if ( ! empty( $head_info[ $mt_pre ] ) ) {	// Only save the media URL once.
+
+								continue 2;				// Get the next meta tag.
+							}
+
+							if ( ! empty( $mt[ 5 ] ) ) {
+
+								$head_info[ $mt_pre ] = $mt[ 5 ];	// Save the media URL.
+
+								$is_first = true;
+							}
+
+							break;
+
+						case ( preg_match( '/^property-' . $mt_pre . ':(width|height|cropped|id|title|description)$/', $mt_match, $m ) ? true : false ):
+
+							if ( true !== $is_first ) {	// Only save for first media found.
+
+								continue 2;		// Get the next meta tag.
+							}
+
+							$head_info[ $mt[ 3 ] ] = $mt[ 5 ];
+
+							break;
+					}
+				}
+			}
+
+			/**
+			 * Maybe save meta tag values for later sorting in list tables.
+			 */
+			if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
+
+				$sortable_cols = WpssoAbstractWpMeta::get_sortable_columns();
+
+				foreach ( $sortable_cols as $col_key => $col_info ) {
+
+					if ( empty( $col_info[ 'meta_key' ] ) ) {
+
+						continue;
+
+					} elseif ( 0 !== strpos( $col_info[ 'meta_key' ], '_wpsso_head_info_' ) ) {
+
+						continue;
+					}
+
+					$meta_value = 'none';
+
+					if ( ! empty( $col_info[ 'mt_name' ]  ) ) {
+
+						if ( 'og:image' === $col_info[ 'mt_name' ] ) {	// Get the image thumbnail HTML.
+
+							if ( $media_html = $mod[ 'obj' ]->get_head_info_thumb_bg_img( $head_info, $mod ) ) {
+
+								/**
+								 * Example:
+								 *
+								 *	<div class="wp-thumb-bg-img" style="background-image:url(https://.../thumbnail.jpg);"></div>
+								 */
+								$meta_value = $media_html;
+							}
+
+						} elseif ( isset( $head_info[ $col_info[ 'mt_name' ] ] ) ) {
+
+							$meta_value = $head_info[ $col_info[ 'mt_name' ] ];
+						}
+					}
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'updating meta for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' ' . $col_key . ' = ' . $meta_value );
+					}
+
+					$mod[ 'obj' ]->update_sortable_meta( $mod[ 'id' ], $col_key, $meta_value );
+				}
+			}
+
+			return $head_info;
+		}
+
 		private function get_mt_array( $tag, $type, array $mixed, array $mod ) {
 
 			$mt_array = array();
@@ -751,6 +738,68 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$this->add_mt_array( $mt_array, $tag, $type, $name = '', $mixed, $cmt = '', $mod, $use_image = true );
 
 			return $mt_array;
+		}
+
+		/**
+		 * Deprecated on 2021/07/04.
+		 */
+		public function get_mt_mark( $type ) {
+
+			return $this->get_mt_data( $type );
+		}
+
+		/**
+		 * Called by WpssoHead->get_head_html() with $type = 'begin' and 'end'.
+		 * Called by WpssoPost->check_post_head() with $type = 'preg'.
+		 * Called by WpssoSsmFilters->strip_schema_microdata() with $type = 'preg'.
+		 */
+		public function get_mt_data( $type, $args = null ) {
+
+			switch ( $type ) {
+
+				case 'added':
+
+					$total_secs = sprintf( '%f secs', $args );
+					$home_url   = SucomUtilWP::raw_get_home_url();
+					$home_path  = preg_replace( '/^[a-z]+:\/\//i', '', $home_url );	// Remove the protocol prefix.
+
+					return '<meta name="wpsso-' . $type . '" content="' . date( 'c' ) . ' in ' . $total_secs .  ' for ' . $home_path . '">' . "\n";
+
+				case 'begin':
+				case 'end':
+
+					return '<meta name="wpsso-' . $type . '" content="' . WPSSO_DATA_ID . ' ' . $type . '"/>' . "\n";
+
+				case 'cached':
+
+					return '<meta name="wpsso-' . $type . '" content="' . ( $args ? date( 'c' ) : 'no cache' ) . '">' . "\n";
+
+				/**
+				 * Used by WpssoPost->check_post_head() and WpssoSsmFilters->strip_schema_microdata().
+				 */
+				case 'preg':
+
+					/**
+					 * Some HTML optimization plugins or services may remove the double-quotes from the name
+					 * attribute, along with the trailing space and slash characters, so make these optional in
+					 * the regex.
+					 */
+					$preg_prefix = '<(meta[\s\n\r]+name="?wpsso-(begin|end)"?[\s\n\r]+content=")';
+					$preg_suffix = '("[\s\n\r]*\/?)>';
+
+					/**
+					 * U = Invert greediness of quantifiers, so they are NOT greedy by default, but become greedy if followed by ?.
+					 * u = Modifier to handle UTF-8 in subject strings.
+					 * m = The "^" and "$" constructs match newlines and the complete subject string.
+					 * s = A dot metacharacter in the pattern matches all characters, including newlines.
+					 */
+					return '/' . $preg_prefix . WPSSO_DATA_ID . ' begin' . $preg_suffix . '.*' .
+						$preg_prefix . WPSSO_DATA_ID . ' end' . $preg_suffix . '/Uums';
+
+				default:
+
+					return '';
+			}
 		}
 
 		/**

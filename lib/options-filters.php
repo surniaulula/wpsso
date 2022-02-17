@@ -495,6 +495,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				 */
 				case 'home_url':
 				case 'canonical_url':
+				case 'redirect_url':
 				case 'fb_page_url':
 				case 'og_vid_url':
 				case 'pin_publisher_url':

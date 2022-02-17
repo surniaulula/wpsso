@@ -139,8 +139,6 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 		 */
 		public function is_noindex( $mixed, $mod_id = null ) {
 
-			$is_noindex = null;
-
 			$mod = false;
 
 			if ( ! empty( $mixed[ 'obj' ] ) ) {
@@ -152,24 +150,32 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 				$mod = $this->p->$mixed->get_mod( $mod_id );
 			}
 
+			$is_noindex = null;
+			$is_custom  = false;
+
 			if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 
 				$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
 
 				if ( isset( $md_opts[ 'robots_noindex' ] ) ) {
 
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'custom robots noindex = ' . $md_opts[ 'robots_noindex' ] );
+					}
+
 					$is_noindex = $md_opts[ 'robots_noindex' ] ? true : false;
+					$is_custom  = true;
 				}
 			}
 
 			if ( null === $is_noindex ) {	// No custom options found.
 
 				$directives = self::get_default_directives();
-
 				$is_noindex = $directives[ 'noindex' ] ? true : false;
 			}
 
-			return apply_filters( 'wpsso_robots_is_noindex', $is_noindex, $mod );
+			return apply_filters( 'wpsso_robots_is_noindex', $is_noindex, $mod, $is_custom );
 		}
 
 		public function is_disabled() {

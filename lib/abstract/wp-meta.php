@@ -374,6 +374,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					 * Edit Visibility tab.
 					 */
 					'canonical_url' => '',		// Canonical URL.
+					'redirect_url'  => '',		// 301 Redirect URL.
 
 					/**
 					 * Open Graph and Schema Product type.

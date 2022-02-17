@@ -226,7 +226,7 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 
 			$features[ '(code) Link Relation Canonical Tag' ] = array(
 				'label_transl' => _x( '(code) Link Relation Canonical Tag', 'lib file description', 'wpsso' ),
-				'status'       => empty( $this->p->options[ 'add_link_rel_canonical' ] ) ? 'off' : 'on',
+				'status'       => $this->p->util->is_canonical_disabled() ? 'off' : 'on',
 			);
 
 			$features[ '(code) Link Relation Shortlink Tag' ] = array(

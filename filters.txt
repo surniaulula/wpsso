@@ -21,8 +21,6 @@
 
 'wpsso_{post_type}_tag_taxonomy' ( $taxonomy = 'post_tag', $mod )
 
-'wpsso_add_head_html' ( $bool, $mod )
-
 'wpsso_add_link_rel_canonical' ( $bool, $mod )
 
 'wpsso_add_link_rel_shortlink' ( $bool, $mod )
@@ -96,6 +94,8 @@
 'wpsso_hashtags' ( $hashtags, $post_id )
 
 'wpsso_hashtags_seed' ( '', $post_id )
+
+'wpsso_head_disabled' ( $bool, $mod )
 
 'wpsso_home_url' ( $url, $mod )
 

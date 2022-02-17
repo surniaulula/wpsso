@@ -418,9 +418,12 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 
 		public function filter_metabox_sso_edit_visibility_rows( $table_rows, $form, $head_info, $mod ) {
 
-			$canonical_url_disabled = empty( $this->p->options[ 'add_link_rel_canonical' ] ) ? true : false;
+			$canonical_url_disabled = $this->p->util->is_canonical_disabled();
 			$canonical_url_msg      = $this->p->msgs->maybe_seo_tag_disabled( 'link rel canonical' );
 			$def_canonical_url      = $this->p->util->get_canonical_url( $mod, $add_page = false );
+
+			$redirect_url_disabled = $this->p->util->is_redirect_disabled();
+			$def_redirect_url      = $this->p->util->get_redirect_url( $mod );
 
 			$form_rows = array(
 				'canonical_url' => $mod[ 'is_public' ] ? array(
@@ -429,6 +432,13 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					'tooltip'  => 'meta-canonical_url',
 					'content'  => $form->get_input( 'canonical_url', $css_class = 'wide', $css_id = '',
 						$max_len = 0, $def_canonical_url, $canonical_url_disabled ) . ' ' . $canonical_url_msg,
+				) : '',
+				'redirect_url' => $mod[ 'is_public' ] ? array(
+					'th_class' => 'medium',
+					'label'    => _x( '301 Redirect URL', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-redirect_url',
+					'content'  => $form->get_input( 'redirect_url', $css_class = 'wide', $css_id = '',
+						$max_len = 0, $def_redirect_url, $redirect_url_disabled ),
 				) : '',
 			);
 
@@ -538,6 +548,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 
 			$image_url     = SucomUtil::get_first_mt_media_url( $head_info );
 			$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = false );
+			$sharing_url   = $this->p->util->get_sharing_url( $mod, $add_page = false );
 
 			if ( $mod[ 'is_post' ] ) {
 
