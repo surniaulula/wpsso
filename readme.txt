@@ -250,14 +250,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.0.1-dev.1 (2022/02/17)**
+**Version 11.0.1-dev.2 (2022/02/17)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Removed test for `WpssoUtilRobots->is_enabled()` when checking for noindex, to allow noindex checks even if the robots meta tag is disabled.
 * **Bugfixes**
-	* None.
+	* Fixed an incorrect visual element change on mouseover for The Events Calendar and WP Job Manager option selects.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -934,9 +934,9 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 11.0.1-dev.1 =
+= 11.0.1-dev.2 =
 
-(2022/02/17) Removed test for `WpssoUtilRobots->is_enabled()` when checking for noindex.
+(2022/02/17) Fixed an incorrect visual element change on mouseover for The Events Calendar and WP Job Manager option selects.
 
 = 11.0.0 =
 
