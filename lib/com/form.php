@@ -1186,12 +1186,15 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					if ( is_string( $event_args ) ) {
 
-						$event_json_var = preg_replace( '/:.$/', '', $event_args );
-						$event_json_var = SucomUtil::sanitize_hookname( $this->plugin_id . '_form_select_' . $event_json_var . '_json' );
+						$event_json_var = $this->plugin_id . '_form_select_' . $event_json_var . '_json';
+
+						$event_json_var = SucomUtil::sanitize_hookname( $event_json_var );
 
 					} elseif ( ! empty( $event_args[ 'json_var' ] ) ) {
 
-						$event_json_var = SucomUtil::sanitize_hookname( $this->plugin_id . '_form_select_' . $event_args[ 'json_var' ] . '_json' );
+						$event_json_var = $this->plugin_id . '_form_select_' . $event_args[ 'json_var' ] . '_json';
+
+						$event_json_var = SucomUtil::sanitize_hookname( $event_json_var );
 					}
 				}
 			}
@@ -1266,8 +1269,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				}
 
 				/**
-				 * Save the option value and translated label for the JSON array before adding the "(default)"
-				 * suffix.
+				 * Save the option value and translated label for the json array before adding "(default)" suffix.
 				 */
 				if ( $event_json_var ) {
 
@@ -1882,13 +1884,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 							if ( is_string( $event_args ) ) {
 
-								$event_json_var = preg_replace( '/:.$/', '', $event_args );
 								$event_json_var = $this->plugin_id . '_form_select_' . $event_json_var . '_json';
+
 								$event_json_var = SucomUtil::sanitize_hookname( $event_json_var );
 
 							} elseif ( ! empty( $event_args[ 'json_var' ] ) ) {
 
 								$event_json_var = $this->plugin_id . '_form_select_' . $event_args[ 'json_var' ] . '_json';
+
 								$event_json_var = SucomUtil::sanitize_hookname( $event_json_var );
 							}
 						}
