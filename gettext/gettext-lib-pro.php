@@ -459,8 +459,8 @@ __( 'Requests to retrieve and cache this URL are ignored for another %d second(s
 __( 'getting stamp.io ratings and reviews', 'wpsso' );
 __( 'There has been a previous error connecting to %s for caching.', 'wpsso' );
 __( 'Requests to retrieve and cache this URL are ignored for another %d second(s)', 'wpsso' );
-_x( '[Job Manager Company]', 'option value', 'wpsso' );
-_x( '[Job Manager Location]', 'option value', 'wpsso' );
+_x( 'WPJM: %s', 'option value', 'wpsso' );
+_x( 'WPJM: %s', 'option value', 'wpsso' );
 __( 'Group name "%s" not found in the Bitly API response data.', 'wpsso' );
 __( '%1$s shortener API error: %2$s', 'wpsso' );
 __( 'Groups property missing from the Bitly API response data.', 'wpsso' );

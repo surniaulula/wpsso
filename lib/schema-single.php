@@ -1004,7 +1004,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				if ( ! $mod[ 'is_post' ] || 'publish' === $mod[ 'post_status' ] ) {
 
-					if ( empty( $json_ret[ 'logo' ] ) ) {
+					if ( ! empty( $json_ret[ 'name' ] ) && empty( $json_ret[ 'logo' ] ) ) {
 
 						if ( $wpsso->debug->enabled ) {
 
@@ -1027,11 +1027,13 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 							if ( 'org_logo_url' === $org_logo_key ) {
 
-								$notice_msg = sprintf( $logo_missing_msg, $json_ret[ 'name' ], $org_type_url );
+								$notice_msg = sprintf( $logo_missing_msg, $json_ret[ 'name' ],
+									'<a href="' . $org_type_url . '">'. $org_type_url . '</a>' );
 
 							} elseif ( 'org_banner_url' === $org_logo_key ) {
 
-								$notice_msg = sprintf( $banner_missing_msg, $json_ret[ 'name' ], $org_type_url );
+								$notice_msg = sprintf( $banner_missing_msg, $json_ret[ 'name' ],
+									'<a href="' . $org_type_url . '">'. $org_type_url . '</a>' );
 
 							} else {
 

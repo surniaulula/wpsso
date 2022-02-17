@@ -951,18 +951,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			static $local_cache = array();
 
-			$filter_key = self::sanitize_key( $name );
-
+			$filter_key  = self::sanitize_key( $name );
 			$filter_name = 'wpsso_form_cache_' . $filter_key;
 
 			if ( ! isset( $local_cache[ $filter_key ] ) ) {
 
 				$local_cache[ $filter_key ] = array();	// Initialize a default value.
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'adding new form cache entry for ' . $filter_key );
-				}
 
 				switch ( $filter_key ) {
 
