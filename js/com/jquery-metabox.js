@@ -78,9 +78,9 @@ function sucomSelectLoadJson( select_id, json_name ) {
 	/**
 	 * The variable name of the JSON array.
 	 *
-	 * Example: "sucom_form_select_schema_item_types_json"
+	 * Example: "wpsso_select_person_names_4f65aec5b650c0f4acc0f033dc81d39f"
 	 */
-	if ( ! window[ json_name + '_array_keys' ] || ! window[ json_name + '_array_values' ] ) {
+	if ( ! window[ json_name + '_keys' ] || ! window[ json_name + '_vals' ] ) {
 
 		return false;
 	}
@@ -108,9 +108,9 @@ function sucomSelectLoadJson( select_id, json_name ) {
 	 * numerically instead of maintaining the original object element order. For this reason, we must use different arrays for
 	 * the array keys and their values.
 	 */
-	jQuery.each( window[ json_name + '_array_keys' ], function ( index, option_value ) {
+	jQuery.each( window[ json_name + '_keys' ], function ( index, option_value ) {
 
-		label_transl = window[ json_name + '_array_values' ][ index ];
+		label_transl = window[ json_name + '_vals' ][ index ];
 
 		select_opt_html += '<option value="' + option_value + '"';
 

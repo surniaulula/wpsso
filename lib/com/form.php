@@ -1182,21 +1182,20 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			if ( in_array( 'on_focus_load_json', $event_names ) ) {
 
-				if ( ! empty( $event_args ) ) {
+				$event_json_var = $this->plugin_id . '_select';
 
-					if ( is_string( $event_args ) ) {
+				if ( $event_args && is_string( $event_args ) ) {
 
-						$event_json_var = $this->plugin_id . '_form_select_' . $event_json_var . '_json';
+					$event_json_var .= '_' . $event_args;
 
-						$event_json_var = SucomUtil::sanitize_hookname( $event_json_var );
+				} elseif ( ! empty( $event_args[ 'json_var' ] ) ) {
 
-					} elseif ( ! empty( $event_args[ 'json_var' ] ) ) {
-
-						$event_json_var = $this->plugin_id . '_form_select_' . $event_args[ 'json_var' ] . '_json';
-
-						$event_json_var = SucomUtil::sanitize_hookname( $event_json_var );
-					}
+					$event_json_var .= '_' . $event_args[ 'json_var' ];
 				}
+
+				$event_json_var .= '_' . md5( implode( $values ) );
+
+				$event_json_var = SucomUtil::sanitize_hookname( $event_json_var );
 			}
 
 			$html           = '';
@@ -1876,27 +1875,6 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					$event_args = empty( $atts[ 'event_args' ] ) ? null : $atts[ 'event_args' ];
 
-					$event_json_var = false;
-
-					if ( in_array( 'on_focus_load_json', $event_names ) ) {
-
-						if ( ! empty( $event_args ) ) {
-
-							if ( is_string( $event_args ) ) {
-
-								$event_json_var = $this->plugin_id . '_form_select_' . $event_json_var . '_json';
-
-								$event_json_var = SucomUtil::sanitize_hookname( $event_json_var );
-
-							} elseif ( ! empty( $event_args[ 'json_var' ] ) ) {
-
-								$event_json_var = $this->plugin_id . '_form_select_' . $event_args[ 'json_var' ] . '_json';
-
-								$event_json_var = SucomUtil::sanitize_hookname( $event_json_var );
-							}
-						}
-					}
-
 					if ( isset( $atts[ 'placeholder' ] ) ) {
 
 						$holder = $this->get_placeholder_sanitized( $input_name, $atts[ 'placeholder' ] );
@@ -2015,6 +1993,26 @@ if ( ! class_exists( 'SucomForm' ) ) {
 								$select_default  = empty( $atts[ 'select_default' ] ) ? null : $atts[ 'select_default' ];
 
 								$is_assoc = SucomUtil::is_assoc( $select_options );
+
+								$event_json_var = false;
+
+								if ( in_array( 'on_focus_load_json', $event_names ) ) {
+
+									$event_json_var = $this->plugin_id . '_select';
+
+									if ( $event_args && is_string( $event_args ) ) {
+			
+										$event_json_var .= '_' . $event_args;
+			
+									} elseif ( ! empty( $event_args[ 'json_var' ] ) ) {
+			
+										$event_json_var = '_' . $event_args[ 'json_var' ];
+									}
+
+									$event_json_var .= '_' . md5( implode( $select_options ) );
+
+									$event_json_var = SucomUtil::sanitize_hookname( $event_json_var );
+								}
 
 								$select_opt_count = 0;	// Used to check for first option.
 								$select_opt_added = 0;
@@ -2871,7 +2869,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$html = '';
 
-			if ( empty( $event_json_var ) || ! is_string( $event_json_var ) ) {	// Just in case.
+			if ( ! $event_json_var || ! is_string( $event_json_var ) ) {	// Just in case.
 
 				return $html;
 			}
@@ -2893,8 +2891,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$json_array_keys   = wp_json_encode( array_keys( $select_json_arr ) );
 				$json_array_values = wp_json_encode( array_values( $select_json_arr ) );
 
-				$script_js = 'var ' . $event_json_var . '_array_keys = ' . $json_array_keys . ';' . "\n";
-				$script_js .= 'var ' . $event_json_var . '_array_values = ' . $json_array_values . ';' . "\n";
+				$script_js = 'var ' . $event_json_var . '_keys = ' . $json_array_keys . ';' . "\n";
+				$script_js .= 'var ' . $event_json_var . '_vals = ' . $json_array_values . ';' . "\n";
 
 				$html .= '<!-- adding ' . $event_json_var . ' array -->' . "\n";
 

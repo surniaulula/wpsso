@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 11.0.1-dev.1\n"
+"Project-Id-Version: WPSSO Core 11.0.1-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -528,25 +528,25 @@ msgid "User Profiles"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:33 gettext/gettext-lib-com.php:43
-#: lib/com/form.php:814 lib/com/form.php:2403
+#: lib/com/form.php:814 lib/com/form.php:2401
 msgctxt "option comment"
 msgid "days"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:34 gettext/gettext-lib-com.php:44
-#: lib/com/form.php:815 lib/com/form.php:2404
+#: lib/com/form.php:815 lib/com/form.php:2402
 msgctxt "option comment"
 msgid "hours"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:35 gettext/gettext-lib-com.php:45
-#: lib/com/form.php:816 lib/com/form.php:2405
+#: lib/com/form.php:816 lib/com/form.php:2403
 msgctxt "option comment"
 msgid "mins"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:36 gettext/gettext-lib-com.php:46
-#: lib/com/form.php:817 lib/com/form.php:2406
+#: lib/com/form.php:817 lib/com/form.php:2404
 msgctxt "option comment"
 msgid "secs"
 msgstr ""
