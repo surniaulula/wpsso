@@ -951,7 +951,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			static $local_cache = array();
 
-			$filter_key  = self::sanitize_key( $name );
+			$filter_key = self::sanitize_key( $name );
+
 			$filter_name = 'wpsso_form_cache_' . $filter_key;
 
 			if ( ! isset( $local_cache[ $filter_key ] ) ) {
@@ -1021,8 +1022,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						$local_cache[ $filter_key ] = array( 'site' => $this->p->cf[ 'form' ][ 'org_select' ][ 'site' ] );
 
-						$local_cache[ $filter_key ] = apply_filters( $filter_name, $local_cache[ $filter_key ] );
-
 						break;
 
 					case 'person_names':
@@ -1048,23 +1047,13 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						break;
 
 					case 'place_names_custom':
-
-						$local_cache[ $filter_key ] = apply_filters( $filter_name, $local_cache[ $filter_key ] );
-
-						break;
-
 					case 'place_names':
-
-						$local_cache[ $filter_key ] = apply_filters( $filter_name, $local_cache[ $filter_key ] );
-
-						break;
-
 					default:
-
-						$local_cache[ $filter_key ] = apply_filters( $filter_name, $local_cache[ $filter_key ] );
 
 						break;
 				}
+
+				$local_cache[ $filter_key ] = apply_filters( $filter_name, $local_cache[ $filter_key ] );
 
 			} elseif ( $this->p->debug->enabled ) {
 
