@@ -236,23 +236,23 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $mod[ 'id' ] ) {	// Just in case.
 
-				$post_obj = get_post( $mod[ 'id' ] );	// Optimize and fetch once for WordPress functions.
+				$mod[ 'wp_obj' ] = get_post( $mod[ 'id' ] );	// Optimize and fetch once.
 
-				if ( $post_obj instanceof WP_Post ) {	// Just in case.
+				if ( $mod[ 'wp_obj' ] instanceof WP_Post ) {	// Just in case.
 
-					$mod[ 'post_slug' ]          = get_post_field( 'post_name', $post_obj );		// Post name (aka slug).
-					$mod[ 'post_type' ]          = get_post_type( $post_obj );				// Post type name.
-					$mod[ 'post_mime' ]          = get_post_mime_type( $post_obj );				// Post mime type (ie. image/jpg).
-					$mod[ 'post_status' ]        = get_post_status( $post_obj );				// Post status name.
-					$mod[ 'post_author' ]        = (int) get_post_field( 'post_author', $post_obj );	// Post author id.
+					$mod[ 'post_slug' ]          = get_post_field( 'post_name', $mod[ 'wp_obj' ] );		// Post name (aka slug).
+					$mod[ 'post_type' ]          = get_post_type( $mod[ 'wp_obj' ] );			// Post type name.
+					$mod[ 'post_mime' ]          = get_post_mime_type( $mod[ 'wp_obj' ] );			// Post mime type (ie. image/jpg).
+					$mod[ 'post_status' ]        = get_post_status( $mod[ 'wp_obj' ] );			// Post status name.
+					$mod[ 'post_author' ]        = (int) get_post_field( 'post_author', $mod[ 'wp_obj' ] );	// Post author id.
 					$mod[ 'post_coauthors' ]     = array();
-					$mod[ 'post_time' ]          = get_post_time( 'c', $gmt = true, $post_obj );		// ISO 8601 date or false.
-					$mod[ 'post_modified_time' ] = get_post_modified_time( 'c', $gmt = true, $post_obj );	// ISO 8601 date or false.
-					$mod[ 'is_attachment' ]      = 'attachment' === $mod[ 'post_type' ] ? true : false;	// Post type is 'attachment'.
+					$mod[ 'post_time' ]          = get_post_time( 'c', $gmt = true, $mod[ 'wp_obj' ] );		// ISO 8601 date or false.
+					$mod[ 'post_modified_time' ] = get_post_modified_time( 'c', $gmt = true, $mod[ 'wp_obj' ] );	// ISO 8601 date or false.
+					$mod[ 'is_attachment' ]      = 'attachment' === $mod[ 'post_type' ] ? true : false;		// Post type is 'attachment'.
 
-					if ( ! empty( $post_obj->post_parent ) ) {
+					if ( ! empty( $mod[ 'wp_obj' ]->post_parent ) ) {
 
-						$mod[ 'post_parent' ] = $post_obj->post_parent;	// Post parent id.
+						$mod[ 'post_parent' ] = $mod[ 'wp_obj' ]->post_parent;	// Post parent id.
 					}
 
 					if ( $mod[ 'post_type' ] ) {	// Just in case.
@@ -287,7 +287,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 */
 					if ( ! $mod[ 'is_post_type_archive' ] && ! $mod[ 'is_home_posts' ] ) {
 
-						$mod[ 'paged_total' ] = substr_count( $post_obj->post_content, '<!--nextpage-->' ) + 1;
+						$mod[ 'paged_total' ] = substr_count( $mod[ 'wp_obj' ]->post_content, '<!--nextpage-->' ) + 1;
 					}
 
 					/**
@@ -299,7 +299,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 						$mod[ 'is_public' ] = false;
 					}
-				}
+
+				} else $mod[ 'wp_obj' ] = false;
 			}
 
 			/**
@@ -437,7 +438,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					$mod = $this->get_mod( $post_id );
 
-					$post_obj = SucomUtil::get_post_object( $post_id );
+					$post_obj = $this->get_mod_wp_object( $mod );
 
 					/**
 					 * Since WPSSO Core v9.15.0.
@@ -826,11 +827,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * Make sure we have at least a post type and status.
 			 */
-			if ( ! is_object( $post_obj ) ) {
+			if ( ! $post_obj instanceof WP_Post ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: post_obj is not an object' );
+					$this->p->debug->log( 'exiting early: post_obj is not a post object' );
 				}
 
 				return;
@@ -1638,7 +1639,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				$post_obj = SucomUtil::get_post_object( $post_id );
 
-				if ( ! is_object( $post_obj ) ) {
+				if ( ! $post_obj instanceof WP_Post ) {
 
 					die( -1 );
 

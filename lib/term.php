@@ -189,12 +189,12 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( $mod[ 'id' ] ) {	// Just in case.
 
-				$term_obj = get_term( $mod[ 'id' ], (string) $tax_slug );
+				$mod[ 'wp_obj' ] = get_term( $mod[ 'id' ], (string) $tax_slug );	// Optimize and fetch once.
 
-				if ( $term_obj instanceof WP_Term ) {	// Just in case.
+				if ( $mod[ 'wp_obj' ] instanceof WP_Term ) {	// Just in case.
 
-					$mod[ 'term_tax_id' ] = (int) $term_obj->term_taxonomy_id;
-					$mod[ 'tax_slug' ]    = (string) $term_obj->taxonomy;
+					$mod[ 'term_tax_id' ] = (int) $mod[ 'wp_obj' ]->term_taxonomy_id;
+					$mod[ 'tax_slug' ]    = (string) $mod[ 'wp_obj' ]->taxonomy;
 
 					if ( $mod[ 'tax_slug' ] ) {	// Just in case.
 
@@ -218,7 +218,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 							}
 						}
 					}
-				}
+
+				} else $mod[ 'wp_obj' ] = false;
 			}
 
 			return $local_cache[ $term_id ] = apply_filters( 'wpsso_get_term_mod', $mod, $term_id, $tax_slug );
@@ -442,7 +443,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			$term_obj = get_term_by( 'term_taxonomy_id', $term_tax_id, $tax_slug = '' );
 
-			$mod = is_object( $term_obj ) ? $this->get_mod( $term_id, $term_obj->taxonomy ) : $mod = $this->get_mod( $term_id );
+			$mod = isset( $term_obj->taxonomy ) ? $this->get_mod( $term_id, $term_obj->taxonomy ) : $mod = $this->get_mod( $term_id );
 
 			/**
 			 * Merge and check submitted post, term, and user metabox options.

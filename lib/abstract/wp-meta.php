@@ -141,6 +141,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			'name'                   => false,	// Module name ('post', 'term', or 'user').
 			'name_transl'            => false,	// Module name translated.
 			'obj'                    => false,	// Module object.
+			'wp_obj'                 => false,	// WP object (WP_Post, WP_Term, etc.).
 			'query_vars'             => array(),	// Defined by WpssoPage->get_mod().
 			'paged'                  => false,	// False or numeric (aka $wp_query->query_vars[ 'paged' ]).
 			'paged_total'            => false,	// False or numberic (aka $wp_query->max_num_pages).

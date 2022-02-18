@@ -1735,21 +1735,16 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					if ( 'publish' !== $mod[ 'post_status' ] ) {
 
-						$post_obj = self::get_post_object( $mod[ 'id' ], $output = 'object' );
+						if ( is_object( $mod[ 'wp_obj' ] ) ) {	// Just in case.
 
-						if ( is_object( $post_obj ) ) {
+							$mod[ 'wp_obj' ]->post_status = 'publish';
 
-							if ( ! is_wp_error( $post_obj ) ) {
+							if ( empty( $mod[ 'wp_obj' ]->post_name ) ) {
 
-								$post_obj->post_status = 'publish';
-
-								if ( empty( $post_obj->post_name ) ) {
-
-									$post_obj->post_name = sanitize_title( $post_obj->post_title );
-								}
-
-								$url = get_permalink( $post_obj );
+								$mod[ 'wp_obj' ]->post_name = sanitize_title( $mod[ 'wp_obj' ]->post_title );
 							}
+
+							$url = get_permalink( $mod[ 'wp_obj' ] );
 						}
 					}
 
@@ -1812,18 +1807,16 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					if ( 'publish' !== $mod[ 'post_status' ] ) {
 
-						$post_obj = self::get_post_object( $mod[ 'id' ], $output = 'object' );
+						if ( is_object( $mod[ 'wp_obj' ] ) ) {	// Just in case.
 
-						if ( is_object( $post_obj ) ) {
+							$mod[ 'wp_obj' ]->post_status = 'publish';
 
-							if ( ! is_wp_error( $post_obj ) ) {
+							if ( empty( $mod[ 'wp_obj' ]->post_name ) ) {
 
-								$post_obj->post_status = 'publish';
-
-								$post_obj->post_name = $post_obj->post_name ? $post_obj->post_name : sanitize_title( $post_obj->post_title );
-
-								$data = get_oembed_response_data( $post_obj, $width );	// Returns false on error.
+								$mod[ 'wp_obj' ]->post_name = sanitize_title( $mod[ 'wp_obj' ]->post_title );
 							}
+
+							$data = get_oembed_response_data( $mod[ 'wp_obj' ], $width );	// Returns false on error.
 						}
 
 						if ( empty( $data ) ) {
@@ -2007,21 +2000,16 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 							if ( 'publish' !== $mod[ 'post_status' ] ) {
 
-								$post_obj = self::get_post_object( $mod[ 'id' ], $output = 'object' );
+								if ( is_object( $mod[ 'wp_obj' ] ) ) {	// Just in case.
 
-								if ( is_object( $post_obj ) ) {
+									$mod[ 'wp_obj' ]->post_status = 'publish';
 
-									if ( ! is_wp_error( $post_obj ) ) {
+									if ( empty( $mod[ 'wp_obj' ]->post_name ) ) {
 
-										$post_obj->post_status = 'publish';
-
-										if ( empty( $post_obj->post_name ) ) {
-
-											$post_obj->post_name = sanitize_title( $post_obj->post_title );
-										}
-
-										$url = get_permalink( $post_obj );
+										$mod[ 'wp_obj' ]->post_name = sanitize_title( $mod[ 'wp_obj' ]->post_title );
 									}
+
+									$url = get_permalink( $mod[ 'wp_obj' ] );
 								}
 							}
 

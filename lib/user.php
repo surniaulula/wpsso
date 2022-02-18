@@ -194,12 +194,13 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $mod[ 'id' ] ) {	// Just in case.
 
-				$user_obj = get_userdata( $mod[ 'id' ] );
+				$mod[ 'wp_obj' ] = get_userdata( $mod[ 'id' ] );	// Optimize and fetch once.
 
-				if ( $user_obj instanceof WP_User ) {	// Just in case.
+				if ( $mod[ 'wp_obj' ] instanceof WP_User ) {	// Just in case.
 
-					$mod[ 'user_name' ] = (string) $user_obj->display_name;
-				}
+					$mod[ 'user_name' ] = (string) $mod[ 'wp_obj' ]->display_name;
+
+				} else $mod[ 'wp_obj' ] = false;
 			}
 
 			return $local_cache[ $user_id ] = apply_filters( 'wpsso_get_user_mod', $mod, $user_id );

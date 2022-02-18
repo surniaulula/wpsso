@@ -75,15 +75,16 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 
 			if ( $mod[ 'id' ] ) {	// Just in case.
 
-				$comment_obj = get_comment( $mod[ 'id' ] );
+				$mod[ 'wp_obj' ] = get_comment( $mod[ 'id' ] );	// Optimize and fetch once.
 
-				if ( $comment_obj instanceof WP_Comment ) {	// Just in case.
+				if ( $mod[ 'wp_obj' ] instanceof WP_Comment ) {	// Just in case.
 
-					$mod[ 'comment_author' ]      = (int) $comment_obj->user_id;		// Comment author user ID.
-					$mod[ 'comment_author_name' ] = $comment_obj->comment_author;		// Comment author name.
-					$mod[ 'comment_author_url' ]  = $comment_obj->comment_author_url;
-					$mod[ 'comment_time' ]        = mysql2date( 'c', $comment_obj->comment_date_gmt );	// ISO 8601 date.
-				}
+					$mod[ 'comment_author' ]      = (int) $mod[ 'wp_obj' ]->user_id;		// Comment author user ID.
+					$mod[ 'comment_author_name' ] = $mod[ 'wp_obj' ]->comment_author;		// Comment author name.
+					$mod[ 'comment_author_url' ]  = $mod[ 'wp_obj' ]->comment_author_url;
+					$mod[ 'comment_time' ]        = mysql2date( 'c', $mod[ 'wp_obj' ]->comment_date_gmt );	// ISO 8601 date.
+
+				} else $mod[ 'wp_obj' ] = false;
 			}
 
 			/**

@@ -1519,9 +1519,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 					if ( $filter_excerpt ) {
 
-						$post_obj = SucomUtil::get_post_object( $mod[ 'id' ] );
-
-						$excerpt_text = $this->p->util->safe_apply_filters( array( 'get_the_excerpt', $excerpt_text, $post_obj ), $mod );
+						$excerpt_text = $this->p->util->safe_apply_filters( array( 'get_the_excerpt', $excerpt_text, $mod[ 'wp_obj' ] ), $mod );
 					}
 				}
 			}
