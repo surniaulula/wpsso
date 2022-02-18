@@ -4688,9 +4688,12 @@ msgid ""
 "%1$s was activated, try removing and adding the image back to your content."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:422 gettext/gettext-lib-pro.php:423
-#: lib/pro/event/the-events-calendar.php:52
-#: lib/pro/event/the-events-calendar.php:62
+#: gettext/gettext-lib-pro.php:422 lib/pro/event/the-events-calendar.php:52
+msgid "TEC: %s"
+msgstr ""
+
+#: gettext/gettext-lib-pro.php:423 lib/pro/event/the-events-calendar.php:62
+msgctxt "option value"
 msgid "TEC: %s"
 msgstr ""
 
@@ -4819,7 +4822,7 @@ msgid "getting stamp.io ratings and reviews"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:462 gettext/gettext-lib-pro.php:463
-#: lib/pro/job/wpjobmanager.php:54 lib/pro/job/wpjobmanager.php:66
+#: lib/pro/job/wpjobmanager.php:54 lib/pro/job/wpjobmanager.php:67
 msgctxt "option value"
 msgid "WPJM: %s"
 msgstr ""
