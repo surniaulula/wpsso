@@ -119,7 +119,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 *
 			 * Optimize and cache post/term/user og type values.
 			 */
-			if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
+			if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 
 				$cache_salt = SucomUtil::get_mod_salt( $mod ) . '_get_id:' . (string) $get_id . '_opts:' . (string) $use_md_opts;
 
@@ -138,7 +138,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 */
 			if ( $use_md_opts ) {
 
-				if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Just in case.
+				if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 
 					$type_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'og_type' );	// Returns null if index key not found.
 
@@ -575,7 +575,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				/**
 				 * Optimize and call get_options() only once. Returns an empty string if no meta found.
 				 */
-				$md_opts = $mod[ 'obj' ] && $mod[ 'id' ] ? (array) $mod[ 'obj' ]->get_options( $mod[ 'id' ] ) : array();
+				if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
+
+					$md_opts = $mod[ 'obj' ]->get_options( $mod[ 'id' ] );
+
+				} else $md_opts = array();
 
 				/**
 				 * Add post/term/user meta data to the Open Graph meta tags.
@@ -897,7 +901,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			/**
 			 * Get video information and preview enable/disable option from the post/term/user meta.
 			 */
-			if ( $mod[ 'obj' ] && $mod[ 'id' ] ) {
+			if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 
 				/**
 				 * Note that get_options() returns null if an index key is not found.
@@ -976,7 +980,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 *
 			 * The og:video:title and og:video:description meta tags are not standard and their values will only appear in Schema markup.
 			 */
-			if ( $mod[ 'obj' ] && $mod[ 'id' ] && $md_pre !== 'none' ) {
+			if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] && $md_pre !== 'none' ) {
 
 				foreach ( $mt_videos as &$mt_single_video ) {	// Uses reference.
 
@@ -1320,7 +1324,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				 *
 				 * Unless $md_pre is 'none', get_og_images() will fallback to using the 'og' custom meta.
 				 */
-				if ( $mod[ 'obj' ] && $mod[ 'id' ] ) {	// Term or user.
+				if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Term or user.
 
 					$mt_images = $mod[ 'obj' ]->get_og_images( $num, $size_name, $mod[ 'id' ], $check_dupes, $md_pre );
 

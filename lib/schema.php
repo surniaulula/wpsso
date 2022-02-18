@@ -561,7 +561,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 *
 			 * Optimize and cache post/term/user schema type values.
 			 */
-			if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
+			if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 
 				$cache_salt = SucomUtil::get_mod_salt( $mod ) . '_get_id:' . (string) $get_id . '_opts:' . (string) $use_md_opts;
 
@@ -580,7 +580,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 */
 			if ( $use_md_opts ) {
 
-				if ( $mod[ 'obj' ] && $mod[ 'id' ] ) {	// Just in case.
+				if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Just in case.
 
 					$type_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_type' );	// Returns null if an index key is not found.
 

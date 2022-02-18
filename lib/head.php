@@ -682,7 +682,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			/**
 			 * Maybe save meta tag values for later sorting in list tables.
 			 */
-			if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
+			if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 
 				$sortable_cols = WpssoAbstractWpMeta::get_sortable_columns();
 

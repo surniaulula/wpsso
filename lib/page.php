@@ -732,7 +732,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				$wp_query = $saved_wp_query;
 
-			} elseif ( is_object( $mod[ 'obj' ] ) ) {
+			} elseif ( ! empty( $mod[ 'obj' ] ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
@@ -1817,7 +1817,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( ! empty( $md_key ) && 'none' !== $md_key ) {	// $md_key can be a string or array.
 
-				if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Just in case.
+				if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Just in case.
 
 					$keywords = $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key );
 
@@ -2067,7 +2067,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$words_per_min = WPSSO_READING_WORDS_PER_MIN;
 			$reading_mins  = null;
 
-			if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Just in case.
+			if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Just in case.
 
 				$reading_mins = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'reading_mins' );
 			}
@@ -2223,7 +2223,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( ! empty( $md_key ) && 'none' !== $md_key ) {	// Make sure we have something to work with.
 
-				if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Just in case.
+				if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Just in case.
 
 					return $mod[ 'obj' ]->get_options_multi( $mod[ 'id' ], $md_key );
 				}

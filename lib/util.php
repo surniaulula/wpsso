@@ -1735,7 +1735,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					if ( 'publish' !== $mod[ 'post_status' ] ) {
 
-						if ( is_object( $mod[ 'wp_obj' ] ) ) {	// Just in case.
+						if ( $mod[ 'wp_obj' ] ) {	// Just in case.
 
 							$mod[ 'wp_obj' ]->post_status = 'publish';
 
@@ -1803,11 +1803,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			if ( $mod[ 'is_post' ] ) {
 
-				if ( ! empty( $mod[ 'id' ] ) ) {
+				if ( $mod[ 'id' ] ) {
 
 					if ( 'publish' !== $mod[ 'post_status' ] ) {
 
-						if ( is_object( $mod[ 'wp_obj' ] ) ) {	// Just in case.
+						if ( $mod[ 'wp_obj' ] ) {	// Just in case.
 
 							$mod[ 'wp_obj' ]->post_status = 'publish';
 
@@ -1936,7 +1936,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$is_custom  = false;
 			$cache_salt = false;
 
-			if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
+			if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 
 				$cache_salt = self::get_mod_salt( $mod ) . '_add_page:' . $add_page;
 
@@ -2000,7 +2000,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 							if ( 'publish' !== $mod[ 'post_status' ] ) {
 
-								if ( is_object( $mod[ 'wp_obj' ] ) ) {	// Just in case.
+								if ( $mod[ 'wp_obj' ] ) {	// Just in case.
 
 									$mod[ 'wp_obj' ]->post_status = 'publish';
 
@@ -2160,7 +2160,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$url        = null;
 			$is_custom  = false;
 
-			if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
+			if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 
 				$url = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'redirect_url' );	// Returns null if an index key is not found.
 
@@ -2653,7 +2653,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			foreach ( $max_opt_keys as $opt_key ) {
 
-				if ( $mod[ 'id' ] && is_object( $mod[ 'obj' ] ) ) {
+				if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 
 					$max_val = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $opt_key );	// Returns null if an index key is not found.
 
@@ -3264,7 +3264,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 */
 			if ( is_admin() ) {
 
-				if ( ! is_object( $mod[ 'obj' ] ) ) {
+				if ( empty( $mod[ 'obj' ] ) ) {
 
 					return array();
 				}
