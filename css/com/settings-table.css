@@ -817,6 +817,15 @@ table.sucom-settings td input[type="text"].datepicker {
 	text-align:center;
 }
 
+div#ui-datepicker-div.sucom-settings div.ui-datepicker-title {
+	line-height:1.4em;
+}
+
+div#ui-datepicker-div.sucom-settings div.ui-datepicker-title select {
+	min-height:1.4em;
+	line-height:1.4em;
+}
+
 table.sucom-settings td.mono,
 table.sucom-settings td input[type=text].mono {
 	font-family:"Courier", monospace;

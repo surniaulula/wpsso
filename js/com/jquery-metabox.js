@@ -26,6 +26,9 @@ function sucomInitMetabox( container_id, doing_ajax ) {
 	 */
 	jQuery( table_id + ' input.colorpicker' ).wpColorPicker( { change:sucomColorChanged } );
 	jQuery( table_id + ' input.datepicker' ).datepicker( {
+		beforeShow:function( input, inst ) {
+			jQuery( '#ui-datepicker-div' ).addClass( 'sucom-settings' );
+		},
 		changeMonth:true,
 		changeYear:true,
 		showButtonPanel:false,
