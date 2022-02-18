@@ -25,7 +25,12 @@ function sucomInitMetabox( container_id, doing_ajax ) {
 	 * Add a "changed" the options class when their value might have changed. 
 	 */
 	jQuery( table_id + ' input.colorpicker' ).wpColorPicker( { change:sucomColorChanged } );
-	jQuery( table_id + ' input.datepicker' ).datepicker( { dateFormat:'yy-mm-dd' } );
+	jQuery( table_id + ' input.datepicker' ).datepicker( {
+		changeMonth:true,
+		changeYear:true,
+		showButtonPanel:false,
+		dateFormat:'yy-mm-dd'
+	} );
 	jQuery( table_id + ' input[type="checkbox"]' ).blur( sucomMarkChanged ).change( sucomMarkChanged );
 	jQuery( table_id + ' input[type="text"]' ).blur( sucomMarkChanged ).change( sucomMarkChanged );
 	jQuery( table_id + ' textarea' ).blur( sucomMarkChanged ).change( sucomMarkChanged );
