@@ -250,15 +250,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.1.0-b.3 (2022/02/18)**
+**Version 11.1.0-rc.1 (2022/02/19)**
 
 * **New Features**
 	* Added a new Document SSO &gt; Edit Visibility &gt; 301 Redirect URL option.
 * **Improvements**
-	* Added all The Events Calendar venues and organizers to the relevant Document SSO metabox Event options (Premium edition).
-	* Removed test for `WpssoUtilRobots->is_enabled()` when checking for noindex, to allow noindex checks even if the robots meta tag is disabled.
+	* Updated the jQuery datepicker UI to include a month and year selector.
+	* Added all The Events Calendar venues and organizers to the Document SSO metabox Event selects (Premium edition).
+	* Removed a test for `WpssoUtilRobots->is_enabled()` when checking for noindex, which allows noindex checks even if the robots meta tag is disabled.
 * **Bugfixes**
-	* Fixed an incorrect visual element change on mouseover for The Events Calendar and WP Job Manager option selects.
+	* Fixed an incorrect visual element change on mouseover for The Events Calendar and WP Job Manager option selects (Premium edition).
 * **Developer Notes**
 	* Renamed the 'wpsso_add_head_html' (true by default) filter to 'wpsso_head_disabled' (false by default).
 * **Requires At Least**
@@ -935,9 +936,9 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 11.1.0-b.3 =
+= 11.1.0-rc.1 =
 
-(2022/02/18) Added a new Document SSO &gt; Edit Visibility &gt; 301 Redirect URL option. Fixed an incorrect visual element change on mouseover for The Events Calendar and WP Job Manager option selects.
+(2022/02/19) Added a new Document SSO &gt; Edit Visibility &gt; 301 Redirect URL option. Fixed an incorrect visual element change on mouseover for The Events Calendar and WP Job Manager option selects (Premium edition).
 
 = 11.0.0 =
 
