@@ -250,7 +250,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.1.0-rc.1 (2022/02/19)**
+**Version 11.1.0 (2022/02/19)**
 
 * **New Features**
 	* Added a new Document SSO &gt; Edit Visibility &gt; 301 Redirect URL option.
@@ -936,7 +936,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 11.1.0-rc.1 =
+= 11.1.0 =
 
 (2022/02/19) Added a new Document SSO &gt; Edit Visibility &gt; 301 Redirect URL option. Fixed an incorrect visual element change on mouseover for The Events Calendar and WP Job Manager option selects (Premium edition).
 
