@@ -1660,7 +1660,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$capability = 'edit_user';
 
-			if ( ! current_user_can( $capability, $post_id ) ) {
+			if ( ! current_user_can( $capability, $user_id ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
