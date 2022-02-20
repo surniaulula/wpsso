@@ -1804,7 +1804,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$in_arr_keys = array_keys( $in_arr );
 
-			$matched_keys = preg_grep( $key_preg, $in_arr_keys, $invert ? PREG_GREP_INVERT : null );
+			$matched_keys = preg_grep( $key_preg, $in_arr_keys, $invert ? PREG_GREP_INVERT : 0 );
 
 			if ( empty( $matched_keys ) && $invert ) {	// Nothing to do.
 
