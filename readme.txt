@@ -308,6 +308,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* `maybe_get_title_sep()`
 		* `maybe_get_ellipsis()`
 		* `maybe_get_custom()`
+	* Added support for Rank Math inline variables `%org_name%` and `%org_url%`.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
