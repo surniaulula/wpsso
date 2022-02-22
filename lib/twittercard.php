@@ -593,7 +593,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				$this->p->debug->log( $card_type . ' card: checking other images' );
 			}
 
-			$mt_images = $this->p->og->get_all_images( 1, $size_name, $mod, $check_dupes = false, $md_pre );
+			$mt_images = $this->p->media->get_all_images( $num = 1, $size_name, $mod, $check_dupes = false, $md_pre, $use_default = true );
 
 			if ( count( $mt_images ) > 0 ) {
 

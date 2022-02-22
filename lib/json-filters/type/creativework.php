@@ -61,7 +61,10 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeCreativeWork' ) ) {
 				$this->p->debug->log( 'adding image and video properties for creativework' );
 			}
 
-			WpssoSchema::add_media_data( $json_ret, $mod, $mt_og, $size_names = 'schema', $add_video = true );
+			/**
+			 * Use $is_main for the $use_default argument so the default image is only used for the main Schema markup.
+			 */
+			WpssoSchema::add_media_data( $json_ret, $mod, $mt_og, $size_names = 'schema', $add_video = true, $is_main );
 
 			WpssoSchema::check_required( $json_ret, $mod, array( 'image' ) );
 
@@ -233,7 +236,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeCreativeWork' ) ) {
 			 * Property:
 			 *      thumbnailURL
 			 */
-			$json_ret[ 'thumbnailUrl' ] = $this->p->og->get_thumbnail_url( 'wpsso-thumbnail', $mod, $md_pre = 'schema' );
+			$json_ret[ 'thumbnailUrl' ] = $this->p->media->get_thumbnail_url( $size_names = 'wpsso-thumbnail', $mod, $md_pre = array( 'schema', 'og' ) );
 
 			/**
 			 * Property:

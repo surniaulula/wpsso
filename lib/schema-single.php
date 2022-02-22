@@ -33,6 +33,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			$book_opts = apply_filters( 'wpsso_get_book_options', false, $mod, $book_id );
 
+			if ( ! empty( $book_opts ) ) {
+			
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log_arr( 'get_book_options', $book_opts );
+				}
+			}
+
 			/**
 			 * Add metadata defaults and custom values to the $book_opts array.
 			 *
@@ -252,6 +260,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			$event_opts = apply_filters( 'wpsso_get_event_options', false, $mod, $event_id );
 
+			if ( ! empty( $event_opts ) ) {
+			
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log_arr( 'get_event_options', $event_opts );
+				}
+			}
+
 			/**
 			 * Add metadata defaults and custom values to the $event_opts array.
 			 *
@@ -312,7 +328,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 					if ( $wpsso->debug->enabled ) {
 
-						$wpsso->debug->log_arr( 'get_event_offer_options filters returned', $offer_opts );
+						$wpsso->debug->log_arr( 'get_event_offer_options', $offer_opts );
 					}
 				}
 
@@ -514,6 +530,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
+			/**
+			 * Filter the single Event data.
+			 */
 			$json_ret = apply_filters( 'wpsso_json_data_single_event', $json_ret, $mod, $event_id );
 
 			/**
@@ -717,6 +736,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			$job_opts = apply_filters( 'wpsso_get_job_options', false, $mod, $job_id );
 
+			if ( ! empty( $job_opts ) ) {
+			
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log_arr( 'get_job_options', $job_opts );
+				}
+			}
+
 			/**
 			 * Add metadata defaults and custom values to the $job_opts array.
 			 *
@@ -845,6 +872,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
+			/**
+			 * Filter the single Job data.
+			 */
 			$json_ret = apply_filters( 'wpsso_json_data_single_job', $json_ret, $mod, $job_id );
 
 			/**
@@ -909,33 +939,33 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			$org_opts = apply_filters( 'wpsso_get_organization_options', false, $mod, $org_id );
 
-			if ( empty( $org_opts ) ) {
+			if ( ! empty( $org_opts ) ) {
 
-				if ( 'site' === $org_id ) {
+				if ( $wpsso->debug->enabled ) {
 
-					if ( $wpsso->debug->enabled ) {
-
-						$wpsso->debug->log( 'getting site organization options array' );
-					}
-
-					$org_opts = WpssoSchema::get_site_organization( $mod ); // Returns localized values (not the key names).
-
-				} else {
-
-					if ( $wpsso->debug->enabled ) {
-
-						$wpsso->debug->log( 'exiting early: unknown org_id ' . $org_id );
-					}
-
-					return 0;
+					$wpsso->debug->log_arr( 'get_organization_options', $org_opts );
 				}
+
+			/**
+			 * Fallback to using organization data from the WordPress site organization.
+			 */
+			} elseif ( 'site' === $org_id ) {
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( 'getting site organization options array' );
+				}
+
+				$org_opts = WpssoSchema::get_site_organization( $mod ); // Returns localized values (not the key names).
 
 			} else {
 
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log_arr( '$org_opts', $org_opts );
+					$wpsso->debug->log( 'exiting early: unknown org_id ' . $org_id );
 				}
+
+				return 0;
 			}
 
 			/**
@@ -969,20 +999,39 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			) );
 
 			/**
-			 * Organization image.
-			 *
-			 * Google requires a local business to have an image.
+			 * Organization images.
 			 */
-			$org_image_key = 'org_logo_url';
+			if ( ! empty( $org_opts[ 'org_img_id' ] ) || ! empty( $org_opts[ 'org_img_url' ] ) ) {
 
-			if ( $wpsso->debug->enabled ) {
+				/**
+				 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
+				 */
+				$mt_images = $wpsso->media->get_mt_opts_images( $org_opts, $size_names = 'schema', $img_pre = 'org_img' );
 
-				$wpsso->debug->log( 'adding image from ' . $org_image_key . ' option' );
+				WpssoSchema::add_images_data_mt( $json_ret[ 'image' ], $mt_images );
 			}
 
-			if ( ! empty( $org_opts[ $org_image_key ] ) ) {
+			if ( ! empty( $org_opts[ 'org_images' ] ) ) {
 
-				self::add_image_data_mt( $json_ret[ 'image' ], $org_opts, $org_image_key );
+				WpssoSchema::add_images_data_mt( $json_ret[ 'image' ], $org_opts[ 'org_images' ] );
+			}
+
+			/**
+			 * Google requires at least one image so fallback to using the Organization logo.
+			 */
+			if ( empty( $json_ret[ 'image' ] ) ) {
+
+				$org_image_key = 'org_logo_url';
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( 'adding image from ' . $org_image_key . ' option' );
+				}
+
+				if ( ! empty( $org_opts[ $org_image_key ] ) ) {
+
+					self::add_image_data_mt( $json_ret[ 'image' ], $org_opts, $org_image_key );
+				}
 			}
 
 			/**
@@ -1158,6 +1207,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
+			/**
+			 * Filter the single Organization data.
+			 */
 			$json_ret = apply_filters( 'wpsso_json_data_single_organization', $json_ret, $mod, $org_id );
 
 			/**
@@ -1211,6 +1263,17 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			$person_opts = apply_filters( 'wpsso_get_person_options', false, $mod, $person_id );
 
+			if ( ! empty( $person_opts ) ) {
+			
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log_arr( 'get_person_options', $person_opts );
+				}
+			}
+
+			/**
+			 * Fallback to using person data from the WordPress user profile.
+			 */
 			$canonical_url = '';
 
 			if ( empty( $person_opts ) ) {
@@ -1291,7 +1354,8 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						'person_suffix'     => $user_mod[ 'obj' ]->get_author_meta( $person_id, 'honorific_suffix' ),
 						'person_desc'       => $user_desc,
 						'person_job_title'  => $user_mod[ 'obj' ]->get_author_meta( $person_id, 'job_title' ),
-						'person_og_image'   => $user_mod[ 'obj' ]->get_og_images( $num = 1, $size_names = 'schema', $person_id, false ),
+						'person_images'     => $this->p->media->get_all_images( $num = 1, $size_names = 'schema', $user_mod,
+							$check_dupes = false, $md_pre = array( 'schema', 'og' ), $use_default = false ),
 						'person_sameas'     => $user_sameas,
 					);
 
@@ -1302,16 +1366,16 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 						$wpsso->util->maybe_unset_ref( $local_cache_person_urls[ $person_id ] );
 					}
+			
+					if ( $wpsso->debug->enabled ) {
+
+						$wpsso->debug->log_arr( 'local_cache_person_opts', $local_cache_person_opts[ $person_id ] );
+					}
 				}
 
 				$person_opts = $local_cache_person_opts[ $person_id ];
 
 				$canonical_url = $local_cache_person_urls[ $person_id ];
-			}
-
-			if ( $wpsso->debug->enabled ) {
-
-				$wpsso->debug->log_arr( 'person options', $person_opts );
 			}
 
 			/**
@@ -1337,11 +1401,22 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			) );
 
 			/**
-			 * Images.
+			 * Person images.
 			 */
-			if ( ! empty( $person_opts[ 'person_og_image' ] ) ) {
+			if ( ! empty( $person_opts[ 'person_img_id' ] ) || ! empty( $person_opts[ 'person_img_url' ] ) ) {
 
-				WpssoSchema::add_images_data_mt( $json_ret[ 'image' ], $person_opts[ 'person_og_image' ] );
+				/**
+				 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
+				 */
+				$mt_images = $wpsso->media->get_mt_opts_images( $person_opts, $size_names = 'schema', $img_pre = 'person_img' );
+
+				WpssoSchema::add_images_data_mt( $json_ret[ 'image' ], $mt_images );
+
+			}
+			
+			if ( ! empty( $person_opts[ 'person_images' ] ) ) {
+
+				WpssoSchema::add_images_data_mt( $json_ret[ 'image' ], $person_opts[ 'person_images' ] );
 			}
 
 			/**
@@ -1362,6 +1437,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
+			/**
+			 * Filter the single Person data.
+			 */
 			$json_ret = apply_filters( 'wpsso_json_data_single_person', $json_ret, $mod, $person_id );
 
 			/**
@@ -1414,12 +1492,21 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 */
 			$place_opts = apply_filters( 'wpsso_get_place_options', false, $mod, $place_id );
 
+			if ( ! empty( $place_opts ) ) {
+			
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log_arr( 'get_place_options', $place_opts );
+				}
+			}
+
 			/**
 			 * Add metadata defaults and custom values to the $place_opts array.
 			 *
-			 * Skip this method as we do not have any default or custom 'schema_place' options in the Document SSO metabox.
+			 * Skip the SucomUtil::add_type_opts_md_pad() method as we do not have any default or custom 'schema_place'
+			 * options in the Document SSO metabox:
 			 *
-			 * SucomUtil::add_type_opts_md_pad( $place_opts, $mod, array( 'place' => 'schema_place' ) );
+			 * 	SucomUtil::add_type_opts_md_pad( $place_opts, $mod, array( 'place' => 'schema_place' ) );
 			 */
 
 			if ( empty( $place_opts ) ) {
@@ -1567,7 +1654,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/**
-			 * Image.
+			 * Place images.
 			 */
 			if ( ! empty( $place_opts[ 'place_img_id' ] ) || ! empty( $place_opts[ 'place_img_url' ] ) ) {
 
@@ -1579,6 +1666,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				WpssoSchema::add_images_data_mt( $json_ret[ 'image' ], $mt_images );
 			}
 
+			if ( ! empty( $place_opts[ 'place_images' ] ) ) {
+
+				WpssoSchema::add_images_data_mt( $json_ret[ 'image' ], $place_opts[ 'place_images' ] );
+			}
+
+			/**
+			 * Filter the single Place data.
+			 */
 			$json_ret = apply_filters( 'wpsso_json_data_single_place', $json_ret, $mod, $place_id );
 
 			/**
@@ -1749,7 +1844,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			if ( $wpsso->debug->enabled ) {
 
-				$wpsso->debug->log_arr( '$mt_offer', $mt_offer );
+				$wpsso->debug->log_arr( 'mt_offer', $mt_offer );
 			}
 
 			$offer = WpssoSchema::get_schema_type_context( 'https://schema.org/Offer' );
@@ -1931,9 +2026,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				$offer_mod = $wpsso->post->get_mod( $post_id );
 
-				WpssoSchema::add_media_data( $offer, $offer_mod, $mt_offer, $size_names = 'schema', $add_video = 'false' );
+				WpssoSchema::add_media_data( $offer, $offer_mod, $mt_offer, $size_names = 'schema', $add_video = 'false', $use_default = false );
 			}
 
+			/**
+			 * Filter the single Offer data.
+			 */
 			$offer = apply_filters( 'wpsso_json_data_single_offer', $offer, $mod );
 
 			return $offer;
@@ -2235,6 +2333,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				}
 			}
 
+			/**
+			 * Filter the single Shipping Offer data.
+			 */
 			$shipping_offer = apply_filters( 'wpsso_json_data_single_shipping_offer', $shipping_offer, $mod );
 
 			return $shipping_offer;

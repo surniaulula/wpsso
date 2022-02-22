@@ -2387,7 +2387,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				/**
 				 * Get the image ID and create a Schema images array.
 				 */
-				if ( $resize && $pid = $wpsso->og->get_media_value( array( $mt_single_image ), 'og:image:id' ) ) {
+				if ( $resize && $pid = $wpsso->media->get_media_value( array( $mt_single_image ), 'og:image:id' ) ) {
 
 					if ( empty( $resized_pids[ $pid ] ) ) {	// Skip image IDs already added.
 
@@ -2511,7 +2511,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 *
 		 * $add_video can be true, false, or a string (property name).
 		 */
-		public static function add_media_data( &$json_data, $mod, $mt_og, $size_names = 'schema', $add_video = true ) {
+		public static function add_media_data( &$json_data, $mod, $mt_og, $size_names = 'schema', $add_video = true, $use_default = false ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -2528,7 +2528,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$max_nums = $wpsso->util->get_max_nums( $mod, 'og' );
 
-			$mt_images = $wpsso->og->get_all_images( $max_nums[ 'og_img_max' ], $size_names, $mod, $check_dupes = true, $md_pre = 'schema' );
+			$mt_images = $wpsso->media->get_all_images( $max_nums[ 'og_img_max' ], $size_names, $mod,
+				$check_dupes = true, $md_pre = array( 'schema', 'og' ), $use_default );
 
 			if ( ! empty( $mt_images ) ) {
 

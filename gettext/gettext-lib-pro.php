@@ -421,6 +421,8 @@ __( 'Image %1$s in content ignored - the image width and height is too small for
 __( '%1$s includes an additional \'data-wp-pid\' attribute for WordPress Media Library images - if this image was selected from the Media Library before %1$s was activated, try removing and adding the image back to your content.', 'wpsso' );
 __( 'TEC: %s', 'option value', 'wpsso' );
 _x( 'TEC: %s', 'option value', 'wpsso' );
+__( 'getting TEC options', 'wpsso' );
+__( 'getting TEC options', 'wpsso' );
 _x( 'Single Entry Integration', 'metabox title', 'wpsso' );
 _x( 'Title Field ID', 'option label', 'wpsso' );
 _x( 'Description Field ID', 'option label', 'wpsso' );

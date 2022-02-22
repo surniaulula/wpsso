@@ -249,7 +249,7 @@ if ( ! function_exists( 'wpsso_get_mod_og_image' ) ) {
 
 		$wpsso =& Wpsso::get_instance();
 
-		$og_image = $wpsso->og->get_all_images( $num = 1, $size_name, $mod, $check_dupes = false, $md_pre = 'og' );
+		$og_image = $wpsso->media->get_all_images( $num = 1, $size_name, $mod, $check_dupes = false, $md_pre = 'og', $use_default = true );
 
 		if ( empty( $og_image[ 0 ] ) ) {	// Just in case.
 

@@ -151,7 +151,10 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeProduct' ) ) {
 				$this->p->debug->log( 'adding image and subjectOf video properties for product' );
 			}
 
-			WpssoSchema::add_media_data( $json_ret, $mod, $mt_og, $size_names = 'schema', $add_video = 'subjectOf' );
+			/**
+			 * Use $is_main for the $use_default argument so the default image is only used for the main Schema markup.
+			 */
+			WpssoSchema::add_media_data( $json_ret, $mod, $mt_og, $size_names = 'schema', $add_video = 'subjectOf', $is_main );
 
 			/**
 			 * Prevent recursion for an itemOffered within a Schema Offer.

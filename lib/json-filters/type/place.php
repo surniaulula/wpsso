@@ -52,7 +52,10 @@ if ( ! class_exists( 'WpssoJsonFiltersTypePlace' ) ) {
 				$this->p->debug->log( 'adding image and subjectOf video properties for place' );
 			}
 
-			WpssoSchema::add_media_data( $json_ret, $mod, $mt_og, $size_names = 'schema', $add_video = 'subjectOf' );
+			/**
+			 * Use $is_main for the $use_default argument so the default image is only used for the main Schema markup.
+			 */
+			WpssoSchema::add_media_data( $json_ret, $mod, $mt_og, $size_names = 'schema', $add_video = 'subjectOf', $is_main );
 
 			/**
 			 * Skip reading place meta tags if not main schema type or if there are no place meta tags.

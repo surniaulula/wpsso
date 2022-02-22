@@ -83,7 +83,7 @@ if ( ! class_exists( 'WpssoMetaName' ) ) {
 			 */
 			if ( ! empty( $this->p->options[ 'add_meta_name_thumbnail' ] ) ) {
 
-				$mt_name[ 'thumbnail' ] = $this->p->og->get_thumbnail_url( 'wpsso-thumbnail', $mod, $md_pre = 'og' );
+				$mt_name[ 'thumbnail' ] = $this->p->media->get_thumbnail_url( 'wpsso-thumbnail', $mod, $md_pre = 'og' );
 
 				if ( empty( $mt_name[ 'thumbnail' ] ) ) {
 

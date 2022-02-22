@@ -252,7 +252,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 
 			$size_name     = 'wpsso-opengraph';
 			$media_request = array( 'pid' );
-			$media_info    = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = 'none' );
+			$media_info    = $this->p->media->get_media_info( $size_name, $media_request, $mod, $md_pre = 'none' );
 
 			$form_rows = array(
 				'subsection_priority_image' => array(
@@ -312,7 +312,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 				} else {
 
 					$media_request = array( 'pid' );
-					$media_info    = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = 'og' );
+					$media_info    = $this->p->media->get_media_info( $size_name, $media_request, $mod, $md_pre = 'og' );
 
 					$form_rows[ $tc_prefix . '_img_id' ] = array(
 						'th_class' => 'medium',
@@ -344,7 +344,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 
 			$size_name       = 'wpsso-schema-1x1';
 			$media_request   = array( 'pid' );
-			$media_info      = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = 'og' );
+			$media_info      = $this->p->media->get_media_info( $size_name, $media_request, $mod, $md_pre = 'og' );
 			$schema_disabled = $this->p->util->is_schema_disabled();
 			$schema_msg      = $this->p->msgs->maybe_schema_disabled();
 
@@ -386,7 +386,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 
 			$size_name        = 'wpsso-pinterest';
 			$media_request    = array( 'pid' );
-			$media_info       = $this->p->og->get_media_info( $size_name, $media_request, $mod, $md_pre = array( 'schema', 'og' ) );
+			$media_info       = $this->p->media->get_media_info( $size_name, $media_request, $mod, $md_pre = array( 'schema', 'og' ) );
 			$pin_img_disabled = $this->p->util->is_pin_img_disabled();
 			$pin_img_msg      = $this->p->msgs->maybe_pin_img_disabled();
 
