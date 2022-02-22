@@ -24,6 +24,9 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 
 		private $p;	// Wpsso class object.
 
+		/**
+		 *
+		 */
 		public function __construct( &$plugin ) {
 
 			static $do_once = null;
@@ -56,9 +59,20 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 
 		public function common_hooks() {
 
+			/**
+			 * All in One SEO Pack.
+			 */
 			if ( ! empty( $this->p->avail[ 'seo' ][ 'aioseop' ] ) ) {
 
 				add_filter( 'aioseo_schema_disable', '__return_true', 1000 );
+			}
+
+			/**
+			 * Easy Digital Download.
+			 */
+			if ( $this->p->avail[ 'ecom' ][ 'edd' ] ) {
+
+				add_filter( 'edd_add_schema_microdata', '__return_false', PHP_INT_MAX );
 			}
 
 			/**
@@ -70,8 +84,17 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				 * Filter for the get_option() and update_option() functions.
 				 */
 				add_filter( 'option_wr2x_retina_sizes', array( $this, 'update_wr2x_retina_sizes' ), 1000, 1 );
-
 				add_filter( 'pre_update_option_wr2x_retina_sizes', array( $this, 'update_wr2x_retina_sizes' ), 1000, 1 );
+			}
+
+			/**
+			 * WooCommerce.
+			 */
+			if ( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) {
+
+				add_filter( 'woocommerce_structured_data_product', '__return_empty_array', PHP_INT_MAX );
+				add_filter( 'woocommerce_structured_data_review', '__return_empty_array', PHP_INT_MAX );
+				add_filter( 'woocommerce_structured_data_website', '__return_empty_array', PHP_INT_MAX );
 			}
 		}
 
@@ -83,14 +106,12 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			if ( class_exists( 'GFForms' ) ) {
 
 				add_action( 'gform_noconflict_styles', array( $this, 'update_gform_noconflict_styles' ) );
-
 				add_action( 'gform_noconflict_scripts', array( $this, 'update_gform_noconflict_scripts' ) );
 			}
 
 			if ( class_exists( 'GravityView_Plugin' ) ) {
 
 				add_action( 'gravityview_noconflict_styles', array( $this, 'update_gform_noconflict_styles' ) );
-
 				add_action( 'gravityview_noconflict_scripts', array( $this, 'update_gform_noconflict_scripts' ) );
 			}
 
@@ -103,19 +124,19 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			}
 
 			/**
-			 * The SEO Framework.
-			 */
-			if ( ! empty( $this->p->avail[ 'seo' ][ 'seoframework' ] ) ) {
-
-				add_filter( 'the_seo_framework_inpost_settings_tabs', array( $this, 'cleanup_seoframework_tabs' ), 1000 );
-			}
-
-			/**
 			 * SEOPress.
 			 */
 			if ( ! empty( $this->p->avail[ 'seo' ][ 'seopress' ] ) ) {
 
 				add_filter( 'seopress_metabox_seo_tabs', array( $this, 'cleanup_seopress_tabs' ), 1000 );
+			}
+
+			/**
+			 * The SEO Framework.
+			 */
+			if ( ! empty( $this->p->avail[ 'seo' ][ 'seoframework' ] ) ) {
+
+				add_filter( 'the_seo_framework_inpost_settings_tabs', array( $this, 'cleanup_seoframework_tabs' ), 1000 );
 			}
 
 			/**
@@ -137,9 +158,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			if ( ! empty( $this->p->avail[ 'util' ][ 'jetpack' ] ) ) {
 
 				add_filter( 'jetpack_enable_opengraph', '__return_false', 1000 );
-
 				add_filter( 'jetpack_enable_open_graph', '__return_false', 1000 );
-
 				add_filter( 'jetpack_disable_twitter_cards', '__return_true', 1000 );
 			}
 
@@ -157,7 +176,6 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			if ( ! empty( $this->p->avail[ 'seo' ][ 'rankmath' ] ) ) {
 
 				add_action( 'rank_math/head', array( $this, 'cleanup_rankmath_actions' ), -2000 );
-
 				add_filter( 'rank_math/json_ld', array( $this, 'cleanup_rankmath_json_ld' ), PHP_INT_MAX );
 			}
 

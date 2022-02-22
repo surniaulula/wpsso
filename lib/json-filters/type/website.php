@@ -31,14 +31,6 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeWebsite' ) ) {
 			$this->p->util->add_plugin_filters( $this, array(
 				'json_data_https_schema_org_website' => 5,
 			) );
-
-			/**
-			 * Disable JSON-LD markup from the WooCommerce WC_Structured_Data class (since v3.0.0).
-			 */
-			if ( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) {
-
-				add_filter( 'woocommerce_structured_data_website', '__return_empty_array', PHP_INT_MAX );
-			}
 		}
 
 		public function filter_json_data_https_schema_org_website( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {

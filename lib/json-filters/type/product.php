@@ -31,23 +31,6 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeProduct' ) ) {
 			$this->p->util->add_plugin_filters( $this, array(
 				'json_data_https_schema_org_product' => 5,
 			) );
-
-			/**
-			 * Disable microdata markup from the Easy Digital Download plugin.
-			 */
-			if ( $this->p->avail[ 'ecom' ][ 'edd' ] ) {
-
-				add_filter( 'edd_add_schema_microdata', '__return_false', PHP_INT_MAX );
-			}
-
-			/**
-			 * Disable JSON-LD markup from the WooCommerce WC_Structured_Data class (since v3.0.0).
-			 */
-			if ( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) {
-
-				add_filter( 'woocommerce_structured_data_product', '__return_empty_array', PHP_INT_MAX );
-				add_filter( 'woocommerce_structured_data_review', '__return_empty_array', PHP_INT_MAX );
-			}
 		}
 
 		public function filter_json_data_https_schema_org_product( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
