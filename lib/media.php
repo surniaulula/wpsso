@@ -462,8 +462,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 		/**
 		 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
-		 *
-		 * $size_name is passed as-is to $this->get_all_images().
 		 */
 		public function get_thumbnail_url( $size_names = 'thumbnail', array $mod, $md_pre = 'og' ) {
 
@@ -747,240 +745,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			return $mt_ret;
-		}
-
-		/**
-		 * The returned array can include a varying number of elements, depending on the $request value.
-		 * 
-		 * $md_pre may be 'none' when getting Open Graph option defaults (and not their custom values).
-		 *
-		 * $size_name should be a string, not an array.
-		 */
-		public function get_media_info( $size_name, array $request, array $mod, $md_pre = 'og', $mt_pre = 'og' ) {
-
-			if ( ! is_string( $size_name ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: $size_name must be a string' );
-				}
-
-				return array();
-
-			} elseif ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			$media_info = array();
-			$mt_images  = null;
-			$mt_videos  = null;
-
-			foreach ( $request as $key ) {
-
-				switch ( $key ) {
-
-					case 'pid':
-					case ( preg_match( '/^(image|img)/', $key ) ? true : false ):
-
-						/**
-						 * Get images only once.
-						 */
-						if ( null === $mt_images ) {
-
-							$mt_images = $this->get_size_name_images( $num = 1, $size_name, $mod, $check_dupes = true, $md_pre );
-						}
-
-						break;
-
-					case ( preg_match( '/^(vid|prev)/', $key ) ? true : false ):
-
-						/**
-						 * Get videos only once.
-						 */
-						if ( null === $mt_videos ) {
-
-							$mt_videos = $this->get_all_videos( $num = 1, $mod, $check_dupes = true, $md_pre );
-						}
-
-						break;
-				}
-			}
-
-			foreach ( $request as $key ) {
-
-				switch ( $key ) {
-
-					case 'pid':
-
-						if ( empty( $get_mt_name ) ) {
-
-							$get_mt_name = $mt_pre . ':image:id';
-						}
-
-						// No break.
-
-					case 'image':
-					case 'img_url':
-
-						if ( empty( $get_mt_name ) ) {
-
-							$get_mt_name = $mt_pre . ':image';
-						}
-
-						// No break.
-
-						if ( null !== $mt_videos ) {
-
-							$media_info[ $key ] = $this->get_media_value( $mt_videos, $get_mt_name );
-						}
-
-						if ( empty( $media_info[ $key ] ) ) {
-
-							$media_info[ $key ] = $this->get_media_value( $mt_images, $get_mt_name );
-						}
-
-						break;
-
-					case 'img_alt':
-
-						$media_info[ $key ] = $this->get_media_value( $mt_images, $mt_pre . ':image:alt' );
-
-						break;
-
-					case 'video':
-					case 'vid_url':
-
-						$media_info[ $key ] = $this->get_media_value( $mt_videos, $mt_pre . ':video' );
-
-						break;
-
-					case 'vid_type':
-
-						$media_info[ $key ] = $this->get_media_value( $mt_videos, $mt_pre . ':video:type' );
-
-						break;
-
-					case 'vid_title':
-
-						$media_info[ $key ] = $this->get_media_value( $mt_videos, $mt_pre . ':video:title' );
-
-						break;
-
-					case 'vid_desc':
-
-						$media_info[ $key ] = $this->get_media_value( $mt_videos, $mt_pre . ':video:description' );
-
-						break;
-
-					case 'vid_stream_url':
-
-						$media_info[ $key ] = $this->get_media_value( $mt_videos, $mt_pre . ':video:stream_url' );
-
-						break;
-
-					case 'vid_width':
-
-						$media_info[ $key ] = $this->get_media_value( $mt_videos, $mt_pre . ':video:width' );
-
-						break;
-
-					case 'vid_height':
-
-						$media_info[ $key ] = $this->get_media_value( $mt_videos, $mt_pre . ':video:height' );
-
-						break;
-
-					case 'vid_prev':
-					case 'prev_url':
-					case 'preview':
-
-						$media_info[ $key ] = $this->get_media_value( $mt_videos, $mt_pre . ':video:thumbnail_url' );
-
-						break;
-
-					default:
-
-						$media_info[ $key ] = '';
-
-						break;
-				}
-
-				unset( $get_mt_name );
-			}
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( $media_info );
-			}
-
-			return $media_info;
-		}
-
-		/**
-		 * Also used by the WpssoProMediaGravatar class to get the default image URL.
-		 */
-		public function get_media_value( $mt_og, $media_pre ) {
-
-			if ( empty( $mt_og ) || ! is_array( $mt_og ) ) {	// Nothing to do.
-
-				return '';
-			}
-
-			$og_media = reset( $mt_og );	// Only search the first media array.
-
-			switch ( $media_pre ) {
-
-				/**
-				 * If we're asking for an image or video url, then search all three values sequentially.
-				 */
-				case ( preg_match( '/:(image|video)(:secure_url|:url)?$/', $media_pre ) ? true : false ):
-
-					$mt_search = array(
-						$media_pre . ':secure_url',	// og:image:secure_url
-						$media_pre . ':url',		// og:image:url
-						$media_pre,			// og:image
-					);
-
-					break;
-
-				/**
-				 * Otherwise, only search for that specific meta tag name.
-				 */
-				default:
-
-					$mt_search = array( $media_pre );
-
-					break;
-			}
-
-			foreach ( $mt_search as $key ) {
-
-				if ( ! isset( $og_media[ $key ] ) ) {
-
-					continue;
-
-				} elseif ( '' === $og_media[ $key ] || null === $og_media[ $key ] ) {	// Allow for 0.
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( $og_media[ $key ] . ' value is empty (skipped)' );
-					}
-
-				} elseif ( WPSSO_UNDEF === $og_media[ $key ] || (string) WPSSO_UNDEF === $og_media[ $key ] ) {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( $og_media[ $key ] . ' value is ' . WPSSO_UNDEF . ' (skipped)' );
-					}
-
-				} else {
-
-					return $og_media[ $key ];
-				}
-			}
-
-			return '';
 		}
 
 		/**
@@ -2000,6 +1764,240 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			return $this->get_mt_opts_images( $this->p->options, $size_names, $img_pre = 'og_def_img', $key_num = null, $mt_pre = 'og' );
+		}
+
+		/**
+		 * The returned array can include a varying number of elements, depending on the $request value.
+		 * 
+		 * $md_pre may be 'none' when getting Open Graph option defaults (and not their custom values).
+		 *
+		 * $size_name should be a string, not an array.
+		 */
+		public function get_media_info( $size_name, array $request, array $mod, $md_pre = 'og', $mt_pre = 'og' ) {
+
+			if ( ! is_string( $size_name ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: $size_name must be a string' );
+				}
+
+				return array();
+
+			} elseif ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			$media_info = array();
+			$mt_images  = null;
+			$mt_videos  = null;
+
+			foreach ( $request as $key ) {
+
+				switch ( $key ) {
+
+					case 'pid':
+					case ( preg_match( '/^(image|img)/', $key ) ? true : false ):
+
+						/**
+						 * Get images only once.
+						 */
+						if ( null === $mt_images ) {
+
+							$mt_images = $this->get_size_name_images( $num = 1, $size_name, $mod, $check_dupes = true, $md_pre );
+						}
+
+						break;
+
+					case ( preg_match( '/^(vid|prev)/', $key ) ? true : false ):
+
+						/**
+						 * Get videos only once.
+						 */
+						if ( null === $mt_videos ) {
+
+							$mt_videos = $this->get_all_videos( $num = 1, $mod, $check_dupes = true, $md_pre );
+						}
+
+						break;
+				}
+			}
+
+			foreach ( $request as $key ) {
+
+				switch ( $key ) {
+
+					case 'pid':
+
+						if ( empty( $get_mt_name ) ) {
+
+							$get_mt_name = $mt_pre . ':image:id';
+						}
+
+						// No break.
+
+					case 'image':
+					case 'img_url':
+
+						if ( empty( $get_mt_name ) ) {
+
+							$get_mt_name = $mt_pre . ':image';
+						}
+
+						// No break.
+
+						if ( null !== $mt_videos ) {
+
+							$media_info[ $key ] = $this->get_media_value( $mt_videos, $get_mt_name );
+						}
+
+						if ( empty( $media_info[ $key ] ) ) {
+
+							$media_info[ $key ] = $this->get_media_value( $mt_images, $get_mt_name );
+						}
+
+						break;
+
+					case 'img_alt':
+
+						$media_info[ $key ] = $this->get_media_value( $mt_images, $mt_pre . ':image:alt' );
+
+						break;
+
+					case 'video':
+					case 'vid_url':
+
+						$media_info[ $key ] = $this->get_media_value( $mt_videos, $mt_pre . ':video' );
+
+						break;
+
+					case 'vid_type':
+
+						$media_info[ $key ] = $this->get_media_value( $mt_videos, $mt_pre . ':video:type' );
+
+						break;
+
+					case 'vid_title':
+
+						$media_info[ $key ] = $this->get_media_value( $mt_videos, $mt_pre . ':video:title' );
+
+						break;
+
+					case 'vid_desc':
+
+						$media_info[ $key ] = $this->get_media_value( $mt_videos, $mt_pre . ':video:description' );
+
+						break;
+
+					case 'vid_stream_url':
+
+						$media_info[ $key ] = $this->get_media_value( $mt_videos, $mt_pre . ':video:stream_url' );
+
+						break;
+
+					case 'vid_width':
+
+						$media_info[ $key ] = $this->get_media_value( $mt_videos, $mt_pre . ':video:width' );
+
+						break;
+
+					case 'vid_height':
+
+						$media_info[ $key ] = $this->get_media_value( $mt_videos, $mt_pre . ':video:height' );
+
+						break;
+
+					case 'vid_prev':
+					case 'prev_url':
+					case 'preview':
+
+						$media_info[ $key ] = $this->get_media_value( $mt_videos, $mt_pre . ':video:thumbnail_url' );
+
+						break;
+
+					default:
+
+						$media_info[ $key ] = '';
+
+						break;
+				}
+
+				unset( $get_mt_name );
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( $media_info );
+			}
+
+			return $media_info;
+		}
+
+		/**
+		 * Also used by the WpssoProMediaGravatar class to get the default image URL.
+		 */
+		public function get_media_value( $mt_og, $media_pre ) {
+
+			if ( empty( $mt_og ) || ! is_array( $mt_og ) ) {	// Nothing to do.
+
+				return '';
+			}
+
+			$og_media = reset( $mt_og );	// Only search the first media array.
+
+			switch ( $media_pre ) {
+
+				/**
+				 * If we're asking for an image or video url, then search all three values sequentially.
+				 */
+				case ( preg_match( '/:(image|video)(:secure_url|:url)?$/', $media_pre ) ? true : false ):
+
+					$mt_search = array(
+						$media_pre . ':secure_url',	// og:image:secure_url
+						$media_pre . ':url',		// og:image:url
+						$media_pre,			// og:image
+					);
+
+					break;
+
+				/**
+				 * Otherwise, only search for that specific meta tag name.
+				 */
+				default:
+
+					$mt_search = array( $media_pre );
+
+					break;
+			}
+
+			foreach ( $mt_search as $key ) {
+
+				if ( ! isset( $og_media[ $key ] ) ) {
+
+					continue;
+
+				} elseif ( '' === $og_media[ $key ] || null === $og_media[ $key ] ) {	// Allow for 0.
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( $og_media[ $key ] . ' value is empty (skipped)' );
+					}
+
+				} elseif ( WPSSO_UNDEF === $og_media[ $key ] || (string) WPSSO_UNDEF === $og_media[ $key ] ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( $og_media[ $key ] . ' value is ' . WPSSO_UNDEF . ' (skipped)' );
+					}
+
+				} else {
+
+					return $og_media[ $key ];
+				}
+			}
+
+			return '';
 		}
 
 		/**
