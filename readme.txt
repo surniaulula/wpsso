@@ -250,6 +250,27 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 11.2.0-dev.1 (2022/02/22)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added support for The Event Calendar organizer and venue featured images (Premium edition).
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Moved the following methods from `WpssoOpenGraph` to `WpssoMedia`:
+		* `get_all_previews()`
+		* `get_all_videos()`
+		* `get_thumbnail_url()`
+		* `get_all_images()`
+		* `get_size_name_images()`
+		* `get_media_info()`
+		* `get_media_value()`
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 11.1.1 (2022/02/22)**
 
 * **New Features**
@@ -951,6 +972,10 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 	* WordPress v5.0.
 
 == Upgrade Notice ==
+
+= 11.2.0-dev.1 =
+
+(2022/02/22) Added support for The Event Calendar organizer and venue featured images (Premium edition).
 
 = 11.1.1 =
 
