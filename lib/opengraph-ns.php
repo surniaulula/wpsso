@@ -66,12 +66,12 @@ if ( ! class_exists( 'WpssoOpenGraphNS' ) ) {
 				) );
 			}
 
-			$use_post = apply_filters( 'wpsso_use_post', false );
-
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'required call to WpssoPage->get_mod()' );
 			}
+
+			$use_post = apply_filters( 'wpsso_use_post', false );
 
 			$mod = $this->p->page->get_mod( $use_post );
 

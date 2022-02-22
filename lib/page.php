@@ -80,12 +80,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				return;
 			}
 
-			$use_post = apply_filters( 'wpsso_use_post', $use_post );
-
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'required call to WpssoPage->get_mod()' );
 			}
+
+			$use_post = apply_filters( 'wpsso_use_post', $use_post );
 
 			$mod = $this->p->page->get_mod( $use_post );	// Get post/term/user ID, module name, and module object reference.
 
@@ -222,7 +222,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			$use_post = apply_filters( 'wpsso_use_post', false );
-			$mod      = $this->p->page->get_mod( $use_post );
+
+			$mod = $this->p->page->get_mod( $use_post );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -318,12 +319,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( false !== strpos( $title, '%%' ) ) {
 
-				$use_post = apply_filters( 'wpsso_use_post', false );
-
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'required call to WpssoPage->get_mod()' );
 				}
+
+				$use_post = apply_filters( 'wpsso_use_post', false );
 
 				$mod = $this->p->page->get_mod( $use_post );
 

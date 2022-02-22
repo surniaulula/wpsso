@@ -66,7 +66,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeQuestion' ) ) {
 
 			if ( empty( $accepted_answer[ 'text' ] ) ) {
 
-				$accepted_answer[ 'text' ] = $this->p->page->get_text( 'schema_text', $dots = '...', $mod );
+				$accepted_answer[ 'text' ] = $this->p->page->get_text( $mod, $md_key = 'schema_text', $max_len = 'schema_text' );
 			}
 
 			WpssoSchema::add_data_itemprop_from_assoc( $accepted_answer, $json_ret, array( 

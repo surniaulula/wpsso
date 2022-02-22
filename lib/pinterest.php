@@ -163,12 +163,12 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 				return $content;	// Stop here.
 			}
 
-			$use_post = apply_filters( 'wpsso_use_post', in_the_loop() ? true : false );
-
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'required call to WpssoPage->get_mod()' );
 			}
+
+			$use_post = apply_filters( 'wpsso_use_post', in_the_loop() ? true : false );
 
 			$mod = $this->p->page->get_mod( $use_post );	// $use_post is true by default.
 

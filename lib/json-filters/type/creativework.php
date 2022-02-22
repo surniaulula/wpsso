@@ -48,7 +48,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeCreativeWork' ) ) {
 			 */
 			if ( ! empty( $this->p->options[ 'schema_add_text_prop' ] ) ) {
 
-				$json_ret[ 'text' ] = $this->p->page->get_text( 'schema_text', $dots = '...', $mod );
+				$json_ret[ 'text' ] = $this->p->page->get_text( $mod, $md_key = 'schema_text', $max_len = 'schema_text' );
 			}
 
 			/**
