@@ -250,7 +250,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.1.1-rc.1 (2022/02/22)**
+**Version 11.1.1 (2022/02/22)**
 
 * **New Features**
 	* None.
@@ -952,7 +952,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 11.1.1-rc.1 =
+= 11.1.1 =
 
 (2022/02/22) Fixed an undefined variable warning in `WpssoUser->user_can_save()`. Fixed incorrect `WpssoPage->get_text()` arguments in two Schema type filters.
 
