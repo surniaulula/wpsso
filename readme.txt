@@ -250,7 +250,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.1.1-dev.1 (2022/02/20)**
+**Version 11.1.1-dev.2 (2022/02/22)**
 
 * **New Features**
 	* None.
@@ -258,6 +258,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Bugfixes**
 	* Fixed an undefined variable warning in `WpssoUser->user_can_save()`.
+	* Fixed incorrect `WpssoPage->get_text()` arguments in `WpssoJsonFiltersTypeCreativeWork` and `WpssoJsonFiltersTypeQuestion`.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -951,9 +952,9 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 11.1.1-dev.1 =
+= 11.1.1-dev.2 =
 
-(2022/02/20) Fixed an undefined variable warning in `WpssoUser->user_can_save()`.
+(2022/02/22) Fixed an undefined variable warning in `WpssoUser->user_can_save()`. Fixed incorrect `WpssoPage->get_text()` arguments in two Schema type filters.
 
 = 11.1.0 =
 
