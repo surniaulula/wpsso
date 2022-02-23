@@ -746,7 +746,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							$this->p->debug->log( 'skipping default image: post is attachment' );
 						}
 
-					} elseif ( ! $mod[ 'is_public' ] ) {
+					} elseif ( ! $mod[ 'is_public' ] ) {	// WooCommerce variations, for example.
 
 						if ( $this->p->debug->enabled ) {
 

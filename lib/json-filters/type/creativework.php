@@ -61,9 +61,6 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeCreativeWork' ) ) {
 				$this->p->debug->log( 'adding image and video properties for creativework' );
 			}
 
-			/**
-			 * Use $is_main for the $use_default argument so the default image is only used for the main Schema markup.
-			 */
 			WpssoSchema::add_media_data( $json_ret, $mod, $mt_og, $size_names = 'schema', $add_video = true );
 
 			WpssoSchema::check_required( $json_ret, $mod, array( 'image' ) );

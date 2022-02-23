@@ -54,9 +54,6 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeEvent' ) ) {
 				$this->p->debug->log( 'adding image and subjectOf video properties for event' );
 			}
 
-			/**
-			 * Use $is_main for the $use_default argument so the default image is only used for the main Schema markup.
-			 */
 			WpssoSchema::add_media_data( $json_ret, $mod, $mt_og, $size_names = 'schema', $add_video = 'subjectOf' );
 
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );
