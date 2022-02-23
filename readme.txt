@@ -250,7 +250,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.2.0-dev.2 (2022/02/22)**
+**Version 11.2.0-dev.3 (2022/02/22)**
 
 * **New Features**
 	* None.
@@ -973,7 +973,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 11.2.0-dev.2 =
+= 11.2.0-dev.3 =
 
 (2022/02/22) Added support for The Event Calendar organizer and venue featured images (Premium edition).
 
