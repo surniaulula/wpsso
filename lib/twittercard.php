@@ -231,7 +231,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_arr( '$card_info', $card_info );
+				$this->p->debug->log_arr( 'card_info', $card_info );
 			}
 
 			return $card_info;
@@ -593,7 +593,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				$this->p->debug->log( $card_type . ' card: checking other images' );
 			}
 
-			$mt_images = $this->p->media->get_all_images( $num = 1, $size_name, $mod, $check_dupes = false, $md_pre, $use_default = true );
+			$mt_images = $this->p->media->get_all_images( $num = 1, $size_name, $mod, $check_dupes = false, $md_pre );
 
 			if ( count( $mt_images ) > 0 ) {
 

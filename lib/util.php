@@ -1953,7 +1953,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						$this->p->debug->log( 'custom canonical url = ' . $url );
 					}
-			
+
 					$is_custom = true;
 				}
 			}
@@ -2170,7 +2170,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						$this->p->debug->log( 'custom redirect url = ' . $url );
 					}
-			
+
 					$is_custom  = true;
 				}
 			}

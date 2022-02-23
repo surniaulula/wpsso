@@ -106,7 +106,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeSoftwareApplication' ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log_arr( '$single_offer', $single_offer );
+							$this->p->debug->log_arr( 'single_offer', $single_offer );
 						}
 
 						$json_ret[ 'offers' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/Offer', $single_offer );

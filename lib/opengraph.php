@@ -541,7 +541,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				if ( $max_nums[ 'og_img_max' ] > 0 ) {
 
 					$mt_og[ 'og:image' ] = $this->p->media->get_all_images( $max_nums[ 'og_img_max' ], $size_names, $mod,
-						$check_dupes = true, $md_pre = 'og', $use_default = true );
+						$check_dupes = true, $md_pre = 'og' );
 
 					if ( empty( $mt_og[ 'og:image' ] ) ) {
 
@@ -1442,11 +1442,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		/**
 		 * Deprecated on 2022/02/22.
 		 */
-		public function get_all_images( $num, $size_names = 'opengraph', array $mod, $check_dupes = true, $md_pre = 'og', $use_default = true ) {
+		public function get_all_images( $num, $size_names = 'opengraph', array $mod, $check_dupes = true, $md_pre = 'og' ) {
 
 			_deprecated_function( __METHOD__ . '()', '2022/02/22', $replacement = 'WpssoMedia::get_all_images()' );	// Deprecation message.
 
-			return $this->p->media->get_all_images( $num, $size_names, $mod, $check_dupes, $md_pre, $use_default );
+			return $this->p->media->get_all_images( $num, $size_names, $mod, $check_dupes, $md_pre );
 		}
 	}
 }

@@ -617,20 +617,20 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 				$notice_keys = array( $notice_keys );
 			}
-		
+
 			foreach ( $notice_keys as $notice_key ) {
 
 				if ( isset( $user_dismissed[ $notice_key ] ) ) {	// Notice has been dismissed.
 
 					$current_time = time();
-	
+
 					$dismiss_time = $user_dismissed[ $notice_key ];
-	
+
 					if ( ! $force_expire && ( empty( $dismiss_time ) || $dismiss_time > $current_time ) ) {
-	
+
 						return true;
 					}
-					
+
 					/**
 					 * Dismiss time has expired.
 					 */
@@ -639,11 +639,11 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 					$update_dismissed = true;
 				}
 			}
-	
+
 			if ( $update_dismissed ) {
 
 				if ( empty( $user_dismissed ) ) {
-	
+
 					delete_user_option( $user_id, $this->dismiss_name, $global = false );
 
 					delete_user_option( $user_id, $this->dismiss_name, $global = true );
@@ -740,7 +740,7 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 
 			if ( ! empty( $this->p->debug->enabled ) ) {
 
-				$this->p->debug->log_arr( '$notice_types', $notice_types );
+				$this->p->debug->log_arr( 'notice_types', $notice_types );
 			}
 
 			if ( empty( $notice_types ) ) {	// Just in case.

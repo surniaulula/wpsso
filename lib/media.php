@@ -470,7 +470,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$mt_ret = $this->get_all_images( $num = 1, $size_names, $mod, $check_dupes = true, $md_pre, $use_default = true );
+			$mt_ret = $this->get_all_images( $num = 1, $size_names, $mod, $check_dupes = true, $md_pre );
 
 			return SucomUtil::get_first_mt_media_url( $mt_ret );
 		}
@@ -478,11 +478,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		/**
 		 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
 		 */
-		public function get_all_images( $num, $size_names = 'opengraph', array $mod, $check_dupes = true, $md_pre = 'og', $use_default = true ) {
+		public function get_all_images( $num, $size_names = 'opengraph', array $mod, $check_dupes = true, $md_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark( 'get all images' );	// Begin timer.
 
 				$this->p->debug->log_args( array(
 					'num'         => $num,
@@ -530,7 +528,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					/**
 					 * $size_name must be a string.
 					 */
-					$mt_images = $this->get_size_name_images( $num_diff, $size_name, $mod, $check_dupes, $md_pre, $use_default );
+					$mt_images = $this->get_size_name_images( $num_diff, $size_name, $mod, $check_dupes, $md_pre );
 
 					if ( empty( $mt_images ) ) {
 
@@ -557,13 +555,18 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		/**
 		 * $size_name must be a string.
 		 */
-		public function get_size_name_images( $num, $size_name, array $mod, $check_dupes = true, $md_pre = 'og', $use_default = true ) {
+		public function get_size_name_images( $num, $size_name, array $mod, $check_dupes = true, $md_pre = 'og' ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			if ( ! is_string( $size_name ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: $size_name argument must be a string' );
+					$this->p->debug->log( 'exiting early: size_name argument must be a string' );
 				}
 
 				return array();
@@ -572,7 +575,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: $num argument must be 1 or more' );
+					$this->p->debug->log( 'exiting early: num argument must be 1 or more' );
 				}
 
 				return array();
@@ -618,10 +621,19 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							$this->p->debug->log( 'exiting early: no attachment image' );
 						}
 
-						return $mt_ret;
+						return $mt_ret;	// Stop here.
 					}
 
-					return array_merge( $mt_ret, $mt_single_image );
+					$mt_ret = array_merge( $mt_ret, $mt_single_image );	// Stop here.
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'returning attachment images' );
+
+						$this->p->debug->log_arr( 'mt_ret', $mt_ret );
+					}
+
+					return $mt_ret;
 				}
 
 				/**
@@ -629,6 +641,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				 *
 				 * Allow for empty post ID in order to execute featured / attached image filters for modules.
 				 */
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'getting post images' );
+				}
+
 				$post_images = $this->get_post_images( $num, $size_name, $mod[ 'id' ], $check_dupes, $md_pre );
 
 				if ( ! empty( $post_images ) ) {
@@ -704,6 +721,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				 */
 				if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Term or user.
 
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'getting ' . $mod[ 'name' ] . ' images' );
+					}
+
 					$mt_images = $mod[ 'obj' ]->get_og_images( $num, $size_name, $mod[ 'id' ], $check_dupes, $md_pre );
 
 					if ( ! empty( $mt_images ) ) {
@@ -713,24 +735,42 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 			}
 
-			if ( empty( $mt_ret ) && $use_default ) {
+			if ( empty( $mt_ret ) ) {
 
-				if ( $this->p->debug->enabled ) {
+				if ( $mod[ 'is_home' ] ||  $mod[ 'is_archive' ] || $mod[ 'is_post' ] ) {
 
-					$this->p->debug->log( 'no image(s) found - getting the default image' );
-				}
+					if ( $mod[ 'is_attachment' ] ) {
 
-				$mt_ret = $this->get_default_images( $size_name );
+						if ( $this->p->debug->enabled ) {
 
-				if ( $this->p->debug->enabled ) {
+							$this->p->debug->log( 'skipping default image: post is attachment' );
+						}
 
-					if ( empty( $mt_ret ) ) {
+					} elseif ( ! $mod[ 'is_public' ] ) {
 
-						$this->p->debug->log( 'no default image' );
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'skipping default image: not public' );
+
+							$this->p->debug->log_arr( 'mod', $mod );
+						}
 
 					} else {
 
-						$this->p->debug->log( 'default image found' );
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'using the default image' );
+						}
+
+						$mt_ret = $this->get_default_images( $size_name );
+
+						if ( $this->p->debug->enabled ) {
+
+							if ( empty( $mt_ret ) ) {
+
+								$this->p->debug->log( 'no default image' );
+							}
+						}
 					}
 				}
 			}
@@ -764,7 +804,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			$mt_ret = array();
-			
+
 			if ( ! empty( $post_id ) ) {
 
 				/**
@@ -2085,7 +2125,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_arr( '$img_opts', $img_opts );
+				$this->p->debug->log_arr( 'img_opts', $img_opts );
 			}
 
 			$mt_ret = array();

@@ -1173,7 +1173,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			) as $opt_key ) {
 
 				if ( ! empty( $opts[ $opt_key ] ) ) {
-					
+
 					$notice_key = 'suggest-options-seo-' . $opt_key;
 
 					$this->p->notice->clear_dismissed( $notice_key, $current_user_id );

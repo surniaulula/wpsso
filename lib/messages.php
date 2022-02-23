@@ -961,7 +961,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 		}
 
 		public function maybe_seo_title_disabled() {
-			
+
 			$is_disabled = $this->p->util->is_seo_title_disabled();
 
 			if ( $is_disabled ) {
@@ -972,7 +972,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 				// translators: %s is the meta tag name (aka meta name canonical).
 				$html = sprintf( __( 'Modifications disabled (%1$s option is not %2$s).', 'wpsso' ), $opt_link, $opt_val );
-			
+
 				return '<p class="status-msg smaller disabled">' . $html . '</p>';
 			}
 
@@ -988,7 +988,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 				// translators: %s is the meta tag name (aka meta name canonical).
 				$html = sprintf( __( 'Modifications disabled (<code>%s</code> tag disabled or SEO plugin detected).', 'wpsso' ), $mt_name );
-			
+
 				return '<p class="status-msg smaller disabled">' . $html . '</p>';
 			}
 

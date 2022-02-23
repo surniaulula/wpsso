@@ -1963,7 +1963,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_arr( '$reviews', $reviews );
+				$this->p->debug->log_arr( 'reviews', $reviews );
 			}
 
 			return $reviews;

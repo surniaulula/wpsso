@@ -154,7 +154,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeProduct' ) ) {
 			/**
 			 * Use $is_main for the $use_default argument so the default image is only used for the main Schema markup.
 			 */
-			WpssoSchema::add_media_data( $json_ret, $mod, $mt_og, $size_names = 'schema', $add_video = 'subjectOf', $is_main );
+			WpssoSchema::add_media_data( $json_ret, $mod, $mt_og, $size_names = 'schema', $add_video = 'subjectOf' );
 
 			/**
 			 * Prevent recursion for an itemOffered within a Schema Offer.

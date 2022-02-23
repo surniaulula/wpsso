@@ -80,7 +80,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypePerson' ) ) {
 
 				$this->p->debug->log( 'possibly inherit the schema type' );
 
-				$this->p->debug->log_arr( '$json_data', $json_data );
+				$this->p->debug->log_arr( 'json_data', $json_data );
 			}
 
 			$json_ret = WpssoSchema::get_data_context( $json_data );	// Returns array() if no schema type found.

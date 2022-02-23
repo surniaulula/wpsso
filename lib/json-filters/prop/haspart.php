@@ -184,7 +184,7 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log_arr( '$md5_added', $md5_added );
+					$this->p->debug->log_arr( 'md5_added', $md5_added );
 				}
 
 				update_post_meta( $mod[ 'id' ], self::$meta_key, $md5_added );
@@ -333,7 +333,7 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_arr( '$md5_added', $md5_added );
+				$this->p->debug->log_arr( 'md5_added', $md5_added );
 			}
 
 			/**
@@ -355,7 +355,7 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_arr( '$json_scripts', $json_scripts );
+				$this->p->debug->log_arr( 'json_scripts', $json_scripts );
 			}
 
 			foreach ( $json_scripts as $single_md5 => $single_json ) {

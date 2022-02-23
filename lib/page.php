@@ -297,7 +297,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_arr( '$title_parts', $title_parts );
+				$this->p->debug->log_arr( 'title_parts', $title_parts );
 			}
 
 			return $title_parts;
@@ -314,7 +314,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( '$title = ' . $title );
+				$this->p->debug->log( 'title = ' . $title );
 			}
 
 			if ( false !== strpos( $title, '%%' ) ) {
@@ -742,7 +742,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log_arr( '$extra_args', $extra_args );
+					$wpsso->debug->log_arr( 'extra_args', $extra_args );
 				}
 
 				$page_posts_mods = $mod[ 'obj' ]->get_posts_mods( $mod, $extra_args );
@@ -1875,24 +1875,24 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 
 			} elseif ( false !== $num_hashtags ) {
-		
+
 				if ( true === $num_hashtags ) {
 
 					$num_hashtags = $this->p->options[ 'og_desc_hashtags' ];
 				}
-			
+
 				if ( is_numeric( $num_hashtags ) && $num_hashtags >= 1 ) {
 
 					$tags = $this->get_tag_names( $mod );
 
 					$tags = array_slice( $tags, 0, $num_hashtags );
-	
+
 					if ( ! empty( $tags ) ) {
-	
+
 						$hashtags = SucomUtil::array_to_hashtags( $tags );	// Remove special characters incompatible with Twitter.
-	
+
 						if ( $this->p->debug->enabled ) {
-	
+
 							$this->p->debug->log( 'hashtags = ' . $hashtags );
 						}
 					}
@@ -2080,7 +2080,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			return $reading_mins;
 		}
-		
+
 		/**
 		 * Private methods to sanitize arguments or modify values for get_title(), get_description(), etc.
 		 *
@@ -2143,26 +2143,26 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 						$md_key[] = 'schema_title_alt';
 						$md_key[] = 'schema_title';
-						
+
 						break;
 
 					case 'schema_title_alt':
 
 						$md_key[] = 'schema_title';
-						
+
 						break;
 
 					case 'tc_title':
 
 						$md_key[] = 'og_title';
-						
+
 						break;
 
 					case 'pin_img_desc':
 					case 'tc_desc':
 
 						$md_key[] = 'og_desc';
-						
+
 						break;
 				}
 			}
@@ -2203,7 +2203,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		private function maybe_get_title_sep( $title_sep = null ) {
 
 			if ( null === $title_sep ) {
-			
+
 				$title_sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, $this->charset );
 			}
 
@@ -2213,7 +2213,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		private function maybe_get_ellipsis( $ellipsis = null ) {
 
 			if ( null === $ellipsis ) {
-			
+
 				$ellipsis = html_entity_decode( $this->p->options[ 'og_ellipsis' ], ENT_QUOTES, $this->charset );
 			}
 

@@ -103,7 +103,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 			$url = $this->p->util->get_redirect_url( $use_post );
 
 			if ( $url ) {
-			
+
 				do_action( 'wpsso_before_redirect', $url );
 
 				$redirect_code = absint( apply_filters( 'wpsso_redirect_status_code', 301 ) );
@@ -1071,7 +1071,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 						$this->p->debug->log( 'parts array is incomplete (skipped)' );
 
-						$this->p->debug->log_arr( '$parts', $parts );
+						$this->p->debug->log_arr( 'parts', $parts );
 					}
 
 					continue;

@@ -34,7 +34,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$book_opts = apply_filters( 'wpsso_get_book_options', false, $mod, $book_id );
 
 			if ( ! empty( $book_opts ) ) {
-			
+
 				if ( $wpsso->debug->enabled ) {
 
 					$wpsso->debug->log_arr( 'get_book_options', $book_opts );
@@ -261,7 +261,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$event_opts = apply_filters( 'wpsso_get_event_options', false, $mod, $event_id );
 
 			if ( ! empty( $event_opts ) ) {
-			
+
 				if ( $wpsso->debug->enabled ) {
 
 					$wpsso->debug->log_arr( 'get_event_options', $event_opts );
@@ -737,7 +737,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$job_opts = apply_filters( 'wpsso_get_job_options', false, $mod, $job_id );
 
 			if ( ! empty( $job_opts ) ) {
-			
+
 				if ( $wpsso->debug->enabled ) {
 
 					$wpsso->debug->log_arr( 'get_job_options', $job_opts );
@@ -1264,7 +1264,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$person_opts = apply_filters( 'wpsso_get_person_options', false, $mod, $person_id );
 
 			if ( ! empty( $person_opts ) ) {
-			
+
 				if ( $wpsso->debug->enabled ) {
 
 					$wpsso->debug->log_arr( 'get_person_options', $person_opts );
@@ -1355,7 +1355,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						'person_desc'       => $user_desc,
 						'person_job_title'  => $user_mod[ 'obj' ]->get_author_meta( $person_id, 'job_title' ),
 						'person_images'     => $wpsso->media->get_all_images( $num = 1, $size_names = 'schema', $user_mod,
-							$check_dupes = false, $md_pre = array( 'schema', 'og' ), $use_default = false ),
+							$check_dupes = false, $md_pre = array( 'schema', 'og' ) ),
 						'person_sameas'     => $user_sameas,
 					);
 
@@ -1366,7 +1366,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 						$wpsso->util->maybe_unset_ref( $local_cache_person_urls[ $person_id ] );
 					}
-			
+
 					if ( $wpsso->debug->enabled ) {
 
 						$wpsso->debug->log_arr( 'local_cache_person_opts', $local_cache_person_opts[ $person_id ] );
@@ -1413,7 +1413,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				WpssoSchema::add_images_data_mt( $json_ret[ 'image' ], $mt_images );
 
 			}
-			
+
 			if ( ! empty( $person_opts[ 'person_images' ] ) ) {
 
 				WpssoSchema::add_images_data_mt( $json_ret[ 'image' ], $person_opts[ 'person_images' ] );
@@ -1493,7 +1493,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			$place_opts = apply_filters( 'wpsso_get_place_options', false, $mod, $place_id );
 
 			if ( ! empty( $place_opts ) ) {
-			
+
 				if ( $wpsso->debug->enabled ) {
 
 					$wpsso->debug->log_arr( 'get_place_options', $place_opts );
@@ -2026,7 +2026,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				$offer_mod = $wpsso->post->get_mod( $post_id );
 
-				WpssoSchema::add_media_data( $offer, $offer_mod, $mt_offer, $size_names = 'schema', $add_video = 'false', $use_default = false );
+				WpssoSchema::add_media_data( $offer, $offer_mod, $mt_offer, $size_names = 'schema', $add_video = 'false' );
 			}
 
 			/**

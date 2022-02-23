@@ -777,7 +777,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 				return;
 			}
-			
+
 			$metabox_id      = $this->p->cf[ 'meta' ][ 'id' ];
 			$metabox_title   = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 			$metabox_screen  = 'wpsso-term';

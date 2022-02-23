@@ -2001,11 +2001,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 									$event_json_var = $this->plugin_id . '_select';
 
 									if ( $event_args && is_string( $event_args ) ) {
-			
+
 										$event_json_var .= '_' . $event_args;
-			
+
 									} elseif ( ! empty( $event_args[ 'json_var' ] ) ) {
-			
+
 										$event_json_var = '_' . $event_args[ 'json_var' ];
 									}
 

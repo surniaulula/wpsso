@@ -189,7 +189,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_arr( '$page_type_ids', $page_type_ids );
+				$this->p->debug->log_arr( 'page_type_ids', $page_type_ids );
 			}
 
 			/**
@@ -352,7 +352,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_arr( '$child_family_urls', $child_family_urls );
+				$this->p->debug->log_arr( 'child_family_urls', $child_family_urls );
 			}
 
 			$json_data = null;
@@ -2334,7 +2334,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log_arr( '$get_comment_args', $get_comment_args );
+					$wpsso->debug->log_arr( 'get_comment_args', $get_comment_args );
 				}
 
 				$comments = get_comments( $get_comment_args );
@@ -2511,7 +2511,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 *
 		 * $add_video can be true, false, or a string (property name).
 		 */
-		public static function add_media_data( &$json_data, $mod, $mt_og, $size_names = 'schema', $add_video = true, $use_default = false ) {
+		public static function add_media_data( &$json_data, $mod, $mt_og, $size_names = 'schema', $add_video = true ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -2528,8 +2528,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$max_nums = $wpsso->util->get_max_nums( $mod, 'og' );
 
-			$mt_images = $wpsso->media->get_all_images( $max_nums[ 'og_img_max' ], $size_names, $mod,
-				$check_dupes = true, $md_pre = array( 'schema', 'og' ), $use_default );
+			$mt_images = $wpsso->media->get_all_images( $max_nums[ 'og_img_max' ], $size_names, $mod, $check_dupes = true, $md_pre = array( 'schema', 'og' ) );
 
 			if ( ! empty( $mt_images ) ) {
 

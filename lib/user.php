@@ -1517,7 +1517,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 				if ( $wpsso->debug->enabled ) {
 
-					$wpsso->debug->log_arr( '$cache_user_prefs', self::$cache_user_prefs[ $user_id ] );
+					$wpsso->debug->log_arr( 'cache_user_prefs', self::$cache_user_prefs[ $user_id ] );
 				}
 			}
 

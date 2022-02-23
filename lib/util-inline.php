@@ -156,7 +156,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				case 'site_url':
 
 					$ret_val = SucomUtil::get_home_url( $this->p->options, $mod );
-					
+
 					break;
 
 				case 'canonical_url':
@@ -338,7 +338,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 						$ret_val = $this->p->page->get_the_excerpt( $mod );
 
 						if ( empty( $ret_val ) ) {
-					
+
 							$ret_val = wp_trim_excerpt( '', $mod[ 'id' ] );
 						}
 					}
@@ -348,7 +348,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				case 'excerpt_only':
 
 					if ( $mod[ 'is_post' ] ) {	// Just in case.
-					
+
 						$ret_val = $this->p->page->get_the_excerpt( $mod );
 					}
 

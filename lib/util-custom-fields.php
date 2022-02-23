@@ -71,7 +71,7 @@ if ( ! class_exists( 'WpssoUtilCustomFields' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log_arr( '$cf_meta_keys', $cf_meta_keys );
+					$this->p->debug->log_arr( 'cf_meta_keys', $cf_meta_keys );
 				}
 			}
 

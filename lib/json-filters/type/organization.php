@@ -86,7 +86,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeOrganization' ) ) {
 
 					$this->p->debug->log( 'possibly inherit the schema type' );
 
-					$this->p->debug->log_arr( '$json_data', $json_data );
+					$this->p->debug->log_arr( 'json_data', $json_data );
 				}
 			}
 
