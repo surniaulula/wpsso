@@ -955,16 +955,34 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $result;
 		}
 
+		/**
+		 * Filters and actions are both saved in the $wp_filter global variable.
+		 */
+		public static function remove_action_hook_name( $filter_name, $hook_name ) {
+
+			self::remove_filter_hook_name( $filter_name, $hook_name );
+		}
+
+		/**
+		 * Loop through all action/filter hooks and remove any that match the given function or static method name.
+		 *
+		 * Note that class object methods are matched using a class static method name.
+		 */
 		public static function remove_filter_hook_name( $filter_name, $hook_name ) {
 
 			global $wp_filter;
-			
+
 			if ( isset( $wp_filter[ $filter_name ]->callbacks ) ) {
 
 				foreach ( $wp_filter[ $filter_name ]->callbacks as $hook_prio => $hook_group ) {
 
 					foreach ( $hook_group as $hook_id => $hook_info ) {
 
+						/**
+						 * Returns a function name or a class static method name.
+						 *
+						 * Class object methods are returned as class static method names.
+						 */
 						if ( self::get_hook_function_name( $hook_info ) === $hook_name ) {
 
 							unset( $wp_filter[ $filter_name ]->callbacks[ $hook_prio ][ $hook_id ] );
@@ -1006,6 +1024,11 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 					foreach ( $hook_group as $hook_id => $hook_info ) {
 
+						/**
+						 * Returns a function name or a class static method name.
+						 *
+						 * Class object methods are returned as class static method names.
+						 */
 						if ( $hook_name = self::get_hook_function_name( $hook_info ) ) {
 
 							$hook_names[] = $hook_name;
@@ -1017,40 +1040,60 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $hook_names;
 		}
 
+		/**
+		 * Returns a function name or a class static method name.
+		 *
+		 * Class object methods are returned as class static method names.
+		 */
 		public static function get_hook_function_name( array $hook_info ) {
 
 			$hook_name = '';
 
 			if ( isset( $hook_info[ 'function' ] ) ) {
 
-				if ( is_array( $hook_info[ 'function' ] ) ) {	// Hook is a class method.
+				/**
+				 * The callback hook is a dynamic or static method.
+				 */
+				if ( is_array( $hook_info[ 'function' ] ) ) {
 
 					$class_name = '';
-	
+
 					$function_name = '';
-	
+
+					/**
+					 * The callback hook is a dynamic method.
+					 */
 					if ( is_object( $hook_info[ 'function' ][ 0 ] ) ) {
-	
+
 						$class_name = get_class( $hook_info[ 'function' ][ 0 ] );
-	
+
+					/**
+					 * The callback hook is a static method.
+					 */
 					} elseif ( is_string( $hook_info[ 'function' ][ 0 ] ) ) {
-	
+
 						$class_name = $hook_info[ 'function' ][ 0 ];
 					}
-	
+
 					if ( is_string( $hook_info[ 'function' ][ 1 ] ) ) {
-	
+
 						$function_name = $hook_info[ 'function' ][ 1 ];
 					}
-	
+
+					/**
+					 * Return a static method name.
+					 */
 					$hook_name = $class_name . '::' . $function_name;
-	
-				} elseif ( is_string( $hook_info[ 'function' ] ) ) {	// Hook is a function.
-	
+
+				/**
+				 * The callback hook is a function.
+				 */
+				} elseif ( is_string( $hook_info[ 'function' ] ) ) {
+
 					$hook_name = $hook_info[ 'function' ];
 				}
 			}
-	
+
 			return $hook_name;
 		}
 
