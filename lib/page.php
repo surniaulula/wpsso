@@ -1353,7 +1353,15 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).
 
-				$desc_text = SucomUtil::get_site_description( $this->p->options );
+				if ( $mod[ 'is_post' ] && $mod[ 'id' ] ) {
+
+					$desc_text = $this->get_the_excerpt( $mod );
+				}
+
+				if ( empty( $desc_text ) ) {
+				
+					$desc_text = SucomUtil::get_site_description( $this->p->options );
+				}
 
 			} elseif ( $mod[ 'is_comment' ] ) {
 
