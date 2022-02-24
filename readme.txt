@@ -12,7 +12,7 @@ Requires PHP: 7.2
 Requires At Least: 5.2
 Tested Up To: 5.9.1
 WC Tested Up To: 6.2.1
-Stable Tag: 11.1.1
+Stable Tag: 11.2.0
 
 Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
 
@@ -250,7 +250,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.2.0 (2022/02/24)**
+**Version 11.2.0 (2022/02/25)**
 
 * **New Features**
 	* None.
@@ -977,7 +977,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 = 11.2.0 =
 
-(2022/02/24) Added support for The Event Calendar organizer and venue images (Premium edition).* Avoid getting user titles/descriptions from The SEO Framework as it cannot provide them by user ID (Premium edition).
+(2022/02/25) Added support for The Event Calendar organizer and venue images (Premium edition).* Avoid getting user titles/descriptions from The SEO Framework as it cannot provide them by user ID (Premium edition).
 
 = 11.1.1 =
 
