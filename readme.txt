@@ -1,4 +1,4 @@
-=== WordPress Social and Search Optimization ===
+=== WordPress Social and Search Optimization - The Complete Structured Data Plugin for WordPress ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
@@ -18,7 +18,7 @@ Present your content at its best in search results and on social sites - no matt
 
 == Description ==
 
-<h3 class="top">Complete Structured Data Plugin for WordPress</h3>
+<h3 class="top">The Complete Structured Data Plugin for WordPress</h3>
 
 <p><strong>Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</strong></p>
 

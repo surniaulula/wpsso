@@ -1,4 +1,4 @@
-<h1>WordPress Social and Search Optimization</h1>
+<h1>WordPress Social and Search Optimization - The Complete Structured Data Plugin for WordPress</h1>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
@@ -15,7 +15,7 @@
 
 <h2>Description</h2>
 
-<h3 class="top">Complete Structured Data Plugin for WordPress</h3>
+<h3 class="top">The Complete Structured Data Plugin for WordPress</h3>
 
 <p><strong>Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</strong></p>
 
