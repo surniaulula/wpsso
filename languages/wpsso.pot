@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 11.2.0-dev.3\n"
+"Project-Id-Version: WPSSO Core 11.2.0-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -108,9 +108,9 @@ msgctxt "html paragraph"
 msgid ""
 "Review the website description on the <em><strong>SSO &gt; Essential "
 "Settings</strong></em> page and select a default image ID or URL. The "
-"default image is used for archive pages, and as a fallback for posts and "
-"pages that do not have a suitable custom image, featured image, attached "
-"image, or an image available in their content."
+"default image is used for archive pages (ie. blog, category, and tag archive "
+"page) and as a fallback for public posts and pages that do not have a "
+"suitable image featured, attached, or in their content."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:22
@@ -8067,8 +8067,8 @@ msgstr ""
 #: lib/messages-tooltip-opengraph.php:146
 msgid ""
 "The default image is used for archive pages (ie. blog, category, and tag "
-"archive page) and as a fallback for posts and pages that do not have a "
-"suitable image featured, attached, or in their content."
+"archive page) and as a fallback for public posts and pages that do not have "
+"a suitable image featured, attached, or in their content."
 msgstr ""
 
 #: lib/messages-tooltip-opengraph.php:140
