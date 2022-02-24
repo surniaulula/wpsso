@@ -263,7 +263,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			if ( in_array( $screen->base, array( 'profile', 'user-edit' ) ) ) {
 
 				/**
-				 * Remove the SEO Framework action that includes an "Authorial Info" section.
+				 * Remove the "Authorial Info" section from the user editing page.
 				 */
 				SucomUtilWP::remove_filter_hook_name( 'current_screen', 'The_SEO_Framework\Load::_init_user_edit_view' );
 			}

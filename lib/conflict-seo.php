@@ -109,7 +109,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 					$this->p->debug->log( $this->log_pre . 'aioseop open graph markup is enabled' );
 				}
 
-				$notice_msg = __( 'Please disabled the %1$s option in the %2$s settings.', 'wpsso' );
+				$notice_msg = __( 'Please disable the %1$s option in the %2$s settings.', 'wpsso' );
 
 				$notice_msg = $this->notice_pre . sprintf( $notice_msg, $label_transl, $settings_link );
 
@@ -139,7 +139,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 					$this->p->debug->log( $this->log_pre . 'aioseop twitter card is enabled' );
 				}
 
-				$notice_msg = __( 'Please disabled the %1$s option in the %2$s settings.', 'wpsso' );
+				$notice_msg = __( 'Please disable the %1$s option in the %2$s settings.', 'wpsso' );
 
 				$notice_msg = $this->notice_pre . sprintf( $notice_msg, $label_transl, $settings_link );
 
@@ -228,7 +228,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 							$this->p->debug->log( $this->log_pre . 'seoframework ' . $opt_key . ' option is enabled' );
 						}
 
-						$notice_msg = __( 'Please disabled the %1$s option under the %2$s tab.', 'wpsso' );
+						$notice_msg = __( 'Please disable the %1$s option under the %2$s tab.', 'wpsso' );
 
 						$notice_msg = $this->notice_pre . sprintf( $notice_msg, $label_transl, $settings_link );
 
@@ -258,7 +258,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 							$this->p->debug->log( $this->log_pre . 'seoframework ' . $opt_key . ' option is disabled' );
 						}
 
-						$notice_msg = __( 'Please enabled the %1$s option under the %2$s tab.', 'wpsso' );
+						$notice_msg = __( 'Please enable the %1$s option under the %2$s tab.', 'wpsso' );
 
 						$notice_msg = $this->notice_pre . sprintf( $notice_msg, $label_transl, $settings_link );
 

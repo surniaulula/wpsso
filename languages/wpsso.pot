@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 11.2.0-b.2\n"
+"Project-Id-Version: WPSSO Core 11.2.0-rc.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -5800,8 +5800,10 @@ msgstr ""
 msgid "Facebook"
 msgstr ""
 
-#: lib/conflict-seo.php:112 lib/conflict-seo.php:142
-msgid "Please disabled the %1$s option in the %2$s settings."
+#: lib/conflict-seo.php:112 lib/conflict-seo.php:142 lib/conflict-seo.php:405
+#: lib/conflict-seo.php:520 lib/conflict-seo.php:662 lib/conflict-seo.php:692
+#: lib/conflict-seo.php:722
+msgid "Please disable the %1$s option in the %2$s settings."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
@@ -5879,7 +5881,7 @@ msgid "Output Authorized Presence?"
 msgstr ""
 
 #: lib/conflict-seo.php:231
-msgid "Please disabled the %1$s option under the %2$s tab."
+msgid "Please disable the %1$s option under the %2$s tab."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
@@ -5888,7 +5890,7 @@ msgid "Remove site title from generated social titles?"
 msgstr ""
 
 #: lib/conflict-seo.php:261
-msgid "Please enabled the %1$s option under the %2$s tab."
+msgid "Please enable the %1$s option under the %2$s tab."
 msgstr ""
 
 #: lib/conflict-seo.php:283
@@ -5945,11 +5947,6 @@ msgstr ""
 #. translators: Please ignore - translation uses a different text domain.
 #: lib/conflict-seo.php:395
 msgid "Activate Twitter Card"
-msgstr ""
-
-#: lib/conflict-seo.php:405 lib/conflict-seo.php:520 lib/conflict-seo.php:662
-#: lib/conflict-seo.php:692 lib/conflict-seo.php:722
-msgid "Please disable the %1$s option in the %2$s settings."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
