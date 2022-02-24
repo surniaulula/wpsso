@@ -250,7 +250,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.2.0-dev.3 (2022/02/22)**
+**Version 11.2.0-b.1 (2022/02/24)**
 
 * **New Features**
 	* None.
@@ -262,11 +262,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Moved the following methods from `WpssoOpenGraph` to `WpssoMedia`:
 		* `get_all_previews()`
 		* `get_all_videos()`
-		* `get_thumbnail_url()`
 		* `get_all_images()`
+		* `get_thumbnail_url()`
 		* `get_size_name_images()`
 		* `get_media_info()`
 		* `get_media_value()`
+	* Refactored the `WpssoMedia->get_size_name_images()` method to provide the default image fallback for the home page, archive and post pages, but not attachment or non-public pages.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -973,9 +974,9 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 11.2.0-dev.3 =
+= 11.2.0-b.1 =
 
-(2022/02/22) Added support for The Event Calendar organizer and venue featured images (Premium edition).
+(2022/02/24) Added support for The Event Calendar organizer and venue featured images (Premium edition).
 
 = 11.1.1 =
 
