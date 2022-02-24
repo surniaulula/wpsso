@@ -977,7 +977,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 = 11.2.0 =
 
-(2022/02/25) Added support for The Event Calendar organizer and venue images (Premium edition).* Avoid getting user titles/descriptions from The SEO Framework as it cannot provide them by user ID (Premium edition).
+(2022/02/25) Added support for The Event Calendar organizer and venue images (Premium edition). Avoid getting user titles/descriptions from The SEO Framework as it cannot provide them by user ID (Premium edition).
 
 = 11.1.1 =
 
