@@ -27,7 +27,7 @@ if ( ! class_exists( 'SucomDebug' ) ) {
 			'%-55s: ',
 		);
 
-		public $enabled = false;		// True if at least one $outputs array element is true.
+		public $enabled = false;	// True if at least one $outputs array element is true.
 
 		public function __construct( &$plugin, array $outputs = array( 'html' => false, 'log' => false ) ) {
 

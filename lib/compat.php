@@ -136,6 +136,8 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			 */
 			if ( ! empty( $this->p->avail[ 'seo' ][ 'seoframework' ] ) ) {
 
+				add_action( 'current_screen', array( $this, 'cleanup_seoframework_edit_view' ), PHP_INT_MIN, 1 );
+
 				add_filter( 'the_seo_framework_inpost_settings_tabs', array( $this, 'cleanup_seoframework_tabs' ), 1000 );
 			}
 
@@ -176,6 +178,7 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 			if ( ! empty( $this->p->avail[ 'seo' ][ 'rankmath' ] ) ) {
 
 				add_action( 'rank_math/head', array( $this, 'cleanup_rankmath_actions' ), -2000 );
+
 				add_filter( 'rank_math/json_ld', array( $this, 'cleanup_rankmath_json_ld' ), PHP_INT_MAX );
 			}
 
@@ -253,6 +256,17 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				'wpsso-metabox',
 				'wpsso-block-editor',
 			) );
+		}
+
+		public function cleanup_seoframework_edit_view( $screen = false ) {
+
+			if ( in_array( $screen->base, array( 'profile', 'user-edit' ) ) ) {
+
+				/**
+				 * Remove the SEO Framework action that includes an "Authorial Info" section.
+				 */
+				SucomUtilWP::remove_filter_hook_name( 'current_screen', 'The_SEO_Framework\Load::_init_user_edit_view' );
+			}
 		}
 
 		public function cleanup_seoframework_tabs( $tabs ) {

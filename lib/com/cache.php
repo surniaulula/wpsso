@@ -35,7 +35,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 		private $ignored        = array(
 			'expires'  => DAY_IN_SECONDS,
 			'loaded'   => false,
-			'for_secs' => 600,		// Ignore failed URLs for 10 mins by default.
+			'for_secs' => 600,	// Ignore failed URLs for 10 mins by default.
 			'urls'     => array(),
 		);
 
@@ -337,7 +337,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 		public function clear( $url, $pre_ext = '' ) {
 
-			$url_nofrag    = preg_replace( '/#.*$/', '', $url );		// Remove the fragment.
+			$url_nofrag    = preg_replace( '/#.*$/', '', $url );	// Remove the fragment.
 			$url_path      = parse_url( $url_nofrag, PHP_URL_PATH );
 			$cache_md5_pre = $pre_ext ? $pre_ext : $this->plugin_id . '_';	// Default is an empty string.
 			$cache_salt    = __CLASS__ . '::get(url:' . $url_nofrag . ')';
@@ -713,7 +713,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 			curl_setopt( $ch, CURLOPT_URL, $url_nofrag );
 			curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
 			curl_setopt( $ch, CURLOPT_CONNECTTIMEOUT, $this->curl_connect_timeout );	// 10 seconds (default is 300 seconds).
-			curl_setopt( $ch, CURLOPT_TIMEOUT, $this->curl_timeout );			// 15 seconds (default is no timeout).
+			curl_setopt( $ch, CURLOPT_TIMEOUT, $this->curl_timeout );	// 15 seconds (default is no timeout).
 
 			/**
 			 * When negotiating a TLS or SSL connection, the server sends a certificate indicating its identity. Curl
@@ -1191,9 +1191,9 @@ if ( ! class_exists( 'SucomCache' ) ) {
 
 			if ( $throttle_secs ) {
 
-				$url_nofrag     = preg_replace( '/#.*$/', '', $url );		// Remove the fragment.
+				$url_nofrag     = preg_replace( '/#.*$/', '', $url );	// Remove the fragment.
 				$url_host       = parse_url( $url_nofrag, PHP_URL_HOST );
-				$cache_md5_pre  = $this->plugin_id . '_!_';			// Preserved on clear cache.
+				$cache_md5_pre  = $this->plugin_id . '_!_';	// Preserved on clear cache.
 				$cache_salt     = __METHOD__ . '(url_host:' . $url_host . ')';	// Throttle by host.
 				$cache_id       = $cache_md5_pre . md5( $cache_salt );
 				$cache_exp_secs = $throttle_secs;

@@ -43,7 +43,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 
 			if ( strpos( $method_name, $this->bfo_check_id . '_' ) === 0 ) {	// Method name starts with 'check_output_buffer_'.
 
-				array_unshift( $args, $method_name );				// Set $method_name as first element.
+				array_unshift( $args, $method_name );	// Set $method_name as first element.
 
 				return call_user_func_array( array( $this, '__check_output_buffer' ), $args );
 			}
@@ -59,7 +59,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 
 			foreach ( $filter_names as $filter_name ) {
 
-				if ( empty( $wp_actions[ $filter_name ] ) ) {			// Just in case - skip actions.
+				if ( empty( $wp_actions[ $filter_name ] ) ) {	// Just in case - skip actions.
 
 					if ( ! isset( self::$filter_hooked[ $filter_name ] ) ) {	// Only hook a filter once.
 
@@ -81,7 +81,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 
 			foreach ( $filter_names as $filter_name ) {
 
-				if ( empty( $wp_actions[ $filter_name ] ) ) {			// Just in case - skip actions.
+				if ( empty( $wp_actions[ $filter_name ] ) ) {	// Just in case - skip actions.
 
 					if ( isset( self::$filter_hooked[ $filter_name ] ) ) {	// Skip if not already hooked.
 
@@ -108,7 +108,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 
 			$filter_name = current_filter();
 
-			if ( empty( $wp_actions[ $filter_name ] ) ) {				// Only check filters, not actions.
+			if ( empty( $wp_actions[ $filter_name ] ) ) {	// Only check filters, not actions.
 
 				static $filter_count = array();
 
@@ -116,7 +116,7 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 
 				if ( ob_start() ) {
 
-					if ( $filter_count[ $filter_name ] === 1 ) {		// Only check output on the first run.
+					if ( $filter_count[ $filter_name ] === 1 ) {	// Only check output on the first run.
 
 						$this->add_check_output_hooks( $filter_name );
 
@@ -151,19 +151,19 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 
 			if ( isset( $wp_filter[ $filter_name ]->callbacks ) ) {
 
-				$bfo_check_str = '_' . __CLASS__ . '::' . $this->bfo_check_id;			// '_SucomBFO::check_output_buffer'
+				$bfo_check_str = '_' . __CLASS__ . '::' . $this->bfo_check_id;	// '_SucomBFO::check_output_buffer'
 
 				foreach ( $wp_filter[ $filter_name ]->callbacks as $hook_prio => &$hook_group ) {	// Use reference to modify $hook_group.
 
-					$new_hook_group = array();						// Create a new group to insert a check after each hook.
+					$new_hook_group = array();	// Create a new group to insert a check after each hook.
 
 					foreach ( $hook_group as $hook_ref => $hook_info ) {
 
-						$new_hook_group[ $hook_ref ] = $hook_info;			// Add the original callback first, followed by the check.
+						$new_hook_group[ $hook_ref ] = $hook_info;	// Add the original callback first, followed by the check.
 
 						$hook_name = self::get_hook_function_name( $hook_info );	// Create a human readable class / method name.
 
-						if ( $hook_name === '' ) {					// Just in case.
+						if ( $hook_name === '' ) {	// Just in case.
 
 							continue;
 
@@ -176,14 +176,14 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 							continue;
 						}
 
-						$check_ref = $hook_ref . $bfo_check_str;			// Include the previous hook ref for visual clue.
+						$check_ref = $hook_ref . $bfo_check_str;	// Include the previous hook ref for visual clue.
 
 						$check_arg = urlencode( '[' . $hook_prio . ']' . $hook_name );	// Include previous hook priority and name.
 
 						$new_hook_group[ $check_ref ] = array(
 							'function' => array(
 								$this,
-								$this->bfo_check_id . '_' . $check_arg		// Hooks the __call() method.
+								$this->bfo_check_id . '_' . $check_arg	// Hooks the __call() method.
 							),
 							'accepted_args' => 1,
 						);
@@ -354,53 +354,41 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 		/**
 		 * Get a human readable class/method/function name from the callback array. 
 		 */
-		private static function get_hook_function_name( array $hook_info ) {
+		public static function get_hook_function_name( array $hook_info ) {
 
 			$hook_name = '';
 
-			if ( ! isset( $hook_info[ 'function' ] ) ) {		// Just in case.
+			if ( isset( $hook_info[ 'function' ] ) ) {
 
-				return $hook_name;				// Stop here - return an empty string.
+				if ( is_array( $hook_info[ 'function' ] ) ) {	// Hook is a class method.
 
-			} elseif ( is_array( $hook_info[ 'function' ] ) ) {	// Hook is a class / method.
-
-				$class_name = '';
-
-				$function_name = '';
-
-				if ( is_object( $hook_info[ 'function' ][ 0 ] ) ) {
-
-					$class_name = get_class( $hook_info[ 'function' ][ 0 ] );
-
-				} elseif ( is_string( $hook_info[ 'function' ][ 0 ] ) ) {
-
-					$class_name = $hook_info[ 'function' ][ 0 ];
+					$class_name = '';
+	
+					$function_name = '';
+	
+					if ( is_object( $hook_info[ 'function' ][ 0 ] ) ) {
+	
+						$class_name = get_class( $hook_info[ 'function' ][ 0 ] );
+	
+					} elseif ( is_string( $hook_info[ 'function' ][ 0 ] ) ) {
+	
+						$class_name = $hook_info[ 'function' ][ 0 ];
+					}
+	
+					if ( is_string( $hook_info[ 'function' ][ 1 ] ) ) {
+	
+						$function_name = $hook_info[ 'function' ][ 1 ];
+					}
+	
+					$hook_name = $class_name . '::' . $function_name;
+	
+				} elseif ( is_string( $hook_info[ 'function' ] ) ) {	// Hook is a function.
+	
+					$hook_name = $hook_info[ 'function' ];
 				}
-
-				if ( is_string( $hook_info[ 'function' ][ 1 ] ) ) {
-
-					$function_name = $hook_info[ 'function' ][ 1 ];
-
-				}
-
-				return $class_name . '::' . $function_name;
-
-			} elseif ( is_string ( $hook_info[ 'function' ] ) ) {	// Hook is a function.
-
-				return $hook_info[ 'function' ];
 			}
-
+	
 			return $hook_name;
-		}
-
-		private static function get_min_int() {
-
-			return defined( 'PHP_INT_MIN' ) ? PHP_INT_MIN : -2147483648;	// Since PHP 7.0.0.
-		}
-
-		private static function get_max_int() {
-
-			return defined( 'PHP_INT_MAX' ) ? PHP_INT_MAX : 2147483647;	// Since PHP 5.0.2.
 		}
 	}
 }

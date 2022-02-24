@@ -123,7 +123,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 		 */
 		public static function is_plugin_installed( $plugin_base, $read_cache = true ) {
 
-			static $local_cache = array();					// Associative array of true/false values.
+			static $local_cache = array();	// Associative array of true/false values.
 
 			if ( $read_cache ) {
 
@@ -133,18 +133,18 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 				}
 			}
 
-			if ( empty( $plugin_base ) ) { 					// Just in case.
+			if ( empty( $plugin_base ) ) {	// Just in case.
 
 				return $local_cache[ $plugin_base ] = false;
 
-			} elseif ( validate_file( $plugin_base ) > 0 ) {		// Contains invalid characters.
+			} elseif ( validate_file( $plugin_base ) > 0 ) {	// Contains invalid characters.
 
 				return $local_cache[ $plugin_base ] = false;
 			}
 
-			$wp_plugins = self::get_plugins( $read_cache );			// Front-end safe and uses cache.
+			$wp_plugins = self::get_plugins( $read_cache );	// Front-end safe and uses cache.
 
-			if ( ! empty( $wp_plugins[ $plugin_base ] ) ) {			// Check for a valid plugin header.
+			if ( ! empty( $wp_plugins[ $plugin_base ] ) ) {	// Check for a valid plugin header.
 
 				return $local_cache[ $plugin_base ] = true;
 			}
@@ -165,7 +165,7 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 
 			if ( isset( $active_plugins[ $plugin_base ] ) ) {	// Associative array of true/false values.
 
-				return $active_plugins[ $plugin_base ];		// Return true/false.
+				return $active_plugins[ $plugin_base ];	// Return true/false.
 			}
 
 			return false;
@@ -219,13 +219,13 @@ if ( ! class_exists( 'SucomPlugin' ) ) {
 		 */
 		public static function have_plugin_update( $plugin_base ) {
 
-			static $local_cache = array();						// Associative array of true/false values.
+			static $local_cache = array();	// Associative array of true/false values.
 
 			if ( isset( $local_cache[ $plugin_base ] ) ) {
 
 				return $local_cache[ $plugin_base ];
 
-			} elseif ( empty( $plugin_base ) ) { 					// Just in case.
+			} elseif ( empty( $plugin_base ) ) {	// Just in case.
 
 				return $local_cache[ $plugin_base ] = false;
 

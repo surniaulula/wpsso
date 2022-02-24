@@ -13,7 +13,9 @@ if ( ! class_exists( 'SucomCountryCodes' ) ) {
 
 	class SucomCountryCodes {
 
-		// https://en.wikipedia.org/wiki/ISO_3166-1
+		/**
+		 * See https://en.wikipedia.org/wiki/ISO_3166-1.
+		 */
 		private static $countries = array(
 			'Afghanistan' => array(
 				'alpha2' => 'AF',

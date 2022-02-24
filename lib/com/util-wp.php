@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	die( 'These aren\'t the droids you\'re looking for.' );
 }
 
-if ( ! class_exists( 'SucomUtilWP' ) ) {
+If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 	class SucomUtilWP {
 
@@ -148,13 +148,13 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 		public static function do_shortcode_names( array $shortcode_names, $content, $ignore_html = false ) {
 
-			if ( ! empty( $shortcode_names ) ) {		// Just in case.
+			if ( ! empty( $shortcode_names ) ) {	// Just in case.
 
 				global $shortcode_tags;
 
 				$registered_tags = $shortcode_tags;	// Save the original registered shortcodes.
 
-				$shortcode_tags = array();		// Init a new empty shortcode tags array.
+				$shortcode_tags = array();	// Init a new empty shortcode tags array.
 
 				foreach ( $shortcode_names as $key ) {
 
@@ -955,6 +955,25 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $result;
 		}
 
+		public static function remove_filter_hook_name( $filter_name, $hook_name ) {
+
+			global $wp_filter;
+			
+			if ( isset( $wp_filter[ $filter_name ]->callbacks ) ) {
+
+				foreach ( $wp_filter[ $filter_name ]->callbacks as $hook_prio => $hook_group ) {
+
+					foreach ( $hook_group as $hook_id => $hook_info ) {
+
+						if ( self::get_hook_function_name( $hook_info ) === $hook_name ) {
+
+							unset( $wp_filter[ $filter_name ]->callbacks[ $hook_prio ][ $hook_id ] );
+						}
+					}
+				}
+			}
+		}
+
 		public static function get_filter_hook_ids( $filter_name ) {
 
 			global $wp_filter;
@@ -987,7 +1006,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 					foreach ( $hook_group as $hook_id => $hook_info ) {
 
-						if ( ( $hook_name = self::get_hook_function_name( $hook_info ) ) !== '' ) {
+						if ( $hook_name = self::get_hook_function_name( $hook_info ) ) {
 
 							$hook_names[] = $hook_name;
 						}
@@ -998,44 +1017,40 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 			return $hook_names;
 		}
 
-		/**
-		 * Used by the get_wp_hook_names() method.
-		 */
 		public static function get_hook_function_name( array $hook_info ) {
 
 			$hook_name = '';
 
-			if ( ! isset( $hook_info[ 'function' ] ) ) {              // Just in case.
+			if ( isset( $hook_info[ 'function' ] ) ) {
 
-				return $hook_name;                              // Stop here - return an empty string.
+				if ( is_array( $hook_info[ 'function' ] ) ) {	// Hook is a class method.
 
-			} elseif ( is_array( $hook_info[ 'function' ] ) ) {       // Hook is a class / method.
-
-				$class_name    = '';
-				$function_name = '';
-
-				if ( is_object( $hook_info[ 'function' ][0] ) ) {
-
-					$class_name = get_class( $hook_info[ 'function' ][0] );
-
-				} elseif ( is_string( $hook_info[ 'function' ][0] ) ) {
-
-					$class_name = $hook_info[ 'function' ][0];
+					$class_name = '';
+	
+					$function_name = '';
+	
+					if ( is_object( $hook_info[ 'function' ][ 0 ] ) ) {
+	
+						$class_name = get_class( $hook_info[ 'function' ][ 0 ] );
+	
+					} elseif ( is_string( $hook_info[ 'function' ][ 0 ] ) ) {
+	
+						$class_name = $hook_info[ 'function' ][ 0 ];
+					}
+	
+					if ( is_string( $hook_info[ 'function' ][ 1 ] ) ) {
+	
+						$function_name = $hook_info[ 'function' ][ 1 ];
+					}
+	
+					$hook_name = $class_name . '::' . $function_name;
+	
+				} elseif ( is_string( $hook_info[ 'function' ] ) ) {	// Hook is a function.
+	
+					$hook_name = $hook_info[ 'function' ];
 				}
-
-				if ( is_string( $hook_info[ 'function' ][1] ) ) {
-
-					$function_name = $hook_info[ 'function' ][1];
-
-				}
-
-				return $class_name . '::' . $function_name;
-
-			} elseif ( is_string ( $hook_info[ 'function' ] ) ) { // Hook is a function.
-
-				return $hook_info[ 'function' ];
 			}
-
+	
 			return $hook_name;
 		}
 
@@ -1060,12 +1075,12 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			foreach ( $tmpl_file_paths as $tmpl_file ) {
 
-				if ( $skip_backups && preg_match( '/^.*\.php~.*$/', $tmpl_file ) ) { // Skip backup files.
+				if ( $skip_backups && preg_match( '/^.*\.php~.*$/', $tmpl_file ) ) {	// Skip backup files.
 
 					continue;
 				}
 
-				$header_file_paths[ basename( $tmpl_file ) ] = $tmpl_file; // Child template overwrites parent.
+				$header_file_paths[ basename( $tmpl_file ) ] = $tmpl_file;	// Child template overwrites parent.
 			}
 
 			return $header_file_paths;
@@ -1340,9 +1355,9 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 		public static function user_exists( $user_id ) {
 
-			if ( is_numeric( $user_id ) && $user_id > 0 ) { // True is not valid.
+			if ( is_numeric( $user_id ) && $user_id > 0 ) {	// True is not valid.
 
-				$user_id = (int) $user_id; // Cast as integer for cache array.
+				$user_id = (int) $user_id;	// Cast as integer for cache array.
 
 				if ( isset( self::$cache_user_exists[ $user_id ] ) ) {
 
@@ -1412,7 +1427,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 				$user_names[ $user_obj->ID ] = $user_obj->display_name;
 			}
 
-			if ( '' !== $offset ) {		// 0 or multiple of $limit.
+			if ( '' !== $offset ) {	// 0 or multiple of $limit.
 
 				if ( empty( $user_names ) ) {
 
@@ -1550,7 +1565,7 @@ if ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			} else {
 
-				$post_type_name = $mixed;			// Post type name.
+				$post_type_name = $mixed;	// Post type name.
 			}
 
 			if ( $post_type_name ) {

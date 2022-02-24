@@ -1937,7 +1937,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 									$html .= '<p';
 									$html .= ' class="' . $container_class . '"';	// Already sanitized.
-									$html .= ' id="' . $input_id . '"';		// Already sanitized.
+									$html .= ' id="' . $input_id . '"';	// Already sanitized.
 									$html .= ' ' . $el_attr . '>';
 									$html .= vsprintf( $atts[ 'input_content' ], $radio_inputs );
 									$html .= '</p>' . "\n";
@@ -2102,7 +2102,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 										$is_selected_html = '';
 									}
 
-									$select_opt_count++; 	// Used to check for first option.
+									$select_opt_count++;	// Used to check for first option.
 
 									/**
 									 * For disabled selects, only include the first and/or selected option.
