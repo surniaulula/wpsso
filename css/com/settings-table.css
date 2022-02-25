@@ -1033,13 +1033,6 @@ table.sucom-settings #info-meta-social-preview {
 }
 
 /**
- * Document SSO metabox.
- */
-.sucom-tabset_sso table.sucom-settings {
-	padding-right:0;
-}
-
-/**
  * Document SSO > Preview Social tab.
  */
 table.sucom-settings .fb_preview_container {
