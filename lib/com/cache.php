@@ -484,7 +484,7 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				$file_mod_time = filemtime( $cache_file );
 				$file_exp_secs = null === $exp_secs ? $this->default_file_cache_exp : $exp_secs;
 
-				if ( false !== $exp_secs && $file_mod_time > time() - $file_exp_secs ) {
+				if ( false !== $file_exp_secs && $file_mod_time > time() - $file_exp_secs ) {
 
 					if ( $this->p->debug->enabled ) {
 
@@ -509,12 +509,12 @@ if ( ! class_exists( 'SucomCache' ) ) {
 						$this->p->debug->log( 'error removing cache file ' . $cache_file );
 					}
 
-					$error_pre = sprintf( '%s error:', __METHOD__ );
-					$error_msg = sprintf( __( 'Error removing cache file %s.', $this->text_domain ), $cache_file );
+					$notice_pre = sprintf( '%s error:', __METHOD__ );
+					$notice_msg = sprintf( __( 'Error removing cache file %s.', $this->text_domain ), $cache_file );
 
-					$this->p->notice->err( $error_msg );
+					$this->p->notice->err( $notice_msg );
 
-					SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
+					SucomUtil::safe_error_log( $notice_pre . ' ' . $notice_msg );
 				}
 
 			} else {
@@ -568,12 +568,12 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					$this->p->debug->log( 'exiting early: curl library is missing' );
 				}
 
-				$error_pre = sprintf( '%s error:', __METHOD__ );
-				$error_msg = __( 'PHP cURL library missing - contact your hosting provider to have the cURL library installed.', $this->text_domain );
+				$notice_pre = sprintf( '%s error:', __METHOD__ );
+				$notice_msg = __( 'PHP cURL library missing - contact your hosting provider to have the cURL library installed.', $this->text_domain );
 
-				$this->p->notice->err( $error_msg );
+				$this->p->notice->err( $notice_msg );
 
-				SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
+				SucomUtil::safe_error_log( $notice_pre . ' ' . $notice_msg );
 
 				return $failure;
 
@@ -675,12 +675,12 @@ if ( ! class_exists( 'SucomCache' ) ) {
 								$this->p->debug->log( 'error removing cache file ' . $cache_file );
 							}
 
-							$error_pre = sprintf( '%s error:', __METHOD__ );
-							$error_msg = sprintf( __( 'Error removing cache file %s.', $this->text_domain ), $cache_file );
+							$notice_pre = sprintf( '%s error:', __METHOD__ );
+							$notice_msg = sprintf( __( 'Error removing cache file %s.', $this->text_domain ), $cache_file );
 
-							$this->p->notice->err( $error_msg );
+							$this->p->notice->err( $notice_msg );
 
-							SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
+							SucomUtil::safe_error_log( $notice_pre . ' ' . $notice_msg );
 						}
 					}
 
@@ -930,12 +930,12 @@ if ( ! class_exists( 'SucomCache' ) ) {
 							$this->p->debug->log( 'cache file ' . $cache_file . ' is not readable' );
 						}
 
-						$error_pre = sprintf( '%s error:', __METHOD__ );
-						$error_msg = sprintf( __( 'Cache file %s is not readable.', $this->text_domain ), $cache_file );
+						$notice_pre = sprintf( '%s error:', __METHOD__ );
+						$notice_msg = sprintf( __( 'Cache file %s is not readable.', $this->text_domain ), $cache_file );
 
-						$this->p->notice->err( $error_msg );
+						$this->p->notice->err( $notice_msg );
 
-						SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
+						SucomUtil::safe_error_log( $notice_pre . ' ' . $notice_msg );
 
 					} elseif ( filemtime( $cache_file ) < time() - $file_exp_secs ) {
 
@@ -951,12 +951,12 @@ if ( ! class_exists( 'SucomCache' ) ) {
 							$this->p->debug->log( 'failed to open the cache file ' . $cache_file . ' for reading' );
 						}
 
-						$error_pre = sprintf( '%s error:', __METHOD__ );
-						$error_msg = sprintf( __( 'Failed to open the cache file %s for reading.', $this->text_domain ), $cache_file );
+						$notice_pre = sprintf( '%s error:', __METHOD__ );
+						$notice_msg = sprintf( __( 'Failed to open the cache file %s for reading.', $this->text_domain ), $cache_file );
 
-						$this->p->notice->err( $error_msg );
+						$this->p->notice->err( $notice_msg );
 
-						SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
+						SucomUtil::safe_error_log( $notice_pre . ' ' . $notice_msg );
 
 					} else {
 
@@ -999,7 +999,8 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				return $data_saved;
 			}
 
-			$obj_exp_secs = null === $exp_secs ? $this->default_object_cache_exp : $exp_secs;
+			$obj_exp_secs  = null === $exp_secs ? $this->default_object_cache_exp : $exp_secs;
+			$file_exp_secs = null === $exp_secs ? $this->default_file_cache_exp : $exp_secs;
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1044,24 +1045,26 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					$file_name  = md5( $cache_salt ) . $pre_ext;
 					$cache_file = $this->base_dir . $file_name;
 
-					if ( ! is_dir( $this->base_dir ) ) {
+					if ( ! $file_exp_secs ) {	// False or 0.
+					
+						if ( file_exists( $cache_file ) ) {
+						
+							unlink( $cache_file );
+						}
 
-						@mkdir( $this->base_dir );
-					}
-
-					if ( ! is_dir( $this->base_dir ) ) {
+					} elseif ( ! is_dir( $this->base_dir ) && ! mkdir( $this->base_dir ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
 							$this->p->debug->log( 'failed to create the ' . $this->base_dir . ' cache folder.' );
 						}
 
-						$error_pre = sprintf( '%s error:', __METHOD__ );
-						$error_msg = sprintf( __( 'Failed to create the %s cache folder.', $this->text_domain ), $this->base_dir );
+						$notice_pre = sprintf( '%s error:', __METHOD__ );
+						$notice_msg = sprintf( __( 'Failed to create the %s cache folder.', $this->text_domain ), $this->base_dir );
 
-						$this->p->notice->err( $error_msg );
+						$this->p->notice->err( $notice_msg );
 
-						SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
+						SucomUtil::safe_error_log( $notice_pre . ' ' . $notice_msg );
 
 					} elseif ( ! is_writable( $this->base_dir ) ) {
 
@@ -1070,12 +1073,12 @@ if ( ! class_exists( 'SucomCache' ) ) {
 							$this->p->debug->log( 'cache folder ' . $this->base_dir . ' is not writable' );
 						}
 
-						$error_pre = sprintf( '%s error:', __METHOD__ );
-						$error_msg = sprintf( __( 'Cache folder %s is not writable.', $this->text_domain ), $this->base_dir );
+						$notice_pre = sprintf( '%s error:', __METHOD__ );
+						$notice_msg = sprintf( __( 'Cache folder %s is not writable.', $this->text_domain ), $this->base_dir );
 
-						$this->p->notice->err( $error_msg );
+						$this->p->notice->err( $notice_msg );
 
-						SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
+						SucomUtil::safe_error_log( $notice_pre . ' ' . $notice_msg );
 
 					} elseif ( ! $fh = @fopen( $cache_file, 'wb' ) ) {
 
@@ -1084,12 +1087,12 @@ if ( ! class_exists( 'SucomCache' ) ) {
 							$this->p->debug->log( 'failed to open the cache file ' . $cache_file . ' for writing' );
 						}
 
-						$error_pre = sprintf( '%s error:', __METHOD__ );
-						$error_msg = sprintf( __( 'Failed to open the cache file %s for writing.', $this->text_domain ), $cache_file );
+						$notice_pre = sprintf( '%s error:', __METHOD__ );
+						$notice_msg = sprintf( __( 'Failed to open the cache file %s for writing.', $this->text_domain ), $cache_file );
 
-						$this->p->notice->err( $error_msg );
+						$this->p->notice->err( $notice_msg );
 
-						SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
+						SucomUtil::safe_error_log( $notice_pre . ' ' . $notice_msg );
 
 					} elseif ( fwrite( $fh, $cache_data ) ) {
 
@@ -1113,12 +1116,12 @@ if ( ! class_exists( 'SucomCache' ) ) {
 							$this->p->debug->log( 'failed writing data to cache file ' . $cache_file );
 						}
 
-						$error_pre = sprintf( '%s error:', __METHOD__ );
-						$error_msg = sprintf( __( 'Failed writing data to cache file %s.', $this->text_domain ), $cache_file );
+						$notice_pre = sprintf( '%s error:', __METHOD__ );
+						$notice_msg = sprintf( __( 'Failed writing data to cache file %s.', $this->text_domain ), $cache_file );
 
-						$this->p->notice->err( $error_msg );
+						$this->p->notice->err( $notice_msg );
 
-						SucomUtil::safe_error_log( $error_pre . ' ' . $error_msg );
+						SucomUtil::safe_error_log( $notice_pre . ' ' . $notice_msg );
 					}
 
 					break;

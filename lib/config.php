@@ -2940,6 +2940,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'og_type_by_schema_type' => array(
 					'article'              => 'article',
 					'book'                 => 'book',
+					'item.list'            => 'website',
 					'place'                => 'place',	// Check for Schema place before Schema organization.
 					'organization'         => 'website',	// Check for Schema place before Schema organization.
 					'product'              => 'product',	// Allows for product offer options.
