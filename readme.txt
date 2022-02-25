@@ -250,6 +250,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 11.3.0-dev.1 (2022/02/25)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added a new SSO &gt; Advanced Settings &gt; Default Text &gt; Product Variation Title option.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 11.2.0 (2022/02/25)**
 
 * **New Features**
@@ -974,6 +988,10 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 	* WordPress v5.0.
 
 == Upgrade Notice ==
+
+= 11.3.0-dev.1 =
+
+(2022/02/25) Added a new SSO &gt; Advanced Settings &gt; Default Text &gt; Product Variation Title option.
 
 = 11.2.0 =
 
