@@ -233,6 +233,11 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					$css_class = '', $css_id = 'plugin_comment_title' ) . 
 				'<td class="blank">' . $form->get_no_input_locale( 'plugin_comment_title', $css_class = 'wide' ) . '</td>';
 
+			$table_rows[ 'plugin_product_var_title' ] = '' .
+				$form->get_th_html_locale( _x( 'Product Variation Title', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'plugin_product_var_title' ) .
+				'<td class="blank">' . $form->get_no_input_locale( 'plugin_product_var_title', $css_class = 'wide' ) . '</td>';
+
 			$table_rows[ 'plugin_404_page_title' ] = '' .
 				$form->get_th_html_locale( _x( '404 Page Title', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_404_page_title' ) . 

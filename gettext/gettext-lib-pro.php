@@ -31,6 +31,7 @@ _x( 'Title Tag Tagline Suffix', 'option label', 'wpsso' );
 _x( 'Content Image Alt Prefix', 'option label', 'wpsso' );
 _x( 'WP Caption Text Prefix', 'option label', 'wpsso' );
 _x( 'Comment Title', 'option label', 'wpsso' );
+_x( 'Product Variation Title', 'option label', 'wpsso' );
 _x( '404 Page Title', 'option label', 'wpsso' );
 _x( '404 Page Description', 'option label', 'wpsso' );
 _x( 'No Title Text', 'option label', 'wpsso' );

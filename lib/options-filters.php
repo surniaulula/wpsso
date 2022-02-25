@@ -446,6 +446,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'og_def_img_id_lib': 			// Example: 'wp' or 'ngg' media library name.
 				case 'og_img_id_lib': 				// Example: 'wp' or 'ngg' media library name.
 				case 'plugin_comment_title':			// Comment Title.
+				case 'plugin_product_var_title':		// Product Variation Title.
 				case 'plugin_404_page_title':			// 404 Page Title.
 				case 'plugin_404_page_desc':			// 404 Page Description.
 				case 'plugin_no_title_text':			// No Title Text.

@@ -312,6 +312,12 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
+				case 'tooltip-plugin_product_var_title':	// Product Variation Title.
+
+					$text = __( 'The product variation title used for meta tags and Schema markup.' );
+
+					break;
+
 				case 'tooltip-plugin_404_page_title':	// 404 Page Title.
 
 					$text = __( 'The 404 page title used for meta tags and Schema markup.' );
