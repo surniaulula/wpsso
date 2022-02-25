@@ -180,10 +180,8 @@ if ( ! function_exists( 'wpsso_clear_post_cache' ) ) {
 }
 
 /**
- * Get the $mod array for the current webpage.
- *
- * If $use_post is true, then the requested object is assumed to be a post, and the global $post object will be used to determine
- * the post ID.
+ * Get the $mod array for the current webpage. If $use_post is true, then the requested object is assumed to be a post, and the
+ * global $post object will be used to determine the post ID. The use of 'page' here refers to the 'webpage'.
  */
 if ( ! function_exists( 'wpsso_get_page_mod' ) ) {
 
@@ -192,6 +190,16 @@ if ( ! function_exists( 'wpsso_get_page_mod' ) ) {
 		$wpsso =& Wpsso::get_instance();
 
 		return $wpsso->page->get_mod( $use_post );
+	}
+}
+
+if ( ! function_exists( 'wpsso_get_comment_mod' ) ) {
+
+	function wpsso_get_comment_mod( $comment_id ) {
+
+		$wpsso =& Wpsso::get_instance();
+
+		return $wpsso->comment->get_mod( $comment_id );
 	}
 }
 

@@ -154,7 +154,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$use_post = apply_filters( 'wpsso_use_post', false );
 
-			$mod = $this->p->page->get_mod( $use_post );	// Get post/term/user ID, module name, and module object reference.
+			$mod = $this->p->page->get_mod( $use_post );	// // Get comment/post/term/user information.
 
 			$head_disabled = apply_filters( 'wpsso_head_disabled', false, $mod );
 
