@@ -88,9 +88,10 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 			/**
 			 * See https://www.php.net/manual/en/function.preg-replace-callback.php.
 			 */
-			$depth = 0;
+			$depth     = 0;
+			$max_depth = 3;
 
-			while ( ++$depth <= 2 && false !== strpos( $subject, '%%' ) ) {
+			while ( ++$depth <= $max_depth && false !== strpos( $subject, '%%' ) ) {
 
 				$subject = preg_replace_callback( '/%%([^%]+)%%/', $callback, $subject );
 			}

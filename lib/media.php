@@ -1060,7 +1060,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				'(img)[^>]*? (data-lazy-src|data-share-src|data-src|src)=[\'"]([^\'"]+)[\'"])[^>]*>/s',
 					$content, $all_matches, PREG_SET_ORDER ) ) {
 
-				$content_img_max = SucomUtil::get_const( 'WPSSO_CONTENT_IMAGES_MAX_LIMIT', 5 );
+				$content_img_max = SucomUtil::get_const( 'WPSSO_CONTENT_IMAGES_MAX', 5 );
 
 				if ( count( $all_matches ) > $content_img_max ) {
 
