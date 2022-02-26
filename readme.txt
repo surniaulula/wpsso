@@ -202,9 +202,9 @@ WPSSO provides comprehensive Schema markup for posts, pages, custom post types, 
 <h3>Notes and Documentation</h3>
 
 * [Developer Resources](https://wpsso.com/docs/plugins/wpsso/notes/developer/)
+	* [Actions](https://wpsso.com/docs/plugins/wpsso/notes/developer/actions/)
 	* [Constants](https://wpsso.com/docs/plugins/wpsso/notes/developer/constants/)
 	* [Filters](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/)
-		* [All Filters](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/all/)
 		* [Filter Examples](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/)
 			* [Detect YouTube URL Links as Videos](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/detect-youtube-url-links-as-videos/)
 			* [Exclude Schema Markup by Post Type](https://wpsso.com/docs/plugins/wpsso/notes/developer/filters/examples/exclude-schema-markup-by-post-type/)
