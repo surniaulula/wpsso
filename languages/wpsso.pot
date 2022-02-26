@@ -6317,7 +6317,7 @@ msgctxt "metabox title"
 msgid "Pinterest Pin It"
 msgstr ""
 
-#: lib/edit.php:431 lib/edit.php:608
+#: lib/edit.php:431 lib/edit.php:607
 msgctxt "option label"
 msgid "Canonical URL"
 msgstr ""
@@ -6423,51 +6423,51 @@ msgctxt "option comment"
 msgid "seconds"
 msgstr ""
 
-#: lib/edit.php:587
+#: lib/edit.php:586
 msgctxt "preview image error"
 msgid "Image Size Smaller<br/>than Suggested Minimum<br/>of %s"
 msgstr ""
 
-#: lib/edit.php:596
+#: lib/edit.php:595
 msgctxt "preview image error"
 msgid "Image Size Unknown<br/>or Not Available"
 msgstr ""
 
-#: lib/edit.php:603
+#: lib/edit.php:602
 msgctxt "preview image error"
 msgid "No Open Graph Image Found"
 msgstr ""
 
-#: lib/edit.php:612
+#: lib/edit.php:611
 msgctxt "option label"
 msgid "Shortlink URL"
 msgstr ""
 
-#: lib/edit.php:616
+#: lib/edit.php:615
 msgctxt "metabox title"
 msgid "Facebook / Open Graph Example"
 msgstr ""
 
-#: lib/edit.php:656
+#: lib/edit.php:655
 msgctxt "option label"
 msgid "oEmbed JSON URL"
 msgstr ""
 
-#: lib/edit.php:660
+#: lib/edit.php:659
 msgctxt "option label"
 msgid "oEmbed XML URL"
 msgstr ""
 
-#: lib/edit.php:664
+#: lib/edit.php:663
 msgctxt "metabox title"
 msgid "oEmbed HTML"
 msgstr ""
 
-#: lib/edit.php:674
+#: lib/edit.php:673
 msgid "No oEmbed HTML found."
 msgstr ""
 
-#: lib/edit.php:692
+#: lib/edit.php:691
 msgctxt "submit button"
 msgid "Validate %s"
 msgstr ""
@@ -10218,7 +10218,7 @@ msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr ""
 
-#: lib/page.php:949 lib/util-inline.php:286
+#: lib/page.php:949 lib/util-inline.php:293
 msgid "Page %1$d of %2$d"
 msgstr ""
 

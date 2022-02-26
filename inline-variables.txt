@@ -1,27 +1,25 @@
 
-%%canonical_url%%
+%%author%%
 
 %%canonical_short_url%%
 
-%%sharing_url%%
+%%canonical_url%%
 
-%%sharing_short_url%%
+%%comment_author%%
 
-%%request_url%%
+%%comment_date%%
 
-%%sitename%%
+%%currentdate%%
 
-%%sitealtname%%
+%%currentday%%
 
-%%sitedesc%%
+%%currentmonth%%
 
-%%sep%%
+%%currenttime%%
 
-%%title%%
+%%currentyear%%
 
-%%parent_title%%
-
-%%author%%
+%%excerpt_only%%
 
 %%page%%
 
@@ -31,37 +29,43 @@
 
 %%pagetotal%%
 
+%%parent_title%%
+
 %%post_date%%
 
 %%post_modified%%
 
-%%excerpt_only%%
-
-%%comment_author%%
-
-%%comment_date%%
-
-%%term%%
-
-%%term_title%%
-
-%%query_search%%
-
-%%query_year%%
+%%query_day%%
 
 %%query_month%%
 
 %%query_monthnum%%
 
-%%query_day%%
+%%query_search%%
 
-%%currentdate%%
+%%query_year%%
 
-%%currenttime%%
+%%request_url%%
 
-%%currentday%%
+%%sep%%
 
-%%currentmonth%%
+%%sharing_short_url%%
 
-%%currentyear%%
+%%sharing_url%%
+
+%%sitealtname%%
+
+%%sitedesc%%
+
+%%sitename%%
+
+%%term%%
+
+%%term_title%%
+
+%%title%%
+
+%%var_sku%%
+
+%%var_title%%
 

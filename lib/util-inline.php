@@ -88,7 +88,12 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 			/**
 			 * See https://www.php.net/manual/en/function.preg-replace-callback.php.
 			 */
-			$subject = preg_replace_callback( '/%%([^%]+)%%/', $callback, $subject );
+			$depth = 0;
+
+			while ( ++$depth <= 2 && false !== strpos( $subject, '%%' ) ) {
+
+				$subject = preg_replace_callback( '/%%([^%]+)%%/', $callback, $subject );
+			}
 
 			return $subject;
 		}
@@ -199,6 +204,8 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 					} else {
 
 						$ret_val = SucomUtil::get_url( $remove_tracking = true );
+					
+						$ret_val = apply_filters( 'wpsso_server_request_url', $ret_val );
 					}
 
 					break;

@@ -548,7 +548,6 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 
 			$image_url     = SucomUtil::get_first_mt_media_url( $head_info );
 			$canonical_url = $this->p->util->get_canonical_url( $mod, $add_page = false );
-			$sharing_url   = $this->p->util->get_sharing_url( $mod, $add_page = false );
 
 			if ( $mod[ 'is_post' ] ) {
 
