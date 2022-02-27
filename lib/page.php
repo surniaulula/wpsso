@@ -221,7 +221,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_arr( 'title_parts', $title_parts );
+				$this->p->debug->log_arr( 'title_parts (argument)', $title_parts );
 
 				$this->p->debug->log( 'required call to WpssoPage->get_mod()' );
 			}
@@ -302,7 +302,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_arr( 'title_parts', $title_parts );
+				$this->p->debug->log_arr( 'title_parts (returned)', $title_parts );
 			}
 
 			return $title_parts;
