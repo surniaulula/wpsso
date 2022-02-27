@@ -1448,5 +1448,15 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			return $this->p->media->get_all_images( $num, $size_names, $mod, $check_dupes, $md_pre );
 		}
+		
+		/**
+		 * Deprecated on 2022/02/22.
+		 */
+		public function get_media_info( $size_name, array $request, array $mod, $md_pre = 'og', $mt_pre = 'og' ) {
+			
+			_deprecated_function( __METHOD__ . '()', '2022/02/22', $replacement = 'WpssoMedia::get_media_info()' );	// Deprecation message.
+
+			return $this->p->media->get_media_info( $size_name, $request, $mod, $md_pre, $mt_pre );
+		}
 	}
 }
