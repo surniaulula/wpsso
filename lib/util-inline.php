@@ -79,22 +79,24 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 			/**
 			 * Use a callback to get the inline variable values we need, as we need them.
+			 *
+			 * See https://www.php.net/manual/en/function.preg-replace-callback.php.
 			 */
 			$callback = function( $matches ) use ( $mod, $atts ) {
 
 				return $this->replace_callback( $matches, $mod, $atts );
 			};
 
-			/**
-			 * See https://www.php.net/manual/en/function.preg-replace-callback.php.
-			 */
-			$depth     = 0;
-			$max_depth = 3;
+			static $depth = 0;
+
+			$max_depth = WPSSO_INLINE_VARS_MAX_DEPTH;
 
 			while ( ++$depth <= $max_depth && false !== strpos( $subject, '%%' ) ) {
 
 				$subject = preg_replace_callback( '/%%([^%]+)%%/', $callback, $subject );
 			}
+
+			$depth = 0;
 
 			return $subject;
 		}
@@ -125,14 +127,15 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				$charset     = get_bloginfo( $show = 'charset', $filter = 'raw' );
 
 				$local_cache = array(
-					'default_sep'  => html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, $charset ),
-					'date_format'  => $date_format,
-					'time_format'  => $time_format,
-					'currentdate'  => date_i18n( $date_format ),
-					'currenttime'  => date_i18n( $time_format ),
-					'currentday'   => date_i18n( 'j' ),
-					'currentmonth' => date_i18n( 'F' ),
-					'currentyear'  => date_i18n( 'Y' ),
+					'def_title_sep' => html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, $charset ),
+					'def_ellipsis'  => html_entity_decode( $this->p->options[ 'og_ellipsis' ], ENT_QUOTES, $charset ),
+					'date_format'   => $date_format,
+					'time_format'   => $time_format,
+					'currentdate'   => date_i18n( $date_format ),
+					'currenttime'   => date_i18n( $time_format ),
+					'currentday'    => date_i18n( 'j' ),
+					'currentmonth'  => date_i18n( 'F' ),
+					'currentyear'   => date_i18n( 'Y' ),
 				);
 			}
 
@@ -142,19 +145,19 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 			}
 
 			/**
-			 * Prevent recursion, just in case.
+			 * Detect and prevent recursion, just in case.
 			 */
-			static $local_is_recursion = false;
+			static $local_is_recursion = array();
 
-			if ( $local_is_recursion ) {
+			if ( ! empty( $local_is_recursion[ $varname ] ) ) {	// Recursion detected.
 
-				return $ret_val;
+				return $ret_val;	// Stop here.
 			}
 
-			$local_is_recursion = true;	// Prevent recursion.
+			$local_is_recursion[ $varname ] = true;	// Prevent recursion.
 
 			$add_page  = isset( $atts[ 'add_page' ] ) ? $atts[ 'add_page' ] : true;
-			$title_sep = isset( $atts[ 'title_sep' ] ) ? $atts[ 'title_sep' ] : $local_cache[ 'default_sep' ];
+			$title_sep = isset( $atts[ 'title_sep' ] ) ? $atts[ 'title_sep' ] : $local_cache[ 'def_title_sep' ];
 
 			switch ( $varname ) {
 
@@ -235,6 +238,12 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				case 'sep':
 
 					$ret_val = $title_sep;
+
+					break;
+
+				case 'ellipsis':
+
+					$ret_val = $local_cache[ 'def_ellipsis' ];
 
 					break;
 
@@ -436,7 +445,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 					break;
 			}
 
-			$local_is_recursion = false;
+			unset( $local_is_recursion[ $varname ] );	// Done preventing recursion.
 
 			return $url_enc ? rawurlencode( $ret_val ) : $ret_val;
 		}
