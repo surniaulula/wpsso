@@ -121,18 +121,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$this->set_default_text( $local_cache, 'plugin_day_page_desc' );	// Day Archive Description.
 
 				/**
-				 * Adjust defaults for SEO plugin compatibility.
-				 */
-				if ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {	// No SEO plugin active.
-
-					$local_cache[ 'plugin_title_tag' ] = 'seo_title';
-
-				} else {
-
-					$local_cache[ 'plugin_title_tag' ] = 'wp_title';
-				}
-
-				/**
 				 * Complete the options array for any custom post types and/or custom taxonomies.
 				 */
 				$this->add_custom_post_tax_options( $local_cache );
@@ -371,10 +359,11 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$this->p->debug->mark( 'checking options' );	// Begin timer.
 			}
 
-			$defs           = null;	// Optimize and only get the defaults array when needed.
-			$save_changes   = false;
-			$is_plugin_upg  = $this->is_plugin_upgrading( $opts );	// Existing plugin versions have changed.
-			$is_option_upg  = $this->is_upgrade_required( $opts );	// Existing option versions have changed.
+			$defs          = null;	// Optimize and only get the defaults array when needed.
+			$hard          = array();
+			$save_changes  = false;
+			$is_plugin_upg = $this->is_plugin_upgrading( $opts );	// Existing plugin versions have changed.
+			$is_option_upg = $this->is_upgrade_required( $opts );	// Existing option versions have changed.
 
 			/**
 			 * Upgrade the options array if necessary (rename or remove keys).
@@ -393,12 +382,48 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					$this->upg = new WpssoOptionsUpgrade( $this->p );
 				}
 
-				if ( null === $defs ) {	// Optimize and only get the defaults array when needed.
-
-					$defs = $network ? $this->get_site_defaults() : $this->get_defaults();
-				}
+				$defs = $network ? $this->get_site_defaults() : $this->get_defaults();
 
 				$opts = $this->upg->options( $options_name, $opts, $defs, $network );
+			}
+
+			/**
+			 * Complete the options array for any custom post types and/or custom taxonomies.
+			 */
+			$this->add_custom_post_tax_options( $opts );
+
+			/**
+			 * Note that generator meta tags are required for plugin support.
+			 *
+			 * If you disable the generator meta tags, requests for plugin support will be denied.
+			 */
+			$hard[ 'add_meta_name_generator' ] = SucomUtil::get_const( 'WPSSO_META_GENERATOR_DISABLE' ) ? 0 : 1;
+
+			/**
+			 * Google does not recognize all Schema Organization sub-types as valid organization and publisher
+			 * types. The WebSite organization type ID should be "organization" unless you are confident that
+			 * Google will recognize your preferred Schema Organization sub-type as a valid organization. To
+			 * select a different organization type ID for your WebSite, define the
+			 * WPSSO_SCHEMA_ORGANIZATION_TYPE_ID constant with your preferred type ID (not the Schema type
+			 * URL).
+			 */
+			$site_org_type_id = SucomUtil::get_const( 'WPSSO_SCHEMA_ORGANIZATION_TYPE_ID', 'organization' );
+
+			if ( ! preg_match( '/^[a-z\.]+$/', $site_org_type_id ) ) {	// Quick sanitation to allow only valid IDs.
+
+				$site_org_type_id = 'organization';
+			}
+
+			$hard[ 'site_org_schema_type' ] = $site_org_type_id;
+
+			/**
+			 * Include VAT in Product Prices.
+			 *
+			 * Allow the WPSSO_PRODUCT_PRICE_INCLUDE_VAT constant to override the 'plugin_product_include_vat' value.
+			 */
+			if ( defined( 'WPSSO_PRODUCT_PRICE_INCLUDE_VAT' ) ) {
+
+				$hard[ 'plugin_product_include_vat' ] = WPSSO_PRODUCT_PRICE_INCLUDE_VAT ? 1 : 0;
 			}
 
 			/**
@@ -407,30 +432,24 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			if ( ! $network ) {
 
 				/**
-				 * Adjust SEO related options.
+				 * Adjust SEO options.
 				 */
-				$seo_opts = array();
-
 				if ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {	// No SEO plugin active.
 
 					if ( empty( $opts[ 'plugin_wpsso_tid' ] ) ) {
 
-						$seo_opts = array(
-							'add_link_rel_canonical'    => 1,
-							'add_meta_name_description' => 1,
-							'add_meta_name_robots'      => 1,
-							'plugin_title_tag'          => 'seo_title',
-						);
+						$hard[ 'add_link_rel_canonical' ]    = 1;
+						$hard[ 'add_meta_name_description' ] = 1;
+						$hard[ 'add_meta_name_robots' ]      = 1;
+						$hard[ 'plugin_title_tag' ]          = 'seo_title';
 					}
 
 				} else {	// An SEO plugin is active.
 
-					$seo_opts = array(
-						'add_link_rel_canonical'    => 0,
-						'add_meta_name_description' => 0,
-						'add_meta_name_robots'      => 0,
-						'plugin_title_tag'          => 'wp_title',
-					);
+					$hard[ 'add_link_rel_canonical' ]    = 0;
+					$hard[ 'add_meta_name_description' ] = 0;
+					$hard[ 'add_meta_name_robots' ]      = 0;
+					$hard[ 'plugin_title_tag' ]          = 'wp_title';
 
 					foreach ( array(
 						'aioseop',	// All in One SEO Pack.
@@ -450,7 +469,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 								if ( isset( $opts[ $key ] ) ) { // Make sure the option exists.
 
-									$seo_opts[ $key ] = 0;
+									$hard[ $key ] = 0;
 								}
 							}
 						}
@@ -458,33 +477,13 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				}
 
 				/**
-				 * Check if options need to be changed and saved.
-				 *
-				 * Prevent changes as these options would just get changed back anyway.
-				 */
-				foreach ( $seo_opts as $key => $val ) {
-
-					$opts[ $key . ':disabled' ] = true;
-
-					if ( $opts[ $key ] !== $val ) {
-
-						$opts[ $key ] = $val;
-
-						$save_changes = true;	// Save the options.
-					}
-				}
-
-				/**
-				 * Hard-code fixed options.
+				 * Fixed value / unchangeable options.
 				 */
 				foreach ( array( 'og:image', 'og:video' ) as $mt_name ) {
 
-					$opts[ 'add_meta_property_' . $mt_name . ':secure_url' ]          = 0;		// Always unchecked.
-					$opts[ 'add_meta_property_' . $mt_name . ':secure_url:disabled' ] = true;	// Prevent changes in settings page.
-					$opts[ 'add_meta_property_' . $mt_name . ':url' ]                 = 0;		// Always unchecked.
-					$opts[ 'add_meta_property_' . $mt_name . ':url:disabled' ]        = true;	// Prevent changes in settings page.
-					$opts[ 'add_meta_property_' . $mt_name ]                          = 1;		// Always checked (canonical URL).
-					$opts[ 'add_meta_property_' . $mt_name . ':disabled' ]            = true;	// Prevent changes in settings page.
+					$hard[ 'add_meta_property_' . $mt_name . ':secure_url' ] = 0;	// Always unchecked.
+					$hard[ 'add_meta_property_' . $mt_name . ':url' ]        = 0;	// Always unchecked.
+					$hard[ 'add_meta_property_' . $mt_name ]                 = 1;	// Always checked (canonical URL).
 				}
 
 				/**
@@ -492,8 +491,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				foreach ( WpssoConfig::$cf[ 'opt' ][ 'site_verify_meta_names' ] as $site_verify => $meta_name ) {
 
-					$opts[ 'add_meta_name_' . $meta_name ]               = empty( $opts[ $site_verify ] ) ? 0 : 1;
-					$opts[ 'add_meta_name_' . $meta_name . ':disabled' ] = true;
+					$hard[ 'add_meta_name_' . $meta_name ] = empty( $opts[ $site_verify ] ) ? 0 : 1;
 				}
 
 				/**
@@ -503,90 +501,64 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					if ( empty( $opts[ 'plugin_wpsso_tid' ] ) ) {
 
-						// translators: %s is the option key name.
-						$notice_msg = __( 'Non-standard value found for the "%s" option - resetting the option to its default value.', 'wpsso' );
-
 						if ( null === $defs ) {	// Optimize and only get the defaults array when needed.
 
 							$defs = $network ? $this->get_site_defaults() : $this->get_defaults();
 						}
+						
+						$adv_include = array(
+							'add_.*',
+							'og_type_for_.*',
+							'plugin_.*',
+							'schema_def_.*',
+							'schema_type_for_.*',
+							'.*_img_(width|height|crop|crop_x|crop_y)',
+						);
 
-						$advanced_preg = '/^(plugin_.*|add_meta_(property_|name_twitter:).*|.*_img_(width|height|crop|crop_x|crop_y)|schema_def_.*)$/';
-						$advanced_opts = SucomUtil::preg_grep_keys( $advanced_preg, $defs );
-						$advanced_opts = SucomUtil::preg_grep_keys( '/^plugin_.*_tid$/', $advanced_opts, $invert = true );
+						$adv_exclude = array(
+							'plugin_clean_on_uninstall',
+							'plugin_load_mofiles',
+							'plugin_cache_disable',
+							'plugin_debug_html',
+							'plugin_.*_tid',
+						);
 
-						foreach ( array(
-							'plugin_clean_on_uninstall',	// Remove Settings on Uninstall.
-							'plugin_load_mofiles',		// Use Local Plugin Translations.
-							'plugin_cache_disable',		// Disable Cache for Debugging.
-							'plugin_debug_html',		// Add HTML Debug Messages.
-						) as $key ) {
+						$adv_check = SucomUtil::preg_grep_keys( '/^(' . implode( $adv_include, '|' ) . ')$/', $defs );
+						$adv_check = SucomUtil::preg_grep_keys( '/^(' . implode( $adv_exclude, '|' ) . ')$/', $adv_check, $invert = true );
 
-							unset( $advanced_opts[ $key ] );
+						foreach ( $hard as $key => $val ) {
+
+							unset( $adv_check[ $key ] );
 						}
 
-						foreach ( $advanced_opts as $key => $val ) {
+						foreach ( $adv_check as $key => $val ) {
 
-							if ( isset( $opts[ $key ] ) ) {
+							if ( ! isset( $opts[ $key ] ) || $opts[ $key ] !== $val ) {
+							
+								$opts[ $key ] = $val;
 
-								if ( $opts[ $key ] === $val ) {
-
-									continue;
-								}
-
-								if ( is_admin() ) {
-
-									$this->p->notice->warn( sprintf( $notice_msg, $key ) );
-								}
+								$save_changes = true;	// Save the options.
 							}
-
-							$opts[ $key ] = $val;
-
-							$save_changes = true;	// Save the options.
 						}
 					}
 				}
 			}
 
 			/**
-			 * Complete the options array for any custom post types and/or custom taxonomies.
-			 */
-			$this->add_custom_post_tax_options( $opts );
-
-			/**
-			 * Note that generator meta tags are required for plugin support. If you disable the generator meta
-			 * tags, requests for plugin support will be denied.
-			 */
-			$opts[ 'add_meta_name_generator' ]          = SucomUtil::get_const( 'WPSSO_META_GENERATOR_DISABLE' ) ? 0 : 1;
-			$opts[ 'add_meta_name_generator:disabled' ] = true;
-
-			/**
-			 * Google does not recognize all Schema Organization sub-types as valid organization and publisher
-			 * types. The WebSite organization type ID should be "organization" unless you are confident that
-			 * Google will recognize your preferred Schema Organization sub-type as a valid organization. To
-			 * select a different organization type ID for your WebSite, define the
-			 * WPSSO_SCHEMA_ORGANIZATION_TYPE_ID constant with your preferred type ID (not the Schema type
-			 * URL).
-			 */
-			$site_org_type_id = SucomUtil::get_const( 'WPSSO_SCHEMA_ORGANIZATION_TYPE_ID', 'organization' );
-
-			if ( ! preg_match( '/^[a-z\.]+$/', $site_org_type_id ) ) {	// Quick sanitation to allow only valid IDs.
-
-				$site_org_type_id = 'organization';
-			}
-
-			$opts[ 'site_org_schema_type' ]          = $site_org_type_id;
-			$opts[ 'site_org_schema_type:disabled' ] = true;
-
-			/**
-			 * Include VAT in Product Prices.
+			 * Check if options need to be changed and saved.
 			 *
-			 * Allow the WPSSO_PRODUCT_PRICE_INCLUDE_VAT constant to override the 'plugin_product_include_vat' value.
+			 * Disable these options as they would get changed back anyway.
 			 */
-			if ( defined( 'WPSSO_PRODUCT_PRICE_INCLUDE_VAT' ) ) {
+			foreach ( $hard as $key => $val ) {
 
-				$opts[ 'plugin_product_include_vat' ]          = WPSSO_PRODUCT_PRICE_INCLUDE_VAT ? 1 : 0;
-				$opts[ 'plugin_product_include_vat:disabled' ] = true;
+				$opts[ $key . ':disabled' ] = true;
+
+				if ( $opts[ $key ] !== $val ) {
+
+					$opts[ $key ] = $val;
+
+					$save_changes = true;	// Save the options.
+				}
 			}
 
 			/**
