@@ -154,7 +154,12 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 			$use_post = apply_filters( 'wpsso_use_post', false );
 
-			$mod = $this->p->page->get_mod( $use_post );	// // Get comment/post/term/user information.
+			$mod = $this->p->page->get_mod( $use_post );	// Get comment/post/term/user information.
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_arr( 'mod', $mod );
+			}
 
 			$head_disabled = apply_filters( 'wpsso_head_disabled', false, $mod );
 

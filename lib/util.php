@@ -2455,7 +2455,16 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 		public function is_seo_title_disabled() {
 
-			return $this->is_title_tag_disabled() || 'seo_title' !== $this->p->options[ 'plugin_title_tag' ] ? true : false;
+			if ( $this->is_title_tag_disabled() ) {
+			
+				return true;
+				
+			} elseif ( 'seo_title' !== $this->p->options[ 'plugin_title_tag' ] ) {
+			
+				return true;
+			}
+			
+			return false;
 		}
 
 		public function is_seo_desc_disabled() {

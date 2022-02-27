@@ -903,7 +903,18 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 		 */
 		public function maybe_doc_title_disabled() {
 
-			return $this->p->util->is_title_tag_disabled() ? $this->doc_title_disabled() : '';
+			if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
+
+				$html = __( 'Modifications disabled (SEO plugin detected).', 'wpsso' );
+
+				return '<p class="status-msg smaller disabled">' . $html . '</p>';
+
+			} elseif ( $this->p->util->is_title_tag_disabled() ) {
+			
+				return $this->doc_title_disabled();
+			}
+
+			return '';
 		}
 
 		/**
@@ -966,12 +977,18 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 			if ( $is_disabled ) {
 
-				$opt_val   = _x( $this->p->cf[ 'form' ][ 'document_title' ][ 'seo_title' ], 'option value', 'wpsso' );
-				$opt_label = _x( 'Webpage Title Tag', 'option label', 'wpsso' );
-				$opt_link  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', $opt_label );
+				if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
 
-				// translators: %s is the meta tag name (aka meta name canonical).
-				$html = sprintf( __( 'Modifications disabled (%1$s option is not %2$s).', 'wpsso' ), $opt_link, $opt_val );
+					$html = __( 'Modifications disabled (SEO plugin detected).', 'wpsso' );
+
+				} else {
+
+					$opt_val   = _x( $this->p->cf[ 'form' ][ 'document_title' ][ 'seo_title' ], 'option value', 'wpsso' );
+					$opt_label = _x( 'Webpage Title Tag', 'option label', 'wpsso' );
+					$opt_link  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', $opt_label );
+
+					$html = sprintf( __( 'Modifications disabled (%1$s option is not "%2$s").', 'wpsso' ), $opt_link, $opt_val );
+				}
 
 				return '<p class="status-msg smaller disabled">' . $html . '</p>';
 			}
@@ -986,8 +1003,14 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 			if ( $is_disabled ) {
 
-				// translators: %s is the meta tag name (aka meta name canonical).
-				$html = sprintf( __( 'Modifications disabled (<code>%s</code> tag disabled or SEO plugin detected).', 'wpsso' ), $mt_name );
+				if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
+
+					$html = __( 'Modifications disabled (SEO plugin detected).', 'wpsso' );
+
+				} else {
+
+					$html = sprintf( __( 'Modifications disabled (<code>%s</code> tag disabled).', 'wpsso' ), $mt_name );
+				}
 
 				return '<p class="status-msg smaller disabled">' . $html . '</p>';
 			}

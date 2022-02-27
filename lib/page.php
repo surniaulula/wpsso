@@ -232,6 +232,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
+				$this->p->debug->log_arr( 'mod', $mod );
+
 				$this->p->debug->log( 'getting title for ' . $this->p->options[ 'plugin_title_tag' ] );
 			}
 
@@ -659,12 +661,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 						break;
 				}
-			}
-
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log_arr( 'mod', $mod );
 			}
 
 			return $mod;

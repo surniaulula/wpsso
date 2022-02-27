@@ -121,6 +121,18 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$this->set_default_text( $local_cache, 'plugin_day_page_desc' );	// Day Archive Description.
 
 				/**
+				 * Adjust defaults for SEO plugin compatibility.
+				 */
+				if ( empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {	// No SEO plugin active.
+
+					$local_cache[ 'plugin_title_tag' ] = 'seo_title';
+
+				} else {
+
+					$local_cache[ 'plugin_title_tag' ] = 'wp_title';
+				}
+
+				/**
 				 * Complete the options array for any custom post types and/or custom taxonomies.
 				 */
 				$this->add_custom_post_tax_options( $local_cache );
@@ -407,6 +419,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							'add_link_rel_canonical'    => 1,
 							'add_meta_name_description' => 1,
 							'add_meta_name_robots'      => 1,
+							'plugin_title_tag'          => 'seo_title',
 						);
 					}
 
@@ -416,6 +429,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						'add_link_rel_canonical'    => 0,
 						'add_meta_name_description' => 0,
 						'add_meta_name_robots'      => 0,
+						'plugin_title_tag'          => 'wp_title',
 					);
 
 					foreach ( array(
