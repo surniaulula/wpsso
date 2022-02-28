@@ -1163,13 +1163,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$opts = apply_filters( 'wpsso_save_setting_options', $opts, $network = false, $upgrading = false );
 
 			/**
-			 * Maybe clear dismissed notices.
+			 * Maybe clear dismissed notices for enabled options that were previously disabled.
 			 */
 			foreach ( array(
-				'add_link_rel_canonical',
-				'add_link_rel_shortlink',
-				'add_meta_name_description',
-				'add_meta_name_robots',
+				'add_link_rel_canonical'    => 'suggest-options-seo-add_link_rel_canonical',
+				'add_link_rel_shortlink'    => 'suggest-options-seo-add_link_rel_shortlink',
+				'add_meta_name_description' => 'suggest-options-seo-add_meta_name_description',
+				'add_meta_name_robots'      => 'suggest-options-seo-add_meta_name_robots',
+				'plugin_filter_content'     => 'notice-content-filters-disabled',
+				'plugin_check_img_dims'     => 'notice-check-img-dims-disabled',
 			) as $opt_key ) {
 
 				if ( ! empty( $opts[ $opt_key ] ) ) {	// Option is enabled.
