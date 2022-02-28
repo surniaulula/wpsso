@@ -360,7 +360,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			$defs          = null;	// Optimize and only get the defaults array when needed.
-			$hard          = array();
+			$fixed         = array();
 			$save_changes  = false;
 			$is_plugin_upg = $this->is_plugin_upgrading( $opts );	// Existing plugin versions have changed.
 			$is_option_upg = $this->is_upgrade_required( $opts );	// Existing option versions have changed.
@@ -397,7 +397,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 *
 			 * If you disable the generator meta tags, requests for plugin support will be denied.
 			 */
-			$hard[ 'add_meta_name_generator' ] = SucomUtil::get_const( 'WPSSO_META_GENERATOR_DISABLE' ) ? 0 : 1;
+			$fixed[ 'add_meta_name_generator' ] = SucomUtil::get_const( 'WPSSO_META_GENERATOR_DISABLE' ) ? 0 : 1;
 
 			/**
 			 * Google does not recognize all Schema Organization sub-types as valid organization and publisher
@@ -414,7 +414,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$site_org_type_id = 'organization';
 			}
 
-			$hard[ 'site_org_schema_type' ] = $site_org_type_id;
+			$fixed[ 'site_org_schema_type' ] = $site_org_type_id;
 
 			/**
 			 * Include VAT in Product Prices.
@@ -423,7 +423,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 */
 			if ( defined( 'WPSSO_PRODUCT_PRICE_INCLUDE_VAT' ) ) {
 
-				$hard[ 'plugin_product_include_vat' ] = WPSSO_PRODUCT_PRICE_INCLUDE_VAT ? 1 : 0;
+				$fixed[ 'plugin_product_include_vat' ] = WPSSO_PRODUCT_PRICE_INCLUDE_VAT ? 1 : 0;
 			}
 
 			/**
@@ -438,18 +438,18 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					if ( empty( $opts[ 'plugin_wpsso_tid' ] ) ) {
 
-						$hard[ 'add_link_rel_canonical' ]    = 1;
-						$hard[ 'add_meta_name_description' ] = 1;
-						$hard[ 'add_meta_name_robots' ]      = 1;
-						$hard[ 'plugin_title_tag' ]          = 'seo_title';
+						$fixed[ 'add_link_rel_canonical' ]    = 1;
+						$fixed[ 'add_meta_name_description' ] = 1;
+						$fixed[ 'add_meta_name_robots' ]      = 1;
+						$fixed[ 'plugin_title_tag' ]          = 'seo_title';
 					}
 
 				} else {	// An SEO plugin is active.
 
-					$hard[ 'add_link_rel_canonical' ]    = 0;
-					$hard[ 'add_meta_name_description' ] = 0;
-					$hard[ 'add_meta_name_robots' ]      = 0;
-					$hard[ 'plugin_title_tag' ]          = 'wp_title';
+					$fixed[ 'add_link_rel_canonical' ]    = 0;
+					$fixed[ 'add_meta_name_description' ] = 0;
+					$fixed[ 'add_meta_name_robots' ]      = 0;
+					$fixed[ 'plugin_title_tag' ]          = 'wp_title';
 
 					foreach ( array(
 						'aioseop',	// All in One SEO Pack.
@@ -469,7 +469,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 								if ( isset( $opts[ $key ] ) ) { // Make sure the option exists.
 
-									$hard[ $key ] = 0;
+									$fixed[ $key ] = 0;
 								}
 							}
 						}
@@ -481,9 +481,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				foreach ( array( 'og:image', 'og:video' ) as $mt_name ) {
 
-					$hard[ 'add_meta_property_' . $mt_name . ':secure_url' ] = 0;	// Always unchecked.
-					$hard[ 'add_meta_property_' . $mt_name . ':url' ]        = 0;	// Always unchecked.
-					$hard[ 'add_meta_property_' . $mt_name ]                 = 1;	// Always checked (canonical URL).
+					$fixed[ 'add_meta_property_' . $mt_name . ':secure_url' ] = 0;	// Always unchecked.
+					$fixed[ 'add_meta_property_' . $mt_name . ':url' ]        = 0;	// Always unchecked.
+					$fixed[ 'add_meta_property_' . $mt_name ]                 = 1;	// Always checked (canonical URL).
 				}
 
 				/**
@@ -491,7 +491,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				 */
 				foreach ( WpssoConfig::$cf[ 'opt' ][ 'site_verify_meta_names' ] as $site_verify => $meta_name ) {
 
-					$hard[ 'add_meta_name_' . $meta_name ] = empty( $opts[ $site_verify ] ) ? 0 : 1;
+					$fixed[ 'add_meta_name_' . $meta_name ] = empty( $opts[ $site_verify ] ) ? 0 : 1;
 				}
 
 				/**
@@ -526,7 +526,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						$adv_check = SucomUtil::preg_grep_keys( '/^(' . implode( $adv_include, '|' ) . ')$/', $defs );
 						$adv_check = SucomUtil::preg_grep_keys( '/^(' . implode( $adv_exclude, '|' ) . ')$/', $adv_check, $invert = true );
 
-						foreach ( $hard as $key => $val ) {
+						foreach ( $fixed as $key => $val ) {
 
 							unset( $adv_check[ $key ] );
 						}
@@ -549,7 +549,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			 *
 			 * Disable these options as they would get changed back anyway.
 			 */
-			foreach ( $hard as $key => $val ) {
+			foreach ( $fixed as $key => $val ) {
 
 				$opts[ $key . ':disabled' ] = true;
 
