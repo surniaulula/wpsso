@@ -130,7 +130,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			add_action( 'wpsso_init_json_filters', array( $this, 'init_json_filters' ), -1000, 0 );
 
 			/**
-			 * The 'wpsso_init_textdomain' action is run after the $check, $avail, and $debug properties are defined.
+			 * The 'wpsso_init_textdomain' action is run after the $check, $avail, and $debug properties have been instantiated.
 			 */
 			add_action( 'wpsso_init_textdomain', array( $this, 'init_textdomain' ), -1000, 0 );
 
@@ -333,9 +333,9 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			}
 
 			/**
-			 * The 'wpsso_init_textdomain' action is run after the $check, $avail, and $debug properties are defined.
+			 * The 'wpsso_init_textdomain' action is run after the $check, $avail, and $debug properties have been instantiated.
 			 *
-			 * The 'change_locale' action also runs the 'wpsso_init_textdomain' action.
+			 * The WordPress 'change_locale' action also runs the 'wpsso_init_textdomain' action.
 			 */
 			do_action( 'wpsso_init_textdomain' );
 
@@ -554,7 +554,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 		}
 
 		/**
-		 * The 'wpsso_init_textdomain' action is run after the $check, $avail, and $debug properties are defined.
+		 * The 'wpsso_init_textdomain' action is run after the $check, $avail, and $debug properties are instantiated.
 		 */
 		public function init_textdomain() {
 

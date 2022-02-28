@@ -77,5 +77,4 @@ WPSSO_SELECT_PERSON_NAMES_MAX            = 100
 WPSSO_SITE_OPTIONS_NAME                  = 'wpsso_site_options'
 WPSSO_TITLE_TAG_PRIORITY                 = 1000
 WPSSO_UNKNOWN_SEO_PLUGIN_ACTIVE          = false	// Disable SEO related meta tags.
-WPSSO_VARY_USER_AGENT_DISABLE            = false	// Disable mobile browser detection.
 
