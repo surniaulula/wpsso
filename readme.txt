@@ -250,7 +250,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.3.0-b.1 (2022/02/28)**
+**Version 11.3.0-rc.1 (2022/02/28)**
 
 * **New Features**
 	* None.
@@ -989,9 +989,9 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 11.3.0-b.1 =
+= 11.3.0-rc.1 =
 
-(2022/02/28) Fixed possible SSO &gt; Advanced Settings &gt; Integration &gt; Webpage Title Tag conflict with other SEO plugins. Added a new SSO &gt; Advanced Settings &gt; Default Text &gt; Product Variation Title option.
+(2022/02/28) Fixed possible Webpage Title Tag conflict with other SEO plugins. Added a new Product Variation Title option.
 
 = 11.2.0 =
 
