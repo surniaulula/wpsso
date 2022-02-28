@@ -250,6 +250,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 11.3.1 (2022/02/28)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed `implode()` arguments for PHP v8 in `WpssoOptions->check_options()`.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 11.3.0 (2022/02/28)**
 
 * **New Features**
@@ -988,6 +1002,10 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 	* WordPress v5.0.
 
 == Upgrade Notice ==
+
+= 11.3.1 =
+
+(2022/02/28) Fixed `implode()` arguments for PHP v8 in `WpssoOptions->check_options()`.
 
 = 11.3.0 =
 
