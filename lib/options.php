@@ -523,8 +523,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 							'plugin_.*_tid',
 						);
 
-						$adv_check = SucomUtil::preg_grep_keys( '/^(' . implode( $adv_include, '|' ) . ')$/', $defs );
-						$adv_check = SucomUtil::preg_grep_keys( '/^(' . implode( $adv_exclude, '|' ) . ')$/', $adv_check, $invert = true );
+						$adv_check = SucomUtil::preg_grep_keys( '/^(' . implode( '|', $adv_include ) . ')$/', $defs );
+						$adv_check = SucomUtil::preg_grep_keys( '/^(' . implode( '|', $adv_exclude ) . ')$/', $adv_check, $invert = true );
 
 						foreach ( $fixed as $key => $val ) {
 
