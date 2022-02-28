@@ -57,9 +57,9 @@ WPSSO provides comprehensive Schema markup for posts, pages, custom post types, 
 
 * Open Graph (Facebook and oEmbed)
 * Pinterest Pin It
-* Schema 1:1 (Google)
-* Schema 4:3 (Google)
-* Schema 16:9 (Google)
+* Schema 1:1 (Google Rich Results)
+* Schema 4:3 (Google Rich Results)
+* Schema 16:9 (Google Rich Results)
 * Schema Thumbnail
 * Twitter Summary Card
 * Twitter Large Image Summary Card
