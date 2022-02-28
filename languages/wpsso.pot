@@ -2907,19 +2907,19 @@ msgid "Pinterest Pin It"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:55 lib/pro/admin/advanced.php:377
-#: lib/schema.php:60 lib/std/admin/advanced.php:372
+#: lib/std/admin/advanced.php:372
 msgctxt "option label"
 msgid "Schema 1:1 (Google)"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:56 lib/pro/admin/advanced.php:381
-#: lib/schema.php:65 lib/std/admin/advanced.php:376
+#: lib/std/admin/advanced.php:376
 msgctxt "option label"
 msgid "Schema 4:3 (Google)"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:57 lib/pro/admin/advanced.php:385
-#: lib/schema.php:70 lib/std/admin/advanced.php:380
+#: lib/std/admin/advanced.php:380
 msgctxt "option label"
 msgid "Schema 16:9 (Google)"
 msgstr ""
@@ -10544,6 +10544,21 @@ msgstr ""
 
 #: lib/schema-single.php:1537
 msgid "adding schema place"
+msgstr ""
+
+#: lib/schema.php:60
+msgctxt "option label"
+msgid "Schema 1:1 (Google Rich Results)"
+msgstr ""
+
+#: lib/schema.php:65
+msgctxt "option label"
+msgid "Schema 4:3 (Google Rich Results)"
+msgstr ""
+
+#: lib/schema.php:70
+msgctxt "option label"
+msgid "Schema 16:9 (Google Rich Results)"
 msgstr ""
 
 #: lib/schema.php:487
