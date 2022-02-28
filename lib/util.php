@@ -225,7 +225,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			/**
 			 * Get default options only once.
 			 */
-			static $def_opts = null;
+			static $defs = null;
 
 			$image_sizes = apply_filters( 'wpsso_plugin_image_sizes', array() );
 
@@ -257,19 +257,19 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 					 */
 					} else {
 
-						if ( null === $def_opts ) {
+						if ( null === $defs ) {
 
 							if ( $this->p->debug->enabled ) {
 
 								$this->p->debug->log( 'getting default option values' );
 							}
 
-							$def_opts = $this->p->opt->get_defaults();
+							$defs = $this->p->opt->get_defaults();
 						}
 
-						if ( isset( $def_opts[ $opt_prefix . '_img_' . $opt_suffix ] ) ) {	// Just in case.
+						if ( isset( $defs[ $opt_prefix . '_img_' . $opt_suffix ] ) ) {	// Just in case.
 
-							$size_info[ $opt_suffix ] = $def_opts[ $opt_prefix . '_img_' . $opt_suffix ];
+							$size_info[ $opt_suffix ] = $defs[ $opt_prefix . '_img_' . $opt_suffix ];
 
 						} else {
 

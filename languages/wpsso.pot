@@ -586,7 +586,7 @@ msgstr ""
 msgid "This notice can be dismissed for %s."
 msgstr ""
 
-#: gettext/gettext-lib-com.php:52 lib/admin.php:2587 lib/com/notice.php:511
+#: gettext/gettext-lib-com.php:52 lib/admin.php:2588 lib/com/notice.php:511
 msgid "Edit"
 msgstr ""
 
@@ -1117,7 +1117,7 @@ msgid "Profile SSO - Social and Search Optimization"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:101 gettext/gettext-lib-config.php:109
-#: lib/admin-head-suggest-options.php:98 lib/messages.php:962
+#: lib/admin-head-suggest-options.php:98 lib/messages.php:963
 msgctxt "lib file description"
 msgid "Advanced Settings"
 msgstr ""
@@ -2608,7 +2608,7 @@ msgid "Stable / Production"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:6 lib/messages-tooltip-plugin.php:261
-#: lib/messages-tooltip-plugin.php:278 lib/messages.php:987
+#: lib/messages-tooltip-plugin.php:278 lib/messages.php:988
 #: lib/pro/admin/advanced.php:86 lib/std/admin/advanced.php:83
 msgctxt "option label"
 msgid "Webpage Title Tag"
@@ -5144,18 +5144,18 @@ msgstr ""
 msgid "Purchase the %s plugin."
 msgstr ""
 
-#: lib/admin-head-suggest-options.php:97 lib/messages.php:961
+#: lib/admin-head-suggest-options.php:97 lib/messages.php:962
 msgctxt "menu title"
 msgid "SSO"
 msgstr ""
 
-#: lib/admin-head-suggest-options.php:99 lib/messages.php:963
+#: lib/admin-head-suggest-options.php:99 lib/messages.php:964
 #: lib/submenu/advanced.php:47
 msgctxt "metabox title"
 msgid "HTML Tags"
 msgstr ""
 
-#: lib/admin-head-suggest-options.php:100 lib/messages.php:964
+#: lib/admin-head-suggest-options.php:100 lib/messages.php:965
 #: lib/submenu/advanced.php:237
 msgctxt "metabox tab"
 msgid "SEO and Others"
@@ -5465,313 +5465,313 @@ msgstr ""
 msgid "Option preference saved - viewing \"%s\" by default."
 msgstr ""
 
-#: lib/admin.php:1463
+#: lib/admin.php:1464
 msgid ""
 "Image size settings have been reloaded with their default values and saved."
 msgstr ""
 
-#: lib/admin.php:1547
+#: lib/admin.php:1548
 msgid ""
 "Please note that your current language is different from the default site "
 "language (%s)."
 msgstr ""
 
-#: lib/admin.php:1550
+#: lib/admin.php:1551
 msgid ""
 "Localized option values (%s) are used for webpages and content in that "
 "language only (not for the default language, or any other language)."
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:1652
+#: lib/admin.php:1653
 msgid "Profile updated."
 msgstr ""
 
 #. translators: %s is the Premium add-on short name.
-#: lib/admin.php:1800
+#: lib/admin.php:1801
 msgid "Upgrade to %s"
 msgstr ""
 
-#: lib/admin.php:1812
+#: lib/admin.php:1813
 msgctxt "submit button"
 msgid "Get %s"
 msgstr ""
 
-#: lib/admin.php:1830
+#: lib/admin.php:1831
 msgctxt "submit button"
 msgid "Save Profile Settings"
 msgstr ""
 
-#: lib/admin.php:1834
+#: lib/admin.php:1835
 msgctxt "submit button"
 msgid "Save Plugin Settings"
 msgstr ""
 
-#: lib/admin.php:1839 lib/submenu/tools.php:145
+#: lib/admin.php:1840 lib/submenu/tools.php:145
 msgctxt "submit button"
 msgid "Change to \"%s\" View"
 msgstr ""
 
-#: lib/admin.php:1945
+#: lib/admin.php:1946
 msgid ""
 "Missing page ID, metabox ID, and/or tab key to create the metabox table."
 msgstr ""
 
-#: lib/admin.php:1961
+#: lib/admin.php:1962
 msgid "%s Database Transients"
 msgstr ""
 
-#: lib/admin.php:1966
+#: lib/admin.php:1967
 msgid "Count"
 msgstr ""
 
-#: lib/admin.php:1967
+#: lib/admin.php:1968
 msgid "MB"
 msgstr ""
 
-#: lib/admin.php:1968
+#: lib/admin.php:1969
 msgid "Expiration"
 msgstr ""
 
-#: lib/admin.php:1997
+#: lib/admin.php:1998
 msgid "disabled"
 msgstr ""
 
-#: lib/admin.php:2049 lib/admin.php:2050
+#: lib/admin.php:2050 lib/admin.php:2051
 msgid "Not Available"
 msgstr ""
 
-#: lib/admin.php:2097
+#: lib/admin.php:2098
 msgctxt "option label"
 msgid "Installed"
 msgstr ""
 
-#: lib/admin.php:2105
+#: lib/admin.php:2106
 msgctxt "option label"
 msgid "Stable"
 msgstr ""
 
-#: lib/admin.php:2109
+#: lib/admin.php:2110
 msgctxt "option label"
 msgid "Latest"
 msgstr ""
 
-#: lib/admin.php:2124
+#: lib/admin.php:2125
 msgid "View %s changelog..."
 msgstr ""
 
-#: lib/admin.php:2238
+#: lib/admin.php:2239
 msgid "<a href=\"%s\">Frequently Asked Questions</a>"
 msgstr ""
 
-#: lib/admin.php:2243
+#: lib/admin.php:2244
 msgid "<a href=\"%s\">Notes and Documentation</a>"
 msgstr ""
 
-#: lib/admin.php:2248
+#: lib/admin.php:2249
 msgid "<a href=\"%s\">Priority Support Ticket</a>"
 msgstr ""
 
-#: lib/admin.php:2249
+#: lib/admin.php:2250
 msgid "Premium edition"
 msgstr ""
 
-#: lib/admin.php:2253
+#: lib/admin.php:2254
 msgid "<a href=\"%s\">Community Support Forum</a>"
 msgstr ""
 
-#: lib/admin.php:2273
+#: lib/admin.php:2274
 msgid "Rate your active plugins:"
 msgstr ""
 
-#: lib/admin.php:2326
+#: lib/admin.php:2327
 msgid "Feature is disabled."
 msgstr ""
 
-#: lib/admin.php:2327
+#: lib/admin.php:2328
 msgid "Feature is not active."
 msgstr ""
 
-#: lib/admin.php:2328
+#: lib/admin.php:2329
 msgid "Feature is active."
 msgstr ""
 
-#: lib/admin.php:2329 lib/admin.php:2330
+#: lib/admin.php:2330 lib/admin.php:2331
 msgid "Feature is recommended but not active."
 msgstr ""
 
-#: lib/admin.php:2396
+#: lib/admin.php:2397
 msgid "Service API module"
 msgstr ""
 
-#: lib/admin.php:2403
+#: lib/admin.php:2404
 msgid "HTML tag and markup module"
 msgstr ""
 
-#: lib/admin.php:2410
+#: lib/admin.php:2411
 msgid "Additional functionality module"
 msgstr ""
 
-#: lib/admin.php:2417
+#: lib/admin.php:2418
 msgid "Plugin integration module"
 msgstr ""
 
-#: lib/admin.php:2424
+#: lib/admin.php:2425
 msgid "Markup property module"
 msgstr ""
 
-#: lib/admin.php:2431
+#: lib/admin.php:2432
 msgid "Sharing functionality module"
 msgstr ""
 
-#: lib/admin.php:2600
+#: lib/admin.php:2601
 msgctxt "option label"
 msgid "%s Authentication ID"
 msgstr ""
 
-#: lib/admin.php:2613
+#: lib/admin.php:2614
 msgctxt "option label"
 msgid "Current Site Address"
 msgstr ""
 
-#: lib/admin.php:2619
+#: lib/admin.php:2620
 msgctxt "option label"
 msgid "Support and Updates Expire"
 msgstr ""
 
-#: lib/admin.php:2620
+#: lib/admin.php:2621
 msgctxt "option label"
 msgid "License Information"
 msgstr ""
 
-#: lib/admin.php:2629
+#: lib/admin.php:2630
 msgctxt "option value"
 msgid "Not available"
 msgstr ""
 
-#: lib/admin.php:2635
+#: lib/admin.php:2636
 msgctxt "option value"
 msgid "Never (Nontransferable Lifetime License)"
 msgstr ""
 
-#: lib/admin.php:2643
+#: lib/admin.php:2644
 msgid "%s site addresses registered"
 msgstr ""
 
-#: lib/admin.php:2655
+#: lib/admin.php:2656
 msgid "%d of %d site addresses registered"
 msgstr ""
 
-#: lib/admin.php:2733
+#: lib/admin.php:2734
 msgid "Fetching %s notifications..."
 msgstr ""
 
-#: lib/admin.php:2907
+#: lib/admin.php:2908
 msgctxt "option label"
 msgid "WebSite Publisher Type"
 msgstr ""
 
-#: lib/admin.php:2915
+#: lib/admin.php:2916
 msgctxt "option label"
 msgid "WebSite Publisher Person"
 msgstr ""
 
-#: lib/admin.php:2923 lib/options.php:1158
+#: lib/admin.php:2924 lib/options.php:1158
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:2928 lib/options.php:1163
+#: lib/admin.php:2929 lib/options.php:1163
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
 
-#: lib/admin.php:2932
+#: lib/admin.php:2933
 msgctxt "option label"
 msgid "Organization Schema Type"
 msgstr ""
 
-#: lib/admin.php:2939
+#: lib/admin.php:2940
 msgctxt "option label"
 msgid "Organization Location"
 msgstr ""
 
-#: lib/admin.php:2962
+#: lib/admin.php:2963
 msgctxt "option label"
 msgid "Remove Settings on Uninstall"
 msgstr ""
 
-#: lib/admin.php:2967
+#: lib/admin.php:2968
 msgctxt "option label"
 msgid "Use Local Plugin Translations"
 msgstr ""
 
-#: lib/admin.php:2975 lib/util.php:2897
+#: lib/admin.php:2976 lib/util.php:2897
 msgctxt "option label"
 msgid "Disable Cache for Debugging"
 msgstr ""
 
-#: lib/admin.php:2983
+#: lib/admin.php:2984
 msgctxt "option label"
 msgid "Add HTML Debug Messages"
 msgstr ""
 
-#: lib/admin.php:3023
+#: lib/admin.php:3024
 msgctxt "option comment"
 msgid "in %s"
 msgstr ""
 
-#: lib/admin.php:3040
+#: lib/admin.php:3041
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:3245
+#: lib/admin.php:3246
 msgid "Return to %s"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:3276
+#: lib/admin.php:3277
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
 #. translators: %1$s is the URL, %2$s is the short plugin name.
-#: lib/admin.php:3297
+#: lib/admin.php:3298
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-"
 "ons</a> to check if newer versions are available."
 msgstr ""
 
 #. translators: %1$s is the URL.
-#: lib/admin.php:3306
+#: lib/admin.php:3307
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for WordPress "
 "(plugins, themes and translations)</a> to check if newer versions are "
 "available."
 msgstr ""
 
-#: lib/admin.php:3457
+#: lib/admin.php:3458
 msgid "Please select a %1$s settings file to import."
 msgstr ""
 
-#: lib/admin.php:3464
+#: lib/admin.php:3465
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr ""
 
-#: lib/admin.php:3471
+#: lib/admin.php:3472
 msgid ""
 "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr ""
 
-#: lib/admin.php:3485
+#: lib/admin.php:3486
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr ""
 
-#: lib/admin.php:3495
+#: lib/admin.php:3496
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr ""
 
-#: lib/admin.php:3505
+#: lib/admin.php:3506
 msgid "Import of plugin and add-on settings is complete."
 msgstr ""
 
@@ -6832,7 +6832,7 @@ msgstr ""
 msgid "Activate an AMP plugin to create and validate AMP pages."
 msgstr ""
 
-#: lib/messages-info-meta.php:314 lib/messages.php:864 lib/messages.php:1043
+#: lib/messages-info-meta.php:314 lib/messages.php:865 lib/messages.php:1044
 msgid "Schema markup is disabled."
 msgstr ""
 
@@ -8203,7 +8203,7 @@ msgstr ""
 msgid "Your theme does not support the <a href=\"%s\">WordPress Title Tag</a>."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:71 lib/messages.php:1049
+#: lib/messages-tooltip-plugin.php:71 lib/messages.php:1050
 msgid "https://codex.wordpress.org/Title_Tag"
 msgstr ""
 
@@ -9185,7 +9185,7 @@ msgid ""
 "Pinterest Pin It browser button from suggesting these images."
 msgstr ""
 
-#: lib/messages-tooltip.php:345 lib/messages.php:1056
+#: lib/messages-tooltip.php:345 lib/messages.php:1057
 #: lib/submenu/general.php:367
 msgctxt "option label"
 msgid "Add Hidden Image for Pinterest"
@@ -9891,85 +9891,85 @@ msgctxt "tooltip fragment"
 msgid "a video URL (not HTML code)"
 msgstr ""
 
-#: lib/messages.php:852
+#: lib/messages.php:853
 msgctxt "option value"
 msgid "uncropped"
 msgstr ""
 
-#: lib/messages.php:852
+#: lib/messages.php:853
 msgctxt "option value"
 msgid "cropped"
 msgstr ""
 
-#: lib/messages.php:866 lib/messages.php:1114 lib/util-metabox.php:231
+#: lib/messages.php:867 lib/messages.php:1115 lib/util-metabox.php:231
 msgid "No options available."
 msgstr ""
 
-#: lib/messages.php:897
+#: lib/messages.php:898
 msgid ""
 "Facebook prefers images of 1200x630px cropped (for Retina and high-PPI "
 "displays), 600x315px cropped as a recommended minimum, and ignores images "
 "smaller than 200x200px."
 msgstr ""
 
-#: lib/messages.php:908 lib/messages.php:982 lib/messages.php:1008
+#: lib/messages.php:909 lib/messages.php:983 lib/messages.php:1009
 msgid "Modifications disabled (SEO plugin detected)."
 msgstr ""
 
-#: lib/messages.php:946
+#: lib/messages.php:947
 msgctxt "wpsso"
 msgid "Activating the %s add-on is recommended for this option."
 msgstr ""
 
-#: lib/messages.php:966
+#: lib/messages.php:967
 msgid "Note that the <code>%s</code> HTML tag is currently disabled."
 msgstr ""
 
-#: lib/messages.php:968
+#: lib/messages.php:969
 msgid "You can re-enable this option under the %s tab."
 msgstr ""
 
-#: lib/messages.php:990
+#: lib/messages.php:991
 msgid "Modifications disabled (%1$s option is not \"%2$s\")."
 msgstr ""
 
-#: lib/messages.php:1012
+#: lib/messages.php:1013
 msgid "Modifications disabled (<code>%s</code> tag disabled)."
 msgstr ""
 
-#: lib/messages.php:1037
+#: lib/messages.php:1038
 msgctxt "option comment"
 msgid "video preview images are enabled (and included first)"
 msgstr ""
 
-#: lib/messages.php:1048
+#: lib/messages.php:1049
 msgid "<a href=\"%s\">Title Tag</a> not supported by theme"
 msgstr ""
 
 #. translators: %s is the option name, linked to its settings page.
-#: lib/messages.php:1061
+#: lib/messages.php:1062
 msgid "Modifications disabled (%s option is unchecked)."
 msgstr ""
 
-#: lib/messages.php:1068
+#: lib/messages.php:1069
 msgctxt "option comment"
 msgid "video preview images are included first"
 msgstr ""
 
-#: lib/messages.php:1086
+#: lib/messages.php:1087
 msgid ""
 "Video discovery and service API modules are provided with the %s edition."
 msgstr ""
 
-#: lib/messages.php:1101
+#: lib/messages.php:1102
 msgid "WordPress is set to discourage search engines from indexing this site."
 msgstr ""
 
-#: lib/messages.php:1104
+#: lib/messages.php:1105
 msgid "The WordPress sitemaps functionality is disabled."
 msgstr ""
 
-#: lib/messages.php:1111
+#: lib/messages.php:1112
 msgid ""
 "A theme or plugin is returning <code>false</code> for the "
 "'wp_sitemaps_enabled' filter."

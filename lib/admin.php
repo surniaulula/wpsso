@@ -606,9 +606,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->log( 'setting form object for ' . $menu_ext );
 			}
 
-			$def_opts = $this->p->opt->get_defaults();
+			$defs = $this->p->opt->get_defaults();
 
-			$this->form = new SucomForm( $this->p, WPSSO_OPTIONS_NAME, $this->p->options, $def_opts, $menu_ext );
+			$this->form = new SucomForm( $this->p, WPSSO_OPTIONS_NAME, $this->p->options, $defs, $menu_ext );
 		}
 
 		public function register_setting() {
@@ -1155,11 +1155,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$opts = array();
 			}
 
-			$def_opts = $this->p->opt->get_defaults();
+			$defs = $this->p->opt->get_defaults();
 
 			$opts = SucomUtil::restore_checkboxes( $opts );
 			$opts = array_merge( $this->p->options, $opts );
-			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network = false );
+			$opts = $this->p->opt->sanitize( $opts, $defs, $network = false );
 			$opts = apply_filters( 'wpsso_save_setting_options', $opts, $network = false, $upgrading = false );
 
 			/**
@@ -1172,7 +1172,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				'add_meta_name_robots',
 			) as $opt_key ) {
 
-				if ( ! empty( $opts[ $opt_key ] ) ) {
+				if ( ! empty( $opts[ $opt_key ] ) ) {	// Option is enabled.
 
 					$notice_key = 'suggest-options-seo-' . $opt_key;
 
@@ -1251,11 +1251,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$opts = $_POST[ WPSSO_SITE_OPTIONS_NAME ];
 			}
 
-			$def_opts = $this->p->opt->get_site_defaults();
+			$defs = $this->p->opt->get_site_defaults();
 
 			$opts = SucomUtil::restore_checkboxes( $opts );
 			$opts = array_merge( $this->p->site_options, $opts );	// Complete the array with previous options.
-			$opts = $this->p->opt->sanitize( $opts, $def_opts, $network = true );
+			$opts = $this->p->opt->sanitize( $opts, $defs, $network = true );
 			$opts = apply_filters( 'wpsso_save_setting_options', $opts, $network = true, $upgrading = false );
 
 			/**
@@ -1453,12 +1453,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						case 'reload_default_image_sizes':
 
-							$opts     =& $this->p->options;	// Update the existing options array.
-							$def_opts = $this->p->opt->get_defaults();
-							$img_opts = SucomUtil::preg_grep_keys( '/_img_(width|height|crop|crop_x|crop_y)$/', $def_opts );
-							$opts     = array_merge( $this->p->options, $img_opts );
+							$defs = $this->p->opt->get_defaults();
 
-							$this->p->opt->save_options( WPSSO_OPTIONS_NAME, $opts, $network = false );
+							$img_defs = SucomUtil::preg_grep_keys( '/_img_(width|height|crop|crop_x|crop_y)$/', $defs );
+
+							$this->p->options = array_merge( $this->p->options, $img_defs );
+
+							$this->p->opt->save_options( WPSSO_OPTIONS_NAME, $this->p->options, $network = false );
 
 							$this->p->notice->upd( __( 'Image size settings have been reloaded with their default values and saved.', 'wpsso' ) );
 

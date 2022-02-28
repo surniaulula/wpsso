@@ -38,7 +38,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		public $options  = array();
 		public $defaults = array();
 
-		public function __construct( &$plugin, $opts_name, &$opts, &$def_opts, $ext_id = '' ) {
+		public function __construct( &$plugin, $opts_name, &$opts, &$defs, $ext_id = '' ) {
 
 			$this->p =& $plugin;
 
@@ -52,7 +52,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$this->plugin_id = $this->p->id;
 			$this->opts_name =& $opts_name;
 			$this->options   =& $opts;
-			$this->defaults  =& $def_opts;
+			$this->defaults  =& $defs;
 			$this->ext_id    = empty( $ext_id ) ? $this->plugin_id : $ext_id;	// Lowercase acronyn for plugin or add-on.
 
 			$this->set_admin_l10n();

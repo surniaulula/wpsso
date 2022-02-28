@@ -846,10 +846,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 		protected function get_def_img_dims( $opt_pre ) {
 
-			$def_opts    = $this->p->opt->get_defaults();
-			$img_width   = empty( $def_opts[ $opt_pre . '_img_width' ] ) ? 0 : $def_opts[ $opt_pre . '_img_width' ];
-			$img_height  = empty( $def_opts[ $opt_pre . '_img_height' ] ) ? 0 : $def_opts[ $opt_pre . '_img_height' ];
-			$img_cropped = empty( $def_opts[ $opt_pre . '_img_crop' ] ) ? _x( 'uncropped', 'option value', 'wpsso' ) : _x( 'cropped', 'option value', 'wpsso' );
+			$defs = $this->p->opt->get_defaults();
+
+			$img_width   = empty( $defs[ $opt_pre . '_img_width' ] ) ? 0 : $defs[ $opt_pre . '_img_width' ];
+			$img_height  = empty( $defs[ $opt_pre . '_img_height' ] ) ? 0 : $defs[ $opt_pre . '_img_height' ];
+			$img_cropped = empty( $defs[ $opt_pre . '_img_crop' ] ) ? _x( 'uncropped', 'option value', 'wpsso' ) : _x( 'cropped', 'option value', 'wpsso' );
 
 			return $img_width . 'x' . $img_height . 'px ' . $img_cropped;
 		}
