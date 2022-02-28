@@ -261,6 +261,8 @@ if ( ! class_exists( 'Wpsso' ) ) {
 						if ( isset( $defined_constants[ 'user' ][ $constant_name ] ) ) {
 
 							$this->options[ $key ] = $defined_constants[ 'user' ][ $constant_name ];
+
+							$this->options[ $key . ':disabled' ] = true;
 						}
 					}
 				}
@@ -821,16 +823,20 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			/**
 			 * Show constants.
 			 */
-			$defined_constants = get_defined_constants( true );
+			$defined_constants = get_defined_constants( $categorize = true );
+
 			$defined_constants[ 'user' ][ 'WPSSO_NONCE_NAME' ] = '********';
 
 			if ( is_multisite() ) {
 
-				$this->debug->show_html( SucomUtil::preg_grep_keys( '/^(MULTISITE|^SUBDOMAIN_INSTALL|.*_SITE)$/',
-					$defined_constants[ 'user' ] ), 'multisite constants' );
+				$ms_defined_constants = SucomUtil::preg_grep_keys( '/^(MULTISITE|^SUBDOMAIN_INSTALL|.*_SITE)$/', $defined_constants[ 'user' ] );
+
+				$this->debug->show_html( $ms_defined_constants, 'multisite constants' );
 			}
 
-			$this->debug->show_html( SucomUtil::preg_grep_keys( '/^WPSSO_/', $defined_constants[ 'user' ] ), 'wpsso constants' );
+			$wpsso_defined_constants = SucomUtil::preg_grep_keys( '/^WPSSO_/', $defined_constants[ 'user' ] );
+
+			$this->debug->show_html( $wpsso_defined_constants, 'wpsso constants' );
 
 			/**
 			 * Show active plugins.

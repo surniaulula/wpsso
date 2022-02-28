@@ -52,7 +52,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'head_tags_twitter_rows'          => 3,	// HTML Tags > Twitter tab.
 				'head_tags_schema_rows'           => 3,	// HTML Tags > Schema tab.
 				'head_tags_seo_other_rows'        => 3,	// HTML Tags > SEO and Others tab.
-			), $prio = 20 );
+			) );
 		}
 
 		private function maybe_set_vars() {
@@ -346,7 +346,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		}
 
 		/**
-		 * Plugin Settings > Image Sizes tab.
+		 * SSO > Advanced Settings > Plugin Settings > Image Sizes tab.
 		 */
 		public function filter_plugin_image_sizes_rows( $table_rows, $form ) {
 
@@ -361,35 +361,43 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>';
 
 			$table_rows[ 'og_img_size' ] = '' .
-				$form->get_th_html( _x( 'Open Graph (Facebook and oEmbed)', 'option label', 'wpsso' ), '', 'og_img_size' ) . 
+				$form->get_th_html( _x( 'Open Graph (Facebook and oEmbed)', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'og_img_size' ) . 
 				'<td class="blank">' . $form->get_no_input_image_dimensions( 'og_img' ) . '</td>';
 
 			$table_rows[ 'pin_img_size' ] = ( $pin_img_disabled ? $form->get_tr_hide( 'basic' ) : '' ) .
-				$form->get_th_html( _x( 'Pinterest Pin It', 'option label', 'wpsso' ), '', 'pin_img_size' ) . 
+				$form->get_th_html( _x( 'Pinterest Pin It', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'pin_img_size' ) . 
 				'<td class="blank">' . $form->get_no_input_image_dimensions( 'pin_img', $pin_img_disabled ) . $pin_img_msg . '</td>';
 
 			$table_rows[ 'schema_01x01_img_size' ] = '' .
-				$form->get_th_html( _x( 'Schema 1:1 (Google)', 'option label', 'wpsso' ), '', 'schema_1x1_img_size' ) . 
+				$form->get_th_html( _x( 'Schema 1:1 (Google Rich Results)', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'schema_1x1_img_size' ) . 
 				'<td class="blank">' . $form->get_no_input_image_dimensions( 'schema_1x1_img' ) . '</td>';
 
 			$table_rows[ 'schema_04x03_img_size' ] = '' .
-				$form->get_th_html( _x( 'Schema 4:3 (Google)', 'option label', 'wpsso' ), '', 'schema_4x3_img_size' ) . 
+				$form->get_th_html( _x( 'Schema 4:3 (Google Rich Results)', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'schema_4x3_img_size' ) . 
 				'<td class="blank">' . $form->get_no_input_image_dimensions( 'schema_4x3_img' ) . '</td>';
 
 			$table_rows[ 'schema_16x09_img_size' ] = '' .
-				$form->get_th_html( _x( 'Schema 16:9 (Google)', 'option label', 'wpsso' ), '', 'schema_16x9_img_size' ) . 
+				$form->get_th_html( _x( 'Schema 16:9 (Google Rich Results)', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'schema_16x9_img_size' ) . 
 				'<td class="blank">' . $form->get_no_input_image_dimensions( 'schema_16x9_img' ) . '</td>';
 
 			$table_rows[ 'schema_thumb_img_size' ] = '' .
-				$form->get_th_html( _x( 'Schema Thumbnail', 'option label', 'wpsso' ), '', 'schema_thumb_img_size' ) . 
+				$form->get_th_html( _x( 'Schema Thumbnail', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'schema_thumb_img_size' ) . 
 				'<td class="blank">' . $form->get_no_input_image_dimensions( 'thumb_img' ) . '</td>';
 
 			$table_rows[ 'tc_00_sum_img_size' ] = '' .
-				$form->get_th_html( _x( 'Twitter Summary Card', 'option label', 'wpsso' ), '', 'tc_sum_img_size' ) . 
+				$form->get_th_html( _x( 'Twitter Summary Card', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'tc_sum_img_size' ) . 
 				'<td class="blank">' . $form->get_no_input_image_dimensions( 'tc_sum_img' ) . '</td>';
 
 			$table_rows[ 'tc_01_lrg_img_size' ] = '' .
-				$form->get_th_html( _x( 'Twitter Large Image Summary Card', 'option label', 'wpsso' ), '', 'tc_lrg_img_size' ) . 
+				$form->get_th_html( _x( 'Twitter Large Image Summary Card', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'tc_lrg_img_size' ) . 
 				'<td class="blank">' . $form->get_no_input_image_dimensions( 'tc_lrg_img' ) . '</td>';
 
 			return $table_rows;
@@ -747,7 +755,8 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			}
 
 			$table_rows[ 'schema_type_for_tax' ] = $form->get_tr_hide( 'basic', $type_keys ) .
-				$form->get_th_html( _x( 'Type by Taxonomy', 'option label', 'wpsso' ), $css_id = '', $css_class = 'schema_type_for_tax' ) .
+				$form->get_th_html( _x( 'Type by Taxonomy', 'option label', 'wpsso' ),
+					$css_class = '', $css_id = 'schema_type_for_tax' ) .
 				'<td class="blank">' . $type_select . '</td>';
 
 			return $table_rows;
