@@ -260,7 +260,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added support for a new optional WPSSO_TITLE_TAG_DISABLE constant.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -1020,7 +1020,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 = 11.4.0-dev.2 =
 
-(2022/03/01) Updated the default Twitter Card image dimensions.
+(2022/03/01) Updated the default Twitter Card image dimensions. Added support for a new optional WPSSO_TITLE_TAG_DISABLE constant.
 
 = 11.3.1 =
 
