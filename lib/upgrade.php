@@ -864,6 +864,33 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 
 					$opts = SucomUtil::preg_grep_keys( '/^plugin_.*_col_.*$/', $opts, $invert = true );
 				}
+			
+				/**
+				 * If the Twitter Card image sizes have not been changed from their old default values, then update
+				 * the options to the new default values.
+				 */
+				if ( $prev_version > 0 && $prev_version <= 889 ) {
+
+					if ( 1200 === $opts[ 'tc_sum_img_width' ] && 630 === $opts[ 'tc_sum_img_height' ] && $opts[ 'tc_sum_img_crop' ] &&
+						'center' === $opts[ 'tc_sum_img_crop_x' ] && 'center' === $opts[ 'tc_sum_img_crop_y' ] ) {
+
+						$opts[ 'tc_sum_img_width' ]  = 1200;
+						$opts[ 'tc_sum_img_height' ] = 1200;
+						$opts[ 'tc_sum_img_crop' ]   = 1;
+						$opts[ 'tc_sum_img_crop_x' ] = 'center';
+						$opts[ 'tc_sum_img_crop_y' ] = 'center';
+					}
+
+					if ( 1200 === $opts[ 'tc_lrg_img_width' ] && 1800 === $opts[ 'tc_lrg_img_height' ] && ! $opts[ 'tc_lrg_img_crop' ] &&
+						'center' === $opts[ 'tc_lrg_img_crop_x' ] && 'center' === $opts[ 'tc_lrg_img_crop_y' ] ) {
+
+						$opts[ 'tc_lrg_img_width' ]  = 1200;
+						$opts[ 'tc_lrg_img_height' ] = 630;
+						$opts[ 'tc_lrg_img_crop' ]   = 1;
+						$opts[ 'tc_lrg_img_crop_x' ] = 'center';
+						$opts[ 'tc_lrg_img_crop_y' ] = 'center';
+					}
+				}
 			}
 
 			/**
