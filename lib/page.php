@@ -243,64 +243,63 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$this->p->debug->log( 'getting title for ' . $this->p->options[ 'plugin_title_tag' ] );
 			}
 
-			switch ( $this->p->options[ 'plugin_title_tag' ] ) {
+			if ( 'wp_title' === $this->p->options[ 'plugin_title_tag' ] ) {
 
-				case 'wp_title':
+				/**
+				 * If we have a site name, but no title, then add the tagline before returning the array.
+				 */
+				if ( ! empty( $title_parts[ 'site' ] ) && empty( $title_parts[ 'title' ] ) ) {
 
-					if ( ! empty( $title_parts[ 'site' ] ) ) {
-
-						$title_parts[ 'site' ] = $this->p->opt->get_text( 'plugin_title_part_site' );
-					}
-
-					/**
-					 * If we have a sitename, but no title, then compliment the site name with a tagline.
-					 */
-					if ( ! empty( $title_parts[ 'site' ] ) && empty( $title_parts[ 'title' ] ) ) {
-
-						$title_parts[ 'tagline' ] = $this->p->opt->get_text( 'plugin_title_part_tagline' );
-
-					} elseif ( ! empty( $title_parts[ 'tagline' ] ) ) {
-
-						$title_parts[ 'tagline' ] = $this->p->opt->get_text( 'plugin_title_part_tagline' );
-					}
-
-					break;
-
-				case 'seo_title':
-
-					$title_parts[ 'title' ] = $this->p->page->get_title( $mod, $md_key = 'seo_title', $max_len = 'seo_title' );
-
-					break;
-
-				case 'og_title':
-
-					$title_parts[ 'title' ] = $this->p->page->get_title( $mod, $md_key = 'og_title', $max_len = 'og_title' );
-
-					break;
-
-				case 'schema_title':
-
-					$title_parts[ 'title' ] = $this->p->page->get_title( $mod, $md_key = 'schema_title', $max_len = 'schema_title' );
-
-					break;
-
-				case 'schema_title_alt':
-
-					$title_parts[ 'title' ] = $this->p->page->get_title( $mod, $md_key = 'schema_title_alt', $max_len = 'schema_title_alt' );
-
-					break;
-			}
-
-			if ( 'wp_title' !== $this->p->options[ 'plugin_title_tag' ] ) {
-
-				if ( $mod[ 'is_home' ] ) {	// Home page (static or blog archive).
-
-					$title_parts[ 'tagline' ] = $this->p->opt->get_text( 'plugin_title_part_tagline' );
-
-					unset( $title_parts[ 'site' ] );	// The default title value is already the site name.
+					$title_parts[ 'tagline' ] = true;	// Add the tagline before returning the array.
 				}
 
-				unset( $title_parts[ 'page' ] );	// The title value already contains the page number.
+			} else {
+
+				unset( $title_parts[ 'page' ] );		// The title from WPSSO will include the page number.
+
+				if ( $mod[ 'is_home' ] ) {			// Home page (static or blog archive).
+
+					unset( $title_parts[ 'site' ] );	// The title from WPSSO will be the site name.
+
+					$title_parts[ 'tagline' ] = true;	// Add the tagline before returning the array.
+				}
+
+				switch ( $this->p->options[ 'plugin_title_tag' ] ) {
+	
+					case 'seo_title':
+	
+						$title_parts[ 'title' ] = $this->p->page->get_title( $mod, $md_key = 'seo_title', $max_len = 'seo_title' );
+	
+						break;
+	
+					case 'og_title':
+	
+						$title_parts[ 'title' ] = $this->p->page->get_title( $mod, $md_key = 'og_title', $max_len = 'og_title' );
+	
+						break;
+	
+					case 'schema_title':
+	
+						$title_parts[ 'title' ] = $this->p->page->get_title( $mod, $md_key = 'schema_title', $max_len = 'schema_title' );
+	
+						break;
+	
+					case 'schema_title_alt':
+	
+						$title_parts[ 'title' ] = $this->p->page->get_title( $mod, $md_key = 'schema_title_alt', $max_len = 'schema_title_alt' );
+	
+						break;
+				}
+			}
+	
+			if ( ! empty( $title_parts[ 'site' ] ) ) {
+
+				$title_parts[ 'site' ] = $this->p->opt->get_text( 'plugin_title_part_site' );
+			}
+
+			if ( ! empty( $title_parts[ 'tagline' ] ) ) {
+
+				$title_parts[ 'tagline' ] = $this->p->opt->get_text( 'plugin_title_part_tagline' );
 			}
 
 			/**
