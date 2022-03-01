@@ -53,6 +53,7 @@
 <p><strong>Optimized image sizes for social sites and search engines:</strong></p>
 
 <ul>
+<li>Google Merchant Feeds</li>
 <li>Open Graph (Facebook and oEmbed)</li>
 <li>Pinterest Pin It</li>
 <li>Schema 1:1 (Google Rich Results)</li>
@@ -60,7 +61,7 @@
 <li>Schema 16:9 (Google Rich Results)</li>
 <li>Schema Thumbnail</li>
 <li>Twitter Summary Card</li>
-<li>Twitter Large Image Summary Card</li>
+<li>Twitter Summary Card Large Image</li>
 <li>Video Preview Images</li>
 </ul>
 

@@ -55,6 +55,7 @@ WPSSO provides comprehensive Schema markup for posts, pages, custom post types, 
 
 <p><strong>Optimized image sizes for social sites and search engines:</strong></p>
 
+* Google Merchant Feeds
 * Open Graph (Facebook and oEmbed)
 * Pinterest Pin It
 * Schema 1:1 (Google Rich Results)
@@ -62,7 +63,7 @@ WPSSO provides comprehensive Schema markup for posts, pages, custom post types, 
 * Schema 16:9 (Google Rich Results)
 * Schema Thumbnail
 * Twitter Summary Card
-* Twitter Large Image Summary Card
+* Twitter Summary Card Large Image
 * Video Preview Images
 
 <p><strong>Fixes Google Search and Schema Markup Validator errors:</strong></p>
@@ -249,6 +250,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 <p>Under the SSO &gt; Update Manager settings page, select the "Development and Up" (for example) version filter for the WPSSO Core plugin and/or its add-ons. Save the plugin settings and click the "Check for Plugin Updates" button to fetch the latest version information. When new development versions are available, they will automatically appear under your WordPress Dashboard &gt; Updates page. You can always reselect the "Stable / Production" version filter at any time to reinstall the latest stable version.</p>
 
 <h3>Changelog / Release Notes</h3>
+
+**Version 11.4.0-dev.1 (2022/03/01)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Updated the default Twitter Card image dimensions.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
 
 **Version 11.3.1 (2022/02/28)**
 
@@ -1002,6 +1017,10 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 	* WordPress v5.0.
 
 == Upgrade Notice ==
+
+= 11.4.0-dev.1 =
+
+(2022/03/01) Updated the default Twitter Card image dimensions.
 
 = 11.3.1 =
 
