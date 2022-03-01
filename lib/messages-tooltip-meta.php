@@ -111,19 +111,25 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 
 				case 'tooltip-meta-pin_img_desc':	// Pinterest Description.
 
-					$text = __( 'A customized description for the Pinterest Pin It browser button.', 'wpsso' );
+					$text = __( 'A customized description for the Pinterest Pin It browser button.', 'wpsso' ) . ' ';
+
+					$text .= __( 'The default value is inherited from the social or SEO description.', 'wpsso' ) . ' ';
 
 				 	break;
 
 				case 'tooltip-meta-tc_title':		// Twitter Card Title.
 
-					$text = __( 'A customized title for the Twitter Card title meta tag (all Twitter Card formats).', 'wpsso' );
+					$text = __( 'A customized title for the Twitter Card title meta tag (all Twitter Card formats).', 'wpsso' ) . ' ';
+
+					$text .= __( 'The default value is inherited from the social or SEO title.', 'wpsso' ) . ' ';
 
 				 	break;
 
 				case 'tooltip-meta-tc_desc':		// Twitter Card Description.
 
-					$text = __( 'A customized description for the Twitter Card description meta tag (all Twitter Card formats).', 'wpsso' );
+					$text = __( 'A customized description for the Twitter Card description meta tag (all Twitter Card formats).', 'wpsso' ) . ' ';
+
+					$text .= __( 'The default value is inherited from the social or SEO description.', 'wpsso' ) . ' ';
 
 				 	break;
 
@@ -174,6 +180,8 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 
 					$text = __( 'A customized image ID for the Pinterest Pin It browser button.', 'wpsso' ) . ' ';
 
+					$text .= __( 'The default value is inherited from the Schema markup or priority image.', 'wpsso' ) . ' ';
+
 					$text .= '<em>' . __( 'This option is disabled if a custom image URL is entered.', 'wpsso' ) . '</em>';
 
 				 	break;
@@ -181,6 +189,8 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 				case 'tooltip-meta-pin_img_url':	// or an Image URL.
 
 					$text = __( 'A customized image URL (instead of an image ID) for the Pinterest Pin It browser button.', 'wpsso' ) . ' ';
+
+					$text .= __( 'The default value is inherited from the Schema markup or priority image.', 'wpsso' ) . ' ';
 
 					$text .= '<em>' . __( 'This option is disabled if a custom image ID is selected.', 'wpsso' ) . '</em>';
 
@@ -191,6 +201,8 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 
 					$text = __( 'A customized image ID for the Twitter Card image.', 'wpsso' ) . ' ';
 
+					$text .= __( 'The default value is inherited from the priority image.', 'wpsso' ) . ' ';
+
 					$text .= '<em>' . __( 'This option is disabled if a custom image URL is entered.', 'wpsso' ) . '</em>';
 
 				 	break;
@@ -199,6 +211,8 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 				case 'tooltip-meta-tc_sum_img_url':	// or an Image URL.
 
 					$text = __( 'A customized image URL (instead of an image ID) for the Twitter Card image.', 'wpsso' ) . ' ';
+
+					$text .= __( 'The default value is inherited from the priority image.', 'wpsso' ) . ' ';
 
 					$text .= '<em>' . __( 'This option is disabled if a custom image ID is selected.', 'wpsso' ) . '</em>';
 

@@ -34,13 +34,14 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 					if ( preg_match( '/^tooltip-(schema_([0-9]+)x([0-9]+))_img_size$/', $msg_key, $matches ) ) {
 
-						$opt_pre      = $matches[ 1 ];
-						$ratio_msg    = $matches[ 2 ] . ':' . $matches[ 3 ];
-						$def_img_dims = $this->get_def_img_dims( $opt_pre );
+						$opt_pre       = $matches[ 1 ];
+						$ratio_msg     = $matches[ 2 ] . ':' . $matches[ 3 ];
+						$def_img_dims  = $this->get_def_img_dims( $opt_pre );
+						$min_img_width = $this->p->cf[ 'head' ][ 'limit_min' ][ $opt_pre . '_img_width' ];
 
-						$text = sprintf( __( 'The %1$s image dimensions used for Schema meta tags and JSON-LD markup (the default dimensions are %2$s).', 'wpsso' ), $ratio_msg, $def_img_dims ) . ' ';
+						$text = sprintf( __( 'The %1$s dimensions used for Schema markup images (default dimensions are %2$s).', 'wpsso' ), $ratio_msg, $def_img_dims ) . ' ';
 
-						$text .= sprintf( __( 'The minimum image width required by Google is %dpx.', 'wpsso' ), $this->p->cf[ 'head' ][ 'limit_min' ][ $opt_pre . '_img_width' ] ). ' ';
+						$text .= sprintf( __( 'The minimum image width required by Google is %dpx.', 'wpsso' ), $min_img_width ). ' ';
 					}
 
 					break;
@@ -49,7 +50,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 
 					$def_img_dims = $this->get_def_img_dims( 'thumb' );
 
-					$text = sprintf( __( 'The image dimensions used for the Schema "%1$s" property and the "%2$s" HTML tag (the default dimensions are %3$s).', 'wpsso' ), 'thumbnailUrl', 'meta name thumbnail', $def_img_dims );
+					$text = sprintf( __( 'The dimensions used for the Schema "%1$s" property and "%2$s" HTML tag (default dimensions are %3$s).', 'wpsso' ), 'thumbnailUrl', 'meta name thumbnail', $def_img_dims );
 
 					break;
 

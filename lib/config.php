@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '11.3.1',	// Plugin version.
+					'version'     => '11.4.0-dev.1',	// Plugin version.
 					'opt_version' => '887',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1412,14 +1412,26 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'tc_site'           => '',			// Twitter Business @username (localized).
 					'tc_type_singular'  => 'summary_large_image',	// Twitter Card for Post / Page Image.
 					'tc_type_default'   => 'summary',		// Twitter Card Type by Default.
+
+					/**
+					 * Twitter Summary Card.
+					 *
+					 * See https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary.
+					 */
 					'tc_sum_img_width'  => 1200,
-					'tc_sum_img_height' => 630,
+					'tc_sum_img_height' => 1200,
 					'tc_sum_img_crop'   => 1,
 					'tc_sum_img_crop_x' => 'center',
 					'tc_sum_img_crop_y' => 'center',
+
+					/**
+					 * Twitter Summary Card Large Image.
+					 *
+					 * See https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image.
+					 */
 					'tc_lrg_img_width'  => 1200,
-					'tc_lrg_img_height' => 1800,
-					'tc_lrg_img_crop'   => 0,
+					'tc_lrg_img_height' => 630,
+					'tc_lrg_img_crop'   => 1,
 					'tc_lrg_img_crop_x' => 'center',
 					'tc_lrg_img_crop_y' => 'center',
 
@@ -2907,6 +2919,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_desc_len'        => 156,
 					'seo_desc_len'           => 156,
 					'tc_desc_len'            => 160,
+					'tc_sum_img_width'       => 144,
+					'tc_sum_img_height'      => 144,
+					'tc_lrg_img_width'       => 300,
+					'tc_lrg_img_height'      => 157,
+					'schema_16x9_img_height' => 675,
 					'thumb_img_width'        => 300,
 					'thumb_img_height'       => 200,
 					'org_logo_width'         => 112,
@@ -2915,6 +2932,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'limit_max' => array(
 					'og_img_ratio'        => 3.000,
 					'schema_headline_len' => 110,
+					'tc_sum_img_width'    => 4096,
+					'tc_sum_img_height'   => 4096,
+					'tc_lrg_img_width'    => 4096,
+					'tc_lrg_img_height'   => 4096,
 				),
 
 				/**

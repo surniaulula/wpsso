@@ -396,7 +396,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'<td class="blank">' . $form->get_no_input_image_dimensions( 'tc_sum_img' ) . '</td>';
 
 			$table_rows[ 'tc_01_lrg_img_size' ] = '' .
-				$form->get_th_html( _x( 'Twitter Large Image Summary Card', 'option label', 'wpsso' ),
+				$form->get_th_html( _x( 'Twitter Summary Card Large Image', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'tc_lrg_img_size' ) . 
 				'<td class="blank">' . $form->get_no_input_image_dimensions( 'tc_lrg_img' ) . '</td>';
 

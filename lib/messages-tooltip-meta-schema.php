@@ -33,25 +33,33 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 				 */
 				case 'tooltip-meta-schema_title':	// Schema Name.
 
-					$text = __( 'A customized name / title for the Schema "name" property.', 'wpsso' );
+					$text = __( 'A customized name (aka title) for the Schema "name" property.', 'wpsso' ) . ' ';
+
+					$text .= __( 'The default value is inherited from the SEO title.', 'wpsso' ) . ' ';
 
 				 	break;
 
 				case 'tooltip-meta-schema_title_alt':	// Schema Alternate Name.
 
-					$text = __( 'A customized alternate name / title for the Schema "alternateName" property.', 'wpsso' );
+					$text = __( 'A customized alternate name (aka title) for the Schema "alternateName" property.', 'wpsso' ) . ' ';
+
+					$text .= __( 'The default value is inherited from the Schema name or SEO title.', 'wpsso' ) . ' ';
 
 				 	break;
 
 				case 'tooltip-meta-schema_title_bc':	// Schema Breadcrumb Name.
 
-					$text = __( 'A short title used for the Schema and/or HTML breadcrumb item name.', 'wpsso' );
+					$text = __( 'A short title used for the Schema and/or HTML breadcrumb item name.', 'wpsso' ) . ' ';
+
+					$text .= __( 'The default value is inherited from the Schema alternate name, Schema name, or SEO title.', 'wpsso' ) . ' ';
 
 				 	break;
 
 				case 'tooltip-meta-schema_desc':	// Schema Description.
 
-					$text = __( 'A customized description for the Schema "description" property.', 'wpsso' );
+					$text = __( 'A customized description for the Schema "description" property.', 'wpsso' ) . ' ';
+
+					$text .= __( 'The default value is inherited from the SEO description.', 'wpsso' ) . ' ';
 
 				 	break;
 
@@ -79,7 +87,9 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 				case 'tooltip-meta-schema_headline':	// Headline.
 
-					$text = __( 'The headline for the Schema CreativeWork type and/or its sub-types.', 'wpsso' );
+					$text = __( 'The headline for the Schema CreativeWork type and/or its sub-types.', 'wpsso' ) . ' ';
+
+					$text .= __( 'The default value is inherited from the Schema alternate name, Schema name, or SEO title.', 'wpsso' ) . ' ';
 
 				 	break;
 

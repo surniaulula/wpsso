@@ -844,7 +844,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			return $def_checked;
 		}
 
-		protected function get_def_img_dims( $opt_pre ) {
+		public function get_def_img_dims( $opt_pre ) {
 
 			$defs = $this->p->opt->get_defaults();
 

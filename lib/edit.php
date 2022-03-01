@@ -239,11 +239,11 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 
 			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_media_prio_video_rows', $table_rows, $form, $head_info, $mod );
 
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_media_twitter_rows', $table_rows, $form, $head_info, $mod );
-
 			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_media_schema_rows', $table_rows, $form, $head_info, $mod );
 
 			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_media_pinterest_rows', $table_rows, $form, $head_info, $mod );
+
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_media_twitter_rows', $table_rows, $form, $head_info, $mod );
 
 			return $table_rows;
 		}
@@ -275,64 +275,6 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			);
 
 			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
-		}
-
-		/**
-		 * Twitter Card
-		 *
-		 * App and Player cards do not have a $size_name.
-		 *
-		 * Only show custom image options for the Summary and Summary Large Image cards. 
-		 */
-		public function filter_metabox_sso_edit_media_twitter_rows( $table_rows, $form, $head_info, $mod ) {
-
-			if ( ! $mod[ 'is_public' ] ) {
-
-				return $table_rows;
-			}
-
-			list( $card_type, $card_label, $size_name, $tc_prefix ) = $this->p->tc->get_card_info( $mod, $head_info );
-
-			if ( ! empty( $card_label ) ) {
-
-				$form_rows[ 'subsection_tc' ] = array(
-					'td_class' => 'subsection',
-					'header'   => 'h4',
-					'label'    => $card_label,
-				);
-
-				if ( empty( $size_name ) ) {
-
-					$form_rows[ 'subsection_tc_msg' ] = array(
-						'table_row' => '<td colspan="2"><p class="status-msg">' .
-							sprintf( __( 'No priority media options for the %s.', 'wpsso' ),
-								$card_label ) . '</p></td>',
-					);
-
-				} else {
-
-					$media_request = array( 'pid' );
-					$media_info    = $this->p->media->get_media_info( $size_name, $media_request, $mod, $md_pre = 'og' );
-
-					$form_rows[ $tc_prefix . '_img_id' ] = array(
-						'th_class' => 'medium',
-						'label'    => _x( 'Image ID', 'option label', 'wpsso' ),
-						'tooltip'  => 'meta-' . $tc_prefix . '_img_id',
-						'content'  => $form->get_input_image_upload( $tc_prefix . '_img', $media_info[ 'pid' ] ),
-					);
-
-					$form_rows[ $tc_prefix . '_img_url' ] = array(
-						'th_class' => 'medium',
-						'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
-						'tooltip'  => 'meta-' . $tc_prefix . '_img_url',
-						'content'  => $form->get_input_image_url( $tc_prefix . '_img' ),
-					);
-				}
-			}
-
-			$table_rows = $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
-
-			return $table_rows;
 		}
 
 		public function filter_metabox_sso_edit_media_schema_rows( $table_rows, $form, $head_info, $mod ) {
@@ -414,6 +356,64 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			);
 
 			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
+		}
+
+		/**
+		 * Twitter Card
+		 *
+		 * App and Player cards do not have a $size_name.
+		 *
+		 * Only show custom image options for the Summary and Summary Large Image cards. 
+		 */
+		public function filter_metabox_sso_edit_media_twitter_rows( $table_rows, $form, $head_info, $mod ) {
+
+			if ( ! $mod[ 'is_public' ] ) {
+
+				return $table_rows;
+			}
+
+			list( $card_type, $card_label, $size_name, $tc_prefix ) = $this->p->tc->get_card_info( $mod, $head_info );
+
+			if ( ! empty( $card_label ) ) {
+
+				$form_rows[ 'subsection_tc' ] = array(
+					'td_class' => 'subsection',
+					'header'   => 'h4',
+					'label'    => $card_label,
+				);
+
+				if ( empty( $size_name ) ) {
+
+					$form_rows[ 'subsection_tc_msg' ] = array(
+						'table_row' => '<td colspan="2"><p class="status-msg">' .
+							sprintf( __( 'No priority media options for the %s.', 'wpsso' ),
+								$card_label ) . '</p></td>',
+					);
+
+				} else {
+
+					$media_request = array( 'pid' );
+					$media_info    = $this->p->media->get_media_info( $size_name, $media_request, $mod, $md_pre = 'og' );
+
+					$form_rows[ $tc_prefix . '_img_id' ] = array(
+						'th_class' => 'medium',
+						'label'    => _x( 'Image ID', 'option label', 'wpsso' ),
+						'tooltip'  => 'meta-' . $tc_prefix . '_img_id',
+						'content'  => $form->get_input_image_upload( $tc_prefix . '_img', $media_info[ 'pid' ] ),
+					);
+
+					$form_rows[ $tc_prefix . '_img_url' ] = array(
+						'th_class' => 'medium',
+						'label'    => _x( 'or an Image URL', 'option label', 'wpsso' ),
+						'tooltip'  => 'meta-' . $tc_prefix . '_img_url',
+						'content'  => $form->get_input_image_url( $tc_prefix . '_img' ),
+					);
+				}
+			}
+
+			$table_rows = $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
+
+			return $table_rows;
 		}
 
 		public function filter_metabox_sso_edit_visibility_rows( $table_rows, $form, $head_info, $mod ) {

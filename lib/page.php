@@ -2118,14 +2118,13 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		 *
 		 * Examples:
 		 *
+		 * 	$md_key = 'schema_title' will return array( 'schema_title', 'seo_title' ).
+		 * 	$md_key = 'schema_title_alt' will return array( 'schema_title_alt', 'schema_title', 'seo_title' ).
 		 * 	$md_key = 'schema_title_bc' will return array( 'schema_title_bc', 'schema_title_alt', 'schema_title', 'seo_title' ).
-		 *
+		 * 	$md_key = 'schema_title_headline' will return array( 'schema_title_headline', 'schema_title_alt', 'schema_title', 'seo_title' ).
 		 * 	$md_key = 'tc_title' will return array( 'tc_title', 'og_title', 'seo_title' ).
-		 *
 		 * 	$md_key = 'og_title' will return array( 'og_title', 'seo_title' ).
-		 *
 		 * 	$md_key = 'seo_title' will return 'seo_title' (no need for a fallback array).
-		 *
 		 * 	$md_key = 'none' will return ''.
 		 */
 		private function sanitize_md_key( $md_key, $def_key = '' ) {

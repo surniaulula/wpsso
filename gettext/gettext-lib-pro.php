@@ -57,7 +57,7 @@ _x( 'Schema 4:3 (Google Rich Results)', 'option label', 'wpsso' );
 _x( 'Schema 16:9 (Google Rich Results)', 'option label', 'wpsso' );
 _x( 'Schema Thumbnail', 'option label', 'wpsso' );
 _x( 'Twitter Summary Card', 'option label', 'wpsso' );
-_x( 'Twitter Large Image Summary Card', 'option label', 'wpsso' );
+_x( 'Twitter Summary Card Large Image', 'option label', 'wpsso' );
 _x( 'Options to Show by Default', 'option label', 'wpsso' );
 _x( 'Validators', 'toolbar menu title', 'wpsso' );
 _x( 'Show %s Toolbar Menu', 'option label', 'wpsso' );

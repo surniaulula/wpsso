@@ -362,11 +362,11 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 						break;
 
-					case 'tooltip-pin_img_size':			// Pinterest Pin It Image Size.
+					case 'tooltip-pin_img_size':	// Pinterest Pin It Image Size.
 
 						$def_img_dims = $this->get_def_img_dims( 'pin' );
 
-						$text = sprintf( __( 'The dimensions used for the Pinterest Pin It browser button image (the default dimensions are %s).', 'wpsso' ), $def_img_dims );
+						$text = sprintf( __( 'The dimensions used for the Pinterest Pin It browser button image (default dimensions are %s).', 'wpsso' ), $def_img_dims ) . ' ';
 
 						break;
 
@@ -410,23 +410,19 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 						break;
 
-					case 'tooltip-tc_sum_img_size':	// Twitter Summary Card Image Size.
+					case 'tooltip-tc_sum_img_size':	// Twitter Summary Card.
 
 						$def_img_dims = $this->get_def_img_dims( $opt_pre = 'tc_sum' );
 
-						$text = sprintf( __( 'The image dimensions for the <a href="%1$s">Summary Card</a> (should be at least %2$s and less than %3$s).', 'wpsso' ), 'https://dev.twitter.com/docs/cards/types/summary-card', '120x120px', __( '1MB', 'wpsso' ) ) . ' ';
-
-						$text .= sprintf( __( 'The default image dimensions are %s.', 'wpsso' ), $def_img_dims );
+						$text = sprintf( __( 'The dimensions used for the <a href="%1$s">Summary Card</a> image should be at least %2$s (default dimensions are %3$s).', 'wpsso' ), 'https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary', '144x144px', $def_img_dims ) . ' ';
 
 						break;
 
-					case 'tooltip-tc_lrg_img_size':	// Twitter Large Image Summary Card Image Size.
+					case 'tooltip-tc_lrg_img_size':	// Twitter Summary Card Large Image.
 
 						$def_img_dims = $this->get_def_img_dims( $opt_pre = 'tc_lrg' );
 
-						$text = sprintf( __( 'The image dimensions for the <a href="%1$s">Large Image Summary Card</a> (must be larger than %2$s and less than %3$s).', 'wpsso' ), 'https://dev.twitter.com/docs/cards/large-image-summary-card', '280x150px', __( '1MB', 'wpsso' ) ) . ' ';
-
-						$text .= sprintf( __( 'The default image dimensions are %s.', 'wpsso' ), $def_img_dims );
+						$text = sprintf( __( 'The dimensions used for the <a href="%1$s">Large Image Summary Card</a> must be larger than %2$s (default dimensions are %3$s).', 'wpsso' ), 'https://developer.twitter.com/en/docs/twitter-for-websites/cards/overview/summary-card-with-large-image', '300x157px', $def_img_dims ) . ' ';
 
 						break;
 
