@@ -1,4 +1,4 @@
-<h1>WordPress Social and Search Optimization (SMO and SEO) - The Complete Structured Data Plugin for WordPress</h1>
+<h1>WordPress Social and Search Optimization - The Complete Structured Data Plugin for WordPress</h1>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>

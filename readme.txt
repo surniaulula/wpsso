@@ -1,4 +1,4 @@
-=== WordPress Social and Search Optimization (SMO and SEO) - The Complete Structured Data Plugin for WordPress ===
+=== WordPress Social and Search Optimization - The Complete Structured Data Plugin for WordPress ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
