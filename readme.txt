@@ -233,7 +233,7 @@ WPSSO provides comprehensive Schema markup for posts, pages, custom post types, 
 
 Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
-* {major} = Major structural code changes and/or incompatible API changes (ie. risk of breaking changes).hanges).
+* {major} = Major structural code changes and/or incompatible API changes (ie. breaking changes).hanges).
 * {minor} = New functionality was added or improved in a backwards-compatible manner.
 * {bugfix} = Backwards-compatible bug fixes or small improvements.
 * {stage}.{level} = Pre-production release: dev &lt; a (alpha) &lt; b (beta) &lt; rc (release candidate).
@@ -251,7 +251,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.4.0-dev.2 (2022/03/01)**
+**Version 11.4.0-dev.3 (2022/03/01)**
 
 * **New Features**
 	* None.
@@ -1018,7 +1018,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 11.4.0-dev.2 =
+= 11.4.0-dev.3 =
 
 (2022/03/01) Updated the default Twitter Card image dimensions. Added support for a new optional WPSSO_TITLE_TAG_DISABLE constant.
 
