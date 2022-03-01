@@ -286,7 +286,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* Added a new SSO &gt; Advanced Settings &gt; Default Text &gt; Product Variation Title option.
 * **Bugfixes**
-	* Fixed possible SSO &gt; Advanced Settings &gt; Integration &gt; Webpage Title Tag conflict with other SEO plugins.
+	* Fixed possible SSO &gt; Advanced Settings &gt; Integration &gt; Webpage Title Tag conflict with other SEO plugins. When another SEO plugin is detected, the Webpage Title Tag will default to "WordPress Title" instead of "SEO Title Tag".
 * **Developer Notes**
 	* None.
 * **Requires At Least**
