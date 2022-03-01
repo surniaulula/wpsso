@@ -408,12 +408,6 @@ table.sucom-settings td span.option-info a {
 	margin-left:4px;
 }
 
-table.sucom-settings td span.option-warning,
-table.sucom-settings td span.option-warning a {
-	color:#f00;
-	margin-left:4px;
-}
-
 table.sucom-settings td a.ext-anchor {
 	display:block;
 	position:relative;
