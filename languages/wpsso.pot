@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 11.4.0-dev.1\n"
+"Project-Id-Version: WPSSO Core 11.4.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1117,7 +1117,7 @@ msgid "Profile SSO - Social and Search Optimization"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:101 gettext/gettext-lib-config.php:109
-#: lib/admin-head-suggest-options.php:98 lib/messages.php:963
+#: lib/admin-head-suggest-options.php:98 lib/messages.php:975
 msgctxt "lib file description"
 msgid "Advanced Settings"
 msgstr ""
@@ -2608,7 +2608,7 @@ msgid "Stable / Production"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:6 lib/messages-tooltip-plugin.php:261
-#: lib/messages-tooltip-plugin.php:278 lib/messages.php:988
+#: lib/messages-tooltip-plugin.php:278 lib/messages.php:1000
 #: lib/pro/admin/advanced.php:86 lib/std/admin/advanced.php:83
 msgctxt "option label"
 msgid "Webpage Title Tag"
@@ -2949,7 +2949,7 @@ msgid "Options to Show by Default"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:62 lib/messages-tooltip-plugin.php:419
-#: lib/page.php:102 lib/pro/admin/advanced.php:421
+#: lib/page.php:108 lib/pro/admin/advanced.php:421
 #: lib/std/admin/advanced.php:418
 msgctxt "toolbar menu title"
 msgid "Validators"
@@ -5144,18 +5144,18 @@ msgstr ""
 msgid "Purchase the %s plugin."
 msgstr ""
 
-#: lib/admin-head-suggest-options.php:97 lib/messages.php:962
+#: lib/admin-head-suggest-options.php:97 lib/messages.php:974
 msgctxt "menu title"
 msgid "SSO"
 msgstr ""
 
-#: lib/admin-head-suggest-options.php:99 lib/messages.php:964
+#: lib/admin-head-suggest-options.php:99 lib/messages.php:976
 #: lib/submenu/advanced.php:47
 msgctxt "metabox title"
 msgid "HTML Tags"
 msgstr ""
 
-#: lib/admin-head-suggest-options.php:100 lib/messages.php:965
+#: lib/admin-head-suggest-options.php:100 lib/messages.php:977
 #: lib/submenu/advanced.php:237
 msgctxt "metabox tab"
 msgid "SEO and Others"
@@ -5706,7 +5706,7 @@ msgctxt "option label"
 msgid "Use Local Plugin Translations"
 msgstr ""
 
-#: lib/admin.php:2978 lib/util.php:2897
+#: lib/admin.php:2978 lib/util.php:2902
 msgctxt "option label"
 msgid "Disable Cache for Debugging"
 msgstr ""
@@ -6594,12 +6594,12 @@ msgid ""
 msgstr ""
 
 #: lib/media.php:1654 lib/post.php:706 lib/register.php:348 lib/term.php:555
-#: lib/user.php:540 lib/util.php:707 lib/util.php:2859
+#: lib/user.php:540 lib/util.php:707 lib/util.php:2864
 msgid "%s warning:"
 msgstr ""
 
 #: lib/media.php:1655 lib/post.php:707 lib/term.php:556 lib/user.php:541
-#: lib/util.php:708 lib/util.php:2860
+#: lib/util.php:708 lib/util.php:2865
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
@@ -6832,7 +6832,7 @@ msgstr ""
 msgid "Activate an AMP plugin to create and validate AMP pages."
 msgstr ""
 
-#: lib/messages-info-meta.php:314 lib/messages.php:865 lib/messages.php:1044
+#: lib/messages-info-meta.php:314 lib/messages.php:865 lib/messages.php:1056
 msgid "Schema markup is disabled."
 msgstr ""
 
@@ -8241,7 +8241,7 @@ msgstr ""
 msgid "Your theme does not support the <a href=\"%s\">WordPress Title Tag</a>."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:71 lib/messages.php:1050
+#: lib/messages-tooltip-plugin.php:71 lib/messages.php:928
 msgid "https://codex.wordpress.org/Title_Tag"
 msgstr ""
 
@@ -9223,7 +9223,7 @@ msgid ""
 "Pinterest Pin It browser button from suggesting these images."
 msgstr ""
 
-#: lib/messages-tooltip.php:345 lib/messages.php:1057
+#: lib/messages-tooltip.php:345 lib/messages.php:1061
 #: lib/submenu/general.php:367
 msgctxt "option label"
 msgid "Add Hidden Image for Pinterest"
@@ -9931,7 +9931,7 @@ msgctxt "option value"
 msgid "cropped"
 msgstr ""
 
-#: lib/messages.php:867 lib/messages.php:1115 lib/util-metabox.php:231
+#: lib/messages.php:867 lib/messages.php:1119 lib/util-metabox.php:231
 msgid "No options available."
 msgstr ""
 
@@ -9942,64 +9942,64 @@ msgid ""
 "smaller than 200x200px."
 msgstr ""
 
-#: lib/messages.php:909 lib/messages.php:983 lib/messages.php:1009
+#: lib/messages.php:909 lib/messages.php:995 lib/messages.php:1021
 msgid "Modifications disabled (SEO plugin detected)."
 msgstr ""
 
-#: lib/messages.php:947
+#: lib/messages.php:927
+msgid "<a href=\"%s\">Title Tag</a> not supported by theme"
+msgstr ""
+
+#: lib/messages.php:959
 msgctxt "wpsso"
 msgid "Activating the %s add-on is recommended for this option."
 msgstr ""
 
-#: lib/messages.php:967
+#: lib/messages.php:979
 msgid "Note that the <code>%s</code> HTML tag is currently disabled."
 msgstr ""
 
-#: lib/messages.php:969
+#: lib/messages.php:981
 msgid "You can re-enable this option under the %s tab."
 msgstr ""
 
-#: lib/messages.php:991
+#: lib/messages.php:1003
 msgid "Modifications disabled (%1$s option is not \"%2$s\")."
 msgstr ""
 
-#: lib/messages.php:1013
+#: lib/messages.php:1025
 msgid "Modifications disabled (<code>%s</code> tag disabled)."
 msgstr ""
 
-#: lib/messages.php:1038
+#: lib/messages.php:1050
 msgctxt "option comment"
 msgid "video preview images are enabled (and included first)"
 msgstr ""
 
-#: lib/messages.php:1049
-msgid "<a href=\"%s\">Title Tag</a> not supported by theme"
-msgstr ""
-
 #. translators: %s is the option name, linked to its settings page.
-#: lib/messages.php:1062
+#: lib/messages.php:1066
 msgid "Modifications disabled (%s option is unchecked)."
 msgstr ""
 
-#: lib/messages.php:1069
+#: lib/messages.php:1073
 msgctxt "option comment"
 msgid "video preview images are included first"
 msgstr ""
 
-#: lib/messages.php:1087
+#: lib/messages.php:1091
 msgid ""
 "Video discovery and service API modules are provided with the %s edition."
 msgstr ""
 
-#: lib/messages.php:1102
+#: lib/messages.php:1106
 msgid "WordPress is set to discourage search engines from indexing this site."
 msgstr ""
 
-#: lib/messages.php:1105
+#: lib/messages.php:1109
 msgid "The WordPress sitemaps functionality is disabled."
 msgstr ""
 
-#: lib/messages.php:1112
+#: lib/messages.php:1116
 msgid ""
 "A theme or plugin is returning <code>false</code> for the "
 "'wp_sitemaps_enabled' filter."
@@ -10242,15 +10242,15 @@ msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr ""
 
-#: lib/page.php:950 lib/util-inline.php:303
+#: lib/page.php:956 lib/util-inline.php:303
 msgid "Page %1$d of %2$d"
 msgstr ""
 
-#: lib/page.php:954
+#: lib/page.php:960
 msgid "Page %1$d"
 msgstr ""
 
-#: lib/page.php:2071
+#: lib/page.php:2077
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] ""
@@ -11553,144 +11553,144 @@ msgid ""
 "provider to have the missing function installed."
 msgstr ""
 
-#: lib/util.php:2861
+#: lib/util.php:2866
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:2901
+#: lib/util.php:2906
 msgid ""
 "Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds "
 "to execute."
 msgstr ""
 
-#: lib/util.php:2903
+#: lib/util.php:2908
 msgid ""
 "This is longer than the recommended maximum of %1$.3f seconds and may affect "
 "page load time."
 msgstr ""
 
-#: lib/util.php:2905
+#: lib/util.php:2910
 msgid ""
 "Please consider reviewing active plugin and theme functions hooked into the "
 "WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:2907
+#: lib/util.php:2912
 msgid ""
 "Activating the %1$s plugin and enabling the the %2$s option (to apply the "
 "filter consistently) may provide more information on the specific hooks or "
 "PHP code affecting performance."
 msgstr ""
 
-#: lib/util.php:3308
+#: lib/util.php:3313
 msgctxt "option label"
 msgid "The AMP Project Validator"
 msgstr ""
 
-#: lib/util.php:3309
+#: lib/util.php:3314
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr ""
 
-#: lib/util.php:3313
+#: lib/util.php:3318
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr ""
 
-#: lib/util.php:3314
+#: lib/util.php:3319
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/util.php:3318
+#: lib/util.php:3323
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr ""
 
-#: lib/util.php:3319
+#: lib/util.php:3324
 msgctxt "validator type"
 msgid "Microdata"
 msgstr ""
 
-#: lib/util.php:3323
+#: lib/util.php:3328
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr ""
 
-#: lib/util.php:3324
+#: lib/util.php:3329
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr ""
 
-#: lib/util.php:3328
+#: lib/util.php:3333
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/util.php:3329
+#: lib/util.php:3334
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr ""
 
-#: lib/util.php:3333
+#: lib/util.php:3338
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/util.php:3334
+#: lib/util.php:3339
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/util.php:3338
+#: lib/util.php:3343
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/util.php:3339
+#: lib/util.php:3344
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr ""
 
-#: lib/util.php:3343
+#: lib/util.php:3348
 msgctxt "option label"
 msgid "Schema Markup Validator"
 msgstr ""
 
-#: lib/util.php:3344
+#: lib/util.php:3349
 msgctxt "validator type"
 msgid "Schema Markup"
 msgstr ""
 
-#: lib/util.php:3348
+#: lib/util.php:3353
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/util.php:3349
+#: lib/util.php:3354
 msgctxt "validator type"
 msgid "Twitter Card"
 msgstr ""
 
-#: lib/util.php:3354
+#: lib/util.php:3359
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr ""
 
-#: lib/util.php:3355
+#: lib/util.php:3360
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name.
-#: lib/util.php:3517
+#: lib/util.php:3522
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3527
+#: lib/util.php:3532
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 

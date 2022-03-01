@@ -62,10 +62,16 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 *
 			 * See wordpress/wp-includes/general-template.php.
 			 */
-			add_filter( 'pre_get_document_title', array( $this, 'pre_get_document_title' ), WPSSO_TITLE_TAG_PRIORITY, 1 );
-			add_filter( 'document_title_separator', array( $this, 'document_title_separator' ), WPSSO_TITLE_TAG_PRIORITY, 1 );
-			add_filter( 'document_title_parts', array( $this, 'document_title_parts' ), WPSSO_TITLE_TAG_PRIORITY, 1 );
-			add_filter( 'document_title', array( $this, 'document_title' ), WPSSO_TITLE_TAG_PRIORITY, 1 );
+			$title_tag_disabled = SucomUtil::get_const( 'WPSSO_TITLE_TAG_DISABLED' );
+			$title_tag_prio     = WPSSO_TITLE_TAG_PRIORITY;
+
+			if ( ! $title_tag_disabled ) {
+
+				add_filter( 'pre_get_document_title', array( $this, 'pre_get_document_title' ), $title_tag_prio, 1 );
+				add_filter( 'document_title_separator', array( $this, 'document_title_separator' ), $title_tag_prio, 1 );
+				add_filter( 'document_title_parts', array( $this, 'document_title_parts' ), $title_tag_prio, 1 );
+				add_filter( 'document_title', array( $this, 'document_title' ), $title_tag_prio, 1 );
+			}
 		}
 
 		/**

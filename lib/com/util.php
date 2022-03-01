@@ -1282,13 +1282,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_const( $const, $undef = null ) {
 
-			if ( defined( $const ) ) {
-
-				return constant( $const );
-
-			}
-
-			return $undef;
+			return defined( $const ) ? constant( $const ) : $undef;
 		}
 
 		/**

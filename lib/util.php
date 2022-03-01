@@ -2450,6 +2450,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 		public function is_title_tag_disabled() {
 
+			if ( SucomUtil::get_const( 'WPSSO_TITLE_TAG_DISABLED' ) ) {
+
+				return true;
+			}
+
 			return current_theme_supports( 'title-tag' ) ? false : true;
 		}
 

@@ -910,12 +910,24 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 				return '<p class="status-msg smaller disabled">' . $html . '</p>';
 
+			} elseif ( SucomUtil::get_const( 'WPSSO_TITLE_TAG_DISABLED' ) ) {
+
+				return '';
+
 			} elseif ( $this->p->util->is_title_tag_disabled() ) {
 			
 				return $this->doc_title_disabled();
 			}
 
 			return '';
+		}
+
+		public function doc_title_disabled() {
+
+			$text = sprintf( __( '<a href="%s">Title Tag</a> not supported by theme', 'wpsso' ),
+				__( 'https://codex.wordpress.org/Title_Tag', 'wpsso' ) );
+
+			return '<span class="option-warning">' . $text . '</span>';
 		}
 
 		/**
@@ -1042,14 +1054,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 			return $this->p->util->is_schema_disabled() ?
 				'<p class="status-msg smaller disabled">' . __( 'Schema markup is disabled.', 'wpsso' ) . '</p>' : '';
-		}
-
-		public function doc_title_disabled() {
-
-			$text = sprintf( __( '<a href="%s">Title Tag</a> not supported by theme', 'wpsso' ),
-				__( 'https://codex.wordpress.org/Title_Tag', 'wpsso' ) );
-
-			return '<span class="option-warning">' . $text . '</span>';
 		}
 
 		public function pin_img_disabled( $extra_css_class = '' ) {
