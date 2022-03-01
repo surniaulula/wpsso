@@ -363,6 +363,10 @@ table.sucom-settings td p.status-msg.smaller {
 	font-size:0.85em;
 }
 
+table.sucom-settings td p.status-msg.long_name {
+	width:320px;
+}
+
 table.sucom-settings td p.pro-feature-msg a {
 	color:#999;
 }

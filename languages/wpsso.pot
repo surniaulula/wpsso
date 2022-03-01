@@ -1117,7 +1117,7 @@ msgid "Profile SSO - Social and Search Optimization"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:101 gettext/gettext-lib-config.php:109
-#: lib/admin-head-suggest-options.php:98 lib/messages.php:975
+#: lib/admin-head-suggest-options.php:98 lib/messages.php:969
 msgctxt "lib file description"
 msgid "Advanced Settings"
 msgstr ""
@@ -2608,7 +2608,7 @@ msgid "Stable / Production"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:6 lib/messages-tooltip-plugin.php:261
-#: lib/messages-tooltip-plugin.php:278 lib/messages.php:1000
+#: lib/messages-tooltip-plugin.php:278 lib/messages.php:994
 #: lib/pro/admin/advanced.php:86 lib/std/admin/advanced.php:83
 msgctxt "option label"
 msgid "Webpage Title Tag"
@@ -5144,18 +5144,18 @@ msgstr ""
 msgid "Purchase the %s plugin."
 msgstr ""
 
-#: lib/admin-head-suggest-options.php:97 lib/messages.php:974
+#: lib/admin-head-suggest-options.php:97 lib/messages.php:968
 msgctxt "menu title"
 msgid "SSO"
 msgstr ""
 
-#: lib/admin-head-suggest-options.php:99 lib/messages.php:976
+#: lib/admin-head-suggest-options.php:99 lib/messages.php:970
 #: lib/submenu/advanced.php:47
 msgctxt "metabox title"
 msgid "HTML Tags"
 msgstr ""
 
-#: lib/admin-head-suggest-options.php:100 lib/messages.php:977
+#: lib/admin-head-suggest-options.php:100 lib/messages.php:971
 #: lib/submenu/advanced.php:237
 msgctxt "metabox tab"
 msgid "SEO and Others"
@@ -6832,7 +6832,7 @@ msgstr ""
 msgid "Activate an AMP plugin to create and validate AMP pages."
 msgstr ""
 
-#: lib/messages-info-meta.php:314 lib/messages.php:865 lib/messages.php:1056
+#: lib/messages-info-meta.php:314 lib/messages.php:865 lib/messages.php:1049
 msgid "Schema markup is disabled."
 msgstr ""
 
@@ -8241,7 +8241,7 @@ msgstr ""
 msgid "Your theme does not support the <a href=\"%s\">WordPress Title Tag</a>."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:71 lib/messages.php:928
+#: lib/messages-tooltip-plugin.php:71 lib/messages.php:919
 msgid "https://codex.wordpress.org/Title_Tag"
 msgstr ""
 
@@ -9223,7 +9223,7 @@ msgid ""
 "Pinterest Pin It browser button from suggesting these images."
 msgstr ""
 
-#: lib/messages-tooltip.php:345 lib/messages.php:1061
+#: lib/messages-tooltip.php:345 lib/messages.php:1054
 #: lib/submenu/general.php:367
 msgctxt "option label"
 msgid "Add Hidden Image for Pinterest"
@@ -9931,7 +9931,7 @@ msgctxt "option value"
 msgid "cropped"
 msgstr ""
 
-#: lib/messages.php:867 lib/messages.php:1119 lib/util-metabox.php:231
+#: lib/messages.php:867 lib/messages.php:1112 lib/util-metabox.php:231
 msgid "No options available."
 msgstr ""
 
@@ -9942,64 +9942,70 @@ msgid ""
 "smaller than 200x200px."
 msgstr ""
 
-#: lib/messages.php:909 lib/messages.php:995 lib/messages.php:1021
+#: lib/messages.php:911 lib/messages.php:989 lib/messages.php:1015
 msgid "Modifications disabled (SEO plugin detected)."
 msgstr ""
 
-#: lib/messages.php:927
-msgid "<a href=\"%s\">Title Tag</a> not supported by theme"
+#: lib/messages.php:915 wpsso.php:628
+msgctxt "option comment"
+msgid "%s constant is true"
 msgstr ""
 
-#: lib/messages.php:959
+#: lib/messages.php:921
+msgctxt "option comment"
+msgid "Theme does not support the <a href=\"%s\">WordPress Title Tag</a>."
+msgstr ""
+
+#: lib/messages.php:953
 msgctxt "wpsso"
 msgid "Activating the %s add-on is recommended for this option."
 msgstr ""
 
-#: lib/messages.php:979
+#: lib/messages.php:973
 msgid "Note that the <code>%s</code> HTML tag is currently disabled."
 msgstr ""
 
-#: lib/messages.php:981
+#: lib/messages.php:975
 msgid "You can re-enable this option under the %s tab."
 msgstr ""
 
-#: lib/messages.php:1003
+#: lib/messages.php:997
 msgid "Modifications disabled (%1$s option is not \"%2$s\")."
 msgstr ""
 
-#: lib/messages.php:1025
+#: lib/messages.php:1019
 msgid "Modifications disabled (<code>%s</code> tag disabled)."
 msgstr ""
 
-#: lib/messages.php:1050
+#: lib/messages.php:1043
 msgctxt "option comment"
 msgid "video preview images are enabled (and included first)"
 msgstr ""
 
 #. translators: %s is the option name, linked to its settings page.
-#: lib/messages.php:1066
+#: lib/messages.php:1059
 msgid "Modifications disabled (%s option is unchecked)."
 msgstr ""
 
-#: lib/messages.php:1073
+#: lib/messages.php:1066
 msgctxt "option comment"
 msgid "video preview images are included first"
 msgstr ""
 
-#: lib/messages.php:1091
+#: lib/messages.php:1084
 msgid ""
 "Video discovery and service API modules are provided with the %s edition."
 msgstr ""
 
-#: lib/messages.php:1106
+#: lib/messages.php:1099
 msgid "WordPress is set to discourage search engines from indexing this site."
 msgstr ""
 
-#: lib/messages.php:1109
+#: lib/messages.php:1102
 msgid "The WordPress sitemaps functionality is disabled."
 msgstr ""
 
-#: lib/messages.php:1116
+#: lib/messages.php:1109
 msgid ""
 "A theme or plugin is returning <code>false</code> for the "
 "'wp_sitemaps_enabled' filter."
@@ -11692,11 +11698,6 @@ msgstr ""
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
 #: lib/util.php:3532
 msgid "%1$s for %2$s ID %3$d"
-msgstr ""
-
-#: wpsso.php:628
-msgctxt "option comment"
-msgid "%s constant is true"
 msgstr ""
 
 #: wpsso.php:631

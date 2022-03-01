@@ -904,30 +904,24 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 		 */
 		public function maybe_doc_title_disabled() {
 
+			$html = '';
+
 			if ( ! empty( $this->p->avail[ 'seo' ][ 'any' ] ) ) {
 
 				$html = __( 'Modifications disabled (SEO plugin detected).', 'wpsso' );
 
-				return '<p class="status-msg smaller disabled">' . $html . '</p>';
+			} elseif ( SucomUtil::get_const( 'WPSSO_TITLE_TAG_DISABLE' ) ) {
 
-			} elseif ( SucomUtil::get_const( 'WPSSO_TITLE_TAG_DISABLED' ) ) {
-
-				return '';
+				$html = sprintf( _x( '%s constant is true', 'option comment', 'wpsso' ), 'WPSSO_TITLE_TAG_DISABLE' );
 
 			} elseif ( $this->p->util->is_title_tag_disabled() ) {
-			
-				return $this->doc_title_disabled();
+		
+				$title_tag_url = __( 'https://codex.wordpress.org/Title_Tag', 'wpsso' );
+
+				$html = sprintf( _x( 'Theme does not support the <a href="%s">WordPress Title Tag</a>.', 'option comment', 'wpsso' ), $title_tag_url );
 			}
 
-			return '';
-		}
-
-		public function doc_title_disabled() {
-
-			$text = sprintf( __( '<a href="%s">Title Tag</a> not supported by theme', 'wpsso' ),
-				__( 'https://codex.wordpress.org/Title_Tag', 'wpsso' ) );
-
-			return '<span class="option-warning">' . $text . '</span>';
+			return $html ? '<p class="status-msg smaller long_name">' . $html . '</p>' : '';
 		}
 
 		/**
@@ -1003,7 +997,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					$html = sprintf( __( 'Modifications disabled (%1$s option is not "%2$s").', 'wpsso' ), $opt_link, $opt_val );
 				}
 
-				return '<p class="status-msg smaller disabled">' . $html . '</p>';
+				return '<p class="status-msg smaller">' . $html . '</p>';
 			}
 
 			return '';
@@ -1025,7 +1019,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					$html = sprintf( __( 'Modifications disabled (<code>%s</code> tag disabled).', 'wpsso' ), $mt_name );
 				}
 
-				return '<p class="status-msg smaller disabled">' . $html . '</p>';
+				return '<p class="status-msg smaller">' . $html . '</p>';
 			}
 
 			return '';
@@ -1046,14 +1040,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 		 */
 		public function maybe_preview_images_first() {
 
-			return empty( $this->form->options[ 'og_vid_prev_img' ] ) ?
-				'' : ' ' . _x( 'video preview images are enabled (and included first)', 'option comment', 'wpsso' );
+			return empty( $this->form->options[ 'og_vid_prev_img' ] ) ? '' : ' ' . _x( 'video preview images are enabled (and included first)',
+				'option comment', 'wpsso' );
 		}
 
 		public function maybe_schema_disabled() {
 
-			return $this->p->util->is_schema_disabled() ?
-				'<p class="status-msg smaller disabled">' . __( 'Schema markup is disabled.', 'wpsso' ) . '</p>' : '';
+			return $this->p->util->is_schema_disabled() ? '<p class="status-msg smaller">' . __( 'Schema markup is disabled.', 'wpsso' ) . '</p>' : '';
 		}
 
 		public function pin_img_disabled( $extra_css_class = '' ) {

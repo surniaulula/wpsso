@@ -62,7 +62,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 *
 			 * See wordpress/wp-includes/general-template.php.
 			 */
-			$title_tag_disabled = SucomUtil::get_const( 'WPSSO_TITLE_TAG_DISABLED' );
+			$title_tag_disabled = SucomUtil::get_const( 'WPSSO_TITLE_TAG_DISABLE' );
 			$title_tag_prio     = WPSSO_TITLE_TAG_PRIORITY;
 
 			if ( ! $title_tag_disabled ) {

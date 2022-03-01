@@ -24,7 +24,7 @@ WPSSO_ADMIN_DEBUG_LOG                    = false	// Log only back-end debug mess
 WPSSO_ADMIN_SCRIPTS_PRIORITY             = -1000
 WPSSO_BLOCK_ASSETS_PRIORITY              = -1000
 WPSSO_ARTICLE_SECTIONS_LIST              = WPSSO_PLUGINDIR . 'share/article-sections.txt'
-WPSSO_CACHE_DISABLE                      = false	// Disable the head markup transient cache for debugging purposes.
+WPSSO_CACHE_DISABLE                      = false	// Disable head markup transient cache for debugging purposes.
 WPSSO_CACHE_DIR                          = trailingslashit( WP_CONTENT_DIR ) . 'cache/wpsso/'
 WPSSO_CACHE_URL                          = content_url( 'cache/wpsso/' )
 WPSSO_CONTENT_BLOCK_FILTER_OUTPUT        = true 	// Monitor and control incorrectly coded filter output.
@@ -75,6 +75,7 @@ WPSSO_SCHEMA_RECIPE_INSTRUCTIONS_MAX     = 40
 WPSSO_SCHEMA_SAMEAS_URL_MAX              = 5
 WPSSO_SELECT_PERSON_NAMES_MAX            = 100
 WPSSO_SITE_OPTIONS_NAME                  = 'wpsso_site_options'
+WPSSO_TITLE_TAG_DISABLE                  = false	// Disable filters for the WordPress title tag.
 WPSSO_TITLE_TAG_PRIORITY                 = 1000
 WPSSO_UNKNOWN_SEO_PLUGIN_ACTIVE          = false	// Disable SEO related meta tags.
 
