@@ -2591,10 +2591,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$owner_roles      = $this->p->cf[ 'wp' ][ 'roles' ][ 'owner' ];
-			$site_owners      = SucomUtilWP::get_roles_user_select( $owner_roles );
-			$org_types_select = $this->p->util->get_form_cache( 'org_types_select', $add_none = false );
-			$place_names      = $this->p->util->get_form_cache( 'place_names', $add_none = true );
+			$owner_roles = $this->p->cf[ 'wp' ][ 'roles' ][ 'owner' ];
+			$site_owners = SucomUtilWP::get_roles_user_select( $owner_roles );
 
 			$table_rows[ 'site_pub_schema_type' ] = '' . 
 				$this->form->get_th_html( _x( 'WebSite Publisher Type', 'option label', 'wpsso' ), $css_class = '', $css_id = 'site_pub_schema_type' ) . 
@@ -2620,19 +2618,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$form->get_th_html_locale( '<a href="https://developers.google.com/search/docs/data-types/article#logo-guidelines">' .
 				_x( 'Organization Banner URL', 'option label', 'wpsso' ) . '</a>', $css_class = '', $css_id = 'site_org_banner_url' ) . 
 				'<td>' . $form->get_input_locale( 'site_org_banner_url', $css_class = 'wide is_required' ) . '</td>';
-
-			$table_rows[ 'site_org_schema_type' ] = $form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
-				$this->form->get_th_html( _x( 'Organization Schema Type', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'site_org_schema_type' ) . 
-				'<td>' . $this->form->get_select( 'site_org_schema_type', $org_types_select, $css_class = 'schema_type', $css_id = '',
-					$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
-						$event_args = 'schema_org_types' ) . '</td>';
-
-			$table_rows[ 'site_org_place_id' ] = $form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
-				$this->form->get_th_html( _x( 'Organization Location', 'option label', 'wpsso' ),
-					$css_class = '', $css_id = 'site_org_place_id' ) . 
-				'<td>' . $this->form->get_select( 'site_org_place_id', $place_names, $css_class = 'long_name', $css_id = '',
-					$is_assoc = true ) . '</td>';
 		}
 
 		public function add_advanced_plugin_settings_table_rows( array &$table_rows, $form, $network = false ) {

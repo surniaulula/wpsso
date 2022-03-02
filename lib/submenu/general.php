@@ -292,6 +292,9 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						return $this->p->msgs->get_schema_disabled_rows( $table_rows );
 					}
 
+					$org_types_select = $this->p->util->get_form_cache( 'org_types_select', $add_none = false );
+					$place_names      = $this->p->util->get_form_cache( 'place_names', $add_none = true );
+
 					/**
 					 * Google and Schema settings.
 					 */
@@ -304,6 +307,19 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					 * Schema settings.
 					 */
 					$this->add_schema_publisher_type_table_rows( $table_rows, $this->form );	// Also used in the Essential Settings page.
+
+					$table_rows[ 'site_org_schema_type' ] = $this->form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
+						$this->form->get_th_html( _x( 'Organization Schema Type', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'site_org_schema_type' ) . 
+						'<td>' . $this->form->get_select( 'site_org_schema_type', $org_types_select, $css_class = 'schema_type', $css_id = '',
+							$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
+								$event_args = 'schema_org_types' ) . '</td>';
+
+					$table_rows[ 'site_org_place_id' ] = $this->form->get_tr_on_change( 'site_pub_schema_type', 'organization' ) .
+						$this->form->get_th_html( _x( 'Organization Location', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'site_org_place_id' ) . 
+						'<td>' . $this->form->get_select( 'site_org_place_id', $place_names, $css_class = 'long_name', $css_id = '',
+							$is_assoc = true ) . '</td>';
 
 					$table_rows[ 'schema_aggr_offers' ] = $this->form->get_tr_hide( 'basic', 'schema_aggr_offers' ) .
 						$this->form->get_th_html( _x( 'Aggregate Offers by Currency', 'option label', 'wpsso' ),

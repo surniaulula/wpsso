@@ -5616,161 +5616,151 @@ msgstr ""
 msgid "Fetching %s notifications..."
 msgstr ""
 
-#: lib/admin.php:2600
+#: lib/admin.php:2598
 msgctxt "option label"
 msgid "WebSite Publisher Type"
 msgstr ""
 
-#: lib/admin.php:2608
+#: lib/admin.php:2606
 msgctxt "option label"
 msgid "WebSite Publisher Person"
 msgstr ""
 
-#: lib/admin.php:2616 lib/options.php:1158
+#: lib/admin.php:2614 lib/options.php:1158
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr ""
 
-#: lib/admin.php:2621 lib/options.php:1163
+#: lib/admin.php:2619 lib/options.php:1163
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr ""
 
-#: lib/admin.php:2625
-msgctxt "option label"
-msgid "Organization Schema Type"
-msgstr ""
-
 #: lib/admin.php:2632
-msgctxt "option label"
-msgid "Organization Location"
-msgstr ""
-
-#: lib/admin.php:2647
 msgctxt "option label"
 msgid "Remove Settings on Uninstall"
 msgstr ""
 
-#: lib/admin.php:2652
+#: lib/admin.php:2637
 msgctxt "option label"
 msgid "Use Local Plugin Translations"
 msgstr ""
 
-#: lib/admin.php:2660 lib/util.php:2902
+#: lib/admin.php:2645 lib/util.php:2902
 msgctxt "option label"
 msgid "Disable Cache for Debugging"
 msgstr ""
 
-#: lib/admin.php:2668
+#: lib/admin.php:2653
 msgctxt "option label"
 msgid "Add HTML Debug Messages"
 msgstr ""
 
-#: lib/admin.php:2684
+#: lib/admin.php:2669
 msgctxt "option comment"
 msgid "in %s"
 msgstr ""
 
-#: lib/admin.php:2701
+#: lib/admin.php:2686
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr ""
 
-#: lib/admin.php:2722
+#: lib/admin.php:2707
 msgid "Return to %s"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:2753
+#: lib/admin.php:2738
 msgid "Plugin <strong>activated</strong>."
 msgstr ""
 
 #. translators: %1$s is the URL, %2$s is the short plugin name.
-#: lib/admin.php:2774
+#: lib/admin.php:2759
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-"
 "ons</a> to check if newer versions are available."
 msgstr ""
 
 #. translators: %1$s is the URL.
-#: lib/admin.php:2783
+#: lib/admin.php:2768
 msgid ""
 "You may <a href=\"%1$s\">refresh the update information for WordPress "
 "(plugins, themes and translations)</a> to check if newer versions are "
 "available."
 msgstr ""
 
-#: lib/admin.php:2903
+#: lib/admin.php:2888
 msgid "Please select a %1$s settings file to import."
 msgstr ""
 
-#: lib/admin.php:2910
+#: lib/admin.php:2895
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr ""
 
-#: lib/admin.php:2917
+#: lib/admin.php:2902
 msgid ""
 "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr ""
 
-#: lib/admin.php:2931
+#: lib/admin.php:2916
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr ""
 
-#: lib/admin.php:2941
+#: lib/admin.php:2926
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr ""
 
-#: lib/admin.php:2951
+#: lib/admin.php:2936
 msgid "Import of plugin and add-on settings is complete."
 msgstr ""
 
-#: lib/admin.php:3296
+#: lib/admin.php:3281
 msgctxt "plugin action link"
 msgid "Plugin Details and Update"
 msgstr ""
 
-#: lib/admin.php:3297
+#: lib/admin.php:3282
 msgctxt "plugin action link"
 msgid "Add-on Details and Update"
 msgstr ""
 
-#: lib/admin.php:3302
+#: lib/admin.php:3287
 msgctxt "plugin action link"
 msgid "Plugin Details"
 msgstr ""
 
-#: lib/admin.php:3303
+#: lib/admin.php:3288
 msgctxt "plugin action link"
 msgid "Add-on Details"
 msgstr ""
 
-#: lib/admin.php:3309
+#: lib/admin.php:3294
 msgctxt "plugin action link"
 msgid "Plugin Details and Install"
 msgstr ""
 
-#: lib/admin.php:3310
+#: lib/admin.php:3295
 msgctxt "plugin action link"
 msgid "Add-on Details and Install"
 msgstr ""
 
-#: lib/admin.php:3316
+#: lib/admin.php:3301
 msgctxt "plugin action link"
 msgid "About Page"
 msgstr ""
 
-#: lib/admin.php:3323
+#: lib/admin.php:3308
 msgctxt "plugin action link"
 msgid "Documentation"
 msgstr ""
 
-#: lib/admin.php:3330
+#: lib/admin.php:3315
 msgctxt "plugin action link"
 msgid "%s Support"
 msgstr ""
 
-#: lib/admin.php:3337
+#: lib/admin.php:3322
 msgctxt "plugin action link"
 msgid "Community Forum"
 msgstr ""
@@ -6397,13 +6387,13 @@ msgctxt "option label"
 msgid "Snippet Max. Length"
 msgstr ""
 
-#: lib/edit.php:517 lib/submenu/general.php:330
+#: lib/edit.php:517 lib/submenu/general.php:346
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
 
-#: lib/edit.php:518 lib/edit.php:533 lib/submenu/general.php:330
-#: lib/submenu/general.php:343
+#: lib/edit.php:518 lib/edit.php:533 lib/submenu/general.php:346
+#: lib/submenu/general.php:359
 msgctxt "option comment"
 msgid "-1 for no limit"
 msgstr ""
@@ -6418,7 +6408,7 @@ msgctxt "option label"
 msgid "Video Max. Previews"
 msgstr ""
 
-#: lib/edit.php:532 lib/submenu/general.php:343
+#: lib/edit.php:532 lib/submenu/general.php:359
 msgctxt "option comment"
 msgid "seconds"
 msgstr ""
@@ -9224,7 +9214,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip.php:345 lib/messages.php:1054
-#: lib/submenu/general.php:367
+#: lib/submenu/general.php:383
 msgctxt "option label"
 msgid "Add Hidden Image for Pinterest"
 msgstr ""
@@ -10951,102 +10941,112 @@ msgctxt "option label"
 msgid "Facebook Application ID"
 msgstr ""
 
-#: lib/submenu/general.php:299
+#: lib/submenu/general.php:302
 msgctxt "option label"
 msgid "Google Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:309
+#: lib/submenu/general.php:312
+msgctxt "option label"
+msgid "Organization Schema Type"
+msgstr ""
+
+#: lib/submenu/general.php:319
+msgctxt "option label"
+msgid "Organization Location"
+msgstr ""
+
+#: lib/submenu/general.php:325
 msgctxt "option label"
 msgid "Aggregate Offers by Currency"
 msgstr ""
 
-#: lib/submenu/general.php:312
+#: lib/submenu/general.php:328
 msgctxt "option comment"
 msgid "incompatible with <a href=\"%s\">price drop appearance</a>"
 msgstr ""
 
-#: lib/submenu/general.php:316
+#: lib/submenu/general.php:332
 msgctxt "option label"
 msgid "Add Text / Article Body Properties"
 msgstr ""
 
-#: lib/submenu/general.php:326
+#: lib/submenu/general.php:342
 msgctxt "option label"
 msgid "Robots Snippet Max. Length"
 msgstr ""
 
-#: lib/submenu/general.php:333
+#: lib/submenu/general.php:349
 msgctxt "option label"
 msgid "Robots Image Preview Size"
 msgstr ""
 
-#: lib/submenu/general.php:339
+#: lib/submenu/general.php:355
 msgctxt "option label"
 msgid "Robots Video Max. Previews"
 msgstr ""
 
-#: lib/submenu/general.php:350
+#: lib/submenu/general.php:366
 msgctxt "option label"
 msgid "Pinterest Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:355
+#: lib/submenu/general.php:371
 msgctxt "option label"
 msgid "Add \"nopin\" to Site Header Image"
 msgstr ""
 
-#: lib/submenu/general.php:358 lib/submenu/general.php:364
+#: lib/submenu/general.php:374 lib/submenu/general.php:380
 msgctxt "option comment"
 msgid "recommended"
 msgstr ""
 
-#: lib/submenu/general.php:361
+#: lib/submenu/general.php:377
 msgctxt "option label"
 msgid "Add Pinterest \"nopin\" to Images"
 msgstr ""
 
-#: lib/submenu/general.php:370
+#: lib/submenu/general.php:386
 msgctxt "option comment"
 msgid "recommended (see help text for caveats)"
 msgstr ""
 
-#: lib/submenu/general.php:377
+#: lib/submenu/general.php:393
 msgctxt "option value"
 msgid "Summary"
 msgstr ""
 
-#: lib/submenu/general.php:378
+#: lib/submenu/general.php:394
 msgctxt "option value"
 msgid "Summary Large Image"
 msgstr ""
 
-#: lib/submenu/general.php:382
+#: lib/submenu/general.php:398
 msgctxt "option label"
 msgid "Twitter Card for Singular with Image"
 msgstr ""
 
-#: lib/submenu/general.php:387
+#: lib/submenu/general.php:403
 msgctxt "option label"
 msgid "Twitter Card Type by Default"
 msgstr ""
 
-#: lib/submenu/general.php:396
+#: lib/submenu/general.php:412
 msgctxt "option label"
 msgid "Ahrefs Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:401
+#: lib/submenu/general.php:417
 msgctxt "option label"
 msgid "Baidu Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:406
+#: lib/submenu/general.php:422
 msgctxt "option label"
 msgid "Bing Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:411
+#: lib/submenu/general.php:427
 msgctxt "option label"
 msgid "Yandex Website Verification ID"
 msgstr ""
