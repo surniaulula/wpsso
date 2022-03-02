@@ -36,6 +36,7 @@ div.sucom-metabox-tabs {
  */
 ul.sucom-metabox-tabs {
 	display:none;
+	white-space:nowrap;	/* Prevent inline-blocks from wrapping. */
 	list-style:none;
 	font-size:13px;
 	line-height:1em;
