@@ -41,29 +41,30 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 
 		public function get_tabbed( $metabox_id = '', $tabs = array(), $table_rows = array(), $args = array() ) {
 
-			$doing_ajax         = SucomUtilWP::doing_ajax();
-			$tab_keys           = array_keys( $tabs );
-			$default_tab        = '_' . reset( $tab_keys );		// Must start with an underscore.
-			$class_metabox_tabs = 'sucom-metabox-tabs';
-			$class_link         = 'sucom-tablink';
-			$class_tabset       = 'sucom-tabset';
-			$container_id       = '';
-			$metabox_html       = "\n";
+			$doing_ajax    = SucomUtilWP::doing_ajax();
+			$tab_keys      = array_keys( $tabs );
+			$tab_layout    = empty( $args[ 'layout' ] ) ? 'horizontal' : $args[ 'layout' ];
+			$default_tab   = '_' . reset( $tab_keys );	// Must start with an underscore.
+			$class_mb_tabs = 'sucom-metabox-tabs';
+			$class_link    = 'sucom-tablink';
+			$class_tabset  = 'sucom-tabset';
+			$container_id  = '';
+			$metabox_html  = "\n";
 
 			if ( ! empty( $metabox_id ) ) {
 
-				$metabox_id         = '_' . trim( $metabox_id, '_' );		// Must start with an underscore.
-				$container_id       = $class_metabox_tabs . $metabox_id;
-				$class_metabox_tabs .= ' ' . $class_metabox_tabs . $metabox_id;
+				$metabox_id    = '_' . trim( $metabox_id, '_' );	// Must start with an underscore.
+				$container_id  = $class_mb_tabs . $metabox_id;
+				$class_mb_tabs .= ' ' . $class_mb_tabs . $metabox_id;
 			}
 
-			extract( array_merge( array(
-				'layout' => 'horizontal',	// 'horizontal', 'vertical', or 'responsive'.
-			), $args ) );
+			$filter_name = SucomUtil::sanitize_hookname( 'wpsso_metabox_tabs_layout' . $metabox_id );
 
-			$class_metabox_tabs .= ' ' . $layout;
-			$metabox_html       .= '<div class="' . $class_metabox_tabs . '"' . ( $container_id ? ' id="' . $container_id . '"' : '' ) . '>' . "\n";
-			$metabox_html       .= '<ul class="' . $class_metabox_tabs . '">';
+			$tab_layout = apply_filters( $filter_name, $tab_layout );
+
+			$class_mb_tabs .= ' ' . $tab_layout;
+			$metabox_html  .= '<div class="' . $class_mb_tabs . '"' . ( $container_id ? ' id="' . $container_id . '"' : '' ) . '>' . "\n";
+			$metabox_html  .= '<ul class="' . $class_mb_tabs . '">';
 
 			/**
 			 * Add the settings tab list.
@@ -86,7 +87,7 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 			}
 
 			$metabox_html .= '<li' . "\n" . 'class="tab_space end_tabs"></li>';
-			$metabox_html .= '</ul><!-- .' . $class_metabox_tabs . ' -->' . "\n\n";
+			$metabox_html .= '</ul><!-- .' . $class_mb_tabs . ' -->' . "\n\n";
 
 			/**
 			 * Add the settings table for each tab.
@@ -100,7 +101,7 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 						$class_tabset, $title_transl );
 			}
 
-			$metabox_html .= '</div><!-- .' . $class_metabox_tabs . ' -->' . "\n";
+			$metabox_html .= '</div><!-- .' . $class_mb_tabs . ' -->' . "\n";
 
 			if ( $doing_ajax ) {
 

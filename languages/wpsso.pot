@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 11.4.1-dev.2\n"
+"Project-Id-Version: WPSSO Core 11.4.1-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -5393,7 +5393,7 @@ msgstr ""
 #: lib/admin.php:1113 lib/admin.php:1124
 #: lib/messages-tooltip-meta-schema.php:488 lib/messages-tooltip-plugin.php:118
 #: lib/submenu/tools.php:56 lib/submenu/tools.php:101 lib/user.php:61
-#: lib/user.php:1749 lib/user.php:1856 lib/user.php:1987
+#: lib/user.php:1747 lib/user.php:1854 lib/user.php:1985
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -9921,7 +9921,7 @@ msgctxt "option value"
 msgid "cropped"
 msgstr ""
 
-#: lib/messages.php:867 lib/messages.php:1112 lib/util-metabox.php:231
+#: lib/messages.php:867 lib/messages.php:1112 lib/util-metabox.php:232
 msgid "No options available."
 msgstr ""
 
@@ -10398,7 +10398,7 @@ msgstr ""
 msgid "ajax request missing the post_id"
 msgstr ""
 
-#: lib/post.php:1916
+#: lib/post.php:1914
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -11150,7 +11150,7 @@ msgid ""
 "term ID %3$d in taxonomy %4$s (%5$s)."
 msgstr ""
 
-#: lib/term.php:972
+#: lib/term.php:970
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -11209,56 +11209,56 @@ msgstr ""
 msgid "Examples: CPA, Esq., M.D., P.E., PhD., PMP, RN"
 msgstr ""
 
-#: lib/user.php:1038
+#: lib/user.php:1036
 msgid "(not a Facebook Pages URL)"
 msgstr ""
 
-#: lib/user.php:1164
+#: lib/user.php:1162
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:1165
+#: lib/user.php:1163
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:1166
+#: lib/user.php:1164
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1675
+#: lib/user.php:1673
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/user.php:1768
+#: lib/user.php:1766
 msgid ""
 "Aborting task to add the %1$s role to content creators - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1783
+#: lib/user.php:1781
 msgid "A task to add the %1$s role for content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1824
+#: lib/user.php:1822
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1826 lib/user.php:1929 lib/util-cache.php:181
+#: lib/user.php:1824 lib/user.php:1927 lib/util-cache.php:181
 #: lib/util-cache.php:699
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
-#: lib/user.php:1875
+#: lib/user.php:1873
 msgid ""
 "Aborting task to remove the %1$s role from all users - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1890
+#: lib/user.php:1888
 msgid "A task to remove the %1$s role from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1927
+#: lib/user.php:1925
 msgid "The %1$s role has been removed from %2$d content creators."
 msgstr ""
 
@@ -11404,22 +11404,22 @@ msgid ""
 "refreshed."
 msgstr ""
 
-#: lib/util-metabox.php:263
+#: lib/util-metabox.php:264
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util-metabox.php:266
+#: lib/util-metabox.php:267
 msgctxt "option comment"
 msgid "show these options now"
 msgstr ""
 
-#: lib/util-metabox.php:271
+#: lib/util-metabox.php:272
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util-metabox.php:274
+#: lib/util-metabox.php:275
 msgctxt "option comment"
 msgid "show these rows now"
 msgstr ""
