@@ -263,7 +263,6 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added filters for menu and submenu titles:
 		* 'wpsso_menu_title' ( $title )
 		* 'wpsso_menu_your_sso_title' ( $title )
-		* 'wpsso_menu_add_person_title' ( $title )
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
