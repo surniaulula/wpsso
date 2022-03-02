@@ -257,8 +257,8 @@ table.sucom-settings th {
 	text-align:right;
 	vertical-align:top;
 	line-height:1.8em;
-	max-width:270px;
 	width:270px;
+	max-width:270px;
 }
 
 body.rtl table.sucom-settings th {
@@ -421,11 +421,15 @@ table.sucom-settings td.status {
 }
 
 table.sucom-settings th.medium,
-table.sucom-settings th.medium.textinfo,
 table.sucom-settings td.medium {
-	width:180px;
-	min-width:120px;
-	max-width:180px;
+	width:180px;		/* Default is 270px. */
+	min-width:110px;
+	max-width:180px;	/* Default is 270px. */
+}
+
+div.sucom-metabox-tabs.horizontal table.sucom-tabset_sso-tab_validators th.medium {
+	width:220px;		/* Default is 270px. */
+	max-width:220px;	/* Default is 270px. */
 }
 
 table.sucom-settings td.tid,
@@ -1053,6 +1057,7 @@ table.sucom-settings .fb_preview_box {
 
 table.sucom-settings .fb_preview_box_border {
 	padding:40px 20px;
+	max-width:602px;
 }
 
 table.sucom-settings .fb_preview_box {
@@ -1179,23 +1184,22 @@ table.sucom-settings .fb_preview_by {
 /**
  * Document SSO > Preview oEmbed tab.
  */
-div.sucom-tabset_sso-tab_prev_oembed table.sucom-settings tr td.wide {
-	width:100%;
-}
-
-table.sucom-settings .oembed_container {
+table.sucom-settings td.oembed_container {
+	padding:20px;
+	max-width:650px;
 	border:1px dotted #e0e0e0;
 	background-color:#e9eaed;
-	padding:20px;
 }
 
-table.sucom-settings .oembed_container > blockquote {
+table.sucom-settings td.oembed_container > blockquote {
 	display:none;
 }
 
-table.sucom-settings .oembed_container > iframe {
+table.sucom-settings td.oembed_container > iframe {
 	display:block;
-	min-width:600px;
+	width:652px;
+	min-width:652px;
+	max-width:652px;
 	margin:0 auto;
 }
 
