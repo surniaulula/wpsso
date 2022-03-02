@@ -363,31 +363,31 @@ if ( ! class_exists( 'SucomBFO' ) ) {
 				if ( is_array( $hook_info[ 'function' ] ) ) {	// Hook is a class method.
 
 					$class_name = '';
-	
+
 					$function_name = '';
-	
+
 					if ( is_object( $hook_info[ 'function' ][ 0 ] ) ) {
-	
+
 						$class_name = get_class( $hook_info[ 'function' ][ 0 ] );
-	
+
 					} elseif ( is_string( $hook_info[ 'function' ][ 0 ] ) ) {
-	
+
 						$class_name = $hook_info[ 'function' ][ 0 ];
 					}
-	
+
 					if ( is_string( $hook_info[ 'function' ][ 1 ] ) ) {
-	
+
 						$function_name = $hook_info[ 'function' ][ 1 ];
 					}
-	
+
 					$hook_name = $class_name . '::' . $function_name;
-	
+
 				} elseif ( is_string( $hook_info[ 'function' ] ) ) {	// Hook is a function.
-	
+
 					$hook_name = $hook_info[ 'function' ];
 				}
 			}
-	
+
 			return $hook_name;
 		}
 	}

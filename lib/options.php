@@ -505,7 +505,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 							$defs = $network ? $this->get_site_defaults() : $this->get_defaults();
 						}
-						
+
 						$adv_include = array(
 							'add_.*',
 							'og_type_for_.*',
@@ -534,7 +534,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 						foreach ( $adv_check as $key => $val ) {
 
 							if ( ! isset( $opts[ $key ] ) || $opts[ $key ] !== $val ) {
-							
+
 								$opts[ $key ] = $val;
 
 								$save_changes = true;	// Save the options.

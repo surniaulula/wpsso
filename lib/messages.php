@@ -915,7 +915,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				$html = sprintf( _x( '%s constant is true', 'option comment', 'wpsso' ), 'WPSSO_TITLE_TAG_DISABLE' );
 
 			} elseif ( $this->p->util->is_title_tag_disabled() ) {
-		
+
 				$title_tag_url = __( 'https://codex.wordpress.org/Title_Tag', 'wpsso' );
 
 				$html = sprintf( _x( 'Theme does not support the <a href="%s">WordPress Title Tag</a>.', 'option comment', 'wpsso' ), $title_tag_url );

@@ -2461,14 +2461,14 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		public function is_seo_title_disabled() {
 
 			if ( $this->is_title_tag_disabled() ) {
-			
+
 				return true;
-				
+
 			} elseif ( 'seo_title' !== $this->p->options[ 'plugin_title_tag' ] ) {
-			
+
 				return true;
 			}
-			
+
 			return false;
 		}
 

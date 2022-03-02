@@ -1046,9 +1046,9 @@ if ( ! class_exists( 'SucomCache' ) ) {
 					$cache_file = $this->base_dir . $file_name;
 
 					if ( ! $file_exp_secs ) {	// False or 0.
-					
+
 						if ( file_exists( $cache_file ) ) {
-						
+
 							unlink( $cache_file );
 						}
 

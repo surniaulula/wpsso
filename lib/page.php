@@ -266,7 +266,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				unset( $title_parts[ 'page' ] );	// The title from WPSSO includes the page number.
 			}
-	
+
 			if ( ! empty( $title_parts[ 'site' ] ) ) {
 
 				$title_parts[ 'site' ] = $this->p->opt->get_text( 'plugin_title_part_site' );
@@ -1340,7 +1340,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 
 				if ( empty( $desc_text ) ) {
-				
+
 					$desc_text = SucomUtil::get_site_description( $this->p->options );
 				}
 

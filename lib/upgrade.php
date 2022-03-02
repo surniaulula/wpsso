@@ -864,7 +864,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 
 					$opts = SucomUtil::preg_grep_keys( '/^plugin_.*_col_.*$/', $opts, $invert = true );
 				}
-			
+
 				/**
 				 * If the Twitter Card image sizes have not been changed from their old default values, then update
 				 * the options to the new default values.
