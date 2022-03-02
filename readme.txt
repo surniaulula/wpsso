@@ -260,7 +260,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added new filters:
+	* Added new filters for menus, limits, and tabs:
 		* 'wpsso_menu_title' ( $title )
 		* 'wpsso_menu_your_sso_title' ( $title )
 		* 'wpsso_input_limits_{option_key}' ( $limits )
@@ -1038,7 +1038,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 = 11.4.1-dev.3 =
 
-(2022/03/02) Removed dashicons from the submenu items. Added filters for menu and submenu titles.
+(2022/03/02) Removed dashicons from the submenu items. Added new filters for menus, limits, and tabs.
 
 = 11.4.0 =
 
