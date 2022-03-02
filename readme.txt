@@ -251,14 +251,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.4.0-dev.3 (2022/03/01)**
+**Version 11.4.0-rc.1 (2022/03/01)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Updated the default Twitter Card image dimensions.
 * **Bugfixes**
-	* None.
+	* Fixed possible missing site name and tagline values in the SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Integration &gt; Webpage Title Tag filters.
 * **Developer Notes**
 	* Added support for a new optional WPSSO_TITLE_TAG_DISABLE constant.
 * **Requires At Least**
@@ -1018,9 +1018,9 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 11.4.0-dev.3 =
+= 11.4.0-rc.1 =
 
-(2022/03/01) Updated the default Twitter Card image dimensions. Added support for a new optional WPSSO_TITLE_TAG_DISABLE constant.
+(2022/03/01) Fixed possible missing site name and tagline values in the Webpage Title Tag filters. Updated the default Twitter Card image dimensions. Added support for a new optional WPSSO_TITLE_TAG_DISABLE constant.
 
 = 11.3.1 =
 
