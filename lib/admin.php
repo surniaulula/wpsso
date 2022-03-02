@@ -282,11 +282,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 								$this->p->debug->log( 'loading classname ' . $classname . ' for menu id ' . $menu_id );
 							}
 
-							if ( ! empty( $info[ 'text_domain' ] ) ) {
-
-								$menu_name = _x( $menu_name, 'lib file description', $info[ 'text_domain' ] );
-							}
-
 							$this->submenu[ $menu_id ] = new $classname( $this->p, $menu_id, $menu_name, $menu_lib, $ext );
 
 						} elseif ( $this->p->debug->enabled ) {
@@ -296,80 +291,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					}
 				}
 			}
-		}
-
-		public function get_menu_dashicon_html( $menu_id, $css_class = '' ) {
-
-			$dashicon = $this->get_menu_dashicon( $menu_id );
-
-			return '<div class="' . trim( $css_class . ' dashicons-before dashicons-' . $dashicon ) . '"></div>';
-		}
-
-		public function get_menu_dashicon( $menu_id ) {
-
-			$dashicon = 'admin-generic';
-
-			if ( ! empty( $this->p->cf[ 'menu' ][ 'dashicons' ][ $menu_id ] ) ) {
-
-				$dashicon = $this->p->cf[ 'menu' ][ 'dashicons' ][ $menu_id ];
-
-			} elseif ( ! empty( $this->p->cf[ 'menu' ][ 'dashicons' ][ '*' ] ) ) {
-
-				$dashicon = $this->p->cf[ 'menu' ][ 'dashicons' ][ '*' ];
-			}
-
-			return $dashicon;
-		}
-
-		/**
-		 * Deprecated on 2020/11/25.
-		 */
-		public function plugin_pkg_info() {
-
-			_deprecated_function( __METHOD__ . '()', '2020/11/25', $replacement = __CLASS__ . '::get_pkg_info()' );	// Deprecation message.
-
-			return $this->get_pkg_info();
-		}
-
-		public function get_pkg_info() {
-
-			if ( ! empty( self::$cache_pkg_info ) ) {	// Only execute once.
-
-				return self::$cache_pkg_info;
-			}
-
-			$pkg_info = array();	// Init a new pkg info array.
-
-			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
-
-				if ( empty( $info[ 'name' ] ) ) {	// Just in case.
-
-					continue;
-				}
-
-				$ext_pdir        = $this->p->check->pp( $ext, $li = false );
-				$ext_auth_id     = $this->p->check->get_ext_auth_id( $ext );
-				$ext_pp          = $ext_auth_id && $this->p->check->pp( $ext, $li = true, WPSSO_UNDEF ) === WPSSO_UNDEF ? true : false;
-				$ext_stat        = ( $ext_pp ? 'L' : ( $ext_pdir ? 'U' : 'S' ) ) . ( $ext_auth_id ? '*' : '' );
-				$ext_name_transl = _x( $info[ 'name' ], 'plugin name', 'wpsso' );
-				$pkg_pro_transl  = _x( $this->p->cf[ 'packages' ][ 'pro' ], 'package name', 'wpsso' );
-				$pkg_std_transl  = _x( $this->p->cf[ 'packages' ][ 'std' ], 'package name', 'wpsso' );
-
-				$pkg_info[ $ext ][ 'pdir' ]      = $ext_pdir;
-				$pkg_info[ $ext ][ 'pp' ]        = $ext_pp;
-				$pkg_info[ $ext ][ 'pkg' ]       = $ext_pp ? $pkg_pro_transl : $pkg_std_transl;
-				$pkg_info[ $ext ][ 'short' ]     = $info[ 'short' ];
-				$pkg_info[ $ext ][ 'short_pkg' ] = $info[ 'short' ] . ' ' . $pkg_info[ $ext ][ 'pkg' ];
-				$pkg_info[ $ext ][ 'short_pro' ] = $info[ 'short' ] . ' ' . $pkg_pro_transl;
-				$pkg_info[ $ext ][ 'short_std' ] = $info[ 'short' ] . ' ' . $pkg_std_transl;
-				$pkg_info[ $ext ][ 'gen' ]       = $info[ 'short' ] . ( isset( $info[ 'version' ] ) ? ' ' . $info[ 'version' ] . '/' . $ext_stat : '' );
-				$pkg_info[ $ext ][ 'name' ]      = $ext_name_transl;
-				$pkg_info[ $ext ][ 'name_pkg' ]  = SucomUtil::get_dist_name( $ext_name_transl, $pkg_info[ $ext ][ 'pkg' ] );
-				$pkg_info[ $ext ][ 'name_pro' ]  = SucomUtil::get_dist_name( $ext_name_transl, $pkg_pro_transl );
-				$pkg_info[ $ext ][ 'name_std' ]  = SucomUtil::get_dist_name( $ext_name_transl, $pkg_std_transl );
-			}
-
-			return self::$cache_pkg_info = $pkg_info;
 		}
 
 		public function add_network_admin_menus() {
@@ -430,18 +351,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				foreach ( $info[ 'lib' ][ $menu_lib ] as $menu_id => $menu_name ) {
 
-					if ( ! empty( $info[ 'text_domain' ] ) ) {
-
-						$menu_name = _x( $menu_name, 'lib file description', $info[ 'text_domain' ] );
-					}
-
-					$sort_key = $menu_name . '-' . $menu_id;
+					$menu_title = $this->get_info_menu_title( $info, $menu_lib, $menu_id );
 
 					$parent_slug = 'wpsso-' . $this->menu_id;
 
+					/**
+					 * Leave WPSSO Core submenu items in their original order.
+					 */
 					if ( 'wpsso' === $ext ) {
 
-						$unsorted_menu[] = array( $parent_slug, $menu_id, $menu_name, $menu_lib, $ext );
+						$unsorted_menu[] = array( $parent_slug, $menu_id, $menu_title, $menu_lib, $ext );
 
 						if ( false === $top_first_id ) {
 
@@ -450,9 +369,12 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						$top_last_id = $menu_id;
 
+					/**
+					 * Sort add-on submenu items.
+					 */
 					} else {
 
-						$sorted_menu[ $sort_key ] = array( $parent_slug, $menu_id, $menu_name, $menu_lib, $ext );
+						$sorted_menu[ $menu_title . '-' . $menu_id ] = array( $parent_slug, $menu_id, $menu_title, $menu_lib, $ext );
 
 						if ( false === $ext_first_id ) {
 
@@ -477,8 +399,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$css_class = 'top-last-submenu-page';	// Underlined with add-ons.
 
 					if ( empty( $ext_first_id ) ) {
+
 						$css_class .= ' no-add-ons';
+
 					} else {
+
 						$css_class .= ' with-add-ons';
 					}
 
@@ -497,7 +422,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( isset( $this->submenu[ $arg[ 1 ] ] ) ) {
 
-					$this->submenu[ $arg[ 1 ] ]->add_submenu_page( $arg[ 0 ], '', '', '', '', $css_class );
+					$this->submenu[ $arg[ 1 ] ]->add_submenu_page( $arg[ 0 ], $arg[ 1 ], $arg[ 2 ], $arg[ 3 ], $arg[ 4 ], $css_class );
 
 				} else {
 
@@ -507,7 +432,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/**
-		 * Add sub-menu items to existing menus (dashboard, plugin, profile, and setting).
+		 * Add sub-menu items to existing WordPress menus.
 		 */
 		public function add_admin_submenus() {
 
@@ -536,14 +461,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					foreach ( $info[ 'lib' ][ $menu_lib ] as $menu_id => $menu_name ) {
 
-						if ( ! empty( $info[ 'text_domain' ] ) ) {
+						$menu_title = $this->get_info_menu_title( $info, $menu_lib, $menu_id );
 
-							$menu_name = _x( $menu_name, 'lib file description', $info[ 'text_domain' ] );
-						}
-
-						$sort_key = $menu_name . '-' . $menu_id;
-
-						$sorted_menu[ $sort_key ] = array( $parent_slug, $menu_id, $menu_name, $menu_lib, $ext );
+						$sorted_menu[ $menu_title . '-' . $menu_id ] = array( $parent_slug, $menu_id, $menu_title, $menu_lib, $ext );
 					}
 				}
 
@@ -553,7 +473,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					if ( isset( $this->submenu[ $arg[ 1 ] ] ) ) {
 
-						$this->submenu[ $arg[ 1 ] ]->add_submenu_page( $arg[ 0 ] );
+						$this->submenu[ $arg[ 1 ] ]->add_submenu_page( $arg[ 0 ], $arg[ 1 ], $arg[ 2 ], $arg[ 3 ], $arg[ 4 ] );
 
 					} else {
 
@@ -716,7 +636,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$pkg_info    = $this->get_pkg_info();	// Returns an array from cache.
 			$page_title  = $pkg_info[ 'wpsso' ][ 'short_pkg' ] . ' - ' . $this->menu_name;
-			$menu_title  = _x( $this->p->cf[ 'menu' ][ 'title' ], 'menu title', 'wpsso' );
+			$menu_title  = $this->get_menu_title();
 			$cf_wp_admin = $this->p->cf[ 'wp' ][ 'admin' ];
 			$capability  = isset( $cf_wp_admin[ $this->menu_lib ][ 'cap' ] ) ? $cf_wp_admin[ $this->menu_lib ][ 'cap' ] : 'manage_options';
 			$icon_url    = 'none';	// Icon provided by WpssoStyle::add_admin_page_style().
@@ -728,16 +648,16 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			add_action( 'load-' . $this->pagehook, array( $this, 'load_setting_page' ) );
 		}
 
-		protected function add_submenu_page( $parent_slug, $menu_id = '', $menu_name = '', $menu_lib = '', $menu_ext = '', $css_class = '' ) {
+		protected function add_submenu_page( $parent_slug, $menu_id = '', $menu_title = '', $menu_lib = '', $menu_ext = '', $css_class = '' ) {
 
 			if ( empty( $menu_id ) ) {
 
 				$menu_id = $this->menu_id;
 			}
 
-			if ( empty( $menu_name ) ) {
+			if ( empty( $menu_title ) ) {
 
-				$menu_name = $this->menu_name;
+				$menu_title = $this->menu_name;
 			}
 
 			if ( empty( $menu_lib ) ) {
@@ -758,19 +678,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			/**
 			 * Add dashicons to the SSO menu items.
 			 */
-			if ( ( $menu_lib === 'submenu' || $menu_lib === 'sitesubmenu' ) ) {
-
-				$css_class     = trim( 'wpsso-menu-item wpsso-' . $menu_id . ' ' . $css_class );
-				$dashicon_html = $this->get_menu_dashicon_html( $menu_id, $css_class );
-				$menu_title    = $dashicon_html . '<div class="' . $css_class . ' menu-item-label">' . $menu_name . '</div>';
-
-			} else {
-
-				$menu_title = $menu_name;
-			}
-
+			$css_class   = trim( 'wpsso-menu-item wpsso-' . $menu_id . ' ' . $css_class );
+			$menu_title  = '<div class="' . $css_class . ' menu-item-label">' . $menu_title . '</div>';	// Wrap the title string.
 			$pkg_info    = $this->get_pkg_info();	// Returns an array from cache.
-			$page_title  = $pkg_info[ $menu_ext ][ 'short_pkg' ] . ' - ' . $menu_name;
+			$page_title  = $pkg_info[ $menu_ext ][ 'short_pkg' ] . ' - ' . $menu_title;
 			$cf_wp_admin = $this->p->cf[ 'wp' ][ 'admin' ];
 			$capability  = isset( $cf_wp_admin[ $menu_lib ][ 'cap' ] ) ? $cf_wp_admin[ $menu_lib ][ 'cap' ] : 'manage_options';
 			$menu_slug   = 'wpsso-' . $menu_id;
@@ -839,90 +750,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					}
 
 					break;
-			}
-
-			return $action_links;
-		}
-
-		/**
-		 * Plugin links for the addons and licenses settings page.
-		 */
-		public function get_ext_action_links( $ext, $info, &$tabindex = false ) {
-
-			$pkg_info = $this->get_pkg_info();	// Returns an array from cache.
-
-			$action_links = array();
-
-			if ( ! empty( $info[ 'base' ] ) ) {
-
-				$install_url = is_multisite() ?
-					network_admin_url( 'plugin-install.php', null ) :
-					get_admin_url( $blog_id = null, 'plugin-install.php' );
-
-				$details_url = add_query_arg( array(
-					'plugin'    => $info[ 'slug' ],
-					'tab'       => 'plugin-information',
-					'TB_iframe' => 'true',
-					'width'     => $this->p->cf[ 'wp' ][ 'tb_iframe' ][ 'width' ],
-					'height'    => $this->p->cf[ 'wp' ][ 'tb_iframe' ][ 'height' ],
-				), $install_url );
-
-				if ( SucomPlugin::is_plugin_installed( $info[ 'base' ] ) ) {	// Uses static local cache.
-
-					if ( SucomPlugin::have_plugin_update( $info[ 'base' ] ) ) {	// Uses static local cache.
-
-						$action_links[] = '<a href="' . $details_url . '" class="thickbox" tabindex="' . ++$tabindex . '">' .
-							'<font color="red">' . ( 'wpsso' === $ext ? _x( 'Plugin Details and Update',
-								'plugin action link', 'wpsso' ) : _x( 'Add-on Details and Update',
-									'plugin action link', 'wpsso' ) ) . '</font></a>';
-					} else {
-
-						$action_links[] = '<a href="' . $details_url . '" class="thickbox" tabindex="' . ++$tabindex . '">' .
-							( 'wpsso' === $ext ? _x( 'Plugin Details', 'plugin action link', 'wpsso' ) :
-								_x( 'Add-on Details', 'plugin action link', 'wpsso' ) ) . '</a>';
-					}
-
-				} else {
-
-					$action_links[] = '<a href="' . $details_url . '" class="thickbox" tabindex="' . ++$tabindex . '">' .
-						( 'wpsso' === $ext ? _x( 'Plugin Details and Install', 'plugin action link', 'wpsso' ) :
-							_x( 'Add-on Details and Install', 'plugin action link', 'wpsso' ) ) . '</a>';
-				}
-
-			} elseif ( ! empty( $info[ 'url' ][ 'home' ] ) ) {
-
-				$action_links[] = '<a href="' . $info[ 'url' ][ 'home' ] . '" tabindex="' . ++$tabindex . '">' .
-					_x( 'About Page', 'plugin action link', 'wpsso' ) . '</a>';
-			}
-
-			if ( ! empty( $info[ 'url' ][ 'docs' ] ) ) {
-
-				$action_links[] = '<a href="' . $info[ 'url' ][ 'docs' ] . '"' .
-					( false !== $tabindex ? ' tabindex="' . ++$tabindex . '"' : '' ) . '>' .
-						_x( 'Documentation', 'plugin action link', 'wpsso' ) . '</a>';
-			}
-
-			if ( ! empty( $info[ 'url' ][ 'support' ] ) && ! empty( $pkg_info[ $ext ][ 'pp' ] ) ) {
-
-				$action_links[] = '<a href="' . $info[ 'url' ][ 'support' ] . '"' .
-					( false !== $tabindex ? ' tabindex="' . ++$tabindex . '"' : '' ) . '>' .
-						sprintf( _x( '%s Support', 'plugin action link', 'wpsso' ),
-							_x( $this->p->cf[ 'packages' ][ 'pro' ], 'package name', 'wpsso' ) ) . '</a>';
-
-			} elseif ( ! empty( $info[ 'url' ][ 'forum' ] ) ) {
-
-				$action_links[] = '<a href="' . $info[ 'url' ][ 'forum' ] . '"' .
-					( false !== $tabindex ? ' tabindex="' . ++$tabindex . '"' : '' ) . '>' .
-						_x( 'Community Forum', 'plugin action link', 'wpsso' ) . '</a>';
-			}
-
-			if ( ! empty( $info[ 'url' ][ 'purchase' ] ) ) {
-
-				$action_links[] = $this->p->msgs->get( 'pro-purchase-link', array(
-					'ext'      => $ext,
-					'url'      => $info[ 'url' ][ 'purchase' ],
-					'tabindex' => false !== $tabindex ? ++$tabindex : false,
-				) );
 			}
 
 			return $action_links;
@@ -1027,110 +854,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$plugin_data->external = true;	// Let WordPress known that this is not a wordpress.org plugin.
 
 			return $plugin_data;
-		}
-
-		/**
-		 * Get the plugin readme and convert array elements to a plugin data object.
-		 */
-		public function get_plugin_data( $ext, $read_cache = true ) {
-
-			$data = new StdClass;
-
-			$info = $this->p->cf[ 'plugin' ][ $ext ];
-
-			$readme = $this->get_readme_info( $ext, $read_cache );
-
-			if ( empty( $readme ) ) {	// Make sure we got something back.
-
-				return array();
-			}
-
-			foreach ( array(
-
-				/**
-				 * Readme array => Plugin object.
-				 */
-				'plugin_name'       => 'name',
-				'plugin_slug'       => 'slug',
-				'base'              => 'plugin',
-				'stable_tag'        => 'version',
-				'tested_up_to'      => 'tested',
-				'requires_at_least' => 'requires',
-				'home'              => 'homepage',
-				'latest'            => 'download_link',
-				'author'            => 'author',
-				'upgrade_notice'    => 'upgrade_notice',
-				'last_updated'      => 'last_updated',
-				'sections'          => 'sections',
-				'remaining_content' => 'other_notes',	// Added to sections.
-				'banners'           => 'banners',
-				'icons'             => 'icons',
-			) as $readme_key => $prop_name ) {
-
-				switch ( $readme_key ) {
-
-					case 'base':	// From plugin config.
-
-						if ( ! empty( $info[ $readme_key ] ) ) {
-
-							$data->$prop_name = $info[ $readme_key ];
-						}
-
-						break;
-
-					case 'home':	// From plugin config.
-
-						if ( ! empty( $info[ 'url' ][ 'purchase' ] ) ) {	// Check for purchase url first.
-
-							$data->$prop_name = $info[ 'url' ][ 'purchase' ];
-
-						} elseif ( ! empty( $info[ 'url' ][ $readme_key ] ) ) {
-
-							$data->$prop_name = $info[ 'url' ][ $readme_key ];
-						}
-
-						break;
-
-					case 'latest':	// From plugin config.
-
-						if ( ! empty( $info[ 'url' ][ $readme_key ] ) ) {
-
-							$data->$prop_name = $info[ 'url' ][ $readme_key ];
-						}
-
-						break;
-
-					case 'banners':	// From plugin config.
-					case 'icons':	// From plugin config.
-
-						if ( ! empty( $info[ 'assets' ][ $readme_key ] ) ) {
-
-							$data->$prop_name = $info[ 'assets' ][ $readme_key ];	// Array with 1x / 2x images.
-						}
-
-						break;
-
-					case 'remaining_content':
-
-						if ( ! empty( $readme[ $readme_key ] ) ) {
-
-							$data->sections[ $prop_name ] = $readme[ $readme_key ];
-						}
-
-						break;
-
-					default:
-
-						if ( ! empty( $readme[ $readme_key ] ) ) {
-
-							$data->$prop_name = $readme[ $readme_key ];
-						}
-
-						break;
-				}
-			}
-
-			return $data;
 		}
 
 		/**
@@ -1565,9 +1288,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				settings_errors( WPSSO_OPTIONS_NAME );
 			}
 
-			$pkg_info        = $this->get_pkg_info();	// Returns an array from cache.
+			$pkg_info       = $this->get_pkg_info();	// Returns an array from cache.
 			$side_col_boxes = $this->get_side_col_boxes();
-			$dashicon_html   = $this->get_menu_dashicon_html( $this->menu_id );
+			$dashicon_html  = $this->get_menu_dashicon_html( $this->menu_id );
 
 			/**
 			 * Settings page wrapper.
@@ -2733,8 +2456,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$menu_count = '<span class="ab-label" id="wpsso-toolbar-notices-count">0</span>';
 
-			$no_notices_text = sprintf( __( 'Fetching %s notifications...', 'wpsso' ),
-				_x( $this->p->cf[ 'menu' ][ 'title' ], 'menu title', 'wpsso' ) );
+			$no_notices_text = sprintf( __( 'Fetching %s notifications...', 'wpsso' ), $this->get_menu_title() );
 
 			$wp_admin_bar->add_node( array(
 				'id'     => 'wpsso-toolbar-notices',
@@ -2860,38 +2582,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/**
-		 * Deprecated on 2021/09/15.
-		 */
-		public function check_tmpl_head_attributes() {
-
-			_deprecated_function( __METHOD__ . '()', '2021/09/16', $replacement = '' );	// Deprecation message.
-		}
-
-		/**
-		 * Deprecated on 2021/03/10.
-		 */
-		public function add_og_types_table_rows( array &$table_rows, $form ) {
-
-			_deprecated_function( __METHOD__ . '()', '2021/03/10', $replacement = '' );	// Deprecation message.
-		}
-
-		/**
-		 * Deprecated on 2020/07/01.
-		 */
-		public function add_schema_knowledge_graph_table_rows( array &$table_rows, $form ) {
-
-			_deprecated_function( __METHOD__ . '()', '2020/07/01', $replacement = '' );	// Deprecation message.
-		}
-
-		/**
-		 * Deprecated on 2021/09/08.
-		 */
-		public function add_schema_item_props_table_rows( array &$table_rows, $form ) {
-
-			_deprecated_function( __METHOD__ . '()', '2021/09/08', $replacement = '' );	// Deprecation message.
-		}
-
-		/**
 		 * Called from the Essential and General Settings pages.
 		 */
 		public function add_schema_publisher_type_table_rows( array &$table_rows, $form ) {
@@ -2945,14 +2635,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					$is_assoc = true ) . '</td>';
 		}
 
-		/**
-		 * Deprecated on 2021/03/10.
-		 */
-		public function add_schema_item_types_table_rows( array &$table_rows, $form ) {
-
-			_deprecated_function( __METHOD__ . '()', '2021/03/10', $replacement = '' );	// Deprecation message.
-		}
-
 		public function add_advanced_plugin_settings_table_rows( array &$table_rows, $form, $network = false ) {
 
 			$cache_val    = $this->p->get_const_status( 'CACHE_DISABLE' ) ? 1 : 0;
@@ -2991,30 +2673,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				self::get_option_site_use( 'plugin_debug_html', $form, $network, $is_enabled = true );
 		}
 
-		/**
-		 * Deprecated on 2020/04/28.
-		 */
-		public function add_advanced_product_attr_table_rows( array &$table_rows, $form ) {
-
-			_deprecated_function( __METHOD__ . '()', '2020/04/28', $replacement = '' );	// Deprecation message.
-		}
-
-		/**
-		 * Deprecated on 2021/03/10.
-		 */
-		public function add_advanced_product_attrs_table_rows( array &$table_rows, $form ) {
-
-			_deprecated_function( __METHOD__ . '()', '2021/03/10', $replacement = '' );	// Deprecation message.
-		}
-
-		/**
-		 * Deprecated on 2021/03/10.
-		 */
-		public function add_advanced_custom_fields_table_rows( array &$table_rows, $form ) {
-
-			_deprecated_function( __METHOD__ . '()', '2021/03/10', $replacement = '' );	// Deprecation message.
-		}
-
 		public static function get_option_unit_comment( $opt_key ) {
 
 			$cmt_transl = '';
@@ -3048,190 +2706,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			return $html;
-		}
-
-		public function get_readme_info( $ext, $read_cache = true ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log_args( array( 
-					'ext'        => $ext,
-					'read_cache' => $read_cache,
-				) );
-			}
-
-			$rel_file  = 'readme.txt';
-			$file_path = WpssoConfig::get_ext_file_path( $ext, $rel_file );
-			$file_key  = SucomUtil::sanitize_hookname( $rel_file );	// Changes readme.txt to readme_txt (note underscore).
-			$file_url  = isset( $this->p->cf[ 'plugin' ][ $ext ][ 'url' ][ $file_key ] ) ? $this->p->cf[ 'plugin' ][ $ext ][ 'url' ][ $file_key ] : false;
-
-			$cache_md5_pre    = 'wpsso_';
-			$cache_salt       = __METHOD__ . '(ext:' . $ext . ')';
-			$cache_id         = $cache_md5_pre . md5( $cache_salt );
-			$cache_exp_filter = 'wpsso_cache_expire_' . $file_key;	// Example: 'wpsso_cache_expire_readme_txt'.
-
-			/**
-			 * Set and filter the cache expiration value only once.
-			 */
-			static $cache_exp_secs = null;
-
-			if ( null === $cache_exp_secs ) {
-
-				$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, DAY_IN_SECONDS );
-			}
-
-			$readme_info     = false;
-			$readme_content  = false;
-			$readme_from_url = false;
-
-			if ( $cache_exp_secs > 0 ) {
-
-				if ( $read_cache ) {
-
-					$readme_info = get_transient( $cache_id );
-
-					if ( is_array( $readme_info ) ) {
-
-						return $readme_info;	// Stop here.
-					}
-				}
-
-				if ( $file_url && strpos( $file_url, '://' ) ) {
-
-					/**
-					 * Clear the cache first if reading the cache is disabled.
-					 */
-					if ( ! $read_cache ) {
-
-						$this->p->cache->clear( $file_url );
-					}
-
-					$readme_from_url = true;
-
-					$readme_content = $this->p->cache->get( $file_url, 'raw', 'file', $cache_exp_secs );
-				}
-			} else {
-				delete_transient( $cache_id );	// Just in case.
-			}
-
-			if ( empty( $readme_content ) ) {
-
-				if ( $file_path && file_exists( $file_path ) && $fh = @fopen( $file_path, 'rb' ) ) {
-
-					$readme_from_url = false;
-
-					$readme_content = fread( $fh, filesize( $file_path ) );
-
-					fclose( $fh );
-				}
-			}
-
-			if ( empty( $readme_content ) ) {
-
-				$readme_info = array();	// Save an empty array.
-
-			} else {
-
-				require_once WPSSO_PLUGINDIR . 'lib/ext/parse-readme.php';
-
-				$parser =& SuextParseReadme::get_instance();
-
-				$readme_info = $parser->parse_readme_contents( $readme_content );
-
-				/**
-				 * Remove possibly inaccurate information from the local readme file.
-				 */
-				if ( ! $readme_from_url && is_array( $readme_info ) ) {
-
-					foreach ( array( 'stable_tag', 'upgrade_notice' ) as $key ) {
-
-						unset ( $readme_info[ $key ] );
-					}
-				}
-			}
-
-			/**
-			 * Save the parsed readme to the transient cache.
-			 */
-			if ( $cache_exp_secs > 0 ) {
-
-				set_transient( $cache_id, $readme_info, $cache_exp_secs );
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'readme_info saved to transient cache for ' . $cache_exp_secs . ' seconds' );
-				}
-			}
-
-			return is_array( $readme_info ) ? $readme_info : array();	// Just in case.
-		}
-
-		/**
-		 * Deprecated on 2020/09/14.
-		 */
-		public function get_config_url_content( $ext, $rel_file, $cache_exp_secs = null ) {
-
-			_deprecated_function( __METHOD__ . '()', '2020/09/14', $replacement = __CLASS__ . '::get_ext_file_content()' );	// Deprecation message.
-
-			return $this->get_ext_file_content( $ext, $rel_file, $cache_exp_secs );
-		}
-
-		/**
-		 * Called from WpssoSubmenuSetup->show_metabox_setup_guide() and WpssoJsonSubmenuSchemaShortcode->show_metabox_schema_shortcode().
-		 */
-		public function get_ext_file_content( $ext, $rel_file, $cache_exp_secs = null ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log_args( array( 
-					'ext'            => $ext,
-					'rel_file'       => $rel_file,
-					'cache_exp_secs' => $cache_exp_secs,
-				) );
-			}
-
-			$rel_file    = SucomUtil::sanitize_file_path( $rel_file );
-			$file_path   = WpssoConfig::get_ext_file_path( $ext, $rel_file );
-			$file_key    = SucomUtil::sanitize_hookname( basename( $rel_file ) );	// Changes html/setup.html to setup_html (note underscore).
-			$file_url    = isset( $this->p->cf[ 'plugin' ][ $ext ][ 'url' ][ $file_key ] ) ? $this->p->cf[ 'plugin' ][ $ext ][ 'url' ][ $file_key ] : false;
-			$text_domain = isset( $this->p->cf[ 'plugin' ][ $ext ][ 'text_domain' ] ) ? $this->p->cf[ 'plugin' ][ $ext ][ 'text_domain' ] : false;
-
-			if ( null === $cache_exp_secs ) {
-
-				$cache_exp_secs = WEEK_IN_SECONDS;
-			}
-
-			$cache_exp_filter = 'wpsso_cache_expire_' . $file_key;	// Example: 'wpsso_cache_expire_setup_html'.
-			$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, $cache_exp_secs );
-			$cache_content    = false;
-
-			if ( $cache_exp_secs > 0 ) {
-
-				if ( $file_url && strpos( $file_url, '://' ) ) {
-
-					$cache_content = $this->p->cache->get( $file_url, 'raw', 'file', $cache_exp_secs );
-				}
-			}
-
-			if ( empty( $cache_content ) ) {	// No content from the file URL cache.
-
-				if ( $file_path && file_exists( $file_path ) && $fh = @fopen( $file_path, 'rb' ) ) {
-
-					$cache_content = fread( $fh, filesize( $file_path ) );
-
-					fclose( $fh );
-				}
-			}
-
-			if ( $text_domain ) {
-
-				/**
-				 * Translate HTML headers, paragraphs, and list items.
-				 */
-				$cache_content = SucomUtil::get_html_transl( $cache_content, $text_domain );
-			}
-
-			return $cache_content;
 		}
 
 		public function plugin_complete_actions( $actions ) {
@@ -3312,37 +2786,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			return $get_notice ? $notice_msg : $check_url;
-		}
-
-		/**
-		 * Returns a 128x128px image by default.
-		 */
-		public function get_ext_img_icon( $ext, $icon_px = 128 ) {
-
-			/**
-			 * The default image is a transparent 1px gif.
-			 */
-			$img_src = 'src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="';
-
-			if ( ! empty( $this->p->cf[ 'plugin' ][ $ext ][ 'assets' ][ 'icons' ] ) ) {
-
-				/**
-				 * Icon image array keys are '1x' and '2x'.
-				 */
-				$icons = $this->p->cf[ 'plugin' ][ $ext ][ 'assets' ][ 'icons' ];
-
-				if ( ! empty( $icons[ '1x' ] ) ) {
-
-					$img_src = 'src="' . $icons[ '1x' ] . '"';	// 128px.
-				}
-
-				if ( ! empty( $icons[ '2x' ] ) ) {
-
-					$img_src .= ' srcset="' . $icons[ '2x' ] . ' 256w"';	// 256px.
-				}
-			}
-
-			return '<img ' . $img_src . ' width="' . $icon_px . '" height="' . $icon_px . '" style="width:' . $icon_px . 'px; height:' . $icon_px . 'px;"/>';
 		}
 
 		/**
@@ -3508,6 +2951,575 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->p->notice->upd( __( 'Import of plugin and add-on settings is complete.', 'wpsso' ) );
 
 			return true;
+		}
+
+		public function get_pkg_info() {
+
+			if ( ! empty( self::$cache_pkg_info ) ) {	// Only execute once.
+
+				return self::$cache_pkg_info;
+			}
+
+			$pkg_info = array();	// Init a new pkg info array.
+
+			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
+
+				if ( empty( $info[ 'name' ] ) ) {	// Just in case.
+
+					continue;
+				}
+
+				$ext_pdir        = $this->p->check->pp( $ext, $li = false );
+				$ext_auth_id     = $this->p->check->get_ext_auth_id( $ext );
+				$ext_pp          = $ext_auth_id && $this->p->check->pp( $ext, $li = true, WPSSO_UNDEF ) === WPSSO_UNDEF ? true : false;
+				$ext_stat        = ( $ext_pp ? 'L' : ( $ext_pdir ? 'U' : 'S' ) ) . ( $ext_auth_id ? '*' : '' );
+				$ext_name_transl = _x( $info[ 'name' ], 'plugin name', 'wpsso' );
+				$pkg_pro_transl  = _x( $this->p->cf[ 'packages' ][ 'pro' ], 'package name', 'wpsso' );
+				$pkg_std_transl  = _x( $this->p->cf[ 'packages' ][ 'std' ], 'package name', 'wpsso' );
+
+				$pkg_info[ $ext ][ 'pdir' ]      = $ext_pdir;
+				$pkg_info[ $ext ][ 'pp' ]        = $ext_pp;
+				$pkg_info[ $ext ][ 'pkg' ]       = $ext_pp ? $pkg_pro_transl : $pkg_std_transl;
+				$pkg_info[ $ext ][ 'short' ]     = $info[ 'short' ];
+				$pkg_info[ $ext ][ 'short_pkg' ] = $info[ 'short' ] . ' ' . $pkg_info[ $ext ][ 'pkg' ];
+				$pkg_info[ $ext ][ 'short_pro' ] = $info[ 'short' ] . ' ' . $pkg_pro_transl;
+				$pkg_info[ $ext ][ 'short_std' ] = $info[ 'short' ] . ' ' . $pkg_std_transl;
+				$pkg_info[ $ext ][ 'gen' ]       = $info[ 'short' ] . ( isset( $info[ 'version' ] ) ? ' ' . $info[ 'version' ] . '/' . $ext_stat : '' );
+				$pkg_info[ $ext ][ 'name' ]      = $ext_name_transl;
+				$pkg_info[ $ext ][ 'name_pkg' ]  = SucomUtil::get_dist_name( $ext_name_transl, $pkg_info[ $ext ][ 'pkg' ] );
+				$pkg_info[ $ext ][ 'name_pro' ]  = SucomUtil::get_dist_name( $ext_name_transl, $pkg_pro_transl );
+				$pkg_info[ $ext ][ 'name_std' ]  = SucomUtil::get_dist_name( $ext_name_transl, $pkg_std_transl );
+			}
+
+			return self::$cache_pkg_info = $pkg_info;
+		}
+
+		public function get_menu_title() {
+
+			$menu_title = _x( $this->p->cf[ 'menu' ][ 'title' ], 'menu title', 'wpsso' );
+
+			return apply_filters( 'wpsso_menu_title', $menu_title );
+		}
+
+		public function get_menu_dashicon_html( $menu_id, $css_class = '' ) {
+
+			$dashicon = $this->get_menu_dashicon( $menu_id );
+
+			return '<div class="' . trim( $css_class . ' dashicons-before dashicons-' . $dashicon ) . '"></div>';
+		}
+
+		public function get_menu_dashicon( $menu_id ) {
+
+			$dashicon = 'admin-generic';
+
+			if ( ! empty( $this->p->cf[ 'menu' ][ 'dashicons' ][ $menu_id ] ) ) {
+
+				$dashicon = $this->p->cf[ 'menu' ][ 'dashicons' ][ $menu_id ];
+
+			} elseif ( ! empty( $this->p->cf[ 'menu' ][ 'dashicons' ][ '*' ] ) ) {
+
+				$dashicon = $this->p->cf[ 'menu' ][ 'dashicons' ][ '*' ];
+			}
+
+			return $dashicon;
+		}
+
+		public function get_info_menu_title( $info, $menu_lib, $menu_id ) {
+
+			$menu_title = '';
+
+			if ( ! empty( $info[ 'lib' ][ $menu_lib ][ $menu_id ] ) ) {	// Just in case.
+
+				$menu_title = $info[ 'lib' ][ $menu_lib ][ $menu_id ];
+			}
+
+			if ( ! empty( $info[ 'text_domain' ] ) ) {
+
+				$menu_title = _x( $menu_title, 'lib file description', $info[ 'text_domain' ] );
+			}
+
+			$filter_name = SucomUtil::sanitize_hookname( 'wpsso_menu_' . $menu_id . '_title' );
+
+			return apply_filters( $filter_name, $menu_title );
+		}
+
+		/**
+		 * Get the plugin readme and convert array elements to a plugin data object.
+		 */
+		public function get_plugin_data( $ext, $read_cache = true ) {
+
+			$data = new StdClass;
+
+			$info = $this->p->cf[ 'plugin' ][ $ext ];
+
+			$readme = $this->get_readme_info( $ext, $read_cache );
+
+			if ( empty( $readme ) ) {	// Make sure we got something back.
+
+				return array();
+			}
+
+			foreach ( array(
+
+				/**
+				 * Readme array => Plugin object.
+				 */
+				'plugin_name'       => 'name',
+				'plugin_slug'       => 'slug',
+				'base'              => 'plugin',
+				'stable_tag'        => 'version',
+				'tested_up_to'      => 'tested',
+				'requires_at_least' => 'requires',
+				'home'              => 'homepage',
+				'latest'            => 'download_link',
+				'author'            => 'author',
+				'upgrade_notice'    => 'upgrade_notice',
+				'last_updated'      => 'last_updated',
+				'sections'          => 'sections',
+				'remaining_content' => 'other_notes',	// Added to sections.
+				'banners'           => 'banners',
+				'icons'             => 'icons',
+			) as $readme_key => $prop_name ) {
+
+				switch ( $readme_key ) {
+
+					case 'base':	// From plugin config.
+
+						if ( ! empty( $info[ $readme_key ] ) ) {
+
+							$data->$prop_name = $info[ $readme_key ];
+						}
+
+						break;
+
+					case 'home':	// From plugin config.
+
+						if ( ! empty( $info[ 'url' ][ 'purchase' ] ) ) {	// Check for purchase url first.
+
+							$data->$prop_name = $info[ 'url' ][ 'purchase' ];
+
+						} elseif ( ! empty( $info[ 'url' ][ $readme_key ] ) ) {
+
+							$data->$prop_name = $info[ 'url' ][ $readme_key ];
+						}
+
+						break;
+
+					case 'latest':	// From plugin config.
+
+						if ( ! empty( $info[ 'url' ][ $readme_key ] ) ) {
+
+							$data->$prop_name = $info[ 'url' ][ $readme_key ];
+						}
+
+						break;
+
+					case 'banners':	// From plugin config.
+					case 'icons':	// From plugin config.
+
+						if ( ! empty( $info[ 'assets' ][ $readme_key ] ) ) {
+
+							$data->$prop_name = $info[ 'assets' ][ $readme_key ];	// Array with 1x / 2x images.
+						}
+
+						break;
+
+					case 'remaining_content':
+
+						if ( ! empty( $readme[ $readme_key ] ) ) {
+
+							$data->sections[ $prop_name ] = $readme[ $readme_key ];
+						}
+
+						break;
+
+					default:
+
+						if ( ! empty( $readme[ $readme_key ] ) ) {
+
+							$data->$prop_name = $readme[ $readme_key ];
+						}
+
+						break;
+				}
+			}
+
+			return $data;
+		}
+
+		public function get_readme_info( $ext, $read_cache = true ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_args( array( 
+					'ext'        => $ext,
+					'read_cache' => $read_cache,
+				) );
+			}
+
+			$rel_file  = 'readme.txt';
+			$file_path = WpssoConfig::get_ext_file_path( $ext, $rel_file );
+			$file_key  = SucomUtil::sanitize_hookname( $rel_file );	// Changes readme.txt to readme_txt (note underscore).
+			$file_url  = isset( $this->p->cf[ 'plugin' ][ $ext ][ 'url' ][ $file_key ] ) ? $this->p->cf[ 'plugin' ][ $ext ][ 'url' ][ $file_key ] : false;
+
+			$cache_md5_pre    = 'wpsso_';
+			$cache_salt       = __METHOD__ . '(ext:' . $ext . ')';
+			$cache_id         = $cache_md5_pre . md5( $cache_salt );
+			$cache_exp_filter = 'wpsso_cache_expire_' . $file_key;	// Example: 'wpsso_cache_expire_readme_txt'.
+
+			/**
+			 * Set and filter the cache expiration value only once.
+			 */
+			static $cache_exp_secs = null;
+
+			if ( null === $cache_exp_secs ) {
+
+				$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, DAY_IN_SECONDS );
+			}
+
+			$readme_info     = false;
+			$readme_content  = false;
+			$readme_from_url = false;
+
+			if ( $cache_exp_secs > 0 ) {
+
+				if ( $read_cache ) {
+
+					$readme_info = get_transient( $cache_id );
+
+					if ( is_array( $readme_info ) ) {
+
+						return $readme_info;	// Stop here.
+					}
+				}
+
+				if ( $file_url && strpos( $file_url, '://' ) ) {
+
+					/**
+					 * Clear the cache first if reading the cache is disabled.
+					 */
+					if ( ! $read_cache ) {
+
+						$this->p->cache->clear( $file_url );
+					}
+
+					$readme_from_url = true;
+
+					$readme_content = $this->p->cache->get( $file_url, 'raw', 'file', $cache_exp_secs );
+				}
+
+			} else {
+
+				delete_transient( $cache_id );	// Just in case.
+			}
+
+			if ( empty( $readme_content ) ) {
+
+				if ( $file_path && file_exists( $file_path ) && $fh = @fopen( $file_path, 'rb' ) ) {
+
+					$readme_from_url = false;
+
+					$readme_content = fread( $fh, filesize( $file_path ) );
+
+					fclose( $fh );
+				}
+			}
+
+			if ( empty( $readme_content ) ) {
+
+				$readme_info = array();	// Save an empty array.
+
+			} else {
+
+				require_once WPSSO_PLUGINDIR . 'lib/ext/parse-readme.php';
+
+				$parser =& SuextParseReadme::get_instance();
+
+				$readme_info = $parser->parse_readme_contents( $readme_content );
+
+				/**
+				 * Remove possibly inaccurate information from the local readme file.
+				 */
+				if ( ! $readme_from_url && is_array( $readme_info ) ) {
+
+					foreach ( array( 'stable_tag', 'upgrade_notice' ) as $key ) {
+
+						unset ( $readme_info[ $key ] );
+					}
+				}
+			}
+
+			/**
+			 * Save the parsed readme to the transient cache.
+			 */
+			if ( $cache_exp_secs > 0 ) {
+
+				set_transient( $cache_id, $readme_info, $cache_exp_secs );
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'readme_info saved to transient cache for ' . $cache_exp_secs . ' seconds' );
+				}
+			}
+
+			return is_array( $readme_info ) ? $readme_info : array();	// Just in case.
+		}
+
+		/**
+		 * Plugin links for the addons and licenses settings page.
+		 */
+		public function get_ext_action_links( $ext, $info, &$tabindex = false ) {
+
+			$pkg_info = $this->get_pkg_info();	// Returns an array from cache.
+
+			$action_links = array();
+
+			if ( ! empty( $info[ 'base' ] ) ) {
+
+				$install_url = is_multisite() ?
+					network_admin_url( 'plugin-install.php', null ) :
+					get_admin_url( $blog_id = null, 'plugin-install.php' );
+
+				$details_url = add_query_arg( array(
+					'plugin'    => $info[ 'slug' ],
+					'tab'       => 'plugin-information',
+					'TB_iframe' => 'true',
+					'width'     => $this->p->cf[ 'wp' ][ 'tb_iframe' ][ 'width' ],
+					'height'    => $this->p->cf[ 'wp' ][ 'tb_iframe' ][ 'height' ],
+				), $install_url );
+
+				if ( SucomPlugin::is_plugin_installed( $info[ 'base' ] ) ) {	// Uses static local cache.
+
+					if ( SucomPlugin::have_plugin_update( $info[ 'base' ] ) ) {	// Uses static local cache.
+
+						$action_links[] = '<a href="' . $details_url . '" class="thickbox" tabindex="' . ++$tabindex . '">' .
+							'<font color="red">' . ( 'wpsso' === $ext ? _x( 'Plugin Details and Update',
+								'plugin action link', 'wpsso' ) : _x( 'Add-on Details and Update',
+									'plugin action link', 'wpsso' ) ) . '</font></a>';
+					} else {
+
+						$action_links[] = '<a href="' . $details_url . '" class="thickbox" tabindex="' . ++$tabindex . '">' .
+							( 'wpsso' === $ext ? _x( 'Plugin Details', 'plugin action link', 'wpsso' ) :
+								_x( 'Add-on Details', 'plugin action link', 'wpsso' ) ) . '</a>';
+					}
+
+				} else {
+
+					$action_links[] = '<a href="' . $details_url . '" class="thickbox" tabindex="' . ++$tabindex . '">' .
+						( 'wpsso' === $ext ? _x( 'Plugin Details and Install', 'plugin action link', 'wpsso' ) :
+							_x( 'Add-on Details and Install', 'plugin action link', 'wpsso' ) ) . '</a>';
+				}
+
+			} elseif ( ! empty( $info[ 'url' ][ 'home' ] ) ) {
+
+				$action_links[] = '<a href="' . $info[ 'url' ][ 'home' ] . '" tabindex="' . ++$tabindex . '">' .
+					_x( 'About Page', 'plugin action link', 'wpsso' ) . '</a>';
+			}
+
+			if ( ! empty( $info[ 'url' ][ 'docs' ] ) ) {
+
+				$action_links[] = '<a href="' . $info[ 'url' ][ 'docs' ] . '"' .
+					( false !== $tabindex ? ' tabindex="' . ++$tabindex . '"' : '' ) . '>' .
+						_x( 'Documentation', 'plugin action link', 'wpsso' ) . '</a>';
+			}
+
+			if ( ! empty( $info[ 'url' ][ 'support' ] ) && ! empty( $pkg_info[ $ext ][ 'pp' ] ) ) {
+
+				$action_links[] = '<a href="' . $info[ 'url' ][ 'support' ] . '"' .
+					( false !== $tabindex ? ' tabindex="' . ++$tabindex . '"' : '' ) . '>' .
+						sprintf( _x( '%s Support', 'plugin action link', 'wpsso' ),
+							_x( $this->p->cf[ 'packages' ][ 'pro' ], 'package name', 'wpsso' ) ) . '</a>';
+
+			} elseif ( ! empty( $info[ 'url' ][ 'forum' ] ) ) {
+
+				$action_links[] = '<a href="' . $info[ 'url' ][ 'forum' ] . '"' .
+					( false !== $tabindex ? ' tabindex="' . ++$tabindex . '"' : '' ) . '>' .
+						_x( 'Community Forum', 'plugin action link', 'wpsso' ) . '</a>';
+			}
+
+			if ( ! empty( $info[ 'url' ][ 'purchase' ] ) ) {
+
+				$action_links[] = $this->p->msgs->get( 'pro-purchase-link', array(
+					'ext'      => $ext,
+					'url'      => $info[ 'url' ][ 'purchase' ],
+					'tabindex' => false !== $tabindex ? ++$tabindex : false,
+				) );
+			}
+
+			return $action_links;
+		}
+
+		/**
+		 * Returns a 128x128px image by default.
+		 */
+		public function get_ext_img_icon( $ext, $icon_px = 128 ) {
+
+			/**
+			 * The default image is a transparent 1px gif.
+			 */
+			$img_src = 'src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="';
+
+			if ( ! empty( $this->p->cf[ 'plugin' ][ $ext ][ 'assets' ][ 'icons' ] ) ) {
+
+				/**
+				 * Icon image array keys are '1x' and '2x'.
+				 */
+				$icons = $this->p->cf[ 'plugin' ][ $ext ][ 'assets' ][ 'icons' ];
+
+				if ( ! empty( $icons[ '1x' ] ) ) {
+
+					$img_src = 'src="' . $icons[ '1x' ] . '"';	// 128px.
+				}
+
+				if ( ! empty( $icons[ '2x' ] ) ) {
+
+					$img_src .= ' srcset="' . $icons[ '2x' ] . ' 256w"';	// 256px.
+				}
+			}
+
+			return '<img ' . $img_src . ' width="' . $icon_px . '" height="' . $icon_px . '" style="width:' . $icon_px . 'px; height:' . $icon_px . 'px;"/>';
+		}
+
+		/**
+		 * Called from WpssoSubmenuSetup->show_metabox_setup_guide() and WpssoJsonSubmenuSchemaShortcode->show_metabox_schema_shortcode().
+		 */
+		public function get_ext_file_content( $ext, $rel_file, $cache_exp_secs = null ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_args( array( 
+					'ext'            => $ext,
+					'rel_file'       => $rel_file,
+					'cache_exp_secs' => $cache_exp_secs,
+				) );
+			}
+
+			$rel_file    = SucomUtil::sanitize_file_path( $rel_file );
+			$file_path   = WpssoConfig::get_ext_file_path( $ext, $rel_file );
+			$file_key    = SucomUtil::sanitize_hookname( basename( $rel_file ) );	// Changes html/setup.html to setup_html (note underscore).
+			$file_url    = isset( $this->p->cf[ 'plugin' ][ $ext ][ 'url' ][ $file_key ] ) ? $this->p->cf[ 'plugin' ][ $ext ][ 'url' ][ $file_key ] : false;
+			$text_domain = isset( $this->p->cf[ 'plugin' ][ $ext ][ 'text_domain' ] ) ? $this->p->cf[ 'plugin' ][ $ext ][ 'text_domain' ] : false;
+
+			if ( null === $cache_exp_secs ) {
+
+				$cache_exp_secs = WEEK_IN_SECONDS;
+			}
+
+			$cache_exp_filter = 'wpsso_cache_expire_' . $file_key;	// Example: 'wpsso_cache_expire_setup_html'.
+			$cache_exp_secs   = (int) apply_filters( $cache_exp_filter, $cache_exp_secs );
+			$cache_content    = false;
+
+			if ( $cache_exp_secs > 0 ) {
+
+				if ( $file_url && strpos( $file_url, '://' ) ) {
+
+					$cache_content = $this->p->cache->get( $file_url, 'raw', 'file', $cache_exp_secs );
+				}
+			}
+
+			if ( empty( $cache_content ) ) {	// No content from the file URL cache.
+
+				if ( $file_path && file_exists( $file_path ) && $fh = @fopen( $file_path, 'rb' ) ) {
+
+					$cache_content = fread( $fh, filesize( $file_path ) );
+
+					fclose( $fh );
+				}
+			}
+
+			if ( $text_domain ) {
+
+				/**
+				 * Translate HTML headers, paragraphs, and list items.
+				 */
+				$cache_content = SucomUtil::get_html_transl( $cache_content, $text_domain );
+			}
+
+			return $cache_content;
+		}
+
+		/**
+		 * Deprecated on 2020/11/25.
+		 */
+		public function plugin_pkg_info() {
+
+			_deprecated_function( __METHOD__ . '()', '2020/11/25', $replacement = __CLASS__ . '::get_pkg_info()' );	// Deprecation message.
+
+			return $this->get_pkg_info();
+		}
+
+		/**
+		 * Deprecated on 2021/09/15.
+		 */
+		public function check_tmpl_head_attributes() {
+
+			_deprecated_function( __METHOD__ . '()', '2021/09/16', $replacement = '' );	// Deprecation message.
+		}
+
+		/**
+		 * Deprecated on 2021/03/10.
+		 */
+		public function add_og_types_table_rows( array &$table_rows, $form ) {
+
+			_deprecated_function( __METHOD__ . '()', '2021/03/10', $replacement = '' );	// Deprecation message.
+		}
+
+		/**
+		 * Deprecated on 2020/07/01.
+		 */
+		public function add_schema_knowledge_graph_table_rows( array &$table_rows, $form ) {
+
+			_deprecated_function( __METHOD__ . '()', '2020/07/01', $replacement = '' );	// Deprecation message.
+		}
+
+		/**
+		 * Deprecated on 2021/09/08.
+		 */
+		public function add_schema_item_props_table_rows( array &$table_rows, $form ) {
+
+			_deprecated_function( __METHOD__ . '()', '2021/09/08', $replacement = '' );	// Deprecation message.
+		}
+
+		/**
+		 * Deprecated on 2021/03/10.
+		 */
+		public function add_schema_item_types_table_rows( array &$table_rows, $form ) {
+
+			_deprecated_function( __METHOD__ . '()', '2021/03/10', $replacement = '' );	// Deprecation message.
+		}
+
+		/**
+		 * Deprecated on 2020/04/28.
+		 */
+		public function add_advanced_product_attr_table_rows( array &$table_rows, $form ) {
+
+			_deprecated_function( __METHOD__ . '()', '2020/04/28', $replacement = '' );	// Deprecation message.
+		}
+
+		/**
+		 * Deprecated on 2021/03/10.
+		 */
+		public function add_advanced_product_attrs_table_rows( array &$table_rows, $form ) {
+
+			_deprecated_function( __METHOD__ . '()', '2021/03/10', $replacement = '' );	// Deprecation message.
+		}
+
+		/**
+		 * Deprecated on 2021/03/10.
+		 */
+		public function add_advanced_custom_fields_table_rows( array &$table_rows, $form ) {
+
+			_deprecated_function( __METHOD__ . '()', '2021/03/10', $replacement = '' );	// Deprecation message.
+		}
+
+		/**
+		 * Deprecated on 2020/09/14.
+		 */
+		public function get_config_url_content( $ext, $rel_file, $cache_exp_secs = null ) {
+
+			_deprecated_function( __METHOD__ . '()', '2020/09/14', $replacement = __CLASS__ . '::get_ext_file_content()' );	// Deprecation message.
+
+			return $this->get_ext_file_content( $ext, $rel_file, $cache_exp_secs );
 		}
 	}
 }

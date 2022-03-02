@@ -415,9 +415,12 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					$css_class = '', $css_id = 'plugin_show_opts' ) .
 				'<td class="blank">' . $form->get_no_select( 'plugin_show_opts', $this->p->cf[ 'form' ][ 'show_options' ] ) . '</td>';
 
+			/**
+			 * Show validators toolbar menu.
+			 */
 			$menu_title = _x( 'Validators', 'toolbar menu title', 'wpsso' );
 
-			$table_rows[ 'plugin_show_validate_toolbar' ] = '' .	// Show Validators Toolbar Menu.
+			$table_rows[ 'plugin_show_validate_toolbar' ] = '' .
 				$form->get_th_html( sprintf( _x( 'Show %s Toolbar Menu', 'option label', 'wpsso' ), $menu_title ),
 					$css_class = '', $css_id = 'plugin_show_validate_toolbar' ) .
 				$form->get_no_td_checkbox( 'plugin_show_validate_toolbar' );
@@ -425,10 +428,10 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			/**
 			 * Show custom meta metaboxes.
 			 */
-			$add_to_metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+			$metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
 			$table_rows[ 'plugin_add_to' ] = '' .	// Show Document SSO Metabox.
-				$form->get_th_html( sprintf( _x( 'Show %s Metabox', 'option label', 'wpsso' ), $add_to_metabox_title ),
+				$form->get_th_html( sprintf( _x( 'Show %s Metabox', 'option label', 'wpsso' ), $metabox_title ),
 					$css_class = '', $css_id = 'plugin_add_to' ) . 
 				'<td class="blank">' . $form->get_no_checklist_post_tax_user( $name_prefix = 'plugin_add_to' ) . '</td>';
 
@@ -440,17 +443,20 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$table_rows[ 'plugin_show_columns' ] = '' .
 				$form->get_th_html( _x( 'WP List Table Columns', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_show_columns' ) .
-				'<td>' . $form->get_no_columns_post_tax_user( $name_prefix = 'plugin', $col_headers, $table_class = 'plugin_list_table_cols' ) . '</td>';
+				'<td>' . $form->get_no_columns_post_tax_user( $name_prefix = 'plugin',
+					$col_headers, $table_class = 'plugin_list_table_cols' ) . '</td>';
 
 			$table_rows[ 'plugin_og_types_select_format' ] = $form->get_tr_hide( 'basic', 'plugin_og_types_select_format' ) .
 				$form->get_th_html( _x( 'Open Graph Type Select Format', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_og_types_select_format' ) . 
-				'<td class="blank">' . $form->get_no_select( 'plugin_og_types_select_format', $this->p->cf[ 'form' ][ 'og_schema_types_select_format' ] ) . '</td>';
+				'<td class="blank">' . $form->get_no_select( 'plugin_og_types_select_format',
+					$this->p->cf[ 'form' ][ 'og_schema_types_select_format' ] ) . '</td>';
 
 			$table_rows[ 'plugin_schema_types_select_format' ] = $form->get_tr_hide( 'basic', 'plugin_schema_types_select_format' ) .
 				$form->get_th_html( _x( 'Schema Type Select Format', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_schema_types_select_format' ) . 
-				'<td class="blank">' . $form->get_no_select( 'plugin_schema_types_select_format', $this->p->cf[ 'form' ][ 'og_schema_types_select_format' ] ) . '</td>';
+				'<td class="blank">' . $form->get_no_select( 'plugin_schema_types_select_format',
+					$this->p->cf[ 'form' ][ 'og_schema_types_select_format' ] ) . '</td>';
 
 			return $table_rows;
 		}

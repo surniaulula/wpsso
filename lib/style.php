@@ -271,33 +271,6 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 					content:"' . $this->p->cf[ 'menu' ][ 'icon-code' ] . '";
 					font-family:'. $this->p->cf[ 'menu' ][ 'icon-font' ] . ';
 				}
-				#adminmenu #toplevel_page_' . $menu . ' ul > li > a,
-				#adminmenu #toplevel_page_' . $sitemenu . ' ul > li > a {
-					padding:6px 8px;	/* Default is 6px 12px. */
-				}
-				#adminmenu ul.wp-submenu div.wpsso-menu-item {
-					display:table-cell;
-				}
-				#adminmenu ul.wp-submenu div.wpsso-menu-item.dashicons-before {
-					max-width:1.3em;
-					padding:0 6px 0 0;
-				}
-				body.rtl #adminmenu ul.wp-submenu div.wpsso-menu-item.dashicons-before {
-					padding:0 0 0 6px;
-				}
-				#adminmenu ul.wp-submenu div.wpsso-menu-item.dashicons-before::before {
-					font-size:1.3em;
-					text-align:left;
-					opacity:0.5;
-					filter:alpha(opacity=50);	/* IE8 and earlier. */
-				}
-				body.rtl #adminmenu ul.wp-submenu div.wpsso-menu-item.dashicons-before::before {
-					text-align:right;
-				}
-				#adminmenu ul.wp-submenu div.wpsso-menu-item.menu-item-label {
-					width:100%;
-				}
-				#adminmenu ul.wp-submenu div.wpsso-menu-item.wpsso-setup,
 				#adminmenu ul.wp-submenu div.wpsso-menu-item.top-last-submenu-page.with-add-ons {
 					padding-bottom:12px;
 					border-bottom:1px solid;
