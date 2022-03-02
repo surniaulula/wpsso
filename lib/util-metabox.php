@@ -43,28 +43,31 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 
 			$doing_ajax    = SucomUtilWP::doing_ajax();
 			$tab_keys      = array_keys( $tabs );
-			$tab_layout    = empty( $args[ 'layout' ] ) ? 'horizontal' : $args[ 'layout' ];
 			$default_tab   = '_' . reset( $tab_keys );	// Must start with an underscore.
-			$class_mb_tabs = 'sucom-metabox-tabs';
-			$class_link    = 'sucom-tablink';
-			$class_tabset  = 'sucom-tabset';
-			$container_id  = '';
-			$metabox_html  = "\n";
+			$mb_tabs_class = 'sucom-metabox-tabs';
+			$mb_tabs_id    = '';
+			$tablink_class = 'sucom-tablink';
+			$tabset_class  = 'sucom-tabset';
 
 			if ( ! empty( $metabox_id ) ) {
 
 				$metabox_id    = '_' . trim( $metabox_id, '_' );	// Must start with an underscore.
-				$container_id  = $class_mb_tabs . $metabox_id;
-				$class_mb_tabs .= ' ' . $class_mb_tabs . $metabox_id;
+				$mb_tabs_id    = $mb_tabs_class . $metabox_id;
+				$mb_tabs_class .= ' ' . $mb_tabs_id;
 			}
 
 			$filter_name = SucomUtil::sanitize_hookname( 'wpsso_metabox_tabs_layout' . $metabox_id );
 
-			$tab_layout = apply_filters( $filter_name, $tab_layout );
+			$tabs_layout = empty( $args[ 'layout' ] ) ? 'horizontal' : $args[ 'layout' ];
+			$tabs_layout = apply_filters( $filter_name, $tabs_layout );
+			$tabs_layout = empty( $tabs_layout ) ? 'horizontal' : $tabs_layout;	// Allow the filter to return false. 
 
-			$class_mb_tabs .= ' ' . $tab_layout;
-			$metabox_html  .= '<div class="' . $class_mb_tabs . '"' . ( $container_id ? ' id="' . $container_id . '"' : '' ) . '>' . "\n";
-			$metabox_html  .= '<ul class="' . $class_mb_tabs . '">';
+			$mb_tabs_class = SucomUtil::sanitize_css_class( $mb_tabs_class . ' ' . $tabs_layout );
+			$mb_tabs_id    = SucomUtil::sanitize_css_id( $mb_tabs_id );
+
+			$metabox_html = "\n";
+			$metabox_html .= '<div class="' . $mb_tabs_class . '"' . ( $mb_tabs_id ? ' id="' . $mb_tabs_id . '"' : '' ) . '>' . "\n";
+			$metabox_html .= '<ul class="' . $mb_tabs_class . '">';
 
 			/**
 			 * Add the settings tab list.
@@ -75,33 +78,33 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 
 				$tab_num++;
 
-				$class_href_key = $class_tabset . $metabox_id . '-tab_' . $tab;
-				$class_icon_key = $class_link . ' ' . $class_link . $metabox_id . ' ' . $class_link . '-icon ' . $class_link . '-href_' . $tab;
-				$class_link_key = $class_link . ' ' . $class_link . $metabox_id . ' ' . $class_link . '-text ' . $class_link . '-href_' . $tab;
+				$href_key_class = $tabset_class . $metabox_id . '-tab_' . $tab;
+				$icon_key_class = $tablink_class . ' ' . $tablink_class . $metabox_id . ' ' . $tablink_class . '-icon ' . $tablink_class . '-href_' . $tab;
+				$link_key_class = $tablink_class . ' ' . $tablink_class . $metabox_id . ' ' . $tablink_class . '-text ' . $tablink_class . '-href_' . $tab;
 
 				$metabox_html .= '<li' . "\n" . 'class="tab_space' . ( $tab_num === 1 ? ' start_tabs' : '' ) . '"></li>';
-				$metabox_html .= '<li' . "\n" . 'class="' . $class_href_key . '">';
-				$metabox_html .= '<a class="' . $class_icon_key . '" href="#' . $class_href_key . '"></a>';
-				$metabox_html .= '<a class="' . $class_link_key . '" href="#' . $class_href_key . '">' . $title_transl . '</a>';
+				$metabox_html .= '<li' . "\n" . 'class="' . $href_key_class . '">';
+				$metabox_html .= '<a class="' . $icon_key_class . '" href="#' . $href_key_class . '"></a>';
+				$metabox_html .= '<a class="' . $link_key_class . '" href="#' . $href_key_class . '">' . $title_transl . '</a>';
 				$metabox_html .= '</li>';	// Do not add a newline.
 			}
 
 			$metabox_html .= '<li' . "\n" . 'class="tab_space end_tabs"></li>';
-			$metabox_html .= '</ul><!-- .' . $class_mb_tabs . ' -->' . "\n\n";
+			$metabox_html .= '</ul><!-- .' . $mb_tabs_class . ' -->' . "\n\n";
 
 			/**
 			 * Add the settings table for each tab.
 			 */
 			foreach ( $tabs as $tab => $title_transl ) {
 
-				$class_href_key = $class_tabset . $metabox_id . '-tab_' . $tab;
+				$href_key_class = $tabset_class . $metabox_id . '-tab_' . $tab;
 
-				$metabox_html .= $this->get_table( $table_rows[ $tab ], $class_href_key,
-					( empty( $metabox_id ) ? '' : $class_tabset . $metabox_id ),
-						$class_tabset, $title_transl );
+				$metabox_html .= $this->get_table( $table_rows[ $tab ], $href_key_class,
+					( empty( $metabox_id ) ? '' : $tabset_class . $metabox_id ),
+						$tabset_class, $title_transl );
 			}
 
-			$metabox_html .= '</div><!-- .' . $class_mb_tabs . ' -->' . "\n";
+			$metabox_html .= '</div><!-- .' . $mb_tabs_class . ' -->' . "\n";
 
 			if ( $doing_ajax ) {
 
@@ -123,12 +126,12 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 			return $metabox_html;
 		}
 
-		public function do_table( $table_rows, $class_href_key = '', $class_tabset_mb = '', $class_tabset = 'sucom-no_tabset', $title_transl = '' ) {
+		public function do_table( $table_rows, $href_key_class = '', $tabset_mb_class = '', $tabset_class = 'sucom-no_tabset', $title_transl = '' ) {
 
-			echo $this->get_table( $table_rows, $class_href_key, $class_tabset_mb, $class_tabset, $title_transl );
+			echo $this->get_table( $table_rows, $href_key_class, $tabset_mb_class, $tabset_class, $title_transl );
 		}
 
-		public function get_table( $table_rows, $class_href_key = '', $class_tabset_mb = '', $class_tabset = 'sucom-no_tabset', $title_transl = '' ) {
+		public function get_table( $table_rows, $href_key_class = '', $tabset_mb_class = '', $tabset_class = 'sucom-no_tabset', $title_transl = '' ) {
 
 			$metabox_html = '';
 
@@ -236,12 +239,12 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 			}
 
 			$div_class = ( empty( $user_show_opts ) ? '' : 'sucom-show_' . $user_show_opts ) . 
-				( empty( $class_tabset ) ? '' : ' ' . $class_tabset ) . 
-				( empty( $class_tabset_mb ) ? '' : ' ' . $class_tabset_mb ) . 
-				( empty( $class_href_key ) ? '' : ' ' . $class_href_key );
+				( empty( $tabset_class ) ? '' : ' ' . $tabset_class ) . 
+				( empty( $tabset_mb_class ) ? '' : ' ' . $tabset_mb_class ) . 
+				( empty( $href_key_class ) ? '' : ' ' . $href_key_class );
 
 			$table_class = 'sucom-settings ' . $this->p->id . 
-				( empty( $class_href_key ) ? '' : ' ' . $class_href_key ) . 
+				( empty( $href_key_class ) ? '' : ' ' . $href_key_class ) . 
 				( $hidden_rows > 0 && $hidden_rows === $count_rows ? ' hide_in_' . $user_show_opts : '' );
 
 			$metabox_html .= '<div class="' . $div_class . '">' . "\n";
@@ -260,18 +263,18 @@ if ( ! class_exists( 'WpssoUtilMetabox' ) ) {
 
 			if ( $hidden_opts > 0 ) {
 
-				$metabox_html .= '<div class="hidden_opts_msg ' . $class_tabset . '-msg ' . $class_tabset_mb . '-msg ' . $class_href_key . '-msg">' .
+				$metabox_html .= '<div class="hidden_opts_msg ' . $tabset_class . '-msg ' . $tabset_mb_class . '-msg ' . $href_key_class . '-msg">' .
 					sprintf( _x( '%1$d additional options not shown in "%2$s" view', 'option comment', 'wpsso' ),
 						$hidden_opts, _x( $user_show_opts_label, 'option value', 'wpsso' ) ) .
-					' (<a href="javascript:void(0);" onClick="sucomViewUnhideRows( \'' . $class_href_key . '\', \'' . $user_show_opts .
+					' (<a href="javascript:void(0);" onClick="sucomViewUnhideRows( \'' . $href_key_class . '\', \'' . $user_show_opts .
 						'\' );">' . _x( 'show these options now', 'option comment', 'wpsso' ) . '</a>)</div>' . "\n";
 
 			} elseif ( $hidden_rows > 0 ) {
 
-				$metabox_html .= '<div class="hidden_opts_msg ' . $class_tabset . '-msg ' . $class_tabset_mb . '-msg ' . $class_href_key . '-msg">' .
+				$metabox_html .= '<div class="hidden_opts_msg ' . $tabset_class . '-msg ' . $tabset_mb_class . '-msg ' . $href_key_class . '-msg">' .
 					sprintf( _x( '%1$d additional rows not shown in "%2$s" view', 'option comment', 'wpsso' ),
 						$hidden_rows, _x( $user_show_opts_label, 'option value', 'wpsso' ) ) .
-					' (<a href="javascript:void(0);" onClick="sucomViewUnhideRows( \'' . $class_href_key . '\', \'' . $user_show_opts .
+					' (<a href="javascript:void(0);" onClick="sucomViewUnhideRows( \'' . $href_key_class . '\', \'' . $user_show_opts .
 						'\', \'hide_row_in\' );">' . _x( 'show these rows now', 'option comment', 'wpsso' ) . '</a>)</div>' . "\n";
 			}
 

@@ -9921,7 +9921,7 @@ msgctxt "option value"
 msgid "cropped"
 msgstr ""
 
-#: lib/messages.php:867 lib/messages.php:1112 lib/util-metabox.php:232
+#: lib/messages.php:867 lib/messages.php:1112 lib/util-metabox.php:235
 msgid "No options available."
 msgstr ""
 
@@ -11404,22 +11404,22 @@ msgid ""
 "refreshed."
 msgstr ""
 
-#: lib/util-metabox.php:264
+#: lib/util-metabox.php:267
 msgctxt "option comment"
 msgid "%1$d additional options not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util-metabox.php:267
+#: lib/util-metabox.php:270
 msgctxt "option comment"
 msgid "show these options now"
 msgstr ""
 
-#: lib/util-metabox.php:272
+#: lib/util-metabox.php:275
 msgctxt "option comment"
 msgid "%1$d additional rows not shown in \"%2$s\" view"
 msgstr ""
 
-#: lib/util-metabox.php:275
+#: lib/util-metabox.php:278
 msgctxt "option comment"
 msgid "show these rows now"
 msgstr ""
