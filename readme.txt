@@ -251,7 +251,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.4.1-dev.1 (2022/03/02)**
+**Version 11.4.1-dev.2 (2022/03/02)**
 
 * **New Features**
 	* None.
@@ -1034,7 +1034,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 11.4.1-dev.1 =
+= 11.4.1-dev.2 =
 
 (2022/03/02) Removed dashicons from the submenu items. Added filters for menu and submenu titles.
 
