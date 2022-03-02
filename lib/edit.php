@@ -50,7 +50,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 
 		public function filter_metabox_sso_edit_general_rows( $table_rows, $form, $head_info, $mod ) {
 
-			$limits           = $this->p->cf[ 'form' ][ 'input_limits' ];
+			$limits           = WpssoConfig::get_input_limits();	// Uses a local static cache.
 			$og_types         = $this->p->og->get_og_types_select();
 			$schema_types     = $this->p->schema->get_schema_types_select();
 			$primary_terms    = $this->p->post->get_primary_terms( $mod, $tax_slug = 'category', $output = 'names' );

@@ -2085,9 +2085,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				return (int) $max_len[ 'max' ];
 
-			} elseif ( is_string( $max_len ) && isset( $this->p->cf[ 'form' ][ 'input_limits' ][ $max_len ][ 'max' ] ) ) {
+			} elseif ( is_string( $max_len ) ) {
+			
+				$limits = WpssoConfig::get_input_limits( $max_len );	// Uses a local static cache.
+				
+				if ( ! empty( $limits[ 'max' ] ) ) {
 
-				return (int) $this->p->cf[ 'form' ][ 'input_limits' ][ $max_len ][ 'max' ];
+					return (int) $limits[ 'max' ];
+				}
 			}
 
 			return 0;

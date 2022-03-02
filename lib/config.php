@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '11.4.1-dev.1',	// Plugin version.
+					'version'     => '11.4.1-dev.2',	// Plugin version.
 					'opt_version' => '891',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2850,20 +2850,58 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * See sucomTextLen() in wpsso/live/js/com/jquery-admin-page.js.
 				 */
 				'input_limits' => array(
+
+					/**
+					 * While Google does not specify a recommended length for title tags, most desktop and
+					 * mobile browsers are able to display the first 50–60 characters of a title tag. If you
+					 * keep your titles under 60 characters, our research suggests that you can expect about
+					 * 90% of your titles to display properly in the SERPs. (There's no exact character limit
+					 * because characters can vary in pixel width. Google SERPs can usually display up to 600
+					 * pixels.) While writing concise titles is important for human readability and
+					 * comprehension, Google’s spiders will take into account the entire title tag (within
+					 * reason) when they crawl the page, even if it is not displayed in full in the SERPs.
+					 *
+					 * See https://moz.com/learn/seo/title-tag.
+					 */
 					'seo_title' => array(
 						'min'  => 10,
 						'warn' => 60,
 						'max'  => 70,
 					),
+
+					/**
+					 * Meta descriptions can technically be any length, but Google generally truncates snippets
+					 * to ~155-160 characters. It's best to keep meta descriptions long enough that they're
+					 * sufficiently descriptive, so we recommend descriptions between 50 and 160 characters.
+					 * Keep in mind that the "optimal" length will vary depending on the situation, and your
+					 * primary goal should be to provide value and drive clicks.
+					 *
+					 * See https://moz.com/learn/seo/meta-description.
+					 */
 					'seo_desc' => array(
+						'min'  => 50,
 						'warn' => 150,
 						'max'  => 180,
 					),
+
+					/**
+					 * Keep it short to prevent overflow. There’s no official guidance on this, but 40
+					 * characters for mobile and 60 for desktop is roughly the sweet spot.
+					 *
+					 * See https://ahrefs.com/blog/open-graph-meta-tags/.
+					 */
 					'og_title' => array(
-						'max' => 70,
+						'warn' => 40,
+						'max'  => 70,
 					),
+
+					/**
+					 * Keep it short and sweet. Facebook recommends 2–4 sentences, but that often truncates.
+					 *
+					 * See https://ahrefs.com/blog/open-graph-meta-tags/.
+					 */
 					'og_desc' => array(
-						'warn' => 160,
+						'warn' => 200,
 						'max'  => 300,
 					),
 					'schema_title' => array(
@@ -2881,7 +2919,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'max' => 110,
 					),
 					'schema_desc' => array(
-						'max' => 300,
+						'min'  => 50,
+						'warn' => 150,
+						'max'  => 300,
 					),
 					'schema_text' => array(
 						'max' => 10000,
@@ -4805,6 +4845,38 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				if ( isset( $local_cache[ $key ] ) ) {	// Just in case.
 
 					return $local_cache[ $key ];
+				}
+
+				return null;
+			}
+
+			return $local_cache;
+		}
+
+		/**
+		 * Since WPSSO Core v11.4.1.
+		 */
+		public static function get_input_limits( $opt_key = false ) {
+		
+			static $local_cache = null;
+
+			if ( null === $local_cache ) {
+
+				$local_cache = self::$cf[ 'form' ][ 'input_limits' ];
+
+				foreach ( $local_cache as $key => $limits ) {
+
+					$filter_name = SucomUtil::sanitize_hookname( 'wpsso_input_limits_' . $key );
+
+					$local_cache[ $key ] = apply_filters( $filter_name, $limits );
+				}
+			}
+
+			if ( false !== $opt_key ) {
+
+				if ( isset( $local_cache[ $opt_key ] ) ) {
+
+					return $local_cache[ $opt_key ];
 				}
 
 				return null;

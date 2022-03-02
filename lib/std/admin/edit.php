@@ -50,7 +50,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				}
 			}
 
-			$limits             = $this->p->cf[ 'form' ][ 'input_limits' ];
+			$limits             = WpssoConfig::get_input_limits();	// Uses a local static cache.
 			$currencies         = SucomUtil::get_currency_abbrev();
 			$product_categories = $this->p->util->get_google_product_categories();
 			$schema_types       = $this->p->schema->get_schema_types_select();
