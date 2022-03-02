@@ -2873,8 +2873,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Meta descriptions can technically be any length, but Google generally truncates snippets
 					 * to ~155-160 characters. It's best to keep meta descriptions long enough that they're
 					 * sufficiently descriptive, so we recommend descriptions between 50 and 160 characters.
-					 * Keep in mind that the "optimal" length will vary depending on the situation, and your
-					 * primary goal should be to provide value and drive clicks.
 					 *
 					 * See https://moz.com/learn/seo/meta-description.
 					 */
