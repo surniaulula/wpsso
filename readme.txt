@@ -251,7 +251,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.4.0-rc.1 (2022/03/01)**
+**Version 11.4.0 (2022/03/01)**
 
 * **New Features**
 	* None.
@@ -1018,7 +1018,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 11.4.0-rc.1 =
+= 11.4.0 =
 
 (2022/03/01) Fixed possible missing site name and tagline values in the Webpage Title Tag filters. Updated the default Twitter Card image dimensions. Added support for a new optional WPSSO_TITLE_TAG_DISABLE constant.
 
