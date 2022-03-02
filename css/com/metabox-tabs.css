@@ -149,7 +149,7 @@ ul.sucom-metabox-tabs.vertical {
 	float:left;
 	display:block;
 	width:20%;
-	min-width:140px;
+	min-width:150px;
 	max-width:200px;
 	height:auto;
 	border:none;
@@ -440,7 +440,7 @@ h3.sucom-metabox-tab_title {
 
 	ul.sucom-metabox-tabs.vertical {
 		width:44px;		/* Default is 20%. */
-		min-width:44px;		/* Default is 140px. */
+		min-width:44px;		/* Default is 150px. */
 	}
 
 	h3.sucom-metabox-tab_title {
@@ -462,6 +462,6 @@ h3.sucom-metabox-tab_title {
 
 	ul.sucom-metabox-tabs.vertical {
 		width:52px;		/* Default is 20%. */
-		min-width:52px;		/* Default is 140px. */
+		min-width:52px;		/* Default is 150px. */
 	}
 }
