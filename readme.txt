@@ -260,9 +260,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added filters for menu and submenu titles:
+	* Added new filters:
 		* 'wpsso_menu_title' ( $title )
 		* 'wpsso_menu_your_sso_title' ( $title )
+		* 'wpsso_input_limits_{option_key}' ( $limits )
+		* 'wpsso_metabox_tabs_layout_{metabox_id}' ( $tabs_layout = 'horizontal' )
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
