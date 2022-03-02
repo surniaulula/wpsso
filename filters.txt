@@ -109,6 +109,8 @@
 
 'wpsso_inherit_featured_image' ( $bool, $mod )
 
+'wpsso_input_limits_{option_key}' ( $limits )
+
 'wpsso_is_functions' ( $is_functions )
 
 'wpsso_js_url_facebook' ( $url, $pos )
@@ -226,8 +228,6 @@
 'wpsso_posts_per_page' ( $num, $mod )
 
 'wpsso_post_type_has_archive' ( $bool, $mod )
-
-'wpsso_post_type_has_archive' ( $is_functions )
 
 'wpsso_post_types' ( $post_types, $output )
 
