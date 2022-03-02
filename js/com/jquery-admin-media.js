@@ -62,24 +62,29 @@ function sucomShowLibraryImage( t, e ) {
 	var img_lib_css_id = jQuery( t ).attr( 'data-img-lib-css-id' );
 	var img_url_css_id = jQuery( t ).attr( 'data-img-url-css-id' );
 	var preview_css_id = jQuery( t ).attr( 'data-preview-css-id' );
+	var img_id         = jQuery( t ).val();
+	var img_id_thumb   = img_id;
 
-	var img_id       = jQuery( t ).val();
-	var img_id_thumb = img_id;
-
-	if ( ! img_id_thumb ) {	// Fallback to the placeholder image ID if we don't have a value.
+	if ( ! img_id_thumb ) {		// Fallback to the placeholder image ID if we don't have a value.
 
 		img_id_thumb = jQuery( t ).attr( 'placeholder' );
 	}
 
-	if ( ! img_id_thumb || ! img_lib_css_id || ! preview_css_id ) {	// Nothing to do.
+	if ( ! preview_css_id ) {	// A thumbnail preview container ID is required.
 
 		return;
 	}
 
 	var preview_container = jQuery( '#' + preview_css_id );
-	var img_lib_value     = jQuery( '#' + img_lib_css_id ).val();
 
 	preview_container.empty();	// Remove any old image preview.
+
+	if ( ! img_id_thumb || ! img_lib_css_id ) {	// A thumbnail image ID and the library type container ID is required.
+
+		return;
+	}
+
+	var img_lib_value = jQuery( '#' + img_lib_css_id ).val();
 
 	if ( 'wp' === img_lib_value && jQuery.isNumeric( img_id_thumb ) ) {
 
