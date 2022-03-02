@@ -995,8 +995,6 @@ table.sucom-settings .sucom_image_upload_preview {
 	display:inline-block;
 	margin:0 0 0 6px;
 	vertical-align:middle;
-	border:1px solid #8c8f94;
-	border-radius:3px;
 }
 
 body.rtl table.sucom-settings .sucom_image_upload_preview {
@@ -1010,6 +1008,8 @@ table.sucom-settings .sucom_image_upload_preview img {
 	margin:0;
 	padding:0;
 	vertical-align:middle;
+	border:1px solid #8c8f94;
+	border-radius:3px;
 }
 
 table.sucom-settings .button-primary {
