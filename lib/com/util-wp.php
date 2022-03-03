@@ -14,8 +14,6 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 	class SucomUtilWP {
 
-		protected static $cache_user_exists = array();	// Saved user_exists() values.
-
 		public function __construct() {}
 
 		public static function doing_ajax() {
