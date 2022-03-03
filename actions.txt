@@ -1,4 +1,14 @@
 
+'wpsso_check_head_info' ( $head_info, $mod, $canonical_url )
+
+'wpsso_clear_mod_cache' ( $mod )
+
+'wpsso_clear_post_cache' ( $post_id )
+
+'wpsso_clear_term_cache' ( $term_id )
+
+'wpsso_clear_user_cache' ( $user_id )
+
 'wpsso_init_objects' ()
 
 'wpsso_init_plugin' ()
