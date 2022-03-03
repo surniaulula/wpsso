@@ -1073,6 +1073,14 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 		/**
 		 * Deprecated on 2022/03/03.
 		 */
+		public static function get_taxonomies( $output = 'objects', $sort = false, $args = null ) {
+
+			return SucomUtil::get_taxonomies( $output, $sort, $args );
+		}
+
+		/**
+		 * Deprecated on 2022/03/03.
+		 */
 		public static function get_taxonomy_labels( $val_prefix = '', $label_prefix = '', $objects = null ) {
 
 			return SucomUtil::get_taxonomy_labels( $val_prefix, $label_prefix, $objects );
