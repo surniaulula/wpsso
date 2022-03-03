@@ -1044,7 +1044,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					}
 
 					/**
-					 * An is_admin() test is required to use the WpssoMessages class.
+					 * An is_admin() test is required to make sure the WpssoMessages class is available.
 					 */
 					if ( $this->p->notice->is_admin_pre_notices() ) {
 

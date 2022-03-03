@@ -3519,7 +3519,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						}
 
 						/**
-						 * An is_admin() test is required to use the WpssoMessages class.
+						 * An is_admin() test is required to make sure the WpssoMessages class is available.
 						 */
 						if ( $wpsso->notice->is_admin_pre_notices() ) {
 
