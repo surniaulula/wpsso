@@ -3498,14 +3498,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return empty( $json_data ) ? false : $json_data;
 		}
 
-		public static function check_required( &$json_data, array $mod, $prop_names = array( 'image' ) ) {
+		public static function check_required_props( &$json_data, array $mod, $prop_names = array( 'image' ) ) {
 
 			$wpsso =& Wpsso::get_instance();
 
 			/**
 			 * Check only published posts or other non-post objects.
 			 */
-			if ( $mod[ 'id' ] && ( ! $mod[ 'is_post' ] || 'publish' === $mod[ 'post_status' ] ) ) {
+			if ( ( $mod[ 'is_post' ] && 'publish' === $mod[ 'post_status' ] ) || ( ! $mod[ 'is_post' ] && $mod[ 'id' ] ) ) {
 
 				$ref_url = $wpsso->util->maybe_set_ref( null, $mod, __( 'checking meta tags', 'wpsso' ) );
 

@@ -917,34 +917,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 */
 				if ( $mod[ 'is_public' ] && 'publish' === $mod[ 'post_status' ] ) {
 
-					$ref_url = empty( parent::$head_info[ 'og:url' ] ) ? null : parent::$head_info[ 'og:url' ];
-
-					$ref_url = $this->p->util->maybe_set_ref( $ref_url, $mod, __( 'checking meta tags', 'wpsso' ) );
-
-					foreach ( array( 'image', 'description' ) as $mt_suffix ) {
-
-						if ( empty( parent::$head_info[ 'og:' . $mt_suffix ] ) ) {
-
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'og:' . $mt_suffix . ' meta tag is value empty and required' );
-							}
-
-							/**
-							 * An is_admin() test is required to use the WpssoMessages class.
-							 */
-							if ( $this->p->notice->is_admin_pre_notices() ) {
-
-								$notice_msg = $this->p->msgs->get( 'notice-missing-og-' . $mt_suffix );
-
-								$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-og-' . $mt_suffix;
-
-								$this->p->notice->err( $notice_msg, null, $notice_key );
-							}
-						}
-					}
-
-					$this->p->util->maybe_unset_ref( $ref_url );
+					$this->check_head_info( $mod );
 
 					/**
 					 * Check duplicates only when the post is available publicly and we have a valid permalink.
@@ -1583,29 +1556,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 */
 				if ( $mod[ 'is_public' ] && 'publish' === $mod[ 'post_status' ] ) {
 
-					$ref_url = empty( parent::$head_info[ 'og:url' ] ) ? null : parent::$head_info[ 'og:url' ];
-
-					$ref_url = $this->p->util->maybe_set_ref( $ref_url, $mod, __( 'checking meta tags', 'wpsso' ) );
-
-					foreach ( array( 'image', 'description' ) as $mt_suffix ) {
-
-						if ( empty( parent::$head_info[ 'og:' . $mt_suffix ] ) ) {
-
-							/**
-							 * An is_admin() test is required to use the WpssoMessages class.
-							 */
-							if ( $this->p->notice->is_admin_pre_notices() ) {
-
-								$notice_msg = $this->p->msgs->get( 'notice-missing-og-' . $mt_suffix );
-
-								$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-og-' . $mt_suffix;
-
-								$this->p->notice->err( $notice_msg, null, $notice_key );
-							}
-						}
-					}
-
-					$this->p->util->maybe_unset_ref( $ref_url );
+					$this->check_head_info( $mod );
 				}
 			}
 

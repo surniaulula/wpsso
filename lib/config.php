@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '11.5.0-dev.4',	// Plugin version.
+					'version'     => '11.5.0-dev.5',	// Plugin version.
 					'opt_version' => '891',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2913,6 +2913,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_title_bc' => array(
 						'max' => 70,
 					),
+
+					/**
+					 * The headline of the article. Headlines should not exceed 110 characters. For AMP
+					 * stories, the headline should match the text in the first cover page in the AMP Story.
+					 *
+					 * See https://developers.google.com/search/docs/advanced/structured-data/article.
+					 */
 					'schema_headline' => array(
 						'max' => 110,
 					),

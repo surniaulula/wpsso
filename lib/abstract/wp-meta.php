@@ -1030,6 +1030,38 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return self::must_be_extended();
 		}
 
+		protected function check_head_info( $mod ) {
+
+			$canonical_url = $this->p->util->maybe_set_ref( $canonical_url = null, $mod, __( 'checking meta tags', 'wpsso' ) );
+
+			foreach ( array( 'image', 'description' ) as $mt_suffix ) {
+
+				if ( empty( self::$head_info[ 'og:' . $mt_suffix ] ) ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'og:' . $mt_suffix . ' meta tag is value empty and required' );
+					}
+
+					/**
+					 * An is_admin() test is required to use the WpssoMessages class.
+					 */
+					if ( $this->p->notice->is_admin_pre_notices() ) {
+
+						$notice_msg = $this->p->msgs->get( 'notice-missing-og-' . $mt_suffix );
+
+						$notice_key = $mod[ 'name' ] . '-' . $mod[ 'id' ] . '-notice-missing-og-' . $mt_suffix;
+
+						$this->p->notice->err( $notice_msg, null, $notice_key );
+					}
+				}
+			}
+
+			$this->p->util->maybe_unset_ref( $canonical_url );
+
+			do_action( 'wpsso_check_head_info', self::$head_info, $mod, $canonical_url );
+		}
+
 		/**
 		 * Extended by WpssoPost->add_meta_boxes( $post_type, $post_obj = false );
 		 * Extended by WpssoTerm->add_meta_boxes( $term_obj, $tax_slug = false );

@@ -36,10 +36,10 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			$this->p->util->add_plugin_filters( $this, array( 
 				'metabox_sso_edit_general_rows'           => 4,
 				'metabox_sso_edit_media_rows'             => 4,
-				'metabox_sso_edit_media_prio_image_rows'  => 4,
-				'metabox_sso_edit_media_twitter_rows'     => 4,
-				'metabox_sso_edit_media_schema_rows'      => 4,
-				'metabox_sso_edit_media_pinterest_rows'   => 4,
+				'metabox_sso_edit_media_prio_image_rows'  => 5,
+				'metabox_sso_edit_media_twitter_rows'     => 5,
+				'metabox_sso_edit_media_schema_rows'      => 5,
+				'metabox_sso_edit_media_pinterest_rows'   => 5,
 				'metabox_sso_edit_visibility_rows'        => 4,
 				'metabox_sso_edit_visibility_robots_rows' => 4,
 				'metabox_sso_prev_social_rows'            => 4,
@@ -202,6 +202,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 
 		public function filter_metabox_sso_edit_media_rows( $table_rows, $form, $head_info, $mod ) {
 
+			$canonical_url   = $this->p->util->get_canonical_url( $mod );
 			$max_media_items = $this->p->cf[ 'form' ][ 'max_media_items' ];
 
 			$form_rows = array(
@@ -235,24 +236,28 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 
 			$table_rows = $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
 
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_media_prio_image_rows', $table_rows, $form, $head_info, $mod );
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_media_prio_image_rows', $table_rows, $form, $head_info, $mod, $canonical_url );
 
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_media_prio_video_rows', $table_rows, $form, $head_info, $mod );
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_media_prio_video_rows', $table_rows, $form, $head_info, $mod, $canonical_url );
 
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_media_schema_rows', $table_rows, $form, $head_info, $mod );
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_media_schema_rows', $table_rows, $form, $head_info, $mod, $canonical_url );
 
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_media_pinterest_rows', $table_rows, $form, $head_info, $mod );
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_media_pinterest_rows', $table_rows, $form, $head_info, $mod, $canonical_url );
 
-			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_media_twitter_rows', $table_rows, $form, $head_info, $mod );
+			$table_rows = apply_filters( 'wpsso_metabox_sso_edit_media_twitter_rows', $table_rows, $form, $head_info, $mod, $canonical_url );
 
 			return $table_rows;
 		}
 
-		public function filter_metabox_sso_edit_media_prio_image_rows( $table_rows, $form, $head_info, $mod ) {
+		public function filter_metabox_sso_edit_media_prio_image_rows( $table_rows, $form, $head_info, $mod, $canonical_url ) {
+
+			$this->p->util->maybe_set_ref( $canonical_url, $mod, __( 'getting open graph image', 'wpsso' ) );
 
 			$size_name     = 'wpsso-opengraph';
 			$media_request = array( 'pid' );
 			$media_info    = $this->p->media->get_media_info( $size_name, $media_request, $mod, $md_pre = 'none' );
+
+			$this->p->util->maybe_unset_ref( $canonical_url );
 
 			$form_rows = array(
 				'subsection_priority_image' => array(
@@ -277,18 +282,27 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			return $form->get_md_form_rows( $table_rows, $form_rows, $head_info, $mod );
 		}
 
-		public function filter_metabox_sso_edit_media_schema_rows( $table_rows, $form, $head_info, $mod ) {
+		public function filter_metabox_sso_edit_media_schema_rows( $table_rows, $form, $head_info, $mod, $canonical_url ) {
 
 			if ( ! $mod[ 'is_public' ] ) {
 
 				return $table_rows;
 			}
 
-			$size_name       = 'wpsso-schema-1x1';
-			$media_request   = array( 'pid' );
-			$media_info      = $this->p->media->get_media_info( $size_name, $media_request, $mod, $md_pre = 'og' );
 			$schema_disabled = $this->p->util->is_schema_disabled();
 			$schema_msg      = $this->p->msgs->maybe_schema_disabled();
+			$media_info      = array( 'pid' => '' );
+
+			if ( ! $schema_disabled ) {
+
+				$this->p->util->maybe_set_ref( $canonical_url, $mod, __( 'getting schema 1:1 image', 'wpsso' ) );
+
+				$size_name     = 'wpsso-schema-1x1';
+				$media_request = array( 'pid' );
+				$media_info    = $this->p->media->get_media_info( $size_name, $media_request, $mod, $md_pre = 'og' );
+
+				$this->p->util->maybe_unset_ref( $canonical_url );
+			}
 
 			$form_rows = array(
 				'subsection_schema' => array(
@@ -319,18 +333,27 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 		/**
 		 * Pinterest Pin It.
 		 */
-		public function filter_metabox_sso_edit_media_pinterest_rows( $table_rows, $form, $head_info, $mod ) {
+		public function filter_metabox_sso_edit_media_pinterest_rows( $table_rows, $form, $head_info, $mod, $canonical_url ) {
 
 			if ( ! $mod[ 'is_public' ] ) {
 
 				return $table_rows;
 			}
 
-			$size_name        = 'wpsso-pinterest';
-			$media_request    = array( 'pid' );
-			$media_info       = $this->p->media->get_media_info( $size_name, $media_request, $mod, $md_pre = array( 'schema', 'og' ) );
 			$pin_img_disabled = $this->p->util->is_pin_img_disabled();
 			$pin_img_msg      = $this->p->msgs->maybe_pin_img_disabled();
+			$media_info       = array( 'pid' => '' );
+
+			if ( ! $pin_img_disabled ) {
+
+				$this->p->util->maybe_set_ref( $canonical_url, $mod, __( 'getting pinterest image', 'wpsso' ) );
+
+				$size_name     = 'wpsso-pinterest';
+				$media_request = array( 'pid' );
+				$media_info    = $this->p->media->get_media_info( $size_name, $media_request, $mod, $md_pre = array( 'schema', 'og' ) );
+
+				$this->p->util->maybe_unset_ref( $canonical_url );
+			}
 
 			$form_rows = array(
 				'subsection_pinterest' => array(
@@ -365,7 +388,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 		 *
 		 * Only show custom image options for the Summary and Summary Large Image cards. 
 		 */
-		public function filter_metabox_sso_edit_media_twitter_rows( $table_rows, $form, $head_info, $mod ) {
+		public function filter_metabox_sso_edit_media_twitter_rows( $table_rows, $form, $head_info, $mod, $canonical_url ) {
 
 			if ( ! $mod[ 'is_public' ] ) {
 
@@ -392,8 +415,12 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 
 				} else {
 
+					$this->p->util->maybe_set_ref( $canonical_url, $mod, __( 'getting twitter card image', 'wpsso' ) );
+
 					$media_request = array( 'pid' );
 					$media_info    = $this->p->media->get_media_info( $size_name, $media_request, $mod, $md_pre = 'og' );
+			
+					$this->p->util->maybe_unset_ref( $canonical_url );
 
 					$form_rows[ $tc_prefix . '_img_id' ] = array(
 						'th_class' => 'medium',

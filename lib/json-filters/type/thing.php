@@ -68,11 +68,11 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeThing' ) ) {
 
 				if ( is_array( $md_opts ) ) {	// Just in case.
 
-					foreach ( SucomUtil::preg_grep_keys( '/^schema_addl_type_url_[0-9]+$/', $md_opts ) as $addl_type_url ) {
+					foreach ( SucomUtil::preg_grep_keys( '/^schema_addl_type_url_[0-9]+$/', $md_opts ) as $url ) {
 
-						if ( false !== filter_var( $addl_type_url, FILTER_VALIDATE_URL ) ) {	// Just in case.
+						if ( false !== filter_var( $url, FILTER_VALIDATE_URL ) ) {	// Just in case.
 
-							$json_ret[ 'additionalType' ][] = $addl_type_url;
+							$json_ret[ 'additionalType' ][] = $url;
 						}
 					}
 				}

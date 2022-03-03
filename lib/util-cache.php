@@ -316,7 +316,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			$cache_ids = array();
 
-			$transient_keys = self::get_db_transient_keys( $only_expired = false, $key_prefix );
+			$transient_keys = $this->get_db_transient_keys( $only_expired = false, $key_prefix );
 
 			foreach ( $transient_keys as $cache_id ) {
 
@@ -362,7 +362,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			$key_prefix = 'wpsso_';
 
-			$transient_keys = self::get_db_transient_keys( $only_expired = true, $key_prefix );
+			$transient_keys = $this->get_db_transient_keys( $only_expired = true, $key_prefix );
 
 			foreach ( $transient_keys as $cache_id ) {
 
@@ -375,7 +375,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			return $count;
 		}
 
-		public static function get_db_transient_keys( $only_expired = false, $key_prefix = '' ) {
+		public function get_db_transient_keys( $only_expired = false, $key_prefix = '' ) {
 
 			global $wpdb;
 
@@ -407,7 +407,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			return $transient_keys;
 		}
 
-		public static function get_db_transient_size_mb( $decimals = 2, $dec_point = '.', $thousands_sep = ',', $key_prefix = '' ) {
+		public function get_db_transient_size_mb( $decimals = 2, $dec_point = '.', $thousands_sep = ',', $key_prefix = '' ) {
 
 			global $wpdb;
 

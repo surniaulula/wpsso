@@ -1678,7 +1678,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function show_metabox_cache_status() {
 
 			$table_cols         = 4;
-			$db_transient_keys  = SucomUtilCache::get_db_transient_keys();
+			$db_transient_keys  = $this->p->util->cache->get_db_transient_keys();
 			$all_transients_pre = 'wpsso_';
 
 			echo '<table class="sucom-settings wpsso column-metabox cache-status">';
@@ -1718,7 +1718,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$cache_text_dom     = empty( $cache_info[ 'text_domain' ] ) ? $this->p->id : $cache_info[ 'text_domain' ];
 				$cache_label_transl = _x( $cache_info[ 'label' ], 'option label', $cache_text_dom );
 				$cache_count        = count( preg_grep( '/^' . $cache_md5_pre . '/', $db_transient_keys ) );
-				$cache_size         = SucomUtilCache::get_db_transient_size_mb( $decimals = 1, $dec_point = '.', $thousands_sep = '', $cache_md5_pre );
+				$cache_size         = $this->p->util->cache->get_db_transient_size_mb( $decimals = 1, $dec_point = '.', $thousands_sep = '', $cache_md5_pre );
 				$cache_exp_secs     = $this->p->util->get_cache_exp_secs( $cache_md5_pre, $cache_type = 'transient' );
 				$cache_exp_human    = $cache_exp_secs > 0 ? human_time_diff( 0, $cache_exp_secs ) : __( 'disabled', 'wpsso' );
 
