@@ -3929,16 +3929,16 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				$user_id = (int) $user_id;	// Cast as integer for the cache index.
 
-				if ( isset( self::$local_cache[ $user_id ] ) ) {
+				if ( isset( $local_cache[ $user_id ] ) ) {
 
-					return self::$local_cache[ $user_id ];
+					return $local_cache[ $user_id ];
 				}
 
 				global $wpdb;
 
 				$select_sql = 'SELECT COUNT(ID) FROM ' . $wpdb->users . ' WHERE ID = %d';
 
-				return self::$local_cache[ $user_id ] = $wpdb->get_var( $wpdb->prepare( $select_sql, $user_id ) ) ? true : false;
+				return $local_cache[ $user_id ] = $wpdb->get_var( $wpdb->prepare( $select_sql, $user_id ) ) ? true : false;
 			}
 
 			return false;
