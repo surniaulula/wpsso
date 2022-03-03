@@ -56,7 +56,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$cm_fb_name = $this->p->options[ 'plugin_cm_fb_name' ];
 
-			if ( ! SucomUtilWP::role_exists( 'person' ) ) {
+			if ( ! SucomUtil::role_exists( 'person' ) ) {
 
 				$role_label = _x( 'Person', 'user role', 'wpsso' );
 
@@ -276,7 +276,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( null === $md_opts ) {
 
-				$user_exists = SucomUtilWP::user_exists( $user_id );
+				$user_exists = SucomUtil::user_exists( $user_id );
 
 				if ( $user_exists ) {
 
@@ -498,7 +498,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			 */
 			$roles = $wpsso->cf[ 'wp' ][ 'roles' ][ 'creator' ];
 
-			return SucomUtilWP::get_roles_user_ids( $roles );
+			return SucomUtil::get_roles_user_ids( $roles );
 		}
 
 		/**
@@ -1244,7 +1244,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$local_cache[ $user_id ] = array();
 			}
 
-			$user_exists = SucomUtilWP::user_exists( $user_id );
+			$user_exists = SucomUtil::user_exists( $user_id );
 
 			$author_meta = '';
 
@@ -1311,7 +1311,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$local_cache[ $user_id ] = array();
 			}
 
-			$user_exists = SucomUtilWP::user_exists( $user_id );
+			$user_exists = SucomUtil::user_exists( $user_id );
 
 			$website_url = '';
 
@@ -1696,7 +1696,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			/**
 			 * Check if this is a valid WordPress user.
 			 */
-			$user_exists = SucomUtilWP::user_exists( $user_id );
+			$user_exists = SucomUtil::user_exists( $user_id );
 
 			if ( $user_exists ) {
 
@@ -1971,7 +1971,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$limit = WPSSO_SELECT_PERSON_NAMES_MAX;	// Default is 100 user names.
 
-			return SucomUtilWP::get_roles_user_select( $roles, $blog_id = null, $add_none, $limit );
+			return SucomUtil::get_roles_user_select( $roles, $blog_id = null, $add_none, $limit );
 		}
 
 		public function add_person_view( $user_views ) {

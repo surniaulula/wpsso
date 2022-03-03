@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '11.4.1-dev.3',	// Plugin version.
+					'version'     => '11.5.0-dev.4',	// Plugin version.
 					'opt_version' => '891',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -4852,7 +4852,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		}
 
 		/**
-		 * Since WPSSO Core v11.4.1.
+		 * Since WPSSO Core v11.5.0.
 		 */
 		public static function get_input_limits( $opt_key = false ) {
 		

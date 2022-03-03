@@ -613,7 +613,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$label_prefix = _x( 'Post Type', 'option label', $this->text_domain );
 
-			$values = SucomUtilWP::get_post_type_labels( $val_prefix = '', $label_prefix );
+			$values = SucomUtil::get_post_type_labels( $val_prefix = '', $label_prefix );
 
 			return $this->get_checklist( $name_prefix, $values, $css_class, $css_id, $is_assoc = true, $is_disabled );
 		}
@@ -672,11 +672,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$label_prefix = _x( 'Post Type', 'option label', $this->text_domain );
 
-			$values = SucomUtilWP::get_post_type_labels( $val_prefix = '', $label_prefix );
+			$values = SucomUtil::get_post_type_labels( $val_prefix = '', $label_prefix );
 
 			$label_prefix = _x( 'Taxonomy', 'option label', $this->text_domain );
 
-			$values += SucomUtilWP::get_taxonomy_labels( $val_prefix = 'tax_', $label_prefix );
+			$values += SucomUtil::get_taxonomy_labels( $val_prefix = 'tax_', $label_prefix );
 
 			$values[ 'user_page' ] = _x( 'User Profiles', 'option label', $this->text_domain );
 
@@ -1639,13 +1639,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			/**
 			 * Returns an associative array of timezone strings (ie. 'Africa/Abidjan'), 'UTC', and offsets (ie. '-07:00').
 			 */
-			$timezones = SucomUtilWP::get_timezones();
+			$timezones = SucomUtil::get_timezones();
 
 			if ( ! empty( $name ) ) {
 
 				if ( ! $this->in_defaults( $name ) ) {
 
-					$this->defaults[ $name ] = SucomUtilWP::get_default_timezone();
+					$this->defaults[ $name ] = SucomUtil::get_default_timezone();
 				}
 			}
 

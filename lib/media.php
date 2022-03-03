@@ -59,7 +59,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$msg_transl = __( '<strong>Suggested minimum dimension for uploaded images</strong> (to satisfy all %1$d image sizes): %2$d by %3$d pixels.', 'wpsso' );
 
-			list( $min_width, $min_height, $size_count ) = SucomUtilWP::get_minimum_image_wh();
+			list( $min_width, $min_height, $size_count ) = SucomUtil::get_minimum_image_wh();
 
 			echo '<p class="minimum-dimensions">';
 

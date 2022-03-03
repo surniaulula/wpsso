@@ -834,7 +834,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						$caption_desc = $this->get_description( $mod, $md_key_desc = 'og_desc', $adj_max_len,
 							$num_hashtags, $do_encode_desc = false );
 
-						SucomUtilWP::add_title_part( $caption_text, $title_sep, $caption_desc );
+						SucomUtil::add_title_part( $caption_text, $title_sep, $caption_desc );
 
 						break;
 				}
@@ -989,12 +989,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( ! empty( $page_number_transl ) ) {
 
-				SucomUtilWP::add_title_part( $title_text, $title_sep, $page_number_transl );
+				SucomUtil::add_title_part( $title_text, $title_sep, $page_number_transl );
 			}
 
 			if ( ! empty( $hashtags ) ) {
 
-				SucomUtilWP::add_title_part( $title_text, '', $hashtags );
+				SucomUtil::add_title_part( $title_text, '', $hashtags );
 			}
 
 			/**
@@ -1112,7 +1112,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( ! empty( $hashtags ) ) {
 
-				SucomUtilWP::add_title_part( $desc_text, '', $hashtags );
+				SucomUtil::add_title_part( $desc_text, '', $hashtags );
 			}
 
 			/**
@@ -1174,7 +1174,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			 */
 			if ( ! empty( $hashtags ) ) {
 
-				SucomUtilWP::add_title_part( $text, '', $hashtags );
+				SucomUtil::add_title_part( $text, '', $hashtags );
 			}
 
 			/**

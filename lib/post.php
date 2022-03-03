@@ -1068,7 +1068,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				return;	// Stop here.
 			}
 
-			if ( empty( $post_obj->post_type ) || SucomUtilWP::is_post_type_public( $post_obj->post_type ) ) {
+			if ( empty( $post_obj->post_type ) || SucomUtil::is_post_type_public( $post_obj->post_type ) ) {
 
 				if ( $this->p->debug->enabled ) {
 

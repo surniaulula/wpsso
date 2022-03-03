@@ -316,7 +316,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			$cache_ids = array();
 
-			$transient_keys = SucomUtilWP::get_db_transient_keys( $only_expired = false, $key_prefix );
+			$transient_keys = self::get_db_transient_keys( $only_expired = false, $key_prefix );
 
 			foreach ( $transient_keys as $cache_id ) {
 
@@ -362,7 +362,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 			$key_prefix = 'wpsso_';
 
-			$transient_keys = SucomUtilWP::get_db_transient_keys( $only_expired = true, $key_prefix );
+			$transient_keys = self::get_db_transient_keys( $only_expired = true, $key_prefix );
 
 			foreach ( $transient_keys as $cache_id ) {
 
@@ -373,6 +373,53 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 			}
 
 			return $count;
+		}
+
+		public static function get_db_transient_keys( $only_expired = false, $key_prefix = '' ) {
+
+			global $wpdb;
+
+			$transient_keys = array();
+			$opt_row_prefix = $only_expired ? '_transient_timeout_' : '_transient_';
+			$current_time   = isset( $_SERVER[ 'REQUEST_TIME' ] ) ? (int) $_SERVER[ 'REQUEST_TIME' ] : time() ;
+
+			$db_query = 'SELECT option_name';
+			$db_query .= ' FROM ' . $wpdb->options;
+			$db_query .= ' WHERE option_name LIKE \'' . $opt_row_prefix . $key_prefix . '%\'';
+
+			if ( $only_expired ) {
+
+				$db_query .= ' AND option_value < ' . $current_time;	// Expiration time older than current time.
+			}
+
+			$db_query .= ';';	// End of query.
+
+			$result = $wpdb->get_col( $db_query );
+
+			/**
+			 * Remove '_transient_' or '_transient_timeout_' prefix from option name.
+			 */
+			foreach( $result as $option_name ) {
+
+				$transient_keys[] = str_replace( $opt_row_prefix, '', $option_name );
+			}
+
+			return $transient_keys;
+		}
+
+		public static function get_db_transient_size_mb( $decimals = 2, $dec_point = '.', $thousands_sep = ',', $key_prefix = '' ) {
+
+			global $wpdb;
+
+			$db_query = 'SELECT CHAR_LENGTH( option_value ) / 1024 / 1024';
+			$db_query .= ', CHAR_LENGTH( option_value )';
+			$db_query .= ' FROM ' . $wpdb->options;
+			$db_query .= ' WHERE option_name LIKE \'_transient_' . $key_prefix . '%\'';
+			$db_query .= ';';	// End of query.
+
+			$result = $wpdb->get_col( $db_query );
+
+			return number_format( array_sum( $result ), $decimals, $dec_point, $thousands_sep );
 		}
 
 		/**

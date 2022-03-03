@@ -683,7 +683,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 
 					if ( empty( $this->p->options[ 'plugin_new_user_is_person' ] ) ) {
 
-						foreach ( SucomUtilWP::get_roles_user_ids( array( 'subscriber' ) ) as $user_id ) {
+						foreach ( SucomUtil::get_roles_user_ids( array( 'subscriber' ) ) as $user_id ) {
 
 							$user_obj = get_user_by( 'ID', $user_id );
 

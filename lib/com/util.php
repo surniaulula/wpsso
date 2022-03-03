@@ -807,19 +807,109 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public function __construct() {}
 
 		/**
-		 * Deprecated on 2022/02/04.
+		 * Add a separator and a value to the left/right hand side of the title.
 		 */
-		public static function get_min_int() {
+		public static function add_title_part( &$title, $title_sep, $part, $hand = 'right' ) {
 
-			return PHP_INT_MIN;	// Since PHP v7.0.0.
+			if ( $part ) {	// An empty $part would only leave a hanging separator.
+
+				if ( $title ) {
+
+					switch ( $hand ) {
+
+						case 'left':
+
+							$title = $part . ' ' . trim( $title_sep . ' ' . $title );
+
+							break;
+
+						default:
+
+							$title = trim( $title . ' ' . $title_sep ) . ' ' . $part;
+
+							break;
+					}
+
+				} else {
+
+					$title = $part;	// We have a part, but no title.
+				}
+			}
+
+			return trim( $title );
 		}
 
 		/**
-		 * Deprecated on 2022/02/04.
+		 * Returns an associative array of timezone strings (ie. 'Africa/Abidjan'), 'UTC', and offsets (ie. '-07:00').
 		 */
-		public static function get_max_int() {
+		public static function get_timezones() {
 
-			return PHP_INT_MAX;	// Since PHP 5.0.2.
+			$timezones = timezone_identifiers_list();
+
+			$timezones = array_combine( $timezones, $timezones );	// Create an associative array.
+
+			$offset_range = array( -12, -11.5, -11, -10.5, -10, -9.5, -9, -8.5, -8, -7.5, -7, -6.5, -6, -5.5, -5, -4.5, -4, -3.5, -3, -2.5, -2, -1.5, -1, -0.5, 0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4, 4.5, 5, 5.5, 5.75, 6, 6.5, 7, 7.5, 8, 8.5, 8.75, 9, 9.5, 10, 10.5, 11, 11.5, 12, 12.75, 13, 13.75, 14 );
+
+			/**
+			 * Create date( 'P' ) formatted timezone values (ie. -07:00).
+			 */
+			foreach ( $offset_range as $offset ) {
+
+				$offset_value = self::format_tz_offset( $offset );
+
+				$offset_name = 'UTC' . $offset_value;
+
+				$timezones[ $offset_value ] = $offset_name;
+			}
+
+			return $timezones;
+		}
+
+		/**
+		 * May return a timezone string (ie. 'Africa/Abidjan'), 'UTC', or an offset (ie. '-07:00').
+		 */
+		public static function get_default_timezone() {
+
+			static $local_cache = null;
+
+			if ( null !== $local_cache ) {
+
+				return $local_cache;
+			}
+
+			if ( function_exists( wp_timezone_string() ) ) {	// Since WP v5.3.
+
+				return $local_cache = wp_timezone_string();
+			}
+
+			$timezone_string = get_option( 'timezone_string' );
+
+			if ( $timezone_string ) {
+
+				return $local_cache = $timezone_string;
+			}
+
+			$offset = (float) get_option( 'gmt_offset' );
+
+			$tz_offset = self::format_tz_offset( $offset );
+
+			return $local_cache = $tz_offset;
+		}
+
+		/**
+		 * Returns a date( 'P' ) formatted timezone value (ie. -07:00).
+		 */
+		public static function format_tz_offset( $offset ) {
+
+			$hours   = (int) $offset;
+			$minutes = ( $offset - $hours );
+
+			$sign      = ( $offset < 0 ) ? '-' : '+';
+			$abs_hour  = abs( $hours );
+			$abs_mins  = abs( $minutes * 60 );
+			$tz_offset = sprintf( '%s%02d:%02d', $sign, $abs_hour, $abs_mins );
+
+			return $tz_offset;
 		}
 
 		/**
@@ -1136,26 +1226,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $local_cache;
 		}
 
-		/**
-		 * Deprecated on 2020/10/02.
-		 */
-		public static function is_mobile() {
-
-			_deprecated_function( __METHOD__ . '()', '2020/10/02', $replacement = '' );	// Deprecation message.
-
-			return null;
-		}
-
-		/**
-		 * Deprecated on 2020/10/02.
-		 */
-		public static function is_desktop() {
-
-			_deprecated_function( __METHOD__ . '()', '2020/10/02', $replacement = '' );	// Deprecation message.
-
-			return null;
-		}
-
 		public static function is_https( $url = '' ) {
 
 			static $local_cache = array();
@@ -1319,6 +1389,88 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			return false;
+		}
+
+		public static function get_minimum_image_wh() {
+
+			static $local_cache = null;
+
+			if ( null !== $local_cache ) {
+
+				return $local_cache;
+			}
+
+			global $_wp_additional_image_sizes;
+
+			$min_width  = 0;
+			$min_height = 0;
+			$size_count = 0;
+
+			foreach ( $_wp_additional_image_sizes as $size_name => $size_info ) {
+
+				$size_count++;
+
+				if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'width' ] ) ) {
+
+					$width = intval( $_wp_additional_image_sizes[ $size_name ][ 'width' ] );
+
+				} else {
+
+					$width = get_option( $size_name . '_size_w' );	// Returns false by default.
+				}
+
+				if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'height' ] ) ) {
+
+					$height = intval( $_wp_additional_image_sizes[ $size_name ][ 'height' ] );
+
+				} else {
+
+					$height = get_option( $size_name . '_size_h' );	// Returns false by default.
+				}
+
+				if ( isset( $_wp_additional_image_sizes[ $size_name ][ 'crop' ] ) ) {
+
+					$crop = $_wp_additional_image_sizes[ $size_name ][ 'crop' ];
+
+				} else {
+
+					$crop = get_option( $size_name . '_crop' );	// Returns false by default.
+				}
+
+				if ( ! is_array( $crop ) ) {
+
+					$crop = empty( $crop ) ? false : true;
+				}
+
+				if ( $crop ) {
+
+					if ( $width > $min_width ) {
+
+						$min_width = $width;
+					}
+
+					if ( $height > $min_height ) {
+
+						$min_height = $height;
+					}
+
+				} elseif ( $width < $height ) {
+
+					if ( $width > $min_width ) {
+
+						$min_width = $width;
+					}
+
+				} else {
+
+					if ( $height > $min_height ) {
+
+						$min_height = $height;
+					}
+				}
+			}
+
+			return $local_cache = array( $min_width, $min_height, $size_count );
 		}
 
 		public static function get_use_post_string( $use_post ) {
@@ -1658,16 +1810,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return strlen( $serialized );
 		}
 
-		/**
-		 * Deprecated on 2020/10/20.
-		 */
-		public static function get_open_close( array $opts, $key_day_o, $key_midday_close, $key_midday_o, $key_day_c ) {
-
-			_deprecated_function( __METHOD__ . '()', '2020/10/20', $replacement = __CLASS__ . '::get_opts_open_close_hm_tz()' );	// Deprecation message.
-
-			return self::get_opts_open_close_hm_tz( $opts, $key_day_o, $key_midday_close, $key_midday_o, $key_day_c );
-		}
-
 		public static function get_opts_begin( $str, array $opts ) {
 
 			$found = array();
@@ -1690,8 +1832,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( ! empty( $opts[ $key_hm ] ) ) {
 
-				$timezone  = empty( $key_tz ) || empty( $opts[ $key_tz ] ) ?
-					SucomUtilWP::get_default_timezone() : $opts[ $key_tz ];
+				$timezone  = empty( $key_tz ) || empty( $opts[ $key_tz ] ) ? self::get_default_timezone() : $opts[ $key_tz ];
 
 				$tz_offset = self::get_timezone_offset_hours( $timezone );
 
@@ -1729,8 +1870,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				if ( $is_valid_open_close ) {
 
-					$timezone  = empty( $key_tz ) || empty( $opts[ $key_tz ] ) ?
-						SucomUtilWP::get_default_timezone() : $opts[ $key_tz ];
+					$timezone  = empty( $key_tz ) || empty( $opts[ $key_tz ] ) ? self::get_default_timezone() : $opts[ $key_tz ];
 
 					$tz_offset = self::get_timezone_offset_hours( $timezone );
 
@@ -2223,16 +2363,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Deprecated on 2020/08/10.
-		 */
-		public static function get_mt_media_url( array $assoc, $media_pre = 'og:image', $mt_suffixes = null ) {
-
-			_deprecated_function( __METHOD__ . '()', '2020/08/10', $replacement = __CLASS__ . '::get_first_mt_media_url()' );	// Deprecation message.
-
-			return self::get_first_mt_media_url( $assoc, $media_pre, $mt_suffixes );
-		}
-
-		/**
 		 * Return the first URL from the associative array (og:image:secure_url, og:image:url, og:image).
 		 */
 		public static function get_first_mt_media_url( array $assoc, $media_pre = 'og:image', $mt_suffixes = null ) {
@@ -2713,8 +2843,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return $local_cache;
 			}
 
-			$local_cache = get_available_languages();
 			$def_locale  = self::get_locale( 'default' );	// Uses a static cache.
+			$local_cache = get_available_languages();
 
 			if ( ! is_array( $local_cache ) ) {	// Just in case.
 
@@ -2964,65 +3094,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $opts;
 		}
 
-		/**
-		 * Deprecated on 2020/12/09.
-		 */
-		public static function is_archive_page() {
-
-			_deprecated_function( __METHOD__ . '()', '2020/12/09', $replacement = '' );	// Deprecation message.
-
-			return apply_filters( 'sucom_is_archive_page', is_archive() );
-		}
-
-		/**
-		 * $use_post can be true, false, a numeric post ID, or a post object.
-		 */
-		public static function is_home_page( $use_post = false ) {
-
-			$is_home_page = false;
-
-			$post_id = 'page' === get_option( 'show_on_front' ) ? (int) get_option( 'page_on_front' ) : 0;
-
-			if ( $post_id > 0 ) {
-
-				if ( is_numeric( $use_post ) && (int) $use_post === $post_id ) {
-
-					$is_home_page = true;
-
-				} elseif ( self::get_post_object( $use_post, 'id' ) === $post_id ) {
-
-					$is_home_page = true;
-				}
-			}
-
-			return apply_filters( 'sucom_is_home_page', $is_home_page, $use_post );
-		}
-
-		public static function is_home_posts( $use_post = false ) {
-
-			$is_home_posts = false;
-
-			$post_id = 'page' === get_option( 'show_on_front' ) ? (int) get_option( 'page_for_posts' ) : 0;
-
-			if ( $post_id > 0 ) {
-
-				if ( is_numeric( $use_post ) && (int) $use_post === $post_id ) {
-
-					$is_home_posts = true;
-
-				} elseif ( self::get_post_object( $use_post, 'id' ) === $post_id ) {
-
-					$is_home_posts = true;
-				}
-
-			} elseif ( false === $use_post && is_home() && is_front_page() ) {
-
-				$is_home_posts = true;
-			}
-
-			return apply_filters( 'sucom_is_home_posts', $is_home_posts, $use_post );
-		}
-
 		public static function is_auto_draft( array $mod ) {
 
 			if ( ! empty( $mod[ 'is_post' ] ) ) {
@@ -3133,26 +3204,50 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return false;
 		}
 
-		public static function is_term_tax_slug( $term_id, $tax_slug ) {
+		public static function is_home_page( $use_post = false ) {
 
-			/**
-			 * Optimize and get the term only once so this method can be called several times for different $tax_slugs.
-			 */
-			static $local_cache = array();
+			$is_home_page = false;
 
-			if ( ! isset( $local_cache[ $term_id ] ) ) {
+			$post_id = 'page' === get_option( 'show_on_front' ) ? (int) get_option( 'page_on_front' ) : 0;
 
-				$local_cache[ $term_id ] = get_term_by( 'id', $term_id, $tax_slug, OBJECT, 'raw' );
+			if ( $post_id > 0 ) {	// The 'page_on_front' option post ID.
+
+				if ( is_numeric( $use_post ) && (int) $use_post === $post_id ) {
+
+					$is_home_page = true;
+
+				} elseif ( self::get_post_object( $use_post, 'id' ) === $post_id ) {
+
+					$is_home_page = true;
+				}
 			}
 
-			if ( ! empty( $local_cache[ $term_id ]->term_id ) &&
-				! empty( $local_cache[ $term_id ]->taxonomy ) &&
-					$local_cache[ $term_id ]->taxonomy === $tax_slug ) {
+			return apply_filters( 'sucom_is_home_page', $is_home_page, $use_post );
+		}
 
-				return true;
+		public static function is_home_posts( $use_post = false ) {
+
+			$is_home_posts = false;
+
+			$post_id = 'page' === get_option( 'show_on_front' ) ? (int) get_option( 'page_for_posts' ) : 0;
+
+			if ( $post_id > 0 ) {	// The 'page_for_posts' option post ID.
+
+				if ( is_numeric( $use_post ) && (int) $post_id === $use_post ) {
+
+					$is_home_posts = true;
+
+				} elseif ( $post_id === self::get_post_object( $use_post, 'id' ) ) {
+
+					$is_home_posts = true;
+				}
+
+			} elseif ( false === $use_post && is_home() && is_front_page() ) {
+
+				$is_home_posts = true;
 			}
 
-			return false;
+			return apply_filters( 'sucom_is_home_posts', $is_home_posts, $use_post );
 		}
 
 		public static function is_post_exists( $post_id ) {
@@ -3211,9 +3306,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return apply_filters( 'sucom_is_post_page', $ret, $use_post );
 		}
 
-		/**
-		 * $post_type can be a post type string, or a post type object.
-		 */
 		public static function is_post_type_archive( $post_type, $post_slug ) {
 
 			$is_post_type_archive = false;
@@ -3252,11 +3344,49 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $is_post_type_archive;
 		}
 
+		public static function is_post_type_public( $mixed ) {
+
+			$post_type_name = null;
+
+			if ( is_object( $mixed ) || is_numeric( $mixed ) ) {
+
+				/**
+				 * Returns the post type name.
+				 */
+				$post_type_name = get_post_type( $mixed );	// Post object or ID.
+
+			} else {
+
+				$post_type_name = $mixed;	// Post type name.
+			}
+
+			if ( $post_type_name ) {
+
+				$args = array( 'name' => $post_type_name, 'public'  => 1 );
+
+				$post_types = get_post_types( $args, $output = 'names', $operator = 'and' );
+
+				if ( isset( $post_types[ 0 ] ) && $post_types[ 0 ] === $post_type_name ) {
+
+					return true;
+				}
+			}
+
+			return false;
+		}
+
+		/**
+		 * $use_post can be true (uses the $post global object), false (uses the queried object), a numeric post ID, or a post object.
+		 */
 		public static function get_post_object( $use_post = false, $output = 'object' ) {
 
 			$post_obj = false;	// Return false by default.
 
-			if ( is_numeric( $use_post ) && $use_post > 0 ) {
+			if ( is_object( $use_post ) ) {	// Just in case.
+
+				$post_obj = $use_post;
+
+			} elseif ( is_numeric( $use_post ) && $use_post > 0 ) {
 
 				$post_obj = get_post( $use_post );
 
@@ -3287,22 +3417,117 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$post_obj = apply_filters( 'sucom_get_post_object', $post_obj, $use_post );
 
-			switch ( $output ) {
+			if ( $post_obj instanceof WP_Post ) {
 
-				case 'id':
-				case 'ID':
-				case 'post_id':
+				switch ( $output ) {
 
-					return isset( $post_obj->ID ) ? (int) $post_obj->ID : 0;	// Cast as integer.
-
-					break;
-
-				default:
-
-					return is_object( $post_obj ) ? $post_obj : false;
-
-					break;
+					case 'id':
+					case 'ID':
+					case 'post_id':
+	
+						return isset( $post_obj->ID ) ? (int) $post_obj->ID : 0;	// Cast as integer.
+	
+						break;
+				}
+			
+				return $post_obj;
 			}
+
+			return false;
+		}
+
+		/**
+		 * Note that 'has_archive' = 1 will not match post types registered with a string in 'has_archive'.
+		 *
+		 * Use 'has_archive' = true to include the WooCommerce product archive page (ie. 'has_archive' = 'shop').
+		 */
+		public static function get_post_type_archives( $output = 'objects', $sort = false, $args = null ) {
+
+			if ( ! is_array( $args ) ) {
+
+				$args = array();
+			}
+
+			if ( empty( $args[ 'has_archive' ] ) || 1 === $args[ 'has_archive' ] ) {
+
+				$args[ 'has_archive' ] = true;
+			}
+
+			return self::get_post_types( $output, $sort, $args );
+		}
+
+		public static function get_post_type_archive_labels( $val_prefix = '', $label_prefix = '' ) {
+
+			$objects = self::get_post_type_archives( $output = 'objects' );
+
+			return self::get_post_type_labels( $val_prefix, $label_prefix, $objects );
+		}
+
+		public static function get_post_type_labels( $val_prefix = '', $label_prefix = '', $objects = null ) {
+
+			$values = array();
+
+			if ( ! is_string( $val_prefix ) ) {	// Just in case.
+
+				return $values;
+			}
+
+			if ( null === $objects ) {
+
+				$objects = self::get_post_types( $output = 'objects', $sort = true );
+			}
+
+			if ( is_array( $objects ) ) {	// Just in case.
+
+				foreach ( $objects as $obj ) {
+
+					$obj_label = self::get_object_label( $obj );
+
+					$values[ $val_prefix . $obj->name ] = trim( $label_prefix . ' ' . $obj_label );
+				}
+			}
+
+			return $values;
+		}
+
+		/**
+		 * Returns post types registered as 'public' = true and 'show_ui' = true by default.
+		 *
+		 * Note that the 'wp_block' custom post type for reusable blocks is registered as 'public' = false and 'show_ui' = true.
+		 *
+		 * $output = objects | names
+		 */
+		public static function get_post_types( $output = 'objects', $sort = false, $args = null ) {
+
+			$def_args = array( 'public' => true, 'show_ui' => true );
+
+			if ( null === $args ) {
+
+				$args = $def_args;
+
+			} elseif ( is_array( $args ) ) {
+
+				$args = array_merge( $def_args, $args );
+
+			} else return array();
+
+			$operator = 'and';
+
+			$post_types = get_post_types( $args, $output, $operator );
+
+			if ( $sort ) {
+
+				if ( 'objects' === $output ) {
+
+					self::sort_objects_by_label( $post_types );
+
+				} else {
+
+					asort( $post_types );
+				}
+			}
+
+			return apply_filters( 'sucom_get_post_types', $post_types, $output, $args );
 		}
 
 		public static function maybe_load_post( $post_id, $force = false ) {
@@ -3322,6 +3547,68 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			return false;
+		}
+
+		public static function get_taxonomies( $output = 'objects', $sort = false, $args = null ) {
+
+			$def_args = array( 'public' => true, 'show_ui' => true );
+
+			if ( null === $args ) {
+
+				$args = $def_args;
+
+			} elseif ( is_array( $args ) ) {
+
+				$args = array_merge( $def_args, $args );
+
+			} else return array();
+
+			$operator = 'and';
+
+			$taxonomies = get_taxonomies( $args, $output, $operator );
+
+			if ( $sort ) {
+
+				if ( 'objects' === $output ) {
+
+					self::sort_objects_by_label( $taxonomies );
+
+				} else {
+
+					asort( $post_types );
+				}
+			}
+
+			return apply_filters( 'sucom_get_taxonomies', $taxonomies, $output, $args );
+		}
+
+		public static function get_taxonomy_labels( $val_prefix = '', $label_prefix = '', $objects = null ) {
+
+			$values = array();
+
+			if ( ! is_string( $val_prefix ) ) {	// Just in case.
+
+				return $values;
+			}
+
+			if ( null === $objects ) {
+
+				$objects = self::get_taxonomies( $output = 'objects', $sort = true );
+			}
+
+			if ( is_array( $objects ) ) {	// Just in case.
+
+				foreach ( $objects as $obj ) {
+
+					$obj_label = self::get_object_label( $obj );
+
+					$values[ $val_prefix . $obj->name ] = trim( $label_prefix . ' ' . $obj_label );
+				}
+			}
+
+			asort( $values );	// Sort by label.
+
+			return $values;
 		}
 
 		public static function is_term_page( $term_id = 0, $tax_slug = '' ) {
@@ -3410,11 +3697,37 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return apply_filters( 'sucom_is_tag_page', $ret );
 		}
 
+		public static function is_term_tax_slug( $term_id, $tax_slug ) {
+
+			/**
+			 * Optimize and get the term only once so this method can be called several times for different $tax_slugs.
+			 */
+			static $local_cache = array();
+
+			if ( ! isset( $local_cache[ $term_id ] ) ) {
+
+				$local_cache[ $term_id ] = get_term_by( 'id', $term_id, $tax_slug, OBJECT, 'raw' );
+			}
+
+			if ( ! empty( $local_cache[ $term_id ]->term_id ) &&
+				! empty( $local_cache[ $term_id ]->taxonomy ) &&
+					$local_cache[ $term_id ]->taxonomy === $tax_slug ) {
+
+				return true;
+			}
+
+			return false;
+		}
+
 		public static function get_term_object( $term_id = 0, $tax_slug = '', $output = 'object' ) {
 
 			$term_obj = false;	// Return false by default.
 
-			if ( is_numeric( $term_id ) && $term_id > 0 ) {
+			if ( is_object( $term_id ) ) {	// Just in case.
+
+				$term_obj = $term_id;
+
+			} elseif ( is_numeric( $term_id ) && $term_id > 0 ) {
 
 				$term_obj = get_term( (int) $term_id, (string) $tax_slug, OBJECT, 'raw' );
 
@@ -3433,28 +3746,201 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$term_obj = apply_filters( 'sucom_get_term_object', $term_obj, $term_id, $tax_slug );
 
-			switch ( $output ) {
+			if ( $term_obj instanceof WP_Term ) {
 
-				case 'id':
-				case 'ID':
-				case 'term_id':
+				switch ( $output ) {
 
-					return isset( $term_obj->term_id ) ? (int) $term_obj->term_id : 0;	// Cast as integer.
-
-					break;
-
-				case 'taxonomy':
-
-					return isset( $term_obj->taxonomy ) ? (string) $term_obj->taxonomy : '';	// Cast as string.
-
-					break;
-
-				default:
-
-					return is_object( $term_obj ) ? $term_obj : false;
-
-					break;
+					case 'id':
+					case 'ID':
+					case 'term_id':
+	
+						return isset( $term_obj->term_id ) ? (int) $term_obj->term_id : 0;	// Cast as integer.
+	
+						break;
+	
+					case 'taxonomy':
+	
+						return isset( $term_obj->taxonomy ) ? (string) $term_obj->taxonomy : '';	// Cast as string.
+	
+						break;
+				}
+	
+				return $term_obj;
 			}
+			
+			return false;
+		}
+
+		public static function role_exists( $role ) {
+
+			$exists = false;
+
+			if ( ! empty( $role ) ) {	// Just in case.
+
+				if ( function_exists( 'wp_roles' ) ) {
+
+					$exists = wp_roles()->is_role( $role );
+
+				} else {
+
+					$exists = $GLOBALS[ 'wp_roles' ]->is_role( $role );
+				}
+			}
+
+			return $exists;
+		}
+
+		public static function get_roles_user_ids( array $roles, $blog_id = null, $limit = '' ) {
+
+			/**
+			 * Get the user ID => name associative array, and keep only the array keys.
+			 */
+			$user_ids = array_keys( self::get_roles_user_names( $roles, $blog_id, $limit ) );
+
+			rsort( $user_ids );	// Newest user first.
+
+			return $user_ids;
+		}
+
+		public static function get_roles_user_select( array $roles, $blog_id = null, $add_none = true, $limit = '' ) {
+
+			$user_select = self::get_roles_user_names( $roles, $blog_id, $limit );
+
+			if ( $add_none ) {
+
+				$user_select = array( 'none' => 'none' ) + $user_select;
+			}
+
+			return $user_select;
+		}
+
+		public static function get_roles_user_names( array $roles, $blog_id = null, $limit = '' ) {
+
+			if ( empty( $roles ) ) {
+
+				return array();
+			};
+
+			if ( empty( $blog_id ) ) {
+
+				$blog_id = get_current_blog_id();
+			}
+
+			$user_names = array();
+
+			foreach ( $roles as $role ) {
+
+				$role_users = self::get_user_names( $role, $blog_id, $limit );	// Can return false with a numeric $limit argument.
+
+				if ( ! empty( $role_users ) && is_array( $role_users ) ) {	// Check return value, just in case.
+
+					$user_names += $role_users;
+				}
+			}
+
+			/**
+			 * Use asort() or uasort() to maintain the ID => display_name association.
+			 */
+			if ( ! empty( $user_names ) ) {	// Skip if nothing to sort.
+
+				if ( defined( 'SORT_STRING' ) ) {
+
+					asort( $user_names, SORT_STRING );
+
+				} else {
+
+					uasort( $user_names, 'strnatcmp' );
+				}
+			}
+
+			return $user_names;
+		}
+
+		/**
+		 * Keep in mind that the 'wp_capabilities' meta value is a serialized array, so WordPress uses a LIKE query to
+		 * match any string within the serialized array.
+		 *
+		 * Example query:
+		 *
+		 * 	SELECT wp_users.ID,wp_users.display_name
+		 * 	FROM wp_users
+		 * 	INNER JOIN wp_usermeta
+		 * 	ON ( wp_users.ID = wp_usermeta.user_id )
+		 * 	WHERE 1=1
+		 * 	AND ( ( ( wp_usermeta.meta_key = 'wp_capabilities'
+		 * 	AND wp_usermeta.meta_value LIKE '%\"person\"%' ) ) )
+		 * 	ORDER BY display_name ASC
+		 *
+		 * If using the $limit argument, you must keep calling get_user_names() until it returns false - it may also return
+		 * false on the first query if there are no users in the specified role.
+		 */
+		public static function get_user_names( $role = '', $blog_id = null, $limit = '' ) {
+
+			static $offset = '';
+
+			if ( empty( $blog_id ) ) {
+
+				$blog_id = get_current_blog_id();
+			}
+
+			if ( is_numeric( $limit ) ) {
+
+				$offset = '' === $offset ? 0 : $offset + $limit;
+			}
+
+			$user_args  = array(
+				'blog_id' => $blog_id,
+				'offset'  => $offset,
+				'number'  => $limit,
+				'order'   => 'ASC',
+				'orderby' => 'display_name',
+				'role'    => $role,
+				'fields'  => array(	// Save memory and only return only specific fields.
+					'ID',
+					'display_name',
+				)
+			);
+
+			$user_names = array();
+
+			foreach ( get_users( $user_args ) as $user_obj ) {
+
+				$user_names[ $user_obj->ID ] = $user_obj->display_name;
+			}
+
+			if ( '' !== $offset ) {	// 0 or multiple of $limit.
+
+				if ( empty( $user_names ) ) {
+
+					$offset = '';	// Allow the next call to start fresh.
+
+					return false;	// To break the while loop.
+				}
+			}
+
+			return $user_names;
+		}
+
+		public static function user_exists( $user_id ) {
+
+			if ( is_numeric( $user_id ) && $user_id > 0 ) {	// True is not valid.
+
+				$user_id = (int) $user_id;	// Cast as integer for cache array.
+
+				if ( isset( self::$cache_user_exists[ $user_id ] ) ) {
+
+					return self::$cache_user_exists[ $user_id ];
+
+				}
+
+				global $wpdb;
+
+				$select_sql = 'SELECT COUNT(ID) FROM ' . $wpdb->users . ' WHERE ID = %d';
+
+				return self::$cache_user_exists[ $user_id ] = $wpdb->get_var( $wpdb->prepare( $select_sql, $user_id ) ) ? true : false;
+			}
+
+			return false;
 		}
 
 		public static function is_author_page( $user_id = 0 ) {
@@ -3468,7 +3954,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( is_numeric( $user_id ) && $user_id > 0 ) {
 
-				$ret = SucomUtilWP::user_exists( $user_id );
+				$ret = self::user_exists( $user_id );
 
 			} elseif ( is_author() ) {
 
@@ -3511,7 +3997,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$user_obj = false;	// Return false by default.
 
-			if ( is_numeric( $user_id ) && $user_id > 0 ) {
+			if ( is_object( $user_id ) ) {	// Just in case.
+
+				$user_obj = $user_id;
+
+			} elseif ( is_numeric( $user_id ) && $user_id > 0 ) {
 
 				$user_obj = get_userdata( $user_id );
 
@@ -3533,22 +4023,69 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$user_obj = apply_filters( 'sucom_get_user_object', $user_obj, $user_id );
 
-			switch ( $output ) {
+			if ( $user_obj instanceof WP_User ) {
 
-				case 'id':
-				case 'ID':
-				case 'user_id':
+				switch ( $output ) {
 
-					return isset( $user_obj->ID ) ? (int) $user_obj->ID : 0;	// Cast as integer.
+					case 'id':
+					case 'ID':
+					case 'user_id':
+	
+						return isset( $user_obj->ID ) ? (int) $user_obj->ID : 0;	// Cast as integer.
+	
+						break;
+				}
 
-					break;
-
-				default:
-
-					return is_object( $user_obj ) ? $user_obj : false;
-
-					break;
+				return $user_obj;
 			}
+			
+			return false;
+		}
+
+		/**
+		 * Add the slug (ie. name) to custom post type and taxonomy labels.
+		 */
+		public static function get_object_label( $obj ) {
+
+			if ( empty( $obj->_builtin ) ) {	// Custom post type or taxonomy.
+
+				return $obj->label . ' [' . $obj->name . ']';
+			}
+
+			return $obj->label;
+		}
+
+		public static function sort_objects_by_label( array &$objects ) {
+
+			$sorted = array();
+
+			$by_name = array();
+
+			foreach ( $objects as $num => $obj ) {
+
+				if ( ! empty( $obj->labels->name ) ) {
+
+					$sort_key = $obj->labels->name . '-' . $num;
+
+				} elseif ( ! empty( $obj->label ) ) {
+
+					$sort_key = $obj->label . '-' . $num;
+
+				} else {
+					$sort_key = $obj->name . '-' . $num;
+				}
+
+				$by_name[ $sort_key ] = $num;	// Make sure key is sortable and unique.
+			}
+
+			ksort( $by_name );
+
+			foreach ( $by_name as $sort_key => $num ) {
+
+				$sorted[] = $objects[ $num ];
+			}
+
+			return $objects = $sorted;
 		}
 
 		public static function get_request_value( $key, $method = 'ANY', $default = '' ) {
@@ -3827,7 +4364,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			$content = htmlentities( $content, ENT_QUOTES, $charset, $double_encode = false );
 
-			$content = SucomUtilWP::wp_encode_emoji( $content );
+			$content = wp_encode_emoji( $content );
 
 			return $content;
 		}
@@ -3854,14 +4391,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		private static function replace_unicode_escape_callback( $match ) {
 
 			return mb_convert_encoding( pack( 'H*', $match[ 1 ] ), $to_encoding = 'UTF-8', $from_encoding = 'UCS-2' );
-		}
-
-		/**
-		 * Deprecated on 2022/02/09.
-		 */
-		public static function json_encode_array( array $data, $options = 0, $depth = 32 ) {
-
-			return wp_json_encode( $data, $options, $depth );
 		}
 
 		public static function get_json_scripts( $html, $do_decode = true ) {
@@ -4072,26 +4601,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $table_rows;
 		}
 
-		/**
-		 * Deprecated on 2020/04/14.
-		 */
-		public static function get_atts_css_attr( array $atts, $css_name, $css_extra = '' ) {
-
-			_deprecated_function( __METHOD__ . '()', '2020/04/14', $replacement = '' );	// Deprecation message.
-
-			return '';
-		}
-
-		/**
-		 * Deprecated on 2020/04/14.
-		 */
-		public static function get_atts_src_id( array $atts, $src_name ) {
-
-			_deprecated_function( __METHOD__ . '()', '2020/04/14', $replacement = '' );	// Deprecation message.
-
-			return '';
-		}
-
 		public static function is_toplevel_edit( $hook_name ) {
 
 			if ( false !== strpos( $hook_name, 'toplevel_page_' ) ) {
@@ -4209,16 +4718,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			return $site_desc;
-		}
-
-		/**
-		 * Deprecated on 2020/12/16.
-		 */
-		public static function get_site_url( array $opts = array(), $mixed = 'current' ) {
-
-			_deprecated_function( __METHOD__ . '()', '2021/12/16', $replacement = __CLASS__ . '::get_home_url()' );	// Deprecation message.
-
-			return self::get_home_url( $opts, $mixed );
 		}
 
 		/**
@@ -4405,16 +4904,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Deprecated on 2020/03/23.
-		 */
-		public static function get_lib_stub_action( $lib_id ) {
-
-			_deprecated_function( __METHOD__ . '()', '2020/03/23', $replacement = '' );	// Deprecation message.
-
-			return array( $lib_id, false, false );
-		}
-
-		/**
 		 * Calculate the estimated reading time in minutes.
 		 *
 		 * 250 is the default reading words per minute.
@@ -4426,80 +4915,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$word_count = str_word_count( wp_strip_all_tags( $text ) );
 
 			return round( $word_count / $words_per_min );
-		}
-
-		/**
-		 * Deprecated on 2022/01/23.
-		 *
-		 * Used by old WPSSO ORG and WPSSO PLM add-ons.
-		 */
-		public static function get_first_num( array $input ) {
-
-			_deprecated_function( __METHOD__ . '()', '2022/01/23', $replacement = '' );	// Deprecation message.
-
-			list( $first, $last, $next ) = self::get_first_last_next_nums( $input );
-
-			return $first;
-		}
-
-		/**
-		 * Deprecated on 2022/01/23.
-		 *
-		 * Used by old WPSSO ORG and WPSSO PLM add-ons.
-		 */
-		public static function get_last_num( array $input ) {
-
-			_deprecated_function( __METHOD__ . '()', '2022/01/23', $replacement = '' );	// Deprecation message.
-
-			list( $first, $last, $next ) = self::get_first_last_next_nums( $input );
-
-			return $last;
-		}
-
-		/**
-		 * Deprecated on 2022/01/23.
-		 *
-		 * Used by old WPSSO ORG and WPSSO PLM add-ons.
-		 */
-		public static function get_next_num( array $input ) {
-
-			_deprecated_function( __METHOD__ . '()', '2022/01/23', $replacement = '' );	// Deprecation message.
-
-			list( $first, $last, $next ) = self::get_first_last_next_nums( $input );
-
-			return $next;
-		}
-
-		/**
-		 * Deprecated on 2022/01/23.
-		 */
-		private static function get_first_last_next_nums( array $input ) {
-
-			$keys  = array_keys( $input );
-			$count = count( $keys );
-
-			if ( $count && ! is_numeric( implode( $keys ) ) ) {	// Check for non-numeric keys.
-
-				$keys = array();
-
-				foreach ( $input as $key => $value ) {	// Keep only the numeric keys.
-
-					if ( is_numeric( $key ) ) {
-
-						$keys[] = $key;
-					}
-				}
-
-				$count = count( $keys );
-			}
-
-			sort( $keys );	// Sort numerically.
-
-			$first = (int) reset( $keys );	// Get the first number.
-			$last  = (int) end( $keys );	// Get the last number.
-			$next  = $count ? $last + 1 : $last;	// Next is 0 (not 1) for an empty array.
-
-			return array( $first, $last, $next );
 		}
 
 		/**
@@ -4592,6 +5007,194 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			return $arr;
+		}
+
+		/**
+		 * Deprecated on 2022/02/04.
+		 */
+		public static function get_min_int() {
+
+			return PHP_INT_MIN;	// Since PHP v7.0.0.
+		}
+
+		/**
+		 * Deprecated on 2022/02/04.
+		 */
+		public static function get_max_int() {
+
+			return PHP_INT_MAX;	// Since PHP 5.0.2.
+		}
+
+		/**
+		 * Deprecated on 2020/10/20.
+		 */
+		public static function get_open_close( array $opts, $key_day_o, $key_midday_close, $key_midday_o, $key_day_c ) {
+
+			_deprecated_function( __METHOD__ . '()', '2020/10/20', $replacement = __CLASS__ . '::get_opts_open_close_hm_tz()' );	// Deprecation message.
+
+			return self::get_opts_open_close_hm_tz( $opts, $key_day_o, $key_midday_close, $key_midday_o, $key_day_c );
+		}
+
+		/**
+		 * Deprecated on 2020/08/10.
+		 */
+		public static function get_mt_media_url( array $assoc, $media_pre = 'og:image', $mt_suffixes = null ) {
+
+			_deprecated_function( __METHOD__ . '()', '2020/08/10', $replacement = __CLASS__ . '::get_first_mt_media_url()' );	// Deprecation message.
+
+			return self::get_first_mt_media_url( $assoc, $media_pre, $mt_suffixes );
+		}
+
+		/**
+		 * Deprecated on 2020/04/14.
+		 */
+		public static function get_atts_css_attr( array $atts, $css_name, $css_extra = '' ) {
+
+			_deprecated_function( __METHOD__ . '()', '2020/04/14', $replacement = '' );	// Deprecation message.
+
+			return '';
+		}
+
+		/**
+		 * Deprecated on 2020/04/14.
+		 */
+		public static function get_atts_src_id( array $atts, $src_name ) {
+
+			_deprecated_function( __METHOD__ . '()', '2020/04/14', $replacement = '' );	// Deprecation message.
+
+			return '';
+		}
+
+		/**
+		 * Deprecated on 2020/03/23.
+		 */
+		public static function get_lib_stub_action( $lib_id ) {
+
+			_deprecated_function( __METHOD__ . '()', '2020/03/23', $replacement = '' );	// Deprecation message.
+
+			return array( $lib_id, false, false );
+		}
+
+		/**
+		 * Deprecated on 2022/01/23.
+		 *
+		 * Used by old WPSSO ORG and WPSSO PLM add-ons.
+		 */
+		public static function get_first_num( array $input ) {
+
+			_deprecated_function( __METHOD__ . '()', '2022/01/23', $replacement = '' );	// Deprecation message.
+
+			list( $first, $last, $next ) = self::get_first_last_next_nums( $input );
+
+			return $first;
+		}
+
+		/**
+		 * Deprecated on 2022/01/23.
+		 *
+		 * Used by old WPSSO ORG and WPSSO PLM add-ons.
+		 */
+		public static function get_last_num( array $input ) {
+
+			_deprecated_function( __METHOD__ . '()', '2022/01/23', $replacement = '' );	// Deprecation message.
+
+			list( $first, $last, $next ) = self::get_first_last_next_nums( $input );
+
+			return $last;
+		}
+
+		/**
+		 * Deprecated on 2022/01/23.
+		 *
+		 * Used by old WPSSO ORG and WPSSO PLM add-ons.
+		 */
+		public static function get_next_num( array $input ) {
+
+			_deprecated_function( __METHOD__ . '()', '2022/01/23', $replacement = '' );	// Deprecation message.
+
+			list( $first, $last, $next ) = self::get_first_last_next_nums( $input );
+
+			return $next;
+		}
+
+		/**
+		 * Deprecated on 2022/01/23.
+		 */
+		private static function get_first_last_next_nums( array $input ) {
+
+			$keys  = array_keys( $input );
+			$count = count( $keys );
+
+			if ( $count && ! is_numeric( implode( $keys ) ) ) {	// Check for non-numeric keys.
+
+				$keys = array();
+
+				foreach ( $input as $key => $value ) {	// Keep only the numeric keys.
+
+					if ( is_numeric( $key ) ) {
+
+						$keys[] = $key;
+					}
+				}
+
+				$count = count( $keys );
+			}
+
+			sort( $keys );	// Sort numerically.
+
+			$first = (int) reset( $keys );	// Get the first number.
+			$last  = (int) end( $keys );	// Get the last number.
+			$next  = $count ? $last + 1 : $last;	// Next is 0 (not 1) for an empty array.
+
+			return array( $first, $last, $next );
+		}
+
+		/**
+		 * Deprecated on 2020/12/16.
+		 */
+		public static function get_site_url( array $opts = array(), $mixed = 'current' ) {
+
+			_deprecated_function( __METHOD__ . '()', '2021/12/16', $replacement = __CLASS__ . '::get_home_url()' );	// Deprecation message.
+
+			return self::get_home_url( $opts, $mixed );
+		}
+
+		/**
+		 * Deprecated on 2022/02/09.
+		 */
+		public static function json_encode_array( array $data, $options = 0, $depth = 32 ) {
+
+			return wp_json_encode( $data, $options, $depth );
+		}
+
+		/**
+		 * Deprecated on 2020/12/09.
+		 */
+		public static function is_archive_page() {
+
+			_deprecated_function( __METHOD__ . '()', '2020/12/09', $replacement = '' );	// Deprecation message.
+
+			return apply_filters( 'sucom_is_archive_page', is_archive() );
+		}
+
+		/**
+		 * Deprecated on 2020/10/02.
+		 */
+		public static function is_mobile() {
+
+			_deprecated_function( __METHOD__ . '()', '2020/10/02', $replacement = '' );	// Deprecation message.
+
+			return null;
+		}
+
+		/**
+		 * Deprecated on 2020/10/02.
+		 */
+		public static function is_desktop() {
+
+			_deprecated_function( __METHOD__ . '()', '2020/10/02', $replacement = '' );	// Deprecation message.
+
+			return null;
 		}
 	}
 }

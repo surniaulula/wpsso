@@ -130,7 +130,7 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 
 				if ( ! empty( $protect ) ) {
 
-					$event_version = SucomUtilWP::get_option_key( WPSSO_REG_TS_NAME, $ext . '_' . $event . '_version' );
+					$event_version = self::get_option_key( WPSSO_REG_TS_NAME, $ext . '_' . $event . '_version' );
 
 					if ( $event_version === $protect ) {
 
@@ -148,10 +148,120 @@ if ( ! class_exists( 'WpssoUtilReg' ) ) {
 
 			if ( ! empty( $version ) ) {
 
-				SucomUtilWP::update_option_key( WPSSO_REG_TS_NAME, $ext . '_' . $event . '_version', $version, $protect );
+				self::update_option_key( WPSSO_REG_TS_NAME, $ext . '_' . $event . '_version', $version, $protect );
 			}
 
-			SucomUtilWP::update_option_key( WPSSO_REG_TS_NAME, $ext . '_' . $event . '_time', time(), $protect );
+			self::update_option_key( WPSSO_REG_TS_NAME, $ext . '_' . $event . '_time', time(), $protect );
+		}
+
+		public static function add_site_option_key( $opt_name, $key, $value ) {
+
+			return self::update_option_key( $opt_name, $key, $value, $protect = true, $site = true );
+		}
+
+		public static function add_option_key( $opt_name, $key, $value ) {
+
+			return self::update_option_key( $opt_name, $key, $value, $protect = true, $site = false );
+		}
+
+		public static function update_site_option_key( $opt_name, $key, $value, $protect = false ) {
+
+			return self::update_option_key( $opt_name, $key, $value, $protect, $site = true );
+		}
+
+		public static function update_option_key( $opt_name, $key, $value, $protect = false, $site = false ) {
+
+			if ( $site ) {
+
+				$opts = get_site_option( $opt_name, $default = array() );	// Returns an array by default.
+
+			} else {
+
+				$opts = get_option( $opt_name, $default = array() );	// Returns an array by default.
+			}
+
+			if ( $protect && isset( $opts[ $key ] ) ) {
+
+				return false;	// No update.
+			}
+
+			$opts[ $key ] = $value;
+
+			if ( $site ) {
+
+				return update_site_option( $opt_name, $opts );
+			}
+
+			return update_option( $opt_name, $opts );
+		}
+
+		public static function get_site_option_key( $opt_name, $key ) {
+
+			return self::get_option_key( $opt_name, $key, $site = true );
+		}
+
+		public static function get_option_key( $opt_name, $key, $site = false ) {
+
+			if ( $site ) {
+
+				$opts = get_site_option( $opt_name, $default = array() );	// Returns an array by default.
+
+			} else {
+
+				$opts = get_option( $opt_name, $default = array() );	// Returns an array by default.
+			}
+
+			if ( isset( $opts[ $key ] ) ) {
+
+				return $opts[ $key ];
+			}
+
+			return null;	// No value.
+		}
+
+		public static function delete_site_option_key( $opt_name, $key ) {
+
+			return self::delete_option_key( $opt_name, $key, $site = true );
+		}
+
+		public static function delete_option_key( $opt_name, $key, $site = false ) {
+
+			if ( $site ) {
+
+				$opts = get_site_option( $opt_name, $default = array() );	// Returns an array by default.
+
+			} else {
+
+				$opts = get_option( $opt_name, $default = array() );	// Returns an array by default.
+			}
+
+			if ( isset( $opts[ $key ] ) ) {
+
+				unset( $opts[ $key ] );
+
+				if ( empty( $opts ) ) {	// Cleanup.
+
+					if ( $site ) {
+
+						return delete_site_option( $opt_name );
+
+					} else {
+
+						return delete_option( $opt_name );
+					}
+				}
+
+				if ( $site ) {
+
+					return update_site_option( $opt_name, $opts );
+
+				} else {
+
+					return update_option( $opt_name, $opts );
+				}
+			}
+
+			return false;	// No delete.
 		}
 	}
 }

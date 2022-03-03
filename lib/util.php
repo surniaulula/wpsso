@@ -889,7 +889,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			foreach ( $opt_prefixes as $opt_prefix => $def_val ) {
 
-				$names = SucomUtilWP::get_post_types( $output = 'names', $sort = false, $args );
+				$names = SucomUtil::get_post_types( $output = 'names', $sort = false, $args );
 
 				foreach ( $names as $opt_suffix ) {
 
@@ -926,7 +926,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			foreach ( $opt_prefixes as $opt_prefix => $def_val ) {
 
-				$names = SucomUtilWP::get_taxonomies( $output = 'names' );
+				$names = self::get_taxonomies( $output = 'names' );
 
 				foreach ( $names as $opt_suffix ) {
 

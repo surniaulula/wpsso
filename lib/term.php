@@ -479,7 +479,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( null === $tax_names ) {
 
-				$tax_names = SucomUtilWP::get_taxonomies( $output = 'names' );
+				$tax_names = SucomUtil::get_taxonomies( $output = 'names' );
 
 			} elseif ( is_string( $tax_names ) ) {
 
