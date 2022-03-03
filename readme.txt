@@ -251,7 +251,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.4.1-dev.3 (2022/03/02)**
+**Version 11.5.0-dev.4 (2022/03/03)**
 
 * **New Features**
 	* None.
@@ -265,6 +265,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* 'wpsso_menu_your_sso_title' ( $title )
 		* 'wpsso_input_limits_{option_key}' ( $limits )
 		* 'wpsso_metabox_tabs_layout_{metabox_id}' ( $tabs_layout = 'horizontal' )
+	* Moved `SucomUtilWP::add_title_part()` method to `SucomUtil`.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -1036,9 +1037,9 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 11.4.1-dev.3 =
+= 11.5.0-dev.4 =
 
-(2022/03/02) Removed dashicons from the submenu items. Added new filters for menus, limits, and tabs.
+(2022/03/03) Removed dashicons from the submenu items. Added new filters for menus, limits, and tabs.
 
 = 11.4.0 =
 
