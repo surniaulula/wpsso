@@ -3507,7 +3507,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 */
 			if ( ( $mod[ 'is_post' ] && 'publish' === $mod[ 'post_status' ] ) || ( ! $mod[ 'is_post' ] && $mod[ 'id' ] ) ) {
 
-				$ref_url = $wpsso->util->maybe_set_ref( null, $mod, __( 'checking meta tags', 'wpsso' ) );
+				$ref_url = $wpsso->util->maybe_set_ref( null, $mod, __( 'checking schema properties', 'wpsso' ) );
 
 				foreach ( $prop_names as $prop_name ) {
 

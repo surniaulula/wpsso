@@ -4883,7 +4883,7 @@ msgstr ""
 msgid "No topic tag description."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1035 lib/schema.php:3510
+#: lib/abstract/wp-meta.php:1035
 msgid "checking meta tags"
 msgstr ""
 
@@ -10619,6 +10619,10 @@ msgstr ""
 
 #: lib/schema.php:1861
 msgid "adding reviewed subject image"
+msgstr ""
+
+#: lib/schema.php:3510
+msgid "checking schema properties"
 msgstr ""
 
 #: lib/script.php:436
