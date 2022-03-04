@@ -251,20 +251,23 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.5.0-dev.6 (2022/03/03)**
+**Version 11.5.0-dev.7 (2022/03/04)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Removed dashicons from the submenu items.
+	* Added a new SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Interface &gt; Show SSO Menu Items option.
+	* Removed dashicons from the SSO menu items.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
 	* Added new filters for menus, limits, and tabs:
+		* 'wpsso_add_menu_submenu_item_{menu_id}' ( $bool )
+		* 'wpsso_input_limits_{option_key}' ( $limits )
 		* 'wpsso_menu_title' ( $title )
 		* 'wpsso_menu_your_sso_title' ( $title )
-		* 'wpsso_input_limits_{option_key}' ( $limits )
 		* 'wpsso_metabox_tabs_layout_{metabox_id}' ( $tabs_layout = 'horizontal' )
+	* Renamed the 'wpsso_show_validate_toolbar' filter to 'wpsso_add_toolbar_validate'.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -1036,9 +1039,9 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 11.5.0-dev.6 =
+= 11.5.0-dev.7 =
 
-(2022/03/03) Removed dashicons from the submenu items. Added new filters for menus, limits, and tabs.
+(2022/03/04) Added a new Show SSO Menu Items option. Removed dashicons from the SSO menu items. Added new filters for menus, limits, and tabs.
 
 = 11.4.0 =
 
