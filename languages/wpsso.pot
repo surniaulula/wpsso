@@ -6488,23 +6488,23 @@ msgctxt "submit button"
 msgid "Validate %s"
 msgstr ""
 
-#: lib/head.php:417
+#: lib/head.php:414
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:426
+#: lib/head.php:423
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:435
+#: lib/head.php:432
 msgid "adding meta name meta tags"
 msgstr ""
 
-#: lib/head.php:444
+#: lib/head.php:441
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:464
+#: lib/head.php:461
 msgid "adding schema json-ld markup"
 msgstr ""
 

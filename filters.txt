@@ -99,7 +99,7 @@
 
 'wpsso_hashtags_seed' ( '', $post_id )
 
-'wpsso_head_disabled' ( $bool, $mod )
+'wpsso_head_disable' ( $bool, $mod )
 
 'wpsso_home_url' ( $url, $mod )
 

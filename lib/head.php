@@ -92,7 +92,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: redirect disabled' );
+					$this->p->debug->log( 'exiting early: redirect is disabled' );
 				}
 
 				return;
@@ -161,13 +161,11 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				$this->p->debug->log_arr( 'mod', $mod );
 			}
 
-			$head_disabled = apply_filters( 'wpsso_head_disabled', false, $mod );
-
-			if ( $head_disabled ) {
+			if ( apply_filters( 'wpsso_head_disable', false, $mod ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: head disabled' );
+					$this->p->debug->log( 'exiting early: head is disabled' );
 				}
 			}
 
@@ -320,13 +318,16 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'extra query in request url - disabling head and content cache' );
+						$this->p->debug->log( 'query detected in request url' );
 					}
 
-					$this->p->util->add_plugin_filters( $this, array(
-						'cache_expire_head_markup' => '__return_zero',	// Used by WpssoHead->get_head_array().
-						'cache_expire_the_content' => '__return_zero',	// Used by WpssoPage->get_the_content().
-					) );
+					if ( apply_filters( 'wpsso_head_cache_disable', true, $mod, $request_url ) ) {
+
+						$this->p->util->add_plugin_filters( $this, array(
+							'cache_expire_head_markup' => '__return_zero',	// Used by WpssoHead->get_head_array().
+							'cache_expire_the_content' => '__return_zero',	// Used by WpssoPage->get_the_content().
+						) );
+					}
 				}
 			}
 
@@ -389,10 +390,6 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 							$cache_array = array();
 						}
 					}
-
-				} elseif ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'read cache for head is disabled' );
 				}
 			}
 
