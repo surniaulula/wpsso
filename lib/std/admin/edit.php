@@ -1225,7 +1225,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tr_class' => $schema_type_row_class[ 'product' ],
 					'td_class' => 'subsection',
 					'header'   => 'h5',
-					'label'    => _x( 'Schema Product Information', 'metabox title', 'wpsso' )
+					'label'    => _x( 'Schema Product Information (Main Product)', 'metabox title', 'wpsso' )
 				),
 				'schema_product_category' => array(
 					'tr_class' => $schema_type_row_class[ 'product' ],

@@ -4303,7 +4303,7 @@ msgstr ""
 #: gettext/gettext-lib-pro.php:323 lib/pro/admin/edit.php:1304
 #: lib/std/admin/edit.php:1228
 msgctxt "metabox title"
-msgid "Schema Product Information"
+msgid "Schema Product Information (Main Product)"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:324 lib/messages.php:700
@@ -7925,9 +7925,8 @@ msgstr ""
 
 #: lib/messages-tooltip-meta.php:160
 msgid ""
-"When information from product variations is available, the value from each "
-"product variation will supersede the main product information in each Schema "
-"product offer."
+"If product variations are available, the information from each variation "
+"will supersede the main product information in Schema product offers."
 msgstr ""
 
 #. translators: %s is the option label.
@@ -9442,7 +9441,7 @@ msgstr ""
 
 #: lib/messages.php:207
 msgid ""
-"Information from each product variation will supersede the main product "
+"Note that information from product variations supersedes the main product "
 "information in each Schema product offer."
 msgstr ""
 

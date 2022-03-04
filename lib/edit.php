@@ -307,7 +307,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			$form_rows = array(
 				'subsection_schema' => array(
 					'tr_class' => $schema_disabled ? 'hide_in_basic' : '',
-					'td_class' => 'subsection top',
+					'td_class' => 'subsection',
 					'header'   => 'h4',
 					'label'    => _x( 'Schema Markup and Google Rich Results', 'metabox title', 'wpsso' )
 				),
