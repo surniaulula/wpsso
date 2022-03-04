@@ -224,9 +224,10 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				$this->p->debug->mark( 'create and minify admin page style' );	// Begin timer.
 			}
 
-			$metabox_id = $this->p->cf[ 'meta' ][ 'id' ];
-			$menu       = 'wpsso-' . key( $this->p->cf[ '*' ][ 'lib' ][ 'submenu' ] );
-			$sitemenu   = 'wpsso-' . key( $this->p->cf[ '*' ][ 'lib' ][ 'sitesubmenu' ] );
+			global $_registered_pages;
+
+			$metabox_id    = $this->p->cf[ 'meta' ][ 'id' ];
+			$menu_pagehook = key( SucomUtil::preg_grep_keys( '/^toplevel_page_wpsso-/', $_registered_pages ) );
 
 			/**
 			 * Fonts.
@@ -258,16 +259,13 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			 * Admin menu and sub-menu items.
 			 */
 			$custom_style_css .= '
-				#adminmenu #toplevel_page_' . $menu . ' div.wp-menu-name,	/* Prevent excessive word breaks in French. */
-				#adminmenu #toplevel_page_' . $sitemenu . ' div.wp-menu-name {
+				#adminmenu #' . $menu_pagehook . ' div.wp-menu-name {	/* Prevent excessive word breaks in French. */
 					word-break:initial;
 					word-wrap:initial;
 					hyphens:initial;
 				}
-				#adminmenu li.menu-top.toplevel_page_' . $menu . ' div.wp-menu-image::before,
-				#adminmenu li.menu-top.toplevel_page_' . $sitemenu . ' div.wp-menu-image::before,
-				#adminmenu li.menu-top.toplevel_page_' . $menu . ':hover div.wp-menu-image::before,
-				#adminmenu li.menu-top.toplevel_page_' . $sitemenu . ':hover div.wp-menu-image::before {
+				#adminmenu li.menu-top.' . $menu_pagehook . ' div.wp-menu-image::before,
+				#adminmenu li.menu-top.' . $menu_pagehook . ':hover div.wp-menu-image::before {
 					content:"' . $this->p->cf[ 'menu' ][ 'icon-code' ] . '";
 					font-family:'. $this->p->cf[ 'menu' ][ 'icon-font' ] . ';
 				}

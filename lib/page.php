@@ -40,17 +40,17 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$this->charset = get_bloginfo( $show = 'charset', $filter = 'raw' );
 
-			$add_validate_toolbar = empty( $this->p->options[ 'plugin_show_validate_toolbar' ] ) ? false : true;
-			$add_validate_toolbar = (bool) apply_filters( 'wpsso_show_validate_toolbar', $add_validate_toolbar );
+			$add_toolbar_validate = empty( $this->p->options[ 'plugin_add_toolbar_validate' ] ) ? false : true;
+			$add_toolbar_validate = (bool) apply_filters( 'wpsso_add_toolbar_validate', $add_toolbar_validate );
 
-			if ( $add_validate_toolbar ) {
+			if ( $add_toolbar_validate ) {
 
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'adding validators toolbar' );
 				}
 
-				add_action( 'admin_bar_menu', array( $this, 'add_validate_toolbar' ), WPSSO_TB_VALIDATE_MENU_ORDER, 1 );
+				add_action( 'admin_bar_menu', array( $this, 'add_toolbar_validate' ), WPSSO_TB_VALIDATE_MENU_ORDER, 1 );
 
 			} elseif ( $this->p->debug->enabled ) {
 
@@ -79,7 +79,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		 *
 		 * WpssoPost->ajax_get_validate_submenu() also calls this method directly, supplying the post ID in $use_post.
 		 */
-		public function add_validate_toolbar( &$wp_admin_bar, $use_post = false ) {
+		public function add_toolbar_validate( &$wp_admin_bar, $use_post = false ) {
 
 			if ( ! $user_id = get_current_user_id() ) {	// Just in case.
 

@@ -204,7 +204,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 								$text .= sprintf( __( 'You can edit product information in the WooCommerce %s metabox to update these values.', 'wpsso' ), $wc_mb_name ) . ' ';
 
-								$text .= __( 'Note that information from product variations supersedes the main product information in each Schema product offer.', 'wpsso' ) . ' ';
+								if ( $this->p->util->wc->is_mod_variable( $info[ 'mod' ] ) ) {
+
+									$text .= __( 'This is a variable product - information from product variations will supersede these values in each Schema product offer.', 'wpsso' ) . ' ';
+								}
 
 								$text .= '</p>';
 							}

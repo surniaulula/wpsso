@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '11.5.0-dev.6',	// Plugin version.
-					'opt_version' => '891',		// Increment when changing default option values.
+					'version'     => '11.5.0-dev.7',	// Plugin version.
+					'opt_version' => '893',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1650,7 +1650,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * Advanced Settings > Interface.
 					 */
 					'plugin_show_opts'                     => 'basic',	// Options to Show by Default.
-					'plugin_show_validate_toolbar'         => 1,		// Show Validators Toolbar Menu.
+					'plugin_add_toolbar_validate'          => 1,		// Show Validators Toolbar Menu.
+					'plugin_add_submenu_dashboard'         => 1,
+					'plugin_add_submenu_setup'             => 1,
+					'plugin_add_submenu_essential'         => 1,
+					'plugin_add_submenu_addons'            => 1,
+					'plugin_add_submenu_tools'             => 1,
 					'plugin_add_to_attachment'             => 1,
 					'plugin_add_to_download'               => 1,		// For Easy Digital Downloads.
 					'plugin_add_to_page'                   => 1,

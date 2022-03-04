@@ -262,6 +262,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$menu_libs = array( 'dashboard', 'plugins', 'profile', 'settings', 'submenu', 'tools', 'users' );
 			}
 
+			$always_load_menu_ids = array( 'general', 'advanced', 'licenses', 'site-advanced', 'site-licenses' );
+
 			foreach ( $menu_libs as $menu_lib ) {
 
 				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
@@ -273,20 +275,33 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					foreach ( $info[ 'lib' ][ $menu_lib ] as $menu_id => $menu_name ) {
 
-						$classname = apply_filters( $ext . '_load_lib', false, $menu_lib . '/' . $menu_id );
+						$add_menu_item = true;
 
-						if ( is_string( $classname ) && class_exists( $classname ) ) {
+						if ( ! in_array( $menu_id, $always_load_menu_ids ) ) {
 
-							if ( $this->p->debug->enabled ) {
+							$opt_key       = 'plugin_add_' . $menu_lib . '_' . $menu_id;
+							$filter_name   = SucomUtil::sanitize_hookname( 'wpsso_add_menu_' . $menu_lib . '_item_' . $menu_id );
+							$add_menu_item = isset( $this->p->options[ $opt_key ] ) ? (bool) $this->p->options[ $opt_key ] : true;
+							$add_menu_item = apply_filters( $filter_name, $add_menu_item );
+						}
 
-								$this->p->debug->log( 'loading classname ' . $classname . ' for menu id ' . $menu_id );
+						if ( $add_menu_item ) {
+
+							$classname = apply_filters( $ext . '_load_lib', false, $menu_lib . '/' . $menu_id );
+
+							if ( is_string( $classname ) && class_exists( $classname ) ) {
+
+								if ( $this->p->debug->enabled ) {
+
+									$this->p->debug->log( 'loading classname ' . $classname . ' for menu id ' . $menu_id );
+								}
+	
+								$this->submenu[ $menu_id ] = new $classname( $this->p, $menu_id, $menu_name, $menu_lib, $ext );
+
+							} elseif ( $this->p->debug->enabled ) {
+
+								$this->p->debug->log( 'classname not found for menu lib ' . $menu_lib . '/' . $menu_id );
 							}
-
-							$this->submenu[ $menu_id ] = new $classname( $this->p, $menu_id, $menu_name, $menu_lib, $ext );
-
-						} elseif ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'classname not found for menu lib ' . $menu_lib . '/' . $menu_id );
 						}
 					}
 				}
@@ -320,18 +335,19 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$menu_lib = 'submenu';
 			}
 
-			$libs = $this->p->cf[ '*' ][ 'lib' ][ $menu_lib ];
-
-			$this->menu_id   = key( $libs );
-			$this->menu_name = $libs[ $this->menu_id ];
 			$this->menu_lib  = $menu_lib;
 			$this->menu_ext  = $this->p->id;	// Lowercase acronyn for plugin or add-on.
+			
+			foreach ( $this->p->cf[ '*' ][ 'lib' ][ $menu_lib ] as $this->menu_id => $this->menu_name ) {
+			
+				if ( isset( $this->submenu[ $this->menu_id ] ) ) {
 
-			if ( isset( $this->submenu[ $this->menu_id ] ) ) {
+					$menu_slug = 'wpsso-' . $this->menu_id;
 
-				$menu_slug = 'wpsso-' . $this->menu_id;
+					$this->submenu[ $this->menu_id ]->add_menu_page( $menu_slug );
 
-				$this->submenu[ $this->menu_id ]->add_menu_page( $menu_slug );
+					break;
+				}
 			}
 
 			$sorted_menu   = array();
@@ -350,6 +366,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 
 				foreach ( $info[ 'lib' ][ $menu_lib ] as $menu_id => $menu_name ) {
+
+					if ( ! isset( $this->submenu[ $menu_id ] ) ) {	// Just in case.
+
+						continue;
+					}
 
 					$menu_title = $this->get_info_menu_title( $info, $menu_lib, $menu_id );
 
@@ -388,46 +409,31 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			ksort( $sorted_menu,  SORT_FLAG_CASE | SORT_NATURAL );
 
-			foreach ( array_merge( $unsorted_menu, $sorted_menu ) as $key => $arg ) {
+			foreach ( array_merge( $unsorted_menu, $sorted_menu ) as $sort_key => $args ) {
 
-				if ( $arg[ 1 ] === $top_first_id ) {
+				$menu_id   = $args[ 1 ];
+				$css_class = '';
+
+				if ( $menu_id === $top_first_id ) {
 
 					$css_class = 'top-first-submenu-page';
 
-				} elseif ( $arg[ 1 ] === $top_last_id ) {
+				} elseif ( $menu_id === $top_last_id ) {
 
-					$css_class = 'top-last-submenu-page';	// Underlined with add-ons.
+					$css_class = 'top-last-submenu-page';	// Underlined with-add-ons.
 
-					if ( empty( $ext_first_id ) ) {
+					$css_class .= empty( $ext_first_id ) ? ' no-add-ons' : ' with-add-ons';
 
-						$css_class .= ' no-add-ons';
-
-					} else {
-
-						$css_class .= ' with-add-ons';
-					}
-
-				} elseif ( $arg[ 1 ] === $ext_first_id ) {
+				} elseif ( $menu_id === $ext_first_id ) {
 
 					$css_class = 'ext-first-submenu-page';
 
-				} elseif ( $arg[ 1 ] === $ext_last_id ) {
+				} elseif ( $menu_id === $ext_last_id ) {
 
 					$css_class = 'ext-last-submenu-page';
-
-				} else {
-
-					$css_class = '';
 				}
 
-				if ( isset( $this->submenu[ $arg[ 1 ] ] ) ) {
-
-					$this->submenu[ $arg[ 1 ] ]->add_submenu_page( $arg[ 0 ], $arg[ 1 ], $arg[ 2 ], $arg[ 3 ], $arg[ 4 ], $css_class );
-
-				} else {
-
-					$this->add_submenu_page( $arg[ 0 ], $arg[ 1 ], $arg[ 2 ], $arg[ 3 ], $arg[ 4 ], $css_class );
-				}
+				$this->submenu[ $menu_id ]->add_submenu_page( $args[ 0 ], $args[ 1 ], $args[ 2 ], $args[ 3 ], $args[ 4 ], $css_class );
 			}
 		}
 
@@ -461,6 +467,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					foreach ( $info[ 'lib' ][ $menu_lib ] as $menu_id => $menu_name ) {
 
+						if ( ! isset( $this->submenu[ $menu_id ] ) ) {	// Just in case.
+
+							continue;
+						}
+
 						$menu_title = $this->get_info_menu_title( $info, $menu_lib, $menu_id );
 
 						$sorted_menu[ $menu_title . '-' . $menu_id ] = array( $parent_slug, $menu_id, $menu_title, $menu_lib, $ext );
@@ -469,16 +480,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				ksort( $sorted_menu, SORT_FLAG_CASE | SORT_NATURAL );
 
-				foreach ( $sorted_menu as $key => $arg ) {
+				foreach ( $sorted_menu as $sort_key => $args ) {
 
-					if ( isset( $this->submenu[ $arg[ 1 ] ] ) ) {
+					$menu_id = $args[ 1 ];
 
-						$this->submenu[ $arg[ 1 ] ]->add_submenu_page( $arg[ 0 ], $arg[ 1 ], $arg[ 2 ], $arg[ 3 ], $arg[ 4 ] );
-
-					} else {
-
-						$this->add_submenu_page( $arg[ 0 ], $arg[ 1 ], $arg[ 2 ], $arg[ 3 ], $arg[ 4 ] );
-					}
+					$this->submenu[ $menu_id ]->add_submenu_page( $args[ 0 ], $args[ 1 ], $args[ 2 ], $args[ 3 ], $args[ 4 ] );
 				}
 			}
 		}
@@ -639,7 +645,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$menu_title  = $this->get_menu_title();
 			$cf_wp_admin = $this->p->cf[ 'wp' ][ 'admin' ];
 			$capability  = isset( $cf_wp_admin[ $this->menu_lib ][ 'cap' ] ) ? $cf_wp_admin[ $this->menu_lib ][ 'cap' ] : 'manage_options';
-			$icon_url    = 'none';	// Icon provided by WpssoStyle::add_admin_page_style().
+			$icon_url    = 'none';	// Icon provided by WpssoStyle::admin_register_page_styles().
 			$function    = array( $this, 'show_setting_page' );
 			$position    = WPSSO_MENU_ORDER;
 

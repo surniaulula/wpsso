@@ -25,6 +25,10 @@
 
 'wpsso_add_link_rel_shortlink' ( $bool, $mod )
 
+'wpsso_add_menu_submenu_item_{menu_id}' ( $bool )
+
+'wpsso_add_toolbar_validate' ( $bool )
+
 'wpsso_archive_page_url' ( $url, $mod )
 
 'wpsso_article_sections' ( array $sections )
@@ -278,8 +282,6 @@
 'wpsso_sharing_utm_args' ( $utm, $mod )
 
 'wpsso_sharing_url' ( $url, $mod, $add_page )
-
-'wpsso_show_validate_toolbar' ( $bool )
 
 'wpsso_social_accounts' ( (array) $social_accounts )
 

@@ -420,17 +420,41 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			 */
 			$menu_title = _x( 'Validators', 'toolbar menu title', 'wpsso' );
 
-			$table_rows[ 'plugin_show_validate_toolbar' ] = '' .
+			$table_rows[ 'plugin_add_toolbar_validate' ] = '' .
 				$form->get_th_html( sprintf( _x( 'Show %s Toolbar Menu', 'option label', 'wpsso' ), $menu_title ),
-					$css_class = '', $css_id = 'plugin_show_validate_toolbar' ) .
-				$form->get_no_td_checkbox( 'plugin_show_validate_toolbar' );
+					$css_class = '', $css_id = 'plugin_add_toolbar_validate' ) .
+				$form->get_no_td_checkbox( 'plugin_add_toolbar_validate' );
+
+			/**
+			 * Show SSO menu items.
+			 */
+			$info       = $this->p->cf[ 'plugin' ][ 'wpsso' ];
+			$menu_title = $this->p->admin->get_menu_title();
+			$menu_lib   = 'submenu';
+			$values     = array();
+
+			foreach ( $info[ 'lib' ][ $menu_lib ] as $menu_id => $menu_name ) {
+
+				if ( isset( $form->defaults[ 'plugin_add_submenu_' . $menu_id ] ) ) {
+
+					$values[ $menu_id ] = $this->p->admin->get_info_menu_title( $info, $menu_lib, $menu_id );
+				}
+			}
+
+			if ( ! empty( $values ) ) {
+
+				$table_rows[ 'plugin_add_submenu' ] = $form->get_tr_hide_prefix( 'basic', 'plugin_add_submenu_' ) .
+					$form->get_th_html( sprintf( _x( 'Show %s Menu Items', 'option label', 'wpsso' ), $menu_title ),
+						$css_class = '', $css_id = 'plugin_add_submenu' ) .
+					'<td class="blank">' . $form->get_no_checklist( $name_prefix = 'plugin_add_submenu', $values ) . '</td>';
+			}
 
 			/**
 			 * Show custom meta metaboxes.
 			 */
 			$metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
-			$table_rows[ 'plugin_add_to' ] = '' .	// Show Document SSO Metabox.
+			$table_rows[ 'plugin_add_to' ] = $form->get_tr_hide_prefix( 'basic', 'plugin_add_to_' ) .
 				$form->get_th_html( sprintf( _x( 'Show %s Metabox', 'option label', 'wpsso' ), $metabox_title ),
 					$css_class = '', $css_id = 'plugin_add_to' ) . 
 				'<td class="blank">' . $form->get_no_checklist_post_tax_user( $name_prefix = 'plugin_add_to' ) . '</td>';

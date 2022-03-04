@@ -414,21 +414,27 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
-				case 'tooltip-plugin_show_validate_toolbar':	// Show Validators Toolbar Menu.
+				case 'tooltip-plugin_add_toolbar_validate':	// Show Validators Toolbar Menu.
 
 					$menu_title = _x( 'Validators', 'toolbar menu title', 'wpsso' );
 
 					$text = sprintf( __( 'Show a "%s" menu in the admin toolbar.', 'wpsso' ), $menu_title ) . ' ';
 
-					$text .= __( 'Please note that the Twitter Card validator does not (currently) accept query arguments, so it cannot be included in this menu.', 'wpsso' ) . ' ';
+					break;
+
+				case 'tooltip-plugin_add_submenu':	// Show SSO Menu Items.
+
+					$menu_title = $this->p->admin->get_menu_title();
+
+					$text = sprintf( __( 'Optionally remove menu items from the %s menu.', 'wpsso' ), $menu_title );
 
 					break;
 
 				case 'tooltip-plugin_add_to':		// Show Document SSO Metabox.
 
-					$mb_title_transl = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+					$menu_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
-					$text = sprintf( __( 'Add or remove the %s metabox from admin editing pages for posts, pages, custom post types, terms (categories and tags), and user profile pages.', 'wpsso' ), $mb_title_transl );
+					$text = sprintf( __( 'Add or remove the %s metabox from editing pages for posts, pages, custom post types, terms (categories and tags), and user profile pages.', 'wpsso' ), $menu_title );
 
 					break;
 

@@ -546,6 +546,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'schema_type_for_elementor_library'   => '',
 					'wpsm_sitemaps_for_elementor_library' => '',
 				),
+				891 => array(
+					'plugin_show_validate_toolbar' => 'plugin_add_toolbar_validate',
+				),
 			),
 		);
 

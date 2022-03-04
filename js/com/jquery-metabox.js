@@ -228,15 +228,15 @@ function sucomScrollIntoView( container_id ) {
 		return false;
 	}
 
-	var wpbody    = jQuery( 'div#wpbody' );	// Located below the admin toolbar.
-	var container = jQuery( container_id );
+	var wpbody_content = jQuery( 'div#wpbody-content' );	// Located below the admin toolbar.
+	var container      = jQuery( container_id );
 
-	if ( ! wpbody.length || ! container.length ) {
+	if ( ! wpbody_content.length || ! container.length ) {
 
 		return false;
 	}
 
-	var toolbar_offset = wpbody.offset().top;	// Just under the admin toolbar.
+	var toolbar_offset = wpbody_content.offset().top;	// Just under the admin toolbar.
 	var footer_offset  = 0;
 	var editor_content = jQuery( 'div.interface-interface-skeleton__content' );	// Page might be a visual editor container.
 	var viewport       = {};

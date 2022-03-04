@@ -61,6 +61,7 @@ _x( 'Twitter Summary Card Large Image', 'option label', 'wpsso' );
 _x( 'Options to Show by Default', 'option label', 'wpsso' );
 _x( 'Validators', 'toolbar menu title', 'wpsso' );
 _x( 'Show %s Toolbar Menu', 'option label', 'wpsso' );
+_x( 'Show %s Menu Items', 'option label', 'wpsso' );
 _x( 'Show %s Metabox', 'option label', 'wpsso' );
 _x( 'WP List Table Columns', 'option label', 'wpsso' );
 _x( 'Open Graph Type Select Format', 'option label', 'wpsso' );
