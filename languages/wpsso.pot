@@ -7931,8 +7931,8 @@ msgstr ""
 
 #: lib/messages-tooltip-meta.php:160
 msgid ""
-"If product variations are available, the information from each variation "
-"will supersede the main product information in Schema product offers."
+"If product variations are available, the information from each variation may "
+"supersede this value in Schema product offers."
 msgstr ""
 
 #. translators: %s is the option label.

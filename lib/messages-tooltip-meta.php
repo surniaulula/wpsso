@@ -157,7 +157,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 						// translators: %s is a singular item reference, for example 'a product size type'.
 						$text = sprintf( __( 'A custom value for %s can be provided for the main product meta tags and Schema markup.', 'wpsso' ), $cf_frags[ 'desc' ] ) . ' ';
 
-						$text .= __( 'If product variations are available, the information from each variation will supersede the main product information in Schema product offers.', 'wpsso' ) . ' ';
+						$text .= __( 'If product variations are available, the information from each variation may supersede this value in Schema product offers.', 'wpsso' ) . ' ';
 
 						// translators: %s is the option label.
 						$text .= sprintf( __( 'The <strong>%s</strong> option may be read-only when an e-commerce plugin is the authoritative source for this value.', 'wpsso' ), $cf_frags[ 'label' ] ) . ' ';
