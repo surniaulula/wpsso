@@ -321,7 +321,14 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 						$this->p->debug->log( 'query detected in request url' );
 					}
 
-					if ( apply_filters( 'wpsso_head_cache_disable', true, $mod, $request_url ) ) {
+					/**
+					 * WooCommerce product attributes do not have their own webpages - product attribute query
+					 * strings are used to pre-fill product selections on the front-end. The
+					 * WpssoProEcomWoocommerce->filter_url_query_cache_disable() removes all product attributes
+					 * from the request URL, and if the $request_url and $canonical_url values match, the
+					 * filter will return false.
+					 */
+					if ( apply_filters( 'wpsso_url_query_cache_disable', false, $request_url, $canonical_url, $mod ) ) {
 
 						$this->p->util->add_plugin_filters( $this, array(
 							'cache_expire_head_markup' => '__return_zero',	// Used by WpssoHead->get_head_array().

@@ -4546,23 +4546,23 @@ msgstr ""
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:369 lib/pro/ecom/woocommerce.php:707
+#: gettext/gettext-lib-pro.php:369 lib/pro/ecom/woocommerce.php:732
 msgid ""
 "The rating and review counts provided by WooCommerce for product ID %d are "
 "invalid."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:370 lib/pro/ecom/woocommerce.php:710
+#: gettext/gettext-lib-pro.php:370 lib/pro/ecom/woocommerce.php:735
 msgid ""
 "The average rating is %.2f, but the rating count is %d and the review count "
 "is %d."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:371 lib/pro/ecom/woocommerce.php:713
+#: gettext/gettext-lib-pro.php:371 lib/pro/ecom/woocommerce.php:738
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:372 lib/pro/ecom/woocommerce.php:1348
+#: gettext/gettext-lib-pro.php:372 lib/pro/ecom/woocommerce.php:1373
 msgid "World"
 msgstr ""
 
@@ -6488,23 +6488,23 @@ msgctxt "submit button"
 msgid "Validate %s"
 msgstr ""
 
-#: lib/head.php:414
+#: lib/head.php:421
 msgid "adding open graph meta tags"
 msgstr ""
 
-#: lib/head.php:423
+#: lib/head.php:430
 msgid "adding twitter card meta tags"
 msgstr ""
 
-#: lib/head.php:432
+#: lib/head.php:439
 msgid "adding meta name meta tags"
 msgstr ""
 
-#: lib/head.php:441
+#: lib/head.php:448
 msgid "adding link relation tags"
 msgstr ""
 
-#: lib/head.php:461
+#: lib/head.php:468
 msgid "adding schema json-ld markup"
 msgstr ""
 
