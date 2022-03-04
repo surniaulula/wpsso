@@ -251,7 +251,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.5.0-dev.7 (2022/03/04)**
+**Version 11.5.0-b.1 (2022/03/04)**
 
 * **New Features**
 	* None.
@@ -267,6 +267,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* 'wpsso_menu_title' ( $title )
 		* 'wpsso_menu_your_sso_title' ( $title )
 		* 'wpsso_metabox_tabs_layout_{metabox_id}' ( $tabs_layout = 'horizontal' )
+	* Added a new 'wpsso_url_query_cache_disable' filter.
 	* Renamed the 'wpsso_show_validate_toolbar' filter to 'wpsso_add_toolbar_validate'.
 	* Renamed the 'wpsso_head_disabled' filter to 'wpsso_head_disable'.
 * **Requires At Least**
@@ -1040,7 +1041,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 11.5.0-dev.7 =
+= 11.5.0-b.1 =
 
 (2022/03/04) Added a new Show SSO Menu Items option. Removed dashicons from the SSO menu items. Added new filters for menus, limits, and tabs.
 
