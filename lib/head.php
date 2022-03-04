@@ -328,7 +328,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 					 * from the request URL, and if the $request_url and $canonical_url values match, the
 					 * filter will return false.
 					 */
-					if ( apply_filters( 'wpsso_url_query_cache_disable', false, $request_url, $canonical_url, $mod ) ) {
+					if ( apply_filters( 'wpsso_url_query_cache_disable', true, $request_url, $canonical_url, $mod ) ) {
 
 						$this->p->util->add_plugin_filters( $this, array(
 							'cache_expire_head_markup' => '__return_zero',	// Used by WpssoHead->get_head_array().
