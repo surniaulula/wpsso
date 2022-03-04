@@ -268,6 +268,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* 'wpsso_menu_your_sso_title' ( $title )
 		* 'wpsso_metabox_tabs_layout_{metabox_id}' ( $tabs_layout = 'horizontal' )
 	* Renamed the 'wpsso_show_validate_toolbar' filter to 'wpsso_add_toolbar_validate'.
+	* Renamed the 'wpsso_head_disabled' filter to 'wpsso_head_disable'.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
