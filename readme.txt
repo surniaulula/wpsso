@@ -251,7 +251,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.5.0-b.1 (2022/03/04)**
+**Version 11.5.0-b.2 (2022/03/04)**
 
 * **New Features**
 	* None.
@@ -1041,7 +1041,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 11.5.0-b.1 =
+= 11.5.0-b.2 =
 
 (2022/03/04) Added a new Show SSO Menu Items option. Removed dashicons from the SSO menu items. Added new filters for menus, limits, and tabs.
 
