@@ -606,7 +606,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			/**
 			 * Sort the options to re-order 0, 1, 10, 2 suffixes as 0, 1, 2, 10.
 			 */
-			SucomUtil::natksort( $opts );
+			ksort( $opts, SORT_FLAG_CASE | SORT_NATURAL );
 
 			/**
 			 * Sanitize values.

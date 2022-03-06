@@ -128,8 +128,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				 * The admin_menu action is run before admin_init.
 				 */
 				add_action( 'admin_menu', array( $this, 'load_menu_objects' ), -1000 );
-				add_action( 'admin_menu', array( $this, 'add_admin_menus' ), WPSSO_ADD_MENU_PRIORITY );
-				add_action( 'admin_menu', array( $this, 'add_admin_submenus' ), WPSSO_ADD_SUBMENU_PRIORITY );
+				add_action( 'admin_menu', array( $this, 'add_admin_menus' ), WPSSO_ADD_MENU_PRIORITY, 0 );
+				add_action( 'admin_menu', array( $this, 'add_admin_submenus' ), WPSSO_ADD_SUBMENU_PRIORITY, 0 );
 
 				add_action( 'admin_init', array( $this, 'init_check_options' ), -1000 );
 				add_action( 'admin_init', array( $this, 'add_plugins_page_upgrade_notice' ) );
@@ -138,7 +138,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( is_multisite() ) {
 
 					add_action( 'network_admin_menu', array( $this, 'load_network_menu_objects' ), -1000 );
-					add_action( 'network_admin_menu', array( $this, 'add_network_admin_menus' ), WPSSO_ADD_MENU_PRIORITY );
+					add_action( 'network_admin_menu', array( $this, 'add_network_admin_menus' ), WPSSO_ADD_MENU_PRIORITY, 0 );
 					add_action( 'network_admin_edit_' . WPSSO_SITE_OPTIONS_NAME, array( $this, 'save_site_options' ) );
 				}
 
@@ -262,8 +262,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$menu_libs = array( 'dashboard', 'plugins', 'profile', 'settings', 'submenu', 'tools', 'users' );
 			}
 
-			$always_load_menu_ids = array( 'general', 'advanced', 'licenses', 'site-advanced', 'site-licenses' );
-
 			foreach ( $menu_libs as $menu_lib ) {
 
 				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
@@ -277,7 +275,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						$add_menu_item = true;
 
-						if ( ! in_array( $menu_id, $always_load_menu_ids ) ) {
+						if ( empty( $this->p->cf[ 'menu' ][ 'must_load' ][ $menu_id ] ) ) {	// Settings page can be disabled.
 
 							$opt_key       = 'plugin_add_' . $menu_lib . '_' . $menu_id;
 							$filter_name   = SucomUtil::sanitize_hookname( 'wpsso_add_menu_' . $menu_lib . '_item_' . $menu_id );
@@ -320,24 +318,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		/**
 		 * Add a new main menu and its sub-menu items.
-		 *
-		 * $menu_lib = 'dashboard', 'plugins', 'profile', 'settings', 'submenu', 'sitesubmenu', 'tools', or 'users'
 		 */
-		public function add_admin_menus( $menu_lib = '' ) {
+		public function add_admin_menus( $menu_lib = 'submenu' ) {
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			if ( empty( $menu_lib ) ) {	// Just in case.
-
-				$menu_lib = 'submenu';
-			}
-
-			$this->menu_lib  = $menu_lib;
-			$this->menu_ext  = $this->p->id;	// Lowercase acronyn for plugin or add-on.
-			
 			foreach ( $this->p->cf[ '*' ][ 'lib' ][ $menu_lib ] as $this->menu_id => $this->menu_name ) {
 			
 				if ( isset( $this->submenu[ $this->menu_id ] ) ) {
@@ -350,90 +333,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				}
 			}
 
-			$sorted_menu   = array();
-			$unsorted_menu = array();
+			$menu_args = $this->get_submenu_args( $menu_lib );
 
-			$top_first_id = false;
-			$top_last_id  = false;
-			$ext_first_id = false;
-			$ext_last_id  = false;
+			foreach ( $menu_args as $menu_id => $args ) {
 
-			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
+				if ( isset( $this->submenu[ $menu_id ] ) ) {	// Just in case.
 
-				if ( ! isset( $info[ 'lib' ][ $menu_lib ] ) ) {	// Not all add-ons have submenus.
-
-					continue;
+					call_user_func_array( array( $this->submenu[ $menu_id ], 'add_submenu_page' ), $args );
 				}
-
-				foreach ( $info[ 'lib' ][ $menu_lib ] as $menu_id => $menu_name ) {
-
-					if ( ! isset( $this->submenu[ $menu_id ] ) ) {	// Just in case.
-
-						continue;
-					}
-
-					$menu_title = $this->get_info_menu_title( $info, $menu_lib, $menu_id );
-
-					$parent_slug = 'wpsso-' . $this->menu_id;
-
-					/**
-					 * Leave WPSSO Core submenu items in their original order.
-					 */
-					if ( 'wpsso' === $ext ) {
-
-						$unsorted_menu[] = array( $parent_slug, $menu_id, $menu_title, $menu_lib, $ext );
-
-						if ( false === $top_first_id ) {
-
-							$top_first_id = $menu_id;
-						}
-
-						$top_last_id = $menu_id;
-
-					/**
-					 * Sort add-on submenu items.
-					 */
-					} else {
-
-						$sorted_menu[ $menu_title . '-' . $menu_id ] = array( $parent_slug, $menu_id, $menu_title, $menu_lib, $ext );
-
-						if ( false === $ext_first_id ) {
-
-							$ext_first_id = $menu_id;
-						}
-
-						$ext_last_id = $menu_id;
-					}
-				}
-			}
-
-			ksort( $sorted_menu,  SORT_FLAG_CASE | SORT_NATURAL );
-
-			foreach ( array_merge( $unsorted_menu, $sorted_menu ) as $sort_key => $args ) {
-
-				$menu_id   = $args[ 1 ];
-				$css_class = '';
-
-				if ( $menu_id === $top_first_id ) {
-
-					$css_class = 'top-first-submenu-page';
-
-				} elseif ( $menu_id === $top_last_id ) {
-
-					$css_class = 'top-last-submenu-page';	// Underlined with-add-ons.
-
-					$css_class .= empty( $ext_first_id ) ? ' no-add-ons' : ' with-add-ons';
-
-				} elseif ( $menu_id === $ext_first_id ) {
-
-					$css_class = 'ext-first-submenu-page';
-
-				} elseif ( $menu_id === $ext_last_id ) {
-
-					$css_class = 'ext-last-submenu-page';
-				}
-
-				$this->submenu[ $menu_id ]->add_submenu_page( $args[ 0 ], $args[ 1 ], $args[ 2 ], $args[ 3 ], $args[ 4 ], $css_class );
 			}
 		}
 
@@ -444,47 +351,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			foreach ( array( 'dashboard', 'plugins', 'profile', 'settings', 'tools', 'users' ) as $menu_lib ) {
 
-				/**
-				 * Match WordPress behavior (users page for admins, profile page for everyone else).
-				 */
-				if ( 'profile' === $menu_lib && current_user_can( 'list_users' ) ) {
+				$menu_args = $this->get_submenu_args( $menu_lib );
 
-					$parent_slug = $this->p->cf[ 'wp' ][ 'admin' ][ 'users' ][ 'page' ];
+				foreach ( $menu_args as $menu_id => $args ) {
 
-				} else {
-
-					$parent_slug = $this->p->cf[ 'wp' ][ 'admin' ][ $menu_lib ][ 'page' ];
-				}
-
-				$sorted_menu = array();
-
-				foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
-
-					if ( ! isset( $info[ 'lib' ][ $menu_lib ] ) ) {	// Not all add-ons have submenus.
-
-						continue;
+					if ( isset( $this->submenu[ $menu_id ] ) ) {	// Just in case.
+				
+						call_user_func_array( array( $this->submenu[ $menu_id ], 'add_submenu_page' ), $args );
 					}
-
-					foreach ( $info[ 'lib' ][ $menu_lib ] as $menu_id => $menu_name ) {
-
-						if ( ! isset( $this->submenu[ $menu_id ] ) ) {	// Just in case.
-
-							continue;
-						}
-
-						$menu_title = $this->get_info_menu_title( $info, $menu_lib, $menu_id );
-
-						$sorted_menu[ $menu_title . '-' . $menu_id ] = array( $parent_slug, $menu_id, $menu_title, $menu_lib, $ext );
-					}
-				}
-
-				ksort( $sorted_menu, SORT_FLAG_CASE | SORT_NATURAL );
-
-				foreach ( $sorted_menu as $sort_key => $args ) {
-
-					$menu_id = $args[ 1 ];
-
-					$this->submenu[ $menu_id ]->add_submenu_page( $args[ 0 ], $args[ 1 ], $args[ 2 ], $args[ 3 ], $args[ 4 ] );
 				}
 			}
 		}
@@ -633,13 +507,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		protected function add_menu_page( $menu_slug ) {
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log_args( array( 
-					'menu_slug' => $menu_slug,
-				) );
-			}
-
 			$pkg_info    = $this->get_pkg_info();	// Returns an array from cache.
 			$page_title  = $pkg_info[ 'wpsso' ][ 'short_pkg' ] . ' - ' . $this->menu_name;
 			$menu_title  = $this->get_menu_title();
@@ -654,36 +521,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			add_action( 'load-' . $this->pagehook, array( $this, 'load_setting_page' ) );
 		}
 
-		protected function add_submenu_page( $parent_slug, $menu_id = '', $menu_title = '', $menu_lib = '', $menu_ext = '', $css_class = '' ) {
+		protected function add_submenu_page( $parent_slug, $menu_id, $menu_title, $menu_lib, $menu_ext, $css_class = '' ) {
 
-			if ( empty( $menu_id ) ) {
-
-				$menu_id = $this->menu_id;
-			}
-
-			if ( empty( $menu_title ) ) {
-
-				$menu_title = $this->menu_name;
-			}
-
-			if ( empty( $menu_lib ) ) {
-
-				$menu_lib = $this->menu_lib;
-			}
-
-			if ( empty( $menu_ext ) ) {
-
-				$menu_ext = $this->menu_ext;	// Lowercase acronyn for plugin or add-on.
-
-				if ( empty( $menu_ext ) ) {
-
-					$menu_ext = $this->p->id;
-				}
-			}
-
-			/**
-			 * Add dashicons to the SSO menu items.
-			 */
 			$css_class   = trim( 'wpsso-menu-item wpsso-' . $menu_id . ' ' . $css_class );
 			$menu_title  = '<div class="' . $css_class . ' menu-item-label">' . $menu_title . '</div>';	// Wrap the title string.
 			$pkg_info    = $this->get_pkg_info();	// Returns an array from cache.
@@ -718,6 +557,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 * Add plugin links for the WordPress plugins page.
 		 *
 		 * $plugin_data is an array of plugin data. See get_plugin_data().
+		 *
 		 * $context can be 'all', 'active', 'inactive', 'recently_activated', 'upgrade', 'mustuse', 'dropins', or 'search'.
 		 */
 		public function add_plugin_action_links( $action_links, $plugin_base, $plugin_data, $context, $menu_lib = 'submenu'  ) {
@@ -1175,7 +1015,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 								WpssoUser::save_pref( array( 'show_opts' => $show_opts_key ) );
 
-								$notice_msg = sprintf( __( 'Option preference saved - viewing "%s" by default.', 'wpsso' ), $show_name_transl );
+								$notice_msg = '<strong>' . __( 'Option preference has been saved.', 'wpsso' ) . '</strong>';
+
+								$notice_msg .= sprintf( __( 'Now viewing "%s" by default.', 'wpsso' ), $show_name_transl );
 
 								$this->p->notice->upd( $notice_msg, $user_id );
 							}
@@ -3015,7 +2857,115 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return $dashicon;
 		}
 
-		public function get_info_menu_title( $info, $menu_lib, $menu_id ) {
+		/**
+		 * $menu_lib = 'dashboard', 'plugins', 'profile', 'settings', 'submenu', 'sitesubmenu', 'tools', or 'users'
+		 */
+		public function get_submenu_args( $menu_lib = 'submenu' ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			static $local_cache = array();
+
+			if ( isset( $local_cache[ $menu_lib ] ) ) {
+
+				return $local_cache[ $menu_lib ];
+			}
+
+			$local_cache[ $menu_lib ] = array();
+
+			$top_first_id = false;
+			$top_last_id  = false;
+			$ext_first_id = false;
+			$ext_last_id  = false;
+
+			$sorted_menu   = array();
+			$unsorted_menu = array();
+
+			if ( 'profile' === $menu_lib && current_user_can( 'list_users' ) ) {	// Match WordPress behavior.
+
+				$parent_slug = $this->p->cf[ 'wp' ][ 'admin' ][ 'users' ][ 'page' ];
+
+			} elseif ( 'submenu' === $menu_lib || 'sitesubmenu' === $menu_lib ) {	// Plugin submenu.
+
+				$parent_slug = 'wpsso-' . $this->menu_id;
+
+			} else {
+
+				$parent_slug = $this->p->cf[ 'wp' ][ 'admin' ][ $menu_lib ][ 'page' ];
+			}
+
+			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
+
+				if ( ! isset( $info[ 'lib' ][ $menu_lib ] ) ) {	// Not all add-ons have submenus.
+
+					continue;
+				}
+
+				foreach ( $info[ 'lib' ][ $menu_lib ] as $menu_id => $menu_name ) {
+
+					$menu_title  = $this->get_submenu_title( $info, $menu_lib, $menu_id );
+
+					/**
+					 * Leave WPSSO Core submenu items in their original order.
+					 */
+					if ( 'wpsso' === $ext ) {
+
+						$unsorted_menu[] = array( $parent_slug, $menu_id, $menu_title, $menu_lib, $ext );
+
+						if ( false === $top_first_id ) $top_first_id = $menu_id;
+
+						$top_last_id = $menu_id;
+
+					/**
+					 * Sort add-on submenu items.
+					 */
+					} else {
+
+						$sorted_menu[ $menu_title . '-' . $menu_id ] = array( $parent_slug, $menu_id, $menu_title, $menu_lib, $ext );
+
+						if ( false === $ext_first_id ) $ext_first_id = $menu_id;
+
+						$ext_last_id = $menu_id;
+					}
+				}
+			}
+
+			SucomUtil::natksort( $sorted_menu );
+
+			foreach ( array_merge( $unsorted_menu, $sorted_menu ) as $sort_key => $args ) {
+
+				$menu_id = $args[ 1 ];
+
+				if ( 'submenu' === $menu_lib || 'sitesubmenu' === $menu_lib ) {
+
+					if ( $menu_id === $top_first_id ) {
+	
+						$args[ 5 ] = 'top-first-submenu-page';
+	
+					} elseif ( $menu_id === $top_last_id ) {
+	
+						$args[ 5 ] = 'top-last-submenu-page' . ( empty( $ext_first_id ) ? ' no-add-ons' : ' with-add-ons' );
+	
+					} elseif ( $menu_id === $ext_first_id ) {
+	
+						$args[ 5 ] = 'ext-first-submenu-page';
+	
+					} elseif ( $menu_id === $ext_last_id ) {
+	
+						$args[ 5 ] = 'ext-last-submenu-page';
+					}
+				}
+	
+				$local_cache[ $menu_lib ][ $menu_id ] = $args;
+			}
+
+			return $local_cache[ $menu_lib ];
+		}
+
+		public function get_submenu_title( $info, $menu_lib, $menu_id ) {
 
 			$menu_title = '';
 

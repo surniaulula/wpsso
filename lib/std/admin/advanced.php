@@ -428,26 +428,23 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			/**
 			 * Show SSO menu items.
 			 */
-			$info       = $this->p->cf[ 'plugin' ][ 'wpsso' ];
 			$menu_title = $this->p->admin->get_menu_title();
-			$menu_lib   = 'submenu';
-			$values     = array();
+			$menu_args  = $this->p->admin->get_submenu_args( $menu_lib = 'submenu' );
 
-			foreach ( $info[ 'lib' ][ $menu_lib ] as $menu_id => $menu_name ) {
+			foreach ( $menu_args as $menu_id => $args ) {
 
-				if ( isset( $form->defaults[ 'plugin_add_submenu_' . $menu_id ] ) ) {
-
-					$values[ $menu_id ] = $this->p->admin->get_info_menu_title( $info, $menu_lib, $menu_id );
+				if ( empty( $this->p->cf[ 'menu' ][ 'must_load' ][ $menu_id ] ) ) {	// Settings page can be disabled.
+			
+					$form->defaults[ 'plugin_add_submenu_' . $menu_id ] = 1;	// Just in case.
+	
+					$values[ $menu_id ] = $args[ 2 ];
 				}
 			}
 
-			if ( ! empty( $values ) ) {
-
-				$table_rows[ 'plugin_add_submenu' ] = $form->get_tr_hide_prefix( 'basic', 'plugin_add_submenu_' ) .
-					$form->get_th_html( sprintf( _x( 'Show %s Menu Items', 'option label', 'wpsso' ), $menu_title ),
-						$css_class = '', $css_id = 'plugin_add_submenu' ) .
-					'<td class="blank">' . $form->get_no_checklist( $name_prefix = 'plugin_add_submenu', $values ) . '</td>';
-			}
+			$table_rows[ 'plugin_add_submenu' ] = $form->get_tr_hide_prefix( 'basic', 'plugin_add_submenu_' ) .
+				$form->get_th_html( sprintf( _x( 'Show %s Menu Items', 'option label', 'wpsso' ), $menu_title ),
+					$css_class = '', $css_id = 'plugin_add_submenu' ) .
+				'<td class="blank">' . $form->get_no_checklist( $name_prefix = 'plugin_add_submenu', $values ) . '</td>';
 
 			/**
 			 * Show custom meta metaboxes.

@@ -2355,6 +2355,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'your-sso'       => 'id-alt',
 					'*'              => 'admin-generic',	// Default icon.
 				),
+				'must_load' => array(	// Settings pages that cannot be disabled.
+					'general'       => true,
+					'advanced'      => true,
+					'licenses'      => true,
+					'site-advanced' => true,
+					'site-licenses' => true,
+				),
 			),
 			'notice' => array(
 				'title' => 'SSO',	// Notice title.

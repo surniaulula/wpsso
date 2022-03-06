@@ -1895,11 +1895,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $open_close_pairs;
 		}
 
-		public static function natksort( &$assoc_arr ) {
-
-			return uksort( $assoc_arr, 'strnatcmp' );
-		}
-
 		/**
 		 * Since 2021/09/17.
 		 *
@@ -4087,6 +4082,21 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			return $objects = $sorted;
+		}
+
+		public static function natksort( array &$assoc_arr ) {
+
+			if ( function_exists( 'remove_accents' ) ) {	// WordPress function.
+
+				return uksort( $assoc_arr, array( __CLASS__, 'strnatcmp_no_accents' ) );
+			}
+
+			return uksort( $assoc_arr, 'strnatcmp' );
+		}
+
+		public static function strnatcmp_no_accents( $a, $b ) {
+
+			return strnatcmp( remove_accents( $a ), remove_accents( $b ) );
 		}
 
 		public static function get_request_value( $key, $method = 'ANY', $default = '' ) {
