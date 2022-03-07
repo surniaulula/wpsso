@@ -254,9 +254,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 11.5.0 (2022/03/07)**
 
 * **New Features**
-	* None.
-* **Improvements**
 	* Added a new SSO &gt; Advanced Settings &gt; Plugin Settings &gt; Interface &gt; Show SSO Menu Items option.
+* **Improvements**
 	* Removed dashicons from the SSO menu items.
 * **Bugfixes**
 	* None.
