@@ -19,9 +19,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 	class SucomUtil {
 
-		private static $cache_locale  = array();	// Saved get_locale() values.
+		protected static $cache_locale  = array();	// Saved get_locale() values.
 
-		private static $currencies = array(
+		protected static $currencies = array(
 			'AED' => 'United Arab Emirates dirham',
 			'AFN' => 'Afghan afghani',
 			'ALL' => 'Albanian lek',
@@ -185,7 +185,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			'ZMW' => 'Zambian kwacha',
 		);
 
-		private static $currency_symbols = array(
+		protected static $currency_symbols = array(
 			'AED' => '&#x62f;.&#x625;',
 			'AFN' => '&#x60b;',
 			'ALL' => 'L',
@@ -350,7 +350,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			'ZMW' => 'ZK',
 		);
 
-		private static $dashicons = array(
+		protected static $dashicons = array(
 			100 => 'admin-appearance',
 			101 => 'admin-comments',
 			102 => 'admin-home',
@@ -520,7 +520,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			473 => 'testimonial',
 		);
 
-		private static $publisher_languages = array(
+		protected static $publisher_languages = array(
 
 			/**
 			 * https://developers.facebook.com/docs/messenger-platform/messenger-profile/supported-locales
@@ -1696,7 +1696,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return array_map( array( __CLASS__, 'unquote_csv_value' ), explode( ',', $str ) );
 		}
 
-		private static function unquote_csv_value( $val ) {
+		protected static function unquote_csv_value( $val ) {
 
 			return trim( $val, '\'" ' );	// Remove quotes and spaces.
 		}
@@ -1900,22 +1900,22 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 *
 		 * Used by WpssoOptions->sanitize() and WpssoOptionsUpgrade->options().
 		 */
-		public static function unset_numeric_keys( &$assoc_arr ) {
+		public static function unset_numeric_keys( &$arr ) {
 
-			foreach ( array_keys( $assoc_arr ) as $key ) {
+			foreach ( array_keys( $arr ) as $key ) {
 
 				if ( is_numeric( $key ) ) {
 
-					unset( $assoc_arr[ $key ] );
+					unset( $arr[ $key ] );
 				}
 			}
 		}
 
-		public static function unset_from_assoc( &$assoc_arr1, $assoc_arr2 ) {
+		public static function unset_from_assoc( &$arr1, $arr2 ) {
 
-			foreach ( array_keys( $assoc_arr2 ) as $key ) {
+			foreach ( array_keys( $arr2 ) as $key ) {
 
-				unset( $assoc_arr1[ $key ] );
+				unset( $arr1[ $key ] );
 			}
 		}
 
@@ -1996,18 +1996,18 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		/**
 		 * Move an associative array element to the end.
 		 */
-		public static function move_to_end( array &$assoc_arr, $key ) {
+		public static function move_to_end( array &$arr, $key ) {
 
-			if ( array_key_exists( $key, $assoc_arr ) ) {
+			if ( array_key_exists( $key, $arr ) ) {
 
-				$val = $assoc_arr[ $key ];
+				$val = $arr[ $key ];
 
-				unset( $assoc_arr[ $key ] );
+				unset( $arr[ $key ] );
 
-				$assoc_arr[ $key ] = $val;
+				$arr[ $key ] = $val;
 			}
 
-			return $assoc_arr;
+			return $arr;
 		}
 
 		public static function move_to_front( array &$arr, $key ) {
@@ -2336,7 +2336,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		/**
 		 * Private method used by get_mt_image_seed(), get_mt_product_seed(), and get_mt_video_seed().
 		 */
-		private static function maybe_merge_mt_og( array $mt_ret, array $mt_og ) {
+		protected static function maybe_merge_mt_og( array $mt_ret, array $mt_og ) {
 
 			if ( empty( $mt_og ) ) {	// Nothing to merge.
 
@@ -3833,20 +3833,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				}
 			}
 
-			/**
-			 * Use asort() or uasort() to maintain the ID => display_name association.
-			 */
-			if ( ! empty( $user_names ) ) {	// Skip if nothing to sort.
-
-				if ( defined( 'SORT_STRING' ) ) {
-
-					asort( $user_names, SORT_STRING );
-
-				} else {
-
-					uasort( $user_names, 'strnatcmp' );
-				}
-			}
+			self::natasort( $user_names );	// Maintain ID => display_name association.
 
 			return $user_names;
 		}
@@ -4084,19 +4071,32 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $objects = $sorted;
 		}
 
-		public static function natksort( array &$assoc_arr ) {
+		public static function natasort( array &$arr ) {
+			
+			if ( function_exists( 'remove_accents' ) ) {	// WordPress function.
+
+				return uasort( $arr, array( __CLASS__, 'strnatcasecmp_remove_accents' ) );
+			}
+			
+			return uasort( $arr, 'strnatcasecmp' );
+		}
+
+		public static function natksort( array &$arr ) {
 
 			if ( function_exists( 'remove_accents' ) ) {	// WordPress function.
 
-				return uksort( $assoc_arr, array( __CLASS__, 'strnatcmp_no_accents' ) );
+				return uksort( $arr, array( __CLASS__, 'strnatcasecmp_remove_accents' ) );
 			}
 
-			return uksort( $assoc_arr, 'strnatcmp' );
+			return uksort( $arr, 'strnatcasecmp' );
 		}
 
-		public static function strnatcmp_no_accents( $a, $b ) {
+		/**
+		 * The existence of remove_accents() is checked before using the callback.
+		 */
+		public static function strnatcasecmp_remove_accents( $a, $b ) {
 
-			return strnatcmp( remove_accents( $a ), remove_accents( $b ) );
+			return strnatcasecmp( remove_accents( $a ), remove_accents( $b ) );
 		}
 
 		public static function get_request_value( $key, $method = 'ANY', $default = '' ) {
@@ -4189,18 +4189,18 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			/**
 			 * If mb_decode_numericentity() is not available, then return the string un-converted.
 			 */
-			if ( ! function_exists( 'mb_decode_numericentity' ) ) {	// Just in case.
+			if ( function_exists( 'mb_decode_numericentity' ) ) {	// Just in case.
 
-				return $encoded;
+				return preg_replace_callback( '/&#\d{2,5};/u', array( __CLASS__, 'mb_decode_numericentity_utf8' ), $encoded );
 			}
 
-			return preg_replace_callback( '/&#\d{2,5};/u', array( __CLASS__, 'decode_utf8_entity' ), $encoded );
+			return $encoded;
 		}
 
 		/**
-		 * The existence of mb_decode_numericentity() is checked before doing the callback.
+		 * The existence of mb_decode_numericentity() is checked before using the callback.
 		 */
-		public static function decode_utf8_entity( $matches ) {
+		public static function mb_decode_numericentity_utf8( $matches ) {
 
 			$convmap = array( 0x0, 0x10000, 0, 0xfffff );
 
@@ -4385,21 +4385,18 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function replace_unicode_escape( $str ) {
 
-			/**
-			 * If mb_convert_encoding() is not available, then return the string un-converted.
-			 */
-			if ( ! function_exists( 'mb_convert_encoding' ) ) {
+			if ( function_exists( 'mb_convert_encoding' ) ) {
 
-				return $str;
+				return preg_replace_callback( '/\\\\u([0-9a-f]{4})/i', array( __CLASS__, 'mb_convert_encoding_ucs2_utf8' ), $str );
 			}
 
-			return preg_replace_callback( '/\\\\u([0-9a-f]{4})/i', array( __CLASS__, 'replace_unicode_escape_callback' ), $str );
+			return $str;
 		}
 
 		/**
-		 * The existence of mb_convert_encoding() is checked before doing the callback.
+		 * The existence of mb_convert_encoding() is checked before using the callback.
 		 */
-		private static function replace_unicode_escape_callback( $match ) {
+		public static function mb_convert_encoding_ucs2_utf8( $match ) {
 
 			return mb_convert_encoding( pack( 'H*', $match[ 1 ] ), $to_encoding = 'UTF-8', $from_encoding = 'UCS-2' );
 		}
@@ -4931,7 +4928,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		/**
 		 * Modify the referenced array and return true, false, or the modified array.
 		 */
-		private static function insert_in_array( $insert, array &$arr, $match_key, $mixed, $add_value = null, $ret_bool = false ) {
+		protected static function insert_in_array( $insert, array &$arr, $match_key, $mixed, $add_value = null, $ret_bool = false ) {
 
 			$matched = false;
 
@@ -4986,7 +4983,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		/**
 		 * Used by self::get_currencies(), self::get_currency_abbrev(), and self::get_dashicons().
 		 */
-		private static function maybe_get_array( $arr, $key = false, $add_none = false ) {
+		protected static function maybe_get_array( $arr, $key = false, $add_none = false ) {
 
 			if ( null === $key ) {
 
@@ -5131,7 +5128,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		/**
 		 * Deprecated on 2022/01/23.
 		 */
-		private static function get_first_last_next_nums( array $input ) {
+		protected static function get_first_last_next_nums( array $input ) {
 
 			$keys  = array_keys( $input );
 			$count = count( $keys );
