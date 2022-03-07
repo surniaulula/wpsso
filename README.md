@@ -44,7 +44,7 @@
 
 <p><strong>Reads data from WordPress, plugins, and service APIs:</strong></p>
 
-<p>There's no need to select or create templates, manually reenter descriptions, titles, product information, or reselect images and videos &mdash; WPSSO reads your existing WordPress content, including custom post types and taxonomies, enhanced user profile data, Media Library image information, and the Premium edition also imports video details, reads active plugin and service API data (Bitly, Facebook, Shopper Approved, Stamped.io, Vimeo, Wistia, YouTube, and many more).</p>
+<p>There's no need to select or create templates, manually reenter descriptions, titles, product information, or reselect images and videos &mdash; WPSSO reads your existing WordPress content, including custom post types and taxonomies, enhanced user profiles, and SEO image details from the Media Library. The Premium edition also imports SEO video details, reads active plugin and service API data (Bitly, Facebook, Shopper Approved, Stamped.io, Vimeo, Wistia, YouTube, and many more).</p>
 
 <p><strong>Supports over 500 different Schema types and sub-types:</strong></p>
 
