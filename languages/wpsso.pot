@@ -9477,8 +9477,8 @@ msgstr ""
 #: lib/messages.php:278
 msgid ""
 "Please note that correct image sizes are required for several markup "
-"standards, including Google Rich Results, and improve click through rates by "
-"presenting your content at its best on social sites and in search results."
+"standards, including Google Rich Results, and to improve click through rates "
+"by presenting your content at its best on social sites and in search results."
 msgstr ""
 
 #: lib/messages.php:282

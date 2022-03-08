@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 11.5.0\n"
+"Project-Id-Version: WPSSO Core 11.5.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2022-03-07 06:33-0800\n"
+"PO-Revision-Date: 2022-03-08 14:37-0800\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -987,7 +987,7 @@ msgstr "Ajouter une personne"
 
 #: gettext/gettext-lib-config.php:115
 msgctxt "plugin description"
-msgid "Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled."
+msgid "Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled."
 msgstr "Présentez votre contenu à son meilleur sur les sites sociaux et dans les résultats de recherche - quelle que soit la manière dont les URL sont partagées, repartagées, envoyées par message, publiées, intégrées ou explorées."
 
 #: gettext/gettext-lib-config.php:116
@@ -8408,8 +8408,8 @@ msgid "Purchase %s Add-on"
 msgstr "Acheter l'ajout %s"
 
 #: lib/messages.php:278
-msgid "Please note that a correctly sized image improves click through rates by presenting your content at its best on social sites and in search results."
-msgstr "Notez qu'une image correctement dimensionnée améliore les taux de clics en présentant votre contenu à son meilleur sur les sites sociaux et dans les résultats de recherche."
+msgid "Please note that correct image sizes are required for several markup standards, including Google Rich Results, and to improve click through rates by presenting your content at its best on social sites and in search results."
+msgstr "Veuillez noter que des tailles d'image précises sont requises pour plusieurs normes de balisage, y compris les résultats enrichis de Google, et pour améliorer les taux de clics en présentant votre contenu sous son meilleur jour sur les sites sociaux et dans les résultats de recherche."
 
 #: lib/messages.php:282
 msgid "A larger image can be uploaded and/or selected in the %1$s metabox under the %2$s tab."
@@ -10524,7 +10524,7 @@ msgid "https://wpsso.com/extend/plugins/wpsso/"
 msgstr "https://wpsso.com/extend/plugins/wpsso/"
 
 #. Description of the plugin/theme
-msgid "Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled."
+msgid "Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled."
 msgstr "Présentez votre contenu à son meilleur sur les sites sociaux et dans les résultats de recherche - quelle que soit la manière dont les URL sont partagées, repartagées, envoyées par message, publiées, intégrées ou explorées."
 
 #. Author of the plugin/theme
