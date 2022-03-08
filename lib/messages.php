@@ -275,7 +275,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= ' <p>';
 
-						$text .= __( 'Please note that a correctly sized image improves click through rates by presenting your content at its best on social sites and in search results.', 'wpsso' ) . ' ';
+						$text .= __( 'Please note that correct image sizes are required for several markup standards, including Google Rich Results, and improve click through rates by presenting your content at its best on social sites and in search results.', 'wpsso' ) . ' ';
 
 						if ( $is_meta_page ) {
 

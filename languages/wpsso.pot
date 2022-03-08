@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 11.5.1-dev.2\n"
+"Project-Id-Version: WPSSO Core 11.5.1-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1169,7 +1169,7 @@ msgstr ""
 #: gettext/gettext-lib-config.php:115
 msgctxt "plugin description"
 msgid ""
-"Present your content at its best in search results and on social sites - no "
+"Present your content at its best on social sites and in search results - no "
 "matter how URLs are shared, reshared, messaged, posted, embedded, or crawled."
 msgstr ""
 
@@ -9476,7 +9476,8 @@ msgstr ""
 
 #: lib/messages.php:278
 msgid ""
-"Please note that a correctly sized image improves click through rates by "
+"Please note that correct image sizes are required for several markup "
+"standards, including Google Rich Results, and improve click through rates by "
 "presenting your content at its best on social sites and in search results."
 msgstr ""
 
@@ -11779,7 +11780,7 @@ msgstr ""
 
 #. Description of the plugin/theme
 msgid ""
-"Present your content at its best in search results and on social sites - no "
+"Present your content at its best on social sites and in search results - no "
 "matter how URLs are shared, reshared, messaged, posted, embedded, or crawled."
 msgstr ""
 
