@@ -251,6 +251,22 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 11.5.1-dev.1 (2022/03/08)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Refactored the `WpssoPage->sanitize_md_key()` method.
+	* Added a new `WpssoConfig::get_md_keys_fallback()` method.
+	* Added new 'wpsso_md_keys_fallback_{option_key}' filters.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 11.5.0 (2022/03/07)**
 
 * **New Features**
@@ -1039,6 +1055,10 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 	* WordPress v5.0.
 
 == Upgrade Notice ==
+
+= 11.5.1-dev.1 =
+
+(2022/03/08) Refactored the `WpssoPage->sanitize_md_key()` method.
 
 = 11.5.0 =
 
