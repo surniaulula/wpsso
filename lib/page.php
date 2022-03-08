@@ -773,20 +773,20 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				case 'title':
 
-					$md_key = $this->sanitize_md_key( $md_key, $def_key = 'og_title' );
+					$md_key = $this->sanitize_md_key( $md_key, $def_key = 'og_title' );	// Returns an array of metadata keys (can be empty).
 
 					break;
 
 				case 'excerpt':
 
-					$md_key = $this->sanitize_md_key( $md_key, $def_key = 'og_desc' );
+					$md_key = $this->sanitize_md_key( $md_key, $def_key = 'og_desc' );	// Returns an array of metadata keys (can be empty).
 
 					break;
 
 				case 'both':
 				default:
 
-					$md_key = $this->sanitize_md_key( $md_key, $def_key = 'og_caption' );
+					$md_key = $this->sanitize_md_key( $md_key, $def_key = 'og_caption' );	// Returns an array of metadata keys (can be empty).
 
 					break;
 			}
@@ -877,12 +877,12 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				) );
 			}
 
-			$mod        = $this->maybe_get_mod( $mod );			// Returns $mod array if not provided.
-			$md_key     = $this->sanitize_md_key( $md_key, $def_key = 'seo_title' );
-			$max_len    = $this->sanitize_max_len( $max_len );		// Returns max integer for numeric, string, or array value.
-			$dots       = $this->maybe_get_ellipsis();			// Returns default $dots.
-			$title_sep  = $this->maybe_get_title_sep( $title_sep );		// Returns default $title_sep if not provided.
-			$title_text = $this->maybe_get_custom( $mod, $md_key );		// Returns null or custom value.
+			$mod        = $this->maybe_get_mod( $mod );					// Returns $mod array if not provided.
+			$md_key     = $this->sanitize_md_key( $md_key, $def_key = 'seo_title' );	// Returns an array of metadata keys (can be empty).
+			$max_len    = $this->sanitize_max_len( $max_len );				// Returns max integer for numeric, string, or array value.
+			$dots       = $this->maybe_get_ellipsis();					// Returns default $dots.
+			$title_sep  = $this->maybe_get_title_sep( $title_sep );				// Returns default $title_sep if not provided.
+			$title_text = $this->maybe_get_custom( $mod, $md_key );				// Returns null or custom value.
 			$is_custom  = empty( $title_text ) ? false : true;
 			$hashtags   = '';
 
@@ -1030,11 +1030,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				) );
 			}
 
-			$mod       = $this->maybe_get_mod( $mod );			// Returns $mod array if not provided.
-			$md_key    = $this->sanitize_md_key( $md_key, $def_key = 'seo_desc' );
-			$max_len   = $this->sanitize_max_len( $max_len );		// Returns max integer for numeric, string, or array value.
-			$dots      = $this->maybe_get_ellipsis();			// Returns default $dots.
-			$desc_text = $this->maybe_get_custom( $mod, $md_key );		// Returns null or custom value.
+			$mod       = $this->maybe_get_mod( $mod );				// Returns $mod array if not provided.
+			$md_key    = $this->sanitize_md_key( $md_key, $def_key = 'seo_desc' );	// Returns an array of metadata keys (can be empty).
+			$max_len   = $this->sanitize_max_len( $max_len );			// Returns max integer for numeric, string, or array value.
+			$dots      = $this->maybe_get_ellipsis();				// Returns default $dots.
+			$desc_text = $this->maybe_get_custom( $mod, $md_key );			// Returns null or custom value.
 			$is_custom = empty( $desc_text ) ? false : true;
 			$hashtags  = '';
 
@@ -1139,11 +1139,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				) );
 			}
 
-			$mod       = $this->maybe_get_mod( $mod );			// Returns $mod array if not provided.
-			$md_key    = $this->sanitize_md_key( $md_key, $def_key = 'schema_text' );
-			$max_len   = $this->sanitize_max_len( $max_len );		// Returns max integer for numeric, string, or array value.
-			$dots      = $this->maybe_get_ellipsis();			// Returns default $dots.
-			$text      = $this->maybe_get_custom( $mod, $md_key );		// Returns null or custom value.
+			$mod       = $this->maybe_get_mod( $mod );					// Returns $mod array if not provided.
+			$md_key    = $this->sanitize_md_key( $md_key, $def_key = 'schema_text' );	// Returns an array of metadata keys (can be empty).
+			$max_len   = $this->sanitize_max_len( $max_len );				// Returns max integer for numeric, string, or array value.
+			$dots      = $this->maybe_get_ellipsis();					// Returns default $dots.
+			$text      = $this->maybe_get_custom( $mod, $md_key );				// Returns null or custom value.
 			$is_custom = empty( $text ) ? false : true;
 
 			/**
@@ -2119,6 +2119,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		}
 
 		/**
+		 * Returns an array of metadata keys (can be empty).
+		 *
 		 * $md_key = true | false | string | array
 		 */
 		private function sanitize_md_key( $md_key, $def_key = '' ) {
@@ -2127,7 +2129,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				return array();
 
-			} elseif ( true === $md_key || null === $md_key || $md_key === $def_key ) {	// Use the default key.
+			} elseif ( true === $md_key || null === $md_key || $md_key === $def_key ) {	// Return the default key array.
 
 				return WpssoConfig::get_md_keys_fallback( $def_key );
 			}
