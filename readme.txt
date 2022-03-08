@@ -251,7 +251,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.5.1-dev.1 (2022/03/08)**
+**Version 11.5.1-dev.2 (2022/03/08)**
 
 * **New Features**
 	* None.
@@ -1056,7 +1056,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 11.5.1-dev.1 =
+= 11.5.1-dev.2 =
 
 (2022/03/08) Refactored the `WpssoPage->sanitize_md_key()` method.
 
