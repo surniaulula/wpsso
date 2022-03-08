@@ -113,7 +113,7 @@
 
 'wpsso_inherit_featured_image' ( $bool, $mod )
 
-'wpsso_input_limits_{option_key}' ( $limits )
+'wpsso_input_limits_{option_key}' ( array $limits )
 
 'wpsso_is_functions' ( $is_functions )
 
@@ -170,6 +170,8 @@
 'wpsso_link_rel' ( $link_rel, $mod )
 
 'wpsso_load_lib' ( $success = false, $filespec = '', $classname = '' )
+
+'wpsso_md_keys_fallback_{option_key}' ( array $fallback )
 
 'wpsso_menu_title' ( $title )
 

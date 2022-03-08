@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '11.5.0',	// Plugin version.
+					'version'     => '11.5.1-dev.1',	// Plugin version.
 					'opt_version' => '893',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1936,7 +1936,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_sameas_urls'                => '',	// Same-As URLs Custom Field.
 					'plugin_cf_vid_url'                    => '',	// Video URL Custom Field.
 					'plugin_cf_vid_embed'                  => '',	// Video Embed HTML Custom Field.
-				),
+				),	// End of 'defaults' array.
 
 				/**
 				 * Multisite options.
@@ -2066,7 +2066,35 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'pin_site_verify'    => 'p:domain_verify',		// Pinterest Website Verification ID.
 					'yandex_site_verify' => 'yandex-verification',		// Yandex Website Verification ID.
 				),
-			),
+
+				/**
+				 * Fallback order for custom Document SSO metadata keys.
+				 */
+				'md_keys_fallback' => array(
+
+					/**
+					 * SEO and Schema metadata keys.
+					 */
+					'seo_title'             => array( 'seo_title' ),
+					'seo_desc'              => array( 'seo_desc' ),
+					'schema_title'          => array( 'schema_title', 'seo_title' ),
+					'schema_title_alt'      => array( 'schema_title_alt', 'schema_title', 'seo_title' ),
+					'schema_title_bc'       => array( 'schema_title_bc', 'schema_title_alt', 'schema_title', 'seo_title' ),
+					'schema_title_headline' => array( 'schema_title_headline', 'schema_title_alt', 'schema_title', 'seo_title' ),
+					'schema_desc'           => array( 'schema_desc', 'seo_desc' ),
+					'schema_text'           => array( 'schema_text' ),
+
+					/**
+					 * Open Graph and Social metadata keys.
+					 */
+					'og_title'     => array( 'og_title', 'seo_title' ),
+					'og_desc'      => array( 'og_desc', 'seo_desc' ),
+					'og_caption'   => array( 'og_caption' ),
+					'tc_title'     => array( 'tc_title', 'og_title', 'seo_title' ),
+					'tc_desc'      => array( 'tc_desc', 'og_desc', 'seo_desc' ),
+					'pin_img_desc' => array( 'pin_img_desc', 'og_desc', 'seo_desc' ),
+				),
+			),	// End of 'opt' array.
 
 			/**
 			 * Update manager config.
@@ -2097,7 +2125,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'rc'     => '/^[0-9][0-9\.\-]+((rc)[0-9\.\-]+)?$/',
 					'stable' => '/^[0-9][0-9\.\-]+$/',
 				),
-			),
+			),	// End of 'um' array.
 
 			/**
 			 * PHP config.
@@ -2165,7 +2193,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 					),
 				),
-			),
+			),	// End of 'php' array.
 
 			/**
 			 * WordPress config.
@@ -2313,7 +2341,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'label' => 'All WP Objects',
 					),
 				),
-			),
+			),	// End of 'wp' array.
 
 			/**
 			 * Used by WpssoScript->admin_enqueue_scripts().
@@ -2954,7 +2982,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'max' => 200,
 					),
 				),
-			),
+			),	// End of 'form' array.
+
+			/**
+			 * Reference for meta tag and Schema property values (limits, conversions, etc.).
+			 */
 			'head' => array(
 				'limit' => array(
 					'schema_1x1_img_ratio'  => 1.000,
@@ -3972,7 +4004,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 						'thing' => 'https://schema.org/Thing',
 					),
-				),
+				),	// End of 'schema_type' array.
 				'schema_renamed' => array(	// Element of 'head' array.
 					'anesthesia'              => 'anesthesia.specialty',
 					'cardiovascular'          => 'cardiovascular.specialty',
@@ -4206,11 +4238,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'UPS'      => 'http://purl.org/goodrelations/v1#UPS',
 					),
 				),
-			),
+			),	// End of 'head' array.
 			'extend' => array(
 				'https://wpsso.com/extend/plugins/',
 			),
-		);
+		);	// End of 'cf' array.
 
 		public static function get_version( $add_slug = false ) {
 
@@ -4854,14 +4886,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					$local_cache[ $k ] = _x( $label, 'option value', 'wpsso' );
 				}
 
-				uasort( $local_cache, 'strnatcmp' );	// Sort associative array by value (ie. the translated label).
+				/**
+				 * Sort the associative array by value (ie. the translated label).
+				 */
+				method_exists( 'SucomUtil', 'natasort' ) ? SucomUtil::natasort( $local_cache ) : uasort( $local_cache, 'strnatcasecmp' );
 			}
 
 			if ( false !== $key ) {
 
-				if ( isset( $local_cache[ $key ] ) ) {	// Just in case.
+				if ( $key && is_string( $key ) ) {
 
-					return $local_cache[ $key ];
+					if ( isset( $local_cache[ $key ] ) ) {	// Just in case.
+
+						return $local_cache[ $key ];
+					}
 				}
 
 				return null;
@@ -4891,15 +4929,61 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 			if ( false !== $opt_key ) {
 
-				if ( isset( $local_cache[ $opt_key ] ) ) {
+				if ( $opt_key && is_string( $opt_key ) ) {
 
-					return $local_cache[ $opt_key ];
+					if ( isset( $local_cache[ $opt_key ] ) ) {
+
+						return $local_cache[ $opt_key ];
+					}
 				}
 
 				return null;
 			}
 
 			return $local_cache;
+		}
+
+		/**
+		 * Since WPSSO Core v11.5.1.
+		 *
+		 * This method must return an array.
+		 */
+		public static function get_md_keys_fallback( $md_key = false ) {
+		
+			static $local_cache = null;
+
+			if ( is_array( $md_key ) ) {	// Just in case.
+
+				return $md_key;	// Return an array.
+
+			} elseif ( null === $local_cache ) {
+
+				$local_cache = self::$cf[ 'opt' ][ 'md_keys_fallback' ];
+
+				foreach ( $local_cache as $key => $fallback ) {
+
+					$filter_name = SucomUtil::sanitize_hookname( 'wpsso_md_keys_fallback_' . $key );
+
+					$local_cache[ $key ] = apply_filters( $filter_name, $fallback );
+				}
+			}
+
+			if ( false !== $md_key ) {
+
+				if ( $md_key && is_string( $md_key ) ) {
+				
+					if ( isset( $local_cache[ $md_key ] ) ) {
+
+						return $local_cache[ $md_key ];	// Return an array.
+					}
+
+					return array( $md_key );	// Return an array.
+				}
+				
+				return array();	// Return an array.
+			}
+
+			return $local_cache;	// Return an array.
 		}
 	}
 }

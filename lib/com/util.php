@@ -1994,7 +1994,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Move an associative array element to the end.
+		 * Move an array element to the end.
 		 */
 		public static function move_to_end( array &$arr, $key ) {
 
@@ -2010,6 +2010,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return $arr;
 		}
 
+		/**
+		 * Move an array element to the front.
+		 */
 		public static function move_to_front( array &$arr, $key ) {
 
 			if ( array_key_exists( $key, $arr ) ) {

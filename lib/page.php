@@ -793,7 +793,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$caption_max_len = $this->sanitize_max_len( $caption_max_len );		// Returns max integer for numeric, string, or array value.
 			$mod             = $this->maybe_get_mod( $mod );			// Returns $mod array if not provided.
-			$caption_text    = $this->maybe_get_custom( $mod, $md_key );	// Returns null or custom value.
+			$caption_text    = $this->maybe_get_custom( $mod, $md_key );		// Returns null or custom value.
 			$is_custom       = empty( $caption_text ) ? false : true;
 
 			/**
@@ -2099,81 +2099,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		}
 
 		/**
-		 * $md_key = true | false | string | array
-		 *
-		 * Examples:
-		 *
-		 * 	$md_key = 'schema_title' will return array( 'schema_title', 'seo_title' ).
-		 * 	$md_key = 'schema_title_alt' will return array( 'schema_title_alt', 'schema_title', 'seo_title' ).
-		 * 	$md_key = 'schema_title_bc' will return array( 'schema_title_bc', 'schema_title_alt', 'schema_title', 'seo_title' ).
-		 * 	$md_key = 'schema_title_headline' will return array( 'schema_title_headline', 'schema_title_alt', 'schema_title', 'seo_title' ).
-		 * 	$md_key = 'tc_title' will return array( 'tc_title', 'og_title', 'seo_title' ).
-		 * 	$md_key = 'og_title' will return array( 'og_title', 'seo_title' ).
-		 * 	$md_key = 'seo_title' will return 'seo_title' (no need for a fallback array).
-		 * 	$md_key = 'none' will return ''.
-		 */
-		private function sanitize_md_key( $md_key, $def_key = '' ) {
-
-			if ( false === $md_key || 'none' === $md_key || '' === $md_key ) {	// Nothing to do.
-
-				$md_key = '';
-
-			} elseif ( true === $md_key || null === $md_key || $md_key === $def_key ) {	// Use the default key.
-
-				$md_key = $def_key ? $def_key : '';
-
-			} elseif ( ! is_array( $md_key ) ) {	// Use the key and maybe create a fallback order.
-
-				$md_key = array( $md_key );
-
-				/**
-				 * Maybe add fallback keys.
-				 */
-				switch ( $md_key ) {
-
-					case 'schema_title_bc':
-					case 'schema_title_headline':
-
-						$md_key[] = 'schema_title_alt';
-						$md_key[] = 'schema_title';
-
-						break;
-
-					case 'schema_title_alt':
-
-						$md_key[] = 'schema_title';
-
-						break;
-
-					case 'tc_title':
-
-						$md_key[] = 'og_title';
-
-						break;
-
-					case 'pin_img_desc':
-					case 'tc_desc':
-
-						$md_key[] = 'og_desc';
-
-						break;
-				}
-			}
-
-			/**
-			 * Add the default fallback key to the array and remove duplicates.
-			 */
-			if ( is_array( $md_key ) ) {
-
-				if ( $def_key ) $md_key[] = $def_key;
-
-				$md_key = array_unique( $md_key );
-			}
-
-			return $md_key;
-		}
-
-		/**
 		 * The $mod array argument is preferred but not required.
 		 *
 		 * $mod = true | false | post_id | $mod array
@@ -2191,6 +2116,35 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			return $mod;
+		}
+
+		/**
+		 * $md_key = true | false | string | array
+		 */
+		private function sanitize_md_key( $md_key, $def_key = '' ) {
+
+			if ( false === $md_key || 'none' === $md_key || '' === $md_key ) {	// Nothing to do.
+
+				return array();
+
+			} elseif ( true === $md_key || null === $md_key || $md_key === $def_key ) {	// Use the default key.
+
+				return WpssoConfig::get_md_keys_fallback( $def_key );
+			}
+			
+			if ( ! is_array( $md_key ) ) {
+
+				$md_key = WpssoConfig::get_md_keys_fallback( $md_key );
+			}
+
+			foreach ( WpssoConfig::get_md_keys_fallback( $def_key ) as $key ) {
+
+				$md_key[] = $key;
+			}
+
+			$md_key = array_unique( $md_key );	// Just in case.
+
+			return $md_key;
 		}
 
 		private function maybe_get_title_sep( $title_sep = null ) {
