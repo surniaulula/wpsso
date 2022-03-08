@@ -14,13 +14,13 @@ Tested Up To: 5.9.1
 WC Tested Up To: 6.2.1
 Stable Tag: 11.5.0
 
-Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
+Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
 
 == Description ==
 
 <h3 class="top">The Complete Structured Data Plugin for WordPress</h3>
 
-<p><strong>Present your content at its best in search results and on social sites - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</strong></p>
+<p><strong>Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.</strong></p>
 
 <!-- about -->
 
@@ -251,7 +251,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.5.1-dev.2 (2022/03/08)**
+**Version 11.5.1-dev.3 (2022/03/08)**
 
 * **New Features**
 	* None.
@@ -261,8 +261,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Developer Notes**
 	* Refactored the `WpssoPage->sanitize_md_key()` method.
-	* Added a new `WpssoConfig::get_md_keys_fallback()` method.
 	* Added new 'wpsso_md_keys_fallback_{option_key}' filters.
+	* Added a new `WpssoConfig::get_md_keys_fallback()` method.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -1056,7 +1056,7 @@ The default format of Schema and Open Graph types in select drop-downs has chang
 
 == Upgrade Notice ==
 
-= 11.5.1-dev.2 =
+= 11.5.1-dev.3 =
 
 (2022/03/08) Refactored the `WpssoPage->sanitize_md_key()` method.
 
