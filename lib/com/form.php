@@ -761,18 +761,10 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$html = $this->get_input( $name, $css_class, $input_id, $len, $holder, $is_disabled );
 
-			$html .= $this->get_placeholder_dep( 'input#text_' . $input_id, 'input#text_' . $input_dep_id );
+			if ( $input_dep_id ) {	// Just in case.
 
-			return $html;
-		}
-
-		public function get_placeholder_dep( $container_id, $container_dep_id ) {
-
-			$html = '<script>';
-			$html .= 'jQuery( \'' . $container_dep_id . '\' ).on( \'sucom_changed\', function(){';
-			$html .= 'sucomPlaceholderDep( \'' . $container_id . '\', \'' . $container_dep_id . '\' );';
-			$html .= '});';
-			$html .= '</script>' . "\n";
+				$html .= $this->get_placeholder_dep_script( 'input#text_' . $input_id, 'input#text_' . $input_dep_id );
+			}
 
 			return $html;
 		}
@@ -1785,6 +1777,20 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			if ( ! empty( $len[ 'max' ] ) ) {
 
 				$html .= $this->get_textlen_script( 'textarea_' . $input_id );
+			}
+
+			return $html;
+		}
+
+		public function get_textarea_dep( $name, $css_class = '', $css_id = '', $len = 0, $holder = '', $is_disabled = false, $input_dep_id = '' ) {
+
+			$input_id = SucomUtil::sanitize_css_id( empty( $css_id ) ? $name : $css_id );
+
+			$html = $this->get_textarea( $name, $css_class, $input_id, $len, $holder, $is_disabled );
+
+			if ( $input_dep_id ) {	// Just in case.
+
+				$html .= $this->get_placeholder_dep_script( 'textarea#textarea_' . $input_id, 'textarea#textarea_' . $input_dep_id );
 			}
 
 			return $html;
@@ -2865,6 +2871,17 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			 * Check for the enter key, which submits the current form in an input field.
 			 */
 			$html .= $js_if_same && 'input' === $type ? ' onKeyPress="if ( event.keyCode === 13 ) { ' . $js_if_same . ' }"' : '';
+
+			return $html;
+		}
+
+		private function get_placeholder_dep_script( $container_id, $container_dep_id ) {
+
+			$html = '<script>';
+			$html .= 'jQuery( \'' . $container_dep_id . '\' ).on( \'sucom_changed\', function(){';
+			$html .= 'sucomPlaceholderDep( \'' . $container_id . '\', \'' . $container_dep_id . '\' );';
+			$html .= '});';
+			$html .= '</script>' . "\n";
 
 			return $html;
 		}

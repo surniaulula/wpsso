@@ -763,7 +763,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			if ( empty( $job_opts[ 'job_title' ] ) ) {
 
-				$job_opts[ 'job_title' ] = $wpsso->page->get_title( $mod, $md_key = 'schema_title', $max_len = 'schema_title' );
+				$job_opts[ 'job_title' ] = $wpsso->page->get_title( $mod, $md_key = 'schema_job_title', $max_len = 'schema_title' );
 			}
 
 			/**

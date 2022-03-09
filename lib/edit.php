@@ -59,9 +59,10 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			/**
 			 * Default option values.
 			 */
-			$def_seo_title    = $this->p->page->get_title( $mod, $md_key = '', $max_len = 'seo_title' );
-			$def_og_title     = $this->p->page->get_title( $mod, $md_key = 'seo_title', $max_len = 'og_title' );
-			$def_tc_title     = $this->p->page->get_title( $mod, $md_key = 'og_title', $max_len = 'tc_title' );
+			$def_seo_title = $this->p->page->get_title( $mod, $md_key = '', $max_len = 'seo_title' );
+			$def_og_title  = $this->p->page->get_title( $mod, $md_key = 'seo_title', $max_len = 'og_title' );
+			$def_tc_title  = $this->p->page->get_title( $mod, $md_key = 'og_title', $max_len = 'tc_title' );
+
 			$def_seo_desc     = $this->p->page->get_description( $mod, $md_key = '', $max_len = 'seo_desc' );
 			$def_og_desc      = $this->p->page->get_description( $mod, $md_key = 'seo_desc', $max_len = 'og_desc' );
 			$def_pin_img_desc = $this->p->page->get_description( $mod, $md_key = 'og_desc', $max_len = 'pin_img_desc' );
@@ -170,30 +171,30 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Social Description', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-og_desc',
-					'content'  => $form->get_textarea( 'og_desc', $css_class = '', $css_id = '',
-						$limits[ 'og_desc' ], $def_og_desc ),
+					'content'  => $form->get_textarea_dep( 'og_desc', $css_class = '', $css_id = '',
+						$limits[ 'og_desc' ], $def_og_desc, $is_disabled = false, $input_dep_id = 'seo_desc' ),
 				) : '',
 				'pin_img_desc' => $mod[ 'is_public' ] ? array(
 					'tr_class' => $pin_img_disabled ? 'hide_in_basic' : '',
 					'th_class' => 'medium',
 					'label'    => _x( 'Pinterest Description', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-pin_img_desc',
-					'content'  => $form->get_textarea( 'pin_img_desc', $css_class = '', $css_id = '',
-						$limits[ 'pin_img_desc' ], $def_pin_img_desc, $pin_img_disabled ) . $pin_img_msg,
+					'content'  => $form->get_textarea_dep( 'pin_img_desc', $css_class = '', $css_id = '',
+						$limits[ 'pin_img_desc' ], $def_pin_img_desc, $pin_img_disabled, $input_dep_id = 'og_desc' ) . $pin_img_msg,
 				) : '',
 				'tc_title' => $mod[ 'is_public' ] ? array(
 					'th_class' => 'medium',
 					'label'    => _x( 'Twitter Card Title', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-tc_title',
 					'content'  => $form->get_input_dep( 'tc_title', $css_class = 'wide', $css_id = '',
-						$limits[ 'tc_title' ], $def_tc_title, $is_disabled = false, $input_dep_id = 'seo_title' ),
+						$limits[ 'tc_title' ], $def_tc_title, $is_disabled = false, $input_dep_id = 'og_title' ),
 				) : '',
 				'tc_desc' => $mod[ 'is_public' ] ? array(
 					'th_class' => 'medium',
 					'label'    => _x( 'Twitter Card Description', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-tc_desc',
-					'content'  => $form->get_textarea( 'tc_desc', $css_class = '', $css_id = '',
-						$limits[ 'tc_desc' ], $def_tc_desc ),
+					'content'  => $form->get_textarea_dep( 'tc_desc', $css_class = '', $css_id = '',
+						$limits[ 'tc_desc' ], $def_tc_desc, $is_disabled = false, $input_dep_id = 'og_desc' ),
 				) : '',
 			);
 
