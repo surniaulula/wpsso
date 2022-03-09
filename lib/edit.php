@@ -163,8 +163,8 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Social Title', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-og_title',
-					'content'  => $form->get_input( 'og_title', $css_class = 'wide', $css_id = '',
-						$limits[ 'og_title' ], $def_og_title ),
+					'content'  => $form->get_input_dep( 'og_title', $css_class = 'wide', $css_id = '',
+						$limits[ 'og_title' ], $def_og_title, $is_disabled = false, $input_dep_id = 'seo_title' ),
 				) : '',
 				'og_desc' => $mod[ 'is_public' ] ? array(
 					'th_class' => 'medium',
@@ -185,8 +185,8 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					'th_class' => 'medium',
 					'label'    => _x( 'Twitter Card Title', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-tc_title',
-					'content'  => $form->get_input( 'tc_title', $css_class = 'wide', $css_id = '',
-						$limits[ 'tc_title' ], $def_tc_title ),
+					'content'  => $form->get_input_dep( 'tc_title', $css_class = 'wide', $css_id = '',
+						$limits[ 'tc_title' ], $def_tc_title, $is_disabled = false, $input_dep_id = 'seo_title' ),
 				) : '',
 				'tc_desc' => $mod[ 'is_public' ] ? array(
 					'th_class' => 'medium',

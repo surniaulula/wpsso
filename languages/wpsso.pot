@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 11.5.1-dev.4\n"
+"Project-Id-Version: WPSSO Core 11.6.0-dev.5\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -528,49 +528,49 @@ msgid "User Profiles"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:33 gettext/gettext-lib-com.php:43
-#: lib/com/form.php:821 lib/com/form.php:2408
+#: lib/com/form.php:843 lib/com/form.php:2429
 msgctxt "option comment"
 msgid "days"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:34 gettext/gettext-lib-com.php:44
-#: lib/com/form.php:822 lib/com/form.php:2409
+#: lib/com/form.php:844 lib/com/form.php:2430
 msgctxt "option comment"
 msgid "hours"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:35 gettext/gettext-lib-com.php:45
-#: lib/com/form.php:823 lib/com/form.php:2410
+#: lib/com/form.php:845 lib/com/form.php:2431
 msgctxt "option comment"
 msgid "mins"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:36 gettext/gettext-lib-com.php:46
-#: lib/com/form.php:824 lib/com/form.php:2411
+#: lib/com/form.php:846 lib/com/form.php:2432
 msgctxt "option comment"
 msgid "secs"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:37 lib/com/form.php:861
+#: gettext/gettext-lib-com.php:37 lib/com/form.php:883
 msgctxt "option comment"
 msgid "crop"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:38 gettext/gettext-lib-pro.php:247
-#: lib/com/form.php:862 lib/pro/admin/edit.php:686 lib/std/admin/edit.php:725
+#: lib/com/form.php:884 lib/pro/admin/edit.php:686 lib/std/admin/edit.php:725
 msgctxt "option comment"
 msgid "from"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
 #: gettext/gettext-lib-com.php:40 gettext/gettext-lib-pro.php:419
-#: lib/com/form.php:872 lib/media.php:1483 lib/media.php:1634
+#: lib/com/form.php:894 lib/media.php:1483 lib/media.php:1634
 #: lib/media.php:3302 lib/pro/util/check-img-dims.php:104
 msgid "Media Library"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:42 lib/com/form.php:967 lib/script.php:359
+#: gettext/gettext-lib-com.php:42 lib/com/form.php:989 lib/script.php:359
 msgid "Select Image"
 msgstr ""
 

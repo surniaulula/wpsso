@@ -364,18 +364,20 @@ function sucomMarkChanged( e, el ) {
 		el = jQuery( this );
 	}
 
-	var name = el.attr( 'name' );
-	
 	el.addClass( 'changed' );
 
-	if ( name ) {
+	jQuery( el ).trigger( 'sucom_changed' );
+}
 
-		var hookname = sucomSanitizeHookname( 'sucom_changed_' + name );
+function sucomPlaceholderDep( container_id, container_dep_id ) {
 
-		console.log( 'document trigger: ' + hookname );
+	var el      = jQuery( container_id );
+	var dep_el  = jQuery( container_dep_id );
+	var dep_val = dep_el.val();
 
-		jQuery( document ).trigger( hookname, [ el ] );
-	}
+	if ( '' === dep_val ) dep_val = dep_el.attr( 'placeholder' );
+	
+	el.attr( 'placeholder', dep_val ).change();
 }
 
 /**

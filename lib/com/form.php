@@ -755,6 +755,28 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
+		public function get_input_dep( $name, $css_class = '', $css_id = '', $len = 0, $holder = '', $is_disabled = false, $input_dep_id = '' ) {
+
+			$input_id = SucomUtil::sanitize_css_id( empty( $css_id ) ? $name : $css_id );
+
+			$html = $this->get_input( $name, $css_class, $input_id, $len, $holder, $is_disabled );
+
+			$html .= $this->get_placeholder_dep( 'input#text_' . $input_id, 'input#text_' . $input_dep_id );
+
+			return $html;
+		}
+
+		public function get_placeholder_dep( $container_id, $container_dep_id ) {
+
+			$html = '<script>';
+			$html .= 'jQuery( \'' . $container_dep_id . '\' ).on( \'sucom_changed\', function(){';
+			$html .= 'sucomPlaceholderDep( \'' . $container_id . '\', \'' . $container_dep_id . '\' );';
+			$html .= '});';
+			$html .= '</script>' . "\n";
+
+			return $html;
+		}
+
 		public function get_input_color( $name = '', $css_class = '', $css_id = '', $is_disabled = false ) {
 
 			$input_class = 'colorpicker ' . $css_class . ( $this->get_options( $name . ':disabled' ) ? ' disabled' : '' );
@@ -1757,8 +1779,8 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$html .= $input_rows ? ' rows="' . $input_rows . '"' : '';
 			$html .= empty( $len[ 'max' ] ) || $is_disabled ? '' : ' maxLength="' . esc_attr( $len[ 'max' ] ) . '"';
 			$html .= empty( $len[ 'warn' ] ) || $is_disabled ? '' : ' warnLength="' . esc_attr( $len[ 'warn' ] ) . '"';
-			$html .= $this->get_placeholder_attrs( $type = 'textarea', $holder ) . '>' . esc_attr( $value ) . '</textarea>';
-			$html .= empty( $len[ 'max' ] ) || $is_disabled ? '' : ' <div id="textarea_' . $input_id . '-text-len-wrapper"></div>';
+			$html .= $this->get_placeholder_attrs( $type = 'textarea', $holder ) . '>' . esc_attr( $value ) . '</textarea>' . "\n";
+			$html .= empty( $len[ 'max' ] ) || $is_disabled ? '' : '<div id="textarea_' . $input_id . '-text-len-wrapper"></div>' . "\n";
 
 			if ( ! empty( $len[ 'max' ] ) ) {
 
@@ -2357,8 +2379,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			if ( ! empty( $input_id ) ) {	// Just in case.
 
 				$html = '<div class="no_input_clipboard">';
-				$html .= '<div class="copy_button"><a href=""' .
-					' onClick="return sucomCopyById( \'text_' . $input_id . '\', \'' . $this->admin_l10n . '\' );">';
+				$html .= '<div class="copy_button"><a href="" onClick="return sucomCopyById( \'text_' . $input_id . '\', \'' . $this->admin_l10n . '\' );">';
 				$html .= '<span class="dashicons dashicons-clipboard"></span>';
 				$html .= '</a></div><!-- .copy_button -->' . "\n";
 				$html .= '<div class="copy_text">' . $input_text . '</div><!-- .copy_text -->' . "\n";
