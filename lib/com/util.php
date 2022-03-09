@@ -1609,9 +1609,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function sanitize_hookname( $name ) {
 
-			$name = preg_replace( '/[#:\/\-\. ]+/', '_', $name );
+			$name = preg_replace( '/[#:\/\-\. \[\]]+/', '_', $name );
 
-			$name = rtrim( $name, '_' );
+			$name = rtrim( $name, '_' );	// Do not trim leading underscores to allow for '__return_false', for example.
 
 			return self::sanitize_key( $name );
 		}
@@ -1637,9 +1637,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function sanitize_key( $key, $allow_upper = false ) {
 
+			if ( ! $allow_upper ) $key = strtolower( $key );
+
 			$key = preg_replace( '/[^a-zA-Z0-9\-_:]/', '', $key );
 
-			return trim( $allow_upper ? $key : strtolower( $key ) );
+			return trim( $key );
 		}
 
 		public static function sanitize_css_class( $class ) {

@@ -12,6 +12,19 @@ function sucomInitMetabox( container_id, doing_ajax ) {
 	}
 
 	/**
+	 * Style the datepicker.
+	 */
+	jQuery( table_id + ' input.datepicker' ).datepicker( {
+		beforeShow:function( input, inst ) {
+			jQuery( '#ui-datepicker-div' ).addClass( 'sucom-settings' );
+		},
+		changeMonth:true,
+		changeYear:true,
+		showButtonPanel:false,
+		dateFormat:'yy-mm-dd'
+	} );
+
+	/**
 	 * Softly disable input fields using the 'disabled' CSS class instead of using the standard 'disabled' HTML tag attribute
 	 * (which prevents values from being submitted).
 	 */
@@ -25,15 +38,6 @@ function sucomInitMetabox( container_id, doing_ajax ) {
 	 * Add a "changed" the options class when their value might have changed. 
 	 */
 	jQuery( table_id + ' input.colorpicker' ).wpColorPicker( { change:sucomColorChanged } );
-	jQuery( table_id + ' input.datepicker' ).datepicker( {
-		beforeShow:function( input, inst ) {
-			jQuery( '#ui-datepicker-div' ).addClass( 'sucom-settings' );
-		},
-		changeMonth:true,
-		changeYear:true,
-		showButtonPanel:false,
-		dateFormat:'yy-mm-dd'
-	} );
 	jQuery( table_id + ' input[type="checkbox"]' ).blur( sucomMarkChanged ).change( sucomMarkChanged );
 	jQuery( table_id + ' input[type="text"]' ).blur( sucomMarkChanged ).change( sucomMarkChanged );
 	jQuery( table_id + ' textarea' ).blur( sucomMarkChanged ).change( sucomMarkChanged );
@@ -156,7 +160,7 @@ function sucomSelectUniquePair( main_id, other_id ) {
 
 		if ( 'none' !== other_val ) {	// Maybe set the other select value to 'none'.
 
-			other.trigger( 'load_json' ).val( 'none' ).trigger( 'change' );
+			other.trigger( 'sucom_load_json' ).val( 'none' ).trigger( 'change' );
 		}
 
 		other.addClass( 'disabled' );	// Disable the other select.
@@ -334,7 +338,7 @@ function sucomSelectChangeRedirect( name, value, redirect_url ) {
  * Softly disable input fields using the 'disabled' CSS class instead of using the standard 'disabled' HTML tag attribute (which
  * prevents values from being submitted).
  */
-function sucomBlurDisabled( event ) {
+function sucomBlurDisabled( e ) {
 
 	var is_disabled = jQuery( this ).hasClass( 'disabled' );
 
@@ -344,18 +348,34 @@ function sucomBlurDisabled( event ) {
 
 		window.focus();
 
-		event.preventDefault();
+		e.preventDefault();
 
-		event.stopPropagation();
+		e.stopPropagation();
 	}
 }
 
 /**
  * Add a "changed" the options class when their value might have changed. 
  */
-function sucomMarkChanged() {
+function sucomMarkChanged( e, el ) {
 
-	jQuery( this ).addClass( 'changed' );
+	if ( 'undefined' === typeof el ) {
+
+		el = jQuery( this );
+	}
+
+	var name = el.attr( 'name' );
+	
+	el.addClass( 'changed' );
+
+	if ( name ) {
+
+		var hookname = sucomSanitizeHookname( 'sucom_changed_' + name );
+
+		console.log( 'document trigger: ' + hookname );
+
+		jQuery( document ).trigger( hookname, [ el ] );
+	}
 }
 
 /**
@@ -363,12 +383,11 @@ function sucomMarkChanged() {
  */
 function sucomColorChanged( e, ui ) {
 
-	var input = jQuery( this );
+	var el    = jQuery( this );
+	var name  = el.attr( 'name' );
 	var value = ui.color.toString();
 
-	input.attr( 'value', value );
-
-	input.addClass( 'changed' );
+	sucomMarkChanged( e, el )
 }
 
 /**

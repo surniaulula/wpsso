@@ -805,10 +805,14 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'added ' . $method_name . ' method ' . $type, 3 );
+							$this->p->debug->log( 'added ' . $method_name . ' method ' . $type, $class_seq = 3 );
 						}
 
 					} else {
+
+						$error_pre = sprintf( __( '%s warning:', 'wpsso' ), __METHOD__ );
+
+						self::safe_error_log( $error_pre . ' ' . $method_name . ' method ' . $type . ' is not callable' );
 
 						if ( $this->p->debug->enabled ) {
 
@@ -833,14 +837,18 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( 'added ' . $function_name . ' function ' . $type . ' for ' . $hook_name, 3 );
+							$this->p->debug->log( 'added ' . $function_name . ' function ' . $type . ' for ' . $hook_name, $class_seq = 3 );
 						}
 
 					} else {
 
+						$error_pre = sprintf( __( '%s warning:', 'wpsso' ), __METHOD__ );
+
+						self::safe_error_log( $error_pre . ' ' . $function_name . ' function ' . $type . ' for ' . $hook_name . ' is not callable');
+
 						if ( $this->p->debug->enabled ) {
 
-							$this->p->debug->log( $method_name . ' function ' . $type . ' for ' . $hook_name . ' is not callable' );
+							$this->p->debug->log( $function_name . ' function ' . $type . ' for ' . $hook_name . ' is not callable' );
 						}
 					}
 

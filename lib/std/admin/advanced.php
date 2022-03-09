@@ -50,7 +50,6 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'head_tags_facebook_rows'         => 3,	// HTML Tags > Facebook tab.
 				'head_tags_open_graph_rows'       => 3,	// HTML Tags > Open Graph tab.
 				'head_tags_twitter_rows'          => 3,	// HTML Tags > Twitter tab.
-				'head_tags_schema_rows'           => 3,	// HTML Tags > Schema tab.
 				'head_tags_seo_other_rows'        => 3,	// HTML Tags > SEO and Others tab.
 			) );
 		}

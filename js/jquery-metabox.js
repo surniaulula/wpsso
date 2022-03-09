@@ -100,7 +100,7 @@ function wpssoOgSchemaType() {
 
 				og_type_option.removeAttr( 'selected' ).filter( '[value=' + schema_og_type_val + ']' ).attr( 'selected', true )
 
-				select_og_type.trigger( 'load_json' ).val( schema_og_type_val ).trigger( 'change' );
+				select_og_type.trigger( 'sucom_load_json' ).val( schema_og_type_val ).trigger( 'change' );
 			}
 
 			select_og_type.addClass( 'disabled' );
@@ -115,7 +115,7 @@ function wpssoOgSchemaType() {
 
 				if ( def_og_type_val !== og_type_val ) {
 
-					select_og_type.trigger( 'load_json' ).val( def_og_type_val ).trigger( 'change' );
+					select_og_type.trigger( 'sucom_load_json' ).val( def_og_type_val ).trigger( 'change' );
 				}
 			}
 

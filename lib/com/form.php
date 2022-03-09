@@ -2950,7 +2950,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			$select_id_esc = esc_js( $select_id );
 
 			$html .= '<script>';
-			$html .= 'jQuery( \'select#' . $select_id_esc . ':not( .json_loaded )\' ).on( \'mouseenter focus load_json\', function(){';
+			$html .= 'jQuery( \'select#' . $select_id_esc . ':not( .json_loaded )\' ).on( \'mouseenter focus sucom_load_json\', function(){';
 			$html .= 'if ( \'function\' === typeof sucomSelectLoadJson ) {';
 			$html .= 'sucomSelectLoadJson( \'select#' . $select_id_esc . '\', \'' . $event_json_var . '\' );';
 			$html .= '}';

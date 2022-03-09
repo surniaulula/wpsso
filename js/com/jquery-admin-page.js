@@ -51,9 +51,7 @@ function sucomBlockPostbox( pluginId, adminPageL10n ) {
 		/**
 		 * Sanitize the ajax action filter name.
 		 */
-		ajax_action_update_postbox = ajax_action_update_postbox.toLowerCase();
-		ajax_action_update_postbox = ajax_action_update_postbox.replace( /[:\/\-\. ]+/g, '_' );
-		ajax_action_update_postbox = ajax_action_update_postbox.replace( /[^a-z0-9_\-]/g, '' );
+		ajax_action_update_postbox = sucomSanitizeHookname( ajax_action_update_postbox );
 
 		var ajaxData = {
 			action: ajax_action_update_postbox,
@@ -473,7 +471,7 @@ function sucomCopyById( cssId, adminPageL10n ) {
 		 */
 		var elemVal = elem.value;
 
-		if ( 'undefined' === elemVal ) {
+		if ( 'undefined' === typeof elemVal ) {
 
 			elemVal = elem.textContent;
 		}
@@ -513,9 +511,7 @@ function sucomCopyById( cssId, adminPageL10n ) {
 function sucomStripHtml( html ) {
 
 	html = html.replace( /<(p|pre|ul|li|br\/?)( [^<>]*>|>)/gi, ' ' );
-
 	html = html.replace( /<[^<>]*>/gi, '' );
-
 	html = html.replace( /\s\s+/gi, ' ' );
 
 	return html;
@@ -535,6 +531,31 @@ function sucomEscAttr ( string ) {
 
 		return entity_map[ s ];
 	} );
+}
+
+/**
+ * See SucomUtil::sanitize_hookname().
+ */
+function sucomSanitizeHookname( string ) {
+
+	string = string.replace( /[#:\/\-\. \[\]]+/g, '_' );
+	string = string.replace( /_+$/, '' );
+
+	return sucomSanitizeKey( string );
+}
+
+/**
+ * See SucomUtil::sanitize_key().
+ */
+function sucomSanitizeKey( string, allow_upper ) {
+
+	if ( 'undefined' === typeof allow_upper ) allow_upper = false;
+
+	if ( ! allow_upper ) string = string.toLowerCase();
+
+	string = string.replace( /[^a-z0-9\-_:]/g, '' );
+
+	return string;
 }
 
 /**
