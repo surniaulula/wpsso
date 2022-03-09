@@ -251,12 +251,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.6.0-dev.5 (2022/03/09)**
+**Version 11.6.0-dev.6 (2022/03/09)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added dynamic placeholder dependencies in the Document SSO metabox.
+	* Added dynamic placeholders to Document SSO metabox title and description options.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -264,8 +264,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new `WpssoConfig::get_md_keys_fallback()` method.
 	* Added new 'wpsso_md_keys_fallback_{option_key}' filters.
 	* Added a new `SucomForm->get_input_dep()` method.
-	* Added a new `SucomForm->get_placeholder_dep()` method.
+	* Added a new `SucomForm->get_textarea_dep()` method.
 	* Added a new `sucomPlaceholderDep()` function in js/com/jquery-metabox.js.
+	* Added a new `sucomSanitizeHookname()` function in js/com/jquery-admin-page.js.
+	* Added a new `sucomSanitizeKey()` function in js/com/jquery-admin-page.js.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -676,7 +678,7 @@ WPSSO Core has always been a fast plugin and version 10.0.0 delivers even better
 
 == Upgrade Notice ==
 
-= 11.6.0-dev.5 =
+= 11.6.0-dev.6 =
 
 (2022/03/09) Refactored the `WpssoPage->sanitize_md_key()` method.
 
