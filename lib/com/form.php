@@ -755,15 +755,15 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		public function get_input_dep( $name, $css_class = '', $css_id = '', $len = 0, $holder = '', $is_disabled = false, $input_dep_id = '' ) {
+		public function get_input_dep( $name, $css_class = '', $css_id = '', $len = 0, $holder = '', $is_disabled = false, $dep_id = '' ) {
 
 			$input_id = SucomUtil::sanitize_css_id( empty( $css_id ) ? $name : $css_id );
 
 			$html = $this->get_input( $name, $css_class, $input_id, $len, $holder, $is_disabled );
 
-			if ( $input_dep_id ) {	// Just in case.
+			if ( $dep_id ) {	// Just in case.
 
-				$html .= $this->get_placeholder_dep_script( 'input#text_' . $input_id, 'input#text_' . $input_dep_id );
+				$html .= $this->get_placeholder_dep_script( 'input#text_' . $input_id, 'input#text_' . $dep_id );
 			}
 
 			return $html;
@@ -1782,15 +1782,15 @@ if ( ! class_exists( 'SucomForm' ) ) {
 			return $html;
 		}
 
-		public function get_textarea_dep( $name, $css_class = '', $css_id = '', $len = 0, $holder = '', $is_disabled = false, $input_dep_id = '' ) {
+		public function get_textarea_dep( $name, $css_class = '', $css_id = '', $len = 0, $holder = '', $is_disabled = false, $dep_id = '' ) {
 
 			$input_id = SucomUtil::sanitize_css_id( empty( $css_id ) ? $name : $css_id );
 
 			$html = $this->get_textarea( $name, $css_class, $input_id, $len, $holder, $is_disabled );
 
-			if ( $input_dep_id ) {	// Just in case.
+			if ( $dep_id ) {	// Just in case.
 
-				$html .= $this->get_placeholder_dep_script( 'textarea#textarea_' . $input_id, 'textarea#textarea_' . $input_dep_id );
+				$html .= $this->get_placeholder_dep_script( 'textarea#textarea_' . $input_id, 'textarea#textarea_' . $dep_id );
 			}
 
 			return $html;
