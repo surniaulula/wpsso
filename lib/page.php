@@ -2071,6 +2071,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		}
 
 		/**
+		 * Private method to sanitize arguments or modify values for get_title(), get_description(), etc.
+		 *
 		 * The $mod array argument is preferred but not required.
 		 *
 		 * $mod = true | false | post_id | $mod array
@@ -2091,6 +2093,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		}
 
 		/**
+		 * Private method to sanitize arguments or modify values for get_title(), get_description(), etc.
+		 *
 		 * Returns an array of metadata keys (can be empty).
 		 *
 		 * $md_key = true | false | string | array
@@ -2122,7 +2126,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		}
 
 		/**
-		 * Private methods to sanitize arguments or modify values for get_title(), get_description(), etc.
+		 * Private method to sanitize arguments or modify values for get_title(), get_description(), etc.
 		 *
 		 * Return 0 by default.
 		 */
@@ -2149,16 +2153,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return 0;
 		}
 
-		private function maybe_get_title_sep( $title_sep = null ) {
-
-			if ( null === $title_sep ) {
-
-				$title_sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, $this->charset );
-			}
-
-			return $title_sep;
-		}
-
+		/**
+		 * Private method to sanitize arguments or modify values for get_title(), get_description(), etc.
+		 */
 		private function maybe_get_ellipsis( $ellipsis = null ) {
 
 			if ( null === $ellipsis ) {
@@ -2169,6 +2166,22 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return $ellipsis;
 		}
 
+		/**
+		 * Private method to sanitize arguments or modify values for get_title(), get_description(), etc.
+		 */
+		private function maybe_get_title_sep( $title_sep = null ) {
+
+			if ( null === $title_sep ) {
+
+				$title_sep = html_entity_decode( $this->p->options[ 'og_title_sep' ], ENT_QUOTES, $this->charset );
+			}
+
+			return $title_sep;
+		}
+
+		/**
+		 * Private method to sanitize arguments or modify values for get_title(), get_description(), etc.
+		 */
 		private function maybe_get_custom( $mod, $md_key ) {
 
 			if ( ! empty( $md_key ) && 'none' !== $md_key ) {	// Make sure we have something to work with.
