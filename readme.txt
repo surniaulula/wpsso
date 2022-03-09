@@ -680,7 +680,7 @@ WPSSO Core has always been a fast plugin and version 10.0.0 delivers even better
 
 = 11.6.0-dev.6 =
 
-(2022/03/09) Refactored the `WpssoPage->sanitize_md_key()` method.
+(2022/03/09) Added dynamic placeholders to Document SSO metabox title and description options.
 
 = 11.5.0 =
 
