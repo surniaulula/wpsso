@@ -2071,34 +2071,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 		}
 
 		/**
-		 * Private methods to sanitize arguments or modify values for get_title(), get_description(), etc.
-		 *
-		 * Return 0 by default.
-		 */
-		private function sanitize_max_len( $max_len ) {
-
-			if ( is_numeric( $max_len ) ) {
-
-				return (int) $max_len;
-
-			} elseif ( is_array( $max_len ) && isset( $max_len[ 'max' ] ) ) {
-
-				return (int) $max_len[ 'max' ];
-
-			} elseif ( is_string( $max_len ) ) {
-			
-				$limits = WpssoConfig::get_input_limits( $max_len );	// Uses a local static cache.
-				
-				if ( ! empty( $limits[ 'max' ] ) ) {
-
-					return (int) $limits[ 'max' ];
-				}
-			}
-
-			return 0;
-		}
-
-		/**
 		 * The $mod array argument is preferred but not required.
 		 *
 		 * $mod = true | false | post_id | $mod array
@@ -2147,6 +2119,34 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$md_key = array_unique( $md_key );	// Just in case.
 
 			return $md_key;
+		}
+
+		/**
+		 * Private methods to sanitize arguments or modify values for get_title(), get_description(), etc.
+		 *
+		 * Return 0 by default.
+		 */
+		private function sanitize_max_len( $max_len ) {
+
+			if ( is_numeric( $max_len ) ) {
+
+				return (int) $max_len;
+
+			} elseif ( is_array( $max_len ) && isset( $max_len[ 'max' ] ) ) {
+
+				return (int) $max_len[ 'max' ];
+
+			} elseif ( is_string( $max_len ) ) {
+			
+				$limits = WpssoConfig::get_input_limits( $max_len );	// Uses a local static cache.
+				
+				if ( ! empty( $limits[ 'max' ] ) ) {
+
+					return (int) $limits[ 'max' ];
+				}
+			}
+
+			return 0;
 		}
 
 		private function maybe_get_title_sep( $title_sep = null ) {

@@ -4945,9 +4945,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		}
 
 		/**
-		 * Since WPSSO Core v11.5.1.
+		 * Since WPSSO Core v11.6.0.
 		 *
-		 * This method must return an array.
+		 * Returns an array of metadata keys (can be empty).
+		 *
+		 * $md_key = true | false | string | array
 		 */
 		public static function get_md_keys_fallback( $md_key = false ) {
 		
