@@ -251,7 +251,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.6.0-dev.6 (2022/03/09)**
+**Version 11.6.0-b.1 (2022/03/10)**
 
 * **New Features**
 	* None.
@@ -678,9 +678,9 @@ WPSSO Core has always been a fast plugin and version 10.0.0 delivers even better
 
 == Upgrade Notice ==
 
-= 11.6.0-dev.6 =
+= 11.6.0-b.1 =
 
-(2022/03/09) Added dynamic placeholders to Document SSO metabox title and description options.
+(2022/03/10) Added dynamic placeholders to Document SSO metabox title and description options.
 
 = 11.5.0 =
 
