@@ -251,6 +251,22 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 11.7.0-dev.1 (2022/03/11)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added a new SSO &gt; Advanced Settings &gt; Default Text options:
+		* Reply Comment Title
+		* Review Comment Title
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new WPSSO_META_RATING_NAME constant.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 11.6.0 (2022/03/10)**
 
 * **New Features**
@@ -424,6 +440,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.2.
 
 == Upgrade Notice ==
+
+= 11.7.0-dev.1 =
+
+(2022/03/11) Added a new SSO &gt; Advanced Settings &gt; Default Text options.
 
 = 11.6.0 =
 
