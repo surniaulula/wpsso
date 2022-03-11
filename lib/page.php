@@ -1224,7 +1224,18 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				if ( $mod[ 'id' ] ) {	// Just in case.
 
-					$title_text = $this->p->opt->get_text( 'plugin_comment_title' );
+					if ( is_numeric( $mod[ 'comment_rating' ] ) ) {
+
+						$title_text = $this->p->opt->get_text( 'plugin_comment_review_title' );
+
+					} elseif ( $mod[ 'comment_parent' ] ) {
+					
+						$title_text = $this->p->opt->get_text( 'plugin_comment_reply_title' );
+
+					} else {
+
+						$title_text = $this->p->opt->get_text( 'plugin_comment_title' );
+					}
 				}
 
 			} elseif ( $mod[ 'is_post' ] ) {

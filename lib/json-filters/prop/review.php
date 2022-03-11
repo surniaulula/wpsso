@@ -147,6 +147,7 @@ if ( ! class_exists( 'WpssoJsonFiltersPropReview' ) ) {
 							if ( ! empty( $mt_review[ $mt_pre . ':author:name' ] ) ) {
 
 								if ( false !== ( $author_data = WpssoSchema::get_data_itemprop_from_assoc( $mt_review, array(
+									'url'  => $mt_pre . ':author:url',
 									'name' => $mt_pre . ':author:name',
 								) ) ) ) {
 

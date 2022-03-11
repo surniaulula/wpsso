@@ -82,7 +82,15 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 					$mod[ 'comment_author' ]      = (int) $mod[ 'wp_obj' ]->user_id;		// Comment author user ID.
 					$mod[ 'comment_author_name' ] = $mod[ 'wp_obj' ]->comment_author;		// Comment author name.
 					$mod[ 'comment_author_url' ]  = $mod[ 'wp_obj' ]->comment_author_url;
+					$mod[ 'comment_parent' ]      = $mod[ 'wp_obj' ]->comment_parent;
 					$mod[ 'comment_time' ]        = mysql2date( 'c', $mod[ 'wp_obj' ]->comment_date_gmt );	// ISO 8601 date.
+
+					$comment_rating = get_comment_meta( $mod[ 'id' ], WPSSO_META_RATING_NAME, $single = true );
+
+					if ( is_numeric( $comment_rating ) ) {
+					
+						$mod[ 'comment_rating' ] = $comment_rating;
+					}
 
 				} else $mod[ 'wp_obj' ] = false;
 			}

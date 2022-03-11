@@ -148,24 +148,26 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			'is_404'                 => false,
 			'is_archive'             => false,
 			'is_attachment'          => false,	// Post type is 'attachment'.
-			'is_comment'             => false,	// Is comment module.
+			'is_comment'             => false,
 			'is_date'                => false,
 			'is_day'                 => false,
 			'is_home'                => false,	// Home page (static or blog archive).
 			'is_home_page'           => false,	// Static front page (singular post).
 			'is_home_posts'          => false,	// Static posts page or blog archive page.
 			'is_month'               => false,
-			'is_post'                => false,	// Is post module.
+			'is_post'                => false,
 			'is_post_type_archive'   => false,	// Post is an archive page.
 			'is_public'              => true,
 			'is_search'              => false,
-			'is_term'                => false,	// Is term module.
-			'is_user'                => false,	// Is user module.
+			'is_term'                => false,
+			'is_user'                => false,
 			'is_year'                => false,
-			'comment_paged'          => false,	// False or numeric (aka $wp_query->query_vars[ 'cpage' ]).
 			'comment_author'         => false,	// Comment author user ID.
 			'comment_author_name'    => false,	// Comment author name.
 			'comment_author_url'     => false,	// Comment author URL.
+			'comment_paged'          => false,	// False or numeric (aka $wp_query->query_vars[ 'cpage' ]).
+			'comment_parent'         => false,
+			'comment_rating'         => false,
 			'comment_time'           => false,
 			'use_post'               => false,
 			'post_slug'              => false,	// Post name (aka slug).
@@ -2434,16 +2436,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		}
 
 		/**
-		 * Deprecated on 2021/01/19.
-		 */
-		public function get_og_type_reviews( $obj_id, $mt_pre = 'product', $rating_meta = 'rating', $worst_rating = 1, $best_rating = 5 ) {
-
-			_deprecated_function( __METHOD__ . '()', '2021/01/19', $replacement = __CLASS__ . '::get_mt_reviews()' );	// Deprecation message.
-
-			return $this->get_mt_reviews( $obj_id, $mt_pre, $rating_meta, $worst_rating, $best_rating );
-		}
-
-		/**
 		 * Methods that return an associative array of Open Graph meta tags.
 		 */
 		public function get_mt_reviews( $obj_id, $mt_pre = 'product', $rating_meta = 'rating', $worst_rating = 1, $best_rating = 5 ) {
@@ -2471,15 +2463,16 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			$mt_ret[ $mt_pre . ':review:id' ]           = $comment_mod[ 'id' ];
 			$mt_ret[ $mt_pre . ':review:url' ]          = $canonical_url;
-			$mt_ret[ $mt_pre . ':review:title' ]        = '';
+			$mt_ret[ $mt_pre . ':review:title' ]        = $this->p->page->get_title( $comment_mod, $md_key = 'og_title', $max_len = 'og_title' );
 			$mt_ret[ $mt_pre . ':review:content' ]      = get_comment_excerpt( $comment_mod[ 'id' ] );
 			$mt_ret[ $mt_pre . ':review:created_time' ] = mysql2date( 'c', $comment_obj->comment_date_gmt );
 
 			/**
 			 * Review author.
 			 */
-			$mt_ret[ $mt_pre . ':review:author:id' ]    = $comment_obj->user_id;		// Author ID if registered (0 otherwise).
-			$mt_ret[ $mt_pre . ':review:author:name' ]  = $comment_obj->comment_author;	// Author display name.
+			$mt_ret[ $mt_pre . ':review:author:id' ]   = $comment_obj->user_id;		// Author ID if registered (0 otherwise).
+			$mt_ret[ $mt_pre . ':review:author:name' ] = $comment_obj->comment_author;	// Author display name.
+			$mt_ret[ $mt_pre . ':review:author:url' ]  = $comment_obj->comment_author_url;
 
 			/**
 			 * Review rating.
@@ -2768,6 +2761,16 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			}
 
 			return $ret_val;
+		}
+
+		/**
+		 * Deprecated on 2021/01/19.
+		 */
+		public function get_og_type_reviews( $obj_id, $mt_pre = 'product', $rating_meta = 'rating', $worst_rating = 1, $best_rating = 5 ) {
+
+			_deprecated_function( __METHOD__ . '()', '2021/01/19', $replacement = __CLASS__ . '::get_mt_reviews()' );	// Deprecation message.
+
+			return $this->get_mt_reviews( $obj_id, $mt_pre, $rating_meta, $worst_rating, $best_rating );
 		}
 	}
 }

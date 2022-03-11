@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '11.6.0',	// Plugin version.
-					'opt_version' => '893',		// Increment when changing default option values.
+					'version'     => '11.7.0-dev.1',	// Plugin version.
+					'opt_version' => '895',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -4493,6 +4493,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_DISMISS_NAME' ]          = 'wpsso_dismissed';
 			$var_const[ 'WPSSO_META_NAME' ]             = '_wpsso_meta';
 			$var_const[ 'WPSSO_META_ATTACHED_NAME' ]    = '_wpsso_meta_attached';
+			$var_const[ 'WPSSO_META_RATING_NAME' ]      = 'rating';
 			$var_const[ 'WPSSO_PREF_NAME' ]             = '_wpsso_pref';
 			$var_const[ 'WPSSO_OPTIONS_NAME' ]          = 'wpsso_options';
 			$var_const[ 'WPSSO_REG_TS_NAME' ]           = 'wpsso_timestamps';

@@ -105,6 +105,8 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 				$this->set_default_text( $local_cache, 'plugin_img_alt_prefix' );	// Content Image Alt Prefix.
 				$this->set_default_text( $local_cache, 'plugin_p_cap_prefix' );		// WP Caption Text Prefix.
 				$this->set_default_text( $local_cache, 'plugin_comment_title' );	// Comment Title.
+				$this->set_default_text( $local_cache, 'plugin_comment_reply_title' );	// Reply Comment Title.
+				$this->set_default_text( $local_cache, 'plugin_comment_review_title' );	// Review Comment Title.
 				$this->set_default_text( $local_cache, 'plugin_product_var_title' );	// Product Variation Title.
 				$this->set_default_text( $local_cache, 'plugin_404_page_title' );	// 404 Page Title.
 				$this->set_default_text( $local_cache, 'plugin_404_page_desc' );	// 404 Page Description.
@@ -1766,6 +1768,14 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 					case 'plugin_comment_title':		// Comment Title.
 
 						return _x( 'Comment by %%comment_author%% on %%comment_date%%', 'option value', 'wpsso' );
+
+					case 'plugin_comment_reply_title':	// Reply Comment Title.
+
+						return _x( 'Reply by %%comment_author%% on %%comment_date%%', 'option value', 'wpsso' );
+
+					case 'plugin_comment_review_title':	// Review Comment Title.
+
+						return _x( 'Review by %%comment_author%% on %%comment_date%%', 'option value', 'wpsso' );
 
 					case 'plugin_product_var_title':	// Product Variation Title.
 

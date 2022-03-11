@@ -312,6 +312,18 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					break;
 
+				case 'tooltip-plugin_comment_reply_title':	// Reply Comment Title.
+
+					$text = __( 'The comment title used for Schema markup when the comment has a parent.' );
+
+					break;
+
+				case 'tooltip-plugin_comment_review_title':	// Review Comment Title.
+
+					$text = __( 'The comment title used for Schema markup when the comment has a rating.' );
+
+					break;
+
 				case 'tooltip-plugin_product_var_title':	// Product Variation Title.
 
 					$text = __( 'The product variation title used for meta tags and Schema markup.' );

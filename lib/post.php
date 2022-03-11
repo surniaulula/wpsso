@@ -1901,11 +1901,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				foreach( $comments as $num => $comment_obj ) {
 
-					$og_review = $this->get_mt_comment_review( $comment_obj, $mt_pre, $rating_meta, $worst_rating, $best_rating );
+					$comment_review = $this->get_mt_comment_review( $comment_obj, $mt_pre, $rating_meta, $worst_rating, $best_rating );
 
-					if ( ! empty( $og_review ) ) {	// Just in case.
+					if ( ! empty( $comment_review ) ) {	// Just in case.
 
-						$reviews[] = $og_review;
+						$reviews[] = $comment_review;
 					}
 				}
 			}
