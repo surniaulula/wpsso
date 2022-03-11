@@ -64,7 +64,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 			 */
 			$def_schema_title     = $this->p->page->get_title( $mod, $md_key = 'seo_title', $max_len = 'schema_title' );
 			$def_schema_title_alt = $this->p->page->get_title( $mod, $md_key = 'schema_title', $max_len = 'schema_title_alt' );
-			$def_schema_headline  = $this->p->page->get_title( $mod, $md_key = 'schema_title_alt', $max_len = 'schema_headline' );
+			$def_schema_headline  = $this->p->page->get_title( $mod, $md_key = 'schema_title', $max_len = 'schema_headline' );
 			$def_schema_desc      = $this->p->page->get_description( $mod, $md_key = 'seo_desc', $max_len = 'schema_desc' );
 			$def_schema_text      = $this->p->page->get_text( $mod, $md_key = '', $max_len = 'schema_text' );
 			$def_schema_keywords  = $this->p->page->get_keywords( $mod, $md_key = '' );

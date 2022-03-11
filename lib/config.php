@@ -2075,15 +2075,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * SEO and Schema metadata keys.
 					 */
-					'seo_title'             => array( 'seo_title' ),
-					'seo_desc'              => array( 'seo_desc' ),
-					'schema_title'          => array( 'schema_title', 'seo_title' ),
-					'schema_title_alt'      => array( 'schema_title_alt', 'schema_title', 'seo_title' ),
-					'schema_title_bc'       => array( 'schema_title_bc', 'schema_title_alt', 'schema_title', 'seo_title' ),
-					'schema_title_headline' => array( 'schema_title_headline', 'schema_title_alt', 'schema_title', 'seo_title' ),
-					'schema_job_title'      => array( 'schema_job_title', 'schema_title', 'seo_title' ),
-					'schema_desc'           => array( 'schema_desc', 'seo_desc' ),
-					'schema_text'           => array( 'schema_text' ),
+					'seo_title'        => array( 'seo_title' ),
+					'seo_desc'         => array( 'seo_desc' ),
+					'schema_title'     => array( 'schema_title', 'seo_title' ),
+					'schema_title_alt' => array( 'schema_title_alt', 'schema_title', 'seo_title' ),
+					'schema_title_bc'  => array( 'schema_title_bc', 'schema_title_alt', 'schema_title', 'seo_title' ),
+					'schema_headline'  => array( 'schema_headline', 'schema_title', 'seo_title' ),
+					'schema_job_title' => array( 'schema_job_title', 'schema_title', 'seo_title' ),
+					'schema_desc'      => array( 'schema_desc', 'seo_desc' ),
+					'schema_text'      => array( 'schema_text' ),
 
 					/**
 					 * Open Graph and Social metadata keys.
@@ -3059,6 +3059,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'review'               => 'article',
 					'software.application' => 'product',	// Allows for product offer options.
 					'webpage.profile'      => 'profile',
+					'website'              => 'website',
 				),
 
 				'og_type_ns' => array(		// See https://ogp.me/#types.
