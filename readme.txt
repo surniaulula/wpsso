@@ -260,7 +260,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Reply Comment Title
 		* Review Comment Title
 * **Bugfixes**
-	* None.
+	* Fixed Schema Headline metadata dependency.
 * **Developer Notes**
 	* Added a new WPSSO_META_RATING_NAME constant.
 * **Requires At Least**
@@ -443,7 +443,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 11.7.0-dev.1 =
 
-(2022/03/11) Added a new SSO &gt; Advanced Settings &gt; Default Text options.
+(2022/03/11) Added a new SSO &gt; Advanced Settings &gt; Default Text options. Fixed Schema Headline metadata dependency.
 
 = 11.6.0 =
 
