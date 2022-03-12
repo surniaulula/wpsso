@@ -260,7 +260,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new SSO &gt; Advanced Settings &gt; Default Text options:
 		* Reply Comment Title
 		* Review Comment Title
-	* Improved duplicate checks across all three Schema image sizes (1:1, 4:3, and 16:9).
+	* Improved duplicate image checks across all Schema image sizes (1:1, 4:3, and 16:9).
 * **Bugfixes**
 	* Fixed Schema Headline metadata dependency.
 * **Developer Notes**
