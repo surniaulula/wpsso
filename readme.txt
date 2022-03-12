@@ -251,18 +251,25 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.7.0-dev.1 (2022/03/11)**
+**Version 11.7.0-dev.2 (2022/03/11)**
 
 * **New Features**
 	* None.
 * **Improvements**
+	* Added support for image and video properties in Schema comments markup.
 	* Added a new SSO &gt; Advanced Settings &gt; Default Text options:
 		* Reply Comment Title
 		* Review Comment Title
+	* Improved duplicate checks across all three Schema image sizes (1:1, 4:3, and 16:9).
 * **Bugfixes**
 	* Fixed Schema Headline metadata dependency.
 * **Developer Notes**
 	* Added a new WPSSO_META_RATING_NAME constant.
+	* Added new methods in the `WpssoComment` class:
+		* `get_options()`
+		* `save_options()`
+		* `delete_options()`
+		* `user_can_save()`
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -441,9 +448,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 11.7.0-dev.1 =
+= 11.7.0-dev.2 =
 
-(2022/03/11) Added a new SSO &gt; Advanced Settings &gt; Default Text options. Fixed Schema Headline metadata dependency.
+(2022/03/11) Added support for image and video properties in Schema comments markup. Added a new SSO &gt; Advanced Settings &gt; Default Text options. Fixed Schema Headline metadata dependency.
 
 = 11.6.0 =
 
