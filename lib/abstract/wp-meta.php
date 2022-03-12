@@ -2117,11 +2117,16 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			if ( $mod[ 'is_post' ] ) {
 
-				$parent_ids = get_ancestors( $mod[ 'id' ], $mod[ 'post_type' ], 'post_type' );
+				/**
+				 * $object_type   = The type of object for which we'll be retrieving ancestors. Accepts a post type or a taxonomy name. 
+				 *
+				 * $resource_type = Type of resource $object_type is. Accepts 'post_type' or 'taxonomy'.
+				 */
+				$parent_ids = get_ancestors( $mod[ 'id' ], $object_type = $mod[ 'post_type' ], $resource_type = 'post_type' );
 
 			} elseif ( $mod[ 'is_term' ] ) {
 
-				$parent_ids = get_ancestors( $mod[ 'id' ], $mod[ 'tax_slug' ], 'taxonomy' );
+				$parent_ids = get_ancestors( $mod[ 'id' ], $object_type = $mod[ 'tax_slug' ], $resource_type = 'taxonomy' );
 
 			} else {
 
@@ -2435,9 +2440,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return $mt_videos;
 		}
 
-		/**
-		 * Methods that return an associative array of Open Graph meta tags.
-		 */
 		public function get_mt_reviews( $obj_id, $mt_pre = 'product', $rating_meta = 'rating', $worst_rating = 1, $best_rating = 5 ) {
 
 			return self::must_be_extended( $ret_val = array() );	// Return an empty array.
@@ -2491,70 +2493,10 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			/**
 			 * Add comment / review images.
 			 */
-			$mt_ret[ $mt_pre . ':review:image' ] = array();
+			$max_nums = $this->p->util->get_max_nums( $comment_mod );
 
-			$image_ids = get_comment_meta( $comment_mod[ 'id' ], WPSSO_REVIEW_IMAGE_IDS_NAME, $single = true );
-
-			$image_ids = (array) apply_filters( 'wpsso_mt_comment_review_image_ids', is_array( $image_ids ) ? $image_ids : array(), $comment_obj );
-
-			if ( empty( $image_ids ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'no comment review image IDs found' );
-				}
-
-			} else {
-
-				/**
-				 * Set the reference values for admin notices.
-				 */
-				if ( is_admin() ) {
-
-					$this->p->util->maybe_set_ref( $canonical_url, $comment_mod, __( 'adding schema images', 'wpsso' ) );
-				}
-
-				$size_names = $this->p->util->get_image_size_names( 'full' );	// Always returns an array.
-
-				/**
-				 * Clear previously seen image URLs.
-				 */
-				$this->p->util->clear_uniq_urls( $size_names );
-
-				foreach ( $image_ids as $pid ) {
-
-					if ( $pid > 0 ) {	// Quick sanity check.
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'adding image pid: ' . $pid );
-						}
-
-						$mt_pid_images = $this->p->media->get_mt_pid_images( $pid, $size_names, $check_dupes = true, $mt_pre . ':review' );
-
-						if ( ! empty( $mt_pid_images ) ) {
-
-							$this->p->util->merge_max( $mt_ret[ $mt_pre . ':review:image' ], $mt_pid_images );
-						}
-					}
-				}
-
-				/**
-				 * No need to clear of no images were found.
-				 */
-				if ( ! empty( $mt_ret[ $mt_pre . ':review:image' ] ) ) {
-
-					$this->p->util->clear_uniq_urls( $size_names );
-				}
-
-				/**
-				 * Restore previous reference values for admin notices.
-				 */
-				if ( is_admin() ) {
-
-					$this->p->util->maybe_unset_ref( $canonical_url );
-				}
-			}
+			$mt_ret[ $mt_pre . ':review:image' ] = $this->p->media->get_all_images( $max_nums[ 'og_img_max' ], $size_names = 'schema', $comment_mod,
+				$check_dupes = true, $md_pre = 'og' );
 
 			return $mt_ret;
 		}
@@ -2674,7 +2616,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 * Always call this method as static::get_meta(), and not self::get_meta(), to execute the method via the child
 		 * class instead of the parent class. This method can also be called via $mod[ 'obj' ]::get_meta().
 		 */
-		public static function get_meta( $obj_id, $meta_key, $single = false ) {
+		public static function get_meta( $obj_id, $meta_key = '', $single = false ) {
 
 			$ret_val = $single ? '' : array();
 

@@ -177,6 +177,21 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 						$type_id = $this->get_og_type_id_for( 'home_posts' );
 					}
 
+				} elseif ( $mod[ 'is_comment' ] ) {
+
+					if ( is_numeric( $mod[ 'comment_rating' ] ) ) {
+
+						$type_id = $this->get_og_type_id_for( 'comment_review' );
+
+					} elseif ( $mod[ 'comment_parent' ] ) {
+
+						$type_id = $this->get_og_type_id_for( 'comment_reply' );
+
+					} else {
+
+						$type_id = $this->get_og_type_id_for( 'comment' );
+					}
+
 				} elseif ( $mod[ 'is_post' ] ) {
 
 					if ( $mod[ 'post_type' ] ) {	// Just in case.
@@ -458,7 +473,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 */
 			if ( ! isset( $mt_og[ 'og:updated_time' ] ) ) {
 
-				if ( $mod[ 'post_modified_time' ] ) {	// ISO 8601 date or false.
+				if ( $mod[ 'is_post' ] && $mod[ 'post_modified_time' ] ) {	// ISO 8601 date or false.
 
 					$mt_og[ 'og:updated_time' ] = $mod[ 'post_modified_time' ];
 				}
@@ -593,91 +608,95 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 * by other non-article filters, and if the og:type is not an article, the meta tags will be sanitized (ie.
 			 * non-valid meta tags removed) at the end of WpssoHead::get_head_array().
 			 */
-			if ( $mod[ 'is_post' ] && $mod[ 'id' ] ) {
+			if ( ! isset( $mt_og[ 'article:author' ] ) ) {
 
-				if ( ! isset( $mt_og[ 'article:author' ] ) ) {
+				if ( $this->p->debug->enabled ) {
 
-					if ( $this->p->debug->enabled ) {
+					$this->p->debug->log( 'getting names / URLs for article:author meta tags' );
+				}
 
-						$this->p->debug->log( 'getting names / URLs for article:author meta tags' );
-					}
+				$mt_og[ 'article:author' ] = array();
 
+				if ( $mod[ 'is_post' ] ) {
+				
 					if ( $mod[ 'post_author' ] ) {
 
-						/**
-						 * Non-standard / internal meta tag used for display purposes.
-						 */
 						$mt_og[ 'article:author:name' ] = $this->p->user->get_author_meta( $mod[ 'post_author' ], 'display_name' );
-
-						/**
-						 * An array of author URLs.
-						 */
-						$mt_og[ 'article:author' ] = $this->p->user->get_authors_websites( $mod[ 'post_author' ], $meta_key = 'facebook' );
-
-					} else {
-
-						$mt_og[ 'article:author' ] = array();
+						$mt_og[ 'article:author' ]      = $this->p->user->get_authors_websites( $mod[ 'post_author' ], $meta_key = 'facebook' );
 					}
 
-					/**
-					 * Add co-author URLs if available.
-					 */
-					if ( ! empty( $mod[ 'post_coauthors' ] ) ) {
+					if ( $mod[ 'post_coauthors' ] ) {
 
 						$og_profile_urls = $this->p->user->get_authors_websites( $mod[ 'post_coauthors' ], $meta_key = 'facebook' );
 
 						$mt_og[ 'article:author' ] = array_merge( $mt_og[ 'article:author' ], $og_profile_urls );
 					}
-				}
 
-				if ( ! isset( $mt_og[ 'article:publisher' ] ) ) {
+				} elseif ( $mod[ 'is_comment' ] ) {
+				
+					if ( $mod[ 'comment_author' ] ) {
 
-					$mt_og[ 'article:publisher' ] = SucomUtil::get_key_value( 'fb_publisher_url', $this->p->options, $mod );
-				}
+						$mt_og[ 'article:author:name' ] = $this->p->user->get_author_meta( $mod[ 'comment_author' ], 'display_name' );
+						$mt_og[ 'article:author' ]      = $this->p->user->get_authors_websites( $mod[ 'comment_author' ], $meta_key = 'facebook' );
 
-				if ( ! isset( $mt_og[ 'article:tag' ] ) ) {
+					} elseif ( $mod[ 'comment_author_name' ] ) {
 
-					$mt_og[ 'article:tag' ] = $this->p->page->get_tag_names( $mod );
-				}
-
-				if ( ! isset( $mt_og[ 'article:published_time' ] ) ) {
-
-					if ( $mod[ 'post_time' ] ) {	// ISO 8601 date or false.
-
-						switch ( $mod[ 'post_status' ] ) {
-
-							case 'auto-draft':
-							case 'draft':
-							case 'future':
-							case 'inherit':	// Post revision.
-							case 'pending':
-							case 'trash':
-
-								if ( $this->p->debug->enabled ) {
-
-									$this->p->debug->log( 'skipping article published time for post status ' .  $mod[ 'post_status' ] );
-								}
-
-								break;
-
-							case 'expired':	// Previously published.
-							case 'private':
-							case 'publish':
-							default:	// Any other post status.
-
-								$mt_og[ 'article:published_time' ] = $mod[ 'post_time' ];
-
-								break;
-						}
+						$mt_og[ 'article:author:name' ] = $mod[ 'comment_author_name' ];
 					}
 				}
+			}
 
-				if ( ! isset( $mt_og[ 'article:modified_time' ] ) ) {
+			if ( ! isset( $mt_og[ 'article:publisher' ] ) ) {
 
-					if ( $mod[ 'post_modified_time' ] ) {	// ISO 8601 date or false.
+				$mt_og[ 'article:publisher' ] = SucomUtil::get_key_value( 'fb_publisher_url', $this->p->options, $mod );
+			}
 
-						$mt_og[ 'article:modified_time' ] = $mod[ 'post_modified_time' ];
+			if ( ! isset( $mt_og[ 'article:tag' ] ) ) {
+
+				$mt_og[ 'article:tag' ] = $this->p->page->get_tag_names( $mod );
+			}
+
+			if ( ! isset( $mt_og[ 'article:published_time' ] ) ) {
+
+				if ( $mod[ 'is_post' ] && $mod[ 'post_time' ] ) {	// ISO 8601 date or false.
+
+					switch ( $mod[ 'post_status' ] ) {
+
+						case 'auto-draft':
+						case 'draft':
+						case 'future':
+						case 'inherit':	// Post revision.
+						case 'pending':
+						case 'trash':
+
+							if ( $this->p->debug->enabled ) {
+
+								$this->p->debug->log( 'skipping article published time for post status ' .  $mod[ 'post_status' ] );
+							}
+
+							break;
+
+						case 'expired':	// Previously published.
+						case 'private':
+						case 'publish':
+						default:	// Any other post status.
+
+							$mt_og[ 'article:published_time' ] = $mod[ 'post_time' ];
+
+							break;
 					}
+
+				} elseif ( $mod[ 'is_comment' ] && $mod[ 'comment_time' ] ) {	// ISO 8601 date or false.
+
+					$mt_og[ 'article:published_time' ] = $mod[ 'comment_time' ];
+				}
+			}
+
+			if ( ! isset( $mt_og[ 'article:modified_time' ] ) ) {
+
+				if ( $mod[ 'is_post' ] && $mod[ 'post_modified_time' ] ) {	// ISO 8601 date or false.
+
+					$mt_og[ 'article:modified_time' ] = $mod[ 'post_modified_time' ];
 				}
 			}
 

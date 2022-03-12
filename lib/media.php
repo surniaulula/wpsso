@@ -188,9 +188,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$mt_videos = $this->get_all_videos( $max_nums[ 'og_vid_max' ], $mod, $check_dupes, $md_pre, $force_prev );
 
-			/**
-			 * Clear previously seen image URLs.
-			 */
 			$this->p->util->clear_uniq_urls( array( 'preview' ) );
 
 			$mt_images = array();
@@ -269,9 +266,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return $mt_videos;	// Return an empty array.
 			}
 
-			/**
-			 * Clear previously seen videos URLs.
-			 */
 			$this->p->util->clear_uniq_urls( array( 'video', 'content_video', 'video_details' ) );
 
 			$use_prev = $this->p->options[ 'og_vid_prev_img' ];
@@ -523,6 +517,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( $num_diff >= 1 ) {	// Just in case.
 
+				$this->p->util->clear_uniq_urls( $size_names );
+
 				foreach ( $size_names as $size_name ) {
 
 					/**
@@ -593,11 +589,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return array();
 			}
 
-			/**
-			 * Clear previously seen image URLs.
-			 */
-			$this->p->util->clear_uniq_urls( $size_name );
-
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'getting ' . $num . ' images for size name ' . $size_name );
@@ -605,93 +596,110 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$mt_ret = array();
 
-			if ( $mod[ 'is_post' ] && $mod[ 'id' ] ) {
+			if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Comment, post, term, or user.
 
-				if ( $mod[ 'is_attachment' ] && wp_attachment_is_image( $mod[ 'id' ] ) ) {
-
-					/**
-					 * $size_name must be a string.
-					 */
-					$mt_single_image = $this->get_attachment_image( $num, $size_name, $mod[ 'id' ], $check_dupes );
-
-					if ( empty( $mt_single_image ) ) {
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'exiting early: no attachment image' );
-						}
-
-						return $mt_ret;	// Stop here.
-					}
-
-					$mt_ret = array_merge( $mt_ret, $mt_single_image );	// Stop here.
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'returning attachment images' );
-
-						$this->p->debug->log_arr( 'mt_ret', $mt_ret );
-					}
-
-					return $mt_ret;
-				}
-
-				/**
-				 * Check for custom meta, featured, or attached image(s).
-				 *
-				 * Allow for empty post ID in order to execute featured / attached image filters for modules.
-				 */
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'getting post images' );
+					$this->p->debug->log( 'getting ' . $mod[ 'name' ] . ' images' );
 				}
-
-				$post_images = $this->get_post_images( $num, $size_name, $mod[ 'id' ], $check_dupes, $md_pre );
-
-				if ( ! empty( $post_images ) ) {
-
-					$mt_ret = array_merge( $mt_ret, $post_images );
-				}
-
-				/**
-				 * Check for NGG query variables and shortcodes.
-				 */
-				if ( ! empty( $this->p->m[ 'media' ][ 'ngg' ] ) && ! $this->p->util->is_maxed( $mt_ret, $num ) ) {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'checking for NGG query variables and shortcodes' );
-					}
-
-					$ngg_obj =& $this->p->m[ 'media' ][ 'ngg' ];
-
-					$num_diff = SucomUtil::count_diff( $mt_ret, $num );
-
-					$query_images = $ngg_obj->get_query_og_images( $num_diff, $size_name, $mod[ 'id' ], $check_dupes );
-
-					if ( count( $query_images ) > 0 ) {
-
+	
+				if ( $mod[ 'is_post' ] ) {
+	
+					if ( $mod[ 'is_attachment' ] && wp_attachment_is_image( $mod[ 'id' ] ) ) {
+	
+						/**
+						 * $size_name must be a string.
+						 */
+						$mt_single_image = $this->get_attachment_image( $num, $size_name, $mod[ 'id' ], $check_dupes );
+	
+						if ( empty( $mt_single_image ) ) {
+	
+							if ( $this->p->debug->enabled ) {
+	
+								$this->p->debug->log( 'exiting early: no attachment image' );
+							}
+	
+							return $mt_ret;	// Stop here.
+						}
+	
+						$mt_ret = array_merge( $mt_ret, $mt_single_image );
+	
 						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'skipping NGG shortcode check: ' . count( $query_images ) . ' query image(s) returned' );
+	
+							$this->p->debug->log( 'returning attachment images' );
+	
+							$this->p->debug->log_arr( 'mt_ret', $mt_ret );
 						}
-
-						$mt_ret = array_merge( $mt_ret, $query_images );
-
-					} elseif ( ! $this->p->util->is_maxed( $mt_ret, $num ) ) {
-
-						$num_diff = SucomUtil::count_diff( $mt_ret, $num );
-
-						$shortcode_images = $ngg_obj->get_shortcode_og_images( $num_diff, $size_name, $mod[ 'id' ], $check_dupes );
-
-						if ( ! empty( $shortcode_images ) ) {
-
-							$mt_ret = array_merge( $mt_ret, $shortcode_images );
-						}
+	
+						return $mt_ret;	// Stop here.
 					}
+	
+					/**
+					 * Check for custom meta, featured, or attached image(s).
+					 *
+					 * Allow for empty post ID in order to execute featured / attached image filters for modules.
+					 */
+					$post_images = $this->get_post_images( $num, $size_name, $mod[ 'id' ], $check_dupes, $md_pre );
+	
+					if ( ! empty( $post_images ) ) {
+	
+						$mt_ret = array_merge( $mt_ret, $post_images );
+					}
+	
+					/**
+					 * Check for NGG query variables and shortcodes.
+					 */
+					if ( ! empty( $this->p->m[ 'media' ][ 'ngg' ] ) && ! $this->p->util->is_maxed( $mt_ret, $num ) ) {
+	
+						if ( $this->p->debug->enabled ) {
+	
+							$this->p->debug->log( 'checking for NGG query variables and shortcodes' );
+						}
+	
+						$ngg_obj =& $this->p->m[ 'media' ][ 'ngg' ];
+	
+						$num_diff = SucomUtil::count_diff( $mt_ret, $num );
+	
+						$query_images = $ngg_obj->get_query_og_images( $num_diff, $size_name, $mod[ 'id' ], $check_dupes );
+	
+						if ( count( $query_images ) > 0 ) {
+	
+							if ( $this->p->debug->enabled ) {
+	
+								$this->p->debug->log( 'skipping NGG shortcode check: ' . count( $query_images ) . ' query image(s) returned' );
+							}
+	
+							$mt_ret = array_merge( $mt_ret, $query_images );
+	
+						} elseif ( ! $this->p->util->is_maxed( $mt_ret, $num ) ) {
+	
+							$num_diff = SucomUtil::count_diff( $mt_ret, $num );
+	
+							$shortcode_images = $ngg_obj->get_shortcode_og_images( $num_diff, $size_name, $mod[ 'id' ], $check_dupes );
+	
+							if ( ! empty( $shortcode_images ) ) {
+	
+								$mt_ret = array_merge( $mt_ret, $shortcode_images );
+							}
+						}
+	
+					}
+	
+				} else {
+	
+					/**
+					 * get_og_images() provides filter hooks for additional image IDs and URLs.
+					 *
+					 * Unless $md_pre is 'none', get_og_images() will fallback to using the 'og' custom meta.
+					 */
+					$mt_images = $mod[ 'obj' ]->get_og_images( $num, $size_name, $mod[ 'id' ], $check_dupes, $md_pre );
 
+					if ( ! empty( $mt_images ) ) {
+
+						$mt_ret = array_merge( $mt_ret, $mt_images );
+					}
 				}
-
+	
 				/**
 				 * If we haven't reached the limit of images yet, keep going and check the content text.
 				 */
@@ -711,30 +719,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$mt_ret = array_merge( $mt_ret, $content_images );
 					}
 				}
-
-			} else {
-
-				/**
-				 * get_og_images() provides filter hooks for additional image IDs and URLs.
-				 *
-				 * Unless $md_pre is 'none', get_og_images() will fallback to using the 'og' custom meta.
-				 */
-				if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Term or user.
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'getting ' . $mod[ 'name' ] . ' images' );
-					}
-
-					$mt_images = $mod[ 'obj' ]->get_og_images( $num, $size_name, $mod[ 'id' ], $check_dupes, $md_pre );
-
-					if ( ! empty( $mt_images ) ) {
-
-						$mt_ret = array_merge( $mt_ret, $mt_images );
-					}
-				}
 			}
-
+	
 			if ( empty( $mt_ret ) ) {
 
 				if ( $mod[ 'is_home' ] ||  $mod[ 'is_archive' ] || $mod[ 'is_post' ] ) {
@@ -979,13 +965,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_args( array(
-					'num'             => $num,
-					'size_name'       => $size_name,
-					'mod'             => $mod,
-					'check_dupes'     => $check_dupes,
-					'strlen(content)' => strlen( $content ),
-				) );
+				$this->p->debug->mark();
 			}
 
 			/**
@@ -1007,8 +987,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			/**
 			 * Allow custom content to be passed as an argument in $content.
-			 *
-			 * Allow empty post IDs to get additional content from filter hooks.
 			 */
 			if ( empty( $content ) ) {
 
@@ -1025,7 +1003,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: empty post content' );
+					$this->p->debug->log( 'exiting early: empty ' . $mod[ 'name' ] . ' content' );
 				}
 
 				return $mt_ret;
@@ -1845,7 +1823,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						 */
 						if ( null === $mt_images ) {
 
-							$mt_images = $this->get_size_name_images( $num = 1, $size_name, $mod, $check_dupes = true, $md_pre );
+							$mt_images = $this->get_size_name_images( $num = 1, $size_name, $mod, $check_dupes = false, $md_pre );
 						}
 
 						break;
@@ -2196,8 +2174,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			/**
 			 * Allow custom content to be passed as an argument in $content.
-			 *
-			 * Allow empty post IDs to get additional content from filter hooks.
 			 */
 			if ( empty( $content ) ) {
 
@@ -2214,7 +2190,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: empty post content' );
+					$this->p->debug->log( 'exiting early: empty ' . $mod[ 'name' ] . ' content' );
 				}
 
 				return $mt_videos;

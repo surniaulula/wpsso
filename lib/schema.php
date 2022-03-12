@@ -524,21 +524,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
-		 * Since WPSSO Core v9.1.2.
-		 *
-		 * Returns the schema type URL.
-		 */
-		public function get_mod_schema_type_url( array $mod, $use_md_opts = true ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			return $this->get_mod_schema_type( $mod, $get_id = false, $use_md_opts );
-		}
-
-		/**
 		 * Since WPSSO Core v3.37.1.
 		 *
 		 * Returns the schema type id by default.
@@ -617,6 +602,21 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					} else {
 
 						$type_id = $this->get_schema_type_id_for( 'home_posts' );
+					}
+
+				} elseif ( $mod[ 'is_comment' ] ) {
+
+					if ( is_numeric( $mod[ 'comment_rating' ] ) ) {
+
+						$type_id = $this->get_schema_type_id_for( 'comment_review' );
+
+					} elseif ( $mod[ 'comment_parent' ] ) {
+
+						$type_id = $this->get_schema_type_id_for( 'comment_reply' );
+
+					} else {
+
+						$type_id = $this->get_schema_type_id_for( 'comment' );
 					}
 
 				} elseif ( $mod[ 'is_post' ] ) {
@@ -746,6 +746,21 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			return $get_value;
+		}
+
+		/**
+		 * Since WPSSO Core v9.1.2.
+		 *
+		 * Returns the schema type URL.
+		 */
+		public function get_mod_schema_type_url( array $mod, $use_md_opts = true ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			return $this->get_mod_schema_type( $mod, $get_id = false, $use_md_opts );
 		}
 
 		public function get_schema_types_select( $schema_types = null ) {
@@ -2286,7 +2301,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $authors_added + $coauthors_added;	// Return count of authors and coauthors added.
 		}
 
-		public static function add_comment_list_data( &$json_data, $mod ) {
+		public static function add_comment_list_data( &$json_data, $post_mod ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -2297,12 +2312,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$comments_added = 0;
 
-			if ( ! $mod[ 'is_post' ] || ! $mod[ 'id' ] || ! comments_open( $mod[ 'id' ] ) ) {
+			if ( ! $post_mod[ 'is_post' ] || ! $post_mod[ 'id' ] || ! comments_open( $post_mod[ 'id' ] ) ) {
 
 				return $comments_added;
 			}
 
-			$json_data[ 'commentCount' ] = (int) get_comments_number( $mod[ 'id' ] );
+			$json_data[ 'commentCount' ] = (int) get_comments_number( $post_mod[ 'id' ] );
 
 			/**
 			 * Only get parent comments. The add_comment_data() method will recurse and add the children.
@@ -2310,7 +2325,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( get_option( 'page_comments' ) ) {	// "Break comments into pages" option is checked.
 
 				$comment_order  = strtoupper( get_option( 'comment_order' ) );
-				$comment_paged  = $mod[ 'comment_paged' ] ? $mod[ 'comment_paged' ] : 1;		// Get the comment page number.
+				$comment_paged  = $post_mod[ 'comment_paged' ] ? $post_mod[ 'comment_paged' ] : 1;		// Get the comment page number.
 				$comment_number = get_option( 'comments_per_page' );
 
 			} else {
@@ -2323,7 +2338,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $comment_number ) {	// 0 disables the addition of comments.
 
 				$get_comment_args = array(
-					'post_id' => $mod[ 'id' ],
+					'post_id' => $post_mod[ 'id' ],
 					'status'  => 'approve',
 					'parent'  => 0,		// Don't get replies.
 					'order'   => $comment_order,
@@ -2332,18 +2347,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					'number'  => $comment_number,
 				);
 
-				if ( $wpsso->debug->enabled ) {
-
-					$wpsso->debug->log_arr( 'get_comment_args', $get_comment_args );
-				}
-
 				$comments = get_comments( $get_comment_args );
 
 				if ( is_array( $comments ) ) {
 
-					foreach( $comments as $num => $cmt ) {
+					foreach( $comments as $num => $comment_obj ) {
 
-						$comments_added += WpssoSchemaSingle::add_comment_data( $json_data[ 'comment' ], $mod, $cmt->comment_ID );
+						$comments_added += WpssoSchemaSingle::add_comment_data( $json_data[ 'comment' ], $post_mod, $comment_obj->comment_ID );
 					}
 				}
 			}
@@ -2524,7 +2534,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 * Property:
 			 *	image as https://schema.org/ImageObject
 			 */
-			$img_added = 0;
+			$images_added = 0;
 
 			$max_nums = $wpsso->util->get_max_nums( $mod, 'og' );
 
@@ -2537,12 +2547,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$wpsso->debug->log( 'adding images to json data' );
 				}
 
-				$img_added = self::add_images_data_mt( $json_data[ 'image' ], $mt_images );
+				$images_added = self::add_images_data_mt( $json_data[ 'image' ], $mt_images );
 			}
 
 			if ( $wpsso->debug->enabled ) {
 
-				$wpsso->debug->log( $img_added . ' images added' );
+				$wpsso->debug->log( $images_added . ' images added' );
 			}
 
 			/**

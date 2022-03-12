@@ -283,12 +283,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( null === $md_opts ) {
 
-				$md_opts = self::get_term_meta( $term_id, WPSSO_META_NAME, true );
+				$md_opts = $this->get_meta( $term_id, WPSSO_META_NAME, true );
 
-				if ( ! is_array( $md_opts ) ) {
-
-					$md_opts = array();
-				}
+				if ( ! is_array( $md_opts ) ) $md_opts = array();	// WPSSO_META_NAME not found.
 
 				unset( $md_opts[ 'opt_filtered' ] );	// Just in case.
 
@@ -297,24 +294,9 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				 */
 				if ( $this->p->opt->is_upgrade_required( $md_opts ) ) {
 
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'upgrading term ID ' . $term_id . ' options' );
-					}
-
 					$md_opts = $this->upgrade_options( $md_opts, $term_id );
 
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'saving term ID ' . $term_id . ' options' );
-					}
-
-					self::update_term_meta( $term_id, WPSSO_META_NAME, $md_opts );
-				}
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log_arr( 'term ID ' . $term_id . ' options read', $md_opts );
+					$this->update_meta( $term_id, WPSSO_META_NAME, $md_opts );
 				}
 			}
 
@@ -340,6 +322,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					 * Filter 'wpsso_inherit_custom_images' added in WPSSO Core v9.10.0.
 					 */
 					$inherit_custom = empty( $this->p->options[ 'plugin_inherit_custom' ] ) ? false : $mod[ 'is_public' ];
+
 					$inherit_custom = apply_filters( 'wpsso_inherit_custom_images', $inherit_custom, $mod );
 
 					if ( $inherit_custom ) {
@@ -371,31 +354,16 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					/**
 					 * Since WPSSO Core v7.1.0.
 					 */
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'applying get_md_options filters' );
-					}
-
 					$md_opts = apply_filters( 'wpsso_get_md_options', $md_opts, $mod );
 
 					/**
 					 * Since WPSSO Core v4.31.0.
 					 */
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'applying get_term_options filters for term_id ' . $term_id . ' meta' );
-					}
-
-					$md_opts = apply_filters( 'wpsso_get_term_options', $md_opts, $term_id, $mod );
+					$md_opts = apply_filters( 'wpsso_get_' . $mod[ 'name' ] . '_options', $md_opts, $term_id, $mod );
 
 					/**
 					 * Since WPSSO Core v8.2.0.
 					 */
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'applying sanitize_md_options filters' );
-					}
-
 					$md_opts = apply_filters( 'wpsso_sanitize_md_options', $md_opts, $mod );
 				}
 			}
@@ -445,21 +413,18 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			$mod = isset( $term_obj->taxonomy ) ? $this->get_mod( $term_id, $term_obj->taxonomy ) : $mod = $this->get_mod( $term_id );
 
-			/**
-			 * Merge and check submitted post, term, and user metabox options.
-			 */
 			$md_opts = $this->get_submit_opts( $mod );
 
 			$md_opts = apply_filters( 'wpsso_save_md_options', $md_opts, $mod );
 
-			$md_opts = apply_filters( 'wpsso_save_term_options', $md_opts, $term_id, $mod );
+			$md_opts = apply_filters( 'wpsso_save_' . $mod[ 'name' ] . '_options', $md_opts, $term_id, $mod );
 
 			if ( empty( $md_opts ) ) {
 
-				return self::delete_term_meta( $term_id, WPSSO_META_NAME );
+				return $this->delete_meta( $term_id, WPSSO_META_NAME );
 			}
 
-			return self::update_term_meta( $term_id, WPSSO_META_NAME, $md_opts );
+			return $this->update_meta( $term_id, WPSSO_META_NAME, $md_opts );
 		}
 
 		/**
@@ -467,7 +432,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		 */
 		public function delete_options( $term_id, $term_tax_id = false ) {
 
-			return self::delete_term_meta( $term_id, WPSSO_META_NAME );
+			return $this->delete_meta( $term_id, WPSSO_META_NAME );
 		}
 
 		/**
@@ -893,7 +858,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			foreach ( $col_meta_keys as $col_key => $meta_key ) {
 
-				self::delete_term_meta( $term_id, $meta_key );
+				$this->delete_meta( $term_id, $meta_key );
 			}
 
 			/**
@@ -924,6 +889,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 
 			$term_obj = get_term_by( 'term_taxonomy_id', $term_tax_id, $tax_slug = '' );
+
 			$tax_obj  = get_taxonomy( $term_obj->taxonomy );
 
 			$capability = $tax_obj->cap->edit_terms;
@@ -952,9 +918,25 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		/**
 		 * Since WPSSO Core v8.4.0.
 		 */
-		public static function get_meta( $term_id, $meta_key, $single = false ) {
+		public static function get_meta( $term_id, $meta_key = '', $single = false ) {
 
 			return self::get_term_meta( $term_id, $meta_key, $single );
+		}
+
+		/**
+		 * Since WPSSO Core v8.4.0.
+		 */
+		public static function update_meta( $term_id, $meta_key, $value ) {
+
+			return self::update_term_meta( $term_id, $meta_key, $value );
+		}
+
+		/**
+		 * Since WPSSO Core v8.4.0.
+		 */
+		public static function delete_meta( $term_id, $meta_key ) {
+
+			return self::delete_term_meta( $term_id, $meta_key );
 		}
 
 		/**
@@ -1000,14 +982,6 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			return $term_meta;
 		}
 
-		/**
-		 * Since WPSSO Core v8.4.0.
-		 */
-		public static function update_meta( $term_id, $meta_key, $value ) {
-
-			return self::update_term_meta( $term_id, $meta_key, $value );
-		}
-
 		public static function update_term_meta( $term_id, $meta_key, $value ) {
 
 			if ( self::use_term_meta_table( $term_id ) ) {
@@ -1016,14 +990,6 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 
 			return update_option( $meta_key . '_term_' . $term_id, $value );
-		}
-
-		/**
-		 * Since WPSSO Core v8.4.0.
-		 */
-		public static function delete_meta( $term_id, $meta_key ) {
-
-			return self::delete_term_meta( $term_id, $meta_key );
 		}
 
 		public static function delete_term_meta( $term_id, $meta_key ) {

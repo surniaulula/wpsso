@@ -122,7 +122,6 @@ if ( ! class_exists( 'WpssoJsonFiltersPropReview' ) ) {
 					foreach ( $mt_og[ $og_type . ':reviews' ] as $mt_review ) {
 
 						$mt_pre         = $og_type . ':review';
-						$media_pre      = $og_type . ':review:image';
 						$cmt_id_key     = $og_type . ':review:id';
 						$single_review  = array();
 
@@ -170,9 +169,9 @@ if ( ! class_exists( 'WpssoJsonFiltersPropReview' ) ) {
 								}
 							}
 
-							if ( ! empty( $mt_review[ $media_pre ] ) ) {
+							if ( ! empty( $mt_review[ $og_type . ':review:image' ] ) ) {
 
-								WpssoSchema::add_images_data_mt( $single_review[ 'image' ], $mt_review[ $media_pre ], $media_pre );
+								WpssoSchema::add_images_data_mt( $single_review[ 'image' ], $mt_review[ $og_type . ':review:image' ] );
 							}
 
 							/**

@@ -387,12 +387,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( null === $md_opts ) {	// Cache is empty.
 
-				$md_opts = get_post_meta( $post_id, WPSSO_META_NAME, $single = true );
+				$md_opts = $this->get_meta( $post_id, WPSSO_META_NAME, $single = true );
 
-				if ( ! is_array( $md_opts ) ) {	// WPSSO_META_NAME not found.
-
-					$md_opts = array();
-				}
+				if ( ! is_array( $md_opts ) ) $md_opts = array();	// WPSSO_META_NAME not found.
 
 				unset( $md_opts[ 'opt_filtered' ] );	// Just in case.
 
@@ -401,24 +398,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 */
 				if ( $this->p->opt->is_upgrade_required( $md_opts ) ) {
 
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'upgrading post ID ' . $post_id . ' options' );
-					}
-
 					$md_opts = $this->upgrade_options( $md_opts, $post_id );
 
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'saving post ID ' . $post_id . ' options' );
-					}
-
-					update_post_meta( $post_id, WPSSO_META_NAME, $md_opts );
-				}
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log_arr( 'post ID ' . $post_id . ' options read', $md_opts );
+					$this->update_meta( $post_id, WPSSO_META_NAME, $md_opts );
 				}
 			}
 
@@ -438,21 +420,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					$mod = $this->get_mod( $post_id );
 
-					$post_obj = $this->get_mod_wp_object( $mod );
-
 					/**
 					 * Since WPSSO Core v9.15.0.
 					 *
 					 * See WpssoUtilBlocks->filter_import_content_blocks().
 					 */
-					if ( isset( $post_obj->post_content ) ) {
+					if ( isset( $mod[ 'wp_obj' ]->post_content ) ) {
 
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'applying import_content_blocks filters for post id ' . $post_id . ' content' );
-						}
-
-						$md_opts = apply_filters( 'wpsso_import_content_blocks', $md_opts, $post_obj->post_content );
+						$md_opts = apply_filters( 'wpsso_import_content_blocks', $md_opts, $mod[ 'wp_obj' ]->post_content );
 
 					} elseif ( $this->p->debug->enabled ) {
 
@@ -474,12 +449,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 * See WpssoProEcomWoocommerce->add_mt_product() - imports variation metadata.
 					 * See WpssoProEcomWooAddGtin->filter_wc_variation_cf_meta_keys().
 					 */
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'applying import_custom_fields filters for post id ' . $post_id . ' metadata' );
-					}
-
-					$md_opts = apply_filters( 'wpsso_import_custom_fields', $md_opts, get_post_meta( $post_id ) );
+					$md_opts = apply_filters( 'wpsso_import_custom_fields', $md_opts, $this->get_meta( $post_id ) );
 
 					/**
 					 * Since WPSSO Core v9.5.0.
@@ -519,11 +489,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					/**
 					 * Since WPSSO Core v7.1.0.
 					 */
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'applying get_md_options filters' );
-					}
-
 					$md_opts = apply_filters( 'wpsso_get_md_options', $md_opts, $mod );
 
 					/**
@@ -533,21 +498,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 * e-Commerce integration modules will provide information on their product (price,
 					 * condition, etc.) and disable these options in the Document SSO metabox.
 					 */
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'applying get_post_options filters for post id ' . $post_id . ' metadata' );
-					}
-
-					$md_opts = apply_filters( 'wpsso_get_post_options', $md_opts, $post_id, $mod );
+					$md_opts = apply_filters( 'wpsso_get_' . $mod[ 'name' ] . '_options', $md_opts, $post_id, $mod );
 
 					/**
 					 * Since WPSSO Core v8.2.0.
 					 */
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'applying sanitize_md_options filters' );
-					}
-
 					$md_opts = apply_filters( 'wpsso_sanitize_md_options', $md_opts, $mod );
 				}
 			}
@@ -591,21 +546,18 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$mod = $this->get_mod( $post_id );
 
-			/**
-			 * Merge and check submitted post, term, and user metabox options.
-			 */
 			$md_opts = $this->get_submit_opts( $mod );
 
 			$md_opts = apply_filters( 'wpsso_save_md_options', $md_opts, $mod );
 
-			$md_opts = apply_filters( 'wpsso_save_post_options', $md_opts, $post_id, $mod );
+			$md_opts = apply_filters( 'wpsso_save_' . $mod[ 'name' ] . '_options', $md_opts, $post_id, $mod );
 
 			if ( empty( $md_opts ) ) {
 
-				return delete_post_meta( $post_id, WPSSO_META_NAME );
+				return $this->delete_meta( $post_id, WPSSO_META_NAME );
 			}
 
-			return update_post_meta( $post_id, WPSSO_META_NAME, $md_opts );
+			return $this->update_meta( $post_id, WPSSO_META_NAME, $md_opts );
 		}
 
 		/**
@@ -613,7 +565,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		 */
 		public function delete_options( $post_id, $rel = false ) {
 
-			return delete_post_meta( $post_id, WPSSO_META_NAME );
+			return $this->delete_meta( $post_id, WPSSO_META_NAME );
 		}
 
 		public function after_insert_post( $post_id, $post_obj, $update, $post_before ) {
@@ -1730,7 +1682,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			foreach ( $col_meta_keys as $col_key => $meta_key ) {
 
-				delete_post_meta( $post_id, $meta_key );
+				$this->delete_meta( $post_id, $meta_key );
 			}
 
 			/**
@@ -1871,9 +1823,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return true;
 		}
 
-		/**
-		 * Methods that return an associative array of Open Graph meta tags.
-		 */
 		public function get_mt_reviews( $post_id, $mt_pre = 'product', $rating_meta = 'rating', $worst_rating = 1, $best_rating = 5 ) {
 
 			$reviews = array();
@@ -2416,7 +2365,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		/**
 		 * Since WPSSO Core v8.4.0.
 		 */
-		public static function get_meta( $post_id, $meta_key, $single = false ) {
+		public static function get_meta( $post_id, $meta_key = '', $single = false ) {
 
 			return get_post_meta( $post_id, $meta_key, $single );
 		}

@@ -485,6 +485,10 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return '';
 		}
 
+		/**
+		 * Called by WpssoMedia->get_all_images(), WpssoMedia->get_mt_pid_images(), WpssoUtil->clear_uniq_urls(),
+		 * WpssoSscShortcodeSchema->do_shortcode().
+		 */
 		public function get_image_size_names( $mixed = null, $sanitize = true ) {
 
 			$size_names = array_keys( $this->cache_size_labels );
@@ -1559,7 +1563,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				return false;
 
-			} elseif ( filter_var( $request, FILTER_VALIDATE_URL ) === false ) {
+			} elseif ( false === filter_var( $request, FILTER_VALIDATE_URL ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -1761,7 +1765,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						$url = get_permalink( $mod[ 'id' ] );
 					}
 
-					$url = $this->check_url_string( $url, 'post permalink' );	// Check for WP_Error.
+					$url = $this->sanitize_url( $url, 'post permalink' );	// Check for WP_Error.
 
 					$url = apply_filters( 'wpsso_post_url', $url, $mod );
 				}
@@ -1989,7 +1993,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						$url = get_comment_link( $mod[ 'id' ] );
 
-						$url = $this->check_url_string( $url, 'comment link' );	// Check for WP_Error.
+						$url = $this->sanitize_url( $url, 'comment link' );	// Check for WP_Error.
 					}
 
 					$url = apply_filters( 'wpsso_comment_url', $url, $mod );
@@ -2002,7 +2006,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 							$url = get_post_type_archive_link( $mod[ 'post_type' ] );
 
-							$url = $this->check_url_string( $url, 'post type archive link' );	// Check for WP_Error.
+							$url = $this->sanitize_url( $url, 'post type archive link' );	// Check for WP_Error.
 
 						} elseif ( $mod[ 'id' ] ) {	// Just in case.
 
@@ -2026,7 +2030,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 								$url = get_permalink( $mod[ 'id' ] );
 							}
 
-							$url = $this->check_url_string( $url, 'post permalink' );	// Check for WP_Error.
+							$url = $this->sanitize_url( $url, 'post permalink' );	// Check for WP_Error.
 
 						} elseif ( $this->p->debug->enabled ) {
 
@@ -2046,7 +2050,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						$url = get_term_link( $mod[ 'id' ], $mod[ 'tax_slug' ] );
 
-						$url = $this->check_url_string( $url, 'term link' );	// Check for WP_Error.
+						$url = $this->sanitize_url( $url, 'term link' );	// Check for WP_Error.
 					}
 
 					$url = apply_filters( 'wpsso_term_url', $url, $mod );
@@ -2057,7 +2061,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						$url = get_author_posts_url( $mod[ 'id' ] );
 
-						$url = $this->check_url_string( $url, 'author posts url' );	// Check for WP_Error.
+						$url = $this->sanitize_url( $url, 'author posts url' );	// Check for WP_Error.
 					}
 
 					$url = apply_filters( 'wpsso_user_url', $url, $mod );
@@ -2066,7 +2070,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					$url = get_search_link( $mod[ 'query_vars' ][ 's' ] );
 
-					$url = $this->check_url_string( $url, 'search link' );	// Check for WP_Error.
+					$url = $this->sanitize_url( $url, 'search link' );	// Check for WP_Error.
 
 					$url = apply_filters( 'wpsso_search_url', $url, $mod );
 
@@ -2078,19 +2082,19 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 							$url = get_year_link( $mod[ 'query_vars' ][ 'year' ] );
 
-							$url = $this->check_url_string( $url, 'year link' );	// Check for WP_Error.
+							$url = $this->sanitize_url( $url, 'year link' );	// Check for WP_Error.
 
 						} elseif ( $mod[ 'is_month' ] ) {
 
 							$url = get_month_link( $mod[ 'query_vars' ][ 'year' ], $mod[ 'query_vars' ][ 'monthnum' ] );
 
-							$url = $this->check_url_string( $url, 'month link' );	// Check for WP_Error.
+							$url = $this->sanitize_url( $url, 'month link' );	// Check for WP_Error.
 
 						} elseif ( $mod[ 'is_day' ] ) {
 
 							$url = get_day_link( $mod[ 'query_vars' ][ 'year' ], $mod[ 'query_vars' ][ 'monthnum' ], $mod[ 'query_vars' ][ 'day' ] );
 
-							$url = $this->check_url_string( $url, 'day link' );	// Check for WP_Error.
+							$url = $this->sanitize_url( $url, 'day link' );	// Check for WP_Error.
 						}
 					}
 
@@ -2136,6 +2140,31 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			return $url;
+		}
+
+		private function sanitize_url( $url, $context ) {
+
+			if ( is_string( $url ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( $context . ' url = ' . $url );
+				}
+
+				return $url;	// Stop here.
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( $context . ' url is ' . gettype( $url ) );
+
+				if ( is_wp_error( $url ) ) {
+
+					$this->p->debug->log( $context . ' url error: ' . $url->get_error_message() );
+				}
+			}
+
+			return false;
 		}
 
 		/**
@@ -2286,31 +2315,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $page_number;
 		}
 
-		private function check_url_string( $url, $context ) {
-
-			if ( is_string( $url ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( $context . ' url = ' . $url );
-				}
-
-				return $url;	// Stop here.
-			}
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( $context . ' url is ' . gettype( $url ) );
-
-				if ( is_wp_error( $url ) ) {
-
-					$this->p->debug->log( $context . ' url error: ' . $url->get_error_message() );
-				}
-			}
-
-			return false;
-		}
-
 		/**
 		 * Called by scheduled tasks to check the user ID value and possibly load a different textdomain language.
 		 */
@@ -2419,33 +2423,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $url;
 		}
 
-		public function clear_uniq_urls( $mixed = 'default' ) {
-
-			if ( ! is_array( $mixed ) ) {
-
-				$mixed = $this->get_image_size_names( $mixed, $sanitize = false );	// Always returns an array.
-			}
-
-			$cleared = 0;
-
-			foreach ( $mixed as $context ) {
-
-				if ( isset( $this->cache_uniq_urls[ $context ] ) ) {
-
-					$cleared += count( $this->cache_uniq_urls[ $context ] );
-				}
-
-				$this->cache_uniq_urls[ $context ] = array();
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'cleared uniq url cache for context ' . $context );
-				}
-			}
-
-			return $cleared;
-		}
-
 		public function is_canonical_disabled() {
 
 			return empty( $this->p->options[ 'add_link_rel_canonical' ] ) ? true : false;
@@ -2551,36 +2528,69 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return true;
 		}
 
-		public function is_dupe_url( $url, $context = 'default' ) {
+		public function is_dupe_url( $url, $uniq_context = 'default' ) {
 
-			return $this->is_uniq_url( $url, $context ) ? false : true;
+			$uniq_context = preg_replace( '/-[0-9]+x[0-9]+$/', '', $uniq_context );	// Change 'wpsso-schema-1x1' to 'wpsso-schema'.
+
+			return $this->is_uniq_url( $url, $uniq_context ) ? false : true;
 		}
 
-		public function is_uniq_url( $url, $context = 'default' ) {
+		public function is_uniq_url( $url, $uniq_context = 'default' ) {
 
 			if ( empty( $url ) ) {
 
 				return false;
 			}
 
+			$uniq_context = preg_replace( '/-[0-9]+x[0-9]+$/', '', $uniq_context );	// Change 'wpsso-schema-1x1' to 'wpsso-schema'.
+
 			$url = $this->fix_relative_url( $url );	// Just in case.
 
-			if ( ! isset( $this->cache_uniq_urls[ $context ][ $url ] ) ) {
+			if ( ! isset( $this->cache_uniq_urls[ $uniq_context ][ $url ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'uniq url saved for context ' . $context . ': ' . $url );
+					$this->p->debug->log( 'uniq url saved for context ' . $uniq_context . ': ' . $url );
 				}
 
-				return $this->cache_uniq_urls[ $context ][ $url ] = true;
+				return $this->cache_uniq_urls[ $uniq_context ][ $url ] = true;
 			}
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'duplicate url found for context ' . $context . ': ' . $url );
+				$this->p->debug->log( 'duplicate url found for context ' . $uniq_context . ': ' . $url );
 			}
 
 			return false;
+		}
+
+		public function clear_uniq_urls( $mixed = 'default' ) {
+
+			if ( ! is_array( $mixed ) ) {
+
+				$mixed = $this->get_image_size_names( $mixed, $sanitize = false );	// Always returns an array.
+			}
+
+			$cleared = 0;
+
+			foreach ( $mixed as $uniq_context ) {
+
+				$uniq_context = preg_replace( '/-[0-9]+x[0-9]+$/', '', $uniq_context );	// Change 'wpsso-schema-1x1' to 'wpsso-schema'.
+
+				if ( isset( $this->cache_uniq_urls[ $uniq_context ] ) ) {
+
+					$cleared += count( $this->cache_uniq_urls[ $uniq_context ] );
+				}
+
+				$this->cache_uniq_urls[ $uniq_context ] = array();
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'cleared uniq url cache for context ' . $uniq_context );
+				}
+			}
+
+			return $cleared;
 		}
 
 		public function is_maxed( &$arr, $num = 0 ) {

@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '11.7.0-dev.1',	// Plugin version.
-					'opt_version' => '895',		// Increment when changing default option values.
+					'version'     => '11.7.0-dev.2',	// Plugin version.
+					'opt_version' => '897',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1239,11 +1239,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings > Document Types > Open Graph.
 					 */
-					'og_type_for_archive_page'      => 'website',
-					'og_type_for_home_page'         => 'website',
-					'og_type_for_home_posts'        => 'website',
-					'og_type_for_search_page'       => 'website',
-					'og_type_for_user_page'         => 'profile',
+					'og_type_for_archive_page'   => 'website',
+					'og_type_for_comment'        => 'article',
+					'og_type_for_comment_reply'  => 'article',
+					'og_type_for_comment_review' => 'article',
+					'og_type_for_home_page'      => 'website',
+					'og_type_for_home_posts'     => 'website',
+					'og_type_for_search_page'    => 'website',
+					'og_type_for_user_page'      => 'profile',
 
 					/**
 					 * Advanced Settings > Document Types > Open Graph tab: Post Types.
@@ -1321,11 +1324,14 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings > Document Types > Schema.
 					 */
-					'schema_type_for_archive_page' => 'item.list',
-					'schema_type_for_home_page'    => 'website',
-					'schema_type_for_home_posts'   => 'blog',
-					'schema_type_for_search_page'  => 'webpage.search.results',
-					'schema_type_for_user_page'    => 'webpage.profile',
+					'schema_type_for_archive_page'   => 'item.list',
+					'schema_type_for_comment'        => 'comment',
+					'schema_type_for_comment_reply'  => 'comment',
+					'schema_type_for_comment_review' => 'review',
+					'schema_type_for_home_page'      => 'website',
+					'schema_type_for_home_posts'     => 'blog',
+					'schema_type_for_search_page'    => 'webpage.search.results',
+					'schema_type_for_user_page'      => 'webpage.profile',
 
 					/**
 					 * Advanced Settings > Document Types > Open Graph tab: Post Types.
@@ -3329,7 +3335,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				'schema_type' => array(				// Element of 'head' array.
 					'thing' => array(			// Most generic type.
 						'creative.work' => array(	// Creative work, including books, movies, photographs, software programs, etc.
-							'answer'  => 'https://schema.org/Answer',
 							'article' => array(
 								'article'                    => 'https://schema.org/Article',
 								'article.advertiser.content' => 'https://schema.org/AdvertiserContentArticle',
@@ -3366,9 +3371,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'book'       => 'https://schema.org/Book',
 								'book.audio' => 'https://schema.org/Audiobook',
 							),
-							'claim'                => 'https://schema.org/Claim',
-							'clip'                 => 'https://schema.org/Clip',
-							'comment'              => 'https://schema.org/Comment',
+							'claim'   => 'https://schema.org/Claim',
+							'clip'    => 'https://schema.org/Clip',
+							'comment' => array(
+								'answer'   => 'https://schema.org/Answer',
+								'comment'  => 'https://schema.org/Comment',
+								'question' => 'https://schema.org/Question',
+							),
 							'conversation'         => 'https://schema.org/Conversation',
 							'course'               => 'https://schema.org/Course',
 							'creative.work'        => 'https://schema.org/CreativeWork',
@@ -3418,7 +3427,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'photograph'         => 'https://schema.org/Photograph',
 							'publication.issue'  => 'https://schema.org/PublicationIssue',
 							'publication.volume' => 'https://schema.org/PublicationVolume',
-							'question'           => 'https://schema.org/Question',
 							'review'             => array(
 								'review'        => 'https://schema.org/Review',
 								'review.claim'  => 'https://schema.org/ClaimReview',
@@ -4502,7 +4510,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			$var_const[ 'WPSSO_POST_CHECK_COUNT_NAME' ] = 'wpsso_post_check_count';
 			$var_const[ 'WPSSO_TMPL_HEAD_CHECK_NAME' ]  = 'wpsso_tmpl_head_check';
 			$var_const[ 'WPSSO_WP_CONFIG_CHECK_NAME' ]  = 'wpsso_wp_config_check';
-			$var_const[ 'WPSSO_REVIEW_IMAGE_IDS_NAME' ] = 'reviews-images';
 			$var_const[ 'WPSSO_PAGE_TAG_TAXONOMY' ]     = 'page_tag';
 
 			/**

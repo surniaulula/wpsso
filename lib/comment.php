@@ -85,7 +85,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 					$mod[ 'comment_parent' ]      = $mod[ 'wp_obj' ]->comment_parent;
 					$mod[ 'comment_time' ]        = mysql2date( 'c', $mod[ 'wp_obj' ]->comment_date_gmt );	// ISO 8601 date.
 
-					$comment_rating = get_comment_meta( $mod[ 'id' ], WPSSO_META_RATING_NAME, $single = true );
+					$comment_rating = $this->get_meta( $mod[ 'id' ], WPSSO_META_RATING_NAME, $single = true );
 
 					if ( is_numeric( $comment_rating ) ) {
 					
@@ -104,6 +104,174 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 		public function get_mod_wp_object( array $mod ) {
 
 			return get_comment( $mod[ 'id' ] );
+		}
+
+		/**
+		 * Option handling methods:
+		 *
+		 *	get_defaults()
+		 *	get_options()
+		 *	save_options()
+		 *	delete_options()
+		 */
+		public function get_options( $comment_id, $md_key = false, $filter_opts = true, $pad_opts = false ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_args( array( 
+					'comment_id'  => $comment_id,
+					'md_key'      => $md_key,
+					'filter_opts' => $filter_opts,
+					'pad_opts'    => $pad_opts,
+				) );
+			}
+
+			static $local_cache = array();
+
+			/**
+			 * Use $comment_id and $filter_opts to create the cache ID string, but do not add $pad_opts.
+			 */
+			$cache_id = SucomUtil::get_assoc_salt( array( 'id' => $comment_id, 'filter' => $filter_opts ) );
+
+			/**
+			 * Maybe initialize the cache.
+			 */
+			if ( ! isset( $local_cache[ $cache_id ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'new local cache id ' . $cache_id );
+				}
+
+				$local_cache[ $cache_id ] = null;
+
+			} elseif ( $this->md_cache_disabled ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'new local cache id ' . $cache_id . '(md cache disabled)' );
+				}
+
+				$local_cache[ $cache_id ] = null;
+			}
+
+			$md_opts =& $local_cache[ $cache_id ];	// Shortcut variable name.
+
+			if ( null === $md_opts ) {	// Cache is empty.
+
+				$md_opts = $this->get_meta( $comment_id, WPSSO_META_NAME, $single = true );
+
+				if ( ! is_array( $md_opts ) ) $md_opts = array();	// WPSSO_META_NAME not found.
+
+				unset( $md_opts[ 'opt_filtered' ] );	// Just in case.
+
+				/**
+				 * Check if options need to be upgraded and saved.
+				 */
+				if ( $this->p->opt->is_upgrade_required( $md_opts ) ) {
+
+					$md_opts = $this->upgrade_options( $md_opts, $comment_id );
+
+					$this->update_meta( $comment_id, WPSSO_META_NAME, $md_opts );
+				}
+			}
+
+			if ( $filter_opts ) {
+
+				if ( empty( $md_opts[ 'opt_filtered' ] ) ) {
+
+					/**
+					 * Set before calling filters to prevent recursion.
+					 */
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'setting opt_filtered to 1' );
+					}
+
+					$md_opts[ 'opt_filtered' ] = 1;
+
+					$mod = $this->get_mod( $comment_id );
+
+					/**
+					 * Since WPSSO Core v7.1.0.
+					 */
+					$md_opts = apply_filters( 'wpsso_get_md_options', $md_opts, $mod );
+
+					/**
+					 * Since WPSSO Core v4.31.0.
+					 *
+					 * Hooked by several integration modules to provide information about the current content.
+					 * e-Commerce integration modules will provide information on their product (price,
+					 * condition, etc.) and disable these options in the Document SSO metabox.
+					 */
+					$md_opts = apply_filters( 'wpsso_get_' . $mod[ 'name' ] . '_options', $md_opts, $comment_id, $mod );
+
+					/**
+					 * Since WPSSO Core v8.2.0.
+					 */
+					$md_opts = apply_filters( 'wpsso_sanitize_md_options', $md_opts, $mod );
+				}
+			}
+
+			return $this->return_options( $comment_id, $md_opts, $md_key, $pad_opts );
+		}
+
+		/**
+		 * Use $rel = false to extend WpssoAbstractWpMeta->save_options().
+		 */
+		public function save_options( $comment_id, $rel = false ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_args( array(
+					'comment_id' => $comment_id,
+				) );
+			}
+
+			if ( empty( $comment_id ) ) {	// Just in case.
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: comment id is empty' );
+				}
+
+				return;
+			}
+
+			if ( ! $this->user_can_save( $comment_id ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: user cannot save comment id ' . $comment_id );
+				}
+
+				return;
+			}
+
+			$this->md_cache_disabled = true;	// Disable local cache for get_defaults() and get_options().
+
+			$mod = $this->get_mod( $comment_id );
+
+			$md_opts = $this->get_submit_opts( $mod );
+
+			$md_opts = apply_filters( 'wpsso_save_md_options', $md_opts, $mod );
+
+			$md_opts = apply_filters( 'wpsso_save_' . $mod[ 'name' ] . '_options', $md_opts, $comment_id, $mod );
+
+			if ( empty( $md_opts ) ) {
+
+				return $this->delete_meta( $comment_id, WPSSO_META_NAME );
+			}
+
+			return $this->update_meta( $comment_id, WPSSO_META_NAME, $md_opts );
+		}
+
+		/**
+		 * Use $rel = false to extend WpssoAbstractWpMeta->save_options().
+		 */
+		public function delete_options( $comment_id, $rel = false ) {
+
+			return $this->delete_meta( $comment_id, WPSSO_META_NAME );
 		}
 
 		public function clear_cache_comment_post( $comment_id, $comment_approved ) {
@@ -139,9 +307,49 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 		}
 
 		/**
+		 * Use $rel = false to extend WpssoAbstractWpMeta->user_can_save().
+		 */
+		public function user_can_save( $comment_id, $rel = false ) {
+
+			if ( ! $this->verify_submit_nonce() ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: verify_submit_nonce failed' );
+				}
+
+				return false;
+			}
+
+			$comment_obj = get_comment( $comment_id );
+
+			$capability = 'edit_comment';
+
+			if ( ! current_user_can( $capability, $comment_id ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: cannot ' . $capability . ' for comment id ' . $comment_id );
+				}
+
+				/**
+				 * Add notice only if the admin notices have not already been shown.
+				 */
+				if ( $this->p->notice->is_admin_pre_notices() ) {
+
+					$this->p->notice->err( sprintf( __( 'Insufficient privileges to save settings for comment ID %1$s.', 'wpsso' ), $comment_id ) );
+				}
+
+				return false;
+			}
+
+			return true;
+		}
+
+		/**
 		 * Since WPSSO Core v8.4.0.
 		 */
-		public static function get_meta( $comment_id, $meta_key, $single = false ) {
+		public static function get_meta( $comment_id, $meta_key = '', $single = false ) {
 
 			return get_comment_meta( $comment_id, $meta_key, $single );
 		}

@@ -284,10 +284,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 					$md_opts = get_user_meta( $user_exists_id, WPSSO_META_NAME, $single = true );
 
-					if ( ! is_array( $md_opts ) ) {
-
-						$md_opts = array();
-					}
+					if ( ! is_array( $md_opts ) ) $md_opts = array();	// WPSSO_META_NAME not found.
 
 				} else {
 
@@ -303,19 +300,9 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				 */
 				if ( $this->p->opt->is_upgrade_required( $md_opts ) ) {
 
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'upgrading user ID ' . $user_id . ' options' );
-					}
-
 					$md_opts = $this->upgrade_options( $md_opts, $user_exists_id );
 
 					if ( $user_exists ) {
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'saving user ID ' . $user_id . ' options' );
-						}
 
 						update_user_meta( $user_exists_id, WPSSO_META_NAME, $md_opts );
 
@@ -323,16 +310,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 						apply_filters( 'wpsso_update_other_user_meta', $md_opts, $user_id );
 					}
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log_arr( 'user ID ' . $user_id . ' options read', $md_opts );
-					}
-				}
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log_arr( 'user_id ' . $user_id . ' meta options read', $md_opts );
 				}
 			}
 
@@ -355,38 +332,22 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					/**
 					 * Since WPSSO Core v7.1.0.
 					 */
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'applying get_md_options filters' );
-					}
-
 					$md_opts = apply_filters( 'wpsso_get_md_options', $md_opts, $mod );
 
 					/**
 					 * Since WPSSO Core v4.31.0.
 					 */
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'applying get_user_options filters for user_id ' . $user_id . ' meta' );
-					}
-
-					$md_opts = apply_filters( 'wpsso_get_user_options', $md_opts, $user_id, $mod );
+					$md_opts = apply_filters( 'wpsso_get_' . $mod[ 'name' ] . '_options', $md_opts, $user_id, $mod );
 
 					/**
 					 * Since WPSSO Core v8.2.0.
 					 */
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'applying sanitize_md_options filters' );
-					}
-
 					$md_opts = apply_filters( 'wpsso_sanitize_md_options', $md_opts, $mod );
 
 					/**
 					 * Since WPSSO Core v10.0.0.
 					 *
-					 * Prevent users from modifying specific options, like the canonical URL, Open Graph type,
-					 * and Schema type.
+					 * Prevent users from modifying specific options.
 					 */
 					$disable_keys = array(
 						'og_type',
@@ -454,18 +415,15 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			$mod = $this->get_mod( $user_id );
 
-			/**
-			 * Merge and check submitted post, term, and user metabox options.
-			 */
 			$md_opts = $this->get_submit_opts( $mod );
 
 			$md_opts = apply_filters( 'wpsso_save_md_options', $md_opts, $mod );
 
-			$md_opts = apply_filters( 'wpsso_save_user_options', $md_opts, $user_id, $mod );
+			$md_opts = apply_filters( 'wpsso_save_' . $mod[ 'name' ] . '_options', $md_opts, $user_id, $mod );
 
 			if ( empty( $md_opts ) ) {
 
-				return delete_user_meta( $user_id, WPSSO_META_NAME );
+				return $this->delete_meta( $user_id, WPSSO_META_NAME );
 			}
 
 			return update_user_meta( $user_id, WPSSO_META_NAME, $md_opts );
@@ -476,7 +434,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		 */
 		public function delete_options( $user_id, $rel = false ) {
 
-			return delete_user_meta( $user_id, WPSSO_META_NAME );
+			return $this->delete_meta( $user_id, WPSSO_META_NAME );
 		}
 
 		/**
@@ -1601,7 +1559,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			foreach ( $col_meta_keys as $col_key => $meta_key ) {
 
-				delete_user_meta( $user_id, $meta_key );
+				$this->delete_meta( $user_id, $meta_key );
 			}
 
 			/**
@@ -1975,7 +1933,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		/**
 		 * Since WPSSO Core v8.4.0.
 		 */
-		public static function get_meta( $user_id, $meta_key, $single = false ) {
+		public static function get_meta( $user_id, $meta_key = '', $single = false ) {
 
 			return get_user_meta( $user_id, $meta_key, $single );
 		}

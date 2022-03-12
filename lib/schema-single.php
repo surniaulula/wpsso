@@ -145,7 +145,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			return 1;	// Return count of books added.
 		}
 
-		public static function add_comment_data( &$json_data, array $mod, $comment_id, $list_element = true ) {
+		public static function add_comment_data( &$json_data, array $post_mod, $comment_id, $list_element = true ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -156,14 +156,12 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				return $comments_added;
 			}
 
-			$comment_obj = get_comment( $comment_id );
+			$comment_mod = $wpsso->comment->get_mod( $comment_id );
 
-			if ( empty( $comment_obj ) ) {
+			if ( ! $comment_mod[ 'is_comment' ] || ! $comment_mod[ 'id' ] ) {
 
 				return $comments_added;
 			}
-
-			$comment_mod = $wpsso->comment->get_mod( $comment_id );
 
 			/**
 			 * If not adding a list element, inherit the existing schema type url (if one exists).
@@ -191,9 +189,26 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				) ),
 			) );
 
+			/**
+			 * Property:
+			 *      image as https://schema.org/ImageObject
+			 *      video as https://schema.org/VideoObject
+			 */
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'adding image and video properties for comment' );
+			}
+
+			$mt_comment = $wpsso->og->get_array( $comment_mod, $size_names = 'schema' );
+
+			WpssoSchema::add_media_data( $json_ret, $comment_mod, $mt_comment, $size_names = 'schema', $add_video = true );
+
 			$comments_added++;
 
-			$replies_added = self::add_comment_reply_data( $json_ret[ 'comment' ], $mod, $comment_obj->comment_ID );
+			/**
+			 * Add post comment replies.
+			 */
+			$replies_added = self::add_comment_reply_data( $json_ret[ 'comment' ], $post_mod, $comment_id );
 
 			if ( empty( $list_element ) ) {		// Add a single item.
 
@@ -216,14 +231,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			return $comments_added;	// Return count of comments added.
 		}
 
-		public static function add_comment_reply_data( &$json_data, $mod, $comment_id ) {
+		public static function add_comment_reply_data( &$json_data, $post_mod, $comment_id ) {
 
 			$wpsso =& Wpsso::get_instance();
 
 			$replies_added = 0;
 
 			$replies = get_comments( array(
-				'post_id' => $mod[ 'id' ],
+				'post_id' => $post_mod[ 'id' ],
 				'status'  => 'approve',
 				'parent'  => $comment_id,	// Get only the replies for this comment.
 				'order'   => 'DESC',
@@ -232,9 +247,9 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			if ( is_array( $replies ) ) {
 
-				foreach( $replies as $num => $reply ) {
+				foreach( $replies as $num => $comment_obj ) {
 
-					$comments_added = WpssoSchemaSingle::add_comment_data( $json_data, $mod, $reply->comment_ID, $comment_list_el = true );
+					$comments_added = self::add_comment_data( $json_data, $post_mod, $comment_obj->comment_ID, $comment_list_el = true );
 
 					if ( $comments_added ) {
 
@@ -482,21 +497,21 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 						case 'event_location_id':
 
-							WpssoSchemaSingle::add_place_data( $json_ret[ $prop_name ], $mod, $id, $place_list_el = true );
+							self::add_place_data( $json_ret[ $prop_name ], $mod, $id, $place_list_el = true );
 
 							break;
 
 						case 'event_organizer_org_id':
 						case 'event_performer_org_id':
 
-							WpssoSchemaSingle::add_organization_data( $json_ret[ $prop_name ], $mod, $id, 'org_logo_url', $org_list_el = true );
+							self::add_organization_data( $json_ret[ $prop_name ], $mod, $id, 'org_logo_url', $org_list_el = true );
 
 							break;
 
 						case 'event_organizer_person_id':
 						case 'event_performer_person_id':
 
-							WpssoSchemaSingle::add_person_data( $json_ret[ $prop_name ], $mod, $id, $person_list_el = true );
+							self::add_person_data( $json_ret[ $prop_name ], $mod, $id, $person_list_el = true );
 
 							break;
 					}
@@ -859,13 +874,13 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 						case 'job_hiring_org_id':
 
-							WpssoSchemaSingle::add_organization_data( $json_ret[ $prop_name ], $mod, $id, 'org_logo_url', $org_list_el = true );
+							self::add_organization_data( $json_ret[ $prop_name ], $mod, $id, 'org_logo_url', $org_list_el = true );
 
 							break;
 
 						case 'job_location_id':
 
-							WpssoSchemaSingle::add_place_data( $json_ret[ $prop_name ], $mod, $id, $place_list_el = true );
+							self::add_place_data( $json_ret[ $prop_name ], $mod, $id, $place_list_el = true );
 
 							break;
 					}
@@ -1994,7 +2009,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						continue;
 					}
 
-					$shipping_details = WpssoSchemaSingle::get_shipping_offer_data( $mod, $shipping_opts, $offer[ 'url' ] );
+					$shipping_details = self::get_shipping_offer_data( $mod, $shipping_opts, $offer[ 'url' ] );
 
 					if ( false === $shipping_details ) {
 
@@ -2026,7 +2041,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				$offer_mod = $wpsso->post->get_mod( $post_id );
 
-				WpssoSchema::add_media_data( $offer, $offer_mod, $mt_offer, $size_names = 'schema', $add_video = 'false' );
+				WpssoSchema::add_media_data( $offer, $offer_mod, $mt_offer, $size_names = 'schema', $add_video = false );
 			}
 
 			/**

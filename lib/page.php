@@ -1630,7 +1630,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			/**
 			 * Apply the seed filter.
 			 *
-			 * Return false to prevent the 'post_content' from being used.
+			 * Return false to prevent the commen or post from being used.
 			 *
 			 * See WpssoProEcomEdd->filter_the_content_seed().
 			 * See WpssoProEcomWoocommerce->filter_the_content_seed().
@@ -1654,7 +1654,11 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			} elseif ( $mod[ 'is_post' ] && $mod[ 'id' ] ) {
 
-				$content = get_post_field( 'post_content', $mod[ 'id' ] );
+				$content = $mod[ 'wp_obj' ]->post_content;
+			
+			} elseif ( $mod[ 'is_comment' ] && $mod[ 'id' ] ) {
+
+				$content = $mod[ 'wp_obj' ]->comment_content;
 			}
 
 			/**
