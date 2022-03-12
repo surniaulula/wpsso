@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 11.7.0-dev.2\n"
+"Project-Id-Version: WPSSO Core 11.7.0-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -564,8 +564,8 @@ msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
 #: gettext/gettext-lib-com.php:40 gettext/gettext-lib-pro.php:421
-#: lib/com/form.php:886 lib/media.php:1461 lib/media.php:1612
-#: lib/media.php:3278 lib/pro/util/check-img-dims.php:104
+#: lib/com/form.php:886 lib/media.php:1464 lib/media.php:1615
+#: lib/media.php:3281 lib/pro/util/check-img-dims.php:104
 msgid "Media Library"
 msgstr ""
 
@@ -4694,7 +4694,7 @@ msgstr ""
 msgid "full size original"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:422 lib/media.php:3288
+#: gettext/gettext-lib-pro.php:422 lib/media.php:3291
 #: lib/pro/util/check-img-dims.php:107
 msgid "image ID %1$s (%2$s)"
 msgstr ""
@@ -5792,7 +5792,7 @@ msgctxt "module name"
 msgid "comment"
 msgstr ""
 
-#: lib/comment.php:340
+#: lib/comment.php:341
 msgid "Insufficient privileges to save settings for comment ID %1$s."
 msgstr ""
 
@@ -6582,84 +6582,84 @@ msgid ""
 "all %1$d image sizes): %2$d by %3$d pixels."
 msgstr ""
 
-#: lib/media.php:1255
+#: lib/media.php:1258
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1465
+#: lib/media.php:1468
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:1466 lib/media.php:1663
+#: lib/media.php:1469 lib/media.php:1666
 msgid ""
 "You may consider regenerating the sizes of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
 "org</a>."
 msgstr ""
 
-#: lib/media.php:1482
+#: lib/media.php:1485
 msgid ""
 "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s "
 "function</a> returned an error for <a href=\"%4$s\">image ID %5$s</a>: %6$s."
 msgstr ""
 
-#: lib/media.php:1503
+#: lib/media.php:1506
 msgid ""
 "Possible %1$s corruption detected - the full size image dimensions for <a "
 "href=\"%2$s\">image ID %3$s</a> are missing from the image metadata returned "
 "by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:1522
+#: lib/media.php:1525
 msgid ""
 "Possible %1$s corruption detected - the full size image file path for <a "
 "href=\"%2$s\">image ID %3$s</a> is missing from the image metadata returned "
 "by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:1614
+#: lib/media.php:1617
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1632 lib/post.php:658 lib/register.php:348 lib/term.php:520
+#: lib/media.php:1635 lib/post.php:658 lib/register.php:348 lib/term.php:520
 #: lib/user.php:498 lib/util.php:711 lib/util.php:817 lib/util.php:849
 #: lib/util.php:2882
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1633 lib/post.php:659 lib/term.php:521 lib/user.php:499
+#: lib/media.php:1636 lib/post.php:659 lib/term.php:521 lib/user.php:499
 #: lib/util.php:712 lib/util.php:2883
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
-#: lib/media.php:1634
+#: lib/media.php:1637
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to make image size "
 "\"%3$s\" from %4$s (%5$s)."
 msgstr ""
 
-#: lib/media.php:1661
+#: lib/media.php:1664
 msgid ""
 "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s "
 "function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr ""
 
-#: lib/media.php:3304
+#: lib/media.php:3307
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:3357
+#: lib/media.php:3360
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:3392
+#: lib/media.php:3395
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."

@@ -84,6 +84,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 					$mod[ 'comment_author_url' ]  = $mod[ 'wp_obj' ]->comment_author_url;
 					$mod[ 'comment_parent' ]      = $mod[ 'wp_obj' ]->comment_parent;
 					$mod[ 'comment_time' ]        = mysql2date( 'c', $mod[ 'wp_obj' ]->comment_date_gmt );	// ISO 8601 date.
+					$mod[ 'is_public' ]           = $mod[ 'wp_obj' ]->comment_approved ? true : false;
 
 					$comment_rating = $this->get_meta( $mod[ 'id' ], WPSSO_META_RATING_NAME, $single = true );
 

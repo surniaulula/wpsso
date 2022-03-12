@@ -275,7 +275,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			/**
 			 * Get video information and preview enable/disable option from the post/term/user meta.
 			 */
-			if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
+			if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {
 
 				/**
 				 * Note that get_options() returns null if an index key is not found.
@@ -312,18 +312,21 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			/**
 			 * Optionally get more videos from the post content.
 			 */
-			if ( $mod[ 'is_post' ] && ! $this->p->util->is_maxed( $mt_videos, $num ) ) {
+			if ( $mod[ 'is_comment' ] || $mod[ 'is_post' ] ) {
+			
+				if ( ! $this->p->util->is_maxed( $mt_videos, $num ) ) {
 
-				if ( $this->p->debug->enabled ) {
+					if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->mark( 'checking for additional videos in the post content' );	// Begin timer.
-				}
+						$this->p->debug->mark( 'checking for videos in the ' . $mod[ 'name' ] . ' content' );	// Begin timer.
+					}
 
-				$mt_videos = array_merge( $mt_videos, $this->get_content_videos( $num_diff, $mod, $check_dupes ) );
+					$mt_videos = array_merge( $mt_videos, $this->get_content_videos( $num_diff, $mod, $check_dupes ) );
 
-				if ( $this->p->debug->enabled ) {
+					if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->mark( 'checking for additional videos in the post content' );	// End timer.
+						$this->p->debug->mark( 'checking for videos in the ' . $mod[ 'name' ] . ' content' );	// End timer.
+					}
 				}
 			}
 
@@ -354,7 +357,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 *
 			 * The og:video:title and og:video:description meta tags are not standard and their values will only appear in Schema markup.
 			 */
-			if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] && $md_pre !== 'none' ) {
+			if ( is_object( $mod[ 'obj' ] ) && $mod[ 'id' ] && $md_pre !== 'none' ) {
 
 				foreach ( $mt_videos as &$mt_single_video ) {	// Uses reference.
 
