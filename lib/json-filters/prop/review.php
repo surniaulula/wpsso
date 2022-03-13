@@ -121,64 +121,63 @@ if ( ! class_exists( 'WpssoJsonFiltersPropReview' ) ) {
 
 					foreach ( $mt_og[ $og_type . ':reviews' ] as $mt_review ) {
 
-						$mt_pre         = $og_type . ':review';
-						$cmt_id_key     = $og_type . ':review:id';
-						$single_review  = array();
+						$single_review = WpssoSchema::get_data_itemprop_from_assoc( $mt_review, array( 
+							'url'         => 'review:url',
+							'dateCreated' => 'review:created_time',
+							'name'        => 'review:title',
+							'description' => 'review:description',
+							'text'        => 'review:text',
+						) );
 
-						if ( is_array( $mt_review ) && false !== ( $single_review = WpssoSchema::get_data_itemprop_from_assoc( $mt_review, array( 
-							'url'         => $mt_pre . ':url',
-							'dateCreated' => $mt_pre . ':created_time',
-							'name'        => $mt_pre . ':title',
-							'description' => $mt_pre . ':content',
-						) ) ) ) {
+						if ( ! empty( $mt_review[ 'review:rating:value' ] ) ) {
 
-							if ( ! empty( $mt_review[ $mt_pre . ':rating:value' ] ) ) {
-
-								$single_review[ 'reviewRating' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/Rating',
-									WpssoSchema::get_data_itemprop_from_assoc( $mt_review, array(
-										'ratingValue' => $mt_pre . ':rating:value',
-										'worstRating' => $mt_pre . ':rating:worst',
-										'bestRating'  => $mt_pre . ':rating:best',
-									) )
-								);
-							}
-
-							if ( ! empty( $mt_review[ $mt_pre . ':author:name' ] ) ) {
-
-								if ( false !== ( $author_data = WpssoSchema::get_data_itemprop_from_assoc( $mt_review, array(
-									'url'  => $mt_pre . ':author:url',
-									'name' => $mt_pre . ':author:name',
-								) ) ) ) {
-
-									$single_review[ 'author' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/Person',
-										$author_data );
-								}
-							}
-
-							/**
-							 * If we have a comment ID then add any replies to the comment.
-							 */
-							if ( ! empty( $mt_review[ $cmt_id_key ] ) ) {
-
-								$replies_added = WpssoSchemaSingle::add_comment_reply_data( $single_review[ 'comment' ],
-									$mod, $mt_review[ $cmt_id_key ] );
-
-								if ( ! $replies_added ) {
-
-									unset( $single_review[ 'comment' ] );
-								}
-							}
-
-							if ( ! empty( $mt_review[ $og_type . ':review:image' ] ) ) {
-
-								WpssoSchema::add_images_data_mt( $single_review[ 'image' ], $mt_review[ $og_type . ':review:image' ] );
-							}
-
-							/**
-							 * Add the complete review.
-							 */
-							$all_reviews[] = WpssoSchema::get_schema_type_context( 'https://schema.org/Review', $single_review );
+							$single_review[ 'reviewRating' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/Rating',
+								WpssoSchema::get_data_itemprop_from_assoc( $mt_review, array(
+									'ratingValue' => 'review:rating:value',
+									'worstRating' => 'review:rating:worst',
+									'bestRating'  => 'review:rating:best',
+								) )
+							);
 						}
+
+						if ( ! empty( $mt_review[ 'review:author:name' ] ) ) {
+
+							$single_review[ 'author' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/Person',
+								WpssoSchema::get_data_itemprop_from_assoc( $mt_review, array(
+									'url'  => 'review:author:url',
+									'name' => 'review:author:name',
+								) )
+							);
+						}
+
+						/**
+						 * If we have a comment ID then add any replies to the comment.
+						 */
+						if ( ! empty( $mt_review[ 'review:id' ] ) ) {
+
+							$replies_added = WpssoSchemaSingle::add_comment_reply_data( $single_review[ 'comment' ],
+								$mod, $mt_review[ 'review:id' ] );
+
+							if ( ! $replies_added ) {
+
+								unset( $single_review[ 'comment' ] );
+							}
+						}
+
+						if ( ! empty( $mt_review[ 'review:image' ] ) ) {
+
+							WpssoSchema::add_images_data_mt( $single_review[ 'image' ], $mt_review[ 'review:image' ] );
+						}
+
+						if ( ! empty( $mt_review[ 'review:video' ] ) ) {
+
+							WpssoSchema::add_videos_data_mt( $single_review[ 'video' ], $mt_review[ 'review:video' ] );
+						}
+
+						/**
+						 * Add the complete review.
+						 */
+						$all_reviews[] = WpssoSchema::get_schema_type_context( 'https://schema.org/Review', $single_review );
 					}
 				}
 			}

@@ -844,15 +844,25 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 					foreach ( $mixed as $key => $value ) {
 
+						$log_prefix = $tag . ' ' . $type . ' ' . $key;
+
 						if ( ! $use_image && 0 === strpos( $key, 'og:image' ) ) {
 
 							continue;
-
 						}
 
 						if ( is_array( $value ) ) {
 
-							$this->add_mt_array( $mt_array, $tag, $type, $key, $value, $cmt, $mod, $use_image );
+							$opt_key = strtolower( 'add_' . $tag . '_' . $type . '_' . $key );
+
+							if ( ! empty( $this->p->options[ $opt_key ] ) ) {
+
+								$this->add_mt_array( $mt_array, $tag, $type, $key, $value, $cmt, $mod, $use_image );
+				
+							} elseif ( $this->p->debug->enabled ) { 
+							
+								$this->p->debug->log( $log_prefix . ' array skipped: option is disabled' );
+							}
 
 						} else {
 
@@ -1210,7 +1220,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 				}
 
 				/**
-				 * Convert mixed case itemprop names (for example) to lower case to determine the option key value.
+				 * Convert mixed case itemprop names to lower case.
 				 */
 				$opt_key = strtolower( 'add_' . $parts[ 1 ] . '_' . $parts[ 2 ] . '_' . $parts[ 3 ] );
 

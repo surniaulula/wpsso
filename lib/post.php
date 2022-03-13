@@ -1823,7 +1823,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			return true;
 		}
 
-		public function get_mt_reviews( $post_id, $mt_pre = 'product', $rating_meta = 'rating', $worst_rating = 1, $best_rating = 5 ) {
+		public function get_mt_reviews( $post_id, $rating_meta = 'rating', $worst_rating = 1, $best_rating = 5 ) {
 
 			$reviews = array();
 
@@ -1850,7 +1850,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 				foreach( $comments as $num => $comment_obj ) {
 
-					$comment_review = $this->get_mt_comment_review( $comment_obj, $mt_pre, $rating_meta, $worst_rating, $best_rating );
+					$comment_review = $this->get_mt_comment_review( $comment_obj, $rating_meta, $worst_rating, $best_rating );
 
 					if ( ! empty( $comment_review ) ) {	// Just in case.
 

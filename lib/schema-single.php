@@ -182,6 +182,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'url'         => $wpsso->util->get_canonical_url( $comment_mod ),
 				'name'        => $wpsso->page->get_title( $comment_mod, $md_key = 'schema_title', $max_len = 'schema_title' ),
 				'description' => $wpsso->page->get_description( $comment_mod, $md_key = 'schema_desc', $max_len = 'schema_desc' ),
+				'text'        => $wpsso->page->get_text( $comment_mod, $md_key = 'schema_text', $max_len = 'schema_text' ),
 				'dateCreated' => $comment_mod[ 'comment_time' ],
 				'author'      => WpssoSchema::get_schema_type_context( 'https://schema.org/Person', array(
 					'url'  => $comment_mod[ 'comment_author_url' ],

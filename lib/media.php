@@ -986,7 +986,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$mod = $this->p->page->get_mod( $mod );
 			}
 
-			$mt_ret = array();
+			$mt_images = array();
 
 			/**
 			 * Allow custom content to be passed as an argument in $content.
@@ -1009,7 +1009,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$this->p->debug->log( 'exiting early: empty ' . $mod[ 'name' ] . ' content' );
 				}
 
-				return $mt_ret;
+				return $mt_images;
 			}
 
 			$content_img_preg = $this->default_content_img_preg;
@@ -1191,6 +1191,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 									'og:image:url'    => $attr_value,
 									'og:image:width'  => WPSSO_UNDEF,
 									'og:image:height' => WPSSO_UNDEF,
+									'og:image:alt'    => preg_match( '/ alt="([^"]+)"/', $tag_value, $match ) ? $match[ 1 ] : '',
 								);
 							}
 
@@ -1280,15 +1281,15 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 						if ( ! $check_dupes || $this->p->util->is_uniq_url( $mt_single_image[ 'og:image:url' ], $size_name ) ) {
 
-							if ( $this->p->util->push_max( $mt_ret, $mt_single_image, $num ) ) {
+							if ( $this->p->util->push_max( $mt_images, $mt_single_image, $num ) ) {
 
-								return $mt_ret;
+								return $mt_images;
 							}
 						}
 					}
 				}
 
-				return $mt_ret;
+				return $mt_images;
 			}
 
 			if ( $this->p->debug->enabled ) {
@@ -1296,7 +1297,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->p->debug->log( 'no matching <' . $content_img_preg[ 'html_tag' ] . '/> html tag(s) found' );
 			}
 
-			return $mt_ret;
+			return $mt_images;
 		}
 
 		/**

@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 11.7.0-dev.3\n"
+"Project-Id-Version: WPSSO Core 11.7.0-dev.4\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -564,8 +564,8 @@ msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
 #: gettext/gettext-lib-com.php:40 gettext/gettext-lib-pro.php:421
-#: lib/com/form.php:886 lib/media.php:1464 lib/media.php:1615
-#: lib/media.php:3281 lib/pro/util/check-img-dims.php:104
+#: lib/com/form.php:886 lib/media.php:1465 lib/media.php:1616
+#: lib/media.php:3282 lib/pro/util/check-img-dims.php:104
 msgid "Media Library"
 msgstr ""
 
@@ -4574,7 +4574,7 @@ msgstr ""
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:374 lib/pro/ecom/woocommerce.php:1370
+#: gettext/gettext-lib-pro.php:374 lib/pro/ecom/woocommerce.php:1355
 msgid "World"
 msgstr ""
 
@@ -4675,7 +4675,7 @@ msgstr ""
 
 #: gettext/gettext-lib-pro.php:416 gettext/gettext-lib-pro.php:418
 #: gettext/gettext-lib-pro.php:454 lib/conflict.php:208 lib/loader.php:187
-#: lib/loader.php:201 lib/post.php:1567 lib/pro/review/yotpowc.php:206
+#: lib/loader.php:201 lib/post.php:1567 lib/pro/review/yotpowc.php:185
 #: lib/pro/util/shorten.php:495 lib/pro/util/shorten.php:532
 msgid "%s error:"
 msgstr ""
@@ -4694,7 +4694,7 @@ msgstr ""
 msgid "full size original"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:422 lib/media.php:3291
+#: gettext/gettext-lib-pro.php:422 lib/media.php:3292
 #: lib/pro/util/check-img-dims.php:107
 msgid "image ID %1$s (%2$s)"
 msgstr ""
@@ -4802,33 +4802,33 @@ msgstr ""
 #. translators: %s is "App Key".
 #. translators: %s is "Secret Token".
 #: gettext/gettext-lib-pro.php:455 gettext/gettext-lib-pro.php:456
-#: lib/pro/review/yotpowc.php:218 lib/pro/review/yotpowc.php:238
+#: lib/pro/review/yotpowc.php:197 lib/pro/review/yotpowc.php:217
 msgid "Yotpo for WooCommerce \"%s\" option value is empty."
 msgstr ""
 
 #. translators: %s is "wc_yotpo_compatible()".
-#: gettext/gettext-lib-pro.php:457 lib/pro/review/yotpowc.php:258
+#: gettext/gettext-lib-pro.php:457 lib/pro/review/yotpowc.php:237
 msgid "Yotpo for WooCommerce %s function is missing."
 msgstr ""
 
 #. translators: %s is "wc_yotpo_compatible()".
-#: gettext/gettext-lib-pro.php:458 lib/pro/review/yotpowc.php:279
+#: gettext/gettext-lib-pro.php:458 lib/pro/review/yotpowc.php:258
 msgid "Yotpo for WooCommerce %s function returned false."
 msgstr ""
 
 #. translators: %s is "yotpo-social-reviews-for-woocommerce".
-#: gettext/gettext-lib-pro.php:459 lib/pro/review/yotpowc.php:307
+#: gettext/gettext-lib-pro.php:459 lib/pro/review/yotpowc.php:286
 msgid ""
 "\"%s\" plugin not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders."
 msgstr ""
 
 #. translators: %s is the API library file path.
-#: gettext/gettext-lib-pro.php:460 lib/pro/review/yotpowc.php:329
+#: gettext/gettext-lib-pro.php:460 lib/pro/review/yotpowc.php:308
 msgid "Yotpo for WooCommerce API library file \"%s\" not found."
 msgstr ""
 
 #. translators: %s is the API library file path.
-#: gettext/gettext-lib-pro.php:461 lib/pro/review/yotpowc.php:356
+#: gettext/gettext-lib-pro.php:461 lib/pro/review/yotpowc.php:335
 msgid "Yotpo for WooCommerce \"%s\" class does not exist."
 msgstr ""
 
@@ -4837,12 +4837,12 @@ msgid "getting shopper approved ratings and reviews"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:463 gettext/gettext-lib-pro.php:466
-#: lib/pro/review/shopperapproved.php:365 lib/pro/review/stamped.php:337
+#: lib/pro/review/shopperapproved.php:337 lib/pro/review/stamped.php:327
 msgid "There has been a previous error connecting to %s for caching."
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:464 gettext/gettext-lib-pro.php:467
-#: lib/pro/review/shopperapproved.php:368 lib/pro/review/stamped.php:340
+#: lib/pro/review/shopperapproved.php:340 lib/pro/review/stamped.php:330
 msgid ""
 "Requests to retrieve and cache this URL are ignored for another %d second(s)"
 msgstr ""
@@ -6531,7 +6531,7 @@ msgid ""
 "a>."
 msgstr ""
 
-#: lib/json-filters/prop/review.php:219
+#: lib/json-filters/prop/review.php:218
 msgid ""
 "Reviews for this markup have been ignored - <a href=\"%1$s\">Google does not "
 "allow reviews for the Schema %2$s type</a>."
@@ -6582,84 +6582,84 @@ msgid ""
 "all %1$d image sizes): %2$d by %3$d pixels."
 msgstr ""
 
-#: lib/media.php:1258
+#: lib/media.php:1259
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1468
+#: lib/media.php:1469
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:1469 lib/media.php:1666
+#: lib/media.php:1470 lib/media.php:1667
 msgid ""
 "You may consider regenerating the sizes of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
 "org</a>."
 msgstr ""
 
-#: lib/media.php:1485
+#: lib/media.php:1486
 msgid ""
 "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s "
 "function</a> returned an error for <a href=\"%4$s\">image ID %5$s</a>: %6$s."
 msgstr ""
 
-#: lib/media.php:1506
+#: lib/media.php:1507
 msgid ""
 "Possible %1$s corruption detected - the full size image dimensions for <a "
 "href=\"%2$s\">image ID %3$s</a> are missing from the image metadata returned "
 "by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:1525
+#: lib/media.php:1526
 msgid ""
 "Possible %1$s corruption detected - the full size image file path for <a "
 "href=\"%2$s\">image ID %3$s</a> is missing from the image metadata returned "
 "by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:1617
+#: lib/media.php:1618
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1635 lib/post.php:658 lib/register.php:348 lib/term.php:520
+#: lib/media.php:1636 lib/post.php:658 lib/register.php:348 lib/term.php:520
 #: lib/user.php:498 lib/util.php:711 lib/util.php:817 lib/util.php:849
 #: lib/util.php:2882
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1636 lib/post.php:659 lib/term.php:521 lib/user.php:499
+#: lib/media.php:1637 lib/post.php:659 lib/term.php:521 lib/user.php:499
 #: lib/util.php:712 lib/util.php:2883
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
-#: lib/media.php:1637
+#: lib/media.php:1638
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to make image size "
 "\"%3$s\" from %4$s (%5$s)."
 msgstr ""
 
-#: lib/media.php:1664
+#: lib/media.php:1665
 msgid ""
 "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s "
 "function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr ""
 
-#: lib/media.php:3307
+#: lib/media.php:3308
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:3360
+#: lib/media.php:3361
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:3395
+#: lib/media.php:3396
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
@@ -10600,44 +10600,44 @@ msgctxt "Taxonomy description"
 msgid "Tags for the page post type."
 msgstr ""
 
-#: lib/schema-single.php:1001
+#: lib/schema-single.php:1002
 msgid "adding schema organization"
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1084
+#: lib/schema-single.php:1085
 msgid ""
 "An organization logo image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1087
+#: lib/schema-single.php:1088
 msgid ""
 "An organization banner image is missing and required for the \"%1$s\" "
 "organization Schema %2$s markup."
 msgstr ""
 
 #. translators: %1$s is the organization name, %2$s is 'site' (translated) or 'ID #'.
-#: lib/schema-single.php:1090
+#: lib/schema-single.php:1091
 msgid ""
 "Please enter the missing image URL in the \"%1$s\" %2$s organization "
 "settings."
 msgstr ""
 
-#: lib/schema-single.php:1115
+#: lib/schema-single.php:1116
 msgid "site"
 msgstr ""
 
-#: lib/schema-single.php:1129 lib/schema-single.php:1138
+#: lib/schema-single.php:1130 lib/schema-single.php:1139
 msgid "ID #%s"
 msgstr ""
 
-#: lib/schema-single.php:1325
+#: lib/schema-single.php:1326
 msgid "adding schema person"
 msgstr ""
 
-#: lib/schema-single.php:1552
+#: lib/schema-single.php:1553
 msgid "adding schema place"
 msgstr ""
 

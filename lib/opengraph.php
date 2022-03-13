@@ -555,8 +555,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				if ( $max_nums[ 'og_img_max' ] > 0 ) {
 
-					$mt_og[ 'og:image' ] = $this->p->media->get_all_images( $max_nums[ 'og_img_max' ], $size_names, $mod,
-						$check_dupes = true, $md_pre = 'og' );
+					$mt_og[ 'og:image' ] = $this->p->media->get_all_images( $max_nums[ 'og_img_max' ],
+						$size_names, $mod, $check_dupes = true, $md_pre = 'og' );
 
 					if ( empty( $mt_og[ 'og:image' ] ) ) {
 

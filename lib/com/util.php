@@ -2278,7 +2278,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( isset( $mt_og[ 'og:type' ] ) ) {
 
-				if ( $mt_og[ 'og:type' ] === 'product' ) {
+				if ( 'product' === $mt_og[ 'og:type' ] ) {
 
 					$mt_ret[ $mt_pre . ':offers' ]  = array();	// Non-standard / internal meta tag.
 					$mt_ret[ $mt_pre . ':reviews' ] = array();	// Non-standard / internal meta tag.
