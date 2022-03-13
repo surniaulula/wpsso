@@ -689,13 +689,10 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$json_ret[ 'uploadDate' ] = trim( get_post_time( 'c', $gmt = true, $mod[ 'id' ] ) );
 			}
 
-			/**
-			 * Add width and height as QuantitativeValue.
-			 */
-			WpssoSchema::add_data_unit_from_assoc( $json_ret, $mt_single, array(
-				'width_px'  => $media_pre . ':width',
-				'height_px' => $media_pre . ':height',
-			) );
+			if ( ! empty( $mt_single[ $media_pre . ':alt' ] ) ) {
+			
+				$json_ret[ 'alternativeHeadline' ] = $mt_single[ $media_pre . ':alt' ];
+			}
 
 			if ( ! empty( $mt_single[ $media_pre . ':tag' ] ) ) {
 
@@ -708,6 +705,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 					$json_ret[ 'keywords' ] = $mt_single[ $media_pre . ':tag' ];
 				}
 			}
+
+			/**
+			 * Add width and height as QuantitativeValue.
+			 */
+			WpssoSchema::add_data_unit_from_assoc( $json_ret, $mt_single, array(
+				'width_px'  => $media_pre . ':width',
+				'height_px' => $media_pre . ':height',
+			) );
 
 			/**
 			 * Update the @id string based on $json_ret[ 'url' ] and $image_type_id.
