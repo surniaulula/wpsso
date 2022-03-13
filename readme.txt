@@ -274,6 +274,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* `WpssoPost->get_mt_reviews()`
 		* `WpssoAbstractWpMeta->get_mt_reviews()`
 		* `WpssoAbstractWpMeta->get_mt_comment_review()`
+	* Removed deprecated functions and methods from 2020.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
