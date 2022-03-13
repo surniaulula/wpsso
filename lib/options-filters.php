@@ -479,13 +479,6 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					return 'img_url';
 
 				/**
-				 * Strip leading URLs off facebook usernames.
-				 */
-				case 'fb_admins':	// Deprecated on 2020/10/23.
-
-					return 'url_base';
-
-				/**
 				 * Empty string or a URL.
 				 *
 				 * Option key exceptions:

@@ -3380,16 +3380,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/**
-		 * Deprecated on 2020/11/25.
-		 */
-		public function plugin_pkg_info() {
-
-			_deprecated_function( __METHOD__ . '()', '2020/11/25', $replacement = __CLASS__ . '::get_pkg_info()' );	// Deprecation message.
-
-			return $this->get_pkg_info();
-		}
-
-		/**
 		 * Deprecated on 2021/09/15.
 		 */
 		public function check_tmpl_head_attributes() {
@@ -3403,14 +3393,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function add_og_types_table_rows( array &$table_rows, $form ) {
 
 			_deprecated_function( __METHOD__ . '()', '2021/03/10', $replacement = '' );	// Deprecation message.
-		}
-
-		/**
-		 * Deprecated on 2020/07/01.
-		 */
-		public function add_schema_knowledge_graph_table_rows( array &$table_rows, $form ) {
-
-			_deprecated_function( __METHOD__ . '()', '2020/07/01', $replacement = '' );	// Deprecation message.
 		}
 
 		/**
@@ -3430,14 +3412,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		}
 
 		/**
-		 * Deprecated on 2020/04/28.
-		 */
-		public function add_advanced_product_attr_table_rows( array &$table_rows, $form ) {
-
-			_deprecated_function( __METHOD__ . '()', '2020/04/28', $replacement = '' );	// Deprecation message.
-		}
-
-		/**
 		 * Deprecated on 2021/03/10.
 		 */
 		public function add_advanced_product_attrs_table_rows( array &$table_rows, $form ) {
@@ -3451,16 +3425,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function add_advanced_custom_fields_table_rows( array &$table_rows, $form ) {
 
 			_deprecated_function( __METHOD__ . '()', '2021/03/10', $replacement = '' );	// Deprecation message.
-		}
-
-		/**
-		 * Deprecated on 2020/09/14.
-		 */
-		public function get_config_url_content( $ext, $rel_file, $cache_exp_secs = null ) {
-
-			_deprecated_function( __METHOD__ . '()', '2020/09/14', $replacement = __CLASS__ . '::get_ext_file_content()' );	// Deprecation message.
-
-			return $this->get_ext_file_content( $ext, $rel_file, $cache_exp_secs );
 		}
 	}
 }

@@ -3547,14 +3547,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
-		 * Deprecated on 2020/08/14.
-		 */
-		public static function check_category_prop_value( &$json_data ) {
-
-			_deprecated_function( __METHOD__ . '()', '2020/08/14', $replacement = '' );	// Deprecation message.
-		}
-
-		/**
 		 * Convert a numeric category ID to its Google product type string.
 		 */
 		public static function check_prop_value_category( &$json_data, $prop_name = 'category' ) {
@@ -3589,14 +3581,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					}
 				}
 			}
-		}
-
-		/**
-		 * Deprecated on 2020/08/14.
-		 */
-		public static function check_gtin_prop_value( &$json_data ) {
-
-			_deprecated_function( __METHOD__ . '()', '2020/08/14', $replacement = '' );	// Deprecation message.
 		}
 
 		/**
@@ -3639,14 +3623,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						break;
 				}
 			}
-		}
-
-		/**
-		 * Deprecated on 2020/08/14.
-		 */
-		public static function check_sameas_prop_values( &$json_data ) {
-
-			_deprecated_function( __METHOD__ . '()', '2020/08/14', $replacement = '' );	// Deprecation message.
 		}
 
 		/**
@@ -3712,14 +3688,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$json_data[ $prop_name ] = array_values( $json_data[ $prop_name ] );	// Reindex / renumber the array.
 			}
-		}
-
-		/**
-		 * Deprecated on 2020/08/14.
-		 */
-		public static function check_itemprop_content_map( &$json_data, $prop_name, $map_name ) {
-
-			_deprecated_function( __METHOD__ . '()', '2020/08/14', $replacement = '' );	// Deprecation message.
 		}
 
 		/**

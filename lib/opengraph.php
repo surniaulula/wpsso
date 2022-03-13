@@ -346,22 +346,6 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			}
 
 			/**
-			 * Facebook admins meta tag.
-			 *
-			 * Deprecated on 2020/10/23
-			 */
-			if ( ! isset( $mt_og[ 'fb:admins' ] ) ) {
-
-				if ( ! empty( $this->p->options[ 'fb_admins' ] ) ) {
-
-					foreach ( explode( ',', $this->p->options[ 'fb_admins' ] ) as $fb_admin ) {
-
-						$mt_og[ 'fb:admins' ][] = trim( $fb_admin );
-					}
-				}
-			}
-
-			/**
 			 * Facebook app id meta tag.
 			 */
 			if ( ! isset( $mt_og[ 'fb:app_id' ] ) ) {

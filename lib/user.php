@@ -1338,14 +1338,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		}
 
 		/**
-		 * Deprecated on 2020/07/20.
-		 */
-		public static function reset_metabox_prefs( $pagehook, $box_ids = array(), $meta_name = '', $context = '', $force = false ) {
-
-			_deprecated_function( __METHOD__ . '()', '2020/07/20', $replacement = '' );	// Deprecation message.
-		}
-
-		/**
 		 * Called by the WpssoRegister::uninstall_plugin() method.
 		 *
 		 * Do not use Wpsso::get_instance() since the Wpsso class may not exist.
