@@ -251,7 +251,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.7.0-dev.3 (2022/03/11)**
+**Version 11.7.0-dev.4 (2022/03/13)**
 
 * **New Features**
 	* None.
@@ -270,6 +270,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* `save_options()`
 		* `delete_options()`
 		* `user_can_save()`
+	* Removed the `$mt_prefix` argument from:
+		* `WpssoPost->get_mt_reviews()`
+		* `WpssoAbstractWpMeta->get_mt_reviews()`
+		* `WpssoAbstractWpMeta->get_mt_comment_review()`
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -448,9 +452,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 11.7.0-dev.3 =
+= 11.7.0-dev.4 =
 
-(2022/03/11) Added support for image and video properties in Schema comments markup. Added a new SSO &gt; Advanced Settings &gt; Default Text options. Fixed Schema Headline metadata dependency.
+(2022/03/13) Added support for image and video properties in Schema comments markup. Added a new SSO &gt; Advanced Settings &gt; Default Text options. Fixed Schema Headline metadata dependency.
 
 = 11.6.0 =
 
