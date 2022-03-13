@@ -256,7 +256,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* Added support for image and video properties in Schema comments markup.
+	* Added support for image and video properties in Schema comment and review markup.
 	* Added a new SSO &gt; Advanced Settings &gt; Default Text options:
 		* Reply Comment Title
 		* Review Comment Title
@@ -455,7 +455,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 11.7.0-dev.4 =
 
-(2022/03/13) Added support for image and video properties in Schema comments markup. Added a new SSO &gt; Advanced Settings &gt; Default Text options. Fixed Schema Headline metadata dependency.
+(2022/03/13) Added support for image and video properties in Schema comment and review markup. Added a new SSO &gt; Advanced Settings &gt; Default Text options. Fixed Schema Headline metadata dependency.
 
 = 11.6.0 =
 
