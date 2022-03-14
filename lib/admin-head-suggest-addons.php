@@ -213,11 +213,12 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 						$action_links[] = $purchase_link;
 					}
 
-					$prod_info_msg = __( 'brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, pattern, size, SKU, volume, weight, etc', 'wpsso' );
+					/**
+					 * For translation purposes, the same text is used in the readme.txt, html/home.html, and html/setup.html files.
+					 */
+					$notice_msg = _x( 'The WooCommerce plugin by itself does not provide sufficient markup for Google Rich Results.', 'html paragraph', 'wpsso' ) . ' ';
 
-					$notice_msg = sprintf( __( 'The %1$s plugin does not provide sufficient Schema JSON-LD markup for Google Rich Results.', 'wpsso' ), $ecom_plugin_name ) . ' ';
-
-					$notice_msg .= sprintf( __( 'The %1$s plugin reads %2$s product data and provides complete Schema Product JSON-LD markup for Google Rich Results, including additional product images, product variations, product information (%3$s), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.', 'wpsso' ), $pkg_info[ 'wpsso' ][ 'name_pro' ], $ecom_plugin_name, $prod_info_msg ) . ' ';
+					$notice_msg .= _x( 'The <a href="https://wpsso.com/">WPSSO Core Premium edition</a> can read WooCommerce product data and provide comprehensive Schema Product JSON-LD markup for Google Rich Results, including product image galleries, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, pattern, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.', 'html paragraph', 'wpsso' ) . ' ';
 
 					$notice_msg .= '<ul><li>' . implode( $glue = '</li> <li>', $action_links ) . '</li></ul>' . ' ';
 

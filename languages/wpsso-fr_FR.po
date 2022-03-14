@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 11.7.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2022-03-11 11:46-0800\n"
+"PO-Revision-Date: 2022-03-14 09:03-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -158,92 +158,97 @@ msgctxt "html paragraph"
 msgid "BuddyPress was not originally created as a WordPress plugin, and consequently BuddyPress is not well integrated with WordPress features and functions. There are specific <a href=\"https://wpsso.com/docs/plugins/wpsso/installation/integration/buddypress-integration/\">BuddyPress Integration Notes</a> available to help you with some known BuddyPress integration issues."
 msgstr "BuddyPress n'a pas été créé comme extension WordPress à l'origine, et par conséquent BuddyPress n'est pas bien intégré aux fonctionnalités et fonctions de WordPress. Il y a des <a href=\"https://wpsso.com/docs/plugins/wpsso/installation/integration/buddypress-integration/\">notes d'intégration BuddyPress</a> disponibles pour vous aider à résoudre certains problèmes connus d'intégration BuddyPress."
 
-#: gettext/gettext-html-setup.php:35
+#: gettext/gettext-html-setup.php:35 lib/admin-head-suggest-addons.php:219
 msgctxt "html paragraph"
-msgid "The WooCommerce plugin alone does not provide sufficient Schema markup for Google Rich Results. The <a href=\"https://wpsso.com/\">WPSSO Core Premium edition</a> reads WooCommerce product data and provides complete Schema Product JSON-LD markup for Google Rich Results, including product image galleries, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, pattern, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more."
-msgstr "L'extension WooCommerce à elle seule ne fournit pas un balisage de Schéma suffisant pour les résultats enrichis Google. <a href=\"https://wpsso.com/\">L'édition WPSSO Core Premium</a> lit les données de produit WooCommerce et fournit un balisage complet de Schéma Produit JSON-LD pour les résultats enrichis Google, y compris les galeries d'images de produits, des variantes de produit, des informations sur le produit (marque, couleur, état, EAN, dimensions, GTIN-8/12/ 13/14, ISBN, matériel, MPN, motif, taille, SKU, volume, poids, etc), critiques de produits, notes de produits, dates de début / fin de vente, prix de vente, prix hors taxes, prix avec TVA, tarifs d'expédition, délais d'expédition et bien plus encore."
+msgid "The WooCommerce plugin by itself does not provide sufficient markup for Google Rich Results."
+msgstr "L'extension WooCommerce en elle-même ne fournit pas un balisage suffisant pour les résultats enrichis Google."
 
-#: gettext/gettext-html-setup.php:36
+#: gettext/gettext-html-setup.php:36 lib/admin-head-suggest-addons.php:221
+msgctxt "html paragraph"
+msgid "The <a href=\"https://wpsso.com/\">WPSSO Core Premium edition</a> can read WooCommerce product data and provide comprehensive Schema Product JSON-LD markup for Google Rich Results, including product image galleries, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, pattern, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more."
+msgstr "<a href=\"https://wpsso.com/\">L'édition WPSSO Core Premium</a> peut lire les données de produit WooCommerce et fournir un balisage de Schéma Produit JSON-LD complet pour les résultats enrichis Google, y compris les galeries d'images de produits, des variantes de produit, des informations sur le produit (marque, couleur, état, EAN, dimensions, GTIN-8/12/ 13/14, ISBN, matériel, MPN, motif, taille, SKU, volume, poids, etc), critiques de produits, notes de produits, dates de début / fin de vente, prix de vente, prix hors taxes, prix avec TVA, tarifs d'expédition, délais d'expédition et bien plus encore."
+
+#: gettext/gettext-html-setup.php:37
 msgctxt "html paragraph"
 msgid "The <a href=\"https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/\">WooCommerce Integration Notes</a> are very useful if you would like to include additional information in your meta tags and Schema markup, like the product brand, color, condition, material, pattern, size, etc."
 msgstr "Les <a href=\"https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/\">notes d'intégration WooCommerce </a> sont très utiles si vous souhaitez inclure des informations de produit supplémentaires dans vos balises méta et le balisage de Schéma, comme la marque du produit, la couleur, l'état, matériel, motif, taille, etc."
 
-#: gettext/gettext-html-setup.php:37
+#: gettext/gettext-html-setup.php:38
 msgctxt "html list item"
 msgid "<a href=\"https://www.facebook.com/business/learn/set-up-facebook-page\">Setup a Facebook Business Page</a>"
 msgstr "<a href=\"https://www.facebook.com/business/learn/set-up-facebook-page\">Configurer une page d'entreprise Facebook</a>"
 
-#: gettext/gettext-html-setup.php:38
+#: gettext/gettext-html-setup.php:39
 msgctxt "html list item"
 msgid "<a href=\"https://business.twitter.com/en/basics/create-a-twitter-business-profile.html\">Create a Twitter Business Profile</a>"
 msgstr "<a href=\"https://business.twitter.com/en/basics/create-a-twitter-business-profile.html\">Créer un profil d'entreprise Twitter</a>"
 
-#: gettext/gettext-html-setup.php:39
+#: gettext/gettext-html-setup.php:40
 msgctxt "html list item"
 msgid "<a href=\"https://business.google.com/create\">Add or claim your business on Google My Business</a> (recommended)"
 msgstr "<a href=\"https://business.google.com/create\">Ajoutez ou revendiquez votre entreprise sur Google My Business</a> (recommandé)"
 
-#: gettext/gettext-html-setup.php:40
+#: gettext/gettext-html-setup.php:41
 msgctxt "html list item"
 msgid "<a href=\"https://www.pinterest.com/business/create/\">Create a Pinterest Business Account</a>"
 msgstr "<a href=\"https://www.pinterest.com/business/create/\">Créer un compte d'entreprise Pinterest</a>"
 
-#: gettext/gettext-html-setup.php:41
+#: gettext/gettext-html-setup.php:42
 msgctxt "html list item"
 msgid "<a href=\"https://developers.facebook.com/tools/debug/\">Facebook Sharing Debugger</a>"
 msgstr "<a href=\"https://developers.facebook.com/tools/debug/\">Débogueur de partage Facebook</a>"
 
-#: gettext/gettext-html-setup.php:42
+#: gettext/gettext-html-setup.php:43
 msgctxt "html list item"
 msgid "<a href=\"https://business.facebook.com/ads/microdata/debug\">Facebook Microdata Debug Tool</a>"
 msgstr "<a href=\"https://business.facebook.com/ads/microdata/debug\">Outil de débogage des microdonnées Facebook</a>"
 
-#: gettext/gettext-html-setup.php:43
+#: gettext/gettext-html-setup.php:44
 msgctxt "html list item"
 msgid "<a href=\"https://search.google.com/test/rich-results\">Google Rich Results Test</a>"
 msgstr "<a href=\"https://search.google.com/test/rich-results\">Test de résultats enrichis Google</a>"
 
-#: gettext/gettext-html-setup.php:44
+#: gettext/gettext-html-setup.php:45
 msgctxt "html list item"
 msgid "<a href=\"https://www.linkedin.com/post-inspector/inspect/\">LinkedIn Post Inspector</a>"
 msgstr "<a href=\"https://www.linkedin.com/post-inspector/inspect/\">Inspecteur LinkedIn de publication</a>"
 
-#: gettext/gettext-html-setup.php:45
+#: gettext/gettext-html-setup.php:46
 msgctxt "html list item"
 msgid "<a href=\"https://developers.pinterest.com/tools/url-debugger/\">Pinterest Rich Pins Validator</a>"
 msgstr "<a href=\"https://developers.pinterest.com/tools/url-debugger/\">Validateur Pinterest épingles riches</a>"
 
-#: gettext/gettext-html-setup.php:46
+#: gettext/gettext-html-setup.php:47
 msgctxt "html list item"
 msgid "<a href=\"https://cards-dev.twitter.com/validator\">Twitter Card Validator</a>"
 msgstr "<a href=\"https://cards-dev.twitter.com/validator\">Vérificateur de carte Twitter</a>"
 
-#: gettext/gettext-html-setup.php:47
+#: gettext/gettext-html-setup.php:48
 msgctxt "html list item"
 msgid "<a href=\"https://validator.schema.org/\">Schema Markup Validator</a>"
 msgstr "<a href=\"https://validator.schema.org/\">Validateur de balisage de Schéma</a>"
 
-#: gettext/gettext-html-setup.php:48
+#: gettext/gettext-html-setup.php:49
 msgctxt "html list item"
 msgid "<a href=\"https://validator.w3.org/\">W3C Markup Validator</a> - recommended to check your theme templates for HTML markup issues."
 msgstr "<a href=\"https://validator.w3.org/\">Validateur W3C de balisage</a> - recommandé pour vérifier vos modèles de thème pour des problèmes de balisage HTML."
 
-#: gettext/gettext-html-setup.php:49
+#: gettext/gettext-html-setup.php:50
 msgctxt "html list item"
 msgid "<a href=\"https://developers.google.com/speed/pagespeed/insights/\">Google PageSpeed Insights</a> - recommended for general site and webpage health checks (results influence SEO ranking)."
 msgstr "<a href=\"https://developers.google.com/speed/pagespeed/insights/\">PageSpeed Insights de Google</a> - recommandé pour les vérifications générales de l'état du site et des pages Web (les résultats influencent le classement SEO)."
 
-#: gettext/gettext-html-setup.php:50
+#: gettext/gettext-html-setup.php:51
 msgctxt "html list item"
 msgid "<a href=\"https://support.google.com/webmasters/answer/7451184\">Google's Search Engine Optimization (SEO) Starter Guide</a> - essential reading to understand Google SEO ranking factors."
 msgstr "<a href=\"https://support.google.com/webmasters/answer/7451184?hl=fr\">Guide de démarrage de l'optimisation des moteurs de recherche (SEO) de Google</a> - lecture essentielle pour comprendre les facteurs de classement SEO de Google."
 
-#: gettext/gettext-html-setup.php:51
+#: gettext/gettext-html-setup.php:52
 msgctxt "html list item"
 msgid "<a href=\"https://www.webpagetest.org/\">Webpage Performance Test with Waterfall</a> - recommended to check and diagnose basic performance issues."
 msgstr "<a href=\"https://www.webpagetest.org/\">Test de performance de page Web avec cascade</a> - recommandé pour vérifier et diagnostiquer les problèmes de performances de base."
 
-#: gettext/gettext-html-setup.php:52
+#: gettext/gettext-html-setup.php:53
 msgctxt "html list item"
 msgid "<a href=\"https://www.ssllabs.com/ssltest/\">SSL Server Test by SSL Labs</a> - recommended test for any site using https."
 msgstr "<a href=\"https://www.ssllabs.com/ssltest/\">Test de serveur SSL par SSL Labs</a> - test recommandé pour tout site utilisant https."
@@ -399,8 +404,8 @@ msgstr "de"
 
 #. translators: Please ignore - translation uses a different text domain.
 #: gettext/gettext-lib-com.php:40 gettext/gettext-lib-pro.php:421
-#: lib/com/form.php:886 lib/media.php:1483 lib/media.php:1634
-#: lib/media.php:3302 lib/pro/util/check-img-dims.php:104
+#: lib/com/form.php:886 lib/media.php:1462 lib/media.php:1613
+#: lib/media.php:3279 lib/pro/util/check-img-dims.php:104
 msgid "Media Library"
 msgstr "la médiathèque"
 
@@ -4343,19 +4348,19 @@ msgstr "Shop page"
 msgid "The WooCommerce \"%1$s\" option value is empty."
 msgstr "La valeur de l'option \"%1$s\" de WooCommerce est vide."
 
-#: gettext/gettext-lib-pro.php:371 lib/pro/ecom/woocommerce.php:732
+#: gettext/gettext-lib-pro.php:371 lib/pro/ecom/woocommerce.php:728
 msgid "The rating and review counts provided by WooCommerce for product ID %d are invalid."
 msgstr "Le nombre de notes et de critiques fournis par WooCommerce pour l'ID de produit %d n'est pas valide."
 
-#: gettext/gettext-lib-pro.php:372 lib/pro/ecom/woocommerce.php:735
+#: gettext/gettext-lib-pro.php:372 lib/pro/ecom/woocommerce.php:731
 msgid "The average rating is %.2f, but the rating count is %d and the review count is %d."
 msgstr "La note moyenne est %.2f, mais le nombre de notes est %d et le nombre de critiques est %d."
 
-#: gettext/gettext-lib-pro.php:373 lib/pro/ecom/woocommerce.php:738
+#: gettext/gettext-lib-pro.php:373 lib/pro/ecom/woocommerce.php:734
 msgid "The rating count or the review count must be greater than 0."
 msgstr "Le nombre de notes ou le nombre de critiques doit être supérieur à 0."
 
-#: gettext/gettext-lib-pro.php:374 lib/pro/ecom/woocommerce.php:1374
+#: gettext/gettext-lib-pro.php:374 lib/pro/ecom/woocommerce.php:1355
 msgid "World"
 msgstr "Monde"
 
@@ -4446,7 +4451,7 @@ msgstr "La valeur de l'option \"%s\" est vide et requise."
 
 #: gettext/gettext-lib-pro.php:416 gettext/gettext-lib-pro.php:418
 #: gettext/gettext-lib-pro.php:454 lib/conflict.php:208 lib/loader.php:187
-#: lib/loader.php:201 lib/post.php:1615 lib/pro/review/yotpowc.php:206
+#: lib/loader.php:201 lib/post.php:1567 lib/pro/review/yotpowc.php:185
 #: lib/pro/util/shorten.php:495 lib/pro/util/shorten.php:532
 msgid "%s error:"
 msgstr "Erreur %s:"
@@ -4465,7 +4470,7 @@ msgstr "Le fichier de bibliothèque de raccourcissement d'URL pour \"%s\" est ma
 msgid "full size original"
 msgstr "originale pleine grandeur"
 
-#: gettext/gettext-lib-pro.php:422 lib/media.php:3312
+#: gettext/gettext-lib-pro.php:422 lib/media.php:3289
 #: lib/pro/util/check-img-dims.php:107
 msgid "image ID %1$s (%2$s)"
 msgstr "ID d'image %1$s (%2$s)"
@@ -4568,32 +4573,32 @@ msgstr "Rating Widget Settings"
 #. translators: %s is "App Key".
 #. translators: %s is "Secret Token".
 #: gettext/gettext-lib-pro.php:455 gettext/gettext-lib-pro.php:456
-#: lib/pro/review/yotpowc.php:218 lib/pro/review/yotpowc.php:238
+#: lib/pro/review/yotpowc.php:197 lib/pro/review/yotpowc.php:217
 msgid "Yotpo for WooCommerce \"%s\" option value is empty."
 msgstr "La valeur de l'option \"%s\" de Yotpo pour WooCommerce est vide."
 
 #. translators: %s is "wc_yotpo_compatible()".
-#: gettext/gettext-lib-pro.php:457 lib/pro/review/yotpowc.php:258
+#: gettext/gettext-lib-pro.php:457 lib/pro/review/yotpowc.php:237
 msgid "Yotpo for WooCommerce %s function is missing."
 msgstr "La fonction %s de Yotpo pour WooCommerce est manquante."
 
 #. translators: %s is "wc_yotpo_compatible()".
-#: gettext/gettext-lib-pro.php:458 lib/pro/review/yotpowc.php:279
+#: gettext/gettext-lib-pro.php:458 lib/pro/review/yotpowc.php:258
 msgid "Yotpo for WooCommerce %s function returned false."
 msgstr "La fonction %s de Yotpo pour WooCommerce a retourné la valeur false."
 
 #. translators: %s is "yotpo-social-reviews-for-woocommerce".
-#: gettext/gettext-lib-pro.php:459 lib/pro/review/yotpowc.php:307
+#: gettext/gettext-lib-pro.php:459 lib/pro/review/yotpowc.php:286
 msgid "\"%s\" plugin not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders."
 msgstr "L'extension \"%s\" est introuvable dans les dossiers WPMU_PLUGIN_DIR ou WP_PLUGIN_DIR."
 
 #. translators: %s is the API library file path.
-#: gettext/gettext-lib-pro.php:460 lib/pro/review/yotpowc.php:329
+#: gettext/gettext-lib-pro.php:460 lib/pro/review/yotpowc.php:308
 msgid "Yotpo for WooCommerce API library file \"%s\" not found."
 msgstr "Le fichier \"%s\" de bibliothèque API de Yotpo pour WooCommerce est introuvable."
 
 #. translators: %s is the API library file path.
-#: gettext/gettext-lib-pro.php:461 lib/pro/review/yotpowc.php:356
+#: gettext/gettext-lib-pro.php:461 lib/pro/review/yotpowc.php:335
 msgid "Yotpo for WooCommerce \"%s\" class does not exist."
 msgstr "La classe \"%s\" de Yotpo pour WooCommerce n'existe pas."
 
@@ -4602,12 +4607,12 @@ msgid "getting shopper approved ratings and reviews"
 msgstr "obtenir notes et critiques de shopper approved"
 
 #: gettext/gettext-lib-pro.php:463 gettext/gettext-lib-pro.php:466
-#: lib/pro/review/shopperapproved.php:365 lib/pro/review/stamped.php:337
+#: lib/pro/review/shopperapproved.php:337 lib/pro/review/stamped.php:327
 msgid "There has been a previous error connecting to %s for caching."
 msgstr "Il y a eu une erreur précédente lors de la connexion à %s pour mise en cache."
 
 #: gettext/gettext-lib-pro.php:464 gettext/gettext-lib-pro.php:467
-#: lib/pro/review/shopperapproved.php:368 lib/pro/review/stamped.php:340
+#: lib/pro/review/shopperapproved.php:340 lib/pro/review/stamped.php:330
 msgid "Requests to retrieve and cache this URL are ignored for another %d second(s)"
 msgstr "Les demandes de récupération et de mise en cache de cette URL sont ignorées pendant un autre %d seconde(s)."
 
@@ -4710,10 +4715,6 @@ msgstr "Un examen d'évaluation ne peut pas être le sujet d'un autre examen d'�
 #: lib/abstract/wp-meta.php:1767
 msgid "Please select a subject webpage type that better describes the subject of the webpage (ie. the content) being reviewed."
 msgstr "SVP sélectionner un type de page Web du sujet qui décrit mieux le sujet de la page Web (c'est-à-dire le contenu) en cours de révision."
-
-#: lib/abstract/wp-meta.php:2514
-msgid "adding schema images"
-msgstr "ajout d'images schéma"
 
 #: lib/admin-filters.php:66
 msgctxt "lib file description"
@@ -4818,74 +4819,62 @@ msgid "You can activate this add-on to manage post and taxonomy types included i
 msgstr "Vous pouvez activer cet ajout pour gérer les types d'article et taxonomie inclus dans le XML des sitemaps WordPress, exclure les articles, pages, types d'articles personnalisés, termes (catégories, étiquettes, etc.), et profil d'utilisateurs marquées comme \"Pas d'indexation\", et améliorez le XML des sitemaps WordPress automatiquement avec les heures de modification des articles."
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin-head-suggest-addons.php:199 lib/admin-head-suggest-addons.php:331
+#: lib/admin-head-suggest-addons.php:199 lib/admin-head-suggest-addons.php:332
 msgid "WooCommerce"
 msgstr "WooCommerce"
 
-#: lib/admin-head-suggest-addons.php:216
-msgid "brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, pattern, size, SKU, volume, weight, etc"
-msgstr "marque, couleur, état, EAN, dimensions, GTIN-8/12/ 13/14, ISBN, matériel, MPN, motif, taille, SKU, volume, poids, etc"
-
-#: lib/admin-head-suggest-addons.php:218
-msgid "The %1$s plugin does not provide sufficient Schema JSON-LD markup for Google Rich Results."
-msgstr "L'extension %1$s ne fournit pas un balisage de Schéma JSON-LD suffisant pour les résultats enrichis Google."
-
-#: lib/admin-head-suggest-addons.php:220
-msgid "The %1$s plugin reads %2$s product data and provides complete Schema Product JSON-LD markup for Google Rich Results, including additional product images, product variations, product information (%3$s), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more."
-msgstr "L'extension %1$s lit les données de produit %2$s et fournit un balisage complet de Schéma Produit JSON-LD pour les résultats enrichis Google, y compris les images de produit supplémentaires, les variantes de produit, les informations sur le produit (%3$s), critiques de produits, évaluations de produits, dates de début / fin de vente, prix de vente, prix hors taxes, prix avec TVA, tarifs d'expédition, délais d'expédition et bien plus encore."
-
-#: lib/admin-head-suggest-addons.php:242 lib/admin-head-suggest-addons.php:288
-#: lib/admin-head-suggest-addons.php:357
+#: lib/admin-head-suggest-addons.php:243 lib/admin-head-suggest-addons.php:289
+#: lib/admin-head-suggest-addons.php:358
 msgid "(required for %s integration)"
 msgstr "(requis pour l'intégration %s)"
 
-#: lib/admin-head-suggest-addons.php:258
+#: lib/admin-head-suggest-addons.php:259
 msgid "Schema Product markup for Google Rich Results requires at least one unique product ID, like the product MPN (Manufacturer Part Number), UPC, EAN, GTIN, or ISBN."
 msgstr "Le balisage de produit de Schéma pour les résultats enrichis Google nécessite au moins un ID de produit unique, tel que le MPN (numéro de pièce du fabricant), l'UPC, l'EAN, le GTIN ou l'ISBN du produit."
 
-#: lib/admin-head-suggest-addons.php:260
+#: lib/admin-head-suggest-addons.php:261
 msgid "The product SKU (Stock Keeping Unit) from %1$s is not a valid unique product ID."
 msgstr "Le SKU (unité de gestion des stocks) du produit de %1$s n'est pas un ID de produit unique valide."
 
-#: lib/admin-head-suggest-addons.php:262
+#: lib/admin-head-suggest-addons.php:263
 msgid "If you're not already using a plugin to manage unique product IDs for %1$s, you should activate the %2$s add-on."
 msgstr "Si vous n'utilisez pas déjà une extension pour gérer les ID de produit uniques pour %1$s, vous pouvez activer l'ajout %2$s."
 
-#: lib/admin-head-suggest-addons.php:304
+#: lib/admin-head-suggest-addons.php:305
 msgid "Product shipping features are enabled in %1$s but the %2$s add-on is not active."
 msgstr "Les fonctionnalités d'expédition des produits sont activées dans %1$s, mais l'ajout %2$s n'est pas actif."
 
-#: lib/admin-head-suggest-addons.php:306
+#: lib/admin-head-suggest-addons.php:307
 msgid "Adding shipping details to your Schema Product markup is important if you offer free or low-cost shipping options, as this will make your products more appealing in Google search results."
 msgstr "L'ajout des détails d'expédition à votre balisage de produit de Schéma est important si vous proposez des options d'expédition gratuites ou à faible coût, car cela rendra vos produits plus attrayants dans les résultats de recherche Google."
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin-head-suggest-addons.php:338
+#: lib/admin-head-suggest-addons.php:339
 msgid "Easy Digital Downloads"
 msgstr "Easy Digital Downloads"
 
-#: lib/admin-head-suggest-addons.php:373
+#: lib/admin-head-suggest-addons.php:374
 msgid "If you have a Google Merchant account, the %1$s add-on can retrieve product information from %2$s and provide maintenance free XML feeds for each available language (as dictated by Polylang, WPLM, or the installed WordPress languages)."
 msgstr "Si vous avez un compte marchand Google, l'ajout %1$s peut récupérer les informations des produits de %2$s et fournir des flux XML sans maintenance pour chaque langue disponible (déterminé par Polylang, WPLM ou les langues WordPress installées)."
 
-#: lib/admin-head-suggest-addons.php:375
+#: lib/admin-head-suggest-addons.php:376
 msgid "If you're not already using a plugin to manage your Google Merchant Feeds, you should activate the %s add-on."
 msgstr "Si vous n'utilisez pas déjà une extension pour gérer vos flux de marchands Google, vous pouvez activer l'ajout %s."
 
-#: lib/admin-head-suggest-addons.php:404
+#: lib/admin-head-suggest-addons.php:405
 msgid "Activate the %s add-on."
 msgstr "Activer l'ajout %s."
 
-#: lib/admin-head-suggest-addons.php:410
+#: lib/admin-head-suggest-addons.php:411
 msgid "Install and activate the %s add-on."
 msgstr "Installer et activer l'ajout %s."
 
 #. translators: %1$s is a URL, %2$s is the plugin name, and %3$s is a pre-translated comment.
-#: lib/admin-head-suggest-addons.php:427
+#: lib/admin-head-suggest-addons.php:428
 msgid "<a href=\"%1$s\">Purchase the %2$s plugin</a> %3$s."
 msgstr "<a href=\"%1$s\">Acheter l'extension %2$s</a> %3$s."
 
-#: lib/admin-head-suggest-addons.php:430
+#: lib/admin-head-suggest-addons.php:431
 msgid "Purchase the %s plugin."
 msgstr "Acheter l'extension %s."
 
@@ -5062,7 +5051,7 @@ msgstr "Privilèges insuffisants pour modifier les options de réseau."
 msgid "Network plugin settings have been saved."
 msgstr "Les réglages réseau ont été sauvegardés."
 
-#: lib/admin.php:871 lib/post.php:962 lib/term.php:701 lib/user.php:704
+#: lib/admin.php:871 lib/post.php:914 lib/term.php:666 lib/user.php:662
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr "La validation du jeton nonce pour l'action %1$s \"%2$s\" a échoué."
 
@@ -5100,8 +5089,8 @@ msgstr "Une tâche en arrière-plan va commencer sous peu pour ajouter le rôle 
 
 #: lib/admin.php:959 lib/admin.php:970 lib/messages-tooltip-meta-schema.php:488
 #: lib/messages-tooltip-plugin.php:118 lib/submenu/tools.php:56
-#: lib/submenu/tools.php:101 lib/user.php:61 lib/user.php:1720
-#: lib/user.php:1827 lib/user.php:1958
+#: lib/submenu/tools.php:101 lib/user.php:61 lib/user.php:1670
+#: lib/user.php:1777 lib/user.php:1908
 msgctxt "user role"
 msgid "Person"
 msgstr "Personne"
@@ -5351,7 +5340,7 @@ msgctxt "option label"
 msgid "Use Local Plugin Translations"
 msgstr "Utiliser les traductions locale"
 
-#: lib/admin.php:2493 lib/util.php:2910
+#: lib/admin.php:2493 lib/util.php:2920
 msgctxt "option label"
 msgid "Disable Cache for Debugging"
 msgstr "Désactiver le cache pour débogage"
@@ -5468,6 +5457,10 @@ msgstr "Forum communautaire"
 msgctxt "module name"
 msgid "comment"
 msgstr "commentaire"
+
+#: lib/comment.php:341
+msgid "Insufficient privileges to save settings for comment ID %1$s."
+msgstr "Privilèges insuffisants pour enregistrer les réglages commentaire ID %1$s."
 
 #: lib/conflict-seo.php:71
 msgid "All in One SEO"
@@ -6161,7 +6154,7 @@ msgstr "ajout de balisage de schéma json-ld"
 msgid "An aggregate rating value for this markup has been ignored - <a href=\"%1$s\">Google does not allow an aggregate rating value for the Schema %2$s type</a>."
 msgstr "Une valeur de note agrégé pour ce balisage a été ignorée - <a href=\"%1$s\">Google n'autorise pas de note agrégé pour le type de Schéma %2$s</a> ."
 
-#: lib/json-filters/prop/review.php:220
+#: lib/json-filters/prop/review.php:218
 msgid "Reviews for this markup have been ignored - <a href=\"%1$s\">Google does not allow reviews for the Schema %2$s type</a>."
 msgstr "Les critiques pour ce balisage ont été ignorés - <a href=\"%1$s\">Google n'autorise pas de critiques pour le type de Schéma %2$s</a> ."
 
@@ -6204,62 +6197,62 @@ msgstr "Le plugin installé est incomplet ou le serveur Web ne peut pas accéder
 msgid "<strong>Suggested minimum dimension for uploaded images</strong> (to satisfy all %1$d image sizes): %2$d by %3$d pixels."
 msgstr "<strong>Dimension minimale suggérée pour les images téléchargées</strong> (pour satisfaire toutes les %1$d tailles d'image): %2$d par %3$d pixels."
 
-#: lib/media.php:1277
+#: lib/media.php:1256
 msgid "Content"
 msgstr "Contenu"
 
-#: lib/media.php:1487
+#: lib/media.php:1466
 msgid "https://developer.wordpress.org/reference/functions/wp_get_attachment_metadata/"
 msgstr "https://developer.wordpress.org/reference/functions/wp_get_attachment_metadata/"
 
-#: lib/media.php:1488 lib/media.php:1685
+#: lib/media.php:1467 lib/media.php:1664
 msgid "You may consider regenerating the sizes of all WordPress Media Library images using one of <a href=\"%s\">several available plugins from WordPress.org</a>."
 msgstr "Vous pouvez régénérer les tailles de toutes les images de la bibliothèque Médias WordPress en utilisant l'une <a href=\"%s\">des extensions disponibles sur WordPress.org</a>."
 
-#: lib/media.php:1504
+#: lib/media.php:1483
 msgid "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s function</a> returned an error for <a href=\"%4$s\">image ID %5$s</a>: %6$s."
 msgstr "Corruption possible de %1$s détecté - la <a href=\"%2$s\">fonction WordPress %3$s</a> a renvoyé une erreur pour <a href=\"%4$s\">l'ID d'image %5$s</a>: %6$s."
 
-#: lib/media.php:1525
+#: lib/media.php:1504
 msgid "Possible %1$s corruption detected - the full size image dimensions for <a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr "Corruption possible de %1$s détecté - les dimensions de l'image pleine grandeur pour <a href=\"%2$s\">l'ID d'image %3$s</a> sont manquantes dans les métadonnées d'image retourné par la <a href=\"%4$s\">fonction WordPress %5$s</a>."
 
-#: lib/media.php:1544
+#: lib/media.php:1523
 msgid "Possible %1$s corruption detected - the full size image file path for <a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr "Corruption possible de %1$s détecté - le chemin du fichier d'image pleine grandeur pour <a href=\"%2$s\">l'ID d'image %3$s</a> est manquant dans les métadonnées d'image retourné par la <a href=\"%4$s\">fonction WordPress %5$s</a>."
 
-#: lib/media.php:1636
+#: lib/media.php:1615
 msgid "https://developer.wordpress.org/reference/functions/image_make_intermediate_size/"
 msgstr "https://developer.wordpress.org/reference/functions/image_make_intermediate_size/"
 
-#: lib/media.php:1654 lib/post.php:706 lib/register.php:348 lib/term.php:555
-#: lib/user.php:540 lib/util.php:707 lib/util.php:813 lib/util.php:845
-#: lib/util.php:2872
+#: lib/media.php:1633 lib/post.php:658 lib/register.php:348 lib/term.php:520
+#: lib/user.php:498 lib/util.php:711 lib/util.php:817 lib/util.php:849
+#: lib/util.php:2882
 msgid "%s warning:"
 msgstr "Alerte %s:"
 
-#: lib/media.php:1655 lib/post.php:707 lib/term.php:556 lib/user.php:541
-#: lib/util.php:708 lib/util.php:2873
+#: lib/media.php:1634 lib/post.php:659 lib/term.php:521 lib/user.php:499
+#: lib/util.php:712 lib/util.php:2883
 msgid "longer than recommended max of %1$.3f secs"
 msgstr "supérieur au max recommandé de %1$.3f secs"
 
-#: lib/media.php:1656
+#: lib/media.php:1635
 msgid "Slow WordPress function detected - %1$s took %2$.3f secs to make image size \"%3$s\" from %4$s (%5$s)."
 msgstr "Fonction WordPress lente détectée - %1$s a pris %2$.3f secs pour créer la taille d'image \"%3$s\" à partir de %4$s (%5$s)."
 
-#: lib/media.php:1683
+#: lib/media.php:1662
 msgid "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr "Corruption possible de %1$s détecté - la <a href=\"%2$s\">fonction WordPress %3$s</a> n'a pas pu créer la taille d'image \"%4$s\" (%5$s) à partir de %6$s."
 
-#: lib/media.php:3328
+#: lib/media.php:3305
 msgid "image URL %s"
 msgstr "URL d'image %s"
 
-#: lib/media.php:3381
+#: lib/media.php:3358
 msgid "%1$s %2$s ignored - the resulting resized image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr "L'%2$s de %1$s a été ignoré - l'image redimensionnée résultante de %3$s a une <strong>proportion égale ou supérieur a %4$d:1 permise par la norme %5$s</strong>."
 
-#: lib/media.php:3416
+#: lib/media.php:3393
 msgid "%1$s %2$s ignored - the resulting resized image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>."
 msgstr "L'%2$s de %1$s a été ignoré - l'image redimensionnée résultante de %3$s est <strong>plus petite que le minimum %4$s permise par la norme %5$s</strong>."
 
@@ -9144,7 +9137,7 @@ msgstr "Page %1$d de %2$d"
 msgid "Page %1$d"
 msgstr "Page %1$d"
 
-#: lib/page.php:2062
+#: lib/page.php:2066
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] "%s minute"
@@ -9155,121 +9148,121 @@ msgctxt "module name"
 msgid "post"
 msgstr "article"
 
-#: lib/post.php:708
+#: lib/post.php:660
 msgid "Slow WordPress function detected - %1$s took %2$.3f secs to get children of post ID %3$d (%4$s)."
 msgstr "Fonction WordPress lente détectée - %1$s a pris %2$.3f secs pour obtenir les enfants de l'ID d'article %3$d (%4$s)."
 
-#: lib/post.php:1100
+#: lib/post.php:1052
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr "Vérification de balises méta en double pour %1$s..."
 
-#: lib/post.php:1133
+#: lib/post.php:1085
 msgid "The webpage HTML retrieved from %1$s is %2$s bytes."
 msgstr "L'HTML de la page Web récupérée de %1$s est %2$s octets."
 
-#: lib/post.php:1136
+#: lib/post.php:1088
 msgid "This exceeds the maximum limit of %1$s bytes imposed by the Google crawler."
 msgstr "Cela dépasse la limite maximale de %1$s octets imposée par le robot d'exploration de Google."
 
-#: lib/post.php:1139
+#: lib/post.php:1091
 msgid "If you do not reduce the webpage HTML size, Google will refuse to crawl this webpage."
 msgstr "Si vous ne réduisez pas la taille du HTML de la page Web, Google refusera d'analyser cette page Web."
 
-#: lib/post.php:1169
+#: lib/post.php:1121
 msgid "Retrieving the webpage HTML for %1$s took %2$s seconds."
 msgstr "Récupérer l'HTML de la page Web pour %1$s a pris %2$s secondes."
 
-#: lib/post.php:1171
+#: lib/post.php:1123
 msgid "This exceeds the recommended limit of %1$s seconds (crawlers often time-out after %2$s seconds)."
 msgstr "Cela dépasse le délai recommandé de %1$s secondes (plusieurs crawlers déconnectent après %2$s secondes)."
 
-#: lib/post.php:1173
+#: lib/post.php:1125
 msgid "Please consider improving the speed of your site."
 msgstr "SVP envisager d'améliorer la vitesse de votre site."
 
-#: lib/post.php:1174
+#: lib/post.php:1126
 msgid "As an added benefit, a faster site will also improve ranking in search results."
 msgstr "Comme avantage supplémentaire, un site plus rapide améliore également le classement dans les résultats de recherche."
 
-#: lib/post.php:1188
+#: lib/post.php:1140
 msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
 msgstr "Erreur lors de la récupération du contenu de <a href=\"%1$s\">%1$s</a>."
 
-#: lib/post.php:1202
+#: lib/post.php:1154
 msgid "An %1$s tag was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr "Une balise %1$s est introuvable dans <a href=\"%2$s\">%2$s</a>."
 
-#: lib/post.php:1217
+#: lib/post.php:1169
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr "Aucune balises HTML %1$s ont été trouvées dans <a href=\"%2$s\">%2$s</a>."
 
-#: lib/post.php:1234
+#: lib/post.php:1186
 msgid "The %1$s meta tags and Schema markup section was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr "La section de balises et balisage de Schéma %1$s n'a pas été trouvé dans <a href=\"%2$s\">%2$s</a>."
 
-#: lib/post.php:1237
+#: lib/post.php:1189
 msgid "Does a caching plugin or service needs to be refreshed?"
 msgstr "Une extension ou un service de mise en cache doit-il être actualisé ?"
 
-#: lib/post.php:1270
+#: lib/post.php:1222
 msgid "The PHP preg_replace() function failed to remove the %1$s meta tag section."
 msgstr "La fonction PHP preg_replace() n'a pas réussi à supprimer la section de balise méta %1$s."
 
-#: lib/post.php:1273
+#: lib/post.php:1225
 msgid "This could indicate a problem with PHP's PCRE library, or an optimization plugin / service corrupting the webpage HTML."
 msgstr "Cela pourrait indiquer un problème avec la bibliothèque PCRE de PHP, ou une extension / service d'optimisation corrompant le HTML de la page Web."
 
-#: lib/post.php:1276
+#: lib/post.php:1228
 msgid "You should consider updating or having your hosting provider update your PHP installation and its PCRE library."
 msgstr "Vous devriez envisager de mettre à jour ou de demander à votre hébergeur de mettre à jour votre installation PHP et sa bibliothèque PCRE."
 
-#: lib/post.php:1297
+#: lib/post.php:1249
 msgid "Conflict detected - your theme or another plugin is adding %1$s to the head section of this webpage."
 msgstr "Conflit détecté - votre thème ou une autre extension ajoute une balise %1$s à l'entête de cette page Web."
 
-#: lib/post.php:1316
+#: lib/post.php:1268
 msgid "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> (no \"link\" or \"meta\" HTML tags were found)."
 msgstr "Une erreur s'est produite lors de l'analyse des balises méta de tête pour <a href=\"%1$s\">%1$s</a> (aucune balise HTML \"link\" ou \"meta\" ont été trouvée)."
 
-#: lib/post.php:1318
+#: lib/post.php:1270
 msgid "The webpage may contain HTML syntax errors preventing PHP from successfully parsing the HTML document."
 msgstr "La page Web peut contenir des erreurs de syntaxe HTML empêchant PHP d'analyser correctement le document HTML."
 
-#: lib/post.php:1321
+#: lib/post.php:1273
 msgid "Please review the <a href=\"%1$s\">W3C Markup Validator</a> results and correct any syntax errors."
 msgstr "Veuillez consulter les résultats du <a href=\"%1$s\">validateur de balisage W3C</a> et corriger les erreurs de syntaxe."
 
-#: lib/post.php:1364
+#: lib/post.php:1316
 msgid "%1$d duplicate meta tags found."
 msgstr "%1$d balises méta en double trouvées."
 
-#: lib/post.php:1366
+#: lib/post.php:1318
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr "Vérification %1$d de %2$d a échoué (réessaie à suivre)..."
 
-#: lib/post.php:1374
+#: lib/post.php:1326
 msgid "Awesome! No duplicate meta tags found."
 msgstr "Génial! Aucune balise méta dupliquée trouvée."
 
-#: lib/post.php:1378
+#: lib/post.php:1330
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr "L'option de débogage est activée - cette vérification sera répétée..."
 
-#: lib/post.php:1382
+#: lib/post.php:1334
 msgid "Check %1$d of %2$d successful..."
 msgstr "Vérification %1$d de %2$d réussi..."
 
-#: lib/post.php:1579
+#: lib/post.php:1531
 msgid "invalid ajax referer nonce value"
 msgstr "valeur nonce de référence ajax invalide"
 
-#: lib/post.php:1584
+#: lib/post.php:1536
 msgid "ajax request missing the post_id"
 msgstr "demande ajax manquant le post_id"
 
-#: lib/post.php:1865
+#: lib/post.php:1817
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
-msgstr "Privilèges insuffisants pour enregistrer les réglages pour %1$s ID %2$s."
+msgstr "Privilèges insuffisants pour enregistrer les réglages %1$s ID %2$s."
 
 #: lib/pro/forum/bbpress.php:114 lib/pro/forum/bbpress.php:205
 msgctxt "bbpress single user description"
@@ -9400,38 +9393,38 @@ msgctxt "Taxonomy description"
 msgid "Tags for the page post type."
 msgstr "Étiquettes pour le type de publication de page."
 
-#: lib/schema-single.php:986
+#: lib/schema-single.php:1007
 msgid "adding schema organization"
 msgstr "ajout de schéma d'organisation"
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1069
+#: lib/schema-single.php:1090
 msgid "An organization logo image is missing and required for the \"%1$s\" organization Schema %2$s markup."
 msgstr "Une image de logo d'organisation est manquante et requise pour le balisage de Schéma %2$s de l'organisation \"%1$s\"."
 
 #. translators: %1$s is the organization name, %2$s the Schema type URL.
-#: lib/schema-single.php:1072
+#: lib/schema-single.php:1093
 msgid "An organization banner image is missing and required for the \"%1$s\" organization Schema %2$s markup."
 msgstr "Une image de bannière d'organisation est manquante et requise pour le balisage de Schéma %2$s de l'organisation \"%1$s\"."
 
 #. translators: %1$s is the organization name, %2$s is 'site' (translated) or 'ID #'.
-#: lib/schema-single.php:1075
+#: lib/schema-single.php:1096
 msgid "Please enter the missing image URL in the \"%1$s\" %2$s organization settings."
 msgstr "Veuillez fournir l'URL de l'image manquante dans les paramètres de l'organisation %2$s \"%1$s\"."
 
-#: lib/schema-single.php:1100
+#: lib/schema-single.php:1121
 msgid "site"
 msgstr "site"
 
-#: lib/schema-single.php:1114 lib/schema-single.php:1123
+#: lib/schema-single.php:1135 lib/schema-single.php:1144
 msgid "ID #%s"
 msgstr "ID #%s"
 
-#: lib/schema-single.php:1310
+#: lib/schema-single.php:1331
 msgid "adding schema person"
 msgstr "ajout de schéma de personne"
 
-#: lib/schema-single.php:1537
+#: lib/schema-single.php:1558
 msgid "adding schema place"
 msgstr "ajout de schéma d'endroit"
 
@@ -9439,19 +9432,19 @@ msgstr "ajout de schéma d'endroit"
 msgid "adding schema"
 msgstr "ajout de schéma"
 
-#: lib/schema.php:1723
+#: lib/schema.php:1738
 msgid "adding schema %s #%d image"
 msgstr "ajout d'image #%d pour Schéma %s"
 
-#: lib/schema.php:1834
+#: lib/schema.php:1849
 msgid "Please note that although the Schema standard allows the subject of a review to be any Schema type, <a href=\"%1$s\">Google does not allow reviews for the Schema %2$s type</a>."
 msgstr "Veuillez noter que la norme de Schéma permette que le sujet d'une critique soit n'importe quel type de Schema, <a href=\"%1$s\">Google n'autorise pas de critiques pour le type de Schéma %2$s</a>."
 
-#: lib/schema.php:1861
+#: lib/schema.php:1876
 msgid "adding reviewed subject image"
 msgstr "ajout d'image pour le sujet de l'évaluation"
 
-#: lib/schema.php:3510
+#: lib/schema.php:3520
 msgid "checking schema properties"
 msgstr "vérification des propriétés schéma"
 
@@ -10006,13 +9999,13 @@ msgctxt "module name"
 msgid "term"
 msgstr "terme"
 
-#: lib/term.php:557
+#: lib/term.php:522
 msgid "Slow WordPress function detected - %1$s took %2$.3f secs to get posts for term ID %3$d in taxonomy %4$s (%5$s)."
 msgstr "Fonction WordPress lente détectée - %1$s a pris %2$.3f secs pour obtenir les articles de l'ID du terme %3$d de taxonomie %4$s  (%5$s)."
 
-#: lib/term.php:943
+#: lib/term.php:909
 msgid "Insufficient privileges to save settings for term ID %1$s."
-msgstr "Privilèges insuffisants pour enregistrer les réglages pour l'ID du terme %1$s."
+msgstr "Privilèges insuffisants pour enregistrer les réglages terme ID %1$s."
 
 #: lib/twittercard.php:189
 msgctxt "metabox title"
@@ -10055,64 +10048,64 @@ msgctxt "module name"
 msgid "user"
 msgstr "utilisateur"
 
-#: lib/user.php:542
+#: lib/user.php:500
 msgid "Slow WordPress function detected - %1$s took %2$.3f secs to get posts authored by user ID %3$d (%4$s)."
 msgstr "Fonction WordPress lente détectée - %1$s a pris %2$.3f secs pour obtenir les articles de l'ID d'utilisateur %3$d (%4$s)."
 
-#: lib/user.php:845
+#: lib/user.php:803
 msgid "Examples: Dr, Mrs, Mr."
 msgstr "Exemples: Dr, Mrs, Mr."
 
-#: lib/user.php:851
+#: lib/user.php:809
 msgid "Examples: CPA, Esq., M.D., P.E., PhD., PMP, RN"
 msgstr "Exemples: CPA, Esq., M.D., P.E., PhD., PMP, RN"
 
-#: lib/user.php:1009
+#: lib/user.php:967
 msgid "(not a Facebook Pages URL)"
 msgstr "(pas un URL de Pages Facebook)"
 
-#: lib/user.php:1135
+#: lib/user.php:1093
 msgid "AIM"
 msgstr "AIM"
 
-#: lib/user.php:1136
+#: lib/user.php:1094
 msgid "Jabber / Google Talk"
 msgstr "Jabber / Google Talk"
 
-#: lib/user.php:1137
+#: lib/user.php:1095
 msgid "Yahoo Messenger"
 msgstr "Yahoo Messenger"
 
-#: lib/user.php:1646
+#: lib/user.php:1596
 msgid "Insufficient privileges to save settings for user ID %1$s."
-msgstr "Privilèges insuffisants pour enregistrer les réglages pour l'ID d'utilisateur %1$s."
+msgstr "Privilèges insuffisants pour enregistrer les réglages utilisateur ID %1$s."
 
-#: lib/user.php:1739
+#: lib/user.php:1689
 msgid "Aborting task to add the %1$s role to content creators - another identical task is still running."
 msgstr "Abandon de la tâche pour ajouter le rôle %1$s aux créateurs de contenu - une autre tâche identique est toujours en cours d'exécution."
 
-#: lib/user.php:1754
+#: lib/user.php:1704
 msgid "A task to add the %1$s role for content creators was started at %2$s."
 msgstr "Une tâche pour ajouter le rôle %1$s aux créateurs de contenu a démarré à %2$s."
 
-#: lib/user.php:1795
+#: lib/user.php:1745
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr "Le rôle %1$s a été ajouté à %2$d créateurs de contenu."
 
-#: lib/user.php:1797 lib/user.php:1900 lib/util-cache.php:181
+#: lib/user.php:1747 lib/user.php:1850 lib/util-cache.php:181
 #: lib/util-cache.php:746
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr "Le temps d'exécution total pour cette tâche était %0.3f secondes."
 
-#: lib/user.php:1846
+#: lib/user.php:1796
 msgid "Aborting task to remove the %1$s role from all users - another identical task is still running."
 msgstr "Abandon de la tâche pour supprimer le rôle %1$s de tous les utilisateurs - une autre tâche identique est toujours en cours d'exécution."
 
-#: lib/user.php:1861
+#: lib/user.php:1811
 msgid "A task to remove the %1$s role from all users was started at %2$s."
 msgstr "Une tâche pour supprimer le rôle %1$s de tous les utilisateurs a démarré à %2$s."
 
-#: lib/user.php:1898
+#: lib/user.php:1848
 msgid "The %1$s role has been removed from %2$d content creators."
 msgstr "Le rôle %1$s a été supprimé de %2$d créateurs de contenu."
 
@@ -10360,167 +10353,167 @@ msgstr "recadrée"
 msgid "uncropped"
 msgstr "non recadrée"
 
-#: lib/util.php:709
+#: lib/util.php:713
 msgid "Slow PHP function detected - %1$s took %2$.3f secs for %3$s (%4$s)."
 msgstr "Fonction PHP lente détectée - %1$s a pris %2$.3f secs pour %3$s (%4$s)."
 
-#: lib/util.php:1127
+#: lib/util.php:1131
 msgid "Error reading the %s file for the article sections list."
 msgstr "Erreur de lecture du fichier %s pour la liste des rubriques d'article."
 
-#: lib/util.php:1228
+#: lib/util.php:1232
 msgid "Error reading the %s file for the product categories list."
 msgstr "Erreur de lecture du fichier %s pour de la liste des catégories de produit."
 
-#: lib/util.php:1359
+#: lib/util.php:1363
 msgid "The <code>%1$s</code> request argument is not HTML or a valid URL."
 msgstr "L'argument de requête à <code>%1$s</code> n'est pas du HTML ou une URL valide."
 
-#: lib/util.php:1383
+#: lib/util.php:1387
 msgid "Error getting HTML from <a href=\"%1$s\">%1$s</a>."
 msgstr "Erreur lors de l'obtention du code HTML de <a href=\"%1$s\">%1$s</a>."
 
-#: lib/util.php:1413
+#: lib/util.php:1417
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr "La page Web récupéré de <a href=\"%1$s\">%1$s</a> est vide."
 
 #. translators: %1$s is the class name.
-#: lib/util.php:1611
+#: lib/util.php:1615
 msgid "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting provider to have the missing class installed."
 msgstr "La classe PHP <code>%1$s</code> est manquante &ndash; contactez votre fournisseur d'hébergement pour installer la classe manquante."
 
 #. translators: %1$s is the function name.
-#: lib/util.php:1625
+#: lib/util.php:1629
 msgid "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting provider to have the missing function installed."
 msgstr "La fonction PHP <code>%1$s</code> est manquante &ndash; contactez votre fournisseur d'hébergement pour installer la fonction manquante."
 
-#: lib/util.php:2874
+#: lib/util.php:2884
 msgid "Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the \"%2$s\" filter (%3$s)."
 msgstr "Crochet(s) de filtre lent détecté - WordPress a pris %1$.3f secs pour exécuter le filtre \"%2$s\" (%3$s)."
 
-#: lib/util.php:2914
+#: lib/util.php:2924
 msgid "Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds to execute."
 msgstr "Crochet(s) de filtre lent(s) détecté(s) - le filtre WordPress %1$s a pris %2$.3f secondes pour s'exécuter."
 
-#: lib/util.php:2916
+#: lib/util.php:2926
 msgid "This is longer than the recommended maximum of %1$.3f seconds and may affect page load time."
 msgstr "Cela dépasse le maximum recommandé de %1$.3f secondes et peut affecter le temps de chargement de la page."
 
-#: lib/util.php:2918
+#: lib/util.php:2928
 msgid "Please consider reviewing active plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr "Veuillez envisager de revoir les fonctions d'extension et de thème actives liées au filtre WordPress %1$s pour du code PHP lent et/ou sous-optimal."
 
-#: lib/util.php:2920
+#: lib/util.php:2930
 msgid "Activating the %1$s plugin and enabling the the %2$s option (to apply the filter consistently) may provide more information on the specific hooks or PHP code affecting performance."
 msgstr "L'activation de l'extension %1$s et l'activation de l'option %2$s (pour appliquer le filtre de manière cohérente) peuvent fournir plus d'informations sur les crochets spécifiques ou le code PHP affectant les performances."
 
-#: lib/util.php:3321
+#: lib/util.php:3331
 msgctxt "option label"
 msgid "The AMP Project Validator"
 msgstr "Le validateur de projet AMP"
 
-#: lib/util.php:3322
+#: lib/util.php:3332
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr "Balisage AMP"
 
-#: lib/util.php:3326
+#: lib/util.php:3336
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr "Débogueur de partage Facebook"
 
-#: lib/util.php:3327
+#: lib/util.php:3337
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr "Open Graph"
 
-#: lib/util.php:3331
+#: lib/util.php:3341
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr "Outil de débogage des microdonnées Facebook"
 
-#: lib/util.php:3332
+#: lib/util.php:3342
 msgctxt "validator type"
 msgid "Microdata"
 msgstr "Microdonnées"
 
-#: lib/util.php:3336
+#: lib/util.php:3346
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr "PageSpeed Insights de Google"
 
-#: lib/util.php:3337
+#: lib/util.php:3347
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr "Vitesse de page"
 
-#: lib/util.php:3341
+#: lib/util.php:3351
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr "Test de résultats enrichis Google"
 
-#: lib/util.php:3342
+#: lib/util.php:3352
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr "Résultats riches"
 
-#: lib/util.php:3346
+#: lib/util.php:3356
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr "Inspecteur d'article LinkedIn"
 
-#: lib/util.php:3347
+#: lib/util.php:3357
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr "Données oEmbed"
 
-#: lib/util.php:3351
+#: lib/util.php:3361
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr "Validateur Pinterest épingles riches"
 
-#: lib/util.php:3352
+#: lib/util.php:3362
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr "Épingles riches"
 
-#: lib/util.php:3356
+#: lib/util.php:3366
 msgctxt "option label"
 msgid "Schema Markup Validator"
 msgstr "Validateur de balisage de Schéma"
 
-#: lib/util.php:3357
+#: lib/util.php:3367
 msgctxt "validator type"
 msgid "Schema Markup"
 msgstr "Balisage de Schéma"
 
-#: lib/util.php:3361
+#: lib/util.php:3371
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr "Vérificateur de carte Twitter"
 
-#: lib/util.php:3362
+#: lib/util.php:3372
 msgctxt "validator type"
 msgid "Twitter Card"
 msgstr "Carte Twitter"
 
-#: lib/util.php:3367
+#: lib/util.php:3377
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr "Validateur W3C de balisage"
 
-#: lib/util.php:3368
+#: lib/util.php:3378
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr "Balisage HTML"
 
 #. translators: %1$s is an action message, %2$s is the module or post type name.
-#: lib/util.php:3530
+#: lib/util.php:3540
 msgid "%1$s for this %2$s"
 msgstr "%1$s pour cet %2$s"
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3540
+#: lib/util.php:3550
 msgid "%1$s for %2$s ID %3$d"
 msgstr "%1$s pour %2$s ID %3$d"
 
