@@ -1152,19 +1152,16 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							 */
 							if ( preg_match( '/^https?:?\/\/[^\/]*gravatar\.com\/avatar\/([a-zA-Z0-9]+)/', $attr_value, $match ) ) {
 
-								$size_info = $this->p->util->get_size_info( $size_name );
+								$img_size = $this->get_gravatar_size();
+								$img_url  = 'https://secure.gravatar.com/avatar/' . $match[ 1 ] . '.jpg?s=' . $img_size . '&d=404&r=G';
 
-								$mt_single_image[ 'og:image:url' ] = 'https://secure.gravatar.com/avatar/' .
-									$match[ 1 ] . '.jpg?s=' . $size_info[ 'width' ] . '&d=404&r=G';
-
-								$mt_single_image[ 'og:image:width' ] = $size_info[ 'width' ] > WPSSO_GRAVATAR_IMAGE_SIZE_MAX ?
-									WPSSO_GRAVATAR_IMAGE_SIZE_MAX : $size_info[ 'width' ];
-
-								$mt_single_image[ 'og:image:height' ] = $mt_single_image[ 'og:image:width' ];
+								$mt_single_image[ 'og:image:url' ]    = $img_url;
+								$mt_single_image[ 'og:image:width' ]  = $img_size;
+								$mt_single_image[ 'og:image:height' ] = $img_size;
 
 								if ( $this->p->debug->enabled ) {
 
-									$this->p->debug->log( 'gravatar image found: ' . $mt_single_image[ 'og:image:url' ] );
+									$this->p->debug->log( 'gravatar image found: ' . $img_url );
 								}
 
 								break;	// Stop here.
@@ -3482,6 +3479,16 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			return $new_dir . $new_base . $new_suffix . $new_ext;
+		}
+
+		public function get_gravatar_size() {
+
+			$def_size = 1200;
+			$max_size = 2048;
+			$img_size = empty( $this->p->options[ 'plugin_gravatar_size' ] ) ? 1200 : $this->p->options[ 'plugin_gravatar_size' ];
+			$img_size = $img_size > 2048 ? 2048 : $img_size;
+
+			return $img_size;
 		}
 
 		/**
