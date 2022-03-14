@@ -268,18 +268,24 @@ msgstr ""
 #: gettext/gettext-html-setup.php:35
 msgctxt "html paragraph"
 msgid ""
-"The WooCommerce plugin alone does not provide sufficient Schema markup for "
-"Google Rich Results. The <a href=\"https://wpsso.com/\">WPSSO Core Premium "
-"edition</a> reads WooCommerce product data and provides complete Schema "
-"Product JSON-LD markup for Google Rich Results, including product image "
-"galleries, product variations, product information (brand, color, condition, "
-"EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, pattern, size, SKU, "
-"volume, weight, etc), product reviews, product ratings, sale start / end "
-"dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping "
-"times, and much, much more."
+"The WooCommerce plugin by itself does not provide sufficient markup for "
+"Google Rich Results."
 msgstr ""
 
 #: gettext/gettext-html-setup.php:36
+msgctxt "html paragraph"
+msgid ""
+"The <a href=\"https://wpsso.com/\">WPSSO Core Premium edition</a> can read "
+"WooCommerce product data and provide comprehensive Schema Product JSON-LD "
+"markup for Google Rich Results, including product image galleries, product "
+"variations, product information (brand, color, condition, EAN, dimensions, "
+"GTIN-8/12/13/14, ISBN, material, MPN, pattern, size, SKU, volume, weight, "
+"etc), product reviews, product ratings, sale start / end dates, sale prices, "
+"pre-tax prices, VAT prices, shipping rates, shipping times, and much, much "
+"more."
+msgstr ""
+
+#: gettext/gettext-html-setup.php:37
 msgctxt "html paragraph"
 msgid ""
 "The <a href=\"https://wpsso.com/docs/plugins/wpsso/installation/integration/"
@@ -289,89 +295,89 @@ msgid ""
 "size, etc."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:37
+#: gettext/gettext-html-setup.php:38
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://www.facebook.com/business/learn/set-up-facebook-page"
 "\">Setup a Facebook Business Page</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:38
+#: gettext/gettext-html-setup.php:39
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://business.twitter.com/en/basics/create-a-twitter-business-"
 "profile.html\">Create a Twitter Business Profile</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:39
+#: gettext/gettext-html-setup.php:40
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://business.google.com/create\">Add or claim your business on "
 "Google My Business</a> (recommended)"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:40
+#: gettext/gettext-html-setup.php:41
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://www.pinterest.com/business/create/\">Create a Pinterest "
 "Business Account</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:41
+#: gettext/gettext-html-setup.php:42
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://developers.facebook.com/tools/debug/\">Facebook Sharing "
 "Debugger</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:42
+#: gettext/gettext-html-setup.php:43
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://business.facebook.com/ads/microdata/debug\">Facebook "
 "Microdata Debug Tool</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:43
+#: gettext/gettext-html-setup.php:44
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://search.google.com/test/rich-results\">Google Rich Results "
 "Test</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:44
+#: gettext/gettext-html-setup.php:45
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://www.linkedin.com/post-inspector/inspect/\">LinkedIn Post "
 "Inspector</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:45
+#: gettext/gettext-html-setup.php:46
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://developers.pinterest.com/tools/url-debugger/\">Pinterest "
 "Rich Pins Validator</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:46
+#: gettext/gettext-html-setup.php:47
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://cards-dev.twitter.com/validator\">Twitter Card Validator</"
 "a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:47
+#: gettext/gettext-html-setup.php:48
 msgctxt "html list item"
 msgid "<a href=\"https://validator.schema.org/\">Schema Markup Validator</a>"
 msgstr ""
 
-#: gettext/gettext-html-setup.php:48
+#: gettext/gettext-html-setup.php:49
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://validator.w3.org/\">W3C Markup Validator</a> - recommended "
 "to check your theme templates for HTML markup issues."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:49
+#: gettext/gettext-html-setup.php:50
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://developers.google.com/speed/pagespeed/insights/\">Google "
@@ -379,7 +385,7 @@ msgid ""
 "checks (results influence SEO ranking)."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:50
+#: gettext/gettext-html-setup.php:51
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://support.google.com/webmasters/answer/7451184\">Google's "
@@ -387,14 +393,14 @@ msgid ""
 "understand Google SEO ranking factors."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:51
+#: gettext/gettext-html-setup.php:52
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://www.webpagetest.org/\">Webpage Performance Test with "
 "Waterfall</a> - recommended to check and diagnose basic performance issues."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:52
+#: gettext/gettext-html-setup.php:53
 msgctxt "html list item"
 msgid ""
 "<a href=\"https://www.ssllabs.com/ssltest/\">SSL Server Test by SSL Labs</a> "
