@@ -1226,8 +1226,10 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 
 				if ( ! empty( $this->p->options[ $opt_key ] ) ) {
 
-					$parts[ 0 ] = ( empty( $parts[ 6 ] ) ? '' : '<!-- ' . $parts[ 6 ] . ' -->' ) . 
-						'<' . $parts[ 1 ] . ' ' . $parts[ 2 ] . '="' . $match_name . '" ' . $parts[ 4 ] . '="' . $parts[ 5 ] . '"/>' . "\n";
+					$parts_prefix = empty( $parts[ 6 ] ) ? '' : '<!-- ' . $parts[ 6 ] . ' -->';
+
+					$parts[ 0 ] = $parts_prefix . '<' . $parts[ 1 ] . ' ' . $parts[ 2 ] . '="' . $match_name . '" ' .
+						$parts[ 4 ] . '="' . $parts[ 5 ] . '"/>' . "\n";
 
 				} elseif ( $this->p->debug->enabled ) {
 

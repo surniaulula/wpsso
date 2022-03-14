@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '11.7.0-b.1',	// Plugin version.
-					'opt_version' => '897',		// Increment when changing default option values.
+					'version'     => '11.7.0-rc.1',	// Plugin version.
+					'opt_version' => '898',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1555,6 +1555,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_property_product:item_group_id'           => 1,
 					'add_meta_property_product:material'                => 1,
 					'add_meta_property_product:mfr_part_no'             => 1,
+					'add_meta_property_product:offers'                  => 1,	// Non-standard / internal meta tag.
 					'add_meta_property_product:original_price:amount'   => 1,
 					'add_meta_property_product:original_price:currency' => 1,
 					'add_meta_property_product:pattern'                 => 1,
