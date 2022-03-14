@@ -96,7 +96,9 @@ WPSSO provides comprehensive Schema markup for posts, pages, custom post types, 
 
 **Schema JSON-LD markup for WooCommerce SEO:**
 
-> The WooCommerce plugin alone does not provide sufficient Schema markup for Google Rich Results. The <a href="https://wpsso.com/">WPSSO Core Premium edition</a> reads WooCommerce product data and provides complete Schema Product JSON-LD markup for Google Rich Results, including product image galleries, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, pattern, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.
+* The WooCommerce plugin alone does not provide sufficient Schema markup for Google Rich Results.
+
+* The <a href="https://wpsso.com/">WPSSO Core Premium edition</a> reads WooCommerce product data and provides complete Schema Product JSON-LD markup for Google Rich Results, including product image galleries, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, pattern, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.
 
 **Google Merchant Feed XML add-on for for WooCommerce, Easy Digital Downloads, and Document SSO metabox custom products.**
 
@@ -251,7 +253,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.7.0-b.1 (2022/03/14)**
+**Version 11.7.0-rc.1 (2022/03/14)**
 
 * **New Features**
 	* None.
@@ -453,7 +455,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 11.7.0-b.1 =
+= 11.7.0-rc.1 =
 
 (2022/03/14) Added support for image and video properties in Schema comment and review markup. Added a new SSO &gt; Advanced Settings &gt; Default Text options. Fixed Schema Headline metadata dependency.
 
