@@ -253,7 +253,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.7.0-rc.1 (2022/03/14)**
+**Version 11.7.0 (2022/03/14)**
 
 * **New Features**
 	* None.
@@ -455,7 +455,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 11.7.0-rc.1 =
+= 11.7.0 =
 
 (2022/03/14) Added support for image and video properties in Schema comment and review markup. Added a new SSO &gt; Advanced Settings &gt; Default Text options. Fixed Schema Headline metadata dependency.
 
