@@ -253,6 +253,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 11.7.1-dev.1 (2022/03/16)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed a missing trailing slash for the home page URL provided by WordPress.
+* **Developer Notes**
+	* Added a `$path = '/'` argument for the WordPress `get_home_url()` and `get_site_url()` functions.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 11.7.0 (2022/03/14)**
 
 * **New Features**
@@ -454,6 +468,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.2.
 
 == Upgrade Notice ==
+
+= 11.7.1-dev.1 =
+
+(2022/03/16) Fixed a missing trailing slash for the home page URL provided by WordPress.
 
 = 11.7.0 =
 
