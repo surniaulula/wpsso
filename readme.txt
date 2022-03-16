@@ -253,7 +253,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.7.1-dev.1 (2022/03/16)**
+**Version 11.7.1-dev.2 (2022/03/16)**
 
 * **New Features**
 	* None.
@@ -469,7 +469,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 11.7.1-dev.1 =
+= 11.7.1-dev.2 =
 
 (2022/03/16) Fixed a missing trailing slash for the home page URL provided by WordPress.
 
