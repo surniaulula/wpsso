@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 11.7.1-dev.1\n"
+"Project-Id-Version: WPSSO Core 11.7.1-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -6414,13 +6414,13 @@ msgctxt "option label"
 msgid "Snippet Max. Length"
 msgstr ""
 
-#: lib/edit.php:545 lib/submenu/general.php:346
+#: lib/edit.php:545 lib/submenu/general.php:353
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
 
-#: lib/edit.php:546 lib/edit.php:561 lib/submenu/general.php:346
-#: lib/submenu/general.php:359
+#: lib/edit.php:546 lib/edit.php:561 lib/submenu/general.php:353
+#: lib/submenu/general.php:366
 msgctxt "option comment"
 msgid "-1 for no limit"
 msgstr ""
@@ -6435,7 +6435,7 @@ msgctxt "option label"
 msgid "Video Max. Previews"
 msgstr ""
 
-#: lib/edit.php:560 lib/submenu/general.php:359
+#: lib/edit.php:560 lib/submenu/general.php:366
 msgctxt "option comment"
 msgid "seconds"
 msgstr ""
@@ -7818,7 +7818,7 @@ msgid ""
 "Schema meta tags and JSON-LD markup."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:74 lib/submenu/general.php:171
+#: lib/messages-tooltip-meta.php:74 lib/submenu/general.php:178
 msgctxt "option label"
 msgid "Default Article Section"
 msgstr ""
@@ -7881,7 +7881,7 @@ msgid ""
 "Twitter Card formats)."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:138 lib/submenu/general.php:186
+#: lib/messages-tooltip-meta.php:138 lib/submenu/general.php:193
 msgctxt "option label"
 msgid "Default Product Type"
 msgstr ""
@@ -8478,7 +8478,7 @@ msgid "The SEO site name suffix for the %1$s option value."
 msgstr ""
 
 #: lib/messages-tooltip-plugin.php:267 lib/submenu/essential.php:97
-#: lib/submenu/general.php:154
+#: lib/submenu/general.php:155
 msgctxt "option label"
 msgid "WebSite Name"
 msgstr ""
@@ -8496,7 +8496,7 @@ msgid "The SEO tagline suffix for the %1$s option value."
 msgstr ""
 
 #: lib/messages-tooltip-plugin.php:284 lib/submenu/essential.php:103
-#: lib/submenu/general.php:165
+#: lib/submenu/general.php:166
 msgctxt "option label"
 msgid "WebSite Description"
 msgstr ""
@@ -9247,7 +9247,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip.php:345 lib/messages.php:1062
-#: lib/submenu/general.php:383
+#: lib/submenu/general.php:390
 msgctxt "option label"
 msgid "Add Hidden Image for Pinterest"
 msgstr ""
@@ -10879,12 +10879,12 @@ msgctxt "metabox title"
 msgid "Essential Settings"
 msgstr ""
 
-#: lib/submenu/essential.php:109 lib/submenu/general.php:252
+#: lib/submenu/essential.php:109 lib/submenu/general.php:259
 msgctxt "option label"
 msgid "Default Image ID"
 msgstr ""
 
-#: lib/submenu/essential.php:114 lib/submenu/general.php:257
+#: lib/submenu/essential.php:114 lib/submenu/general.php:264
 msgctxt "option label"
 msgid "or Default Image URL"
 msgstr ""
@@ -10939,172 +10939,177 @@ msgctxt "metabox tab"
 msgid "Other Sites"
 msgstr ""
 
-#: lib/submenu/general.php:160
+#: lib/submenu/general.php:161
 msgctxt "option label"
 msgid "WebSite Alternate Name"
 msgstr ""
 
-#: lib/submenu/general.php:201
+#: lib/submenu/general.php:172
+msgctxt "option label"
+msgid "WebSite Home URL"
+msgstr ""
+
+#: lib/submenu/general.php:208
 msgctxt "option label"
 msgid "Default Country"
 msgstr ""
 
-#: lib/submenu/general.php:206
+#: lib/submenu/general.php:213
 msgctxt "option label"
 msgid "Default Timezone"
 msgstr ""
 
-#: lib/submenu/general.php:211
+#: lib/submenu/general.php:218
 msgctxt "option label"
 msgid "Default Currency"
 msgstr ""
 
-#: lib/submenu/general.php:220
+#: lib/submenu/general.php:227
 msgctxt "option label"
 msgid "Title Separator"
 msgstr ""
 
-#: lib/submenu/general.php:225
+#: lib/submenu/general.php:232
 msgctxt "option label"
 msgid "Truncated Text Ellipsis"
 msgstr ""
 
-#: lib/submenu/general.php:230
+#: lib/submenu/general.php:237
 msgctxt "option label"
 msgid "Description Hashtags"
 msgstr ""
 
-#: lib/submenu/general.php:234
+#: lib/submenu/general.php:241
 msgctxt "option comment"
 msgid "tag names"
 msgstr ""
 
-#: lib/submenu/general.php:243
+#: lib/submenu/general.php:250
 msgctxt "option label"
 msgid "Maximum Images to Include"
 msgstr ""
 
-#: lib/submenu/general.php:272
+#: lib/submenu/general.php:279
 msgctxt "option label"
 msgid "Facebook Domain Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:277
+#: lib/submenu/general.php:284
 msgctxt "option label"
 msgid "Facebook Locale"
 msgstr ""
 
-#: lib/submenu/general.php:282
+#: lib/submenu/general.php:289
 msgctxt "option label"
 msgid "Facebook Application ID"
 msgstr ""
 
-#: lib/submenu/general.php:302
+#: lib/submenu/general.php:309
 msgctxt "option label"
 msgid "Google Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:312
+#: lib/submenu/general.php:319
 msgctxt "option label"
 msgid "Organization Schema Type"
 msgstr ""
 
-#: lib/submenu/general.php:319
+#: lib/submenu/general.php:326
 msgctxt "option label"
 msgid "Organization Location"
 msgstr ""
 
-#: lib/submenu/general.php:325
+#: lib/submenu/general.php:332
 msgctxt "option label"
 msgid "Aggregate Offers by Currency"
 msgstr ""
 
-#: lib/submenu/general.php:328
+#: lib/submenu/general.php:335
 msgctxt "option comment"
 msgid "incompatible with <a href=\"%s\">price drop appearance</a>"
 msgstr ""
 
-#: lib/submenu/general.php:332
+#: lib/submenu/general.php:339
 msgctxt "option label"
 msgid "Add Text / Article Body Properties"
 msgstr ""
 
-#: lib/submenu/general.php:342
+#: lib/submenu/general.php:349
 msgctxt "option label"
 msgid "Robots Snippet Max. Length"
 msgstr ""
 
-#: lib/submenu/general.php:349
+#: lib/submenu/general.php:356
 msgctxt "option label"
 msgid "Robots Image Preview Size"
 msgstr ""
 
-#: lib/submenu/general.php:355
+#: lib/submenu/general.php:362
 msgctxt "option label"
 msgid "Robots Video Max. Previews"
 msgstr ""
 
-#: lib/submenu/general.php:366
+#: lib/submenu/general.php:373
 msgctxt "option label"
 msgid "Pinterest Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:371
+#: lib/submenu/general.php:378
 msgctxt "option label"
 msgid "Add \"nopin\" to Site Header Image"
 msgstr ""
 
-#: lib/submenu/general.php:374 lib/submenu/general.php:380
+#: lib/submenu/general.php:381 lib/submenu/general.php:387
 msgctxt "option comment"
 msgid "recommended"
 msgstr ""
 
-#: lib/submenu/general.php:377
+#: lib/submenu/general.php:384
 msgctxt "option label"
 msgid "Add Pinterest \"nopin\" to Images"
 msgstr ""
 
-#: lib/submenu/general.php:386
+#: lib/submenu/general.php:393
 msgctxt "option comment"
 msgid "recommended (see help text for caveats)"
 msgstr ""
 
-#: lib/submenu/general.php:393
+#: lib/submenu/general.php:400
 msgctxt "option value"
 msgid "Summary"
 msgstr ""
 
-#: lib/submenu/general.php:394
+#: lib/submenu/general.php:401
 msgctxt "option value"
 msgid "Summary Large Image"
 msgstr ""
 
-#: lib/submenu/general.php:398
+#: lib/submenu/general.php:405
 msgctxt "option label"
 msgid "Twitter Card for Singular with Image"
 msgstr ""
 
-#: lib/submenu/general.php:403
+#: lib/submenu/general.php:410
 msgctxt "option label"
 msgid "Twitter Card Type by Default"
 msgstr ""
 
-#: lib/submenu/general.php:412
+#: lib/submenu/general.php:419
 msgctxt "option label"
 msgid "Ahrefs Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:417
+#: lib/submenu/general.php:424
 msgctxt "option label"
 msgid "Baidu Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:422
+#: lib/submenu/general.php:429
 msgctxt "option label"
 msgid "Bing Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:427
+#: lib/submenu/general.php:434
 msgctxt "option label"
 msgid "Yandex Website Verification ID"
 msgstr ""

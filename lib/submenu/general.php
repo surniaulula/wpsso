@@ -147,6 +147,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					$def_site_name      = get_bloginfo( 'name' );
 					$def_site_desc      = get_bloginfo( 'description' );
+					$def_home_url       = SucomUtil::get_home_url();	// Returns the home page URL with a trailing slash.
 					$article_sections   = $this->p->util->get_article_sections();
 					$product_categories = $this->p->util->get_google_product_categories();
 
@@ -166,6 +167,12 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 							$css_class = '', $css_id = 'site_desc' ) . 
 						'<td>' . $this->form->get_input_locale( 'site_desc', $css_class = 'wide', $css_id = '',
 							$len = 0, $def_site_desc ) . '</td>';
+
+					$table_rows[ 'home_url' ] = $this->form->get_tr_hide( 'basic', 'home_url' ) . 
+						$this->form->get_th_html_locale( _x( 'WebSite Home URL', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'home_url' ) .
+						'<td>' . $this->form->get_input_locale( 'home_url', $css_class = 'wide', $css_id = '',
+							$len = 0, $def_home_url ) . '</td>';
 
 					$table_rows[ 'og_def_article_section' ] = '' . 
 						$this->form->get_th_html( _x( 'Default Article Section', 'option label', 'wpsso' ),
