@@ -4745,7 +4745,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( empty( $home_url ) ) {	// Fallback to default WordPress value.
 
-				$home_url = get_home_url();	// Fallback to default WordPress value.
+				$home_url = get_home_url( $blog_id = null, $path = '/', $scheme = null);	// Fallback to default WordPress value.
 			}
 
 			return $home_url;
@@ -4763,7 +4763,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			if ( empty( $wp_url ) ) {
 
-				$wp_url = get_site_url();	// Fallback to default WordPress value.
+				$wp_url = get_site_url( $blog_id = null, $path = '/', $scheme = null );	// Fallback to default WordPress value.
 			}
 
 			return $wp_url;
