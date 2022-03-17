@@ -81,6 +81,54 @@
 <li><em>Not a known valid target type for the itemReviewed property.</em></li>
 </ul>
 
+<p><strong>Built-in support for AMP plugins</strong>:</p>
+
+<ul>
+<li><a href="https://wordpress.org/plugins/amp/">AMP</a></li>
+<li><a href="https://wordpress.org/plugins/accelerated-mobile-pages/">AMP for WP</a></li>
+</ul>
+
+<p><strong>Built-in support for caching and optimization plugins</strong>:</p>
+
+<ul>
+<li>Autoptimize</li>
+<li>Cache Enabler</li>
+<li>Comet Cache</li>
+<li>Hummingbird Cache</li>
+<li>LiteSpeed Cache</li>
+<li>Pagely Cache</li>
+<li>Perfect Images + Retina</li>
+<li>SiteGround Cache</li>
+<li>W3 Total Cache (aka W3TC)</li>
+<li>WP Engine Cache</li>
+<li>WP Fastest Cache</li>
+<li>WP Rocket Cache</li>
+<li>WP Super Cache</li>
+</ul>
+
+<p><strong>Built-in support for other SEO plugins</strong>:</p>
+
+<ul>
+<li>All in One SEO Pack</li>
+<li>Jetpack SEO</li>
+<li>Rank Math SEO</li>
+<li>SEO Ultimate</li>
+<li>SEOPress</li>
+<li>Slim SEO</li>
+<li>Squirrly SEO</li>
+<li>The SEO Framework</li>
+<li>WP Meta SEO</li>
+<li>Yoast SEO</li>
+<li>Yoast WooCommerce SEO</li>
+</ul>
+
+<p><strong>Built-in support for advanced WordPress configurations</strong>:</p>
+
+<ul>
+<li>WordPress MU Domain Mapping</li>
+<li>Network / Multisite Installations</li>
+</ul>
+
 <h3>Users Love the WPSSO Core Plugin</h3>
 
 <p>&#x2605;&#x2605;&#x2605;&#x2605;&#x2605; - "Unlike competitors, you can literally customize just about every aspect of SEO and Social SEO if you desire to. &#91;...&#93; This plugin has the most complete JSON-LD markup out of any of them, so you won’t have any errors and warnings in search console for WordPress or WooCommerce sites. You can go crazy customizing everything, or you can just set and forget. There aren’t many plugins that allow the best of both worlds." - <a href="https://wordpress.org/support/topic/most-responsive-developer-ive-ever-seen/">kw11</a></p>
