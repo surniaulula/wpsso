@@ -90,7 +90,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'schema_img_article_crop_y'      => '',
 					'og_site_name'                   => 'site_name',
 					'og_site_description'            => 'site_desc',
-					'org_url'                        => 'home_url',
+					'org_url'                        => 'site_home_url',
 					'org_type'                       => 'site_org_schema_type',
 					'org_place_id'                   => 'site_org_place_id',
 					'link_def_author_id'             => '',
@@ -383,7 +383,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'plugin_def_currency' => 'og_def_currency',	// Default Currency.
 				),
 				772 => array(
-					'site_url' => 'home_url',
+					'site_url' => 'site_home_url',
 				),
 				773 => array(
 					'plugin_debug' => 'plugin_debug_html',
@@ -548,6 +548,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				),
 				891 => array(
 					'plugin_show_validate_toolbar' => 'plugin_add_toolbar_validate',
+				),
+				898 => array(
+					'home_url' => 'site_home_url',
 				),
 			),
 		);

@@ -157,7 +157,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'<td>' . $this->form->get_input_locale( 'site_name', $css_class = 'long_name', $css_id = '',
 							$len = 0, $def_site_name ) . '</td>';
 
-					$table_rows[ 'site_name_alt' ] = '' .
+					$table_rows[ 'site_name_alt' ] = $this->form->get_tr_hide( 'basic', 'site_name_alt' ) .
 						$this->form->get_th_html_locale( _x( 'WebSite Alternate Name', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'site_name_alt' ) . 
 						'<td>' . $this->form->get_input_locale( 'site_name_alt', $css_class = 'long_name' ) . '</td>';
@@ -168,10 +168,10 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'<td>' . $this->form->get_input_locale( 'site_desc', $css_class = 'wide', $css_id = '',
 							$len = 0, $def_site_desc ) . '</td>';
 
-					$table_rows[ 'home_url' ] = $this->form->get_tr_hide( 'basic', 'home_url' ) . 
+					$table_rows[ 'site_home_url' ] = $this->form->get_tr_hide( 'basic', 'site_home_url' ) . 
 						$this->form->get_th_html_locale( _x( 'WebSite Home URL', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'home_url' ) .
-						'<td>' . $this->form->get_input_locale( 'home_url', $css_class = 'wide', $css_id = '',
+							$css_class = '', $css_id = 'site_home_url' ) .
+						'<td>' . $this->form->get_input_locale( 'site_home_url', $css_class = 'wide', $css_id = '',
 							$len = 0, $def_home_url ) . '</td>';
 
 					$table_rows[ 'og_def_article_section' ] = '' . 

@@ -30,19 +30,25 @@ if ( ! class_exists( 'WpssoMessagesTooltipSite' ) ) {
 
 				case 'tooltip-site_name':	// WebSite Name.
 
-					$text = sprintf( __( 'The website name is used for the Facebook / Open Graph and Pinterest Rich Pin %s meta tag.', 'wpsso' ), '<code>og:site_name</code>' ) . ' ';
+					$text = sprintf( __( 'The website name is used in Schema markup and the Facebook / Open Graph %s meta tag.', 'wpsso' ), '<code>og:site_name</code>' ) . ' ';
 
 					break;
 
 				case 'tooltip-site_name_alt':	// WebSite Alternate Name.
 
-					$text = __( 'An optional alternate name for your website that you want Google to consider.', 'wpsso' );
+					$text = __( 'An optional alternate name that you want Google to consider for your website.', 'wpsso' );
 
 					break;
 
-				case 'tooltip-site_desc':	// WebSite URL.
+				case 'tooltip-site_desc':	// WebSite Description.
 
-					$text = __( 'The website description is used for the WordPress blog (non-static) front page.', 'wpsso' );
+					$text = __( 'A short description for the home page tagline and the blog (non-static) front page description.', 'wpsso' );
+
+					break;
+
+				case 'tooltip-site_home_url':	// WebSite Home URL.
+
+					$text = __( 'The website home URL used in meta tags and Schema markup.', 'wpsso' );
 
 					break;
 

@@ -489,7 +489,8 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				 *	'plugin_cf_vid_url'                     = ''
 				 *	'plugin_cf_review_item_image_url'       = ''
 				 */
-				case 'home_url':
+				case 'site_home_url':
+				case 'site_wp_url':
 				case 'canonical_url':
 				case 'redirect_url':
 				case 'fb_page_url':
