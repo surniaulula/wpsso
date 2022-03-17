@@ -30,7 +30,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSite' ) ) {
 
 				case 'tooltip-site_name':	// WebSite Name.
 
-					$text = sprintf( __( 'The website name is used in Schema markup and the Facebook / Open Graph %s meta tag.', 'wpsso' ), '<code>og:site_name</code>' ) . ' ';
+					$text = __( 'The website name used in meta tags and Schema markup.', 'wpsso' );
 
 					break;
 

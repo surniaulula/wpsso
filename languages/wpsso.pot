@@ -8986,9 +8986,7 @@ msgid "Select a default Schema type for the Schema Review subject URL."
 msgstr ""
 
 #: lib/messages-tooltip-site.php:33
-msgid ""
-"The website name is used in Schema markup and the Facebook / Open Graph %s "
-"meta tag."
+msgid "The website name used in meta tags and Schema markup."
 msgstr ""
 
 #: lib/messages-tooltip-site.php:39

@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 11.7.0\n"
+"Project-Id-Version: WPSSO Core 11.7.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2022-03-14 09:03-0700\n"
+"PO-Revision-Date: 2022-03-17 09:09-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -6055,13 +6055,13 @@ msgctxt "option label"
 msgid "Snippet Max. Length"
 msgstr "Longueur max. d'extrait"
 
-#: lib/edit.php:545 lib/submenu/general.php:346
+#: lib/edit.php:545 lib/submenu/general.php:353
 msgctxt "option comment"
 msgid "characters or less"
 msgstr "caractères ou moins"
 
-#: lib/edit.php:546 lib/edit.php:561 lib/submenu/general.php:346
-#: lib/submenu/general.php:359
+#: lib/edit.php:546 lib/edit.php:561 lib/submenu/general.php:353
+#: lib/submenu/general.php:366
 msgctxt "option comment"
 msgid "-1 for no limit"
 msgstr "-1 pour aucune limite"
@@ -6076,7 +6076,7 @@ msgctxt "option label"
 msgid "Video Max. Previews"
 msgstr "Aperçus vidéo max."
 
-#: lib/edit.php:560 lib/submenu/general.php:359
+#: lib/edit.php:560 lib/submenu/general.php:366
 msgctxt "option comment"
 msgid "seconds"
 msgstr "secondes"
@@ -7147,7 +7147,7 @@ msgstr "Un ID d'image personnalisé à inclure en premier dans les balises méta
 msgid "A customized image URL (instead of an image ID) to include first in the Schema meta tags and JSON-LD markup."
 msgstr "Un URL d'image personnalisé (au lieu d'un ID d'image) à inclure en premier dans les balises méta et balisage JSON-LD de Schéma."
 
-#: lib/messages-tooltip-meta.php:74 lib/submenu/general.php:171
+#: lib/messages-tooltip-meta.php:74 lib/submenu/general.php:178
 msgctxt "option label"
 msgid "Default Article Section"
 msgstr "Section d'article par défaut"
@@ -7200,7 +7200,7 @@ msgstr "La valeur par défaut est héritée du titre social ou SEO."
 msgid "A customized description for the Twitter Card description meta tag (all Twitter Card formats)."
 msgstr "Une description personnalisée pour la balise méta de description de carte Twitter (tous les formats de cartes Twitter)."
 
-#: lib/messages-tooltip-meta.php:138 lib/submenu/general.php:186
+#: lib/messages-tooltip-meta.php:138 lib/submenu/general.php:193
 msgctxt "option label"
 msgid "Default Product Type"
 msgstr "Type de produit par défaut"
@@ -7652,7 +7652,7 @@ msgid "The SEO site name suffix for the %1$s option value."
 msgstr "Le suffixe SEO de nom du site pour la valeur de l'option %1$s."
 
 #: lib/messages-tooltip-plugin.php:267 lib/submenu/essential.php:97
-#: lib/submenu/general.php:154
+#: lib/submenu/general.php:155
 msgctxt "option label"
 msgid "WebSite Name"
 msgstr "Nom du site Web"
@@ -7668,7 +7668,7 @@ msgid "The SEO tagline suffix for the %1$s option value."
 msgstr "Le suffixe SEO de slogan pour la valeur de l'option %1$s."
 
 #: lib/messages-tooltip-plugin.php:284 lib/submenu/essential.php:103
-#: lib/submenu/general.php:165
+#: lib/submenu/general.php:166
 msgctxt "option label"
 msgid "WebSite Description"
 msgstr "Description du site Web"
@@ -8041,70 +8041,74 @@ msgid "Select a default Schema type for the Schema Review subject URL."
 msgstr "Sélectionnez un type de Schéma par défaut pour l'URL du sujet de l'évaluation."
 
 #: lib/messages-tooltip-site.php:33
-msgid "The website name is used for the Facebook / Open Graph and Pinterest Rich Pin %s meta tag."
-msgstr "Le nom du site Web est utilisé pour la balise méta %s Facebook / Open Graph et Pinterest Rich Pin."
+msgid "The website name used in meta tags and Schema markup."
+msgstr "Le nom du site Web utilisé dans les balises méta et le balisage de Schéma."
 
 #: lib/messages-tooltip-site.php:39
-msgid "An optional alternate name for your website that you want Google to consider."
-msgstr "Un autre nom facultatif pour votre site Web que vous souhaitez que Google considère."
+msgid "An optional alternate name that you want Google to consider for your website."
+msgstr "Un autre nom facultatif que vous souhaitez que Google considère pour votre site Web."
 
 #: lib/messages-tooltip-site.php:45
-msgid "The website description is used for the WordPress blog (non-static) front page."
-msgstr "La description du site Web est utilisée pour la page d'accueil blog de WordPress (non statique)."
+msgid "A short description for the home page tagline and the blog (non-static) front page description."
+msgstr "Une courte description pour le slogan de la page d'accueil et la description de la page d'accueil blog (non statique)."
 
-#: lib/messages-tooltip-site.php:58
+#: lib/messages-tooltip-site.php:51
+msgid "The website home URL used in meta tags and Schema markup."
+msgstr "L'URL d'accueil du site Web utilisée dans les balises méta et le balisage de Schéma."
+
+#: lib/messages-tooltip-site.php:64
 msgid "A URL for this organization's logo image that Google can show in its search results and <em>Knowledge Graph</em>."
 msgstr "L'URL pour l'image du logo de cette organisation que Google peut afficher dans ces résultats de recherche et <em>Knowledge Graph</em>."
 
 #. translators: %s is 600x60px.
-#: lib/messages-tooltip-site.php:61
+#: lib/messages-tooltip-site.php:67
 msgid "The image must be at least %s for Google, but preferably 1200x1200px or more."
 msgstr "L'image doit être au moins %s pour Google, mais de préférence 1200x1200px ou plus."
 
 #. translators: %s is 600x60px.
-#: lib/messages-tooltip-site.php:75
+#: lib/messages-tooltip-site.php:81
 msgid "A URL for this organization's banner image <strong>measuring exactly %s</strong>, that Google News can show for Schema Article type content from this publisher."
 msgstr "L'URL d'image de bannière pour cette organisation <strong>mesurant exactement %s</strong>, que Google News peut afficher pour le contenu Schéma d'Article de cet éditeur."
 
-#: lib/messages-tooltip-site.php:81
+#: lib/messages-tooltip-site.php:87
 msgid "Google does not recognize most Schema Organization sub-types as valid organizations."
 msgstr "Google ne reconnaît pas tous les sous-types de Schéma Organisation comme des organisations valides."
 
-#: lib/messages-tooltip-site.php:83
+#: lib/messages-tooltip-site.php:89
 msgid "The site Schema Organization type should be Organization and not a sub-type."
 msgstr "Le type de Schéma Organisation du site doit être Organisation et non un sous-type."
 
-#: lib/messages-tooltip-site.php:89
+#: lib/messages-tooltip-site.php:95
 msgid "Select an optional location for this organization."
 msgstr "Choisissez un emplacement optionnel pour cette organisation."
 
-#: lib/messages-tooltip-site.php:97
+#: lib/messages-tooltip-site.php:103
 msgid "Select a user for the Schema Person publisher markup."
 msgstr "Sélectionnez un utilisateur pour le balisage d'éditeur de Schema Person."
 
-#: lib/messages-tooltip-site.php:99
+#: lib/messages-tooltip-site.php:105
 msgid "The available Person list includes all users in the %1$s or %2$s roles."
 msgstr "La liste des personnes disponibles inclut tous les utilisateurs dans les rôles %1$s ou %2$s."
 
-#: lib/messages-tooltip-site.php:100
+#: lib/messages-tooltip-site.php:106
 msgctxt "user role"
 msgid "Administrator"
 msgstr "Administrateur"
 
-#: lib/messages-tooltip-site.php:100
+#: lib/messages-tooltip-site.php:106
 msgctxt "user role"
 msgid "Editor"
 msgstr "Éditeur"
 
-#: lib/messages-tooltip-site.php:106
+#: lib/messages-tooltip-site.php:112
 msgid "Select a Schema type for the publisher of content for this website."
 msgstr "Sélectionnez un type de Schéma pour l'éditeur de contenu pour ce site Web."
 
-#: lib/messages-tooltip-site.php:108
+#: lib/messages-tooltip-site.php:114
 msgid "Traditionally, the Schema Organization type is selected for business websites, where-as the Schema Person type is selected for personal websites."
 msgstr "Traditionnellement, le type de Schéma Organisation est sélectionné pour les sites Web d'entreprise, alors que le type de Schéma Personne est sélectionné pour les sites Web personnels."
 
-#: lib/messages-tooltip-site.php:114
+#: lib/messages-tooltip-site.php:120
 msgid "Individual sites/blogs may use this value as a default (when the plugin is first activated), if the current site/blog option value is blank, or force every site/blog to use this specific value."
 msgstr "Les sites/blogs individuels peuvent utiliser cette valeur par défaut (quand l'extension est activée pour la première fois), si la valeur de l'option du site/blog est vide, ou forcer chaque site/blog a utiliser cette valeur spécifique."
 
@@ -8240,7 +8244,7 @@ msgid "Add a %s attribute to the site header and Gravatar images to prevent the 
 msgstr "Ajoutez un attribut %s à l'en-tête du site et aux images Gravatar pour empêcher le bouton du navigateur Pinterest Pin It de suggérer ces images."
 
 #: lib/messages-tooltip.php:345 lib/messages.php:1062
-#: lib/submenu/general.php:383
+#: lib/submenu/general.php:390
 msgctxt "option label"
 msgid "Add Hidden Image for Pinterest"
 msgstr "Ajouter image masquée pour Pinterest"
@@ -9678,12 +9682,12 @@ msgctxt "metabox title"
 msgid "Essential Settings"
 msgstr "Réglages essentiels"
 
-#: lib/submenu/essential.php:109 lib/submenu/general.php:252
+#: lib/submenu/essential.php:109 lib/submenu/general.php:259
 msgctxt "option label"
 msgid "Default Image ID"
 msgstr "ID d'image par défaut"
 
-#: lib/submenu/essential.php:114 lib/submenu/general.php:257
+#: lib/submenu/essential.php:114 lib/submenu/general.php:264
 msgctxt "option label"
 msgid "or Default Image URL"
 msgstr "ou URL d'image par défaut"
@@ -9738,172 +9742,177 @@ msgctxt "metabox tab"
 msgid "Other Sites"
 msgstr "Autre sites"
 
-#: lib/submenu/general.php:160
+#: lib/submenu/general.php:161
 msgctxt "option label"
 msgid "WebSite Alternate Name"
 msgstr "Autre nom du site Web"
 
-#: lib/submenu/general.php:201
+#: lib/submenu/general.php:172
+msgctxt "option label"
+msgid "WebSite Home URL"
+msgstr "URL d'accueil du site Web"
+
+#: lib/submenu/general.php:208
 msgctxt "option label"
 msgid "Default Country"
 msgstr "Pays par défaut"
 
-#: lib/submenu/general.php:206
+#: lib/submenu/general.php:213
 msgctxt "option label"
 msgid "Default Timezone"
 msgstr "Fuseau horaire par défaut"
 
-#: lib/submenu/general.php:211
+#: lib/submenu/general.php:218
 msgctxt "option label"
 msgid "Default Currency"
 msgstr "Devise par défaut"
 
-#: lib/submenu/general.php:220
+#: lib/submenu/general.php:227
 msgctxt "option label"
 msgid "Title Separator"
 msgstr "Séparateur de titre"
 
-#: lib/submenu/general.php:225
+#: lib/submenu/general.php:232
 msgctxt "option label"
 msgid "Truncated Text Ellipsis"
 msgstr "Ellipses de texte tronquées"
 
-#: lib/submenu/general.php:230
+#: lib/submenu/general.php:237
 msgctxt "option label"
 msgid "Description Hashtags"
 msgstr "Hashtags aux descriptions"
 
-#: lib/submenu/general.php:234
+#: lib/submenu/general.php:241
 msgctxt "option comment"
 msgid "tag names"
 msgstr "noms d'étiquettes"
 
-#: lib/submenu/general.php:243
+#: lib/submenu/general.php:250
 msgctxt "option label"
 msgid "Maximum Images to Include"
 msgstr "Images maximum a inclure"
 
-#: lib/submenu/general.php:272
+#: lib/submenu/general.php:279
 msgctxt "option label"
 msgid "Facebook Domain Verification ID"
 msgstr "ID de vérif. du domaine pour Facebook"
 
-#: lib/submenu/general.php:277
+#: lib/submenu/general.php:284
 msgctxt "option label"
 msgid "Facebook Locale"
 msgstr "Langue Facebook"
 
-#: lib/submenu/general.php:282
+#: lib/submenu/general.php:289
 msgctxt "option label"
 msgid "Facebook Application ID"
 msgstr "ID d'application Facebook"
 
-#: lib/submenu/general.php:302
+#: lib/submenu/general.php:309
 msgctxt "option label"
 msgid "Google Website Verification ID"
 msgstr "ID de vérif. du site Web pour Google"
 
-#: lib/submenu/general.php:312
+#: lib/submenu/general.php:319
 msgctxt "option label"
 msgid "Organization Schema Type"
 msgstr "Type de Schéma d'organisation"
 
-#: lib/submenu/general.php:319
+#: lib/submenu/general.php:326
 msgctxt "option label"
 msgid "Organization Location"
 msgstr "Emplacement de l'organisation"
 
-#: lib/submenu/general.php:325
+#: lib/submenu/general.php:332
 msgctxt "option label"
 msgid "Aggregate Offers by Currency"
 msgstr "Agréger les offres par devise"
 
-#: lib/submenu/general.php:328
+#: lib/submenu/general.php:335
 msgctxt "option comment"
 msgid "incompatible with <a href=\"%s\">price drop appearance</a>"
 msgstr "incompatible avec <a href=\"%s\">l'affichage de la baisse de prix</a>"
 
-#: lib/submenu/general.php:332
+#: lib/submenu/general.php:339
 msgctxt "option label"
 msgid "Add Text / Article Body Properties"
 msgstr "Ajouter prop. texte / corps d'article"
 
-#: lib/submenu/general.php:342
+#: lib/submenu/general.php:349
 msgctxt "option label"
 msgid "Robots Snippet Max. Length"
 msgstr "Longueur max. d'extrait pour robots"
 
-#: lib/submenu/general.php:349
+#: lib/submenu/general.php:356
 msgctxt "option label"
 msgid "Robots Image Preview Size"
 msgstr "Taille d'aperçu d'image pour robots"
 
-#: lib/submenu/general.php:355
+#: lib/submenu/general.php:362
 msgctxt "option label"
 msgid "Robots Video Max. Previews"
 msgstr "Aperçus vidéo max. pour robots"
 
-#: lib/submenu/general.php:366
+#: lib/submenu/general.php:373
 msgctxt "option label"
 msgid "Pinterest Website Verification ID"
 msgstr "ID de vérif. du site Web pour Pinterest"
 
-#: lib/submenu/general.php:371
+#: lib/submenu/general.php:378
 msgctxt "option label"
 msgid "Add \"nopin\" to Site Header Image"
 msgstr "Ajouter \"nopin\" à l'image d'en-tête"
 
-#: lib/submenu/general.php:374 lib/submenu/general.php:380
+#: lib/submenu/general.php:381 lib/submenu/general.php:387
 msgctxt "option comment"
 msgid "recommended"
 msgstr "recommandé"
 
-#: lib/submenu/general.php:377
+#: lib/submenu/general.php:384
 msgctxt "option label"
 msgid "Add Pinterest \"nopin\" to Images"
 msgstr "Ajouter \"nopin\" Pinterest aux images"
 
-#: lib/submenu/general.php:386
+#: lib/submenu/general.php:393
 msgctxt "option comment"
 msgid "recommended (see help text for caveats)"
 msgstr "recommandé (voir texte d'aide pour mises en garde)"
 
-#: lib/submenu/general.php:393
+#: lib/submenu/general.php:400
 msgctxt "option value"
 msgid "Summary"
 msgstr "Sommaire"
 
-#: lib/submenu/general.php:394
+#: lib/submenu/general.php:401
 msgctxt "option value"
 msgid "Summary Large Image"
 msgstr "Sommaire grande image"
 
-#: lib/submenu/general.php:398
+#: lib/submenu/general.php:405
 msgctxt "option label"
 msgid "Twitter Card for Singular with Image"
 msgstr "Carte Twitter pour singulier avec image"
 
-#: lib/submenu/general.php:403
+#: lib/submenu/general.php:410
 msgctxt "option label"
 msgid "Twitter Card Type by Default"
 msgstr "Type de carte Twitter par défaut"
 
-#: lib/submenu/general.php:412
+#: lib/submenu/general.php:419
 msgctxt "option label"
 msgid "Ahrefs Website Verification ID"
 msgstr "ID de vérif. du site Web pour Ahrefs"
 
-#: lib/submenu/general.php:417
+#: lib/submenu/general.php:424
 msgctxt "option label"
 msgid "Baidu Website Verification ID"
 msgstr "ID de vérif. du site Web pour Baidu"
 
-#: lib/submenu/general.php:422
+#: lib/submenu/general.php:429
 msgctxt "option label"
 msgid "Bing Website Verification ID"
 msgstr "ID de vérif. du site Web pour Bing"
 
-#: lib/submenu/general.php:427
+#: lib/submenu/general.php:434
 msgctxt "option label"
 msgid "Yandex Website Verification ID"
 msgstr "ID de vérif. du site Web pour Yandex"
