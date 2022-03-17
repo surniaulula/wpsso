@@ -293,12 +293,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.7.1-dev.3 (2022/03/17)**
+**Version 11.7.1-b.1 (2022/03/17)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added a new SSO &gt; General Settings &gt; Site Information &gt; WebSite Home URL option.
 * **Bugfixes**
 	* Fixed a missing trailing slash for the home page URL provided by WordPress.
 * **Developer Notes**
@@ -509,9 +509,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 11.7.1-dev.3 =
+= 11.7.1-b.1 =
 
-(2022/03/17) Fixed a missing trailing slash for the home page URL provided by WordPress.
+(2022/03/17) Fixed a missing trailing slash for the home page URL provided by WordPress. Added a new SSO &gt; General Settings &gt; Site Information &gt; WebSite Home URL option.
 
 = 11.7.0 =
 
