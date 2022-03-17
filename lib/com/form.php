@@ -238,28 +238,28 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 		public function get_tr_hide( $in_view = 'basic', $option_keys = array() ) {
 
-			$css_class = self::get_css_class_hide( $in_view, $option_keys );
+			$css_class = $this->get_css_class_hide( $in_view, $option_keys );
 
 			return empty( $css_class ) ? '' : '<tr class="' . $css_class . '">';
 		}
 
 		public function get_tr_hide_prefix( $in_view = 'basic', $name_prefix ) {
 
-			$css_class = self::get_css_class_hide_prefix( $in_view, $name_prefix );
+			$css_class = $this->get_css_class_hide_prefix( $in_view, $name_prefix );
 
 			return empty( $css_class ) ? '' : '<tr class="' . $css_class . '">';
 		}
 
 		public function get_tr_hide_img_dim( $in_view = 'basic', $name ) {
 
-			$css_class = self::get_css_class_hide_img_dim( $in_view, $name );
+			$css_class = $this->get_css_class_hide_img_dim( $in_view, $name );
 
 			return empty( $css_class ) ? '' : '<tr class="' . $css_class . '">';
 		}
 
 		public function get_tr_hide_vid_dim( $in_view = 'basic', $name ) {
 
-			$css_class = self::get_css_class_hide_vid_dim( $in_view, $name );
+			$css_class = $this->get_css_class_hide_vid_dim( $in_view, $name );
 
 			return empty( $css_class ) ? '' : '<tr class="' . $css_class . '">';
 		}
@@ -300,7 +300,7 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$option_keys[] = $name . '_' . $name_suffix;
 			}
 
-			return self::get_css_class_hide( $in_view, $option_keys );
+			return $this->get_css_class_hide( $in_view, $option_keys );
 		}
 
 		public function get_css_class_hide_vid_dim( $in_view = 'basic', $name ) {
@@ -310,14 +310,14 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				$option_keys[] = $name . '_' . $name_suffix;
 			}
 
-			return self::get_css_class_hide( $in_view, $option_keys );
+			return $this->get_css_class_hide( $in_view, $option_keys );
 		}
 
 		public function get_css_class_hide_prefix( $in_view = 'basic', $name_prefix ) {
 
 			$option_keys = SucomUtil::get_opts_begin( $name_prefix, $this->options );
 
-			return self::get_css_class_hide( $in_view, $option_keys );
+			return $this->get_css_class_hide( $in_view, $option_keys );
 		}
 
 		public function get_css_class_hide( $in_view = 'basic', $option_keys = array() ) {

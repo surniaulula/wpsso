@@ -851,6 +851,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 						$css_class = 'long_name', $css_id = '', $is_assoc = true ),
 				),
 				'schema_def_pub_person_id' => array(
+					'tr_class' => $form->get_css_class_hide( 'basic', 'schema_def_pub_person_id' ),
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Publisher Person', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_pub_person_id',
