@@ -3382,8 +3382,22 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'conversation'         => 'https://schema.org/Conversation',
 							'course'               => 'https://schema.org/Course',
 							'creative.work'        => 'https://schema.org/CreativeWork',
-							'creative.work.season' => 'https://schema.org/CreativeWorkSeason',
-							'creative.work.series' => 'https://schema.org/CreativeWorkSeries',
+							'creative.work.season' => array(
+								'creative.work.season' => 'https://schema.org/CreativeWorkSeason',
+								'podcast.season'       => 'https://schema.org/PodcastSeason',
+								'radio.season'         => 'https://schema.org/RadioSeason',
+								'tv.season'            => 'https://schema.org/TVSeason',
+							),
+							'creative.work.series' => array(
+								'book.series'          => 'https://schema.org/BookSeries',
+								'creative.work.series' => 'https://schema.org/CreativeWorkSeries', 
+								'movie.series'         => 'https://schema.org/MovieSeries',
+								'periodical'           => 'https://schema.org/Periodical',
+								'podcast.series'       => 'https://schema.org/PodcastSeries',
+								'radio.series'         => 'https://schema.org/RadioSeries',
+								'tv.series'            => 'https://schema.org/TVSeries',
+								'video.game.series'    => 'https://schema.org/VideoGameSeries',
+							),
 							'data.catalog'         => 'https://schema.org/DataCatalog',
 							'data.set'             => 'https://schema.org/DataSet',
 							'digital.document'     => 'https://schema.org/DigitalDocument',
@@ -3393,10 +3407,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'episode.radio'   => 'https://schema.org/RadioEpisode',
 								'episode.tv'      => 'https://schema.org/TVEpisode',
 							),
-							'game' => array(
-								'game'       => 'https://schema.org/Game',
-								'video.game' => 'https://schema.org/VideoGame',
-							),
+							'game'   => 'https://schema.org/Game',
 							'how.to' => array(
 								'how.to'  => 'https://schema.org/HowTo',
 								'recipe' => 'https://schema.org/Recipe',	// Recipe is a sub-type of HowTo.
