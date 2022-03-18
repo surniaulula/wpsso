@@ -766,7 +766,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$clear_cache_link = '<a href="' . $clear_cache_url . '">' . _x( 'Clear All Caches', 'submit button', 'wpsso' ) . '</a>';
 
 			$this->p->notice->upd( '<strong>' . __( 'Plugin settings have been saved.', 'wpsso' ) . '</strong> ' .
-				sprintf( __( 'Note that some caches may take several days to expire and reflect these changes (or %s now).',
+				sprintf( __( 'You can %s now to reflect these changes or wait for caches to expire.',
 					'wpsso' ), $clear_cache_link ) );
 
 			return $opts;

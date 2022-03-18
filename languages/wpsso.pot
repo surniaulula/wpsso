@@ -5336,9 +5336,7 @@ msgid "Plugin settings have been saved."
 msgstr ""
 
 #: lib/admin.php:769
-msgid ""
-"Note that some caches may take several days to expire and reflect these "
-"changes (or %s now)."
+msgid "You can %s now to reflect these changes or wait for caches to expire."
 msgstr ""
 
 #: lib/admin.php:795
