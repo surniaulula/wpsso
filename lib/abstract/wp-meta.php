@@ -2287,11 +2287,16 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			 *	'wpsso_term_image_urls'
 			 *	'wpsso_user_image_urls'
 			 */
-			$filter_name = 'wpsso_' . $mod[ 'name' ] . '_image_urls';
+			$filter_name  = 'wpsso_' . $mod[ 'name' ] . '_image_urls';
+			$context_name = $mod[ 'name' ] . '_' . $mod[ 'id' ] . '_image_urls';
+			$image_urls   = apply_filters( $filter_name, array(), $size_names, $mod[ 'id' ], $mod );
 
-			$image_urls = apply_filters( $filter_name, array(), $size_names, $mod[ 'id' ], $mod );
+			foreach ( array_unique( $image_urls ) as $url ) {
 
-			foreach ( $image_urls as $url ) {
+				if ( $check_dupes && $this->p->util->is_dupe_url( $url, $context_name ) ) {
+
+					continue;
+				}
 
 				if ( false !== strpos( $url, '://' ) ) {	// Quick sanity check.
 

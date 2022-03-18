@@ -2530,8 +2530,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 		public function is_dupe_url( $url, $uniq_context = 'default' ) {
 
-			$uniq_context = preg_replace( '/-[0-9]+x[0-9]+$/', '', $uniq_context );	// Change 'wpsso-schema-1x1' to 'wpsso-schema'.
-
 			return $this->is_uniq_url( $url, $uniq_context ) ? false : true;
 		}
 
