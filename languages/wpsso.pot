@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 11.7.1-b.1\n"
+"Project-Id-Version: WPSSO Core 11.7.1-rc.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -1129,14 +1129,14 @@ msgid "Advanced Settings"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:102 gettext/gettext-lib-config.php:110
-#: lib/messages.php:489
+#: lib/messages.php:474
 msgctxt "lib file description"
 msgid "Plugin Add-ons"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:103 gettext/gettext-lib-config.php:111
-#: lib/messages-info.php:73 lib/messages.php:467 lib/messages.php:476
-#: lib/messages.php:492
+#: lib/messages-info.php:73 lib/messages.php:437 lib/messages.php:446
+#: lib/messages.php:477
 msgctxt "lib file description"
 msgid "Premium Licenses"
 msgstr ""
@@ -1162,7 +1162,7 @@ msgid "General Settings"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:112 lib/messages-info.php:255
-#: lib/messages.php:529
+#: lib/messages.php:514
 msgctxt "lib file description"
 msgid "Tools and Actions"
 msgstr ""
@@ -2620,7 +2620,7 @@ msgctxt "option label"
 msgid "Webpage Title Tag"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:7 lib/messages.php:393
+#: gettext/gettext-lib-pro.php:7 lib/messages.php:294
 #: lib/pro/admin/advanced.php:93 lib/std/admin/advanced.php:90
 msgctxt "option label"
 msgid "Use Filtered Content"
@@ -2680,7 +2680,7 @@ msgid "Inherit Custom Images"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:16 gettext/gettext-lib-pro.php:152
-#: lib/messages.php:308 lib/messages.php:417 lib/pro/admin/advanced.php:137
+#: lib/messages.php:272 lib/messages.php:354 lib/pro/admin/advanced.php:137
 #: lib/pro/admin/general.php:59 lib/std/admin/advanced.php:132
 #: lib/std/admin/general.php:57
 msgctxt "option label"
@@ -2688,7 +2688,7 @@ msgid "Image Dimension Checks"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:18 gettext/gettext-lib-pro.php:154
-#: lib/messages.php:302 lib/pro/admin/advanced.php:144
+#: lib/messages.php:348 lib/pro/admin/advanced.php:144
 #: lib/pro/admin/general.php:65 lib/std/admin/advanced.php:138
 #: lib/std/admin/general.php:62
 msgctxt "option label"
@@ -2702,7 +2702,7 @@ msgctxt "option comment"
 msgid "not recommended"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:20 lib/messages.php:305
+#: gettext/gettext-lib-pro.php:20 lib/messages.php:351
 #: lib/pro/admin/advanced.php:151 lib/std/admin/advanced.php:144
 msgctxt "option label"
 msgid "Maximum Image Upscale Percent"
@@ -3134,7 +3134,7 @@ msgctxt "option label"
 msgid "YOURLS Token"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:93 lib/messages.php:437
+#: gettext/gettext-lib-pro.php:93 lib/messages.php:455
 #: lib/pro/admin/advanced.php:632 lib/std/admin/advanced.php:573
 msgctxt "option label"
 msgid "Ratings and Reviews Service"
@@ -3179,7 +3179,7 @@ msgctxt "option label"
 msgid "Shopper Approved API Token"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:101 lib/messages.php:443
+#: gettext/gettext-lib-pro.php:101 lib/messages.php:461
 #: lib/pro/admin/advanced.php:672
 msgctxt "metabox title"
 msgid "Stamped.io (Ratings and Reviews)"
@@ -4921,7 +4921,7 @@ msgctxt "metabox tab"
 msgid "Edit Schema"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1107 lib/messages.php:271
+#: lib/abstract/wp-meta.php:1107 lib/messages.php:317
 msgctxt "metabox tab"
 msgid "Edit Media"
 msgstr ""
@@ -8278,20 +8278,20 @@ msgid ""
 "title in the browser tab."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:86 lib/messages.php:400
+#: lib/messages-tooltip-plugin.php:86 lib/messages.php:301
 msgid ""
 "The use of WordPress content filters allows %s to fully render your content "
 "text for meta tag descriptions and detect additional images and/or embedded "
 "videos provided by shortcodes."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:88 lib/messages.php:404
+#: lib/messages-tooltip-plugin.php:88 lib/messages.php:305
 msgid ""
 "Many themes and plugins have badly coded content filters, so this option is "
 "disabled by default."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:90 lib/messages.php:406
+#: lib/messages-tooltip-plugin.php:90 lib/messages.php:307
 msgid ""
 "If you use shortcodes in your content text, this option should be enabled - "
 "IF YOU EXPERIENCE WEBPAGE LAYOUT OR PERFORMANCE ISSUES AFTER ENABLING THIS "
@@ -8357,13 +8357,13 @@ msgid ""
 "without custom images can inherit the custom images of their parents."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:142 lib/messages.php:424
+#: lib/messages-tooltip-plugin.php:142 lib/messages.php:279
 msgid ""
 "Providing social and search sites with perfectly resized images is highly "
 "recommended, so this option should be enabled if possible."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:144 lib/messages.php:426
+#: lib/messages-tooltip-plugin.php:144 lib/messages.php:281
 msgid ""
 "Content authors often upload small featured images to the Media Library, "
 "without knowing that WordPress can create several different image sizes from "
@@ -8371,7 +8371,7 @@ msgid ""
 "warning messages."
 msgstr ""
 
-#: lib/messages-tooltip-plugin.php:146 lib/messages.php:428
+#: lib/messages-tooltip-plugin.php:146 lib/messages.php:283
 msgid ""
 "See <a href=\"%s\">Why shouldn't I upload small images to the media library?"
 "</a> for more information on WordPress and its image sizes."
@@ -9482,126 +9482,214 @@ msgctxt "plugin action link"
 msgid "Purchase %s Add-on"
 msgstr ""
 
-#: lib/messages.php:278
-msgid ""
-"Please note that correct image sizes are required for several markup "
-"standards, including Google Rich Results, and to improve click through rates "
-"by presenting your content at its best on social sites and in search results."
+#: lib/messages.php:277 lib/messages.php:299
+msgid "The %s advanced option is currently disabled."
 msgstr ""
 
-#: lib/messages.php:282
+#: lib/messages.php:324
 msgid ""
-"A larger image can be uploaded and/or selected in the %1$s metabox under the "
-"%2$s tab."
+"Please note that correct image sizes are required for several standards, "
+"including Google Rich Results."
 msgstr ""
 
-#: lib/messages.php:286
+#: lib/messages.php:326
+msgid ""
+"Correct image sizes also improve click through rates by presenting your "
+"content better on social sites and in search results."
+msgstr ""
+
+#: lib/messages.php:328
 msgid "Consider replacing the original image with a higher resolution version."
 msgstr ""
 
-#: lib/messages.php:288
+#: lib/messages.php:332
+msgid ""
+"A larger image can also be uploaded and/or selected in the %1$s metabox "
+"under the %2$s tab."
+msgstr ""
+
+#: lib/messages.php:335
 msgid ""
 "See <a href=\"%s\">Why shouldn't I upload small images to the media library?"
 "</a> for more information on WordPress image sizes."
 msgstr ""
 
-#: lib/messages.php:311
+#: lib/messages.php:357
 msgctxt "lib file description"
 msgid "Image Sizes"
 msgstr ""
 
-#: lib/messages.php:315
+#: lib/messages.php:361
 msgid ""
 "Additional information shown only to users with Administrative privileges:"
 msgstr ""
 
-#: lib/messages.php:321
+#: lib/messages.php:367
 msgid "Replace the original image with a higher resolution version."
 msgstr ""
 
-#: lib/messages.php:325
+#: lib/messages.php:371
 msgid "Select a larger image under the %1$s &gt; %2$s tab."
 msgstr ""
 
-#: lib/messages.php:330
+#: lib/messages.php:376
 msgid "Enable the %s option."
 msgstr ""
 
-#: lib/messages.php:334
+#: lib/messages.php:380
 msgid "Increase the %s option value."
 msgstr ""
 
-#: lib/messages.php:344
+#: lib/messages.php:390
 msgid "Update image size dimensions in the %s settings page."
 msgstr ""
 
-#: lib/messages.php:348
+#: lib/messages.php:394
 msgid "Disable the %s option (not recommended)."
 msgstr ""
 
-#: lib/messages.php:364
-msgid ""
-"An Open Graph image meta tag could not be generated from this webpage "
-"content or its custom %s metabox settings."
-msgstr ""
-
-#: lib/messages.php:366
-msgid ""
-"Facebook <em>requires at least one image meta tag</em> to render shared "
-"content correctly."
-msgstr ""
-
-#: lib/messages.php:374
+#: lib/messages.php:410
 msgid ""
 "An Open Graph description meta tag could not be generated from this webpage "
 "content or its custom %s metabox settings."
 msgstr ""
 
-#: lib/messages.php:376
+#: lib/messages.php:412
 msgid ""
 "Facebook <em>requires a description meta tag</em> to render shared content "
 "correctly."
 msgstr ""
 
-#: lib/messages.php:383
+#: lib/messages.php:419
+msgid ""
+"An Open Graph image meta tag could not be generated from this webpage "
+"content or its custom %s metabox settings."
+msgstr ""
+
+#: lib/messages.php:421
+msgid ""
+"Facebook <em>requires at least one image meta tag</em> to render shared "
+"content correctly."
+msgstr ""
+
+#: lib/messages.php:429
 msgid ""
 "A Schema \"image\" property could not be generated from this webpage content "
 "or its custom %s metabox settings."
 msgstr ""
 
-#: lib/messages.php:385
+#: lib/messages.php:431
 msgid ""
 "Google <em>requires at least one \"image\" property</em> for this Schema "
 "type."
 msgstr ""
 
-#: lib/messages.php:398 lib/messages.php:422
-msgid "The %s advanced option is currently disabled."
+#: lib/messages.php:440
+msgid ""
+"An Authentication ID for %1$s has been entered in the %2$s settings page, "
+"but the plugin has not been installed yet - you can install and activate the "
+"%3$s plugin from the %2$s settings page."
 msgstr ""
 
-#: lib/messages.php:442
+#: lib/messages.php:449
+msgid ""
+"An Authentication ID for %1$s has been entered in the %2$s settings page, "
+"but the %3$s version has not been installed yet - don't forget to update the "
+"plugin to install the latest %3$s version."
+msgstr ""
+
+#: lib/messages.php:460
 msgid ""
 "WooCommerce product reviews are not compatible with the selected %s service "
 "API."
 msgstr ""
 
-#: lib/messages.php:445
+#: lib/messages.php:463
 msgid ""
 "Please choose another %1$s or <a href=\"%2$s\">disable the product reviews "
 "in WooCommerce</a>."
 msgstr ""
 
-#: lib/messages.php:455
+#: lib/messages.php:485
+msgid ""
+"An Authentication ID has been entered in the %1$s settings page, but the "
+"%2$s add-on is not active."
+msgstr ""
+
+#: lib/messages.php:489
+msgid ""
+"The %1$s add-on is required to enable %2$s features and get %2$s updates."
+msgstr ""
+
+#: lib/messages.php:493
+msgid ""
+"You can install and activate the %1$s add-on from the %2$s settings page."
+msgstr ""
+
+#: lib/messages.php:497
+msgid ""
+"You can activate the %1$s add-on from <a href=\"%2$s\">the WordPress Plugins "
+"page</a>."
+msgstr ""
+
+#: lib/messages.php:500
+msgid ""
+"Once the %1$s add-on is active, %2$s updates may be available for the %3$s "
+"plugin."
+msgstr ""
+
+#: lib/messages.php:512
+msgctxt "submit button"
+msgid "Check for Plugin Updates"
+msgstr ""
+
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/messages.php:518
+msgid "Dashboard"
+msgstr ""
+
+#: lib/messages.php:518
+msgid "Updates"
+msgstr ""
+
+#: lib/messages.php:521
+msgid ""
+"%1$s version %2$s requires the use of %3$s version %4$s or newer (version "
+"%5$s is currently installed)."
+msgstr ""
+
+#. translators: %1$s is the WPSSO Update Manager add-on name.
+#: lib/messages.php:524
+msgid ""
+"If an update for the %1$s add-on is not available under the WordPress %2$s "
+"page, use the <em>%3$s</em> button in the %4$s settings page to force an "
+"immediate refresh of the plugin update information."
+msgstr ""
+
+#: lib/messages.php:530 lib/register.php:357
+msgid ""
+"You are using %1$s version %2$s - <a href=\"%3$s\">this %1$s version is "
+"outdated, unsupported, possibly insecure</a>, and may lack important updates "
+"and features."
+msgstr ""
+
+#: lib/messages.php:532
+msgid ""
+"If possible, please update to the latest %1$s stable release (or at least "
+"version %2$s)."
+msgstr ""
+
+#: lib/messages.php:541
 msgid "The %1$s constant definition in your %2$s file contains a variable."
 msgstr ""
 
-#: lib/messages.php:457
+#: lib/messages.php:543
 msgid ""
 "WordPress uses the %s constant to provide a single unique canonical URL for "
 "each webpage and Media Library content."
 msgstr ""
 
-#: lib/messages.php:459
+#: lib/messages.php:545
 msgid ""
 "A changing %s value will create different canonical URLs in your webpages, "
 "leading to duplicate content penalties from Google, incorrect social share "
@@ -9609,93 +9697,10 @@ msgid ""
 "certificate errors."
 msgstr ""
 
-#: lib/messages.php:461
+#: lib/messages.php:547
 msgid ""
 "Please update your %1$s file and provide a fixed, non-variable value for the "
 "%2$s constant."
-msgstr ""
-
-#: lib/messages.php:470
-msgid ""
-"An Authentication ID for %1$s has been entered in the %2$s settings page, "
-"but the plugin has not been installed yet - you can install and activate the "
-"%3$s plugin from the %2$s settings page."
-msgstr ""
-
-#: lib/messages.php:479
-msgid ""
-"An Authentication ID for %1$s has been entered in the %2$s settings page, "
-"but the %3$s version has not been installed yet - don't forget to update the "
-"plugin to install the latest %3$s version."
-msgstr ""
-
-#: lib/messages.php:500
-msgid ""
-"An Authentication ID has been entered in the %1$s settings page, but the "
-"%2$s add-on is not active."
-msgstr ""
-
-#: lib/messages.php:504
-msgid ""
-"The %1$s add-on is required to enable %2$s features and get %2$s updates."
-msgstr ""
-
-#: lib/messages.php:508
-msgid ""
-"You can install and activate the %1$s add-on from the %2$s settings page."
-msgstr ""
-
-#: lib/messages.php:512
-msgid ""
-"You can activate the %1$s add-on from <a href=\"%2$s\">the WordPress Plugins "
-"page</a>."
-msgstr ""
-
-#: lib/messages.php:515
-msgid ""
-"Once the %1$s add-on is active, %2$s updates may be available for the %3$s "
-"plugin."
-msgstr ""
-
-#: lib/messages.php:527
-msgctxt "submit button"
-msgid "Check for Plugin Updates"
-msgstr ""
-
-#. translators: Please ignore - translation uses a different text domain.
-#: lib/messages.php:533
-msgid "Dashboard"
-msgstr ""
-
-#: lib/messages.php:533
-msgid "Updates"
-msgstr ""
-
-#: lib/messages.php:536
-msgid ""
-"%1$s version %2$s requires the use of %3$s version %4$s or newer (version "
-"%5$s is currently installed)."
-msgstr ""
-
-#. translators: %1$s is the WPSSO Update Manager add-on name.
-#: lib/messages.php:539
-msgid ""
-"If an update for the %1$s add-on is not available under the WordPress %2$s "
-"page, use the <em>%3$s</em> button in the %4$s settings page to force an "
-"immediate refresh of the plugin update information."
-msgstr ""
-
-#: lib/messages.php:545 lib/register.php:357
-msgid ""
-"You are using %1$s version %2$s - <a href=\"%3$s\">this %1$s version is "
-"outdated, unsupported, possibly insecure</a>, and may lack important updates "
-"and features."
-msgstr ""
-
-#: lib/messages.php:547
-msgid ""
-"If possible, please update to the latest %1$s stable release (or at least "
-"version %2$s)."
 msgstr ""
 
 #: lib/messages.php:565

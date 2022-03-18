@@ -259,11 +259,57 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				}
 
 			/**
-			 * Misc notice messages
+			 * Misc notice messages.
 			 */
 			} elseif ( 0 === strpos( $msg_key, 'notice-' ) ) {
 
 				switch ( $msg_key ) {
+
+					case 'notice-check-img-dims-disabled':
+
+						if ( ! empty( $this->pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
+
+							$option_label = _x( 'Image Dimension Checks', 'option label', 'wpsso' );
+							$option_link  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', $option_label );
+
+							$text = '<p class="top">';
+
+							$text .= '<b>' . sprintf( __( 'The %s advanced option is currently disabled.', 'wpsso' ), $option_link ) . '</b> ';
+
+							$text .= __( 'Providing social and search sites with perfectly resized images is highly recommended, so this option should be enabled if possible.', 'wpsso' ) . ' ';
+
+							$text .= __( 'Content authors often upload small featured images to the Media Library, without knowing that WordPress can create several different image sizes from the original, so this option is disabled by default to avoid excessive warning messages.', 'wpsso' ) . ' ';
+
+							$text .= sprintf( __( 'See <a href="%s">Why shouldn\'t I upload small images to the media library?</a> for more information on WordPress and its image sizes.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/' ). ' ';
+
+							$text .= '</p>';
+						}
+
+						break;
+
+					case 'notice-content-filters-disabled':
+
+						if ( ! empty( $this->pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
+
+							$option_label = _x( 'Use Filtered Content', 'option label', 'wpsso' );
+							$option_link  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', $option_label );
+
+							$text = '<p class="top">';
+
+							$text .= '<b>' . sprintf( __( 'The %s advanced option is currently disabled.', 'wpsso' ), $option_link ) . '</b> ';
+
+							$text .= sprintf( __( 'The use of WordPress content filters allows %s to fully render your content text for meta tag descriptions and detect additional images and/or embedded videos provided by shortcodes.', 'wpsso' ), $this->p_name );
+
+							$text .= '</p> <p>';
+
+							$text .= '<b>' . __( 'Many themes and plugins have badly coded content filters, so this option is disabled by default.', 'wpsso' ) . '</b> ';
+
+							$text .= __( 'If you use shortcodes in your content text, this option should be enabled - IF YOU EXPERIENCE WEBPAGE LAYOUT OR PERFORMANCE ISSUES AFTER ENABLING THIS OPTION, determine which theme or plugin is filtering the content incorrectly and report the problem to its author(s).', 'wpsso' );
+
+							$text .= '</p>';
+						}
+
+						break;
 
 					case 'notice-image-rejected':
 
@@ -275,18 +321,18 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= ' <p>';
 
-						$text .= __( 'Please note that correct image sizes are required for several markup standards, including Google Rich Results, and to improve click through rates by presenting your content at its best on social sites and in search results.', 'wpsso' ) . ' ';
+						$text .= __( 'Please note that correct image sizes are required for several standards, including Google Rich Results.', 'wpsso' ) . ' ';
+						
+						$text .= __( 'Correct image sizes also improve click through rates by presenting your content better on social sites and in search results.', 'wpsso' ) . ' ';
+
+						$text .= __( 'Consider replacing the original image with a higher resolution version.', 'wpsso' ) . ' ';
 
 						if ( $is_meta_page ) {
 
-							$text .= sprintf( __( 'A larger image can be uploaded and/or selected in the %1$s metabox under the %2$s tab.', 'wpsso' ), $mb_title, $media_tab );
-
-						} else {
-
-							$text .= __( 'Consider replacing the original image with a higher resolution version.', 'wpsso' ) . ' ';
-
-							$text .= sprintf( __( 'See <a href="%s">Why shouldn\'t I upload small images to the media library?</a> for more information on WordPress image sizes.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/' ). ' ';
+							$text .= sprintf( __( 'A larger image can also be uploaded and/or selected in the %1$s metabox under the %2$s tab.', 'wpsso' ), $mb_title, $media_tab );
 						}
+
+						$text .= sprintf( __( 'See <a href="%s">Why shouldn\'t I upload small images to the media library?</a> for more information on WordPress image sizes.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/' ). ' ';
 
 						$text .= '</p>';
 
@@ -357,6 +403,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						break;
 
+					case 'notice-missing-og-description':
+
+						$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
+
+						$text = sprintf( __( 'An Open Graph description meta tag could not be generated from this webpage content or its custom %s metabox settings.', 'wpsso' ), $mb_title ) . ' ';
+
+						$text .= __( 'Facebook <em>requires a description meta tag</em> to render shared content correctly.', 'wpsso' );
+						break;
+
 					case 'notice-missing-og-image':
 
 						$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
@@ -367,15 +422,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						break;
 
-					case 'notice-missing-og-description':
-
-						$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
-
-						$text = sprintf( __( 'An Open Graph description meta tag could not be generated from this webpage content or its custom %s metabox settings.', 'wpsso' ), $mb_title ) . ' ';
-
-						$text .= __( 'Facebook <em>requires a description meta tag</em> to render shared content correctly.', 'wpsso' );
-						break;
-
 					case 'notice-missing-schema-image':
 
 						$mb_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
@@ -383,82 +429,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text = sprintf( __( 'A Schema "image" property could not be generated from this webpage content or its custom %s metabox settings.', 'wpsso' ), $mb_title ) . ' ';
 
 						$text = __( 'Google <em>requires at least one "image" property</em> for this Schema type.', 'wpsso' );
-
-						break;
-
-					case 'notice-content-filters-disabled':
-
-						if ( ! empty( $this->pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
-
-							$option_label = _x( 'Use Filtered Content', 'option label', 'wpsso' );
-							$option_link  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', $option_label );
-
-							$text = '<p class="top">';
-
-							$text .= '<b>' . sprintf( __( 'The %s advanced option is currently disabled.', 'wpsso' ), $option_link ) . '</b> ';
-
-							$text .= sprintf( __( 'The use of WordPress content filters allows %s to fully render your content text for meta tag descriptions and detect additional images and/or embedded videos provided by shortcodes.', 'wpsso' ), $this->p_name );
-
-							$text .= '</p> <p>';
-
-							$text .= '<b>' . __( 'Many themes and plugins have badly coded content filters, so this option is disabled by default.', 'wpsso' ) . '</b> ';
-
-							$text .= __( 'If you use shortcodes in your content text, this option should be enabled - IF YOU EXPERIENCE WEBPAGE LAYOUT OR PERFORMANCE ISSUES AFTER ENABLING THIS OPTION, determine which theme or plugin is filtering the content incorrectly and report the problem to its author(s).', 'wpsso' );
-
-							$text .= '</p>';
-						}
-
-						break;
-
-					case 'notice-check-img-dims-disabled':
-
-						if ( ! empty( $this->pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
-
-							$option_label = _x( 'Image Dimension Checks', 'option label', 'wpsso' );
-							$option_link  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration', $option_label );
-
-							$text = '<p class="top">';
-
-							$text .= '<b>' . sprintf( __( 'The %s advanced option is currently disabled.', 'wpsso' ), $option_link ) . '</b> ';
-
-							$text .= __( 'Providing social and search sites with perfectly resized images is highly recommended, so this option should be enabled if possible.', 'wpsso' ) . ' ';
-
-							$text .= __( 'Content authors often upload small featured images to the Media Library, without knowing that WordPress can create several different image sizes from the original, so this option is disabled by default to avoid excessive warning messages.', 'wpsso' ) . ' ';
-
-							$text .= sprintf( __( 'See <a href="%s">Why shouldn\'t I upload small images to the media library?</a> for more information on WordPress and its image sizes.', 'wpsso' ), 'https://wpsso.com/docs/plugins/wpsso/faqs/why-shouldnt-i-upload-small-images-to-the-media-library/' ). ' ';
-
-							$text .= '</p>';
-						}
-
-						break;
-
-					case 'notice-ratings-reviews-wc-enabled':
-
-						$option_label = _x( 'Ratings and Reviews Service', 'option label', 'wpsso' );
-						$option_link  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_services-tab_ratings_reviews', $option_label );
-
-						$wc_settings_page_url = get_admin_url( $blog_id = null, 'admin.php?page=wc-settings&tab=products' );
-
-						$text = sprintf( __( 'WooCommerce product reviews are not compatible with the selected %s service API.', 'wpsso' ),
-							_x( 'Stamped.io (Ratings and Reviews)', 'metabox title', 'wpsso' ) ) . ' ';
-
-						$text .= sprintf( __( 'Please choose another %1$s or <a href="%2$s">disable the product reviews in WooCommerce</a>.',
-							'wpsso' ), $option_link, $wc_settings_page_url ) . ' ';
-
-						break;
-
-					case 'notice-wp-config-php-variable-home':
-
-						$const_html   = '<code>WP_HOME</code>';
-						$cfg_php_html = '<code>wp-config.php</code>';
-
-						$text = sprintf( __( 'The %1$s constant definition in your %2$s file contains a variable.', 'wpsso' ), $const_html, $cfg_php_html ) . ' ';
-
-						$text .= sprintf( __( 'WordPress uses the %s constant to provide a single unique canonical URL for each webpage and Media Library content.', 'wpsso' ), $const_html ) . ' ';
-
-						$text .= sprintf( __( 'A changing %s value will create different canonical URLs in your webpages, leading to duplicate content penalties from Google, incorrect social share counts, possible broken media links, mixed content issues, and SSL certificate errors.', 'wpsso' ), $const_html ) . ' ';
-
-						$text .= sprintf( __( 'Please update your %1$s file and provide a fixed, non-variable value for the %2$s constant.', 'wpsso' ), $cfg_php_html, $const_html );
 
 						break;
 
@@ -480,8 +450,23 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						break;
 
-					case 'notice-um-add-on-required':
+					case 'notice-ratings-reviews-wc-enabled':
+
+						$option_label = _x( 'Ratings and Reviews Service', 'option label', 'wpsso' );
+						$option_link  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_services-tab_ratings_reviews', $option_label );
+
+						$wc_settings_page_url = get_admin_url( $blog_id = null, 'admin.php?page=wc-settings&tab=products' );
+
+						$text = sprintf( __( 'WooCommerce product reviews are not compatible with the selected %s service API.', 'wpsso' ),
+							_x( 'Stamped.io (Ratings and Reviews)', 'metabox title', 'wpsso' ) ) . ' ';
+
+						$text .= sprintf( __( 'Please choose another %1$s or <a href="%2$s">disable the product reviews in WooCommerce</a>.',
+							'wpsso' ), $option_link, $wc_settings_page_url ) . ' ';
+
+						break;
+
 					case 'notice-um-activate-add-on':
+					case 'notice-um-add-on-required':
 
 						$um_info      = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
 						$um_info_name = _x( $um_info[ 'name' ], 'plugin name', 'wpsso' );
@@ -545,6 +530,21 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text = sprintf( __( 'You are using %1$s version %2$s - <a href="%3$s">this %1$s version is outdated, unsupported, possibly insecure</a>, and may lack important updates and features.', 'wpsso' ), $info[ 'app_label' ], $info[ 'app_version' ], $info[ 'version_url' ] ) . ' ';
 
 						$text .= sprintf( __( 'If possible, please update to the latest %1$s stable release (or at least version %2$s).', 'wpsso' ), $info[ 'app_label' ], $info[ 'rec_version' ] );
+
+						break;
+
+					case 'notice-wp-config-php-variable-home':
+
+						$const_html   = '<code>WP_HOME</code>';
+						$cfg_php_html = '<code>wp-config.php</code>';
+
+						$text = sprintf( __( 'The %1$s constant definition in your %2$s file contains a variable.', 'wpsso' ), $const_html, $cfg_php_html ) . ' ';
+
+						$text .= sprintf( __( 'WordPress uses the %s constant to provide a single unique canonical URL for each webpage and Media Library content.', 'wpsso' ), $const_html ) . ' ';
+
+						$text .= sprintf( __( 'A changing %s value will create different canonical URLs in your webpages, leading to duplicate content penalties from Google, incorrect social share counts, possible broken media links, mixed content issues, and SSL certificate errors.', 'wpsso' ), $const_html ) . ' ';
+
+						$text .= sprintf( __( 'Please update your %1$s file and provide a fixed, non-variable value for the %2$s constant.', 'wpsso' ), $cfg_php_html, $const_html );
 
 						break;
 
