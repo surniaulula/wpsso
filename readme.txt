@@ -293,7 +293,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.7.1-b.1 (2022/03/17)**
+**Version 11.7.1-rc.1 (2022/03/18)**
 
 * **New Features**
 	* None.
@@ -302,7 +302,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed a missing trailing slash for the home page URL provided by WordPress.
 * **Developer Notes**
-	* Added a `$path = '/'` argument for the WordPress `get_home_url()` and `get_site_url()` functions.
+	* Added a $path argument when calling the WordPress `get_home_url()` and `get_site_url()` functions.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -509,9 +509,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 11.7.1-b.1 =
+= 11.7.1-rc.1 =
 
-(2022/03/17) Fixed a missing trailing slash for the home page URL provided by WordPress. Added a new SSO &gt; General Settings &gt; Site Information &gt; WebSite Home URL option.
+(2022/03/18) Fixed a missing trailing slash for the home page URL provided by WordPress. Added a new SSO &gt; General Settings &gt; Site Information &gt; WebSite Home URL option.
 
 = 11.7.0 =
 
