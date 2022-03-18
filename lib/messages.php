@@ -480,11 +480,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$search_url = get_admin_url( $blog_id = null, 'plugins.php' );
 						$search_url = add_query_arg( array( 's' => $um_info[ 'slug' ] ), $search_url );
 
-						$text = '<p>';
-
 						$text .= '<b>' . sprintf( __( 'An Authentication ID has been entered in the %1$s settings page, but the %2$s add-on is not active.', 'wpsso' ), $licenses_page_link, $um_info_name ) . '</b> ';
-
-						$text .= '</p><p>';
 
 						$text .= sprintf( __( 'The %1$s add-on is required to enable %2$s features and get %2$s updates.', 'wpsso' ), $um_info_name, $this->pkg_pro_transl ) . ' ';
 
@@ -498,8 +494,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						}
 
 						$text .= sprintf( __( 'Once the %1$s add-on is active, %2$s updates may be available for the %3$s plugin.', 'wpsso' ), $um_info_name, $this->pkg_pro_transl, $this->p_name_pro );
-
-						$text .= '</p>';
 
 						break;
 

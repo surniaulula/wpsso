@@ -3,7 +3,7 @@
  *
  * Don't forget to update the wp_register_script() arguments for the 'sucom-admin-page' script when updating this version number.
  *
- * Version: 20220215-01
+ * Version: 20220318-01
  */
 
 /**
@@ -287,33 +287,15 @@ function sucomToolbarNotices( pluginId, adminPageL10n ) {
 
 			var noticeStatus = '';
 
-			/**
-			 * The most significant notice type matches first (ie. error is most significant type).
-			 */
-			if ( noticeTypeCount[ 'err' ] ) {
+			if ( noticeTypeCount[ 'err' ] )		noticeStatus = 'error';
+			else if ( noticeTypeCount[ 'warn' ] )	noticeStatus = 'warning'; 
+			else if ( noticeTypeCount[ 'inf' ] )	noticeStatus = 'info';
+			else if ( noticeTypeCount[ 'upd' ] )	noticeStatus = 'success';
 
-				noticeCount  = noticeTypeCount[ 'err' ];
-				noticeStatus = 'error';
-				noticeTime   = cfg[ '_tb_types_timeout' ][ 'err' ] || -1;
-
-			} else if ( noticeTypeCount[ 'warn' ] ) {
-
-				noticeCount  = noticeTypeCount[ 'warn' ];
-				noticeStatus = 'warning';
-				noticeTime   = cfg[ '_tb_types_timeout' ][ 'warn' ] || -1;
-
-			} else if ( noticeTypeCount[ 'inf' ] ) {
-
-				noticeCount  = noticeTypeCount[ 'inf' ];
-				noticeStatus = 'info';
-				noticeTime   = cfg[ '_tb_types_timeout' ][ 'inf' ] || -1;
-
-			} else if ( noticeTypeCount[ 'upd' ] ) {
-
-				noticeCount  = noticeTypeCount[ 'upd' ];
-				noticeStatus = 'success';
-				noticeTime   = cfg[ '_tb_types_timeout' ][ 'upd' ] || -1;
-			}
+			if ( noticeTypeCount[ 'upd' ] )		noticeTime = cfg[ '_tb_types_timeout' ][ 'upd' ] || -1;
+			else if ( noticeTypeCount[ 'inf' ] )	noticeTime = cfg[ '_tb_types_timeout' ][ 'inf' ] || -1;
+			else if ( noticeTypeCount[ 'warn' ] )	noticeTime = cfg[ '_tb_types_timeout' ][ 'warn' ] || -1;
+			else if ( noticeTypeCount[ 'err' ] )	noticeTime = cfg[ '_tb_types_timeout' ][ 'err' ] || -1;
 
 			menuItem.addClass( 'toolbar-notices-' + noticeStatus );
 
@@ -324,22 +306,9 @@ function sucomToolbarNotices( pluginId, adminPageL10n ) {
 			 *
 			 * noticeTime = milliseconds to automatically show notifications.
 			 */
-			if ( 0 == noticeTime ) {
+			if ( noticeTime < 0 ) {
 
-				jQuery( menuId ).addClass( 'hover' );
-
-				jQuery( document ).on( 'click', function( event ) {
-
-					/**
-					 * Remove the 'hover' class if we're clicking anywhere outside the notices menu.
-					 */
-					if ( ! menuItem.is( event.target ) && ! menuItem.has( event.target ).length ) {
-
-						menuItem.removeClass( 'hover' );
-
-						jQuery( document ).off( 'click', arguments.callee );
-					}
-				} );
+				// Nothing to do.
 
 			} else if ( noticeTime > 0 ) {
 
@@ -363,6 +332,23 @@ function sucomToolbarNotices( pluginId, adminPageL10n ) {
 					menuItem.removeClass( 'show-timeout' );
 
 				}, noticeTime );
+
+			} else {
+
+				jQuery( menuId ).addClass( 'hover' );
+
+				jQuery( document ).on( 'click', function( event ) {
+
+					/**
+					 * Remove the 'hover' class if we're clicking anywhere outside the notices menu.
+					 */
+					if ( ! menuItem.is( event.target ) && ! menuItem.has( event.target ).length ) {
+
+						menuItem.removeClass( 'hover' );
+
+						jQuery( document ).off( 'click', arguments.callee );
+					}
+				} );
 			}
 		}
 	} );

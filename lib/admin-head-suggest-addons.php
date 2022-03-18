@@ -113,7 +113,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 				 */
 				} elseif ( SucomPlugin::is_plugin_installed( $um_info[ 'base' ] ) ) {
 
-					$this->p->notice->nag( $this->p->msgs->get( 'notice-um-activate-add-on' ) );
+					$this->p->notice->warn( $this->p->msgs->get( 'notice-um-activate-add-on' ) );
 
 					$notices_shown++;
 
@@ -122,7 +122,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 				 */
 				} else {
 
-					$this->p->notice->nag( $this->p->msgs->get( 'notice-um-add-on-required' ) );
+					$this->p->notice->warn( $this->p->msgs->get( 'notice-um-add-on-required' ) );
 
 					$notices_shown++;
 				}
