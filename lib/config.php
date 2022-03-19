@@ -4927,7 +4927,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		 * Since WPSSO Core v11.5.0.
 		 */
 		public static function get_input_limits( $opt_key = false ) {
-		
+
 			static $local_cache = null;
 
 			if ( null === $local_cache ) {
@@ -4966,7 +4966,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 		 * $md_key = true | false | string | array
 		 */
 		public static function get_md_keys_fallback( $md_key = false ) {
-		
+
 			static $local_cache = null;
 
 			if ( is_array( $md_key ) ) {	// Just in case.
@@ -4988,7 +4988,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			if ( false !== $md_key ) {
 
 				if ( $md_key && is_string( $md_key ) ) {
-				
+
 					if ( isset( $local_cache[ $md_key ] ) ) {
 
 						return $local_cache[ $md_key ];	// Return an array.
@@ -4996,7 +4996,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 					return array( $md_key );	// Return an array.
 				}
-				
+
 				return array();	// Return an array.
 			}
 

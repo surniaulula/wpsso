@@ -443,9 +443,9 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			foreach ( $menu_args as $menu_id => $args ) {
 
 				if ( empty( $this->p->cf[ 'menu' ][ 'must_load' ][ $menu_id ] ) ) {	// Settings page can be disabled.
-			
+
 					$form->defaults[ 'plugin_add_submenu_' . $menu_id ] = 1;	// Just in case.
-	
+
 					$values[ $menu_id ] = $args[ 2 ];
 				}
 			}

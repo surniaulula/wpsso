@@ -1229,7 +1229,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 						$title_text = $this->p->opt->get_text( 'plugin_comment_review_title' );
 
 					} elseif ( $mod[ 'comment_parent' ] ) {
-					
+
 						$title_text = $this->p->opt->get_text( 'plugin_comment_reply_title' );
 
 					} else {
@@ -1655,7 +1655,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			} elseif ( $mod[ 'is_post' ] && $mod[ 'id' ] ) {
 
 				$content = $mod[ 'wp_obj' ]->post_content;
-			
+
 			} elseif ( $mod[ 'is_comment' ] && $mod[ 'id' ] ) {
 
 				$content = $mod[ 'wp_obj' ]->comment_content;
@@ -2124,7 +2124,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				return WpssoConfig::get_md_keys_fallback( $def_key );
 			}
-			
+
 			if ( ! is_array( $md_key ) ) {
 
 				$md_key = WpssoConfig::get_md_keys_fallback( $md_key );
@@ -2156,9 +2156,9 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				return (int) $max_len[ 'max' ];
 
 			} elseif ( is_string( $max_len ) ) {
-			
+
 				$limits = WpssoConfig::get_input_limits( $max_len );	// Uses a local static cache.
-				
+
 				if ( ! empty( $limits[ 'max' ] ) ) {
 
 					return (int) $limits[ 'max' ];

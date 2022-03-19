@@ -3424,12 +3424,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					case 'id':
 					case 'ID':
 					case 'post_id':
-	
+
 						return isset( $post_obj->ID ) ? (int) $post_obj->ID : 0;	// Cast as integer.
-	
+
 						break;
 				}
-			
+
 				return $post_obj;
 			}
 
@@ -3753,21 +3753,21 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					case 'id':
 					case 'ID':
 					case 'term_id':
-	
+
 						return isset( $term_obj->term_id ) ? (int) $term_obj->term_id : 0;	// Cast as integer.
-	
+
 						break;
-	
+
 					case 'taxonomy':
-	
+
 						return isset( $term_obj->taxonomy ) ? (string) $term_obj->taxonomy : '';	// Cast as string.
-	
+
 						break;
 				}
-	
+
 				return $term_obj;
 			}
-			
+
 			return false;
 		}
 
@@ -4018,15 +4018,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					case 'id':
 					case 'ID':
 					case 'user_id':
-	
+
 						return isset( $user_obj->ID ) ? (int) $user_obj->ID : 0;	// Cast as integer.
-	
+
 						break;
 				}
 
 				return $user_obj;
 			}
-			
+
 			return false;
 		}
 
@@ -4077,12 +4077,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		public static function natasort( array &$arr ) {
-			
+
 			if ( function_exists( 'remove_accents' ) ) {	// WordPress function.
 
 				return uasort( $arr, array( __CLASS__, 'strnatcasecmp_remove_accents' ) );
 			}
-			
+
 			return uasort( $arr, 'strnatcasecmp' );
 		}
 

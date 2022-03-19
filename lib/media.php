@@ -313,7 +313,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 * Optionally get more videos from the post content.
 			 */
 			if ( $mod[ 'is_comment' ] || $mod[ 'is_post' ] ) {
-			
+
 				if ( ! $this->p->util->is_maxed( $mt_videos, $num ) ) {
 
 					if ( $this->p->debug->enabled ) {
@@ -605,91 +605,91 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					$this->p->debug->log( 'getting ' . $mod[ 'name' ] . ' images' );
 				}
-	
+
 				if ( $mod[ 'is_post' ] ) {
-	
+
 					if ( $mod[ 'is_attachment' ] && wp_attachment_is_image( $mod[ 'id' ] ) ) {
-	
+
 						/**
 						 * $size_name must be a string.
 						 */
 						$mt_single_image = $this->get_attachment_image( $num, $size_name, $mod[ 'id' ], $check_dupes );
-	
+
 						if ( empty( $mt_single_image ) ) {
-	
+
 							if ( $this->p->debug->enabled ) {
-	
+
 								$this->p->debug->log( 'exiting early: no attachment image' );
 							}
-	
+
 							return $mt_ret;	// Stop here.
 						}
-	
+
 						$mt_ret = array_merge( $mt_ret, $mt_single_image );
-	
+
 						if ( $this->p->debug->enabled ) {
-	
+
 							$this->p->debug->log( 'returning attachment images' );
-	
+
 							$this->p->debug->log_arr( 'mt_ret', $mt_ret );
 						}
-	
+
 						return $mt_ret;	// Stop here.
 					}
-	
+
 					/**
 					 * Check for custom meta, featured, or attached image(s).
 					 *
 					 * Allow for empty post ID in order to execute featured / attached image filters for modules.
 					 */
 					$post_images = $this->get_post_images( $num, $size_name, $mod[ 'id' ], $check_dupes, $md_pre );
-	
+
 					if ( ! empty( $post_images ) ) {
-	
+
 						$mt_ret = array_merge( $mt_ret, $post_images );
 					}
-	
+
 					/**
 					 * Check for NGG query variables and shortcodes.
 					 */
 					if ( ! empty( $this->p->m[ 'media' ][ 'ngg' ] ) && ! $this->p->util->is_maxed( $mt_ret, $num ) ) {
-	
+
 						if ( $this->p->debug->enabled ) {
-	
+
 							$this->p->debug->log( 'checking for NGG query variables and shortcodes' );
 						}
-	
+
 						$ngg_obj =& $this->p->m[ 'media' ][ 'ngg' ];
-	
+
 						$num_diff = SucomUtil::count_diff( $mt_ret, $num );
-	
+
 						$query_images = $ngg_obj->get_query_og_images( $num_diff, $size_name, $mod[ 'id' ], $check_dupes );
-	
+
 						if ( count( $query_images ) > 0 ) {
-	
+
 							if ( $this->p->debug->enabled ) {
-	
+
 								$this->p->debug->log( 'skipping NGG shortcode check: ' . count( $query_images ) . ' query image(s) returned' );
 							}
-	
+
 							$mt_ret = array_merge( $mt_ret, $query_images );
-	
+
 						} elseif ( ! $this->p->util->is_maxed( $mt_ret, $num ) ) {
-	
+
 							$num_diff = SucomUtil::count_diff( $mt_ret, $num );
-	
+
 							$shortcode_images = $ngg_obj->get_shortcode_og_images( $num_diff, $size_name, $mod[ 'id' ], $check_dupes );
-	
+
 							if ( ! empty( $shortcode_images ) ) {
-	
+
 								$mt_ret = array_merge( $mt_ret, $shortcode_images );
 							}
 						}
-	
+
 					}
-	
+
 				} else {
-	
+
 					/**
 					 * get_og_images() provides filter hooks for additional image IDs and URLs.
 					 *
@@ -702,7 +702,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$mt_ret = array_merge( $mt_ret, $mt_images );
 					}
 				}
-	
+
 				/**
 				 * If we haven't reached the limit of images yet, keep going and check the content text.
 				 */
@@ -723,7 +723,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					}
 				}
 			}
-	
+
 			if ( empty( $mt_ret ) ) {
 
 				if ( $mod[ 'is_home' ] ||  $mod[ 'is_archive' ] || $mod[ 'is_post' ] ) {

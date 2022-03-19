@@ -293,7 +293,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 									$this->p->debug->log( 'loading classname ' . $classname . ' for menu id ' . $menu_id );
 								}
-	
+
 								$this->submenu[ $menu_id ] = new $classname( $this->p, $menu_id, $menu_name, $menu_lib, $ext );
 
 							} elseif ( $this->p->debug->enabled ) {
@@ -322,7 +322,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		public function add_admin_menus( $menu_lib = 'submenu' ) {
 
 			foreach ( $this->p->cf[ '*' ][ 'lib' ][ $menu_lib ] as $this->menu_id => $this->menu_name ) {
-			
+
 				if ( isset( $this->submenu[ $this->menu_id ] ) ) {
 
 					$menu_slug = 'wpsso-' . $this->menu_id;
@@ -356,7 +356,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				foreach ( $menu_args as $menu_id => $args ) {
 
 					if ( isset( $this->submenu[ $menu_id ] ) ) {	// Just in case.
-				
+
 						call_user_func_array( array( $this->submenu[ $menu_id ], 'add_submenu_page' ), $args );
 					}
 				}
@@ -2942,23 +2942,23 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( 'submenu' === $menu_lib || 'sitesubmenu' === $menu_lib ) {
 
 					if ( $menu_id === $top_first_id ) {
-	
+
 						$args[ 5 ] = 'top-first-submenu-page';
-	
+
 					} elseif ( $menu_id === $top_last_id ) {
-	
+
 						$args[ 5 ] = 'top-last-submenu-page' . ( empty( $ext_first_id ) ? ' no-add-ons' : ' with-add-ons' );
-	
+
 					} elseif ( $menu_id === $ext_first_id ) {
-	
+
 						$args[ 5 ] = 'ext-first-submenu-page';
-	
+
 					} elseif ( $menu_id === $ext_last_id ) {
-	
+
 						$args[ 5 ] = 'ext-last-submenu-page';
 					}
 				}
-	
+
 				$local_cache[ $menu_lib ][ $menu_id ] = $args;
 			}
 

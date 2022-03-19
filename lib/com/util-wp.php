@@ -1051,7 +1051,7 @@ If ( ! class_exists( 'SucomUtilWP' ) ) {
 
 			return $local_cache;
 		}
-		
+
 		/**
 		 * Deprecated on 2022/03/03.
 		 */

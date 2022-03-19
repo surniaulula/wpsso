@@ -376,7 +376,7 @@ function sucomPlaceholderDep( container_id, container_dep_id ) {
 	var dep_val = dep_el.val();
 
 	if ( '' === dep_val ) dep_val = dep_el.attr( 'placeholder' );
-	
+
 	el.attr( 'placeholder', dep_val ).change();
 }
 

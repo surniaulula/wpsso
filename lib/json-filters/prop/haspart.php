@@ -16,7 +16,8 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 
 		private $p;	// Wpsso class object.
 
-		private static $meta_key = '_wpsso_json_haspart';
+		private static $meta_name  = '_wpsso_json_haspart';
+		private static $meta_saved = false;
 
 		/**
 		 * Instantiated by Wpsso->init_json_filters().
@@ -41,7 +42,7 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 			}
 
 			/**
-			 * Comment json-ld scripts saved in the self::$meta_key metadata array.
+			 * Comment json-ld scripts saved in the self::$meta_name metadata array.
 			 *
 			 * See wordpress/wp-includes/default-filters.php:
 			 *
@@ -51,20 +52,23 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 		}
 
 		/**
-		 * Cleanup self::$meta_key here in case the Schema type has changed from CreativeWork to something else.
+		 * Cleanup self::$meta_name here in case the Schema type has changed from CreativeWork to something else.
 		 */
 		public function filter_json_data_https_schema_org_thing( $json_data, $mod, $mt_og, $page_type_id, $is_main ) {
 
-			if ( $is_main ) {
+			if ( self::$meta_saved ) {
 
-				if ( $mod[ 'is_post' ] ) {
+				if ( $is_main ) {
 
-					if ( $this->p->debug->enabled ) {
+					if ( $mod[ 'is_post' ] ) {
 
-						$this->p->debug->log( 'deleting ' . self::$meta_key . ' metadata for post id ' . $mod[ 'id' ] );
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'deleting ' . self::$meta_name . ' metadata for post id ' . $mod[ 'id' ] );
+						}
+
+						delete_post_meta( $mod[ 'id' ], self::$meta_name );
 					}
-
-					delete_post_meta( $mod[ 'id' ], self::$meta_key );
 				}
 			}
 
@@ -191,13 +195,14 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 					$this->p->debug->log_arr( 'md5_added', $md5_added );
 				}
 
-				update_post_meta( $mod[ 'id' ], self::$meta_key, $md5_added );
+				self::$meta_saved = true;
+
+				update_post_meta( $mod[ 'id' ], self::$meta_name, $md5_added );
 			}
 
 			foreach ( $prop_data as $prop_name => $prop_values ) {
 
 				$filter_name = 'wpsso_json_prop_https_schema_org_' . strtolower( $prop_name );
-
 				$prop_values = (array) apply_filters( $filter_name, $prop_values, $mod, $mt_og, $page_type_id, $is_main );
 
 				if ( isset( $prop_values[ 0 ] ) ) {
@@ -289,7 +294,7 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 		}
 
 		/**
-		 * Comment json-ld scripts saved in the self::$meta_key metadata array.
+		 * Comment json-ld scripts saved in the self::$meta_name metadata array.
 		 */
 		public function maybe_comment_json_scripts( $content ) {
 
@@ -322,13 +327,13 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 				return $content;
 			}
 
-			$md5_added = get_post_meta( $post_id, self::$meta_key, $single = true );
+			$md5_added = get_post_meta( $post_id, self::$meta_name, $single = true );
 
 			if ( empty( $md5_added ) || ! is_array( $md5_added ) ) {	// Nothing to do.
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: no json-ld scripts in ' . self::$meta_key . ' metadata for post id ' . $post_id );
+					$this->p->debug->log( 'exiting early: no json-ld scripts in ' . self::$meta_name . ' metadata for post id ' . $post_id );
 				}
 
 				return $content;
@@ -375,7 +380,6 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 					 * Firefox does not allow double-dashes inside comment blocks.
 					 */
 					$single_json_encoded = str_replace( '--', '&hyphen;&hyphen;', $single_json );
-
 					$single_json_encoded = '<!-- ' . $single_json_encoded . ' -->' . "\n";
 
 				} else {
@@ -384,11 +388,8 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 				}
 
 				$success = "\n" . '<!-- json-ld script ' . $single_md5 . ' added to Schema markup and commented -->' . "\n";
-
 				$failure = "\n" . '<!-- json-ld script ' . $single_md5 . ' added to Schema markup but not found in content -->' . "\n";
-
-				$count = null;
-
+				$count   = null;
 				$content = str_replace( $single_json, $success . $single_json_encoded, $content, $count );
 
 				if ( $count ) {

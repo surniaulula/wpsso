@@ -37,15 +37,15 @@ if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
 		}
 
 		public function is_mod_variable( $mod ) {
-	
+
 			if ( $product = $this->get_product( $mod[ 'id' ] ) ) {
-	
+
 				return $this->is_product_variable( $product );
 			}
 		}
 
 		public function is_product_variable( $product ) {
-	
+
 			if ( 'variable' === $this->get_product_type( $product ) ) {
 
 				return true;

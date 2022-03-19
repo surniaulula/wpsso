@@ -89,7 +89,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 					$comment_rating = $this->get_meta( $mod[ 'id' ], WPSSO_META_RATING_NAME, $single = true );
 
 					if ( is_numeric( $comment_rating ) ) {
-					
+
 						$mod[ 'comment_rating' ] = $comment_rating;
 					}
 

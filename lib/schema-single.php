@@ -690,7 +690,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			if ( ! empty( $mt_single[ $media_pre . ':alt' ] ) ) {
-			
+
 				$json_ret[ 'alternativeHeadline' ] = $mt_single[ $media_pre . ':alt' ];
 			}
 

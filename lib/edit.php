@@ -420,7 +420,7 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 
 					$media_request = array( 'pid' );
 					$media_info    = $this->p->media->get_media_info( $size_name, $media_request, $mod, $md_pre = 'og' );
-			
+
 					$this->p->util->maybe_unset_ref( $canonical_url );
 
 					$form_rows[ $tc_prefix . '_img_id' ] = array(

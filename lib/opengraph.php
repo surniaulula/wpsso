@@ -602,7 +602,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$mt_og[ 'article:author' ] = array();
 
 				if ( $mod[ 'is_post' ] ) {
-				
+
 					if ( $mod[ 'post_author' ] ) {
 
 						$mt_og[ 'article:author:name' ] = $this->p->user->get_author_meta( $mod[ 'post_author' ], 'display_name' );
@@ -617,7 +617,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 					}
 
 				} elseif ( $mod[ 'is_comment' ] ) {
-				
+
 					if ( $mod[ 'comment_author' ] ) {
 
 						$mt_og[ 'article:author:name' ] = $this->p->user->get_author_meta( $mod[ 'comment_author' ], 'display_name' );
