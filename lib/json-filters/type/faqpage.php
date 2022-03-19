@@ -74,7 +74,7 @@ if ( ! class_exists( 'WpssoJsonFiltersTypeFAQPage' ) ) {
 					$notice_msg = sprintf( _n( '%d question added to the Schema FAQPage markup.',
 						'%d questions added to the Schema FAQPage markup.', $entity_count, 'wpsso' ), $entity_count );
 
-					$this->p->notice->upd( $notice_msg, $user_id, $notice_key );
+					$this->p->notice->inf( $notice_msg, $user_id, $notice_key );
 
 				} else {
 

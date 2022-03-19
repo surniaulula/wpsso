@@ -42,8 +42,12 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 
 			/**
 			 * Comment json-ld scripts saved in the self::$meta_key metadata array.
+			 *
+			 * See wordpress/wp-includes/default-filters.php:
+			 *
+			 * add_filter( 'the_content', 'do_shortcode', 11 ); // After wpautop().
 			 */
-			add_filter( 'the_content', array( $this, 'maybe_comment_json_scripts' ), PHP_INT_MAX );
+			add_filter( 'the_content', array( $this, 'maybe_comment_json_scripts' ), 12 );	// After do_shortcode().
 		}
 
 		/**
