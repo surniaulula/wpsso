@@ -302,7 +302,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added a new 'posts_args' array to the $mod variable for the WPSSO FAQ add-on.
+	* Added a new 'posts_args' array in the `$mod` variable for the WPSSO FAQ add-on.
 	* Added a `$mod` argument to the `WpssoMedia->get_video_details()` method for `WpssoUtil->is_uniq_url()`.
 	* Added a `$mod` argument to `WpssoUtil` methods:
 		* `clear_uniq_urls()`
