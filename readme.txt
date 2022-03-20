@@ -293,6 +293,24 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 11.7.2-dev.1 (2022/03/20)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a `$mod` argument to `WpssoUtil` methods:
+		* `clear_uniq_urls()`
+		* `is_dupe_url()`
+		* `is_uniq_url()`
+	* Added a `$mod` argument to the `WpssoMedia->get_video_details()` method.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 11.7.1 (2022/03/18)**
 
 * **New Features**
@@ -508,6 +526,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.2.
 
 == Upgrade Notice ==
+
+= 11.7.2-dev.1 =
+
+(2022/03/20) Added a `$mod` argument to `WpssoUtil` and `WpssoMedia` methods.
 
 = 11.7.1 =
 
