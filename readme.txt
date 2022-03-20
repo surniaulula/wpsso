@@ -302,11 +302,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
+	* Added a new 'posts_args' array to the $mod variable for the WPSSO FAQ add-on.
+	* Added a `$mod` argument to the `WpssoMedia->get_video_details()` method for `WpssoUtil->is_uniq_url()`.
 	* Added a `$mod` argument to `WpssoUtil` methods:
 		* `clear_uniq_urls()`
 		* `is_dupe_url()`
 		* `is_uniq_url()`
-	* Added a `$mod` argument to the `WpssoMedia->get_video_details()` method.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -529,7 +530,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 11.7.2-dev.2 =
 
-(2022/03/20) Added a `$mod` argument to `WpssoUtil` and `WpssoMedia` methods.
+(2022/03/20) Added a new 'posts_args' array to the $mod variable for the WPSSO FAQ add-on.
 
 = 11.7.1 =
 
