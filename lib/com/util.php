@@ -2955,12 +2955,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 					}
 				}
 
-			} else {
+			} elseif ( ! empty( $canonical_url ) ) {
 
 				$mod_salt .= '_url:' . $canonical_url;
 			}
 
-			$mod_salt = ltrim( $mod_salt, '_' );
+			$mod_salt = ltrim( $mod_salt, '_' );	// Remove leading underscore.
 
 			return apply_filters( 'sucom_mod_salt', $mod_salt, $canonical_url );
 		}

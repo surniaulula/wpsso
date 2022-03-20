@@ -2288,12 +2288,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			 *	'wpsso_user_image_urls'
 			 */
 			$filter_name  = 'wpsso_' . $mod[ 'name' ] . '_image_urls';
-			$context_name = $mod[ 'name' ] . '_' . $mod[ 'id' ] . '_image_urls';
 			$image_urls   = apply_filters( $filter_name, array(), $size_names, $mod[ 'id' ], $mod );
 
 			foreach ( array_unique( $image_urls ) as $url ) {
 
-				if ( $check_dupes && $this->p->util->is_dupe_url( $url, $context_name ) ) {
+				if ( $check_dupes && $this->p->util->is_dupe_url( $url, 'image_urls', $mod ) ) {
 
 					continue;
 				}
@@ -2384,10 +2383,10 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					continue;
 				}
 
-				$html = $this->get_options( $obj_id, $opt_pre . '_vid_embed' );
-				$url  = $this->get_options( $obj_id, $opt_pre . '_vid_url' );
+				$embed_html = $this->get_options( $obj_id, $opt_pre . '_vid_embed' );
+				$embed_url  = $this->get_options( $obj_id, $opt_pre . '_vid_url' );
 
-				if ( $html ) {
+				if ( $embed_html ) {
 
 					if ( $this->p->debug->enabled ) {
 
@@ -2397,46 +2396,49 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					/**
 					 * Returns an array of single video associative arrays.
 					 */
-					$mt_videos = $this->p->media->get_content_videos( $num, $mod, $check_dupes, $html );
+					$mt_videos = $this->p->media->get_content_videos( $num, $mod, $check_dupes, $embed_html );
 				}
 
-				if ( empty( $mt_videos ) && $url && ( ! $check_dupes || $this->p->util->is_uniq_url( $url ) ) ) {
+				if ( empty( $mt_videos ) && $embed_url ) {
+				
+					if ( ! $check_dupes || $this->p->util->is_uniq_url( $embed_url, $uniq_context = 'video', $mod ) ) {
 
-					if ( $this->p->debug->enabled ) {
+						if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'fetching video from custom ' . $opt_pre . ' url ' . $url, get_class( $this ) );
-					}
+							$this->p->debug->log( 'fetching video from custom ' . $opt_pre . ' url ' . $embed_url, get_class( $this ) );
+						}
 
-					$args = array(
-						'url'      => $url,
-						'width'    => null,
-						'height'   => null,
-						'type'     => '',
-						'prev_url' => '',
-						'post_id'  => null,
-						'api'      => '',
-					);
-
-					/**
-					 * Returns a single video associative array.
-					 */
-					$mt_single_video = $this->p->media->get_video_details( $args, $check_dupes, $fallback = true );
-
-					if ( ! empty( $mt_single_video ) ) {
-
-						if ( $this->p->util->push_max( $mt_videos, $mt_single_video, $num ) ) {
-
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'returning ' . count( $mt_videos ) . ' videos' );
+						$args = array(
+							'url'      => $embed_url,
+							'width'    => null,
+							'height'   => null,
+							'type'     => '',
+							'prev_url' => '',
+							'post_id'  => null,
+							'api'      => '',
+						);
+	
+						/**
+						 * Returns a single video associative array.
+						 */
+						$mt_single_video = $this->p->media->get_video_details( $args, $mod, $check_dupes, $fallback = true );
+	
+						if ( ! empty( $mt_single_video ) ) {
+	
+							if ( $this->p->util->push_max( $mt_videos, $mt_single_video, $num ) ) {
+	
+								if ( $this->p->debug->enabled ) {
+	
+									$this->p->debug->log( 'returning ' . count( $mt_videos ) . ' videos' );
+								}
+	
+								return $mt_videos;
 							}
-
-							return $mt_videos;
 						}
 					}
 				}
 
-				if ( $html || $url ) {	// Stop after first $md_pre video found.
+				if ( $embed_html || $embed_url ) {	// Stop after first $md_pre video found.
 
 					break;
 				}

@@ -188,7 +188,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			$mt_videos = $this->get_all_videos( $max_nums[ 'og_vid_max' ], $mod, $check_dupes, $md_pre, $force_prev );
 
-			$this->p->util->clear_uniq_urls( array( 'preview' ) );
+			$this->p->util->clear_uniq_urls( $uniq_context = array( 'preview' ), $mod );
 
 			$mt_images = array();
 
@@ -202,7 +202,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				 */
 				if ( $image_url ) {
 
-					if ( ! $check_dupes || $this->p->util->is_uniq_url( $image_url, 'preview' ) ) {
+					if ( ! $check_dupes || $this->p->util->is_uniq_url( $image_url, $uniq_context = 'preview', $mod ) ) {
 
 						$mt_single_image = SucomUtil::preg_grep_keys( '/^og:image/', $mt_single_video );
 
@@ -266,7 +266,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return $mt_videos;	// Return an empty array.
 			}
 
-			$this->p->util->clear_uniq_urls( array( 'video', 'content_video', 'video_details' ) );
+			$this->p->util->clear_uniq_urls( array( 'video', 'video_details' ), $mod );
 
 			$use_prev = $this->p->options[ 'og_vid_prev_img' ];
 
@@ -497,7 +497,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->p->debug->log( 'getting all video preview images' );
 			}
 
-			$preview_images = $this->get_all_previews( $num, $mod );
+			$preview_images = $this->get_all_previews( $num, $mod, $check_dupes );
 
 			if ( empty( $preview_images ) ) {
 
@@ -1276,7 +1276,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 						$mt_single_image[ 'og:image:url' ] = apply_filters( 'wpsso_rewrite_image_url', $mt_single_image[ 'og:image:url' ] );
 
-						if ( ! $check_dupes || $this->p->util->is_uniq_url( $mt_single_image[ 'og:image:url' ], $size_name ) ) {
+						if ( ! $check_dupes || $this->p->util->is_uniq_url( $mt_single_image[ 'og:image:url' ], $size_name, $mod ) ) {
 
 							if ( $this->p->util->push_max( $mt_images, $mt_single_image, $num ) ) {
 
@@ -2262,7 +2262,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					if ( ! empty( $media[ 3 ] ) ) {
 
-						if ( ! $check_dupes || $this->p->util->is_uniq_url( $media[ 3 ], 'content_video' ) ) {
+						if ( ! $check_dupes || $this->p->util->is_uniq_url( $media[ 3 ], $uniq_context = 'video', $mod ) ) {
 
 							$args = array(
 								'url'    => $media[ 3 ],
@@ -2273,7 +2273,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							/**
 							 * Returns a single video associative array.
 							 */
-							$mt_single_video = $this->get_video_details( $args, $check_dupes );
+							$mt_single_video = $this->get_video_details( $args, $mod, $check_dupes );
 
 							if ( ! empty( $mt_single_video ) ) {
 
@@ -2326,12 +2326,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 							if ( ! empty( $args[ 'url' ] ) ) {
 
-								if ( ! $check_dupes || $this->p->util->is_uniq_url( $args[ 'url' ], 'content_video' ) ) {
+								if ( ! $check_dupes || $this->p->util->is_uniq_url( $args[ 'url' ], $uniq_context = 'video', $mod ) ) {
 
 									/**
 									 * Returns a single video associative array.
 									 */
-									$mt_single_video = $this->get_video_details( $args, $check_dupes );
+									$mt_single_video = $this->get_video_details( $args, $mod, $check_dupes );
 
 									if ( ! empty( $mt_single_video ) ) {
 
@@ -2373,7 +2373,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 *
 		 * $fallback = true when called from WpssoAbstractWpMeta->get_og_videos().
 		 */
-		public function get_video_details( array $args, $check_dupes = true, $fallback = false ) {
+		public function get_video_details( array $args, array $mod, $check_dupes = true, $fallback = false ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -2588,7 +2588,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				/**
 				 * Remove all meta tags if there's no media URL or media is a duplicate.
 				 */
-				if ( ! $have_media[ $media_pre ] || ( $check_dupes && ! $this->p->util->is_uniq_url( $media_url, 'video_details' ) ) ) {
+				if ( ! $have_media[ $media_pre ] || ( $check_dupes && ! $this->p->util->is_uniq_url( $media_url, $uniq_context = 'video_details', $mod ) ) ) {
 
 					if ( $this->p->debug->enabled ) {
 

@@ -26,9 +26,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 		private $p;	// Wpsso class object.
 
-		private $cache_uniq_urls   = array();	// Array to detect duplicate images, etc.
 		private $cache_size_labels = array();	// Array for image size labels.
 		private $cache_size_opts   = array();	// Array for image size option prefix.
+		private $cache_uniq_urls   = array();	// Array to detect duplicate image URLs.
 
 		private $is_functions = array(
 			'is_admin',
@@ -2528,52 +2528,25 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return true;
 		}
 
-		public function is_dupe_url( $url, $uniq_context = 'default' ) {
+		public function clear_uniq_urls( $image_sizes = 'default', $mod = false ) {
 
-			return $this->is_uniq_url( $url, $uniq_context ) ? false : true;
-		}
+			if ( ! is_array( $image_sizes ) ) {
 
-		public function is_uniq_url( $url, $uniq_context = 'default' ) {
-
-			if ( empty( $url ) ) {
-
-				return false;
-			}
-
-			$uniq_context = preg_replace( '/-[0-9]+x[0-9]+$/', '', $uniq_context );	// Change 'wpsso-schema-1x1' to 'wpsso-schema'.
-
-			$url = $this->fix_relative_url( $url );	// Just in case.
-
-			if ( ! isset( $this->cache_uniq_urls[ $uniq_context ][ $url ] ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'uniq url saved for context ' . $uniq_context . ': ' . $url );
-				}
-
-				return $this->cache_uniq_urls[ $uniq_context ][ $url ] = true;
-			}
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'duplicate url found for context ' . $uniq_context . ': ' . $url );
-			}
-
-			return false;
-		}
-
-		public function clear_uniq_urls( $mixed = 'default' ) {
-
-			if ( ! is_array( $mixed ) ) {
-
-				$mixed = $this->get_image_size_names( $mixed, $sanitize = false );	// Always returns an array.
+				$image_sizes = $this->get_image_size_names( $image_sizes, $sanitize = false );	// Always returns an array.
 			}
 
 			$cleared = 0;
 
-			foreach ( $mixed as $uniq_context ) {
+			$mod_salt = SucomUtil::get_mod_salt( $mod );
+
+			foreach ( $image_sizes as $num => $uniq_context ) {
 
 				$uniq_context = preg_replace( '/-[0-9]+x[0-9]+$/', '', $uniq_context );	// Change 'wpsso-schema-1x1' to 'wpsso-schema'.
+
+				$image_sizes[ $num ] = $mod_salt ? $mod_salt . '_' . $uniq_context : $uniq_context;
+			}
+
+			foreach ( array_unique( $image_sizes ) as $uniq_context ) {
 
 				if ( isset( $this->cache_uniq_urls[ $uniq_context ] ) ) {
 
@@ -2589,6 +2562,61 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			return $cleared;
+		}
+
+		public function is_dupe_url( $url, $image_sizes = 'default', $mod = false ) {
+
+			return $this->is_uniq_url( $url, $image_sizes, $mod ) ? false : true;
+		}
+
+		public function is_uniq_url( $url, $image_sizes = 'default', $mod = false ) {
+
+			if ( empty( $url ) ) {
+
+				return false;
+			}
+
+			$url = $this->fix_relative_url( $url );	// Just in case.
+
+			if ( ! is_array( $image_sizes ) ) {
+
+				$image_sizes = array( $image_sizes );
+			}
+
+			$mod_salt = SucomUtil::get_mod_salt( $mod );
+
+			$is_uniq = true;
+
+			foreach ( $image_sizes as $num => $uniq_context ) {
+
+				$uniq_context = preg_replace( '/-[0-9]+x[0-9]+$/', '', $uniq_context );	// Change 'wpsso-schema-1x1' to 'wpsso-schema'.
+
+				$image_sizes[ $num ] = $mod_salt ? $mod_salt . '_' . $uniq_context : $uniq_context;
+			}
+
+			foreach ( array_unique( $image_sizes ) as $uniq_context ) {
+
+				if ( isset( $this->cache_uniq_urls[ $uniq_context ][ $url ] ) ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'duplicate url found for context ' . $uniq_context . ': ' . $url );
+					}
+
+					$is_uniq = false;
+
+				} else {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'unique url saved for context ' . $uniq_context . ': ' . $url );
+					}
+
+					$this->cache_uniq_urls[ $uniq_context ][ $url ] = true;
+				}
+			}
+
+			return $is_uniq;
 		}
 
 		public function is_maxed( &$arr, $num = 0 ) {
