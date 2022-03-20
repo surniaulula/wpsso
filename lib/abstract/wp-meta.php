@@ -143,6 +143,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			'obj'                    => false,	// Module object.
 			'wp_obj'                 => false,	// WP object (WP_Post, WP_Term, etc.).
 			'query_vars'             => array(),	// Defined by WpssoPage->get_mod().
+			'posts_args'             => array(),
 			'paged'                  => false,	// False or numeric (aka $wp_query->query_vars[ 'paged' ]).
 			'paged_total'            => false,	// False or numberic (aka $wp_query->max_num_pages).
 			'is_404'                 => false,
@@ -965,20 +966,17 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		}
 
 		/**
-		 * Return an array of post IDs for a given $mod object.
+		 * Return an array of post mods for a given $mod object.
 		 *
-		 * Called by WpssoAbstractWpMeta->get_posts_mods().
+		 * Called by WpssoPage->get_posts_mods().
 		 */
-		public function get_posts_ids( array $mod, array $extra_args = array() ) {
-
-			return self::must_be_extended( $ret_val = array() );	// Return an empty array.
-		}
-
-		public function get_posts_mods( array $mod, array $extra_args = array() ) {
+		public function get_posts_mods( array $mod ) {
 
 			$posts_mods = array();
 
-			foreach ( $this->get_posts_ids( $mod, $extra_args ) as $post_id ) {
+			$post_ids = $this->get_posts_ids( $mod );
+
+			foreach ( $post_ids as $post_id ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -989,6 +987,16 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			}
 
 			return $posts_mods;
+		}
+
+		/**
+		 * Return an array of post IDs for a given $mod object.
+		 *
+		 * Called by WpssoAbstractWpMeta->get_posts_mods().
+		 */
+		public function get_posts_ids( array $mod ) {
+
+			return self::must_be_extended( $ret_val = array() );	// Return an empty array.
 		}
 
 		public function ajax_get_metabox_document_meta() {

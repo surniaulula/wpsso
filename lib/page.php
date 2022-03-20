@@ -646,7 +646,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			return $mod;
 		}
 
-		public function get_posts_mods( array $mod, array $extra_args = array() ) {
+		public function get_posts_mods( array $mod ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -721,12 +721,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 					$wpsso->debug->log( 'using module object to get post mods' );
 				}
 
-				if ( $wpsso->debug->enabled ) {
-
-					$wpsso->debug->log_arr( 'extra_args', $extra_args );
-				}
-
-				$page_posts_mods = $mod[ 'obj' ]->get_posts_mods( $mod, $extra_args );
+				$page_posts_mods = $mod[ 'obj' ]->get_posts_mods( $mod );
 
 			} else {
 

@@ -481,7 +481,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		 *
 		 * Called by WpssoAbstractWpMeta->get_posts_mods().
 		 */
-		public function get_posts_ids( array $mod, array $extra_args = array() ) {
+		public function get_posts_ids( array $mod ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -502,11 +502,13 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 						'include_children' => true
 					)
 				),
-			), $extra_args, array( 'fields' => 'ids' ) );	// Return an array of post ids.
+			), $mod[ 'posts_args' ], array( 'fields' => 'ids' ) );	// Return an array of post ids.
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'calling get_posts() for ' . $mod[ 'name' ] . ' ID ' . $mod[ 'id' ] .  ' in taxonomy ' . $mod[ 'tax_slug' ] );
+
+				$this->p->debug->log_arr( 'posts_args', $posts_args );
 			}
 
 			$mtime_start = microtime( $get_float = true );

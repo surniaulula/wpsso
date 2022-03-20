@@ -599,9 +599,9 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		 *
 		 * These may include post ids from non-public post types and different languages.
 		 *
-		 * Use $extra_args = array( 'suppress_filters' => false ) to allow WPML (and others) to filter posts for the current language.
+		 * Use 'suppress_filters' = false to allow WPML (and others) to filter posts for the current language.
 		 */
-		public static function get_public_ids( array $extra_args = array() ) {
+		public static function get_public_ids( array $posts_args = array() ) {
 
 			$posts_args = array_merge( array(
 				'has_password'     => false,
@@ -613,7 +613,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				'posts_per_page'   => -1,		// The number of posts to query for. -1 to request all posts.
 				'no_found_rows'    => true,		// Skip counting total rows found - should be enabled when pagination is not needed.
 				'suppress_filters' => false,		// Allow WPML to filter posts for the current language.
-			), $extra_args, array( 'fields' => 'ids' ) );	// Return an array of post ids.
+			), $posts_args, array( 'fields' => 'ids' ) );	// Return an array of post ids.
 
 			return get_posts( $posts_args );
 		}
@@ -625,7 +625,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		 *
 		 * Called by WpssoAbstractWpMeta->get_posts_mods().
 		 */
-		public function get_posts_ids( array $mod, array $extra_args = array() ) {
+		public function get_posts_ids( array $mod ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -640,11 +640,13 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				'post_type'      => 'any',		// Return posts, pages, or any custom post type.
 				'post_parent'    => $mod[ 'id' ],
 				'child_of'       => $mod[ 'id' ],	// Only include direct children.
-			), $extra_args, array( 'fields' => 'ids' ) );	// Return an array of post ids.
+			), $mod[ 'posts_args' ], array( 'fields' => 'ids' ) );	// Return an array of post ids.
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'calling get_posts() for direct children of ' . $mod[ 'name' ] . ' ID ' . $mod[ 'id' ] );
+
+				$this->p->debug->log_arr( 'posts_args', $posts_args );
 			}
 
 			$mtime_start = microtime( $get_float = true );

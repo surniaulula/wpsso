@@ -466,7 +466,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		 *
 		 * Called by WpssoAbstractWpMeta->get_posts_mods().
 		 */
-		public function get_posts_ids( array $mod, array $extra_args = array() ) {
+		public function get_posts_ids( array $mod ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -480,11 +480,13 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				'post_status'  => 'publish',		// Only 'publish' (not 'auto-draft', 'draft', 'future', 'inherit', 'pending', 'private', or 'trash').
 				'post_type'    => 'post',		// Return only posts authored by the user.
 				'author'       => $mod[ 'id' ],
-			), $extra_args, array( 'fields' => 'ids' ) );	// Return an array of post IDs.
+			), $mod[ 'posts_args' ], array( 'fields' => 'ids' ) );	// Return an array of post IDs.
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log( 'calling get_posts() for posts authored by ' . $mod[ 'name' ] . ' ID ' . $mod[ 'id' ] );
+
+				$this->p->debug->log_arr( 'posts_args', $posts_args );
 			}
 
 			$mtime_start = microtime( $get_float = true );
