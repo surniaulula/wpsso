@@ -293,7 +293,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.7.2-dev.1 (2022/03/20)**
+**Version 11.7.2-dev.2 (2022/03/20)**
 
 * **New Features**
 	* None.
@@ -527,7 +527,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 11.7.2-dev.1 =
+= 11.7.2-dev.2 =
 
 (2022/03/20) Added a `$mod` argument to `WpssoUtil` and `WpssoMedia` methods.
 
