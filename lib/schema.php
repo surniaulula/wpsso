@@ -435,7 +435,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			WpssoSchemaGraph::clean_json( $json_data );
 
-			return '<script type="application/ld+json">' . $this->p->util->json_format( $json_data ) . '</script>' . "\n";
+			$json_md5 = md5( serialize( $json_data ) );	// md5() input must be a string.
+
+			return '<script type="application/ld+json" id="wpsso-md5-' . $json_md5 . '">' . $this->p->util->json_format( $json_data ) . '</script>' . "\n";
 		}
 
 		public function get_mod_json_data( array $mod ) {

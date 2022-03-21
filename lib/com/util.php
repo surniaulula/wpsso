@@ -4424,7 +4424,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			$html = preg_replace( '/<pre[ >].*<\/pre>/Uims', '', $html );
 			$html = preg_replace( '/<textarea[ >].*<\/textarea>/Uims', '', $html );
 
-			$json_data = array();
+			$json_scripts = array();
 
 			/**
 			 * U = Inverts the "greediness" of quantifiers so that they are not greedy by default.
@@ -4437,15 +4437,15 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				foreach ( $all_matches as $num => $matches ) {
 
-					$json_decoded = json_decode( $matches[ 2 ], $assoc = true );
+					$json_data = json_decode( $matches[ 2 ], $assoc = true );
 
-					$json_md5 = md5( serialize( $json_decoded ) );	// md5() input must be a string.
+					$json_md5 = md5( serialize( $json_data ) );	// md5() input must be a string.
 
 					if ( $do_decode ) {	// Return the decoded json data.
 
-						if ( is_array( $json_decoded ) ) {
+						if ( is_array( $json_data ) ) {
 
-							$json_data[ $json_md5 ] = $json_decoded;
+							$json_scripts[ $json_md5 ] = $json_data;
 
 						} else {
 
@@ -4458,12 +4458,12 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 					} else {	// Return the json script instead.
 
-						$json_data[ $json_md5 ] = $matches[ 0 ];
+						$json_scripts[ $json_md5 ] = $matches[ 0 ];
 					}
 				}
 			}
 
-			return $json_data;
+			return $json_scripts;
 		}
 
 		public static function get_user_ids( $blog_id = null, $role = '', $limit = '' ) {
