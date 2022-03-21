@@ -42,7 +42,7 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 			}
 
 			/**
-			 * Comment json-ld scripts saved in the self::$meta_name metadata array.
+			 * Comment json scripts saved in the self::$meta_name metadata array.
 			 *
 			 * See wordpress/wp-includes/default-filters.php:
 			 *
@@ -122,7 +122,7 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'getting json-ld scripts from the content' );
+				$this->p->debug->log( 'getting json scripts from the content' );
 			}
 
 			$scripts_data = SucomUtil::get_json_scripts( $content, $do_decode = true );	// Return the decoded json data.
@@ -131,7 +131,7 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: no json-ld scripts in content' );
+					$this->p->debug->log( 'exiting early: no json scripts found in the content' );
 				}
 
 				return $json_data;
@@ -164,40 +164,40 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 				}
 			}
 
-			$md5_added = array();	// Initialize an empty md5 array.
+			$added_script_ids = array();
 
-			foreach ( $scripts_data as $single_md5 => $single_data ) {
+			foreach ( $scripts_data as $single_id => $single_data ) {
 
 				if ( is_array( $single_data ) ) {	// Just in case.
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log_arr( 'adding single data for $single_md5 ' . $single_md5, $single_data );
+						$this->p->debug->log( 'adding json scripts data for ' . $single_id );
 					}
 
-					$this->maybe_add_single_data( $md5_added, $prop_data, $single_md5, $single_data, $page_type_id );
+					$this->maybe_add_single_data( $added_script_ids, $prop_data, $single_id, $single_data, $page_type_id );
 
 				} else {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'skipped ' . $single_md5 . ': single data is not an array' );
+						$this->p->debug->log( 'skipped ' . $single_id . ': single data is not an array' );
 
 						$this->p->debug->log( $single_data );
 					}
 				}
 			}
 
-			if ( ! empty( $md5_added ) ) {
+			if ( ! empty( $added_script_ids ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log_arr( 'md5_added', $md5_added );
+					$this->p->debug->log_arr( 'added_script_ids', $added_script_ids );
 				}
 
 				self::$meta_saved = true;
 
-				update_post_meta( $mod[ 'id' ], self::$meta_name, $md5_added );
+				update_post_meta( $mod[ 'id' ], self::$meta_name, $added_script_ids );
 			}
 
 			foreach ( $prop_data as $prop_name => $prop_values ) {
@@ -229,7 +229,7 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 		/**
 		 * Recurse for each @graph element, including nested @graph elements (ie. @graph within another @graph).
 		 */
-		private function maybe_add_single_data( array &$md5_added, array &$prop_data, $single_md5, array $single_data, $page_type_id, $def_context = null ) {
+		private function maybe_add_single_data( array &$added_script_ids, array &$prop_data, $single_id, array $single_data, $page_type_id, $def_context = null ) {
 
 			if ( null === $def_context ) {
 
@@ -240,7 +240,7 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 
 				foreach ( $single_data as $array_key => $array_data ) {
 
-					$this->maybe_add_single_data( $md5_added, $prop_data, $single_md5, $array_data, $page_type_id, $def_context );
+					$this->maybe_add_single_data( $added_script_ids, $prop_data, $single_id, $array_data, $page_type_id, $def_context );
 				}
 
 			} elseif ( isset( $single_data[ '@graph' ] ) ) {
@@ -255,11 +255,11 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 
 					} elseif ( '@graph' === $graph_key ) {
 
-						$this->maybe_add_single_data( $md5_added, $prop_data, $single_md5, $graph_data, $page_type_id, $def_context );
+						$this->maybe_add_single_data( $added_script_ids, $prop_data, $single_id, $graph_data, $page_type_id, $def_context );
 
 					} elseif ( is_numeric( $graph_key ) ) {
 
-						$this->maybe_add_single_data( $md5_added, $prop_data, $single_md5, $graph_data, $page_type_id, $def_context );
+						$this->maybe_add_single_data( $added_script_ids, $prop_data, $single_id, $graph_data, $page_type_id, $def_context );
 					}
 				}
 
@@ -284,7 +284,7 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 
 							$prop_data[ 'hasPart' ][] = WpssoSchema::get_schema_type_context( $type_url, $single_data );
 
-							$md5_added[ $single_md5 ] = true;
+							$added_script_ids[ $single_id ] = 'hasPart';
 
 							break;	// Child id is valid - no need to check the other child ids.
 						}
@@ -294,7 +294,7 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 		}
 
 		/**
-		 * Comment json-ld scripts saved in the self::$meta_name metadata array.
+		 * Comment json scripts saved in the self::$meta_name metadata array.
 		 */
 		public function maybe_comment_json_scripts( $content ) {
 
@@ -321,28 +321,32 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: no global post object id' );
+					$this->p->debug->log( 'exiting early: no global post object' );
 				}
 
-				return $content;
+				$failure = '<!-- no global post object to comment json scripts -->' . "\n";
+
+				return $failure . $content;
 			}
 
-			$md5_added = get_post_meta( $post_id, self::$meta_name, $single = true );
+			$added_script_ids = get_post_meta( $post_id, self::$meta_name, $single = true );
 
-			if ( empty( $md5_added ) || ! is_array( $md5_added ) ) {	// Nothing to do.
+			if ( empty( $added_script_ids ) || ! is_array( $added_script_ids ) ) {	// Nothing to do.
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: no json-ld scripts in ' . self::$meta_name . ' metadata for post id ' . $post_id );
+					$this->p->debug->log( 'exiting early: no json scripts to comment in the content' );
 				}
 
-				return $content;
+				$failure = '<!-- no json scripts to comment in the content -->' . "\n";
+
+				return $failure . $content;
 
 			}
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log_arr( 'md5_added', $md5_added );
+				$this->p->debug->log_arr( 'added_script_ids', $added_script_ids );
 			}
 
 			$json_scripts = SucomUtil::get_json_scripts( $content, $do_decode = false );
@@ -351,10 +355,12 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: no json-ld scripts in content' );
+					$this->p->debug->log( 'exiting early: no json scripts found in the content' );
 				}
 
-				return $content;
+				$failure = '<!-- no json scripts found in the content -->' . "\n";
+
+				return $failure . $content;
 			}
 
 			if ( $this->p->debug->enabled ) {
@@ -362,44 +368,40 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 				$this->p->debug->log_arr( 'json_scripts', $json_scripts );
 			}
 
-			foreach ( $json_scripts as $single_md5 => $single_json ) {
+			foreach ( $json_scripts as $single_id => $single_json ) {
 
-				if ( empty( $md5_added[ $single_md5 ] ) ) {
+				$prop_name = $added_script_ids[ $single_id ];
+				$replace   = '<!-- json script ' . $single_id . ' added to ' . $prop_name . ' and commented -->';
+				$count     = null;
 
-					continue;
+				if ( 0 === strpos( $single_id, 'id:' ) ) {
+
+					$css_id = preg_quote( substr( $single_id, 7 ), '/' );
+
+					$content = preg_replace( '/<script\b[^>]*id=["\']' . $css_id . '["\'][^>]*>.+<\/script>/Uis', $replace, $content, $limit = -1, $count );
+
+				} elseif ( 0 === strpos( $single_id, 'md5:' ) ) {
+
+					$content = str_replace( $single_json, $replace, $content, $count );
 				}
-
-				$success = "\n" . '<!-- json-ld script ' . $single_md5 . ' added to Schema markup and commented -->' . "\n";
-				$failure = "\n" . '<!-- json-ld script ' . $single_md5 . ' added to Schema markup but not found in content -->' . "\n";
-				$replace = '';
-				$count   = null;
-
-				if ( $this->p->debug->enabled ) {
-
-					/**
-					 * Firefox does not allow double-dashes inside comment blocks.
-					 */
-					$replace = str_replace( '--', '&hyphen;&hyphen;', $single_json );
-					$replace = '<!-- ' . $replace . ' -->' . "\n";
-				}
-
-				$content = str_replace( $single_json, $success . $replace, $content, $count );
 
 				if ( $count ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'json-ld script ' . $single_md5 . ' successfully commented' );
+						$this->p->debug->log( 'json script ' . $single_id . ' successfully commented' );
 					}
 
 				} else {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'json-ld script ' . $single_md5 . ' not found in content' );
+						$this->p->debug->log( 'json script ' . $single_id . ' not found in the content' );
 					}
 
-					$content = $failure . $replace . $content;
+					$failure = '<!-- json script ' . $single_id . ' added to ' . $prop_name . ' but not found in the content -->' . "\n";
+
+					$content = $failure . $content;
 				}
 			}
 

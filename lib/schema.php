@@ -419,7 +419,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $json_data;
 		}
 
-		public function get_mod_script_type_application_ld_json_html( array $mod ) {
+		public function get_mod_script_type_application_ld_json_html( array $mod, $css_id = '' ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -435,9 +435,12 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			WpssoSchemaGraph::clean_json( $json_data );
 
-			$json_md5 = md5( serialize( $json_data ) );	// md5() input must be a string.
+			if ( empty( $css_id ) ) {
 
-			return '<script type="application/ld+json" id="wpsso-md5-' . $json_md5 . '">' . $this->p->util->json_format( $json_data ) . '</script>' . "\n";
+				$css_id = 'wpsso-json-' . md5( serialize( $json_data ) );	// md5() input must be a string.
+			}
+
+			return '<script type="application/ld+json" id="' . $css_id . '">' . $this->p->util->json_format( $json_data ) . '</script>' . "\n";
 		}
 
 		public function get_mod_json_data( array $mod ) {

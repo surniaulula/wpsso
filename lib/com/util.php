@@ -1713,6 +1713,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return ltrim( strtolower( preg_replace('/[A-Z]/', '_$0', $str ) ), '_' );
 		}
 
+		public static function is_md5( $md5 ) {
+
+			return strlen( $md5 ) === 32 && preg_match( '/^[a-f0-9]+$/', $md5 ) ? true : false;
+		}
+
 		/**
 		 * Check that the id value is not true, false, null, or 'none'.
 		 */
@@ -4433,19 +4438,26 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			 *
 			 * See http://php.net/manual/en/reference.pcre.pattern.modifiers.php.
 			 */
-			if ( preg_match_all( '/(<script\b[^>]*type=["\']application\/ld\+json["\'][^>]*>)(.*)(<\/script>)/Uis', $html, $all_matches, PREG_SET_ORDER ) ) {
+			if ( preg_match_all( '/(<script\b[^>]*type=["\']application\/ld\+json["\'][^>]*>)(.+)(<\/script>)/Uis', $html, $all_matches, PREG_SET_ORDER ) ) {
 
 				foreach ( $all_matches as $num => $matches ) {
 
 					$json_data = json_decode( $matches[ 2 ], $assoc = true );
 
-					$json_md5 = md5( serialize( $json_data ) );	// md5() input must be a string.
+					if ( preg_match( '/ id=["\']([^"\']+)["\']/', $matches[ 1 ], $m ) ) {
+
+						$single_id = 'id:' . $m[ 1 ];
+
+					} else {
+
+						$single_id = 'md5:' . md5( serialize( $json_data ) );	// md5() input must be a string.
+					}
 
 					if ( $do_decode ) {	// Return the decoded json data.
 
 						if ( is_array( $json_data ) ) {
 
-							$json_scripts[ $json_md5 ] = $json_data;
+							$json_scripts[ $single_id ] = $json_data;
 
 						} else {
 
@@ -4458,7 +4470,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 					} else {	// Return the json script instead.
 
-						$json_scripts[ $json_md5 ] = $matches[ 0 ];
+						$json_scripts[ $single_id ] = $matches[ 0 ];
 					}
 				}
 			}

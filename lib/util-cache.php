@@ -63,7 +63,6 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 				$this->u->add_plugin_filters( $this, array(
 					'cache_expire_head_markup' => '__return_zero',	// Used by WpssoHead->get_head_array().
-					'cache_expire_the_content' => '__return_zero',	// Used by WpssoPage->get_the_content().
 					'cache_expire_gmf_xml'     => '__return_zero',	// Used by WpssoGmfXml->get().
 				) );
 			}
