@@ -387,7 +387,7 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 
 				if ( 0 === strpos( $single_id, 'id:' ) ) {
 
-					$css_id = preg_quote( substr( $single_id, 7 ), '/' );
+					$css_id = preg_quote( substr( $single_id, strlen( 'id:' ) ), '/' );
 
 					$content = preg_replace( '/<script\b[^>]*id=["\']' . $css_id . '["\'][^>]*>.+<\/script>/Uis', $replace, $content, $limit = -1, $count );
 
