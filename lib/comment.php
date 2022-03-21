@@ -86,7 +86,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 					$mod[ 'comment_time' ]        = mysql2date( 'c', $mod[ 'wp_obj' ]->comment_date_gmt );	// ISO 8601 date.
 					$mod[ 'is_public' ]           = $mod[ 'wp_obj' ]->comment_approved ? true : false;
 
-					$comment_rating = $this->get_meta( $mod[ 'id' ], WPSSO_META_RATING_NAME, $single = true );
+					$comment_rating = self::get_meta( $mod[ 'id' ], WPSSO_META_RATING_NAME, $single = true );
 
 					if ( is_numeric( $comment_rating ) ) {
 
@@ -160,7 +160,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 
 			if ( null === $md_opts ) {	// Cache is empty.
 
-				$md_opts = $this->get_meta( $comment_id, WPSSO_META_NAME, $single = true );
+				$md_opts = self::get_meta( $comment_id, WPSSO_META_NAME, $single = true );
 
 				if ( ! is_array( $md_opts ) ) $md_opts = array();	// WPSSO_META_NAME not found.
 
@@ -173,7 +173,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 
 					$md_opts = $this->upgrade_options( $md_opts, $comment_id );
 
-					$this->update_meta( $comment_id, WPSSO_META_NAME, $md_opts );
+					self::update_meta( $comment_id, WPSSO_META_NAME, $md_opts );
 				}
 			}
 
@@ -261,10 +261,10 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 
 			if ( empty( $md_opts ) ) {
 
-				return $this->delete_meta( $comment_id, WPSSO_META_NAME );
+				return self::delete_meta( $comment_id, WPSSO_META_NAME );
 			}
 
-			return $this->update_meta( $comment_id, WPSSO_META_NAME, $md_opts );
+			return self::update_meta( $comment_id, WPSSO_META_NAME, $md_opts );
 		}
 
 		/**
@@ -272,7 +272,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 		 */
 		public function delete_options( $comment_id, $rel = false ) {
 
-			return $this->delete_meta( $comment_id, WPSSO_META_NAME );
+			return self::delete_meta( $comment_id, WPSSO_META_NAME );
 		}
 
 		public function clear_cache_comment_post( $comment_id, $comment_approved ) {

@@ -423,7 +423,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( empty( $md_opts ) ) {
 
-				return $this->delete_meta( $user_id, WPSSO_META_NAME );
+				return self::delete_meta( $user_id, WPSSO_META_NAME );
 			}
 
 			return update_user_meta( $user_id, WPSSO_META_NAME, $md_opts );
@@ -434,7 +434,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		 */
 		public function delete_options( $user_id, $rel = false ) {
 
-			return $this->delete_meta( $user_id, WPSSO_META_NAME );
+			return self::delete_meta( $user_id, WPSSO_META_NAME );
 		}
 
 		/**
@@ -1553,7 +1553,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			foreach ( $col_meta_keys as $col_key => $meta_key ) {
 
-				$this->delete_meta( $user_id, $meta_key );
+				self::delete_meta( $user_id, $meta_key );
 			}
 
 			/**

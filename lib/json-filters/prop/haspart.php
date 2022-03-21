@@ -203,6 +203,7 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 			foreach ( $prop_data as $prop_name => $prop_values ) {
 
 				$filter_name = 'wpsso_json_prop_https_schema_org_' . strtolower( $prop_name );
+
 				$prop_values = (array) apply_filters( $filter_name, $prop_values, $mod, $mt_og, $page_type_id, $is_main );
 
 				if ( isset( $prop_values[ 0 ] ) ) {
@@ -271,6 +272,7 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 				}
 
 				$type_url = WpssoSchema::get_data_type_url( $single_data );
+
 				$type_ids = $this->p->schema->get_schema_type_url_ids( $type_url );
 
 				foreach ( $type_ids as $child_id ) {
@@ -369,6 +371,15 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 			}
 
 			foreach ( $json_scripts as $single_id => $single_json ) {
+
+				if ( empty( $added_script_ids[ $single_id ] ) ) {
+
+					$failure = '<!-- json script ' . $single_id . ' found but not added -->' . "\n";
+
+					$content = $failure . $content;
+
+					continue;
+				}
 
 				$prop_name = $added_script_ids[ $single_id ];
 				$replace   = '<!-- json script ' . $single_id . ' added to ' . $prop_name . ' and commented -->';

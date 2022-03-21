@@ -387,7 +387,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( null === $md_opts ) {	// Cache is empty.
 
-				$md_opts = $this->get_meta( $post_id, WPSSO_META_NAME, $single = true );
+				$md_opts = self::get_meta( $post_id, WPSSO_META_NAME, $single = true );
 
 				if ( ! is_array( $md_opts ) ) $md_opts = array();	// WPSSO_META_NAME not found.
 
@@ -400,7 +400,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 					$md_opts = $this->upgrade_options( $md_opts, $post_id );
 
-					$this->update_meta( $post_id, WPSSO_META_NAME, $md_opts );
+					self::update_meta( $post_id, WPSSO_META_NAME, $md_opts );
 				}
 			}
 
@@ -449,7 +449,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 * See WpssoProEcomWoocommerce->add_mt_product() - imports variation metadata.
 					 * See WpssoProEcomWooAddGtin->filter_wc_variation_cf_meta_keys().
 					 */
-					$md_opts = apply_filters( 'wpsso_import_custom_fields', $md_opts, $this->get_meta( $post_id ) );
+					$md_opts = apply_filters( 'wpsso_import_custom_fields', $md_opts, self::get_meta( $post_id ) );
 
 					/**
 					 * Since WPSSO Core v9.5.0.
@@ -554,10 +554,10 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( empty( $md_opts ) ) {
 
-				return $this->delete_meta( $post_id, WPSSO_META_NAME );
+				return self::delete_meta( $post_id, WPSSO_META_NAME );
 			}
 
-			return $this->update_meta( $post_id, WPSSO_META_NAME, $md_opts );
+			return self::update_meta( $post_id, WPSSO_META_NAME, $md_opts );
 		}
 
 		/**
@@ -565,7 +565,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		 */
 		public function delete_options( $post_id, $rel = false ) {
 
-			return $this->delete_meta( $post_id, WPSSO_META_NAME );
+			return self::delete_meta( $post_id, WPSSO_META_NAME );
 		}
 
 		public function after_insert_post( $post_id, $post_obj, $update, $post_before ) {
@@ -1684,7 +1684,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			foreach ( $col_meta_keys as $col_key => $meta_key ) {
 
-				$this->delete_meta( $post_id, $meta_key );
+				self::delete_meta( $post_id, $meta_key );
 			}
 
 			/**

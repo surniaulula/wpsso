@@ -283,7 +283,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( null === $md_opts ) {
 
-				$md_opts = $this->get_meta( $term_id, WPSSO_META_NAME, true );
+				$md_opts = self::get_meta( $term_id, WPSSO_META_NAME, true );
 
 				if ( ! is_array( $md_opts ) ) $md_opts = array();	// WPSSO_META_NAME not found.
 
@@ -296,7 +296,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 					$md_opts = $this->upgrade_options( $md_opts, $term_id );
 
-					$this->update_meta( $term_id, WPSSO_META_NAME, $md_opts );
+					self::update_meta( $term_id, WPSSO_META_NAME, $md_opts );
 				}
 			}
 
@@ -421,10 +421,10 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			if ( empty( $md_opts ) ) {
 
-				return $this->delete_meta( $term_id, WPSSO_META_NAME );
+				return self::delete_meta( $term_id, WPSSO_META_NAME );
 			}
 
-			return $this->update_meta( $term_id, WPSSO_META_NAME, $md_opts );
+			return self::update_meta( $term_id, WPSSO_META_NAME, $md_opts );
 		}
 
 		/**
@@ -432,7 +432,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		 */
 		public function delete_options( $term_id, $term_tax_id = false ) {
 
-			return $this->delete_meta( $term_id, WPSSO_META_NAME );
+			return self::delete_meta( $term_id, WPSSO_META_NAME );
 		}
 
 		/**
@@ -860,7 +860,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			foreach ( $col_meta_keys as $col_key => $meta_key ) {
 
-				$this->delete_meta( $term_id, $meta_key );
+				self::delete_meta( $term_id, $meta_key );
 			}
 
 			/**
