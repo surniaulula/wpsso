@@ -433,6 +433,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return '';
 			}
 
+			WpssoSchemaGraph::clean_json( $json_data );
+
 			return '<script type="application/ld+json">' . $this->p->util->json_format( $json_data ) . '</script>' . "\n";
 		}
 

@@ -345,11 +345,6 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 				$this->p->debug->log_arr( 'md5_added', $md5_added );
 			}
 
-			/**
-			 * Removes HTML comments from the content, and returns any "application/ld+json" encoded arrays:
-			 *
-			 *	<script type="application/ld+json">{}</script>
-			 */
 			$json_scripts = SucomUtil::get_json_scripts( $content, $do_decode = false );
 
 			if ( empty( $json_scripts ) ) {	// Nothing to do.
@@ -374,23 +369,21 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 					continue;
 				}
 
+				$success = "\n" . '<!-- json-ld script ' . $single_md5 . ' added to Schema markup and commented -->' . "\n";
+				$failure = "\n" . '<!-- json-ld script ' . $single_md5 . ' added to Schema markup but not found in content -->' . "\n";
+				$replace = '';
+				$count   = null;
+
 				if ( $this->p->debug->enabled ) {
 
 					/**
 					 * Firefox does not allow double-dashes inside comment blocks.
 					 */
-					$single_json_encoded = str_replace( '--', '&hyphen;&hyphen;', $single_json );
-					$single_json_encoded = '<!-- ' . $single_json_encoded . ' -->' . "\n";
-
-				} else {
-
-					$single_json_encoded = '';
+					$replace = str_replace( '--', '&hyphen;&hyphen;', $single_json );
+					$replace = '<!-- ' . $replace . ' -->' . "\n";
 				}
 
-				$success = "\n" . '<!-- json-ld script ' . $single_md5 . ' added to Schema markup and commented -->' . "\n";
-				$failure = "\n" . '<!-- json-ld script ' . $single_md5 . ' added to Schema markup but not found in content -->' . "\n";
-				$count   = null;
-				$content = str_replace( $single_json, $success . $single_json_encoded, $content, $count );
+				$content = str_replace( $single_json, $success . $replace, $content, $count );
 
 				if ( $count ) {
 
@@ -406,7 +399,7 @@ if ( ! class_exists( 'WpssoJsonFiltersPropHasPart' ) ) {
 						$this->p->debug->log( 'json-ld script ' . $single_md5 . ' not found in content' );
 					}
 
-					$content = $failure . $single_json_encoded . $content;
+					$content = $failure . $replace . $content;
 				}
 			}
 
