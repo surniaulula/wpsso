@@ -293,15 +293,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.7.2-dev.3 (2022/03/20)**
+**Version 11.7.2-dev.4 (2022/03/20)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Optimized the detection of json scripts in post content for the Schema hasPart property.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
+	* Updated `SucomUtil::get_json_scripts()` to return the CSS id or md5 of json scripts.
+	* Updated `WpssoJsonFiltersPropHasPart->maybe_comment_json_scripts()` to comment json scripts using the CSS id or md5.
 	* Added a new 'posts_args' array in the `$mod` variable for the WPSSO FAQ add-on.
 	* Added a `$mod` argument to the `WpssoMedia->get_video_details()` method for `WpssoUtil->is_uniq_url()`.
 	* Added a `$mod` argument to `WpssoUtil` methods:
@@ -528,9 +530,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 11.7.2-dev.3 =
+= 11.7.2-dev.4 =
 
-(2022/03/20) Added a new 'posts_args' array to the $mod variable for the WPSSO FAQ add-on.
+(2022/03/20) Optimized the detection of json scripts in post content for the Schema hasPart property.
 
 = 11.7.1 =
 
