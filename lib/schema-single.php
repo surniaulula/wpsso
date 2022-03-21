@@ -1004,7 +1004,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 				$canonical_url = $wpsso->util->get_canonical_url( $mod );
 
-				$wpsso->util->maybe_set_ref( $canonical_url, $mod, __( 'adding schema organization', 'wpsso' ) );
+				if ( 'site' === $org_id ) {
+
+					$wpsso->util->maybe_set_ref( $canonical_url, $mod, __( 'adding schema organization', 'wpsso' ) );
+
+				} else {
+
+					$wpsso->util->maybe_set_ref( $canonical_url, $mod, sprintf( __( 'adding schema organization ID %s', 'wpsso' ), $org_id ) );
+				}
 			}
 
 			/**
