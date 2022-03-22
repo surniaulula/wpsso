@@ -107,6 +107,12 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			add_action( 'restore_previous_locale', array( $this, 'wp_locale_change' ), -100, 2 );
 		}
 
+		/**
+		 * Since WPSSO Core v11.7.2.
+		 *
+		 * Action hook to monitor the WordPress 'switch_locale', 'change_locale', and 'restore_previous_locale' actions for
+		 * locale changes, log the change and clear the locale cache as required.
+		 */
 		public function wp_locale_change( $locale, $previous_locale = null ) {
 
 			if ( $this->p->debug->enabled ) {
