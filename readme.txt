@@ -253,7 +253,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.7.2-b.1 (2022/03/21)**
+**Version 11.7.2-b.2 (2022/03/22)**
 
 * **New Features**
 	* None.
@@ -490,9 +490,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 11.7.2-b.1 =
+= 11.7.2-b.2 =
 
-(2022/03/21) Optimized the detection of json scripts in post content for the Schema hasPart property.
+(2022/03/22) Optimized the detection of json scripts in post content for the Schema hasPart property.
 
 = 11.7.1 =
 
