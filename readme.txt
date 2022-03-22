@@ -80,46 +80,6 @@ WPSSO provides comprehensive Schema markup for posts, pages, custom post types, 
 * *No global identifier provided (e.g. gtin mpn isbn).*
 * *Not a known valid target type for the itemReviewed property.*
 
-**Built-in support for AMP plugins**:
-
-* [AMP](https://wordpress.org/plugins/amp/)
-* [AMP for WP](https://wordpress.org/plugins/accelerated-mobile-pages/)
-
-**Built-in support for caching and optimization plugins**:
-
-* Autoptimize
-* Cache Enabler
-* Comet Cache
-* Hummingbird Cache
-* LiteSpeed Cache
-* Pagely Cache
-* Perfect Images + Retina
-* SiteGround Cache
-* W3 Total Cache (aka W3TC)
-* WP Engine Cache
-* WP Fastest Cache
-* WP Rocket Cache
-* WP Super Cache
-
-**Built-in support for other SEO plugins**:
-
-* All in One SEO Pack
-* Jetpack SEO
-* Rank Math SEO
-* SEO Ultimate
-* SEOPress
-* Slim SEO
-* Squirrly SEO
-* The SEO Framework
-* WP Meta SEO
-* Yoast SEO
-* Yoast WooCommerce SEO
-
-**Built-in support for advanced WordPress configurations**:
-
-* WordPress MU Domain Mapping
-* Network / Multisite Installations
-
 <h3>Users Love the WPSSO Core Plugin</h3>
 
 &#x2605;&#x2605;&#x2605;&#x2605;&#x2605; - "Unlike competitors, you can literally customize just about every aspect of SEO and Social SEO if you desire to. &#91;...&#93; This plugin has the most complete JSON-LD markup out of any of them, so you won’t have any errors and warnings in search console for WordPress or WooCommerce sites. You can go crazy customizing everything, or you can just set and forget. There aren’t many plugins that allow the best of both worlds." - [kw11](https://wordpress.org/support/topic/most-responsive-developer-ive-ever-seen/)
@@ -176,7 +136,7 @@ WPSSO provides comprehensive Schema markup for posts, pages, custom post types, 
 * Yoast SEO
 * Yotpo Social Reviews for WooCommerce
 
-**Imports plugin metadata and block attributes, including:**
+**Reads plugin metadata and blocks, including:**
 
 * All in One SEO Pack Metadata
 * Rank Math SEO Metadata
