@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '11.7.2-b.2',	// Plugin version.
+					'version'     => '11.7.2-b.3',	// Plugin version.
 					'opt_version' => '902',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -86,6 +86,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase'  => 'https://wpsso.com/extend/plugins/wpsso/',		// Purchase page.
 						'info'      => 'https://wpsso.com/extend/plugins/wpsso/info/',		// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso/update/',
+						'download'  => '',
 					),
 					'lib' => array(
 						'json-filters' => array(
@@ -304,6 +305,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-add-five-stars/update/',
+						'download'  => 'https://wpsso.com/extend/plugins/wpsso-add-five-stars/latest/',
 					),
 				),
 				'wpssoam' => array(			// Plugin acronym.
@@ -367,6 +369,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-am/update/',
+						'download'  => 'https://wpsso.com/extend/plugins/wpsso-am/latest/',
 					),
 				),
 				'wpssobc' => array(			// Plugin acronym.
@@ -430,6 +433,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-breadcrumbs/update/',
+						'download'  => 'https://wpsso.com/extend/plugins/wpsso-breadcrumbs/latest/',
 					),
 				),
 				'wpssofaq' => array(			// Plugin acronym.
@@ -493,6 +497,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-faq/update/',
+						'download'  => 'https://wpsso.com/extend/plugins/wpsso-faq/latest/',
 					),
 				),
 				'wpssoopm' => array(			// Plugin acronym.
@@ -556,6 +561,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-organization-place/update/',
+						'download'  => 'https://wpsso.com/extend/plugins/wpsso-organization-place/latest/',
 					),
 				),
 				'wpssorar' => array(			// Plugin acronym.
@@ -619,6 +625,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-ratings-and-reviews/update/',
+						'download'  => 'https://wpsso.com/extend/plugins/wpsso-ratings-and-reviews/latest/',
 					),
 				),
 				'wpssorest' => array(			// Plugin acronym.
@@ -682,6 +689,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-rest-api/update/',
+						'download'  => 'https://wpsso.com/extend/plugins/wpsso-rest-api/latest/',
 					),
 				),
 				'wpssorrssb' => array(			// Plugin acronym.
@@ -745,6 +753,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-rrssb/update/',
+						'download'  => 'https://wpsso.com/extend/plugins/wpsso-rrssb/latest/',
 					),
 				),
 				'wpssossm' => array(			// Plugin acronym.
@@ -808,6 +817,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-strip-schema-microdata/update/',
+						'download'  => 'https://wpsso.com/extend/plugins/wpsso-strip-schema-microdata/latest/',
 					),
 				),
 				'wpssotie' => array(			// Plugin acronym.
@@ -871,6 +881,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-tune-image-editors/update/',
+						'download'  => 'https://wpsso.com/extend/plugins/wpsso-tune-image-editors/latest/',
 					),
 				),
 				'wpssoul' => array(			// Plugin acronym.
@@ -934,6 +945,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-user-locale/update/',
+						'download'  => 'https://wpsso.com/extend/plugins/wpsso-user-locale/latest/',
 					),
 				),
 				'wpssoum' => array(			// Plugin acronym.
@@ -993,6 +1005,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-um/update/',
+						'download'  => 'https://wpsso.com/extend/plugins/wpsso-um/latest/',
 					),
 				),
 				'wpssowcmd' => array(			// Plugin acronym.
@@ -1056,6 +1069,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-wc-metadata/update/',
+						'download'  => 'https://wpsso.com/extend/plugins/wpsso-wc-metadata/latest/',
 					),
 				),
 				'wpssowcsdt' => array(			// Plugin acronym.
@@ -1119,6 +1133,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-wc-shipping-delivery-time/update/',
+						'download'  => 'https://wpsso.com/extend/plugins/wpsso-wc-shipping-delivery-time/latest/',
 					),
 				),
 				'wpssowpsm' => array(			// Plugin acronym.
@@ -1182,6 +1197,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'purchase'  => '',	// Purchase page.
 						'info'      => '',	// License information.
 						'update'    => 'https://wpsso.com/extend/plugins/wpsso-wp-sitemaps/update/',
+						'download'  => 'https://wpsso.com/extend/plugins/wpsso-wp-sitemaps/latest/',
 					),
 				),
 			),

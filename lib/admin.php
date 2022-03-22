@@ -2048,6 +2048,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function addons_metabox_content( $network = false ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			$ext_sorted = WpssoConfig::get_ext_sorted();
 
 			unset( $ext_sorted[ $this->p->id ] );
@@ -3012,7 +3017,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				'tested_up_to'      => 'tested',
 				'requires_at_least' => 'requires',
 				'home'              => 'homepage',
-				'latest'            => 'download_link',
+				'download'          => 'download_link',
 				'author'            => 'author',
 				'upgrade_notice'    => 'upgrade_notice',
 				'last_updated'      => 'last_updated',
@@ -3046,7 +3051,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						break;
 
-					case 'latest':	// From plugin config.
+					case 'download':	// From plugin config.
 
 						if ( ! empty( $info[ 'url' ][ $readme_key ] ) ) {
 
@@ -3211,6 +3216,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 */
 		public function get_ext_action_links( $ext, $info, &$tabindex = false ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			$pkg_info = $this->get_pkg_info();	// Returns an array from cache.
 
 			$action_links = array();
@@ -3231,7 +3241,17 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				if ( SucomPlugin::is_plugin_installed( $info[ 'base' ] ) ) {	// Uses static local cache.
 
+					if ( $this->p->debug->enabled ) {
+	
+						$this->p->debug->log( $info[ 'base' ] . ' is installed' );
+					}
+
 					if ( SucomPlugin::have_plugin_update( $info[ 'base' ] ) ) {	// Uses static local cache.
+
+						if ( $this->p->debug->enabled ) {
+	
+							$this->p->debug->log( $info[ 'base' ] . ' has an update' );
+						}
 
 						$action_links[] = '<a href="' . $details_url . '" class="thickbox" tabindex="' . ++$tabindex . '">' .
 							'<font color="red">' . ( 'wpsso' === $ext ? _x( 'Plugin Details and Update',
@@ -3245,6 +3265,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					}
 
 				} else {
+
+					if ( $this->p->debug->enabled ) {
+	
+						$this->p->debug->log( $info[ 'base' ] . ' is not installed' );
+					}
 
 					$action_links[] = '<a href="' . $details_url . '" class="thickbox" tabindex="' . ++$tabindex . '">' .
 						( 'wpsso' === $ext ? _x( 'Plugin Details and Install', 'plugin action link', 'wpsso' ) :
