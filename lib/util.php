@@ -116,7 +116,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 *
 		 * Log the locale change and clear the Sucom::get_locale() cache.
 		 */
-		public function wp_locale_changed( $locale, $previous_locale = null ) {
+		public function wp_locale_changed( $locale ) {
 
 			if ( $this->p->debug->enabled ) {
 
