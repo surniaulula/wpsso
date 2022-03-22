@@ -555,7 +555,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				$opts[ $key . ':disabled' ] = true;
 
-				if ( $opts[ $key ] !== $val ) {
+				if ( ! isset( $opts[ $key ] ) || $opts[ $key ] !== $val ) {
 
 					$opts[ $key ] = $val;
 

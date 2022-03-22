@@ -22,7 +22,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
 					'version'     => '11.7.2-b.2',	// Plugin version.
-					'opt_version' => '901',		// Increment when changing default option values.
+					'opt_version' => '902',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1583,6 +1583,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'add_meta_name_author'                              => 1,
 					'add_meta_name_baidu-site-verification'             => 1,	// Baidu Website Verification ID.
 					'add_meta_name_description'                         => 1,
+					'add_meta_name_facebook-domain-verification'        => 1,
 					'add_meta_name_generator'                           => 1,
 					'add_meta_name_google-site-verification'            => 1,	// Google Website Verification ID.
 					'add_meta_name_msvalidate.01'                       => 1,	// Microsoft Bing Website Verification ID.
