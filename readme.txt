@@ -12,7 +12,7 @@ Requires PHP: 7.2
 Requires At Least: 5.2
 Tested Up To: 5.9.2
 WC Tested Up To: 6.3.1
-Stable Tag: 11.7.1
+Stable Tag: 11.7.2
 
 Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
 
@@ -253,7 +253,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.7.2 (2022/03/22)**
+**Version 11.7.2 (2022/03/23)**
 
 * **New Features**
 	* None.
@@ -494,7 +494,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 11.7.2 =
 
-(2022/03/22) Fixed detection of json scripts with unencoded characters in the post content. Fixed missing download information for add-ons in the config array. Fixed clearing the locale cache when switching locales.
+(2022/03/23) Fixed detection of json scripts with unencoded characters in the post content. Fixed missing download information for add-ons in the config array. Fixed clearing the locale cache when switching locales.
 
 = 11.7.1 =
 
