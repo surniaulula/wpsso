@@ -95,23 +95,24 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			), $prio = -1000 );
 
 			/**
-			 * All three actions must be hooked to add our image sizes on the front-end, back-end, AJAX calls, REST API
-			 * calls, etc.
+			 * Add our image sizes on the front-end, back-end, AJAX calls, and REST API calls.
 			 */
 			add_action( 'wp', array( $this, 'add_plugin_image_sizes' ), -100 );				// Front-end compatibility.
 			add_action( 'admin_init', array( $this, 'add_plugin_image_sizes' ), -100 );			// Back-end + AJAX compatibility.
 			add_action( 'rest_api_init', array( $this, 'add_plugin_image_sizes' ), -100 );			// REST API compatibility.
 
-			add_action( 'switch_locale', array( $this, 'wp_locale_change' ), -100, 1 );
+			/**
+			 * Log the locale change and clear the Sucom::get_locale() cache.
+			 */
 			add_action( 'change_locale', array( $this, 'wp_locale_change' ), -100, 1 );
-			add_action( 'restore_previous_locale', array( $this, 'wp_locale_change' ), -100, 2 );
 		}
 
 		/**
 		 * Since WPSSO Core v11.7.2.
 		 *
-		 * Action hook to monitor the WordPress 'switch_locale', 'change_locale', and 'restore_previous_locale' actions for
-		 * locale changes, log the change and clear the locale cache as required.
+		 * Monitor the WordPress 'change_locale' action for locale changes.
+		 *
+		 * Log the locale change and clear the Sucom::get_locale() cache.
 		 */
 		public function wp_locale_change( $locale, $previous_locale = null ) {
 
