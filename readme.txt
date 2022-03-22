@@ -253,7 +253,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.7.2-rc.5 (2022/03/22)**
+**Version 11.7.2 (2022/03/22)**
 
 * **New Features**
 	* None.
@@ -492,7 +492,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 11.7.2-rc.5 =
+= 11.7.2 =
 
 (2022/03/22) Fixed detection of json scripts with unencoded characters in the post content. Fixed missing download information for add-ons in the config array. Fixed clearing the locale cache when switching locales.
 
