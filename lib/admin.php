@@ -3242,14 +3242,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				if ( SucomPlugin::is_plugin_installed( $info[ 'base' ] ) ) {	// Uses static local cache.
 
 					if ( $this->p->debug->enabled ) {
-	
+
 						$this->p->debug->log( $info[ 'base' ] . ' is installed' );
 					}
 
 					if ( SucomPlugin::have_plugin_update( $info[ 'base' ] ) ) {	// Uses static local cache.
 
 						if ( $this->p->debug->enabled ) {
-	
+
 							$this->p->debug->log( $info[ 'base' ] . ' has an update' );
 						}
 
@@ -3267,7 +3267,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				} else {
 
 					if ( $this->p->debug->enabled ) {
-	
+
 						$this->p->debug->log( $info[ 'base' ] . ' is not installed' );
 					}
 

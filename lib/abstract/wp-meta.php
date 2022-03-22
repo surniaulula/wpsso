@@ -2408,7 +2408,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				}
 
 				if ( empty( $mt_videos ) && $embed_url ) {
-				
+
 					if ( ! $check_dupes || $this->p->util->is_uniq_url( $embed_url, $uniq_context = 'video', $mod ) ) {
 
 						if ( $this->p->debug->enabled ) {
@@ -2425,21 +2425,21 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 							'post_id'  => null,
 							'api'      => '',
 						);
-	
+
 						/**
 						 * Returns a single video associative array.
 						 */
 						$mt_single_video = $this->p->media->get_video_details( $args, $mod, $check_dupes, $fallback = true );
-	
+
 						if ( ! empty( $mt_single_video ) ) {
-	
+
 							if ( $this->p->util->push_max( $mt_videos, $mt_single_video, $num ) ) {
-	
+
 								if ( $this->p->debug->enabled ) {
-	
+
 									$this->p->debug->log( 'returning ' . count( $mt_videos ) . ' videos' );
 								}
-	
+
 								return $mt_videos;
 							}
 						}
