@@ -104,7 +104,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			/**
 			 * Log the locale change and clear the Sucom::get_locale() cache.
 			 */
-			add_action( 'change_locale', array( $this, 'wp_locale_change' ), -100, 1 );
+			add_action( 'change_locale', array( $this, 'wp_locale_changed' ), -100, 1 );
+			add_action( 'switch_locale', array( $this, 'wp_locale_switched' ), -100, 1 );
+			add_action( 'restore_previous_locale', array( $this, 'wp_locale_restored' ), -100, 2 );
 		}
 
 		/**
@@ -114,14 +116,30 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 *
 		 * Log the locale change and clear the Sucom::get_locale() cache.
 		 */
-		public function wp_locale_change( $locale, $previous_locale = null ) {
+		public function wp_locale_changed( $locale, $previous_locale = null ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'wp locale change' . ( $previous_locale ? ' from ' . $previous_locale : '' ) . ' to '. $locale );
+				$this->p->debug->log( 'wp locale changed to ' . $locale );
 			}
 
 			SucomUtil::clear_locale_cache();
+		}
+
+		public function wp_locale_switched( $locale ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'wp locale switched to ' . $locale );
+			}
+		}
+
+		public function wp_locale_restored( $locale, $previous_locale ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'wp locale restored to ' . $locale . ' from ' . $previous_locale );
+			}
 		}
 
 		public function set_util_instances( &$plugin ) {
