@@ -296,7 +296,8 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$graph_json = WpssoSchemaGraph::optimize_json( $graph_json );
 
-				$schema_scripts[][] = '<script type="application/ld+json">' . $this->p->util->json_format( $graph_json ) . '</script>' . "\n";
+				$schema_scripts[][] = '<script type="application/ld+json" id="wpsso-schema-json">' .
+					$this->p->util->json_format( $graph_json ) . '</script>' . "\n";
 			}
 
 			unset( $graph_json );
@@ -437,7 +438,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( empty( $css_id ) ) {
 
-				$css_id = 'wpsso-json-' . md5( serialize( $json_data ) );	// md5() input must be a string.
+				$css_id = 'wpsso-schema-json-' . md5( serialize( $json_data ) );	// md5() input must be a string.
 			}
 
 			return '<script type="application/ld+json" id="' . $css_id . '">' . $this->p->util->json_format( $json_data ) . '</script>' . "\n";
