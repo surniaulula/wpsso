@@ -440,6 +440,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		 */
 		public static function get_public_ids( $tax_names = null ) {
 
+			$wpsso =& Wpsso::get_instance();
+
 			$public_term_ids = array();
 
 			if ( null === $tax_names ) {
@@ -460,6 +462,11 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			foreach ( $tax_names as $name ) {
 
 				$terms_args[ 'taxonomy' ] = $name;
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log_arr( 'terms_args', $terms_args );
+				}
 
 				$term_ids = get_terms( $terms_args );
 

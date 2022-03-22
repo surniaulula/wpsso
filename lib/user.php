@@ -456,6 +456,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			 */
 			$roles = $wpsso->cf[ 'wp' ][ 'roles' ][ 'creator' ];
 
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log_arr( 'roles', $roles );
+			}
+
 			return SucomUtil::get_roles_user_ids( $roles );
 		}
 

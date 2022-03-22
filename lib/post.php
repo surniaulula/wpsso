@@ -603,6 +603,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		 */
 		public static function get_public_ids( array $posts_args = array() ) {
 
+			$wpsso =& Wpsso::get_instance();
+
 			$posts_args = array_merge( array(
 				'has_password'     => false,
 				'order'            => 'DESC',		// Newest first.
@@ -614,6 +616,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				'no_found_rows'    => true,		// Skip counting total rows found - should be enabled when pagination is not needed.
 				'suppress_filters' => false,		// Allow WPML to filter posts for the current language.
 			), $posts_args, array( 'fields' => 'ids' ) );	// Return an array of post ids.
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log_arr( 'posts_args', $posts_args );
+			}
 
 			return get_posts( $posts_args );
 		}
