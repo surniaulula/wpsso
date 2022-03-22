@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 11.7.2-rc.2\n"
+"Project-Id-Version: WPSSO Core 11.7.2-rc.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -5651,7 +5651,7 @@ msgctxt "option label"
 msgid "Use Local Plugin Translations"
 msgstr ""
 
-#: lib/admin.php:2498 lib/util.php:2946
+#: lib/admin.php:2498 lib/util.php:2956
 msgctxt "option label"
 msgid "Disable Cache for Debugging"
 msgstr ""
@@ -6609,13 +6609,13 @@ msgid ""
 msgstr ""
 
 #: lib/media.php:1633 lib/post.php:667 lib/register.php:348 lib/term.php:529
-#: lib/user.php:505 lib/util.php:711 lib/util.php:817 lib/util.php:849
-#: lib/util.php:2908
+#: lib/user.php:505 lib/util.php:721 lib/util.php:827 lib/util.php:859
+#: lib/util.php:2918
 msgid "%s warning:"
 msgstr ""
 
 #: lib/media.php:1634 lib/post.php:668 lib/term.php:530 lib/user.php:506
-#: lib/util.php:712 lib/util.php:2909
+#: lib/util.php:722 lib/util.php:2919
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
@@ -11585,190 +11585,190 @@ msgstr ""
 msgid "lbs"
 msgstr ""
 
-#: lib/util.php:454
+#: lib/util.php:464
 msgid "cropped"
 msgstr ""
 
-#: lib/util.php:454
+#: lib/util.php:464
 msgid "uncropped"
 msgstr ""
 
-#: lib/util.php:713
+#: lib/util.php:723
 msgid "Slow PHP function detected - %1$s took %2$.3f secs for %3$s (%4$s)."
 msgstr ""
 
-#: lib/util.php:1131
+#: lib/util.php:1141
 msgid "Error reading the %s file for the article sections list."
 msgstr ""
 
-#: lib/util.php:1232
+#: lib/util.php:1242
 msgid "Error reading the %s file for the product categories list."
 msgstr ""
 
-#: lib/util.php:1363
+#: lib/util.php:1373
 msgid "The <code>%1$s</code> request argument is not HTML or a valid URL."
 msgstr ""
 
-#: lib/util.php:1387
+#: lib/util.php:1397
 msgid "Error getting HTML from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/util.php:1417
+#: lib/util.php:1427
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr ""
 
 #. translators: %1$s is the class name.
-#: lib/util.php:1615
+#: lib/util.php:1625
 msgid ""
 "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting "
 "provider to have the missing class installed."
 msgstr ""
 
 #. translators: %1$s is the function name.
-#: lib/util.php:1629
+#: lib/util.php:1639
 msgid ""
 "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting "
 "provider to have the missing function installed."
 msgstr ""
 
-#: lib/util.php:2910
+#: lib/util.php:2920
 msgid ""
 "Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the "
 "\"%2$s\" filter (%3$s)."
 msgstr ""
 
-#: lib/util.php:2950
+#: lib/util.php:2960
 msgid ""
 "Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds "
 "to execute."
 msgstr ""
 
-#: lib/util.php:2952
+#: lib/util.php:2962
 msgid ""
 "This is longer than the recommended maximum of %1$.3f seconds and may affect "
 "page load time."
 msgstr ""
 
-#: lib/util.php:2954
+#: lib/util.php:2964
 msgid ""
 "Please consider reviewing active plugin and theme functions hooked into the "
 "WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr ""
 
-#: lib/util.php:2956
+#: lib/util.php:2966
 msgid ""
 "Activating the %1$s plugin and enabling the the %2$s option (to apply the "
 "filter consistently) may provide more information on the specific hooks or "
 "PHP code affecting performance."
 msgstr ""
 
-#: lib/util.php:3357
+#: lib/util.php:3367
 msgctxt "option label"
 msgid "The AMP Project Validator"
 msgstr ""
 
-#: lib/util.php:3358
+#: lib/util.php:3368
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr ""
 
-#: lib/util.php:3362
+#: lib/util.php:3372
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr ""
 
-#: lib/util.php:3363
+#: lib/util.php:3373
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr ""
 
-#: lib/util.php:3367
+#: lib/util.php:3377
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr ""
 
-#: lib/util.php:3368
+#: lib/util.php:3378
 msgctxt "validator type"
 msgid "Microdata"
 msgstr ""
 
-#: lib/util.php:3372
+#: lib/util.php:3382
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr ""
 
-#: lib/util.php:3373
+#: lib/util.php:3383
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr ""
 
-#: lib/util.php:3377
+#: lib/util.php:3387
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr ""
 
-#: lib/util.php:3378
+#: lib/util.php:3388
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr ""
 
-#: lib/util.php:3382
+#: lib/util.php:3392
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr ""
 
-#: lib/util.php:3383
+#: lib/util.php:3393
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr ""
 
-#: lib/util.php:3387
+#: lib/util.php:3397
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr ""
 
-#: lib/util.php:3388
+#: lib/util.php:3398
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr ""
 
-#: lib/util.php:3392
+#: lib/util.php:3402
 msgctxt "option label"
 msgid "Schema Markup Validator"
 msgstr ""
 
-#: lib/util.php:3393
+#: lib/util.php:3403
 msgctxt "validator type"
 msgid "Schema Markup"
 msgstr ""
 
-#: lib/util.php:3397
+#: lib/util.php:3407
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr ""
 
-#: lib/util.php:3398
+#: lib/util.php:3408
 msgctxt "validator type"
 msgid "Twitter Card"
 msgstr ""
 
-#: lib/util.php:3403
+#: lib/util.php:3413
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr ""
 
-#: lib/util.php:3404
+#: lib/util.php:3414
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name.
-#: lib/util.php:3566
+#: lib/util.php:3576
 msgid "%1$s for this %2$s"
 msgstr ""
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3576
+#: lib/util.php:3586
 msgid "%1$s for %2$s ID %3$d"
 msgstr ""
 

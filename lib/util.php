@@ -102,9 +102,19 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			add_action( 'admin_init', array( $this, 'add_plugin_image_sizes' ), -100 );			// Back-end + AJAX compatibility.
 			add_action( 'rest_api_init', array( $this, 'add_plugin_image_sizes' ), -100 );			// REST API compatibility.
 
-			add_action( 'switch_locale', array( 'SucomUtil', 'clear_locale_cache' ) );
-			add_action( 'restore_previous_locale', array( 'SucomUtil', 'clear_locale_cache' ) );
-			add_action( 'change_locale', array( 'SucomUtil', 'clear_locale_cache' ) );
+			add_action( 'switch_locale', array( $this, 'wp_locale_change' ), -100, 1 );
+			add_action( 'change_locale', array( $this, 'wp_locale_change' ), -100, 1 );
+			add_action( 'restore_previous_locale', array( $this, 'wp_locale_change' ), -100, 2 );
+		}
+
+		public function wp_locale_change( $locale, $previous_locale = null ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'wp locale change' . ( $previous_locale ? ' from ' . $previous_locale : '' ) . ' to '. $locale );
+			}
+
+			SucomUtil::clear_locale_cache();
 		}
 
 		public function set_util_instances( &$plugin ) {
