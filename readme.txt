@@ -253,7 +253,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.7.2-rc.1 (2022/03/22)**
+**Version 11.7.2-rc.2 (2022/03/22)**
 
 * **New Features**
 	* None.
@@ -262,6 +262,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed detection of json scripts with unencoded characters in the post content.
 	* Fixed missing download information for add-ons in the config array.
+	* Fixed clearing the locale cache when switching locales.
 * **Developer Notes**
 	* Updated `SucomUtil::get_json_scripts()` to return the CSS id or md5 of json scripts.
 	* Updated `WpssoJsonFiltersPropHasPart->maybe_comment_json_scripts()` to comment json scripts using the CSS id or md5.
@@ -491,9 +492,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 11.7.2-rc.1 =
+= 11.7.2-rc.2 =
 
-(2022/03/22) Fixed detection of json scripts with unencoded characters in the post content. Fixed missing download information for add-ons in the config array.
+(2022/03/22) Fixed detection of json scripts with unencoded characters in the post content. Fixed missing download information for add-ons in the config array. Fixed clearing the locale cache when switching locales.
 
 = 11.7.1 =
 
