@@ -253,14 +253,15 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.7.2-b.2 (2022/03/22)**
+**Version 11.7.2-b.3 (2022/03/22)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Optimized the detection of json scripts in post content for the Schema hasPart property.
-* **Bugfixes**
 	* None.
+* **Bugfixes**
+	* Fixed detection of json scripts with unencoded characters in the post content.
+	* Fixed missing update manager information in the config array.
 * **Developer Notes**
 	* Updated `SucomUtil::get_json_scripts()` to return the CSS id or md5 of json scripts.
 	* Updated `WpssoJsonFiltersPropHasPart->maybe_comment_json_scripts()` to comment json scripts using the CSS id or md5.
@@ -490,9 +491,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 11.7.2-b.2 =
+= 11.7.2-b.3 =
 
-(2022/03/22) Optimized the detection of json scripts in post content for the Schema hasPart property.
+(2022/03/22) Fixed detection of json scripts with unencoded characters in the post content. Fixed missing update manager information in the config array.
 
 = 11.7.1 =
 
