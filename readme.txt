@@ -250,7 +250,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.8.0-dev.2 (2022/03/23)**
+**Version 12.0.0-dev.2 (2022/03/23)**
 
 Removed support for bbPress, BuddyPress, and BuddyBlog.
 
@@ -508,7 +508,7 @@ Removed support for bbPress, BuddyPress, and BuddyBlog.
 
 == Upgrade Notice ==
 
-= 11.8.0-dev.2 =
+= 12.0.0-dev.2 =
 
 (2022/03/23) Removed support for bbPress, BuddyPress, and BuddyBlog. Fixed showing the Validators menu to users without editing capability.
 
