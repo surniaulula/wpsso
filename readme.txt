@@ -253,6 +253,21 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 11.7.3-dev.1 (2022/03/23)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed showing the Validators menu to users without editing capability.
+* **Developer Notes**
+	* Added a `current_user_can()` check before showing the Validators menu.
+	* Added `$md_pre` to the `WpssoOpengraph->get_array()` method arguments.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 11.7.2 (2022/03/23)**
 
 * **New Features**
@@ -263,6 +278,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Fixed detection of json scripts with unencoded characters in the post content.
 	* Fixed missing download information for add-ons in the config array.
 	* Fixed clearing the locale cache when switching locales.
+	* Fixed active WPML language when WordPress switches locales.
 * **Developer Notes**
 	* Updated `SucomUtil::get_json_scripts()` to return the CSS id or md5 of json scripts.
 	* Updated `WpssoJsonFiltersPropHasPart->maybe_comment_json_scripts()` to comment json scripts using the CSS id or md5.
@@ -492,9 +508,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
+= 11.7.3-dev.1 =
+
+(2022/03/23) Fixed showing the Validators menu to users without editing capability.
+
 = 11.7.2 =
 
-(2022/03/23) Fixed detection of json scripts with unencoded characters in the post content. Fixed missing download information for add-ons in the config array. Fixed clearing the locale cache when switching locales.
+(2022/03/23) Fixed detection of json scripts with unencoded characters in the post content. Fixed missing download information for add-ons in the config array. Fixed clearing the locale cache when switching locales. Fixed active WPML language when WordPress switches locales.
 
 = 11.7.1 =
 
