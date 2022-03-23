@@ -2832,8 +2832,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			/**
-			 * Hooked by some modules, like bbPress and social sharing buttons, to perform actions before/after
-			 * filtering the content.
+			 * Hooked by some modules to perform actions before/after filtering the content.
 			 */
 			do_action( 'wpsso_pre_apply_filters_text', $filter_name );
 
@@ -3029,8 +3028,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			/**
-			 * Hooked by some modules, like bbPress and social sharing buttons, to perform actions before/after
-			 * filtering the content.
+			 * Hooked by some modules to perform actions before/after filtering the content.
 			 */
 			do_action( 'wpsso_after_apply_filters_text', $filter_name );
 

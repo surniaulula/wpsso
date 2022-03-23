@@ -152,9 +152,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'form' => array(
 								'gravityview' => '(plugin) GravityView',
 							),
-							'forum' => array(
-								'bbpress' => '(plugin) bbPress',
-							),
 							'job' => array(
 								'simplejobboard' => '(plugin) Simple Job Board',
 								'wpjobmanager'   => '(plugin) WP Job Manager',
@@ -196,9 +193,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'wpmetaseo'    => '(plugin) WP Meta SEO',
 								'wpseo'        => '(plugin) Yoast SEO',
 							),
-							'social' => array(
-								'buddypress' => '(plugin) BuddyPress',
-							),
 							'util' => array(
 								'aioseop-meta'      => '(feature) Import All in One SEO Pack Metadata',
 								'check-img-dims'    => '(feature) Image Dimension Checks',
@@ -224,9 +218,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'advanced' => 'Advanced Settings Filters',
 								'edit'     => 'Document SSO Metabox Filters',
 								'general'  => 'General Settings Filters',
-							),
-							'social' => array(
-								'buddypress' => '(plugin) BuddyPress',
 							),
 						),
 						'submenu' => array(
