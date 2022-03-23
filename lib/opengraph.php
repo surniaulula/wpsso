@@ -484,7 +484,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				} elseif ( $max_nums[ 'og_vid_max' ] > 0 ) {
 
-					$mt_og[ 'og:video' ] = $this->p->media->get_all_videos( $max_nums[ 'og_vid_max' ], $mod, $check_dupes = true, $md_pre );
+					$mt_og[ 'og:video' ] = $this->p->media->get_all_videos( $max_nums[ 'og_vid_max' ], $mod, $md_pre );
 
 					if ( empty( $mt_og[ 'og:video' ] ) ) {
 
@@ -539,7 +539,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				if ( $max_nums[ 'og_img_max' ] > 0 ) {
 
-					$mt_og[ 'og:image' ] = $this->p->media->get_all_images( $max_nums[ 'og_img_max' ], $size_names, $mod, $check_dupes = true, $md_pre );
+					$mt_og[ 'og:image' ] = $this->p->media->get_all_images( $max_nums[ 'og_img_max' ], $size_names, $mod, $md_pre );
 
 					if ( empty( $mt_og[ 'og:image' ] ) ) {
 
@@ -1430,7 +1430,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			_deprecated_function( __METHOD__ . '()', '2022/02/22', $replacement = 'WpssoMedia::get_all_previews()' );	// Deprecation message.
 
-			return $this->p->media->get_all_previews( $num, $mod, $check_dupes, $md_pre, $force_prev );
+			return $this->p->media->get_all_previews( $num, $mod, $md_pre, $force_prev );
 		}
 
 		/**
@@ -1440,7 +1440,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			_deprecated_function( __METHOD__ . '()', '2022/02/22', $replacement = 'WpssoMedia::get_all_videos()' );	// Deprecation message.
 
-			return $this->p->media->get_all_videos( $num, $mod, $check_dupes, $md_pre, $force_prev );
+			return $this->p->media->get_all_videos( $num, $mod, $md_pre, $force_prev );
 		}
 
 		/**
@@ -1450,7 +1450,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			_deprecated_function( __METHOD__ . '()', '2022/02/22', $replacement = 'WpssoMedia::get_all_images()' );	// Deprecation message.
 
-			return $this->p->media->get_all_images( $num, $size_names, $mod, $check_dupes, $md_pre );
+			return $this->p->media->get_all_images( $num, $size_names, $mod, $md_pre );
 		}
 
 		/**

@@ -1614,7 +1614,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		 *
 		 * $md_pre can be a text string or array of prefixes.
 		 */
-		public function get_og_images( $num, $size_names, $user_id, $check_dupes = true, $md_pre = 'og', $mt_pre = 'og' ) {
+		public function get_og_images( $num, $size_names, $user_id, $md_pre = 'og', $mt_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1630,10 +1630,10 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( $user_exists ) {
 
-				return $this->get_md_images( $num, $size_names, $mod, $check_dupes, $md_pre, $mt_pre );
+				return $this->get_md_images( $num, $size_names, $mod, $md_pre, $mt_pre );
 			}
 
-			return apply_filters( 'wpsso_get_other_user_images', array(), $num, $size_names, $user_id, $check_dupes, $md_pre );
+			return apply_filters( 'wpsso_get_other_user_images', array(), $num, $size_names, $user_id, $md_pre );
 		}
 
 		/**

@@ -177,7 +177,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $html;
 		}
 
-		public function get_all_previews( $num = 0, array $mod, $check_dupes = true, $md_pre = 'og', $force_prev = false ) {
+		public function get_all_previews( $num = 0, array $mod, $md_pre = 'og', $force_prev = false ) {
 
 			/**
 			 * The get_all_videos() method uses the 'og_vid_max' argument as part of its caching salt, so re-use the
@@ -186,7 +186,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 */
 			$max_nums = $this->p->util->get_max_nums( $mod );
 
-			$mt_videos = $this->get_all_videos( $max_nums[ 'og_vid_max' ], $mod, $check_dupes, $md_pre, $force_prev );
+			$mt_videos = $this->get_all_videos( $max_nums[ 'og_vid_max' ], $mod, $md_pre, $force_prev );
 
 			$this->p->util->clear_uniq_urls( $uniq_context = array( 'preview' ), $mod );
 
@@ -202,7 +202,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				 */
 				if ( $image_url ) {
 
-					if ( ! $check_dupes || $this->p->util->is_uniq_url( $image_url, $uniq_context = 'preview', $mod ) ) {
+					if ( $this->p->util->is_uniq_url( $image_url, $uniq_context = 'preview', $mod ) ) {
 
 						$mt_single_image = SucomUtil::preg_grep_keys( '/^og:image/', $mt_single_video );
 
@@ -220,12 +220,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		/**
 		 * Returns an array of single video associative arrays.
 		 */
-		public function get_all_videos( $num = 0, array $mod, $check_dupes = true, $md_pre = 'og', $force_prev = false ) {
+		public function get_all_videos( $num = 0, array $mod, $md_pre = 'og', $force_prev = false ) {
 
 			$cache_args = array(
 				'num'         => $num,
 				'mod'         => $mod,
-				'check_dupes' => $check_dupes,
 				'md_pre'      => $md_pre,
 				'force_prev'  => $force_prev,
 			);
@@ -298,7 +297,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				/**
 				 * get_og_videos() converts the $md_pre value to an array and always checks for 'og' metadata as a fallback.
 				 */
-				$mt_videos = array_merge( $mt_videos, $mod[ 'obj' ]->get_og_videos( $num_diff, $mod[ 'id' ], $check_dupes, $md_pre ) );
+				$mt_videos = array_merge( $mt_videos, $mod[ 'obj' ]->get_og_videos( $num_diff, $mod[ 'id' ], $md_pre ) );
 
 				if ( $this->p->debug->enabled ) {
 
@@ -321,7 +320,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$this->p->debug->mark( 'checking for videos in the ' . $mod[ 'name' ] . ' content' );	// Begin timer.
 					}
 
-					$mt_videos = array_merge( $mt_videos, $this->get_content_videos( $num_diff, $mod, $check_dupes ) );
+					$mt_videos = array_merge( $mt_videos, $this->get_content_videos( $num_diff, $mod ) );
 
 					if ( $this->p->debug->enabled ) {
 
@@ -467,7 +466,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$mt_ret = $this->get_all_images( $num = 1, $size_names, $mod, $check_dupes = true, $md_pre );
+			$mt_ret = $this->get_all_images( $num = 1, $size_names, $mod, $md_pre );
 
 			return SucomUtil::get_first_mt_media_url( $mt_ret );
 		}
@@ -475,16 +474,15 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		/**
 		 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
 		 */
-		public function get_all_images( $num, $size_names = 'opengraph', array $mod, $check_dupes = true, $md_pre = 'og' ) {
+		public function get_all_images( $num, $size_names = 'opengraph', array $mod, $md_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_args( array(
-					'num'         => $num,
-					'size_names'  => $size_names,
-					'mod'         => $mod,
-					'check_dupes' => $check_dupes,
-					'md_pre'      => $md_pre,
+					'num'        => $num,
+					'size_names' => $size_names,
+					'mod'        => $mod,
+					'md_pre'     => $md_pre,
 				) );
 			}
 
@@ -497,7 +495,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$this->p->debug->log( 'getting all video preview images' );
 			}
 
-			$preview_images = $this->get_all_previews( $num, $mod, $check_dupes );
+			$preview_images = $this->get_all_previews( $num, $mod, $md_pre );
 
 			if ( empty( $preview_images ) ) {
 
@@ -527,7 +525,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					/**
 					 * $size_name must be a string.
 					 */
-					$mt_images = $this->get_size_name_images( $num_diff, $size_name, $mod, $check_dupes, $md_pre );
+					$mt_images = $this->get_size_name_images( $num_diff, $size_name, $mod, $md_pre );
 
 					if ( empty( $mt_images ) ) {
 
@@ -554,7 +552,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		/**
 		 * $size_name must be a string.
 		 */
-		public function get_size_name_images( $num, $size_name, array $mod, $check_dupes = true, $md_pre = 'og' ) {
+		public function get_size_name_images( $num, $size_name, array $mod, $md_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -613,7 +611,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						/**
 						 * $size_name must be a string.
 						 */
-						$mt_single_image = $this->get_attachment_image( $num, $size_name, $mod[ 'id' ], $check_dupes );
+						$mt_single_image = $this->get_attachment_image( $num, $size_name, $mod[ 'id' ] );
 
 						if ( empty( $mt_single_image ) ) {
 
@@ -642,7 +640,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					 *
 					 * Allow for empty post ID in order to execute featured / attached image filters for modules.
 					 */
-					$post_images = $this->get_post_images( $num, $size_name, $mod[ 'id' ], $check_dupes, $md_pre );
+					$post_images = $this->get_post_images( $num, $size_name, $mod[ 'id' ], $md_pre );
 
 					if ( ! empty( $post_images ) ) {
 
@@ -663,7 +661,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 						$num_diff = SucomUtil::count_diff( $mt_ret, $num );
 
-						$query_images = $ngg_obj->get_query_og_images( $num_diff, $size_name, $mod[ 'id' ], $check_dupes );
+						$query_images = $ngg_obj->get_query_og_images( $num_diff, $size_name, $mod[ 'id' ] );
 
 						if ( count( $query_images ) > 0 ) {
 
@@ -678,7 +676,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 							$num_diff = SucomUtil::count_diff( $mt_ret, $num );
 
-							$shortcode_images = $ngg_obj->get_shortcode_og_images( $num_diff, $size_name, $mod[ 'id' ], $check_dupes );
+							$shortcode_images = $ngg_obj->get_shortcode_og_images( $num_diff, $size_name, $mod[ 'id' ] );
 
 							if ( ! empty( $shortcode_images ) ) {
 
@@ -695,7 +693,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					 *
 					 * Unless $md_pre is 'none', get_og_images() will fallback to using the 'og' custom meta.
 					 */
-					$mt_images = $mod[ 'obj' ]->get_og_images( $num, $size_name, $mod[ 'id' ], $check_dupes, $md_pre );
+					$mt_images = $mod[ 'obj' ]->get_og_images( $num, $size_name, $mod[ 'id' ], $md_pre );
 
 					if ( ! empty( $mt_images ) ) {
 
@@ -715,7 +713,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					$num_diff = SucomUtil::count_diff( $mt_ret, $num );
 
-					$content_images = $this->get_content_images( $num_diff, $size_name, $mod, $check_dupes );
+					$content_images = $this->get_content_images( $num_diff, $size_name, $mod );
 
 					if ( ! empty( $content_images ) ) {
 
@@ -779,16 +777,15 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		/**
 		 * $size_name must be a string.
 		 */
-		public function get_post_images( $num = 0, $size_name = 'thumbnail', $post_id, $check_dupes = true, $md_pre = 'og' ) {
+		public function get_post_images( $num = 0, $size_name = 'thumbnail', $post_id, $md_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_args( array(
-					'num'         => $num,
-					'size_name'   => $size_name,
-					'post_id'     => $post_id,
-					'check_dupes' => $check_dupes,
-					'md_pre'      => $md_pre,
+					'num'       => $num,
+					'size_name' => $size_name,
+					'post_id'   => $post_id,
+					'md_pre'    => $md_pre,
 				) );
 			}
 
@@ -801,7 +798,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				 *
 				 * Unless $md_pre is 'none', get_og_images() will fallback to using the 'og' custom meta.
 				 */
-				$mt_ret = array_merge( $mt_ret, $this->p->post->get_og_images( $num, $size_name, $post_id, $check_dupes, $md_pre ) );
+				$mt_ret = array_merge( $mt_ret, $this->p->post->get_og_images( $num, $size_name, $post_id, $md_pre ) );
 			}
 
 			/**
@@ -811,14 +808,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				$num_diff = SucomUtil::count_diff( $mt_ret, $num );
 
-				$mt_ret = array_merge( $mt_ret, $this->get_featured( $num_diff, $size_name, $post_id, $check_dupes ) );
+				$mt_ret = array_merge( $mt_ret, $this->get_featured( $num_diff, $size_name, $post_id ) );
 			}
 
 			if ( ! $this->p->util->is_maxed( $mt_ret, $num ) ) {
 
 				$num_diff = SucomUtil::count_diff( $mt_ret, $num );
 
-				$mt_ret = array_merge( $mt_ret, $this->get_attached_images( $num_diff, $size_name, $post_id, $check_dupes ) );
+				$mt_ret = array_merge( $mt_ret, $this->get_attached_images( $num_diff, $size_name, $post_id ) );
 			}
 
 			return $mt_ret;
@@ -827,15 +824,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		/**
 		 * $size_name must be a string.
 		 */
-		public function get_featured( $num = 0, $size_name = 'thumbnail', $post_id, $check_dupes = true ) {
+		public function get_featured( $num = 0, $size_name = 'thumbnail', $post_id ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_args( array(
-					'num'         => $num,
-					'size_name'   => $size_name,
-					'post_id'     => $post_id,
-					'check_dupes' => $check_dupes,
+					'num'       => $num,
+					'size_name' => $size_name,
+					'post_id'   => $post_id,
 				) );
 			}
 
@@ -873,7 +869,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					/**
 					 * get_mt_single_image_src() returns an og:image:url value, not an og:image:secure_url.
 					 */
-					$mt_single_image = $this->get_mt_single_image_src( $pid, $size_name, $check_dupes );
+					$mt_single_image = $this->get_mt_single_image_src( $pid, $size_name );
 
 					if ( ! empty( $mt_single_image[ 'og:image:url' ] ) ) {
 
@@ -884,21 +880,20 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 			}
 
-			return apply_filters( 'wpsso_og_featured', $mt_ret, $num, $size_name, $post_id, $check_dupes );
+			return apply_filters( 'wpsso_og_featured', $mt_ret, $num, $size_name, $post_id );
 		}
 
 		/**
 		 * $size_name must be a string.
 		 */
-		public function get_attached_images( $num = 0, $size_name = 'thumbnail', $post_id, $check_dupes = true ) {
+		public function get_attached_images( $num = 0, $size_name = 'thumbnail', $post_id ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_args( array(
-					'num'         => $num,
-					'size_name'   => $size_name,
-					'post_id'     => $post_id,
-					'check_dupes' => $check_dupes,
+					'num'       => $num,
+					'size_name' => $size_name,
+					'post_id'   => $post_id,
 				) );
 			}
 
@@ -946,7 +941,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					/**
 					 * get_mt_single_image_src() returns an og:image:url value, not an og:image:secure_url.
 					 */
-					$mt_single_image = $this->get_mt_single_image_src( $pid, $size_name, $check_dupes );
+					$mt_single_image = $this->get_mt_single_image_src( $pid, $size_name );
 
 					if ( ! empty( $mt_single_image[ 'og:image:url' ] ) ) {
 
@@ -958,13 +953,13 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 			}
 
-			return apply_filters( 'wpsso_attached_images', $mt_ret, $num, $size_name, $post_id, $check_dupes );
+			return apply_filters( 'wpsso_attached_images', $mt_ret, $num, $size_name, $post_id );
 		}
 
 		/**
 		 * $size_name must be a string.
 		 */
-		public function get_content_images( $num = 0, $size_name = 'thumbnail', $mod = true, $check_dupes = true, $content = '' ) {
+		public function get_content_images( $num = 0, $size_name = 'thumbnail', $mod = true, $content = '' ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1276,7 +1271,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 						$mt_single_image[ 'og:image:url' ] = apply_filters( 'wpsso_rewrite_image_url', $mt_single_image[ 'og:image:url' ] );
 
-						if ( ! $check_dupes || $this->p->util->is_uniq_url( $mt_single_image[ 'og:image:url' ], $size_name, $mod ) ) {
+						if ( $this->p->util->is_uniq_url( $mt_single_image[ 'og:image:url' ], $size_name, $mod ) ) {
 
 							if ( $this->p->util->push_max( $mt_images, $mt_single_image, $num ) ) {
 
@@ -1300,7 +1295,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		/**
 		 * $size_name must be a string.
 		 */
-		public function get_attachment_image( $num = 0, $size_name = 'thumbnail', $attachment_id, $check_dupes = true ) {
+		public function get_attachment_image( $num = 0, $size_name = 'thumbnail', $attachment_id ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1308,7 +1303,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					'num'           => $num,
 					'size_name'     => $size_name,
 					'attachment_id' => $attachment_id,
-					'check_dupes'   => $check_dupes,
 				) );
 			}
 
@@ -1321,7 +1315,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					/**
 					 * get_mt_single_image_src() returns an og:image:url value, not an og:image:secure_url.
 					 */
-					$mt_single_image = $this->get_mt_single_image_src( $attachment_id, $size_name, $check_dupes );
+					$mt_single_image = $this->get_mt_single_image_src( $attachment_id, $size_name );
 
 					if ( ! empty( $mt_single_image[ 'og:image:url' ] ) ) {
 
@@ -1343,9 +1337,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		/**
 		 * Return only the image URL, which will be the first array element returned by get_attachment_image_src().
 		 */
-		public function get_attachment_image_url( $pid, $size_name = 'thumbnail', $check_dupes = true ) {
+		public function get_attachment_image_url( $pid, $size_name = 'thumbnail' ) {
 
-			$image_src = $this->get_attachment_image_src( $pid, $size_name, $check_dupes );
+			$image_src = $this->get_attachment_image_src( $pid, $size_name );
 
 			foreach ( $image_src as $num => $value ) {
 
@@ -1358,15 +1352,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		/**
 		 * Note that that every return in this method must call self::reset_image_src_args().
 		 */
-		public function get_attachment_image_src( $pid, $size_name = 'thumbnail', $check_dupes = true ) {
+		public function get_attachment_image_src( $pid, $size_name = 'thumbnail' ) {
 
 			/**
 			 * Save arguments for the 'image_make_intermediate_size' and 'image_resize_dimensions' filters.
 			 */
 			self::set_image_src_args( $args = array(
-				'pid'         => $pid,
-				'size_name'   => $size_name,
-				'check_dupes' => $check_dupes,
+				'pid'       => $pid,
+				'size_name' => $size_name,
 			) );
 
 			if ( $this->p->debug->enabled ) {
@@ -1395,7 +1388,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				if ( ! empty( $this->p->m[ 'media' ][ 'ngg' ] ) ) {
 
-					return self::reset_image_src_args( $this->p->m[ 'media' ][ 'ngg' ]->get_image_src( $pid, $size_name, $check_dupes ) );
+					return self::reset_image_src_args( $this->p->m[ 'media' ][ 'ngg' ]->get_image_src( $pid, $size_name ) );
 
 				} else {
 
@@ -1739,15 +1732,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 
 				return self::reset_image_src_args();
-
-			} elseif ( $check_dupes && $this->p->util->is_dupe_url( $img_url, $size_name ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'exiting early: duplicate ' . $size_name . ' url: ' . $img_url );
-				}
-
-				return self::reset_image_src_args();
 			}
 
 			/**
@@ -1824,7 +1808,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						 */
 						if ( null === $mt_images ) {
 
-							$mt_images = $this->get_size_name_images( $num = 1, $size_name, $mod, $check_dupes = false, $md_pre );
+							$mt_images = $this->get_size_name_images( $num = 1, $size_name, $mod, $md_pre );
 						}
 
 						break;
@@ -1836,7 +1820,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						 */
 						if ( null === $mt_videos ) {
 
-							$mt_videos = $this->get_all_videos( $num = 1, $mod, $check_dupes = true, $md_pre );
+							$mt_videos = $this->get_all_videos( $num = 1, $mod, $md_pre );
 						}
 
 						break;
@@ -2022,15 +2006,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		/**
 		 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
 		 */
-		public function get_mt_pid_images( $pid, $size_names = 'thumbnail', $check_dupes = true, $mt_pre = 'og' ) {
+		public function get_mt_pid_images( $pid, $size_names = 'thumbnail', $mt_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_args( array(
-					'pid'         => $pid,
-					'size_names'  => $size_names,
-					'check_dupes' => $check_dupes,
-					'mt_pre'      => $mt_pre,
+					'pid'        => $pid,
+					'size_names' => $size_names,
+					'mt_pre'     => $mt_pre,
 				) );
 			}
 
@@ -2043,7 +2026,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				/**
 				 * get_mt_single_image_src() returns an og:image:url value, not an og:image:secure_url.
 				 */
-				$mt_single_image = $this->get_mt_single_image_src( $pid, $size_name, $check_dupes, $mt_pre );
+				$mt_single_image = $this->get_mt_single_image_src( $pid, $size_name, $mt_pre );
 
 				if ( ! empty( $mt_single_image[ $mt_pre . ':image:url' ] ) ) {
 
@@ -2059,11 +2042,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 *
 		 * $size_name must be a string.
 		 */
-		public function get_mt_single_image_src( $pid, $size_name = 'thumbnail', $check_dupes = true, $mt_pre = 'og' ) {
+		public function get_mt_single_image_src( $pid, $size_name = 'thumbnail', $mt_pre = 'og' ) {
 
 			$mt_single_image = SucomUtil::get_mt_image_seed( $mt_pre );
 
-			$this->add_mt_single_image_src( $mt_single_image, $pid, $size_name, $check_dupes, $mt_pre );
+			$this->add_mt_single_image_src( $mt_single_image, $pid, $size_name, $mt_pre );
 
 			return $mt_single_image;
 		}
@@ -2071,7 +2054,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		/**
 		 * $size_name must be a string.
 		 */
-		public function add_mt_single_image_src( array &$mt_single_image, $pid, $size_name = 'thumbnail', $check_dupes = true, $mt_pre = 'og' ) {
+		public function add_mt_single_image_src( array &$mt_single_image, $pid, $size_name = 'thumbnail', $mt_pre = 'og' ) {
 
 			list(
 				$mt_single_image[ $mt_pre . ':image:url' ],
@@ -2081,7 +2064,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$mt_single_image[ $mt_pre . ':image:id' ],
 				$mt_single_image[ $mt_pre . ':image:alt' ],
 				$mt_single_image[ $mt_pre . ':image:size_name' ],
-			) = $this->get_attachment_image_src( $pid, $size_name, $check_dupes );
+			) = $this->get_attachment_image_src( $pid, $size_name );
 		}
 
 		/*
@@ -2113,7 +2096,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				$pid = 'ngg' === $img_opts[ 'id_lib' ] ? 'ngg-' . $img_opts[ 'id' ] : $img_opts[ 'id' ];
 
-				$mt_ret = $this->get_mt_pid_images( $pid, $size_names, $check_dupes = false, $mt_pre );
+				$mt_ret = $this->get_mt_pid_images( $pid, $size_names, $mt_pre );
 
 			} elseif ( ! empty( $img_opts[ 'url' ] ) ) {
 
@@ -2144,15 +2127,14 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		/**
 		 * Returns an array of single video associative arrays.
 		 */
-		public function get_content_videos( $num = 0, $mod = true, $check_dupes = true, $content = '' ) {
+		public function get_content_videos( $num = 0, $mod = true, $content = '' ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_args( array(
-					'num'         => $num,
-					'mod'         => $mod,
-					'check_dupes' => $check_dupes,
-					'content'     => strlen( $content ) . ' chars',
+					'num'     => $num,
+					'mod'     => $mod,
+					'content' => strlen( $content ) . ' chars',
 				) );
 			}
 
@@ -2262,7 +2244,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 					if ( ! empty( $media[ 3 ] ) ) {
 
-						if ( ! $check_dupes || $this->p->util->is_uniq_url( $media[ 3 ], $uniq_context = 'video', $mod ) ) {
+						if ( $this->p->util->is_uniq_url( $media[ 3 ], $uniq_context = 'video', $mod ) ) {
 
 							$args = array(
 								'url'    => $media[ 3 ],
@@ -2273,7 +2255,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 							/**
 							 * Returns a single video associative array.
 							 */
-							$mt_single_video = $this->get_video_details( $args, $mod, $check_dupes );
+							$mt_single_video = $this->get_video_details( $args, $mod );
 
 							if ( ! empty( $mt_single_video ) ) {
 
@@ -2326,12 +2308,12 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 							if ( ! empty( $args[ 'url' ] ) ) {
 
-								if ( ! $check_dupes || $this->p->util->is_uniq_url( $args[ 'url' ], $uniq_context = 'video', $mod ) ) {
+								if ( $this->p->util->is_uniq_url( $args[ 'url' ], $uniq_context = 'video', $mod ) ) {
 
 									/**
 									 * Returns a single video associative array.
 									 */
-									$mt_single_video = $this->get_video_details( $args, $mod, $check_dupes );
+									$mt_single_video = $this->get_video_details( $args, $mod );
 
 									if ( ! empty( $mt_single_video ) ) {
 
@@ -2373,7 +2355,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 *
 		 * $fallback = true when called from WpssoAbstractWpMeta->get_og_videos().
 		 */
-		public function get_video_details( array $args, array $mod, $check_dupes = true, $fallback = false ) {
+		public function get_video_details( array $args, array $mod, $fallback = false ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -2588,7 +2570,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				/**
 				 * Remove all meta tags if there's no media URL or media is a duplicate.
 				 */
-				if ( ! $have_media[ $media_pre ] || ( $check_dupes && ! $this->p->util->is_uniq_url( $media_url, $uniq_context = 'video_details', $mod ) ) ) {
+				if ( ! $have_media[ $media_pre ] || ! $this->p->util->is_uniq_url( $media_url, $uniq_context = 'video_details', $mod ) ) {
 
 					if ( $this->p->debug->enabled ) {
 

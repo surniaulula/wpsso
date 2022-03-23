@@ -1220,7 +1220,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				 *		$mt_pre . ':image:size_name'  => '',	// Non-standard / internal meta tag.
 				 * 	);
 				 */
-				$mt_single_image = $this->p->media->get_mt_single_image_src( $pid, $size_name, $check_dupes = false, $mt_pre );
+				$mt_single_image = $this->p->media->get_mt_single_image_src( $pid, $size_name, $mt_pre );
 
 				$media_html .= '<!-- getting ' . $size_name . ' size for image ID ' . $pid . ' = ';
 
@@ -2170,17 +2170,16 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 *
 		 * $md_pre can be a text string or array of prefixes.
 		 */
-		public function get_md_images( $num = 0, $size_names, array $mod, $check_dupes = true, $md_pre = 'og', $mt_pre = 'og' ) {
+		public function get_md_images( $num = 0, $size_names, array $mod, $md_pre = 'og', $mt_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_args( array( 
-					'num'         => $num,
-					'size_names'  => $size_names,
-					'mod'         => $mod,
-					'check_dupes' => $check_dupes,
-					'md_pre'      => $md_pre,
-					'mt_pre'      => $mt_pre,
+					'num'        => $num,
+					'size_names' => $size_names,
+					'mod'        => $mod,
+					'md_pre'     => $md_pre,
+					'mt_pre'     => $mt_pre,
 				), get_class( $this ) );
 			}
 
@@ -2223,7 +2222,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 						$this->p->debug->log( 'using custom ' . $opt_pre . ' image ID = "' . $pid . '"', get_class( $this ) );
 					}
 
-					$mt_images = $this->p->media->get_mt_pid_images( $pid, $size_names, $check_dupes, $mt_pre );
+					$mt_images = $this->p->media->get_mt_pid_images( $pid, $size_names, $mt_pre );
 				}
 
 				if ( empty( $mt_images ) && $url ) {
@@ -2279,7 +2278,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 						$this->p->debug->log( 'adding image pid: ' . $pid );
 					}
 
-					$mt_pid_images = $this->p->media->get_mt_pid_images( $pid, $size_names, $check_dupes, $mt_pre );
+					$mt_pid_images = $this->p->media->get_mt_pid_images( $pid, $size_names, $mt_pre );
 
 					if ( $this->p->util->merge_max( $mt_images, $mt_pid_images, $num ) ) {
 
@@ -2300,7 +2299,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			foreach ( array_unique( $image_urls ) as $url ) {
 
-				if ( $check_dupes && $this->p->util->is_dupe_url( $url, 'image_urls', $mod ) ) {
+				if ( $this->p->util->is_dupe_url( $url, 'image_urls', $mod ) ) {
 
 					continue;
 				}
@@ -2335,7 +2334,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 *
 		 * $md_pre can be a text string or array of prefixes.
 		 */
-		public function get_og_images( $num = 0, $size_names, $obj_id, $check_dupes = true, $md_pre = 'og', $mt_pre = 'og' ) {
+		public function get_og_images( $num = 0, $size_names, $obj_id, $md_pre = 'og', $mt_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -2344,7 +2343,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			$mod = $this->get_mod( $obj_id );
 
-			return $this->get_md_images( $num, $size_names, $mod, $check_dupes, $md_pre, $mt_pre );
+			return $this->get_md_images( $num, $size_names, $mod, $md_pre, $mt_pre );
 		}
 
 		/**
@@ -2352,16 +2351,15 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 *
 		 * $md_pre can be a text string or array of prefixes.
 		 */
-		public function get_og_videos( $num = 0, $obj_id, $check_dupes = false, $md_pre = 'og', $mt_pre = 'og' ) {
+		public function get_og_videos( $num = 0, $obj_id, $md_pre = 'og', $mt_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->log_args( array( 
-					'num'         => $num,
-					'obj_id'      => $obj_id,
-					'check_dupes' => $check_dupes,
-					'md_pre'      => $md_pre,
-					'mt_pre'      => $mt_pre,
+					'num'    => $num,
+					'obj_id' => $obj_id,
+					'md_pre' => $md_pre,
+					'mt_pre' => $mt_pre,
 				), get_class( $this ) );
 			}
 
@@ -2404,12 +2402,12 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					/**
 					 * Returns an array of single video associative arrays.
 					 */
-					$mt_videos = $this->p->media->get_content_videos( $num, $mod, $check_dupes, $embed_html );
+					$mt_videos = $this->p->media->get_content_videos( $num, $mod, $embed_html );
 				}
 
 				if ( empty( $mt_videos ) && $embed_url ) {
 
-					if ( ! $check_dupes || $this->p->util->is_uniq_url( $embed_url, $uniq_context = 'video', $mod ) ) {
+					if ( $this->p->util->is_uniq_url( $embed_url, $uniq_context = 'video', $mod ) ) {
 
 						if ( $this->p->debug->enabled ) {
 
@@ -2429,7 +2427,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 						/**
 						 * Returns a single video associative array.
 						 */
-						$mt_single_video = $this->p->media->get_video_details( $args, $mod, $check_dupes, $fallback = true );
+						$mt_single_video = $this->p->media->get_video_details( $args, $mod, $fallback = true );
 
 						if ( ! empty( $mt_single_video ) ) {
 

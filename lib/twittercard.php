@@ -480,7 +480,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				$this->p->debug->log( $card_type . ' card: checking for post image (meta, featured, attached)' );
 			}
 
-			$mt_images = $this->p->media->get_post_images( 1, $size_name, $mod[ 'id' ], $check_dupes = false, $md_pre );
+			$mt_images = $this->p->media->get_post_images( 1, $size_name, $mod[ 'id' ], $md_pre );
 
 			if ( count( $mt_images ) > 0 ) {
 
@@ -526,7 +526,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 						$ngg_obj =& $this->p->m[ 'media' ][ 'ngg' ];
 
-						$mt_images = $ngg_obj->get_singlepic_og_images( 1, $size_name, $mod[ 'id' ], $check_dupes = false );
+						$mt_images = $ngg_obj->get_singlepic_og_images( 1, $size_name, $mod[ 'id' ] );
 
 						if ( ! empty( $mt_images ) ) {
 
@@ -593,7 +593,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				$this->p->debug->log( $card_type . ' card: checking other images' );
 			}
 
-			$mt_images = $this->p->media->get_all_images( $num = 1, $size_name, $mod, $check_dupes = true, $md_pre );
+			$mt_images = $this->p->media->get_all_images( $num = 1, $size_name, $mod, $md_pre );
 
 			if ( count( $mt_images ) > 0 ) {
 

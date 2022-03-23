@@ -2411,7 +2411,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 						$resized_pids[ $pid ] = true;
 
-						$mt_resized = $wpsso->media->get_mt_pid_images( $pid, $size_names = 'schema', $check_dupes = false, $mt_pre = 'og' );
+						$mt_resized = $wpsso->media->get_mt_pid_images( $pid, $size_names = 'schema', $mt_pre = 'og' );
 
 						/**
 						 * Recurse this method, but make sure $resize is false so we don't re-execute this
@@ -2546,7 +2546,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$max_nums = $wpsso->util->get_max_nums( $mod, 'og' );
 
-			$mt_images = $wpsso->media->get_all_images( $max_nums[ 'og_img_max' ], $size_names, $mod, $check_dupes = true, $md_pre = array( 'schema', 'og' ) );
+			$mt_images = $wpsso->media->get_all_images( $max_nums[ 'og_img_max' ], $size_names, $mod, $md_pre = array( 'schema', 'og' ) );
 
 			if ( ! empty( $mt_images ) ) {
 

@@ -1383,7 +1383,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 						'person_desc'       => $user_desc,
 						'person_job_title'  => $user_mod[ 'obj' ]->get_author_meta( $person_id, 'job_title' ),
 						'person_images'     => $wpsso->media->get_all_images( $num = 1, $size_names = 'schema', $user_mod,
-							$check_dupes = true, $md_pre = array( 'schema', 'og' ) ),
+							$md_pre = array( 'schema', 'og' ) ),
 						'person_sameas'     => $user_sameas,
 					);
 

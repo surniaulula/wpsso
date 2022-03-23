@@ -185,7 +185,7 @@ if ( ! class_exists( 'WpssoPinterest' ) ) {
 
 			$size_name = 'wpsso-pinterest';
 
-			$mt_images = $this->p->media->get_all_images( $num = 1, $size_name, $mod, $check_dupes = true, $md_pre = array( 'pin', 'schema', 'og' ) );
+			$mt_images = $this->p->media->get_all_images( $num = 1, $size_name, $mod, $md_pre = array( 'pin', 'schema', 'og' ) );
 
 			$image_url = SucomUtil::get_first_mt_media_url( $mt_images );
 

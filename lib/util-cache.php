@@ -693,7 +693,7 @@ if ( ! class_exists( 'WpssoUtilCache' ) ) {
 
 				foreach ( $size_names as $size_name ) {
 
-					$mt_ret = $this->p->media->get_featured( $num = 1, $size_name, $post_id, $check_dupes = false );
+					$mt_ret = $this->p->media->get_featured( $num = 1, $size_name, $post_id );
 				}
 			}
 
