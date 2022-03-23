@@ -746,9 +746,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 		public function show_metaboxes( $term_obj, $tax_slug ) {
 
-			$term_id = empty( $term_obj->term_id ) ? 0 : $term_obj->term_id;
-			$tax_obj = get_taxonomy( $tax_slug );
-
+			$term_id    = empty( $term_obj->term_id ) ? 0 : $term_obj->term_id;
+			$tax_obj    = get_taxonomy( $tax_slug );
 			$capability = $tax_obj->cap->edit_terms;
 
 			if ( empty( $this->p->options[ 'plugin_add_to_tax_' . $tax_slug ] ) ) {
@@ -897,10 +896,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				return false;
 			}
 
-			$term_obj = get_term_by( 'term_taxonomy_id', $term_tax_id, $tax_slug = '' );
-
-			$tax_obj  = get_taxonomy( $term_obj->taxonomy );
-
+			$term_obj   = get_term_by( 'term_taxonomy_id', $term_tax_id, $tax_slug = '' );
+			$tax_obj    = get_taxonomy( $term_obj->taxonomy );
 			$capability = $tax_obj->cap->edit_terms;
 
 			if ( ! current_user_can( $capability, $term_id ) ) {

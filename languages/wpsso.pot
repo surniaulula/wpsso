@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 11.7.2\n"
+"Project-Id-Version: WPSSO Core 11.7.3-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2967,7 +2967,7 @@ msgid "Options to Show by Default"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:64 lib/messages-tooltip-plugin.php:431
-#: lib/page.php:108 lib/pro/admin/advanced.php:433
+#: lib/page.php:135 lib/pro/admin/advanced.php:433
 #: lib/std/admin/advanced.php:430
 msgctxt "toolbar menu title"
 msgid "Validators"
@@ -10302,15 +10302,15 @@ msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr ""
 
-#: lib/page.php:925 lib/util-inline.php:303
+#: lib/page.php:949 lib/util-inline.php:303
 msgid "Page %1$d of %2$d"
 msgstr ""
 
-#: lib/page.php:929
+#: lib/page.php:953
 msgid "Page %1$d"
 msgstr ""
 
-#: lib/page.php:2061
+#: lib/page.php:2085
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] ""
@@ -11222,7 +11222,7 @@ msgid ""
 "term ID %3$d in taxonomy %4$s (%5$s)."
 msgstr ""
 
-#: lib/term.php:918
+#: lib/term.php:915
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 

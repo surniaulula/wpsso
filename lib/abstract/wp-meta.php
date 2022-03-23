@@ -2476,7 +2476,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			$comment_mod = $this->p->comment->get_mod( $comment_obj->comment_ID );
 
-			$mt_comment = $this->p->og->get_array( $comment_mod, $size_names = 'schema' );
+			$mt_comment = $this->p->og->get_array( $comment_mod, $size_names = 'schema', $md_pre = array( 'schema', 'og' ) );
 
 			$mt_ret[ 'review:id' ]           = $comment_mod[ 'id' ];
 			$mt_ret[ 'review:url' ]          = isset( $mt_comment[ 'og:url' ] ) ? $mt_comment[ 'og:url' ] : '';

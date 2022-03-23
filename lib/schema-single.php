@@ -200,7 +200,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$wpsso->debug->log( 'adding image and video properties for comment' );
 			}
 
-			$mt_comment = $wpsso->og->get_array( $comment_mod, $size_names = 'schema' );
+			$mt_comment = $wpsso->og->get_array( $comment_mod, $size_names = 'schema', $md_pre = array( 'schema', 'og') );
 
 			WpssoSchema::add_media_data( $json_ret, $comment_mod, $mt_comment, $size_names = 'schema', $add_video = true );
 

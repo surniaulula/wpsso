@@ -499,7 +499,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->log( 'getting open graph meta tag array' );
 			}
 
-			$mt_og = $this->p->og->get_array( $mod, $size_names = 'schema' );
+			$mt_og = $this->p->og->get_array( $mod, $size_names = 'schema', $md_pre = array( 'schema', 'og' ) );
 
 			if ( $this->p->debug->enabled ) {
 

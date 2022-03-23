@@ -41,7 +41,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			$this->charset = get_bloginfo( $show = 'charset', $filter = 'raw' );
 
 			$add_toolbar_validate = empty( $this->p->options[ 'plugin_add_toolbar_validate' ] ) ? false : true;
-			$add_toolbar_validate = (bool) apply_filters( 'wpsso_add_toolbar_validate', $add_toolbar_validate );
+			$add_toolbar_validate = apply_filters( 'wpsso_add_toolbar_validate', $add_toolbar_validate );
 
 			if ( $add_toolbar_validate ) {
 
@@ -92,8 +92,35 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			$use_post = apply_filters( 'wpsso_use_post', $use_post );
+			$mod      = $this->p->page->get_mod( $use_post );
 
-			$mod = $this->p->page->get_mod( $use_post );	// Get post/term/user ID, module name, and module object reference.
+			if ( $mod[ 'is_post' ] ) {
+
+				$capability = 'page' === $mod[ 'post_type' ] ? 'edit_page' : 'edit_post';
+
+			} elseif ( $mod[ 'is_term' ] ) {
+			
+				$tax_obj    = get_taxonomy( $mod[ 'tax_slug' ] );
+				$capability = $tax_obj->cap->edit_terms;
+			
+			} elseif ( $mod[ 'is_user' ] ) {
+
+				$capability = 'edit_user';
+
+			} else {	// Validators are only provided for known modules (post, term, and user).
+
+				return false;	// Stop here.
+			}
+
+			if ( ! current_user_can( $capability, $mod[ 'id' ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'exiting early: cannot ' . $capability . ' for ' . $mod[ 'name' ] . ' id ' . $post_id );
+				}
+
+				return false;	// Stop here.
+			}
 
 			/**
 			 * We do not want to validate settings pages in the back-end, so validators are only provided for known
@@ -233,8 +260,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			$use_post = apply_filters( 'wpsso_use_post', false );
-
-			$mod = $this->p->page->get_mod( $use_post );
+			$mod      = $this->p->page->get_mod( $use_post );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -312,10 +338,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 
 				$use_post = apply_filters( 'wpsso_use_post', false );
-
-				$mod = $this->p->page->get_mod( $use_post );
-
-				$title = $this->p->util->inline->replace_variables( $title, $mod );
+				$mod      = $this->p->page->get_mod( $use_post );
+				$title    = $this->p->util->inline->replace_variables( $title, $mod );
 			}
 
 			return $title;

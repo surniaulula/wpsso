@@ -326,7 +326,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		 *
 		 * $size_name is passed as-is to WpssoMedia->get_all_images().
 		 */
-		public function get_array( array $mod, $size_names = 'opengraph' ) {
+		public function get_array( array $mod, $size_names = 'opengraph', $md_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -484,7 +484,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				} elseif ( $max_nums[ 'og_vid_max' ] > 0 ) {
 
-					$mt_og[ 'og:video' ] = $this->p->media->get_all_videos( $max_nums[ 'og_vid_max' ], $mod );
+					$mt_og[ 'og:video' ] = $this->p->media->get_all_videos( $max_nums[ 'og_vid_max' ], $mod, $check_dupes = true, $md_pre );
 
 					if ( empty( $mt_og[ 'og:video' ] ) ) {
 
@@ -539,8 +539,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				if ( $max_nums[ 'og_img_max' ] > 0 ) {
 
-					$mt_og[ 'og:image' ] = $this->p->media->get_all_images( $max_nums[ 'og_img_max' ],
-						$size_names, $mod, $check_dupes = true, $md_pre = 'og' );
+					$mt_og[ 'og:image' ] = $this->p->media->get_all_images( $max_nums[ 'og_img_max' ], $size_names, $mod, $check_dupes = true, $md_pre );
 
 					if ( empty( $mt_og[ 'og:image' ] ) ) {
 
