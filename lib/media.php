@@ -2019,7 +2019,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( ! empty( $img_opts[ 'id' ] ) && ! empty( $size_names ) ) {
 
-				$mt_ret = $this->get_mt_pid_images( $pid, $size_names, $mt_pre );
+				$mt_ret = $this->get_mt_pid_images( $img_opts[ 'id' ], $size_names, $mt_pre );
 
 			} elseif ( ! empty( $img_opts[ 'url' ] ) ) {
 
