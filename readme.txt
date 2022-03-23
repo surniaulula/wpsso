@@ -264,6 +264,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Developer Notes**
 	* Added a `current_user_can()` check before showing the Validators menu.
 	* Added `$md_pre` to the `WpssoOpengraph->get_array()` method arguments.
+	* Removed the `$check_dupes` argument from all methods.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
