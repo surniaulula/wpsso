@@ -24,7 +24,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		private $default_content_img_preg = array(
 			'html_tag' => 'img',
 			'pid_attr' => 'data-[a-z]+-pid',
-			'ngg_src'  => '[^\'"]+\/cache\/([0-9]+)_(crop)?_[0-9]+x[0-9]+_[^\/\'"]+|[^\'"]+-nggid0[1-f]([0-9]+)-[^\'"]+',
 		);
 
 		private static $image_src_args  = null;
@@ -647,45 +646,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$mt_ret = array_merge( $mt_ret, $post_images );
 					}
 
-					/**
-					 * Check for NGG query variables and shortcodes.
-					 */
-					if ( ! empty( $this->p->m[ 'media' ][ 'ngg' ] ) && ! $this->p->util->is_maxed( $mt_ret, $num ) ) {
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( 'checking for NGG query variables and shortcodes' );
-						}
-
-						$ngg_obj =& $this->p->m[ 'media' ][ 'ngg' ];
-
-						$num_diff = SucomUtil::count_diff( $mt_ret, $num );
-
-						$query_images = $ngg_obj->get_query_og_images( $num_diff, $size_name, $mod[ 'id' ] );
-
-						if ( count( $query_images ) > 0 ) {
-
-							if ( $this->p->debug->enabled ) {
-
-								$this->p->debug->log( 'skipping NGG shortcode check: ' . count( $query_images ) . ' query image(s) returned' );
-							}
-
-							$mt_ret = array_merge( $mt_ret, $query_images );
-
-						} elseif ( ! $this->p->util->is_maxed( $mt_ret, $num ) ) {
-
-							$num_diff = SucomUtil::count_diff( $mt_ret, $num );
-
-							$shortcode_images = $ngg_obj->get_shortcode_og_images( $num_diff, $size_name, $mod[ 'id' ] );
-
-							if ( ! empty( $shortcode_images ) ) {
-
-								$mt_ret = array_merge( $mt_ret, $shortcode_images );
-							}
-						}
-
-					}
-
 				} else {
 
 					/**
@@ -1008,8 +968,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			$content_img_preg = $this->default_content_img_preg;
-
-			$mt_single_image = SucomUtil::get_mt_image_seed();
+			$mt_single_image  = SucomUtil::get_mt_image_seed();
 
 			/**
 			 * Allow the html_tag and pid_attr regex to be modified.
@@ -1125,22 +1084,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						 * data-share-src | data-lazy-src | data-src | src
 						 */
 						default:
-
-							/**
-							 * Prevent duplicates by silently ignoring ngg images (already processed by the ngg module).
-							 */
-							if ( ! empty( $this->p->avail[ 'media' ][ 'ngg' ] ) && 
-								! empty( $this->p->m[ 'media' ][ 'ngg' ] ) &&
-									( preg_match( '/ class=[\'"]ngg[_-]/', $tag_value ) ||
-										preg_match( '/^(' . $content_img_preg[ 'ngg_src' ] . ')$/', $attr_value ) ) ) {
-
-								if ( $this->p->debug->enabled ) {
-
-									$this->p->debug->log( 'silently ignoring ngg image for ' . $attr_name );
-								}
-
-								break;	// Stop here.
-							}
 
 							/**
 							 * Recognize gravatar images in the content.
@@ -1383,23 +1326,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$img_height    = WPSSO_UNDEF;
 			$use_full_size = false;
 
-			if ( $this->p->avail[ 'media' ][ 'ngg' ] && 0 === strpos( $pid, 'ngg-' ) ) {
-
-				if ( ! empty( $this->p->m[ 'media' ][ 'ngg' ] ) ) {
-
-					return self::reset_image_src_args( $this->p->m[ 'media' ][ 'ngg' ]->get_image_src( $pid, $size_name ) );
-
-				} else {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'ngg module is not available: image ID ' . $attr_value . ' ignored' );
-					}
-
-					return self::reset_image_src_args();
-				}
-
-			} elseif ( ! wp_attachment_is_image( $pid ) ) {
+			if ( ! wp_attachment_is_image( $pid ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -2078,8 +2005,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			foreach ( array( 'id', 'id_lib', 'url', 'url:width', 'url:height' ) as $key ) {
 
 				$key_suffix = null === $key_num ? $key : $key . '_' . $key_num;	// Use a numbered multi-option key.
-
-				$opt_key = $img_pre . '_' . $key_suffix;
+				$opt_key    = $img_pre . '_' . $key_suffix;
 
 				$img_opts[ $key ] = SucomUtil::get_key_value( $opt_key, $opts );
 			}
@@ -2092,8 +2018,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$mt_ret = array();
 
 			if ( ! empty( $img_opts[ 'id' ] ) && ! empty( $size_names ) ) {
-
-				$pid = 'ngg' === $img_opts[ 'id_lib' ] ? 'ngg-' . $img_opts[ 'id' ] : $img_opts[ 'id' ];
 
 				$mt_ret = $this->get_mt_pid_images( $pid, $size_names, $mt_pre );
 
@@ -3236,7 +3160,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		/**
 		 * $img_mixed can be an image ID or URL.
 		 *
-		 * $img_lib can be 'Media Library', 'NextGEN Gallery', 'Content', etc.
+		 * $img_lib can be 'Media Library', 'Content', etc.
 		 */
 		public function is_image_within_config_limits( $img_mixed, $size_name, $img_width, $img_height, $img_lib = null ) {
 
@@ -3324,7 +3248,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$size_label = $this->p->util->get_image_size_label( $size_name );	// Returns pre-translated labels.
 
 		 			/**
-					 * $img_lib can be 'Media Library', 'NextGEN Gallery', 'Content', etc.
+					 * $img_lib can be 'Media Library', 'Content', etc.
 					 */
 					$notice_msg = sprintf( __( '%1$s %2$s ignored - the resulting resized image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>.', 'wpsso' ), $img_lib, $img_label, $img_width . 'x' . $img_height, $max_ratio, $size_label ). ' ';
 
@@ -3359,7 +3283,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$size_label = $this->p->util->get_image_size_label( $size_name );	// Returns pre-translated labels.
 
 		 			/**
-					 * $img_lib can be 'Media Library', 'NextGEN Gallery', 'Content', etc.
+					 * $img_lib can be 'Media Library', 'Content', etc.
 					 */
 					$notice_msg = sprintf( __( '%1$s %2$s ignored - the resulting resized image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>.', 'wpsso' ), $img_lib, $img_label, $img_width . 'x' . $img_height, $min_width . 'x' . $min_height, $size_label ) . ' ';
 

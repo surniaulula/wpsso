@@ -2193,9 +2193,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			}
 
 			$size_names = $this->p->util->get_image_size_names( $size_names );	// Always returns an array.
-
-			$md_pre = is_array( $md_pre ) ? array_merge( $md_pre, array( 'og' ) ) : array( $md_pre, 'og' );
-
+			$md_pre     = is_array( $md_pre ) ? array_merge( $md_pre, array( 'og' ) ) : array( $md_pre, 'og' );
 			$mt_images  = array();
 
 			foreach( array_unique( $md_pre ) as $opt_pre ) {
@@ -2214,8 +2212,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$url = $this->get_options( $mod[ 'id' ], $opt_pre . '_img_url' );
 
 				if ( $pid > 0 ) {
-
-					$pid = 'ngg' === $lib ? 'ngg-' . $pid : $pid;
 
 					if ( $this->p->debug->enabled ) {
 

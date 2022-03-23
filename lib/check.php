@@ -447,18 +447,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							switch ( $id ) {
 
 								/**
-								 * NextGEN Gallery and NextCellent Gallery.
-								 *
-								 * See https://wordpress.org/plugins/nextgen-gallery/.
-								 * See https://wordpress.org/plugins/nextcellent-gallery-nextgen-legacy/.
-								 */
-								case 'ngg':
-
-									$chk[ 'class' ] = 'nggdb';
-
-									break;
-
-								/**
 								 * Perfect Images + Retina (aka WP Retina 2x).
 								 *
 								 * See https://wordpress.org/plugins/wp-retina-2x/.
