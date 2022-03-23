@@ -1268,7 +1268,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					if ( ! empty( $mt_single_image[ 'og:image:url' ] ) ) {
 
 						$mt_single_image[ 'og:image:url' ] = $this->p->util->fix_relative_url( $mt_single_image[ 'og:image:url' ] );
-
 						$mt_single_image[ 'og:image:url' ] = apply_filters( 'wpsso_rewrite_image_url', $mt_single_image[ 'og:image:url' ] );
 
 						if ( $this->p->util->is_uniq_url( $mt_single_image[ 'og:image:url' ], $size_name, $mod ) ) {
@@ -2261,11 +2260,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 								if ( $this->p->util->push_max( $mt_videos, $mt_single_video, $num ) ) {
 
-									if ( $this->p->debug->enabled ) {
-
-										$this->p->debug->log( 'returning ' . count( $mt_videos ) . ' videos' );
-									}
-
 									return $mt_videos;
 								}
 							}
@@ -2318,11 +2312,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 									if ( ! empty( $mt_single_video ) ) {
 
 										if ( $this->p->util->push_max( $mt_videos, $mt_single_video, $num ) ) {
-
-											if ( $this->p->debug->enabled ) {
-
-												$this->p->debug->log( 'returning ' . count( $mt_videos ) . ' videos' );
-											}
 
 											return $mt_videos;
 										}
@@ -2570,7 +2559,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				/**
 				 * Remove all meta tags if there's no media URL or media is a duplicate.
 				 */
-				if ( ! $have_media[ $media_pre ] || ! $this->p->util->is_uniq_url( $media_url, $uniq_context = 'video_details', $mod ) ) {
+				if ( empty( $have_media[ $media_pre ] ) || $this->p->util->is_dupe_url( $media_url, $uniq_context = 'video_details', $mod ) ) {
 
 					if ( $this->p->debug->enabled ) {
 

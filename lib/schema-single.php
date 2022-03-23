@@ -1365,7 +1365,14 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 							$url = 'https://twitter.com/' . preg_replace( '/^@/', '', $url );
 						}
 
-						if ( false !== filter_var( $url, FILTER_VALIDATE_URL ) ) {
+						if ( false === filter_var( $url, FILTER_VALIDATE_URL ) ) {
+
+							if ( $wpsso->debug->enabled ) {
+
+								$wpsso->debug->log( 'skipping ' . $cm_id . ': url "' . $url . '" is invalid' );
+							}
+
+						} else {
 
 							$user_sameas[] = $url;
 						}

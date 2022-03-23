@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 11.7.3-dev.1\n"
+"Project-Id-Version: WPSSO Core 11.8.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -570,8 +570,8 @@ msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
 #: gettext/gettext-lib-com.php:40 gettext/gettext-lib-pro.php:421
-#: lib/com/form.php:886 lib/media.php:1455 lib/media.php:1606
-#: lib/media.php:3261 lib/pro/util/check-img-dims.php:104
+#: lib/com/form.php:886 lib/media.php:1454 lib/media.php:1605
+#: lib/media.php:3250 lib/pro/util/check-img-dims.php:104
 msgid "Media Library"
 msgstr ""
 
@@ -4700,7 +4700,7 @@ msgstr ""
 msgid "full size original"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:422 lib/media.php:3271
+#: gettext/gettext-lib-pro.php:422 lib/media.php:3260
 #: lib/pro/util/check-img-dims.php:107
 msgid "image ID %1$s (%2$s)"
 msgstr ""
@@ -6569,80 +6569,80 @@ msgstr ""
 msgid "Content"
 msgstr ""
 
-#: lib/media.php:1459
+#: lib/media.php:1458
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "wp_get_attachment_metadata/"
 msgstr ""
 
-#: lib/media.php:1460 lib/media.php:1657
+#: lib/media.php:1459 lib/media.php:1656
 msgid ""
 "You may consider regenerating the sizes of all WordPress Media Library "
 "images using one of <a href=\"%s\">several available plugins from WordPress."
 "org</a>."
 msgstr ""
 
-#: lib/media.php:1476
+#: lib/media.php:1475
 msgid ""
 "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s "
 "function</a> returned an error for <a href=\"%4$s\">image ID %5$s</a>: %6$s."
 msgstr ""
 
-#: lib/media.php:1497
+#: lib/media.php:1496
 msgid ""
 "Possible %1$s corruption detected - the full size image dimensions for <a "
 "href=\"%2$s\">image ID %3$s</a> are missing from the image metadata returned "
 "by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:1516
+#: lib/media.php:1515
 msgid ""
 "Possible %1$s corruption detected - the full size image file path for <a "
 "href=\"%2$s\">image ID %3$s</a> is missing from the image metadata returned "
 "by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr ""
 
-#: lib/media.php:1608
+#: lib/media.php:1607
 msgid ""
 "https://developer.wordpress.org/reference/functions/"
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1626 lib/post.php:667 lib/register.php:348 lib/term.php:529
+#: lib/media.php:1625 lib/post.php:667 lib/register.php:348 lib/term.php:529
 #: lib/user.php:505 lib/util.php:746 lib/util.php:852 lib/util.php:884
 #: lib/util.php:2943
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1627 lib/post.php:668 lib/term.php:530 lib/user.php:506
+#: lib/media.php:1626 lib/post.php:668 lib/term.php:530 lib/user.php:506
 #: lib/util.php:747 lib/util.php:2944
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
 
-#: lib/media.php:1628
+#: lib/media.php:1627
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to make image size "
 "\"%3$s\" from %4$s (%5$s)."
 msgstr ""
 
-#: lib/media.php:1655
+#: lib/media.php:1654
 msgid ""
 "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s "
 "function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr ""
 
-#: lib/media.php:3287
+#: lib/media.php:3276
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:3340
+#: lib/media.php:3329
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:3375
+#: lib/media.php:3364
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
@@ -10197,107 +10197,107 @@ msgid ""
 "its default value."
 msgstr ""
 
-#: lib/options.php:1754
+#: lib/options.php:1755
 msgctxt "option value"
 msgid "%%sitename%%"
 msgstr ""
 
-#: lib/options.php:1758
+#: lib/options.php:1759
 msgctxt "option value"
 msgid "%%sitedesc%%"
 msgstr ""
 
-#: lib/options.php:1762
+#: lib/options.php:1763
 msgctxt "option value"
 msgid "Image:"
 msgstr ""
 
-#: lib/options.php:1766
+#: lib/options.php:1767
 msgctxt "option value"
 msgid "Caption:"
 msgstr ""
 
-#: lib/options.php:1770
+#: lib/options.php:1771
 msgctxt "option value"
 msgid "Comment by %%comment_author%% on %%comment_date%%"
 msgstr ""
 
-#: lib/options.php:1774
+#: lib/options.php:1775
 msgctxt "option value"
 msgid "Reply by %%comment_author%% on %%comment_date%%"
 msgstr ""
 
-#: lib/options.php:1778
+#: lib/options.php:1779
 msgctxt "option value"
 msgid "Review by %%comment_author%% on %%comment_date%%"
 msgstr ""
 
-#: lib/options.php:1782
+#: lib/options.php:1783
 msgctxt "option value"
 msgid "%%var_title%% %%sep%% %%var_sku%%"
 msgstr ""
 
-#: lib/options.php:1786
+#: lib/options.php:1787
 msgctxt "option value"
 msgid "Page not found"
 msgstr ""
 
-#: lib/options.php:1790
+#: lib/options.php:1791
 msgctxt "option value"
 msgid "Page \"%%pagename%%\" not found."
 msgstr ""
 
-#: lib/options.php:1794
+#: lib/options.php:1795
 msgctxt "option value"
 msgid "No Title"
 msgstr ""
 
-#: lib/options.php:1798
+#: lib/options.php:1799
 msgctxt "option value"
 msgid "No description."
 msgstr ""
 
-#: lib/options.php:1802
+#: lib/options.php:1803
 msgctxt "option value"
 msgid "%%author%%, Author at %%sitename%%"
 msgstr ""
 
-#: lib/options.php:1806
+#: lib/options.php:1807
 msgctxt "option value"
 msgid "Search Results %%sep%% %%query_search%%"
 msgstr ""
 
-#: lib/options.php:1810
+#: lib/options.php:1811
 msgctxt "option value"
 msgid "Search results for &#8220;%%query_search%%&#8221;."
 msgstr ""
 
-#: lib/options.php:1814
+#: lib/options.php:1815
 msgctxt "option value"
 msgid "%%query_year%%"
 msgstr ""
 
-#: lib/options.php:1818
+#: lib/options.php:1819
 msgctxt "option value"
 msgid "Yearly archive for %%query_year%%."
 msgstr ""
 
-#: lib/options.php:1822
+#: lib/options.php:1823
 msgctxt "option value"
 msgid "%%query_month%% %%query_year%%"
 msgstr ""
 
-#: lib/options.php:1826
+#: lib/options.php:1827
 msgctxt "option value"
 msgid "Monthly archive for %%query_month%%, %%query_year%%."
 msgstr ""
 
-#: lib/options.php:1830
+#: lib/options.php:1831
 msgctxt "option value"
 msgid "%%query_month%% %%query_day%%, %%query_year%%"
 msgstr ""
 
-#: lib/options.php:1834
+#: lib/options.php:1835
 msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr ""
@@ -10631,7 +10631,7 @@ msgstr ""
 msgid "adding schema person"
 msgstr ""
 
-#: lib/schema-single.php:1565
+#: lib/schema-single.php:1572
 msgid "adding schema place"
 msgstr ""
 
@@ -10639,22 +10639,22 @@ msgstr ""
 msgid "adding schema"
 msgstr ""
 
-#: lib/schema.php:1746
+#: lib/schema.php:1753
 msgid "adding schema %s #%d image"
 msgstr ""
 
-#: lib/schema.php:1857
+#: lib/schema.php:1864
 msgid ""
 "Please note that although the Schema standard allows the subject of a review "
 "to be any Schema type, <a href=\"%1$s\">Google does not allow reviews for "
 "the Schema %2$s type</a>."
 msgstr ""
 
-#: lib/schema.php:1884
+#: lib/schema.php:1891
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:3528
+#: lib/schema.php:3535
 msgid "checking schema properties"
 msgstr ""
 

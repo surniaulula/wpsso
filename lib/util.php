@@ -675,11 +675,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				return $local_cache[ $image_url ] = $def_image_info;	// Stop here.
 
-			} elseif ( filter_var( $image_url, FILTER_VALIDATE_URL ) === false ) {
+			} elseif ( false === filter_var( $image_url, FILTER_VALIDATE_URL ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: invalid image URL = '.$image_url );
+					$this->p->debug->log( 'exiting early: invalid image url "' . $image_url . '"' );
 				}
 
 				return $local_cache[ $image_url ] = $def_image_info;	// Stop here.
