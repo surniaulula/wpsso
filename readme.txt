@@ -109,8 +109,6 @@ WPSSO provides comprehensive Schema markup for posts, pages, custom post types, 
 * Easy Digital Downloads
 * Elementor Website Builder
 * Gravity Forms + GravityView
-* NextCellent Gallery - NextGEN Legacy
-* NextGEN Gallery
 * Perfect WooCommerce Brands
 * Polylang
 * Product GTIN (EAN, UPC, ISBN) for WooCommerce
@@ -250,16 +248,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 12.0.0-dev.2 (2022/03/23)**
+**Version 12.0.0-dev.3 (2022/03/23)**
 
-Removed support for bbPress, BuddyPress, and BuddyBlog.
+Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, and BuddyBlog.
 
 * **New Features**
 	* None.
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* Fixed showing the Validators menu to users without editing capability.
+	* Fixed the appearance of the Validators menu to users without editing capability.
 * **Developer Notes**
 	* Added a `current_user_can()` check before showing the Validators menu.
 	* Added `$md_pre` to the `WpssoOpengraph->get_array()` method arguments.
@@ -508,9 +506,9 @@ Removed support for bbPress, BuddyPress, and BuddyBlog.
 
 == Upgrade Notice ==
 
-= 12.0.0-dev.2 =
+= 12.0.0-dev.3 =
 
-(2022/03/23) Removed support for bbPress, BuddyPress, and BuddyBlog. Fixed showing the Validators menu to users without editing capability.
+(2022/03/23) Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, and BuddyBlog. Fixed the appearance of the Validators menu to users without editing capability.
 
 = 11.7.2 =
 
