@@ -105,8 +105,6 @@ WPSSO provides comprehensive Schema markup for posts, pages, custom post types, 
 **Reads data from active plugins, including:**
 
 * All in One SEO Pack
-* bbPress
-* BuddyPress
 * Co-Authors Plus
 * Easy Digital Downloads
 * Elementor Website Builder
@@ -174,7 +172,6 @@ WPSSO provides comprehensive Schema markup for posts, pages, custom post types, 
 * [Setup Guide](https://wpsso.com/docs/plugins/wpsso/installation/setup-guide/)
 * [Much Better Schema Markup for WooCommerce SEO](https://wpsso.com/docs/plugins/wpsso/installation/better-schema-for-woocommerce/)
 * [Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/)
-	* [BuddyPress Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/buddypress-integration/)
 	* [WooCommerce Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/)
 * [Troubleshooting Guide](https://wpsso.com/docs/plugins/wpsso/installation/troubleshooting-guide/)
 * [Developer Special: Buy one, Get one Free](https://wpsso.com/docs/plugins/wpsso/installation/developer-special-buy-one-get-one-free/)
@@ -254,6 +251,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 <h3>Changelog / Release Notes</h3>
 
 **Version 11.8.0-dev.2 (2022/03/23)**
+
+Removed support for bbPress, BuddyPress, and BuddyBlog.
 
 * **New Features**
 	* None.
@@ -511,7 +510,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 = 11.8.0-dev.2 =
 
-(2022/03/23) Fixed showing the Validators menu to users without editing capability. Removed `$check_dupes` from all methods arguments.
+(2022/03/23) Removed support for bbPress, BuddyPress, and BuddyBlog. Fixed showing the Validators menu to users without editing capability.
 
 = 11.7.2 =
 

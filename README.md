@@ -108,8 +108,6 @@
 
 <ul>
 <li>All in One SEO Pack</li>
-<li>bbPress</li>
-<li>BuddyPress</li>
 <li>Co-Authors Plus</li>
 <li>Easy Digital Downloads</li>
 <li>Elementor Website Builder</li>
@@ -187,7 +185,6 @@
 <li><a href="https://wpsso.com/docs/plugins/wpsso/installation/integration/">Integration Notes</a>
 
 <ul>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/integration/buddypress-integration/">BuddyPress Integration Notes</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/">WooCommerce Integration Notes</a></li>
 </ul></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/installation/troubleshooting-guide/">Troubleshooting Guide</a></li>
