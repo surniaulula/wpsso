@@ -253,18 +253,18 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.8.0-dev.3 (2022/03/23)**
+**Version 11.8.0-rc.1 (2022/03/24)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* Fixed showing the Validators menu to users without editing capability.
+	* Fixed the appearance of the Validators menu to users without editing capability.
 * **Developer Notes**
 	* Added a `current_user_can()` check before showing the Validators menu.
 	* Added `$md_pre` to the `WpssoOpengraph->get_array()` method arguments.
-	* Removed the `$check_dupes` argument from all methods.
+	* Removed `$check_dupes` from all methods arguments.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -509,9 +509,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 11.8.0-dev.3 =
+= 11.8.0-rc.1 =
 
-(2022/03/23) Fixed showing the Validators menu to users without editing capability.
+(2022/03/24) Fixed the appearance of the Validators menu to users without editing capability.
 
 = 11.7.2 =
 
