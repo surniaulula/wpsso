@@ -1,5 +1,5 @@
 === WordPress Social and Search Optimization - The Complete Structured Data Plugin for WordPress ===
-Plugin Name: WPSSO Core (Premium)
+Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
 Domain Path: /languages
