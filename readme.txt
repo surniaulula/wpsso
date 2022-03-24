@@ -253,7 +253,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 11.8.0-dev.1 (2022/03/23)**
+**Version 11.8.0-dev.3 (2022/03/23)**
 
 * **New Features**
 	* None.
@@ -509,7 +509,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 == Upgrade Notice ==
 
-= 11.8.0-dev.1 =
+= 11.8.0-dev.3 =
 
 (2022/03/23) Fixed showing the Validators menu to users without editing capability.
 
