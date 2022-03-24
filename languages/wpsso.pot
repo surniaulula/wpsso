@@ -555,7 +555,7 @@ msgstr ""
 #. translators: Please ignore - translation uses a different text domain.
 #: gettext/gettext-lib-com.php:40 gettext/gettext-lib-pro.php:417
 #: lib/com/form.php:886 lib/media.php:1381 lib/media.php:1532
-#: lib/media.php:3174 lib/pro/util/check-img-dims.php:104
+#: lib/media.php:3167 lib/pro/util/check-img-dims.php:104
 msgid "Media Library"
 msgstr ""
 
@@ -4653,7 +4653,7 @@ msgstr ""
 msgid "full size original"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:418 lib/media.php:3184
+#: gettext/gettext-lib-pro.php:418 lib/media.php:3177
 #: lib/pro/util/check-img-dims.php:107
 msgid "image ID %1$s (%2$s)"
 msgstr ""
@@ -6558,18 +6558,18 @@ msgid ""
 "function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr ""
 
-#: lib/media.php:3200
+#: lib/media.php:3193
 msgid "image URL %s"
 msgstr ""
 
-#: lib/media.php:3253
+#: lib/media.php:3246
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s has an "
 "<strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s "
 "standard</strong>."
 msgstr ""
 
-#: lib/media.php:3288
+#: lib/media.php:3281
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s is <strong>smaller "
 "than the minimum of %4$s allowed by the %5$s standard</strong>."
