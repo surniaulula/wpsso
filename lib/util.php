@@ -675,11 +675,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				return $local_cache[ $image_url ] = $def_image_info;	// Stop here.
 
-			} elseif ( false === filter_var( $image_url, FILTER_VALIDATE_URL ) ) {
+			} elseif ( filter_var( $image_url, FILTER_VALIDATE_URL ) === false ) {
 
 				if ( $this->p->debug->enabled ) {
 
-					$this->p->debug->log( 'exiting early: invalid image url "' . $image_url . '"' );
+					$this->p->debug->log( 'exiting early: invalid image URL = '.$image_url );
 				}
 
 				return $local_cache[ $image_url ] = $def_image_info;	// Stop here.
@@ -2832,7 +2832,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			/**
-			 * Hooked by some modules to perform actions before/after filtering the content.
+			 * Hooked by some modules, like bbPress and social sharing buttons, to perform actions before/after
+			 * filtering the content.
 			 */
 			do_action( 'wpsso_pre_apply_filters_text', $filter_name );
 
@@ -3028,7 +3029,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			/**
-			 * Hooked by some modules to perform actions before/after filtering the content.
+			 * Hooked by some modules, like bbPress and social sharing buttons, to perform actions before/after
+			 * filtering the content.
 			 */
 			do_action( 'wpsso_after_apply_filters_text', $filter_name );
 

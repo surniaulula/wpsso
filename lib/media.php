@@ -24,6 +24,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		private $default_content_img_preg = array(
 			'html_tag' => 'img',
 			'pid_attr' => 'data-[a-z]+-pid',
+			'ngg_src'  => '[^\'"]+\/cache\/([0-9]+)_(crop)?_[0-9]+x[0-9]+_[^\/\'"]+|[^\'"]+-nggid0[1-f]([0-9]+)-[^\'"]+',
 		);
 
 		private static $image_src_args  = null;
@@ -646,6 +647,45 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						$mt_ret = array_merge( $mt_ret, $post_images );
 					}
 
+					/**
+					 * Check for NGG query variables and shortcodes.
+					 */
+					if ( ! empty( $this->p->m[ 'media' ][ 'ngg' ] ) && ! $this->p->util->is_maxed( $mt_ret, $num ) ) {
+
+						if ( $this->p->debug->enabled ) {
+
+							$this->p->debug->log( 'checking for NGG query variables and shortcodes' );
+						}
+
+						$ngg_obj =& $this->p->m[ 'media' ][ 'ngg' ];
+
+						$num_diff = SucomUtil::count_diff( $mt_ret, $num );
+
+						$query_images = $ngg_obj->get_query_og_images( $num_diff, $size_name, $mod[ 'id' ] );
+
+						if ( count( $query_images ) > 0 ) {
+
+							if ( $this->p->debug->enabled ) {
+
+								$this->p->debug->log( 'skipping NGG shortcode check: ' . count( $query_images ) . ' query image(s) returned' );
+							}
+
+							$mt_ret = array_merge( $mt_ret, $query_images );
+
+						} elseif ( ! $this->p->util->is_maxed( $mt_ret, $num ) ) {
+
+							$num_diff = SucomUtil::count_diff( $mt_ret, $num );
+
+							$shortcode_images = $ngg_obj->get_shortcode_og_images( $num_diff, $size_name, $mod[ 'id' ] );
+
+							if ( ! empty( $shortcode_images ) ) {
+
+								$mt_ret = array_merge( $mt_ret, $shortcode_images );
+							}
+						}
+
+					}
+
 				} else {
 
 					/**
@@ -968,7 +1008,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			$content_img_preg = $this->default_content_img_preg;
-			$mt_single_image  = SucomUtil::get_mt_image_seed();
+
+			$mt_single_image = SucomUtil::get_mt_image_seed();
 
 			/**
 			 * Allow the html_tag and pid_attr regex to be modified.
@@ -1084,6 +1125,22 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 						 * data-share-src | data-lazy-src | data-src | src
 						 */
 						default:
+
+							/**
+							 * Prevent duplicates by silently ignoring ngg images (already processed by the ngg module).
+							 */
+							if ( ! empty( $this->p->avail[ 'media' ][ 'ngg' ] ) && 
+								! empty( $this->p->m[ 'media' ][ 'ngg' ] ) &&
+									( preg_match( '/ class=[\'"]ngg[_-]/', $tag_value ) ||
+										preg_match( '/^(' . $content_img_preg[ 'ngg_src' ] . ')$/', $attr_value ) ) ) {
+
+								if ( $this->p->debug->enabled ) {
+
+									$this->p->debug->log( 'silently ignoring ngg image for ' . $attr_name );
+								}
+
+								break;	// Stop here.
+							}
 
 							/**
 							 * Recognize gravatar images in the content.
@@ -1211,6 +1268,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					if ( ! empty( $mt_single_image[ 'og:image:url' ] ) ) {
 
 						$mt_single_image[ 'og:image:url' ] = $this->p->util->fix_relative_url( $mt_single_image[ 'og:image:url' ] );
+
 						$mt_single_image[ 'og:image:url' ] = apply_filters( 'wpsso_rewrite_image_url', $mt_single_image[ 'og:image:url' ] );
 
 						if ( $this->p->util->is_uniq_url( $mt_single_image[ 'og:image:url' ], $size_name, $mod ) ) {
@@ -1326,7 +1384,23 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			$img_height    = WPSSO_UNDEF;
 			$use_full_size = false;
 
-			if ( ! wp_attachment_is_image( $pid ) ) {
+			if ( $this->p->avail[ 'media' ][ 'ngg' ] && 0 === strpos( $pid, 'ngg-' ) ) {
+
+				if ( ! empty( $this->p->m[ 'media' ][ 'ngg' ] ) ) {
+
+					return self::reset_image_src_args( $this->p->m[ 'media' ][ 'ngg' ]->get_image_src( $pid, $size_name ) );
+
+				} else {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'ngg module is not available: image ID ' . $attr_value . ' ignored' );
+					}
+
+					return self::reset_image_src_args();
+				}
+
+			} elseif ( ! wp_attachment_is_image( $pid ) ) {
 
 				if ( $this->p->debug->enabled ) {
 
@@ -2020,7 +2094,9 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( ! empty( $img_opts[ 'id' ] ) && ! empty( $size_names ) ) {
 
-				$mt_ret = $this->get_mt_pid_images( $img_opts[ 'id' ], $size_names, $mt_pre );
+				$pid = 'ngg' === $img_opts[ 'id_lib' ] ? 'ngg-' . $img_opts[ 'id' ] : $img_opts[ 'id' ];
+
+				$mt_ret = $this->get_mt_pid_images( $pid, $size_names, $mt_pre );
 
 			} elseif ( ! empty( $img_opts[ 'url' ] ) ) {
 
@@ -2185,6 +2261,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 								if ( $this->p->util->push_max( $mt_videos, $mt_single_video, $num ) ) {
 
+									if ( $this->p->debug->enabled ) {
+
+										$this->p->debug->log( 'returning ' . count( $mt_videos ) . ' videos' );
+									}
+
 									return $mt_videos;
 								}
 							}
@@ -2237,6 +2318,11 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 									if ( ! empty( $mt_single_video ) ) {
 
 										if ( $this->p->util->push_max( $mt_videos, $mt_single_video, $num ) ) {
+
+											if ( $this->p->debug->enabled ) {
+
+												$this->p->debug->log( 'returning ' . count( $mt_videos ) . ' videos' );
+											}
 
 											return $mt_videos;
 										}
@@ -2484,7 +2570,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				/**
 				 * Remove all meta tags if there's no media URL or media is a duplicate.
 				 */
-				if ( empty( $have_media[ $media_pre ] ) || $this->p->util->is_dupe_url( $media_url, $uniq_context = 'video_details', $mod ) ) {
+				if ( ! $have_media[ $media_pre ] || ! $this->p->util->is_uniq_url( $media_url, $uniq_context = 'video_details', $mod ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
@@ -2597,14 +2683,18 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 *             [3] => Array
 			 *                 (
 			 *                     [name] => description
-			 *                     [content] => In this episode I am riding to Epupa Falls, gorgeous waterfalls right at the border between Namibia and Angola. The border with Angola is closed, so I can't ...
+			 *                     [content] => In this episode I am riding to Epupa Falls, gorgeous waterfalls right at the border between
+			 * Namibia and Angola. The border with Angola is closed, so I can't ...
 			 *                     [textContent] =>
 			 *                 )
 			 * 
 			 *             [4] => Array
 			 *                 (
 			 *                     [name] => keywords
-			 *                     [content] => honda, Honda CRF250L, crf250L review, dual purpose bike, RTW, round the world on motorbike, adv rider, motorbike traveller, female motorcycle traveler, solo female traveller, best dirt bike, things to see namibia, motorcycling namibia, best roads namibia, solo ride namibia, Namibia, Southern Africa, off-roading namibia, himba tribe, tribes namibia, opuwo, epupa, epupa falls
+			 *                     [content] => honda, Honda CRF250L, crf250L review, dual purpose bike, RTW, round the world on motorbike, adv
+			 * rider, motorbike traveller, female motorcycle traveler, solo female traveller, best dirt bike, things to see namibia, motorcycling
+			 * namibia, best roads namibia, solo ride namibia, Namibia, Southern Africa, off-roading namibia, himba tribe, tribes namibia, opuwo,
+			 * epupa, epupa falls
 			 *                     [textContent] =>
 			 *                 )
 			 * 
@@ -2653,7 +2743,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 *             [11] => Array
 			 *                 (
 			 *                     [property] => og:description
-			 *                     [content] => In this episode I am riding to Epupa Falls, gorgeous waterfalls right at the border between Namibia and Angola. The border with Angola is closed, so I can't ...
+			 *                     [content] => In this episode I am riding to Epupa Falls, gorgeous waterfalls right at the border between
+			 * Namibia and Angola. The border with Angola is closed, so I can't ...
 			 *                     [textContent] =>
 			 *                 )
 			 * 
@@ -2793,7 +2884,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 *             [53] => Array
 			 *                 (
 			 *                     [name] => twitter:description
-			 *                     [content] => In this episode I am riding to Epupa Falls, gorgeous waterfalls right at the border between Namibia and Angola. The border with Angola is closed, so I can't ...
+			 *                     [content] => In this episode I am riding to Epupa Falls, gorgeous waterfalls right at the border between
+			 * Namibia and Angola. The border with Angola is closed, so I can't ...
 			 *                     [textContent] =>
 			 *                 )
 			 * 
@@ -2898,7 +2990,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 *             [68] => Array
 			 *                 (
 			 *                     [itemprop] => description
-			 *                     [content] => In this episode I am riding to Epupa Falls, gorgeous waterfalls right at the border between Namibia and Angola. The border with Angola is closed, so I can't ...
+			 *                     [content] => In this episode I am riding to Epupa Falls, gorgeous waterfalls right at the border between
+			 * Namibia and Angola. The border with Angola is closed, so I can't ...
 			 *                     [textContent] =>
 			 *                 )
 			 * 
@@ -2982,7 +3075,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 *             [80] => Array
 			 *                 (
 			 *                     [itemprop] => regionsAllowed
-			 *                     [content] => AD,AE,AF,AG,AI,AL,AM,AO,AQ,AR,AS,AT,AU,AW,AX,AZ,BA,BB,BD,BE,BF,BG,BH,BI,BJ,BL,BM,BN,BO,BQ,BR,BS,BT,BV,BW,BY,BZ,CA,CC,CD,CF,CG,CH,CI,CK,CL,CM,CN,CO,CR,CU,CV,CW,CX,CY,CZ,DE,DJ,DK,DM,DO,DZ,EC,EE,EG,EH,ER,ES,ET,FI,FJ,FK,FM,FO,FR,GA,GB,GD,GE,GF,GG,GH,GI,GL,GM,GN,GP,GQ,GR,GS,GT,GU,GW,GY,HK,HM,HN,HR,HT,HU,ID,IE,IL,IM,IN,IO,IQ,IR,IS,IT,JE,JM,JO,JP,KE,KG,KH,KI,KM,KN,KP,KR,KW,KY,KZ,LA,LB,LC,LI,LK,LR,LS,LT,LU,LV,LY,MA,MC,MD,ME,MF,MG,MH,MK,ML,MM,MN,MO,MP,MQ,MR,MS,MT,MU,MV,MW,MX,MY,MZ,NA,NC,NE,NF,NG,NI,NL,NO,NP,NR,NU,NZ,OM,PA,PE,PF,PG,PH,PK,PL,PM,PN,PR,PS,PT,PW,PY,QA,RE,RO,RS,RU,RW,SA,SB,SC,SD,SE,SG,SH,SI,SJ,SK,SL,SM,SN,SO,SR,SS,ST,SV,SX,SY,SZ,TC,TD,TF,TG,TH,TJ,TK,TL,TM,TN,TO,TR,TT,TV,TW,TZ,UA,UG,UM,US,UY,UZ,VA,VC,VE,VG,VI,VN,VU,WF,WS,YE,YT,ZA,ZM,ZW
+			 *                     [content] =>
+			 * AD,AE,AF,AG,AI,AL,AM,AO,AQ,AR,AS,AT,AU,AW,AX,AZ,BA,BB,BD,BE,BF,BG,BH,BI,BJ,BL,BM,BN,BO,BQ,BR,BS,BT,BV,BW,BY,BZ,CA,CC,CD,CF,CG,CH,CI,CK,CL,CM,CN,CO,CR,CU,CV,CW,CX,CY,CZ,DE,DJ,DK,DM,DO,DZ,EC,EE,EG,EH,ER,ES,ET,FI,FJ,FK,FM,FO,FR,GA,GB,GD,GE,GF,GG,GH,GI,GL,GM,GN,GP,GQ,GR,GS,GT,GU,GW,GY,HK,HM,HN,HR,HT,HU,ID,IE,IL,IM,IN,IO,IQ,IR,IS,IT,JE,JM,JO,JP,KE,KG,KH,KI,KM,KN,KP,KR,KW,KY,KZ,LA,LB,LC,LI,LK,LR,LS,LT,LU,LV,LY,MA,MC,MD,ME,MF,MG,MH,MK,ML,MM,MN,MO,MP,MQ,MR,MS,MT,MU,MV,MW,MX,MY,MZ,NA,NC,NE,NF,NG,NI,NL,NO,NP,NR,NU,NZ,OM,PA,PE,PF,PG,PH,PK,PL,PM,PN,PR,PS,PT,PW,PY,QA,RE,RO,RS,RU,RW,SA,SB,SC,SD,SE,SG,SH,SI,SJ,SK,SL,SM,SN,SO,SR,SS,ST,SV,SX,SY,SZ,TC,TD,TF,TG,TH,TJ,TK,TL,TM,TN,TO,TR,TT,TV,TW,TZ,UA,UG,UM,US,UY,UZ,VA,VC,VE,VG,VI,VN,VU,WF,WS,YE,YT,ZA,ZM,ZW
 			 *                     [textContent] =>
 			 *                 )
 			 * 
@@ -3153,7 +3247,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		/**
 		 * $img_mixed can be an image ID or URL.
 		 *
-		 * $img_lib can be 'Media Library', 'Content', etc.
+		 * $img_lib can be 'Media Library', 'NextGEN Gallery', 'Content', etc.
 		 */
 		public function is_image_within_config_limits( $img_mixed, $size_name, $img_width, $img_height, $img_lib = null ) {
 
@@ -3241,7 +3335,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$size_label = $this->p->util->get_image_size_label( $size_name );	// Returns pre-translated labels.
 
 		 			/**
-					 * $img_lib can be 'Media Library', 'Content', etc.
+					 * $img_lib can be 'Media Library', 'NextGEN Gallery', 'Content', etc.
 					 */
 					$notice_msg = sprintf( __( '%1$s %2$s ignored - the resulting resized image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>.', 'wpsso' ), $img_lib, $img_label, $img_width . 'x' . $img_height, $max_ratio, $size_label ). ' ';
 
@@ -3276,7 +3370,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 					$size_label = $this->p->util->get_image_size_label( $size_name );	// Returns pre-translated labels.
 
 		 			/**
-					 * $img_lib can be 'Media Library', 'Content', etc.
+					 * $img_lib can be 'Media Library', 'NextGEN Gallery', 'Content', etc.
 					 */
 					$notice_msg = sprintf( __( '%1$s %2$s ignored - the resulting resized image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>.', 'wpsso' ), $img_lib, $img_label, $img_width . 'x' . $img_height, $min_width . 'x' . $min_height, $size_label ) . ' ';
 

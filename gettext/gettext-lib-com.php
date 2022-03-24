@@ -5,6 +5,14 @@
  */
 __( '%s Notice', 'wpsso' );
 __( 'Notice', 'wpsso' );
+__( 'The "%1$s" hook with priority %2$d in the "%3$s" filter has incorrectly sent output to the webpage.', 'wpsso' );
+__( 'Unlike WordPress actions, WordPress filters must always return their text, not echo it to the webpage output.', 'wpsso' );
+__( 'Please contact the author of that filter and report this issue as a coding error.', 'wpsso' );
+__( 'Incorrect webpage output:', 'wpsso' );
+__( 'BEGIN OUTPUT', 'wpsso' );
+__( 'END OUTPUT', 'wpsso' );
+__( '%s Notice', 'wpsso' );
+__( 'Notice', 'wpsso' );
 __( 'Error retrieving %1$s for caching (after %2$.3f seconds).', 'wpsso' );
 __( 'Error retrieving %1$s for caching.', 'wpsso' );
 __( 'cURL error code %1$d %2$s.', 'wpsso' );
@@ -54,11 +62,3 @@ __( 'Reference: %s', 'wpsso' );
 __( 'The WordPress admin toolbar appears to be disabled (ie. the WordPress <code>%s</code> function returned false).', 'wpsso' );
 __( 'As a consequence, showing discreet notices in the admin toolbar is not possible.', 'wpsso' );
 __( 'Please diagnose the issue to re-enable the admin toolbar.', 'wpsso' );
-__( '%s Notice', 'wpsso' );
-__( 'Notice', 'wpsso' );
-__( 'The "%1$s" hook with priority %2$d in the "%3$s" filter has incorrectly sent output to the webpage.', 'wpsso' );
-__( 'Unlike WordPress actions, WordPress filters must always return their text, not echo it to the webpage output.', 'wpsso' );
-__( 'Please contact the author of that filter and report this issue as a coding error.', 'wpsso' );
-__( 'Incorrect webpage output:', 'wpsso' );
-__( 'BEGIN OUTPUT', 'wpsso' );
-__( 'END OUTPUT', 'wpsso' );

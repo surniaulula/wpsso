@@ -2193,7 +2193,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			}
 
 			$size_names = $this->p->util->get_image_size_names( $size_names );	// Always returns an array.
-			$md_pre     = is_array( $md_pre ) ? array_merge( $md_pre, array( 'og' ) ) : array( $md_pre, 'og' );
+
+			$md_pre = is_array( $md_pre ) ? array_merge( $md_pre, array( 'og' ) ) : array( $md_pre, 'og' );
+
 			$mt_images  = array();
 
 			foreach( array_unique( $md_pre ) as $opt_pre ) {
@@ -2212,6 +2214,8 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$url = $this->get_options( $mod[ 'id' ], $opt_pre . '_img_url' );
 
 				if ( $pid > 0 ) {
+
+					$pid = 'ngg' === $lib ? 'ngg-' . $pid : $pid;
 
 					if ( $this->p->debug->enabled ) {
 
@@ -2293,34 +2297,29 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			$filter_name  = 'wpsso_' . $mod[ 'name' ] . '_image_urls';
 			$image_urls   = apply_filters( $filter_name, array(), $size_names, $mod[ 'id' ], $mod );
 
-			foreach ( array_unique( $image_urls ) as $num => $url ) {
+			foreach ( array_unique( $image_urls ) as $url ) {
 
-				if ( false === filter_var( $url, FILTER_VALIDATE_URL ) ) {	// Just in case.
+				if ( $this->p->util->is_dupe_url( $url, 'image_urls', $mod ) ) {
 
-					if ( $wpsso->debug->enabled ) {
+					continue;
+				}
 
-						$wpsso->debug->log( 'skipping image #' . $num . ': url "' . $url . '" is invalid' );
+				if ( false !== strpos( $url, '://' ) ) {	// Quick sanity check.
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'adding image URL: ' . $url );
 					}
 
-				} else {
+					$mt_single_image = SucomUtil::get_mt_image_seed( $mt_pre );
 
-					if ( $this->p->util->is_uniq_url( $url, 'image_urls', $mod ) ) {
+					$mt_single_image[ $mt_pre . ':image:url' ] = $url;
 
-						if ( $this->p->debug->enabled ) {
+					$this->p->util->add_image_url_size( $mt_single_image, $mt_pre . ':image' );
 
-							$this->p->debug->log( 'adding image url: ' . $url );
-						}
+					if ( $this->p->util->push_max( $mt_images, $mt_single_image, $num ) ) {
 
-						$mt_single_image = SucomUtil::get_mt_image_seed( $mt_pre );
-
-						$mt_single_image[ $mt_pre . ':image:url' ] = $url;
-	
-						$this->p->util->add_image_url_size( $mt_single_image, $mt_pre . ':image' );
-	
-						if ( $this->p->util->push_max( $mt_images, $mt_single_image, $num ) ) {
-	
-							return $mt_images;
-						}
+						return $mt_images;
 					}
 				}
 			}

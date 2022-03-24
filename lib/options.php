@@ -1443,7 +1443,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 								break;
 
 							} else {
-
 								$parts[] = $part;
 							}
 						}

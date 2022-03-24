@@ -1670,14 +1670,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					$url = 'https://twitter.com/' . preg_replace( '/^@/', '', $url );
 				}
 
-				if ( false === filter_var( $url, FILTER_VALIDATE_URL ) ) {	// Just in case.
-
-					if ( $wpsso->debug->enabled ) {
-
-						$wpsso->debug->log( 'skipping ' . $social_key . ': url "' . $url . '" is invalid' );
-					}
-
-				} else {
+				if ( false !== filter_var( $url, FILTER_VALIDATE_URL ) ) {	// Just in case.
 
 					$org_sameas[] = $url;
 				}
@@ -3667,28 +3660,28 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 						if ( $wpsso->debug->enabled ) {
 
-							$wpsso->debug->log( 'skipping ' . $prop_name . ' url #' . $num . ': url is empty' );
+							$wpsso->debug->log( 'skipping ' . $prop_name . ' url #' . $num . ': value is empty' );
 						}
 
 					} elseif ( isset( $json_data[ 'url' ] ) && $json_data[ 'url' ] === $url ) {
 
 						if ( $wpsso->debug->enabled ) {
 
-							$wpsso->debug->log( 'skipping ' . $prop_name . ' url #' . $num . ': url "' . $url . '" is duplicate of url property' );
+							$wpsso->debug->log( 'skipping ' . $prop_name . ' url #' . $num . ': value is "url" property (' . $url . ')' );
 						}
 
 					} elseif ( isset( $added_urls[ $url ] ) ) {	// Already added.
 
 						if ( $wpsso->debug->enabled ) {
 
-							$wpsso->debug->log( 'skipping ' . $prop_name . ' url #' . $num . ': url "' . $url . '" is duplicate' );
+							$wpsso->debug->log( 'skipping ' . $prop_name . ' url #' . $num . ': value already added (' . $url . ')' );
 						}
 
 					} elseif ( false === filter_var( $url, FILTER_VALIDATE_URL ) ) {
 
 						if ( $wpsso->debug->enabled ) {
 
-							$wpsso->debug->log( 'skipping ' . $prop_name . ' url #' . $num . ': url "' . $url . '" is invalid' );
+							$wpsso->debug->log( 'skipping ' . $prop_name . ' url #' . $num . ': value is not valid (' . $url . ')' );
 						}
 
 					} else {	// Mark the url as already added and get the next url.

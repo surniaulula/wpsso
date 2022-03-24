@@ -924,6 +924,13 @@ if ( ! class_exists( 'SucomForm' ) ) {
 				'img-lib-css-id' => 'select_' . $img_lib_css_id,
 			);
 
+			if ( 0 === strpos( $holder, 'ngg-' ) ) {
+
+				$selected_lib = 'ngg';
+
+				$holder = preg_replace( '/^ngg-/', '', $holder );
+			}
+
 			if ( 'wp' === $img_lib_value ) {
 
 				if ( $img_id_value ) {
@@ -934,6 +941,11 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 					$upload_button_data[ 'wp-img-id' ] = $holder;
 				}
+			}
+
+			if ( 'ngg' === $img_lib_value || ! empty( $this->p->avail[ 'media' ][ 'ngg' ] ) ) {
+
+				$img_libs[ 'ngg' ] = 'NextGEN Gallery';
 			}
 
 			$img_libs_count   = count( $img_libs );

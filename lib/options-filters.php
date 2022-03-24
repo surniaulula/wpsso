@@ -436,15 +436,15 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				/**
 				 * Options that cannot be blank.
 				 */
-				case 'site_org_place_id':
-				case 'site_org_schema_type':
+				case 'site_org_place_id':		// Example: 'none' or place ID.
+				case 'site_org_schema_type':		// Example: 'organization' or a sub-type.
 				case 'og_def_article_section':
-				case 'og_def_product_category':
+				case 'og_def_product_category':		// Default Product Type.
 				case 'og_def_country':
 				case 'og_def_timezone':
 				case 'og_def_currency':
-				case 'og_def_img_id_lib': 
-				case 'og_img_id_lib': 
+				case 'og_def_img_id_lib': 			// Example: 'wp' or 'ngg' media library name.
+				case 'og_img_id_lib': 				// Example: 'wp' or 'ngg' media library name.
 				case 'plugin_comment_title':			// Comment Title.
 				case 'plugin_comment_reply_title':		// Reply Comment Title.
 				case 'plugin_comment_review_title':		// Review Comment Title.
@@ -461,7 +461,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'robots_max_image_preview':		// Image Preview Size.
 				case ( false !== strpos( $base_key, '_crop_x' ) ? true : false ):
 				case ( false !== strpos( $base_key, '_crop_y' ) ? true : false ):
-				case ( false !== strpos( $base_key, '_type_for_' ) ? true : false ):
+				case ( false !== strpos( $base_key, '_type_for_' ) ? true : false ):	// Example: 'og_type_for_.*' or 'schema_type_for_.*'.
 				case ( preg_match( '/^(plugin|wp)_cm_[a-z]+_(name|label)$/', $base_key ) ? true : false ):
 
 					return 'not_blank';

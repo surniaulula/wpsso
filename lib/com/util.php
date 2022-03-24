@@ -2549,7 +2549,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 				return;
 
-			} elseif ( false !== filter_var( $mixed, FILTER_VALIDATE_URL ) ) {	// URL is valid.
+			} elseif ( false !== filter_var( $mixed, FILTER_VALIDATE_URL ) ) {	// URL.
 
 				return;
 			}
@@ -4222,7 +4222,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function decode_url_add_query( $url, array $args ) {
 
-			if ( false === filter_var( $url, FILTER_VALIDATE_URL ) ) {	// Invalid URL.
+			if ( filter_var( $url, FILTER_VALIDATE_URL ) === false ) {	// Check for invalid URL.
 
 				return false;
 			}
