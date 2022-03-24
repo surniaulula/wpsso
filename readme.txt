@@ -1,10 +1,10 @@
 === WordPress Social and Search Optimization - The Complete Structured Data Plugin for WordPress ===
-Plugin Name: WPSSO Core
+Plugin Name: WPSSO Core (Premium)
 Plugin Slug: wpsso
 Text Domain: wpsso
 Domain Path: /languages
-License: GPLv3
-License URI: https://www.gnu.org/licenses/gpl.txt
+License: Nontransferable License for WordPress Site Address URL
+License URI: https://wpsso.com/wp-content/plugins/wpsso/license/premium.txt
 Assets URI: https://surniaulula.github.io/wpsso/assets/
 Tags: woocommerce, open graph, meta tags, schema, rich results, image seo, video seo, google search, knowledge graph, sitemaps
 Contributors: jsmoriss
@@ -105,10 +105,14 @@ WPSSO provides comprehensive Schema markup for posts, pages, custom post types, 
 **Reads data from active plugins, including:**
 
 * All in One SEO Pack
+* bbPress
+* BuddyPress
 * Co-Authors Plus
 * Easy Digital Downloads
 * Elementor Website Builder
 * Gravity Forms + GravityView
+* NextCellent Gallery - NextGEN Legacy
+* NextGEN Gallery
 * Perfect WooCommerce Brands
 * Polylang
 * Product GTIN (EAN, UPC, ISBN) for WooCommerce
@@ -170,6 +174,7 @@ WPSSO provides comprehensive Schema markup for posts, pages, custom post types, 
 * [Setup Guide](https://wpsso.com/docs/plugins/wpsso/installation/setup-guide/)
 * [Much Better Schema Markup for WooCommerce SEO](https://wpsso.com/docs/plugins/wpsso/installation/better-schema-for-woocommerce/)
 * [Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/)
+	* [BuddyPress Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/buddypress-integration/)
 	* [WooCommerce Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/)
 * [Troubleshooting Guide](https://wpsso.com/docs/plugins/wpsso/installation/troubleshooting-guide/)
 * [Developer Special: Buy one, Get one Free](https://wpsso.com/docs/plugins/wpsso/installation/developer-special-buy-one-get-one-free/)
@@ -248,20 +253,18 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 12.0.0-dev.3 (2022/03/23)**
-
-Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, and BuddyBlog.
+**Version 11.8.0-dev.1 (2022/03/23)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* None.
 * **Bugfixes**
-	* Fixed the appearance of the Validators menu to users without editing capability.
+	* Fixed showing the Validators menu to users without editing capability.
 * **Developer Notes**
 	* Added a `current_user_can()` check before showing the Validators menu.
 	* Added `$md_pre` to the `WpssoOpengraph->get_array()` method arguments.
-	* Removed `$check_dupes` from all methods arguments.
+	* Removed the `$check_dupes` argument from all methods.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -506,9 +509,9 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 == Upgrade Notice ==
 
-= 12.0.0-dev.3 =
+= 11.8.0-dev.1 =
 
-(2022/03/23) Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, and BuddyBlog. Fixed the appearance of the Validators menu to users without editing capability.
+(2022/03/23) Fixed showing the Validators menu to users without editing capability.
 
 = 11.7.2 =
 
