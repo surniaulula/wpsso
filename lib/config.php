@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '11.8.0-rc.1',	// Plugin version.
+					'version'     => '12.0.0-b.1',	// Plugin version.
 					'opt_version' => '902',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -152,9 +152,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'form' => array(
 								'gravityview' => '(plugin) GravityView',
 							),
-							'forum' => array(
-								'bbpress' => '(plugin) bbPress',
-							),
 							'job' => array(
 								'simplejobboard' => '(plugin) Simple Job Board',
 								'wpjobmanager'   => '(plugin) WP Job Manager',
@@ -166,7 +163,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'media' => array(
 								'facebook'   => '(api) Facebook Video API',
 								'gravatar'   => '(api) Gravatar Image API',
-								'ngg'        => '(plugin) NextGEN Gallery, NextCellent Gallery',
 								'slideshare' => '(api) Slideshare API',
 								'soundcloud' => '(api) Soundcloud API',
 								'upscale'    => '(feature) Upscale Media Library Images',
@@ -196,9 +192,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'wpmetaseo'    => '(plugin) WP Meta SEO',
 								'wpseo'        => '(plugin) Yoast SEO',
 							),
-							'social' => array(
-								'buddypress' => '(plugin) BuddyPress',
-							),
 							'util' => array(
 								'aioseop-meta'      => '(feature) Import All in One SEO Pack Metadata',
 								'check-img-dims'    => '(feature) Image Dimension Checks',
@@ -224,9 +217,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'advanced' => 'Advanced Settings Filters',
 								'edit'     => 'Document SSO Metabox Filters',
 								'general'  => 'General Settings Filters',
-							),
-							'social' => array(
-								'buddypress' => '(plugin) BuddyPress',
 							),
 						),
 						'submenu' => array(

@@ -384,26 +384,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							break;
 
-
-						case 'forum':
-
-							switch ( $id ) {
-
-								/**
-								 * bbPress.
-								 *
-								 * See https://wordpress.org/plugins/bbpress/.
-								 */
-								case 'bbpress':
-
-									$chk[ 'plugin' ] = 'bbpress/bbpress.php';
-
-									break;
-							}
-
-							break;
-
-
 						case 'job':
 
 							switch ( $id ) {
@@ -432,7 +412,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							}
 
 							break;
-
 
 						case 'lang':
 
@@ -463,22 +442,9 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							break;
 
-
 						case 'media':
 
 							switch ( $id ) {
-
-								/**
-								 * NextGEN Gallery and NextCellent Gallery.
-								 *
-								 * See https://wordpress.org/plugins/nextgen-gallery/.
-								 * See https://wordpress.org/plugins/nextcellent-gallery-nextgen-legacy/.
-								 */
-								case 'ngg':
-
-									$chk[ 'class' ] = 'nggdb';
-
-									break;
 
 								/**
 								 * Perfect Images + Retina (aka WP Retina 2x).
@@ -768,35 +734,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 								case 'wpseo-wc':
 
 									$chk[ 'class' ] = 'Yoast_WooCommerce_SEO';
-
-									break;
-							}
-
-							break;
-
-						case 'social':
-
-							switch ( $id ) {
-
-								/**
-								 * BuddyBlog.
-								 *
-								 * See https://buddydev.com/plugins/buddyblog/.
-								 */
-								case 'buddyblog':
-
-									$chk[ 'class' ] = 'BuddyBlog';
-
-									break;
-
-								/**
-								 * BuddyPress.
-								 *
-								 * See https://wordpress.org/plugins/buddypress/.
-								 */
-								case 'buddypress':
-
-									$chk[ 'class' ] = 'BuddyPress';
 
 									break;
 							}

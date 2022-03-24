@@ -509,54 +509,6 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 				$this->p->debug->log( 'no post image found' );
 			}
-
-			/**
-			 * Singlepic shortcode image.
-			 */
-			if ( ! isset( $mt_tc[ 'twitter:card' ] ) ) {
-
-				if ( ! empty( $this->p->avail[ 'media' ][ 'ngg' ] ) ) {
-
-					if ( ! empty( $this->p->m[ 'media' ][ 'ngg' ] ) ) {
-
-						if ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( $card_type . ' card: checking for singlepic image' );
-						}
-
-						$ngg_obj =& $this->p->m[ 'media' ][ 'ngg' ];
-
-						$mt_images = $ngg_obj->get_singlepic_og_images( 1, $size_name, $mod[ 'id' ] );
-
-						if ( ! empty( $mt_images ) ) {
-
-							$mt_single_image = reset( $mt_images );
-
-							$image_url = SucomUtil::get_first_mt_media_url( $mt_single_image );
-
-							$mt_tc[ 'twitter:card' ]  = $card_type;
-							$mt_tc[ 'twitter:image' ] = $image_url;
-
-							if ( ! empty( $mt_single_image[ 'og:image:alt' ] ) ) {
-
-								$mt_tc[ 'twitter:image:alt' ] = $mt_single_image[ 'og:image:alt' ];
-							}
-
-						} elseif ( $this->p->debug->enabled ) {
-
-							$this->p->debug->log( $card_type . ' card: ngg singlepic image not found' );
-						}
-
-					} elseif ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( $card_type . ' card: ngg module not defined - singlepic image skipped' );
-					}
-
-				} elseif ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( $card_type . ' card: ngg plugin not available - singlepic image skipped' );
-				}
-			}
 		}
 
 		/**

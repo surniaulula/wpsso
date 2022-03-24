@@ -1706,13 +1706,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 				$content = $this->p->util->safe_apply_filters( array( 'the_content', $content ), $mod, $mtime_max, $use_bfo );
 
-				/**
-				 * Cleanup for NextGEN Gallery pre-v2 album shortcode.
-				 */
-				unset ( $GLOBALS[ 'subalbum' ] );
-
-				unset ( $GLOBALS[ 'nggShowGallery' ] );
-
 			/**
 			 * Maybe apply the 'do_blocks' filters.
 			 */
