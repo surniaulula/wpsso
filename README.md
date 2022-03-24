@@ -9,7 +9,7 @@
 <tr><th align="right" valign="top" nowrap>Tested Up To WordPress</th><td>5.9.2</td></tr>
 <tr><th align="right" valign="top" nowrap>Tested Up To WooCommerce</th><td>6.3.1</td></tr>
 <tr><th align="right" valign="top" nowrap>Contributors</th><td>jsmoriss</td></tr>
-<tr><th align="right" valign="top" nowrap>License</th><td><a href="https://wpsso.com/wp-content/plugins/wpsso/license/premium.txt">Nontransferable License for WordPress Site Address URL</a></td></tr>
+<tr><th align="right" valign="top" nowrap>License</th><td><a href="https://www.gnu.org/licenses/gpl.txt">GPLv3</a></td></tr>
 <tr><th align="right" valign="top" nowrap>Tags / Keywords</th><td>woocommerce, open graph, meta tags, schema, rich results, image seo, video seo, google search, knowledge graph, sitemaps</td></tr>
 </table>
 
@@ -108,14 +108,10 @@
 
 <ul>
 <li>All in One SEO Pack</li>
-<li>bbPress</li>
-<li>BuddyPress</li>
 <li>Co-Authors Plus</li>
 <li>Easy Digital Downloads</li>
 <li>Elementor Website Builder</li>
 <li>Gravity Forms + GravityView</li>
-<li>NextCellent Gallery - NextGEN Legacy</li>
-<li>NextGEN Gallery</li>
 <li>Perfect WooCommerce Brands</li>
 <li>Polylang</li>
 <li>Product GTIN (EAN, UPC, ISBN) for WooCommerce</li>
@@ -187,7 +183,6 @@
 <li><a href="https://wpsso.com/docs/plugins/wpsso/installation/integration/">Integration Notes</a>
 
 <ul>
-<li><a href="https://wpsso.com/docs/plugins/wpsso/installation/integration/buddypress-integration/">BuddyPress Integration Notes</a></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/">WooCommerce Integration Notes</a></li>
 </ul></li>
 <li><a href="https://wpsso.com/docs/plugins/wpsso/installation/troubleshooting-guide/">Troubleshooting Guide</a></li>
