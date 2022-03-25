@@ -158,303 +158,346 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 
 			$add_page  = isset( $atts[ 'add_page' ] ) ? $atts[ 'add_page' ] : true;
 			$title_sep = isset( $atts[ 'title_sep' ] ) ? $atts[ 'title_sep' ] : $local_cache[ 'def_title_sep' ];
+				
+			if ( 0 === strpos( $varname, 'post' ) ) {
 
-			switch ( $varname ) {
+				if ( $mod[ 'is_post' ] ) {	// Just in case.
 
-				case 'org_url':		// Compatibility for Rank Math.
-				case 'site_url':
+					switch ( $varname ) {
 
-					$ret_val = SucomUtil::get_home_url( $this->p->options, $mod );
+						case 'post_date':
+	
+							if ( ! empty( $mod[ 'post_time' ] ) ) {
+	
+								$ret_val = mysql2date( $local_cache[ 'date_format' ], $mod[ 'post_time' ] );
+							}
+	
+							break;
+	
+						case 'post_modified':
+						case 'post_modified_date':
+	
+							if ( ! empty( $mod[ 'post_modified_time' ] ) ) {
+	
+								$ret_val = mysql2date( $local_cache[ 'date_format' ], $mod[ 'post_modified_time' ] );
+							}
+	
+							break;
+	
+						case 'post_description':	// Compatibility for AIOSEOP.
+	
+							$ret_val = $this->p->page->get_the_description( $mod );
+								
+							break;
 
-					break;
+						case 'post_title':	// Compatibility for AIOSEOP.
+	
+							$ret_val = $this->p->page->get_the_title( $mod, $title_sep );
+								
+							break;
+					}
+				}
 
-				case 'canonical_url':
+			} elseif ( 0 === strpos( $varname, 'term' ) ) {
 
-					$ret_val = $this->u->get_canonical_url( $mod, $add_page );
+				if ( $mod[ 'is_term' ] ) {	// Just in case.
 
-					break;
+					switch ( $varname ) {
+			
+						case 'term':
+				
+							$term_obj = $this->p->term->get_mod_wp_object( $mod );
 
-				case 'canonical_short_url':
+							$ret_val = $term_obj->name;
+				
+							break;
+			
+						case 'term_description':	// Compatibility for AIOSEOP.
+	
+							$ret_val = $this->p->page->get_the_description( $mod );
+								
+							break;
 
-					$ret_val = $this->u->get_canonical_short_url( $mod, $add_page );
+						case 'term_title':
 
-					break;
+							$ret_val = $this->p->page->get_the_title( $mod, $title_sep );
 
-				case 'sharing_url':
+							break;
+					}
+				}
 
-					/**
-					 * The $atts array may contain 'utm_medium', 'utm_source', 'utm_campaign', 'utm_content', and 'utm_term'.
-					 */
-					$ret_val = $this->u->get_sharing_url( $mod, $add_page, $atts );
+			} else {
 
-					break;
+				switch ( $varname ) {
 
-				case 'sharing_short_url':
-				case 'short_url':	// Compatibility for older WPSSO RRSSB templates.
-
-					/**
-					 * The $atts array may contain 'utm_medium', 'utm_source', 'utm_campaign', 'utm_content', and 'utm_term'.
-					 */
-			 		$ret_val = $this->u->get_sharing_short_url( $mod, $add_page, $atts );
-
-					break;
-
-				case 'request_url':
-
-					if ( is_admin() ) {
-
+					case 'org_url':		// Compatibility for Rank Math.
+					case 'site_url':
+	
+						$ret_val = SucomUtil::get_home_url( $this->p->options, $mod );
+	
+						break;
+	
+					case 'canonical_url':
+	
 						$ret_val = $this->u->get_canonical_url( $mod, $add_page );
-
-					} else {
-
-						$ret_val = SucomUtil::get_url( $remove_tracking = true );
-
-						$ret_val = apply_filters( 'wpsso_server_request_url', $ret_val );
-					}
-
-					break;
-
-				case 'org_name':	// Compatibility for Rank Math.
-				case 'sitename':
-				case 'sitetitle':	// Compatibility for SEOPress.
-
-					$ret_val = SucomUtil::get_site_name( $this->p->options, $mod );
-
-					break;
-
-				case 'sitealtname':
-
-					$ret_val = SucomUtil::get_site_name_alt( $this->p->options, $mod );
-
-					break;
-
-				case 'sitedesc':
-				case 'tagline':		// Compatibility for SEOPress.
-
-					$ret_val = SucomUtil::get_site_description( $this->p->options, $mod );
-
-					break;
-
-				case 'sep':
-				case 'separator_sa':	// Compatibility for AIOSEOP.
-
-					$ret_val = $title_sep;
-
-					break;
-
-				case 'ellipsis':
-
-					$ret_val = $local_cache[ 'def_ellipsis' ];
-
-					break;
-
-				case 'title':
-
-					$ret_val = $this->p->page->get_the_title( $mod, $title_sep );
-
-					break;
-
-				case 'post_title':
-
-					if ( $mod[ 'is_post' ] ) {	// Just in case.
-
-						$ret_val = $this->p->page->get_the_title( $mod, $title_sep );
-					}
-
-					break;
-
-				case 'parent_title':
-
-					if ( $mod[ 'is_post' ] && $mod[ 'post_parent' ] ) {	// Just in case.
-
-						$parent_mod = $this->p->post->get_mod( $mod[ 'post_parent' ] );
-
-						$ret_val = $this->p->page->get_the_title( $parent_mod, $title_sep );
-					}
-
-					break;
-
-				case 'term':
-
-					if ( $mod[ 'is_term' ] ) {	// Just in case.
-
-						$term_obj = $this->p->term->get_mod_wp_object( $mod );
-
-						$ret_val = $term_obj->name;
-					}
-
-					break;
-
-				case 'term_title':
-
-					if ( $mod[ 'is_term' ] ) {	// Just in case.
-
-						$ret_val = $this->p->page->get_the_title( $mod, $title_sep );
-					}
-
-					break;
-
-				case 'author':
-				case 'name':		// Compatibility for Yoast SEO.
-
-					/**
-					 * Returns the display name for a comment author, post author, or user module.
-					 */
-					$ret_val = WpssoUser::get_author_name( $mod );
-
-					break;
-
-				case 'page':
-
-					$page_num = $this->u->get_page_number( $mod, $add_page );
-
-					if ( $page_num > 1 ) {
-
-						$page_transl = __( 'Page %1$d of %2$d', 'wpsso' );
-
-						$ret_val = $title_sep . ' ' . sprintf( $page_transl, $page_num, $mod[ 'paged_total' ] );
-					}
-
-					break;
-
-				case 'pagename':
-
-					if ( isset( $mod[ 'query_vars' ][ 'pagename' ] ) ) {
-
-						$ret_val = $mod[ 'query_vars' ][ 'pagename' ];
-					}
-
-					break;
-
-				case 'pagenumber':
-
-					$ret_val = $this->u->get_page_number( $mod, $add_page );
-
-					break;
-
-				case 'pagetotal':
-
-					$ret_val = $mod[ 'paged_total' ];
-
-					break;
-
-				case 'post_date':
-				case 'date':		// Compatibility for Yoast SEO.
-
-					if ( ! empty( $mod[ 'post_time' ] ) ) {
-
-						$ret_val = mysql2date( $local_cache[ 'date_format' ], $mod[ 'post_time' ] );
-					}
-
-					break;
-
-				case 'post_modified':
-				case 'modified':	// Compatibility for Yoast SEO.
-
-					if ( ! empty( $mod[ 'post_modified_time' ] ) ) {
-
-						$ret_val = mysql2date( $local_cache[ 'date_format' ], $mod[ 'post_modified_time' ] );
-					}
-
-					break;
-
-				case 'excerpt':
-
-					if ( $mod[ 'is_post' ] ) {	// Just in case.
-
-						$ret_val = $this->p->page->get_the_excerpt( $mod );
-
-						if ( empty( $ret_val ) ) {
-
-							$ret_val = wp_trim_excerpt( '', $mod[ 'id' ] );
+	
+						break;
+	
+					case 'canonical_short_url':
+	
+						$ret_val = $this->u->get_canonical_short_url( $mod, $add_page );
+	
+						break;
+	
+					case 'description':
+	
+						$ret_val = $this->p->page->get_the_description( $mod );
+								
+						break;
+
+					case 'sharing_url':
+	
+						/**
+						 * The $atts array may contain 'utm_medium', 'utm_source', 'utm_campaign', 'utm_content', and 'utm_term'.
+						 */
+						$ret_val = $this->u->get_sharing_url( $mod, $add_page, $atts );
+	
+						break;
+	
+					case 'sharing_short_url':
+					case 'short_url':	// Compatibility for older WPSSO RRSSB templates.
+	
+						/**
+						 * The $atts array may contain 'utm_medium', 'utm_source', 'utm_campaign', 'utm_content', and 'utm_term'.
+						 */
+				 		$ret_val = $this->u->get_sharing_short_url( $mod, $add_page, $atts );
+	
+						break;
+	
+					case 'request_url':
+	
+						if ( is_admin() ) {
+	
+							$ret_val = $this->u->get_canonical_url( $mod, $add_page );
+	
+						} else {
+	
+							$ret_val = SucomUtil::get_url( $remove_tracking = true );
+	
+							$ret_val = apply_filters( 'wpsso_server_request_url', $ret_val );
 						}
-					}
+	
+						break;
+	
+					case 'org_name':	// Compatibility for Rank Math.
+					case 'sitename':
+					case 'sitetitle':	// Compatibility for SEOPress.
+	
+						$ret_val = SucomUtil::get_site_name( $this->p->options, $mod );
+	
+						break;
+	
+					case 'sitealtname':
+	
+						$ret_val = SucomUtil::get_site_name_alt( $this->p->options, $mod );
+	
+						break;
+	
+					case 'sitedesc':
+					case 'tagline':		// Compatibility for SEOPress.
+	
+						$ret_val = SucomUtil::get_site_description( $this->p->options, $mod );
+	
+						break;
+	
+					case 'sep':
+					case 'separator_sa':	// Compatibility for AIOSEOP.
+	
+						$ret_val = $title_sep;
+	
+						break;
+	
+					case 'ellipsis':
+	
+						$ret_val = $local_cache[ 'def_ellipsis' ];
+	
+						break;
+	
+					case 'title':
+	
+						$ret_val = $this->p->page->get_the_title( $mod, $title_sep );
+	
+						break;
+	
+					case 'parent_title':
+	
+						if ( $mod[ 'is_post' ] && $mod[ 'post_parent' ] ) {	// Just in case.
+	
+							$parent_mod = $this->p->post->get_mod( $mod[ 'post_parent' ] );
+	
+							$ret_val = $this->p->page->get_the_title( $parent_mod, $title_sep );
+						}
+	
+						break;
+	
+					case 'author':
+					case 'author_name':
+					case 'name':		// Compatibility for Yoast SEO.
+	
+						/**
+						 * Returns the display name for a comment author, post author, or user module.
+						 */
+						$ret_val = WpssoUser::get_author_name( $mod );
+	
+						break;
+	
+					case 'page':
+	
+						$page_num = $this->u->get_page_number( $mod, $add_page );
+	
+						if ( $page_num > 1 ) {
+	
+							$page_transl = __( 'Page %1$d of %2$d', 'wpsso' );
+	
+							$ret_val = $title_sep . ' ' . sprintf( $page_transl, $page_num, $mod[ 'paged_total' ] );
+						}
 
-					break;
+						break;
 
-				case 'excerpt_only':
+					case 'pagename':
+	
+						if ( isset( $mod[ 'query_vars' ][ 'pagename' ] ) ) {
+	
+							$ret_val = $mod[ 'query_vars' ][ 'pagename' ];
+						}
+	
+						break;
+	
+					case 'pagenumber':
+	
+						$ret_val = $this->u->get_page_number( $mod, $add_page );
+	
+						break;
+	
+					case 'pagetotal':
+	
+						$ret_val = $mod[ 'paged_total' ];
+	
+						break;
+	
+					case 'date':		// Compatibility for Yoast SEO.
+	
+						if ( ! empty( $mod[ 'post_time' ] ) ) {
+	
+							$ret_val = mysql2date( $local_cache[ 'date_format' ], $mod[ 'post_time' ] );
+						}
+	
+						break;
+	
+					case 'modified':	// Compatibility for Yoast SEO.
+	
+						if ( ! empty( $mod[ 'post_modified_time' ] ) ) {
+	
+							$ret_val = mysql2date( $local_cache[ 'date_format' ], $mod[ 'post_modified_time' ] );
+						}
+	
+						break;
+	
+					case 'excerpt':
+	
+						if ( $mod[ 'is_post' ] ) {	// Just in case.
+	
+							$ret_val = $this->p->page->get_the_excerpt( $mod );
+	
+							if ( empty( $ret_val ) ) {
+	
+								$ret_val = wp_trim_excerpt( '', $mod[ 'id' ] );
+							}
+						}
+	
+						break;
+	
+					case 'excerpt_only':
 
-					if ( $mod[ 'is_post' ] ) {	// Just in case.
+						if ( $mod[ 'is_post' ] ) {	// Just in case.
 
-						$ret_val = $this->p->page->get_the_excerpt( $mod );
-					}
-
-					break;
-
-				case 'comment_author':
-
-					$ret_val = $mod[ 'comment_author_name' ];
-
-					break;
-
-				case 'comment_date':
-
-					if ( ! empty( $mod[ 'comment_time' ] ) ) {
-
-						$ret_val = mysql2date( $local_cache[ 'date_format' ], $mod[ 'comment_time' ] );
-					}
-
-					break;
-
-				case 'query_search':
-				case 'search_keywords':	// Compatibility for SEOPress.
-				case 'search_query':	// Compatibility for Rank Math.
-				case 'searchphrase':	// Compatibility for Yoast SEO.
-
-					if ( isset( $mod[ 'query_vars' ][ 's' ] ) ) {
-
-						$ret_val = $mod[ 'query_vars' ][ 's' ];
-					}
-
-					break;
-
-				case 'query_year':
-
-					if ( isset( $mod[ 'query_vars' ][ 'year' ] ) ) {
-
-						$ret_val = $mod[ 'query_vars' ][ 'year' ];
-
-					} elseif ( ! empty( $mod[ 'query_vars' ][ 'm' ] ) ) {
-
-						$ret_val = substr( $mod[ 'query_vars' ][ 'm' ], 0, 4 );
-					}
-
-					break;
-
-				case 'query_month':
-				case 'query_monthnum':
-
-					if ( isset( $mod[ 'query_vars' ][ 'monthnum' ] ) ) {
-
-						$ret_val = $mod[ 'query_vars' ][ 'monthnum' ];
-
-					} elseif ( ! empty( $mod[ 'query_vars' ][ 'm' ] ) ) {
-
-						$ret_val = substr( $mod[ 'query_vars' ][ 'm' ], 4, 2 );
-					}
-
-					/**
-					 * Convert the month number to a month name.
-					 */
-					if ( 'query_month' === $varname ) {
-
-						global $wp_locale;
-
-						$ret_val = $ret_val ? $wp_locale->get_month( $ret_val ) : '';
-					}
-
-					break;
-
-				case 'query_day':
-
-					if ( isset( $mod[ 'query_vars' ][ 'day' ] ) ) {
-
-						$ret_val = $mod[ 'query_vars' ][ 'day' ];
-					}
-
-					break;
+							$ret_val = $this->p->page->get_the_excerpt( $mod );
+						}
+	
+						break;
+	
+					case 'comment_author':
+	
+						$ret_val = $mod[ 'comment_author_name' ];
+	
+						break;
+	
+					case 'comment_date':
+	
+						if ( ! empty( $mod[ 'comment_time' ] ) ) {
+	
+							$ret_val = mysql2date( $local_cache[ 'date_format' ], $mod[ 'comment_time' ] );
+						}
+	
+						break;
+	
+					case 'query_search':
+					case 'search_keywords':	// Compatibility for SEOPress.
+					case 'search_query':	// Compatibility for Rank Math.
+					case 'searchphrase':	// Compatibility for Yoast SEO.
+	
+						if ( isset( $mod[ 'query_vars' ][ 's' ] ) ) {
+	
+							$ret_val = $mod[ 'query_vars' ][ 's' ];
+						}
+	
+						break;
+	
+					case 'query_year':
+	
+						if ( isset( $mod[ 'query_vars' ][ 'year' ] ) ) {
+	
+							$ret_val = $mod[ 'query_vars' ][ 'year' ];
+	
+						} elseif ( ! empty( $mod[ 'query_vars' ][ 'm' ] ) ) {
+	
+							$ret_val = substr( $mod[ 'query_vars' ][ 'm' ], 0, 4 );
+						}
+	
+						break;
+	
+					case 'query_month':
+					case 'query_monthnum':
+	
+						if ( isset( $mod[ 'query_vars' ][ 'monthnum' ] ) ) {
+	
+							$ret_val = $mod[ 'query_vars' ][ 'monthnum' ];
+	
+						} elseif ( ! empty( $mod[ 'query_vars' ][ 'm' ] ) ) {
+	
+							$ret_val = substr( $mod[ 'query_vars' ][ 'm' ], 4, 2 );
+						}
+	
+						if ( 'query_month' === $varname ) {	// Convert month number to month name.
+	
+							global $wp_locale;
+	
+							$ret_val = $ret_val ? $wp_locale->get_month( $ret_val ) : '';
+						}
+	
+						break;
+	
+					case 'query_day':
+	
+						if ( isset( $mod[ 'query_vars' ][ 'day' ] ) ) {
+	
+							$ret_val = $mod[ 'query_vars' ][ 'day' ];
+						}
+	
+						break;
+				}
 			}
-
+	
 			unset( $local_is_recursion[ $varname ] );	// Done preventing recursion.
 
 			return $url_enc ? rawurlencode( $ret_val ) : $ret_val;
