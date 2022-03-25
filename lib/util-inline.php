@@ -236,6 +236,7 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 					break;
 
 				case 'sep':
+				case 'separator_sa':	// Compatibility for AIOSEOP.
 
 					$ret_val = $title_sep;
 
@@ -250,6 +251,15 @@ if ( ! class_exists( 'WpssoUtilInline' ) ) {
 				case 'title':
 
 					$ret_val = $this->p->page->get_the_title( $mod, $title_sep );
+
+					break;
+
+				case 'post_title':
+
+					if ( $mod[ 'is_post' ] ) {	// Just in case.
+
+						$ret_val = $this->p->page->get_the_title( $mod, $title_sep );
+					}
 
 					break;
 
