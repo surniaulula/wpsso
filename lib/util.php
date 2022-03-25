@@ -2463,6 +2463,14 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return empty( $this->p->options[ 'add_link_rel_canonical' ] ) ? true : false;
 		}
 
+		/**
+		 * Since WPSSO Core v12.0.0.
+		 */
+		public function is_redirect_enabled() {
+
+			return $this->is_redirect_disabled() ? false : true;
+		}
+
 		public function is_redirect_disabled() {
 
 			return apply_filters( 'wpsso_redirect_disabled', false );
