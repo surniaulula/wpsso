@@ -2314,11 +2314,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 						$mt_single_image = SucomUtil::get_mt_image_seed( $mt_pre );
 
 						$mt_single_image[ $mt_pre . ':image:url' ] = $url;
-	
+
 						$this->p->util->add_image_url_size( $mt_single_image, $mt_pre . ':image' );
-	
+
 						if ( $this->p->util->push_max( $mt_images, $mt_single_image, $num ) ) {
-	
+
 							return $mt_images;
 						}
 					}

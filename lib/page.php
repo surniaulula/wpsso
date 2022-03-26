@@ -99,10 +99,10 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				$capability = 'page' === $mod[ 'post_type' ] ? 'edit_page' : 'edit_post';
 
 			} elseif ( $mod[ 'is_term' ] ) {
-			
+
 				$tax_obj    = get_taxonomy( $mod[ 'tax_slug' ] );
 				$capability = $tax_obj->cap->edit_terms;
-			
+
 			} elseif ( $mod[ 'is_user' ] ) {
 
 				$capability = 'edit_user';
