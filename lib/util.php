@@ -95,51 +95,18 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			), $prio = -1000 );
 
 			/**
-			 * Add our image sizes on the front-end, back-end, AJAX calls, and REST API calls.
-			 */
-			add_action( 'wp', array( $this, 'add_plugin_image_sizes' ), -100 );				// Front-end compatibility.
-			add_action( 'admin_init', array( $this, 'add_plugin_image_sizes' ), -100 );			// Back-end + AJAX compatibility.
-			add_action( 'rest_api_init', array( $this, 'add_plugin_image_sizes' ), -100 );			// REST API compatibility.
-
-			/**
 			 * Log the locale change and clear the Sucom::get_locale() cache.
 			 */
 			add_action( 'change_locale', array( $this, 'wp_locale_changed' ), -100, 1 );
 			add_action( 'switch_locale', array( $this, 'wp_locale_switched' ), -100, 1 );
 			add_action( 'restore_previous_locale', array( $this, 'wp_locale_restored' ), -100, 2 );
-		}
 
-		/**
-		 * Since WPSSO Core v11.7.2.
-		 *
-		 * Monitor the WordPress 'change_locale' action for locale changes.
-		 *
-		 * Log the locale change and clear the Sucom::get_locale() cache.
-		 */
-		public function wp_locale_changed( $locale ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'wp locale changed to ' . $locale );
-			}
-
-			SucomUtil::clear_locale_cache();
-		}
-
-		public function wp_locale_switched( $locale ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'wp locale switched to ' . $locale );
-			}
-		}
-
-		public function wp_locale_restored( $locale, $previous_locale ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log( 'wp locale restored to ' . $locale . ' from ' . $previous_locale );
-			}
+			/**
+			 * Add our image sizes on the front-end, back-end, AJAX calls, and REST API calls.
+			 */
+			add_action( 'wp', array( $this, 'add_plugin_image_sizes' ), -100 );				// Front-end compatibility.
+			add_action( 'admin_init', array( $this, 'add_plugin_image_sizes' ), -100 );			// Back-end + AJAX compatibility.
+			add_action( 'rest_api_init', array( $this, 'add_plugin_image_sizes' ), -100 );			// REST API compatibility.
 		}
 
 		public function set_util_instances( &$plugin ) {
@@ -228,9 +195,45 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 		}
 
+		/**
+		 * Add plugin image sizes before starting a background task, like refreshing the plugin cache.
+		 */
 		public function action_scheduled_task_started( $user_id ) {
 
 			$this->add_plugin_image_sizes();
+		}
+
+		/**
+		 * Since WPSSO Core v11.7.2.
+		 *
+		 * Monitor the WordPress 'change_locale' action for locale changes.
+		 *
+		 * Log the locale change and clear the Sucom::get_locale() cache.
+		 */
+		public function wp_locale_changed( $locale ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'wp locale changed to ' . $locale );
+			}
+
+			SucomUtil::clear_locale_cache();
+		}
+
+		public function wp_locale_switched( $locale ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'wp locale switched to ' . $locale );
+			}
+		}
+
+		public function wp_locale_restored( $locale, $previous_locale ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'wp locale restored to ' . $locale . ' from ' . $previous_locale );
+			}
 		}
 
 		/**
@@ -1747,196 +1750,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return wp_json_encode( $data, $options, $depth );
 		}
 
-		public function get_oembed_url( $mod = false, $format = 'json' ) {
+		public function get_alternates( array $mod ) {
 
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			$url = '';
-
-			if ( ! function_exists( 'get_oembed_endpoint_url' ) ) {	// Since WP v4.4.
-
-				return $url;
-			}
-
-			/**
-			 * The $mod array argument is preferred but not required.
-			 *
-			 * $mod = true | false | post_id | $mod array
-			 */
-			if ( ! is_array( $mod ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
-				}
-
-				$mod = $this->p->page->get_mod( $mod );
-			}
-
-			if ( $mod[ 'is_post' ] ) {
-
-				if ( $mod[ 'id' ] ) {	// Just in case.
-
-					if ( 'publish' !== $mod[ 'post_status' ] ) {
-
-						if ( $mod[ 'wp_obj' ] ) {	// Just in case.
-
-							$mod[ 'wp_obj' ]->post_status = 'publish';
-
-							if ( empty( $mod[ 'wp_obj' ]->post_name ) ) {
-
-								$mod[ 'wp_obj' ]->post_name = sanitize_title( $mod[ 'wp_obj' ]->post_title );
-							}
-
-							$url = get_permalink( $mod[ 'wp_obj' ] );
-						}
-					}
-
-					if ( empty( $url ) ) {
-
-						$url = get_permalink( $mod[ 'id' ] );
-					}
-
-					$url = $this->sanitize_url( $url, 'post permalink' );	// Check for WP_Error.
-
-					$url = apply_filters( 'wpsso_post_url', $url, $mod );
-				}
-			}
-
-			if ( ! empty( $url ) ) {
-
-				if ( self::get_const( 'FORCE_SSL' ) && ! self::is_https( $url ) ) {
-
-					$url = set_url_scheme( $url, 'https' );
-				}
-
-				$url = get_oembed_endpoint_url( $url, $format );	// Since WP v4.4.
-			}
-
-			return apply_filters( 'wpsso_oembed_url', $url, $mod, $format );
-		}
-
-		public function get_oembed_data( $mod = false, $width = '600' ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->mark();
-			}
-
-			$data = false;	// Returns false on error.
-
-			if ( ! function_exists( 'get_oembed_response_data' ) ) {	// Since WP v4.4.
-
-				return $data;
-			}
-
-			/**
-			 * The $mod array argument is preferred but not required.
-			 *
-			 * $mod = true | false | post_id | $mod array
-			 */
-			if ( ! is_array( $mod ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
-				}
-
-				$mod = $this->p->page->get_mod( $mod );
-			}
-
-			if ( $mod[ 'is_post' ] ) {
-
-				if ( $mod[ 'id' ] ) {
-
-					if ( 'publish' !== $mod[ 'post_status' ] ) {
-
-						if ( $mod[ 'wp_obj' ] ) {	// Just in case.
-
-							$mod[ 'wp_obj' ]->post_status = 'publish';
-
-							if ( empty( $mod[ 'wp_obj' ]->post_name ) ) {
-
-								$mod[ 'wp_obj' ]->post_name = sanitize_title( $mod[ 'wp_obj' ]->post_title );
-							}
-
-							$data = get_oembed_response_data( $mod[ 'wp_obj' ], $width );	// Returns false on error.
-						}
-
-						if ( empty( $data ) ) {
-
-							$data = get_oembed_response_data( $mod[ 'id' ], $width );	// Returns false on error.
-						}
-
-					} else {
-
-						$data = get_oembed_response_data( $mod[ 'id' ], $width );		// Returns false on error.
-					}
-				}
-			}
-
-			return apply_filters( 'wpsso_oembed_data', $data, $mod, $width );
-		}
-
-		public function get_sharing_url( $mod = false, $add_page = true, $atts = array() ) {
-
-			if ( $this->p->debug->enabled ) {
-
-				$this->p->debug->log_args( array(
-					'mod'      => $mod,
-					'add_page' => $add_page,
-					'atts'     => $atts,
-				) );
-			}
-
-			$url = $this->get_canonical_url( $mod, $add_page );
-
-			$utm = array();
-
-			foreach ( array(
-				'utm_medium',
-				'utm_source',
-				'utm_campaign',
-				'utm_content',
-				'utm_term',
-			) as $q ) {
-
-				/**
-				 * Ignore 0, false, null, and '' (empty string) values.
-				 */
-				$utm[ $q ] = empty( $atts[ $q ] ) ? false : $atts[ $q ];
-			}
-
-			$utm = apply_filters( 'wpsso_sharing_utm_args', $utm, $mod );
-
-			/**
-			 * To add UTM tracking query arguments we need at least 'utm_source', 'utm_medium', and 'utm_campaign'.
-			 */
-			if ( ! empty( $utm[ 'utm_source' ] ) && ! empty( $utm[ 'utm_medium' ] ) && ! empty( $utm[ 'utm_campaign' ] ) ) {
-
-				$url = add_query_arg( array(
-					'utm_medium'   => $utm[ 'utm_medium' ],		// Example: 'social'.
-					'utm_source'   => $utm[ 'utm_source' ],		// Example: 'facebook'.
-					'utm_campaign' => $utm[ 'utm_campaign' ],	// Example: 'book-launch'
-					'utm_content'  => $utm[ 'utm_content' ],	// Example: 'wpsso-rrssb-content-bottom'
-					'utm_term'     => $utm[ 'utm_term' ],
-				), $url );
-			}
-
-			return apply_filters( 'wpsso_sharing_url', $url, $mod, $add_page );
-		}
-
-		/**
-		 * Shorten the sharing URL using the selected shortening service.
-		 */
-		public function get_sharing_short_url( $mod = false, $add_page = true, $atts = array() ) {
-
-			$url = $this->get_sharing_url( $mod, $add_page, $atts );
-
-			return $this->shorten_url( $url, $mod );
+			return apply_filters( 'wpsso_get_alternates', array(), $mod );
 		}
 
 		/**
@@ -2028,7 +1844,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						$url = get_comment_link( $mod[ 'id' ] );
 
-						$url = $this->sanitize_url( $url, 'comment link' );	// Check for WP_Error.
+						$url = $this->is_string_url( $url, 'comment link' );	// Check for WP_Error.
 					}
 
 					$url = apply_filters( 'wpsso_comment_url', $url, $mod );
@@ -2041,7 +1857,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 							$url = get_post_type_archive_link( $mod[ 'post_type' ] );
 
-							$url = $this->sanitize_url( $url, 'post type archive link' );	// Check for WP_Error.
+							$url = $this->is_string_url( $url, 'post type archive link' );	// Check for WP_Error.
 
 						} elseif ( $mod[ 'id' ] ) {	// Just in case.
 
@@ -2065,7 +1881,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 								$url = get_permalink( $mod[ 'id' ] );
 							}
 
-							$url = $this->sanitize_url( $url, 'post permalink' );	// Check for WP_Error.
+							$url = $this->is_string_url( $url, 'post permalink' );	// Check for WP_Error.
 
 						} elseif ( $this->p->debug->enabled ) {
 
@@ -2085,7 +1901,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						$url = get_term_link( $mod[ 'id' ], $mod[ 'tax_slug' ] );
 
-						$url = $this->sanitize_url( $url, 'term link' );	// Check for WP_Error.
+						$url = $this->is_string_url( $url, 'term link' );	// Check for WP_Error.
 					}
 
 					$url = apply_filters( 'wpsso_term_url', $url, $mod );
@@ -2096,7 +1912,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						$url = get_author_posts_url( $mod[ 'id' ] );
 
-						$url = $this->sanitize_url( $url, 'author posts url' );	// Check for WP_Error.
+						$url = $this->is_string_url( $url, 'author posts url' );	// Check for WP_Error.
 					}
 
 					$url = apply_filters( 'wpsso_user_url', $url, $mod );
@@ -2105,7 +1921,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 					$url = get_search_link( $mod[ 'query_vars' ][ 's' ] );
 
-					$url = $this->sanitize_url( $url, 'search link' );	// Check for WP_Error.
+					$url = $this->is_string_url( $url, 'search link' );	// Check for WP_Error.
 
 					$url = apply_filters( 'wpsso_search_url', $url, $mod );
 
@@ -2117,19 +1933,19 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 							$url = get_year_link( $mod[ 'query_vars' ][ 'year' ] );
 
-							$url = $this->sanitize_url( $url, 'year link' );	// Check for WP_Error.
+							$url = $this->is_string_url( $url, 'year link' );	// Check for WP_Error.
 
 						} elseif ( $mod[ 'is_month' ] ) {
 
 							$url = get_month_link( $mod[ 'query_vars' ][ 'year' ], $mod[ 'query_vars' ][ 'monthnum' ] );
 
-							$url = $this->sanitize_url( $url, 'month link' );	// Check for WP_Error.
+							$url = $this->is_string_url( $url, 'month link' );	// Check for WP_Error.
 
 						} elseif ( $mod[ 'is_day' ] ) {
 
 							$url = get_day_link( $mod[ 'query_vars' ][ 'year' ], $mod[ 'query_vars' ][ 'monthnum' ], $mod[ 'query_vars' ][ 'day' ] );
 
-							$url = $this->sanitize_url( $url, 'day link' );	// Check for WP_Error.
+							$url = $this->is_string_url( $url, 'day link' );	// Check for WP_Error.
 						}
 					}
 
@@ -2177,29 +1993,138 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $url;
 		}
 
-		private function sanitize_url( $url, $context ) {
-
-			if ( is_string( $url ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( $context . ' url = ' . $url );
-				}
-
-				return $url;	// Stop here.
-			}
+		public function get_oembed_url( $mod = false, $format = 'json' ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( $context . ' url is ' . gettype( $url ) );
+				$this->p->debug->mark();
+			}
 
-				if ( is_wp_error( $url ) ) {
+			$url = '';
 
-					$this->p->debug->log( $context . ' url error: ' . $url->get_error_message() );
+			if ( ! function_exists( 'get_oembed_endpoint_url' ) ) {	// Since WP v4.4.
+
+				return $url;
+			}
+
+			/**
+			 * The $mod array argument is preferred but not required.
+			 *
+			 * $mod = true | false | post_id | $mod array
+			 */
+			if ( ! is_array( $mod ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
+				}
+
+				$mod = $this->p->page->get_mod( $mod );
+			}
+
+			if ( $mod[ 'is_post' ] ) {
+
+				if ( $mod[ 'id' ] ) {	// Just in case.
+
+					if ( 'publish' !== $mod[ 'post_status' ] ) {
+
+						if ( $mod[ 'wp_obj' ] ) {	// Just in case.
+
+							$mod[ 'wp_obj' ]->post_status = 'publish';
+
+							if ( empty( $mod[ 'wp_obj' ]->post_name ) ) {
+
+								$mod[ 'wp_obj' ]->post_name = sanitize_title( $mod[ 'wp_obj' ]->post_title );
+							}
+
+							$url = get_permalink( $mod[ 'wp_obj' ] );
+						}
+					}
+
+					if ( empty( $url ) ) {
+
+						$url = get_permalink( $mod[ 'id' ] );
+					}
+
+					$url = $this->is_string_url( $url, 'post permalink' );	// Check for WP_Error.
+
+					$url = apply_filters( 'wpsso_post_url', $url, $mod );
 				}
 			}
 
-			return false;
+			if ( ! empty( $url ) ) {
+
+				if ( self::get_const( 'FORCE_SSL' ) && ! self::is_https( $url ) ) {
+
+					$url = set_url_scheme( $url, 'https' );
+				}
+
+				$url = get_oembed_endpoint_url( $url, $format );	// Since WP v4.4.
+			}
+
+			return apply_filters( 'wpsso_oembed_url', $url, $mod, $format );
+		}
+
+		public function get_oembed_data( $mod = false, $width = '600' ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			$data = false;	// Returns false on error.
+
+			if ( ! function_exists( 'get_oembed_response_data' ) ) {	// Since WP v4.4.
+
+				return $data;
+			}
+
+			/**
+			 * The $mod array argument is preferred but not required.
+			 *
+			 * $mod = true | false | post_id | $mod array
+			 */
+			if ( ! is_array( $mod ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
+				}
+
+				$mod = $this->p->page->get_mod( $mod );
+			}
+
+			if ( $mod[ 'is_post' ] ) {
+
+				if ( $mod[ 'id' ] ) {
+
+					if ( 'publish' !== $mod[ 'post_status' ] ) {
+
+						if ( $mod[ 'wp_obj' ] ) {	// Just in case.
+
+							$mod[ 'wp_obj' ]->post_status = 'publish';
+
+							if ( empty( $mod[ 'wp_obj' ]->post_name ) ) {
+
+								$mod[ 'wp_obj' ]->post_name = sanitize_title( $mod[ 'wp_obj' ]->post_title );
+							}
+
+							$data = get_oembed_response_data( $mod[ 'wp_obj' ], $width );	// Returns false on error.
+						}
+
+						if ( empty( $data ) ) {
+
+							$data = get_oembed_response_data( $mod[ 'id' ], $width );	// Returns false on error.
+						}
+
+					} else {
+
+						$data = get_oembed_response_data( $mod[ 'id' ], $width );		// Returns false on error.
+					}
+				}
+			}
+
+			return apply_filters( 'wpsso_oembed_data', $data, $mod, $width );
 		}
 
 		/**
@@ -2252,7 +2177,65 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $url;
 		}
 
-		private function get_url_paged( $url, array $mod, $add_page ) {
+		public function get_sharing_url( $mod = false, $add_page = true, $atts = array() ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_args( array(
+					'mod'      => $mod,
+					'add_page' => $add_page,
+					'atts'     => $atts,
+				) );
+			}
+
+			$url = $this->get_canonical_url( $mod, $add_page );
+
+			$utm = array();
+
+			foreach ( array(
+				'utm_medium',
+				'utm_source',
+				'utm_campaign',
+				'utm_content',
+				'utm_term',
+			) as $q ) {
+
+				/**
+				 * Ignore 0, false, null, and '' (empty string) values.
+				 */
+				$utm[ $q ] = empty( $atts[ $q ] ) ? false : $atts[ $q ];
+			}
+
+			$utm = apply_filters( 'wpsso_sharing_utm_args', $utm, $mod );
+
+			/**
+			 * To add UTM tracking query arguments we need at least 'utm_source', 'utm_medium', and 'utm_campaign'.
+			 */
+			if ( ! empty( $utm[ 'utm_source' ] ) && ! empty( $utm[ 'utm_medium' ] ) && ! empty( $utm[ 'utm_campaign' ] ) ) {
+
+				$url = add_query_arg( array(
+					'utm_medium'   => $utm[ 'utm_medium' ],		// Example: 'social'.
+					'utm_source'   => $utm[ 'utm_source' ],		// Example: 'facebook'.
+					'utm_campaign' => $utm[ 'utm_campaign' ],	// Example: 'book-launch'
+					'utm_content'  => $utm[ 'utm_content' ],	// Example: 'wpsso-rrssb-content-bottom'
+					'utm_term'     => $utm[ 'utm_term' ],
+				), $url );
+			}
+
+			return apply_filters( 'wpsso_sharing_url', $url, $mod, $add_page );
+		}
+
+		/**
+		 * Shorten the sharing URL using the selected shortening service.
+		 */
+		public function get_sharing_short_url( $mod = false, $add_page = true, $atts = array() ) {
+
+			$url = $this->get_sharing_url( $mod, $add_page, $atts );
+
+			return $this->shorten_url( $url, $mod );
+		}
+
+		public function get_url_paged( $url, array $mod, $add_page ) {
 
 			if ( empty( $url ) || empty( $add_page ) ) {	// Just in case.
 
@@ -2569,6 +2552,31 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			}
 
 			return true;
+		}
+
+		public function is_string_url( $url, $context ) {
+
+			if ( is_string( $url ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( $context . ' url = ' . $url );
+				}
+
+				return $url;	// Stop here.
+			}
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( $context . ' url is ' . gettype( $url ) );
+
+				if ( is_wp_error( $url ) ) {
+
+					$this->p->debug->log( $context . ' url error: ' . $url->get_error_message() );
+				}
+			}
+
+			return false;
 		}
 
 		public function clear_uniq_urls( $image_sizes = 'default', $mod = false ) {

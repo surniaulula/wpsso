@@ -104,6 +104,18 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $md_opts;
 		}
 
+		public function get_lang( array $mod ) {
+			
+			$lang = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_lang', $filter_opts = true, $pad_opts = true );
+
+			if ( WpssoSchema::is_valid_val( $lang ) ) {
+
+				return $lang;
+			}
+
+			return '';
+		}
+
 		/**
 		 * Called by WpssoHead->get_head_array().
 		 *
