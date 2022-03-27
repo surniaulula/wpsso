@@ -248,6 +248,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 12.1.0-dev.5 (2022/03/27)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 12.0.0 (2022/03/26)**
 
 Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, and BuddyBlog.
@@ -519,6 +533,10 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 	* WordPress v5.2.
 
 == Upgrade Notice ==
+
+= 12.1.0-dev.5 =
+
+(2022/03/27) None.
 
 = 12.0.0 =
 
