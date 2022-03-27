@@ -1750,9 +1750,29 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return wp_json_encode( $data, $options, $depth );
 		}
 
-		public function get_alternates( array $mod ) {
+		/**
+		 * Get the alternates array.
+		 *
+		 * Example:
+		 *
+		 * $alternates = array(
+		 * 	array(
+		 *		'href' => 'https://example.com/en/page-1/',
+		 * 		'hreflang' => 'en_US',
+		 * 	),
+		 * 	array(
+		 *		'href' => 'https://example.com/fr/page-1/',
+		 * 		'hreflang' => 'fr_FR',
+		 * 	),
+		 * 	array(
+		 *		'href' => 'https://example.com/es/page-1/',
+		 * 		'hreflang' => 'es_ES',
+		 * 	),
+		 * );
+		 */
+		public function get_link_rel_alternates( array $mod ) {
 
-			return apply_filters( 'wpsso_get_alternates', array(), $mod );
+			return apply_filters( 'wpsso_link_rel_alternates', array(), $mod );
 		}
 
 		/**
