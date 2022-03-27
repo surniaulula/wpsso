@@ -253,11 +253,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Updated the PolyLang integration module to provide post/term alternates (Premium edition).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added a new `WpssoSchema->get_lang()` method.
+	* Added a new `WpssoUtil->get_link_rel_alternates()` method.
+	* Added a new 'wpsso_link_rel_alternates' filter.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
