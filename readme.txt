@@ -248,7 +248,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 12.1.0-dev.6 (2022/03/27)**
+**Version 12.1.0-dev.7 (2022/03/27)**
 
 * **New Features**
 	* None.
@@ -536,7 +536,7 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 == Upgrade Notice ==
 
-= 12.1.0-dev.6 =
+= 12.1.0-dev.7 =
 
 (2022/03/27) None.
 
