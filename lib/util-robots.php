@@ -161,7 +161,7 @@ if ( ! class_exists( 'WpssoUtilRobots' ) ) {
 
 					if ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'custom robots noindex = ' . $md_opts[ 'robots_noindex' ] );
+						$this->p->debug->log( 'robots noindex for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' is true' );
 					}
 
 					$is_noindex = $md_opts[ 'robots_noindex' ] ? true : false;
