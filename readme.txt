@@ -248,7 +248,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 12.1.0-dev.10 (2022/03/29)**
+**Version 12.1.0-dev.11 (2022/03/29)**
 
 * **New Features**
 	* None.
@@ -536,7 +536,7 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 == Upgrade Notice ==
 
-= 12.1.0-dev.10 =
+= 12.1.0-dev.11 =
 
 (2022/03/29) Updated the PolyLang and WPML integration modules to provide post/term alternate languages for sitemaps (Premium edition).
 
