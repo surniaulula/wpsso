@@ -1772,7 +1772,13 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 */
 		public function get_link_rel_alternates( array $mod ) {
 
-			return apply_filters( 'wpsso_link_rel_alternates', array(), $mod );
+			$alternates = apply_filters( 'wpsso_link_rel_alternates', array(), $mod );
+
+			$key_values = array_column( $alternates, 'href' ); 
+			
+			array_multisort( $key_values, SORT_ASC, $alternates );
+
+			return $alternates;
 		}
 
 		/**
