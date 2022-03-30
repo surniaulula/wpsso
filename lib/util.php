@@ -1774,6 +1774,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$alternates = apply_filters( 'wpsso_link_rel_alternates', array(), $mod );
 
+			if ( $this->p->debug->enabled ) {
+				
+				$this->p->debug->log_arr( 'alternates', $alternates );
+			}
+
 			return $alternates;
 		}
 
