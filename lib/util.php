@@ -1774,9 +1774,9 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 			$alternates = apply_filters( 'wpsso_link_rel_alternates', array(), $mod );
 
-			//$key_values = array_column( $alternates, 'href' ); 
+			$key_values = array_column( $alternates, 'href' ); 
 			
-			//array_multisort( $key_values, SORT_ASC, $alternates );
+			array_multisort( $key_values, SORT_ASC, $alternates );
 
 			if ( $this->p->debug->enabled ) {
 				
