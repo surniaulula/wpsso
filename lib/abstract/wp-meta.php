@@ -187,6 +187,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			'tax_label_plural'       => false,	// Taxonomy plural name.
 			'tax_label_single'       => false,	// Taxonomy singular name.
 			'user_name'              => '',		// User display name.
+			'wpml_code'              => '',
 		);
 
 		public function __construct( &$plugin ) {
