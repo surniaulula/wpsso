@@ -1886,6 +1886,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 						if ( $mod[ 'is_post_type_archive' ] ) {	// The post ID may be 0.
 
+							if ( $this->p->debug->enabled ) {
+
+								$this->p->debug->log( 'post type is archive' );
+							}
+
 							$url = get_post_type_archive_link( $mod[ 'post_type' ] );
 
 							$url = $this->is_string_url( $url, 'post type archive link' );	// Check for WP_Error.
@@ -1893,6 +1898,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 						} elseif ( $mod[ 'id' ] ) {	// Just in case.
 
 							if ( 'publish' !== $mod[ 'post_status' ] ) {
+
+								if ( $this->p->debug->enabled ) {
+
+									$this->p->debug->log( 'post status is not published' );
+								}
 
 								if ( $mod[ 'wp_obj' ] ) {	// Just in case.
 
@@ -1908,6 +1918,11 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 							}
 
 							if ( empty( $url ) ) {	// Just in case.
+								
+								if ( $this->p->debug->enabled ) {
+
+									$this->p->debug->log( 'getting permalink for post id ' . $mod[ 'id' ] );
+								}
 
 								$url = get_permalink( $mod[ 'id' ] );
 							}
