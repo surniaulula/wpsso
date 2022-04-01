@@ -165,11 +165,20 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			}
 
 			static $local_cache = array();
-
+			
 			if ( isset( $local_cache[ $term_id ] ) ) {
 
-				return $local_cache[ $term_id ];
-			}
+				if ( isset( $local_cache[ $term_id ][ $tax_slug ] ) ) {
+
+					if ( $this->p->debug->enabled ) {
+				
+						$this->p->debug->log( 'exiting early: returning term id ' . $term_id . ' mod array from local cache' );
+					}
+	
+					return $local_cache[ $term_id ][ $tax_slug ];
+				}
+
+			} else $local_cache[ $term_id ] = array();	// Create the taxonomy slug array.
 
 			$mod = self::get_mod_defaults();
 
@@ -222,7 +231,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				} else $mod[ 'wp_obj' ] = false;
 			}
 
-			return $local_cache[ $term_id ] = apply_filters( 'wpsso_get_term_mod', $mod, $term_id, $tax_slug );
+			return $local_cache[ $term_id ][ $tax_slug ] = apply_filters( 'wpsso_get_term_mod', $mod, $term_id, $tax_slug );
 		}
 
 		public function get_mod_wp_object( array $mod ) {

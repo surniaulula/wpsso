@@ -48,12 +48,19 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->mark();
+				$this->p->debug->log_args( array(
+					'comment_id' => $comment_id,
+				) );
 			}
 
 			static $local_cache = array();
 
 			if ( isset( $local_cache[ $comment_id ] ) ) {
+
+				if ( $this->p->debug->enabled ) {
+			
+					$this->p->debug->log( 'exiting early: returning comment id ' . $comment_id . ' mod array from local cache' );
+				}
 
 				return $local_cache[ $comment_id ];
 			}
@@ -96,9 +103,6 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 				} else $mod[ 'wp_obj' ] = false;
 			}
 
-			/**
-			 * Hooked by the 'coauthors' pro module.
-			 */
 			return $local_cache[ $comment_id ] = apply_filters( 'wpsso_get_comment_mod', $mod, $comment_id );
 		}
 

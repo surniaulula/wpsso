@@ -173,6 +173,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 			if ( isset( $local_cache[ $user_id ] ) ) {
 
+				if ( $this->p->debug->enabled ) {
+			
+					$this->p->debug->log( 'exiting early: returning user id ' . $user_id . ' mod array from local cache' );
+				}
+
 				return $local_cache[ $user_id ];
 			}
 
