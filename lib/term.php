@@ -164,6 +164,10 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				) );
 			}
 
+			/**
+			 * Taxonomy term IDs from older WordPress versions may not be unique, so use the term ID and taxonomy slug
+			 * to cache the mod array.
+			 */
 			static $local_cache = array();
 			
 			if ( isset( $local_cache[ $term_id ] ) ) {
