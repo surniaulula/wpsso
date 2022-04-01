@@ -80,10 +80,20 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public function filter_sanitize_md_defaults( $md_defs, $mod ) {
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
 			return $this->filter_sanitize_md_options( $md_defs, $mod );
 		}
 
 		public function filter_sanitize_md_options( $md_opts, $mod ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
 
 			if ( ! empty( $mod[ 'is_post' ] ) ) {
 
@@ -105,15 +115,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		public function get_lang( array $mod ) {
-			
+
 			$lang = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_lang', $filter_opts = true, $pad_opts = true );
 
-			if ( WpssoSchema::is_valid_val( $lang ) ) {
+			$lang = WpssoSchema::is_valid_val( $lang ) ? $lang : '';
 
-				return $lang;
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log( 'returning lang = ' . $lang );
 			}
 
-			return '';
+			return $lang;
 		}
 
 		/**

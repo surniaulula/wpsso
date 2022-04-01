@@ -169,16 +169,16 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			 * to cache the mod array.
 			 */
 			static $local_cache = array();
-			
+
 			if ( isset( $local_cache[ $term_id ] ) ) {
 
 				if ( isset( $local_cache[ $term_id ][ $tax_slug ] ) ) {
 
 					if ( $this->p->debug->enabled ) {
-				
+
 						$this->p->debug->log( 'exiting early: returning term id ' . $term_id . ' mod array from local cache' );
 					}
-	
+
 					return $local_cache[ $term_id ][ $tax_slug ];
 				}
 

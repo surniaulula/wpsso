@@ -214,7 +214,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			if ( isset( $local_cache[ $post_id ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
-			
+
 					$this->p->debug->log( 'exiting early: returning post id ' . $post_id . ' mod array from local cache' );
 				}
 

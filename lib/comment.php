@@ -58,7 +58,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 			if ( isset( $local_cache[ $comment_id ] ) ) {
 
 				if ( $this->p->debug->enabled ) {
-			
+
 					$this->p->debug->log( 'exiting early: returning comment id ' . $comment_id . ' mod array from local cache' );
 				}
 

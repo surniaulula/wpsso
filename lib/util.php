@@ -1775,7 +1775,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$alternates = apply_filters( 'wpsso_link_rel_alternates', array(), $mod );
 
 			if ( $this->p->debug->enabled ) {
-				
+
 				$this->p->debug->log_arr( 'alternates', $alternates );
 			}
 
@@ -1914,7 +1914,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 							}
 
 							if ( empty( $url ) ) {	// Just in case.
-								
+
 								if ( $this->p->debug->enabled ) {
 
 									$this->p->debug->log( 'getting permalink for post id ' . $mod[ 'id' ] );
