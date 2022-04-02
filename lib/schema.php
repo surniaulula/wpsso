@@ -116,16 +116,21 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		public function get_lang( array $mod ) {
 
-			$lang = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_lang', $filter_opts = true, $pad_opts = true );
+			if ( $this->p->debug->enabled ) {
 
-			$lang = WpssoSchema::is_valid_val( $lang ) ? $lang : '';
+				$this->p->debug->mark();
+			}
+
+			$schema_lang = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_lang', $filter_opts = true, $pad_opts = true );
+
+			$schema_lang = WpssoSchema::is_valid_val( $schema_lang ) ? $schema_lang : '';
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->log( 'returning lang = ' . $lang );
+				$this->p->debug->log( 'returning schema_lang = ' . $schema_lang );
 			}
 
-			return $lang;
+			return $schema_lang;
 		}
 
 		/**
@@ -138,9 +143,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
-			}
-
-			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark( 'build schema array' );	// Begin timer.
 			}
