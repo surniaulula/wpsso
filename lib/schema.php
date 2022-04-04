@@ -145,7 +145,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				
 					} elseif ( $this->p->debug->enabled ) {
 						
-						$this->p->debug->log( 'custom schema_lang = ' . $type_id );
+						$this->p->debug->log( 'custom schema_lang = ' . $schema_lang );
 					}
 
 				} else {
