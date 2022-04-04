@@ -4835,54 +4835,54 @@ msgstr ""
 msgid "Link property value is empty."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1059
+#: lib/abstract/wp-meta.php:1067
 msgid "checking meta tags"
-msgstr ""
-
-#: lib/abstract/wp-meta.php:1127
-msgctxt "metabox tab"
-msgid "Edit General"
-msgstr ""
-
-#: lib/abstract/wp-meta.php:1128
-msgctxt "metabox tab"
-msgid "Edit Schema"
-msgstr ""
-
-#: lib/abstract/wp-meta.php:1129 lib/messages.php:317
-msgctxt "metabox tab"
-msgid "Edit Media"
-msgstr ""
-
-#: lib/abstract/wp-meta.php:1133
-msgctxt "metabox tab"
-msgid "Edit Visibility"
-msgstr ""
-
-#: lib/abstract/wp-meta.php:1134
-msgctxt "metabox tab"
-msgid "Preview Social"
 msgstr ""
 
 #: lib/abstract/wp-meta.php:1135
 msgctxt "metabox tab"
-msgid "Preview oEmbed"
+msgid "Edit General"
 msgstr ""
 
 #: lib/abstract/wp-meta.php:1136
 msgctxt "metabox tab"
+msgid "Edit Schema"
+msgstr ""
+
+#: lib/abstract/wp-meta.php:1137 lib/messages.php:317
+msgctxt "metabox tab"
+msgid "Edit Media"
+msgstr ""
+
+#: lib/abstract/wp-meta.php:1141
+msgctxt "metabox tab"
+msgid "Edit Visibility"
+msgstr ""
+
+#: lib/abstract/wp-meta.php:1142
+msgctxt "metabox tab"
+msgid "Preview Social"
+msgstr ""
+
+#: lib/abstract/wp-meta.php:1143
+msgctxt "metabox tab"
+msgid "Preview oEmbed"
+msgstr ""
+
+#: lib/abstract/wp-meta.php:1144
+msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1456
+#: lib/abstract/wp-meta.php:1464
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1787 lib/json-filters/type/claimreview.php:69
+#: lib/abstract/wp-meta.php:1795 lib/json-filters/type/claimreview.php:69
 msgid "A claim review cannot be the subject of another claim review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1789
+#: lib/abstract/wp-meta.php:1797
 msgid ""
 "Please select a subject webpage type that better describes the subject of "
 "the webpage (ie. the content) being reviewed."
@@ -10533,26 +10533,26 @@ msgstr ""
 msgid "adding schema place"
 msgstr ""
 
-#: lib/schema.php:539
+#: lib/schema.php:543
 msgid "adding schema"
 msgstr ""
 
-#: lib/schema.php:1797
+#: lib/schema.php:1801
 msgid "adding schema %s #%d image"
 msgstr ""
 
-#: lib/schema.php:1908
+#: lib/schema.php:1912
 msgid ""
 "Please note that although the Schema standard allows the subject of a review "
 "to be any Schema type, <a href=\"%1$s\">Google does not allow reviews for "
 "the Schema %2$s type</a>."
 msgstr ""
 
-#: lib/schema.php:1935
+#: lib/schema.php:1939
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:3579
+#: lib/schema.php:3583
 msgid "checking schema properties"
 msgstr ""
 

@@ -881,6 +881,10 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 			if ( $prev_version > 0 && $prev_version <= 902 ) {
 
+				/**
+				 * If there is a multilingual plugin available, trust the plugin and ignore any previous /
+				 * inherited custom language value.
+				 */
 				if ( $this->p->avail[ 'lang' ][ 'any' ] ) {
 
 					unset( $md_opts[ 'schema_lang' ] );
@@ -902,6 +906,10 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 */
 		protected function return_options( $obj_id, array $md_opts, $md_key = false, $pad_opts = false ) {
 
+			/**
+			 * If there is a multilingual plugin available, trust the plugin and ignore any previous / inherited custom
+			 * language value.
+			 */
 			if ( $this->p->avail[ 'lang' ][ 'any' ] ) {
 
 				unset( $md_opts[ 'schema_lang' ] );

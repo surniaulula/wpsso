@@ -123,6 +123,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$schema_lang = '';
 
+			/**
+			 * If there is a multilingual plugin available, trust the plugin and ignore any previous / inherited custom
+			 * language value.
+			 */
 			if ( $this->p->avail[ 'lang' ][ 'any' ] ) {
 
 				$schema_lang = SucomUtil::get_locale( $mod );
