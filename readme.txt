@@ -248,7 +248,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 12.1.0-rc.6 (2022/04/04)**
+**Version 12.1.0 (2022/04/04)**
 
 * **New Features**
 	* None.
@@ -537,7 +537,7 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 == Upgrade Notice ==
 
-= 12.1.0-rc.6 =
+= 12.1.0 =
 
 (2022/04/04) Fixed a possible PHP error in a cron job for required Schema properties. Added a check for any active multilingual plugin to disable the unnecessary custom Schema Language option. Updated the PolyLang and WPML integration modules (Premium edition).
 
