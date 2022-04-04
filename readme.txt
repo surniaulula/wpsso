@@ -253,6 +253,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
+	* Added a check for any active multilingual plugin to disable the unnecessary custom Schema Language option.
 	* Updated the PolyLang and WPML integration modules to provide post/term alternate languages for sitemaps (Premium edition).
 * **Bugfixes**
 	* Fixed a possible PHP error in a cron job for required Schema properties.
@@ -538,7 +539,7 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 = 12.1.0-rc.6 =
 
-(2022/04/04) Fixed a possible PHP error in a cron job for required Schema properties. Updated the PolyLang and WPML integration modules to provide post/term alternate languages for sitemaps (Premium edition).
+(2022/04/04) Fixed a possible PHP error in a cron job for required Schema properties. Added a check for any active multilingual plugin to disable the unnecessary custom Schema Language option. Updated the PolyLang and WPML integration modules (Premium edition).
 
 = 12.0.0 =
 
