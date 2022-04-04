@@ -137,15 +137,22 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				if ( $this->is_schema_type_child( $schema_type_id, 'creative.work' ) ) {
 
-					$schema_lang = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_lang', $filter_opts = true, $pad_opts = true );
+					$schema_lang = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_lang' );
+
+					if ( empty( $schema_lang ) || 'none' === $schema_lang ) {
+
+						$schema_lang = SucomUtil::get_locale( $mod );
+				
+					} elseif ( $this->p->debug->enabled ) {
+						
+						$this->p->debug->log( 'custom schema_lang = ' . $type_id );
+					}
 
 				} else {
-
+				
 					$schema_lang = SucomUtil::get_locale( $mod );
 				}
 			}
-
-			$schema_lang = WpssoSchema::is_valid_val( $schema_lang ) ? $schema_lang : '';
 
 			if ( $this->p->debug->enabled ) {
 
@@ -625,13 +632,13 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 					$type_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_type' );	// Returns null if an index key is not found.
 
-					if ( empty( $type_id ) || $type_id === 'none' || empty( $schema_types[ $type_id ] ) ) {	// Check for an invalid type id.
+					if ( empty( $type_id ) || 'none' === $type_id || empty( $schema_types[ $type_id ] ) ) {	// Check for an invalid type id.
 
 						$type_id = null;
 
 					} elseif ( $this->p->debug->enabled ) {
 
-						$this->p->debug->log( 'custom type id = ' . $type_id );
+						$this->p->debug->log( 'custom schema_type = ' . $type_id );
 					}
 				}
 			}
