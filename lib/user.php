@@ -844,7 +844,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				return;
 			}
 
-			$pkg_info        = $this->p->admin->get_pkg_info();	// Returns an array from cache.
 			$metabox_screen  = 'wpsso-user';
 			$metabox_context = 'normal';
 
@@ -868,8 +867,6 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			$tabs         = $this->get_document_meta_tabs( $metabox_id, $mod );
 			$md_opts      = $this->get_options( $user_obj->ID );
 			$md_defs      = $this->get_defaults( $user_obj->ID );
-
-			$this->p->admin->get_pkg_info();	// Returns an array from cache.
 
 			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $md_opts, $md_defs, $this->p->id );
 

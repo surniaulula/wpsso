@@ -2169,7 +2169,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			} elseif ( is_string( $max_len ) ) {
 
-				$limits = WpssoConfig::get_input_limits( $max_len );	// Uses a local static cache.
+				$limits = WpssoConfig::get_input_limits( $max_len );	// Uses a local cache.
 
 				if ( ! empty( $limits[ 'max' ] ) ) {
 

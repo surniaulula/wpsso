@@ -50,7 +50,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				}
 			}
 
-			$limits             = WpssoConfig::get_input_limits();	// Uses a local static cache.
+			$limits             = WpssoConfig::get_input_limits();	// Uses a local cache.
 			$currencies         = SucomUtil::get_currency_abbrev();
 			$product_categories = $this->p->util->get_google_product_categories();
 			$schema_types       = $this->p->schema->get_schema_types_select();
@@ -182,8 +182,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Language', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_lang',
-					'content'  => $form->get_no_select( 'schema_lang', SucomUtil::get_available_locales(),
-						$css_class = 'locale' ),
+					'content'  => $form->get_no_select( 'schema_lang', SucomUtil::get_available_locales(), $css_class = 'locale' ),
 				),
 				'schema_family_friendly' => array(
 					'tr_class' => $schema_type_row_class[ 'creative_work' ],

@@ -51,7 +51,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 			$notices_shown = 0;
 
-			$pkg_info = $this->p->admin->get_pkg_info();	// Returns an array from cache.
+			$pkg_info = $this->p->util->get_pkg_info();	// Uses a local cache.
 			$um_info  = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
 			$have_tid = false;
 
@@ -198,7 +198,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 			// translators: Please ignore - translation uses a different text domain.
 			$ecom_plugin_name = __( 'WooCommerce', 'woocommerce' );
 
-			$pkg_info = $this->p->admin->get_pkg_info();	// Returns an array from cache.
+			$pkg_info = $this->p->util->get_pkg_info();	// Uses a local cache.
 
 			if ( empty( $pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
 
@@ -349,7 +349,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
 
-					$pkg_info = $this->p->admin->get_pkg_info();	// Returns an array from cache.
+					$pkg_info = $this->p->util->get_pkg_info();	// Uses a local cache.
 
 					$action_links = array();	// Init a new action array for the notice message.
 
@@ -418,7 +418,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 				return false;
 			}
 
-			$pkg_info         = $this->p->admin->get_pkg_info();	// Returns an array from cache.
+			$pkg_info         = $this->p->util->get_pkg_info();	// Uses a local cache.
 			$ext_info         = $this->p->cf[ 'plugin' ][ $ext ];
 			$ext_purchase_url = $ext_info[ 'url' ][ 'purchase' ];
 

@@ -15,7 +15,7 @@
  * Requires At Least: 5.2
  * Tested Up To: 5.9.3
  * WC Tested Up To: 6.3.1
- * Version: 12.1.0-rc.5
+ * Version: 12.1.0-rc.6
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -281,29 +281,13 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$debug_log  = $this->get_const_status( 'DEBUG_LOG' );
 			$debug_html = $this->get_const_status( 'DEBUG_HTML' );
 
-			/**
-			 * Setup core classes:
-			 *
-			 *	$check
-			 *	$avail
-			 *	$debug
-			 *	$notice
-			 *	$cache
-			 *	$util
-			 *	$opt
-			 *	$script
-			 *	$style
-			 *	$compat
-			 *	$msgs
-			 *	$admin
-			 */
 			$this->check = new WpssoCheck( $this );
 
 			$this->is_pp = $this->check->is_pp();		// Since WPSSO Core v9.8.0.
 			$this->avail = $this->check->get_avail();	// Uses $this->options for availability checks.
 
 			/**
-			 * Make sure a debug object is always available.
+			 * Make sure a debug object variable is always available.
 			 */
 			if ( null === $debug_html ) {	// Constant not defined.
 
@@ -312,7 +296,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			if ( $debug_log || $debug_html ) {
 
-				require_once WPSSO_PLUGINDIR . 'lib/com/debug.php';
+				require_once WPSSO_PLUGINDIR . 'lib/com/debug.php';	// Only load class when needed.
 
 				$this->debug = new SucomDebug( $this, array(
 					'log'  => $debug_log,
@@ -331,7 +315,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			} else {
 
-				$this->debug = new SucomNoDebug();
+				$this->debug = new SucomNoDebug();	// Class always loaded in WpssoConfig::require_libs().
 			}
 
 			/**
@@ -342,17 +326,19 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			do_action( 'wpsso_init_textdomain' );
 
 			/**
-			 * Make sure a notice object is always available.
+			 * Make sure a notice object variable is always available.
 			 */
 			if ( $is_admin || $doing_cron ) {
 
-				require_once WPSSO_PLUGINDIR . 'lib/com/notice.php';
+				require_once WPSSO_PLUGINDIR . 'lib/messages.php';	// Only load class when needed.
+				require_once WPSSO_PLUGINDIR . 'lib/com/notice.php';	// Only load class when needed.
 
+				$this->msgs   = new WpssoMessages( $this );	// Admin tooltip messages.
 				$this->notice = new SucomNotice( $this );
 
 			} else {
 
-				$this->notice = new SucomNoNotice();
+				$this->notice = new SucomNoNotice();	// Class always loaded in WpssoConfig::require_libs().
 			}
 
 			$this->cache = new SucomCache( $this );
@@ -377,16 +363,14 @@ if ( ! class_exists( 'Wpsso' ) ) {
 
 			if ( $is_admin ) {
 
-				require_once WPSSO_PLUGINDIR . 'lib/admin.php';
-				require_once WPSSO_PLUGINDIR . 'lib/conflict.php';
-				require_once WPSSO_PLUGINDIR . 'lib/edit.php';
-				require_once WPSSO_PLUGINDIR . 'lib/messages.php';
-				require_once WPSSO_PLUGINDIR . 'lib/com/form.php';
+				require_once WPSSO_PLUGINDIR . 'lib/admin.php';		// Only load class when needed.
+				require_once WPSSO_PLUGINDIR . 'lib/conflict.php';	// Only load class when needed.
+				require_once WPSSO_PLUGINDIR . 'lib/edit.php';		// Only load class when needed.
+				require_once WPSSO_PLUGINDIR . 'lib/com/form.php';	// Only load class when needed.
 
 				$this->admin    = new WpssoAdmin( $this );	// Admin menus and settings page loader.
 				$this->conflict = new WpssoConflict( $this );	// Admin plugin conflict checks.
 				$this->edit     = new WpssoEdit( $this );	// Admin editing page metabox table rows.
-				$this->msgs     = new WpssoMessages( $this );	// Admin tooltip messages.
 			}
 
 			/**

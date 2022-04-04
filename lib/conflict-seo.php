@@ -743,7 +743,7 @@ if ( ! class_exists( 'WpssoConflictSeo' ) ) {
 				return;
 			}
 
-			$pkg_info = $this->p->admin->get_pkg_info();	// Returns an array from cache.
+			$pkg_info = $this->p->util->get_pkg_info();	// Uses a local cache.
 
 			$wpseo_wc_label = 'Yoast WooCommerce SEO';
 

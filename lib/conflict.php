@@ -63,7 +63,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 			if ( ! empty( $this->p->avail[ 'p_ext' ][ 'ipm' ] ) ) {
 
-				$pkg_info    = $this->p->admin->get_pkg_info();	// Returns an array from cache.
+				$pkg_info    = $this->p->util->get_pkg_info();	// Uses a local cache.
 				$plugins_url = is_multisite() ? network_admin_url( 'plugins.php', null ) : get_admin_url( $blog_id = null, 'plugins.php' );
 				$plugins_url = add_query_arg( array( 's' => 'wpsso-inherit-parent-meta' ), $plugins_url );
 
@@ -82,7 +82,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 			if ( ! empty( $this->p->avail[ 'p_ext' ][ 'json' ] ) ) {
 
-				$pkg_info = $this->p->admin->get_pkg_info();	// Returns an array from cache.
+				$pkg_info = $this->p->util->get_pkg_info();	// Uses a local cache.
 
 				if ( empty( $this->p->options[ 'plugin_wpssojson_tid' ] ) || ! empty( $pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
 
@@ -107,7 +107,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 			if ( ! empty( $this->p->avail[ 'p_ext' ][ 'org' ] ) ) {
 
-				$pkg_info    = $this->p->admin->get_pkg_info();	// Returns an array from cache.
+				$pkg_info    = $this->p->util->get_pkg_info();	// Uses a local cache.
 				$plugins_url = is_multisite() ? network_admin_url( 'plugins.php', null ) : get_admin_url( $blog_id = null, 'plugins.php' );
 				$plugins_url = add_query_arg( array( 's' => 'wpsso+organization+markup' ), $plugins_url );
 				$addon_name  = $pkg_info[ 'wpssoopm' ][ 'name' ];
@@ -131,7 +131,7 @@ if ( ! class_exists( 'WpssoConflict' ) ) {
 
 			if ( ! empty( $this->p->avail[ 'p_ext' ][ 'plm' ] ) ) {
 
-				$pkg_info    = $this->p->admin->get_pkg_info();	// Returns an array from cache.
+				$pkg_info    = $this->p->util->get_pkg_info();	// Uses a local cache.
 				$plugins_url = is_multisite() ? network_admin_url( 'plugins.php', null ) : get_admin_url( $blog_id = null, 'plugins.php' );
 				$plugins_url = add_query_arg( array( 's' => 'wpsso-plm' ), $plugins_url );
 				$addon_link  = empty( $this->p->avail[ 'p_ext' ][ 'opm' ] ) ?

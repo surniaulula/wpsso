@@ -30,8 +30,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		protected $pageref_url;
 		protected $pageref_title;
 
-		protected static $cache_pkg_info = array();
-
 		public static $readme = array();
 
 		public $form    = null;
@@ -254,8 +252,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$this->p->debug->mark();
 			}
-
-			$this->get_pkg_info();	// Returns an array from cache.
 
 			if ( empty( $menu_libs ) ) {
 
@@ -507,7 +503,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		protected function add_menu_page( $menu_slug ) {
 
-			$pkg_info    = $this->get_pkg_info();	// Returns an array from cache.
+			$pkg_info    = $this->p->util->get_pkg_info();	// Uses a local cache.
 			$page_title  = $pkg_info[ 'wpsso' ][ 'short_pkg' ] . ' - ' . $this->menu_name;
 			$menu_title  = $this->get_menu_title();
 			$cf_wp_admin = $this->p->cf[ 'wp' ][ 'admin' ];
@@ -525,7 +521,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			$css_class   = trim( 'wpsso-menu-item wpsso-' . $menu_id . ' ' . $css_class );
 			$menu_title  = '<div class="' . $css_class . ' menu-item-label">' . $menu_title . '</div>';	// Wrap the title string.
-			$pkg_info    = $this->get_pkg_info();	// Returns an array from cache.
+			$pkg_info    = $this->p->util->get_pkg_info();	// Uses a local cache.
 			$page_title  = $pkg_info[ $menu_ext ][ 'short_pkg' ] . ' - ' . $menu_title;
 			$cf_wp_admin = $this->p->cf[ 'wp' ][ 'admin' ];
 			$capability  = isset( $cf_wp_admin[ $menu_lib ][ 'cap' ] ) ? $cf_wp_admin[ $menu_lib ][ 'cap' ] : 'manage_options';
@@ -1136,7 +1132,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				settings_errors( WPSSO_OPTIONS_NAME );
 			}
 
-			$pkg_info       = $this->get_pkg_info();	// Returns an array from cache.
 			$side_col_boxes = $this->get_side_col_boxes();
 			$dashicon_html  = $this->get_menu_dashicon_html( $this->menu_id );
 
@@ -1350,7 +1345,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return $local_cache;
 			}
 
-			$pkg_info = $this->get_pkg_info();	// Returns an array from cache.
+			$pkg_info = $this->p->util->get_pkg_info();	// Uses a local cache.
 
 			$local_cache = array();
 
@@ -1709,7 +1704,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function show_metabox_status_pro() {
 
-			$pkg_info = $this->get_pkg_info();	// Returns an array from cache.
+			$pkg_info = $this->p->util->get_pkg_info();	// Uses a local cache.
 
 			echo '<table class="sucom-settings wpsso column-metabox feature-status">';
 
@@ -1766,7 +1761,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function show_metabox_status_std() {
 
-			$pkg_info = $this->get_pkg_info();	// Returns an array from cache.
+			$pkg_info = $this->p->util->get_pkg_info();	// Uses a local cache.
 
 			echo '<table class="sucom-settings wpsso column-metabox feature-status">';
 
@@ -1794,7 +1789,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public function show_metabox_help_support() {
 
-			$pkg_info = $this->get_pkg_info();	// Returns an array from cache.
+			$pkg_info = $this->p->util->get_pkg_info();	// Uses a local cache.
 
 			echo '<table class="sucom-settings wpsso column-metabox"><tr><td>';
 
@@ -2337,7 +2332,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return '';
 			}
 
-			$pkg_info = $this->get_pkg_info();	// Returns an array from cache.
+			$pkg_info = $this->p->util->get_pkg_info();	// Uses a local cache.
 
 			$footer_html = '<div class="admin-footer-ext">';
 
@@ -2533,7 +2528,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			if ( $network ) {
 
 				$wpsso      =& Wpsso::get_instance();
-				$pkg_info   = $wpsso->admin->get_pkg_info();	// Returns an array from cache.
+				$pkg_info   = $wpsso->util->get_pkg_info();	// Uses a local cache.
 				$is_enabled = $is_enabled || $pkg_info[ 'wpsso' ][ 'pp' ] ? true : false;
 
 				$html .= $form->get_th_html( _x( 'Site Use', 'option label (very short)', 'wpsso' ), 'site-use' );
@@ -2604,7 +2599,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( class_exists( 'WpssoUm' ) ) {
 
-				$pkg_info  = $this->get_pkg_info();	// Returns an array from cache.
+				$pkg_info  = $this->p->util->get_pkg_info();	// Uses a local cache.
 				$check_url = $this->p->util->get_admin_url( 'um-general?wpsso-action=check_for_updates' );
 				$check_url = wp_nonce_url( $check_url, WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
 
@@ -2789,47 +2784,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$this->p->notice->upd( __( 'Import of plugin and add-on settings is complete.', 'wpsso' ) );
 
 			return true;
-		}
-
-		public function get_pkg_info() {
-
-			if ( ! empty( self::$cache_pkg_info ) ) {	// Only execute once.
-
-				return self::$cache_pkg_info;
-			}
-
-			$pkg_info = array();	// Init a new pkg info array.
-
-			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
-
-				if ( empty( $info[ 'name' ] ) ) {	// Just in case.
-
-					continue;
-				}
-
-				$ext_pdir        = $this->p->check->pp( $ext, $li = false );
-				$ext_auth_id     = $this->p->check->get_ext_auth_id( $ext );
-				$ext_pp          = $ext_auth_id && $this->p->check->pp( $ext, $li = true, WPSSO_UNDEF ) === WPSSO_UNDEF ? true : false;
-				$ext_stat        = ( $ext_pp ? 'L' : ( $ext_pdir ? 'U' : 'S' ) ) . ( $ext_auth_id ? '*' : '' );
-				$ext_name_transl = _x( $info[ 'name' ], 'plugin name', 'wpsso' );
-				$pkg_pro_transl  = _x( $this->p->cf[ 'packages' ][ 'pro' ], 'package name', 'wpsso' );
-				$pkg_std_transl  = _x( $this->p->cf[ 'packages' ][ 'std' ], 'package name', 'wpsso' );
-
-				$pkg_info[ $ext ][ 'pdir' ]      = $ext_pdir;
-				$pkg_info[ $ext ][ 'pp' ]        = $ext_pp;
-				$pkg_info[ $ext ][ 'pkg' ]       = $ext_pp ? $pkg_pro_transl : $pkg_std_transl;
-				$pkg_info[ $ext ][ 'short' ]     = $info[ 'short' ];
-				$pkg_info[ $ext ][ 'short_pkg' ] = $info[ 'short' ] . ' ' . $pkg_info[ $ext ][ 'pkg' ];
-				$pkg_info[ $ext ][ 'short_pro' ] = $info[ 'short' ] . ' ' . $pkg_pro_transl;
-				$pkg_info[ $ext ][ 'short_std' ] = $info[ 'short' ] . ' ' . $pkg_std_transl;
-				$pkg_info[ $ext ][ 'gen' ]       = $info[ 'short' ] . ( isset( $info[ 'version' ] ) ? ' ' . $info[ 'version' ] . '/' . $ext_stat : '' );
-				$pkg_info[ $ext ][ 'name' ]      = $ext_name_transl;
-				$pkg_info[ $ext ][ 'name_pkg' ]  = SucomUtil::get_dist_name( $ext_name_transl, $pkg_info[ $ext ][ 'pkg' ] );
-				$pkg_info[ $ext ][ 'name_pro' ]  = SucomUtil::get_dist_name( $ext_name_transl, $pkg_pro_transl );
-				$pkg_info[ $ext ][ 'name_std' ]  = SucomUtil::get_dist_name( $ext_name_transl, $pkg_std_transl );
-			}
-
-			return self::$cache_pkg_info = $pkg_info;
 		}
 
 		public function get_menu_title() {
@@ -3221,7 +3175,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$pkg_info = $this->get_pkg_info();	// Returns an array from cache.
+			$pkg_info = $this->p->util->get_pkg_info();	// Uses a local cache.
 
 			$action_links = array();
 
@@ -3239,14 +3193,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					'height'    => $this->p->cf[ 'wp' ][ 'tb_iframe' ][ 'height' ],
 				), $install_url );
 
-				if ( SucomPlugin::is_plugin_installed( $info[ 'base' ] ) ) {	// Uses static local cache.
+				if ( SucomPlugin::is_plugin_installed( $info[ 'base' ] ) ) {	// Uses a local cache.
 
 					if ( $this->p->debug->enabled ) {
 
 						$this->p->debug->log( $info[ 'base' ] . ' is installed' );
 					}
 
-					if ( SucomPlugin::have_plugin_update( $info[ 'base' ] ) ) {	// Uses static local cache.
+					if ( SucomPlugin::have_plugin_update( $info[ 'base' ] ) ) {	// Uses a local cache.
 
 						if ( $this->p->debug->enabled ) {
 

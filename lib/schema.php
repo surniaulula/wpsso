@@ -121,7 +121,25 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$schema_lang = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_lang', $filter_opts = true, $pad_opts = true );
+			$schema_lang = '';
+
+			if ( $this->p->avail[ 'lang' ][ 'any' ] ) {
+
+				$schema_lang = SucomUtil::get_locale( $mod );
+
+			} else {
+			
+				$schema_type_id = $this->get_mod_schema_type_id( $mod );
+
+				if ( $this->is_schema_type_child( $schema_type_id, 'creative.work' ) ) {
+
+					$schema_lang = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_lang', $filter_opts = true, $pad_opts = true );
+
+				} else {
+
+					$schema_lang = SucomUtil::get_locale( $mod );
+				}
+			}
 
 			$schema_lang = WpssoSchema::is_valid_val( $schema_lang ) ? $schema_lang : '';
 
@@ -1178,7 +1196,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$opt_key      = 'schema_type_for_' . $opt_suffix;
-			$type_id      = $this->p->opt->get_defaults( $opt_key );	// Uses a local static cache.
+			$type_id      = $this->p->opt->get_defaults( $opt_key );	// Uses a local cache.
 			$schema_types = $this->get_schema_types_array( $flatten = true );	// Uses a class variable cache.
 
 			if ( empty( $type_id ) || 'none' === $type_id || empty( $schema_types[ $type_id ] ) ) {

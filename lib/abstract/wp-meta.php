@@ -879,6 +879,14 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				}
 			}
 
+			if ( $prev_version > 0 && $prev_version <= 902 ) {
+
+				if ( $this->p->avail[ 'lang' ][ 'any' ] ) {
+
+					unset( $md_opts[ 'schema_lang' ] );
+				}
+			}
+
 			$md_opts = (array) apply_filters( 'wpsso_upgraded_md_options', $md_opts );
 
 			/**
@@ -893,6 +901,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 * Do not pass $md_opts by reference as the options array may get padded with default values.
 		 */
 		protected function return_options( $obj_id, array $md_opts, $md_key = false, $pad_opts = false ) {
+
+			if ( $this->p->avail[ 'lang' ][ 'any' ] ) {
+
+				unset( $md_opts[ 'schema_lang' ] );
+			}
 
 			if ( $pad_opts ) {
 

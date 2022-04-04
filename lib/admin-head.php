@@ -411,7 +411,7 @@ if ( ! class_exists( 'WpssoAdminHead' ) ) {
 		 */
 		private function single_notice_upsell() {
 
-			$pkg_info = $this->p->admin->get_pkg_info();	// Returns an array from cache.
+			$pkg_info = $this->p->util->get_pkg_info();	// Uses a local cache.
 
 			if ( $pkg_info[ 'wpsso' ][ 'pdir' ] ) {
 

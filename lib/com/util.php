@@ -2633,8 +2633,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$key = substr( $key, 0, $pos );
 			}
 
-			$locale     = self::get_locale( $mixed );	// Uses a static cache.
-			$def_locale = self::get_locale( 'default' );	// Uses a static cache.
+			$locale     = self::get_locale( $mixed );	// Uses a local cache.
+			$def_locale = self::get_locale( 'default' );	// Uses a local cache.
 			$key_locale = $key . '#' . $locale;	// Maybe add the current or default locale.
 
 			if ( $locale === $def_locale ) {
@@ -2656,8 +2656,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		public static function get_multi_key_locale( $prefix, array &$opts, $add_none = false ) {
 
-			$current    = self::get_locale();	// Uses a static cache.
-			$def_locale = self::get_locale( 'default' );	// Uses a static cache.
+			$current    = self::get_locale();	// Uses a local cache.
+			$def_locale = self::get_locale( 'default' );	// Uses a local cache.
 			$matches    = self::preg_grep_keys( '/^' . $prefix . '_([0-9]+)(#.*)?$/', $opts );
 			$results    = array();
 
@@ -2771,7 +2771,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			} elseif ( is_string( $mixed ) ) {
 
-				$locale_names = self::get_available_locale_names();	// Uses a local static cache.
+				$locale_names = self::get_available_locale_names();	// Uses a local cache.
 
 				if ( isset( $locale_names[ $mixed ] ) ) {
 
@@ -2813,7 +2813,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			require_once trailingslashit( ABSPATH ) . 'wp-admin/includes/translation-install.php';
 
 			$translations  = wp_get_available_translations();	// Since WP v4.0.
-			$avail_locales = self::get_available_locales();	// Uses a local static cache.
+			$avail_locales = self::get_available_locales();	// Uses a local cache.
 			$local_cache   = array();
 
 			foreach ( $avail_locales as $locale ) {
@@ -2848,7 +2848,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				return $local_cache;
 			}
 
-			$def_locale  = self::get_locale( 'default' );	// Uses a static cache.
+			$def_locale  = self::get_locale( 'default' );	// Uses a local cache.
 			$local_cache = get_available_languages();
 
 			if ( ! is_array( $local_cache ) ) {	// Just in case.

@@ -52,7 +52,7 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 		 */
 		public function filter_status_pro_features( $features, $ext, $info ) {
 
-			$pkg_info        = $this->p->admin->get_pkg_info();	// Returns an array from cache.
+			$pkg_info        = $this->p->util->get_pkg_info();	// Uses a local cache.
 			$td_class        = $pkg_info[ $ext ][ 'pp' ] ? '' : 'blank';
 			$status_on       = $pkg_info[ $ext ][ 'pp' ] ? 'on' : 'recommended';
 			$integ_tab_url   = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration' );

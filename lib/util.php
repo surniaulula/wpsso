@@ -992,6 +992,49 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			return $opts;
 		}
 
+		public function get_pkg_info() {
+
+			static $pkg_info = array();
+
+			if ( ! empty( $pkg_info ) ) {
+
+				return $pkg_info;
+			}
+
+			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
+
+				if ( empty( $info[ 'name' ] ) ) {	// Just in case.
+
+					continue;
+				}
+
+				$pkg_info[ $ext ] = array();
+
+				$ext_pdir        = $this->p->check->pp( $ext, $li = false );
+				$ext_auth_id     = $this->p->check->get_ext_auth_id( $ext );
+				$ext_pp          = $ext_auth_id && $this->p->check->pp( $ext, $li = true, WPSSO_UNDEF ) === WPSSO_UNDEF ? true : false;
+				$ext_stat        = ( $ext_pp ? 'L' : ( $ext_pdir ? 'U' : 'S' ) ) . ( $ext_auth_id ? '*' : '' );
+				$ext_name_transl = _x( $info[ 'name' ], 'plugin name', 'wpsso' );
+				$pkg_pro_transl  = _x( $this->p->cf[ 'packages' ][ 'pro' ], 'package name', 'wpsso' );
+				$pkg_std_transl  = _x( $this->p->cf[ 'packages' ][ 'std' ], 'package name', 'wpsso' );
+
+				$pkg_info[ $ext ][ 'pdir' ]      = $ext_pdir;
+				$pkg_info[ $ext ][ 'pp' ]        = $ext_pp;
+				$pkg_info[ $ext ][ 'pkg' ]       = $ext_pp ? $pkg_pro_transl : $pkg_std_transl;
+				$pkg_info[ $ext ][ 'short' ]     = $info[ 'short' ];
+				$pkg_info[ $ext ][ 'short_pkg' ] = $info[ 'short' ] . ' ' . $pkg_info[ $ext ][ 'pkg' ];
+				$pkg_info[ $ext ][ 'short_pro' ] = $info[ 'short' ] . ' ' . $pkg_pro_transl;
+				$pkg_info[ $ext ][ 'short_std' ] = $info[ 'short' ] . ' ' . $pkg_std_transl;
+				$pkg_info[ $ext ][ 'gen' ]       = $info[ 'short' ] . ( isset( $info[ 'version' ] ) ? ' ' . $info[ 'version' ] . '/' . $ext_stat : '' );
+				$pkg_info[ $ext ][ 'name' ]      = $ext_name_transl;
+				$pkg_info[ $ext ][ 'name_pkg' ]  = SucomUtil::get_dist_name( $ext_name_transl, $pkg_info[ $ext ][ 'pkg' ] );
+				$pkg_info[ $ext ][ 'name_pro' ]  = SucomUtil::get_dist_name( $ext_name_transl, $pkg_pro_transl );
+				$pkg_info[ $ext ][ 'name_std' ]  = SucomUtil::get_dist_name( $ext_name_transl, $pkg_std_transl );
+			}
+
+			return $pkg_info;
+		}
+
 		public function get_form_cache( $name, $add_none = false ) {
 
 			if ( $this->p->debug->enabled ) {

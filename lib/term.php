@@ -772,7 +772,6 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				return;
 			}
 
-			$pkg_info        = $this->p->admin->get_pkg_info();	// Returns an array from cache.
 			$metabox_screen  = 'wpsso-term';
 			$metabox_context = 'normal';
 
@@ -796,8 +795,6 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			$tabs         = $this->get_document_meta_tabs( $metabox_id, $mod );
 			$md_opts      = $this->get_options( $term_obj->term_id );
 			$md_defs      = $this->get_defaults( $term_obj->term_id );
-
-			$this->p->admin->get_pkg_info();	// Returns an array from cache.
 
 			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $md_opts, $md_defs, $this->p->id );
 

@@ -42,11 +42,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 				$this->p->debug->mark();
 			}
-
-			$this->maybe_set_properties();
 		}
 
 		public function get( $msg_key = false, $info = array() ) {
+
+			$this->maybe_set_properties();
 
 			$msg_key = sanitize_title_with_dashes( $msg_key );
 
@@ -71,7 +71,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			 *
 			 * Example plugin IDs: wpsso, wpssoum, etc.
 			 */
-			$info[ 'plugin_id' ] = $plugin_id = isset( $info[ 'plugin_id' ] ) ? $info[ 'plugin_id' ] : $this->p->id;
+			$plugin_id = $info[ 'plugin_id' ] = isset( $info[ 'plugin_id' ] ) ? $info[ 'plugin_id' ] : $this->p->id;
 
 			/**
 			 * Get the array of plugin URLs (download, purchase, etc.).
@@ -892,12 +892,15 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 			if ( empty( $this->pkg_info ) ) {
 
-				$this->pkg_info        = $this->p->admin->get_pkg_info();	// Returns an array from cache.
-				$this->p_name          = $this->pkg_info[ 'wpsso' ][ 'name' ];
-				$this->p_name_pro      = $this->pkg_info[ 'wpsso' ][ 'name_pro' ];
-				$this->pkg_pro_transl  = _x( $this->p->cf[ 'packages' ][ 'pro' ], 'package name', 'wpsso' );
-				$this->pkg_std_transl  = _x( $this->p->cf[ 'packages' ][ 'std' ], 'package name', 'wpsso' );
-				$this->fb_prefs_transl = __( 'Facebook prefers images of 1200x630px cropped (for Retina and high-PPI displays), 600x315px cropped as a recommended minimum, and ignores images smaller than 200x200px.', 'wpsso' );
+				if ( ! empty( $this->p->util ) ) {	// Just in case.
+
+					$this->pkg_info        = $this->p->util->get_pkg_info();	// Uses a local cache.
+					$this->p_name          = $this->pkg_info[ 'wpsso' ][ 'name' ];
+					$this->p_name_pro      = $this->pkg_info[ 'wpsso' ][ 'name_pro' ];
+					$this->pkg_pro_transl  = _x( $this->p->cf[ 'packages' ][ 'pro' ], 'package name', 'wpsso' );
+					$this->pkg_std_transl  = _x( $this->p->cf[ 'packages' ][ 'std' ], 'package name', 'wpsso' );
+					$this->fb_prefs_transl = __( 'Facebook prefers images of 1200x630px cropped (for Retina and high-PPI displays), 600x315px cropped as a recommended minimum, and ignores images smaller than 200x200px.', 'wpsso' );
+				}
 			}
 		}
 

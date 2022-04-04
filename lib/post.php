@@ -1597,8 +1597,6 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			$md_opts      = $this->get_options( $post_obj->ID );
 			$md_defs      = $this->get_defaults( $post_obj->ID );
 
-			$this->p->admin->get_pkg_info();
-
 			$this->form = new SucomForm( $this->p, WPSSO_META_NAME, $md_opts, $md_defs, $this->p->id );
 
 			wp_nonce_field( WpssoAdmin::get_nonce_action(), WPSSO_NONCE_NAME );
@@ -2114,7 +2112,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * Filter 'wpsso_inherit_featured_image' added in WPSSO Core v9.10.0.
 			 */
-			$mod = $this->get_mod( $post_id );	// Uses static local cache.
+			$mod = $this->get_mod( $post_id );	// Uses a local cache.
 
 			$inherit_featured = empty( $this->p->options[ 'plugin_inherit_featured' ] ) ? false : $mod[ 'is_public' ];
 			$inherit_featured = apply_filters( 'wpsso_inherit_featured_image', $inherit_featured, $mod );
@@ -2171,7 +2169,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 			/**
 			 * Filter 'wpsso_inherit_featured_image' added in WPSSO Core v9.10.0.
 			 */
-			$mod = $this->get_mod( $post_id );	// Uses static local cache.
+			$mod = $this->get_mod( $post_id );	// Uses a local cache.
 
 			$inherit_featured = empty( $this->p->options[ 'plugin_inherit_featured' ] ) ? false : $mod[ 'is_public' ];
 			$inherit_featured = apply_filters( 'wpsso_inherit_featured_image', $inherit_featured, $mod );

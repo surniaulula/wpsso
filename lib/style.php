@@ -184,7 +184,7 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 
 			$filter_name   = 'wpsso_admin_page_style_css';
 			$filter_ids    = SucomUtilWP::get_filter_hook_ids( $filter_name );
-			$sortable_cols = WpssoAbstractWpMeta::get_sortable_columns();	// Uses a static cache.
+			$sortable_cols = WpssoAbstractWpMeta::get_sortable_columns();	// Uses a local cache.
 
 			$cache_md5_pre    = 'wpsso_';
 			$cache_exp_filter = 'wpsso_cache_expire_admin_css';
