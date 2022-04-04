@@ -248,14 +248,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 12.1.0-rc.5 (2022/04/01)**
+**Version 12.1.0-rc.6 (2022/04/04)**
 
 * **New Features**
 	* None.
 * **Improvements**
 	* Updated the PolyLang and WPML integration modules to provide post/term alternate languages for sitemaps (Premium edition).
 * **Bugfixes**
-	* None.
+	* Fixed a possible PHP error in a cron job for required Schema properties.
 * **Developer Notes**
 	* Added a new `WpssoSchema->get_lang()` method.
 	* Added a new `WpssoUtil->get_link_rel_alternates()` method.
@@ -536,9 +536,9 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 == Upgrade Notice ==
 
-= 12.1.0-rc.5 =
+= 12.1.0-rc.6 =
 
-(2022/04/01) Updated the PolyLang and WPML integration modules to provide post/term alternate languages for sitemaps (Premium edition).
+(2022/04/04) Fixed a possible PHP error in a cron job for required Schema properties. Updated the PolyLang and WPML integration modules to provide post/term alternate languages for sitemaps (Premium edition).
 
 = 12.0.0 =
 
