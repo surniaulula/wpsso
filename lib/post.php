@@ -627,7 +627,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				$wpsso->debug->log_arr( 'posts_args', $posts_args );
 			}
 
-			return get_posts( $posts_args );
+			$public_ids = get_posts( $posts_args );
+
+			if ( $wpsso->debug->enabled ) {
+
+				do_action( 'wpsso_debug_post_public_ids', $public_ids, $posts_args );
+			}
+
+			return $public_ids;
 		}
 
 		/**

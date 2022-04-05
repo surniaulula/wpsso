@@ -455,7 +455,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 			$wpsso =& Wpsso::get_instance();
 
-			$public_term_ids = array();
+			$public_ids = array();
 
 			if ( null === $tax_names ) {
 
@@ -485,13 +485,20 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 
 				foreach ( $term_ids as $term_id ) {
 
-					$public_term_ids[ $term_id ] = $term_id;
+					$public_ids[ $term_id ] = $term_id;	// Prevents duplicates.
 				}
 			}
 
-			rsort( $public_term_ids );	// Newest id first.
+			/**
+			 * Sort public term IDs with the newest term ID first.
+			 *
+			 * Note that rsort() assigns new keys to elements in the array.
+			 *
+			 * See https://www.php.net/manual/en/function.rsort.php.
+			 */
+			rsort( $public_ids );
 
-			return $public_term_ids;
+			return $public_ids;
 		}
 
 		/**
