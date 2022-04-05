@@ -3768,7 +3768,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 				 *	'wpsso_cache_expire_head_markup'
 				 *	'wpsso_cache_expire_image_info'
 				 *	'wpsso_cache_expire_schema_types'
-				 *	'wpsso_cache_expire_select_arrays'
 				 *	'wpsso_cache_expire_short_url'
 				 */
 				if ( ! empty( $cache_info[ 'filter' ] ) ) {
