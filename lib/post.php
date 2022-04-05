@@ -629,10 +629,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			$public_ids = get_posts( $posts_args );
 
-			if ( $wpsso->debug->enabled ) {
-
-				do_action( 'wpsso_debug_post_public_ids', $public_ids, $posts_args );
-			}
+			$public_ids = apply_filters( 'wpsso_post_public_ids', $public_ids, $posts_args );
 
 			return $public_ids;
 		}
