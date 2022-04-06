@@ -248,6 +248,23 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 12.1.1-dev.1 (2022/04/05)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added new filters when getting post/term/user public IDs:
+		* `'wpsso_post_public_ids' ( array $public_ids, array $posts_args )`
+		* `'wpsso_term_public_ids' ( array $public_ids, array $tax_names )`
+		* `'wpsso_user_public_ids' ( array $public_ids, array $roles )`
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 12.1.0 (2022/04/04)**
 
 * **New Features**
@@ -536,6 +553,10 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 	* WordPress v5.2.
 
 == Upgrade Notice ==
+
+= 12.1.1-dev.1 =
+
+(2022/04/05) Added new filters when getting post/term/user public IDs.
 
 = 12.1.0 =
 
