@@ -225,13 +225,15 @@
 
 'wpsso_post_image_urls' ( array $urls, $size_name, $post_id )
 
-'wpsso_posts_per_page' ( $num, $mod )
+'wpsso_post_public_ids' ( array $public_ids, array $posts_args )
 
 'wpsso_post_type_has_archive' ( $bool, $mod )
 
 'wpsso_post_types' ( $post_types, $output )
 
 'wpsso_post_url' ( $url, $mod )
+
+'wpsso_posts_per_page' ( $num, $mod )
 
 'wpsso_primary_tax_slug' ( $tax_slug, $mod )
 
@@ -295,6 +297,8 @@
 
 'wpsso_term_image_urls' ( array $urls, $size_name, $term_id )
 
+'wpsso_term_public_ids' ( array $public_ids, array $tax_names )
+
 'wpsso_term_url' ( $url, $mod )
 
 'wpsso_text' ( $text, $mod, $num_hashtags, $md_key )
@@ -314,6 +318,8 @@
 'wpsso_user_image_ids' ( array $ids, $size_name, $user_id )
 
 'wpsso_user_image_urls' ( array $urls, $size_name, $user_id )
+
+'wpsso_user_public_ids' ( array $public_ids, array $roles )
 
 'wpsso_user_url' ( $url, $mod )
 

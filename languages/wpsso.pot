@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 12.1.0\n"
+"Project-Id-Version: WPSSO Core 12.1.1-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -5279,7 +5279,7 @@ msgstr ""
 msgid "Network plugin settings have been saved."
 msgstr ""
 
-#: lib/admin.php:867 lib/post.php:932 lib/term.php:695 lib/user.php:674
+#: lib/admin.php:867 lib/post.php:932 lib/term.php:697 lib/user.php:678
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -5321,8 +5321,8 @@ msgstr ""
 
 #: lib/admin.php:955 lib/admin.php:966 lib/messages-tooltip-meta-schema.php:488
 #: lib/messages-tooltip-plugin.php:118 lib/submenu/tools.php:56
-#: lib/submenu/tools.php:101 lib/user.php:61 lib/user.php:1679
-#: lib/user.php:1786 lib/user.php:1917
+#: lib/submenu/tools.php:101 lib/user.php:61 lib/user.php:1683
+#: lib/user.php:1790 lib/user.php:1921
 msgctxt "user role"
 msgid "Person"
 msgstr ""
@@ -6536,13 +6536,13 @@ msgid ""
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1552 lib/post.php:676 lib/register.php:348 lib/term.php:549
-#: lib/user.php:510 lib/util.php:749 lib/util.php:855 lib/util.php:887
+#: lib/media.php:1552 lib/post.php:676 lib/register.php:348 lib/term.php:551
+#: lib/user.php:514 lib/util.php:749 lib/util.php:855 lib/util.php:887
 #: lib/util.php:3043
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1553 lib/post.php:677 lib/term.php:550 lib/user.php:511
+#: lib/media.php:1553 lib/post.php:677 lib/term.php:552 lib/user.php:515
 #: lib/util.php:750 lib/util.php:3044
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
@@ -11114,13 +11114,13 @@ msgctxt "module name"
 msgid "term"
 msgstr ""
 
-#: lib/term.php:551
+#: lib/term.php:553
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to get posts for "
 "term ID %3$d in taxonomy %4$s (%5$s)."
 msgstr ""
 
-#: lib/term.php:932
+#: lib/term.php:934
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
@@ -11165,70 +11165,70 @@ msgctxt "module name"
 msgid "user"
 msgstr ""
 
-#: lib/user.php:512
+#: lib/user.php:516
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to get posts "
 "authored by user ID %3$d (%4$s)."
 msgstr ""
 
-#: lib/user.php:815
+#: lib/user.php:819
 msgid "Examples: Dr, Mrs, Mr."
 msgstr ""
 
-#: lib/user.php:821
+#: lib/user.php:825
 msgid "Examples: CPA, Esq., M.D., P.E., PhD., PMP, RN"
 msgstr ""
 
-#: lib/user.php:976
+#: lib/user.php:980
 msgid "(not a Facebook Pages URL)"
 msgstr ""
 
-#: lib/user.php:1102
+#: lib/user.php:1106
 msgid "AIM"
 msgstr ""
 
-#: lib/user.php:1103
+#: lib/user.php:1107
 msgid "Jabber / Google Talk"
 msgstr ""
 
-#: lib/user.php:1104
+#: lib/user.php:1108
 msgid "Yahoo Messenger"
 msgstr ""
 
-#: lib/user.php:1605
+#: lib/user.php:1609
 msgid "Insufficient privileges to save settings for user ID %1$s."
 msgstr ""
 
-#: lib/user.php:1698
+#: lib/user.php:1702
 msgid ""
 "Aborting task to add the %1$s role to content creators - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1713
+#: lib/user.php:1717
 msgid "A task to add the %1$s role for content creators was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1754
+#: lib/user.php:1758
 msgid "The %1$s role has been added to %2$d content creators."
 msgstr ""
 
-#: lib/user.php:1756 lib/user.php:1859 lib/util-cache.php:180
+#: lib/user.php:1760 lib/user.php:1863 lib/util-cache.php:180
 #: lib/util-cache.php:744
 msgid "The total execution time for this task was %0.3f seconds."
 msgstr ""
 
-#: lib/user.php:1805
+#: lib/user.php:1809
 msgid ""
 "Aborting task to remove the %1$s role from all users - another identical "
 "task is still running."
 msgstr ""
 
-#: lib/user.php:1820
+#: lib/user.php:1824
 msgid "A task to remove the %1$s role from all users was started at %2$s."
 msgstr ""
 
-#: lib/user.php:1857
+#: lib/user.php:1861
 msgid "The %1$s role has been removed from %2$d content creators."
 msgstr ""
 

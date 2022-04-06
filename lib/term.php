@@ -498,6 +498,8 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 			 */
 			rsort( $public_ids );
 
+			$public_ids = apply_filters( 'wpsso_term_public_ids', $public_ids, $tax_names );
+
 			return $public_ids;
 		}
 

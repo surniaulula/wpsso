@@ -466,7 +466,11 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				$wpsso->debug->log_arr( 'roles', $roles );
 			}
 
-			return SucomUtil::get_roles_user_ids( $roles );
+			$public_ids = SucomUtil::get_roles_user_ids( $roles );
+
+			$public_ids = apply_filters( 'wpsso_user_public_ids', $public_ids, $roles );
+
+			return $public_ids;
 		}
 
 		/**
