@@ -157,8 +157,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'wpjobmanager'   => '(plugin) WP Job Manager',
 							),
 							'lang' => array(
-								'polylang' => '(plugin) Polylang',
-								'wpml'     => '(plugin) WPML',
+								'polylang'   => '(plugin) Polylang',
+								'wpml'       => '(plugin) WPML',
 							),
 							'media' => array(
 								'facebook'   => '(api) Facebook Video API',

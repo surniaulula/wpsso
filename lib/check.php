@@ -418,6 +418,17 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							switch ( $id ) {
 
 								/**
+								 * GTranslate.
+								 *
+								 * See https://wordpress.org/plugins/gtranslate/.
+								 */
+								case 'gtranslate':
+
+									$chk[ 'class' ] = 'GTranslate';
+
+									break;
+
+								/**
 								 * Polylang.
 								 *
 								 * See https://wordpress.org/plugins/polylang/.
