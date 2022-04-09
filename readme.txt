@@ -248,7 +248,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 12.1.1-rc.1 (2022/04/05)**
+**Version 12.1.1 (2022/04/09)**
 
 * **New Features**
 	* None.
@@ -554,9 +554,9 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 == Upgrade Notice ==
 
-= 12.1.1-rc.1 =
+= 12.1.1 =
 
-(2022/04/05) Added new filters when getting post/term/user public IDs.
+(2022/04/09) Added new filters when getting post/term/user public IDs.
 
 = 12.1.0 =
 
