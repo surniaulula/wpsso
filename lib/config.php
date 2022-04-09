@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '12.1.1-dev.1',	// Plugin version.
+					'version'     => '12.1.1-rc.1',	// Plugin version.
 					'opt_version' => '903',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -157,8 +157,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'wpjobmanager'   => '(plugin) WP Job Manager',
 							),
 							'lang' => array(
-								'polylang'   => '(plugin) Polylang',
-								'wpml'       => '(plugin) WPML',
+								'polylang' => '(plugin) Polylang',
+								'wpml'     => '(plugin) WPML',
 							),
 							'media' => array(
 								'facebook'   => '(api) Facebook Video API',
