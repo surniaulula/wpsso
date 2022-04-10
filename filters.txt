@@ -307,6 +307,14 @@
 
 'wpsso_the_content_seed' ( '', $mod, $md_key )
 
+'wpsso_the_description' ( $desc_text, $mod )
+
+'wpsso_the_excerpt' ( $excerpt_text, $mod )
+
+'wpsso_the_text' ( $text, $mod, $title_sep )
+
+'wpsso_the_title' ( $title_text, $mod, $title_sep )
+
 'wpsso_title_seed' ( '', $mod, $num_hashtags, $md_key, $title_sep )
 
 'wpsso_title' ( $title_text, $mod, $num_hashtags, $md_key, $title_sep )
