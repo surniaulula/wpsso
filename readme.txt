@@ -1,4 +1,4 @@
-=== WordPress Social and Search Optimization - Meta Tags, oEmbed, REST API, Rich Pins, Rich Results, Schema JSON-LD, Twitter Cards, XML ===
+=== WPSSO Core - Google Rich Results and Merchant Feeds, Open Graph Meta Tags, Pinterest Rich Pins, Schema JSON-LD, Sitemaps XML, Twitter Cards, WooCommerce SEO ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
