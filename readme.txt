@@ -1,4 +1,4 @@
-=== WordPress Social and Search Optimization - The Complete Structured Data Plugin for WordPress ===
+=== WordPress Social and Search Optimization - Meta Tags, oEmbed, REST API, Rich Pins, Rich Results, Schema JSON-LD, Twitter Cards, XML ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
