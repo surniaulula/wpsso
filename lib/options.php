@@ -1110,7 +1110,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 			}
 
 			/**
-			 * Remove all custom field names first, to exclude 'plugin_cf_img_url' and 'plugin_cf_vid_url'.
+			 * Remove custom field names to exclude 'plugin_cf_img_url' and 'plugin_cf_vid_url'.
 			 */
 			$img_url_keys = preg_grep( '/^plugin_cf_/', array_keys( $opts ), PREG_GREP_INVERT );
 

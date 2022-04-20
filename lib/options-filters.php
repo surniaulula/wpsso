@@ -485,9 +485,8 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				 *
 				 *	'add_meta_property_og:image:secure_url' = 1
 				 *	'add_meta_property_og:video:secure_url' = 1
-				 *	'plugin_cf_img_url'                     = ''
-				 *	'plugin_cf_vid_url'                     = ''
-				 *	'plugin_cf_review_item_image_url'       = ''
+				 *	'plugin_cf_img_url'                     = ''	// Image URL Custom Field.
+				 *	'plugin_cf_vid_url'                     = ''	// Video URL Custom Field.
 				 */
 				case 'site_home_url':
 				case 'site_wp_url':

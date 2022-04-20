@@ -2257,6 +2257,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				/**
 				 * Product prices and shipping.
 				 */
+				$mt_pre . ':min_advert_price:amount'         => '',
+				$mt_pre . ':min_advert_price:currency'       => '',
 				$mt_pre . ':original_price:amount'           => '',
 				$mt_pre . ':original_price:currency'         => '',
 				$mt_pre . ':pretax_price:amount'             => '',

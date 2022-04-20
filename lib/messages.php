@@ -752,6 +752,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'label' => _x( 'Product Length', 'option label', 'wpsso' ),
 						'desc'  => sprintf( _x( 'a product length (in %s)', 'tooltip fragment', 'wpsso' ), WpssoSchema::get_data_unit_text( 'length' ) ),
 					),
+					'product_map_price' => array(
+						'label' => _x( 'Product Min Advert Price', 'option label', 'wpsso' ),
+						'desc'  => _x( 'a product minimum advertised price', 'tooltip fragment', 'wpsso' ),
+					),
 					'product_material' => array(
 						'label' => _x( 'Product Material', 'option label', 'wpsso' ),
 						'desc'  => _x( 'a product material', 'tooltip fragment', 'wpsso' ),
