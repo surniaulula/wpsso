@@ -1248,9 +1248,16 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'label'    => _x( 'Product Price', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_price',
 					'content'  => $form->get_no_input( 'product_price', $css_class = 'price', $css_id = '', $holder = true ) . ' ' .
-						$form->get_no_select( 'product_currency', $currencies, $css_class = 'currency' ) .
-							( empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ? '' :
-								' ' . __( 'for simple or main product' ) ),
+						$form->get_no_select( 'product_currency', $currencies, $css_class = 'currency' ),
+				),
+				'schema_product_min_advert_price' => array(
+					'tr_class' => $schema_type_row_class[ 'product' ],
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Product Min Advert Price', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-product_min_advert_price',
+					'content'  => $form->get_no_input( 'product_min_advert_price', $css_class = 'price', $css_id = '', $holder = true ) . ' ' .
+						$form->get_no_select( 'product_min_advert_currency', $currencies, $css_class = 'currency' ),
 				),
 				'schema_product_avail' => array(
 					'tr_class' => $schema_type_row_class[ 'product' ],

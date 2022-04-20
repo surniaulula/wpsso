@@ -752,10 +752,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'label' => _x( 'Product Length', 'option label', 'wpsso' ),
 						'desc'  => sprintf( _x( 'a product length (in %s)', 'tooltip fragment', 'wpsso' ), WpssoSchema::get_data_unit_text( 'length' ) ),
 					),
-					'product_map_price' => array(
-						'label' => _x( 'Product Min Advert Price', 'option label', 'wpsso' ),
-						'desc'  => _x( 'a product minimum advertised price', 'tooltip fragment', 'wpsso' ),
-					),
 					'product_material' => array(
 						'label' => _x( 'Product Material', 'option label', 'wpsso' ),
 						'desc'  => _x( 'a product material', 'tooltip fragment', 'wpsso' ),
@@ -765,6 +761,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'label' => _x( 'Product MPN', 'option label', 'wpsso' ),
 						'desc'  => _x( 'a Manufacturer Part Number (MPN)', 'tooltip fragment', 'wpsso' ),
 						'about' => __( 'https://support.google.com/merchants/answer/6324482', 'wpsso' ),
+					),
+					'product_min_advert_price' => array(
+						'label' => _x( 'Product Min Advert Price', 'option label', 'wpsso' ),
+						'desc'  => _x( 'a Minimum Advertised Price (MAP)', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_pattern' => array(
 						'label' => _x( 'Product Pattern', 'option label', 'wpsso' ),

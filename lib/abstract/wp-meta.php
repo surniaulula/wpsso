@@ -384,31 +384,33 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					/**
 					 * Open Graph and Schema Product type.
 					 */
-					'product_category'         => isset( $opts[ 'og_def_product_category' ] ) ? $opts[ 'og_def_product_category' ] : 'none',
-					'product_brand'            => '',
-					'product_price'            => '0.00',
-					'product_currency'         => empty( $opts[ 'og_def_currency' ] ) ? 'USD' : $opts[ 'og_def_currency' ],
-					'product_avail'            => 'none',
-					'product_condition'        => 'none',
-					'product_color'            => '',
-					'product_material'         => '',
-					'product_pattern'          => '',
-					'product_target_gender'    => 'none',
-					'product_size'             => '',
-					'product_size_type'        => 'none',
-					'product_weight_value'     => '',
-					'product_length_value'     => '',
-					'product_width_value'      => '',
-					'product_height_value'     => '',
-					'product_depth_value'      => '',
-					'product_retailer_part_no' => '',	// Product SKU.
-					'product_mfr_part_no'      => '',	// Product MPN.
-					'product_gtin14'           => '',
-					'product_gtin13'           => '',
-					'product_gtin12'           => '',
-					'product_gtin8'            => '',
-					'product_gtin'             => '',
-					'product_isbn'             => '',
+					'product_category'            => isset( $opts[ 'og_def_product_category' ] ) ? $opts[ 'og_def_product_category' ] : 'none',
+					'product_brand'               => '',
+					'product_price'               => '0.00',	// Product Price.
+					'product_currency'            => empty( $opts[ 'og_def_currency' ] ) ? 'USD' : $opts[ 'og_def_currency' ],
+					'product_min_advert_price'    => '0.00',	// Product Min Advert Price.
+					'product_min_advert_currency' => empty( $opts[ 'og_def_currency' ] ) ? 'USD' : $opts[ 'og_def_currency' ],
+					'product_avail'               => 'none',
+					'product_condition'           => 'none',
+					'product_color'               => '',
+					'product_material'            => '',
+					'product_pattern'             => '',
+					'product_target_gender'       => 'none',
+					'product_size'                => '',
+					'product_size_type'           => 'none',
+					'product_weight_value'        => '',
+					'product_length_value'        => '',
+					'product_width_value'         => '',
+					'product_height_value'        => '',
+					'product_depth_value'         => '',
+					'product_retailer_part_no'    => '',	// Product SKU.
+					'product_mfr_part_no'         => '',	// Product MPN.
+					'product_gtin14'              => '',
+					'product_gtin13'              => '',
+					'product_gtin12'              => '',
+					'product_gtin8'               => '',
+					'product_gtin'                => '',
+					'product_isbn'                => '',
 
 					/**
 					 * All Schema Types.

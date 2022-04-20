@@ -357,7 +357,8 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'product_height_value':
 				case 'product_isbn':			// Product ISBN.
 				case 'product_length_value':
-				case 'product_price':
+				case 'product_min_advert_price':	// Product Min Advert Price.
+				case 'product_price':			// Product Price.
 				case 'product_weight_value':
 				case 'product_width_value':
 				case 'plugin_stamped_store_hash':	// Stamped.io Store Hash.
@@ -396,20 +397,21 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'site_name':
 				case 'site_name_alt':
 				case 'site_desc':
-				case 'seo_title':	// SEO Title Tag.
-				case 'seo_desc':	// SEO Meta Description.
+				case 'seo_title':			// SEO Title Tag.
+				case 'seo_desc':			// SEO Meta Description.
 				case 'og_title':
 				case 'og_desc':
-				case 'tc_title':	// Twitter Card Title.
-				case 'tc_desc':		// Twitter Card Description.
+				case 'tc_title':			// Twitter Card Title.
+				case 'tc_desc':				// Twitter Card Description.
 				case 'pin_desc':
 				case 'article_section':
-				case 'product_category':	// Product Type.
+				case 'product_category':		// Product Type.
 				case 'product_brand':
 				case 'product_color':
-				case 'product_currency':
+				case 'product_currency':		// Product Price Currency.
 				case 'product_material':
 				case 'product_mfr_part_no':		// Product MPN.
+				case 'product_min_advert_currency':	// Product Min Advert Price Currency.
 				case 'product_pattern':
 				case 'product_retailer_part_no':	// Product SKU.
 				case 'product_size':

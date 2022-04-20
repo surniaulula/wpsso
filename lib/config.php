@@ -1935,9 +1935,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_height_value'       => '',	// Product Height Custom Field.
 					'plugin_cf_product_isbn'               => '',	// Product ISBN Custom Field.
 					'plugin_cf_product_length_value'       => '',	// Product Length Custom Field.
-					'plugin_cf_product_min_advert_price'   => '',	// Product Min Advert Price Custom Field.
 					'plugin_cf_product_material'           => '',	// Product Material Custom Field.
 					'plugin_cf_product_mfr_part_no'        => '',	// Product MPN Custom Field.
+					'plugin_cf_product_min_advert_price'   => '',	// Product Min Advert Price Custom Field.
 					'plugin_cf_product_pattern'            => '',	// Product Pattern Custom Field.
 					'plugin_cf_product_price'              => '',	// Product Price Custom Field.
 					'plugin_cf_product_retailer_part_no'   => '',	// Product SKU Custom Field.
@@ -2022,9 +2022,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_height_value'       => 'product_height_value',	// Product Height Custom Field.
 					'plugin_cf_product_isbn'               => 'product_isbn',
 					'plugin_cf_product_length_value'       => 'product_length_value',	// Product Length Custom Field.
-					'plugin_cf_product_min_advert_price'   => 'product_min_advert_price',
 					'plugin_cf_product_material'           => 'product_material',
 					'plugin_cf_product_mfr_part_no'        => 'product_mfr_part_no',
+					'plugin_cf_product_min_advert_price'   => 'product_min_advert_price',
 					'plugin_cf_product_pattern'            => 'product_pattern',
 					'plugin_cf_product_price'              => 'product_price',
 					'plugin_cf_product_size'               => 'product_size',
@@ -2689,9 +2689,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_height_value'       => 'Product Height Custom Field',
 					'plugin_cf_product_isbn'               => 'Product ISBN Custom Field',
 					'plugin_cf_product_length_value'       => 'Product Length Custom Field',
-					'plugin_cf_product_min_advert_price'   => 'Product Min Advert Price Custom Field',
 					'plugin_cf_product_material'           => 'Product Material Custom Field',
 					'plugin_cf_product_mfr_part_no'        => 'Product MPN Custom Field',
+					'plugin_cf_product_min_advert_price'   => 'Product Min Advert Price Custom Field',
 					'plugin_cf_product_pattern'            => 'Product Pattern Custom Field',
 					'plugin_cf_product_price'              => 'Product Price Custom Field',
 					'plugin_cf_product_size'               => 'Product Size Custom Field',
@@ -3229,10 +3229,10 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'product:item_group_id'             => '',				// Product variant group ID.
 						'product:length:value'              => 'product_length_value',		// Non-standard / internal meta tag.
 						'product:length:units'              => '',				// Non-standard / internal meta tag.
-						'product:min_advert_price:amount'   => 'product_min_advert_price',	// Non-standard / internal meta tag.
-						'product:min_advert_price:currency' => 'product_min_advert_currency',	// Non-standard / internal meta tag.
 						'product:material'                  => 'product_material',
 						'product:mfr_part_no'               => 'product_mfr_part_no',		// Product MPN.
+						'product:min_advert_price:amount'   => 'product_min_advert_price',	// Non-standard / internal meta tag.
+						'product:min_advert_price:currency' => 'product_min_advert_currency',	// Non-standard / internal meta tag.
 						'product:original_price:amount'     => '',				// Used by WooCommerce module.
 						'product:original_price:currency'   => '',				// Used by WooCommerce module.
 						'product:pattern'                   => 'product_pattern',
