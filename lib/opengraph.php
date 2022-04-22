@@ -1337,7 +1337,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$wpsso->debug->log( 'checking ' . $mt_pre . ' price value' );
 			}
 
-			foreach ( array( 'original_price', 'pretax_price', 'price', 'sale_price', 'shipping_cost' ) as $price_name ) {
+			$def_currency_key = $mt_pre . ':price:currency';
+
+			$def_currency = empty( $mt_og[ $def_currency_key ] ) ? $wpsso->options[ 'og_def_currency' ] : $mt_og[ $def_currency_key ];
+
+			foreach ( array( 'min_advert_price', 'original_price', 'pretax_price', 'price', 'sale_price', 'shipping_cost' ) as $price_name ) {
 
 				if ( isset( $mt_og[ $mt_pre . ':' . $price_name . ':amount' ] ) ) {
 
@@ -1348,7 +1352,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 						if ( empty( $mt_og[ $currency_key ] ) ) {
 
-							$mt_og[ $currency_key ] = $wpsso->options[ 'og_def_currency' ];
+							$mt_og[ $currency_key ] = $def_currency; 
 						}
 
 					} else {

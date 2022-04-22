@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 12.2.0-dev.1\n"
+"Project-Id-Version: WPSSO Core 12.2.0-dev.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4330,181 +4330,181 @@ msgid "Product Min Advert Price"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:331 lib/messages.php:688
-#: lib/pro/admin/edit.php:1358 lib/std/admin/edit.php:1266
+#: lib/pro/admin/edit.php:1355 lib/std/admin/edit.php:1265
 msgctxt "option label"
 msgid "Product Availability"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:332 lib/messages.php:706
-#: lib/pro/admin/edit.php:1366 lib/std/admin/edit.php:1275
+#: lib/pro/admin/edit.php:1363 lib/std/admin/edit.php:1274
 msgctxt "option label"
 msgid "Product Condition"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:333 lib/messages.php:702
-#: lib/pro/admin/edit.php:1374 lib/std/admin/edit.php:1284
+#: lib/pro/admin/edit.php:1371 lib/std/admin/edit.php:1283
 msgctxt "option label"
 msgid "Product Color"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:334 lib/messages.php:756
-#: lib/pro/admin/edit.php:1381 lib/std/admin/edit.php:1292
+#: lib/pro/admin/edit.php:1378 lib/std/admin/edit.php:1291
 msgctxt "option label"
 msgid "Product Material"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:335 lib/messages.php:770
-#: lib/pro/admin/edit.php:1388 lib/std/admin/edit.php:1300
+#: lib/pro/admin/edit.php:1385 lib/std/admin/edit.php:1299
 msgctxt "option label"
 msgid "Product Pattern"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:336 lib/messages.php:793
-#: lib/pro/admin/edit.php:1395 lib/std/admin/edit.php:1308
+#: lib/pro/admin/edit.php:1392 lib/std/admin/edit.php:1307
 msgctxt "option label"
 msgid "Product Target Gender"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:337 lib/messages.php:783
-#: lib/pro/admin/edit.php:1403 lib/std/admin/edit.php:1317
+#: lib/pro/admin/edit.php:1400 lib/std/admin/edit.php:1316
 msgctxt "option label"
 msgid "Product Size"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:338 lib/messages.php:788
-#: lib/pro/admin/edit.php:1410 lib/std/admin/edit.php:1325
+#: lib/pro/admin/edit.php:1407 lib/std/admin/edit.php:1324
 msgctxt "option label"
 msgid "Product Size Type"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:339 lib/messages.php:801
-#: lib/pro/admin/edit.php:1418 lib/std/admin/edit.php:1334
+#: lib/pro/admin/edit.php:1415 lib/std/admin/edit.php:1333
 msgctxt "option label"
 msgid "Product Weight"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:340 lib/messages.php:752
-#: lib/pro/admin/edit.php:1426 lib/std/admin/edit.php:1343
+#: lib/pro/admin/edit.php:1423 lib/std/admin/edit.php:1342
 msgctxt "option label"
 msgid "Product Length"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:341 lib/messages.php:805
-#: lib/pro/admin/edit.php:1434 lib/std/admin/edit.php:1352
+#: lib/pro/admin/edit.php:1431 lib/std/admin/edit.php:1351
 msgctxt "option label"
 msgid "Product Width"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:342 lib/messages.php:743
-#: lib/pro/admin/edit.php:1442 lib/std/admin/edit.php:1361
+#: lib/pro/admin/edit.php:1439 lib/std/admin/edit.php:1360
 msgctxt "option label"
 msgid "Product Height"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:343 lib/messages.php:714
-#: lib/pro/admin/edit.php:1450 lib/std/admin/edit.php:1370
+#: lib/pro/admin/edit.php:1447 lib/std/admin/edit.php:1369
 msgctxt "option label"
 msgid "Product Depth"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:344 lib/messages.php:797
-#: lib/pro/admin/edit.php:1458 lib/std/admin/edit.php:1379
+#: lib/pro/admin/edit.php:1455 lib/std/admin/edit.php:1378
 msgctxt "option label"
 msgid "Product Fluid Volume"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:345 lib/messages.php:779
-#: lib/pro/admin/edit.php:1466 lib/std/admin/edit.php:1388
+#: lib/pro/admin/edit.php:1463 lib/std/admin/edit.php:1387
 msgctxt "option label"
 msgid "Product SKU"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:346 lib/messages.php:761
-#: lib/pro/admin/edit.php:1473 lib/std/admin/edit.php:1396
+#: lib/pro/admin/edit.php:1470 lib/std/admin/edit.php:1395
 msgctxt "option label"
 msgid "Product MPN"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:347 lib/messages.php:718
-#: lib/pro/admin/edit.php:1480 lib/std/admin/edit.php:1404
+#: lib/pro/admin/edit.php:1477 lib/std/admin/edit.php:1403
 msgctxt "option label"
 msgid "Product GTIN-14"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:348 lib/messages.php:723
-#: lib/pro/admin/edit.php:1487 lib/std/admin/edit.php:1412
+#: lib/pro/admin/edit.php:1484 lib/std/admin/edit.php:1411
 msgctxt "option label"
 msgid "Product GTIN-13 (EAN)"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:349 lib/messages.php:728
-#: lib/pro/admin/edit.php:1494 lib/std/admin/edit.php:1420
+#: lib/pro/admin/edit.php:1491 lib/std/admin/edit.php:1419
 msgctxt "option label"
 msgid "Product GTIN-12 (UPC)"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:350 lib/messages.php:733
-#: lib/pro/admin/edit.php:1501 lib/std/admin/edit.php:1428
+#: lib/pro/admin/edit.php:1498 lib/std/admin/edit.php:1427
 msgctxt "option label"
 msgid "Product GTIN-8"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:351 lib/messages.php:738
-#: lib/pro/admin/edit.php:1508 lib/std/admin/edit.php:1436
+#: lib/pro/admin/edit.php:1505 lib/std/admin/edit.php:1435
 msgctxt "option label"
 msgid "Product GTIN"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:352 lib/messages.php:747
-#: lib/pro/admin/edit.php:1515 lib/std/admin/edit.php:1444
+#: lib/pro/admin/edit.php:1512 lib/std/admin/edit.php:1443
 msgctxt "option label"
 msgid "Product ISBN"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:353 lib/pro/admin/edit.php:1535
-#: lib/std/admin/edit.php:1459
+#: gettext/gettext-lib-pro.php:353 lib/pro/admin/edit.php:1532
+#: lib/std/admin/edit.php:1458
 msgctxt "metabox title"
 msgid "Priority Video Information"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:354 lib/messages.php:821
-#: lib/pro/admin/edit.php:1539 lib/std/admin/edit.php:1467
+#: lib/pro/admin/edit.php:1536 lib/std/admin/edit.php:1466
 msgctxt "option label"
 msgid "Video Embed HTML"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:355 lib/pro/admin/edit.php:1545
-#: lib/std/admin/edit.php:1474
+#: gettext/gettext-lib-pro.php:355 lib/pro/admin/edit.php:1542
+#: lib/std/admin/edit.php:1473
 msgctxt "option label"
 msgid "or a Video URL"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:356 lib/pro/admin/edit.php:1552
-#: lib/std/admin/edit.php:1481
+#: gettext/gettext-lib-pro.php:356 lib/pro/admin/edit.php:1549
+#: lib/std/admin/edit.php:1480
 msgctxt "metabox title"
 msgid "Video Information from Video API"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:357 lib/pro/admin/edit.php:1556
-#: lib/std/admin/edit.php:1486
+#: gettext/gettext-lib-pro.php:357 lib/pro/admin/edit.php:1553
+#: lib/std/admin/edit.php:1485
 msgctxt "option label"
 msgid "Video Name"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:358 lib/pro/admin/edit.php:1563
-#: lib/std/admin/edit.php:1493
+#: gettext/gettext-lib-pro.php:358 lib/pro/admin/edit.php:1560
+#: lib/std/admin/edit.php:1492
 msgctxt "option label"
 msgid "Video Description"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:359 lib/pro/admin/edit.php:1570
-#: lib/std/admin/edit.php:1500
+#: gettext/gettext-lib-pro.php:359 lib/pro/admin/edit.php:1567
+#: lib/std/admin/edit.php:1499
 msgctxt "option label"
 msgid "Video Stream URL"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:360 lib/pro/admin/edit.php:1576
-#: lib/std/admin/edit.php:1507
+#: gettext/gettext-lib-pro.php:360 lib/pro/admin/edit.php:1573
+#: lib/std/admin/edit.php:1506
 msgctxt "option label"
 msgid "Video Dimensions"
 msgstr ""
@@ -4561,7 +4561,7 @@ msgstr ""
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:375 lib/pro/ecom/woocommerce.php:1355
+#: gettext/gettext-lib-pro.php:375 lib/pro/ecom/woocommerce.php:1356
 msgid "World"
 msgstr ""
 
@@ -4646,7 +4646,7 @@ msgstr ""
 
 #: gettext/gettext-lib-pro.php:413 gettext/gettext-lib-pro.php:415
 #: gettext/gettext-lib-pro.php:451 lib/conflict.php:208 lib/loader.php:187
-#: lib/loader.php:201 lib/post.php:1585 lib/pro/review/yotpowc.php:185
+#: lib/loader.php:201 lib/post.php:1570 lib/pro/review/yotpowc.php:185
 #: lib/pro/util/shorten.php:495 lib/pro/util/shorten.php:532
 msgid "%s error:"
 msgstr ""
@@ -4846,54 +4846,54 @@ msgstr ""
 msgid "Link property value is empty."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1069
+#: lib/abstract/wp-meta.php:1046
 msgid "checking meta tags"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1137
+#: lib/abstract/wp-meta.php:1114
 msgctxt "metabox tab"
 msgid "Edit General"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1138
+#: lib/abstract/wp-meta.php:1115
 msgctxt "metabox tab"
 msgid "Edit Schema"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1139 lib/messages.php:317
+#: lib/abstract/wp-meta.php:1116 lib/messages.php:317
 msgctxt "metabox tab"
 msgid "Edit Media"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1143
+#: lib/abstract/wp-meta.php:1120
 msgctxt "metabox tab"
 msgid "Edit Visibility"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1144
+#: lib/abstract/wp-meta.php:1121
 msgctxt "metabox tab"
 msgid "Preview Social"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1145
+#: lib/abstract/wp-meta.php:1122
 msgctxt "metabox tab"
 msgid "Preview oEmbed"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1146
+#: lib/abstract/wp-meta.php:1123
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1466
+#: lib/abstract/wp-meta.php:1443
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1797 lib/json-filters/type/claimreview.php:69
+#: lib/abstract/wp-meta.php:1774 lib/json-filters/type/claimreview.php:69
 msgid "A claim review cannot be the subject of another claim review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1799
+#: lib/abstract/wp-meta.php:1776
 msgid ""
 "Please select a subject webpage type that better describes the subject of "
 "the webpage (ie. the content) being reviewed."
@@ -5290,7 +5290,7 @@ msgstr ""
 msgid "Network plugin settings have been saved."
 msgstr ""
 
-#: lib/admin.php:867 lib/post.php:932 lib/term.php:697 lib/user.php:678
+#: lib/admin.php:867 lib/post.php:917 lib/term.php:675 lib/user.php:678
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr ""
 
@@ -6547,13 +6547,13 @@ msgid ""
 "image_make_intermediate_size/"
 msgstr ""
 
-#: lib/media.php:1552 lib/post.php:676 lib/register.php:348 lib/term.php:551
+#: lib/media.php:1552 lib/post.php:661 lib/register.php:348 lib/term.php:529
 #: lib/user.php:514 lib/util.php:749 lib/util.php:855 lib/util.php:887
 #: lib/util.php:3043
 msgid "%s warning:"
 msgstr ""
 
-#: lib/media.php:1553 lib/post.php:677 lib/term.php:552 lib/user.php:515
+#: lib/media.php:1553 lib/post.php:662 lib/term.php:530 lib/user.php:515
 #: lib/util.php:750 lib/util.php:3044
 msgid "longer than recommended max of %1$.3f secs"
 msgstr ""
@@ -10265,143 +10265,143 @@ msgctxt "module name"
 msgid "post"
 msgstr ""
 
-#: lib/post.php:678
+#: lib/post.php:663
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to get children of "
 "post ID %3$d (%4$s)."
 msgstr ""
 
-#: lib/post.php:1070
+#: lib/post.php:1055
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr ""
 
-#: lib/post.php:1103
+#: lib/post.php:1088
 msgid "The webpage HTML retrieved from %1$s is %2$s bytes."
 msgstr ""
 
-#: lib/post.php:1106
+#: lib/post.php:1091
 msgid ""
 "This exceeds the maximum limit of %1$s bytes imposed by the Google crawler."
 msgstr ""
 
-#: lib/post.php:1109
+#: lib/post.php:1094
 msgid ""
 "If you do not reduce the webpage HTML size, Google will refuse to crawl this "
 "webpage."
 msgstr ""
 
-#: lib/post.php:1139
+#: lib/post.php:1124
 msgid "Retrieving the webpage HTML for %1$s took %2$s seconds."
 msgstr ""
 
-#: lib/post.php:1141
+#: lib/post.php:1126
 msgid ""
 "This exceeds the recommended limit of %1$s seconds (crawlers often time-out "
 "after %2$s seconds)."
 msgstr ""
 
-#: lib/post.php:1143
+#: lib/post.php:1128
 msgid "Please consider improving the speed of your site."
 msgstr ""
 
-#: lib/post.php:1144
+#: lib/post.php:1129
 msgid ""
 "As an added benefit, a faster site will also improve ranking in search "
 "results."
 msgstr ""
 
-#: lib/post.php:1158
+#: lib/post.php:1143
 msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
 msgstr ""
 
-#: lib/post.php:1172
+#: lib/post.php:1157
 msgid "An %1$s tag was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1187
+#: lib/post.php:1172
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1204
+#: lib/post.php:1189
 msgid ""
 "The %1$s meta tags and Schema markup section was not found in <a href=\"%2$s"
 "\">%2$s</a>."
 msgstr ""
 
-#: lib/post.php:1207
+#: lib/post.php:1192
 msgid "Does a caching plugin or service needs to be refreshed?"
 msgstr ""
 
-#: lib/post.php:1240
+#: lib/post.php:1225
 msgid ""
 "The PHP preg_replace() function failed to remove the %1$s meta tag section."
 msgstr ""
 
-#: lib/post.php:1243
+#: lib/post.php:1228
 msgid ""
 "This could indicate a problem with PHP's PCRE library, or an optimization "
 "plugin / service corrupting the webpage HTML."
 msgstr ""
 
-#: lib/post.php:1246
+#: lib/post.php:1231
 msgid ""
 "You should consider updating or having your hosting provider update your PHP "
 "installation and its PCRE library."
 msgstr ""
 
-#: lib/post.php:1267
+#: lib/post.php:1252
 msgid ""
 "Conflict detected - your theme or another plugin is adding %1$s to the head "
 "section of this webpage."
 msgstr ""
 
-#: lib/post.php:1286
+#: lib/post.php:1271
 msgid ""
 "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> "
 "(no \"link\" or \"meta\" HTML tags were found)."
 msgstr ""
 
-#: lib/post.php:1288
+#: lib/post.php:1273
 msgid ""
 "The webpage may contain HTML syntax errors preventing PHP from successfully "
 "parsing the HTML document."
 msgstr ""
 
-#: lib/post.php:1291
+#: lib/post.php:1276
 msgid ""
 "Please review the <a href=\"%1$s\">W3C Markup Validator</a> results and "
 "correct any syntax errors."
 msgstr ""
 
-#: lib/post.php:1334
+#: lib/post.php:1319
 msgid "%1$d duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1336
+#: lib/post.php:1321
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr ""
 
-#: lib/post.php:1344
+#: lib/post.php:1329
 msgid "Awesome! No duplicate meta tags found."
 msgstr ""
 
-#: lib/post.php:1348
+#: lib/post.php:1333
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr ""
 
-#: lib/post.php:1352
+#: lib/post.php:1337
 msgid "Check %1$d of %2$d successful..."
 msgstr ""
 
-#: lib/post.php:1549
+#: lib/post.php:1534
 msgid "invalid ajax referer nonce value"
 msgstr ""
 
-#: lib/post.php:1554
+#: lib/post.php:1539
 msgid "ajax request missing the post_id"
 msgstr ""
 
-#: lib/post.php:1833
+#: lib/post.php:1818
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr ""
 
@@ -11126,13 +11126,13 @@ msgctxt "module name"
 msgid "term"
 msgstr ""
 
-#: lib/term.php:553
+#: lib/term.php:531
 msgid ""
 "Slow WordPress function detected - %1$s took %2$.3f secs to get posts for "
 "term ID %3$d in taxonomy %4$s (%5$s)."
 msgstr ""
 
-#: lib/term.php:934
+#: lib/term.php:912
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 

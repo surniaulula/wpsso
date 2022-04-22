@@ -411,7 +411,6 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'product_currency':		// Product Price Currency.
 				case 'product_material':
 				case 'product_mfr_part_no':		// Product MPN.
-				case 'product_min_advert_currency':	// Product Min Advert Price Currency.
 				case 'product_pattern':
 				case 'product_retailer_part_no':	// Product SKU.
 				case 'product_size':

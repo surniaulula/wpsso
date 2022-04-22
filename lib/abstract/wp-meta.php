@@ -389,7 +389,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'product_price'               => '0.00',	// Product Price.
 					'product_currency'            => empty( $opts[ 'og_def_currency' ] ) ? 'USD' : $opts[ 'og_def_currency' ],
 					'product_min_advert_price'    => '0.00',	// Product Min Advert Price.
-					'product_min_advert_currency' => empty( $opts[ 'og_def_currency' ] ) ? 'USD' : $opts[ 'og_def_currency' ],
 					'product_avail'               => 'none',
 					'product_condition'           => 'none',
 					'product_color'               => '',
@@ -709,35 +708,13 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				/**
 				 * Since WPSSO Core v9.5.0.
 				 *
-				 * Filter 'wpsso_inherit_custom_images' added in WPSSO Core v9.10.0.
+				 * Overwrite the default options with any custom options from the parent.
 				 */
-				$inherit_custom = empty( $this->p->options[ 'plugin_inherit_custom' ] ) ? false : $mod[ 'is_public' ];
+				$parent_opts = $this->get_inherited_md_opts( $mod );
 
-				$inherit_custom = apply_filters( 'wpsso_inherit_custom_images', $inherit_custom, $mod );
+				if ( ! empty( $parent_opts ) ) {
 
-				if ( $inherit_custom ) {
-
-					if ( $this->p->debug->enabled ) {
-
-						$this->p->debug->log( 'merging parent metadata image options' );
-					}
-
-					/**
-					 * Return merged custom options from the post or term parents.
-					 */
-					$parent_opts = $this->get_parent_md_image_opts( $mod );
-
-					if ( ! empty( $parent_opts ) ) {
-
-						/**
-						 * Overwrite the default options with any custom options from the parent.
-						 */
-						$md_defs = array_merge( $md_defs, $parent_opts );
-					}
-
-				} elseif ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'merging parent metadata image options is disabled' );
+					$md_defs = array_merge( $md_defs, $parent_opts );
 				}
 
 				/**
@@ -2140,17 +2117,57 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 		/**
 		 * Return merged custom options from the post or term parents.
+		 *
+		 * Called by WpssoAbstractWpMeta->get_defaults(), WpssoPost->get_options(), and WpssoTerm->get_options().
 		 */
-		public function get_parent_md_image_opts( $mod ) {
+		public function get_inherited_md_opts( $mod ) {
+
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+
+				$this->p->debug->log( $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' is ' . ( $mod[ 'is_public' ] ? 'public' : 'private' ) );
+			}
 
 			$md_opts = array();
 
-			$inherit_opts = $this->p->cf[ 'form' ][ 'inherit_md_image_opts' ];
+			/**
+			 * Filter 'wpsso_inherit_md_opts' added in WPSSO Core v12.2.0.
+			 */
+			$inherit_opts = $this->p->cf[ 'form' ][ 'inherit_md_opts' ];
+			$inherit_opts = apply_filters( 'wpsso_inherit_md_opts', $inherit_opts, $mod );
+
+			/**
+			 * Filter 'wpsso_inherit_custom_images' added in WPSSO Core v9.10.0.
+			 *
+			 * Note that by default only public children can inherit parent images.
+			 *
+			 * Use add_filter( 'wpsso_inherit_custom_images', '__return_true' ) to inherit images for private children.
+			 */
+			$inherit_custom = empty( $this->p->options[ 'plugin_inherit_custom' ] ) ? false : $mod[ 'is_public' ];
+			$inherit_custom = apply_filters( 'wpsso_inherit_custom_images', $inherit_custom, $mod );
+
+			if ( $inherit_custom ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'inherit md images for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' is enabled' );
+				}
+					
+			} else {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'inherit md images for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' is disabled' );
+				}
+
+				$inherit_opts = SucomUtil::preg_grep_keys( '/_img_/', $inherit_opts, $invert = true );
+			}
 
 			if ( $mod[ 'is_post' ] ) {
 
 				/**
-				 * $object_type   = The type of object for which we'll be retrieving ancestors. Accepts a post type or a taxonomy name. 
+				 * $object_type = The type of object for which we'll be retrieving ancestors. Accepts a post type or a taxonomy name. 
 				 *
 				 * $resource_type = Type of resource $object_type is. Accepts 'post_type' or 'taxonomy'.
 				 */
@@ -2168,20 +2185,49 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			/**
 			 * Merge the custom options array top-down, so we merge the closest parent last.
 			 */
-			$parent_ids = array_reverse( $parent_ids );
+			if ( empty( $parent_ids ) ) {
 
-			foreach ( $parent_ids as $parent_id ) {
+				if ( $this->p->debug->enabled ) {
 
-				$metadata = $mod[ 'obj' ]->get_update_meta_cache( $parent_id );
-
-				if ( isset( $metadata[ WPSSO_META_NAME ][ 0 ] ) ) {
-
-					$parent_opts = maybe_unserialize( $metadata[ WPSSO_META_NAME ][ 0 ] );
-
-					$parent_opts = array_intersect_key( $parent_opts, $inherit_opts );
-
-					$md_opts = array_merge( $md_opts, $parent_opts );
+					$this->p->debug->log( 'no parent ids for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] );
 				}
+
+			} elseif ( empty( $inherit_opts ) ) {
+			
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'no inherit opts for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] );
+				}
+
+			} else {
+
+				$parent_ids = array_reverse( $parent_ids );
+
+				foreach ( $parent_ids as $parent_id ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'getting ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' parent id ' . $parent_id . ' metadata' );
+					}
+
+					$metadata = $mod[ 'obj' ]->get_update_meta_cache( $parent_id );
+
+					if ( isset( $metadata[ WPSSO_META_NAME ][ 0 ] ) ) {
+
+						$parent_opts = maybe_unserialize( $metadata[ WPSSO_META_NAME ][ 0 ] );
+
+						$parent_opts = array_intersect_key( $parent_opts, $inherit_opts );
+
+						$md_opts = array_merge( $md_opts, $parent_opts );
+					}
+				}
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log_arr( 'inherit_opts', $inherit_opts );
+					$this->p->debug->log_arr( 'md_opts', $md_opts );
+				}
+
 			}
 
 			return $md_opts;

@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '12.2.0-dev.1',	// Plugin version.
+					'version'     => '12.2.0-dev.2',	// Plugin version.
 					'opt_version' => '903',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1949,8 +1949,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_recipe_ingredients'         => '',	// Recipe Ingredients Custom Field.
 					'plugin_cf_recipe_instructions'        => '',	// Recipe Instructions Custom Field.
 					'plugin_cf_sameas_urls'                => '',	// Same-As URLs Custom Field.
-					'plugin_cf_vid_url'                    => '',	// Video URL Custom Field.
 					'plugin_cf_vid_embed'                  => '',	// Video Embed HTML Custom Field.
+					'plugin_cf_vid_url'                    => '',	// Video URL Custom Field.
 				),	// End of 'defaults' array.
 
 				/**
@@ -2027,9 +2027,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_min_advert_price'   => 'product_min_advert_price',
 					'plugin_cf_product_pattern'            => 'product_pattern',
 					'plugin_cf_product_price'              => 'product_price',
+					'plugin_cf_product_retailer_part_no'   => 'product_retailer_part_no',
 					'plugin_cf_product_size'               => 'product_size',
 					'plugin_cf_product_size_type'          => 'product_size_type',
-					'plugin_cf_product_retailer_part_no'   => 'product_retailer_part_no',
 					'plugin_cf_product_target_gender'      => 'product_target_gender',
 					'plugin_cf_product_weight_value'       => 'product_weight_value',	// Product Weight Custom Field.
 					'plugin_cf_product_width_value'        => 'product_width_value',	// Product Width Custom Field.
@@ -2733,23 +2733,24 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				/**
 				 * Used with array_intersect_key() to determine which metadata options can be inherited.
 				 */
-				'inherit_md_image_opts' => array(
-					'og_img_max'        => null,	// Maximum Images.
-					'og_img_id'         => null,
-					'og_img_id_lib'     => null,
-					'og_img_url'        => null,
-					'pin_img_id'        => null,
-					'pin_img_id_lib'    => null,
-					'pin_img_url'       => null,
-					'tc_lrg_img_id'     => null,
-					'tc_lrg_img_id_lib' => null,
-					'tc_lrg_img_url'    => null,
-					'tc_sum_img_id'     => null,
-					'tc_sum_img_id_lib' => null,
-					'tc_sum_img_url'    => null,
-					'schema_img_id'     => null,
-					'schema_img_id_lib' => null,
-					'schema_img_url'    => null,
+				'inherit_md_opts' => array(
+					'og_img_max'               => null,	// Maximum Images.
+					'og_img_id'                => null,
+					'og_img_id_lib'            => null,
+					'og_img_url'               => null,
+					'pin_img_id'               => null,
+					'pin_img_id_lib'           => null,
+					'pin_img_url'              => null,
+					'tc_lrg_img_id'            => null,
+					'tc_lrg_img_id_lib'        => null,
+					'tc_lrg_img_url'           => null,
+					'tc_sum_img_id'            => null,
+					'tc_sum_img_id_lib'        => null,
+					'tc_sum_img_url'           => null,
+					'schema_img_id'            => null,
+					'schema_img_id_lib'        => null,
+					'schema_img_url'           => null,
+					'product_min_advert_price' => null,
 				),
 
 				/**
@@ -3232,7 +3233,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'product:material'                  => 'product_material',
 						'product:mfr_part_no'               => 'product_mfr_part_no',		// Product MPN.
 						'product:min_advert_price:amount'   => 'product_min_advert_price',	// Non-standard / internal meta tag.
-						'product:min_advert_price:currency' => 'product_min_advert_currency',	// Non-standard / internal meta tag.
+						'product:min_advert_price:currency' => '',				// Non-standard / internal meta tag.
 						'product:original_price:amount'     => '',				// Used by WooCommerce module.
 						'product:original_price:currency'   => '',				// Used by WooCommerce module.
 						'product:pattern'                   => 'product_pattern',
