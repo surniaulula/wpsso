@@ -248,7 +248,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 12.2.0-dev.1 (TBD)**
+**Version 12.2.0-dev.2 (TBD)**
 
 * **New Features**
 	* None.
@@ -568,7 +568,7 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 == Upgrade Notice ==
 
-= 12.2.0-dev.1 =
+= 12.2.0-dev.2 =
 
 (TBD) None.
 
