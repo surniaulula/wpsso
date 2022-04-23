@@ -248,12 +248,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 12.2.0-dev.2 (TBD)**
+**Version 12.2.0-dev.3 (2022/04/23)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added a new "Product Min Advert Price" option in the Document SSO metabox.
+	* Added a new "Product Min Advert Price Custom Field" option in the SSO &gt; Advanced Settings page.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -568,9 +569,9 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 == Upgrade Notice ==
 
-= 12.2.0-dev.2 =
+= 12.2.0-dev.3 =
 
-(TBD) None.
+(2022/04/23) Added a new "Product Min Advert Price" option in the Document SSO metabox.
 
 = 12.1.1 =
 
