@@ -2631,7 +2631,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 */
 			$image_info = $this->get_image_url_info( $image_url );
 
-			if ( empty( $image_info[ 2 ] ) ) {	// Check for the IMAGETYPE_XXX constant integer.
+			if ( empty( $image_info[ 2 ] ) ) {	// Make sure we have an image type integer.
 
 				return false;
 			}

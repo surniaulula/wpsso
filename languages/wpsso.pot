@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 12.2.0-dev.2\n"
+"Project-Id-Version: WPSSO Core 12.2.0-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -2942,7 +2942,7 @@ msgid "Options to Show by Default"
 msgstr ""
 
 #: gettext/gettext-lib-pro.php:64 lib/messages-tooltip-plugin.php:431
-#: lib/page.php:135 lib/pro/admin/advanced.php:433
+#: lib/page.php:137 lib/pro/admin/advanced.php:433
 #: lib/std/admin/advanced.php:430
 msgctxt "toolbar menu title"
 msgid "Validators"
@@ -4561,7 +4561,7 @@ msgstr ""
 msgid "The rating count or the review count must be greater than 0."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:375 lib/pro/ecom/woocommerce.php:1356
+#: gettext/gettext-lib-pro.php:375 lib/pro/ecom/woocommerce.php:1369
 msgid "World"
 msgstr ""
 
@@ -10246,15 +10246,15 @@ msgctxt "option value"
 msgid "Daily archive for %%query_month%% %%query_day%%, %%query_year%%."
 msgstr ""
 
-#: lib/page.php:949 lib/util-inline.php:360
+#: lib/page.php:976 lib/util-inline.php:360
 msgid "Page %1$d of %2$d"
 msgstr ""
 
-#: lib/page.php:953
+#: lib/page.php:980
 msgid "Page %1$d"
 msgstr ""
 
-#: lib/page.php:2078
+#: lib/page.php:2105
 msgid "%s minute"
 msgid_plural "%s minutes"
 msgstr[0] ""

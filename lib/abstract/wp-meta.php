@@ -2120,12 +2120,12 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 *
 		 * Called by WpssoAbstractWpMeta->get_defaults(), WpssoPost->get_options(), and WpssoTerm->get_options().
 		 */
-		public function get_inherited_md_opts( $mod ) {
+		public function get_inherited_md_opts( array $mod ) {
 
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
-
+				
 				$this->p->debug->log( $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' is ' . ( $mod[ 'is_public' ] ? 'public' : 'private' ) );
 			}
 
@@ -2227,7 +2227,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					$this->p->debug->log_arr( 'inherit_opts', $inherit_opts );
 					$this->p->debug->log_arr( 'md_opts', $md_opts );
 				}
-
 			}
 
 			return $md_opts;

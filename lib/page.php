@@ -92,7 +92,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			$use_post = apply_filters( 'wpsso_use_post', $use_post );
-			$mod      = $this->p->page->get_mod( $use_post );
+
+			$mod = $this->get_mod( $use_post );
 
 			if ( $mod[ 'is_post' ] ) {
 
@@ -100,7 +101,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			} elseif ( $mod[ 'is_term' ] ) {
 
-				$tax_obj    = get_taxonomy( $mod[ 'tax_slug' ] );
+				$tax_obj = get_taxonomy( $mod[ 'tax_slug' ] );
+
 				$capability = $tax_obj->cap->edit_terms;
 
 			} elseif ( $mod[ 'is_user' ] ) {
@@ -260,7 +262,8 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			$use_post = apply_filters( 'wpsso_use_post', false );
-			$mod      = $this->p->page->get_mod( $use_post );
+
+			$mod = $this->get_mod( $use_post );
 
 			if ( $this->p->debug->enabled ) {
 
@@ -338,11 +341,35 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 				}
 
 				$use_post = apply_filters( 'wpsso_use_post', false );
-				$mod      = $this->p->page->get_mod( $use_post );
-				$title    = $this->p->util->inline->replace_variables( $title, $mod );
+
+				$mod = $this->get_mod( $use_post );
+
+				$title = $this->p->util->inline->replace_variables( $title, $mod );
 			}
 
 			return $title;
+		}
+
+		/**
+		 * Public method to sanitize arguments or modify values for get_title(), get_description(), etc.
+		 *
+		 * The $mod array argument is preferred but not required.
+		 *
+		 * $mod = true | false | post_id | $mod array
+		 */
+		public function maybe_get_mod( $mod ) {
+
+			if ( ! is_array( $mod ) ) {
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
+				}
+
+				$mod = $this->get_mod( $mod );
+			}
+
+			return $mod;
 		}
 
 		/**
@@ -2095,28 +2122,6 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			return $reading_mins;
-		}
-
-		/**
-		 * Private method to sanitize arguments or modify values for get_title(), get_description(), etc.
-		 *
-		 * The $mod array argument is preferred but not required.
-		 *
-		 * $mod = true | false | post_id | $mod array
-		 */
-		private function maybe_get_mod( $mod ) {
-
-			if ( ! is_array( $mod ) ) {
-
-				if ( $this->p->debug->enabled ) {
-
-					$this->p->debug->log( 'optional call to WpssoPage->get_mod()' );
-				}
-
-				$mod = $this->p->page->get_mod( $mod );
-			}
-
-			return $mod;
 		}
 
 		/**
