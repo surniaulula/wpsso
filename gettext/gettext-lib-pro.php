@@ -328,7 +328,6 @@ _x( 'Product Type', 'option label', 'wpsso' );
 _x( 'Product Brand', 'option label', 'wpsso' );
 _x( 'Product Price', 'option label', 'wpsso' );
 _x( 'Product Min Advert Price', 'option label', 'wpsso' );
-_x( 'including variations', 'option comment', 'wpsso' );
 _x( 'Product Availability', 'option label', 'wpsso' );
 _x( 'Product Condition', 'option label', 'wpsso' );
 _x( 'Product Color', 'option label', 'wpsso' );
