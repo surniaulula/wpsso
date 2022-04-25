@@ -248,7 +248,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 12.2.0-rc.1 (2022/04/25)**
+**Version 12.2.0 (2022/04/25)**
 
 * **New Features**
 	* None.
@@ -570,7 +570,7 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 == Upgrade Notice ==
 
-= 12.2.0-rc.1 =
+= 12.2.0 =
 
 (2022/04/25) Added a new "Product Min Advert Price" option in the Document SSO metabox.
 
