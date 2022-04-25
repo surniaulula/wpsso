@@ -1,4 +1,4 @@
-=== WPSSO Core - Google Rich Results and Merchant Feeds, Open Graph Meta Tags, Pinterest Rich Pins, Schema JSON-LD, Sitemaps XML, Twitter Cards, WooCommerce SEO ===
+=== WPSSO Core - WordPress Social and Search Optimization ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso

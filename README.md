@@ -1,4 +1,4 @@
-<h1>WPSSO Core - Google Rich Results and Merchant Feeds, Open Graph Meta Tags, Pinterest Rich Pins, Schema JSON-LD, Sitemaps XML, Twitter Cards, WooCommerce SEO</h1>
+<h1>WPSSO Core - WordPress Social and Search Optimization</h1>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
