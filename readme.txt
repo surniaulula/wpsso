@@ -248,7 +248,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 12.2.0-dev.3 (2022/04/23)**
+**Version 12.2.0-rc.1 (2022/04/25)**
 
 * **New Features**
 	* None.
@@ -258,7 +258,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added a call to `WpssoAbstractWpMeta->get_inherited_md_opts()` in `WpssoProEcomWoocommerce->add_mt_product()`.
+	* Refactored the `WpssoAbstractWpMeta->get_inherited_md_opts()` method.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -569,9 +570,9 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 == Upgrade Notice ==
 
-= 12.2.0-dev.3 =
+= 12.2.0-rc.1 =
 
-(2022/04/23) Added a new "Product Min Advert Price" option in the Document SSO metabox.
+(2022/04/25) Added a new "Product Min Advert Price" option in the Document SSO metabox.
 
 = 12.1.1 =
 
