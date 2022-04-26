@@ -3040,6 +3040,20 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			 */
 			if ( $mtime_max > 0 && $mtime_total > $mtime_max ) {
 
+				$is_wp_filter = false;
+
+				switch ( $filter_name ) {
+
+					case 'get_the_excerpt':
+					case 'the_content':
+					case 'the_excerpt':
+					case 'wp_title':
+
+						$is_wp_filter = true;
+
+						break;
+				}
+
 				$error_pre   = sprintf( __( '%s warning:', 'wpsso' ), __METHOD__ );
 				$rec_max_msg = sprintf( __( 'longer than recommended max of %1$.3f secs', 'wpsso' ), $mtime_max );
 				$notice_msg  = sprintf( __( 'Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the "%2$s" filter (%3$s).',
@@ -3055,49 +3069,28 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				if ( $this->p->notice->is_admin_pre_notices() ) {
 
-					$is_wp_filter = false;
-
-					switch ( $filter_name ) {
-
-						case 'get_the_excerpt':
-						case 'the_content':
-						case 'the_excerpt':
-						case 'wp_title':
-
-							$is_wp_filter = true;
-
-							break;
-					}
-
 					/**
-					 * If this is a known WordPress filter, show a more complete notification message.
+					 * If this is a known WordPress filter, show a different and more complete notification message.
 					 */
 					if ( $is_wp_filter ) {
 
 						$filter_api_link = sprintf( '<a href="https://codex.wordpress.org/Plugin_API/Filter_Reference/%1$s">%1$s</a>', $filter_name );
-
-						$qm_plugin_link = '<a href="https://wordpress.org/plugins/query-monitor/">Query Monitor</a>';
-
-						$option_label = _x( 'Disable Cache for Debugging', 'option label', 'wpsso' );
-
-						$option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_settings', $option_label );
+						$qm_plugin_link  = '<a href="https://wordpress.org/plugins/query-monitor/">Query Monitor</a>';
+						$option_label    = _x( 'Disable Cache for Debugging', 'option label', 'wpsso' );
+						$option_link     = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_settings', $option_label );
 
 						$notice_msg = sprintf( __( 'Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds to execute.', 'wpsso' ), $filter_api_link, $mtime_total ) . ' ';
 
 						$notice_msg .= sprintf( __( 'This is longer than the recommended maximum of %1$.3f seconds and may affect page load time.', 'wpsso' ), $mtime_max ) . ' ';
 
-						$notice_msg .= sprintf( __( 'Please consider reviewing active plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code.', 'wpsso' ), $filter_api_link ) . ' ';
+						$notice_msg .= sprintf( __( 'You should consider reviewing active plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code.', 'wpsso' ), $filter_api_link ) . ' ';
 
 						$notice_msg .= sprintf( __( 'Activating the %1$s plugin and enabling the the %2$s option (to apply the filter consistently) may provide more information on the specific hooks or PHP code affecting performance.', 'wpsso' ), $qm_plugin_link, $option_link );
-
-						$notice_key = 'slow-filter-hooks-detected-' . $filter_name;
-
-						$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = WEEK_IN_SECONDS );
-
-					} else {
-
-						$this->p->notice->warn( $notice_msg );
 					}
+
+					$notice_key = 'slow-filter-hooks-detected-' . $filter_name;
+
+					$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = DAY_IN_SECONDS );
 				}
 			}
 

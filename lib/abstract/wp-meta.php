@@ -2125,7 +2125,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			if ( $this->p->debug->enabled ) {
 
 				$this->p->debug->mark();
-				
+
 				$this->p->debug->log( $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' is ' . ( $mod[ 'is_public' ] ? 'public' : 'private' ) );
 			}
 
@@ -2153,7 +2153,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 					$this->p->debug->log( 'inherit md images for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] . ' is enabled' );
 				}
-					
+
 			} else {
 
 				if ( $this->p->debug->enabled ) {
@@ -2193,7 +2193,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				}
 
 			} elseif ( empty( $inherit_opts ) ) {
-			
+
 				if ( $this->p->debug->enabled ) {
 
 					$this->p->debug->log( 'no inherit opts for ' . $mod[ 'name' ] . ' id ' . $mod[ 'id' ] );

@@ -132,7 +132,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$schema_lang = SucomUtil::get_locale( $mod );
 
 			} else {
-			
+
 				$schema_type_id = $this->get_mod_schema_type_id( $mod );
 
 				if ( $this->is_schema_type_child( $schema_type_id, 'creative.work' ) ) {
@@ -142,14 +142,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					if ( empty( $schema_lang ) || 'none' === $schema_lang ) {
 
 						$schema_lang = SucomUtil::get_locale( $mod );
-				
+
 					} elseif ( $this->p->debug->enabled ) {
-						
+
 						$this->p->debug->log( 'custom schema_lang = ' . $schema_lang );
 					}
 
 				} else {
-				
+
 					$schema_lang = SucomUtil::get_locale( $mod );
 				}
 			}
