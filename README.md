@@ -1,4 +1,4 @@
-<h1>WPSSO Core - WordPress Social and Search Optimization</h1>
+<h1>WPSSO Core - The Complete Structured Data Plugin for WordPress</h1>
 
 <table>
 <tr><th align="right" valign="top" nowrap>Plugin Name</th><td>WPSSO Core</td></tr>
