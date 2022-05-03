@@ -168,11 +168,10 @@ WPSSO provides comprehensive Schema markup for posts, pages, custom post types, 
 <h3>Plugin Setup</h3>
 
 * [Setup Guide](https://wpsso.com/docs/plugins/wpsso/installation/setup-guide/)
-* [Much Better Schema Markup for WooCommerce SEO](https://wpsso.com/docs/plugins/wpsso/installation/better-schema-for-woocommerce/)
-* [Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/)
-	* [WooCommerce Integration Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/)
-* [Troubleshooting Guide](https://wpsso.com/docs/plugins/wpsso/installation/troubleshooting-guide/)
 * [Developer Special: Buy one, Get one Free](https://wpsso.com/docs/plugins/wpsso/installation/developer-special-buy-one-get-one-free/)
+* [How to Get Better Schema Markup for WooCommerce](https://wpsso.com/docs/plugins/wpsso/installation/better-schema-for-woocommerce/)
+* [WooCommerce Integration and Fine-Tuning Notes](https://wpsso.com/docs/plugins/wpsso/installation/integration/woocommerce-integration/)
+* [Troubleshooting Guide](https://wpsso.com/docs/plugins/wpsso/installation/troubleshooting-guide/)
 
 == Frequently Asked Questions ==
 
