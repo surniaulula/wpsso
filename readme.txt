@@ -12,7 +12,7 @@ Requires PHP: 7.2
 Requires At Least: 5.2
 Tested Up To: 5.9.3
 WC Tested Up To: 6.4.1
-Stable Tag: 12.2.0
+Stable Tag: 12.2.1
 
 Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
 
@@ -256,7 +256,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added more debug messages to the WPML integration module.
+	* Added more debug messages to the WPML integration module (Premium edition).
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -585,7 +585,7 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 = 12.2.1 =
 
-(2022/05/05) Added more debug messages to the WPML integration module.
+(2022/05/05) Added more debug messages to the WPML integration module (Premium edition).
 
 = 12.2.0 =
 
