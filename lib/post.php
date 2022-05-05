@@ -609,6 +609,8 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 
 			if ( $wpsso->debug->enabled ) {
 
+				$wpsso->debug->log( 'calling wordpress get_posts() function' );
+
 				$wpsso->debug->log_arr( 'posts_args', $posts_args );
 			}
 
