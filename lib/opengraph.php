@@ -1436,7 +1436,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		/**
 		 * Deprecated on 2022/02/22.
 		 */
-		public function get_all_previews( $num = 0, array $mod, $check_dupes = true, $md_pre = 'og', $force_prev = false ) {
+		public function get_all_previews( $num, array $mod, $check_dupes = true, $md_pre = 'og', $force_prev = false ) {
 
 			_deprecated_function( __METHOD__ . '()', '2022/02/22', $replacement = 'WpssoMedia::get_all_previews()' );	// Deprecation message.
 
@@ -1446,7 +1446,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		/**
 		 * Deprecated on 2022/02/22.
 		 */
-		public function get_all_videos( $num = 0, array $mod, $check_dupes = true, $md_pre = 'og', $force_prev = false ) {
+		public function get_all_videos( $num, array $mod, $check_dupes = true, $md_pre = 'og', $force_prev = false ) {
 
 			_deprecated_function( __METHOD__ . '()', '2022/02/22', $replacement = 'WpssoMedia::get_all_videos()' );	// Deprecation message.
 
@@ -1456,7 +1456,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 		/**
 		 * Deprecated on 2022/02/22.
 		 */
-		public function get_all_images( $num, $size_names = 'opengraph', array $mod, $check_dupes = true, $md_pre = 'og' ) {
+		public function get_all_images( $num, $size_names, array $mod, $check_dupes = true, $md_pre = 'og' ) {
 
 			_deprecated_function( __METHOD__ . '()', '2022/02/22', $replacement = 'WpssoMedia::get_all_images()' );	// Deprecation message.
 

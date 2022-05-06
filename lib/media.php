@@ -176,7 +176,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			return $html;
 		}
 
-		public function get_all_previews( $num = 0, array $mod, $md_pre = 'og', $force_prev = false ) {
+		public function get_all_previews( $num, array $mod, $md_pre = 'og', $force_prev = false ) {
 
 			/**
 			 * The get_all_videos() method uses the 'og_vid_max' argument as part of its caching salt, so re-use the
@@ -219,7 +219,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		/**
 		 * Returns an array of single video associative arrays.
 		 */
-		public function get_all_videos( $num = 0, array $mod, $md_pre = 'og', $force_prev = false ) {
+		public function get_all_videos( $num, array $mod, $md_pre = 'og', $force_prev = false ) {
 
 			$cache_args = array(
 				'num'         => $num,
@@ -458,7 +458,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		/**
 		 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
 		 */
-		public function get_thumbnail_url( $size_names = 'thumbnail', array $mod, $md_pre = 'og' ) {
+		public function get_thumbnail_url( $size_names, array $mod, $md_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -473,7 +473,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		/**
 		 * $size_names can be a keyword (ie. 'opengraph' or 'schema'), a registered size name, or an array of size names.
 		 */
-		public function get_all_images( $num, $size_names = 'opengraph', array $mod, $md_pre = 'og' ) {
+		public function get_all_images( $num, $size_names, array $mod, $md_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 

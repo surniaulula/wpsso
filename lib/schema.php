@@ -2980,7 +2980,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			return $videos_added;	// return count of videos added
 		}
 
-		public static function add_person_names_data( &$json_data, $prop_name = '', array $assoc, $key_name = '' ) {
+		public static function add_person_names_data( &$json_data, $prop_name, array $assoc, $key_name = '' ) {
 
 			if ( ! empty( $prop_name ) && ! empty( $key_name ) ) {
 
