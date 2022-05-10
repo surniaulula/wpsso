@@ -247,7 +247,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 12.2.1 (2022/05/05)**
+**Version 12.2.2 (2022/05/05)**
 
 * **New Features**
 	* None.
@@ -583,7 +583,7 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 == Upgrade Notice ==
 
-= 12.2.1 =
+= 12.2.2 =
 
 (2022/05/05) Added more debug messages to the WPML integration module (Premium edition).
 
