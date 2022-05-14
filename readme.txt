@@ -247,17 +247,17 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 12.2.3-dev.1 (2022/05/13)**
+**Version 12.3.0-dev.1 (2022/05/13)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Optimized the saving of images to avoid duplicate thumbnail files.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
 	* Added a new `SucomUtil::sanitize_twitter_name()` method.
-	* Replaced `$_SERVER[ 'SERVER_NAME' ]` by `SucomUtil::get_home_url()`.
+	* Refactored `SucomUtil::get_url()` to replace `$_SERVER[ 'SERVER_NAME' ]` by `SucomUtil::get_home_url()`.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -598,9 +598,9 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 == Upgrade Notice ==
 
-= 12.2.3-dev.1 =
+= 12.3.0-dev.1 =
 
-(2022/05/13) None.
+(2022/05/13) Optimized the saving of images to avoid duplicate thumbnail files.
 
 = 12.2.2 =
 
