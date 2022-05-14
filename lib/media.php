@@ -106,7 +106,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			 * etc) before calling the image_make_intermediate_size() function (and others). Returns null if no image
 			 * information was set (presumably because we arrived here without passing through our own method).
 			 */
-			$img_info = (array) self::get_image_src_args();
+			$img_info = self::get_image_src_args();
 
 			if ( empty( $img_info[ 'size_name' ] ) || 0 !== strpos( $img_info[ 'size_name' ], 'wpsso-' ) ) {
 
@@ -135,14 +135,28 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				 */
 				if ( $this->p->util->count_other_sizes( $img_info[ 'size_name' ], $img_info[ 'pid' ] ) > 0 ) {
 
-					if ( copy( $file_path, $new_file_path ) ) {
+					if ( copy( $file_path, $new_file_path ) ) {	// Another plugin/theme uses the same dimensions.
 
-						return $new_file_path;		// Return the new file path on success.
+						return $new_file_path;	// Return the new file path on success.
 					}
 
-				} elseif ( rename( $file_path, $new_file_path ) ) {
+				} else {
 
-					return $new_file_path;		// Return the new file path on success.
+					if ( rename( $file_path, $new_file_path ) ) {	// No other plugin/theme uses the same dimensions.
+
+						return $new_file_path;	// Return the new file path on success.
+
+					} elseif ( copy( $file_path, $new_file_path ) ) {	// If rename failed, then copy and delete.
+
+						if ( unlink( $file_path ) ) {
+
+							return $new_file_path;	// Return the new file path on success.
+
+						} else {	// If deleting the original failed, then never mind. :)
+
+							unlink( $new_file_path );
+						}
+					}
 				}
 			}
 
@@ -157,7 +171,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		 */
 		public function maybe_resize_fuzzy_dimensions( $resize ) {
 
-			$img_info = (array) self::get_image_src_args();
+			$img_info = self::get_image_src_args();
 
 			if ( empty( $img_info[ 'size_name' ] ) || 0 !== strpos( $img_info[ 'size_name' ], 'wpsso-' ) ) {
 
@@ -3322,7 +3336,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( $this->p->options[ 'plugin_upscale_images' ] ) {
 
-				$img_info = (array) self::get_image_src_args();
+				$img_info = self::get_image_src_args();
 
 				$upscale_pct_max     = apply_filters( 'wpsso_image_upscale_max', $this->p->options[ 'plugin_upscale_pct_max' ], $img_info );
 				$upscale_multiplier  = 1 + ( $upscale_pct_max / 100 );
@@ -3412,7 +3426,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				}
 
 				return null;
-
 			}
 
 			return self::$image_src_args;

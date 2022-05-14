@@ -105,7 +105,7 @@
 
 'wpsso_image_upscale_all' ( WPSSO_IMAGE_UPSCALE_ALL = false )
 
-'wpsso_image_upscale_max' ( $max_diff = 50, $image_src_args )
+'wpsso_image_upscale_max' ( $upscale_max = 33, $image_src_args )
 
 'wpsso_image_upscale_test' ( WPSSO_IMAGE_UPSCALE_TEST = false, $image_src_args )
 
