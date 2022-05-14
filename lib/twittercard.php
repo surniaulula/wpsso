@@ -90,6 +90,8 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 				if ( $author_id ) {
 
 					$mt_tc[ 'twitter:creator' ] = get_the_author_meta( $this->p->options[ 'plugin_cm_twitter_name' ], $author_id );
+
+					$mt_tc[ 'twitter:creator' ] = SucomUtil::sanitize_twitter_name( $mt_tc[ 'twitter:creator' ] );	// Just in case.
 				}
 			}
 

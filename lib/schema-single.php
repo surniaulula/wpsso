@@ -1362,7 +1362,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 						} elseif ( $cm_id === $wpsso->options[ 'plugin_cm_twitter_name' ] ) {	// Convert twitter name to url.
 
-							$url = 'https://twitter.com/' . preg_replace( '/^@/', '', $url );
+							$url = 'https://twitter.com/' . SucomUtil::sanitize_twitter_name( $url, $add_at = false );
 						}
 
 						if ( false === filter_var( $url, FILTER_VALIDATE_URL ) ) {

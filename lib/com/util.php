@@ -1266,7 +1266,9 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		 */
 		public static function get_url( $remove_tracking = true ) {
 
-			$url = esc_url_raw( self::get_prot() . '://' . $_SERVER[ 'SERVER_NAME' ] . $_SERVER[ 'REQUEST_URI' ] );
+			$prot_server_name = preg_replace( '/^(.*\/\/[^\/]*).*$/', '$1', self::get_home_url() );
+
+			$url = esc_url_raw( $prot_server_name . $_SERVER[ 'REQUEST_URI' ] );
 
 			/**
 			 * Maybe remove tracking query arguments used by facebook, google, etc.
@@ -1656,6 +1658,21 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		public static function sanitize_css_id( $id ) {
 
 			return trim( preg_replace( '/[^a-zA-Z0-9\-_]/', '-', $id ) );
+		}
+
+		public static function sanitize_twitter_name( $twitter_name, $add_at = true ) {
+
+			if ( '' !== $twitter_name ) {
+
+				$twitter_name = substr( preg_replace( array( '/^.*\//', '/[^a-zA-Z0-9_]/' ), '', $twitter_name ), 0, 15 );
+
+				if ( ! empty( $twitter_name ) && $add_at )  {
+
+					$twitter_name = '@' . $twitter_name;
+				}
+			}
+
+			return $twitter_name;
 		}
 
 		public static function array_key_last( array $array ) {
@@ -4672,21 +4689,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			}
 
 			return $css_data;
-		}
-
-		public static function get_at_name( $val ) {
-
-			if ( $val !== '' ) {
-
-				$val = substr( preg_replace( array( '/^.*\//', '/[^a-zA-Z0-9_]/' ), '', $val ), 0, 15 );
-
-				if ( ! empty( $val ) )  {
-
-					$val = '@' . $val;
-				}
-			}
-
-			return $val;
 		}
 
 		public static function get_dist_name( $name, $pkg ) {

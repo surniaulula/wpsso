@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 12.2.2\n"
+"Project-Id-Version: WPSSO Core 12.2.3-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -11136,39 +11136,39 @@ msgstr ""
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr ""
 
-#: lib/twittercard.php:189
+#: lib/twittercard.php:191
 msgctxt "metabox title"
 msgid "Twitter App Card"
 msgstr ""
 
-#: lib/twittercard.php:197
+#: lib/twittercard.php:199
 msgctxt "metabox title"
 msgid "Twitter Player Card"
 msgstr ""
 
-#: lib/twittercard.php:205
+#: lib/twittercard.php:207
 msgctxt "metabox title"
 msgid "Twitter Summary Card"
 msgstr ""
 
-#: lib/twittercard.php:213
+#: lib/twittercard.php:215
 msgctxt "metabox title"
 msgid "Twitter Summary Card Large Image"
 msgstr ""
 
-#: lib/twittercard.php:587
+#: lib/twittercard.php:589
 msgid "Written by"
 msgstr ""
 
-#: lib/twittercard.php:596
+#: lib/twittercard.php:598
 msgid "Est. reading time"
 msgstr ""
 
-#: lib/twittercard.php:607
+#: lib/twittercard.php:609
 msgid "Price"
 msgstr ""
 
-#: lib/twittercard.php:625
+#: lib/twittercard.php:627
 msgid "Availability"
 msgstr ""
 

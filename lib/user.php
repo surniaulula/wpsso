@@ -1058,7 +1058,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 
 								case $this->p->options[ 'plugin_cm_twitter_name' ]:
 
-									$value = SucomUtil::get_at_name( $value );
+									$value = SucomUtil::sanitize_twitter_name( $value );
 
 									break;
 

@@ -1341,7 +1341,7 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 					if ( '' !== $opt_val ) {
 
-						$opt_val = SucomUtil::get_at_name( $opt_val );
+						$opt_val = SucomUtil::sanitize_twitter_name( $opt_val, $add_at = true );
 					}
 
 					break;

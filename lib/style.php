@@ -224,10 +224,12 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 				$this->p->debug->mark( 'create and minify admin page style' );	// Begin timer.
 			}
 
-			global $_registered_pages;
+			global $_registered_pages;	// Should be an array, but could be null.
 
-			$metabox_id    = $this->p->cf[ 'meta' ][ 'id' ];
-			$menu_pagehook = key( SucomUtil::preg_grep_keys( '/^toplevel_page_wpsso-/', $_registered_pages ) );
+			$menu_pagehook = is_array( $_registered_pages ) ?	// Just in case.
+				key( SucomUtil::preg_grep_keys( '/^toplevel_page_wpsso-/', $_registered_pages ) ) : '';
+
+			$metabox_id = $this->p->cf[ 'meta' ][ 'id' ];
 
 			/**
 			 * Fonts.
@@ -258,22 +260,25 @@ if ( ! class_exists( 'WpssoStyle' ) ) {
 			/**
 			 * Admin menu and sub-menu items.
 			 */
-			$custom_style_css .= '
-				#adminmenu #' . $menu_pagehook . ' div.wp-menu-name {	/* Prevent excessive word breaks in French. */
-					word-break:initial;
-					word-wrap:initial;
-					hyphens:initial;
-				}
-				#adminmenu li.menu-top.' . $menu_pagehook . ' div.wp-menu-image::before,
-				#adminmenu li.menu-top.' . $menu_pagehook . ':hover div.wp-menu-image::before {
-					content:"' . $this->p->cf[ 'menu' ][ 'icon-code' ] . '";
-					font-family:'. $this->p->cf[ 'menu' ][ 'icon-font' ] . ';
-				}
-				#adminmenu ul.wp-submenu div.wpsso-menu-item.top-last-submenu-page.with-add-ons {
-					padding-bottom:12px;
-					border-bottom:1px solid;
-				}
-			';
+			if ( $menu_pagehook ) {	// Just in case.
+
+				$custom_style_css .= '
+					#adminmenu #' . $menu_pagehook . ' div.wp-menu-name {	/* Prevent excessive word breaks in French. */
+						word-break:initial;
+						word-wrap:initial;
+						hyphens:initial;
+					}
+					#adminmenu li.menu-top.' . $menu_pagehook . ' div.wp-menu-image::before,
+					#adminmenu li.menu-top.' . $menu_pagehook . ':hover div.wp-menu-image::before {
+						content:"' . $this->p->cf[ 'menu' ][ 'icon-code' ] . '";
+						font-family:'. $this->p->cf[ 'menu' ][ 'icon-font' ] . ';
+					}
+					#adminmenu ul.wp-submenu div.wpsso-menu-item.top-last-submenu-page.with-add-ons {
+						padding-bottom:12px;
+						border-bottom:1px solid;
+					}
+				';
+			}
 
 			/**
 			 * Settings pages.
