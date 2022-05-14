@@ -113,7 +113,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				return $file_path;
 			}
 
-			$size_info = $this->p->util->get_size_info( $img_info[ 'size_name' ], $img_info[ 'pid' ] );
+			$size_info = $this->p->util->get_size_info( $img_info[ 'size_name' ], $img_info[ 'pid' ] );	// Uses a local static cache.
 
 			/**
 			 * If the resized image is not cropped, then leave the file name as-is.
@@ -127,7 +127,20 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 			if ( $file_path !== $new_file_path ) {		// Just in case
 
-				if ( copy( $file_path, $new_file_path ) ) {
+				/**
+				 * Since Wpsso Core v12.3.0.
+				 *
+				 * If there are other image sizes using the same dimensions, then copy the image and leave the
+				 * original for those image sizes.
+				 */
+				if ( $this->p->util->count_other_sizes( $img_info[ 'size_name' ], $img_info[ 'pid' ] ) > 0 ) {
+
+					if ( copy( $file_path, $new_file_path ) ) {
+
+						return $new_file_path;		// Return the new file path on success.
+					}
+
+				} elseif ( rename( $file_path, $new_file_path ) ) {
 
 					return $new_file_path;		// Return the new file path on success.
 				}
