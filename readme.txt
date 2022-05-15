@@ -247,7 +247,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 12.3.0-dev.2 (2022/05/14)**
+**Version 12.3.0-b.1 (2022/05/14)**
 
 * **New Features**
 	* None.
@@ -598,7 +598,7 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 == Upgrade Notice ==
 
-= 12.3.0-dev.2 =
+= 12.3.0-b.1 =
 
 (2022/05/14) Optimized the saving of images to avoid duplicate thumbnail files.
 
