@@ -2239,7 +2239,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 *
 		 * $md_pre can be a text string or array of prefixes.
 		 */
-		public function get_md_images( $num = 0, $size_names, array $mod, $md_pre = 'og', $mt_pre = 'og' ) {
+		public function get_md_images( $num, $size_names, array $mod, $md_pre = 'og', $mt_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -2404,7 +2404,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 *
 		 * $md_pre can be a text string or array of prefixes.
 		 */
-		public function get_og_images( $num = 0, $size_names, $obj_id, $md_pre = 'og', $mt_pre = 'og' ) {
+		public function get_og_images( $num, $size_names, $obj_id, $md_pre = 'og', $mt_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -2421,7 +2421,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		 *
 		 * $md_pre can be a text string or array of prefixes.
 		 */
-		public function get_og_videos( $num = 0, $obj_id, $md_pre = 'og', $mt_pre = 'og' ) {
+		public function get_og_videos( $num, $obj_id, $md_pre = 'og', $mt_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 

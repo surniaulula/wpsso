@@ -818,7 +818,7 @@ if ( ! class_exists( 'WpssoHead' ) ) {
 		 *
 		 * $mixed can be a null, boolean, a string, numeric, a numeric array, or an associative array.
 		 */
-		private function add_mt_array( array &$mt_array, $tag, $type, $name = '', $mixed, $cmt = '', $mod = false, $use_image = true ) {
+		private function add_mt_array( array &$mt_array, $tag, $type, $name, $mixed, $cmt = '', $mod = false, $use_image = true ) {
 
 			if ( $this->p->debug->enabled ) {
 

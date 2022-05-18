@@ -764,7 +764,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		/**
 		 * $size_name must be a string.
 		 */
-		public function get_post_images( $num = 0, $size_name = 'thumbnail', $post_id, $md_pre = 'og' ) {
+		public function get_post_images( $num, $size_name, $post_id, $md_pre = 'og' ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -811,7 +811,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		/**
 		 * $size_name must be a string.
 		 */
-		public function get_featured( $num = 0, $size_name = 'thumbnail', $post_id ) {
+		public function get_featured( $num, $size_name, $post_id ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -873,7 +873,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		/**
 		 * $size_name must be a string.
 		 */
-		public function get_attached_images( $num = 0, $size_name = 'thumbnail', $post_id ) {
+		public function get_attached_images( $num, $size_name, $post_id ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -1264,7 +1264,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 		/**
 		 * $size_name must be a string.
 		 */
-		public function get_attachment_image( $num = 0, $size_name = 'thumbnail', $attachment_id ) {
+		public function get_attachment_image( $num, $size_name, $attachment_id ) {
 
 			if ( $this->p->debug->enabled ) {
 

@@ -2093,7 +2093,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		 * See get_metadata_raw() in wordpress/wp-includes/meta.php:570.
 		 * See metadata_exists() in wordpress/wp-includes/meta.php:683.
 		 */
-		public function get_post_metadata_thumbnail_id( $check = null, $post_id, $meta_key, $single ) {
+		public function get_post_metadata_thumbnail_id( $check, $post_id, $meta_key, $single ) {
 
 			if ( '_thumbnail_id' !== $meta_key ) {
 
@@ -2150,7 +2150,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		 * See get_metadata_raw() in wordpress/wp-includes/meta.php:570.
 		 * See metadata_exists() in wordpress/wp-includes/meta.php:683.
 		 */
-		public function update_post_metadata_thumbnail_id( $check = null, $post_id, $meta_key, $meta_value, $prev_value ) {
+		public function update_post_metadata_thumbnail_id( $check, $post_id, $meta_key, $meta_value, $prev_value ) {
 
 			if ( '_thumbnail_id' !== $meta_key ) {
 
