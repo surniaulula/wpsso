@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 12.1.0\n"
+"Project-Id-Version: WPSSO Core 12.3.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2022-04-26 06:42-0700\n"
+"PO-Revision-Date: 2022-05-18 06:54-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -394,8 +394,8 @@ msgstr "de"
 
 #. translators: Please ignore - translation uses a different text domain.
 #: gettext/gettext-lib-com.php:40 gettext/gettext-lib-pro.php:418
-#: lib/com/form.php:886 lib/media.php:1381 lib/media.php:1532
-#: lib/media.php:3167 lib/pro/util/check-img-dims.php:104
+#: lib/com/form.php:886 lib/media.php:1408 lib/media.php:1559
+#: lib/media.php:3194 lib/pro/util/check-img-dims.php:104
 msgid "Media Library"
 msgstr "la médiathèque"
 
@@ -4423,7 +4423,7 @@ msgstr "La valeur de l'option \"%s\" est vide et requise."
 
 #: gettext/gettext-lib-pro.php:413 gettext/gettext-lib-pro.php:415
 #: gettext/gettext-lib-pro.php:451 lib/conflict.php:208 lib/loader.php:187
-#: lib/loader.php:201 lib/post.php:1570 lib/pro/review/yotpowc.php:185
+#: lib/loader.php:201 lib/post.php:1572 lib/pro/review/yotpowc.php:185
 #: lib/pro/util/shorten.php:495 lib/pro/util/shorten.php:532
 msgid "%s error:"
 msgstr "Erreur %s:"
@@ -4442,7 +4442,7 @@ msgstr "Le fichier de bibliothèque de raccourcissement d'URL pour \"%s\" est ma
 msgid "full size original"
 msgstr "originale pleine grandeur"
 
-#: gettext/gettext-lib-pro.php:419 lib/media.php:3177
+#: gettext/gettext-lib-pro.php:419 lib/media.php:3204
 #: lib/pro/util/check-img-dims.php:107
 msgid "image ID %1$s (%2$s)"
 msgstr "ID d'image %1$s (%2$s)"
@@ -5000,7 +5000,7 @@ msgstr "Privilèges insuffisants pour modifier les options de réseau."
 msgid "Network plugin settings have been saved."
 msgstr "Les réglages réseau ont été sauvegardés."
 
-#: lib/admin.php:867 lib/post.php:917 lib/term.php:675 lib/user.php:678
+#: lib/admin.php:867 lib/post.php:919 lib/term.php:675 lib/user.php:678
 msgid "Nonce token validation failed for %1$s action \"%2$s\"."
 msgstr "La validation du jeton nonce pour l'action %1$s \"%2$s\" a échoué."
 
@@ -5289,7 +5289,7 @@ msgctxt "option label"
 msgid "Use Local Plugin Translations"
 msgstr "Utiliser les traductions locale"
 
-#: lib/admin.php:2493 lib/util.php:3079
+#: lib/admin.php:2493 lib/util.php:3109
 msgctxt "option label"
 msgid "Disable Cache for Debugging"
 msgstr "Désactiver le cache pour débogage"
@@ -6146,62 +6146,62 @@ msgstr "Le plugin installé est incomplet ou le serveur Web ne peut pas accéder
 msgid "<strong>Suggested minimum dimension for uploaded images</strong> (to satisfy all %1$d image sizes): %2$d by %3$d pixels."
 msgstr "<strong>Dimension minimale suggérée pour les images téléchargées</strong> (pour satisfaire toutes les %1$d tailles d'image): %2$d par %3$d pixels."
 
-#: lib/media.php:1194
+#: lib/media.php:1221
 msgid "Content"
 msgstr "Contenu"
 
-#: lib/media.php:1385
+#: lib/media.php:1412
 msgid "https://developer.wordpress.org/reference/functions/wp_get_attachment_metadata/"
 msgstr "https://developer.wordpress.org/reference/functions/wp_get_attachment_metadata/"
 
-#: lib/media.php:1386 lib/media.php:1583
+#: lib/media.php:1413 lib/media.php:1610
 msgid "You may consider regenerating the sizes of all WordPress Media Library images using one of <a href=\"%s\">several available plugins from WordPress.org</a>."
 msgstr "Vous pouvez régénérer les tailles de toutes les images de la bibliothèque Médias WordPress en utilisant l'une <a href=\"%s\">des extensions disponibles sur WordPress.org</a>."
 
-#: lib/media.php:1402
+#: lib/media.php:1429
 msgid "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s function</a> returned an error for <a href=\"%4$s\">image ID %5$s</a>: %6$s."
 msgstr "Corruption possible de %1$s détecté - la <a href=\"%2$s\">fonction WordPress %3$s</a> a renvoyé une erreur pour <a href=\"%4$s\">l'ID d'image %5$s</a>: %6$s."
 
-#: lib/media.php:1423
+#: lib/media.php:1450
 msgid "Possible %1$s corruption detected - the full size image dimensions for <a href=\"%2$s\">image ID %3$s</a> are missing from the image metadata returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr "Corruption possible de %1$s détecté - les dimensions de l'image pleine grandeur pour <a href=\"%2$s\">l'ID d'image %3$s</a> sont manquantes dans les métadonnées d'image retourné par la <a href=\"%4$s\">fonction WordPress %5$s</a>."
 
-#: lib/media.php:1442
+#: lib/media.php:1469
 msgid "Possible %1$s corruption detected - the full size image file path for <a href=\"%2$s\">image ID %3$s</a> is missing from the image metadata returned by the <a href=\"%4$s\">WordPress %5$s function</a>."
 msgstr "Corruption possible de %1$s détecté - le chemin du fichier d'image pleine grandeur pour <a href=\"%2$s\">l'ID d'image %3$s</a> est manquant dans les métadonnées d'image retourné par la <a href=\"%4$s\">fonction WordPress %5$s</a>."
 
-#: lib/media.php:1534
+#: lib/media.php:1561
 msgid "https://developer.wordpress.org/reference/functions/image_make_intermediate_size/"
 msgstr "https://developer.wordpress.org/reference/functions/image_make_intermediate_size/"
 
-#: lib/media.php:1552 lib/post.php:661 lib/register.php:348 lib/term.php:529
-#: lib/user.php:514 lib/util.php:749 lib/util.php:855 lib/util.php:887
-#: lib/util.php:3057
+#: lib/media.php:1579 lib/post.php:663 lib/register.php:348 lib/term.php:529
+#: lib/user.php:514 lib/util.php:779 lib/util.php:885 lib/util.php:917
+#: lib/util.php:3087
 msgid "%s warning:"
 msgstr "Alerte %s:"
 
-#: lib/media.php:1553 lib/post.php:662 lib/term.php:530 lib/user.php:515
-#: lib/util.php:750 lib/util.php:3058
+#: lib/media.php:1580 lib/post.php:664 lib/term.php:530 lib/user.php:515
+#: lib/util.php:780 lib/util.php:3088
 msgid "longer than recommended max of %1$.3f secs"
 msgstr "supérieur au max recommandé de %1$.3f secs"
 
-#: lib/media.php:1554
+#: lib/media.php:1581
 msgid "Slow WordPress function detected - %1$s took %2$.3f secs to make image size \"%3$s\" from %4$s (%5$s)."
 msgstr "Fonction WordPress lente détectée - %1$s a pris %2$.3f secs pour créer la taille d'image \"%3$s\" à partir de %4$s (%5$s)."
 
-#: lib/media.php:1581
+#: lib/media.php:1608
 msgid "Possible %1$s corruption detected - the <a href=\"%2$s\">WordPress %3$s function</a> failed to create the \"%4$s\" image size (%5$s) from %6$s."
 msgstr "Corruption possible de %1$s détecté - la <a href=\"%2$s\">fonction WordPress %3$s</a> n'a pas pu créer la taille d'image \"%4$s\" (%5$s) à partir de %6$s."
 
-#: lib/media.php:3193
+#: lib/media.php:3220
 msgid "image URL %s"
 msgstr "URL d'image %s"
 
-#: lib/media.php:3246
+#: lib/media.php:3273
 msgid "%1$s %2$s ignored - the resulting resized image of %3$s has an <strong>aspect ratio equal to/or greater than %4$d:1 allowed by the %5$s standard</strong>."
 msgstr "L'%2$s de %1$s a été ignoré - l'image redimensionnée résultante de %3$s a une <strong>proportion égale ou supérieur a %4$d:1 permise par la norme %5$s</strong>."
 
-#: lib/media.php:3281
+#: lib/media.php:3308
 msgid "%1$s %2$s ignored - the resulting resized image of %3$s is <strong>smaller than the minimum of %4$s allowed by the %5$s standard</strong>."
 msgstr "L'%2$s de %1$s a été ignoré - l'image redimensionnée résultante de %3$s est <strong>plus petite que le minimum %4$s permise par la norme %5$s</strong>."
 
@@ -8706,7 +8706,7 @@ msgstr "https://support.google.com/merchants/answer/6324482?hl=fr"
 #: lib/messages.php:767
 msgctxt "tooltip fragment"
 msgid "a Minimum Advertised Price (MAP)"
-msgstr "un Prix Minimum Publicitaire (MAP)"
+msgstr "un Prix Minimum d'Annonce (MAP)"
 
 #: lib/messages.php:771
 msgctxt "tooltip fragment"
@@ -9110,119 +9110,119 @@ msgctxt "module name"
 msgid "post"
 msgstr "article"
 
-#: lib/post.php:663
+#: lib/post.php:665
 msgid "Slow WordPress function detected - %1$s took %2$.3f secs to get children of post ID %3$d (%4$s)."
 msgstr "Fonction WordPress lente détectée - %1$s a pris %2$.3f secs pour obtenir les enfants de l'ID d'article %3$d (%4$s)."
 
-#: lib/post.php:1055
+#: lib/post.php:1057
 msgid "Checking %1$s for duplicate meta tags..."
 msgstr "Vérification de balises méta en double pour %1$s..."
 
-#: lib/post.php:1088
+#: lib/post.php:1090
 msgid "The webpage HTML retrieved from %1$s is %2$s bytes."
 msgstr "L'HTML de la page Web récupérée de %1$s est %2$s octets."
 
-#: lib/post.php:1091
+#: lib/post.php:1093
 msgid "This exceeds the maximum limit of %1$s bytes imposed by the Google crawler."
 msgstr "Cela dépasse la limite maximale de %1$s octets imposée par le robot d'exploration de Google."
 
-#: lib/post.php:1094
+#: lib/post.php:1096
 msgid "If you do not reduce the webpage HTML size, Google will refuse to crawl this webpage."
 msgstr "Si vous ne réduisez pas la taille du HTML de la page Web, Google refusera d'analyser cette page Web."
 
-#: lib/post.php:1124
+#: lib/post.php:1126
 msgid "Retrieving the webpage HTML for %1$s took %2$s seconds."
 msgstr "Récupérer l'HTML de la page Web pour %1$s a pris %2$s secondes."
 
-#: lib/post.php:1126
+#: lib/post.php:1128
 msgid "This exceeds the recommended limit of %1$s seconds (crawlers often time-out after %2$s seconds)."
 msgstr "Cela dépasse le délai recommandé de %1$s secondes (plusieurs crawlers déconnectent après %2$s secondes)."
 
-#: lib/post.php:1128
+#: lib/post.php:1130
 msgid "Please consider improving the speed of your site."
 msgstr "SVP envisager d'améliorer la vitesse de votre site."
 
-#: lib/post.php:1129
+#: lib/post.php:1131
 msgid "As an added benefit, a faster site will also improve ranking in search results."
 msgstr "Comme avantage supplémentaire, un site plus rapide améliore également le classement dans les résultats de recherche."
 
-#: lib/post.php:1143
+#: lib/post.php:1145
 msgid "Error retrieving content from <a href=\"%1$s\">%1$s</a>."
 msgstr "Erreur lors de la récupération du contenu de <a href=\"%1$s\">%1$s</a>."
 
-#: lib/post.php:1157
+#: lib/post.php:1159
 msgid "An %1$s tag was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr "Une balise %1$s est introuvable dans <a href=\"%2$s\">%2$s</a>."
 
-#: lib/post.php:1172
+#: lib/post.php:1174
 msgid "No %1$s HTML tags were found in <a href=\"%2$s\">%2$s</a>."
 msgstr "Aucune balises HTML %1$s ont été trouvées dans <a href=\"%2$s\">%2$s</a>."
 
-#: lib/post.php:1189
+#: lib/post.php:1191
 msgid "The %1$s meta tags and Schema markup section was not found in <a href=\"%2$s\">%2$s</a>."
 msgstr "La section de balises et balisage de Schéma %1$s n'a pas été trouvé dans <a href=\"%2$s\">%2$s</a>."
 
-#: lib/post.php:1192
+#: lib/post.php:1194
 msgid "Does a caching plugin or service needs to be refreshed?"
 msgstr "Une extension ou un service de mise en cache doit-il être actualisé ?"
 
-#: lib/post.php:1225
+#: lib/post.php:1227
 msgid "The PHP preg_replace() function failed to remove the %1$s meta tag section."
 msgstr "La fonction PHP preg_replace() n'a pas réussi à supprimer la section de balise méta %1$s."
 
-#: lib/post.php:1228
+#: lib/post.php:1230
 msgid "This could indicate a problem with PHP's PCRE library, or an optimization plugin / service corrupting the webpage HTML."
 msgstr "Cela pourrait indiquer un problème avec la bibliothèque PCRE de PHP, ou une extension / service d'optimisation corrompant le HTML de la page Web."
 
-#: lib/post.php:1231
+#: lib/post.php:1233
 msgid "You should consider updating or having your hosting provider update your PHP installation and its PCRE library."
 msgstr "Vous devriez envisager de mettre à jour ou de demander à votre hébergeur de mettre à jour votre installation PHP et sa bibliothèque PCRE."
 
-#: lib/post.php:1252
+#: lib/post.php:1254
 msgid "Conflict detected - your theme or another plugin is adding %1$s to the head section of this webpage."
 msgstr "Conflit détecté - votre thème ou une autre extension ajoute une balise %1$s à l'entête de cette page Web."
 
-#: lib/post.php:1271
+#: lib/post.php:1273
 msgid "An error occured parsing the head meta tags from <a href=\"%1$s\">%1$s</a> (no \"link\" or \"meta\" HTML tags were found)."
 msgstr "Une erreur s'est produite lors de l'analyse des balises méta de tête pour <a href=\"%1$s\">%1$s</a> (aucune balise HTML \"link\" ou \"meta\" ont été trouvée)."
 
-#: lib/post.php:1273
+#: lib/post.php:1275
 msgid "The webpage may contain HTML syntax errors preventing PHP from successfully parsing the HTML document."
 msgstr "La page Web peut contenir des erreurs de syntaxe HTML empêchant PHP d'analyser correctement le document HTML."
 
-#: lib/post.php:1276
+#: lib/post.php:1278
 msgid "Please review the <a href=\"%1$s\">W3C Markup Validator</a> results and correct any syntax errors."
 msgstr "Veuillez consulter les résultats du <a href=\"%1$s\">validateur de balisage W3C</a> et corriger les erreurs de syntaxe."
 
-#: lib/post.php:1319
+#: lib/post.php:1321
 msgid "%1$d duplicate meta tags found."
 msgstr "%1$d balises méta en double trouvées."
 
-#: lib/post.php:1321
+#: lib/post.php:1323
 msgid "Check %1$d of %2$d failed (will retry)..."
 msgstr "Vérification %1$d de %2$d a échoué (réessaie à suivre)..."
 
-#: lib/post.php:1329
+#: lib/post.php:1331
 msgid "Awesome! No duplicate meta tags found."
 msgstr "Génial! Aucune balise méta dupliquée trouvée."
 
-#: lib/post.php:1333
+#: lib/post.php:1335
 msgid "Debug option is enabled - will keep repeating duplicate check..."
 msgstr "L'option de débogage est activée - cette vérification sera répétée..."
 
-#: lib/post.php:1337
+#: lib/post.php:1339
 msgid "Check %1$d of %2$d successful..."
 msgstr "Vérification %1$d de %2$d réussi..."
 
-#: lib/post.php:1534
+#: lib/post.php:1536
 msgid "invalid ajax referer nonce value"
 msgstr "valeur nonce de référence ajax invalide"
 
-#: lib/post.php:1539
+#: lib/post.php:1541
 msgid "ajax request missing the post_id"
 msgstr "demande ajax manquant le post_id"
 
-#: lib/post.php:1818
+#: lib/post.php:1820
 msgid "Insufficient privileges to save settings for %1$s ID %2$s."
 msgstr "Privilèges insuffisants pour enregistrer les réglages %1$s ID %2$s."
 
@@ -9944,39 +9944,39 @@ msgstr "Fonction WordPress lente détectée - %1$s a pris %2$.3f secs pour obten
 msgid "Insufficient privileges to save settings for term ID %1$s."
 msgstr "Privilèges insuffisants pour enregistrer les réglages terme ID %1$s."
 
-#: lib/twittercard.php:189
+#: lib/twittercard.php:191
 msgctxt "metabox title"
 msgid "Twitter App Card"
 msgstr "Carte app de Twitter"
 
-#: lib/twittercard.php:197
+#: lib/twittercard.php:199
 msgctxt "metabox title"
 msgid "Twitter Player Card"
 msgstr "Carte joueur de Twitter"
 
-#: lib/twittercard.php:205
+#: lib/twittercard.php:207
 msgctxt "metabox title"
 msgid "Twitter Summary Card"
 msgstr "Carte sommaire de Twitter"
 
-#: lib/twittercard.php:213
+#: lib/twittercard.php:215
 msgctxt "metabox title"
 msgid "Twitter Summary Card Large Image"
 msgstr "Carte sommaire grande image de Twitter"
 
-#: lib/twittercard.php:587
+#: lib/twittercard.php:589
 msgid "Written by"
 msgstr "Écrit par"
 
-#: lib/twittercard.php:596
+#: lib/twittercard.php:598
 msgid "Est. reading time"
 msgstr "Temps de lecture est."
 
-#: lib/twittercard.php:607
+#: lib/twittercard.php:609
 msgid "Price"
 msgstr "Prix"
 
-#: lib/twittercard.php:625
+#: lib/twittercard.php:627
 msgid "Availability"
 msgstr "Disponibilité"
 
@@ -10282,175 +10282,175 @@ msgstr "once"
 msgid "lbs"
 msgstr "livre"
 
-#: lib/util.php:492
+#: lib/util.php:522
 msgid "cropped"
 msgstr "recadrée"
 
-#: lib/util.php:492
+#: lib/util.php:522
 msgid "uncropped"
 msgstr "non recadrée"
 
-#: lib/util.php:751
+#: lib/util.php:781
 msgid "Slow PHP function detected - %1$s took %2$.3f secs for %3$s (%4$s)."
 msgstr "Fonction PHP lente détectée - %1$s a pris %2$.3f secs pour %3$s (%4$s)."
 
-#: lib/util.php:1212
+#: lib/util.php:1242
 msgid "Error reading the %s file for the article sections list."
 msgstr "Erreur de lecture du fichier %s pour la liste des rubriques d'article."
 
-#: lib/util.php:1313
+#: lib/util.php:1343
 msgid "Error reading the %s file for the product categories list."
 msgstr "Erreur de lecture du fichier %s pour de la liste des catégories de produit."
 
-#: lib/util.php:1444
+#: lib/util.php:1474
 msgid "The <code>%1$s</code> request argument is not HTML or a valid URL."
 msgstr "L'argument de requête à <code>%1$s</code> n'est pas du HTML ou une URL valide."
 
-#: lib/util.php:1468
+#: lib/util.php:1498
 msgid "Error getting HTML from <a href=\"%1$s\">%1$s</a>."
 msgstr "Erreur lors de l'obtention du code HTML de <a href=\"%1$s\">%1$s</a>."
 
-#: lib/util.php:1498
+#: lib/util.php:1528
 msgid "Webpage retrieved from <a href=\"%1$s\">%1$s</a> is empty."
 msgstr "La page Web récupéré de <a href=\"%1$s\">%1$s</a> est vide."
 
 #. translators: %1$s is the class name.
-#: lib/util.php:1696
+#: lib/util.php:1726
 msgid "The PHP <code>%1$s</code> class is missing &ndash; contact your hosting provider to have the missing class installed."
 msgstr "La classe PHP <code>%1$s</code> est manquante &ndash; contactez votre fournisseur d'hébergement pour installer la classe manquante."
 
 #. translators: %1$s is the function name.
-#: lib/util.php:1710
+#: lib/util.php:1740
 msgid "The PHP <code>%1$s</code> function is missing &ndash; contact your hosting provider to have the missing function installed."
 msgstr "La fonction PHP <code>%1$s</code> est manquante &ndash; contactez votre fournisseur d'hébergement pour installer la fonction manquante."
 
-#: lib/util.php:3059
+#: lib/util.php:3089
 msgid "Slow filter hook(s) detected - WordPress took %1$.3f secs to execute the \"%2$s\" filter (%3$s)."
 msgstr "Crochet(s) de filtre lent détecté - WordPress a pris %1$.3f secs pour exécuter le filtre \"%2$s\" (%3$s)."
 
-#: lib/util.php:3082
+#: lib/util.php:3112
 msgid "Slow filter hook(s) detected - the WordPress %1$s filter took %2$.3f seconds to execute."
 msgstr "Crochet(s) de filtre lent(s) détecté(s) - le filtre WordPress %1$s a pris %2$.3f secondes pour s'exécuter."
 
-#: lib/util.php:3084
+#: lib/util.php:3114
 msgid "This is longer than the recommended maximum of %1$.3f seconds and may affect page load time."
 msgstr "Cela dépasse le maximum recommandé de %1$.3f secondes et peut affecter le temps de chargement de la page."
 
-#: lib/util.php:3086
+#: lib/util.php:3116
 msgid "You should consider reviewing active plugin and theme functions hooked into the WordPress %1$s filter for slow and/or sub-optimal PHP code."
 msgstr "Vous devriez envisager de revoir les fonctions d'extension et de thème actives liées au filtre WordPress %1$s pour du code PHP lent et/ou sous-optimal."
 
-#: lib/util.php:3088
+#: lib/util.php:3118
 msgid "Activating the %1$s plugin and enabling the the %2$s option (to apply the filter consistently) may provide more information on the specific hooks or PHP code affecting performance."
 msgstr "L'activation de l'extension %1$s et l'activation de l'option %2$s (pour appliquer le filtre de manière cohérente) peuvent fournir plus d'informations sur les crochets spécifiques ou le code PHP affectant les performances."
 
-#: lib/util.php:3484
+#: lib/util.php:3514
 msgctxt "option label"
 msgid "The AMP Project Validator"
 msgstr "Le validateur de projet AMP"
 
-#: lib/util.php:3485
+#: lib/util.php:3515
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr "Balisage AMP"
 
-#: lib/util.php:3489
+#: lib/util.php:3519
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr "Débogueur de partage Facebook"
 
-#: lib/util.php:3490
+#: lib/util.php:3520
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr "Open Graph"
 
-#: lib/util.php:3494
+#: lib/util.php:3524
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr "Outil de débogage des microdonnées Facebook"
 
-#: lib/util.php:3495
+#: lib/util.php:3525
 msgctxt "validator type"
 msgid "Microdata"
 msgstr "Microdonnées"
 
-#: lib/util.php:3499
+#: lib/util.php:3529
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr "PageSpeed Insights de Google"
 
-#: lib/util.php:3500
+#: lib/util.php:3530
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr "Vitesse de page"
 
-#: lib/util.php:3504
+#: lib/util.php:3534
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr "Test de résultats enrichis Google"
 
-#: lib/util.php:3505
+#: lib/util.php:3535
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr "Résultats riches"
 
-#: lib/util.php:3509
+#: lib/util.php:3539
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr "Inspecteur d'article LinkedIn"
 
-#: lib/util.php:3510
+#: lib/util.php:3540
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr "Données oEmbed"
 
-#: lib/util.php:3514
+#: lib/util.php:3544
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr "Validateur Pinterest épingles riches"
 
-#: lib/util.php:3515
+#: lib/util.php:3545
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr "Épingles riches"
 
-#: lib/util.php:3519
+#: lib/util.php:3549
 msgctxt "option label"
 msgid "Schema Markup Validator"
 msgstr "Validateur de balisage de Schéma"
 
-#: lib/util.php:3520
+#: lib/util.php:3550
 msgctxt "validator type"
 msgid "Schema Markup"
 msgstr "Balisage de Schéma"
 
-#: lib/util.php:3524
+#: lib/util.php:3554
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr "Vérificateur de carte Twitter"
 
-#: lib/util.php:3525
+#: lib/util.php:3555
 msgctxt "validator type"
 msgid "Twitter Card"
 msgstr "Carte Twitter"
 
-#: lib/util.php:3530
+#: lib/util.php:3560
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr "Validateur W3C de balisage"
 
-#: lib/util.php:3531
+#: lib/util.php:3561
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr "Balisage HTML"
 
 #. translators: %1$s is an action message, %2$s is the module or post type name.
-#: lib/util.php:3693
+#: lib/util.php:3723
 msgid "%1$s for this %2$s"
 msgstr "%1$s pour cet %2$s"
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3703
+#: lib/util.php:3733
 msgid "%1$s for %2$s ID %3$d"
 msgstr "%1$s pour %2$s ID %3$d"
 
@@ -10495,6 +10495,3 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
-
-#~ msgid "for simple or main product"
-#~ msgstr "pour produit simple ou principal"
