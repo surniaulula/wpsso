@@ -24,6 +24,8 @@ if ( ! class_exists( 'WpssoMessagesTooltipSite' ) ) {
 
 		public function get( $msg_key = false, $info = array() ) {
 
+			$this->maybe_set_properties();
+
 			$text = '';
 
 			switch ( $msg_key ) {

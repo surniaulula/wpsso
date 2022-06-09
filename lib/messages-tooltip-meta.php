@@ -27,6 +27,8 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 
 		public function get( $msg_key = false, $info = array() ) {
 
+			$this->maybe_set_properties();
+
 			$text = '';
 
 			if ( 0 === strpos( $msg_key, 'tooltip-meta-og_' ) ) {

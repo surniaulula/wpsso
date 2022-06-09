@@ -898,6 +898,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 				if ( ! empty( $this->p->util ) ) {	// Just in case.
 
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'setting properties' );
+					}
+
 					$this->pkg_info        = $this->p->util->get_pkg_info();	// Uses a local cache.
 					$this->p_name          = $this->pkg_info[ 'wpsso' ][ 'name' ];
 					$this->p_name_pro      = $this->pkg_info[ 'wpsso' ][ 'name_pro' ];

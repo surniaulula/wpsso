@@ -30,6 +30,8 @@ if ( ! class_exists( 'WpssoMessagesTooltip' ) ) {
 
 		public function get( $msg_key = false, $info = array() ) {
 
+			$this->maybe_set_properties();
+
 			$text = '';
 
 			/**
