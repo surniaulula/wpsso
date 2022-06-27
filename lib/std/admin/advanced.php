@@ -98,13 +98,13 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				$form->get_no_td_checkbox( 'plugin_filter_excerpt', _x( 'recommended if shortcodes in excerpts', 'option comment', 'wpsso' ) ) .
 				WpssoAdmin::get_option_site_use( 'plugin_filter_excerpt', $form, $network );
 
-			$table_rows[ 'plugin_page_excerpt' ] = $form->get_tr_hide( 'basic', 'plugin_page_excerpt' ) .
+			$table_rows[ 'plugin_page_excerpt' ] = $form->get_tr_hide( $in_view = 'basic', 'plugin_page_excerpt' ) .
 				$form->get_th_html( _x( 'Enable Excerpt for Pages', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_page_excerpt' ) . 
 				$form->get_no_td_checkbox( 'plugin_page_excerpt' ) .
 				WpssoAdmin::get_option_site_use( 'plugin_page_excerpt', $form, $network );
 
-			$table_rows[ 'plugin_page_tags' ] = $form->get_tr_hide( 'basic', 'plugin_page_tags' ) .
+			$table_rows[ 'plugin_page_tags' ] = $form->get_tr_hide( $in_view = 'basic', 'plugin_page_tags' ) .
 				$form->get_th_html( _x( 'Enable Tags for Pages', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_page_tags' ) . 
 				$form->get_no_td_checkbox( 'plugin_page_tags' ) .
@@ -374,7 +374,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					$css_class = '', $css_id = 'og_img_size' ) . 
 				'<td class="blank">' . $form->get_no_input_image_dimensions( 'og_img' ) . '</td>';
 
-			$table_rows[ 'pin_img_size' ] = ( $pin_img_disabled ? $form->get_tr_hide( 'basic' ) : '' ) .
+			$table_rows[ 'pin_img_size' ] = ( $pin_img_disabled ? $form->get_tr_hide( $in_view = 'basic' ) : '' ) .
 				$form->get_th_html( _x( 'Pinterest Pin It', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'pin_img_size' ) . 
 				'<td class="blank">' . $form->get_no_input_image_dimensions( 'pin_img', $pin_img_disabled ) . $pin_img_msg . '</td>';
@@ -450,7 +450,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				}
 			}
 
-			$table_rows[ 'plugin_add_submenu' ] = $form->get_tr_hide_prefix( 'basic', 'plugin_add_submenu_' ) .
+			$table_rows[ 'plugin_add_submenu' ] = $form->get_tr_hide_prefix( $in_view = 'basic', 'plugin_add_submenu_' ) .
 				$form->get_th_html( sprintf( _x( 'Show %s Menu Items', 'option label', 'wpsso' ), $menu_title ),
 					$css_class = '', $css_id = 'plugin_add_submenu' ) .
 				'<td class="blank">' . $form->get_no_checklist( $name_prefix = 'plugin_add_submenu', $values ) . '</td>';
@@ -460,7 +460,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			 */
 			$metabox_title = _x( $this->p->cf[ 'meta' ][ 'title' ], 'metabox title', 'wpsso' );
 
-			$table_rows[ 'plugin_add_to' ] = $form->get_tr_hide_prefix( 'basic', 'plugin_add_to_' ) .
+			$table_rows[ 'plugin_add_to' ] = $form->get_tr_hide_prefix( $in_view = 'basic', 'plugin_add_to_' ) .
 				$form->get_th_html( sprintf( _x( 'Show %s Metabox', 'option label', 'wpsso' ), $metabox_title ),
 					$css_class = '', $css_id = 'plugin_add_to' ) . 
 				'<td class="blank">' . $form->get_no_checklist_post_tax_user( $name_prefix = 'plugin_add_to' ) . '</td>';
@@ -476,13 +476,13 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'<td>' . $form->get_no_columns_post_tax_user( $name_prefix = 'plugin',
 					$col_headers, $table_class = 'plugin_list_table_cols' ) . '</td>';
 
-			$table_rows[ 'plugin_og_types_select_format' ] = $form->get_tr_hide( 'basic', 'plugin_og_types_select_format' ) .
+			$table_rows[ 'plugin_og_types_select_format' ] = $form->get_tr_hide( $in_view = 'basic', 'plugin_og_types_select_format' ) .
 				$form->get_th_html( _x( 'Open Graph Type Select Format', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_og_types_select_format' ) . 
 				'<td class="blank">' . $form->get_no_select( 'plugin_og_types_select_format',
 					$this->p->cf[ 'form' ][ 'og_schema_types_select_format' ] ) . '</td>';
 
-			$table_rows[ 'plugin_schema_types_select_format' ] = $form->get_tr_hide( 'basic', 'plugin_schema_types_select_format' ) .
+			$table_rows[ 'plugin_schema_types_select_format' ] = $form->get_tr_hide( $in_view = 'basic', 'plugin_schema_types_select_format' ) .
 				$form->get_th_html( _x( 'Schema Type Select Format', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_schema_types_select_format' ) . 
 				'<td class="blank">' . $form->get_no_select( 'plugin_schema_types_select_format',
@@ -503,7 +503,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					$css_class = '', $css_id = 'plugin_gravatar_api' ) . 
 				$form->get_no_td_checkbox( 'plugin_gravatar_api' );
 
-			$table_rows[ 'plugin_gravatar_size' ] = $form->get_tr_hide( 'basic', 'plugin_gravatar_size' ) . 
+			$table_rows[ 'plugin_gravatar_size' ] = $form->get_tr_hide( $in_view = 'basic', 'plugin_gravatar_size' ) . 
 				$form->get_th_html( _x( 'Gravatar Image Size', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_gravatar_size' ) . 
 				'<td class="blank">' . $form->get_no_input( 'plugin_gravatar_size', $css_class = 'short' ) . '</td>';
@@ -535,7 +535,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					$css_class = '', $css_id = 'plugin_shortener' ) . 
 				'<td class="blank">' . $form->get_no_select_none( 'plugin_shortener' ) . '</td>';
 
-			$table_rows[ 'plugin_min_shorten' ] = $form->get_tr_hide( 'basic', 'plugin_min_shorten' ) . 
+			$table_rows[ 'plugin_min_shorten' ] = $form->get_tr_hide( $in_view = 'basic', 'plugin_min_shorten' ) . 
 				$form->get_th_html( _x( 'Minimum URL Length to Shorten', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_min_shorten' ) . 
 				'<td class="blank">' . $form->get_no_input( 'plugin_min_shorten', $css_class = 'short' ) . ' ' .
@@ -546,12 +546,12 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					$css_class = '', $css_id = 'plugin_clear_short_urls' ) . 
 				$form->get_no_td_checkbox( 'plugin_clear_short_urls' );
 
-			$table_rows[ 'plugin_wp_shortlink' ] = $form->get_tr_hide( 'basic', 'plugin_wp_shortlink' ) .
+			$table_rows[ 'plugin_wp_shortlink' ] = $form->get_tr_hide( $in_view = 'basic', 'plugin_wp_shortlink' ) .
 				$form->get_th_html( _x( 'Use Short URL for WP Shortlink', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_wp_shortlink' ) . 
 				$form->get_no_td_checkbox( 'plugin_wp_shortlink' );
 
-			$table_rows[ 'plugin_add_link_rel_shortlink' ] = $form->get_tr_hide( 'basic', 'add_link_rel_shortlink' ) .
+			$table_rows[ 'plugin_add_link_rel_shortlink' ] = $form->get_tr_hide( $in_view = 'basic', 'add_link_rel_shortlink' ) .
 				$form->get_th_html( sprintf( _x( 'Add "%s" HTML Tag', 'option label', 'wpsso' ), 'link&nbsp;rel&nbsp;shortlink' ),
 					$css_class = '', $css_id = 'plugin_add_link_rel_shortlink' ) . 
 				'<td class="blank">' . $form->get_no_checkbox( 'add_link_rel_shortlink', $css_class = '', $css_id = 'add_link_rel_shortlink_html_tag',
@@ -574,12 +574,12 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					$css_class = '', $css_id = 'plugin_ratings_reviews_svc' ) .
 				'<td class="blank">' . $form->get_no_select_none( 'plugin_ratings_reviews_svc' ) . '</td>';
 
-			$table_rows[ 'plugin_ratings_reviews_num_max' ] = $form->get_tr_hide( 'basic', 'plugin_ratings_reviews_num_max' ) .
+			$table_rows[ 'plugin_ratings_reviews_num_max' ] = $form->get_tr_hide( $in_view = 'basic', 'plugin_ratings_reviews_num_max' ) .
 				$form->get_th_html( _x( 'Maximum Number of Reviews', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_ratings_reviews_num_max' ) .
 				'<td class="blank">' . $form->get_no_input( 'plugin_ratings_reviews_num_max', $css_class = 'short' ) . '</td>';
 
-			$table_rows[ 'plugin_ratings_reviews_age_max' ] = $form->get_tr_hide( 'basic', 'plugin_ratings_reviews_age_max' ) .
+			$table_rows[ 'plugin_ratings_reviews_age_max' ] = $form->get_tr_hide( $in_view = 'basic', 'plugin_ratings_reviews_age_max' ) .
 				$form->get_th_html( _x( 'Maximum Age of Reviews', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_ratings_reviews_age_max' ) .
 				'<td class="blank">' . $form->get_no_input( 'plugin_ratings_reviews_age_max', $css_class = 'short' ) . ' ' .
@@ -613,7 +613,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'og_type_for_archive_page' => _x( 'Type for Archive Page', 'option label', 'wpsso' ),
 			) as $opt_key => $th_label ) {
 
-				$table_rows[ $opt_key ] = $form->get_tr_hide( 'basic', $opt_key ) .
+				$table_rows[ $opt_key ] = $form->get_tr_hide( $in_view = 'basic', $opt_key ) .
 					$form->get_th_html( $th_label, $css_class = '', $opt_key ) . 
 					'<td class="blank">' . $form->get_no_select( $opt_key, $this->og_types, $css_class = 'og_type' ) . '</td>';
 			}
@@ -656,7 +656,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			if ( ! empty( $type_select ) ) {
 
-				$table_rows[ 'og_type_for_pta' ] = $form->get_tr_hide( 'basic', $type_keys ) .
+				$table_rows[ 'og_type_for_pta' ] = $form->get_tr_hide( $in_view = 'basic', $type_keys ) .
 					$form->get_th_html( _x( 'Type by Post Type Archive', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'og_type_for_pta' ) .
 					'<td class="blank">' . $type_select . '</td>';
@@ -677,7 +677,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
 			}
 
-			$table_rows[ 'og_type_for_tax' ] = $form->get_tr_hide( 'basic', $type_keys ) .
+			$table_rows[ 'og_type_for_tax' ] = $form->get_tr_hide( $in_view = 'basic', $type_keys ) .
 				$form->get_th_html( _x( 'Type by Taxonomy', 'option label', 'wpsso' ), $css_class = '', $css_id = 'og_type_for_tax' ) .
 				'<td class="blank">' . $type_select . '</td>';
 
@@ -704,7 +704,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'schema_type_for_archive_page' => _x( 'Type for Archive Page', 'option label', 'wpsso' ),
 			) as $opt_key => $th_label ) {
 
-				$table_rows[ $opt_key ] = $form->get_tr_hide( 'basic', $opt_key ) . 
+				$table_rows[ $opt_key ] = $form->get_tr_hide( $in_view = 'basic', $opt_key ) . 
 					$form->get_th_html( $th_label, $css_class = '', $opt_key ) . 
 					'<td class="blank">' . $form->get_no_select( $opt_key, $this->schema_types, $css_class = 'schema_type', $css_id = '',
 						$is_assoc = true, $selected = false, $event_names = array( 'on_focus_load_json' ),
@@ -770,7 +770,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 
 			if ( ! empty( $type_select ) ) {
 
-				$table_rows[ 'schema_type_for_pta' ] = $form->get_tr_hide( 'basic', $type_keys ) .
+				$table_rows[ 'schema_type_for_pta' ] = $form->get_tr_hide( $in_view = 'basic', $type_keys ) .
 					$form->get_th_html( _x( 'Type by Post Type Archive', 'option label', 'wpsso' ),
 						$css_class = '', $css_id = 'schema_type_for_pta' ) .
 					'<td class="blank">' . $type_select . '</td>';
@@ -798,7 +798,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					) . ' ' . sprintf( _x( 'for %s', 'option comment', 'wpsso' ), $obj_label ) . '</p>' . "\n";
 			}
 
-			$table_rows[ 'schema_type_for_tax' ] = $form->get_tr_hide( 'basic', $type_keys ) .
+			$table_rows[ 'schema_type_for_tax' ] = $form->get_tr_hide( $in_view = 'basic', $type_keys ) .
 				$form->get_th_html( _x( 'Type by Taxonomy', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'schema_type_for_tax' ) .
 				'<td class="blank">' . $type_select . '</td>';

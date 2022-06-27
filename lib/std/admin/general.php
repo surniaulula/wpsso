@@ -85,7 +85,7 @@ if ( ! class_exists( 'WpssoStdAdminGeneral' ) ) {
 
 			$table_rows[] = '<td colspan="2">' . $this->p->msgs->pro_feature_video_api() . '</td>';
 
-			$table_rows[ 'og_vid_max' ] = $form->get_tr_hide( 'basic', 'og_vid_max' ) . 
+			$table_rows[ 'og_vid_max' ] = $form->get_tr_hide( $in_view = 'basic', 'og_vid_max' ) . 
 				$form->get_th_html( _x( 'Maximum Videos to Include', 'option label', 'wpsso' ), null, 'og_vid_max' ) . 
 				'<td class="blank">' . $form->get_no_select( 'og_vid_max', range( 0, $max_media_items ),
 					$css_class = 'short', $css_id = '', $is_assoc = true ) . '</td>';

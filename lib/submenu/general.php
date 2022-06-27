@@ -157,7 +157,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'<td>' . $this->form->get_input_locale( 'site_name', $css_class = 'long_name', $css_id = '',
 							$len = 0, $def_site_name ) . '</td>';
 
-					$table_rows[ 'site_name_alt' ] = $this->form->get_tr_hide( 'basic', 'site_name_alt' ) .
+					$table_rows[ 'site_name_alt' ] = $this->form->get_tr_hide( $in_view = 'basic', 'site_name_alt' ) .
 						$this->form->get_th_html_locale( _x( 'WebSite Alternate Name', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'site_name_alt' ) . 
 						'<td>' . $this->form->get_input_locale( 'site_name_alt', $css_class = 'long_name' ) . '</td>';
@@ -168,7 +168,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'<td>' . $this->form->get_input_locale( 'site_desc', $css_class = 'wide', $css_id = '',
 							$len = 0, $def_site_desc ) . '</td>';
 
-					$table_rows[ 'site_home_url' ] = $this->form->get_tr_hide( 'basic', 'site_home_url' ) . 
+					$table_rows[ 'site_home_url' ] = $this->form->get_tr_hide( $in_view = 'basic', 'site_home_url' ) . 
 						$this->form->get_th_html_locale( _x( 'WebSite Home URL', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'site_home_url' ) .
 						'<td>' . $this->form->get_input_locale( 'site_home_url', $css_class = 'wide', $css_id = '',
@@ -246,7 +246,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 					$max_media_items = $this->p->cf[ 'form' ][ 'max_media_items' ];
 
-					$table_rows[ 'og_img_max' ] = $this->form->get_tr_hide( 'basic', 'og_img_max' ) . 
+					$table_rows[ 'og_img_max' ] = $this->form->get_tr_hide( $in_view = 'basic', 'og_img_max' ) . 
 						$this->form->get_th_html( _x( 'Maximum Images to Include', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'og_img_max' ) . 
 						'<td>' .
@@ -285,7 +285,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 							$css_class = '', $css_id = 'fb_locale' ) . 
 						'<td>' . $this->form->get_select_locale( 'fb_locale', SucomUtil::get_publisher_languages( 'facebook' ) ) . '</td>';
 
-					$table_rows[ 'fb_app_id' ] = $this->form->get_tr_hide( 'basic', 'fb_app_id' ) .
+					$table_rows[ 'fb_app_id' ] = $this->form->get_tr_hide( $in_view = 'basic', 'fb_app_id' ) .
 						$this->form->get_th_html( _x( 'Facebook Application ID', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'fb_app_id' ) . 
 						'<td>' . $this->form->get_input( 'fb_app_id', $css_class = 'api_key' ) . '</td>';
@@ -328,14 +328,14 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'<td>' . $this->form->get_select( 'site_org_place_id', $place_names, $css_class = 'long_name', $css_id = '',
 							$is_assoc = true ) . '</td>';
 
-					$table_rows[ 'schema_aggr_offers' ] = $this->form->get_tr_hide( 'basic', 'schema_aggr_offers' ) .
+					$table_rows[ 'schema_aggr_offers' ] = $this->form->get_tr_hide( $in_view = 'basic', 'schema_aggr_offers' ) .
 						$this->form->get_th_html( _x( 'Aggregate Offers by Currency', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'schema_aggr_offers' ) . 
 						'<td>' . $this->form->get_checkbox( 'schema_aggr_offers' ) . ' ' .
 						sprintf( _x( 'incompatible with <a href="%s">price drop appearance</a>', 'option comment', 'wpsso' ),
 							'https://developers.google.com/search/docs/data-types/product#price-drop' ) . '</td>';
 
-					$table_rows[ 'schema_add_text_prop' ] = $this->form->get_tr_hide( 'basic', 'schema_add_text_prop' ) .
+					$table_rows[ 'schema_add_text_prop' ] = $this->form->get_tr_hide( $in_view = 'basic', 'schema_add_text_prop' ) .
 						$this->form->get_th_html( _x( 'Add Text / Article Body Properties', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'schema_add_text_prop' ) . 
 						'<td>' . $this->form->get_checkbox( 'schema_add_text_prop' ) . '</td>';
@@ -345,20 +345,20 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					 */
 					$robots_disabled = $this->p->util->robots->is_disabled();
 
-					$table_rows[ 'robots_max_snippet' ] = $this->form->get_tr_hide( 'basic', 'robots_max_snippet' ) .
+					$table_rows[ 'robots_max_snippet' ] = $this->form->get_tr_hide( $in_view = 'basic', 'robots_max_snippet' ) .
 						$this->form->get_th_html( _x( 'Robots Snippet Max. Length', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'robots_max_snippet' ) . 
 						'<td>' . $this->form->get_input( 'robots_max_snippet',
 							$css_class = 'chars', $css_id = '', $len = 0, $holder = false, $robots_disabled ) . ' ' .
 						_x( 'characters or less', 'option comment', 'wpsso' ) . ' (' . _x( '-1 for no limit', 'option comment', 'wpsso' ) . ')</td>';
 
-					$table_rows[ 'robots_max_image_preview' ] = $this->form->get_tr_hide( 'basic', 'robots_max_image_preview' ) .
+					$table_rows[ 'robots_max_image_preview' ] = $this->form->get_tr_hide( $in_view = 'basic', 'robots_max_image_preview' ) .
 						$this->form->get_th_html( _x( 'Robots Image Preview Size', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'robots_max_image_preview' ) . 
 						'<td>' . $this->form->get_select( 'robots_max_image_preview', $this->p->cf[ 'form' ][ 'robots_max_image_preview' ],
 							$css_class = '', $css_id = '', $is_assoc = true, $robots_disabled ) . '</td>';
 
-					$table_rows[ 'robots_max_video_preview' ] = $this->form->get_tr_hide( 'basic', 'robots_max_video_preview' ) .
+					$table_rows[ 'robots_max_video_preview' ] = $this->form->get_tr_hide( $in_view = 'basic', 'robots_max_video_preview' ) .
 						$this->form->get_th_html( _x( 'Robots Video Max. Previews', 'option label', 'wpsso' ),
 							$css_class = 'medium', $css_id = 'robots_max_video_preview' ) . 
 						'<td>' . $this->form->get_input( 'robots_max_video_preview',
@@ -374,7 +374,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 							$css_class = '', $css_id = 'pin_site_verify' ) . 
 						'<td>' . $this->form->get_input( 'pin_site_verify', 'api_key' ) . '</td>';
 
-					$table_rows[ 'pin_add_nopin_header_img_tag' ] = $this->form->get_tr_hide( 'basic', 'pin_add_nopin_header_img_tag' ) . 
+					$table_rows[ 'pin_add_nopin_header_img_tag' ] = $this->form->get_tr_hide( $in_view = 'basic', 'pin_add_nopin_header_img_tag' ) . 
 						$this->form->get_th_html( _x( 'Add "nopin" to Site Header Image', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'pin_add_nopin_header_img_tag' ) . 
 						'<td>' . $this->form->get_checkbox( 'pin_add_nopin_header_img_tag' ) .' ' .
@@ -457,7 +457,7 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 							default:
 
-								$tr_hide = $this->form->get_tr_hide( 'basic', 'social_key' );
+								$tr_hide = $this->form->get_tr_hide( $in_view = 'basic', 'social_key' );
 
 								break;
 						}
