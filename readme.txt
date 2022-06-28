@@ -247,6 +247,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 12.3.2 (2022/06/27)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed a few deprecated method arguments in the SucomForm class.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 12.3.1 (2022/06/20)**
 
 * **New Features**
@@ -611,6 +625,10 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 	* WordPress v5.2.
 
 == Upgrade Notice ==
+
+= 12.3.2 =
+
+(2022/06/27) Fixed a few deprecated method arguments in the SucomForm class.
 
 = 12.3.1 =
 
