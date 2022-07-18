@@ -247,7 +247,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 12.3.3-dev.1 (2022/07/18)**
+**Version 12.3.3-rc.1 (2022/07/18)**
 
 * **New Features**
 	* None.
@@ -640,7 +640,7 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 == Upgrade Notice ==
 
-= 12.3.3-dev.1 =
+= 12.3.3-rc.1 =
 
 (2022/07/18) Fixed extra step when importing a Yoast How-To block.
 
