@@ -15,7 +15,7 @@
  * Requires At Least: 5.2
  * Tested Up To: 6.0.1
  * WC Tested Up To: 6.7.0
- * Version: 12.3.3-dev.1
+ * Version: 12.3.3-rc.1
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
