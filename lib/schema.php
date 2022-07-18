@@ -1773,6 +1773,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			$howto_steps = SucomUtil::preg_grep_keys( '/^' . $opt_prefix . '_([0-9]+)$/', $md_opts, $invert = false, $replace = '$1' );
 
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log_arr( 'howto_steps', $howto_steps );
+			}
+
 			if ( ! empty( $howto_steps ) ) {
 
 				$section_ref = false;
@@ -1790,6 +1795,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 					 * Maybe get a longer text / description value.
 					 */
 					$step_text = isset( $md_opts[ $opt_prefix . '_text_' . $md_num ] ) ? $md_opts[ $opt_prefix . '_text_' . $md_num ] : $md_val;
+
+					if ( empty( $md_val ) && empty( $step_text ) ) {	// Just in case.
+
+						if ( $wpsso->debug->enabled ) {
+
+							$wpsso->debug->log( 'skipping step ' . $md_num . ': step name and text are empty' );
+						}
+					}
 
 					/**
 					 * Get images for the section or step.

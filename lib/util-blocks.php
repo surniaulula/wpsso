@@ -69,9 +69,28 @@ if ( ! class_exists( 'WpssoUtilBlocks' ) ) {
 
 			$blocks = parse_blocks( $content );
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_arr( 'blocks', $blocks );
+			}
+
 			foreach ( $blocks as $block ) {
 
-				if ( empty( $block[ 'blockName' ] ) || empty( $block[ 'attrs' ] ) ) {
+				if ( empty( $block[ 'blockName' ] ) ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'block name is empty' );
+					}
+
+					continue;
+
+				} elseif ( empty( $block[ 'attrs' ] ) ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'block attrs is empty' );
+					}
 
 					continue;
 				}
@@ -80,6 +99,11 @@ if ( ! class_exists( 'WpssoUtilBlocks' ) ) {
 				 * Example filter name: wpsso_import_block_attrs_yoast_how_to_block
 				 */
 				$filter_name = SucomUtil::sanitize_hookname( 'wpsso_import_block_attrs_' . $block[ 'blockName' ] );
+
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'applying filter ' . $filter_name );
+				}
 
 				$md_opts = apply_filters( $filter_name, $md_opts, $block[ 'attrs' ] );
 			}
