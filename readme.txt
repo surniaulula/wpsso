@@ -45,13 +45,9 @@ Present your content at its best on social sites and in search results - no matt
 
 <!-- /about -->
 
-<p><strong>Reads data from WordPress, plugins, and service APIs:</strong></p>
+<p><strong>Reads data from WordPress, plugins, and service APIs.</strong></p>
 
-There's no need to select or create templates, manually reenter descriptions, titles, product information, or reselect images and videos &mdash; WPSSO reads your existing WordPress content, including custom post types and taxonomies, enhanced user profiles, and SEO image details from the Media Library. The Premium edition also imports SEO video details, reads active plugin and service API data (Bitly, Facebook, Shopper Approved, Stamped.io, Vimeo, Wistia, YouTube, and many more).
-
-<p><strong>Supports over 500 different Schema types and sub-types:</strong></p>
-
-WPSSO provides comprehensive Schema markup for posts, pages, custom post types, terms (category, tags, etc.), custom taxonomies, user profile pages, search result pages, archive pages, and Accelerated Mobile Pages (AMP) pages - including image SEO, video SEO, local business SEO, organization, publisher, person, author and co-authors, extensive e-Commerce product markup, product variations, product ratings, aggregate ratings, reviews, recipe information, event details, collection pages, profile pages, search pages, FAQ pages, item lists for Google's Rich Results Carousel, and much more.
+<p><strong>Supports over 500 different Schema types and sub-types.</strong></p>
 
 <p><strong>Optimized image sizes for social sites and search engines:</strong></p>
 
