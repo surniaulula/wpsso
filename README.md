@@ -89,16 +89,7 @@
 
 <p><strong>Additional options in the SSO &gt; Advanced Settings page and Document SSO metabox.</strong></p>
 
-<p><strong>Imports video information from Facebook, Slideshare, Vimeo, Wistia, and Youtube videos.</strong></p>
-
-<p><strong>Schema markup for WooCommerce SEO:</strong></p>
-
-<ul>
-<li><p>The WooCommerce plugin by itself does not provide sufficient markup for Google Rich Results.</p></li>
-<li><p>The <a href="https://wpsso.com/">WPSSO Core Premium edition</a> can read WooCommerce product data and provide comprehensive Schema Product JSON-LD markup for Google Rich Results, including product image galleries, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, pattern, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.</p></li>
-</ul>
-
-<p><strong>Google Merchant Feed XML add-on for for WooCommerce, Easy Digital Downloads, and Document SSO metabox custom products.</strong></p>
+<p><strong>Google Merchant Feed XML for WooCommerce, Easy Digital Downloads, and custom products.</strong></p>
 
 <p><strong>Reads data from active plugins, including:</strong></p>
 
