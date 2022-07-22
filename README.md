@@ -91,7 +91,7 @@
 
 <p><strong>Imports video information from Facebook, Slideshare, Vimeo, Wistia, and Youtube videos.</strong></p>
 
-<p><strong>Schema JSON-LD markup for WooCommerce SEO:</strong></p>
+<p><strong>Schema markup for WooCommerce SEO:</strong></p>
 
 <ul>
 <li><p>The WooCommerce plugin by itself does not provide sufficient markup for Google Rich Results.</p></li>
