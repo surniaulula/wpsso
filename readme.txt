@@ -1,4 +1,4 @@
-=== WPSSO Core - The Complete Structured Data Plugin for WordPress ===
+=== WPSSO Core - The Complete Structured Data Plugin ===
 Plugin Name: WPSSO Core
 Plugin Slug: wpsso
 Text Domain: wpsso
