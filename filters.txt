@@ -243,6 +243,8 @@
 
 'wpsso_product_attribute_names' ( array $attr_names )
 
+'wpsso_product_price' ( $product_price, $product )
+
 'wpsso_quote' ( $quote, $mod )
 
 'wpsso_quote_seed' ( '', $mod )
