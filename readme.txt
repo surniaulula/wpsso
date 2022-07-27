@@ -235,6 +235,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 12.4.0-dev.1 (2022/07/27)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new 'wpsso_product_price' filter.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 12.3.3 (2022/07/18)**
 
 * **New Features**
@@ -627,6 +641,10 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 	* WordPress v5.2.
 
 == Upgrade Notice ==
+
+= 12.4.0-dev.1 =
+
+(2022/07/27) Added a new 'wpsso_product_price' filter.
 
 = 12.3.3 =
 
