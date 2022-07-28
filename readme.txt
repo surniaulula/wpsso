@@ -244,7 +244,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Added a new 'wpsso_product_price' filter.
+	* Added a new 'wpsso_product_price' filter for EDD and WooCommerce (Premium edition).
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -644,7 +644,7 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 = 12.4.0-dev.1 =
 
-(2022/07/27) Added a new 'wpsso_product_price' filter.
+(2022/07/27) Added a new 'wpsso_product_price' filter for EDD and WooCommerce (Premium edition).
 
 = 12.3.3 =
 
