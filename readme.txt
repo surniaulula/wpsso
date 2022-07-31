@@ -235,7 +235,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 12.4.0-rc.1 (2022/07/30)**
+**Version 12.4.0 (2022/07/31)**
 
 * **New Features**
 	* None.
@@ -642,9 +642,9 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 == Upgrade Notice ==
 
-= 12.4.0-rc.1 =
+= 12.4.0 =
 
-(2022/07/30) Added a new 'wpsso_product_price' filter for EDD and WooCommerce (Premium edition).
+(2022/07/31) Added a new 'wpsso_product_price' filter for EDD and WooCommerce (Premium edition).
 
 = 12.3.3 =
 
