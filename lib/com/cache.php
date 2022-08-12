@@ -576,15 +576,6 @@ if ( ! class_exists( 'SucomCache' ) ) {
 				SucomUtil::safe_error_log( $notice_pre . ' ' . $notice_msg );
 
 				return $failure;
-
-			} elseif ( SucomUtil::get_const( $this->plugin_ucid . '_PHP_CURL_DISABLE' ) ) { {
-
-				if ( $this->p->debug->enabled )
-
-					$this->p->debug->log( 'exiting early: curl has been disabled' );
-				}
-
-				return $failure;
 			}
 
 			$url_nofrag = preg_replace( '/#.*$/', '', $url );	// Remove the URL fragment.

@@ -23,38 +23,34 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 			return self::$instance;
 		}
 
-		function parse_readme( $file_path ) {
+		function parse_file( $file_path ) {
 
-			$file_contents = @implode( '', @file( $file_path ) );
-
-			$readme_contents = $this->parse_readme_contents( $file_contents );
-
-			return $readme_contents;
+			$file_content = @implode( '', @file( $file_path ) );
+			
+			return $this->parse_content( $file_content );
 		}
 
-		function parse_readme_contents( $file_contents ) {
+		function parse_content( $file_content ) {
 
-			$file_contents = str_replace( array( "\r\n", "\r" ), "\n", $file_contents );
+			$file_content = str_replace( array( "\r\n", "\r" ), "\n", $file_content );
+			$file_content = trim( $file_content );
 
-			$file_contents = trim( $file_contents );
+			if ( 0 === strpos( $file_content, "\xEF\xBB\xBF" ) ) {
 
-			if ( 0 === strpos( $file_contents, "\xEF\xBB\xBF" ) ) {
-
-				$file_contents = substr( $file_contents, 3 );
+				$file_content = substr( $file_content, 3 );
 			}
 
-			if ( ! preg_match('|^===(.*)===|', $file_contents, $_title ) ) {
+			if ( ! preg_match('|^===(.*)===|', $file_content, $_title ) ) {
 
 				return array(); // Require a title.
 			}
 
 			$title = trim( $_title[ 1 ], '=' );
-
 			$title = $this->sanitize_text( $title );
 
-			$file_contents = $this->chop_string( $file_contents, $_title[ 0 ] );
+			$file_content = $this->chop_string( $file_content, $_title[ 0 ] );
 
-			if ( preg_match( '|Plugin Name: *(.*)|i', $file_contents, $_plugin_name ) ) {
+			if ( preg_match( '|Plugin Name: *(.*)|i', $file_content, $_plugin_name ) ) {
 
 				$plugin_name = $this->sanitize_text( $_plugin_name[ 1 ] );
 
@@ -63,7 +59,7 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 				$plugin_name = null;
 			}
 
-			if ( preg_match( '|Plugin Slug: *(.*)|i', $file_contents, $_plugin_slug ) ) {
+			if ( preg_match( '|Plugin Slug: *(.*)|i', $file_content, $_plugin_slug ) ) {
 
 				$plugin_slug = $this->sanitize_text( $_plugin_slug[ 1 ] );
 
@@ -72,7 +68,7 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 				$plugin_slug = null;
 			}
 
-			if ( preg_match( '|License: *(.*)|i', $file_contents, $_license ) ) {
+			if ( preg_match( '|License: *(.*)|i', $file_content, $_license ) ) {
 
 				$license = $this->sanitize_text( $_license[ 1 ] );
 
@@ -81,7 +77,7 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 				$license = null;
 			}
 
-			if ( preg_match( '|License URI: *(.*)|i', $file_contents, $_license_uri ) ) {
+			if ( preg_match( '|License URI: *(.*)|i', $file_content, $_license_uri ) ) {
 
 				$license_uri = esc_url_raw( $_license_uri[ 1 ] );
 
@@ -90,7 +86,7 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 				$license_uri = null;
 			}
 
-			if ( preg_match( '|Donate Link: *(.*)|i', $file_contents, $_donate_link ) ) {
+			if ( preg_match( '|Donate Link: *(.*)|i', $file_content, $_donate_link ) ) {
 
 				$donate_link = esc_url_raw( $_donate_link[ 1 ] );
 
@@ -99,7 +95,7 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 				$donate_link = null;
 			}
 
-			if ( preg_match( '|Assets URI: *(.*)|i', $file_contents, $_assets_uri ) ) {
+			if ( preg_match( '|Assets URI: *(.*)|i', $file_content, $_assets_uri ) ) {
 
 				$assets_uri = esc_url_raw( $_assets_uri[ 1 ] );
 
@@ -108,7 +104,7 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 				$assets_uri = null;
 			}
 
-			if ( preg_match( '|Tags: *(.*)|i', $file_contents, $_tags ) ) {
+			if ( preg_match( '|Tags: *(.*)|i', $file_content, $_tags ) ) {
 
 				$tags = preg_split( '|,[\s]*?|', trim( $_tags[ 1 ] ) );
 
@@ -124,7 +120,7 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 
 			$contributors = array();
 
-			if ( preg_match( '|Contributors: *(.*)|i', $file_contents, $_contributors ) ) {
+			if ( preg_match( '|Contributors: *(.*)|i', $file_content, $_contributors ) ) {
 
 				$all_contributors = preg_split( '|,[\s]*|', trim( $_contributors[ 1 ] ) );
 
@@ -141,7 +137,7 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 				}
 			}
 
-			if ( preg_match( '|Requires PHP: *(.*)|i', $file_contents, $_requires_php ) ) {
+			if ( preg_match( '|Requires PHP: *(.*)|i', $file_content, $_requires_php ) ) {
 
 				$requires_php = $this->sanitize_text( $_requires_php[ 1 ] );
 
@@ -150,7 +146,7 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 				$requires_php = null;
 			}
 
-			if ( preg_match( '|Requires At Least: *(.*)|i', $file_contents, $_requires_at_least ) ) {
+			if ( preg_match( '|Requires At Least: *(.*)|i', $file_content, $_requires_at_least ) ) {
 
 				$requires_at_least = $this->sanitize_text( $_requires_at_least[ 1 ] );
 
@@ -159,7 +155,7 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 				$requires_at_least = null;
 			}
 
-			if ( preg_match( '|Tested Up To: *(.*)|i', $file_contents, $_tested_up_to ) ) {
+			if ( preg_match( '|Tested Up To: *(.*)|i', $file_content, $_tested_up_to ) ) {
 
 				$tested_up_to = $this->sanitize_text( $_tested_up_to[ 1 ] );
 
@@ -168,7 +164,7 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 				$tested_up_to = null;
 			}
 
-			if ( preg_match( '|WC Tested Up To: *(.*)|i', $file_contents, $_wc_tested_up_to ) ) {
+			if ( preg_match( '|WC Tested Up To: *(.*)|i', $file_content, $_wc_tested_up_to ) ) {
 
 				$wc_tested_up_to = $this->sanitize_text( $_wc_tested_up_to[ 1 ] );
 
@@ -177,7 +173,7 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 				$wc_tested_up_to = null;
 			}
 
-			if ( preg_match( '|Stable Tag: *(.*)|i', $file_contents, $_stable_tag ) ) {
+			if ( preg_match( '|Stable Tag: *(.*)|i', $file_content, $_stable_tag ) ) {
 
 				$stable_tag = $this->sanitize_text( $_stable_tag[ 1 ] );
 
@@ -206,15 +202,15 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 
 					$_chop = '_' . $chop;
 
-					$file_contents = $this->chop_string( $file_contents, ${ $_chop }[ 0 ] );
+					$file_content = $this->chop_string( $file_content, ${ $_chop }[ 0 ] );
 				}
 			}
 
-			$file_contents = trim( $file_contents );
+			$file_content = trim( $file_content );
 
-			if ( ! preg_match( '/(^(.*?))^[\s]*=+?[\s]*.+?[\s]*=+?/ms', $file_contents, $_short_description ) ) {
+			if ( ! preg_match( '/(^(.*?))^[\s]*=+?[\s]*.+?[\s]*=+?/ms', $file_content, $_short_description ) ) {
 
-				$_short_description = array( 1 => &$file_contents, 2 => &$file_contents );
+				$_short_description = array( 1 => &$file_content, 2 => &$file_content );
 			}
 
 			$short_desc_filtered = $this->sanitize_text( $_short_description[ 2 ] );
@@ -232,10 +228,10 @@ if ( ! class_exists( 'SuextParseReadme' ) ) {
 
 			if ( $_short_description[ 1 ] ) {
 
-				$file_contents = $this->chop_string( $file_contents, $_short_description[ 1 ] );
+				$file_content = $this->chop_string( $file_content, $_short_description[ 1 ] );
 			}
 
-			$_sections = preg_split( '/^[\s]*==[\s]*(.+?)[\s]*==/m', $file_contents, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY );
+			$_sections = preg_split( '/^[\s]*==[\s]*(.+?)[\s]*==/m', $file_content, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY );
 
 			$sections = array();
 

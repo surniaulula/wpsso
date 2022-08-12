@@ -3133,9 +3133,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				require_once WPSSO_PLUGINDIR . 'lib/ext/parse-readme.php';
 
-				$parser =& SuextParseReadme::get_instance();
+				$readme_parser =& SuextParseReadme::get_instance();
 
-				$readme_info = $parser->parse_readme_contents( $readme_content );
+				$readme_info = $readme_parser->parse_content( $readme_content );
 
 				/**
 				 * Remove possibly inaccurate information from the local readme file.
