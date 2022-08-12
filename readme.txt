@@ -235,7 +235,22 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 12.4.0 (2022/07/31)**
+**Version 13.0.0-dev.1 (2022/08/12)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Moved URL shortening library files to the WPSSO Core Standard version.
+	* Removed support for the WPSSO_PHP_CURL_DISABLE constant.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
+**Version 13.0.0-dev.1 (2022/07/31)**
 
 * **New Features**
 	* None.
@@ -641,6 +656,10 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 	* WordPress v5.2.
 
 == Upgrade Notice ==
+
+= 13.0.0-dev.1 =
+
+(2022/08/12) Moved URL shortening library files to the WPSSO Core Standard version.
 
 = 12.4.0 =
 
