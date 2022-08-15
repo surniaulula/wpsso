@@ -235,7 +235,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.0.0-dev.1 (2022/08/12)**
+**Version 13.0.0-dev.3 (2022/08/15)**
 
 * **New Features**
 	* None.
@@ -250,7 +250,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* PHP v7.2.
 	* WordPress v5.2.
 
-**Version 13.0.0-dev.1 (2022/07/31)**
+**Version 12.4.0 (2022/07/31)**
 
 * **New Features**
 	* None.
@@ -430,7 +430,7 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 	* Fixed active WPML language when WordPress switches locales.
 * **Developer Notes**
 	* Updated `SucomUtil::get_json_scripts()` to return the CSS id or md5 of json scripts.
-	* Updated `WpssoJsonFiltersPropHasPart->maybe_comment_json_scripts()` to comment json scripts using the CSS id or md5.
+	* Updated `WpssoJsonPropHasPart->maybe_comment_json_scripts()` to comment json scripts using the CSS id or md5.
 	* Added a new 'posts_args' array in the `$mod` variable for the WPSSO FAQ add-on.
 	* Added a `$mod` argument to the `WpssoMedia->get_video_details()` method for `WpssoUtil->is_uniq_url()`.
 	* Added a `$mod` argument to `WpssoUtil` methods:
@@ -599,7 +599,7 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 	* None.
 * **Bugfixes**
 	* Fixed an undefined variable warning in `WpssoUser->user_can_save()`.
-	* Fixed incorrect `WpssoPage->get_text()` arguments in `WpssoJsonFiltersTypeCreativeWork` and `WpssoJsonFiltersTypeQuestion`.
+	* Fixed incorrect `WpssoPage->get_text()` arguments in `WpssoJsonTypeCreativeWork` and `WpssoJsonTypeQuestion`.
 * **Developer Notes**
 	* None.
 * **Requires At Least**
@@ -657,9 +657,9 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 == Upgrade Notice ==
 
-= 13.0.0-dev.1 =
+= 13.0.0-dev.3 =
 
-(2022/08/12) Moved URL shortening library files to the WPSSO Core Standard version.
+(2022/08/15) Moved URL shortening library files to the WPSSO Core Standard version.
 
 = 12.4.0 =
 
