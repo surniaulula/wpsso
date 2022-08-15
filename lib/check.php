@@ -80,8 +80,12 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 		public function get_avail() {
 
 			$mtime_start = microtime( $get_float = true );
-			$get_avail   = array();	// Initialize the array to return.
-			$lib_checks  = SucomUtil::array_merge_recursive_distinct( $this->p->cf[ '*' ][ 'lib' ][ 'pro' ], $this->extend_lib_checks );
+
+			$get_avail = array();	// Initialize the array to return.
+
+			$lib_checks = $this->extend_lib_checks;
+			$lib_checks = SucomUtil::array_merge_recursive_distinct( $lib_checks, $this->p->cf[ '*' ][ 'lib' ][ 'integ' ] );
+			$lib_checks = SucomUtil::array_merge_recursive_distinct( $lib_checks, $this->p->cf[ '*' ][ 'lib' ][ 'pro' ] );
 
 			foreach ( $lib_checks as $sub => $lib ) {
 

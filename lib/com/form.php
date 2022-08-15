@@ -872,8 +872,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 
 			$html = $this->get_input( $name_prefix . '_width', $css_class = 'size width', $css_id = '', $len = 0, $holder = '', $is_disabled ) . 'x';
 			$html .= $this->get_input( $name_prefix . '_height', $css_class = 'size height', $css_id = '', $len = 0, $holder = '', $is_disabled ) . 'px' . ' ';
-			$html .= _x( 'crop', 'option comment', $this->text_domain ) . ' ' . $this->get_checkbox( $name_prefix . '_crop', '', '', $is_disabled );
-			$html .= ' <div class="image_crop_area">' . _x( 'from', 'option comment', $this->text_domain ) . ' ';
+			$html .= $this->get_checkbox( $name_prefix . '_crop', '', '', $is_disabled ) . ' ';
+			$html .= _x( 'crop', 'option comment', $this->text_domain ) . ' ';
+			$html .= '<div class="image_crop_area">' . _x( 'from', 'option comment', $this->text_domain ) . ' ';
 			$html .= $this->get_input_image_crop_area( $name_prefix, $add_none = false, $is_disabled );
 			$html .= '</div>';
 

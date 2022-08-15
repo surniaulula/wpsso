@@ -3807,7 +3807,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 *
 		 * Called by WpssoFaqShortcodeFaq->do_shortcode().
 		 * Called by WpssoFaqShortcodeQuestion->do_shortcode().
-		 * Called by WpssoJsonFiltersTypeThing->filter_json_data_https_schema_org_thing().
+		 * Called by WpssoJsonTypeThing->filter_json_data_https_schema_org_thing().
 		 */
 		public static function get_fragment_anchor( $mod = null ) {
 

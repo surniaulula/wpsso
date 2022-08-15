@@ -2505,7 +2505,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
-		 * Called by WpssoJsonFiltersTypeItemList.
+		 * Called by WpssoJsonTypeItemList.
 		 */
 		public static function add_itemlist_data( &$json_data, array $mod, array $mt_og, $page_type_id, $is_main ) {
 

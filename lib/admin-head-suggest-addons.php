@@ -198,36 +198,6 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 			// translators: Please ignore - translation uses a different text domain.
 			$ecom_plugin_name = __( 'WooCommerce', 'woocommerce' );
 
-			$pkg_info = $this->p->util->get_pkg_info();	// Uses a local cache.
-
-			if ( empty( $pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
-
-				$notice_key = 'suggest-premium-for-woocommerce';
-
-				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
-
-					$action_links = array();	// Init a new action array for the notice message.
-
-					if ( $purchase_link = $this->get_purchase_plugin_link( 'wpsso' ) ) {
-
-						$action_links[] = $purchase_link;
-					}
-
-					/**
-					 * For translation purposes, the same text is used in the readme.txt, html/home.html, and html/setup.html files.
-					 */
-					$notice_msg = _x( 'The WooCommerce plugin by itself does not provide sufficient markup for Google Rich Results.', 'html paragraph', 'wpsso' ) . ' ';
-
-					$notice_msg .= _x( 'The <a href="https://wpsso.com/">WPSSO Core Premium edition</a> can read WooCommerce product data and provide comprehensive Schema Product JSON-LD markup for Google Rich Results, including product image galleries, product variations, product information (brand, color, condition, EAN, dimensions, GTIN-8/12/13/14, ISBN, material, MPN, pattern, size, SKU, volume, weight, etc), product reviews, product ratings, sale start / end dates, sale prices, pre-tax prices, VAT prices, shipping rates, shipping times, and much, much more.', 'html paragraph', 'wpsso' ) . ' ';
-
-					$notice_msg .= '<ul><li>' . implode( $glue = '</li> <li>', $action_links ) . '</li></ul>' . ' ';
-
-					$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
-
-					$notices_shown++;
-				}
-			}
-
 			if ( empty( $this->p->avail[ 'p_ext' ][ 'wcmd' ] ) &&
 				empty( $this->p->avail[ 'ecom' ][ 'woo-add-gtin' ] ) &&
 				empty( $this->p->avail[ 'ecom' ][ 'wpm-product-gtin-wc' ] ) ) {
@@ -237,16 +207,6 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
 
 					$action_links = array();	// Init a new action array for the notice message.
-
-					if ( empty( $pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
-
-						$required_msg = sprintf( __( '(required for %s integration)', 'wpsso' ), $ecom_plugin_name );
-
-						if ( $purchase_link = $this->get_purchase_plugin_link( 'wpsso', $required_msg ) ) {
-
-							$action_links[] = $purchase_link;
-						}
-					}
 
 					if ( $install_activate_link = $this->get_install_activate_addon_link( 'wpssowcmd' ) ) {
 
@@ -258,9 +218,9 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 					$notice_msg = __( 'Schema Product markup for Google Rich Results requires at least one unique product ID, like the product MPN (Manufacturer Part Number), UPC, EAN, GTIN, or ISBN.', 'wpsso' ) . ' ';
 
-					$notice_msg .= sprintf( __( 'The product SKU (Stock Keeping Unit) from %1$s is not a valid unique product ID.', 'wpsso' ), $ecom_plugin_name ) . ' ';
+					$notice_msg .= sprintf( __( 'The product SKU (Stock Keeping Unit) from %s is not a valid unique product ID.', 'wpsso' ), $ecom_plugin_name ) . ' ';
 
-					$notice_msg .= sprintf( __( 'If you\'re not already using a plugin to manage unique product IDs for %1$s, you should activate the %2$s add-on.', 'wpsso' ), $ecom_plugin_name, $wcmd_name_transl ) . ' ';
+					$notice_msg .= sprintf( __( 'You should activate the %s add-on if you don\'t already have a plugin to manage unique product IDs.', 'wpsso' ), $wcmd_name_transl ) . ' ';
 
 					$notice_msg .= '<ul><li>' . implode( $glue = '</li> <li>', $action_links ) . '</li></ul>' . ' ';
 
@@ -283,16 +243,6 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 					$shipping_enabled    = $shipping_continents || $shipping_countries ? true : false;
 
 					if ( $shipping_enabled ) {
-
-						if ( empty( $pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
-
-							$required_msg = sprintf( __( '(required for %s integration)', 'wpsso' ), $ecom_plugin_name );
-
-							if ( $purchase_link = $this->get_purchase_plugin_link( 'wpsso', $required_msg ) ) {
-
-								$action_links[] = $purchase_link;
-							}
-						}
 
 						if ( $install_activate_link = $this->get_install_activate_addon_link( 'wpssowcsdt' ) ) {
 
@@ -349,19 +299,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 				if ( $this->p->notice->is_admin_pre_notices( $notice_key ) ) {
 
-					$pkg_info = $this->p->util->get_pkg_info();	// Uses a local cache.
-
 					$action_links = array();	// Init a new action array for the notice message.
-
-					if ( empty( $pkg_info[ 'wpsso' ][ 'pp' ] ) ) {
-
-						$required_msg = sprintf( __( '(required for %s integration)', 'wpsso' ), $ecom_plugin_name );
-
-						if ( $purchase_link = $this->get_purchase_plugin_link( 'wpsso', $required_msg ) ) {
-
-							$action_links[] = $purchase_link;
-						}
-					}
 
 					if ( $install_activate_link = $this->get_install_activate_addon_link( 'wpssogmf' ) ) {
 
@@ -371,9 +309,9 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 					$gmf_info        = $this->p->cf[ 'plugin' ][ 'wpssogmf' ];
 					$gmf_name_transl = _x( $gmf_info[ 'name' ], 'plugin name', 'wpsso' );
 
-					$notice_msg = sprintf( __( 'If you have a Google Merchant account, the %1$s add-on can retrieve product information from %2$s and provide maintenance free XML feeds for each available language (as dictated by Polylang, WPLM, or the installed WordPress languages).', 'wpsso' ), $gmf_name_transl, $pkg_info[ 'wpsso' ][ 'name_pro' ] ) . ' ';
+					$notice_msg = sprintf( __( 'If you have a Google Merchant account, the %s add-on can provide XML product information feeds for each available language (as dictated by Polylang, WPLM, or the installed WordPress languages).', 'wpsso' ), $gmf_name_transl ) . ' ';
 
-					$notice_msg .= sprintf( __( 'If you\'re not already using a plugin to manage your Google Merchant Feeds, you should activate the %s add-on.', 'wpsso' ), $gmf_name_transl ) . ' ';
+					$notice_msg .= sprintf( __( 'You should activate the %s add-on if you don\'t already have a plugin to manage your Google Merchant Feeds.', 'wpsso' ), $gmf_name_transl ) . ' ';
 
 					$notice_msg .= '<ul><li>' . implode( $glue = '</li> <li>', $action_links ) . '</li></ul>' . ' ';
 

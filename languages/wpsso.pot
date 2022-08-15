@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 13.0.0-dev.1\n"
+"Project-Id-Version: WPSSO Core 13.0.0-dev.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -249,14 +249,14 @@ msgid ""
 "tools (mentioned above)."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:33 lib/admin-head-suggest-addons.php:219
+#: gettext/gettext-html-setup.php:33
 msgctxt "html paragraph"
 msgid ""
 "The WooCommerce plugin by itself does not provide sufficient markup for "
 "Google Rich Results."
 msgstr ""
 
-#: gettext/gettext-html-setup.php:34 lib/admin-head-suggest-addons.php:221
+#: gettext/gettext-html-setup.php:34
 msgctxt "html paragraph"
 msgid ""
 "The <a href=\"https://wpsso.com/\">WPSSO Core Premium edition</a> can read "
@@ -518,49 +518,49 @@ msgid "User Profiles"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:33 gettext/gettext-lib-com.php:43
-#: lib/com/form.php:835 lib/com/form.php:2423
+#: lib/com/form.php:835 lib/com/form.php:2424
 msgctxt "option comment"
 msgid "days"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:34 gettext/gettext-lib-com.php:44
-#: lib/com/form.php:836 lib/com/form.php:2424
+#: lib/com/form.php:836 lib/com/form.php:2425
 msgctxt "option comment"
 msgid "hours"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:35 gettext/gettext-lib-com.php:45
-#: lib/com/form.php:837 lib/com/form.php:2425
+#: lib/com/form.php:837 lib/com/form.php:2426
 msgctxt "option comment"
 msgid "mins"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:36 gettext/gettext-lib-com.php:46
-#: lib/com/form.php:838 lib/com/form.php:2426
+#: lib/com/form.php:838 lib/com/form.php:2427
 msgctxt "option comment"
 msgid "secs"
 msgstr ""
 
-#: gettext/gettext-lib-com.php:37 lib/com/form.php:875
+#: gettext/gettext-lib-com.php:37 lib/com/form.php:876
 msgctxt "option comment"
 msgid "crop"
 msgstr ""
 
 #: gettext/gettext-lib-com.php:38 gettext/gettext-lib-pro.php:249
-#: lib/com/form.php:876 lib/pro/admin/edit.php:687 lib/std/admin/edit.php:724
+#: lib/com/form.php:877 lib/pro/admin/edit.php:687 lib/std/admin/edit.php:724
 msgctxt "option comment"
 msgid "from"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:40 gettext/gettext-lib-pro.php:401
-#: lib/com/form.php:886 lib/media.php:1408 lib/media.php:1559
+#: gettext/gettext-lib-com.php:40 gettext/gettext-lib-pro.php:385
+#: lib/com/form.php:887 lib/media.php:1408 lib/media.php:1559
 #: lib/media.php:3194 lib/pro/util/check-img-dims.php:104
 msgid "Media Library"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-com.php:42 lib/com/form.php:969 lib/script.php:359
+#: gettext/gettext-lib-com.php:42 lib/com/form.php:970 lib/script.php:359
 msgid "Select Image"
 msgstr ""
 
@@ -716,379 +716,379 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:17
 msgctxt "lib file description"
-msgid "(code) Schema Type Article [schema_type:article]"
+msgid "(plugin) Easy Digital Downloads"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:18
 msgctxt "lib file description"
-msgid "(code) Schema Type Audiobook [schema_type:book.audio]"
+msgid "(plugin) WooCommerce Show Single Variations"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:19
 msgctxt "lib file description"
-msgid "(code) Schema Type Blog [schema_type:blog]"
+msgid "(plugin) Perfect WooCommerce Brands"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:20
 msgctxt "lib file description"
-msgid "(code) Schema Type Book [schema_type:book]"
+msgid "(plugin) WooCommerce"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:21
 msgctxt "lib file description"
-msgid "(code) Schema Type Brand [schema_type:brand]"
+msgid "(plugin) WooCommerce Brands"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:22
 msgctxt "lib file description"
-msgid "(code) Schema Type Claim Review [schema_type:review.claim]"
+msgid "(plugin) WooCommerce Currency Switcher"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:23
 msgctxt "lib file description"
-msgid "(code) Schema Type Collection Page [schema_type:webpage.collection]"
+msgid "(plugin) WooCommerce UPC, EAN, and ISBN"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:24
 msgctxt "lib file description"
-msgid "(code) Schema Type Course [schema_type:course]"
+msgid "(plugin) Product GTIN for WooCommerce"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:25
 msgctxt "lib file description"
-msgid "(code) Schema Type CreativeWork [schema_type:creative.work]"
+msgid "(plugin) YITH WooCommerce Brands Add-on"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:26
 msgctxt "lib file description"
-msgid "(code) Schema Type Event [schema_type:event]"
+msgid "(plugin) The Events Calendar"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:27
 msgctxt "lib file description"
-msgid "(code) Schema Type FAQPage [schema_type:webpage.faq]"
+msgid "(plugin) GravityView"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:28
 msgctxt "lib file description"
-msgid "(code) Schema Type Food Establishment [schema_type:food.establishment]"
+msgid "(plugin) Simple Job Board"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:29
 msgctxt "lib file description"
-msgid "(code) Schema Type How-To [schema_type:how.to]"
+msgid "(plugin) WP Job Manager"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:30
 msgctxt "lib file description"
-msgid "(code) Schema Type ItemList [schema_type:item.list]"
+msgid "(plugin) Polylang"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:31
 msgctxt "lib file description"
-msgid "(code) Schema Type Job Posting [schema_type:job.posting]"
+msgid "(plugin) WPML"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:32
 msgctxt "lib file description"
-msgid "(code) Schema Type Local Business [schema_type:local.business]"
+msgid "(plugin) Rate my Post"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:33
 msgctxt "lib file description"
-msgid "(code) Schema Type Movie [schema_type:movie]"
+msgid "(plugin) WP-PostRatings"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:34
 msgctxt "lib file description"
-msgid "(code) Schema Type Organization [schema_type:organization]"
+msgid "(plugin) WP Recipe Maker"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:35
 msgctxt "lib file description"
-msgid "(code) Schema Type Person [schema_type:person]"
+msgid "(plugin) WP Product Review"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:36
 msgctxt "lib file description"
-msgid "(code) Schema Type Place [schema_type:place]"
+msgid "(plugin) Yotpo Social Reviews for WooCommerce"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:37
 msgctxt "lib file description"
-msgid "(code) Schema Type Product [schema_type:product]"
+msgid "(plugin) All in One SEO Pack"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:38
 msgctxt "lib file description"
-msgid "(code) Schema Type Profile Page [schema_type:webpage.profile]"
+msgid "(plugin) Rank Math SEO"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:39
 msgctxt "lib file description"
-msgid "(code) Schema Type QAPage [schema_type:webpage.qa]"
+msgid "(plugin) The SEO Framework"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:40
 msgctxt "lib file description"
-msgid "(code) Schema Type Question and Answer [schema_type:question]"
+msgid "(plugin) SEOPress"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:41
 msgctxt "lib file description"
-msgid "(code) Schema Type Recipe [schema_type:recipe]"
+msgid "(plugin) WP Meta SEO"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:42
 msgctxt "lib file description"
-msgid "(code) Schema Type Review [schema_type:review]"
+msgid "(plugin) Yoast SEO"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:43
+msgctxt "lib file description"
+msgid "(plugin) Co-Authors Plus"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:44
+msgctxt "lib file description"
+msgid "(plugin) Elementor Website Builder"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:45
+msgctxt "lib file description"
+msgid "(code) Schema Type Article [schema_type:article]"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:46
+msgctxt "lib file description"
+msgid "(code) Schema Type Audiobook [schema_type:book.audio]"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:47
+msgctxt "lib file description"
+msgid "(code) Schema Type Blog [schema_type:blog]"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:48
+msgctxt "lib file description"
+msgid "(code) Schema Type Book [schema_type:book]"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:49
+msgctxt "lib file description"
+msgid "(code) Schema Type Brand [schema_type:brand]"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:50
+msgctxt "lib file description"
+msgid "(code) Schema Type Claim Review [schema_type:review.claim]"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:51
+msgctxt "lib file description"
+msgid "(code) Schema Type Collection Page [schema_type:webpage.collection]"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:52
+msgctxt "lib file description"
+msgid "(code) Schema Type Course [schema_type:course]"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:53
+msgctxt "lib file description"
+msgid "(code) Schema Type CreativeWork [schema_type:creative.work]"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:54
+msgctxt "lib file description"
+msgid "(code) Schema Type Event [schema_type:event]"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:55
+msgctxt "lib file description"
+msgid "(code) Schema Type FAQPage [schema_type:webpage.faq]"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:56
+msgctxt "lib file description"
+msgid "(code) Schema Type Food Establishment [schema_type:food.establishment]"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:57
+msgctxt "lib file description"
+msgid "(code) Schema Type How-To [schema_type:how.to]"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:58
+msgctxt "lib file description"
+msgid "(code) Schema Type ItemList [schema_type:item.list]"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:59
+msgctxt "lib file description"
+msgid "(code) Schema Type Job Posting [schema_type:job.posting]"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:60
+msgctxt "lib file description"
+msgid "(code) Schema Type Local Business [schema_type:local.business]"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:61
+msgctxt "lib file description"
+msgid "(code) Schema Type Movie [schema_type:movie]"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:62
+msgctxt "lib file description"
+msgid "(code) Schema Type Organization [schema_type:organization]"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:63
+msgctxt "lib file description"
+msgid "(code) Schema Type Person [schema_type:person]"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:64
+msgctxt "lib file description"
+msgid "(code) Schema Type Place [schema_type:place]"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:65
+msgctxt "lib file description"
+msgid "(code) Schema Type Product [schema_type:product]"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:66
+msgctxt "lib file description"
+msgid "(code) Schema Type Profile Page [schema_type:webpage.profile]"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:67
+msgctxt "lib file description"
+msgid "(code) Schema Type QAPage [schema_type:webpage.qa]"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:68
+msgctxt "lib file description"
+msgid "(code) Schema Type Question and Answer [schema_type:question]"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:69
+msgctxt "lib file description"
+msgid "(code) Schema Type Recipe [schema_type:recipe]"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:70
+msgctxt "lib file description"
+msgid "(code) Schema Type Review [schema_type:review]"
+msgstr ""
+
+#: gettext/gettext-lib-config.php:71
 msgctxt "lib file description"
 msgid ""
 "(code) Schema Type Search Results Page [schema_type:webpage.search.results]"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:44
+#: gettext/gettext-lib-config.php:72
 msgctxt "lib file description"
 msgid ""
 "(code) Schema Type Software Application [schema_type:software.application]"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:45
+#: gettext/gettext-lib-config.php:73
 msgctxt "lib file description"
 msgid "(code) Schema Type Thing [schema_type:thing]"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:46
+#: gettext/gettext-lib-config.php:74
 msgctxt "lib file description"
 msgid "(code) Schema Type WebPage [schema_type:webpage]"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:47
+#: gettext/gettext-lib-config.php:75
 msgctxt "lib file description"
 msgid "(code) Schema Type WebSite [schema_type:website]"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:48
+#: gettext/gettext-lib-config.php:76
 msgctxt "lib file description"
 msgid "(plus) Schema Property aggregateRating"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:49
+#: gettext/gettext-lib-config.php:77
 msgctxt "lib file description"
 msgid "(plus) Schema Property hasPart"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:50
+#: gettext/gettext-lib-config.php:78
 msgctxt "lib file description"
 msgid "(plus) Schema Property review"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:51
-msgctxt "lib file description"
-msgid "(plugin) Easy Digital Downloads"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:52
-msgctxt "lib file description"
-msgid "(plugin) WooCommerce Show Single Variations"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:53
-msgctxt "lib file description"
-msgid "(plugin) Perfect WooCommerce Brands"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:54
-msgctxt "lib file description"
-msgid "(plugin) WooCommerce"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:55
-msgctxt "lib file description"
-msgid "(plugin) WooCommerce Brands"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:56
-msgctxt "lib file description"
-msgid "(plugin) WooCommerce Currency Switcher"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:57
-msgctxt "lib file description"
-msgid "(plugin) WooCommerce UPC, EAN, and ISBN"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:58
-msgctxt "lib file description"
-msgid "(plugin) Product GTIN for WooCommerce"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:59
-msgctxt "lib file description"
-msgid "(plugin) YITH WooCommerce Brands Add-on"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:60
-msgctxt "lib file description"
-msgid "(plugin) The Events Calendar"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:61
-msgctxt "lib file description"
-msgid "(plugin) GravityView"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:62
-msgctxt "lib file description"
-msgid "(plugin) Simple Job Board"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:63
-msgctxt "lib file description"
-msgid "(plugin) WP Job Manager"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:64
-msgctxt "lib file description"
-msgid "(plugin) Polylang"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:65
-msgctxt "lib file description"
-msgid "(plugin) WPML"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:66
+#: gettext/gettext-lib-config.php:79
 msgctxt "lib file description"
 msgid "(api) Facebook Video API"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:67
+#: gettext/gettext-lib-config.php:80
 msgctxt "lib file description"
 msgid "(api) Gravatar Image API"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:68
+#: gettext/gettext-lib-config.php:81
 msgctxt "lib file description"
 msgid "(api) Slideshare API"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:69
+#: gettext/gettext-lib-config.php:82
 msgctxt "lib file description"
 msgid "(api) Soundcloud API"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:70
+#: gettext/gettext-lib-config.php:83
 msgctxt "lib file description"
 msgid "(feature) Upscale Media Library Images"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:71
+#: gettext/gettext-lib-config.php:84
 msgctxt "lib file description"
 msgid "(api) Vimeo Video API"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:72
+#: gettext/gettext-lib-config.php:85
 msgctxt "lib file description"
 msgid "(api) Wistia Video API"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:73
+#: gettext/gettext-lib-config.php:86
 msgctxt "lib file description"
 msgid "(api) WP Video Shortcode API"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:74
+#: gettext/gettext-lib-config.php:87
 msgctxt "lib file description"
 msgid "(api) YouTube Video / Playlist API"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:75
-msgctxt "lib file description"
-msgid "(plugin) Rate my Post"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:76
-msgctxt "lib file description"
-msgid "(plugin) WP-PostRatings"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:77
-msgctxt "lib file description"
-msgid "(plugin) WP Recipe Maker"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:78
+#: gettext/gettext-lib-config.php:88
 msgctxt "lib file description"
 msgid "(api) Shopper Approved API"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:79
+#: gettext/gettext-lib-config.php:89
 msgctxt "lib file description"
 msgid "(api) Stamped.io API"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:80
-msgctxt "lib file description"
-msgid "(plugin) WP Product Review"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:81
-msgctxt "lib file description"
-msgid "(plugin) Yotpo Social Reviews for WooCommerce"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:82
-msgctxt "lib file description"
-msgid "(plugin) All in One SEO Pack"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:83
-msgctxt "lib file description"
-msgid "(plugin) Rank Math SEO"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:84
-msgctxt "lib file description"
-msgid "(plugin) The SEO Framework"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:85
-msgctxt "lib file description"
-msgid "(plugin) SEOPress"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:86
-msgctxt "lib file description"
-msgid "(plugin) WP Meta SEO"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:87
-msgctxt "lib file description"
-msgid "(plugin) Yoast SEO"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:88
+#: gettext/gettext-lib-config.php:90
 msgctxt "lib file description"
 msgid "(feature) Import All in One SEO Pack Metadata"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:89
-msgctxt "lib file description"
-msgid "(feature) Image Dimension Checks"
-msgstr ""
-
-#: gettext/gettext-lib-config.php:90
-msgctxt "lib file description"
-msgid "(plugin) Co-Authors Plus"
-msgstr ""
-
 #: gettext/gettext-lib-config.php:91
 msgctxt "lib file description"
-msgid "(plugin) Elementor Website Builder"
+msgid "(feature) Image Dimension Checks"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:92
@@ -3075,7 +3075,7 @@ msgctxt "metabox title"
 msgid "Bitly (URL Shortener)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:81 gettext/gettext-lib-pro.php:389
+#: gettext/gettext-lib-pro.php:81 gettext/gettext-lib-pro.php:373
 #: lib/pro/admin/advanced.php:568 lib/pro/util/shorten.php:352
 msgctxt "option label"
 msgid "Bitly Generic Access Token"
@@ -3096,7 +3096,7 @@ msgctxt "metabox title"
 msgid "DLMY.App (URL Shortener)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:85 gettext/gettext-lib-pro.php:391
+#: gettext/gettext-lib-pro.php:85 gettext/gettext-lib-pro.php:375
 #: lib/pro/admin/advanced.php:586 lib/pro/util/shorten.php:378
 msgctxt "option label"
 msgid "DLMY.App API Key"
@@ -3107,7 +3107,7 @@ msgctxt "metabox title"
 msgid "Ow.ly (URL Shortener)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:87 gettext/gettext-lib-pro.php:393
+#: gettext/gettext-lib-pro.php:87 gettext/gettext-lib-pro.php:377
 #: lib/pro/admin/advanced.php:596 lib/pro/util/shorten.php:402
 msgctxt "option label"
 msgid "Ow.ly API Key"
@@ -3118,7 +3118,7 @@ msgctxt "metabox title"
 msgid "YOURLS (URL Shortener)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:89 gettext/gettext-lib-pro.php:395
+#: gettext/gettext-lib-pro.php:89 gettext/gettext-lib-pro.php:379
 #: lib/pro/admin/advanced.php:606 lib/pro/util/shorten.php:443
 msgctxt "option label"
 msgid "YOURLS API URL"
@@ -4539,76 +4539,20 @@ msgctxt "option label"
 msgid "Video Dimensions"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:361 lib/pro/ecom/woocommerce.php:59
-msgid ""
-"Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; "
-"Advanced &gt; Page setup</a> section."
-msgstr ""
-
-#: gettext/gettext-lib-pro.php:362 lib/pro/ecom/woocommerce.php:62
-msgid ""
-"Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; "
-"Products &gt; General</a> section."
-msgstr ""
-
-#. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:364 lib/pro/ecom/woocommerce.php:66
-msgid "My account page"
-msgstr ""
-
-#. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:366 lib/pro/ecom/woocommerce.php:67
-msgid "Cart page"
-msgstr ""
-
-#. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:368 lib/pro/ecom/woocommerce.php:68
-msgid "Checkout page"
-msgstr ""
-
-#. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:370 lib/pro/ecom/woocommerce.php:69
-msgid "Shop page"
-msgstr ""
-
-#: gettext/gettext-lib-pro.php:371 lib/pro/ecom/woocommerce.php:74
-msgid "The WooCommerce \"%1$s\" option value is empty."
-msgstr ""
-
-#: gettext/gettext-lib-pro.php:372 lib/pro/ecom/woocommerce.php:727
-msgid ""
-"The rating and review counts provided by WooCommerce for product ID %d are "
-"invalid."
-msgstr ""
-
-#: gettext/gettext-lib-pro.php:373 lib/pro/ecom/woocommerce.php:730
-msgid ""
-"The average rating is %.2f, but the rating count is %d and the review count "
-"is %d."
-msgstr ""
-
-#: gettext/gettext-lib-pro.php:374 lib/pro/ecom/woocommerce.php:733
-msgid "The rating count or the review count must be greater than 0."
-msgstr ""
-
-#: gettext/gettext-lib-pro.php:375 lib/pro/ecom/woocommerce.php:1378
-msgid "World"
-msgstr ""
-
-#: gettext/gettext-lib-pro.php:376 gettext/gettext-lib-pro.php:379
-#: gettext/gettext-lib-pro.php:382 lib/pro/media/slideshare.php:192
+#: gettext/gettext-lib-pro.php:361 gettext/gettext-lib-pro.php:364
+#: gettext/gettext-lib-pro.php:367 lib/pro/media/slideshare.php:192
 #: lib/pro/media/vimeo.php:170 lib/pro/media/wistia.php:317
 msgid "https://secure.php.net/manual/en/function.simplexml-load-string.php"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:377 gettext/gettext-lib-pro.php:380
-#: gettext/gettext-lib-pro.php:383 lib/pro/media/slideshare.php:193
+#: gettext/gettext-lib-pro.php:362 gettext/gettext-lib-pro.php:365
+#: gettext/gettext-lib-pro.php:368 lib/pro/media/slideshare.php:193
 #: lib/pro/media/vimeo.php:171 lib/pro/media/wistia.php:318
 msgid "The <a href=\"%1$s\">PHP %2$s function</a> is not available."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:378 gettext/gettext-lib-pro.php:381
-#: gettext/gettext-lib-pro.php:384 lib/conflict.php:320
+#: gettext/gettext-lib-pro.php:363 gettext/gettext-lib-pro.php:366
+#: gettext/gettext-lib-pro.php:369 lib/conflict.php:320
 #: lib/pro/media/slideshare.php:196 lib/pro/media/vimeo.php:174
 #: lib/pro/media/wistia.php:321
 msgid ""
@@ -4616,220 +4560,87 @@ msgid ""
 "installed."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:385 lib/pro/media/upscale.php:248
+#: gettext/gettext-lib-pro.php:370 lib/pro/media/upscale.php:248
 msgid ""
 "Failed to upscale image ID %1$s of %2$s by %3$s from %4$s to %5$s for the "
 "%6$s image size (exceeds %7$s maximum upscale setting)."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:386 lib/pro/media/upscale.php:256
+#: gettext/gettext-lib-pro.php:371 lib/pro/media/upscale.php:256
 msgid ""
 "Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the "
 "%6$s image size."
 msgstr ""
 
-#. translators: %1$s is the class::method name.
-#: gettext/gettext-lib-pro.php:387 lib/pro/seo/wpseo.php:44
-msgid ""
-"The Yoast SEO <code>%1$s</code> method is missing &ndash; if you are using "
-"an older version of Yoast SEO, please update now."
-msgstr ""
-
-#: gettext/gettext-lib-pro.php:388 gettext/gettext-lib-pro.php:390
-#: gettext/gettext-lib-pro.php:392 gettext/gettext-lib-pro.php:394
+#: gettext/gettext-lib-pro.php:372 gettext/gettext-lib-pro.php:374
+#: gettext/gettext-lib-pro.php:376 gettext/gettext-lib-pro.php:378
 #: lib/pro/util/shorten.php:351 lib/pro/util/shorten.php:377
 #: lib/pro/util/shorten.php:401 lib/pro/util/shorten.php:442
 msgid "The \"%s\" option value is empty and required."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:396 gettext/gettext-lib-pro.php:398
-#: gettext/gettext-lib-pro.php:434 lib/conflict.php:208 lib/loader.php:187
-#: lib/loader.php:201 lib/post.php:1572 lib/pro/review/yotpowc.php:185
-#: lib/pro/util/shorten.php:486 lib/pro/util/shorten.php:523
+#: gettext/gettext-lib-pro.php:380 gettext/gettext-lib-pro.php:382
+#: lib/conflict.php:208 lib/integ/review/yotpowc.php:185 lib/loader.php:197
+#: lib/loader.php:211 lib/post.php:1572 lib/pro/util/shorten.php:486
+#: lib/pro/util/shorten.php:523
 msgid "%s error:"
 msgstr ""
 
 #. translators: %s is the service id.
-#: gettext/gettext-lib-pro.php:397 lib/pro/util/shorten.php:489
+#: gettext/gettext-lib-pro.php:381 lib/pro/util/shorten.php:489
 msgid "Incomplete API options to instantiate the \"%s\" shortening service."
 msgstr ""
 
 #. translators: %s is the shortening service id.
-#: gettext/gettext-lib-pro.php:399 lib/pro/util/shorten.php:526
+#: gettext/gettext-lib-pro.php:383 lib/pro/util/shorten.php:526
 msgid "The URL shortening library file for \"%s\" is missing and required."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:400 lib/pro/util/check-img-dims.php:84
+#: gettext/gettext-lib-pro.php:384 lib/pro/util/check-img-dims.php:84
 msgid "full size original"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:402 lib/media.php:3204
+#: gettext/gettext-lib-pro.php:386 lib/media.php:3204
 #: lib/pro/util/check-img-dims.php:107
 msgid "image ID %1$s (%2$s)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:403 lib/pro/util/check-img-dims.php:110
+#: gettext/gettext-lib-pro.php:387 lib/pro/util/check-img-dims.php:110
 msgid ""
 "%1$s %2$s ignored - the resulting resized image of %3$s is too small for the "
 "required %4$s image dimensions."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:404 lib/pro/util/check-img-dims.php:171
+#: gettext/gettext-lib-pro.php:388 lib/pro/util/check-img-dims.php:171
 msgid ""
 "Image %1$s in content ignored - the image width and height is too small for "
 "the required %2$s image dimensions."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:405 lib/pro/util/check-img-dims.php:173
+#: gettext/gettext-lib-pro.php:389 lib/pro/util/check-img-dims.php:173
 msgid ""
 "%1$s includes an additional 'data-wp-pid' attribute for WordPress Media "
 "Library images - if this image was selected from the Media Library before "
 "%1$s was activated, try removing and adding the image back to your content."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:406 lib/pro/event/the-events-calendar.php:52
-msgid "TEC: %s"
-msgstr ""
-
-#: gettext/gettext-lib-pro.php:407 lib/pro/event/the-events-calendar.php:62
-msgctxt "option value"
-msgid "TEC: %s"
-msgstr ""
-
-#: gettext/gettext-lib-pro.php:408 gettext/gettext-lib-pro.php:409
-#: lib/pro/event/the-events-calendar.php:273
-#: lib/pro/event/the-events-calendar.php:332
-msgid "getting TEC options"
-msgstr ""
-
-#: gettext/gettext-lib-pro.php:410 lib/pro/form/gravityview.php:57
-msgctxt "metabox title"
-msgid "Single Entry Integration"
-msgstr ""
-
-#: gettext/gettext-lib-pro.php:411 lib/pro/form/gravityview.php:85
-msgctxt "option label"
-msgid "Title Field ID"
-msgstr ""
-
-#: gettext/gettext-lib-pro.php:412 lib/pro/form/gravityview.php:89
-msgctxt "option label"
-msgid "Description Field ID"
-msgstr ""
-
-#: gettext/gettext-lib-pro.php:413 lib/pro/form/gravityview.php:93
-msgctxt "option label"
-msgid "Post Image Field ID"
-msgstr ""
-
-#: gettext/gettext-lib-pro.php:414 gettext/gettext-lib-pro.php:424
-#: lib/conflict-seo.php:49 lib/pro/rating/rate-my-post.php:64
-#: lib/pro/rating/wppostratings.php:62
-msgid "Plugin conflict detected:"
-msgstr ""
-
-#. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:416 lib/pro/rating/wppostratings.php:65
-msgid "Enable Google Rich Snippets?"
-msgstr ""
-
-#. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:418 lib/pro/rating/wppostratings.php:71
-msgid "WP-PostRatings"
-msgstr ""
-
-#. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:420 lib/pro/rating/wppostratings.php:73
-msgid "Ratings"
-msgstr ""
-
-#. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:422 lib/pro/rating/wppostratings.php:75
-msgid "Ratings Options"
-msgstr ""
-
-#: gettext/gettext-lib-pro.php:423 gettext/gettext-lib-pro.php:433
-#: lib/pro/rating/rate-my-post.php:84 lib/pro/rating/wppostratings.php:82
-msgid "Please disable the %1$s option in the %2$s settings page."
-msgstr ""
-
-#. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:426 lib/pro/rating/rate-my-post.php:67
-msgid "Type of structured data for rich snippets"
-msgstr ""
-
-#. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:428 lib/pro/rating/rate-my-post.php:73
-msgid "Rate my Post"
-msgstr ""
-
-#. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:430 lib/conflict-seo.php:480
-#: lib/pro/rating/rate-my-post.php:75
-msgid "Settings"
-msgstr ""
-
-#. translators: Please ignore - translation uses a different text domain.
-#: gettext/gettext-lib-pro.php:432 lib/pro/rating/rate-my-post.php:77
-msgid "Rating Widget Settings"
-msgstr ""
-
-#. translators: %s is "App Key".
-#. translators: %s is "Secret Token".
-#: gettext/gettext-lib-pro.php:435 gettext/gettext-lib-pro.php:436
-#: lib/pro/review/yotpowc.php:197 lib/pro/review/yotpowc.php:217
-msgid "Yotpo for WooCommerce \"%s\" option value is empty."
-msgstr ""
-
-#. translators: %s is "wc_yotpo_compatible()".
-#: gettext/gettext-lib-pro.php:437 lib/pro/review/yotpowc.php:237
-msgid "Yotpo for WooCommerce %s function is missing."
-msgstr ""
-
-#. translators: %s is "wc_yotpo_compatible()".
-#: gettext/gettext-lib-pro.php:438 lib/pro/review/yotpowc.php:258
-msgid "Yotpo for WooCommerce %s function returned false."
-msgstr ""
-
-#. translators: %s is "yotpo-social-reviews-for-woocommerce".
-#: gettext/gettext-lib-pro.php:439 lib/pro/review/yotpowc.php:286
-msgid ""
-"\"%s\" plugin not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders."
-msgstr ""
-
-#. translators: %s is the API library file path.
-#: gettext/gettext-lib-pro.php:440 lib/pro/review/yotpowc.php:308
-msgid "Yotpo for WooCommerce API library file \"%s\" not found."
-msgstr ""
-
-#. translators: %s is the API library file path.
-#: gettext/gettext-lib-pro.php:441 lib/pro/review/yotpowc.php:335
-msgid "Yotpo for WooCommerce \"%s\" class does not exist."
-msgstr ""
-
-#: gettext/gettext-lib-pro.php:442 lib/pro/review/shopperapproved.php:171
+#: gettext/gettext-lib-pro.php:390 lib/pro/review/shopperapproved.php:171
 msgid "getting shopper approved ratings and reviews"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:443 gettext/gettext-lib-pro.php:446
+#: gettext/gettext-lib-pro.php:391 gettext/gettext-lib-pro.php:394
 #: lib/pro/review/shopperapproved.php:337 lib/pro/review/stamped.php:327
 msgid "There has been a previous error connecting to %s for caching."
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:444 gettext/gettext-lib-pro.php:447
+#: gettext/gettext-lib-pro.php:392 gettext/gettext-lib-pro.php:395
 #: lib/pro/review/shopperapproved.php:340 lib/pro/review/stamped.php:330
 msgid ""
 "Requests to retrieve and cache this URL are ignored for another %d second(s)"
 msgstr ""
 
-#: gettext/gettext-lib-pro.php:445 lib/pro/review/stamped.php:171
+#: gettext/gettext-lib-pro.php:393 lib/pro/review/stamped.php:171
 msgid "getting stamp.io ratings and reviews"
-msgstr ""
-
-#: gettext/gettext-lib-pro.php:448 gettext/gettext-lib-pro.php:449
-#: lib/pro/job/wpjobmanager.php:54 lib/pro/job/wpjobmanager.php:67
-msgctxt "option value"
-msgid "WPJM: %s"
 msgstr ""
 
 #: lib/abstract/wp-meta.php:1046
@@ -4875,7 +4686,7 @@ msgstr ""
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1774 lib/json-filters/type/claimreview.php:69
+#: lib/abstract/wp-meta.php:1774 lib/json/type/claimreview.php:69
 msgid "A claim review cannot be the subject of another claim review."
 msgstr ""
 
@@ -4960,22 +4771,22 @@ msgctxt "lib file description"
 msgid "(code) oEmbed Response Enhancements"
 msgstr ""
 
-#: lib/admin-filters.php:270
+#: lib/admin-filters.php:305
 msgctxt "lib file description"
 msgid "(code) Knowledge Graph Organization Markup"
 msgstr ""
 
-#: lib/admin-filters.php:276
+#: lib/admin-filters.php:311
 msgctxt "lib file description"
 msgid "(code) Knowledge Graph Person Markup"
 msgstr ""
 
-#: lib/admin-filters.php:282
+#: lib/admin-filters.php:317
 msgctxt "lib file description"
 msgid "(code) Knowledge Graph WebSite Markup"
 msgstr ""
 
-#: lib/admin-filters.php:312
+#: lib/admin-filters.php:342
 msgid "(%d sub-types)"
 msgstr ""
 
@@ -4995,41 +4806,36 @@ msgid ""
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin-head-suggest-addons.php:199 lib/admin-head-suggest-addons.php:332
+#: lib/admin-head-suggest-addons.php:199 lib/admin-head-suggest-addons.php:282
 msgid "WooCommerce"
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:243 lib/admin-head-suggest-addons.php:289
-#: lib/admin-head-suggest-addons.php:358
-msgid "(required for %s integration)"
-msgstr ""
-
-#: lib/admin-head-suggest-addons.php:259
+#: lib/admin-head-suggest-addons.php:219
 msgid ""
 "Schema Product markup for Google Rich Results requires at least one unique "
 "product ID, like the product MPN (Manufacturer Part Number), UPC, EAN, GTIN, "
 "or ISBN."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:261
+#: lib/admin-head-suggest-addons.php:221
 msgid ""
-"The product SKU (Stock Keeping Unit) from %1$s is not a valid unique product "
+"The product SKU (Stock Keeping Unit) from %s is not a valid unique product "
 "ID."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:263
+#: lib/admin-head-suggest-addons.php:223
 msgid ""
-"If you're not already using a plugin to manage unique product IDs for %1$s, "
-"you should activate the %2$s add-on."
+"You should activate the %s add-on if you don't already have a plugin to "
+"manage unique product IDs."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:305
+#: lib/admin-head-suggest-addons.php:255
 msgid ""
 "Product shipping features are enabled in %1$s but the %2$s add-on is not "
 "active."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:307
+#: lib/admin-head-suggest-addons.php:257
 msgid ""
 "Adding shipping details to your Schema Product markup is important if you "
 "offer free or low-cost shipping options, as this will make your products "
@@ -5037,38 +4843,37 @@ msgid ""
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin-head-suggest-addons.php:339
+#: lib/admin-head-suggest-addons.php:289
 msgid "Easy Digital Downloads"
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:374
+#: lib/admin-head-suggest-addons.php:312
 msgid ""
-"If you have a Google Merchant account, the %1$s add-on can retrieve product "
-"information from %2$s and provide maintenance free XML feeds for each "
-"available language (as dictated by Polylang, WPLM, or the installed "
-"WordPress languages)."
+"If you have a Google Merchant account, the %s add-on can provide XML product "
+"information feeds for each available language (as dictated by Polylang, "
+"WPLM, or the installed WordPress languages)."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:376
+#: lib/admin-head-suggest-addons.php:314
 msgid ""
-"If you're not already using a plugin to manage your Google Merchant Feeds, "
-"you should activate the %s add-on."
+"You should activate the %s add-on if you don't already have a plugin to "
+"manage your Google Merchant Feeds."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:405
+#: lib/admin-head-suggest-addons.php:343
 msgid "Activate the %s add-on."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:411
+#: lib/admin-head-suggest-addons.php:349
 msgid "Install and activate the %s add-on."
 msgstr ""
 
 #. translators: %1$s is a URL, %2$s is the plugin name, and %3$s is a pre-translated comment.
-#: lib/admin-head-suggest-addons.php:428
+#: lib/admin-head-suggest-addons.php:366
 msgid "<a href=\"%1$s\">Purchase the %2$s plugin</a> %3$s."
 msgstr ""
 
-#: lib/admin-head-suggest-addons.php:431
+#: lib/admin-head-suggest-addons.php:369
 msgid "Purchase the %s plugin."
 msgstr ""
 
@@ -5704,6 +5509,11 @@ msgstr ""
 msgid "Insufficient privileges to save settings for comment ID %1$s."
 msgstr ""
 
+#: lib/conflict-seo.php:49 lib/integ/rating/rate-my-post.php:64
+#: lib/integ/rating/wppostratings.php:62
+msgid "Plugin conflict detected:"
+msgstr ""
+
 #: lib/conflict-seo.php:71
 msgid "All in One SEO"
 msgstr ""
@@ -5895,6 +5705,11 @@ msgstr ""
 
 #: lib/conflict-seo.php:461
 msgid "WP Meta SEO"
+msgstr ""
+
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/conflict-seo.php:480 lib/integ/rating/rate-my-post.php:75
+msgid "Settings"
 msgstr ""
 
 #. translators: Please ignore - translation uses a different text domain.
@@ -6436,53 +6251,222 @@ msgstr ""
 msgid "adding schema json-ld markup"
 msgstr ""
 
-#: lib/json-filters/prop/aggregaterating.php:195
+#: lib/integ/ecom/woocommerce.php:59
+msgid ""
+"Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; "
+"Advanced &gt; Page setup</a> section."
+msgstr ""
+
+#: lib/integ/ecom/woocommerce.php:62
+msgid ""
+"Please select a page in the <a href=\"%s\">WooCommerce Settings &gt; "
+"Products &gt; General</a> section."
+msgstr ""
+
+#: lib/integ/ecom/woocommerce.php:66
+msgid "My account page"
+msgstr ""
+
+#: lib/integ/ecom/woocommerce.php:67
+msgid "Cart page"
+msgstr ""
+
+#: lib/integ/ecom/woocommerce.php:68
+msgid "Checkout page"
+msgstr ""
+
+#: lib/integ/ecom/woocommerce.php:69
+msgid "Shop page"
+msgstr ""
+
+#: lib/integ/ecom/woocommerce.php:74
+msgid "The WooCommerce \"%1$s\" option value is empty."
+msgstr ""
+
+#: lib/integ/ecom/woocommerce.php:727
+msgid ""
+"The rating and review counts provided by WooCommerce for product ID %d are "
+"invalid."
+msgstr ""
+
+#: lib/integ/ecom/woocommerce.php:730
+msgid ""
+"The average rating is %.2f, but the rating count is %d and the review count "
+"is %d."
+msgstr ""
+
+#: lib/integ/ecom/woocommerce.php:733
+msgid "The rating count or the review count must be greater than 0."
+msgstr ""
+
+#: lib/integ/ecom/woocommerce.php:1378
+msgid "World"
+msgstr ""
+
+#: lib/integ/event/the-events-calendar.php:52
+msgid "TEC: %s"
+msgstr ""
+
+#: lib/integ/event/the-events-calendar.php:62
+msgctxt "option value"
+msgid "TEC: %s"
+msgstr ""
+
+#: lib/integ/event/the-events-calendar.php:273
+#: lib/integ/event/the-events-calendar.php:332
+msgid "getting TEC options"
+msgstr ""
+
+#: lib/integ/form/gravityview.php:57
+msgctxt "metabox title"
+msgid "Single Entry Integration"
+msgstr ""
+
+#: lib/integ/form/gravityview.php:85
+msgctxt "option label"
+msgid "Title Field ID"
+msgstr ""
+
+#: lib/integ/form/gravityview.php:89
+msgctxt "option label"
+msgid "Description Field ID"
+msgstr ""
+
+#: lib/integ/form/gravityview.php:93
+msgctxt "option label"
+msgid "Post Image Field ID"
+msgstr ""
+
+#: lib/integ/job/wpjobmanager.php:54 lib/integ/job/wpjobmanager.php:67
+msgctxt "option value"
+msgid "WPJM: %s"
+msgstr ""
+
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/integ/rating/rate-my-post.php:67
+msgid "Type of structured data for rich snippets"
+msgstr ""
+
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/integ/rating/rate-my-post.php:73
+msgid "Rate my Post"
+msgstr ""
+
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/integ/rating/rate-my-post.php:77
+msgid "Rating Widget Settings"
+msgstr ""
+
+#: lib/integ/rating/rate-my-post.php:84 lib/integ/rating/wppostratings.php:82
+msgid "Please disable the %1$s option in the %2$s settings page."
+msgstr ""
+
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/integ/rating/wppostratings.php:65
+msgid "Enable Google Rich Snippets?"
+msgstr ""
+
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/integ/rating/wppostratings.php:71
+msgid "WP-PostRatings"
+msgstr ""
+
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/integ/rating/wppostratings.php:73
+msgid "Ratings"
+msgstr ""
+
+#. translators: Please ignore - translation uses a different text domain.
+#: lib/integ/rating/wppostratings.php:75
+msgid "Ratings Options"
+msgstr ""
+
+#. translators: %s is "App Key".
+#. translators: %s is "Secret Token".
+#: lib/integ/review/yotpowc.php:197 lib/integ/review/yotpowc.php:217
+msgid "Yotpo for WooCommerce \"%s\" option value is empty."
+msgstr ""
+
+#. translators: %s is "wc_yotpo_compatible()".
+#: lib/integ/review/yotpowc.php:237
+msgid "Yotpo for WooCommerce %s function is missing."
+msgstr ""
+
+#. translators: %s is "wc_yotpo_compatible()".
+#: lib/integ/review/yotpowc.php:258
+msgid "Yotpo for WooCommerce %s function returned false."
+msgstr ""
+
+#. translators: %s is "yotpo-social-reviews-for-woocommerce".
+#: lib/integ/review/yotpowc.php:286
+msgid ""
+"\"%s\" plugin not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders."
+msgstr ""
+
+#. translators: %s is the API library file path.
+#: lib/integ/review/yotpowc.php:308
+msgid "Yotpo for WooCommerce API library file \"%s\" not found."
+msgstr ""
+
+#. translators: %s is the API library file path.
+#: lib/integ/review/yotpowc.php:335
+msgid "Yotpo for WooCommerce \"%s\" class does not exist."
+msgstr ""
+
+#. translators: %1$s is the class::method name.
+#: lib/integ/seo/wpseo.php:44
+msgid ""
+"The Yoast SEO <code>%1$s</code> method is missing &ndash; if you are using "
+"an older version of Yoast SEO, please update now."
+msgstr ""
+
+#: lib/json/prop/aggregaterating.php:195
 msgid ""
 "An aggregate rating value for this markup has been ignored - <a href=\"%1$s"
 "\">Google does not allow an aggregate rating value for the Schema %2$s type</"
 "a>."
 msgstr ""
 
-#: lib/json-filters/prop/review.php:218
+#: lib/json/prop/review.php:218
 msgid ""
 "Reviews for this markup have been ignored - <a href=\"%1$s\">Google does not "
 "allow reviews for the Schema %2$s type</a>."
 msgstr ""
 
-#: lib/json-filters/type/claimreview.php:71
+#: lib/json/type/claimreview.php:71
 msgid ""
 "CreativeWork will be used instead as the Schema type for the subject of the "
 "webpage (ie. the content) being reviewed."
 msgstr ""
 
-#: lib/json-filters/type/faqpage.php:74
+#: lib/json/type/faqpage.php:74
 msgid "%d question added to the Schema FAQPage markup."
 msgid_plural "%d questions added to the Schema FAQPage markup."
 msgstr[0] ""
 msgstr[1] ""
 
-#: lib/json-filters/type/faqpage.php:81
+#: lib/json/type/faqpage.php:81
 msgid "No question(s) found for the Schema FAQPage markup."
 msgstr ""
 
-#: lib/json-filters/type/faqpage.php:83
+#: lib/json/type/faqpage.php:83
 msgid "Google requires at least one question for the Schema FAQPage markup."
 msgstr ""
 
 #. translators: %1$s is the PHP library path, %2$s is the PHP library class name
-#: lib/loader.php:183
+#: lib/loader.php:193
 msgid "Error loading %1$s: Library class \"%2$s\" is missing."
 msgstr ""
 
-#: lib/loader.php:189
+#: lib/loader.php:199
 msgid "Library class \"%s\" is missing."
 msgstr ""
 
-#: lib/loader.php:203
+#: lib/loader.php:213
 msgid "Library class name for \"%s\" cannot be determined."
 msgstr ""
 
-#: lib/loader.php:204
+#: lib/loader.php:214
 msgid ""
 "The installed plugin is incomplete or the web server cannot access the "
 "required library file."

@@ -15,7 +15,7 @@
  * Requires At Least: 5.2
  * Tested Up To: 6.0.1
  * WC Tested Up To: 6.8.0
- * Version: 13.0.0-dev.1
+ * Version: 13.0.0-dev.3
  *
  * Version Numbering: {major}.{minor}.{bugfix}[-{stage}.{level}]
  *
@@ -412,9 +412,9 @@ if ( ! class_exists( 'Wpsso' ) ) {
 			$this->tc        = new WpssoTwitterCard( $this );	// Twitter Card meta tags.
 
 			/**
-			 * Load distribution modules.
+			 * Load integration and std/pro distribution modules.
 			 */
-			$this->loader = new WpssoLoader( $this );		// Module loader.
+			$this->loader = new WpssoLoader( $this );		// Modules loader.
 
 			if ( $this->debug->enabled ) {
 
@@ -515,7 +515,7 @@ if ( ! class_exists( 'Wpsso' ) ) {
 				$this->debug->mark( 'init json filters' );	// Begin timer.
 			}
 
-			$classnames = $this->get_lib_classnames( 'json-filters' );	// Always returns an array.
+			$classnames = $this->get_lib_classnames( 'json' );	// Always returns an array.
 
 			foreach ( $classnames as $id => $classname ) {
 

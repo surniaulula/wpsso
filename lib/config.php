@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '13.0.0-dev.1',	// Plugin version.
+					'version'     => '13.0.0-dev.3',	// Plugin version.
 					'opt_version' => '903',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -89,7 +89,57 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'download'  => '',
 					),
 					'lib' => array(
-						'json-filters' => array(
+						'integ' => array(	// Plugin integration modules.
+							'ecom' => array(
+								'edd'                           => '(plugin) Easy Digital Downloads',
+								'jck-wssv'                      => '(plugin) WooCommerce Show Single Variations',
+								'perfect-woocommerce-brands'    => '(plugin) Perfect WooCommerce Brands',
+								'woocommerce'                   => '(plugin) WooCommerce',
+								'woocommerce-brands'            => '(plugin) WooCommerce Brands',
+								'woocommerce-currency-switcher' => '(plugin) WooCommerce Currency Switcher',
+								'woo-add-gtin'                  => '(plugin) WooCommerce UPC, EAN, and ISBN',
+								'wpm-product-gtin-wc'           => '(plugin) Product GTIN for WooCommerce',
+								'yith-woocommerce-brands'       => '(plugin) YITH WooCommerce Brands Add-on',
+							),
+							'event' => array(
+								'the-events-calendar' => '(plugin) The Events Calendar',
+							),
+							'form' => array(
+								'gravityview' => '(plugin) GravityView',
+							),
+							'job' => array(
+								'simplejobboard' => '(plugin) Simple Job Board',
+								'wpjobmanager'   => '(plugin) WP Job Manager',
+							),
+							'lang' => array(
+								'polylang' => '(plugin) Polylang',
+								'wpml'     => '(plugin) WPML',
+							),
+							'rating' => array(
+								'rate-my-post'  => '(plugin) Rate my Post',
+								'wppostratings' => '(plugin) WP-PostRatings',
+							),
+							'recipe' => array(
+								'wprecipemaker' => '(plugin) WP Recipe Maker',
+							),
+							'review' => array(
+								'wpproductreview' => '(plugin) WP Product Review',
+								'yotpowc'         => '(plugin) Yotpo Social Reviews for WooCommerce',
+							),
+							'seo' => array(
+								'aioseop'      => '(plugin) All in One SEO Pack',
+								'rankmath'     => '(plugin) Rank Math SEO',
+								'seoframework' => '(plugin) The SEO Framework',
+								'seopress'     => '(plugin) SEOPress',
+								'wpmetaseo'    => '(plugin) WP Meta SEO',
+								'wpseo'        => '(plugin) Yoast SEO',
+							),
+							'util' => array(
+								'coauthors' => '(plugin) Co-Authors Plus',
+								'elementor' => '(plugin) Elementor Website Builder',
+							),
+						),
+						'json' => array(	// Schema JSON filters.
 							'type' => array(
 								'article'             => '(code) Schema Type Article [schema_type:article]',
 								'audiobook'           => '(code) Schema Type Audiobook [schema_type:book.audio]',
@@ -129,36 +179,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'review'          => '(plus) Schema Property review',
 							),
 						),
-						'pro' => array(
+						'pro' => array(	// Premium (aka Pro) distribution modules.
 							'admin' => array(
 								'advanced' => 'Advanced Settings Filters',
 								'edit'     => 'Document SSO Metabox Filters',
 								'general'  => 'General Settings Filters',
-							),
-							'ecom' => array(
-								'edd'                           => '(plugin) Easy Digital Downloads',
-								'jck-wssv'                      => '(plugin) WooCommerce Show Single Variations',
-								'perfect-woocommerce-brands'    => '(plugin) Perfect WooCommerce Brands',
-								'woocommerce'                   => '(plugin) WooCommerce',
-								'woocommerce-brands'            => '(plugin) WooCommerce Brands',
-								'woocommerce-currency-switcher' => '(plugin) WooCommerce Currency Switcher',
-								'woo-add-gtin'                  => '(plugin) WooCommerce UPC, EAN, and ISBN',
-								'wpm-product-gtin-wc'           => '(plugin) Product GTIN for WooCommerce',
-								'yith-woocommerce-brands'       => '(plugin) YITH WooCommerce Brands Add-on',
-							),
-							'event' => array(
-								'the-events-calendar' => '(plugin) The Events Calendar',
-							),
-							'form' => array(
-								'gravityview' => '(plugin) GravityView',
-							),
-							'job' => array(
-								'simplejobboard' => '(plugin) Simple Job Board',
-								'wpjobmanager'   => '(plugin) WP Job Manager',
-							),
-							'lang' => array(
-								'polylang' => '(plugin) Polylang',
-								'wpml'     => '(plugin) WPML',
 							),
 							'media' => array(
 								'facebook'   => '(api) Facebook Video API',
@@ -171,32 +196,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'wpvideo'    => '(api) WP Video Shortcode API',
 								'youtube'    => '(api) YouTube Video / Playlist API',
 							),
-							'rating' => array(
-								'rate-my-post'  => '(plugin) Rate my Post',
-								'wppostratings' => '(plugin) WP-PostRatings',
-							),
-							'recipe' => array(
-								'wprecipemaker' => '(plugin) WP Recipe Maker',
-							),
 							'review' => array(
 								'shopperapproved' => '(api) Shopper Approved API',
 								'stamped'         => '(api) Stamped.io API',
-								'wpproductreview' => '(plugin) WP Product Review',
-								'yotpowc'         => '(plugin) Yotpo Social Reviews for WooCommerce',
-							),
-							'seo' => array(
-								'aioseop'      => '(plugin) All in One SEO Pack',
-								'rankmath'     => '(plugin) Rank Math SEO',
-								'seoframework' => '(plugin) The SEO Framework',
-								'seopress'     => '(plugin) SEOPress',
-								'wpmetaseo'    => '(plugin) WP Meta SEO',
-								'wpseo'        => '(plugin) Yoast SEO',
 							),
 							'util' => array(
 								'aioseop-meta'      => '(feature) Import All in One SEO Pack Metadata',
 								'check-img-dims'    => '(feature) Image Dimension Checks',
-								'coauthors'         => '(plugin) Co-Authors Plus',
-								'elementor'         => '(plugin) Elementor Website Builder',
 								'rankmath-meta'     => '(feature) Import Rank Math SEO Metadata',
 								'seoframework-meta' => '(feature) Import The SEO Framework Metadata',
 								'shorten'           => '(feature) URL Shortening Service',
@@ -212,7 +218,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'site-addons'   => 'Plugin Add-ons',
 							'site-licenses' => 'Premium Licenses',
 						),
-						'std' => array(
+						'std' => array(	// Standard distribution modules.
 							'admin' => array(
 								'advanced' => 'Advanced Settings Filters',
 								'edit'     => 'Document SSO Metabox Filters',

@@ -239,7 +239,42 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 				'status'       => class_exists( 'WpssoOembed' ) && function_exists( 'get_oembed_response_data' ) ? 'on' : 'recommended',
 			);
 
-			return $this->filter_status_std_features_schema( $features, $ext, $info );
+			$features = $this->filter_status_std_features_integ( $features, $ext, $info );
+
+			$features = $this->filter_status_std_features_schema( $features, $ext, $info );
+
+			return $features;
+		}
+
+		public function filter_status_std_features_integ( $features, $ext, $info ) {
+
+			foreach ( array( 'integ' ) as $type_dir ) {
+
+				if ( empty( $info[ 'lib' ][ $type_dir ] ) ) {	// Just in case.
+
+					continue;
+				}
+
+				foreach ( $info[ 'lib' ][ $type_dir ] as $sub_dir => $libs ) {
+
+					if ( is_array( $libs ) ) {
+
+						foreach ( $libs as $id => $label ) {
+
+							$label_transl = _x( $label, 'lib file description', 'wpsso' );
+
+							$classname = SucomUtil::sanitize_classname( 'wpsso' . $type_dir . $sub_dir . $id, $allow_underscore = false );
+
+							$features[ $label ] = array(
+								'label_transl' => $label_transl,
+								'status'       => class_exists( $classname ) ? 'on' : 'off',
+							);
+						}
+					}
+				}
+			}
+
+			return $features;
 		}
 
 		public function filter_status_std_features_schema( $features, $ext, $info ) {
@@ -283,7 +318,7 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 				'status'       => $knowl_status,
 			);
 
-			foreach ( array( 'json-filters' ) as $type_dir ) {
+			foreach ( array( 'json' ) as $type_dir ) {
 
 				if ( empty( $info[ 'lib' ][ $type_dir ] ) ) {	// Just in case.
 
@@ -293,11 +328,6 @@ if ( ! class_exists( 'WpssoAdminFilters' ) ) {
 				foreach ( $info[ 'lib' ][ $type_dir ] as $sub_dir => $libs ) {
 
 					if ( is_array( $libs ) ) {
-
-						if ( 'admin' === $sub_dir ) { // Skip status for admin menus and tabs.
-
-							continue;
-						}
 
 						foreach ( $libs as $id => $label ) {
 

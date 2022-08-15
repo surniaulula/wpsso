@@ -358,21 +358,6 @@ _x( 'Video Name', 'option label', 'wpsso' );
 _x( 'Video Description', 'option label', 'wpsso' );
 _x( 'Video Stream URL', 'option label', 'wpsso' );
 _x( 'Video Dimensions', 'option label', 'wpsso' );
-__( 'Please select a page in the <a href="%s">WooCommerce Settings &gt; Advanced &gt; Page setup</a> section.', 'wpsso' );
-__( 'Please select a page in the <a href="%s">WooCommerce Settings &gt; Products &gt; General</a> section.', 'wpsso' );
-// translators: Please ignore - translation uses a different text domain.
-__( 'My account page', 'woocommerce' );
-// translators: Please ignore - translation uses a different text domain.
-__( 'Cart page', 'woocommerce' );
-// translators: Please ignore - translation uses a different text domain.
-__( 'Checkout page', 'woocommerce' );
-// translators: Please ignore - translation uses a different text domain.
-__( 'Shop page', 'woocommerce' );
-__( 'The WooCommerce "%1$s" option value is empty.', 'wpsso' );
-__( 'The rating and review counts provided by WooCommerce for product ID %d are invalid.', 'wpsso' );
-__( 'The average rating is %.2f, but the rating count is %d and the review count is %d.', 'wpsso' );
-__( 'The rating count or the review count must be greater than 0.', 'wpsso' );
-__( 'World', 'wpsso' );
 __( 'https://secure.php.net/manual/en/function.simplexml-load-string.php', 'wpsso' );
 __( 'The <a href="%1$s">PHP %2$s function</a> is not available.', 'wpsso' );
 __( 'Please contact your hosting provider to have the missing PHP function installed.', 'wpsso' );
@@ -384,7 +369,6 @@ __( 'The <a href="%1$s">PHP %2$s function</a> is not available.', 'wpsso' );
 __( 'Please contact your hosting provider to have the missing PHP function installed.', 'wpsso' );
 __( 'Failed to upscale image ID %1$s of %2$s by %3$s from %4$s to %5$s for the %6$s image size (exceeds %7$s maximum upscale setting).', 'wpsso' );
 __( 'Image ID %1$s of %2$s has been upscaled by %3$s from %4$s to %5$s for the %6$s image size.', 'wpsso' );
-__( 'The Yoast SEO <code>%1$s</code> method is missing &ndash; if you are using an older version of Yoast SEO, please update now.', 'wpsso' );
 __( 'The "%s" option value is empty and required.', 'wpsso' );
 _x( 'Bitly Generic Access Token', 'option label', 'wpsso' );
 __( 'The "%s" option value is empty and required.', 'wpsso' );
@@ -403,47 +387,9 @@ __( 'image ID %1$s (%2$s)', 'wpsso' );
 __( '%1$s %2$s ignored - the resulting resized image of %3$s is too small for the required %4$s image dimensions.', 'wpsso' );
 __( 'Image %1$s in content ignored - the image width and height is too small for the required %2$s image dimensions.', 'wpsso' );
 __( '%1$s includes an additional \'data-wp-pid\' attribute for WordPress Media Library images - if this image was selected from the Media Library before %1$s was activated, try removing and adding the image back to your content.', 'wpsso' );
-__( 'TEC: %s', 'option value', 'wpsso' );
-_x( 'TEC: %s', 'option value', 'wpsso' );
-__( 'getting TEC options', 'wpsso' );
-__( 'getting TEC options', 'wpsso' );
-_x( 'Single Entry Integration', 'metabox title', 'wpsso' );
-_x( 'Title Field ID', 'option label', 'wpsso' );
-_x( 'Description Field ID', 'option label', 'wpsso' );
-_x( 'Post Image Field ID', 'option label', 'wpsso' );
-__( 'Plugin conflict detected:', 'wpsso' );
-// translators: Please ignore - translation uses a different text domain.
-__( 'Enable Google Rich Snippets?', 'wp-postratings' );
-// translators: Please ignore - translation uses a different text domain.
-__( 'WP-PostRatings', 'wp-postratings' );
-// translators: Please ignore - translation uses a different text domain.
-__( 'Ratings', 'wp-postratings' );
-// translators: Please ignore - translation uses a different text domain.
-__( 'Ratings Options', 'wp-postratings' );
-__( 'Please disable the %1$s option in the %2$s settings page.', 'wpsso' );
-__( 'Plugin conflict detected:', 'wpsso' );
-// translators: Please ignore - translation uses a different text domain.
-__( 'Type of structured data for rich snippets', 'rate-my-post' );
-// translators: Please ignore - translation uses a different text domain.
-__( 'Rate my Post', 'rate-my-post' );
-// translators: Please ignore - translation uses a different text domain.
-__( 'Settings', 'rate-my-post' );
-// translators: Please ignore - translation uses a different text domain.
-__( 'Rating Widget Settings', 'rate-my-post' );
-__( 'Please disable the %1$s option in the %2$s settings page.', 'wpsso' );
-__( '%s error:', 'wpsso' );
-__( 'Yotpo for WooCommerce "%s" option value is empty.', 'wpsso' );
-__( 'Yotpo for WooCommerce "%s" option value is empty.', 'wpsso' );
-__( 'Yotpo for WooCommerce %s function is missing.', 'wpsso' );
-__( 'Yotpo for WooCommerce %s function returned false.', 'wpsso' );
-__( '"%s" plugin not found in the WPMU_PLUGIN_DIR or WP_PLUGIN_DIR folders.', 'wpsso' );
-__( 'Yotpo for WooCommerce API library file "%s" not found.', 'wpsso' );
-__( 'Yotpo for WooCommerce "%s" class does not exist.', 'wpsso' );
 __( 'getting shopper approved ratings and reviews', 'wpsso' );
 __( 'There has been a previous error connecting to %s for caching.', 'wpsso' );
 __( 'Requests to retrieve and cache this URL are ignored for another %d second(s)', 'wpsso' );
 __( 'getting stamp.io ratings and reviews', 'wpsso' );
 __( 'There has been a previous error connecting to %s for caching.', 'wpsso' );
 __( 'Requests to retrieve and cache this URL are ignored for another %d second(s)', 'wpsso' );
-_x( 'WPJM: %s', 'option value', 'wpsso' );
-_x( 'WPJM: %s', 'option value', 'wpsso' );
