@@ -175,23 +175,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 					case 'pro-ecom-product-msg':
 
-						if ( empty( $this->p->avail[ 'ecom' ][ 'any' ] ) ) {	// No e-commerce plugin.
+						if ( empty( $this->p->avail[ 'ecom' ][ 'any' ] ) ) {	// No e-commerce plugin is active.
 
 							$text = '';
 
-						} elseif ( empty( $this->pkg_info[ 'wpsso' ][ 'pp' ] ) ) {	// Standard plugin.
-
-							$text = '<p class="pro-feature-msg">';
-
-							$text .= empty( $url[ 'purchase' ] ) ? '' : '<a href="' . $url[ 'purchase' ] . '">';
-
-							$text .= sprintf( __( 'An e-commerce plugin is active &ndash; product information may be imported by the %s plugin.', 'wpsso' ), $this->p_name_pro );
-
-							$text .= empty( $url[ 'purchase' ] ) ? '' : '</a>';
-
-							$text .= '</p>';
-
-						} elseif ( ! empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ) {	// Premium plugin with WooCommerce.
+						} elseif ( ! empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ) {	// WooCommerce plugin is active.
 
 							if ( 'product' === $info[ 'mod' ][ 'post_type' ] ) {	// WooCommerce product editing page.
 
@@ -206,13 +194,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 								if ( $this->p->util->wc->is_mod_variable( $info[ 'mod' ] ) ) {
 
-									$text .= __( 'This is a variable product - information from product variations will supersede these values in each Schema product offer.', 'wpsso' ) . ' ';
+									$text .= __( 'This is a variable product - information from product variations may supersede these values in Schema product offers.', 'wpsso' ) . ' ';
 								}
 
 								$text .= '</p>';
 							}
 
-						} else {
+						} else {	// Another e-commerce plugin is active. 
 
 							$text = '<p class="pro-feature-msg">';
 
@@ -576,7 +564,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= '<li>' . sprintf( __( '<strong>Additional Schema options</strong> in the %s metabox to customize creative works, events, how-tos, job postings, movies, products, recipes, reviews, and more.', 'wpsso' ), $mb_title ) . '</li>';
 
-						$text .= '<li><strong>' . __( 'Reads data from active plugins and service APIs.', 'wpsso' ) . '</strong></li>';
+						$text .= '<li><strong>' . __( 'Reads video and URL shortening information from external service APIs (YouTube, Bitly, etc.).', 'wpsso' ) . '</strong></li>';
 
 						$text .= '<li><strong>' . __( 'Imports plugin metadata and block attributes.', 'wpsso' ) . '</strong></li>';
 

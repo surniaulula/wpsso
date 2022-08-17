@@ -49,11 +49,10 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 		private function suggest_addons_update_manager() {
 
+			$pkg_info      = $this->p->util->get_pkg_info();	// Uses a local cache.
+			$um_info       = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
+			$have_tid      = false;
 			$notices_shown = 0;
-
-			$pkg_info = $this->p->util->get_pkg_info();	// Uses a local cache.
-			$um_info  = $this->p->cf[ 'plugin' ][ 'wpssoum' ];
-			$have_tid = false;
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $ext_info ) {
 
@@ -177,11 +176,6 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 			return $notices_shown;
 		}
 
-		/**
-		 * Suggest purchasing the WPSSO Core Premium plugin and activating WooCommerce related add-ons.
-		 *
-		 * These private notice functions should return the number of notices shown.
-		 */
 		private function suggest_addons_woocommerce() {
 
 			$notices_shown = 0;
@@ -309,7 +303,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 					$gmf_info        = $this->p->cf[ 'plugin' ][ 'wpssogmf' ];
 					$gmf_name_transl = _x( $gmf_info[ 'name' ], 'plugin name', 'wpsso' );
 
-					$notice_msg = sprintf( __( 'If you have a Google Merchant account, the %s add-on can provide XML product information feeds for each available language (as dictated by Polylang, WPLM, or the installed WordPress languages).', 'wpsso' ), $gmf_name_transl ) . ' ';
+					$notice_msg = sprintf( __( 'If you have a Google Merchant account, the %s add-on can provide XML product feeds for each available language from Polylang, WPLM, or the installed WordPress languages.', 'wpsso' ), $gmf_name_transl ) . ' ';
 
 					$notice_msg .= sprintf( __( 'You should activate the %s add-on if you don\'t already have a plugin to manage your Google Merchant Feeds.', 'wpsso' ), $gmf_name_transl ) . ' ';
 
@@ -331,8 +325,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 				return false;
 			}
 
-			$ext_info = $this->p->cf[ 'plugin' ][ $ext ];
-
+			$ext_info        = $this->p->cf[ 'plugin' ][ $ext ];
 			$ext_name_transl = _x( $ext_info[ 'name' ], 'plugin name', 'wpsso' );
 
 			if ( SucomPlugin::is_plugin_installed( $ext_info[ 'base' ] ) ) {

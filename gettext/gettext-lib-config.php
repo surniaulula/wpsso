@@ -5,8 +5,6 @@
  */
 _x( 'Premium', 'package name', 'wpsso' );
 _x( 'Standard', 'package name', 'wpsso' );
-_x( 'WPSSO Google Merchant Feeds XML', 'plugin name', 'wpsso' );
-_x( 'Google Merchant Feeds for WooCommerce, Easy Digital Downloads, and Custom Products (WPSSO Core Premium Required).', 'plugin description', 'wpsso' );
 _x( 'WPSSO Schema Shortcode', 'plugin name', 'wpsso' );
 _x( 'Schema shortcode to define and customize additional properties and types for sections of the content (WPSSO Core Premium Required).', 'plugin description', 'wpsso' );
 _x( 'Update Manager', 'lib file description', 'wpsso' );
@@ -117,6 +115,8 @@ _x( 'WPSSO Schema Breadcrumbs Markup', 'plugin name', 'wpsso' );
 _x( 'Schema BreadcrumbList markup in JSON-LD format for Google Rich Results.', 'plugin description', 'wpsso' );
 _x( 'WPSSO FAQ Manager', 'plugin name', 'wpsso' );
 _x( 'Create FAQ and Question / Answer Pages with optional shortcodes to include FAQs and Questions / Answers in your content.', 'plugin description', 'wpsso' );
+_x( 'WPSSO Google Merchant Feeds XML', 'plugin name', 'wpsso' );
+_x( 'Google Merchant Feeds for WooCommerce, Easy Digital Downloads, and Custom Products (WPSSO Core Premium Required).', 'plugin description', 'wpsso' );
 _x( 'WPSSO Organization and Place Manager', 'plugin name', 'wpsso' );
 _x( 'Manage Organizations (publisher, organizer, etc.) and Places for Facebook, Pinterest, and Google local business markup.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Ratings and Reviews', 'plugin name', 'wpsso' );

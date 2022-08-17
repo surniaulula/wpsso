@@ -1345,8 +1345,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				return $local_cache;
 			}
 
-			$pkg_info = $this->p->util->get_pkg_info();	// Uses a local cache.
-
+			$pkg_info    = $this->p->util->get_pkg_info();	// Uses a local cache.
 			$local_cache = array();
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
@@ -3175,8 +3174,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$pkg_info = $this->p->util->get_pkg_info();	// Uses a local cache.
-
+			$pkg_info     = $this->p->util->get_pkg_info();	// Uses a local cache.
 			$action_links = array();
 
 			if ( ! empty( $info[ 'base' ] ) ) {
