@@ -1221,7 +1221,7 @@ msgstr ""
 msgctxt "plugin description"
 msgid ""
 "Google Merchant Feeds for WooCommerce, Easy Digital Downloads, and Custom "
-"Products (WPSSO Core Premium Required)."
+"Products."
 msgstr ""
 
 #: gettext/gettext-lib-config.php:120
