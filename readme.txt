@@ -235,7 +235,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.0.0-dev.3 (2022/08/15)**
+**Version 13.0.0-dev.4 (TBD)**
 
 * **New Features**
 	* None.
@@ -657,9 +657,9 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 == Upgrade Notice ==
 
-= 13.0.0-dev.3 =
+= 13.0.0-dev.4 =
 
-(2022/08/15) Moved URL shortening library files to the WPSSO Core Standard version.
+(TBD) Moved URL shortening library files to the WPSSO Core Standard version.
 
 = 12.4.0 =
 
