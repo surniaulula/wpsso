@@ -116,7 +116,7 @@ _x( 'Schema BreadcrumbList markup in JSON-LD format for Google Rich Results.', '
 _x( 'WPSSO FAQ Manager', 'plugin name', 'wpsso' );
 _x( 'Create FAQ and Question / Answer Pages with optional shortcodes to include FAQs and Questions / Answers in your content.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Google Merchant Feeds XML', 'plugin name', 'wpsso' );
-_x( 'Google Merchant Feeds for WooCommerce, Easy Digital Downloads, and Custom Products.', 'plugin description', 'wpsso' );
+_x( 'Google Merchant Feeds XML for WooCommerce, Easy Digital Downloads, and Custom Products.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Organization and Place Manager', 'plugin name', 'wpsso' );
 _x( 'Manage Organizations (publisher, organizer, etc.) and Places for Facebook, Pinterest, and Google local business markup.', 'plugin description', 'wpsso' );
 _x( 'WPSSO Ratings and Reviews', 'plugin name', 'wpsso' );
