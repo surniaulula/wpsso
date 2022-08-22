@@ -238,7 +238,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 13.0.0-dev.4 (2022/08/22)**
 
 * **New Features**
-	**The integration modules for active plugins have been moved to the WPSSO Core Standard edition:**
+	* The integration modules for active plugins have been moved to the WPSSO Core Standard edition:
 		* All in One SEO Pack
 		* Co-Authors Plus
 		* Easy Digital Downloads
@@ -271,7 +271,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* URL shortening libraries have been to the WPSSO Core Standard edition.
+	* URL shortening libraries have been moved to the WPSSO Core Standard edition.
 	* Removed support for the WPSSO_PHP_CURL_DISABLE constant.
 * **Requires At Least**
 	* PHP v7.2.
