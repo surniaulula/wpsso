@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires PHP: 7.2
 Requires At Least: 5.2
 Tested Up To: 6.0.1
-WC Tested Up To: 6.8.0
+WC Tested Up To: 6.8.1
 Stable Tag: 12.4.0
 
 Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
@@ -235,16 +235,43 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.0.0-dev.4 (TBD)**
+**Version 13.0.0-dev.4 (2022/08/22)**
 
 * **New Features**
-	* None.
+	**The integration modules for active plugins have been moved to the WPSSO Core Standard edition:**
+		* All in One SEO Pack
+		* Co-Authors Plus
+		* Easy Digital Downloads
+		* Elementor Website Builder
+		* Gravity Forms + GravityView
+		* Perfect WooCommerce Brands
+		* Polylang
+		* Product GTIN (EAN, UPC, ISBN) for WooCommerce
+		* Rate my Post
+		* SEOPress
+		* Simple Job Board
+		* The Events Calendar
+		* The SEO Framework
+		* WooCommerce
+		* WooCommerce Brands
+		* WooCommerce Currency Switcher
+		* WooCommerce UPC, EAN, and ISBN
+		* WooCommerce Show Single Variations
+		* WP Job Manager
+		* WP Meta SEO
+		* WP-PostRatings
+		* WP Product Review
+		* WP Recipe Maker
+		* WPML
+		* YITH WooCommerce Brands Add-on
+		* Yoast SEO
+		* Yotpo Social Reviews for WooCommerce
 * **Improvements**
 	* None.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* Moved URL shortening library files to the WPSSO Core Standard version.
+	* URL shortening libraries have been to the WPSSO Core Standard edition.
 	* Removed support for the WPSSO_PHP_CURL_DISABLE constant.
 * **Requires At Least**
 	* PHP v7.2.
@@ -659,7 +686,7 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 = 13.0.0-dev.4 =
 
-(TBD) Moved URL shortening library files to the WPSSO Core Standard version.
+(2022/08/22) Integration modules for active plugins and URL shortening libraries have been moved to the WPSSO Core Standard edition.
 
 = 12.4.0 =
 
