@@ -210,7 +210,6 @@ if ( ! class_exists( 'WpssoMessagesInfo' ) ) {
 
 					if ( ! empty( $this->p->avail[ 'ecom' ][ 'woocommerce' ] ) ) {
 
-
 						$text .= '<p><center><strong>';
 
 						$text .= __( 'An active WooCommerce plugin has been detected.', 'wpsso' ) . ' ';

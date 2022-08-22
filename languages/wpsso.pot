@@ -1148,7 +1148,7 @@ msgctxt "lib file description"
 msgid "General Settings"
 msgstr ""
 
-#: gettext/gettext-lib-config.php:106 lib/messages-info.php:257
+#: gettext/gettext-lib-config.php:106 lib/messages-info.php:256
 #: lib/messages.php:496
 msgctxt "lib file description"
 msgid "Tools and Actions"
@@ -6889,7 +6889,7 @@ msgid ""
 "corresponding values in your e-commerce plugin."
 msgstr ""
 
-#: lib/messages-info.php:173 lib/messages-info.php:216
+#: lib/messages-info.php:173 lib/messages-info.php:215
 msgid "An active WooCommerce plugin has been detected."
 msgstr ""
 
@@ -6910,7 +6910,7 @@ msgid ""
 "some product attributes (like GTIN, ISBN, and MPN)."
 msgstr ""
 
-#: lib/messages-info.php:184 lib/messages-info.php:224
+#: lib/messages-info.php:184 lib/messages-info.php:223
 msgid ""
 "We suggest using a supported third-party plugin to manage Brand, GTIN, ISBN, "
 "and MPN values for variations."
@@ -6934,62 +6934,62 @@ msgid ""
 "posts, pages, and custom post types."
 msgstr ""
 
-#: lib/messages-info.php:220
+#: lib/messages-info.php:219
 msgid ""
 "Note that product attributes from WooCommerce have precedence over custom "
 "field values."
 msgstr ""
 
-#: lib/messages-info.php:222
+#: lib/messages-info.php:221
 msgid ""
 "Refer to the <a href=\"%s\">WooCommerce integration notes</a> for "
 "information on setting up product attributes and custom fields."
 msgstr ""
 
 #. translators: %1$s is the plugin name, %2$s is <head>.
-#: lib/messages-info.php:240
+#: lib/messages-info.php:239
 msgid ""
 "%1$s adds the following Facebook, Open Graph, Twitter, Schema, Pinterest, "
 "and SEO HTML tags to the %2$s section of your webpages."
 msgstr ""
 
-#: lib/messages-info.php:242
+#: lib/messages-info.php:241
 msgid ""
 "If your theme or another plugin already creates one or more of these HTML "
 "tags, you may uncheck them here to prevent duplicates from being added."
 msgstr ""
 
 #. translators: %1$s is "link rel canonical", %2$s is "meta name description", and %3$s is "meta name robots".
-#: lib/messages-info.php:247
+#: lib/messages-info.php:246
 msgid ""
 "Note that the %1$s, %2$s, and %3$s tags are disabled automatically if "
 "another known SEO plugin is detected."
 msgstr ""
 
-#: lib/messages-info.php:263
+#: lib/messages-info.php:262
 msgid ""
 "%s and WordPress create image files for social sites and search engines "
 "based on the following image dimensions and crop settings."
 msgstr ""
 
-#: lib/messages-info.php:265
+#: lib/messages-info.php:264
 msgid ""
 "Image sizes that use the same dimensions and crop settings will create just "
 "one image file."
 msgstr ""
 
-#: lib/messages-info.php:267
+#: lib/messages-info.php:266
 msgid ""
 "The default dimensions and crop settings from %1$s create only %2$s image "
 "files from an original full size image (provided the original image is large "
 "enough or image upscaling has been enabled)."
 msgstr ""
 
-#: lib/messages-info.php:267
+#: lib/messages-info.php:266
 msgid "five"
 msgstr ""
 
-#: lib/messages-info.php:269
+#: lib/messages-info.php:268
 msgid "You can reload the default image sizes from the %s settings page."
 msgstr ""
 

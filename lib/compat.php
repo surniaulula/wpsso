@@ -383,16 +383,11 @@ if ( ! class_exists( 'WpssoCompat' ) ) {
 				$this->p->debug->mark();
 			}
 
-			$remove = array( 'Open_Graph', 'Slack', 'Twitter' );
+			$remove = array( 'Open_Graph', 'Slack', 'Twitter', 'WooCommerce' );
 
 			if ( $this->p->avail[ 'p' ][ 'schema' ] ) {
 
 				$remove[] = 'Schema';
-			}
-
-			if ( $this->p->check->pp() ) {
-
-				$remove[] = 'WooCommerce';
 			}
 
 			$remove_preg = '/(' . implode( '|', $remove ) . ')/';

@@ -15,9 +15,9 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 	die( 'Do. Or do not. There is no try.' );
 }
 
-if ( ! class_exists( 'WpssoUtilWooCommerce' ) ) {
+if ( ! class_exists( 'WpssoUtilWoocommerce' ) ) {
 
-	class WpssoUtilWooCommerce {
+	class WpssoUtilWoocommerce {
 
 		private $p;	// Wpsso class object.
 
