@@ -24,12 +24,14 @@ Present your content at its best on social sites and in search results - no matt
 
 <!-- about -->
 
+<p><strong>Supports over 500 different Schema types.</strong></p>
+
 <p><strong>Provides structured data markup for:</strong></p>
 
 <ul>
 	<li>Facebook / Open Graph</li>
 	<li>Google Knowledge Graph</li>
-	<li>Google Merchant Feeds (Premium Edition)</li>
+	<li>Google Merchant Feeds XML</li>
 	<li>Google Rich Results / Rich Snippets</li>
 	<li>Image and Video SEO</li>
 	<li>Mobile Web Browsers</li>
@@ -46,8 +48,6 @@ Present your content at its best on social sites and in search results - no matt
 <!-- /about -->
 
 <p><strong>Reads data from WordPress, plugins, and service APIs.</strong></p>
-
-<p><strong>Supports over 500 different Schema types and sub-types.</strong></p>
 
 <p><strong>Optimized image sizes for social sites and search engines:</strong></p>
 
