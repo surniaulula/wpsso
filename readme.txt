@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires PHP: 7.2
 Requires At Least: 5.2
 Tested Up To: 6.0.1
-WC Tested Up To: 6.8.1
+WC Tested Up To: 6.8.2
 Stable Tag: 12.4.0
 
 Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
@@ -235,7 +235,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.0.0-b.1 (2022/08/22)**
+**Version 13.0.0-b.2 (2022/08/22)**
 
 * **New Features**
 	* The integration modules for active plugins have been moved to the WPSSO Core Standard edition:
@@ -684,7 +684,7 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 == Upgrade Notice ==
 
-= 13.0.0-b.1 =
+= 13.0.0-b.2 =
 
 (2022/08/22) Integration modules for active plugins and URL shortening libraries have been moved to the WPSSO Core Standard edition.
 
