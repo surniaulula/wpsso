@@ -15,9 +15,6 @@ if ( ! defined( 'WPSSO_PLUGINDIR' ) ) {
 	die( 'Do. Or do not. There is no try.' );
 }
 
-/**
- * The distribution module loader (ie. lib/std/ or lib/pro/).
- */
 if ( ! class_exists( 'WpssoLoader' ) ) {
 
 	class WpssoLoader {
@@ -42,14 +39,24 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->mark( 'loading integration modules' );	// Begin timer.
+				$this->p->debug->mark( 'loading integ modules' );	// Begin timer.
 			}
 
-			$this->load_ext_mods( $ext = 'wpsso', $mod_dir = 'integ' );
+			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
+
+				$mod_dir = 'integ';
+			
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'loading integ modules for ' . $ext );
+				}
+
+				$this->load_ext_mods( $ext, $mod_dir );
+			}
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->mark( 'loading integration modules' );	// End timer.
+				$this->p->debug->mark( 'loading integ modules' );	// End timer.
 			}
 		}
 
@@ -57,7 +64,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->mark( 'loading distribution modules' );	// Begin timer.
+				$this->p->debug->mark( 'loading dist modules' );	// Begin timer.
 			}
 
 			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
@@ -66,12 +73,17 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 
 				$GLOBALS[ $ext . '_pkg_' . $mod_dir ] = true;
 
+				if ( $this->p->debug->enabled ) {
+
+					$this->p->debug->log( 'loading dist modules for ' . $ext . ' from ' . $mod_dir );
+				}
+
 				$this->load_ext_mods( $ext, $mod_dir );
 			}
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->mark( 'load distribution modules' );	// End timer.
+				$this->p->debug->mark( 'load dist modules' );	// End timer.
 			}
 		}
 
@@ -101,7 +113,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 			foreach ( $this->p->cf[ 'plugin' ][ $ext ][ 'lib' ][ $mod_dir ] as $sub_dir => $libs ) {
 
 				/**
-				 * Skip loading admin distribution modules if not in admin back-end.
+				 * Skip loading admin modules if not in admin back-end.
 				 */
 				if ( 'admin' === $sub_dir && ! $is_admin ) {
 
@@ -120,7 +132,7 @@ if ( ! class_exists( 'WpssoLoader' ) ) {
 					$log_prefix = 'loading ' . $ext . ' ' . $mod_dir . '/' . $sub_dir . '/' . $id . ': ';
 
 					/**
-					 * Loading of admin distribution modules in back-end is always allowed.
+					 * Loading of admin modules in back-end is always allowed.
 					 */
 					if ( 'admin' === $sub_dir && $is_admin ) {
 
