@@ -1959,7 +1959,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					switch ( $dashicon_name ) {
 
 						case 'api':
-						case 'update':
+						case 'update':	// Deprecated.
 
 							$dashicon_title = __( 'Service API module', 'wpsso' );
 							$dashicon_name  = 'update';
@@ -1974,7 +1974,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							break;
 
 						case 'code-plus':
-						case 'plus':
+						case 'plus':	// Deprecated.
 
 							$dashicon_title = __( 'Structured data property module', 'wpsso' );
 							$dashicon_name  = 'welcome-add-page';
