@@ -682,7 +682,7 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 = 13.0.0 =
 
-(2022/08/24) Integration modules for active plugins and URL shortening libraries have been moved to the WPSSO Core Standard edition.
+(2022/08/24) The integration modules for active plugins and URL shortening libraries have been moved to the WPSSO Core Standard edition.
 
 = 12.4.0 =
 
