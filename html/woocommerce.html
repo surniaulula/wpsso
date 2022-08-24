@@ -30,7 +30,7 @@
 
 <ol>
 
-	<li><p>The following WooCommerce integration notes are for the WPSSO Core Premium plugin, which includes an integration module to fetch product information from <a href="https://wordpress.org/plugins/woocommerce/">the WooCommerce plugin</a>. If you use the Standard edition of WPSSO Core, you will need to <a href="https://wpsso.com/extend/plugins/wpsso/">purchase the Premium edition of WPSSO Core</a> before using these integration notes.</p></li>
+	<li><p>The following WooCommerce integration notes are for the WPSSO Core plugin, which includes an integration module to fetch product information from <a href="https://wordpress.org/plugins/woocommerce/">the WooCommerce plugin</a>.</p></li>
 
 	<li><p>If you're not familiar with creating and managing WooCommerce Product Attributes, you should review the <a href="https://docs.woocommerce.com/document/managing-product-taxonomies/#section-6">WooCommerce documentation on Managing Product Attributes</a>.</p></li>
 
@@ -38,15 +38,17 @@
 
 	<li><p>If you ship your WooCommerce products, you may want to activate the <a href="https://wordpress.org/plugins/wpsso-wc-shipping-delivery-time/">WPSSO Shipping Delivery Time for WooCommerce SEO add-on</a> to provide Google with shipping rates and delivery time estimates.</p></li>
 
+	<li><p><strong>Please note that some advanced customization options mentioned below are located in the <em>SSO &gt; Advanced Settings</em> page, which is available in the WPSSO Core Premium edition.</strong></p></li>
+
 </ol>
 
 <h2>Product Prices with Value Added Tax (VAT)</h2>
 
-<p>The WPSSO Core Premium plugin provides WooCommerce product prices in meta tags and Schema markup without tax by default. If you prefer your meta tags and Schema markup to include product prices with VAT, you can enable the <em>SSO &gt; Advanced Settings &gt; Metadata &gt; Custom Fields &gt; Include VAT in Product Prices</em> option.</p>
+<p>The WPSSO Core plugin provides WooCommerce product prices in meta tags and Schema markup without tax by default. If you prefer your meta tags and Schema markup to include product prices with VAT, you can enable the <em>SSO &gt; Advanced Settings &gt; Metadata &gt; Custom Fields &gt; Include VAT in Product Prices</em> option.</p>
 
 <h2>WooCommerce Product Attributes</h2>
 
-<p>The WPSSO Core Premium plugin will read all standard product information from WooCommerce automatically (prices, sku, sales, dimensions, variations, etc.), and can also read the following additional WooCommerce Product Attributes <em>if you create them in your WooCommerce store</em> (upper/lower case is important).</p>
+<p>The WPSSO Core plugin will read all standard product information from WooCommerce automatically (prices, sku, sales, dimensions, variations, etc.), and can also read the following additional WooCommerce Product Attributes <em>if you create them in your WooCommerce store</em> (upper/lower case is important).</p>
 
 <ul>
 	<li><strong>Brand</strong></li>
@@ -72,9 +74,9 @@
 
 <p>Note the limited selection of product condition values (Damaged, New, Refurbished, or Used), which are determined by Schema.org and Google's Rich Results markup standard - do not use other values unless they are a more complete version of the same (for example, 'New', 'NewCondition', or 'https://schema.org/NewCondition' are all acceptable).</p>
 
-<p>If you use the <a href="https://woocommerce.com/products/brands/">WooCommerce Brands</a>, <a href="https://wordpress.org/plugins/perfect-woocommerce-brands/">Perfect WooCommerce Brands</a>, or the<a href="https://wordpress.org/plugins/search/yith-woocommerce-brands-add-on/">YITH WooCommerce Brands Add-on</a> plugin, the "Brand Attribute Name" and the "Product Brand Custom Field" options in the SSO &gt; Advanced Settings page will be disabled (as the supported plugin becomes the source of all product Brand information).</p>
+<p>If you use the <a href="https://woocommerce.com/products/brands/">WooCommerce Brands</a>, <a href="https://wordpress.org/plugins/perfect-woocommerce-brands/">Perfect WooCommerce Brands</a>, or the<a href="https://wordpress.org/plugins/search/yith-woocommerce-brands-add-on/">YITH WooCommerce Brands Add-on</a> plugin, the "Brand Attribute Name" and the "Product Brand Custom Field" options in the <em>SSO &gt; Advanced Settings</em> page will be disabled (as the supported plugin becomes the source of all product Brand information).</p>
 
-<p>If you use the <a href="https://wordpress.org/plugins/product-gtin-ean-upc-isbn-for-woocommerce/">Product GTIN (EAN, UPC, ISBN) for WooCommerce</a> or <a href="https://wordpress.org/plugins/woo-add-gtin/">WooCommerce UPC, EAN, and ISBN</a> plugin, the "GTIN Attribute Name" and the "Product GTIN Custom Field" options in in the SSO &gt; Advanced Settings page will be disabled (as the supported plugin becomes the source of all product GTIN information).</p>
+<p>If you use the <a href="https://wordpress.org/plugins/product-gtin-ean-upc-isbn-for-woocommerce/">Product GTIN (EAN, UPC, ISBN) for WooCommerce</a> or <a href="https://wordpress.org/plugins/woo-add-gtin/">WooCommerce UPC, EAN, and ISBN</a> plugin, the "GTIN Attribute Name" and the "Product GTIN Custom Field" options in in the <em>SSO &gt; Advanced Settings</em> page will be disabled (as the supported plugin becomes the source of all product GTIN information).</p>
 
 <h3>Google reports "missing a global identifier"?</h3>
 
@@ -90,9 +92,9 @@
 
 <h3>Customize Product Attribute Names</h3>
 
-<p>You can customize the default Product Attribute names that WPSSO Core Premium reads from WooCommerce under the <em>SSO &gt; Advanced Settings&gt; Metadata &gt; Product Attributes</em> tab. Modifying the default name can be useful if you already have one or more existing WooCommerce Product Attributes with different names - for example, using the "Colour" Product Attribute name instead of "Color".</p>
+<p>You can customize the default Product Attribute names that WPSSO Core reads from WooCommerce under the <em>SSO &gt; Advanced Settings&gt; Metadata &gt; Product Attributes</em> tab. Modifying the default name can be useful if you already have one or more existing WooCommerce Product Attributes with different names - for example, using the "Colour" Product Attribute name instead of "Color".</p>
 
-<blockquote><p><strong>WPSSO Core Premium uses the Product Attribute names to request Product Attribute values from WooCommerce. Make sure the Product Attribute names in the WPSSO Core settings are identical (upper/lower case is important) to the Product Attribute names you create and use in WooCommerce.</strong></p></blockquote>
+<blockquote><p><strong>WPSSO Core uses the Product Attribute names to request Product Attribute values from WooCommerce. Make sure the Product Attribute names in the WPSSO Core settings are identical (upper/lower case is important) to the Product Attribute names you create and use in WooCommerce.</strong></p></blockquote>
 
 <h2>WordPress Custom Fields</h2>
 
