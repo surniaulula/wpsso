@@ -1968,14 +1968,22 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						case 'code':
 
-							$dashicon_title = __( 'HTML tag and markup module', 'wpsso' );
+							$dashicon_title = __( 'Structured data module', 'wpsso' );
 							$dashicon_name  = 'media-code';
+
+							break;
+
+						case 'code-plus':
+						case 'plus':
+
+							$dashicon_title = __( 'Structured data property module', 'wpsso' );
+							$dashicon_name  = 'welcome-add-page';
 
 							break;
 
 						case 'feature':
 
-							$dashicon_title = __( 'Additional functionality module', 'wpsso' );
+							$dashicon_title = __( 'Additional feature module', 'wpsso' );
 							$dashicon_name  = 'pressthis';
 
 							break;
@@ -1984,13 +1992,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 							$dashicon_title = __( 'Plugin integration module', 'wpsso' );
 							$dashicon_name  = 'admin-plugins';
-
-							break;
-
-						case 'plus':
-
-							$dashicon_title = __( 'Markup property module', 'wpsso' );
-							$dashicon_name  = 'welcome-add-page';
 
 							break;
 

@@ -174,9 +174,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'website'             => '(code) Schema Type WebSite [schema_type:website]',
 							),
 							'prop' => array(
-								'aggregaterating' => '(plus) Schema Property aggregateRating',
-								'haspart'         => '(plus) Schema Property hasPart',
-								'review'          => '(plus) Schema Property review',
+								'aggregaterating' => '(code-plus) Schema Property aggregateRating',
+								'haspart'         => '(code-plus) Schema Property hasPart',
+								'review'          => '(code-plus) Schema Property review',
 							),
 						),
 						'pro' => array(	// Premium (aka Pro) distribution modules.

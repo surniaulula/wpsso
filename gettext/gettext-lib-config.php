@@ -71,9 +71,9 @@ _x( '(code) Schema Type Software Application [schema_type:software.application]'
 _x( '(code) Schema Type Thing [schema_type:thing]', 'lib file description', 'wpsso' );
 _x( '(code) Schema Type WebPage [schema_type:webpage]', 'lib file description', 'wpsso' );
 _x( '(code) Schema Type WebSite [schema_type:website]', 'lib file description', 'wpsso' );
-_x( '(plus) Schema Property aggregateRating', 'lib file description', 'wpsso' );
-_x( '(plus) Schema Property hasPart', 'lib file description', 'wpsso' );
-_x( '(plus) Schema Property review', 'lib file description', 'wpsso' );
+_x( '(code-plus) Schema Property aggregateRating', 'lib file description', 'wpsso' );
+_x( '(code-plus) Schema Property hasPart', 'lib file description', 'wpsso' );
+_x( '(code-plus) Schema Property review', 'lib file description', 'wpsso' );
 _x( '(api) Facebook Video API', 'lib file description', 'wpsso' );
 _x( '(api) Gravatar Image API', 'lib file description', 'wpsso' );
 _x( '(api) Slideshare API', 'lib file description', 'wpsso' );
