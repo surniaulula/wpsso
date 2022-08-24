@@ -303,7 +303,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 					$gmf_info        = $this->p->cf[ 'plugin' ][ 'wpssogmf' ];
 					$gmf_name_transl = _x( $gmf_info[ 'name' ], 'plugin name', 'wpsso' );
 
-					$notice_msg = sprintf( __( 'If you have a Google Merchant account, the %s add-on can provide XML product feeds for each available language from Polylang, WPLM, or the installed WordPress languages.', 'wpsso' ), $gmf_name_transl ) . ' ';
+					$notice_msg = sprintf( __( 'If you have a Google Merchant account, the %s add-on can provide XML product feeds in your site\'s language(s) from Polylang, WPLM, or the installed WordPress languages.', 'wpsso' ), $gmf_name_transl ) . ' ';
 
 					$notice_msg .= sprintf( __( 'You should activate the %s add-on if you don\'t already have a plugin to manage your Google Merchant Feeds.', 'wpsso' ), $gmf_name_transl ) . ' ';
 

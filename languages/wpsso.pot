@@ -4850,7 +4850,7 @@ msgstr ""
 #: lib/admin-head-suggest-addons.php:306
 msgid ""
 "If you have a Google Merchant account, the %s add-on can provide XML product "
-"feeds for each available language from Polylang, WPLM, or the installed "
+"feeds in your site's language(s) from Polylang, WPLM, or the installed "
 "WordPress languages."
 msgstr ""
 
