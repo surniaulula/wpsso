@@ -47,8 +47,6 @@ Present your content at its best on social sites and in search results - no matt
 
 <!-- /about -->
 
-<p><strong>Reads data from WordPress, plugins, and service APIs.</strong></p>
-
 <p><strong>Optimized image sizes for social sites and search engines:</strong></p>
 
 * Google Merchant Feeds
@@ -76,21 +74,7 @@ Present your content at its best on social sites and in search results - no matt
 * *No global identifier provided (e.g. gtin mpn isbn).*
 * *Not a known valid target type for the itemReviewed property.*
 
-<h3>Users Love the WPSSO Core Plugin</h3>
-
-&#x2605;&#x2605;&#x2605;&#x2605;&#x2605; - "Unlike competitors, you can literally customize just about every aspect of SEO and Social SEO if you desire to. &#91;...&#93; This plugin has the most complete JSON-LD markup out of any of them, so you won’t have any errors and warnings in search console for WordPress or WooCommerce sites. You can go crazy customizing everything, or you can just set and forget. There aren’t many plugins that allow the best of both worlds." - [kw11](https://wordpress.org/support/topic/most-responsive-developer-ive-ever-seen/)
-
-&#x2605;&#x2605;&#x2605;&#x2605;&#x2605; - "This plugin makes getting sites structured data ready extremely easy, and it works flawlessly without any issues. It shows messages on the top bar every step of the way to alert you of any issues until everything is set up correctly. It made all my ecommerce products pass Google's validation tests. Great work." - [marguy1](https://wordpress.org/support/topic/excellent-plugin-6825/)
-
-&#x2605;&#x2605;&#x2605;&#x2605;&#x2605; - "This plugin saves me so much time, and it has really lifted my SERP rankings. Most of my keywords I now rank 1-3 position. I also noticed after about a week that my impressions have gone up at least 75%. I upgraded to the pro version which gave me even more options." - [playnstocks](https://wordpress.org/support/topic/excellent-plugin-and-support-200/)
-
-<h3>Premium Edition Features</h3>
-
-**Additional options in the SSO &gt; Advanced Settings page and Document SSO metabox.**
-
-**Google Merchant Feed XML for WooCommerce, Easy Digital Downloads, and custom products.**
-
-**Reads data from active plugins, including:**
+<p><strong>Reads data from active plugins, including:</strong></p>
 
 * All in One SEO Pack
 * Co-Authors Plus
@@ -119,6 +103,18 @@ Present your content at its best on social sites and in search results - no matt
 * YITH WooCommerce Brands Add-on
 * Yoast SEO
 * Yotpo Social Reviews for WooCommerce
+
+<h3>Users Love the WPSSO Core Plugin</h3>
+
+&#x2605;&#x2605;&#x2605;&#x2605;&#x2605; - "Unlike competitors, you can literally customize just about every aspect of SEO and Social SEO if you desire to. &#91;...&#93; This plugin has the most complete JSON-LD markup out of any of them, so you won’t have any errors and warnings in search console for WordPress or WooCommerce sites. You can go crazy customizing everything, or you can just set and forget. There aren’t many plugins that allow the best of both worlds." - [kw11](https://wordpress.org/support/topic/most-responsive-developer-ive-ever-seen/)
+
+&#x2605;&#x2605;&#x2605;&#x2605;&#x2605; - "This plugin makes getting sites structured data ready extremely easy, and it works flawlessly without any issues. It shows messages on the top bar every step of the way to alert you of any issues until everything is set up correctly. It made all my ecommerce products pass Google's validation tests. Great work." - [marguy1](https://wordpress.org/support/topic/excellent-plugin-6825/)
+
+&#x2605;&#x2605;&#x2605;&#x2605;&#x2605; - "This plugin saves me so much time, and it has really lifted my SERP rankings. Most of my keywords I now rank 1-3 position. I also noticed after about a week that my impressions have gone up at least 75%. I upgraded to the pro version which gave me even more options." - [playnstocks](https://wordpress.org/support/topic/excellent-plugin-and-support-200/)
+
+<h3>Premium Edition Features</h3>
+
+**Additional options in the SSO &gt; Advanced Settings page and Document SSO metabox.**
 
 **Reads plugin metadata and blocks, including:**
 
@@ -235,7 +231,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.0.0-rc.1 (2022/08/23)**
+**Version 13.0.0 (2022/08/24)**
 
 * **New Features**
 	* The integration modules for active plugins have been moved to the WPSSO Core Standard edition:
@@ -684,9 +680,9 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 == Upgrade Notice ==
 
-= 13.0.0-rc.1 =
+= 13.0.0 =
 
-(2022/08/23) Integration modules for active plugins and URL shortening libraries have been moved to the WPSSO Core Standard edition.
+(2022/08/24) Integration modules for active plugins and URL shortening libraries have been moved to the WPSSO Core Standard edition.
 
 = 12.4.0 =
 

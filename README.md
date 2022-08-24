@@ -44,8 +44,6 @@
 
 <!-- /about -->
 
-<p><strong>Reads data from WordPress, plugins, and service APIs.</strong></p>
-
 <p><strong>Optimized image sizes for social sites and search engines:</strong></p>
 
 <ul>
@@ -76,20 +74,6 @@
 <li><em>No global identifier provided (e.g. gtin mpn isbn).</em></li>
 <li><em>Not a known valid target type for the itemReviewed property.</em></li>
 </ul>
-
-<h3>Users Love the WPSSO Core Plugin</h3>
-
-<p>&#x2605;&#x2605;&#x2605;&#x2605;&#x2605; - "Unlike competitors, you can literally customize just about every aspect of SEO and Social SEO if you desire to. &#91;...&#93; This plugin has the most complete JSON-LD markup out of any of them, so you won’t have any errors and warnings in search console for WordPress or WooCommerce sites. You can go crazy customizing everything, or you can just set and forget. There aren’t many plugins that allow the best of both worlds." - <a href="https://wordpress.org/support/topic/most-responsive-developer-ive-ever-seen/">kw11</a></p>
-
-<p>&#x2605;&#x2605;&#x2605;&#x2605;&#x2605; - "This plugin makes getting sites structured data ready extremely easy, and it works flawlessly without any issues. It shows messages on the top bar every step of the way to alert you of any issues until everything is set up correctly. It made all my ecommerce products pass Google's validation tests. Great work." - <a href="https://wordpress.org/support/topic/excellent-plugin-6825/">marguy1</a></p>
-
-<p>&#x2605;&#x2605;&#x2605;&#x2605;&#x2605; - "This plugin saves me so much time, and it has really lifted my SERP rankings. Most of my keywords I now rank 1-3 position. I also noticed after about a week that my impressions have gone up at least 75%. I upgraded to the pro version which gave me even more options." - <a href="https://wordpress.org/support/topic/excellent-plugin-and-support-200/">playnstocks</a></p>
-
-<h3>Premium Edition Features</h3>
-
-<p><strong>Additional options in the SSO &gt; Advanced Settings page and Document SSO metabox.</strong></p>
-
-<p><strong>Google Merchant Feed XML for WooCommerce, Easy Digital Downloads, and custom products.</strong></p>
 
 <p><strong>Reads data from active plugins, including:</strong></p>
 
@@ -122,6 +106,18 @@
 <li>Yoast SEO</li>
 <li>Yotpo Social Reviews for WooCommerce</li>
 </ul>
+
+<h3>Users Love the WPSSO Core Plugin</h3>
+
+<p>&#x2605;&#x2605;&#x2605;&#x2605;&#x2605; - "Unlike competitors, you can literally customize just about every aspect of SEO and Social SEO if you desire to. &#91;...&#93; This plugin has the most complete JSON-LD markup out of any of them, so you won’t have any errors and warnings in search console for WordPress or WooCommerce sites. You can go crazy customizing everything, or you can just set and forget. There aren’t many plugins that allow the best of both worlds." - <a href="https://wordpress.org/support/topic/most-responsive-developer-ive-ever-seen/">kw11</a></p>
+
+<p>&#x2605;&#x2605;&#x2605;&#x2605;&#x2605; - "This plugin makes getting sites structured data ready extremely easy, and it works flawlessly without any issues. It shows messages on the top bar every step of the way to alert you of any issues until everything is set up correctly. It made all my ecommerce products pass Google's validation tests. Great work." - <a href="https://wordpress.org/support/topic/excellent-plugin-6825/">marguy1</a></p>
+
+<p>&#x2605;&#x2605;&#x2605;&#x2605;&#x2605; - "This plugin saves me so much time, and it has really lifted my SERP rankings. Most of my keywords I now rank 1-3 position. I also noticed after about a week that my impressions have gone up at least 75%. I upgraded to the pro version which gave me even more options." - <a href="https://wordpress.org/support/topic/excellent-plugin-and-support-200/">playnstocks</a></p>
+
+<h3>Premium Edition Features</h3>
+
+<p><strong>Additional options in the SSO &gt; Advanced Settings page and Document SSO metabox.</strong></p>
 
 <p><strong>Reads plugin metadata and blocks, including:</strong></p>
 
