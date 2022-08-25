@@ -526,11 +526,18 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						),
 					),
 					'hosts' => array(
-						'wp_org' => false,	// Add-on is not available on wordpress.org.
+						'wp_org' => true,
 						'github' => true,
 						'wpsso'  => true,
 					),
 					'url' => array(
+
+						/**
+						 * WordPress.org.
+						 */
+						'home'   => 'https://wordpress.org/plugins/wpsso-google-merchant-feed/',
+						'forum'  => 'https://wordpress.org/support/plugin/wpsso-google-merchant-feed',
+						'review' => 'https://wordpress.org/support/plugin/wpsso-google-merchant-feed/reviews/?rate=5#new-post',
 
 						/**
 						 * GitHub.com.
@@ -541,9 +548,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						/**
 						 * WPSSO.com.
 						 */
-						'home'      => 'https://wpsso.com/extend/plugins/wpsso-google-merchant-feed/',
-						'forum'     => '',
-						'review'    => '',
 						'changelog' => 'https://wpsso.com/extend/plugins/wpsso-google-merchant-feed/changelog/',
 						'docs'      => 'https://wpsso.com/docs/plugins/wpsso-google-merchant-feed/',
 						'install'   => 'https://wpsso.com/docs/plugins/wpsso-google-merchant-feed/installation/',
