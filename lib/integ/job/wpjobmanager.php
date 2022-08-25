@@ -313,10 +313,11 @@ if ( ! class_exists( 'WpssoIntegJobWpJobManager' ) ) {
 			$post_obj = get_post( $post_id );
 
 			$org_opts = array(
-				'org_url'    => get_the_company_website( $post_obj ),
-				'org_name'   => get_the_company_name( $post_obj ),
-				'org_desc'   => get_the_company_tagline( $post_obj ),
-				'org_sameas' => array(),
+				'org_url'      => get_the_company_website( $post_obj ),
+				'org_name'     => get_the_company_name( $post_obj ),
+				'org_desc'     => get_the_company_tagline( $post_obj ),
+				'org_logo_url' => get_the_company_logo( $post_obj, $size = 'full' ),
+				'org_sameas'   => array(),
 			);
 
 			$twitter_name = SucomUtil::sanitize_twitter_name( get_the_company_twitter( $post_obj ), $add_at = false );
