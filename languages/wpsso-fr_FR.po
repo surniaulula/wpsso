@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 12.3.0\n"
+"Project-Id-Version: WPSSO Core 13.0.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2022-08-25 08:53-0700\n"
+"PO-Revision-Date: 2022-08-25 09:38-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -1032,13 +1032,13 @@ msgstr "Créez des pages FAQ et questions / réponses avec codes courts facultat
 
 #: gettext/gettext-lib-config.php:118
 msgctxt "plugin name"
-msgid "WPSSO Google Merchant Feeds XML"
+msgid "WPSSO Google Merchant Feed XML"
 msgstr "WPSSO Flux XML de marchand Google"
 
 #: gettext/gettext-lib-config.php:119
 msgctxt "plugin description"
-msgid "Google Merchant Feeds XML for WooCommerce, Easy Digital Downloads, and Custom Products."
-msgstr "Flux XML de marchand Google pour WooCommerce, Easy Digital Downloads et produits personnalisés."
+msgid "Google Merchant Feed XMLs for WooCommerce, Easy Digital Downloads, and Custom Products."
+msgstr "Flux XML de marchands Google pour WooCommerce, Easy Digital Downloads et produits personnalisés."
 
 #: gettext/gettext-lib-config.php:120
 msgctxt "plugin name"
@@ -4590,7 +4590,7 @@ msgstr "Le SKU (unité de gestion des stocks) du produit de %s n'est pas un ID d
 
 #: lib/admin-head-suggest-addons.php:217
 msgid "You should activate the %s add-on if you don't already have a plugin to manage unique product IDs."
-msgstr ""
+msgstr "Il est suggéré d'activer l'ajout %s si vous ne disposez pas déjà d'une extension pour gérer les identifiants de produit uniques."
 
 #: lib/admin-head-suggest-addons.php:249
 msgid "Product shipping features are enabled in %1$s but the %2$s add-on is not active."
@@ -4606,12 +4606,12 @@ msgid "Easy Digital Downloads"
 msgstr "Easy Digital Downloads"
 
 #: lib/admin-head-suggest-addons.php:306
-msgid "If you have a Google Merchant account, the %s add-on can provide XML product feeds in your site's language(s) from Polylang, WPLM, or the installed WordPress languages."
-msgstr "Si vous avez un compte marchant Google, l'ajout %s peut fournir des flux de produits XML dans les langues de votre site à partir de Polylang, WPML ou les langues WordPress installées."
+msgid "If you have a Google Merchant account, the %s add-on can provide XML product feeds in your site's language(s) from Polylang, WPML, or the installed WordPress languages."
+msgstr "Si vous avez un compte marchant Google, l'ajout %s peut fournir des flux XML de produits dans les langues de votre site à partir de Polylang, WPML ou les langues WordPress installées."
 
 #: lib/admin-head-suggest-addons.php:308
-msgid "You should activate the %s add-on if you don't already have a plugin to manage your Google Merchant Feeds."
-msgstr ""
+msgid "You should activate the %s add-on if you don't already have a plugin to manage your Google merchant feeds."
+msgstr "Il est suggéré d'activer l'ajout %s si vous ne disposez pas déjà d'une extension pour gérer vos flux de marchands Google."
 
 #: lib/admin-head-suggest-addons.php:336
 msgid "Activate the %s add-on."
@@ -8527,7 +8527,7 @@ msgstr "<strong>Options de Schéma supplémentaires</strong> dans la métabox %s
 
 #: lib/messages.php:567
 msgid "Reads video and URL shortening information from external service APIs (YouTube, Bitly, etc.)."
-msgstr ""
+msgstr "Lit les informations vidéo et de raccourcissement d'URL à partir d'API de services externes (YouTube, Bitly, etc.)."
 
 #: lib/messages.php:569
 msgid "Imports plugin metadata and block attributes."
@@ -10466,21 +10466,3 @@ msgstr "JS Morisset"
 #. Author URI of the plugin/theme
 msgid "https://wpsso.com/"
 msgstr "https://wpsso.com/"
-
-#~ msgid "(required for %s integration)"
-#~ msgstr "(requis pour l'intégration %s)"
-
-#~ msgid "If you're not already using a plugin to manage unique product IDs for %1$s, you should activate the %2$s add-on."
-#~ msgstr "Si vous n'utilisez pas déjà une extension pour gérer les ID de produit uniques pour %1$s, vous pouvez activer l'ajout %2$s."
-
-#~ msgid "If you're not already using a plugin to manage your Google Merchant Feeds, you should activate the %s add-on."
-#~ msgstr "Si vous n'utilisez pas déjà une extension pour gérer vos flux de marchands Google, vous pouvez activer l'ajout %s."
-
-#~ msgid "HTML tag and markup module"
-#~ msgstr "Module de balisage et balises HTML"
-
-#~ msgid "An e-commerce plugin is active &ndash; product information may be imported by the %s plugin."
-#~ msgstr "Une extension de commerce électronique est active &ndash; les informations sur le produit peuvent être importées par l'extension %s."
-
-#~ msgid "Reads data from active plugins and service APIs."
-#~ msgstr "Lit les données d'extensions actives et API de services."
