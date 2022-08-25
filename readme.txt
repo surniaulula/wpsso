@@ -237,6 +237,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Improvements**
 	* Added support for WP Job Manager job posting company logo.
+	* French language translation updates.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -696,7 +697,7 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 = 13.1.0-dev.1 =
 
-(2022/08/25) Added support for WP Job Manager job posting company logo.
+(2022/08/25) Added support for WP Job Manager job posting company logo. French language translation updates.
 
 = 13.0.0 =
 
