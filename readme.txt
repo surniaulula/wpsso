@@ -231,6 +231,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 13.1.0-dev.1 (2022/08/25)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added support for WP Job Manager job posting company logo.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 13.0.0 (2022/08/24)**
 
 * **New Features**
@@ -679,6 +693,10 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 	* WordPress v5.2.
 
 == Upgrade Notice ==
+
+= 13.1.0-dev.1 =
+
+(2022/08/25) Added support for WP Job Manager job posting company logo.
 
 = 13.0.0 =
 
