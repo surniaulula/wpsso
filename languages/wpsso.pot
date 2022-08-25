@@ -1213,13 +1213,13 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:118
 msgctxt "plugin name"
-msgid "WPSSO Google Merchant Feeds XML"
+msgid "WPSSO Google Merchant Feed XML"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:119
 msgctxt "plugin description"
 msgid ""
-"Google Merchant Feeds XML for WooCommerce, Easy Digital Downloads, and "
+"Google Merchant Feed XMLs for WooCommerce, Easy Digital Downloads, and "
 "Custom Products."
 msgstr ""
 
@@ -4849,14 +4849,14 @@ msgstr ""
 #: lib/admin-head-suggest-addons.php:306
 msgid ""
 "If you have a Google Merchant account, the %s add-on can provide XML product "
-"feeds in your site's language(s) from Polylang, WPLM, or the installed "
+"feeds in your site's language(s) from Polylang, WPML, or the installed "
 "WordPress languages."
 msgstr ""
 
 #: lib/admin-head-suggest-addons.php:308
 msgid ""
 "You should activate the %s add-on if you don't already have a plugin to "
-"manage your Google Merchant Feeds."
+"manage your Google merchant feeds."
 msgstr ""
 
 #: lib/admin-head-suggest-addons.php:336
