@@ -31,7 +31,7 @@ Present your content at its best on social sites and in search results - no matt
 <ul>
 	<li>Facebook / Open Graph</li>
 	<li>Google Knowledge Graph</li>
-	<li>Google Merchant Feeds XML</li>
+	<li>Google Merchant Feed XML</li>
 	<li>Google Rich Results / Rich Snippets</li>
 	<li>Image and Video SEO</li>
 	<li>Mobile Web Browsers</li>
@@ -49,7 +49,7 @@ Present your content at its best on social sites and in search results - no matt
 
 <p><strong>Optimized image sizes for social sites and search engines:</strong></p>
 
-* Google Merchant Feeds
+* Google Merchant Feed XML
 * Open Graph (Facebook and oEmbed)
 * Pinterest Pin It
 * Schema 1:1 (Google Rich Results)

@@ -28,7 +28,7 @@
 <ul>
     <li>Facebook / Open Graph</li>
     <li>Google Knowledge Graph</li>
-    <li>Google Merchant Feeds XML</li>
+    <li>Google Merchant Feed XML</li>
     <li>Google Rich Results / Rich Snippets</li>
     <li>Image and Video SEO</li>
     <li>Mobile Web Browsers</li>
@@ -47,7 +47,7 @@
 <p><strong>Optimized image sizes for social sites and search engines:</strong></p>
 
 <ul>
-<li>Google Merchant Feeds</li>
+<li>Google Merchant Feed XML</li>
 <li>Open Graph (Facebook and oEmbed)</li>
 <li>Pinterest Pin It</li>
 <li>Schema 1:1 (Google Rich Results)</li>
