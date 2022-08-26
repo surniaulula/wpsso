@@ -231,7 +231,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.1.0-dev.1 (2022/08/25)**
+**Version 13.1.0-rc.1 (2022/08/26)**
 
 * **New Features**
 	* None.
@@ -695,9 +695,9 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 == Upgrade Notice ==
 
-= 13.1.0-dev.1 =
+= 13.1.0-rc.1 =
 
-(2022/08/25) Added support for WP Job Manager job posting company logo. French language translation updates.
+(2022/08/26) Added support for WP Job Manager job posting company logo. French language translation updates.
 
 = 13.0.0 =
 
