@@ -149,12 +149,6 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 				/**
 				 * Import metadata and block attributes from known SEO plugins.
-				 *
-				 * 'plugin_import_aioseop_meta'
-				 * 'plugin_import_rankmath_meta'
-				 * 'plugin_import_seoframework_meta'
-				 * 'plugin_import_wpseo_meta'
-				 * 'plugin_import_wpseo_blocks'
 				 */
 				foreach ( array(
 					'aioseop'      => 'aioseo_options',			// All in One SEO Pack.
@@ -168,6 +162,15 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 						foreach ( array( 'meta', 'blocks' ) as $import_type ) {
 
+							/**
+							 * Option key examples:
+							 *
+							 * 'plugin_import_aioseop_meta'
+							 * 'plugin_import_rankmath_meta'
+							 * 'plugin_import_seoframework_meta'
+							 * 'plugin_import_wpseo_meta'
+							 * 'plugin_import_wpseo_blocks'
+							 */
 							$key = 'plugin_import_' . $avail_key . '_' . $import_type;
 
 							if ( isset( $local_cache[ $key ] ) ) {	// Make sure the option exists.
