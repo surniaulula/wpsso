@@ -74,7 +74,7 @@ Present your content at its best on social sites and in search results - no matt
 * *No global identifier provided (e.g. gtin mpn isbn).*
 * *Not a known valid target type for the itemReviewed property.*
 
-<p><strong>Reads data from active plugins, including:</strong></p>
+<p><strong>Reads settings and data from active plugins, including:</strong></p>
 
 * All in One SEO Pack
 * Co-Authors Plus
@@ -104,6 +104,14 @@ Present your content at its best on social sites and in search results - no matt
 * Yoast SEO
 * Yotpo Social Reviews for WooCommerce
 
+<p><strong>Imports post, term, and user plugin metadata (active plugin not required), including:</strong></p>
+
+* All in One SEO Pack Metadata
+* Rank Math SEO Metadata
+* The SEO Framework Metadata
+* Yoast SEO Metadata
+* Yoast SEO Block Attributes
+
 <h3>Users Love the WPSSO Core Plugin</h3>
 
 &#x2605;&#x2605;&#x2605;&#x2605;&#x2605; - "Unlike competitors, you can literally customize just about every aspect of SEO and Social SEO if you desire to. &#91;...&#93; This plugin has the most complete JSON-LD markup out of any of them, so you won’t have any errors and warnings in search console for WordPress or WooCommerce sites. You can go crazy customizing everything, or you can just set and forget. There aren’t many plugins that allow the best of both worlds." - [kw11](https://wordpress.org/support/topic/most-responsive-developer-ive-ever-seen/)
@@ -115,14 +123,6 @@ Present your content at its best on social sites and in search results - no matt
 <h3>Premium Edition Features</h3>
 
 **Additional options in the SSO &gt; Advanced Settings page and Document SSO metabox.**
-
-**Reads plugin metadata and blocks, including:**
-
-* All in One SEO Pack Metadata
-* Rank Math SEO Metadata
-* The SEO Framework Metadata
-* Yoast SEO Metadata
-* Yoast SEO Block Attributes
 
 **Reads data from remote service APIs, including:**
 
@@ -231,6 +231,25 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 13.2.0-dev.1 (2022/09/04)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Moved SEO import modules from the Premium edition to the Standard edition:
+		* Import All in One SEO Pack Metadata
+		* Import Rank Math SEO Metadata
+		* Import The SEO Framework Metadata
+		* Import Yoast SEO Metadata
+		* Import Yoast SEO Block Attributes
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 13.1.0 (2022/08/26)**
 
 * **New Features**
@@ -249,7 +268,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 **Version 13.0.0 (2022/08/24)**
 
 * **New Features**
-	* The integration modules for active plugins have been moved to the WPSSO Core Standard edition:
+	* Integration modules for active plugins have been moved to the WPSSO Core Standard edition:
 		* All in One SEO Pack
 		* Co-Authors Plus
 		* Easy Digital Downloads
@@ -695,13 +714,17 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 == Upgrade Notice ==
 
+= 13.2.0-dev.1 =
+
+(2022/09/04) Moved SEO import modules from the Premium edition to the Standard edition.
+
 = 13.1.0 =
 
 (2022/08/26) Added support for WP Job Manager job posting company logo. French language translation updates.
 
 = 13.0.0 =
 
-(2022/08/24) The integration modules for active plugins and URL shortening libraries have been moved to the WPSSO Core Standard edition.
+(2022/08/24) Integration modules for active plugins and URL shortening libraries have been moved to the WPSSO Core Standard edition.
 
 = 12.4.0 =
 
