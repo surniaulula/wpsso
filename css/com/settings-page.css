@@ -322,7 +322,6 @@ div.submit-buttons .button-alt:hover {
 }
 
 .postbox-dashboard .inside {
-	min-height:320px;
 	overflow-y:auto;
 }
 
@@ -340,11 +339,6 @@ body.rtl .postbox-dashboard > div.postbox-header:before {
 	margin:0 10px 0 0;
 }
 
-.postbox-dashboard_cache_status > h2:before,
-.postbox-dashboard_cache_status > div.postbox-header:before {
-	content:"\f1c0";	/* .icon-database */
-}
-
 .postbox-dashboard_rate_review > h2:before,
 .postbox-dashboard_rate_review > div.postbox-header:before {
 	content:"\e80d";	/* .icon-star */
@@ -355,14 +349,17 @@ body.rtl .postbox-dashboard > div.postbox-header:before {
 	content:"\f1cd";	/* .icon-lifebuoy */
 }
 
+.postbox-dashboard_cache_status > h2:before,
+.postbox-dashboard_cache_status > div.postbox-header:before {
+	content:"\f1c0";	/* .icon-database */
+}
+
 .postbox-dashboard_version_info > h2:before,
 .postbox-dashboard_version_info > div.postbox-header:before {
 	content:"\e80b";	/* .icon-ok-circled */
 }
 
-.postbox-dashboard_status_pro > h2:before,
 .postbox-dashboard_status_std > h2:before,
-.postbox-dashboard_status_pro > div.postbox-header:before,
 .postbox-dashboard_status_std > div.postbox-header:before {
 	content:"\e80e";	/* .icon-cog-alt */
 }

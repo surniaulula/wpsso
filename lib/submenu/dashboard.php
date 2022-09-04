@@ -90,46 +90,39 @@ if ( ! class_exists( 'WpssoSubmenuDashboard' ) && class_exists( 'WpssoAdmin' ) )
 		 */
 		protected function add_meta_boxes() {
 
-			$metabox_ids = array();
+			$metaboxes = array(
+				array(
+					'help_support' => _x( 'Get Help and Support', 'metabox title', 'wpsso' ),
+					'rate_review'  => _x( 'Your Rating Is Important', 'metabox title', 'wpsso' ),
+					'cache_status' => wp_using_ext_object_cache() ? false : _x( 'Cache Status', 'metabox title', 'wpsso' ),
+					'version_info' => _x( 'Version Information', 'metabox title', 'wpsso' ),
+				),
+				array(
+					'status_std' => _x( 'Feature Status', 'metabox title', 'wpsso' ),
+				),
+			);
 
-			$pkg_pro_transl = _x( $this->p->cf[ 'packages' ][ 'pro' ], 'package name', 'wpsso' );
-			$pkg_std_transl = _x( $this->p->cf[ 'packages' ][ 'std' ], 'package name', 'wpsso' );
+			foreach ( $metaboxes as $num => $metabox_info ) {
 
-			/**
-			 * Don't include the 'cache_status' metabox if we're using an external object cache.
-			 */
-			$external_cache = wp_using_ext_object_cache();
+				foreach ( $metabox_info as $metabox_key => $metabox_title ) {
 
-			if ( ! $external_cache ) {
+					if ( $metabox_title ) {
 
-				$metabox_ids[ 'cache_status' ] = _x( 'Cache Status', 'metabox title', 'wpsso' );
-			}
-
-			$metabox_ids[ 'rate_review' ]  = _x( 'Your Rating is Important', 'metabox title', 'wpsso' );
-			$metabox_ids[ 'help_support' ] = _x( 'Help and Support', 'metabox title', 'wpsso' );
-			$metabox_ids[ 'version_info' ] = _x( 'Version Information', 'metabox title', 'wpsso' );
-			$metabox_ids[ 'status_std' ]   = sprintf( _x( '%s Features', 'metabox title', 'wpsso' ), $pkg_std_transl );
-			$metabox_ids[ 'status_pro' ]   = sprintf( _x( '%s Features', 'metabox title', 'wpsso' ), $pkg_pro_transl );
-
-			$max_cols = 2;
-
-			$metabox_col = 0;
-
-			foreach ( $metabox_ids as $metabox_id => $metabox_title ) {
-
-				$metabox_col     = $metabox_col >= $max_cols ? 1 : $metabox_col + 1;
-				$metabox_screen  = $this->pagehook;
-				$metabox_context = 'metabox_col_' . $metabox_col;	// Use underscores (not hyphens) to order metaboxes.
-				$metabox_prio    = 'default';
-				$callback_args   = array(	// Second argument passed to the callback function / method.
-				);
-
-				add_meta_box( $this->pagehook . '_' . $metabox_id, $metabox_title,
-					array( $this, 'show_metabox_' . $metabox_id ), $metabox_screen,
-						$metabox_context, $metabox_prio, $callback_args );
-
-				add_filter( 'postbox_classes_' . $this->pagehook . '_' . $this->pagehook . '_' . $metabox_id,
-					array( $this, 'add_class_postbox_menu_id' ) );
+						$metabox_col     = $num + 1;
+						$metabox_screen  = $this->pagehook;
+						$metabox_context = 'metabox_col_' . $metabox_col;	// Use underscores (not hyphens) to order metaboxes.
+						$metabox_prio    = 'default';
+						$callback_args   = array(	// Second argument passed to the callback function / method.
+						);
+		
+						add_meta_box( $this->pagehook . '_' . $metabox_key, $metabox_title,
+							array( $this, 'show_metabox_' . $metabox_key ), $metabox_screen,
+								$metabox_context, $metabox_prio, $callback_args );
+		
+						add_filter( 'postbox_classes_' . $this->pagehook . '_' . $this->pagehook . '_' . $metabox_key,
+							array( $this, 'add_class_postbox_menu_id' ) );
+					}
+				}
 			}
 		}
 	}

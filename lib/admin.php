@@ -1517,6 +1517,92 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 		}
 
+		/**
+		 * Get Help and Support dashboard metabox content.
+		 */
+		public function show_metabox_help_support() {
+
+			$pkg_info = $this->p->util->get_pkg_info();	// Uses a local cache.
+
+			echo '<table class="sucom-settings wpsso column-metabox"><tr><td>';
+
+			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
+
+				if ( empty( $info[ 'version' ] ) ) {	// Exclude add-ons that are not active.
+
+					continue;
+				}
+
+				$action_links = array();
+
+				if ( ! empty( $info[ 'url' ][ 'faqs' ] ) ) {
+
+					$action_links[] = sprintf( __( '<a href="%s">Frequently Asked Questions</a>', 'wpsso' ), $info[ 'url' ][ 'faqs' ] );
+				}
+
+				if ( ! empty( $info[ 'url' ][ 'notes' ] ) ) {
+
+					$action_links[] = sprintf( __( '<a href="%s">Notes and Documentation</a>', 'wpsso' ), $info[ 'url' ][ 'notes' ] );
+				}
+
+				if ( ! empty( $info[ 'url' ][ 'support' ] ) && $pkg_info[ $ext ][ 'pp' ] ) {
+
+					$action_links[] = sprintf( __( '<a href="%s">Priority Support Ticket</a>', 'wpsso' ), $info[ 'url' ][ 'support' ] ) . 
+						' (' . __( 'Premium edition', 'wpsso' ) . ')';
+
+				} elseif ( ! empty( $info[ 'url' ][ 'forum' ] ) ) {
+
+					$action_links[] = sprintf( __( '<a href="%s">Community Support Forum</a>', 'wpsso' ), $info[ 'url' ][ 'forum' ] );
+				}
+
+				if ( ! empty( $action_links ) ) {
+
+					echo '<h4>' . $info[ 'name' ] . '</h4>' . "\n";
+
+					echo '<ul><li>' . implode( $glue = '</li><li>', $action_links ) . '</li></ul>' . "\n";
+				}
+			}
+
+			echo '</td></tr></table>';
+		}
+
+		/**
+		 * Your Rating Is Important dashboard metabox content.
+		 */
+		public function show_metabox_rate_review() {
+
+			echo '<table class="sucom-settings wpsso column-metabox"><tr><td>';
+
+			echo $this->p->msgs->get( 'column-rate-review' );
+
+			echo '<h4>' . __( 'Rate your active plugins:', 'option label', 'wpsso' ) . '</h4>' . "\n";
+
+			$action_links = array();
+
+			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
+
+				if ( empty( $info[ 'version' ] ) ) {	// Exclude add-ons that are not active.
+
+					continue;
+				}
+
+				if ( ! empty( $info[ 'url' ][ 'review' ] ) ) {
+
+					$action_links[] = '<a href="' . $info[ 'url' ][ 'review' ] . '">' . $info[ 'name' ] . '</a>';
+				}
+			}
+
+			if ( ! empty( $action_links ) ) {
+
+				echo '<ul><li>' . implode( $glue = '</li><li>', $action_links ) . '</li></ul>' . "\n";
+			}
+
+			echo '</td></tr></table>';
+		}
+
+		/**
+		 * Cache Status dashboard metabox content.
+		 */
 		public function show_metabox_cache_status() {
 
 			$table_cols         = 4;
@@ -1590,6 +1676,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			return 0;	// No change.
 		}
 
+		/**
+		 * Version Information dashboard metabox content.
+		 */
 		public function show_metabox_version_info() {
 
 			$table_cols = 2;
@@ -1701,7 +1790,10 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			echo '</table>';
 		}
 
-		public function show_metabox_status_pro() {
+		/**
+		 * Feature Status dashboard metabox content.
+		 */
+		public function show_metabox_status_std() {
 
 			$pkg_info = $this->p->util->get_pkg_info();	// Uses a local cache.
 
@@ -1724,7 +1816,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 						foreach ( $libs as $id => $label ) {
 
-							$td_class   = $pkg_info[ $ext ][ 'pp' ] ? '' : 'blank';
 							$classname  = SucomUtil::sanitize_classname( $ext . 'pro' . $sub . $id, $allow_underscore = false );
 							$status_off = empty( $this->p->avail[ $sub ][ $id ] ) ? 'off' : 'rec';
 							$status_on  = $pkg_info[ $ext ][ 'pp' ] ? 'on' : $status_off;
@@ -1732,7 +1823,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							$features[ $label ] = array(
 								'sub'          => $sub,
 								'lib'          => $id,
-								'td_class'     => $td_class,
 								'label_transl' => _x( $label, 'lib file description', $info[ 'text_domain' ] ),
 								'status'       => class_exists( $classname ) ? $status_on : $status_off,
 							);
@@ -1740,7 +1830,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					}
 				}
 
-				$features = apply_filters( $ext . '_status_pro_features', $features, $ext, $info, $pkg_info[ $ext ] );
+				$features = apply_filters( $ext . '_status_std_features', $features, $ext, $info, $pkg_info[ $ext ] );
 
 				if ( ! empty( $features ) ) {
 
@@ -1756,111 +1846,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			}
 
 			echo '</table>';
-		}
-
-		public function show_metabox_status_std() {
-
-			$pkg_info = $this->p->util->get_pkg_info();	// Uses a local cache.
-
-			echo '<table class="sucom-settings wpsso column-metabox feature-status">';
-
-			$ext_num = 0;
-
-			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
-
-				$features = apply_filters( $ext . '_status_std_features', array(), $ext, $info, $pkg_info[ $ext ] );
-
-				if ( ! empty( $features ) ) {
-
-					$ext_num++;
-
-					echo '<tr><td colspan="3">';
-					echo '<h4' . ( $ext_num > 1 ? ' style="margin-top:10px;"' : '' ) . '>';
-					echo _x( $info[ 'name' ], 'plugin name', 'wpsso' );
-					echo '</h4></td></tr>';
-
-					$this->show_features_status( $ext, $info, $features );
-				}
-			}
-
-			echo '</table>';
-		}
-
-		public function show_metabox_help_support() {
-
-			$pkg_info = $this->p->util->get_pkg_info();	// Uses a local cache.
-
-			echo '<table class="sucom-settings wpsso column-metabox"><tr><td>';
-
-			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
-
-				if ( empty( $info[ 'version' ] ) ) {	// Exclude add-ons that are not active.
-
-					continue;
-				}
-
-				$action_links = array();
-
-				if ( ! empty( $info[ 'url' ][ 'faqs' ] ) ) {
-
-					$action_links[] = sprintf( __( '<a href="%s">Frequently Asked Questions</a>', 'wpsso' ), $info[ 'url' ][ 'faqs' ] );
-				}
-
-				if ( ! empty( $info[ 'url' ][ 'notes' ] ) ) {
-
-					$action_links[] = sprintf( __( '<a href="%s">Notes and Documentation</a>', 'wpsso' ), $info[ 'url' ][ 'notes' ] );
-				}
-
-				if ( ! empty( $info[ 'url' ][ 'support' ] ) && $pkg_info[ $ext ][ 'pp' ] ) {
-
-					$action_links[] = sprintf( __( '<a href="%s">Priority Support Ticket</a>', 'wpsso' ), $info[ 'url' ][ 'support' ] ) . 
-						' (' . __( 'Premium edition', 'wpsso' ) . ')';
-
-				} elseif ( ! empty( $info[ 'url' ][ 'forum' ] ) ) {
-
-					$action_links[] = sprintf( __( '<a href="%s">Community Support Forum</a>', 'wpsso' ), $info[ 'url' ][ 'forum' ] );
-				}
-
-				if ( ! empty( $action_links ) ) {
-
-					echo '<h4>' . $info[ 'name' ] . '</h4>' . "\n";
-
-					echo '<ul><li>' . implode( $glue = '</li><li>', $action_links ) . '</li></ul>' . "\n";
-				}
-			}
-
-			echo '</td></tr></table>';
-		}
-
-		public function show_metabox_rate_review() {
-
-			echo '<table class="sucom-settings wpsso column-metabox"><tr><td>';
-
-			echo $this->p->msgs->get( 'column-rate-review' );
-
-			echo '<h4>' . __( 'Rate your active plugins:', 'option label', 'wpsso' ) . '</h4>' . "\n";
-
-			$action_links = array();
-
-			foreach ( $this->p->cf[ 'plugin' ] as $ext => $info ) {
-
-				if ( empty( $info[ 'version' ] ) ) {	// Exclude add-ons that are not active.
-
-					continue;
-				}
-
-				if ( ! empty( $info[ 'url' ][ 'review' ] ) ) {
-
-					$action_links[] = '<a href="' . $info[ 'url' ][ 'review' ] . '">' . $info[ 'name' ] . '</a>';
-				}
-			}
-
-			if ( ! empty( $action_links ) ) {
-
-				echo '<ul><li>' . implode( $glue = '</li><li>', $action_links ) . '</li></ul>' . "\n";
-			}
-
-			echo '</td></tr></table>';
 		}
 
 		/**
@@ -1961,14 +1946,14 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						case 'api':
 						case 'update':	// Deprecated.
 
-							$dashicon_title = __( 'Service API module', 'wpsso' );
+							$dashicon_title = __( 'Service API', 'wpsso' );
 							$dashicon_name  = 'update';
 
 							break;
 
 						case 'code':
 
-							$dashicon_title = __( 'Structured data module', 'wpsso' );
+							$dashicon_title = __( 'Structured Data', 'wpsso' );
 							$dashicon_name  = 'media-code';
 
 							break;
@@ -1976,28 +1961,28 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						case 'code-plus':
 						case 'plus':	// Deprecated.
 
-							$dashicon_title = __( 'Structured data property module', 'wpsso' );
+							$dashicon_title = __( 'Structured Data Property', 'wpsso' );
 							$dashicon_name  = 'welcome-add-page';
 
 							break;
 
 						case 'feature':
 
-							$dashicon_title = __( 'Additional feature module', 'wpsso' );
+							$dashicon_title = __( 'Additional Feature', 'wpsso' );
 							$dashicon_name  = 'pressthis';
 
 							break;
 
 						case 'plugin':
 
-							$dashicon_title = __( 'Plugin integration module', 'wpsso' );
+							$dashicon_title = __( 'Plugin Integration', 'wpsso' );
 							$dashicon_name  = 'admin-plugins';
 
 							break;
 
 						case 'sharing':
 
-							$dashicon_title = __( 'Sharing functionality module', 'wpsso' );
+							$dashicon_title = __( 'Sharing Functionality', 'wpsso' );
 							$dashicon_name  = 'share';
 
 							break;

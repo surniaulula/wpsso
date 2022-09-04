@@ -566,8 +566,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= '<li><strong>' . __( 'Reads video and URL shortening information from external service APIs (YouTube, Bitly, etc.).', 'wpsso' ) . '</strong></li>';
 
-						$text .= '<li><strong>' . __( 'Imports plugin metadata and block attributes.', 'wpsso' ) . '</strong></li>';
-
 						$text .= '</ul>';
 
 						break;

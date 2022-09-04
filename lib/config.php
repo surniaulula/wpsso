@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '13.1.0',	// Plugin version.
+					'version'     => '13.2.0-dev.1',	// Plugin version.
 					'opt_version' => '903',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -90,6 +90,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					),
 					'lib' => array(
 						'integ' => array(	// Plugin integration modules.
+							'data' => array(
+								'aioseop-meta'      => '(feature) Import All in One SEO Pack Metadata',
+								'rankmath-meta'     => '(feature) Import Rank Math SEO Metadata',
+								'seoframework-meta' => '(feature) Import The SEO Framework Metadata',
+								'wpseo-blocks'      => '(feature) Import Yoast SEO Block Attrs',
+								'wpseo-meta'        => '(feature) Import Yoast SEO Metadata',
+							),
 							'ecom' => array(
 								'edd'                           => '(plugin) Easy Digital Downloads',
 								'jck-wssv'                      => '(plugin) WooCommerce Show Single Variations',
@@ -201,13 +208,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'stamped'         => '(api) Stamped.io API',
 							),
 							'util' => array(
-								'aioseop-meta'      => '(feature) Import All in One SEO Pack Metadata',
-								'check-img-dims'    => '(feature) Image Dimension Checks',
-								'rankmath-meta'     => '(feature) Import Rank Math SEO Metadata',
-								'seoframework-meta' => '(feature) Import The SEO Framework Metadata',
-								'shorten'           => '(feature) URL Shortening Service',
-								'wpseo-meta'        => '(feature) Import Yoast SEO Metadata',
-								'wpseo-blocks'      => '(feature) Import Yoast SEO Block Attrs',
+								'shorten' => '(feature) URL Shortening Service',
 							),
 						),
 						'profile' => array(

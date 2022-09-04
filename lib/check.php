@@ -351,6 +351,58 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 
 							break;
 
+						case 'data':
+
+							switch ( $id ) {
+
+								/**
+								 * Import All in One SEO Pack Metadata.
+								 */
+								case 'aioseop-meta':
+
+									$chk[ 'opt_key' ] = 'plugin_import_aioseop_meta';
+
+									break;
+
+								/**
+								 * Import Rank Math SEO Metadata.
+								 */
+								case 'rankmath-meta':
+
+									$chk[ 'opt_key' ] = 'plugin_import_rankmath_meta';
+
+									break;
+
+								/**
+								 * Import The SEO Framework Metadata.
+								 */
+								case 'seoframework-meta':
+
+									$chk[ 'opt_key' ] = 'plugin_import_seoframework_meta';
+
+									break;
+
+								/**
+								 * Import Yoast SEO Block Attrs.
+								 */
+								case 'wpseo-blocks':
+
+									$chk[ 'opt_key' ] = 'plugin_import_wpseo_blocks';
+
+									break;
+
+								/**
+								 * Import Yoast SEO Metadata.
+								 */
+								case 'wpseo-meta':
+
+									$chk[ 'opt_key' ] = 'plugin_import_wpseo_meta';
+
+									break;
+							}
+
+							break;
+
 						case 'event':
 
 							switch ( $id ) {
@@ -760,15 +812,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 							switch ( $id ) {
 
 								/**
-								 * Import All in One SEO Pack Metadata.
-								 */
-								case 'aioseop-meta':
-
-									$chk[ 'opt_key' ] = 'plugin_import_aioseop_meta';
-
-									break;
-
-								/**
 								 * Autoptimize.
 								 *
 								 * See https://wordpress.org/plugins/autoptimize/.
@@ -776,15 +819,6 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 								case 'autoptimize':
 
 									$chk[ 'class' ] = 'autoptimizeCache';
-
-									break;
-
-								/**
-								 * Image Dimension Checks.
-								 */
-								case 'check-img-dims':
-
-									$chk[ 'opt_key' ] = 'plugin_check_img_dims';
 
 									break;
 
@@ -820,47 +854,11 @@ if ( ! class_exists( 'WpssoCheck' ) ) {
 									break;
 
 								/**
-								 * Import Rank Math SEO Metadata.
-								 */
-								case 'rankmath-meta':
-
-									$chk[ 'opt_key' ] = 'plugin_import_rankmath_meta';
-
-									break;
-
-								/**
-								 * Import The SEO Framework Metadata.
-								 */
-								case 'seoframework-meta':
-
-									$chk[ 'opt_key' ] = 'plugin_import_seoframework_meta';
-
-									break;
-
-								/**
 								 * URL Shortening Service.
 								 */
 								case 'shorten':
 
 									$chk[ 'opt_key' ] = 'plugin_shortener';
-
-									break;
-
-								/**
-								 * Import Yoast SEO Metadata.
-								 */
-								case 'wpseo-meta':
-
-									$chk[ 'opt_key' ] = 'plugin_import_wpseo_meta';
-
-									break;
-
-								/**
-								 * Import Yoast SEO Block Attrs.
-								 */
-								case 'wpseo-blocks':
-
-									$chk[ 'opt_key' ] = 'plugin_import_wpseo_blocks';
 
 									break;
 							}

@@ -19,7 +19,8 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 	class WpssoMedia {
 
-		private $p;	// Wpsso class object.
+		private $p;		// Wpsso class object.
+		private $filters;	// WpssoMediaFilters class object.
 
 		private $default_content_img_preg = array(
 			'html_tag' => 'img',
@@ -36,6 +37,10 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 
 				$this->p->debug->mark();
 			}
+
+			require_once WPSSO_PLUGINDIR . 'lib/media-filters.php';
+
+			$this->filters = new WpssoMediaFilters( $plugin );
 
 			add_action( 'init', array( $this, 'allow_img_data_attributes' ) );
 			add_action( 'post-upload-ui', array( $this, 'show_post_upload_ui_message' ) );

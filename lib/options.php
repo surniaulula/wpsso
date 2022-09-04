@@ -19,9 +19,9 @@ if ( ! class_exists( 'WpssoOptions' ) ) {
 
 	class WpssoOptions {
 
-		private $p;	// Wpsso class object.
-		private $upg;	// WpssoOptionsUpgrade class object.
-		private $filters;
+		private $p;		// Wpsso class object.
+		private $upg;		// WpssoOptionsUpgrade class object.
+		private $filters;	// WpssoOptionsFilters class object.
 
 		private static $cache_allowed = false;
 
