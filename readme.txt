@@ -231,7 +231,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.2.0-dev.1 (2022/09/04)**
+**Version 13.2.0-b.1 (2022/09/04)**
 
 * **New Features**
 	* None.
@@ -714,7 +714,7 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 == Upgrade Notice ==
 
-= 13.2.0-dev.1 =
+= 13.2.0-b.1 =
 
 (2022/09/04) Moved SEO import modules from the Premium edition to the Standard edition.
 
