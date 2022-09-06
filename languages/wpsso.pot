@@ -10734,12 +10734,12 @@ msgstr ""
 
 #: lib/submenu/dashboard.php:95
 msgctxt "metabox title"
-msgid "Get Help and Support"
+msgid "Your Rating Is Important"
 msgstr ""
 
 #: lib/submenu/dashboard.php:96
 msgctxt "metabox title"
-msgid "Your Rating Is Important"
+msgid "Get Help and Support"
 msgstr ""
 
 #: lib/submenu/dashboard.php:97
