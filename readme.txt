@@ -138,7 +138,7 @@ Present your content at its best on social sites and in search results - no matt
 * TinyURL
 * Vimeo Videos
 * Wistia Videos
-* WordPress Video Shortcode (and Self-Hosted Videos)
+* WordPress Video Shortcodes
 * Your Own URL Shortener (YOURLS)
 * YouTube Videos and Playlists
 
