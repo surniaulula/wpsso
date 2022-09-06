@@ -134,12 +134,12 @@
 <ul>
 <li>Bitly</li>
 <li>DLMY.App</li>
-<li>Facebook Embedded Videos</li>
-<li>Gravatar (Author Image)</li>
+<li>Facebook Videos</li>
+<li>Gravatar Images</li>
 <li>Ow.ly</li>
 <li>Shopper Approved (Ratings and Reviews)</li>
 <li>Slideshare Presentations</li>
-<li>Soundcloud Tracks (for the Twitter Player Card)</li>
+<li>Soundcloud Tracks</li>
 <li>Stamped.io (Ratings and Reviews)</li>
 <li>TinyURL</li>
 <li>Vimeo Videos</li>

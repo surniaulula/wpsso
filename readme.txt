@@ -128,12 +128,12 @@ Present your content at its best on social sites and in search results - no matt
 
 * Bitly
 * DLMY.App
-* Facebook Embedded Videos
-* Gravatar (Author Image)
+* Facebook Videos
+* Gravatar Images
 * Ow.ly
 * Shopper Approved (Ratings and Reviews)
 * Slideshare Presentations
-* Soundcloud Tracks (for the Twitter Player Card)
+* Soundcloud Tracks
 * Stamped.io (Ratings and Reviews)
 * TinyURL
 * Vimeo Videos
