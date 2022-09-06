@@ -90,7 +90,7 @@ _x( '(api) WordPress Video Shortcodes API', 'lib file description', 'wpsso' );
 _x( '(api) YouTube Videos and Playlists API', 'lib file description', 'wpsso' );
 _x( '(api) Shopper Approved API', 'lib file description', 'wpsso' );
 _x( '(api) Stamped.io API', 'lib file description', 'wpsso' );
-_x( '(feature) URL Shortening Service', 'lib file description', 'wpsso' );
+_x( '(feature) URL Shortening Services', 'lib file description', 'wpsso' );
 _x( 'Profile SSO - Social and Search Optimization', 'lib file description', 'wpsso' );
 _x( 'Advanced Settings', 'lib file description', 'wpsso' );
 _x( 'Plugin Add-ons', 'lib file description', 'wpsso' );

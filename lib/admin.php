@@ -1795,7 +1795,23 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 		 */
 		public function show_metabox_status_std() {
 
-			$pkg_info = $this->p->util->get_pkg_info();	// Uses a local cache.
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->mark();
+			}
+
+			/**
+			 * To optimize performance and memory usage, the 'wpsso_init_json_filters' action is run at the start of
+			 * WpssoSchema->get_json_data() when the Schema filters are needed. The Wpsso->init_json_filters() action
+			 * then unhooks itself from the action, so it can only be run once.
+			 */
+			do_action( 'wpsso_init_json_filters' );
+
+			$pkg_info        = $this->p->util->get_pkg_info();	// Uses a local cache.
+			$integ_tab_url   = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_integration' );
+			$media_tab_url   = $this->p->util->get_admin_url( 'advanced#sucom-tabset_services-tab_media' );
+			$review_tab_url  = $this->p->util->get_admin_url( 'advanced#sucom-tabset_services-tab_ratings_reviews' );
+			$shorten_tab_url = $this->p->util->get_admin_url( 'advanced#sucom-tabset_services-tab_shortening' );
 
 			echo '<table class="sucom-settings wpsso column-metabox feature-status">';
 
@@ -1805,28 +1821,119 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$features = array();
 
-				if ( isset( $info[ 'lib' ][ 'pro' ] ) ) {
+				foreach ( array( 'integ', 'pro' ) as $type_dir ) {
 
-					foreach ( $info[ 'lib' ][ 'pro' ] as $sub => $libs ) {
+					if ( empty( $info[ 'lib' ][ $type_dir ] ) ) {
 
-						if ( 'admin' === $sub ) {	// Skip status for admin menus and tabs.
+						continue;
+					}
+
+					foreach ( $info[ 'lib' ][ $type_dir ] as $sub_dir => $libs ) {
+
+						if ( 'admin' === $sub_dir ) {	// Skip status for admin menus and tabs.
+
+							continue;
+
+						} elseif ( ! is_array( $libs ) ) {	// Just in case.
 
 							continue;
 						}
 
-						foreach ( $libs as $id => $label ) {
+						foreach ( $libs as $lib_name => $label ) {
 
-							$classname  = SucomUtil::sanitize_classname( $ext . 'pro' . $sub . $id, $allow_underscore = false );
-							$status_off = empty( $this->p->avail[ $sub ][ $id ] ) ? 'off' : 'rec';
-							$status_on  = $pkg_info[ $ext ][ 'pp' ] ? 'on' : $status_off;
+							$label_transl = _x( $label, 'lib file description', $info[ 'text_domain' ] );
+							$label_url    = '';
+							$classname    = SucomUtil::sanitize_classname( $ext . $type_dir . $sub_dir . $lib_name, $allow_underscore = false );
+							$status_off   = 'off';
+							$status_on    = 'on';
+
+							if ( 'integ' === $type_dir ) {
+
+								if ( 'data' === $sub_dir ) {
+
+									$label_url = $integ_tab_url;
+								}
+
+							} elseif ( 'json' === $type_dir ) {
+
+								if ( 'type' === $sub_dir ) {
+
+									if ( preg_match( '/^(.*) \[schema_type:(.+)\]$/', $label_transl, $match ) ) {
+
+										$type_count   = $this->p->schema->count_schema_type_children( $match[ 2 ] );
+										$label_transl = $match[ 1 ] . ' ' . sprintf( __( '(%d sub-types)', 'wpsso' ), $type_count );
+									}
+								}
+							
+								$status_off = 'disabled';
+								$status_on  = 'on';
+
+							} elseif ( 'pro' === $type_dir ) {
+
+								$status_off = empty( $this->p->avail[ $sub_dir ][ $lib_name ] ) ? 'off' : 'rec';
+								$status_on  = $pkg_info[ $ext ][ 'pp' ] ? 'on' : $status_off;
+							
+								if ( 'media' === $sub_dir ) {
+
+									$label_url = $media_tab_url;
+
+								} elseif ( 'review' === $sub_dir ) {
+								
+									$label_url = $review_tab_url;
+
+								} elseif ( 'util' === $sub_dir && 'shorten' === $lib_name ) {
+
+									$label_url  = $shorten_tab_url;
+									$status_off = 'rec';
+								}
+							}
 
 							$features[ $label ] = array(
-								'sub'          => $sub,
-								'lib'          => $id,
-								'label_transl' => _x( $label, 'lib file description', $info[ 'text_domain' ] ),
+								'type'         => $type_dir,
+								'sub'          => $sub_dir,
+								'lib'          => $lib_name,
+								'label_transl' => $label_transl,
+								'label_url'    => $label_url,
 								'status'       => class_exists( $classname ) ? $status_on : $status_off,
 							);
 						}
+					}
+				}
+
+				if ( 'wpsso' === $ext ) {
+
+					/**
+					 * SSO > Advanced Settings > Service APIs > Shortening Services > URL Shortening Service.
+					 */
+					foreach ( $this->p->cf[ 'form' ][ 'shorteners' ] as $svc_id => $svc_name ) {
+
+						if ( 'none' === $svc_id ) {
+		
+							continue;
+						}
+		
+						$svc_name_transl = _x( $svc_name, 'option value', 'wpsso' );
+						$label_transl    = sprintf( _x( '(api) %s Shortener API', 'lib file description', 'wpsso' ), $svc_name_transl );
+						$svc_status      = 'off';	// Off unless selected or configured.
+		
+						if ( isset( $this->p->m[ 'util' ][ 'shorten' ] ) ) {	// URL shortening service is enabled.
+		
+							if ( $svc_id === $this->p->options[ 'plugin_shortener' ] ) {	// Shortener API service ID is selected.
+		
+								$svc_status = 'rec';	// Recommended if selected.
+		
+								if ( $this->p->m[ 'util' ][ 'shorten' ]->get_svc_instance( $svc_id ) ) {	// False or object.
+		
+									$svc_status = 'on';	// On if configured.
+								}
+							}
+						}
+		
+						$features[ '(api) ' . $svc_name . ' Shortener API' ] = array(
+							'label_transl' => $label_transl,
+							'label_url'    => $shorten_tab_url,
+							'status'       => $svc_status,
+						);
 					}
 				}
 
@@ -1883,23 +1990,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				'recommended' => __( 'Feature is recommended but not active.', 'wpsso' ),
 			);
 
-			$apis_tab_url = $this->p->util->get_admin_url( 'advanced#sucom-tabset_plugin-tab_apikeys' );
-
 			foreach ( $features as $label => $arr ) {
-
-				if ( ! isset( $arr[ 'label_url' ] ) ) {
-
-					/**
-					 * By default, all API related features should have their options located under the
-					 * Advanced Settings > Service APIs tab.
-					 */
-					if ( preg_match( '/ API$/', $label ) ) {
-
-						$arr[ 'label_url' ] = $apis_tab_url;
-
-						$features[ $label ] = $arr;
-					}
-				}
 
 				if ( ! empty( $arr[ 'label_transl' ] ) ) {
 

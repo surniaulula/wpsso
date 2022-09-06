@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 13.2.0\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2022-09-04 14:23-0700\n"
+"PO-Revision-Date: 2022-09-06 01:54-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -416,7 +416,7 @@ msgstr "Cet avis peut être masqué définitivement."
 msgid "This notice can be dismissed for %s."
 msgstr "Cet avis peut être masqué pour %s."
 
-#: gettext/gettext-lib-com.php:52 lib/admin.php:2146 lib/com/notice.php:511
+#: gettext/gettext-lib-com.php:52 lib/admin.php:2237 lib/com/notice.php:511
 msgid "Edit"
 msgstr "Modifier"
 
@@ -867,48 +867,48 @@ msgstr "(code-plus) Propriété de Schéma review"
 
 #: gettext/gettext-lib-config.php:82
 msgctxt "lib file description"
-msgid "(api) Facebook Video API"
-msgstr "(api) API vidéo Facebook"
+msgid "(api) Facebook Videos API"
+msgstr "(api) API vidéos Facebook"
 
 #: gettext/gettext-lib-config.php:83
 msgctxt "lib file description"
-msgid "(api) Gravatar Image API"
-msgstr "(api) API d'image Gravatar"
+msgid "(api) Gravatar Images API"
+msgstr "(api) API images Gravatar"
 
 #: gettext/gettext-lib-config.php:84
 msgctxt "lib file description"
-msgid "(api) Slideshare API"
-msgstr "(api) API Slideshare"
+msgid "(api) Slideshare Presentations API"
+msgstr "(api) API présentations Slideshare"
 
 #: gettext/gettext-lib-config.php:85
 msgctxt "lib file description"
-msgid "(api) Soundcloud API"
-msgstr "(api) API Soundcloud"
+msgid "(api) Soundcloud Tracks API"
+msgstr "(api) API pistes Soundcloud"
 
-#: gettext/gettext-lib-config.php:86 lib/admin-filters.php:200
+#: gettext/gettext-lib-config.php:86 lib/admin-filters.php:170
 msgctxt "lib file description"
 msgid "(feature) Upscale Media Library Images"
 msgstr "(feature) Agrandir les images de la médiathèque"
 
 #: gettext/gettext-lib-config.php:87
 msgctxt "lib file description"
-msgid "(api) Vimeo Video API"
-msgstr "(api) API vidéo Vimeo"
+msgid "(api) Vimeo Videos API"
+msgstr "(api) API vidéos Vimeo"
 
 #: gettext/gettext-lib-config.php:88
 msgctxt "lib file description"
-msgid "(api) Wistia Video API"
-msgstr "(api) API vidéo Wistia"
+msgid "(api) Wistia Videos API"
+msgstr "(api) API vidéos Wistia"
 
 #: gettext/gettext-lib-config.php:89
 msgctxt "lib file description"
-msgid "(api) WP Video Shortcode API"
-msgstr "(api) API code court vidéo WP"
+msgid "(api) WordPress Video Shortcodes API"
+msgstr "(api) API codes courts vidéo WordPress"
 
 #: gettext/gettext-lib-config.php:90
 msgctxt "lib file description"
-msgid "(api) YouTube Video / Playlist API"
-msgstr "(api) API vidéo / playlist YouTube"
+msgid "(api) YouTube Videos and Playlists API"
+msgstr "(api) API vidéos et listes YouTube"
 
 #: gettext/gettext-lib-config.php:91
 msgctxt "lib file description"
@@ -922,8 +922,8 @@ msgstr "(api) API Stamped.io"
 
 #: gettext/gettext-lib-config.php:93
 msgctxt "lib file description"
-msgid "(feature) URL Shortening Service"
-msgstr "(feature) Service de raccourcissement d'URL"
+msgid "(feature) URL Shortening Services"
+msgstr "(feature) Services de raccourcissement d'URL"
 
 #: gettext/gettext-lib-config.php:94
 msgctxt "lib file description"
@@ -1797,8 +1797,8 @@ msgstr "Vidéos Wistia"
 
 #: gettext/gettext-lib-config.php:282
 msgctxt "option value"
-msgid "WordPress Video Shortcode"
-msgstr "Code court vidéo de WordPress"
+msgid "WordPress Video Shortcodes"
+msgstr "Codes courts vidéo WordPress"
 
 #: gettext/gettext-lib-config.php:283
 msgctxt "option value"
@@ -4447,104 +4447,95 @@ msgstr "Un examen d'évaluation ne peut pas être le sujet d'un autre examen d'�
 msgid "Please select a subject webpage type that better describes the subject of the webpage (ie. the content) being reviewed."
 msgstr "SVP sélectionner un type de page Web du sujet qui décrit mieux le sujet de la page Web (c'est-à-dire le contenu) en cours de révision."
 
-#: lib/admin-filters.php:76
+#: lib/admin-filters.php:75
 msgctxt "lib file description"
 msgid "(code) Facebook / Open Graph Meta Tags"
 msgstr "(code) Balises méta Facebook / Open Graph"
 
-#: lib/admin-filters.php:81
+#: lib/admin-filters.php:80
 msgctxt "lib file description"
 msgid "(code) Pinterest Hidden Image"
 msgstr "(code) Image masquée Pinterest"
 
-#: lib/admin-filters.php:87
+#: lib/admin-filters.php:86
 msgctxt "lib file description"
 msgid "(code) Schema JSON-LD Markup"
 msgstr "(code) Balisage JSON-LD de Schéma"
 
-#: lib/admin-filters.php:92
+#: lib/admin-filters.php:91
 msgctxt "lib file description"
 msgid "(code) Twitter Card Meta Tags"
 msgstr "(code) Balises méta de carte Twitter"
 
-#: lib/admin-filters.php:97
+#: lib/admin-filters.php:96
 msgctxt "lib file description"
 msgid "(code) oEmbed Response Enhancements"
 msgstr "(code) Améliorations réponse oEmbed"
 
-#: lib/admin-filters.php:146
+#: lib/admin-filters.php:116
 msgctxt "lib file description"
 msgid "(code) Webpage Title Tag"
 msgstr "(code) Balise titre de page Web"
 
-#: lib/admin-filters.php:155
+#: lib/admin-filters.php:125
 msgctxt "lib file description"
 msgid "(feature) Image Dimension Checks"
 msgstr "(feature) Vérifications taille d'image"
 
-#: lib/admin-filters.php:164
+#: lib/admin-filters.php:134
 msgctxt "lib file description"
 msgid "(feature) Inherit Custom Images"
 msgstr "(feature) Hériter les images personnalisées"
 
-#: lib/admin-filters.php:173
+#: lib/admin-filters.php:143
 msgctxt "lib file description"
 msgid "(feature) Inherit Featured Image"
 msgstr "(feature) Hériter l'image en vedette"
 
-#: lib/admin-filters.php:182
+#: lib/admin-filters.php:152
 msgctxt "lib file description"
 msgid "(feature) Use Filtered Content"
 msgstr "(feature) Utiliser le contenu filtré"
 
-#: lib/admin-filters.php:191
+#: lib/admin-filters.php:161
 msgctxt "lib file description"
 msgid "(feature) Use Filtered Excerpt"
 msgstr "(feature) Utiliser l'extrait filtré"
 
-#: lib/admin-filters.php:245
-msgid "(%d sub-types)"
-msgstr "(%d sous-types)"
-
-#: lib/admin-filters.php:269
+#: lib/admin-filters.php:201
 msgctxt "lib file description"
 msgid "(code) Knowledge Graph Organization Markup"
 msgstr "(code) Balisage Knowledge Graph d'organisation"
 
-#: lib/admin-filters.php:275
+#: lib/admin-filters.php:207
 msgctxt "lib file description"
 msgid "(code) Knowledge Graph Person Markup"
 msgstr "(code) Balisage Knowledge Graph de personne"
 
-#: lib/admin-filters.php:281
+#: lib/admin-filters.php:213
 msgctxt "lib file description"
 msgid "(code) Knowledge Graph WebSite Markup"
 msgstr "(code) Balisage Knowledge Graph de site Web"
 
-#: lib/admin-filters.php:298
+#: lib/admin-filters.php:238
 msgctxt "lib file description"
 msgid "(code) SEO Meta Description Tag"
 msgstr "(code) Balise méta de description SEO"
 
-#: lib/admin-filters.php:304
+#: lib/admin-filters.php:244
 msgctxt "lib file description"
 msgid "(code) SEO Robots Meta Tag"
 msgstr "(code) Balise méta robots SEO"
 
-#: lib/admin-filters.php:310
+#: lib/admin-filters.php:250
 msgctxt "lib file description"
 msgid "(code) SEO Link Relation Canonical Tag"
 msgstr "(code) Balise canonique lien de relation SEO"
 
-#: lib/admin-filters.php:316
+#: lib/admin-filters.php:256
 msgctxt "lib file description"
 msgid "(code) SEO Link Relation Shortlink Tag"
 msgstr "(code) Balise lien court lien de relation SEO"
-
-#: lib/admin-filters.php:344
-msgctxt "lib file description"
-msgid "(api) %s Shortener API"
-msgstr "(api) API de raccourcissement %s"
 
 #: lib/admin-head-suggest-addons.php:165
 msgid "The <a href=\"%1$s\">WordPress sitemaps XML</a> feature (introduced in WordPress v5.5) is enabled, but the %2$s add-on is not active."
@@ -4959,227 +4950,236 @@ msgstr "Dernière"
 msgid "View %s changelog..."
 msgstr "Voir le changelog %s…"
 
-#: lib/admin.php:1879
+#: lib/admin.php:1864
+msgid "(%d sub-types)"
+msgstr "(%d sous-types)"
+
+#: lib/admin.php:1916
+msgctxt "lib file description"
+msgid "(api) %s Shortener API"
+msgstr "(api) API de raccourcissement %s"
+
+#: lib/admin.php:1986
 msgid "Feature is disabled."
 msgstr "Fonctionnalité désactivée."
 
-#: lib/admin.php:1880
+#: lib/admin.php:1987
 msgid "Feature is not active."
 msgstr "Fonctionnalité n'est pas active."
 
-#: lib/admin.php:1881
+#: lib/admin.php:1988
 msgid "Feature is active."
 msgstr "Fonctionnalité est active."
 
-#: lib/admin.php:1882 lib/admin.php:1883
+#: lib/admin.php:1989 lib/admin.php:1990
 msgid "Feature is recommended but not active."
 msgstr "Fonctionnalité recommandée mais pas active."
 
-#: lib/admin.php:1949
+#: lib/admin.php:2040
 msgid "Service API"
 msgstr "Service API"
 
-#: lib/admin.php:1956
+#: lib/admin.php:2047
 msgid "Structured Data"
 msgstr "Données structurées"
 
-#: lib/admin.php:1964
+#: lib/admin.php:2055
 msgid "Structured Data Property"
 msgstr "Propriétés de données structurées"
 
-#: lib/admin.php:1971
+#: lib/admin.php:2062
 msgid "Additional Feature"
 msgstr "Fonctionnalités supplémentaires"
 
-#: lib/admin.php:1978
+#: lib/admin.php:2069
 msgid "Plugin Integration"
 msgstr "Intégration d'extension"
 
-#: lib/admin.php:1985
+#: lib/admin.php:2076
 msgid "Sharing Functionality"
 msgstr "Fonctionnalité de partage"
 
-#: lib/admin.php:2159
+#: lib/admin.php:2250
 msgctxt "option label"
 msgid "%s Authentication ID"
 msgstr "ID d'authentification %s"
 
-#: lib/admin.php:2172
+#: lib/admin.php:2263
 msgctxt "option label"
 msgid "Current Site Address"
 msgstr "Adresse actuelle du site"
 
-#: lib/admin.php:2178
+#: lib/admin.php:2269
 msgctxt "option label"
 msgid "Support and Updates Expire"
 msgstr "Support et mises à jour expire"
 
-#: lib/admin.php:2179
+#: lib/admin.php:2270
 msgctxt "option label"
 msgid "License Information"
 msgstr "Informations de licence"
 
-#: lib/admin.php:2188
+#: lib/admin.php:2279
 msgctxt "option value"
 msgid "Not available"
 msgstr "Non disponible"
 
-#: lib/admin.php:2194
+#: lib/admin.php:2285
 msgctxt "option value"
 msgid "Never (Nontransferable Lifetime License)"
 msgstr "Jamais (licence à vie non transférable)"
 
-#: lib/admin.php:2202
+#: lib/admin.php:2293
 msgid "%s site addresses registered"
 msgstr "%s adresses web de sites enregistrées"
 
-#: lib/admin.php:2214
+#: lib/admin.php:2305
 msgid "%d of %d site addresses registered"
 msgstr "%d de %d adresses web de sites enregistrées"
 
-#: lib/admin.php:2292
+#: lib/admin.php:2383
 msgid "Fetching %s notifications..."
 msgstr "Récupération des notifications %s..."
 
-#: lib/admin.php:2431
+#: lib/admin.php:2522
 msgctxt "option label"
 msgid "WebSite Publisher Type"
 msgstr "Type d'éditeur du site Web"
 
-#: lib/admin.php:2439
+#: lib/admin.php:2530
 msgctxt "option label"
 msgid "WebSite Publisher Person"
 msgstr "Éditeur du site Web"
 
-#: lib/admin.php:2447 lib/options.php:1163
+#: lib/admin.php:2538 lib/options.php:1163
 msgctxt "option label"
 msgid "Organization Logo URL"
 msgstr "URL logo de organisation"
 
-#: lib/admin.php:2452 lib/options.php:1168
+#: lib/admin.php:2543 lib/options.php:1168
 msgctxt "option label"
 msgid "Organization Banner URL"
 msgstr "URL bannière d'organisation"
 
-#: lib/admin.php:2465
+#: lib/admin.php:2556
 msgctxt "option label"
 msgid "Remove Settings on Uninstall"
 msgstr "Supprimer les réglages lors de la désinstallation"
 
-#: lib/admin.php:2470
+#: lib/admin.php:2561
 msgctxt "option label"
 msgid "Use Local Plugin Translations"
 msgstr "Utiliser les traductions locale"
 
-#: lib/admin.php:2478 lib/util.php:3109
+#: lib/admin.php:2569 lib/util.php:3109
 msgctxt "option label"
 msgid "Disable Cache for Debugging"
 msgstr "Désactiver le cache pour débogage"
 
-#: lib/admin.php:2486
+#: lib/admin.php:2577
 msgctxt "option label"
 msgid "Add HTML Debug Messages"
 msgstr "Ajouter messages de débogage HTML"
 
-#: lib/admin.php:2502
+#: lib/admin.php:2593
 msgctxt "option comment"
 msgid "in %s"
 msgstr "en %s"
 
-#: lib/admin.php:2519
+#: lib/admin.php:2610
 msgctxt "option label (very short)"
 msgid "Site Use"
 msgstr "Util. par site"
 
-#: lib/admin.php:2540
+#: lib/admin.php:2631
 msgid "Return to %s"
 msgstr "Retour à %s"
 
 #. translators: Please ignore - translation uses a different text domain.
-#: lib/admin.php:2571
+#: lib/admin.php:2662
 msgid "Plugin <strong>activated</strong>."
 msgstr "Extension <strong>activé</strong>."
 
 #. translators: %1$s is the URL, %2$s is the short plugin name.
-#: lib/admin.php:2592
+#: lib/admin.php:2683
 msgid "You may <a href=\"%1$s\">refresh the update information for %2$s and its add-ons</a> to check if newer versions are available."
 msgstr "Vous pouvez <a href=\"%1$s\">actualiser les informations de mise à jour pour %2$s et ses ajouts</a> afin de vérifier si des versions plus récentes sont disponibles."
 
 #. translators: %1$s is the URL.
-#: lib/admin.php:2601
+#: lib/admin.php:2692
 msgid "You may <a href=\"%1$s\">refresh the update information for WordPress (plugins, themes and translations)</a> to check if newer versions are available."
 msgstr "Vous pouvez <a href=\"%1$s\">actualiser les informations de mise jour pour WordPress (extensions, thèmes et traductions)</a> afin de vérifier si des versions plus récentes sont disponibles."
 
-#: lib/admin.php:2721
+#: lib/admin.php:2812
 msgid "Please select a %1$s settings file to import."
 msgstr "Veuillez sélectionner un fichier de réglages %1$s à importer."
 
-#: lib/admin.php:2728
+#: lib/admin.php:2819
 msgid "The %1$s settings file to import must be an \"%2$s\" mime type."
 msgstr "Le fichier de réglages %1$s à importer doit être un type mime \"%2$s\"."
 
-#: lib/admin.php:2735
+#: lib/admin.php:2826
 msgid "The %1$s settings file is larger than the maximum of %2$d bytes allowed."
 msgstr "Le fichier de réglages %1$s dépasse le maximum autorisé de %2$d octets."
 
-#: lib/admin.php:2749
+#: lib/admin.php:2840
 msgid "The %1$s settings file is appears to be empty or corrupted."
 msgstr "Le fichier de réglages %1$s semble vide ou corrompu."
 
-#: lib/admin.php:2759
+#: lib/admin.php:2850
 msgid "The %1$s settings file could not be decoded into a settings array."
 msgstr "Le fichier de réglages %1$s n'a pas pu être décodé dans un tableau de réglages."
 
-#: lib/admin.php:2769
+#: lib/admin.php:2860
 msgid "Import of plugin and add-on settings is complete."
 msgstr "L'importation des réglages d'extension et ajouts est terminée."
 
-#: lib/admin.php:3195
+#: lib/admin.php:3286
 msgctxt "plugin action link"
 msgid "Plugin Details and Update"
 msgstr "Détails de l'extension et mise à jour"
 
-#: lib/admin.php:3196
+#: lib/admin.php:3287
 msgctxt "plugin action link"
 msgid "Add-on Details and Update"
 msgstr "Détails de l'ajout et mise à jour"
 
-#: lib/admin.php:3201
+#: lib/admin.php:3292
 msgctxt "plugin action link"
 msgid "Plugin Details"
 msgstr "Détails de l'extension"
 
-#: lib/admin.php:3202
+#: lib/admin.php:3293
 msgctxt "plugin action link"
 msgid "Add-on Details"
 msgstr "Détails de l'ajout"
 
-#: lib/admin.php:3213
+#: lib/admin.php:3304
 msgctxt "plugin action link"
 msgid "Plugin Details and Install"
 msgstr "Détails de l'extension et installer"
 
-#: lib/admin.php:3214
+#: lib/admin.php:3305
 msgctxt "plugin action link"
 msgid "Add-on Details and Install"
 msgstr "Détails de l'ajout et installer"
 
-#: lib/admin.php:3220
+#: lib/admin.php:3311
 msgctxt "plugin action link"
 msgid "About Page"
 msgstr "Page à propos"
 
-#: lib/admin.php:3227
+#: lib/admin.php:3318
 msgctxt "plugin action link"
 msgid "Documentation"
 msgstr "Documentation"
 
-#: lib/admin.php:3234
+#: lib/admin.php:3325
 msgctxt "plugin action link"
 msgid "%s Support"
 msgstr "Soutien %s"
 
-#: lib/admin.php:3241
+#: lib/admin.php:3332
 msgctxt "plugin action link"
 msgid "Community Forum"
 msgstr "Forum communautaire"
@@ -10310,113 +10310,113 @@ msgstr "Vous devriez envisager de revoir les fonctions d'extension et de thème 
 msgid "Activating the %1$s plugin and enabling the the %2$s option (to apply the filter consistently) may provide more information on the specific hooks or PHP code affecting performance."
 msgstr "L'activation de l'extension %1$s et l'activation de l'option %2$s (pour appliquer le filtre de manière cohérente) peuvent fournir plus d'informations sur les crochets spécifiques ou le code PHP affectant les performances."
 
-#: lib/util.php:3514
+#: lib/util.php:3513
 msgctxt "option label"
 msgid "The AMP Project Validator"
 msgstr "Le validateur de projet AMP"
 
-#: lib/util.php:3515
+#: lib/util.php:3514
 msgctxt "validator type"
 msgid "AMP Markup"
 msgstr "Balisage AMP"
 
-#: lib/util.php:3519
+#: lib/util.php:3518
 msgctxt "option label"
 msgid "Facebook Sharing Debugger"
 msgstr "Débogueur de partage Facebook"
 
-#: lib/util.php:3520
+#: lib/util.php:3519
 msgctxt "validator type"
 msgid "Open Graph"
 msgstr "Open Graph"
 
-#: lib/util.php:3524
+#: lib/util.php:3523
 msgctxt "option label"
 msgid "Facebook Microdata Debug Tool"
 msgstr "Outil de débogage des microdonnées Facebook"
 
-#: lib/util.php:3525
+#: lib/util.php:3524
 msgctxt "validator type"
 msgid "Microdata"
 msgstr "Microdonnées"
 
-#: lib/util.php:3529
+#: lib/util.php:3528
 msgctxt "option label"
 msgid "Google PageSpeed Insights"
 msgstr "PageSpeed Insights de Google"
 
-#: lib/util.php:3530
+#: lib/util.php:3529
 msgctxt "validator type"
 msgid "PageSpeed"
 msgstr "Vitesse de page"
 
-#: lib/util.php:3534
+#: lib/util.php:3533
 msgctxt "option label"
 msgid "Google Rich Results Test"
 msgstr "Test de résultats enrichis Google"
 
-#: lib/util.php:3535
+#: lib/util.php:3534
 msgctxt "validator type"
 msgid "Rich Results"
 msgstr "Résultats riches"
 
-#: lib/util.php:3539
+#: lib/util.php:3538
 msgctxt "option label"
 msgid "LinkedIn Post Inspector"
 msgstr "Inspecteur d'article LinkedIn"
 
-#: lib/util.php:3540
+#: lib/util.php:3539
 msgctxt "validator type"
 msgid "oEmbed Data"
 msgstr "Données oEmbed"
 
-#: lib/util.php:3544
+#: lib/util.php:3543
 msgctxt "option label"
 msgid "Pinterest Rich Pins Validator"
 msgstr "Validateur Pinterest épingles riches"
 
-#: lib/util.php:3545
+#: lib/util.php:3544
 msgctxt "validator type"
 msgid "Rich Pins"
 msgstr "Épingles riches"
 
-#: lib/util.php:3549
+#: lib/util.php:3548
 msgctxt "option label"
 msgid "Schema Markup Validator"
 msgstr "Validateur de balisage de Schéma"
 
-#: lib/util.php:3550
+#: lib/util.php:3549
 msgctxt "validator type"
 msgid "Schema Markup"
 msgstr "Balisage de Schéma"
 
-#: lib/util.php:3554
+#: lib/util.php:3553
 msgctxt "option label"
 msgid "Twitter Card Validator"
 msgstr "Vérificateur de carte Twitter"
 
-#: lib/util.php:3555
+#: lib/util.php:3554
 msgctxt "validator type"
 msgid "Twitter Card"
 msgstr "Carte Twitter"
 
-#: lib/util.php:3560
+#: lib/util.php:3559
 msgctxt "option label"
 msgid "W3C Markup Validator"
 msgstr "Validateur W3C de balisage"
 
-#: lib/util.php:3561
+#: lib/util.php:3560
 msgctxt "validator type"
 msgid "HTML Markup"
 msgstr "Balisage HTML"
 
 #. translators: %1$s is an action message, %2$s is the module or post type name.
-#: lib/util.php:3723
+#: lib/util.php:3722
 msgid "%1$s for this %2$s"
 msgstr "%1$s pour cet %2$s"
 
 #. translators: %1$s is an action message, %2$s is the module or post type name and %3$d is the object ID.
-#: lib/util.php:3733
+#: lib/util.php:3732
 msgid "%1$s for %2$s ID %3$d"
 msgstr "%1$s pour %2$s ID %3$d"
 

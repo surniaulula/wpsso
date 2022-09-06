@@ -588,7 +588,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			$table_rows[ 'plugin_ratings_reviews_for' ] = '' .
 				$form->get_th_html( _x( 'Get Reviews for Post Types', 'option label', 'wpsso' ),
 					$css_class = '', $css_id = 'plugin_ratings_reviews_for' ) .
-				'<td>' . $form->get_no_checklist_post_types( $name_prefix = 'plugin_ratings_reviews_for' ) . '</td>';
+				'<td class="blank">' . $form->get_no_checklist_post_types( $name_prefix = 'plugin_ratings_reviews_for' ) . '</td>';
 
 			return $table_rows;
 		}

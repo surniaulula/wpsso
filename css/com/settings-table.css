@@ -1322,6 +1322,14 @@ table.sucom-settings td .status-light {
 	margin-left:5px;
 }
 
+/**
+ * Sucom Toolbar Notice colors:
+ *
+ * Success (Green)  = #46b450;
+ * Info (Blue)      = #00a0d2;
+ * Warning (Yellow) = #ffb900;
+ * Error (Red)      = #dc3232;
+ */
 table.sucom-settings td.module-is-on .status-light {
 	background-color:#46b450;	/* Green. */
 }
@@ -1331,12 +1339,12 @@ table.sucom-settings td.module-is-off .status-light {
 }
 
 table.sucom-settings td.module-is-disabled .status-light {
-	background-color:#ffb900;	/* Yellow. */
+	background-color:#00a0d2;	/* Blue. */
 }
 
 table.sucom-settings td.module-is-rec .status-light,
 table.sucom-settings td.module-is-recommended .status-light {
-	background-color:#dc3232;	/* Red. */
+	background-color:#ffb900;	/* Yellow. */
 }
 
 /**

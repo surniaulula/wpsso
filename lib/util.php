@@ -3171,7 +3171,6 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 			$admin_url   = '';
 			$current_url = $_SERVER[ 'REQUEST_URI' ];
 
-
 			/**
 			 * $menu_id may start with a hash or query, so parse before checking its value.
 			 */
