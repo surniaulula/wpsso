@@ -1040,22 +1040,22 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:82
 msgctxt "lib file description"
-msgid "(api) Facebook Video API"
+msgid "(api) Facebook Videos API"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:83
 msgctxt "lib file description"
-msgid "(api) Gravatar Image API"
+msgid "(api) Gravatar Images API"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:84
 msgctxt "lib file description"
-msgid "(api) Slideshare API"
+msgid "(api) Slideshare Presentations API"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:85
 msgctxt "lib file description"
-msgid "(api) Soundcloud API"
+msgid "(api) Soundcloud Tracks API"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:86 lib/admin-filters.php:200
@@ -1065,22 +1065,22 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:87
 msgctxt "lib file description"
-msgid "(api) Vimeo Video API"
+msgid "(api) Vimeo Videos API"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:88
 msgctxt "lib file description"
-msgid "(api) Wistia Video API"
+msgid "(api) Wistia Videos API"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:89
 msgctxt "lib file description"
-msgid "(api) WordPress Video Shortcode API"
+msgid "(api) WordPress Video Shortcodes API"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:90
 msgctxt "lib file description"
-msgid "(api) YouTube Video / Playlist API"
+msgid "(api) YouTube Videos and Playlists API"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:91
@@ -2001,7 +2001,7 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:282
 msgctxt "option value"
-msgid "WordPress Video Shortcode"
+msgid "WordPress Video Shortcodes"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:283

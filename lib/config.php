@@ -193,15 +193,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'general'  => 'General Settings Filters',
 							),
 							'media' => array(
-								'facebook'   => '(api) Facebook Video API',
-								'gravatar'   => '(api) Gravatar Image API',
-								'slideshare' => '(api) Slideshare API',
-								'soundcloud' => '(api) Soundcloud API',
+								'facebook'   => '(api) Facebook Videos API',
+								'gravatar'   => '(api) Gravatar Images API',
+								'slideshare' => '(api) Slideshare Presentations API',
+								'soundcloud' => '(api) Soundcloud Tracks API',
 								'upscale'    => '(feature) Upscale Media Library Images',
-								'vimeo'      => '(api) Vimeo Video API',
-								'wistia'     => '(api) Wistia Video API',
-								'wpvideo'    => '(api) WordPress Video Shortcode API',
-								'youtube'    => '(api) YouTube Video / Playlist API',
+								'vimeo'      => '(api) Vimeo Videos API',
+								'wistia'     => '(api) Wistia Videos API',
+								'wpvideo'    => '(api) WordPress Video Shortcodes API',
+								'youtube'    => '(api) YouTube Videos and Playlists API',
 							),
 							'review' => array(
 								'shopperapproved' => '(api) Shopper Approved API',
@@ -1860,7 +1860,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_soundcloud_api' => 1,		// Check for Embedded Media: Soundcloud Tracks.
 					'plugin_vimeo_api'      => 1,		// Check for Embedded Media: Vimeo Videos.
 					'plugin_wistia_api'     => 1,		// Check for Embedded Media: Wistia Videos.
-					'plugin_wpvideo_api'    => 1,		// Check for Embedded Media: WordPress Video Shortcode.
+					'plugin_wpvideo_api'    => 1,		// Check for Embedded Media: WordPress Video Shortcodes.
 					'plugin_youtube_api'    => 1,		// Check for Embedded Media: Youtube Videos and Playlists.
 
 					/**
@@ -2730,7 +2730,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_soundcloud_api' => 'Soundcloud Tracks',
 					'plugin_vimeo_api'      => 'Vimeo Videos',
 					'plugin_wistia_api'     => 'Wistia Videos',
-					'plugin_wpvideo_api'    => 'WordPress Video Shortcode',
+					'plugin_wpvideo_api'    => 'WordPress Video Shortcodes',
 					'plugin_youtube_api'    => 'YouTube Videos and Playlists',
 				),
 
