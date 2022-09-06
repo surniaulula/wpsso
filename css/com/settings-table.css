@@ -1302,7 +1302,7 @@ table.sucom-settings.column-metabox td.latest-notice p {
 }
 
 /**
- * SSO > Features Status pages.
+ * SSO > Dashboard > Features Status metabox.
  */
 table.sucom-settings.column-metabox.feature-status td {
 	padding:2px 4px;
@@ -1345,6 +1345,21 @@ table.sucom-settings td.module-is-disabled .status-light {
 table.sucom-settings td.module-is-rec .status-light,
 table.sucom-settings td.module-is-recommended .status-light {
 	background-color:#ffb900;	/* Yellow. */
+}
+
+/**
+ * SSO > Dashboard > Version Information metabox.
+ */
+table.sucom-settings.column-metabox.version-info td.version-number.newer-version-available {
+	background-color:#ffb900;	/* Yellow. */
+}
+
+table.sucom-settings.column-metabox.version-info td.version-number.current-version-not-stable {
+	background-color:#00a0d2;	/* Blue. */
+}
+
+table.sucom-settings.column-metabox.version-info td.version-number.current-version {
+	background-color:#46b450;	/* Green. */
 }
 
 /**

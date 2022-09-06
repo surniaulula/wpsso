@@ -1708,7 +1708,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$latest_notice  = '';
 				$changelog_url  = isset( $info[ 'url' ][ 'changelog' ] ) ? $info[ 'url' ][ 'changelog' ] : '';
 				$readme_info    = $this->get_readme_info( $ext, $read_cache = true );
-				$td_style_attr  = '';
+				$td_addl_class = '';
 
 				if ( ! empty( $readme_info[ 'stable_tag' ] ) ) {
 
@@ -1737,22 +1737,22 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					 */
 					if ( apply_filters( 'wpsso_newer_version_available', $is_newer_avail, $ext, $plugin_version, $stable_version, $latest_version ) ) {
 
-						$td_style_attr = 'style="background-color:#f00;"';	// Red background.
+						$td_addl_class = ' newer-version-available';
 
 					} elseif ( preg_match( '/[a-z]/', $plugin_version ) ) {		// Current but not stable (alpha chars in version).
 
-						$td_style_attr = 'style="background-color:#ff0;"';	// Yellow background.
+						$td_addl_class = ' current-version-not-stable';
 
 					} else {
 
-						$td_style_attr = 'style="background-color:#0f0;"';	// Green background.
+						$td_addl_class = ' current-version';
 					}
 				}
 
 				echo '<tr><td colspan="' . $table_cols . '"><h4>' . $info[ 'name' ] . '</h4></td></tr>';
 
 				echo '<tr><th class="version-label">' . _x( 'Installed', 'option label', 'wpsso' ) . ':</th>
-					<td class="version-number" ' . $td_style_attr . '>' . $plugin_version . '</td></tr>';
+					<td class="version-number' . $td_addl_class . '">' . $plugin_version . '</td></tr>';
 
 				/**
 				 * Only show the stable version if the latest version is different (ie. latest is a non-stable version).
