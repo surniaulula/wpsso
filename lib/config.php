@@ -200,7 +200,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'upscale'    => '(feature) Upscale Media Library Images',
 								'vimeo'      => '(api) Vimeo Video API',
 								'wistia'     => '(api) Wistia Video API',
-								'wpvideo'    => '(api) WP Video Shortcode API',
+								'wpvideo'    => '(api) WordPress Video Shortcode API',
 								'youtube'    => '(api) YouTube Video / Playlist API',
 							),
 							'review' => array(

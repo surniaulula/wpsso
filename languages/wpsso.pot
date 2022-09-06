@@ -1075,7 +1075,7 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:89
 msgctxt "lib file description"
-msgid "(api) WP Video Shortcode API"
+msgid "(api) WordPress Video Shortcode API"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:90

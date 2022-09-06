@@ -86,7 +86,7 @@ _x( '(api) Soundcloud API', 'lib file description', 'wpsso' );
 _x( '(feature) Upscale Media Library Images', 'lib file description', 'wpsso' );
 _x( '(api) Vimeo Video API', 'lib file description', 'wpsso' );
 _x( '(api) Wistia Video API', 'lib file description', 'wpsso' );
-_x( '(api) WP Video Shortcode API', 'lib file description', 'wpsso' );
+_x( '(api) WordPress Video Shortcode API', 'lib file description', 'wpsso' );
 _x( '(api) YouTube Video / Playlist API', 'lib file description', 'wpsso' );
 _x( '(api) Shopper Approved API', 'lib file description', 'wpsso' );
 _x( '(api) Stamped.io API', 'lib file description', 'wpsso' );
