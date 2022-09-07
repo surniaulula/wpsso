@@ -132,21 +132,21 @@
 <p><strong>Reads data from remote service APIs, including:</strong></p>
 
 <ul>
-<li>Bitly</li>
-<li>DLMY.App</li>
-<li>Facebook Videos</li>
-<li>Gravatar Images</li>
-<li>Ow.ly</li>
-<li>Shopper Approved (Ratings and Reviews)</li>
-<li>Slideshare Presentations</li>
-<li>Soundcloud Tracks</li>
-<li>Stamped.io (Ratings and Reviews)</li>
-<li>TinyURL</li>
-<li>Vimeo Videos</li>
-<li>Wistia Videos</li>
-<li>WordPress Video Shortcodes (and Self-Hosted Videos)</li>
-<li>Your Own URL Shortener (YOURLS)</li>
-<li>YouTube Videos and Playlists</li>
+<li>Get Bitly Short URL</li>
+<li>Get DLMY.App</li>
+<li>Get Facebook Video Data</li>
+<li>Get Gravatar Image Data</li>
+<li>Get Ow.ly Short URL</li>
+<li>Get Shopper Approved Review Data</li>
+<li>Get Slideshare Presentation Data</li>
+<li>Get Soundcloud Track Data</li>
+<li>Get Stamped.io Review Data</li>
+<li>Get TinyURL Short URL</li>
+<li>Get Vimeo Video Data</li>
+<li>Get Wistia Video Data</li>
+<li>Get WordPress Video Data</li>
+<li>Get Your Own URL Shortener (YOURLS) Short URL</li>
+<li>Get YouTube Video and Playlist Data</li>
 </ul>
 
 <h2>Installation</h2>

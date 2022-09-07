@@ -126,21 +126,21 @@ Present your content at its best on social sites and in search results - no matt
 
 **Reads data from remote service APIs, including:**
 
-* Bitly
-* DLMY.App
-* Facebook Videos
-* Gravatar Images
-* Ow.ly
-* Shopper Approved (Ratings and Reviews)
-* Slideshare Presentations
-* Soundcloud Tracks
-* Stamped.io (Ratings and Reviews)
-* TinyURL
-* Vimeo Videos
-* Wistia Videos
-* WordPress Video Shortcodes (and Self-Hosted Videos)
-* Your Own URL Shortener (YOURLS)
-* YouTube Videos and Playlists
+* Get Bitly Short URL
+* Get DLMY.App
+* Get Facebook Video Data
+* Get Gravatar Image Data
+* Get Ow.ly Short URL
+* Get Shopper Approved Review Data
+* Get Slideshare Presentation Data
+* Get Soundcloud Track Data
+* Get Stamped.io Review Data
+* Get TinyURL Short URL
+* Get Vimeo Video Data
+* Get Wistia Video Data
+* Get WordPress Video Data
+* Get Your Own URL Shortener (YOURLS) Short URL
+* Get YouTube Video and Playlist Data
 
 == Installation ==
 
