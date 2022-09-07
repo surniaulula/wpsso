@@ -1913,7 +1913,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 						}
 		
 						$svc_name_transl = _x( $svc_name, 'option value', 'wpsso' );
-						$label_transl    = sprintf( _x( '(api) %s Shortener API', 'lib file description', 'wpsso' ), $svc_name_transl );
+						$label_transl    = sprintf( _x( '(api) Get %s Short URL', 'lib file description', 'wpsso' ), $svc_name_transl );
 						$svc_status      = 'off';	// Off unless selected or configured.
 		
 						if ( isset( $this->p->m[ 'util' ][ 'shorten' ] ) ) {	// URL shortening service is enabled.
@@ -2035,10 +2035,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 					switch ( $dashicon_name ) {
 
 						case 'api':
-						case 'update':	// Deprecated.
 
 							$dashicon_title = __( 'Service API', 'wpsso' );
-							$dashicon_name  = 'update';
+							$dashicon_name  = 'download';
 
 							break;
 
@@ -2050,7 +2049,6 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 							break;
 
 						case 'code-plus':
-						case 'plus':	// Deprecated.
 
 							$dashicon_title = __( 'Structured Data Property', 'wpsso' );
 							$dashicon_name  = 'welcome-add-page';

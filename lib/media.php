@@ -2226,14 +2226,7 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 			}
 
 			/**
-			 * Additional filters / modules may detect other embedded video markup.
-			 *
-			 * Video API 'wpsso_content_videos' filter hook priorities:
-			 *
-			 * 	 30 = Wistia
-			 * 	 40 = Slideshare
-			 * 	100 = Wpvideo
-			 * 	110 = Elementor
+			 * Filters / modules may detect additional embedded video markup.
 			 */
 			$filter_name = 'wpsso_content_videos';	// No need to sanitize.
 
@@ -2336,17 +2329,6 @@ if ( ! class_exists( 'WpssoMedia' ) ) {
 				$filter_name .= '_' . SucomUtil::sanitize_hookname( $args[ 'api' ] );
 			}
 
-			/**
-			 * Video API 'wpsso_video_details' filter hook priorities:
-			 *
-			 * 	 10 = Youtube
-			 * 	 20 = Vimeo
-			 * 	 30 = Wistia
-			 * 	 40 = Slideshare
-			 * 	 60 = Facebook
-			 * 	 80 = Soundcloud
-			 * 	100 = Wpvideo
-			 */
 			if ( false === has_filter( $filter_name ) ) {	// Just in case.
 
 				return array();

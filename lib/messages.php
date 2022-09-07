@@ -156,16 +156,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= empty( $url[ 'purchase' ] ) ? '' : '<a href="' . $url[ 'purchase' ] . '">';
 
-						if ( 'wpsso' === $plugin_id ) {
-
-							$text .= sprintf( __( 'Purchase the %s plugin to upgrade and get the following features.', 'wpsso' ),
-								$info[ 'short_pro' ] );
-
-						} else {
-
-							$text .= sprintf( __( 'Purchase the %s add-on to upgrade and get the following features.', 'wpsso' ),
-								$info[ 'short_pro' ] );
-						}
+						$text .= sprintf( __( 'Purchase the %s edition to upgrade and get the following features.', 'wpsso' ), $info[ 'short_pro' ] );
 
 						$text .= empty( $url[ 'purchase' ] ) ? '' : '</a>';
 
@@ -564,7 +555,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= '<li>' . sprintf( __( '<strong>Additional Schema options</strong> in the %s metabox to customize creative works, events, how-tos, job postings, movies, products, recipes, reviews, and more.', 'wpsso' ), $mb_title ) . '</li>';
 
-						$text .= '<li><strong>' . __( 'Reads video and URL shortening information from external service APIs (YouTube, Bitly, etc.).', 'wpsso' ) . '</strong></li>';
+						$text .= '<li>' . __( '<strong>Get video and short URL data from external services</strong> (Bitly, Vimeo, Youtube, etc.).', 'wpsso' ) . '</li>';
 
 						$text .= '</ul>';
 
