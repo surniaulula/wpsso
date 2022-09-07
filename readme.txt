@@ -231,6 +231,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 13.2.1-dev.1 (2022/09/07)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Minor update for service API module names.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 13.2.0 (2022/09/06)**
 
 * **New Features**
@@ -460,6 +474,10 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 	* WordPress v5.2.
 
 == Upgrade Notice ==
+
+= 13.2.1-dev.1 =
+
+(2022/09/07) Minor update for service API module names.
 
 = 13.2.0 =
 
