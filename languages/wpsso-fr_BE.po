@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: WPSSO Core 13.2.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
-"PO-Revision-Date: 2022-09-07 09:35-0700\n"
+"PO-Revision-Date: 2022-09-07 09:40-0700\n"
 "Last-Translator: JS Morisset <jsm@surniaulula.com>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -8522,7 +8522,7 @@ msgstr "<strong>Options de Schéma supplémentaires</strong> dans la métabox %s
 
 #: lib/messages.php:558
 msgid "<strong>Get video and short URL data from external services</strong> (Bitly, Vimeo, Youtube, etc.)."
-msgstr "Obtenir des données vidéo et URL courtes à partir de services externes (Bitly, Vimeo, Youtube, etc.)."
+msgstr "<strong>Obtenir des données vidéo et URL courtes à partir de services externes</strong> (Bitly, Vimeo, Youtube, etc.)."
 
 #: lib/messages.php:568
 msgid "<strong>Development of %s is driven by user requests</strong> - we welcome all your comments and suggestions."
