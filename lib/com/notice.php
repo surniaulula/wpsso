@@ -1433,18 +1433,27 @@ if ( ! class_exists( 'SucomNotice' ) ) {
 			 * Unhide the WordPress admin toolbar if there are notices, including when using the fullscreen editor.
 			 */
 			$custom_style_css .= '
-				body.wp-admin.has-toolbar-notices #wpadminbar {
-					display:block;
+				body.wp-admin.has-toolbar-notices #wpadminbar,
+				body.wp-admin.is-fullscreen-mode.has-toolbar-notices #wpadminbar,
+				body.wp-admin.is-wp-toolbar-disabled.has-toolbar-notices #wpadminbar,
+				body.wp-admin.woocommerce-embed-page.has-toolbar-notices #wpadminbar {
+					display:block !important;
 				}
 				body.wp-admin.is-fullscreen-mode.has-toolbar-notices .block-editor__container {
-					min-height:calc(100vh - 32px);	/* Non-fullscreen default. */
+					min-height:calc(100vh - 32px);
 				}
 				body.wp-admin.is-fullscreen-mode.has-toolbar-notices .interface-interface-skeleton {
-					top:32px;	/* Non-fullscreen default. */
+					top:32px;
 				}
 				body.wp-admin.is-fullscreen-mode.has-toolbar-notices .block-editor__container .block-editor-editor-skeleton,
 				body.wp-admin.is-fullscreen-mode.has-toolbar-notices .block-editor__container .block-editor-editor-skeleton .editor-post-publish-panel {
 					top:32px;
+				}
+				body.wp-admin.woocommerce-embed-page.has-toolbar-notices .woocommerce-layout__header {
+					top:32px;
+				}
+				body.wp-admin.woocommerce-embed-page.has-toolbar-notices #wpbody {
+					padding-top:32px;
 				}
 				@keyframes blinker {
 					25% { opacity: 0; }
