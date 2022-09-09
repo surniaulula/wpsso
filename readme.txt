@@ -231,13 +231,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.2.1-dev.2 (2022/09/07)**
+**Version 13.2.1-rc.1 (2022/09/09)**
 
 * **New Features**
 	* None.
 * **Improvements**
+	* Updated service API module names.
 	* Added support for the WooCommerce &gt; Settings &gt; Advanced &gt; Features &gt; Navigation option (adds the new WooCommerce navigation experience to the dashboard).
-	* Minor update for service API module names.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -476,9 +476,9 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 == Upgrade Notice ==
 
-= 13.2.1-dev.2 =
+= 13.2.1-rc.1 =
 
-(2022/09/07) Added support for the WooCommerce &gt; Settings &gt; Advanced &gt; Features &gt; Navigation option. Minor update for service API module names.
+(2022/09/09) Added support for the WooCommerce &gt; Settings &gt; Advanced &gt; Features &gt; Navigation option.
 
 = 13.2.0 =
 
