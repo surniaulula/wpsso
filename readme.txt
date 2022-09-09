@@ -231,7 +231,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.2.1-rc.1 (2022/09/09)**
+**Version 13.2.1 (2022/09/09)**
 
 * **New Features**
 	* None.
@@ -476,7 +476,7 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 == Upgrade Notice ==
 
-= 13.2.1-rc.1 =
+= 13.2.1 =
 
 (2022/09/09) Added support for the WooCommerce &gt; Settings &gt; Advanced &gt; Features &gt; Navigation option.
 
