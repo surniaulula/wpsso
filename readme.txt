@@ -231,16 +231,18 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.3.0-dev.2 (TBD)**
+**Version 13.3.0-dev.2 (2022/09/14)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Added support for the new 'priceType' property in Schema UnitPriceSpecification markup:
+		* Added a new "Product Price Type" option in the Document SSO metabox.
+		* Added a new "Default Price Type" option in the SSO &gt; General Settings page.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Renamed the 'audience_gender' form config array to 'target_gender'.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -492,7 +494,7 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 = 13.3.0-dev.2 =
 
-(TBD) None.
+(2022/09/14) Added support for the new 'priceType' property in Schema UnitPriceSpecification markup:
 
 = 13.2.1 =
 
