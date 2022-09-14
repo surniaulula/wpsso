@@ -52,7 +52,7 @@ if ( ! class_exists( 'WpssoJsonTypeOrganization' ) ) {
 				/**
 				 * Maybe get a different organization ID from the "Select an Organization" option.
 				 */
-				$org_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_organization_id', $filter_opts = true, $pad_opts = true );
+				$org_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_organization_id', $filter_opts = true, $merge_defs = true );
 
 				if ( $this->p->debug->enabled ) {
 

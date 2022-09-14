@@ -251,7 +251,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 		 *	save_options()
 		 *	delete_options()
 		 */
-		public function get_options( $term_id, $md_key = false, $filter_opts = true, $pad_opts = false ) {
+		public function get_options( $term_id, $md_key = false, $filter_opts = true, $merge_defs = false ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -259,14 +259,14 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 					'term_id'     => $term_id,
 					'md_key'      => $md_key,
 					'filter_opts' => $filter_opts,
-					'pad_opts'    => $pad_opts,	// Fallback to value in meta defaults.
+					'merge_defs'  => $merge_defs,	// Fallback to value in meta defaults.
 				) );
 			}
 
 			static $local_cache = array();
 
 			/**
-			 * Use $term_id and $filter_opts to create the cache ID string, but do not add $pad_opts.
+			 * Use $term_id and $filter_opts to create the cache ID string, but do not add $merge_defs.
 			 */
 			$cache_id = SucomUtil::get_assoc_salt( array( 'id' => $term_id, 'filter' => $filter_opts ) );
 
@@ -359,7 +359,7 @@ if ( ! class_exists( 'WpssoTerm' ) ) {
 				}
 			}
 
-			return $this->return_options( $term_id, $md_opts, $md_key, $pad_opts );
+			return $this->return_options( $term_id, $md_opts, $md_key, $merge_defs );
 		}
 
 		/**

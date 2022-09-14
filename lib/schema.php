@@ -97,9 +97,17 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( ! empty( $mod[ 'is_post' ] ) ) {
 
-			 	self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_condition', $enum_key = 'item_condition', $val_suffix = 'Condition' );
-
 				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_avail', $enum_key = 'item_availability' );
+
+			 	self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_condition', $enum_key = 'item_condition',
+					$val_prefix = '', $val_suffix = 'Condition' );
+
+				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_price_type', $enum_key = 'price_type' );
+
+				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_size_type', $enum_key = 'size_type',
+					$val_prefix = 'WearableSizeGroup', $val_suffix = '' );
+
+				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_target_gender', $enum_key = 'target_gender' );
 
 				self::check_prop_value_enumeration( $md_opts, $prop_name = 'schema_event_attendance', $enum_key = 'event_attendance' );
 
@@ -3780,7 +3788,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		 *
 		 *	WpssoSchema::check_prop_value_enumeration( $offer, 'itemCondition', 'item_condition', 'Condition' );
 		 */
-		public static function check_prop_value_enumeration( &$json_data, $prop_name, $enum_key, $val_suffix = '' ) {
+		public static function check_prop_value_enumeration( &$json_data, $prop_name, $enum_key, $val_prefix = '', $val_suffix = '' ) {
 
 			$wpsso =& Wpsso::get_instance();
 
@@ -3814,17 +3822,23 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				$enum_select = $wpsso->cf[ 'form' ][ $enum_key ];
 
-				$prop_val = $json_data[ $prop_name ];
+				$prop_val = $json_data[ $prop_name ];	// Example: 'New' or 'new'.
 
 				if ( ! isset( $enum_select[ $prop_val ] ) ) {
 
-					if ( isset( $enum_select[ 'https://schema.org/' . $prop_val ] ) ) {
+					$prop_val_ucf = ucfirst( $prop_val );
+					
+					if ( isset( $enum_select[ $prop_val_ucf ] ) ) {
 
-						$json_data[ $prop_name ] = 'https://schema.org/' . $prop_val;
+						$json_data[ $prop_name ] = $prop_val_ucf;
 
-					} elseif ( $val_suffix && isset( $enum_select[ 'https://schema.org/' . $prop_val . $val_suffix ] ) ) {
+					} elseif ( isset( $enum_select[ 'https://schema.org/' . $prop_val_ucf ] ) ) {
 
-						$json_data[ $prop_name ] = 'https://schema.org/' . $prop_val . $val_suffix;
+						$json_data[ $prop_name ] = 'https://schema.org/' . $prop_val_ucf;
+
+					} elseif ( isset( $enum_select[ 'https://schema.org/' . $val_prefix . $prop_val_ucf . $val_suffix ] ) ) {
+
+						$json_data[ $prop_name ] = 'https://schema.org/' . $val_prefix . $prop_val_ucf . $val_suffix;
 
 					} else {
 

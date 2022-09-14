@@ -1250,6 +1250,15 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'content'  => $form->get_no_input( 'product_price', $css_class = 'price', $css_id = '', $holder = true ) . ' ' .
 						$form->get_no_select( 'product_currency', $currencies, $css_class = 'currency' ),
 				),
+				'schema_product_price_type' => array(
+					'tr_class' => $schema_type_row_class[ 'product' ],
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Product Price Type', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-product_price_type',
+					'content'  => $form->get_no_select( 'product_price_type', $this->p->cf[ 'form' ][ 'price_type' ],
+						$css_class = '', $css_id = '', $is_assoc = true ),
+				),
 				'schema_product_min_advert_price' => array(
 					'tr_class' => $schema_type_row_class[ 'product' ],
 					'th_class' => 'medium',
@@ -1306,7 +1315,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'td_class' => 'blank',
 					'label'    => _x( 'Product Target Gender', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_target_gender',
-					'content'  => $form->get_no_select( 'product_target_gender', $this->p->cf[ 'form' ][ 'audience_gender' ],
+					'content'  => $form->get_no_select( 'product_target_gender', $this->p->cf[ 'form' ][ 'target_gender' ],
 						$css_class = 'gender', $css_id = '', $is_assoc = true ),
 				),
 				'schema_product_size' => array(

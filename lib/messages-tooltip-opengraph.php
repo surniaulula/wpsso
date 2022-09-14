@@ -56,6 +56,18 @@ if ( ! class_exists( 'WpssoMessagesTooltipOpenGraph' ) ) {
 
 					break;
 
+				case 'tooltip-og_def_price_type':	// Default Price Type.
+
+					$text = __( 'The default product price type (list price, invoice price, sale price, etc.).', 'wpsso' );
+
+					break;
+
+				case 'tooltip-og_def_currency':		// Default Currency.
+
+					$text = __( 'The default currency for money related options (product price, job salary, etc.).', 'wpsso' );
+
+					break;
+
 				case 'tooltip-og_def_country':		// Default Country.
 
 					$text = __( 'The default country when entering information about a place or location.', 'wpsso' );
@@ -65,12 +77,6 @@ if ( ! class_exists( 'WpssoMessagesTooltipOpenGraph' ) ) {
 				case 'tooltip-og_def_timezone':		// Default Timezone.
 
 					$text = __( 'The default timezone when entering information about a place or location.', 'wpsso' );
-
-					break;
-
-				case 'tooltip-og_def_currency':		// Default Currency.
-
-					$text = __( 'The default currency for money related options (product price, job salary, etc.).', 'wpsso' );
 
 					break;
 

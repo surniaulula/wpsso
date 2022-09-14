@@ -3590,7 +3590,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 *		[product:mfr_part_no]        => MPN
 		 *		[product:pattern]            => Pattern
 		 *		[product:size]               => Size
-		 *		[product:size_type]          => Size Type
+		 *		[product:size:type]          => Size Type
 		 *		[product:target_gender]      => Gender
 		 *		[product:fluid_volume:value] => Volume
 		 *	)
@@ -3656,7 +3656,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 
 				if ( $delim !== '_' ) {
 
-					$key = preg_replace( '/_(value|units)$/', $delim . '$1', $key );
+					$key = preg_replace( '/_(type|units|value)$/', $delim . '$1', $key );
 				}
 
 				$attr_names[ $prefix . $delim . $key ] = $val;

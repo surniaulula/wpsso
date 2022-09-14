@@ -224,7 +224,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 		 *	save_options()
 		 *	delete_options()
 		 */
-		public function get_options( $user_id, $md_key = false, $filter_opts = true, $pad_opts = false ) {
+		public function get_options( $user_id, $md_key = false, $filter_opts = true, $merge_defs = false ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -232,7 +232,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 					'user_id'     => $user_id,
 					'md_key'      => $md_key,
 					'filter_opts' => $filter_opts,
-					'pad_opts'    => $pad_opts,	// Fallback to value in meta defaults.
+					'merge_defs'  => $merge_defs,	// Fallback to value in meta defaults.
 				) );
 			}
 
@@ -251,7 +251,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 			static $local_cache = array();
 
 			/**
-			 * Use $user_id and $filter_opts to create the cache ID string, but do not add $pad_opts.
+			 * Use $user_id and $filter_opts to create the cache ID string, but do not add $merge_defs.
 			 */
 			$cache_id = SucomUtil::get_assoc_salt( array( 'id' => $user_id, 'filter' => $filter_opts ) );
 
@@ -378,7 +378,7 @@ if ( ! class_exists( 'WpssoUser' ) ) {
 				}
 			}
 
-			return $this->return_options( $user_id, $md_opts, $md_key, $pad_opts );
+			return $this->return_options( $user_id, $md_opts, $md_key, $merge_defs );
 		}
 
 		/**

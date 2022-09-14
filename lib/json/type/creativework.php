@@ -83,7 +83,7 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 					'schema_pub_person_id'  => 'publisher',
 				) as $md_key => $prop_name ) {
 
-					$md_val = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $md_key, $filter_opts = true, $pad_opts = true );
+					$md_val = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $md_key, $filter_opts = true, $merge_defs = true );
 
 					if ( WpssoSchema::is_valid_val( $md_val ) ) {	// Not null, an empty string, or 'none'.
 
@@ -176,7 +176,7 @@ if ( ! class_exists( 'WpssoJsonTypeCreativeWork' ) ) {
 					'schema_lang'            => 'inLanguage',
 				) as $md_key => $prop_name ) {
 
-					$md_val = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $md_key, $filter_opts = true, $pad_opts = true );
+					$md_val = $mod[ 'obj' ]->get_options( $mod[ 'id' ], $md_key, $filter_opts = true, $merge_defs = true );
 
 					if ( WpssoSchema::is_valid_val( $md_val ) ) {	// Not null, an empty string, or 'none'.
 

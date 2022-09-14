@@ -119,7 +119,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 		 *	save_options()
 		 *	delete_options()
 		 */
-		public function get_options( $comment_id, $md_key = false, $filter_opts = true, $pad_opts = false ) {
+		public function get_options( $comment_id, $md_key = false, $filter_opts = true, $merge_defs = false ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -127,14 +127,14 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 					'comment_id'  => $comment_id,
 					'md_key'      => $md_key,
 					'filter_opts' => $filter_opts,
-					'pad_opts'    => $pad_opts,
+					'merge_defs'  => $merge_defs,
 				) );
 			}
 
 			static $local_cache = array();
 
 			/**
-			 * Use $comment_id and $filter_opts to create the cache ID string, but do not add $pad_opts.
+			 * Use $comment_id and $filter_opts to create the cache ID string, but do not add $merge_defs.
 			 */
 			$cache_id = SucomUtil::get_assoc_salt( array( 'id' => $comment_id, 'filter' => $filter_opts ) );
 
@@ -218,7 +218,7 @@ if ( ! class_exists( 'WpssoComment' ) ) {
 				}
 			}
 
-			return $this->return_options( $comment_id, $md_opts, $md_key, $pad_opts );
+			return $this->return_options( $comment_id, $md_opts, $md_key, $merge_defs );
 		}
 
 		/**

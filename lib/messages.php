@@ -752,6 +752,10 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'label' => _x( 'Product Price', 'option label', 'wpsso' ),
 						'desc'  => _x( 'a product price', 'tooltip fragment', 'wpsso' ),
 					),
+					'product_price_type' => array(
+						'label' => _x( 'Product Price Type', 'option label', 'wpsso' ),
+						'desc'  => _x( 'a product price type', 'tooltip fragment', 'wpsso' ),
+					),
 					'product_retailer_part_no' => array(
 						'label' => _x( 'Product SKU', 'option label', 'wpsso' ),
 						'desc'  => _x( 'a Stock-Keeping Unit (SKU)', 'tooltip fragment', 'wpsso' ),
@@ -769,6 +773,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					'product_target_gender' => array(
 						'label' => _x( 'Product Target Gender', 'option label', 'wpsso' ),
 						'desc'  => _x( 'a product target gender', 'tooltip fragment', 'wpsso' ),
+						'about' => __( 'https://support.google.com/merchants/answer/6324479', 'wpsso' ),
 					),
 					'product_fluid_volume_value' => array(
 						'label' => _x( 'Product Fluid Volume', 'option label', 'wpsso' ),

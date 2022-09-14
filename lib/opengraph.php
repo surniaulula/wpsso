@@ -1142,6 +1142,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 *		'product:pretax_price:currency'   => '',
 			 *		'product:price:amount'            => 'product_price',
 			 *		'product:price:currency'          => 'product_currency',
+			 *		'product:price:type'              => 'product_price_type',
 			 *		'product:purchase_limit'          => '',
 			 *		'product:retailer_category'       => '',
 			 *		'product:retailer_item_id'        => '',
@@ -1155,7 +1156,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 *		'product:shipping_weight:value'   => '',
 			 *		'product:shipping_weight:units'   => '',
 			 *		'product:size'                    => 'product_size',
-			 *		'product:size_type'               => 'product_size_type',
+			 *		'product:size:type'               => 'product_size_type',
 			 *		'product:target_gender'           => 'product_target_gender',
 			 *		'product:upc'                     => 'product_gtin12',
 			 *		'product:fluid_volume:value'      => 'product_fluid_volume_value',
@@ -1337,23 +1338,25 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				$wpsso->debug->log( 'checking ' . $mt_pre . ' price value' );
 			}
 
-			$def_currency_key = $mt_pre . ':price:currency';
-			$def_currency     = empty( $mt_og[ $def_currency_key ] ) ? $wpsso->options[ 'og_def_currency' ] : $mt_og[ $def_currency_key ];
-			$min_price_key    = $mt_pre . ':min_advert_price:amount';
-			$min_price        = empty( $mt_og[ $min_price_key ] ) ? 0 : $mt_og[ $min_price_key ];
+			$def_currency_key  = $mt_pre . ':price:currency';
+			$def_currency      = empty( $mt_og[ $def_currency_key ] ) ? $wpsso->options[ 'og_def_currency' ] : $mt_og[ $def_currency_key ];
+			$min_adv_price_key = $mt_pre . ':min_advert_price:amount';
+			$min_adv_price     = empty( $mt_og[ $min_adv_price_key ] ) ? 0 : $mt_og[ $min_adv_price_key ];
 
 			foreach ( array( 'min_advert_price', 'original_price', 'pretax_price', 'price', 'sale_price', 'shipping_cost' ) as $price_name ) {
 
-				if ( isset( $mt_og[ $mt_pre . ':' . $price_name . ':amount' ] ) ) {
+				$amount_key   = $mt_pre . ':' . $price_name . ':amount';
+				$currency_key = $mt_pre . ':' . $price_name . ':currency';
 
-					$amount_key   = $mt_pre . ':' . $price_name . ':amount';
-					$currency_key = $mt_pre . ':' . $price_name . ':currency';
+				if ( isset( $mt_og[ $amount_key ] ) ) {
 
 					if ( is_numeric( $mt_og[ $amount_key ] ) ) {	// Allow for price of 0.
 
-						if ( $min_price && $mt_og[ $amount_key ] < $min_price ) {
+						if ( $min_adv_price && $mt_og[ $amount_key ] < $min_adv_price ) {
 
-							$mt_og[ $amount_key ] = $min_price;
+							$mt_og[ $mt_pre . ':price:type' ] = 'https://schema.org/MinimumAdvertisedPrice';
+
+							$mt_og[ $amount_key ] = $min_adv_price;
 						}
 
 						if ( empty( $mt_og[ $currency_key ] ) ) {

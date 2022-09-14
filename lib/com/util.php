@@ -2244,7 +2244,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':quantity:unit_text' => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':target_gender'      => '',
 				$mt_pre . ':size'               => '',
-				$mt_pre . ':size_type'          => '',	// Non-standard / internal meta tag.
+				$mt_pre . ':size:type'          => '',	// Non-standard / internal meta tag.
 
 				/**
 				 * Product ratings and reviews.
@@ -2282,6 +2282,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				$mt_pre . ':pretax_price:currency'           => '',
 				$mt_pre . ':price:amount'                    => '',
 				$mt_pre . ':price:currency'                  => '',
+				$mt_pre . ':price:type'                      => '',	// Non-standard / internal meta tag.
 				$mt_pre . ':sale_price:amount'               => '',
 				$mt_pre . ':sale_price:currency'             => '',
 				$mt_pre . ':sale_price_dates:start'          => '',

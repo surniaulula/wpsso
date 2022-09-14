@@ -44,7 +44,7 @@ if ( ! class_exists( 'WpssoJsonTypePerson' ) ) {
 
 			if ( ! empty( $mod[ 'obj' ] ) ) {	// Just in case.
 
-				$user_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_person_id', $filter_opts = true, $pad_opts = true );
+				$user_id = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_person_id', $filter_opts = true, $merge_defs = true );
 			}
 
 			if ( empty( $user_id ) || 'none' === $user_id ) {

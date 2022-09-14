@@ -299,7 +299,10 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$def_schema_type     = $this->p->schema->get_mod_schema_type_id( $mod, $use_md_opts = false );
 				$def_primary_term_id = $this->p->post->get_default_term_id( $mod, $tax_slug = 'category' );	// Returns term ID or false.
 				$def_reading_mins    = $this->p->page->get_reading_mins( $mod );
-				$def_img_id_lib      = empty( $opts[ 'og_def_img_id_lib' ] ) ? '' : $opts[ 'og_def_img_id_lib' ];
+				$def_img_id_lib      = isset( $opts[ 'og_def_img_id_lib' ] ) ? $opts[ 'og_def_img_id_lib' ] : 'wp';
+				$def_product_cat     = isset( $opts[ 'og_def_product_category' ] ) ? $opts[ 'og_def_product_category' ] : 'none';
+				$def_price_type      = isset( $opts[ 'og_def_price_type' ] ) ? $opts[ 'og_def_price_type' ] : 'https://schema.org/ListPrice';
+				$def_currency        = isset( $opts[ 'og_def_currency' ] ) ? $opts[ 'og_def_currency' ] : 'USD';
 				$def_lang            = SucomUtil::get_locale( $mod, $read_cache = false );	// Get locale for post, term, or user object.
 				$job_locations_max   = SucomUtil::get_const( 'WPSSO_SCHEMA_JOB_LOCATIONS_MAX', 5 );
 
@@ -309,11 +312,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				 * Note that the timezone option will be empty if a UTC offset (instead of a city) has been
 				 * selected in the WordPress settings.
 				 */
-				$timezone = get_option( 'timezone_string' );
+				$def_timezone = get_option( 'timezone_string' );
 
-				if ( empty( $timezone ) ) {
+				if ( empty( $def_timezone ) ) {
 
-					$timezone = 'UTC';
+					$def_timezone = 'UTC';
 				}
 
 				$md_defs = array(
@@ -384,10 +387,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					/**
 					 * Open Graph and Schema Product type.
 					 */
-					'product_category'            => isset( $opts[ 'og_def_product_category' ] ) ? $opts[ 'og_def_product_category' ] : 'none',
+					'product_category'            => $def_product_cat,
 					'product_brand'               => '',
 					'product_price'               => '0.00',	// Product Price.
-					'product_currency'            => empty( $opts[ 'og_def_currency' ] ) ? 'USD' : $opts[ 'og_def_currency' ],
+					'product_price_type'          => $def_price_type,
+					'product_currency'            => $def_currency,
 					'product_min_advert_price'    => '0.00',	// Product Min Advert Price.
 					'product_avail'               => 'none',
 					'product_condition'           => 'none',
@@ -444,10 +448,10 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_book_author_url'       => '',					// Book Author URL.
 					'schema_book_pub_date'         => '',					// Book Published Date.
 					'schema_book_pub_time'         => 'none',				// Book Published Time.
-					'schema_book_pub_timezone'     => $timezone,				// Book Published Timezone.
+					'schema_book_pub_timezone'     => $def_timezone,			// Book Published Timezone.
 					'schema_book_created_date'     => '',					// Book Created Date.
 					'schema_book_created_time'     => 'none',				// Book Created Time.
-					'schema_book_created_timezone' => $timezone,				// Book Created Timezone.
+					'schema_book_created_timezone' => $def_timezone,			// Book Created Timezone.
 					'schema_book_edition'          => '',					// Book Edition.
 					'schema_book_format'           => $opts[ 'schema_def_book_format' ],	// Book Format.
 					'schema_book_pages'            => '',					// Number of Pages.
@@ -475,19 +479,19 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_event_status'                => 'https://schema.org/EventScheduled',			// Event Status.
 					'schema_event_start_date'            => '',							// Event Start (Date).
 					'schema_event_start_time'            => 'none',							// Event Start (Time).
-					'schema_event_start_timezone'        => $timezone,						// Event Start (Timezone).
+					'schema_event_start_timezone'        => $def_timezone,						// Event Start (Timezone).
 					'schema_event_end_date'              => '',							// Event End (Date).
 					'schema_event_end_time'              => 'none',							// Event End (Time).
-					'schema_event_end_timezone'          => $timezone,						// Event End (Timezone).
+					'schema_event_end_timezone'          => $def_timezone,						// Event End (Timezone).
 					'schema_event_previous_date'         => '',							// Event Previous Start (Date).
 					'schema_event_previous_time'         => 'none',							// Event Previous Start (Time).
-					'schema_event_previous_timezone'     => $timezone,						// Event Previous Start (Timezone).
+					'schema_event_previous_timezone'     => $def_timezone,						// Event Previous Start (Timezone).
 					'schema_event_offers_start_date'     => '',							// Event Offers Start (Date.
 					'schema_event_offers_start_time'     => 'none',							// Event Offers Start (Time.
-					'schema_event_offers_start_timezone' => $timezone,						// Event Offers Start (Timezone.
+					'schema_event_offers_start_timezone' => $def_timezone,						// Event Offers Start (Timezone.
 					'schema_event_offers_end_date'       => '',							// Event Offers End (Date).
 					'schema_event_offers_end_time'       => 'none',							// Event Offers End (Time).
-					'schema_event_offers_end_timezone'   => $timezone,						// Event Offers End (Timezone).
+					'schema_event_offers_end_timezone'   => $def_timezone,						// Event Offers End (Timezone).
 
 					/**
 					 * Schema How-To.
@@ -510,7 +514,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_job_location_id'          => $opts[ 'schema_def_job_location_id' ],	// Job Location.
 					'schema_job_location_type'        => $opts[ 'schema_def_job_location_type' ],	// Job Location Type.
 					'schema_job_salary'               => '',					// Job Base Salary.
-					'schema_job_salary_currency'      => $opts[ 'og_def_currency' ],		// Job Base Salary Currency.
+					'schema_job_salary_currency'      => $def_currency,				// Job Base Salary Currency.
 					'schema_job_salary_period'        => 'year',					// Job Base Salary per Year, Month, Week, Hour.
 					'schema_job_empl_type_FULL_TIME'  => 0,						// Job Employment Type.
 					'schema_job_empl_type_PART_TIME'  => 0,
@@ -522,19 +526,19 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_job_empl_type_OTHER'      => 0,
 					'schema_job_expire_date'          => '',					// Job Posting Expires (Date).
 					'schema_job_expire_time'          => 'none',					// Job Posting Expires (Time).
-					'schema_job_expire_timezone'      => $timezone,					// Job Posting Expires (Timezone).
+					'schema_job_expire_timezone'      => $def_timezone,				// Job Posting Expires (Timezone).
 
 					/**
 					 * Schema Movie.
 					 */
-					'schema_movie_prodco_org_id'     => 'none',	// Movie Production Company.
-					'schema_movie_released_date'     => '',		// Movie Release Date.
-					'schema_movie_released_time'     => 'none',	// Movie Release Time.
-					'schema_movie_released_timezone' => $timezone,	// Movie Release Timezone.
-					'schema_movie_duration_days'     => 0,		// Movie Runtime (Days).
-					'schema_movie_duration_hours'    => 0,		// Movie Runtime (Hours).
-					'schema_movie_duration_mins'     => 0,		// Movie Runtime (Mins).
-					'schema_movie_duration_secs'     => 0,		// Movie Runtime (Secs).
+					'schema_movie_prodco_org_id'     => 'none',		// Movie Production Company.
+					'schema_movie_released_date'     => '',			// Movie Release Date.
+					'schema_movie_released_time'     => 'none',		// Movie Release Time.
+					'schema_movie_released_timezone' => $def_timezone,	// Movie Release Timezone.
+					'schema_movie_duration_days'     => 0,			// Movie Runtime (Days).
+					'schema_movie_duration_hours'    => 0,			// Movie Runtime (Hours).
+					'schema_movie_duration_mins'     => 0,			// Movie Runtime (Mins).
+					'schema_movie_duration_secs'     => 0,			// Movie Runtime (Secs).
 
 					/**
 					 * Schema Organization.
@@ -611,15 +615,15 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					/**
 					 * Schema Reviewed Subject: Creative Work.
 					 */
-					'schema_review_item_cw_author_type'      => 'none',	// Subject Author Type.
-					'schema_review_item_cw_author_name'      => '',		// Subject Author Name.
-					'schema_review_item_cw_author_url'       => '',		// Subject Author URL.
-					'schema_review_item_cw_pub_date'         => '',		// Subject Published Date.
-					'schema_review_item_cw_pub_time'         => 'none',	// Subject Published Time.
-					'schema_review_item_cw_pub_timezone'     => $timezone,	// Subject Published Timezone.
-					'schema_review_item_cw_created_date'     => '',		// Subject Created Date.
-					'schema_review_item_cw_created_time'     => 'none',	// Subject Created Time.
-					'schema_review_item_cw_created_timezone' => $timezone,	// Subject Created Timezone.
+					'schema_review_item_cw_author_type'      => 'none',		// Subject Author Type.
+					'schema_review_item_cw_author_name'      => '',			// Subject Author Name.
+					'schema_review_item_cw_author_url'       => '',			// Subject Author URL.
+					'schema_review_item_cw_pub_date'         => '',			// Subject Published Date.
+					'schema_review_item_cw_pub_time'         => 'none',		// Subject Published Time.
+					'schema_review_item_cw_pub_timezone'     => $def_timezone,	// Subject Published Timezone.
+					'schema_review_item_cw_created_date'     => '',			// Subject Created Date.
+					'schema_review_item_cw_created_time'     => 'none',		// Subject Created Time.
+					'schema_review_item_cw_created_timezone' => $def_timezone,	// Subject Created Timezone.
 
 					/**
 					 * Schema Reviewed Subject: Book.
@@ -782,6 +786,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$this->p->debug->log( 'get_md_defaults filters skipped' );
 			}
 
+			if ( $this->p->debug->enabled ) {
+
+				$this->p->debug->log_arr( 'md_defs', $md_defs );
+			}
+
 			if ( false !== $md_key ) {
 
 				if ( isset( $md_defs[ $md_key ] ) ) {
@@ -795,7 +804,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 			return $md_defs;
 		}
 
-		public function get_options( $obj_id, $md_key = false, $filter_opts = true, $pad_opts = false ) {
+		public function get_options( $obj_id, $md_key = false, $filter_opts = true, $merge_defs = false ) {
 
 			$ret_val = false === $md_key ? array() : null;	// Allow for $md_key = 0.
 
@@ -870,6 +879,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				}
 			}
 
+			/**
+			 * Maybe add any new / missing options keys.
+			 */
+			$md_opts = $this->merge_defaults( $obj_id, $md_opts );
+
 			$md_opts = (array) apply_filters( 'wpsso_upgraded_md_options', $md_opts );
 
 			/**
@@ -881,9 +895,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 		}
 
 		/**
-		 * Do not pass $md_opts by reference as the options array may get padded with default values.
+		 * Do not pass $md_opts by reference as the options array may get merged with default values.
 		 */
-		protected function return_options( $obj_id, array $md_opts, $md_key = false, $pad_opts = false ) {
+		protected function return_options( $obj_id, array $md_opts, $md_key = false, $merge_defs = false ) {
 
 			/**
 			 * If there is a multilingual plugin available, trust the plugin and ignore any previous / inherited custom
@@ -894,25 +908,9 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				unset( $md_opts[ 'schema_lang' ] );
 			}
 
-			if ( $pad_opts ) {
+			if ( $merge_defs ) {
 
-				if ( empty( $md_opts[ 'options_padded' ] ) ) {
-
-					$md_defs = $this->get_defaults( $obj_id );
-
-					if ( is_array( $md_defs ) ) {	// Just in case.
-
-						foreach ( $md_defs as $md_defs_key => $md_defs_val ) {
-
-							if ( ! isset( $md_opts[ $md_defs_key ] ) && $md_defs_val !== '' ) {
-
-								$md_opts[ $md_defs_key ] = $md_defs[ $md_defs_key ];
-							}
-						}
-					}
-
-					$md_opts[ 'options_padded' ] = true;
-				}
+				$md_opts = $this->merge_defaults( $obj_id, $md_opts );
 			}
 
 			if ( false !== $md_key ) {
@@ -933,6 +931,29 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				}
 
 				return $md_opts[ $md_key ];
+			}
+
+			return $md_opts;
+		}
+
+		protected function merge_defaults( $obj_id, array $md_opts ) {
+
+			if ( empty( $md_opts[ 'options_merged' ] ) ) {
+
+				$md_defs = $this->get_defaults( $obj_id );
+
+				if ( is_array( $md_defs ) ) {	// Just in case.
+
+					foreach ( $md_defs as $md_defs_key => $md_defs_val ) {
+
+						if ( ! isset( $md_opts[ $md_defs_key ] ) && $md_defs_val !== '' ) {
+
+							$md_opts[ $md_defs_key ] = $md_defs[ $md_defs_key ];
+						}
+					}
+				}
+
+				$md_opts[ 'options_merged' ] = true;
 			}
 
 			return $md_opts;

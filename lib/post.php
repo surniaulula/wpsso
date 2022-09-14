@@ -354,7 +354,7 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 		 *	save_options()
 		 *	delete_options()
 		 */
-		public function get_options( $post_id, $md_key = false, $filter_opts = true, $pad_opts = false ) {
+		public function get_options( $post_id, $md_key = false, $filter_opts = true, $merge_defs = false ) {
 
 			if ( $this->p->debug->enabled ) {
 
@@ -362,14 +362,14 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					'post_id'     => $post_id,
 					'md_key'      => $md_key,
 					'filter_opts' => $filter_opts,
-					'pad_opts'    => $pad_opts,
+					'merge_defs'  => $merge_defs,
 				) );
 			}
 
 			static $local_cache = array();
 
 			/**
-			 * Use $post_id and $filter_opts to create the cache ID string, but do not add $pad_opts.
+			 * Use $post_id and $filter_opts to create the cache ID string, but do not add $merge_defs.
 			 */
 			$cache_id = SucomUtil::get_assoc_salt( array( 'id' => $post_id, 'filter' => $filter_opts ) );
 
@@ -409,6 +409,11 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 				 * Check if options need to be upgraded and saved.
 				 */
 				if ( $this->p->opt->is_upgrade_required( $md_opts ) ) {
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log( 'upgrade is required' );
+					}
 
 					$md_opts = $this->upgrade_options( $md_opts, $post_id );
 
@@ -494,10 +499,16 @@ if ( ! class_exists( 'WpssoPost' ) ) {
 					 * Since WPSSO Core v8.2.0.
 					 */
 					$md_opts = apply_filters( 'wpsso_sanitize_md_options', $md_opts, $mod );
+
+					if ( $this->p->debug->enabled ) {
+
+						$this->p->debug->log_arr( 'md_opts', $md_opts );
+					}
+
 				}
 			}
 
-			return $this->return_options( $post_id, $md_opts, $md_key, $pad_opts );
+			return $this->return_options( $post_id, $md_opts, $md_key, $merge_defs );
 		}
 
 		/**

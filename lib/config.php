@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '13.2.1',	// Plugin version.
-					'opt_version' => '903',		// Increment when changing default option values.
+					'version'     => '13.3.0-dev.2',	// Plugin version.
+					'opt_version' => '908',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1295,19 +1295,20 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_def_article_section'  => 'none',	// Default Article Section.
 					'og_def_img_id'           => '',	// Default Image ID.
 					'og_def_img_id_lib'       => 'wp',
-					'og_def_img_url'          => '',	// or Default Image URL.
-					'og_def_product_category' => 'none',	// Default Product Type.
-					'og_def_country'          => 'none',	// Default Country.
-					'og_def_timezone'         => 'UTC',	// Default Timezone.
-					'og_def_currency'         => 'USD',	// Default Currency.
+					'og_def_img_url'          => '',				// or Default Image URL.
+					'og_def_product_category' => 'none',				// Default Product Type.
+					'og_def_price_type'       => 'https://schema.org/ListPrice',	// Default Price Type.
+					'og_def_currency'         => 'USD',				// Default Currency.
+					'og_def_country'          => 'none',				// Default Country.
+					'og_def_timezone'         => 'UTC',				// Default Timezone.
 					'og_img_width'            => 1200,
 					'og_img_height'           => 630,
 					'og_img_crop'             => 1,
 					'og_img_crop_x'           => 'center',
 					'og_img_crop_y'           => 'center',
 					'og_img_max'              => 1,		// Maximum Images to Include.
-					'og_title_sep'            => '-',	// Title Separator.
-					'og_ellipsis'             => '...',	// Truncated Text Ellipsis.
+					'og_title_sep'            => '-',		// Title Separator.
+					'og_ellipsis'             => '...',		// Truncated Text Ellipsis.
 					'og_desc_hashtags'        => 0,		// Description Hashtags.
 					'og_vid_max'              => 1,
 					'og_vid_autoplay'         => 1,
@@ -2011,6 +2012,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_min_advert_price'   => '',	// Product Min Advert Price Custom Field.
 					'plugin_cf_product_pattern'            => '',	// Product Pattern Custom Field.
 					'plugin_cf_product_price'              => '',	// Product Price Custom Field.
+					'plugin_cf_product_price_type'         => '',	// Product Price Type Custom Field.
 					'plugin_cf_product_retailer_part_no'   => '',	// Product SKU Custom Field.
 					'plugin_cf_product_size'               => '',	// Product Size Custom Field.
 					'plugin_cf_product_size_type'          => '',	// Product Size Type Custom Field.
@@ -2098,6 +2100,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_min_advert_price'   => 'product_min_advert_price',
 					'plugin_cf_product_pattern'            => 'product_pattern',
 					'plugin_cf_product_price'              => 'product_price',
+					'plugin_cf_product_price_type'         => 'product_price_type',
 					'plugin_cf_product_retailer_part_no'   => 'product_retailer_part_no',
 					'plugin_cf_product_size'               => 'product_size',
 					'plugin_cf_product_size_type'          => 'product_size_type',
@@ -2765,6 +2768,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_min_advert_price'   => 'Product Min Advert Price Custom Field',
 					'plugin_cf_product_pattern'            => 'Product Pattern Custom Field',
 					'plugin_cf_product_price'              => 'Product Price Custom Field',
+					'plugin_cf_product_price_type'         => 'Product Price Type Custom Field',
 					'plugin_cf_product_size'               => 'Product Size Custom Field',
 					'plugin_cf_product_size_type'          => 'Product Size Type Custom Field',
 					'plugin_cf_product_retailer_part_no'   => 'Product SKU Custom Field',
@@ -2821,6 +2825,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_img_id'            => null,
 					'schema_img_id_lib'        => null,
 					'schema_img_url'           => null,
+					'product_price_type'       => null,
 					'product_min_advert_price' => null,
 				),
 
@@ -2828,9 +2833,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * Validated on 2020/08/17.
 				 *
 				 * See https://developers.facebook.com/docs/marketing-api/catalog/reference/#og-tags.
-				 *
-				 * Optional for dynamic ads. N/A for commerce. Age group associated to the item. Accepted values:
-				 * adult, all ages, teen, kids, toddler, infant, newborn.
 				 */
 				'age_group' => array(
 					'none'     => '[None]',
@@ -2841,23 +2843,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'toddler'  => 'Toddler',
 					'infant'   => 'Infant',
 					'newborn'  => 'Newborn',
-				),
-
-				/**
-				 * Validated on 2020/08/17.
-				 *
-				 * See https://schema.org/suggestedGender.
-				 *
-				 * See https://developers.facebook.com/docs/marketing-api/catalog/reference/#og-tags.
-				 *
-				 * Optional for dynamic ads. Required for commerce. Determines gender for sizing. Supported values:
-				 * female, male, unisex.
-				 */
-				'audience_gender' => array(
-					'none'   => '[None]',
-					'male'   => 'Male',
-					'female' => 'Female',
-					'unisex' => 'Unisex',
 				),
 
 				/**
@@ -2895,6 +2880,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * A Schema enumerated value.
 				 *
 				 * See https://schema.org/EventAttendanceModeEnumeration.
+				 *
+				 * Used by WpssoSchema->filter_sanitize_md_options().
 				 */
 				'event_attendance' => array(
 					'none'                                          => '[None]',
@@ -2907,6 +2894,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * A Schema enumerated value.
 				 *
 				 * See https://schema.org/EventStatusType.
+				 *
+				 * Used by WpssoSchema->filter_sanitize_md_options().
 				 */
 				'event_status' => array(	
 					'none'                                => '[None]',
@@ -2921,6 +2910,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * A Schema enumerated value.
 				 *
 				 * See https://schema.org/ItemAvailability.
+				 *
+				 * Used by WpssoSchema->filter_sanitize_md_options().
 				 */
 				'item_availability' => array(
 					'none'                                   => '[None]',
@@ -2940,6 +2931,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * A Schema enumerated value.
 				 *
 				 * See https://schema.org/OfferItemCondition.
+				 *
+				 * Used by WpssoSchema->filter_sanitize_md_options().
 				 */
 				'item_condition' => array(
 					'none'                                    => '[None]',
@@ -2960,18 +2953,53 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 
 				/**
+				 * Validated on 2022/09/14.
+				 *
+				 * See https://schema.org/PriceTypeEnumeration.
+				 *
+				 * Used by WpssoSchema->filter_sanitize_md_options().
+				 */
+				'price_type' => array(
+					'none'                                      => '[None]',
+					'https://schema.org/InvoicePrice'           => 'Invoice Price',
+					'https://schema.org/ListPrice'              => 'List Price',
+					'https://schema.org/MSRP'                   => 'Manufacturer Suggested Retail Price',
+					'https://schema.org/MinimumAdvertisedPrice' => 'Minimum Advertised Price',
+					'https://schema.org/SalePrice'              => 'Sale Price',
+					'https://schema.org/SRP'                    => 'Suggested Retail Price',
+				),
+
+				/**
 				 * Validated on 2021/11/09.
 				 *
 				 * See https://support.google.com/merchants/answer/6324497.
+				 *
+				 * Used by WpssoSchema->filter_sanitize_md_options().
 				 */
 				'size_type' => array(
-					'none'      => '[None]',
-					'regular'   => 'Regular',
-					'petite'    => 'Petite',
-					'plus'      => 'Plus',
-					'tall'      => 'Tall',
-					'big'       => 'Big',
-					'maternity' => 'Maternity',
+					'none'                                          => '[None]',
+					'https://schema.org/WearableSizeGroupRegular'   => 'Regular',
+					'https://schema.org/WearableSizeGroupPetite'    => 'Petite',
+					'https://schema.org/WearableSizeGroupPlus'      => 'Plus',
+					'https://schema.org/WearableSizeGroupTall'      => 'Tall',
+					'https://schema.org/WearableSizeGroupBig'       => 'Big',
+					'https://schema.org/WearableSizeGroupMaternity' => 'Maternity',
+				),
+
+				/**
+				 * Validated on 2020/08/17.
+				 *
+				 * See https://schema.org/suggestedGender.
+				 *
+				 * See https://developers.facebook.com/docs/marketing-api/catalog/reference/#og-tags.
+				 *
+				 * See https://support.google.com/merchants/answer/6324479?ref_topic=6324338.
+				 */
+				'target_gender' => array(
+					'none'   => '[None]',
+					'female' => 'Female',
+					'male'   => 'Male',
+					'unisex' => 'Unisex',
 				),
 
 				/**
@@ -3312,6 +3340,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'product:pretax_price:currency'     => '',				// Used by WooCommerce module.
 						'product:price:amount'              => 'product_price',
 						'product:price:currency'            => 'product_currency',
+						'product:price:type'                => 'product_price_type',		// Non-standard / internal meta tag.
 						'product:purchase_limit'            => '',
 						'product:retailer_category'         => '',				// Non-standard / internal meta tag.
 						'product:retailer_item_id'          => '',				// Product ID. 
@@ -3325,7 +3354,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'product:shipping_weight:value'     => '',
 						'product:shipping_weight:units'     => '',
 						'product:size'                      => 'product_size',
-						'product:size_type'                 => 'product_size_type',		// Non-standard / internal meta tag.
+						'product:size:type'                 => 'product_size_type',		// Non-standard / internal meta tag.
 						'product:target_gender'             => 'product_target_gender',
 						'product:upc'                       => 'product_gtin12',
 						'product:fluid_volume:value'        => 'product_fluid_volume_value',	// Non-standard / internal meta tag.
@@ -3784,7 +3813,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'service.taxi'       => 'https://schema.org/TaxiService',
 							),
 							'service.channel'  => 'https://schema.org/ServiceChannel',
-							'structured.value' => 'https://schema.org/StructuredValue',
 							'ticket'           => 'https://schema.org/Ticket',
 							'trip'             => array(
 								'trip'         => 'https://schema.org/Trip',

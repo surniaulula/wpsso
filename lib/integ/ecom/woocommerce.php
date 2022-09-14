@@ -1112,6 +1112,8 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 					$this->p->debug->log( 'product is on sale' );
 				}
 
+				$mt_ecom[ 'product:price:type' ] = 'https://schema.org/SalePrice';
+
 				if ( method_exists( $product, 'get_sale_price' ) ) {
 
 					$sale_price = $product->get_sale_price();

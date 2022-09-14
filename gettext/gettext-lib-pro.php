@@ -327,6 +327,7 @@ _x( 'Schema Product Information (Main Product)', 'metabox title', 'wpsso' );
 _x( 'Product Type', 'option label', 'wpsso' );
 _x( 'Product Brand', 'option label', 'wpsso' );
 _x( 'Product Price', 'option label', 'wpsso' );
+_x( 'Product Price Type', 'option label', 'wpsso' );
 _x( 'Product Min Advert Price', 'option label', 'wpsso' );
 _x( 'Product Availability', 'option label', 'wpsso' );
 _x( 'Product Condition', 'option label', 'wpsso' );
