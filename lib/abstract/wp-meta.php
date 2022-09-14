@@ -852,8 +852,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'notranslate',
 				) as $directive_key ) {
 
-					$opt_key = 'robots_' . $directive_key;
-
+					$opt_key  = 'robots_' . $directive_key;
 					$meta_key = '_wpsso_' . $directive_key;
 
 					$directive_value = static::get_meta( $obj_id, $meta_key, $single = true );	// Use static method from child.
@@ -876,6 +875,23 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				if ( $this->p->avail[ 'lang' ][ 'any' ] ) {
 
 					unset( $md_opts[ 'schema_lang' ] );
+				}
+			}
+
+			if ( $prev_version > 0 && $prev_version <= 910 ) {
+
+				if ( ! empty( $md_opts[ 'product_target_gender' ] ) ) {
+
+					switch( $md_opts[ 'product_target_gender' ] ) {
+
+						case 'female':
+						case 'male':
+						case 'unisex':
+							
+							$md_opts[ 'product_target_gender' ] = ucfirst( $md_opts[ 'product_target_gender' ] );
+
+							break;
+					}
 				}
 			}
 
