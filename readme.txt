@@ -231,7 +231,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.3.0-dev.2 (2022/09/14)**
+**Version 13.3.0-dev.3 (2022/09/14)**
 
 * **New Features**
 	* None.
@@ -239,8 +239,9 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added support for the new 'priceType' property in Schema UnitPriceSpecification markup:
 		* Added a new "Product Price Type" option in the Document SSO metabox.
 		* Added a new "Default Price Type" option in the SSO &gt; General Settings page.
+		* Added a new "Product Price Type Custom Field" option in the SSO &gt; Advanced Settings page.
 * **Bugfixes**
-	* None.
+	* Fixed SSO &gt; Advanced Settings &gt; Metadata &gt; Custom Fields tab option values (should be blank, not 0).
 * **Developer Notes**
 	* Renamed the 'audience_gender' form config array to 'target_gender'.
 * **Requires At Least**
@@ -492,7 +493,7 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 == Upgrade Notice ==
 
-= 13.3.0-dev.2 =
+= 13.3.0-dev.3 =
 
 (2022/09/14) Added support for the new 'priceType' property in Schema UnitPriceSpecification markup:
 
