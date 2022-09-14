@@ -340,8 +340,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 					$table_rows[ $title_key ] = '' .
 						$form->get_th_html_locale( _x( 'Archive Page Title', 'option label', 'wpsso' ),
 							$css_class = '', $title_key ) .
-						'<td class="blank">' . $form->get_no_input_locale( $title_key, $css_class = 'wide', $css_id = '',
-							$len = 0, $def_title_text ) . '</td>';
+						'<td class="blank">' . $form->get_no_input_locale( $title_key, $css_class = 'wide', $css_id = '', $def_title_text ) . '</td>';
 
 					$table_rows[ $desc_key ] = '' . 
 						$form->get_th_html_locale( _x( 'Archive Page Description', 'option label', 'wpsso' ),
@@ -1153,20 +1152,15 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				if ( empty( $cf_md_index[ $opt_key ] ) ) {
 
 					$form->options[ $opt_key ] = '';
-
-					$always_disabled = true;
-
-				} else {
-					$always_disabled = false;
 				}
 
 				$cmt_transl = WpssoAdmin::get_option_unit_comment( $opt_key );
 
 				$table_rows[ $opt_key ] = '' .
 					$form->get_th_html( _x( $opt_label, 'option label', 'wpsso' ), '', $opt_key ) . 
-					'<td class="blank">' . $form->get_no_input( $opt_key, $css_class = '', $css_id = '',
-						$max_len = 0, $holder = '', $always_disabled ) . $cmt_transl . '</td>';
+					'<td class="blank">' . $form->get_no_input( $opt_key, $css_class = '', $css_id = '', $holder = '' ) . $cmt_transl . '</td>';
 			}
+
 			return $table_rows;
 		}
 

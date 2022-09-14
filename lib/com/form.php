@@ -2656,9 +2656,9 @@ if ( ! class_exists( 'SucomForm' ) ) {
 		/**
 		 * Automatically disabled and localized methods.
 		 */
-		public function get_no_input_locale( $name, $css_class = '', $css_id = '', $len = 0, $holder = '' ) {
+		public function get_no_input_locale( $name, $css_class = '', $css_id = '', $holder = '' ) {
 
-			return $this->get_input_locale( $name, $css_class, $css_id, $len, $holder, $is_disabled = true );
+			return $this->get_input_locale( $name, $css_class, $css_id, $len = 0, $holder, $is_disabled = true );
 		}
 
 		public function get_no_input_image_upload_locale( $name_prefix, $holder = '' ) {
