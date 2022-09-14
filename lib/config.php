@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '13.3.0-dev.3',	// Plugin version.
+					'version'     => '13.3.0-dev.4',	// Plugin version.
 					'opt_version' => '909',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -2997,9 +2997,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 */
 				'target_gender' => array(
 					'none'   => '[None]',
-					'female' => 'Female',
-					'male'   => 'Male',
-					'unisex' => 'Unisex',
+					'Female' => 'Female',
+					'Male'   => 'Male',
+					'Unisex' => 'Unisex',
 				),
 
 				/**

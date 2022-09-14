@@ -166,7 +166,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 				$notice_msg .= __( 'You can activate this add-on to manage post and taxonomy types included in the WordPress sitemaps XML, exclude posts, pages, custom post types, taxonomy terms (categories, tags, etc.), and user profiles marked as "No Index", and automatically enhance the WordPress sitemaps XML with article modification times.', 'wpsso' );
 
-				$notice_msg .= '<ul><li>' . implode( $glue = '</li> <li>', $action_links ) . '</li></ul>' . ' ';
+				$notice_msg .= SucomUtil::array_to_list_html( $action_links );
 
 				$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
 
@@ -216,7 +216,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 					$notice_msg .= sprintf( __( 'You should activate the %s add-on if you don\'t already have a plugin to manage unique product IDs.', 'wpsso' ), $wcmd_name_transl ) . ' ';
 
-					$notice_msg .= '<ul><li>' . implode( $glue = '</li> <li>', $action_links ) . '</li></ul>' . ' ';
+					$notice_msg .= SucomUtil::array_to_list_html( $action_links );
 
 					$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
 
@@ -250,7 +250,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 						$notice_msg .= __( 'Adding shipping details to your Schema Product markup is important if you offer free or low-cost shipping options, as this will make your products more appealing in Google search results.', 'wpsso' ) . ' ';
 
-						$notice_msg .= '<ul><li>' . implode( $glue = '</li> <li>', $action_links ) . '</li></ul>' . ' ';
+						$notice_msg .= SucomUtil::array_to_list_html( $action_links );
 
 						$this->p->notice->warn( $notice_msg, null, $notice_key, $dismiss_time = true );
 
@@ -307,7 +307,7 @@ if ( ! class_exists( 'WpssoAdminHeadSuggestAddons' ) ) {
 
 					$notice_msg .= sprintf( __( 'You should activate the %s add-on if you don\'t already have a plugin to manage your Google merchant feeds.', 'wpsso' ), $gmf_name_transl ) . ' ';
 
-					$notice_msg .= '<ul><li>' . implode( $glue = '</li> <li>', $action_links ) . '</li></ul>' . ' ';
+					$notice_msg .= SucomUtil::array_to_list_html( $action_links );
 
 					$this->p->notice->inf( $notice_msg, null, $notice_key, $dismiss_time = true );
 

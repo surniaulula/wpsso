@@ -1559,7 +1559,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					echo '<h4>' . $info[ 'name' ] . '</h4>' . "\n";
 
-					echo '<ul><li>' . implode( $glue = '</li><li>', $action_links ) . '</li></ul>' . "\n";
+					echo SucomUtil::array_to_list_html( $action_links );
 				}
 			}
 
@@ -1594,7 +1594,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 			if ( ! empty( $action_links ) ) {
 
-				echo '<ul><li>' . implode( $glue = '</li><li>', $action_links ) . '</li></ul>' . "\n";
+				echo SucomUtil::array_to_list_html( $action_links );
 			}
 
 			echo '</td></tr></table>';

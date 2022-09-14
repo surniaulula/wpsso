@@ -4942,6 +4942,11 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 			return round( $word_count / $words_per_min );
 		}
 
+		public static function array_to_list_html( $arr, $type = 'ul' ) {
+
+			return '<' . $type . '><li>' . implode( $glue = '</li> <li>', $arr ) . '</li></ul> ';
+		}
+
 		/**
 		 * Modify the referenced array and return true, false, or the modified array.
 		 */

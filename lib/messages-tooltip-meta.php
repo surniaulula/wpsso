@@ -152,7 +152,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 
 				case ( 0 === strpos( $msg_key, 'tooltip-meta-product_' ) ? true : false ):
 
-					$cf_frags = $this->get_cf_tooltip_fragments( preg_replace( '/^tooltip-meta-/', '', $msg_key ) );
+					$cf_frags = $this->get_tooltip_fragments( preg_replace( '/^tooltip-meta-/', '', $msg_key ) );
 
 					if ( ! empty( $cf_frags ) ) {	// Just in case.
 

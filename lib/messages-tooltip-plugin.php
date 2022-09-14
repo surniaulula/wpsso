@@ -653,13 +653,21 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 				 */
 				case ( 0 === strpos( $msg_key, 'tooltip-plugin_attr_product_' ) ? true : false ):
 
-					$attr_key = str_replace( 'tooltip-', '', $msg_key );
+					$attr_frags = $this->get_tooltip_fragments( preg_replace( '/^tooltip-plugin_attr_/', '', $msg_key ) );
+					$attr_key   = str_replace( 'tooltip-', '', $msg_key );
 
 					$text = __( 'Enter the name of a product attribute available in your e-commerce plugin.', 'wpsso' ) . ' ';
 
-					$text .= sprintf( __( 'The product attribute name allows %s to request the attribute value from your e-commerce plugin.', 'wpsso' ), $this->p_name_pro ) . ' ';
+					$text .= sprintf( __( 'The product attribute name allows %s to request the attribute value from your e-commerce plugin.', 'wpsso' ),
+						$this->p_name_pro ) . ' ';
 
-					$text .= sprintf( __( 'The default attribute name is "%s".', 'wpsso' ), $this->p->opt->get_defaults( $attr_key ) );
+					$text .= sprintf( __( 'The default attribute name is "%s".', 'wpsso' ), $this->p->opt->get_defaults( $attr_key ) ) . ' ';
+
+					if ( ! empty( $attr_frags[ 'values' ] ) ) {
+
+						$text .= sprintf( __( 'The attribute value can be an empty string or: %s', 'wpsso' ),
+							SucomUtil::array_to_list_html( $attr_frags[ 'values' ] ) );
+					}
 
 					break;
 
@@ -669,7 +677,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 				case ( 0 === strpos( $msg_key, 'tooltip-plugin_cf_' ) ? true : false ):
 
 					$cf_key          = str_replace( 'tooltip-', '', $msg_key );
-					$cf_frags        = $this->get_cf_tooltip_fragments( preg_replace( '/^tooltip-plugin_cf_/', '', $msg_key ) );
+					$cf_frags        = $this->get_tooltip_fragments( preg_replace( '/^tooltip-plugin_cf_/', '', $msg_key ) );
 					$cf_md_index     = $this->p->cf[ 'opt' ][ 'cf_md_index' ];
 					$cf_md_key       = empty( $cf_md_index[ $cf_key ] ) ? '' : $cf_md_index[ $cf_key ];
 					$cf_is_multi     = empty( $this->p->cf[ 'opt' ][ 'cf_md_multi' ][ $cf_md_key ] ) ? false : true;
@@ -681,6 +689,12 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 						// translators: %1$s is the metabox name, %2$s is the option name.
 						$text .= sprintf( __( 'If a custom field matching this name is found, its value will be imported for the %1$s "%2$s" option.', 'wpsso' ), $mb_title_transl, $cf_frags[ 'label' ] ) . ' ';
+
+						if ( ! empty( $cf_frags[ 'values' ] ) ) {
+
+							$text .= sprintf( __( 'The custom field value can be an empty string or: %s', 'wpsso' ),
+								SucomUtil::array_to_list_html( $cf_frags[ 'values' ] ) );
+						}
 
 						if ( $cf_is_multi ) {
 
