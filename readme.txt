@@ -231,7 +231,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.3.0-dev.6 (2022/09/14)**
+**Version 13.3.0-b.1 (2022/09/15)**
 
 * **New Features**
 	* None.
@@ -493,9 +493,9 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 == Upgrade Notice ==
 
-= 13.3.0-dev.6 =
+= 13.3.0-b.1 =
 
-(2022/09/14) Added support for the new 'priceType' property in Schema UnitPriceSpecification markup:
+(2022/09/15) Added support for the new 'priceType' property in Schema UnitPriceSpecification markup:
 
 = 13.2.1 =
 
