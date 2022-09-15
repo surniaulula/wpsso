@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 13.3.0-b.1\n"
+"Project-Id-Version: WPSSO Core 13.3.0-b.2\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -7098,7 +7098,7 @@ msgstr ""
 
 #: lib/messages-tooltip-meta-opengraph.php:81
 #: lib/messages-tooltip-meta-schema.php:841 lib/messages-tooltip-meta.php:187
-#: lib/messages-tooltip-meta.php:208 lib/messages-tooltip-opengraph.php:139
+#: lib/messages-tooltip-meta.php:208 lib/messages-tooltip-opengraph.php:143
 msgid "This option is disabled if a custom image URL is entered."
 msgstr ""
 
@@ -7116,7 +7116,7 @@ msgstr ""
 
 #: lib/messages-tooltip-meta-opengraph.php:93
 #: lib/messages-tooltip-meta-schema.php:849 lib/messages-tooltip-meta.php:197
-#: lib/messages-tooltip-meta.php:219 lib/messages-tooltip-opengraph.php:156
+#: lib/messages-tooltip-meta.php:219 lib/messages-tooltip-opengraph.php:160
 msgid "This option is disabled if a custom image ID is selected."
 msgstr ""
 
@@ -7858,18 +7858,18 @@ msgstr ""
 #. translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product size'.
 #. translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a Google product type'.
 #: lib/messages-tooltip-meta.php:149 lib/messages-tooltip-meta.php:172
-#: lib/messages-tooltip-opengraph.php:55
+#: lib/messages-tooltip-opengraph.php:57
 msgid ""
 "<a href=\"%1$s\">See this webpage for more information about choosing %2$s</"
 "a>."
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:149 lib/messages-tooltip-opengraph.php:55
+#: lib/messages-tooltip-meta.php:149 lib/messages-tooltip-opengraph.php:58
 #: lib/messages.php:677
 msgid "https://support.google.com/merchants/answer/6324436"
 msgstr ""
 
-#: lib/messages-tooltip-meta.php:149 lib/messages-tooltip-opengraph.php:55
+#: lib/messages-tooltip-meta.php:149 lib/messages-tooltip-opengraph.php:59
 #: lib/messages.php:676
 msgctxt "tooltip fragment"
 msgid "a Google product type"
@@ -7979,162 +7979,162 @@ msgstr ""
 
 #: lib/messages-tooltip-opengraph.php:40
 msgid ""
-"Your selection will be used by default for the Facebook %s meta tag value "
-"(you can also select a custom section when editing an article)."
+"Your selection will be used by default for the %s meta tag value (you can "
+"also select a different section when editing an article)."
 msgstr ""
 
 #: lib/messages-tooltip-opengraph.php:42
 msgid "Select \"[None]\" to exclude the %s meta tag by default."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:48
+#: lib/messages-tooltip-opengraph.php:49
 msgid "The Google product type that best describes the products on your site."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:50
+#: lib/messages-tooltip-opengraph.php:51
 msgid ""
 "Your selection will be used by default for Schema product markup and the %s "
-"meta tag."
+"meta tag (you can also select a different product type when editing a "
+"product)."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:52
+#: lib/messages-tooltip-opengraph.php:53
 msgid ""
-"Select \"[None]\" if you prefer to exclude the product type from Schema "
-"markup and meta tags by default (you can still select a custom product type "
-"when editing a product)."
+"Select \"[None]\" to exclude the product type from Schema markup and the %s "
+"meta tag by default."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:61
+#: lib/messages-tooltip-opengraph.php:65
 msgid ""
 "The default product price type (list price, invoice price, sale price, etc.)."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:67
+#: lib/messages-tooltip-opengraph.php:71
 msgid ""
 "The default currency for money related options (product price, job salary, "
 "etc.)."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:73
+#: lib/messages-tooltip-opengraph.php:77
 msgid ""
 "The default country when entering information about a place or location."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:79
+#: lib/messages-tooltip-opengraph.php:83
 msgid ""
 "The default timezone when entering information about a place or location."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:90
+#: lib/messages-tooltip-opengraph.php:94
 msgid ""
 "One or more characters used to separate values (category parent names, page "
 "numbers, site name, etc.) within a title string (default is a hyphen \"%s\")."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:98
+#: lib/messages-tooltip-opengraph.php:102
 msgid ""
 "One or more characters used to suffix a truncated (ie. shortened) text "
 "string (default is three dots \"%s\")."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:104
+#: lib/messages-tooltip-opengraph.php:108
 msgid ""
 "The maximum number of WordPress tag names (automatically converted to "
 "hashtags) to include in the Facebook / Open Graph and Twitter Card "
 "descriptions."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:106
+#: lib/messages-tooltip-opengraph.php:110
 msgid "Select \"0\" to disable the addition of hashtags."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:115
+#: lib/messages-tooltip-opengraph.php:119
 msgid ""
 "The maximum number of images to include for the webpage meta tags and Schema "
 "markup."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:117
+#: lib/messages-tooltip-opengraph.php:121
 msgid "If you select \"0\", then no images will be included (not recommended)."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:119
+#: lib/messages-tooltip-opengraph.php:123
 msgid ""
 "If no images are available in the Open Graph meta tags, social sites may "
 "choose any random image from the webpage, including headers, thumbnails, "
 "ads, etc."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:127
+#: lib/messages-tooltip-opengraph.php:131
 msgid ""
 "The dimensions used for the Facebook / Open Graph and oEmbed images (default "
 "dimensions are %s)."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:135
+#: lib/messages-tooltip-opengraph.php:139
 msgid ""
 "An image ID for your site's default image (ie. when an image is required, "
 "and no other image is available)."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:137
-#: lib/messages-tooltip-opengraph.php:154
+#: lib/messages-tooltip-opengraph.php:141
+#: lib/messages-tooltip-opengraph.php:158
 msgid ""
 "The default image is used for archive pages (ie. blog, category, and tag "
 "archive page) and a fallback for public posts and pages that do not have a "
 "suitable image featured, attached, or in their content."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:148
+#: lib/messages-tooltip-opengraph.php:152
 msgid "You can enter a default image URL instead of choosing an image ID."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:150
+#: lib/messages-tooltip-opengraph.php:154
 msgid ""
 "The image URL option allows you to choose an image outside of the WordPress "
 "Media Library and/or a smaller logo style image."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:152
+#: lib/messages-tooltip-opengraph.php:156
 msgid "The image should be at least %s or more in width and height."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:165
+#: lib/messages-tooltip-opengraph.php:169
 msgid ""
 "The maximum number of embedded videos to include in meta tags and Schema "
 "markup."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:171
+#: lib/messages-tooltip-opengraph.php:175
 msgid "Include video preview images in meta tags and Schema markup."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:173
+#: lib/messages-tooltip-opengraph.php:177
 msgid ""
 "When video preview images are enabled and a preview image is available, it "
 "will be included in meta tags and Schema markup before any other image "
 "(custom, featured, attached, or content image)."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:179
+#: lib/messages-tooltip-opengraph.php:183
 msgid ""
 "If possible, add or modify the video URL \"autoplay\" argument for videos in "
 "meta tags and Schema markup."
 msgstr ""
 
 #. translators: %s is the markup standard name (ie. Open Graph or Schema).
-#: lib/messages-tooltip-opengraph.php:191 lib/messages-tooltip-schema.php:81
+#: lib/messages-tooltip-opengraph.php:195 lib/messages-tooltip-schema.php:81
 msgid "Select a default %s type for a static front page."
 msgstr ""
 
 #. translators: %1$s is the markup standard name (ie. Open Graph or Schema) and %2$s is the type name.
-#: lib/messages-tooltip-opengraph.php:194
-#: lib/messages-tooltip-opengraph.php:206
-#: lib/messages-tooltip-opengraph.php:218
-#: lib/messages-tooltip-opengraph.php:230
-#: lib/messages-tooltip-opengraph.php:242
-#: lib/messages-tooltip-opengraph.php:263
-#: lib/messages-tooltip-opengraph.php:275 lib/messages-tooltip-schema.php:84
+#: lib/messages-tooltip-opengraph.php:198
+#: lib/messages-tooltip-opengraph.php:210
+#: lib/messages-tooltip-opengraph.php:222
+#: lib/messages-tooltip-opengraph.php:234
+#: lib/messages-tooltip-opengraph.php:246
+#: lib/messages-tooltip-opengraph.php:267
+#: lib/messages-tooltip-opengraph.php:279 lib/messages-tooltip-schema.php:84
 #: lib/messages-tooltip-schema.php:96 lib/messages-tooltip-schema.php:108
 #: lib/messages-tooltip-schema.php:120 lib/messages-tooltip-schema.php:132
 #: lib/messages-tooltip-schema.php:151 lib/messages-tooltip-schema.php:163
@@ -8142,33 +8142,33 @@ msgid "The default %1$s type is \"%2$s\"."
 msgstr ""
 
 #. translators: %s is the markup standard name (ie. Open Graph or Schema).
-#: lib/messages-tooltip-opengraph.php:203 lib/messages-tooltip-schema.php:93
+#: lib/messages-tooltip-opengraph.php:207 lib/messages-tooltip-schema.php:93
 msgid "Select a default %s type for a blog (non-static) front page."
 msgstr ""
 
 #. translators: %s is the markup standard name (ie. Open Graph or Schema).
-#: lib/messages-tooltip-opengraph.php:215 lib/messages-tooltip-schema.php:105
+#: lib/messages-tooltip-opengraph.php:219 lib/messages-tooltip-schema.php:105
 msgid "Select a default %s type for user / author profile pages."
 msgstr ""
 
 #. translators: %s is the markup standard name (ie. Open Graph or Schema).
-#: lib/messages-tooltip-opengraph.php:227 lib/messages-tooltip-schema.php:117
+#: lib/messages-tooltip-opengraph.php:231 lib/messages-tooltip-schema.php:117
 msgid "Select a default %s type for search results pages."
 msgstr ""
 
 #. translators: %s is the markup standard name (ie. Open Graph or Schema).
-#: lib/messages-tooltip-opengraph.php:239 lib/messages-tooltip-schema.php:129
+#: lib/messages-tooltip-opengraph.php:243 lib/messages-tooltip-schema.php:129
 msgid ""
 "Select a default %s type for other archive pages (date-based archive pages, "
 "for example)."
 msgstr ""
 
 #. translators: %s is the markup standard name (ie. Open Graph or Schema).
-#: lib/messages-tooltip-opengraph.php:249 lib/messages-tooltip-schema.php:139
+#: lib/messages-tooltip-opengraph.php:253 lib/messages-tooltip-schema.php:139
 msgid "Select a default %s type for each post type."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:251
+#: lib/messages-tooltip-opengraph.php:255
 msgid ""
 "Please note that each Open Graph type has a unique set of meta tags, so by "
 "selecting \"website\" here (for example), you would be excluding all "
@@ -8177,12 +8177,12 @@ msgid ""
 msgstr ""
 
 #. translators: %s is the markup standard name (ie. Open Graph or Schema).
-#: lib/messages-tooltip-opengraph.php:260 lib/messages-tooltip-schema.php:148
+#: lib/messages-tooltip-opengraph.php:264 lib/messages-tooltip-schema.php:148
 msgid "Select a default %s type for each post type archive."
 msgstr ""
 
 #. translators: %s is the markup standard name (ie. Open Graph or Schema).
-#: lib/messages-tooltip-opengraph.php:272 lib/messages-tooltip-schema.php:160
+#: lib/messages-tooltip-opengraph.php:276 lib/messages-tooltip-schema.php:160
 msgid "Select a default %s type for each taxonomy."
 msgstr ""
 
