@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '13.3.0-dev.4',	// Plugin version.
-					'opt_version' => '910',		// Increment when changing default option values.
+					'version'     => '13.3.0-dev.6',	// Plugin version.
+					'opt_version' => '911',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1292,27 +1292,27 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Open Graph options.
 					 */
-					'og_def_article_section'  => 'none',	// Default Article Section.
-					'og_def_img_id'           => '',	// Default Image ID.
-					'og_def_img_id_lib'       => 'wp',
-					'og_def_img_url'          => '',				// or Default Image URL.
-					'og_def_product_category' => 'none',				// Default Product Type.
-					'og_def_price_type'       => 'https://schema.org/ListPrice',	// Default Price Type.
-					'og_def_currency'         => 'USD',				// Default Currency.
-					'og_def_country'          => 'none',				// Default Country.
-					'og_def_timezone'         => 'UTC',				// Default Timezone.
-					'og_img_width'            => 1200,
-					'og_img_height'           => 630,
-					'og_img_crop'             => 1,
-					'og_img_crop_x'           => 'center',
-					'og_img_crop_y'           => 'center',
-					'og_img_max'              => 1,		// Maximum Images to Include.
-					'og_title_sep'            => '-',		// Title Separator.
-					'og_ellipsis'             => '...',		// Truncated Text Ellipsis.
-					'og_desc_hashtags'        => 0,		// Description Hashtags.
-					'og_vid_max'              => 1,
-					'og_vid_autoplay'         => 1,
-					'og_vid_prev_img'         => 1,		// Include Video Preview Images.
+					'og_def_article_section'    => 'none',	// Default Article Section.
+					'og_def_img_id'             => '',	// Default Image ID.
+					'og_def_img_id_lib'         => 'wp',
+					'og_def_img_url'            => '',				// or Default Image URL.
+					'og_def_product_category'   => 'none',				// Default Product Type.
+					'og_def_product_price_type' => 'https://schema.org/ListPrice',	// Default Price Type.
+					'og_def_currency'           => 'USD',				// Default Currency.
+					'og_def_country'            => 'none',				// Default Country.
+					'og_def_timezone'           => 'UTC',				// Default Timezone.
+					'og_img_width'              => 1200,
+					'og_img_height'             => 630,
+					'og_img_crop'               => 1,
+					'og_img_crop_x'             => 'center',
+					'og_img_crop_y'             => 'center',
+					'og_img_max'                => 1,		// Maximum Images to Include.
+					'og_title_sep'              => '-',		// Title Separator.
+					'og_ellipsis'               => '...',		// Truncated Text Ellipsis.
+					'og_desc_hashtags'          => 0,		// Description Hashtags.
+					'og_vid_max'                => 1,
+					'og_vid_autoplay'           => 1,
+					'og_vid_prev_img'           => 1,		// Include Video Preview Images.
 
 					/**
 					 * Advanced Settings > Document Types > Open Graph.

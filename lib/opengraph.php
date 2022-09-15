@@ -1171,6 +1171,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			foreach ( $og_type_mt_md as $mt_name => $md_key ) {
 
+				/**
+				 * Check for a default value from the settings.
+				 *
+				 * Open Graph defaults have an "og_def_" prefix, except for 'product_currency'.
+				 */
 				$og_def_md_key = 'og_def_' . $md_key;
 
 				if ( 'product_currency' === $md_key ) {
@@ -1259,7 +1264,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 				} elseif ( isset( $this->p->options[ $og_def_md_key ] ) ) {
 
-					if ( $this->p->options[ $og_def_md_key ] !== 'none' ) {
+					if ( 'none' !== $this->p->options[ $og_def_md_key ] ) {
 
 						if ( $this->p->debug->enabled ) {
 

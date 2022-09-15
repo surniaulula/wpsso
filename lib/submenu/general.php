@@ -204,10 +204,10 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 							) .
 						'</td>';
 
-					$table_rows[ 'og_def_price_type' ] = $this->form->get_tr_hide( $in_view = 'basic', 'og_def_price_type' ) .
+					$table_rows[ 'og_def_product_price_type' ] = $this->form->get_tr_hide( $in_view = 'basic', 'og_def_product_price_type' ) .
 						$this->form->get_th_html( _x( 'Default Price Type', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'og_def_price_type' ) .
-						'<td>' . $this->form->get_select( 'og_def_price_type', $this->p->cf[ 'form' ][ 'price_type' ] ) . '</td>';
+							$css_class = '', $css_id = 'og_def_product_price_type' ) .
+						'<td>' . $this->form->get_select( 'og_def_product_price_type', $this->p->cf[ 'form' ][ 'price_type' ] ) . '</td>';
 
 					$table_rows[ 'og_def_currency' ] = '' .
 						$this->form->get_th_html( _x( 'Default Currency', 'option label', 'wpsso' ),

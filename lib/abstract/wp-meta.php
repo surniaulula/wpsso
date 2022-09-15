@@ -301,7 +301,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$def_reading_mins    = $this->p->page->get_reading_mins( $mod );
 				$def_img_id_lib      = isset( $opts[ 'og_def_img_id_lib' ] ) ? $opts[ 'og_def_img_id_lib' ] : 'wp';
 				$def_product_cat     = isset( $opts[ 'og_def_product_category' ] ) ? $opts[ 'og_def_product_category' ] : 'none';
-				$def_price_type      = isset( $opts[ 'og_def_price_type' ] ) ? $opts[ 'og_def_price_type' ] : 'https://schema.org/ListPrice';
+				$def_price_type      = isset( $opts[ 'og_def_product_price_type' ] ) ? $opts[ 'og_def_product_price_type' ] : 'https://schema.org/ListPrice';
 				$def_currency        = isset( $opts[ 'og_def_currency' ] ) ? $opts[ 'og_def_currency' ] : 'USD';
 				$def_lang            = SucomUtil::get_locale( $mod, $read_cache = false );	// Get locale for post, term, or user object.
 				$job_locations_max   = SucomUtil::get_const( 'WPSSO_SCHEMA_JOB_LOCATIONS_MAX', 5 );
@@ -894,11 +894,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					}
 				}
 			}
-
-			/**
-			 * Maybe add any new / missing options keys.
-			 */
-			$md_opts = $this->merge_defaults( $obj_id, $md_opts );
 
 			$md_opts = (array) apply_filters( 'wpsso_upgraded_md_options', $md_opts );
 

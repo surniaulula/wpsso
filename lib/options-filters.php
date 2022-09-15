@@ -441,7 +441,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'site_org_schema_type':
 				case 'og_def_article_section':
 				case 'og_def_product_category':
-				case 'og_def_price_type':
+				case 'og_def_product_price_type':
 				case 'og_def_currency':
 				case 'og_def_country':
 				case 'og_def_timezone':

@@ -56,7 +56,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipOpenGraph' ) ) {
 
 					break;
 
-				case 'tooltip-og_def_price_type':	// Default Price Type.
+				case 'tooltip-og_def_product_price_type':	// Default Price Type.
 
 					$text = __( 'The default product price type (list price, invoice price, sale price, etc.).', 'wpsso' );
 
