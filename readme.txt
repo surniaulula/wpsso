@@ -12,7 +12,7 @@ Requires PHP: 7.2
 Requires At Least: 5.2
 Tested Up To: 6.0.2
 WC Tested Up To: 6.9.0
-Stable Tag: 13.2.1
+Stable Tag: 13.3.0
 
 Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
 
@@ -241,9 +241,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* Added a new "Default Price Type" option in the SSO &gt; General Settings page.
 		* Added a new "Product Price Type Custom Field" option in the SSO &gt; Advanced Settings page.
 * **Bugfixes**
-	* Fixed SSO &gt; Advanced Settings &gt; Metadata &gt; Custom Fields tab option values (should be blank, not 0).
+	* Fixed SSO &gt; Advanced Settings &gt; Metadata &gt; Custom Fields tab option values (should be blank, not 0) in the WPSSO Core Standard edition.
 * **Developer Notes**
 	* Renamed the 'audience_gender' form config array to 'target_gender'.
+	* Renamed the 'product:size_type' internal meta tag to 'product:size:type'.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -495,7 +496,7 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 = 13.3.0 =
 
-(2022/09/15) Added support for the new 'priceType' property in Schema UnitPriceSpecification markup:
+(2022/09/15) Added support for the new 'priceType' property in Schema UnitPriceSpecification markup.
 
 = 13.2.1 =
 
