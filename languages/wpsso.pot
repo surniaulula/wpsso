@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 13.3.0-dev.6\n"
+"Project-Id-Version: WPSSO Core 13.3.0-b.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -6325,8 +6325,8 @@ msgctxt "option value"
 msgid "TEC: %s"
 msgstr ""
 
-#: lib/integ/event/the-events-calendar.php:273
-#: lib/integ/event/the-events-calendar.php:332
+#: lib/integ/event/the-events-calendar.php:272
+#: lib/integ/event/the-events-calendar.php:331
 msgid "getting TEC options"
 msgstr ""
 

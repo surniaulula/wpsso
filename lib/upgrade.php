@@ -140,7 +140,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'og_def_vid_on_search'   => '',
 				),
 				559 => array(
-					'plugin_product_currency' => 'og_def_currency',	// Default Currency.
+					'plugin_product_currency' => 'og_def_currency',
 				),
 				561 => array(
 					'plugin_shortlink' => 'plugin_wp_shortlink',
@@ -380,7 +380,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'plugin_clear_on_save' => '',
 				),
 				768 => array(
-					'plugin_def_currency' => 'og_def_currency',	// Default Currency.
+					'plugin_def_currency' => 'og_def_currency',
 				),
 				772 => array(
 					'site_url' => 'site_home_url',

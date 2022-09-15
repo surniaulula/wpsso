@@ -192,8 +192,7 @@ if ( ! class_exists( 'WpssoIntegEventTheEventsCalendar' ) ) {
 				$this->p->debug->log( 'getting event details for mod id ' . $mod[ 'id' ] );
 			}
 
-			$post_id = $mod[ 'id' ];
-
+			$post_id               = $mod[ 'id' ];
 			$default_timezone      = date_default_timezone_get();
 			$event_timezone        = Tribe__Events__Timezones::get_event_timezone_string( $post_id );
 			$event_currency_symbol = tribe_get_event_meta( $post_id, '_EventCurrencySymbol', true );

@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '13.3.0-dev.6',	// Plugin version.
+					'version'     => '13.3.0-b.1',	// Plugin version.
 					'opt_version' => '911',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1291,11 +1291,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 
 					/**
 					 * Open Graph options.
+					 *
+					 * See WpssoOpengraph->add_og_type_mt_md().
 					 */
-					'og_def_article_section'    => 'none',	// Default Article Section.
-					'og_def_img_id'             => '',	// Default Image ID.
-					'og_def_img_id_lib'         => 'wp',
-					'og_def_img_url'            => '',				// or Default Image URL.
+					'og_def_article_section'    => 'none',				// Default Article Section.
+					'og_def_img_id'             => '',				// Default Image ID.
+					'og_def_img_id_lib'         => 'wp',				// Default Image ID Library.
+					'og_def_img_url'            => '',				// Default Image URL.
 					'og_def_product_category'   => 'none',				// Default Product Type.
 					'og_def_product_price_type' => 'https://schema.org/ListPrice',	// Default Price Type.
 					'og_def_currency'           => 'USD',				// Default Currency.

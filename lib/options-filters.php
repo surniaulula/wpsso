@@ -439,13 +439,13 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				 */
 				case 'site_org_place_id':
 				case 'site_org_schema_type':
-				case 'og_def_article_section':
-				case 'og_def_product_category':
-				case 'og_def_product_price_type':
-				case 'og_def_currency':
-				case 'og_def_country':
-				case 'og_def_timezone':
-				case 'og_def_img_id_lib': 
+				case 'og_def_article_section':			// Default Article Section.
+				case 'og_def_product_category':			// Default Product Type.
+				case 'og_def_product_price_type':		// Default Price Type.
+				case 'og_def_currency':				// Default Currency.
+				case 'og_def_country':				// Default Country.
+				case 'og_def_timezone':				// Default Timezone.
+				case 'og_def_img_id_lib': 			// Default Image ID Library.
 				case 'og_img_id_lib': 
 				case 'plugin_comment_title':			// Comment Title.
 				case 'plugin_comment_reply_title':		// Reply Comment Title.
@@ -455,7 +455,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'plugin_404_page_desc':			// 404 Page Description.
 				case 'plugin_no_title_text':			// No Title Text.
 				case 'plugin_no_desc_text':			// No Description Text.
-				case 'plugin_shortener':			// Example: 'none' or name of shortener
+				case 'plugin_shortener':			// Select option with 'none' as default.
 				case 'product_avail':				// Select option with 'none' as default.
 				case 'product_condition':			// Select option with 'none' as default.
 				case 'product_price_type':			// Select option with 'none' as default.
