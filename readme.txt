@@ -231,6 +231,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 13.4.0-dev.1 (TBD)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added a new "Default Product Condition" option in the SSO &gt; General Settings page.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 13.3.2 (2022/09/22)**
 
 * **New Features**
@@ -252,8 +266,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* Added support for the new 'priceType' property in Schema UnitPriceSpecification markup:
 		* Added a new "Product Price Type" option in the Document SSO metabox.
-		* Added a new "Default Price Type" option in the SSO &gt; General Settings page.
 		* Added a new "Product Price Type Custom Field" option in the SSO &gt; Advanced Settings page.
+		* Added a new "Default Product Price Type" option in the SSO &gt; General Settings page.
 * **Bugfixes**
 	* Fixed SSO &gt; Advanced Settings &gt; Metadata &gt; Custom Fields tab option values (should be blank, not 0) in the WPSSO Core Standard edition.
 * **Developer Notes**
@@ -507,6 +521,10 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 	* WordPress v5.2.
 
 == Upgrade Notice ==
+
+= 13.4.0-dev.1 =
+
+(TBD) Added a new "Default Product Condition" option in the SSO &gt; General Settings page.
 
 = 13.3.2 =
 
