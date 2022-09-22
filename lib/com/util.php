@@ -2201,6 +2201,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 		/**
 		 * This method is used by e-Commerce modules to pre-define and pre-sort the product meta tags.
+		 *
+		 * Use null values so WpssoOpengraph->add_og_type_mt_md() can load metadata default values.
 		 */
 		public static function get_mt_product_seed( $mt_pre = 'product', array $mt_og = array() ) {
 
