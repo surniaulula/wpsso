@@ -2364,7 +2364,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 		}
 
 		/**
-		 * Private method used by get_mt_image_seed(), get_mt_product_seed(), and get_mt_video_seed().
+		 * Protected method used by get_mt_image_seed(), get_mt_product_seed(), and get_mt_video_seed().
 		 */
 		protected static function maybe_merge_mt_og( array $mt_ret, array $mt_og ) {
 
