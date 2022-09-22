@@ -231,7 +231,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.4.0-dev.1 (TBD)**
+**Version 13.4.0-dev.1 (2022/09/22)**
 
 * **New Features**
 	* None.
@@ -524,7 +524,7 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 = 13.4.0-dev.1 =
 
-(TBD) Added a new "Default Product Condition" option in the SSO &gt; General Settings page.
+(2022/09/22) Added a new "Default Product Condition" option in the SSO &gt; General Settings page.
 
 = 13.3.2 =
 
