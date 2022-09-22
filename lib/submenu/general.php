@@ -204,8 +204,13 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 							) .
 						'</td>';
 
+					$table_rows[ 'og_def_product_condition' ] = $this->form->get_tr_hide( $in_view = 'basic', 'og_def_product_condition' ) .
+						$this->form->get_th_html( _x( 'Default Product Condition', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'og_def_product_condition' ) .
+						'<td>' . $this->form->get_select( 'og_def_product_condition', $this->p->cf[ 'form' ][ 'item_condition' ] ) . '</td>';
+
 					$table_rows[ 'og_def_product_price_type' ] = $this->form->get_tr_hide( $in_view = 'basic', 'og_def_product_price_type' ) .
-						$this->form->get_th_html( _x( 'Default Price Type', 'option label', 'wpsso' ),
+						$this->form->get_th_html( _x( 'Default Product Price Type', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'og_def_product_price_type' ) .
 						'<td>' . $this->form->get_select( 'og_def_product_price_type', $this->p->cf[ 'form' ][ 'price_type' ] ) . '</td>';
 

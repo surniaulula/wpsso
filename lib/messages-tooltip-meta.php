@@ -152,24 +152,24 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 
 				case ( 0 === strpos( $msg_key, 'tooltip-meta-product_' ) ? true : false ):
 
-					$cf_frags = $this->get_tooltip_fragments( preg_replace( '/^tooltip-meta-/', '', $msg_key ) );
+					$meta_frags = $this->get_tooltip_fragments( preg_replace( '/^tooltip-meta-/', '', $msg_key ) );
 
-					if ( ! empty( $cf_frags ) ) {	// Just in case.
+					if ( ! empty( $meta_frags ) ) {	// Just in case.
 
 						// translators: %s is a singular item reference, for example 'a product size type'.
-						$text = sprintf( __( 'A custom value for %s can be provided for the main product meta tags and Schema markup.', 'wpsso' ), $cf_frags[ 'desc' ] ) . ' ';
+						$text = sprintf( __( 'A custom value for %s can be provided for the main product meta tags and Schema markup.', 'wpsso' ), $meta_frags[ 'desc' ] ) . ' ';
 
 						$text .= __( 'If product variations are available, the information from each variation may supersede this value in Schema product offers.', 'wpsso' ) . ' ';
 
 						// translators: %s is the option label.
-						$text .= sprintf( __( 'The <strong>%s</strong> option may be read-only when an e-commerce plugin is the authoritative source for this value.', 'wpsso' ), $cf_frags[ 'label' ] ) . ' ';
+						$text .= sprintf( __( 'The <strong>%s</strong> option may be read-only when an e-commerce plugin is the authoritative source for this value.', 'wpsso' ), $meta_frags[ 'label' ] ) . ' ';
 
 						$text .= __( 'In this case, you should update the product information in the e-commerce plugin to update this value.', 'wpsso' ) . ' ';
 
-						if ( ! empty( $cf_frags[ 'about' ] ) ) {
+						if ( ! empty( $meta_frags[ 'about' ] ) ) {
 
 							// translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product size'.
-							$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s</a>.', 'wpsso' ), $cf_frags[ 'about' ], $cf_frags[ 'desc' ] );
+							$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s</a>.', 'wpsso' ), $meta_frags[ 'about' ], $meta_frags[ 'desc' ] );
 						}
 					}
 

@@ -301,6 +301,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$def_reading_mins    = $this->p->page->get_reading_mins( $mod );
 				$def_img_id_lib      = isset( $opts[ 'og_def_img_id_lib' ] ) ? $opts[ 'og_def_img_id_lib' ] : 'wp';
 				$def_product_cat     = isset( $opts[ 'og_def_product_category' ] ) ? $opts[ 'og_def_product_category' ] : 'none';
+				$def_product_cond    = isset( $opts[ 'og_def_product_condition' ] ) ? $opts[ 'og_def_product_condition' ] : 'none';
 				$def_price_type      = isset( $opts[ 'og_def_product_price_type' ] ) ? $opts[ 'og_def_product_price_type' ] : 'https://schema.org/ListPrice';
 				$def_currency        = isset( $opts[ 'og_def_currency' ] ) ? $opts[ 'og_def_currency' ] : 'USD';
 				$def_lang            = SucomUtil::get_locale( $mod, $read_cache = false );	// Get locale for post, term, or user object.
@@ -396,7 +397,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'product_currency'            => $def_currency,
 					'product_min_advert_price'    => '0.00',	// Product Min Advert Price.
 					'product_avail'               => 'none',
-					'product_condition'           => 'none',
+					'product_condition'           => $def_product_cond,
 					'product_color'               => '',
 					'product_material'            => '',
 					'product_pattern'             => '',

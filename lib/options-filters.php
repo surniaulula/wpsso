@@ -405,7 +405,6 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'tc_desc':				// Twitter Card Description.
 				case 'pin_desc':
 				case 'article_section':
-				case 'product_category':		// Product Type.
 				case 'product_brand':
 				case 'product_color':
 				case 'product_currency':		// Product Price Currency.
@@ -441,7 +440,8 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'site_org_schema_type':
 				case 'og_def_article_section':			// Default Article Section.
 				case 'og_def_product_category':			// Default Product Type.
-				case 'og_def_product_price_type':		// Default Price Type.
+				case 'og_def_product_condition':		// Default Product Condition.
+				case 'og_def_product_price_type':		// Default Product Price Type.
 				case 'og_def_currency':				// Default Currency.
 				case 'og_def_country':				// Default Country.
 				case 'og_def_timezone':				// Default Timezone.
@@ -457,6 +457,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'plugin_no_desc_text':			// No Description Text.
 				case 'plugin_shortener':			// Select option with 'none' as default.
 				case 'product_avail':				// Select option with 'none' as default.
+				case 'product_category':			// Select option with 'none' as default.
 				case 'product_condition':			// Select option with 'none' as default.
 				case 'product_price_type':			// Select option with 'none' as default.
 				case 'product_size_type':			// Select option with 'none' as default.

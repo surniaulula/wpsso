@@ -2,7 +2,7 @@
 # This file is distributed under the same license as the WPSSO Core package.
 msgid ""
 msgstr ""
-"Project-Id-Version: WPSSO Core 13.3.2\n"
+"Project-Id-Version: WPSSO Core 13.4.0-dev.1\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wpsso\n"
 "POT-Creation-Date: 2022-MO-DA HO:MI+ZONE\n"
 "MIME-Version: 1.0\n"
@@ -4651,54 +4651,54 @@ msgstr ""
 msgid "getting stamp.io ratings and reviews"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1080
+#: lib/abstract/wp-meta.php:1081
 msgid "checking meta tags"
-msgstr ""
-
-#: lib/abstract/wp-meta.php:1148
-msgctxt "metabox tab"
-msgid "Edit General"
 msgstr ""
 
 #: lib/abstract/wp-meta.php:1149
 msgctxt "metabox tab"
+msgid "Edit General"
+msgstr ""
+
+#: lib/abstract/wp-meta.php:1150
+msgctxt "metabox tab"
 msgid "Edit Schema"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1150 lib/messages.php:296
+#: lib/abstract/wp-meta.php:1151 lib/messages.php:296
 msgctxt "metabox tab"
 msgid "Edit Media"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1154
+#: lib/abstract/wp-meta.php:1155
 msgctxt "metabox tab"
 msgid "Edit Visibility"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1155
+#: lib/abstract/wp-meta.php:1156
 msgctxt "metabox tab"
 msgid "Preview Social"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1156
+#: lib/abstract/wp-meta.php:1157
 msgctxt "metabox tab"
 msgid "Preview oEmbed"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1157
+#: lib/abstract/wp-meta.php:1158
 msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1477
+#: lib/abstract/wp-meta.php:1478
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1808 lib/json/type/claimreview.php:69
+#: lib/abstract/wp-meta.php:1809 lib/json/type/claimreview.php:69
 msgid "A claim review cannot be the subject of another claim review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1810
+#: lib/abstract/wp-meta.php:1811
 msgid ""
 "Please select a subject webpage type that better describes the subject of "
 "the webpage (ie. the content) being reviewed."
@@ -6165,13 +6165,13 @@ msgctxt "option label"
 msgid "Snippet Max. Length"
 msgstr ""
 
-#: lib/edit.php:545 lib/submenu/general.php:358
+#: lib/edit.php:545 lib/submenu/general.php:363
 msgctxt "option comment"
 msgid "characters or less"
 msgstr ""
 
-#: lib/edit.php:546 lib/edit.php:561 lib/submenu/general.php:358
-#: lib/submenu/general.php:371
+#: lib/edit.php:546 lib/edit.php:561 lib/submenu/general.php:363
+#: lib/submenu/general.php:376
 msgctxt "option comment"
 msgid "-1 for no limit"
 msgstr ""
@@ -6186,7 +6186,7 @@ msgctxt "option label"
 msgid "Video Max. Previews"
 msgstr ""
 
-#: lib/edit.php:560 lib/submenu/general.php:371
+#: lib/edit.php:560 lib/submenu/general.php:376
 msgctxt "option comment"
 msgid "seconds"
 msgstr ""
@@ -7098,7 +7098,7 @@ msgstr ""
 
 #: lib/messages-tooltip-meta-opengraph.php:81
 #: lib/messages-tooltip-meta-schema.php:841 lib/messages-tooltip-meta.php:187
-#: lib/messages-tooltip-meta.php:208 lib/messages-tooltip-opengraph.php:143
+#: lib/messages-tooltip-meta.php:208 lib/messages-tooltip-opengraph.php:149
 msgid "This option is disabled if a custom image URL is entered."
 msgstr ""
 
@@ -7116,7 +7116,7 @@ msgstr ""
 
 #: lib/messages-tooltip-meta-opengraph.php:93
 #: lib/messages-tooltip-meta-schema.php:849 lib/messages-tooltip-meta.php:197
-#: lib/messages-tooltip-meta.php:219 lib/messages-tooltip-opengraph.php:160
+#: lib/messages-tooltip-meta.php:219 lib/messages-tooltip-opengraph.php:166
 msgid "This option is disabled if a custom image ID is selected."
 msgstr ""
 
@@ -8005,136 +8005,139 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip-opengraph.php:65
-msgid ""
-"The default product price type (list price, invoice price, sale price, etc.)."
+msgid "The default product condition."
 msgstr ""
 
 #: lib/messages-tooltip-opengraph.php:71
+msgid "The default product price type."
+msgstr ""
+
+#: lib/messages-tooltip-opengraph.php:77
 msgid ""
 "The default currency for money related options (product price, job salary, "
 "etc.)."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:77
+#: lib/messages-tooltip-opengraph.php:83
 msgid ""
 "The default country when entering information about a place or location."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:83
+#: lib/messages-tooltip-opengraph.php:89
 msgid ""
 "The default timezone when entering information about a place or location."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:94
+#: lib/messages-tooltip-opengraph.php:100
 msgid ""
 "One or more characters used to separate values (category parent names, page "
 "numbers, site name, etc.) within a title string (default is a hyphen \"%s\")."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:102
+#: lib/messages-tooltip-opengraph.php:108
 msgid ""
 "One or more characters used to suffix a truncated (ie. shortened) text "
 "string (default is three dots \"%s\")."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:108
+#: lib/messages-tooltip-opengraph.php:114
 msgid ""
 "The maximum number of WordPress tag names (automatically converted to "
 "hashtags) to include in the Facebook / Open Graph and Twitter Card "
 "descriptions."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:110
+#: lib/messages-tooltip-opengraph.php:116
 msgid "Select \"0\" to disable the addition of hashtags."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:119
+#: lib/messages-tooltip-opengraph.php:125
 msgid ""
 "The maximum number of images to include for the webpage meta tags and Schema "
 "markup."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:121
+#: lib/messages-tooltip-opengraph.php:127
 msgid "If you select \"0\", then no images will be included (not recommended)."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:123
+#: lib/messages-tooltip-opengraph.php:129
 msgid ""
 "If no images are available in the Open Graph meta tags, social sites may "
 "choose any random image from the webpage, including headers, thumbnails, "
 "ads, etc."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:131
+#: lib/messages-tooltip-opengraph.php:137
 msgid ""
 "The dimensions used for the Facebook / Open Graph and oEmbed images (default "
 "dimensions are %s)."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:139
+#: lib/messages-tooltip-opengraph.php:145
 msgid ""
 "An image ID for your site's default image (ie. when an image is required, "
 "and no other image is available)."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:141
-#: lib/messages-tooltip-opengraph.php:158
+#: lib/messages-tooltip-opengraph.php:147
+#: lib/messages-tooltip-opengraph.php:164
 msgid ""
 "The default image is used for archive pages (ie. blog, category, and tag "
 "archive page) and a fallback for public posts and pages that do not have a "
 "suitable image featured, attached, or in their content."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:152
+#: lib/messages-tooltip-opengraph.php:158
 msgid "You can enter a default image URL instead of choosing an image ID."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:154
+#: lib/messages-tooltip-opengraph.php:160
 msgid ""
 "The image URL option allows you to choose an image outside of the WordPress "
 "Media Library and/or a smaller logo style image."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:156
+#: lib/messages-tooltip-opengraph.php:162
 msgid "The image should be at least %s or more in width and height."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:169
+#: lib/messages-tooltip-opengraph.php:175
 msgid ""
 "The maximum number of embedded videos to include in meta tags and Schema "
 "markup."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:175
+#: lib/messages-tooltip-opengraph.php:181
 msgid "Include video preview images in meta tags and Schema markup."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:177
+#: lib/messages-tooltip-opengraph.php:183
 msgid ""
 "When video preview images are enabled and a preview image is available, it "
 "will be included in meta tags and Schema markup before any other image "
 "(custom, featured, attached, or content image)."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:183
+#: lib/messages-tooltip-opengraph.php:189
 msgid ""
 "If possible, add or modify the video URL \"autoplay\" argument for videos in "
 "meta tags and Schema markup."
 msgstr ""
 
 #. translators: %s is the markup standard name (ie. Open Graph or Schema).
-#: lib/messages-tooltip-opengraph.php:195 lib/messages-tooltip-schema.php:81
+#: lib/messages-tooltip-opengraph.php:201 lib/messages-tooltip-schema.php:81
 msgid "Select a default %s type for a static front page."
 msgstr ""
 
 #. translators: %1$s is the markup standard name (ie. Open Graph or Schema) and %2$s is the type name.
-#: lib/messages-tooltip-opengraph.php:198
-#: lib/messages-tooltip-opengraph.php:210
-#: lib/messages-tooltip-opengraph.php:222
-#: lib/messages-tooltip-opengraph.php:234
-#: lib/messages-tooltip-opengraph.php:246
-#: lib/messages-tooltip-opengraph.php:267
-#: lib/messages-tooltip-opengraph.php:279 lib/messages-tooltip-schema.php:84
+#: lib/messages-tooltip-opengraph.php:204
+#: lib/messages-tooltip-opengraph.php:216
+#: lib/messages-tooltip-opengraph.php:228
+#: lib/messages-tooltip-opengraph.php:240
+#: lib/messages-tooltip-opengraph.php:252
+#: lib/messages-tooltip-opengraph.php:273
+#: lib/messages-tooltip-opengraph.php:285 lib/messages-tooltip-schema.php:84
 #: lib/messages-tooltip-schema.php:96 lib/messages-tooltip-schema.php:108
 #: lib/messages-tooltip-schema.php:120 lib/messages-tooltip-schema.php:132
 #: lib/messages-tooltip-schema.php:151 lib/messages-tooltip-schema.php:163
@@ -8142,33 +8145,33 @@ msgid "The default %1$s type is \"%2$s\"."
 msgstr ""
 
 #. translators: %s is the markup standard name (ie. Open Graph or Schema).
-#: lib/messages-tooltip-opengraph.php:207 lib/messages-tooltip-schema.php:93
+#: lib/messages-tooltip-opengraph.php:213 lib/messages-tooltip-schema.php:93
 msgid "Select a default %s type for a blog (non-static) front page."
 msgstr ""
 
 #. translators: %s is the markup standard name (ie. Open Graph or Schema).
-#: lib/messages-tooltip-opengraph.php:219 lib/messages-tooltip-schema.php:105
+#: lib/messages-tooltip-opengraph.php:225 lib/messages-tooltip-schema.php:105
 msgid "Select a default %s type for user / author profile pages."
 msgstr ""
 
 #. translators: %s is the markup standard name (ie. Open Graph or Schema).
-#: lib/messages-tooltip-opengraph.php:231 lib/messages-tooltip-schema.php:117
+#: lib/messages-tooltip-opengraph.php:237 lib/messages-tooltip-schema.php:117
 msgid "Select a default %s type for search results pages."
 msgstr ""
 
 #. translators: %s is the markup standard name (ie. Open Graph or Schema).
-#: lib/messages-tooltip-opengraph.php:243 lib/messages-tooltip-schema.php:129
+#: lib/messages-tooltip-opengraph.php:249 lib/messages-tooltip-schema.php:129
 msgid ""
 "Select a default %s type for other archive pages (date-based archive pages, "
 "for example)."
 msgstr ""
 
 #. translators: %s is the markup standard name (ie. Open Graph or Schema).
-#: lib/messages-tooltip-opengraph.php:253 lib/messages-tooltip-schema.php:139
+#: lib/messages-tooltip-opengraph.php:259 lib/messages-tooltip-schema.php:139
 msgid "Select a default %s type for each post type."
 msgstr ""
 
-#: lib/messages-tooltip-opengraph.php:255
+#: lib/messages-tooltip-opengraph.php:261
 msgid ""
 "Please note that each Open Graph type has a unique set of meta tags, so by "
 "selecting \"website\" here (for example), you would be excluding all "
@@ -8177,12 +8180,12 @@ msgid ""
 msgstr ""
 
 #. translators: %s is the markup standard name (ie. Open Graph or Schema).
-#: lib/messages-tooltip-opengraph.php:264 lib/messages-tooltip-schema.php:148
+#: lib/messages-tooltip-opengraph.php:270 lib/messages-tooltip-schema.php:148
 msgid "Select a default %s type for each post type archive."
 msgstr ""
 
 #. translators: %s is the markup standard name (ie. Open Graph or Schema).
-#: lib/messages-tooltip-opengraph.php:276 lib/messages-tooltip-schema.php:160
+#: lib/messages-tooltip-opengraph.php:282 lib/messages-tooltip-schema.php:160
 msgid "Select a default %s type for each taxonomy."
 msgstr ""
 
@@ -9213,7 +9216,7 @@ msgid ""
 msgstr ""
 
 #: lib/messages-tooltip.php:347 lib/messages.php:1055
-#: lib/submenu/general.php:395
+#: lib/submenu/general.php:400
 msgctxt "option label"
 msgid "Add Hidden Image for Pinterest"
 msgstr ""
@@ -10822,12 +10825,12 @@ msgctxt "metabox title"
 msgid "Essential Settings"
 msgstr ""
 
-#: lib/submenu/essential.php:109 lib/submenu/general.php:264
+#: lib/submenu/essential.php:109 lib/submenu/general.php:269
 msgctxt "option label"
 msgid "Default Image ID"
 msgstr ""
 
-#: lib/submenu/essential.php:114 lib/submenu/general.php:269
+#: lib/submenu/essential.php:114 lib/submenu/general.php:274
 msgctxt "option label"
 msgid "or Default Image URL"
 msgstr ""
@@ -10894,170 +10897,175 @@ msgstr ""
 
 #: lib/submenu/general.php:208
 msgctxt "option label"
-msgid "Default Price Type"
+msgid "Default Product Condition"
 msgstr ""
 
 #: lib/submenu/general.php:213
 msgctxt "option label"
-msgid "Default Currency"
+msgid "Default Product Price Type"
 msgstr ""
 
 #: lib/submenu/general.php:218
 msgctxt "option label"
-msgid "Default Country"
+msgid "Default Currency"
 msgstr ""
 
 #: lib/submenu/general.php:223
 msgctxt "option label"
-msgid "Default Timezone"
+msgid "Default Country"
 msgstr ""
 
-#: lib/submenu/general.php:232
+#: lib/submenu/general.php:228
 msgctxt "option label"
-msgid "Title Separator"
+msgid "Default Timezone"
 msgstr ""
 
 #: lib/submenu/general.php:237
 msgctxt "option label"
-msgid "Truncated Text Ellipsis"
+msgid "Title Separator"
 msgstr ""
 
 #: lib/submenu/general.php:242
 msgctxt "option label"
+msgid "Truncated Text Ellipsis"
+msgstr ""
+
+#: lib/submenu/general.php:247
+msgctxt "option label"
 msgid "Description Hashtags"
 msgstr ""
 
-#: lib/submenu/general.php:246
+#: lib/submenu/general.php:251
 msgctxt "option comment"
 msgid "tag names"
 msgstr ""
 
-#: lib/submenu/general.php:255
+#: lib/submenu/general.php:260
 msgctxt "option label"
 msgid "Maximum Images to Include"
 msgstr ""
 
-#: lib/submenu/general.php:284
+#: lib/submenu/general.php:289
 msgctxt "option label"
 msgid "Facebook Domain Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:289
+#: lib/submenu/general.php:294
 msgctxt "option label"
 msgid "Facebook Locale"
 msgstr ""
 
-#: lib/submenu/general.php:294
+#: lib/submenu/general.php:299
 msgctxt "option label"
 msgid "Facebook Application ID"
 msgstr ""
 
-#: lib/submenu/general.php:314
+#: lib/submenu/general.php:319
 msgctxt "option label"
 msgid "Google Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:324
+#: lib/submenu/general.php:329
 msgctxt "option label"
 msgid "Organization Schema Type"
 msgstr ""
 
-#: lib/submenu/general.php:331
+#: lib/submenu/general.php:336
 msgctxt "option label"
 msgid "Organization Location"
 msgstr ""
 
-#: lib/submenu/general.php:337
+#: lib/submenu/general.php:342
 msgctxt "option label"
 msgid "Aggregate Offers by Currency"
 msgstr ""
 
-#: lib/submenu/general.php:340
+#: lib/submenu/general.php:345
 msgctxt "option comment"
 msgid "incompatible with <a href=\"%s\">price drop appearance</a>"
 msgstr ""
 
-#: lib/submenu/general.php:344
+#: lib/submenu/general.php:349
 msgctxt "option label"
 msgid "Add Text / Article Body Properties"
 msgstr ""
 
-#: lib/submenu/general.php:354
+#: lib/submenu/general.php:359
 msgctxt "option label"
 msgid "Robots Snippet Max. Length"
 msgstr ""
 
-#: lib/submenu/general.php:361
+#: lib/submenu/general.php:366
 msgctxt "option label"
 msgid "Robots Image Preview Size"
 msgstr ""
 
-#: lib/submenu/general.php:367
+#: lib/submenu/general.php:372
 msgctxt "option label"
 msgid "Robots Video Max. Previews"
 msgstr ""
 
-#: lib/submenu/general.php:378
+#: lib/submenu/general.php:383
 msgctxt "option label"
 msgid "Pinterest Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:383
+#: lib/submenu/general.php:388
 msgctxt "option label"
 msgid "Add \"nopin\" to Site Header Image"
 msgstr ""
 
-#: lib/submenu/general.php:386 lib/submenu/general.php:392
+#: lib/submenu/general.php:391 lib/submenu/general.php:397
 msgctxt "option comment"
 msgid "recommended"
 msgstr ""
 
-#: lib/submenu/general.php:389
+#: lib/submenu/general.php:394
 msgctxt "option label"
 msgid "Add Pinterest \"nopin\" to Images"
 msgstr ""
 
-#: lib/submenu/general.php:398
+#: lib/submenu/general.php:403
 msgctxt "option comment"
 msgid "recommended (see help text for caveats)"
 msgstr ""
 
-#: lib/submenu/general.php:405
+#: lib/submenu/general.php:410
 msgctxt "option value"
 msgid "Summary"
 msgstr ""
 
-#: lib/submenu/general.php:406
+#: lib/submenu/general.php:411
 msgctxt "option value"
 msgid "Summary Large Image"
 msgstr ""
 
-#: lib/submenu/general.php:410
+#: lib/submenu/general.php:415
 msgctxt "option label"
 msgid "Twitter Card for Singular with Image"
 msgstr ""
 
-#: lib/submenu/general.php:415
+#: lib/submenu/general.php:420
 msgctxt "option label"
 msgid "Twitter Card Type by Default"
 msgstr ""
 
-#: lib/submenu/general.php:424
+#: lib/submenu/general.php:429
 msgctxt "option label"
 msgid "Ahrefs Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:429
+#: lib/submenu/general.php:434
 msgctxt "option label"
 msgid "Baidu Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:434
+#: lib/submenu/general.php:439
 msgctxt "option label"
 msgid "Bing Website Verification ID"
 msgstr ""
 
-#: lib/submenu/general.php:439
+#: lib/submenu/general.php:444
 msgctxt "option label"
 msgid "Yandex Website Verification ID"
 msgstr ""
