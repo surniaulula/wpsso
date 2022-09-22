@@ -231,6 +231,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 13.3.1 (2022/09/22)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* None.
+* **Bugfixes**
+	* Fixed a missing default 'priceType' value in Schema UnitPriceSpecification markup.
+* **Developer Notes**
+	* None.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 13.3.0 (2022/09/15)**
 
 * **New Features**
@@ -493,6 +507,10 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 	* WordPress v5.2.
 
 == Upgrade Notice ==
+
+= 13.3.1 =
+
+(2022/09/22) Fixed a missing default 'priceType' value in Schema UnitPriceSpecification markup.
 
 = 13.3.0 =
 
