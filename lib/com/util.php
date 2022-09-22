@@ -2375,6 +2375,8 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			/**
 			 * Always keep the 'og:type' meta tag top-most.
+			 *
+			 * Use array_key_exists() to allow for null value.
 			 */
 			if ( array_key_exists( 'og:type', $mt_og ) ) {
 
