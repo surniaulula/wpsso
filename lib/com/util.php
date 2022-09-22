@@ -2375,9 +2375,6 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 
 			/**
 			 * Always keep the 'og:type' meta tag top-most.
-			 *
-			 * Note that isset() does not return true for array keys that correspond to a null value, while
-			 * array_key_exists() does, so use array_key_exists() here.
 			 */
 			if ( array_key_exists( 'og:type', $mt_og ) ) {
 

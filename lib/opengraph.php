@@ -1095,7 +1095,7 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 
 			if ( $this->p->debug->enabled ) {
 
-				$this->p->debug->mark();
+				$this->p->debug->log_arr( 'mt_og', $mt_og );
 			}
 
 			if ( empty( $this->p->cf[ 'head' ][ 'og_type_mt' ][ $type_id ] ) ) {	// Just in case.

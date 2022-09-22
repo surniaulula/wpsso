@@ -163,6 +163,7 @@ if ( ! class_exists( 'WpssoIntegEcomEdd' ) ) {
 			$md_defs[ 'og_type' ]                  = 'product';
 			$md_defs[ 'product_retailer_part_no' ] = $prod[ 'retailer_part_no' ];	// Product SKU.
 			$md_defs[ 'product_price' ]            = $prod[ 'price' ];
+			$md_defs[ 'product_price_type' ]       = $prod[ 'price_type' ];
 			$md_defs[ 'product_currency' ]         = $prod[ 'currency' ];
 
 			return $md_defs;
@@ -207,6 +208,7 @@ if ( ! class_exists( 'WpssoIntegEcomEdd' ) ) {
 			$mt_ecom[ 'product:retailer_part_no' ] = $prod[ 'retailer_part_no' ];	// Product SKU.
 			$mt_ecom[ 'product:price:amount' ]     = $prod[ 'price' ];
 			$mt_ecom[ 'product:price:currency' ]   = $prod[ 'currency' ];
+			$mt_ecom[ 'product:price:type' ]       = $prod[ 'price_type' ];
 
 			/**
 			 * Retrieve the terms of the taxonomy that are attached to the post ID.
@@ -260,6 +262,7 @@ if ( ! class_exists( 'WpssoIntegEcomEdd' ) ) {
 			$prod[ 'retailer_item_id' ] = $mod[ 'id' ];				// Product ID.
 			$prod[ 'retailer_part_no' ] = edd_get_download_sku( $mod[ 'id' ] );	// Product SKU.
 			$prod[ 'price' ]            = $this->get_product_price( $mod[ 'id' ] );
+			$prod[ 'price_type' ]       = 'https://schema.org/ListPrice';
 			$prod[ 'currency' ]         = $this->get_currency();
 
 			return $local_cache[ $mod[ 'name' ] ][ $mod[ 'id' ] ];

@@ -552,6 +552,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				898 => array(
 					'home_url' => 'site_home_url',
 				),
+				911 => array(
+					'og_def_price_type' => '',	// Deprecated for og_def_product_price_type.
+				),
 			),
 		);
 

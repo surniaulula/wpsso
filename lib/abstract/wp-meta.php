@@ -386,6 +386,8 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 
 					/**
 					 * Open Graph and Schema Product type.
+					 *
+					 * See WpssoOpengraph->add_og_type_mt_md().
 					 */
 					'product_category'            => $def_product_cat,
 					'product_brand'               => '',

@@ -1087,6 +1087,7 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 
 			$mt_ecom[ 'product:price:amount' ]   = $this->get_product_price_formatted( $product, $product_price, $include_vat );
 			$mt_ecom[ 'product:price:currency' ] = $currency;
+			$mt_ecom[ 'product:price:type' ]     = 'https://schema.org/ListPrice';
 
 			if ( method_exists( $product, 'get_regular_price' ) ) {
 
