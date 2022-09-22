@@ -240,7 +240,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* Fixed a missing default 'priceType' value in Schema UnitPriceSpecification markup.
 * **Developer Notes**
-	* None.
+	* Updated the SucomUtil->get_mt_image_seed(), get_mt_product_seed(), and get_mt_video_seed() values from an empty string to null.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
