@@ -390,8 +390,28 @@ body.rtl .sucom-tablink-icon::before {
 	content:"\e800";	/* .icon-videocam */
 }
 
-.sucom-tablink.sucom-tablink_schema_props.sucom-tablink-icon::before {	/* SSO > Advanced Settings > Schema Defaults tabs. */
-	content:"\f1c9";	/* .icon-file-code */
+.sucom-tablink-icon.sucom-tablink-href_book::before {			/* SSO > Advanced Settings > Schema Defaults > Book tab. */
+	content:"\e830";	/* .icon-book */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_creative_work::before {		/* SSO > Advanced Settings > Schema Defaults > Creative Work tab. */
+	content:"\f1fc";	/* .icon-brush */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_event::before {			/* SSO > Advanced Settings > Schema Defaults > Event tab. */
+	content:"\f145";	/* .icon-ticket */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_job_posting::before {		/* SSO > Advanced Settings > Schema Defaults > Job Posting tab. */
+	content:"\e831";	/* .icon-pin */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_product::before {		/* SSO > Advanced Settings > Schema Defaults > Product tab. */
+	content:"\e832";	/* .icon-tag */
+}
+
+.sucom-tablink-icon.sucom-tablink-href_review::before {			/* SSO > Advanced Settings > Schema Defaults > Review tab. */
+	content:"\e818";	/* .icon-comment */
 }
 
 .sucom-tablink.sucom-tablink_rrssb_styles.sucom-tablink-icon::before {	/* SSO > Responsive Styles > Social Sharing Styles tabs. */
