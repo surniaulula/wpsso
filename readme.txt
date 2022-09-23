@@ -231,16 +231,23 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.4.0-dev.2 (2022/09/22)**
+**Version 13.4.0-dev.3 (2022/09/23)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added a new "Default Product Condition" option in the SSO &gt; General Settings page.
+	* Renamed the 'Product Type' option to 'Google Product Category'.
+	* Added a new SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Product tab:
+		* Default Google Product Category
+		* Default Product Condition
+		* Default Product Price Type
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Renamed option keys:
+		* 'og_def_product_category' to 'schema_def_product_category'
+		* 'og_def_product_condition' to 'schema_def_product_condition'
+		* 'og_def_product_price_type' to 'schema_def_product_price_type'
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -522,9 +529,9 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 == Upgrade Notice ==
 
-= 13.4.0-dev.2 =
+= 13.4.0-dev.3 =
 
-(2022/09/22) Added a new "Default Product Condition" option in the SSO &gt; General Settings page.
+(2022/09/23) Added a new SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Product tab.
 
 = 13.3.2 =
 
