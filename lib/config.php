@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '13.4.0-dev.2',	// Plugin version.
-					'opt_version' => '912',		// Increment when changing default option values.
+					'version'     => '13.4.0-dev.3',	// Plugin version.
+					'opt_version' => '914',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1298,7 +1298,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'og_def_img_id'             => '',					// Default Image ID.
 					'og_def_img_id_lib'         => 'wp',					// Default Image ID Library.
 					'og_def_img_url'            => '',					// Default Image URL.
-					'og_def_product_category'   => 'none',					// Default Product Type.
 					'og_def_product_condition'  => 'https://schema.org/NewCondition',	// Default Product Condition.
 					'og_def_product_price_type' => 'https://schema.org/ListPrice',		// Default Product Price Type.
 					'og_def_currency'           => 'USD',					// Default Currency.
@@ -1455,12 +1454,12 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_tax_yith_product_brand' => 'item.list',	// For YITH WooCommerce Brands Add-on.
 
 					/**
-					 * Advanced Settings > Schema Properties > Book.
+					 * Advanced Settings > Schema Defaults > Book.
 					 */
 					'schema_def_book_format' => 'none',	// Default Book Format.
 
 					/**
-					 * Advanced Settings > Schema Properties > Creative Work.
+					 * Advanced Settings > Schema Defaults > Creative Work.
 					 *
 					 * Note that 'schema_def_pub_org_id' may be updated, in the WpssoOptions->get_defaults()
 					 * method, based on the 'site_pub_schema_type' value.
@@ -1472,7 +1471,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_def_prov_person_id'  => 'none',	// Default Service Prov. Person.
 
 					/**
-					 * Advanced Settings > Schema Properties > Event.
+					 * Advanced Settings > Schema Defaults > Event.
 					 */
 					'schema_def_event_attendance'          => 'https://schema.org/OfflineEventAttendanceMode',	// Default Attendance.
 					'schema_def_event_location_id'         => 'none',						// Default Physical Venue.
@@ -1482,14 +1481,19 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_def_event_performer_person_id' => 'none',						// Default Performer Person.
 
 					/**
-					 * Advanced Settings > Schema Properties > Job Posting.
+					 * Advanced Settings > Schema Defaults > Job Posting.
 					 */
 					'schema_def_job_hiring_org_id' => 'none',	// Default Hiring Org.
 					'schema_def_job_location_id'   => 'none',	// Default Job Location.
 					'schema_def_job_location_type' => 'none',	// Default Job Location Type.
 
 					/**
-					 * Advanced Settings > Schema Properties > Review.
+					 * Advanced Settings > Schema Defaults > Product.
+					 */
+					'schema_def_product_category' => 'none',	// Default Google Product Category.
+
+					/**
+					 * Advanced Settings > Schema Defaults > Review.
 					 */
 					'schema_def_review_item_type' => 'product',	// Default Subject Webpage Type.
 
@@ -1965,7 +1969,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_user_about_additional_name'  => 1,	// Middle or Additional Name.
 
 					/**
-					 * Advanced Settings > Metadata > Product Attributes.
+					 * Advanced Settings > Attributes and Metadata > Product Attributes.
 					 */
 					'plugin_attr_product_brand'              => 'Brand',		// Brand Attribute Name.
 					'plugin_attr_product_color'              => 'Color',		// Color Attribute Name.
@@ -1986,7 +1990,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_attr_product_target_gender'      => 'Gender',		// Target Gender Attribute Name.
 
 					/**
-					 * Advanced Settings > Metadata > Custom Fields.
+					 * Advanced Settings > Attributes and Metadata > Custom Fields.
 					 */
 					'plugin_cf_addl_type_urls'             => '',	// Microdata Type URLs Custom Field.
 					'plugin_cf_book_isbn'                  => '',	// Book ISBN Custom Field.
@@ -1996,7 +2000,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_img_url'                    => '',	// Image URL Custom Field.
 					'plugin_cf_product_avail'              => '',	// Product Availability Custom Field.
 					'plugin_cf_product_brand'              => '',	// Product Brand Custom Field.
-					'plugin_cf_product_category'           => '',	// Product Type ID Custom Field.
+					'plugin_cf_product_category'           => '',	// Google Product Category ID Custom Field.
 					'plugin_cf_product_color'              => '',	// Product Color Custom Field.
 					'plugin_cf_product_condition'          => '',	// Product Condition Custom Field.
 					'plugin_cf_product_currency'           => '',	// Product Currency Custom Field.
@@ -2084,7 +2088,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_img_url'                    => 'og_img_url',
 					'plugin_cf_product_avail'              => 'product_avail',
 					'plugin_cf_product_brand'              => 'product_brand',		// Product Brand Custom Field.
-					'plugin_cf_product_category'           => 'product_category',		// Product Type ID Custom Field.
+					'plugin_cf_product_category'           => 'product_category',		// Google Product Category ID Custom Field.
 					'plugin_cf_product_color'              => 'product_color',
 					'plugin_cf_product_condition'          => 'product_condition',
 					'plugin_cf_product_currency'           => 'product_currency',
@@ -2752,7 +2756,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_img_url'                    => 'Image URL Custom Field',
 					'plugin_cf_product_avail'              => 'Product Availability Custom Field',
 					'plugin_cf_product_brand'              => 'Product Brand Custom Field',
-					'plugin_cf_product_category'           => 'Product Type ID Custom Field',
+					'plugin_cf_product_category'           => 'Google Product Cat. ID Custom Field',
 					'plugin_cf_product_color'              => 'Product Color Custom Field',
 					'plugin_cf_product_condition'          => 'Product Condition Custom Field',
 					'plugin_cf_product_currency'           => 'Product Currency Custom Field',
@@ -3316,7 +3320,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 						'product:age_group'                 => '',
 						'product:availability'              => 'product_avail',
 						'product:brand'                     => 'product_brand',
-						'product:category'                  => 'product_category',		// Product Type ID from the Google product taxonomy.
+						'product:category'                  => 'product_category',		// Google Product Category ID.
 						'product:color'                     => 'product_color',
 						'product:condition'                 => 'product_condition',
 						'product:depth:value'               => 'product_depth_value',		// Non-standard / internal meta tag.

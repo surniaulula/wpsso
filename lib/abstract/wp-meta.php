@@ -300,7 +300,7 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$def_primary_term_id = $this->p->post->get_default_term_id( $mod, $tax_slug = 'category' );	// Returns term ID or false.
 				$def_reading_mins    = $this->p->page->get_reading_mins( $mod );
 				$def_img_id_lib      = isset( $opts[ 'og_def_img_id_lib' ] ) ? $opts[ 'og_def_img_id_lib' ] : 'wp';
-				$def_product_cat     = isset( $opts[ 'og_def_product_category' ] ) ? $opts[ 'og_def_product_category' ] : 'none';
+				$def_product_cat     = isset( $opts[ 'schema_def_product_category' ] ) ? $opts[ 'schema_def_product_category' ] : 'none';
 				$def_product_cond    = isset( $opts[ 'og_def_product_condition' ] ) ? $opts[ 'og_def_product_condition' ] : 'none';
 				$def_price_type      = isset( $opts[ 'og_def_product_price_type' ] ) ? $opts[ 'og_def_product_price_type' ] : 'https://schema.org/ListPrice';
 				$def_currency        = isset( $opts[ 'og_def_currency' ] ) ? $opts[ 'og_def_currency' ] : 'USD';

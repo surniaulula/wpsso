@@ -226,7 +226,7 @@ body.rtl .sucom-tablink-icon::before {
 	content:"\e809";	/* .icon-edit */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_custom_fields::before {		/* SSO > Advanced Settings > Metadata > Custom Fields tab. */
+.sucom-tablink-icon.sucom-tablink-href_custom_fields::before {		/* SSO > Advanced Settings > Attributes and Metadata > Custom Fields tab. */
 	content:"\e80c";	/* .icon-key */
 }
 
@@ -342,7 +342,7 @@ body.rtl .sucom-tablink-icon::before {
 	content:"\f1e0";	/* .icon-share */
 }
 
-.sucom-tablink-icon.sucom-tablink-href_product_attrs::before {		/* SSO > Advanced Settings > Metadata > Product Attributes tab. */
+.sucom-tablink-icon.sucom-tablink-href_product_attrs::before {		/* SSO > Advanced Settings > Attributes and Metadata > Product Attributes tab. */
 	content:"\e80f";	/* .icon-barcode */
 }
 
@@ -390,7 +390,7 @@ body.rtl .sucom-tablink-icon::before {
 	content:"\e800";	/* .icon-videocam */
 }
 
-.sucom-tablink.sucom-tablink_schema_props.sucom-tablink-icon::before {	/* SSO > Advanced Settings > Schema Properties tabs. */
+.sucom-tablink.sucom-tablink_schema_props.sucom-tablink-icon::before {	/* SSO > Advanced Settings > Schema Defaults tabs. */
 	content:"\f1c9";	/* .icon-file-code */
 }
 

@@ -40,10 +40,10 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				'plugin'         => _x( 'Plugin Settings', 'metabox title', 'wpsso' ),
 				'services'       => _x( 'Service APIs', 'metabox title', 'wpsso' ),
 				'doc_types'      => _x( 'Document Types', 'metabox title', 'wpsso' ),
-				'schema_props'   => _x( 'Schema Properties', 'metabox title', 'wpsso' ),
-				'contact_fields' => _x( 'Contact Fields', 'metabox title', 'wpsso' ),
+				'schema_props'   => _x( 'Schema Defaults', 'metabox title', 'wpsso' ),
+				'metadata'       => _x( 'Attributes and Metadata', 'metabox title', 'wpsso' ),
 				'user_about'     => _x( 'About the User', 'metabox title', 'wpsso' ),
-				'metadata'       => _x( 'Metadata', 'metabox title', 'wpsso' ),
+				'contact_fields' => _x( 'Contact Fields', 'metabox title', 'wpsso' ),
 				'head_tags'      => _x( 'HTML Tags', 'metabox title', 'wpsso' ),
 			) as $metabox_id => $metabox_title ) {
 
@@ -148,6 +148,7 @@ if ( ! class_exists( 'WpssoSubmenuAdvanced' ) && class_exists( 'WpssoAdmin' ) ) 
 				'creative_work' => _x( 'Creative Work', 'metabox tab', 'wpsso' ),
 				'event'         => _x( 'Event', 'metabox tab', 'wpsso' ),
 				'job_posting'   => _x( 'Job Posting', 'metabox tab', 'wpsso' ),
+				'product'       => _x( 'Product', 'metabox tab', 'wpsso' ),
 				'review'        => _x( 'Review', 'metabox tab', 'wpsso' ),
 			) );
 

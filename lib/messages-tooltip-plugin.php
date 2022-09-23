@@ -649,7 +649,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 					break;
 
 				/**
-				 * SSO > Advanced Settings > Metadata > Product Attributes tab.
+				 * SSO > Advanced Settings > Attributes and Metadata > Product Attributes tab.
 				 */
 				case ( 0 === strpos( $msg_key, 'tooltip-plugin_attr_product_' ) ? true : false ):
 
@@ -665,14 +665,14 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 					if ( ! empty( $attr_frags[ 'values' ] ) ) {
 
-						$text .= sprintf( __( 'The attribute value can be an empty string or: %s', 'wpsso' ),
+						$text .= sprintf( __( 'The attribute value can be an empty string or one of: %s', 'wpsso' ),
 							SucomUtil::array_to_list_html( $attr_frags[ 'values' ] ) );
 					}
 
 					break;
 
 				/**
-				 * SSO > Advanced Settings > Metadata > Custom Fields tab.
+				 * SSO > Advanced Settings > Attributes and Metadata > Custom Fields tab.
 				 */
 				case ( 0 === strpos( $msg_key, 'tooltip-plugin_cf_' ) ? true : false ):
 
@@ -692,7 +692,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipPlugin' ) ) {
 
 						if ( ! empty( $cf_frags[ 'values' ] ) ) {
 
-							$text .= sprintf( __( 'The custom field value can be an empty string or: %s', 'wpsso' ),
+							$text .= sprintf( __( 'The custom field value can be an empty string or one of: %s', 'wpsso' ),
 								SucomUtil::array_to_list_html( $cf_frags[ 'values' ] ) );
 						}
 

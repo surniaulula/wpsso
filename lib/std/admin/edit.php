@@ -1229,7 +1229,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				'schema_product_category' => array(
 					'tr_class' => $schema_type_row_class[ 'product' ],
 					'th_class' => 'medium',
-					'label'    => _x( 'Product Type', 'option label', 'wpsso' ),
+					'label'    => _x( 'Google Product Category', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-product_category',
 					'content'  => $form->get_no_select( 'product_category', $product_categories, $css_class = 'wide', $css_id = '', $is_assoc = true ),
 				),

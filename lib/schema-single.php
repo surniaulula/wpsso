@@ -1929,7 +1929,7 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			/**
-			 * Convert a numeric category ID to its Google product type string.
+			 * Convert a numeric category ID to its Google product category string.
 			 */
 			WpssoSchema::check_prop_value_category( $offer );
 

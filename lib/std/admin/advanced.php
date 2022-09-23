@@ -37,16 +37,17 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'services_ratings_reviews_rows'   => 2,	// Service APIs > Ratings and Reviews tab.
 				'doc_types_og_types_rows'         => 2,	// Document Types > Schema tab.
 				'doc_types_schema_types_rows'     => 2,	// Document Types > Open Graph tab.
-				'schema_props_book_rows'          => 2,	// Schema Properties > Book tab.
-				'schema_props_creative_work_rows' => 2,	// Schema Properties > Creative Work tab.
-				'schema_props_event_rows'         => 2,	// Schema Properties > Event tab.
-				'schema_props_job_posting_rows'   => 2,	// Schema Properties > Job Posting tab.
-				'schema_props_review_rows'        => 2,	// Schema Properties > Review tab.
+				'schema_props_book_rows'          => 2,	// Schema Defaults > Book tab.
+				'schema_props_creative_work_rows' => 2,	// Schema Defaults > Creative Work tab.
+				'schema_props_event_rows'         => 2,	// Schema Defaults > Event tab.
+				'schema_props_job_posting_rows'   => 2,	// Schema Defaults > Job Posting tab.
+				'schema_props_product_rows'       => 2,	// Schema Defaults > Product tab.
+				'schema_props_review_rows'        => 2,	// Schema Defaults > Review tab.
 				'cm_custom_contacts_rows'         => 2,	// Contact Fields > Custom Contacts tab.
 				'cm_default_contacts_rows'        => 2,	// Contact Fields > Default Contacts tab.
 				'advanced_user_about_rows'        => 2,	// About the User metabox.
-				'metadata_product_attrs_rows'     => 2,	// Metadata > Product Attributes tab.
-				'metadata_custom_fields_rows'     => 2,	// Metadata > Custom Fields tab.
+				'metadata_product_attrs_rows'     => 2,	// Attributes and Metadata > Product Attributes tab.
+				'metadata_custom_fields_rows'     => 2,	// Attributes and Metadata > Custom Fields tab.
 				'head_tags_facebook_rows'         => 3,	// HTML Tags > Facebook tab.
 				'head_tags_open_graph_rows'       => 3,	// HTML Tags > Open Graph tab.
 				'head_tags_twitter_rows'          => 3,	// HTML Tags > Twitter tab.
@@ -971,6 +972,49 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
+		public function filter_schema_props_product_rows( $table_rows, $form ) {
+
+			$this->maybe_set_vars();
+
+			$product_categories = $this->p->util->get_google_product_categories();
+
+			$form_rows = array(
+				'wpssojson_pro_feature_msg' => array(
+					'table_row' => '<td colspan="2">' . $this->p->msgs->pro_feature( 'wpsso' ) . '</td>',
+				),
+				'schema_def_product_category' => array(
+					'td_class' => 'blank',
+					'label'    => _x( 'Default Google Product Category', 'option label', 'wpsso' ),
+					'tooltip'  => 'schema_def_product_category',
+					'content'  => $form->get_no_select( 'schema_def_product_category', $product_categories, $css_class = 'wide', $css_id = '',
+						$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
+							$event_args = array(
+								'json_var'  => 'product_categories',
+								'exp_secs'  => WPSSO_CACHE_SELECT_JSON_EXP_SECS,	// Create and read from a javascript URL.
+								'is_transl' => true,					// No label translation required.
+								'is_sorted' => true,					// No label sorting required.
+							)
+					),
+				),
+				'schema_def_product_condition' => array(
+					'td_class' => 'blank',
+					'label'    => _x( 'Default Product Condition', 'option label', 'wpsso' ),
+					'tooltip'  => 'schema_def_product_condition',
+					'content'  => $form->get_no_select( 'schema_def_product_condition', $this->p->cf[ 'form' ][ 'item_condition' ] ),
+				),
+				'schema_def_product_price_type' => array(
+					'td_class' => 'blank',
+					'label'    => _x( 'Default Product Price Type', 'option label', 'wpsso' ),
+					'tooltip'  => 'schema_def_product_price_type',
+					'content'  => $form->get_no_select( 'schema_def_product_price_type', $this->p->cf[ 'form' ][ 'price_type' ] ),
+				),
+			);
+
+			$table_rows = $form->get_md_form_rows( $table_rows, $form_rows );
+
+			return $table_rows;
+		}
+
 		public function filter_schema_props_review_rows( $table_rows, $form ) {
 
 			$this->maybe_set_vars();
@@ -1094,7 +1138,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		}
 
 		/**
-		 * Metadata > Product Attributes tab.
+		 * Attributes and Metadata > Product Attributes tab.
 		 */
 		public function filter_metadata_product_attrs_rows( $table_rows, $form ) {
 
@@ -1115,7 +1159,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 		}
 
 		/**
-		 * Metadata > Custom Fields tab.
+		 * Attributes and Metadata > Custom Fields tab.
 		 */
 		public function filter_metadata_custom_fields_rows( $table_rows, $form ) {
 

@@ -35,40 +35,14 @@ if ( ! class_exists( 'WpssoMessagesTooltipOpenGraph' ) ) {
 				 */
 				case 'tooltip-og_def_article_section':	// Default Article Section.
 
-					$text = __( 'The section that best describes the content of articles on your site.', 'wpsso' ) . ' ';
+					$text = sprintf( __( 'The %s that best describes the content of articles on your site.', 'wpsso' ),
+						_x( 'article section', 'tooltip fragment', 'wpsso' ) ) . ' ';
 
-					$text .= sprintf( __( 'Your selection will be used by default for the %s meta tag value (you can also select a different section when editing an article).', 'wpsso' ), '<code>article:section</code>' ) . ' ';
-
-					$text .= sprintf( __( 'Select "[None]" to exclude the %s meta tag by default.', 'wpsso' ),
-						'<code>article:section</code>' );
-
-					break;
-
-				case 'tooltip-og_def_product_category':	// Default Product Type.
-
-					$text = __( 'The Google product type that best describes the products on your site.', 'wpsso' ) . ' ';
-
-					$text .= sprintf( __( 'Your selection will be used by default for Schema product markup and the %s meta tag (you can also select a different product type when editing a product).', 'wpsso' ), '<code>product:category</code>' ) . ' ';
-
-					$text .= sprintf( __( 'Select "[None]" to exclude the product type from Schema markup and the %s meta tag by default.', 'wpsso' ),
-						'<code>product:category</code>' ) . ' ';
-
-					// translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a Google product type'.
-					$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s</a>.', 'wpsso' ),
-						__( 'https://support.google.com/merchants/answer/6324436', 'wpsso' ),
-							_x( 'a Google product type', 'tooltip fragment', 'wpsso' ) );
-
-					break;
-
-				case 'tooltip-og_def_product_condition':	// Default Product Condition.
-
-					$text = __( 'The default product condition.', 'wpsso' );
-
-					break;
-
-				case 'tooltip-og_def_product_price_type':	// Default Product Price Type.
-
-					$text = __( 'The default product price type.', 'wpsso' );
+					$text .= sprintf( __( 'You can select a different %s when editing an article.', 'wpsso' ),
+						_x( 'article section', 'tooltip fragment', 'wpsso' ) ) . ' ';
+	
+					$text .= sprintf( __( 'Select "[None]" to exclude the %s by default from Schema markup and meta tags.', 'wpsso' ),
+						_x( 'article section', 'tooltip fragment', 'wpsso' ) ) . ' ';
 
 					break;
 

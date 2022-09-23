@@ -135,18 +135,27 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 
 				 	break;
 
-				case 'tooltip-meta-product_category':	// Product Type.
+				case 'tooltip-meta-product_category':	// Google Product Category.
 
-					$option_link = $this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_site', _x( 'Default Product Type', 'option label', 'wpsso' ) );
+					$option_link = $this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_site',
+						_x( 'Default Google Product Category', 'option label', 'wpsso' ) );
 
-					$text = sprintf( __( 'A custom Google product type, which may be different than the %s option value.', 'wpsso' ), $option_link ) . ' ';
+					$meta_frags = $this->get_tooltip_fragments( preg_replace( '/^tooltip-meta-/', '', $msg_key ) );
 
-					$text .= sprintf( __( 'Your selection will be used for Schema product markup and the %s meta tag.', 'wpsso' ), '<code>product:category</code>' ) . ' ';
+					if ( ! empty( $meta_frags ) ) {	// Just in case.
 
-					$text .= __( 'Select "[None]" if you prefer to exclude the product type from Schema markup and meta tags.', 'wpsso' ) . ' ';
+						$text = sprintf( __( 'A custom %1$s, which may be different than the %2$s option value.', 'wpsso' ),
+						$meta_frags[ 'name' ], $option_link ) . ' ';
 
-					// translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a Google product type'.
-					$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s</a>.', 'wpsso' ), __( 'https://support.google.com/merchants/answer/6324436', 'wpsso' ), _x( 'a Google product type', 'tooltip fragment', 'wpsso' ) );
+						$text .= __( 'Select "[None]" if you prefer to exclude the product category from Schema markup and meta tags.', 'wpsso' ) . ' ';
+
+						if ( ! empty( $meta_frags[ 'about' ] ) ) {
+
+							// translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a Google product category'.
+							$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s</a>.', 'wpsso' ),
+								$meta_frags[ 'about' ], $meta_frags[ 'desc' ] );
+						}
+					}
 
 				 	break;
 
@@ -157,19 +166,22 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 					if ( ! empty( $meta_frags ) ) {	// Just in case.
 
 						// translators: %s is a singular item reference, for example 'a product size type'.
-						$text = sprintf( __( 'A custom value for %s can be provided for the main product meta tags and Schema markup.', 'wpsso' ), $meta_frags[ 'desc' ] ) . ' ';
+						$text = sprintf( __( 'A custom value for %s can be provided for the main product meta tags and Schema markup.', 'wpsso' ),
+							$meta_frags[ 'desc' ] ) . ' ';
 
 						$text .= __( 'If product variations are available, the information from each variation may supersede this value in Schema product offers.', 'wpsso' ) . ' ';
 
 						// translators: %s is the option label.
-						$text .= sprintf( __( 'The <strong>%s</strong> option may be read-only when an e-commerce plugin is the authoritative source for this value.', 'wpsso' ), $meta_frags[ 'label' ] ) . ' ';
+						$text .= sprintf( __( 'The <strong>%s</strong> option may be read-only when an e-commerce plugin is the authoritative source for this value.', 'wpsso' ),
+							$meta_frags[ 'label' ] ) . ' ';
 
 						$text .= __( 'In this case, you should update the product information in the e-commerce plugin to update this value.', 'wpsso' ) . ' ';
 
 						if ( ! empty( $meta_frags[ 'about' ] ) ) {
 
 							// translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product size'.
-							$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s</a>.', 'wpsso' ), $meta_frags[ 'about' ], $meta_frags[ 'desc' ] );
+							$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s</a>.', 'wpsso' ),
+								$meta_frags[ 'about' ], $meta_frags[ 'desc' ] );
 						}
 					}
 

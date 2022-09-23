@@ -289,7 +289,7 @@ _x( 'How-To Tools Custom Field', 'option label', 'wpsso' );
 _x( 'Image URL Custom Field', 'option label', 'wpsso' );
 _x( 'Product Availability Custom Field', 'option label', 'wpsso' );
 _x( 'Product Brand Custom Field', 'option label', 'wpsso' );
-_x( 'Product Type ID Custom Field', 'option label', 'wpsso' );
+_x( 'Google Product Cat. ID Custom Field', 'option label', 'wpsso' );
 _x( 'Product Color Custom Field', 'option label', 'wpsso' );
 _x( 'Product Condition Custom Field', 'option label', 'wpsso' );
 _x( 'Product Currency Custom Field', 'option label', 'wpsso' );

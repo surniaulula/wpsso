@@ -664,7 +664,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					'product_avail' => array(
 						'label'  => _x( 'Product Availability', 'option label', 'wpsso' ),
 						'desc'   => _x( 'a product availability', 'tooltip fragment', 'wpsso' ),
-						'values' => array_keys( $this->p->cf[ 'form' ][ 'item_availability' ] ),
+						'values' => WpssoSchema::get_enumeration_values( $enum_key = 'item_availability' ),
 					),
 					'product_brand' => array(
 						'label' => _x( 'Product Brand', 'option label', 'wpsso' ),
@@ -672,8 +672,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'about' => __( 'https://support.google.com/merchants/answer/6324351', 'wpsso' ),
 					),
 					'product_category' => array(
-						'label' => _x( 'Product Type', 'option label', 'wpsso' ),
-						'desc'  => _x( 'a Google product type', 'tooltip fragment', 'wpsso' ),
+						'label' => _x( 'Google Product Category', 'option label', 'wpsso' ),
+						'name'  => _x( 'Google product category', 'tooltip fragment', 'wpsso' ),
+						'desc'  => _x( 'a Google product category', 'tooltip fragment', 'wpsso' ),
 						'about' => __( 'https://support.google.com/merchants/answer/6324436', 'wpsso' ),
 					),
 					'product_color' => array(
@@ -682,8 +683,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					),
 					'product_condition' => array(
 						'label'  => _x( 'Product Condition', 'option label', 'wpsso' ),
+						'name'   => _x( 'product condition', 'tooltip fragment', 'wpsso' ),
 						'desc'   => _x( 'a product condition', 'tooltip fragment', 'wpsso' ),
-						'values' => array_keys( $this->p->cf[ 'form' ][ 'item_condition' ] ),
+						'values' => WpssoSchema::get_enumeration_values( $enum_key = 'item_condition', $val_prefix = '', $val_suffix = 'Condition' ),
 					),
 					'product_currency' => array(
 						'label' => _x( 'Product Currency', 'option label', 'wpsso' ),
@@ -756,8 +758,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					),
 					'product_price_type' => array(
 						'label'  => _x( 'Product Price Type', 'option label', 'wpsso' ),
+						'name'   => _x( 'product price type', 'tooltip fragment', 'wpsso' ),
 						'desc'   => _x( 'a product price type', 'tooltip fragment', 'wpsso' ),
-						'values' => array_keys( $this->p->cf[ 'form' ][ 'price_type' ] ),
+						'values' => WpssoSchema::get_enumeration_values( $enum_key = 'price_type' ),
 					),
 					'product_retailer_part_no' => array(
 						'label' => _x( 'Product SKU', 'option label', 'wpsso' ),
@@ -772,13 +775,13 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'label'  => _x( 'Product Size Type', 'option label', 'wpsso' ),
 						'desc'   => _x( 'a product size type', 'tooltip fragment', 'wpsso' ),
 						'about'  => __( 'https://support.google.com/merchants/answer/6324497', 'wpsso' ),
-						'values' => array_keys( $this->p->cf[ 'form' ][ 'size_type' ] ),
+						'values' => WpssoSchema::get_enumeration_values( $enum_key = 'size_type', $val_prefix = 'WearableSizeGroup' ),
 					),
 					'product_target_gender' => array(
 						'label' => _x( 'Product Target Gender', 'option label', 'wpsso' ),
 						'desc'  => _x( 'a product target gender', 'tooltip fragment', 'wpsso' ),
 						'about' => __( 'https://support.google.com/merchants/answer/6324479', 'wpsso' ),
-						'values' => array_keys( $this->p->cf[ 'form' ][ 'target_gender' ] ),
+						'values' => WpssoSchema::get_enumeration_values( $enum_key = 'target_gender' ),
 					),
 					'product_fluid_volume_value' => array(
 						'label' => _x( 'Product Fluid Volume', 'option label', 'wpsso' ),

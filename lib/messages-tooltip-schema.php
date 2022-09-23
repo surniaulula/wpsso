@@ -165,7 +165,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 					break;
 
 				/**
-				 * SSO > Advanced Settings > Schema Properties > Book tab.
+				 * SSO > Advanced Settings > Schema Defaults > Book tab.
 				 */
 				case 'tooltip-schema_def_book_format':		// Default Book Format.
 
@@ -174,7 +174,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 				 	break;
 
 				/**
-				 * SSO > Advanced Settings > Schema Properties > Creative Work tab.
+				 * SSO > Advanced Settings > Schema Defaults > Creative Work tab.
 				 */
 				case 'tooltip-schema_def_family_friendly':	// Default Family Friendly.
 
@@ -202,7 +202,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 				 	break;
 
 				/**
-				 * SSO > Advanced Settings > Schema Properties > Event tab.
+				 * SSO > Advanced Settings > Schema Defaults > Event tab.
 				 */
 				case 'tooltip-schema_def_event_attendance':	// Event Attendance.
 
@@ -241,7 +241,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 				 	break;
 
 				/**
-				 * SSO > Advanced Settings > Schema Properties > Job Posting tab.
+				 * SSO > Advanced Settings > Schema Defaults > Job Posting tab.
 				 */
 				case 'tooltip-schema_def_job_hiring_org_id':	// Default Job Hiring Org.
 
@@ -262,7 +262,39 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 				 	break;
 
 				/**
-				 * SSO > Advanced Settings > Schema Properties > Review tab.
+				 * SSO > Advanced Settings > Schema Defaults > Product tab.
+				 *
+				 *	Default Google Product Category.
+				 * 	Default Product Condition.
+				 * 	Default Product Price Type.
+				 */
+				case ( 0 === strpos( $msg_key, 'tooltip-schema_def_product_' ) ? true : false ):
+
+					$def_frags = $this->get_tooltip_fragments( preg_replace( '/^tooltip-schema_def_/', '', $msg_key ) );
+
+					if ( ! empty( $def_frags ) ) {	// Just in case.
+
+						$text = sprintf( __( 'The %s that best describes the products on your site.', 'wpsso' ),
+							$def_frags[ 'name' ] ) . ' ';
+
+						$text .= sprintf( __( 'You can select a different %s when editing a product.', 'wpsso' ),
+							$def_frags[ 'name' ] ) . ' ';
+	
+						$text .= sprintf( __( 'Select "[None]" to exclude the %s by default from Schema markup and meta tags.', 'wpsso' ),
+							$def_frags[ 'name' ] ) . ' ';
+	
+						if ( ! empty( $def_frags[ 'about' ] ) ) {
+
+							// translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a Google product category'.
+							$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s</a>.', 'wpsso' ),
+								$def_frags[ 'about' ], $def_frags[ 'desc' ] );
+						}
+					}
+
+					break;
+
+				/**
+				 * SSO > Advanced Settings > Schema Defaults > Review tab.
 				 */
 				case 'tooltip-schema_def_review_item_type':	// Default Subject Webpage Type.
 

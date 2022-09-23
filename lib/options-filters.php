@@ -50,6 +50,9 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 				return $type;
 
+			/**
+			 * Optimize and check for a schema option prefix first.
+			 */
 			} elseif ( 0 === strpos( $base_key, 'schema_' ) ) {
 
 				switch ( $base_key ) {
@@ -181,6 +184,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_def_job_hiring_org_id':		// Default Hiring Organization.
 					case 'schema_def_job_location_id':		// Default Job Location.
 					case 'schema_def_job_location_type':		// Default Job Location Type.
+					case 'schema_def_product_category':		// Default Google Product Category.
 					case 'schema_def_prov_org_id':			// Default Service Prov. Org.
 					case 'schema_def_prov_person_id':		// Default Service Prov. Person.
 					case 'schema_def_pub_org_id':			// Default Publisher Org.
@@ -439,7 +443,6 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'site_org_place_id':
 				case 'site_org_schema_type':
 				case 'og_def_article_section':			// Default Article Section.
-				case 'og_def_product_category':			// Default Product Type.
 				case 'og_def_product_condition':		// Default Product Condition.
 				case 'og_def_product_price_type':		// Default Product Price Type.
 				case 'og_def_currency':				// Default Currency.

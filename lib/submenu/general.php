@@ -149,7 +149,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 					$def_site_desc      = get_bloginfo( 'description' );
 					$def_home_url       = SucomUtil::get_home_url();	// Returns the home page URL with a trailing slash.
 					$article_sections   = $this->p->util->get_article_sections();
-					$product_categories = $this->p->util->get_google_product_categories();
 
 					$table_rows[ 'site_name' ] = '' . 
 						$this->form->get_th_html_locale( _x( 'WebSite Name', 'option label', 'wpsso' ),
@@ -188,31 +187,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 								)
 							) .
 						'</td>';
-
-					$table_rows[ 'og_def_product_category' ] = '' . 
-						$this->form->get_th_html( _x( 'Default Product Type', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'og_def_product_category' ) . 
-						'<td>' .
-						$this->form->get_select( 'og_def_product_category', $product_categories, $css_class = 'wide', $css_id = '',
-							$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
-								$event_args = array(
-									'json_var'  => 'product_categories',
-									'exp_secs'  => WPSSO_CACHE_SELECT_JSON_EXP_SECS,	// Create and read from a javascript URL.
-									'is_transl' => true,					// No label translation required.
-									'is_sorted' => true,					// No label sorting required.
-								)
-							) .
-						'</td>';
-
-					$table_rows[ 'og_def_product_condition' ] = $this->form->get_tr_hide( $in_view = 'basic', 'og_def_product_condition' ) .
-						$this->form->get_th_html( _x( 'Default Product Condition', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'og_def_product_condition' ) .
-						'<td>' . $this->form->get_select( 'og_def_product_condition', $this->p->cf[ 'form' ][ 'item_condition' ] ) . '</td>';
-
-					$table_rows[ 'og_def_product_price_type' ] = $this->form->get_tr_hide( $in_view = 'basic', 'og_def_product_price_type' ) .
-						$this->form->get_th_html( _x( 'Default Product Price Type', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'og_def_product_price_type' ) .
-						'<td>' . $this->form->get_select( 'og_def_product_price_type', $this->p->cf[ 'form' ][ 'price_type' ] ) . '</td>';
 
 					$table_rows[ 'og_def_currency' ] = '' .
 						$this->form->get_th_html( _x( 'Default Currency', 'option label', 'wpsso' ),

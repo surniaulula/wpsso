@@ -105,7 +105,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_price_type', $enum_key = 'price_type' );
 
 				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_size_type', $enum_key = 'size_type',
-					$val_prefix = 'WearableSizeGroup', $val_suffix = '' );
+					$val_prefix = 'WearableSizeGroup' );
 
 				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_target_gender', $enum_key = 'target_gender' );
 
@@ -3638,7 +3638,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
-		 * Convert a numeric category ID to its Google product type string.
+		 * Convert a numeric category ID to its Google product category string.
 		 */
 		public static function check_prop_value_category( &$json_data, $prop_name = 'category' ) {
 
@@ -3652,7 +3652,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( ! empty( $json_data[ $prop_name ] ) ) {
 
 				/**
-				 * Numeric category IDs are expected to be Google product type id.
+				 * Category IDs are expected to be numeric Google product category IDs.
 				 *
 				 * See https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt.
 				 */
@@ -3667,6 +3667,126 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						$json_data[ $prop_name ] = $categories[ $cat_id ];
 
 					} else {
+
+						unset( $json_data[ $prop_name ] );
+					}
+				}
+			}
+		}
+
+		public static function get_enumeration_values( $enum_key, $val_prefix = '', $val_suffix = '' ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			$values = array();
+
+			if ( empty( $wpsso->cf[ 'form' ][ $enum_key ] ) ) {
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( $enum_key . ' enumeration key is unknown' );
+				}
+
+			} else {
+
+				$enums = $wpsso->cf[ 'form' ][ $enum_key ];
+
+				foreach ( $enums as $key => $val ) {
+
+					$values[] = $key;
+
+					if ( false !== ( $pos = strpos( $key, 'https://schema.org/' ) ) ) {
+
+						$key = substr( $key, $pos + strlen( 'https://schema.org/' ) );
+					
+						$values[] = $key;
+					}
+
+					if ( $val_prefix && false !== ( $pos = strpos( $key, $val_prefix ) ) ) {
+
+						$key = substr( $key, $pos + strlen( $val_prefix ) );
+						
+						$values[] = $key;
+					}
+
+					if ( $val_suffix && false !== ( $pos = strpos( $key, $val_suffix ) ) ) {
+
+						$len_prefix = strlen( $key ) - strlen( $val_suffix );
+
+						if ( $pos === $len_prefix ) {
+
+							$key = substr( $key, 0, $len_prefix );
+						
+							$values[] = $key;
+						}
+					}
+				}
+			}
+
+			return $values;
+		}
+
+		/**
+		 * See WpssoSchema->filter_sanitize_md_options().
+		 */
+		public static function check_prop_value_enumeration( &$json_data, $prop_name, $enum_key, $val_prefix = '', $val_suffix = '' ) {
+
+			$wpsso =& Wpsso::get_instance();
+
+			if ( $wpsso->debug->enabled ) {
+
+				$wpsso->debug->log( 'checking ' . $prop_name . ' property value' );
+			}
+
+			if ( empty( $json_data[ $prop_name ] ) ) {
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( $prop_name . ' property value is empty' );
+				}
+
+			} elseif ( 'none' === $json_data[ $prop_name ] ) {
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( $prop_name . ' property value is none' );
+				}
+
+			} elseif ( empty( $wpsso->cf[ 'form' ][ $enum_key ] ) ) {
+
+				if ( $wpsso->debug->enabled ) {
+
+					$wpsso->debug->log( $enum_key . ' enumeration key is unknown' );
+				}
+
+			} else {
+
+				$enums = $wpsso->cf[ 'form' ][ $enum_key ];
+
+				$prop_val = $json_data[ $prop_name ];	// Example: 'New' or 'new'.
+
+				if ( ! isset( $enums[ $prop_val ] ) ) {
+
+					$prop_val_ucf = ucfirst( $prop_val );
+					
+					if ( isset( $enums[ $prop_val_ucf ] ) ) {
+
+						$json_data[ $prop_name ] = $prop_val_ucf;
+
+					} elseif ( isset( $enums[ 'https://schema.org/' . $prop_val_ucf ] ) ) {
+
+						$json_data[ $prop_name ] = 'https://schema.org/' . $prop_val_ucf;
+
+					} elseif ( isset( $enums[ 'https://schema.org/' . $val_prefix . $prop_val_ucf . $val_suffix ] ) ) {
+
+						$json_data[ $prop_name ] = 'https://schema.org/' . $val_prefix . $prop_val_ucf . $val_suffix;
+
+					} else {
+
+						if ( $wpsso->debug->enabled ) {
+
+							$wpsso->debug->log( 'invalid ' . $prop_name . ' property value "' . $prop_val . '"' );
+						}
 
 						unset( $json_data[ $prop_name ] );
 					}
@@ -3778,78 +3898,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 				$json_data[ $prop_name ] = array_values( $json_data[ $prop_name ] );	// Reindex / renumber the array.
-			}
-		}
-
-		/**
-		 * Example usage:
-		 *
-		 *	WpssoSchema::check_prop_value_enumeration( $offer, 'availability', 'item_availability' );
-		 *
-		 *	WpssoSchema::check_prop_value_enumeration( $offer, 'itemCondition', 'item_condition', 'Condition' );
-		 */
-		public static function check_prop_value_enumeration( &$json_data, $prop_name, $enum_key, $val_prefix = '', $val_suffix = '' ) {
-
-			$wpsso =& Wpsso::get_instance();
-
-			if ( $wpsso->debug->enabled ) {
-
-				$wpsso->debug->log( 'checking ' . $prop_name . ' property value' );
-			}
-
-			if ( empty( $json_data[ $prop_name ] ) ) {
-
-				if ( $wpsso->debug->enabled ) {
-
-					$wpsso->debug->log( $prop_name . ' property value is empty' );
-				}
-
-			} elseif ( 'none' === $json_data[ $prop_name ] ) {
-
-				if ( $wpsso->debug->enabled ) {
-
-					$wpsso->debug->log( $prop_name . ' property value is none' );
-				}
-
-			} elseif ( empty( $wpsso->cf[ 'form' ][ $enum_key ] ) ) {
-
-				if ( $wpsso->debug->enabled ) {
-
-					$wpsso->debug->log( $enum_key . ' enumeration key is unknown' );
-				}
-
-			} else {
-
-				$enum_select = $wpsso->cf[ 'form' ][ $enum_key ];
-
-				$prop_val = $json_data[ $prop_name ];	// Example: 'New' or 'new'.
-
-				if ( ! isset( $enum_select[ $prop_val ] ) ) {
-
-					$prop_val_ucf = ucfirst( $prop_val );
-					
-					if ( isset( $enum_select[ $prop_val_ucf ] ) ) {
-
-						$json_data[ $prop_name ] = $prop_val_ucf;
-
-					} elseif ( isset( $enum_select[ 'https://schema.org/' . $prop_val_ucf ] ) ) {
-
-						$json_data[ $prop_name ] = 'https://schema.org/' . $prop_val_ucf;
-
-					} elseif ( isset( $enum_select[ 'https://schema.org/' . $val_prefix . $prop_val_ucf . $val_suffix ] ) ) {
-
-						$json_data[ $prop_name ] = 'https://schema.org/' . $val_prefix . $prop_val_ucf . $val_suffix;
-
-					} else {
-
-						if ( $wpsso->debug->enabled ) {
-
-							$wpsso->debug->log( 'invalid ' . $prop_name . ' property value "' . $prop_val . '"' );
-						}
-
-						unset( $json_data[ $prop_name ] );
-					}
-				}
 			}
 		}
 
