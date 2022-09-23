@@ -78,7 +78,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 					$text = sprintf( __( 'A customized section for this article, which may be different than the %s option value.',
 						'wpsso' ), $option_link ) . ' ';
 
-					$text .= sprintf( __( 'Select "[None]" if you prefer to exclude the %s meta tag.', 'wpsso' ),
+					$text .= sprintf( __( 'Select "[None]" to exclude the %s meta tag.', 'wpsso' ),
 						'<code>article:section</code>' );
 
 				 	break;
@@ -144,10 +144,12 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 
 					if ( ! empty( $meta_frags ) ) {	// Just in case.
 
+						// translators: %1$s is a lower case item name, for example 'Google product category'.
 						$text = sprintf( __( 'A custom %1$s, which may be different than the %2$s option value.', 'wpsso' ),
-						$meta_frags[ 'name' ], $option_link ) . ' ';
+							$meta_frags[ 'name' ], $option_link ) . ' ';
 
-						$text .= __( 'Select "[None]" if you prefer to exclude the product category from Schema markup and meta tags.', 'wpsso' ) . ' ';
+						$text .= sprintf( __( 'Select "[None]" to exclude the %s from Schema markup and meta tags.', 'wpsso' ),
+							$meta_frags[ 'name' ] ) . ' ';
 
 						if ( ! empty( $meta_frags[ 'about' ] ) ) {
 

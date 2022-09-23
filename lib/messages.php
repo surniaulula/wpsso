@@ -639,35 +639,43 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 				$local_cache = array(
 					'addl_type_urls' => array(
 						'label' => _x( 'Microdata Type URLs', 'option label', 'wpsso' ),
+						'name'  => _x( 'Microdata type URLs', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'additional microdata type URLs', 'tooltip fragment', 'wpsso' ),
 					),
 					'book_isbn' => array(
 						'label' => _x( 'Book ISBN', 'option label', 'wpsso' ),
+						'name'  => _x( 'book ISBN', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'an ISBN code (aka International Standard Book Number)', 'tooltip fragment', 'wpsso' ),
 					),
 					'howto_steps' => array(
 						'label' => _x( 'How-To Steps', 'option label', 'wpsso' ),
+						'name'  => _x( 'how-to steps', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'how-to steps', 'tooltip fragment', 'wpsso' ),
 					),
 					'howto_supplies' => array(
 						'label' => _x( 'How-To Supplies', 'option label', 'wpsso' ),
+						'name'  => _x( 'how-to supplies', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'how-to supplies', 'tooltip fragment', 'wpsso' ),
 					),
 					'howto_tools' => array(
 						'label' => _x( 'How-To Tools', 'option label', 'wpsso' ),
+						'name'  => _x( 'how-to tools', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'how-to tools', 'tooltip fragment', 'wpsso' ),
 					),
 					'img_url' => array(
 						'label' => _x( 'Image URL', 'option label', 'wpsso' ),
+						'name'  => _x( 'image URL', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'an image URL', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_avail' => array(
 						'label'  => _x( 'Product Availability', 'option label', 'wpsso' ),
+						'name'   => _x( 'product availability', 'tooltip fragment', 'wpsso' ),
 						'desc'   => _x( 'a product availability', 'tooltip fragment', 'wpsso' ),
 						'values' => WpssoSchema::get_enumeration_values( $enum_key = 'item_availability' ),
 					),
 					'product_brand' => array(
 						'label' => _x( 'Product Brand', 'option label', 'wpsso' ),
+						'name'  => _x( 'product brand', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'a product brand', 'tooltip fragment', 'wpsso' ),
 						'about' => __( 'https://support.google.com/merchants/answer/6324351', 'wpsso' ),
 					),
@@ -679,6 +687,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					),
 					'product_color' => array(
 						'label' => _x( 'Product Color', 'option label', 'wpsso' ),
+						'name'  => _x( 'product color', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'a product color', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_condition' => array(
@@ -689,71 +698,86 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					),
 					'product_currency' => array(
 						'label' => _x( 'Product Currency', 'option label', 'wpsso' ),
+						'name'  => _x( 'product currency', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'a product currency', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_depth_value' => array(
 						'label' => _x( 'Product Depth', 'option label', 'wpsso' ),
+						'name'  => _x( 'product depth', 'tooltip fragment', 'wpsso' ),
 						'desc'  => sprintf( _x( 'a product depth (in %s)', 'tooltip fragment', 'wpsso' ), WpssoSchema::get_data_unit_text( 'depth' ) ),
 					),
 					'product_gtin14' => array(
 						'label' => _x( 'Product GTIN-14', 'option label', 'wpsso' ),
+						'name'  => _x( 'product GTIN-14', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'a product GTIN-14 code (aka ITF-14)', 'tooltip fragment', 'wpsso' ),
 						'about' => __( 'https://support.google.com/merchants/answer/6324461', 'wpsso' ),
 					),
 					'product_gtin13' => array(
 						'label' => _x( 'Product GTIN-13 (EAN)', 'option label', 'wpsso' ),
+						'name'  => _x( 'product GTIN-13 (EAN)', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'a product GTIN-13 code (aka 13-digit ISBN codes or EAN/UCC-13)', 'tooltip fragment', 'wpsso' ),
 						'about' => __( 'https://support.google.com/merchants/answer/6324461', 'wpsso' ),
 					),
 					'product_gtin12' => array(
 						'label' => _x( 'Product GTIN-12 (UPC)', 'option label', 'wpsso' ),
+						'name'  => _x( 'product GTIN-12 (UPC)', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'a product GTIN-12 code (12-digit GS1 identification key composed of a UPC company prefix, item reference, and check digit)', 'tooltip fragment', 'wpsso' ),
 						'about' => __( 'https://support.google.com/merchants/answer/6324461', 'wpsso' ),
 					),
 					'product_gtin8' => array(
 						'label' => _x( 'Product GTIN-8', 'option label', 'wpsso' ),
+						'name'  => _x( 'product GTIN-8', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'a product GTIN-8 code (aka EAN/UCC-8 or 8-digit EAN)', 'tooltip fragment', 'wpsso' ),
 						'about' => __( 'https://support.google.com/merchants/answer/6324461', 'wpsso' ),
 					),
 					'product_gtin' => array(
 						'label' => _x( 'Product GTIN', 'option label', 'wpsso' ),
+						'name'  => _x( 'product GTIN', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'a product GTIN code (GTIN-8, GTIN-12/UPC, GTIN-13/EAN, or GTIN-14)', 'tooltip fragment', 'wpsso' ),
 						'about' => __( 'https://support.google.com/merchants/answer/6324461', 'wpsso' ),
 					),
 					'product_height_value' => array(
 						'label' => _x( 'Product Height', 'option label', 'wpsso' ),
+						'name'  => _x( 'product height', 'tooltip fragment', 'wpsso' ),
 						'desc'  => sprintf( _x( 'a product height (in %s)', 'tooltip fragment', 'wpsso' ), WpssoSchema::get_data_unit_text( 'height' ) ),
 					),
 					'product_isbn' => array(
 						'label' => _x( 'Product ISBN', 'option label', 'wpsso' ),
+						'name'  => _x( 'product ISBN', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'an ISBN code (aka International Standard Book Number)', 'tooltip fragment', 'wpsso' ),
 						'about' => __( 'https://support.google.com/merchants/answer/6324461', 'wpsso' ),
 					),
 					'product_length_value' => array(
 						'label' => _x( 'Product Length', 'option label', 'wpsso' ),
+						'name'  => _x( 'product length', 'tooltip fragment', 'wpsso' ),
 						'desc'  => sprintf( _x( 'a product length (in %s)', 'tooltip fragment', 'wpsso' ), WpssoSchema::get_data_unit_text( 'length' ) ),
 					),
 					'product_material' => array(
 						'label' => _x( 'Product Material', 'option label', 'wpsso' ),
+						'name'  => _x( 'product material', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'a product material', 'tooltip fragment', 'wpsso' ),
 						'about' => __( 'https://support.google.com/merchants/answer/6324410', 'wpsso' ),
 					),
 					'product_mfr_part_no' => array(
 						'label' => _x( 'Product MPN', 'option label', 'wpsso' ),
+						'name'  => _x( 'product MPN', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'a Manufacturer Part Number (MPN)', 'tooltip fragment', 'wpsso' ),
 						'about' => __( 'https://support.google.com/merchants/answer/6324482', 'wpsso' ),
 					),
 					'product_min_advert_price' => array(
 						'label' => _x( 'Product Min Advert Price', 'option label', 'wpsso' ),
+						'name'  => _x( 'product minimum advertised price', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'a Minimum Advertised Price (MAP)', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_pattern' => array(
 						'label' => _x( 'Product Pattern', 'option label', 'wpsso' ),
+						'name'  => _x( 'product pattern', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'a product pattern', 'tooltip fragment', 'wpsso' ),
 						'about' => __( 'https://support.google.com/merchants/answer/6324483', 'wpsso' ),
 					),
 					'product_price' => array(
 						'label' => _x( 'Product Price', 'option label', 'wpsso' ),
+						'name'  => _x( 'product price', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'a product price', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_price_type' => array(
@@ -764,55 +788,67 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					),
 					'product_retailer_part_no' => array(
 						'label' => _x( 'Product SKU', 'option label', 'wpsso' ),
+						'name'  => _x( 'product SKU', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'a Stock-Keeping Unit (SKU)', 'tooltip fragment', 'wpsso' ),
 					),
 					'product_size' => array(
 						'label' => _x( 'Product Size', 'option label', 'wpsso' ),
+						'name'  => _x( 'product size', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'a product size', 'tooltip fragment', 'wpsso' ),
 						'about' => __( 'https://support.google.com/merchants/answer/6324492', 'wpsso' ),
 					),
 					'product_size_type' => array(
 						'label'  => _x( 'Product Size Type', 'option label', 'wpsso' ),
+						'name'   => _x( 'product size type', 'tooltip fragment', 'wpsso' ),
 						'desc'   => _x( 'a product size type', 'tooltip fragment', 'wpsso' ),
 						'about'  => __( 'https://support.google.com/merchants/answer/6324497', 'wpsso' ),
 						'values' => WpssoSchema::get_enumeration_values( $enum_key = 'size_type', $val_prefix = 'WearableSizeGroup' ),
 					),
 					'product_target_gender' => array(
 						'label' => _x( 'Product Target Gender', 'option label', 'wpsso' ),
+						'name'  => _x( 'product target gender', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'a product target gender', 'tooltip fragment', 'wpsso' ),
 						'about' => __( 'https://support.google.com/merchants/answer/6324479', 'wpsso' ),
 						'values' => WpssoSchema::get_enumeration_values( $enum_key = 'target_gender' ),
 					),
 					'product_fluid_volume_value' => array(
 						'label' => _x( 'Product Fluid Volume', 'option label', 'wpsso' ),
+						'name'  => _x( 'product fluid volume', 'tooltip fragment', 'wpsso' ),
 						'desc'  => sprintf( _x( 'a product fluid volume (in %s)', 'tooltip fragment', 'wpsso' ), WpssoSchema::get_data_unit_text( 'fluid_volume' ) ),
 					),
 					'product_weight_value' => array(
 						'label' => _x( 'Product Weight', 'option label', 'wpsso' ),
+						'name'  => _x( 'product weight', 'tooltip fragment', 'wpsso' ),
 						'desc'  => sprintf( _x( 'a product weight (in %s)', 'tooltip fragment', 'wpsso' ), WpssoSchema::get_data_unit_text( 'weight' ) ),
 					),
 					'product_width_value' => array(
 						'label' => _x( 'Product Width', 'option label', 'wpsso' ),
+						'name'  => _x( 'product width', 'tooltip fragment', 'wpsso' ),
 						'desc'  => sprintf( _x( 'a product width (in %s)', 'tooltip fragment', 'wpsso' ), WpssoSchema::get_data_unit_text( 'width' ) ),
 					),
 					'recipe_ingredients' => array(
 						'label' => _x( 'Recipe Ingredients', 'option label', 'wpsso' ),
+						'name'  => _x( 'recipe ingredients', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'recipe ingredients', 'tooltip fragment', 'wpsso' ),
 					),
 					'recipe_instructions' => array(
 						'label' => _x( 'Recipe Instructions', 'option label', 'wpsso' ),
+						'name'  => _x( 'recipe instructions', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'recipe instructions', 'tooltip fragment', 'wpsso' ),
 					),
 					'sameas_urls' => array(
 						'label' => _x( 'Same-As URLs', 'option label', 'wpsso' ),
-						'desc'  => _x( 'additional Same-As URLs', 'tooltip fragment', 'wpsso' ),
+						'name'  => _x( 'same-as URLs', 'tooltip fragment', 'wpsso' ),
+						'desc'  => _x( 'additional same-as URLs', 'tooltip fragment', 'wpsso' ),
 					),
 					'vid_embed' => array(
 						'label' => _x( 'Video Embed HTML', 'option label', 'wpsso' ),
+						'name'  => _x( 'video embed HTML', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'video embed HTML code (not a URL)', 'tooltip fragment', 'wpsso' ),
 					),
 					'vid_url' => array(
 						'label' => _x( 'Video URL', 'option label', 'wpsso' ),
+						'name'  => _x( 'video URL', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'a video URL (not HTML code)', 'tooltip fragment', 'wpsso' ),
 					),
 				);
