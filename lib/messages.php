@@ -642,6 +642,11 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'name'  => _x( 'Microdata type URLs', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'additional microdata type URLs', 'tooltip fragment', 'wpsso' ),
 					),
+					'article_section' => array(
+						'label' => _x( 'Article Section', 'option label', 'wpsso' ),
+						'name'  => _x( 'article section', 'tooltip fragment', 'wpsso' ),
+						'desc'  => _x( 'article section', 'tooltip fragment', 'wpsso' ),
+					),
 					'book_isbn' => array(
 						'label' => _x( 'Book ISBN', 'option label', 'wpsso' ),
 						'name'  => _x( 'book ISBN', 'tooltip fragment', 'wpsso' ),

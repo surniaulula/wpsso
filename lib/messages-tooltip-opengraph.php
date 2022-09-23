@@ -35,15 +35,20 @@ if ( ! class_exists( 'WpssoMessagesTooltipOpenGraph' ) ) {
 				 */
 				case 'tooltip-og_def_article_section':	// Default Article Section.
 
-					$text = sprintf( __( 'The %s that best describes the content of articles on your site.', 'wpsso' ),
-						_x( 'article section', 'tooltip fragment', 'wpsso' ) ) . ' ';
+					$def_frags = $this->get_tooltip_fragments( preg_replace( '/^tooltip-og_def_/', '', $msg_key ) );
 
-					$text .= sprintf( __( 'You can select a different %s when editing an article.', 'wpsso' ),
-						_x( 'article section', 'tooltip fragment', 'wpsso' ) ) . ' ';
+					if ( ! empty( $def_frags ) ) {	// Just in case.
+
+						$text = sprintf( __( 'The %s that best describes the content of articles on your site.', 'wpsso' ),
+							$def_frags[ 'name' ] ) . ' ';
+
+						$text .= sprintf( __( 'You can select a different %s when editing an article.', 'wpsso' ),
+							$def_frags[ 'name' ] ) . ' ';
 	
-					$text .= sprintf( __( 'Select "[None]" to exclude the %s by default from Schema markup and meta tags.', 'wpsso' ),
-						_x( 'article section', 'tooltip fragment', 'wpsso' ) ) . ' ';
-
+						$text .= sprintf( __( 'Select "[None]" to exclude the %s by default from Schema markup and meta tags.', 'wpsso' ),
+							$def_frags[ 'name' ] ) . ' ';
+					}
+	
 					break;
 
 				case 'tooltip-og_def_currency':		// Default Currency.
