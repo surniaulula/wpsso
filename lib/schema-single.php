@@ -1892,22 +1892,23 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			 * Note that there is no Schema 'size' property.
 			 */
 			WpssoSchema::add_data_itemprop_from_assoc( $offer, $mt_offer, array( 
-				'url'             => 'product:url',
-				'name'            => 'product:title',
-				'description'     => 'product:description',
-				'category'        => 'product:category',		// Product category ID from Google product taxonomy.
-				'sku'             => 'product:retailer_part_no',	// Product SKU.
-				'mpn'             => 'product:mfr_part_no',		// Product MPN.
-				'gtin14'          => 'product:gtin14',			// Valid for both products and offers.
-				'gtin13'          => 'product:gtin13',			// Valid for both products and offers.
-				'gtin12'          => 'product:gtin12',			// Valid for both products and offers.
-				'gtin8'           => 'product:gtin8',			// Valid for both products and offers.
-				'gtin'            => 'product:gtin',			// Valid for both products and offers.
-				'availability'    => 'product:availability',		// Only valid for offers.
-				'itemCondition'   => 'product:condition',
-				'price'           => 'product:price:amount',
-				'priceCurrency'   => 'product:price:currency',
-				'priceValidUntil' => 'product:sale_price_dates:end',
+				'url'                   => 'product:url',
+				'name'                  => 'product:title',
+				'description'           => 'product:description',
+				'category'              => 'product:category',		// Product category ID from Google product taxonomy.
+				'sku'                   => 'product:retailer_part_no',	// Product SKU.
+				'mpn'                   => 'product:mfr_part_no',	// Product MPN.
+				'gtin14'                => 'product:gtin14',		// Valid for both products and offers.
+				'gtin13'                => 'product:gtin13',		// Valid for both products and offers.
+				'gtin12'                => 'product:gtin12',		// Valid for both products and offers.
+				'gtin8'                 => 'product:gtin8',		// Valid for both products and offers.
+				'gtin'                  => 'product:gtin',		// Valid for both products and offers.
+				'availability'          => 'product:availability',	// Only valid for offers.
+				'itemCondition'         => 'product:condition',		// Valid for both products and offers.
+				'hasAdultConsideration' => 'product:adult_oriented',	// Valid for both products and offers.
+				'price'                 => 'product:price:amount',
+				'priceCurrency'         => 'product:price:currency',
+				'priceValidUntil'       => 'product:sale_price_dates:end',
 			) );
 
 			/**

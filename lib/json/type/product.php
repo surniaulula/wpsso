@@ -48,22 +48,23 @@ if ( ! class_exists( 'WpssoJsonTypeProduct' ) ) {
 			 * Note that there is no Schema 'ean' property for the 'product:ean' value.
 			 */
 			WpssoSchema::add_data_itemprop_from_assoc( $json_ret, $mt_og, array(
-				'url'           => 'product:url',
-				'name'          => 'product:title',
-				'description'   => 'product:description',
-				'category'      => 'product:category',		// Product category ID from Google product taxonomy.
-				'sku'           => 'product:retailer_part_no',	// Product SKU.
-				'mpn'           => 'product:mfr_part_no',	// Product MPN.
-				'gtin14'        => 'product:gtin14',		// Valid for both products and offers.
-				'gtin13'        => 'product:gtin13',		// Valid for both products and offers.
-				'gtin12'        => 'product:gtin12',		// Valid for both products and offers.
-				'gtin8'         => 'product:gtin8',		// Valid for both products and offers.
-				'gtin'          => 'product:gtin',		// Valid for both products and offers.
-				'itemCondition' => 'product:condition',
-				'color'         => 'product:color',
-				'material'      => 'product:material',
-				'pattern'       => 'product:pattern',
-				'size'          => 'product:size',
+				'url'                   => 'product:url',
+				'name'                  => 'product:title',
+				'description'           => 'product:description',
+				'category'              => 'product:category',		// Product category ID from Google product taxonomy.
+				'sku'                   => 'product:retailer_part_no',	// Product SKU.
+				'mpn'                   => 'product:mfr_part_no',	// Product MPN.
+				'gtin14'                => 'product:gtin14',		// Valid for both products and offers.
+				'gtin13'                => 'product:gtin13',		// Valid for both products and offers.
+				'gtin12'                => 'product:gtin12',		// Valid for both products and offers.
+				'gtin8'                 => 'product:gtin8',		// Valid for both products and offers.
+				'gtin'                  => 'product:gtin',		// Valid for both products and offers.
+				'itemCondition'         => 'product:condition',		// Valid for both products and offers.
+				'hasAdultConsideration' => 'product:adult_oriented',	// Valid for both products and offers.
+				'color'                 => 'product:color',
+				'material'              => 'product:material',
+				'pattern'               => 'product:pattern',
+				'size'                  => 'product:size',
 			) );
 
 			/**
@@ -104,16 +105,34 @@ if ( ! class_exists( 'WpssoJsonTypeProduct' ) ) {
 			/**
 			 * Audience.
 			 */
+			$single_audience = array();
+
 			if ( WpssoSchema::is_valid_key( $mt_og, 'product:target_gender' ) ) {	// Not null, an empty string, or 'none'.
 
-				$single_audience = WpssoSchema::get_data_itemprop_from_assoc( $mt_og, array( 
-					'suggestedGender' => 'product:target_gender',
-				) );
+				$single_audience[ 'suggestedGender' ] = $mt_og[ 'product:target_gender' ];
+			}
 
-				if ( false !== $single_audience ) {	// Just in case.
+			if ( WpssoSchema::is_valid_key( $mt_og, 'product:age_group' ) ) {	// Not null, an empty string, or 'none'.
 
-					$json_ret[ 'audience' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/PeopleAudience', $single_audience );
+				/**
+				 * Age is expressed in years so, for example, use 0.25 for 3 months.
+				 *
+				 * See https://support.google.com/merchants/answer/6324463.
+				 */
+				switch ( $mt_og[ 'product:age_group' ] ) {
+					case 'adult':     $single_audience[ 'suggestedMinAge' ] = 13;   break;
+					case 'all ages':  $single_audience[ 'suggestedMinAge' ] = 13;   break;
+					case 'infant':    $single_audience[ 'suggestedMinAge' ] = 0.25; $single_audience[ 'suggestedMaxAge' ] = 1;    break;
+					case 'kids':      $single_audience[ 'suggestedMinAge' ] = 5;    $single_audience[ 'suggestedMaxAge' ] = 13;   break;
+					case 'newborn':   $single_audience[ 'suggestedMinAge' ] = 0;    $single_audience[ 'suggestedMaxAge' ] = 0.25; break;
+					case 'teen':      $single_audience[ 'suggestedMinAge' ] = 13;   break;
+					case 'toddler':   $single_audience[ 'suggestedMinAge' ] = 1;    $single_audience[ 'suggestedMaxAge' ] = 5;    break;
 				}
+			}
+
+			if ( ! empty( $single_audience ) ) {	// False or empty array.
+
+				$json_ret[ 'audience' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/PeopleAudience', $single_audience );
 			}
 
 			/**
