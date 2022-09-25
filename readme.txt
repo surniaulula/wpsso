@@ -231,7 +231,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.4.0-rc.1 (2022/09/25)**
+**Version 13.4.0 (2022/09/25)**
 
 * **New Features**
 	* None.
@@ -543,7 +543,7 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 == Upgrade Notice ==
 
-= 13.4.0-rc.1 =
+= 13.4.0 =
 
 (2022/09/25) Added new options in the Document SSO metabox and SSO &gt; Advanced Settings page. Added support for new Schema Product 'audience' properties and 'hasAdultConsideration' property.
 
