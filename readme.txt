@@ -231,16 +231,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.4.0-dev.4 (2022/09/23)**
+**Version 13.4.0-dev.5 (2022/09/24)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Renamed the 'Product Type' option to 'Google Product Category'.
+	* Renamed the "Product Type" option to "Product Google Category".
+	* Added a new "Product Age Group" option in the Document SSO metabox.
+	* Added a new "Default Product Age Group" option in the SSO &gt; General Settings page.
+	* Added a new "Product Age Group Custom Field" option in the SSO &gt; Advanced Settings page.
+	* Added a new "Age Group Attribute Name" option in the SSO &gt; Advanced Settings page.
 	* Added a new SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Product tab:
-		* Default Google Product Category
-		* Default Product Condition
-		* Default Product Price Type
+		* "Default Product Google Category"
+		* "Default Product Condition"
+		* "Default Product Price Type"
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -273,8 +277,8 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Improvements**
 	* Added support for the new 'priceType' property in Schema UnitPriceSpecification markup:
 		* Added a new "Product Price Type" option in the Document SSO metabox.
-		* Added a new "Product Price Type Custom Field" option in the SSO &gt; Advanced Settings page.
 		* Added a new "Default Product Price Type" option in the SSO &gt; General Settings page.
+		* Added a new "Product Price Type Custom Field" option in the SSO &gt; Advanced Settings page.
 * **Bugfixes**
 	* Fixed SSO &gt; Advanced Settings &gt; Metadata &gt; Custom Fields tab option values (should be blank, not 0) in the WPSSO Core Standard edition.
 * **Developer Notes**
@@ -529,9 +533,9 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 == Upgrade Notice ==
 
-= 13.4.0-dev.4 =
+= 13.4.0-dev.5 =
 
-(2022/09/23) Added a new SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Product tab.
+(2022/09/24) Added a new "Product Age Group" option in the Document SSO metabox. Added a new SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Product tab.
 
 = 13.3.2 =
 
