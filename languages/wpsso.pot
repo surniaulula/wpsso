@@ -2362,17 +2362,17 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:356
 msgctxt "option value"
-msgid "Adult (18 years old or more)"
+msgid "Adult (13 years old or more)"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:357
 msgctxt "option value"
-msgid "All Ages"
+msgid "All Ages (13 years old or more)"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:358
 msgctxt "option value"
-msgid "Teen (13-18 years old)"
+msgid "Infant (3–12 months old)"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:359
@@ -2382,17 +2382,17 @@ msgstr ""
 
 #: gettext/gettext-lib-config.php:360
 msgctxt "option value"
-msgid "Toddler (1–5 years old)"
+msgid "Newborn (0-3 months old)"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:361
 msgctxt "option value"
-msgid "Infant (3–12 months old)"
+msgid "Teen (13 years old or more)"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:362
 msgctxt "option value"
-msgid "Newborn (0-3 months old)"
+msgid "Toddler (1–5 years old)"
 msgstr ""
 
 #: gettext/gettext-lib-config.php:364

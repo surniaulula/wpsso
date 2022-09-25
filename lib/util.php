@@ -3590,7 +3590,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 *		[product:mfr_part_no]        => MPN
 		 *		[product:pattern]            => Pattern
 		 *		[product:size]               => Size
-		 *		[product:size_type]          => Size Type
+		 *		[product:size:type]          => Size Type
 		 *		[product:target_gender]      => Gender
 		 *		[product:fluid_volume:value] => Volume
 		 *	)

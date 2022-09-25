@@ -2854,6 +2854,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * Validated on 2022/09/24.
 				 *
 				 * See https://schema.org/AdultOrientedEnumeration.
+				 *
+				 * See https://support.google.com/merchants/answer/6324508.
 				 */
 				'adult_oriented' => array(
 					'none'                                                        => '[None]',
@@ -2878,13 +2880,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 */
 				'age_group' => array(
 					'none'     => '[None]',
-					'adult'    => 'Adult (18 years old or more)',
-					'all ages' => 'All Ages',
-					'teen'     => 'Teen (13-18 years old)',
-					'kids'     => 'Kids (5–13 years old)',
-					'toddler'  => 'Toddler (1–5 years old)',
+					'adult'    => 'Adult (13 years old or more)',
+					'all ages' => 'All Ages (13 years old or more)',
 					'infant'   => 'Infant (3–12 months old)',
+					'kids'     => 'Kids (5–13 years old)',
 					'newborn'  => 'Newborn (0-3 months old)',
+					'teen'     => 'Teen (13 years old or more)',
+					'toddler'  => 'Toddler (1–5 years old)',
 				),
 
 				/**
