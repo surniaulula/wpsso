@@ -41,6 +41,21 @@ if ( ! class_exists( 'WpssoIntegEcomWoocommerce' ) ) {
 				$this->p->debug->mark();
 			}
 
+			/**
+			 * Disable custom fields (aka metadata) for values that are always provided by WooCommerce.
+			 */
+			foreach ( array(
+				'plugin_cf_product_height_value',	// Managed by WooCommerce in '_height' metadata.
+				'plugin_cf_product_length_value',	// Managed by WooCommerce in '_length' metadata.
+				'plugin_cf_product_weight_value',	// Managed by WooCommerce in '_weight' metadata.
+				'plugin_cf_product_width_value',	// Managed by WooCommerce in '_width' metadata.
+				'plugin_cf_product_retailer_part_no',	// Managed by WooCommerce in '_sku' metadata.
+			) as $opt_key ) {
+
+				$this->p->options[ $opt_key ]               = '';
+				$this->p->options[ $opt_key . ':disabled' ] = true;
+			}
+
 			$this->page_ids[ 'account' ]  = wc_get_page_id( 'myaccount' );	// Returns -1 if no page selected.
 			$this->page_ids[ 'cart' ]     = wc_get_page_id( 'cart' );	// Returns -1 if no page selected.
 			$this->page_ids[ 'checkout' ] = wc_get_page_id( 'checkout' );	// Returns -1 if no page selected.
