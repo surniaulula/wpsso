@@ -231,7 +231,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.4.0-dev.5 (2022/09/24)**
+**Version 13.4.0-dev.5 (2022/09/25)**
 
 * **New Features**
 	* None.
@@ -535,7 +535,7 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 = 13.4.0-dev.5 =
 
-(2022/09/24) Added a new "Product Age Group" option in the Document SSO metabox. Added a new SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Product tab.
+(2022/09/25) Added a new "Product Age Group" option in the Document SSO metabox. Added a new SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Product tab.
 
 = 13.3.2 =
 
