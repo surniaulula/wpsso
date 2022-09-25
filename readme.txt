@@ -237,14 +237,20 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Improvements**
 	* Renamed the "Product Type" option to "Product Google Category".
-	* Added a new "Product Age Group" option in the Document SSO metabox.
-	* Added a new "Default Product Age Group" option in the SSO &gt; General Settings page.
-	* Added a new "Product Age Group Custom Field" option in the SSO &gt; Advanced Settings page.
-	* Added a new "Age Group Attribute Name" option in the SSO &gt; Advanced Settings page.
-	* Added a new SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Product tab:
+	* Added a new SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Product tab.
 		* "Default Product Google Category"
 		* "Default Product Condition"
 		* "Default Product Price Type"
+	* Added new options in the SSO &gt; Advanced Settings page:
+		* "Default Product Age Group"
+		* "Default Product Adult Oriented"
+		* "Product Age Group Custom Field"
+		* "Product Adult Oriented Custom Field"
+		* "Age Group Attribute Name"
+		* "Adult Oriented Attribute Name"
+	* Added new options in the Document SSO metabox:
+		* "Product Age Group"
+		* "Product Adult Oriented"
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -535,7 +541,7 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 = 13.4.0-dev.5 =
 
-(2022/09/25) Added a new "Product Age Group" option in the Document SSO metabox. Added a new SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Product tab.
+(2022/09/25) Added new options in the Document SSO metabox and SSO &gt; Advanced Settings page.
 
 = 13.3.2 =
 
