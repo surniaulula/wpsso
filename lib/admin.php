@@ -2582,13 +2582,24 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public static function get_option_unit_comment( $opt_key ) {
 
+
+			$wpsso      =& Wpsso::get_instance();
+			$unit_keys  = array_keys( $wpsso->cf[ 'head' ][ 'schema_units' ] );
 			$cmt_transl = '';
 
-			if ( preg_match( '/^.*_([^_]+)_value$/', $opt_key, $unit_match ) ) {
+			if ( false !== strpos( $opt_key, '_value' ) ) {
 
-				if ( $unit_text = WpssoSchema::get_data_unit_text( $unit_match[ 1 ] ) ) {
+				foreach ( $unit_keys as $key ) {
 
-					$cmt_transl = ' ' . sprintf( _x( 'in %s', 'option comment', 'wpsso' ), $unit_text );
+					if ( false !== strpos( $opt_key, '_' . $key . '_value' ) ) {
+
+						if ( $unit_text = WpssoSchema::get_data_unit_text( $key ) ) {
+
+							$cmt_transl = ' ' . sprintf( _x( 'in %s', 'option comment', 'wpsso' ), $unit_text );
+						}
+
+						break;
+					}
 				}
 			}
 
