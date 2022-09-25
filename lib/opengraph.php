@@ -1112,7 +1112,8 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 			 * Example $og_type_mt_md array:
 			 *
 			 *	'product' => array(
-			 *		'product:age_group'               => '',
+			 *		'product:adult_oriented'          => 'product_adult_oriented',
+			 *		'product:age_group'               => 'product_age_group',
 			 *		'product:availability'            => 'product_avail',
 			 *		'product:brand'                   => 'product_brand',
 			 *		'product:category'                => 'product_category',

@@ -3590,7 +3590,7 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 *		[product:mfr_part_no]        => MPN
 		 *		[product:pattern]            => Pattern
 		 *		[product:size]               => Size
-		 *		[product:size:type]          => Size Type
+		 *		[product:size_type]          => Size Type
 		 *		[product:target_gender]      => Gender
 		 *		[product:fluid_volume:value] => Volume
 		 *	)
@@ -3598,6 +3598,8 @@ if ( ! class_exists( 'WpssoUtil' ) ) {
 		 * Example $prefix = "product" and $delim = "_" for option names:
 		 *
 		 * 	Array(
+		 *		[product_adult_oriented]     => Adult Oriented
+		 *		[product_age_group]          => Age Group
 		 *		[product_brand]              => Brand
 		 *		[product_color]              => Color
 		 *		[product_condition]          => Condition

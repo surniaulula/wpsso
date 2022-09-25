@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '13.4.0-dev.4',	// Plugin version.
-					'opt_version' => '914',		// Increment when changing default option values.
+					'version'     => '13.4.0-dev.5',	// Plugin version.
+					'opt_version' => '919',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1294,27 +1294,25 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 *
 					 * See WpssoOpengraph->add_og_type_mt_md().
 					 */
-					'og_def_article_section'    => 'none',					// Default Article Section.
-					'og_def_img_id'             => '',					// Default Image ID.
-					'og_def_img_id_lib'         => 'wp',					// Default Image ID Library.
-					'og_def_img_url'            => '',					// Default Image URL.
-					'og_def_product_condition'  => 'https://schema.org/NewCondition',	// Default Product Condition.
-					'og_def_product_price_type' => 'https://schema.org/ListPrice',		// Default Product Price Type.
-					'og_def_currency'           => 'USD',					// Default Currency.
-					'og_def_country'            => 'none',					// Default Country.
-					'og_def_timezone'           => 'UTC',					// Default Timezone.
-					'og_img_width'              => 1200,
-					'og_img_height'             => 630,
-					'og_img_crop'               => 1,
-					'og_img_crop_x'             => 'center',
-					'og_img_crop_y'             => 'center',
-					'og_img_max'                => 1,		// Maximum Images to Include.
-					'og_title_sep'              => '-',		// Title Separator.
-					'og_ellipsis'               => '...',		// Truncated Text Ellipsis.
-					'og_desc_hashtags'          => 0,		// Description Hashtags.
-					'og_vid_max'                => 1,
-					'og_vid_autoplay'           => 1,
-					'og_vid_prev_img'           => 1,		// Include Video Preview Images.
+					'og_def_article_section'   => 'none',					// Default Article Section.
+					'og_def_img_id'            => '',					// Default Image ID.
+					'og_def_img_id_lib'        => 'wp',					// Default Image ID Library.
+					'og_def_img_url'           => '',					// Default Image URL.
+					'og_def_currency'          => 'USD',					// Default Currency.
+					'og_def_country'           => 'none',					// Default Country.
+					'og_def_timezone'          => 'UTC',					// Default Timezone.
+					'og_img_width'             => 1200,
+					'og_img_height'            => 630,
+					'og_img_crop'              => 1,
+					'og_img_crop_x'            => 'center',
+					'og_img_crop_y'            => 'center',
+					'og_img_max'               => 1,		// Maximum Images to Include.
+					'og_title_sep'             => '-',		// Title Separator.
+					'og_ellipsis'              => '...',		// Truncated Text Ellipsis.
+					'og_desc_hashtags'         => 0,		// Description Hashtags.
+					'og_vid_max'               => 1,
+					'og_vid_autoplay'          => 1,
+					'og_vid_prev_img'          => 1,		// Include Video Preview Images.
 
 					/**
 					 * Advanced Settings > Document Types > Open Graph.
@@ -1490,7 +1488,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings > Schema Defaults > Product.
 					 */
-					'schema_def_product_category' => 'none',	// Default Google Product Category.
+					'schema_def_product_adult_oriented' => 'none',					// Default Product Adult Oriented.
+					'schema_def_product_age_group'      => 'none',					// Default Product Age Group.
+					'schema_def_product_category'       => 'none',					// Default Product Google Category.
+					'schema_def_product_condition'      => 'https://schema.org/NewCondition',	// Default Product Condition.
+					'schema_def_product_price_type'     => 'https://schema.org/ListPrice',		// Default Product Price Type.
 
 					/**
 					 * Advanced Settings > Schema Defaults > Review.
@@ -1971,6 +1973,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings > Attributes and Metadata > Product Attributes.
 					 */
+					'plugin_attr_product_adult_oriented'     => 'Adult Oriented',	// Adult Oriented Attribute Name.
+					'plugin_attr_product_age_group'          => 'Age Group',	// Age Group Attribute Name.
 					'plugin_attr_product_brand'              => 'Brand',		// Brand Attribute Name.
 					'plugin_attr_product_color'              => 'Color',		// Color Attribute Name.
 					'plugin_attr_product_condition'          => 'Condition',	// Condition Attribute Name.
@@ -1998,9 +2002,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_howto_supplies'             => '',	// How-To Supplies Custom Field.
 					'plugin_cf_howto_tools'                => '',	// How-To Tools Custom Field.
 					'plugin_cf_img_url'                    => '',	// Image URL Custom Field.
+					'plugin_cf_product_adult_oriented'     => '',	// Product Adult Oriented Custom Field.
+					'plugin_cf_product_age_group'          => '',	// Product Age Group Custom Field.
 					'plugin_cf_product_avail'              => '',	// Product Availability Custom Field.
 					'plugin_cf_product_brand'              => '',	// Product Brand Custom Field.
-					'plugin_cf_product_category'           => '',	// Google Product Category ID Custom Field.
+					'plugin_cf_product_category'           => '',	// Product Google Category ID Custom Field.
 					'plugin_cf_product_color'              => '',	// Product Color Custom Field.
 					'plugin_cf_product_condition'          => '',	// Product Condition Custom Field.
 					'plugin_cf_product_currency'           => '',	// Product Currency Custom Field.
@@ -2086,9 +2092,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_howto_supplies'             => 'schema_howto_supply',	// How-To Supplies Custom Field.
 					'plugin_cf_howto_tools'                => 'schema_howto_tool',		// How-To Tools Custom Field.
 					'plugin_cf_img_url'                    => 'og_img_url',
+					'plugin_cf_product_adult_oriented'     => 'product_adult_oriented',
+					'plugin_cf_product_age_group'          => 'product_age_group',
 					'plugin_cf_product_avail'              => 'product_avail',
 					'plugin_cf_product_brand'              => 'product_brand',		// Product Brand Custom Field.
-					'plugin_cf_product_category'           => 'product_category',		// Google Product Category ID Custom Field.
+					'plugin_cf_product_category'           => 'product_category',		// Product Google Category ID Custom Field.
 					'plugin_cf_product_color'              => 'product_color',
 					'plugin_cf_product_condition'          => 'product_condition',
 					'plugin_cf_product_currency'           => 'product_currency',
@@ -2754,9 +2762,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_howto_supplies'             => 'How-To Supplies Custom Field',
 					'plugin_cf_howto_tools'                => 'How-To Tools Custom Field',
 					'plugin_cf_img_url'                    => 'Image URL Custom Field',
+					'plugin_cf_product_adult_oriented'     => 'Product Adult Oriented Custom Field',
+					'plugin_cf_product_age_group'          => 'Product Age Group Custom Field',
 					'plugin_cf_product_avail'              => 'Product Availability Custom Field',
 					'plugin_cf_product_brand'              => 'Product Brand Custom Field',
-					'plugin_cf_product_category'           => 'Google Product Cat. ID Custom Field',
+					'plugin_cf_product_category'           => 'Product Google Cat. ID Custom Field',
 					'plugin_cf_product_color'              => 'Product Color Custom Field',
 					'plugin_cf_product_condition'          => 'Product Condition Custom Field',
 					'plugin_cf_product_currency'           => 'Product Currency Custom Field',
@@ -2776,9 +2786,9 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'plugin_cf_product_pattern'            => 'Product Pattern Custom Field',
 					'plugin_cf_product_price'              => 'Product Price Custom Field',
 					'plugin_cf_product_price_type'         => 'Product Price Type Custom Field',
+					'plugin_cf_product_retailer_part_no'   => 'Product SKU Custom Field',
 					'plugin_cf_product_size'               => 'Product Size Custom Field',
 					'plugin_cf_product_size_type'          => 'Product Size Type Custom Field',
-					'plugin_cf_product_retailer_part_no'   => 'Product SKU Custom Field',
 					'plugin_cf_product_target_gender'      => 'Product Target Gender Custom Field',
 					'plugin_cf_product_weight_value'       => 'Product Weight Custom Field',
 					'plugin_cf_product_width_value'        => 'Product Width Custom Field',
@@ -2793,6 +2803,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 * Attribute option labels.
 				 */
 				'attr_labels' => array(
+					'plugin_attr_product_adult_oriented'     => 'Adult Oriented Attribute Name',
+					'plugin_attr_product_age_group'          => 'Age Group Attribute Name',
 					'plugin_attr_product_brand'              => 'Brand Attribute Name',
 					'plugin_attr_product_color'              => 'Color Attribute Name',
 					'plugin_attr_product_condition'          => 'Condition Attribute Name',
@@ -2837,19 +2849,42 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				),
 
 				/**
-				 * Validated on 2020/08/17.
+				 * A Schema enumerated value.
 				 *
-				 * See https://developers.facebook.com/docs/marketing-api/catalog/reference/#og-tags.
+				 * Validated on 2022/09/24.
+				 *
+				 * See https://schema.org/AdultOrientedEnumeration.
+				 */
+				'adult_oriented' => array(
+					'none'                                                        => '[None]',
+					'https://schema.org/AlcoholConsideration'                     => 'Alcohol',
+					'https://schema.org/DangerousGoodConsideration'               => 'DangerousGood',
+					'https://schema.org/HealthcareConsideration'                  => 'Healthcare',
+					'https://schema.org/NarcoticConsideration'                    => 'Narcotic',
+					'https://schema.org/ReducedRelevanceForChildrenConsideration' => 'ReducedRelevanceForChildren',
+					'https://schema.org/SexualContentConsideration'               => 'SexualContent',
+					'https://schema.org/TobaccoNicotineConsideration'             => 'TobaccoNicotine',
+					'https://schema.org/UnclassifiedAdultConsideration'           => 'UnclassifiedAdult',
+					'https://schema.org/ViolenceConsideration'                    => 'Violence',
+					'https://schema.org/WeaponConsideration'                      => 'Weapon',
+				),
+
+				/**
+				 * Validated on 2022/09/24.
+				 *
+				 * See https://developers.facebook.com/docs/marketing-api/catalog/reference/.
+				 *
+				 * See https://support.google.com/merchants/answer/6324463.
 				 */
 				'age_group' => array(
 					'none'     => '[None]',
-					'adult'    => 'Adult',
+					'adult'    => 'Adult (18 years old or more)',
 					'all ages' => 'All Ages',
-					'teen'     => 'Teen',
-					'kids'     => 'Kids',
-					'toddler'  => 'Toddler',
-					'infant'   => 'Infant',
-					'newborn'  => 'Newborn',
+					'teen'     => 'Teen (13-18 years old)',
+					'kids'     => 'Kids (5–13 years old)',
+					'toddler'  => 'Toddler (1–5 years old)',
+					'infant'   => 'Infant (3–12 months old)',
+					'newborn'  => 'Newborn (0-3 months old)',
 				),
 
 				/**
@@ -2998,15 +3033,15 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 				 *
 				 * See https://schema.org/suggestedGender.
 				 *
-				 * See https://developers.facebook.com/docs/marketing-api/catalog/reference/#og-tags.
+				 * See https://developers.facebook.com/docs/marketing-api/catalog/reference/.
 				 *
-				 * See https://support.google.com/merchants/answer/6324479?ref_topic=6324338.
+				 * See https://support.google.com/merchants/answer/6324479.
 				 */
 				'target_gender' => array(
 					'none'   => '[None]',
-					'Female' => 'Female',
-					'Male'   => 'Male',
-					'Unisex' => 'Unisex',
+					'female' => 'Female',
+					'male'   => 'Male',
+					'unisex' => 'Unisex',
 				),
 
 				/**
@@ -3317,10 +3352,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * See https://developers.facebook.com/docs/marketing-api/catalog/reference/.
 					 */
 					'product' => array(
-						'product:age_group'                 => '',
+						'product:adult_oriented'            => 'product_adult_oriented',	// Non-standard / internal meta tag.
+						'product:age_group'                 => 'product_age_group',
 						'product:availability'              => 'product_avail',
 						'product:brand'                     => 'product_brand',
-						'product:category'                  => 'product_category',		// Google Product Category ID.
+						'product:category'                  => 'product_category',		// Product Google Category ID.
 						'product:color'                     => 'product_color',
 						'product:condition'                 => 'product_condition',
 						'product:depth:value'               => 'product_depth_value',		// Non-standard / internal meta tag.

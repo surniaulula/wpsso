@@ -113,18 +113,11 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 						$is_assoc = true, $is_disabled = false, $selected = true,
 							$event_names = array( 'on_change_unhide_rows' ) ),
 				),
-				'primary_term_id' => ! empty( $primary_terms ) ? array(	// Show the option if we have post category terms.
-					'th_class' => 'medium',
-					'label'    => _x( 'Primary Category', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-primary_term_id',
-					'content'  => $form->get_select( 'primary_term_id', $primary_terms,
-						$css_class = 'primary_term_id', $css_id = '', $is_assoc = true ),
-				) : '',
 				'og_article_section' => $mod[ 'is_public' ] ? array(
 					'tr_class' => 'hide_og_type hide_og_type_article',
 					'th_class' => 'medium',
 					'label'    => _x( 'Article Section', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-article_section',
+					'tooltip'  => 'meta-og_article_section',
 					'content'  => $form->get_select( 'article_section', $article_sections, $css_class = 'article_section', $css_id = '',
 						$is_assoc = true, $is_disabled = false, $selected = false,
 							$event_names = array( 'on_focus_load_json' ),
@@ -140,9 +133,16 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 					'tr_class' => 'hide_og_type hide_og_type_article',
 					'th_class' => 'medium',
 					'label'    => _x( 'Est. Reading Time', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-reading_mins',
+					'tooltip'  => 'meta-og_reading_mins',
 					'content'  => $form->get_input( 'reading_mins', $css_class = 'xshort', $css_id = '', 0, $def_reading_mins ) . ' ' .
 						__( 'minute(s)', 'wpsso' ),
+				) : '',
+				'primary_term_id' => ! empty( $primary_terms ) ? array(	// Show the option if we have post category terms.
+					'th_class' => 'medium',
+					'label'    => _x( 'Primary Category', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-primary_term_id',
+					'content'  => $form->get_select( 'primary_term_id', $primary_terms,
+						$css_class = 'primary_term_id', $css_id = '', $is_assoc = true ),
 				) : '',
 				'seo_title' => $mod[ 'is_public' ] ? array(
 					'tr_class' => $seo_title_disabled ? 'hide_in_basic' : '',

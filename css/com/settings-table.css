@@ -805,7 +805,6 @@ table.sucom-settings td select.timezone {
 table.sucom-settings td select.og_type,
 table.sucom-settings td select.schema_type,
 table.sucom-settings td select.primary_term_id,
-table.sucom-settings td select.article_section,
 table.sucom-settings td select.long_name { width:320px; }
 
 table.sucom-settings td select.wide { width:100%; }

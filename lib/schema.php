@@ -97,6 +97,11 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			if ( ! empty( $mod[ 'is_post' ] ) ) {
 
+				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_adult_oriented', $enum_key = 'adult_oriented',
+					$val_prefix = '', $val_suffix = 'Consideration' );
+
+				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_age_group', $enum_key = 'age_group' );
+
 				self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_avail', $enum_key = 'item_availability' );
 
 			 	self::check_prop_value_enumeration( $md_opts, $prop_name = 'product_condition', $enum_key = 'item_condition',
@@ -3638,7 +3643,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 		}
 
 		/**
-		 * Convert a numeric category ID to its Google product category string.
+		 * Convert a numeric category ID to its Google category string.
 		 */
 		public static function check_prop_value_category( &$json_data, $prop_name = 'category' ) {
 
@@ -3652,7 +3657,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			if ( ! empty( $json_data[ $prop_name ] ) ) {
 
 				/**
-				 * Category IDs are expected to be numeric Google product category IDs.
+				 * Category IDs are expected to be numeric Google category IDs.
 				 *
 				 * See https://www.google.com/basepages/producttype/taxonomy-with-ids.en-US.txt.
 				 */
@@ -3693,20 +3698,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				foreach ( $enums as $key => $val ) {
 
-					$values[] = $key;
-
 					if ( false !== ( $pos = strpos( $key, 'https://schema.org/' ) ) ) {
 
 						$key = substr( $key, $pos + strlen( 'https://schema.org/' ) );
-					
-						$values[] = $key;
 					}
 
 					if ( $val_prefix && false !== ( $pos = strpos( $key, $val_prefix ) ) ) {
 
 						$key = substr( $key, $pos + strlen( $val_prefix ) );
-						
-						$values[] = $key;
 					}
 
 					if ( $val_suffix && false !== ( $pos = strpos( $key, $val_suffix ) ) ) {
@@ -3716,10 +3715,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						if ( $pos === $len_prefix ) {
 
 							$key = substr( $key, 0, $len_prefix );
-						
-							$values[] = $key;
 						}
 					}
+					
+					$values[] = $key;
 				}
 			}
 

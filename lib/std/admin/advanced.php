@@ -984,7 +984,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				),
 				'schema_def_product_category' => array(
 					'td_class' => 'blank',
-					'label'    => _x( 'Default Google Product Category', 'option label', 'wpsso' ),
+					'label'    => _x( 'Default Product Google Category', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_product_category',
 					'content'  => $form->get_no_select( 'schema_def_product_category', $product_categories, $css_class = 'wide', $css_id = '',
 						$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
@@ -996,17 +996,29 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 							)
 					),
 				),
+				'schema_def_product_price_type' => array(
+					'td_class' => 'blank',
+					'label'    => _x( 'Default Product Price Type', 'option label', 'wpsso' ),
+					'tooltip'  => 'schema_def_product_price_type',
+					'content'  => $form->get_no_select( 'schema_def_product_price_type', $this->p->cf[ 'form' ][ 'price_type' ] ),
+				),
 				'schema_def_product_condition' => array(
 					'td_class' => 'blank',
 					'label'    => _x( 'Default Product Condition', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_product_condition',
 					'content'  => $form->get_no_select( 'schema_def_product_condition', $this->p->cf[ 'form' ][ 'item_condition' ] ),
 				),
-				'schema_def_product_price_type' => array(
+				'schema_def_product_age_group' => array(
 					'td_class' => 'blank',
-					'label'    => _x( 'Default Product Price Type', 'option label', 'wpsso' ),
-					'tooltip'  => 'schema_def_product_price_type',
-					'content'  => $form->get_no_select( 'schema_def_product_price_type', $this->p->cf[ 'form' ][ 'price_type' ] ),
+					'label'    => _x( 'Default Product Age Group', 'option label', 'wpsso' ),
+					'tooltip'  => 'schema_def_product_age_group',
+					'content'  => $form->get_no_select( 'schema_def_product_age_group', $this->p->cf[ 'form' ][ 'age_group' ] ),
+				),
+				'schema_def_product_adult_oriented' => array(
+					'td_class' => 'blank',
+					'label'    => _x( 'Default Product Adult Oriented', 'option label', 'wpsso' ),
+					'tooltip'  => 'schema_def_product_adult_oriented',
+					'content'  => $form->get_no_select( 'schema_def_product_adult_oriented', $this->p->cf[ 'form' ][ 'adult_oriented' ] ),
 				),
 			);
 

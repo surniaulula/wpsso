@@ -299,11 +299,18 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				$def_schema_type     = $this->p->schema->get_mod_schema_type_id( $mod, $use_md_opts = false );
 				$def_primary_term_id = $this->p->post->get_default_term_id( $mod, $tax_slug = 'category' );	// Returns term ID or false.
 				$def_reading_mins    = $this->p->page->get_reading_mins( $mod );
+
 				$def_img_id_lib      = isset( $opts[ 'og_def_img_id_lib' ] ) ? $opts[ 'og_def_img_id_lib' ] : 'wp';
-				$def_product_cat     = isset( $opts[ 'schema_def_product_category' ] ) ? $opts[ 'schema_def_product_category' ] : 'none';
-				$def_product_cond    = isset( $opts[ 'og_def_product_condition' ] ) ? $opts[ 'og_def_product_condition' ] : 'none';
-				$def_price_type      = isset( $opts[ 'og_def_product_price_type' ] ) ? $opts[ 'og_def_product_price_type' ] : 'https://schema.org/ListPrice';
 				$def_currency        = isset( $opts[ 'og_def_currency' ] ) ? $opts[ 'og_def_currency' ] : 'USD';
+				$def_article_section = isset( $opts[ 'og_def_article_section' ] ) ? $opts[ 'og_def_article_section' ] : 'none';
+
+				$def_adult_oriented  = isset( $opts[ 'schema_def_product_adult_oriented' ] ) ? $opts[ 'schema_def_product_adult_oriented' ] : 'none';
+				$def_age_group       = isset( $opts[ 'schema_def_product_age_group' ] ) ? $opts[ 'schema_def_product_age_group' ] : 'none';
+				$def_product_cat     = isset( $opts[ 'schema_def_product_category' ] ) ? $opts[ 'schema_def_product_category' ] : 'none';
+				$def_product_cond    = isset( $opts[ 'schema_def_product_condition' ] ) ? $opts[ 'schema_def_product_condition' ] : 'none';
+				$def_price_type      = isset( $opts[ 'schema_def_product_price_type' ] ) ? $opts[ 'schema_def_product_price_type' ] :
+					'https://schema.org/ListPrice';
+
 				$def_lang            = SucomUtil::get_locale( $mod, $read_cache = false );	// Get locale for post, term, or user object.
 				$job_locations_max   = SucomUtil::get_const( 'WPSSO_SCHEMA_JOB_LOCATIONS_MAX', 5 );
 
@@ -337,6 +344,8 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					/**
 					 * Edit General.
 					 */
+					'article_section' => $def_article_section,	// Article Section.
+					'reading_mins'    => $def_reading_mins,		// Est. Reading Time.
 					'primary_term_id' => $def_primary_term_id,	// Primary Category.
 					'seo_title'       => '',			// SEO Title Tag.
 					'seo_desc'        => '',			// SEO Meta Description.
@@ -346,8 +355,6 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'pin_img_desc'    => '',			// Pinterest Description.
 					'tc_title'        => '',			// Twitter Card Title.
 					'tc_desc'         => '',			// Twitter Card Description.
-					'article_section' => isset( $opts[ 'og_def_article_section' ] ) ? $opts[ 'og_def_article_section' ] : 'none',
-					'reading_mins'    => $def_reading_mins,
 
 					/**
 					 * Edit Media tab.
@@ -404,6 +411,8 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'product_target_gender'       => 'none',
 					'product_size'                => '',
 					'product_size_type'           => 'none',
+					'product_age_group'           => $def_age_group,
+					'product_adult_oriented'      => $def_adult_oriented,
 					'product_weight_value'        => '',
 					'product_length_value'        => '',
 					'product_width_value'         => '',
@@ -881,20 +890,11 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				}
 			}
 
-			if ( $prev_version > 0 && $prev_version <= 910 ) {
+			if ( $prev_version > 0 && $prev_version <= 917 ) {
 
 				if ( ! empty( $md_opts[ 'product_target_gender' ] ) ) {
 
-					switch( $md_opts[ 'product_target_gender' ] ) {
-
-						case 'female':
-						case 'male':
-						case 'unisex':
-							
-							$md_opts[ 'product_target_gender' ] = ucfirst( $md_opts[ 'product_target_gender' ] );
-
-							break;
-					}
+					$md_opts[ 'product_target_gender' ] = strtolower( $md_opts[ 'product_target_gender' ] );
 				}
 			}
 

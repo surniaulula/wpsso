@@ -70,30 +70,9 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 
 			switch ( $msg_key ) {
 
-				case 'tooltip-meta-article_section':	// Article Section.
-
-					$option_link = $this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_site',
-						_x( 'Default Article Section', 'option label', 'wpsso' ) );
-
-					$text = sprintf( __( 'A customized section for this article, which may be different than the %s option value.',
-						'wpsso' ), $option_link ) . ' ';
-
-					$text .= sprintf( __( 'Select "[None]" to exclude the %s meta tag.', 'wpsso' ),
-						'<code>article:section</code>' );
-
-				 	break;
-
-				case 'tooltip-meta-reading_mins':	// Est. Reading Time.
-
-					$text = __( 'The estimated reading time (in minutes) for this article.', 'wpsso' ) . ' ';
-
-					$text .= __( 'A value of 0 minutes disables the estimated reading time meta tags.', 'wpsso' );
-
-				 	break;
-
 				case 'tooltip-meta-primary_term_id':	// Primary Category.
 
-					$text .= __( 'Select a primary category for breadcrumbs.' );
+					$text .= __( 'The primary (ie. top most) category for breadcrumbs markup.' );
 
 				 	break;
 
@@ -135,17 +114,17 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 
 				 	break;
 
-				case 'tooltip-meta-product_category':	// Google Product Category.
+				case 'tooltip-meta-product_category':	// Product Google Category.
 
 					$option_link = $this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_site',
-						_x( 'Default Google Product Category', 'option label', 'wpsso' ) );
+						_x( 'Default Product Google Category', 'option label', 'wpsso' ) );
 
-					$meta_frags = $this->get_tooltip_fragments( preg_replace( '/^tooltip-meta-/', '', $msg_key ) );
+					$meta_frags = $this->get_tooltip_fragments( preg_replace( '/^tooltip-meta-/', '', $msg_key ) );	// Uses a local cache.
 
 					if ( ! empty( $meta_frags ) ) {	// Just in case.
 
-						// translators: %1$s is a lower case item name, for example 'Google product category'.
-						$text = sprintf( __( 'A custom %1$s, which may be different than the %2$s option value.', 'wpsso' ),
+						// translators: %1$s is a lower case item name, for example 'product Google category'.
+						$text = sprintf( __( 'A custom value for the %1$s, which may be different than the %2$s option value.', 'wpsso' ),
 							$meta_frags[ 'name' ], $option_link ) . ' ';
 
 						$text .= sprintf( __( 'Select "[None]" to exclude the %s from Schema markup and meta tags.', 'wpsso' ),
@@ -153,7 +132,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 
 						if ( ! empty( $meta_frags[ 'about' ] ) ) {
 
-							// translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a Google product category'.
+							// translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.
 							$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s</a>.', 'wpsso' ),
 								$meta_frags[ 'about' ], $meta_frags[ 'desc' ] );
 						}
@@ -163,13 +142,13 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 
 				case ( 0 === strpos( $msg_key, 'tooltip-meta-product_' ) ? true : false ):
 
-					$meta_frags = $this->get_tooltip_fragments( preg_replace( '/^tooltip-meta-/', '', $msg_key ) );
+					$meta_frags = $this->get_tooltip_fragments( preg_replace( '/^tooltip-meta-/', '', $msg_key ) );	// Uses a local cache.
 
 					if ( ! empty( $meta_frags ) ) {	// Just in case.
 
 						// translators: %s is a singular item reference, for example 'a product size type'.
-						$text = sprintf( __( 'A custom value for %s can be provided for the main product meta tags and Schema markup.', 'wpsso' ),
-							$meta_frags[ 'desc' ] ) . ' ';
+						$text = sprintf( __( 'A custom value for the %s can be provided for the main product meta tags and Schema markup.', 'wpsso' ),
+							$meta_frags[ 'name' ] ) . ' ';
 
 						$text .= __( 'If product variations are available, the information from each variation may supersede this value in Schema product offers.', 'wpsso' ) . ' ';
 

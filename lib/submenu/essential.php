@@ -89,9 +89,8 @@ if ( ! class_exists( 'WpssoSubmenuEssential' ) && class_exists( 'WpssoAdmin' ) )
 
 				case 'essential-general':
 
-					$def_site_name    = get_bloginfo( 'name' );
-					$def_site_desc    = get_bloginfo( 'description' );
-					$article_sections = $this->p->util->get_article_sections();
+					$def_site_name = get_bloginfo( 'name' );
+					$def_site_desc = get_bloginfo( 'description' );
 
 					$table_rows[ 'site_name' ] = '' . 
 						$this->form->get_th_html_locale( _x( 'WebSite Name', 'option label', 'wpsso' ),

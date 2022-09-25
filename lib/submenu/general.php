@@ -173,6 +173,21 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						'<td>' . $this->form->get_input_locale( 'site_home_url', $css_class = 'wide', $css_id = '',
 							$len = 0, $def_home_url ) . '</td>';
 
+					$table_rows[ 'og_def_country' ] = '' . 
+						$this->form->get_th_html( _x( 'Default Country', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'og_def_country' ) . 
+						'<td>' . $this->form->get_select_country( 'og_def_country' ) . '</td>';
+
+					$table_rows[ 'og_def_timezone' ] = '' . 
+						$this->form->get_th_html( _x( 'Default Timezone', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'og_def_timezone' ) . 
+						'<td>' . $this->form->get_select_timezone( 'og_def_timezone' ) . '</td>';
+
+					$table_rows[ 'og_def_currency' ] = '' .
+						$this->form->get_th_html( _x( 'Default Currency', 'option label', 'wpsso' ),
+							$css_class = '', $css_id = 'og_def_currency' ) .
+						'<td>' . $this->form->get_select( 'og_def_currency', SucomUtil::get_currencies() ) . '</td>';
+
 					$table_rows[ 'og_def_article_section' ] = '' . 
 						$this->form->get_th_html( _x( 'Default Article Section', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'og_def_article_section' ) . 
@@ -187,21 +202,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 								)
 							) .
 						'</td>';
-
-					$table_rows[ 'og_def_currency' ] = '' .
-						$this->form->get_th_html( _x( 'Default Currency', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'og_def_currency' ) .
-						'<td>' . $this->form->get_select( 'og_def_currency', SucomUtil::get_currencies() ) . '</td>';
-
-					$table_rows[ 'og_def_country' ] = '' . 
-						$this->form->get_th_html( _x( 'Default Country', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'og_def_country' ) . 
-						'<td>' . $this->form->get_select_country( 'og_def_country' ) . '</td>';
-
-					$table_rows[ 'og_def_timezone' ] = '' . 
-						$this->form->get_th_html( _x( 'Default Timezone', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'og_def_timezone' ) . 
-						'<td>' . $this->form->get_select_timezone( 'og_def_timezone' ) . '</td>';
 
 					break;
 

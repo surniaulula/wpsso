@@ -627,9 +627,6 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			return $text;
 		}
 
-		/**
-		 * Returns an array of two elements - the custom field option label and a tooltip fragment.
-		 */
 		protected function get_tooltip_fragments( $msg_key = false ) {
 
 			static $local_cache = null;
@@ -645,7 +642,8 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 					'article_section' => array(
 						'label' => _x( 'Article Section', 'option label', 'wpsso' ),
 						'name'  => _x( 'article section', 'tooltip fragment', 'wpsso' ),
-						'desc'  => _x( 'article section', 'tooltip fragment', 'wpsso' ),
+						'desc'  => _x( 'an article section', 'tooltip fragment', 'wpsso' ),
+						'about'  => __( 'https://ogp.me/', 'wpsso' ),
 					),
 					'book_isbn' => array(
 						'label' => _x( 'Book ISBN', 'option label', 'wpsso' ),
@@ -672,6 +670,20 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'name'  => _x( 'image URL', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'an image URL', 'tooltip fragment', 'wpsso' ),
 					),
+					'product_adult_oriented' => array(
+						'label'  => _x( 'Product Adult Oriented', 'option label', 'wpsso' ),
+						'name'   => _x( 'product adult oriented', 'tooltip fragment', 'wpsso' ),
+						'desc'   => _x( 'a product adult oriented', 'tooltip fragment', 'wpsso' ),
+						'about'  => __( 'https://support.google.com/merchants/answer/6324508', 'wpsso' ),
+						'values' => WpssoSchema::get_enumeration_values( $enum_key = 'adult_oriented', $val_prefix = '', $val_suffix = 'Consideration' ),
+					),
+					'product_age_group' => array(
+						'label'  => _x( 'Product Age Group', 'option label', 'wpsso' ),
+						'name'   => _x( 'product age group', 'tooltip fragment', 'wpsso' ),
+						'desc'   => _x( 'a product age group', 'tooltip fragment', 'wpsso' ),
+						'about'  => __( 'https://support.google.com/merchants/answer/6324463', 'wpsso' ),
+						'values' => WpssoSchema::get_enumeration_values( $enum_key = 'age_group' ),
+					),
 					'product_avail' => array(
 						'label'  => _x( 'Product Availability', 'option label', 'wpsso' ),
 						'name'   => _x( 'product availability', 'tooltip fragment', 'wpsso' ),
@@ -685,9 +697,9 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'about' => __( 'https://support.google.com/merchants/answer/6324351', 'wpsso' ),
 					),
 					'product_category' => array(
-						'label' => _x( 'Google Product Category', 'option label', 'wpsso' ),
-						'name'  => _x( 'Google product category', 'tooltip fragment', 'wpsso' ),
-						'desc'  => _x( 'a Google product category', 'tooltip fragment', 'wpsso' ),
+						'label' => _x( 'Product Google Category', 'option label', 'wpsso' ),
+						'name'  => _x( 'product Google category', 'tooltip fragment', 'wpsso' ),
+						'desc'  => _x( 'a product Google category', 'tooltip fragment', 'wpsso' ),
 						'about' => __( 'https://support.google.com/merchants/answer/6324436', 'wpsso' ),
 					),
 					'product_color' => array(

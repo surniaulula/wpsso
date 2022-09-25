@@ -552,7 +552,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 				898 => array(
 					'home_url' => 'site_home_url',
 				),
-				913 => array(
+				914 => array(
 					'og_def_product_category'   => 'schema_def_product_category',
 					'og_def_product_condition'  => 'schema_def_product_condition',
 					'og_def_product_price_type' => 'schema_def_product_price_type',

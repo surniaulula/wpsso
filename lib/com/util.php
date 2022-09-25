@@ -2228,6 +2228,7 @@ if ( ! class_exists( 'SucomUtil' ) ) {
 				 * Product attributes and descriptions.
 				 */
 				$mt_pre . ':url'                => null,	// Non-standard / internal meta tag.
+				$mt_pre . ':adult_oriented'     => null,	// Non-standard / internal meta tag.
 				$mt_pre . ':age_group'          => null,
 				$mt_pre . ':availability'       => null,
 				$mt_pre . ':brand'              => null,

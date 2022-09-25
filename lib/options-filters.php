@@ -184,7 +184,11 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_def_job_hiring_org_id':		// Default Hiring Organization.
 					case 'schema_def_job_location_id':		// Default Job Location.
 					case 'schema_def_job_location_type':		// Default Job Location Type.
-					case 'schema_def_product_category':		// Default Google Product Category.
+					case 'schema_def_product_adult_oriented':	// Default Product Adult Oriented.
+					case 'schema_def_product_age_group':		// Default Product Age Group.
+					case 'schema_def_product_category':		// Default Product Google Category.
+					case 'schema_def_product_condition':		// Default Product Condition.
+					case 'schema_def_product_price_type':		// Default Product Price Type.
 					case 'schema_def_prov_org_id':			// Default Service Prov. Org.
 					case 'schema_def_prov_person_id':		// Default Service Prov. Person.
 					case 'schema_def_pub_org_id':			// Default Publisher Org.
@@ -408,7 +412,6 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'tc_title':			// Twitter Card Title.
 				case 'tc_desc':				// Twitter Card Description.
 				case 'pin_desc':
-				case 'article_section':
 				case 'product_brand':
 				case 'product_color':
 				case 'product_currency':		// Product Price Currency.
@@ -443,8 +446,6 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'site_org_place_id':
 				case 'site_org_schema_type':
 				case 'og_def_article_section':			// Default Article Section.
-				case 'og_def_product_condition':		// Default Product Condition.
-				case 'og_def_product_price_type':		// Default Product Price Type.
 				case 'og_def_currency':				// Default Currency.
 				case 'og_def_country':				// Default Country.
 				case 'og_def_timezone':				// Default Timezone.
@@ -458,14 +459,17 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'plugin_404_page_desc':			// 404 Page Description.
 				case 'plugin_no_title_text':			// No Title Text.
 				case 'plugin_no_desc_text':			// No Description Text.
-				case 'plugin_shortener':			// Select option with 'none' as default.
-				case 'product_avail':				// Select option with 'none' as default.
-				case 'product_category':			// Select option with 'none' as default.
-				case 'product_condition':			// Select option with 'none' as default.
-				case 'product_price_type':			// Select option with 'none' as default.
-				case 'product_size_type':			// Select option with 'none' as default.
-				case 'product_target_gender':			// Select option with 'none' as default.
-				case 'robots_max_image_preview':		// Image Preview Size.
+				case 'plugin_shortener':
+				case 'article_section':
+				case 'product_adult_oriented':
+				case 'product_age_group':
+				case 'product_avail':
+				case 'product_category':
+				case 'product_condition':
+				case 'product_price_type':
+				case 'product_size_type':
+				case 'product_target_gender':
+				case 'robots_max_image_preview':
 				case ( false !== strpos( $base_key, '_crop_x' ) ? true : false ):
 				case ( false !== strpos( $base_key, '_crop_y' ) ? true : false ):
 				case ( false !== strpos( $base_key, '_type_for_' ) ? true : false ):
