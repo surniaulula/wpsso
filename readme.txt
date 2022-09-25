@@ -251,6 +251,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added new options in the Document SSO metabox:
 		* "Product Age Group"
 		* "Product Adult Oriented"
+	* Added support for new Schema Product 'audience' properties:
+		* 'suggestedMinAge'
+		* 'suggestedMaxAge'
+	* Added support for new Schema Product 'hasAdultConsideration' property.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -541,7 +545,7 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 = 13.4.0-dev.5 =
 
-(2022/09/25) Added new options in the Document SSO metabox and SSO &gt; Advanced Settings page.
+(2022/09/25) Added new options in the Document SSO metabox and SSO &gt; Advanced Settings page. Added support for new Schema Product 'audience' properties and 'hasAdultConsideration' property.
 
 = 13.3.2 =
 
