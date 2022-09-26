@@ -2582,10 +2582,8 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 		public static function get_option_unit_comment( $opt_key ) {
 
-
-			$wpsso      =& Wpsso::get_instance();
-			$unit_keys  = array_keys( $wpsso->cf[ 'head' ][ 'schema_units' ] );
-			$cmt_transl = '';
+			$schema_units = WpssoSchema::get_schema_units();	// Uses a local cache.
+			$unit_keys    = array_keys( $schema_units );
 
 			if ( false !== strpos( $opt_key, '_value' ) ) {
 
@@ -2593,17 +2591,15 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 					if ( false !== strpos( $opt_key, '_' . $key . '_value' ) ) {
 
-						if ( $unit_text = WpssoSchema::get_data_unit_text( $key ) ) {
+						if ( $unit_text = WpssoSchema::get_data_unit_text( $key ) ) {	// Uses a local cache.
 
-							$cmt_transl = ' ' . sprintf( _x( 'in %s', 'option comment', 'wpsso' ), $unit_text );
+							return ' ' . sprintf( _x( 'in %s', 'option comment', 'wpsso' ), $unit_text );
 						}
-
-						break;
 					}
 				}
 			}
 
-			return $cmt_transl;
+			return '';
 		}
 
 		public static function get_option_site_use( $name, $form, $network = false, $is_enabled = false ) {

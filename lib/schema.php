@@ -33,8 +33,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 		private $types_cache = array();	// Schema types array cache.
 
-		private static $units_cache = null;	// Schema unicodes array cache.
-
 		public function __construct( &$plugin ) {
 
 			$this->p =& $plugin;
@@ -1220,7 +1218,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 
 			$opt_key      = 'schema_type_for_' . $opt_suffix;
-			$type_id      = $this->p->opt->get_defaults( $opt_key );	// Uses a local cache.
+			$type_id      = $this->p->opt->get_defaults( $opt_key );		// Uses a local cache.
 			$schema_types = $this->get_schema_types_array( $flatten = true );	// Uses a class variable cache.
 
 			if ( empty( $type_id ) || 'none' === $type_id || empty( $schema_types[ $type_id ] ) ) {
@@ -3280,6 +3278,20 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			}
 		}
 
+		public static function get_schema_units() {
+
+			static $local_cache = null;
+
+			if ( null === $local_cache ) {
+
+				$wpsso =& Wpsso::get_instance();
+
+				$local_cache = apply_filters( 'wpsso_schema_units', $wpsso->cf[ 'head' ][ 'schema_units' ] );
+			}
+
+			return $local_cache;
+		}
+
 		/**
 		 * QuantitativeValue (width, height, length, depth, weight).
 		 *
@@ -3314,22 +3326,14 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$wpsso->debug->mark();
 			}
 
-			if ( null === self::$units_cache ) {
-
-				self::$units_cache = apply_filters( 'wpsso_schema_units', $wpsso->cf[ 'head' ][ 'schema_units' ] );
-			}
-
-			if ( ! is_array( self::$units_cache ) ) {	// Just in case.
-
-				return;
-			}
+			$schema_units = self::get_schema_units();	// Uses a local cache.
 
 			foreach ( $names as $key => $key_name ) {
 
 				/**
 				 * Make sure the property name we need (width, height, weight, etc.) is configured.
 				 */
-				if ( empty( self::$units_cache[ $key ] ) || ! is_array( self::$units_cache[ $key ] ) ) {
+				if ( empty( $schema_units[ $key ] ) || ! is_array( $schema_units[ $key ] ) ) {
 
 					continue;
 				}
@@ -3345,7 +3349,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				/**
 				 * Example array:
 				 *
-				 *	self::$units_cache[ 'depth' ] = array(
+				 *	$schema_units[ 'depth' ] = array(
 				 *		'depth' => array(
 				 *			'@context' => 'https://schema.org',
 				 *			'@type'    => 'QuantitativeValue',
@@ -3355,7 +3359,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				 *		),
 				 *	),
 				 */
-				foreach ( self::$units_cache[ $key ] as $prop_name => $prop_data ) {
+				foreach ( $schema_units[ $key ] as $prop_name => $prop_data ) {
 
 					$quant_id = 'qv-' . $key . '-' . $assoc[ $key_name ];	// Example '@id' = '#sso/qv-width-px-1200'.
 
@@ -3387,12 +3391,9 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				return $local_cache[ $key ];
 			}
 
-			if ( null === self::$units_cache ) {
+			$schema_units = self::get_schema_units();	// Uses a local cache.
 
-				self::$units_cache = apply_filters( 'wpsso_schema_units', $wpsso->cf[ 'head' ][ 'schema_units' ] );
-			}
-
-			if ( empty( self::$units_cache[ $key ] ) || ! is_array( self::$units_cache[ $key ] ) ) {
+			if ( empty( $schema_units[ $key ] ) || ! is_array( $schema_units[ $key ] ) ) {
 
 				return $local_cache[ $key ] = '';
 			}
@@ -3400,7 +3401,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			/**
 			 * Example array:
 			 *
-			 *	self::$units_cache[ 'depth' ] = array(
+			 *	$schema_units[ 'depth' ] = array(
 			 *		'depth' => array(
 			 *			'@context' => 'https://schema.org',
 			 *			'@type'    => 'QuantitativeValue',
@@ -3410,7 +3411,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 			 *		),
 			 *	),
 			 */
-			foreach ( self::$units_cache[ $key ] as $prop_name => $prop_data ) {
+			foreach ( $schema_units[ $key ] as $prop_name => $prop_data ) {
 
 				if ( isset( $prop_data[ 'unitText' ] ) ) {	// Return the first match.
 
