@@ -231,7 +231,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.4.1-rc.1 (2022/09/26)**
+**Version 13.4.1 (2022/09/26)**
 
 * **New Features**
 	* None.
@@ -558,7 +558,7 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 == Upgrade Notice ==
 
-= 13.4.1-rc.1 =
+= 13.4.1 =
 
 (2022/09/26) Removed duplicated 'price', 'priceCurrency', and 'eligibleQuantity' from the Schema Product offer (already included in the offer 'priceSpecification' markup).
 
