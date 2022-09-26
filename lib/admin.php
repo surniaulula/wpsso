@@ -2580,6 +2580,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				self::get_option_site_use( 'plugin_debug_html', $form, $network, $is_enabled = true );
 		}
 
+		/**
+		 * Since WPSSO Core v13.4.1.
+		 */
 		public static function get_option_unit_comment( $opt_key ) {
 
 			$schema_units = WpssoSchema::get_schema_units();	// Uses a local cache.
