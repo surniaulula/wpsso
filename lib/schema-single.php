@@ -1967,34 +1967,10 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				$offer[ 'priceValidUntil' ] = $price_valid_until;
 			}
 
-			$quantity = WpssoSchema::get_data_itemprop_from_assoc( $mt_offer, array( 
-				'value'    => 'product:quantity:value',
-				'minValue' => 'product:quantity:minimum',
-				'maxValue' => 'product:quantity:maximum',
-				'unitCode' => 'product:quantity:unit_code',	// UN/CEFACT Common Code (3 characters).
-				'unitText' => 'product:quantity:unit_text',
-			) );
-
-			if ( false !== $quantity ) {
-
-				if ( ! isset( $quantity[ 'value' ] ) ) {
-
-					if ( isset( $quantity[ 'minValue' ] ) && isset( $quantity[ 'maxValue' ] ) &&
-						$quantity[ 'minValue' ] === $quantity[ 'maxValue' ] ) {
-
-						$quantity[ 'value' ] = $quantity[ 'minValue' ];
-
-						unset( $quantity[ 'minValue' ], $quantity[ 'maxValue' ] );
-					}
-				}
-
-				$offer[ 'eligibleQuantity' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/QuantitativeValue', $quantity );
-			}
-
 			$price_spec = WpssoSchema::get_data_itemprop_from_assoc( $mt_offer, array( 
+				'priceType'             => 'product:price:type',
 				'price'                 => 'product:price:amount',
 				'priceCurrency'         => 'product:price:currency',
-				'priceType'             => 'product:price:type',
 				'validFrom'             => 'product:sale_price_dates:start',
 				'validThrough'          => 'product:sale_price_dates:end',
 				'valueAddedTaxIncluded' => 'product:price:vat_included',
@@ -2002,11 +1978,30 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 
 			if ( false !== $price_spec ) {
 
-				if ( isset( $offer[ 'eligibleQuantity' ] ) ) {
-
-					$price_spec[ 'eligibleQuantity' ] = $offer[ 'eligibleQuantity' ];
+				$quantity = WpssoSchema::get_data_itemprop_from_assoc( $mt_offer, array( 
+					'value'    => 'product:quantity:value',
+					'minValue' => 'product:quantity:minimum',
+					'maxValue' => 'product:quantity:maximum',
+					'unitCode' => 'product:quantity:unit_code',	// UN/CEFACT Common Code (3 characters).
+					'unitText' => 'product:quantity:unit_text',
+				) );
+	
+				if ( false !== $quantity ) {
+	
+					if ( ! isset( $quantity[ 'value' ] ) ) {
+	
+						if ( isset( $quantity[ 'minValue' ] ) && isset( $quantity[ 'maxValue' ] ) &&
+							$quantity[ 'minValue' ] === $quantity[ 'maxValue' ] ) {
+	
+							$quantity[ 'value' ] = $quantity[ 'minValue' ];
+	
+							unset( $quantity[ 'minValue' ], $quantity[ 'maxValue' ] );
+						}
+					}
+	
+					$price_spec[ 'eligibleQuantity' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/QuantitativeValue', $quantity );
 				}
-
+	
 				$offer[ 'priceSpecification' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/UnitPriceSpecification', $price_spec );
 			}
 
