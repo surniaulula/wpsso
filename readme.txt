@@ -236,11 +236,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **New Features**
 	* None.
 * **Improvements**
-	* None.
+	* Removed duplicated 'price', 'priceCurrency', and 'eligibleQuantity' from the Schema Product offer (already included in the offer 'priceSpecification' markup).
 * **Bugfixes**
 	* None.
 * **Developer Notes**
-	* None.
+	* Added a new `WpssoSchema::get_schema_units()` method.
+	* Refactored the `WpssoAdmin::get_option_unit_comment()` method.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -559,7 +560,7 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 = 13.4.1-dev.1 =
 
-(TBD) None.
+(TBD) Removed duplicated 'price', 'priceCurrency', and 'eligibleQuantity' from the Schema Product offer (already included in the offer 'priceSpecification' markup).
 
 = 13.4.0 =
 
