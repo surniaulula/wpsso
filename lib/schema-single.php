@@ -1906,8 +1906,6 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 				'availability'          => 'product:availability',	// Only valid for offers.
 				'itemCondition'         => 'product:condition',		// Valid for both products and offers.
 				'hasAdultConsideration' => 'product:adult_oriented',	// Valid for both products and offers.
-				'price'                 => 'product:price:amount',
-				'priceCurrency'         => 'product:price:currency',
 				'priceValidUntil'       => 'product:sale_price_dates:end',
 			) );
 
@@ -1937,26 +1935,16 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			WpssoSchema::check_prop_value_gtin( $offer );
 
 			/**
-			 * Make sure we have a price currency value.
-			 */
-			if ( empty( $offer[ 'priceCurrency' ] ) ) {
-
-				$offer[ 'priceCurrency' ] = $wpsso->options[ 'og_def_currency' ];
-			}
-
-			/**
 			 * Prevents a missing property warning from the Google validator.
+			 *
+			 * By default, define normal product prices (not on sale) as valid for 1 month.
+			 *
+			 * Uses a static cache for all offers to allow for a common value in AggregateOffer markup.
 			 */
 			if ( empty( $offer[ 'priceValidUntil' ] ) ) {
 
-				/**
-				 * By default, define normal product prices (not on sale) as valid for 1 year.
-				 */
 				$valid_max_time  = SucomUtil::get_const( 'WPSSO_SCHEMA_PRODUCT_VALID_MAX_TIME', MONTH_IN_SECONDS );
 
-				/**
-				 * Only define once for all offers to allow for (maybe) a common value in the AggregateOffer markup.
-				 */
 				static $price_valid_until = null;
 
 				if ( null === $price_valid_until ) {
@@ -1968,15 +1956,23 @@ if ( ! class_exists( 'WpssoSchemaSingle' ) ) {
 			}
 
 			$price_spec = WpssoSchema::get_data_itemprop_from_assoc( $mt_offer, array( 
-				'priceType'             => 'product:price:type',
 				'price'                 => 'product:price:amount',
 				'priceCurrency'         => 'product:price:currency',
+				'priceType'             => 'product:price:type',
 				'validFrom'             => 'product:sale_price_dates:start',
 				'validThrough'          => 'product:sale_price_dates:end',
 				'valueAddedTaxIncluded' => 'product:price:vat_included',
 			) );
 
 			if ( false !== $price_spec ) {
+
+				/**
+				 * Make sure we have a price currency.
+				 */
+				if ( empty( $price_spec[ 'priceCurrency' ] ) ) {
+	
+					$price_spec[ 'priceCurrency' ] = $wpsso->options[ 'og_def_currency' ];
+				}
 
 				$quantity = WpssoSchema::get_data_itemprop_from_assoc( $mt_offer, array( 
 					'value'    => 'product:quantity:value',
