@@ -21,8 +21,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '13.4.1',	// Plugin version.
-					'opt_version' => '919',		// Increment when changing default option values.
+					'version'     => '13.5.0-dev.1',	// Plugin version.
+					'opt_version' => '921',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
 					'desc'        => 'Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.',
@@ -1294,7 +1294,6 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 *
 					 * See WpssoOpengraph->add_og_type_mt_md().
 					 */
-					'og_def_article_section'   => 'none',					// Default Article Section.
 					'og_def_img_id'            => '',					// Default Image ID.
 					'og_def_img_id_lib'        => 'wp',					// Default Image ID Library.
 					'og_def_img_url'           => '',					// Default Image URL.
@@ -1452,6 +1451,11 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_tax_yith_product_brand' => 'item.list',	// For YITH WooCommerce Brands Add-on.
 
 					/**
+					 * Advanced Settings > Schema Defaults > Article.
+					 */
+					'schema_def_article_section' => 'none',	// Default Article Section.
+
+					/**
 					 * Advanced Settings > Schema Defaults > Book.
 					 */
 					'schema_def_book_format' => 'none',	// Default Book Format.
@@ -1459,8 +1463,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings > Schema Defaults > Creative Work.
 					 *
-					 * Note that 'schema_def_pub_org_id' may be updated, in the WpssoOptions->get_defaults()
-					 * method, based on the 'site_pub_schema_type' value.
+					 * Note that 'schema_def_pub_org_id' may be updated in WpssoOptions->get_defaults() based on the 'site_pub_schema_type' value.
 					 */
 					'schema_def_family_friendly' => 'none',	// Default Family Friendly.
 					'schema_def_pub_org_id'      => 'site',	// Default Publisher Org.
@@ -3263,13 +3266,13 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					 * See https://developers.facebook.com/docs/reference/opengraph/object-type/article/.
 					 */
 					'article' => array(
-						'article:author'          => '',		// An array of Facebook profile URLs or IDs of the authors for this article.
-						'article:publisher'       => '',		// A Facebook page URL or ID of the publishing entity.
+						'article:author'          => '',
+						'article:publisher'       => '',
 						'article:published_time'  => '',
 						'article:modified_time'   => '',
 						'article:expiration_time' => '',
-						'article:section'         => 'article_section',
-						'article:tag'             => '',		// An array of keywords relevant to the article.
+						'article:section'         => 'schema_article_section',
+						'article:tag'             => '',
 					),
 					'book' => array(
 						'book:author'       => 'schema_book_author_url',

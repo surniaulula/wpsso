@@ -390,6 +390,10 @@ body.rtl .sucom-tablink-icon::before {
 	content:"\e800";	/* .icon-videocam */
 }
 
+.sucom-tablink-icon.sucom-tablink-href_article::before {		/* SSO > Advanced Settings > Schema Defaults > Article tab. */
+	content:"\f1ea";	/* .icon-newspaper */
+}
+
 .sucom-tablink-icon.sucom-tablink-href_book::before {			/* SSO > Advanced Settings > Schema Defaults > Book tab. */
 	content:"\e830";	/* .icon-book */
 }

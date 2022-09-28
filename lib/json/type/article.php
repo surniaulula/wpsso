@@ -50,6 +50,11 @@ if ( ! class_exists( 'WpssoJsonTypeArticle' ) ) {
 				'articleSection' => 'article:section',
 			) );
 
+			if ( ! empty( $mt_og[ 'article:reading_mins' ] ) ) {
+
+				$json_ret[ 'timeRequired' ] = 'PT' . $mt_og[ 'article:reading_mins' ] . 'M';
+			}
+
 			/**
 			 * Property:
 			 *	articleBody

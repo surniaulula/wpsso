@@ -1349,6 +1349,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				case 'schema_type':
 
 					$class_type_ids = array(
+						'article'        => 'article',
 						'book'           => 'book',
 						'book_audio'     => 'book.audio',
 						'creative_work'  => 'creative.work',

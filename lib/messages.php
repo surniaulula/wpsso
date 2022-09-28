@@ -643,7 +643,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						'label' => _x( 'Article Section', 'option label', 'wpsso' ),
 						'name'  => _x( 'article section', 'tooltip fragment', 'wpsso' ),
 						'desc'  => _x( 'an article section', 'tooltip fragment', 'wpsso' ),
-						'about'  => __( 'https://ogp.me/', 'wpsso' ),
+						'about' => __( 'https://schema.org/articleSection', 'wpsso' ),
 					),
 					'book_isbn' => array(
 						'label' => _x( 'Book ISBN', 'option label', 'wpsso' ),

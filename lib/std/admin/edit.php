@@ -52,16 +52,18 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 
 			$limits             = WpssoConfig::get_input_limits();	// Uses a local cache.
 			$currencies         = SucomUtil::get_currency_abbrev();
-			$product_categories = $this->p->util->get_google_product_categories();
-			$schema_types       = $this->p->schema->get_schema_types_select();
+			$article_sections   = $this->p->util->get_article_sections();
 			$org_names          = $this->p->util->get_form_cache( 'org_names', $add_none = true );
 			$person_names       = $this->p->util->get_form_cache( 'person_names', $add_none = true );
 			$place_names        = $this->p->util->get_form_cache( 'place_names', $add_none = true );
 			$place_names_custom = $this->p->util->get_form_cache( 'place_names_custom', $add_none = true );
+			$product_categories = $this->p->util->get_google_product_categories();
+			$schema_types       = $this->p->schema->get_schema_types_select();
 
 			/**
 			 * Default values.
 			 */
+			$def_reading_mins     = $this->p->page->get_reading_mins( $mod );
 			$def_schema_title     = $this->p->page->get_title( $mod, $md_key = 'seo_title', $max_len = 'schema_title' );
 			$def_schema_title_alt = $this->p->page->get_title( $mod, $md_key = 'schema_title', $max_len = 'schema_title_alt' );
 			$def_schema_headline  = $this->p->page->get_title( $mod, $md_key = 'schema_title', $max_len = 'schema_headline' );
@@ -244,6 +246,33 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tooltip'  => 'meta-schema_prov_person_id',
 					'content'  => $form->get_no_select( 'schema_prov_person_id', $person_names,
 						$css_class = 'long_name', $css_id = '', $is_assoc = true ),
+				),
+
+				/**
+				 * Schema Creative Work > Article.
+				 */
+				'subsection_schema_article' => array(
+					'tr_class' => $schema_type_row_class[ 'article' ],
+					'td_class' => 'subsection',
+					'header'   => 'h5',
+					'label'    => _x( 'Schema Article Information', 'metabox title', 'wpsso' )
+				),
+				'schema_article_section' => array(
+					'tr_class' => $schema_type_row_class[ 'article' ],
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Article Section', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_article_section',
+					'content'  => $form->get_no_select( 'schema_article_section', $article_sections ),
+				),
+				'schema_reading_mins' => array(
+					'tr_class' => $schema_type_row_class[ 'article' ],
+					'th_class' => 'medium',
+					'td_class' => 'blank',
+					'label'    => _x( 'Est. Reading Time', 'option label', 'wpsso' ),
+					'tooltip'  => 'meta-schema_reading_mins',
+					'content'  => $form->get_no_input_value( $def_reading_mins, $css_class = 'xshort' ) . ' ' .
+						__( 'minute(s)', 'wpsso' ),
 				),
 
 				/**

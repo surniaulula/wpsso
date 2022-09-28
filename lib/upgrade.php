@@ -305,11 +305,11 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'plugin_product_attr_mpn' => 'plugin_attr_product_mfr_part_no',
 				),
 				700 => array(
-					'og_art_section'          => 'og_def_article_section',
+					'og_art_section'          => 'schema_def_article_section',
 					'plugin_topics_cache_exp' => '',
 				),
 				701 => array(
-					'og_def_article_topic' => 'og_def_article_section',
+					'og_def_article_topic' => 'schema_def_article_section',
 				),
 				703 => array(
 					'plugin_clear_all_refresh' => '',
@@ -556,6 +556,9 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'og_def_product_category'   => 'schema_def_product_category',
 					'og_def_product_condition'  => 'schema_def_product_condition',
 					'og_def_product_price_type' => 'schema_def_product_price_type',
+				),
+				920 => array(
+					'og_def_article_section' => 'schema_def_article_section',
 				),
 			),
 		);

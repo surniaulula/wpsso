@@ -60,9 +60,16 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					/**
 					 * Cast as integer (zero and -1 is ok).
 					 */
+					case 'schema_book_pages':	// Number of Pages.
+					case 'schema_reading_mins':
 					case 'schema_vid_max':
 
-						return 'integer';	// Aka 'int'.
+						if ( empty( $mod[ 'name' ] ) ) {	// Must be an interger for plugin settings (ie. no module).
+
+							return 'integer';
+						}
+
+						return 'blank_int';		// Allow blank (ie. default) for options.
 
 					/**
 					 * Must be numeric (blank and zero are ok).
@@ -174,6 +181,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					 * Options that cannot be blank.
 					 */
 					case 'schema_book_author_type':			// Book Author Type.
+					case 'schema_def_article_section':		// Default Article Section.
 					case 'schema_def_book_format':			// Default Book Format.
 					case 'schema_def_event_location_id':		// Default Physical Venue.
 					case 'schema_def_event_organizer_org_id':	// Default Organizer Org.
@@ -194,6 +202,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_def_pub_org_id':			// Default Publisher Org.
 					case 'schema_def_pub_person_id':		// Default Publisher Person.
 					case 'schema_def_review_item_type':		// Default Subject Webpage Type.
+					case 'schema_article_section':			// Article Section.
 					case 'schema_event_lang':			// Event Language.
 					case 'schema_event_location_id':		// Event Physical Venue.
 					case 'schema_event_offer_currency':
@@ -316,10 +325,8 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 
 					return 'blank_int';
 
-				case 'reading_mins':
 				case 'robots_max_snippet':		// Snippet Max. Length.
 				case 'robots_max_video_preview':	// Video Max. Previews.
-				case 'schema_book_pages':		// Number of Pages.
 
 					if ( empty( $mod[ 'name' ] ) ) {	// Must be an interger for plugin settings (ie. no module).
 
@@ -445,7 +452,6 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				 */
 				case 'site_org_place_id':
 				case 'site_org_schema_type':
-				case 'og_def_article_section':			// Default Article Section.
 				case 'og_def_currency':				// Default Currency.
 				case 'og_def_country':				// Default Country.
 				case 'og_def_timezone':				// Default Timezone.
@@ -460,7 +466,6 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 				case 'plugin_no_title_text':			// No Title Text.
 				case 'plugin_no_desc_text':			// No Description Text.
 				case 'plugin_shortener':
-				case 'article_section':
 				case 'product_adult_oriented':
 				case 'product_age_group':
 				case 'product_avail':

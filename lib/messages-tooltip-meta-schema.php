@@ -31,7 +31,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 			switch ( $msg_key ) {
 
 				/**
-				 * Document SSO > Customize tab.
+				 * Document SSO > Schema tab.
 				 */
 				case 'tooltip-meta-schema_title':	// Schema Name.
 
@@ -147,6 +147,36 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 				case 'tooltip-meta-schema_license_url':	// License URL.
 
 					$text = __( 'A license document URL that applies to this content.', 'wpsso' );
+
+				 	break;
+
+				case 'tooltip-meta-schema_article_section':	// Article Section.
+
+					$option_link = $this->p->util->get_admin_url( 'advanced#sucom-tabset_schema_props-tab_article',
+						_x( 'Default Article Section', 'option label', 'wpsso' ) );
+
+					$meta_frags = $this->get_tooltip_fragments( preg_replace( '/^tooltip-meta-schema_/', '', $msg_key ) );	// Uses a local cache.
+
+					$text = sprintf( __( 'A custom value for the %1$s, which may be different than the %2$s option value.', 'wpsso' ),
+						$meta_frags[ 'name' ], $option_link ) . ' ';
+
+					$text .= sprintf( __( 'Select "[None]" to exclude the %s from Schema markup and meta tags.', 'wpsso' ),
+						$meta_frags[ 'name' ] ) . ' ';
+
+					if ( ! empty( $meta_frags[ 'about' ] ) ) {
+
+							// translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.
+						$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s</a>.', 'wpsso' ),
+							$meta_frags[ 'about' ], $meta_frags[ 'desc' ] );
+					}
+
+				 	break;
+
+				case 'tooltip-meta-schema_reading_mins':	// Est. Reading Time.
+
+					$text = __( 'The estimated reading time (in minutes) for this article.', 'wpsso' ) . ' ';
+
+					$text .= __( 'A value of 0 minutes excludes the estimated reading time from Schema markup and meta tags.', 'wpsso' );
 
 				 	break;
 

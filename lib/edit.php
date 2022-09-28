@@ -54,7 +54,6 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			$og_types         = $this->p->og->get_og_types_select();
 			$schema_types     = $this->p->schema->get_schema_types_select();
 			$primary_terms    = $this->p->post->get_primary_terms( $mod, $tax_slug = 'category', $output = 'names' );
-			$article_sections = $this->p->util->get_article_sections();
 
 			/**
 			 * Default option values.
@@ -67,7 +66,6 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 			$def_og_desc      = $this->p->page->get_description( $mod, $md_key = 'seo_desc', $max_len = 'og_desc' );
 			$def_pin_img_desc = $this->p->page->get_description( $mod, $md_key = 'og_desc', $max_len = 'pin_img_desc' );
 			$def_tc_desc      = $this->p->page->get_description( $mod, $md_key = 'og_desc', $max_len = 'tc_desc' );
-			$def_reading_mins = $this->p->page->get_reading_mins( $mod );
 
 			/**
 			 * Check for disabled options.
@@ -113,30 +111,6 @@ if ( ! class_exists( 'WpssoEdit' ) ) {
 						$is_assoc = true, $is_disabled = false, $selected = true,
 							$event_names = array( 'on_change_unhide_rows' ) ),
 				),
-				'og_article_section' => $mod[ 'is_public' ] ? array(
-					'tr_class' => 'hide_og_type hide_og_type_article',
-					'th_class' => 'medium',
-					'label'    => _x( 'Article Section', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-og_article_section',
-					'content'  => $form->get_select( 'article_section', $article_sections, $css_class = 'article_section', $css_id = '',
-						$is_assoc = true, $is_disabled = false, $selected = false,
-							$event_names = array( 'on_focus_load_json' ),
-								$event_args = array(
-									'json_var'  => 'article_sections',
-									'exp_secs'  => WPSSO_CACHE_SELECT_JSON_EXP_SECS,	// Create and read from a javascript URL.
-									'is_transl' => true,					// No label translation required.
-									'is_sorted' => true,					// No label sorting required.
-								)
-						),
-				) : '',
-				'og_reading_mins' => $mod[ 'is_public' ] ? array(
-					'tr_class' => 'hide_og_type hide_og_type_article',
-					'th_class' => 'medium',
-					'label'    => _x( 'Est. Reading Time', 'option label', 'wpsso' ),
-					'tooltip'  => 'meta-og_reading_mins',
-					'content'  => $form->get_input( 'reading_mins', $css_class = 'xshort', $css_id = '', 0, $def_reading_mins ) . ' ' .
-						__( 'minute(s)', 'wpsso' ),
-				) : '',
 				'primary_term_id' => ! empty( $primary_terms ) ? array(	// Show the option if we have post category terms.
 					'th_class' => 'medium',
 					'label'    => _x( 'Primary Category', 'option label', 'wpsso' ),

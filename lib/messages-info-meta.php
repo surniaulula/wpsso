@@ -31,7 +31,7 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 			switch ( $msg_key ) {
 
 				/**
-				 * Customize tab.
+				 * Schema tab.
 				 */
 				case 'info-meta-schema-faq':
 

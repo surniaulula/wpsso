@@ -683,6 +683,11 @@ if ( ! class_exists( 'WpssoOpenGraph' ) ) {
 				}
 			}
 
+			if ( ! isset( $mt_og[ 'article:reading_mins' ] ) ) {
+
+				$mt_og[ 'article:reading_mins' ] = $this->p->page->get_reading_mins( $mod );
+			}
+
 			if ( ! empty( $this->p->cf[ 'head' ][ 'og_type_ns' ][ $type_id ] ) ) {
 
 				$og_ns = $this->p->cf[ 'head' ][ 'og_type_ns' ][ $type_id ];	// Example: https://ogp.me/ns/product#

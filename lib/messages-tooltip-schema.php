@@ -165,6 +165,34 @@ if ( ! class_exists( 'WpssoMessagesTooltipSchema' ) ) {
 					break;
 
 				/**
+				 * SSO > Advanced Settings > Schema Defaults > Article tab.
+				 */
+				case ( 0 === strpos( $msg_key, 'tooltip-schema_def_article_' ) ? true : false ):
+
+					$def_frags = $this->get_tooltip_fragments( preg_replace( '/^tooltip-schema_def_/', '', $msg_key ) );	// Uses a local cache.
+
+					if ( ! empty( $def_frags ) ) {	// Just in case.
+
+						$text = sprintf( __( 'The %s that best describes the content of articles on your site.', 'wpsso' ),
+							$def_frags[ 'name' ] ) . ' ';
+
+						$text .= sprintf( __( 'You can select a different %s when editing an article.', 'wpsso' ),
+							$def_frags[ 'name' ] ) . ' ';
+	
+						$text .= sprintf( __( 'Select "[None]" to exclude the %s by default from Schema markup and meta tags.', 'wpsso' ),
+							$def_frags[ 'name' ] ) . ' ';
+
+						if ( ! empty( $def_frags[ 'about' ] ) ) {
+
+							// translators: %1$s is a webpage URL and %2$s is a singular item reference, for example 'a product Google category'.
+							$text .= sprintf( __( '<a href="%1$s">See this webpage for more information about choosing %2$s</a>.', 'wpsso' ),
+								$def_frags[ 'about' ], $def_frags[ 'desc' ] );
+						}
+					}
+	
+					break;
+
+				/**
 				 * SSO > Advanced Settings > Schema Defaults > Book tab.
 				 */
 				case 'tooltip-schema_def_book_format':		// Default Book Format.

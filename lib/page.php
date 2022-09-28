@@ -2113,7 +2113,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			if ( ! empty( $mod[ 'obj' ] ) && $mod[ 'id' ] ) {	// Just in case.
 
-				$reading_mins = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'reading_mins' );
+				$reading_mins = $mod[ 'obj' ]->get_options( $mod[ 'id' ], 'schema_reading_mins' );
 			}
 
 			if ( null === $reading_mins ) {	// Default value or no custom value.

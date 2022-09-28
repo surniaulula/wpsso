@@ -145,10 +145,9 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 
 				case 'og-site':
 
-					$def_site_name      = get_bloginfo( 'name' );
-					$def_site_desc      = get_bloginfo( 'description' );
-					$def_home_url       = SucomUtil::get_home_url();	// Returns the home page URL with a trailing slash.
-					$article_sections   = $this->p->util->get_article_sections();
+					$def_site_name = get_bloginfo( 'name' );
+					$def_site_desc = get_bloginfo( 'description' );
+					$def_home_url  = SucomUtil::get_home_url();	// Returns the home page URL with a trailing slash.
 
 					$table_rows[ 'site_name' ] = '' . 
 						$this->form->get_th_html_locale( _x( 'WebSite Name', 'option label', 'wpsso' ),
@@ -187,21 +186,6 @@ if ( ! class_exists( 'WpssoSubmenuGeneral' ) && class_exists( 'WpssoAdmin' ) ) {
 						$this->form->get_th_html( _x( 'Default Currency', 'option label', 'wpsso' ),
 							$css_class = '', $css_id = 'og_def_currency' ) .
 						'<td>' . $this->form->get_select( 'og_def_currency', SucomUtil::get_currencies() ) . '</td>';
-
-					$table_rows[ 'og_def_article_section' ] = '' . 
-						$this->form->get_th_html( _x( 'Default Article Section', 'option label', 'wpsso' ),
-							$css_class = '', $css_id = 'og_def_article_section' ) . 
-						'<td>' .
-						$this->form->get_select( 'og_def_article_section', $article_sections, $css_class = '', $css_id = '',
-							$is_assoc = true, $is_disabled = false, $selected = false, $event_names = array( 'on_focus_load_json' ),
-								$event_args = array(
-									'json_var'  => 'article_sections',
-									'exp_secs'  => WPSSO_CACHE_SELECT_JSON_EXP_SECS,	// Create and read from a javascript URL.
-									'is_transl' => true,					// No label translation required.
-									'is_sorted' => true,					// No label sorting required.
-								)
-							) .
-						'</td>';
 
 					break;
 

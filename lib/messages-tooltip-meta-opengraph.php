@@ -52,27 +52,6 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaOpenGraph' ) ) {
 
 				 	break;
 
-				case 'tooltip-meta-og_article_section':	// Article Section.
-
-					$option_link = $this->p->util->get_admin_url( 'general#sucom-tabset_og-tab_site',
-						_x( 'Default Article Section', 'option label', 'wpsso' ) );
-
-					$text = sprintf( __( 'A customized section for this article, which may be different than the %s option value.',
-						'wpsso' ), $option_link ) . ' ';
-
-					$text .= sprintf( __( 'Select "[None]" to exclude the %s Open Graph meta tag.', 'wpsso' ),
-						'<code>article:section</code>' );
-
-				 	break;
-
-				case 'tooltip-meta-og_reading_mins':	// Est. Reading Time.
-
-					$text = __( 'The estimated reading time (in minutes) for this article.', 'wpsso' ) . ' ';
-
-					$text .= __( 'A value of 0 minutes disables the estimated reading time meta tags.', 'wpsso' );
-
-				 	break;
-
 				case 'tooltip-meta-og_title':	// Social Title.
 
 					$text = sprintf( __( 'A customized title for the Facebook / Open Graph %s meta tag.', 'wpsso' ), '<code>og:title</code>' ) . ' ';
