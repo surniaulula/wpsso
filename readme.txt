@@ -231,6 +231,24 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 13.5.0-dev.1 (2022/09/28)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Added 'timeRequired' property to Schema Article markup.
+	* Added a new SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Article tab:
+		* "Default Article Section"
+	* Moved the Document SSO "Article Section" and "Est. Reading Time" option to the Schema tab.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new `WpssoMessagesTooltipMetaProduct` class in lib/messages-tooltip-meta-product.php.
+	* Renamed the 'article_section' and 'reading_mins' metadata option keys to 'schema_article_section' and 'schema_reading_mins'.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 13.4.1 (2022/09/26)**
 
 * **New Features**
@@ -252,13 +270,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* None.
 * **Improvements**
 	* Renamed the "Product Type" option to "Product Google Category".
-	* Added a new SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Product tab.
+	* Added a new SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Product tab:
 		* "Default Product Google Category"
-		* "Default Product Condition"
 		* "Default Product Price Type"
-	* Added new options in the SSO &gt; Advanced Settings page:
+		* "Default Product Condition"
 		* "Default Product Age Group"
 		* "Default Product Adult Oriented"
+	* Added new options in the SSO &gt; Advanced Settings page:
 		* "Product Age Group Custom Field"
 		* "Product Adult Oriented Custom Field"
 		* "Age Group Attribute Name"
@@ -557,6 +575,10 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 	* WordPress v5.2.
 
 == Upgrade Notice ==
+
+= 13.5.0-dev.1 =
+
+(2022/09/28) Added 'timeRequired' property to Schema Article markup. Added a new SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Article tab. Moved the Document SSO "Article Section" and "Est. Reading Time" option to the Schema tab.
 
 = 13.4.1 =
 
