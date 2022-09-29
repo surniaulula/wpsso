@@ -584,7 +584,7 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 
 					case 'article':
 
-						if ( isset( $mt_og[ 'article:author:name' ] ) ) {
+						if ( ! empty( $mt_og[ 'article:author:name' ] ) ) {
 
 							$mt_tc[ 'twitter:label1' ] = __( 'Written by', 'wpsso' );
 
@@ -614,19 +614,19 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 						if ( isset( $mt_og[ 'product:availability' ] ) ) {
 
 							$mt_name = 'product:availability';
-							$avail   = $mt_og[ $mt_name ];
+							$map_key = $mt_og[ $mt_name ];
 
 							/**
 							 * Map 'https://schema.org/InStock' to 'in stock', for example.
 							 */
-							if ( ! empty( $this->p->cf[ 'head' ][ 'og_content_map' ][ $mt_name ][ $avail ] ) ) {
+							if ( ! empty( $this->p->cf[ 'head' ][ 'og_content_map' ][ $mt_name ][ $map_key ] ) ) {
 
-								$avail = $this->p->cf[ 'head' ][ 'og_content_map' ][ $mt_name ][ $avail ];
+								$map_key = $this->p->cf[ 'head' ][ 'og_content_map' ][ $mt_name ][ $map_key ];
 							}
 
 							$mt_tc[ 'twitter:label2' ] = __( 'Availability', 'wpsso' );
 
-							$mt_tc[ 'twitter:data2' ] = ucwords( $avail );
+							$mt_tc[ 'twitter:data2' ] = ucwords( $map_key );
 						}
 
 						break;
