@@ -231,7 +231,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.5.0-dev.1 (2022/09/28)**
+**Version 13.5.0-dev.2 (2022/09/29)**
 
 * **New Features**
 	* None.
@@ -576,9 +576,9 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 == Upgrade Notice ==
 
-= 13.5.0-dev.1 =
+= 13.5.0-dev.2 =
 
-(2022/09/28) Added 'timeRequired' property to Schema Article markup. Added a new SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Article tab. Moved the Document SSO "Article Section" and "Est. Reading Time" option to the Schema tab.
+(2022/09/29) Added 'timeRequired' property to Schema Article markup. Added a new SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Article tab. Moved the Document SSO "Article Section" and "Est. Reading Time" option to the Schema tab.
 
 = 13.4.1 =
 
