@@ -231,7 +231,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.5.0-dev.4 (TBD)**
+**Version 13.5.0-dev.4 (2022/10/03)**
 
 * **New Features**
 	* None.
@@ -240,6 +240,16 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added a new SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Article tab:
 		* "Default Article Section"
 	* Moved the Document SSO "Article Section" and "Est. Reading Time" option to the Edit Schema tab.
+	* Added new Document SSO &gt; Edit Schema options for the Schema Review type:
+		* "Subject Street Address"
+		* "Subject P.O. Box Number"
+		* "Subject City / Locality"
+		* "Subject State / Province"
+		* "Subject Zip / Postal Code"
+		* "Subject Country"
+		* "Subject Telephone"
+		* "Subject Price Range"
+		* "Subject Serves Cuisine"
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -582,7 +592,7 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 = 13.5.0-dev.4 =
 
-(TBD) Added 'timeRequired' property to Schema Article markup. Moved the Document SSO "Article Section" and "Est. Reading Time" options to the Edit Schema tab.
+(2022/10/03) Added 'timeRequired' property to Schema Article markup. Moved the Document SSO "Article Section" and "Est. Reading Time" options to the Edit Schema tab. Added new Document SSO &gt; Edit Schema options for the Schema Review type.
 
 = 13.4.1 =
 
