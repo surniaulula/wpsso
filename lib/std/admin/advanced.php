@@ -37,8 +37,8 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				'services_media_rows'             => 2,	// Service APIs > Media Services tab.
 				'services_shortening_rows'        => 2,	// Service APIs > Shortening Services tab.
 				'services_ratings_reviews_rows'   => 2,	// Service APIs > Ratings and Reviews tab.
-				'doc_types_og_types_rows'         => 2,	// Document Types > Schema tab.
-				'doc_types_schema_types_rows'     => 2,	// Document Types > Open Graph tab.
+				'doc_types_og_types_rows'         => 2,	// Document Types > Open Graph tab.
+				'doc_types_schema_types_rows'     => 2,	// Document Types > Schema tab.
 				'schema_props_article_rows'       => 2,	// Schema Defaults > Article tab.
 				'schema_props_book_rows'          => 2,	// Schema Defaults > Book tab.
 				'schema_props_creative_work_rows' => 2,	// Schema Defaults > Creative Work tab.

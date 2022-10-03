@@ -31,7 +31,7 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 			switch ( $msg_key ) {
 
 				/**
-				 * Schema tab.
+				 * Document SSO > Edit Schema tab.
 				 */
 				case 'info-meta-schema-faq':
 
@@ -105,7 +105,7 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 					break;
 
 				/**
-				 * Edit Media tab.
+				 * Document SSO > Edit Media tab.
 				 */
 				case 'info-meta-priority-media':
 
@@ -130,7 +130,7 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 					break;
 
 				/**
-				 * Edit Visibility tab.
+				 * Document SSO > Edit Visibility tab.
 				 */
 				case 'info-meta-robots-meta':
 
@@ -147,7 +147,7 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 				 	break;
 
 				/**
-				 * Preview Social tab.
+				 * Document SSO > Preview Social tab.
 				 */
 				case 'info-meta-social-preview':
 
@@ -168,7 +168,7 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 				 	break;
 
 				/**
-				 * Preview oEmbed tab.
+				 * Document SSO > Preview oEmbed tab.
 				 */
 				case 'info-meta-oembed-footer':
 
@@ -181,7 +181,7 @@ if ( ! class_exists( 'WpssoMessagesInfoMeta' ) ) {
 				 	break;
 
 				/**
-				 * Validators tab.
+				 * Document SSO > Validators tab.
 				 */
 				case 'info-meta-validate-amp':
 

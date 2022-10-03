@@ -31,7 +31,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 			switch ( $msg_key ) {
 
 				/**
-				 * Document SSO > Schema tab.
+				 * Document SSO > Edit Schema tab.
 				 */
 				case 'tooltip-meta-schema_title':	// Schema Name.
 

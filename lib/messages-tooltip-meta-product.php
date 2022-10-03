@@ -34,7 +34,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaProduct' ) ) {
 			switch ( $msg_key ) {
 
 				/**
-				 * Document SSO > Schema tab.
+				 * Document SSO > Edit Schema tab.
 				 */
 				case 'tooltip-meta-product_category':	// Product Google Category.
 
