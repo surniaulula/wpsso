@@ -231,7 +231,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.5.0-dev.2 (2022/09/29)**
+**Version 13.5.0-dev.4 (TBD)**
 
 * **New Features**
 	* None.
@@ -243,8 +243,12 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 * **Bugfixes**
 	* None.
 * **Developer Notes**
+	* Renamed the 'article_section' metadata option key to 'schema_article_section'.
+	* Renamed the 'reading_mins' metadata option key to 'schema_reading_mins'.
+	* Moved organization and place tooltip messages to the WPSSO Core plugin.
+	* Added a new `WpssoMessagesTooltipMetaOrg` class in lib/messages-tooltip-meta-org.php.
+	* Added a new `WpssoMessagesTooltipMetaPlace` class in lib/messages-tooltip-meta-place.php.
 	* Added a new `WpssoMessagesTooltipMetaProduct` class in lib/messages-tooltip-meta-product.php.
-	* Renamed the 'article_section' and 'reading_mins' metadata option keys to 'schema_article_section' and 'schema_reading_mins'.
 * **Requires At Least**
 	* PHP v7.2.
 	* WordPress v5.2.
@@ -576,9 +580,9 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 == Upgrade Notice ==
 
-= 13.5.0-dev.2 =
+= 13.5.0-dev.4 =
 
-(2022/09/29) Added 'timeRequired' property to Schema Article markup. Added a new SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Article tab. Moved the Document SSO "Article Section" and "Est. Reading Time" option to the Schema tab.
+(TBD) Added 'timeRequired' property to Schema Article markup. Added a new SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Article tab. Moved the Document SSO "Article Section" and "Est. Reading Time" option to the Schema tab.
 
 = 13.4.1 =
 
