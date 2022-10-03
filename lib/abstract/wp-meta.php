@@ -657,14 +657,22 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					/**
 					 * Schema Review Subject: Place.
 					 */
+					'schema_review_item_place_street_address' => '',
+					'schema_review_item_place_po_box_number'  => '',
+					'schema_review_item_place_city'           => '',
+					'schema_review_item_place_region'         => '',
+					'schema_review_item_place_postal_code'    => '',
+					'schema_review_item_place_country'        => '',
 
 					/**
 					 * Schema Review Subject: Place / Local Business.
 					 */
+					'schema_review_item_place_price_range' => '',
 
 					/**
 					 * Schema Review Subject: Place / Food Establishment.
 					 */
+					'schema_review_item_place_cuisine' => '',
 
 					/**
 					 * Schema Review Subject: Product.

@@ -4837,54 +4837,54 @@ msgstr ""
 msgid "getting stamp.io ratings and reviews"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1105
+#: lib/abstract/wp-meta.php:1113
 msgid "checking meta tags"
-msgstr ""
-
-#: lib/abstract/wp-meta.php:1173
-msgctxt "metabox tab"
-msgid "Edit General"
-msgstr ""
-
-#: lib/abstract/wp-meta.php:1174
-msgctxt "metabox tab"
-msgid "Edit Schema"
-msgstr ""
-
-#: lib/abstract/wp-meta.php:1175 lib/messages.php:296
-msgctxt "metabox tab"
-msgid "Edit Media"
-msgstr ""
-
-#: lib/abstract/wp-meta.php:1179
-msgctxt "metabox tab"
-msgid "Edit Visibility"
-msgstr ""
-
-#: lib/abstract/wp-meta.php:1180
-msgctxt "metabox tab"
-msgid "Preview Social"
 msgstr ""
 
 #: lib/abstract/wp-meta.php:1181
 msgctxt "metabox tab"
-msgid "Preview oEmbed"
+msgid "Edit General"
 msgstr ""
 
 #: lib/abstract/wp-meta.php:1182
 msgctxt "metabox tab"
+msgid "Edit Schema"
+msgstr ""
+
+#: lib/abstract/wp-meta.php:1183 lib/messages.php:296
+msgctxt "metabox tab"
+msgid "Edit Media"
+msgstr ""
+
+#: lib/abstract/wp-meta.php:1187
+msgctxt "metabox tab"
+msgid "Edit Visibility"
+msgstr ""
+
+#: lib/abstract/wp-meta.php:1188
+msgctxt "metabox tab"
+msgid "Preview Social"
+msgstr ""
+
+#: lib/abstract/wp-meta.php:1189
+msgctxt "metabox tab"
+msgid "Preview oEmbed"
+msgstr ""
+
+#: lib/abstract/wp-meta.php:1190
+msgctxt "metabox tab"
 msgid "Validators"
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1502
+#: lib/abstract/wp-meta.php:1510
 msgid "Nonce token validation failed for the submitted form (update ignored)."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1833 lib/json/type/claimreview.php:69
+#: lib/abstract/wp-meta.php:1841 lib/json/type/claimreview.php:69
 msgid "A claim review cannot be the subject of another claim review."
 msgstr ""
 
-#: lib/abstract/wp-meta.php:1835
+#: lib/abstract/wp-meta.php:1843
 msgid ""
 "Please select a subject webpage type that better describes the subject of "
 "the webpage (ie. the content) being reviewed."
@@ -11157,7 +11157,7 @@ msgstr ""
 msgid "adding reviewed subject image"
 msgstr ""
 
-#: lib/schema.php:3659
+#: lib/schema.php:3658
 msgid "checking schema properties"
 msgstr ""
 

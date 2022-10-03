@@ -2126,7 +2126,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				$postal_address = array();
 	
 				if ( WpssoSchema::add_data_itemprop_from_assoc( $postal_address, $md_opts, array(
-					'name'                => 'schema_review_item_place_name',
 					'streetAddress'       => 'schema_review_item_place_street_address',
 					'postOfficeBoxNumber' => 'schema_review_item_place_po_box_number',
 					'addressLocality'     => 'schema_review_item_place_city',
