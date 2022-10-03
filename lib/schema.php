@@ -2115,6 +2115,44 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 				}
 
 			/**
+			 * Item Reviewed: Place
+			 */
+			} elseif ( $wpsso->schema->is_schema_type_child( $type_id, 'place' ) ) {
+
+				/**
+				 * Property:
+				 *	address as https://schema.org/PostalAddress
+				 */
+				$postal_address = array();
+	
+				if ( WpssoSchema::add_data_itemprop_from_assoc( $postal_address, $md_opts, array(
+					'name'                => 'schema_review_item_place_name',
+					'streetAddress'       => 'schema_review_item_place_street_address',
+					'postOfficeBoxNumber' => 'schema_review_item_place_po_box_number',
+					'addressLocality'     => 'schema_review_item_place_city',
+					'addressRegion'       => 'schema_review_item_place_region',
+					'postalCode'          => 'schema_review_item_place_postal_code',
+					'addressCountry'      => 'schema_review_item_place_country',	// Alpha2 country code.
+				) ) ) {
+	
+					$json_data[ 'address' ] = WpssoSchema::get_schema_type_context( 'https://schema.org/PostalAddress', $postal_address );
+				}
+
+				if ( $wpsso->schema->is_schema_type_child( $type_id, 'local.business' ) ) {
+				
+					WpssoSchema::add_data_itemprop_from_assoc( $json_data, $md_opts, array(
+						'priceRange' => 'schema_review_item_place_price_range',
+					) );
+
+					if ( $wpsso->schema->is_schema_type_child( $type_id, 'food.establishment' ) ) {
+					
+						WpssoSchema::add_data_itemprop_from_assoc( $json_data, $md_opts, array(
+							'servesCuisine' => 'schema_review_item_place_cuisine',
+						) );
+					}
+				}
+
+			/**
 			 * Item Reviewed: Product
 			 */
 			} elseif ( $wpsso->schema->is_schema_type_child( $type_id, 'product' ) ) {

@@ -31,26 +31,26 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 			$text = '';
 
 			foreach ( array(
-				'og'      => 'opengraph',
-				'org'     => 'org',
-				'place'   => 'place',
-				'product' => 'product',
-				'schema'  => 'schema',
-			) as $key_part => $class_part ) {
+				'tooltip-meta-og_'      => 'opengraph',
+				'tooltip-meta-org_'     => 'org',
+				'tooltip-meta-place_'   => 'place',
+				'tooltip-meta-product_' => 'product',
+				'tooltip-meta-schema_'  => 'schema',
+			) as $msg_key_prefix => $class_suffix ) {
 
-				if ( 0 === strpos( $msg_key, 'tooltip-meta-' . $key_part . '_' ) ) {
+				if ( 0 === strpos( $msg_key, $msg_key_prefix ) ) {
 
-					if ( ! isset( $this->msgs[ $key_part ] ) ) {
+					if ( ! isset( $this->msgs[ $msg_key_prefix ] ) ) {
 
-						$filename  = WPSSO_PLUGINDIR . 'lib/messages-tooltip-meta-' . $class_part . '.php';
-						$classname = 'WpssoMessagesTooltipMeta' . $class_part;
+						$filename  = WPSSO_PLUGINDIR . 'lib/messages-tooltip-meta-' . $class_suffix . '.php';
+						$classname = 'WpssoMessagesTooltipMeta' . $class_suffix;
 
 						require_once $filename;
 
-						$this->msgs[ $key_part ] = new $classname( $this->p );
+						$this->msgs[ $msg_key_prefix ] = new $classname( $this->p );
 					}
 
-					return $this->msgs[ $key_part ]->get( $msg_key, $info );
+					return $this->msgs[ $msg_key_prefix ]->get( $msg_key, $info );
 				}
 			}
 

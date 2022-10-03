@@ -787,7 +787,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				'subsection_schema_review_item' => array(
 					'tr_class' => $schema_type_row_class[ 'review' ],
 					'td_class' => 'subsection',
-					'header'   => 'h4',
+					'header'   => 'h5',
 					'label'    => _x( 'Review Subject Information', 'metabox title', 'wpsso' )
 				),
 				'schema_review_item_name' => array(
