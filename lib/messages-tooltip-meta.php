@@ -22,9 +22,7 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 	 */
 	class WpssoMessagesTooltipMeta extends WpssoMessages {
 
-		private $og      = null;	// WpssoMessagesTooltipMetaOpenGraph class object.
-		private $schema  = null;	// WpssoMessagesTooltipMetaSchema class object.
-		private $product = null;	// WpssoMessagesTooltipMetaProduct class object.
+		private $msgs = array();	// WpssoMessagesTooltipMeta* class objects.
 
 		public function get( $msg_key = false, $info = array() ) {
 
@@ -32,55 +30,28 @@ if ( ! class_exists( 'WpssoMessagesTooltipMeta' ) ) {
 
 			$text = '';
 
-			if ( 0 === strpos( $msg_key, 'tooltip-meta-og_' ) ) {
+			foreach ( array(
+				'og'      => 'opengraph',
+				'org'     => 'org',
+				'place'   => 'place',
+				'product' => 'product',
+				'schema'  => 'schema',
+			) as $key_part => $class_part ) {
 
-				/**
-				 * Instantiate WpssoMessagesTooltipMetaOpenGraph only when needed.
-				 */
-				if ( null === $this->og ) {
+				if ( 0 === strpos( $msg_key, 'tooltip-meta-' . $key_part . '_' ) ) {
 
-					require_once WPSSO_PLUGINDIR . 'lib/messages-tooltip-meta-opengraph.php';
+					if ( ! isset( $this->msgs[ $key_part ] ) ) {
 
-					$this->og = new WpssoMessagesTooltipMetaOpenGraph( $this->p );
+						$filename  = WPSSO_PLUGINDIR . 'lib/messages-tooltip-meta-' . $class_part . '.php';
+						$classname = 'WpssoMessagesTooltipMeta' . $class_part;
+
+						require_once $filename;
+
+						$this->msgs[ $key_part ] = new $classname( $this->p );
+					}
+
+					return $this->msgs[ $key_part ]->get( $msg_key, $info );
 				}
-
-				return $this->og->get( $msg_key, $info );
-
-			} elseif ( 0 === strpos( $msg_key, 'tooltip-meta-org_' ) ) {
-
-				return apply_filters( 'wpsso_messages_tooltip_meta_org', $text, $msg_key, $info );
-
-			} elseif ( 0 === strpos( $msg_key, 'tooltip-meta-place_' ) ) {
-
-				return apply_filters( 'wpsso_messages_tooltip_meta_place', $text, $msg_key, $info );
-
-			} elseif ( 0 === strpos( $msg_key, 'tooltip-meta-schema_' ) ) {
-
-				/**
-				 * Instantiate WpssoMessagesTooltipMetaSchema only when needed.
-				 */
-				if ( null === $this->schema ) {
-
-					require_once WPSSO_PLUGINDIR . 'lib/messages-tooltip-meta-schema.php';
-
-					$this->schema = new WpssoMessagesTooltipMetaSchema( $this->p );
-				}
-
-				return $this->schema->get( $msg_key, $info );
-
-			} elseif ( 0 === strpos( $msg_key, 'tooltip-meta-product_' ) ) {
-
-				/**
-				 * Instantiate WpssoMessagesTooltipMetaProduct only when needed.
-				 */
-				if ( null === $this->product ) {
-
-					require_once WPSSO_PLUGINDIR . 'lib/messages-tooltip-meta-product.php';
-
-					$this->product = new WpssoMessagesTooltipMetaProduct( $this->p );
-				}
-
-				return $this->product->get( $msg_key, $info );
 			}
 
 			switch ( $msg_key ) {

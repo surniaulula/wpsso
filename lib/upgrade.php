@@ -558,7 +558,7 @@ if ( ! class_exists( 'WpssoOptionsUpgrade' ) ) {
 					'og_def_product_price_type' => 'schema_def_product_price_type',
 				),
 				920 => array(
-					'og_def_article_section' => 'schema_def_article_section',
+					'og_def_article_section' => 'schema_def_article_section',	// Renamed for WPSSO Core v13.5.0.
 				),
 			),
 		);

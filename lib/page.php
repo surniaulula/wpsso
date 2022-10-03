@@ -2102,7 +2102,7 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 
 			$reading_mins = $this->get_reading_mins( $mod );
 
-			return $reading_mins ? sprintf( _n( '%s minute', '%s minutes', $reading_mins, 'wpsso' ), $reading_mins ) : '';
+			return $this->fmt_reading_mins( $reading_mins );
 		}
 
 		public function get_reading_mins( array $mod ) {
@@ -2122,6 +2122,14 @@ if ( ! class_exists( 'WpssoPage' ) ) {
 			}
 
 			return $reading_mins;
+		}
+
+		/**
+		 * Since WPSSO Core v13.5.0.
+		 */
+		public function fmt_reading_mins( $reading_mins ) {
+
+			return $reading_mins ? sprintf( _n( '%s minute', '%s minutes', $reading_mins, 'wpsso' ), $reading_mins ) : '';
 		}
 
 		/**

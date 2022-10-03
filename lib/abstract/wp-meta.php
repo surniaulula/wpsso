@@ -134,8 +134,8 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'book_isbn' => 'schema_book_isbn',
 				),
 				920 => array(
-					'article_section' => 'schema_article_section',
-					'reading_mins'    => 'schema_reading_mins',
+					'article_section' => 'schema_article_section',	// Renamed for WPSSO Core v13.5.0.
+					'reading_mins'    => 'schema_reading_mins',	// Renamed for WPSSO Core v13.5.0.
 				),
 			),
 		);
@@ -625,15 +625,15 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_review_rating_alt_name' => '',		// Rating Value Name.
 
 					/**
-					 * Schema Reviewed Subject.
+					 * Schema Review Subject.
 					 */
 					'schema_review_item_name' => '',					// Subject Name.
 					'schema_review_item_desc' => '',					// Subject Description.
-					'schema_review_item_type' => $opts[ 'schema_def_review_item_type' ],	// Subject Webpage Type.
 					'schema_review_item_url'  => '',					// Subject Webpage URL.
+					'schema_review_item_type' => $opts[ 'schema_def_review_item_type' ],	// Subject Schema Type.
 
 					/**
-					 * Schema Reviewed Subject: Creative Work.
+					 * Schema Review Subject: Creative Work.
 					 */
 					'schema_review_item_cw_author_type'      => 'none',		// Subject Author Type.
 					'schema_review_item_cw_author_name'      => '',			// Subject Author Name.
@@ -646,19 +646,31 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					'schema_review_item_cw_created_timezone' => $def_timezone,	// Subject Created Timezone.
 
 					/**
-					 * Schema Reviewed Subject: Book.
+					 * Schema Review Subject: Creative Work / Book.
 					 */
 					'schema_review_item_cw_book_isbn' => '',	// Subject Book ISBN.
 
 					/**
-					 * Schema Reviewed Subject: Product.
+					 * Schema Review Subject: Creative Work / Movie.
+					 */
+
+					/**
+					 * Schema Review Subject: Place.
+					 */
+
+					/**
+					 * Schema Review Subject: Place / Food Establishment.
+					 */
+
+					/**
+					 * Schema Review Subject: Product.
 					 */
 					'schema_review_item_product_brand'            => '',	// Product Brand.
 					'schema_review_item_product_retailer_part_no' => '',	// Product SKU.
 					'schema_review_item_product_mfr_part_no'      => '',	// Product MPN.
 
 					/**
-					 * Schema Reviewed Subject: Software Application.
+					 * Schema Review Subject: Software Application.
 					 */
 					'schema_review_item_software_app_cat' => '',	// Application Category.
 					'schema_review_item_software_app_os'  => '',	// Operating System.

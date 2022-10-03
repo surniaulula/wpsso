@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '13.5.0-dev.2',	// Plugin version.
+					'version'     => '13.5.0-dev.4',	// Plugin version.
 					'opt_version' => '921',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -1500,7 +1500,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					/**
 					 * Advanced Settings > Schema Defaults > Review.
 					 */
-					'schema_def_review_item_type' => 'product',	// Default Subject Webpage Type.
+					'schema_def_review_item_type' => 'product',	// Default Subject Schema Type.
 
 					/**
 					 * Twitter Card options.

@@ -591,13 +591,11 @@ if ( ! class_exists( 'WpssoTwitterCard' ) ) {
 							$mt_tc[ 'twitter:data1' ] = $mt_og[ 'article:author:name' ];
 						}
 
-						$reading_time = $this->p->page->get_reading_time( $mod );
-
-						if ( $reading_time ) {
+						if ( ! empty( $mt_og[ 'article:reading_mins' ] ) ) {
 
 							$mt_tc[ 'twitter:label2' ] = __( 'Est. reading time', 'wpsso' );
 
-							$mt_tc[ 'twitter:data2' ] = $reading_time;
+							$mt_tc[ 'twitter:data2' ] = $this->p->page->fmt_reading_mins( $mt_og[ 'article:reading_mins' ] );
 						}
 
 						break;

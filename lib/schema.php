@@ -1334,18 +1334,6 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 			switch ( $name ) {
 
-				case 'schema_review_item_type':
-
-					$class_type_ids = array(
-						'book'           => 'book',
-						'creative_work'  => 'creative.work',
-						'movie'          => 'movie',
-						'product'        => 'product',
-						'software_app'   => 'software.application',
-					);
-
-					break;
-
 				case 'schema_type':
 
 					$class_type_ids = array(
@@ -1370,6 +1358,21 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						'review'         => 'review',
 						'review_claim'   => 'review.claim',
 						'software_app'   => 'software.application',
+					);
+
+					break;
+
+				case 'schema_review_item_type':
+
+					$class_type_ids = array(
+						'book'               => 'book',
+						'creative_work'      => 'creative.work',
+						'food_establishment' => 'food.establishment',
+						'local_business'     => 'local.business',
+						'movie'              => 'movie',
+						'place'              => 'place',
+						'product'            => 'product',
+						'software_app'       => 'software.application',
 					);
 
 					break;

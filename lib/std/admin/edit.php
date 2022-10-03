@@ -250,6 +250,8 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 
 				/**
 				 * Schema Creative Work > Article.
+				 *
+				 * Since WPSSO Core 13.5.0.
 				 */
 				'subsection_schema_article' => array(
 					'tr_class' => $schema_type_row_class[ 'article' ],
@@ -765,13 +767,28 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				),
 
 				/**
-				 * Schema Creative Work > Review Subject.
+				 * Schema Review Subject Information.
+				 *
+				 * Note that although the Schema standard allows the subject of a review to be any Schema type,
+				 * Google allows reviews for only a few specific Schema types (and their sub-types):
+				 *
+				 *	Book
+				 *	Course
+				 *	Event
+				 *	How-to
+				 *	Local business 
+				 *	Movie
+				 *	Product
+				 *	Recipe
+				 *	Software App
+				 *
+				 * See https://developers.google.com/search/docs/data-types/review-snippet.
 				 */
 				'subsection_schema_review_item' => array(
 					'tr_class' => $schema_type_row_class[ 'review' ],
 					'td_class' => 'subsection',
 					'header'   => 'h4',
-					'label'    => _x( 'Schema Review Subject Information', 'metabox title', 'wpsso' )
+					'label'    => _x( 'Review Subject Information', 'metabox title', 'wpsso' )
 				),
 				'schema_review_item_name' => array(
 					'tr_class' => $schema_type_row_class[ 'review' ],
@@ -809,7 +826,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 					'tr_class' => $schema_type_row_class[ 'review' ],
 					'th_class' => 'medium',
 					'td_class' => 'blank',
-					'label'    => _x( 'Subject Webpage Type', 'option label', 'wpsso' ),
+					'label'    => _x( 'Subject Schema Type', 'option label', 'wpsso' ),
 					'tooltip'  => 'meta-schema_review_item_type',
 					'content'  => $form->get_no_select( 'schema_review_item_type', $schema_types,
 						$css_class = 'schema_type', $css_id = '', $is_assoc = true,
@@ -839,7 +856,7 @@ if ( ! class_exists( 'WpssoStdAdminEdit' ) ) {
 				),
 
 				/**
-				 * Schema Creative Work > Review Subject: Creative Work.
+				 * Schema Review Subject: Creative Work.
 				 */
 				'schema_review_item_cw_author_type' => array(
 					'tr_class' => 'hide_schema_type ' . $schema_review_item_type_row_class[ 'creative_work' ],

@@ -201,7 +201,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_def_prov_person_id':		// Default Service Prov. Person.
 					case 'schema_def_pub_org_id':			// Default Publisher Org.
 					case 'schema_def_pub_person_id':		// Default Publisher Person.
-					case 'schema_def_review_item_type':		// Default Subject Webpage Type.
+					case 'schema_def_review_item_type':		// Default Subject Schema Type.
 					case 'schema_article_section':			// Article Section.
 					case 'schema_event_lang':			// Event Language.
 					case 'schema_event_location_id':		// Event Physical Venue.
@@ -225,7 +225,7 @@ if ( ! class_exists( 'WpssoOptionsFilters' ) ) {
 					case 'schema_prov_person_id':			// Service Prov. Person.
 					case 'schema_pub_org_id':			// Publisher Org.
 					case 'schema_pub_person_id':			// Publisher Person.
-					case 'schema_review_item_type':			// Review: Subject Webpage Type.
+					case 'schema_review_item_type':			// Review: Subject Schema Type.
 					case 'schema_review_item_cw_author_type':	// Review: Subject Author Type.
 					case 'schema_type':				// Schema Type.
 

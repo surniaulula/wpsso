@@ -811,6 +811,9 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 			return $table_rows;
 		}
 
+		/**
+		 * Since WPSSO Core v13.5.0.
+		 */
 		public function filter_schema_props_article_rows( $table_rows, $form ) {
 
 			$this->maybe_set_vars();
@@ -1053,7 +1056,7 @@ if ( ! class_exists( 'WpssoStdAdminAdvanced' ) ) {
 				),
 				'schema_def_review_item_type' => array(
 					'td_class' => 'blank',
-					'label'    => _x( 'Default Subject Webpage Type', 'option label', 'wpsso' ),
+					'label'    => _x( 'Default Subject Schema Type', 'option label', 'wpsso' ),
 					'tooltip'  => 'schema_def_review_item_type',
 					'content'  => $form->get_no_select( 'schema_def_review_item_type',
 						$this->schema_types, $css_class = 'schema_type' ),

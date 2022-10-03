@@ -707,25 +707,6 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
-						case 'tooltip-meta-schema_review_item_type':		// Review: Subject Webpage Type.
-
-							$text = __( 'A Schema type for the subject of the webpage (ie. the content) being reviewed.', 'wpsso' ) . ' ';
-
-							$text .= sprintf( __( 'Please note that although the Schema standard allows the subject of a review to be any Schema type, <a href="%1$s">Google allows reviews for only a few specific Schema types (and their sub-types)</a>.', 'wpsso' ), 'https://developers.google.com/search/docs/data-types/review-snippet' );
-						 	break;
-
-						case 'tooltip-meta-schema_review_item_url':		// Review: Subject Webpage URL.
-
-							$text = __( 'A webpage URL for the subject of the review.', 'wpsso' );
-
-						 	break;
-
-						case 'tooltip-meta-schema_review_item_sameas_url':	// Review: Subject Same-As URL.
-
-							$text = $this->p->msgs->get( 'tooltip-meta-schema_sameas_url' );
-
-						 	break;
-
 						case 'tooltip-meta-schema_review_item_img_id':		// Review: Subject Image ID.
 
 							$text = __( 'An image ID showing the subject of the review.', 'wpsso' ) . ' ';
@@ -742,6 +723,28 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
+						case 'tooltip-meta-schema_review_item_url':		// Review: Subject Webpage URL.
+
+							$text = __( 'A webpage URL for the subject of the review.', 'wpsso' );
+
+						 	break;
+
+						case 'tooltip-meta-schema_review_item_sameas_url':	// Review: Subject Same-As URL.
+
+							$text = $this->p->msgs->get( 'tooltip-meta-schema_sameas_url' );
+
+						 	break;
+
+						case 'tooltip-meta-schema_review_item_type':		// Review: Subject Schema Type.
+
+							$text = __( 'A Schema type for the subject of this review (for example, Schema type "Product" for a review of a product).', 'wpsso' ) . ' ';
+
+							$text .= sprintf( __( 'Note that although the Schema.org standard allows the subject of a review to be any Schema type, <a href="%1$s">Google only allows reviews for a few specific Schema types (and their sub-types)</a>.', 'wpsso' ), 'https://developers.google.com/search/docs/data-types/review-snippet' );
+						 	break;
+
+						/**
+						 * Schema Review Subject: Creative Work.
+						 */
 						case 'tooltip-meta-schema_review_item_cw_author_type':	// Review: Subject Author Type.
 
 							$text .= __( 'The creative work author can be a person or an organization.', 'wpsso' );
@@ -772,12 +775,18 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
+						/**
+						 * Schema Review Subject: Creative Work / Book.
+						 */
 						case 'tooltip-meta-schema_review_item_cw_book_isbn':	// Review: Subject Book ISBN.
 
 							$text = __( 'The ISBN code (aka International Standard Book Number) for the book being reviewed.', 'wpsso' );
 
 						 	break;
 
+						/**
+						 * Schema Review Subject: Creative Work / Movie.
+						 */
 						case 'tooltip-meta-schema_review_item_cw_movie_actor_person_names':	// Review: Movie Cast Names.
 
 							$text = $this->p->msgs->get( 'tooltip-meta-schema_movie_actor_person_names' );
@@ -790,6 +799,9 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
+						/**
+						 * Schema Review Subject: Product.
+						 */
 						case 'tooltip-meta-schema_review_item_product_brand':	// Review: Subject Product Brand.
 
 							$text = __( 'The brand name of the product being reviewed.', 'wpsso' );
@@ -814,12 +826,18 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
+						/**
+						 * Schema Review Subject: Software Application.
+						 */
 						case 'tooltip-meta-schema_review_item_software_app_offers':	// Review: Software App Offers.
 
 							$text = __( 'One or more offers for the software application being reviewed, including the offer name, price and currency.', 'wpsso' );
 
 						 	break;
 
+						/**
+						 * Schema Claim Review.
+						 */
 						case 'tooltip-meta-schema_review_claim_reviewed':		// Short Summary of Claim
 
 							$text = __( 'A short summary of specific claim(s) being reviewed in the Schema ClaimReview content.', 'wpsso' ) . ' ';
@@ -834,6 +852,9 @@ if ( ! class_exists( 'WpssoMessagesTooltipMetaSchema' ) ) {
 
 						 	break;
 
+						/**
+						 * Schema Software Application.
+						 */
 						case 'tooltip-meta-schema_review_item_software_app_cat':	// Reviews Software App Category.
 
 							$text = $this->p->msgs->get( 'tooltip-meta-schema_software_app_cat' );

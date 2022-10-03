@@ -397,7 +397,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text = sprintf( __( 'An Open Graph image meta tag could not be generated from this webpage content or its custom %s metabox settings.', 'wpsso' ), $mb_title ) . ' ';
 
-						$text .= __( 'Facebook <em>requires at least one image meta tag</em> to render shared content correctly.', 'wpsso' );
+						$text .= __( 'Facebook requires at least one image meta tag to render shared content correctly.', 'wpsso' );
 
 						break;
 
@@ -407,7 +407,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text = sprintf( __( 'A Schema "image" property could not be generated from this webpage content or its custom %s metabox settings.', 'wpsso' ), $mb_title ) . ' ';
 
-						$text = __( 'Google <em>requires at least one "image" property</em> for this Schema type.', 'wpsso' );
+						$text = __( 'Google requires at least one "image" property for this Schema type.', 'wpsso' );
 
 						break;
 
