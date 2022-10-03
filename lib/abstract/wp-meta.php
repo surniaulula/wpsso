@@ -659,6 +659,10 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 					 */
 
 					/**
+					 * Schema Review Subject: Place / Local Business.
+					 */
+
+					/**
 					 * Schema Review Subject: Place / Food Establishment.
 					 */
 
