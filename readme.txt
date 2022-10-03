@@ -239,7 +239,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* Added 'timeRequired' property to Schema Article markup.
 	* Added a new SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Article tab:
 		* "Default Article Section"
-	* Moved the Document SSO "Article Section" and "Est. Reading Time" option to the Schema tab.
+	* Moved the Document SSO "Article Section" and "Est. Reading Time" option to the Edit Schema tab.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
@@ -582,7 +582,7 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 = 13.5.0-dev.4 =
 
-(TBD) Added 'timeRequired' property to Schema Article markup. Added a new SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Article tab. Moved the Document SSO "Article Section" and "Est. Reading Time" option to the Schema tab.
+(TBD) Added 'timeRequired' property to Schema Article markup. Moved the Document SSO "Article Section" and "Est. Reading Time" options to the Edit Schema tab.
 
 = 13.4.1 =
 
