@@ -231,15 +231,14 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.5.0-b.1 (2022/10/03)**
+**Version 13.5.0-rc.1 (2022/10/03)**
 
 * **New Features**
 	* None.
 * **Improvements**
-	* Added 'timeRequired' property to Schema Article markup.
+	* Added 'timeRequired' (aka reading mins) property to Schema Article markup.
 	* Added a new SSO &gt; Advanced Settings &gt; Schema Defaults &gt; Article tab:
 		* "Default Article Section"
-	* Moved the Document SSO "Article Section" and "Est. Reading Time" option to the Edit Schema tab.
 	* Added new Document SSO &gt; Edit Schema options for the Schema Review type:
 		* "Subject Street Address"
 		* "Subject P.O. Box Number"
@@ -250,12 +249,13 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 		* "Subject Telephone"
 		* "Subject Price Range"
 		* "Subject Serves Cuisine"
+	* Moved the Document SSO "Article Section" and "Est. Reading Time" option to the Edit Schema tab.
 * **Bugfixes**
 	* None.
 * **Developer Notes**
 	* Renamed the 'article_section' metadata option key to 'schema_article_section'.
 	* Renamed the 'reading_mins' metadata option key to 'schema_reading_mins'.
-	* Moved organization and place tooltip messages to the WPSSO Core plugin.
+	* Moved organization and place tooltip messages from the WPSSO OPM add-on to the WPSSO Core plugin.
 	* Added a new `WpssoMessagesTooltipMetaOrg` class in lib/messages-tooltip-meta-org.php.
 	* Added a new `WpssoMessagesTooltipMetaPlace` class in lib/messages-tooltip-meta-place.php.
 	* Added a new `WpssoMessagesTooltipMetaProduct` class in lib/messages-tooltip-meta-product.php.
@@ -590,9 +590,9 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 
 == Upgrade Notice ==
 
-= 13.5.0-b.1 =
+= 13.5.0-rc.1 =
 
-(2022/10/03) Added 'timeRequired' property to Schema Article markup. Moved the Document SSO "Article Section" and "Est. Reading Time" options to the Edit Schema tab. Added new Document SSO &gt; Edit Schema options for the Schema Review type.
+(2022/10/03) Added 'timeRequired' (aka reading mins) property to Schema Article markup. Moved the Document SSO "Article Section" and "Est. Reading Time" options to the Edit Schema tab. Added new Document SSO &gt; Edit Schema options for the Schema Review type.
 
 = 13.4.1 =
 
