@@ -231,7 +231,7 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
-**Version 13.5.0-rc.1 (2022/10/03)**
+**Version 13.5.0 (2022/10/04)**
 
 * **New Features**
 	* None.
@@ -437,162 +437,11 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* PHP v7.2.
 	* WordPress v5.2.
 
-**Version 12.4.0 (2022/07/31)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* None.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Added a new 'wpsso_product_price' filter for EDD and WooCommerce (Premium edition).
-* **Requires At Least**
-	* PHP v7.2.
-	* WordPress v5.2.
-
-**Version 12.3.3 (2022/07/18)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* None.
-* **Bugfixes**
-	* Fixed extra step when importing a Yoast How-To block.
-* **Developer Notes**
-	* None.
-* **Requires At Least**
-	* PHP v7.2.
-	* WordPress v5.2.
-
-**Version 12.3.2 (2022/06/27)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* None.
-* **Bugfixes**
-	* Fixed a few deprecated method arguments in the SucomForm class.
-* **Developer Notes**
-	* None.
-* **Requires At Least**
-	* PHP v7.2.
-	* WordPress v5.2.
-
-**Version 12.3.1 (2022/06/20)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* None.
-* **Bugfixes**
-	* Fixed an incorrect variable name in the AIOSEO integration module (Premium edition).
-* **Developer Notes**
-	* None.
-* **Requires At Least**
-	* PHP v7.2.
-	* WordPress v5.2.
-
-**Version 12.3.0 (2022/05/17)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Optimized the saving of images to avoid duplicate thumbnail files.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Added a new `SucomUtil::sanitize_twitter_name()` method.
-	* Refactored `SucomUtil::get_url()` to replace `$_SERVER[ 'SERVER_NAME' ]` by `SucomUtil::get_home_url()`.
-* **Requires At Least**
-	* PHP v7.2.
-	* WordPress v5.2.
-
-**Version 12.2.2 (2022/05/10)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* None.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Added more debug messages to the WPML integration module (Premium edition).
-* **Requires At Least**
-	* PHP v7.2.
-	* WordPress v5.2.
-
-**Version 12.2.0 (2022/04/25)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Added a new "Product Min Advert Price" option in the Document SSO metabox.
-	* Added a new "Product Min Advert Price Custom Field" option in the SSO &gt; Advanced Settings page.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Added a call to `WpssoAbstractWpMeta->get_inherited_md_opts()` in `WpssoProEcomWoocommerce->add_mt_product()`.
-	* Refactored the `WpssoAbstractWpMeta->get_inherited_md_opts()` method.
-* **Requires At Least**
-	* PHP v7.2.
-	* WordPress v5.2.
-
-**Version 12.1.1 (2022/04/09)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* None.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* Added new filters when getting post/term/user public IDs:
-		* `'wpsso_post_public_ids' ( array $public_ids, array $posts_args )`
-		* `'wpsso_term_public_ids' ( array $public_ids, array $tax_names )`
-		* `'wpsso_user_public_ids' ( array $public_ids, array $roles )`
-* **Requires At Least**
-	* PHP v7.2.
-	* WordPress v5.2.
-
-**Version 12.1.0 (2022/04/04)**
-
-* **New Features**
-	* None.
-* **Improvements**
-	* Added a check for any active multilingual plugin to disable the unnecessary custom Schema Language option.
-	* Updated the PolyLang and WPML integration modules to provide post/term alternate languages for sitemaps (Premium edition).
-* **Bugfixes**
-	* Fixed a possible PHP error in a cron job for required Schema properties.
-* **Developer Notes**
-	* Added a new `WpssoSchema->get_lang()` method.
-	* Added a new `WpssoUtil->get_link_rel_alternates()` method.
-	* Added a new 'wpsso_link_rel_alternates' filter.
-* **Requires At Least**
-	* PHP v7.2.
-	* WordPress v5.2.
-
-**Version 12.0.0 (2022/03/26)**
-
-Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, and BuddyBlog.
-
-* **New Features**
-	* None.
-* **Improvements**
-	* None.
-* **Bugfixes**
-	* None.
-* **Developer Notes**
-	* None.
-* **Requires At Least**
-	* PHP v7.2.
-	* WordPress v5.2.
-
 == Upgrade Notice ==
 
-= 13.5.0-rc.1 =
+= 13.5.0 =
 
-(2022/10/03) Added 'timeRequired' (aka reading mins) property to Schema Article markup. Moved the Document SSO "Article Section" and "Est. Reading Time" options to the Edit Schema tab. Added new Document SSO &gt; Edit Schema options for the Schema Review type.
+(2022/10/04) Added 'timeRequired' (aka reading mins) property to Schema Article markup. Moved the Document SSO "Article Section" and "Est. Reading Time" options to the Edit Schema tab. Added new Document SSO &gt; Edit Schema options for the Schema Review type.
 
 = 13.4.1 =
 
@@ -625,44 +474,4 @@ Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, a
 = 13.0.0 =
 
 (2022/08/24) Integration modules for active plugins and URL shortening libraries have been moved to the WPSSO Core Standard edition.
-
-= 12.4.0 =
-
-(2022/07/31) Added a new 'wpsso_product_price' filter for EDD and WooCommerce (Premium edition).
-
-= 12.3.3 =
-
-(2022/07/18) Fixed extra step when importing a Yoast How-To block.
-
-= 12.3.2 =
-
-(2022/06/27) Fixed a few deprecated method arguments in the SucomForm class.
-
-= 12.3.1 =
-
-(2022/06/20) Fixed an incorrect variable name in the AIOSEO integration module (Premium edition).
-
-= 12.3.0 =
-
-(2022/05/17) Optimized the saving of images to avoid duplicate thumbnail files.
-
-= 12.2.2 =
-
-(2022/05/10) Added more debug messages to the WPML integration module (Premium edition).
-
-= 12.2.0 =
-
-(2022/04/25) Added a new "Product Min Advert Price" option in the Document SSO metabox.
-
-= 12.1.1 =
-
-(2022/04/09) Added new filters when getting post/term/user public IDs.
-
-= 12.1.0 =
-
-(2022/04/04) Fixed a possible PHP error in a cron job for required Schema properties. Added a check for any active multilingual plugin to disable the unnecessary custom Schema Language option. Updated the PolyLang and WPML integration modules (Premium edition).
-
-= 12.0.0 =
-
-(2022/03/26) Removed support for NextGEN Gallery, NextCellent Gallery, bbPress, BuddyPress, and BuddyBlog.
 
