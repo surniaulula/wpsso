@@ -6,7 +6,7 @@ Domain Path: /languages
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl.txt
 Assets URI: https://surniaulula.github.io/wpsso/assets/
-Tags: woocommerce, open graph, meta tags, schema, rich results, image seo, video seo, google search, knowledge graph, sitemaps
+Tags: schema, seo, woocommerce, open graph, meta tags, rich results, google search console, knowledge graph, sitemap, structured data, google merchant
 Contributors: jsmoriss
 Requires PHP: 7.2
 Requires At Least: 5.2
