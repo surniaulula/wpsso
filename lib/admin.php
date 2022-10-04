@@ -662,7 +662,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 				$this->p->debug->mark();
 			}
 
-			if ( $action !== 'plugin_information' ) {	// This filter only provides plugin data.
+			if ( 'plugin_information' !== $action  ) {	// This filter only provides plugin data.
 
 				return $result;
 
