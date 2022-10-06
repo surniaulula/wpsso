@@ -60,19 +60,28 @@ Present your content at its best on social sites and in search results - no matt
 * Twitter Summary Card Large Image
 * Video Preview Images
 
-<p><strong>Fixes Google Search and Schema Markup Validator errors:</strong></p>
+<p><strong>Fixes Google Search, Rich Results, Merchant Listings, and Schema Markup Validator errors:</strong></p>
 
 * *A value for the headline field is required.*
 * *A value for the image field is required.*
 * *A value for the logo field is required.*
 * *A value for the publisher field is required.*
+* *Invalid value in field "priceSpecification"*
 * *The aggregateRating field is recommended.*
 * *The brand field is recommended.*
 * *The headline field is recommended.*
 * *The image field is recommended.*
 * *The review field is recommended.*
+* *Missing field "image"*
+* *Missing field "address"*
+* *Missing field "telephone"*
+* *Missing field "priceRange"*
+* *Missing field "brand"*
+* *Missing field "aggregateRating"*
+* *Missing field "review"*
 * *No global identifier provided (e.g. gtin mpn isbn).*
 * *Not a known valid target type for the itemReviewed property.*
+* And many more...
 
 <p><strong>Reads settings and data from active plugins, including:</strong></p>
 
