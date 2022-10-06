@@ -62,16 +62,16 @@
 <p><strong>Fixes Google Search, Rich Results, Merchant Listings, and Schema Markup Validator errors:</strong></p>
 
 <ul>
-<li><em>A value for the headline field is required.</em></li>
-<li><em>A value for the image field is required.</em></li>
-<li><em>A value for the logo field is required.</em></li>
-<li><em>A value for the publisher field is required.</em></li>
+<li><em>A value for the headline field is required</em></li>
+<li><em>A value for the image field is required</em></li>
+<li><em>A value for the logo field is required</em></li>
+<li><em>A value for the publisher field is required</em></li>
 <li><em>Invalid value in field "priceSpecification"</em></li>
-<li><em>The aggregateRating field is recommended.</em></li>
-<li><em>The brand field is recommended.</em></li>
-<li><em>The headline field is recommended.</em></li>
-<li><em>The image field is recommended.</em></li>
-<li><em>The review field is recommended.</em></li>
+<li><em>The aggregateRating field is recommended</em></li>
+<li><em>The brand field is recommended</em></li>
+<li><em>The headline field is recommended</em></li>
+<li><em>The image field is recommended</em></li>
+<li><em>The review field is recommended</em></li>
 <li><em>Missing field "image"</em></li>
 <li><em>Missing field "address"</em></li>
 <li><em>Missing field "telephone"</em></li>
@@ -79,8 +79,8 @@
 <li><em>Missing field "brand"</em></li>
 <li><em>Missing field "aggregateRating"</em></li>
 <li><em>Missing field "review"</em></li>
-<li><em>No global identifier provided (e.g. gtin mpn isbn).</em></li>
-<li><em>Not a known valid target type for the itemReviewed property.</em></li>
+<li><em>No global identifier provided (e.g. gtin mpn isbn)</em></li>
+<li><em>Not a known valid target type for the itemReviewed property</em></li>
 <li>And many more...</li>
 </ul>
 
