@@ -60,7 +60,7 @@ Present your content at its best on social sites and in search results - no matt
 * Twitter Summary Card Large Image
 * Video Preview Images
 
-<p><strong>Fixes Google Search, Rich Results, Merchant Listings, and Schema Markup Validator errors:</strong></p>
+<p><strong>Fixes All Google Search / Rich Results / Merchant Listings and Schema Markup Validator errors:</strong></p>
 
 * *A value for the headline field is required*
 * *A value for the image field is required*
