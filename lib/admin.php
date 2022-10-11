@@ -2129,6 +2129,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$tabindex  = 0;
 			$ext_num   = 0;
 			$ext_total = count( $ext_sorted );
+			$pkg_info  = $this->p->util->get_pkg_info();	// Uses a local cache.
 			$charset   = get_bloginfo( $show = 'charset', $filter = 'raw' );
 			$icon_px   = 128;
 
@@ -2143,13 +2144,11 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$ext_num++;
 
-				$ext_links        = $this->get_ext_action_links( $ext, $info, $tabindex );
-				$ext_name_transl  = _x( $info[ 'name' ], 'plugin name', 'wpsso' );
-				$ext_short_transl = _x( $info[ 'short' ], 'plugin name', 'wpsso' );
-				$ext_short_html   = htmlentities( $ext_short_transl, ENT_QUOTES, $charset, $double_encode = false ) . ' &mdash; ';
-				$ext_name_html    = '<h4>' . $ext_short_html . htmlentities( $ext_name_transl, ENT_QUOTES, $charset, $double_encode = false ) . '</h4>';
-				$ext_desc_transl  = _x( $info[ 'desc' ], 'plugin description', 'wpsso' );
-				$ext_desc_html    = '<p>' . htmlentities( $ext_desc_transl, ENT_QUOTES, $charset, $double_encode = false ) . '</p>';
+				$ext_links       = $this->get_ext_action_links( $ext, $info, $tabindex );
+				$ext_name_html   = '<h4>' . htmlentities( $pkg_info[ $ext ][ 'short' ], ENT_QUOTES, $charset, $double_encode = false ) . ' &mdash; ' .
+					htmlentities( $pkg_info[ $ext ][ 'name' ], ENT_QUOTES, $charset, $double_encode = false ) . '</h4>';
+				$ext_desc_transl = _x( $info[ 'desc' ], 'plugin description', 'wpsso' );
+				$ext_desc_html   = '<p>' . htmlentities( $ext_desc_transl, ENT_QUOTES, $charset, $double_encode = false ) . '</p>';
 
 				$table_rows = array();
 
@@ -2211,6 +2210,7 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 			$tabindex  = 0;
 			$ext_num   = 0;
 			$ext_total = count( $ext_sorted );
+			$pkg_info  = $this->p->util->get_pkg_info();	// Uses a local cache.
 			$charset   = get_bloginfo( $show = 'charset', $filter = 'raw' );
 			$icon_px   = 128;
 
@@ -2221,14 +2221,13 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 				$ext_num++;
 
-				$ext_links       = $this->get_ext_action_links( $ext, $info, $tabindex );
-				$ext_name_transl = _x( $info[ 'name' ], 'plugin name', 'wpsso' );
-				$ext_name_html   = '<h4>' . htmlentities( $ext_name_transl, ENT_QUOTES, $charset, $double_encode = false ) . '</h4>';
-				$placeholder     = strtoupper( $ext . '-PP-0000000000000000' );
-				$blog_id         = get_current_blog_id();
-				$home_url        = SucomUtilWP::raw_get_home_url();
-				$home_path       = preg_replace( '/^[a-z]+:\/\//i', '', $home_url );	// Remove the protocol prefix.
-				$table_rows      = array();
+				$ext_links     = $this->get_ext_action_links( $ext, $info, $tabindex );
+				$ext_name_html = '<h4>' . htmlentities( $pkg_info[ $ext ][ 'name_pro' ], ENT_QUOTES, $charset, $double_encode = false ) . '</h4>';
+				$placeholder   = strtoupper( $ext . '-PP-0000000000000000' );
+				$blog_id       = get_current_blog_id();
+				$home_url      = SucomUtilWP::raw_get_home_url();
+				$home_path     = preg_replace( '/^[a-z]+:\/\//i', '', $home_url );	// Remove the protocol prefix.
+				$table_rows    = array();
 
 				$home_url_edit_link = '(<a href="' . ( is_multisite() ?
 					network_admin_url( 'site-settings.php?id=' . $blog_id ) :
