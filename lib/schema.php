@@ -3675,7 +3675,10 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 							$error_msg = $wpsso->msgs->get( 'notice-missing-schema-' . $prop_name );
 
-							$wpsso->notice->err( $error_msg, null, $notice_key );
+							if ( ! empty( $error_msg ) ) {	// Just in case.
+
+								$wpsso->notice->err( $error_msg, null, $notice_key );
+							}
 						}
 					}
 				}

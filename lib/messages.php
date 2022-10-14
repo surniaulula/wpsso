@@ -389,6 +389,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 						$text = sprintf( __( 'An Open Graph description meta tag could not be generated from this webpage content or its custom %s metabox settings.', 'wpsso' ), $mb_title ) . ' ';
 
 						$text .= __( 'Facebook <em>requires a description meta tag</em> to render shared content correctly.', 'wpsso' );
+
 						break;
 
 					case 'notice-missing-og-image':
@@ -407,7 +408,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text = sprintf( __( 'A Schema "image" property could not be generated from this webpage content or its custom %s metabox settings.', 'wpsso' ), $mb_title ) . ' ';
 
-						$text = __( 'Google requires at least one "image" property for this Schema type.', 'wpsso' );
+						$text .= __( 'Google requires at least one "image" property for this Schema type.', 'wpsso' );
 
 						break;
 
