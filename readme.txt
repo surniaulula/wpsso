@@ -11,7 +11,7 @@ Contributors: jsmoriss
 Requires PHP: 7.2
 Requires At Least: 5.2
 Tested Up To: 6.1.0
-WC Tested Up To: 6.9.4
+WC Tested Up To: 7.0.0
 Stable Tag: 13.5.0
 
 Present your content at its best on social sites and in search results - no matter how URLs are shared, reshared, messaged, posted, embedded, or crawled.
@@ -240,6 +240,25 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 
 <h3>Changelog / Release Notes</h3>
 
+**Version 13.6.0-dev.1 (2022/10/14)**
+
+* **New Features**
+	* None.
+* **Improvements**
+	* Moved Schema CreativeWork and Article customization options in the Document SSO metabox from the Premium to the Standard edition.
+* **Bugfixes**
+	* None.
+* **Developer Notes**
+	* Added a new `WpssoEditGeneral` class in lib/edit-general.php.
+	* Added a new `WpssoEditMedia` class in lib/edit-media.php.
+	* Added a new `WpssoEditPrev` class in lib/edit-prev.php.
+	* Added a new `WpssoEditSchema` class in lib/edit-schema.php.
+	* Added a new `WpssoEditValidators` class in lib/edit-validators.php.
+	* Added a new `WpssoEditVisibility` class in lib/edit-visibility.php.
+* **Requires At Least**
+	* PHP v7.2.
+	* WordPress v5.2.
+
 **Version 13.5.0 (2022/10/04)**
 
 * **New Features**
@@ -447,6 +466,10 @@ Version components: `{major}.{minor}.{bugfix}[-{stage}.{level}]`
 	* WordPress v5.2.
 
 == Upgrade Notice ==
+
+= 13.6.0-dev.1 =
+
+(2022/10/14) Moved Schema CreativeWork and Article customization options in the Document SSO metabox from the Premium to the Standard edition.
 
 = 13.5.0 =
 
