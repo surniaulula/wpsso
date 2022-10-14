@@ -21,7 +21,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 			),
 			'plugin' => array(
 				'wpsso' => array(			// Plugin acronym.
-					'version'     => '13.5.0',	// Plugin version.
+					'version'     => '13.6.0-dev.1',	// Plugin version.
 					'opt_version' => '922',		// Increment when changing default option values.
 					'short'       => 'WPSSO Core',	// Short plugin name.
 					'name'        => 'WPSSO Core',
@@ -160,7 +160,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'event'               => '(code) Schema Type Event [schema_type:event]',
 								'faqpage'             => '(code) Schema Type FAQPage [schema_type:webpage.faq]',
 								'foodestablishment'   => '(code) Schema Type Food Establishment [schema_type:food.establishment]',
-								'howto'               => '(code) Schema Type How-To [schema_type:how.to]',
+								'howto'               => '(code) Schema Type How-To [schema_type:howto]',
 								'itemlist'            => '(code) Schema Type ItemList [schema_type:item.list]',
 								'jobposting'          => '(code) Schema Type Job Posting [schema_type:job.posting]',
 								'localbusiness'       => '(code) Schema Type Local Business [schema_type:local.business]',
@@ -1419,7 +1419,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'schema_type_for_business'     => 'local.business',
 					'schema_type_for_download'     => 'product',		// For Easy Digital Downloads.
 					'schema_type_for_event'        => 'event',
-					'schema_type_for_howto'        => 'how.to',
+					'schema_type_for_howto'        => 'howto',
 					'schema_type_for_job_listing'  => 'job.posting',	// For WP Job Manager.
 					'schema_type_for_jobpost'      => 'job.posting',	// For Simple Job Board.
 					'schema_type_for_organization' => 'organization',
@@ -3571,8 +3571,8 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 								'episode.tv'      => 'https://schema.org/TVEpisode',
 							),
 							'game'   => 'https://schema.org/Game',
-							'how.to' => array(
-								'how.to'  => 'https://schema.org/HowTo',
+							'howto' => array(
+								'howto'  => 'https://schema.org/HowTo',
 								'recipe' => 'https://schema.org/Recipe',	// Recipe is a sub-type of HowTo.
 							),
 							'map'          => 'https://schema.org/Map',
@@ -3791,32 +3791,32 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 							'invoice'     => 'https://schema.org/Invoice',
 							'item.list'   => array(
 								'breadcrumb.list' => 'https://schema.org/BreadcrumbList',
-								'how.to.section'  => 'https://schema.org/HowToSection',
-								'how.to.step'     => 'https://schema.org/HowToStep',
+								'howto.section'   => 'https://schema.org/HowToSection',
+								'howto.step'      => 'https://schema.org/HowToStep',
 								'item.list'       => 'https://schema.org/ItemList',
 								'offer.catalog'   => 'https://schema.org/OfferCatalog',
 							),
-							'job.posting'                  => 'https://schema.org/JobPosting',
-							'language'                     => 'https://schema.org/Language',
-							'list.item'                    => array(
-								'how.to.direction' => 'https://schema.org/HowToDirection',
-								'how.to.item'      => array(
-									'how.to.item'      => 'https://schema.org/HowToItem',
-									'how.to.supply'    => 'https://schema.org/HowToSupply',
-									'how.to.tool'      => 'https://schema.org/HowToTool',
+							'job.posting' => 'https://schema.org/JobPosting',
+							'language'    => 'https://schema.org/Language',
+							'list.item'   => array(
+								'howto.direction' => 'https://schema.org/HowToDirection',
+								'howto.item'      => array(
+									'howto.item'   => 'https://schema.org/HowToItem',
+									'howto.supply' => 'https://schema.org/HowToSupply',
+									'howto.tool'   => 'https://schema.org/HowToTool',
 								),
-								'how.to.section'   => 'https://schema.org/HowToSection',
-								'how.to.step'      => 'https://schema.org/HowToStep',
-								'how.to.tip'       => 'https://schema.org/HowToTip',
-								'list.item'        => 'https://schema.org/ListItem',
+								'howto.section' => 'https://schema.org/HowToSection',
+								'howto.step'    => 'https://schema.org/HowToStep',
+								'howto.tip'     => 'https://schema.org/HowToTip',
+								'list.item'     => 'https://schema.org/ListItem',
 							),
-							'menu.item'                    => 'https://schema.org/MenuItem',
-							'offer'                        => array(
-								'offer'                        => 'https://schema.org/Offer',
-								'offer.aggregate'              => 'https://schema.org/AggregateOffer',
+							'menu.item' => 'https://schema.org/MenuItem',
+							'offer'     => array(
+								'offer'           => 'https://schema.org/Offer',
+								'offer.aggregate' => 'https://schema.org/AggregateOffer',
 							),
-							'order'                        => 'https://schema.org/Order',
-							'order.item'                   => 'https://schema.org/OrderItem',
+							'order'      => 'https://schema.org/Order',
+							'order.item' => 'https://schema.org/OrderItem',
 							'parcel.delivery'              => 'https://schema.org/ParcelDelivery',
 							'permit'                       => 'https://schema.org/Permit',
 							'program.membership'           => 'https://schema.org/ProgramMembership',
@@ -4206,7 +4206,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'geriatric'               => 'geriatric.specialty',
 					'gynecologic'             => 'gynecologic.specialty',
 					'hematologic'             => 'hematologic.specialty',
-					'howto'                   => 'how.to',
+					'how.to'                  => 'howto',
 					'infectious'              => 'infectious.specialty',
 					'laboratory.science'      => 'laboratory.science.specialty',
 					'medical.clinic.business' => 'medical.clinic',
@@ -4382,7 +4382,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'book',
 					'course',
 					'event',
-					'how.to',
+					'howto',
 					'local.business',
 					'movie',
 					'product',
@@ -4396,7 +4396,7 @@ if ( ! class_exists( 'WpssoConfig' ) ) {
 					'episode',
 					'event',
 					'game',
-					'how.to',
+					'howto',
 					'local.business',
 					'media.object',
 					'movie',

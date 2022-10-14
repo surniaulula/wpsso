@@ -1344,7 +1344,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 						'course'         => 'course',
 						'event'          => 'event',
 						'faq'            => 'webpage.faq',
-						'how_to'         => 'how.to',
+						'howto'          => 'howto',
 						'job_posting'    => 'job.posting',
 						'local_business' => 'local.business',
 						'movie'          => 'movie',
@@ -1382,7 +1382,7 @@ if ( ! class_exists( 'WpssoSchema' ) ) {
 
 				switch ( $type_id ) {
 
-					case 'how.to':
+					case 'howto':
 
 						$exclude_match = '/^recipe$/';
 

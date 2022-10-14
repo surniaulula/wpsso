@@ -19,9 +19,9 @@ if ( ! class_exists( 'WpssoAdmin' ) ) {
 
 	class WpssoAdmin {
 
-		protected $p;
-		protected $head;
-		protected $filters;
+		protected $p;		// Wpsso class object.
+		protected $head;	// WpssoAdminHead class object.
+		protected $filters;	// WpssoAdminFilters class object.
 		protected $menu_id;
 		protected $menu_name;
 		protected $menu_lib;

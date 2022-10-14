@@ -57,7 +57,7 @@ _x( '(code) Schema Type CreativeWork [schema_type:creative.work]', 'lib file des
 _x( '(code) Schema Type Event [schema_type:event]', 'lib file description', 'wpsso' );
 _x( '(code) Schema Type FAQPage [schema_type:webpage.faq]', 'lib file description', 'wpsso' );
 _x( '(code) Schema Type Food Establishment [schema_type:food.establishment]', 'lib file description', 'wpsso' );
-_x( '(code) Schema Type How-To [schema_type:how.to]', 'lib file description', 'wpsso' );
+_x( '(code) Schema Type How-To [schema_type:howto]', 'lib file description', 'wpsso' );
 _x( '(code) Schema Type ItemList [schema_type:item.list]', 'lib file description', 'wpsso' );
 _x( '(code) Schema Type Job Posting [schema_type:job.posting]', 'lib file description', 'wpsso' );
 _x( '(code) Schema Type Local Business [schema_type:local.business]', 'lib file description', 'wpsso' );

@@ -1179,8 +1179,13 @@ if ( ! class_exists( 'WpssoAbstractWpMeta' ) ) {
 				case $this->p->cf[ 'meta' ][ 'id' ]:	// 'sso' metabox ID.
 
 					$tabs[ 'edit_general' ] = _x( 'Edit General', 'metabox tab', 'wpsso' );
-					$tabs[ 'edit_schema' ]  = _x( 'Edit Schema', 'metabox tab', 'wpsso' );
-					$tabs[ 'edit_media' ]   = _x( 'Edit Media', 'metabox tab', 'wpsso' );
+
+					if ( ! $this->p->util->is_schema_disabled() ) {
+
+						$tabs[ 'edit_schema' ] = _x( 'Edit Schema', 'metabox tab', 'wpsso' );
+					}
+
+					$tabs[ 'edit_media' ] = _x( 'Edit Media', 'metabox tab', 'wpsso' );
 
 					if ( $mod[ 'is_public' ] ) {
 

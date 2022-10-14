@@ -57,7 +57,7 @@ if ( ! class_exists( 'WpssoIntegDataWpseoBlocks' ) ) {
 				return $md_opts;
 			}
 
-			$ret[ 'schema_type' ] = 'how.to';
+			$ret[ 'schema_type' ] = 'howto';
 
 			if ( ! empty( $attrs[ 'hasDuration' ] ) ) {
 

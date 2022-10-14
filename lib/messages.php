@@ -115,7 +115,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			if ( 0 === strpos( $msg_key, 'tooltip-' ) ) {
 
 				/**
-				 * Instantiate WpssoMessagesTooltip only when needed.
+				 * Instantiate WpssoMessagesTooltip when needed.
 				 */
 				if ( null === $this->tooltip ) {
 
@@ -132,7 +132,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 			} elseif ( 0 === strpos( $msg_key, 'info-' ) ) {
 
 				/**
-				 * Instantiate WpssoMessagesInfo only when needed.
+				 * Instantiate WpssoMessagesInfo when needed.
 				 */
 				if ( null === $this->info ) {
 
@@ -553,7 +553,7 @@ if ( ! class_exists( 'WpssoMessages' ) ) {
 
 						$text .= '<li>' . sprintf( __( '<strong><a href="%s">Customize advanced settings</a></strong>, including image sizes, cache expiry, video services, shortening services, document types, contact fields, product attributes, custom fields, and more.', 'wpsso' ), $advanced_page_url ) . '</li>';
 
-						$text .= '<li>' . sprintf( __( '<strong>Additional Schema options</strong> in the %s metabox to customize creative works, events, how-tos, job postings, movies, products, recipes, reviews, and more.', 'wpsso' ), $mb_title ) . '</li>';
+						$text .= '<li>' . sprintf( __( '<strong>Additional Schema options</strong> in the %s metabox to events, how-tos, job postings, movies, products, recipes, reviews, and more.', 'wpsso' ), $mb_title ) . '</li>';
 
 						$text .= '<li>' . __( '<strong>Get video and short URL data from external services</strong> (Bitly, Vimeo, Youtube, etc.).', 'wpsso' ) . '</li>';
 
