@@ -239,6 +239,13 @@ if ( ! class_exists( 'WpssoJsonTypeProduct' ) ) {
 				$local_is_recursion = false;
 			}
 
+			/**
+			 * Check for required Product properties.
+			 *
+			 * The "image" property is required for Google's Merchant listings validator.
+			 */
+			WpssoSchema::check_required_props( $json_ret, $mod, array( 'image' ) );
+
 			return WpssoSchema::return_data_from_filter( $json_data, $json_ret, $is_main );
 		}
 	}
